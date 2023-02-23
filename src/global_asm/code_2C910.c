@@ -14,6 +14,59 @@ void func_80627C10(u8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2C910/func_80627C5C.s")
 
+/*
+// Seems doable, struct on the stack?
+void func_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
+    ? sp98;
+    ? sp58;
+    ? sp44;
+    s16 sp42;
+    s32 sp38;
+    void *sp34;
+    ? *temp_v0;
+    ? *var_s0;
+    s16 temp_a3_2;
+    s16 var_v1;
+    s32 temp_a1;
+    s32 temp_a3;
+
+    temp_a3 = arg0 & 0xFF;
+    temp_v0 = func_8070E750(1, temp_a3, 1, temp_a3);
+    var_s0 = temp_v0;
+    if (func_80002ECC(temp_v0, 0x3A) != 0) {
+        temp_a3_2 = func_80002C74(var_s0, &D_80757F88) + 1;
+        sp42 = temp_a3_2;
+        func_80002A64(&sp44, var_s0, temp_a3_2, temp_a3_2);
+        *(&sp44 + sp42) = 0;
+        func_8069D2AC(0xA, 0x14, 0x18, &sp44, 0, arg1, 0x32, 0x32);
+        func_80627C10(arg2);
+        var_s0 += func_80002F18(&sp44);
+    }
+    sp38 = arg1;
+    if (func_806FBD5C(6, var_s0) >= 0x12D) {
+        temp_a1 = func_80002F18(var_s0) / 2;
+        var_v1 = temp_a1;
+        if (*(temp_a1 + var_s0) != 0x20) {
+            do {
+                var_v1 -= 1;
+            } while (*(var_v1 + var_s0) != 0x20);
+        }
+        sp34 = var_v1 + var_s0;
+        sp42 = var_v1;
+        func_80002A64(&sp98, var_s0, var_v1);
+        (sp + sp42)->unk98 = 0;
+        func_80002A64(&sp58, sp34 + 1, 0xFF);
+        func_8069D2AC(0, 0, 0xCD, &sp98, 0, sp38, 0x32, 0x32);
+        func_80627C10(arg2);
+        func_8069D2AC(0, 0, 0xD7, &sp58, 0, sp38, 0x32, 0x32);
+        func_80627C10(arg2);
+        return;
+    }
+    func_8069D2AC(0, 0, 0xCD, var_s0, 0, sp38, 0x32, 0x32);
+    func_80627C10(arg2);
+}
+*/
+
 Actor *func_80627EA8(s16 arg0) {
     Actor *actor;
 

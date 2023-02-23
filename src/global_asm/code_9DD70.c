@@ -156,10 +156,52 @@ void func_8069D0D8(void) {
     func_8069B908();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069D0F8.s")
+extern s16 D_80744490;
 
-// TODO: Are these signatures correct? Maybe it's passing a struct?
-void func_8069D0F8(u8, s16, s16, s32, s32, s32, s32, s32);
+// TODO: Put in PaaD union
+typedef struct {
+    void* unk0;
+    u16 unk4;
+    u16 unk6;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+} GlobalASMStruct_8069D0F8;
+
+void func_8069D0F8(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7);
+
+u8 func_806FDB8C(s16, s32, s32, f32, f32, f32);
+s32 func_806FBD5C(s16, s32);
+
+void func_8069D0F8(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
+    GlobalASMStruct_8069D0F8 *temp_s0;
+
+    if (func_80677FA8(0xE8, 0) != 0) {
+        temp_s0 = D_807FBB44->additional_actor_data;
+        if (arg0 & 0x80) {
+            temp_s0->unkA = func_806FDB8C(arg0 & 0xff7f, arg3, 2, 160.0f, arg2, 0.0f);
+            D_807FBB44->unkEE = 1;
+            D_807FBB44->y_position = arg2;
+            return;
+        }
+        if (arg1 == 0) {
+            D_807FBB44->x_position = (D_80744490 - func_806FBD5C(arg0, arg3)) * 2;
+        } else {
+            D_807FBB44->x_position = arg1 * 4;
+        }
+        D_807FBB44->y_position = arg2 * 4;
+        D_807FBB44->z_position = arg0;
+        D_807FBB44->unk16A = 0xFF;
+        D_807FBB44->unk16B = 0xFF;
+        D_807FBB44->unk16C = 0xFF;
+        temp_s0->unk0 = malloc(func_80002F18(arg3) + 1);
+        func_80002A30(temp_s0->unk0, arg3);
+        temp_s0->unk4 = arg4;
+        temp_s0->unk6 = arg5;
+        temp_s0->unk8 = arg6;
+        temp_s0->unk9 = arg7;
+    }
+}
 
 void func_8069D2AC(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
     if ((cc_number_of_players < 2)
