@@ -1,0 +1,249 @@
+options:
+  basename: donkeykong64
+  find_file_boundaries: True
+  compiler: "IDO"
+  platform: n64
+  asm_endlabels: yes
+  cpp_args:
+    - "-Iinclude"
+    - "-Iinclude/2.0L"
+    - "-D_LANGUAGE_C"
+  generated_c_preamble: |
+    #include <ultra64.h>
+    #include "functions.h"
+    #include "variables.h"
+  create_detected_syms: yes
+  undefined_syms_path: undefined_syms.us.txt
+  undefined_funcs_auto_path: undefined_funcs_auto.us.txt
+  undefined_syms_auto_path: undefined_syms_auto.us.txt
+  symbol_addrs_path: symbol_addrs.dk64_boot.us.txt
+  base_path: .
+  target_path: baserom.us.z64
+  asset_path: bin
+  build_path: build/us
+segments:
+  - name: header
+    type: header
+    start: 0x0
+  - name: boot
+    type: bin
+    start: 0x40
+    vram: 0xA4000040
+    subsegments:
+    - [0x0040, asm, boot]
+    - [0x0B70, bin, boot2]
+  - name: dk64_boot
+    type: code
+    start: 0x1000
+    vram: 0x80000400
+    dir: dk64_boot
+    subsegments:
+      - [0x1000, hasm, entry]                 #DONE
+      - [0x1050, c, dk64_boot_1050]
+      - [0x1630, c, dk64_boot_1630]
+      - [0x1CC0, c, dk64_boot_1CC0]
+      - [0x30E0, c, dk64_boot_30E0]
+      - [0x3390, c, dk64_boot_3390]
+      - [0x3C00, c, dk64_boot_3C00]
+      - [0x3D20, c, dk64_boot_3D20]
+      - [0x5120, hasm, os/invaldcache]         #DONE
+      - [0x51D0, c, io/pirawdma]              #DONE
+      - [0x52B0, c, io/pigetstat]             #DONE
+      - [0x52C0, c, os/recvmesg]              #DONE
+      - [0x5400, c, io/viblack]               #DONE
+      - [0x5470, c, os/setthreadpri]          #DONE
+      - [0x5550, c, os/createmesgqueue]       #DONE
+      - [0x5580, c, os/seteventmesg]          #DONE
+      - [0x55F0, c, os/createthread]
+      - [0x5740, c, os/startthread]           #DONE
+      - [0x5890, c, io/vimgr]
+      - [0x5BA0, c, io/visetmode]             #DONE
+      - [0x5C10, bin, dk64_boot_5C10] #??? nops ???
+      - [0x5C70, c, dk64_boot_5C70]
+      - [0x5DC0, hasm, libc/bzero]             #DONE
+      - [0x5E60, hasm, os/invalicache]         #DONE
+      - [0x5EE0, hasm, os/writebackdcacheall]  #DONE
+      - [0x5F10, c, os/initialize]
+      - [0x61D0, c, dk64_boot_61D0] #DONE
+      - [0x6270, hasm, os/writebackdcache]     #DONE
+      - [0x62F0, c, dk64_boot_62F0]
+      - [0x6360, c, io/viswapbuf]             #DONE
+      - [0x63B0, c, dk64_boot_63B0]
+      - [0x6680, hasm, os/getfpccsr]           #DONE
+      - [0x6690, c, gu/nonmatching/usprite]
+      - [0x66E0, c, os/stopthread]            #DONE
+      - [0x67A0, c, io/dpsetstat]             #DONE
+      - [0x67B0, c, io/spsetstat]             #DONE
+      - [0x67C0, c, io/visetspecial]          #DONE
+      - [0x6980, c, gu/translate]             #DONE
+      - [0x6A20, c, gu/perspective]           #DONE
+      - [0x6CB0, c, os/gettime]               #DONE
+      - [0x6D40, c, os/settime]               #DONE
+      - [0x6D70, c, gu/nonmatching/lookathil]
+      - [0x7560, c, gu/lookat]                #DONE
+      - [0x7890, c, gu/ortho]                 #DONE
+      - [0x7A50, c, io/aisetnextbuf]          #DONE
+      - [0x7B00, c, io/aigetlen]              #DONE
+      - [0x7B10, c, os/pidma]                 #DONE
+      - [0x7C20, c, io/controller]
+      - [0x7F60, c, dk64_boot_7F60]
+      - [0x7FD0, c, dk64_boot_7FD0]
+      - [0x81B0, c, libc/llcvt]
+      - [0x83C0, c, os/settimer]              #DONE
+      - [0x84A0, c, os/getthreadid]           #DONE
+      - [0x84C0, c, io/conteeplongread]       #DONE
+      - [0x8550, c, io/conteepwrite]
+      - [0x8920, c, io/conteepprobe]
+      - [0x8990, c, io/motor]
+      - [0x8D60, c, io/dpgetstat]             #DONE
+      - [0x8D70, c, io/vigetcurrframebuf]     #DONE
+      - [0x8DB0, c, io/vigetnextframebuf]     #DONE
+      - [0x8DF0, c, io/sptaskyielded]         #DONE
+      - [0x8E70, c, io/sptask]                #DONE
+      - [0x9160, c, io/sptaskyield]           #DONE
+      - [0x9180, c, gu/scale]                 #DONE
+      - [0x9220, c, gu/nonmatching/rotate]
+      - [0x9410, c, gu/mtxcatf]               #DONE
+      - [0x9620, c, gu/mtxcatl]               #DONE
+      - [0x96E0, c, gu/nonmatching/align]
+      - [0x98F0, c, io/piread]                #DONE
+      - [0x9930, c, io/vigetmode]             #DONE
+      - [0x9980, c, gu/nonmatching/position]
+      - [0x9BA0, c, os/virtualtophysical]     #DONE
+      - [0x9C20, hasm, interrupt]             #DONE
+      - [0x9C60, c, os/thread]
+      - [0x9CA0, hasm, os/exceptasm]
+      - [0xA5A0, c, io/vi]                    #DONE
+      - [0xA6E0, c, os/timerintr]
+      - [0xAAE0, c, os/getthreadpri]          #DONE
+      - [0xAB00, c, io/vigetcurrcontext]      #DONE
+      - [0xAB10, c, io/viswapcontext]
+      - [0xAE10, c, os/sendmesg]              #DONE
+      - [0xAF60, hasm, os/getcount]            #DONE
+      - [0xAF70, hasm, os/setsr]               #DONE
+      - [0xAF80, hasm, os/getsr]               #DONE
+      - [0xAF90, hasm, os/setfpccsr]           #DONE
+      - [0xAFA0, c, io/sirawread]             #DONE
+      - [0xAFF0, c, io/sirawwrite]            #DONE
+      - [0xB040, hasm, os/unmaptlball]        #DONE
+      - [0xB090, hasm, os/maptlbrdb]          #DONE
+      - [0xB0F0, c, io/pirawread]             #DONE
+      - [0xB150, c, io/pimgr]
+      - [0xB2C0, c, gu/nonmatching/mtxutil]
+      - [0xB530, c, cosf]
+      - [0xB6A0, c, sinf]
+      - [0xB860, hasm, gu/sqrt]               #DONE
+      - [0xB870, c, io/ai]                    #DONE
+      - [0xB8A0, c, os/jammesg]               #DONE
+      - [0xB9F0, c, io/pigetcmdq]             #DONE
+      - [0xBA20, c, io/sirawdma]
+      - [0xBAD0, c, io/siacs]
+      - [0xBB90, c, io/conteepread]
+      - [0xBDE0, c, io/crc]
+      - [0xBF50, c, io/contramwritesafe]
+      - [0xBFD0, c, io/contramread]
+      - [0xC200, c, io/spgetstat]
+      - [0xC210, hasm, bcopy]                 #DONE
+      - [0xC520, c, io/spsetpc]               #DONE
+      - [0xC560, c, io/sprawdma]              #DONE
+      - [0xC5F0, c, io/sp]                    #DONE
+      - [0xC620, c, gu/normalize]             #DONE
+      - [0xC6B0, c, io/piacs]
+      - [0xC770, hasm, probetlb]              #DONE
+      - [0xC830, c, os/setIntMask]
+      - [0xC8D0, c, os/destroythread]         #DONE
+      - [0xC9E0, hasm, os/setcompare]
+      - [0xC9F0, c, io/si]
+      - [0xCA20, c, dk64_boot_CA20]
+      - [0xCC00, c, io/devmgr]
+      - [0xD090, c, io/contramwrite]
+      - [0xD2E0, c, io/pfsisplug]
+      - [0xD620, c, io/pfsgetstatus]
+      - [0xD850, c, os/resetglobalintmask]
+      - [0xD8B0, c, io/epirawwrite]
+      - [0xDA10, c, io/epirawread]
+      - [0xDB70, c, os/setglobalintmask]      #DONE
+      - [0xDBC0, c, os/yieldthread]           #DONE
+      - [0xDC10, c, io/contpfs]
+      - [0xE790, c, dk64_boot_E790]
+  - name: dk64_boot_data
+    dir: dk64_boot
+    type: code
+    start: 0xE8B0
+    vram:  0x8000DCB0
+    subsegments:
+      - [0xE8B0, bin, dk64_boot_data_E8B0]
+      - [0xFB00, .data, io/vimgr]
+      - [0xFB20, bin, dk64_boot_data_FB20]
+      - [0x10CC0, .data, io/aisetnextbuf]
+      - [0x10CD0, bin, dk64_boot_data_10CD0]
+      - [0x10D30, .data, io/vi]
+      - [0x10DA0, bin, dk64_boot_data_10DA0]
+      - [0x11120, .rodata, gu/perspective]
+      - [0x11130, bin, dk64_boot_data_11130] #- [0x11130, .rodata, gu/lookathil]
+      - [0x11140, bin, dk64_boot_data_11140]
+      #- [0x11150, .rodata, gu/rotate]
+      - [0x11160, bin, dk64_boot_data_11160]
+      #- [0x11170, .rodata, gu/position]
+      - [0x11180, bin, dk64_boot_data_11180]
+  - name: global_asm.us.rzip #805fb300
+    type: bin
+    start: 0x113F0
+    subsegments:
+      - [0x113F0, bin]
+  - name: menu.us.rzip
+    type: bin
+    start: 0xCBE70
+    subsegments:
+      - [0xCBE70, bin]
+  - name: multiplayer.us.rzip
+    type: bin
+    start: 0xD4B00
+    subsegments:
+      - [0xD4B00, bin]
+  - name: minecart.us.rzip
+    type: bin
+    start: 0xD6B00
+    subsegments:
+      - [0xD6B00, bin]
+  - name: bonus.us.rzip
+    type: bin
+    start: 0xD9A40
+    subsegments:
+      - [0xD9A40, bin]
+  - name: race.us.rzip
+    type: bin
+    start: 0xDF600
+    subsegments:
+      - [0xDF600, bin]
+  - name: water.us.rzip
+    type: bin
+    start: 0xE6780
+    subsegments:
+      - [0xE6780, bin]
+  - name: boss.us.rzip
+    type: bin
+    start: 0xEA0B0
+    subsegments:
+      - [0xEA0B0, bin]
+  - name: arcade.us.rzip
+    type: bin
+    start: 0xF41A0
+    subsegments:
+      - [0xF41A0, bin]
+  - name: jetpac.us.rzip
+    type: bin
+    start: 0xFD2F0
+    subsegments:
+      - [0xFD2F0, bin]
+  - name: unkown_101A40
+    type: bin
+    start: 0x101A40
+    subsegments:
+      - [0x101A40, bin, unkown_101A40]
+  - name: assets
+    type: bin
+    start: 0x101C50
+    subsegments:
+      - [0x101C50, bin, assets]
+  - [0x2000000]

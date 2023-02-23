@@ -1,0 +1,236 @@
+#include <ultra64.h>
+#include "functions.h"
+#include "variables.h"
+
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80024000.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800241F4.s")
+
+// Jumptable
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80024254.s")
+
+typedef struct MultiplayerStruct4 {
+    u8 pad0[0x4C];
+    u8 unk4C;
+} MultiplayerStruct4;
+void func_800242FC(MultiplayerStruct4 *);
+
+extern s32 D_807552EC;
+extern s8 D_8076A105; // A player index
+
+extern u8 D_80026F70;
+// TODO: Is this a PaaD?
+typedef struct MultiplayerStruct0 {
+    u8 pad0[0x1A4];
+    u8 unk1A4;
+} MultiplayerStruct0;
+
+void func_806F91B4(s32, u8, s16);
+extern s32 D_807552E8;
+void func_800269C8(u8, s32);
+s32 func_80026BD8(s32);
+void func_806C9434(s32);
+void func_806CFF9C(Actor*);
+
+void func_800242FC(MultiplayerStruct4 *arg0) {
+    s32 temp_v0;
+    s32 playerIndex;
+    s32 phi_s1;
+    s32 phi_s2;
+
+    D_807552EC = 2;
+    phi_s2 = 0;
+    phi_s1 = -99999;
+    for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+        temp_v0 = func_80024254(playerIndex);
+        if (phi_s1 < temp_v0) {
+            phi_s1 = temp_v0;
+            phi_s2 = playerIndex;
+        } else if (temp_v0 == phi_s1) {
+            phi_s2 = -1;
+        }
+    }   
+    global_properties_bitfield |= 0x40001;
+    func_80714638();
+    D_8076A105 = phi_s2;
+}
+
+// u64 nonsense, bleh, PaaD?
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800243C8.s")
+
+void func_8002449C(void) {
+    s32 temp_v0;
+    s32 playerIndex;
+
+    for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+        temp_v0 = func_80024254(playerIndex);
+        if ((temp_v0 >= D_807552E4.unkC) || (temp_v0 < -999)) {
+            func_800242FC(current_actor_pointer->additional_actor_data);
+            return;
+        }
+    }
+}
+
+void func_8002452C(void) {
+    s32 a = 0;
+    s32 playerIndex;
+
+    for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+        if (func_80024254(playerIndex)) {
+            a++;
+        }
+    }
+    if (a < 2) {
+        // TODO: Which aaD type are they actually expecting here?
+        func_800242FC(current_actor_pointer->PaaD);
+    }
+}
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800245B0.s")
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800246EC.s")
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800249D8.s")
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80024CA4.s")
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025264.s")
+
+// D_80026FA4 struct array? Loop
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025378.s")
+
+s32 func_800253C8(void) {
+    return (((rand() >> 0xF) % 32767) % 211) + 90;
+}
+
+// Jumptable
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025404.s")
+
+// Weird stack stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025608.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025654.s")
+
+/*
+//s32 func_80024254(s32);
+void func_800243C8();
+typedef struct MultiplayerStruct3 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} MultiplayerStruct3;
+typedef struct MultiplayerStruct2 {
+    u8 pad0[0x8];
+    MultiplayerStruct3* unk8;
+} MultiplayerStruct2;
+MultiplayerStruct2 *func_80025378();
+s32 func_80025404();
+s32 func_80025608(s32);
+Actor *func_8067ADB4(s32);
+s32 func_806F5EB4(s32, s32, s16, s16, s32);
+void func_806F5FE8(s32, s16, s16, s16, s32);
+extern s32 D_807552E8;
+extern s32 D_807552F0;
+
+// TODO: Pretty close, but dealing with fiddly logic and stack stuff is a pain
+void func_80025654(MultiplayerStruct4 *arg0) {
+    MultiplayerStruct3 *sp20;
+    s32 temp_v0;
+
+    sp20 = func_80025378()->unk8;
+    if (gameIsInAdventureMode() && ((global_properties_bitfield & 2) == 0)) {
+        if (D_807552E8 == 3) {
+            func_800243C8();
+        }
+        temp_v0 = func_80025404();
+        if (temp_v0 == -1) {
+            if ((arg0->unk4C == 0) && 
+                (!func_8067ADB4(0x7A)) && // DK Coin (Multiplayer)
+                (func_80025608(0x1D2) == 0) && 
+                (func_806F5EB4(0x1D2, 0, sp20->unk0, sp20->unk2, sp20->unk4) == 0)) {
+                    func_806F5FE8(0x1D2, sp20->unk0, sp20->unk2, sp20->unk4, 0xA);
+            }
+        } else if ((D_807552E8 == 5) && (func_80024254(temp_v0) >= D_807552F0)) {
+            func_800242FC(arg0);
+        }
+        if (arg0->unk4C != 0) {
+            arg0->unk4C--;
+        }
+    }
+}
+*/
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025794.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025B48.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025CE8.s")
+
+// Doable, loop, struct
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025F84.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025FFC.s")
+
+// Jumptable
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80026094.s")
+
+void func_800268C0(u8 arg0) {
+    D_80026F70 |= arg0;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800268DC.s")
+
+void func_8002698C(MultiplayerStruct0 *arg0) {
+    if (D_807552E8 == 2) {
+        func_806F91B4(1, arg0->unk1A4, -3);
+    }
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800269C8.s")
+
+void func_80026B0C(s32 arg0) {
+    Actor *player = character_change_array[arg0].player_pointer;
+    player->noclip_byte = 0xC;
+    switch (D_807552E8) {
+        case 2:
+            func_806F91B4(1, arg0, -3);
+            return;
+        case 5:
+            func_806F91B4(7, arg0, -0x40);
+        case 3:
+            func_800269C8(arg0, 0);
+            return;
+        case 4:
+            func_806F91B4(7, arg0, -1);
+            return;
+    }
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80026BD8.s")
+
+typedef struct MultiplayerStruct1 {
+    u8 pad0[0x306];
+} MultiplayerStruct1;
+extern MultiplayerStruct1 D_807FCC4B[];
+
+void func_80026D40(Actor *arg0, s32 arg1) {
+    if ((D_807552E8 == 4) && (func_80024254(arg1) == 0)) {
+        D_807FCC4B[arg1].pad0[0] = 0;
+        arg0->control_state_progress++;
+        func_806EB0C0(0x5B, NULL, arg1);
+        arg0->noclip_byte = 1;
+    } else {
+        func_806C9434(func_80026BD8(arg1));
+        character_change_array[arg1].unk2E2 |= 1;
+        func_806CFF9C(arg0);
+    }
+}
+
+// Surprisingly doable, PaaD and CharacterChange, maybe a sus u16/s16 array/struct lookup
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80026E20.s")

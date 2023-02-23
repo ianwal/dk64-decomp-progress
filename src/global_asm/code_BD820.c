@@ -1,0 +1,107 @@
+#include <ultra64.h>
+#include "functions.h"
+#include "variables.h"
+
+extern s32 D_80717D4C;
+extern s32 D_8071FFA0;
+extern s32 D_8071C9E8; // TODO: Datatype
+extern s32 D_8074E880[]; // TODO: Datatype
+
+void func_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    func_8071498C(&D_8071C9E8);
+    func_807149FC(-1);
+    func_807149B8(1);
+    func_8071496C(arg3);
+    func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, arg0, arg1, arg2);
+}
+
+void func_806B8BDC(s16 arg0, s16 arg1, s16 arg2) {
+    func_80714998(2);
+    func_8071498C(&D_80717D4C);
+    func_80714950(-0x28);
+    func_807149B8(1);
+    func_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
+    func_80714CC0(&D_8071FFA0, 2.0f, arg0, arg1, arg2);
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BD820/func_806B8C78.s")
+
+extern f32 D_8075B8B0;
+extern f32 D_8075B8B4;
+extern f32 D_8075B8B8;
+extern s16 D_807F6248;
+extern s16 D_807F624C;
+
+extern void func_80659670(f32, f32, f32, s32);
+
+/*
+// TODO: Regalloc, damn it
+void func_806B8C78(void) {
+    switch (current_actor_pointer->control_state) {
+        case 1:
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    current_actor_pointer->y_velocity = 0.0f;
+                    func_80614EBC(current_actor_pointer, 0x290);
+                    current_actor_pointer->control_state_progress++;
+                    break;
+                case 2:
+                    if (current_actor_pointer->y_position > -20.0f) {
+                        current_actor_pointer->y_position -= current_actor_pointer->y_velocity;
+                    }
+                    current_actor_pointer->y_velocity = MAX(current_actor_pointer->y_velocity + 0.5, 8.0f);
+                    break;
+            }
+            break;
+        case 2:
+            func_806B8B20(0x258, 0x64, 0x1E5, 0x64);
+            func_806B8B20(0x258, 0x96, 0x1E5, 0x64);
+            func_806B8B20(0x258, 0xC8, 0x1E5, 0x67);
+            func_806B8B20(0x258, 0xFA, 0x1E5, 0x68);
+            func_806B8B20(0x258, 0x12C, 0x1E5, 0x6C);
+            func_806B8B20(0x258, 0x15E, 0x1E5, 0x6E);
+            func_806B8B20(0x258, 0x190, 0x1E5, 0x73);
+            func_806B8B20(0x258, 0x1C2, 0x1E5, 0x74);
+            current_actor_pointer->control_state++;
+            D_807FDC90->unk2C = 0x46;
+            break;
+        case 3:
+            if (D_807FDC90->unk2C != 0) {
+                D_807FDC90->unk2C--;
+            } else {
+                current_actor_pointer->control_state = 0x40;
+            }
+            if (D_807FDC90->unk2C < 0x28) {
+                func_8063C1EC(4, 0x10, &D_807FDC90);
+                func_8063C1EC(6, 0x10);
+                func_8063C248(5, 0x10);
+                func_8063C248(7, 0x10);
+                if (((D_807FDC90->unk2C < 0x15) && (((rand() >> 0xF) % 1000) < 0x12C)) || (current_actor_pointer->control_state == 0x40)) {
+                    if (current_actor_pointer->control_state == 0x40) {
+                        func_8063C1EC(5, 0x10);
+                        func_8063C1EC(7, 0x10);
+                        playSound(0x1D0, 0x58EF, 63.0f, 1.0f, 0, 0);
+                        playSong(0x3A, 1.0f);
+                        func_806B8BDC(0xBD, 0xAA, 0x2FB);
+                        func_806B8BDC(0x19A, 0xA6, 0x2F8);
+                    }
+                    func_8065F134(D_807F6248, 0);
+                    func_8065F134(D_807F624C, 0);
+                    func_80659670(D_8075B8B0, D_8075B8B0, D_8075B8B0, 0);
+                    return;
+                }
+                if (D_807FDC90->unk2C >= 0x15) {
+                    func_8065F134(D_807F6248, 9);
+                    func_8065F134(D_807F624C, 9);
+                    func_80659670(D_8075B8B4, D_8075B8B4, D_8075B8B4, 0);
+                    return;
+                }
+                func_8065F134(D_807F6248, 8);
+                func_8065F134(D_807F624C, 8);
+                func_80659670(D_8075B8B8, D_8075B8B8, D_8075B8B8, 0);
+            }
+    }
+}
+*/
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BD820/func_806B904C.s")

@@ -1,0 +1,38 @@
+options:
+  basename: race
+  find_file_boundaries: yes
+  compiler: "IDO"
+  platform: n64
+  cpp_args:
+    - "-Iinclude"
+    - "-Iinclude/2.0L"
+    - "-D_LANGUAGE_C"
+  generated_c_preamble: |
+    #include <ultra64.h>
+    #include "functions.h"
+    #include "variables.h"
+  create_detected_syms: yes
+  undefined_syms_path: undefined_syms.us.txt
+  symbol_addrs_path: symbol_addrs.race.us.txt
+  undefined_funcs_auto_path: undefined_funcs_auto.race.us.txt
+  undefined_syms_auto_path: undefined_syms_auto.race.us.txt
+  base_path: .
+  target_path: build/us/race.us.bin
+  asset_path: bin
+  build_path: build/us
+segments:
+  - name: code
+    dir: race
+    type: code
+    start: 0x00000000
+    vram: 0x80024000
+    subsegments:
+      - [0x0, c, code_0]
+  - name: data
+    type: code
+    dir: race
+    start: 0xBB10
+    vram: 0x8002FB10
+    subsegments:
+      - [0xBB10, bin, data_BB10]
+  - [0xC160]

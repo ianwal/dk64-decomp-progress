@@ -1,0 +1,193 @@
+playSong = 0x80602A94;
+playSound = 0x80609140;
+getEEPROMSaveSlot = 0x8060B9D0;
+malloc = 0x80610FE8;
+rand = 0x80611A44;
+playCutscene = 0x8061CC40;
+getPointerTableFile = 0x8066B0F8;
+areAllKeysTurnedIn = 0x806BDD2C;
+getFlagBlockAddress = 0x8060E25C;
+getExitData = 0x806C96C4;
+loadExits = 0x806C95D0;
+setIntroStoryPlaying = 0x8070B308;
+isIntroStoryPlaying = 0x8070B318;
+clearPermanentFlags = 0x8073106C;
+clearGlobalFlags = 0x807310BC;
+isFlagSet = 0x8073110C;
+setFlag = 0x8073129C;
+gameIsInDKTheatreMode = 0x80712658;
+gameIsInDKTVMode = 0x807142D8;
+gameIsInAdventureMode = 0x8071432C;
+gameIsInQuitGameMode = 0x80714394;
+gameIsInSnidesBonusGameMode = 0x807143E8;
+gameIsInMysteryMenuMinigameMode = 0x8071441C;
+gameIsInMainMenuMode = 0x80714450;
+playerCanDive = 0x806E770C;
+getLevelIndex = 0x805FF030;
+
+n_alInit = 0x80739320;
+n_alClose = 0x8073938C;
+alLink = 0x807393E0;
+alUnlink = 0x80739414;
+n_alSynNew = 0x80739460;
+n_alAudioFrame = 0x80739A64;
+__n_allocParam = 0x80739C88;
+__n_freeParam = 0x80739CE8;
+_n_collectPVoices = 0x80739D14;
+_n_freePVoice = 0x80739D80;
+_n_timeToSamplesNoRound = 0x80739DC0;
+__n_nextSampleTime =  0x80739E5C;
+alSeqpStop = 0x80739F00;
+alSeqpSetSeq = 0x80739F40;
+alSepqSetVol = 0x80739F90;
+alEvtqNew = 0x8073B1D0;
+alEvtqNextEvent = 0x8073B26C;
+alEvtqPostEvent = 0x8073B310;
+alEvtqFlushType = 0x8073B490;
+n_alSynDelete = 0x8073D140;
+next_map = 0x807444E4;
+next_exit = 0x807444E8;
+is_cutscene_active = 0x807444EC;
+enemies_killed = 0x80744508;
+current_character_index = 0x8074E77C;
+action_initiation_function_list = 0x80752C70;
+game_mode_copy = 0x80755314;
+game_mode = 0x80755318;
+object_timer = 0x8076A064;
+current_map = 0x8076A0A8;
+current_exit = 0x8076A0AC;
+loading_zone_transition_type = 0x8076AEE0;
+newly_pressed_input = 0x807ECD48;
+newly_pressed_input_copy = 0x807ECD66;
+chunk_array_pointer = 0x807F6C18;
+actor_list = 0x807FBFF0;
+actor_count = 0x807FC3F0;
+actor_spawner_pointer = 0x807FC400;
+exit_array = 0x807FC900;
+character_change_array = 0x807FC924;
+cc_number_of_players = 0x807FC928;
+cc_player_index = 0x807FC929;
+extra_player_info_pointer = 0x807FD580;
+loading_zone_transition_speed = 0x807FD88C;
+current_menu_selection = 0x8076A0D1;
+current_file_selection = 0x8076A0D2;
+D_807ECDE8 = 0x807ECDE8;
+current_actor_pointer = 0x807FBB40;
+player_pointer = 0x807FBB4C;
+global_properties_bitfield = 0x807FBB60;
+temporary_flag_block = 0x807FDD90;
+is_autowalking = 0x807463B8;
+widescreen_enabled = 0x807444C0;
+story_skip = 0x8074452C;
+number_of_exits = 0x807FC904;
+current_file = 0x807467C8;
+
+D_1000020 = 0x1000020;
+D_1000030 = 0x1000030;
+D_1000040 = 0x1000040;
+D_1000068 = 0x1000068;
+D_1000090 = 0x1000090;
+
+D_80753454 = 0x80753454;
+D_8075348C = 0x8075348C;
+D_807534A8 = 0x807534A8;
+D_80753738 = 0x80753738;
+D_80753754 = 0x80753754;
+D_80759B60 = 0x80759B60;
+D_80759B68 = 0x80759B68;
+D_8075C398 = 0x8075C398;
+D_807F735E = 0x807F735E;
+D_807FDC9C = 0x807FDC9C;
+D_8075DFB4 = 0x8075DFB4;
+D_8076BF20 = 0x8076BF20;
+D_8076A0BC = 0x8076A0BC;
+D_80768E98 = 0x80768E98;
+D_80767E68 = 0x80767E68;
+D_807F5D90 = 0x807F5D90;
+D_8075CC6C = 0x8075CC6C;
+D_80758160 = 0x80758160;
+
+D_8075D0C8 = 0x8075D0C8;
+D_8075D0D0 = 0x8075D0D0;
+
+D_807FBFE0 = 0x807FBFE0;
+D_807FBFE4 = 0x807FBFE4;
+D_807FBFE8 = 0x807FBFE8;
+D_807FBFEC = 0x807FBFEC;
+D_807FD618 = 0x807FD618;
+D_8075D100 = 0x8075D100;
+D_807537E0 = 0x807537E0;
+D_80753364 = 0x80753364;
+D_80753380 = 0x80753380;
+D_807531FC = 0x807531FC;
+D_807535CC = 0x807535CC;
+D_80753CB4 = 0x80753CB4;
+D_80753604 = 0x80753604;
+
+D_8000DDE4 = 0x8000DDE4;
+D_8000DDE8 = 0x8000DDE8;
+D_8076A130 = 0x8076A130;
+D_80753D08 = 0x80753D08;
+D_8075CE80 = 0x8075CE80;
+
+D_8075C7A0 = 0x8075C7A0;
+D_8075D130 = 0x8075D130;
+D_8075371C = 0x8075371C;
+D_8075378C = 0x8075378C;
+
+D_807539DC = 0x807539DC;
+D_807538B8 = 0x807538B8;
+
+D_8075A588 = 0x8075A588;
+
+D_80753328 = 0x80753328;
+D_807532F0 = 0x807532F0;
+D_8075330C = 0x8075330C;
+D_807532B8 = 0x807532B8;
+D_807532D4 = 0x807532D4;
+D_80753A78 = 0x80753A78;
+D_80753B64 = 0x80753B64;
+D_8075395C = 0x8075395C;
+
+D_8075380C = 0x8075380C;
+D_8075381C = 0x8075381C;
+D_8075382C = 0x8075382C;
+D_8075385C = 0x8075385C;
+
+D_80750FC4 = 0x80750FC4;
+D_8075D320 = 0x8075D320;
+D_80753A2C = 0x80753A2C;
+D_80753428 = 0x80753428;
+
+D_8075B878 = 0x8075B878;
+D_80756024 = 0x80756024;
+
+n_alGlobals = 0x807563E0;
+n_syn = 0x807563E4;
+
+func_8002EC08 = 0x8002EC08;
+
+D_80746340 = 0x80746340;
+D_80753924 = 0x80753924;
+D_80753940 = 0x80753940;
+D_8076A064 = 0x8076A064;
+
+D_8075383C = 0x8075383C;
+D_8075384C = 0x8075384C;
+D_80753500 = 0x80753500;
+D_8075351C = 0x8075351C;
+
+D_8075A400 = 0x8075A400;
+D_807F93CC = 0x807F93CC;
+
+D_8075BEC8 = 0x8075BEC8;
+
+D_8075D6E4 = 0x8075D6E4;
+D_807572D0 = 0x807572D0;
+D_807572DC = 0x807572DC;
+
+D_80758918 = 0x80758918;
+
+D_80748BA0 = 0x80748BA0;
+D_8075BAEC = 0x8075BAEC;
+D_8075BAF0 = 0x8075BAF0;

@@ -1,0 +1,41 @@
+options:
+  basename: menu
+  find_file_boundaries: yes
+  compiler: "IDO"
+  platform: n64
+  cpp_args:
+    - "-Iinclude"
+    - "-Iinclude/2.0L"
+    - "-D_LANGUAGE_C"
+  generated_c_preamble: |
+    #include <ultra64.h>
+    #include "functions.h"
+    #include "variables.h"
+  create_detected_syms: yes
+  undefined_syms_path: undefined_syms.us.txt
+  symbol_addrs_path: symbol_addrs.menu.us.txt
+  undefined_funcs_auto_path: undefined_funcs_auto.menu.us.txt
+  undefined_syms_auto_path: undefined_syms_auto.menu.us.txt
+  base_path: .
+  target_path: build/us/menu.us.bin
+  asset_path: bin
+  build_path: build/us
+segments:
+  - name: code
+    dir: menu
+    type: code
+    start: 0x00000000
+    vram: 0x80024000
+    subsegments:
+      - [0x0, c, code_0]
+      - [0x1AF0, c, code_1AF0]
+      - [0x3E10, c, code_3E10]
+      - [0xE550, c, code_E550]
+  - name: data
+    type: code
+    dir: menu
+    start: 0xEF50
+    vram: 0x80032F50
+    subsegments:
+      - [0xEF50, bin, data_EF50]
+  - [0xFF10]

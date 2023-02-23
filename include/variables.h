@@ -1,0 +1,297 @@
+extern s8 story_skip;
+extern s8 widescreen_enabled;
+extern PlayerAdditionalActorData *extra_player_info_pointer;
+extern Actor *current_actor_pointer;
+extern Actor *D_807FBB44;
+extern Actor *D_807FBB48;
+extern GlobalASMStruct35 D_807FBB70[];
+extern Actor *D_807FBD6C;
+extern Actor *D_807FDC94;
+extern EnemyInfo *D_807FDC98;
+extern u8 current_character_index[];
+extern CharacterChange *character_change_array;
+extern Actor *player_pointer;
+extern u8 cc_player_index; // index into character_change_array, current_character_index[]
+extern u8 cc_number_of_players;
+extern s32 global_properties_bitfield;
+extern Maps current_map;
+extern s32 current_exit;
+extern Maps next_map;
+extern s32 next_exit;
+extern u8 is_cutscene_active;
+extern u8 game_mode;
+extern u8 game_mode_copy;
+extern u16 newly_pressed_input;
+extern u16 newly_pressed_input_copy;
+extern Struct807FDC90 *D_807FDC90; // Array?
+extern CharacterSpawner *D_807FDC9C; // Character spawner array
+extern s32 object_timer;
+extern u8 is_autowalking;
+extern ActorSpawner *actor_spawner_pointer;
+extern PlayerProgress D_807FC950[4];
+extern u16 enemies_killed;
+extern Chunk *chunk_array_pointer;
+extern u8 current_file;
+
+extern s32 D_807FBB64; // shadow_display_bitfield, shockwave_bitfield, long_distance_actor_spawn
+
+extern u8 D_8076A0AB; // Map
+extern s16 D_807F6240[];
+
+typedef struct {
+    s32 unk0; // Used
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20; // Used
+} Struct807552E4;
+
+extern Struct807552E4 D_807552E4;
+
+typedef struct Struct807FD610 {
+    s32 unk0; // Timer that ticks up once per frame
+    f32 unk4; // Probably float
+    f32 unk8; // Probably float
+    f32 unkC; // Probably float
+    f32 unk10;
+    f32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20; // Probably s16
+    s32 unk24; // Probably s16
+    s16 unk28; // Used
+    u16 unk2A; // Used, controller button bitfield
+    u16 unk2C; // Used, controller button bitfield
+    s8 unk2E; // Used
+    s8 unk2F; // Used
+    u8 unk30; // Used
+    u8 unk31;
+    s16 unk32;
+} Struct807FD610;
+
+extern Struct807FD610 D_807FD610[]; // Often indexed by cc_player_index
+extern OSPfs D_807F02D0[];
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    f32 unk8; // Used
+} GlobalASMStruct20_unk18;
+
+typedef struct {
+    u8 pad0[0x18];
+    GlobalASMStruct20_unk18 *unk18; // Used
+    s32 unk1C; // Used
+    s32 unk20;
+    s32 unk24;
+    s32 unk28; // Used
+    s32 unk2C;
+    u16 unk30; // Flags?
+} GlobalASMStruct20;
+extern GlobalASMStruct20 *D_8076BF20[];
+
+// TODO: What is this datatype?
+typedef struct Struct807FDCA0 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14; // TODO: Pointer to an array of structs 0xA big? See boss func_8003392C
+    s32 unk18;
+    s32 unk1C;
+    s8 unk20;
+} Struct807FDCA0;
+extern Struct807FDCA0 *D_807FDCA0; // TODO: What is this datatype?
+
+typedef struct Struct807F0470 {
+    s32 unk0;
+    u8 unk4;
+    u8 unk5;
+    s16 unk6;
+    s32 unk8;
+    s32 unkC;
+    u16 unk10;
+    u8 unk12;
+    u8 unk13;
+} Struct807F0470;
+
+extern Struct807F0470 D_807F0470[];
+
+typedef struct {
+    Actor* unk0;
+    s32 unk4;
+} GlobalASMStruct53;
+
+extern GlobalASMStruct53 D_807FB930[];
+
+typedef struct global_asm_struct_58 GlobalASMStruct58;
+
+struct global_asm_struct_58 {
+    void *unk0; // used, at least 0x65 big (func_80661264, func_8065F5F0), not sure what datatype though
+    f32 unk4; // used
+    f32 unk8; // used
+    f32 unkC; // used
+    f32 unk10; // used
+    f32 unk14; // used
+    f32 unk18; // used
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s16 unk48;
+    s8 unk4A; // used
+    s8 unk4B; // used
+    s8 unk4C; // used
+    s8 unk4D;
+    s16 unk4E;
+    GlobalASMStruct58 *next; // used
+};
+
+extern GlobalASMStruct58 *D_807F93C0;
+
+// Array of structs 0x10 big
+// TODO: What are these actually?
+typedef struct Temp10Big {
+    s32 unk0;
+    s16 unk4;
+    s8 unk6;
+    s8 unk7;
+    s32 unk8;
+    s32 unkC;
+} Temp10Big;
+extern Temp10Big D_8075C410[];
+
+typedef struct DKTVExtraData {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s16 unkC;
+    u8 map;
+    u8 exit;
+} DKTVExtraData;
+
+extern DKTVExtraData D_807ECE20;
+
+typedef struct model_2_model_50_b8 Model2Model50_B8;
+
+struct model_2_model_50_b8 {
+    s32 unk0[4];
+    s32 unk10[4];
+    s32 unk20[4];
+    s32 unk30;
+    s32 unk34;
+    s16 unk38; // Used
+    s16 unk3A; // Used
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    u8 unk48; // Used
+    u8 unk49; // used
+    u8 unk4A;
+    u8 unk4B;
+    s32 unk4C;
+    s32 unk50; // Used
+    s32 unk54; // Used
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60[4];
+    s32 unk70[4];
+    s32 unk80[4];
+    s32 unk90[4];
+    s32 unkA0[4];
+    s32 unkB0[4];
+    s32 unkC0[4];
+    s32 unkD0;
+    Model2Model50_B8 *next; // unkD4
+};
+
+typedef struct {
+    s32 unk0[4];
+    s32 unk10[4];
+    s32 unk20[4];
+    s32 unk30[4];
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s16 unk4C;
+    u8 unk4E; // Used
+    u8 unk4F; // Used
+    Model2Model50_B8 *unk50; // Used, pointer
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60[4];
+    s32 unk70[4];
+    s32 unk80[4];
+    s32 unk90[4];
+    s32 unkA0[4];
+    s32 unkB0;
+    s32 unkB4;
+    Model2Model50_B8 *unkB8; // Used, pointer
+} Model2Model;
+
+typedef struct object_model2 {
+    f32 x_position; // at 0x00
+    f32 y_position; // at 0x04
+    f32 z_position; // at 0x08
+    f32 hitbox_scale; // at 0x0C
+    f32 x_rotation; // at 0x10
+    f32 y_rotation; // at 0x14
+    f32 z_rotation; // at 0x18
+    s32 unk1C;
+    Model2Model *model_pointer; // at 0x20
+    void *unk24; // labelled behavior_type_pointer in ScriptHawk
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    void *unk78; // used in func_80650AD8, weird format
+    void *unk7C; // labelled behavior_pointer in ScriptHawk
+    s32 unk80;
+    s16 object_type; // at 0x84
+    s16 unk86;
+    s16 unk88;
+    s16 unk8A;
+    s32 unk8C; // bitfield, collectable state (u8)
+} ObjectModel2;
+
+extern ObjectModel2 *D_807F6000;
+
+extern u16 D_80744710[]; // = { // Permanent flag index lookup array
+//     26, // Key 1 Collected
+//     74, // key 2 Collected
+//     138, // Key 3 Collected
+//     168, // Key 4 Collected
+//     236, // Key 5 Collected
+//     292, // Key 6 Collected
+//     317, // Key 7 Collected
+//     380, // Key 8 Collected
+// }; // Permanent flag index lookup array

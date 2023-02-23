@@ -1,0 +1,70 @@
+#include <ultra64.h>
+#include "functions.h"
+#include "variables.h"
+
+
+#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800252A0.s")
+
+s32 func_80677FA8(s32, s32); // spawnActorWrapper()
+void func_80627948(Actor*, s32, s32, s32);
+void func_8069D2AC(s32,s32,u8, s32, s32, s32, s32, s32);
+u8 func_8070E750(u8, s32, s32);
+void func_8061C464(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+
+extern f32 D_8002DCB8;
+
+Actor* func_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    BaaD2 *tmp;
+    if (func_80677FA8(0xDB, arg0)) { // Spawn actor 219 (slot, BBB I guess?)
+        tmp = D_807FBB44->BaaD2;
+        D_807FBB44->x_position = arg1;
+        D_807FBB44->y_position = arg2;
+        D_807FBB44->z_position = arg3;
+        tmp->unk0 = current_actor_pointer;
+    }
+    return D_807FBB44;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_80025480.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800254B0.s")
+
+void func_8002563C(s32 arg0) {
+    PlayerAdditionalActorData *PaaD = player_pointer->PaaD;
+    func_8061C464(PaaD->unk104, player_pointer, 4, 0, 0xAA, 0, 0, 0, 0, 0, D_8002DCB8);
+    current_actor_pointer->control_state = 3;
+    current_actor_pointer->control_state_progress = 1;
+    current_actor_pointer->unk168 = 0;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800256C4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_8002570C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800261B8.s")
+
+void func_800264E0(u8 arg0, u8 arg1) {
+    playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
+    func_8069D2AC(0x81, 0, 0x78, func_8070E750(0x1A, arg1, 1), 0, 0x28, 8, 8);
+    current_actor_pointer->unk11C->control_state = 0;
+    playSong(0x28, 1.0f);
+    func_806EB0C0(0x44, NULL, 0);
+    current_actor_pointer->control_state++;
+    if (arg0 != 0) {
+        func_80627948(player_pointer, 5, 0x21, 5);
+    }
+}
+
+void func_800265C0(u8 arg0, u8 arg1) {
+    u8 temp;
+
+    current_actor_pointer->unk11C->control_state = 0;
+    temp = (u8) arg1;
+    func_8069D2AC(0x81, 0, 0x78, func_8070E750(0x1A, temp, 1), 0, 0x28, 8, 8);
+    playSong(0x57, 1.0f);
+    func_806EB0C0(0x43, NULL, 0);
+    current_actor_pointer->control_state++;
+    if (arg0 != 0) {
+        func_80627948(player_pointer, 5, 0x21, 5);
+    }
+}
