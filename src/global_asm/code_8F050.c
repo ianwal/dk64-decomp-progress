@@ -58,6 +58,10 @@ void func_8068A4C8(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F050/func_8068A508.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F050/func_8068A764.s")
+void func_8068A764(Actor *arg0, u8 arg1) {
+    arg0->unk146_s16 |= 1 << arg1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F050/func_8068A784.s")
+void func_8068A784(Actor *arg0, u8 arg1) {
+    arg0->unk146_s16 &= ~(1 << arg1);
+}

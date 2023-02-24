@@ -306,6 +306,8 @@ void func_8066EBF4(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066F06C.s")
 
+u8 func_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3);
+
 u8 func_8066F1F8(s32 arg0, s16 arg1) {
     s16 sp1E;
     s16 sp1C;
@@ -319,12 +321,68 @@ u8 func_8066F1F8(s32 arg0, s16 arg1) {
     return D_807FB546;
 }
 
-void func_8066F250() {
+void func_8066F250(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3) {
     D_807FB604 = 0;
-    func_8066F274();
+    func_8066F274(arg0, arg1, arg2, arg3);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066F274.s")
+void func_8066F400(Actor *);
+u8 func_8066F4AC(Actor *, s16 *, s16 *);
+u8 func_80670FA4(Actor *, s16 *, s16 *);
+void func_80672C70(s32);
+void func_80672E90(s32, s32, s32);
+void func_80674E14(Actor *);
+s8 func_80676ED0(Actor *, s16 *, s16 *);
+extern u8 D_807FB547;
+extern s8 D_807FB605;
+extern u8 D_807FB606;
+
+u8 func_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3) {
+    LedgeInfo *temp_v0;
+    u8 sp23;
+    u8 sp22;
+
+    sp23 = 0;
+    sp22 = 0;
+    temp_v0 = arg0->ledge_info_pointer;
+    if (arg0->object_properties_bitfield & 0x10000) {
+        *arg1 = 0;
+        *arg2 = 0xFFF;
+    }
+    if ((temp_v0 == NULL) || !(arg0->object_properties_bitfield & 0x10)) {
+        *arg3 = 0;
+        return 0;
+    }
+    func_80672E90(temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
+    func_80672C70(arg0->unk58);
+    D_807FB602 = 0;
+    D_807FB547 = 0;
+    D_807FB605 = 0;
+    D_807FB606 = 0;
+    if (arg0->noclip_byte & 0x20) {
+        func_80674E14(arg0);
+    }
+    if (arg0->noclip_byte & 8) {
+        sp23 = func_80670FA4(arg0, arg1, arg2);
+        sp22 = func_8066F4AC(arg0, arg1, arg2);
+        *arg3 = func_80676ED0(arg0, arg1, arg2);
+    } else {
+        *arg3 = 0;
+    }
+    func_8066F400(arg0);
+    arg0->unkFD = D_807FB547;
+    if (D_807FB606 != 0) {
+        arg0->unk64 |= 0x100;
+    } else {
+        arg0->unk64 &= ~0x100;
+    }
+    return sp23 != 0 || sp22 != 0;
+    // var_v1 = ;
+    // if (var_v1 == 0) {
+        // var_v1 = ;
+    // }
+    // return var_v1 & 0xFF;
+}
 
 void func_8066F400(Actor *arg0) {
     if (D_807FB602) {
@@ -348,13 +406,16 @@ void func_8066F400(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066FC0C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066FD6C.s")
 
+// Scales and rotates a matrix on the stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066FE08.s")
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80670548.s")
 
+// Another matrix on the stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80670C5C.s")
 
 void func_80670F04(LedgeInfo *arg0) {

@@ -201,6 +201,20 @@ void func_80641A78(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641B00.s")
 
+/*
+// TODO: Doable, just need to figure out object model2 behaviour pointer struct
+void func_80641B00(s16 arg0, s16 arg1, s16 arg2) {
+    s32 sp1C;
+
+    arg0 = func_80659470(arg0);
+    arg1 = func_80659470(arg1);
+    D_807F6000[arg0].unk7C = malloc(0xA4);
+    func_8063DED0(D_807F6000[arg0].unk7C, &D_807F6000);
+    D_807F6000[arg0].unk7C->unk48 = arg2;
+    D_807F6000[arg0].unk7C->unkA0 = D_807F6000[arg1].unk7C->unkA0;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641BCC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641C98.s")
@@ -827,6 +841,7 @@ void func_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064BAF4.s")
 
+// TODO: This probably returns the result of func_805FF0C8, if not, this is cursed
 void func_8064BB4C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_805FF0C8();
 }

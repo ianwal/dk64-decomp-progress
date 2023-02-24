@@ -112,10 +112,8 @@ void func_8069CD9C(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069CF54.s")
+void func_80689114(s32, f32, f32, f32, s32, f32, Actor*);
 
-/*
-// TODO: Actor->unk124, not sure how it works...
 void func_8069CF54(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk130 = 0x3C;
@@ -123,11 +121,10 @@ void func_8069CF54(void) {
         func_80689114(0x83, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 1.0f, current_actor_pointer);
     }
     func_8069B908();
-    if ((!(current_actor_pointer->object_properties_bitfield & 0x10)) && (current_actor_pointer->unk124->unk8 == 1) && isFlagSet(0xFD, FLAG_TYPE_PERMANENT)) {
+    if ((!(current_actor_pointer->object_properties_bitfield & 0x10)) && (current_actor_pointer->unk124->unk8_s32 == 1) && isFlagSet(0xFD, FLAG_TYPE_PERMANENT)) {
         current_actor_pointer->unk132 = 4;
     }
 }
-*/
 
 void func_8069D018(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {

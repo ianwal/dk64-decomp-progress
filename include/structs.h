@@ -267,6 +267,40 @@ typedef struct actor_animation_state {
     f32 animation_timer_4; // at 0x108
 } ActorAnimationState;
 
+typedef struct {
+    f32 unk0; // Used
+    f32 unk4; // Used
+    union {
+        f32 unk8; // Used
+        s32 unk8_s32; // Used // TODO: We might have another aaD situation here...
+    };
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+} Actor124;
+
 typedef struct actor_178 {
     s16 unk0; // Used
     s16 unk2;
@@ -382,7 +416,9 @@ typedef struct {
 
 struct actor_collision {
     u32 unk0; // Collision type?
-    u32 unk4;
+    u8 unk4;
+    u8 unk5;
+    u16 unk6;
     Actor *collisionSource;
     u32 unkC;
     u32 unk10;
@@ -477,7 +513,6 @@ typedef struct yaad5 {
     s16 unk1C; // Used
     s8 unk1E; // Used
 } YetAnotherAdditionalActorData5;
-
 
 typedef struct yet_another_additional_actor_data {
     Actor *unk0;
@@ -893,7 +928,7 @@ struct actor {
     u32 unk118;
     Actor *unk11C;
     f32 unk120;
-    u32 unk124;
+    Actor124 *unk124;
     s16 shadow_opacity; // at 0x128, max value 0xFF
     s16 draw_distance; // at 0x12A
     s16 unk12C; // Used
@@ -908,7 +943,10 @@ struct actor {
     LedgeInfo *ledge_info_pointer; // at 0x140
     u8 noclip_byte; // at 0x144
     u8 unk145;
-    u16 unk146; // used (0x147 hand state? 0x146 seems to be u16)
+    union {
+        u16 unk146; // used (0x147 hand state? 0x146 seems to be u16)
+        s16 unk146_s16; // used func_8068A764
+    };
     u32 unk148; // Used
     u32 unk14C; // Used
     void *unk150; // TODO: Floor Triangle Pointer

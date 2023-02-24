@@ -35,7 +35,7 @@ void func_806136B4();
 void func_8066E21C(LedgeInfo*);
 // void func_80679200(s32, Actor *, s32, s32, s32, s32);
 // Note: The pointer can be to any one of the above 10 structs, maybe more
-void func_80679200(s32, s32, s32, s32, s32, void*);
+void func_80679200(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5);
 void func_8067AEFC(Actor*);
 void func_8068C2F8(void *);
 void func_8070DA74(void *);
@@ -513,34 +513,64 @@ void func_806791EC(Actor *arg0, s32 arg1) {
     arg0->unk138 &= ~arg1;
 }
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679200.s")
+ActorCollision *func_80679490(Actor *, s32, u8, s32, s32);
+s32 func_8067AF44(Actor* arg0);
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679290.s")
+// TODO: Clean this up
+void func_80679200(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5) {
+    ActorCollision **sp28;
+    ActorCollision **var_v1;
+    ActorCollision *var_t0;
+    ActorCollision *temp_v0;
+    ActorCollision *var_v0;
+
+    var_t0 = NULL;
+    if (func_8067AF44(arg0) != 0) {
+        var_v0 = arg0->collision_queue_pointer;
+        var_v1 = &arg0->collision_queue_pointer;
+        if (var_v0 != NULL) {
+            do {
+                var_v1 = &var_v0->next;
+                var_t0 = var_v0;
+                var_v0 = var_v0->next;
+            } while (var_v0 != NULL);
+        }
+        sp28 = var_v1;
+        temp_v0 = func_80679490(arg1, arg2, arg3, arg4, arg5);
+        *var_v1 = temp_v0;
+        temp_v0->prev = var_t0;
+    }
+}
+
+typedef struct {
+    ActorCollision *unk0;
+    Actor *unk4;
+    s32 unk8;
+} Struct807FBF18;
+
+extern Struct807FBF18 D_807FBF18[];
+extern s16 D_807FBFD8;
+
+void func_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5, s32 arg6) {
+    if (D_807FBFD8 == 0x10) {
+        func_80732354(0xF, 0, 0, 0);
+    }
+    D_807FBF18[D_807FBFD8].unk0 = func_80679490(arg1, arg2, arg3, arg4, arg5);
+    D_807FBF18[D_807FBFD8].unk4 = arg0;
+    D_807FBF18[D_807FBFD8].unk8 = arg6;
+    D_807FBFD8++;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679334.s")
 
-// TODO: What type is this actually?
-typedef struct {
-    s32 unk0;
-    u8 unk4;
-    u8 unk5;
-    s16 unk6;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-} GlobalASMStruct39;
-
-GlobalASMStruct39 *func_80679490(s32 arg0, s32 arg1, u8 arg2, s32 arg3, s32 arg4) {
-    GlobalASMStruct39 *temp_v0 = malloc(0x1C);
+ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, s32 arg4) {
+    ActorCollision *temp_v0 = malloc(sizeof(ActorCollision));
     temp_v0->unk0 = arg1;
     temp_v0->unk4 = arg2;
-    temp_v0->unk8 = arg0;
+    temp_v0->collisionSource = arg0;
     temp_v0->unkC = arg3;
     temp_v0->unk10 = arg4;
-    temp_v0->unk14 = 0;
+    temp_v0->next = NULL;
     return temp_v0;
 }
 

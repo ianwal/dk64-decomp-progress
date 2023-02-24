@@ -8,13 +8,12 @@ extern f32 D_80758160;
 extern f32 D_80758164;
 extern f64 D_80758168;
 
-extern s32 D_807F5DE4;
+extern void *D_807F5DE4; // TODO: Actually a pointer to a struct (map model?)
 extern s32 D_807F5E60;
 extern s8 D_807F5FEC;
 extern s32 D_807F5FF4;
 extern s32 D_807F6C28;
 
-extern s32 D_807F5DE4;
 extern s32 D_807F5E60;
 
 void func_8062D0CC(s32, s32, s32, u8);
@@ -283,9 +282,31 @@ void func_8062C22C(void) {
     func_806364C4();
 }
 
+// Displaylist Stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062C29C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062C99C.s")
+// TODO: Just a s16*?
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+} GlobalASMStruct_8062C99C;
+
+void func_8062C99C(GlobalASMStruct_8062C99C *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    arg0->unk0 = (arg3 - arg1) * 2;
+    arg0->unk2 = (arg4 - arg2) * 2;
+    arg0->unk4 = 0x1FF;
+    arg0->unk6 = 0;
+    arg0->unk8 = ((arg1 + arg3) / 2) * 4;
+    arg0->unkA = ((arg2 + arg4) / 2) * 4;
+    arg0->unkC = 0x1FF;
+    arg0->unkE = 0;
+}
 
 // TODO: What is the actual signature?
 void func_80630B70(s32, s32, f32, f32, f32, s32, s32, s32);
@@ -422,6 +443,8 @@ void func_8062E608(void *arg0, s32 *arg1, s32 arg2) {
 
 f32 func_80612D10(f32);
 void func_80659DB0(f32, f32, s32 *, s32 *, f32, s32);
+void func_8063C390(void);
+void func_8065E040(s32);
 /*
 ? func_8062B3C4(void *, s32 *);
 ? func_8062B478(s32);
@@ -430,12 +453,10 @@ s32 func_8062BA74(void *);
 ? func_8062F328(void *);
 ? func_8062F3A0(void *, void *);
 ? func_8062F420(void *, void *, void *);
-? func_8063C390();
 ? func_80650ECC(void *);
 ? func_80659110(s32);
 ? func_8065996C(?);
 ? func_8065CDA0(s32);
-? func_8065E040(s32);
 ? func_8065F1C0(void *);
 ? func_80662B90(void *);
 ? func_806637C0(void *);
@@ -478,7 +499,6 @@ typedef struct {
 
 extern f32 D_80758190;
 extern MapGeometryHeader *D_807F5DE0;
-// extern void *D_807F5DE4;
 extern void *D_807F5DE8;
 extern void *D_807F5DEC;
 extern s32 D_807F5E60;
@@ -510,6 +530,8 @@ void func_8062F318(void);
 
 void func_80659110(u8);
 void func_8065CDA0(u8);
+
+void func_8065996C(s16);
 
 /*
 void func_8062F050(MapGeometryHeader *arg0) {
@@ -543,13 +565,13 @@ void func_8062F050(MapGeometryHeader *arg0) {
     D_807F5FEA = arg0->unk2C;
     temp_v1 = &D_807F5DE0->unk0 + arg0->unk40;
     D_807F5FD0 = *temp_v1 + 1;
-    D_807F5FD4 = temp_v1 + 4;
+    D_807F5FD4 = temp_v1 + 1;
     temp_a0 = &D_807F5DE0->unk0 + arg0->unk44;
     D_807F5FC8 = *temp_a0;
-    D_807F5FCC = temp_a0 + 4;
+    D_807F5FCC = temp_a0 + 1;
     temp_a1 = &D_807F5DE0->unk0 + arg0->unk48;
     D_807F5FC1 = *temp_a1;
-    D_807F5FC4 = temp_a1 + 4;
+    D_807F5FC4 = temp_a1 + 1;
     D_807F5DE4 = &D_807F5DE0->unk0 + arg0->unk30;
     D_807F5DE8 = &D_807F5DE0->unk0 + arg0->unk38;
     D_807F5DEC = &D_807F5DE0->unk0 + arg0->unk34;
@@ -607,6 +629,27 @@ s32 func_8062F388(s32 *arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F3A0.s")
+
+typedef struct {
+    s32 unk0;
+    union {
+        void *texturePointer;
+        s32 textureIndex;
+    };
+} GlobalASMStruct_8062F3A0;
+
+/*
+void func_8062F3A0(GlobalASMStruct_8062F3A0 *arg0, GlobalASMStruct_8062F3A0 *arg1) {
+    while (arg0 != arg1) {
+        if ((arg0->unk0 >> 0x18) == 0xFD) {
+            if (((arg0->textureIndex << 4) >> 28) == 0) { // TODO: Bitfield?
+                arg0->texturePointer = getPointerTableFile(0x19, arg0->textureIndex, 1, 0);
+            }
+        }
+        arg0++;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F420.s")
 

@@ -425,6 +425,7 @@ void func_80636448(s32 arg0, s32 arg1, s32 arg2, s32 arg3, void *arg4) {
     new->unk10 = arg4;
 }
 
+// Doable, small struct loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806364C4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806365D0.s")

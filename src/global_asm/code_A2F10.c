@@ -72,8 +72,39 @@ s32 func_8069EF50(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_8069FDA0.s")
 
-// Doable, actor->unk124 pointer stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_806A018C.s")
+extern f32 D_80750394;
+
+// TODO: Add to aaD union
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} AAD_806A018C;
+
+void func_80665564(Actor*, f32);
+
+void func_806A018C(void) {
+    AAD_806A018C *temp_s1;
+
+    temp_s1 = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk0;
+        current_actor_pointer->unkEE = current_actor_pointer->unk124->unk4;
+        current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
+        current_actor_pointer->noclip_byte = 1;
+        temp_s1->unk0 = (rand() >> 0xF) % 70;
+        temp_s1->unk4 = (rand() >> 0xF) % 200;
+    }
+    func_8067ACB4(current_actor_pointer);
+    func_806651FC(current_actor_pointer);
+    func_80665564(current_actor_pointer, 0);
+    current_actor_pointer->y_velocity += D_80750394;
+    current_actor_pointer->z_rotation += temp_s1->unk4;
+    current_actor_pointer->x_rotation += temp_s1->unk0;
+    if ((current_actor_pointer->unkFC != 0) || ((current_actor_pointer->unk6A & 1) && !(current_actor_pointer->unk6C & 1))) {
+        func_806782C0(current_actor_pointer);
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
 
 void func_806A02F0(void) {
     func_806A018C();

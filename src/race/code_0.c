@@ -65,6 +65,58 @@ s32 func_8002578C(s32 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80025E9C.s")
 
+/*
+void func_80025E9C(Actor *arg0) {
+    RaceAdditionalActorData *sp54;
+    Actor *sp40;
+    Actor *sp3C;
+    Actor *temp_s2;
+    Actor *temp_v0;
+    Actor *temp_v1_2;
+    Actor178 *temp_s0_2;
+    Actor178 *temp_s1;
+    Actor17C *temp_s1_2;
+    RaceAdditionalActorData *temp_s0;
+    void *temp_v1;
+
+    sp54 = arg0->additional_actor_data;
+    func_8002BBD0(2);
+    func_80677FA8(0x12E, 0x95);
+    temp_s2 = D_807FBB44;
+    temp_s0 = temp_s2->additional_actor_data;
+    func_8002BC2C(arg0, 1, temp_s2, temp_s0);
+    temp_s0->unk37 = 0;
+    temp_s0->unk27 = 0;
+    temp_s0->unk30 = arg0;
+    temp_s0->unk36 = 1;
+    temp_s0->unk28 = 0;
+    temp_s1 = temp_s2->unk178;
+    temp_v0 = func_807271F4(1, 0, 0, 0, 0, 0, 0);
+    sp40 = temp_v0;
+    temp_s1->unk30 = temp_v0;
+    temp_v1 = temp_v0->unk184;
+    temp_v1->unk4 = temp_s0;
+    temp_v1->unk0 = temp_s2;
+    func_80677FA8(0x130, 0);
+    temp_v1_2 = D_807FBB44;
+    temp_s1->unk34 = temp_v1_2;
+    temp_s0_2 = sp40->unk178;
+    sp3C = temp_v1_2;
+    func_8002BC2C(arg0, 0, sp40, temp_s0_2);
+    temp_s0_2->unk37 = 0;
+    temp_s0_2->unk27 = 1;
+    temp_s0_2->unk30 = arg0;
+    temp_s0_2->unk36 = 0;
+    temp_s1_2 = sp40->unk17C;
+    temp_s1_2->unk30 = temp_s2;
+    temp_s1_2->unk34 = temp_v1_2;
+    temp_v1_2->RaaD->unk30 = arg0;
+    temp_v1_2->unk178->unk30 = temp_s2;
+    D_80750AC4 = 0;
+    sp54->unk25 = 1;
+}
+*/
+
 extern void func_8002CFF0();
 
 void func_80025FDC() {
@@ -126,6 +178,32 @@ void func_80026050(RaceStruct6 *arg0, RaceStruct6 *arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026098.s")
 
+/*
+f32 func_8000AC60(f32, f32);
+f32 func_80612794(s16);
+f32 func_80665E48(f32, f32, f32, f32);
+extern f64 D_8002FDD8;
+extern f64 D_8002FDE0;
+extern f64 D_8002FDE8;
+
+void func_80026098(void *arg0, void *arg1) {
+    s16 sp2E;
+    f32 sp24;
+    f32 temp_f14;
+    f32 temp_f2;
+    f32 temp_f2_2;
+
+    sp2E = (func_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / D_8002FDD8;
+    temp_f2 = arg1->unk8 - arg0->unk8;
+    temp_f14 = arg1->unk0 - arg0->unk0;
+    sp24 = current_actor_pointer->unkB8 * D_8002FDE0 * func_8000AC60((temp_f2 * temp_f2) + (temp_f14 * temp_f14), temp_f14);
+    current_actor_pointer->x_position = (func_80612794(sp2E) * sp24) + arg1->unk0;
+    current_actor_pointer->z_position = (func_80612790(sp2E) * sp24) + arg1->unk8;
+    temp_f2_2 = current_actor_pointer->y_position;
+    current_actor_pointer->y_position = ((arg0->unk4 - temp_f2_2) * D_8002FDE8) + temp_f2_2;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_800261E0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026354.s")
@@ -173,7 +251,27 @@ void func_80027AF8(RaceStruct3 *arg0, s8 arg1) {
     arg0->unk8 = 0.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80027B30.s")
+s32 func_806119A0(void);
+
+void func_80027B30(RaceStruct3 *arg0) {
+
+    switch (arg0->unk0) {
+        case 0:
+            arg0->unk1++;
+            break;
+        case 1:
+            if ((u8)func_806119A0() >= 0x80U) {
+                arg0->unk1++;
+            } else {
+                arg0->unk1--;
+            }
+            break;
+        case 2:
+            arg0->unk1--;
+            break;
+    }
+    arg0->unk8 = 0.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80027BD0.s")
 
@@ -527,6 +625,7 @@ void func_8002DC24(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002DCF0.s")
 
+
 typedef struct RaceStruct14 {
     s32 unk0;
     s32 unk4;
@@ -544,6 +643,8 @@ typedef struct RaceAdditionalActorData3 {
     s32 unk4;
     u8 unk8; // Used
 } RaceAdditionalActorData3;
+
+void func_8002DCF0(RaceStruct14 *arg0, s32 arg1);
 
 /*
 // TODO: Doable, pretty close
@@ -759,16 +860,16 @@ typedef struct RaceStruct13 {
     u16 unk3C;
 } RaceStruct13;
 
-s32 func_8002F36C(s32, s32);
-s32 func_8002E9AC(u8);
+void func_8002F36C(s32, s32);
+s32 func_8002E9AC(s32);
 
 /*
 // TODO: Regalloc, boo
 void func_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
     if (arg1->unk8) {
-        if (arg0->unk3A == arg0->unk3C) {
+        if (arg0->unk3C == arg0->unk3A) {
             u8 temp2 = arg1->unk4[arg0->unk3C] & 0xFF;
-            s32 temp = func_8002E9AC(temp2);
+            s32 temp = func_8002E9AC(temp2); // TODO: This might take 2 params
             func_8002DCF0(temp, 0);
             func_8002F36C(arg0, arg1);
         }

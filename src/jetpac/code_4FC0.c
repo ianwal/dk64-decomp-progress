@@ -147,8 +147,13 @@ void func_8002A254(JetpacStruct *arg0) {
     func_8002A374();
 }
 
+extern s32 D_8002E890;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002A2AC.s")
+void func_8002A2AC(JetpacStruct *arg0) {
+    arg0->unk28 = 8;
+    arg0->unk4C = &D_8002E890;
+    func_8002A254(arg0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002A2DC.s")
 
@@ -246,8 +251,10 @@ void func_8002A944(JetpacStruct *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002ABDC.s")
 
+// Pretty doable, small loop over JetpacStruct array, some nonsense going on with the stack/temp vars though
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AD8C.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AE00.s")
 
 extern s8 D_80045BE0;
