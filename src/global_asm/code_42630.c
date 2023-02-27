@@ -501,7 +501,17 @@ void func_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645A64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645B9C.s")
+void func_806085DC(s16, u8, u8, u8, s32, s32, f32);       /* extern */
+typedef struct gASMStruct3 {
+    u8 unk0[0x44];
+    s16 unk44;
+}gASMStruct3;
+
+void func_80645B9C(gASMStruct3 *arg0, s16 arg1, s32 arg2, s32 arg3) {
+    if (((s32) (0x243 - arg0->unk44) % 60) == 0) {
+        func_806085DC(arg1, 0x38, 0xFF, 0x7F, 0, 0x3C, 0.0f);
+    }
+}
 
 void func_80645C04(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     f32 sp4C;
