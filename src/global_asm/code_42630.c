@@ -1161,7 +1161,6 @@ u8 func_8064F1C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064F210.s")
 
 /*
-f32 func_80612794(s16);
 extern f32 D_807F621C;
 extern f32 D_807F6224;
 extern f32 D_807F622C;

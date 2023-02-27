@@ -5,8 +5,6 @@
 // jumptable, can't auto decompile
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_800265F0.s")
 
-f32 func_80612794(s16);
-
 typedef struct MinecartStruct0 {
     s32 unk0;
     s32 unk4;

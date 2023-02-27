@@ -174,12 +174,15 @@ typedef struct Temp10Big {
 extern Temp10Big D_8075C410[];
 
 typedef struct DKTVExtraData {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s16 unkC;
-    u8 map;
-    u8 exit;
+    f32 startingXPosition; // 0x00
+    f32 startingYPosition; // 0x04
+    f32 startingZPosition; // 0x08
+    s16 startingYRotation; // 0x0C
+    u8 map; // 0x0E
+    u8 exit; // 0x0F
+    u8 characterIndex; // 0x10
+    u8 unk11; // 0x11
+    CharacterProgress characterProgress; // 0x12
 } DKTVExtraData;
 
 extern DKTVExtraData D_807ECE20;

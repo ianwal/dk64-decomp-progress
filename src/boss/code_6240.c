@@ -14,8 +14,6 @@ void func_80714C08(void*, f32, Actor*, s32, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_6240/func_8002A240.s")
 
-f32 func_80612794(s16);
-
 /*
 // TODO: Pretty close, missing some float instructions near the bottom though
 void func_8002A240(void) {

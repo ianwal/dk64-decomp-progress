@@ -25,8 +25,12 @@ u8 func_806EB0C0(s16 arg0, Actor *actor, u8 playerIndex);
 void func_8067B238(Actor *destination, Actor *source, f32 scale);
 
 void func_80684900(u8);
+f32 func_80612794(s16);
 void func_80614E78(Actor*, s32);
 void func_80629174(void);
+
+// Heap stuff???
+void func_8061130C(void *);
 
 // TODO: Signatures are suspect
 s32 func_80659470(s32); // Returns index into object model2 array

@@ -24,7 +24,6 @@ s32 func_806A80C0(s8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A9124.s")
 
-void func_8061130C(s32);
 void func_8061134C(s32);
 extern s32 *D_807FC7E8;
 
@@ -34,7 +33,7 @@ typedef struct TempStruct807FC7F0 {
 } TempStruct807FC7F0;
 
 typedef struct TempStruct807FC7F8 {
-s8 unk0;
+    s8 unk0;
     s8 unk1;
     s8 unk2;
     s8 unk3;
@@ -49,8 +48,7 @@ extern TempStruct807FC7F8 D_807FC7F8;
 // TODO: Regalloc, something iffy with global_properties_bitfield set
 void func_806A9124(void) {
     s32 temp_t8;
-    s32 var_s0;
-    s32 var_s0_2;
+    s32 i;
 
     temp_t8 = global_properties_bitfield | 0x40;
     global_properties_bitfield = temp_t8;
@@ -62,12 +60,12 @@ void func_806A9124(void) {
     D_807FC7F0.unk4 = 0;
     D_807FC7F8.unk0 = 0;
     D_807FC7F8.unk1 = 0;
-    for (var_s0 = 0; var_s0 < 27; var_s0++) {
-        func_8061134C(D_807FC7E0[var_s0]);
+    for (i = 0; i < 27; i++) {
+        func_8061134C(D_807FC7E0[i]);
     }
     func_8061134C(D_807FC7E0);
-    for (var_s0 = 0; var_s0 < 9; var_s0++) {
-        func_8061134C(D_807FC7E8[var_s0]);
+    for (i = 0; i < 9; i++) {
+        func_8061134C(D_807FC7E8[i]);
     }
     func_8061134C(D_807FC7E8);
 }

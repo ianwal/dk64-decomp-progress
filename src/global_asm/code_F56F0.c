@@ -60,6 +60,7 @@ void func_806F0C18(Actor *arg0) {
 }
 */
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F0D68.s")
 
 void func_806F1048(Actor *arg0) {
@@ -84,6 +85,7 @@ void func_806F1048(Actor *arg0) {
     func_806C8D20(current_actor_pointer);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F10E8.s")
 
 extern s32 D_807FBB68;
@@ -359,6 +361,7 @@ void func_806F3DC8(u16 *arg0, s16 *arg1, u8 *arg2, u16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F3E0C.s")
 
+// Autowalk file arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F4528.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F46B0.s")

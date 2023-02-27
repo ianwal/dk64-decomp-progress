@@ -14,12 +14,11 @@ s32 func_8072D714(s32, s32);
 s32 func_8072DE44(s32);
 s32 func_8072DEA8(s32, s32, s32);
 
+extern f64 D_8075AE10;
 extern f32 D_8075AE18;
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B1F60/func_806AD260.s")
-
-extern f64 D_8075AE10;
 
 void func_806AD54C(void) {
     f32 dx, dz;

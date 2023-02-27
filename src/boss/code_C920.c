@@ -5,7 +5,6 @@
 s16 func_80665DE0(f32, f32, f32, f32);
 void func_8061C464(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);
-f32 func_80612794(s16);
 void func_8063DA40(s32, s16);
 
 extern s32 D_807F5D10;

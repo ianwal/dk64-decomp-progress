@@ -2,6 +2,8 @@
 #include "functions.h"
 #include "variables.h"
 
+// TODO: Hmmm, could this file be managing the heap?
+// It would explain the negative struct offsets
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80610350.s")
 
@@ -50,6 +52,7 @@ s32 func_806111BC(s32 arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_806111F8.s")
 
 // Used in resolveActorCollisions(), param 1 appears to be the a pointer to the struct ActorCollision
+// TODO: Also used in tons more places, not always with that struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_8061130C.s")
 
 // Negative struct offset, odd

@@ -7,7 +7,6 @@ void func_80687474(Actor*, f32);
 void func_80614D48(Actor*, f32, f32);
 void func_806CA2AC();
 extern void func_80614D00(Actor*, f32, f32);
-void func_80614E78(Actor*, s32);
 extern s32 D_807FD6F0[];
 void func_806CD424(s16, f32, f32);
 extern void (*action_initiation_function_list[])(void);

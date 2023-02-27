@@ -377,11 +377,6 @@ u8 func_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3) {
         arg0->unk64 &= ~0x100;
     }
     return sp23 != 0 || sp22 != 0;
-    // var_v1 = ;
-    // if (var_v1 == 0) {
-        // var_v1 = ;
-    // }
-    // return var_v1 & 0xFF;
 }
 
 void func_8066F400(Actor *arg0) {

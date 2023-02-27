@@ -180,7 +180,6 @@ void func_80026050(RaceStruct6 *arg0, RaceStruct6 *arg1, s32 arg2) {
 
 /*
 f32 func_8000AC60(f32, f32);
-f32 func_80612794(s16);
 f32 func_80665E48(f32, f32, f32, f32);
 extern f64 D_8002FDD8;
 extern f64 D_8002FDE0;
@@ -553,8 +552,6 @@ void func_8002D754(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002D778.s")
 
-f32 func_80612794(s16, void *, Actor **);
-
 void func_8002DA68(RaceStruct3 *arg0) {
     f32 temp_f2;
     s16 temp_v1;
@@ -573,7 +570,7 @@ void func_8002DA68(RaceStruct3 *arg0) {
     }
 
     arg0->unk2 &= 0xFFF;
-    temp_f2 = (((func_80612794(arg0->unk2, arg0, &current_actor_pointer) + 1.0f) * 1.5) + 1.0) * arg0->unk4;
+    temp_f2 = (((func_80612794(arg0->unk2) + 1.0f) * 1.5) + 1.0) * arg0->unk4;
     current_actor_pointer->animation_state->scale_x = \
     current_actor_pointer->animation_state->scale_y = \
     current_actor_pointer->animation_state->scale_z = temp_f2;

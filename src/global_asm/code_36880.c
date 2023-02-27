@@ -354,33 +354,43 @@ void func_80636014(s32 arg0, u8 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806362C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636380.s")
+// TODO: Any overlap with documented structs?
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    u8 unk20;
+    u8 unk21;
+    s16 unk22;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+} Struct80636380;
 
-/*
-// TODO: Which struct is this?
-void func_80636380(s32 arg0, void *arg1) {
-    s32 temp_a0;
-    s32 temp_a0_2;
-    s32 temp_s1;
-    void *phi_s0;
-    s32 phi_s1;
+void func_80636380(s32 arg0, Struct80636380 *arg1) {
+    Struct80636380 *phi_s0;
+    s32 i;
 
     phi_s0 = arg1;
-    phi_s1 = 0;
-    if (arg1->unk20 > 0) {
-        do {
-            temp_a0 = phi_s0->unk24;
-            if (temp_a0 != 0) {
-                func_8066B434(temp_a0, 0xA69, 7);
-            }
-            temp_a0_2 = phi_s0->unk34;
-            if (temp_a0_2 != 0) {
-                func_8066B434(temp_a0_2, 0xA6A, 7);
-            }
-            temp_s1 = phi_s1 + 1;
-            phi_s0 += 4;
-            phi_s1 = temp_s1;
-        } while (temp_s1 < arg1->unk20);
+    i = 0;
+    while (i < arg1->unk20) {
+        if (phi_s0->unk24 != 0) {
+            func_8066B434(phi_s0->unk24, 0xA69, 7);
+        }
+        if (phi_s0->unk34 != 0) {
+            func_8066B434(phi_s0->unk34, 0xA6A, 7);
+        }
+        // TODO: Not good at all.
+        // I think arg1 is an array of pointers
+        ((s32)phi_s0) += 4;
+        i++;
     }
     func_8066B434(arg0, 0xA6E, 7);
     func_8061134C(arg1->unk1C);
@@ -388,7 +398,6 @@ void func_80636380(s32 arg0, void *arg1) {
     func_8061134C(arg1->unk14);
     func_8061134C(arg1->unk18);
 }
-*/
 
 typedef struct struct_807F6160 Struct807F6160;
 

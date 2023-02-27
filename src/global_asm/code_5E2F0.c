@@ -2,7 +2,7 @@
 #include "functions.h"
 #include "variables.h"
 
-extern u16 D_80748300;
+extern s16 D_80748300;
 
 extern f32 D_80758CA0;
 extern f32 D_80758CA4;
@@ -151,6 +151,82 @@ void func_8065A6F8(u16 arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065A708.s")
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    s16 unk30;
+    s16 unk32;
+    s16 unk34;
+    s8 unk36;
+    s8 unk37;
+    s8 unk38;
+    s8 unk39;
+    s16 unk3A;
+} Struct807F7500;
+
+extern Struct807F7500 D_807F7500[];
+extern f32 D_807F7ED0;
+extern f32 D_807F7ED4;
+extern f32 D_807F7ED8;
+extern f32 D_807F7EDC;
+extern f32 D_807F7EE0;
+extern f32 D_807F7EE4;
+
+// TODO: I think I messed up the order of the writes
+// Either that or it's doing some weird struct copy in one line?
+// Or... We get rid of temp_v0 (shudder)
+// Or... We fix rodata
+// Or... float tuples in the struct?
+/*
+void func_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA) {
+    Struct807F7500 *temp_v0;
+
+    if (D_80748300 != 0x10) {
+        temp_v0 = &D_807F7500[D_80748300];
+        temp_v0->unk34 = D_807F7EFE;
+        temp_v0->unk3A = D_807F7EF8;
+        temp_v0->unk30 = D_807F7EFA;
+        temp_v0->unk32 = D_807F7EFC;
+        temp_v0->unk8 = D_807F7EE8;
+        temp_v0->unk0 = D_807F7EE4;
+        temp_v0->unk18 = arg0;
+        temp_v0->unk1C = arg1;
+        temp_v0->unkC = D_807F7EDC;
+        temp_v0->unk4 = D_807F7ED8;
+        temp_v0->unk39 = arg7;
+        D_80748300++;
+        temp_v0->unk10 = D_807F7EE0;
+        temp_v0->unk20 = arg2;
+        temp_v0->unk24 = arg3;
+        temp_v0->unk28 = arg4;
+        temp_v0->unk2C = arg5;
+        temp_v0->unk14 = arg6;
+        temp_v0->unk36 = arg8;
+        temp_v0->unk37 = arg9;
+        temp_v0->unk38 = argA;
+        D_807F7ED8 = D_807F7ECC;
+        D_807F7EDC = D_807F7ED0;
+        D_807F7EF8 = 0;
+        D_807F7EFA = -1;
+        D_807F7EFC = 0x2BC;
+        D_807F7EFE = 0x258;
+        D_807F7EE0 = D_807F7ED4;
+        D_807F7EE4 = 25.0f;
+        D_807F7EE8 = 65.0f;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065A884.s")
 

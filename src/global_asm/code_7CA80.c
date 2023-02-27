@@ -30,7 +30,6 @@ void func_80732354(s32, s32, s32, s32);
 void func_80605314(Actor*, u8);
 void func_8062D26C(Actor*);
 void func_806783BC();
-void func_8061130C(void *);
 void func_806136B4();
 void func_8066E21C(LedgeInfo*);
 // void func_80679200(s32, Actor *, s32, s32, s32, s32);
@@ -574,6 +573,7 @@ ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, s32 arg
     return temp_v0;
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_806794EC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679DC4.s")

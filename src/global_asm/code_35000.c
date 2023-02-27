@@ -3,7 +3,6 @@
 #include "variables.h"
 
 void func_806306D0(Chunk14 *current);
-void func_8061130C(Chunk14*);
 
 extern Chunk14 *D_807F5FF0;
 extern Chunk14 *D_807F5FF4;
@@ -395,7 +394,6 @@ Chunk14 *func_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, Chunk14 **ar
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_806319C4.s")
 
 /*
-f32 func_80612794(s16);
 s32 func_8063162C(Actor *, s16 *);
 s32 func_806317D4(Actor *, s16 *, f32, f32, f32);
 

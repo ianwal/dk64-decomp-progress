@@ -709,7 +709,6 @@ s16 func_806CC284(s16 arg0, s16 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CC364.s")
 
-f32 func_80612794(s16);
 extern s16 D_80753A3C[];
 extern s16 D_80753A4C[];
 
@@ -754,7 +753,6 @@ extern s16 D_80753A2C[];
 void func_80665160(Actor *, s16, s16);
 void func_806653C0(Actor *, f32, f32);
 void func_80665564(Actor*, f32);
-f32 func_80612794(s16);
 
 /*
 // TODO: WIP, might need some more temp variables or split apart float operations into separate lines
@@ -890,6 +888,7 @@ void func_806CCB94(void) {
 // jumptable :(
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CCC10.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CCC54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CD424.s")
@@ -1482,6 +1481,7 @@ void func_806D0A54(Actor *arg0, s32 arg1, s32 arg2) {
     }
 }
 
+// TODO: Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D0A84.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D0DE4.s")
@@ -5245,20 +5245,12 @@ void func_806E1F8C(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E208C.s")
-
-/*
-// TODO: Struct size 0x306?
-// TODO: Is this the correct start offset for the struct? Might be earlier in memory
-extern void D_807FCA6A[];
-
 void func_806E208C(void) {
-    if ((D_807FD610[cc_player_index].unk2C & A_BUTTON) && D_807FCA6A[cc_player_index]->unk0 >= 2 && current_map != MAP_AZTEC_BEETLE_RACE) {
+    if ((D_807FD610[cc_player_index].unk2C & A_BUTTON) && D_807FC950[cc_player_index].character_progress[3].moves >= 2 && current_map != MAP_AZTEC_BEETLE_RACE) {
         func_806EB0C0(9, NULL, cc_player_index);
         extra_player_info_pointer->unk58 = D_80767CC0 - 0x1E;
     }
 }
-*/
 
 void func_806E2140(void) {
     if ((D_807FD610[cc_player_index].unk2C & A_BUTTON)) {
@@ -5517,8 +5509,6 @@ void func_806E382C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E384C.s")
 
-// TODO: This signature probably is not correct
-//f32 func_80612794(f32, f32, s16, s16, s16 *);
 extern f32 D_8075D214;
 
 /*

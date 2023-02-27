@@ -77,4 +77,16 @@ void func_8060AC34(GlobalASMStruct12* arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_8060AC7C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_8060B110.s")
+typedef struct {
+    u16 unk0;
+    s8 unk2;
+    s8 unk3;
+} Struct807ECD58;
+
+extern Struct807ECD58 D_807ECD58;
+
+void func_8060B110(Struct807ECD58 *arg0) {
+    D_807ECD58.unk0 = arg0->unk0;
+    D_807ECD58.unk2 = arg0->unk2;
+    D_807ECD58.unk3 = arg0->unk3;
+}

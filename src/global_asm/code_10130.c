@@ -6,28 +6,27 @@ extern s16 D_807463A0;
 extern void *D_807463A8; // DKTV Inputs - Camera + Stick
 extern s16 D_807463AC;
 extern s16 D_807463B0;
-extern s16 D_807463B4;
+extern u16 D_807463B4;
+
+typedef struct {
+    s16     button;
+    s8      stick_x;        /* -80 <= stick_x <= 80 */
+    s8      stick_y;        /* -80 <= stick_y <= 80 */
+} DKTV_OSContPad;
 
 extern u8 D_807ECE30;
 extern void *D_807ECE90; // DKTV Inputs - Buttons
-extern void *D_807ECE94;
-extern s16 *D_807ECE98;
+extern u16 *D_807ECE94;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10130/func_8060B430.s")
+extern DKTV_OSContPad *D_807ECE98;
 
-/*
-// Very doable, datatype nonsense
-void func_8060B430(void *arg0, void *arg1) {
-    void *temp_a1;
-
-    arg0->unk7C = arg1->unk0;
-    temp_a1 = arg1 + 0x12;
-    arg0->unk80 = arg1->unk4;
-    arg0->unk84 = temp_a1->unk-A;
-    arg0->unkE6 = temp_a1->unk-6;
-    memcpy(&D_807FC950->character_progress[temp_a1->unk-2], temp_a1, 0x5E);
+void func_8060B430(Actor *arg0, DKTVExtraData *arg1) {
+    arg0->x_position = arg1->startingXPosition;
+    arg0->y_position = arg1->startingYPosition;
+    arg0->z_position = arg1->startingZPosition;
+    arg0->y_rotation = arg1->startingYRotation;
+    memcpy(&D_807FC950->character_progress[arg1->characterIndex], &arg1->characterProgress, sizeof(CharacterProgress));
 }
-*/
 
 s16 func_8060B49C(s32 arg0, s32 arg1) {
     is_autowalking = 2;
@@ -35,27 +34,22 @@ s16 func_8060B49C(s32 arg0, s32 arg1) {
     return D_807463B0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10130/func_8060B4D4.s")
-
-/*
-// Very doable, datatype nonsense
-void func_8060B4D4(void *arg0) {
+void func_8060B4D4(OSContPad *arg0) {
     if (D_807463AC < (D_807463B0 - 1)) {
-        arg0->unk2 = D_807ECE98->unk2;
-        arg0->unk3 = D_807ECE98->unk3;
-        if (D_807ECE98->unk0 & 0x8000) {
-            D_807463B4 = *D_807ECE94;
-            D_807ECE94 += 2;
+        arg0->stick_x = D_807ECE98->stick_x;
+        arg0->stick_y = D_807ECE98->stick_y;
+        if (D_807ECE98->button & 0x8000) {
+            D_807463B4 = D_807ECE94[0];
+            D_807ECE94++;
         }
-        arg0->unk0 = D_807463B4 & 0xEFFF;
+        arg0->button = D_807463B4 & 0xEFFF;
     }
 }
-*/
 
-void func_8060B55C(s16 *arg0) {
+void func_8060B55C(u16 *arg0) {
     if (D_807463AC < (D_807463B0 - 1)) {
-        *arg0 = *D_807ECE98 & 0x7FFF;
-        D_807ECE98 += 2;
+        *arg0 = D_807ECE98->button & 0x7FFF;
+        D_807ECE98++;
         D_807463AC++;
         return;
     }
@@ -96,7 +90,7 @@ void func_8060B5C0(u8 *file) {
     file += size;
 
     // Read the extra data
-    memcpy(&D_807ECE20, file, 0x70);
+    memcpy(&D_807ECE20, file, sizeof(DKTVExtraData));
     
     // TODO: This is dumb, fix it
     //[3:01 PM] I***: They wouldn't have written that right?

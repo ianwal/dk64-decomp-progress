@@ -6,7 +6,6 @@ extern u8 D_80750AB4;
 extern u8 D_80750AB8;
 extern u8 D_80750AC0;
 
-f32 func_80612794(s16);
 void func_80689114(s16, f32, f32, f32, s32, f32, Actor *);
 void func_806C9C80(s32, s32, s32);
 void func_80614D00(Actor*, f32, f32);

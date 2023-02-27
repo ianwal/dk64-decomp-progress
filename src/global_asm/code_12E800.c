@@ -64,7 +64,6 @@ void func_8072A7DC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072A86C.s")
 
-f32 func_80612794(s16);
 void func_8072AB74(u8, f32, f32, u16, f32);
 
 /*

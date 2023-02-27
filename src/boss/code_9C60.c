@@ -3,7 +3,6 @@
 #include "variables.h"
 
 void func_80613CA8(Actor*, s16, f32, f32);
-f32 func_80612794(s16);
 void func_8002FB7C(u8);
 
 extern u16 D_807FBB34;

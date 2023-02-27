@@ -94,7 +94,7 @@ void func_806594C8(s32 arg0) {
     }
     if (phi_a0) {
         *phi_v1 = phi_a0->unk8;
-        func_8061130C(phi_a0, arg0);
+        func_8061130C(phi_a0);
     }
 }
 

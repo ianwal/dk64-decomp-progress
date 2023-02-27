@@ -79,7 +79,9 @@ struct ledge_info_8c {
     s32 unk18;
     s32 unk1C;
     s32 unk20;
-    s32 unk24;
+    s16 unk24;
+    u8 unk26; // Used
+    u8 unk27; // Used
     LedgeInfo8C *next;
 };
 

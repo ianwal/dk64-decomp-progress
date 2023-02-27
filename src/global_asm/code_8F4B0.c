@@ -114,6 +114,7 @@ void func_8068B9B4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068BA2C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068BBF8.s")
 
 typedef struct {

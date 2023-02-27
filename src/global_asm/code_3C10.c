@@ -276,7 +276,6 @@ void func_805FF660(u8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_805FF670.s")
 
-f32 func_80612794(s16);
 void func_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
 void func_806F8BC4(s32, s32, s32);
 

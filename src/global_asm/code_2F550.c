@@ -59,11 +59,13 @@ f32 func_8062A850(void) {
 }
 */
 
+// Rotating a bunch of matrices
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062A944.s")
 
 // Matrix, loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062AC68.s")
 
+// Copying matrices?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062AD28.s")
 
 typedef struct {
