@@ -50,9 +50,51 @@ void func_80714B84(void*, f32, s32, s32, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063D930.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063D990.s")
+/*
+extern ? D_807F66F0;
+extern ? D_807F66F2;
+extern ? D_807F6902;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063D9D0.s")
+void func_8063D930(void) {
+    ? *var_v1_2;
+    s16 *var_v1;
+
+    var_v1 = D_807F6240;
+    do {
+        var_v1 += 2;
+        var_v1->unk-2 = -1;
+    } while (var_v1 < &D_807F66F0);
+    var_v1_2 = &D_807F66F2;
+    D_807F66F0.unk0 = 0;
+    D_807F66F0.unk66F1 = 0;
+    do {
+        var_v1_2 += 4;
+        var_v1_2->unk-4 = 0;
+        var_v1_2->unk-3 = 0;
+        var_v1_2->unk-2 = 0;
+        var_v1_2->unk-1 = 0;
+    } while (var_v1_2 != &D_807F6902);
+}
+*/
+
+s16 func_8063D990(s16 arg0) {
+    return D_807F6000[func_80659470(arg0)].unk8A;
+}
+
+s16 func_8063D9D0(s16 arg0, u8 arg1) {
+    s32 var_v1;
+
+    if (!arg1) {
+        var_v1 = 0x226;
+    } else {
+        var_v1 = 0;
+    }
+    while (D_807F6240[var_v1] != -1) {
+        var_v1++;
+    }
+    D_807F6240[var_v1] = arg0;
+    return var_v1;
+}
 
 void func_8063DA40(s16 arg0, s16 arg1) {
     func_8063DA78(arg0, arg1, 0);
@@ -118,6 +160,7 @@ void func_8063DBD8(s16 arg0) {
 // Probably initting a struct, easy way to figure out the shape
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DED0.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DFEC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063E078.s")
@@ -137,11 +180,41 @@ void func_8063DBD8(s16 arg0) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063FA48.s")
 
+// jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641724.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806417BC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641874.s")
+extern u16 D_807FBB34;
+
+// Very close
+/*
+void func_806417BC(s16 arg0, s16 arg1) {
+    s16 sp44;
+    s32 i;
+
+    sp44 = 0;
+    for (i = 0; i < D_807FBB34; i++) {
+        if (arg0 == D_807FB930[i].unk0->unk58) {
+            func_8067AB20(0, D_807FB930[i].unk0, 0x01000000, 1, &sp44, 0);
+        }
+    }
+}
+*/
+
+void func_8061134C(s16*);
+
+void func_80641874(s16 arg0, s16 arg1) {
+    s16 *temp_v0;
+    s32 sp20;
+
+    temp_v0 = malloc(sizeof(s16) * 2);
+    func_8061134C(temp_v0);
+    temp_v0[1] = arg0;
+    temp_v0[0] = arg1;
+    func_8072E7DC(0xE, &sp20);
+    func_8067AB20(0, sp20, 0x01000000, 1, temp_v0, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806418E8.s")
 
@@ -457,7 +530,24 @@ void func_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064409C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064431C.s")
+extern s16 D_807480D0;
+extern s16 D_807480D4;
+extern s16 D_807480D8;
+extern f32 D_807480E0;
+extern f32 D_807480E4;
+
+void func_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    s32 sp38;
+
+    func_806335B0(arg1, 1, 1, &sp48, &sp40, &sp38);
+    func_806335B0(arg1, 1, 2, &sp4C, &sp44, &sp3C);
+    func_8065A708(sp48, sp40, sp38, sp4C, sp44, sp3C, 0.0f, 1, D_807480D0, D_807480D4, D_807480D8);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806443E4.s")
 
@@ -471,7 +561,21 @@ void func_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644CC0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644D50.s")
+void func_8065A660(f32, f32);
+
+void func_80644D50(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    s32 sp38;
+
+    func_806335B0(arg1, 1, 1, &sp48, &sp40, &sp38);
+    func_806335B0(arg1, 1, 2, &sp4C, &sp44, &sp3C);
+    func_8065A660(D_807480E0, D_807480E4);
+    func_8065A708(sp48, sp40, sp38, sp4C, sp44, sp3C, 0.0f, 1, D_807480D0, D_807480D4, D_807480D8);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644E2C.s")
 

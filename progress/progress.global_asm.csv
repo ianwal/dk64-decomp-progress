@@ -319,7 +319,7 @@ us,.code,func_8063A38C,1212,no
 us,.code,func_806338B4,64,no
 us,.code,func_8063B8D8,728,no
 us,.code,func_806644B0,264,no
-us,.code,func_8063D9D0,112,no
+us,.code,func_8063D9D0,112,yes
 us,.code,func_806FDB8C,912,no
 us,.code,func_80665AAC,32,no
 us,.code,func_8068A764,32,yes
@@ -492,7 +492,7 @@ us,.code,func_806A3E9C,1000,no
 us,.code,func_806C8E58,144,no
 us,.code,func_8071F444,540,no
 us,.code,func_80732B3C,580,no
-us,.code,func_8064431C,200,no
+us,.code,func_8064431C,200,yes
 us,.code,func_80692500,32,yes
 us,.code,func_8070D464,260,no
 us,.code,func_80674688,132,no
@@ -1570,7 +1570,7 @@ us,.code,func_80636AE8,104,no
 us,.code,alSeqpSetSeq,76,yes
 us,.code,func_806B3F90,516,no
 us,.code,_n_freePVoice,64,yes
-us,.code,func_8063D990,64,no
+us,.code,func_8063D990,64,yes
 us,.code,func_806E65BC,540,no
 us,.code,func_806D3AE8,32,yes
 us,.code,func_80655AD0,288,no
@@ -1951,7 +1951,7 @@ us,.code,func_8066B0EC,12,yes
 us,.code,func_80714708,112,no
 us,.code,func_8071A1E4,604,no
 us,.code,func_80666AE0,12,yes
-us,.code,func_80644D50,220,no
+us,.code,func_80644D50,220,yes
 us,.code,func_806E7050,56,yes
 us,.code,func_80661264,80,no
 us,.code,func_8063C7C4,696,no
@@ -2355,7 +2355,7 @@ us,.code,func_805FE544,240,yes
 us,.code,func_806F1250,172,yes
 us,.code,func_806A1FD0,8,yes
 us,.code,func_8073A900,140,no
-us,.code,func_80641874,116,no
+us,.code,func_80641874,116,yes
 us,.code,func_80601EE4,544,no
 us,.code,func_8060A1B0,488,no
 us,.code,func_80602498,276,no
