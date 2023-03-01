@@ -56,7 +56,39 @@ void func_8066CDD0() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066CEE4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066D250.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    u8 unk13;
+} Struct8066D250;
+
+s32 func_8066D250(Struct8066D250 *arg0) {
+    s16 temp_a1;
+    s16 temp_v0;
+    s16 temp_v1;
+
+    temp_v0 = arg0->unk6;
+    temp_v1 = arg0->unk0;
+    if ((temp_v0 == temp_v1) && (arg0->unk2 == arg0->unk8) && (arg0->unk4 == arg0->unkA)) {
+        return TRUE;
+    }
+    temp_a1 = arg0->unkC;
+    if ((temp_v0 == temp_a1) && (arg0->unkE == arg0->unk8) && (arg0->unk10 == arg0->unkA)) {
+        return TRUE;
+    }
+    if ((temp_a1 == temp_v1) && (arg0->unk2 == arg0->unkE) && (arg0->unk4 == arg0->unk10)) {
+        return TRUE;
+    }
+    return FALSE;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066D2F4.s")
 
@@ -218,7 +250,29 @@ void func_8066E854(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066E8E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066E990.s")
+// TODO: Matches, but kinda ugly
+// Any cleanup possible?
+void func_8066E990(Actor *arg0) {
+    LedgeInfo *sp24;
+    LedgeInfo *var_v0;
+    LedgeInfo8C *temp_s1;
+    LedgeInfo8C *var_s0;
+
+    var_v0 = arg0->ledge_info_pointer;
+    if (var_v0 != NULL) {
+        var_s0 = var_v0->unk8C;
+        if (var_s0 != NULL) {
+            sp24 = var_v0;
+            do {
+                temp_s1 = var_s0->next;
+                func_8061130C(var_s0);
+                var_s0 = temp_s1;
+            } while (temp_s1 != NULL);
+            var_v0 = sp24;
+        }
+        var_v0->unk8C = NULL;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066E9EC.s")
 
@@ -302,7 +356,83 @@ void func_8066EBF4(Actor *arg0) {
 // Loop, memcpy, matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066EC6C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066EE50.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+} Struct8066EE50_1;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s16 unk48;
+    u8 unk4A;
+    u8 unk4B;
+    u8 unk4C;
+    u8 unk4D;
+    u8 unk4E;
+    u8 unk4F;
+    u8 unk50;
+    u8 unk51;
+} Struct8066EE50_2;
+
+s32 func_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
+    Struct8066D250 sp20;
+
+    sp20.unk0 = arg0->unk0;
+    sp20.unk2 = arg0->unkC;
+    sp20.unk4 = arg0->unk18;
+    sp20.unk6 = arg0->unk4;
+    sp20.unk8 = arg0->unk10;
+    sp20.unkA = arg0->unk1C;
+    sp20.unkC = arg0->unk8;
+    sp20.unkE = arg0->unk14;
+    sp20.unk10 = arg0->unk20;
+    if (func_8066D250(&sp20) != 0) {
+        return 0;
+    }
+    arg1->unk24 = arg0->unk0 * 8.0f;
+    arg1->unk28 = arg0->unkC * 8.0f;
+    arg1->unk2C = arg0->unk18 * 8.0f;
+    arg1->unk30 = arg0->unk4 * 8.0f;
+    arg1->unk34 = arg0->unk10 * 8.0f;
+    arg1->unk38 = arg0->unk1C * 8.0f;
+    arg1->unk3C = arg0->unk8 * 8.0f;
+    arg1->unk40 = arg0->unk14 * 8.0f;
+    arg1->unk44 = arg0->unk20 * 8.0f;
+    sp20.unk12 = func_8066D4DC(&sp20, &sp20.unk13, arg0);
+    arg1->unk4B = func_8066D2F4(&sp20);
+    arg1->unk4D = 0;
+    arg1->unk4F = 0;
+    arg1->unk51 = 0;
+    arg1->unk50 = 0xFF;
+    arg1->unk48 = sp20.unk12;
+    arg1->unk4C = sp20.unk13;
+    func_8066DD34(arg1);
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066F06C.s")
 

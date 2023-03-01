@@ -21,6 +21,7 @@ void func_806978FC(void) {
 }
 */
 
+// Doable :eyes:
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_80697988.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_80697CEC.s")
