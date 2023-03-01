@@ -171,7 +171,8 @@ typedef struct ledge_info {
     u32 unk58;
     u32 unk5C;
     u32 unk60;
-    u32 unk64;
+    u16 unk64;
+    u16 unk66; // Used
     u32 unk68;
     u8 unk6C;
     u8 unk6D;
@@ -649,15 +650,19 @@ typedef struct player_additional_actor_data {
     Actor *unkDC; // Used
     s32 unkE0;
     s32 unkE4;
-    s32 unkE8;
+    u8 unkE8; // Used
+    u8 unkE9;
+    u8 unkEA;
+    u8 unkEB;
     u8 unkEC;
     u8 unkED;
     u8 unkEE;
     u8 unkEF; // Used
-    u8 unkF0; // TODO: Might be float, see func_806ECAC4
-    u8 unkF1; // Used
-    u8 unkF2;
-    u8 unkF3; // Used
+    union { // TODO: No idea what's going on here, both are used
+        float unkF0_f32;
+        u8 unkF0;
+        u8 unkF0_u8[];
+    };
     u8 unkF4;
     u8 unkF5;
     u8 unkF6; // Used

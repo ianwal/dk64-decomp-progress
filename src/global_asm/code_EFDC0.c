@@ -184,13 +184,13 @@ void func_806EB744(void) {
     PaaD = extra_player_info_pointer->unk104->PaaD;
     phi_v1 = PaaD->unkB8;
     if (PaaD->unkEF != 0) {
-        PaaD->unkF0 = PaaD->unkEF;
+        PaaD->unkF0_u8[0] = PaaD->unkEF;
         phi_v1 = 0x80;
     }
     func_80627878(extra_player_info_pointer->unk104);
     func_8062217C(extra_player_info_pointer->unk104, 0);
-    PaaD->unkF3 = character_change_array[cc_player_index].unk2A8;
-    if (PaaD->unkF3 == 3) {
+    PaaD->unkF0_u8[3] = character_change_array[cc_player_index].unk2A8;
+    if (PaaD->unkF0_u8[3] == 3) {
         func_80605314(D_807FBB48, 0);
         playSound(0x26, 0x7FFF, 63.0f, 1.0f, 0, 0);
         if (character_change_array[cc_player_index].unk2AC != 0) {
@@ -385,8 +385,6 @@ void func_806EC044(void) {
 }
 
 void func_806EC1A8(void) {
-    Actor *temp_a0;
-    Actor *temp_a0_2;
     PlayerAdditionalActorData *temp_v0;
     s16 phi_v0;
 
@@ -487,13 +485,7 @@ void func_806ECA74(void) {
     extra_player_info_pointer->unkC8 = 0x32;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_806ECAC4.s")
-
-/*
-// TODO: PaaD->unkF0 is float?
 void func_806ECAC4(void) {
-    Actor *temp_v0;
-    PlayerAdditionalActorData *temp_v1;
     f32 phi_f0;
 
     if (character_change_array[cc_player_index].unk2C0 == 1) {
@@ -504,14 +496,12 @@ void func_806ECAC4(void) {
     D_807FBB48->control_state = 0x5B;
     D_807FBB48->control_state_progress = 0;
     extra_player_info_pointer->unk10C = phi_f0;
-    D_807FBB48->y_position = extra_player_info_pointer->unkF0 - extra_player_info_pointer->unk10C;
-    temp_v0 = D_807FBB48;
+    D_807FBB48->y_position = extra_player_info_pointer->unkF0_f32 - extra_player_info_pointer->unk10C;
     D_807FBB48->unkEE = D_807FBB48->unkF4 + 0x14;
     D_807FBB48->y_velocity = 0.0f;
     func_80614E78(D_807FBB48, 0x75);
     func_80614D90(D_807FBB48);
 }
-*/
 
 void func_806ECBD4(void) {
     D_807FBB48->unk6A |= 0x40;
@@ -1083,34 +1073,30 @@ s16 func_80665DE0(f32, f32, f32, f32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_806EFA3C.s")
 
-/*
-// TODO: How do we deal with D_8075D380, float[3]?
-void func_806EFA3C(void) {
-    ? sp24;
-    f32 sp1C;
-    f32 temp_f0;
-    void *temp_a1;
-    void *temp_v0;
-    f32 phi_f0;
+extern s32 D_8075D380[3];
 
-    sp24.unk0 = D_8075D380.unk0;
-    sp24.unk4 = D_8075D380.unk4;
-    sp24.unk8 = D_8075D380.unk8;
-    temp_f0 = D_807FBB48->unk4->unk34;
-    sp1C = temp_f0;
+/*
+// Close
+void func_806EFA3C(void) {
+    u16 *temp;
+    u16 sp24[3];
+    f32 scale;
+    void *temp_a1;
+
+    sp24[0] = D_8075D380[0];
+    sp24[1] = D_8075D380[1];
+    sp24[2] = D_8075D380[2];
+    scale = D_807FBB48->animation_state->scale_x;
     func_80677FA8(0x140, 0xB9); // Spawn potion actor 320
-    temp_a1 = D_807FBB48;
-    phi_f0 = temp_f0;
-    if (temp_a1->unk58 == 2) {
-        phi_f0 = temp_f0 * 1.25;
+    if (D_807FBB48->unk58 == 2) {
+        scale = scale * 1.25;
     }
-    func_8067B238(D_807FBB44, temp_a1, phi_f0);
-    func_80614EBC(D_807FBB44, (sp + ((&current_character_index)[extra_player_info_pointer->unk1A4] * 2))->unk24);
-    temp_v0 = D_807FBB44;
-    temp_v0->unk60 |= 0x40000000;
+    func_8067B238(D_807FBB44, D_807FBB48, scale);
+    func_80614EBC(D_807FBB44, sp24[current_character_index[extra_player_info_pointer->unk1A4]]);
+    D_807FBB44->object_properties_bitfield |= 0x40000000;
     func_80614E78(D_807FBB48, 0x88);
-    current_actor_pointer->unk154 = 0x79;
-    current_actor_pointer->unk155 = 0;
+    current_actor_pointer->control_state = 0x79;
+    current_actor_pointer->control_state_progress = 0;
 }
 */
 

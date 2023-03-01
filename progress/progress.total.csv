@@ -640,7 +640,7 @@ us,.code,func_80678428,48,yes
 us,.code,func_8062FBC8,840,no
 us,.code,func_80649BF0,388,no
 us,.code,func_806D3FA0,112,yes
-us,.code,func_806ECAC4,272,no
+us,.code,func_806ECAC4,272,yes
 us,.code,func_80738BA8,8,yes
 us,.code,func_80725B38,108,no
 us,.code,func_806EAFEC,8,yes

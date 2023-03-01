@@ -6,7 +6,7 @@ typedef struct global_asm_struct_78 GlobalASMStruct78;
 
 struct global_asm_struct_78 {
     s32 unk0;
-    s32 unk4;
+    s32 unk4; // Index into object model 2 array?
     GlobalASMStruct78 *unk8; // Linked list?
 };
 
@@ -53,7 +53,7 @@ void func_806593C8(s32 arg0, s32 arg1) {
     }
 
     if (!temp_v1) {
-        temp_v0 = malloc(0xC);
+        temp_v0 = malloc(sizeof(GlobalASMStruct78));
         temp_v1->unk8 = temp_v0;
         temp_v0->unk0 = arg0;
         temp_v0->unk4 = arg1;

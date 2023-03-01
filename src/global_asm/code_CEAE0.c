@@ -1199,6 +1199,63 @@ void func_806CF918(void) {
 // Something to do with ledge grabs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF9CC.s")
 
+extern f32 D_80753E10[];
+extern s16 D_80753E00[];
+
+u8 func_806CFC90(Actor *arg0, s32 arg1, u8 arg2, f32 arg3);
+
+/*
+// Kinda close
+void func_806CF9CC(void) {
+    f32 sp3C;
+    u8 sp3B;
+    s16 sp38;
+    s16 sp36;
+    u8 sp34;
+    u8 sp33;
+    u8 temp_v1;
+    u8 var_t0;
+    u8 var_v1;
+
+    if (!(D_807FBB64 & 0x20000) && (current_actor_pointer->unkFC != 0) && (extra_player_info_pointer->unk8C == 0) && !(current_actor_pointer->unk6A & 1) && (extra_player_info_pointer->unkE8 != 0)) {
+        if ((current_map == MAP_FUNGI_DOGADON) || (var_t0 = 0, (current_map == MAP_AZTEC_DOGADON))) {
+            var_t0 = 1;
+        }
+        sp33 = var_t0;
+        temp_v1 = func_806725A0(current_actor_pointer, current_actor_pointer->y_rotation) == 0;
+        if ((temp_v1) || !(D_80753E10[D_807FD584] < current_actor_pointer->unkB8) || (var_t0 != 0)) {
+            if (var_t0 != 0) {
+                
+            }
+            sp33 = var_t0;
+            sp3B = func_806CFC90(current_actor_pointer, &sp3C, temp_v1, 0.0);
+            func_80666AC4(&sp38, &sp36);
+            var_v1 = 0;
+            if ((sp3B != 0) && (current_actor_pointer->y_velocity < 0.0) && (sp36 >= 0x385)) {
+                sp34 = 0;
+                var_v1 = sp34;
+                if (func_80666AEC() != 0) {
+                    if ((current_actor_pointer->y_position - current_actor_pointer->floor) > 15.0f) {
+                        if (sp33 != 0) {
+                            if (((D_80753E00[D_807FD584] + current_actor_pointer->y_position) < (sp3C + 15.0f)) && (((sp3C - D_80753E00[D_807FD584]) - current_actor_pointer->y_position) < 80.0f)) {
+                                var_v1 = 1;
+                            }
+                        } else {
+                            if (((D_80753E00[D_807FD584] + current_actor_pointer->y_position) < (sp3C - 5.0f)) && (((sp3C - D_80753E00[D_807FD584]) - current_actor_pointer->y_position) < 15.0f)) {
+                                var_v1 = 1;
+                            }
+                        }
+                    }
+                }
+            }
+            if ((var_v1 != 0) && (func_806EB0C0(0xA, NULL, cc_player_index) != 0)) {
+                extra_player_info_pointer->unkF0_f32 = sp3C;
+            }
+        }
+    }
+}
+*/
+
 u8 func_8066635C(Actor *, f32, f32, f32, s32);
 u8 func_80666AE0();
 
@@ -5939,8 +5996,8 @@ void func_806E607C(void) {
         }
         if ((temp_v0->unkAC & 0x4000) == 0) {
             temp_v0->unkAC ^= 2;
-            if ((temp_v0->unkF1 < 3) && (temp_v0->unkF5 == 0) && (temp_v0->unkF3 != 2)) {
-                temp_v0->unkF1 = 0x14;
+            if ((temp_v0->unkF0_u8[1] < 3) && (temp_v0->unkF5 == 0) && (temp_v0->unkF0_u8[3] != 2)) {
+                temp_v0->unkF0_u8[1] = 0x14;
                 temp_v0->unkB2 = current_actor_pointer->y_rotation;
                 extra_player_info_pointer->unk104->distance_from_floor = temp_v0->unkB8;
                 temp_v0->unkF5 = 0xA;
@@ -6874,7 +6931,7 @@ void func_806EA0A4(void) {
         phi_a0 = 3;
     }
     if ((PaaD->unkEF) && ((D_807FD610[cc_player_index].unk2C & (U_CBUTTONS | D_CBUTTONS)) == D_CBUTTONS) && ((PaaD->unkEE == phi_a0) || (PaaD->unkFC == 0))) {
-        PaaD->unkF0 = PaaD->unkEF;
+        PaaD->unkF0_u8[0] = PaaD->unkEF;
         if (PaaD->unkEF < phi_a0) {
             PaaD->unkEF++;
         } else {
@@ -6882,30 +6939,30 @@ void func_806EA0A4(void) {
         }
         func_8062217C(extra_player_info_pointer->unk104, PaaD->unkEF);
         PaaD->unkEE = PaaD->unkEF;
-        if ((PaaD->unkEF != PaaD->unkF0)) {
+        if (PaaD->unkEF != PaaD->unkF0) {
             temp = PaaD->unk8;
-            if ((((temp == 0)) || (temp >= 0x96)) && (PaaD->unkF3 != 2)) {
+            if ((((temp == 0)) || (temp >= 0x96)) && (PaaD->unkF0_u8[3] != 2)) {
                 playSound(0x27, 0x7FFF, 63.0f, 1.0f, 0, 0);
             }
         }
-        PaaD->unkF1 = 0xB;
+        PaaD->unkF0_u8[1] = 0xB;
         PaaD->unkF6 = 0xF;
     }
 }
 
 void func_806EA200(void) {
     PlayerAdditionalActorData *PaaD = extra_player_info_pointer->unk104->PaaD;
-    if ((D_807FD610[cc_player_index].unk2C & L_CBUTTONS) && (PaaD->unkF1 < 3)) {
+    if ((D_807FD610[cc_player_index].unk2C & L_CBUTTONS) && (PaaD->unkF0_u8[1] < 3)) {
         PaaD->unkB0 -= 0x2D;
-        PaaD->unkF1 = 0xB;
+        PaaD->unkF0_u8[1] = 0xB;
     }
 }
 
 void func_806EA26C(void) {
     PlayerAdditionalActorData *PaaD = extra_player_info_pointer->unk104->PaaD;
-    if ((D_807FD610[cc_player_index].unk2C & R_CBUTTONS) && (PaaD->unkF1 < 3)) {
+    if ((D_807FD610[cc_player_index].unk2C & R_CBUTTONS) && (PaaD->unkF0_u8[1] < 3)) {
         PaaD->unkB0 += 0x2D;
-        PaaD->unkF1 = 0xB;
+        PaaD->unkF0_u8[1] = 0xB;
     }
 }
 

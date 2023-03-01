@@ -70,12 +70,6 @@ u8 func_80676ED0(Actor *arg0, s16 *arg1, s16 *arg2) {
 // Actor* arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_80677148.s")
 
-// guMtxL2F, memcpy, object_timer, struct->unk88
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_8067760C.s")
-
-// Bleh matrix nonsense
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_806776A0.s")
-
 typedef struct  {
     s32 unk0;
     s32 unk4;
@@ -98,9 +92,151 @@ typedef struct  {
     s16 unk48; // Used
     s16 unk4A;
     u8 unk4C; // Used
+    u8 unk4D;
+    u8 unk4E; // Used, not sure on datatype yet though
 } Struct807FB5D8;
 
 extern Struct807FB5D8 *D_807FB5D8;
+
+extern f32 D_807FB5C4;
+extern f32 D_807FB5C8;
+extern f32 D_807FB5CC;
+
+extern s32 D_807FB5D0; // TODO: Proper datatype
+
+/*
+s32 func_80677148(Actor *arg0, Actor *arg1) {
+    u8 sp15F;
+    ? sp11C;
+    f32 spCC;
+    f32 spC8;
+    f32 spC4;
+    f32 spC0;
+    f32 spBC;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f32 spA4;
+    f32 spA0;
+    f32 sp84;
+    f32 sp80;
+    f32 sp7C;
+    LedgeInfo *temp_s6;
+    f32 *var_s0;
+    f32 *var_s1_2;
+    f32 *var_s2;
+    f32 *var_s3;
+    f32 *var_s4;
+    f32 *var_s5;
+    f32 var_f12;
+    f32 var_f14;
+    f32 var_f2;
+    s16 temp_v0_2;
+    s32 var_s1;
+    void *temp_s0;
+    Struct807FB5D8 *temp_v0;
+
+    sp15F = 0;
+    temp_s6 = arg0->ledge_info_pointer;
+    temp_s0 = arg1->ledge_info_pointer;
+    if (func_806744A8(D_807FB5D8, temp_s6->unk0, temp_s6->unk4, temp_s6->unk8, temp_s6->unkC) == 0) {
+        return 0;
+    }
+    if ((arg0->unk68 & 2) && (arg1->unk68 & 4)) {
+        sp15F = 1;
+    }
+    if (func_80677D58(arg0) == 0) {
+        sp15F = 0;
+    }
+    if (arg1->unk68 & 8) {
+        sp15F = 2;
+    }
+    temp_s6->unk58 = (D_807FB5D8 - temp_s0->unkA4) / 88;
+    func_8067760C(temp_s0, &sp11C, D_807FB5D8->unk4E);
+    func_8062FF10(&spDC[0], &sp11C);
+    if (arg1->unk64 & 0x10) {
+        var_f2 = arg0->x_position;
+        var_f12 = arg0->y_position;
+        var_f14 = arg0->z_position;
+    } else {
+        var_f2 = D_807FB5C4 / 8.0f;
+        var_f12 = D_807FB5C8 / 8.0f;
+        var_f14 = D_807FB5CC / 8.0f;
+    }
+    if (!(arg0->object_properties_bitfield & 0x800)) {
+        guMtxXFMF(&spDC[0], var_f2, var_f12, var_f14, &spC4, &spC8, &spCC);
+    } else {
+        spC4 = temp_s6->unkB8;
+        spC8 = temp_s6->unkBC;
+        spCC = temp_s6->unkC0;
+    }
+    var_s1_2 = &spB8;
+    temp_s6->unkB8 = spC4;
+    var_s2 = &spAC;
+    var_s3 = &spA0;
+    temp_s6->unkBC = spC8;
+    var_s4 = &sp7C;
+    var_s5 = &sp80;
+    temp_s6->unkC0 = spCC;
+    temp_v0 = D_807FB5D8;
+    var_s0 = &sp84;
+    spB8 = temp_v0->unk24 / 8.0f;
+    spAC = temp_v0->unk28 / 8.0f;
+    spA0 = temp_v0->unk2C / 8.0f;
+    spBC = temp_v0->unk30 / 8.0f;
+    spB0 = temp_v0->unk34 / 8.0f;
+    spA4 = temp_v0->unk38 / 8.0f;
+    spC0 = temp_v0->unk3C / 8.0f;
+    spB4 = temp_v0->unk40 / 8.0f;
+    spA8 = temp_v0->unk44 / 8.0f;
+    do {
+        guMtxXFMF(&spDC[0], *var_s1_2, *var_s2, *var_s3, var_s4, var_s5, var_s0);
+        var_s0 += 0xC;
+        var_s1_2 += 4;
+        var_s2 += 4;
+        var_s3 += 4;
+        var_s4 += 0xC;
+        var_s5 += 0xC;
+    } while (var_s0 != &spA8);
+    temp_s6->unk66 = D_807FB5D8->unk48;
+    if (D_807FB5D8->unk4C != 0) {
+        temp_s6->unk66 = temp_s6->unk66 - 0x800;
+    }
+    temp_v0_2 = temp_s6->unk66;
+    if (temp_v0_2 < 0) {
+        temp_s6->unk66 = temp_v0_2 + 0x1000;
+    }
+    if (sp15F != 0) {
+        var_s1 = sp15F == 1;
+        if (var_s1 == 0) {
+            if (sp15F == 2) {
+                if (arg0->interactable & 1) {
+                    func_8066FC0C(arg0, D_807FB5D8, temp_s6);
+                }
+                goto block_26;
+            }
+        } else {
+            func_8067A864(arg0, arg1, arg0->y_rotation, arg0->unkB8, &spC4, &sp7C, D_807FB5D8->unk4E, D_807FB5D0, func_8066FD6C(arg0));
+            if ((func_80677CAC(D_807FD610->unk28, 0x190) != 0) && (D_807FD610->unk4 > 30.0)) {
+                arg0->y_rotation = temp_s6->unk66;
+            }
+        }
+    } else {
+block_26:
+        var_s1 = sp15F == 1;
+        func_8067A908(arg0, arg1, &spC4, &sp7C, D_807FB5D8->unk4E, D_807FB5D0, func_8066FD6C(arg0));
+    }
+    return var_s1 & 0xFF;
+}
+*/
+
+// guMtxL2F, memcpy, object_timer, struct->unk88
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_8067760C.s")
+
+// Bleh matrix nonsense
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_806776A0.s")
 
 s32 func_80677CAC(s16 arg0, s16 arg1) {
     s16 phi_v0;
@@ -126,6 +262,6 @@ s32 func_80677CAC(s16 arg0, s16 arg1) {
     return FALSE;
 }
 
-void func_80677D58(Actor *arg0) {
-    func_80677CAC(arg0->y_rotation, 0x190);
+s32 func_80677D58(Actor *arg0) {
+    return func_80677CAC(arg0->y_rotation, 0x190);
 }
