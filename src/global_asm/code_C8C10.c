@@ -5,6 +5,105 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C3F10.s")
 
+extern f32 D_8075C260;
+extern f32 D_8075C264;
+extern f32 D_8075C268;
+extern s32 D_807F5D10;
+
+void func_8061C518(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_8061C464(s32, Actor *, s32, s16, s32, s32, s32, s32, s32, s32, f32);
+void func_806B49B0(u8 arg0, s16 arg1, s16 arg2);
+
+/*
+// TODO: Close...
+void func_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
+    Actor178 *var_v1;
+    // s16 temp_v0;
+    s32 var_v0;
+
+    var_v1 = current_actor_pointer->unk178;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        D_807FDC98->unk46 |= 0x20;
+        if (arg2 != 0) {
+            playCutscene(current_actor_pointer, arg2, 1);
+        } else {
+            func_8061C518(D_807F5D10, current_actor_pointer, 4, 0x800, 0x19, 0, 0xA, 0x14, 0xC, 0, D_8075C260);
+        }
+        D_807FDC9C->unk10 = 0x27;
+        current_actor_pointer->control_state = 0x27;
+        current_actor_pointer->control_state_progress = 0;
+    }
+    var_v1->unk0 = MAX(0, D_807FDC90->unkC - D_807FDC9C->unk6);
+    // temp_v0 = D_807FDC90->unkC - D_807FDC9C->unk6;
+    // if (temp_v0 < 0) {
+        // var_v1->unk0 = 0;
+    // } else {
+        // var_v1->unk0 = temp_v0;
+    // }
+    switch (current_actor_pointer->control_state) {
+        case 39:
+            if ((D_807FDC90->unk1A & 4) && (arg0 == (D_807FDC90->unk25 & 0x7F))) {
+                if (character_change_array->unk2C0 == 0) {
+                    func_8070D8C0(current_actor_pointer, 0x10, 1, current_actor_pointer);
+                    current_actor_pointer->control_state = 0x29;
+                    current_actor_pointer->control_state_progress = 0;
+                    D_807FDC9C->unk10 = 0x29;
+                    extra_player_info_pointer->unk1F0 |= 0x10000;
+                    func_806EB0C0(0x54, NULL, 0);
+                    D_807FDC90->unk1A |= 0x8000;
+                } else {
+                    func_8070D8C0(current_actor_pointer, 0x10, 0, current_actor_pointer);
+                    current_actor_pointer->control_state = 0x28;
+                    current_actor_pointer->control_state_progress = 0;
+                    D_807FDC9C->unk10 = 0x28;
+                    if (arg2 == 0) {
+                        func_8061C464(D_807F5D10, current_actor_pointer, 4, 0x800, 0x19, 0, 0xA, 0x14, 0xC, 0x78, D_8075C264);
+                    }
+                }
+            }
+            // fallthrough
+        case 40:
+            func_806B49B0(2, 0x23D, 0x23E);
+            return;
+        case 38:
+        case 41:
+            if (D_807FDC90->unk1A & 0x8000) {
+                if ((D_807FDC90->unk1A & 4) && (arg1 == (D_807FDC90->unk25 & 0x7F))) {
+                    if (arg2 == 0) {
+                        func_806225C0(D_807F5D10);
+                    }
+                    playCutscene(player_pointer, 3, 5);
+                    current_actor_pointer->control_state = 0x28;
+                    current_actor_pointer->control_state_progress = 0;
+                    D_807FDC9C->unk10 = 0x28;
+                    extra_player_info_pointer->unk1F0 &= 0xFFFEFFFF;
+                    D_807FDC90->unk1A &= 0x7FFF;
+                } else {
+                    if (arg2 == 0) {
+                        func_8061C464(D_807F5D10, player_pointer, 4, object_timer * 0x14, 0x1E, 0, 0xA, 0x1E, 0xC, 0, D_8075C268);
+                    }
+                    player_pointer->y_rotation = current_actor_pointer->y_rotation;
+                    player_pointer->x_position = current_actor_pointer->x_position;
+                    player_pointer->y_position = current_actor_pointer->y_position - 2.0f;
+                    player_pointer->z_position = current_actor_pointer->z_position;
+                    player_pointer->unk6A &= 0xFFFE;
+                    player_pointer->locked_to_pad = 0;
+                }
+            }
+            if (current_actor_pointer->control_state == 0x26) {
+                var_v0 = 0x26;
+            } else {
+                var_v0 = 2;
+            }
+            func_806B49B0(var_v0, 0x23D, 0x23E);
+            // fallthrough
+        case 0:
+            return;
+    }
+}
+*/
+
+
 void func_806C43A8() {
     s32 song = 0;
     switch(current_map) {

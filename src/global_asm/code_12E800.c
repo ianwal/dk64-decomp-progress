@@ -16,6 +16,7 @@ s16 func_806CC190(s16, s16, f32);
 
 extern f64 D_8075FF38;
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_80729B00.s")
 
 void func_80729E6C(void) {

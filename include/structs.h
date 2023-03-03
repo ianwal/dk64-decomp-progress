@@ -318,7 +318,9 @@ typedef struct actor_178 {
     u8 unkC;
     u8 unkD;
     u8 unkE;
-    u8 unkF[0x5];
+    u8 unkF;
+    u16 unk10; // Used
+    u16 unk12; // Used
     u8 unk14;
 } Actor178;
 

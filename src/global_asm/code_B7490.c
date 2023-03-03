@@ -33,6 +33,8 @@ void func_806B2D5C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_806B2D64.s")
 
+void func_80729B00(void); // TODO: Move to functions.h
+
 void func_806B3420(void) {
     f32 dx, dy, dz;
     s32 temp;
@@ -414,4 +416,120 @@ void func_806B52DC(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_806B54BC.s")
+extern f64 D_8075B718;
+
+s16 func_80665DE0(f32, f32, f32, f32);
+void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32);
+s32 func_806CC10C(s16, s16);
+s16 func_806119A0(void);
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    s16 unk10;
+    s16 unk12;
+    s32 unk14;
+} Actor178_806B54BC;
+
+f32 func_806119FC(void);
+
+void func_806B54BC(void) {
+    Actor178_806B54BC *temp_s1;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 temp_f4;
+    s16 temp_s0_3;
+    s32 temp;
+
+    temp_s1 = current_actor_pointer->unk178;
+    func_80729B00();
+    if ((current_actor_pointer->control_state != 0x40) && (current_actor_pointer->control_state != 0x37) && ((D_807FBB70->unk200 == 9) || (D_807FBB70->unk15 != 0))) {
+        func_80605314(current_actor_pointer, 0);
+        func_80614EBC(current_actor_pointer, 0x331);
+        current_actor_pointer->control_state = 0x37;
+        current_actor_pointer->control_state_progress = 0;
+        func_80608528(player_pointer, 0x16, 0xFF, 0x7F, 0x1E);
+    }
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        D_807FDC98->unk46 |= 0x20;
+        D_807FDC98->unk46 &= 0xFFF7;
+        current_actor_pointer->unkB8 = 40.0f;
+        current_actor_pointer->control_state = 0x23;
+        current_actor_pointer->control_state_progress = 0;
+        current_actor_pointer->unkEC = ((rand() >> 0xF) % 7) + 0xF;
+        temp_s1->unk0 = current_actor_pointer->x_position;
+        temp_s1->unk4 = current_actor_pointer->y_position;
+        temp_s1->unk8 = current_actor_pointer->z_position;
+        temp_s1->unk10 = 1;
+        temp_s1->unkC = current_actor_pointer->y_position;
+        temp_s1->unk12 = (func_806119A0() & 0xFF) + 0x78;
+    }
+    if ((current_actor_pointer->control_state != 0x37) && (current_actor_pointer->unk6E == -1)) {
+        func_80604CBC(current_actor_pointer, 0x10E, 0, 0, 0, 0xFF, 1.0f, 0);
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x26:
+            temp_s1->unk0 = player_pointer->x_position;
+            temp_s1->unk4 = player_pointer->y_position;
+            temp_s1->unk8 = player_pointer->z_position;
+            temp_s1->unk12 = (func_806119A0() & 0xFF) + 0x78;
+            // fallthrough
+        case 0x23:
+            temp = func_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, temp_s1->unk0, temp_s1->unk8) + 0x800;
+            current_actor_pointer->y_rotation -= func_806CC10C(temp, current_actor_pointer->y_rotation) >> 4;
+            temp_s1->unk10--;
+            if (temp_s1->unk10 <= 0) {
+                func_80724B5C(1, 0, &sp68, &sp64, &sp60);
+                temp_s1->unk10 = (func_806119A0() & 0x3F) + 0xF;
+                temp_s0_3 = func_80665DE0(sp68, sp60, temp_s1->unk0, temp_s1->unk8);
+                temp_s0_3 += ((func_806119A0() & 7) << 8) + 0x400;
+                temp_f4 = func_806119FC() * D_8075B718;
+                temp_s1->unk0 = func_80612794(temp_s0_3) * temp_f4 + sp68;
+                temp_s1->unk4 = temp_s1->unkC;
+                temp_s1->unk8 = func_80612790(temp_s0_3) * temp_f4 + sp60;
+                current_actor_pointer->control_state = 0x23;
+            }
+            if (current_actor_pointer->control_state == 0x23) {
+                temp_s1->unk12--;
+                if (temp_s1->unk12 <= 0) {
+                    temp_s1->unk10 = 0x3C;
+                    current_actor_pointer->control_state = 0x26;
+                }
+            }
+            sp64 = (temp_s1->unk4 - current_actor_pointer->y_position) * 0.0625;
+            if (sp64 > 8.0) {
+                sp64 = 8.0f;
+            }
+            if (sp64 < -8.0) {
+                sp64 = -8.0f;
+            }
+            current_actor_pointer->x_position += func_80612794(current_actor_pointer->y_rotation) * 8.0;
+            current_actor_pointer->y_position += sp64;
+            current_actor_pointer->z_position += func_80612790(current_actor_pointer->y_rotation) * 8.0;
+            break;
+        case 0x37:
+            current_actor_pointer->object_properties_bitfield &= ~0x8000;
+            current_actor_pointer->shadow_opacity -= 8;
+            current_actor_pointer->y_position = current_actor_pointer->y_position - 10.0;
+            if (current_actor_pointer->shadow_opacity < 0) {
+                current_actor_pointer->shadow_opacity = 0;
+                current_actor_pointer->control_state = 0x40;
+                current_actor_pointer->control_state_progress = 0;
+                current_actor_pointer->noclip_byte = 1;
+                if (current_map == 0xA7) {
+                    enemies_killed++;
+                    if ((enemies_killed == 5) && (isFlagSet(0x15F, 0) == 0)) {
+                        func_8063DA40(4, 0xA);
+                    }
+                }
+            }
+            break;
+        default:
+            func_8072B7CC(0x32F);
+            break;
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
