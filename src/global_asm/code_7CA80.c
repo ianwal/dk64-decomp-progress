@@ -99,8 +99,112 @@ s32 func_80678014(s32 arg0) {
     return FALSE;
 }
 
-// Doable, initializeActor(behaviour)
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80678050.s")
+
+extern u16 D_807FBB34;
+extern u32 D_807FBB38;
+extern u16 D_807FBB3E;
+extern u16 *D_8074E218[];
+extern u16 D_8074DA58[];
+
+void func_8067AE90(Actor *arg0);
+void func_80611690(void*);
+void func_806761D0(Actor *arg0);
+
+/*
+// Doable, initializeActor(behaviour)
+s32 func_80678050(u16 arg0) {
+    Actor *newActor;
+    u16 var_a1;
+    u16 var_a2;
+    u16 *var_v0;
+    u16 *var_v0_2;
+    u16 temp_t4;
+    u16 var_v1;
+    void **var_v1_2;
+    s32 *var_a0;
+
+    var_v0 = D_8074E218[arg0];
+    var_v1 = *var_v0;
+    var_a1 = 0x174;
+    var_a2 = 0;
+    while (var_v1 != 0) {
+        var_a2 += D_8074DA58[var_v1];
+        var_v1 = var_v0[1];
+        var_a1 += 4;
+        var_v0++;
+    }
+    // Align to next 8 byte boundary
+    var_a1 = (var_a1 + 7) & 0xFFF8;
+    newActor = malloc((var_a2 + var_a1) & 0xFFFF);
+    if (newActor != NULL) {
+        func_80611690(newActor); // Something with the heap
+        var_v0_2 = D_8074E218[arg0];
+        var_v1_2 = &newActor->additional_actor_data;
+        var_a0 = &newActor + var_a1;
+        while (var_v0_2[0] != 0) {
+            *var_v1_2 = var_a0;
+            var_v1_2++;
+            temp_t4 = D_8074DA58[var_v0_2[0]];
+            var_v0_2++;
+            var_a0 += temp_t4;
+        }
+        newActor->collision_queue_pointer = NULL;
+        newActor->unk138 = -1;
+        newActor->noclip_byte = 2;
+        newActor->locked_to_pad = 0;
+        newActor->unkF8 = 0x50;
+        newActor->object_properties_bitfield = 0x58144;
+        newActor->unk64 = 0;
+        newActor->shadow_opacity = 0xFF;
+        newActor->unk58 = arg0;
+        if (D_807FBB64 & 0x100) {
+            newActor->draw_distance = 2000;
+        } else {
+            newActor->draw_distance = 500;
+        }
+        newActor->unk68 = 0;
+        newActor->unk156 = 0;
+        newActor->unk78 = 0;
+        newActor->unk6C = 1;
+        newActor->unk6A = 1;
+        newActor->unk132 = 1;
+        newActor->unk114 = 0;
+        newActor->unk118 = 0;
+        newActor->unk11C = NULL;
+        newActor->unk6E = -1;
+        newActor->unk70 = -1;
+        newActor->unk150 = NULL;
+        newActor->unk12C = -1;
+        newActor->unk124 = 0;
+        newActor->unk148 = 0;
+        newActor->unk14C = 0;
+        newActor->unkD4 = 0x80748D4A;
+        newActor->unk146 = -1;
+        newActor->unkDA = 0x400;
+        newActor->unkCC = 0;
+        newActor->unkCD = 0;
+        newActor->unk130 = 0;
+        newActor->unk131 = 0;
+        newActor->unk16D = 0xF;
+        newActor->unkCE = 0;
+        newActor->unkB0 = -1;
+        newActor->interactable = D_8074D624[arg0];
+        newActor->unk54 = D_807FBB38;
+        D_807FBB38++;
+        func_8067AE90(newActor); // Add to actor list
+        func_806761D0(newActor); // Set initial health
+        D_807FB930[D_807FBB34].unk0 = newActor;
+        D_807FB930[D_807FBB34].unk4 = 0;
+        D_807FBB3E = D_807FBB34;
+        D_807FBB34++;
+        D_807FBB44 = newActor;
+        return TRUE;
+    }
+    return FALSE;
+}
+*/
 
 void func_806782C0(Actor *arg0) {
     func_806897F0();

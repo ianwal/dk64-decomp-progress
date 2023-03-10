@@ -408,6 +408,7 @@ void *func_805FD030(Gfx *arg0) {
 // display list something?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE398.s")
 
+// display list arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE4D4.s")
 
 extern s32 D_8076A058;

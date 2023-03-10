@@ -373,6 +373,7 @@ s32 *func_805FD030(s32 *arg0);
 s32 *func_807132DC(s32 *arg0); // get displaylist?
 
 /*
+// TODO: DL macros
 s32 *func_807132DC(s32 *arg0) {
     s32 *temp_v0;
 

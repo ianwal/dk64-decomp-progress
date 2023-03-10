@@ -137,7 +137,6 @@ void func_806BB32C(void) {
 extern f32 D_8075BAEC;
 extern f32 D_8075BAF0;
 void func_807248B0(Actor*, f32);
-s16 func_80665DE0(f32, f32, f32, f32);
 void func_8072AB74(s32, f32, f32, s32, f32);
 void func_806D0430(f32);
 

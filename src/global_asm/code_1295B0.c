@@ -137,16 +137,14 @@ Actor *func_807270C0(s16 spawn_trigger, u16 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_8072752C.s")
 
-/*
-s16 func_80665DE0(f32, f32, f32, f32);
 s32 func_807271F4(s16, s16, s16, s16, s32, s32, s32);
 
+/*
 // TODO: Everything matches apart from stack offset
 void func_8072752C(s16 arg0, s16 x1, s16 y1, s16 z1, s16 x2, s16 y2, s16 z2, s16 arg7, s16 arg8) {
     s16 sp46;
     f32 sp40;
     s32 dx, dy, dz;
-    // s32 temp;
 
     dx = (x2 - x1) * (x2 - x1);
     dy = (y2 - y1) * (y2 - y1);

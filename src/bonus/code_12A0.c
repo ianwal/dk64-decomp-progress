@@ -3,8 +3,6 @@
 #include "variables.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800252A0.s")
-
 s32 func_80677FA8(s32, s32); // spawnActorWrapper()
 void func_80627948(Actor*, s32, s32, s32);
 void func_8069D2AC(s32,s32,u8, s32, s32, s32, s32, s32);
@@ -12,6 +10,9 @@ u8 func_8070E750(u8, s32, s32);
 void func_8061C464(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 extern f32 D_8002DCB8;
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800252A0.s")
 
 Actor* func_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     BaaD2 *tmp;
@@ -28,6 +29,23 @@ Actor* func_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_80025480.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800254B0.s")
+
+extern f32 D_8002DCB4;
+extern void *D_80717404;
+extern s32 D_8074E880[];
+
+/*
+void func_800254B0(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s16 i;
+
+    for (i = 0; i < arg3; i++) {
+        func_807149B8(1);
+        func_8071498C(&D_80717404);
+        func_80714950(1);
+        func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], D_8002DCB4, arg0, arg1, arg2);
+    }
+}
+*/
 
 void func_8002563C(s32 arg0) {
     PlayerAdditionalActorData *PaaD = player_pointer->PaaD;

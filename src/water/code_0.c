@@ -312,8 +312,6 @@ extern f64 D_8002A078;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80026904.s")
 
-s16 func_80665DE0(f32, f32, WaterStruct4*, f32, f32);
-
 // Doable, pretty close
 /*
 void func_80026904(WaterStruct4 *arg0, WaterStruct2 *arg1) {
@@ -329,7 +327,7 @@ void func_80026904(WaterStruct4 *arg0, WaterStruct2 *arg1) {
                 return;
             }
             if ((arg0->unk1E0 == 2) && (arg0->unk3C < D_80029BA4->unkA)) {
-                func_80025DB8(arg0->unk54, arg0, 0, ((func_80665DE0(arg0->unk8, arg0->unk10, arg0, D_807FBB48->x_position, D_807FBB48->z_position) + (func_806119A0() & 0x7FF)) - 0x400), 1);
+                func_80025DB8(arg0->unk54, arg0, 0, ((func_80665DE0(arg0->unk8, arg0->unk10, D_807FBB48->x_position, D_807FBB48->z_position) + (func_806119A0() & 0x7FF)) - 0x400), 1);
                 arg0->unk1E0 = 1;
             }
         } else if (D_80029BA4 == arg0->unk54) {

@@ -2276,7 +2276,7 @@ void func_806D2DC4(void) {
         current_actor_pointer->control_state_progress--;
         phi_a1 = 0x14;
     }
-    if (object_timer > 1 && !func_806DF6D4(phi_a1)) {
+    if ((u32)object_timer > 1 && !func_806DF6D4(phi_a1)) {
         newControlState = func_806CDD24(current_actor_pointer, current_actor_pointer->unkB8, extra_player_info_pointer->unk4, 1);
         if (newControlState != 0xC) {
             // TODO: Non matching here
@@ -4204,8 +4204,6 @@ void func_806DA320(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DA3E4.s")
 
 extern f64 D_8075CEB8;
-
-s16 func_80665DE0(f32, f32, f32, f32);
 
 /*
 // TODO: Float regalloc

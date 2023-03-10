@@ -41,6 +41,7 @@ void func_8002DD7C(void) {
     }
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_8002DE04.s")
 
 void func_8002E7A0(Actor *arg0) {
@@ -112,8 +113,10 @@ void func_8002EA14() {
     func_8072B324(current_actor_pointer, D_807FDC9C[0].unkC + (sp1C->unk14 * 0xA) + 0xF);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_8002EA7C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_8002F100.s")
 
 void func_8002FB7C(u8 arg0) {
@@ -172,6 +175,7 @@ void func_8002FEC0(Actor* arg0[], u8 arg1, s32 arg2) {
     arg0[arg1] = D_807FBB44;
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_8002FF74.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_80030888.s")

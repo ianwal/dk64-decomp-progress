@@ -57,7 +57,7 @@ typedef struct enemy_info {
     s16 unk2A; // Used
     u32 unk2C;
     u32 unk30;
-    u32 unk34;
+    f32 unk34; // Used
     f32 unk38; // Used
     f32 unk3C; // at 0x3C
     s16 unk40; // Used
@@ -1361,15 +1361,16 @@ struct Struct807FDC90 {
     Struct807FDC90 *unk0; // TODO: This type may not be correct
     Actor *unk4;
     s16 unk8;
-    s16 unkA;
+    s16 unkA; // Used: X Position
     s16 unkC; // Used
-    s16 unkE;
-    s32 unk10;
-    s32 unk14;
+    s16 unkE; // Used: Z Position
+    s16 unk10; // Used
+    s16 unk12;
+    s16 unk14; // Used
+    s16 unk16;
     u16 unk18;
-    u16 unk1A;
-    u8 unk1C;
-    u8 unk1D;
+    u16 unk1A; // Used
+    u16 unk1C; // Used
     u8 unk1E;
     u8 unk1F;
     u8 unk20;

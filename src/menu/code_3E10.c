@@ -903,4 +903,15 @@ s32 func_800322D0(s8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80032304.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_800324CC.s")
+s32 *label_string_pointer_array;
+
+void func_800324CC(void) {
+    s32 temp_v0;
+    s32 i;
+
+    label_string_pointer_array = malloc(101 * sizeof(s32));
+    i = 0;
+    while (i != 101) {
+        label_string_pointer_array[i++] = func_8070E750(0x25, i, 0);
+    }
+}

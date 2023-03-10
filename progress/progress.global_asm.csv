@@ -1289,7 +1289,7 @@ us,.code,func_80735864,244,no
 us,.code,func_806C3F10,1176,no
 us,.code,func_806BE09C,1496,no
 us,.code,func_806E0D40,620,no
-us,.code,func_806F46B0,160,no
+us,.code,func_806F46B0,148,yes
 us,.code,func_806574B8,80,no
 us,.code,func_80660830,204,no
 us,.code,func_8073E63C,256,no

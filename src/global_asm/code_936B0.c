@@ -162,7 +162,6 @@ void func_80690814(s32 arg0, s32 arg1) {
 extern f32 D_807FC7B0;
 extern f32 D_807FC7B8;
 
-f32 func_80665DE0(f32, f32, f32, f32);
 void func_80690930(s32, s16, s16, s32, f32, f32, f32, f32, f32);
 
 void func_80690A28(s16 arg0, s16 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {

@@ -120,14 +120,14 @@ void func_80665ACC(Actor *arg0) {
 
 //forward decl necessary
 //looks like its taking the linear distance between 2 points (2D)
-void func_80665C18(f32,f32,f32,f32,f32);
-void func_80665DE0(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+s16 func_80665C18(f32,f32,f32,f32,f32);
+s16 func_80665DE0(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f0;
     f32 temp_f2;
 
     temp_f0 = arg0 - arg2;
     temp_f2 = arg1 - arg3;
-    func_80665C18(arg0, arg1, arg2, arg3, 
+    return func_80665C18(arg0, arg1, arg2, arg3, 
                     sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2)));
 }
 

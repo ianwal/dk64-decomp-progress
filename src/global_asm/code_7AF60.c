@@ -35,12 +35,12 @@ u8 func_80676308(Actor *arg0, Actor *arg1, s32 arg2) {
 
 // TODO: Not exactly sure what's wrong here
 // Tricky floating point typecasty stuff I suspect
-/*
-s32 func_80665DE0(s32, s32, s32, s32);
+
 s32 func_806CC14C(s16, s16);
 
-s32 func_8067641C(s32, s32, s32);
+s32 func_8067641C(Actor*, Actor*, s32);
 
+/*
 s32 func_80676338(Actor *arg0, Actor *arg1, s32 arg2) {
     u8 temp = func_806CC14C(func_80665DE0(arg0->x_position, arg0->z_position, arg1->x_position, arg1->z_position), arg0->y_rotation) < 0x200;
     return temp

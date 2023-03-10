@@ -102,7 +102,9 @@ typedef struct Struct807FDCA0 {
     s32 unkC;
     s32 unk10;
     s32 unk14; // TODO: Pointer to an array of structs 0xA big? See boss func_8003392C
-    s32 unk18;
+    s8 unk18;
+    s8 unk19; // Used
+    s16 unk1A;
     s32 unk1C;
     s8 unk20;
 } Struct807FDCA0;

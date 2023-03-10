@@ -1069,8 +1069,6 @@ void func_806EFA1C(void) {
     current_actor_pointer->control_state_progress = 0;
 }
 
-s16 func_80665DE0(f32, f32, f32, f32);
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_806EFA3C.s")
 
 extern s32 D_8075D380[3];

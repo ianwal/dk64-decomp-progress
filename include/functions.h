@@ -29,6 +29,10 @@ f32 func_80612794(s16);
 void func_80614E78(Actor*, s32);
 void func_80629174(void);
 
+void func_80729B00(void);
+
+s16 func_80665DE0(f32, f32, f32, f32);
+
 // Heap stuff???
 void func_8061130C(void *);
 

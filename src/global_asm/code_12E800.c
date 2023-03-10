@@ -11,13 +11,100 @@ void func_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
 void func_806F8BC4(s32, s32, s32);
 void func_806F91B4(u8, u8, s16);
 s16 func_806CC190(s16, s16, f32);
-s32 func_80665DE0(f32, f32, f32, f32);
 s16 func_806CC190(s16, s16, f32);
 
 extern f64 D_8075FF38;
 
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_80729B00.s")
+
+extern s8 D_807FBB85;
+
+/*
+void func_80729B00(void) {
+    Actor *temp_a2;
+    EnemyInfo *temp_t9;
+    GlobalASMStruct35 *var_t2;
+    f32 var_f10;
+    u16 var_v0;
+    u32 temp_a0;
+    u8 temp_t3;
+    u8 temp_v0;
+    u8 temp_v0_2;
+    void *temp_t7;
+    void *temp_v1;
+
+    temp_t7 = current_actor_pointer->additional_actor_data;
+    D_807FDC90 = temp_t7;
+    D_807FDC94 = temp_t7->unk4;
+    temp_t9 = temp_t7->unk0;
+    D_807FDC98 = temp_t9;
+    D_807FDC9C = temp_t9;
+    D_807FDCA0 = temp_t9->unk1C;
+    var_t2 = D_807FBB70;
+    temp_t7->unk18++;
+    temp_a2 = current_actor_pointer;
+    temp_a0 = temp_a2->object_properties_bitfield;
+    if (temp_a0 & 0x20000000) {
+        temp_v0 = temp_a2->control_state;
+        if ((temp_v0 != 0x37) && (temp_v0 != 0x36) && (D_807FDC90->unk16 != D_807FDC94->animation_state->unk0->unk10)) {
+            temp_a2->object_properties_bitfield = temp_a0 & 0xDFFFFFFF;
+        }
+    }
+    if (temp_a2->interactable & 2) {
+        if (((is_cutscene_active == 1) && (D_807FDC98->unk46 & 8)) || ((D_807FDC94 != NULL) && (D_807FDC94->control_state == 0x42))) {
+            temp_v0_2 = temp_a2->control_state;
+            if ((temp_v0_2 >= 0x23) && (temp_v0_2 < 0x36)) {
+                temp_a2->noclip_byte = 1;
+                current_actor_pointer->control_state = 0x3A;
+                current_actor_pointer->control_state_progress = 0;
+            }
+        }
+        var_v0 = D_807FDC98->unk46;
+        if ((D_807FBB70->unk1B != 0) && (temp_a2->control_state != 0x39)) {
+            if (var_v0 & 0x800) {
+                D_807FBB70->unk15 = 1;
+                var_v0 = D_807FDC98->unk46;
+            } else {
+                func_8067AC38(temp_a0, &D_807FDC90, temp_a2, &D_807FDC98);
+                current_actor_pointer->unk138 = 0;
+                current_actor_pointer->object_properties_bitfield &= 0xFFFD7FFF;
+                current_actor_pointer->noclip_byte = 1;
+                current_actor_pointer->control_state = 0x39;
+                current_actor_pointer->control_state_progress = 0;
+                func_80614EBC(current_actor_pointer, D_807FDC98->unk2A);
+                func_80608528(current_actor_pointer, 0x16, 0xFF, 0x7F, 0x14);
+                current_actor_pointer->y_velocity = -220.0f;
+                var_t2 = 0x807FBB70;
+                var_v0 = D_807FDC98->unk46;
+            }
+        }
+        if ((var_v0 & 0x4000) && (temp_a2->unk6A & 4)) {
+            temp_t3 = temp_a2->unk15E;
+            var_f10 = temp_t3;
+            if (temp_t3 < 0) {
+                var_f10 += 4294967296.0f;
+            }
+            if ((temp_a2->y_position + var_f10) < temp_a2->unkAC) {
+                var_t2->unk15 = 1;
+            }
+        }
+        if ((current_map == 0x30) && (D_807FDC94->interactable & 1)) {
+            temp_v1 = D_807FDC94->additional_actor_data;
+            if ((temp_v1->unk1F0 ^ temp_v1->unk1F8) & 0x100000) {
+                func_80605314(temp_a2, 0, temp_a2);
+                current_actor_pointer->control_state = 0;
+                current_actor_pointer->control_state_progress = 0;
+                D_807FBB85 = 1;
+            }
+        }
+    }
+    if ((temp_a2->unk58 != 0xAF) && (temp_a2->control_state == 0x37) && (temp_a2->unk138 != 0)) {
+        temp_a2->unk138 = 0;
+    }
+    func_806663F8();
+}
+*/
 
 void func_80729E6C(void) {
     current_actor_pointer->y_velocity += current_actor_pointer->y_acceleration;
@@ -65,7 +152,7 @@ void func_8072A7DC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072A86C.s")
 
-void func_8072AB74(u8, f32, f32, u16, f32);
+u8 func_8072AB74(u8 arg0, f32 arg1, f32 arg2, u16 arg3, f32 arg4);
 
 /*
 // TODO: t8 a3 regalloc? Odd one
@@ -95,8 +182,148 @@ void func_8072AA80(void) {
 }
 */
 
-// TODO: Huge, and actually seems super doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072AB74.s")
+
+extern f64 D_8075FD40;
+
+s16 func_806CC14C(s16, s16);
+void func_80729EB0(s32, f32, f32, u16);
+void func_806653C0(Actor*, f32, f32);
+void func_8066635C(Actor*, f32, f32, f32, f32*);
+s32 func_80725BA4(f32, f32, Struct807FDCA0*);
+
+/*
+// TODO: Seems doable, progress made...
+u8 func_8072AB74(u8 arg0, f32 x, f32 z, u16 arg3, f32 arg4) {
+    s16 sp52;
+    s16 *sp4C;
+    u8 sp43;
+    f32 sp34;
+    f32 dx;
+    f32 temp_f12;
+    f32 dz;
+    s32 var_v1_2;
+
+    sp43 = 0;
+    sp4C = &D_807FDC90->unk8;
+    D_807FDC90->unk1C = D_807FDC90->unk1A;
+    D_807FDC90->unk1A &= 0xBD7F;
+    dx = current_actor_pointer->x_position - x;
+    dz = current_actor_pointer->z_position - z;
+    temp_f12 = current_actor_pointer->animation_state->scale_y / D_8075FD40;
+    if (((dx * dx) + (dz * dz)) < (1600.0f * temp_f12)) {
+        D_807FDC90->unk1A |= 0x80;
+        if (func_806CC14C(*sp4C, current_actor_pointer->y_rotation) >= 0x191) {
+            current_actor_pointer->unkB8 *= D_807FDC98->unk34;
+        }
+    }
+    func_8067ACB4(current_actor_pointer);
+    if ((current_actor_pointer->unkB8 != 0.0f) || (arg3 & 4)) {
+        func_80729EB0(arg0, x, z, arg3);
+    }
+    if (!(arg3 & 0x1001)) {
+        func_80729E6C();
+    }
+    if (!(D_807FDC98->unk46 & 0x200)) {
+        func_80666280(2);
+    }
+    if ((D_807FDCA0->unk19 == 1) && ((arg0 != 0x37) || !(D_807FDC98->unk46 & 0x10))) {
+        func_80666280(1);
+    }
+    if (arg3 & 0x4000) {
+        current_actor_pointer->unkFC = 0;
+    }
+    if ((arg0 != 0x37) && !(D_807FDC90->unk1A & 2)) {
+        func_80665160(current_actor_pointer, current_actor_pointer->unkEE, current_actor_pointer->y_rotation);
+    }
+    if (arg3 & 2) {
+        if (!(arg3 & 1)) {
+            func_806653C0(current_actor_pointer, 0.0f, current_actor_pointer->y_velocity);
+        }
+        func_80665564(current_actor_pointer, arg4);
+        if (!(arg3 & 0x2000)) {
+            func_8072A714();
+        }
+        if (!(arg3 & 0x10)) {
+            func_8072A450();
+        }
+        return 0;
+    }
+    if (!(arg3 & 0x20)) {
+        func_8072B438(arg3);
+    }
+    if (arg3 & 0x800) {
+        func_806653C0(current_actor_pointer, 0.0f, current_actor_pointer->y_velocity);
+    } else if (arg3 & 1) {
+        func_806653C0(current_actor_pointer, current_actor_pointer->unkB8, 0.0f);
+    } else {
+        func_806651FC(current_actor_pointer);
+    }
+    if (!(arg3 & 8)) {
+        func_80665564(current_actor_pointer, arg4);
+    } else if ((D_807FDCA0->unk19 != 1) && (arg3 & 0x10)) {
+        func_8066635C(current_actor_pointer, current_actor_pointer->x_position, current_actor_pointer->unk8C, current_actor_pointer->z_position, &current_actor_pointer->floor);
+    }
+    if (!(arg3 & 0x2000)) {
+        func_8072A714();
+    }
+    if (!(arg3 & 0x10)) {
+        func_8072A450();
+    }
+    current_actor_pointer->unkFC = 0;
+    current_actor_pointer->unkFD = 0;
+    if ((D_807FDC98->unk46 & 0x20) || (current_actor_pointer->interactable & 0x40)) {
+        return 0;
+    }
+    if ((arg0 == 0x37) && (D_807FDC98->unk46 & 0x10)) {
+        if (func_80725BA4(current_actor_pointer->x_position, current_actor_pointer->z_position, D_807FDCA0) == 0) {
+            var_v1_2 = -1;
+            if (current_actor_pointer->unkB8 >= 0.0f) {
+                var_v1_2 = 1;
+            }
+            current_actor_pointer->unkB8 = var_v1_2 * 0x1E;
+            return 0;
+        }
+        D_807FDC90->unk1A |= 0x4000;
+        return 0;
+    }
+    if (func_80725BA4(current_actor_pointer->x_position, current_actor_pointer->z_position, D_807FDCA0) != 0) {
+        D_807FDC90->unk1A |= 0x4000;
+        if (func_807264B0(current_actor_pointer, current_actor_pointer->unk88, current_actor_pointer->unk90, D_807FDCA0, &sp52) == 0) {
+            sp34 = func_80612794(current_actor_pointer->unkEE);
+            if (func_80725BA4((sp34 * current_actor_pointer->unkB8) + current_actor_pointer->x_position, (func_80612790(current_actor_pointer->unkEE) * current_actor_pointer->unkB8) + current_actor_pointer->z_position, D_807FDCA0) == 0) {
+                if (D_807FDC90->unk22-- == 0) {
+                    *sp4C += 0x800;
+                    *sp4C &= 0xFFF;
+                    D_807FDC90->unk22 = D_807FDC90->unk23 * 4;
+                }
+            }
+            goto block_63;
+        }
+        if ((arg0 == 0x37) || (arg0 == 0)) {
+            current_actor_pointer->unkB8 = 0.0f;
+            current_actor_pointer->x_position = D_807FDC90->unk10;
+            current_actor_pointer->z_position = D_807FDC90->unk14;
+            return 0;
+        }
+block_63:
+        D_807FDC90->unk10 = current_actor_pointer->x_position;
+        D_807FDC90->unk14 = current_actor_pointer->z_position;
+        goto block_66;
+    }
+    sp43 = 1;
+    D_807FDC90->unk1A |= 0x200;
+    current_actor_pointer->x_position = D_807FDC90->unk10;
+    current_actor_pointer->z_position = D_807FDC90->unk14;
+    if (D_807FDC90->unk22-- == 0) {
+        *sp4C += 0x800;
+        *sp4C &= 0xFFF;
+        D_807FDC90->unk22 = D_807FDC90->unk23 * 6;
+    }
+block_66:
+    return sp43;
+}
+*/
 
 void func_8072B324(Actor *arg0, s32 arg1) {
     PlayerAdditionalActorData *PaaD = arg0->PaaD;

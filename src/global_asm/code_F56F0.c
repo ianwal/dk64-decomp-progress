@@ -274,40 +274,49 @@ void func_806F3760(s16 map) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F37BC.s")
 
-void func_806F386C(u8, Actor*, Actor*, s16, s32);
+void func_806F386C(u8, Actor*, Actor*, s16, u8);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F386C.s")
 
-/*
-extern void *D_80753E90;
+typedef struct {
+    s16 unk0;
+    s32 unk4;
+} Struct80753E90_2;
+
+// TODO: Same as GlobalASMStruct75?
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    Struct80753E90_2 *unk4;
+} Struct80753E90;
+
+extern Struct80753E90 *D_80753E90;
 extern u8 D_8076A0B1;
 extern s32 D_807FD70C;
-extern s32 D_807FD708;
+extern Struct80753E90_2 *D_807FD708;
 extern Actor *D_807FD710;
 extern s16 D_807FD714;
 extern s16 D_807FD718;
 extern Actor *D_807FD71C;
 
-// TODO: Very doable, just gotta figure out some structs
+/*
+// TODO: Close
 void func_806F386C(u8 arg0, Actor *arg1, Actor *arg2, s16 arg3, u8 arg4) {
-    s32 temp_t6;
-    void *temp_t5;
     PlayerAdditionalActorData *temp_v0;
 
     temp_v0 = arg1->PaaD;
-    if (D_80753E90->unk0 >= arg0) {
+    if (D_80753E90[0].unk0 >= arg0) {
         is_autowalking = 3;
         D_8076A0B1 |= 0x10;
         D_807FD710 = arg1;
         temp_v0->unk1F0 &= ~1;
         D_807FD714 = 0;
-        temp_t5 = D_80753E90->unk4 + (arg0 * 8);
-        D_807FD708 = temp_t5;
-        D_807FD70C = temp_t5->unk4;
+        D_807FD708 = D_80753E90[arg0].unk4;
+        D_807FD70C = D_807FD708->unk4;
         D_807FD718 = arg3;
         D_807FD71C = arg2;
         if (arg4 == 0) {
-            func_806F37BC(arg1, D_807FD70C, arg3);
+            func_806F37BC(arg1, D_807FD70C);
         }
     }
 }
@@ -343,6 +352,54 @@ void func_806F397C(Actor *arg0, Actor *arg1, s16 arg2, s16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F3BEC.s")
 
+f32 func_80612794(s16);
+
+typedef struct {
+    s16 unk0; // X Position
+    s16 unk2; // Y Position
+    s16 unk4; // Z Position
+    s16 unk6;
+    u8 unk8;
+    u8 unk9; // Used
+} Struct806F3BEC;
+
+/*
+void func_806F3BEC(Actor *arg0, s16 arg1, s16 arg2, u8 arg3) {
+    s16 sp3A;
+    f32 temp_f0;
+    f32 temp_f16;
+    Struct80753E90_2 *temp_a1;
+    Struct806F3BEC *temp_t0;
+    void *temp_v0;
+    Struct806F3BEC *temp_v0_2;
+
+    sp3A = func_80665DE0(arg1, arg2, arg0->x_position, arg0->z_position);
+    temp_a1 = &D_80753E90[0].unk4[D_80753E90[0].unk0];
+    if (arg0->control_state != 0x44) {
+        temp_a1->unk0 = 2;
+        temp_v0 = malloc(0x24);
+        temp_a1->unk4 = temp_v0;
+        func_80611690(temp_v0);
+        temp_v0_2 = temp_a1->unk4;
+        temp_t0 = temp_v0_2 + 0x12;
+        temp_v0_2->unk0 = arg0->x_position;
+        temp_v0_2->unk2 = arg0->y_position;
+        temp_v0_2->unk4 = arg0->z_position;
+        temp_v0_2->unk9 = 0x28;
+        temp_f0 = func_80612794(sp3A);
+
+        temp_t0->unk0 = (temp_f0 * arg3) + arg0->x_position;
+        temp_t0->unk2 = arg0->y_position;
+        temp_f16 = func_80612790(sp3A) * arg3;
+        temp_t0->unk4 = temp_f16 + arg0->z_position;
+        temp_t0->unk9 = 0x28;
+        func_806F386C(D_80753E90[0].unk0, arg0, 0, 0, 0);
+        D_807FD716 = 0;
+        global_properties_bitfield |= 0x400;
+    }
+}
+*/
+
 void func_806F3DB0(void) {
     D_807FD716 |= 2;
 }
@@ -364,4 +421,25 @@ void func_806F3DC8(u16 *arg0, s16 *arg1, u8 *arg2, u16 arg3) {
 // Autowalk file arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F4528.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F46B0.s")
+typedef struct {
+    s16 unk0;
+    s8 unk2;
+    s8 unk3;
+    s16 unk4;
+} Struct80753EA0;
+
+extern Struct80753EA0 D_80753EA0[];
+extern f32 D_8075D850;
+extern s32 D_8076A0A8;
+
+f32 func_806F46B0(s16 arg0) {
+    s16 i;
+    s32 max = 0xD; // TODO: Why does this need to be a temp variable?
+
+    for (i = 0; i < max; i++) {
+        if ((D_8076A0A8 == D_80753EA0[i].unk0) && (((arg0 == D_80753EA0[i].unk2)) || (D_80753EA0[i].unk2 == -1))) {
+            return D_80753EA0[i].unk4;
+        }    
+    }
+    return D_8075D850;
+}
