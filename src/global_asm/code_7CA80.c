@@ -32,9 +32,7 @@ void func_8062D26C(Actor*);
 void func_806783BC();
 void func_806136B4();
 void func_8066E21C(LedgeInfo*);
-// void func_80679200(s32, Actor *, s32, s32, s32, s32);
 // Note: The pointer can be to any one of the above 10 structs, maybe more
-void func_80679200(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5);
 void func_8067AEFC(Actor*);
 void func_8068C2F8(void *);
 void func_8070DA74(void *);

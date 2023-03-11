@@ -40,6 +40,38 @@ Temp8070D6D8 *func_8070D6D8(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D754.s")
 
+/*
+? *func_8070D754(? *arg0) {
+    ? **var_s0;
+    ? *temp_v0;
+    ? *var_v1;
+
+    var_s0 = &D_807550C4;
+    if ((D_807550C4 != NULL) && (arg0 != *D_807550C4)) {
+        var_v1 = D_807550C4;
+loop_3:
+        var_s0 = &*(var_v1 + 0xC);
+        var_v1 = *var_s0;
+        if (var_v1 != NULL) {
+            if (arg0 != *var_v1) {
+                goto loop_3;
+            }
+        }
+    }
+    if (*var_s0 == NULL) {
+        temp_v0 = malloc(0x10);
+        *var_s0 = temp_v0;
+        func_80611690(temp_v0);
+        (*var_s0)->unk0 = arg0;
+        func_80677FA8(0x12B, 0, arg0);
+        D_807FBB44->control_state = 0;
+        (*var_s0)->unk4 = D_807FBB44;
+        D_807FBB44->additional_actor_data->unk4 = arg0;
+    }
+    return *var_s0;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D82C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D8C0.s")
@@ -63,6 +95,28 @@ void func_8070D8C0(Actor *arg0, u16 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D928.s")
 
+/*
+extern u16 *D_807550C0;
+
+u16 *func_8070D928(s32 arg0) {
+    s32 temp_t6;
+    u16 *var_v1;
+
+    var_v1 = D_807550C0;
+    temp_t6 = arg0 & 0xFFFF;
+    if ((var_v1 != NULL) && (temp_t6 != *var_v1)) {
+loop_2:
+        var_v1 = var_v1->unkC;
+        if (var_v1 != NULL) {
+            if (temp_t6 != *var_v1) {
+                goto loop_2;
+            }
+        }
+    }
+    return var_v1;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D970.s")
 
 /*
@@ -79,7 +133,51 @@ void func_8070D970(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D9AC.s")
 
+/*
+void func_8070D9AC(void *arg0) {
+    s32 temp_a0;
+    s32 temp_s2;
+    void *temp_s0;
+    void *var_s1;
+
+    var_s1 = arg0->unkC;
+    temp_s2 = arg0->unk0 & 2;
+    if (var_s1 != NULL) {
+        do {
+            temp_s0 = var_s1;
+            var_s1 = var_s1->unkA0;
+            if (temp_s2 != 0) {
+                temp_a0 = temp_s0->unk14;
+                if (temp_a0 != 0) {
+                    func_80715908(temp_a0);
+                }
+            }
+            func_8061134C(temp_s0);
+        } while (var_s1 != NULL);
+    }
+    func_8061134C(arg0);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DA28.s")
+
+/*
+void func_8070DA28(void *arg0) {
+    void *temp_a0;
+    void *var_s0;
+
+    var_s0 = arg0->unkC;
+    if (var_s0 != NULL) {
+        do {
+            temp_a0 = var_s0;
+            var_s0 = var_s0->unk1C;
+            func_8070D9AC(temp_a0);
+        } while (var_s0 != NULL);
+    }
+    arg0->unkC = NULL;
+    arg0->unk10 = 0;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DA74.s")
 
@@ -183,7 +281,7 @@ s32 func_8070DDDC(u16 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E808.s")
 
-extern s32 D_807550C0;
+extern s32 D_807550C0; // TODO: Some kind of struct pointer, possibly Temp8070D6D8
 extern s32 D_807550C4;
 extern u8 D_807550CC;
 

@@ -19,7 +19,6 @@ extern u8 D_807506C0[];
 f32 func_80665AE4(s32, s32, s32, s32);
 void func_80688370(Actor*, s32, f32);
 void func_806883F4(Actor*, s32, s32, f32);
-void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 
 /*
 // TODO: Everything matches, but the stack is too big

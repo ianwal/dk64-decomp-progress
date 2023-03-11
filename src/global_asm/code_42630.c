@@ -218,7 +218,47 @@ void func_80641874(s16 arg0, s16 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806418E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064199C.s")
+/*
+s32 func_806418E8(s16 arg0, s16 arg1, s16 arg2) {
+    s16 temp_a3;
+    s16 temp_v0;
+
+    temp_a3 = D_807F6240[arg0];
+    if (temp_a3 != -1) {
+        temp_v0 = func_80659470(temp_a3);
+        if ((temp_v0 != -1) && (D_807F6000[temp_v0].unk7C != NULL)) {
+            (D_807F6000[temp_v0].unk7C + arg2)->unk48 = arg1;
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
+*/
+
+// TODO: Which struct is this?
+typedef struct {
+    s32 unk0[21];
+    s8 unk54; // Used
+    s8 unk55;
+    s8 unk56;
+    s8 unk57;
+    s32 unk58; // Used
+    s32 unk5C;
+} Struct8064199C_arg0;
+
+void func_8064199C(Struct8064199C_arg0 *arg0, s8 arg1, s16 arg2) {
+    arg0->unk54 = arg1;
+    switch (arg1 & 0xFF) {
+        case 3:
+        case 4:
+        case 6:
+            arg0->unk58 = arg2 * arg2;
+            break;
+        case 5:
+            arg0->unk58 = arg2;
+            break;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806419F8.s")
 
@@ -290,7 +330,50 @@ void func_80641B00(s16 arg0, s16 arg1, s16 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641BCC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641C98.s")
+extern u16 D_807FBB34;
+
+/*
+// TODO: Regalloc a0 a1, boo
+void func_80641BCC(s16 arg0, s16 arg1, s16 arg2) {
+    s32 i;
+    for (i = 0; i < D_807FBB34; i++) {
+        if (!(D_807FB930[i].unk0->object_properties_bitfield & 0x2000)
+            && (arg0 == D_807FB930[i].unk0->unk58)
+            && (arg2 == D_807FB930[i].unk0->unk10C)) {
+            if (arg1 != 0) {
+                D_807FB930[i].unk0->unk68 |= 4;
+            } else {
+                D_807FB930[i].unk0->unk68 &= ~4;
+            }
+        }
+    }
+}
+*/
+
+void func_80641C98(s16 arg0, s16 arg1, s16 arg2) {
+    s32 var_s2;
+    s32 i;
+
+    switch (arg1) {
+        case 0:
+            var_s2 = 1;
+            break;
+        case 1:
+            var_s2 = 2;
+            break;
+        case 2:
+            var_s2 = 0x3C;
+            break;
+    }
+
+    for (i = 0; i < D_807FBB34; i++) {
+        if (!(D_807FB930[i].unk0->object_properties_bitfield & 0x2000)
+            && (arg0 == D_807FB930[i].unk0->unk58)
+            && (arg2 == D_807FB930[i].unk0->unk10C)) {
+            func_80679200(D_807FB930[i].unk0, NULL, 0x800, var_s2, 0, 0);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641DA0.s")
 
@@ -561,6 +644,28 @@ void func_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644CC0.s")
 
+void func_80644A18(s32, s32, s32, f32);
+
+/*
+void func_80644CC0(void **arg0, s32 arg1, s32 arg2, s32 arg3) {
+    void *sp1C;
+    void *temp_v0;
+    void *var_v1;
+
+    var_v1 = *arg0;
+    if (var_v1 == NULL) {
+        temp_v0 = malloc(8);
+        *arg0 = temp_v0;
+        temp_v0->unk0 = 0.0f;
+        temp_v0->unk4 = 0.0f;
+        var_v1 = *arg0;
+    }
+    sp1C = var_v1;
+    func_80644A18(var_v1, 2, 0x16, 1.0f);
+    func_80644A18(sp1C + 4, 4, 0x18, 0.8f);
+}
+*/
+
 void func_8065A660(f32, f32);
 
 void func_80644D50(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
@@ -577,7 +682,19 @@ void func_80644D50(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_8065A708(sp48, sp40, sp38, sp4C, sp44, sp3C, 0.0f, 1, D_807480D0, D_807480D4, D_807480D8);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644E2C.s")
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+
+extern s32 D_8074E880[];
+extern s32 D_80717760;
+
+void func_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    func_807149FC(-1);
+    func_8071498C(&D_80717760);
+    func_80714950(0x50);
+    func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], 0.5f, D_807F621C, D_807F6220, D_807F6224);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644EC8.s")
 

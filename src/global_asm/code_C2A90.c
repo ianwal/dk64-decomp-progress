@@ -475,7 +475,47 @@ void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, s32 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806C2B2C.s")
 
+typedef struct {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+} Struct80747B00;
+
+extern Struct80747B00 D_80747B00[];
+extern f64 D_8075BEE0;
+
+/*
+void func_806C2B2C(s32 arg0, s32 arg1, u8 arg2, s32 arg3) {
+    f32 spA8;
+    f32 spA4;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp98;
+    f32 sp94;
+    f32 temp_f20;
+    f32 temp_f24;
+    s16 i;
+    Struct80747B00 *temp_s0;
+
+    temp_f24 = (current_actor_pointer->animation_state->scale_y / D_8075BEE0) / 1.5;
+    while (arg1 >= arg0) {
+        for (i = 0; i < 3.0; i++) {
+            temp_s0 = &D_80747B00[arg2];
+            temp_f20 = i / 3.0;
+            func_80671C0C(current_actor_pointer, arg0, &spA8, &spA4, &spA0);
+            if (arg0 < arg1) {
+                func_80671C0C(current_actor_pointer, arg0 + 1, &sp9C, &sp98, &sp94);
+            } else {
+                func_80671C0C(current_actor_pointer, arg0, &sp9C, &sp98, &sp94);
+            }
+            func_806C2A64(spA0, temp_s0->unk0, temp_s0->unk1, temp_s0->unk2, ((sp9C - spA8) * temp_f20) + spA8, ((sp98 - spA4) * temp_f20) + spA4, ((sp94 - spA0) * temp_f20) + spA0, arg3);
+        }
+    }
+}
+*/
+
 extern s32 D_8071FFA0;
+
 void func_806C2D7C() {
     func_806C2B2C(1, 0xB, 6, &D_8071FFA0);
     func_806C2B2C(0x20, 0x30, 6, &D_8071FFA0);

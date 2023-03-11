@@ -1080,6 +1080,12 @@ void func_806CF398(Actor *arg0) {
     }
 }
 
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF42C.s")
+
+/*
+// TODO: Why doesn't this match anymore?
+// Ever since I added func_80679200 to functions.h there's a regalloc here
+// It's possible they forgot to include a header in this file and fell back onto C's default int() overload for this function
 void func_806CF42C(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
 
@@ -1094,6 +1100,7 @@ void func_806CF42C(Actor *arg0) {
         PaaD->unk1B0 = 0;
     }
 }
+*/
 
 // Probably doable, character_change loop with cc_number_of_players, PaaD
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF4B8.s")
