@@ -9,6 +9,8 @@ void func_8067ACB4(Actor*);
 void func_8067DF44(f32, f32, f32, f32, u8, u8);
 void func_80683AD8();
 
+void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
+
 extern f64 D_80759560;
 extern s32 D_8071FC8C;
 

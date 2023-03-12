@@ -33,7 +33,8 @@ void func_80729B00(void);
 
 s16 func_80665DE0(f32, f32, f32, f32);
 
-void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
+// TODO: Figure out why adding this here causes func_806CF42C to not match
+// void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 
 // Heap stuff???
 void func_8061130C(void *);

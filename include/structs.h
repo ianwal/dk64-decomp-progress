@@ -650,30 +650,32 @@ typedef struct player_additional_actor_data {
     s16 unkD6;
     s32 unkD8;
     Actor *unkDC; // Used
-    s32 unkE0;
-    s32 unkE4;
+    f32 unkE0; // Used
+    f32 unkE4; // Used
     u8 unkE8; // Used
     u8 unkE9;
-    u8 unkEA;
-    u8 unkEB;
-    u8 unkEC;
-    u8 unkED;
+    s16 unkEA; // Used
+    s16 unkEC;
     u8 unkEE;
     u8 unkEF; // Used
     union { // TODO: No idea what's going on here, both are used
         float unkF0_f32;
         u8 unkF0;
-        u8 unkF0_u8[];
+        u8 unkF0_u8[4];
     };
-    u8 unkF4;
-    u8 unkF5;
-    u8 unkF6; // Used
-    u8 unkF7;
-    s32 unkF8;
-    u8 unkFC; // Used
-    u8 unkFD;
-    u8 unkFE;
-    u8 unkFF;
+    union { // TODO: No idea what's going on here, both are used
+        float unkF4_f32;
+        u8 unkF4;
+        u8 unkF4_u8[4];
+    };
+    u8 unkF8; // Used
+    u8 unkF9;
+    u8 unkFA;
+    u8 unkFB;
+    union { // TODO: Deconflict
+        u8 unkFC; // Used
+        s32 unkFC_s32; // Used
+    };
     s32 unk100;
     Actor *unk104; // Used, Actor*?
     f32 unk108; // Used
@@ -692,17 +694,18 @@ typedef struct player_additional_actor_data {
     f32 unk124; // Used
     s32 unk128;
     s32 unk12C;
-    s32 unk130;
+    Actor *unk130;
     s32 unk134;
     s32 unk138;
     s32 unk13C;
     s32 unk140;
     s32 unk144;
     s32 unk148;
-    s32 unk14C;
-    s32 unk150;
-    s32 unk154;
-    s32 unk158;
+    f32 unk14C; // Used
+    f32 unk150; // Used
+    s16 unk154; // Used
+    s16 unk156;
+    Actor *unk158;
     s32 unk15C;
     s32 unk160;
     s32 unk164;
@@ -918,7 +921,7 @@ struct actor {
     s16 unkF4;
     s16 unkF6;
     s16 unkF8;
-    u16 unkFA;
+    s16 unkFA; // Used
     u8 unkFC;
     u8 unkFD;
     u8 unkFE;

@@ -15,7 +15,7 @@ s32 func_806728F0(s16, s16, s16);
 s16 func_80672A70(s16, s16);
 
 extern s32 D_807FB53C;
-extern s32 D_807FB540;
+extern Actor *D_807FB540;
 extern s16 D_807FB544;
 extern u8 D_807FB546;
 extern s16 D_807FB5EC;
@@ -438,7 +438,7 @@ s32 func_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
 
 u8 func_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3);
 
-u8 func_8066F1F8(s32 arg0, s16 arg1) {
+u8 func_8066F1F8(Actor *arg0, s16 arg1) {
     s16 sp1E;
     s16 sp1C;
     s8 sp1B;

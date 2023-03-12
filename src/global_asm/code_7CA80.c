@@ -40,6 +40,8 @@ void func_8071586C(Actor*);
 void func_807233B4(Actor*);
 void func_8072F09C(void *);
 
+void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
+
 // Pointer table 0xD (13) access, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80677D80.s")
 

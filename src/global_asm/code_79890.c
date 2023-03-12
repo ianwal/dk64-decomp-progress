@@ -3,6 +3,8 @@
 #include "variables.h"
 
 
+void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_80674B90.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_80674E14.s")

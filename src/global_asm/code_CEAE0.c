@@ -1080,12 +1080,6 @@ void func_806CF398(Actor *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF42C.s")
-
-/*
-// TODO: Why doesn't this match anymore?
-// Ever since I added func_80679200 to functions.h there's a regalloc here
-// It's possible they forgot to include a header in this file and fell back onto C's default int() overload for this function
 void func_806CF42C(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
 
@@ -1100,7 +1094,6 @@ void func_806CF42C(Actor *arg0) {
         PaaD->unk1B0 = 0;
     }
 }
-*/
 
 // Probably doable, character_change loop with cc_number_of_players, PaaD
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF4B8.s")
@@ -2792,6 +2785,7 @@ extern f64 D_8075CD18;
 extern f64 D_8075CD20;
 
 /*
+// TODO: Regalloc v0 v1
 void func_806D4758(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -2864,7 +2858,7 @@ void func_806D491C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D4A70.s")
 
 /*
-// TODO: It's using v0 instead of v1 for PaaD
+// TODO: Regalloc: It's using v0 instead of v1 for PaaD
 void func_806D4A70(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -4172,7 +4166,7 @@ void func_806D9D58(void) {
             extra_player_info_pointer->unk238 = current_actor_pointer->y_position;
             current_actor_pointer->y_position = (func_80612794(extra_player_info_pointer->unk23C) * 10.0) + extra_player_info_pointer->unk238;
             extra_player_info_pointer->unk23C += 0x64;
-            phi_f0 = current_actor_pointer->unk168 < current_actor_pointer->y_position ? current_actor_pointer->y_position - current_actor_pointer->unk168 : -(current_actor_pointer->y_position - current_actor_pointer->unk168);
+            phi_f0 = ABS(current_actor_pointer->y_position - current_actor_pointer->unk168);
             if (phi_f0 < D_8075CE80) {
                 current_actor_pointer->y_acceleration = 2.0 * ((current_actor_pointer->unk168 - current_actor_pointer->y_position) / D_8075CE80);
             }
@@ -4500,11 +4494,173 @@ void func_806DC3A4(f32 arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DC410.s")
 
-// Surprisingly doable, just need the energy
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DCA7C.s")
 
-// Looks doable
+extern f64 D_8075CFD8;
+extern f64 D_8075CFE0;
+extern f64 D_8075CFE8;
+extern f32 D_8075CFF0;
+extern f32 D_80753CD0[];
+extern s16 D_807FD584;
+
+/*
+// TODO: Doable, made good progress, not sure what's going on with case 1
+void func_806DCA7C(Actor **arg0, s32 arg1) {
+    f32 sp50;
+    f32 sp4C;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 dx;
+    f32 dz;
+    s32 var_v0;
+    s32 var_v1;
+
+    current_actor_pointer->object_properties_bitfield &= 0xFFBFFFFF;
+    current_actor_pointer->unk6A &= 0xFFBF;
+    current_actor_pointer->z_rotation += (-current_actor_pointer->z_rotation * D_8075CFD8);
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            func_806DCF60();
+            current_actor_pointer->unkB8 = extra_player_info_pointer->unk14C / 2;
+            current_actor_pointer->unkEE = extra_player_info_pointer->unk154;
+            var_v0 = current_actor_pointer->unkEE - current_actor_pointer->y_rotation;
+            if (var_v0 < -0x800) {
+                var_v0 += 0x1000;
+            }
+            if (var_v0 >= 0x801) {
+                var_v0 -= 0x1000;
+            }
+            var_v1 = -var_v0;
+            if (var_v0 > 0) {
+                var_v1 = var_v0;
+            }
+            if (var_v1 < 0x400) {
+                func_80614E78(current_actor_pointer, 0x6D);
+            } else {
+                func_80614E78(current_actor_pointer, 0x6E);
+            }
+            func_806DF5A0(&current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 0x78, 0x600);
+            current_actor_pointer->y_velocity = extra_player_info_pointer->unk150;
+            current_actor_pointer->control_state_progress += 1;
+            func_806DF6D4(0x27);
+            extra_player_info_pointer->unk30 /= 2;
+            func_806CC948();
+            break;
+        case 2:
+            if (extra_player_info_pointer->unk158 == 0) {
+                func_80614E78(D_807FBB48, 0x6F);
+                current_actor_pointer->control_state_progress = 3;
+            } else {
+            case 1:
+                func_806DCF60();
+                if (current_actor_pointer->unk58 == 5) {
+                    func_806DF6D4(0x28);
+                } else {
+                    func_806DF6D4(0x27);
+                }
+                current_actor_pointer->unkB8 = extra_player_info_pointer->unk14C;
+                current_actor_pointer->unkEE = extra_player_info_pointer->unk154;
+                func_806DF5A0(&current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 0x78, 0x600);
+                extra_player_info_pointer->unkA = current_actor_pointer->unkEE;
+                extra_player_info_pointer->unk4 = 150.0f;
+                extra_player_info_pointer->unk38 = 150.0f;
+                if (extra_player_info_pointer->unk158 != 0) {
+                    func_80671C0C(extra_player_info_pointer->unk158, 1, &sp44, &sp40, &sp3C);
+                    dx = sp44 - D_807FBB48->x_position;
+                    dz = sp3C - D_807FBB48->z_position;
+                    sp4C = (sp40 - D_807FBB48->y_position) / (D_807FBB48->animation_state->scale_y * D_8075CFE0);
+                    sp50 = ((sqrtf((dx * dx) + (dz * dz)) / (D_807FBB48->animation_state->scale_y * D_8075CFE8)) / D_807FBB48->unkB8) - 1.0f;
+                    if (sp50 < 1.0f) {
+                        sp50 = 1.0f;
+                    }
+                }
+                if ((extra_player_info_pointer->unk158 != 0) && (sp50 < 30.0f)) {
+                    D_807FBB48->y_velocity = (((0.0 - (D_80753CD0[D_807FD584]) * 0.5 * (sp50 * sp50)) - sp4C)) / sp50;
+                    D_807FBB48->y_acceleration = D_8075CFF0;
+                } else {
+                    extra_player_info_pointer->unk158 = 0;
+                    func_806CFE7C();
+                }
+                func_806CC948();
+                break;
+            }
+            break;
+        case 3:
+            func_806DF6D4(0x30);
+            func_806CFE7C();
+            func_806CC8B8();
+            extra_player_info_pointer->unk30 = 10.0f;
+            break;
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DCF60.s")
+
+f32 func_80665E48(f32, f32, f32, f32);
+s16 func_806CC14C(s16, s16);
+extern f32 D_8075CFF4;
+extern f64 D_8075CFF8;
+extern f64 D_8075D000;
+extern f64 D_8075D008;
+extern f64 D_8075D010;
+extern f32 D_8075D018;
+extern u16 D_807FBB34;
+
+/*
+// TODO: Kinda close, good progress made
+void func_806DCF60(void) {
+    Actor *temp_s0;
+    f32 dx;
+    f32 temp_f0_2;
+    f32 temp_f12;
+    f32 temp_f28;
+    f32 dz;
+    f32 var_f14;
+    f32 var_f26;
+    s16 temp_s1;
+    s16 temp_f16;
+    s32 temp_f16_2;
+    Actor *temp_v0;
+    s32 i;
+    Actor *temp_v1;
+
+    temp_v0 = extra_player_info_pointer->unk158;
+    var_f26 = 100.0f;
+    if ((temp_v0 != NULL) || (current_actor_pointer->control_state_progress == 1)) {
+        if (temp_v0 == NULL) {
+            for (i = 0; i < i < D_807FBB34; i++) {
+                temp_s0 = D_807FB930[i].unk0;
+                if (!(temp_s0->object_properties_bitfield & 0x2000) && (temp_s0->object_properties_bitfield & 0x04000000) && (temp_s0 != extra_player_info_pointer->unk130) && (temp_s0 != D_807FBB48)) {
+                    temp_f16 = ((func_80665E48(temp_s0->x_position, temp_s0->z_position, D_807FBB48->x_position, D_807FBB48->z_position) * D_8075CFF4) / D_8075D000) * D_8075CFF8;
+                    dx = temp_s0->x_position - D_807FBB48->x_position;
+                    temp_s1 = func_806CC14C(temp_f16, extra_player_info_pointer->unk154);
+                    dz = temp_s0->z_position - D_807FBB48->z_position;
+                    temp_f0_2 = sqrtf((dx * dx) + (dz * dz));
+                    if ((temp_s1 < 0x258) && (temp_f0_2 < var_f26)) {
+                        if (D_807FBB48->y_position < temp_s0->y_position) {
+                            var_f14 = temp_s0->y_position - D_807FBB48->y_position;
+                        } else {
+                            var_f14 = -(temp_s0->y_position - D_807FBB48->y_position);
+                        }
+                        if (var_f14 < 100.0) {
+                            extra_player_info_pointer->unk154 = temp_f16;
+                            extra_player_info_pointer->unk158 = temp_s0;
+                        }
+                    }
+                }
+            }
+        } else {
+            temp_f16_2 = ((func_80665E48(temp_v0->x_position, temp_v0->z_position, D_807FBB48->x_position, D_807FBB48->z_position) * D_8075D018) / D_8075D008) * D_8075D010;
+            if (func_806CC14C(temp_f16_2, extra_player_info_pointer->unk154) < 0x258) {
+                extra_player_info_pointer->unk154 = temp_f16_2;
+            }
+        }
+    }
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DD24C.s")
@@ -4556,6 +4712,156 @@ void func_806DD874(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DDAB0.s")
+
+extern f32 D_80753D70[];
+extern f32 D_80753D8C[];
+extern f64 D_8075D048;
+extern f64 D_8075D050;
+extern f64 D_8075D058;
+extern f64 D_8075D060;
+extern s16 D_807FD584;
+
+extern s16 D_80753DA8[];
+extern s16 D_80753DB8[];
+
+/*
+// TODO: Very doable, made good progress
+void func_806DDAB0(void) {
+    f32 sp64;
+    u8 sp62;
+    s16 sp60;
+    f32 sp50;
+    u8 sp4F;
+    s8 sp4C;
+    s16 sp4A;
+    u8 sp49;
+    f32 var_f2;
+    s32 var_t6;
+    s32 var_v0;
+    s32 var_v0_2;
+    u8 var_a2_2;
+    u8 var_v1_2;
+
+    sp49 = 0;
+    if (character_change_array[cc_player_index].unk2C0 == 1) {
+        sp50 = D_80753D70[D_807FD584];
+    } else {
+        sp50 = D_80753D8C[D_807FD584];
+    }
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            func_806DF6D4(0x5A);
+            extra_player_info_pointer->unkEC = current_actor_pointer->y_rotation;
+            extra_player_info_pointer->unkF8 = 5;
+            current_actor_pointer->control_state_progress = 2;
+            break;
+        case 1:
+        case 2:
+        case 3:
+            if (extra_player_info_pointer->unkF8 != 0) {
+                extra_player_info_pointer->unkF8--;
+            }
+            if (func_806DF6D4(0x5A) == 0) {
+                switch (extra_player_info_pointer->unk8) {
+                    case -1:
+                        if (current_actor_pointer->control_state_progress == 1) {
+                            var_f2 = MAX(current_actor_pointer->unkB8 * D_8075D050, D_8075D048);
+                            func_80614D00(current_actor_pointer, var_f2, 1.0f);
+                            // func_80614D00(current_actor_pointer, D_8075D048, var_f2, 1.0f);
+                        } else {
+                            func_80614E78(D_807FBB48, 0x77);
+                            current_actor_pointer->control_state_progress = 1;
+                        }
+                        break;
+                    case 0:
+                        if (current_actor_pointer->control_state_progress != 2) {
+                            func_80614E78(D_807FBB48, 0x76);
+                            current_actor_pointer->control_state_progress = 2;
+                        }
+                        break;
+                    case 1:
+                        if (current_actor_pointer->control_state_progress == 3) {
+                            var_f2 = MAX(current_actor_pointer->unkB8 * D_8075D060, D_8075D058);
+                            // func_80614D00(D_8075D058, current_actor_pointer, var_f2_2, 0, current_actor_pointer);
+                            func_80614D00(current_actor_pointer, var_f2, 0);
+                        } else {
+                            func_80614E78(D_807FBB48, 0x78);
+                            current_actor_pointer->control_state_progress = 3;
+                        }
+                        break;
+                }
+            }
+            current_actor_pointer->y_velocity = 0.0f;
+            current_actor_pointer->unkB8 = extra_player_info_pointer->unk4;
+            if (func_806CFC90(current_actor_pointer, &sp64, 1, 15.0f) != 0) {
+                if ((current_actor_pointer->y_position <= sp64) && (((sp64 - sp50) - current_actor_pointer->y_position) < 10.0f) && (func_80666AEC() != 0)) {
+                    current_actor_pointer->y_position = sp64 - sp50;
+                    sp49 = 1;
+                }
+            }
+            if (current_actor_pointer->unkB8 < 0) {
+                current_actor_pointer->unkB8 = ABS(current_actor_pointer->unkB8);
+                current_actor_pointer->unkEE = current_actor_pointer->unkF4 + 0xA;
+                sp60 = (extra_player_info_pointer->unkEA + 0x400) & 0xFFF;
+            } else if (current_actor_pointer->unkB8 > 0) {
+                current_actor_pointer->unkEE = current_actor_pointer->unkF6 - 0xA;
+                sp60 = (extra_player_info_pointer->unkEA - 0x400) & 0xFFF;
+            }
+            sp62 = func_8066F1F8(current_actor_pointer, sp60);
+            if (sp62 == 0) {
+                current_actor_pointer->unkB8 = 0;
+            }
+            extra_player_info_pointer->unkEC = func_80672A70(current_actor_pointer->unkF4, current_actor_pointer->unkF6) + 0x800;
+            extra_player_info_pointer->unkEC &= 0xFFF;
+            current_actor_pointer->y_rotation = func_806CC190(current_actor_pointer->y_rotation, extra_player_info_pointer->unkEC, 3.0f);
+            current_actor_pointer->x_position = extra_player_info_pointer->unkE0;
+            current_actor_pointer->z_position = extra_player_info_pointer->unkE4;
+            if ((sp62 == 0) || (current_actor_pointer->unkB8 == 0.0)) {
+                current_actor_pointer->object_properties_bitfield |= 0x800;
+            } else {
+                current_actor_pointer->object_properties_bitfield &= ~0x800;
+            }
+            break;
+    }
+    var_v0 = D_807FD610[cc_player_index].unk2F < -0x32 && (D_807FD610[cc_player_index].unk2C & 0x2000) != 0;
+    if (character_change_array[cc_player_index].unk2C0 == 1) {
+        var_a2_2 = (var_v0 | ((current_actor_pointer->y_position - current_actor_pointer->floor) < D_80753DA8[D_807FD584]));
+    } else {
+        var_a2_2 = (var_v0 | ((current_actor_pointer->y_position - current_actor_pointer->floor) < D_80753DB8[D_807FD584]));
+    }
+    var_v1_2 = 0;
+    if (extra_player_info_pointer->unkF8 == 0) {
+        var_v0_2 = current_actor_pointer->unkFC == 0 || sp49 == 0;
+        // var_v0_2 = current_actor_pointer->unkFC == 0;
+        // if (var_v0_2 == 0) {
+        //     var_v0_2 = sp49 == 0;
+        // }
+        sp4F = var_v0_2;
+        func_80666AC4(&sp4C, &sp4A);
+        var_v1_2 = sp4F;
+        if (sp4A < 0x385) {
+            sp4F = (var_v0_2 | 1);
+        }
+    }
+    if ((var_a2_2 != 0) || (sp4F != 0)) {
+        extra_player_info_pointer->unkFC_s32 = 0x14;
+        func_806CFF9C(current_actor_pointer);
+        current_actor_pointer->object_properties_bitfield &= ~0x800;
+    }
+    if ((D_807FD610[cc_player_index].unk2F >= 0x33) && (extra_player_info_pointer->unkF8 == 0) && (var_v1_2 == 0)) {
+        func_80614E78(D_807FBB48, 0x79);
+        current_actor_pointer->control_state = 0x5C;
+        current_actor_pointer->control_state_progress = 0;
+        extra_player_info_pointer->unkF0_f32 = current_actor_pointer->y_position + sp50;
+        extra_player_info_pointer->unkF4_f32 = extra_player_info_pointer->unkF0_f32;
+    }
+    func_80665160(current_actor_pointer, current_actor_pointer->unkEE, current_actor_pointer->unkEE);
+    func_806651FC(current_actor_pointer);
+    func_80665548();
+    func_80665564(current_actor_pointer, 0);
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DE264.s")
@@ -5986,7 +6292,7 @@ void func_806E5FA0(void) {
 }
 
 void func_806E607C(void) {
-    PlayerAdditionalActorData *temp_v0;
+    PlayerAdditionalActorData *temp_v0; // TOIDO: Probably not actually a PaaD
 
     temp_v0 = extra_player_info_pointer->unk104->PaaD;
     temp_v0->unkAC |= 4;
@@ -6001,11 +6307,11 @@ void func_806E607C(void) {
         }
         if ((temp_v0->unkAC & 0x4000) == 0) {
             temp_v0->unkAC ^= 2;
-            if ((temp_v0->unkF0_u8[1] < 3) && (temp_v0->unkF5 == 0) && (temp_v0->unkF0_u8[3] != 2)) {
+            if ((temp_v0->unkF0_u8[1] < 3) && (temp_v0->unkF4_u8[1] == 0) && (temp_v0->unkF0_u8[3] != 2)) {
                 temp_v0->unkF0_u8[1] = 0x14;
                 temp_v0->unkB2 = current_actor_pointer->y_rotation;
                 extra_player_info_pointer->unk104->distance_from_floor = temp_v0->unkB8;
-                temp_v0->unkF5 = 0xA;
+                temp_v0->unkF4_u8[1] = 0xA;
             }
         }
     }
@@ -6925,7 +7231,7 @@ void func_806EA04C(void) {
 }
 
 void func_806EA0A4(void) {
-    PlayerAdditionalActorData *PaaD;
+    PlayerAdditionalActorData *PaaD; // TODO: Probably not actually PaaD
     u16 temp;
     u8 phi_a0;
 
@@ -6951,7 +7257,7 @@ void func_806EA0A4(void) {
             }
         }
         PaaD->unkF0_u8[1] = 0xB;
-        PaaD->unkF6 = 0xF;
+        PaaD->unkF4_u8[2] = 0xF;
     }
 }
 

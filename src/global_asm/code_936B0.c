@@ -14,6 +14,8 @@ extern f32 D_807FC7B8;
 void func_80688370(s32, s32, f32);
 void func_80604CBC(s32, s32, u8, s32, s32, s32, f32, s32);
 
+void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068E9B0.s")
 
 /*

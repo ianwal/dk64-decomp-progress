@@ -48,6 +48,8 @@ void func_80714998(s32);
 void func_807149B8(s32);
 void func_80714B84(void*, f32, s32, s32, s32);
 
+void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063D930.s")
 
 /*

@@ -94,7 +94,90 @@ void func_80665160(Actor *arg0, s16 arg1, s16 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806651FC.s")
 
+f32 func_80612794(s16);
+extern s32 D_80744478;
+extern f32 D_80758E30;
+extern f64 D_80758E38;
+
+/*
+// TODO: Doable, float nonsense, close
+void func_806651FC(Actor *arg0) {
+    f32 temp_f0;
+    f32 sp28;
+    f32 temp_f2;
+    f32 var_f0;
+    f32 var_f20;
+
+    var_f20 = arg0->unkB8;
+    if (arg0->unkFC != 0) {
+        var_f20 = MIN(arg0->unkFA, var_f20);
+        // temp_f0 = arg0->unkFA;
+        // if (temp_f0 < var_f20) {
+            // var_f20 = temp_f0;
+        // }
+    }
+    if (arg0->animation_state != NULL) {
+        var_f0 = arg0->animation_state->scale_y;
+    } else {
+        var_f0 = D_80758E30;
+    }
+    temp_f2 = var_f0 * D_80758E38;
+    sp28 = temp_f2;
+    if ((arg0->interactable & 4) && (arg0->unk6A & 4)) {
+        sp28 = temp_f2 * 0.5;
+    }
+    var_f20 *= sp28;
+    if (arg0->unk6A & 1) {
+        var_f20 *= ABS(func_80612794(arg0->unkDA));
+    }
+    if (arg0->object_properties_bitfield & 0x400000) {
+        var_f20 *= D_80744478 * 0.5;
+    }
+    arg0->x_position += var_f20 * func_80612794(arg0->unkEE);
+    arg0->z_position += var_f20 * func_80612790(arg0->unkEE);
+    arg0->y_position += arg0->y_velocity * sp28;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806653C0.s")
+
+f32 func_80612794(s16);
+extern s32 D_80744478;
+extern f32 D_80758E40;
+extern f64 D_80758E48;
+
+/*
+// TODO: Close, float nonsense. Hmmm, .rodata/.bss?
+void func_806653C0(Actor *arg0, f32 arg1, f32 arg2) {
+    f32 sp28;
+    f32 temp_f16;
+    f32 var_f0;
+    f32 var_f20;
+    f32 var_f20_2;
+    f32 var_f2;
+    f64 var_f6;
+
+    var_f20 = arg1;
+    if (arg0->unkFC != 0) {
+        if (arg0->unkFA < arg1) {
+            var_f20 = arg0->unkFA;
+        }
+    }
+    var_f0 = arg0->animation_state != NULL ? arg0->animation_state->scale_y : D_80758E40;
+    temp_f16 = var_f0 * D_80758E48;
+    sp28 = temp_f16;
+    var_f20 *= temp_f16;
+    if (arg0->unk6A & 1) {
+        var_f20 *= ABS(func_80612794(arg0->unkDA));
+    }
+    if (arg0->object_properties_bitfield & 0x400000) {
+        var_f20 *= (D_80744478 * 0.5);
+    }
+    arg0->x_position += var_f20 * func_80612794(arg0->unkEE);
+    arg0->z_position += var_f20 * func_80612790(arg0->unkEE);
+    arg0->y_position += arg2 * sp28;
+}
+*/
 
 void func_80665548(void) {
     D_80748E00 = 1;
@@ -106,8 +189,25 @@ u8 func_80665558(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665564.s")
 
-// short but kinda complicated, struct?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665AAC.s")
+// TODO: What is this....?
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+} Struct80748D40;
+
+extern Struct80748D40 D_80748D40[];
+
+u8 func_80665AAC(Actor *arg0) {
+    return D_80748D40[arg0->unkD0].unk8;
+}
 
 void func_80665ACC(Actor *arg0) {
     arg0->object_properties_bitfield |= 0x2; // block playing instrument?
@@ -117,6 +217,34 @@ void func_80665ACC(Actor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665AE4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665C18.s")
+
+s32 func_80611E60(s32);
+extern f64 D_80758E90;
+extern f64 D_80758E98;
+extern f64 D_80758EA0;
+extern f64 D_80758EA8;
+
+/*
+s16 func_80665C18(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    s16 sp36;
+    f32 var_f24;
+
+    var_f24 = arg4;
+    if (var_f24 < 1.0) {
+        var_f24 = 1.0f;
+    }
+    if ((arg2 <= arg0) && (arg3 <= arg1)) {
+        sp36 = func_80611E60(((arg0 - arg2) * D_80758E90) / var_f24) >> 4;
+    } else if ((arg2 <= arg0) && (arg1 < arg3)) {
+        sp36 = (func_80611E60(((arg3 - arg1) * D_80758E98) / var_f24) >> 4) + 0x400;
+    } else if ((arg0 < arg2) && (arg1 < arg3)) {
+        sp36 = (func_80611E60(((arg2 - arg0) * D_80758EA0) / var_f24) >> 4) + 0x800;
+    } else if ((arg0 < arg2) && (arg3 <= arg1)) {
+        sp36 = (func_80611E60(((arg1 - arg3) * D_80758EA8) / var_f24) >> 4) + 0xC00;
+    }
+    return sp36;
+}
+*/
 
 //forward decl necessary
 //looks like its taking the linear distance between 2 points (2D)
@@ -284,6 +412,7 @@ u8 func_80666AEC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666AF8.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666D88.s")
 
 s32 func_80666F04(f32 arg0, f32 arg1, u8 arg2, u8 arg3) {
@@ -355,7 +484,9 @@ s32 func_80666FC8(f32 arg0, f32 arg1, f32 arg2, u8 arg3) {
     return TRUE;
 }
 
-void func_80667110(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3);
+
+void func_80667110(f32 arg0, f32 arg1, f32 *arg2) {
     D_807F9484 = 0;
     D_807F9510 = 0;
     func_80667180(arg0, arg1, arg2, 0);
@@ -374,23 +505,129 @@ u8 func_80667174(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80667180.s")
 
+// s32 func_80666FC8(f32, f32, s32, u8, f32, s32);
+s32 func_806672B8(f32, f32, f32 *, s32);
+u8 func_806679BC(f32, f32, f32 *);
+extern s8 D_807F94B6;
+
+/*
+// TODO: Close
+u8 func_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3) {
+    u8 sp3F;
+    f32 sp38;
+    f32 sp34;
+    u8 temp_v1;
+    s32 var_v1;
+
+    sp38 = *arg2;
+    sp3F = func_806679BC(arg0, arg1, &sp38);
+    sp34 = *arg2;
+    temp_v1 = (func_806672B8(arg0, arg1, &sp34, arg3) * 2) + sp3F;
+    switch (temp_v1) {
+        case 0:
+            break;
+        case 1:
+            *arg2 = sp38;
+            break;
+        case 2:
+            *arg2 = sp34;
+            D_807F94B6 = 1;
+            break;
+        case 3:
+            if (func_80666FC8(sp38, sp34, *arg2 + 4.0, 0) != 0) {
+                *arg2 = sp34;
+                D_807F94B6 = 1;
+            } else {
+                *arg2 = sp38;
+            }
+            break;
+    }
+    if (temp_v1 != 0) {
+        var_v1 = 1;
+    } else {
+        var_v1 = 0;
+    }
+    return var_v1;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806672B8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066785C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806679BC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80668520.s")
+extern f64 D_80758F68;
 
+s32 func_80668520(f32 *arg0, f32 arg1, f32 arg2, f32 *arg3) {
+    f32 var_f12;
+    f64 temp_f0;
+
+    // TODO: Can we use any macros here? ABS? MIN? MAX?
+    temp_f0 = arg2 * 6.0f;
+    if (D_80758F68 < temp_f0) {
+        var_f12 = temp_f0 - D_80758F68;
+    } else {
+        var_f12 = -(temp_f0 - D_80758F68);
+    }
+    if (var_f12 < 40.0f) {
+        D_807F94AE = 1;
+    }
+    if (func_80666FC8(*arg0, 684.0f, arg1, 1) != 0) {
+        *arg3 = 114.0f;
+        return TRUE;
+    }
+    return FALSE;
+}
+
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806685E0.s")
 
+// Doable, small malloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806686F4.s")
 
+// Doable, small struct loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806687E0.s")
 
+// Doable, small struct loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806688B8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066893C.s")
+
+/*
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+} Struct8066893C;
+
+// TODO: I don't know why this doesn't match
+s32 func_8066893C(Struct8066893C *arg0) {
+    f32 sp1C;
+    f32 sp14;
+    f32 sp10;
+    f32 sp8;
+    f32 sp4;
+    s32 var_v0;
+
+    var_v0 = 0;
+    sp14 = arg0->unk4 - arg0->unk0;
+    sp1C = arg0->unk10 - arg0->unkC;
+    sp8 = arg0->unk2 - arg0->unk0;
+    sp10 = arg0->unkE - arg0->unkC;
+    sp4 = (sp1C * sp8) - (sp10 * sp14);
+    if (sp4 <= 0.0) {
+        var_v0 = 1;
+    }
+    return var_v0;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806689F0.s")
 

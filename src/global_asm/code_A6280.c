@@ -5,6 +5,7 @@
 void func_806319C4(Actor *, s32);
 void func_80613C48(Actor*,s16,f32,f32);
 void func_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
+void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 extern f64 D_8075A588;
 extern f64 D_8075A590;
 extern f64 D_8075A598;
