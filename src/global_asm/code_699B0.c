@@ -706,7 +706,45 @@ int func_80669C6C(GlobalASMStruct80 *arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066ACA4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066ADA0.s")
+extern s32 D_8000DDCC;
+extern void *D_807F9520;
+extern s32 D_807F9528[];
+extern s32 D_807F9628[];
+extern s32 D_807F9678;
+extern s32 D_807F9680;
+extern s8 D_807FB220;
+extern s8 D_807FB221;
+
+void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
+
+void func_8066ADA0(void) {
+    s32 i;
+    s32 sp40;
+
+    sp40 = 0x80;
+    D_807F9520 = malloc(0x80);
+    func_8060B140(D_8000DDCC, D_807F9520, &sp40, 0, 0, 0, 0);
+    for (i = 0; i < 0x20; i++) {
+        D_807F9528[i] = 0;
+        D_807F95A8[i] = 0;
+    }
+    for (i = 0; i < 0x14; i++) {
+        D_807F9628[i] = 0;
+    }
+    D_807F9680 = 0;
+    D_807F967C = 0;
+    D_807F9678 = 0;
+    D_807F967D = 0;
+    for (i = 0; i < 0x20; i++) {
+        if (D_80748E18[i] != 0) {
+            D_807FB1A0[i] = getPointerTableFile(0x1A, i, 1, 1); // Uncompressed file sizes
+        } else {
+            D_807FB1A0[i] = NULL;
+        }
+    }
+    D_807FB220 = 0;
+    D_807FB221 = 0;
+}
 
 void func_8066AEE4(s32 arg0, s32 arg1) {
     s32 sp24;
@@ -727,7 +765,7 @@ s32 func_8066B020(s32 arg0, s32 arg1) {
     s32 sp1C;
     s32 sp18;
 
-    func_8066B5F4();
+    func_8066B5F4(arg0);
     func_8066B4D4(arg0, arg1, &sp1C, &sp18);
     if (sp18 == 0) {
         return 0;
@@ -742,7 +780,7 @@ s32 func_8066B06C(s32 arg0, s32 arg1) {
     if (D_80748E18[arg0] != 0) {
         sp18 = *(D_807FB1A0[arg0] + arg1);
     } else {
-        func_8066B5F4();
+        func_8066B5F4(arg0);
         func_8066B4D4(arg0, arg1, &sp1C, &sp18);
     }
     return sp18;
@@ -758,13 +796,116 @@ void func_8066B0EC(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/getPointerTableFile.s")
 
-void func_8066B424(void) {
-    D_807F967D = 1;
-}
-
 //forward decl needed
 void func_8066B4AC(s32,s32,s32);
 s32  func_8066B9F4(void*);
+
+void *func_806111BC(s32, s32);
+s32 func_8066B5C8(s32, s32);
+extern OSMesgQueue D_807656D0;
+extern s32 D_807F9678;
+extern s32 D_807F9680;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+} Struct807F9688;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    u8 unk8; // Used
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+} Struct807FA8A0;
+
+extern Struct807F9688 D_807F9688[];
+extern Struct807FA8A0 D_807FA8A0[];
+
+/*
+void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, s32 arg2, u8 arg3) {
+    u32 sp50;
+    s32 temp;
+    s32 sp4C;
+    Struct807FA8A0 *var_v1;
+    void *var_v0;
+    void *sp40;
+    s32 var_a1;
+    s32 temp2;
+
+    func_8066B5F4(pointerTableIndex);
+    if (!arg3) {
+        if ((fileIndex >= 0x80000000) && (fileIndex < 0xA0000000)) {
+            func_8066B8C8(fileIndex, pointerTableIndex, 0);
+            D_807F967C = 0;
+            D_807F9678 = 0;
+            return fileIndex;
+        }
+        var_v0 = func_8066B5C8(pointerTableIndex, fileIndex);
+        if (var_v0 != 0) {
+            func_8066B8C8(var_v0, pointerTableIndex, fileIndex);
+            D_807F967C = 0;
+            D_807F9678 = 0;
+            return var_v0;
+        }
+    }
+    func_8066B4D4(pointerTableIndex, fileIndex, &sp50, &sp4C);
+    if (sp4C == 0) {
+        D_807F967C = 0;
+        D_807F9678 = 0;
+        return NULL;
+    }
+    var_a1 = sp4C;
+    if (D_80748E18[pointerTableIndex] != 0) {
+        var_a1 = D_807FB1A0[pointerTableIndex][fileIndex];
+    }
+    if (D_807F9678 == 0) {
+        var_v0 = malloc(var_a1);
+    } else {
+        var_v0 = func_806111BC(D_807F9678, var_a1);
+    }
+    if (arg2 != 0) {
+        if (D_80748E18[pointerTableIndex] != 0) {
+            sp40 = malloc(sp4C);
+            func_8060B140(sp50, sp40, &sp4C, 0, 0, 0, 0);
+            func_8066AEE4(sp40, var_v0);
+        } else {
+            func_8060B140(sp50, var_v0, &sp4C, 0, 0, 0, 0);
+        }
+    } else {
+        if (D_807F9680 == 0xC0) {
+            func_80732354(6, 0, 0, 0);
+        }
+        var_v1 = &D_807FA8A0[D_807F9680];
+        var_v1->unk8 = D_80748E18[pointerTableIndex];
+        if (D_80748E18[pointerTableIndex] != 0) {
+            var_v1 = &D_807FA8A0[D_807F9680];
+            var_v1->unk0 = malloc(sp4C);
+            var_v1->unk4 = var_v0;
+        } else {
+            var_v1->unk4 = var_v0;
+            var_v1->unk0 = var_v0;
+        }
+        osInvalDCache(var_v1->unk0, sp4C);
+        osPiStartDma(&D_807F9688[D_807F9680].unk0, 0, 0, sp50, D_807FA8A0[D_807F9680].unk0, sp4C, &D_807656D0);
+        D_807F9680 += 1;
+    }
+    func_8066B4AC(pointerTableIndex, fileIndex, var_v0);
+    func_8066B8C8(var_v0, pointerTableIndex, fileIndex);
+    D_807F967C = 0;
+    D_807F9678 = 0;
+    return var_v0;
+}
+*/
+
+void func_8066B424(void) {
+    D_807F967D = 1;
+}
 
 // It's usually a file from a pointer table in arg0
 void func_8066B434(void *arg0, s32 arg1, s32 arg2) {
@@ -818,6 +959,7 @@ void func_8066B7AC(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B7F4.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B8C8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B924.s")
