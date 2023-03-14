@@ -388,6 +388,7 @@ void func_8002BBD0(Actor *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002BC2C.s")
 
+// aaD use
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002BCB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002BCD4.s")
@@ -463,14 +464,6 @@ void func_8002D0FC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002D2C0.s")
 
 extern f32 D_800300E8;
-
-typedef struct RaceStruct11 {
-    u16 unk0;
-    s16 unk2;
-    u8 pad4[0x30];
-} RaceStruct11;
-
-extern RaceStruct11 D_807FD63C[];
 
 typedef struct RaceStruct12 {
     u8 pad0[0x26];

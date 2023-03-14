@@ -258,8 +258,69 @@ f32 func_806F1B90(f32 *arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F2EDC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F2FC0.s")
+typedef struct {
+    u8 unk0[0x8E - 0x0];
+    u8 unk8E;
+    u8 unk8F;
+    u8 unk90;
+    u8 unk91;
+} Struct806F2FC0;
 
+void func_8068581C(s32, s16, f32, f32, f32, f32, s32);
+
+void func_806F2FC0(s32 arg0, Struct806F2FC0 *arg1, u16 arg2) {
+    s32 var_v0;
+    s32 var_v1;
+
+    switch (arg2) {
+        case 0:
+            if (arg1->unk8E != 0) {
+                if ((arg1->unk8E == 0x10) && (arg1->unk8F < 4)) {
+                    arg1->unk8F = 0;
+                    return;
+                }
+            } else {
+                if (arg1->unk8F >= 4) {
+                    func_8068581C(arg0, 0xA, 0.3f, 0.0f, 0.0f, 0.0f, -0xA);
+                    return;
+                }
+                return;
+            }
+            break;
+        case 1:
+            var_v1 = 0;
+            if ((arg1->unk8E != 0) && (arg1->unk8E != 3)) {
+                if ((arg1->unk8E == 0x10) && (arg1->unk8F < 6)) {
+                    arg1->unk8F = 0;
+                }
+            } else if (arg1->unk8F >= 6) {
+                var_v1 = 1;
+            }
+            if (var_v1 != 0) {
+                if (arg1->unk8E != 0) {
+                    var_v0 = arg1->unk90 + 9 & 0xFFFF;
+                } else {
+                    var_v0 = arg1->unk91 + 9 & 0xFFFF;
+                }
+                func_8068581C(arg0, var_v0, 0.2f, 0.0f, 0.0f, 0.0f, -0xA);
+                return;
+            }
+            break;
+        case 4:
+        case 5:
+            if (arg1->unk8E != 0) {
+                if ((arg1->unk8E == 0x10) && (arg1->unk8F < 3)) {
+                    arg1->unk8F = 0;
+                    return;
+                }
+            } else if (arg1->unk8F >= 3) {
+                func_8068581C(arg0, 0xA, 0.6f, 0.0f, 0.0f, 0.0f, -0xA);
+            }
+            break;
+    }
+}
+
+// Jumptable, Actor* arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F3190.s")
 
 void func_806F3760(s16 map) {
@@ -272,7 +333,32 @@ void func_806F3760(s16 map) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F37BC.s")
+typedef struct {
+    s16 unk0; // X
+    s16 unk2; // Y
+    s16 unk4; // Z
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s16 unk14;
+    s16 unk16;
+} Struct806F37BC;
+
+void func_806F37BC(Actor *arg0, Struct806F37BC *arg1) {
+    s16 temp_v0;
+
+    func_80672C30();
+    arg0->x_position = arg1->unk0;
+    arg0->y_position = arg1->unk2;
+    arg0->z_position = arg1->unk4;
+    temp_v0 = func_80665DE0(arg1->unk12, arg1->unk16, arg1->unk0, arg1->unk4);
+    arg0->unkEE = temp_v0;
+    arg0->y_rotation = temp_v0;
+}
 
 void func_806F386C(u8, Actor*, Actor*, s16, u8);
 
