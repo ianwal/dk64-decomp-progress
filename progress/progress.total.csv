@@ -1804,7 +1804,7 @@ us,.code,func_8062E040,440,no
 us,.code,func_80682E38,532,no
 us,.code,func_8067B290,8,yes
 us,.code,func_806A081C,72,yes
-us,.code,func_8066BC00,92,no
+us,.code,func_8066BC00,92,yes
 us,.code,getEEPROMSaveSlot,68,yes
 us,.code,func_806B02EC,104,yes
 us,.code,func_8063DC58,528,no
@@ -3037,7 +3037,7 @@ us,.code,func_806D2904,80,yes
 us,.code,func_806EAAA0,164,yes
 us,.code,func_80611154,12,yes
 us,.code,func_807184F4,468,no
-us,.code,func_8066AF40,224,no
+us,.code,func_8066AF40,224,yes
 us,.code,func_8069A750,120,no
 us,.code,func_806EBFD0,68,yes
 us,.code,func_80600590,228,no

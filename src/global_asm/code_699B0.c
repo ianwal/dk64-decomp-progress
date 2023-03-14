@@ -704,11 +704,46 @@ int func_80669C6C(GlobalASMStruct80 *arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066AC10.s")
 
+/*
+// TODO: Hmmm, matrix?
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+    f32 unk3C;
+    f32 unk40;
+    f32 unk44;
+} Struct8066AC10;
+
+s32 func_8066AC10(Struct8066AC10 *arg0) {
+    f32 sp4[9]; // TODO: Try 10 size
+
+    sp4[6] = arg0->unk2C - arg0->unk24;
+    sp4[8] = arg0->unk44 - arg0->unk3C;
+    sp4[2] = arg0->unk28 - arg0->unk24;
+    sp4[4] = arg0->unk40 - arg0->unk3C;
+    return (sp4[2] * sp4[8]) - (sp4[6] * sp4[4]) <= 0.0;
+}
+*/
+
+// TODO: Similar to above ^^ same struct arg1?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066ACA4.s")
 
 extern s32 D_8000DDCC;
 extern void *D_807F9520;
-extern s32 D_807F9528[];
+extern s32 *D_807F9528[];
 extern s32 D_807F9628[];
 extern s32 D_807F9678;
 extern s32 D_807F9680;
@@ -725,7 +760,7 @@ void func_8066ADA0(void) {
     D_807F9520 = malloc(0x80);
     func_8060B140(D_8000DDCC, D_807F9520, &sp40, 0, 0, 0, 0);
     for (i = 0; i < 0x20; i++) {
-        D_807F9528[i] = 0;
+        D_807F9528[i] = NULL;
         D_807F95A8[i] = 0;
     }
     for (i = 0; i < 0x14; i++) {
@@ -759,43 +794,6 @@ void func_8066AEE4(s32 arg0, s32 arg1) {
     func_8061130C(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066AF40.s")
-
-s32 func_8066B020(s32 arg0, s32 arg1) {
-    s32 sp1C;
-    s32 sp18;
-
-    func_8066B5F4(arg0);
-    func_8066B4D4(arg0, arg1, &sp1C, &sp18);
-    if (sp18 == 0) {
-        return 0;
-    }
-    return sp1C;
-}
-
-s32 func_8066B06C(s32 arg0, s32 arg1) {
-    s32 sp1C;
-    s32 sp18;
-
-    if (D_80748E18[arg0] != 0) {
-        sp18 = *(D_807FB1A0[arg0] + arg1);
-    } else {
-        func_8066B5F4(arg0);
-        func_8066B4D4(arg0, arg1, &sp1C, &sp18);
-    }
-    return sp18;
-}
-
-void func_8066B0DC(void) {
-    D_807F967C = 1;
-}
-
-void func_8066B0EC(s32 arg0) {
-    D_807F9678 = arg0;
-}
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/getPointerTableFile.s")
-
 //forward decl needed
 void func_8066B4AC(s32,s32,s32);
 s32  func_8066B9F4(void*);
@@ -827,7 +825,68 @@ typedef struct {
 extern Struct807F9688 D_807F9688[];
 extern Struct807FA8A0 D_807FA8A0[];
 
+extern s8 D_80746834;
+extern void *D_80748E14;
+extern s32 D_807F9680;
+
+void func_8066AF40(void) {
+    s32 i;
+
+    for (i = 0; i < D_807F9680; i++) {
+        D_80746834 = 7;
+        osRecvMesg(&D_807656D0, NULL, 1);
+        D_80746834 = 0;
+        if (D_807FA8A0[i].unk8 != 0) {
+            func_8066AEE4(D_807FA8A0[i].unk0, D_807FA8A0[i].unk4);
+        }
+    }
+    if (D_80748E14 != NULL) {
+        func_8061130C(D_80748E14);
+        D_80748E14 = NULL;
+    }
+    D_807F9680 = 0;
+}
+
+s32 func_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3);
+
+s32 func_8066B020(s32 arg0, s32 arg1) {
+    s32 sp1C;
+    s32 sp18;
+
+    func_8066B5F4(arg0);
+    func_8066B4D4(arg0, arg1, &sp1C, &sp18);
+    if (sp18 == 0) {
+        return 0;
+    }
+    return sp1C;
+}
+
+// getUncompressedFileSize()?
+s32 func_8066B06C(s32 arg0, s32 arg1) {
+    s32 sp1C;
+    s32 sp18;
+
+    if (D_80748E18[arg0] != 0) {
+        sp18 = *(D_807FB1A0[arg0] + arg1);
+    } else {
+        func_8066B5F4(arg0);
+        func_8066B4D4(arg0, arg1, &sp1C, &sp18);
+    }
+    return sp18;
+}
+
+void func_8066B0DC(void) {
+    D_807F967C = 1;
+}
+
+void func_8066B0EC(s32 arg0) {
+    D_807F9678 = arg0;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/getPointerTableFile.s")
+
 /*
+// ./diff.sh 0x6FDF8
 void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, s32 arg2, u8 arg3) {
     u32 sp50;
     s32 temp;
@@ -907,6 +966,8 @@ void func_8066B424(void) {
     D_807F967D = 1;
 }
 
+void func_8066BC00(s32 arg0, s32 arg1, s32 arg2);
+
 // It's usually a file from a pointer table in arg0
 void func_8066B434(void *arg0, s32 arg1, s32 arg2) {
     s32 sp1C;
@@ -932,6 +993,37 @@ void func_8066B4AC(s32 arg0, s32 arg1, s32 arg2) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B4D4.s")
+
+extern s32 D_8000DDCC;
+
+s32 func_800057B0(s32, s32, f32, s32);
+
+/*
+// TODO: Pretty close, s16/u16 and stack nonsense
+s32 func_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3) {
+    s16 var_t0;
+    s32 sp40;
+    s32 sp3C;
+    s32 sp38;
+    s32 sp2C;
+    s32 temp_v0;
+    s32 *temp_t1;
+
+    temp_t1 = &D_807F9528[arg0][arg1];
+    temp_v0 = temp_t1[0];
+    var_t0 = arg1;
+    if (temp_v0 & 0x80000000) {
+        sp2C = 8;
+        func_8060B140(D_8000DDCC + (temp_v0 & 0x7FFFFFFF), &sp38, &sp2C, 0, 0, 0, 0);
+        var_t0 = func_800057B0(sp38, sp3C, 0, 0x30);
+        func_8066B4D4(arg0, var_t0, arg2, arg3);
+    } else {
+        *arg2 = D_8000DDCC + temp_v0;
+        *arg3 = temp_t1[1] - temp_v0;
+    }
+    return var_t0;
+}
+*/
 
 s32 func_8066B5C8(s32 arg0, s32 arg1) {
     s32 *temp_v0;
@@ -974,7 +1066,10 @@ s32 func_8066B9F4(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BB44.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BC00.s")
+void func_8066BC00(s32 arg0, s32 arg1, s32 arg2) {
+    s32 sp1C = func_8066C2B4(arg0);
+    D_807F9628[sp1C] = func_8066BC5C(D_807F9628[sp1C], arg0, arg1, arg2);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BC5C.s")
 
