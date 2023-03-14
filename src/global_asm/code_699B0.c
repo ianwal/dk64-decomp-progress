@@ -747,8 +747,8 @@ extern s32 *D_807F9528[];
 extern s32 D_807F9628[];
 extern s32 D_807F9678;
 extern s32 D_807F9680;
-extern s8 D_807FB220;
-extern s8 D_807FB221;
+extern u8 D_807FB220;
+extern u8 D_807FB221;
 
 void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 
@@ -1054,25 +1054,6 @@ void func_8066B7AC(s32 arg0, s32 arg1, s32 arg2) {
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B8C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B924.s")
-
-s32 func_8066B9F4(void *arg0) {
-    return func_8066BB44(D_807F9628[func_8066C2B4(arg0)], arg0);
-}
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BA2C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BAB8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BB44.s")
-
-void func_8066BC00(s32 arg0, s32 arg1, s32 arg2) {
-    s32 sp1C = func_8066C2B4(arg0);
-    D_807F9628[sp1C] = func_8066BC5C(D_807F9628[sp1C], arg0, arg1, arg2);
-}
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BC5C.s")
-
 typedef struct global_asm_struct_40 GlobalASMStruct40;
 
 struct global_asm_struct_40 {
@@ -1087,6 +1068,98 @@ struct global_asm_struct_40 {
     GlobalASMStruct40 *unk14; // Doubly linked list?
     GlobalASMStruct40 *unk18; // Doubly linked list?
 };
+
+GlobalASMStruct40 *func_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s32 arg2, s32 arg3) {
+    GlobalASMStruct40 *temp_v0;
+
+    if (arg0 == NULL) {
+        arg0 = malloc(sizeof(GlobalASMStruct40));
+        arg0->unkC = 1;
+        arg0->unk0 = arg1;
+        arg0->unk4 = arg2;
+        arg0->unk8 = arg3;
+        arg0->unk10 = D_807F967C;
+        arg0->unk18 = NULL;
+        arg0->unk14 = NULL;
+    } else {
+        if (arg1 == arg0->unk0) {
+            arg0->unkC++;
+            if (D_807F967C != 0) {
+                arg0->unk10 = 1;
+            }
+        } else if (arg0->unk0 < arg1) {
+            arg0->unk18 = func_8066B924(arg0->unk18, arg1, arg2, arg3);
+        } else {
+            arg0->unk14 = func_8066B924(arg0->unk14, arg1, arg2, arg3);
+        }
+    }
+    return arg0;
+}
+
+s32 func_8066B9F4(void *arg0) {
+    return func_8066BB44(D_807F9628[func_8066C2B4(arg0)], arg0);
+}
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    u16 unk8;
+    u8 unkA;
+} Struct807FB228;
+
+extern Struct807FB228 D_807FB228[];
+
+void func_8066BA2C(s32 arg0, u8 *arg1, u16 *arg2, s32 *arg3) {
+    s32 var_v0;
+
+    var_v0 = D_807FB221 - 1;
+    if (var_v0 < 0) {
+        var_v0 = 0x3F;
+    }
+    while (var_v0 != D_807FB220) {
+        if (arg0 == D_807FB228[var_v0].unk4) {
+            *arg1 = D_807FB228[var_v0].unkA;
+            *arg2 = D_807FB228[var_v0].unk8;
+            *arg3 = D_807FB228[var_v0].unk0;
+            return;
+        }
+        var_v0 -= 1;
+        if (var_v0 < 0) {
+            var_v0 = 0x3F;
+        }
+    }
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BAB8.s")
+
+/*
+// TODO: Regalloc :(
+void func_8066BAB8(s32 arg0, s8 arg1, s16 arg2) {
+    D_807FB228[D_807FB221].unk0 = object_timer;
+    D_807FB228[D_807FB221].unk4 = arg0;
+    D_807FB228[D_807FB221].unkA = arg1;
+    D_807FB228[D_807FB221].unk8 = arg2;
+    D_807FB221++;
+    if (D_807FB221 == 0x40) {
+        D_807FB221 = 0;
+    }
+    if (D_807FB220 == D_807FB221) {
+        D_807FB220++;
+        if (D_807FB220 == 0x40) {
+            D_807FB220 = 0;
+        }
+    }
+}
+*/
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BB44.s")
+
+void func_8066BC00(s32 arg0, s32 arg1, s32 arg2) {
+    s32 sp1C = func_8066C2B4(arg0);
+    D_807F9628[sp1C] = func_8066BC5C(D_807F9628[sp1C], arg0, arg1, arg2);
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BC5C.s")
 
 typedef struct {
     s32 unk0;

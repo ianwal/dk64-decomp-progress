@@ -724,7 +724,7 @@ us,.code,func_805FF628,56,yes
 us,.code,func_80724308,720,no
 us,.code,func_80685390,400,no
 us,.code,func_806CEE64,116,yes
-us,.code,func_8066BA2C,140,no
+us,.code,func_8066BA2C,140,yes
 us,.code,func_8060151C,196,yes
 us,.code,func_806022DC,56,no
 us,.code,func_8071E3EC,1144,no
@@ -3285,7 +3285,7 @@ us,.code,func_80703850,608,no
 us,.code,func_80601848,68,yes
 us,.code,loadExits,136,yes
 us,.code,func_8073876C,1076,no
-us,.code,func_8066B924,208,no
+us,.code,func_8066B924,208,yes
 us,.code,func_806FBD5C,336,no
 us,.code,func_806FF75C,976,no
 us,.code,func_806616A0,512,no
