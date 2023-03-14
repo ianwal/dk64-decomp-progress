@@ -1043,17 +1043,6 @@ s32 func_8066B5C8(s32 arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B75C.s")
 
 //forward declaration needed here
-u32 func_8066C2B4(u32);
-extern s32 D_807F9628[];
-void func_8066B7AC(s32 arg0, s32 arg1, s32 arg2) {
-    func_8066B7F4(D_807F9628[func_8066C2B4(arg0)], arg0, arg1, arg2);
-}
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B7F4.s")
-
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B8C8.s")
-
 typedef struct global_asm_struct_40 GlobalASMStruct40;
 
 struct global_asm_struct_40 {
@@ -1068,10 +1057,21 @@ struct global_asm_struct_40 {
     GlobalASMStruct40 *unk14; // Doubly linked list?
     GlobalASMStruct40 *unk18; // Doubly linked list?
 };
+u32 func_8066C2B4(u32);
+GlobalASMStruct40 *func_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s32 arg2, s32 arg3);
+extern s32 D_807F9628[];
+void func_8066B7AC(s32 arg0, s32 arg1, s32 arg2) {
+    func_8066B7F4(D_807F9628[func_8066C2B4(arg0)], arg0, arg1, arg2);
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B7F4.s")
+
+void func_8066B8C8(u32 arg0, s32 arg1, s32 arg2) {
+    u32 sp1C = func_8066C2B4(arg0);
+    D_807F9628[sp1C] = func_8066B924(D_807F9628[sp1C], arg0, arg1, arg2);
+}
 
 GlobalASMStruct40 *func_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s32 arg2, s32 arg3) {
-    GlobalASMStruct40 *temp_v0;
-
     if (arg0 == NULL) {
         arg0 = malloc(sizeof(GlobalASMStruct40));
         arg0->unkC = 1;
@@ -1095,6 +1095,25 @@ GlobalASMStruct40 *func_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s32 arg2, s3
     }
     return arg0;
 }
+
+// TODO: Is this GlobalASMStruct40 again?
+typedef struct {
+    s32 unk0;
+    s16 unk4;
+    s8 unk6;
+    u8 unk7;
+    s16 unk8;
+    u16 unkA;
+    s32 unkC;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    s32 unk14;
+    s32 unk18;
+} Struct8066BB44;
+
+s32 func_8066BB44(Struct8066BB44 *arg0, u32 arg1);
 
 s32 func_8066B9F4(void *arg0) {
     return func_8066BB44(D_807F9628[func_8066C2B4(arg0)], arg0);
@@ -1152,7 +1171,30 @@ void func_8066BAB8(s32 arg0, s8 arg1, s16 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BB44.s")
+s32 func_8066BB44(Struct8066BB44 *arg0, u32 arg1) {
+    s8 sp2F;
+    s16 sp2C;
+    s32 sp28;
+
+    if (arg0 == NULL) {
+        sp2F = 0;
+        sp2C = 0;
+        sp28 = 0;
+        func_8066BA2C(arg1, &sp2F, &sp2C, &sp28);
+        return 0;
+    }
+    if (arg1 == arg0->unk0) {
+        if (arg0->unk10 == 0) {
+            arg0->unkC = arg0->unkC - 1;
+        }
+        func_8066BAB8(arg1, arg0->unk7, arg0->unkA, arg0);
+        return arg0->unkC;
+    }
+    if (arg0->unk0 < arg1) {
+        return func_8066BB44(arg0->unk18, arg1);
+    }
+    return func_8066BB44(arg0->unk14, arg1);
+}
 
 void func_8066BC00(s32 arg0, s32 arg1, s32 arg2) {
     s32 sp1C = func_8066C2B4(arg0);
@@ -1239,6 +1281,8 @@ void func_8066BDE0() {
     }
 }
 
+void func_8066BFF0(GlobalASMStruct40 *arg0, GlobalASMStruct40 *arg1, s32 *arg2);
+
 void func_8066BE20(s32 arg0) {
     s32 temp_v0;
     s32 *sp30;
@@ -1292,6 +1336,24 @@ GlobalASMStruct40 *func_8066BF0C(GlobalASMStruct65 *arg0, s32 arg1, s32 arg2) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BFF0.s")
+
+/*
+// TODO: Close, not sure what's wrong
+void func_8066BFF0(GlobalASMStruct40 *arg0, GlobalASMStruct40 *arg1, s32 *arg2) {
+    if (arg0) {
+        do {
+            arg1[*arg2].unk0 = arg0->unk0;
+            arg1[*arg2].unk4 = arg0->unk4;
+            arg1[*arg2].unk8 = arg0->unk8;
+            arg1[*arg2].unkC = arg0->unkC;
+            arg1[*arg2].unk10 = arg0->unk10;
+            *arg2 += 1;
+            func_8066BFF0(arg0->unk14, arg1, arg2);
+            arg0 = arg0->unk18;
+        } while (arg0 != NULL);
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066C0DC.s")
 
