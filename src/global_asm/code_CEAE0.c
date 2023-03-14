@@ -33,8 +33,6 @@ extern s32 D_8071FB08; // TODO: Proper datatype
 extern s32 D_8071FFA0;
 extern s32 D_8071FF18;
 
-extern s8 D_8074E77C[];
-
 extern s32 D_80750FDC;
 extern u8 D_80750AB8;
 
@@ -7114,7 +7112,63 @@ void func_806E9468(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E9580.s")
+u8 func_806E9580(void) {
+    f32 temp_f2;
+    f32 sp24; // TODO: Hmm, can we get rid of this?
+    f32 var_f0;
+    u8 sp1B;
+    s32 var_v1;
+
+    sp1B = 0;
+    extra_player_info_pointer->unk24 = 0;
+    var_v1 = 0x1E;
+    if (current_actor_pointer->unk6A & 4) {
+        if (current_actor_pointer->y_velocity <= 0.0f) {
+            if (current_actor_pointer->y_velocity > -150.0f) {
+                current_actor_pointer->y_velocity = current_actor_pointer->y_velocity;
+            } else {
+                current_actor_pointer->y_velocity = -150.0f;
+            }
+            temp_f2 = current_actor_pointer->unkAC - current_actor_pointer->y_position;
+            if (character_change_array[cc_player_index].unk2C0 == 2) {
+                var_v1 = 0x3C;
+            }
+            if ((var_v1 < temp_f2) && (sp24 = temp_f2, (playerCanDive() != 0))) {
+                func_806EB0C0(0x3E, NULL, cc_player_index);
+                func_806CA2AC();
+            } else {
+                if (current_actor_pointer->unk6A & 1) {
+                    if (character_change_array[cc_player_index].unk2C0 == 1) {
+                        var_f0 = D_8075386C[D_807FD584];
+                    } else {
+                        var_f0 = D_8075389C[D_807FD584];
+                    }
+                    if (var_f0 < temp_f2) {
+                        func_806EB0C0(0x3D, NULL, cc_player_index);
+                        sp1B = 1;
+                        func_806CA2AC();
+                    }
+                } else {
+                    if (character_change_array[cc_player_index].unk2C0 == 1) {
+                        var_f0 = D_8075388C[D_807FD584];
+                    } else {
+                        var_f0 = D_807538C8[D_807FD584];
+                    }
+                    if (var_f0 < (current_actor_pointer->distance_from_floor + temp_f2)) {
+                        func_806EB0C0(0x3D, NULL, cc_player_index);
+                        func_80614EBC(current_actor_pointer, 0);
+                        if (extra_player_info_pointer->unkC4 != 0) {
+                            func_80737924(extra_player_info_pointer->unkC4);
+                        }
+                        sp1B = 1;
+                        func_806CA2AC();
+                    }
+                }
+            }
+        }
+    }
+    return sp1B;
+}
 
 void func_806E9804(s16 arg0) {
     // Do we have the camera and are we pressing C-Down

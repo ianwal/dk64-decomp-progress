@@ -54,6 +54,8 @@ current_map = 0x8076A0A8;
 current_exit = 0x8076A0AC;
 newly_pressed_input = 0x807ECD48;
 newly_pressed_input_copy = 0x807ECD66;
+current_menu_selection = 0x8076A0D1;
+current_file_selection = 0x8076A0D2;
 
 D_80033D54 = 0x80033D54;
 D_1000118 = 0x1000118;

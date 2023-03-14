@@ -430,14 +430,13 @@ typedef struct {
 
 extern Struct80753EA0 D_80753EA0[];
 extern f32 D_8075D850;
-extern s32 D_8076A0A8;
 
 f32 func_806F46B0(s16 arg0) {
     s16 i;
     s32 max = 0xD; // TODO: Why does this need to be a temp variable?
 
     for (i = 0; i < max; i++) {
-        if ((D_8076A0A8 == D_80753EA0[i].unk0) && (((arg0 == D_80753EA0[i].unk2)) || (D_80753EA0[i].unk2 == -1))) {
+        if ((current_map == D_80753EA0[i].unk0) && (((arg0 == D_80753EA0[i].unk2)) || (D_80753EA0[i].unk2 == -1))) {
             return D_80753EA0[i].unk4;
         }    
     }

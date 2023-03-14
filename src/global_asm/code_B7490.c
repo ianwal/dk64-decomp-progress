@@ -7,8 +7,6 @@ extern f32 D_8075B5C0;
 extern f64 D_8075B708;
 extern f64 D_8075B710;
 
-extern s32 D_8076A064;
-
 extern u8 D_807FBD70;
 
 void func_80614D00(Actor*, f32, f32);
@@ -362,7 +360,7 @@ void func_806B4194(void) {
         default:
             phi_v0 = 0;
     }
-    if (phi_v0 && ((D_8076A064 % phi_v0) == 0)) {
+    if (phi_v0 && ((object_timer % phi_v0) == 0)) {
         func_80714998(3);
         func_807149C8(sp2E, sp2E, sp2E, current_actor_pointer->shadow_opacity);
         func_8068588C(current_actor_pointer, 1, sp28, 0.0f, 0.0f, 0.0f, -0x50);

@@ -285,7 +285,6 @@ void func_806C1CCC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806C1E44.s")
 
 extern s32 D_80720B58; // TODO: Datatype
-extern s32 D_8076A064; // TODO: Datatype (bitfield?)
 
 extern s32 D_807197B4; // TODO: Datatype
 extern s32 D_8071FF58; // TODO: Datatype
@@ -336,7 +335,7 @@ void func_806C1E44(void) {
                     current_actor_pointer->control_state_progress = 2;
                     // Fallthrough
                 case 2:
-                    if (!(D_8076A064 & 7)) {
+                    if (!(object_timer & 7)) {
                         if (D_807FDC90->unk2C != 0) {
                             D_807FDC90->unk2C--;
                             if (D_807FDC90->unk2C == 0) {

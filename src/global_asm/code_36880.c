@@ -412,7 +412,6 @@ struct struct_807F6160 {
 };
 
 extern Struct807F6160 *D_807F6160;
-extern s32 D_8076A064;
 
 void func_8063643C(void) {
     D_807F6160 = NULL;
@@ -430,7 +429,7 @@ void func_80636448(s32 arg0, s32 arg1, s32 arg2, s32 arg3, void *arg4) {
     new->unk4 = arg1;
     new->unk8 = arg2;
     new->unkC = arg3;
-    new->unk14 = D_8076A064 + 2;
+    new->unk14 = object_timer + 2;
     new->unk10 = arg4;
 }
 

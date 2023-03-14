@@ -171,7 +171,7 @@ loop_1:
             break;
     }
     if (temp_s0 > 0) {
-        var_a1 = var_v1 + (D_8074E77C * 0x2A) + var_a2;
+        var_a1 = var_v1 + (current_character_index * 0x2A) + var_a2;
 loop_12:
         temp_a0 = var_a1->unk0;
         var_a2 += 6;

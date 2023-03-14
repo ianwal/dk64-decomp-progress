@@ -11,7 +11,6 @@ s32 func_8060C6B8(s32, s32, s32, u8);
 extern s32 D_807F5D10;
 extern s8 opening_cutscene_transition;
 extern s8 D_80745844;
-extern s8 D_8076A0D1;
 extern f32 adventure_barrel_scale;
 extern f32 adventure_icon_scale;
 extern f32 battle_barrel_scale;
@@ -129,7 +128,7 @@ void func_80028834(Actor *arg0, s32 arg1) {
     player_pointer->control_state_progress = 0;
     D_80745844 = func_8060C6B8(0x1E, 0, 0, 0);
     func_80027E10();
-    MaaD->unk17 = D_8076A0D1;
+    MaaD->unk17 = current_menu_selection;
     temp = &D_80721444;
     func_80030894(MaaD, &D_80720C34, 0xA0, 0xD2, 0.75f, 2, 0);
     func_80030894(MaaD, temp, 0, 0, adventure_barrel_scale, 2, 0x12);
