@@ -2853,7 +2853,7 @@ us,.code,func_806EB400,180,no
 us,.code,func_80712628,12,yes
 us,.code,alEvtqPostEvent,384,yes
 us,.code,func_8064B204,92,no
-us,.code,func_8060C8AC,712,no
+us,.code,func_8060C8AC,712,yes
 us,.code,func_805FCA94,1348,no
 us,.code,func_8064BB4C,44,yes
 us,.code,func_8072ED90,12,yes
@@ -2909,7 +2909,7 @@ us,.code,func_8068BBF8,1160,no
 us,.code,func_806D0408,40,yes
 us,.code,func_806897F0,184,yes
 us,.code,func_8066BB44,188,yes
-us,.code,func_8060D14C,380,no
+us,.code,func_8060D14C,380,yes
 us,.code,func_80650E20,172,no
 us,.code,func_806EB4B4,68,yes
 us,.code,func_806998E8,8,yes

@@ -12,7 +12,7 @@ u16 func_80631C20(u8);
 u32 func_806F8EDC(s32, s32); // getMaxItemCapacity(HUDItemIndex, playerIndex)
 
 extern s32 D_807EDEAC;
-extern s32 D_807ECCF0;
+extern OSMesgQueue D_807ECCF0;
 extern u8 D_807467E0;
 extern OSMesg D_807EE0B0;
 extern OSMesgQueue D_807EE0D0;
@@ -27,6 +27,13 @@ extern u8 D_807EDEB0[];
 extern u8 D_807ECEA8[];
 extern OSMesgQueue D_807F02B8;
 extern u8 D_807FC952;
+
+extern s32 D_807467C0;
+extern s8 D_807467C4;
+extern s8 D_807467CC;
+extern u8 D_807ED6A8[];
+
+void func_8060B84C(f32);
 
 #define	FILE_SIZE (((D_807ECEA0 + 0x6B7 & -64) + 0x27) & -8)
 #define	FILE_SIZE_BYTES FILE_SIZE / 8
@@ -126,8 +133,10 @@ void func_8060C340(s16 *arg0, s32 arg1, s32 arg2, u8 arg3, u8 arg4, u8 arg5) {
     func_8060C2C4(arg2, arg3, arg4, arg0, arg1);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060C430.s")
 
+// TODO: Is arg4 u8?
 void func_8060C648(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex, s32 arg4) {
     u16 sp26;
     u8 sp25;
@@ -153,9 +162,8 @@ s32 func_8060C724(u8 fileIndex) {
 
 /*
 void func_8060C758(u8 fileIndex, s32 arg1) {
-    s32 temp_lo = getEEPROMSaveSlot(fileIndex) * FILE_SIZE_BYTES;
     current_file = fileIndex;
-    bzero(&D_807ECEA8[temp_lo], FILE_SIZE_BYTES);
+    bzero(&D_807ECEA8[getEEPROMSaveSlot(fileIndex) * FILE_SIZE_BYTES], FILE_SIZE_BYTES);
     func_8060C648(0xC, 0, 0, fileIndex, 1);
     func_8060C648(0xF, 0, 0, fileIndex, fileIndex);
     if (arg1 != 0) {
@@ -175,7 +183,58 @@ void func_8060C830(u8 fileIndex, s32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060C8AC.s")
+typedef struct {
+    s16 unk0;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+} Struct80757044;
+
+extern s32 D_807467EC[];
+extern Struct80757044 D_80744548[];
+extern Struct80757044 D_80757044[];
+extern Struct80757044 D_80757064[];
+extern Struct80757044 D_80744568[];
+
+void func_8060C8AC(u8 arg0) {
+    s32 i;
+
+    if (arg0 & 1) {
+        func_8060C648(0x11, 0, 0, 0, 0);
+    }
+    if (arg0 & 2) {
+        for (i = 0; i < 5; i++) {
+            func_8060C648(0x15, 0, i, 0, D_807467EC[i]);
+            func_8060C648(0x12, 0, i, 0, 0x20);
+            func_8060C648(0x13, 0, i, 0, 0x20);
+            func_8060C648(0x14, 0, i, 0, 0x20);
+        }
+    }
+    if (arg0 & 4) {
+        for (i = 0; i < 5; i++) {
+            func_8060C648(0x19, 0, i, 0, D_80757044[i].unk0);
+            func_8060C648(0x16, 0, i, 0, D_80757044[i].unk2);
+            func_8060C648(0x17, 0, i, 0, D_80757044[i].unk3);
+            func_8060C648(0x18, 0, i, 0, D_80757044[i].unk4);
+            D_80744548[i] = D_80757044[i];
+        }
+    }
+    if (arg0 & 8) {
+        for (i = 0; i < 5; i++) {
+            func_8060C648(0x1D, 0, i, 0, D_80757064[i].unk0);
+            func_8060C648(0x1A, 0, i, 0, D_80757064[i].unk2);
+            func_8060C648(0x1B, 0, i, 0, D_80757064[i].unk3);
+            func_8060C648(0x1C, 0, i, 0, D_80757064[i].unk4);
+            D_80744568[i] = D_80757064[i];
+        }
+    }
+    if (arg0 & 0x10) {
+        func_8060C648(0x1E, 0, 0, 0, 0);
+    }
+    if (arg0 & 0x20) {
+        func_8060C648(0x1F, 0, 0, 0, 0);
+    }
+}
 
 void func_8060CB74() {
     clearGlobalFlags();
@@ -205,7 +264,43 @@ void func_8060D0A8(void) {
     current_file = currentFileBackup;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060D14C.s")
+void func_8060D14C(void) {
+    s32 i;
+    s32 var_s2;
+    u8 *var_s1;
+
+    var_s2 = 0;
+    var_s1 = &D_807ED6A8[0];
+    if (D_807EDEAC != 2) {
+        func_8060D0A8();
+        D_807467CC = 1;
+        return;
+    }
+    D_807467C4 = 1;
+    for (i = 0;;) {
+        var_s2 |= osEepromRead(&D_807ECCF0, i, var_s1);
+        func_8060B84C(15.0f);
+        if (D_80744460 != 0) {
+            D_807467C4 = 0;
+            return;
+        }
+        i++;
+        var_s1 += 8;
+        // TODO: Is this the loop condition? Try extracting it and putting it after the loop
+        if ((i >= 0x100) || (var_s2 != 0)) {
+            D_807467C4 = 0;
+            D_807467CC = 1;
+            if (var_s2 == 0) {
+                var_s2 = func_80002B0C(((((((((((D_807ECEA0 + 0x6B7) & ~0x3F) + 0x27) & ~7) * 4) + 0x3F) & ~0x3F) + 0x207) & ~7) / 8) + &D_807ED6A8[0], D_807467C0);
+            }
+            if (var_s2 != 0) {
+                func_8060D0A8();
+            }
+            func_8060CB9C();
+            return;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060D2C8.s")
 
@@ -246,7 +341,6 @@ void func_8060D7A8(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060DC3C.s")
 
 extern s8 D_80750AC0;
-extern u8 D_807ED6A8[];
 extern s32 D_80750AB0;
 
 /*
