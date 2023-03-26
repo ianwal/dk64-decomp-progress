@@ -436,6 +436,53 @@ s32 func_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066F06C.s")
 
+extern u8 D_807444FC;
+
+/*
+// TODO: Close, doable
+void func_8066F06C(LedgeInfo *arg0) {
+    s32 temp;
+    s32 i;
+    LedgeInfo98 *spB0;
+    float sp6C[4][4];
+    s32 *var_s1;
+    s32 *var_s2;
+    s32 *var_s3;
+    s32 temp_s6;
+    s32 temp_t2;
+    s32 j;
+    u8 var_v1;
+
+    if (arg0->unk98 != NULL) {
+        if (object_timer == arg0->unk88) {
+            var_v1 = D_807444FC;
+        } else {
+            var_v1 = D_807444FC ^ 1;
+        }
+        temp_s6 = &arg0->unk74[var_v1];
+        spB0 = arg0->unk98;
+        for (i = 0; i < arg0->unk94; i++) {
+            var_s1 = &spB0->unk24;
+            var_s2 = &spB0->unk30;
+            var_s3 = &spB0->unk3C;
+            for (j = 0; j != 0xC; j += 4) {
+                if (spB0->unk48 == -1) {
+                    memcpy(&sp6C, arg0->unk70, 0x40);
+                    guMtxXFMF(&sp6C, spB0->unk0, spB0->unkC, spB0->unk18, var_s1, var_s2, var_s3);
+                } else {
+                    guMtxXFML(((spB0->unk48 >> 6) << 6) + temp_s6, spB0->unk0, spB0->unkC, spB0->unk18, var_s1, var_s2, var_s3);
+                }
+                spB0 += 4;
+                var_s1++;
+                var_s2++;
+                var_s3++;
+            }
+            spB0++;
+        }
+    }
+}
+*/
+
 u8 func_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3);
 
 u8 func_8066F1F8(Actor *arg0, s16 arg1) {
@@ -464,7 +511,7 @@ void func_80672E90(s32, s32, s32);
 void func_80674E14(Actor *);
 s8 func_80676ED0(Actor *, s16 *, s16 *);
 extern u8 D_807FB547;
-extern s8 D_807FB605;
+extern u8 D_807FB605;
 extern u8 D_807FB606;
 
 u8 func_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3) {
@@ -564,13 +611,172 @@ void func_80670F04(LedgeInfo *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80670FA4.s")
+s32 func_806730A4(s32, s32, s32, s32);
+s32 func_806734E4(s32, s32, s32, s32, s16 *, s16 *);
+extern s8 D_807FB548;
+extern u8 D_807FB61C;
+
+void func_80671260(Actor *arg0);
+
+u8 func_80670FA4(Actor *arg0, s16 *arg1, s16 *arg2) {
+    s32 pad[2]; // TODO: Yucky
+    LedgeInfo *ledgeInfo;
+    LedgeInfo8C *current;
+    u8 var_s1;
+
+    ledgeInfo = arg0->ledge_info_pointer;
+    ledgeInfo->unk24 = 0;
+    D_807FB548 = 0;
+    var_s1 = 0;
+    if (func_806730A4(ledgeInfo->unk0, ledgeInfo->unk4, ledgeInfo->unk8, ledgeInfo->unkC) != 0) {
+        if (arg0->unk64 & 0x80) {
+            D_807FB605 = 1;
+        }
+        func_80671880(arg0, 0);
+        current = ledgeInfo->unk8C;
+        while (current != NULL) {
+            if (current->unk26 != 0) {
+                if ((current->unk1C != 0) && !(current->unk27 & 1)) {
+                    var_s1 |= func_806734E4(current->unk10, current->unk14, current->unk18, current->unk1C, arg1, arg2);
+                }
+            }
+            current = current->next;
+        }
+        if (((var_s1 != 0) || (D_807FB605 != 0)) && (D_807FB61C != 0)) {
+            func_80671260(arg0);
+        }
+        D_807FB605 = 0;
+    }
+    return var_s1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_806710E0.s")
 
+/*
+extern s16 D_807FB544;
+extern s8 D_807FB546;
+extern s32 D_807FB5D0;
+
+void func_806710E0(void *arg0, ? arg1, ? arg2, ? arg3) {
+    s16 sp36;
+    s32 sp30;
+    s32 sp28;
+    s32 temp_at;
+    s32 temp_t7;
+    LedgeInfo *temp_v1;
+    LedgeInfo *temp_v1_2;
+
+    sp36 = func_806CC14C(arg0->unk48, D_807FB544);
+    temp_at = func_806CC14C((arg0->unk48 + 0x800) & 0xFFF, D_807FB544) < 0x321;
+    if ((sp36 < 0x321) || (temp_at != 0)) {
+        func_806CC14C(arg0->unk48, extra_player_info_pointer->unkEA);
+        func_806CC14C((arg0->unk48 + 0x800) & 0xFFF, extra_player_info_pointer->unkEA);
+        temp_v1 = D_807FB540->ledge_info_pointer;
+        func_806744A8(arg0, temp_v1->unk0, temp_v1->unk4, temp_v1->unk8, temp_v1->unkC);
+        temp_t7 = D_807FB5D0;
+        sp28 = temp_t7;
+        sp30 = func_80612794(D_807FB544) * 20.0f;
+        temp_v1_2 = D_807FB540->ledge_info_pointer;
+        func_806744A8(arg0, temp_v1_2->unk0 + sp30, temp_v1_2->unk4, temp_v1_2->unk8 + (func_80612790(D_807FB544) * 20.0f), temp_v1_2->unkC);
+        if ((temp_t7 - 2) < D_807FB5D0) {
+            D_807FB546 = 0;
+        }
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671260.s")
 
+s32 func_80671528(Actor *, f32 *, f32 *, f32 *, s32);
+s32 func_806732A8(f32, f32, s32, s16);
+extern s16 D_80753D50[];
+extern s16 D_80753D60[];
+extern s32 D_807FB5C4;
+extern s32 D_807FB5CC;
+extern s16 D_807FD584;
+
+extern s32 D_807FB5DC;
+extern s16 D_807FB5F6;
+
+typedef struct {
+    s8 unk0[0xE0 - 0x0];
+    f32 unkE0;
+    f32 unkE4;
+    s8 unkE8;
+} AAD80671260;
+
+/*
+void func_80671260(Actor *arg0) {
+    AAD80671260 *sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 temp_f0;
+    f32 temp_f12;
+    f32 temp_f8;
+    f32 var_f16;
+
+    if (character_change_array[cc_player_index].unk2C0 == 1) {
+        var_f16 = D_80753D50[D_807FD584];
+    } else {
+        var_f16 = D_80753D60[D_807FD584];
+    }
+    if (arg0->interactable & 1) {
+        sp48 = arg0->additional_actor_data;
+        func_80671528(arg0, &sp38, &sp3C, &sp40, 1);
+        temp_f0 = var_f16 / 8.0f;
+        temp_f8 = sp38 * temp_f0;
+        temp_f12 = D_807FB5CC / 8.0f;
+        sp40 *= temp_f0;
+        sp48->unkE0 = (D_807FB5C4 / 8.0f) - temp_f8;
+        sp48->unkE4 = temp_f12 - sp40;
+        sp48->unkE8 = 1;
+        func_8066FC0C(arg0, func_806732A8(temp_f12, 8.0f, D_807FB5DC, D_807FB5F6), arg0->ledge_info_pointer);
+    }
+    func_806713E4(arg0, 1);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_806713E4.s")
+
+extern s32 D_807FB5C4;
+extern s32 D_807FB5CC;
+extern s32 D_807FB5D0;
+
+s32 func_806717FC(Actor *arg0);
+
+/*
+void func_806713E4(Actor *arg0, u8 arg1) {
+    LedgeInfo *ledgeInfo;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 temp_f0;
+    f32 temp_f12;
+    f32 temp_f14;
+    f32 var_f10;
+
+    if (D_807FB5D0 < func_806717FC(arg0)) {
+        ledgeInfo = arg0->ledge_info_pointer;
+        func_80671528(arg0, &sp24, &sp28, &sp2C, arg1);
+        temp_f12 = D_807FB5C4 / 8.0f;
+        temp_f14 = D_807FB5CC / 8.0f;
+        if (D_807FB548 != 0) {
+            temp_f0 = func_806717FC(arg0) / 8.0f;
+            var_f10 = sp2C * temp_f0;
+            sp24 *= temp_f0;
+        } else {
+            temp_f0 = (D_807FB5D0 + 6) / 8.0f;
+            var_f10 = sp2C * temp_f0;
+            sp24 *= temp_f0;
+        }
+        sp2C = var_f10;
+        ledgeInfo->unk1C = temp_f12 - sp24;
+        ledgeInfo->unk24 = 1;
+        ledgeInfo->unk20 = temp_f14 - sp2C;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671528.s")
 
@@ -596,7 +802,48 @@ s32 func_806717FC(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671A6C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671C0C.s")
+// TODO: Matches, but could use some cleanup
+u8 func_80671C0C(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
+    LedgeInfo *sp18;
+    f32 temp = 8.f;
+    LedgeInfo90 *current;
+    LedgeInfo *temp_t7;
+    s32 var_v0_2;
+    u8 var_v0;
+    s32 pad[2];
+
+    temp_t7 = arg0->ledge_info_pointer;
+    var_v0 = 0;
+    sp18 = temp_t7;
+    if (temp_t7 != NULL) {
+        func_80671A6C(temp_t7, 1);
+        current = arg0->ledge_info_pointer->unk90;
+        var_v0_2 = arg1 - 1;
+        if ((current != NULL) && (var_v0_2 != 0)) {
+loop_3:
+            current = current->next;
+            var_v0_2 -= 1;
+            if (current != NULL) {
+                if (var_v0_2 != 0) {
+                    goto loop_3;
+                }
+            }
+        }
+        if (current == NULL) {
+            *arg4 = 0.0f;
+            *arg3 = 0.0f;
+            *arg2 = 0.0f;
+            return 0;
+        }
+        var_v0 = 1;
+        
+        *arg2 = current->unkC / temp;
+        *arg3 = current->unk10 / temp;
+        *arg4 = current->unk14 / temp;
+        return var_v0;
+    }
+    return var_v0;
+}
 
 void func_80671D10(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
     s32 phi_v0 = arg1 - 1;
@@ -614,8 +861,53 @@ void func_80671D10(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671D64.s")
 
+// extern u8 D_807444FC;
+
+/*
+// TODO: Yikes
+s32 func_80671D64(Actor *arg0, s32 arg1) {
+    LedgeInfo *temp_v0;
+    LedgeInfo90 *var_a1;
+    s32 temp_v0_2;
+    s32 temp_v1;
+    s32 var_a2;
+    u8 var_v1;
+
+    temp_v0 = arg0->ledge_info_pointer;
+    var_a2 = arg1 - 1;
+    if (object_timer == temp_v0->unk88) {
+        var_v1 = D_807444FC;
+    } else {
+        var_v1 = D_807444FC ^ 1;
+    }
+    var_a1 = temp_v0->unk90;
+    if (var_a2 != 0) {
+        temp_v1 = -(var_a2 & 3);
+        temp_v0_2 = temp_v1 + var_a2;
+        if (temp_v1 != 0) {
+            do {
+                var_a2 -= 1;
+                var_a1 = var_a1->next;
+            } while (temp_v0_2 != var_a2);
+            if (var_a2 != 0) {
+                goto loop_7;
+            }
+        } else {
+            do {
+loop_7:
+                var_a2 -= 4;
+                var_a1 = var_a1->next->next->next->next;
+            } while (var_a2 != 0);
+        }
+    }
+    return ((var_a1->unk18 >> 6) << 6) + (temp_v0 + (var_v1 * 4))->unk74;
+}
+*/
+
+// TODO: Very similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671E00.s")
 
+// Object model 2 loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671F54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80672134.s")

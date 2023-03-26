@@ -1921,14 +1921,14 @@ us,.code,func_80696A6C,1632,no
 us,.code,func_806C2A64,200,yes
 us,.code,func_80666FC8,328,yes
 us,.code,func_8065D0FC,116,yes
-us,.code,func_80671C0C,260,no
+us,.code,func_80671C0C,260,yes
 us,.code,func_806057F8,11568,no
 us,.code,func_80710CA0,1904,no
 us,.code,func_8062A944,804,no
 us,.code,func_807186C8,756,no
 us,.code,func_8069E660,196,yes
 us,.code,func_806EA958,92,yes
-us,.code,func_80670FA4,316,no
+us,.code,func_80670FA4,316,yes
 us,.code,func_806787FC,8,yes
 us,.code,func_8070DA28,76,no
 us,.code,func_807238D4,964,no

@@ -99,13 +99,13 @@ struct ledge_info_90 {
 };
 
 typedef struct {
-    s32 unk0;
+    f32 unk0; // Used
     s32 unk4;
     s32 unk8;
-    s32 unkC;
+    f32 unkC; // Used
     s32 unk10;
     s32 unk14;
-    s32 unk18;
+    f32 unk18; // Used
     s32 unk1C;
     s32 unk20;
     s32 unk24;
@@ -179,7 +179,7 @@ typedef struct ledge_info {
     u8 unk6E;
     u8 unk6F;
     u32 unk70;
-    u32 unk74;
+    u32 *unk74; // TODO: What is this?
     u32 unk78;
     s32 unk7C;
     s32 unk80; // object_timer gets written here
