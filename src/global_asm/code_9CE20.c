@@ -3,6 +3,7 @@
 #include "variables.h"
 
 
+// Huge, actor stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9CE20/func_80698120.s")
 
 void func_80698FEC(void) {

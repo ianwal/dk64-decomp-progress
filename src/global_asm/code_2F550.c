@@ -240,7 +240,36 @@ void func_8062BA0C(f32 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BA74.s")
+typedef struct {
+    void* unk0;
+    void* unk4;
+} Struct8062BA74_1;
+
+typedef struct {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+    s8 unk3;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct8062BA74_2;
+
+void *func_8062BA74(Struct8062BA74_1 *arg0) {
+    Struct8062BA74_2 *temp_v0;
+
+    if (arg0 == NULL) {
+        return NULL;
+    }
+    temp_v0 = malloc(sizeof(Struct8062BA74_2));
+    temp_v0->unk4 = 0;
+    temp_v0->unk8 = 0;
+    temp_v0->unk1 = 3;
+    temp_v0->unkC = func_8062BA74(arg0->unk0);
+    temp_v0->unk10 = func_8062BA74(arg0->unk4);
+    return temp_v0;
+}
 
 void func_8062BAE4(void) {
     func_8063B4A4();
@@ -373,6 +402,24 @@ void func_8062D3E4(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062DAF4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062DB70.s")
+
+/*
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct807F5E50;
+
+extern Struct807F5E50 D_807F5E50;
+
+void func_8062DB70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
+    D_807F5E50.unk0 = arg3 - arg0;
+    D_807F5E50.unk8 = arg5 - arg2;
+    D_807F5E50.unk4 = arg4 - arg1;
+    D_807F5E50.unkC = -((D_807F5E50.unk8 * arg2) + ((D_807F5E50.unk0 * arg0) + (D_807F5E50.unk4 * arg1)));
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062DBDC.s")
 

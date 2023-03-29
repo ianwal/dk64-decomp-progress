@@ -225,10 +225,10 @@ void func_8069D2AC(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DC80.s")
 
+void func_8069DC10(s32, void*, u8);
 void func_8068842C(Actor*, s32, s16);
 void func_80688370(Actor*, s32, f32);
 void func_80688320(Actor*, s32, s32, void*);
-void func_8069DC10(s32, void*, u8);
 s32 func_806FBB9C(s16 textureIndex);
 
 /*
@@ -250,27 +250,29 @@ void *func_8069DC80(u8 arg0, s32 arg1, u8 arg2, u8 arg3, u8 arg4) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DD40.s")
-
-/*
 extern u16 D_807446C0[];
 extern s16 D_807FC930[];
 
-// TODO: Surprisingly close, just need to figure out which aaD type it is
-// Will possibly be the same as the function below this one
+// TODO: Add to aaD union
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+} AAD_8069DD40;
+
 void func_8069DD40(void) {
-    PlayerAdditionalActorData *temp_s1;
-    s32 temp_v0;
+    s32 pad[3]; // TODO: Can we get rid of this somehow?
+    AAD_8069DD40 *temp_s1;
     u16 temp_s0;
-    s32 phi_t0;
+    s32 levelIndex;
 
     temp_s1 = current_actor_pointer->additional_actor_data;
     if (((current_actor_pointer->object_properties_bitfield & 0x10) == 0) || (extra_player_info_pointer->unk1F0 & 0x20000)) {
-        phi_t0 = getLevelIndex(D_8076A0AB, FALSE);
-        if (phi_t0 >= 8) {
-            phi_t0 = 0;
+        levelIndex = getLevelIndex(D_8076A0AB, FALSE);
+        if (levelIndex >= 8) {
+            levelIndex = 0;
         }
-        temp_s0 = D_807FC930[phi_t0];
+        temp_s0 = D_807FC930[levelIndex];
         temp_s1->unk0 = func_8069DC80(0x21, temp_s1->unk0, 0, (temp_s0 / 100) & 0xFF, 0x20);
         temp_s1->unk4 = func_8069DC80(0x21, temp_s1->unk4, 1, ((temp_s0 % 100) / 10) & 0xFF, 0x20);
         temp_s1->unk8 = func_8069DC80(0x21, temp_s1->unk8, 2, (temp_s0 % 10) & 0xFF, 0x20);
@@ -279,7 +281,7 @@ void func_8069DD40(void) {
         current_actor_pointer->unk16C = 0xFF;
         current_actor_pointer->object_properties_bitfield |= 0x800000;
         extra_player_info_pointer->unk1F0 &= 0xFFFDFFFF;
-        if (temp_s0 >= D_807446C0[phi_t0]) {
+        if (temp_s0 >= D_807446C0[levelIndex]) {
             current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
             current_actor_pointer->shadow_opacity = 0;
             current_actor_pointer->noclip_byte = 1;
@@ -293,14 +295,15 @@ void func_8069DD40(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DF58.s")
+// TODO: Add to aaD union
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} AAD_8069DF58;
 
-/*
-// TODO: Which aaD type is this?
 void func_8069DF58(void) {
-    void *temp_v1;
+    AAD_8069DF58 *temp_v1;
 
     temp_v1 = current_actor_pointer->additional_actor_data;
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
@@ -309,7 +312,6 @@ void func_8069DF58(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_8069E018(void) {
     func_806319C4(current_actor_pointer, 0);

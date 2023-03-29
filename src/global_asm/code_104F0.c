@@ -96,6 +96,42 @@ u8 func_8060BB18(u32, u16, u8);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060BB18.s")
 
+/*
+u8 func_8060BB18(u32 arg0, u16 arg1, u8 arg2) {
+    s32 *var_t1;
+    s32 temp_t2;
+    s32 temp_t3;
+    u8 temp_t9;
+    u8 var_a3;
+    s32 var_v0;
+    s32 var_v1;
+    u32 var_s0;
+
+    var_s0 = arg0;
+    var_v0 = -1;
+    var_v1 = 0;
+    var_a3 = arg1 & 0x1F;
+    var_t1 = &D_807ECEA8[arg1 >> 5];
+    while (arg2 != 0) {
+        temp_t9 = var_a3 + 1;
+        arg2--;
+        var_v0 ^= 1 << var_a3;
+        var_v1 |= (var_s0 & 1) << var_a3;
+        var_s0 = var_s0 >> 1;
+        var_a3 = temp_t9;
+        if (temp_t9 > 0x1F || arg2 == 0) {
+            temp_t3 = *var_t1;
+            var_t1++;
+            var_a3 = 0;
+            var_t1[-1] = (temp_t3 & var_v0) | var_v1;
+            var_v1 = 0;
+            var_v0 = -1;
+        }
+    }
+    return var_v0; // Hmm, possible it doesn't return
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060BBE0.s")
 
 // Jumptable
@@ -277,29 +313,24 @@ void func_8060D14C(void) {
         return;
     }
     D_807467C4 = 1;
-    for (i = 0;;) {
+    for (i = 0; i < 0x100 && (var_s2 == 0); i++) {
         var_s2 |= osEepromRead(&D_807ECCF0, i, var_s1);
         func_8060B84C(15.0f);
         if (D_80744460 != 0) {
             D_807467C4 = 0;
             return;
         }
-        i++;
         var_s1 += 8;
-        // TODO: Is this the loop condition? Try extracting it and putting it after the loop
-        if ((i >= 0x100) || (var_s2 != 0)) {
-            D_807467C4 = 0;
-            D_807467CC = 1;
-            if (var_s2 == 0) {
-                var_s2 = func_80002B0C(((((((((((D_807ECEA0 + 0x6B7) & ~0x3F) + 0x27) & ~7) * 4) + 0x3F) & ~0x3F) + 0x207) & ~7) / 8) + &D_807ED6A8[0], D_807467C0);
-            }
-            if (var_s2 != 0) {
-                func_8060D0A8();
-            }
-            func_8060CB9C();
-            return;
-        }
     }
+    D_807467C4 = 0;
+    D_807467CC = 1;
+    if (var_s2 == 0) {
+        var_s2 = func_80002B0C(((((((((((D_807ECEA0 + 0x6B7) & ~0x3F) + 0x27) & ~7) * 4) + 0x3F) & ~0x3F) + 0x207) & ~7) / 8) + &D_807ED6A8[0], D_807467C0);
+    }
+    if (var_s2 != 0) {
+        func_8060D0A8();
+    }
+    func_8060CB9C();
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060D2C8.s")

@@ -9,13 +9,18 @@ extern f32 D_807F6940;
 
 extern u8 D_807F7F00;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+} Struct807F8E90;
+
+
 extern f64 D_80758D60;
 extern f64 D_80758D68;
+extern s8 D_807F8E88;
 extern u16 D_807F8E8A;
-extern s32 D_807F8E90;
-extern s32 D_807F8E9C;
-extern s32 D_807F8EA8;
-extern s32 D_807F8EB4;
+extern Struct807F8E90 D_807F8E90[4];
 extern s32 D_807F8EC0[]; // size 100
 extern s32 D_807F9050;
 extern s32 D_807F9054;
@@ -88,20 +93,26 @@ f32 func_8065D0FC(f32 arg0) {
     return (arg0 / D_807F5FDC) * D_807F5FE0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065D170.s")
-
-/*
-// TODO: No idea why this doesn't match, possibly a struct or array using temp registers?
 void func_8065D170(void) {
-    D_807F8E90 = -1;
-    D_807F8E9C = -1;
-    D_807F8EA8 = -1;
-    D_807F8EB4 = -1;
+    s32 i;
+    for (i = 0; i < 4; i++) {
+        D_807F8E90[i].unk0 = -1;
+    }
     D_807F8E8A = 0;
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065D1AC.s")
+void func_8065D1AC(void) {
+    s32 temp_v0;
+    s32 i;
+
+    D_807F8E88 = 0;
+    for (i = 0; i < 4; i++) {
+        if ((D_807F8E90[i].unk0 != -1) && ((object_timer - D_807F8E90[i].unk0) >= 0x15U)) {
+            func_8066B434(D_807F8E90[i].unk8, 0x65, 0x4D);
+            D_807F8E90[i].unk0 = -1;
+        }
+    }
+}
 
 void func_8065D244(u16 arg0) {
     D_807F8E8A = arg0;
@@ -126,6 +137,7 @@ void func_8065D964(GlobalASMStruct66 *arg0, s16 arg1, s16 arg2, s16 arg3, s16 ar
     arg0->unkA = arg4 << 5;
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065D994.s")
 
 void func_8065E040(s32 arg0) {
@@ -165,6 +177,7 @@ void func_8065E124(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065E138.s")
 
+// Pretty doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065E634.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065E81C.s")

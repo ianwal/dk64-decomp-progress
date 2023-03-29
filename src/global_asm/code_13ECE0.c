@@ -2,6 +2,7 @@
 #include "functions.h"
 #include "variables.h"
 
+// Hmm, possibly audio stuff?
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13ECE0/func_80739FE0.s")
 

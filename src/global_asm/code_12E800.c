@@ -15,24 +15,37 @@ s16 func_806CC190(s16, s16, f32);
 
 extern f64 D_8075FF38;
 
-// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_80729B00.s")
 
 extern s8 D_807FBB85;
 
+typedef struct {
+    EnemyInfo *unk0;
+    Actor *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    u16 unk18; // used
+} AAD_80729B00_1;
+
+typedef struct {
+    u8 unk0[0x1F0 - 0];
+    s32 unk1F0; // Used
+    s32 unk1F4;
+    s32 unk1F8; // Used
+} AAD_80729B00_2;
+
+void func_80608528(Actor *, s32, s32, s16, s32);
+void func_80605314(Actor *, s32);
+
 /*
+// TODO: Doable, very close!!!
 void func_80729B00(void) {
-    Actor *temp_a2;
     EnemyInfo *temp_t9;
-    GlobalASMStruct35 *var_t2;
-    f32 var_f10;
-    u16 var_v0;
     u32 temp_a0;
-    u8 temp_t3;
-    u8 temp_v0;
-    u8 temp_v0_2;
-    void *temp_t7;
-    void *temp_v1;
+    AAD_80729B00_1 *temp_t7;
+    AAD_80729B00_2 *temp_v1;
 
     temp_t7 = current_actor_pointer->additional_actor_data;
     D_807FDC90 = temp_t7;
@@ -41,32 +54,26 @@ void func_80729B00(void) {
     D_807FDC98 = temp_t9;
     D_807FDC9C = temp_t9;
     D_807FDCA0 = temp_t9->unk1C;
-    var_t2 = D_807FBB70;
     temp_t7->unk18++;
-    temp_a2 = current_actor_pointer;
-    temp_a0 = temp_a2->object_properties_bitfield;
+    temp_a0 = current_actor_pointer->object_properties_bitfield;
     if (temp_a0 & 0x20000000) {
-        temp_v0 = temp_a2->control_state;
-        if ((temp_v0 != 0x37) && (temp_v0 != 0x36) && (D_807FDC90->unk16 != D_807FDC94->animation_state->unk0->unk10)) {
-            temp_a2->object_properties_bitfield = temp_a0 & 0xDFFFFFFF;
+        if ((current_actor_pointer->control_state != 0x37) && (current_actor_pointer->control_state != 0x36) && (D_807FDC90->unk16 != D_807FDC94->animation_state->unk0->unk10)) {
+            current_actor_pointer->object_properties_bitfield = temp_a0 & 0xDFFFFFFF;
         }
     }
-    if (temp_a2->interactable & 2) {
+    if (current_actor_pointer->interactable & 2) {
         if (((is_cutscene_active == 1) && (D_807FDC98->unk46 & 8)) || ((D_807FDC94 != NULL) && (D_807FDC94->control_state == 0x42))) {
-            temp_v0_2 = temp_a2->control_state;
-            if ((temp_v0_2 >= 0x23) && (temp_v0_2 < 0x36)) {
-                temp_a2->noclip_byte = 1;
+            if ((current_actor_pointer->control_state >= 0x23) && (current_actor_pointer->control_state < 0x36)) {
+                current_actor_pointer->noclip_byte = 1;
                 current_actor_pointer->control_state = 0x3A;
                 current_actor_pointer->control_state_progress = 0;
             }
         }
-        var_v0 = D_807FDC98->unk46;
-        if ((D_807FBB70->unk1B != 0) && (temp_a2->control_state != 0x39)) {
-            if (var_v0 & 0x800) {
-                D_807FBB70->unk15 = 1;
-                var_v0 = D_807FDC98->unk46;
+        if ((D_807FBB70[0].unk1B != 0) && (current_actor_pointer->control_state != 0x39)) {
+            if (D_807FDC98->unk46 & 0x800) {
+                D_807FBB70[0].unk15 = 1;
             } else {
-                func_8067AC38(temp_a0, &D_807FDC90, temp_a2, &D_807FDC98);
+                func_8067AC38(temp_a0, &D_807FDC90); // TODO: Probably void*
                 current_actor_pointer->unk138 = 0;
                 current_actor_pointer->object_properties_bitfield &= 0xFFFD7FFF;
                 current_actor_pointer->noclip_byte = 1;
@@ -75,32 +82,25 @@ void func_80729B00(void) {
                 func_80614EBC(current_actor_pointer, D_807FDC98->unk2A);
                 func_80608528(current_actor_pointer, 0x16, 0xFF, 0x7F, 0x14);
                 current_actor_pointer->y_velocity = -220.0f;
-                var_t2 = 0x807FBB70;
-                var_v0 = D_807FDC98->unk46;
             }
         }
-        if ((var_v0 & 0x4000) && (temp_a2->unk6A & 4)) {
-            temp_t3 = temp_a2->unk15E;
-            var_f10 = temp_t3;
-            if (temp_t3 < 0) {
-                var_f10 += 4294967296.0f;
-            }
-            if ((temp_a2->y_position + var_f10) < temp_a2->unkAC) {
-                var_t2->unk15 = 1;
+        if ((D_807FDC98->unk46 & 0x4000) && (current_actor_pointer->unk6A & 4)) {
+            if ((current_actor_pointer->y_position + current_actor_pointer->unk15E) < current_actor_pointer->unkAC) {
+                D_807FBB70[0].unk15 = 1;
             }
         }
         if ((current_map == 0x30) && (D_807FDC94->interactable & 1)) {
             temp_v1 = D_807FDC94->additional_actor_data;
             if ((temp_v1->unk1F0 ^ temp_v1->unk1F8) & 0x100000) {
-                func_80605314(temp_a2, 0, temp_a2);
+                func_80605314(current_actor_pointer, 0);
                 current_actor_pointer->control_state = 0;
                 current_actor_pointer->control_state_progress = 0;
                 D_807FBB85 = 1;
             }
         }
     }
-    if ((temp_a2->unk58 != 0xAF) && (temp_a2->control_state == 0x37) && (temp_a2->unk138 != 0)) {
-        temp_a2->unk138 = 0;
+    if ((current_actor_pointer->unk58 != 0xAF) && (current_actor_pointer->control_state == 0x37) && (current_actor_pointer->unk138 != 0)) {
+        current_actor_pointer->unk138 = 0;
     }
     func_806663F8();
 }
@@ -551,4 +551,46 @@ void func_8072E2B0(Actor *arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072E320.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072E54C.s")
+extern f64 D_8075FF40;
+extern f64 D_8075FF48;
+
+void func_80665E94(f32, f32, f32, f32, f32, f32, s32);
+s16 func_806CC10C(s16, s16);
+
+/*
+// TODO: Quite close...
+void func_8072E320(f32 arg0) {
+    f32 var_f0;
+    f32 var_f2;
+
+    current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
+    current_actor_pointer->y_rotation = func_806CC190(current_actor_pointer->y_rotation, func_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, current_actor_pointer->unk88, current_actor_pointer->unk90), 3.3f);
+    if ((func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE) * arg0) > -900.0f) {
+        var_f0 = func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE) * arg0;
+    } else {
+        var_f0 = -900.0f;
+    }
+    if (var_f0 < 900.0f) {
+        if ((func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE) * arg0) > -900.0f) {
+            var_f2 = func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE) * arg0;
+        } else {
+            var_f2 = -900.0f;
+        }
+    } else {
+        var_f2 = 900.0f;
+    }
+    current_actor_pointer->x_rotation = ((var_f2 - current_actor_pointer->x_rotation) * D_8075FF40) + current_actor_pointer->x_rotation;
+    func_80665E94(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, current_actor_pointer->unk88, current_actor_pointer->unk8C, current_actor_pointer->unk90, 0x1E);
+    current_actor_pointer->z_rotation = func_806CC190(current_actor_pointer->z_rotation, (var_f0 * 2048.0) / D_8075FF48, 3.3f);
+}
+*/
+
+u8 func_8072E54C(void) {
+    s32 var_v1;
+
+    var_v1 = (D_807FDC98->unk46 & 0x2000) == 0;
+    if (var_v1 != 0) {
+        var_v1 = (((rand() >> 0xF) % 1000) < 0x3E4) ^ 1;
+    }
+    return var_v1;
+}

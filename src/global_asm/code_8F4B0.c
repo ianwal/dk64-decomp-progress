@@ -42,32 +42,46 @@ void func_8068B81C(void) {
     D_807FC622 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068B830.s")
+// TODO: Add to aaD union
+typedef struct {
+    u8 unk0;
+    f32 unk4;
+    s16 unk8;
+} AAD_8068B830;
 
-/*
-// TODO: Which aaD is this?
 void func_8068B830(s16 arg0, s16 arg1, s16 arg2) {
     Actor *sp1C;
-    RaceAdditionalActorData *temp_v0;
+    AAD_8068B830 *temp_v0;
 
     func_8072E7DC(0xC, &sp1C);
-    temp_v0 = sp1C->RaaD;
+    temp_v0 = sp1C->additional_actor_data;
     temp_v0->unk0 = arg0;
-    temp_v0->unk4 = arg1 / 100.0;
+    temp_v0->unk4 = (f32)arg1 / 100.0; // TODO: Get rid of this typecast?
     temp_v0->unk8 = arg2;
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068B8A4.s")
+// TODO: Add to aaD union
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    u8 unk18;
+    u8 unk19;
+    u8 unk1A;
+    u8 unk1B;
+    s16 unk1C;
+    s16 unk1E;
+} AAD_8068B8A4;
 
-/*
-// TODO: Which aaD is this?
 void func_8068B8A4(f32 arg0) {
-    void *sp1C;
-    void *temp_v0;
+    Actor *sp1C;
+    AAD_8068B8A4 *temp_v0;
 
     func_8072E7DC(0xC, &sp1C);
-    temp_v0 = sp1C->unk174;
+    temp_v0 = sp1C->additional_actor_data;
     temp_v0->unkC = arg0;
     temp_v0->unk10 = arg0;
     temp_v0->unk14 = arg0;
@@ -76,19 +90,20 @@ void func_8068B8A4(f32 arg0) {
         temp_v0->unk1E = temp_v0->unk1C;
     }
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068B8FC.s")
+// TODO: Add to aaD union
+typedef struct {
+    u8 unk0;
+} AAD_8068B8FC;
 
-/*
-// TODO: Which aaD is this?
 void func_8068B8FC(void) {
     Actor *sp1C;
+    AAD_8068B8FC *temp_v0;
 
     func_8072E7DC(0xC, &sp1C);
-    sp1C->TaaD->unk0 = 0xFF;
+    temp_v0 = sp1C->additional_actor_data;
+    temp_v0->unk0 = 0xFF;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068B930.s")
 

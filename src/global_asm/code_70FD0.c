@@ -802,32 +802,22 @@ s32 func_806717FC(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671A6C.s")
 
-// TODO: Matches, but could use some cleanup
 u8 func_80671C0C(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
-    LedgeInfo *sp18;
-    f32 temp = 8.f;
-    LedgeInfo90 *current;
-    LedgeInfo *temp_t7;
     s32 var_v0_2;
+    LedgeInfo90 *current;
     u8 var_v0;
-    s32 pad[2];
+    LedgeInfo *temp_t7;
+    f32 temp = 8.f;
 
     temp_t7 = arg0->ledge_info_pointer;
     var_v0 = 0;
-    sp18 = temp_t7;
     if (temp_t7 != NULL) {
         func_80671A6C(temp_t7, 1);
         current = arg0->ledge_info_pointer->unk90;
         var_v0_2 = arg1 - 1;
-        if ((current != NULL) && (var_v0_2 != 0)) {
-loop_3:
+        while ((current != NULL) && (var_v0_2 != 0)) {
             current = current->next;
             var_v0_2 -= 1;
-            if (current != NULL) {
-                if (var_v0_2 != 0) {
-                    goto loop_3;
-                }
-            }
         }
         if (current == NULL) {
             *arg4 = 0.0f;
