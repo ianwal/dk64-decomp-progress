@@ -165,4 +165,60 @@ u8 isIntroStoryPlaying(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070B324.s")
 
+extern s8 D_8074583C;
+extern u8 D_8076A0B1;
+extern u8 D_80755070;
+extern s32 D_807550A4;
+extern f32 D_8075E430;
+
+void func_80737B58(s32, u16);
+void func_8060A4D0(s32, f32);
+
+/*
+// TODO: Doable, progess made
+void func_8070B324(f32 arg0, s32 arg1, s32 *arg2) {
+    s32 sp34;
+    s32 *var_s0;
+    u32 temp_s0;
+    u16 temp_t7;
+    s32 var_a0;
+
+    temp_t7 = (D_8075E430 * arg0);
+    temp_s0 = ((temp_t7 * D_8074583C) / 40.0);
+    sp34 = osGetThreadPri(NULL);
+    osSetThreadPri(NULL, 0x1A);
+    func_80737B58(0, temp_s0);
+    if (arg1 != 0) {
+        D_807550A4 = 1;
+        func_80737B58(2, temp_s0);
+        if ((D_80755070 == 0) && ((D_8076A0B1 & 1) || !(D_8076A0B1 & 0x40))) {
+            func_8060A4D0(0, arg0);
+        }
+    } else {
+        func_80737B58(3, ((temp_t7 * D_8074583C) / 40.0));
+        if (D_807550A4 != 0) {
+            D_807550A4 = 0;
+            func_80737B58(2, ((D_8074583C * 25000) / 40.0));
+            func_80737B58(1, ((D_8074583C * 25000) / 40.0));
+        }
+    }
+    if (arg2 != NULL) {
+        var_s0 = arg2 + (0 * 4);
+        if (*arg2 != 0) {
+            var_a0 = *var_s0;
+loop_10:
+            func_8060A4D0(var_a0, arg0);
+            var_s0 += 4;
+            if (arg2 != NULL) {
+                var_a0 = *var_s0;
+                if (var_a0 != 0) {
+                    goto loop_10;
+                }
+            }
+        }
+    }
+    osSetThreadPri(NULL, sp34);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070B7EC.s")

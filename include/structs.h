@@ -345,6 +345,14 @@ typedef struct actor_17C {
     s16 unk8;
 } Actor17C;
 
+typedef struct {
+    u32 unk0[4]; // Used
+    u8 unk10; // Used, index into unk0
+    s8 unk11;
+    s8 unk12;
+    s8 unk13;
+} Actor114;
+
 typedef struct actor_collision ActorCollision;
 typedef struct actor Actor;
 
@@ -688,8 +696,7 @@ typedef struct player_additional_actor_data {
     s32 unk118;
     u8 unk11C; // Used, VehicleAdditionalActorData?
     u8 unk11D;
-    u8 unk11E;
-    u8 unk11F;
+    s16 unk11E; // Used
     s32 unk120;
     f32 unk124; // Used
     s32 unk128;
@@ -936,7 +943,7 @@ struct actor {
     u8 unk111;
     u8 unk112;
     u8 unk113;
-    u32 unk114;
+    Actor114 *unk114;
     u32 unk118;
     Actor *unk11C;
     f32 unk120;
@@ -1248,7 +1255,7 @@ typedef struct JetpacPlayerStruct {
 typedef struct ActorSpawner ActorSpawner;
 
 struct ActorSpawner {
-    u16 actor_type; // At 0x0
+    s16 actor_type; // At 0x0
     u16 unk2;
     f32 x_position; // At 0x4
     f32 y_position; // At 0x8
@@ -1258,8 +1265,8 @@ struct ActorSpawner {
     f32 unk18;
     s16 y_rotation; // At 0x1C
     u16 unk1E;
-    u16 unk20;
-    u8 pad22[0x32 - 0x22];
+    f32 unk20; // At 0x20, Used
+    u8 pad24[0x32 - 0x24];
     s16 unk32;
     u8 pad34[0x44 - 0x34];
     Actor* tied_actor; // At 0x44

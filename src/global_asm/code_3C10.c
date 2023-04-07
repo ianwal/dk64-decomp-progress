@@ -58,7 +58,7 @@ typedef struct global_asm_struct_1 {
     f32 unk4; // X Position
     f32 unk8; // Y Position
     f32 unkC; // Z Position
-    s16 unk10; // Angle?
+    s16 unk10; // Y Rotation
     s16 unk12; // Map
     u8 unk14; // Used
     u8 unk15;
@@ -363,8 +363,117 @@ s32 func_805FF938(s16 arg0) {
     return phi_v1;
 }
 
-// Hmm, looks doable, big job though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_805FF9AC.s")
+
+extern u8 D_80750ACC;
+extern f64 D_80756680;
+extern s32 D_807FD56C;
+extern s16 D_807FD570;
+
+extern s32 D_807F6C28;
+
+/*
+// Eh, made some progress...
+void func_805FF9AC(enum map_e arg0, s32 arg1, s32 arg2, s16 arg3) {
+    s32 sp50;
+    s32 sp4C;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    GlobalASMStruct1 *sp28;
+    GlobalASMStruct1 *var_s1;
+    GlobalASMStruct1 *var_v0_3;
+    f64 temp_f20;
+    s16 var_s0;
+    s32 var_v0;
+    s32 var_v1;
+    PlayerAdditionalActorData *temp_v0;
+
+    var_v0 = FALSE;
+    var_v1 = 0;
+    var_s1 = &D_8076A160[0];
+loop_1:
+    if ((var_s1->unk0 != 0) && (current_map == var_s1->unk12)) {
+        var_v0 = TRUE;
+    } else {
+        var_v1 += 1;
+        var_s1++;
+    }
+    if ((var_v1 < 0x12) && (var_v0 == FALSE)) {
+        goto loop_1;
+    }
+    if (var_v0 != FALSE) {
+        var_s1 = &D_8076A160[var_v1];
+        sp4C = var_v1;
+        func_805FFEF8(current_map);
+        goto block_17;
+    }
+    var_v0 = FALSE;
+    var_v1 = 0;
+    var_s1 = &D_8076A160[0];
+loop_10:
+    if (var_s1->unk0 == 0) {
+        var_v0 = TRUE;
+    } else {
+        var_v1 += 1;
+        var_s1++;
+    }
+    if ((var_v1 < 0x12) && (var_v0 == FALSE)) {
+        goto loop_10;
+    }
+    var_s1 = &D_8076A160[var_v1];
+    if (var_v0 == FALSE) {
+        sp4C = var_v1;
+        func_80732354(0xA, 0, 0, 0);
+block_17:
+        var_v1 = sp4C;
+    }
+    sp4C = var_v1;
+    func_806F5378();
+    func_8063B8D8(&var_s1->unk18, &sp50);
+    func_806115A8(&var_s1->unk18);
+    func_8063BBB0(&var_s1->unk20, &var_s1->unk1C);
+    if (var_s1->unk20 != 0) {
+        func_806115A8(&var_s1->unk20);
+    }
+    var_s1->unk2 = arg3;
+    if (arg3 & 1) {
+        var_s1->unk4 = player_pointer->x_position;
+        var_s1->unk8 = player_pointer->y_position;
+        var_s1->unkC = player_pointer->z_position;
+        var_s1->unk10 = player_pointer->y_rotation;
+    }
+    var_s1->unk12 = current_map;
+    if (arg3 & 2) {
+        var_s1->unk14 = arg2;
+    }
+    var_s0 = 0;
+    if (D_807F6C28 > 0) {
+        temp_f20 = D_80756680;
+        var_v0_3 = &D_8076A160[sp4C];
+        do {
+            sp28 = var_v0_3;
+            func_80659620(&sp40, &sp3C, &sp38, var_s0);
+            sp28->pad24[0] = sp40 * temp_f20;
+            sp28->pad24[1] = sp3C * temp_f20;
+            sp28->pad24[2] = sp38 * temp_f20;
+            var_s0 += 1;
+            var_v0_3 = sp28 + 3;
+        } while (var_s0 < D_807F6C28);
+    }
+    D_80750ACC = 1;
+    temp_v0 = player_pointer->PaaD;
+    D_807FD56C = temp_v0->unk1F0;
+    if (temp_v0->unk1AC != NULL) {
+        D_807FD570 = temp_v0->unk1AC->unk58;
+    } else {
+        D_807FD570 = 0;
+    }
+    var_s1->unk0 = 1;
+    func_805FF378(arg0, arg1);
+}
+*/
+
 
 // arg0 likely map
 s32 func_805FFE50(s32 arg0, s16 arg1, s16 arg2) {

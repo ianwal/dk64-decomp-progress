@@ -89,13 +89,13 @@ us,.code,func_8066A64C,272,no
 us,.code,func_806951B0,56,yes
 us,.code,func_8069D098,32,yes
 us,.code,func_806A7B4C,36,yes
-us,.code,func_8065C240,244,no
+us,.code,func_8065C240,244,yes
 us,.code,func_806C2D7C,120,yes
 us,.code,func_806C8DE0,120,no
 us,.code,func_806323C0,380,no
 us,.code,func_80698FEC,32,yes
 us,.code,func_806C55D8,8,yes
-us,.code,func_80689114,196,no
+us,.code,func_80689114,196,yes
 us,.code,func_80714778,460,no
 us,.code,func_806B7830,904,no
 us,.code,func_8068EB3C,440,no
@@ -260,7 +260,7 @@ us,.code,func_80647B74,384,no
 us,.code,func_8071B24C,160,no
 us,.code,func_806D1420,328,yes
 us,.code,func_806D06A0,708,yes
-us,.code,func_80678F9C,116,no
+us,.code,func_80678F9C,116,yes
 us,.code,func_8062F538,264,no
 us,.code,func_80630324,120,yes
 us,.code,func_80723380,52,yes
@@ -1765,7 +1765,7 @@ us,.code,func_80649E34,304,no
 us,.code,func_80735A34,16,no
 us,.code,func_805FFE50,168,yes
 us,.code,func_806FCC88,1036,no
-us,.code,func_8062E67C,540,no
+us,.code,func_8062E67C,540,yes
 us,.code,func_806CFC90,216,yes
 us,.code,func_8067AF74,168,yes
 us,.code,func_806357F8,240,no
@@ -1905,7 +1905,7 @@ us,.code,func_806F9AF0,116,no
 us,.code,func_8067E510,396,no
 us,.code,alSepqSetVol,76,yes
 us,.code,func_8068A1CC,64,yes
-us,.code,func_80689064,176,no
+us,.code,func_80689064,176,yes
 us,.code,n_alInit,108,yes
 us,.code,func_80679064,144,yes
 us,.code,func_806FA9C0,352,no
@@ -2443,7 +2443,7 @@ us,.code,func_806F1990,136,no
 us,.code,func_806D1080,80,yes
 us,.code,func_806A9124,248,no
 us,.code,func_806FDF1C,56,yes
-us,.code,func_8067605C,304,no
+us,.code,func_8067605C,304,yes
 us,.code,func_80601D24,448,no
 us,.code,func_8068D9DC,280,no
 us,.code,func_8064F97C,256,no
@@ -2697,7 +2697,7 @@ us,.code,func_806DBB04,1644,no
 us,.code,func_80601678,88,yes
 us,.code,func_806FEF7C,160,no
 us,.code,func_805FCFD8,88,yes
-us,.code,func_80689958,296,no
+us,.code,func_80689958,296,yes
 us,.code,func_80713B40,332,no
 us,.code,func_80653DF0,184,no
 us,.code,func_80632F74,88,no

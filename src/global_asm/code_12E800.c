@@ -357,6 +357,32 @@ void func_8072B59C(u8 arg0, s16 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B608.s")
 
+/*
+void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
+
+// TODO: .rodata nonsense?
+void func_8072B608(void) {
+    f32 var_f2;
+    f32 var_f6;
+    f64 var_f10;
+    s32 temp_t8;
+    u32 temp_hi;
+
+    func_80612794(((object_timer % 4095) * 4) % 4095);
+    func_80612790(((object_timer % 4095) * 4) % 4095);
+    temp_hi = (object_timer * 4) % 150;
+    if (temp_hi >= 0x4C) {
+        temp_t8 = temp_hi - 0x4B;
+        var_f6 = temp_t8;
+        var_f2 = var_f6 + 100.0f;
+    } else {
+        var_f10 = temp_hi;
+        var_f2 = (100.0f + 50.0) - var_f10;
+    }
+    func_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, var_f2, 0, 0xFF, 0xFF, 0xFF);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B79C.s")
 
 /*

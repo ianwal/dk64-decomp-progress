@@ -427,6 +427,56 @@ void func_8062DB70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E1F8.s")
 
+/*
+s32 func_8062E3B4(f32 *, f32 *, s32, s32 *, s32, f64, s32);
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct8062E1F8;
+
+s32 func_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s32 *arg7) {
+    f32 sp88[4][4];
+    f32 sp40[4][4];
+    s32 sp3C;
+    Struct8062E1F8 *temp_a0;
+    int var_v0;
+
+    temp_a0 = &(arg7[arg0 << 6]);
+    func_8062E3B4(temp_a0, &sp88, temp_a0->unk18, &sp3C, 0, arg1, 0);
+    if (sp3C == 0) {
+        return 0;
+    }
+    func_8062E3B4(&sp88, &sp40, sp3C, &sp3C, 0, arg4, 1);
+    if (sp3C == 0) {
+        return 0;
+    }
+    func_8062E3B4(&sp40, &sp88, sp3C, &sp3C, 1, arg2, 0);
+    if (sp3C == 0) {
+        return 0;
+    }
+    func_8062E3B4(&sp88, &sp40, sp3C, &sp3C, 1, arg5, 1);
+    if (sp3C == 0) {
+        return 0;
+    }
+    func_8062E3B4(&sp40, &sp88, sp3C, &sp3C, 2, arg3, 0);
+    if (sp3C == 0) {
+        return 0;
+    }
+    func_8062E3B4(&sp88, &sp40, sp3C, &sp3C, 2, arg6, 1);
+    var_v0 = 0;
+    if (sp3C != 0) {
+        var_v0 = 1;
+    }
+    return var_v0;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E3B4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E548.s")
@@ -474,12 +524,42 @@ void func_8062E608(void *arg0, s32 *arg1, s32 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E67C.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct8062E67C;
+
+void func_8062E67C(Struct8062E67C *arg0, Struct8062E67C *arg1, u8 arg2, f64 arg4, Struct8062E67C *arg6) {
+    f32 temp_f0;
+
+    switch (arg2) {
+        case 0:
+            temp_f0 = (arg4 - arg0->unk0) / (arg1->unk0 - arg0->unk0);
+            arg6->unk2 = arg0->unk2 + ((arg1->unk2 - arg0->unk2) * temp_f0);
+            arg6->unk4 = arg0->unk4 + ((arg1->unk4 - arg0->unk4) * temp_f0);
+            arg6->unk0 = arg4;
+            return;
+        case 1:
+            temp_f0 = (arg4 - arg0->unk2) / (arg1->unk2 - arg0->unk2);
+            arg6->unk0 = arg0->unk0 + ((arg1->unk0 - arg0->unk0) * temp_f0);
+            arg6->unk4 = arg0->unk4 + ((arg1->unk4 - arg0->unk4) * temp_f0);
+            arg6->unk2 = arg4;
+            return;
+        case 2:
+            temp_f0 = (arg4 - arg0->unk4) / (arg1->unk4 - arg0->unk4);
+            arg6->unk0 = arg0->unk0 + ((arg1->unk0 - arg0->unk0) * temp_f0);
+            arg6->unk2 = arg0->unk2 + ((arg1->unk2 - arg0->unk2) * temp_f0);
+            arg6->unk4 = arg4;
+            return;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E898.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062EBB8.s")
 
+// Hmm, DisplayList stuff?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062EDA8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062EE48.s")

@@ -170,7 +170,7 @@ s32 func_80678050(u16 arg0) {
         newActor->unk6C = 1;
         newActor->unk6A = 1;
         newActor->unk132 = 1;
-        newActor->unk114 = 0;
+        newActor->unk114 = NULL;
         newActor->unk118 = 0;
         newActor->unk11C = NULL;
         newActor->unk6E = -1;
@@ -471,12 +471,18 @@ void func_80678BBC(Actor *arg0) {
 // TODO: Very doable, just some arrays to sort out
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80678CC8.s")
 
+s32 func_8067B3F4(s32 arg0);
+void func_80679178(Actor *arg0);
+void func_80678E6C(Actor *arg0);
+void func_80678E14(Actor *arg0);
+
 /*
 void func_80678CC8(Actor *arg0) {
     u32 temp_v0;
     u32 temp_v0_2;
 
-    if (&func_8067B3F4 == ((*(&D_8074D8D4 + arg0->unk58) * 4) + 0x80750000)->unk-25D0) {
+    // TODO: How do I write this?
+    if (D_8074DA30[D_8074D8D4[arg0->unk58]] == &func_8067B3F4) {
         guTranslateF(&arg0->unkC, arg0->x_position, arg0->y_position, arg0->z_position);
     }
     func_80665FB4(arg0);
@@ -551,14 +557,23 @@ void func_80678E6C(Actor *arg0) {
 // This matched without a temp before, now it needs one
 // This compiler owns
 void func_80678F64(Actor *arg0) {
-    Actor* temp = arg0->unk114;
+    Actor114* temp = arg0->unk114;
     if (temp) {
         func_8061130C(temp);
         arg0->unk114 = NULL;
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80678F9C.s")
+void func_80678F9C(Actor *arg0, s32 arg1) {
+    if (arg0->unk114 == NULL) {
+        arg0->unk114 = malloc(sizeof(Actor114));
+        arg0->unk114->unk10 = 0;
+    }
+    if (arg0->unk114->unk10 != 4) {
+        arg0->unk114->unk0[arg0->unk114->unk10] = arg1;
+        arg0->unk114->unk10++;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679010.s")
 

@@ -236,6 +236,45 @@ void func_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065BF18.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065C240.s")
+extern u8 D_80750AB4;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s16 unk30;
+    s16 unk32;
+} Struct8065C240;
+
+s32 func_8065C240(Struct8065C240 *arg0) {
+    f32 temp_f0;
+    f32 temp_f14;
+    f32 temp_f2;
+    s32 var_s0;
+    s32 i;
+    CharacterChange *temp_v0;
+
+    for (i = 0; i < D_80750AB4; i++) {
+        temp_v0 =  + var_s0;
+        if (character_change_array[i].does_player_exist != 0) {
+            temp_f0 = arg0->unk20 - character_change_array[i].look_at_eye_z;
+            temp_f2 = arg0->unk18 - character_change_array[i].look_at_eye_x;
+            temp_f14 = arg0->unk1C - character_change_array[i].look_at_eye_y;
+            if (sqrtf((temp_f0 * temp_f0) + ((temp_f2 * temp_f2) + (temp_f14 * temp_f14))) < arg0->unk32) {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065C334.s")
