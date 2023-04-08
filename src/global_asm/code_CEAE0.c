@@ -149,6 +149,8 @@ typedef struct {
     u8 unk0;
     u8 unk1;
     u8 unk2;
+    u8 unk3;
+    u8 unk4;
 } GlobalASMStruct0;
 
 extern GlobalASMStruct0 *D_807FD568; // TODO: Unknown struct
@@ -438,6 +440,8 @@ void func_806CA540(void) {
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CA5F8.s")
+
+void func_806D0468(Actor *arg0, u8 arg1);
 
 void func_806CB53C(void) {
     s32 phi_s0;
@@ -884,6 +888,96 @@ void func_806CCB94(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CCC54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CD424.s")
+
+f32 func_80611BB4(f32, f32);
+f32 func_806CD898(f32, f32, f32);
+extern f64 D_8075C9A0;
+extern f64 D_8075C9A8;
+extern f64 D_8075C9B0;
+
+/*
+TODO: Progress made, tricky but doable
+void func_806CD424(s16 arg0, f32 arg1, f32 arg2) {
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp24;
+    f32 sp20;
+    f32 sp1C;
+    f32 temp_f2;
+    f32 var_f0;
+    f32 var_f0_2;
+    f32 var_f16;
+    f32 var_f16_2;
+    f32 var_f2;
+    f32 var_f2_2;
+    f32 var_f2_3;
+    s16 temp_a2;
+    s16 temp_t2;
+    s16 var_a0;
+
+    if (current_actor_pointer->unkB8 == 0.0f) {
+        current_actor_pointer->unkEE = arg0;
+    }
+    temp_a2 = current_actor_pointer->unkEE;
+    sp1C = 0.0f;
+    if (current_actor_pointer->unk6A & 1) {
+        temp_t2 = (arg0 - temp_a2) & 0xFFF;
+        var_f16 = (extra_player_info_pointer->unk2C * ((extra_player_info_pointer->unk26 * 3) + 0x64)) / 400.0f;
+        if (extra_player_info_pointer->unk28 != 0) {
+            var_a0 = temp_t2;
+            if (temp_t2 >= 0x801) {
+                var_a0 = 0x1000 - temp_t2;
+            }
+            sp1C = (extra_player_info_pointer->unk26 * (var_a0 / 2048.0f)) / 100.0f;
+        }
+    } else {
+        var_f16 = extra_player_info_pointer->unk2C;
+    }
+    sp34 = func_80612794(temp_a2) * current_actor_pointer->unkB8;
+    temp_f2 = func_80612794(arg0) * arg1;
+    var_f16_2 = var_f16;
+    sp30 = temp_f2;
+    if (sp1C != 0.0f) {
+        if (sp34 < temp_f2) {
+            var_f0 = temp_f2 - sp34;
+        } else {
+            var_f0 = -(temp_f2 - sp34);
+        }
+        var_f2 = (((var_f0 * (((extra_player_info_pointer->unk26 * D_8075C9A0) + 100.0) / 6400.0)) - var_f16_2) * sp1C) + var_f16_2;
+    } else {
+        var_f2_2 = ABS(func_80612794(arg0) * var_f16_2);
+        sp24 = var_f2_2;
+        if ((func_80612790(arg0) * var_f16_2) > 0.0f) {
+            var_f2 = var_f2_2;
+            sp20 = func_80612790(arg0) * var_f16_2;
+        } else {
+            var_f2 = var_f2_2;
+            sp20 = -(func_80612790(arg0) * var_f16_2);
+        }
+    }
+    sp3C = func_806CD898(sp34, sp30, var_f2);
+    sp34 = func_80612790(temp_a2) * current_actor_pointer->unkB8;
+    sp30 = func_80612790(arg0) * arg1;
+    if (sp1C != 0.0f) {
+        if (sp34 < sp30) {
+            var_f0_2 = sp30 - sp34;
+        } else {
+            var_f0_2 = -(sp30 - sp34);
+        }
+        sp20 = (((var_f0_2 * (((extra_player_info_pointer->unk26 * D_8075C9A8) + 100.0) / 6400.0)) - var_f16_2) * sp1C) + var_f16_2;
+    }
+    sp38 = func_806CD898(sp34, sp30, sp20);
+    current_actor_pointer->unkB8 = sqrtf((sp3C * sp3C) + (sp38 * sp38));
+    if (arg2 < current_actor_pointer->unkB8) {
+        current_actor_pointer->unkB8 = arg2;
+    }
+    if (current_actor_pointer->unkB8 != 0.0) {
+        current_actor_pointer->unkEE = (func_80611BB4(sp3C, sp38) * 4096.0) / D_8075C9B0;
+    }
+}
+*/
 
 // boostSpeed()
 f32 func_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount) {
@@ -1455,8 +1549,92 @@ void func_806D0430(f32 arg0) {
     D_80750FA8 = D_8075CC6C;
 }
 
-// Doable, kinda fiddly float & cc array stuff though... hmm
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D0468.s")
+
+extern f32 D_8075CC70;
+extern f32 D_8075CC74;
+extern f32 D_8075CC78;
+extern f32 D_8075CC7C;
+extern f32 D_8075CC80;
+extern f32 D_8075CC84;
+extern f32 D_8075CC88;
+
+/*
+void func_806D0468(Actor *arg0, u8 arg1) {
+    f32 temp_f0;
+    f32 temp_f0_2;
+    f32 temp_f0_3;
+    f32 temp_f2;
+    f32 var_f12;
+    f32 var_f18;
+    s32 var_v0;
+    PlayerAdditionalActorData *PaaD;
+    PlayerAdditionalActorData *var_v1;
+
+    PaaD = arg0->PaaD;
+    PaaD->unk1DC = D_8075CC70;
+    PaaD->unk1D8 = D_8075CC74;
+    switch (arg1) {
+        case 0:
+            temp_f0 = D_8075CC78;
+            PaaD->unk1C0 = temp_f0;
+            PaaD->unk1C4 = temp_f0;
+            PaaD->unk1C8 = temp_f0;
+            break;
+        case 2:
+            PaaD->unk1C0 = D_80750FA8;
+            PaaD->unk1C4 = D_80750FA8;
+            PaaD->unk1C8 = D_80750FA8;
+            break;
+        default:
+            PaaD->unk1C0 = D_8075CC7C;
+            PaaD->unk1C4 = D_8075CC7C;
+            PaaD->unk1C8 = D_8075CC7C;
+            if (character_change_array[PaaD->unk1A4].unk2C0 == 0) {
+                PaaD->unk1DC = D_8075CC80;
+                PaaD->unk1D8 = D_8075CC84;
+            }
+            break;
+    }
+    if (arg1 != 1) {
+        var_v0 = 0;
+        var_v1 = PaaD;
+        if (cc_number_of_players == 1) {
+            var_f18 = var_v1->unk1C0;
+            if (var_v0 != 8) {
+                do {
+                    var_v1->unk1CC = var_f18;
+                    var_v1 += 4;
+                    (arg0->animation_state + var_v0)->scale_x = var_f18;
+                    var_f18 = var_v1->unk1C0;
+                    var_v0 += 4;
+                } while (var_v0 != 8);
+            }
+            var_v1->unk1CC = var_f18;
+            (arg0->animation_state + var_v0)->scale_x = var_f18;
+        }
+    }
+    character_change_array[PaaD->unk1A4].unk2C0 = arg1;
+    character_change_array[PaaD->unk1A4].unk2C1 = 1;
+    PaaD->unk1E4 = 0;
+    if ((arg1 == 1) || (cc_number_of_players >= 2)) {
+        temp_f0_2 = PaaD->unk1CC;
+        temp_f2 = PaaD->unk1C0;
+        if (temp_f0_2 < temp_f2) {
+            var_f12 = temp_f2 - temp_f0_2;
+        } else {
+            var_f12 = -(temp_f2 - temp_f0_2);
+        }
+        temp_f0_3 = var_f12 / PaaD->unk1D8;
+        if (temp_f0_3 != 0.0f) {
+            PaaD->unk1E0 = PaaD->unk1DC / temp_f0_3;
+        } else {
+            PaaD->unk1E0 = D_8075CC88;
+        }
+    }
+    func_8062217C(PaaD->unk104, 2);
+}
+*/
 
 f32 func_80612D1C(f32);
 extern f64 D_8075CC90;
@@ -1530,45 +1708,109 @@ void func_806D0A54(Actor *arg0, s32 arg1, s32 arg2) {
     }
 }
 
-// TODO: Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D0A84.s")
+extern f32 D_8075CCA8;
+extern f64 D_8075CCB0;
+extern f64 D_8075CCB8;
+extern f64 D_8075CCC0;
+extern f64 D_8075CCC8;
+extern f64 D_8075CCD0;
+extern f64 D_8075CCD8;
+
+// TODO: Add to aaD union
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    Actor *unk4;
+    s32 unk8;
+    u16 unkC;
+    u16 unkE;
+    f32 unk10;
+} AAD_806D0A84;
+
+void func_806D0A84(void) {
+    AAD_806D0A84 *temp_a3;
+    Actor *sp30;
+    f32 sp2C;
+    ActorAnimationState *temp_v0;
+    f32 temp_f10;
+    f32 var_f0;
+
+    temp_a3 = current_actor_pointer->additional_actor_data;
+    sp30 = temp_a3->unk4;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_80614EBC(current_actor_pointer, temp_a3->unk0);
+        current_actor_pointer->object_properties_bitfield |= 0x400;
+        current_actor_pointer->unk168 = (rand() >> 0xF) % 4096;
+    }
+    temp_v0 = current_actor_pointer->animation_state;
+    if (temp_v0 != NULL) {
+        var_f0 = temp_v0->scale_y;
+    } else {
+        var_f0 = D_8075CCA8;
+    }
+    sp2C = var_f0 * D_8075CCB0;
+    if ((func_8067AF44(sp30) == 0) || (sp30->unk54 != temp_a3->unk8)) {
+        func_806782C0(current_actor_pointer);
+        return;
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0:
+            if (sp30->animation_state->unk64 != temp_a3->unkC) {
+                func_80614EBC(current_actor_pointer, temp_a3->unk2);
+            } else {
+                func_8067B238(current_actor_pointer, sp30, current_actor_pointer->animation_state->scale_x);
+                current_actor_pointer->y_position += temp_a3->unk10;
+            }
+            break;
+        case 1:
+            current_actor_pointer->y_velocity = current_actor_pointer->y_velocity + D_8075CCB8;
+            current_actor_pointer->y_position += sp2C * current_actor_pointer->y_velocity;
+            break;
+        case 2:
+            current_actor_pointer->y_velocity = current_actor_pointer->y_velocity - D_8075CCC0;
+            current_actor_pointer->y_position += sp2C * current_actor_pointer->y_velocity;
+            break;
+        case 3:
+            current_actor_pointer->unk168 += 0x28;
+            current_actor_pointer->unk168 &= 0xFFF;
+            if (current_actor_pointer->unkB8 < D_8075CCC8) {
+                current_actor_pointer->unkB8 = current_actor_pointer->unkB8 + D_8075CCD0;
+            }
+            temp_f10 = current_actor_pointer->unkB8 * sp2C;
+            current_actor_pointer->x_position += temp_f10 * func_80612794(current_actor_pointer->unk168);
+            current_actor_pointer->z_position += temp_f10 * func_80612790(current_actor_pointer->unk168);
+            if (current_actor_pointer->y_velocity < 2.5) {
+                current_actor_pointer->y_velocity = current_actor_pointer->y_velocity + D_8075CCD8;
+            }
+            current_actor_pointer->y_position += sp2C * current_actor_pointer->y_velocity;
+            break;
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D0DE4.s")
 
 /*
-// TODO: Need to sus out datatypes for Actor->additional_data_pointer
-// Might be better to start this one from scratch with a new ctx.c file
-s32 func_806D0DE4(Actor *arg0, Actor *arg1) {
-    s32 phi_v0;
-    s32 phi_v1;
-    u8 phi_a0;
-    u8 phi_a2;
+// TODO: Regalloc :(
+u8 func_806D0DE4(Actor *arg0, Actor *arg1) {
+    s32 var_a2;
+    u8 var_v0;
+    u8 var_v1;
 
-    phi_v0 = 1;
-    phi_a0 = 1;
-    phi_a2 = 1;
-    if (1 < cc_number_of_players && !(arg0->interactable & 4)) {
-        if (!(arg1->interactable & 4)) {
-            if (arg0->interactable & 1) {
-                //phi_v0 = character_change_array[arg0->additional_data_pointer[0x1A4]][0x2C0];
-                phi_v0 = *(u8 *)(*(s32 *)(arg0 + 0x174) + 0x1A4);
-                phi_v0 = *(u8 *)(&character_change_array[0x2C0] + ((u32)phi_v0 * 0x30 - (u32)phi_v0) * 0x10);
-            }
-            if (arg1->interactable & 1) {
-                //phi_v1 = character_change_array[arg1->additional_data_pointer[0x1A4]][0x2C0];
-                phi_v1 = *(u8 *)(*(s32 *)(arg0 + 0x174) + 0x1A4);
-                phi_v1 = *(u8 *)(&character_change_array[0x2C0] + ((u32)phi_v1 * 0x30 - (u32)phi_v1) * 0x10);
-                phi_a2 = arg1->control_state != 0x7C;
-                phi_a0 = phi_v0 < phi_v1;
-            }
-            
-            if (phi_a0) {
-                phi_a0 = phi_a2 != 0;
-            }
-            //return phi_a0;
-        }
+    var_v0 = 1;
+    var_v1 = 1;
+    var_a2 = 1;
+    if (cc_number_of_players < 2 || arg0->interactable & 4 || arg1->interactable & 4) {
+        return 0;
     }
-    return phi_a0;
+    if (arg0->interactable & 1) {
+        var_v0 = character_change_array[arg0->PaaD->unk1A4].unk2C0;
+    }
+    if (arg1->interactable & 1) {
+        var_v1 = character_change_array[arg1->PaaD->unk1A4].unk2C0;
+        var_a2 = arg1->control_state != 0x7C;
+    }
+    return var_v0 < var_v1 && var_a2;
 }
 */
 
@@ -2283,8 +2525,94 @@ void func_806D2DC4(void) {
 }
 */
 
-// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D2E9C.s")
+
+extern f32 D_8075CCF0;
+extern f32 D_8075CCF4;
+extern f32 D_8075CCF8;
+extern f32 D_8075CCFC;
+extern f64 D_8075CD00;
+
+f32 func_806F46B0(s16 arg0);
+
+/*
+// TODO: Doable, close, top matches all good
+void func_806D2E9C(void) {
+    f32 temp_f12;
+    f32 temp_f12_2;
+    f32 temp_f12_3;
+    f32 temp_f12_4;
+    f32 var_f2;
+    s32 var_a1;
+    u16 var_v0;
+
+    if (D_807FBB68 & 2) {
+        var_f2 = MAX((current_actor_pointer->y_position - 120.0f) * 0.5, 0.0);
+        temp_f12 = D_8075CCF0 - var_f2;
+        if (current_actor_pointer->x_position < temp_f12) {
+            current_actor_pointer->x_position = temp_f12;
+        }
+        temp_f12_2 = D_8075CCF4 + var_f2;
+        if (temp_f12_2 < current_actor_pointer->x_position) {
+            current_actor_pointer->x_position = temp_f12_2;
+        }
+        temp_f12_3 = D_8075CCF8 - var_f2;
+        if (current_actor_pointer->z_position < temp_f12_3) {
+            current_actor_pointer->z_position = temp_f12_3;
+        }
+        temp_f12_4 = D_8075CCFC + var_f2;
+        if (temp_f12_4 < current_actor_pointer->z_position) {
+            current_actor_pointer->z_position = temp_f12_4;
+        }
+        current_actor_pointer->noclip_byte &= 0xFFF7;
+    }
+    func_806DF6D4(0x1B);
+    var_a1 = 0x7E;
+    if (func_806F46B0(player_pointer->unk12C) < current_actor_pointer->y_position) {
+        current_actor_pointer->y_acceleration = D_807536E4[D_807FD584];
+        if (current_actor_pointer->y_velocity > 0.0f) {
+            current_actor_pointer->y_velocity *= D_8075CD00;
+        }
+    }
+    if (extra_player_info_pointer->unk1A2 != 0) {
+        var_v0 = extra_player_info_pointer->unk1A0;
+        if (var_v0 >= 0x8000) {
+            var_v0 += 0xFFFF0000;
+        }
+        if (var_v0 + 0x9E8 >= 0x7D1) {
+            var_a1 = 0x7D;
+        } else if (var_v0 + 0x9E8 < -0x7D0) {
+            var_a1 = 0x80;
+        } else {
+            var_a1 = 0x7F;
+        }
+    }
+    if ((var_a1 != current_actor_pointer->animation_state->unk64) && (current_actor_pointer->animation_state->unk64 != 0x81)) {
+        func_80614EBC(current_actor_pointer, var_a1);
+    }
+    if ((extra_player_info_pointer->unk1F0 & 0x40000000) && (extra_player_info_pointer->unk240 == 0)) {
+        func_80687400();
+        extra_player_info_pointer->unk240 = 0x1E;
+    }
+    if (extra_player_info_pointer->unk240 != 0) {
+        extra_player_info_pointer->unk240--;
+    }
+    if ((current_actor_pointer->unk6A & 1) || (extra_player_info_pointer->unk240 == 1)) {
+        if (D_807FBB68 & 2) {
+            current_actor_pointer->noclip_byte |= 8;
+        }
+        func_806CFF9C(current_actor_pointer);
+        func_80608528(current_actor_pointer, 1, 0xFF, 0x7F, 0x1E);
+    }
+    if (func_8061CB50() == 0) {
+        func_806CC948();
+        if ((func_806F8AD4(5, cc_player_index) != 0) && !(extra_player_info_pointer->unk1F0 & 0x10000)) {
+            func_806F91B4(5, cc_player_index, -1);
+        }
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D3224.s")
 
@@ -3047,7 +3375,7 @@ void func_806D59E4(void) {
             extra_player_info_pointer->unk30 /= D_8075CD90;
             current_actor_pointer->control_state_progress++;
             extra_player_info_pointer->unk5C = D_80767CC0 - 0x64;
-            /* fallthrough */
+            // Fallthrough
         case 1:
             func_806DF6D4(9);
             extra_player_info_pointer->unk30 = 10.0f;
@@ -4403,17 +4731,10 @@ extern f64 D_8075CF08;
 extern f32 D_8075CF10;
 
 /*
-// TODO: PaaD->unkAC conflicts with existing matched function datatype for it
-// Maybe extra_player_info_pointer is a union? Or maybe unkAC is a union? Very sus
 void func_806DB0C4(void) {
     Actor *temp_v1;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f12;
     f32 temp_f14;
     f32 temp_f20;
-    f32 temp_f2;
-    f32 phi_f12;
 
     if (D_807FBB70[0].unkE4 != 0) {
         extra_player_info_pointer->unkDC = D_807FBB70[0].unkEC;
@@ -4421,34 +4742,27 @@ void func_806DB0C4(void) {
         extra_player_info_pointer->unkA0 = current_actor_pointer->z_position;
         extra_player_info_pointer->unkA4 = D_807FBB70[0].unkD8;
         extra_player_info_pointer->unkA8 = D_807FBB70[0].unkE0;
-        extra_player_info_pointer->unkAC = 0.0f;
+        extra_player_info_pointer->unkAC_f32 = 0.0f;
         temp_f20 = extra_player_info_pointer->unkA4 - extra_player_info_pointer->unk9C;
         temp_f14 = extra_player_info_pointer->unkA8 - extra_player_info_pointer->unkA0;
         extra_player_info_pointer->unk94 = sqrtf((temp_f20 * temp_f20) + (temp_f14 * temp_f14)) * D_8075CEF8;
         extra_player_info_pointer->unk98 = ((func_80611BB4(temp_f20, temp_f14) * 4096.0f) / D_8075CF00);
         extra_player_info_pointer->unk4C = -1;
     }
-    extra_player_info_pointer->unkAC += D_8075CF08;
-    temp_f12 = extra_player_info_pointer->unkAC;
-    phi_f12 = temp_f12;
-    if (temp_f12 > 1.0) {
-        temp_v1 = extra_player_info_pointer->unkDC;
-        if (temp_v1 != 0) {
-            extra_player_info_pointer->unk98 = (func_80611BB4(temp_v1->x_position - extra_player_info_pointer->unk9C, temp_v1->z_position - extra_player_info_pointer->unkA0) * 4096.0f) / D_8075CF10;
+    extra_player_info_pointer->unkAC_f32 += D_8075CF08;
+    if (extra_player_info_pointer->unkAC_f32 > 1.0) {
+        if (extra_player_info_pointer->unkDC != NULL) {
+            extra_player_info_pointer->unk98 = (func_80611BB4(extra_player_info_pointer->unkDC->x_position - extra_player_info_pointer->unk9C, extra_player_info_pointer->unkDC->z_position - extra_player_info_pointer->unkA0) * 4096.0f) / D_8075CF10;
             if (current_actor_pointer->y_rotation == extra_player_info_pointer->unk98) {
                 func_806CFF9C(current_actor_pointer);
             }
         }
-        extra_player_info_pointer->unkAC = 1.0f;
-        phi_f12 = extra_player_info_pointer->unkAC;
+        extra_player_info_pointer->unkAC_f32 = 1.0f;
     }
-    temp_f0 = extra_player_info_pointer->unk9C;
-    current_actor_pointer->x_position = temp_f0 + ((extra_player_info_pointer->unkA4 - temp_f0) * phi_f12);
-    temp_f2 = extra_player_info_pointer->unkA0;
-    current_actor_pointer->z_position = temp_f2 + ((extra_player_info_pointer->unkA8 - temp_f2) * extra_player_info_pointer->unkAC);
+    current_actor_pointer->x_position = extra_player_info_pointer->unk9C + ((extra_player_info_pointer->unkA4 - extra_player_info_pointer->unk9C) * extra_player_info_pointer->unkAC_f32);
+    current_actor_pointer->z_position = extra_player_info_pointer->unkA0 + ((extra_player_info_pointer->unkA8 - extra_player_info_pointer->unkA0) * extra_player_info_pointer->unkAC_f32);
     func_806CC970();
-    temp_f0_2 = extra_player_info_pointer->unk94;
-    func_806CDD24(current_actor_pointer, temp_f0_2, temp_f0_2, 0);
+    func_806CDD24(current_actor_pointer, extra_player_info_pointer->unk94, extra_player_info_pointer->unk94, 0);
     func_806DF494(&current_actor_pointer->y_rotation, extra_player_info_pointer->unk98, D_8075326C[D_807FD584] / 2);
     current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
     func_806319C4(current_actor_pointer, 0);
@@ -4895,10 +5209,10 @@ void func_806DECD4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DED44.s")
 
-extern s32 D_80750FE0;
+extern s32 D_80750FE0[];
 extern s32 D_80750FF0;
 
-void func_80659670(f32, f32, f32, u16);
+void func_80659670(f32, f32, f32, s16);
 
 typedef struct BoulderAAD {
     u32 unk0;
@@ -4908,23 +5222,22 @@ typedef struct BoulderAAD {
     Actor *unk10;
     u16 unk14;
     u16 unk16;
-    u16 unk18;
-    u16 unk1A;
+    u32 unk18;
     u16 unk1C;
     s8 unk1E;
 } BoulderAAD;
 
 void func_806D9924(Actor*);
 
+void func_80659620(f32 *arg0, f32 *arg1, f32 *arg2, s16 arg3);
+
 /*
-// TODO: Surprisingly close
+// TODO: Regalloc
 void func_806DED44(void) {
-    u16 temp_v0_5;
-    s32 *temp_s0_2;
-    BoulderAAD *temp_s0; // TODO: Might be GrabbedObjectAdditionalActorData
-    BoulderAAD *temp_s0_3; // TODO: Might be GrabbedObjectAdditionalActorData
-    s32 *phi_s0;
-    u8 phi_a1;
+    s32 temp_v0_5;
+    BoulderAAD *temp_s0_3;
+    s8 phi_a1;
+    s32 i;
 
     func_806DF6D4(1);
     func_806D9924(current_actor_pointer);
@@ -4944,27 +5257,24 @@ void func_806DED44(void) {
             func_80677FA8(0x141, 0x3D); // Spawn fairy (refill) actor 321
             func_8067B238(D_807FBB44,
                           current_actor_pointer,
-                          current_actor_pointer->animation_state->scale_y * 2.0f);
+                          current_actor_pointer->animation_state->scale_y * 2);
             D_807FBB44->object_properties_bitfield |= 0x40000000;
             D_807FBB44->y_rotation += 0x800;
             D_807FBB44->y_rotation &= 0xFFF;
             D_807FBB44->unk11C = current_actor_pointer;
             func_80614EBC(D_807FBB44, 0x2B7);
-            // TODO: I think this is wrong
-            // Need a new aaD type, boulderaad/grabbedaad?
-            temp_s0_3 = D_807FBB44->PaaD;
+            temp_s0_3 = D_807FBB44->additional_data_pointer;
             temp_s0_3->unk10 = current_actor_pointer;
             temp_v0_5 = current_actor_pointer->unk12C;
             temp_s0_3->unk18 = temp_v0_5;
-            temp_v0_5 = temp_v0_5;
             if (temp_v0_5 == -1) {
                 temp_s0_3->unk18 = 0;
                 temp_v0_5 = 0;
             }
             temp_s0_3->unk16 = current_actor_pointer->z_rotation;
             temp_s0_3->unk14 = current_actor_pointer->x_rotation;
-            func_80659620(temp_s0_3, temp_s0_3->unk4, temp_s0_3->unk8, temp_v0_5);
-            func_80659670(1.0f, 1.0f, 1.0f, temp_s0_3->unk1A);
+            func_80659620(temp_s0_3, &temp_s0_3->unk4, &temp_s0_3->unk8, temp_v0_5);
+            func_80659670(1.0f, 1.0f, 1.0f, temp_s0_3->unk18);
             func_80677FA8(0x136, 0xA8); // Spawn spotlight actor 310
             func_8067B238(D_807FBB44,
                           current_actor_pointer,
@@ -4984,16 +5294,15 @@ void func_806DED44(void) {
             // fallthrough
         case 3:
             if (func_80629148()) {
+                PlayerAdditionalActorData *PaaD = current_actor_pointer->PaaD;
                 func_80629174();
                 func_806CFF9C(current_actor_pointer);
-                func_80709464(current_actor_pointer->PaaD->unk1A4);
-                phi_s0 = &D_80750FE0;
-                do {
-                    func_806F91B4(*phi_s0, 0, 9999);
-                    func_806F8BC4(*phi_s0, 0, 0);
-                    temp_s0_2 = phi_s0 + 4;
-                    phi_s0 = temp_s0_2;
-                } while (temp_s0_2 != &D_80750FF0);
+                func_80709464(PaaD->unk1A4);
+                
+                for (i = 0; i < 4; i++) {
+                    func_806F91B4(D_80750FE0[i], 0, 9999);
+                    func_806F8BC4(D_80750FE0[i], 0, 0);
+                }
             }
             break;
     }
@@ -6146,11 +6455,56 @@ void func_806E521C(void) {
     }
 }
 
-// Loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E527C.s")
+s32 func_806E527C(void) {
+    Actor *temp_v0;
+    s32 var_v1;
+    s32 i;
 
-// Doable, annoying condition that will probably need to be turned into a switch case or two though
+    var_v1 = 0;
+    for (i = 0; i < D_807FBB34 && var_v1 == 0; i++) {
+        temp_v0 = D_807FB930[i].unk0;
+        var_v1 = temp_v0->object_properties_bitfield & 0x02000000;
+    }
+    return var_v1;
+}
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E52D0.s")
+
+s32 func_806E5488(Actor *arg0);
+s32 func_806E560C(Actor *arg0);
+
+/*
+// TODO: Stack issue...
+void func_806E52D0(void) {
+    s32 temp_v1;
+
+    if ((D_807FD610[cc_player_index].unk2C & 8)
+        && (object_timer >= 3U)
+        && (D_807FD568->unk4 & 1)
+        && !(D_807FBB64 & 0x4000)
+        && !(D_807FBB68 & 1)
+        && (character_change_array[cc_player_index].unk2C0 != 2)
+        && (func_806E5488(current_actor_pointer) == 0)
+        && (func_806E527C() == 0)
+        && (extra_player_info_pointer->unk245 == 0)) {
+        temp_v1 = func_806E560C(current_actor_pointer);
+        if ((current_map != MAP_KROOL_FIGHT_LANKY_PHASE || temp_v1 != 0)) {
+            if (func_806F8AD4(7, cc_player_index) != 0 || temp_v1 != 0) {
+                func_806EB0C0(0x53, NULL, extra_player_info_pointer->unk1A4);
+                if (!(D_807FBB68 & 2)) {
+                    current_actor_pointer->noclip_byte = 1;
+                }
+                if (temp_v1 == 0) {
+                    func_806F91B4(7, cc_player_index, -1);
+                }
+            }
+            if (temp_v1 == 0) {
+                func_806F8BC4(7, 0, 0);
+            }
+        }
+    }
+}
+*/
 
 s32 func_806E5488(Actor *arg0) {
     f32 temp_f0;
@@ -6284,7 +6638,7 @@ void func_806E5FA0(void) {
 }
 
 void func_806E607C(void) {
-    PlayerAdditionalActorData *temp_v0; // TOIDO: Probably not actually a PaaD
+    PlayerAdditionalActorData *temp_v0; // TODO: Probably not actually a PaaD
 
     temp_v0 = extra_player_info_pointer->unk104->PaaD;
     temp_v0->unkAC |= 4;
@@ -6309,12 +6663,23 @@ void func_806E607C(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E61D0.s")
+// TODO: Add to aaD union
+typedef struct {
+    s32 unk0; s32 unk4; s32 unk8; s32 unkC;
+    s32 unk10; s32 unk14; s32 unk18; s32 unk1C;
+    s32 unk20; s32 unk24; s32 unk28; s32 unk2C;
+    s32 unk30; s32 unk34; s32 unk38; s32 unk3C;
+    s32 unk40; s32 unk44; s32 unk48; s32 unk4C;
+    s32 unk50; s32 unk54; s32 unk58; s32 unk5C;
+    s32 unk60; s32 unk64; s32 unk68; s32 unk6C;
+    s32 unk70; s32 unk74; s32 unk78; s32 unk7C;
+    s32 unk80; s32 unk84; s32 unk88; s32 unk8C;
+    s32 unk90; s32 unk94; s32 unk98; s32 unk9C;
+    s32 unkA0; s32 unkA4; s32 unkA8; s32 unkAC;
+} AAD_806E61D0;
 
-/*
-// TODO: Need new aaD type with s32 at unk4, s32 at unkAC?
 void func_806E61D0(void) {
-    PlayerAdditionalActorData *temp_v0;
+    AAD_806E61D0 *temp_v0;
 
     if (((D_807FBB64 & 1) == 0) && ((cc_number_of_players < 2) || (D_80750AB8 != 0))) {
         temp_v0 = extra_player_info_pointer->unk104->RaaD;
@@ -6322,7 +6687,6 @@ void func_806E61D0(void) {
         temp_v0->unkAC &= ~4;
     }
 }
-*/
 
 void func_806E6234(void) {
     if ((D_807FD610[cc_player_index].unk2C & START_BUTTON)
@@ -7264,7 +7628,7 @@ s32 func_806E9D1C(s16 arg0, u8 arg1, u8 arg2) {
 }
 
 void func_806E9DE0(void) {
-    PlayerAdditionalActorData *sp1C; // TODO: Is his actually a PaaD?
+    PlayerAdditionalActorData *sp1C; // TODO: This is probably not a PaaD
 
     if (D_807FD610[cc_player_index].unk2C & 8) {
         sp1C = extra_player_info_pointer->unk104->additional_actor_data;

@@ -259,12 +259,9 @@ s32 func_8065C240(Struct8065C240 *arg0) {
     f32 temp_f0;
     f32 temp_f14;
     f32 temp_f2;
-    s32 var_s0;
     s32 i;
-    CharacterChange *temp_v0;
 
     for (i = 0; i < D_80750AB4; i++) {
-        temp_v0 =  + var_s0;
         if (character_change_array[i].does_player_exist != 0) {
             temp_f0 = arg0->unk20 - character_change_array[i].look_at_eye_z;
             temp_f2 = arg0->unk18 - character_change_array[i].look_at_eye_x;

@@ -36,6 +36,11 @@ typedef struct PlayerProgress {
     s8 unk2FE[0x306 - 0x2FE];
 } PlayerProgress;
 
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+} Struct80027840;
+
 typedef struct enemy_info {
     u8 enemy_type; // at 0x00
     u8 unk1;
@@ -50,7 +55,7 @@ typedef struct enemy_info {
     u32 unk14;
     u32 unk18;
     u32 unk1C;
-    u32 unk20;
+    Struct80027840 *unk20;
     u16 unk24;
     u16 unk26;
     u16 unk28; // Used
@@ -338,7 +343,7 @@ typedef struct race_actor_178 {
 } RaceActor178;
 
 typedef struct actor_17C {
-    s32 unk0;
+    s32 unk0; // TODO: Actor*? Boss overlay Might require a union?
     u8 unk4;
     u8 unk5;
     s16 unk6;
@@ -639,7 +644,10 @@ typedef struct player_additional_actor_data {
     f32 unkA0; // Used
     f32 unkA4; // Used
     f32 unkA8; // Used
-    s32 unkAC; // Used // TODO: Float? Datatype conflicts in CEAEO.c
+    union {
+        s32 unkAC; // Used
+        f32 unkAC_f32; // Used
+    }; // TODO: Deconflict
     s16 unkB0;
     s16 unkB2; // Used
     s32 unkB4;
@@ -783,9 +791,11 @@ typedef struct player_additional_actor_data {
     u16 unk23C; // Used
     u8 unk23E;
     u8 unk23F; // Used
-    s16 unk240;
+    u8 unk240; // Used
+    u8 unk241;
     u16 unk242; // Used
-    s16 unk244;
+    s8 unk244;
+    u8 unk245; // Used
     s8 unk246; // Used func_806CA26C
     s8 unk247; // Used func_806CA26C
     s8 unk248;

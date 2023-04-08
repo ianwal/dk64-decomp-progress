@@ -104,7 +104,7 @@ void func_80029AF8(JetpacStruct *arg0) {
     } else {
         arg0->unk8 = D_8002EBC0;
     }
-    func_80029B90();
+    func_80029B90(arg0);
     arg0->unk2C = (func_80027210() * 60.0f) + 10.0f;
 }
 

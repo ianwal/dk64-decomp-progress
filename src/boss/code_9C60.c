@@ -141,6 +141,40 @@ void func_8002FC48(s32 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_8002FC98.s")
 
+/*
+extern f64 D_80036A20;
+
+void func_80614D00(Actor*, f32, f32);
+
+void func_8002FC98(Actor *arg0, u8 arg1, s32 arg2, u8 arg3) {
+    Actor17C *temp_s4;
+    f64 temp_f20;
+    s16 i;
+
+    temp_s4 = arg0->unk17C;
+    temp_f20 = D_80036A20;
+    for (i = 0; i < 4; i++) {
+        if (arg1 & (1 << i)) {
+            if (i != 0) {
+                arg0 = temp_s4[i].unk0;
+            }
+            if ((arg2 != -1) && (arg2 != 0)) {
+                if ((arg2 == 1) || (arg2 == 2)) {
+                    arg0->unk132 = arg2;
+                } else {
+                    func_80614EBC(arg0, arg2);
+                    if (arg3 != 0) {
+                        func_80614D00(arg0, arg3 * temp_f20, 0);
+                    }
+                }
+            } else {
+                arg0->unk138 = arg2;
+            }
+        }
+    }
+}
+*/
+
 extern u8 D_807FBD70;
 
 void func_8002FDF8(s32 arg0, u8 arg1) {

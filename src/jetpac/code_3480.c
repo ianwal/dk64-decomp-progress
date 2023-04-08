@@ -14,7 +14,45 @@ s32 func_800274C0(void) {
     return D_8002DC68[(s32)(func_80027210() * 13.0f) % 13];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80027510.s")
+s32 func_80027250(f32, f32, f32, f32, f32, f32, f32, f32);
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    f32 unk8; // Used
+    f32 unkC; // Used
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C; // Used
+    s32 unk20;
+    s32 unk24; // Used
+    s32 unk28; // Used
+    s32 unk2C; // Used
+    s32 unk30; // Used
+    s32 unk34;
+    s32 unk38; // Used
+    s32 unk3C;
+} Struct80027510;
+
+s32 func_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
+    f32 var_f12;
+    f32 var_f14;
+
+    var_f12 = arg0->unk8;
+    var_f14 = arg0->unkC;
+    if (arg0->unk38 == 1) {
+        return 0;
+    }
+    if (arg5 == 0) {
+        var_f12 += arg0->unk24;
+        var_f14 += arg0->unk28;
+    }
+    if ((arg0->unk1C >= 2) && (func_80027250(var_f12, var_f14, arg0->unk8 + arg0->unk2C, arg0->unkC + arg0->unk30, arg1, arg2, arg3, arg4) != 0)) {
+        return 1;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_800275F4.s")
 
@@ -33,6 +71,46 @@ s32 func_800274C0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028544.s")
 
 extern JetpacPlayerStruct D_8002EC30;
+
+/*
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    void (*unk48)(void *, s32)
+} Struct80028544;
+
+void func_80028544(void) {
+    s32 i;
+    Struct80028544 *var_s0;
+
+    var_s0 = D_8002EC30.player[D_8002EC30.player_index].pad0;
+    for (i = 0; i < 4; i++) {
+        if (var_s0->unk1C >= 2) {
+            if (var_s0->unk48 != NULL) {
+                var_s0->unk48(var_s0, i);
+            }
+        }
+        var_s0++;
+    }
+}
+*/
+
 void func_800285DC(void) {
     Competitor *player = &D_8002EC30.player[D_8002EC30.player_index];
     player->fun_ptr2(&player->next_item_pointer,5);

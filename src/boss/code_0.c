@@ -7,20 +7,59 @@ void func_80614D00(Actor*, f32, f32);
 s32 func_806CC10C(s16, s16);
 void func_8072AB74(s32, f32, f32, s32, f32);
 s32 func_80024568(s32, s32, f32, f32, f32);
-void func_8002450C(s32, s32, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024000.s")
+
+/*
+typedef struct {
+    u16 unk0;
+} Struct80024000;
+
+extern s32 D_8071FFA0;
+extern s32 D_8071E864;
+extern Struct80024000 D_8003598C[];
+
+void func_8067E2E4(Actor*, u8, f32);
+
+// TODO: Close, just gotta figure out sp48 and D_8003598C
+void func_80024000(void) {
+    Struct80024000 sp48[6];
+    s16 i;
+
+    for (i = 0; i < 6; i++) {
+        sp48[i] = D_8003598C[i];
+        func_8067E2E4(current_actor_pointer, sp48[i].unk0, 3.0f);
+    }
+    for (i = 0; i < 0xC; i++) {
+        func_8071498C(&D_8071E864);
+        func_80714950(i);
+        func_807149B8(1);
+        func_807149C8(0x8C, 0x8C, 0x8C, 0xFF);
+        func_80714998(3);
+        func_80714CC0(&D_8071FFA0, 2.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 40.0f, current_actor_pointer->z_position);
+    }
+}
+*/
 
 // Flag check, animation state, unrolled loops
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_8002413C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024300.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_8002450C.s")
 
+/*
+// TODO: t8 t9 regalloc...
+void func_8002450C(u8 *arg0, u8 arg1, s8 arg2) {
+    arg0[arg1 + 6] = arg2;
+}
+*/
+
 // Actor->animation_state->unk1C struct array pointer?
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024524.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024568.s")
 
 void func_80024EAC(void) {
@@ -141,6 +180,22 @@ void func_800253AC(void) {
 }
 */
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_800254D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80027770.s")
+void func_8068588C(Actor*, s16, f32, f32, f32, f32, s32);
+
+void func_80027770(void) {
+    u8 var_v1;
+
+    if (!(object_timer & 3)) {
+        if (!(object_timer & 0xF)) {
+            var_v1 = 0xC;
+        } else {
+            var_v1 = ((((rand() >> 0xF) % 32767) % 7) + 0x1D);
+        }
+        func_80714998(3);
+        func_807149C8(0x50, 0x50, 0x50, 0xC8);
+        func_8068588C(current_actor_pointer, var_v1, 2.0f, 0.0f, 0.0f, 0.0f, -0x78);
+    }
+}

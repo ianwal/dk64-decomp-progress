@@ -546,6 +546,7 @@ void func_80687474(Actor *arg0, f32 arg1) {
     func_8067B238(D_807FBB44, arg0, arg0->animation_state->scale_y * arg1);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_806874EC.s")
 
 void func_806877C8(u8 arg0) {

@@ -2,8 +2,26 @@
 #include "functions.h"
 #include "variables.h"
 
-// malloc, needs struct definitions
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_80027840.s")
+
+/*
+// TODO: Doable, something to do with the first write in the loop and arg0
+void func_80027840(Struct80027840 *arg0) {
+    s16 i;
+    Struct80027840 *var_v1;
+
+    if (D_807FDC98->unk20 != 0) {
+        func_8061130C(D_807FDC98->unk20);
+    }
+    D_807FDC9C->unk11 = arg0->unk0;
+    D_807FDC98->unk20 = malloc(arg0->unk0 * sizeof(Struct80027840));
+    var_v1 = D_807FDC98->unk20;
+    for (i = 0; i < arg0->unk0; i++) {
+        var_v1[i].unk0 = arg0[i].unk1;
+        var_v1[i].unk1 = 0;
+    }
+}
+*/
 
 typedef struct BossStruct2 {
     f32 unk0;

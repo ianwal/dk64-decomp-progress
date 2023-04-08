@@ -385,7 +385,7 @@ void func_806EC044(void) {
 }
 
 void func_806EC1A8(void) {
-    PlayerAdditionalActorData *temp_v0;
+    PlayerAdditionalActorData *temp_v0; // TODO: Probably not a PaaD
     s16 phi_v0;
 
     temp_v0 = extra_player_info_pointer->unk104->additional_actor_data;
