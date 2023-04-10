@@ -227,8 +227,24 @@ f32 func_806F1AE0(Actor *arg0, GlobalASMStruct74 *arg1, f32 arg2) {
     return (temp_f12 + temp_f2) * arg2;
 }
 
-// Doable, Actor arg0, unknown struct arg1
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F1B58.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 unk14; // Used
+    u8 unk15;
+    u8 unk16;
+    u8 unk17;
+    s32 unk18; // Used
+} Struct806F1B58;
+
+int func_806F1B58(Actor *arg0, Struct806F1B58 *arg1, s32 arg2) {
+    return (arg0->object_properties_bitfield & 0x100)
+        && arg1->unk14 == 0
+        && arg2 == arg1->unk18;
+}
 
 f32 func_806F1B90(f32 *arg0, f32 arg1) {
     f32 phi_f2;
@@ -256,7 +272,27 @@ f32 func_806F1B90(f32 *arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F2C48.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F2EDC.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct806F2EDC;
+
+void func_806F2EDC(s32 arg0, Struct806F2EDC *arg1, s32 *arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6) {
+    f32 temp_f0;
+
+    temp_f0 = func_80612794(arg5 * 2048.0f);
+    arg1[*arg2].unk0 = arg3;
+    arg1[*arg2].unk1 = arg4;
+    arg1[*arg2].unk4 = 1.0f;
+    arg1[*arg2].unk8 = (temp_f0 * arg6) + 1.0;
+    arg1[*arg2].unkC = 1.0f;
+    *arg2 += 1;
+}
 
 typedef struct {
     u8 unk0[0x8E - 0x0];

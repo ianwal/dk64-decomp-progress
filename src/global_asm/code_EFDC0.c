@@ -433,8 +433,57 @@ void func_806EC3BC(void) {
     func_80614D00(current_actor_pointer, 0.5f, 0);
 }
 
-// Doable, big project though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_806EC4AC.s")
+
+extern s16 D_807538D8[];
+extern s16 D_807538E8[];
+extern s16 D_807538F8[];
+extern s16 D_807539FC[];
+extern f32 D_80753A5C[];
+extern f32 D_80753988[];
+extern s16 D_8075388C[];
+
+/*
+// TODO: Doable, progress made, stack is still too big and there's a bunch of issues in the bottom half of the function
+void func_806EC4AC(void) {
+    f32 temp_f12;
+    f32 var_f14;
+    f32 var_f18;
+    f32 var_f20;
+    f32 var_f2;
+
+    func_806CF398(D_807FBB48);
+    var_f20 = ABS(D_80753A5C[D_807FD584]);
+    var_f2 = D_807FBB48->unkA0 - D_807FBB48->unkAC;
+    if (D_807538D8[D_807FD584] < var_f2) {
+        var_f2 = D_807538D8[D_807FD584];
+    }
+    temp_f12 = ((((D_807538F8[D_807FD584]) - D_807538E8[D_807FD584]) * (var_f2 / D_807538D8[D_807FD584])) + D_807538E8[D_807FD584]) - ((D_807FBB48->unkAC - D_8075388C[D_807FD584]) - D_807FBB48->y_position) * 40.0f;
+    if (temp_f12 > 0.0f) {
+        var_f14 = D_807FBB48->y_velocity * (0.5 + ((var_f2 * 40.0f) / (2.0f * (D_807538D8[D_807FD584] * 40.0f))));
+        var_f18 = (var_f14 * var_f14) / (2.0f * temp_f12);
+        if (var_f18 < var_f20) {
+            var_f18 = var_f20;
+        }
+    } else {
+        var_f14 = 0.0f;
+        var_f18 = var_f20;
+    }
+    D_807FBB48->y_velocity = var_f14;
+    extra_player_info_pointer->unk1C = var_f18;
+    extra_player_info_pointer->unk10 = 0;
+    extra_player_info_pointer->unk30 = D_80753250[D_807FD584];
+    if (current_actor_pointer->unkB8 < D_80753988[D_807FD584]) {
+        current_actor_pointer->unkB8 = current_actor_pointer->unkB8;
+    } else {
+        current_actor_pointer->unkB8 = D_80753988[D_807FD584];
+    }
+    D_807FBB48->control_state = 0x4E;
+    D_807FBB48->control_state_progress = 0;
+    func_80614E78(current_actor_pointer, 0x35);
+    extra_player_info_pointer->unk48 = D_807539FC[D_807FD584];
+}
+*/
 
 void func_806EC708(void) {
     D_807FBB48->control_state = 0x51;
@@ -622,14 +671,8 @@ void func_806ED0FC(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_806ED244.s")
-
-/*
-// TODO: Very close, could use a spruce up with some macros/ternaries
-// Also missing something with pulling vehicle actor pointer taking an extra instruction
+// TODO: Could use some cleanup, can we use ABS? Can we use a temp var for vehicle?
 void func_806ED244(void) {
-    Actor *temp_v0;
-    Actor *vehicle;
     f32 phi_f2;
     f32 phi_f2_2;
     f32 phi_f2_3;
@@ -637,52 +680,49 @@ void func_806ED244(void) {
     f32 phi_f2_4;
     f32 phi_f2_5;
 
-    vehicle = extra_player_info_pointer->vehicle_actor_pointer;
-    if (vehicle->unkB8 >= 0.0f) {
+    if (extra_player_info_pointer->vehicle_actor_pointer->unkB8 >= 0.0f) {
         func_8072DB68(3);
-        vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     }
-    temp_v0 = character_change_array[cc_player_index].unk2A0;
-    if (temp_v0) {
-        if (temp_v0->unkB8 != 0.0f) {
-            if (temp_v0->unkB8 > 0.0f) {
-                phi_f2_4 = temp_v0->unkB8;
+    if (character_change_array[cc_player_index].unk2A0) {
+        if (character_change_array[cc_player_index].unk2A0->unkB8 != 0.0f) {
+            if (character_change_array[cc_player_index].unk2A0->unkB8 > 0.0f) {
+                phi_f2_4 = character_change_array[cc_player_index].unk2A0->unkB8;
             } else {
-                phi_f2_4 = -temp_v0->unkB8;
+                phi_f2_4 = -character_change_array[cc_player_index].unk2A0->unkB8;
             }
-            vehicle->unkB8 = 2.0 * phi_f2_4;
+            extra_player_info_pointer->vehicle_actor_pointer->unkB8 = 2.0 * phi_f2_4;
         } else {
-            if (vehicle->unkB8 > 0.0f) {
-                phi_f2 = vehicle->unkB8;
+            if (extra_player_info_pointer->vehicle_actor_pointer->unkB8 > 0.0f) {
+                phi_f2 = extra_player_info_pointer->vehicle_actor_pointer->unkB8;
             } else {
-                phi_f2 = -vehicle->unkB8;
+                phi_f2 = -extra_player_info_pointer->vehicle_actor_pointer->unkB8;
             }
             if (phi_f2 < 50.0f) {
-                vehicle->unkB8 = -50.0f;
+                extra_player_info_pointer->vehicle_actor_pointer->unkB8 = -50.0f;
             } else {
-                if (vehicle->unkB8 > 0.0f) {
-                    phi_f2_2 = vehicle->unkB8;
+                if (extra_player_info_pointer->vehicle_actor_pointer->unkB8 > 0.0f) {
+                    phi_f2_2 = extra_player_info_pointer->vehicle_actor_pointer->unkB8;
                 } else {
-                    phi_f2_2 = -vehicle->unkB8;
+                    phi_f2_2 = -extra_player_info_pointer->vehicle_actor_pointer->unkB8;
                 }
-                vehicle->unkB8 = -phi_f2_2;
+                extra_player_info_pointer->vehicle_actor_pointer->unkB8 = -phi_f2_2;
             }
         }
     } else {
-        if (vehicle->unkB8 > 0.0f) {
-            phi_f2_3 = vehicle->unkB8;
+        if (extra_player_info_pointer->vehicle_actor_pointer->unkB8 > 0.0f) {
+            phi_f2_3 = extra_player_info_pointer->vehicle_actor_pointer->unkB8;
         } else {
-            phi_f2_3 = -vehicle->unkB8;
+            phi_f2_3 = -extra_player_info_pointer->vehicle_actor_pointer->unkB8;
         }
         if (phi_f2_3 < 50.0f) {
-            vehicle->unkB8 = -50.0f;
+            extra_player_info_pointer->vehicle_actor_pointer->unkB8 = -50.0f;
         } else {
-            if (vehicle->unkB8 > 0.0f) {
-                phi_f2_5 = vehicle->unkB8;
+            if (extra_player_info_pointer->vehicle_actor_pointer->unkB8 > 0.0f) {
+                phi_f2_5 = extra_player_info_pointer->vehicle_actor_pointer->unkB8;
             } else {
-                phi_f2_5 = -vehicle->unkB8;
+                phi_f2_5 = -extra_player_info_pointer->vehicle_actor_pointer->unkB8;
             }
-            vehicle->unkB8 = -phi_f2_5;
+            extra_player_info_pointer->vehicle_actor_pointer->unkB8 = -phi_f2_5;
         }
     }
     func_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, 0x292);
@@ -690,7 +730,6 @@ void func_806ED244(void) {
         func_80614E78(D_807FBB48, 0x83);
     }
 }
-*/
 
 void func_806ED420(void) {
     if (extra_player_info_pointer->unkD4 == 0) {

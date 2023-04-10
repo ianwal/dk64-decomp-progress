@@ -1423,16 +1423,13 @@ void func_806CFF1C(Actor *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CFF9C.s")
-
 void func_806D0150(Actor *arg0);
 void func_806C8D20(Actor*);
 
-/*
-// TODO: Frustratingly close
 void func_806CFF9C(Actor *arg0) {
     PlayerAdditionalActorData *PaaD = arg0->PaaD;
     Actor *vehicle;
+    s32 temp;
 
     arg0->unk6A &= 0xFFDF;
     PaaD->unk4C = -1;
@@ -1465,24 +1462,25 @@ void func_806CFF9C(Actor *arg0) {
         return;
     }
 
-    // TODO: Problem appears to be below here
     if (PaaD->unk1AC) {
         arg0->control_state = func_806CE928(arg0, arg0->unkB8, PaaD->unk4, 1);
         arg0->control_state_progress = 0;
-        return;
-    }
-
-    if (PaaD->unk8C != 0) {
-        if (arg0->control_state != 2) {
-            arg0->control_state = func_806CE174(arg0, arg0->unkB8, PaaD->unk4, 1);
-            arg0->control_state_progress = 0;
+    } else {
+        if (PaaD->unk8C != 0) {
+            temp = func_806CE174(arg0, arg0->unkB8, PaaD->unk4, 1);
+            if (arg0->control_state != 2) {
+                arg0->control_state = temp;
+                arg0->control_state_progress = 0;
+            }
+        } else {
+            temp = func_806CDD24(arg0, arg0->unkB8, PaaD->unk4, 1);
+            if (arg0->control_state != 2) {
+                arg0->control_state = temp;
+                arg0->control_state_progress = 0;
+            }
         }
-    } else if (arg0->control_state != 2) {
-        arg0->control_state = func_806CDD24(arg0, arg0->unkB8, PaaD->unk4, 1);
-        arg0->control_state_progress = 0;
     }
 }
-*/
 
 void func_806D0150(Actor *arg0) {
     arg0->unk6A &= ~0x20;
@@ -2545,6 +2543,7 @@ void func_806D2E9C(void) {
     f32 var_f2;
     s32 var_a1;
     u16 var_v0;
+    f32 temp;
 
     if (D_807FBB68 & 2) {
         var_f2 = MAX((current_actor_pointer->y_position - 120.0f) * 0.5, 0.0);
@@ -2567,8 +2566,10 @@ void func_806D2E9C(void) {
         current_actor_pointer->noclip_byte &= 0xFFF7;
     }
     func_806DF6D4(0x1B);
+
+    temp = func_806F46B0(player_pointer->unk12C);
     var_a1 = 0x7E;
-    if (func_806F46B0(player_pointer->unk12C) < current_actor_pointer->y_position) {
+    if (temp < current_actor_pointer->y_position) {
         current_actor_pointer->y_acceleration = D_807536E4[D_807FD584];
         if (current_actor_pointer->y_velocity > 0.0f) {
             current_actor_pointer->y_velocity *= D_8075CD00;
@@ -7147,16 +7148,11 @@ void func_806E7B48(void) {
 // Huge, probably doable though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E7DF4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E8244.s")
-
 extern void func_8068E474(void);
 
-/*
-// TODO: Astonishingly close
 void func_806E8244(void) {
-    s8 temp_t4;
-    Struct807FD610 *phi_v0;
     RaceAdditionalActorData *RaaD;
+    s8 temp_t4;
 
     RaaD = extra_player_info_pointer->vehicle_actor_pointer->additional_actor_data;
     if (func_805FCA64()) {
@@ -7164,42 +7160,33 @@ void func_806E8244(void) {
     }
     if ((current_actor_pointer->y_rotation < 0x200) || (current_actor_pointer->y_rotation >= 0xE01)) {
         RaaD->unk2 = D_807FD610[cc_player_index].unk2E;
-        phi_v0 = &D_807FD610[cc_player_index];
     } else if ((current_actor_pointer->y_rotation >= 0x201) && (current_actor_pointer->y_rotation < 0x600)) {
         RaaD->unk2 = D_807FD610[cc_player_index].unk2F;
-        phi_v0 = &D_807FD610[cc_player_index];
-        temp_t4 = phi_v0->unk2F;
-        phi_v0->unk2F = phi_v0->unk2E;
-        phi_v0->unk2E = temp_t4;
+        temp_t4 = D_807FD610[cc_player_index].unk2E;
+        D_807FD610[cc_player_index].unk2E = D_807FD610[cc_player_index].unk2F;
+        D_807FD610[cc_player_index].unk2F = temp_t4;
     } else if ((current_actor_pointer->y_rotation >= 0x601) && (current_actor_pointer->y_rotation < 0xA00)) {
         RaaD->unk2 = -D_807FD610[cc_player_index].unk2E;
-        phi_v0 = &D_807FD610[cc_player_index];
-        phi_v0->unk2E = -phi_v0->unk2E;
-        phi_v0->unk2F = -phi_v0->unk2F;
+        D_807FD610[cc_player_index].unk2E = -D_807FD610[cc_player_index].unk2E;
+        D_807FD610[cc_player_index].unk2F = -D_807FD610[cc_player_index].unk2F;
     } else {
         RaaD->unk2 = -D_807FD610[cc_player_index].unk2F;
-        phi_v0 = &D_807FD610[cc_player_index];
-        temp_t4 = -phi_v0->unk2E;
-        phi_v0->unk2E = -phi_v0->unk2F;
-        phi_v0->unk2F = temp_t4;
+        temp_t4 = D_807FD610[cc_player_index].unk2E;
+        D_807FD610[cc_player_index].unk2E = -D_807FD610[cc_player_index].unk2F;
+        D_807FD610[cc_player_index].unk2F = -temp_t4;
     }
-    if (phi_v0->unk2E < -0x1E) {
+    if (D_807FD610[cc_player_index].unk2E < -0x1E) {
         extra_player_info_pointer->unk23C = 0x28;
         RaaD->unk42 = 1;
-        return;
-    }
-    if (phi_v0->unk2E >= 0x1F) {
+    } else if (D_807FD610[cc_player_index].unk2E >= 0x1F) {
         extra_player_info_pointer->unk23C = 0x28;
         RaaD->unk42 = 2;
-        return;
-    }
-    if (extra_player_info_pointer->unk23C != 0) {
+    } else if (extra_player_info_pointer->unk23C != 0) {
         extra_player_info_pointer->unk23C--;
-        return;
+    } else {
+        RaaD->unk42 = 0;
     }
-    RaaD->unk42 = 0;
 }
-*/
 
 void func_806E84A4(void) {
     RaceAdditionalActorData *RaaD = extra_player_info_pointer->vehicle_actor_pointer->RaaD;
