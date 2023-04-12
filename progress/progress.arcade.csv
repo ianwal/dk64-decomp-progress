@@ -19,7 +19,7 @@ us,.code,arcade_help_text_update,356,yes
 us,.code,func_8002628C,352,yes
 us,.code,func_800244E4,36,yes
 us,.code,func_80024320,236,yes
-us,.code,func_80029CD0,556,no
+us,.code,func_80029CD0,556,yes
 us,.code,func_800319D4,2124,no
 us,.code,func_800263EC,300,yes
 us,.code,func_80027A38,1108,no
@@ -47,7 +47,7 @@ us,.code,func_8002B89C,4924,no
 us,.code,arcade_dk_title_update,692,yes
 us,.code,func_80027E8C,128,yes
 us,.code,func_8002D6FC,2652,no
-us,.code,func_8002A264,300,no
+us,.code,func_8002A264,300,yes
 us,.code,func_800251D8,104,yes
 us,.code,func_800311E0,472,no
 us,.code,func_80024CF8,152,yes
@@ -57,7 +57,7 @@ us,.code,func_8002B2C0,184,yes
 us,.code,func_8002CBD8,396,yes
 us,.code,func_80026EF4,1516,no
 us,.code,func_80025240,100,yes
-us,.code,func_80029EFC,872,no
+us,.code,func_80029EFC,872,yes
 us,.code,func_80024000,412,yes
 us,.code,func_8002EEB8,2420,no
 us,.code,func_800257D8,392,yes

@@ -636,8 +636,12 @@ typedef struct player_additional_actor_data {
     Actor* vehicle_actor_pointer; // Used
     u8  unk8C; // Used
     u8  unk8D; // Used
-    s16 unk8E;
-    s32 unk90;
+    u8 unk8E; // Used
+    u8 unk8F;
+    u8 unk90;
+    u8 unk91; // Used
+    u8 unk92;
+    u8 unk93;
     f32 unk94; // Used
     f32 unk98;
     f32 unk9C; // Used

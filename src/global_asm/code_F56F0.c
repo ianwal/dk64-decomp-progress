@@ -7,6 +7,9 @@
 
 void func_80608528(Actor*, s32, s32, s32, s32);
 
+void func_80614FD8(void*);
+void func_80614F28(void*);
+
 void func_806F0B34(Actor *arg0) {
     switch (current_character_index[cc_player_index]) {
         case 0:
@@ -156,6 +159,51 @@ void func_806F149C(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F14BC.s")
 
+s32 func_806F1668(f32, f32, f32, f32);
+extern f64 D_8075D6C8;
+extern f32 D_8075D6C4;
+
+void func_80614D00(Actor*, f32, f32);
+
+/*
+// TODO: Float regalloc, stack too big
+void func_806F14BC(Actor *arg0) {
+    s32 temp_v0;
+    f32 var_f0;
+    f32 sp54;
+    u8 sp53;
+    f32 var_f12;
+    f32 temp_f16;
+
+    func_80614FD8(&sp54);
+    func_80614F28(&sp53);
+    temp_f16 = arg0->animation_state->unk0->unk4;
+    arg0->animation_state->unk88 = 0;
+    if ((arg0->unk6A & 2) && (((arg0->unkAC - arg0->floor) > 12.0f))) {
+        var_f0 = arg0->y_position - MAX(arg0->floor, arg0->unkAC);
+        if (var_f0 < 0.0f) {
+            var_f0 = 0.0f;
+        }
+    } else {
+        var_f0 = arg0->distance_from_floor;
+    }
+    temp_v0 = func_806F1668(var_f0 * 40.0f, arg0->y_velocity, arg0->terminal_velocity, arg0->y_acceleration);
+    if (temp_v0 == 0) {
+        arg0->animation_state->unk88 = 1;
+        return;
+    }
+    var_f12 = (sp53 - temp_f16) / temp_v0;
+    if (var_f12 < 0.0f) {
+        var_f12 = D_8075D6C4;
+    }
+    var_f12 /= MAX(D_8075D6C8, arg0->animation_state->unk0->unk24);
+    if (sp54 < var_f12) {
+        var_f12 = sp54;
+    }
+    func_80614D00(arg0, var_f12, 0.0f);
+}
+*/
+
 s32 func_806F1668(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f0, temp_f2, phi_f12;
 
@@ -176,15 +224,99 @@ s32 func_806F1668(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F1768.s")
 
-// TODO: Very doable, but need to define this struct array
-// Sus struct size 0x8 related to PaaD->unk8E
+extern u16 D_80752F20[];
+extern u16 D_80752F30[];
+extern u16 D_80752F38[];
+extern u16 D_80752F40[];
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    u16 unk4;
+    u16 unk6;
+} Struct806F1858;
+
+/*
+// TOOD: Regalloc v0 v1
+void func_806F1768(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
+    s32 temp_v1;
+    u16 temp_v0;
+
+    temp_v1 = extra_player_info_pointer->unk8E - 0x14;
+    if ((temp_v1 >= 0) && (temp_v1 < 7U)) {
+        temp_v0 = D_80752F20[extra_player_info_pointer->unk8E];
+        arg1[*arg2].unk0 = 0x7F;
+        if (extra_player_info_pointer->unk91 != 0) {
+            arg1[*arg2].unk1 = 9;
+        } else {
+            arg1[*arg2].unk1 = 8;
+        }
+        arg1[*arg2].unk2 = 0;
+        if (extra_player_info_pointer->unk91 != 0) {
+            arg1[*arg2].unk4 = temp_v0;
+        } else {
+            arg1[*arg2].unk4 = -temp_v0;
+        }
+        arg1[*arg2].unk6 = 0;
+        *arg2 += 1;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F1858.s")
 
-// Same as above
+/*
+// TOOD: Regalloc v0 v1
+void func_806F1858(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
+    s32 temp_v1;
+    s32 temp;
+
+    temp_v1 = extra_player_info_pointer->unk8E - 0x14;
+    if ((temp_v1 >= 0) && (temp_v1 < 4U)) {
+        temp = D_80752F30[extra_player_info_pointer->unk8E];
+        arg1[*arg2].unk0 = 0x7F;
+        arg1[*arg2].unk1 = 4;
+        arg1[*arg2].unk2 = 0;
+        arg1[*arg2].unk4 = temp;
+        arg1[*arg2].unk6 = 0;
+        *arg2 += 1;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F18F4.s")
 
-// Same as above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F1990.s")
+/*
+// TODO: Regalloc v0 v1
+void func_806F18F4(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
+    s32 temp_v1;
+    s32 temp;
+
+    temp_v1 = extra_player_info_pointer->unk8E - 0x16;
+    if ((temp_v1 >= 0) && (temp_v1 < 4U)) {
+        temp = D_80752F38[extra_player_info_pointer->unk8E];
+        arg1[*arg2].unk0 = 0x7F;
+        arg1[*arg2].unk1 = 1;
+        arg1[*arg2].unk2 = 0;
+        arg1[*arg2].unk4 = temp;
+        arg1[*arg2].unk6 = 0;
+        *arg2 += 1;
+    }
+}
+*/
+
+void func_806F1990(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
+    u16 temp_v0;
+
+    temp_v0 = D_80752F40[extra_player_info_pointer->unk8E];
+    arg1[*arg2].unk0 = 0x7F;
+    arg1[*arg2].unk1 = 1;
+    arg1[*arg2].unk2 = temp_v0;
+    arg1[*arg2].unk4 = temp_v0;
+    arg1[*arg2].unk6 = 0;
+    *arg2 += 1;
+}
 
 f32 func_80612D10(f32);
 f32 func_80612D1C(f32);

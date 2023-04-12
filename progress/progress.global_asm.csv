@@ -2439,7 +2439,7 @@ us,.code,func_80738400,112,no
 us,.code,func_806F0074,8,yes
 us,.code,func_80662180,8,yes
 us,.code,func_806D1D84,104,yes
-us,.code,func_806F1990,136,no
+us,.code,func_806F1990,136,yes
 us,.code,func_806D1080,80,yes
 us,.code,func_806A9124,248,no
 us,.code,func_806FDF1C,56,yes
