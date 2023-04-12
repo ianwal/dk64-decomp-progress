@@ -2420,6 +2420,81 @@ void func_8002E158(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002E3D4.s")
 
+extern f32 D_8004AB24;
+extern u8 D_80032470; // imageData
+extern u8 D_800326B8; // imageData
+extern u8 D_80032900; // imageData
+
+/*
+// TODO: Quite close, regalloc, stack too big, minor issue with loading 2 into register
+void func_8002E3D4(s32 arg0) {
+    s32 temp_a2;
+    ArcadeStruct1 *temp_v1_3;
+    ArcadeStruct1 *var_a1;
+
+    if (arcade_game_state == 0) {
+        var_a1 = &D_8004BCD0[arg0];
+        D_8004BCD0[arg0].unk1C--;
+        if (var_a1->unk1C >= 0x15) {
+            var_a1->unk1C = func_80024644() & 0xF;
+            var_a1->unk1D = var_a1->unk1D == 0;
+        }
+        switch (var_a1->unk19) {
+            case 2:
+                switch (var_a1->unk1D) {
+                    case 0:
+                        var_a1->unk14 = &D_80032228;
+                        break;
+                    case 1:
+                        var_a1->unk14 = &D_80032470;
+                        break;
+                }
+                temp_a2 = func_800246C8(D_8004A76C, 5.0f);
+                if (arcade_background_visual == 4) {
+                    if (var_a1->unk10++ == (0x64 - (temp_a2 * 0x14))) {
+                        if (arcade_get_object_type_count(2) < temp_a2) {
+                            var_a1->unk19 = 3;
+                            var_a1->unk10 = 0.0f;
+                            return;
+                        }
+                    }
+                }
+                break;
+            case 3:
+                if (var_a1->unk10++ > 40.0f) {
+                    var_a1->unk19 = 2;
+                    var_a1->unk10 = 0.0f;
+                    temp_v1_3 = &D_8004BCD0[func_80024828()];
+                    *temp_v1_3 = arcade_flame_enemy_obj_template;
+                    temp_v1_3->unk19 = 3;
+                    temp_v1_3->y_velocity = -1.0f;
+                    if (arcade_background_visual == 1) {
+                        temp_v1_3->x_velocity = D_8004AB24;
+                    } else {
+                        if (D_8004BCD0[D_8004C71F].x_position < 160.0f) {
+                            temp_v1_3->x_velocity = -0.5f;
+                        } else {
+                            temp_v1_3->x_velocity = 0.5f;
+                        }
+                        temp_v1_3->unk1A = 0;
+                        temp_v1_3->x_position = 160.0f;
+                        temp_v1_3->y_position = 135.0f;
+                    }
+                }
+                switch (var_a1->unk1D) {
+                    case 0:
+                        var_a1->unk14 = &D_800326B8;
+                        return;
+                    case 1:
+                        var_a1->unk14 = &D_80032900;
+                        break;
+                }
+                break;
+        }
+    }
+}
+*/
+
 void arcade_pauline_top_update(s32 arg0) {
     ArcadeStruct1 *pauline = & D_8004BCD0[arg0];
     s32 tmp_v1 = 2;
@@ -2921,19 +2996,20 @@ void func_80030A04(u8 index) {
     if (arcade_game_state == 0) {
         D_8004BCD0[index].unk10--;
         if (D_8004BCD0[index].unk10 < 0.0f) {
-            D_8004BCD0[index].unk10 = (f32)((func_80024644() & 0x7F) + 0x1C2);
+            D_8004BCD0[index].unk10 = (func_80024644() & 0x7F) + 0x1C2;
         }
+        // Ternary works here but doesn't change regalloc
         if (D_8004BCD0[index].unk10 < 200.0f) {
             phi_f0 = 0.2f;
         } else {
             phi_f0 = -0.2f;
         }
-        D_8004BCD0[index].unk4 += phi_f0;
-        if (97.0f > D_8004BCD0[index].unk4) {
-            D_8004BCD0[index].unk4 = 97.0f;
+        D_8004BCD0[index].y_position += phi_f0;
+        if (D_8004BCD0[index].y_position < 97.0f) {
+            D_8004BCD0[index].y_position = 97.0f;
         }
-        if (110.0f < D_8004BCD0[index].unk4) {
-            D_8004BCD0[index].unk4 = 110.0f;
+        if (D_8004BCD0[index].y_position < 110.0f) {
+            D_8004BCD0[index].y_position = 110.0f;
         }
     }
 }

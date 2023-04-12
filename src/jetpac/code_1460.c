@@ -125,20 +125,22 @@ s32 func_80025B70(JetpacStruct5 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025BB8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025C40.s")
+typedef struct {
+    s32 unk0;s32 unk4;s32 unk8;s32 unkC;
+    s32 unk10[20];
+    s32 unk18[20];
+} Struct80025C40;
 
-/*
-// TODO: Sorry to whoever matched this, I messed up
-s32 *func_80025C40(JetpacStruct1 *arg0) {
+// TODO: Fix this up, yikes lmao
+s32 *func_80025C40(Struct80025C40 *arg0) {
     s32 i;
     for (i = 0; i < 4; i++) {
-        if (arg0[i].unk60 == 0) {
-            return &arg0[i].unk60;
+        if (arg0->unk18[i * 20 + 0] == 0) {
+            return &arg0->unk18[i * 20 - 5];
         }
     }
     return 0;
 }
-*/
 
 void func_80025CA0(JetpacStruct0 *arg0) {
     arg0->unk14 = 4;

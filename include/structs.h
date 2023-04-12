@@ -1261,9 +1261,22 @@ typedef struct Competitor {
 
 typedef struct JetpacPlayerStruct {
     s32 unk0;
-    u8 header[0x1C - 0x4];
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
     Competitor player[2];
     s32 player_index;
+    s32 unk348;
+    s32 unk34C;
+    u8 pad0[0x78C - 0x350];
+    s32 unk78C;
+    s32 unk790;
+    s32 unk794;
+    u8 unk798;
+    u8 unk799;
 } JetpacPlayerStruct;
 
 typedef struct ActorSpawner ActorSpawner;
