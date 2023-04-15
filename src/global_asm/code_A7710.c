@@ -6,19 +6,25 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_806A2A10.s")
 
 /*
-// TODO: Quite close, our stack's too big, and datatype on the temporary variable
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+} AAD_806A2A10;
+
+// TODO: Quite close
 void func_806A2A10(s16 arg0, s16 arg1, u8 arg2) {
-    s8 temp = arg2;
     func_80677FA8(0xB0, 0); // spawnActorWrapper(ACTOR_TIMER_CONTROLLER)
     if ((arg0 & 0x8000) != 0) {
         D_807FBB44->unk15F = 0xB;
-        temp--;
+        arg2--;
     } else {
         D_807FBB44->unk15F = 6;
     }
     current_actor_pointer->unk11C = D_807FBB44;
     extra_player_info_pointer->unk1A8 = D_807FBB44;
-    D_807FBB44->additional_data_pointer[3] = temp & 0xFF;
+    ((AAD_806A2A10*)D_807FBB44->additional_data_pointer)->unkC = arg2;
     D_807FBB44->x_position = (s16) (arg0 & 0x7FFF);
     D_807FBB44->y_position = arg1;
     D_807FBB44->control_state = 1;

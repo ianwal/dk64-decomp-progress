@@ -10,7 +10,6 @@ extern s32 D_807F5D10;
 extern f32 D_80036AB0;
 extern f32 D_80036AB4;
 extern f64 D_80036AB8;
-extern s32 D_807F5D10;
 
 typedef struct BossStruct3 {
     s32 unk0;

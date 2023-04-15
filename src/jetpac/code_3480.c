@@ -72,12 +72,11 @@ s32 func_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 
 extern JetpacPlayerStruct D_8002EC30;
 
-/*
 typedef struct {
     s32 unk0;
     s32 unk4;
-    s32 unk8;
-    s32 unkC;
+    f32 unk8;
+    f32 unkC;
     s32 unk10;
     s32 unk14;
     s32 unk18;
@@ -94,6 +93,8 @@ typedef struct {
     s32 unk44;
     void (*unk48)(void *, s32)
 } Struct80028544;
+
+/*
 
 void func_80028544(void) {
     s32 i;
@@ -117,6 +118,29 @@ void func_800285DC(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028634.s")
+
+/*
+// TODO: Pretty close, not sure what's up with the last writes
+void func_80028634(void) {
+    Competitor *temp_v0;
+    f32 var_f18;
+    s32 temp_f16;
+    s32 var_a1;
+    Struct80028544 *var_v1;
+
+    temp_v0 = &D_8002EC30.player[D_8002EC30.player_index];
+    var_v1 = temp_v0->pad0;
+    temp_v0->lives_consumed = 8;
+    var_a1 = 0x0;
+    for (var_a1 = 0x0; var_a1 < 0x30; var_a1 += 0x10) {
+        var_v1->unk8 = 168.0f;
+        var_v1->unkC = var_a1 + 136.0f;
+        var_v1++;
+    }
+    var_v1[-1].unk8 = 168.0f;
+    var_v1[-1].unkC = var_a1 + 136.0f;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_800286D0.s")
 
@@ -144,7 +168,7 @@ void func_80028BD0(JetpacStruct *arg0, s32 arg1, s32 arg2, s32 arg3, u8 arg4, u8
     arg0->unk24 = arg3 * 8 + arg1 + 0x10; arg0->unk28 = arg2 + 0xC;
 }
 
-extern f32 D_8002EF80;
+extern f32 D_8002EF80; // Mtx?
 extern f32 D_8002EFB4;
 extern f32 D_8002EFE8;
 extern f32 D_8002F01C;
@@ -159,5 +183,29 @@ void func_80028C3C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028CF8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028E04.s")
+
+/*
+// TODO: Hmm, is D_8002EC30 an array?
+s32 func_80028E04(s32 arg0, s32 arg1, s32 arg2) {
+    s32 temp_v1;
+    JetpacPlayerStruct *temp_v0;
+
+    temp_v0 = &D_8002EC30[arg0];
+    if (arg1 < temp_v0->unk36C) {
+        if (arg2 < temp_v0->unk36C) {
+            return -2;
+        }
+        return -1;
+    }
+    temp_v1 = temp_v0->unk374;
+    if (temp_v1 < arg2) {
+        if (temp_v1 < arg1) {
+            return 2;
+        }
+        return 1;
+    }
+    return 0;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028E88.s")

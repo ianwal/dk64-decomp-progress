@@ -10,11 +10,16 @@ typedef struct jetpac_struct_0 {
     u8  pad0[0x14];
     u32 unk14;
     u32 unk18;
-    u32 unk1C;
-    u32 unk20;
-    u32 unk24;
-    u32 unk28;
-    u32 unk2C;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    u32 unk30;
+    u32 unk34;
+    u32 unk38;
+    u32 unk3C;
+    s32 unk40; // Used
 } JetpacStruct0;
 
 typedef struct
@@ -123,7 +128,35 @@ s32 func_80025B70(JetpacStruct5 *arg0) {
     return (((s32) arg0->unk0 + arg0->unk1C) / 2) % 4;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025BB8.s")
+typedef struct JetpacStruct3 {
+    f32 unk0;
+    f32 unk4;
+    u8 pad0[0x1C - 0x8];
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+} JetpacStruct3;
+
+void func_80027010(JetpacStruct3 *arg0);
+
+void func_80025BB8(JetpacStruct3 *arg0, s32 arg1) {
+    if ((arg1 == 0) && (arg0->unk30 != 0)) {
+        arg0->unk0 = (s32)arg0->unk0 & 0xFFFE;
+    } else if ((arg1 != 0) && (arg0->unk30 == 0)) {
+        func_80027010(arg0);
+    }
+    arg0->unk1C = 0;
+    arg0->unk24 = 0x10;
+    arg0->unk30 = arg1;
+}
 
 typedef struct {
     s32 unk0;s32 unk4;s32 unk8;s32 unkC;
@@ -149,16 +182,142 @@ void func_80025CA0(JetpacStruct0 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025CB0.s")
 
+// TODO: These are sus
+s32 func_80028CF8(f32, f32, f32, f32, s32);
+s32 func_8002A974(f32, f32, f32, f32);
+s32 func_800283EC(f32, f32, f32, f32);
+
+/*
+void func_80025CB0(JetpacStruct0 *arg0) {
+    f32 var_f0;
+    f32 var_f12;
+    u32 temp_a1;
+    u32 temp_a2;
+    u32 temp_v0;
+    u32 var_v0;
+    u32 var_v1;
+
+    var_v0 = arg0->unk14;
+    if ((var_v0 == 3) && (arg0->unk40 < (u32)arg0->unk2C)) {
+        func_80025CA0(arg0);
+        var_v0 = arg0->unk14;
+    }
+    if ((var_v0 == 4) && (arg0->unk24 == arg0->unk1C)) {
+        arg0->unk14 = 0;
+        arg0->unk2C = 0;
+        var_v0 = 0;
+    }
+    if (var_v0 != 0) {
+        if (var_v0 == 3) {
+            if (arg0->unk18 != 0) {
+                var_f12 = arg0->unk1C;
+                if (arg0->unk2C < 4) {
+                    var_v1 = arg0->unk2C;
+                } else {
+                    var_v1 = 4;
+                }
+                var_f0 = (var_v1 * 8) + arg0->unk1C;
+            } else {
+                var_f0 = arg0->unk24;
+                if (arg0->unk2C < 4) {
+                    var_v1 = arg0->unk2C;
+                } else {
+                    var_v1 = 4;
+                }
+                var_f12 = arg0->unk24 - (var_v1 * 8);
+            }
+            // TODO: These function calls are sus, have a look at m2c output again
+            if (func_8002A974(var_f12, arg0->unk20, var_f0, arg0->unk28) != 0) {
+                func_80025CA0(arg0);
+                return;
+            }
+            if (func_80028CF8(var_f12, arg0->unk20, var_f0, arg0->unk28, 0) >= 0) {
+                func_80025CA0(arg0);
+                return;
+            }
+            if (func_800283EC(var_f12, arg0->unk20, var_f0, arg0->unk28) != 0) {
+                func_80025CA0(arg0);
+                return;
+            }
+            if (arg0->unk18 != 0) {
+                arg0->unk1C -= 8;
+                if (arg0->unk2C >= 0xD) {
+                    arg0->unk24 -= 8;
+                }
+            } else {
+                arg0->unk24 += 8;
+                if (arg0->unk2C >= 0xD) {
+                    arg0->unk1C += 8;
+                }
+            }
+            arg0->unk2C += 1;
+            return;
+        }
+        if (var_v0 == 4) {
+            if ((arg0->unk2C + ((arg0->unk24 - arg0->unk1C) / 8)) >= 0xD) {
+                if (arg0->unk18 != 0) {
+                    arg0->unk24 -= 8;
+                } else {
+                    arg0->unk1C += 8;
+                }
+            }
+            arg0->unk2C += 1;
+        }
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025F48.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025FC4.s")
+void func_80025FC4(JetpacStruct *arg0) {
+    s32 sp6C;
+    s32 var_a0;
+    s32 var_s4;
+    s32 temp_s5;
+    s32 temp_s7;
+    s32 temp_t7;
+    s32 var_s1;
+    s32 i;
+
+    if (var_s4) {} // TODO: This fixes regalloc but it's an awful way to get a match...
+
+    temp_s5 = arg0->unk18;
+    var_s1 = 0;
+    if (arg0->unk14 >= 2) {
+        var_s4 = -8;
+        temp_s7 = arg0->unk4;
+        temp_t7 = (arg0->unk24 - arg0->unk1C) / 8;
+        if (arg0->unk14 == 4) {
+            var_s1 = arg0->unk2C;
+        }
+        if (temp_s5 != 0) {
+            var_s4 = 8;
+            sp6C = arg0->unk1C;
+        } else {
+            sp6C = arg0->unk24 - 8;
+        }
+        for (i = 0; i < temp_t7; i++) {
+            if (var_s1 < 4) {
+                var_a0 = 0;
+            } else if (var_s1 < 9) {
+                var_a0 = 1;
+            } else {
+                var_a0 = 2;
+            }
+            func_80025F48(var_a0, &sp6C, var_s4, temp_s7, &arg0->unk10, temp_s5);
+            var_s1 += 1;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_800260DC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026318.s")
 
 void func_80025368(Competitor*);
+
 extern JetpacPlayerStruct D_8002EC30;
+
 typedef struct JetpacStruct10 {
     u8 pad0[0x2C];
     s32 unk2C;
@@ -180,18 +339,13 @@ void func_80026A3C(JetpacStruct10 *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026AB0.s")
 
 void func_80025FC4(JetpacStruct*);
-extern JetpacStruct D_8002F09C;
-extern JetpacStruct D_8002F1DC;
+extern JetpacStruct D_8002F09C[]; // At least 4 big
 
 void func_80026CA4(void) {
-    JetpacStruct *phi_s0;
-    JetpacStruct *phi_s1;
-    phi_s1 = (phi_s0 = &D_8002F09C) + 4;
-
-    do {
-        func_80025FC4(phi_s0);
-        phi_s0++;
-    } while (phi_s0 != phi_s1);
+    s32 i;
+    for (i = 0; i < 4; i++) {
+        func_80025FC4(&D_8002F09C[i]);
+    }
 }
 
 //function pointer from struct
@@ -235,15 +389,6 @@ extern s32 D_8002F07C;
 int func_80026FE0(void) {
     return D_8002F064 == 1 && D_8002F07C < 0xB4;
 }
-
-typedef struct JetpacStruct3 {
-    f32 unk0;
-    f32 unk4;
-    u8 pad0[0x3C - 0x8];
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-} JetpacStruct3;
 
 void func_80027010(JetpacStruct3 *arg0) {
     if (arg0->unk44 >= 0xE) {

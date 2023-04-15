@@ -79,7 +79,40 @@ void func_806A1580(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_806A18A8.s")
+extern f64 D_8075A558;
+
+void func_80614D00(Actor*, f32, f32);
+void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+
+void func_806A18A8(void) {
+    A178_806A18A8 *sp44;
+    Actor *sp40;
+
+    sp44 = current_actor_pointer->a178_806A18A8;
+    sp40 = current_actor_pointer->unk11C;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_80724CA4(2, 2);
+    }
+    func_8067B238(current_actor_pointer, sp40, 0.15f);
+    if (current_actor_pointer->control_state != 0) {
+        func_806B6600(1);
+        if (sp44->unk1 == 0) {
+            current_actor_pointer->control_state = 0;
+        }
+    }
+    if (sp40->unkB8 != 0.0f) {
+        if ((sp40->unkB8 > 50.0f) && (current_actor_pointer->animation_state->unk64 != 0x233)) {
+            func_80614EBC(current_actor_pointer, 0x233);
+        } else if ((sp40->unkB8 <= 50.0f) && (current_actor_pointer->animation_state->unk64 != 0x232)) {
+            func_80614EBC(current_actor_pointer, 0x232);
+        }
+        func_80614D00(current_actor_pointer, sp40->unkB8 * D_8075A558, 4.0f);
+    } else if (current_actor_pointer->animation_state->unk64 != 0x234) {
+        func_80614EBC(current_actor_pointer, 0x234);
+    }
+    func_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xA, 0xA, 1, 0x12C, 0xC8, 0, 1.0f);
+    func_806319C4(current_actor_pointer, 0);
+}
 
 void func_806A1ABC(void) {
 

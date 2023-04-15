@@ -5130,7 +5130,7 @@ void func_806DDAB0(void) {
             }
             break;
     }
-    var_v0 = D_807FD610[cc_player_index].unk2F < -0x32 && (D_807FD610[cc_player_index].unk2C & 0x2000) != 0;
+    var_v0 = D_807FD610[cc_player_index].unk2F < -0x32 && (D_807FD610[cc_player_index].unk2C & Z_TRIG) != 0;
     if (character_change_array[cc_player_index].unk2C0 == 1) {
         var_a2_2 = (var_v0 | ((current_actor_pointer->y_position - current_actor_pointer->floor) < D_80753DA8[D_807FD584]));
     } else {
@@ -6479,7 +6479,7 @@ s32 func_806E560C(Actor *arg0);
 void func_806E52D0(void) {
     s32 temp_v1;
 
-    if ((D_807FD610[cc_player_index].unk2C & 8)
+    if ((D_807FD610[cc_player_index].unk2C & U_CBUTTONS)
         && (object_timer >= 3U)
         && (D_807FD568->unk4 & 1)
         && !(D_807FBB64 & 0x4000)
@@ -7617,7 +7617,7 @@ s32 func_806E9D1C(s16 arg0, u8 arg1, u8 arg2) {
 void func_806E9DE0(void) {
     PlayerAdditionalActorData *sp1C; // TODO: This is probably not a PaaD
 
-    if (D_807FD610[cc_player_index].unk2C & 8) {
+    if (D_807FD610[cc_player_index].unk2C & U_CBUTTONS) {
         sp1C = extra_player_info_pointer->unk104->additional_actor_data;
         if ((func_80714608(0) == 0) && !(sp1C->unkAC & 0x80000000) && (((((current_actor_pointer->control_state == 0x5D)) || (current_actor_pointer->control_state == 0x5E) || (current_actor_pointer->control_state == 0x62)) && !(D_807FBB64 & 0x80000000)) || (current_actor_pointer->control_state == 0x4E) || (current_actor_pointer->control_state == 0x4F) || (current_actor_pointer->control_state == 0xD) || (current_actor_pointer->control_state == 0xC))) {
             func_806E9D1C(5, 3, 0);

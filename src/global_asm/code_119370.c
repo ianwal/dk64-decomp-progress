@@ -72,7 +72,7 @@ void func_8071495C(void) {
     D_807FDB1D = 1;
 }
 
-void func_8071496C(u16 arg0) {
+void func_8071496C(s16 arg0) {
     D_807FDB1A = arg0;
 }
 

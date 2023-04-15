@@ -398,6 +398,85 @@ void func_806B4958() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_806B49B0.s")
 
+extern f32 D_807502EC;
+
+void func_80724CA4(s32, s32);
+void func_806B3F90(void *arg0, u8 arg1);
+
+/*
+// TODO: Doable, good progress made
+void func_806B49B0(u8 arg0, s16 arg1, s16 arg2) {
+    s16 sp32;
+    Actor178 *temp_v0;
+
+    temp_v0 = current_actor_pointer->unk178;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_80724CA4(1, 1);
+        D_807FDC90->unk30 = current_actor_pointer->animation_state->scale_y;
+        current_actor_pointer->unkB8 = D_807FDC9C->unkC;
+        temp_v0->unk0 = D_807FDC9C->unkA;
+        current_actor_pointer->y_acceleration = D_807502EC;
+    }
+    sp32 = D_807FDC9C->unk6 + temp_v0->unk0;
+    if (((D_807FBB70->unk200 == 9) || (D_807FBB70->unk15 != 0)) && (arg0 != 0x37)) {
+        current_actor_pointer->control_state = 0x37;
+        current_actor_pointer->control_state_progress = 0;
+    }
+    switch (arg0) {
+        case 0x2:
+        case 0x3:
+            if (current_actor_pointer->control_state_progress == 0) {
+                func_80614EBC(current_actor_pointer, arg1);
+                current_actor_pointer->control_state_progress++;
+            }
+            func_8072AB74(arg0, D_807FDC90->unkA, D_807FDC90->unkE, 0xE1, 0.0f);
+            if (current_actor_pointer->y_position < sp32) {
+                if (current_actor_pointer->control_state_progress == 2) {
+                    current_actor_pointer->y_position += ((f32)D_807FDC9C->unkB * 0.03125);
+                } else {
+                    current_actor_pointer->y_position += ((f32)D_807FDC9C->unkB * 0.015625);
+                }
+            }
+            current_actor_pointer->z_rotation = func_806CC190(current_actor_pointer->z_rotation, 0, 5.0f);
+            break;
+        case 0x26:
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                case 1:
+                case 2:
+                    func_80614EBC(current_actor_pointer, arg2);
+                    current_actor_pointer->control_state_progress = 3;
+                    // Fallthrough
+                case 3:
+                    func_806B3F90(D_807FDC90, 0x26);
+                    break;
+            }
+            break;
+        case 0x37:
+            func_8072AB74(0x37, 0.0f, 0.0f, 0x22, 0.0f);
+            if (current_actor_pointer->unk6A & 1) {
+                current_actor_pointer->control_state = 0x40;
+            }
+            break;
+        default:
+            func_8072B7CC(arg1);
+            break;
+    }
+    switch (arg0) {
+        case 2:
+        case 3:
+            func_8072D13C(arg0, 1);
+            return;
+        case 38:
+            if (func_8072D13C(arg0, 1) != 0) {
+                current_actor_pointer->control_state = D_807FDC9C->unk10;
+                current_actor_pointer->control_state_progress = 0;
+            }
+            return;
+    }
+}
+*/
+
 void func_806B4DCC(void) {
     s32 tmp;
     s32 tmp2;

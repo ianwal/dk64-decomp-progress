@@ -245,7 +245,30 @@ void func_8002A944(JetpacStruct *arg0) {
     func_8002A254(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002A974.s")
+extern JetpacStruct D_8002F1DC; // TODO: Array?
+extern JetpacPlayerStruct D_8002EC30;
+
+s32 func_80027250(f32, f32, f32, f32, f32, f32, f32, f32);
+
+s32 func_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    Competitor *player;
+    s32 i;
+    JetpacStruct *var_s0;
+
+    var_s0 = &D_8002F1DC;
+    for (i = 0; i < 6; i++) {
+        if (var_s0->unk14 == 3) {
+            if (func_80027250(arg0, arg1, arg2, arg3, var_s0->unk0 + var_s0->unk1C, var_s0->unk4 + var_s0->unk20, var_s0->unk0 + var_s0->unk24, var_s0->unk4 + var_s0->unk28) != 0) {
+                player = &D_8002EC30.player[D_8002EC30.player_index];
+                func_800291AC(var_s0);
+                player->current_score += var_s0->unk44;
+                return 1;
+            }
+        }
+        var_s0++;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AAD4.s")
 

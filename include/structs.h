@@ -342,6 +342,11 @@ typedef struct race_actor_178 {
     f32 unk14;
 } RaceActor178;
 
+typedef struct {
+    u8 unk0;
+    u8 unk1; // Used
+} A178_806A18A8;
+
 typedef struct actor_17C {
     s32 unk0; // TODO: Actor*? Boss overlay Might require a union?
     u8 unk4;
@@ -937,7 +942,7 @@ struct actor {
     s16 unkEA;
     s16 unkEC; // Something to do with shadow opacity
     s16 unkEE; // TODO: Interacts with rotation, maybe a copy of it?
-    u16 unkF0;
+    s16 unkF0;
     s16 unkF2;
     s16 unkF4;
     s16 unkF6;
@@ -1024,6 +1029,7 @@ struct actor {
         Actor178 *unk178;
         RaceActor178 *race178;
         BossActor178 *boss178;
+        A178_806A18A8 *a178_806A18A8;
     };
     union {
         Actor17C *unk17C;
@@ -1271,12 +1277,23 @@ typedef struct JetpacPlayerStruct {
     s32 player_index;
     s32 unk348;
     s32 unk34C;
-    u8 pad0[0x78C - 0x350];
+    s32 unk350;
+    s32 unk354;
+    s32 unk358;
+    s32 unk35C;
+    s32 unk360;
+    s32 unk364;
+    s32 unk368;
+    s32 unk36C; // Used
+    s32 unk370;
+    s32 unk374; // Used
+    u8 pad0[0x78C - 0x378];
     s32 unk78C;
     s32 unk790;
     s32 unk794;
     u8 unk798;
     u8 unk799;
+    u16 unk79A;
 } JetpacPlayerStruct;
 
 typedef struct ActorSpawner ActorSpawner;

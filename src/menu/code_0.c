@@ -90,8 +90,139 @@ void func_80024418(MenuStruct0 *arg0, u8 arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_800244EC.s")
 
-// Super interesting, somewhat doable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_80024788.s")
+
+extern s16 D_800330D8;
+extern s8 D_80032F50;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1; // Used
+    u8 unk2;
+    u8 unk3;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+    u32 unk10;
+    u32 unk14;
+    s8 unk18; // Used
+    s8 unk19; // Used
+} Struct80024788;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    s8 unk3; // Used
+} Struct807ECDEC;
+
+extern Struct807ECDEC *D_807ECDEC;
+extern u8 D_800330C0[];
+
+void func_8068C350();
+void func_800244EC();
+
+/*
+// TODO: Doable, good progress made
+void func_80024788(Struct80024788 *arg0) {
+    s32 temp_v0;
+    s32 sp40;
+    CharacterProgress *sp3C;
+    s32 var_s0_3;
+    s32 temp_a0;
+    s32 var_s0_2;
+    s32 var_v0;
+    s32 var_t5;
+
+    sp40 = 0;
+    D_800330D8 = 0;
+    switch (arg0->unk1) {
+        case 0x2:
+        case 0x37:
+            break;
+        case 0x0:
+            if (func_806F70A8(4, &D_800330D8) != 0) {
+                sp3C = &D_807FC950->character_progress[*current_character_index];
+                for (var_s0_2 = 0; var_s0_2 < 8; var_s0_2++) {
+                    if (isFlagSet(func_807319D8(0x1D5, var_s0_2, *current_character_index), FLAG_TYPE_PERMANENT) != 0) {
+                        temp_v0 = func_807319D8(0x1FD, var_s0_2, *current_character_index);
+                        if (isFlagSet(temp_v0, FLAG_TYPE_PERMANENT) == FALSE) {
+                            setFlag(temp_v0, TRUE, FLAG_TYPE_PERMANENT);
+                            sp3C->golden_bananas[var_s0_2] += 1;
+                            sp40 = 1;
+                        }
+                    }
+                }
+                func_806F8278(0);
+            }
+            if (sp40 != 0) {
+                // Save the game
+                func_8060DEC8();
+            }
+            if (func_8061CB50() == 0) {
+                arg0->unk1++;
+                func_806EB0C0(0x55, NULL, 0);
+            }
+            break;
+        case 0x1:
+            if (D_807FD610[cc_player_index].unk2C & A_BUTTON) {
+                current_actor_pointer->unk15F = 0;
+                arg0->unk1 = 3;
+            } else {
+                arg0->unk19 = 1;
+                for (var_s0_3 = 0x1FD; var_s0_3 < 0x225; var_s0_3++) {
+                    if (isFlagSet(var_s0_3, FLAG_TYPE_PERMANENT) == FALSE) {
+                        arg0->unk19 = 0;
+                        var_s0_3 = 0x224;
+                    }
+                }
+                if (0xFF - current_actor_pointer->unk15F >= 9) {
+                    var_v0 = 8;
+                } else {
+                    var_v0 = 0xFF - current_actor_pointer->unk15F;
+                }
+                current_actor_pointer->unk15F += var_v0;
+                func_8068C350(&func_800244EC, current_actor_pointer, 3);
+                if (D_807FD610[cc_player_index].unk2C & B_BUTTON) {
+                    func_800241E8();
+                    arg0->unk1 = 2;
+                } else if ((arg0->unk19 != 0) && (D_807FD610[cc_player_index].unk2C & U_CBUTTONS)) {
+                    arg0->unk1 = 4;
+                }
+            }
+            break;
+        case 0x3:
+            D_800330D8 = 1;
+            if (D_807FD610[cc_player_index].unk2C & (A_BUTTON | B_BUTTON)) {
+                arg0->unk1 = 1;
+            }
+            break;
+        default:
+            if (D_807FD610[cc_player_index].unk2C & B_BUTTON) {
+                var_t5 = 1;
+            } else {
+                if ((D_807ECDEC->unk3 >= 0x29) && (arg0->unk18 < 0x29)) {
+                    arg0->unk1--;
+                    playSound(0x2A0, 0x7FFF, 64.0f, 1.0f, 0, 0);
+                }
+                if ((D_807ECDEC->unk3 < -0x28) && (arg0->unk18 >= -0x28)) {
+                    arg0->unk1++;
+                    playSound(0x2A0, 0x7FFF, 64.0f, 1.0f, 0, 0);
+                }
+                var_t5 = ((arg0->unk1 - 4) & 7) + 4;
+            }
+            arg0->unk1 = var_t5;
+            if (D_807FD610[cc_player_index].unk2C & A_BUTTON) {
+                func_80712774(D_800330C0[var_t5]);
+                D_80032F50 = 1;
+                arg0->unk1 = 0x37;
+            }
+            func_8068C350(&func_800244EC, current_actor_pointer, 3);
+            break;
+    }
+    arg0->unk18 = D_807ECDEC->unk3;
+}
+*/
 
 void func_80024BFC(MenuStruct0 *arg0) {
     switch (arg0->unk1) {

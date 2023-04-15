@@ -214,7 +214,8 @@ void func_8068C2F8(s32 arg0) {
     }
 }
 
-void func_8068C350(s32 arg0, s32 arg1, u8 arg2) {
+// TODO: Arg0 is a function pointer
+void func_8068C350(s32 arg0, Actor *arg1, u8 arg2) {
     if (D_807501E0 < 8) {
         D_807FC630[D_807501E0].unk0 = arg0;
         D_807FC630[D_807501E0].unk4 = arg1;

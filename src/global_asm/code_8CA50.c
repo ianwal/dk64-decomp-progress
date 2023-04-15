@@ -4,7 +4,7 @@
 
 /*
 // See func_8072881C() for details
-void func_80688370(Actor *, s32, f32, s32);
+void func_80688370(Actor *, s32, f32);
 void func_8068839C(Actor *, s32, s32);
 void func_806883C8(Actor *, s32, s32);
 void func_806883F4(Actor *, s32, s16, s32);

@@ -40,7 +40,7 @@ void func_806F0C18(Actor *arg0) {
     s32 temp_v0;
     void *temp_v0_2; // TODO: Which aaD?
 
-    temp_v0 = func_80613448();
+    temp_v0 = func_80613448(arg0);
     if (temp_v0 >= 0x11) {
         if (temp_v0 != 0xDB) {
             // TODO: Call D_8075D61C[something]()
