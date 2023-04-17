@@ -120,6 +120,107 @@ void func_806A1ABC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_806A1AC4.s")
 
+extern f32 D_8075A560;
+extern f64 D_8075A568;
+extern s32 D_8071E864;
+extern s32 D_8071FFA0;
+
+void func_807248B0(Actor*, f32);
+
+/*
+// TODO: Very close, something iffy with the loop and our stack is too small
+void func_806A1AC4(void) {
+    s32 *sp40;
+    f32 dx;
+    f32 temp_f20;
+    f32 dz;
+    f64 temp_f22;
+    s16 i;
+
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+        func_80728950(0);
+        func_807248B0(current_actor_pointer, 1.2f);
+        current_actor_pointer->object_properties_bitfield |= 0x400;
+        current_actor_pointer->draw_distance = 1000;
+        if (isFlagSet(0xFB, FLAG_TYPE_PERMANENT) != 0) {
+            func_80613C48(current_actor_pointer, 0x597, 0, 0);
+            func_807289B0(0, 0);
+            current_actor_pointer->control_state = 3;
+        } else {
+            func_80613C48(current_actor_pointer, 0x598, 0, 0);
+            func_80614D00(current_actor_pointer, 0, 0);
+            current_actor_pointer->noclip_byte = 1;
+            current_actor_pointer->object_properties_bitfield &= ~4;
+        }
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0:
+            if ((D_807FBB70->unk254 != 0) && (D_807FBB70->unk258 == 1)) {
+                func_8070DA74(current_actor_pointer);
+                func_8070D8C0(current_actor_pointer, 0x1F, 1);
+                playCutscene(current_actor_pointer, 0x12, 1);
+                setFlag(0xFB, TRUE, FLAG_TYPE_PERMANENT);
+                current_actor_pointer->control_state = 1;
+            } else if ((isFlagSet(0xFB, FLAG_TYPE_PERMANENT) == FALSE) && (isFlagSet(0x21, FLAG_TYPE_TEMPORARY) == FALSE)) {
+                dx = current_actor_pointer->x_position - player_pointer->x_position;
+                dz = current_actor_pointer->z_position - player_pointer->z_position;
+                if (((dx * dx) + (dz * dz)) < D_8075A560) {
+                    func_8070D8C0(player_pointer, 0x1F, 0);
+                    setFlag(0x21, 1, 2);
+                }
+            }
+            break;
+        case 1:
+            if ((D_807FBB70->unk254 != 0) && (D_807FBB70->unk258 == 1)) {
+                func_80614EBC(current_actor_pointer, 0x328);
+                current_actor_pointer->control_state = 2;
+                current_actor_pointer->noclip_byte = 2;
+                current_actor_pointer->object_properties_bitfield |= 4;
+            }
+            break;
+        case 2:
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    // TODO: Issue is here, not sure what's going on
+                    i = 0;
+                    if ((object_timer & 7) == 0) {
+                        temp_f22 = D_8075A568;
+                        sp40 = &D_8071FFA0;
+                        while (i < 0xC) {
+                            temp_f20 = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * temp_f22;
+                            func_8071498C(&D_8071E864);
+                            func_80714950(i);
+                            func_807149B8(1);
+                            func_807149C8(0x8C, 0x8C, 0x8C, 0xFF);
+                            func_80714998(5);
+                            func_80714CC0(sp40, temp_f20, current_actor_pointer->x_position, current_actor_pointer->y_position + 50.0f, current_actor_pointer->z_position);
+                            i++;
+                        }
+                    }
+                    break;
+                case 2:
+                    func_807289B0(0, 0);
+                    current_actor_pointer->control_state_progress += 1;
+                    break;
+                case 4:
+                    func_807289B0(0, 2);
+                    current_actor_pointer->control_state_progress += 1;
+                    break;
+                case 6:
+                    func_807289B0(0, 0);
+                    current_actor_pointer->control_state += 1;
+                    break;
+            }
+            break;
+        case 3:
+            func_8072881C(0, &current_actor_pointer->unkEC);
+            break;
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
+
 void func_806A1F28() {
     current_actor_pointer->object_properties_bitfield |= 0x400;
     func_806319C4(current_actor_pointer, 0);
@@ -139,6 +240,101 @@ void func_806A1FD0(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_806A1FD8.s")
+
+extern s32 D_80717D4C;
+extern s32 D_8071FF18;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    f32 unk4;
+    f32 unk8;
+} AAD_806A1FD8;
+
+void func_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
+s32 func_8067AF44(Actor* arg0);
+s16 func_80688E68(Actor *arg0);
+s16 func_80688C30(u16 arg0);
+
+/*
+// TODO: Ridiculously close, our stack is too big and the load of at s1 is swapped in one spot
+void func_806A1FD8(void) {
+    s32 var_s1;
+    s32 var_s0;
+    s32 var_v1;
+    AAD_806A1FD8 *aaD;
+    Actor *temp_s0;
+    u8 var_a1;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unk64 |= 8;
+        aaD->unk0 = 0;
+        aaD->unk4 = 0.0f;
+        aaD->unk8 = current_actor_pointer->y_position;
+        current_actor_pointer->unk130 = 0x46;
+        current_actor_pointer->unk131 = 0x14;
+        if (isFlagSet(func_80688C30(func_80688E68(current_actor_pointer)), FLAG_TYPE_PERMANENT) != 0) {
+            func_806782C0(current_actor_pointer);
+        }
+    }
+    if ((player_pointer->control_state == 0x2D) && (player_pointer->control_state_progress != 0)) {
+        var_a1 = FALSE;
+        if (current_actor_pointer->unk114 != NULL) {
+            var_v1 = current_actor_pointer->unk114->unk10;
+            var_s1 = 0;
+            while (var_v1 != 0 && !var_a1) {
+                temp_s0 = current_actor_pointer->unk114->unk0[var_s1];
+                if ((func_8067AF44(temp_s0) != 0) && (temp_s0 == player_pointer)) {
+                    var_a1 = TRUE;
+                }
+                var_v1--;
+                var_s1++;
+            }
+        }
+        if (var_a1 && aaD->unk0 == 0) {
+            for (var_s0 = 1; var_s0 < 9; var_s0++) {
+                func_80714998(2);
+                func_807149B8(1);
+                func_8071498C(&D_80717D4C);
+                func_80714950(-0x64);
+                func_807149C8(0x64, 0x46, 0x1E, 0xFF);
+                func_80671C0C(current_actor_pointer, var_s0, &sp54, &sp50, &sp4C);
+                func_80714CC0(&D_8071FF18, 2.0f, sp54, sp50 + 10.0, sp4C);
+            }
+            aaD->unk0 = 0xF;
+            func_80608528(current_actor_pointer, 0x1C1, 0xFF, 0x7F, 1);
+        }
+    }
+    if (aaD->unk0 >= 2) {
+        aaD->unk0--;
+    }
+    if (aaD->unk0 == 2) {
+        func_806A5DF0(0x8C,
+            current_actor_pointer->x_position,
+            current_actor_pointer->y_position + 10.0f,
+            current_actor_pointer->z_position,
+            0,
+            1,
+            func_80688C30(func_80688E68(current_actor_pointer)),
+            0
+        );
+    }
+    if ((aaD->unk0 < 0xA) && (aaD->unk0 != 0)) {
+        aaD->unk4 = aaD->unk4 + 1.0;
+        if (aaD->unk4 > 20.0) {
+            playSong(0x90, 1.0f);
+            func_806782C0(current_actor_pointer);
+        }
+    }
+    current_actor_pointer->y_position -= aaD->unk4;
+    func_806319C4(current_actor_pointer, 0);
+    current_actor_pointer->y_position = aaD->unk8;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_806A2328.s")
 

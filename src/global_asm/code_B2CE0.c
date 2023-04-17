@@ -2,8 +2,57 @@
 #include "functions.h"
 #include "variables.h"
 
+extern f32 D_8075AE20;
+extern f64 D_8075AE28;
+extern s32 D_8071FBC8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_806ADFE0.s")
+void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);
+void func_80665564(Actor*, f32);
+void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_80612BC0(f32*, f32);
+
+void func_806ADFE0(void) {
+    f32 sp88[4][4];
+    f32 sp48[4][4];
+
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unkB8 = ((rand() >> 0xF) % 50) + 0x46;
+        current_actor_pointer->y_velocity = current_actor_pointer->unkB8 * 2;
+        current_actor_pointer->y_acceleration = -30.0f;
+        current_actor_pointer->terminal_velocity = -220.0f;
+        current_actor_pointer->unk168 = ((rand() >> 0xF) % 400) + 0xC8;
+    }
+    current_actor_pointer->y_rotation += current_actor_pointer->unk168;
+    if (current_actor_pointer->unk168 > 0) {
+        current_actor_pointer->unk168 = current_actor_pointer->unk168 - 0xA;
+    }
+    func_80666280(1);
+    func_80729E6C();
+    func_8067ACB4(current_actor_pointer);
+    func_806651FC(current_actor_pointer);
+    func_80665564(current_actor_pointer, 0.0f);
+    func_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xA, 0xA, 1, 0xC8, 0x80, 0, 1.0f);
+    if (current_actor_pointer->unk15F != 0) {
+        func_806319C4(current_actor_pointer, 0);
+    } else {
+        guTranslateF(&sp88[0], 0.0f, -30.0f, 0.0f);
+        func_80612BC0(&sp48[0], 180.0f);
+        guMtxCatF(&sp88[0], &sp48[0], &sp88[0]);
+        guTranslateF(&sp48[0], 0.0f, 30.0f, 0.0f);
+        guMtxCatF(&sp88[0], &sp48[0], &current_actor_pointer->unkC);
+        func_806319C4(current_actor_pointer, 1);
+    }
+    if (((current_actor_pointer->unk6A & 1) != 0) && !(current_actor_pointer->unk6C & 1)) {
+        func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x56, 0xB4, 0x96, 1, 0x4B, D_8075AE20, 0);
+        current_actor_pointer->unkB8 *= D_8075AE28;
+        current_actor_pointer->y_velocity = current_actor_pointer->unkB8 * 3.0f;
+        return;
+    }
+    if (((current_actor_pointer->unk6A & 1) != 0) && (current_actor_pointer->unk6C & 1)) {
+        func_80714CC0(&D_8071FBC8, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+        func_806782C0(current_actor_pointer);
+    }
+}
 
 void func_807248B0(Actor*, f32);
 

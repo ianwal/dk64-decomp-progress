@@ -225,6 +225,7 @@ typedef struct animation_state_unk20 {
     f32 unk4;
     f32 unk8;
     f32 unkC;
+    u8 unk10;
 } AnimationStateUnk20;
 
 typedef struct actor_animation_state {
@@ -276,8 +277,14 @@ typedef struct actor_animation_state {
 } ActorAnimationState;
 
 typedef struct {
-    f32 unk0; // Used
-    f32 unk4; // Used
+    union {
+        f32 unk0; // Used
+        s32 unk0_s32; // Used // TODO: We might have another aaD situation here...
+    };
+    union {
+        f32 unk4; // Used
+        s32 unk4_s32; // Used // TODO: We might have another aaD situation here...
+    };
     union {
         f32 unk8; // Used
         s32 unk8_s32; // Used // TODO: We might have another aaD situation here...
@@ -355,16 +362,16 @@ typedef struct actor_17C {
     s16 unk8;
 } Actor17C;
 
+typedef struct actor_collision ActorCollision;
+typedef struct actor Actor;
+
 typedef struct {
-    u32 unk0[4]; // Used
+    Actor *unk0[4]; // Used
     u8 unk10; // Used, index into unk0
     s8 unk11;
     s8 unk12;
     s8 unk13;
 } Actor114;
-
-typedef struct actor_collision ActorCollision;
-typedef struct actor Actor;
 
 // TODO: What type is this actually?
 // D_807FBB70
