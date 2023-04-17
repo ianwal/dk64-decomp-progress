@@ -83,7 +83,7 @@ void func_806BA130(void) {
     current_actor_pointer->control_state_progress = 0;
     current_actor_pointer->health = 1;
     current_actor_pointer->unk132 = 1;
-    D_807FDC90[0].unk4 = player_pointer;
+    D_807FDC90->unk4 = player_pointer;
     func_80614EBC(current_actor_pointer, D_807FDC98->unk2A);
     current_actor_pointer->y_rotation = (((rand() >> 0xF) % 1024) + player_pointer->y_rotation) - 0x200;
     current_actor_pointer->unkB8 = ((rand() >> 0xF) % 100) + 50;
@@ -123,10 +123,10 @@ void func_806BB32C(void) {
     if (current_actor_pointer->control_state == 0x17) {
         func_806B9CE0(0, 0);
     }
-    if (D_807FDC90[0].unk2E != 0) {
-        D_807FDC90[0].unk2E--;
+    if (D_807FDC90->unk2E != 0) {
+        D_807FDC90->unk2E--;
         current_actor_pointer->unkFC = 0;
-        if ((D_807FDC90[0].unk2E == 0) && (D_807FDC94 == player_pointer)) {
+        if ((D_807FDC90->unk2E == 0) && (D_807FDC94 == player_pointer)) {
             current_actor_pointer->noclip_byte = 0x24;
         }
     }
@@ -160,7 +160,7 @@ void func_806BB400(void) {
         case 0x4:
             current_actor_pointer->control_state = 0x23;
             current_actor_pointer->control_state_progress = 0;
-            // fallthrough
+            // Fallthrough
         case 0x23:
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
@@ -204,7 +204,7 @@ void func_806BB81C() {
 
 void func_806BC080() {
     func_806BB32C();
-    if ((D_807FDC9C[0].unkA == 0) || (func_806BA240(0, 0x446) == 0)) {
+    if ((D_807FDC9C->unkA_u8[0] == 0) || (func_806BA240(0, 0x446) == 0)) {
         func_806AD260(0x2ED, 1, 0);
         func_806319C4(current_actor_pointer, 0);
     }
@@ -212,7 +212,7 @@ void func_806BC080() {
 
 void func_806BC0E4() {
     func_806BB32C();
-    if ((D_807FDC9C[0].unkA == 0) || (func_806BA240(0x32, 0x44E) == 0)) {
+    if ((D_807FDC9C->unkA_u8[0] == 0) || (func_806BA240(0x32, 0x44E) == 0)) {
         func_806AD260(0x2EC, 1, 0);
         func_806319C4(current_actor_pointer, 0);
     }
@@ -220,7 +220,7 @@ void func_806BC0E4() {
 
 void func_806BC148() {
     func_806BB32C();
-    if ((D_807FDC9C[0].unkA == 0) || (func_806BA240(0x14, 0x44A) == 0)) {
+    if ((D_807FDC9C->unkA_u8[0] == 0) || (func_806BA240(0x14, 0x44A) == 0)) {
         func_806AD260(0x2EE, 1, 0);
         func_806319C4(current_actor_pointer, 0);
     }

@@ -41,7 +41,7 @@ void func_806AD54C(void) {
                     dz = klaptrap->z_position - current_actor_pointer->z_position;
                     if (((dx * dx) + (dz * dz)) < 1600.0f) {
                         angleSign = ((klaptrap->y_rotation - current_actor_pointer->y_rotation) & 0xFFF) >= 0x801 ? 1 : -1;
-                        current_actor_pointer->unkB8 = D_807FDC9C[0].unkD * D_8075AE10;
+                        current_actor_pointer->unkB8 = D_807FDC9C->unkD * D_8075AE10;
                         current_actor_pointer->y_rotation += angleSign * 400;
                         current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
                         D_807FDC90->unk1A |= 0x8000;
@@ -129,7 +129,7 @@ void func_806AD9F4(void) {
         current_actor_pointer->unk132 = 2;
         func_8072DEA8(0x2F6, 0x27, D_807FBB70[0].unk1FC);
         current_actor_pointer->unkB8 *= 2;
-        D_807FDC90[0].unk2C = 0x1F4;
+        D_807FDC90->unk2C = 0x1F4;
     }
     switch (current_actor_pointer->control_state) {
         case 30:
@@ -141,14 +141,14 @@ void func_806AD9F4(void) {
         case 39:
             tmp_t0 = 1;
             func_8072AB74(0, D_807FDC94->x_position, D_807FDC94->z_position, 0x4300, 0.0f);
-            current_actor_pointer->y_rotation += D_807FDC90[0].unk2C;
-            if (D_807FDC90[0].unk2C >= 0x15) {
-                D_807FDC90[0].unk2C -= 0x14;
+            current_actor_pointer->y_rotation += D_807FDC90->unk2C;
+            if (D_807FDC90->unk2C >= 0x15) {
+                D_807FDC90->unk2C -= 0x14;
             } else {
-                D_807FDC90[0].unk2C = 0;
+                D_807FDC90->unk2C = 0;
                 current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
             }
-            if ((current_actor_pointer->control_state_progress) && (D_807FDC90[0].unk2C == 0)) {
+            if ((current_actor_pointer->control_state_progress) && (D_807FDC90->unk2C == 0)) {
                 current_actor_pointer->unk132 = tmp_t0;
                 func_8072DE44(0x2F4);
             }
@@ -181,7 +181,7 @@ void func_806AD9F4(void) {
             func_806AD260(0, 1, 0);
             break;
     }
-    func_8072881C(0, &D_807FDC90[0].unk28);
+    func_8072881C(0, &D_807FDC90->unk28);
     func_806319C4(current_actor_pointer, 0);
 }
 

@@ -1206,8 +1206,11 @@ typedef struct {
     s16 unk6;
     u8 unk8;
     u8 unk9;
-    u8 unkA; // Used // TODO: Type conflict with u16? s16?
-    u8 unkB;
+    union {
+        u8 unkA_u8[2];
+        u16 unkA_u16;
+        s16 unkA_s16;
+    };
     u8 unkC; // Used
     u8 unkD;
     u8 unkE;

@@ -383,7 +383,7 @@ void func_806C1E44(void) {
                 case 0:
                     func_80614EBC(current_actor_pointer, 0x2BF);
                     func_806883F4(current_actor_pointer, 0, 2, 0);
-                    func_8072B324(current_actor_pointer, D_807FDC9C[0].unkC);
+                    func_8072B324(current_actor_pointer, D_807FDC9C->unkC);
                     current_actor_pointer->control_state_progress = 1;
                     break;
                 case 2:

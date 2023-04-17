@@ -56,7 +56,7 @@ void func_806C6884(s16 arg0, s16 arg1, u16 arg2) {
 void func_806C6B50(void) {
     current_actor_pointer->unkAC = D_8075C39C;
     func_806C6884(0, 0xA, 0x44);
-    func_8072881C(0, &D_807FDC90[0].unk28);
+    func_8072881C(0, &D_807FDC90->unk28);
 }
 
 void func_806C6BA0(void) {

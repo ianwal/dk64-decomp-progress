@@ -151,7 +151,7 @@ void func_806C49D0() {
             func_806C498C();
             break;
         case MAP_FUNGI:
-            if (D_807FDC9C[0].unk13 == 6) {
+            if (D_807FDC9C->unk13 == 6) {
                 func_806C3F10(2, 7, 0x1A);
             } else {
                 func_806C3F10(2, 3, 0);
@@ -174,7 +174,7 @@ void func_806C4EB4() {
 }
 
 void func_806C4EE0(u8 arg0, u8 arg1) {
-    D_807FDC90[0].unk2E = 0;
+    D_807FDC90->unk2E = 0;
     func_8070E8DC(1);
     func_8070D8C0(current_actor_pointer, 0xF, arg0);
     current_actor_pointer->control_state = 0x29;

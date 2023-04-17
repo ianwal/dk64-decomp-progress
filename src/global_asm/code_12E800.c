@@ -167,18 +167,18 @@ void func_8072A86C(u8 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072AA80.s")
 
 /*
-// TODO: Surprisingly close, might have type conflicts with D_807FDC9C[0].unkA
+// TODO: Surprisingly close
 void func_8072AA80(void) {
     s16 phi_a0;
 
-    if (D_807FDC9C[0].unkA) {
-        phi_a0 = D_807FDC9C[0].unk6 + current_actor_pointer->unk15E + D_807FDC9C[0].unkA;
+    if (D_807FDC9C->unkA_s16) {
+        phi_a0 = D_807FDC9C->unk6 + current_actor_pointer->unk15E + D_807FDC9C->unkA_s16;
     } else {
         phi_a0 = (s16)current_actor_pointer->unkAC - current_actor_pointer->unk15E;
     }
-    D_807FDC90->unkC = (((rand(phi_a0) >> 0xF) % 32767)
-        % ((phi_a0 - D_807FDC9C[0].unk6 + current_actor_pointer->unk15E) + 1))
-        + D_807FDC9C[0].unk6 + current_actor_pointer->unk15E;
+    D_807FDC90->unkC = (((rand() >> 0xF) % 32767)
+        % ((phi_a0 - D_807FDC9C->unk6 + current_actor_pointer->unk15E) + 1))
+        + D_807FDC9C->unk6 + current_actor_pointer->unk15E;
 }
 */
 
@@ -403,7 +403,7 @@ void func_8072C870(u8 arg0, u8 arg1, s32 arg2) {
     if (arg0 == 7) {
         if (func_80725ED4(1, current_actor_pointer, D_807FDCA0, &D_807FDC90->unkA, &D_807FDC90->unkC, &D_807FDC90->unkE) == 0) {
             arg0 = 0x10;
-            func_8072B324(current_actor_pointer, D_807FDC9C[0].unkD);
+            func_8072B324(current_actor_pointer, D_807FDC9C->unkD);
         }
     }
     D_807FDC90->unk36 = arg0;
@@ -509,10 +509,10 @@ void func_8072DE10(u16 arg0) {
 }
 
 void func_8072DE44(s32 arg0) {
-    current_actor_pointer->control_state = D_807FDC9C[0].unk10;
+    current_actor_pointer->control_state = D_807FDC9C->unk10;
     current_actor_pointer->control_state_progress = 0;
     func_80614EBC(current_actor_pointer, arg0);
-    func_8072B324(current_actor_pointer, D_807FDC9C[0].unkC);
+    func_8072B324(current_actor_pointer, D_807FDC9C->unkC);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072DEA8.s")

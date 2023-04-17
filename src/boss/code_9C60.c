@@ -110,7 +110,7 @@ void func_8002EA14() {
     // TODO: BossActor178?
     Actor178 *sp1C = current_actor_pointer->unk178;
     func_8002E9B8(0x406, 0x674);
-    func_8072B324(current_actor_pointer, D_807FDC9C[0].unkC + (sp1C->unk14 * 0xA) + 0xF);
+    func_8072B324(current_actor_pointer, D_807FDC9C->unkC + (sp1C->unk14 * 0xA) + 0xF);
 }
 
 // Jumptable

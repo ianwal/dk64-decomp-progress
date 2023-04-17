@@ -23,8 +23,8 @@ void func_806B11C0(u8 arg0) {
 
 void func_806B1290(void) {
     // TODO: Hahahaha clean this up
-    if (D_807FDC90[0].unk18 >= 0x65
-        && ((D_807FDC90[0].unk1A & 0x80) && (rand() >> 0xF) % 1000 >= 981
+    if (D_807FDC90->unk18 >= 0x65
+        && ((D_807FDC90->unk1A & 0x80) && (rand() >> 0xF) % 1000 >= 981
             || !((rand() >> 0xF) % 1000 < 991)
             && current_actor_pointer->object_properties_bitfield & 0x100)) {
         current_actor_pointer->control_state = 0x28;

@@ -16,7 +16,7 @@ void func_807271F4(s32, s16, s16, s16, s16, s32, s32);
 void func_8002C520(s16 arg0, s16 arg1, s16 arg2) {
     func_807271F4(arg0,
                   current_actor_pointer->x_position + (func_80612794(arg2) * arg1),
-                  D_807FDC9C[0].unk6,
+                  D_807FDC9C->unk6,
                   current_actor_pointer->z_position + (func_80612790(arg2) * arg1),
                   0,
                   0,
@@ -29,8 +29,8 @@ void func_8002C5F4(void) {
     func_8002C520(2, ((rand() >> 0xF) % 100) + 300, (rand() >> 0xF) % 4096);
     func_8002C520(3, ((rand() >> 0xF) % 100) + 300, (rand() >> 0xF) % 4096);
     func_8002C520(4, ((rand() >> 0xF) % 100) + 300, (rand() >> 0xF) % 4096);
-    if (!(D_807FDC90[0].unk1A & 0x8000)) {
-        D_807FDC90[0].unk1A |= 0x8000;
+    if (!(D_807FDC90->unk1A & 0x8000)) {
+        D_807FDC90->unk1A |= 0x8000;
         playCutscene(D_807FBB44, 2, 1);
     }
 }
