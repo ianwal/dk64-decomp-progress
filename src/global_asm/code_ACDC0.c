@@ -478,7 +478,7 @@ void func_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
         func_806AB4EC(arg0, &D_80720D38, 0x2D, 0xC8, 1.0f, 2, 1);
         func_806AB4EC(arg0, &D_8072104C, 0x113, 0xC8, 1.0f, 2, 1);
     }
-    *current_character_index = sp8C;
+    current_character_index[0] = sp8C;
 }
 */
 

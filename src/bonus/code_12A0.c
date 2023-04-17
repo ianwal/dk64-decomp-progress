@@ -3,7 +3,6 @@
 #include "variables.h"
 
 
-s32 func_80677FA8(s32, s32); // spawnActorWrapper()
 void func_80627948(Actor*, s32, s32, s32);
 void func_8069D2AC(s32,s32,u8, s32, s32, s32, s32, s32);
 u8 func_8070E750(u8, s32, s32);

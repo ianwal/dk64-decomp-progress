@@ -5,7 +5,6 @@
 // Doable, big, interesting
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_806BD170.s")
 
-void func_80677FA8(s32, s32);
 extern s8 D_80750660;
 extern s8 D_807506A4;
 extern s8 D_807FC8D0;

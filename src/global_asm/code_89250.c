@@ -36,7 +36,6 @@ extern f64 D_80759B60; // y
 extern f64 D_80759B70;
 extern f64 D_80759B68;
 
-void func_80677FA8(s32, s32); // spawnActorWrapper()
 void func_80719A0C(void); // Function pointer
 void func_8068588C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
 void func_806858E8(Actor*, s16, f32, f32, f32, f32, s32);

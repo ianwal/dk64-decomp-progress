@@ -6,7 +6,6 @@ void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_80665564(Actor*, f32);
 void func_8067AAB8(Actor* arg0, s32 arg1, s16 arg2, f32 arg3, s16 arg4);
 void func_8067ACB4(Actor*);
-void func_8067DF44(f32, f32, f32, f32, u8, u8);
 void func_80683AD8();
 
 void func_80679200(Actor*, Actor*, s32, u8, s32, s32);

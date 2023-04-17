@@ -41,8 +41,6 @@ void func_8065A708(f32, f32, s32, f32, f32, f32, f32, s32, u8, u8, u8); // TODO:
 u8 func_80661300(s32);
 void func_8066134C(s32, u8);
 
-void func_8067DF44(f32, f32, f32, f32, s32, s32);
-
 void func_80714950(s32);
 void func_80714998(s32);
 void func_807149B8(s32);
@@ -585,7 +583,6 @@ void func_80714950(s32);
 void func_8071498C(void*);
 void func_80714998(s32);
 void func_807149B8(s32);
-void func_807149C8(s32, s32, s32, s32);
 extern s32 D_80717D4C;
 
 /*

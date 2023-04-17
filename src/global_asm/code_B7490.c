@@ -17,7 +17,6 @@ s32 func_80726164(Actor*, s16, s16, s16, void*);
 void func_806B3E7C();
 void func_8068588C(Actor *, s32, f32, f32, f32, f32, s32);
 void func_80714998(s32);
-void func_807149C8(u8, u8, u8, u8);
 void func_806653C0(Actor*, f32, f32);
 void func_80665564(Actor*, f32);
 void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);

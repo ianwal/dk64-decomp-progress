@@ -196,7 +196,6 @@ void func_806F4D70(u8, s32, s32, s32, f32);
 void func_8068EA38(); // Needed for function pointer
 
 void func_806FFB2C(void); // Needed for function pointer
-void func_80677FA8(s32, s32); // spawnActorWrapper()
 
 u8 func_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 u8 func_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
