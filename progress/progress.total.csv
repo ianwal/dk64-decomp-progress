@@ -1409,7 +1409,7 @@ us,.code,func_80649E00,52,yes
 us,.code,func_8071D28C,816,no
 us,.code,func_80610B84,84,no
 us,.code,func_8060DC3C,620,no
-us,.code,func_806B88B8,616,no
+us,.code,func_806B88B8,608,yes
 us,.code,func_806BE6F0,460,no
 us,.code,func_8073202C,56,no
 us,.code,func_8067AF44,48,yes
@@ -2224,7 +2224,7 @@ us,.code,func_80670548,1812,no
 us,.code,func_806C71C0,8,yes
 us,.code,func_80604BE8,152,yes
 us,.code,func_80717100,268,no
-us,.code,func_806A7BDC,788,no
+us,.code,func_806A7BDC,788,yes
 us,.code,gameIsInMysteryMenuMinigameMode,52,yes
 us,.code,func_8062E548,192,no
 us,.code,func_80650794,288,no
@@ -2832,7 +2832,7 @@ us,.code,func_806F603C,456,no
 us,.code,func_8067AEFC,72,yes
 us,.code,func_806762C0,72,yes
 us,.code,func_80676D00,464,no
-us,.code,func_8072A920,352,no
+us,.code,func_8072A920,352,yes
 us,.code,func_80672E64,8,yes
 us,.code,func_806E186C,484,yes
 us,.code,func_8060B968,104,no

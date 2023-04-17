@@ -701,23 +701,6 @@ ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, s32 arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A170.s")
 
-/*
-// TODO: Pretty close, something odd going on with the byte reads though
-void func_8067A170(Actor *arg0, u8 arg1) {
-    s32 i;
-
-    i = 0;
-    if (D_807FBB70[i].unk201 > 0) {
-        do {
-            if ((arg1 == D_807FBB70[i].unk244) && (arg0 == (D_807FBB70[i].unk204))) {
-                D_807FBB70[i].unk244 = 0;
-            }
-            i++;
-        } while (i < D_807FBB70->unk201);
-    }
-}
-*/
-
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A1DC.s")
 

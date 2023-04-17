@@ -113,7 +113,6 @@ extern s32 D_8075B5DC;
 void func_8066E9EC(Actor*, s32, f32);
 void func_8066EB40(Actor*, f32);
 void func_8072A920(f32, u8, s32, f32, f32, f32, s32, s32, f32, s32);
-// void func_8072A920(s32, s16, f32, f32, f32, s32, f32, f32, u16, s32);
 
 /*
 void func_806B3680(void) {
@@ -289,7 +288,6 @@ void func_806B3F3C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_806B3F90.s")
 
-f32 func_80665E94(f32, f32, f32, f32, f32, f32, s32);
 s16 func_806CC190(s16, s16, f32);
 extern f64 D_8075B5E0;
 extern f64 D_8075B5E8;
@@ -366,6 +364,7 @@ void func_806B4194(void) {
     }
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_806B42A8.s")
 
 void func_806B486C() {
@@ -719,7 +718,7 @@ void func_806B54BC(void) {
                 current_actor_pointer->noclip_byte = 1;
                 if (current_map == 0xA7) {
                     enemies_killed++;
-                    if ((enemies_killed == 5) && (isFlagSet(0x15F, 0) == 0)) {
+                    if ((enemies_killed == 5) && (isFlagSet(0x15F, FLAG_TYPE_PERMANENT) == 0)) {
                         func_8063DA40(4, 0xA);
                     }
                 }

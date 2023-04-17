@@ -355,7 +355,10 @@ typedef struct {
 } A178_806A18A8;
 
 typedef struct actor_17C {
-    s32 unk0; // TODO: Actor*? Boss overlay Might require a union?
+    union {
+        s32 unk0; // TODO: Actor*? Boss overlay Might require a union?
+        s16 unk0_s16[2]; // TODO: Actor*? Boss overlay Might require a union?
+    };
     u8 unk4;
     u8 unk5;
     s16 unk6;

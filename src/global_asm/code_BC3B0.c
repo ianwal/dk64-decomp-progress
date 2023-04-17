@@ -264,6 +264,8 @@ void func_806B86AC(void) {
     }
 }
 
+void func_806B88B8(void);
+
 void func_806B8878(void) {
     func_806B88B8();
 }
@@ -272,4 +274,50 @@ void func_806B8898(void) {
     func_806B88B8();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_806B88B8.s")
+extern f64 D_8075B8A8;
+
+void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, s32 arg6);
+
+void func_806B88B8(void) {
+    Actor178 *temp_v1;
+    Actor178 *sp3C;
+    s16 sp36;
+    Actor17C *temp_s0;
+
+    temp_v1 = current_actor_pointer->unk178;
+    temp_s0 = current_actor_pointer->unk17C;
+    sp3C = temp_v1;
+    func_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        D_807FDC90->unk30 = D_807FDC9C->unkA_u8[1];
+        temp_v1->unk0 = D_807FDC9C->unkD;
+    }
+    if (temp_v1->unk0 != 0) {
+        temp_v1->unk0--;
+        return;
+    }
+    if (D_807FDC90->unk30 <= D_8075B8A8) {
+        D_807FDC90->unk2C = D_807FDC9C->unkA_u8[0];
+        D_807FDC90->unk30 = D_807FDC9C->unkA_u8[1];
+        temp_s0->unk0_s16[0] = 0;
+        func_80608528(current_actor_pointer, 0x17, 0xFF, 0x7F, 0x19);
+    }
+    D_807FDC90->unk30 -= 1.0;
+    if ((D_807FDC90->unk2C != 0) && (temp_s0->unk0_s16[0] == 0)) {
+        func_806907F0(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+        switch (current_actor_pointer->unk58) {
+            case 0xDC:
+                sp36 = 0x37;
+                break;
+            case 0xDF:
+                sp36 = 0x1E;
+                break;
+        }
+        func_8069084C(sp36, 0, 0.6f, current_actor_pointer->y_rotation, D_807FDC9C->unkC * 0xA, 0.0f, 0);
+        D_807FDC90->unk2C -= 1;
+        temp_s0->unk0_s16[0] = D_807FDC9C->unkF;
+    }
+    if (temp_s0->unk0_s16[0] != 0) {
+        temp_s0->unk0_s16[0]--;
+    }
+}

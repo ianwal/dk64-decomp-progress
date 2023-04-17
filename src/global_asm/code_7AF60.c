@@ -6,7 +6,6 @@
 s32 func_806D0DE4(Actor *arg0, Actor *arg1);
 u8 func_806767E0(s32, s32, s32);
 u8 func_80676CB0(s32, s32);
-f32 func_80665E94(f32, f32, f32, f32, f32, f32, s32);
 
 extern u8 D_807F6902;
 extern f64 D_807591E0;

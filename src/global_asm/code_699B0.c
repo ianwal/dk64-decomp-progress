@@ -270,9 +270,9 @@ f32 func_80665E48(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 }
 */
 
-void func_80611BB4(f32, f32);
+f32 func_80611BB4(f32, f32);
 
-void func_80665E94(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s16 arg6) {
+f32 func_80665E94(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s16 arg6) {
     f32 temp_f0;
     f32 temp_f2;
     f32 phi_f14;
@@ -285,7 +285,7 @@ void func_80665E94(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s
     } else {
         phi_f14 = temp_f0;
     }
-    func_80611BB4(arg4 - arg1, phi_f14);
+    return func_80611BB4(arg4 - arg1, phi_f14);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665F24.s")

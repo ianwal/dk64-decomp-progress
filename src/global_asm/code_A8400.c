@@ -854,7 +854,60 @@ void func_806A7BB8(void) {
     func_806A7600(&D_80721004);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A7BDC.s")
+typedef struct {
+    s32 unk0[7];
+} Struct807504A4;
+
+extern s32 D_8071D28C;
+extern s32 D_8071EB70;
+extern s32 D_80721170;
+extern Struct807504A4 D_807504A4;
+extern f32 D_8075AA78;
+extern f32 D_8075AA7C;
+extern u8 D_807FBD70;
+extern s32 D_807FC954;
+
+u32 func_806F8EDC(s32, s32);
+void func_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
+
+void func_806A7BDC(void) {
+    s32 sp64;
+    s32 sp60;
+    Struct807504A4 sp44;
+
+    sp64 = D_807FC950->character_progress[current_character_index[0]].instrument & 1;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_8066E854(current_actor_pointer, 0, 10.0f, 0, -1);
+        func_8066EB40(current_actor_pointer, 175.0f);
+        func_8066E8E4(current_actor_pointer, 0, 10.0f, 0, 80.0f, -1);
+        current_actor_pointer->floor = D_8075AA78;
+        func_80665564(current_actor_pointer, 0.0f);
+    }
+    func_8067ACB4(current_actor_pointer);
+    if ((sp64 != 0) && (D_807FBD70 == 4) && ((object_timer % 5U) == 0)) {
+        sp60 = ((rand() >> 0xF) % 255) % 7;
+        sp44 = D_807504A4;
+        func_8071498C(&D_8071D28C);
+        func_807149FC(-1);
+        func_807149B8(1);
+        func_80714950(0x64);
+        func_80714C08(sp44.unk0[sp60], 0.2f, current_actor_pointer, 1, 0);
+        playSong(0x7F, 1.0f);
+        func_806F8BC4(7, 0, 0);
+        func_806F91B4(7, 0, func_806F8EDC(7, 0));
+    }
+    if (!(object_timer & 0xF)) {
+        func_807149B8(1);
+        func_8071498C(&D_8071EB70);
+        func_80714950(0x226);
+        func_80714998(2);
+        func_807149C8(0xFF, 0xFF, 0xFF, sp64 != 0 ? 0xFF : 0x7F);
+        func_80714C08(&D_80721170, 0.4f, current_actor_pointer, 1, 2);
+    }
+    if (D_8075AA7C != current_actor_pointer->floor) {
+        func_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xE, 0xE, 1, 0x96, 0x78, 0, 1.0f);
+    }
+}
 
 extern f32 D_807504C4;
 extern u8 D_807504D0;

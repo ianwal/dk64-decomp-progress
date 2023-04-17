@@ -39,6 +39,7 @@ s16 func_80665DE0(f32, f32, f32, f32);
 void func_8067DF44(f32, f32, f32, f32, u8, u8);
 s32 func_80677FA8(s32, s32); // spawnActorWrapper()
 void func_807149C8(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
+f32 func_80665E94(f32, f32, f32, f32, f32, f32, s16);
 
 // Heap stuff???
 void func_8061130C(void *);

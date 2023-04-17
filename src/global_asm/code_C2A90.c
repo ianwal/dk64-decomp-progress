@@ -17,7 +17,6 @@ void func_80714C08(s32*, f32, Actor*, s32, s32);
 void func_80724E48(u8);
 void func_806F09F0(Actor*, u16);
 
-// TODO: Needs D_807FBB70[i].unk278->unk3, looks like a fairly easy match after that
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806BDD90.s")
 
 extern f32 D_8075BBE4;

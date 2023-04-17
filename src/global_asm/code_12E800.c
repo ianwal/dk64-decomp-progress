@@ -27,25 +27,17 @@ typedef struct {
     s32 unk10;
     s32 unk14;
     u16 unk18; // used
-} AAD_80729B00_1;
-
-typedef struct {
-    u8 unk0[0x1F0 - 0];
-    s32 unk1F0; // Used
-    s32 unk1F4;
-    s32 unk1F8; // Used
-} AAD_80729B00_2;
+} AAD_80729B00;
 
 void func_80608528(Actor *, s32, s32, s16, s32);
 void func_80605314(Actor *, s32);
+void func_806663F8(void);
 
 /*
 // TODO: Doable, very close!!!
 void func_80729B00(void) {
     EnemyInfo *temp_t9;
-    u32 temp_a0;
-    AAD_80729B00_1 *temp_t7;
-    AAD_80729B00_2 *temp_v1;
+    AAD_80729B00 *temp_t7;
 
     temp_t7 = current_actor_pointer->additional_actor_data;
     D_807FDC90 = temp_t7;
@@ -55,10 +47,11 @@ void func_80729B00(void) {
     D_807FDC9C = temp_t9;
     D_807FDCA0 = temp_t9->unk1C;
     temp_t7->unk18++;
-    temp_a0 = current_actor_pointer->object_properties_bitfield;
-    if (temp_a0 & 0x20000000) {
-        if ((current_actor_pointer->control_state != 0x37) && (current_actor_pointer->control_state != 0x36) && (D_807FDC90->unk16 != D_807FDC94->animation_state->unk0->unk10)) {
-            current_actor_pointer->object_properties_bitfield = temp_a0 & 0xDFFFFFFF;
+    if (current_actor_pointer->object_properties_bitfield & 0x20000000) {
+        if ((current_actor_pointer->control_state != 0x37)
+            && (current_actor_pointer->control_state != 0x36)
+            && (D_807FDC90->unk16 != D_807FDC94->animation_state->unk0->unk10)) {
+            current_actor_pointer->object_properties_bitfield &= 0xDFFFFFFF;
         }
     }
     if (current_actor_pointer->interactable & 2) {
@@ -73,7 +66,7 @@ void func_80729B00(void) {
             if (D_807FDC98->unk46 & 0x800) {
                 D_807FBB70[0].unk15 = 1;
             } else {
-                func_8067AC38(temp_a0, &D_807FDC90); // TODO: Probably void*
+                func_8067AC38();
                 current_actor_pointer->unk138 = 0;
                 current_actor_pointer->object_properties_bitfield &= 0xFFFD7FFF;
                 current_actor_pointer->noclip_byte = 1;
@@ -89,9 +82,8 @@ void func_80729B00(void) {
                 D_807FBB70[0].unk15 = 1;
             }
         }
-        if ((current_map == 0x30) && (D_807FDC94->interactable & 1)) {
-            temp_v1 = D_807FDC94->additional_actor_data;
-            if ((temp_v1->unk1F0 ^ temp_v1->unk1F8) & 0x100000) {
+        if ((current_map == MAP_FUNGI) && (D_807FDC94->interactable & 1)) {
+            if ((D_807FDC94->PaaD->unk1F0 ^ D_807FDC94->PaaD->unk1F8) & 0x100000) {
                 func_80605314(current_actor_pointer, 0);
                 current_actor_pointer->control_state = 0;
                 current_actor_pointer->control_state_progress = 0;
@@ -156,13 +148,22 @@ u8 func_8072AB74(u8 arg0, f32 arg1, f32 arg2, u16 arg3, f32 arg4);
 
 /*
 // TODO: t8 a3 regalloc? Odd one
-void func_8072A86C(u8 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4) {
+void func_8072A86C(s16 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4) {
     current_actor_pointer->y_velocity = func_80612794(current_actor_pointer->unkF0) * -arg3;
     func_8072AB74(arg0, arg1, arg2, (arg4 | 0x1080) & 0xFFFF, current_actor_pointer->unk15E * 0.5);
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072A920.s")
+extern f64 D_8075FD30;
+extern f64 D_8075FD38;
+
+void func_8072A86C(s16 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4);
+
+void func_8072A920(s16 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, u8 arg5, f32 arg6, f32 arg7, u16 arg8) {
+    current_actor_pointer->z_rotation = func_806CC190(current_actor_pointer->z_rotation, (func_80665E94(arg2, arg3, arg4, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, arg5) * 2048.0) / D_8075FD30, arg6);
+    current_actor_pointer->unkF0 = func_806CC190(current_actor_pointer->unkF0, (func_80665E94(arg2, arg1 + arg3, arg4, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, arg5) * 2048.0) / D_8075FD38, arg6);
+    func_8072A86C(arg0, arg2, arg4, arg7, arg8);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072AA80.s")
 
@@ -580,7 +581,6 @@ void func_8072E2B0(Actor *arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
 extern f64 D_8075FF40;
 extern f64 D_8075FF48;
 
-void func_80665E94(f32, f32, f32, f32, f32, f32, s32);
 s16 func_806CC10C(s16, s16);
 
 /*

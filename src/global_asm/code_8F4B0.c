@@ -111,22 +111,6 @@ void func_8068B8FC(void) {
 
 extern u8 D_807FBDC4;
 
-/*
-// TODO: Something up with 807FBB70 definition
-void func_8068B9B4(void) {
-    void *temp_a1;
-    s32 i;
-
-    for (i = 0; i < D_807FBDC4; i++) {
-        temp_a1 = D_807FBB70[i].unk278;
-        if (D_807FBB70[i].unk258 == 1) {
-            // TODO: Better match for this
-            func_80689A80(((s16*)temp_a1)[1], temp_a1);
-        }
-    }
-}
-*/
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068BA2C.s")
 
 // Jumptable
