@@ -1448,7 +1448,7 @@ struct Struct807FDC90 {
     u8 unk23;
     u8 unk24;
     u8 unk25;
-    u16 unk26;
+    s16 unk26; // Used
     s32 unk28;
     s16 unk2C;
     s16 unk2E; // TODO: This might not be correct

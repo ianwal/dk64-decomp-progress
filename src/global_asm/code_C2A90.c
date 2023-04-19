@@ -247,35 +247,35 @@ void func_806C1734(void) {
         if (temp_v1->unk8->unk0 == 0) {
             temp_a0 = temp_v1->unk0;
             switch (temp_a0->unk10) {                      /* irregular */
-            case 0xBB:
-                if ((current_actor_pointer->y_velocity > 30.0f) && !(object_timer & 3)) {
-                    func_80714998(2);
-                    func_807149B8(1);
-                    func_8071498C(&D_8071C818);
-                    func_80714C08(&D_8071FB08, 0.8f, current_actor_pointer, 5, 0);
-                }
-                break;
-            case 0x114:
-                if (temp_a0->unk24 == 0.0f) {
-                    func_806F1048(current_actor_pointer);
-                }
-                break;
-            case 0xEA:
-                if ((current_actor_pointer->control_state_progress != 0) && (sp2A >= 0xA)) {
-                    current_actor_pointer->control_state_progress = 0;
-                    func_80690814(current_actor_pointer, 7);
-                    func_8069084C(0x29, 0xCA, 0.4f, current_actor_pointer->y_rotation, 250.0f, 0.0f, current_actor_pointer);
-                }
-                break;
-            case 0x112:
-                if ((sp2A >= 0x44) && (sp2A < 0x64) && ((object_timer % 3U) == 0)) {
-                    sp29 = ((rand() >> 0xF) % 32767) % 2;
-                    func_807149B8(1);
-                    func_80714950(0x50);
-                    func_8071498C(&D_8071A8B0);
-                    func_80714C08(&D_807200D4, 0.5f, current_actor_pointer, sp29 + 9, 2);
-                }
-                break;
+                case 0xBB:
+                    if ((current_actor_pointer->y_velocity > 30.0f) && !(object_timer & 3)) {
+                        func_80714998(2);
+                        func_807149B8(1);
+                        func_8071498C(&D_8071C818);
+                        func_80714C08(&D_8071FB08, 0.8f, current_actor_pointer, 5, 0);
+                    }
+                    break;
+                case 0x114:
+                    if (temp_a0->unk24 == 0.0f) {
+                        func_806F1048(current_actor_pointer);
+                    }
+                    break;
+                case 0xEA:
+                    if ((current_actor_pointer->control_state_progress != 0) && (sp2A >= 0xA)) {
+                        current_actor_pointer->control_state_progress = 0;
+                        func_80690814(current_actor_pointer, 7);
+                        func_8069084C(0x29, 0xCA, 0.4f, current_actor_pointer->y_rotation, 250.0f, 0.0f, current_actor_pointer);
+                    }
+                    break;
+                case 0x112:
+                    if ((sp2A >= 0x44) && (sp2A < 0x64) && ((object_timer % 3U) == 0)) {
+                        sp29 = ((rand() >> 0xF) % 32767) % 2;
+                        func_807149B8(1);
+                        func_80714950(0x50);
+                        func_8071498C(&D_8071A8B0);
+                        func_80714C08(&D_807200D4, 0.5f, current_actor_pointer, sp29 + 9, 2);
+                    }
+                    break;
             }
         }
     } else {
@@ -461,8 +461,112 @@ void func_806C1E44(void) {
 }
 */
 
-// Doable and quite interesting, but it's a big project and may require some struct definitions
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806C226C.s")
+extern s32 D_8071FC40; // TODO: Proper datatype
+extern s32 D_80718BF4; // TODO: Proper datatype
+
+extern s16 D_807F62B4;
+extern u8 D_807FBDC4;
+extern f32 D_807502F4;
+extern s32 D_807FBDC8[];
+
+void func_806C226C(void) {
+    s16 i;
+
+    func_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->y_acceleration = D_807502F4;
+        current_actor_pointer->y_position = current_actor_pointer->floor;
+        current_actor_pointer->draw_distance = 0x4B0;
+        if (isFlagSet(0x9E, FLAG_TYPE_PERMANENT)) {
+            if (D_807FDC9C->unk13 == 0x16) {
+                current_actor_pointer->control_state = 0x28;
+                current_actor_pointer->control_state_progress = 0;
+            } else {
+                current_actor_pointer->control_state = 0x40;
+            }
+        } else if (D_807FDC9C->unk13 == 0x16) {
+            current_actor_pointer->control_state = 0x40;
+        }
+    }
+    for (i = 0; i < D_807FBDC4; i++) {
+        if (D_807FBDC8[i] == 3) {
+            func_80614EBC(current_actor_pointer, 0x2A3);
+            current_actor_pointer->control_state = 0x27;
+            current_actor_pointer->control_state_progress = 0;
+            playCutscene(current_actor_pointer, 0x16, 1);
+            setFlag(0x9E, TRUE, FLAG_TYPE_PERMANENT);
+        }
+    }
+    switch (current_actor_pointer->control_state) {
+        case 39:
+            if (current_actor_pointer->unk6A & 4) {
+                func_8072A920(2, 0, D_807FDC90->unkA, D_807FDC90->unkC, D_807FDC90->unkE, 0x46, 30.0f, 100.0f, 0);
+                if (((rand() >> 0xF) % 1000) >= 0x3A3) {
+                    func_8071498C(&D_80718BF4);
+                    func_807149B8(1);
+                    func_807149FC(-1);
+                    func_80714CC0(&D_8071FC40, 0.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                }
+            } else {
+                if ((current_actor_pointer->unk6A ^ current_actor_pointer->unk6C) & 1) {
+                    func_80614EBC(current_actor_pointer, 0x2A4);
+                }
+                func_8072AB74(2, D_807FDC90->unkA, D_807FDC90->unkE, 0x200, 0.0f);
+                if (current_actor_pointer->y_velocity < -10.0f) {
+                    current_actor_pointer->z_rotation = func_806CC190(current_actor_pointer->z_rotation, 0x400, 10.0f);
+                }
+            }
+            func_8072D13C(2, 0);
+            if (func_80629148() != 0) {
+                current_actor_pointer->control_state = 0x40;
+            }
+            break;
+        case 40:
+            switch (current_actor_pointer->control_state_progress) {
+                case 0x0:
+                    func_80724B5C(2, 3, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+                    func_80614EBC(current_actor_pointer, 0x2A6);
+                    current_actor_pointer->z_rotation = 0;
+                    current_actor_pointer->control_state_progress += 1;
+                    // Fallthrough
+                case 0x1:
+                    if (func_8072E22C(0xC8) != 0) {
+                        current_actor_pointer->control_state_progress += 1;
+                        if (isFlagSet(0xC1, FLAG_TYPE_PERMANENT) != 0) {
+                            if ((current_character_index[0] == 0) && (isFlagSet(0xA5, FLAG_TYPE_PERMANENT) == 0)) {
+                                func_8070D8C0(current_actor_pointer, 0x1C, 2);
+                            } else if (current_character_index[0] != 0) {
+                                func_8070D8C0(current_actor_pointer, 0x1C, 0);
+                            }
+                        } else if (current_character_index[0] == 0) {
+                            playCutscene(current_actor_pointer, 0x1E, 1);
+                            func_8070E8DC(1);
+                            func_8070D8C0(current_actor_pointer, 0x1C, 1);
+                            current_actor_pointer->control_state_progress = 0x63;
+                        } else {
+                            func_8070D8C0(current_actor_pointer, 0x1C, 0);
+                        }
+                    }
+                    break;
+                case 0x2:
+                    if ((isFlagSet(0xC1, FLAG_TYPE_PERMANENT) == FALSE) && (func_8072E22C(0x12C) == 0)) {
+                        current_actor_pointer->control_state_progress = 1;
+                    }
+                    break;
+                case 0x63:
+                    if ((func_8061CB50() == 0) && !(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+                        func_8070D8C0(current_actor_pointer, 0x1C, 2);
+                        current_actor_pointer->control_state_progress = 3;
+                    }
+                    break;
+            }
+            func_806335B0(D_807F62B4, 1, 1, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+            func_8072E1A4(0xA, D_807FDC94);
+            break;
+    }
+    func_8072881C(0, &D_807FDC90->unk28);
+    func_806319C4(current_actor_pointer, 0);
+}
 
 extern f64 D_8075BEB8;
 

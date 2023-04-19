@@ -102,6 +102,7 @@ void func_80729E6C(void) {
     }
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_80729EB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072A450.s")
@@ -342,6 +343,37 @@ void func_8072B330(u16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B438.s")
 
+/*
+// TODO: Close, float regalloc
+void func_8072B438(u16 arg0) {
+    s32 temp_v1;
+    f32 var_f12;
+
+    temp_v1 = D_807FDC90->unk26;
+    if ((current_actor_pointer->unkB8 < -60.0f) && (current_actor_pointer->unk6A & 1) && ((object_timer % 5U) == 0)) {
+        func_8072DAA4();
+    }
+    if (temp_v1 != current_actor_pointer->unkB8) {
+        if (current_actor_pointer->unkB8 < temp_v1) {
+            var_f12 = current_actor_pointer->unkB8 + D_807FDC90->unk35;
+            if (temp_v1 < var_f12) {
+                current_actor_pointer->unkB8 = temp_v1;
+            } else {
+                current_actor_pointer->unkB8 = var_f12;
+            }
+        } else if (temp_v1 < current_actor_pointer->unkB8) {
+            var_f12 = current_actor_pointer->unkB8 - D_807FDC90->unk35;
+            if (var_f12 < temp_v1) {
+                current_actor_pointer->unkB8 = temp_v1;
+            } else {
+                current_actor_pointer->unkB8 = var_f12;
+            }
+        }
+    }
+    func_8072B330(arg0);
+}
+*/
+
 void func_8072B59C(u8 arg0, s16 arg1, s32 arg2) {
     current_actor_pointer->control_state = arg0;
     current_actor_pointer->control_state_progress = 0;
@@ -390,7 +422,7 @@ void func_8072B79C(s16 arg0, u16 arg1, s16 arg2) {
 }
 */
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B7CC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072C670.s")
@@ -406,16 +438,83 @@ void func_8072C870(u8 arg0, u8 arg1, s32 arg2) {
     func_8072B59C(arg0, arg1, arg2);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072C918.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072CFE8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072D08C.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072D13C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072D714.s")
+
+extern f64 D_8075FF10;
+extern f64 D_8075FF18;
+
+void func_8002D7E8(u16);
+
+/*
+void func_8072D714(Actor *arg0, s32 arg1) {
+    f32 temp_f0_2;
+    f32 temp_f12;
+    f32 var_f2_2;
+    f32 var_f2_3;
+    f64 temp_f0;
+    f64 var_f2;
+    ActorAnimationState *temp_v1;
+
+    if (arg0 != NULL) {
+        temp_f0 = (current_actor_pointer->health - 1) * D_8075FF10;
+        if (temp_f0 > 2.0) {
+            var_f2 = 2.0;
+        } else {
+            var_f2 = temp_f0;
+        }
+        current_actor_pointer->unkEE = (arg0->unkEE + 0x800) & 0xFFF;
+        if (arg0 == D_807FDC94) {
+            if (func_806CC14C(arg0->unkEE, arg0->y_rotation) >= 0x401) {
+                current_actor_pointer->unkEE += 0x800;
+            }
+        }
+        func_8072B59C(0x37, 0, arg1);
+        temp_f0_2 = arg0->unkB8;
+        temp_f12 = 66.0f * (var_f2 + 0.5); // TODO: Rodata issue here... Hmm...
+        if (temp_f12 < temp_f0_2) {
+            var_f2_2 = temp_f0_2;
+        } else {
+            var_f2_2 = temp_f12;
+        }
+        if (var_f2_2 < 150.0f) {
+            if (temp_f12 < temp_f0_2) {
+                var_f2_3 = temp_f0_2;
+            } else {
+                var_f2_3 = temp_f12;
+            }
+            current_actor_pointer->unkB8 = -var_f2_3;
+        } else {
+            current_actor_pointer->unkB8 = -150.0f;
+        }
+        temp_v1 = arg0->animation_state;
+        if (temp_v1 != NULL) {
+            current_actor_pointer->unkB8 = current_actor_pointer->unkB8 * (temp_v1->scale_y / D_8075FF18);
+        }
+    } else {
+        func_8072B59C(0x37, 0, arg1);
+        current_actor_pointer->unkB8 = -60.0f;
+    }
+    current_actor_pointer->unk138 &= 0xFFFF7FFF;
+    current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+    if ((arg0 == NULL) || (arg0 == D_807FDC94) || (arg0->unk58 == 0x2B)) {
+        func_8072D9D4();
+    }
+    enemies_killed += 1;
+    if (current_map == MAP_RAMBI_ARENA) {
+        func_8002D7E8(current_actor_pointer->unk58);
+    }
+}
+*/
 
 void func_8072D99C(void) {
     current_actor_pointer->noclip_byte = 1;
@@ -476,7 +575,6 @@ void func_8072DC7C(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072DCF4.s")
 
 /*
-s32 func_8061CB50(void);
 f32 func_80665AE4(s32, s32, s32, s32);
 extern f64 D_8075FF28;
 extern f64 D_8075FF30;
@@ -511,7 +609,46 @@ void func_8072DE44(s32 arg0) {
     func_8072B324(current_actor_pointer, D_807FDC9C->unkC);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072DEA8.s")
+void func_8072DEA8(s32 arg0, u8 arg1, Actor *arg2) {
+    Actor *temp_v0;
+    f32 temp_f0;
+    f32 var_f2;
+    f32 var_f2_2;
+
+    func_8072D9D4();
+    func_80608528(current_actor_pointer, 0x1CA, 0xFF, 0x7F, 0x14);
+    if (arg2 != NULL) {
+        if (arg2->interactable & 4) {
+            current_actor_pointer->unkEE = (arg2->unkEE + 0x800) & 0xFFF;
+        } else {
+            current_actor_pointer->unkEE = (arg2->y_rotation + 0x800) & 0xFFF;
+        }
+        func_8072B59C(arg1, 0, arg0);
+        temp_f0 = arg2->unkB8;
+        if (temp_f0 > 60.0f) {
+            var_f2 = temp_f0;
+        } else {
+            var_f2 = 60.0f;
+        }
+        if (var_f2 < 150.0f) {
+            if (temp_f0 > 60.0f) {
+                var_f2_2 = temp_f0;
+            } else {
+                var_f2_2 = 60.0f;
+            }
+            current_actor_pointer->unkB8 = -var_f2_2;
+        } else {
+            current_actor_pointer->unkB8 = -150.0f;
+        }
+    } else {
+        func_8072B59C(arg1, 0, arg0);
+    }
+    if (arg2 == D_807FDC94) {
+        D_807FDC90->unk16 = D_807FDC94->animation_state->unk0->unk10;
+        temp_v0 = current_actor_pointer;
+        temp_v0->object_properties_bitfield |= 0x20000000;
+    }
+}
 
 void func_8072E02C(void) {
     current_actor_pointer->z_rotation = func_806CC190(current_actor_pointer->z_rotation, 0, 5.0f);
