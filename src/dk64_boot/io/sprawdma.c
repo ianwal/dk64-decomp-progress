@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 s32 __osSpRawStartDma(s32 direction, u32 devAddr, void *dramAddr, u32 size)
 {

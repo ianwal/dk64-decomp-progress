@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 s32 __osSpSetPc(u32 data)
 {

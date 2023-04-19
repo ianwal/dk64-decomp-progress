@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F09F0.s")
@@ -159,11 +159,8 @@ void func_806F149C(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F14BC.s")
 
-s32 func_806F1668(f32, f32, f32, f32);
 extern f64 D_8075D6C8;
 extern f32 D_8075D6C4;
-
-void func_80614D00(Actor*, f32, f32);
 
 /*
 // TODO: Float regalloc, stack too big
@@ -317,9 +314,6 @@ void func_806F1990(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     arg1[*arg2].unk6 = 0;
     *arg2 += 1;
 }
-
-f32 func_80612D10(f32);
-f32 func_80612D1C(f32);
 
 extern f64 D_8075D6D0;
 extern f32 D_8075D6D8;
@@ -519,7 +513,7 @@ typedef struct {
 void func_806F37BC(Actor *arg0, Struct806F37BC *arg1) {
     s16 temp_v0;
 
-    func_80672C30();
+    func_80672C30(arg0);
     arg0->x_position = arg1->unk0;
     arg0->y_position = arg1->unk2;
     arg0->z_position = arg1->unk4;

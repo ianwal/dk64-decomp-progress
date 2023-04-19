@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_63B0/func_800057B0.s")

@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 // TODO: Hmmm, could this file be managing the heap?
 // It would explain the negative struct offsets

@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807248B0.s")
@@ -199,11 +199,6 @@ u8 func_80727F20(EnemyInfo *arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80728300.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_8072881C.s")
-
-void func_806883F4(Actor *arg0, s32 arg1, s32 arg2, f32 arg3);
-void func_8068842C(Actor *arg0, s32 arg1, s32 arg2);
-void func_80688460(Actor *arg0, s32 arg1, s32 arg2);
-void func_80688370(Actor*, u8, f32);
 
 //s32 func_80688540(Actor*, u8);
 

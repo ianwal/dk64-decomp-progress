@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s32 D_8000DDCC;
 extern s32 D_8076D200;

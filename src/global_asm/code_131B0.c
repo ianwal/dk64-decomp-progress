@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_8060EC54(s32);
 void func_8060E6E8(s32);

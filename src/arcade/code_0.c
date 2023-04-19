@@ -12,6 +12,8 @@ extern void func_80610044(Gfx *, s32, s32, s32, s32, s32);
 extern Gfx *func_806FD490(Gfx *, s32, s32, s32, s32 *);
 extern void func_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 extern void func_8070E8F0(Gfx**, Sprite*);
+
+// TODO: This signature is sus
 extern void func_8070F2C8(s32, s16, s32, u8);
 
 void func_8002419C(void *arg0, Gfx **arg1);

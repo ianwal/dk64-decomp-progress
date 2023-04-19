@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s32 D_80720A10;
 extern s32 D_807209EC;
@@ -414,6 +414,7 @@ void func_806A57C0(AAD_806A4DDC *arg0) {
     }
 }
 
+// TODO: Doable, good target
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A5868.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A5C60.s")
@@ -506,7 +507,6 @@ typedef struct {
 extern s32 D_807FBB68;
 extern f64 D_8075A9A8;
 
-s32 func_80714C08(s32 arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4);
 void func_807149FC(s32 arg0);
 
 void func_806A5EAC(AAD_806A5EAC *arg0, s32 arg1, f32 arg2) {
@@ -703,8 +703,6 @@ extern s32 D_8076A068;
 extern s32 D_8071EB70;
 
 s32 func_80723020(s32 arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
-s16 func_80688E68(Actor *arg0);
-s16 func_80688C30(u16 arg0);
 void func_8066EB40(Actor*, f32);
 void func_8066E8E4(void *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5);
 void func_8066E854(Actor*, f32, f32, f32, s32);

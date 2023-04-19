@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 extern u8 __osContLastCmd;
 extern s32 *D_80014DC0;

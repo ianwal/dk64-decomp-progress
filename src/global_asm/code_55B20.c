@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s16 D_807F6BF0[];
 extern u8 D_807F6C08;
@@ -18,7 +18,6 @@ extern u16 D_807F735A;
 extern u16 D_807F735C;
 extern u16 D_807F735E;
 
-void func_806307CC(s32, s32, s32, u8, u8 *);
 void func_80636164(s32, u8);
 void func_80636210(s32, u8);
 void func_8063B4C0(Chunk14*, u8);

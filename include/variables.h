@@ -52,6 +52,14 @@ typedef struct {
 
 extern Struct807552E4 D_807552E4;
 
+typedef struct {
+    u16 unk0;
+    s8 unk2;
+    s8 unk3;
+} Struct807ECD58;
+
+extern Struct807ECD58 D_807ECD58;
+
 typedef struct Struct807FD610 {
     s32 unk0; // Timer that ticks up once per frame
     f32 unk4; // Probably float
@@ -105,8 +113,8 @@ typedef struct Struct807FDCA0 {
     s8 unk18;
     s8 unk19; // Used
     s16 unk1A;
-    s32 unk1C;
-    s8 unk20;
+    Actor *unk1C;
+    u8 unk20; // Used
 } Struct807FDCA0;
 extern Struct807FDCA0 *D_807FDCA0; // TODO: What is this datatype?
 
@@ -300,3 +308,26 @@ extern u16 D_80744710[]; // = { // Permanent flag index lookup array
 //     317, // Key 7 Collected
 //     380, // Key 8 Collected
 // }; // Permanent flag index lookup array
+
+extern s32 D_80741F40;
+extern s32 D_807432D0;
+extern s32 D_80760840;
+extern s32 D_80760C60;
+typedef struct gASMStruct1 {
+    s32 *unk0;
+    s32 *unk4;
+    s32 *unk8;
+    s32 *unkC;
+}gASMStruct1;
+typedef struct gASMStruct2 {
+    s32 *unk0;
+    s32 *unk4;
+    s32 *unk8;
+    s32 *unkC;
+}gASMStruct2;
+typedef struct gASMStruct3 {
+    u8 unk0[0x44];
+    s16 unk44;
+}gASMStruct3;
+extern gASMStruct1 D_807F0570;
+extern gASMStruct2 D_807F0588;

@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 s32 func_80629148(void);
 void func_806319C4(Actor*, s32);

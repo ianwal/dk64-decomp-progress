@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 typedef struct global_asm_struct_18 {
@@ -257,11 +257,66 @@ void func_80661658(u8 arg0) {
     D_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3C5, 1, 0);
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_806616A0.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_806618A0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80661AB4.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    f32 unk34;
+    f32 unk38;
+    f32 unk3C;
+    f32 unk40;
+} Struct80661AB4_2;
+
+typedef struct {
+    Struct80661AB4_2 *unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+} Struct80661AB4_1;
+
+void func_80661AB4(Struct80661AB4_1 *arg0) {
+    arg0->unk0->unk3C = arg0->unk0->unk3C - arg0->unk0->unk34;
+    if (arg0->unk0->unk3C < 0.0) {
+        arg0->unk0->unk3C = 255.0f;
+    }
+    arg0->unk0->unk40 = arg0->unk0->unk40 - arg0->unk0->unk38;
+    if (arg0->unk0->unk40 < 0.0) {
+        arg0->unk0->unk40 = 255.0f;
+    }
+    arg0->unk30 += arg0->unk0->unk14;
+    arg0->unk34 += arg0->unk0->unk18;
+    arg0->unk38 += arg0->unk0->unk2C;
+    arg0->unk3C += arg0->unk0->unk30;
+}
 
 void func_80661B84(u8 arg0) {
     // Textures

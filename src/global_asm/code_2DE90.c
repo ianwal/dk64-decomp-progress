@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 D_807F5D84;
 extern u8 D_80747B20;

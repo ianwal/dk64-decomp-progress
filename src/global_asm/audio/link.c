@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 /* might want to make these macros */
 void alLink(ALLink *ln, ALLink *to)

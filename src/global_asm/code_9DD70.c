@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s8 D_807F6951;
 extern s8 D_807F6950;
@@ -111,8 +111,6 @@ void func_8069CD9C(void) {
     func_8069B908();
 }
 */
-
-void func_80689114(s32, f32, f32, f32, s32, f32, Actor*);
 
 void func_8069CF54(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -226,9 +224,6 @@ void func_8069D2AC(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DC80.s")
 
 void func_8069DC10(s32, void*, u8);
-void func_8068842C(Actor*, s32, s16);
-void func_80688370(Actor*, s32, f32);
-void func_80688320(Actor*, s32, s32, void*);
 s32 func_806FBB9C(s16 textureIndex);
 
 /*

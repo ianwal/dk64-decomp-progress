@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 typedef struct {
     s32 unk0;
@@ -19,9 +19,8 @@ extern Struct807500B4 D_807500D4; // TODO: D_807500D4[1]?
 void func_80631F58(s32, void *, void **);
 s16 func_806531B8(f32, f32, f32, s16);
 void func_8066B424(void);
-s32 func_8066B434(s32, s32, s32);
 u16 func_80688C84(u16);
-void func_80689250(s16, s32, s32, s32, s32, f32, Struct807500B4*, s32, s32, s32);
+void func_80689250(s16, f32, f32, f32, s32, f32, Struct807500B4*, s32, s32, s32);
 void func_80689710(ActorSpawner *arg0, u8 arg1);
 f32 func_80689DD4(f32, f32, f32);
 u8 func_80689F80(ActorSpawner*);
@@ -198,17 +197,17 @@ void func_80688F74(Actor *arg0, f32 x, f32 y, f32 z) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80688FC0.s")
 
-void func_80689064(s16 arg0, s32 arg1, s32 arg2, s32 arg3, s16 arg4, f32 arg5) {
+void func_80689064(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5) {
     Struct807500B4 sp38 = D_807500B4;
     func_80689250(arg0, arg1, arg2, arg3, arg4, arg5, &sp38, 0, 0, func_80688E08());
 }
 
-void func_80689114(s16 arg0, s32 arg1, s32 arg2, s32 arg3, s16 arg4, f32 arg5, s32 arg6) {
+void func_80689114(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6) {
     Struct807500B4 sp38 = D_807500D4;
     func_80689250(arg0 - 0x10, arg1, arg2, arg3, arg4, arg5, &sp38, 1, arg6, func_80688E08());
 }
 
-void func_806891D8(s16 arg0, s32 arg1, s32 arg2, s32 arg3, s16 arg4, f32 arg5, s32 arg6, Struct807500B4 *arg7) {
+void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6, Struct807500B4 *arg7) {
     func_80689250(arg0 - 0x10, arg1, arg2, arg3, arg4, arg5, arg7, 1, arg6, func_80688E08());
 }
 
@@ -556,7 +555,7 @@ s32 func_80689E98(s32 arg0) {
 
 void func_80689EA4(ActorSpawner *spawner) {
     if (func_80689F2C()) {
-        func_80652E58(spawner->unk4A, spawner);
+        func_80652E58(spawner->unk4A);
         return;
     }
     func_80689F80(spawner);
@@ -564,7 +563,7 @@ void func_80689EA4(ActorSpawner *spawner) {
 
 u8 func_80689EE4(ActorSpawner *spawner) {
     if (func_80689F2C()) {
-        return !func_80652E58(spawner->tied_actor->unk12C, spawner);
+        return !func_80652E58(spawner->tied_actor->unk12C);
     }
     return func_80689FEC(spawner);
 }
@@ -573,18 +572,18 @@ u8 func_80689EE4(ActorSpawner *spawner) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80689F2C.s")
 
 u8 func_80689F80(ActorSpawner *spawner) {
-    return func_80652E58(spawner->unk4A, spawner)
+    return func_80652E58(spawner->unk4A)
         && func_80689DD4(spawner->unk10, spawner->unk14, spawner->unk18) < spawner->unk54;
 }
 
 u8 func_80689FEC(ActorSpawner *spawner) {
-    return (!func_80652E58(spawner->tied_actor->unk12C, spawner)
+    return (!func_80652E58(spawner->tied_actor->unk12C)
         || !(func_80689DD4(spawner->unk10, spawner->unk14, spawner->unk18) < spawner->unk54))
     && spawner->tied_actor->unk114 == NULL;
 }
 
 u8 func_8068A074(ActorSpawner *spawner) {
-    return (!func_80652E58(spawner->tied_actor->unk12C, spawner)
+    return (!func_80652E58(spawner->tied_actor->unk12C)
         || !(func_80689DD4(spawner->unk10, spawner->unk14, spawner->unk18) < spawner->unk54))
         && (spawner->tied_actor->unk114 == NULL
         && spawner->tied_actor->control_state == 0);

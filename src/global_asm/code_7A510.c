@@ -1,7 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675810.s")
 
@@ -10,46 +8,11 @@
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675C70.s")
 
+// TODO: Needs proper definition of D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675D70.s")
 
-/*
-// TODO: Pretty close
-void func_80675D70(Actor *arg0) {
-    if (D_807FBB70[0].unk200 < 2) {
-        D_807FBB70[0].unk1FC = arg0;
-        D_807FBB70[0].unk200 = 1;
-    }
-    if (D_807FBB70[0].unk201 < 0xF) {
-        D_807FBB70[D_807FBB70[0].unk201].unk204 = arg0;
-        D_807FBB70[D_807FBB70[0].unk201].unk244 = 2;
-        D_807FBB70[0].unk201++;
-    }
-}
-*/
-
+// TODO: Needs proper definition of D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675DD0.s")
-
-/*
-void func_80675DD0(void *arg0, void *arg1) {
-    u8 temp_v0;
-    u8 phi_v0;
-
-    arg0->unk134 -= arg1->unk136;
-    if (arg0->unk134 <= 0) {
-        D_807FBB70[0].unk200 = 9;
-        return;
-    }
-    temp_v0 = D_807FBB70[0].unk200;
-    phi_v0 = temp_v0;
-    if (temp_v0 == 6) {
-        D_807FBB70[0].unk200 = 4;
-        phi_v0 = 4 & 0xFF;
-    }
-    if (phi_v0 == 7) {
-        D_807FBB70[0].unk200 = 5;
-    }
-}
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675E3C.s")
 

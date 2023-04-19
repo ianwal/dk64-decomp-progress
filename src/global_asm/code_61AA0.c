@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern f32 D_807F5FDC;
 extern f32 D_807F5FE0;

@@ -1,15 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
-void func_806883F4(Actor*, s32, u8, f32);
+
 extern u8 D_807FBD70;
 extern s32 D_80750600[];
 
 // TODO: Are these 4 correct?
 extern s32 D_8071FFA0;
 extern f32 D_8075B2A0;
-void func_806846B4(f32, f32, f32, f32, f32, Actor*, s32);
 void func_80685B44(void*, s32, f32, s32, s32, s32, s32, s32, s32);
 
 void func_806B11C0(u8 arg0) {

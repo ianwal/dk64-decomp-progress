@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BA790/func_806B5A90.s")

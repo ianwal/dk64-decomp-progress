@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80028FC0.s")

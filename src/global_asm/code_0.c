@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s32 *D_8076A080;
 extern s32 D_807FF100;
@@ -169,8 +169,6 @@ extern u64 D_80761680;
 extern s32 D_807655E0;
 extern u8 D_807444F0;
 extern s32 D_80767CC0;
-
-void func_80732354(u8, s32, s32, s32);
 
 /*
 // TODO: Remarkably close, just missing some NOPs
@@ -448,15 +446,10 @@ void func_8066ADA0(void);
 void func_806FBB58(void);
 void func_806FD9A0(void);
 
-void func_807040E0(u8 arg0, u8 arg1, u8 arg2);
-void func_80704108(u8 arg0, u8 arg1, u8 arg2);
-
 void func_80705B30();
 void func_807215EC();
-void func_806F3760(s16 map);
 void func_8072ED90();
 void func_80658BD0();
-void func_80722E00(s32 map);
 
 void func_80630300();
 void func_80650E20(s32 arg0);
@@ -477,10 +470,8 @@ void func_80663DA0();
 void func_8065A570();
 void func_80677D80();
 void func_8068A7B0();
-void func_8072E740(s32 arg0);
 
 void func_80626264(s32);
-void func_8066B434(void*, s32, s32);
 void func_80712B80();
 void func_806C7D40(s32 arg0);
 void func_80714670();

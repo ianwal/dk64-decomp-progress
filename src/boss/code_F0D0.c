@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 // Quite big but pretty doable, needs some struct/array definitions
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_800330D0.s")

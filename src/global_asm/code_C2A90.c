@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 extern s32 D_807F5D10;
@@ -9,14 +9,13 @@ extern f64 D_8075BEB0;
 extern u8 D_807506C0[];
 extern s32 D_8071FBA0;
 
-void func_8072B324(Actor*, s32);
 void func_80729B00(void);
 void func_806319C4(Actor*, s32);
 
-void func_80714C08(s32*, f32, Actor*, s32, s32);
 void func_80724E48(u8);
 void func_806F09F0(Actor*, u16);
 
+// TODO: Needs proper definition for D_807FBB70 (array at unk0?)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806BDD90.s")
 
 extern f32 D_8075BBE4;
@@ -197,6 +196,9 @@ void func_806C15E8() {
     current_actor_pointer->unkCC = 1;
 }
 
+void func_806BFBF4(void);
+void func_806BF920(void);
+
 void func_806C1640(void) {
     f64 temp_f0;
 
@@ -213,12 +215,77 @@ void func_806C1640(void) {
     func_806BF920();
     // TODO: Bitfield syntax
     if (!(((s32)current_actor_pointer->object_properties_bitfield << 3) >= 0)) {
-        func_806BFBF4(current_actor_pointer);
+        func_806BFBF4();
     }
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806C1734.s")
+extern s32 D_8071A8B0; // TODO: Proper datatype
+extern s32 D_8071C818; // TODO: Proper datatype
+extern s32 D_8071FB08; // TODO: Proper datatype
+extern s32 D_807200D4; // TODO: Proper datatype
+
+void func_8069084C(s32, s32, f32, s16, f32, f32, Actor*);
+
+void func_806C1734(void) {
+    s32 pad2; // TODO: Can we get rid of these?
+    s32 pad; // TODO: Can we get rid of these?
+    ActorAnimationState *temp_v1;
+    s16 sp2A;
+    u8 sp29;
+    AnimationStateUnk0 *temp_a0;
+
+    func_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_806C15E8();
+    }
+    func_806BF920();
+    if (current_actor_pointer->object_properties_bitfield & 0x10000000) {
+        sp2A = current_actor_pointer->animation_state->unk0->unk4;
+        func_806BFBF4();
+        temp_v1 = current_actor_pointer->animation_state;
+        if (temp_v1->unk8->unk0 == 0) {
+            temp_a0 = temp_v1->unk0;
+            switch (temp_a0->unk10) {                      /* irregular */
+            case 0xBB:
+                if ((current_actor_pointer->y_velocity > 30.0f) && !(object_timer & 3)) {
+                    func_80714998(2);
+                    func_807149B8(1);
+                    func_8071498C(&D_8071C818);
+                    func_80714C08(&D_8071FB08, 0.8f, current_actor_pointer, 5, 0);
+                }
+                break;
+            case 0x114:
+                if (temp_a0->unk24 == 0.0f) {
+                    func_806F1048(current_actor_pointer);
+                }
+                break;
+            case 0xEA:
+                if ((current_actor_pointer->control_state_progress != 0) && (sp2A >= 0xA)) {
+                    current_actor_pointer->control_state_progress = 0;
+                    func_80690814(current_actor_pointer, 7);
+                    func_8069084C(0x29, 0xCA, 0.4f, current_actor_pointer->y_rotation, 250.0f, 0.0f, current_actor_pointer);
+                }
+                break;
+            case 0x112:
+                if ((sp2A >= 0x44) && (sp2A < 0x64) && ((object_timer % 3U) == 0)) {
+                    sp29 = ((rand() >> 0xF) % 32767) % 2;
+                    func_807149B8(1);
+                    func_80714950(0x50);
+                    func_8071498C(&D_8071A8B0);
+                    func_80714C08(&D_807200D4, 0.5f, current_actor_pointer, sp29 + 9, 2);
+                }
+                break;
+            }
+        }
+    } else {
+        func_806C10A0(0, 3, 0x3D8);
+        if (isFlagSet(4, FLAG_TYPE_PERMANENT) != 0) {
+            func_806C151C(3, 3, 0);
+        }
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
 
 void func_806C19F4(void) {
     func_80729B00();
@@ -288,8 +355,6 @@ extern s32 D_80720B58; // TODO: Datatype
 extern s32 D_807197B4; // TODO: Datatype
 extern s32 D_8071FF58; // TODO: Datatype
 extern s32 D_8071F078; // TODO: Datatype
-
-void func_806883F4(Actor*, s32, s32, f32);
 
 /*
 // TODO: Not sure what's going on here
@@ -401,7 +466,6 @@ void func_806C1E44(void) {
 
 extern f64 D_8075BEB8;
 
-void func_80684550(Actor*, s32, f32);
 void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32); // TODO: Are the datatypes correct?
 
 void func_806C27DC(void) {
@@ -424,8 +488,6 @@ void func_806C27DC(void) {
 extern f64 D_8075BEC0;
 extern f64 D_8075BEC8;
 extern f64 D_8075BED0;
-
-void func_806852C4(f32, f32, f32, s32);
 
 /*
 // TODO: Float and stack nonsense

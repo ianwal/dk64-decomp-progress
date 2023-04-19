@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s16 D_807463A0;
 extern void *D_807463A8; // DKTV Inputs - Camera + Stick

@@ -1,10 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern void func_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 extern void func_8070E8F0(Gfx**, Sprite*);
-extern void func_8070F2C8(s32, s32, s32, u8);
 
 typedef struct jetpac_struct_0 {
     u8  pad0[0x14];

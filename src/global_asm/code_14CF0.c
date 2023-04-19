@@ -1,26 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
-
-
-extern s32 D_80741F40;
-extern s32 D_807432D0;
-extern s32 D_80760840;
-extern s32 D_80760C60;
-typedef struct gASMStruct1 {
-    s32 *unk0;
-    s32 *unk4;
-    s32 *unk8;
-    s32 *unkC;
-}gASMStruct1;
-typedef struct gASMStruct2 {
-    s32 *unk0;
-    s32 *unk4;
-    s32 *unk8;
-    s32 *unkC;
-}gASMStruct2;
-extern gASMStruct1 D_807F0570;
-extern gASMStruct2 D_807F0588;
 
 void func_8060FFF0(void) {
     D_807F0570.unk0 = &D_807432D0;

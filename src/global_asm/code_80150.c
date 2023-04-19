@@ -1,14 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_80665564(Actor*, f32);
-void func_8067AAB8(Actor* arg0, s32 arg1, s16 arg2, f32 arg3, s16 arg4);
-void func_8067ACB4(Actor*);
 void func_80683AD8();
-
-void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 
 extern f64 D_80759560;
 extern s32 D_8071FC8C;
@@ -37,6 +33,7 @@ u8 func_8067B450(void) {
 }
 */
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067B4C8.s")
 
 void func_8067BA3C() {
@@ -46,6 +43,7 @@ void func_8067BA3C() {
     func_8067B4C8();
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067BA7C.s")
 
 void func_8067BC68(void) {
@@ -72,7 +70,6 @@ void func_8067BD08(void) {
     func_8067BA7C(0x13);
 }
 
-void func_80689114(s32, f32, f32, f32, s32, f32, Actor *);
 extern u8 D_807FBBA8;
 
 void func_8067BD28(void) {
@@ -90,7 +87,7 @@ void func_8067BD28(void) {
 
 void func_80665564(Actor*, f32);
 
-void func_8067BDB8() {
+void func_8067BDB8(void) {
     func_8067BA7C(0x95);
     func_80665564(current_actor_pointer, 0.0f);
     current_actor_pointer->y_position = current_actor_pointer->floor;
@@ -229,26 +226,13 @@ void func_8067E764(void) {
     func_8067E784();
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067E784.s")
 
+// TODO: Needs proper definition of D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067FAC8.s")
 
-/*
-// TODO: Doable, but fiddly, good clues on D_807FBB70 shape
-void func_8067FAC8(void) {
-    s16 phi_s0;
-
-    for (phi_s0 = 0; phi_s0 < D_807FBB70[0].unk254; phi_s0++) {
-        if ((D_807FBB70[phi_s0].unk258 == 1) && (D_807FBB70[phi_s0].unk278 == 1)) {
-            func_8067DCC0();
-            func_806782C0(current_actor_pointer);
-        }
-    }
-}
-*/
-
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067FB6C.s")
 
 void func_80680774(void) {

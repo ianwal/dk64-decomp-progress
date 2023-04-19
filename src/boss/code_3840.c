@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_80027840.s")
 

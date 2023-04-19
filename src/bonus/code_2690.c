@@ -1,7 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80026690.s")
 

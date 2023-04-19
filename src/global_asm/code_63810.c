@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63810/func_8065EB10.s")
@@ -22,8 +21,6 @@ typedef struct {
     s16 unk1A;
 } GlobalASMStruct51;
 
-void func_80659600(s16);
-void func_80659610(s16);
 void func_8065A708(f32, f32, s32, f32, f32, f32, f32, s32, s32, s32, s32);
 extern s32 D_807FBB68;
 extern s16 D_80748A84;

@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FD8E0.s")

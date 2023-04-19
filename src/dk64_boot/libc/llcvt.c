@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/__ull_to_f.s")

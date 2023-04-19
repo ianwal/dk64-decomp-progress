@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 // Weird array/struct stuff going on here
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_80024000.s")
@@ -119,7 +119,6 @@ typedef struct {
 extern Struct807ECDEC *D_807ECDEC;
 extern u8 D_800330C0[];
 
-void func_8068C350();
 void func_800244EC();
 
 /*
@@ -230,7 +229,7 @@ void func_80024BFC(MenuStruct0 *arg0) {
             if (func_80629148()) {
                 func_80629174();
                 arg0->unk1++;
-                D_80750AC8 = func_80712548(arg0);
+                D_80750AC8 = func_80712548();
                 func_8070D8C0(current_actor_pointer, 0xB, 8);
             }
             break;

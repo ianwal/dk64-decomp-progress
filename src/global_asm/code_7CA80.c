@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern f64 D_80759380;
 extern u8 D_807F94B4;
@@ -18,7 +18,6 @@ s16 actor_count;
 
 s32 func_8067B2C0(s32);
 void func_80678F64(Actor*);
-u8 func_8066F250(Actor*, s16*, s16*, u8*);
 LedgeInfo *func_80665F24(Actor*);
 void func_8067B01C(void);
 void func_8067B100(Actor *player);
@@ -26,7 +25,6 @@ s16 func_8067AF74(Actor*);
 s32 func_806782E8(Actor *arg0);
 
 void func_806785D4(Actor*);
-void func_80732354(s32, s32, s32, s32);
 void func_80605314(Actor*, u8);
 void func_8062D26C(Actor*);
 void func_806783BC();
@@ -34,13 +32,10 @@ void func_806136B4();
 void func_8066E21C(LedgeInfo*);
 // Note: The pointer can be to any one of the above 10 structs, maybe more
 void func_8067AEFC(Actor*);
-void func_8068C2F8(void *);
 void func_8070DA74(void *);
 void func_8071586C(Actor*);
 void func_807233B4(Actor*);
 void func_8072F09C(void *);
-
-void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 
 // Pointer table 0xD (13) access, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80677D80.s")
@@ -207,7 +202,7 @@ s32 func_80678050(u16 arg0) {
 */
 
 void func_806782C0(Actor *arg0) {
-    func_806897F0();
+    func_806897F0(arg0);
     func_806782E8(arg0);
 }
 
@@ -632,7 +627,6 @@ void func_806791EC(Actor *arg0, s32 arg1) {
 }
 
 ActorCollision *func_80679490(Actor *, s32, u8, s32, s32);
-s32 func_8067AF44(Actor* arg0);
 
 // TODO: Clean this up
 void func_80679200(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5) {
@@ -801,7 +795,7 @@ void func_8067A69C(s32 arg0, s32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5) {
     func_80679200(arg1, arg0, 0x10, 0, 1, temp_v0);
 }
 
-void func_8067A70C(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, u8 arg5, u8 arg6) {
+void func_8067A70C(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, f32 arg4, u8 arg5, u8 arg6) {
     GlobalASMStruct26 *temp_v0 = malloc(0x10);
     temp_v0->unk0 = arg2;
     temp_v0->unk4 = arg3;
@@ -811,7 +805,7 @@ void func_8067A70C(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, u8 arg5, u8
     func_80679200(arg1, arg0, 0x20, 0, 1, temp_v0);
 }
 
-void func_8067A784(s32 arg0, s32 arg1, s16 arg2, f32 arg3, s16 arg4) {
+void func_8067A784(Actor *arg0, Actor *arg1, s16 arg2, f32 arg3, s16 arg4) {
     GlobalASMStruct27 *temp_v0;
 
     temp_v0 = malloc(0xC);
@@ -896,7 +890,7 @@ void func_8067AAB8(Actor* arg0, s32 arg1, s16 arg2, f32 arg3, s16 arg4) {
     func_80679200(arg1, arg0, 0x400, 0, 1, temp_v0);
 }
 
-void func_8067AB20(s32 arg0, s32 arg1, s32 arg2, u8 arg3, void *arg4, u8 arg5) {
+void func_8067AB20(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, void *arg4, u8 arg5) {
     void *sp2C;
 
     sp2C = malloc(8);

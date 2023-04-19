@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_137630/func_80732930.s")
@@ -36,8 +35,6 @@ f32 func_80732930(u8 arg0) {
 
 /*
 extern f32 D_8076019C;
-
-void func_80612D1C(f32);
 
 // TODO: No idea why this doesn't match
 void func_80732DAC(f32 arg0) {

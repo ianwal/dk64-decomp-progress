@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 extern OSContStatus D_807ECCD0;
 extern void *D_807ECCE0;
@@ -76,14 +75,6 @@ void func_8060AC34(GlobalASMStruct12* arg0) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_8060AC7C.s")
-
-typedef struct {
-    u16 unk0;
-    s8 unk2;
-    s8 unk3;
-} Struct807ECD58;
-
-extern Struct807ECD58 D_807ECD58;
 
 void func_8060B110(Struct807ECD58 *arg0) {
     D_807ECD58.unk0 = arg0->unk0;

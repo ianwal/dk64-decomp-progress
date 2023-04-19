@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 D_80757F70[];
 Actor *func_807270C0(s16 arg0, s32 arg1);

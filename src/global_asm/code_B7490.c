@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s16 D_80750340;
 extern f32 D_8075B5C0;
@@ -9,14 +9,11 @@ extern f64 D_8075B710;
 
 extern u8 D_807FBD70;
 
-void func_80614D00(Actor*, f32, f32);
 void func_8069084C(u8, s32, f32, s16, f32, f32, Actor*);
 void func_806907F0(f32, f32, f32);
 void func_80690A28(u8, s32, f32, f32, f32, f32, f32, Actor*);
 s32 func_80726164(Actor*, s16, s16, s16, void*);
 void func_806B3E7C();
-void func_8068588C(Actor *, s32, f32, f32, f32, f32, s32);
-void func_80714998(s32);
 void func_806653C0(Actor*, f32, f32);
 void func_80665564(Actor*, f32);
 void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);
@@ -112,7 +109,6 @@ extern s32 D_8075B5DC;
 
 void func_8066E9EC(Actor*, s32, f32);
 void func_8066EB40(Actor*, f32);
-void func_8072A920(f32, u8, s32, f32, f32, f32, s32, s32, f32, s32);
 
 /*
 void func_806B3680(void) {
@@ -617,7 +613,6 @@ void func_806B52DC(void) {
 extern f64 D_8075B718;
 
 void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32);
-s32 func_806CC10C(s16, s16);
 s16 func_806119A0(void);
 
 typedef struct {

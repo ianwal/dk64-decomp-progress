@@ -1,9 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s32 *D_807FC7E0;
-extern u16 D_807ECD58;
 extern s8 D_80750560[];
 
 extern void func_806ACA88(void);
@@ -90,7 +89,6 @@ s32 func_806C8DE0(?);
 s32 func_806F6E58(u8);
 s32 func_806FA7A4(?);
 s16 func_807319D8(?, s32, u8);
-u8 func_80731A04(?, s32, s32, u8);
 extern ? D_80720C34;
 extern ? D_80720D38;
 extern ? D_80720D5C;
@@ -619,7 +617,7 @@ void func_806ACCE8(void) {
     if (current_actor_pointer->unk168 != 0) {
         current_actor_pointer->unk168--;
     } else if (current_actor_pointer->control_state == 0) {
-        if (D_807ECD58 & 0x8000) {
+        if (D_807ECD58.unk0 & 0x8000) {
             switch (current_actor_pointer->unk15F) {
                 case 2:
                     playCutscene(NULL, 0x20, 1);
@@ -635,7 +633,7 @@ void func_806ACCE8(void) {
                     break;
             }
             current_actor_pointer->control_state = 1;
-        } else if (D_807ECD58 & 0x4000) {
+        } else if (D_807ECD58.unk0 & 0x4000) {
             switch (current_actor_pointer->unk15F) {
                 case 3:
                 case 4:

@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 // jumptable, can't auto decompile
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_800265F0.s")
@@ -50,13 +50,11 @@ void func_80026C54(void) {
 // structs
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027E04.s")
 
-// structs, floats
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027EE8.s")
 
-/* WIP: not too bad
 f32 func_8000AC60(f32);
 void func_80608528(Actor *, s32, s32, s16, s32);
-s32 func_806119A0();
+f32 func_806119A0();
 extern f64 D_80028DD8;
 typedef struct MinecartStruct1 {
     u8 pad0[0x3A];
@@ -65,12 +63,10 @@ typedef struct MinecartStruct1 {
     s16 unk3C;
 } MinecartStruct1;
 
+/*
+// TODO: Good progress made
 void func_80027EE8(MinecartStruct1 *arg0) {
     f32 temp_f0_3;
-    f64 temp_f18;
-    s32 temp_v0_2;
-    u8 temp_t7;
-    f64 phi_f18;
 
     temp_f0_3 = func_8000AC60((current_actor_pointer->x_position - D_807FDC94->x_position) * (current_actor_pointer->x_position - D_807FDC94->x_position)
                              + (current_actor_pointer->y_position - D_807FDC94->y_position) * (current_actor_pointer->y_position - D_807FDC94->y_position)
@@ -79,15 +75,12 @@ void func_80027EE8(MinecartStruct1 *arg0) {
         arg0->unk3A++;
         if (arg0->unk3A >= 9) {
             func_80608528(current_actor_pointer, 0x1F, 0xFF, 127.0f - (temp_f0_3 - (f32) arg0->unk3C), 0);
-            phi_f18 = func_806119A0();
-            if (phi_f18 < 0) {
-                phi_f18 = phi_f18 + 4294967296.0;
-            }
-            arg0->unk3A = (u8) (u32) ((phi_f18 / D_80028DD8) * 3.0);
+            arg0->unk3A = ((func_806119A0() / D_80028DD8) * 3.0);
         }
     }
-    arg0->unk3C = (s16) temp_f0_3;
-}*/
+    arg0->unk3C = temp_f0_3;
+}
+*/
 
 // big, structs, floats
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_800280BC.s")

@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CB230/func_806C6530.s")
@@ -11,9 +11,6 @@ extern f32 D_8075C398;
 extern f32 D_8075C39C;
 
 void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32);
-void func_8072A920(s32, s16, f32, f32, f32, s32, f32, f32, u16);
-
-void func_8072B324(Actor*, s32);
 
 /*
 // TODO: Probably needs .data/.rodata defined

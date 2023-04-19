@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 extern s8 D_8002D92C;
 extern s8 D_8002D930;

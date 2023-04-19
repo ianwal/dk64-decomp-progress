@@ -1,7 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
-
 
 extern s32 D_80720120;
 extern s32 D_8071720C;
@@ -9,8 +7,6 @@ extern s32 D_8071EDEC;
 extern s32 D_8074E880[];
 
 s32 func_80725BA4(s16, s16, s32);
-void func_8071498C(void*);
-void func_80714C08(void*, f32, Actor*, s32, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_6240/func_8002A240.s")
 

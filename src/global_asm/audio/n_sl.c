@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern N_ALGlobals *n_alGlobals=0;
 extern N_ALSynth *n_syn;

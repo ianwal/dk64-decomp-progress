@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 typedef struct global_asm_struct_78 GlobalASMStruct78;
 

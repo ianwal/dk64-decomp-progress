@@ -11,7 +11,6 @@ options:
   generated_c_preamble: |
     #include <ultra64.h>
     #include "functions.h"
-    #include "variables.h"
   create_detected_syms: yes
   undefined_syms_path: undefined_syms.us.txt
   undefined_funcs_auto_path: undefined_funcs_auto.us.txt

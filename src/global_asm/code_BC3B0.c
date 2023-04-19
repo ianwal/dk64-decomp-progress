@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_806B76B0.s")
@@ -113,8 +113,7 @@ typedef struct {
 } Actor178_806B7EA0;
 
 void func_806A2A10(s16 arg0, s16 arg1, u8 arg2);
-void func_80626F8C(f32, f32, f32, s32 *, s32 *, s32, f32, s32);
-s16 func_80672A70(s16, s16);
+void func_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
 void func_806A2B08(Actor *arg0);
 void func_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2);
 

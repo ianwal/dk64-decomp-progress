@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 u8 func_8072E5B0(void) {
     return !(player_pointer->unk6A & 1)

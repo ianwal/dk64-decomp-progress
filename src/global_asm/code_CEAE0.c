@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_8062217C(Actor*, u8);
 s32 func_80629148(void);
@@ -8,7 +8,6 @@ void func_806319C4(Actor*, s32);
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
 void func_806CBE90(void);
-s16 func_806CC14C(s16 arg0, s16 arg1);
 void func_806CFE7C(void);
 void func_806D3FA0(void);
 s32 func_806E4580(void);
@@ -18,7 +17,6 @@ void func_806F91B4(s32, s32, s16);
 
 void func_806D0408(void);
 void func_806D06A0(void);
-void func_80714C08(s32*, f32, Actor*, s32, s32);
 void func_80714950(s32);
 
 extern s32 D_806FF358;
@@ -67,11 +65,11 @@ extern f32 D_8075330C[];
 extern s16 D_80753328[];
 extern f32 D_80753338[];
 extern f32 D_8075339C[];
-extern s32 D_807533B8[];
+extern f32 D_807533B8[];
 extern f32 D_80753380[];
 extern f32 D_80753364[];
 extern f32 D_807533D4[];
-extern s32 D_807533F0[];
+extern f32 D_807533F0[];
 extern f32 D_80753454[];
 extern f32 D_80753470[];
 extern f32 D_8075348C[];
@@ -170,7 +168,6 @@ void func_806CEE64(f32);
 void func_806CEED8(void);
 void func_806CFD68(void);
 u8 func_806CE928(Actor*, f32, f32, s32);
-void func_8067A784(Actor*, Actor*, s16, s32, s32);
 void func_8061C464(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 f32 func_806DFFA0(f32, s16, s16);
 void func_806EAB44(Actor *arg0, u8 arg1);
@@ -191,8 +188,6 @@ void func_806D2378();
 
 void func_806CC948();
 
-void func_806F4D70(u8, s32, s32, s32, f32);
-
 void func_8068EA38(); // Needed for function pointer
 
 void func_806FFB2C(void); // Needed for function pointer
@@ -202,7 +197,6 @@ u8 func_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 
 void func_806D3608(void);
 
-void func_80685210(f32, s32, s32);
 
 s16 func_806CE4E4(Actor*, f32, f32, s32);
 
@@ -213,7 +207,6 @@ void func_806DF494(s16*, s16, s16);
 
 u32 func_806119A0(void);
 void func_807248B0(Actor*, f32);
-void func_80614D00(Actor *arg0, f32 arg1, f32 arg2);
 void func_806DF390(Actor*, PlayerAdditionalActorData*, u8);
 void func_806DF3D0(Actor*, PlayerAdditionalActorData*, u8);
 f32 func_806E03C8(f32, f32);
@@ -1150,7 +1143,7 @@ void func_806CF0D0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF2EC.s")
 
 extern f32 D_8075340C[];
-extern s32 D_80753428[];
+extern f32 D_80753428[];
 
 void func_806CF398(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
@@ -1160,7 +1153,7 @@ void func_806CF398(Actor *arg0) {
         if (PaaD->unk1AC) {
             func_8067A784(current_actor_pointer, PaaD->unk1AC, D_807FBB48->y_rotation, D_80753428[D_807FD584], D_8075340C[D_807FD584]);
             PaaD->unk1AC = NULL;
-            PaaD->unk1B0 = 0;
+            PaaD->unk1B0 = NULL;
         }
     }
 }
@@ -1175,8 +1168,8 @@ void func_806CF42C(Actor *arg0) {
         } else if (PaaD->unk1B0 != 0) {
             func_80679200(PaaD->unk1B0, arg0, 8, 0, 0, 0);
         }
-        PaaD->unk1AC = 0;
-        PaaD->unk1B0 = 0;
+        PaaD->unk1AC = NULL;
+        PaaD->unk1B0 = NULL;
     }
 }
 
@@ -1188,9 +1181,6 @@ void func_806CF42C(Actor *arg0) {
 extern s32 D_8071FC40;
 extern u8 D_80750AD0;
 extern s32 D_80718BF4; // TODO: Datatype
-
-void func_806883F4(Actor*, s32, s32, f32);
-void func_80688370(Actor*, s32, f32);
 
 /*
 // TODO: Regalloc, bleh
@@ -1287,8 +1277,6 @@ void func_806CF918(void) {
 extern f32 D_80753E10[];
 extern s16 D_80753E00[];
 
-u8 func_806CFC90(Actor *arg0, s32 arg1, u8 arg2, f32 arg3);
-
 /*
 // Kinda close
 void func_806CF9CC(void) {
@@ -1341,7 +1329,6 @@ void func_806CF9CC(void) {
 }
 */
 
-u8 func_8066635C(Actor *, f32, f32, f32, s32);
 u8 func_80666AE0();
 
 u8 func_806CFC90(Actor *arg0, s32 arg1, u8 arg2, f32 arg3) {
@@ -1633,7 +1620,6 @@ void func_806D0468(Actor *arg0, u8 arg1) {
 }
 */
 
-f32 func_80612D1C(f32);
 extern f64 D_8075CC90;
 extern f64 D_8075CC98;
 extern f64 D_8075CCA0;
@@ -2152,7 +2138,7 @@ void func_806D1E90(void) {
     func_806EB0C0(0x3C, NULL, cc_player_index);
     func_806CC8B8();
     if (current_actor_pointer->control_state_progress != 0) {
-        func_805FF898(current_actor_pointer);
+        func_805FF898();
         current_actor_pointer->control_state_progress++;
     }
     func_806319C4(current_actor_pointer, 0);
@@ -2324,7 +2310,7 @@ void func_806D25CC(void) {
 }
 
 void func_806D266C(void) {
-    s32 sp2C, sp28, sp24;
+    f32 sp2C, sp28, sp24;
 
     func_806D2378();
     func_806D25CC();
@@ -2333,7 +2319,7 @@ void func_806D266C(void) {
 }
 
 void func_806D26D8(void) {
-    s32 sp2C, sp28, sp24;
+    f32 sp2C, sp28, sp24;
 
     func_806D2378();
     func_806D25CC();
@@ -3682,15 +3668,15 @@ void func_806D7098(void) {
     func_806DF6D4(3);
     current_actor_pointer->unk64 |= 0x200;
     switch (current_actor_pointer->control_state_progress) {
-    case 0:
-        current_actor_pointer->y_rotation = func_806CC190(current_actor_pointer->y_rotation, extra_player_info_pointer->unkDC->y_rotation + 0x800, 8.0f);
-        extra_player_info_pointer->unk4 = 0.0f;
-        current_actor_pointer->unkB8 = 0.0f;
-        func_806CC8B8();
-        break;
-    case 1:
-        func_806CFF9C(current_actor_pointer);
-        break;
+        case 0:
+            current_actor_pointer->y_rotation = func_806CC190(current_actor_pointer->y_rotation, extra_player_info_pointer->unkDC->y_rotation + 0x800, 8.0f);
+            extra_player_info_pointer->unk4 = 0.0f;
+            current_actor_pointer->unkB8 = 0.0f;
+            func_806CC8B8();
+            break;
+        case 1:
+            func_806CFF9C(current_actor_pointer);
+            break;
     }
     func_806319C4(current_actor_pointer, 0);
 }
@@ -4266,7 +4252,6 @@ void func_806D9184(void) {
 // TODO: Close, doable, probably needs an assist from ghidra and/or proper bitfield syntax
 extern s32 D_8072014C;
 
-void func_807149B8(s32);
 void func_807149FC(s32);
 void func_806224CC(s32);
 
@@ -4906,7 +4891,6 @@ void func_806DCA7C(Actor **arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DCF60.s")
 
 f32 func_80665E48(f32, f32, f32, f32);
-s16 func_806CC14C(s16, s16);
 extern f32 D_8075CFF4;
 extern f64 D_8075CFF8;
 extern f64 D_8075D000;
@@ -7155,7 +7139,7 @@ void func_806E8244(void) {
 
     RaaD = extra_player_info_pointer->vehicle_actor_pointer->additional_actor_data;
     if (func_805FCA64()) {
-        func_8068C350(&func_8068E474, extra_player_info_pointer->vehicle_actor_pointer, 5, RaaD);
+        func_8068C350(&func_8068E474, extra_player_info_pointer->vehicle_actor_pointer, 5);
     }
     if ((current_actor_pointer->y_rotation < 0x200) || (current_actor_pointer->y_rotation >= 0xE01)) {
         RaaD->unk2 = D_807FD610[cc_player_index].unk2E;

@@ -1,24 +1,18 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 u8 func_806C9974(u8, s32);
-void func_80687474(Actor*, f32);
 void func_80614D48(Actor*, f32, f32);
-void func_806CA2AC();
-extern void func_80614D00(Actor*, f32, f32);
 extern s32 D_807FD6F0[];
 void func_806CD424(s16, f32, f32);
 extern void (*action_initiation_function_list[])(void);
 
-void func_806F8BC4(s32, s32, s32);
 void func_80605314(Actor*, u8);
 void func_8062217C(Actor*, s32);
 void func_80627878(Actor*);
 void func_806F0D68(Actor*);
 void func_80613AF8(Actor*, s32, f32, f32);
-void func_80614D00(Actor*, f32, f32);
-void func_8067A784(Actor*, Actor*, s16, f32, s32);
 void func_806EEAF8(s16);
 void func_80613C48(Actor*, s16, f32, f32);
 
@@ -74,7 +68,7 @@ void func_806EB178(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 void func_806EB194(void) {
     if (character_change_array[cc_player_index].action_initiated >= 0) {
         if (character_change_array[cc_player_index].unk2A0
-            && (!func_8067AF44(character_change_array[cc_player_index].unk2A0, &cc_player_index) || character_change_array[cc_player_index].unk2A0->unk54 != character_change_array[cc_player_index].unk2A4)) {
+            && (!func_8067AF44(character_change_array[cc_player_index].unk2A0) || character_change_array[cc_player_index].unk2A0->unk54 != character_change_array[cc_player_index].unk2A4)) {
             character_change_array[cc_player_index].unk2A0 = NULL;
         }
         action_initiation_function_list[character_change_array[cc_player_index].action_initiated]();

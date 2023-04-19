@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 typedef struct Temp8070D6D8 {
     s32 unk0;

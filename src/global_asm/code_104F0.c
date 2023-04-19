@@ -1,14 +1,12 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 u8 func_8060BBE0(u16, s32);
-s32 func_8060C6B8(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex);
 void func_8060C758(u8, s32);
 void func_8060BCA0(s32, u8, u8, s16 *, s32);
 void func_8060BEA8(s32, u8, s16 *, s32);
 void func_8060BF84(s32, u8, s16 *, s32);
-u16 func_80631C20(u8);
 u32 func_806F8EDC(s32, s32); // getMaxItemCapacity(HUDItemIndex, playerIndex)
 
 extern s32 D_807EDEAC;

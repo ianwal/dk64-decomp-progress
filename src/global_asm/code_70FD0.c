@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 
 void func_8066EC6C(LedgeInfo *);
@@ -11,8 +10,6 @@ void func_8066C2D0(s32, s32, f32, f32, f32, f32, f32, f32, f32);
 s32 func_80672328(Actor*, f32, f32);
 s32 func_80672680(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
 s32 func_806726DC(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 *arg4, s16 arg5);
-s32 func_806728F0(s16, s16, s16);
-s16 func_80672A70(s16, s16);
 
 extern s32 D_807FB53C;
 extern Actor *D_807FB540;
@@ -498,9 +495,9 @@ u8 func_8066F1F8(Actor *arg0, s16 arg1) {
     return D_807FB546;
 }
 
-void func_8066F250(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3) {
+u8 func_8066F250(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3) {
     D_807FB604 = 0;
-    func_8066F274(arg0, arg1, arg2, arg3);
+    return func_8066F274(arg0, arg1, arg2, arg3);
 }
 
 void func_8066F400(Actor *);

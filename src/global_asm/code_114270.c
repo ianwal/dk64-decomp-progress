@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s16 D_80744490;
 extern OSTime D_807445B8;
@@ -39,7 +39,6 @@ extern u8 D_807FDA28;
 extern s8 D_807FDA30[];
 
 void func_80026D40(Actor *arg0, s32 arg1);
-void func_80709464(u8);
 void func_8060AC34(GlobalASMStruct12*);
 
 void func_8070F570(void) {
@@ -506,7 +505,9 @@ int func_80714464(void) {
         || game_mode == GAME_MODE_END_SEQUENCE_DK_THEATRE;
 }
 
-void func_807144B8(u8 arg0) {
+void func_8060DC3C(u8, s32);
+
+void func_807144B8(s8 arg0) {
     Maps map;
     s32 exit;
 

@@ -1,14 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 extern f32 D_800361B0;
 extern f32 D_800361B4;
 
-void func_80691830(s32, f32, s32, s32, s32, s32, f32, f32, f32, f32);
 void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);
 void func_80613C48(Actor*, s32, f32, f32);
-void func_80614D00(Actor*, f32, f32);
 
 void func_800292B0(f32 arg0) {
     func_80691830(0x6A, 1.2f, 0, 0x96, 0xFF, 0xB, D_800361B0, 0.0f, 0.0f, 0.0f);
@@ -18,8 +15,6 @@ void func_800292B0(f32 arg0) {
     func_80613C48(D_807FBB44, 0x4F9, 0.0f, 0.0f);
     func_80614D00(D_807FBB44, 1.5f, 0.0f);
 }
-
-void func_8068588C(Actor*, s16, f32, f32, f32, f32, s16);
 
 void func_800293C0(void) {
     rand();

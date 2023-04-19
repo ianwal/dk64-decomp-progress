@@ -1,11 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_8061134C(s32);
 s32 func_8063367C(s32, s32, s32);
 s32 func_80671D64(s32, s32);
-s32 func_806725E4(s16, s16, s16, s32);
 
 typedef struct {
     s32 unk0;

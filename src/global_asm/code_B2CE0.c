@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern f32 D_8075AE20;
 extern f64 D_8075AE28;
@@ -138,9 +138,6 @@ extern f64 D_8075B098;
 extern s32 D_8072073C; // TODO: Proper datatype
 extern s32 D_8071910C; // TODO: Proper datatype
 
-void func_80714C08(s32*, f32, Actor*, s32, s32);
-void func_8071498C(s32*);
-
 // TODO: May need .data defined? s3 s2 regalloc
 void func_806AFA60(u8 arg0) {
     f32 temp_f22;
@@ -174,7 +171,6 @@ void func_806B02EC(void) {
 
 extern f32 D_8075B1A8;
 
-void func_806852C4(f32, f32, f32, f32);
 s32 func_80726164(Actor*, s16, s16, s16, void*);
 void func_8072AB74(s32, f32, f32, s32, f32);
 

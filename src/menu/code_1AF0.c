@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 typedef struct menu_struct_1 {
@@ -22,7 +22,6 @@ typedef struct menu_struct_1 {
 extern u8 D_800334DC[];
 
 void func_806F91B4(s32, s32, s16);
-void func_80709464(s32);
 void func_80025FB4(MenuStruct1*, s32, s32);
 
 void func_806F397C(Actor*, Actor*, s16, s16);

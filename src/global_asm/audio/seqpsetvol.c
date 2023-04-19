@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void alSepqSetVol(ALSeqPlayer *seqp, s16 vol)
 {

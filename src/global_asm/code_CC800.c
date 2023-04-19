@@ -1,14 +1,12 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 D_80750AB4;
 extern u8 D_80750AB8;
 extern u8 D_80750AC0;
 
-void func_80689114(s16, f32, f32, f32, s32, f32, Actor *);
 void func_806C9C80(s32, s32, s32);
-void func_80614D00(Actor*, f32, f32);
 s32 func_8066B06C(s32, s32);
 void func_806C9658(s32);
 
@@ -244,7 +242,6 @@ void func_806C90C4(s32 exitIndex) {
 }
 
 void func_806C9434(s32 arg0);
-void func_80709464(u8);
 void func_80605314(Actor*, u8);
 
 void func_806C92C4(s32 arg0) {
@@ -403,7 +400,6 @@ s8 func_806C9830(s8 arg0, Actor *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C9974.s")
 
 void func_80026E20(u8, s8);
-void func_8060E7EC(u8, u8, u8);
 
 extern s32 D_807552EC;
 

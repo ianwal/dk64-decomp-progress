@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 s32 func_8070E750(s32, s32, s32);
 
@@ -32,7 +32,6 @@ extern s32 D_8071A440; // TODO: Proper datatype
 extern s32 D_80028C30; // TODO: Proper datatype
 extern s32 D_8072006C; // TODO: Proper datatype
 
-s32 func_80714C08(void*, f32, Actor*, s32, s32);
 u8 func_806119A0(void);
 
 void func_800241A0(s16 *arg0, u8 arg1, u8 arg2) {
@@ -52,7 +51,6 @@ void func_800241A0(s16 *arg0, u8 arg1, u8 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_8002430C.s")
 
 void func_8065A660(f32, f32);
-void func_8065A6F8(s32);
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
 void func_80024768(void) {

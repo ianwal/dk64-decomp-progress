@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_8070C89C(float (*mf)[4], f32, f32, f32);
 void func_8070C8F4(float (*mf)[4], f32, f32, f32);
@@ -16,9 +16,6 @@ void func_8070D07C(Mtx*, Mtx*, f32, f32, f32, f32, f32, f32);
 extern f64 D_8075E470;
 extern f64 D_8075E478;
 extern f64 D_8075E480;
-
-f32 func_80612D1C(f32, f32);
-f32 func_80612D10(f32);
 
 // tiny, round float, can't auto decompile
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_8070C200.s")
@@ -136,7 +133,7 @@ void func_8070CAB4(float (*mf)[4], f32 arg1) {
     f32 temp_f12;
 
     temp_f12 = arg1 * D_8075E470;
-    temp_f0 = func_80612D1C(temp_f12, arg1);
+    temp_f0 = func_80612D1C(temp_f12);
     sp24 = func_80612D10(temp_f12);
     func_8070CCC4(mf);
     mf[1][2] = temp_f0;
@@ -152,7 +149,7 @@ void func_8070CB2C(float (*mf)[4], f32 arg1) {
     f32 temp_f12;
 
     temp_f12 = arg1 * D_8075E478;
-    temp_f0 = func_80612D1C(temp_f12, arg1);
+    temp_f0 = func_80612D1C(temp_f12);
     sp24 = func_80612D10(temp_f12);
     func_8070CCC4(mf);
     mf[2][0] = temp_f0;
@@ -168,7 +165,7 @@ void func_8070CBA4(float (*mf)[4], f32 arg1) {
     f32 temp_f12;
 
     temp_f12 = arg1 * D_8075E480;
-    temp_f0 = func_80612D1C(temp_f12, arg1);
+    temp_f0 = func_80612D1C(temp_f12);
     sp24 = func_80612D10(temp_f12);
     func_8070CCC4(mf);
     mf[0][1] = temp_f0;

@@ -1,10 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
-
-void func_80614D00(Actor*, f32, f32);
-s32 func_806CC10C(s16, s16);
 void func_8072AB74(s32, f32, f32, s32, f32);
 s32 func_80024568(s32, s32, f32, f32, f32);
 
@@ -154,8 +150,6 @@ extern f64 D_80035D60;
 extern void *D_8071AF30;
 extern void *D_80720120;
 
-void func_80714C08(void*, f32, Actor*, s32, s32);
-
 /*
 // Doable, just need the energy
 void func_800253AC(void) {
@@ -182,8 +176,6 @@ void func_800253AC(void) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_800254D0.s")
-
-void func_8068588C(Actor*, s16, f32, f32, f32, f32, s32);
 
 void func_80027770(void) {
     u8 var_v1;

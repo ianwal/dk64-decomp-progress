@@ -1,7 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
-
 
 extern uSprite *D_807550D0;
 
@@ -63,6 +61,7 @@ void func_8070E8F0(Gfx **arg0, uSprite *arg1) {
 }
 #endif
 
+// TODO: This signature is sus
 void func_8070F2C8(s16 arg0, s16 arg1, u8 arg2, u8 arg3) {
     D_807FD9D0 = arg0;
     D_807FD9D2 = arg1;

@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 
 s32 func_806D0DE4(Actor *arg0, Actor *arg1);
@@ -35,7 +34,6 @@ u8 func_80676308(Actor *arg0, Actor *arg1, s32 arg2) {
 // TODO: Not exactly sure what's wrong here
 // Tricky floating point typecasty stuff I suspect
 
-s32 func_806CC14C(s16, s16);
 
 s32 func_8067641C(Actor*, Actor*, s32);
 

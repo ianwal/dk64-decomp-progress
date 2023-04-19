@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u32 D_8002A1C0;
 extern u32 D_8002A1C8;
@@ -9,11 +9,6 @@ extern u16 D_8002A1CE;
 extern u16 D_8002A1CC;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80027340.s")
-
-void func_80688370(Actor *, s32, s32);
-void func_806883F4(Actor *, s32, s16);
-void func_8068842C(Actor *, s32, s32);
-void func_80688460(Actor *, s32, s32);
 
 /*
 // TODO: Kinda close... hmm

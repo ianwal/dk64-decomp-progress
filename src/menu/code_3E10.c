@@ -1,13 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_80737C20(s32);
 extern s8 D_80745844;
 void func_80030340(Actor*, s32, s32, s32);
 void func_8061D4E4(s32);
-void func_8060C648(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex, s32 arg4);
-s32 func_8060C6B8(s32, s32, s32, u8);
 extern s32 D_807F5D10;
 extern s8 opening_cutscene_transition;
 extern s8 D_80745844;
@@ -266,8 +264,6 @@ void func_8002907C(void) {
 
 void func_8002FC1C(Actor *, MenuAdditionalActorData *, s32);
 void func_8060AA58(s32);
-void func_807144B8(s8);
-extern s8 D_80033F48;
 
 void func_80029114(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
@@ -836,7 +832,7 @@ typedef struct {
 
 extern Struct8003378C D_8003378C;
 
-void func_80626F8C(f32, f32, Actor *, f32, f32 *, f32 *, s32, f32, s32);
+void func_80626F8C(f32, f32, f32, f32*, f32*, s32, f32, s32);
 
 /*
 // TODO: Pretty close
@@ -875,7 +871,7 @@ void func_80032024(void) {
             MaaD->unk8 = current_actor_pointer->z_position;
             current_actor_pointer->y_rotation = 0;
             current_actor_pointer->z_rotation = 0x400;
-            func_80626F8C(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer, current_actor_pointer->z_position, &sp54, &sp50, 0, 1.0f, 0);
+            func_80626F8C(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, &sp54, &sp50, 0, 1.0f, 0);
             temp_f0_2 = sp50 - 120.0f;
             if (temp_f0_2 < -35.0f && temp_f0_2 > -75.0f) {
                 D_8003378C.unk0 = temp_f0_2;

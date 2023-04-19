@@ -1,13 +1,12 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 extern f32 D_807502E8;
 extern s16 D_807502E0;
 extern u8 D_807FBD70;
 
-void func_8072B324(Actor*, s32);
 void func_8072AB74(s32, f32, f32, s32, f32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_806B6600.s")
@@ -107,7 +106,7 @@ void func_806B6958(void) {
         D_807FDC90->unk1E--;
     }
     if (D_807FBB70->unk200 == 4) {
-        func_80724C2C(-150, &D_807FDC90);
+        func_80724C2C(-150);
     }
     if ((D_807FDC90->unk2C == 0) || (D_807FBB70->unk200 == 9) || (D_807FBB70->unk15 != 0)) {
         func_80608528(current_actor_pointer, 0x3B2, 0xFF, 0x7F, 0x1E);

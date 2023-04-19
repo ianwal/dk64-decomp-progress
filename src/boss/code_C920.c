@@ -1,10 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 void func_8061C464(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);
-void func_8063DA40(s32, s16);
 
 extern s32 D_807F5D10;
 extern f32 D_80036AB0;

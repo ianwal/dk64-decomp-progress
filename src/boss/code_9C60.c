@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 void func_80613CA8(Actor*, s16, f32, f32);
 void func_8002FB7C(u8);
@@ -131,8 +130,6 @@ void func_8002FB7C(u8 arg0) {
     temp_v0->unkC = 1;
 }
 
-void func_806883F4(Actor*, s32, s16, f32);
-
 void func_8002FC48(s32 arg0, u8 arg1) {
     func_8068842C(arg0, 0, 1);
     func_80688460(arg0, 0, 1);
@@ -143,8 +140,6 @@ void func_8002FC48(s32 arg0, u8 arg1) {
 
 /*
 extern f64 D_80036A20;
-
-void func_80614D00(Actor*, f32, f32);
 
 void func_8002FC98(Actor *arg0, u8 arg1, s32 arg2, u8 arg3) {
     Actor17C *temp_s4;

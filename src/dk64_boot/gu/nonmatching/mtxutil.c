@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void guMtxF2L(f32 mf[4][4], Mtx *m) {
     s32 r, c;

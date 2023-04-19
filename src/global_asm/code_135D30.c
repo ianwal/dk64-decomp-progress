@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 temporary_flag_block[];
 u8* getFlagBlockAddress(u8 flagType); // TODO: Can we use the FlagTypes enum? Needs to be a u8 to match

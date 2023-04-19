@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s32 D_80717D4C;
 extern s32 D_8071FFA0;
@@ -104,47 +104,7 @@ void func_806B8C78(void) {
 }
 */
 
+// TODO: Needs proper definition of D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BD820/func_806B904C.s")
 
 extern f64 D_8075B8C0;
-
-/*
-void func_806B904C(void) {
-    f32 temp_f0;
-    f64 var_f6;
-    s16 var_v0;
-    u8 temp_t9;
-    void *temp_v1;
-
-    func_80729B00();
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        temp_f0 = (D_807FDC9C->unkF / D_8075B8C0) * 0.75;
-        current_actor_pointer->animation_state->scale_x = temp_f0;
-        current_actor_pointer->animation_state->scale_y = temp_f0;
-        current_actor_pointer->animation_state->scale_z = temp_f0;
-        if (func_805FF0C8() != 0) {
-            current_actor_pointer->control_state = 0x40;
-        } else {
-            current_actor_pointer->draw_distance = 1000;
-            current_actor_pointer->unk130 = 0x3C;
-            current_actor_pointer->unk131 = 0x3C;
-            func_80613C48(current_actor_pointer, 0x482, 0, 0);
-        }
-        func_8063C1EC(5, 0x10);
-        func_8063C1EC(7, 0x10);
-    }
-    var_v0 = 0;
-    if (D_807FBB70->unk254 > 0) {
-        do {
-            temp_v1 = D_807FBB70 + (var_v0 * 4);
-            var_v0 += 1;
-            if (temp_v1->unk258 == 3) {
-                current_actor_pointer->control_state = temp_v1->unk278->unk2;
-                current_actor_pointer->control_state_progress = 0;
-            }
-        } while (var_v0 < D_807FBB70->unk254);
-    }
-    func_806B8C78(D_807FBB70->unk254, D_807FBB70, 3);
-    func_806319C4(current_actor_pointer, 0);
-}
-*/

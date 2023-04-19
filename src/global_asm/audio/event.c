@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void alEvtqNew(ALEventQueue *evtq, ALEventListItem *items, s32 itemCount)
 

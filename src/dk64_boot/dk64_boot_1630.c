@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 void func_80000AA0(void);
 void func_80000D8C(void *arg0);

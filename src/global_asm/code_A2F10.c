@@ -1,9 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
-
-
-void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_8069E210.s")
@@ -14,7 +10,6 @@ void func_8069E490(u16 arg0, s16 arg1) {
     func_806A5DF0(arg0, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 0, arg1, current_actor_pointer);
 }
 
-void func_8067A70C(Actor *, void *, f32, f32, f32, s32, s32);
 extern u16 D_807FBB34;
 
 void func_8069E4E0(s16 arg0) {
@@ -74,14 +69,11 @@ typedef struct {
     u8 unk12; // Used
 } AAD_8069E774;
 
-void func_80688370(Actor*, s32, f32);
 void func_8066E8E4(void *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5);
 f32 func_8066E9EC(Actor *arg0, s32 arg1, f32 arg2);
 void func_8066EB40(Actor *arg0, f32 arg1);
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 void func_8066E5F8(s32 arg0, s32 arg1, u8 arg2);
-void func_8068842C(Actor* actor, s32 arg1, s16 arg2);
-void func_80688460(Actor* actor, s32 arg1, u8 arg2);
 
 /*
 // TODO: Doable, great progress made
@@ -238,8 +230,6 @@ extern f64 D_8075A4C8;
 extern s32 D_807FBB68;
 
 GlobalASMStruct60 *func_80688584(Actor*, s32);
-s32 func_80667110(f32, f32, f32*);
-void func_80614D00(Actor*, f32, f32);
 void func_80613C48(Actor*, s16, f32, f32);
 
 /*
@@ -380,8 +370,6 @@ extern u8 D_80750AD4;
 void func_8069F904(void);
 void func_8069FA40(void);
 
-void func_8068C350(void*, Actor*, s32);
-
 /*
 void func_8069FDA0(void) {
     s16 sp22;
@@ -497,7 +485,6 @@ extern s32 D_8071BB14;
 extern s32 D_80720BE8;
 
 void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-void func_8071496C(s16 arg0);
 
 /*
 void func_806A0330(void) {
@@ -625,7 +612,6 @@ void func_806A081C(Actor *arg0) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_806A0B74.s")
 
-void func_806883F4(Actor *arg0, s32 arg1, u8 arg2, f32 arg3);
 
 void func_806A0F78(Actor *arg0, u8 arg1, u8 arg2) {
     func_8068842C(arg0, 0, 1);

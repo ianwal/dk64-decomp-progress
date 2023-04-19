@@ -1,11 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 // TODO: What are the actual datatypes?
 s32 func_8068A3A0(s32, u32 *);
 s32 func_8068A404(s32, s32, s32);
-void func_806883F4(Actor*, s32, s16, f32);
 
 void func_8068A350(Actor *arg0, s32 arg1, s16 arg2) {
     func_8068842C(arg0, arg1, -1);

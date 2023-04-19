@@ -1,11 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_8002920C(void);
 
 void func_805FF168(void);
-void func_805FF898(void);
 
 void func_807313BC(void);
 void func_805FFFC8(void);
@@ -277,7 +276,6 @@ void func_805FF660(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_805FF670.s")
 
 void func_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
-void func_806F8BC4(s32, s32, s32);
 
 /*
 // TODO: Pretty close, something up with that big function call

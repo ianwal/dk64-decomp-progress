@@ -1,14 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
-void func_80614D00(Actor *, f32, f32);
 extern s32 D_8071FB34;
 extern s32 D_80717D4C;
 extern s32 D_8071FF18;
 extern f64 D_8075FF20;
 void func_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
-void func_806F8BC4(s32, s32, s32);
 void func_806F91B4(u8, u8, s16);
 s16 func_806CC190(s16, s16, f32);
 s16 func_806CC190(s16, s16, f32);
@@ -187,10 +184,8 @@ void func_8072AA80(void) {
 
 extern f64 D_8075FD40;
 
-s16 func_806CC14C(s16, s16);
 void func_80729EB0(s32, f32, f32, u16);
 void func_806653C0(Actor*, f32, f32);
-void func_8066635C(Actor*, f32, f32, f32, f32*);
 s32 func_80725BA4(f32, f32, Struct807FDCA0*);
 
 /*
@@ -481,7 +476,7 @@ void func_8072DC7C(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072DCF4.s")
 
 /*
-s32 func_8061CB50(f64, s32); // TODO: This signature is sus
+s32 func_8061CB50(void);
 f32 func_80665AE4(s32, s32, s32, s32);
 extern f64 D_8075FF28;
 extern f64 D_8075FF30;
@@ -498,15 +493,15 @@ s32 func_8072DCF4(Actor *arg0, Actor *arg1, u16 arg2) {
     } else {
         phi_a0 = temp_f6 - temp_f8;
     }
-    if ((phi_a0 < arg2) && !func_8061CB50(D_8075FF28, phi_a0)) {
+    if ((phi_a0 < arg2) && !func_8061CB50()) {
         return TRUE;
     }
     return FALSE;
 }
 */
 
-void func_8072DE10(u16 arg0) {
-    func_8072DCF4(current_actor_pointer, D_807FDC94, arg0);
+s32 func_8072DE10(u16 arg0) {
+    return func_8072DCF4(current_actor_pointer, D_807FDC94, arg0);
 }
 
 void func_8072DE44(s32 arg0) {
@@ -580,8 +575,6 @@ void func_8072E2B0(Actor *arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
 
 extern f64 D_8075FF40;
 extern f64 D_8075FF48;
-
-s16 func_806CC10C(s16, s16);
 
 /*
 // TODO: Quite close...

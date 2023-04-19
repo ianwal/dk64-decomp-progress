@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 D_80748E00;
 extern u8 D_80748E04;
@@ -80,7 +80,7 @@ void func_80665ACC(Actor *arg0);
 u16 func_80672134(s16, s16, s16, s16);
 
 void func_80665160(Actor *arg0, s16 arg1, s16 arg2) {
-    func_8067ACB4();
+    func_8067ACB4(arg0);
     func_80665ACC(arg0);
     if (arg0->unkFC != 0) {
         func_80672680(arg0->unkEE, arg1, arg0->unkF4, arg0->unkF6, &arg0->unkF2);
@@ -189,10 +189,13 @@ u8 func_80665558(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665564.s")
 
+extern f32 D_80758E50;
+extern f64 D_80758E58;
+extern f64 D_80758E60;
+extern f64 D_80758E68;
 // TODO: What is this....?
 typedef struct {
-    u8 unk0;
-    u8 unk1;
+    s16 unk0;
     u8 unk2;
     u8 unk3;
     u8 unk4;
@@ -204,6 +207,129 @@ typedef struct {
 } Struct80748D40;
 
 extern Struct80748D40 D_80748D40[];
+
+/*
+// TODO: Doable, good progress made
+void func_80665564(Actor *arg0, f32 arg1) {
+    f32 sp5C;
+    u8 sp5B;
+    Struct80748D40 *var_t1;
+    u8 sp54;
+    u8 sp53;
+    u8 var_a2_2;
+    f32 var_f0;
+    f32 var_f2;
+    s16 temp_v0_2;
+    ActorAnimationState *temp_v0;
+    s16 var_a1;
+    s16 var_a2;
+    s16 var_t0;
+    s16 var_t9;
+    s32 var_v1;
+
+    func_80666290(arg0, &sp5B, &sp5C, &sp53, &sp54, 0);
+    if (arg0->interactable & 1) {
+        func_806D09E8(arg0);
+    }
+    arg0->unk6A &= 0xFFFE;
+    arg0->distance_from_floor = arg0->y_position - arg0->floor - arg1;
+    if ((arg0->y_position - arg0->floor <= arg1) || ((arg0->unk6C & 1) && (arg0->y_velocity < 0.0f))) {
+        if ((current_actor_pointer->unk6A & 0x200) || (current_map == MAP_GALLEON_SEAL_RACE) || (current_map == MAP_GALLEON_PUFFTOSS) || (current_map == MAP_CASTLE_CAR_RACE)) {
+            if (arg0->distance_from_floor < 0.5) {
+                temp_v0 = arg0->animation_state;
+                if (temp_v0 != NULL) {
+                    var_f2 = temp_v0->scale_y;
+                } else {
+                    var_f2 = D_80758E50;
+                }
+                arg0->y_position = arg0->floor + arg1;
+                arg0->distance_from_floor = 0.0f;
+                arg0->unk6A |= 1;
+                arg0->y_velocity = (arg0->floor + arg1 - arg0->unk8C) * (40.0 / (var_f2 * D_80758E58));
+            }
+        } else if (arg0->distance_from_floor < 5.0f) {
+            arg0->distance_from_floor = 0.0f;
+            arg0->y_position = arg0->floor + arg1;
+            arg0->unk6A |= 1;
+            if (arg0->y_velocity < -10.0f) {
+                arg0->y_velocity = -10.0f;
+            }
+        }
+    }
+    D_80748E04 = 0;
+    if ((sp5B != 0) && !(arg0->unk6A & 1) && (D_80748E00 == 0)) {
+        if (arg0->y_velocity > 0.0f) {
+            arg0->y_velocity = 0.0f;
+        }
+        arg0->y_position = sp5C + (arg0->y_velocity * D_80758E60);
+        D_80748E04 = 1;
+    }
+    D_80748E00 = 0;
+    if (arg0->object_properties_bitfield & 0x40000) {
+        var_f0 = D_80758E68;
+    } else {
+        var_f0 = 1.0;
+    }
+    var_t0 = 0x400;
+    if (arg0->unk6A & 1) {
+        var_t0 = arg0->unkDA;
+    }
+    var_a1 = arg0->unkD8;
+    var_t1 = &D_80748D40[arg0->unkD1];
+    // TODO: Probably a switch case
+    if (current_map != MAP_AZTEC_BEETLE_RACE) {
+        if (current_map == MAP_CAVES_BEETLE_RACE) {
+            extra_player_info_pointer->unk26 = 0x14;
+            goto block_31;
+        }
+    } else {
+block_31:
+        if (arg0->unk6A & 0x200) {
+            var_t1 = &D_80748D40[10];
+        }
+    }
+    if (arg0->unkDE >= 0x3F4) {
+        arg0->unkDC = var_a1;
+    }
+    if (var_t0 >= 0x3F4) {
+        var_a1 = arg0->unkDC;
+    }
+    var_a2 = (var_t1->unk6 << 0xC) / 360;
+    if (var_a2 < var_t0) {
+        var_a2 = var_t0;
+    }
+    temp_v0_2 = func_806CC10C(arg0->unkDC, var_a1);
+    if (temp_v0_2 > 0) {
+        var_v1 = temp_v0_2;
+    } else {
+        var_v1 = -temp_v0_2;
+    }
+    if (var_v1 >= 0x6AB) {
+        if (arg0->unkDE >= 0x3C8) {
+            arg0->unkDE = 0x400;
+            arg0->unkDC = var_a1;
+        } else {
+            arg0->unkDE += func_806CC10C(arg0->unkDE, 0x400) * (s16)var_f0;
+            arg0->unkDE &= 0xFFF;
+        }
+    } else {
+        arg0->unkDC += temp_v0_2 * var_f0;
+        arg0->unkDC &= 0xFFF;
+        arg0->unkDE += func_806CC10C(arg0->unkDE, var_a2) * (s16)var_f0;
+        arg0->unkDE &= 0xFFF;
+    }
+    if (!(arg0->unk6A & 0x20)) {
+        var_a2_2 = var_t1->unk3;
+    } else {
+        var_a2_2 = var_t1->unk2;
+    }
+    if (((var_a2_2 << 0xC) / 360) < var_t0) {
+        arg0->unkE0 = 0.0f;
+        return;
+    }
+    arg0->unkE0 = (0x400 - var_t0) / var_t1->unk0;
+}
+*/
 
 u8 func_80665AAC(Actor *arg0) {
     return D_80748D40[arg0->unkD0].unk8;
@@ -334,7 +460,6 @@ LedgeInfo *func_80665F24(Actor *arg0) {
 extern f32 D_80758EB4;
 
 void func_8066EB50(Actor *actor, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
-void func_806303C4(f32, f32, Actor*, s32, s32, s16, s32);
 
 void func_80665FB4(Actor *arg0) {
     f32 phi_f0;
@@ -385,6 +510,10 @@ void func_80666290(Actor *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 arg5)
     func_80666428(arg0, sp3C, sp38, sp34, arg1, arg2, arg3, arg4, arg5);
 }
 
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066635C.s")
+
+/*
+// TODO: Might return u8 from somewhere
 void func_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4) {
     u8 sp3F;
     u8 sp3E;
@@ -401,6 +530,7 @@ void func_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4) {
     func_80666428(0, arg1, arg2, arg3, &sp3F, &sp38, &sp3E, &sp34, 0);
     *arg4 = D_807F948C;
 }
+*/
 
 void func_806663F8(void) {
     D_807F94AE = 0;
@@ -524,6 +654,10 @@ s32 func_80666FC8(f32 arg0, f32 arg1, f32 arg2, u8 arg3) {
 
 u8 func_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3);
 
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80667110.s")
+
+/*
+// TODO: Probably returns s32
 void func_80667110(f32 arg0, f32 arg1, f32 *arg2) {
     D_807F9484 = 0;
     D_807F9510 = 0;
@@ -531,6 +665,7 @@ void func_80667110(f32 arg0, f32 arg1, f32 *arg2) {
     D_807F94A4 = D_807F9498;
     D_807F94A2 = D_807F9490;
 }
+*/
 
 u8 func_8066715C(f32 *arg0) {
     *arg0 = D_807F9488;
@@ -836,7 +971,6 @@ void func_8066AEE4(s32 arg0, s32 arg1) {
 void func_8066B4AC(s32,s32,s32);
 s32  func_8066B9F4(void*);
 
-void *func_806111BC(s32, s32);
 s32 func_8066B5C8(s32, s32);
 extern OSMesgQueue D_807656D0;
 extern s32 D_807F9678;

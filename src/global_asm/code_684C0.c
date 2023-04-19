@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 typedef struct global_asm_struct_83 GlobalASMStruct83;
 struct global_asm_struct_83 {
@@ -31,6 +31,7 @@ struct global_asm_struct_85 {
 
 extern GlobalASMStruct85 *D_807F9410;
 
+// TODO: Doable, fiddly struct loop with D_807F9410, could use file specifc ctx
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_684C0/func_806637C0.s")
 
 s32 func_806639CC(Actor*, GlobalASMStruct83*);

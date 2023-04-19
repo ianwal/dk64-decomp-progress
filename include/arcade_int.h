@@ -3,7 +3,6 @@
 
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
 
 enum ARCADE_OBJ_E {
     ARCADE_OBJ_01_BARREL = 1,
@@ -94,8 +93,6 @@ void arcade_pie_update(u8);
 void func_80030FEC(void);
 void func_800313B8(void);
 
-void func_8060C648(u8 arg0, u32 arg1, u8 arg2, u32 fileIndex, s32 arg4);
-u32  func_8060C6B8(u8 arg0, u32 arg1, u8 arg2, u32 arg3);
 void func_8060DEA8(void);
 void func_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 

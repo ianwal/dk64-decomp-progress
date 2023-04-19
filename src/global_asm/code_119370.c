@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 D_8074450C;
 
@@ -80,7 +80,7 @@ void func_8071497C(u16 arg0) {
     D_807FDB34 = arg0;
 }
 
-void func_8071498C(s32 arg0) {
+void func_8071498C(void *arg0) {
     D_807FDB14 = arg0;
 }
 
@@ -154,7 +154,7 @@ void func_80714A9C(void) {
 
 s32 func_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, s32);
 
-void func_80714B84(s32 arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
+void func_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
     f32 sp3C;
     f32 sp38;
     f32 sp34;
@@ -163,7 +163,7 @@ void func_80714B84(s32 arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
     func_80714D08(arg0, arg1, sp3C, sp38, sp34, 0, arg2, arg3, arg4);
 }
 
-s32 func_80714C08(s32 arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
+s32 func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
     f32 sp3C;
     f32 sp38;
     f32 sp34;

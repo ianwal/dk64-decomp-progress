@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80024000.s")
@@ -274,8 +274,6 @@ void func_80027B30(RaceStruct3 *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80027BD0.s")
 
 extern s32 D_80720120;
-
-void func_80714C08(void*, f32, Actor*, s32, s32);
 
 void func_80027C60(void) {
     s32 phi_s0;
@@ -567,8 +565,6 @@ void func_8002DA68(RaceStruct3 *arg0) {
     current_actor_pointer->animation_state->scale_y = \
     current_actor_pointer->animation_state->scale_z = temp_f2;
 }
-
-void func_80688370(Actor*, s32, f32);
 
 void func_8002DB90(void) {
     if (current_actor_pointer->control_state != 0) {

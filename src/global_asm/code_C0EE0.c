@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C0EE0/func_806BC1E0.s")
@@ -10,8 +10,6 @@
 
 // Caves Ice Tomato Board State
 extern s8 D_807FC8C0[];
-
-void func_8063DA40(s16, s32);
 
 // Set Caves Ice Tomato Board Square
 void func_806BD094(s16 arg0, s8 arg1) {

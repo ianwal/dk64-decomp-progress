@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern OSTime __osCurrentTime;
 extern u32 __osBaseCounter;

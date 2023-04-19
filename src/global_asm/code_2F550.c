@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 D_807444F0;
 extern f32 D_80747CD0;
@@ -570,7 +570,6 @@ void func_8062E67C(Struct8062E67C *arg0, Struct8062E67C *arg1, u8 arg2, f64 arg4
 // Surprisingly doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F050.s")
 
-f32 func_80612D10(f32);
 void func_80659DB0(f32, f32, s32 *, s32 *, f32, s32);
 void func_8063C390(void);
 void func_8065E040(s32);

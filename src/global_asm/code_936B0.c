@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 D_80750270;
 extern s16 D_807502D0;
@@ -11,10 +11,7 @@ extern f32 D_807FC7B0;
 extern f32 D_807FC7B4;
 extern f32 D_807FC7B8;
 
-void func_80688370(s32, s32, f32);
 void func_80604CBC(s32, s32, u8, s32, s32, s32, f32, s32);
-
-void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068E9B0.s")
 
@@ -150,7 +147,7 @@ void func_806907F0(f32 arg0, f32 arg1, f32 arg2) {
     D_807FC7B8 = arg2;
 }
 
-void func_80690814(s32 arg0, s32 arg1) {
+void func_80690814(Actor *arg0, s32 arg1) {
     func_80671C0C(arg0, arg1, &D_807FC7B0, &D_807FC7B4, &D_807FC7B8);
 }
 

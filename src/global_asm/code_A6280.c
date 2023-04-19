@@ -1,11 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_806319C4(Actor *, s32);
 void func_80613C48(Actor*,s16,f32,f32);
 void func_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
-void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 extern f64 D_8075A588;
 extern f64 D_8075A590;
 extern f64 D_8075A598;
@@ -18,8 +17,6 @@ extern u8 D_807FBD70;
 extern u8 D_807506C0[];
 
 f32 func_80665AE4(s32, s32, s32, s32);
-void func_80688370(Actor*, s32, f32);
-void func_806883F4(Actor*, s32, s32, f32);
 
 /*
 // TODO: Everything matches, but the stack is too big
@@ -81,7 +78,6 @@ void func_806A1580(void) {
 
 extern f64 D_8075A558;
 
-void func_80614D00(Actor*, f32, f32);
 void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 void func_806A18A8(void) {
@@ -221,12 +217,12 @@ void func_806A1AC4(void) {
 }
 */
 
-void func_806A1F28() {
+void func_806A1F28(void) {
     current_actor_pointer->object_properties_bitfield |= 0x400;
     func_806319C4(current_actor_pointer, 0);
 }
 
-void func_806A1F64() {
+void func_806A1F64(void) {
     if (func_8061CB50()) {
         func_80613C48(current_actor_pointer, 0x640, 0, 8.0f);
     } else {
@@ -252,9 +248,6 @@ typedef struct {
 } AAD_806A1FD8;
 
 void func_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
-s32 func_8067AF44(Actor* arg0);
-s16 func_80688E68(Actor *arg0);
-s16 func_80688C30(u16 arg0);
 
 /*
 // TODO: Ridiculously close, our stack is too big and the load of at s1 is swapped in one spot

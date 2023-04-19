@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern f32 D_80747E00;
 extern f32 D_80747E04;
@@ -367,11 +367,11 @@ typedef struct {
     u8 unk20;
     u8 unk21;
     s16 unk22;
-    s32 unk24;
+    void *unk24;
     s32 unk28;
     s32 unk2C;
     s32 unk30;
-    s32 unk34;
+    void *unk34;
 } Struct80636380;
 
 void func_80636380(s32 arg0, Struct80636380 *arg1) {

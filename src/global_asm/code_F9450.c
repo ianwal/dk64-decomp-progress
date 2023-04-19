@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s16 D_807FD790[];
 extern u8 D_807FD798;
@@ -348,8 +348,6 @@ extern f64 D_8075D950;
 extern s32 D_8071C48C; // TODO: Datatype
 extern s32 D_8071FC58; // TODO: Datatype
 extern s32 D_8071C620; // TODO: Datatype
-
-void func_8071496C(s16);
 
 /*
 // TODO: Kinda close, stack 2 big and datatype issues?

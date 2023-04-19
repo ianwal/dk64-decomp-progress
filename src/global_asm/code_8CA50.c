@@ -1,15 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 /*
 // See func_8072881C() for details
-void func_80688370(Actor *, s32, f32);
-void func_8068839C(Actor *, s32, s32);
-void func_806883C8(Actor *, s32, s32);
-void func_806883F4(Actor *, s32, s16, s32);
-void func_8068842C(Actor *, s32, s32);
-void func_806884B8(Actor *, s32, s32);
 void func_80688514(Actor *, s32);
 s32 func_80688540(Actor *, s32);
 */

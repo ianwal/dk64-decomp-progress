@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern u8 D_807501E0;
 extern u8 D_807FC620;
@@ -172,7 +172,7 @@ void *func_8068C12C(u16 textureIndex) {
 
 typedef struct {
     s32 unk0;
-    s32 unk4; // Used
+    Actor *unk4; // Used
     s8 unk8; // Used
     s8 unk9;
     s8 unkA;
@@ -189,7 +189,7 @@ void func_8068C2EC(void) {
     D_807501E0 = 0;
 }
 
-void func_8068C2F8(s32 arg0) {
+void func_8068C2F8(Actor *arg0) {
     u8 i;
     for (i = 0; i < D_807501E0; i++) {
         if (arg0 == D_807FC630[i].unk4) {

@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 void func_80724E48(u8);
 void func_806319C4(Actor *, s32);
@@ -8,9 +8,7 @@ void func_8072B79C(s32, s32, s32);
 void func_806782C0(Actor *);
 s32 func_8072881C(s32, s32);
 s32 func_8072AB74(u8, f32, f32, s32, f32);
-s32 func_8072B324(Actor *, s32);
 s32 func_8072D714(s32, s32);
-s32 func_8072DE44(s32);
 s32 func_8072DEA8(s32, s32, s32);
 
 extern f64 D_8075AE10;

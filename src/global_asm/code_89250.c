@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "variables.h"
+
 
 extern s32 D_80717D4C;
 extern s32 D_80717930;
@@ -37,15 +37,11 @@ extern f64 D_80759B70;
 extern f64 D_80759B68;
 
 void func_80719A0C(void); // Function pointer
-void func_8068588C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
 void func_806858E8(Actor*, s16, f32, f32, f32, f32, s32);
 void func_80686390(Actor*, f32, f32, f32, f32);
 void func_80685F60(Actor *actor);
-void func_80714C08(s32*, f32, Actor*, s32, s32);
-void func_8068588C(Actor*, s16, f32, f32, f32, f32, s32);
-void func_80714998(s32);
 
-void func_80684550(s32 arg0, u8 arg1, f32 arg2) {
+void func_80684550(Actor *arg0, u8 arg1, f32 arg2) {
     func_807149B8(1);
     func_8071498C(&D_8071AF30);
     func_80714950(arg0);
@@ -334,8 +330,6 @@ void func_8068588C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5
 
 extern s32 D_807180F4; // TODO: Datatype, just for pointer
 
-void func_8071496C(u16);
-
 /*
 // TODO: Pretty close
 void func_80685B44(void *arg0, s32 arg1, f32 arg2, u8 arg3, u8 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8) {
@@ -553,8 +547,67 @@ void func_806877C8(u8 arg0) {
     func_80714C08(&D_8072006C, 1.0f, current_actor_pointer, arg0, 0);
 }
 
-// Surprisingly doable, just need the energy
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068780C.s")
+
+void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32); /* extern */
+void func_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32); /* extern */
+void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32); /* extern */
+
+extern s32 D_8071E028;
+extern s32 D_80720B24;
+
+extern f64 D_80759BA0;
+extern f32 D_80759BA8;
+
+/*
+// TODO: Very close, our stack is too big
+void func_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
+    f32 dx;
+    f32 dz;
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    u16 sp46; // Padding, not used
+    u8 sp45;
+    u8 sp44;
+
+    sp45 = (((rand() >> 0xF) % 32767) % ((arg1 - arg0) + 1)) + arg0;
+    sp44 = (((rand() >> 0xF) % 32767) % ((arg3 - arg2) + 1)) + arg2;
+    func_80671C0C(current_actor_pointer, sp45, &sp74, &sp70, &sp6C);
+    func_80671C0C(current_actor_pointer, sp44, &sp68, &sp64, &sp60);
+    func_80626F8C(sp74, sp70, sp6C, &sp58, &sp54, 0, 1.0f, 0);
+    func_80626F8C(sp68, sp64, sp60, &sp50, &sp4C, 0, 1.0f, 0);
+    sp5C = ((func_80665DE0(sp50, sp4C, sp58, sp54) * 0x168) / 4096) + 0x5A;
+    if (sp5C < 270.0f) {
+        sp5C += 180.0f;
+    }
+    dx = sp58 - sp50;
+    dz = sp54 - sp4C;
+    sp48 = sqrtf((dx * dx) + (dz * dz));
+    func_807149B8(1);
+    func_807149FC(1);
+    func_80714950(sp5C);
+    func_8071498C(&D_8071E028);
+    func_80714CC0(&D_80720B24, sp48 * D_80759BA0, (sp74 + sp68) * 0.5, (sp70 + sp64) * 0.5, (sp6C + sp60) * 0.5);
+    if (((rand() >> 0xF) % 1000) & 1) {
+        func_806595F0(1);
+        func_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 150.0f, 0, 0x96, 0x64, 0xFF);
+    }
+    if ((current_actor_pointer->unk58 == 0xB9) && (((rand() >> 0xF) % 1000) >= 0x385)) {
+        func_806877C8(((((rand() >> 0xF) % 32767) % 10) + 0xD));
+        func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, ((rand() >> 0xF) % 1000) >= 0x1F5 ? 0x8A : 0xA1, 0xFF, 0x7F, 0x28, 0, D_80759BA8, 0);
+    }
+}
+*/
 
 void func_80687C48(void) {
     playSound(0xF2, 0x7FFF, 63.0f, 1.0f, 0, 0);

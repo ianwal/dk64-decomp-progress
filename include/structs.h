@@ -216,6 +216,10 @@ typedef struct animation_state_unk0 {
     f32 unk24; // Used
 } AnimationStateUnk0;
 
+typedef struct animation_state_unk8 {
+    s32 unk0;
+} AnimationStateUnk8;
+
 // See boss func_8002FB7C
 typedef struct animation_state_unk20 {
     u8 unk0;
@@ -231,7 +235,7 @@ typedef struct animation_state_unk20 {
 typedef struct actor_animation_state {
     AnimationStateUnk0 *unk0;
     s32 unk4;
-    s32 unk8;
+    AnimationStateUnk8 *unk8;
     s32 unkC;
     s16 unk10;
     s16 unk12;
@@ -321,10 +325,8 @@ typedef struct actor_178 {
     s16 unk2;
     u8 unk4;
     u8 unk5;
-    u8 unk6;
-    u8 unk7;
-    u8 unk8;
-    u8 unk9;
+    s16 unk6;
+    s16 unk8;
     u8 unkA;
     u8 unkB;
     u8 unkC;
@@ -767,7 +769,7 @@ typedef struct player_additional_actor_data {
     u8  unk1A7;
     Actor *unk1A8;
     Actor *unk1AC; // TODO: Is this correct?
-    s32 unk1B0;
+    Actor *unk1B0; // Used
     s32 unk1B4;
     s32 unk1B8;
     f32 unk1BC; // Used
@@ -1510,5 +1512,23 @@ typedef struct otherSpriteControl {
 	/* 0x36E */ s8 unk_36E[0x384-0x36E];
 	/* 0x384 */ void* some_pointer;
 } otherSpriteControl;
+
+// TODO: Which struct is this?
+typedef struct {
+    s32 unk0[21];
+    s8 unk54; // Used
+    s8 unk55;
+    s8 unk56;
+    s8 unk57;
+    s32 unk58; // Used
+    s32 unk5C;
+} Struct8064199C_arg0;
+
+typedef struct {
+    u8  pad0[0x14];
+    f32 unk14;
+    u8  pad1[0x31];
+    u8 unk49;
+} GlobalASMStruct49;
 
 #endif
