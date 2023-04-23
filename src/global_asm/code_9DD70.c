@@ -39,6 +39,7 @@ void func_80699914(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069A614.s")
 
+// TODO: Needs proper definition for D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069A750.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069A7C8.s")

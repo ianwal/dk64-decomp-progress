@@ -1106,7 +1106,7 @@ typedef struct {
     u8      unk2C1; // Used
     u8      unk2C2; // Used
     u8      unk2C3; // Used
-    s32     unk2C4;
+    f32     unk2C4; // Used
     s16     unk2C8; // Used
     s16     unk2CA;
     u8      pad_unknown4[0x2E2 - 0x2CC];

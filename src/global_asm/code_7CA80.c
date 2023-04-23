@@ -675,6 +675,65 @@ void func_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5,
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679334.s")
 
+/*
+// TODO: Close
+void func_80679334(void) {
+    Struct807FBF18 *var_s0;
+    Actor *temp_s2;
+    ActorCollision **var_a0;
+    ActorCollision *temp_s2_2;
+    ActorCollision *temp_t9;
+    ActorCollision *var_a1;
+    ActorCollision *var_v0;
+    s32 temp_t7;
+    s32 var_a0_2;
+    s32 i;
+    u32 temp_a0;
+    Struct807FBF18 *temp_v0;
+
+    for (i = 0; i < D_807FBFD8; i++) {
+        temp_t7 = D_807FBF18[i].unk8 - 1;
+        D_807FBF18[i].unk8 = temp_t7;
+        if (temp_t7 == 0) {
+            temp_s2 = D_807FBF18[i].unk4;
+            if (func_8067AF44(temp_s2) != 0) {
+                var_v0 = temp_s2->collision_queue_pointer;
+                var_a0 = &temp_s2->collision_queue_pointer;
+                var_a1 = NULL;
+                while (var_v0) {
+                    var_a0 = &var_v0->next;
+                    var_a1 = var_v0;
+                    var_v0 = var_v0->next;
+                }
+                temp_t9 = D_807FBF18[i].unk0;
+                *var_a0 = temp_t9;
+                temp_t9->prev = var_a1;
+            } else {
+                temp_s2_2 = D_807FBF18[i].unk0;
+                temp_a0 = temp_s2_2->unk10;
+                if (temp_a0 != 0) {
+                    func_8061130C(temp_a0);
+                }
+                func_8061130C(temp_s2_2);
+            }
+        }
+    }
+    do {
+        var_a0_2 = FALSE;
+        for (i = 0; i < D_807FBFD8; i++) {
+            if (D_807FBF18[i].unk8 == 0) {
+                D_807FBFD8--;
+                var_a0_2 = TRUE;
+                temp_v0 = &D_807FBF18[D_807FBFD8];
+                D_807FBF18[i].unk0 = temp_v0->unk0;
+                D_807FBF18[i].unk4 = temp_v0->unk4;
+                D_807FBF18[i].unk8 = temp_v0->unk8;
+            }
+        }
+    } while (var_a0_2 != FALSE);
+}
+*/
+
 ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, s32 arg4) {
     ActorCollision *temp_v0 = malloc(sizeof(ActorCollision));
     temp_v0->unk0 = arg1;
@@ -691,8 +750,144 @@ ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, s32 arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679DC4.s")
 
+extern u8 D_807FBB85;
+extern s32 D_8071F758; // TODO: Datatype
+extern s32 D_80720E2C; // TODO: Datatype
+
+/*
+// TODO: Close
+void func_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
+    s32 sp3C;
+    s32 var_a2;
+    s32 var_v0;
+    u16 temp_v0_2;
+    PlayerAdditionalActorData *temp_v1;
+
+    D_807FBB85 = 1;
+    if ((arg0 == D_807FBB48) && ((var_a2 = 1, (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 != 2)) || (arg1 == NULL) || !(arg1->interactable & 2))) {
+        sp3C = arg2 != 0 ? 0x30 : 0x2E;
+        if ((arg1 != NULL) && (arg1->unk58 == 0x116)) {
+            func_80686CF8(arg0);
+            var_a2 = TRUE;
+            switch (arg1->control_state_progress) {
+                case 1:
+                    temp_v1 = extra_player_info_pointer;
+                    var_a2 = 0;
+                    temp_v1->unk1F0 = temp_v1->unk1F0 ^ 0x80;
+                    break;
+                case 2:
+                    sp3C = 0x27;
+                    break;
+                case 3:
+                    func_807149FC(0xF0);
+                    func_807149B8(1);
+                    func_8071498C(&D_8071F758);
+                    func_80714C08(&D_80720E2C, 0.4f, arg0, 1, 2);
+                    func_807149FC(0xF0);
+                    func_807149B8(1);
+                    func_8071498C(&D_8071F758);
+                    func_80714C08(&D_80720E2C, 0.38f, arg0, 5, 2);
+                    func_807149FC(0xF0);
+                    func_807149B8(1);
+                    func_8071498C(&D_8071F758);
+                    func_80714C08(&D_80720E2C, 0.3f, arg0, 6, 2);
+                    var_a2 = FALSE;
+                    extra_player_info_pointer->unk1F0 |= 0x08000000;
+                    break;
+            }
+            extra_player_info_pointer->unk200 = 0xF0;
+        } else if ((arg1 != NULL) && ((((arg1->interactable & 1) != 0)) || (arg1->interactable & 4) || (arg1->interactable & 2))) {
+            var_a2 = TRUE;
+            if (func_80714608(0) != 0) {
+                var_a2 = TRUE;
+                if (func_806D0DE4(arg0, arg1, 1) != 0) {
+                    sp3C = 0x31;
+                } else {
+                    var_v0 = 1;
+                    if (arg1->interactable & 4) {
+                        var_v0 = 3;
+                    }
+                    if ((arg1->control_state != 0x28) && (var_v0 < 3)) {
+                        sp3C = 0x2B;
+                    } else {
+                        sp3C = 0xE;
+                    }
+                }
+            }
+        }
+        if (var_a2 != 0) {
+            func_806EB0C0(sp3C, arg1, cc_player_index);
+        }
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A09C.s")
 
+typedef struct Struct8067A09C Struct8067A09C;
+
+// TODO: Any overlap with existing structs?
+struct Struct8067A09C {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    Struct8067A09C *unk14; // Doubly linked list
+    Struct8067A09C *unk18; // Doubly linked list
+};
+
+/*
+// TODO: Regalloc
+Struct8067A09C *func_8067A09C(Struct8067A09C *arg0) {
+    s32 var_a1;
+    Struct8067A09C *temp_a2;
+    Struct8067A09C *var_a0;
+    Struct8067A09C *var_v0;
+    Struct8067A09C *var_v1;
+
+    var_v1 = arg0;
+    if (arg0 != NULL) {
+        var_v0 = arg0->unk14;
+        while (var_v0 != NULL) {
+            var_a0 = var_v0->unk18;
+            var_a1 = FALSE;
+            while (var_a0 != NULL && var_a1 == 0) {
+                if (var_v0->unk0 >= var_a0->unk0) {
+                    var_a1 = TRUE;
+                    var_v0->unk18->unk14 = var_v0->unk14;
+                    if (var_v0->unk14 != NULL) {
+                        var_v0->unk14->unk18 = var_v0->unk18;
+                    }
+                    // TODO: Regalloc here
+                    temp_a2 = var_a0->unk14;
+                    var_a0->unk14 = var_v0;
+                    var_v0->unk14 = temp_a2;
+                    if (temp_a2 != NULL) {
+                        temp_a2->unk18 = var_v0;
+                    }
+                    var_v0->unk18 = var_a0;
+                }
+                var_a0 = var_a0->unk18;
+            }
+            if (var_a1 == FALSE) {
+                var_v0->unk18->unk14 = var_v0->unk14;
+                if (var_v0->unk14 != NULL) {
+                    var_v0->unk14->unk18 = var_v0->unk18;
+                }
+                var_v0->unk18 = NULL;
+                var_v0->unk14 = var_v1;
+                var_v1->unk18 = var_v0;
+                var_v1 = var_v0;
+            }
+            var_v0 = var_v0->unk14;
+        }
+    }
+    return var_v1;
+}
+*/
+
+// TODO: Needs proper definition for D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A170.s")
 
 // Jumptable

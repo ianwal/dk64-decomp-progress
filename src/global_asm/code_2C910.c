@@ -79,7 +79,7 @@ Actor *func_80627EA8(s16 arg0) {
     return actor;
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2C910/func_80627F04.s")
 
 s32 func_80629148(void) {

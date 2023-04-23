@@ -972,10 +972,10 @@ void func_80027A38(Gfx **arg0) {
     );
     func_8070E8F0(&sp6C, &D_8004BB00[D_807444FC]);
     func_8070F2C8(0x400, D_8004C6D6, 0, 0);
-    for (i = 0;  i <0x6; i++) {
+    for (i = 0; i < 0x6; i++) {
         func_8070F2FC(&sp6C, 0x220 + 0x20*i, 0xe0);
     }
-    for (i = 0;  i <0x1C; i++) {
+    for (i = 0; i < 0x1C; i++) {
         func_8070F2FC(&sp6C, 0xC0 + 0x20*i, 0x380);
     }
     for (i = 1; i < 0x1B; i++) {
@@ -1864,6 +1864,194 @@ s32 __arcade_abs_w(s32 arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002B390.s")
+
+extern u8 D_8003B3C8[];
+extern u8 D_8003B610[];
+extern u8 D_8003B858[];
+extern u8 D_8003BAA0[];
+extern u8 D_8003BCE8[];
+extern u8 D_8003BF30[];
+extern u8 D_8003C178[];
+extern u8 D_8003C3C0[];
+extern u8 D_8003C608[];
+extern u8 D_8003C850[];
+extern u8 D_8003CA98[];
+extern u8 D_8003CCE0[];
+extern u8 D_8003CF28[];
+extern u8 D_8003D170[];
+extern u8 D_8003D3B8[];
+extern u8 D_8003D600[];
+extern u8 D_8003D848[];
+
+extern s32 D_8004A75C;
+
+/*
+// TODO: Doable, it compiles
+void func_8002B390(s32 arg0) {
+    f32 temp_f0;
+    f32 temp_f0_2;
+    f32 temp_f2;
+    f32 temp_f4_2;
+    s32 temp_f4;
+    s32 temp_t7;
+    s32 temp_v0;
+    s32 temp_v0_2;
+    s32 temp_v0_3;
+    s32 var_s0;
+    s32 var_s4;
+    u8 temp_t2;
+    u8 temp_v1;
+    u8 var_v0;
+    ArcadeStruct1 *temp_a1;
+    ArcadeStruct1 *temp_v1_2;
+
+    temp_a1 = &D_8004BCD0[arg0];
+    temp_v1 = temp_a1->unk19;
+    temp_t7 = temp_a1->unk1A & 2;
+    temp_f0 = temp_a1->unk10;
+    temp_f4 = temp_f0;
+    temp_a1->unk1A = (temp_t7 / 2) | temp_t7;
+    temp_a1->unk1B = 0;
+    if (temp_v1 == 2) {
+        if (D_8004C710 != 0) {
+            temp_v0 = temp_f4 & 3;
+            if (D_8004C710 & 8) {
+                temp_v0_2 = temp_f4 & 3;
+                switch (temp_v0_2) {
+                    case 0:
+                    case 2:
+                        temp_a1->unk14 = &D_8003C178;
+                        return;
+                    case 1:
+                        temp_a1->unk14 = &D_8003C608;
+                        return;
+                    case 3:
+                        temp_a1->unk14 = &D_8003CA98;
+                        return;
+                }
+            } else {
+                switch (temp_v0) {
+                    case 0:
+                    case 2:
+                        temp_a1->unk14 = &D_8003C3C0;
+                        return;
+                    case 1:
+                        temp_a1->unk14 = &D_8003C850;
+                        return;
+                    case 3:
+                        temp_a1->unk14 = &D_8003CCE0;
+                        return;
+                }
+            }
+        } else {
+            temp_v0_3 = temp_f4 & 3;
+            switch (temp_v0_3) {
+                case 0:
+                case 2:
+                    temp_a1->unk14 = &D_8003B180;
+                    return;
+                case 1:
+                    temp_a1->unk14 = &D_8003B3C8;
+                    return;
+                case 3:
+                    temp_a1->unk14 = &D_8003B610;
+                    return;
+            }
+        }
+    } else {
+        if (temp_v1 == 3) {
+            temp_a1->unk14 = &D_8003CF28;
+            return;
+        }
+        if (temp_v1 == 5) {
+            temp_f2 = temp_a1->y_position;
+            if (((D_8004C6E8 - temp_f2) < 1.0f) || (temp_f0_2 = temp_f2 - D_8004C6E4, (temp_f0_2 < 1.0f))) {
+                temp_a1->unk14 = &D_8003BF30;
+            } else if (temp_f0_2 < 6.0f) {
+                temp_a1->unk14 = &D_8003B858;
+            } else if (temp_f0_2 < 10.0f) {
+                temp_a1->unk14 = &D_8003BCE8;
+            } else if (temp_f0_2 < 14.0f) {
+                temp_a1->unk14 = &D_8003BAA0;
+            } else {
+                temp_a1->unk14 = &D_8003B858;
+            }
+            temp_a1->unk1A = (u8)(temp_a1->unk10 / 4.5) & 1;
+            return;
+        }
+        if (temp_v1 == 8) {
+            if (temp_f0 > 38.0f) {
+                if (arcade_lives_internal == 0) {
+                    if (temp_f0 > 48.0f) {
+                        if (D_8004A75C < arcade_current_score) {
+                            func_80024B04();
+                            return;
+                        }
+                        if (D_8004A740 != 0) {
+                            func_80024C34();
+                            return;
+                        }
+                        func_80024D90();
+                        return;
+                    }
+                    var_s4 = 0x6C;
+                    if (D_8004A764 == 0) {
+                        D_8004A764 = 1;
+                        do {
+                            var_s0 = 0xA6;
+loop_53:
+                            temp_v1_2 = &D_8004BCD0[func_800247F0()];
+                            temp_v1_2->x_position = D_8004A6B8.x_position;
+                            temp_v1_2->y_position = D_8004A6B8.y_position;
+                            temp_v1_2->y_velocity = D_8004A6B8.y_velocity;
+                            temp_v1_2->x_velocity = D_8004A6B8.x_velocity;
+                            temp_f4_2 = var_s0;
+                            temp_v1_2->unk10 = D_8004A6B8.unk10;
+                            temp_v1_2->unk14 = D_8004A6B8.unk14;
+                            var_s0 += 0x10;
+                            temp_v1_2->x_position = var_s4;
+                            temp_v1_2->y_position = temp_f4_2;
+                            temp_v1_2->unk1C = D_8004A6B8.unk1C;
+                            temp_v1_2->unk18 = D_8004A6B8.unk18;
+                            if (var_s0 != 0xC6) {
+                                goto loop_53;
+                            }
+                            var_s4 += 0x10;
+                        } while (var_s4 != 0xCC);
+                    }
+                } else {
+                    arcade_lives_internal -= 1;
+                    func_800257D8();
+                }
+            } else {
+                if (temp_f0 > 20.0f) {
+                    temp_a1->unk14 = &D_8003D848;
+                    return;
+                }
+                if (temp_f0 > 8.0f) {
+                    arcade_game_state = 2;
+                    if (temp_f4 & 1) {
+                        temp_a1->unk14 = &D_8003D3B8;
+                    } else {
+                        temp_a1->unk14 = &D_8003D600;
+                    }
+                    temp_t2 = (u8)temp_a1->unk10 & 3;
+                    var_v0 = temp_t2;
+                    if (temp_t2 == 2) {
+                        temp_a1->unk1A = temp_a1->unk1A ^ 1;
+                        var_v0 = (u8)temp_a1->unk10 & 3;
+                    }
+                    if (var_v0 == 1) {
+                        temp_a1->unk1B = temp_a1->unk1B == 0;
+                    }
+                }
+            }
+        } else {
+            temp_a1->unk14 = &D_8003D170;
+        }
+    }
+}
+*/
 
 #ifndef NONMATCHING
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002B89C.s")

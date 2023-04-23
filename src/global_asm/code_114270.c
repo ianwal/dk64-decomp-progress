@@ -10,7 +10,32 @@ extern s8 D_80750754;
 extern s8 D_80750AB8;
 extern u8 D_80750AC0;
 
-extern u16 *D_807550E0;
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct80755264;
+
+extern Struct80755264 D_80755264[];
+extern f64 D_8075E5B0;
+extern u8 D_8077058C;
+extern s32 D_807FD9F0[];
+extern u8 D_807FDA1C;
+void func_80710CA0(void); // TODO: Datatypes
+
+void func_8061134C(s32);
+
+typedef struct {
+    u16 unk0;
+    s16 unk2;
+    s32 unk4;
+} Struct807122B4;
+
+extern Struct807122B4 *D_807550E0;
 extern s32 D_807552EC;
 extern u16 D_80755308; // buttons_enabled
 extern u8 D_8075530C; // joystick_x_bits_enabled
@@ -44,7 +69,7 @@ void func_8060AC34(GlobalASMStruct12*);
 void func_8070F570(void) {
     s16 i;
 
-    *D_807550E0 = 0;
+    D_807550E0->unk0 = 0;
     D_807FDA1C = 6;
     for (i = 0; i < 0x80; i++) {
         D_807FDA30[i] = i;
@@ -94,7 +119,62 @@ void func_8070F570(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80711F90.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807122B4.s")
+extern f64 D_8075E5A8;
+extern s16 D_807FDA1E;
+extern u8 D_807FDA1B;
+
+void func_8070F5CC(s32 arg0, s16 arg1, f32 arg2, s16 arg3, s16 arg4, u8 arg5);
+
+/*
+// TODO: Close
+void func_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) {
+    f32 temp_f22;
+    f64 temp_f26;
+    s32 i;
+    s32 var_s4;
+
+    D_807FDA1E = func_80612D10(character_change_array->unk2C4) * arg1;
+    if (arg0 < 1.0) {
+        if ((((rand() >> 0xF) % 32767) % 100) < (arg0 * 100.0f)) {
+            var_s4 = 1;
+        } else {
+            var_s4 = 0;
+        }
+    } else {
+        var_s4 = arg0;
+    }
+    D_807FDA1B = 0xFF;
+    temp_f26 = D_8075E5A8;
+    for (i = 0; i < var_s4; i++) {
+        temp_f22 = ((rand() >> 0xF) % 0x7FFF) % 320;
+        func_8070F5CC(2, arg3, (((((rand() >> 0xF) % 0x7FFF) % 125) / 800.0) + temp_f26) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
+    }
+    if (D_807550E0->unk0 != 0) {
+        func_8068C350(&func_80710CA0, NULL, 1);
+    }
+}
+*/
+
+s32 func_807122B4(void) {
+    s16 i;
+
+    if (D_807550E0->unk0 != 0) {
+        D_8077058C = D_8077058C * D_8075E5B0;
+        func_8068C350(&func_80710CA0, NULL, 1);
+        return 0;
+    }
+    if (D_807FDA1C != 6) {
+        D_8077058C = 0;
+        func_8061134C(D_807550E0->unk4);
+        for (i = 0; i < D_80755264[D_807FDA1C].unk0; i++) {
+            func_8066B434(D_807FD9F0[i], 0x34A, 0x64);
+        }
+        D_807FDA1C = 6;
+        D_807FDA28 = 0;
+        return 1;
+    }
+    // BUG: Missing return?
+}
 
 void func_80712490(Maps newMap, s32 newExit, u8 newGameMode) {
     func_805FF378(newMap, newExit);
@@ -457,8 +537,73 @@ s32 func_80713EA8(s32 arg0) {
     return arg0;
 }
 
-// GAME_MODE_END_SEQUENCE_DK_THEATRE, structs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713EB0.s")
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+} Struct80713EB0;
+
+extern s16 D_807FC828;
+extern s16 D_807FC82A;
+extern s16 D_807FC82C;
+
+/*
+// TODO: Very close
+void func_80713EB0(enum map_e arg0, s32 arg1, s32 arg2) {
+    s32 temp_v1;
+    Struct80713EB0 *t;
+
+    if (arg0 >= 0) {
+        if (game_mode_copy == 0xE) {
+            if (arg2 == 1) {
+                if (isFlagSet(0x2A, FLAG_TYPE_GLOBAL) == FALSE) {
+                    arg0 = -1;
+                }
+            }
+            if (arg2 == 2) {
+                if (isFlagSet(0x2B, FLAG_TYPE_GLOBAL) == FALSE) {
+                    arg0 = -1;
+                }
+            }
+        } else {
+            func_806ABE3C();
+            // TODO: Issue is here
+            t = &D_807FC828;
+            temp_v1 = D_807FC828 + D_807FC82A + D_807FC82C + t->unk0 + t->unk2 + t->unk4 + t->unk6;
+            if (arg2 == 1) {
+                if (temp_v1 < 0x118) {
+                    arg0 = -1;
+                } else {
+                    setFlag(0x2A, TRUE, FLAG_TYPE_GLOBAL);
+                }
+            }
+            if (arg2 == 2) {
+                if (temp_v1 < 0x119) {
+                    arg0 = -1;
+                } else {
+                    setFlag(0x2B, TRUE, FLAG_TYPE_GLOBAL);
+                }
+            }
+        }
+        if (arg0 >= 0) {
+            func_80712524(arg0, arg1);
+            return;
+        }
+    }
+    if (game_mode_copy == 0xE) {
+        setIntroStoryPlaying(0);
+        func_80712490(MAP_MAIN_MENU, 0, GAME_MODE_MAIN_MENU);
+    } else {
+        func_807124B8(MAP_NINTENDO_LOGO, 0, 1);
+    }
+}
+*/
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80714060.s")

@@ -566,6 +566,7 @@ void func_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5,
 }
 */
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806ABA6C.s")
 
 // Displaylist stuff
@@ -573,7 +574,65 @@ void func_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5,
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806ABC94.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806ABE3C.s")
+extern s16 D_80744720[];
+extern s8 D_80750530[];
+extern s16 D_807505B0[];
+extern s16 D_807505B8[];
+extern s16 D_807FC828[];
+extern s16 D_807FC82A;
+extern s16 D_807FC82C;
+extern s16 D_807FC82E;
+extern s16 D_807FC830;
+extern s16 D_807FC832;
+extern s16 D_807FC834;
+extern s16 D_807FC836;
+extern s16 D_807FC838;
+
+void func_806ABE3C(void) {
+    CharacterProgress *var_a1;
+    s32 var_s0;
+    s32 i;
+    s32 j;
+
+    for (i = 0; i < 7; i++) {
+        D_807FC828[i] = 0;
+    }
+    var_s0 = 0;
+    for (i = 0; i < 5; i++) {
+        for (j = 0; j < 14; j++) {
+            var_s0 += D_807FC950[0].character_progress[i].golden_bananas[j];
+        }
+    }
+    D_807FC828[0] = var_s0;
+    var_s0 = 0;
+    for (i = 0; i < 8; i++) {
+        if (isFlagSet(D_80744710[i], FLAG_TYPE_PERMANENT) != 0) {
+            var_s0++;
+        }
+    }
+    D_807FC82C = var_s0;
+    D_807FC832 = func_80731AA8(0x24D, 20, FLAG_TYPE_PERMANENT);
+    D_807FC82E = func_80731AA8(0x225, 40, FLAG_TYPE_PERMANENT);
+
+    // TODO: Get rid of this empty if statement, I don't like doing this...
+    if (var_s0);
+
+    var_s0 = 0;
+    for (i = 0; i < 10; i++) {
+        if ((D_807505B8[i] >= 0) && (isFlagSet(D_807505B8[i], FLAG_TYPE_PERMANENT) != FALSE)) {
+            var_s0++;
+        }
+    }
+    D_807FC82A = var_s0;
+    D_807FC834 = isFlagSet(0x84, FLAG_TYPE_PERMANENT);
+    D_807FC830 = isFlagSet(0x17B, FLAG_TYPE_PERMANENT);
+    D_807FC836 = func_80731AA8(0x1FD, 40, FLAG_TYPE_PERMANENT);
+    D_80750530[0] = 1;
+    for (i = 1; i < 5; i++) {
+        D_80750530[i] = isFlagSet(D_807505B0[i - 1], FLAG_TYPE_PERMANENT);
+    }
+    D_807FC838 = 1;
+}
 
 void func_806AC048(s32 arg0, s32 arg1) {
     func_80703374(arg0, 0, 0, 0, 0x46);

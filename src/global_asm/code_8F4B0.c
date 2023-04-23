@@ -26,11 +26,13 @@ void func_8068A830(void) {
     func_80727958();
 }
 
+// Hmm, negative struct offsets
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068A858.s")
 
 // Jumptable, really interesting though, flag checks/sets and story skip
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068ABE0.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068AD7C.s")
 
 void func_8068B80C(void) {
@@ -105,12 +107,15 @@ void func_8068B8FC(void) {
     temp_v0->unk0 = 0xFF;
 }
 
+// TODO: Needs proper definition for D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068B930.s")
 
+// TODO: Needs proper definition for D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068B9B4.s")
 
 extern u8 D_807FBDC4;
 
+// TODO: Needs proper definition for D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068BA2C.s")
 
 // Jumptable
@@ -208,23 +213,32 @@ void func_8068C350(s32 arg0, Actor *arg1, u8 arg2) {
     }
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068C3A0.s")
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068C5A8.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068D264.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068D8C8.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068D9DC.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068DAF4.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068DBA4.s")
 
+// Displaylist stuff, huge
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068DC54.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068E474.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068E7B4.s")

@@ -20,7 +20,35 @@ void func_80631F58(s32, void *, void **);
 s16 func_806531B8(f32, f32, f32, s16);
 void func_8066B424(void);
 u16 func_80688C84(u16);
-void func_80689250(s16, f32, f32, f32, s32, f32, Struct807500B4*, s32, s32, s32);
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct80689250;
+
+ActorSpawner *func_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, void *arg6, u8 arg7, s32 arg8, s16 arg9);
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+} GlobalASMStruct_8074E8B0;
+
+extern f64 D_80759C80;
+extern GlobalASMStruct_8074E8B0 D_8074E8B0[];
+
 void func_80689710(ActorSpawner *arg0, u8 arg1);
 f32 func_80689DD4(f32, f32, f32);
 u8 func_80689F80(ActorSpawner*);
@@ -213,26 +241,74 @@ void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80689250.s")
 
+/*
+// TODO: Close
+ActorSpawner *func_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, void *arg6, u8 arg7, s32 arg8, s16 arg9) {
+    ActorSpawner *sp2C;
+    ActorSpawner *temp_v0;
+    ActorSpawner *var_v1;
+    f32 temp_f0;
+    f32 temp_f16;
+    s32 var_a1;
+    s32 var_a1_2;
+    s32 var_v0;
+    Struct80689250 *var_a0;
+
+    var_a1 = 0;
+    var_v0 = FALSE;
+
+    while ((var_v0 == FALSE) && (var_a1 < 0x80)) {
+        if ((arg0 + 0x10) == D_8074E8B0[var_a1].unk0) {
+            var_v0 = TRUE;
+        } else {
+            var_a1++;
+        }
+    }
+    temp_v0 = malloc(0x6C);
+    temp_v0->actor_type = arg0;
+    temp_v0->z_position = arg3;
+    temp_v0->unk18 = arg3;
+    temp_v0->x_position = arg1;
+    temp_v0->unk10 = arg1;
+    temp_v0->y_position = arg2;
+    temp_v0->unk14 = arg2;
+    temp_v0->id = arg9;
+    temp_v0->y_rotation = arg4;
+    temp_v0->tied_actor = NULL;
+    temp_v0->previous_spawner = NULL;
+    temp_v0->unk48 = 0;
+    temp_v0->unk20 = arg5;
+    temp_v0->unk5C = D_8074E8B0[var_a1].unkC;
+    temp_v0->drawing_code = D_8074E8B0[var_a1].unk10;
+    temp_v0->unk58 = D_8074E8B0[var_a1].unk2;
+    sp2C = temp_v0;
+    var_a1_2 = 0;
+    sp2C->unk4A = func_806531B8(arg1, arg2, arg3, 0);
+    var_v1 = sp2C;
+    sp2C->unk4C = arg7;
+    sp2C->unk50 = arg8;
+    temp_f0 = D_8074E8B0[var_a1].unk8;
+    sp2C->unk54 = temp_f0 * temp_f0;
+    var_a0 = arg6;
+    do {
+        var_a1_2 += 4;
+        var_v1++;
+        var_v1->unk14 = var_a0->unk0;
+        var_v1->unk18 = var_a0->unk4;
+        var_v1->y_rotation = var_a0->unk8;
+        var_v1->unk20 = var_a0->unkC;
+        var_a0++;
+    } while (var_a1_2 != 8);
+    sp2C->next_spawner = actor_spawner_pointer;
+    if (actor_spawner_pointer != NULL) {
+        actor_spawner_pointer->previous_spawner = sp2C;
+    }
+    actor_spawner_pointer = sp2C;
+    return sp2C;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80689418.s")
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-} GlobalASMStruct_8074E8B0;
-
-extern f64 D_80759C80;
-extern GlobalASMStruct_8074E8B0 D_8074E8B0[];
 
 void func_8068A1B8(void);
 void func_80613794(Actor*, u8);

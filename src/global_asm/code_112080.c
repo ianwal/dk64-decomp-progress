@@ -11,12 +11,35 @@ typedef struct Temp8070D6D8 {
 } Temp8070D6D8;
 
 // TODO: What the
-void func_8070D380(u32 arg0, Temp8070D6D8 *arg1, u8 **arg2) {
-    memcpy(arg1, *arg2, arg0);
-    *arg2 += arg0;
+void func_8070D380(u32 size, Temp8070D6D8 *arg1, u8 **arg2) {
+    memcpy(arg1, *arg2, size);
+    *arg2 += size;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D3CC.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+} Struct8070D3CC_arg0;
+
+typedef struct {
+    s32 unk0;
+} Struct8070D3CC_arg1;
+
+void func_8070D3CC(Struct8070D3CC_arg0 *arg0, Struct8070D3CC_arg1 *arg1) {
+    s32 i;
+    Struct8070D3CC_arg0 *var_s0;
+
+    func_8070D380(1, arg0, arg1);
+    arg0->unk4 = malloc(arg0->unk0 * sizeof(Struct8070D3CC_arg0));
+    var_s0 = arg0->unk4;
+    for (i = 0; i < arg0->unk0; i++) {
+        func_8070D380(sizeof(Struct8070D3CC_arg0), var_s0, arg1);
+        var_s0++;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D464.s")
 
@@ -28,7 +51,7 @@ Temp8070D6D8 *func_8070D6D8(void *arg0) {
     Temp8070D6D8 *temp_s0;
     s32 size;
 
-    temp_s0 = malloc(0x10);
+    temp_s0 = malloc(sizeof(Temp8070D6D8));
     func_8070D380(1, temp_s0, &arg0);
     func_8070D654(temp_s0, &arg0);
     func_8070D380(2, &temp_s0->unk8, &arg0);
@@ -93,43 +116,40 @@ void func_8070D8C0(Actor *arg0, u16 arg1, u8 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D928.s")
+typedef struct Struct807550C0 Struct807550C0;
 
-/*
-extern u16 *D_807550C0;
+struct Struct807550C0 {
+    u16 unk0; // Used
+    u8 unk2; // Used
+    u8 unk3;
+    s32 unk4;
+    u8 unk8; // Used
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    Struct807550C0 *unkC; // Used
+};
 
-u16 *func_8070D928(s32 arg0) {
-    s32 temp_t6;
-    u16 *var_v1;
+extern Struct807550C0 *D_807550C0;
+
+Struct807550C0 *func_8070D928(u16 arg0) {
+    Struct807550C0 *var_v1;
 
     var_v1 = D_807550C0;
-    temp_t6 = arg0 & 0xFFFF;
-    if ((var_v1 != NULL) && (temp_t6 != *var_v1)) {
-loop_2:
+    while ((var_v1 != NULL) && (var_v1->unk0 != arg0)) {
         var_v1 = var_v1->unkC;
-        if (var_v1 != NULL) {
-            if (temp_t6 != *var_v1) {
-                goto loop_2;
-            }
-        }
     }
     return var_v1;
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D970.s")
+void func_8070D970(u16 arg0) {
+    Struct807550C0 *temp_v0;
 
-/*
-// TODO: Which struct is this?
-void func_8070D970(s32 arg0) {
-    void *temp_v0;
-
-    temp_v0 = func_8070D928(arg0 & 0xFFFF);
+    temp_v0 = func_8070D928(arg0);
     if (temp_v0 != 0) {
         temp_v0->unk2--;
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D9AC.s")
 
@@ -192,28 +212,83 @@ void func_8070DB7C(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DB9C.s")
 
+typedef struct Struct8070DB9C Struct8070DB9C;
+
+struct Struct8070DB9C {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    Struct8070DB9C *unk8;
+};
+
+/*
+// TODO: Very close
+void func_8070DB9C(Struct8070DB9C *arg0) {
+    s32 var_s0;
+    void *temp_a1;
+
+    temp_a1 = arg0->unk4;
+    if (temp_a1 != NULL) {
+        func_8061134C(temp_a1);
+    }
+    if (arg0->unk0 & 1) {
+        for (var_s0 = 0; var_s0 < 1; var_s0++) {
+            // TODO: Issue here
+            func_8070DB7C(&((u8*)arg0->unk8)[var_s0]);
+        }
+        func_8061134C(arg0->unk8);
+        return;
+    }
+    if (arg0->unk0 & 2) {
+        func_8061134C(arg0->unk8->unk4);
+        func_8061134C(arg0->unk8);
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DC40.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DCA4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DD18.s")
-
-/*
-// TODO: Which struct is this?
-void func_8070DD18(void *arg0) {
+void func_8070DD18(Struct807550C0 *arg0) {
     func_8070DCA4(arg0->unk4);
     func_8061134C(arg0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DD44.s")
+
+/*
+// TODO: Close
+void func_8070DD44(void) {
+    Struct807550C0 **var_s0;
+    Struct807550C0 *var_v0;
+
+    var_s0 = &D_807550C0;
+    var_v0 = D_807550C0;
+    while (var_v0 != NULL) {
+        if (var_v0->unk8 == 1) {
+            if (var_v0->unk2 != 0) {
+                var_v0->unk2--;
+                var_v0 = *var_s0;
+            }
+        }
+        if (var_v0->unk2 == 0) {
+            *var_s0 = var_v0->unkC;
+            func_8070DD18(var_v0);
+        } else {
+            var_s0 += 3;
+        }
+        var_v0 = *var_s0;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DDDC.s")
 
 /*
 s32 func_8070D6D8(void *);
-void *func_8070D928(u16);
-extern void *D_807550C0;
 
 // TODO: Nice little puzzle to solve...
 s32 func_8070DDDC(u16 arg0, s32 arg1) {
@@ -232,7 +307,7 @@ s32 func_8070DDDC(u16 arg0, s32 arg1) {
     temp_v0 = func_8070D928(arg0);
     phi_v0_2 = temp_v0;
     phi_a0 = temp_v0;
-    if (temp_v0 == 0) {
+    if (temp_v0 == NULL) {
         // TEXT!!!
         temp_a0 = getPointerTableFile(0xC, arg0, 1, 1);
         phi_v1 = &D_807550C0;
@@ -257,9 +332,8 @@ s32 func_8070DDDC(u16 arg0, s32 arg1) {
         phi_v0_2 = temp_v0_3;
         phi_a0 = temp_v0_3;
     }
-    temp_v1_2 = phi_v0_2->unk8;
-    if (temp_v1_2 != 0) {
-        if (temp_v1_2 == 1) {
+    if (phi_v0_2->unk8 != 0) {
+        if (phi_v0_2->unk8 == 1) {
             phi_v0_2->unk2 = 2;
         }
     } else {
@@ -281,12 +355,11 @@ s32 func_8070DDDC(u16 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E808.s")
 
-extern s32 D_807550C0; // TODO: Some kind of struct pointer, possibly Temp8070D6D8
 extern s32 D_807550C4;
 extern u8 D_807550CC;
 
 void func_8070E8C8(void) {
-    D_807550C0 = 0;
+    D_807550C0 = NULL;
     D_807550C4 = 0;
 }
 
