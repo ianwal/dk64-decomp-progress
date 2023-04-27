@@ -211,7 +211,6 @@ void func_806DF390(Actor*, PlayerAdditionalActorData*, u8);
 void func_806DF3D0(Actor*, PlayerAdditionalActorData*, u8);
 f32 func_806E03C8(f32, f32);
 s32 func_806E9D1C(s16 arg0, u8 arg1, u8 arg2);
-void func_80604CBC(Actor *, s32, s32, s32, s32, s32, f32, s32);
 void func_806EA568(void);
 s16 func_8062773C(s32);
 Actor *func_807270C0(s8, s32); // getSpawnerTiedActor()
@@ -608,17 +607,13 @@ void func_806CBE90(void) {
             func_80614E78(current_actor_pointer, 0x5E);
             current_actor_pointer->unk6A |= 0x20;
             func_80614D90(current_actor_pointer);
-            return;
-        }
-        if ((current_actor_pointer->unkE0 != 0.0f) && (extra_player_info_pointer->unkC2 >= 0x15) && (current_actor_pointer->control_state != 0x17)) {
+        } else if ((current_actor_pointer->unkE0 != 0.0f) && (extra_player_info_pointer->unkC2 >= 0x15) && (current_actor_pointer->control_state != 0x17)) {
             if (func_806CC14C(current_actor_pointer->unkD8, current_actor_pointer->y_rotation) < 0x200) {
                 if (D_80750B54[D_807FBB48->control_state].unk0 & 0x200) {
                     func_806EAB44(current_actor_pointer, 0);
                 }
                 func_806EB0C0(0x21, NULL, cc_player_index);
-                return;
-            }
-            if ((func_806CC14C(current_actor_pointer->unkD8, current_actor_pointer->unkEE) < 0x400) || (current_actor_pointer->unkB8 < 15.0f)) {
+            } else if ((func_806CC14C(current_actor_pointer->unkD8, current_actor_pointer->unkEE) < 0x400) || (current_actor_pointer->unkB8 < 15.0f)) {
                 if (D_80750B54[D_807FBB48->control_state].unk0 & 0x200) {
                     func_806EAB44(current_actor_pointer, 0);
                 }

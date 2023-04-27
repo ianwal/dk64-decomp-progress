@@ -4,7 +4,6 @@
 // Quite big but pretty doable, needs some struct/array definitions
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_800330D0.s")
 
-void func_80614D90(Actor*);
 void func_8061EF4C(s32, s32, s32, f32, f32, f32, f32, f32);
 
 extern f64 D_80036C58;

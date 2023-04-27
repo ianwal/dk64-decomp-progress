@@ -16,7 +16,6 @@ s32 func_80726164(Actor*, s16, s16, s16, void*);
 void func_806B3E7C();
 void func_806653C0(Actor*, f32, f32);
 void func_80665564(Actor*, f32);
-void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);
 void func_807248B0(Actor*, f32);
 
 // Jumptable
@@ -612,7 +611,6 @@ void func_806B52DC(void) {
 
 extern f64 D_8075B718;
 
-void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32);
 s16 func_806119A0(void);
 
 typedef struct {
@@ -624,8 +622,6 @@ typedef struct {
     s16 unk12;
     s32 unk14;
 } Actor178_806B54BC;
-
-f32 func_806119FC(void);
 
 void func_806B54BC(void) {
     Actor178_806B54BC *temp_s1;

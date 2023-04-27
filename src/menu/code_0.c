@@ -1,9 +1,46 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    s32 unk0[6]
+} Struct80032F48;
 
-// Weird array/struct stuff going on here
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_80024000.s")
+extern Struct80032F48 D_80032F48[];
+extern s32 D_800330A0[];
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u16 unk4;
+    u8 unk6;
+    u8 unk7;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s16 unk18;
+    u8 unk1A;
+    u8 unk1B;
+} MenuStruct80024000;
+
+void func_80024000(MenuStruct80024000 *arg0) {
+    s32 temp_v1;
+
+    temp_v1 = D_80032F48[getLevelIndex(D_8076A0AB, 0)].unk0[arg0->unk1];
+    if (temp_v1 == 0) {
+        func_8063DA40(D_800330A0[arg0->unk1A], 9);
+        arg0->unk0 = 4;
+        arg0->unk1 = 0;
+        return;
+    }
+    if (temp_v1 == 4) {
+        arg0->unk6 = 1;
+    }
+    playCutscene(NULL, temp_v1, 1);
+    arg0->unk1++;
+}
 
 typedef struct menu_struct_0 {
     u8  unk0;

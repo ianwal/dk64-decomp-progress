@@ -142,11 +142,11 @@ void func_80025FB4(MenuStruct1 *arg0, s32 arg1, ? arg2) {
 
     var_s1 = 0;
     var_s0 = 6;
-    if (isFlagSet(0x1CB, 0) == 0) {
+    if (isFlagSet(0x1CB, FLAG_TYPE_PERMANENT) == 0) {
 loop_1:
         var_s0 -= 1;
         if (var_s0 >= 0) {
-            if (isFlagSet(var_s0 + 0x1C5, 0) == 0) {
+            if (isFlagSet(var_s0 + 0x1C5, FLAG_TYPE_PERMANENT) == 0) {
                 goto loop_1;
             }
         }
@@ -329,7 +329,7 @@ void func_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                     if (isFlagSet(0x61, 2) != 0) {
                         setFlag(0x61, 0, 2);
                         func_80026290(arg0, &sp3C);
-                        if (isFlagSet(0x17B, 0) != 0) {
+                        if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT) != 0) {
                             var_v1 = 0x20;
                         } else if (isFlagSet(0x62, 2) != 0) {
                             setFlag(0x62, 0, 2);
@@ -341,7 +341,7 @@ void func_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                         sp28 = func_80731AA8(0x225, 0x28, 0);
                         if (sp28 >= 0xF) {
                             func_80026290(arg0, &sp3C);
-                            if (isFlagSet(0x17B, 0) != 0) {
+                            if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT) != 0) {
                                 var_v1 = 0x20;
                             } else {
                                 var_v1 = 2;
@@ -478,10 +478,10 @@ s32 func_800275EC(s32 arg0) {
 /*
 // TODO: Pretty close, some minor issues with stack, args, regalloc?
 void func_80027738(void) {
-    s32 var1;
+    PlayerProgress *var1;
     func_80729B00();
     if (current_map == 1) {
-        s32 var1 = D_807FC950[current_character_index];
+        var1 = &D_807FC950[current_character_index[0]];
         if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
             func_800266F0(current_actor_pointer->unk178, var1, 0x176);
         }

@@ -898,6 +898,39 @@ s32 func_800322D0(s8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80032304.s")
 
+extern f64 D_80033ED8;
+extern f64 D_80033EE0;
+extern s16 D_807FC828[];
+
+/*
+// TODO: Typecast nonsense
+// Calculating game percentage?
+s32 func_80032304(void) {
+    f32 var_f0;
+
+    func_806ABE3C();
+    var_f0 = 0.0f;
+    var_f0 += (D_807FC828[5] * D_80033ED8);
+    var_f0 += (D_807FC828[2] * 0.25);
+    var_f0 += (D_807FC828[3] * D_80033ED8);
+    var_f0 += (D_807FC828[1] * 0.5);
+    var_f0 += (D_807FC828[4] * 0.5);
+    var_f0 += (D_807FC828[6] * 0.5);
+    var_f0 += (D_807FC828[0] * D_80033EE0);
+    if (D_807FC828[0] == 201) {
+        var_f0 -= D_80033EE0;
+    }
+    if (var_f0 == 100.0) {
+        if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT) != 0) {
+            if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT) != 0) {
+                var_f0 += 1.0;
+            }
+        }
+    }
+    return var_f0;
+}
+*/
+
 s32 *label_string_pointer_array;
 
 void func_800324CC(void) {

@@ -37,8 +37,6 @@ void func_80027340(s32 arg0) {
 extern f32 D_8002A110;
 extern f32 D_8002A114;
 
-void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32);
-
 /*
 // TODO: Regalloc, everything else matches :(
 void func_80027DC0(void) {

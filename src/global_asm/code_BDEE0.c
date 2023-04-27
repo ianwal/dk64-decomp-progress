@@ -357,9 +357,6 @@ s32 func_806BB604(u8 arg0, s16 arg1, s16 arg2, s32 arg3) {
     return 0;
 }
 
-//need these forward declarations to match, not sure if type is right
-void func_80604CBC(Actor*,s32,s32,s32,s32,s32,f32,s32);
-
 void func_806BB81C() {
     func_80604CBC(current_actor_pointer, 0x11F, 0, 0, 0, 0xFF, 1.0f, 0);
     playSong(0x3B, 1.0f);

@@ -70,6 +70,88 @@ typedef struct global_asm_struct_18 {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_806886E0.s")
 
+/*
+extern f64 D_80759BB0;
+extern s16 D_8076A0AA;
+extern ? D_8076A160; // TODO: Define this struct array
+extern s32 D_807F6010;
+extern s32 D_807F6C28;
+
+void func_806886E0(s32 arg0, s32 arg1, u8 arg2) {
+    s32 sp5C;
+    s32 sp58;
+    s32 sp54;
+    u16 sp4E;
+    f64 temp_f20;
+    f64 var_f10;
+    f64 var_f18;
+    f64 var_f6;
+    s16 var_s1_2;
+    s32 temp_a0;
+    s32 temp_s2;
+    s32 temp_v0;
+    s32 var_s0;
+    s32 var_s0_2;
+    s32 var_s1;
+    u8 temp_t3;
+    u8 temp_t4;
+    u8 temp_t5;
+    void *temp_v0_2;
+    void *var_s0_3;
+
+    var_s0 = arg0;
+    temp_s2 = arg1 & 0xFF;
+    var_s1 = 0;
+    func_80688A6C();
+    temp_v0 = func_80600080(current_map);
+    sp54 = temp_v0;
+    if (temp_v0 == -1) {
+        switch (temp_s2) {
+            case 0:
+                D_807F6010 = var_s0;
+                sp4E = func_80631D8C(D_8076A0AB);
+                var_s1 = 1;
+                break;
+            case 1:
+                var_s0 = D_807F6010;
+                break;
+        }
+    } else {
+        D_807F6010 = var_s0;
+        var_s0 = *(&D_8076A178 + (temp_v0 * 0xC0));
+    }
+    func_80631F58(var_s0, &sp5C, &sp58);
+    if (arg2 != 0) {
+        var_s0_2 = 0;
+    } else {
+        var_s0_2 = func_806C7B34();
+    }
+    func_80632084(sp5C, var_s0_2, var_s1 & 0xFF, sp4E, getLevelIndex(D_8076A0AB, 1));
+    func_8063DBD8(D_8076A0AA);
+    func_80688FC0(sp58);
+    if (sp54 != -1) {
+        temp_v0_2 = (sp54 * 0xC0) + &D_8076A160;
+        temp_a0 = temp_v0_2->unk20;
+        if (temp_a0 != 0) {
+            func_8063BF34(temp_a0, temp_v0_2->unk1C);
+        }
+        var_s1_2 = 0;
+        if (D_807F6C28 > 0) {
+            temp_f20 = D_80759BB0;
+            var_s0_3 = (sp54 * 0xC0) + &D_8076A160;
+            do {
+                var_f6 = var_s0_3->unk24;
+                var_f18 = var_s0_3->unk25;
+                var_f10 = var_s0_3->unk26;
+                func_80659670(var_f6 / temp_f20, var_f18 / temp_f20, var_f10 / temp_f20, var_s1_2);
+                var_s1_2 += 1;
+                var_s0_3 += 3;
+            } while (var_s1_2 < D_807F6C28);
+        }
+    }
+}
+*/
+
 void func_80688940(void) {
     s32 actorIndex;
     s32 numActors;

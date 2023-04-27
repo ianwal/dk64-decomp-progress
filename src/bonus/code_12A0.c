@@ -22,13 +22,17 @@ Actor* func_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     return D_807FBB44;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_80025480.s")
+extern u8* D_8002D8B0[];
+
+u8 func_80025480(Actor **arg0, u8 arg1) {
+    return D_8002D8B0[arg1][arg0[arg1]->unk15F];
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800254B0.s")
 
 extern f32 D_8002DCB4;
 extern void *D_80717404;
-extern s32 D_8074E880[];
+extern void* D_8074E880[];
 
 /*
 void func_800254B0(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
@@ -51,10 +55,19 @@ void func_8002563C(s32 arg0) {
     current_actor_pointer->unk168 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800256C4.s")
+void func_800256C4(Actor **arg0, u8 arg1) {
+    u8 i;
 
+    for (i = 0; i < 4; i++) {
+        arg0[i]->control_state++;
+        arg0[i]->unkF0 = arg1;
+    }
+}
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_8002570C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800261B8.s")
 
 void func_800264E0(u8 arg0, u8 arg1) {

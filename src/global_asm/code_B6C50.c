@@ -1,15 +1,12 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B6C50/func_806B1F50.s")
 
 extern s32 D_8072030C;
 extern f64 D_8075B3C0;
 
 void func_80665564(Actor*, f32);
-void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32);
 void func_806319C4(Actor*, s32);
 
 /*
@@ -35,7 +32,7 @@ void func_806B1F50(void) {
         D_807FBB44->object_properties_bitfield |= 0x1000;
         func_807149B8(1);
         func_807149FC(-1);
-        func_807149A8(D_807FBB44->draw_distance * 0.75);
+        func_807149A8(D_807FBB44->draw_distance * 0.75); // Issue here
         func_80714C08(&D_8072030C, 0.28f, D_807FBB44, 1, 2);
         func_80614EBC(current_actor_pointer, 0x300);
         func_80604CBC(current_actor_pointer, 0x135, 0x64, 0, 0, 0x78, 1.0f, 0);

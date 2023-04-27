@@ -10,8 +10,6 @@
 extern f32 D_8075C398;
 extern f32 D_8075C39C;
 
-void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32);
-
 /*
 // TODO: Probably needs .data/.rodata defined
 void func_806C6884(s16 arg0, s16 arg1, u16 arg2) {

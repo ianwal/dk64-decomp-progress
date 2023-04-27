@@ -93,8 +93,6 @@ void func_806F1048(Actor *arg0) {
 
 extern s32 D_807FBB68;
 
-void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);
-
 void func_806F1250(Actor *arg0) {
     PlayerAdditionalActorData *PaaD = arg0->PaaD;
     if (arg0->unk58 == ACTOR_CHUNKY) {

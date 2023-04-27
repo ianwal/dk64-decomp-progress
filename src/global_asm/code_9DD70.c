@@ -154,7 +154,7 @@ void func_8069D0D8(void) {
 
 extern s16 D_80744490;
 
-// TODO: Put in PaaD union
+// TODO: Put in aaD union
 typedef struct {
     void* unk0;
     u16 unk4;

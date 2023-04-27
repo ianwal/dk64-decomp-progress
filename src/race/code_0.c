@@ -21,7 +21,6 @@ void func_8002D064();
 void func_8002D0FC();
 
 void func_805FF544();
-void func_80604CBC(Actor *, s32, s32, s32, s32, s32, f32, s32);
 
 typedef struct RaceStruct8 {
     u8 pad0[0x36];

@@ -92,9 +92,61 @@ void func_80651BC0(s16 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80651C2C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_8065214C.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    u8 unk18;
+    u8 unk19; // Used
+    u8 unk1A;
+    u8 unk1C;
+} Struct807F70B0;
+extern Struct807F70B0 *D_807F70B0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806521F8.s")
+// Note: Needs to be aligned in memory by maximum 0x2: {s32 unk0; s32 unk4; u8 unk8; u8 unk9;} doesn't match
+typedef struct {
+    u8 unk0[0xA];
+} Struct807F6C1C;
+
+extern Struct807F6C1C *D_807F6C1C;
+extern s32 D_807F6C20;
+extern s32 D_807F6C28;
+extern u8 *D_807F6C2C;
+
+extern s32 D_807F70AC;
+
+void func_8065214C(void) {
+    s32 i;
+    s32 j;
+
+    for (i = 0; i < D_807F6C28; i++) {
+        chunk_array_pointer[i].unk1 = 0;
+        chunk_array_pointer[i].unk2 = 1;
+        chunk_array_pointer[i].unk4 = 0;
+    }
+    for (j = 0; j < D_807F70AC; j++) {
+        D_807F70B0[j].unk19 = 0;
+    }
+}
+
+void func_806521F8(void) {
+    s32 i;
+
+    for (i = 0; i < D_807F6C28; i++) {
+        chunk_array_pointer[i].loaded = 0;
+        chunk_array_pointer[i].deload1 = 0;
+        chunk_array_pointer[i].deload2 = 0;
+        chunk_array_pointer[i].deload3 = 0;
+        chunk_array_pointer[i].deload4 = 0;
+    }
+    for (i = 0; i < D_807F6C20; i++) {
+        D_807F6C1C[i].unk0[8] = 0;
+        D_807F6C2C[i] = 0;
+    }
+}
 
 s32 func_806522CC(s16 arg0, s16 arg1, s16 arg2) {
     if (chunk_array_pointer[arg2].unk1 == 0) {
@@ -109,6 +161,7 @@ s32 func_806522CC(s16 arg0, s16 arg1, s16 arg2) {
     return FALSE;
 }
 
+// TODO: Unknown struct arg0, doable other than that
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80652374.s")
 
 void func_806524A0(s32 arg0, u8 arg1) {
@@ -297,6 +350,39 @@ s16 func_80652F9C(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80652FDC.s")
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+} Struct807F70B4;
+
+extern s32 D_807F70AC;
+extern Struct807F70B4 *D_807F70B4;
+
+/*
+// TODO: Fiddly, progress made
+void func_80652FDC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 *arg5) {
+    s32 i;
+    Struct807F70B4 *temp_v0_2;
+    s16 temp_v1;
+
+    for (i = 0; i < D_807F70AC; i++) {
+        if ((arg3 == D_807F70B0[i].unk0) && (arg4 == D_807F70B0[i].unk4)) {
+            temp_v1 = D_807F70B0[i].unk2;
+            temp_v0_2 = &D_807F70B4[temp_v1];
+            if ((temp_v0_2->unk0 <= arg0) && (arg0 <= temp_v0_2->unk6) && (temp_v0_2->unk2 <= arg1) && (arg1 <= temp_v0_2->unk8) && (temp_v0_2->unk4 <= arg2) && (arg2 <= temp_v0_2->unkA)) {
+                *arg5 = temp_v1;
+                func_80652FDC(arg0, arg1, arg2, arg3, temp_v1, arg5);
+            }
+        }
+    }
+}
+*/
+
+// TODO: Struct (or struct array?) on the stack?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806531B8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806533C4.s")
@@ -511,8 +597,56 @@ void func_80653B70(u8 arg0) {
     D_807F70AB = arg0;
 }
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80653B80.s")
+void func_8062A944(f32, f32, f32);
+void func_8062AC68(void *);
+void func_8062AD28(f32, f32, f32, void *, void *);
+void func_806521F8();
+s16 func_806531B8(f32 arg0, f32 arg1, f32 arg2, s16 arg3);
+void func_80654380(f32, f32, f32);
+void func_806547A8(f32, f32, f32);
+void func_80655410(f32, f32, f32);
+void func_80656F14(s16, s32, s16, s16, s32, s32, f32, f32, f32);
+void func_8065F678(f32, f32, f32, u8);
+void func_8066308C(f32, f32, f32);
+extern u8 D_807444FC;
+extern s32 D_807F5E20; // TODO: Datatype
+extern s32 D_807F5E68; // TODO: Datatype
+extern f32 D_807F5FB0;
+extern s32 D_807F6C80;
+extern u8 D_807F70AB;
+extern s16 D_807F7138;
+extern f32 D_807F5FB4;
+
+void func_80653B80(f32 arg0, f32 arg1, f32 arg2) {
+    character_change_array[cc_player_index].chunk = func_806531B8(arg0, arg1, arg2, character_change_array[cc_player_index].chunk);
+    if (D_807F70AB != 0) {
+        character_change_array[cc_player_index].chunk = character_change_array[cc_player_index].player_pointer->unk12C;
+    }
+    func_80663C60(&character_change_array[cc_player_index].far, character_change_array[cc_player_index].chunk);
+    D_807F7138 = character_change_array[cc_player_index].far;
+    func_8062A944(D_807F5FB4, D_807F5FB0, D_807F7138);
+    func_8062AC68(&character_change_array[cc_player_index].unk8[D_807444FC]);
+    func_8062AD28(arg0, arg1, arg2, &D_807F5E68, &D_807F5E20);
+    func_806521F8();
+    func_80653A70(character_change_array[cc_player_index].chunk);
+    func_806547A8(arg0, arg1, arg2);
+    D_807F6C80 = 0;
+    D_807F6C08 = 0;
+    func_80656F14(
+        character_change_array[cc_player_index].chunk,
+        0,
+        character_change_array[cc_player_index].unk270,
+        character_change_array[cc_player_index].unk272,
+        character_change_array[cc_player_index].unk274,
+        character_change_array[cc_player_index].unk276,
+        arg0,
+        arg1,
+        arg2);
+    func_80654380(arg0, arg1, arg2);
+    func_8065F678(arg0, arg1, arg2, cc_player_index);
+    func_8066308C(arg0, arg1, arg2);
+    func_80655410(arg0, arg1, arg2);
+}
 
 // Loops over a DL and replaces texture indices with RDRAM pointers for G_SETTIMG commands
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80653DF0.s")

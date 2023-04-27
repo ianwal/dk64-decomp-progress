@@ -32,7 +32,6 @@ extern f32 D_8075AA74;
 void func_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_80665564(Actor *arg0, f32 arg1);
 void func_806A6DB4(s32 arg0);
-void func_806086CC(f32 arg0, f32 arg1, f32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, f32 arg8, s32 arg9);
 void func_8065D254(Actor *actor, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
 void func_80686CF8(Actor *actor);
 void func_806319C4(Actor *arg0, s32 arg1);
@@ -414,8 +413,175 @@ void func_806A57C0(AAD_806A4DDC *arg0) {
     }
 }
 
-// TODO: Doable, good target
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A5868.s")
+
+extern f32 D_8075A980;
+extern f64 D_8075A988;
+extern f32 D_8075A990;
+extern u8 D_807503F0;
+int func_806A4284();
+
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    Actor *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    f32 unk14;
+    f32 unk18;
+    u8 unk1C;
+    u8 unk1D;
+    u8 unk1E;
+    u8 unk1F;
+    f32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    void* unk34;
+    s16 unk38;
+    s16 unk3A;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    u8 unk54;
+    u8 unk55;
+} AAD_806A5868;
+
+void func_806A5174(Actor*, void*, f32);
+void func_8070DA74(Actor*);
+void func_8070E808(Actor *arg0, Actor *arg1);
+void func_8070DA28(void *arg0);
+void func_806A4DDC(Actor *arg0);
+
+/*
+// TODO: Extremely close, one statement left to fix
+void func_806A5868(void) {
+    AAD_806A5868 *var_a3;
+    f32 sp18;
+    f32 var_f0;
+    s32 var_v0_2;
+    f32 temp;
+
+    var_a3 = current_actor_pointer->additional_actor_data;
+    sp18 = D_8075A980;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        sp18 = 1.0f;
+        var_a3->unk34 = malloc(0x280);
+        var_a3->unk55 = 0;
+    } else {
+        if (!(var_a3->unk55 & 1)) {
+            if ((current_actor_pointer->control_state != 4) && (current_actor_pointer->control_state != 5)) {
+                if (var_a3->unk0 > 15.0) {
+                    if (newly_pressed_input_copy & 0x4000) {
+                        var_a3->unk55 |= 1;
+                    }
+                    if (D_807ECD58.unk0 & 0x2000) {
+                        var_a3->unk55 |=  2;
+                    } else {
+                        var_a3->unk55 &= 0xFFFD;
+                    }
+                    if (!(var_a3->unk55 & 2) && (D_807ECD58.unk0 == 0x8000)) {
+                        var_a3->unk55 |= 4;
+                    } else {
+                        var_a3->unk55 &= 0xFFFB;
+                    }
+                    if (var_a3->unk55 & 1) {
+                        // func_8061CB08(0x280, current_actor_pointer, var_a3);
+                        func_8061CB08();
+                        current_actor_pointer->control_state = 5;
+                    }
+                }
+            }
+        }
+    }
+    var_a3->unk38 += 0x14;
+    var_a3->unk3A += 0x32;
+    switch (current_actor_pointer->control_state) {
+        case 0:
+            if (var_a3->unk0 < 0x1E) {
+                var_a3->unk0++;
+            } else {
+                current_actor_pointer->control_state = 1;
+                var_a3->unk1D = D_807503F0;
+                func_8070E808(current_actor_pointer, var_a3->unk4);
+                func_806A57C0(var_a3);
+            }
+            break;
+        case 2:
+            var_f0 = 2.0f;
+            if (var_a3->unk55 & 4) {
+                temp = 3.0f;
+                var_f0 = 2.0f * temp;
+            } else if (var_a3->unk55 & 2) {
+                temp = 0.5f;
+                var_f0 = 2.0f * temp;
+            }
+            if (!(var_f0 < var_a3->unk18)) {
+                var_f0 = var_a3->unk18;
+            }
+            var_a3->unk14 -= var_f0;
+            var_a3->unk18 -= var_f0;
+            if (var_a3->unk18 < D_8075A988) {
+                current_actor_pointer->control_state = 1;
+            }
+            break;
+        case 4:
+            if (var_a3->unk1D != 0) {
+                // Option 1
+                // if (var_a3->unk1D >= 0x34) {
+                //     var_v0_2 = 0x33;
+                // } else {
+                //     var_v0_2 = var_a3->unk1D;
+                // }
+                // var_a3->unk1D -= var_v0_2;
+
+                // Option 2
+                var_v0_2 = MIN(0x33, var_a3->unk1D);
+                var_a3->unk1D -= var_v0_2;
+
+                // Option 3
+                // var_v0_2 = (var_a3->unk1D >= 0x34) ? 0x33 : var_a3->unk1D;
+                // var_a3->unk1D -= var_v0_2;
+
+                // Option 4
+                // var_a3->unk1D -= MIN(0x33, var_a3->unk1D);
+
+                // Option 5
+                // if (var_a3->unk1D >= 0x34) {
+                //     var_a3->unk1D -= 0x33;
+                // } else {
+                //     var_a3->unk1D -= var_a3->unk1D;
+                // }
+            } else {
+                if (var_a3->unk0 != 0) {
+                    if (var_a3->unkC != 0) {
+                        func_8070DA28(var_a3);
+                    }
+                    var_a3->unk0--;
+                } else {
+                    current_actor_pointer->control_state = 5;
+                }
+            }
+            break;
+        case 5:
+            func_8070DA74(var_a3->unk4);
+            break;
+    }
+    if (current_actor_pointer->control_state != 5) {
+        var_a3->unk20 = var_a3->unk0 * D_8075A990;
+        func_806A5174(current_actor_pointer, var_a3, sp18);
+        if (var_a3->unk0 != 0) {
+            func_806A4DDC(current_actor_pointer);
+            func_8068C350(&func_806A4284, current_actor_pointer, 3);
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A5C60.s")
 
@@ -428,7 +594,7 @@ typedef struct {
 
 extern Struct80750400 D_80750400[];
 
-void func_806A5DF0(s16, f32, f32, f32, s32, s32, s32, s32);
+void func_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
 
 /*
 // TODO: Progrss made, kinda fiddly, last loop is sus
@@ -455,8 +621,8 @@ void func_806A5C60(Actor *arg0) {
                 playSong(D_80750400[i].unk4, 1.0f);
             }
             for (j = 0; j < D_80750400[i].unk5; j++) {
-                func_806A5DF0(D_80750400[i].unk2, arg0->x_position, arg0->y_position, arg0->z_position, var_s3, 1, -1, 0);
                 var_s3 += (0xFFF / D_80750400[i].unk5);
+                func_806A5DF0(D_80750400[i].unk2, arg0->x_position, arg0->y_position, arg0->z_position, var_s3, 1, -1, 0);
             }
         }
     }
@@ -468,32 +634,21 @@ void func_806A5C60(Actor *arg0) {
 extern f32 D_8075A9A0;
 extern s32 D_807FBB68;
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk1C;
-    s32 unk18;
-} Struct807500B4;
-
-void func_806891D8(s16 arg0, f32 arg1, f32 arg2, s32 arg3, s16 arg4, f32 arg5, s32 arg6, Struct807500B4 *arg7);
+void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6, f32 *arg7);
 
 /*
-// TODO: Kinda close, datatypes on params are sus
-void func_806A5DF0(s16 arg0, f32 arg1, f32 arg2, s32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7) {
-    Struct807500B4 sp2C;
+// TODO: Close, float regalloc
+void func_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7) {
     f32 var_f0;
+    f32 sp2C[8];
 
     var_f0 = D_8075A9A0;
     if (D_807FBB68 & 0x10) {
         var_f0 = 2.0f * D_8075A9A0;
     }
-    sp2C.unk0 = arg5;
-    sp2C.unk4 = arg4;
-    sp2C.unk8 = arg6;
+    sp2C[0] = arg5;
+    sp2C[1] = arg4;
+    sp2C[2] = arg6;
     func_806891D8(arg0, arg1, arg2, arg3, 0, var_f0, arg7, &sp2C);
 }
 */
@@ -696,8 +851,6 @@ void func_806A7518(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A7600.s")
-
 extern u8 D_807FBD70;
 extern s32 D_8076A068;
 extern s32 D_8071EB70;
@@ -706,9 +859,11 @@ s32 func_80723020(s32 arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8
 void func_8066EB40(Actor*, f32);
 void func_8066E8E4(void *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5);
 void func_8066E854(Actor*, f32, f32, f32, s32);
+void func_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
+void func_80723484(s32, Actor*);
 
 typedef struct {
-    s8 unk0;
+    u8 unk0;
     u8 unk1;
     s8 unk2;
     u8 unk3;
@@ -716,11 +871,8 @@ typedef struct {
     s16 unk6;
 } AAD_806A7600;
 
-/*
-// TODO: Regalloc :(
 void func_806A7600(s32 arg0) {
     AAD_806A7600 *sp34;
-    s32 temp_t8;
     s16 permanentFlagIndex;
     s32 var_a0_2;
     s32 var_v0;
@@ -739,10 +891,9 @@ void func_806A7600(s32 arg0) {
         func_8066E854(current_actor_pointer, 0, 0, 0, -1);
         func_8066EB40(current_actor_pointer, 175.0f);
         func_8066E8E4(current_actor_pointer, 0, 12.0f, 0, 80.0f, -1);
-        temp_t8 = current_actor_pointer->unk124->unk0_s32;
-        sp34->unk0 = temp_t8;
+        sp34->unk0 = current_actor_pointer->unk124->unk0_s32;
         sp34->unk1 = current_actor_pointer->unk124->unk4_s32;
-        sp34->unk2 = func_80723020(current_actor_pointer, temp_t8 & 0xFF, 0, 0.0f, 0.0f, 0.0f, 0);
+        sp34->unk2 = func_80723020(current_actor_pointer, sp34->unk0, 0, 0.0f, 0.0f, 0.0f, 0);
         if (sp34->unk2 != -1) {
             func_807232B8(sp34->unk2, 1);
             func_80723284(sp34->unk2, sp34->unk1);
@@ -753,6 +904,7 @@ void func_806A7600(s32 arg0) {
         return;
     }
     if (sp34->unk2 != -1) {
+        // TODO: There might be only 1 param for the first call here
         func_80723484(sp34->unk2, current_actor_pointer);
         func_807238D4(sp34->unk2, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
     }
@@ -826,7 +978,6 @@ void func_806A7600(s32 arg0) {
         func_806F91B4(0, 0, 0xA);
     }
 }
-*/
 
 void func_806A7B04(void) {
     func_806A7600(&D_80720FBC);
@@ -866,7 +1017,6 @@ extern u8 D_807FBD70;
 extern s32 D_807FC954;
 
 u32 func_806F8EDC(s32, s32);
-void func_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
 
 void func_806A7BDC(void) {
     s32 sp64;

@@ -549,7 +549,6 @@ void func_806877C8(u8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068780C.s")
 
-void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32); /* extern */
 void func_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32); /* extern */
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32); /* extern */
 

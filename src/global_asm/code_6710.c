@@ -199,7 +199,18 @@ void func_80605314(Actor *arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_806057F8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80608528.s")
+extern f32 D_80756DFC;
+
+void func_80608528(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4) {
+    s32 var_v0;
+
+    if (((arg0->y_position + 20.0f) < arg0->unkAC) && ((arg1 < 0x355) || (arg1 >= 0x35E))) {
+        var_v0 = 0x5A;
+    } else {
+        var_v0 = 0;
+    }
+    func_806086CC(arg0->x_position, arg0->y_position, arg0->z_position, arg1, arg2, arg3, arg4, 0x4B, D_80756DFC, var_v0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_806085DC.s")
 

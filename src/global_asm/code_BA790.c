@@ -13,7 +13,6 @@ void func_806B63E0() {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BA790/func_806B640C.s")
 
 extern f32 D_8075B750;
-void func_806086CC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
 
 /*
 // TODO: Very close, missing something with the loop index

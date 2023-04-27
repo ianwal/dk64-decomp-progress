@@ -570,8 +570,6 @@ void func_806C226C(void) {
 
 extern f64 D_8075BEB8;
 
-void func_80604CBC(Actor*, s32, s32, s32, s32, s32, f32, s32); // TODO: Are the datatypes correct?
-
 void func_806C27DC(void) {
     f32 temp_f20;
 

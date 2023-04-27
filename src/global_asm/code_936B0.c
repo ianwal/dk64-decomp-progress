@@ -11,8 +11,6 @@ extern f32 D_807FC7B0;
 extern f32 D_807FC7B4;
 extern f32 D_807FC7B8;
 
-void func_80604CBC(s32, s32, u8, s32, s32, s32, f32, s32);
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068E9B0.s")
 
 /*
@@ -151,7 +149,29 @@ void func_80690814(Actor *arg0, s32 arg1) {
     func_80671C0C(arg0, arg1, &D_807FC7B0, &D_807FC7B4, &D_807FC7B8);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8069084C.s")
+extern u8 D_80750270;
+extern f32 D_807FC7B0;
+extern f32 D_807FC7B4;
+extern f32 D_807FC7B8;
+extern f64 D_8075A0C0;
+extern f64 D_8075A0C8;
+
+void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6, f32 *arg7);
+
+void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, s32 arg6) {
+    s32 temp;
+    s32 temp2;
+    f32 sp28[6];
+
+    sp28[0] = (arg3 / D_8075A0C0) * D_8075A0C8;
+    sp28[1] = arg4;
+    sp28[2] = arg5;
+    sp28[3] = arg2;
+    sp28[4] = arg1;
+    sp28[5] = D_80750270;
+    func_806891D8(arg0, D_807FC7B0, D_807FC7B4, D_807FC7B8, 0, arg2, arg6, &sp28);
+    D_80750270 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690930.s")
 

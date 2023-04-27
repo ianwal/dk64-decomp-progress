@@ -13,7 +13,7 @@ extern f32 *D_8076A0B4;
 extern f32 *D_8076A0B8;
 extern f32 *D_8076A0BC;
 
-extern u16 D_807F7EC8;
+extern s16 D_807F7EC8;
 
 extern u8 D_807F7EF8;
 extern f32 D_807F7ECC;
@@ -226,12 +226,55 @@ void func_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 }
 */
 
+// Huge
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065A884.s")
 
+// Matrix stuff?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065BAA0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065BE74.s")
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s16 unk3C;
+    u8 unk3E;
+    u8 unk3F; // Used
+} Struct807F78C0;
+
+extern Struct807F78C0 D_807F78C0[];
+extern Struct807F78C0 D_807F7BC8[];
+
+/*
+// TODO: Fiddly, decent progress made
+void func_8065BE74(s16 arg0) {
+    s32 i;
+
+    if (D_807F7EC8 != 0xC) {
+        for (i = 0; i < D_807F7EC8; i++) {
+            if (D_807F78C0[arg0].unk3F == D_807F7BC8[i].unk3F) {
+                memcpy(&D_807F7BC8[D_807F7EC8++], &D_807F78C0[arg0], sizeof(Struct807F78C0));
+                break;
+            }
+        }
+    }
+}
+*/
+
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065BF18.s")
 
 extern u8 D_80750AB4;
@@ -272,4 +315,5 @@ s32 func_8065C240(Struct8065C240 *arg0) {
     return 0;
 }
 
+// Doable, big
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065C334.s")

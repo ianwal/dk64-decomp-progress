@@ -54,10 +54,18 @@ s32 func_805FF800(Maps *arg0, s32 *arg1);
 
 u16 func_806F8AD4(u8 arg0, u8 playerIndex);
 
+f32 func_806119FC(void);
+
+void func_80604CBC(Actor* arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, s8 arg7);
+
+void func_80614D90(Actor*);
+
 void func_80614EBC(Actor*, s32);
 
 u8 playerCanDive(void);
 u8 playerCanThrowOrange(void);
+
+void func_806086CC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
 
 u8 func_805FCA64(void); // getCutsceneBarState()
 u8 getLevelIndex(u8 map, u8 arg1);
@@ -1120,8 +1128,8 @@ void func_80684550(Actor*, u8, f32);
 void func_806C27DC(void);
 void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, f32 arg7);
 void func_806C2D7C();
-void func_8068A350(Actor *arg0, s32 arg1, s16 arg2);
-void func_8068A4C8(s32 arg0, s32 arg1, s32 arg2);
+void func_8068A350(Actor *arg0, s32 arg1, s32 arg2);
+void func_8068A4C8(Actor *arg0, s32 arg1, s32 arg2);
 void func_8068A764(Actor *arg0, u8 arg1);
 void func_8068A784(Actor *arg0, u8 arg1);
 void func_8072DE44(s32);

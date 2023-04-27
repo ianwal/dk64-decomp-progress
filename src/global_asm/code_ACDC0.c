@@ -121,7 +121,6 @@ extern s8 D_807FC80C;
 extern s8 D_807FC80D;
 extern u8 D_807FC80F;
 extern ? D_807FC818;
-extern s16 D_807FC828;
 extern s16 D_807FC82A;
 extern s16 D_807FC82E;
 extern ? D_807FC838;
@@ -638,6 +637,7 @@ void func_806AC048(s32 arg0, s32 arg1) {
     func_80703374(arg0, 0, 0, 0, 0x46);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806AC07C.s")
 
 // Displaylist stuff

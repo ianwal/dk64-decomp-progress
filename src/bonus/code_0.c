@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-//display list stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_80024000.s")
 
 void func_800240F0() {
@@ -12,9 +12,10 @@ void func_800240F0() {
     func_8072707C(5, 0x40, 0);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_80024158.s")
 
-//display list stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_80024D3C.s")
 
 extern void (*D_8002DB2C[])();
@@ -24,4 +25,5 @@ extern void (*D_8002DB2C[])();
 // Polymorphic code?
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_80024D8C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_80024E38.s")

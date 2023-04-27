@@ -293,8 +293,8 @@ typedef struct {
         f32 unk8; // Used
         s32 unk8_s32; // Used // TODO: We might have another aaD situation here...
     };
-    s32 unkC;
-    s32 unk10;
+    f32 unkC; // Used
+    f32 unk10; // Used
     s32 unk14;
     s32 unk18;
     s32 unk1C;
@@ -901,7 +901,43 @@ struct actor {
     u32 unk58;
     u16 interactable; // Bitfield at 0x5C
     u16 unk5E;
-    u32 object_properties_bitfield; // at 0x60
+    union {
+        struct {
+            u32 OPBBit0 : 1;
+            u32 OPBBit1 : 1;
+            u32 OPBBit2 : 1;
+            u32 OPBBit3 : 1;
+            u32 OPBBit4 : 1;
+            u32 OPBBit5 : 1;
+            u32 OPBBit6 : 1;
+            u32 OPBBit7 : 1;
+            u32 OPBBit8 : 1;
+            u32 OPBBit9 : 1;
+            u32 OPBBit10 : 1;
+            u32 OPBBit11 : 1;
+            u32 OPBBit12 : 1;
+            u32 OPBBit13 : 1;
+            u32 OPBBit14 : 1;
+            u32 OPBBit15 : 1;
+            u32 OPBBit16 : 1;
+            u32 OPBBit17 : 1;
+            u32 OPBBit18 : 1;
+            u32 OPBBit19 : 1;
+            u32 OPBBit20 : 1;
+            u32 OPBBit21 : 1;
+            u32 OPBBit22 : 1;
+            u32 OPBBit23 : 1;
+            u32 OPBBit24 : 1;
+            u32 OPBBit25 : 1;
+            u32 OPBBit26 : 1;
+            u32 OPBBit27 : 1;
+            u32 OPBBit28 : 1;
+            u32 OPBBit29 : 1;
+            u32 OPBBit30 : 1;
+            u32 OPBBit31 : 1;
+        };
+        u32 object_properties_bitfield; // at 0x60
+    };
     s32 unk64; // Another bitfield
     u16 unk68;
     u16 unk6A; // is_grounded?
@@ -1056,12 +1092,32 @@ typedef struct {
 } CharacterChange294;
 
 typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+} CharacterChange8Array;
+
+typedef struct {
     u8     does_player_exist; // bitfield? 0x00
     u8     unk1;
     u8     unk2;
     u8     unk3;
     Actor*  player_pointer;    // 0x04
-    u8      pad_unknown[0x208];
+    CharacterChange8Array unk8[2]; // TODO: How many elements are there here?
+    u8      pad_unknown[0x208 - 0x80];
     f32     look_at_eye_x; // 0x210 maybe an array?
     f32     look_at_eye_y; // 0x214
     f32     look_at_eye_z; // 0x218

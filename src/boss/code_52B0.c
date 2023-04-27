@@ -4,7 +4,6 @@
 extern f32 D_800361B0;
 extern f32 D_800361B4;
 
-void func_806086CC(f32, f32, f32, s32, s32, s32, s32, s32, f32, s32);
 void func_80613C48(Actor*, s32, f32, f32);
 
 void func_800292B0(f32 arg0) {
