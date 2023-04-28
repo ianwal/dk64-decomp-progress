@@ -101,15 +101,91 @@ void func_80690A28(s32, s32, f32, f32, f32, f32, f32, Actor *);
 extern f32 D_8002DD28;
 
 void func_800274A0(f32 arg0, f32 arg1, f32 arg2) {
-    Actor *temp_v0;
-
     playSound(0x59, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
-    temp_v0 = current_actor_pointer;
-    func_806907F0(temp_v0->x_position, temp_v0->y_position - 10.0f, temp_v0->z_position);
+    func_806907F0(current_actor_pointer->x_position, current_actor_pointer->y_position - 10.0f, current_actor_pointer->z_position);
     func_80690A28(0x23, 1, 0.6f, arg0, arg1, arg2, D_8002DD28, current_actor_pointer);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80027548.s")
+
+extern f64 D_8002DD30;
+extern f64 D_8002DD38;
+extern u16 D_807FD63C;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4[1];
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    u8 unk18[1]; // Used
+    u8 unk19;
+    u8 unk1A;
+    u8 unk1B;
+    s16 unk1C;
+    s16 unk1E; // Used
+    s16 unk20; // Used
+    u8 unk22; // Used
+    u8 unk23; // Used
+    s16 unk24;
+    s8 unk26; // Used
+    s8 unk27;
+    s32 unk28;
+    s32 unk2C;
+} AAD_80027548;
+
+f32 func_80611BB4(f32, f32);
+
+void func_80626F8C(f32, f32, f32, f32*, f32*, s32, f32, s32);
+f32 func_8000AC60(f32);
+
+/*
+// TODO: Very close, only thing left is the stack
+u8 func_80027548(f32 arg0, f32 arg1, f32 arg2) {
+    f32 temp_f0;
+    f32 temp_f2;
+    s16 i;
+    f32 sp50;
+    f32 sp4C;
+    AAD_80027548 *aaD;
+    u8 sp40;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    sp40 = 0;
+    aaD->unk26 = 1;
+    func_80626F8C(arg0, arg1, arg2, &sp50, &sp4C, 0, 4.0f, 0);
+    aaD->unk1E = sp50;
+    aaD->unk20 = sp4C;
+    current_actor_pointer->y_rotation = func_806CC190(current_actor_pointer->y_rotation, func_80665DE0(arg0, arg2, current_actor_pointer->x_position, current_actor_pointer->z_position), 10.0f);
+    temp_f0 = current_actor_pointer->x_position - arg0;
+    temp_f2 = current_actor_pointer->z_position - arg2;
+    current_actor_pointer->z_rotation = func_806CC190(current_actor_pointer->z_rotation, ((func_80611BB4(current_actor_pointer->y_position - arg1, func_8000AC60((temp_f0 * temp_f0) + (temp_f2 * temp_f2))) * 2048.0) / D_8002DD30) + D_8002DD38, 5.0f);
+    if ((D_807FD63C & 0xE000) && (current_actor_pointer->control_state == 0)) {
+        sp40 = 1;
+        if (aaD->unk22 != 0) {
+            if ((aaD->unk23 != 0) && (aaD->unk18[0] == 0)) {
+                func_800274A0(arg0, arg1, arg2);
+                aaD->unk23--;
+                func_80715908(aaD->unk4[aaD->unk23]);
+                func_8060E7EC(0, 0xFF, 3);
+                aaD->unk4[aaD->unk23] = 0;
+                for (i = 0; i < aaD->unk23; i++) {
+                    aaD->unk18[i] = 0xA;
+                }
+            } else if ((aaD->unk23 == 0) && (current_actor_pointer->control_state_progress == 0)) {
+                sp40 = 2;
+                current_actor_pointer->control_state_progress = 1;
+            }
+        } else if (aaD->unk23 < 5) {
+            aaD->unk23 = 5;
+            func_8002733C(aaD);
+            current_actor_pointer->control_state_progress = 0;
+        }
+    }
+    return sp40;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_800277F8.s")
 
@@ -166,7 +242,6 @@ typedef struct {
 u8 func_80027548(f32 arg0, f32 arg1, f32 arg2);
 u8 func_806FDB8C(s16, s32, s32, f32, f32, f32);
 void func_8061C464(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-f32 func_80611BB4(f32, f32);
 
 /*
 // TODO: Good progress made, doable
@@ -384,16 +459,46 @@ void func_800284C0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80028648.s")
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s16 unk18;
+    u8 unk1A;
+    u8 unk1B; // Used
+    u8 unk1C; // Used
+} ARG0_80028648;
+
+typedef struct {
+    Actor* unk0; // Used
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    u8 unk10;
+    u8 unk11; // Used
+} AAD_80028648;
+
+typedef struct {
+    Actor* unk0; // Used
+    s16 unk4;
+    s8 unk6; // Used
+    s8 unk7;
+    s16 unk8; // Used
+} AAD_80028648_2;
+
 /*
-// TODO: Needs some structs
-void func_80028648(void *arg0) {
+// TODO: Pretty close
+void func_80028648(ARG0_80028648 *arg0) {
     Actor *temp_s5;
     Actor *temp_v0;
     s32 i;
     u8 temp_v1;
-    void *temp_s2;
+    AAD_80028648 *temp_s2;
     Struct807F5FD4 *temp_s3;
-    void *temp_v0_2;
+    AAD_80028648_2 *temp_v0_2;
 
     for (i = 1; i < 7; i++) {
         if (func_80677FA8(0x12C, 0x15) != 0) {
@@ -407,7 +512,7 @@ void func_80028648(void *arg0) {
             D_807FBB44->z_position = temp_s3->unk8;
             D_807FBB44->object_properties_bitfield |= 0x1000;
             D_807FBB44->y_rotation = 0x800;
-            arg0[i]->unk-4 = D_807FBB44;
+            arg0[i].unk0 = D_807FBB44;
             if (func_80677FA8(0x12D, 0x16) != 0) {
                 temp_v0_2 = D_807FBB44->additional_actor_data;
                 temp_v0_2->unk0 = D_807FBB44;

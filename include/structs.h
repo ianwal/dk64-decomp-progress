@@ -606,8 +606,13 @@ typedef struct player_additional_actor_data {
     s16 unk10; // Used
     s16 unk12; // Used
     s16 unk14; // Used
-    s8  unk16;
-    s8  unk17; // Used, set to current file selection?
+    union {
+        struct {
+            s8  unk16_s8;
+            s8  unk17; // Used, set to current file selection?
+        };
+        s16 unk16;
+    };
     u16 unk18; // Used
     u16 unk1A;
     f32 unk1C; // Used
@@ -826,6 +831,9 @@ typedef struct player_additional_actor_data {
     u16 unk24C; // Used // TODO: s16? func_806CA1B4 uses this as u16
     u16 unk24E; // Used // TODO: s16? func_806CA1B4 uses this as u16
     s32 unk250;
+    s32 unk254;
+    f32 unk258; // Used
+    f32 unk25C; // Used
 } PlayerAdditionalActorData;
 
 //f32 at unk8 doesn't match with what's in structs.h (s16) 

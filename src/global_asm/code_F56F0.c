@@ -392,9 +392,58 @@ f32 func_806F1B90(f32 *arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F2754.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F2A40.s")
+extern f64 D_8075D778;
+extern f64 D_8075D780;
+extern f32 D_8075D788;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F2C48.s")
+typedef struct {
+    s8 unk0;
+    u8 unk1;
+    u16 unk2;
+    u16 unk4;
+    s16 unk6;
+} Struct806F2754;
+
+f32 func_80611BB4(f32, f32);
+
+/*
+// TODO: Very close
+void func_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
+    f32 dz;
+    s16 sp1A;
+    f32 temp_f0_2;
+    f32 dx;
+    s16 temp_t8;
+    s32 var_v0;
+
+    dz = character_change_array[cc_player_index].look_at_eye_z - character_change_array[cc_player_index].look_at_at_z;
+    dx = character_change_array[cc_player_index].look_at_eye_x - character_change_array[cc_player_index].look_at_at_x;
+    sp1A = (arg0->PaaD->unk104->PaaD->unkB2 - arg0->y_rotation) - 0x800;
+    temp_f0_2 = func_80611BB4(character_change_array[cc_player_index].look_at_eye_y - character_change_array[cc_player_index].look_at_at_y, sqrtf((dz * dz) + (dx * dx)));
+    temp_t8 = sp1A & 0xFFF;
+    var_v0 = temp_t8;
+    if ((temp_t8 < 0xC00) && (temp_t8 >= 0x801)) {
+        var_v0 = 0xC00;
+        arg0->y_rotation = (arg0->y_rotation + temp_t8) - 0xC00;
+    } else if ((var_v0 >= 0x401) && (var_v0 < 0x800)) {
+        arg0->y_rotation = (arg0->y_rotation + var_v0) - 0x400;
+        var_v0 = 0x400;
+    }
+    arg1[*arg2].unk0 = -0x80;
+    arg1[*arg2].unk1 = 2;
+    arg1[*arg2].unk4 = (var_v0 / D_8075D780) * D_8075D778;
+    arg1[*arg2].unk2 = (temp_f0_2 / D_8075D788) * D_8075D778;
+    arg1[*arg2].unk6 = 0;
+    *arg2 += 1;
+}
+*/
+
+extern f32 D_8075D78C;
+extern f64 D_8075D790;
+extern f32 D_8075D798;
+extern f64 D_8075D7A0;
+extern f64 D_8075D7A8;
+extern f64 D_8075D7B0;
 
 typedef struct {
     u8 unk0;
@@ -405,6 +454,117 @@ typedef struct {
     f32 unk8;
     f32 unkC;
 } Struct806F2EDC;
+
+void func_806F2A40(Actor *arg0, Struct806F2EDC *arg1, s32 *arg2) {
+    f32 var_f0;
+    f32 var_f12;
+    f32 var_f2;
+    f32 var_f6;
+    u8 temp_a0;
+
+    var_f0 = extra_player_info_pointer->unk21E * D_8075D78C;
+    if (var_f0 < D_8075D790) {
+        var_f0 = D_8075D798;
+    }
+    switch (arg0->control_state) {
+        case 0x34:
+        case 0x84:
+            if (D_8075D7A0 < extra_player_info_pointer->unk25C) {
+                extra_player_info_pointer->unk258 = extra_player_info_pointer->unk258 * D_8075D7A8;
+                extra_player_info_pointer->unk25C = extra_player_info_pointer->unk25C * D_8075D7B0;
+            } else {
+                arg0->object_properties_bitfield &= 0xFFFF7FFF;
+                if (extra_player_info_pointer->unk21E != 0) {
+                    extra_player_info_pointer->unk21E--;
+                }
+                arg0->shadow_opacity = 255.0f * var_f0;
+            }
+            var_f2 = extra_player_info_pointer->unk258;
+            var_f12 = extra_player_info_pointer->unk25C;
+            break;
+        default:
+            var_f12 = var_f0;
+            var_f2 = var_f0;
+            if (extra_player_info_pointer->unk21E < 0x1E) {
+                arg0->object_properties_bitfield |= 0x8000;
+                extra_player_info_pointer->unk21E += MIN(2,0x1E - extra_player_info_pointer->unk21E);;
+                extra_player_info_pointer->unk258 = 1.0f;
+                extra_player_info_pointer->unk25C = extra_player_info_pointer->unk258;
+            }
+        break;
+    }
+    arg1[*arg2].unk0 = 0;
+    arg1[*arg2].unk1 = 0xFF;
+    arg1[*arg2].unk4 = var_f2;
+    arg1[*arg2].unk8 = var_f12;
+    arg1[*arg2].unkC = var_f2;
+    *arg2 += 1;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F2C48.s")
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+} Struct806F2C48;
+
+/*
+// TODO: Quite close
+void func_806F2C48(Actor *arg0, Struct806F2C48 *arg1, s32 *arg2) {
+    f32 temp_f0;
+    f32 temp_f12;
+    s32 var_a3;
+    s8 temp_lo;
+    s32 var_v0;
+    s16 sp28;
+    u32 sp24;
+
+    var_a3 = *arg2;
+    if (arg0->unk6A & 1) {
+        extra_player_info_pointer->unk16 += 2;
+        if (extra_player_info_pointer->unk16 >= 0x80) {
+            extra_player_info_pointer->unk16 = 0x7F;
+        }
+    } else {
+        extra_player_info_pointer->unk16 -= 2;
+        if (extra_player_info_pointer->unk16 < 0) {
+            extra_player_info_pointer->unk16 = 0;
+        }
+    }
+    if (extra_player_info_pointer->unk16 != 0) {
+        var_v0 = (0x400 - arg0->unkDE) & 0xFFF;
+        if (var_v0 >= 0x156) {
+            var_v0 = 0x155;
+        }
+        sp28 = func_806CC10C(arg0->y_rotation, (arg0->unkDC - 0x800) & 0xFFF);
+        sp24 = var_v0 * 0x10;
+        temp_f12 = func_80612790(sp28) * sp24;
+        temp_f0 = -func_80612794(sp28) * sp24;
+        temp_lo = (extra_player_info_pointer->unk16 * 6) / 10;
+        if (temp_lo != 0) {
+            arg1[var_a3].unk1 = 1;
+            arg1[var_a3].unk4 = 0;
+            arg1[var_a3].unk0 = temp_lo;
+            arg1[var_a3].unk2 = temp_f12;
+            arg1[var_a3].unk6 = temp_f0;
+            var_a3 += 1;
+        }
+        temp_lo = (extra_player_info_pointer->unk16 * 3) / 10;
+        if (temp_lo != 0) {
+            arg1[var_a3].unk1 = 2;
+            arg1[var_a3].unk4 = 0;
+            arg1[var_a3].unk0 = temp_lo;
+            arg1[var_a3].unk2 = temp_f12;
+            arg1[var_a3].unk6 = temp_f0;
+            var_a3 += 1;
+        }
+    }
+    *arg2 = var_a3;
+}
+*/
 
 void func_806F2EDC(s32 arg0, Struct806F2EDC *arg1, s32 *arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6) {
     f32 temp_f0;
@@ -522,11 +682,26 @@ void func_806F37BC(Actor *arg0, Struct806F37BC *arg1) {
 
 void func_806F386C(u8, Actor*, Actor*, s16, u8);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F386C.s")
+typedef struct {
+    s16 unk0; // Used, X Position
+    s16 unk2; // Used, Y Position
+    s16 unk4; // Used, Z Position
+    s16 unk6;
+    u8 unk8;
+    u8 unk9; // Used
+    u8 unkA;
+    u8 unkB;
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+    u8 unkF;
+    u8 unk10;
+    u8 unk11;
+} Struct80753E90_unk4;
 
 typedef struct {
     s16 unk0;
-    s32 unk4;
+    Struct80753E90_unk4 *unk4;
 } Struct80753E90_2;
 
 // TODO: Same as GlobalASMStruct75?
@@ -545,8 +720,6 @@ extern s16 D_807FD714;
 extern s16 D_807FD718;
 extern Actor *D_807FD71C;
 
-/*
-// TODO: Close
 void func_806F386C(u8 arg0, Actor *arg1, Actor *arg2, s16 arg3, u8 arg4) {
     PlayerAdditionalActorData *temp_v0;
 
@@ -557,7 +730,7 @@ void func_806F386C(u8 arg0, Actor *arg1, Actor *arg2, s16 arg3, u8 arg4) {
         D_807FD710 = arg1;
         temp_v0->unk1F0 &= ~1;
         D_807FD714 = 0;
-        D_807FD708 = D_80753E90[arg0].unk4;
+        D_807FD708 = &D_80753E90->unk4[arg0];
         D_807FD70C = D_807FD708->unk4;
         D_807FD718 = arg3;
         D_807FD71C = arg2;
@@ -566,7 +739,6 @@ void func_806F386C(u8 arg0, Actor *arg1, Actor *arg2, s16 arg3, u8 arg4) {
         }
     }
 }
-*/
 
 typedef struct {
     s16 unk0;
@@ -594,57 +766,67 @@ void func_806F397C(Actor *arg0, Actor *arg1, s16 arg2, s16 arg3) {
     D_807FD716 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F39E8.s")
+extern f64 D_8075D810;
+extern f64 D_8075D818;
+extern f64 D_8075D820;
+extern f64 D_8075D828;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F3BEC.s")
+void func_80611690(void*);
+
+void func_806F39E8(Actor *arg0, ExitData *arg1, u8 arg2) {
+    Struct80753E90_unk4 *temp_v0_2;
+    Struct80753E90_unk4 *temp;
+    Struct80753E90_2 *temp_v1;
+
+    temp_v1 = &D_80753E90->unk4[D_80753E90->unk0];
+    temp_v1->unk0 = 2;
+    temp_v1->unk4 = malloc(0x24);
+    func_80611690(temp_v1->unk4);
+    temp = &temp_v1->unk4[1];
+    temp_v0_2 = temp_v1->unk4;
+    temp_v0_2->unk0 = arg1->x_pos;
+    temp_v0_2->unk2 = arg1->y_pos;
+    temp_v0_2->unk4 = arg1->z_pos;
+    temp_v0_2->unk9 = 0x32;
+    temp->unk0 = (func_80612794((arg1->angle / D_8075D810) * D_8075D818) * arg2) + arg1->x_pos;
+    temp->unk2 = arg1->y_pos;
+    temp->unk4 = (func_80612790((arg1->angle / D_8075D820) * D_8075D828) * arg2) + arg1->z_pos;
+    temp->unk9 = 0x32;
+    func_806F386C(D_80753E90->unk0, arg0, 0, 0, 0);
+    D_807FD716 = 0;
+    global_properties_bitfield |= 0x400;
+}
 
 f32 func_80612794(s16);
 
-typedef struct {
-    s16 unk0; // X Position
-    s16 unk2; // Y Position
-    s16 unk4; // Z Position
-    s16 unk6;
-    u8 unk8;
-    u8 unk9; // Used
-} Struct806F3BEC;
-
-/*
 void func_806F3BEC(Actor *arg0, s16 arg1, s16 arg2, u8 arg3) {
+    Struct80753E90_unk4 *temp_v0_2;
     s16 sp3A;
-    f32 temp_f0;
-    f32 temp_f16;
+    Struct80753E90_unk4 *temp_t0;
     Struct80753E90_2 *temp_a1;
-    Struct806F3BEC *temp_t0;
-    void *temp_v0;
-    Struct806F3BEC *temp_v0_2;
 
     sp3A = func_80665DE0(arg1, arg2, arg0->x_position, arg0->z_position);
-    temp_a1 = &D_80753E90[0].unk4[D_80753E90[0].unk0];
+    temp_a1 = &D_80753E90->unk4[D_80753E90->unk0];
     if (arg0->control_state != 0x44) {
         temp_a1->unk0 = 2;
-        temp_v0 = malloc(0x24);
-        temp_a1->unk4 = temp_v0;
-        func_80611690(temp_v0);
+        temp_a1->unk4 = malloc(0x24);
+        func_80611690(temp_a1->unk4);
+        temp_t0 = &temp_a1->unk4[1];
         temp_v0_2 = temp_a1->unk4;
-        temp_t0 = temp_v0_2 + 0x12;
         temp_v0_2->unk0 = arg0->x_position;
         temp_v0_2->unk2 = arg0->y_position;
         temp_v0_2->unk4 = arg0->z_position;
         temp_v0_2->unk9 = 0x28;
-        temp_f0 = func_80612794(sp3A);
 
-        temp_t0->unk0 = (temp_f0 * arg3) + arg0->x_position;
+        temp_t0->unk0 = (func_80612794(sp3A) * arg3) + arg0->x_position;
         temp_t0->unk2 = arg0->y_position;
-        temp_f16 = func_80612790(sp3A) * arg3;
-        temp_t0->unk4 = temp_f16 + arg0->z_position;
+        temp_t0->unk4 = (func_80612790(sp3A) * arg3) + arg0->z_position;
         temp_t0->unk9 = 0x28;
-        func_806F386C(D_80753E90[0].unk0, arg0, 0, 0, 0);
+        func_806F386C(D_80753E90->unk0, arg0, 0, 0, 0);
         D_807FD716 = 0;
         global_properties_bitfield |= 0x400;
     }
 }
-*/
 
 void func_806F3DB0(void) {
     D_807FD716 |= 2;
