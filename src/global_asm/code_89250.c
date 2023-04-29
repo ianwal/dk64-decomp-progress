@@ -438,6 +438,56 @@ void func_80685F60(Actor *actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068613C.s")
 
+void func_80608528(Actor *, s32, s32, s32, s32);
+s32 func_806119A0();
+extern s32 D_8071DB74; // TODO: Datatype
+extern s32 D_8071FC0C; // TODO: Datatype
+extern s32 D_80720B58; // TODO: Datatype
+extern u8 D_80750AD0;
+extern f64 D_80759B18;
+extern f64 D_80759B20;
+extern f64 D_80759B28;
+
+/*
+// TODO: Pretty close
+void func_8068613C(Actor *arg0) {
+    f64 sp48;
+    ActorAnimationState *temp_v0;
+    f32 temp_f20;
+    f32 var_f20;
+    u8 temp_v1;
+    u8 i;
+
+    temp_v0 = arg0->animation_state;
+    if (temp_v0 != NULL) {
+        var_f20 = temp_v0->scale_y / D_80759B18;
+    } else {
+        var_f20 = 1.0f;
+    }
+    if (arg0->unk58 == 0x1E) {
+        var_f20 *= 2;
+        func_8068588C(arg0, 0, 4.0f, arg0->x_position, arg0->y_position, arg0->z_position, -0x96);
+        func_806782C0(arg0);
+    }
+    func_80608528(arg0, 0xC, 0xFF, 0x7F, 1);
+    func_807149B8(1);
+    func_807149FC(1);
+    func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+    func_80714CC0(&D_8071FC0C, var_f20 * D_80759B20, arg0->x_position, arg0->unkAC + 15.0f, arg0->z_position);
+    if (D_80750AD0 == 0) {
+        temp_v1 = (func_806119A0() & 3) + 4;
+        temp_f20 = var_f20 * D_80759B28;
+        for (i = 0; i < temp_v1; i++) {
+            func_807149B8(1);
+            func_807149FC(-1);
+            func_8071498C(&D_8071DB74);
+            func_80714A28(4);
+            func_80714CC0(&D_80720B58, temp_f20, arg0->x_position, arg0->unkAC, arg0->z_position);
+        }
+    }
+}
+*/
+
 void func_80686340(void) {
     func_807149B8(1);
     func_807149FC(0x14);

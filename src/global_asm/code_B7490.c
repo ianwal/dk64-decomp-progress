@@ -255,7 +255,7 @@ void func_806B3DA4(void) {
 void func_806B3E08(void) {
     if (D_807FDC90->unk2C) {
         D_807FDC90->unk2C--;
-        if ((object_timer & 1)) {
+        if (object_timer & 1) {
             func_806B3C94();
         }
     } else if (func_8072E0A8(0x96, 0x96)) {
@@ -268,7 +268,7 @@ void func_806B3E7C(void) {
         D_807FDC90->unk2C--;
         return;
     }
-    if ((func_80726164(current_actor_pointer, D_807FDC94->x_position, D_807FDC94->y_position, D_807FDC94->z_position, D_807FDCA0)) && (func_8072E0A8(0x96, 0x96))) {
+    if (func_80726164(current_actor_pointer, D_807FDC94->x_position, D_807FDC94->y_position, D_807FDC94->z_position, D_807FDCA0) && func_8072E0A8(0x96, 0x96)) {
         current_actor_pointer->control_state = 0x26;
         current_actor_pointer->control_state_progress = 0;
     }

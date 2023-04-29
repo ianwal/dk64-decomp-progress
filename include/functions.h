@@ -44,7 +44,7 @@ void func_807149C8(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 f32 func_80665E94(f32, f32, f32, f32, f32, f32, s16);
 
 // Heap stuff???
-void func_8061130C(void *);
+// void func_8061130C(void *);
 
 // TODO: Signatures are suspect
 s32 func_80659470(s32); // Returns index into object model2 array
@@ -1389,9 +1389,9 @@ void func_80611160(void);
 void func_8061116C(void);
 s32 func_806111BC(s32 arg0, s32 arg1);
 void func_8061138C(s32 arg0);
-void func_80611594(u8 *arg0);
-void func_8061159C(u8 *arg0);
-s32 func_80611688(s32 *arg0);
+// void func_80611594(u8 *arg0);
+// void func_8061159C(u8 *arg0);
+// s32 func_80611688(HeapHeader *arg0);
 void func_80611724(s32 arg0, s32 arg1);
 void func_80611844(void);
 u8 func_80651B64(s16 arg0);

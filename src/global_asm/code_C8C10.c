@@ -193,20 +193,11 @@ void func_806C55D8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C5C20.s")
 
-// Doable, nice size too
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C5FEC.s")
+void func_80659670(f32, f32, f32, s16); /* extern */
 
-// ? func_80602B60(?, ?);                              /* extern */
-// ? func_8061CB08(Actor *);                           /* extern */
-// ? func_806319C4(Actor *, ?);                        /* extern */
-void func_80659670(f32, f32, void *, s32 *, s32, s16); /* extern */
-// ? func_8070D8C0(Actor *, ?, ?);                     /* extern */
-
-/*
-// TODO: Very close!
 void func_806C5FEC(void) {
-    PlayerAdditionalActorData *temp_a0;
     YetAnotherAdditionalActorData5 *temp_v1;
+    PlayerAdditionalActorData *temp_a0;
 
     temp_v1 = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -215,39 +206,38 @@ void func_806C5FEC(void) {
     }
     temp_v1->unk1C++;
     switch (temp_v1->unk1E) {
-    case 1:
-        if (player_pointer->control_state_progress == 3) {
-            func_8070D8C0(current_actor_pointer, 0x1E, 3);
-            temp_v1->unk1E = 2;
-        } else if (temp_v1->unk10->control_state != 0x83) {
-            temp_v1->unk1E = 3;
-        }
-        break;
-    case 2:
-        if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
-            temp_v1->unk1E = 3;
-            func_8061CB08(current_actor_pointer);
-        }
-        break;
-    default:
-        if (temp_v1->unk10->control_state != 0x83) {
-            temp_a0 = temp_v1->unk10->PaaD;
-            temp_a0->unk1F4 &= ~0x10;
-            temp_v1->unk10->object_properties_bitfield &= 0xBFFFFFFF;
-            temp_v1->unk10->object_properties_bitfield |= 1;
-            temp_v1->unk10->z_rotation = temp_v1->unk16;
-            temp_v1->unk10->x_rotation = temp_v1->unk14;
-            global_properties_bitfield |= 0x10030;
-            func_80659670(temp_v1->unk0, temp_v1->unk4, temp_a0, &global_properties_bitfield, temp_v1->unk8, temp_v1->unk1A);
-            func_80602B60(0x3B, 0);
-            func_806782C0(temp_v1->unkC);
-            func_806782C0(current_actor_pointer);
-            return;
-        }
-        break;
+        case 1:
+            if (player_pointer->control_state_progress == 3) {
+                func_8070D8C0(current_actor_pointer, 0x1E, 3);
+                temp_v1->unk1E = 2;
+            } else if (temp_v1->unk10->control_state != 0x83) {
+                temp_v1->unk1E = 3;
+            }
+            break;
+        case 2:
+            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+                temp_v1->unk1E = 3;
+                func_8061CB08();
+            }
+            break;
+        default:
+            if (temp_v1->unk10->control_state != 0x83) {
+                temp_a0 = temp_v1->unk10->PaaD;
+                temp_a0->unk1F4 &= ~0x10;
+                temp_v1->unk10->object_properties_bitfield &= 0xBFFFFFFF;
+                temp_v1->unk10->object_properties_bitfield |= 1;
+                temp_v1->unk10->z_rotation = temp_v1->unk16;
+                temp_v1->unk10->x_rotation = temp_v1->unk14;
+                global_properties_bitfield |= 0x10030;
+                func_80659670(temp_v1->unk0, temp_v1->unk4, temp_v1->unk8, temp_v1->unk1A);
+                func_80602B60(0x3B, 0);
+                func_806782C0(temp_v1->unkC);
+                func_806782C0(current_actor_pointer);
+                return;
+            }
+            break;
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C61C8.s")

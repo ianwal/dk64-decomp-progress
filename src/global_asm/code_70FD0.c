@@ -775,6 +775,7 @@ void func_806713E4(Actor *arg0, u8 arg1) {
 }
 */
 
+// Actor & Matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671528.s")
 
 s32 func_806717FC(Actor *arg0) {
@@ -795,6 +796,7 @@ s32 func_806717FC(Actor *arg0) {
     }
 }
 
+// Actor & Matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671880.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671A6C.s")

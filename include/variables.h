@@ -67,10 +67,12 @@ typedef struct Struct807FD610 {
     f32 unkC; // Probably float
     f32 unk10;
     f32 unk14;
-    s32 unk18;
+    f32 unk18;
     s32 unk1C;
-    s32 unk20; // Probably s16
-    s32 unk24; // Probably s16
+    s16 unk20;
+    s16 unk22;
+    s16 unk24;
+    s16 unk26;
     s16 unk28; // Used
     u16 unk2A; // Used, controller button bitfield
     u16 unk2C; // Used, controller button bitfield

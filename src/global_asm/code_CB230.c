@@ -1,8 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CB230/func_806C6530.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CB230/func_806C6884.s")

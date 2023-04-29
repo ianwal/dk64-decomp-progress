@@ -385,10 +385,13 @@ Chunk14 *func_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, Chunk14 **ar
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_80630B70.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_80630DCC.s")
 
+// Matrix stuff, Actor* Arg0, f32[][] arg1?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_8063162C.s")
 
+// Similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_806317D4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_806319C4.s")

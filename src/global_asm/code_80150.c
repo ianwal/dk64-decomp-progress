@@ -86,6 +86,7 @@ void func_8067BD28(void) {
 }
 
 void func_80665564(Actor*, f32);
+u8 func_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3);
 
 void func_8067BDB8(void) {
     func_8067BA7C(0x95);
@@ -103,7 +104,7 @@ void func_8067BDF8() {
     func_8067BF84(0x13, temp_a1, temp_a1 + 1, &sp1F);
 }
 
-// Doable, needs some solid aaD knowledge though
+// Doable, needs some solid aaD knowledge though and definition for D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067BE30.s")
 
 void func_8067BF4C() {
@@ -116,7 +117,173 @@ void func_8067BF4C() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067BF84.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067C2B8.s")
+extern f32 D_80759450;
+extern f64 D_80759458;
+extern u8 D_807FBBA8;
+extern s32 D_8071FE08; // TODO: Datatype
+
+/*
+// TODO: Good progress made
+u8 func_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
+    f32 temp_f0_2;
+    f32 var_f20;
+    u8 sp47;
+    u8 playerIndex;
+    f32 dz;
+    f32 dx;
+
+    sp47 = 0;
+    var_f20 = D_80759450;
+    if (current_actor_pointer->object_properties_bitfield & 0x10) {
+        func_80688370(current_actor_pointer, 0, 0.5f);
+        func_806883C8(current_actor_pointer, 0, 0);
+        func_8068839C(current_actor_pointer, 0, 0);
+        func_8068842C(current_actor_pointer, 0, -1);
+        if ((D_807FBBA8 != 0) || (*arg1 != 0) || (*arg3 != 0)) {
+            *arg3 = 0;
+            sp47 = 1;
+        }
+        if (sp47 != 0) {
+            for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+                if (character_change_array[playerIndex].does_player_exist != 0) {
+                    dz = character_change_array[playerIndex].player_pointer->z_position - current_actor_pointer->z_position;
+                    dx = character_change_array[playerIndex].player_pointer->x_position - current_actor_pointer->x_position;
+                    
+                    temp_f0_2 = sqrtf((dz * dz) + (dx * dx));
+                    if (temp_f0_2 < var_f20) {
+                        var_f20 = temp_f0_2;
+                    }
+                }
+            }
+            if (var_f20 > 12.0) {
+                *arg1 = 0;
+            } else {
+                *arg1 = 1;
+                sp47 = 0;
+            }
+        }
+    } else {
+        sp47 = 1;
+        *arg1 = 0;
+        current_actor_pointer->y_velocity = -10.0f;
+        func_806651FC(current_actor_pointer);
+        func_80665564(current_actor_pointer, 0);
+        if (func_80672BD4(current_actor_pointer) != 0) {
+            *arg2 = 1;
+        } else {
+            *arg2 = 0;
+        }
+    }
+    if (sp47 != 0) {
+        func_80689114(arg0, current_actor_pointer->x_position, current_actor_pointer->y_position + D_80759458, current_actor_pointer->z_position, 0, 1.0f, current_actor_pointer);
+        if (current_actor_pointer->object_properties_bitfield & 0x10) {
+            func_80608528(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
+            func_807149B8(0);
+            func_807149FC(1);
+            func_80714CC0(&D_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
+        }
+    }
+    if (*arg2 != 0) {
+        current_actor_pointer->y_velocity = -10.0f;
+        func_806651FC(current_actor_pointer);
+        func_80665564(current_actor_pointer, 0);
+    }
+    func_806319C4(current_actor_pointer, 0);
+    return sp47;
+}
+*/
+
+extern f64 D_80759460;
+extern f64 D_80759468;
+extern f64 D_80759470;
+
+typedef struct {
+    u8 unk0;
+    s8 unk1;
+    s8 unk2;
+    s8 unk3;
+    f32 unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+} AAD_8067C2B8;
+
+void func_8067C2B8(void) {
+    AAD_8067C2B8 *temp_v0;
+
+    temp_v0 = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unk68 |= 4;
+        current_actor_pointer->object_properties_bitfield |= 0x80;
+        temp_v0->unk0 = 0;
+        temp_v0->unk8 = 0;
+        temp_v0->unk4 = 0.0f;
+    }
+    if (!(current_actor_pointer->unk68 & 4)) {
+        current_actor_pointer->unkB8 = 0.0f;
+    }
+    if (D_807FBB70->unk90 != 0) {
+        temp_v0->unk8 = 1;
+    }
+    if (D_807FBB70->unk91 != 0) {
+        if (temp_v0->unk0 == 0) {
+            func_80604CBC(current_actor_pointer, 0x10C, 0, 1, 0, 0xFF, 1.0f, 0);
+            temp_v0->unk0 = 1;
+        }
+        temp_v0->unk4 = D_807FBB70[0].unk94 / D_80759460;
+        current_actor_pointer->unkEE = D_807FBB70->unk92;
+        if (current_actor_pointer->unkB8 < temp_v0->unk4) {
+            current_actor_pointer->unkB8 += D_80759468;
+            if (temp_v0->unk4 < current_actor_pointer->unkB8) {
+                current_actor_pointer->unkB8 = temp_v0->unk4;
+            }
+        } else {
+            current_actor_pointer->unkB8 -= 1.5;
+            if (current_actor_pointer->unkB8 < 0.0f) {
+                current_actor_pointer->unkB8 = 0.0f;
+            }
+        }
+        current_actor_pointer->unkFA = 0x64;
+        func_80665160(current_actor_pointer, current_actor_pointer->unkEE, current_actor_pointer->unkEE);
+        func_806651FC(current_actor_pointer);
+        func_80665564(current_actor_pointer, 0.0f);
+        current_actor_pointer->y_position = current_actor_pointer->floor;
+        if (temp_v0->unk8 == 0) {
+            current_actor_pointer->noclip_byte = 0x3C;
+        }
+    } else {
+        if ((temp_v0->unk0 != 0) && (current_actor_pointer->unkB8 == 0.0)) {
+            temp_v0->unk0 = 0;
+            func_80605314(current_actor_pointer, 0);
+        }
+        temp_v0->unk4 = 0.0f;
+        if (current_actor_pointer->unkB8 < 0.0f) {
+            current_actor_pointer->unkB8 += D_80759470;
+            if (temp_v0->unk4 < current_actor_pointer->unkB8) {
+                current_actor_pointer->unkB8 = temp_v0->unk4;
+            }
+        } else {
+            current_actor_pointer->unkB8 -= 1.5;
+            if (current_actor_pointer->unkB8 < 0.0f) {
+                current_actor_pointer->unkB8 = 0.0f;
+            }
+        }
+        current_actor_pointer->unkFA = 0x64;
+        func_80665160(current_actor_pointer, current_actor_pointer->unkEE, current_actor_pointer->unkEE);
+        func_806651FC(current_actor_pointer);
+        func_80665564(current_actor_pointer, 0.0f);
+        if (temp_v0->unk8 == 0) {
+            if ((current_actor_pointer->unkB8 == 0.0) || !(current_actor_pointer->object_properties_bitfield & 0x10)) {
+                current_actor_pointer->noclip_byte = 2;
+            } else {
+                current_actor_pointer->noclip_byte = 0x3C;
+            }
+        }
+        current_actor_pointer->y_position = current_actor_pointer->floor;
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
 
 void func_8067C67C(void) {
     func_8067C71C();

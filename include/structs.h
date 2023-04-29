@@ -220,6 +220,16 @@ typedef struct animation_state_unk8 {
     s32 unk0;
 } AnimationStateUnk8;
 
+// TODO: Fill this in properly
+typedef struct {
+    u8 unk0;
+} AnimationStateUnk1C;
+
+// TODO: Fill this in properly
+typedef struct {
+    u8 unk0;
+} AnimationStateUnk24;
+
 // See boss func_8002FB7C
 typedef struct animation_state_unk20 {
     u8 unk0;
@@ -241,9 +251,9 @@ typedef struct actor_animation_state {
     s16 unk12;
     void *bone_array_1; // at 0x14, camera, update bone positions // TODO: Proper type
     void *bone_array_2; // at 0x18, camera, update bone positions // TODO: Proper type
-    void *unk1C; // TODO: Used in func_80724CA4 and func_8068FF40, pretty easy match, array of 0x8 structs? // malloc(0x100) in func_80683158
+    AnimationStateUnk1C *unk1C; // TODO: Used in func_80724CA4 and func_8068FF40, pretty easy match, array of 0x8 structs? // malloc(0x100) in func_80683158
     AnimationStateUnk20 *unk20; // See boss func_8002FB7C
-    void *unk24;
+    AnimationStateUnk24 *unk24;
     s32 unk28;
     s32 unk2C;
     s32 unk30;
@@ -409,7 +419,9 @@ typedef struct {
     u8 pad3A[0x90 - 0x3A]; // TODO: Actor* at 0x7C? see func_8069A750
     u8 unk90;
     u8 unk91;
-    u8 pad92[0xD8 - 0x92];
+    s16 unk92;
+    s16 unk94;
+    u8 pad96[0xD8 - 0x96];
     f32 unkD8;
     f32 unkDC; // TODO: Confirm datatype
     f32 unkE0;
@@ -538,7 +550,7 @@ typedef struct race_additional_actor_data2 {
 typedef struct yaad5 {
     f32 unk0; // Used
     f32 unk4; // Used
-    u32 unk8;
+    f32 unk8; // Used
     u32 unkC;
     Actor* unk10; // Used
     s16 unk14; // Used
@@ -690,7 +702,10 @@ typedef struct player_additional_actor_data {
     s32 unkD0;
     s16 unkD4; // Used
     s16 unkD6;
-    s32 unkD8;
+    u8 unkD8; // Used
+    u8 unkD9;
+    u8 unkDA;
+    u8 unkDB;
     Actor *unkDC; // Used
     f32 unkE0; // Used
     f32 unkE4; // Used
@@ -834,6 +849,8 @@ typedef struct player_additional_actor_data {
     s32 unk254;
     f32 unk258; // Used
     f32 unk25C; // Used
+    s32 unk260;
+    s32 unk264; // Used
 } PlayerAdditionalActorData;
 
 //f32 at unk8 doesn't match with what's in structs.h (s16) 

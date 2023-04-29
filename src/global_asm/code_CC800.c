@@ -129,10 +129,118 @@ void func_806C81DC(s16 arg0, s16 arg1) {
     cc->unk280 = (f32)cc->unk278 / (f32)cc->unk27A;
 }
 
+// Unrolled loops
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C8220.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C850C.s")
 
+extern f32 D_8075C4B0;
+extern Actor *D_807F5D10;
+extern s16 D_807FD584;
+
+extern f32 D_80753578[];
+extern f32 D_807535E8[];
+
+void func_806F09F0(Actor*, u16);
+
+/*
+// TODO: Good progress made
+void func_806C850C(s32 arg0, s32 arg1) {
+    Temp10Big *sp2C;
+    Struct807FD610 *temp_v0_2;
+    PlayerAdditionalActorData *temp_t7;
+
+    arg1 &= 0xFF;
+
+    if (cc_number_of_players >= 2) {
+        current_character_index[arg1] = current_character_index[func_8060AB38(arg1)];
+    }
+    if ((arg1 == 0) && (current_map == MAP_MAIN_MENU)) {
+        current_character_index[0] = 0;
+    }
+    sp2C = &D_8075C410[current_character_index[arg1]];
+    func_80677FA8(sp2C->unk0, sp2C->unk8);
+    D_807FBB44->object_properties_bitfield &= ~0x1000;
+    D_807FBB44->object_properties_bitfield |= sp2C->unkC;
+    D_807FBB44->unk16E = 0x42;
+    D_807FBB44->unk16F = 0x42;
+    D_807FBB44->object_properties_bitfield |= 0x01000000;
+    if (cc_number_of_players >= 2) {
+        D_807FBB44->unk64 |= 0x200;
+    }
+    D_807FBB44->unk68 |= 0xC0;
+    D_807FBB44->animation_state->unk1C = malloc(0x100);
+    D_807FBB44->animation_state->unk1C->unk0 = 0;
+    D_807FBB44->animation_state->unk20 = malloc(0x200);
+    D_807FBB44->animation_state->unk20->unk0 = 0xFF;
+    D_807FBB44->animation_state->unk24 = malloc(0x200);
+    D_807FBB44->animation_state->unk24->unk0 = 0xFF;
+    D_807FBB48 = D_807FBB44;
+    extra_player_info_pointer = D_807FBB44->PaaD;
+    extra_player_info_pointer->unk247 = -1;
+    extra_player_info_pointer->unk1A4 = arg1;
+    extra_player_info_pointer->unk11E = -1;
+    extra_player_info_pointer->unk244 = 0;
+    D_807FD584 = sp2C->unk4;
+    extra_player_info_pointer->unk120 = -0x64;
+    extra_player_info_pointer->unk1EE = D_807FBB44->unk58;
+    func_806E2C74(D_807FBB48);
+    func_80677FA8(0xBC, 0);
+    extra_player_info_pointer->unk104 = D_807FBB44;
+    if (arg1 == 0) {
+        D_807F5D10 = D_807FBB44;
+    }
+    D_807FBB44->object_properties_bitfield |= 0x100000;
+    func_806C8D20(D_807FBB48);
+    extra_player_info_pointer->unk26 = 0x64;
+    D_807FBB48->y_acceleration = D_80753578[D_807FD584];
+    D_807FBB48->terminal_velocity = D_807535E8[D_807FD584];
+    extra_player_info_pointer->unk250 = 0x78;
+    extra_player_info_pointer->unkD4 = 0;
+    extra_player_info_pointer->unkD8 = 0;
+    extra_player_info_pointer->unkFC_s32 = 0;
+    extra_player_info_pointer->unk100 = 0;
+    extra_player_info_pointer->unk16 = 0;
+    extra_player_info_pointer->unk10C = 0;
+    extra_player_info_pointer->unk1A0 = 0;
+    extra_player_info_pointer->unk1C0 = D_8075C4B0;
+    extra_player_info_pointer->unk1C4 = D_8075C4B0;
+    extra_player_info_pointer->unk1C8 = D_8075C4B0;
+    extra_player_info_pointer->unk1CC = D_8075C4B0;
+    extra_player_info_pointer->unk1D0 = D_8075C4B0;
+    extra_player_info_pointer->unk1D4 = D_8075C4B0;
+    extra_player_info_pointer->unk245 = 0;
+    extra_player_info_pointer->unk21E = 0x1E;
+    extra_player_info_pointer->unkC8 = -1;
+    extra_player_info_pointer->unkCA = 0;
+    extra_player_info_pointer->unkC8 = -1;
+    extra_player_info_pointer->unk264 = -1;
+    extra_player_info_pointer->unk258 = 1.0f;
+    extra_player_info_pointer->unk25C = 1.0f;
+    if (isFlagSet(0xCE, 0) != 0) {
+        extra_player_info_pointer->unk1F0 |= 0x100000;
+    }
+    func_806C8220(1, D_807FBB48->unk178, D_807FBB48->unk58);
+    D_807FBB48->unk146 = 0;
+    func_806F09F0(D_807FBB48, D_807FBB48->unk58);
+    D_807FBB48->unkDE = 0x400;
+    extra_player_info_pointer->unk1B0 = 0;
+    extra_player_info_pointer->unk1AC = NULL;
+    D_807FD610[arg1].unk10 = D_807FD610[arg1].unk4;
+    D_807FD610[arg1].unk14 = D_807FD610[arg1].unk4;
+    D_807FD610[arg1].unk18 = D_807FD610[arg1].unk4;
+    D_807FD610[arg1].unk1C = D_807FD610[arg1].unk4;
+    D_807FD610[arg1].unk20 = D_807FD610[arg1].unk28;
+    D_807FD610[arg1].unk22 = D_807FD610[arg1].unk28;
+    D_807FD610[arg1].unk24 = D_807FD610[arg1].unk28;
+    D_807FD610[arg1].unk26 = D_807FD610[arg1].unk28;
+    func_806CFF9C(D_807FBB48);
+    func_806C90C4(arg0);
+    func_806C8984();
+}
+*/
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C8984.s")
 
 void func_806C8D20(Actor *arg0) {
@@ -168,7 +276,18 @@ s32 func_806C8DE0(s32 playerIndex) {
 }
 */
 
+// TODO: Quite fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C8E58.s")
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s16 unk8;
+    u16 unkA;
+    s32 unkC;
+} Struct806C8F8C_arg0;
+
+void func_806C8F8C(Struct806C8F8C_arg0 *arg0);
 
 void func_806C8EE8(void) {
     current_character_index[cc_player_index]++;
@@ -178,17 +297,12 @@ void func_806C8EE8(void) {
     func_8060098C(&func_806C9C80, 0x14, cc_player_index, 0, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C8F8C.s")
-
-/*
 extern s16 D_807FD584;
 
-// TODO: Which struct is arg0?
-// TODO: Needs some animation_state structs defined
-void func_806C8F8C(void *arg0) {
+void func_806C8F8C(Struct806C8F8C_arg0 *arg0) {
     D_807FBB48->unk58 = arg0->unk0;
     D_807FD584 = arg0->unk4;
-    func_806136B4(D_807FBB48, arg0);
+    func_806136B4(D_807FBB48);
     func_8066E21C(D_807FBB48->ledge_info_pointer);
     func_806134B4(D_807FBB48, arg0->unkA);
     D_807FBB48->ledge_info_pointer = func_80665F24(D_807FBB48);
@@ -203,7 +317,6 @@ void func_806C8F8C(void *arg0) {
     func_806C8220(1, D_807FBB48->unk178, D_807FBB48->unk58);
     func_806F833C(0);
 }
-*/
 
 void func_806C90C4(s32 exitIndex) {
     PlayerAdditionalActorData *PaaD;
@@ -262,7 +375,7 @@ void func_806C9304(Actor *arg0, PlayerAdditionalActorData *arg1) {
         func_806D0468(D_807FBB48, 1, arg0, arg1);
     }
     if (arg0->animation_state->scale_x != arg1->unk1C0) {
-    var_v0 = 0;
+        var_v0 = 0;
         while (var_v0 < 2) {
             var_f18 = arg1[var_v0].unk1C0;
             arg1[var_v0].unk1CC = var_f18;

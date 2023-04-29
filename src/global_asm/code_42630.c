@@ -930,10 +930,10 @@ typedef struct {
 
 /*
 // TODO: Wrong register order t8 a0
-void func_8064B260(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
+void func_8064B260(GlobalASMStruct54 **arg0, s32 arg1, s16 arg2, s32 arg3) {
     GlobalASMStruct54 *temp_v0;
 
-    temp_v0 = arg0 + (arg2 * 4);
+    temp_v0 = &arg0[arg2];
     temp_v0->unk14 = player_pointer->unk100;
     temp_v0->unk18 = player_pointer->unk104;
     temp_v0->unk1C = player_pointer->unk108;
@@ -1529,7 +1529,10 @@ void func_8064F308(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064F358.s")
+u8 func_8064F358(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    PlayerProgress *temp = &D_807FC950[cc_player_index];
+    return temp->character_progress[current_character_index[cc_player_index]].coloured_bananas[getLevelIndex(D_8076A0AB, 0)] > 0;
+}
 
 u8 func_8064F404(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     // Has the player collected 4 or more Battle Crowns?
