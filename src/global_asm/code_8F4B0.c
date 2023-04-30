@@ -107,16 +107,124 @@ void func_8068B8FC(void) {
     temp_v0->unk0 = 0xFF;
 }
 
-// TODO: Needs proper definition for D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068B930.s")
-
-// TODO: Needs proper definition for D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068B9B4.s")
-
 extern u8 D_807FBDC4;
 
-// TODO: Needs proper definition for D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068BA2C.s")
+void func_8068B930(void) {
+    Struct807FBB70_unk278 *temp_v0;
+    s32 i;
+
+    for (i = 0; i < D_807FBDC4; i++) {
+        temp_v0 = D_807FBB70.unk278[i];
+        if (D_807FBB70.unk258[i] == 1) {
+            func_8063DA40(temp_v0->unk0, temp_v0->unk2);
+        }
+    }
+    func_8062BAE4();
+}
+
+void func_8068B9B4(void) {
+    Struct807FBB70_unk278 *temp_v0;
+    s32 i;
+
+    for (i = 0; i < D_807FBDC4; i++) {
+        temp_v0 = D_807FBB70.unk278[i];
+        if (D_807FBB70.unk258[i] == 1) {
+            func_80689A80(temp_v0->unk2, temp_v0);
+        }
+    }
+}
+
+void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
+void func_8072167C(s16, s16, s16, s16);
+
+// TODO: Probably overlap with an existing aaD
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+    s32 unkA4;
+    s32 unkA8;
+    s32 unkAC; // Used
+} AAD_8068BA2C;
+
+void func_8068BA2C(void) {
+    s16 i;
+    AAD_8068BA2C *sp58;
+    Struct807FBB70_unk278 *temp_v1;
+    u8 var_s3;
+    s32 var_v0;
+    PlayerAdditionalActorData *temp_s1;
+
+    temp_s1 = D_807FBB48->additional_actor_data;
+    var_s3 = 0;
+    sp58 = temp_s1->unk104->additional_actor_data;
+    for (i = 0; i < D_807FBB70.unk254; i++) {
+        temp_v1 = D_807FBB70.unk278[i];
+        switch (D_807FBB70.unk258[i]) {
+            case 1:
+                if (temp_v1->unk2 != 0) {
+                    var_v0 = 4;
+                } else {
+                    var_v0 = 0;
+                }
+                playCutscene(NULL, temp_v1->unk0, (var_v0 | 1) & 0xFF);
+                break;
+            case 2:
+                func_8072167C(temp_v1->unk0, temp_v1->unk2, temp_v1->unk4, temp_v1->unk6);
+                break;
+            case 3:
+                var_s3 = 1;
+                if (!(temp_s1->unk1F0 & 0x04000000)) {
+                    temp_s1->unk1F0 |= 0x04000000;
+                }
+                break;
+        }
+    }
+    if (var_s3 == 0) {
+        temp_s1->unk1F0 &= 0xFBFFFFFF;
+    }
+    if (sp58->unkAC & 1) {
+        func_8065A708(character_change_array->look_at_eye_x, character_change_array->look_at_eye_y, character_change_array->look_at_eye_z, character_change_array->look_at_at_x, character_change_array->look_at_at_y, character_change_array->look_at_at_z, 0.0f, 1, 0xFF, 0xFF, 0xFF);
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068BBF8.s")

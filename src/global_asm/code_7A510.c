@@ -53,20 +53,20 @@ void func_80675810(Actor *arg0, void *arg1) {
                                 var_v1 = temp_v0_2(arg0, temp_s2, arg1) & 0xFF;
                             }
                             if (var_v1 != 0) {
-                                if (D_807FBB70->unk200 < var_s1->unk8) {
-                                    D_807FBB70->unk1FC = temp_s2;
-                                    D_807FBB70->unk200 = var_s1->unk8;
+                                if (D_807FBB70.unk200 < var_s1->unk8) {
+                                    D_807FBB70.unk1FC = temp_s2;
+                                    D_807FBB70.unk200 = var_s1->unk8;
                                 }
-                                if (D_807FBB70->unk201 < 0xF) {
-                                    (D_807FBB70 + (D_807FBB70->unk201 * 4))->unk204 = temp_s2;
-                                    (D_807FBB70 + D_807FBB70->unk201)->unk244 = var_s1->unk9;
-                                    temp_t5 = D_807FBB70->unk201 + 1;
-                                    D_807FBB70->unk201 = temp_t5;
+                                if (D_807FBB70.unk201 < 0xF) {
+                                    D_807FBB70.unk204[D_807FBB70.unk201] = temp_s2;
+                                    D_807FBB70.unk244[D_807FBB70.unk201] = var_s1->unk9;
+                                    temp_t5 = D_807FBB70.unk201 + 1;
+                                    D_807FBB70.unk201 = temp_t5;
                                     if (temp_s2->interactable & 1) {
                                         if (temp_s2->additional_actor_data->unkD4 != 0) {
                                             temp_a0_3 = temp_t5 & 0xFF;
                                             if ((*(&D_8074C608 + (arg0->unk58 * 8)) != 0) && ((temp_v0_3 = (D_807FBB70 + temp_a0_3)->unk243, (temp_v0_3 == 5)) || (temp_v0_3 == 0xF))) {
-                                                D_807FBB70->unk201 = temp_a0_3 - 1;
+                                                D_807FBB70.unk201 = temp_a0_3 - 1;
                                             }
                                         }
                                         if ((arg0->interactable & 2) && (func_80676220(arg0->unk58) != 0)) {
@@ -86,9 +86,9 @@ void func_80675810(Actor *arg0, void *arg1) {
                         var_s1 += 0xC;
                     } while (var_s4 == 0);
                     if (arg0->object_properties_bitfield & 0x20000000) {
-                        D_807FBB70->unk200 = 1;
+                        D_807FBB70.unk200 = 1;
                     }
-                    if ((D_807FBB70->unk200 == 6) || (D_807FBB70->unk200 == 7)) {
+                    if ((D_807FBB70.unk200 == 6) || (D_807FBB70.unk200 == 7)) {
                         func_80675DD0(arg0, temp_s2);
                     }
                     func_80675AFC(arg0, temp_s2);
@@ -105,11 +105,31 @@ void func_80675810(Actor *arg0, void *arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675C70.s")
 
-// TODO: Needs proper definition of D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675D70.s")
+void func_80675D70(Actor *arg0) {
+    if (D_807FBB70.unk200 < 2) {
+        D_807FBB70.unk1FC = arg0;
+        D_807FBB70.unk200 = 1;
+    }
+    if (D_807FBB70.unk201 < 0xF) {
+        D_807FBB70.unk204[D_807FBB70.unk201] = arg0;
+        D_807FBB70.unk244[D_807FBB70.unk201] = 2;
+        D_807FBB70.unk201 += 1;
+    }
+}
 
-// TODO: Needs proper definition of D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675DD0.s")
+void func_80675DD0(Actor *arg0, Actor *arg1) {
+    arg0->health -= arg1->unk136;
+    if (arg0->health <= 0) {
+        D_807FBB70.unk200 = 9;
+        return;
+    }
+    if (D_807FBB70.unk200 == 6) {
+        D_807FBB70.unk200 = 4;
+    }
+    if (D_807FBB70.unk200 == 7) {
+        D_807FBB70.unk200 = 5;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675E3C.s")
 

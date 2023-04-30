@@ -59,9 +59,9 @@ void func_80729B00(void) {
                 current_actor_pointer->control_state_progress = 0;
             }
         }
-        if ((D_807FBB70[0].unk1B != 0) && (current_actor_pointer->control_state != 0x39)) {
+        if ((D_807FBB70.unk1B != 0) && (current_actor_pointer->control_state != 0x39)) {
             if (D_807FDC98->unk46 & 0x800) {
-                D_807FBB70[0].unk15 = 1;
+                D_807FBB70.unk15 = 1;
             } else {
                 func_8067AC38();
                 current_actor_pointer->unk138 = 0;
@@ -76,7 +76,7 @@ void func_80729B00(void) {
         }
         if ((D_807FDC98->unk46 & 0x4000) && (current_actor_pointer->unk6A & 4)) {
             if ((current_actor_pointer->y_position + current_actor_pointer->unk15E) < current_actor_pointer->unkAC) {
-                D_807FBB70[0].unk15 = 1;
+                D_807FBB70.unk15 = 1;
             }
         }
         if ((current_map == MAP_FUNGI) && (D_807FDC94->interactable & 1)) {

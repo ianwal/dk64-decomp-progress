@@ -587,7 +587,7 @@ void func_806CB53C(void) {
 }
 
 void func_806CBE44(void) {
-    if ((D_807FBB70[0].unk2 != 0) && (D_807FBB70[0].unk14 == 1)) {
+    if ((D_807FBB70.unk2 != 0) && (D_807FBB70.unk14 == 1)) {
         func_806EB0C0(0x20, NULL, cc_player_index);
     }
 }
@@ -4716,12 +4716,12 @@ void func_806DB0C4(void) {
     f32 temp_f14;
     f32 temp_f20;
 
-    if (D_807FBB70[0].unkE4 != 0) {
-        extra_player_info_pointer->unkDC = D_807FBB70[0].unkEC;
+    if (D_807FBB70.unkE4 != 0) {
+        extra_player_info_pointer->unkDC = D_807FBB70.unkEC;
         extra_player_info_pointer->unk9C = current_actor_pointer->x_position;
         extra_player_info_pointer->unkA0 = current_actor_pointer->z_position;
-        extra_player_info_pointer->unkA4 = D_807FBB70[0].unkD8;
-        extra_player_info_pointer->unkA8 = D_807FBB70[0].unkE0;
+        extra_player_info_pointer->unkA4 = D_807FBB70.unkD8;
+        extra_player_info_pointer->unkA8 = D_807FBB70.unkE0;
         extra_player_info_pointer->unkAC_f32 = 0.0f;
         temp_f20 = extra_player_info_pointer->unkA4 - extra_player_info_pointer->unk9C;
         temp_f14 = extra_player_info_pointer->unkA8 - extra_player_info_pointer->unkA0;
@@ -6316,10 +6316,10 @@ void func_806E41EC(void) {
 }
 
 s32 func_806E4580(void) {
-    if ((D_807FD610[cc_player_index].unk2C & B_BUTTON) && D_807FBB70[0].unk2 && D_807FBB70[0].unk14 == 8) {
-        extra_player_info_pointer->unk220 = D_807FBB70[0].unk4;
-        extra_player_info_pointer->unk224 = D_807FBB70[0].unk8;
-        extra_player_info_pointer->unk228 = D_807FBB70[0].unkC;
+    if ((D_807FD610[cc_player_index].unk2C & B_BUTTON) && D_807FBB70.unk2 && D_807FBB70.unk14 == 8) {
+        extra_player_info_pointer->unk220 = D_807FBB70.unk4;
+        extra_player_info_pointer->unk224 = D_807FBB70.unk8;
+        extra_player_info_pointer->unk228 = D_807FBB70.unkC;
         func_806EB0C0(0x1F, NULL, cc_player_index);
         return TRUE;
     }

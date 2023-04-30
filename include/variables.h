@@ -4,7 +4,7 @@ extern PlayerAdditionalActorData *extra_player_info_pointer;
 extern Actor *current_actor_pointer;
 extern Actor *D_807FBB44;
 extern Actor *D_807FBB48;
-extern GlobalASMStruct35 D_807FBB70[];
+extern GlobalASMStruct35 D_807FBB70;
 extern Actor *D_807FBD6C;
 extern Actor *D_807FDC94;
 extern EnemyInfo *D_807FDC98;

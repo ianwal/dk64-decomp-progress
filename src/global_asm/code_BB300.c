@@ -103,10 +103,10 @@ void func_806B6958(void) {
         D_807FDC90->unk1F--;
         D_807FDC90->unk1E--;
     }
-    if (D_807FBB70->unk200 == 4) {
+    if (D_807FBB70.unk200 == 4) {
         func_80724C2C(-150);
     }
-    if ((D_807FDC90->unk2C == 0) || (D_807FBB70->unk200 == 9) || (D_807FBB70->unk15 != 0)) {
+    if ((D_807FDC90->unk2C == 0) || (D_807FBB70.unk200 == 9) || (D_807FBB70.unk15 != 0)) {
         func_80608528(current_actor_pointer, 0x3B2, 0xFF, 0x7F, 0x1E);
         func_80608528(current_actor_pointer, 0x3B7, 0xFF, 0x7F, 0x1E);
         func_806850D0();

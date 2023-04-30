@@ -137,7 +137,7 @@ void func_806B3680(void) {
         current_actor_pointer->unk64 |= 4;
         func_8067ACB4(current_actor_pointer);
     }
-    if (((D_807FBB70->unk200 == 9) || (D_807FBB70->unk15 != 0)) && (current_actor_pointer->control_state != 0x27)) {
+    if (((D_807FBB70.unk200 == 9) || (D_807FBB70.unk15 != 0)) && (current_actor_pointer->control_state != 0x27)) {
         current_actor_pointer->control_state = 0x27;
         current_actor_pointer->control_state_progress = 0;
     } else if (current_actor_pointer->control_state != 0x27) {
@@ -411,7 +411,7 @@ void func_806B49B0(u8 arg0, s16 arg1, s16 arg2) {
         current_actor_pointer->y_acceleration = D_807502EC;
     }
     sp32 = D_807FDC9C->unk6 + temp_v0->unk0;
-    if (((D_807FBB70->unk200 == 9) || (D_807FBB70->unk15 != 0)) && (arg0 != 0x37)) {
+    if (((D_807FBB70.unk200 == 9) || (D_807FBB70.unk15 != 0)) && (arg0 != 0x37)) {
         current_actor_pointer->control_state = 0x37;
         current_actor_pointer->control_state_progress = 0;
     }
@@ -634,7 +634,7 @@ void func_806B54BC(void) {
 
     temp_s1 = current_actor_pointer->unk178;
     func_80729B00();
-    if ((current_actor_pointer->control_state != 0x40) && (current_actor_pointer->control_state != 0x37) && ((D_807FBB70->unk200 == 9) || (D_807FBB70->unk15 != 0))) {
+    if ((current_actor_pointer->control_state != 0x40) && (current_actor_pointer->control_state != 0x37) && ((D_807FBB70.unk200 == 9) || (D_807FBB70.unk15 != 0))) {
         func_80605314(current_actor_pointer, 0);
         func_80614EBC(current_actor_pointer, 0x331);
         current_actor_pointer->control_state = 0x37;

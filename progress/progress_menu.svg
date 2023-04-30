@@ -9,7 +9,7 @@
     </mask>
     <g mask="url(#anybadge_1)">
         <path fill="#555" d="M0 0h41v20H0z"/>
-        <path fill="#e03800" d="M41 0h67v20H41z"/>
+        <path fill="#c03000" d="M41 0h67v20H41z"/>
         <path fill="url(#b)" d="M0 0h108v20H0z"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">

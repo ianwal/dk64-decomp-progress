@@ -677,7 +677,6 @@ void func_8002B920(void) {
 
 /*
 // TODO: what a mess
-void func_80613C48(Actor*, s16, f32, f32);
 void func_80614644(Actor *, ActorAnimationState *, s32);
 void func_806319C4(Actor *, s32);
 extern f32 D_8002DE50;

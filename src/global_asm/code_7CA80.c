@@ -919,8 +919,15 @@ Struct8067A09C *func_8067A09C(Struct8067A09C *arg0) {
 }
 */
 
-// TODO: Needs proper definition for D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A170.s")
+void func_8067A170(Actor* arg0, u8 arg1) {
+    s32 i;
+
+    for (i = 0; i < D_807FBB70.unk201; i++) {
+        if (arg1 == D_807FBB70.unk244[i] && arg0 == D_807FBB70.unk204[i]) {
+            D_807FBB70.unk244[i] = 0;
+        }
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A1DC.s")
@@ -1142,33 +1149,33 @@ void func_8067ABC0(s32 arg0, s32 arg1, u8 arg2, s16 arg3, s16 arg4, f32 arg5, f3
 }
 
 void func_8067AC38(void) {
-    D_807FBB70[0].unkE5 = 0;
-    D_807FBB70[0].unk15 = 0;
-    D_807FBB70[0].unk16 = 0;
-    D_807FBB70[0].unk17 = 0;
-    D_807FBB70[0].unk18 = 0;
-    D_807FBB70[0].unk19 = 0;
-    D_807FBB70[0].unk1B = 0;
-    D_807FBB70[0].unk1A = 0;
-    D_807FBB70[0].unk1C = 0;
-    D_807FBB70[0].unk24 = 0;
-    D_807FBB70[0].unk25 = 0;
-    D_807FBB70[0].unk2C = 0;
-    D_807FBB70[0].unk38 = 0;
-    D_807FBB70[0].unkE4 = 0;
-    D_807FBB70[0].unk90 = 0;
-    D_807FBB70[0].unk39 = 0;
-    D_807FBB70[0].unk91 = 0;
-    D_807FBB70[0].unk1F8 = 0;
-    D_807FBB70[0].unk1FC = 0;
-    D_807FBB70[0].unk200 = 0;
-    D_807FBB70[0].unk201 = 0;
-    D_807FBB70[0].unk254 = 0;
-    D_807FBB70[0].unk2 = 0;
-    D_807FBB70[0].unk0 = 0;
-    D_807FBB70[0].unkE8 = 0.0f;
-    D_807FBB70[0].unkF0 = 0.0f;
-    D_807FBB70[0].unkF4 = 0.0f;
+    D_807FBB70.unkE5 = 0;
+    D_807FBB70.unk15 = 0;
+    D_807FBB70.unk16 = 0;
+    D_807FBB70.unk17 = 0;
+    D_807FBB70.unk18 = 0;
+    D_807FBB70.unk19 = 0;
+    D_807FBB70.unk1B = 0;
+    D_807FBB70.unk1A = 0;
+    D_807FBB70.unk1C = 0;
+    D_807FBB70.unk24 = 0;
+    D_807FBB70.unk25 = 0;
+    D_807FBB70.unk2C = 0;
+    D_807FBB70.unk38 = 0;
+    D_807FBB70.unkE4 = 0;
+    D_807FBB70.unk90 = 0;
+    D_807FBB70.unk39 = 0;
+    D_807FBB70.unk91 = 0;
+    D_807FBB70.unk1F8 = 0;
+    D_807FBB70.unk1FC = 0;
+    D_807FBB70.unk200 = 0;
+    D_807FBB70.unk201 = 0;
+    D_807FBB70.unk254 = 0;
+    D_807FBB70.unk2 = 0;
+    D_807FBB70.unk0 = 0;
+    D_807FBB70.unkE8 = 0.0f;
+    D_807FBB70.unkF0 = 0.0f;
+    D_807FBB70.unkF4 = 0.0f;
 }
 
 void func_8067ACB4(Actor *arg0) {

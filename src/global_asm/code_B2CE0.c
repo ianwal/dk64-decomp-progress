@@ -175,8 +175,8 @@ void func_8072AB74(s32, f32, f32, s32, f32);
 
 void func_806B0354(void) {
     func_80729B00();
-    if (((D_807FBB70->unk200 == 9) || (D_807FBB70->unk15 != 0)) && (current_actor_pointer->control_state != 0x37)) {
-        func_8072D714(D_807FBB70->unk1FC, 0x37A);
+    if (((D_807FBB70.unk200 == 9) || (D_807FBB70.unk15 != 0)) && (current_actor_pointer->control_state != 0x37)) {
+        func_8072D714(D_807FBB70.unk1FC, 0x37A);
         current_actor_pointer->unk138 &= 0xFFFF7FFF;
     }
     switch (current_actor_pointer->control_state) {

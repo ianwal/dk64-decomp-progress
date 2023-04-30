@@ -161,7 +161,7 @@ void func_806C49D0() {
     func_806319C4(current_actor_pointer, 0);
 }
 
-
+// Actor->180???
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C4AC4.s")
 
 void func_806C4E8C(void) {
@@ -193,7 +193,7 @@ void func_806C55D8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C5C20.s")
 
-void func_80659670(f32, f32, f32, s16); /* extern */
+void func_80659670(f32, f32, f32, s16);
 
 void func_806C5FEC(void) {
     YetAnotherAdditionalActorData5 *temp_v1;

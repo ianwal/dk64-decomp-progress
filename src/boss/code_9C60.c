@@ -77,8 +77,8 @@ void func_8002E82C(void) {
             current_actor_pointer->control_state_progress = 0;
         }
     }
-    if ((D_807FBB70[0].unk15 != 0) || (D_807FBB70[0].unk200 == 9)) {
-        temp_v0_2 = D_807FBB70[0].unk1FC;
+    if ((D_807FBB70.unk15 != 0) || (D_807FBB70.unk200 == 9)) {
+        temp_v0_2 = D_807FBB70.unk1FC;
         if ((temp_v0_2->control_state == 0x2B) && (temp_v0_2->control_state_progress == 3)) {
             current_actor_pointer->control_state = 1;
             current_actor_pointer->control_state_progress = 0;

@@ -22,6 +22,8 @@ void playCutscene(Actor*, s16, s32);
 void playSong(s32, f32);
 void playSound(s16, s16, f32, f32, s32, s32);
 
+void func_80613C48(Actor*, s16, f32, f32);
+
 // TODO: arg0 might be actionIndex
 u8 func_806EB0C0(s16 arg0, Actor *actor, u8 playerIndex);
 void func_8067B238(Actor *destination, Actor *source, f32 scale);

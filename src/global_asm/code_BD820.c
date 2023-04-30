@@ -104,7 +104,35 @@ void func_806B8C78(void) {
 }
 */
 
-// TODO: Needs proper definition of D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BD820/func_806B904C.s")
-
 extern f64 D_8075B8C0;
+
+void func_806B904C(void) {
+    f32 temp_f0;
+    s16 i;
+
+    func_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        temp_f0 = (D_807FDC9C->unkF / D_8075B8C0) * 0.75;
+        current_actor_pointer->animation_state->scale_x = temp_f0;
+        current_actor_pointer->animation_state->scale_y = temp_f0;
+        current_actor_pointer->animation_state->scale_z = temp_f0;
+        if (func_805FF0C8() != 0) {
+            current_actor_pointer->control_state = 0x40;
+        } else {
+            current_actor_pointer->draw_distance = 1000;
+            current_actor_pointer->unk130 = 0x3C;
+            current_actor_pointer->unk131 = 0x3C;
+            func_80613C48(current_actor_pointer, 0x482, 0, 0);
+        }
+        func_8063C1EC(5, 0x10);
+        func_8063C1EC(7, 0x10);
+    }
+    for (i = 0; i < D_807FBB70.unk254; i++) {
+        if (D_807FBB70.unk258[i] == 3) {
+            current_actor_pointer->control_state = D_807FBB70.unk278[i]->unk2;
+            current_actor_pointer->control_state_progress = 0;
+        }
+    }
+    func_806B8C78();
+    func_806319C4(current_actor_pointer, 0);
+}

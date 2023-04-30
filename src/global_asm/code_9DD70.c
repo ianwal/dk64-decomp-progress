@@ -5,7 +5,6 @@
 extern s8 D_807F6951;
 extern s8 D_807F6950;
 
-void func_80613C48(Actor*, s16, f32, f32);
 void func_8070D8C0(Actor*, s32, u8);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_80699070.s")
@@ -39,7 +38,7 @@ void func_80699914(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069A614.s")
 
-// TODO: Needs proper definition for D_807FBB70
+// TODO: Needs some more shape on D_807FBB70.unk0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069A750.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069A7C8.s")

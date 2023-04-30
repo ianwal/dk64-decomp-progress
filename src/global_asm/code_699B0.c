@@ -416,7 +416,7 @@ f32 func_80665E94(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s1
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665F24.s")
 
-LedgeInfo *func_8066E2C0(f32, f32, void *, f32, f32, f32, f32, s16 *, void *, void *, void *); /* extern */
+LedgeInfo *func_8066E2C0(f32, f32, void *, f32, f32, f32, f32, s16 *, void *, void *, void *);
 
 /*
 // TODO: Need to give some shape to actor->unk0 (model pointer)

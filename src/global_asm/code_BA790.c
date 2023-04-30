@@ -10,12 +10,8 @@ void func_806B63E0() {
     func_806B5A90(10000, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BA790/func_806B640C.s")
-
 extern f32 D_8075B750;
 
-/*
-// TODO: Very close, missing something with the loop index
 void func_806B640C(void) {
     Actor178 *temp_s6;
     s16 i;
@@ -27,10 +23,8 @@ void func_806B640C(void) {
         temp_s6->unk0 = -D_807FDC9C->unkA_s16;
     }
     if (is_cutscene_active == 1) {
-        // TODO: Something is up with this loop, I think I'm missing a reference to i somewhere
-        for (i = 0; i < D_807FBB70[0].unk254; i++) {
-            // Possibly D_807FBB70[i]
-            if (D_807FBB70[0].unk258 == 3) {
+        for (i = 0; i < D_807FBB70.unk254; i++) {
+            if (D_807FBB70.unk258[i] == 3) {
                 current_actor_pointer->noclip_byte = 0x24;
                 func_80614EBC(current_actor_pointer, 0x24F);
             }
@@ -44,7 +38,7 @@ void func_806B640C(void) {
                 func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x150, 0xFF, 0x7F, 0x1E, 0x32, D_8075B750, 0);
             }
             if (temp_s6->unk0 == 0) {
-                D_807FBB70->unk200 = 9;
+                D_807FBB70.unk200 = 9;
             }
         }
     }
@@ -52,4 +46,3 @@ void func_806B640C(void) {
         temp_s6->unk0 = -temp_s6->unk0;
     }
 }
-*/

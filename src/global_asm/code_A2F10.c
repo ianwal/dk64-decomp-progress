@@ -230,7 +230,6 @@ extern f64 D_8075A4C8;
 extern s32 D_807FBB68;
 
 GlobalASMStruct60 *func_80688584(Actor*, s32);
-void func_80613C48(Actor*, s16, f32, f32);
 
 /*
 // TODO: Doable, good progress made

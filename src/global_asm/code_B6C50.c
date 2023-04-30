@@ -37,13 +37,13 @@ void func_806B1F50(void) {
         func_80614EBC(current_actor_pointer, 0x300);
         func_80604CBC(current_actor_pointer, 0x135, 0x64, 0, 0, 0x78, 1.0f, 0);
     }
-    if ((D_807FBB70->unk15 != 0) || (D_807FBB70->unk200 == 9)) {
+    if ((D_807FBB70.unk15 != 0) || (D_807FBB70.unk200 == 9)) {
         current_actor_pointer->unk11C->control_state = 0;
         playCutscene(current_actor_pointer, 6, 5);
         current_actor_pointer->noclip_byte = 1;
         current_actor_pointer->control_state = 0x37;
         current_actor_pointer->control_state_progress = 0;
-    } else if (D_807FBB70->unk200 == 4) {
+    } else if (D_807FBB70.unk200 == 4) {
         current_actor_pointer->control_state_progress++;
     }
     switch (current_actor_pointer->control_state) {
@@ -110,7 +110,6 @@ extern f64 D_8075B3D8;
 extern f64 D_8075B3E0;
 
 void func_8072AB74(s32, f32, f32, s32, f32);
-void func_80613C48(Actor*, s32, f32, f32);
 
 void func_806B24B8(void) {
     Actor *temp_v0;
@@ -137,7 +136,7 @@ void func_806B24B8(void) {
         D_807FDC90->unk4 = player_pointer;
         D_807FDC94 = D_807FDC90->unk4;
     }
-    if ((D_807FBB70->unk15 != 0) || (D_807FBB70->unk200 == 9)) {
+    if ((D_807FBB70.unk15 != 0) || (D_807FBB70.unk200 == 9)) {
         current_actor_pointer->noclip_byte = 1;
         current_actor_pointer->control_state = 0x40;
         func_8067DF44(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, current_actor_pointer->animation_state->scale_y / D_8075B3E0, 0, 1);

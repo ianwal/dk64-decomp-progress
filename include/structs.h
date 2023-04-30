@@ -220,9 +220,12 @@ typedef struct animation_state_unk8 {
     s32 unk0;
 } AnimationStateUnk8;
 
-// TODO: Fill this in properly
 typedef struct {
-    u8 unk0;
+    s8 unk0;
+    s8 unk1;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
 } AnimationStateUnk1C;
 
 // TODO: Fill this in properly
@@ -388,6 +391,13 @@ typedef struct {
     s8 unk13;
 } Actor114;
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+} Struct807FBB70_unk278;
+
 // TODO: What type is this actually?
 // D_807FBB70
 typedef struct {
@@ -395,10 +405,10 @@ typedef struct {
     u8 unk1;
     u8 unk2;
     u8 unk3;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    u8 pad10[0x14 - 0x10];
+    f32 unk4; // X Position (updated when touching warp pad)
+    f32 unk8; // Y Position (updated when touching warp pad)
+    f32 unkC; // Z Position (updated when touching warp pad)
+    s32 unk10;
     u8 unk14;
     u8 unk15;
     u8 unk16;
@@ -416,12 +426,50 @@ typedef struct {
     u8 pad2D[0x38 - 0x2D];
     u8 unk38;
     u8 unk39;
-    u8 pad3A[0x90 - 0x3A]; // TODO: Actor* at 0x7C? see func_8069A750
+    u16 unk3A;
+    f32 unk3C; // X Position?
+    f32 unk40; // Y Position?
+    f32 unk44; // Z Position?
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    void *unk7C; // TODO: Actor*?
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
     u8 unk90;
     u8 unk91;
     s16 unk92;
     s16 unk94;
-    u8 pad96[0xD8 - 0x96];
+    u8 unk96;
+    u8 unk97;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+    s32 unkA4;
+    s32 unkA8;
+    s32 unkAC;
+    s32 unkB0;
+    s32 unkB4;
+    s32 unkB8;
+    s32 unkBC;
+    s32 unkC0;
+    s32 unkC4;
+    s32 unkC8;
+    s32 unkCC;
+    s32 unkD0;
+    s32 unkD4;
     f32 unkD8;
     f32 unkDC; // TODO: Confirm datatype
     f32 unkE0;
@@ -439,9 +487,9 @@ typedef struct {
     u8 unk200;
     u8 unk201;
     s16 unk202;
-    Actor *unk204;
+    Actor *unk204[1]; // TODO: How many elements?
     u8 pad208[0x244 - 0x208];
-    s8 unk244;
+    u8 unk244[1]; // TODO: How many elements?
     s8 unk245;
     s8 unk246;
     s8 unk247;
@@ -450,7 +498,7 @@ typedef struct {
     u8 unk255;
     u8 unk256;
     u8 unk257;
-    s32 unk258; // Used
+    s32 unk258[1]; // Used // TODO: How many elements?
     s32 unk25C;
     s32 unk260;
     s32 unk264;
@@ -458,7 +506,7 @@ typedef struct {
     s32 unk26C;
     s32 unk270;
     s32 unk274;
-    s32 unk278;
+    Struct807FBB70_unk278 *unk278[1]; // Used // TODO: How many elements?
 } GlobalASMStruct35;
 
 struct actor_collision {

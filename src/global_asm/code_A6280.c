@@ -3,7 +3,6 @@
 
 
 void func_806319C4(Actor *, s32);
-void func_80613C48(Actor*,s16,f32,f32);
 void func_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
 extern f64 D_8075A588;
 extern f64 D_8075A590;
@@ -152,7 +151,7 @@ void func_806A1AC4(void) {
     }
     switch (current_actor_pointer->control_state) {
         case 0:
-            if ((D_807FBB70->unk254 != 0) && (D_807FBB70->unk258 == 1)) {
+            if ((D_807FBB70.unk254 != 0) && (D_807FBB70.unk258 == 1)) {
                 func_8070DA74(current_actor_pointer);
                 func_8070D8C0(current_actor_pointer, 0x1F, 1);
                 playCutscene(current_actor_pointer, 0x12, 1);
@@ -168,7 +167,7 @@ void func_806A1AC4(void) {
             }
             break;
         case 1:
-            if ((D_807FBB70->unk254 != 0) && (D_807FBB70->unk258 == 1)) {
+            if ((D_807FBB70.unk254 != 0) && (D_807FBB70.unk258 == 1)) {
                 func_80614EBC(current_actor_pointer, 0x328);
                 current_actor_pointer->control_state = 2;
                 current_actor_pointer->noclip_byte = 2;

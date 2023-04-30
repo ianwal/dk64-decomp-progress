@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 extern s32 D_807F5D10;
 extern f32 D_8075BEA8;
 extern f64 D_8075BEB0;
@@ -15,8 +13,36 @@ void func_806319C4(Actor*, s32);
 void func_80724E48(u8);
 void func_806F09F0(Actor*, u16);
 
-// TODO: Needs proper definition for D_807FBB70 (array at unk0?)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806BDD90.s")
+void func_80665564(Actor*, f32);
+void func_806651FC(Actor*);
+void func_80724CA4(s32, s32);
+
+u8 func_806BDD90(void) {
+    s16 i;
+
+    func_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        if (func_805FF0C8() != 0) {
+            current_actor_pointer->control_state = 0x40;
+        } else {
+            current_actor_pointer->unk130 = 0x3C;
+            current_actor_pointer->unk131 = 0x3C;
+            current_actor_pointer->draw_distance = 0x3E8;
+            func_80724CA4(2, 1);
+            D_807FDC90->unk30 = current_actor_pointer->animation_state->scale_y;
+            current_actor_pointer->y_acceleration = current_actor_pointer->y_acceleration / 1.5;
+        }
+    }
+    func_80729E6C();
+    func_806651FC(current_actor_pointer);
+    func_80665564(current_actor_pointer, 0.0f);
+    for (i = 0; i < D_807FBB70.unk254; i++) {
+        if (D_807FBB70.unk258[i] == 3) {
+            return D_807FBB70.unk278[i]->unk2;
+        }
+    }
+    return 0;
+}
 
 extern f32 D_8075BBE4;
 void func_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
@@ -99,7 +125,6 @@ void func_806BFBB4() {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806BFBF4.s")
 
 void func_8072AB74(s32, f32, f32, s32, f32);
-void func_80613C48(Actor*, s32, f32, f32);
 void func_806F0C18(Actor*);
 
 void func_806C10A0(u8 arg0, u16 arg1, s16 arg2) {
@@ -114,7 +139,7 @@ void func_806C10A0(u8 arg0, u16 arg1, s16 arg2) {
     switch (current_actor_pointer->control_state) {
         case 5:
             func_8072AB74(0, 0.0f, 0.0f, 2, 0.0f);
-            /* fallthrough */
+            // fallthrough
         case 0:
             if (func_80629148()) {
                 current_actor_pointer->control_state = 0x12;
@@ -246,7 +271,7 @@ void func_806C1734(void) {
         temp_v1 = current_actor_pointer->animation_state;
         if (temp_v1->unk8->unk0 == 0) {
             temp_a0 = temp_v1->unk0;
-            switch (temp_a0->unk10) {                      /* irregular */
+            switch (temp_a0->unk10) {
                 case 0xBB:
                     if ((current_actor_pointer->y_velocity > 30.0f) && !(object_timer & 3)) {
                         func_80714998(2);

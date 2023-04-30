@@ -4,8 +4,6 @@
 extern f32 D_800361B0;
 extern f32 D_800361B4;
 
-void func_80613C48(Actor*, s32, f32, f32);
-
 void func_800292B0(f32 arg0) {
     func_80691830(0x6A, 1.2f, 0, 0x96, 0xFF, 0xB, D_800361B0, 0.0f, 0.0f, 0.0f);
     func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x221, 0x80, 0x7F, 1, 0, D_800361B4, 0);

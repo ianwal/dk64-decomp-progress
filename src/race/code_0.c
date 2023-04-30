@@ -297,6 +297,7 @@ void func_80027C60(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80028E20.s")
 
+// TODO: Actor17C stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80029054.s")
 
 void func_800292B0(s32 arg0, Actor *arg1) {
@@ -609,7 +610,6 @@ void func_8002DC24(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002DCF0.s")
 
-
 typedef struct RaceStruct14 {
     s32 unk0;
     s32 unk4;
@@ -691,27 +691,35 @@ void func_8002E464(s32 arg0, Actor *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002E960.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002E9AC.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+} RaceStruct2_unkC;
 
 typedef struct RaceStruct2 {
     s32 unk0;
     s32 unk4;
     u16 unk8;
     s16 unkA;
-    s32 unkC;
+    RaceStruct2_unkC *unkC;
 } RaceStruct2;
 extern RaceStruct2 *D_8002FCF0;
 
-/*
-// TODO: Close
-s32 func_8002E9AC(u8 arg0, RaceStruct2 *arg1) {
+void *func_8002E9AC(u8 arg0, RaceStruct2 *arg1) {
     arg1 = D_8002FCF0;
     if ((arg1 == 0) || (arg0 >= arg1->unk8)) {
         return 0;
     }
-    return arg1->unkC + (arg0 * 0x28);
+    return &arg1->unkC[arg0];
 }
-*/
 
 // arg0 is checkpoint file pointer
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002E9F8.s")
@@ -845,7 +853,7 @@ typedef struct RaceStruct13 {
 } RaceStruct13;
 
 void func_8002F36C(s32, s32);
-s32 func_8002E9AC(s32);
+// s32 func_8002E9AC(s32);
 
 /*
 // TODO: Regalloc, boo

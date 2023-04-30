@@ -14,7 +14,6 @@ void func_80627878(Actor*);
 void func_806F0D68(Actor*);
 void func_80613AF8(Actor*, s32, f32, f32);
 void func_806EEAF8(s16);
-void func_80613C48(Actor*, s16, f32, f32);
 
 extern s16 D_807FD584;
 extern s16 D_807539DC[];

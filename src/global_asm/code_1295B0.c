@@ -7,7 +7,20 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724994.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724A20.s")
+s32 func_80724A20(void) {
+    s16 i;
+    s32 found;
+
+    found = FALSE;
+    for (i = 0; !found && i < D_807FBB70.unk254; i++) {
+        if (D_807FBB70.unk258[i] == 3) {
+            found = TRUE;
+            current_actor_pointer->control_state = D_807FBB70.unk278[i]->unk2;
+            current_actor_pointer->control_state_progress = 0;
+        }
+    }
+    return found;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724A9C.s")
 

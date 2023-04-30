@@ -119,13 +119,13 @@ void func_806AD9F4(void) {
             func_806AD9AC();
         }
     }
-    if (((D_807FBB70[0].unk200 == 9) || D_807FBB70[0].unk15) && (current_actor_pointer->control_state != 0x37)) {
-        func_8072D714(D_807FBB70[0].unk1FC, 0x2F7);
+    if (((D_807FBB70.unk200 == 9) || D_807FBB70.unk15) && (current_actor_pointer->control_state != 0x37)) {
+        func_8072D714(D_807FBB70.unk1FC, 0x2F7);
         func_8072B324(current_actor_pointer, 0);
         current_actor_pointer->unkB8 = -200.0f;
-    } else if (D_807FBB70[0].unk200 == 4) {
+    } else if (D_807FBB70.unk200 == 4) {
         current_actor_pointer->unk132 = 2;
-        func_8072DEA8(0x2F6, 0x27, D_807FBB70[0].unk1FC);
+        func_8072DEA8(0x2F6, 0x27, D_807FBB70.unk1FC);
         current_actor_pointer->unkB8 *= 2;
         D_807FDC90->unk2C = 0x1F4;
     }

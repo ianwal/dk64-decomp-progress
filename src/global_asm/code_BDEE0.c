@@ -97,8 +97,6 @@ extern f64 D_8075B9E8;
 extern u8 D_807FBD70;
 extern s32 D_8071FB34;
 
-void func_80613C48(Actor*, s16, f32, f32);
-
 /*
 s32 func_806BA240(u8 arg0, s16 arg1) {
     Actor178 *sp54;

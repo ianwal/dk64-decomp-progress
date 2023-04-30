@@ -104,8 +104,51 @@ void func_8067BDF8() {
     func_8067BF84(0x13, temp_a1, temp_a1 + 1, &sp1F);
 }
 
-// Doable, needs some solid aaD knowledge though and definition for D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067BE30.s")
+
+typedef struct {
+    s16 unk0;
+    s8 unk2;
+    s8 unk3;
+    s8 unk4;
+} AAD_8067BE30;
+
+/*
+// TODO: Good progress made, not sure what the last steps are...
+void func_8067BE30(void) {
+    AAD_8067BE30 *temp_t0;
+    s16 i;
+
+    temp_t0 = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->draw_distance = 2000;
+        temp_t0->unk0 = 0x1A;
+    }
+    for (i = 0; i < D_807FBB70.unk254; i++) {
+        switch (D_807FBB70.unk258[i]) {
+            case 1:
+                temp_t0->unk0 = 0x60;
+                break;
+            case 2:
+                temp_t0->unk0 = 0;
+                break;
+            case 3:
+                temp_t0->unk0 = 0x1A;
+                break;
+        }
+    }
+    if (temp_t0->unk0 != 0) {
+        if (func_8067BF84(temp_t0->unk0, &temp_t0->unk2, &temp_t0->unk3, &temp_t0->unk4) != 0) {
+            temp_t0->unk0 = 0x1A;
+        }
+    } else {
+        if (D_807FBB70.unk38 != 0) {
+            temp_t0->unk4 = 1;
+        }
+        func_806319C4(current_actor_pointer, 0);
+    }
+}
+*/
 
 void func_8067BF4C() {
     s32 temp_v0;
@@ -119,7 +162,6 @@ void func_8067BF4C() {
 
 extern f32 D_80759450;
 extern f64 D_80759458;
-extern u8 D_807FBBA8;
 extern s32 D_8071FE08; // TODO: Datatype
 
 /*
@@ -223,16 +265,16 @@ void func_8067C2B8(void) {
     if (!(current_actor_pointer->unk68 & 4)) {
         current_actor_pointer->unkB8 = 0.0f;
     }
-    if (D_807FBB70->unk90 != 0) {
+    if (D_807FBB70.unk90 != 0) {
         temp_v0->unk8 = 1;
     }
-    if (D_807FBB70->unk91 != 0) {
+    if (D_807FBB70.unk91 != 0) {
         if (temp_v0->unk0 == 0) {
             func_80604CBC(current_actor_pointer, 0x10C, 0, 1, 0, 0xFF, 1.0f, 0);
             temp_v0->unk0 = 1;
         }
-        temp_v0->unk4 = D_807FBB70[0].unk94 / D_80759460;
-        current_actor_pointer->unkEE = D_807FBB70->unk92;
+        temp_v0->unk4 = D_807FBB70.unk94 / D_80759460;
+        current_actor_pointer->unkEE = D_807FBB70.unk92;
         if (current_actor_pointer->unkB8 < temp_v0->unk4) {
             current_actor_pointer->unkB8 += D_80759468;
             if (temp_v0->unk4 < current_actor_pointer->unkB8) {
@@ -308,6 +350,7 @@ void func_8067C6FC(void) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067C71C.s")
 
+// TODO: Seems doable, might get owned by rodata though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067DCC0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067DF44.s")
@@ -353,8 +396,15 @@ void func_8067E3D0(void) {
     func_806F8D58(5, 0);
 }
 
-// Might use CharacterChange ptr
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067E43C.s")
+void func_8067E43C(void) {
+    s16 i;
+
+    for (i = 0; i < D_807FBB70.unk254; i++) {
+        if ((D_807FBB70.unk258[i] == 1) && (D_807FBB70.unk278[i]->unk0) == 0xFF) {
+            func_8067E3D0();
+        }
+    }
+}
 
 void func_8067E4D4() {
     func_8067E784();
@@ -363,7 +413,27 @@ void func_8067E4D4() {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067E510.s")
+void func_8067E510(void) {
+    s16 i;
+
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->animation_state->scale_x *= 1.5;
+        current_actor_pointer->animation_state->scale_y *= 1.5;
+        current_actor_pointer->animation_state->scale_z *= 1.5;
+        current_actor_pointer->draw_distance = 2000;
+    }
+    if (current_actor_pointer->control_state == 0) {
+        for (i = 0; i < D_807FBB70.unk254; i++) {
+            if (D_807FBB70.unk258[i] == 1) {
+                func_807149B8(0);
+                func_807149FC(1);
+                func_80714CC0(&D_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
+                func_806782C0(current_actor_pointer);
+            }
+        }
+    }
+    func_8067E784();
+}
 
 void func_8067E69C() {
     func_8067E784();
@@ -396,8 +466,16 @@ void func_8067E764(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067E784.s")
 
-// TODO: Needs proper definition of D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067FAC8.s")
+void func_8067FAC8(void) {
+    s16 i;
+
+    for (i = 0; i < D_807FBB70.unk254; i++) {
+        if ((D_807FBB70.unk258[i] == 1) && (D_807FBB70.unk278[i]->unk0 == 1)) {
+            func_8067DCC0();
+            func_806782C0(current_actor_pointer);
+        }
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067FB6C.s")
@@ -460,12 +538,108 @@ u8 func_80680908(void) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_806809F0.s")
 
-// Doable and interesting, reading which flag to set from an array
-// Just needs some patience, energy, and a defintion for unkD in an aaD
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80681B14.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+    u8 unkC;
+    u8 unkD;
+} AAD_80681B14;
 
-// Similar to above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80681BD8.s")
+extern s16 D_8074E7E0[];
+
+void func_80681B14(void) {
+    AAD_80681B14 *temp_v1;
+
+    temp_v1 = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        if (isFlagSet(0x302, 0) != 0) {
+            func_806782C0(current_actor_pointer);
+            return;
+        }
+    }
+    func_806809F0();
+    if ((current_actor_pointer->control_state == 0xC) && (temp_v1->unkD < 3)) {
+        setFlag(D_8074E7E0[temp_v1->unkA], 1, 2);
+        func_8067DCC0();
+        func_806782C0(current_actor_pointer);
+    }
+}
+
+typedef struct {
+    s32 unk0;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    u8 unkC;
+    u8 unkD;
+} AAD_80681BD8;
+
+void func_80681BD8(void) {
+    AAD_80681BD8 *sp2C;
+    s32 sp28;
+    s32 i;
+    s32 var_s1;
+
+    sp2C = current_actor_pointer->additional_actor_data;
+    func_806809F0();
+    if (isFlagSet(0x17F, FLAG_TYPE_PERMANENT) == FALSE) {
+        current_actor_pointer->control_state = 0x14;
+        current_actor_pointer->noclip_byte = 1;
+        current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+        current_actor_pointer->shadow_opacity = 0;
+    } else {
+        if (isFlagSet(0x187, FLAG_TYPE_PERMANENT) == FALSE) {
+            if (current_actor_pointer->control_state == 0xB) {
+                var_s1 = 0;
+                i = 0;
+                do {
+                    var_s1 += isFlagSet(i + 0x182, FLAG_TYPE_PERMANENT) != FALSE;
+                    i++;
+                } while (i < 4);
+                if (var_s1 == 4) {
+                    playCutscene(player_pointer, 3, 1);
+                    setFlag(0x187, TRUE, FLAG_TYPE_PERMANENT);
+                }
+            }
+        }
+        switch (sp2C->unk6) {
+            case 0xB1:
+                sp28 = 0x182;
+                break;
+            case 0xB6:
+                sp28 = 0x183;
+                break;
+            case 0xB4:
+                sp28 = 0x184;
+                break;
+            case 0xB5:
+                sp28 = 0x185;
+                break;
+        }
+        if (isFlagSet(sp28, FLAG_TYPE_PERMANENT) != FALSE) {
+            sp2C->unkC = 1;
+            sp2C->unkA = 0;
+            if (current_actor_pointer->control_state == 0) {
+                current_actor_pointer->control_state = 0x14;
+                current_actor_pointer->noclip_byte = 1;
+                current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+                current_actor_pointer->shadow_opacity = 0;
+            }
+        } else {
+            if (current_actor_pointer->control_state == 0x14) {
+                current_actor_pointer->noclip_byte = 2;
+                current_actor_pointer->control_state = 0x15;
+            }
+        }
+    }
+    if ((current_actor_pointer->control_state == 0xC) && (sp2C->unkD < 3)) {
+        func_8067DCC0();
+        func_806782C0(current_actor_pointer);
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80681E18.s")
@@ -483,6 +657,7 @@ u8 func_80680908(void) {
 /*
 extern ? D_8074E834;
 
+// TODO: Doable
 void func_8068304C(void) {
     ? sp2C;
     void *sp28;
@@ -596,8 +771,8 @@ void func_806833DC(YetAnotherAdditionalActorData *arg0) {
         }
     } else {
 block_6:
-        if (D_807FBB70->unk200 == 4) {
-            temp_t1 = D_807FBB70->unk1FC;
+        if (D_807FBB70.unk200 == 4) {
+            temp_t1 = D_807FBB70.unk1FC;
             arg0->unk0 = temp_t1;
             temp_t1->unk144 = 1;
             temp_v0_5 = arg0->unk0->unk174;
@@ -613,8 +788,27 @@ block_6:
 // Doable, might need some structs?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_806836D0.s")
 
-// Doable, needs some structs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80683A80.s")
+
+/*
+// TODO: This is probably wrong
+typedef struct {
+    Actor *unk8;
+} Struct80683A80_arg0;
+
+extern s32 D_8074E87C[];
+
+// TODO: sus
+s32 func_80683A80(Struct80683A80_arg0 *arg0, s32 arg1) {
+    s32 var_a2;
+
+    var_a2 = 0;
+    if ((arg0[arg1 + 2].unk8->unk58 ^ 0x13C) == 0) {
+        var_a2 = func_8070E750(2, D_8074E87C[arg1 - 8], 1);
+    }
+    return var_a2;
+}
+*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80683AD8.s")
