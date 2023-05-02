@@ -120,6 +120,29 @@ void func_80651BC0(s16 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80651BE0.s")
 
+// Note: Needs to be aligned in memory by maximum 0x2: {s32 unk0; s32 unk4; u8 unk8; u8 unk9;} doesn't match
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+} Struct807F6C1C;
+
+extern Struct807F6C1C *D_807F6C1C;
+
+/*
+// TODO: Regalloc
+void func_80651BE0(s16 arg0, u8 arg1, s8 arg2) {
+    D_807F6C1C[arg0 * 2 + arg1].unk9 = arg2;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80651C2C.s")
 
 typedef struct {
@@ -136,12 +159,6 @@ typedef struct {
 } Struct807F70B0;
 extern Struct807F70B0 *D_807F70B0;
 
-// Note: Needs to be aligned in memory by maximum 0x2: {s32 unk0; s32 unk4; u8 unk8; u8 unk9;} doesn't match
-typedef struct {
-    u8 unk0[0xA];
-} Struct807F6C1C;
-
-extern Struct807F6C1C *D_807F6C1C;
 extern s32 D_807F6C20;
 extern s32 D_807F6C28;
 extern u8 *D_807F6C2C;
@@ -173,7 +190,7 @@ void func_806521F8(void) {
         chunk_array_pointer[i].deload4 = 0;
     }
     for (i = 0; i < D_807F6C20; i++) {
-        D_807F6C1C[i].unk0[8] = 0;
+        D_807F6C1C[i].unk8 = 0;
         D_807F6C2C[i] = 0;
     }
 }
@@ -941,13 +958,80 @@ void func_806588E0(s32 fileIndex) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658B08.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658BD0.s")
+s32 func_807009F4(s16);
+s16 func_80700AE4(s16, s16);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658C10.s")
+typedef struct {
+    s32 unk0; // Used
+    s16 unk4; // Used
+    s16 unk6; // Used
+    s16 unk8;
+    s16 unkA;
+    s32 unkC;
+    u8 unk10; // Used
+    u8 unk11; // Used
+    u8 unk12;
+    u8 unk13;
+} Struct807F72B8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658CCC.s")
+extern Struct807F72B8 D_807F7290[];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658DAC.s")
+void func_80658BD0(void) {
+    s32 i;
+    for (i = 0; i < 10; i++) {
+        D_807F7290[i].unk10 = 0;
+    }
+}
+
+void func_80658C10(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s32 found;
+    s32 i;
+
+    found = FALSE;
+    i = 0;
+    while (i < 10 && !found) {
+        if (D_807F7290[i].unk10 != 0) {
+            i++;
+        } else {
+            found = TRUE;
+        }
+    }
+    if (found) {
+        D_807F7290[i].unk10 = 1;
+        D_807F7290[i].unkC = object_timer;
+        D_807F7290[i].unk0 = arg0;
+        D_807F7290[i].unk4 = arg1;
+        D_807F7290[i].unk6 = arg2;
+        D_807F7290[i].unk8 = arg3;
+    }
+}
+
+void func_80658CCC(void) {
+    s32 i;
+
+    for (i = 0; i < 10; i++) {
+        if ((D_807F7290[i].unk10 != 0) && (object_timer == D_807F7290[i].unkC)) {
+            if (func_807009F4(func_80700AE4(D_807F7290[i].unk4, D_807F7290[i].unk6)) <= (f32)D_807F7290[i].unk8) {
+                D_807F7290[i].unk11 = 1;
+            } else {
+                D_807F7290[i].unk11 = 0;
+            }
+        }
+        if ((object_timer - D_807F7290[i].unkC) >= 3U) {
+            D_807F7290[i].unk10 = 0;
+        }
+    }
+}
+
+u8 func_80658DAC(s32 arg0) {
+    s32 i;
+    for (i = 0; i < 10; i++) {
+        if (arg0 == D_807F7290[i].unk0) {
+            return D_807F7290[i].unk11;
+        }
+    }
+    return 0;
+}
 
 void func_80658E58(u16 arg0, u16 arg1, u16 arg2, u16 arg3) {
     D_807F7358 = arg0;

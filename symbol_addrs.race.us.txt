@@ -24,3 +24,4 @@ cc_number_of_players = 0x807FC928;
 cc_player_index = 0x807FC929;
 
 D_807FD610 = 0x807FD610;
+D_80770B68 = 0x80770B68;

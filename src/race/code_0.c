@@ -289,7 +289,19 @@ void func_80027C60(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_800282D8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_800283D4.s")
+extern f32 D_8002FF84;
+extern s16 D_80770628[];
+extern f32 D_80770B68[];
+extern f32 D_80770BC0[];
+
+void func_800283D4(f32 arg0) {
+    s32 temp_a0;
+
+    temp_a0 = D_80770628[current_actor_pointer->unk6E];
+    current_actor_pointer->unk74 = 1.0f;
+    D_80770B68[temp_a0] = (arg0 * D_8002FF84) + 1.0;
+    D_80770BC0[temp_a0] = 1.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80028440.s")
 
@@ -799,6 +811,25 @@ f32 func_8002F04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f3
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002F0AC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002F280.s")
+
+f32 func_80611BB4(f32, f32);
+extern f32 D_80030150;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+} Struct8002F280_arg0;
+
+/*
+// TODO: Regalloc
+u8 func_8002F280(Struct8002F280_arg0 *arg0) {
+    f32 p1 = current_actor_pointer->x_position - arg0->unk0;
+    f32 p2 = current_actor_pointer->z_position - arg0->unk4;
+    return (func_806CC14C((s16)(func_80611BB4(p1, p2) * D_80030150) & 0xFFF, arg0->unk6) < 0x400);
+}
+*/
 
 void func_8002F04C(f32, f32, f32, f32, f32, f32, f32, f32);
 typedef struct RaceStruct10 {

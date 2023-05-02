@@ -1018,7 +1018,7 @@ struct actor {
     s16 unk6E;
     u16 unk70;
     u16 unk72;
-    u32 unk74;
+    f32 unk74;
     u8 unk78;
     u8 unk79;
     u8 unk7A;

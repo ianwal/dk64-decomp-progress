@@ -118,6 +118,7 @@ void func_8065D244(u16 arg0) {
     D_807F8E8A = arg0;
 }
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065D254.s")
 
 typedef struct {

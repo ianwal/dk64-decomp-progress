@@ -52,8 +52,15 @@ void func_8002450C(u8 *arg0, u8 arg1, s8 arg2) {
 }
 */
 
-// Actor->animation_state->unk1C struct array pointer?
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024524.s")
+void func_80024524(u8 arg0, s16 arg1) {
+    AnimationStateUnk1C *temp_v0;
+
+    temp_v0 = &current_actor_pointer->animation_state->unk1C[arg0];
+    if (arg0 == 3) {
+        temp_v0->unk1 = 0x2F;
+    }
+    temp_v0->unk2 = arg1;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024568.s")

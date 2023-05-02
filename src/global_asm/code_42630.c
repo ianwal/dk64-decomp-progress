@@ -918,14 +918,10 @@ typedef struct {
 } GlobalASMStruct54;
 
 /*
-// TODO: Wrong register order t8 a0
-void func_8064B260(GlobalASMStruct54 **arg0, s32 arg1, s16 arg2, s32 arg3) {
-    GlobalASMStruct54 *temp_v0;
-
-    temp_v0 = &arg0[arg2];
-    temp_v0->unk14 = player_pointer->unk100;
-    temp_v0->unk18 = player_pointer->unk104;
-    temp_v0->unk1C = player_pointer->unk108;
+void func_8064B260(GlobalASMStruct54 *arg0, s32 arg1, s16 arg2, s32 arg3) {
+    arg0[arg2].unk14 = player_pointer->unk100;
+    arg0[arg2].unk18 = player_pointer->unk104;
+    arg0[arg2].unk1C = player_pointer->unk108;
 }
 */
 

@@ -3,7 +3,7 @@ us,.code,func_8002430C,1116,no
 us,.code,func_80024B00,888,no
 us,.code,func_80024768,296,yes
 us,.code,func_80024E78,344,no
-us,.code,func_80024914,492,no
+us,.code,func_80024914,492,yes
 us,.code,func_80027E04,228,no
 us,.code,func_80024254,184,no
 us,.code,func_80027778,1404,no
@@ -23,4 +23,4 @@ us,.code,func_800265F0,1404,no
 us,.code,func_80026B6C,232,yes
 us,.code,func_8002538C,52,yes
 us,.code,func_80024FD0,956,no
-us,.code,func_80024890,132,no
+us,.code,func_80024890,132,yes

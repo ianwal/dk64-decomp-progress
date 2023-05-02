@@ -46,8 +46,17 @@ void func_80724C78(s32 arg0) {
     func_80728300(arg0, D_80755690, D_80755694);
 }
 
-// TODO: Very doable, just need to define ActorAnimationState->unk1C as an array of 0x8 big structs
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724CA4.s")
+void func_80611690(AnimationStateUnk1C *);
+
+void func_80724CA4(s16 arg0, s16 arg1) {
+    AnimationStateUnk1C *temp_v0;
+    current_actor_pointer->animation_state->unk1C = malloc(8 + (arg1 * 8U));
+    func_80611690(current_actor_pointer->animation_state->unk1C);
+    temp_v0 = current_actor_pointer->animation_state->unk1C;
+    temp_v0->unk0 = 0x7F;
+    temp_v0->unk1 = arg0;
+    temp_v0[arg1].unk0 = 0;
+}
 
 // TODO: Doable, more struct definitions needed
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724D28.s")
