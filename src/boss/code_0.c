@@ -15,8 +15,6 @@ extern s32 D_8071FFA0;
 extern s32 D_8071E864;
 extern Struct80024000 D_8003598C[];
 
-void func_8067E2E4(Actor*, u8, f32);
-
 // TODO: Close, just gotta figure out sp48 and D_8003598C
 void func_80024000(void) {
     Struct80024000 sp48[6];

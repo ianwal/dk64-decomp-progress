@@ -1579,11 +1579,8 @@ s32 func_8002A390(s32 arg0, s32 arg1) {
     return func_8002A264(arg0, arg1);
 }
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002A408.s")
-#else
 s32 func_8002A408(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
-    if ((arg1 < arg3 ^ 1) & (arg5 < arg1 ^ 1) & (arg2 - 4 < arg0) & (arg0 < arg2 + 3)) {
+    if ((arg1 >= arg3) & (arg5 >= arg1) & (arg2 - 4 < arg0) & (arg0 < arg2 + 3)) {
         D_8004C6E0 = arg2;
         D_8004C6E4 = arg3;
         D_8004C6E8 = arg5;
@@ -1592,7 +1589,6 @@ s32 func_8002A408(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     }
     return 0;
 }
-#endif
 
 
 s32 func_8002A474(s32 arg0, s32 arg1) {

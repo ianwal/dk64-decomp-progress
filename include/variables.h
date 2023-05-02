@@ -135,6 +135,14 @@ typedef struct Struct807F0470 {
 extern Struct807F0470 D_807F0470[];
 
 typedef struct {
+    s32 unk0;
+    u8 unk4[0x280 - 0x4];
+    s32 unk280;
+} Struct80767A40;
+
+extern Struct80767A40 D_80767A40;
+
+typedef struct {
     Actor* unk0;
     s32 unk4;
 } GlobalASMStruct53;

@@ -39,7 +39,7 @@ f32 func_8062A850(void) {
 
     phi_v1 = is_cutscene_active == 1 && current_map != MAP_MAIN_MENU;
     if (widescreen_enabled && !phi_v1) {
-        phi_f0 = 1.0f * D_80758168;
+        phi_f0 *= D_80758168;
     }
 
     if (D_80747CD0 < phi_f0) {

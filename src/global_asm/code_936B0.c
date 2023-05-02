@@ -122,7 +122,42 @@ void func_8068ECF4(s32 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068F72C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068FF40.s")
+extern f64 D_8075A070;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+} Struct8068FF40_arg1;
+
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+} Struct8068FF40_arg2;
+
+void func_8068FF40(u8 arg0, Struct8068FF40_arg1 *arg1, Struct8068FF40_arg2 *arg2) {
+    f32 var_f0;
+    f32 var_f2;
+    AnimationStateUnk1C *temp_v1;
+
+    temp_v1 = current_actor_pointer->animation_state->unk1C;
+    if (arg0) {
+        var_f0 = 500.0f;
+        var_f2 = 0.0f;
+    } else {
+        var_f0 = 0.0f;
+        var_f2 = arg1->unkC * (400.0 - (D_8075A070 * current_actor_pointer->unkB8));
+    }
+    arg2->unk2 = func_806CC190(arg2->unk2, var_f0, 5.0f);
+    arg2->unk0 = func_806CC190(arg2->unk0, (s32)var_f2 & 0xFFF, 3.0f);
+    temp_v1->unk0 = -0x80;
+    temp_v1->unk1 = 1;
+    temp_v1->unk2 = arg2->unk2 * 0x10;
+    temp_v1->unk4 = arg2->unk0 * 0x10;
+    temp_v1->unk6 = 0;
+    temp_v1[1].unk0 = 0;
+}
 
 void func_80690058(Actor *arg0, s32 arg1) {
     arg0->animation_state->unk1C = malloc(arg1 * 8);

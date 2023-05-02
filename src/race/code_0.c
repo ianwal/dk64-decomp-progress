@@ -176,32 +176,72 @@ void func_80026050(RaceStruct6 *arg0, RaceStruct6 *arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026098.s")
 
-/*
-f32 func_8000AC60(f32, f32);
+f32 func_8000AC60(f32);
 f32 func_80665E48(f32, f32, f32, f32);
 extern f64 D_8002FDD8;
 extern f64 D_8002FDE0;
 extern f64 D_8002FDE8;
 
-void func_80026098(void *arg0, void *arg1) {
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80026098;
+
+/*
+// TODO: Float regalloc and stack nonsense
+void func_80026098(Struct80026098 *arg0, Struct80026098 *arg1) {
     s16 sp2E;
     f32 sp24;
     f32 temp_f14;
     f32 temp_f2;
     f32 temp_f2_2;
+    f32 temp;
 
     sp2E = (func_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / D_8002FDD8;
     temp_f2 = arg1->unk8 - arg0->unk8;
     temp_f14 = arg1->unk0 - arg0->unk0;
-    sp24 = current_actor_pointer->unkB8 * D_8002FDE0 * func_8000AC60((temp_f2 * temp_f2) + (temp_f14 * temp_f14), temp_f14);
-    current_actor_pointer->x_position = (func_80612794(sp2E) * sp24) + arg1->unk0;
-    current_actor_pointer->z_position = (func_80612790(sp2E) * sp24) + arg1->unk8;
-    temp_f2_2 = current_actor_pointer->y_position;
-    current_actor_pointer->y_position = ((arg0->unk4 - temp_f2_2) * D_8002FDE8) + temp_f2_2;
+    sp24 = current_actor_pointer->unkB8 * D_8002FDE0 * func_8000AC60((temp_f2 * temp_f2) + (temp_f14 * temp_f14));
+    current_actor_pointer->x_position = arg1->unk0 + (sp24 * func_80612794(sp2E));
+    current_actor_pointer->z_position = arg1->unk8 + (sp24 * func_80612790(sp2E));
+    current_actor_pointer->y_position = (D_8002FDE8 * (arg0->unk4 - current_actor_pointer->y_position)) + current_actor_pointer->y_position;
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_800261E0.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+    s32 unk10;
+    s32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+} Struct800261E0_arg0;
+
+void func_800261E0(Struct800261E0_arg0 *arg0) {
+    s16 temp;
+    s16 sp24;
+    f32 sp20;
+    f32 temp_f0;
+    s16 temp_t2;
+
+    temp_t2 = ((arg0->unk18 + arg0->unkC));
+    sp24 = func_806CC10C(0, arg0->unk1C);
+    temp_t2 &= 0xFFF;
+    sp20 = func_80612790(temp_t2);
+    temp_f0 = func_80612794(temp_t2);
+    current_actor_pointer->y_rotation = current_actor_pointer->unkEE + temp_t2;
+    current_actor_pointer->y_rotation &= 0xFFF;
+    current_actor_pointer->z_rotation = sp24 * sp20;
+    current_actor_pointer->z_rotation = current_actor_pointer->z_rotation + arg0->unk20;
+    current_actor_pointer->z_rotation &= 0xFFF;
+    current_actor_pointer->x_rotation = sp24 * temp_f0;
+    current_actor_pointer->x_rotation = current_actor_pointer->x_rotation + arg0->unk24;
+    current_actor_pointer->x_rotation &= 0xFFF;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026354.s")
 
@@ -467,7 +507,41 @@ void func_8002D0FC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002D148.s")
 
-// RaaD use, possibly new fields?
+/*
+s8 func_806FDB8C(s32, s32, s32, f32, f32, f32);
+s32 func_8070E750(s32, s32, s32, u8);
+
+void func_8002D148(void *arg0, s32 arg1) {
+    u8 temp_t6;
+    u8 var_a3;
+    void *temp_v0;
+    void *temp_v0_2;
+
+    temp_v0 = arg0->unk4;
+    temp_t6 = arg1 & 0xFF;
+    if (temp_t6 != temp_v0->unk34) {
+        temp_v0->unk34 = temp_t6;
+        arg0->unk4->unk35 = 0;
+        if (temp_t6 == 3) {
+            temp_v0_2 = arg0->unk4;
+            var_a3 = temp_v0_2->unk36;
+            if (current_actor_pointer->RaaD->unk1E != (var_a3 + 1)) {
+                if (temp_v0_2->unk45 != 0) {
+                    goto block_4;
+                }
+            } else {
+block_4:
+                var_a3 = 3;
+            }
+            if (temp_v0_2->unk27 == 0) {
+                arg0->unk4->unk46 = func_806FDB8C(1, func_8070E750(0x26, D_8002FCD4[var_a3], 1, var_a3), 2, 160.0f, 100.0f, 0.0f);
+            }
+        }
+    }
+}
+*/
+
+// RaaD->unk20 struct array use
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002D224.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002D2C0.s")
@@ -510,6 +584,7 @@ extern f32 D_800300F0;
 // dx dy dz calculation
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002D360.s")
 
+// RaaD->unk20-> struct array 0x8 big loop
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002D40C.s")
 
 void func_8002D4A0(void) {

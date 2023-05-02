@@ -231,6 +231,21 @@ typedef struct {
 // TODO: Fill this in properly
 typedef struct {
     u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+    u8 unkF;
 } AnimationStateUnk24;
 
 // See boss func_8002FB7C
@@ -242,7 +257,6 @@ typedef struct animation_state_unk20 {
     f32 unk4;
     f32 unk8;
     f32 unkC;
-    u8 unk10;
 } AnimationStateUnk20;
 
 typedef struct actor_animation_state {
@@ -1114,8 +1128,7 @@ struct actor {
     u8 unk156;
     u8 unk157;
     GlobalASMStruct60 *unk158; // Texture renderer linked list
-    u8 unk15C;
-    u8 unk15D;
+    s16 unk15C;
     u8 unk15E;
     u8 unk15F; // Used, set to 0x01, 0x06, 0x0B in some cases
     f64 unk160; // TODO: Probably not correct

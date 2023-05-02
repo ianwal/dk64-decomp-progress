@@ -58,17 +58,43 @@ void func_80724CA4(s16 arg0, s16 arg1) {
     temp_v0[arg1].unk0 = 0;
 }
 
-// TODO: Doable, more struct definitions needed
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724D28.s")
+void func_80724D28(s16 arg0, s16 arg1) {
+    AnimationStateUnk24 *temp_v0;
 
-// TODO: ActorAnimationState->unk20
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724DB0.s")
+    current_actor_pointer->animation_state->unk24 = malloc(arg1 * 0x10U + 0x10);
+    func_80611690(current_actor_pointer->animation_state->unk24);
+    temp_v0 = current_actor_pointer->animation_state->unk24;
+    temp_v0->unk0 = arg0;
+    temp_v0->unk1 = arg0 + 1;
+    temp_v0[arg1].unk0 = 0xFF;
+}
 
+void func_80724DB0(s16 arg0, s16 arg1) {
+    AnimationStateUnk20 *temp_v0;
+
+    current_actor_pointer->animation_state->unk20 = malloc((arg1 * 0x10U) + 0x10);
+    func_80611690(current_actor_pointer->animation_state->unk20);
+    temp_v0 = current_actor_pointer->animation_state->unk20;
+    temp_v0->unk4 = 1.0f;
+    temp_v0->unk8 = 1.0f;
+    temp_v0->unkC = 1.0f;
+    temp_v0->unk0 = arg0;
+    temp_v0->unk1 = arg0;
+    temp_v0[arg1].unk0 = 0xFF;
+}
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724E48.s")
 
+// Fiddly floats
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807255A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80725B38.s")
+u8 func_80725B38(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5) {
+    return (arg0 >= arg2)
+        && (arg4 >= arg0)
+        && (arg1 >= arg3)
+        && (arg5 >= arg1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80725BA4.s")
 

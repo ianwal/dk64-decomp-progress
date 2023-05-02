@@ -1,10 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 extern u32 D_8002A1C0;
-extern u32 D_8002A1C8;
 extern u32 D_8002A1C4;
+extern s32 D_8002A1C8[];
 extern u16 D_8002A1CE;
 extern u16 D_8002A1CC;
 
@@ -124,7 +123,7 @@ void func_80027DC0(void) {
 
 void func_80028840() {
     D_8002A1C0 = getPointerTableFile(0x13, 4, 1, 1);
-    D_8002A1C8 = getPointerTableFile(0x13, 5, 1, 1);
+    D_8002A1C8[0] = getPointerTableFile(0x13, 5, 1, 1);
     D_8002A1C4 = 0;
     D_8002A1CE = 0;
     D_8002A1CC = 1;
@@ -140,6 +139,35 @@ void func_80028840() {
 
 // Weird struct/array accesses. Probably doable.
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_8002904C.s")
+
+extern u16 D_8002A1CC;
+extern u16 D_8002A1CE;
+extern void func_80028DE8(); // TODO: Proper signature
+
+/*
+typedef struct {
+    u8 unk0[0x810 - 0x0];
+    u8 unk810[1]; // TODO: How many elements?
+} AAD_8002904C;
+
+void func_8002904C(void) {
+    s16 temp_v1;
+    s16 temp_v1_2;
+
+    if (D_8002A1CC < 0xF0) {
+        if (D_8002A1CE >= D_8002A1C8[D_8002A1CC]) {
+            D_8002A1CC += 1;
+            current_actor_pointer->unkEE++;
+            ((AAD_8002904C*)current_actor_pointer->additional_actor_data)->unk810[current_actor_pointer->unkEE] = 0xC;
+        }
+    }
+    if (current_actor_pointer->unk168 != 0) {
+        current_actor_pointer->unk168--;
+        func_8068C350(&func_80028DE8, current_actor_pointer, 3);
+    }
+    D_8002A1CE += 1;
+}
+*/
 
 s32 func_80029110(s32 arg0) {
     return ~arg0;

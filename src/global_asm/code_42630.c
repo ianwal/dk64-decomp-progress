@@ -1264,6 +1264,85 @@ void func_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064DE04.s")
 
+extern f32 D_80758B78;
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+extern u16 D_807FBB34;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    u8 unk5C;
+    u8 unk5D;
+    u16 unk5E;
+} Struct8064DE04_arg0;
+
+/*
+// TODO: Very close, just something up with the loop
+void func_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
+    Actor *var_s0;
+    f32 dx;
+    f32 dz;
+    f32 temp_f14;
+    f32 dy;
+    f32 var_f16;
+    PlayerAdditionalActorData *PaaD;
+    s32 i;
+
+    var_s0 = NULL;
+    var_f16 = D_80758B78;
+    PaaD = player_pointer->additional_actor_data;
+    if (arg0->unk5C != 0) {
+        i = 0;
+        while (i < D_807FBB34) {
+            if (arg0->unk5E == D_807FB930[i].unk0->unk58) {
+                dx = D_807FB930[i].unk0->x_position - D_807F621C;
+                dy = D_807FB930[i].unk0->y_position - D_807F6220;
+                dz = D_807FB930[i].unk0->z_position - D_807F6224;
+                temp_f14 = (dx * dx) + (dy * dy) + (dz * dz);
+                if (temp_f14 < var_f16) {
+                    var_f16 = temp_f14;
+                    var_s0 = D_807FB930[i].unk0;
+                }
+            }
+            i++;
+        }
+        if (var_s0 != NULL) {
+            func_80679200(var_s0, NULL, 8, 0, 0, 0);
+        }
+        if (arg2 == 0) {
+            if (var_s0 != NULL) {
+                if (var_s0->unk58 == 0x55) {
+                    PaaD->unk1F0 &= 0xFFDFFFFF;
+                }
+            }
+        }
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064DF5C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064E174.s")
@@ -1479,23 +1558,18 @@ u8 func_8064F1C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064F210.s")
 
-/*
 extern f32 D_807F622C;
 
-s32 func_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+/*
+u8 func_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 sp2C;
     f32 temp_f0;
     s32 temp_f18;
-    u8 phi_v0;
 
     temp_f18 = (D_807F622C * 4096.0f) / 360.0f;
     sp2C = func_80612794(temp_f18);
     temp_f0 = func_80612790(temp_f18);
-    phi_v0 = FALSE;
-    if (((player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position) + -((D_807F621C * sp2C) + (D_807F6224 * temp_f0))) > 6.0) {
-        phi_v0 = TRUE;
-    }
-    return phi_v0;
+    return (((player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position) + -((D_807F621C * sp2C) + (D_807F6224 * temp_f0))) > 6.0);
 }
 */
 

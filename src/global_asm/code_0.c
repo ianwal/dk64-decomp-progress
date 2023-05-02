@@ -98,7 +98,6 @@ extern OSMesgQueue D_8076A110;
 extern s32 D_8000DDE8;
 extern s32 D_8000DDE4;
 
-extern s32 D_80767A40;
 extern s32 D_80767CD8;
 
 /*

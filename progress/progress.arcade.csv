@@ -91,7 +91,7 @@ us,.code,func_8002A474,704,yes
 us,.code,arcade_pauline_top_update,180,yes
 us,.code,func_80024940,272,no
 us,.code,func_80031948,140,yes
-us,.code,func_8002A408,108,no
+us,.code,func_8002A408,108,yes
 us,.code,func_800313B8,484,yes
 us,.code,func_80024B04,304,no
 us,.code,arcade_points_text_update,164,yes

@@ -1099,7 +1099,7 @@ void func_806A7EF0(void) {
     temp_v0_2->unk4 = aaD->unk0;
     temp_v0_2->unk8 = aaD->unk0;
     temp_v0_2->unkC = aaD->unk0;
-    temp_v0_2->unk10 = 0xFF;
+    temp_v0_2[1].unk0 = 0xFF;
     func_806319C4(current_actor_pointer, 0);
 }
 

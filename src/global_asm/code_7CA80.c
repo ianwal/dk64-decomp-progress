@@ -46,24 +46,50 @@ void func_80677EC8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80677ED0.s")
 
+/*
+Functions in this table (D_8074DA30):
+All take 1 param and are tiny (some are empty bodies)
+func_8067B2B0
+func_8067B2C0
+func_8067B2DC
+func_8067B42C
+func_8067B3F4
+func_8067B2B8
+func_8067B290
+func_8067B298
+func_8067B2A0
+func_8067B2A8
+*/
+
 extern s32 (*D_8074DA30[])(void*);
 extern u8 D_8074D8D4[];
 
-/*
-// Doable, not sure what type arg0 is
-s32 func_80677ED0(void *arg0) {
-    s32 temp_a2;
+typedef struct {
+    s32 unk0; // Actor Behaviour Index
+    s32 unk4;
+    s32 unk8;
+    f32 unkC; // X Position
+    f32 unk10; // Y Position
+    f32 unk14; // Z Position
+    s16 unk18; // Y Rotation
+    s16 unk1A;
+    Actor124 *unk1C;
+} Struct80677ED0;
 
-    if (func_80678050(arg0->unk2, arg0) != 0 && ((D_8074DA30[*(&D_8074D8D4[arg0->unk0])](arg0 + 4, arg0) != 0))) {
+extern s32 func_80678050(u16);
+
+/*
+// TODO: Extremely close
+s32 func_80677ED0(Struct80677ED0 *arg0) {
+    if (func_80678050(arg0->unk0) != 0 && ((D_8074DA30[D_8074D8D4[arg0->unk0]](&arg0->unk4) != 0))) {
         D_807FBB44->x_position = arg0->unkC;
         D_807FBB44->y_position = arg0->unk10;
         D_807FBB44->z_position = arg0->unk14;
         D_807FBB44->unk124 = arg0->unk1C;
         D_807FBB44->y_rotation = arg0->unk18;
         D_807FBB44->unk15C = arg0->unk1A;
-        temp_a2 = arg0->unk8;
-        if (temp_a2 != 0) {
-            func_80614EBC(D_807FBB44, temp_a2);
+        if (arg0->unk8 != 0) {
+            func_80614EBC(D_807FBB44, arg0->unk8);
         }
         return TRUE;
     }
@@ -72,8 +98,6 @@ s32 func_80677ED0(void *arg0) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80677FA8.s")
-
-extern s32 func_80678050(u16);
 
 /*
 // TODO: Regalloc

@@ -1101,34 +1101,30 @@ void func_806EFA1C(void) {
     current_actor_pointer->control_state_progress = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_806EFA3C.s")
+typedef struct {
+    u16 unk0[5];
+} Struct8075D380;
 
-extern s32 D_8075D380[3];
+extern Struct8075D380 D_8075D380;
 
-/*
-// Close
 void func_806EFA3C(void) {
-    u16 *temp;
-    u16 sp24[3];
+    Struct8075D380 sp24;
+    s32 temp; // TODO: wtf
     f32 scale;
-    void *temp_a1;
 
-    sp24[0] = D_8075D380[0];
-    sp24[1] = D_8075D380[1];
-    sp24[2] = D_8075D380[2];
+    sp24 = D_8075D380;
     scale = D_807FBB48->animation_state->scale_x;
     func_80677FA8(0x140, 0xB9); // Spawn potion actor 320
     if (D_807FBB48->unk58 == 2) {
         scale = scale * 1.25;
     }
     func_8067B238(D_807FBB44, D_807FBB48, scale);
-    func_80614EBC(D_807FBB44, sp24[current_character_index[extra_player_info_pointer->unk1A4]]);
+    func_80614EBC(D_807FBB44, sp24.unk0[current_character_index[extra_player_info_pointer->unk1A4]]);
     D_807FBB44->object_properties_bitfield |= 0x40000000;
     func_80614E78(D_807FBB48, 0x88);
     current_actor_pointer->control_state = 0x79;
     current_actor_pointer->control_state_progress = 0;
 }
-*/
 
 void func_806EFB4C(void) {
     func_80602B60(0x6B, 0);

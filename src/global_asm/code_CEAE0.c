@@ -6090,24 +6090,18 @@ void func_806E330C(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E341C.s")
-
-/*
-// TODO: Replace D_80767CC0 with D_80767A40.unk280 here
-// I guess it's a struct access?
 void func_806E341C(void) {
     if (D_807FD610[cc_player_index].unk2C & A_BUTTON) {
-        extra_player_info_pointer->unk58 = D_80767CC0;
+        extra_player_info_pointer->unk58 = D_80767A40.unk280;
     }
-    if ((D_80767CC0 - extra_player_info_pointer->unk58) < 0xFU) {
+    if ((D_80767A40.unk280 - extra_player_info_pointer->unk58) < 0xFU) {
         current_actor_pointer->control_state = 0x58;
         current_actor_pointer->control_state_progress = 0;
         extra_player_info_pointer->unk50 = 0;
         extra_player_info_pointer->unk3E = 0;
-        extra_player_info_pointer->unk58 = D_80767CC0 - 0x1E;
+        extra_player_info_pointer->unk58 = D_80767A40.unk280 - 0x1E;
     }
 }
-*/
 
 void func_806E34D8(void) {
     if (D_807FD610[cc_player_index].unk2C & R_TRIG) {
@@ -7603,11 +7597,39 @@ void func_806E9DE0(void) {
     }
 }
 
-// 0x34 struct array, fiddly (bitfield shenanigans? << 0 >= 0)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E9ECC.s")
+void func_806E9ECC(void) {
+    PlayerAdditionalActorData *sp1C;
 
-// 0x34 struct array, same as above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E9F8C.s")
+    if (D_807FD610[cc_player_index].unk2C & 2) {
+        if (current_actor_pointer->unk6A & 1) {
+            sp1C = extra_player_info_pointer->unk104->additional_actor_data;
+            if (func_80714608(0) == 0) {
+                if (!(sp1C->unkAC & 0x80000000)) {
+                    if (!(D_807FBB64 & 0x80000000)) {
+                        func_806E9D1C(5, 3, 1);
+                    }
+                }
+            }
+        }
+    }
+}
+
+void func_806E9F8C(void) {
+    PlayerAdditionalActorData *sp1C;
+
+    if (D_807FD610[cc_player_index].unk2C & 8) {
+        if (current_actor_pointer->unk6A & 1) {
+            sp1C = extra_player_info_pointer->unk104->additional_actor_data;
+            if (func_80714608(0) == 0) {
+                if (!(sp1C->unkAC & 0x80000000)) {
+                    if (!(D_807FBB64 & 0x80000000)) {
+                        func_806E9D1C(5, 3, 1);
+                    }
+                }
+            }
+        }
+    }
+}
 
 void func_806EA04C(void) {
     if (D_807FD610[cc_player_index].unk2C & U_CBUTTONS) {

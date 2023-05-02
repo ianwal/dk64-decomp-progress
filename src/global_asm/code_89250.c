@@ -309,6 +309,37 @@ void func_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80685708.s")
 
+typedef struct {
+    s32 unk0[4];
+} Struct8074E898;
+
+extern Struct8074E898 D_8074E898;
+extern f64 D_80759AF8;
+extern f64 D_80759B00;
+
+typedef struct {
+    s32 unk0;
+    s16 unk4;
+    s8 unk6;
+} AAD_80685708;
+
+/*
+// TODO: Very close, stack/arg1 nonsense
+void func_80685708(Actor *arg0, u8 arg1) {
+    s32 temp;
+    Struct8074E898 sp34;
+    f32 p1 = (arg0->animation_state->scale_y / D_80759AF8);
+
+    sp34 = D_8074E898;
+    if (arg1 != 0) {
+        func_80685520(p1 * D_80759B00, arg1, arg0->x_position, arg0->y_position + 4.0f, arg0->z_position);
+        func_80677FA8(0x145, sp34.unk0[arg1]);
+        func_8067B238(D_807FBB44, arg0, arg0->animation_state->scale_y * 0.5f);
+        ((AAD_80685708*)D_807FBB44->additional_actor_data)->unk6 = arg1 - 1;
+    }
+}
+*/
+
 void func_8068581C(s32 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
     func_80714998(2);
     func_807149C8(0xFF, 0xFF, 0xFF, 0xC8);

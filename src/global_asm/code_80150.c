@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
+void func_806319C4(Actor*, s32);
 void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_80665564(Actor*, f32);
 void func_80683AD8();
@@ -364,7 +364,7 @@ void func_8067E278(u8 arg0, u8 arg1) {
                   arg1);
 }
 
-void func_8067E2E4(s32 arg0, u8 arg1, f32 arg2) {
+void func_8067E2E4(Actor *arg0, u8 arg1, f32 arg2) {
     f32 sp2C, sp28, sp24;
 
     func_80671C0C(current_actor_pointer, arg1, &sp2C, &sp28, &sp24);
@@ -655,23 +655,23 @@ void func_80681BD8(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8068304C.s")
 
 /*
-extern ? D_8074E834;
+typedef struct {
+    s32 unk0[5];
+} Struct8074E834;
 
-// TODO: Doable
+extern Struct8074E834 D_8074E834;
+
+// TODO: Regalloc
 void func_8068304C(void) {
-    ? sp2C;
-    void *sp28;
+    Struct8074E834 sp2C;
+    u8 *sp28;
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        sp2C.unk0 = D_8074E834.unk0;
-        sp2C.unk4 = D_8074E834.unk4;
-        sp2C.unk8 = D_8074E834.unk8;
-        sp2C.unkC = D_8074E834.unkC;
-        sp2C.unk10 = D_8074E834.unk10;
+        sp2C = D_8074E834;
         sp28 = current_actor_pointer->additional_actor_data;
         current_actor_pointer->object_properties_bitfield |= 0x1000;
         func_8068842C(current_actor_pointer, 0, 1);
         func_80688460(current_actor_pointer, 0, 1);
-        func_806883F4(current_actor_pointer, 0, (sp + (*sp28 * 4))->unk2E, 0);
+        func_806883F4(current_actor_pointer, 0, sp2C.unk0[*sp28], 0);
         func_80614EBC(current_actor_pointer, 0x329);
     }
     current_actor_pointer->unk16D = current_actor_pointer->unk15F;
