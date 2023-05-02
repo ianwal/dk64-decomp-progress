@@ -191,9 +191,79 @@ typedef struct {
 extern GlobalASMStruct79 *D_807FC5C4;
 extern u8 D_807FC5C8;
 
-// Loads the map setup from pointer table 9 for the current map
-// Also uses the above struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80688A6C.s")
+
+// TODO: What struct is this?
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s16 unk30;
+    s16 unk32;
+    s16 unk34;
+    s16 unk36;
+} Struct80688A6C;
+
+/*
+// TODO: Very close, have another look at m2c output for the branches
+void func_80688A6C(void) {
+    Struct80688A6C *var_s0;
+    Struct80688A6C *var_s5;
+    s32 temp_v0_2;
+    s32 i;
+    s32 var_s2;
+    s32 sp50;
+    void *temp_v0;
+    s32 sp48;
+    s32 *sp44;
+    s32 var_s6;
+
+    temp_v0 = getPointerTableFile(9, current_map, 1, 1);
+    D_807FC5C8 = 0;
+    if (temp_v0 != NULL) {
+        func_80631F58(temp_v0, &sp48, &sp44);
+        var_s6 = *sp44;
+        var_s5 = sp44 + 1;
+    } else {
+        var_s6 = 0;
+        var_s5 = sp50;
+    }
+    for (i = 0; i < var_s6; i++) {
+        if (func_80688C84((var_s5[i].unk32 + 0x10)) != 0) {
+            D_807FC5C8 += 1;
+        }
+    }
+    if (D_807FC5C8 == 0) {
+        D_807FC5C4 = NULL;
+    } else {
+        if (D_807FC5C8 != 0) {
+            D_807FC5C4 = malloc(D_807FC5C8 * 4);
+            D_807FC5C8 = 0;
+            var_s2 = 0;
+            for (i = 0; i < var_s6; i++) {
+                temp_v0_2 = func_80688C84((var_s5[i].unk32 + 0x10));
+                if (temp_v0_2 != 0) {
+                    D_807FC5C4[D_807FC5C8].unk0 = var_s5[i].unk34;
+                    D_807FC5C4[D_807FC5C8].unk2 = D_807FC408[current_map] + var_s2 + 0x26B;
+                    var_s2 += temp_v0_2;
+                    D_807FC5C8 += 1;
+                }
+            }
+            func_8066B424();
+            func_8066B434(temp_v0, 0x1AA, 0x34);
+        }
+    }
+}
+*/
 
 s16 func_80688C30(u16 arg0) {
     s32 i;

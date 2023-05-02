@@ -24,7 +24,8 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_807375E0.s")
 
 /*
-// TODO: Which struct is passed in?
+// TODO: When I create the struct it's still got some weird stuff going on
+// I think this file might have different compiler flags
 void func_807375E0(void *arg0, s32 arg1) {
     if (arg0 != 0) {
         arg0->unk40 = arg1 & 0xFF;

@@ -29,8 +29,6 @@ u8 func_80668E9C(s32, s16, f32, f32, f32, s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80650E20.s")
 
-/*
-s32 malloc(s32);
 extern s32 D_8076A0B4;
 extern s32 D_8076A0B8;
 extern s32 D_8076A0BC;
@@ -44,12 +42,44 @@ typedef struct global_asm_struct_18 {
     s32 *unk64;
 } GlobalASMStruct18;
 
-// TODO: Single instruction off, I probably should be using the struct, idk
-void func_80650E20(s32 *arg0) {
+typedef struct {
+    s8 unk0[1]; // TODO: How many elements?
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+} Struct80650E20_arg0;
+
+/*
+// TODO: Unaligned s32 read?
+void func_80650E20(Struct80650E20_arg0 *arg0) {
     s32 size;
     u8 phi_v1;
+    s32 temp;
 
-    D_807F6C28 = arg0[arg0[25]];
+    temp = arg0->unk0[arg0->unk64];
+    D_807F6C28 = temp;
     if (D_807F6C28 >= 2) {
         phi_v1 = D_807F6C28;
     } else {
@@ -161,8 +191,123 @@ s32 func_806522CC(s16 arg0, s16 arg1, s16 arg2) {
     return FALSE;
 }
 
-// TODO: Unknown struct arg0, doable other than that
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80652374.s")
+s32 func_80630324(u8, void *);
+s16 func_806531B8(f32, f32, f32, s16);
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+    s32 unkA4;
+    s32 unkA8;
+    s32 unkAC;
+    s32 unkB0;
+    s32 unkB4;
+    s32 unkB8;
+    s32 unkBC;
+    s32 unkC0;
+    s32 unkC4;
+    s32 unkC8;
+    s32 unkCC;
+    s32 unkD0;
+    s32 unkD4;
+    s32 unkD8;
+    s32 unkDC;
+    s32 unkE0;
+    s32 unkE4;
+    s32 unkE8;
+    s32 unkEC;
+    s32 unkF0;
+    s32 unkF4;
+    s32 unkF8;
+    s32 unkFC;
+    s32 unk100;
+    s32 unk104;
+    s32 unk108;
+    s32 unk10C;
+    s32 unk110;
+    s32 unk114;
+    s32 unk118;
+    s32 unk11C;
+    s32 unk120;
+    s32 unk124;
+    s32 unk128;
+    s16 unk12C;
+} Struct80652374_arg0_unk0;
+
+typedef struct {
+    Struct80652374_arg0_unk0 *unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s16 unk1C;
+    s16 unk1E;
+    s16 unk20;
+    u8 unk22;
+    u8 unk23;
+    u8 unk24;
+} Struct80652374_arg0;
+
+void func_80652374(Struct80652374_arg0 *arg0) {
+    u8 temp_v1;
+    Chunk14 **sp40;
+
+    arg0->unk20 = func_806531B8(arg0->unk4, arg0->unk8, arg0->unkC, arg0->unk20);
+    temp_v1 = func_80630324(arg0->unk24, arg0->unk0);
+    if (arg0->unk24 == 0) {
+        arg0->unk0->unk12C = arg0->unk20;
+    }
+    switch (temp_v1) {
+        case 0:
+            sp40 = &chunk_array_pointer[arg0->unk20].unk14;
+            break;
+        case 1:
+            sp40 = &chunk_array_pointer[arg0->unk20].unk1C;
+            break;
+    }
+    *sp40 = func_806303C4(*sp40, arg0->unk24, arg0->unk0, arg0->unk4, arg0->unk8, arg0->unkC, arg0->unk1C, arg0->unk1E, arg0->unk22, arg0->unk20, 0);
+}
 
 void func_806524A0(s32 arg0, u8 arg1) {
     u8 sp4F;

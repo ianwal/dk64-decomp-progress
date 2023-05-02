@@ -57,11 +57,6 @@ s16 func_80631C20(u8 arg0) {
     return D_807F6150[arg0];
 }
 
-// Doable, little struct definition work needed, couple of loops
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80631C3C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80631D8C.s")
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -76,18 +71,55 @@ typedef struct {
     u16 unk28; // Used
     u16 unk2A;
     s32 unk2C;
-    s32 unk30;
-    s32 unk34;
 } GlobalASMStruct88;
 
-/*
-// TODO: Very close, just stack nonsense
+s32 func_80631EB8(u16);
+extern u8 D_80747D78;
+
+void func_80631F58(s32 *arg0, s32 **arg1, void **arg2);
+
+void func_80631C3C(void) {
+    void *temp_v0;
+    GlobalASMStruct88 *var_s0;
+    s32 temp_s2;
+    s32 *sp58;
+    s32 sp54;
+    s32 i;
+    u8 temp_s3;
+    s32 var_s1;
+
+    if (D_80747D78 == 0) {
+        D_80747D78 = 1;
+        for (i = 0; i < 8; i++) {
+            D_807F6150[i] = 0;
+        }
+        for (i = 0; i < 0xDD; i++) {
+            temp_v0 = getPointerTableFile(9, i, 1, 1);
+            if (temp_v0 != NULL) {
+                temp_s3 = getLevelIndex(i, 1);
+                func_80631F58(temp_v0, &sp58, &sp54);
+                temp_s2 = *sp58;
+                var_s0 = sp58 + 1;
+                for (var_s1 = 0; var_s1 < temp_s2; var_s1++) {
+                    if (func_80631EB8(var_s0->unk28) != 0) {
+                        D_807F6150[temp_s3]++;
+                    }
+                    var_s0++;
+                }
+                func_8066B424();
+                func_8066B434(temp_v0, 0x10C, 7);
+            }
+        };
+    }
+}
+
 s32 func_80631D8C(u8 arg0) {
+    s32 temp;
     s32 j;
     s32 temp_s2;
+    s32 i;
     s32 *sp5C;
     s32 sp58;
-    s32 i;
     u8 temp_s6;
     u16 phi_s3;
     GlobalASMStruct88 *phi_s0;
@@ -115,12 +147,31 @@ s32 func_80631D8C(u8 arg0) {
     }
     return phi_s3;
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80631EB8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80631F58.s")
+
+/*
+// TODO: Regalloc
+void func_80631F58(s32 *arg0, s32 **arg1, void **arg2) {
+    s32 count;
+    if (arg0 == NULL) {
+        *arg1 = NULL;
+        *arg2 = NULL;
+        return;
+    }
+    *arg1 = arg0;
+    count = arg0[0];
+    arg0 += count * 0xC;
+    arg0 += 1;
+    count = arg0[0];
+    arg0 += count * 0x9;
+    arg0 += 1;
+    *arg2 = arg0;
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80631FAC.s")
@@ -478,8 +529,48 @@ u8 func_80636A8C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636B50.s")
 
-// object model 2, model pointer, behaviour_pointer
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636C00.s")
+
+extern s32 D_80747D70;
+extern s16 D_80747D74;
+
+void func_80636B50(void *arg0, void *arg1, u8 arg2);
+
+/*
+// TODO: Pretty close, I think the params in the last function calls might need to be temp variables
+void func_80636C00(void) {
+    u32 sp20;
+    u8 var_a2;
+    Model2Model *temp_a3;
+    ObjectModel2 *temp_a0;
+    s32 temp_v1_2;
+    u8 temp_v1;
+    OM2_unk24 *temp_v0;
+
+    if (D_80747D70 != 0) {
+        D_80747D74 += 1;
+        if (D_80747D74 >= D_80747D70) {
+            D_80747D74 = 0;
+        }
+        temp_a0 = &D_807F6000[D_80747D74];
+        temp_v0 = temp_a0->unk24;
+        if (temp_v0->unk0 & 0x10) {
+            if ((temp_a0->unk8C & 0x20) && (object_timer != temp_v0->unk8)) {
+                temp_a0->unk8C &= 0xFFDF;
+                temp_v0->unk3C--;
+                if (temp_v0->unk3C != 0) {
+                    var_a2 = 0;
+                } else {
+                    var_a2 = 1;
+                }
+                temp_a3 = D_807F6000[D_80747D74].model_pointer;
+                func_80636B50(temp_a3->unkA0[0], temp_a3->unkA0[0] + (((temp_a3->unkA0[2] - temp_a3->unkA0[0]) >> 3) * 8), var_a2);
+                func_80636B50(temp_a3->unkA0[2], temp_a3->unkA0[2] + (((temp_a3->unkB0 - temp_a3->unkA0[2]) >> 3) * 8), var_a2);
+            }
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636D38.s")
 
@@ -577,8 +668,19 @@ void func_8063C248(s32 arg0, u8 arg1) {
     D_807F6000[func_80659470(D_807F6240[arg0])].model_pointer->unk4E &= ~arg1;
 }
 
-// object model 2 -> unk7C -> 0x60, 0x64
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063C2A8.s")
+s32 func_8063C2A8(s16 arg0) {
+    OM2_unk7C *temp_v1;
+
+    // TODO: Find a way to get rid of s16 typecast...?
+    temp_v1 = D_807F6000[(s16)func_80659470(arg0)].unk7C;
+    if (temp_v1 != NULL) {
+        if ((temp_v1->unk60 == 1) && (temp_v1->unk64 == 0)) {
+            return 0;
+        }
+        return 1;
+    }
+    return 1;
+}
 
 s16 func_8063C328(s16 arg0) {
     s16 model2ArrayIndex = func_80659470(arg0);

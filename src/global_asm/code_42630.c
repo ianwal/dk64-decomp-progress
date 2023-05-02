@@ -42,30 +42,19 @@ void func_80714950(s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063D930.s")
 
+extern u8 D_807F66F0[];
+
 /*
-extern ? D_807F66F0;
-extern ? D_807F66F2;
-extern ? D_807F6902;
-
+// TODO: Pretty close, last loop is wrong somehow
 void func_8063D930(void) {
-    ? *var_v1_2;
-    s16 *var_v1;
+    s32 i;
 
-    var_v1 = D_807F6240;
-    do {
-        var_v1 += 2;
-        var_v1->unk-2 = -1;
-    } while (var_v1 < &D_807F66F0);
-    var_v1_2 = &D_807F66F2;
-    D_807F66F0.unk0 = 0;
-    D_807F66F0.unk66F1 = 0;
-    do {
-        var_v1_2 += 4;
-        var_v1_2->unk-4 = 0;
-        var_v1_2->unk-3 = 0;
-        var_v1_2->unk-2 = 0;
-        var_v1_2->unk-1 = 0;
-    } while (var_v1_2 != &D_807F6902);
+    for (i = 0; i < 600; i++) {
+        D_807F6240[i] = -1;
+    }
+    for (i = 0; i < 530; i++) {
+        D_807F66F0[i] = 0;
+    }
 }
 */
 
@@ -88,12 +77,21 @@ s16 func_8063D9D0(s16 arg0, u8 arg1) {
     return var_v1;
 }
 
+void func_8063DA78(s16 arg0, s16 arg1, s16 arg2);
+
 void func_8063DA40(s16 arg0, s16 arg1) {
     func_8063DA78(arg0, arg1, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DA78.s")
+void func_8063DA78(s16 arg0, s16 arg1, s16 arg2) {
+    s16 temp_v0;
 
+    temp_v0 = func_80659470(D_807F6240[arg0]);
+    if (temp_v0 != -1) {
+        D_807F6000[temp_v0].unk7C->unk48[arg2] = arg1;
+        D_807F6000[temp_v0].unk7C->unk54 = 1;
+    }
+}
 
 typedef struct {
     s16 unk0; // Used
@@ -207,9 +205,6 @@ void func_80641874(s16 arg0, s16 arg1) {
     func_8067AB20(NULL, sp20, 0x01000000, 1, temp_v0, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806418E8.s")
-
-/*
 s32 func_806418E8(s16 arg0, s16 arg1, s16 arg2) {
     s16 temp_a3;
     s16 temp_v0;
@@ -218,13 +213,12 @@ s32 func_806418E8(s16 arg0, s16 arg1, s16 arg2) {
     if (temp_a3 != -1) {
         temp_v0 = func_80659470(temp_a3);
         if ((temp_v0 != -1) && (D_807F6000[temp_v0].unk7C != NULL)) {
-            (D_807F6000[temp_v0].unk7C + arg2)->unk48 = arg1;
+            D_807F6000[temp_v0].unk7C->unk48[arg2] = arg1;
             return TRUE;
         }
     }
     return FALSE;
 }
-*/
 
 void func_8064199C(Struct8064199C_arg0 *arg0, s8 arg1, s16 arg2) {
     arg0->unk54 = arg1;
@@ -292,21 +286,16 @@ void func_80641A78(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641B00.s")
+void func_8063DED0(OM2_unk7C*);
 
-/*
-// TODO: Doable, just need to figure out object model2 behaviour pointer struct
 void func_80641B00(s16 arg0, s16 arg1, s16 arg2) {
-    s32 sp1C;
-
     arg0 = func_80659470(arg0);
     arg1 = func_80659470(arg1);
-    D_807F6000[arg0].unk7C = malloc(0xA4);
-    func_8063DED0(D_807F6000[arg0].unk7C, &D_807F6000);
-    D_807F6000[arg0].unk7C->unk48 = arg2;
+    D_807F6000[arg0].unk7C = malloc(sizeof(OM2_unk7C));
+    func_8063DED0(D_807F6000[arg0].unk7C);
+    D_807F6000[arg0].unk7C->unk48[0] = arg2;
     D_807F6000[arg0].unk7C->unkA0 = D_807F6000[arg1].unk7C->unkA0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641BCC.s")
 

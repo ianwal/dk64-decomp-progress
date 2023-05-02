@@ -257,6 +257,81 @@ typedef struct {
     Model2Model50_B8 *unkB8; // Used, pointer
 } Model2Model;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s8 unk48[1]; // TODO: How many elements?
+    s8 unk49;
+    s8 unk4A;
+    s8 unk4B;
+    s32 unk4C;
+    s32 unk50;
+    s8 unk54;
+    s8 unk55;
+    s8 unk56;
+    s8 unk57;
+    s32 unk58;
+    s32 unk5C;
+    u8 unk60;
+    u8 unk61;
+    u8 unk62;
+    u8 unk63;
+    s16 unk64;
+    s16 unk66;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+} OM2_unk7C;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s16 unk3C;
+    s16 unk3E;
+} OM2_unk24;
+
 typedef struct object_model2 {
     f32 x_position; // at 0x00
     f32 y_position; // at 0x04
@@ -267,7 +342,7 @@ typedef struct object_model2 {
     f32 z_rotation; // at 0x18
     s32 unk1C;
     Model2Model *model_pointer; // at 0x20
-    void *unk24; // labelled behavior_type_pointer in ScriptHawk
+    OM2_unk24 *unk24; // labelled behavior_type_pointer in ScriptHawk
     s32 unk28;
     s32 unk2C;
     s32 unk30;
@@ -289,13 +364,16 @@ typedef struct object_model2 {
     s32 unk70;
     s32 unk74;
     void *unk78; // used in func_80650AD8, weird format
-    void *unk7C; // labelled behavior_pointer in ScriptHawk
+    OM2_unk7C *unk7C; // labelled behavior_pointer in ScriptHawk
     s32 unk80;
     s16 object_type; // at 0x84
     s16 unk86;
     s16 unk88;
     s16 unk8A;
-    s32 unk8C; // bitfield, collectable state (u8)
+    u8 unk8C; // bitfield, collectable state (u8)
+    u8 unk8D;
+    u8 unk8E;
+    u8 unk8F;
 } ObjectModel2;
 
 extern ObjectModel2 *D_807F6000;

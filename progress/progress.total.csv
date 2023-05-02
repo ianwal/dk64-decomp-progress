@@ -397,7 +397,7 @@ us,.code,func_806E8F68,264,yes
 us,.code,func_806E6234,228,yes
 us,.code,func_80662AB4,220,no
 us,.code,func_80657974,828,no
-us,.code,func_80652374,300,no
+us,.code,func_80652374,300,yes
 us,.code,func_80666AF8,656,no
 us,.code,func_806DA7EC,176,yes
 us,.code,func_8060A7C0,320,no
@@ -476,7 +476,7 @@ us,.code,func_806EE700,76,yes
 us,.code,func_80674B90,644,no
 us,.code,func_807130D4,148,yes
 us,.code,func_80650D04,136,no
-us,.code,func_8063C2A8,128,no
+us,.code,func_8063C2A8,128,yes
 us,.code,func_80689EA4,64,yes
 us,.code,func_80676B38,56,yes
 us,.code,func_806E04E0,372,yes
@@ -888,7 +888,7 @@ us,.code,func_80688C30,84,yes
 us,.code,func_806B6600,856,no
 us,.code,func_8064C9F8,324,no
 us,.code,func_8061118C,48,yes
-us,.code,func_8063DA78,148,no
+us,.code,func_8063DA78,148,yes
 us,.code,func_806B42A8,1476,no
 us,.code,func_8066DD34,1256,no
 us,.code,playerCanThrowOrange,292,yes
@@ -1525,7 +1525,7 @@ us,.code,func_80639CD0,588,no
 us,.code,func_8064B574,48,yes
 us,.code,func_806886E0,608,no
 us,.code,func_80713438,380,no
-us,.code,func_80631C3C,336,no
+us,.code,func_80631C3C,336,yes
 us,.code,func_80660520,784,no
 us,.code,func_80714A08,32,yes
 us,.code,func_8070CAB4,120,yes
@@ -1722,7 +1722,7 @@ us,.code,func_8060EE58,8,yes
 us,.code,func_806E9964,248,yes
 us,.code,func_80647834,480,no
 us,.code,func_80712B80,84,yes
-us,.code,func_806418E8,180,no
+us,.code,func_806418E8,180,yes
 us,.code,func_806C81DC,68,yes
 us,.code,func_8064C544,256,no
 us,.code,func_80675478,304,no
@@ -1749,7 +1749,7 @@ us,.code,func_806F1EB0,1016,no
 us,.code,func_806B7660,68,yes
 us,.code,func_80601224,52,yes
 us,.code,func_80733A88,256,no
-us,.code,func_80641B00,204,no
+us,.code,func_80641B00,204,yes
 us,.code,func_806F3BEC,452,yes
 us,.code,func_8070943C,40,yes
 us,.code,func_8067E43C,152,yes
@@ -2030,7 +2030,7 @@ us,.code,func_806EE5A4,144,yes
 us,.code,func_806F1350,40,yes
 us,.code,func_8062DB70,108,no
 us,.code,func_80701098,3064,no
-us,.code,func_80631D8C,300,no
+us,.code,func_80631D8C,300,yes
 us,.code,func_80727194,96,no
 us,.code,func_80733180,2312,no
 us,.code,func_806EAFF4,100,yes

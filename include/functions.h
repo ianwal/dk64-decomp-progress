@@ -766,7 +766,6 @@ s32 func_8068A24C(ActorSpawner *spawner);
 s32 func_8068A2AC(ActorSpawner *spawner);
 void func_8068A2FC(Actor *actor);
 void func_80659320(void);
-s32 func_80659470(s32 arg0);
 void func_806594C8(s32 arg0);
 void func_8070E8C8(void);
 void func_8070E8DC(u8 arg0);

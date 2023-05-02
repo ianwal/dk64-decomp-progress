@@ -64,6 +64,60 @@ void func_8068EA38(Actor **arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068ECF4.s")
 
+f32 func_80611BB4(f32, f32);
+extern f32 D_80759F70;
+extern f32 D_80759F74;
+extern f32 D_80759F78;
+
+extern s32 D_80720054; // TODO: Datatype
+
+/*
+// TODO: Very  close
+void func_8068ECF4(s32 arg0, u8 arg1) {
+    ActorAnimationState *temp_v0;
+    f32 temp_f0;
+    f32 temp_f2;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 var_f0;
+    f32 var_f2;
+    f32 var_f6;
+    s16 var_v0;
+    u8 temp_t4;
+
+    func_80671C0C(current_actor_pointer, arg0, &sp48, &sp44, &sp40);
+    temp_f2 = (s16)(((func_80611BB4(character_change_array->look_at_eye_z - sp40, sp48 - character_change_array->look_at_eye_x) * D_80759F70) + 1024.0f)) & 0xFFF;
+    if (current_actor_pointer->y_rotation < temp_f2) {
+        var_v0 = temp_f2 - current_actor_pointer->y_rotation;
+    } else {
+        var_v0 = current_actor_pointer->y_rotation - temp_f2;
+    }
+    if (var_v0 >= 0x801) {
+        var_v0 = 0x1000 - var_v0;
+    }
+    if (var_v0 < 0x384) {
+        temp_f0 = (1024.0f - var_v0) * D_80759F74;
+        if (temp_f0 < 1.0f) {
+            var_f2 = temp_f0;
+        } else {
+            var_f2 = 1.0f;
+        }
+        var_f6 = arg1;
+        temp_t4 = (var_f2 * var_f6);
+        if (temp_t4 != 0) {
+            temp_v0 = current_actor_pointer->animation_state;
+            var_f0 = D_80759F78;
+            if (temp_v0 != NULL) {
+                var_f0 = D_80759F78 * temp_v0->scale_y;
+            }
+            func_807149C8(0xFF, 0xFF, 0xFF, temp_t4);
+            func_80714C08(&D_80720054, var_f0, current_actor_pointer, arg0, 2);
+        }
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068EF54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068F72C.s")
