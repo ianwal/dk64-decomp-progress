@@ -181,11 +181,22 @@ Actor *func_807270C0(s16 spawn_trigger, u16 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807271F4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807273A8.s")
+f32 func_80665AE4(s32, s32, s16, s16);
+s32 func_807271F4(s16, s16, s16, s16, s32, s32, s32);
+
+void func_807273A8(s16 arg0, u8 arg1) {
+    u8 temp_t0;
+    s16 sp34;
+
+    temp_t0 = D_807FDC98->unk20[arg1].unk0;
+    sp34 = (func_80665AE4(D_807FDC94->x_position, D_807FDC94->z_position, D_807FDCA0->unk14[temp_t0].unk0, D_807FDCA0->unk14[temp_t0].unk4) * 4096.0f) / 360.0f;
+    if (func_807271F4(arg0, D_807FDCA0->unk14[temp_t0].unk0, D_807FDCA0->unk14[temp_t0].unk2, D_807FDCA0->unk14[temp_t0].unk4, sp34, ((rand() >> 0xF) % 100) + 0x64, ((rand() >> 0xF) % 100) + 0xC8) != 0) {
+        D_807FBB44->control_state = 0x17;
+        D_807FBB44->control_state_progress = 0;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_8072752C.s")
-
-s32 func_807271F4(s16, s16, s16, s16, s32, s32, s32);
 
 /*
 // TODO: Everything matches apart from stack offset

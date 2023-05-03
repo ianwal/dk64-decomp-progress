@@ -271,8 +271,54 @@ void func_806852C4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     }
 }
 
-// Doable, just gotta figure out a struct/array on the stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80685390.s")
+
+/*
+typedef struct {
+    f32 *unk0;
+    s32 unk4;
+    s32 unk8;
+} Struct8074E88C;
+
+extern Struct8074E88C D_8074E88C;
+extern f32 D_80759AF0;
+
+typedef struct {
+    f32 unk0;
+    u16 unk4;
+    u8 unk6;
+} AAD_80685390;
+
+// TODO: Eh doable, kinda fiddly
+void func_80685390(void) {
+    AAD_80685390 *temp_v0;
+    Struct8074E88C sp20;
+
+    temp_v0 = current_actor_pointer->additional_actor_data;
+    sp20 = D_8074E88C;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        temp_v0->unk0 = current_actor_pointer->animation_state->scale_y;
+    }
+    temp_v0->unk4++;
+    switch (current_actor_pointer->control_state) {
+        case 0:
+            current_actor_pointer->animation_state->scale_y = sp20.unk0[temp_v0->unk6] * (temp_v0->unk4 * temp_v0->unk0 * D_80759AF0);
+            if (temp_v0->unk4 > 3.0f) {
+                current_actor_pointer->control_state = 1;
+                temp_v0->unk4 = 0;
+                func_8068842C(current_actor_pointer, 0, 1);
+                func_80688370(current_actor_pointer, 0, 0.5f);
+            }
+            break;
+        case 1:
+            if (func_80688540(current_actor_pointer, 0) == 0) {
+                func_806782C0(current_actor_pointer);
+            }
+            break;
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
 
 void func_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s32 temp_s0;

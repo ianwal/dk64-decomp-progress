@@ -34,13 +34,53 @@ void func_800278F4(BossStruct2 *arg0, f32 arg1, s16 arg2, s16 arg3) {
     arg0->unk8 += ((arg3 - arg0->unk8) * arg1);
 }
 
-// Loop, needs some more struct definitions I think
-// Looks doable though
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_80027950.s")
+f32 func_8000AC60(f32);
 
-// Loop, needs some more struct definitions I think
-// Looks doable though
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_80027A30.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s8 unk14;
+    u8 unk15;
+} Struct80027A30_arg0;
+
+void func_80027950(Struct80027A30_arg0 *arg0, u8 *arg1) {
+    u8 temp_a0;
+    u8 temp_s3;
+    u8 temp_v1;
+
+    temp_s3 = D_807FDC90->unk25;
+    do {
+        D_807FDC90->unk25 = arg1[arg0->unk15] + (((rand() >> 0xF) % 65536) % (((arg1[arg0->unk15 + 1] - arg1[arg0->unk15]) + 1)));
+    } while (D_807FDC90->unk25 == temp_s3);
+    arg0->unk15 += 2;
+}
+
+void func_80027A30(Struct80027A30_arg0 *arg0, u8 *arg1) {
+    f32 dz;
+    f32 dy;
+    f32 dx;
+    s32 temp_f6;
+    s32 var_s1;
+    u8 temp_a0;
+    s16 i;
+
+    var_s1 = 0;
+    for (i = arg1[arg0->unk15]; i <= arg1[arg0->unk15 + 1]; i++) {
+        temp_a0 = D_807FDC98->unk20[i].unk0;
+        dz = current_actor_pointer->z_position - D_807FDCA0->unk14[temp_a0].unk4;
+        dx = current_actor_pointer->x_position - D_807FDCA0->unk14[temp_a0].unk0;
+        dy = current_actor_pointer->y_position - D_807FDCA0->unk14[temp_a0].unk2;
+        temp_f6 = func_8000AC60((dz * dz) + ((dx * dx) + (dy * dy)));
+        if (var_s1 < temp_f6) {
+            var_s1 = temp_f6;
+            D_807FDC90->unk25 = i;
+        }
+    }
+    arg0->unk15 += 2;
+}
 
 // Jumptable, 2224 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_80027BA8.s")

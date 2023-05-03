@@ -104,6 +104,14 @@ typedef struct {
 } GlobalASMStruct20;
 extern GlobalASMStruct20 *D_8076BF20[];
 
+typedef struct {
+    s16 unk0; // X Position
+    s16 unk2; // Y Position
+    s16 unk4; // Z Position
+    s16 unk6;
+    s16 unk8;
+} Struct807FDCA0_unk14;
+
 // TODO: What is this datatype?
 typedef struct Struct807FDCA0 {
     s32 unk0;
@@ -111,7 +119,7 @@ typedef struct Struct807FDCA0 {
     s32 unk8;
     s32 unkC;
     s32 unk10;
-    s32 unk14; // TODO: Pointer to an array of structs 0xA big? See boss func_8003392C
+    Struct807FDCA0_unk14 *unk14;
     s8 unk18;
     s8 unk19; // Used
     s16 unk1A;

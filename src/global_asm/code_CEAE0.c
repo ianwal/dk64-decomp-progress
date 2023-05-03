@@ -2160,8 +2160,53 @@ void func_806D1F28(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-// Structs on the stack?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D205C.s")
+
+typedef struct {
+    s32 unk0;
+    u8 unk4;
+} Struct80750FB0;
+
+extern Struct80750FB0 D_80750FB0;
+
+s32 func_80688D20(s16, s16, s32, s32);
+
+/*
+// TODO: Very close
+void func_806D205C(void) {
+    s32 sp2C;
+    Struct80750FB0 sp1C;
+
+    sp1C = D_80750FB0;
+    func_806EB0C0(0x3C, NULL, cc_player_index);
+    extra_player_info_pointer->unk4 = 0.0f;
+    extra_player_info_pointer->unk30 = 20.0f;
+    if (!(current_actor_pointer->unk6A & 4)) {
+        func_806CC8B8();
+    } else {
+        func_806D850C();
+        if (!(current_actor_pointer->unk6C & 4)) {
+            func_80614E78(player_pointer, 0x34);
+        }
+        current_actor_pointer->y_velocity = current_actor_pointer->y_velocity * 0.25;
+        func_806CC8F0();
+    }
+    if (func_80629148() == 0) {
+        extra_player_info_pointer->unk23C -= 1;
+        if (extra_player_info_pointer->unk23C == 0) {
+            goto block_7;
+        }
+    } else {
+block_7:
+        if (gameIsInSnidesBonusGameMode() == FALSE) {
+            func_80688D20(sp2C, func_80600340(&sp1C, 3, &sp2C), 7, 0x40000000);
+        }
+        func_805FF898();
+        current_actor_pointer->control_state_progress += 1;
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
 
 void func_806D21E4(void) {
     func_806DF6D4(0);
@@ -2632,7 +2677,7 @@ void func_806D32C0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D332C.s")
 
 /*
-// TODO: Surprisingly close to matching this one, just need to shuffle which t registers it's using
+// TODO: Regalloc
 void func_806D332C(void) {
     u8 newControlState;
 

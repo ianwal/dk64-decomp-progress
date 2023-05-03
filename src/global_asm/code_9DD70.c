@@ -210,13 +210,79 @@ void func_8069D2AC(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069D358.s")
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069D424.s")
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069D930.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DA54.s")
+extern void func_8069D424(); // TODO: Proper signature
+extern void func_8069D930(); // TODO: Proper signature
+
+typedef struct {
+    s32 unk0;
+    u16 unk4;
+    u16 unk6;
+    u8 unk8;
+    u8 unk9;
+} AAD_8069DA54;
+
+void func_8069DA54(void) {
+    AAD_8069DA54 *temp_a3;
+
+    temp_a3 = current_actor_pointer->additional_actor_data;
+    if (current_actor_pointer->unkEE != 0) {
+        func_8068C350(&func_8069D930, current_actor_pointer, 3);
+        return;
+    }
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unk168 = temp_a3->unk4;
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0:
+            if (current_actor_pointer->unk168 != 0) {
+                current_actor_pointer->unk168--;
+            } else {
+                current_actor_pointer->control_state = 1;
+            }
+            break;
+        case 1:
+            if (current_actor_pointer->control_state_progress != 3) {
+                func_8068C350(&func_8069D424, current_actor_pointer, 3);
+            }
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    if ((0xFF - temp_a3->unk8) >= current_actor_pointer->unk15F) {
+                        current_actor_pointer->unk15F = current_actor_pointer->unk15F + temp_a3->unk8;
+                    } else {
+                        current_actor_pointer->unk15F = 0xFF;
+                        current_actor_pointer->control_state_progress++;
+                        current_actor_pointer->unk168 = temp_a3->unk6;
+                    }
+                    break;
+                case 1:
+                    if (current_actor_pointer->unk168 != 0) {
+                        current_actor_pointer->unk168--;
+                    } else {
+                        current_actor_pointer->control_state_progress++;
+                    }
+                    break;
+                case 2:
+                    if (current_actor_pointer->unk15F >= temp_a3->unk9) {
+                        current_actor_pointer->unk15F -= temp_a3->unk9;
+                    } else {
+                        current_actor_pointer->control_state_progress++;
+                        current_actor_pointer->unk15F = 0;
+                    }
+                    break;
+                case 3:
+                    func_8061130C(temp_a3->unk0, current_actor_pointer);
+                    func_806782C0(current_actor_pointer);
+                    break;
+            }
+            break;
+    }
+}
 
 // Negative struct offset in loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DC10.s")

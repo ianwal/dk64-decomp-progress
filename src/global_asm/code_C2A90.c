@@ -339,8 +339,75 @@ void func_806C19F4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-// Doable, need to untangle some switch cases/labels probably
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806C1B50.s")
+
+extern s32 D_8071FB34; // TODO: Datatype
+
+/*
+// TODO: Switch case woes
+void func_806C1B50(void) {
+    AnimationStateUnk0 *temp_a0;
+    f32 var_f6;
+    s16 temp_v0;
+    s32 var_v0;
+    s32 var_v1;
+
+    func_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_806C15E8();
+        func_806F09F0(current_actor_pointer, current_actor_pointer->unk58);
+    }
+    func_806BF920();
+    if (current_actor_pointer->object_properties_bitfield & 0x10000000) {
+        func_806BFBF4();
+        if (current_actor_pointer->object_properties_bitfield & 4) {
+            if (current_actor_pointer->control_state_progress != 0) {
+                temp_a0 = current_actor_pointer->animation_state->unk0;
+                var_v1 = 7;
+                switch (temp_a0->unk10) {
+                    case 0x23E:
+                        var_v0 = 0xD;
+                        break;
+                    case 0x23F:
+                        var_v0 = 0xE;
+                        break;
+                    case 0x240:
+                        var_v0 = 0x11;
+                        break;
+                    default:
+                        var_v0 = 7;
+                        break;
+                }
+                // if (temp_v0 != 0x23E) {
+                //     var_v1 = 7;
+                //     if (temp_v0 != 0x23F) {
+                //         var_v1 = 3;
+                //         if (temp_v0 != 0x240) {
+
+                //         } else {
+                //             var_v0 = 0x11;
+                //             goto block_12;
+                //         }
+                //     } else {
+                //         var_v0 = 0xE;
+                //         goto block_12;
+                //     }
+                // } else {
+                //     var_v0 = 0xD;
+                // }
+                if (var_v1 < temp_a0->unk4) {
+                    func_80714C08(&D_8071FB34, 0.5f, current_actor_pointer, var_v0, 0);
+                    current_actor_pointer->control_state_progress = 0;
+                }
+            }
+        }
+    } else {
+        func_806C10A0(2, 4, 0x3DB);
+        func_806C151C(4, 1, 8);
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
 
 extern s32 D_807035C4; // TODO: Datatype
 
