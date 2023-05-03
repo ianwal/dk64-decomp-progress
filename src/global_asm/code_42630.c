@@ -709,6 +709,64 @@ void func_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645700.s")
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct807F5FD4;
+
+extern s32 D_8071E3EC; // TODO: Datatype
+extern Struct807F5FD4 *D_807F5FD4;
+extern s32 D_80720BC4; // TODO: Datatype
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80645700_sp20;
+
+/*
+// TODO: Pretty close
+void func_80645700(Struct80645700_sp20 **arg0, s32 arg1, s16 arg2, s16 arg3) {
+    u32 sp24;
+    Struct80645700_sp20 *temp_v0;
+    Struct80645700_sp20 *var_v1;
+
+    var_v1 = *arg0;
+    if (var_v1 == NULL) {
+        if (arg3 != 0) {
+            temp_v0 = malloc(8);
+            *arg0 = temp_v0;
+            temp_v0->unk0 = 0.0f;
+            temp_v0->unk4 = 0.0f;
+            var_v1 = *arg0;
+        }
+    }
+    sp24 = (func_806119A0() / 10000U) % arg2;
+    func_807149B8(1);
+    func_80714998(3);
+    func_80714950(3);
+    func_8071498C(&D_8071E3EC);
+    func_807149A8(0x7D0);
+    func_80714CC0(&D_80720BC4, 2.5f, D_807F5FD4[sp24].unk0, D_807F5FD4[sp24].unk4, D_807F5FD4[sp24].unk8);
+    if (arg3 != 0) {
+        if (player_pointer->control_state == 0x42) {
+            var_v1->unk0 = player_pointer->y_position;
+        }
+        if (!((var_v1->unk0 - player_pointer->y_position) > 200.0)) {
+            if (player_pointer->y_position < 10.0f) {
+                goto block_8;
+            }
+        } else {
+block_8:
+            if (var_v1->unk4 == 0.0) {
+                func_805FF9AC(0x48, 0x1C, 0, 0);
+                var_v1->unk4 = 1.0f;
+            }
+        }
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806458C8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645A64.s")

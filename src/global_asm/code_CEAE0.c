@@ -5231,8 +5231,6 @@ void func_806DECD4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DED44.s")
-
 extern s32 D_80750FE0[];
 extern s32 D_80750FF0;
 
@@ -5255,10 +5253,7 @@ void func_806D9924(Actor*);
 
 void func_80659620(f32 *arg0, f32 *arg1, f32 *arg2, s16 arg3);
 
-/*
-// TODO: Regalloc
 void func_806DED44(void) {
-    s32 temp_v0_5;
     BoulderAAD *temp_s0_3;
     s8 phi_a1;
     s32 i;
@@ -5289,15 +5284,13 @@ void func_806DED44(void) {
             func_80614EBC(D_807FBB44, 0x2B7);
             temp_s0_3 = D_807FBB44->additional_data_pointer;
             temp_s0_3->unk10 = current_actor_pointer;
-            temp_v0_5 = current_actor_pointer->unk12C;
-            temp_s0_3->unk18 = temp_v0_5;
-            if (temp_v0_5 == -1) {
+            temp_s0_3->unk18 = current_actor_pointer->unk12C;
+            if (temp_s0_3->unk18 == -1) {
                 temp_s0_3->unk18 = 0;
-                temp_v0_5 = 0;
             }
             temp_s0_3->unk16 = current_actor_pointer->z_rotation;
             temp_s0_3->unk14 = current_actor_pointer->x_rotation;
-            func_80659620(temp_s0_3, &temp_s0_3->unk4, &temp_s0_3->unk8, temp_v0_5);
+            func_80659620(temp_s0_3, &temp_s0_3->unk4, &temp_s0_3->unk8, temp_s0_3->unk18);
             func_80659670(1.0f, 1.0f, 1.0f, temp_s0_3->unk18);
             func_80677FA8(0x136, 0xA8); // Spawn spotlight actor 310
             func_8067B238(D_807FBB44,
@@ -5332,7 +5325,6 @@ void func_806DED44(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_806DF050(void) {
     PlayerAdditionalActorData *PaaD = current_actor_pointer->PaaD;
@@ -7439,8 +7431,40 @@ void func_806E9070(void) {
 }
 */
 
-// Fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E918C.s")
+extern f32 D_8075D350;
+
+void func_8061C2F0(Actor *, f32, f32, f32, f32, f32, f32, s32);
+void func_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+
+void func_806E918C(void) {
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+
+    if (!(extra_player_info_pointer->unk1F0 & 0x10000000)) {
+        if (D_807FD610[cc_player_index].unk2A & 0x10) {
+            if (current_actor_pointer->control_state == 7) {
+                func_80671C0C(extra_player_info_pointer->vehicle_actor_pointer, 3, &sp54, &sp50, &sp4C);
+                func_80671C0C(extra_player_info_pointer->vehicle_actor_pointer, 4, &sp48, &sp44, &sp40);
+                func_8061C2F0(extra_player_info_pointer->unk104, sp48, sp44 + 8.0f, sp40, (sp48 - sp54) + sp48, (sp44 - sp50) + sp44 + 5.0f, (sp40 - sp4C) + sp40, 1);
+                extra_player_info_pointer->unk1F0 |= 2;
+                current_actor_pointer->object_properties_bitfield |= 0x400;
+                return;
+            }
+        }
+        if (extra_player_info_pointer->unk1F0 & 2) {
+            extra_player_info_pointer->unk1F0 &= ~2;
+            func_8061C6A8(extra_player_info_pointer->unk104, extra_player_info_pointer->vehicle_actor_pointer, 4, 0x800, 0x28, 0, 5, 0x19, 0x14, 0, D_8075D350);
+            if (current_actor_pointer->control_state == 7) {
+                func_80614E78(current_actor_pointer, 0x84);
+            }
+        }
+        current_actor_pointer->object_properties_bitfield &= ~0x400;
+    }
+}
 
 void func_806E9388(void) {
     if (D_807FD610[cc_player_index].unk2C & B_BUTTON) {

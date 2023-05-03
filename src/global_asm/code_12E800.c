@@ -107,6 +107,43 @@ void func_80729E6C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072A450.s")
 
+extern f64 D_8075FD20;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    u8 unk17;
+} Struct8075EB80;
+
+extern Struct8075EB80 D_8075EB80[];
+
+void func_8065D254(Actor *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, u8 arg6, s16 arg7, u8 arg8, s16 arg9, f32 argA);
+
+/*
+// TODO: Float nonsense
+void func_8072A450(void) {
+    ActorAnimationState *temp_v0_2;
+    f32 temp_f0;
+    Struct8075EB80 *temp_v1;
+
+    if (!(current_actor_pointer->object_properties_bitfield & 0x01000000)) {
+        if (current_actor_pointer->object_properties_bitfield & 4) {
+            if (!(D_807FDC98->unk46 & 0x100)) {
+                temp_v0_2 = current_actor_pointer->animation_state;
+                temp_v1 = &D_8075EB80[D_807FDC98->unk44];
+                func_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, (temp_v0_2->scale_x * temp_v1->unk14 * D_807FDC98->unk30), (temp_v0_2->scale_z * temp_v1->unk15 * D_807FDC98->unk30), 1, 0x12C, (current_actor_pointer->shadow_opacity * D_8075FD20), current_actor_pointer->y_rotation, 1.0f);
+            }
+        }
+    }
+}
+*/
+
 extern f64 D_8075FD28;
 extern s32 D_80720120; // TODO: Datatype
 
@@ -426,6 +463,99 @@ void func_8072B79C(s16 arg0, u16 arg1, s16 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B7CC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072C670.s")
+
+/*
+// TODO: Get rid of the GOTOs
+u8 func_8072C670(u8 arg0, s8 *arg1) {
+    u8 temp_v0;
+    u8 temp_v1;
+    u8 var_v1;
+    PlayerAdditionalActorData *PaaD;
+
+    PaaD = D_807FDC94->additional_actor_data;
+    *arg1 = 1;
+    if (current_actor_pointer->interactable & 2) {
+        if (current_actor_pointer->control_state != 0x15) {
+            if (D_807FDC94->unk58 == 6) {
+                if (character_change_array->unk2C0 == 2) {
+                    if (cc_number_of_players != 1) {
+                        goto block_5;
+                    }
+                    goto block_7;
+                }
+                goto block_5;
+            }
+block_5:
+            if (D_807FDC94->interactable & 1) {
+                if (PaaD->unk1F0 & 0x10) {
+block_7:
+                    var_v1 = 7;
+                } else {
+                    goto block_8;
+                }
+            } else {
+                goto block_8;
+            }
+        } else {
+block_8:
+            if (D_807FDC90->unk37 == 7) {
+                if (arg0) {
+                    if (!(D_807FDC90->unk1A & 0x200)) {
+                        if (D_807FDC90->unk20 == 0) {
+                            D_807FDC90->unk20 = 0x10;
+                            if (func_80725ED4(0x81, current_actor_pointer, D_807FDCA0, &D_807FDC90->unkA, &D_807FDC90->unkC, &D_807FDC90->unkE) == 0) {
+                                var_v1 = 0x10;
+                            } else {
+                                var_v1 = 7;
+                            }
+                        } else {
+                            goto block_15;
+                        }
+                    } else {
+                        goto block_15;
+                    }
+                } else {
+                    goto block_15;
+                }
+            } else {
+block_15:
+                if (D_807FDC90->unk20 != 0) {
+                    D_807FDC90->unk20--;
+                }
+                if (D_807FDC94->interactable & 1) {
+                    if (PaaD->unkD4 != 0) {
+                        var_v1 = 1;
+                        if (!(D_807FBB64 & 0x100000)) {
+                            *arg1 = 0;
+                        } else {
+                            goto block_21;
+                        }
+                    } else {
+                        goto block_21;
+                    }
+                } else {
+block_21:
+                    if (D_807FDC90->unk1A & 0x400) {
+                        var_v1 = D_807FDC90->unk37;
+                    } else {
+                        if (D_807FDC9C->unk10 == 7) {
+                            var_v1 = 1;
+                        } else {
+                            var_v1 = D_807FDC9C->unk10;
+                        }
+                    }
+                }
+            }
+        }
+    } else {
+        var_v1 = D_807FDC9C->unk10;
+    }
+    if (var_v1 == 9) {
+        var_v1 = 1;
+    }
+    return var_v1;
+}
+*/
 
 void func_8072C870(u8 arg0, u8 arg1, s32 arg2) {
     if (arg0 == 7) {

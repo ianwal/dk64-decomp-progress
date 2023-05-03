@@ -184,6 +184,44 @@ u8 func_80676C64(s32 arg0, Actor *arg1, s32 arg2) {
 // Small struct and a loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676CB0.s")
 
-// CharacterChange, Player, ActorAdditionalData struct usages
-// Seems doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676D00.s")
+
+s32 func_806EB400(Actor *);           // extern
+extern f32 D_80759250;
+extern f32 D_80759254;
+extern f32 D_80759258;
+
+/*
+// TODO: Extremely close, just two instructions swapped
+void func_80676D00(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3) {
+    u8 temp_a2;
+    PlayerAdditionalActorData *temp_v0;
+
+    if (arg1 == player_pointer) {
+        temp_v0 = arg1->PaaD;
+        temp_a2 = temp_v0->unk1A4;
+        arg1->PaaD->unk1F0 |= 0x80000;
+        if (temp_v0->unkD4 == 0) {
+            if (player_pointer->control_state != 0x36) {
+                if (func_806EB400(player_pointer) != 0) {
+                    if (player_pointer->unk58 == 6) {
+                        if (character_change_array[temp_a2].unk2C0 == 2) {
+                            if (player_pointer->control_state != 0x31) {
+                                if (arg0->interactable & 0x80) {
+                                    func_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x64, 0x1E, 0, D_80759250, 0);
+                                }
+                            }
+                            return;
+                        }
+                    }
+                    if (arg0->unk58 == 0xBB) {
+                        func_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x37, 0xFF, 0x7F, 0x1E, 0x5A, D_80759254, 0);
+                        return;
+                    }
+                    func_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x7F, 0x1E, 0x5A, D_80759258, 0);
+                }
+            }
+        }
+    }
+}
+*/

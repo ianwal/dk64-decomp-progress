@@ -350,8 +350,52 @@ void func_8067C6FC(void) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067C71C.s")
 
-// TODO: Seems doable, might get owned by rodata though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067DCC0.s")
+
+extern s32 D_8071910C; // TODO: Datatype
+extern s32 D_8071FE08; // TODO: Datatype
+extern s32 D_8071FE64; // TODO: Datatype
+extern s32 D_8071FE88; // TODO: Datatype
+extern s32 D_8071FEAC; // TODO: Datatype
+extern f64 D_80759550;
+
+u32 func_806119A0(void);
+void func_80608528(Actor*, s32, s32, s32, s32);
+
+/*
+// TODO: Pretty close
+void func_8067DCC0(void) {
+    f32 temp_f20;
+    s32 temp_s0;
+    s32 i;
+
+    temp_f20 = current_actor_pointer->animation_state->scale_y / D_80759550;
+    func_8060E7EC(0, 0xB4, 0xA);
+    func_807149B8(0);
+    func_807149FC(1);
+    func_80714CC0(&D_8071FE08, temp_f20 * 0.75, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+    func_80608528(current_actor_pointer, 0x23, 0xFF, 0x7F, 1);
+    for (i = 0; i < 7; i++) {
+        temp_s0 = (func_806119A0() / 10000) % 3;
+        func_807149B8(1);
+        func_807149FC(0xA);
+        func_8071498C(&D_8071910C);
+        func_80714998(2);
+        func_80714950(2);
+        switch (temp_s0) {
+            case 0:
+                func_80714CC0(&D_8071FE64, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                break;
+            case 1:
+                func_80714CC0(&D_8071FE88, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                break;
+            case 2:
+                func_80714CC0(&D_8071FEAC, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                break;
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067DF44.s")
 
@@ -652,6 +696,77 @@ void func_80681BD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80682E38.s")
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    u8 unk4; // Used
+    u8 unk5;
+} GlobalASMStruct45;
+
+extern GlobalASMStruct45 D_8074E814[];
+
+void func_80682AB4(void *);
+void func_80682DF4(Actor *, void *, s32);
+void func_806F09F0(Actor *, u16);
+
+typedef struct {
+    s32 unk0;
+    s16 unk4;
+    s8 unk6;
+    u8 unk7;
+    Actor *unk8[5];
+    Actor *unk1C;
+} Struct80682E38_arg0;
+
+typedef struct {
+    s16 unk0;
+} AAD_80682E38;
+
+/*
+// TODO: Regalloc v0 t1
+void func_80682E38(Struct80682E38_arg0 *arg0) {
+    s32 var_a2;
+    s16 var_a1;
+    s32 var_s0;
+    s32 i;
+    AAD_80682E38 *temp_s0;
+
+    func_80677FA8(0x136, 0xA8);
+    arg0->unk1C = D_807FBB44;
+    D_807FBB44->x_position = (func_80612794(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->x_position;
+    D_807FBB44->y_position = (current_actor_pointer->y_position - 10.0f) - 2.0f;
+    D_807FBB44->z_position = (func_80612790(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->z_position;
+    for (i = 0; i < 5; i++) {
+        if (isFlagSet(func_805FF018(current_actor_pointer->unk58, i), FLAG_TYPE_PERMANENT) != FALSE) {
+            var_s0 = 0x13C;
+            var_a1 = D_8074E814[i].unk0;
+        } else {
+            var_s0 = 0x13D;
+            var_a1 = 0xD2;
+        }
+        func_80677FA8(var_s0, var_a1);
+        arg0->unk8[i] = D_807FBB44;
+        D_807FBB44->y_rotation = current_actor_pointer->y_rotation;
+        D_807FBB44->object_properties_bitfield |= 0x40000000;
+        if (var_s0 == 0x13C) {
+            temp_s0 = D_807FBB44->additional_actor_data;
+            temp_s0->unk0 = D_8074E814[i].unk2;
+            func_806F09F0(D_807FBB44, temp_s0->unk0);
+            if (i == arg0->unk6) {
+                var_a2 = 0x8B;
+            } else {
+                var_a2 = 0x8A;
+            }
+            func_80682DF4(D_807FBB44, temp_s0, var_a2);
+        } else {
+            // Regalloc here
+            D_807FBB44->RaaD2->unk0 = i;
+        }
+    }
+    func_80682AB4(arg0);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8068304C.s")
 
 /*
@@ -812,15 +927,6 @@ s32 func_80683A80(Struct80683A80_arg0 *arg0, s32 arg1) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80683AD8.s")
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    u8 unk4; // Used
-    u8 unk5;
-} GlobalASMStruct45;
-
-extern GlobalASMStruct45 D_8074E814[];
 
 void func_8068408C(Actor *arg0) {
     s32 kongIndex;

@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80024000.s")
 
 extern s32 D_8002FC5C[];
@@ -262,6 +260,75 @@ void func_80026EE4(s32 arg0, Actor *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026F04.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_800274C0.s")
+
+extern f32 D_8002FE68;
+extern s32 D_8071FFA0; // TODO: Datatype
+extern s32 D_80720340; // TODO: Datatype
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+} AAD_800274C0;
+
+typedef struct {
+    u8 pad0[0xC];
+    Actor *unkC;
+} RaceStruct0;
+
+void func_8002D338(Actor *arg0, RaceStruct0 *arg1);
+
+/*
+// TODO: Matches but missing NOPS at the end, possibly a file break after this?
+void func_800274C0(void) {
+    AAD_800274C0 *sp4C;
+    Actor178 *sp48;
+    s32 temp;
+    Actor17C *temp_s1;
+    u8 temp2[3];
+    u8 var_v1;
+
+    if (temp_s1); // TODO: Gross
+    var_v1 = 0;
+    sp4C = current_actor_pointer->additional_actor_data;
+    sp48 = current_actor_pointer->unk178;
+    temp_s1 = current_actor_pointer->unk17C;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        temp_s1->unk0_u16[0] = 0x78;
+        current_actor_pointer->object_properties_bitfield |= 0x10;
+        current_actor_pointer->noclip_byte = 0x3C;
+        sp4C->unk4 = 5.0f;
+    }
+    if (D_807FBB70.unk200 != 9) {
+        if (D_807FBB70.unk15 == 0) {
+            if (D_807FBB70.unk200 == 5) {
+                goto block_5;
+            }
+        } else {
+            goto block_5;
+        }
+    } else {
+block_5:
+        func_807149B8(1);
+        func_80714CC0(&D_80720340, 3.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+        func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, D_8002FE68, 0);
+        var_v1 = 1;
+    }
+    func_80026354(sp48, sp4C, 0);
+    current_actor_pointer->y_position += 5.0f;
+    if (temp_s1->unk0_u16[0] != 0) {
+        func_807149B8(1);
+        func_80714CC0(&D_8071FFA0, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position);
+        temp_s1->unk0_u16[0]--;
+        if (!(temp_s1->unk0_u16[0])) {
+            var_v1 = 1;
+        }
+    }
+    if (var_v1 != 0) {
+        func_8002D338(current_actor_pointer, temp_s1);
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_800276B0.s")
 
@@ -565,11 +632,6 @@ f32 func_8002D2C0(RaceStruct12 *arg0) {
 }
 */
 
-typedef struct {
-    u8 pad0[0xC];
-    Actor *unkC;
-} RaceStruct0;
-
 void func_8002D338(Actor *arg0, RaceStruct0 *arg1) {
     Actor *temp = arg1->unkC;
     RaceAdditionalActorData *RaaD = temp->RaaD;
@@ -769,8 +831,75 @@ void func_8002E464(s32 arg0, Actor *arg1) {
     func_8002CAC8(arg0, arg1, arg1->PaaD);
 }
 
-// Doable, some aaD stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002E484.s")
+extern void func_8002E464(); // TODO: Signature
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    u8 unk28;
+    u8 unk29;
+    u8 unk2A;
+    u8 unk2B;
+    s32 unk2C;
+    s32 unk30;
+    u8 unk34;
+    u8 unk35;
+    u8 unk36;
+    u8 unk37;
+    s16 unk38;
+    u16 unk3A;
+    s32 unk3C;
+    f32 unk40;
+} AAD_8002E484;
+
+void func_8002E484(void) {
+    Actor *var_a3;
+    AAD_8002E484 *temp_s0;
+
+    temp_s0 = current_actor_pointer->additional_actor_data;
+    var_a3 = character_change_array[temp_s0->unk28].player_pointer;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_806EB0C0(0x4E, current_actor_pointer, temp_s0->unk28);
+        current_actor_pointer->control_state = 0;
+        current_actor_pointer->control_state_progress = 0;
+    }
+    if (temp_s0->unk34 == 2) {
+        if (current_actor_pointer->control_state == 0) {
+            func_806EB0C0(0x57, NULL, temp_s0->unk28);
+            current_actor_pointer->control_state += 1;
+        }
+    }
+    current_actor_pointer->x_position = var_a3->x_position;
+    current_actor_pointer->y_position = var_a3->y_position;
+    current_actor_pointer->z_position = var_a3->z_position;
+    if (temp_s0->unk34 == 2) {
+        func_8002F490(temp_s0);
+    }
+    if (temp_s0->unk34 > 0) {
+        if (temp_s0->unk34 < 5) {
+            func_8068C350(&func_8002E464, current_actor_pointer, 3);
+        }
+    }
+    if (temp_s0->unk40 < temp_s0->unk1C) {
+        temp_s0->unk1C = temp_s0->unk1C;
+    } else {
+        temp_s0->unk1C = temp_s0->unk40;
+    }
+    temp_s0->unk14 = (temp_s0->unk3A * 0xBB8) - temp_s0->unk40;
+    if (temp_s0->unk14 < temp_s0->unk18) {
+        temp_s0->unk18 = temp_s0->unk18;
+        return;
+    }
+    temp_s0->unk18 = temp_s0->unk14;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002E644.s")
 
@@ -863,6 +992,65 @@ void func_8002ED04(f32 arg0, s32 arg1, u8 arg2) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002EDD4.s")
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    u16 unk6;
+    s32 unk8;
+    s32 unkC;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    f32 unk14;
+    u8 unk18;
+    u8 unk19;
+    u16 unk1A;
+    s32 unk1C[1]; // TODO: How many?
+} Struct8002EDD4_arg0;
+
+void func_80008620(f32*, f32, f32, f32, f32);
+void func_80008810(f32*, f32, f32, f32, f32*, f32*, f32*);
+void func_80005D80(f32*, f32, f32, f32);
+void func_800088B0(void*, void*, void*);
+
+/*
+// TODO: Very close, it's using too many s registers
+void func_8002EDD4(Struct8002EDD4_arg0 *arg0) {
+    f32 spD0[16];
+    f32 sp90[16];
+    s32 temp[5];
+    f32 var_f22;
+    u8 i;
+
+    if (arg0->unk10 != 0) {
+        if (arg0->unk18 == 2) {
+            var_f22 = arg0->unk1A * 0.5f;
+            for (i = 0; i < 2; i++) {
+                func_8002ED04(arg0->unk14, arg0->unk10, i ^ 1);
+                arg0->unk1C[i] = D_807FBB44;
+                D_807FBB44->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
+                if (i != 0) {
+                    var_f22 *= -1.0f;
+                }
+                func_80008620(&spD0, D_807FBB44->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
+                func_80005D80(&sp90, arg0->unk0, arg0->unk2, arg0->unk4);
+                func_800088B0(&spD0, &sp90, &spD0);
+                func_80008810(&spD0, var_f22, 0.0f, 0.0f, &D_807FBB44->x_position, &D_807FBB44->y_position, &D_807FBB44->z_position);
+            }
+            return;
+        }
+        func_8002ED04(arg0->unk14, arg0->unk10, (arg0->unk18 == 1));
+        arg0->unk1C[0] = D_807FBB44;
+        D_807FBB44->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
+        D_807FBB44->x_position = arg0->unk0;
+        D_807FBB44->y_position = arg0->unk2;
+        D_807FBB44->z_position = arg0->unk4;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002F04C.s")
 

@@ -39,8 +39,24 @@ void func_8003340C(BossStruct0 *arg0) {
     }
 }
 
-// Doable, needs some struct definitions
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_800334A4.s")
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+} Struct800334A4_arg0;
+
+/*
+// TODO: Regalloc & float regalloc
+void func_800334A4(Struct800334A4_arg0 *arg0, f32 arg1) {
+    f32 temp_f2;
+
+    temp_f2 = func_80612794(((f32)(1.0 - MIN(1.0, current_actor_pointer->animation_state->unk0->unk4 * arg1)) * 1024.0f) + 3072.0f) + 1.0;
+    current_actor_pointer->x_position = ((D_807FDCA0->unk14[arg0->unk0].unk0 - D_807FDCA0->unk14[arg0->unk1].unk0) * temp_f2) + D_807FDCA0->unk14[arg0->unk1].unk0;
+    current_actor_pointer->z_position = ((D_807FDCA0->unk14[arg0->unk0].unk4 - D_807FDCA0->unk14[arg0->unk1].unk4) * temp_f2) + D_807FDCA0->unk14[arg0->unk1].unk4;
+    current_actor_pointer->y_rotation = func_806CC190(current_actor_pointer->y_rotation, func_80665DE0(D_807FDCA0->unk14[arg0->unk1].unk0, D_807FDCA0->unk14[arg0->unk1].unk4, D_807FDCA0->unk14[arg0->unk0].unk0, D_807FDCA0->unk14[arg0->unk0].unk4), 10.0f);
+}
+*/
 
 void func_800336C0(void) {
     f32 sp24;

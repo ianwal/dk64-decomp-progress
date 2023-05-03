@@ -61,7 +61,7 @@ typedef struct enemy_info {
     u16 unk28; // Used
     s16 unk2A; // Used
     u32 unk2C;
-    u32 unk30;
+    f32 unk30; // Used
     f32 unk34; // Used
     f32 unk38; // Used
     f32 unk3C; // at 0x3C
@@ -387,6 +387,7 @@ typedef struct actor_17C {
     union {
         s32 unk0; // TODO: Actor*? Boss overlay Might require a union?
         s16 unk0_s16[2]; // TODO: Actor*? Boss overlay Might require a union?
+        u16 unk0_u16[2]; // TODO: Actor*? Boss overlay Might require a union?
     };
     u8 unk4;
     u8 unk5;

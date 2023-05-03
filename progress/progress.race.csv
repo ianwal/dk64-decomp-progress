@@ -99,7 +99,7 @@ us,.code,func_80028440,1680,no
 us,.code,func_8002D524,520,no
 us,.code,func_8002BC2C,132,no
 us,.code,func_8002ED04,208,yes
-us,.code,func_8002E484,448,no
+us,.code,func_8002E484,448,yes
 us,.code,func_80025E9C,320,no
 us,.code,func_80027920,472,no
 us,.code,initializeCastleCarRace,424,no
