@@ -1,5 +1,5 @@
 version,section,function,length,matching
-us,.code,func_800274C0,496,no
+us,.code,func_800274C0,488,yes
 us,.code,func_8002D2C0,120,no
 us,.code,func_8002DD70,48,yes
 us,.code,func_80027AF8,56,yes
@@ -97,16 +97,16 @@ us,.code,func_8002B964,620,no
 us,.code,func_80026098,328,no
 us,.code,func_80028440,1680,no
 us,.code,func_8002D524,520,no
-us,.code,func_8002BC2C,132,no
 us,.code,func_8002ED04,208,yes
+us,.code,func_8002BC2C,132,no
 us,.code,func_8002E484,448,yes
 us,.code,func_80025E9C,320,no
 us,.code,func_80027920,472,no
 us,.code,initializeCastleCarRace,424,no
 us,.code,func_8002C14C,412,no
 us,.code,func_8002C76C,860,no
-us,.code,func_800257A4,472,no
 us,.code,func_8002DA68,296,yes
+us,.code,func_800257A4,472,no
 us,.code,func_8002C2E8,852,no
 us,.code,func_8002BCB0,36,no
 us,.code,func_8002D778,752,no

@@ -4832,7 +4832,6 @@ extern f64 D_8075CFE0;
 extern f64 D_8075CFE8;
 extern f32 D_8075CFF0;
 extern f32 D_80753CD0[];
-extern s16 D_807FD584;
 
 /*
 // TODO: Doable, made good progress, not sure what's going on with case 1
@@ -5049,7 +5048,6 @@ extern f64 D_8075D048;
 extern f64 D_8075D050;
 extern f64 D_8075D058;
 extern f64 D_8075D060;
-extern s16 D_807FD584;
 
 extern s16 D_80753DA8[];
 extern s16 D_80753DB8[];
@@ -5730,11 +5728,136 @@ void func_806E0BEC(void) {
     }
 }
 
-// Strange array/struct lookup at the bottom involving D_8075D138 and D_8075D140
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E0D40.s")
 
-// Surprisingly doable, just large and fiddly
+extern f64 D_8075D138;
+extern f64 D_8075D140;
+
+/*
+// TODO: Something missing...
+void func_806E0D40(void) {
+    f32 var_f0;
+
+    func_806E007C();
+    if (extra_player_info_pointer->unk4 != 0.0f) {
+        var_f0 = ABS( current_actor_pointer->y_rotation - extra_player_info_pointer->unkA);
+        if (var_f0 > 2048.0f) {
+            var_f0 = 4096.0f - var_f0;
+        }
+        if (var_f0 > 400.0f) {
+
+        }
+        current_actor_pointer->y_rotation -= ((D_807FD610[cc_player_index].unk2E * extra_player_info_pointer->unk48) / 400);
+        if (current_actor_pointer->y_rotation >= 0x1000) {
+            current_actor_pointer->y_rotation -= 0x1000;
+        }
+        if (current_actor_pointer->y_rotation < 0) {
+            current_actor_pointer->y_rotation += 0x1000;
+        }
+    }
+    if (!(D_807FD610[cc_player_index].unk2A & 0x2000)) {
+        extra_player_info_pointer->unk1A0 = ((D_807FD610[cc_player_index].unk2F * 0xCC) * D_8075D138) + D_8075D140;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E0FAC.s")
+
+extern f64 D_8075D148;
+extern f32 D_8075D150;
+
+typedef struct {
+    u8 unk0[0x96 - 0x0];
+    u16 unk96[1]; // TODO: How many elements?
+    u8 unk98[0xA4 - 0x98];
+    u16 unkA4[1]; // TODO: How many elements?
+    u8 unkA6[0x478 - 0xA6];
+    u16 unk478[1]; // TODO: How many elements?
+    u16 unk47A;
+    s32 unk47C;
+    s32 unk480;
+    s16 unk484;
+    u16 unk486[1]; // TODO: How many elements?
+} Struct807FBB54;
+
+extern Struct807FBB54 D_807FBB54;
+
+/*
+// TODO: Good progress
+void func_806E0FAC(void) {
+    f32 sp1C;
+    f32 temp_f0;
+    f32 temp_f2;
+    f32 var_f0;
+    f32 var_f2;
+    f32 var_f2_2;
+    s16 temp_a1;
+    u16 temp_a1_2;
+    u16 temp_a1_3;
+    u16 temp_a1_4;
+    u16 temp_a1_5;
+
+    func_806E007C();
+    if (extra_player_info_pointer->unk4 != 0.0f) {
+        if (current_actor_pointer->unkB8 == 0.0f) {
+            temp_f2 = D_807FD610[cc_player_index].unk8;
+            var_f2 = temp_f2 * temp_f2;
+            if (var_f2 < D_8075D148) {
+                var_f2 = D_8075D150;
+            }
+            var_f0 = current_actor_pointer->y_rotation - extra_player_info_pointer->unkA;
+            if (var_f0 >= 2048.0f) {
+                var_f0 -= 4096.0f;
+            }
+            if (var_f0 <= -2048.0f) {
+                var_f0 += 4096.0f;
+            }
+            if (var_f0 > 400.0f) {
+                var_f0 = 400.0f;
+            }
+            if (var_f0 < -400.0f) {
+                var_f0 = -400.0f;
+            }
+            temp_f0 = (var_f0 * (extra_player_info_pointer->unk48 / 400.0)) * var_f2;
+            func_806DF494(&current_actor_pointer->y_rotation, extra_player_info_pointer->unkA, ABS(temp_f0));
+            if (temp_f0 != 0.0f) {
+                if (current_actor_pointer->control_state != 0x3C) {
+                    if (current_actor_pointer->control_state == 0x62) {
+                        temp_a1_2 = D_807FBB54.unk478[current_actor_pointer->unk58];
+                        if (temp_a1_2 != current_actor_pointer->animation_state->unk64) {
+                            func_80614EBC(current_actor_pointer, temp_a1_2);
+                        }
+                        func_80614D00(current_actor_pointer, temp_f0 / 80.0, 0.0f);
+                    }
+                } else {
+                    temp_a1_3 = D_807FBB54.unkA4[current_actor_pointer->unk58];
+                    if (temp_a1_3 != current_actor_pointer->animation_state->unk64) {
+                        func_80614EBC(current_actor_pointer, temp_a1_3);
+                    }
+                    func_80614D00(current_actor_pointer, temp_f0 / 80.0, 0.0f);
+                }
+            }
+            // goto block_32;
+        }
+        // goto block_25;
+    }
+block_25:
+    if (current_actor_pointer->control_state != 0x3C) {
+        if (current_actor_pointer->control_state == 0x62) {
+            temp_a1_4 = D_807FBB54.unk486[current_actor_pointer->unk58];
+            if (temp_a1_4 != current_actor_pointer->animation_state->unk64) {
+                func_80614EBC(current_actor_pointer, temp_a1_4);
+            }
+        }
+    } else if (current_actor_pointer->control_state_progress == 1) {
+        temp_a1_5 = D_807FBB54.unk96[current_actor_pointer->unk58];
+        if (temp_a1_5 != current_actor_pointer->animation_state->unk64) {
+            func_80614EBC(current_actor_pointer, temp_a1_5);
+        }
+    }
+    extra_player_info_pointer->unk4 = 0.0f;
+}
+*/
 
 void func_806E1334(void) {
     if (D_807FD610[cc_player_index].unk2F < 0) {
@@ -6378,8 +6501,66 @@ void func_806E4634(void) {
     }
 }
 
-// Doable, needs 0x306 struct array though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E4740.s")
+
+extern f32 D_8075318C[];
+
+/*
+// TODO: Very close, just an issue with the branches in the first switch case
+void func_806E4740(void) {
+    if (D_807FD610[cc_player_index].unk2C & B_BUTTON) {
+        if (D_8075318C[D_807FD584] < extra_player_info_pointer->unk20) {
+            switch (current_character_index[cc_player_index]) {
+                case 3:
+                    current_actor_pointer->y_velocity = 200.0f;
+                case 5:
+                    func_806CFE7C();
+                    current_actor_pointer->control_state = 0x2B;
+                    current_actor_pointer->control_state_progress = 0;
+                    func_80614E78(current_actor_pointer, 0x45);
+                    extra_player_info_pointer->unkC8 = 0x32;
+                    break;
+                default:
+                case 0:
+                    switch (current_character_index[cc_player_index]) {
+                        case 2:
+                            if (D_807FC950[cc_player_index].character_progress[2].moves > 0) {
+                                func_806EB0C0(0x25, NULL, cc_player_index);
+                            }
+                            break;
+                        case 4:
+                            if (D_807FC950[cc_player_index].character_progress[4].moves > 1) {
+                                func_806EB0C0(0x26, NULL, cc_player_index);
+                            }
+                            break;
+                        case 1:
+                            if (D_807FC950[cc_player_index].character_progress[1].moves > 0) {
+                                extra_player_info_pointer->unk48 = 0x64;
+                                current_actor_pointer->control_state = 0x2E;
+                                current_actor_pointer->control_state_progress = 0;
+                                func_80614E78(current_actor_pointer, 0x48);
+                                extra_player_info_pointer->unk68 = D_8075380C[D_807FD584] * 4;
+                                extra_player_info_pointer->unk38 = D_8075381C[D_807FD584] * 2;
+                                extra_player_info_pointer->unk30 = D_8075382C[D_807FD584];
+                            }
+                            break;
+                        case 6:
+                            current_actor_pointer->control_state = 0x2F;
+                            current_actor_pointer->control_state_progress = 0;
+                            func_80614E78(current_actor_pointer, 0x48);
+                            extra_player_info_pointer->unk68 = D_8075380C[D_807FD584];
+                            extra_player_info_pointer->unk38 = D_8075381C[D_807FD584];
+                            extra_player_info_pointer->unk30 = D_8075382C[D_807FD584];
+                            extra_player_info_pointer->unk48 = D_8075385C[D_807FD584];
+                            current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
+                            break;
+                    }
+                    break;
+            }
+        }
+    }
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E4AD8.s")

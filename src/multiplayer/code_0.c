@@ -232,5 +232,34 @@ void func_80026D40(Actor *arg0, s32 arg1) {
     }
 }
 
-// Surprisingly doable, PaaD and CharacterChange, maybe a sus u16/s16 array/struct lookup
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80026E20.s")
+
+extern s32 D_807552E8;
+
+Actor *func_806C9FD8(Actor *actor);
+
+/*
+// TODO: Quite close, regalloc and something up with the start
+void func_80026E20(u8 arg0, s8 arg1) {
+    Actor *temp_v0;
+    PlayerAdditionalActorData *PaaD;
+    s32 temp[5];
+
+    if ((D_807FC950[arg0].unk2FD + D_807FC950[arg0].health) > 0) {
+        if (character_change_array[arg0].unk2A0 != NULL) {
+            temp_v0 = func_806C9FD8(character_change_array[arg0].unk2A0);
+            if (temp_v0 != NULL) {
+                if (temp_v0->interactable == 1) {
+                    PaaD = temp_v0->PaaD;
+                    if ((D_807FC950[arg0].unk2FD + D_807FC950[arg0].health + arg1) <= 0) {
+                        D_807FC950[PaaD->unk1A4].unk2FE[arg0]++;
+                    }
+                }
+            }
+        }
+    }
+    if (D_807552E8 == 3 || D_807552E8 == 5) {
+        func_800269C8(arg0, arg1);
+    }
+}
+*/

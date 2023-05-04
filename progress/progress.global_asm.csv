@@ -25,7 +25,7 @@ us,.code,func_8066BF0C,228,yes
 us,.code,func_80643B24,232,no
 us,.code,func_806ED6B0,2376,no
 us,.code,func_806EB364,156,yes
-us,.code,func_806FA504,160,no
+us,.code,func_806FA504,160,yes
 us,.code,func_806679BC,2916,no
 us,.code,func_806F8CB0,76,yes
 us,.code,func_80679DC4,728,no
@@ -167,7 +167,7 @@ us,.code,func_8061116C,32,yes
 us,.code,func_80669C6C,72,yes
 us,.code,func_80676ED0,632,no
 us,.code,func_8066EE50,540,yes
-us,.code,func_806F9608,100,no
+us,.code,func_806F9608,100,yes
 us,.code,func_806608FC,1084,no
 us,.code,func_806C71D8,8,yes
 us,.code,func_806E88AC,44,yes
@@ -496,7 +496,7 @@ us,.code,func_8064431C,200,yes
 us,.code,func_80692500,32,yes
 us,.code,func_8070D464,260,no
 us,.code,func_80674688,132,no
-us,.code,func_806634A4,240,no
+us,.code,func_806634A4,240,yes
 us,.code,func_80665C18,456,no
 us,.code,func_806DC3A4,108,yes
 us,.code,func_806BE674,124,yes
@@ -1901,7 +1901,7 @@ us,.code,func_806EE994,200,yes
 us,.code,func_80718380,372,no
 us,.code,func_8063D288,92,yes
 us,.code,func_8070FCCC,928,no
-us,.code,func_806F9AF0,116,no
+us,.code,func_806F9AF0,116,yes
 us,.code,func_8067E510,396,yes
 us,.code,alSepqSetVol,76,yes
 us,.code,func_8068A1CC,64,yes
@@ -2322,7 +2322,7 @@ us,.code,func_806C6884,716,no
 us,.code,func_8070068C,300,no
 us,.code,func_8060C6B8,108,yes
 us,.code,func_8063C4A8,28,yes
-us,.code,func_806F9744,260,no
+us,.code,func_806F9744,260,yes
 us,.code,func_8069E4E0,216,yes
 us,.code,func_80737608,40,no
 us,.code,func_806E607C,340,yes
@@ -2623,7 +2623,7 @@ us,.code,func_8062B8A4,64,yes
 us,.code,func_806D7DF8,144,yes
 us,.code,func_806C9C80,160,yes
 us,.code,func_8066E21C,164,yes
-us,.code,func_806F966C,96,no
+us,.code,func_806F966C,96,yes
 us,.code,func_80659F7C,1524,no
 us,.code,func_8071F660,248,no
 us,.code,func_806B2790,1484,no
@@ -2650,7 +2650,7 @@ us,.code,func_80650ECC,2108,no
 us,.code,func_806EA9B4,144,yes
 us,.code,func_806116E0,68,yes
 us,.code,func_8070C990,88,yes
-us,.code,func_8064E5C0,156,no
+us,.code,func_8064E5C0,156,yes
 us,.code,func_80659470,88,yes
 us,.code,func_80633A1C,788,no
 us,.code,func_8069D0F8,436,yes

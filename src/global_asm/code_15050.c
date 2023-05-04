@@ -34,6 +34,8 @@ extern s32 D_807F5A70[]; // TODO: Datatype is sus
 extern HeapHeader *D_807F0990;
 extern s32 D_807F5A68;
 
+void *func_806111F8(s32 arg0, u32 arg1);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80610350.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_806109EC.s")
@@ -99,6 +101,86 @@ s32 func_806111BC(s32 arg0, s32 arg1) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_806111F8.s")
+
+typedef struct Struct807F0988_unk8 Struct807F0988_unk8;
+
+struct Struct807F0988_unk8 {
+    s32 unk0;
+    s32 unk4;
+    Struct807F0988_unk8 *unk8;
+    Struct807F0988_unk8 *unkC;
+};
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    Struct807F0988_unk8 *unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct807F0988;
+
+extern Struct807F0988 D_807F0988[];
+
+/*
+// TODO: Close
+void *func_806111F8(s32 arg0, u32 arg1) {
+    u32 temp_a0;
+    u32 var_v0;
+    Struct807F0988_unk8 *temp_a0_2;
+    volatile Struct807F0988_unk8 *temp_v0;
+    Struct807F0988_unk8 *temp_v0_2;
+    Struct807F0988_unk8 *var_a0;
+    Struct807F0988_unk8 *var_v1;
+
+    if (arg1 == 0) {
+        return &D_807F5A64[-1];
+    }
+    var_v1 = NULL;
+    var_v0 = -1;
+    var_a0 = D_807F0988[arg0].unk8;
+    if (var_a0 == NULL) {
+        return NULL;
+    }
+    do {
+        if (var_a0->unk4 >= arg1) {
+            if (var_a0->unk4 < var_v0) {
+                var_v1 = var_a0;
+                var_v0 = var_a0->unk4;
+            }
+        }
+        var_a0 = var_a0->unk8;
+    } while (var_a0 != NULL);
+    if (var_v1 != NULL) {
+        temp_a0 = var_v1->unk4 - arg1;
+        temp_v0 = var_v1 + temp_a0;
+        if (temp_a0 >= 0x10) {
+            temp_v0->unk4 = 0;
+            temp_v0->unk0 = NULL;
+            temp_v0->unkC = 0;
+            temp_v0->unk8 = 0;
+            temp_v0->unk4 = arg1;
+            temp_v0->unk0 = var_v1;
+            var_v1->unk4 = temp_a0 - 0x10;
+            temp_v0[arg1 + 1].unk0 = temp_v0;
+            return temp_v0;
+        }
+        temp_v0_2 = var_v1->unkC;
+        temp_a0_2 = var_v1->unk8;
+        var_v1->unk8 = NULL;
+        var_v1->unkC = NULL;
+        if (temp_v0_2 != NULL) {
+            temp_v0_2->unk8 = temp_a0_2;
+        } else {
+            D_807F0988[arg0].unk8 = temp_a0_2;
+        }
+        if (temp_a0_2 != NULL) {
+            temp_a0_2->unkC = temp_v0_2;
+        }
+        return var_v1;
+    }
+    return NULL;
+}
+*/
 
 void func_8061130C(HeapHeader *arg0) {
     // TODO: Oof, I don't like the second condition there but it does match...

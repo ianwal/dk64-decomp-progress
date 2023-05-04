@@ -33,7 +33,7 @@ typedef struct PlayerProgress {
     s8 health; // 0x2FB
     u8 melons; // 0x2FC
     s8 unk2FD; // Something to do with health... hmm
-    s8 unk2FE[0x306 - 0x2FE];
+    u16 unk2FE[(0x306 - 0x2FE) / 2];
 } PlayerProgress;
 
 typedef struct {

@@ -1435,11 +1435,16 @@ void func_8064E55C(s16 arg1, s16 arg2, s32 arg3) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064E5C0.s")
+typedef struct {
+    u8 unk0[0x60 - 0x0];
+    u8 unk60;
+    u8 unk61;
+    s16 unk62;
+    s16 unk64;
+    u8 unk66;
+} Struct8064E5C0_arg0;
 
-/*
-// TODO: Which struct is arg0?
-void func_8064E5C0(void *arg0, ? arg1, ? arg2, ? arg3) {
+void func_8064E5C0(Struct8064E5C0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
     s16 sp26;
 
     sp26 = arg0->unk62;
@@ -1454,8 +1459,8 @@ void func_8064E5C0(void *arg0, ? arg1, ? arg2, ? arg3) {
         playSound(0x8A, 0xBB8, 63.0f, 1.0f, 0x1E, 0);
     }
 }
-*/
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064E65C.s")
 
 void func_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
@@ -1529,12 +1534,6 @@ u8 func_8064EC60(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
     phi_t0 = 0;
     switch (arg2) {
-        default:
-            kongIndex = 4;
-            if (arg2 != 6) {
-                kongIndex = 0;
-            }
-            break;
         case 3:
             kongIndex = 1;
             break;
@@ -1543,6 +1542,12 @@ u8 func_8064EC60(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
             break;
         case 5:
             kongIndex = 3;
+            break;
+        case 6:
+            kongIndex = 4;
+            break;
+        default:
+            kongIndex = 0;
             break;
     }
     temp_v0 = func_80600530();

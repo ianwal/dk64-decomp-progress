@@ -27,6 +27,7 @@ segments:
     vram: 0x80024000
     subsegments:
       - [0x0, c, code_0]
+      - [0x36B0, c, code_36B0]
   - name: data
     type: code
     dir: race

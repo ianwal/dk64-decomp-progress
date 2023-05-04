@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 void func_806F8D58(s32 arg0, s32 arg1);
 
 typedef struct global_asm_struct_71 GlobalASMStruct71;
@@ -126,6 +125,7 @@ void func_806F8278(u8 playerIndex) {
 }
 */
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F833C.s")
 
 void func_806F8A8C(u8 arg0, u8 playerIndex, s32 arg2) {
@@ -364,52 +364,50 @@ void func_806F95C8(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9608.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s8 unk4;
+    s8 unk5;
+    s8 unk6;
+    s8 unk7;
+    s32 unk8;
+} Struct806F9744_arg0_unk14;
 
-/*
-// TODO: Which struct is this?
-void func_806F9608(s32 **arg0) {
-    s32 *temp_a0;
-    s32 *temp_v0;
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    Struct806F9744_arg0_unk14 *unk14;
+} Struct806F9744_arg0;
 
-    temp_v0 = malloc(0x1C);
-    temp_a0 = temp_v0;
-    *arg0 = temp_v0;
-    func_80611690(temp_a0);
-    **arg0 = 1;
+void func_806F9608(Struct806F9744_arg0 **arg0) {
+    *arg0 = malloc(0x1C);
+    func_80611690(*arg0);
+    (*arg0)->unk0 = 1;
     (*arg0)->unk14 = malloc(0xC);
     func_80611690((*arg0)->unk14);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F966C.s")
-
-/*
-// TODO: Which struct is this?
-void func_806F966C(s32 **arg0) {
-    s32 *temp_a0;
-    s32 *temp_v0;
-
-    temp_v0 = malloc(0x1C);
-    temp_a0 = temp_v0;
-    *arg0 = temp_v0;
-    func_80611690(temp_a0);
-    **arg0 = 0;
+void func_806F966C(Struct806F9744_arg0 **arg0) {
+    *arg0 = malloc(0x1C);
+    func_80611690(*arg0);
+    (*arg0)->unk0 = 0;
     (*arg0)->unk14 = malloc(0x88);
     func_80611690((*arg0)->unk14);
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F96CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9744.s")
+extern s32 D_8071BE04; // TODO: Datatype
 
-/*
-// TODO: Which struct is this?
-void func_806F9744(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32 arg3, s32 arg4) {
+    s32 temp[2]; // TODO: Hmm
     s32 sp2C;
-    void *temp_s0;
+    Struct806F9744_arg0_unk14 *temp_s0;
 
     temp_s0 = arg0->unk14;
     sp2C = 2;
@@ -418,7 +416,7 @@ void func_806F9744(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     if (arg1 == 0xE) {
         sp2C = 1;
     }
-    func_80714998(unksp2F);
+    func_80714998(sp2C);
     func_80714944(arg4);
     func_80714950(arg0);
     func_8071498C(&D_8071BE04);
@@ -436,61 +434,84 @@ void func_806F9744(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     // TODO: unk8 is otherSpriteControl*?
     func_806F94AC(temp_s0->unk8, arg1);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9848.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9AF0.s")
+extern f32 D_807FD7A0[];
+extern f32 D_807FD7B8[];
+extern f32 D_807FD7D0[];
+
+typedef struct {
+    u8 unk0[0x340 - 0x0];
+    f32 unk340;
+    f32 unk344;
+    u8 unk348[0x35E - 0x348];
+    s16 unk35E;
+    f32 unk360;
+    f32 unk364;
+} Struct806F9AF0_arg0;
+
+void func_806F9AF0(Struct806F9AF0_arg0 *arg0, s8 *arg1) {
+    s32 temp = arg0->unk35E;
+    if (D_807FD7A0[temp] == -200.0f) {
+        *arg1 = 1;
+        return;
+    }
+    arg0->unk340 = D_807FD7A0[temp];
+    arg0->unk344 = D_807FD7B8[temp];
+    arg0->unk360 = D_807FD7D0[temp];
+    arg0->unk364 = D_807FD7D0[temp];
+    D_807FD7A0[temp] = -200.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9B64.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9CD0.s")
 
-void func_806F9744(u8*, s32, f32, f32, s32);
-
 /*
-// TODO: Very close, a single stack offset to fix and registers the wrong way round in an addu
+// TODO: Very close, registers the wrong way round in an addu
 void func_806F9CD0(s32 arg0) {
     GlobalASMStruct71 **temp_s0;
     GlobalASMStruct71 *sp30;
-    HUDDisplay *temp_v0;
 
     temp_s0 = &D_80754280[0].hud_item[arg0].counter_pointer;
     func_806F9608(temp_s0);
     sp30 = (*temp_s0)->unk14;
     func_806F96CC(*temp_s0, arg0);
-    temp_v0 = &D_80754280[0].hud_item[arg0];
-    func_806F9744(*temp_s0, arg0, temp_v0->screen_x, temp_v0->screen_y, 0);
+    func_806F9744(*temp_s0, arg0, D_80754280[0].hud_item[arg0].screen_x, D_80754280[0].hud_item[arg0].screen_y, 0);
     func_806F8DC4(sp30, 0, arg0);
     (*temp_s0)->unk10 = 0;
 }
 */
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9D8C.s")
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA1A4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA504.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    void *unk14;
+} Struct806FA504_arg1;
 
-/*
 // TODO: Which struct is arg1?
-s32 func_806FA504(s32 arg0, void *arg1, s32 arg2, s32 arg3) {
-    s32 phi_s1;
-
-    phi_s1 = arg3;
+s32 func_806FA504(s32 arg0, Struct806FA504_arg1 *arg1, s32 arg2, s32 arg3) {
     if (arg1->unk0 == 0) {
         if (arg0 != 8) {
-            phi_s1 = func_806F9D8C(arg3);
+            arg3 = func_806F9D8C(arg0, arg1, arg3);
         } else {
-            phi_s1 = func_806FA1A4(arg0, arg1, arg3);
+            arg3 = func_806FA1A4(arg0, arg1, arg3);
         }
     } else if ((arg0 == 8) || (arg0 == 0xA) || (arg0 == 0xC)) {
         func_806F8DC4(arg1->unk14, arg2, arg0);
     }
-    return phi_s1;
+    return arg3;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA5A4.s")
 
@@ -510,6 +531,7 @@ s32 func_806FA7A4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA9C0.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FAB20.s")
 
 extern s32 D_80754288;
@@ -520,6 +542,7 @@ void func_806FAC64(u8 arg0) {
     D_80754288 = arg0;
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FACE8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FAFE4.s")
