@@ -780,4 +780,5 @@ void func_806C2D7C() {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806C2DF4.s")
 
+// Doable once I learn all about gotos
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806C3A8C.s")

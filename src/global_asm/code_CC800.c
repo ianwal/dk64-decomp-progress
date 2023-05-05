@@ -96,8 +96,38 @@ void func_806C7C10(void) {
     }
 }
 
-// Little loop, probably doable, some struct stuff?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C7C94.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+} Struct80750948;
+
+extern Struct80750948 D_80750948[];
+extern u8 D_80750AB8;
+extern u8 D_80750ABC;
+
+Struct80750948 *func_806C7C94(u8 arg0) {
+    u8 i;
+    s32 var_v1;
+    Struct80750948 *var_a2;
+
+    i = 0;
+    var_v1 = 0;
+    while (!var_v1) {
+        if (cc_number_of_players == D_80750948[i].unk0
+            && D_80750AB8 == D_80750948[i].unk1
+            && arg0 == D_80750948[i].unk3
+            && D_80750948[i].unk2 & D_80750ABC) {
+            var_v1 = 1;
+        } else {
+            i++;
+        }
+    }
+    return &D_80750948[i];
+}
 
 // Delay slot problem with mips_to_c
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C7D40.s")

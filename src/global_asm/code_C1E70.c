@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 // Doable, big, interesting
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_806BD170.s")
 

@@ -177,7 +177,7 @@ void func_80024788(Struct80024788 *arg0) {
         case 0x37:
             break;
         case 0x0:
-            if (func_806F70A8(4, &D_800330D8) != 0) {
+            if (func_806F70A8(4) != 0) {
                 sp3C = &D_807FC950->character_progress[*current_character_index];
                 for (var_s0_2 = 0; var_s0_2 < 8; var_s0_2++) {
                     if (isFlagSet(func_807319D8(0x1D5, var_s0_2, *current_character_index), FLAG_TYPE_PERMANENT) != 0) {

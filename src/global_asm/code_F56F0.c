@@ -413,25 +413,22 @@ void func_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
     s16 sp1A;
     f32 temp_f0_2;
     f32 dx;
-    s16 temp_t8;
-    s32 var_v0;
 
     dz = character_change_array[cc_player_index].look_at_eye_z - character_change_array[cc_player_index].look_at_at_z;
     dx = character_change_array[cc_player_index].look_at_eye_x - character_change_array[cc_player_index].look_at_at_x;
     sp1A = (arg0->PaaD->unk104->PaaD->unkB2 - arg0->y_rotation) - 0x800;
     temp_f0_2 = func_80611BB4(character_change_array[cc_player_index].look_at_eye_y - character_change_array[cc_player_index].look_at_at_y, sqrtf((dz * dz) + (dx * dx)));
-    temp_t8 = sp1A & 0xFFF;
-    var_v0 = temp_t8;
-    if ((temp_t8 < 0xC00) && (temp_t8 >= 0x801)) {
-        var_v0 = 0xC00;
-        arg0->y_rotation = (arg0->y_rotation + temp_t8) - 0xC00;
-    } else if ((var_v0 >= 0x401) && (var_v0 < 0x800)) {
-        arg0->y_rotation = (arg0->y_rotation + var_v0) - 0x400;
-        var_v0 = 0x400;
+    sp1A &= 0xFFF;
+    if ((sp1A < 0xC00) && (sp1A >= 0x801)) {
+        arg0->y_rotation = (arg0->y_rotation + sp1A) - 0xC00;
+        sp1A = 0xC00;
+    } else if ((sp1A >= 0x401) && (sp1A < 0x800)) {
+        arg0->y_rotation = (arg0->y_rotation + sp1A) - 0x400;
+        sp1A = 0x400;
     }
     arg1[*arg2].unk0 = -0x80;
     arg1[*arg2].unk1 = 2;
-    arg1[*arg2].unk4 = (var_v0 / D_8075D780) * D_8075D778;
+    arg1[*arg2].unk4 = (sp1A / D_8075D780) * D_8075D778;
     arg1[*arg2].unk2 = (temp_f0_2 / D_8075D788) * D_8075D778;
     arg1[*arg2].unk6 = 0;
     *arg2 += 1;

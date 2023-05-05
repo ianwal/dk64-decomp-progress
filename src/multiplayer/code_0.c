@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80024000.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800241F4.s")
@@ -214,14 +212,9 @@ void func_80026B0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80026BD8.s")
 
-typedef struct MultiplayerStruct1 {
-    u8 pad0[0x306];
-} MultiplayerStruct1;
-extern MultiplayerStruct1 D_807FCC4B[];
-
 void func_80026D40(Actor *arg0, s32 arg1) {
     if ((D_807552E8 == 4) && (func_80024254(arg1) == 0)) {
-        D_807FCC4B[arg1].pad0[0] = 0;
+        D_807FC950[arg1].health = 0;
         arg0->control_state_progress++;
         func_806EB0C0(0x5B, NULL, arg1);
         arg0->noclip_byte = 1;

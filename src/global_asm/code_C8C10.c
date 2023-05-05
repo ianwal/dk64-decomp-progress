@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C3F10.s")
 
 extern f32 D_8075C260;
@@ -183,12 +181,14 @@ void func_806C4EE0(u8 arg0, u8 arg1) {
     current_actor_pointer->unkF0 = 0;
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C4F5C.s")
 
 void func_806C55D8(void) {
 
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C55E0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C5C20.s")
@@ -240,4 +240,62 @@ void func_806C5FEC(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C61C8.s")
+void func_806C61C8(void) {
+    f32 sp24;
+    f32 sp20;
+    f32 temp_f0;
+    f32 var_f18;
+    s16 temp_v0;
+    s16 var_v0;
+    u8 temp_t2;
+
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unkEC = 0x3C;
+        func_80614EBC(current_actor_pointer, 0x23D);
+        if (player_pointer->control_state == 0xC) {
+            func_80614E78(player_pointer, 0x87);
+        }
+    }
+    sp24 = (func_80612794(player_pointer->y_rotation) * 50.0f) + player_pointer->x_position;
+    sp20 = (func_80612790(player_pointer->y_rotation) * 50.0f) + player_pointer->z_position;
+    current_actor_pointer->y_rotation = (player_pointer->y_rotation + 0x800) & 0xFFF;
+    if (current_actor_pointer->unkEC == 0x3C) {
+        current_actor_pointer->x_position = (func_80612794(current_actor_pointer->unkEE) * 10.0f) + sp24;
+        current_actor_pointer->z_position = (func_80612790(current_actor_pointer->unkEE) * 10.0f) + sp20;
+    }
+    current_actor_pointer->y_position = (func_80612794(object_timer * 0x64) * 5.0f) + (current_actor_pointer->unk15F + player_pointer->y_position + 3.0f + current_actor_pointer->unkEC);
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        if (current_actor_pointer->unkF0 != 0) {
+            current_actor_pointer->unk15F = 0x14;
+            func_8069E490(0x2D, func_8073195C(current_actor_pointer->unkF0));
+        }
+    }
+    if (current_actor_pointer->unkF0 != 0) {
+        func_8069E4E0(-0x1E);
+    }
+    current_actor_pointer->unkEE += 60.0f * func_80612794(object_timer * 0x32);
+    if (current_actor_pointer->object_properties_bitfield & 0x02000000) {
+        current_actor_pointer->unk168 = 0x14;
+    }
+    if (current_actor_pointer->unk168 != 0) {
+        current_actor_pointer->unk168--;
+    }
+    if (current_actor_pointer->unk168 == 0) {
+        current_actor_pointer->unkEC++;
+        if (current_actor_pointer->unkEC >= 0x3D) {
+            if (current_actor_pointer->unkF0 != 0) {
+                func_8069E5B8();
+            }
+            func_806782C0(current_actor_pointer);
+            func_8061CB08();
+            if (player_pointer->control_state == 0xC) {
+                func_80614E78(player_pointer, 9);
+            }
+        }
+    } else {
+        if (current_actor_pointer->unkEC >= 0x10) {
+            current_actor_pointer->unkEC--;
+        }
+    }
+    func_806319C4(current_actor_pointer, 0);
+}

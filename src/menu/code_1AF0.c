@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 typedef struct menu_struct_1 {
     u32 unk0;
     s16 unk4;
@@ -480,7 +478,7 @@ s32 func_800275EC(s32 arg0) {
 void func_80027738(void) {
     PlayerProgress *var1;
     func_80729B00();
-    if (current_map == 1) {
+    if (current_map == MAP_FUNKYS_STORE) {
         var1 = &D_807FC950[current_character_index[0]];
         if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
             func_800266F0(current_actor_pointer->unk178, var1, 0x176);

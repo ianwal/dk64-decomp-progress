@@ -261,9 +261,7 @@ void func_806F5FE8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F6204.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F6554.s")
-
-extern s32 D_80754244[];
+extern s32 *D_80754244;
 extern s16 D_807FD726;
 extern s16 D_807FD728;
 extern s32 D_807FD72C;
@@ -275,15 +273,13 @@ typedef struct {
     f32 unkC;
 } Struct806F6554_arg1;
 
-/*
 void func_806F6554(u8 arg0, Struct806F6554_arg1 *arg1) {
     f32 temp_f0;
     f32 temp_f12;
     f32 temp_f14;
     s32 temp_v0;
 
-    // TODO: Just gotta figure out this
-    if (((arg0 * 0x306) + 0x80800000)->unk-33B5 > 0) {
+    if (D_807FC950[arg0].health > 0) {
         if (arg1->unk0 <= (D_807FD726 + arg1->unkC)) {
             if (arg1->unk8 <= D_807FD728 + arg1->unkC) {
                 temp_v0 = func_806F4EBC(arg1->unk0, arg1->unk8);
@@ -295,7 +291,6 @@ void func_806F6554(u8 arg0, Struct806F6554_arg1 *arg1) {
         func_806F6204(D_807FD72C, arg0, arg1);
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F6644.s")
 

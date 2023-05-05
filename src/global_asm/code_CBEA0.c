@@ -106,8 +106,109 @@ void func_806C7268(void) {
 
 }
 
-// Doable, just some structs and arrays to define
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CBEA0/func_806C7270.s")
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    u8 unk4;
+    s8 unk5;
+} Struct807506D0;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct8075075C;
+
+extern Struct807506D0 D_807506D0[];
+extern s8 D_80750754;
+extern s16 D_80750758;
+extern Struct8075075C D_8075075C[];
+extern f32 D_8075C3E0;
+extern s16 D_807FC8E0;
+extern s16 D_807FC8E2;
+extern s16 D_807FC8E4;
+extern f32 D_807FC8E8;
+extern f32 D_807FC8EC;
+extern u8 *D_807FC8F0;
+extern void func_806C75A4(); // TODO: Signature
+
+/*
+// TODO: Quite close, just stack, float nonsense, and a regalloc left
+void func_806C7270(void) {
+    f32 temp_f0;
+    f32 temp_f12;
+    f32 temp_f2;
+    s32 temp_t9;
+    s32 temp_v1;
+    s32 var_v1;
+    u8 var_a0;
+
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        D_807FC8F0 = getPointerTableFile(0x13, 7, 1, 1);
+        D_807FC8E0 = 0;
+        var_v1 = 0;
+        while (D_807FC8F0[var_v1] != 0x2A) {
+            if (D_807FC8F0[var_v1] == 0xA) {
+                D_807FC8F0[var_v1] = 0;
+                D_807FC8E0 += 1;
+            }
+            var_v1 += 1;
+        }
+        if (D_80750754 == -2) {
+            D_807FC8E4 = 0x320;
+            D_80750754 = -1;
+            D_807FC8E2 = 0;
+            D_807FC8E8 = 0;
+        } else if (D_80750754 == -1) {
+            D_807FC8E4 = 0x3C;
+            D_807FC8E2 = 0;
+            D_807FC8E8 = 0;
+        }
+    }
+    if (D_807FC8E2 > 0) {
+        D_807FC8E2 -= 1;
+    }
+    if (D_807FC8E2 == 0) {
+        D_807FC8E2 = 0;
+        D_807FC8E4 -= 1;
+        if (D_807FC8E4 <= 0) {
+            if (D_80750754 >= 0) {
+                D_80750758 += D_807506D0[D_80750754].unk5;
+            }
+            if (D_80750758 >= D_807FC8E0) {
+                D_80750758 = 0;
+            }
+            D_80750754 += 1;
+            D_807FC8E2 = D_807506D0[D_80750754].unk0;
+            D_807FC8E4 = D_807506D0[D_80750754].unk2;
+        }
+    }
+    if (D_807FC8E2 < 0xB) {
+        D_807FC8E8 -= D_8075C3E0;
+        if (D_807FC8E8 < 0.0f) {
+            D_807FC8E8 = 0;
+        }
+        D_807FC8EC = 1.0f;
+    } else {
+        temp_v1 = D_807506D0[D_80750754].unk0 - D_807FC8E2;
+        temp_t9 = temp_v1 >> 1;
+        if (temp_t9 < 0x16) {
+            temp_f2 = D_8075075C[temp_t9].unk0;
+            temp_f12 = D_8075075C[temp_t9].unk4;
+            temp_f0 = (temp_v1 & 1) / 2.0;
+            D_807FC8E8 = ((D_8075075C[temp_t9].unk8 - temp_f2) * temp_f0) + temp_f2;
+            D_807FC8EC = ((D_8075075C[temp_t9].unkC - temp_f12) * temp_f0) + temp_f12;
+        } else {
+            D_807FC8E8 = 1.0f;
+            D_807FC8EC = 1.0f;
+        }
+    }
+    func_8068C350(&func_806C75A4, current_actor_pointer, 3);
+}
+*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CBEA0/func_806C75A4.s")

@@ -707,9 +707,9 @@ void func_806B54BC(void) {
                 current_actor_pointer->control_state = 0x40;
                 current_actor_pointer->control_state_progress = 0;
                 current_actor_pointer->noclip_byte = 1;
-                if (current_map == 0xA7) {
+                if (current_map == MAP_CASTLE_TRASH_CAN) {
                     enemies_killed++;
-                    if ((enemies_killed == 5) && (isFlagSet(0x15F, FLAG_TYPE_PERMANENT) == 0)) {
+                    if ((enemies_killed == 5) && (isFlagSet(0x15F, FLAG_TYPE_PERMANENT) == FALSE)) {
                         func_8063DA40(4, 0xA);
                     }
                 }
