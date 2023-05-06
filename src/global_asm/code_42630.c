@@ -395,21 +395,18 @@ void func_80641F68(void) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641F70.s")
-
 extern u8 D_80750AB4;
 extern f32 D_807F621C;
 
 void func_80626F8C(f32, f32, f32, f32*, f32*, s32, f32, s32);
 
-/*
-// TODO: Very close
 u8 func_80641F70(s16 arg0) {
     f32 sp8C;
     f32 sp88;
     f32 dx;
     f32 dz;
     f32 dy;
+    s32 pad[2];
     u8 sp73;
     u8 i;
     Actor *player;
@@ -421,19 +418,22 @@ u8 func_80641F70(s16 arg0) {
             dx = D_807F621C - player->x_position;
             dy = D_807F6220 - player->y_position;
             dz = D_807F6224 - player->z_position;
-            if (sqrtf((dx * dx) + (dy * dy) + (dz * dz)) < arg0) {
+            dx *= dx;
+            dy *= dy;
+            dz *= dz;
+            if (sqrtf(dx + dy + dz) < arg0) {
                 func_80626F8C(D_807F621C, D_807F6220, D_807F6224, &sp8C, &sp88, 0, 1.0f, i);
-                if ((s16)sp8C >= (character_change_array[i].unk270 + 0x14)) {
-                    if (((s16)sp88 >= (character_change_array[i].unk272 + 0x14)) && (((s32)sp8C <= character_change_array[i].unk274 - 0x14) ) && ((character_change_array[i].unk276 - 0x14) >= (s16)sp88)) {
+                if ((s16)sp8C >= (character_change_array[i].unk270 + 0x14)
+                    && ((s16)sp88 >= (character_change_array[i].unk272 + 0x14))
+                    && (((s16)sp8C <= character_change_array[i].unk274 - 0x14))
+                    && ((character_change_array[i].unk276 - 0x14) >= (s16)sp88)) {
                         sp73 = TRUE;
-                    }
                 }
             }
         }
     }
     return sp73;
 }
-*/
 
 u8 func_8064216C(s16 cap, f32 x, f32 y, f32 z) {
     f32 dx = D_807F621C - x;
@@ -473,7 +473,24 @@ s32 func_806422D8(s16 arg0) {
     return FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806423A8.s")
+s32 func_806423A8(s16 arg0, s16 arg1, s16 arg2) {
+    s16 var_s0;
+    Actor *temp_v0;
+
+    var_s0 = arg1;
+    while (arg2 >= var_s0) {
+        if (func_80726D7C(var_s0) != 0) {
+            temp_v0 = func_807270C0(var_s0, 0);
+            if (temp_v0 != NULL) {
+                if (func_8064216C(arg0, temp_v0->x_position, temp_v0->y_position, temp_v0->z_position) != 0) {
+                    return TRUE;
+                }
+            }
+        }
+        var_s0 += 1;
+    }
+    return FALSE;
+}
 
 extern f32 D_807F6238;
 

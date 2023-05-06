@@ -941,6 +941,9 @@ typedef struct {
     f32     unkC;
     f32     unk10;
     f32     unk14;
+    f32     unk18;
+    f32     unk1C;
+    f32     unk20;
 } GlobalASMStruct80;
 
 int func_80669BE8(GlobalASMStruct80 *arg0, f32 arg1, f32 arg2) {
@@ -969,13 +972,91 @@ int func_80669C6C(GlobalASMStruct80 *arg0, f32 arg1) {
     return TRUE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669CB4.s")
+s32 func_80669CB4(GlobalASMStruct80 *arg0, f32 arg1, f32 arg2) {
+    f32 temp_f0;
+    f32 temp_f0_2;
+    f32 temp_f12;
+    f32 temp_f12_2;
+    f32 temp_f2;
+    f32 temp_f2_2;
+    f32 var_f14;
+    f32 var_f14_2;
+    f32 var_f14_3;
+    f32 var_f14_4;
+
+    temp_f0 = arg0->unk0;
+    temp_f2 = arg0->unk4;
+    temp_f12 = arg0->unk8;
+    if (temp_f0 < temp_f2) {
+        var_f14 = temp_f0;
+    } else {
+        var_f14 = temp_f2;
+    }
+    if (!(var_f14 < temp_f12)) {
+        var_f14 = temp_f12;
+    }
+    if (arg1 < var_f14) {
+        return 0;
+    }
+    if (temp_f2 < temp_f0) {
+        var_f14_2 = temp_f0;
+    } else {
+        var_f14_2 = temp_f2;
+    }
+    if (!(temp_f12 < var_f14_2)) {
+        var_f14_2 = temp_f12;
+    }
+    if (var_f14_2 < arg1) {
+        return 0;
+    }
+    temp_f0_2 = arg0->unk18;
+    temp_f2_2 = arg0->unk1C;
+    temp_f12_2 = arg0->unk20;
+    if (temp_f0_2 < temp_f2_2) {
+        var_f14_3 = temp_f0_2;
+    } else {
+        var_f14_3 = temp_f2_2;
+    }
+    if (!(var_f14_3 < temp_f12_2)) {
+        var_f14_3 = temp_f12_2;
+    }
+    if (arg2 < var_f14_3) {
+        return 0;
+    }
+    if (temp_f2_2 < temp_f0_2) {
+        var_f14_4 = temp_f0_2;
+    } else {
+        var_f14_4 = temp_f2_2;
+    }
+    if (!(temp_f12_2 < var_f14_4)) {
+        var_f14_4 = temp_f12_2;
+    }
+    if (var_f14_4 < arg2) {
+        return 0;
+    }
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669E04.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A08C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A584.s")
+s32 func_8066AC10(f32);
+void func_8066ACA4(s32, s32, s32);
+
+void func_8066A584(s32 arg0, f32 arg1) {
+    if (D_807F9510 != 0xA) {
+        D_807F94C0[D_807F9510].unk0 = arg1;
+        if (func_8066AC10(arg1) != 0) {
+            D_807F94C0[D_807F9510].unk6 = 1;
+        } else {
+            D_807F94C0[D_807F9510].unk6 = 2;
+        }
+        func_8066ACA4(0, arg0, 0);
+        D_807F94C0[D_807F9510].unk4 = D_807F94A8;
+        D_807F9510 += 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A64C.s")
 
@@ -983,11 +1064,6 @@ int func_80669C6C(GlobalASMStruct80 *arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A834.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A988.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066AC10.s")
-
-/*
 // TODO: Hmmm, matrix?
 typedef struct {
     f32 unk0;
@@ -1010,6 +1086,55 @@ typedef struct {
     f32 unk44;
 } Struct8066AC10;
 
+/*
+// TODO: Pretty close...
+s32 func_8066A834(Struct8066AC10 *arg0, f32 arg1, f32 arg2) {
+    f32 sp1C;
+    f32 sp20;
+    f32 var_f0;
+    f32 var_f12;
+
+    if (arg0->unk24 < arg0->unk28) {
+        var_f12 = arg0->unk24;
+    } else {
+        var_f12 = arg0->unk28;
+    }
+    if (!(var_f12 < arg0->unk2C)) {
+        var_f12 = arg0->unk2C;
+    }
+    if (arg0->unk3C < arg0->unk40) {
+        sp20 = arg0->unk3C;
+    } else {
+        sp20 = arg0->unk40;
+    }
+    if (!(sp20 < arg0->unk44)) {
+        sp20 = arg0->unk44;
+    }
+    if (arg0->unk28 < arg0->unk24) {
+        sp1C = arg0->unk24;
+    } else {
+        sp1C = arg0->unk28;
+    }
+    if (!(arg0->unk2C < sp1C)) {
+        sp1C = arg0->unk2C;
+    }
+    if (arg0->unk40 < arg0->unk3C) {
+        var_f0 = arg0->unk3C;
+    } else {
+        var_f0 = arg0->unk40;
+    }
+    if (!(arg0->unk44 < var_f0)) {
+        var_f0 = arg0->unk44;
+    }
+    return (!(arg1 < var_f12) && !(sp1C < arg1) && !(arg2 < sp20) && var_f0 < arg2) ? 1 : 0;
+}
+*/
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A988.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066AC10.s")
+
+/*
 s32 func_8066AC10(Struct8066AC10 *arg0) {
     f32 sp4[9]; // TODO: Try 10 size
 

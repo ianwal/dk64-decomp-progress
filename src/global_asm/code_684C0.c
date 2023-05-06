@@ -104,6 +104,67 @@ void func_80663A0C(Actor *arg0, GlobalASMStruct84 *arg1) {
     arg0->unk156++;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_684C0/func_80663A80.s")
+void func_8061130C(GlobalASMStruct83 *);
+
+void func_80663A80(void) {
+    Actor *temp_v1;
+    GlobalASMStruct83 **var_s1;
+    GlobalASMStruct83 *temp_a0;
+    GlobalASMStruct83 *var_s0;
+    GlobalASMStruct84 *temp_v0;
+    GlobalASMStruct85 *var_s2;
+
+    var_s2 = D_807F9410;
+    while (var_s2 != NULL) {
+        var_s0 = var_s2->unk4;
+        var_s1 = &var_s2->unk4;
+        while (var_s0 != NULL) {
+            temp_v0 = var_s2->unk0;
+            temp_v1 = var_s0->unk0;
+            if ((temp_v1->x_position < temp_v0->min_x)
+                || (temp_v1->y_position < temp_v0->min_y)
+                || (temp_v1->z_position < temp_v0->min_z)
+                || (temp_v0->max_x < temp_v1->x_position)
+                || (temp_v0->max_y < temp_v1->y_position)
+                || (temp_v0->max_z < temp_v1->z_position)) {
+                temp_v1->unk156 -= 1;
+                func_806782C0(var_s0->unk8);
+                temp_a0 = var_s0;
+                *var_s1 = var_s0->next;
+                var_s0 = var_s0->next;
+                func_8061130C(temp_a0);
+            } else {
+                var_s1 = &var_s0->next;
+                var_s0 = var_s0->next;
+            }
+        }
+        var_s2 = var_s2->next;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_684C0/func_80663BE8.s")
+
+/*
+// TODO: Regalloc :(
+void func_80663BE8(Actor *arg0) {
+    GlobalASMStruct83 **var_v1;
+    GlobalASMStruct83 *var_a0;
+    GlobalASMStruct85 *var_a2;
+
+    var_a2 = D_807F9410;
+    while (var_a2 != NULL) {
+        var_v1 = &var_a2->unk4;
+        var_a0 = var_a2->unk4;
+        while (var_a0 != NULL) {
+            if (arg0 == var_a0->unk8) {
+                *var_v1 = var_a0->next;
+                func_8061130C(var_a0);
+                return;
+            }
+            var_v1 = &var_a0->next;
+            var_a0 = var_a0->next;
+        }
+        var_a2 = var_a2->next;
+    }
+}
+*/
