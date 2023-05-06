@@ -212,6 +212,7 @@ void func_8062B630(s16 arg0, s8 arg1) {
 }
 */
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062B660.s")
 
 f32 func_8062B840(s8 arg0) {
@@ -228,8 +229,15 @@ void func_8062B8A4(s32 arg0, f32 arg1, f32 arg2) {
     D_807F5FB8[arg0].unk88 = arg2;
 }
 
-// Doable, unrolled loop using above struct
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062B8E4.s")
+void func_8062B8E4(f32 *arg0) {
+    s32 temp_t0;
+    s32 i;
+
+    temp_t0 = D_807F5FBC;
+    for (i = 0; i < temp_t0; i++) {
+        arg0[i] = D_807F5FB8[i].unk84;
+    }
+}
 
 void func_8062BA0C(f32 *arg0) {
     s32 i;

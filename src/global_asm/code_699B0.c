@@ -580,8 +580,74 @@ u8 func_80666AEC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666AF8.s")
 
-// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666D88.s")
+
+extern f32 D_80752F7C[];
+extern f32 D_80752F98[];
+extern f32 D_80752FB4[];
+extern f32 D_80752FD0[];
+extern f32 D_80752FEC[];
+extern f32 D_80753008[];
+extern f32 D_807F9460;
+extern s8 D_807F9464;
+
+extern s16 D_807FD584;
+
+/*
+// TODO: Regalloc v0 v1 a2
+void func_80666D88(f32 arg0, f32 arg1, u8 arg2, Actor *arg3, u8 arg4) {
+    f32 *var_v0;
+    f32 *var_v1;
+    f32 var_f0;
+    f32 var_f12;
+    f32 var_f16;
+    f32 var_f2;
+    s32 temp2;
+
+    if (arg0 < arg1) {
+        if (arg3 != NULL && arg3->interactable & 1) {
+            switch (character_change_array[cc_player_index].unk2C0) {
+                default:
+                    // TODO: Any way to match this without having the statements on the same line?
+                    var_v0 = &D_80752F98;var_v1 = &D_80752F7C;
+                    break;
+                case 2:
+                    var_v0 = &D_80753008;
+                    var_v1 = &D_80752FEC;
+                    break;
+                case 0:
+                    var_v0 = &D_80752FD0;
+                    var_v1 = &D_80752FB4;
+                    break;
+            }
+            var_f0 = var_v0[D_807FD584];
+            var_f2 = var_v1[D_807FD584];
+        } else {
+            var_f0 = 10.0f;
+            var_f2 = 20.0f;
+        }
+        if (arg4 != 0) {
+            var_f0 /= 2;
+        }
+        if (arg2 == 1) {
+            var_f16 = var_f0 * 6.0f;
+        } else {
+            var_f16 = var_f0;
+        }
+        if (var_f16 < arg1 - arg0) {
+            s32 temp = 1;
+            var_f12 = arg2 == 1 ? var_f2 * 6.0f : var_f2;
+            if (arg1 - arg0 < var_f12) {
+                D_807F9464 = temp;
+                D_807F9460 = arg1 - var_f12;
+                if (arg2 != 0) {
+                    D_807F9460 /= 6.0f;
+                }
+            }
+        }
+    }
+}
+*/
 
 s32 func_80666F04(f32 arg0, f32 arg1, u8 arg2, u8 arg3) {
     f32 phi_f0;
@@ -753,8 +819,52 @@ s32 func_80668520(f32 *arg0, f32 arg1, f32 arg2, f32 *arg3) {
     return FALSE;
 }
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806685E0.s")
+typedef struct {
+    f32 unk0;
+    s16 unk4;
+    u8 unk6;
+    s8 unk7;
+} Struct807F94C0;
+
+extern s16 D_807F94A8;
+extern Struct807F94C0 D_807F94C0[];
+extern u8 D_807F9510;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+} Struct806685E0_arg0;
+
+s32 func_8066893C(void*);
+void func_806689F0(s32, void*, s32);
+
+void func_806685E0(Struct806685E0_arg0 *arg0, f32 arg1) {
+    Struct807F94C0 *var_v0;
+
+    if (D_807F9510 != 0xA) {
+        D_807F94C0[D_807F9510].unk0 = arg1 / 6.0f;
+        if (func_8066893C(arg0) != 0) {
+            var_v0 = &D_807F94C0[D_807F9510];
+            var_v0->unk6 = 1;
+        } else {
+            var_v0 = &D_807F94C0[D_807F9510];
+            var_v0->unk6 = 2;
+        }
+        if (arg0->unk12 & 1) {
+            var_v0->unk6 = var_v0->unk6 | 4;
+        }
+        if (arg0->unk12 & 0x400) {
+            var_v0->unk6 = var_v0->unk6 | 8;
+        }
+        func_806689F0(0, arg0, 0);
+        D_807F94C0[D_807F9510].unk4 = D_807F94A8;
+        D_807F9510 += 1;
+    }
+}
 
 // Doable, small malloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806686F4.s")
@@ -918,7 +1028,6 @@ extern s32 D_8000DDCC;
 extern void *D_807F9520;
 extern s32 *D_807F9528[];
 extern s32 D_807F9628[];
-extern s32 D_807F9678;
 extern s32 D_807F9680;
 extern u8 D_807FB220;
 extern u8 D_807FB221;
@@ -973,7 +1082,6 @@ s32  func_8066B9F4(void*);
 
 s32 func_8066B5C8(s32, s32);
 extern OSMesgQueue D_807656D0;
-extern s32 D_807F9678;
 extern s32 D_807F9680;
 
 typedef struct {
@@ -1055,19 +1163,13 @@ void func_8066B0EC(s32 arg0) {
     D_807F9678 = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/getPointerTableFile.s")
-
-/*
-// ./diff.sh 0x6FDF8
-void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, s32 arg2, u8 arg3) {
-    u32 sp50;
+void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3) {
     s32 temp;
+    u32 sp50;
     s32 sp4C;
-    Struct807FA8A0 *var_v1;
     void *var_v0;
-    void *sp40;
     s32 var_a1;
-    s32 temp2;
+    void *sp40;
 
     func_8066B5F4(pointerTableIndex);
     if (!arg3) {
@@ -1091,9 +1193,10 @@ void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, s32 arg2, u8 arg
         D_807F9678 = 0;
         return NULL;
     }
-    var_a1 = sp4C;
     if (D_80748E18[pointerTableIndex] != 0) {
         var_a1 = D_807FB1A0[pointerTableIndex][fileIndex];
+    } else {
+        var_a1 = sp4C;
     }
     if (D_807F9678 == 0) {
         var_v0 = malloc(var_a1);
@@ -1112,17 +1215,15 @@ void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, s32 arg2, u8 arg
         if (D_807F9680 == 0xC0) {
             func_80732354(6, 0, 0, 0);
         }
-        var_v1 = &D_807FA8A0[D_807F9680];
-        var_v1->unk8 = D_80748E18[pointerTableIndex];
+        D_807FA8A0[D_807F9680].unk8 = D_80748E18[pointerTableIndex];
         if (D_80748E18[pointerTableIndex] != 0) {
-            var_v1 = &D_807FA8A0[D_807F9680];
-            var_v1->unk0 = malloc(sp4C);
-            var_v1->unk4 = var_v0;
+            D_807FA8A0[D_807F9680].unk0 = malloc(sp4C);
+            D_807FA8A0[D_807F9680].unk4 = var_v0;
         } else {
-            var_v1->unk4 = var_v0;
-            var_v1->unk0 = var_v0;
+            D_807FA8A0[D_807F9680].unk4 = var_v0;
+            D_807FA8A0[D_807F9680].unk0 = var_v0;
         }
-        osInvalDCache(var_v1->unk0, sp4C);
+        osInvalDCache(D_807FA8A0[D_807F9680].unk0, sp4C);
         osPiStartDma(&D_807F9688[D_807F9680].unk0, 0, 0, sp50, D_807FA8A0[D_807F9680].unk0, sp4C, &D_807656D0);
         D_807F9680 += 1;
     }
@@ -1132,7 +1233,6 @@ void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, s32 arg2, u8 arg
     D_807F9678 = 0;
     return var_v0;
 }
-*/
 
 void func_8066B424(void) {
     D_807F967D = 1;
@@ -1368,11 +1468,7 @@ void func_8066BA2C(s32 arg0, u8 *arg1, u16 *arg2, s32 *arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BAB8.s")
-
-/*
-// TODO: Regalloc :(
-void func_8066BAB8(s32 arg0, s8 arg1, s16 arg2) {
+void func_8066BAB8(s32 arg0, u8 arg1, u16 arg2) {
     D_807FB228[D_807FB221].unk0 = object_timer;
     D_807FB228[D_807FB221].unk4 = arg0;
     D_807FB228[D_807FB221].unkA = arg1;
@@ -1388,7 +1484,6 @@ void func_8066BAB8(s32 arg0, s8 arg1, s16 arg2) {
         }
     }
 }
-*/
 
 s32 func_8066BB44(Struct8066BB44 *arg0, u32 arg1) {
     s8 sp2F;
@@ -1406,7 +1501,7 @@ s32 func_8066BB44(Struct8066BB44 *arg0, u32 arg1) {
         if (arg0->unk10 == 0) {
             arg0->unkC = arg0->unkC - 1;
         }
-        func_8066BAB8(arg1, arg0->unk7, arg0->unkA, arg0);
+        func_8066BAB8(arg1, arg0->unk7, arg0->unkA);
         return arg0->unkC;
     }
     if (arg0->unk0 < arg1) {

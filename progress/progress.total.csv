@@ -831,7 +831,7 @@ us,.code,func_80637B6C,5968,no
 us,.code,func_806EC1A8,292,yes
 us,.code,func_806CC10C,64,yes
 us,.code,func_8071CDE0,784,no
-us,.code,getPointerTableFile,812,no
+us,.code,getPointerTableFile,812,yes
 us,.code,func_8073DA30,1312,no
 us,.code,func_80611614,116,no
 us,.code,func_806015E0,152,yes
@@ -873,10 +873,10 @@ us,.code,func_8072FA14,688,no
 us,.code,func_80735624,576,no
 us,.code,func_80631B80,12,yes
 us,.code,func_8060AA04,84,no
-us,.code,func_8062B8E4,296,no
+us,.code,func_8062B8E4,296,yes
 us,.code,func_80676308,48,yes
 us,.code,func_806A370C,1132,no
-us,.code,func_8066BAB8,140,no
+us,.code,func_8066BAB8,140,yes
 us,.code,func_8070DED4,984,no
 us,.code,func_80676CB0,80,no
 us,.code,func_80653F68,60,yes
@@ -1823,7 +1823,7 @@ us,.code,func_806DEAA4,560,no
 us,.code,func_80696574,1272,no
 us,.code,func_806E8F04,100,yes
 us,.code,func_80709890,572,no
-us,.code,func_806685E0,276,no
+us,.code,func_806685E0,276,yes
 us,.code,func_80726744,1592,no
 us,.code,func_8064FA7C,232,no
 us,.code,func_8060D0A8,164,yes

@@ -10,7 +10,7 @@ void *malloc(s32 size);
 s32 rand(void);
 void *memcpy(void *dest, void *src, u32 n);
 
-void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, s32 arg2, u8 arg3);
+void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3);
 void loadExits(s32 map);
 // TODO: Can we use the FlagTypes enum?
 void setFlag(s16 flagIndex, u8 newValue, u8 flagType);
