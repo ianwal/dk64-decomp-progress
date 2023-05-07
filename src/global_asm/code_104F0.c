@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-u8 func_8060BBE0(u16, s32);
+u8 func_8060BBE0(u16, u8);
 void func_8060C758(u8, s32);
 void func_8060BCA0(s32, u8, u8, s16 *, s32);
 void func_8060BEA8(s32, u8, s16 *, s32);
@@ -130,6 +130,7 @@ u8 func_8060BB18(u32 arg0, u16 arg1, u8 arg2) {
 }
 */
 
+// Extremely fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060BBE0.s")
 
 // Jumptable

@@ -84,21 +84,64 @@ void func_8070F570(void) {
 // Doable, needs some structs defined though (arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FA58.s")
 
-// Doable, needs some structs defined though (arg0)
-// % 320 on a float?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FC40.s")
+
+extern f32 D_8075E4D8;
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+} Struct8070FC40_arg0;
+
+/*
+void func_8070FC40(Struct8070FC40_arg0 *arg0) {
+    f32 temp_f0;
+
+    if (arg0->unk4 > D_8075E4D8) {
+        arg0->unk4 = (arg0->unk4 - D_8075E4D8) + 2.0f;
+    }
+    if (arg0->unk4 < 2.0f) {
+        arg0->unk4 = D_8075E4D8 - arg0->unk4;
+    }
+    arg0->unk4 = (s32)arg0->unk4 % 320;
+}
+*/
 
 // Big, need structs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FCCC.s")
 
-// Need arg0 struct
-// f32 unkC;
-// f32 unk10;
-// u8 unkB0;
-// u8 unkB1;
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8071006C.s")
 
-// Need arg0 struct
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    u8 unk14[0xB0 - 0x14];
+    u8 unkB0;
+    u8 unkB1;
+} Struct8071006C_arg0;
+
+extern f64 D_8075E4E0;
+
+/*
+// TODO: Fiddly float regalloc
+u8 func_8071006C(Struct8071006C_arg0 *arg0) {
+    func_8070FA58();
+    func_8070FC40(arg0);
+    arg0->unk8 = arg0->unk4;
+    if (arg0->unkB0++ >= 0xF) {
+        if (arg0->unkB1 >= 0x50) {
+            arg0->unkB1 -= 0x50;
+        }
+    }
+    arg0->unkC += (((30.0f - (((1.0f / (arg0->unk10 * 4.0f)) * 60.0f) - 30.0f)) + 30.0f) * D_8075E4E0);
+    return (arg0->unkC > 240.0f || arg0->unkB1 < 0x50);
+}
+*/
+
+// Similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80710174.s")
 
 // Need arg0 struct
@@ -475,20 +518,20 @@ s32 *func_807132DC(s32 *arg0) {
 }
 */
 
-// display list something? probably doable
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8071338C.s")
 
-// display list something? probably doable
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713438.s")
 
-// display list something? probably doable
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807135B4.s")
 
 s32 func_8071375C(s32 arg0) {
     return arg0;
 }
 
-// display list something? probably doable
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713764.s")
 
 // TODO: This might return a displaylist
@@ -496,14 +539,16 @@ void func_807138A4(s32 *arg0) {
     func_807135B4(func_807132DC(arg0));
 }
 
-// display list something? float
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807138CC.s")
 
-// display list something? probably doable
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713AA8.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713B40.s")
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713C8C.s")
 
 s32 func_8068E7B4(Gfx* arg0, f32, f32, f32);

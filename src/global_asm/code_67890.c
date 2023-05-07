@@ -77,4 +77,5 @@ s32 func_806634A4(s32 arg0) {
     return arg0;
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_67890/func_80663594.s")

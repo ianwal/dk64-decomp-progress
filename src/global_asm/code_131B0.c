@@ -260,7 +260,7 @@ void func_8060F1D0(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
 
 /*
 // TODO: Which types are these?
-void func_8060F208(void *arg0) {
+void func_8060F208(GlobalASMStruct87 *arg0) {
     if (arg0->unk274 != 0) {
         func_8060FA5C();
         return;

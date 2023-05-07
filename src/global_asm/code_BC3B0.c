@@ -88,7 +88,7 @@ void func_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2) {
         var_f2_4 = MAX(arg0->unk4 + arg0->unkC, 0.0f);
         arg0->unk4 = var_f2_4;
     } else {
-    arg0->unk4 = D_80744494;
+        arg0->unk4 = D_80744494;
     }
 }
 */

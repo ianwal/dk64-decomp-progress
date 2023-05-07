@@ -19,8 +19,6 @@ void func_80663C60(f32 *arg0, s16 arg1) {
     s16 sp26;
     f32 temp_f0;
     f32 temp_f0_2;
-    s16 temp_a0;
-    s8 temp_v1;
     GlobalASMStruct70 *temp_v0;
     f32 phi_f2;
     s16 phi_a0;

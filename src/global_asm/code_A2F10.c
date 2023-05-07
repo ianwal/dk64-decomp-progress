@@ -611,7 +611,6 @@ void func_806A081C(Actor *arg0) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_806A0B74.s")
 
-
 void func_806A0F78(Actor *arg0, u8 arg1, u8 arg2) {
     func_8068842C(arg0, 0, 1);
     func_80688460(arg0, 0, 1);

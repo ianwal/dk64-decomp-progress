@@ -9,27 +9,21 @@
 // Matrix nonsense
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_80675180.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_80675234.s")
-
-/*
 f32 func_80675234(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
     f32 temp_f0;
     f32 temp_f14;
     f32 temp_f2;
-    f32 temp_f2_2;
     f32 var_f12;
 
     temp_f0 = arg0 - arg3;
     temp_f2 = arg1 - arg4;
     temp_f14 = arg2 - arg5;
-    temp_f2_2 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) - arg6;
-    var_f12 = temp_f2_2;
-    if (temp_f2_2 < 0.0) {
+    var_f12 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) - arg6;
+    if (var_f12 < 0.0) {
         var_f12 = 0.0f;
     }
-    return var_f12 / 8.0f;
+    return var_f12 / 8;
 }
-*/
 
 typedef struct Struct_806752D4 Struct806752D4;
 

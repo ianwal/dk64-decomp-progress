@@ -43,7 +43,7 @@ void func_806A2B20(Actor *arg0) {
     }
 }
 
-// actor + libultra + weird struct offset, doable
+// 64 bit & aaD stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_806A2B38.s")
 
 void func_806A2B80(Actor *arg0) {
@@ -54,6 +54,7 @@ void func_806A2B80(Actor *arg0) {
 // actor + displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_806A2B90.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_806A2E30.s")
 
 void func_806A36F4(void) {

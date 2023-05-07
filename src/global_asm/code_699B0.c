@@ -1762,17 +1762,15 @@ GlobalASMStruct40 *func_8066BF0C(GlobalASMStruct65 *arg0, s32 arg1, s32 arg2) {
 /*
 // TODO: Close, not sure what's wrong
 void func_8066BFF0(GlobalASMStruct40 *arg0, GlobalASMStruct40 *arg1, s32 *arg2) {
-    if (arg0) {
-        do {
-            arg1[*arg2].unk0 = arg0->unk0;
-            arg1[*arg2].unk4 = arg0->unk4;
-            arg1[*arg2].unk8 = arg0->unk8;
-            arg1[*arg2].unkC = arg0->unkC;
-            arg1[*arg2].unk10 = arg0->unk10;
-            *arg2 += 1;
-            func_8066BFF0(arg0->unk14, arg1, arg2);
-            arg0 = arg0->unk18;
-        } while (arg0 != NULL);
+    while (arg0) {
+        arg1[*arg2].unk0 = arg0->unk0;
+        arg1[*arg2].unk4 = arg0->unk4;
+        arg1[*arg2].unk8 = arg0->unk8;
+        arg1[*arg2].unkC = arg0->unkC;
+        arg1[*arg2].unk10 = arg0->unk10;
+        *arg2 += 1;
+        func_8066BFF0(arg0->unk14, arg1, arg2);
+        arg0 = arg0->unk18;
     }
 }
 */

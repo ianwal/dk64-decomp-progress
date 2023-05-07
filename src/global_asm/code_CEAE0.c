@@ -1016,10 +1016,6 @@ s16 func_806CD988(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CE928.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CEB44.s")
-
-/*
-// TODO: Very close
 s32 func_806CEB44(f32 arg0, f32 arg1) {
     s32 phi_v1;
 
@@ -1027,26 +1023,26 @@ s32 func_806CEB44(f32 arg0, f32 arg1) {
     switch (phi_v1) {
         case 0:
             if (arg1 != 0.0f) {
-                return 1;
+                phi_v1 = 1;
             }
             break;
         case 1:
             if (arg1 == 0.0f) {
                 if (arg0 < D_807532B8[D_807FD584]) {
-                    return 0;
+                    phi_v1 = 0;
                 }
             }
             break;
         default:
             if (arg0 < D_807532B8[D_807FD584]) {
-                return 0;
+                phi_v1 = 0;
+            } else {
+                phi_v1 = 1;
             }
-            return 1;
     }
 
-    // return phi_v1;
+    return phi_v1;
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CEC04.s")

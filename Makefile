@@ -191,7 +191,7 @@ endef
 ### Flags ###
 
 # Build tool flags
-CFLAGS         := -c -Wab,-r4300_mul -non_shared -G 0 -Xfullwarn -Xcpluscomm  -signed $(OPT_FLAGS) $(MIPSBIT) -D_FINALROM -DF3DEX2_GBI
+CFLAGS         := -c -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -signed $(OPT_FLAGS) $(MIPSBIT) -D_FINALROM -DF3DEX2_GBI
 CFLAGS         += -woff 649,838,807
 CPPFLAGS       := -D_FINALROM -DN_MICRO -DF3DEX_GBI_2x
 INCLUDE_CFLAGS := -I . -I include -I include/2.0L -I include/2.0L/PR
@@ -455,6 +455,8 @@ build/us/src/dk64_boot/libc/ll%.o: OPT_FLAGS := -O1
 build/us/src/dk64_boot/os/%.c.o: OPT_FLAGS = -O1
 
 build/us/src/global_asm/audio/%.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/code_141520.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/code_145950.c.o: OPT_FLAGS = -g
 
 #build/us/src/dk64_boot/gu/%.c.o: INCLUDE_CFLAGS = -I . -I include -I include/2.0L -I include/2.0L/PR
 
