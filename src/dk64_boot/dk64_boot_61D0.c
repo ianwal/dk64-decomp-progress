@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 extern u8 D_80015004;
 extern u8 D_80015005;
 extern u8 D_80015006;

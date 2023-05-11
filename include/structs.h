@@ -503,7 +503,8 @@ typedef struct {
     u8 unk201;
     s16 unk202;
     Actor *unk204[1]; // TODO: How many elements?
-    u8 pad208[0x244 - 0x208];
+    u8 pad208[0x243 - 0x208];
+    u8 unk243[1]; // TODO: How many elements?
     u8 unk244[1]; // TODO: How many elements?
     s8 unk245;
     s8 unk246;
@@ -1252,7 +1253,8 @@ typedef struct {
     f32     unk2C4; // Used
     s16     unk2C8; // Used
     s16     unk2CA;
-    u8      pad_unknown4[0x2E2 - 0x2CC];
+    u8      pad_unknown4[0x2E0 - 0x2CC];
+    u16     unk2E0;
     u16     unk2E2;
     u8      unk2E4;
     u8      unk2E5;

@@ -31,22 +31,20 @@ u8 func_80676308(Actor *arg0, Actor *arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676338.s")
 
-// TODO: Not exactly sure what's wrong here
-// Tricky floating point typecasty stuff I suspect
-
-
-s32 func_8067641C(Actor*, Actor*, s32);
+u8 func_8067641C(Actor*, Actor*, s32);
 
 /*
+// TODO: Not exactly sure what's wrong here
 s32 func_80676338(Actor *arg0, Actor *arg1, s32 arg2) {
-    u8 temp = func_806CC14C(func_80665DE0(arg0->x_position, arg0->z_position, arg1->x_position, arg1->z_position), arg0->y_rotation) < 0x200;
+    s32 temp = (func_806CC14C(func_80665DE0((s16)arg0->x_position, (s16)arg0->z_position, (s16)arg1->x_position, (s16)arg1->z_position), arg0->y_rotation) < 0x200);
     return temp
         && func_8067641C(arg0, arg1, arg2);
 }
 */
 
-// TODO: Similar layout as above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_8067641C.s")
+u8 func_8067641C(Actor *arg0, Actor *arg1, s32 arg2) {
+    return (func_806CC14C(func_80665DE0((s16)arg0->x_position, (s16)arg0->z_position, (s16)arg1->x_position, (s16)arg1->z_position), arg1->y_rotation) < 0x3A9);
+}
 
 u8 func_806764D8(Actor *arg0, Actor *arg1, s32 arg2) {
     return D_807591E0 < func_80665E94(arg0->x_position, arg0->y_position, arg0->z_position, arg1->x_position, arg1->y_position, arg1->z_position, 0);

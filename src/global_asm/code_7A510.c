@@ -3,70 +3,111 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675810.s")
 
-/*
-? func_80675AFC(Actor *, Actor *);
-? func_80675D70(Actor *, s32);
-? func_80675DD0(Actor *, Actor *);
-s32 func_80675E3C(s32, s16, s16);
-extern ? D_8074C604;
-extern ? D_8074C608;
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    void *unk4; // Pointer to struct, see func_80675810
+} GlobalASMStruct57;
 
-void func_80675810(Actor *arg0, void *arg1) {
+s32 func_80675E3C(GlobalASMStruct57 *arg0, s16 arg1, s16 arg2);
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} Struct8074C604;
+
+extern Struct8074C604 D_8074C604[];
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    void* unk4;
+} GlobalASMStruct56;
+
+extern GlobalASMStruct56 D_8074C608[];
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    u8 (*unk4)(Actor *, Actor *, void *);
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+} Struct80675810;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct80675810_arg1_unk10;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    Actor *unk8;
+    s32 unkC;
+    Struct80675810_arg1_unk10 *unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct80675810_arg1;
+
+void func_80675D70(Actor *arg0);
+void func_80675DD0(Actor *arg0, Actor *arg1);
+void func_80675AFC(Actor *arg0, Actor *arg1);
+
+/*
+// TODO: Extremely close!!!
+void func_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
     Actor *temp_s2;
-    s32 (*temp_v0_2)(Actor *, Actor *, void *);
-    s32 temp_a0;
-    s32 temp_a0_2;
-    s32 temp_a0_3;
-    s32 temp_v0;
+    Struct80675810 *var_s1;
     s32 var_s4;
-    s32 var_v1;
-    u32 temp_v1;
-    u8 temp_t5;
-    u8 temp_v0_3;
-    u8 temp_v0_4;
-    void *var_s1;
+    u8 var_v1;
+    s32 i;
 
     temp_s2 = arg1->unk8;
-    var_s4 = 0;
-    if ((func_8067AF44(temp_s2) != 0) && (arg1->unk10->unk18 == temp_s2->unk54)) {
-        temp_a0 = *(&D_8074C604 + (arg0->unk58 * 8));
-        if (temp_a0 == 0) {
+    i = 0;
+    var_s4 = FALSE;
+    if ((func_8067AF44(temp_s2) != 0) && (temp_s2->unk54 == arg1->unk10->unk18)) {
+        if (D_8074C604[arg0->unk58].unk0 == 0) {
             if (temp_s2->object_properties_bitfield & 0x20000) {
                 func_80675D70(temp_s2);
             }
         } else {
-            temp_v0 = func_80675E3C(temp_a0, temp_s2->unk58, temp_s2->interactable);
-            temp_v1 = temp_s2->object_properties_bitfield;
-            temp_a0_2 = temp_v0;
-            if ((!(temp_v1 & 0x80000) && !(arg0->object_properties_bitfield & 0x80000)) || ((arg0 != temp_s2->unk11C) && (temp_s2 != arg0->unk11C))) {
-                if (temp_v0 == 0) {
-                    if (temp_v1 & 0x20000) {
-                        func_80675D70(temp_s2, 0x80000);
+            var_s1 = func_80675E3C(D_8074C604[arg0->unk58].unk0, temp_s2->unk58, temp_s2->interactable);
+            if ((!(temp_s2->object_properties_bitfield & 0x80000) && !(arg0->object_properties_bitfield & 0x80000)) || ((arg0 != temp_s2->unk11C) && (temp_s2 != arg0->unk11C))) {
+                if (var_s1 == NULL) {
+                    if (temp_s2->object_properties_bitfield & 0x20000) {
+                        func_80675D70(temp_s2);
                     }
                 } else {
-                    var_s1 = temp_a0_2 + (0 * 0xC);
-                    do {
-                        if ((var_s1->unk0 & arg0->unk132) && (var_s1->unk2 & temp_s2->unk132)) {
-                            temp_v0_2 = var_s1->unk4;
-                            var_v1 = 1;
-                            if (temp_v0_2 != NULL) {
-                                var_v1 = temp_v0_2(arg0, temp_s2, arg1) & 0xFF;
+                    while (!var_s4) {
+                        if ((var_s1[i].unk0 & arg0->unk132) && (var_s1[i].unk2 & temp_s2->unk132)) {
+                            if (var_s1[i].unk4 != NULL) {
+                                var_v1 = var_s1[i].unk4(arg0, temp_s2, arg1);
+                            } else {
+                                var_v1 = 1;
                             }
                             if (var_v1 != 0) {
-                                if (D_807FBB70.unk200 < var_s1->unk8) {
+                                // TODO: Problem is here
+                                if (D_807FBB70.unk200 < var_s1[i].unk8) {
                                     D_807FBB70.unk1FC = temp_s2;
-                                    D_807FBB70.unk200 = var_s1->unk8;
+                                    D_807FBB70.unk200 = var_s1[i].unk8;
                                 }
                                 if (D_807FBB70.unk201 < 0xF) {
                                     D_807FBB70.unk204[D_807FBB70.unk201] = temp_s2;
-                                    D_807FBB70.unk244[D_807FBB70.unk201] = var_s1->unk9;
-                                    temp_t5 = D_807FBB70.unk201 + 1;
-                                    D_807FBB70.unk201 = temp_t5;
+                                    D_807FBB70.unk244[D_807FBB70.unk201] = var_s1[i].unk9;
+                                    D_807FBB70.unk201++;
                                     if (temp_s2->interactable & 1) {
-                                        if (temp_s2->additional_actor_data->unkD4 != 0) {
-                                            temp_a0_3 = temp_t5 & 0xFF;
-                                            if ((*(&D_8074C608 + (arg0->unk58 * 8)) != 0) && ((temp_v0_3 = (D_807FBB70 + temp_a0_3)->unk243, (temp_v0_3 == 5)) || (temp_v0_3 == 0xF))) {
-                                                D_807FBB70.unk201 = temp_a0_3 - 1;
+                                        if (temp_s2->PaaD->unkD4 != 0) {
+                                            if ((D_8074C608[arg0->unk58].unk0 != 0) && (((D_807FBB70.unk243[D_807FBB70.unk201] == 5)) || (D_807FBB70.unk243[D_807FBB70.unk201] == 0xF))) {
+                                                D_807FBB70.unk201--;
                                             }
                                         }
                                         if ((arg0->interactable & 2) && (func_80676220(arg0->unk58) != 0)) {
@@ -74,17 +115,19 @@ void func_80675810(Actor *arg0, void *arg1) {
                                         }
                                     }
                                 }
-                                temp_v0_4 = var_s1->unkA;
-                                if ((temp_v0_4 == 0) || (temp_v0_4 == 2)) {
-                                    var_s4 = 1;
+                                switch (var_s1[i].unkA) {
+                                    case 0:
+                                    case 2:
+                                        var_s4 = TRUE;
+                                        break;
                                 }
                             }
                         }
-                        if (var_s1->unkA == 0) {
-                            var_s4 = 1;
+                        if (var_s1[i].unkA == 0) {
+                            var_s4 = TRUE;
                         }
-                        var_s1 += 0xC;
-                    } while (var_s4 == 0);
+                        i++;
+                    }
                     if (arg0->object_properties_bitfield & 0x20000000) {
                         D_807FBB70.unk200 = 1;
                     }
@@ -134,12 +177,6 @@ void func_80675DD0(Actor *arg0, Actor *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675E3C.s")
 
 s32 func_80675C70(s16, s16, s16);
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    void *unk4; // Pointer to struct, see func_80675810
-} GlobalASMStruct57;
 
 /*
 // TODO: Astonishingly close, extra NOP
@@ -298,16 +335,6 @@ void func_806761D0(Actor *arg0) {
 void func_806761EC(Actor *arg0) {
     arg0->unk136 = D_8074D0C4[arg0->unk58].unk2;
 }
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    void* unk4;
-} GlobalASMStruct56;
-
-extern GlobalASMStruct56 D_8074C608[];
 
 u8 func_80676208(Actor *arg0) {
     return D_8074C608[arg0->unk58].unk0;

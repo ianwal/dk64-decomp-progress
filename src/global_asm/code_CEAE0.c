@@ -7328,11 +7328,99 @@ void func_806E7B48(void) {
     func_806E7900();
 }
 
-// Similar to above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E7C70.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    f32 unk2C;
+    s32 unk30;
+    u8 *unk34;
+    s32 unk38;
+    s16 unk3C;
+    u8 unk3E;
+    u8 unk3F;
+    u8 unk40;
+} AAD_806E7C70;
 
-// Huge, probably doable though
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E7DF4.s")
+void func_806E7C70(void) {
+    AAD_806E7C70 *temp_v0;
+
+    temp_v0 = extra_player_info_pointer->vehicle_actor_pointer->additional_actor_data;
+    if (temp_v0->unk0 != 0) {
+        D_807FD610[cc_player_index].unk2E = 0;
+    }
+    func_806E7900();
+    if (extra_player_info_pointer->unk1F0 & 8) {
+        temp_v0->unk3E = 3;
+    } else {
+        temp_v0->unk3E = (D_807FD610[cc_player_index].unk2F / 1.5) + 80.0;
+    }
+    temp_v0->unk2 = D_807FD610[cc_player_index].unk2E;
+}
+
+extern s16 D_80750338;
+
+void func_806E7DF4(void) {
+    AAD_806E7C70 *var_a2;
+
+    var_a2 = extra_player_info_pointer->vehicle_actor_pointer->additional_actor_data;
+    if (var_a2->unk0 != 0) {
+        D_807FD610[cc_player_index].unk2E = 0;
+    } else {
+        u8 var_a3 = extra_player_info_pointer->vehicle_actor_pointer->control_state == 5 ? 1 : 0;
+        s32 var_a1 = (var_a2->unk34[0] & 0x80) ? 1 : 3;
+        if (var_a3 != 0) {
+            D_807FD610[cc_player_index].unk2E *= -1;
+        }
+        if ((extra_player_info_pointer->unk1F0 & 0x10000002) != 0) {
+            D_807FD610[cc_player_index].unk2E *= -1;
+        }
+        if ((extra_player_info_pointer->unk1F0 & 0x10000002) != 0) {
+            D_807FD610[cc_player_index].unk2F *= -1;
+        }
+        if (var_a2->unk34[0] & 0xC0) {
+            if ((D_807FD610[cc_player_index].unk2E >= 0x1F && var_a2->unk3F > 0) || (D_807FD610[cc_player_index].unk2E < -0x1E && var_a2->unk3F < var_a1)) {
+                extra_player_info_pointer->unk58 = D_80767A40.unk280;
+                extra_player_info_pointer->vehicle_actor_pointer->y_velocity = D_80750338;
+                extra_player_info_pointer->unk58 = D_80767A40.unk280 - 0x1E;
+                var_a2->unk2C = 1.0f;
+                var_a2->unk40 = var_a2->unk3F;
+                if (D_807FD610[cc_player_index].unk2E >= 0x1F) {
+                    var_a2->unk3F--;
+                    if (var_a2->unk3F == 1) {
+                        var_a2->unk3F = 0;
+                    }
+                    func_80614E78(current_actor_pointer, var_a3 ? 0x81 : 0x7D);
+                    func_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, var_a3 ? 0x295 : 0x296);
+                } else {
+                    var_a2->unk3F++;
+                    if (var_a2->unk3F == 1) {
+                        if (var_a2->unk34[0] & 0x40) {
+                            var_a2->unk3F = 2;
+                        }
+                    }
+                    func_80614E78(current_actor_pointer, var_a3 ? 0x7D : 0x81);
+                    func_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, var_a3 ? 0x296 : 0x295);
+                }
+            }
+        }
+    }
+    if (extra_player_info_pointer->unk1F0 & 8) {
+        var_a2->unk3E = 3;
+        extra_player_info_pointer->vehicle_actor_pointer->unkB8 = 3.0f;
+        return;
+    }
+    var_a2->unk3E = (D_807FD610[cc_player_index].unk2F / 1.5) + 80.0;
+}
 
 extern void func_8068E474(void);
 
@@ -7588,7 +7676,6 @@ void func_806E8F68(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E9070.s")
 
 /*
-extern s16 D_80750338;
 
 // TODO: D_80767CC0 might be a struct.280 access, or an array? idk
 void func_806E9070(void) {

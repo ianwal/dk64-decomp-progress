@@ -29,7 +29,6 @@ void func_800024E0(u8 **arg0, s32 *arg1, void *arg2) {
         (*arg0) += D_80013AEC;
         (*arg1) += D_80013AF0;
     }
-
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_30E0/func_800025A4.s")

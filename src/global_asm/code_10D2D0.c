@@ -80,9 +80,95 @@ void func_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 ar
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_80708DA4.s")
 
-extern s8 D_80744504;
+s32 func_806C8DE0(s16);
+s32 func_807085D0(s32, PlayerProgress *, CharacterProgress *, void *);
+extern f64 D_8075E408;
+extern f64 D_8075E410;
+extern f64 D_8075E418;
+extern f64 D_8075E420;
 
-s16 func_80708DA4(s32, s16, CharacterChange*);
+s16 func_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2);
+
+/*
+s16 func_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2) {
+    CharacterProgress *sp38;
+    PlayerProgress *sp28;
+    s32 temp_a0;
+    u16 temp_t3_3;
+    u8 var_t0;
+
+    sp38 = &D_807FC950[arg1].character_progress[func_806C8DE0(arg1)];
+    sp28 = &D_807FC950[arg1];
+    temp_a0 = cc_number_of_players == 1;
+    var_t0 = arg2->unk2E4;
+    if (temp_a0 == 0) {
+        var_t0 = 0;
+    }
+    if (temp_a0 == 0) {
+        func_80708C24(arg1, arg2, sp28, sp38);
+        arg2->unk2E2 &= 0xFFEA;
+    }
+    if ((u8)arg2->unk2E2 & 0x10) {
+        switch (var_t0) {
+            case 2:
+                arg2->unk2E5 = 0x32;
+                break;
+            case 3:
+                arg2->unk2E5 = 18.0 - arg2->unk2E5;
+                arg2->unk2E4 = 1;
+                break;
+        }
+    }
+    if ((u8)arg2->unk2E2 & 1) {
+        arg2->unk2E2 = arg2->unk2E2 ^ 1;
+        switch (var_t0) {
+            case 1:
+                break;
+            case 0:
+                arg2->unk2E5 = 0x12;
+                arg2->unk2E4 = 1;
+                break;
+            case 3:
+                arg2->unk2E5 = 18.0 - arg2->unk2E5;
+                arg2->unk2E4 = 1;
+                break;
+        }
+    } else if ((u8)arg2->unk2E2 & 4) {
+        arg2->unk2E5 = 1;
+        arg2->unk2E4 = 2;
+        temp_t3_3 = arg2->unk2E2 ^ 4;
+        arg2->unk2E2 = temp_t3_3;
+        arg2->unk2E2 = temp_t3_3 & 8;
+    } else {
+        switch (var_t0) {
+            case 1:
+                arg2->unk2E0 = func_80612D1C(((arg2->unk2E5 / 18.0) * D_8075E408) + D_8075E408) * D_8075E410;
+                if (arg2->unk2E5-- == 0) {
+                    arg2->unk2E4 = 2;
+                    arg2->unk2E5 = 0x32;
+                }
+                break;
+            case 2:
+                func_80708C24(arg1, arg2, sp28, sp38);
+                break;
+            case 3:
+                arg2->unk2E0 = func_80612D1C((D_8075E418 - ((arg2->unk2E5 / 18.0) * D_8075E418)) + D_8075E418) * D_8075E420;
+                if (arg2->unk2E5-- == 0) {
+                    arg2->unk2E4 = 0;
+                }
+                break;
+        }
+    }
+    if (func_805FCA64() || (arg2->unk2E2 & 0x80)) {
+        if (arg2->unk2E4 != 0 || arg2->unk2E2 != 0) {
+            arg0 = func_807085D0(arg0, sp28, sp38, arg2);
+        }
+    }
+    return arg0;
+}
+*/
+
+extern s8 D_80744504;
 
 s32 func_80709344(s32 arg0) {
     s16 i;

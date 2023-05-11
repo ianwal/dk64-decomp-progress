@@ -257,6 +257,7 @@ void func_800261E0(Struct800261E0_arg0 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026354.s")
 
+// Actor17C stuff, bit of a can of worms...
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026B20.s")
 
 void func_80026CA8(void) {

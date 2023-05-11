@@ -78,6 +78,31 @@ extern f64 D_8002FDE8;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027880.s")
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80027880;
+
+extern Struct80027880 *D_807F5FD4[];
+
+/*
+// TODO: Very close
+void func_80027880(s32 arg0, u16 arg1, u16 arg2) {
+    f32 dx;
+    f32 dz;
+    f32 dy;
+    s32 temp;
+
+    temp = func_80025770(arg0, arg1);
+    
+    dx = D_807F5FD4[arg1][arg2].unk0 - D_807F5FD4[arg1][temp].unk0;
+    dy = D_807F5FD4[arg1][arg2].unk4 - D_807F5FD4[arg1][temp].unk4;
+    dz = D_807F5FD4[arg1][arg2].unk8 - D_807F5FD4[arg1][temp].unk8;
+    func_8000AC60((dx * dx) + (dy * dy) + (dz * dz));
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027920.s")
 
 typedef struct RaceStruct3 {
@@ -134,6 +159,7 @@ void func_80027C60(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_800280E8.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_800282D8.s")
 
 void func_800283D4(f32 arg0) {
@@ -882,7 +908,6 @@ typedef struct RaceStruct13 {
 } RaceStruct13;
 
 void func_8002F36C(s32, s32);
-// s32 func_8002E9AC(s32);
 
 /*
 // TODO: Regalloc, boo
@@ -890,8 +915,7 @@ void func_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
     if (arg1->unk8) {
         if (arg0->unk3C == arg0->unk3A) {
             u8 temp2 = arg1->unk4[arg0->unk3C] & 0xFF;
-            s32 temp = func_8002E9AC(temp2); // TODO: This might take 2 params
-            func_8002DCF0(temp, 0);
+            func_8002DCF0(func_8002E9AC(temp2, arg1), 0);
             func_8002F36C(arg0, arg1);
         }
     }

@@ -438,20 +438,147 @@ void func_8002A468(Actor *arg0, s32 arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002A638.s")
 
-// Doable, but a tiny fiddly loop
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002AA98.s")
+typedef struct {
+    s8 unk0[4];
+} Struct8076A0E8;
 
-// Doable but fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002AB28.s")
+extern s8 D_8076A0E4[];
+extern Struct8076A0E8 D_8076A0E8[];
+extern s8 D_8076A100[];
 
-// Related to above, doable but fiddly
+void func_8002AA98(s32 arg0, s32 arg1) {
+    s32 var_a2;
+    s32 i;
+    s8 temp_v0 = D_8076A0E4[arg0];
+
+    var_a2 = FALSE;
+    if (D_8076A100[arg0] >= 0) {
+        D_8076A0E8[temp_v0].unk0[D_8076A100[arg0]] = -1;
+    }
+    for (i = 0; i < 4 && !var_a2; i++) {
+        if (D_8076A0E8[arg1].unk0[i] == -1) {
+            var_a2 = TRUE;
+            D_8076A100[arg0] = i;
+            D_8076A0E8[arg1].unk0[i] = arg0;
+        }
+    }
+    D_8076A0E4[arg0] = arg1;
+}
+
+void func_8002AB28(s32 arg0) {
+    s8 temp_v0;
+
+    temp_v0 = D_8076A0E4[arg0];
+    if (D_8076A100[arg0] >= 0) {
+        if (!(temp_v0 & 0x80)) {
+            D_8076A0E8[temp_v0].unk0[D_8076A100[arg0]] = -1;
+        }
+    }
+    D_8076A100[arg0] = -1;
+    D_8076A0E4[arg0] = -0x80;
+}
+
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002AB80.s")
 
-// Related to above, doable but fiddly
+extern s8 D_8076A0D6;
+
+/*
+// TODO: Very close
+void func_8002AB80(Actor *arg0, s32 arg1) {
+    MenuAdditionalActorData *temp_s0;
+    Struct8076A0E8 *var_v0;
+    s32 var_s0;
+    s32 i;
+
+    temp_s0 = arg0->additional_actor_data;
+    temp_s0->unk17 = D_8076A0D6;
+    func_80030894(temp_s0, &D_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
+    func_80030894(temp_s0, &D_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
+    func_80030894(temp_s0, &D_80720C34, 0xA0, 0x78, 0.75f, 2, 4);
+    // TODO: This loop is the problem
+    for (i = 0; i < 6; i++) {
+        for (var_s0 = 0; var_s0 < 4; var_s0++) {
+            D_8076A0E8[i].unk0[var_s0] = -1;
+        }
+    }
+    for (var_s0 = 0; var_s0 < 4; var_s0++) {
+        if (var_s0 == 0) {
+            func_8002AA98(var_s0, var_s0);
+        } else {
+            D_8076A0E4[var_s0] = -0x80;
+            func_8002AB28(var_s0);
+        }
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002ACD4.s")
 
-// Related to above, doable but fiddly
+/*
+// TODO: Very close, regalloc t1 t2 and a li/sb flipped
+s32 func_8002ACD4(s32 arg0) {
+    Struct8076A0E8 *temp_a3;
+    s32 found;
+    s8 *var_t0;
+    s32 var_v1;
+    s32 temp;
+
+    temp = D_8076A0E4[arg0];
+    var_v1 = D_8076A100[arg0];
+    found = 0;
+    temp_a3 = &D_8076A0E8[temp];
+    var_t0 = &temp_a3->unk0[var_v1];
+    temp_a3->unk0[var_v1] = -1;
+    while (!found) {
+        var_v1 += 1;
+        var_t0 += 1;
+        if (var_v1 >= 4) {
+            var_v1 = 0;
+            var_t0 = temp_a3->unk0;
+        }
+        if (var_t0[0] == -1) {
+            found = 1;
+            D_8076A100[arg0] = var_v1;
+            var_t0[0] = arg0;
+        }
+    }
+    return var_v1;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002AD50.s")
+
+/*
+// TODO: Very close, regalloc t1 t2 and a li/sb flipped
+s32 func_8002AD50(s32 arg0) {
+    Struct8076A0E8 *temp_a3;
+    s32 var_a2;
+    s8 *var_t0;
+    s32 var_v1;
+    s32 temp;
+
+    temp = D_8076A0E4[arg0];
+    var_v1 = D_8076A100[arg0];
+    var_a2 = 0;
+    temp_a3 = &D_8076A0E8[temp];
+    var_t0 = &temp_a3->unk0[var_v1];
+    temp_a3->unk0[var_v1] = -1;
+    while (!var_a2) {
+        var_v1 -= 1;
+        var_t0 -= 1;
+        if (var_v1 < 0) {
+            var_v1 = 3;
+            var_t0 = &temp_a3->unk0[3];
+        }
+        if (var_t0[0] == -1) {
+            var_a2 = 1;
+            D_8076A100[arg0] = var_v1;
+            var_t0[0] = arg0;
+        }
+    }
+    return var_v1;
+}
+*/
 
 // Huge, something to do with inputs
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002ADC8.s")

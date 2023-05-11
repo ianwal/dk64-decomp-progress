@@ -11,7 +11,6 @@ extern f64 D_80758168;
 extern void *D_807F5DE4; // TODO: Actually a pointer to a struct (map model?)
 extern s32 D_807F5E60;
 extern s8 D_807F5FEC;
-extern s32 D_807F5FF4;
 extern s32 D_807F6C28;
 
 extern s32 D_807F5E60;
@@ -279,6 +278,88 @@ void *func_8062BA74(Struct8062BA74_1 *arg0) {
     return temp_v0;
 }
 
+typedef struct Struct8062BB2C_arg0 Struct8062BB2C_arg0;
+
+struct Struct8062BB2C_arg0 {
+    s32 unk0;
+    Struct8062BB2C_arg0* unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+    s32 unkA4;
+    s32 unkA8;
+    s32 unkAC;
+    s32 unkB0;
+    s32 unkB4;
+    u8 unkB8;
+    u8 unkB9;
+    u8 unkBA;
+    u8 unkBB;
+    s32 unkBC;
+};
+
+typedef struct Struct8062BB2C_arg1 Struct8062BB2C_arg1;
+
+typedef struct Struct8062BB2C_arg1_unk4 Struct8062BB2C_arg1_unk4;
+
+struct Struct8062BB2C_arg1_unk4 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    Struct8062BB2C_arg1_unk4 *unk14;
+};
+
+struct Struct8062BB2C_arg1 {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    Struct8062BB2C_arg1_unk4 *unk4;
+    s32 unk8;
+    Struct8062BB2C_arg1 *unkC;
+    Struct8062BB2C_arg1 *unk10;
+};
+
+void func_8062BB2C(Struct8062BB2C_arg0 *arg0, Struct8062BB2C_arg1 *arg1, u8 arg2);
+
 void func_8062BAE4(void) {
     func_8063B4A4();
     func_8062BB2C(D_807F5DE4, D_807F5E60, 1);
@@ -288,7 +369,117 @@ void func_8062BAE4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BB2C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BCC8.s")
+void func_8063B4C0(Chunk14*, u8);
+
+/*
+// TODO: Pretty close, need to untangle the conditionals
+void func_8062BB2C(Struct8062BB2C_arg0 *arg0, Struct8062BB2C_arg1 *arg1, u8 arg2) {
+    Struct8062BB2C_arg1_unk4 *temp_s1;
+    Struct8062BB2C_arg1_unk4 *var_s0_2;
+
+loop_1:
+    if (arg0 != NULL) {
+loop_2:
+        if (arg1->unk1 == 3) {
+            arg2 = 0;
+            func_8062BB2C(arg0->unk0, arg1->unkC, 0);
+            arg0 = arg0->unk4;
+            arg1 = arg1->unk10;
+            goto loop_1;
+        } else {
+            if (arg0->unkB8 != 0) {
+                if (arg0->unkB8 != 1) {
+                    if (arg0->unkB8 == 2) {
+                        func_80652B04();
+                    }
+                } else {
+                    var_s0_2 = arg1->unk4;
+                    while (var_s0_2 != NULL) {
+                        temp_s1 = var_s0_2->unk14;
+                        func_8063B4C0(var_s0_2, arg2);
+                        var_s0_2 = temp_s1;
+                    }
+                }
+            } else if (arg1->unk1 != 0) {
+                if (arg1->unk1 != 1) {
+                    if (arg1->unk1 == 2) {
+                        goto block_14;
+                    }
+                } else {
+block_14:
+                    if (arg1->unk0 != 0) {
+                        arg2 = 0;
+                        func_8062BB2C(arg0->unk4, arg1->unk10, arg2);
+                        arg0 = arg0->unk0;
+                        arg1 = arg1->unkC;
+                    } else {
+                        arg2 = 0;
+                        func_8062BB2C(arg0->unk0, arg1->unkC, arg2);
+                        arg0 = arg0->unk4;
+                        arg1 = arg1->unk10;
+                    }
+                    goto loop_1;
+                }
+            } else {
+                if (arg1->unk0 != 0) {
+                    func_8062BB2C(arg0->unk0, arg1->unkC, arg2);
+                    arg2 &= 0xFF;
+                    arg0 = arg0->unk4;
+                    arg1 = arg1->unk10;
+                    goto loop_1;
+                }
+                func_8062BB2C(arg0->unk4, arg1->unk10, arg2);
+                arg2 &= 0xFF;
+                arg0 = arg0->unk0;
+                arg1 = arg1->unkC;
+                if (arg0 == NULL) {
+
+                } else {
+                    goto loop_2;
+                }
+            }
+        }
+    }
+}
+*/
+
+u8 func_8062BDB0(s32 arg0, void *arg1, void *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);      // extern
+u8 func_80668E9C(void *arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 *arg5);
+extern void *D_807F5DE4;
+
+typedef struct Struct807F5FF4 Struct807F5FF4;
+
+struct Struct807F5FF4 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    Struct807F5FF4 *unk14;
+    s16 unk18;
+    s16 unk1A;
+    s16 unk1C;
+    s16 unk1E;
+    s32 unk20;
+    u8 unk24;
+};
+
+extern Struct807F5FF4 *D_807F5FF4;
+
+u8 func_8062BCC8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
+    u8 var_s1;
+    Struct807F5FF4 *var_s0;
+
+    var_s1 = func_8062BDB0(arg0, D_807F5DE4, D_807F5E60, arg1, arg2, arg3, arg4);
+    var_s0 = D_807F5FF4;
+    while (var_s0 != NULL) {
+        if (var_s0->unk24 == 1) {
+            var_s1 |= func_80668E9C(arg0, var_s0->unk1E, arg1, arg2, arg3, arg4);
+        }
+        var_s0 = var_s0->unk14;
+    }
+    return var_s1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BDB0.s")
 

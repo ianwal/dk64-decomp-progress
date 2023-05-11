@@ -440,7 +440,9 @@ clean:
 
 # Per-file flag definitions
 build/us/src/dk64_boot/dk64_boot_3C00.c.o: OPT_FLAGS = -O1
+build/us/src/dk64_boot/dk64_boot_3D20.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/dk64_boot_61D0.c.o: OPT_FLAGS = -O1
+build/us/src/dk64_boot/dk64_boot_7F60.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/gu/%.c.o: OPT_FLAGS = -O3
 build/us/src/dk64_boot/gu/nonmatching/%.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/%.c.o: OPT_FLAGS = -O1
@@ -455,6 +457,12 @@ build/us/src/dk64_boot/libc/ll%.o: OPT_FLAGS := -O1
 build/us/src/dk64_boot/os/%.c.o: OPT_FLAGS = -O1
 
 build/us/src/global_asm/audio/%.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/code_13C920.c.o: OPT_FLAGS = -g
+# build/us/src/global_asm/code_13CB50.c.0: OPT_FLAGS = -g
+build/us/src/global_asm/code_13CE70.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/code_13D0B0.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/code_13D020.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/code_13D100.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_141520.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_145950.c.o: OPT_FLAGS = -g
 

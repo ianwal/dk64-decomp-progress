@@ -124,10 +124,8 @@ void func_80651BC0(s16 arg0, u8 arg1) {
 typedef struct {
     u8 unk0;
     u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    u8 unk4;
-    u8 unk5;
+    s16 unk2;
+    s16 unk4;
     u8 unk6;
     u8 unk7;
     u8 unk8;
@@ -146,8 +144,10 @@ void func_80651BE0(s16 arg0, u8 arg1, s8 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80651C2C.s")
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
     s32 unk8;
     s32 unkC;
     s32 unk10;
@@ -547,10 +547,6 @@ void func_80652FDC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 *arg5) 
 // TODO: Struct (or struct array?) on the stack?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806531B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806533C4.s")
-
-/*
-// TODO: Stupidly close, v0/v1 mixup in the final return
 s32 func_806533C4(f32 arg0, f32 arg1, f32 arg2) {
     s32 phi_v0;
     s32 phi_v1;
@@ -578,9 +574,12 @@ s32 func_806533C4(f32 arg0, f32 arg1, f32 arg2) {
     }
     phi_f0 = (arg2 < arg0) ? arg0 - arg2 : arg2 - arg0;
     phi_f2 = (arg2 < arg1) ? arg1 - arg2 : arg2 - arg1;
-    return phi_f0 < phi_f2 ? FALSE : TRUE;
+    if (phi_f0 < phi_f2) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806534E0.s")
 
@@ -815,14 +814,51 @@ void func_80653B80(f32 arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80653EA8.s")
 
+/*
+// TODO: Regalloc
+void func_80653EA8(Gfx *arg0, Gfx *arg1) {
+    s32 temp[2];
+    s32 sp44;
+    u32 sp40;
+    u32 temp_a0;
+
+    while (arg0 != arg1) {
+        if ((arg0->words.w0 >> 0x18) == G_SETTIMG) {
+            temp_a0 = arg0->words.w1;
+            if (temp_a0 >= 0x80000000 && temp_a0 < 0xA0000000) {
+                func_8066B7AC(temp_a0, &sp44, &sp40);
+                func_8066B434(arg0->words.w1, 0x542, 0x22);
+                arg0->words.w1 = sp40;
+            }
+        }
+        arg0++;
+    }
+}
+*/
+
 void func_80653F68(s16 index) {
     chunk_array_pointer[index].unk7 |= 8;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80653FA4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654380.s")
+void func_80654418(f32, f32);
+void func_80654A2C(f32, f32, f32);
+void func_80655258(f32, f32, f32, s32);
+extern s32 D_807F70AC;
 
+void func_80654380(f32 arg0, f32 arg1, f32 arg2) {
+    s32 i;
+
+    func_80654418(arg0, arg1);
+    for (i = 0; i < D_807F70AC; i++) {
+        D_807F70B0[i].unk18 = 0;
+    }
+    func_80655258(arg0, arg1, arg2, -1);
+    func_80654A2C(arg0, arg1, arg2);
+}
+
+// Matrix & memcpy
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654418.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806545D4.s")
@@ -835,11 +871,102 @@ void func_80653F68(s16 index) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654CCC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654E84.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+} Struct80654E84;
+
+s32 func_80654E84(Struct80654E84 *arg0, f32 arg1, f32 arg2) {
+    f32 var_f0;
+    f32 var_f12;
+    f32 var_f16;
+    f32 var_f2;
+
+    if (arg0->unk0 < arg0->unk2) {
+        var_f0 = arg0->unk0;
+    } else {
+        var_f0 = arg0->unk2;
+    }
+    if (!(var_f0 < arg0->unk4)) {
+        var_f0 = arg0->unk4;
+    }
+    if (arg0->unkC < arg0->unkE) {
+        var_f12 = arg0->unkC;
+    } else {
+        var_f12 = arg0->unkE;
+    }
+    if (!(var_f12 < arg0->unk10)) {
+        var_f12 = arg0->unk10;
+    }
+    if (arg0->unk2 < arg0->unk0) {
+        var_f16 = arg0->unk0;
+    } else {
+        var_f16 = arg0->unk2;
+    }
+    if (!(arg0->unk4 < var_f16)) {
+        var_f16 = arg0->unk4;
+    }
+    if (arg0->unkE < arg0->unkC) {
+        var_f2 = arg0->unkC;
+    } else {
+        var_f2 = arg0->unkE;
+    }
+    if (!(arg0->unk10 < var_f2)) {
+        var_f2 = arg0->unk10;
+    }
+    if (!(!(arg1 < var_f0) && !(var_f16 < arg1) && !(arg2 < var_f12) && !(var_f2 < arg2))) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654FEC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655258.s")
+
+s32 func_8062DBDC(s16, s16, s16, s16, s32, s32, f32, f32, f32, f32, u8 *); // extern
+extern f32 D_807F5FAC;
+extern s32 D_807F70AC;
+
+/*
+// TODO: Very close
+void func_80655258(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s32 i;
+
+    for (i = 0; i < D_807F70AC; i++) {
+        if (arg3 == D_807F70B0[i].unk4) {
+            if (chunk_array_pointer[D_807F70B0[i].unk0].loaded == 1) {
+                if (func_8062DBDC(
+                    D_807F70B4[D_807F70B0[i].unk2].unk0,
+                    D_807F70B4[D_807F70B0[i].unk2].unk2,
+                    D_807F70B4[D_807F70B0[i].unk2].unk4,
+                    D_807F70B4[D_807F70B0[i].unk2].unk6,
+                    D_807F70B4[D_807F70B0[i].unk2].unk8,
+                    D_807F70B4[D_807F70B0[i].unk2].unkA,
+                    arg0,
+                    arg1,
+                    arg2,
+                    D_807F5FAC,
+                    chunk_array_pointer[D_807F70B0[i].unk0].pad2) != 0) { // TODO: I believe issue is here
+                    D_807F70B0[i].unk18 = 1;
+                    D_807F70B0[i].unk19 = 1;
+                }
+                if (D_807F70B0[i].unk18 != 0) {
+                    func_80655258(arg0, arg1, arg2, D_807F70B0[i].unk2);
+                }
+            }
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655410.s")
 
@@ -957,6 +1084,29 @@ void func_806588E0(s32 fileIndex) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658930.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658B08.s")
+
+extern s32 D_807F6C20;
+
+/*
+// TODO: Extremely close, 2 instructions swapped
+s16 func_80658B08(s8 arg0, u8 *arg1, s16 arg2) {
+    s16 i;
+    s16 count;
+    Struct807F6C1C *temp;
+
+    count = 0;
+    if (arg0 == -1) {
+        return 0;
+    }
+    for (i = 0; i < D_807F6C20 && count < arg2; i++) {
+        if (arg0 == D_807F6C1C[i].unk2) {
+            arg1[count] = D_807F6C1C[i].unk4;
+            count += 1;
+        }
+    }
+    return count;
+}
+*/
 
 s32 func_807009F4(s16);
 s16 func_80700AE4(s16, s16);

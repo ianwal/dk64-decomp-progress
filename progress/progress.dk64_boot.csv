@@ -15,7 +15,7 @@ us,boot,__osSetCompare,16,yes
 us,boot,guMtxL2F,184,no
 us,boot,__osPiCreateAccessQueue,80,no
 us,boot,func_800005A8,984,no
-us,boot,func_80007360,112,no
+us,boot,func_80007360,100,yes
 us,boot,__osDispatchThread,396,yes
 us,boot,guTranslate,84,yes
 us,boot,func_80000D8C,188,yes

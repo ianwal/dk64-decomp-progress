@@ -589,6 +589,32 @@ typedef struct {
 } ALOscEvent;
 
 typedef struct {
+    f32 unk00;
+    f32 unk04;
+} N_AL18Event;
+
+typedef struct {
+    u8 unk00;
+    u8 unk01;
+    u8 unk02;
+    u8 unk03;
+    s32 param;
+} N_AL19Event;
+
+typedef struct {
+    u8 unk00;
+    u8 unk01;
+    u8 unk02;
+    u8 unk03;
+    u8 unk04;
+    u8 unk05;
+    u8 unk06;
+    u8 unk07;
+    u8 unk08;
+    u8 unk09;
+} N_AL7Event;
+
+typedef struct {
     s16                 	type;
     union {
         ALMIDIEvent     	midi;
@@ -602,6 +628,9 @@ typedef struct {
 	ALSeqpSeqEvent		spseq;
 	ALSeqpBankEvent		spbank;
         ALOscEvent      	osc;
+        N_AL7Event          evt7;
+        N_AL18Event      	evt18;
+		N_AL19Event      	evt19;
     } msg;
 } ALEvent;
 
