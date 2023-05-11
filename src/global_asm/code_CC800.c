@@ -44,9 +44,6 @@ s32 func_806C7B34(void) {
     return D_8075C410[current_character_index[0]].unk0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C7B50.s")
-
-/*
 // TODO: Add this to the aaD union
 typedef struct {
     s32 unk0;
@@ -54,17 +51,15 @@ typedef struct {
     s8 unk8;
 } AppleAAD;
 
-// TODO: Stack nonsense, bleh
-void func_806C7B50(u8 arg1, Actor *arg2) {
+void func_806C7B50(u32 arg0, u8 arg1, Actor *arg2) {
     AppleAAD *temp_v0;
 
-    func_80677FA8(0x82); // Spawn actor: Apple (Fungi)
+    func_80677FA8(arg0, 0x82); // Spawn actor: Apple (Fungi)
     func_8067B238(D_807FBB44, arg2, 0.15f);
     temp_v0 = D_807FBB44->PaaD;
     temp_v0->unk4 = arg2;
     temp_v0->unk8 = arg1;
 }
-*/
 
 void func_806C7BAC(s32 arg0, s32 arg1) {
     // TODO: Is this aaD type actually correct? The args line up but that's all I know right now

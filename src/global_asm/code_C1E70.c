@@ -22,6 +22,8 @@ void func_806BD170(void) {
     s16 keyIndex;
     s16 sp50;
     s16 temp_s2;
+    u32 key_collected_flag;
+    Actor* highest_priority_padlock;
 
     sp50 = -1;
     keyIndex = 0;
@@ -52,6 +54,7 @@ void func_806BD170(void) {
             if (isFlagSet(D_80744710[keyIndex], FLAG_TYPE_PERMANENT)) {
                 sp50 = keyIndex;
                 D_807FBB44->control_state = 5;
+                highest_priority_padlock = D_807FBB44;
             }
         }
     }
@@ -61,8 +64,8 @@ void func_806BD170(void) {
         sp50 = -1;
     }
     if ((D_80750660 == 0) && (sp50 != -1)) {
-        D_807FBB44->unk146 = 1;
-        D_807FBB44->control_state = 1;
+        highest_priority_padlock->unk146 = 1;
+        highest_priority_padlock->control_state = 1;
         D_80750660 = 1;
         D_807FC8D0 = sp50;
     }
@@ -81,7 +84,7 @@ extern s8 D_807506A8[];
 s32 areAllKeysTurnedIn(void);
 
 typedef struct {
-    s32 unk0;
+    Actor* unk0;
 } Actor178_806BD3E4;
 
 /*
@@ -98,7 +101,7 @@ void func_806BD3E4(void) {
     s8 temp_v0_2;
 
     var_v1 = D_8076A0A6;
-    sp34 = current_actor_pointer->unk178;
+    sp34 = (Actor178_806BD3E4*)current_actor_pointer->unk178;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (areAllKeysTurnedIn() != 0) {
             current_actor_pointer->control_state = 0x40;
@@ -147,7 +150,7 @@ void func_806BD3E4(void) {
             playCutscene(player_pointer, 2, 1);
             break;
         case 2:
-            if (func_80629148(current_actor_pointer, 0x2EF) != 0) {
+            if (func_80629148() != 0) {
                 playSong(0x7D, 1.0f);
                 func_80614EBC(current_actor_pointer, 0x2F1);
                 current_actor_pointer->control_state = 3;

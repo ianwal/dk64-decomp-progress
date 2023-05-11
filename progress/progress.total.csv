@@ -3252,7 +3252,7 @@ us,.code,func_8069DF58,192,yes
 us,.code,func_80650A04,108,no
 us,.code,func_8070FA58,488,no
 us,.code,func_807065F8,940,no
-us,.code,func_806C7B50,92,no
+us,.code,func_806C7B50,92,yes
 us,.code,func_8072AB74,1968,no
 us,.code,func_8067B298,8,yes
 us,.code,func_806F3950,44,yes
