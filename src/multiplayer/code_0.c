@@ -110,8 +110,6 @@ s32 func_800253C8(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025404.s")
 
-// Weird stack stuff
-
 s32 func_8063254C(s32, s32 *, f32 *, f32 *, f32 *, s16 *, s16*); /* extern */
 
 void func_80025608(s32 arg0) {
@@ -188,6 +186,42 @@ void func_80025654(MultiplayerStruct4 *arg0) {
 // Doable, loop, struct
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025F84.s")
 
+typedef struct {
+    s32 map;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+
+} struct_80026FA4;
+
+struct_80026FA4 *func_80025378();                              /* extern */
+
+/*
+void func_80025F84(void) {
+    s32 var_s0;
+    s32 var_v0;
+    struct_80026FA4 *temp_v0;
+    struct_80026FA4 *var_s1;
+
+    temp_v0 = func_80025378();
+    var_s0 = 0 * 4;
+    var_s1 = temp_v0 + var_s0;
+    if (temp_v0->unkC != -1) {
+        var_v0 = var_s1->unkC;
+loop_2:
+        func_8063DA40((s16) var_v0, 0);
+        var_s0 += 4;
+        var_s1 = (u32*)var_s1 + 1;
+        if (var_s0 < 0x10) {
+            var_v0 = var_s1->unkC;
+            if (var_v0 != -1) {
+                goto loop_2;
+            }
+        }
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025FFC.s")
 
 // Jumptable
@@ -197,7 +231,27 @@ void func_800268C0(u8 arg0) {
     D_80026F70 |= arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800268DC.s")
+void func_806F0C18(Actor*);                                  /* extern */
+void func_806F91B4(s32, u8, s16);                          /* extern */
+extern s32 D_807552E8;
+
+void func_800268DC(Actor *arg0, PlayerAdditionalActorData *arg1, PlayerProgress *arg2) {
+    arg2->crystals = 0;
+    arg2->standardAmmo = 0;
+    arg2->oranges = 0;
+    arg2->homingAmmo = 0;
+    arg1->unkD4 = 0x5A;
+    func_806F0C18(arg0);
+    arg0->object_properties_bitfield &= 0xDFFFFFFF;
+    arg1->unk247 = -1;
+    arg1->unk246 = 0;
+    if (func_80714608(0) != 0) {
+        extra_player_info_pointer->unk21E = 0;
+    }
+    if ((D_807552E8 == 3) || (D_807552E8 == 5)) {
+        func_806F91B4(1, arg1->unk1A4, -10);
+    }
+}
 
 void func_8002698C(MultiplayerStruct0 *arg0) {
     if (D_807552E8 == 2) {
