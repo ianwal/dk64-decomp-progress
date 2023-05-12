@@ -38,6 +38,76 @@ void func_80024000(void) {
 // Flag check, animation state, unrolled loops
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_8002413C.s")
 
+typedef struct {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+    s8 unk3;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct800358E0;
+
+extern u8 D_800358D8[];
+extern Struct800358E0 D_800358E0[];
+extern u8 D_80035994[];
+
+/*
+void func_8002413C(void) {
+    AnimationStateUnk1C *var_a1;
+    AnimationStateUnk20 *var_a0;
+    AnimationStateUnk24 *var_v0;
+    s16 i;
+    s16 j;
+    Struct800358E0 *temp_a2_2;
+    u8 var_a3;
+    s32  temp;
+
+    if (current_map == MAP_JAPES_ARMY_DILLO) {
+        var_a3 = 0;
+    } else {
+        var_a3 = 1;
+    }
+    if (var_a3 == 0) {
+        if (isFlagSet(0x68, FLAG_TYPE_TEMPORARY)) {
+            var_a3 = 1;
+            current_actor_pointer->unk146 = 3;
+        }
+    }
+    func_80724D28(1, 0xD);
+    func_80724DB0(1, 5);
+    func_80724CA4(1, 5);
+    var_v0 = current_actor_pointer->animation_state->unk24;
+    var_a0 = current_actor_pointer->animation_state->unk20;
+    var_a1 = current_actor_pointer->animation_state->unk1C;
+    for (i = 0; i < 5; i++) {
+        var_v0[i - 1].unk0 = D_800358D8[i];
+        var_v0[i - 1].unk1 = 0xFF;
+        temp_a2_2 = &D_800358E0[i + var_a3 * 5];
+        var_v0[i - 1].unk4 = temp_a2_2->unk0;
+        var_v0[i - 1].unk8 = temp_a2_2->unk1;
+        var_v0[i - 1].unkC = temp_a2_2->unk2;
+        var_a0[i - 1].unk0 = D_800358D8[i];
+        var_a0[i - 1].unk1 = 0xFF;
+        var_a0[i - 1].unk4 = temp_a2_2->unk4;
+        var_a0[i - 1].unk8 = temp_a2_2->unk8;
+        var_a0[i - 1].unkC = temp_a2_2->unkC;
+        var_a1[i - 1].unk0 = -0x80;
+        var_a1[i - 1].unk1 = D_800358D8[i];
+        var_a1[i - 1].unk2 = 0;
+        var_a1[i - 1].unk4 = 0;
+        var_a1[i - 1].unk6 = 0;
+    }
+    for (j = 0; j < 8; j++) {
+        var_v0[j - 1].unk0 = D_80035994[j];
+        var_v0[j].unk1 = 0xFF;
+        var_v0[j].unk4 = 0.0f;
+        var_v0[j].unk8 = 0.0f;
+        var_v0[j].unkC = 0.0f;
+    }
+}
+*/
+
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024300.s")
 

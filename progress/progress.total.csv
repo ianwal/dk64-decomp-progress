@@ -240,7 +240,6 @@ us,.code,func_80654418,444,no
 us,.code,func_8072B324,12,yes
 us,.code,func_8069E724,80,no
 us,.code,func_8062B3C4,180,no
-us,.code,func_80737B48,8,yes
 us,.code,func_80668E9C,1772,no
 us,.code,func_80604D70,724,no
 us,.code,func_806F544C,76,yes
@@ -730,7 +729,7 @@ us,.code,func_806022DC,56,no
 us,.code,func_8071E3EC,1144,no
 us,.code,func_8063524C,540,no
 us,.code,func_8062CEA8,492,no
-us,.code,func_80737A74,40,no
+us,.code,func_80737A74,40,yes
 us,.code,func_806C7BAC,100,yes
 us,.code,func_8072EE0C,112,no
 us,.code,func_806CA26C,64,yes
@@ -970,7 +969,7 @@ us,.code,func_8060D7A8,1172,yes
 us,.code,func_8070DCA4,116,no
 us,.code,func_80670C5C,680,no
 us,.code,func_806F1768,240,no
-us,.code,func_80737B2C,28,no
+us,.code,func_80737B2C,44,yes
 us,.code,func_80665FB4,220,no
 us,.code,func_80673B78,188,no
 us,.code,func_806D0378,68,yes
@@ -1583,7 +1582,6 @@ us,.code,getLevelIndex,152,yes
 us,.code,func_80703374,592,no
 us,.code,func_806531B8,524,no
 us,.code,func_8060B7C4,12,yes
-us,.code,func_80737630,8,yes
 us,.code,func_80648C84,1176,no
 us,.code,func_8073F1E4,324,no
 us,.code,func_80610268,168,no
@@ -2002,7 +2000,7 @@ us,.code,func_806E0294,308,yes
 us,.code,func_8071EB70,636,no
 us,.code,func_806E7484,228,yes
 us,.code,func_80650D8C,148,no
-us,.code,func_80737A4C,40,no
+us,.code,func_80737A4C,40,yes
 us,.code,func_8062A844,8,yes
 us,.code,func_80663A80,360,yes
 us,.code,func_806D2BD0,132,yes
@@ -2011,7 +2009,7 @@ us,.code,func_80656F14,1444,no
 us,.code,func_806EBE8C,68,no
 us,.code,func_806D2A14,140,yes
 us,.code,func_80669588,200,no
-us,.code,func_807375E0,32,no
+us,.code,func_807375E0,40,yes
 us,.code,func_8070CA2C,68,yes
 us,.code,playerCanDive,116,yes
 us,.code,func_806EE878,172,yes
@@ -2020,7 +2018,6 @@ us,.code,func_806EA8A0,92,yes
 us,.code,func_806CF398,148,yes
 us,.code,func_80662108,8,yes
 us,.code,func_80731E68,452,no
-us,.code,func_80737600,8,yes
 us,.code,func_806E78E0,24,yes
 us,.code,func_8071EEA4,60,no
 us,.code,func_80632630,560,no
@@ -2108,7 +2105,6 @@ us,.code,func_806E31FC,272,yes
 us,.code,func_806C850C,1144,no
 us,.code,func_8071321C,84,yes
 us,.code,func_806C6530,852,no
-us,.code,func_80737B50,8,yes
 us,.code,func_8066FE08,1856,no
 us,.code,func_806CEB44,192,yes
 us,.code,func_80703CF8,984,no
@@ -2236,7 +2232,7 @@ us,.code,func_80611724,12,yes
 us,.code,func_8060BB18,200,no
 us,.code,func_806C71C8,8,yes
 us,.code,func_806F833C,1872,no
-us,.code,func_80737AC4,104,no
+us,.code,func_80737AC4,104,yes
 us,.code,func_8062F640,856,no
 us,.code,func_806EA04C,88,yes
 us,.code,func_8063A8C4,164,no
@@ -2323,7 +2319,7 @@ us,.code,func_8060C6B8,108,yes
 us,.code,func_8063C4A8,28,yes
 us,.code,func_806F9744,260,yes
 us,.code,func_8069E4E0,216,yes
-us,.code,func_80737608,40,no
+us,.code,func_80737608,48,yes
 us,.code,func_806E607C,340,yes
 us,.code,func_8065297C,140,yes
 us,.code,func_806F6644,868,no
@@ -3103,7 +3099,7 @@ us,.code,func_807385F0,380,no
 us,.code,func_80641F68,8,yes
 us,.code,func_80658000,308,no
 us,.code,func_806522CC,168,yes
-us,.code,func_80737A9C,40,no
+us,.code,func_80737A9C,40,yes
 us,.code,func_80642940,688,no
 us,.code,func_806EA26C,108,yes
 us,.code,func_80635468,224,no
@@ -4200,7 +4196,7 @@ us,boot,__osViSwapContext,768,no
 us,boot,viMgrMain,400,no
 us,boot,__osContRamReadData,560,no
 us,boot,guMtxF2L,256,yes
-us,boot,func_800056F0,112,no
+us,boot,func_800056F0,108,yes
 us,boot,guPerspectiveF,560,yes
 us,boot,func_80002B0C,172,no
 us,boot,__osSiGetAccess,68,no

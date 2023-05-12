@@ -219,7 +219,7 @@ us,boot,__osViSwapContext,768,no
 us,boot,viMgrMain,400,no
 us,boot,__osContRamReadData,560,no
 us,boot,guMtxF2L,256,yes
-us,boot,func_800056F0,112,no
+us,boot,func_800056F0,108,yes
 us,boot,guPerspectiveF,560,yes
 us,boot,func_80002B0C,172,no
 us,boot,__osSiGetAccess,68,no

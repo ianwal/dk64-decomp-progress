@@ -769,7 +769,7 @@ void func_8062E67C(Struct8062E67C *arg0, Struct8062E67C *arg1, u8 arg2, f64 arg4
 // Surprisingly doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F050.s")
 
-void func_80659DB0(f32, f32, s32 *, s32 *, f32, s32);
+void func_80659DB0(f32, f32, f32, s32);
 void func_8063C390(void);
 void func_8065E040(s32);
 /*
@@ -902,7 +902,7 @@ void func_8062F050(MapGeometryHeader *arg0) {
     D_807F5DE4 = &D_807F5DE0->unk0 + arg0->unk30;
     D_807F5DE8 = &D_807F5DE0->unk0 + arg0->unk38;
     D_807F5DEC = &D_807F5DE0->unk0 + arg0->unk34;
-    func_80659DB0(1.0f, 1.0f, temp_a0, temp_a1, 1.0f, -1);
+    func_80659DB0(1.0f, 1.0f, 1.0f, -1);
     func_8065996C(-1);
     func_8065E040(arg0->unkE << 0xA);
     temp_a1_2 = &D_807F5DE0->unk0 + arg0->unk30;
@@ -979,6 +979,109 @@ void func_8062F3A0(GlobalASMStruct_8062F3A0 *arg0, GlobalASMStruct_8062F3A0 *arg
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F420.s")
+
+typedef struct Struct8062F420 Struct8062F420;
+
+struct Struct8062F420 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+    s32 unkA4;
+    s32 unkA8;
+    s32 unkAC;
+    s32 unkB0;
+    s32 unkB4;
+    u8 unkB8;
+    u8 unkB9;
+    u8 unkBA;
+    u8 unkBB;
+    s32 unkBC;
+    s32 unkC0;
+    u8 unkC4;
+    u8 unkC5;
+};
+
+/*
+void func_8062F420(Struct8062F420 *arg0, s32 arg1, s32 arg2) {
+    s32 temp_t6;
+    s32 i;
+    Struct8062F420 *var_v0;
+
+loop_1:
+    if (arg0 != NULL) {
+        switch (arg0->unkB8) {
+            case 0:
+                arg0->unk0 += arg1;
+                arg0->unk4 += arg1;
+                func_8062F420(arg0->unk0, arg1, arg2);
+                arg0 = arg0->unk4;
+                goto loop_1;
+            case 1:
+            case 2:
+                if (arg0->unk8 != -1) {
+                    arg0->unk8 += arg2;
+                }
+                if (arg0->unkC != -1) {
+                    arg0->unkC += arg2;
+                }
+                if (arg0->unk10 != -1) {
+                    arg0->unk10 += arg2;
+                }
+                if (arg0->unk14 != -1) {
+                    arg0->unk14 += arg2;
+                }
+                if (arg0->unk18 != -1) {
+                    arg0->unk18 += arg2;
+                }
+                var_v0 = arg0;
+                for (i = 0; i < arg0->unkC5; i++) {
+                    temp_t6 = var_v0->unk1C;
+                    var_v0 += 4;
+                    var_v0->unk18 = temp_t6 + arg2;
+                }
+                return;
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F538.s")
 

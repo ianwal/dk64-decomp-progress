@@ -21,26 +21,42 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_8073749C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_807375E0.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s8 unk40;
+    s8 unk41;
+    s8 unk42;
+    s8 unk43;
+    s8 unk44;
+} Struct_807375E0;
 
-/*
-// TODO: When I create the struct it's still got some weird stuff going on
-// I think this file might have different compiler flags
-void func_807375E0(void *arg0, s32 arg1) {
+void func_807375E0(Struct_807375E0 *arg0, u8 arg1) {
     if (arg0 != 0) {
-        arg0->unk40 = arg1 & 0xFF;
+        arg0->unk40 = (s16)arg1;
     }
 }
-*/
 
-void func_80737600(void) {
-
-}
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737608.s")
-
-void func_80737630(void) {
-
+u8 func_80737608(Struct_807375E0 *arg0) {
+    if (arg0 != NULL) {
+        return arg0->unk44;
+    } else {
+        return 0;
+    }
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737638.s")
@@ -49,38 +65,37 @@ void func_80737630(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737990.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737A4C.s")
+void func_80737A4C(void) {
+    func_80737990(1);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737A74.s")
-
-/*
-// TODO: Wtf
 void func_80737A74(void) {
     func_80737990(0x11);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737A9C.s")
-
-// Audio stuff, ALEvent struct on the stack?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737AC4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737B2C.s")
-
-/*
-extern u16 D_807FF0E4[];
-
-u16 func_80737B2C(s32 arg0) {
-    return D_807FF0E4[arg0 & 0xFF];
-}
-*/
-
-void func_80737B48(void) {
-
+void func_80737A9C(void) {
+    func_80737990(3);
 }
 
-void func_80737B50(void) {
+extern s32 D_807563CC;
 
+void func_80737AC4(s32 arg0, s16 arg1, s32 arg2) {
+    ALEvent sp18;
+
+    // TODO: Is this right?
+    sp18.type = arg1;
+    sp18.msg.loop.start = arg0;
+    sp18.msg.loop.end = arg2;
+    if (arg0 != 0) {
+        alEvtqPostEvent(D_807563CC + 0x14, &sp18, 0);
+    }
 }
+
+extern u16 *D_807FF0E4;
+
+u16 func_80737B2C(u8 arg0) {
+    return D_807FF0E4[arg0];
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737B58.s")
