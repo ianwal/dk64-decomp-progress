@@ -26,7 +26,6 @@ typedef struct MultiplayerStruct0 {
 
 void func_806F91B4(s32, u8, s16);
 extern s32 D_807552E8;
-void func_800269C8(u8, s32);
 s32 func_80026BD8(s32);
 void func_806C9434(s32);
 void func_806CFF9C(Actor*);
@@ -259,7 +258,38 @@ void func_8002698C(MultiplayerStruct0 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800269C8.s")
+void func_80025F84();                                  
+Actor *func_8067ADB4(u32);                         
+void func_806A5DF0(u16, f32, f32, f32, s32, s32, s32, s32); 
+extern s32 D_807552E8;
+
+typedef struct {
+    u8 unk0[0x4C];
+    u8 unk4C;
+} struct_unknown_mp_aad;
+
+void func_800269C8(u8 arg0, s8 arg1) {
+    Actor *temp_s0;
+    struct_unknown_mp_aad* phi_v1;
+    s32 temp_v1;
+    s32 sp30;
+    PlayerProgress *temp_s1;
+
+    temp_s0 = character_change_array[arg0].player_pointer;
+    temp_s1 = &D_807FC950[arg0];
+    temp_v1 = temp_s1->health + temp_s1->unk2FD + arg1;
+    sp30 = *(s8*)(&temp_s1->unk2FA) - temp_v1;
+    if ((func_806F8AD4(1U, arg0) != 0) && ((temp_v1 <= 0) || (sp30 >= 2))) {
+        struct_unknown_mp_aad* aad = func_8067ADB4(0x13E)->additional_actor_data;
+        aad->unk4C = 1;
+        func_806F91B4(1, arg0, -0xA);
+        if (D_807552E8 == 5) {
+            func_80025F84();
+        }
+        func_806A5DF0(0x7A, temp_s0->x_position, temp_s0->y_position, temp_s0->z_position, (s32) temp_s0->y_rotation, 1, -1, 0);
+        temp_s1->unk2FA = 0;
+    }
+}
 
 void func_80026B0C(s32 arg0) {
     Actor *player = character_change_array[arg0].player_pointer;

@@ -23,7 +23,7 @@ us,.code,func_80025404,516,no
 us,.code,func_80026D40,224,yes
 us,.code,func_800268C0,28,yes
 us,.code,func_80026094,2092,no
-us,.code,func_800269C8,324,no
+us,.code,func_800269C8,324,yes
 us,.code,func_800249D8,716,no
 us,.code,func_800241F4,96,no
 us,.code,func_80025378,80,no
