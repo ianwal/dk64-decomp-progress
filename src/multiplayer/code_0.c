@@ -111,7 +111,22 @@ s32 func_800253C8(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025404.s")
 
 // Weird stack stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025608.s")
+
+s32 func_8063254C(s32, s32 *, f32 *, f32 *, f32 *, s16 *, s16*); /* extern */
+
+void func_80025608(s32 arg0) {
+    s32 sp38;
+    f32 sp34;
+    f32 sp30;
+    f32 sp_1;
+    s16 sp2E;
+    s16 sp2C;
+
+    sp38 = 0;
+    sp2E = 0;
+    sp2C = 0;
+    func_8063254C(arg0, &sp38, &sp34, &sp30, &sp_1, &sp2E, &sp2C);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025654.s")
 
