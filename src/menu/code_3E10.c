@@ -236,31 +236,27 @@ void func_80028EA8(Actor *arg0, s32 arg1) {
 
 void func_8002907C(void);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002907C.s")
-
 extern u8 D_80033818; // Current input index
 extern u16 D_8003381C[] = {U_JPAD, L_JPAD, U_JPAD, D_JPAD, R_JPAD, D_JPAD, Z_TRIG}; // Required input sequence
 extern s8 D_807563B4; // Enable stack trace upon crash
 
-/*
 // Button code on controller to enable stack trace upon crash
 // Accessible from the sound menu
-// TODO: Regalloc, goddamnit
 void func_8002907C(void) {
-    if (newly_pressed_input == D_8003381C[D_80033818]) {
-        D_80033818++;
-        if (D_80033818 >= 7U) {
+    u8 progress = D_80033818;
+    if (D_8003381C[D_80033818] == *(u16*)(&newly_pressed_input+0)) {
+        D_80033818 = D_80033818 + 1;
+        if (D_80033818 > 6U) {
             D_807563B4 = TRUE;
             playSound(0x23C, 0x7FFF, 63.0f, 1.0f, 0, 0);
             D_80033818 = 0;
         }
     } else {
-        if (newly_pressed_input != 0) {
+        if (*(u16*)(&newly_pressed_input + 0) != 0) {
             D_80033818 = 0;
         }
     }
 }
-*/
 
 void func_8002FC1C(Actor *, MenuAdditionalActorData *, s32);
 void func_8060AA58(s32);
