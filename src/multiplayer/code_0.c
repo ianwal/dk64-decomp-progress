@@ -311,6 +311,57 @@ void func_80026B0C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80026BD8.s")
 
+/*
+s32 func_80026BD8(s32 arg0) {
+    ExitData *temp_v0;
+    f32 temp_f0;
+    f32 temp_f12;
+    f32 temp_f14;
+    f32 temp_f24;
+    f32 temp_f2;
+    f32 var_f20;
+    f32 var_f22;
+    s32 var_a1;
+    s32 var_s1;
+    s32 var_s4;
+    u8 temp_v1;
+    Actor *temp_v1_2;
+    CharacterChange *var_a0;
+
+    var_f22 = 0.0f;
+    var_s4 = 0;
+    temp_f24 = *(f32 *)0x800270F4;
+    for (var_s1 = 0; var_s1 < 4; var_s1++) {
+        var_f20 = temp_f24;
+        temp_v0 = getExitData(var_s1);
+        temp_v1 = cc_number_of_players;
+        var_a1 = 0;
+        if ((s32) temp_v1 > 0) {
+            var_a0 = character_change_array;
+            do {
+                var_a1 += sizeof(CharacterChange);
+                temp_v1_2 = var_a0->player_pointer;
+                if ((var_a0->does_player_exist != 0) && (temp_v1_2->control_state != 0x84)) {
+                    temp_f0 = (f32) temp_v0->x_pos - temp_v1_2->x_position;
+                    temp_f2 = (f32) temp_v0->y_pos - temp_v1_2->y_position;
+                    temp_f12 = (f32) temp_v0->z_pos - temp_v1_2->z_position;
+                    temp_f14 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12);
+                    if (temp_f14 < var_f20) {
+                        var_f20 = temp_f14;
+                    }
+                }
+                var_a0 += sizeof(CharacterChange);
+            } while (var_a1 < (temp_v1 * sizeof(CharacterChange)));
+        }
+        if (var_f22 < var_f20) {
+            var_f22 = var_f20;
+            var_s4 = var_s1;
+        }
+    };
+    return var_s4;
+}
+*/
+
 void func_80026D40(Actor *arg0, s32 arg1) {
     if ((D_807552E8 == 4) && (func_80024254(arg1) == 0)) {
         D_807FC950[arg1].health = 0;

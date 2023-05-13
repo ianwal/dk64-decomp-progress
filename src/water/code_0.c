@@ -135,7 +135,68 @@ void func_80024578(WaterStruct2 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800245B8.s")
+void func_80024578(WaterStruct2 *);                            /* extern */
+void func_8060956C(f32, f32, f32, s32, u8, f32, u8, u8); /* extern */
+u32 func_806119A0();                                /* extern */
+extern f64 D_80029FF0;
+extern f32 D_80029FF8;
+extern u8 D_80770DC9;
+
+typedef struct {
+    u8 unk0[8];
+    f32 x_pos; // 0x8
+    f32 y_pos; // 0xC
+    f32 z_pos; // 0x10
+    f32 unk14;
+    u8 unk18[0x28-0x18];
+    f32 unk28;
+    u8 unk2C[0x42-0x2C];
+    s16 unk42;
+    s16 unk44;
+    u8 unk46[0x48-0x46];
+    f32 unk48;
+    u8 unk4C[0x1E0-0x4C];
+    u8 unk1E0;
+    u8 unk1E1;
+} struct_critter;
+
+// Listed as "Bat Critter Behavior" in Ghidra
+void func_800245B8(struct_critter *arg0) {
+    f32 temp_f2;
+    s32 temp_a0;
+    f32 sp3C;
+    u32 rng_val;
+    s32 temp_a0_2;
+
+    if (rng_val);
+    
+    if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1)) {
+        rng_val = func_806119A0();
+        sp3C = (f32) ((f64) arg0->unk28 * D_80029FF0);
+        if ((s16) (rng_val % 255U) < 6) {
+            func_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, (s16) ((func_806119A0() & 3) + 0x1A9), (u8) 0xFF, (s16) 0x7F, (u8) 0x1E, (u8) 0x5A, D_80029FF8, (u8) 0);
+        }
+        arg0->unk42 = (s16) (s32) ((f32) arg0->unk42 + (1200.0f * sp3C));
+        arg0->unk42 = (s16) (arg0->unk42 & 0xFFF);
+        if (arg0->unk44 >= 0x801) {
+            temp_a0 = arg0->unk42;
+            if (temp_a0 < 0x800) {
+                func_8060956C(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x5E, (D_80770DC9 * 0x64) + 0x73, 2.0f, 0x1E, 0x4B);
+            }
+        } else {
+            temp_a0_2 = arg0->unk42;
+            if (temp_a0_2 >= 0x801) {
+                func_8060956C(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x5F, (D_80770DC9 * 0x64) + 0x73, 2.0f, 0x1E, 0x4B);
+            }
+        }
+        temp_f2 = 1.0f - func_80612790(arg0->unk42);
+        arg0->unk48 = (f32) (60.0f * temp_f2);
+        arg0->unk14 = (f32) ((f64) (arg0->unk28 * temp_f2) * 0.5);
+    }
+    func_80024578(arg0);
+}
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800247F4.s")
 
