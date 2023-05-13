@@ -14,7 +14,7 @@ us,.code,func_80024578,64,yes
 us,.code,func_80025F8C,144,yes
 us,.code,func_80025F3C,80,yes
 us,.code,func_80025A3C,148,no
-us,.code,func_80025500,196,no
+us,.code,func_80025500,196,yes
 us,.code,func_80026530,92,yes
 us,.code,func_80024154,296,no
 us,.code,func_80028840,104,yes

@@ -143,19 +143,25 @@ extern f32 D_80029FF8;
 extern u8 D_80770DC9;
 
 typedef struct {
-    u8 unk0[8];
+    s16 unk0;
+    u8 unk2[2];
+    s16 unk4;
+    u8 unk6[2];
     f32 x_pos; // 0x8
     f32 y_pos; // 0xC
     f32 z_pos; // 0x10
     f32 unk14;
     u8 unk18[0x28-0x18];
     f32 unk28;
-    u8 unk2C[0x42-0x2C];
+    u8 unk2C[0x30-0x2C];
+    f32 unk30;
+    u8 unk34[0x42-0x34];
     s16 unk42;
     s16 unk44;
     u8 unk46[0x48-0x46];
     f32 unk48;
-    u8 unk4C[0x1E0-0x4C];
+    f32 unk4C;
+    u8 unk50[0x1E0-0x50];
     u8 unk1E0;
     u8 unk1E1;
 } struct_critter;
@@ -197,18 +203,100 @@ void func_800245B8(struct_critter *arg0) {
 }
 
 
-
+// Display list stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800247F4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024B78.s")
 
+extern f64 D_8002A000;
+extern f64 D_8002A008;
+
+/*
+Regalloc
+void func_80024B78(struct_critter *arg0) {
+    f32 temp_f0;
+    f32 temp_f2;
+
+    if (arg0->unk1E1 & 1) {
+        temp_f2 = (f32) ((f64) arg0->unk28 * D_8002A000);
+        arg0->unk42 = (s16) (s32) ((f64) arg0->unk42 + (D_8002A008 * (0.5 + (f64) (10.0f * temp_f2))));
+        arg0->unk42 = (s16) (arg0->unk42 & 0xFFF);
+        temp_f0 = func_80612794(arg0->unk42);
+        arg0->unk48 = (f32) ((((-15.0f * temp_f2) + 45.0f) * temp_f0) + (temp_f2 * 30.0f));
+        arg0->unk14 = (f32) ((f64) (arg0->unk28 * temp_f0) * *(f64 *)0x8002A010);
+    }
+    func_80024578(arg0);
+}
+*/
+
+// Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024C88.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024F28.s")
 
+extern f32 D_8002A018;
+extern f64 D_8002A020;
+void D_80718BF4(void);
+void D_8071FC40(void);
+
+/*
+Bunch of stack/regalloc issues
+void func_80024F28(struct_critter *arg0) {
+    f32 sp44;
+    s16 sp3E;
+    f32 temp_f2;
+    f32 temp_f0;
+    s16 var_v0;
+    s16 temp_v1;
+    f32 sp40;
+
+    if (arg0->unk1E1 & 1) {
+        temp_f0 = arg0->unk30;
+        temp_v1 = func_806119A0() % 400U;
+        if (temp_f0 < 0.0f) {
+            sp40 = 0.0f;
+        } else {
+            sp40 = temp_f0;
+        }
+        sp3E = func_806CC10C(arg0->unk0, arg0->unk4);
+        if (temp_v1 <= 0) {
+            func_807149B8(1U);
+            func_80714950(1);
+            func_807149FC(-1);
+            func_8071498C(&D_80718BF4);
+            func_80714CC0(&D_8071FC40, 0.0f, arg0->x_pos, arg0->y_pos, arg0->z_pos);
+        }
+        var_v0 = -sp3E;
+        if (sp3E > 0) {
+            var_v0 = sp3E;
+        }
+        if (var_v0 >= 0x5B) {
+            func_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x16F, 0x46, 0xDC, 0x1E, 0x5A, D_8002A018, 0);
+        }
+        arg0->unk42 = ((f64) arg0->unk42 + (200.0 * (1.5 + (f64) (150.0f * arg0->unk30))));
+        arg0->unk42 = arg0->unk42 & 0xFFF;
+        temp_f2 = func_80612794(arg0->unk42) * (10.0f + (200.0f * sp40));
+        sp44 = temp_f2 + (temp_f2 * ((f32) sp3E * 0.00024414062f));
+        arg0->unk4C = (func_80612794(arg0->unk42 + 0xC8) * 2.0f);
+        arg0->unk48 = ((f64) sp44 + ((f64) sp3E * D_8002A020));
+    }
+    func_80024578(arg0);
+}
+*/
+
+// Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002516C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025500.s")
+extern f32 D_8002A028;
+
+void func_80025500(struct_critter *arg0) {
+    if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1) && ((s16) (func_806119A0() % 255U) < 6)) {
+        func_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_806119A0() & 3) + 0x1A9), 0xFF, 0x5A, 0x1E, 0x5A, D_8002A028, 0);
+    }
+    func_80024578(arg0);
+}
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800255C4.s")
 
