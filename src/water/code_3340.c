@@ -7,26 +7,19 @@ extern s32 D_8002A1C8[];
 extern u16 D_8002A1CE;
 extern u16 D_8002A1CC;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80027340.s")
-
-/*
-// TODO: Kinda close... hmm
 void func_80027340(s32 arg0) {
     s32 phi_s0;
     s32 phi_s2;
 
-    phi_s0 = 2;
     phi_s2 = arg0;
-    while (phi_s0 >= 0) {
+    for (phi_s0 = 2; phi_s0 > -1; phi_s0--) {
         func_8068842C(current_actor_pointer, phi_s0, 1);
         func_80688370(current_actor_pointer, phi_s0, 0);
-        func_806883F4(current_actor_pointer, phi_s0, (phi_s2 % 10) + 1);
+        func_806883F4(current_actor_pointer, phi_s0, (phi_s2 % 10) + 1, 0);
         func_80688460(current_actor_pointer, phi_s0, 0);
         phi_s2 /= 10;
-        phi_s0--;
     }
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80027448.s")

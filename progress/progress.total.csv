@@ -3638,7 +3638,7 @@ us,.code,func_800247F4,900,no
 us,.code,func_80024C88,672,no
 us,.code,func_800288A8,500,no
 us,.code,func_8002904C,196,no
-us,.code,func_80027340,264,no
+us,.code,func_80027340,264,yes
 us,.code,func_80029110,8,yes
 us,.code,func_80026874,144,no
 us,.code,func_80025DB8,388,no
