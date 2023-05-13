@@ -1,10 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    u8 unk0[0x16 - 0x0];
+    s16 unk16;
+} Struct8073E8A0;
 
-// tiny, struct 0x16 s16
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1435A0/func_8073E8A0.s")
-
-void func_8073E8B4(void) {
-
+void func_8073E8A0(Struct8073E8A0 *arg0, s16 arg1) {
+    arg0->unk16 = arg1;
 }
