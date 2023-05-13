@@ -296,10 +296,10 @@ void func_80025500(struct_critter *arg0) {
     func_80024578(arg0);
 }
 
-
-
+// Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800255C4.s")
 
+// Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800257D4.s")
 
 /*
@@ -325,9 +325,38 @@ Gfx *func_800257D4(Gfx *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025A3C.s")
 
+// Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025AD0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025D1C.s")
+s32 func_800257D4(s32);                             /* extern */
+s32 func_80025AD0(s32, s32);                        /* extern */
+extern s32 D_80029BA8;
+
+typedef struct {
+    u8 critter_count;
+    u8 unk1[3];
+    s32 unk4;
+    s32 unk8;
+} struct_master_critter_ctrlr;
+
+s32 func_80025D1C(s32 arg0, struct_master_critter_ctrlr *arg1) {
+    s32 var_s0;
+    s32 var_s1;
+
+    if (arg1 == NULL) {
+        return arg0;
+    }
+    D_80029BA8 = 0;
+    var_s1 = arg1->unk4;
+    if (var_s1 != 0) {
+        arg0 = func_800257D4(arg0);
+    }
+    for (var_s0 = 0; var_s0 < arg1->critter_count; var_s0++) {
+        arg0 = func_80025AD0(arg0, var_s1);
+        var_s1 += sizeof(struct_master_critter_ctrlr);
+    }
+    return arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025DB8.s")
 
