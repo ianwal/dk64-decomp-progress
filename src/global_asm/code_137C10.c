@@ -23,9 +23,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_137C10/func_807359A0.s")
 
-// struct 0x88
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_137C10/func_80735A34.s")
+typedef struct {
+    u8 unk0[0x88 - 0x0];
+    u8 unk88;
+} Struct80735A34;
 
-void func_80735A44(void) {
-
+void func_80735A34(Struct80735A34 *arg0, u8 arg1) {
+    arg0->unk88 = arg1;
 }

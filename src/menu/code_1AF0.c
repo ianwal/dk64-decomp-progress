@@ -24,26 +24,18 @@ void func_80025FB4(MenuStruct1*, s32, s32);
 
 void func_806F397C(Actor*, Actor*, s16, s16);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_80025AF0.s")
-
-/*
-// TODO: Close, regalloc? Extra args?
 s32 func_80025AF0(MenuStruct1 *arg0, s32 characterIndex) {
     s32 phi_v1;
     s32 phi_v0;
 
     phi_v1 = 0;
-    for (phi_v0 = 0; phi_v0 < 5; phi_v0++) {
+    for (phi_v0 = 0; !phi_v1 && phi_v0 < 5; phi_v0++) {
         if (phi_v0 != current_character_index[0]) {
             phi_v1 |= D_807FC950[0].character_progress_as_bytes[phi_v0][arg0->unkB] & (1 << (characterIndex + 0x1F));
-        }
-        if (phi_v1) {
-            break;
         }
     }
     return phi_v1;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_80025B64.s")
