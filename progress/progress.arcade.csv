@@ -69,7 +69,7 @@ us,.code,arcade_barrel_stack_update,60,yes
 us,.code,func_80026518,360,yes
 us,.code,func_80026050,572,yes
 us,.code,func_80024A50,180,no
-us,.code,func_800274E0,264,no
+us,.code,func_800274E0,264,yes
 us,.code,func_8002E158,636,no
 us,.code,arcade_pulley_update,196,yes
 us,.code,func_8002549C,268,yes

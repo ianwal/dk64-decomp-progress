@@ -1,11 +1,31 @@
 #include <ultra64.h>
 #include "functions.h"
 
+void func_807248B0(Actor *arg0, f32 arg1) {
+    LedgeInfo *temp_v0;
 
+    arg0->animation_state->scale_x = arg1;
+    arg0->animation_state->scale_y = arg1;
+    arg0->animation_state->scale_z = arg1;
+    temp_v0 = arg0->ledge_info_pointer;
+    if (temp_v0 != NULL) {
+        arg0->unk15E = (temp_v0->unkC * arg1) * 0.5;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807248B0.s")
+void func_80724994(u8 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
+    s16 *sp24;
+    Actor *sp20;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724994.s")
+    sp24 = malloc(8);
+    func_8061134C(sp24);
+    sp24[0] = arg1;
+    sp24[1] = arg2;
+    sp24[2] = arg3;
+    sp24[3] = arg4;
+    func_8072E7DC(0xB, &sp20);
+    func_8067AB20(NULL, sp20, 0x01000000, arg0, sp24, 0);
+}
 
 s32 func_80724A20(void) {
     s16 i;
@@ -98,12 +118,22 @@ u8 func_80725B38(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80725BA4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80725DC0.s")
+void func_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
+
+u8 func_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6) {
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+
+    func_8061F2B8(arg4, 0.0f, arg5, arg0, 0.0f, arg1, arg2, 0.0f, arg3, &sp4C, &sp48, &sp44);
+    return ((sp4C - arg4) * (sp4C - arg4) + (sp44 - arg5) * (sp44 - arg5)) < (arg6 * arg6);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80725ED4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80726164.s")
 
+// arg0 Actor
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807264B0.s")
 
 typedef struct global_asm_struct_8 {
@@ -125,7 +155,7 @@ void func_807266E8(Actor *arg0, GlobalASMStruct8 *arg1) {
 // Jumptable, references the cutscene model mapping table at D_8075570C
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80726744.s")
 
-u8 func_80726DEC(u8, s32);
+u8 func_80726DEC(u8, u8);
 
 u8 func_80726D7C(u8 arg0) {
     return func_80726DEC(arg0, 5) || func_80726DEC(arg0, 6);
@@ -135,9 +165,36 @@ u8 func_80726DC0(u8 arg0) {
     return func_80726DEC(arg0, 7);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80726DEC.s")
+u8 func_80726DEC(u8 arg0, u8 arg1) {
+    s16 i;
+    EnemySpawner *var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80726E60.s")
+    var_v1 = D_80755694->firstSpawner;
+    for (i = 0; i < D_80755694->count; i++) {
+        if (var_v1->spawn_trigger == arg0) {
+            return (var_v1->spawn_state == arg1);
+        }
+        var_v1++;
+    }
+    return 0;
+}
+
+void func_80726E60(u16 arg0, u8 arg1) {
+    Actor *temp_v1;
+    EnemySpawner *var_v0;
+    s16 i;
+
+    var_v0 = D_80755694->firstSpawner;
+    for (i = 0; i < D_80755694->count; i++) {
+        if (var_v0->spawn_state == 5) {
+            temp_v1 = var_v0->tied_actor;
+            if (temp_v1->interactable & arg0) {
+                temp_v1->control_state = arg1;
+            }
+        }
+        var_v0++;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80726EE0.s")
 

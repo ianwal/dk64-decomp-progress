@@ -22,4 +22,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_63B0/func_80005A44.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_63B0/func_80005A70.s")
+s32 D_800100F4;
+
+s32 func_80005A70(void) {
+    return D_800100F4;
+}

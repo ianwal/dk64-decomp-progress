@@ -948,7 +948,16 @@ void func_800268AC(Gfx **gpp) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_80026EF4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_800274E0.s")
+void func_800274E0(s32 *arg0, u8 arg1, u8 arg2, s16 arg3) {
+    u8 i;
+    s32 sp40;
+
+    sp40 = *arg0;
+    for (i = arg1; i < arg2; i++) {
+        func_8070F2FC(&sp40, (i << 5) + 0xC0, ((arg3 * 0.875) + 8.0) * 4.0);
+    }
+    *arg0 = sp40;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_800275E8.s")
 
@@ -3130,7 +3139,6 @@ void func_80030734(u8 arg0) {
         }
     }
 
-    
     if (temp_s0->unk1C++ == 0x42) {
         temp_s0->unk18 = ARCADE_OBJ_14_POINTS_TEXT;
         temp_v0 = func_80024644() & 3;

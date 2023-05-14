@@ -50,7 +50,6 @@ u8 isFlagSet(s16 flagIndex, u8 flagType) { // TODO: Can we use the FlagTypes enu
     return flagBlock[flagByte] >> (s16)(flagIndex - flagByte * 8) & 1;
 }
 
-// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_807311C4.s")
 
 typedef struct {
@@ -65,19 +64,17 @@ void func_807311C4(s16, s32);
 
 /*
 void func_807311C4(s16 arg0, s32 arg1) {
-    u32 i;
+    s32 i;
     s32 chosenFlag;
 
     chosenFlag = -1;
-    i = 0;
-    do {
+    for (i = 0; i < 0x21 && chosenFlag == -1; i++) {
         if (arg0 >= D_80756024[i].unk0 && D_80756024[i].unk2 >= arg0) {
             if (func_80731AA8(D_80756024[i].unk0, (D_80756024[i].unk2 - D_80756024[i].unk0) + 1, FLAG_TYPE_PERMANENT) == D_80756024[i].unk4) {
                 chosenFlag = D_80756024[i].unk6;
             }
         }
-        i++;
-    } while (i < 0x21 && chosenFlag == -1);
+    }
 
     if (chosenFlag >= 0) {
         setFlag(chosenFlag, TRUE, FLAG_TYPE_GLOBAL);

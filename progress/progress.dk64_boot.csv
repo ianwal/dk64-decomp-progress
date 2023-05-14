@@ -1,5 +1,5 @@
 version,section,function,length,matching
-us,boot,func_80005A70,16,no
+us,boot,func_80005A70,12,yes
 us,boot,func_800058BC,92,no
 us,boot,osDestroyThread,260,yes
 us,boot,guSprite2DInit,80,no
