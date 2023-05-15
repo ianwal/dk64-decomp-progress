@@ -1,10 +1,30 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct80676CB0_unk10;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    Struct80676CB0_unk10 *unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct80676CB0;
+
+u8 func_80676CB0(Struct80676CB0 *arg0, u8 arg1);
 
 s32 func_806D0DE4(Actor *arg0, Actor *arg1);
 u8 func_806767E0(s32, s32, s32);
-u8 func_80676CB0(s32, s32);
 
 extern u8 D_807F6902;
 extern f64 D_807591E0;
@@ -80,20 +100,20 @@ u8 func_806766E0(s32 arg0, s32 arg1, s32 arg2) {
     return func_80676CB0(arg2, 2) && func_8067641C(arg0, arg1, arg2);
 }
 
-void func_80676730(s32 arg0, s32 arg1, s32 arg2) {
-    func_80676CB0(arg2, 1);
+u8 func_80676730(s32 arg0, s32 arg1, s32 arg2) {
+    return func_80676CB0(arg2, 1);
 }
 
-void func_8067675C(s32 arg0, s32 arg1, s32 arg2) {
-    func_80676CB0(arg2, 3);
+u8 func_8067675C(s32 arg0, s32 arg1, s32 arg2) {
+    return func_80676CB0(arg2, 3);
 }
 
-void func_80676788(s32 arg0, s32 arg1, s32 arg2) {
-    func_80676CB0(arg2, 5);
+u8 func_80676788(s32 arg0, s32 arg1, s32 arg2) {
+    return func_80676CB0(arg2, 5);
 }
 
-void func_806767B4(s32 arg0, s32 arg1, s32 arg2) {
-    func_80676CB0(arg2, 4);
+u8 func_806767B4(s32 arg0, s32 arg1, s32 arg2) {
+    return func_80676CB0(arg2, 4);
 }
 
 u8 func_806767E0(s32 arg0, s32 arg1, s32 arg2) {
@@ -179,8 +199,18 @@ u8 func_80676C64(s32 arg0, Actor *arg1, s32 arg2) {
     return FALSE;
 }
 
-// Small struct and a loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676CB0.s")
+u8 func_80676CB0(Struct80676CB0 *arg0, u8 arg1) {
+    s32 i;
+    Struct80676CB0_unk10 *var_a3;
+
+    var_a3 = arg0->unk10;
+    for (i = 0; i < arg0->unkC; i++) {
+        if (arg1 == var_a3[i].unk14) {
+            return TRUE;
+        }
+    }
+    return FALSE;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676D00.s")
 

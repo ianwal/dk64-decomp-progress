@@ -35,7 +35,7 @@ extern u8 D_807467C4; // should_poll_input
 // TODO: Hmm, might need complete segment defintions for this file for this to match
 void func_8060A9BC(void) {
     func_8060AA04();
-    if (!D_807467C4) {
+    if (!(D_807467C4 & 0xFF)) {
         D_807ECD08 = 1;
         func_800073D0(&D_807ECCF0);
     }

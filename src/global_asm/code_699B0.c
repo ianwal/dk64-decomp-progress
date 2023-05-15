@@ -385,16 +385,11 @@ s16 func_80665DE0(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
                     sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2)));
 }
 
-// complicated float stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665E48.s")
-
-/*
 extern f32 D_80758EB0;
 
 f32 func_80665E48(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return (func_80665DE0(arg0, arg1, arg2, arg3) * D_80758EB0) * 0.00048828125;
 }
-*/
 
 f32 func_80611BB4(f32, f32);
 
@@ -720,18 +715,14 @@ s32 func_80666FC8(f32 arg0, f32 arg1, f32 arg2, u8 arg3) {
 
 u8 func_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80667110.s")
-
-/*
-// TODO: Probably returns s32
-void func_80667110(f32 arg0, f32 arg1, f32 *arg2) {
+// TODO: What does this return? Fake match?
+s32 func_80667110(f32 arg0, f32 arg1, f32 *arg2) {
     D_807F9484 = 0;
     D_807F9510 = 0;
     func_80667180(arg0, arg1, arg2, 0);
     D_807F94A4 = D_807F9498;
     D_807F94A2 = D_807F9490;
 }
-*/
 
 u8 func_8066715C(f32 *arg0) {
     *arg0 = D_807F9488;

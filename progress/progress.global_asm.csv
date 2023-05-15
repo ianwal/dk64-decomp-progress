@@ -388,7 +388,7 @@ us,.code,func_8069DC80,192,no
 us,.code,func_8072E54C,88,yes
 us,.code,func_806330C4,820,no
 us,.code,func_806641A0,548,no
-us,.code,func_80665E48,76,no
+us,.code,func_80665E48,76,yes
 us,.code,func_806645B8,100,no
 us,.code,func_80639FC0,972,no
 us,.code,func_8070CDD0,592,no
@@ -877,7 +877,7 @@ us,.code,func_80676308,48,yes
 us,.code,func_806A370C,1132,no
 us,.code,func_8066BAB8,140,yes
 us,.code,func_8070DED4,984,no
-us,.code,func_80676CB0,80,no
+us,.code,func_80676CB0,80,yes
 us,.code,func_80653F68,60,yes
 us,.code,func_8065A6F8,16,yes
 us,.code,func_80673708,456,no
@@ -1652,7 +1652,7 @@ us,.code,func_806E7088,20,yes
 us,.code,func_8068FF40,280,yes
 us,.code,func_8064BE58,40,yes
 us,.code,func_80673C34,276,no
-us,.code,func_806FD950,80,no
+us,.code,func_806FD950,80,yes
 us,.code,func_806F8DC4,240,yes
 us,.code,func_80666AAC,12,yes
 us,.code,func_8071A8B0,556,no
@@ -2894,7 +2894,7 @@ us,.code,func_806791EC,20,yes
 us,.code,func_80659DB0,460,no
 us,.code,func_80726EE0,412,no
 us,.code,func_806696A0,400,no
-us,.code,func_806FD9B4,72,no
+us,.code,func_806FD9B4,72,yes
 us,.code,func_8068BBF8,1160,no
 us,.code,func_806D0408,40,yes
 us,.code,func_806897F0,184,yes
@@ -2998,7 +2998,7 @@ us,.code,func_8063E078,92,no
 us,.code,func_80738080,76,no
 us,.code,func_806E6E7C,100,yes
 us,.code,func_8067680C,412,no
-us,.code,func_806FDAEC,160,no
+us,.code,func_806FDAEC,160,yes
 us,.code,func_80663FCC,120,yes
 us,.code,func_80686E40,336,no
 us,.code,func_80661300,76,yes
@@ -3151,7 +3151,7 @@ us,.code,func_80677CAC,172,yes
 us,.code,func_80666090,496,no
 us,.code,func_806B3F3C,84,yes
 us,.code,func_80740C50,760,no
-us,.code,func_80667110,76,no
+us,.code,func_80667110,76,yes
 us,.code,func_806A5DF0,188,no
 us,.code,func_806D2B90,32,yes
 us,.code,func_807149FC,12,yes

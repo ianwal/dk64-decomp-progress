@@ -4843,9 +4843,10 @@ void func_806DCA7C(Actor **arg0, s32 arg1) {
             if (var_v0 >= 0x801) {
                 var_v0 -= 0x1000;
             }
-            var_v1 = -var_v0;
             if (var_v0 > 0) {
                 var_v1 = var_v0;
+            } else {
+                var_v1 = -var_v0;
             }
             if (var_v1 < 0x400) {
                 func_80614E78(current_actor_pointer, 0x6D);

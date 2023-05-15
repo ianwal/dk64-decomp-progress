@@ -1,16 +1,39 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FD8E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FD950.s")
+s32 func_806FBD5C(s16, void*);
+void *func_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5);
+extern s16 D_80744490;
+
+/*
+// TODO: Small regalloc
+void func_806FD8E0(void *arg0, s16 arg1, void *arg2, s16 arg3, u8 arg4) {
+    func_806FC530(arg0, arg1, (D_80744490 - func_806FBD5C(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
+}
+*/
+
+// TODO: Does this return the void* from func_806FC530?
+void func_806FD950(void *arg0, s16 arg1, void *arg2, s16 arg3) {
+    func_806FC530(arg0, arg1, 0x60, arg3 * 4, arg2, 1);
+}
 
 extern s16 D_80744490;
 extern s16 D_80744494;
 
-extern s32 D_80754AD0; // TODO: Might be an pointer to/array of structs of type GlobalASMStruct2
+typedef struct GlobalASMStruct2 GlobalASMStruct2;
+
+struct GlobalASMStruct2 {
+    GlobalASMStruct2 *next;
+    s32 unk4;
+    s32 unk8;
+    u8 padC[0x18 - 0x0C];
+    f32 unk18;
+    s16 unk1C;
+};
+
+extern GlobalASMStruct2 *D_80754AD0;
 extern u16 D_80754AD4;
 
 extern f32 D_8075DFB0;
@@ -30,23 +53,21 @@ extern f32 D_807FD968;
 extern s32 D_807FD978;
 
 void func_806FD9A0(void) {
-    D_80754AD0 = 0;
+    D_80754AD0 = NULL;
     D_80754AD4 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FD9B4.s")
+GlobalASMStruct2 *func_806FD9B4(s16 arg0) {
+    GlobalASMStruct2 *var_v1;
+
+    var_v1 = D_80754AD0;
+    while (var_v1 != NULL && arg0 != var_v1->unk1C) {
+        var_v1 = var_v1->next;
+    }
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FD9FC.s")
-
-// TODO: Any overlap with existing/known structs?
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    u8 pad8[0x18 - 0x08];
-    f32 unk18;
-} GlobalASMStruct2;
-
-GlobalASMStruct2 *func_806FD9B4(s16);
 
 f32 func_806FDA8C(s16 arg0) {
     return func_806FD9B4(arg0)->unk18;
@@ -56,7 +77,25 @@ void func_806FDAB8(s16 arg0, f32 arg1) {
     func_806FD9B4(arg0)->unk18 = arg1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FDAEC.s")
+void func_806FDAEC(s16 arg0) {
+    GlobalASMStruct2 *var_a1;
+    GlobalASMStruct2 *var_v0;
+
+    var_a1 = D_80754AD0;
+    var_v0 = NULL;
+    while (var_a1 != NULL && arg0 != var_a1->unk1C) {
+        var_v0 = var_a1;
+        var_a1 = var_a1->next;
+    }
+    if (var_v0 != NULL) {
+        var_v0->next = var_a1->next;
+    } else {
+        D_80754AD0 = var_a1->next;
+    }
+    func_8061130C(var_a1->unk4, var_a1);
+    func_8061130C(var_a1->unk8, var_a1);
+    func_8061130C(var_a1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FDB8C.s")
 
@@ -66,29 +105,56 @@ void func_806FDF1C(s16 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FDF54.s")
 
-// jumptable
+extern f32 D_8075DD58;
+extern f32 D_8075DD5C;
+extern f64 D_8075DD60;
+extern f32 D_8075DD68;
+
+/*
+// TODO: Float nonsense :( Maybe rodata?
+void func_806FDF54(f32 *arg0, f32 *arg1) {
+    while (*arg1 < 0.0f) {
+        *arg1 += D_8075DD58;
+    }
+    while (D_8075DD5C <= *arg1) {
+        *arg1 -= D_8075DD5C;
+    }
+    *arg0 = (func_806CC190((*arg0 * 2048.0) / D_8075DD60, (*arg1 * 2048.0) / D_8075DD60, 5.0f) * D_8075DD68) * 0.00048828125;
+}
+*/
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FE078.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FEDB0.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FEF7C.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF01C.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF144.s")
 
 void func_806FF32C(s32 arg0, Actor *arg1) {
     func_806FF144(func_806FEDB0(arg0, arg1->PaaD->unk1A4));
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF358.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF628.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF75C.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FFB2C.s")
 
+// Hmm, weird m2c errors
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FFC04.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FFEAC.s")

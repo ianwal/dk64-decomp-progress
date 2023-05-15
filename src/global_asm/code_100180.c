@@ -80,15 +80,14 @@ s16 func_806FBEAC(u8 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FD894.s")
 
-/*
-extern s32 D_80754A36;
-u8 func_806FD894(s16 arg0) {
-    s16 temp;
+extern u8 D_80754A34[];
 
-    temp = arg0;
+/*
+// TODO: Very odd regalloc, might need a struct array at D_80754A34
+u8 func_806FD894(s16 arg0) {
     if (arg0 & 0x80) {
-        temp = (s16) (arg0 ^ 0x80);
+        arg0 ^= 0x80;
     }
-    return *(&D_80754A36 + (((temp * 4) - temp) * 2));
+    return D_80754A34[(arg0 * 4 - arg0 << 1) + 2];
 }
 */
