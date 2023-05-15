@@ -1167,25 +1167,17 @@ void func_806CF42C(Actor *arg0) {
 // Probably doable, character_change loop with cc_number_of_players, PaaD
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF4B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF580.s")
-
 extern s32 D_8071FC40;
 extern u8 D_80750AD0;
 extern s32 D_80718BF4; // TODO: Datatype
 
-/*
-// TODO: Regalloc, bleh
-// TODO: PaaD->unk0 may be s16
 void func_806CF580(void) {
-    u8 temp_v0_4;
-    u8 phi_v0;
-
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         extra_player_info_pointer->unk84 = object_timer;
         extra_player_info_pointer->unkD0 = object_timer;
     }
     if (current_character_index[cc_player_index] == 1) {
-        if ((current_actor_pointer->control_state == 0x36) && (extra_player_info_pointer->unk0 != 0x36)) {
+        if ((current_actor_pointer->control_state == 0x36) && (extra_player_info_pointer->unk0_s16[0] != 0x36)) {
             func_806883F4(current_actor_pointer, 1, 0, 6.0f);
         }
         if (current_actor_pointer->control_state == 0x36) {
@@ -1203,7 +1195,7 @@ void func_806CF580(void) {
             func_8068842C(current_actor_pointer, 1, 2);
         }
         if (current_actor_pointer->control_state != 0x36) {
-            if (extra_player_info_pointer->unk0 == 0x36) {
+            if (extra_player_info_pointer->unk0_s16[0] == 0x36) {
                 extra_player_info_pointer->unk84 = 0;
             }
         }
@@ -1214,8 +1206,7 @@ void func_806CF580(void) {
             || ((cc_number_of_players == 1) && (current_character_index[cc_player_index] == 3)))) {
         func_8072881C(0x81, &extra_player_info_pointer->unk84);
     }
-    temp_v0_4 = current_actor_pointer->control_state;
-    if (((temp_v0_4 == 0x4F) || (temp_v0_4 == 0x7F))
+    if (((current_actor_pointer->control_state == 0x4F) || (current_actor_pointer->control_state == 0x7F))
         && (D_80750AD0 == 0)
         && ((extra_player_info_pointer->unkD0 + 9) < (u32)object_timer)
         && (((func_806119A0() % 2500) / 200) == 0)) {
@@ -1226,7 +1217,6 @@ void func_806CF580(void) {
         extra_player_info_pointer->unkD0 = object_timer;
     }
 }
-*/
 
 void func_806CF878(void) {
     if ((object_timer & 3) == 0) {

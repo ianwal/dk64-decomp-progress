@@ -1,6 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
 
+void func_80735A50(s32 arg0, s32 arg1) {
+    s32 pad[2];
+    s32 sp1C;
+    s16 sp1A;
+    s16 sp18; // TODO: ALEvent
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A750/func_80735A50.s")
+    sp18 = 0xE;
+    sp1C = arg1;
+    alEvtqPostEvent(arg0 + 0x48, &sp18, 0);
+}

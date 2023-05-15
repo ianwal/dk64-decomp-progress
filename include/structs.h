@@ -664,7 +664,10 @@ typedef struct menu_additional_actor_data {
 } MenuAdditionalActorData;
 
 typedef struct player_additional_actor_data {
-    s32 unk0; // TODO: May be s16 (see func_806CF580), but changing that causes some matching functions to break
+    union {
+        s32 unk0; // TODO: May be s16 (see func_806CF580), but changing that causes some matching functions to break
+        s16 unk0_s16[2];
+    };
     f32 unk4;
     s16 unk8; // Used
     s16 unkA; // Used, Actor->y_rotation copied here

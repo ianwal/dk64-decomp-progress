@@ -1278,13 +1278,11 @@ void func_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     u8 sp37;
     s32 *var_v1;
     s32 *sp30;
-    s32 *temp_v0;
 
     var_v1 = *arg0;
     if (var_v1 == NULL) {
-        temp_v0 = malloc(4);
-        *arg0 = temp_v0;
-        *temp_v0 = 0x64;
+        *arg0 = malloc(4);
+        **arg0 = 0x64;
         var_v1 = *arg0;
     }
     func_80650D8C(arg1, 1, &sp3E, &sp38, &sp37);
@@ -1303,25 +1301,17 @@ void func_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D418.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D880.s")
-
 extern u16 D_807446C0[];
 extern u16 D_807FC930[];
 
 void func_80650AD8(s16, s32, s32, f32);
 
-/*
-// TODO: Float regalloc
 void func_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 phi_f0;
-    f32 temp;
-    f32 temp2;
     s32 levelIndex;
 
     levelIndex = getLevelIndex(D_8076A0AB, FALSE);
-    temp = D_807FC930[levelIndex];
-    temp2 = D_807446C0[levelIndex];
-    phi_f0 = temp / temp2;
+    phi_f0 = (f32)D_807FC930[levelIndex] / D_807446C0[levelIndex];
     if (phi_f0 > 1.0) {
         phi_f0 = 1.0f;
     }
@@ -1331,11 +1321,51 @@ void func_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_80650AD8(arg1, 1, 0, phi_f0);
     func_80650A04(arg1, 1, 0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D978.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064DB98.s")
+
+extern f32 D_80758B70;
+extern f32 D_80758B74;
+
+/*
+// TODO: Pretty close
+void func_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
+    s16 sp5E;
+    f32 sp58;
+    u8 sp57;
+    s32 *var_v1;
+    f32 temp_f0;
+    f32 temp_f2;
+    s32 temp_f10;
+
+    var_v1 = *arg0;
+    if (var_v1 == NULL) {
+        *arg0 = malloc(4);
+        **arg0 = 0;
+        var_v1 = *arg0;
+    }
+    func_80650D8C(arg1, 1, &sp5E, &sp58, &sp57);
+    if (sp5E != *var_v1) {
+        if (sp5E != 0) {
+            if (sp5E == 0xF) {
+                func_806086CC(D_807F6000[arg1].x_position, D_807F6000[arg1].y_position + 300.0f, D_807F6000[arg1].z_position, 0x8E, 0xFF, 0x50, 0, 0x50, D_80758B70, 0);
+            }
+        } else {
+            func_806086CC(D_807F6000[arg1].x_position, D_807F6000[arg1].y_position + 300.0f, D_807F6000[arg1].z_position, 0x8F, 0xFF, 0x64, 0, 0x50, D_80758B74, 0);
+        }
+        *var_v1 = sp5E;
+    }
+    temp_f0 = ((sp5E + sp58) / 31.0) * 11.0;
+    temp_f10 = temp_f0;
+    temp_f2 = (temp_f0 - temp_f10) * 64.0;
+    func_80635018(arg1, 1, temp_f10, temp_f2);
+    func_80635018(arg1, 2, temp_f0, temp_f2);
+    func_80635018(arg1, 3, temp_f0, temp_f2);
+    func_80635018(arg1, 4, temp_f0, temp_f2);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064DE04.s")
 
@@ -1390,8 +1420,7 @@ void func_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
     var_f16 = D_80758B78;
     PaaD = player_pointer->additional_actor_data;
     if (arg0->unk5C != 0) {
-        i = 0;
-        while (i < D_807FBB34) {
+        for (i = 0; i < D_807FBB34; i++) {
             if (arg0->unk5E == D_807FB930[i].unk0->unk58) {
                 dx = D_807FB930[i].unk0->x_position - D_807F621C;
                 dy = D_807FB930[i].unk0->y_position - D_807F6220;
@@ -1402,7 +1431,6 @@ void func_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
                     var_s0 = D_807FB930[i].unk0;
                 }
             }
-            i++;
         }
         if (var_s0 != NULL) {
             func_80679200(var_s0, NULL, 8, 0, 0, 0);
@@ -1520,20 +1548,17 @@ s32 func_8064EB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064EB9C.s")
-
 extern u8 D_807446F0[];
 
-/*
-// TODO: Regalloc
 u8 func_8064EB9C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 levelIndex = getLevelIndex(D_8076A0AB, FALSE);
+    s32 temp;
     if (levelIndex >= 8) {
         levelIndex = 0;
     }
-    return D_807446F0[levelIndex] == current_character_index[0];
+    temp = D_807446F0[levelIndex];
+    return temp == current_character_index[0];
 }
-*/
 
 // Doable, but tricky, maybe array lookup
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064EC04.s")

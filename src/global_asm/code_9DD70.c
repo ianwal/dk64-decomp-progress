@@ -7,7 +7,18 @@ extern s8 D_807F6950;
 
 void func_8070D8C0(Actor*, s32, u8);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_80699070.s")
+f32 func_80611BB4(f32, f32);
+extern f64 D_8075A2D0;
+
+void func_80699070(s16 *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
+    f32 temp_f0;
+    f32 temp_f2;
+
+    *arg1 = func_80665DE0(arg2, arg4, arg5, arg7);
+    temp_f0 = arg5 - arg2;
+    temp_f2 = arg7 - arg4;
+    *arg0 = (func_80611BB4(arg6 - arg3, sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2))) * 2048.0) / D_8075A2D0;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_80699128.s")

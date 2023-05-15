@@ -24,8 +24,7 @@ typedef struct {
     u8 unk9;
     u8 unkA;
     u8 unkB;
-    s32 unkC;
-    s32 unk10;
+    s32 unkC[2];
 } GlobalASMStruct76;
 
 extern GlobalASMStruct76 D_80750100[];
@@ -50,10 +49,6 @@ s32 func_8068A3A0(s32 arg0, u32 *arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F050/func_8068A404.s")
-
-/*
-// TODO: Very close
 void func_8068A404(Actor *arg0, s32 arg1, s32 arg2) {
     s32 temp_a1;
     s32 var_s0;
@@ -61,14 +56,13 @@ void func_8068A404(Actor *arg0, s32 arg1, s32 arg2) {
     if (arg0->unk4C == 0) {
         arg0->unk4C = func_80612E90(arg0, D_80750100[arg1].unk2, 0);
     }
-    for (var_s0 = 0; var_s0 < 8; var_s0 += 4) {
-        temp_a1 = D_80750100[arg1].unkC;
+    for (var_s0 = 0; var_s0 < 2; var_s0++) {
+        temp_a1 = D_80750100[arg1].unkC[var_s0];
         if (temp_a1 != -1) {
             func_8068A350(arg0, temp_a1, arg2);
         }
     }
 }
-*/
 
 void func_8068A4C8(Actor *arg0, s32 arg1, s32 arg2) {
     s32 sp1C;

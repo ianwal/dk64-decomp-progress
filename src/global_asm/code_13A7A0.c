@@ -61,9 +61,61 @@ u8 func_80737608(Struct_807375E0 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737638.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737924.s")
+typedef struct Struct80737990 Struct80737990;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737990.s")
+struct Struct80737990 {
+    Struct80737990 *next;
+    u8 unk4[0x43 - 0x4];
+    u8 unk43;
+};
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+} Struct807563CC;
+
+extern Struct80737990 *D_807563C0;
+extern Struct807563CC *D_807563CC;
+
+void func_80737924(Struct80737990 *arg0) {
+    s32 pad2[2];
+    Struct80737990 *sp1C;
+    s16 pad;
+    s16 sp18; // TODO: ALEvent
+
+    sp18 = 0x400;
+    sp1C = arg0;
+    if (arg0 != NULL) {
+        sp1C->unk43 &= ~0x10;
+        alEvtqPostEvent(&D_807563CC->unk14, &sp18, 0);
+    }
+}
+
+void func_80737990(u8 arg0) {
+    u32 sp2C;
+    s32 pad[2];
+    Struct80737990 *sp20;
+    s16 sp1E;
+    s16 sp1C; // TODO: ALEvent
+    Struct80737990 *sp18;
+
+    sp2C = osSetIntMask(1);
+    sp18 = D_807563C0;
+    while (sp18 != NULL) {
+        sp1C = 0x400;
+        sp20 = sp18;
+        if ((sp18->unk43 & arg0) == arg0) {
+            sp20->unk43 &= ~0x10;
+            alEvtqPostEvent(&D_807563CC->unk14, &sp1C, 0);
+        }
+        sp18 = sp18->next;
+    }
+    osSetIntMask(sp2C);
+}
 
 void func_80737A4C(void) {
     func_80737990(1);
@@ -77,8 +129,6 @@ void func_80737A9C(void) {
     func_80737990(3);
 }
 
-extern s32 D_807563CC;
-
 void func_80737AC4(s32 arg0, s16 arg1, s32 arg2) {
     ALEvent sp18;
 
@@ -87,7 +137,7 @@ void func_80737AC4(s32 arg0, s16 arg1, s32 arg2) {
     sp18.msg.loop.start = arg0;
     sp18.msg.loop.end = arg2;
     if (arg0 != 0) {
-        alEvtqPostEvent(D_807563CC + 0x14, &sp18, 0);
+        alEvtqPostEvent(&D_807563CC->unk14, &sp18, 0);
     }
 }
 
@@ -96,6 +146,5 @@ extern u16 *D_807FF0E4;
 u16 func_80737B2C(u8 arg0) {
     return D_807FF0E4[arg0];
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737B58.s")
