@@ -9,7 +9,7 @@
     </mask>
     <g mask="url(#anybadge_1)">
         <path fill="#555" d="M0 0h47v20H0z"/>
-        <path fill="#c05900" d="M47 0h67v20H47z"/>
+        <path fill="#c05a00" d="M47 0h67v20H47z"/>
         <path fill="url(#b)" d="M0 0h114v20H0z"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
@@ -17,7 +17,7 @@
         <text x="23.5" y="14">jetpac</text>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="81.5" y="15" fill="#010101" fill-opacity=".3">23.2371%</text>
-        <text x="80.5" y="14">23.2371%</text>
+        <text x="81.5" y="15" fill="#010101" fill-opacity=".3">23.4731%</text>
+        <text x="80.5" y="14">23.4731%</text>
     </g>
 </svg>

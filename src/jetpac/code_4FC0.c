@@ -51,13 +51,110 @@ void func_80029204(JetpacStruct *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029450.s")
 
+/*
+Competitor *func_800292C4(void);
+extern void* D_80029884[8];
+extern JetpacPlayerStruct D_8002EC30;
+
+void func_80029450(void) {
+    void (*sp1C)(void *);
+    Competitor* sp18;
+    Competitor* temp_v0;
+
+    sp1C = D_80029884[D_8002EC30.player[D_8002EC30.player_index * 0x194].level % 8];
+    temp_v0 = func_800292C4();
+    if (temp_v0 != NULL) {
+        sp18 = temp_v0;
+        sp1C(temp_v0);
+        *(u32*)(&sp18->unk14[0].unk0) = 3;
+    }
+}
+*/
+
+
+
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_800294EC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029640.s")
 
+f32 func_80027210();
+extern JetpacStruct D_8002F1DC;
+
+typedef struct {
+    // Enemy Struct?
+    u8 unk0[4];
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10[0x18-0x10];
+    s32 unk18;
+    u8 unk1C[0x28-0x1C];
+    s32 unk28;
+    u8 unk2C[0x44-0X2C];
+    s32 unk44;
+    void* unk48;
+} struct_80029640;
+
+/*
+Minor regalloc
+issues with it doing rng + rng rather than rng * 2.0f
+void func_80029640(struct_80029640 *arg0, f32 arg1, f32 arg2) {
+    JetpacStruct *var_v0;
+    s32 var_a1;
+    s32 var_a2;
+    s32 var_v1;
+    s32 rng;
+
+    var_a1 = 0;
+    var_a2 = 0;
+    arg0->unk44 = 0x19;
+    if (arg0->unk4 < 88.0f) {
+        arg0->unk8 = arg1;
+        arg0->unk18 = 0;
+    } else {
+        arg0->unk8 = -arg1;
+        arg0->unk18 = 1;
+    }
+    var_v0 = &D_8002F1DC;
+    var_v1 = 0;
+    for (var_v1 = 0; var_v1 < 6; var_v1++) {
+        if (var_v0->unk14 > 0) {
+            if (var_v0->unkC == 0.0f) {
+                var_a1 += 1;
+            } else {
+                var_a2 += 1;
+            }
+        }
+        var_v0 += 1;
+    }
+    if (var_a1 == 3) {
+        arg0->unkC = arg2;
+    } else {
+        if (var_a2 == 3) {
+            arg0->unkC = 0.0f;
+        } else {
+            rng = func_80027210() * 2.0f;
+            if (rng % 2) {
+                arg0->unkC = arg2;
+            } else {
+                arg0->unkC = 0.0f;
+            }
+        }
+    }
+}
+*/
+
+
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002976C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029884.s")
+void func_80029640(struct_80029640*, f32, f32);
+extern void func_800298C8(JetpacStruct *arg0);
+
+void func_80029884(struct_80029640 *arg0) {
+    arg0->unk28 = 0xB;
+    func_80029640(arg0, 1.60000002384f, 0.5f);
+    arg0->unk48 = &func_800298C8;
+}
 
 void func_8002976C(JetpacStruct*);
 typedef struct JetpacStruct9 {
