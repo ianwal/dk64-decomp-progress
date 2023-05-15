@@ -2794,6 +2794,9 @@ void func_806D37CC(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+void func_807149FC(s32);
+void func_806224CC(s32, Actor*);
+
 void func_806D38AC(s32 arg0) {
     func_80685210(0.5f, 0x64, 5);
     current_actor_pointer->unkF8 = 0x12C;
@@ -4272,14 +4275,7 @@ void func_806D9184(void) {
     func_806D9134();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D91A4.s")
-
-/*
-// TODO: Close, doable, probably needs an assist from ghidra and/or proper bitfield syntax
 extern s32 D_8072014C;
-
-void func_807149FC(s32);
-void func_806224CC(s32);
 
 void func_806D91A4(void) {
     s32 phi_a2;
@@ -4289,18 +4285,19 @@ void func_806D91A4(void) {
         func_806CFF1C(current_actor_pointer);
     }
     if ((current_actor_pointer->unkFC != 0) || (current_actor_pointer->unk6A & 1 && (current_actor_pointer->unk6C & 1) == 0)) {
-        func_806224CC(extra_player_info_pointer->unk104);
+        func_806224CC(extra_player_info_pointer->unk104, current_actor_pointer);
     }
-    if ((current_actor_pointer->unk6A & 1) == 0) {
+    if (!(current_actor_pointer->unk6A & 1)) {
         func_807149B8(1);
         func_807149FC(1);
         func_80714C08(&D_8072014C, 0.8f, current_actor_pointer, 1, 0);
     }
-    phi_a2 = 1;
     if (current_actor_pointer->unk6A & current_actor_pointer->unk6C & 1) {
         phi_a2 = 2;
+    } else {
+        phi_a2 = 1;
     }
-    if (((current_actor_pointer->unk6C == 0) & current_actor_pointer->unk6A & 1)) {
+    if ((!current_actor_pointer->unk6C & current_actor_pointer->unk6A & 1)) {
         current_actor_pointer->unkB8 *= 0.25;
     }
     if (current_actor_pointer->unkB8 < phi_a2) {
@@ -4312,7 +4309,6 @@ void func_806D91A4(void) {
     func_806CC948();
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D9320.s")
 
