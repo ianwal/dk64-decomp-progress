@@ -341,7 +341,7 @@ void func_800250A0(void) {
     func_80027D64(player);
     if ((player->level & 3) == 0) {
         func_800275F4(player);
-        player->unkF8.unk1C = 0;
+        player->unk14[3].unk1C = 0;
         player->unk10 = 1;
         func_80024F9C(2);
         return;

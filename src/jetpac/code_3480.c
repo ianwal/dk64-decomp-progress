@@ -33,6 +33,9 @@ typedef struct {
     s32 unk34;
     s32 unk38; // Used
     s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
 } Struct80027510;
 
 s32 func_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
@@ -65,63 +68,81 @@ s32 func_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80027EC0.s")
 
 s32 func_800274C0();
-extern CompetitorSubF8 D_8002DD38;
+extern CompetitorSub14 D_8002DD38;
 
 void func_80028340(Competitor *arg0) {
-    CompetitorSubF8 sp1C;
+    CompetitorSub14 sp1C;
     f32 sp24;
 
     sp1C = D_8002DD38;
     sp1C.unk8 = func_800274C0();
-    arg0->unkF8 = sp1C;
+    arg0->unk14[3] = sp1C;
     arg0->unk10 = 3;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_800283EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028544.s")
+/*
+Weird struct stuff surrounding Jetpac Player Struct
+extern JetpacPlayerStruct D_8002EC30;
+
+s32 func_800283EC(f32 arg0, f32 arg1, s32 arg2, f32 arg3) {
+    s32 temp_v0;
+    s32 var_s1;
+    u8 *temp_s3;
+    u8 *temp_s3_2;
+    u8 *var_s0;
+
+    temp_s3 = &D_8002EC30 + (D_8002EC30.player_index * 0x194);
+    temp_v0 = *(s32*)(&temp_s3 + 0x28);
+    temp_s3_2 = *(s32*)(&temp_s3 + 0x1C);
+    if (temp_v0 < 2) {
+        var_s0 = temp_s3_2 + 0x14;
+        var_s1 = 0;
+        if ((2 - temp_v0) > 0) {
+loop_2:
+            if (func_80027510((Struct80027510*)&var_s0, arg0, arg1, arg2, arg3, 1) != 0) {
+                return 1;
+            }
+            var_s1 += 1;
+            var_s0 += 0x4C;
+            if (var_s1 >= (2 - *(s32*)(&temp_s3_2 + 0xC))) {
+                goto block_5;
+            }
+            goto loop_2;
+        }
+    }
+block_5:
+    if (func_80027510((Struct80027510*)(&temp_s3_2 + 0xF8), arg0, arg1, arg2, arg3, 0) != 0) {
+        return 1;
+    }
+    if (func_80027510((Struct80027510*)(&temp_s3_2 + 0x148), arg0, arg1, arg2, arg3, 0) != 0) {
+        return 1;
+    }
+    return 0;
+}
+*/
 
 extern JetpacPlayerStruct D_8002EC30;
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    f32 unk8;
-    f32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    void (*unk48)(void *, s32)
-} Struct80028544;
-
-/*
-
 void func_80028544(void) {
-    s32 i;
-    Struct80028544 *var_s0;
+    void (*temp_v0)(void *, s32);
+    s32 var_s1;
+    CompetitorSub14 *var_s0;
+    JetpacPlayerStruct* player;
 
-    var_s0 = D_8002EC30.player[D_8002EC30.player_index].pad0;
-    for (i = 0; i < 4; i++) {
+    player = &D_8002EC30.player[D_8002EC30.player_index];
+    var_s0 = &player->unk14;
+    for (var_s1 = 0; var_s1 < 4; var_s1 ++) {
         if (var_s0->unk1C >= 2) {
-            if (var_s0->unk48 != NULL) {
-                var_s0->unk48(var_s0, i);
+            temp_v0 = var_s0->code;
+            if (temp_v0 != NULL) {
+                temp_v0(var_s0, var_s1);
             }
         }
-        var_s0++;
-    }
+        var_s0 += 1;
+    };
 }
-*/
 
 void func_800285DC(void) {
     Competitor *player = &D_8002EC30.player[D_8002EC30.player_index];
