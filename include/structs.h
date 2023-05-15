@@ -1400,15 +1400,22 @@ typedef struct JetpacItem {
     u8 unk0;
 } JetpacItem;
 
+typedef struct CompetitorSubF8 {
+    u8 unk0[0x8];
+    f32 unk8;
+    u8 unkC[0x1C-0xC];
+    s32 unk1C; // Used
+    u8 unk20[0x4C-0x20];
+} CompetitorSubF8;
+
 typedef struct Competitor {
     s32 level;
     s32 current_score;
     s32 lives;
     s32 lives_consumed;
     s32 unk10; //used
-    u8 pad0[0x114 - 0x14];
-    s32 unk114; //used
-    u8 pad2[0x144 - 0x118];
+    u8 pad0[0xF8 - 0x14];
+    CompetitorSubF8 unkF8;
     s32 unk_144;
     JetpacItem next_item_pointer;
     u8 unk14C[4];

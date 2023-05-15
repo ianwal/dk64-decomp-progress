@@ -64,7 +64,18 @@ s32 func_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80027EC0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028340.s")
+s32 func_800274C0();
+extern CompetitorSubF8 D_8002DD38;
+
+void func_80028340(Competitor *arg0) {
+    CompetitorSubF8 sp1C;
+    f32 sp24;
+
+    sp1C = D_8002DD38;
+    sp1C.unk8 = func_800274C0();
+    arg0->unkF8 = sp1C;
+    arg0->unk10 = 3;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_800283EC.s")
 
