@@ -199,17 +199,9 @@ void func_8062B478(s32 arg0) {
     D_807F5FC0 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062B630.s")
-
-/*
-// TODO: Regalloc, hmm
-// Eliminating the temp variable doesn't fix it
-// Datatypes are correct for the params I believe
-void func_8062B630(s16 arg0, s8 arg1) {
-    GlobalASMStruct73 *temp = &D_807F5FB8[arg0];
-    temp->unk8C = arg1;
+void func_8062B630(s16 arg0, u8 arg1) {
+    D_807F5FB8[arg0].unk8C = arg1;
 }
-*/
 
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062B660.s")
