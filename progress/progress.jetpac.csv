@@ -3,7 +3,7 @@ us,.code,func_800274C0,80,yes
 us,.code,func_80025B70,72,yes
 us,.code,func_80029F7C,728,no
 us,.code,func_80025FC4,280,yes
-us,.code,func_8002A8F0,84,no
+us,.code,func_8002A8F0,84,yes
 us,.code,func_8002ABDC,432,no
 us,.code,func_8002976C,280,no
 us,.code,func_80025904,348,no

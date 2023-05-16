@@ -90,9 +90,12 @@ typedef struct {
     s32 unk18;
     u8 unk1C[0x28-0x1C];
     s32 unk28;
-    u8 unk2C[0x44-0X2C];
+    s32 unk2C;
+    u8 unk30[0x40-0x30];
+    u32 unk40;
     s32 unk44;
     void* unk48;
+    void* unk4C;
 } struct_80029640;
 
 /*
@@ -187,6 +190,78 @@ void func_8002992C(JetpacStruct *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002998C.s")
 
+s32 func_80028CF8(f32, f32, f32, f32, s32);         
+s32 func_80029064(void *);                          
+void func_800294EC(void *, s32);                       
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+} struct_8002998C;
+
+/*
+Floating reg alloc
+Also a missing load offset 0x4 instruction
+void func_8002998C(struct_8002998C *arg0) {
+    f32 temp_f0;
+    f32 temp_f16;
+    f32 temp_f18;
+    f32 temp_f2;
+    f32 var_f0;
+    s32 temp_v0;
+    s32 temp_v0_2;
+
+    temp_v0 = arg0->unk14;
+    switch (temp_v0) {                              
+    case 3:
+        temp_f0 = arg0->unk0;
+        temp_f2 = arg0->unk8;
+        temp_f16 = arg0->unk4;
+        temp_f18 = arg0->unkC;
+        temp_v0_2 = func_80028CF8(
+                    arg0->unk1C + arg0->unk0 + arg0->unk8,
+                    arg0->unk20 + arg0->unk4 + arg0->unkC,
+                    arg0->unk24 + arg0->unk0 + arg0->unk8,
+                    arg0->unk28 + arg0->unk4 + arg0->unkC, 1);
+        if (temp_v0_2 >= 0) {
+            func_800294EC(arg0, temp_v0_2);
+        }
+        if (!func_80029064(arg0)) {
+            var_f0 = arg0->unkC;
+            temp_f16 = arg0->unk4;
+            var_f0 = arg0->unk4 + var_f0;
+            if (var_f0 < 24.0f) {
+                arg0->unkC = -arg0->unkC;
+                var_f0 = arg0->unk4 + arg0->unkC;
+            }
+            arg0->unk4 = var_f0;
+            arg0->unk0 += arg0->unk8;
+            if ((s32) arg0->unk0 & 2) {
+                arg0->unk18 ^= 1;
+            }
+        }
+        break;
+    case 4:
+        arg0->unk2C++;
+        if (arg0->unk2C >= 0xF) {
+            arg0->unk14 = 0;
+        }
+        break;
+    }
+}
+*/
+
+
 f32 func_80027210();
 void func_80029B90();
 extern f32 D_8002EBBC;
@@ -227,6 +302,33 @@ void func_80029B90(JetpacStruct8 *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029C1C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029E0C.s")
+
+f32 func_80027210();                          /* extern */
+extern void* D_8002E878;
+extern f32 D_8002EBCC;
+extern void func_80029F7C(struct_8002998C*, s32);
+
+/*
+void func_80029E0C(struct_80029640 *arg0) {
+    arg0->unk48 = &func_80029F7C;
+    arg0->unk44 = 0x37;
+    arg0->unk2C = (func_80027210() * 60.0f) + 10.0f;
+    arg0->unk40 = (func_80027210() * 180.0f) + 10.0f;
+    arg0->unk28 = 8;
+    if (arg0->unk4 < 88.0f) {
+        arg0->unk18 = 0;
+    } else {
+        arg0->unk18 = 1;
+    }
+    arg0->unk8 = 0.0f;
+    if (*(s32 *)0x8002BA6C) {
+        arg0->unkC = D_8002EBCC;
+    } else {
+        arg0->unkC = *(f32 *)0x8002EBD0;
+    }
+    arg0->unk4C = &D_8002E878;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029F7C.s")
 
@@ -314,25 +416,13 @@ void func_8002A6C0(JetpacStruct *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002A758.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002A8F0.s")
-/* .rodata error*/
-/*void func_80029640(f32, f32);
 extern s32 D_8002E8C0;
-extern void (func_8002976C)();
-typedef struct JetpacStruct4 {
-    u8 pad0[0x28];
-    u8 unk28;
-    u8 pad1[0x48 - 0x29];
-    void *unk48;
-    s32 *unk4C;
-} JetpacStruct4;
-
-void func_8002A8F0(JetpacStruct4 *arg0) {
+void func_8002A8F0(struct_80029640 *arg0) {
     arg0->unk28 = 0xE;
     arg0->unk4C = &D_8002E8C0;
-    func_80029640(1.2f, 0.3f);
+    func_80029640(arg0, 1.2f, 0.3f);
     arg0->unk48 = &func_8002976C;
-}*/
+}
 
 extern s32 D_8002E8D8;
 
