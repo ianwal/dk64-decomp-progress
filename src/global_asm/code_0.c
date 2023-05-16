@@ -87,9 +87,107 @@ void func_805FB750(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FB7E4.s")
 
-void func_805FB944(s32 arg0);
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FB944.s")
+
+void func_805FB7E4();                                  /* extern */
+void func_80610350(u8, u8);                       /* extern */
+extern OSViMode *D_8000EF20[];
+extern s16 D_80744494;
+extern s16 D_80744498;
+extern s16 D_8074449C;
+extern s16 D_807444A0;
+extern s16 D_807444A4;
+extern s16 D_807444A8;
+extern s16 D_807444AC;
+extern s16 D_807444B0;
+extern s16 D_807444B4;
+extern u8 D_8074450C;
+extern s8 D_80744510;
+extern s32 D_80744584[][2];
+extern s8 D_807445A0;
+extern s8 D_807445A4;
+extern s16 D_8076A0AA;
+extern s16 D_80744490;
+
+/*
+void func_805FB944(u8 arg0) {
+    s32 sp18;
+    s16 temp_v1;
+    s32 temp_v0;
+    s32 temp_a0;
+    s32 var_a2;
+    u8 var_a1 = 1;
+
+    sp18 = 0;
+    func_806003EC(D_8076A0AA);
+    var_a2 = sp18;
+    if (current_map == MAP_NINTENDO_LOGO) {
+        D_8074450C = 2;
+    } else {
+        D_8074450C = 1;
+    }
+    switch (is_cutscene_active) {
+    case 3:
+        var_a1 = 9;
+    case 4:
+        if (var_a1 == 1) {
+            var_a1 = 0xA;
+        }
+        D_80744498 = 0;
+        D_8074449C = 0;
+        D_807444A0 = (D_8074450C * 0x140) - 1;
+        D_807444A4 = (D_8074450C * 0xF0) - 1;
+        break;
+    default:
+        var_a2 = func_8060042C(current_map);
+        var_a1 = 1;
+        if (D_807FBB64 & 1) {
+            var_a1 = 7;
+        } else if (D_807FBB64 & 0x1000) {
+            var_a1 = 6;
+        } else if (D_807FBB64 & 0x104000) {
+            var_a1 = 8;
+        } else if (D_807FBB64 & 0x80000) {
+            var_a1 = 4;
+        } else if (D_807FBB64 & 0x2000) {
+            var_a1 = 5;
+        } else if (D_807FBB64 & 0x04000000) {
+            var_a1 = 3;
+        } else if (D_807FBB64 & 0x40000000) {
+            var_a1 = 2;
+        }
+        temp_v0 = D_8074450C;
+        temp_v1 = temp_v0 * 0xA;
+        D_80744498 = temp_v1;
+        D_8074449C = temp_v1;
+        D_807444A0 = (temp_v0 * 0x136) - 1;
+        D_807444A4 = (temp_v0 * 0xE6) - 1;
+        break;
+    }
+    func_80610350(arg0, var_a1);
+    if (D_807445A4 == 0) {
+        osViSetMode(&D_8000EF20[D_80744584[osTvType][D_8074450C]]);
+        if (D_807445A0 == 0) {
+            osViBlack(1U);
+        }
+        D_80744510 = 0;
+        D_807445A0 = 0;
+    } else {
+        D_80744510 = 1;
+        D_807445A0 = 1;
+        D_807445A4 = 0;
+        func_805FB7E4();
+    }
+    osViSetSpecialFeatures(0x42U);
+    D_80744490 = D_8074450C * 0x140;
+    D_80744494 = D_8074450C * 0xF0;
+    temp_a0 = D_8074450C * 0x1E;
+    D_807444AC = D_8074449C + temp_a0;
+    D_807444B0 = D_807444A4 - temp_a0;
+    D_807444A8 = D_8074449C;
+    D_807444B4 = D_807444A4;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FBC5C.s")
 
@@ -431,8 +529,6 @@ void func_805FE544(u8 arg0) {
 // display list something?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE7B4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE7FC.s")
-
 void func_80712A40(void);
 void func_80605510(void);
 void func_8068C080(void);
@@ -495,14 +591,15 @@ void func_806641A0();
 
 void func_80712BD4();
 void func_805FF670();
+void func_805FB944(s32);
 
-/*
-// TODO: Regalloc, oof
 void func_805FE7FC(void) {
     s32 *mapGeometry;
     s32 *sp28;
     s32 *mapSetup;
     f32 phi_f0;
+    s32 map;
+    u8 player_count;
 
     D_80746830 = 1;
     D_8076A090 = 0;
@@ -528,7 +625,7 @@ void func_805FE7FC(void) {
     D_80744500 = 0;
     func_80600950();
     current_map = next_map;
-
+    map = current_map;
     if (current_map != MAP_MAIN_MENU) {
         if (current_map != MAP_TITLE_SCREEN_NOT_FOR_RESALE_VERSION) {
             global_properties_bitfield |= 0x30030;
@@ -539,18 +636,19 @@ void func_805FE7FC(void) {
         global_properties_bitfield &= 0xFFFEFFCF;
     }
 
-    if (current_map == MAP_DK_ARCADE) {
+    if (map == MAP_DK_ARCADE) {
         is_cutscene_active = 3;
-    } else if (current_map == MAP_JETPAC) {
+    } else if (map == MAP_JETPAC) {
         is_cutscene_active = 4;
     } else {
         is_cutscene_active = 0;
     }
 
     func_805FB944(1);
-    // TODO: Proper bitfield syntax for D_807FBB64
-    if (D_80750AC0 >= 2 && D_807FBB64 << 5 >= 0) {
-        D_80750AC0 = 1;
+    if (D_80750AC0 > 1) {
+        if (!(D_807FBB64 & 0x4000000)) {
+            D_80750AC0 = 1;
+        }
     }
     func_806C7C10();
     func_806D0430(0.0f);
@@ -660,7 +758,6 @@ void func_805FE7FC(void) {
     func_80600590(current_map);
     D_80746830 = 0;
 }
-*/
 
 extern u8 D_8074447C;
 extern u8 D_80744480;
