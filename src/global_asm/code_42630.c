@@ -144,7 +144,36 @@ void func_8063DBD8(s16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DC58.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DE68.s")
+typedef struct Struct8063DE68_arg0_unkA0 Struct8063DE68_arg0_unkA0;
+
+struct Struct8063DE68_arg0_unkA0 {
+    u8 unk0[0x4C - 0x0];
+    Struct8063DE68_arg0_unkA0 *next; // 0x4C
+};
+
+typedef struct {
+    void *unk0;
+    u8 unk4[0xA0 - 0x4];
+    void *unkA0;
+} Struct8063DE68_arg0;
+
+void func_8063DE68(Struct8063DE68_arg0 *arg0) {
+    void *temp_a1;
+    Struct8063DE68_arg0_unkA0 *next;
+    Struct8063DE68_arg0_unkA0 *current;
+
+    temp_a1 = arg0->unk0;
+    if (temp_a1 != NULL) {
+        func_8061130C(temp_a1); // Heap Something
+    }
+    current = arg0->unkA0;
+    while (current != NULL) {
+        next = current->next;
+        func_8061130C(current); // Heap Something
+        current = next;
+    }
+    func_8061130C(arg0); // Heap Something
+}
 
 // Probably initting a struct, easy way to figure out the shape
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DED0.s")
@@ -1031,7 +1060,13 @@ void func_8064B370(GlobalASMStruct86 **arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B3F8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B4AC.s")
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+
+void func_8064B4AC(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
+    func_806335B0(D_807F6240[arg2], 1, arg3, &D_807F621C, &D_807F6220, &D_807F6224);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B514.s")
 

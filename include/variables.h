@@ -249,6 +249,19 @@ struct model_2_model_50_b8 {
 };
 
 typedef struct {
+    s32 unk0;
+    f32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s16 unk20;
+    s16 unk22;
+} Model2Model54_BC;
+
+typedef struct {
     s32 unk0[4];
     s32 unk10[4];
     s32 unk20[4];
@@ -260,7 +273,7 @@ typedef struct {
     u8 unk4E; // Used
     u8 unk4F; // Used
     Model2Model50_B8 *unk50; // Used, pointer
-    s32 unk54;
+    Model2Model54_BC *unk54;
     s32 unk58;
     s32 unk5C;
     s32 unk60[4];
@@ -271,6 +284,7 @@ typedef struct {
     s32 unkB0;
     s32 unkB4;
     Model2Model50_B8 *unkB8; // Used, pointer
+    Model2Model54_BC *unkBC; // Used
 } Model2Model;
 
 typedef struct {
@@ -336,7 +350,10 @@ typedef struct {
     s32 unk10;
     s32 unk14;
     s32 unk18;
-    s32 unk1C;
+    u8 unk1C;
+    u8 unk1D;
+    u8 unk1E;
+    u8 unk1F;
     s32 unk20;
     s32 unk24;
     s32 unk28;
@@ -347,6 +364,16 @@ typedef struct {
     s16 unk3C;
     s16 unk3E;
 } OM2_unk24;
+
+typedef struct {
+    s16 unk0;
+    s8 unk2;
+    s8 unk3;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} OM2_unk78;
 
 typedef struct object_model2 {
     f32 x_position; // at 0x00
@@ -379,7 +406,7 @@ typedef struct object_model2 {
     s32 unk6C;
     s32 unk70;
     s32 unk74;
-    void *unk78; // used in func_80650AD8, weird format
+    OM2_unk78 *unk78; // used in func_80650AD8, weird format
     OM2_unk7C *unk7C; // labelled behavior_pointer in ScriptHawk
     s32 unk80;
     s16 object_type; // at 0x84

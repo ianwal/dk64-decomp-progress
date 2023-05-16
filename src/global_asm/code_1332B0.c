@@ -75,17 +75,20 @@ s32 func_8072E7DC(s16 arg0, Actor **arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_8072E868.s")
 
-/*
-extern s32 D_807557A0; // TODO: Datatype
-
 typedef struct {
     s16 unk0;
     s16 unk2;
     s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    u8 unkC[0x39 - 0xC];
+    u8 unk39;
 } Struct80755A14_unk4;
 
 typedef struct {
-    s32 unk0;
+    s16 unk0;
+    s16 unk2;
     Struct80755A14_unk4 *unk4;
 } Struct80755A14;
 
@@ -94,6 +97,7 @@ extern u8 D_807FBDC4;
 extern s16 D_807FDCB8;
 extern s16 D_807FDCBC;
 
+/*
 void func_8072E868(void) {
     s32 sp4C;
     GlobalASMStruct35 *var_s0;
@@ -163,6 +167,20 @@ void func_8072E868(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_8072EA90.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_8072EC94.s")
+void func_8072EC94(s32 arg0, u8 arg1) {
+    s32 i;
+    s32 found;
+    Struct80755A14_unk4 *var_v1;
+
+    found = FALSE;
+    var_v1 = D_80755A14->unk4;
+    for (i = 0; i < D_80755A14->unk0 && !found; i++) {
+        if (arg0 == var_v1->unkA) {
+            var_v1->unk39 = arg1;
+            found = TRUE;
+        }
+        var_v1++;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_8072ECFC.s")

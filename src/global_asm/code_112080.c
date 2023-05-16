@@ -97,24 +97,31 @@ loop_3:
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D82C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D8C0.s")
-
 extern u8 D_807550CC;
 
-/*
-// TODO: What type does func_8070D754 return?
-void func_8070D8C0(Actor *arg0, u16 arg1, u8 arg2) {
-    void *temp_a0;
-    void *temp_v0;
+typedef struct {
+    s32 unk0;
+    Actor* unk4;
+} Struct8070D8C0;
 
-    temp_v0 = func_8070D754();
-    temp_a0 = temp_v0;
-    temp_v0->unk4->unk174->unk54 = D_807550CC;
+typedef struct {
+    u8 unk0[0x54 - 0x0];
+    u8 unk54;
+} AAD_8070D8C0;
+
+void func_8070D82C(s32, s32, s32);
+
+void func_8070D8C0(Actor *arg0, u16 arg1, u8 arg2) {
+    Struct8070D8C0 *temp_a0;
+    AAD_8070D8C0 *aaD;
+
+    temp_a0 = func_8070D754();
+    aaD = ((AAD_8070D8C0*)temp_a0->unk4->additional_actor_data);
+    aaD->unk54 = D_807550CC;
     D_807550CC = 0;
-    func_8070D82C(temp_a0, arg1, arg2, &D_807550CC);
+    func_8070D82C(temp_a0, arg1, arg2);
     arg0->object_properties_bitfield |= 0x02000000;
 }
-*/
 
 typedef struct Struct807550C0 Struct807550C0;
 
@@ -285,52 +292,43 @@ void func_8070DD44(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DDDC.s")
+typedef struct {
+    u16 unk0;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    s32 unkC;
+} Struct8070DDDC;
 
-/*
-s32 func_8070D6D8(void *);
-
-// TODO: Nice little puzzle to solve...
 s32 func_8070DDDC(u16 arg0, s32 arg1) {
+    Struct8070DDDC *phi_v0_2;
     s32 sp20;
-    u8 temp_v1_2;
-    void **temp_v1;
     void *temp_a0;
-    void *temp_v0;
-    void *temp_v0_2;
-    void *temp_v0_3;
-    void *phi_v0;
-    void **phi_v1;
-    void *phi_v0_2;
-    void *phi_a0;
+    Struct807550C0 **phi_v1;
+    Struct8070DDDC *phi_a0;
 
-    temp_v0 = func_8070D928(arg0);
-    phi_v0_2 = temp_v0;
-    phi_a0 = temp_v0;
-    if (temp_v0 == NULL) {
+    phi_a0 = phi_v0_2 = func_8070D928(arg0);
+    if (phi_v0_2 == NULL) {
         // TEXT!!!
         temp_a0 = getPointerTableFile(0xC, arg0, 1, 1);
         phi_v1 = &D_807550C0;
-        if (D_807550C0 != 0) {
-            phi_v0 = D_807550C0;
-            do {
-                temp_v1 = phi_v0 + 0xC;
-                temp_v0_2 = *temp_v1;
-                phi_v0 = temp_v0_2;
-                phi_v1 = temp_v1;
-            } while (temp_v0_2 != 0);
+        while (*phi_v1 != NULL) {
+            phi_v1 = &(*phi_v1)->unkC;
         }
         sp20 = func_8070D6D8(temp_a0);
         func_8066B434(temp_a0, 0x1F1, 0x50);
-        temp_v0_3 = malloc(0x10);
-        *phi_v1 = temp_v0_3;
-        temp_v0_3->unk4 = sp20;
-        temp_v0_3->unk0 = arg0;
-        temp_v0_3->unk2 = 0;
-        temp_v0_3->unkC = 0;
-        temp_v0_3->unk8 = arg1;
-        phi_v0_2 = temp_v0_3;
-        phi_a0 = temp_v0_3;
+        phi_v0_2 = malloc(sizeof(Struct8070DDDC));
+        *phi_v1 = phi_v0_2;
+        phi_v0_2->unk4 = sp20;
+        phi_v0_2->unk0 = arg0;
+        phi_v0_2->unk8 = arg1;
+        phi_v0_2->unk2 = 0;
+        phi_v0_2->unkC = 0;
+        phi_a0 = phi_v0_2;
     }
     if (phi_v0_2->unk8 != 0) {
         if (phi_v0_2->unk8 == 1) {
@@ -341,11 +339,51 @@ s32 func_8070DDDC(u16 arg0, s32 arg1) {
     }
     return phi_a0->unk4;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DED4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E2AC.s")
+extern u8 D_807550C8;
+
+typedef struct {
+    s32 unk0;
+    u16 unk4;
+    u16 unk6;
+} Struct8070E2AC_arg1_unk8_unk4;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    Struct8070E2AC_arg1_unk8_unk4 *unk4;
+} Struct8070E2AC_arg1_unk8;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    Struct8070E2AC_arg1_unk8 *unk8;
+} Struct8070E2AC_arg1;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+} Struct8070E2AC_arg2;
+
+void func_8070E2AC(s32 arg0, Struct8070E2AC_arg1 *arg1, Struct8070E2AC_arg2 *arg2) {
+    s32 i;
+    Struct8070E2AC_arg1_unk8 *temp_s2;
+    s32 _arg1;
+    s32 _arg2;
+
+    temp_s2 = &arg1->unk8[D_807550C8];
+    for (i = 0; i < temp_s2->unk0; i++) {
+        _arg1 = temp_s2->unk4[i].unk0 + arg2->unkC;
+        _arg2 = temp_s2->unk4[i].unk4;
+        func_8070DED4(arg0, _arg1, _arg2);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E34C.s")
 

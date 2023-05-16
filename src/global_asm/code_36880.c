@@ -109,7 +109,7 @@ void func_80631C3C(void) {
                 func_8066B424();
                 func_8066B434(temp_v0, 0x10C, 7);
             }
-        };
+        }
     }
 }
 
@@ -186,23 +186,138 @@ s32 func_8063253C(s32 arg0, s32 arg1) {
     return 1;
 }
 
-// Doable, object model 2 loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063254C.s")
+extern s32 D_80747D70;
+
+s32 func_8063254C(s32 arg0, s32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, s16 *arg5, s16 *arg6) {
+    s32 found;
+    s32 i;
+    found = FALSE;
+    i = *arg1;
+
+    while (!found && i < D_80747D70) {
+        if (arg0 == D_807F6000[i].object_type) {
+            found = TRUE;
+            *arg5 = D_807F6000[i].unk88;
+            *arg6 = D_807F6000[i].unk8A;
+            *arg2 = D_807F6000[i].x_position;
+            *arg3 = D_807F6000[i].y_position;
+            *arg4 = D_807F6000[i].z_position;
+        }
+        i++;
+    }
+    *arg1 = i;
+    return found;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632630.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632860.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632E10.s")
+typedef struct {
+    u16 unk0; // Map
+    u16 unk2;
+} Struct80747D50;
 
+extern Struct80747D50 D_80747D50[];
+
+void func_80632E10(s16 arg0, u8 *arg1) {
+    s32 i = 0;
+    s32 max = 8;
+    s32 map;
+    Struct80747D50 *temp;
+
+    map = current_map;temp = D_80747D50; // Unreal...
+
+    while (i < max) {
+        if (temp->unk0 == map && temp->unk2 == arg0) {
+            *arg1 |= 1;
+            return;
+        } else {
+            i++;
+            temp++;
+        }
+    }
+}
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632E74.s")
 
-// Weird struct in arg1
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632F20.s")
+typedef struct {
+    u16 unk0; // Map
+    u16 unk2;
+    u16 unk4;
+} Struct80747D30;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632F74.s")
+extern Struct80747D30 D_80747D30[];
+
+typedef struct {
+    u8 unk0[0x1E - 0x0];
+    s16 unk1E;
+} Struct80632F20;
+
+void func_80632F20(s32 arg0, Struct80632F20 *arg1) {
+    s32 i;
+    s32 max;
+    s32 map;
+    Struct80747D30 *var_a3;
+
+    max = 5;
+    i = 0;map = current_map;var_a3 = &D_80747D30; // Cringe...
+
+    while (i < max) {
+        if (map == var_a3->unk0 && arg0 == var_a3->unk2) {
+            arg1->unk1E = var_a3->unk4;
+            return;
+        } else {
+            i++;
+            var_a3++;
+        }
+    }
+}
+
+u8 func_80632F74(f32 arg0, f32 arg1, f32 arg2) {
+    f32 sp1C;
+
+    sp1C = arg1 + 10.0f;
+    if (func_80667110(arg0, arg2, &sp1C) != 0) {
+        return func_80667174();
+    }
+    return 0xF;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632FCC.s")
+
+/*
+// TODO: Regalloc
+void func_80632FCC(s16 arg0, u8 arg1) {
+    s32 pad[5];
+    Model2Model54_BC *var_a0_2;
+    s32 pad2;
+    f32 sp28;
+    s16 sp26;
+    s16 sp24;
+
+    if (arg1 == 1) {
+        arg0 = func_80659470(arg0);
+    }
+    sp28 = D_807F6000[arg0].y_position + 20.0f;
+    if (func_80667110(D_807F6000[arg0].x_position, D_807F6000[arg0].z_position, &sp28) != 0) {
+        func_80666AC4(&sp26, &sp24);
+        switch (D_807F6000[arg0].unk24->unk1C) {
+            case 1:
+                var_a0_2 = D_807F6000[arg0].model_pointer->unkBC;
+                break;
+            case 2:
+                var_a0_2 = D_807F6000[arg0].model_pointer->unk54;
+                break;
+        }
+        if (var_a0_2 != NULL) {
+            var_a0_2->unk20 = sp26;
+            var_a0_2->unk22 = sp24;
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806330C4.s")
 
@@ -600,38 +715,27 @@ void func_80636C00(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063A848.s")
 
-// object model 2 -> model_pointer -> 0x54, 0xBC -> unk4
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063A8C4.s")
-
-/*
 void func_8063A8C4(s16 arg0, u8 arg1, f32 arg2) {
-    ObjectModel2 *temp_v0;
-    s16 temp_a1;
     Model2Model *temp_v1;
-    s16 phi_a0;
-    void *phi_v0;
+    Model2Model54_BC *phi_v0;
 
-    phi_a0 = arg0;
     if (arg1 == 1) {
-        phi_a0 = func_80659470(arg0);
+        arg0 = func_80659470(arg0);
     }
-    temp_v0 = &D_807F6000[phi_a0];
-    temp_a1 = temp_v0->unk86;
-    temp_v1 = temp_v0->model_pointer;
-    if (temp_a1 != 1) {
-        if (temp_a1 != 2) {
-            phi_v0 = sp18;
+    temp_v1 = D_807F6000[arg0].model_pointer;
+    if (D_807F6000[arg0].unk86 != 1) {
+        if (D_807F6000[arg0].unk86 != 2) {
+
         } else {
             phi_v0 = temp_v1->unk54;
         }
     } else {
         phi_v0 = temp_v1->unkBC;
     }
-    if (phi_v0 != 0) {
+    if (phi_v0 != NULL) {
         phi_v0->unk4 = arg2;
     }
 }
-*/
 
 // display list something
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063A968.s")

@@ -115,14 +115,39 @@ void func_806506E8(GlobalASMStruct9 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_806508B4.s")
 
-// Doable, needs ObjectModel2 -> 0x78 defined
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8065092C.s")
+
+void func_8064FA7C(void*, void*);
+
+/*
+// TODO: Regalloc :(
+void func_8065092C(s16 arg0, s16 arg1) {
+    OM2_unk78 *temp_a0;
+
+    temp_a0 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_a0 != NULL) {
+        temp_a0[arg1 + 1].unk2 = 0;
+        func_8064FA7C(temp_a0, &temp_a0->unk8);
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650998.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650A04.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650A70.s")
+s16 func_80650A70(s16 arg0, s16 arg1) {
+    s16 var_v0;
+    OM2_unk78 *temp_v1;
+
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    var_v0 = NULL;
+    if (temp_v1 != NULL) {
+        // TODO: Is this right?
+        return temp_v1[arg1 + 1].unk0;
+    }
+    return var_v0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650AD8.s")
 

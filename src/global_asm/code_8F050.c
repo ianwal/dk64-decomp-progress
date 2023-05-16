@@ -32,20 +32,20 @@ extern GlobalASMStruct76 D_80750100[];
 /*
 // TODO: Fiddly, might want another look at the mips_to_c output
 s32 func_8068A3A0(s32 arg0, u32 *arg1) {
-    u32 phi_v0;
-    s32 phi_v1;
+    u16 i;
+    s32 found;
 
-    phi_v1 = FALSE;
-    *arg1 = 0;
-    for (phi_v0 = 0; phi_v0 < 7; phi_v0++) {
-        if (arg0 == D_80750100[phi_v0].unk0) {
-            phi_v1 = TRUE;
-            break;
+    found = FALSE;
+    i = 0;
+    *arg1 = i;
+    for (i = 0; i < 7U & !found; i++) {
+        if (arg0 == D_80750100[i].unk0) {
+            found = TRUE;
         } else {
-            *arg1 = phi_v0;
+            *arg1 = i;
         }
     }
-    return phi_v1;
+    return found;
 }
 */
 
