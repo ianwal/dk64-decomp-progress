@@ -475,6 +475,7 @@ u8 func_8062BCC8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BDB0.s")
 
+// Display List stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BF24.s")
 
 void func_8062C1C0(s32 arg0) {
@@ -561,20 +562,14 @@ void func_8062D1A8() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D1E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D26C.s")
-
-/*
 void func_8062D2AC(s32 arg0, s32 arg1, u8 arg2);
 
-// TODO: Something weird going on with stack
 void func_8062D26C(Actor *arg0) {
-    s32 sp1F;
     s32 sp1C;
 
-    func_80630588(0, arg0, 1, &sp1F);
+    func_80630588(0, arg0, 1, ((u8*)&sp1C+3));
     func_8062D2AC(arg0, &sp1C, 1);
 }
-*/
 
 void func_8062D2AC(s32 arg0, s32 arg1, u8 arg2) {
     func_8062D2F0(D_807F5DE4, D_807F5E60, arg0, arg1, arg2);

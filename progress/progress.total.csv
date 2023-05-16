@@ -918,7 +918,7 @@ us,.code,func_80665F24,144,no
 us,.code,func_806CFE30,76,yes
 us,.code,func_806F5FA0,72,yes
 us,.code,func_80641A78,136,yes
-us,.code,func_8062D26C,64,no
+us,.code,func_8062D26C,64,yes
 us,.code,func_8062B660,480,no
 us,.code,func_806BB874,2060,no
 us,.code,func_806D428C,792,yes
