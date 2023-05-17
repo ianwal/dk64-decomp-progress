@@ -104,8 +104,17 @@ s32 func_80659544(s32 arg0) {
     return (arg0 > 0 ? arg0 : -arg0) % 100;
 }
 
-// Doable, for loop i < 100, weird indirection though
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E020/func_80659574.s")
+void func_80659574(void) {
+    GlobalASMStruct78 *var_v0;
+    s32 i;
+
+    for (i = 0; i < 100; i++) {
+        var_v0 = &D_807F7370[i]->unk0;
+        while (var_v0 != NULL) {
+            var_v0 = var_v0->unk8;
+        }
+    }
+}
 
 // Similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E020/func_806595B0.s")

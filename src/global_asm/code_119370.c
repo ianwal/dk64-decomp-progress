@@ -4,9 +4,18 @@
 
 extern u8 D_8074450C;
 
+typedef struct Struct807FDB00 Struct807FDB00; 
+
+struct Struct807FDB00 {
+    s32 unk0;
+    s32 unk4;
+    u8 unk8[0x24 - 0x8];
+    Struct807FDB00 *next;
+};
+
 // TODO: Is this a huge static struct?
-// If so, we can match this whole file pre much
-extern s32 D_807FDB00;
+// If so, we can match this whole file pretty much
+extern Struct807FDB00 *D_807FDB00;
 extern s32 D_807FDB04;
 extern s32 D_807FDB08;
 extern u8 D_807FDB0C;
@@ -36,13 +45,24 @@ extern s16 D_807FDB42;
 void func_80714A9C(void);
 
 void func_80714670(void) {
-    D_807FDB00 = 0;
+    D_807FDB00 = NULL;
     D_807FDB04 = 0;
     D_807FDB08 = 0;
     func_80714A9C();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807146A4.s")
+s32 func_807146A4(s32 arg0) {
+    Struct807FDB00 *var_v1;
+
+    var_v1 = D_807FDB00;
+    while (var_v1 != NULL) {
+        if (arg0 == var_v1->unk4) {
+            return var_v1->unk0;
+        }
+        var_v1 = var_v1->next;
+    }
+    return D_807FDB00->unk0;
+}
 
 // TODO: Struct?
 void func_807146E0(u8 *arg0, u8 *arg1, u8 *arg2) {
