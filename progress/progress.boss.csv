@@ -29,7 +29,7 @@ us,.code,func_8002DC60,128,yes
 us,.code,func_80031AA0,4200,no
 us,.code,func_8002C520,212,yes
 us,.code,func_8002FDF8,200,yes
-us,.code,func_80030888,152,no
+us,.code,func_80030888,140,yes
 us,.code,func_8002EA14,104,yes
 us,.code,func_8002C964,2252,no
 us,.code,func_80028458,32,yes

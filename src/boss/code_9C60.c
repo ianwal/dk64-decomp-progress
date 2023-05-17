@@ -3,6 +3,7 @@
 
 void func_80613CA8(Actor*, s16, f32, f32);
 void func_8002FB7C(u8);
+void func_806319C4(Actor*, s8);
 
 extern u16 D_807FBB34;
 extern f64 D_80036A18;
@@ -172,7 +173,7 @@ void func_8002FC98(Actor *arg0, u8 arg1, s32 arg2, u8 arg3) {
 
 extern u8 D_807FBD70;
 
-void func_8002FDF8(s32 arg0, u8 arg1) {
+void func_8002FDF8(Actor* arg0, u8 arg1) {
     s32 phi_v0;
     Actor *temp;
 
@@ -207,27 +208,24 @@ void func_8002FEC0(Actor* arg0[], u8 arg1, s32 arg2) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_8002FF74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_80030888.s")
-
-/*
-// TODO: Not bad, EOF issue
-void func_8002FDF8(Actor*, u8, Actor*);
-void func_806319C4(Actor*, s32);
-void func_80724DB0(s32, s32, Actor*);
+void func_80724DB0(s32, s32);
 
 void func_80030888(void) {
-    u8 phi_v0_2;
     Actor* temp;
+    Actor178* temp_2;
+    s32 phi_v0_2;
 
-    if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        func_80724DB0(2, 1, current_actor_pointer->unk11C);
+    temp = current_actor_pointer->unk11C;
+    temp_2  = temp->unk178;
+
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_80724DB0(2, 1);
     }
-    //temp = current_actor_pointer->unk11C;
-    phi_v0_2 = 0U;
     if (current_actor_pointer->unk15F == 1) {
-        phi_v0_2 = ((Actor178*)current_actor_pointer->unk11C->unk178)->unk14;
+        phi_v0_2 = temp_2->unk14;
+    } else {
+        phi_v0_2 = 0U;
     }
-    func_8002FDF8(current_actor_pointer->unk11C, phi_v0_2, current_actor_pointer->unk11C);
+    func_8002FDF8(temp, phi_v0_2);
     func_806319C4(current_actor_pointer, 0);
 }
-*/

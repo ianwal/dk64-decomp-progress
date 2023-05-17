@@ -99,21 +99,22 @@ void func_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
 
 /*
 // TODO: Very close, might need .rodata defined for D_80036050
-void func_80028478(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg5) {
+void func_80028478(u16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg5) {
     s16 i;
-
+    f32 scale;
+    
     playSong(0x36, 1.0f);
     if (isFlagSet(arg0, FLAG_TYPE_PERMANENT)) {
         func_80028458();
         return;
     }
-
+    scale = D_80036050;
     for (i = 0; i < 6; i++) {
         func_8071498C(&func_8071CDE0);
         func_807149FC(-1);
         func_807149B8(1);
         func_80714950(D_807FDC94);
-        func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], D_80036050, D_807FDC94->x_position, D_807FDC94->y_position + D_807FDC94->unk15E, D_807FDC94->z_position);
+        func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], scale, D_807FDC94->x_position, D_807FDC94->y_position + D_807FDC94->unk15E, D_807FDC94->z_position);
     }
     func_806A5DF0(0x48, arg1, arg2, arg3, arg4, arg5, arg0, 0);
 }

@@ -113,10 +113,15 @@ void func_8002413C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_8002450C.s")
 
+void func_8002450C(u8 *, s32, u8);
+
 /*
-// TODO: t8 t9 regalloc...
-void func_8002450C(u8 *arg0, u8 arg1, s8 arg2) {
-    arg0[arg1 + 6] = arg2;
+// TODO: t6 t7 regalloc...
+void func_8002450C(u8 *arg0, s32 arg1, u8 arg2) {
+    s32 phi_1;
+    
+    phi_1 = *(s32*)(&arg1);
+    arg0[(u8)(phi_1) + 6] = arg2;
 }
 */
 
