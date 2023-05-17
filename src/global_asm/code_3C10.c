@@ -330,13 +330,13 @@ void func_805FF660(u8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_805FF670.s")
 
-void func_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
+void func_806A5DF0(s32, f32, f32, f32, u16, s32, s32, s32);
 
 /*
 // TODO: Pretty close, something up with that big function call
 void func_805FF670(void) {
     f32 temp_f20;
-    s16 temp_s2;
+    s16 spawn_x;
     s16 phi_s1;
 
     if (D_80744820 != 0) {
@@ -344,10 +344,10 @@ void func_805FF670(void) {
         func_806F8BC4(1, 0, 0);
         for (phi_s1 = 0; phi_s1 < D_80744820; phi_s1++) {
             temp_f20 = (phi_s1 * 2) + 0x1E;
-            temp_s2 = player_pointer->x_position - (func_80612794(player_pointer->y_rotation) * temp_f20);
+            spawn_x = player_pointer->x_position - (func_80612794(player_pointer->y_rotation) * temp_f20);
             func_806A5DF0(
                 0x35,
-                temp_s2,
+                spawn_x,
                 player_pointer->y_position + 20.0f + (phi_s1 * 5),
                 player_pointer->z_position - (func_80612790(player_pointer->y_rotation) * temp_f20),
                 player_pointer->y_rotation,
@@ -433,55 +433,46 @@ void func_805FF9AC(enum map_e arg0, s32 arg1, s32 arg2, s16 arg3) {
     f32 sp40;
     f32 sp3C;
     f32 sp38;
-    GlobalASMStruct1 *sp28;
     GlobalASMStruct1 *var_s1;
     GlobalASMStruct1 *var_v0_3;
     f64 temp_f20;
     s16 var_s0;
     s32 var_v0;
-    s32 var_v1;
+    s32 i;
     PlayerAdditionalActorData *temp_v0;
 
     var_v0 = FALSE;
-    var_v1 = 0;
-    var_s1 = &D_8076A160[0];
-loop_1:
-    if ((var_s1->unk0 != 0) && (current_map == var_s1->unk12)) {
-        var_v0 = TRUE;
-    } else {
-        var_v1 += 1;
-        var_s1++;
+    i = 0;
+    while ((i < 0x12) && (!var_v0)) {
+        if ((D_8076A160[i].unk0 != 0) && (current_map == D_8076A160[i].unk12)) {
+            var_v0 = TRUE;
+        } else {
+            i += 1;
+        }
     }
-    if ((var_v1 < 0x12) && (var_v0 == FALSE)) {
-        goto loop_1;
-    }
-    if (var_v0 != FALSE) {
-        var_s1 = &D_8076A160[var_v1];
-        sp4C = var_v1;
+    if (var_v0) {
+        var_s1 = &D_8076A160[i];
+        sp4C = i;
         func_805FFEF8(current_map);
         goto block_17;
     }
     var_v0 = FALSE;
-    var_v1 = 0;
-    var_s1 = &D_8076A160[0];
-loop_10:
-    if (var_s1->unk0 == 0) {
-        var_v0 = TRUE;
-    } else {
-        var_v1 += 1;
-        var_s1++;
+    i = 0;
+    while ((i < 0x12) && (!var_v0)) {
+        if (D_8076A160[i].unk0 == 0) {
+            var_v0 = TRUE;
+        } else {
+            i++;
+        }
     }
-    if ((var_v1 < 0x12) && (var_v0 == FALSE)) {
-        goto loop_10;
-    }
-    var_s1 = &D_8076A160[var_v1];
-    if (var_v0 == FALSE) {
-        sp4C = var_v1;
+    var_s1 = &D_8076A160[i];
+    if (!var_v0) {
+        sp4C = i;
         func_80732354(0xA, 0, 0, 0);
 block_17:
-        var_v1 = sp4C;
+        i = sp4C;
     }
-    sp4C = var_v1;
+    sp4C = i;
     func_806F5378();
     func_8063B8D8(&var_s1->unk18, &sp50);
     func_806115A8(&var_s1->unk18);
@@ -501,18 +492,14 @@ block_17:
         var_s1->unk14 = arg2;
     }
     var_s0 = 0;
-    if (D_807F6C28 > 0) {
-        temp_f20 = D_80756680;
-        var_v0_3 = &D_8076A160[sp4C];
-        do {
-            sp28 = var_v0_3;
-            func_80659620(&sp40, &sp3C, &sp38, var_s0);
-            sp28->pad24[0] = sp40 * temp_f20;
-            sp28->pad24[1] = sp3C * temp_f20;
-            sp28->pad24[2] = sp38 * temp_f20;
-            var_s0 += 1;
-            var_v0_3 = sp28 + 3;
-        } while (var_s0 < D_807F6C28);
+    temp_f20 = D_80756680;
+    var_v0_3 = &D_8076A160[sp4C];
+    for (var_s0 = 0; var_s0 < D_807F6C28; var_s0++) {
+        func_80659620(&sp40, &sp3C, &sp38, var_s0);
+        var_v0_3->pad24[0] = sp40 * temp_f20;
+        var_v0_3->pad24[1] = sp3C * temp_f20;
+        var_v0_3->pad24[2] = sp38 * temp_f20;
+        var_v0_3 += 3;
     }
     D_80750ACC = 1;
     temp_v0 = player_pointer->PaaD;
@@ -526,7 +513,6 @@ block_17:
     func_805FF378(arg0, arg1);
 }
 */
-
 
 // arg0 likely map
 s32 func_805FFE50(s32 arg0, s16 arg1, s16 arg2) {
@@ -606,40 +592,40 @@ s32 func_80600080(Maps map) {
 // TODO: Bleh, matches everything except for some extra lui instructions being generated for some reason
 s16 func_80600174(f32 *arg0, f32 *arg1, f32 *arg2) {
     s32 i;
+    GlobalASMStruct1* focused_parent;
     for (i = 0; i < 18; i++) {
-        if (D_8076A160[i].unk0 && (D_8076A160[i].unk2 & 1)) {
-            *arg0 = D_8076A160[i].unk4;
-            *arg1 = D_8076A160[i].unk8;
-            *arg2 = D_8076A160[i].unkC;
-            return i;
+        if (D_8076A160[i].unk0) {
+            if ((D_8076A160[i].unk2 & 1)) {
+                focused_parent = &D_8076A160[i];
+                *arg0 = focused_parent->unk4;
+                *arg1 = focused_parent->unk8;
+                *arg2 = focused_parent->unkC;
+                return i;
+            }
         }
     }
     return -1;
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_80600340.s")
-
 int func_80689C20(s32, s32, s32, s32, f32, f32);
 void func_80631F58(s32, s32, s32);
+s16 func_80600174(f32*, f32*, f32*);
 
-/*
-// TODO: Regalloc v1 a3
 s32 func_80600340(s32 arg0, u8 arg1, s32 *arg2) {
     s32 sp3C;
     s32 sp38;
     s32 sp34;
     f32 sp30;
     f32 sp2C;
-    u8 temp_a3 = func_80600174(&sp34, &sp30, &sp2C);
-    if (temp_a3 == -1) {
+    u8 temp_1 = func_80600174(&sp34, &sp30, &sp2C);
+    if (temp_1 == -1) {
         return -1;
     }
-    func_80631F58(D_8076A160[temp_a3].unk18, &sp3C, &sp38);
-    *arg2 = D_8076A160[temp_a3].unk12;
+    func_80631F58(D_8076A160[temp_1].unk18, &sp3C, &sp38);
+    *arg2 = D_8076A160[temp_1].unk12;
     return func_80689C20(sp38, arg0, arg1, sp34, sp30, sp2C);
 }
-*/
 
 typedef struct global_asm_struct_2 {
     s32 unk0; // Bitfield
