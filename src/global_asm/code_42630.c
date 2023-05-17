@@ -1189,9 +1189,6 @@ s32 func_8064BCB0(s32 arg0, s32 arg1) {
     return -1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064BD2C.s")
-
-/*
 extern f32 D_80758AA4;
 
 s32 func_8064BD2C(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
@@ -1203,28 +1200,26 @@ s32 func_8064BD2C(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 sp48;
     s32 sp44;
     s32 sp40;
-    s32 sp3C;
-    s32 sp38;
-    s16 temp_a0;
+    s32 temp_a0;
     s32 temp_v0;
+    s32 sp3C;
 
     temp_v0 = func_8064BCB0(arg1, arg3);
-    sp38 = temp_v0;
     if (temp_v0 < 0) {
-
+        return 0;
     } else {
         temp_a0 = D_807F6240[arg2];
         sp3C = temp_a0;
         if (func_8064BCB0(temp_a0, arg3) != -1) {
-
+            return 0;
         } else {
             func_806357F8(temp_a0, &sp5C, &sp58, &sp54, &sp50, &sp4C, &sp48, &sp44, &sp40, 1);
-            func_8067ABC0(0, character_change_array[sp38].player_pointer, 9, sp4C * D_80758AA4, 0, sp5C, sp58, sp54);
+            func_8067ABC0(  0, character_change_array[temp_v0].player_pointer, 9, sp4C * D_80758AA4, 
+                            0, sp5C, sp58, sp54);
         }
     }
     return 0;
 }
-*/
 
 u8 func_8064BE58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return D_807552E8 == 5;
