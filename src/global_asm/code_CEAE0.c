@@ -5412,7 +5412,7 @@ void func_806DF44C(Actor* arg0, PlayerAdditionalActorData *arg1, u8 arg2) {
 void func_806DF494(s16 *arg0, s16 arg1, s16 arg2) {
     s16 temp_v0;
     s16 phi_a2;
-    s16 phi_t0;
+    s32 phi_t0;
     s16 phi_v0;
 
     arg1 &= 0xFFF;
@@ -5424,9 +5424,10 @@ void func_806DF494(s16 *arg0, s16 arg1, s16 arg2) {
             phi_a2 = 0x1000 - phi_a2;
             phi_v0 *= -1;
         }
-        phi_t0 = -arg2;
         if (arg2 > 0) {
             phi_t0 = arg2;
+        } else {
+            phi_t0 = -arg2;
         }
         if (phi_a2 < phi_t0) {
             *arg0 = arg1;

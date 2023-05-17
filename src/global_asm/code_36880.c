@@ -540,7 +540,33 @@ void func_80636014(s32 arg0, u8 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636210.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806362C4.s")
+void func_806362C4(s32 arg0, u8 arg1) {
+    Model2Model54_BC *temp_a3;
+    Model2Model54_BC **sp18;
+    ObjectModel2 *temp_v0;
+    s16 temp_v1;
+
+    if (arg1 == 1) {
+        arg0 = func_80659470(arg0);
+    }
+    temp_v0 = &D_807F6000[arg0];
+    switch (temp_v0->unk86) {
+        case 2:
+            sp18 = &temp_v0->model_pointer->unk54;
+            break;
+        case 1:
+            sp18 = &temp_v0->model_pointer->unkBC;
+            break;
+    }
+    if (sp18 != NULL) {
+        temp_a3 = *sp18;
+        if (temp_a3 != NULL) {
+            func_8066B434(temp_a3->unk0, 0xA56, 7);
+            func_8061130C(temp_a3);
+            *sp18 = NULL;
+        }
+    }
+}
 
 // TODO: Any overlap with documented structs?
 typedef struct {

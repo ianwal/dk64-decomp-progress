@@ -393,6 +393,33 @@ void func_8070E2AC(s32 arg0, Struct8070E2AC_arg1 *arg1, Struct8070E2AC_arg2 *arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E808.s")
 
+/*
+void func_8070E808(Actor *arg0, Actor *arg1) {
+    void *sp24;
+    void *sp20;
+    void *temp_a0;
+    void *temp_v0;
+    void *temp_v0_2;
+
+    sp24 = arg0->additional_actor_data;
+    temp_v0 = func_8070D754(arg1);
+    if (temp_v0->unk8 == NULL) {
+        arg1->object_properties_bitfield &= 0xFDFFFFFF;
+        if (sp24->unk54 & 1) {
+            func_8060098C(&D_8061DA84, 0x1E, 0, 0, 0);
+        }
+        arg0->control_state = 4;
+        return;
+    }
+    temp_v0_2 = temp_v0->unk8;
+    sp20 = temp_v0;
+    func_8070E548(arg0, temp_v0_2->unk0, temp_v0_2->unk2);
+    temp_a0 = temp_v0->unk8;
+    temp_v0->unk8 = temp_a0->unk4;
+    func_8061134C(temp_a0);
+}
+*/
+
 extern s32 D_807550C4;
 extern u8 D_807550CC;
 

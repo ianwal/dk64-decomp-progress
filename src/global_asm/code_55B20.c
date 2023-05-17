@@ -1003,6 +1003,7 @@ void func_80655BF0(void) {
 // Displaylist stuff, chunks
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80656B98.s")
 
+// TODO: Easy, just needs Chunk4C struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80656E58.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80656F14.s")
@@ -1064,6 +1065,45 @@ void func_8065756C(s16 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80657F14.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658000.s")
+
+f32 func_8000773C(s32, s32);
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+} Struct807F6C24;
+
+extern Struct807F6C24 *D_807F6C24;
+
+/*
+// TODO: Regalloc
+u8 func_80658000(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
+    f32 temp[2];
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+    f32 var_f12;
+
+    sp24 = func_8000773C(D_807F6C24[arg0].unk10, D_807F6C24[arg0].unk14);
+    sp28 = func_8000773C(D_807F6C24[arg0].unk8, D_807F6C24[arg0].unkC);
+    sp2C = func_8000773C(D_807F6C24[arg0].unk0, D_807F6C24[arg0].unk4);
+    var_f12 = (func_8000773C(D_807F6C24[arg0].unk18, D_807F6C24[arg0].unk1C) + ((sp2C * arg1) + (sp28 * arg2) + (sp24 * arg3))) / D_807F6C24[arg0].unk20;
+    if (var_f12 < 0.0) {
+        var_f12 = 0.0 - var_f12;
+    }
+    return var_f12 <= arg4;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658134.s")
 

@@ -47,7 +47,7 @@ typedef struct {
     };
 } Struct80732B3C;
 
-f32 func_80732930(u8);                              // extern
+f32 func_80732930(u8);
 extern Struct80732B3C *D_807FF030;
 
 f32 func_80739FE0(s32);

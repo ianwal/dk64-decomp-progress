@@ -733,7 +733,7 @@ us,.code,func_80737A74,40,yes
 us,.code,func_806C7BAC,100,yes
 us,.code,func_8072EE0C,112,no
 us,.code,func_806CA26C,64,yes
-us,.code,func_8064DB98,620,no
+us,.code,func_8064DB98,620,yes
 us,.code,func_806A92B4,3560,no
 us,.code,func_80674150,368,no
 us,.code,func_806ACF10,236,no
@@ -770,13 +770,13 @@ us,.code,func_8073CC94,316,no
 us,.code,func_806907F0,36,yes
 us,.code,func_806766E0,80,yes
 us,.code,func_80705B14,28,yes
-us,.code,func_8064CC80,188,no
+us,.code,func_8064CC80,188,yes
 us,.code,func_80678E14,88,yes
 us,.code,func_8060E128,128,no
 us,.code,func_807145F8,16,yes
 us,.code,func_8064F450,624,no
 us,.code,func_80666AC4,28,yes
-us,.code,func_8064B2AC,196,no
+us,.code,func_8064B2AC,196,yes
 us,.code,func_806FA5A4,512,no
 us,.code,gameIsInQuitGameMode,84,yes
 us,.code,func_806E0694,84,yes
@@ -939,7 +939,7 @@ us,.code,func_8068B830,116,yes
 us,.code,func_80708C24,384,no
 us,.code,func_806317D4,496,no
 us,.code,func_807255A8,1424,no
-us,.code,func_806362C4,188,no
+us,.code,func_806362C4,188,yes
 us,.code,func_80673A40,84,no
 us,.code,func_806625D0,72,yes
 us,.code,func_8073E8C0,2340,no
@@ -3222,7 +3222,7 @@ us,.code,func_8070D9AC,124,no
 us,.code,func_8062A850,244,no
 us,.code,func_8062919C,12,yes
 us,.code,func_8071B1AC,160,no
-us,.code,func_8064BBD8,216,no
+us,.code,func_8064BBD8,216,yes
 us,.code,func_8067880C,8,yes
 us,.code,func_805FBE04,496,yes
 us,.code,func_806A1AC4,1124,no

@@ -435,7 +435,7 @@ block_14:
 }
 */
 
-u8 func_8062BDB0(s32 arg0, void *arg1, void *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);      // extern
+u8 func_8062BDB0(s32 arg0, void *arg1, void *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
 u8 func_80668E9C(void *arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 *arg5);
 extern void *D_807F5DE4;
 

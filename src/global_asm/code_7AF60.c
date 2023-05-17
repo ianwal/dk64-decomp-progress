@@ -214,7 +214,7 @@ u8 func_80676CB0(Struct80676CB0 *arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676D00.s")
 
-s32 func_806EB400(Actor *);           // extern
+s32 func_806EB400(Actor *);
 extern f32 D_80759250;
 extern f32 D_80759254;
 extern f32 D_80759258;

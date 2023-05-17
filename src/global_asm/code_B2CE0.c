@@ -256,30 +256,26 @@ extern u16 D_807FBB34;
 s32 func_806B0770(void) {
     f32 dx, dy, dz;
     Actor *temp_a0;
-    s16 phi_v0;
-    s32 phi_v1;
+    s16 i;
+    s32 found;
     f32 temp;
 
-    phi_v1 = FALSE;
-    phi_v0 = 0;
-    if (D_807FBB34 > 0) {
-        temp = D_8075B1AC;
-        do {
-            temp_a0 = D_807FB930[phi_v0].unk0;
-            if (temp_a0->unk58 == 0x29) {
-                dx = temp_a0->x_position - current_actor_pointer->x_position;
-                dy = temp_a0->y_position - current_actor_pointer->y_position;
-                dz = temp_a0->z_position - current_actor_pointer->z_position;
-                if (((dx * dx) + (dy * dy) + (dz * dz)) < temp) {
-                    current_actor_pointer->control_state = 0x28;
-                    current_actor_pointer->control_state_progress = 0;
-                    phi_v1 = TRUE;
-                }
+    i = 0;found = FALSE;temp = D_8075B1AC;
+
+    for (; !found && i < D_807FBB34; i++) {
+        temp_a0 = D_807FB930[i].unk0;
+        if (temp_a0->unk58 == 0x29) {
+            dx = temp_a0->x_position - current_actor_pointer->x_position;
+            dy = temp_a0->y_position - current_actor_pointer->y_position;
+            dz = temp_a0->z_position - current_actor_pointer->z_position;
+            if (((dx * dx) + (dy * dy) + (dz * dz)) < temp) {
+                current_actor_pointer->control_state = 0x28;
+                current_actor_pointer->control_state_progress = 0;
+                found = TRUE;
             }
-            phi_v0++;
-        } while (!phi_v1 && phi_v0 < D_807FBB34);
+        }
     }  
-    return phi_v1;
+    return found;
 }
 */
 
