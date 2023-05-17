@@ -3127,7 +3127,7 @@ us,.code,func_8073A3C4,196,no
 us,.code,func_8072D08C,176,no
 us,.code,func_8066A834,340,no
 us,.code,func_8073BC74,336,yes
-us,.code,func_806018D4,104,no
+us,.code,func_806018D4,104,yes
 us,.code,func_80712774,36,yes
 us,.code,func_806F12FC,84,yes
 us,.code,func_806A6DB4,1432,no

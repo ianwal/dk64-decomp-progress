@@ -161,8 +161,23 @@ ALMicroTime func_806018B4(u8 arg0) {
     return D_8076BF20[arg0]->curTime;
 }
 
-// Struct size 0xF8, 0x3B0
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5A50/func_806018D4.s")
+typedef struct {
+    u8 unk0[0xF8];
+} struct_8076BF48;
+
+typedef struct {
+    u8 unk0[0x3B0];
+} struct_8076C328;
+
+void func_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);                   /* extern */
+extern struct_8076BF48 D_8076BF48[];
+extern struct_8076C328 D_8076C328[];
+
+void func_806018D4(u8 arg0, u8 arg1, s32 arg2) {
+    func_80738E58(&D_8076BF48[arg0], &D_8076C328[arg0], arg1, arg2);
+}
+
+
 
 // Struct size 0xF8, 0x3B0, 0xEC
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5A50/func_8060193C.s")

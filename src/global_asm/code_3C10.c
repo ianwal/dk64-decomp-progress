@@ -692,3 +692,130 @@ s32 func_80600530(void) { // getLobbyIndex()
 
 // Delay slot problem
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_80600674.s")
+
+extern u32 D_80744478;
+extern u8 D_80745290;
+extern u32 D_80767CC4;
+extern s16 D_8076AF00[8];
+extern u32 D_8076AF10;
+extern u8 D_8076AF14;
+
+/*
+Lag calculation formula
+incredibly beefy
+void func_80600674(void) {
+    s16 *lagboost_arrayaddr;
+    s32 lagboost_currtest;
+    s32 lagboost_pasttest;
+    s32 lagboost_min;
+    s32 lagboost_max;
+    s32 lagboost_new;
+    s32 temp_s0;
+    s32 lagboost_initialslot;
+    s32 lagboost_searchrange;
+    s32 var_t3;
+    s32 counter;
+    u32 temp_a2;
+    s32 i;
+
+    lagboost_min = 1;
+    lagboost_max = 0x14;
+    if (D_8076AF14 != 0) {
+        lagboost_new = D_80767A40.frame_count - D_8076AF10;
+        if (lagboost_new <= 0) {
+            lagboost_new = 1;
+        }
+        counter = 0;
+        D_8076AF00[D_80745290] = lagboost_new;
+        lagboost_initialslot = D_80745290 + 1;
+        D_80745290 = lagboost_initialslot;
+        if (lagboost_initialslot == 8) {
+            D_80745290 = 0;
+            lagboost_initialslot = 0;
+        }
+        if (D_80744478 >= 4U) {
+            lagboost_searchrange = 1;
+        } else {
+            lagboost_searchrange = 4;
+            if (D_80744478 < lagboost_new) {
+                lagboost_searchrange = 2;
+            }
+        }
+        var_t3 = lagboost_initialslot;
+        if (lagboost_searchrange > 0) {
+            temp_s0 = lagboost_searchrange & 3;
+            if (temp_s0 != 0) {
+                do {
+                    var_t3--;
+                    if (var_t3 < 0) {
+                        var_t3 = 7;
+                    }
+                    lagboost_currtest = D_8076AF00[var_t3];
+                    counter += 1;
+                    if (lagboost_currtest >= lagboost_min) {
+                        lagboost_min = lagboost_currtest;
+                    }
+                    if (lagboost_max >= lagboost_currtest) {
+                        lagboost_max = lagboost_currtest;
+                    }
+                } while (temp_s0 != counter);
+                if (counter != lagboost_searchrange) {
+                    goto loop_21;
+                }
+            } else {
+                do {
+loop_21:
+                    var_t3--;
+                    if (var_t3 < 0) {
+                        var_t3 = 7;
+                    }
+                    lagboost_arrayaddr = &D_8076AF00[var_t3];
+                    lagboost_pasttest = *lagboost_arrayaddr;
+                    var_t3--;
+                    counter += 4;
+                    if (lagboost_pasttest >= lagboost_min) {
+                        lagboost_min = lagboost_pasttest;
+                    }
+                    if (lagboost_max >= lagboost_pasttest) {
+                        lagboost_max = lagboost_pasttest;
+                    }
+                    for (i = 0; i < 3; i++) {
+                        lagboost_arrayaddr = &lagboost_arrayaddr[-1];
+                        if (var_t3 < 0) {
+                            lagboost_arrayaddr = &D_8076AF00[7];
+                            var_t3 = 7;
+                        }
+                        lagboost_pasttest = *lagboost_arrayaddr;
+                        if (i < 2) {
+                            var_t3--;
+                        }
+                        if (lagboost_pasttest >= lagboost_min) {
+                            lagboost_min = lagboost_pasttest;
+                        }
+                        if (lagboost_max >= lagboost_pasttest) {
+                            lagboost_max = lagboost_pasttest;
+                        }
+                    }
+                } while (counter != lagboost_searchrange);
+            }
+        }
+        if (
+            ((D_80744478 < lagboost_new) && (D_80744478 < lagboost_max)) ||
+            (lagboost_new < D_80744478) && (lagboost_min < D_80744478)
+        ) {
+            D_80744478 = lagboost_new;
+        }
+        if (object_timer >= 11U) {
+            temp_a2 = D_8076AF10 + D_80744478;
+            if (D_80767A40.frame_count < temp_a2) {
+                do {
+
+                } while (D_80767CC4 < temp_a2);
+            }
+        }
+    } else {
+        D_80744478 = D_80767A40.frame_count - D_8076AF10;
+    }
+    D_8076AF10 = D_80767A40.frame_count;
+}
+*/

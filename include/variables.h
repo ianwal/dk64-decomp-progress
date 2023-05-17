@@ -130,6 +130,7 @@ typedef struct {
     s32 unk0;
     u8 unk4[0x280 - 0x4];
     s32 unk280;
+    s32 frame_count;
 } Struct80767A40;
 
 extern Struct80767A40 D_80767A40;
