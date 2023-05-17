@@ -1164,8 +1164,22 @@ void func_806CF42C(Actor *arg0) {
     }
 }
 
-// Probably doable, character_change loop with cc_number_of_players, PaaD
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF4B8.s")
+void func_806CF4B8(Actor *arg0) {
+    s32 i;
+    PlayerAdditionalActorData *PaaD;
+
+    for (i = 0; i < cc_number_of_players; i++) {
+        if (character_change_array[i].does_player_exist != 0) {
+            PaaD = character_change_array[i].player_pointer->PaaD;
+            if ((arg0 == PaaD->unk1AC && PaaD->unk1AC != 0)
+                || (arg0 == PaaD->unk1B0 && PaaD->unk1B0 != 0)) {
+                PaaD->unk1AC = 0;
+                PaaD->unk1B0 = 0;
+                func_806CFF9C(character_change_array[i].player_pointer);
+            }
+        }
+    }
+}
 
 extern s32 D_8071FC40;
 extern u8 D_80750AD0;

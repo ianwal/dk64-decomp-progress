@@ -819,7 +819,6 @@ typedef struct {
 
 extern s16 D_807F94A8;
 extern Struct807F94C0 D_807F94C0[];
-extern u8 D_807F9510;
 
 typedef struct {
     s32 unk0;
@@ -830,7 +829,19 @@ typedef struct {
     s16 unk12;
 } Struct806685E0_arg0;
 
-s32 func_8066893C(void*);
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+} Struct8066893C;
+
+s32 func_8066893C(Struct8066893C*);
 void func_806689F0(s32, void*, s32);
 
 void func_806685E0(Struct806685E0_arg0 *arg0, f32 arg1) {
@@ -869,18 +880,6 @@ void func_806685E0(Struct806685E0_arg0 *arg0, f32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066893C.s")
 
 /*
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s16 unk10;
-} Struct8066893C;
-
 // TODO: I don't know why this doesn't match
 s32 func_8066893C(Struct8066893C *arg0) {
     f32 sp1C;
@@ -911,7 +910,22 @@ s32 func_8066893C(Struct8066893C *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80668E9C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669588.s")
+s32 func_80669930(void*);
+void func_80669830(s32, void*, s32);
+
+void func_80669588(s32 arg0, f32 arg1) {
+    if (D_807F9510 != 0xA) {
+        D_807F94C0[D_807F9510].unk0 = arg1;
+        if (func_80669930(arg0) != 0) {
+            D_807F94C0[D_807F9510].unk6 = 1;
+        } else {
+            D_807F94C0[D_807F9510].unk6 = 2;
+        }
+        func_80669830(0, arg0, 0);
+        D_807F94C0[D_807F9510].unk4 = D_807F94A8;
+        D_807F9510 += 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669650.s")
 

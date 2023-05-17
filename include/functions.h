@@ -136,7 +136,7 @@ void func_806017B4(u8 arg0);
 void func_806017E8(u8 arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4);
 void func_80601848(u8 arg0, f32 arg1, f32 arg2);
 void func_8060188C(u8 arg0, s32 arg1);
-s32 func_806018B4(u8 arg0);
+ALMicroTime func_806018B4(u8 arg0);
 void func_80679200(Actor*, Actor*, s32, u8, s32, s32);
 void func_80688370(Actor*, s32, f32);
 void func_806883F4(Actor* actor, s32 arg1, s16 arg2, f32 arg3);

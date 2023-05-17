@@ -86,23 +86,7 @@ typedef struct Struct807FD610 {
 extern Struct807FD610 D_807FD610[]; // Often indexed by cc_player_index
 extern OSPfs D_807F02D0[];
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    f32 unk8; // Used
-} GlobalASMStruct20_unk18;
-
-typedef struct {
-    u8 pad0[0x18];
-    GlobalASMStruct20_unk18 *unk18; // Used
-    s32 unk1C; // Used
-    s32 unk20;
-    s32 unk24;
-    s32 unk28; // Used
-    s32 unk2C;
-    u16 unk30; // Flags?
-} GlobalASMStruct20;
-extern GlobalASMStruct20 *D_8076BF20[];
+extern ALSeqPlayer *D_8076BF20[];
 
 typedef struct {
     s16 unk0; // X Position
@@ -365,6 +349,15 @@ typedef struct {
     s16 unk3E;
 } OM2_unk24;
 
+typedef struct OM2_unk74 OM2_unk74;
+
+struct OM2_unk74 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    s32 next;
+};
+
 typedef struct {
     s16 unk0;
     s8 unk2;
@@ -405,7 +398,7 @@ typedef struct object_model2 {
     s32 unk68;
     s32 unk6C;
     s32 unk70;
-    s32 unk74;
+    OM2_unk74 *unk74;
     OM2_unk78 *unk78; // used in func_80650AD8, weird format
     OM2_unk7C *unk7C; // labelled behavior_pointer in ScriptHawk
     s32 unk80;

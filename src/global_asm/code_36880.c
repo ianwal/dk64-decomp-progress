@@ -326,7 +326,29 @@ void func_80632FCC(s16 arg0, u8 arg1) {
 // Loop, struct arg1, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80633570.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806335B0.s")
+void func_806335B0(s32 arg0, u8 arg1, s32 arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
+    s32 var_v0;
+    OM2_unk74 *var_v1;
+
+    if (arg1 == 1) {
+        arg0 = func_80659470(arg0);
+    }
+    var_v1 = D_807F6000[arg0].unk74;
+    var_v0 = arg2 - 1;
+    while (var_v1 != 0 && var_v0 != 0) {
+        var_v1 = var_v1->next;
+        var_v0 -= 1;
+    }
+    if (var_v1 != 0) {
+        *arg3 = var_v1->unk0;
+        *arg4 = var_v1->unk4;
+        *arg5 = var_v1->unk8;
+    } else {
+        *arg5 = 0.0f;
+        *arg4 = 0.0f;
+        *arg3 = 0.0f;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063367C.s")
 

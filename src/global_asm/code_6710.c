@@ -21,11 +21,20 @@ extern f32 D_80770C18[];
 extern f32 D_80770C70[];
 extern u8 D_80770CE0[];
 
+extern f32 D_807458F4[];
+extern s16 D_80745924[];
+
+typedef struct {
+    s32 unk0[12];
+} Struct8074593C;
+
+extern Struct8074593C D_8074593C[];
+
 extern s32 func_80737E30(s32, u8);
 
 u8 func_80602430(s16 arg0);
 u8 func_8060245C(s16 arg0);
-void func_80602B60(s16 arg0, s32 arg1);
+void func_80602B60(s32 arg0, u8 arg1);
 void func_8060A60C(s32 arg0, f32 arg1);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80601A10.s")
@@ -93,9 +102,42 @@ void func_806025AC(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_806025D4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/playSong.s")
+void playSong(s32 arg0, f32 arg1) {
+    u8 i;
+    u8 temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602B60.s")
+    temp_v0 = func_8060245C(arg0);
+    if (arg0 != 0) {
+        s32 temp = D_807458DC[temp_v0];
+        if (arg0 != temp || (D_80745658[arg0] & 0x200)) {
+            D_807458DC[temp_v0] = arg0;
+            D_807458F4[temp_v0] = arg1;
+            D_80745924[temp_v0] = 0;
+            for (i = 0; i < 4; i++) {
+                D_8074593C[i].unk0[temp_v0] = 0;
+            }
+        }
+    }
+}
+
+void func_80602B60(s32 arg0, u8 arg1) {
+    u8 sp1F;
+    u8 temp_v0;
+
+    sp1F = func_8060245C(arg0);
+    temp_v0 = func_80602430(arg0);
+    if (arg0 != 0) {
+        if (arg0 == D_807458DC[sp1F]) {
+            D_807458DC[sp1F] = 0;
+            D_80745924[sp1F] = 0;
+            if (arg1 != 0) {
+                if (arg0 == D_80770560[temp_v0]) {
+                    alSeqpStop(D_8076BF20[temp_v0]);
+                }
+            }
+        }
+    }
+}
 
 void func_80602C0C(void) {
     u8 i;
@@ -115,20 +157,14 @@ void func_80602C6C(s32 arg0, f32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602CE0.s")
-
-extern s32 D_8074593C[];
-
-/*
 void func_80602CE0(s32 arg0, s32 arg1, u8 arg2) {
     s32 temp_v0;
 
     temp_v0 = func_8060245C(arg0);
     if (arg0 == D_807458DC[temp_v0]) {
-        D_8074593C[temp_v0 + arg2 * 0xC] = arg1;
+        D_8074593C[arg2].unk0[temp_v0] = arg1;
     }
 }
-*/
 
 f32 func_80602D4C(s32 arg0) {
     u8 temp_v0 = func_80602430(arg0);

@@ -5,11 +5,11 @@
 extern s32 D_8000DDCC;
 extern s32 D_8076D200;
 
-s32 func_80737E30(GlobalASMStruct20*, u8);
-void func_80737E50(GlobalASMStruct20*);
+s32 func_80737E30(ALSeqPlayer*, u8);
+void func_80737E50(ALSeqPlayer*);
 void func_80737F0C(s32, s32, u8);
 void func_80738080(s32, u8, u8);
-void func_807380CC(GlobalASMStruct20*, s32, u8);
+void func_807380CC(ALSeqPlayer*, s32, u8);
 void func_80738118(s32, s32, u8);
 void func_807382A0(s32, u8, u8, u8, u8);
 void func_80738400(s32, u8, u8, u8, s32);
@@ -107,9 +107,9 @@ void func_8060151C(u8 arg0, s32 arg1, s32 arg2) {
     for (i = 0; i < 0x10; i++) {
         if ((1 << i) & arg1) {
             if (arg2 != 0) {
-                D_8076BF20[arg0]->unk30 |= arg1;
+                D_8076BF20[arg0]->chanMask |= arg1;
             } else {
-                D_8076BF20[arg0]->unk30 &= (arg1 ^ 0xFFFF);
+                D_8076BF20[arg0]->chanMask &= (arg1 ^ 0xFFFF);
             }
         }
     }
@@ -154,11 +154,11 @@ void func_80601848(u8 arg0, f32 arg1, f32 arg2) {
 }
 
 void func_8060188C(u8 arg0, s32 arg1) {
-    D_8076BF20[arg0]->unk28 += arg1;
+    D_8076BF20[arg0]->nextDelta += arg1;
 }
 
-s32 func_806018B4(u8 arg0) {
-    return D_8076BF20[arg0]->unk1C;
+ALMicroTime func_806018B4(u8 arg0) {
+    return D_8076BF20[arg0]->curTime;
 }
 
 // Struct size 0xF8, 0x3B0
