@@ -87,17 +87,19 @@ extern u16 D_807FC930[];
 s32 func_805FEF10(s32 *arg0) {
     s32 found;
     s32 i;
+    GlobalASMStruct41* data_item;
 
+    data_item = &D_80744800[0];
     found = FALSE;
     i = 0;
     while (!found && i < 4) {
-        found = player_pointer->unk58 == D_80744800[i].unk0;
-        if (found) {
-            *arg0 = D_80744800[i].unk4;
-        }
         i++;
+        found = player_pointer->unk58 == data_item->unk0;
+        if (found) {
+            *arg0 = data_item->unk4;
+        }
+        data_item++;
     }
-    
     return found;
 }
 */
@@ -176,8 +178,61 @@ void func_805FF188(s16 arg0, u8 arg1) {
     D_8076AEF6 = arg1;
 }
 
-// Weird, accessing current_map as a struct
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_805FF1B0.s")
+typedef struct {
+    u16 void_map;
+    u16 dest_map;
+    u8 dest_exit;
+    u8 unk5;
+} struct_void_location;
+
+extern struct_void_location D_8074475C[];
+extern u8 D_80744828;
+extern u16 D_8076AEF4;
+extern u8 D_8076AEF6;
+
+void func_805FF1B0(s8 player_index) {
+    u16 pad;
+    u16 new_map;
+    s32 limit;
+    s32 i;
+    u16 new_exit;
+    u8 found_special_void;
+
+    limit = 0xB;
+    i = 0;
+    new_exit = 0;
+    found_special_void = FALSE;
+    if (D_80744828 != 0) {
+        new_map = D_8076AEF4; // Void Map
+        new_exit = D_8076AEF6; // Void Exit
+    } else {
+        found_special_void = FALSE;
+        if (func_805FEF74(current_map) != 0) {
+            new_map = (u16)current_map;
+        } else {
+            s32 level_index;
+            found_special_void = 0;
+            new_exit = 0;
+            level_index = getLevelIndex((u8)current_map, 0U);
+            new_map = *(u16*)(0x80744748 + (level_index << 1));
+            while ((!found_special_void) && (i < limit)) {
+                if (current_map == D_8074475C[i].void_map) {
+                    new_map = D_8074475C[i].dest_map;
+                    new_exit = D_8074475C[i].dest_exit;
+                    found_special_void = TRUE;
+                }
+                i++;
+            }
+        }
+    }
+    if (!found_special_void) {
+        func_805FFFC8();
+    }
+    func_805FF378(new_map, new_exit);
+    D_80744828 = 0;
+}
+
+
 
 void func_805FF2F4(void) {
     Maps map;
