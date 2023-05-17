@@ -561,7 +561,7 @@ us,.code,func_80687474,120,yes
 us,.code,func_806D2C54,88,yes
 us,.code,func_80636380,188,yes
 us,.code,func_8062D0CC,220,no
-us,.code,func_806019B8,88,no
+us,.code,func_806019B8,76,yes
 us,.code,func_806F9CD0,188,no
 us,.code,func_80676A0C,100,no
 us,.code,func_806E41B4,56,yes

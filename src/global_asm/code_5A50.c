@@ -11,7 +11,7 @@ void func_80737F0C(s32, s32, u8);
 void func_80738080(s32, u8, u8);
 void func_807380CC(ALSeqPlayer*, s32, u8);
 void func_80738118(s32, s32, u8);
-void func_807382A0(s32, u8, u8, u8, u8);
+void func_807382A0(s32, s32, u8, u8, u8);
 void func_80738400(s32, u8, u8, u8, s32);
 void func_807381D8(s32, f32, f32);
 void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
@@ -166,7 +166,11 @@ typedef struct {
 } struct_8076BF48;
 
 typedef struct {
-    u8 unk0[0x3B0];
+    u8 unk0[0xEC];
+} struct_sub_8076C328;
+
+typedef struct {
+    struct_sub_8076C328 unk0[4];
 } struct_8076C328;
 
 void func_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);                   /* extern */
@@ -177,9 +181,22 @@ void func_806018D4(u8 arg0, u8 arg1, s32 arg2) {
     func_80738E58(&D_8076BF48[arg0], &D_8076C328[arg0], arg1, arg2);
 }
 
-
-
 // Struct size 0xF8, 0x3B0, 0xEC
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5A50/func_8060193C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5A50/func_806019B8.s")
+void func_80738BB8(struct_8076BF48*, struct_sub_8076C328 *, s32, s32);             /* extern */
+/*
+Regalloc
+void func_8060193C(s32 arg0, s32 arg1) {
+    func_80738BB8(
+        &D_8076BF48[arg0 & 0xFF], 
+        &D_8076C328[arg0 & 0xFF].unk0[arg1 & 0xFF],
+        arg0 & 0xFF,
+        arg1 & 0xFF);
+}
+*/
+
+void func_806019B8(u8 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    func_807382A0(D_8076BF20[arg0], arg1, arg2, arg3, arg4);
+}
+
