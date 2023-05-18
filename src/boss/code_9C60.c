@@ -34,8 +34,7 @@ void func_8002DD7C(void) {
 
     for (i = 0; i < D_807FBB34; i++) {
         temp_a0 = D_807FB930[i].unk0;
-        // Actor behaviour: Damage Source (K. Rool's Glove)
-        if (temp_a0->unk58 == 0xAA) {
+        if (temp_a0->unk58 == ACTOR_BOSS_KROOL_GLOVE) {
             func_806782C0(temp_a0);
         }
     }
@@ -52,7 +51,7 @@ void func_8002E7A0(Actor *arg0) {
         temp_a0 = D_807FB930[i].unk0;
         if (!arg0 || temp_a0 != arg0) {
             // Actor behaviour: Banana Peel (Lanky Phase)
-            if (temp_a0->unk58 == 0xDE) {
+            if (temp_a0->unk58 == ACTOR_BOSS_KROOL_PEEL) {
                 temp_a0->object_properties_bitfield &= ~0x8000;
                 temp_a0->control_state = 1;
                 temp_a0->control_state_progress = 0;

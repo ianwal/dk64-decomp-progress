@@ -31,7 +31,7 @@ void func_806C6884(s16 arg0, s16 arg1, u16 arg2) {
         current_actor_pointer->unk178->unk2 = 0;
         current_actor_pointer->unk178->unk0 = 0xFF;
         D_807FDC98->unk3C = 1.0f;
-        if (current_actor_pointer->unk58 == 0xF0) {
+        if (current_actor_pointer->unk58 == ACTOR_SPOTLIGHT_FISH) {
             func_80604CBC(current_actor_pointer, 0x132, 0, 0, 0, 0xA0, 1.0f, 0);
         }
     }

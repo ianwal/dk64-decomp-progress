@@ -420,7 +420,7 @@ void func_806785D4(Actor *arg0) {
         func_8061130C(temp_a0_5);
     }
     func_8062D26C(arg0);
-    if (arg0->unk58 != 0x12B) { // TODO: ACTOR_TEXTBOX, enum I guess?
+    if (arg0->unk58 != ACTOR_TEXT_BUBBLE) {
         func_8070DA74(arg0);
     }
     func_8068C2F8(arg0);
@@ -877,7 +877,7 @@ void func_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
             if (arg2) {
                 sp3C = 0x30;
             }
-            if ((arg1 != NULL) && (arg1->unk58 == 0x116)) {
+            if ((arg1 != NULL) && (arg1->unk58 == ACTOR_PROJECTILE_SPIDER)) {
                 func_80686CF8(arg0);
                 switch (arg1->control_state_progress) {
                     case 1:

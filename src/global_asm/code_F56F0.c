@@ -72,14 +72,14 @@ void func_806F1048(Actor *arg0) {
 
     switch (actorBehaviourIndex) {
         case ACTOR_LANKY:
-        case 0xC6: // ACTOR_CUTSCENE_LANKY
+        case ACTOR_CUTSCENE_LANKY:
             PaaD->unk1F0 &= ~0x100;
         case ACTOR_DIDDY:
         case ACTOR_TINY:
         case ACTOR_CHUNKY:
-        case 0xC5: // ACTOR_CUTSCENE_DIDDY
-        case 0xC7: // ACTOR_CUTSCENE_TINY
-        case 0xC8: // ACTOR_CUTSCENE_CHUNKY
+        case ACTOR_CUTSCENE_DIDDY:
+        case ACTOR_CUTSCENE_TINY:
+        case ACTOR_CUTSCENE_CHUNKY:
             if (!(PaaD->unk1F0 & 0x40)) {
                 func_80613214();
             }

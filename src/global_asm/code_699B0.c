@@ -511,8 +511,7 @@ void func_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4) {
     s32 sp38;
     s32 sp34;
 
-    // Actor->behaviour == Camera
-    if (arg0->unk58 == 0xBC) {
+    if (arg0->unk58 == ACTOR_CAMERA) {
         D_807F94B3 = 1;
     } else {
         D_807F94B3 = 0;

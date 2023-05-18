@@ -111,7 +111,7 @@ void func_80698120(u8 arg0) {
     var_t0_2 = current_actor_pointer->animation_state->unk1C;
     if (aaD->unk0 > 2.0f) {
         if ((aaD->unkC < D_8075A268) && (D_8075A268 <= (aaD->unkC + aaD->unk4))) {
-            if (current_actor_pointer->unk58 == 0x74) {
+            if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
                 // func_80608528(D_8075A268, temp_s0_2, 0x257, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
                 func_80608528(current_actor_pointer, 0x257, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
                 var_v1_2 = 0;
@@ -122,14 +122,14 @@ void func_80698120(u8 arg0) {
             }
         }
         if ((aaD->unkC < D_8075A26C) && (D_8075A26C <= (aaD->unkC + aaD->unk4))) {
-            if (current_actor_pointer->unk58 == 0x74) {
+            if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
                 func_80608528(current_actor_pointer, 0x258, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
             } else {
                 func_80608528(current_actor_pointer, 0x1D, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
             }
         }
     }
-    if ((current_actor_pointer->unk58 != 0x74) && (aaD->unk0 > 10.0f)) {
+    if ((current_actor_pointer->unk58 != ACTOR_CHAIN) && (aaD->unk0 > 10.0f)) {
         if ((aaD->unkC < D_8075A270) && (D_8075A270 <= (aaD->unkC + aaD->unk4))) {
             func_80608528(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
         }
@@ -139,12 +139,12 @@ void func_80698120(u8 arg0) {
     }
 
     switch (current_actor_pointer->unk58) {
-        case 0x74:
-        case 0x44:
+        case ACTOR_CHAIN:
+        case ACTOR_UNKNOWN_68:
             sp63 = 1;
             break;
-        case 0x45:
-        case 0x21:
+        case ACTOR_VINE:
+        case ACTOR_VINE_BROWN:
             sp63 = 2;
             break;
     }
@@ -163,7 +163,7 @@ void func_80698120(u8 arg0) {
     } while (var_v1_2 < 0xE);
 
     // Vines (brown and green)
-    if ((current_actor_pointer->unk58 == 0x45) || (current_actor_pointer->unk58 == 0x21)) {
+    if ((current_actor_pointer->unk58 == ACTOR_VINE) || (current_actor_pointer->unk58 == ACTOR_VINE_BROWN)) {
         temp_v0_4 = &var_t0_2[var_v1_2];
         temp_v0_4->unk0 = -0x80;
         temp_v0_4->unk1 = 1;
@@ -227,7 +227,7 @@ void func_80698120(u8 arg0) {
         }
     }
     // Vines (brown and green)
-    if ((current_actor_pointer->unk58 == 0x21) || (current_actor_pointer->unk58 == 0x45)) {
+    if ((current_actor_pointer->unk58 == ACTOR_VINE_BROWN) || (current_actor_pointer->unk58 == ACTOR_VINE)) {
         current_actor_pointer->y_position = (func_80612D1C(aaD->unk20) * 5.0) + aaD->unk1C;
         aaD->unk20 += aaD->unk24;
     }

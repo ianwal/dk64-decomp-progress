@@ -628,7 +628,7 @@ void func_806A1008(u8 arg0, u8 arg1) {
 
     for (var_v0 = 0; var_v0 < D_807FBB34; var_v0++) {
         temp_a0 = D_807FB930[var_v0].unk0;
-        if (temp_a0->unk58 == 0x94 && (temp_a0->unk15F / 3) == arg0) {
+        if (temp_a0->unk58 == ACTOR_ROPE && (temp_a0->unk15F / 3) == arg0) {
             temp_a0->control_state = arg1;
             temp_a0->control_state_progress = 0;
         }

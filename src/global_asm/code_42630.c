@@ -1525,7 +1525,7 @@ void func_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
         }
         if (arg2 == 0) {
             if (var_s0 != NULL) {
-                if (var_s0->unk58 == 0x55) {
+                if (var_s0->unk58 == ACTOR_STEEL_KEG) {
                     PaaD->unk1F0 &= 0xFFDFFFFF;
                 }
             }

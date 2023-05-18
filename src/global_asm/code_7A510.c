@@ -401,7 +401,7 @@ u8 func_80676208(Actor *arg0) {
 
 s32 func_80676220(s16 arg0) {
     // Actor behaviour: Klump, Robo-Kremling, Kosha
-    if ((arg0 == 0xBB) || (arg0 == 0xEB) || (arg0 == 0x123)) {
+    if ((arg0 == ACTOR_KLUMP) || (arg0 == ACTOR_ROBO_KREMLING) || (arg0 == ACTOR_KOSHA)) {
         return FALSE;
     }
     return TRUE;

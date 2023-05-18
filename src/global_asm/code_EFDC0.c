@@ -393,7 +393,7 @@ void func_806EC1A8(void) {
         D_807FBB48->noclip_byte = 1;
     }
     extra_player_info_pointer->vehicle_actor_pointer = character_change_array[cc_player_index].unk2A0;
-    func_80613C48(D_807FBB48, D_807FBB48->unk58 == 2 ? 0x53 : 0x1C7, 0, 0);
+    func_80613C48(D_807FBB48, D_807FBB48->unk58 == ACTOR_DK ? 0x53 : 0x1C7, 0, 0);
 }
 
 void func_806EC2CC(void) {
@@ -590,7 +590,7 @@ void func_806ECDD4(void) {
 }
 
 void func_806ECE2C(void) {
-    if ((cc_number_of_players >= 2) || (D_807FBB48->unk58 != 6) || (character_change_array[cc_player_index].unk2C0 == 1)) {
+    if ((cc_number_of_players >= 2) || (D_807FBB48->unk58 != ACTOR_CHUNKY) || (character_change_array[cc_player_index].unk2C0 == 1)) {
         D_807FBB48->y_velocity = 260.0f;
         func_806CFE7C();
         extra_player_info_pointer->unk50 = 0;
@@ -880,7 +880,7 @@ void func_806EE2B8(void) {
     if (func_806EB400(D_807FBB48)) {
         phi_a1 = -1;
         func_806CA2AC();
-        if (character_change_array[cc_player_index].unk2A0 && character_change_array[cc_player_index].unk2A0->unk58 == 0x123) {
+        if (character_change_array[cc_player_index].unk2A0 && character_change_array[cc_player_index].unk2A0->unk58 == ACTOR_KOSHA) {
             phi_a1 = -2;
         }
         if (func_806C9974(cc_player_index, phi_a1)) {
@@ -1038,7 +1038,7 @@ void func_806EEA5C(void) {
     if (func_806EB400(D_807FBB48)) {
         extra_player_info_pointer->unkDC = character_change_array[cc_player_index].unk2A0;
         phi_v0 = 1;
-        if (extra_player_info_pointer->unkDC && (extra_player_info_pointer->unkDC->unk58 == 0x123)) {
+        if (extra_player_info_pointer->unkDC && (extra_player_info_pointer->unkDC->unk58 == ACTOR_KOSHA)) {
             phi_v0 = 2;
         }
         func_806EEAF8(phi_v0);
@@ -1115,7 +1115,7 @@ void func_806EFA3C(void) {
     sp24 = D_8075D380;
     scale = D_807FBB48->animation_state->scale_x;
     func_80677FA8(0x140, 0xB9); // Spawn potion actor 320
-    if (D_807FBB48->unk58 == 2) {
+    if (D_807FBB48->unk58 == ACTOR_DK) {
         scale = scale * 1.25;
     }
     func_8067B238(D_807FBB44, D_807FBB48, scale);
@@ -1198,7 +1198,7 @@ void func_806EFDFC(void) {
     D_807FBB48->control_state = 0x73;
     D_807FBB48->control_state_progress = 0;
     vehicle = extra_player_info_pointer->vehicle_actor_pointer;
-    if (!vehicle || vehicle->unk58 != 0x57) {
+    if (!vehicle || vehicle->unk58 != ACTOR_MINECART_BONUS) {
         D_807FBB48->y_rotation = func_80665DE0(character_change_array[cc_player_index].look_at_eye_x,
                                                character_change_array[cc_player_index].look_at_eye_z,
                                                D_807FBB48->x_position,
@@ -1226,7 +1226,7 @@ void func_806EFF34(void) {
     D_807FBB48->control_state = 0x74;
     D_807FBB48->control_state_progress = 0;
     vehicle = extra_player_info_pointer->vehicle_actor_pointer;
-    if (!vehicle || vehicle->unk58 != 0x57) {
+    if (!vehicle || vehicle->unk58 != ACTOR_MINECART_BONUS) {
         D_807FBB48->y_rotation = func_80665DE0(character_change_array[cc_player_index].look_at_eye_x,
                                                character_change_array[cc_player_index].look_at_eye_z,
                                                D_807FBB48->x_position,

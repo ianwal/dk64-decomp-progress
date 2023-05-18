@@ -363,15 +363,15 @@ s32 func_806F6644(s16 arg0, s32 arg1, u16 arg2) {
     }
 
     temp_a0 = D_807F6000[func_80659470(arg0)].unk8C;
-    if (temp_a0 & 8 && character_change_array[cc_player_index].player_pointer->unk58 != 2) {
+    if (temp_a0 & 8 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_DK) {
         return 0;
-    } else if (temp_a0 & 2 && character_change_array[cc_player_index].player_pointer->unk58 != 3) {
+    } else if (temp_a0 & 2 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_DIDDY) {
         return 0;
-    } else if (temp_a0 & 4 && character_change_array[cc_player_index].player_pointer->unk58 != 5) {
+    } else if (temp_a0 & 4 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_TINY) {
         return 0;
-    } else if (temp_a0 & 0x10 && character_change_array[cc_player_index].player_pointer->unk58 != 4) {
+    } else if (temp_a0 & 0x10 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_LANKY) {
         return 0;
-    } else if (temp_a0 & 1 && character_change_array[cc_player_index].player_pointer->unk58 != 6) {
+    } else if (temp_a0 & 1 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_CHUNKY) {
         return 0;
     }
     return 1;

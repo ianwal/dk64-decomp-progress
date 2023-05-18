@@ -515,8 +515,7 @@ s8 func_806C9830(s8 arg0, Actor *arg1) {
                     func_800268C0(1);
                 }
             } else if (actor->interactable & 4) {
-                // 0xAB is Orange from Krusha's gun
-                if ((actor->unk58 == ACTOR_PROJECTILE_ORANGE) || (actor->unk58 == 0xAB)) {
+                if ((actor->unk58 == ACTOR_PROJECTILE_ORANGE) || (actor->unk58 == ACTOR_PROJECTILE_ORANGE_KRUSHA)) {
                     phi_a2 = -3;
                     if (D_807FBB64 & 0x04000000) {
                         func_800268C0(2);

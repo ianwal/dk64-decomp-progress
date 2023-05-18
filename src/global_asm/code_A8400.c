@@ -879,7 +879,7 @@ void func_806A7600(s32 arg0) {
 
     sp34 = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        if (current_actor_pointer->unk58 == 0x93) {
+        if (current_actor_pointer->unk58 == ACTOR_BALLOON_KROOL) {
             sp34->unk6 = -1;
         } else {
             sp34->unk6 = func_80688C30(func_80688E68(current_actor_pointer));
@@ -915,16 +915,16 @@ void func_806A7600(s32 arg0) {
             default:
                 permanentFlagIndex = -1;
                 break;
-            case 0x5B: // Balloon (Diddy)
+            case ACTOR_BALLOON_DIDDY:
                 permanentFlagIndex = 6;
                 break;
-            case 0x6F: // Balloon (Chunky)
+            case ACTOR_BALLOON_CHUNKY:
                 permanentFlagIndex = 0x75;
                 break;
-            case 0x70: // Balloon (Tiny)
+            case ACTOR_BALLOON_TINY:
                 permanentFlagIndex = 0x42;
                 break;
-            case 0x71: // Balloon (Lanky)
+            case ACTOR_BALLOON_LANKY:
                 permanentFlagIndex = 0x46;
                 break;
         }
@@ -936,17 +936,17 @@ void func_806A7600(s32 arg0) {
         if (var_v0 != 0) {
             func_807149B8(1);
             var_a0_2 = TRUE;
-            if (current_actor_pointer->unk58 == 0x93) {
+            if (current_actor_pointer->unk58 == ACTOR_BALLOON_KROOL) {
                 var_a0_2 = FALSE;
-            } else if ((player_pointer->unk58 == 3) && (current_actor_pointer->unk58 == 0x5B)) {
+            } else if ((player_pointer->unk58 == ACTOR_DIDDY) && (current_actor_pointer->unk58 == ACTOR_BALLOON_DIDDY)) {
                 var_a0_2 = FALSE;
-            } else if ((player_pointer->unk58 == 6) && (current_actor_pointer->unk58 == 0x6F)) {
+            } else if ((player_pointer->unk58 == ACTOR_CHUNKY) && (current_actor_pointer->unk58 == ACTOR_BALLOON_CHUNKY)) {
                 var_a0_2 = FALSE;
-            } else if ((player_pointer->unk58 == 5) && (current_actor_pointer->unk58 == 0x70)) {
+            } else if ((player_pointer->unk58 == ACTOR_TINY) && (current_actor_pointer->unk58 == ACTOR_BALLOON_TINY)) {
                 var_a0_2 = FALSE;
-            } else if ((player_pointer->unk58 == 4) && (current_actor_pointer->unk58 == 0x71)) {
+            } else if ((player_pointer->unk58 == ACTOR_LANKY) && (current_actor_pointer->unk58 == ACTOR_BALLOON_LANKY)) {
                 var_a0_2 = FALSE;
-            } else if ((player_pointer->unk58 == 2) && (current_actor_pointer->unk58 == 0x72)) {
+            } else if ((player_pointer->unk58 == ACTOR_DK) && (current_actor_pointer->unk58 == ACTOR_BALLOON_DK)) {
                 var_a0_2 = FALSE;
             }
             if (var_a0_2 != 0) {
@@ -967,7 +967,7 @@ void func_806A7600(s32 arg0) {
         func_80686CF8(current_actor_pointer);
         func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x2BF, 0xFF, 0x7F, 0x1E, 0, 0.0f, 0);
         func_806782C0(current_actor_pointer);
-        if (current_actor_pointer->unk58 == 0x93) {
+        if (current_actor_pointer->unk58 == ACTOR_BALLOON_KROOL) {
             func_80724994(3, 1, 0x27, 0, 0);
             return;
         }

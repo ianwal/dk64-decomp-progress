@@ -144,7 +144,7 @@ int func_806769A8(s32 arg0, Actor *arg1, s32 arg2) {
 // TODO: beql and bnel instead of bne and beq
 // Returning the conditional doesn't work
 int func_80676A0C(s32 arg0, Actor *arg1, s32 arg2) {
-    if ((arg1->unk58 == 5) && (character_change_array[arg1->PaaD->unk1A4].unk2C0 != 1)) {
+    if ((arg1->unk58 == ACTOR_TINY) && (character_change_array[arg1->PaaD->unk1A4].unk2C0 != 1)) {
         return TRUE;
     }
     return FALSE;
@@ -220,7 +220,7 @@ void func_80676D00(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3) {
         if (temp_v0->unkD4 == 0) {
             if (player_pointer->control_state != 0x36) {
                 if (func_806EB400(player_pointer) != 0) {
-                    if (player_pointer->unk58 == 6) {
+                    if (player_pointer->unk58 == ACTOR_CHUNKY) {
                         if (character_change_array[temp_a2].unk2C0 == 2) {
                             if (player_pointer->control_state != 0x31) {
                                 if (arg0->interactable & 0x80) {
@@ -230,7 +230,7 @@ void func_80676D00(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3) {
                             return;
                         }
                     }
-                    if (arg0->unk58 == 0xBB) {
+                    if (arg0->unk58 == ACTOR_KLUMP) {
                         func_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x37, 0xFF, 0x7F, 0x1E, 0x5A, D_80759254, 0);
                         return;
                     }

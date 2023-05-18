@@ -149,13 +149,13 @@ loop_1:
         default:
             var_v1 = sp2C;
             break;
-        case 0xBD: // Cranky
+        case ACTOR_CRANKY: // Cranky
             var_v1 = &D_80033260;
             break;
-        case 0xBF: // Candy
+        case ACTOR_CANDY: // Candy
             var_v1 = &D_80033334;
             break;
-        case 0xBE: // Funky
+        case ACTOR_FUNKY: // Funky
             var_v1 = &D_80033408;
             break;
     }
@@ -267,7 +267,7 @@ void func_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
         arg0->unk12 = 0;
         arg0->unkE++;
         switch (current_actor_pointer->unk58) {
-            case 0xBF: // Candy
+            case ACTOR_CANDY: // Candy
                 var_v1 = 3;
                 var_a2 = 7;
                 var_t0 = 0xC;
@@ -304,7 +304,7 @@ void func_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                 sp44 = &D_80033500;
                 sp42 = 9;
                 break;
-            case 0xBD: // Cranky
+            case ACTOR_CRANKY: // Cranky
                 arg2 = 0;
                 sp2C = D_80750AC8;
                 var_v1 = 0;
@@ -343,7 +343,7 @@ void func_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                 D_80750AC8 = sp2C;
                 D_800334EC.unk0 = var_v1;
                 break;
-            case 0xBE: // Funky
+            case ACTOR_FUNKY: // Funky
                 sp44 = &D_80033514;
                 var_v1 = 3;
                 if (arg0->unkB == 3) {

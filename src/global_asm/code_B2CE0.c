@@ -264,7 +264,7 @@ s32 func_806B0770(void) {
 
     for (; !found && i < D_807FBB34; i++) {
         temp_a0 = D_807FB930[i].unk0;
-        if (temp_a0->unk58 == 0x29) {
+        if (temp_a0->unk58 == ACTOR_PROJECTILE_ORANGE) {
             dx = temp_a0->x_position - current_actor_pointer->x_position;
             dy = temp_a0->y_position - current_actor_pointer->y_position;
             dz = temp_a0->z_position - current_actor_pointer->z_position;

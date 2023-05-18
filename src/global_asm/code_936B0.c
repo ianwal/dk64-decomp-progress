@@ -47,7 +47,7 @@ void func_8068EA38(Actor **arg0) {
             (*arg0)->z_rotation = PaaD->vehicle_actor_pointer->z_rotation;
             (*arg0)->x_rotation = PaaD->vehicle_actor_pointer->x_rotation;
             (*arg0)->unkAC = PaaD->vehicle_actor_pointer->unkAC;
-            if (PaaD->vehicle_actor_pointer->unk58 == 0x12E) {
+            if (PaaD->vehicle_actor_pointer->unk58 == ACTOR_CAR_FACTORY_PLAYER) {
                 (*arg0)->unkB8 = vehicle->unkB8 * 10.0f;
             } else {
                 (*arg0)->unkB8 = vehicle->unkB8;

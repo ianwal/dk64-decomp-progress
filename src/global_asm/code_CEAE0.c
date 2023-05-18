@@ -438,7 +438,7 @@ void func_806CB53C(void) {
     s32 phi_s0;
     f32 phi_f0;
 
-    if (((D_807FBB48->unk58 == 8) || (D_807FBB48->unk58 == 9)) && (extra_player_info_pointer->unk1FD != 0)) {
+    if (((D_807FBB48->unk58 == ACTOR_RAMBI) || (D_807FBB48->unk58 == ACTOR_ENGUARDE)) && (extra_player_info_pointer->unk1FD != 0)) {
         if ((extra_player_info_pointer->unk1F0 & 0x800) && extra_player_info_pointer->unk23E == 0) {
             extra_player_info_pointer->unk23E = 0x1E;
             func_80687400();
@@ -491,7 +491,7 @@ void func_806CB53C(void) {
                 func_806D0468(D_807FBB48, 1);
                 phi_s0 = TRUE;
                 if (extra_player_info_pointer->unk1AC != 0) {
-                    if (D_807FBB48->unk58 == 6 && D_807FBB48->control_state != 0x4A) {
+                    if (D_807FBB48->unk58 == ACTOR_CHUNKY && D_807FBB48->control_state != 0x4A) {
                         D_807FBB48->control_state = 0x4A;
                         D_807FBB48->control_state_progress = 0;
                         func_80614EBC(D_807FBB48, 0x1CD);
@@ -520,10 +520,10 @@ void func_806CB53C(void) {
     if (extra_player_info_pointer->unk1CC != extra_player_info_pointer->unk1C0) {
         current_actor_pointer->unk64 |= 0x800;
         switch (current_actor_pointer->unk58) {
-            case 5:
+            case ACTOR_TINY:
                 current_actor_pointer->unk120 = D_8075C920;
                 break;
-            case 6:
+            case ACTOR_CHUNKY:
                 current_actor_pointer->unk120 = D_8075C924;
                 break;
             default:
@@ -535,7 +535,7 @@ void func_806CB53C(void) {
         current_actor_pointer->unk64 &= ~0x800;
     }
     if (extra_player_info_pointer->unk1F0 & 0x40) {
-        if (current_actor_pointer->unk58 != 6) {
+        if (current_actor_pointer->unk58 != ACTOR_CHUNKY) {
             current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
             current_actor_pointer->shadow_opacity -= 4;
             if (current_actor_pointer->shadow_opacity < 100) {
@@ -1422,7 +1422,7 @@ void func_806CFF9C(Actor *arg0) {
 
     if (D_807FBB64 & 0x80000) {
         vehicle = PaaD->vehicle_actor_pointer;
-        if ((vehicle) && (vehicle->unk58 == 0x1D)) {
+        if ((vehicle) && (vehicle->unk58 == ACTOR_MINECART)) {
             func_806D0150(arg0);
             return;
         }
@@ -1670,7 +1670,7 @@ s32 func_806D0964(s32 arg0, u8 playerIndex) {
 }
 
 void func_806D09E8(Actor *arg0) {
-    if ((arg0->unk58 == 4)
+    if ((arg0->unk58 == ACTOR_LANKY)
         && (((arg0->control_state == 0x3F)) || (arg0->control_state == 0x40))
         && !(D_807FBB68 & 0x40)
         && !func_80666A88()) {
@@ -2991,7 +2991,7 @@ void func_806D4010(void) {
             break;
         case 2:
             func_806CC8B8();
-            if (current_actor_pointer->unk58 == 5) {
+            if (current_actor_pointer->unk58 == ACTOR_TINY) {
                 func_806DF6D4(0x22);
             } else {
                 func_806DF6D4(0x21);
@@ -3061,7 +3061,7 @@ void func_806D428C(void) {
                 extra_player_info_pointer->unk2C = D_80753234[D_807FD584];
                 func_806CC8B8();
             }
-            if (current_actor_pointer->unk58 == 5) {
+            if (current_actor_pointer->unk58 == ACTOR_TINY) {
                 func_806DF6D4(0x22);
             } else {
                 func_806DF6D4(0x21);
@@ -3106,7 +3106,7 @@ void func_806D45A4(void) {
             break;
         case 2:
             func_806CC8B8();
-            if (current_actor_pointer->unk58 == 5) {
+            if (current_actor_pointer->unk58 == ACTOR_TINY) {
                 func_806DF6D4(0x22);
             } else {
                 func_806DF6D4(0x21);
@@ -4261,7 +4261,7 @@ void func_806D8FCC(void) {
         case 2:
             func_806CC8B8();
             func_806DF6D4(0x21);
-            if (current_actor_pointer->unk58 == 5) {
+            if (current_actor_pointer->unk58 == ACTOR_TINY) {
                 func_806DF6D4(0x22);
             } else {
                 func_806DF6D4(0x21);
@@ -4881,7 +4881,7 @@ void func_806DCA7C(Actor **arg0, s32 arg1) {
             } else {
             case 1:
                 func_806DCF60();
-                if (current_actor_pointer->unk58 == 5) {
+                if (current_actor_pointer->unk58 == ACTOR_TINY) {
                     func_806DF6D4(0x28);
                 } else {
                     func_806DF6D4(0x27);
@@ -5010,7 +5010,7 @@ void func_806DD874(void) {
             func_806CC948();
             break;
         case 2:
-            if (current_actor_pointer->unk58 == 5) {
+            if (current_actor_pointer->unk58 == ACTOR_TINY) {
                 func_806DF6D4(0x2A);
             } else {
                 func_806DF6D4(0x29);
@@ -7688,7 +7688,7 @@ void func_806E9070(void) {
         extra_player_info_pointer->vehicle_actor_pointer->y_velocity = D_80750338;
         extra_player_info_pointer->unk58 = D_80767CC0 - 0x1E;
         func_80614E78(current_actor_pointer, 0x7C);
-        if (current_actor_pointer->unk58 == 2) {
+        if (current_actor_pointer->unk58 == ACTOR_DK) {
             func_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, 0x294);
         } else {
             func_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, 0x293);

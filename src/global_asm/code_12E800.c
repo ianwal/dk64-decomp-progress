@@ -88,7 +88,7 @@ void func_80729B00(void) {
             }
         }
     }
-    if ((current_actor_pointer->unk58 != 0xAF) && (current_actor_pointer->control_state == 0x37) && (current_actor_pointer->unk138 != 0)) {
+    if ((current_actor_pointer->unk58 != ACTOR_KABOOM) && (current_actor_pointer->control_state == 0x37) && (current_actor_pointer->unk138 != 0)) {
         current_actor_pointer->unk138 = 0;
     }
     func_806663F8();
@@ -476,7 +476,7 @@ u8 func_8072C670(u8 arg0, s8 *arg1) {
     *arg1 = 1;
     if (current_actor_pointer->interactable & 2) {
         if (current_actor_pointer->control_state != 0x15) {
-            if (D_807FDC94->unk58 == 6) {
+            if (D_807FDC94->unk58 == ACTOR_CHUNKY) {
                 if (character_change_array->unk2C0 == 2) {
                     if (cc_number_of_players != 1) {
                         goto block_5;
@@ -636,7 +636,7 @@ void func_8072D714(Actor *arg0, s32 arg1) {
     }
     current_actor_pointer->unk138 &= 0xFFFF7FFF;
     current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
-    if ((arg0 == NULL) || (arg0 == D_807FDC94) || (arg0->unk58 == 0x2B)) {
+    if ((arg0 == NULL) || (arg0 == D_807FDC94) || (arg0->unk58 == ACTOR_PROJECTILE_FEATHER)) {
         func_8072D9D4();
     }
     enemies_killed += 1;

@@ -305,10 +305,10 @@ void func_806B88B8(void) {
     if ((D_807FDC90->unk2C != 0) && (temp_s0->unk0_s16[0] == 0)) {
         func_806907F0(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         switch (current_actor_pointer->unk58) {
-            case 0xDC:
+            case ACTOR_CANNON_SEASICK_0:
                 sp36 = 0x37;
                 break;
-            case 0xDF:
+            case ACTOR_FIREBALL_SPAWNER:
                 sp36 = 0x1E;
                 break;
         }

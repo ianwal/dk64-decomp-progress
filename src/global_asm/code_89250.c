@@ -70,19 +70,19 @@ void func_806846B4(f32 xPosition, f32 yPosition, f32 zPosition, f32 xzScale, f32
     if (arg5) {
         switch (arg5->unk58) {
             case ACTOR_TINY:
-            case 0xF4: // TODO: ACTOR_KASPLAT_TINY
+            case ACTOR_KASPLAT_TINY:
                 phi_a1 = 0xD1;
                 break;
             case ACTOR_LANKY:
-            case 0xF3: // TODO: ACTOR_KASPLAT_LANKY
+            case ACTOR_KASPLAT_LANKY:
                 phi_a1 = 0xD0;
                 break;
             case ACTOR_CHUNKY:
-            case 0xF5: // TODO: ACTOR_KASPLAT_CHUNKY
+            case ACTOR_KASPLAT_CHUNKY:
                 phi_a1 = 0xCF;
                 break;
             case ACTOR_DIDDY:
-            case 0xF2: // TODO: ACTOR_KASPLAT_DIDDY
+            case ACTOR_KASPLAT_DIDDY:
                 phi_a1 = 0xAE;
                 break;
         }
@@ -541,7 +541,7 @@ void func_8068613C(Actor *arg0) {
     } else {
         var_f20 = 1.0f;
     }
-    if (arg0->unk58 == 0x1E) {
+    if (arg0->unk58 == ACTOR_BOSS_PROJECTILE_FIREBALL) {
         var_f20 *= 2;
         func_8068588C(arg0, 0, 4.0f, arg0->x_position, arg0->y_position, arg0->z_position, -0x96);
         func_806782C0(arg0);
@@ -728,7 +728,7 @@ void func_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
         func_806595F0(1);
         func_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 150.0f, 0, 0x96, 0x64, 0xFF);
     }
-    if ((current_actor_pointer->unk58 == 0xB9) && (((rand() >> 0xF) % 1000) >= 0x385)) {
+    if ((current_actor_pointer->unk58 == ACTOR_BOSS_ARMY_DILLO) && (((rand() >> 0xF) % 1000) >= 0x385)) {
         func_806877C8(((((rand() >> 0xF) % 32767) % 10) + 0xD));
         func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, ((rand() >> 0xF) % 1000) >= 0x1F5 ? 0x8A : 0xA1, 0xFF, 0x7F, 0x28, 0, D_80759BA8, 0);
     }
