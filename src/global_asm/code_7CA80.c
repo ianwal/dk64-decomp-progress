@@ -860,79 +860,80 @@ ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, s32 arg
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_806794EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679DC4.s")
-
 extern u8 D_807FBB85;
 extern s32 D_8071F758; // TODO: Datatype
 extern s32 D_80720E2C; // TODO: Datatype
 
-/*
-// TODO: Close
+void func_80686CF8(Actor *actor);
+
 void func_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
     s32 sp3C;
     s32 var_a2;
-    s32 var_v0;
     u16 temp_v0_2;
-    PlayerAdditionalActorData *temp_v1;
+    s32 var_v0;
+    s32 temp;
 
+    var_a2 = arg2;
     D_807FBB85 = 1;
-    if ((arg0 == D_807FBB48) && ((var_a2 = 1, (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 != 2)) || (arg1 == NULL) || !(arg1->interactable & 2))) {
-        sp3C = arg2 != 0 ? 0x30 : 0x2E;
-        if ((arg1 != NULL) && (arg1->unk58 == 0x116)) {
-            func_80686CF8(arg0);
+    if ((arg0 == D_807FBB48)) {
+        if ((((character_change_array[extra_player_info_pointer->unk1A4].unk2C0 != 2)) || (arg1 == NULL) || !(arg1->interactable & 2))) {
+            sp3C = 0x2E;
             var_a2 = TRUE;
-            switch (arg1->control_state_progress) {
-                case 1:
-                    temp_v1 = extra_player_info_pointer;
-                    var_a2 = 0;
-                    temp_v1->unk1F0 = temp_v1->unk1F0 ^ 0x80;
-                    break;
-                case 2:
-                    sp3C = 0x27;
-                    break;
-                case 3:
-                    func_807149FC(0xF0);
-                    func_807149B8(1);
-                    func_8071498C(&D_8071F758);
-                    func_80714C08(&D_80720E2C, 0.4f, arg0, 1, 2);
-                    func_807149FC(0xF0);
-                    func_807149B8(1);
-                    func_8071498C(&D_8071F758);
-                    func_80714C08(&D_80720E2C, 0.38f, arg0, 5, 2);
-                    func_807149FC(0xF0);
-                    func_807149B8(1);
-                    func_8071498C(&D_8071F758);
-                    func_80714C08(&D_80720E2C, 0.3f, arg0, 6, 2);
-                    var_a2 = FALSE;
-                    extra_player_info_pointer->unk1F0 |= 0x08000000;
-                    break;
+            if (arg2) {
+                sp3C = 0x30;
             }
-            extra_player_info_pointer->unk200 = 0xF0;
-        } else if ((arg1 != NULL) && ((((arg1->interactable & 1) != 0)) || (arg1->interactable & 4) || (arg1->interactable & 2))) {
-            var_a2 = TRUE;
-            if (func_80714608(0) != 0) {
-                var_a2 = TRUE;
-                if (func_806D0DE4(arg0, arg1, 1) != 0) {
-                    sp3C = 0x31;
-                } else {
-                    var_v0 = 1;
-                    if (arg1->interactable & 4) {
-                        var_v0 = 3;
-                    }
-                    if ((arg1->control_state != 0x28) && (var_v0 < 3)) {
-                        sp3C = 0x2B;
+            if ((arg1 != NULL) && (arg1->unk58 == 0x116)) {
+                func_80686CF8(arg0);
+                switch (arg1->control_state_progress) {
+                    case 1:
+                        var_a2 = FALSE;
+                        extra_player_info_pointer->unk1F0 = extra_player_info_pointer->unk1F0 ^ 0x80;
+                        break;
+                    case 2:
+                        sp3C = 0x27;
+                        break;
+                    case 3:
+                        temp = &D_8071F758;
+                        func_807149FC(0xF0);
+                        func_807149B8(1);
+                        func_8071498C(temp);
+                        func_80714C08(&D_80720E2C, 0.4f, arg0, 1, 2);
+                        func_807149FC(0xF0);
+                        func_807149B8(1);
+                        func_8071498C(temp);
+                        func_80714C08(&D_80720E2C, 0.38f, arg0, 5, 2);
+                        func_807149FC(0xF0);
+                        func_807149B8(1);
+                        func_8071498C(temp);
+                        func_80714C08(&D_80720E2C, 0.3f, arg0, 6, 2);
+                        var_a2 = FALSE;
+                        extra_player_info_pointer->unk1F0 |= 0x08000000;
+                        break;
+                }
+                extra_player_info_pointer->unk200 = 0xF0;
+            } else if ((arg1 != NULL) && ((((arg1->interactable & 1) != 0)) || (arg1->interactable & 4) || (arg1->interactable & 2))) {
+                if (func_80714608(0) != 0) {
+                    if (func_806D0DE4(arg0, arg1) != 0) {
+                        sp3C = 0x31;
                     } else {
-                        sp3C = 0xE;
+                        var_v0 = 1;
+                        if (arg1->interactable & 4) {
+                            var_v0 = 3;
+                        }
+                        if ((arg1->control_state != 0x28) && (var_v0 < 3)) {
+                            sp3C = 0x2B;
+                        } else {
+                            sp3C = 0xE;
+                        }
                     }
                 }
             }
-        }
-        if (var_a2 != 0) {
-            func_806EB0C0(sp3C, arg1, cc_player_index);
+            if (var_a2 != 0) {
+                func_806EB0C0(sp3C, arg1, cc_player_index);
+            }
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A09C.s")
 
