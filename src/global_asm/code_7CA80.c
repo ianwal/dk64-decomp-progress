@@ -101,8 +101,6 @@ void func_80677EC8(s32 arg0) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80677ED0.s")
-
 /*
 Functions in this table (D_8074DA30):
 All take 1 param and are tiny (some are empty bodies)
@@ -135,24 +133,26 @@ typedef struct {
 
 extern s32 func_80678050(u16);
 
-/*
-// TODO: Extremely close
 s32 func_80677ED0(Struct80677ED0 *arg0) {
-    if (func_80678050(arg0->unk0) != 0 && ((D_8074DA30[D_8074D8D4[arg0->unk0]](&arg0->unk4) != 0))) {
-        D_807FBB44->x_position = arg0->unkC;
-        D_807FBB44->y_position = arg0->unk10;
-        D_807FBB44->z_position = arg0->unk14;
-        D_807FBB44->unk124 = arg0->unk1C;
-        D_807FBB44->y_rotation = arg0->unk18;
-        D_807FBB44->unk15C = arg0->unk1A;
-        if (arg0->unk8 != 0) {
-            func_80614EBC(D_807FBB44, arg0->unk8);
+    s32 master_type;
+
+    if (func_80678050(arg0->unk0)) {
+        master_type = D_8074D8D4[arg0->unk0];
+        if(D_8074DA30[master_type](&arg0->unk4)) {
+            D_807FBB44->x_position = arg0->unkC;
+            D_807FBB44->y_position = arg0->unk10;
+            D_807FBB44->z_position = arg0->unk14;
+            D_807FBB44->unk124 = arg0->unk1C;
+            D_807FBB44->y_rotation = arg0->unk18;
+            D_807FBB44->unk15C = arg0->unk1A;
+            if (arg0->unk8 != 0) {
+                func_80614EBC(D_807FBB44, arg0->unk8);
+            }
+            return TRUE;
         }
-        return TRUE;
     }
     return FALSE;
 }
-*/
 
 s32 func_80677FA8(Actors arg0, void *arg1) {
     s32 master_type;
