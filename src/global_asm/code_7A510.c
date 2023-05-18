@@ -257,8 +257,6 @@ s32 func_80675E3C(GlobalASMStruct57 *arg0, s16 arg1, s16 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675EE0.s")
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -274,8 +272,6 @@ extern Struct80748FE8 D_80748FE8[];
 
 void func_8067605C(Actor *arg0, u8 arg1);
 
-/*
-// TODO: Shockingly close, t4 t2 mixup in comparison and missing unconditional branch at end of loop
 void func_80675EE0(Actor *arg0) {
     AnimationStateUnk0 *temp_v0;
     s32 i;
@@ -285,6 +281,7 @@ void func_80675EE0(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
     u8 unk0;
     u8 var_t3;
+    s32 temp;
 
     temp_v0 = arg0->animation_state->unk0;
     var_a1 = FALSE;
@@ -294,7 +291,8 @@ void func_80675EE0(Actor *arg0) {
     var_a3 = FALSE;
     var_t3 = TRUE;
 
-    if (temp_v0->unk10 == -1) {
+    temp = temp_v0->unk10;
+    if (temp == -1) {
         arg0->unk132 = 0;
         return;
     }
@@ -326,18 +324,18 @@ void func_80675EE0(Actor *arg0) {
             }
             var_t3 = FALSE;
         }
-        i++;
         if (var_a3) {
             i = 0;
             var_a3 = FALSE;
             var_a1 = FALSE;
+        } else {
+            i++;
         }
     } while (!var_a1);
 
     arg0->unk132 = 0;
     arg0->unk136 = 0;
 }
-*/
 
 typedef struct {
     u16 unk0; // Actor behaviour
