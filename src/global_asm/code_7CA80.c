@@ -547,6 +547,7 @@ s32 func_8067B3F4(s32 arg0);
 void func_80679178(Actor *arg0);
 void func_80678E6C(Actor *arg0);
 void func_80678E14(Actor *arg0);
+void func_806790F4(u8);
 
 void func_80678CC8(Actor *arg0) {
     u32 temp_v0;
@@ -681,25 +682,25 @@ void func_80679064(void *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_806790F4.s")
+typedef struct {
+    void(* unk0)(void*);
+    u8 unk4[4];
+    s32 unk8;
+} struct_807FBFE0;
 
-/*
-void func_806790F4(s32 arg0) {
-    void **var_s0;
-    void *temp_v0;
+void func_806790F4(u8 arg0) {
+    struct_807FBFE0 *temp_v0;
+    s32 i = 0;
 
-    var_s0 = D_807FBFE0;
-    do {
-        temp_v0 = *var_s0;
-        if ((temp_v0 != NULL) && ((arg0 & 0xFF) == temp_v0->unk4)) {
+    for (i = 0; i < 4; i++) {
+        temp_v0 = D_807FBFE0[i];
+        if ((temp_v0 != NULL) && (arg0 == temp_v0->unk4[0])) {
             temp_v0->unk0(&temp_v0->unk8);
-            func_8061130C(*var_s0);
-            *var_s0 = NULL;
+            func_8061130C(D_807FBFE0[i]);
+            D_807FBFE0[i] = NULL;
         }
-        var_s0 += 4;
-    } while (var_s0 != &actor_list);
+    }
 }
-*/
 
 // This matched without a temp before, now it needs one
 // This compiler owns

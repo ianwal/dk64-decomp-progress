@@ -2260,7 +2260,7 @@ us,.code,func_806E5488,388,yes
 us,.code,func_80709ACC,248,no
 us,.code,func_8068A20C,64,yes
 us,.code,func_8067AE0C,76,yes
-us,.code,func_806790F4,132,no
+us,.code,func_806790F4,132,yes
 us,.code,func_8067B2DC,280,yes
 us,.code,func_806D34B4,124,no
 us,.code,func_80694D20,1168,no
