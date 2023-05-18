@@ -110,7 +110,7 @@ us,.code,func_807180F4,48,yes
 us,.code,func_8066DB40,500,no
 us,.code,func_80700088,548,no
 us,.code,func_80695B50,92,yes
-us,.code,func_80677FA8,108,no
+us,.code,func_80677FA8,108,yes
 us,.code,func_806734E4,548,no
 us,.code,func_8063E0D4,1248,no
 us,.code,func_806E1BA4,404,no
