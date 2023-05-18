@@ -20,24 +20,21 @@ void func_80659320(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E020/func_80659350.s")
-
-/*
-// TODO: Pretty close
 void func_80659350(void) {
     s32 i;
     GlobalASMStruct78 *temp;
+    GlobalASMStruct78 *temp_1;
 
     for (i = 0; i < 100; i++) {
         temp = D_807F7370[i];
-        while (temp->unk8) {
-            func_8061130C(temp->unk8);
-            // temp = temp->unk8;
+        while (temp) {
+            temp_1 = temp->unk8;
+            func_8061130C(temp);
+            temp = temp_1;
         }
     }
     func_80659320();
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E020/func_806593C8.s")
 

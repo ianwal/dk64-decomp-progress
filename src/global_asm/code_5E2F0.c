@@ -24,8 +24,8 @@ extern f32 D_807F7EE0;
 extern f32 D_807F7EE4;
 extern f32 D_807F7EE8;
 extern s16 D_807F7EFA;
-extern u16 D_807F7EFC;
-extern u16 D_807F7EFE;
+extern s16 D_807F7EFC;
+extern s16 D_807F7EFE;
 
 void func_806595F0(u8 arg0) {
     D_807F7EF8 = arg0;
@@ -281,20 +281,21 @@ extern f32 D_807F7EE4;
 /*
 void func_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA) {
     Struct807F7500 *temp_v0;
+    s32 slot;
 
     if (D_80748300 != 0x10) {
         temp_v0 = &D_807F7500[D_80748300];
         temp_v0->unk34 = D_807F7EFE;
-        temp_v0->unk3A = D_807F7EF8;
-        temp_v0->unk30 = D_807F7EFA;
-        temp_v0->unk32 = D_807F7EFC;
-        temp_v0->unk8 = D_807F7EE8;
-        temp_v0->unk0 = D_807F7EE4;
-        temp_v0->unk18 = arg0;
-        temp_v0->unk1C = arg1;
-        temp_v0->unkC = D_807F7EDC;
-        temp_v0->unk4 = D_807F7ED8;
-        temp_v0->unk39 = arg7;
+        D_807F7500[D_80748300].unk3A = D_807F7EF8;
+        D_807F7500[D_80748300].unk30 = D_807F7EFA;
+        D_807F7500[D_80748300].unk32 = D_807F7EFC;
+        D_807F7500[D_80748300].unk8 = D_807F7EE8;
+        D_807F7500[D_80748300].unk0 = D_807F7EE4;
+        D_807F7500[D_80748300].unk18 = arg0;
+        D_807F7500[D_80748300].unk1C = arg1;
+        D_807F7500[D_80748300].unkC = D_807F7EDC;
+        D_807F7500[D_80748300].unk4 = D_807F7ED8;
+        D_807F7500[D_80748300].unk39 = arg7;
         D_80748300++;
         temp_v0->unk10 = D_807F7EE0;
         temp_v0->unk20 = arg2;
@@ -309,8 +310,8 @@ void func_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
         D_807F7EDC = D_807F7ED0;
         D_807F7EF8 = 0;
         D_807F7EFA = -1;
-        D_807F7EFC = 0x2BC;
-        D_807F7EFE = 0x258;
+        D_807F7EFC = 700;
+        D_807F7EFE = 600;
         D_807F7EE0 = D_807F7ED4;
         D_807F7EE4 = 25.0f;
         D_807F7EE8 = 65.0f;
@@ -357,10 +358,13 @@ void func_8065BE74(s16 arg0) {
     s32 i;
 
     if (D_807F7EC8 != 0xC) {
-        for (i = 0; i < D_807F7EC8; i++) {
-            if (D_807F78C0[arg0].unk3F == D_807F7BC8[i].unk3F) {
-                memcpy(&D_807F7BC8[D_807F7EC8++], &D_807F78C0[arg0], sizeof(Struct807F78C0));
-                break;
+        i = 0;
+        if (D_807F7EC8 > 0) {
+            for (i = 0; i < D_807F7EC8; i++) {
+                if (D_807F78C0[arg0].unk3F == D_807F7BC8[i].unk3F) {
+                    memcpy(&D_807F7BC8[D_807F7EC8++], &D_807F78C0[arg0], sizeof(Struct807F78C0));
+                    break;
+                }
             }
         }
     }
