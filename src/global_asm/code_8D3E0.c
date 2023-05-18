@@ -478,79 +478,78 @@ typedef struct {
 } StackStructThing_80689418;
 
 /*
-// TODO: Made good progress
+// TODO: Extremely close
 void func_80689418(void) {
-    StackStructThing_80689418 tempStruct;
     ActorSpawner *currentSpawner;
+    StackStructThing_80689418 tempStruct;
+    s32 max;
     f64 temp_f20;
-    s16 *var_v0;
-    s16 temp_a1;
-    s32 var_a0;
-    s32 var_v1;
-    GlobalASMStruct_8074E8B0 *temp_v0;
+    s32 i;
 
+    max = 0x80;
     currentSpawner = actor_spawner_pointer;
-    temp_f20 = D_80759C80;
-    while (currentSpawner != NULL) {
-        if (currentSpawner->unk48 != 0) {
-            if (currentSpawner->drawing_code(currentSpawner) != 0) {
-                if (!(currentSpawner->tied_actor->object_properties_bitfield & 0x200000)) {
-                    func_80678458(currentSpawner->tied_actor);
-                    currentSpawner->unk48 = 0;
-                    currentSpawner->unk10 = currentSpawner->tied_actor->x_position;
-                    currentSpawner->unk14 = currentSpawner->tied_actor->y_position;
-                    currentSpawner->unk18 = currentSpawner->tied_actor->z_position;
-                    currentSpawner->unk4A = currentSpawner->tied_actor->unk12C;
-                    func_80613794(currentSpawner->tied_actor, 0);
-                    func_80613794(currentSpawner->tied_actor, 1);
-                    func_80613794(currentSpawner->tied_actor, 2);
-                }
-            }
-        } else if (currentSpawner->unk5C(currentSpawner) != 0) {
-            var_v1 = 0;
-            var_a0 = FALSE;
-            if (currentSpawner->tied_actor == NULL) {
-                temp_a1 = currentSpawner->actor_type + 0x10;
-                var_v0 = &D_8074E8B0[0];
-loop_9:
-                if (temp_a1 == *var_v0) {
-                    var_a0 = TRUE;
-                } else {
-                    var_v1++;
-                    var_v0++;
-                }
-                if ((var_a0 == 0) && (var_v1 < 0x80)) {
-                    goto loop_9;
-                }
-                tempStruct.sp5C = temp_a1;
-                tempStruct.sp64 = D_8074E8B0[var_v1].unk4;
-                tempStruct.sp60 = D_8074E8B0[var_v1].unk2;
-                tempStruct.sp68 = currentSpawner->x_position;
-                tempStruct.sp6C = currentSpawner->y_position;
-                tempStruct.sp70 = currentSpawner->z_position;
-                tempStruct.sp74 = currentSpawner->y_rotation;
-                tempStruct.sp76 = 0;
-                tempStruct.sp78 = &currentSpawner->pad24[4];
-                if (func_80677ED0(&tempStruct) != 0) {
-                    currentSpawner->tied_actor = D_807FBB44;
-                    currentSpawner->unk48 = 1;
-                    D_807FBB44->unk11C = currentSpawner->unk50;
-                    if (D_807FBB44->animation_state != NULL) {
-                        D_807FBB44->animation_state->scale_x = currentSpawner->unk20 * temp_f20;
-                        D_807FBB44->animation_state->scale_y = currentSpawner->unk20 * temp_f20;
-                        D_807FBB44->animation_state->scale_z = currentSpawner->unk20 * temp_f20;
+    if (currentSpawner != NULL) {
+        temp_f20 = D_80759C80;
+        do {
+            if (currentSpawner->unk48 != 0) {
+                if (currentSpawner->drawing_code(currentSpawner) != 0) {
+                    if (!(currentSpawner->tied_actor->object_properties_bitfield & 0x200000)) {
+                        func_80678458(currentSpawner->tied_actor);
+                        currentSpawner->unk48 = 0;
+                        currentSpawner->unk10 = currentSpawner->tied_actor->x_position;
+                        currentSpawner->unk14 = currentSpawner->tied_actor->y_position;
+                        currentSpawner->unk18 = currentSpawner->tied_actor->z_position;
+                        currentSpawner->unk4A = currentSpawner->tied_actor->unk12C;
+                        func_80613794(currentSpawner->tied_actor, 0);
+                        func_80613794(currentSpawner->tied_actor, 1);
+                        func_80613794(currentSpawner->tied_actor, 2);
                     }
                 }
-            } else if (currentSpawner->unk48 == 0) {
-                if (currentSpawner->unk58 != 0) {
-                    currentSpawner->tied_actor->unk0 = func_80612E90(currentSpawner->tied_actor, currentSpawner->unk58, 0);
+            } else if (currentSpawner->unk5C(currentSpawner) != 0) {
+                u8 var_a0;
+                i = 0;
+                var_a0 = FALSE;
+                if (currentSpawner->tied_actor == NULL) {
+                    s16 temp_a1;
+                    temp_a1 = currentSpawner->actor_type + 0x10;
+                    while (!var_a0 && (i < max)) {
+                        if (temp_a1 == D_8074E8B0[i].unk0) {
+                            var_a0 = TRUE;
+                        } else {
+                            i++;
+                        }
+                    }
+                    tempStruct.sp5C = temp_a1;
+                    tempStruct.sp64 = D_8074E8B0[i].unk4;
+                    tempStruct.sp60 = D_8074E8B0[i].unk2;
+                    tempStruct.sp68 = currentSpawner->x_position;
+                    tempStruct.sp6C = currentSpawner->y_position;
+                    tempStruct.sp70 = currentSpawner->z_position;
+                    tempStruct.sp74 = currentSpawner->y_rotation;
+                    tempStruct.sp76 = 0;
+                    tempStruct.sp78 = &currentSpawner->pad24[0];
+                    if (func_80677ED0(&tempStruct) != 0) {
+                        currentSpawner->tied_actor = D_807FBB44;
+                        currentSpawner->unk48 = 1;
+                        D_807FBB44->unk11C = currentSpawner->unk50;
+                        if (D_807FBB44->animation_state != NULL) {
+                            D_807FBB44->animation_state->scale_x = currentSpawner->unk20 * temp_f20;
+                            D_807FBB44->animation_state->scale_y = currentSpawner->unk20 * temp_f20;
+                            D_807FBB44->animation_state->scale_z = currentSpawner->unk20 * temp_f20;
+                        }
+                    }
+                } else if (currentSpawner->unk48 == 0) {
+                    if (currentSpawner->unk58 != 0) {
+                        currentSpawner->tied_actor->unk0 = func_80612E90(currentSpawner->tied_actor, currentSpawner->unk58, 0);
+                    }
+                    func_80678428(currentSpawner->tied_actor);
+                    currentSpawner->unk48 = 1;
                 }
-                func_80678428(currentSpawner->tied_actor);
-                currentSpawner->unk48 = 1;
             }
-        }
-        currentSpawner = currentSpawner->next_spawner;
+            currentSpawner = currentSpawner->next_spawner;
+        } while (currentSpawner != NULL);
     }
+    
     func_8068A1B8();
 }
 */

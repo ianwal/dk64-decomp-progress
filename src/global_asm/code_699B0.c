@@ -37,9 +37,6 @@ extern u8 D_807F967D;
 
 extern s32 *D_807FB1A0[];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80664CB0.s")
-
-/*
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -60,19 +57,18 @@ extern s32 D_807F9448;
 
 void func_80664CB0(s16 arg0) {
     s32 i;
+    s32 max = 0xD;
 
     D_807F9448 = 0;
-    i = 0;
-    do {
+    for (i = 0; i < max; i++) {
         if (arg0 == D_80748BA0[i].unk0) {
             if (D_807F9448 != 8) {
                 D_807F9440[D_807F9448] = i;
                 D_807F9448++;
             }
         }
-    } while (i++ < 0xD);
+    }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80664D20.s")
 

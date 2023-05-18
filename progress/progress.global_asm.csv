@@ -714,7 +714,7 @@ us,.code,func_80662B90,1200,no
 us,.code,func_806D281C,200,yes
 us,.code,func_806F4F50,376,no
 us,.code,func_806EBDC4,200,yes
-us,.code,func_80664CB0,112,no
+us,.code,func_80664CB0,112,yes
 us,.code,func_807102AC,308,no
 us,.code,func_806D332C,392,no
 us,.code,func_8071498C,12,yes
