@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675810.s")
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -62,25 +60,29 @@ void func_80675D70(Actor *arg0);
 void func_80675DD0(Actor *arg0, Actor *arg1);
 void func_80675AFC(Actor *arg0, Actor *arg1);
 
-/*
-// TODO: Extremely close!!!
 void func_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
     Actor *temp_s2;
     Struct80675810 *var_s1;
     s32 var_s4;
     u8 var_v1;
     s32 i;
+    s32 temp;
+    s32 temp_2;
+    s32 temp_3;
+    s32 temp_4;
+    PlayerAdditionalActorData* paad;
 
     temp_s2 = arg1->unk8;
     i = 0;
     var_s4 = FALSE;
     if ((func_8067AF44(temp_s2) != 0) && (temp_s2->unk54 == arg1->unk10->unk18)) {
-        if (D_8074C604[arg0->unk58].unk0 == 0) {
+        temp_2 = D_8074C604[arg0->unk58].unk0;
+        if (temp_2 == 0) {
             if (temp_s2->object_properties_bitfield & 0x20000) {
                 func_80675D70(temp_s2);
             }
         } else {
-            var_s1 = func_80675E3C(D_8074C604[arg0->unk58].unk0, temp_s2->unk58, temp_s2->interactable);
+            var_s1 = func_80675E3C(temp_2, temp_s2->unk58, temp_s2->interactable);
             if ((!(temp_s2->object_properties_bitfield & 0x80000) && !(arg0->object_properties_bitfield & 0x80000)) || ((arg0 != temp_s2->unk11C) && (temp_s2 != arg0->unk11C))) {
                 if (var_s1 == NULL) {
                     if (temp_s2->object_properties_bitfield & 0x20000) {
@@ -96,16 +98,20 @@ void func_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
                             }
                             if (var_v1 != 0) {
                                 // TODO: Problem is here
-                                if (D_807FBB70.unk200 < var_s1[i].unk8) {
+                                temp = var_s1[i].unk8;
+                                temp_4 = D_807FBB70.unk200;
+                                temp_3 = D_807FBB70.unk201;
+                                if (temp_4 < temp) {
                                     D_807FBB70.unk1FC = temp_s2;
                                     D_807FBB70.unk200 = var_s1[i].unk8;
                                 }
-                                if (D_807FBB70.unk201 < 0xF) {
+                                if (temp_3 < 0xF) {
                                     D_807FBB70.unk204[D_807FBB70.unk201] = temp_s2;
                                     D_807FBB70.unk244[D_807FBB70.unk201] = var_s1[i].unk9;
                                     D_807FBB70.unk201++;
                                     if (temp_s2->interactable & 1) {
-                                        if (temp_s2->PaaD->unkD4 != 0) {
+                                        paad = temp_s2->PaaD;
+                                        if (paad->unkD4 != 0) {
                                             if ((D_8074C608[arg0->unk58].unk0 != 0) && (((D_807FBB70.unk243[D_807FBB70.unk201] == 5)) || (D_807FBB70.unk243[D_807FBB70.unk201] == 0xF))) {
                                                 D_807FBB70.unk201--;
                                             }
@@ -140,7 +146,6 @@ void func_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
         }
     }
 }
-*/
 
 // TODO: Needs proper definition of D_807FBB70
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675AFC.s")
