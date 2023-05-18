@@ -181,16 +181,11 @@ u8 func_80676BCC(s32 arg0, Actor *arg1, s32 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676C10.s")
-
-/*
-// TODO: Issue with func_806769A8 signature?
-// TODO: Regalloc?
 u8 func_80676C10(s32 arg0, Actor *arg1, s32 arg2) {
-    s32 phi_v1 = arg1->PaaD->unkD4 != 0 ? 1 : 0;
+    PlayerAdditionalActorData* paad = arg1->PaaD;
+    s32 phi_v1 = paad->unkD4 != 0 ? 1 : 0;
     return phi_v1 || func_806769A8(arg0, arg1, arg2);
 }
-*/
 
 u8 func_80676C64(s32 arg0, Actor *arg1, s32 arg2) {
     if (func_80676CB0(arg2, 1) && arg1->control_state == 0x1C) {

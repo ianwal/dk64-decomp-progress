@@ -441,7 +441,7 @@ us,.code,func_8066B5C8,44,yes
 us,.code,func_80690F30,1664,no
 us,.code,func_807278C0,152,no
 us,.code,func_80665AE4,308,no
-us,.code,func_80676C10,84,no
+us,.code,func_80676C10,84,yes
 us,.code,func_8066E6C8,100,yes
 us,.code,func_80659190,12,yes
 us,.code,func_8066EAEC,84,no
