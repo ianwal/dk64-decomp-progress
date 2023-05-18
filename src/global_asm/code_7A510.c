@@ -147,8 +147,66 @@ void func_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
     }
 }
 
-// TODO: Needs proper definition of D_807FBB70
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675AFC.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s8 unk4;
+    s8 unk5;
+    u8 unk6;
+    u8 unk7;
+    void (*unk8)(Actor*, Actor*, u8, u8);
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+    u8 unkF;
+} Struct8074ABCC;
+
+extern Struct8074ABCC D_8074ABCC[];
+
+s32 func_80675C70(s16, s16, s16);
+
+void func_80675AFC(Actor *arg0, Actor *arg1) {
+    s32 found2;
+    s32 found;
+    s32 i, j;
+
+    found = FALSE;
+    i = 0;
+    while (!found) {
+        if (func_80675C70(arg0->unk58, arg0->interactable, D_8074ABCC[i].unk0) != 0) {
+            if (func_80675C70(arg1->unk58, arg1->interactable, D_8074ABCC[i].unk2) != 0) {
+                if (D_8074ABCC[i].unk4 == -1 || D_8074ABCC[i].unk4 == D_807FBB70.unk200) {
+                    if (D_8074ABCC[i].unk5 != -1) {
+                        found2 = FALSE;
+                        j = 0;
+                        while (!found2 && j < D_807FBB70.unk201) {
+                            if (arg1 == D_807FBB70.unk204[j] && D_807FBB70.unk244[j] == D_8074ABCC[i].unk5) {
+                                found2 = TRUE;
+                            } else {
+                                j++;
+                            }
+                        }
+                    } else {
+                        found2 = TRUE;
+                    }
+                    if (found2) {
+                        D_8074ABCC[i].unk8(arg0, arg1, D_8074ABCC[i].unk4, D_8074ABCC[i].unk5);
+                        switch (D_8074ABCC[i].unkC) {
+                            case 0:
+                            case 2:
+                                found = TRUE;
+                                break;
+                        }
+                    }
+                }
+            }
+        }
+        if (D_8074ABCC[i].unkC == 0) {
+            found = TRUE;
+        }
+        i++;
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675C70.s")
@@ -180,8 +238,6 @@ void func_80675DD0(Actor *arg0, Actor *arg1) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675E3C.s")
-
-s32 func_80675C70(s16, s16, s16);
 
 /*
 // TODO: Astonishingly close, extra NOP

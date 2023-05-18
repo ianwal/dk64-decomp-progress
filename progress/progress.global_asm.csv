@@ -3249,7 +3249,7 @@ us,.code,func_8067B298,8,yes
 us,.code,func_806F3950,44,yes
 us,.code,func_806C9E70,48,yes
 us,.code,func_80651C2C,1312,no
-us,.code,func_80675AFC,372,no
+us,.code,func_80675AFC,372,yes
 us,.code,func_80711F90,804,no
 us,.code,func_806C2B2C,592,no
 us,.code,func_806595F0,16,yes
