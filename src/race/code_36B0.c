@@ -290,7 +290,7 @@ void func_8002CFF0(void) {
     TempAAD *temp_v0;
     Actor *temp_a0;
 
-    func_80677FA8(0x132, 0); // Spawn actor 306
+    func_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
     temp_a0 = D_807FBB44;
     func_80025E9C(temp_a0);
     func_8002BCD4(temp_a0);
@@ -306,7 +306,7 @@ void func_8002CFF0(void) {
 void castleCarRaceSetup() {
     RaceAdditionalActorData2 *RaaD;
 
-    func_80677FA8(0x132, 0); // Spawn actor 306
+    func_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
     RaaD = D_807FBB44->RaaD2;
     initializeCastleCarRace(D_807FBB44);
     RaaD->unk0 = 0xE;
@@ -316,7 +316,7 @@ void castleCarRaceSetup() {
 void func_8002D0B0() {
     RaceAdditionalActorData2 *RaaD;
 
-    func_80677FA8(0x132, 0); // Spawn actor 306
+    func_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
     RaaD = D_807FBB44->RaaD2;
     func_800292D0(D_807FBB44);
     RaaD->unk0 = 0xE;
@@ -326,7 +326,7 @@ void func_8002D0B0() {
 void func_8002D0FC(void) {
     RaceAdditionalActorData2 *RaaD;
 
-    func_80677FA8(0x132, 0); // Spawn actor 306
+    func_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
     RaaD = D_807FBB44->RaaD2;
     func_8002E2C8(D_807FBB44);
     RaaD->unk0 = 2;
@@ -736,15 +736,15 @@ void func_8002ED04(f32 arg0, s32 arg1, u8 arg2) {
     switch (arg1) {
         case 1:
             if (arg2) {
-                func_80677FA8(0x137, 0xB0); // Spawn checkpoint (actor 311)
+                func_80677FA8(ACTOR_RACE_CHECKPOINT_0, 0xB0); // Spawn checkpoint (actor 311)
                 func_80614EBC(D_807FBB44, 0x2A9);
             } else {
-                func_80677FA8(0x137, 0xB1); // Spawn checkpoint (actor 311)
+                func_80677FA8(ACTOR_RACE_CHECKPOINT_0, 0xB1); // Spawn checkpoint (actor 311)
                 func_80614EBC(D_807FBB44, 0x2AA);
             }
             break;
         case 2:
-            func_80677FA8(0x137, arg2 ? 0xD8 : 0xD9); // Spawn checkpoint (actor 311)
+            func_80677FA8(ACTOR_RACE_CHECKPOINT_0, arg2 ? 0xD8 : 0xD9); // Spawn checkpoint (actor 311)
             break;
     }
     sp1C = D_807FBB44->RaaD2;

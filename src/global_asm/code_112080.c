@@ -86,7 +86,7 @@ loop_3:
         *var_s0 = temp_v0;
         func_80611690(temp_v0);
         (*var_s0)->unk0 = arg0;
-        func_80677FA8(0x12B, 0, arg0);
+        func_80677FA8(ACTOR_TEXT_BUBBLE, 0, arg0);
         D_807FBB44->control_state = 0;
         (*var_s0)->unk4 = D_807FBB44;
         D_807FBB44->additional_actor_data->unk4 = arg0;

@@ -95,7 +95,7 @@ typedef struct {
 void func_80663A0C(Actor *arg0, GlobalASMStruct84 *arg1) {
     KongMirrorAAD *temp_v1;
 
-    func_80677FA8(0x7B, func_80613448(arg0)); // Spawn actor: Kong Mirror (Creepy Castle Museum)
+    func_80677FA8(ACTOR_REFLECTION_MUSEUM, func_80613448(arg0)); // Spawn actor: Kong Mirror (Creepy Castle Museum)
     D_807FBB44->unk11C = arg0;
     temp_v1 = D_807FBB44->additional_actor_data;
     temp_v1->unkE = arg1->unkE;

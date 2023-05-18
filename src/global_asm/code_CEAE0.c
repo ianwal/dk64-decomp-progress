@@ -2459,7 +2459,7 @@ void func_806D2AA0(s16 arg0) {
         current_actor_pointer->control_state_progress = 0;
     }
     if (current_actor_pointer->control_state_progress == 2) {
-        func_80677FA8(0xCA, 0x8D); // Spawn fairy picture actor (202)
+        func_80677FA8(ACTOR_PICTURE, 0x8D); // Spawn fairy picture actor (202)
         extra_player_info_pointer->vehicle_actor_pointer = D_807FBB44;
         D_807FBB44->PaaD->unk0 = extra_player_info_pointer;
         extra_player_info_pointer->unk1F0 |= 0x8000;
@@ -5268,7 +5268,7 @@ void func_806DED44(void) {
             break;
         case 1:
             global_properties_bitfield &= 0xFFFEFFCF;
-            func_80677FA8(0x141, 0x3D); // Spawn fairy (refill) actor 321
+            func_80677FA8(ACTOR_FAIRY_REFILL, 0x3D); // Spawn fairy (refill) actor 321
             func_8067B238(D_807FBB44,
                           current_actor_pointer,
                           current_actor_pointer->animation_state->scale_y * 2);
@@ -5287,7 +5287,7 @@ void func_806DED44(void) {
             temp_s0_3->unk14 = current_actor_pointer->x_rotation;
             func_80659620(temp_s0_3, &temp_s0_3->unk4, &temp_s0_3->unk8, temp_s0_3->unk18);
             func_80659670(1.0f, 1.0f, 1.0f, temp_s0_3->unk18);
-            func_80677FA8(0x136, 0xA8); // Spawn spotlight actor 310
+            func_80677FA8(ACTOR_SPOTLIGHT, 0xA8); // Spawn spotlight actor 310
             func_8067B238(D_807FBB44,
                           current_actor_pointer,
                           current_actor_pointer->animation_state->scale_x);

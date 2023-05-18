@@ -727,21 +727,21 @@ typedef struct {
 void func_80682E38(Struct80682E38_arg0 *arg0) {
     s32 var_a2;
     s16 var_a1;
-    s32 var_s0;
+    Actors var_s0;
     s32 i;
     AAD_80682E38 *temp_s0;
 
-    func_80677FA8(0x136, 0xA8);
+    func_80677FA8(ACTOR_SPOTLIGHT, 0xA8);
     arg0->unk1C = D_807FBB44;
     D_807FBB44->x_position = (func_80612794(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->x_position;
     D_807FBB44->y_position = (current_actor_pointer->y_position - 10.0f) - 2.0f;
     D_807FBB44->z_position = (func_80612790(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->z_position;
     for (i = 0; i < 5; i++) {
         if (isFlagSet(func_805FF018(current_actor_pointer->unk58, i), FLAG_TYPE_PERMANENT) != FALSE) {
-            var_s0 = 0x13C;
+            var_s0 = ACTOR_TAGBARREL_KONG;
             var_a1 = D_8074E814[i].unk0;
         } else {
-            var_s0 = 0x13D;
+            var_s0 = ACTOR_TAGBARREL_LOCKED;
             var_a1 = 0xD2;
         }
         func_80677FA8(var_s0, var_a1);

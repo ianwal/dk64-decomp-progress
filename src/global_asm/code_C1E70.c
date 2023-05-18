@@ -31,7 +31,7 @@ void func_806BD170(void) {
         // Key[keyIndex] Turned Flag
         if (!isFlagSet(0x1BC + keyIndex, FLAG_TYPE_PERMANENT)) {
             // Spawn Padlock
-            func_80677FA8(0x14E, 0xCD);
+            func_80677FA8(ACTOR_PADLOCK_KLUMSY, 0xCD);
             temp_s2 = 260 + (keyIndex * 512);
             D_807FBB44->draw_distance = 2000;
             D_807FBB44->object_properties_bitfield |= 0x800400;
@@ -111,8 +111,7 @@ void func_806BD3E4(void) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
         sp26 = 0;
         D_807506B4 = 0;
-        // Spawn Actor (Squawks)
-        func_80677FA8(0x73, 0xC4);
+        func_80677FA8(ACTOR_KLUMSY_CAGE, 0xC4);
         func_8067B238(D_807FBB44, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
         D_807FBB44->unk64 |= 0x20;
         D_807FBB44->object_properties_bitfield |= 0x400;

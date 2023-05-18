@@ -20,7 +20,7 @@ void func_806B1F50(void) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
         current_actor_pointer->control_state = 0;
         current_actor_pointer->control_state_progress = 0;
-        func_80677FA8(0x73, 0x7D);
+        func_80677FA8(ACTOR_KLUMSY_CAGE, 0x7D);
         D_807FDC90->unk4 = D_807FBB44;
         func_8067B238(D_807FBB44, current_actor_pointer, 0.3f);
         D_807FBB44->x_position = (func_80612794(current_actor_pointer->y_rotation) * 14.0f) + current_actor_pointer->x_position;

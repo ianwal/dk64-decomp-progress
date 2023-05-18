@@ -210,7 +210,7 @@ void func_806C850C(s32 arg0, s32 arg1) {
     extra_player_info_pointer->unk120 = -0x64;
     extra_player_info_pointer->unk1EE = D_807FBB44->unk58;
     func_806E2C74(D_807FBB48);
-    func_80677FA8(0xBC, 0);
+    func_80677FA8(ACTOR_CAMERA, 0);
     extra_player_info_pointer->unk104 = D_807FBB44;
     if (arg1 == 0) {
         D_807F5D10 = D_807FBB44;

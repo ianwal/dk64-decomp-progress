@@ -60,7 +60,7 @@ void func_806AE2B0(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     f32 sp28;
     f32 sp24;
 
-    if (func_80677FA8(0xED, arg0)) { // Spawn actor: Unknown 237
+    if (func_80677FA8(ACTOR_KROSSBONES_HEAD, arg0)) { // Spawn actor: Unknown 237
         func_80671C0C(current_actor_pointer, arg2, &sp2C, &sp28, &sp24);
         D_807FBB44->floor = current_actor_pointer->floor;
         D_807FBB44->y_rotation = current_actor_pointer->y_rotation + arg1;

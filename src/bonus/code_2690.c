@@ -37,7 +37,7 @@ void func_800271B4(s16 arg0, s16 arg1, s16 arg2, u8 arg3, Struct800271B4 *arg4) 
     AAD_800271B4 *temp_v1;
 
     var_a3 = arg4->unk28 < ((rand() >> 0xF) % 100) ? 1 : 0;
-    if (func_80677FA8(0xBA, var_a3 ? 0x32 : 0x33) != 0) {
+    if (func_80677FA8(ACTOR_MINIGAME_KREMLING, var_a3 ? 0x32 : 0x33) != 0) {
         temp_v1 = D_807FBB44->additional_actor_data;
         func_80614EBC(D_807FBB44, var_a3 ? 0x211 : 0x20F);
         func_80614D00(D_807FBB44, arg4->unk2C, 0);
@@ -501,7 +501,7 @@ void func_80028648(ARG0_80028648 *arg0) {
     AAD_80028648_2 *temp_v0_2;
 
     for (i = 1; i < 7; i++) {
-        if (func_80677FA8(0x12C, 0x15) != 0) {
+        if (func_80677FA8(ACTOR_SNAKE, 0x15) != 0) {
             temp_s2 = D_807FBB44->additional_actor_data;
             temp_s2->unk0 = current_actor_pointer;
             temp_s2->unk11 = (((rand() >> 0xF) % 32767) % ((arg0->unk1C - arg0->unk1B) + 1)) + arg0->unk1B;
@@ -513,7 +513,7 @@ void func_80028648(ARG0_80028648 *arg0) {
             D_807FBB44->object_properties_bitfield |= 0x1000;
             D_807FBB44->y_rotation = 0x800;
             arg0[i].unk0 = D_807FBB44;
-            if (func_80677FA8(0x12D, 0x16) != 0) {
+            if (func_80677FA8(ACTOR_TURTLE, 0x16) != 0) {
                 temp_v0_2 = D_807FBB44->additional_actor_data;
                 temp_v0_2->unk0 = D_807FBB44;
                 temp_v0_2->unk6 = i - 1;

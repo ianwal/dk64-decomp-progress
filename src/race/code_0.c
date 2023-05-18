@@ -137,7 +137,7 @@ void func_80025E9C(Actor *arg0) {
 
     sp54 = arg0->additional_actor_data;
     func_8002BBD0(2);
-    func_80677FA8(0x12E, 0x95);
+    func_80677FA8(ACTOR_CAR_FACTORY_PLAYER, 0x95);
     temp_s2 = D_807FBB44;
     temp_s0 = temp_s2->additional_actor_data;
     func_8002BC2C(arg0, 1, temp_s2, temp_s0);
@@ -153,7 +153,7 @@ void func_80025E9C(Actor *arg0) {
     temp_v1 = temp_v0->unk184;
     temp_v1->unk4 = temp_s0;
     temp_v1->unk0 = temp_s2;
-    func_80677FA8(0x130, 0);
+    func_80677FA8(ACTOR_CAMERA_CARRACE, 0);
     temp_v1_2 = D_807FBB44;
     temp_s1->unk34 = temp_v1_2;
     temp_s0_2 = sp40->unk178;

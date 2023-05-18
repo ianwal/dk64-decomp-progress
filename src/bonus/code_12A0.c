@@ -12,7 +12,7 @@ extern f32 D_8002DCB8;
 
 Actor* func_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     BaaD2 *tmp;
-    if (func_80677FA8(0xDB, arg0)) { // Spawn actor 219 (slot, BBB I guess?)
+    if (func_80677FA8(ACTOR_BANDIT_SLOT, arg0)) { // Spawn actor 219 (slot, BBB I guess?)
         tmp = D_807FBB44->BaaD2;
         D_807FBB44->x_position = arg1;
         D_807FBB44->y_position = arg2;

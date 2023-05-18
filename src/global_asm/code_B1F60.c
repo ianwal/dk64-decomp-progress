@@ -102,7 +102,7 @@ void func_806AD84C(void) {
 }
 
 void func_806AD9AC(void) {
-    func_80677FA8(0x118, 0xC0); // Spawn actor: Spider Silk String (miniboss)
+    func_80677FA8(ACTOR_SILK, 0xC0); // Spawn actor: Spider Silk String (miniboss)
     D_807FBB44->unk11C = current_actor_pointer;
     D_807FBB44->draw_distance = 2000;
 }

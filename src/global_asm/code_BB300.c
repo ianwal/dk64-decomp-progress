@@ -121,7 +121,7 @@ void func_806B6958(void) {
 }
 
 void func_806B6C88(s16 arg0, s16 arg1) {
-    if (func_80677FA8(0xD3, 0x24)) { // Spawn actor: Klaptrap (Skeleton)
+    if (func_80677FA8(ACTOR_KLAPTRAP_SKELETON, 0x24)) { // Spawn actor: Klaptrap (Skeleton)
         D_807FBB44->control_state = 0x23;
         func_80614EBC(D_807FBB44, 0x237);
         D_807FBB44->y_rotation = arg1;

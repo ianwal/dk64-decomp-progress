@@ -1114,7 +1114,7 @@ void func_806EFA3C(void) {
 
     sp24 = D_8075D380;
     scale = D_807FBB48->animation_state->scale_x;
-    func_80677FA8(0x140, 0xB9); // Spawn potion actor 320
+    func_80677FA8(ACTOR_POTION, 0xB9); // Spawn potion actor 320
     if (D_807FBB48->unk58 == ACTOR_DK) {
         scale = scale * 1.25;
     }
@@ -1294,7 +1294,7 @@ void func_806F027C(void) {
         D_807FBB48->control_state = 0x7C;
         D_807FBB48->control_state_progress = 0;
         func_80614EBC(D_807FBB48, 0x13);
-        func_80677FA8(0x117, 0xC5); // Spawn trap bubble (spider miniboss) actor 279
+        func_80677FA8(ACTOR_TRAP_BUBBLE, 0xC5); // Spawn trap bubble (spider miniboss) actor 279
         D_807FBB44->unk11C = D_807FBB48;
         func_806C8D20(D_807FBB48);
     }
@@ -1305,7 +1305,7 @@ void func_806F0344(void) {
     D_807FBB48->control_state = 0x7D;
     D_807FBB48->control_state_progress = 0;
     D_807FBB48->object_properties_bitfield &= ~4;
-    func_80677FA8(0x11A, 0x21); // Spawn actor (beaver bother?)
+    func_80677FA8(ACTOR_MINIGAME_BOTHER_KLAPTRAP, 0x21); // Spawn actor (beaver bother?)
     func_80614EBC(D_807FBB44, 0x232);
     D_807FBB44->unk11C = D_807FBB48;
 }

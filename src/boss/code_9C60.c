@@ -10,7 +10,7 @@ extern f64 D_80036A18;
 
 void func_8002DC60(void) {
     BossActor178 *sp1C = current_actor_pointer->unk178;
-    func_80677FA8(0xDD, 0xE3); // Spawn actor 221 "light piece" (lanky phase)
+    func_80677FA8(ACTOR_BOSS_KROOL_LIGHT, 0xE3); // Spawn actor 221 "light piece" (lanky phase)
     D_807FBB44->object_properties_bitfield |= 0x400;
     D_807FBB44->unk11C = current_actor_pointer;
     sp1C->unk0 = D_807FBB44;
@@ -195,7 +195,7 @@ void func_8002FDF8(Actor* arg0, u8 arg1) {
 }
 
 void func_8002FEC0(Actor* arg0[], u8 arg1, s32 arg2) {
-    func_80677FA8(0xE5, arg2); // Spawn actor 229 (K. Rool's toe)
+    func_80677FA8(ACTOR_BOSS_KROOL_TOE, arg2); // Spawn actor 229 (K. Rool's toe)
     func_8067B238(D_807FBB44, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
     D_807FBB44->object_properties_bitfield |= 0x1400;
     D_807FBB44->unk11C = current_actor_pointer;

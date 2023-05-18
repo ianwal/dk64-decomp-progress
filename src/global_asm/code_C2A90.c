@@ -164,7 +164,7 @@ void func_806C10A0(u8 arg0, u16 arg1, s16 arg2) {
                     // TODO: Proper bitfield syntax
                     if (((s32)(current_actor_pointer->object_properties_bitfield << 6) >= 0)) {
                         func_80613C48(current_actor_pointer, 0xE4, 0.0f, 2.0f);
-                        func_80677FA8(0xE1, 0x98);
+                        func_80677FA8(ACTOR_UNKNOWN_225, 0x98);
                         func_8067B238(D_807FBB44, current_actor_pointer, 0.21f);
                         func_80671C0C(current_actor_pointer, 1, &D_807FBB44->x_position, &sp34, &D_807FBB44->z_position);
                         func_80614EBC(D_807FBB44, 0x298);

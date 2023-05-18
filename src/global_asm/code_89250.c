@@ -87,7 +87,7 @@ void func_806846B4(f32 xPosition, f32 yPosition, f32 zPosition, f32 xzScale, f32
                 break;
         }
     }
-    func_80677FA8(0xFF, phi_a1); // Spawn actor: Shockwave
+    func_80677FA8(ACTOR_SHOCKWAVE, phi_a1); // Spawn actor: Shockwave
     D_807FBB44->unk11C = arg5;
     D_807FBB44->animation_state->scale_x = xzScale;
     D_807FBB44->animation_state->scale_z = xzScale;
@@ -379,7 +379,7 @@ void func_80685708(Actor *arg0, u8 arg1) {
     sp34 = D_8074E898;
     if (arg1 != 0) {
         func_80685520(p1 * D_80759B00, arg1, arg0->x_position, arg0->y_position + 4.0f, arg0->z_position);
-        func_80677FA8(0x145, sp34.unk0[arg1]);
+        func_80677FA8(ACTOR_SHOCKWAVE_SLAM, sp34.unk0[arg1]);
         func_8067B238(D_807FBB44, arg0, arg0->animation_state->scale_y * 0.5f);
         ((AAD_80685708*)D_807FBB44->additional_actor_data)->unk6 = arg1 - 1;
     }
@@ -604,7 +604,7 @@ void func_8068696C(Actor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80686E40.s")
 
 void func_80686F90(u8 arg0, s16 arg1, s16 arg2) {
-    func_80677FA8(0x109, 0xC0); // Spawn actor: Light beam (boss fights)
+    func_80677FA8(ACTOR_BOSS_DOGADON_LIGHTBEAM, 0xC0); // Spawn actor: Light beam (boss fights)
     if (arg0) {
         func_80671C0C(current_actor_pointer, arg0, &D_807FBB44->x_position, &D_807FBB44->y_position, &D_807FBB44->z_position);
     } else {
@@ -660,7 +660,7 @@ void func_80687400(void) {
 }
 
 void func_80687474(Actor *arg0, f32 arg1) {
-    func_80677FA8(0xB3, 0x5D); // Spawn actor: Shockwave (Mad Jack)
+    func_80677FA8(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D); // Spawn actor: Shockwave (Mad Jack)
     D_807FBB44->object_properties_bitfield |= 0x400;
     func_80614EBC(D_807FBB44, 0x334);
     func_8067B238(D_807FBB44, arg0, arg0->animation_state->scale_y * arg1);

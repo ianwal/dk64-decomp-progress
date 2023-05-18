@@ -1723,7 +1723,7 @@ void func_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     func_807149B8(1);
     func_80714998(2);
     func_80714CC0(&D_80721530, 0, D_807F621C, D_807F6220 + D_80758BD8, D_807F6224);
-    func_80677FA8(0x9C, 0x53); // Spawn actor: Wrinkly
+    func_80677FA8(ACTOR_WRINKLY, 0x53); // Spawn actor: Wrinkly
     D_807FBB44->x_position = D_807F621C;
     D_807FBB44->y_position = D_807F6220;
     D_807FBB44->z_position = D_807F6224;

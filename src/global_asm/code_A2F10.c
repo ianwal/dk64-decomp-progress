@@ -298,7 +298,7 @@ void func_8069F020(void) {
             if (current_actor_pointer->animation_state->unk0->unk4 > 9.0f) {
     block_34:
                 current_actor_pointer->control_state = 2;
-                if ((current_actor_pointer->unk15F != 0) && (func_80677FA8(0x102, current_actor_pointer->unkF0) != 0)) {
+                if ((current_actor_pointer->unk15F != 0) && (func_80677FA8(ACTOR_BOSS_SHOCKWAVE, current_actor_pointer->unkF0) != 0)) {
                     if (current_actor_pointer->animation_state->unk0->unk4 > 9.0f) {
                         func_80613C48(D_807FBB44, 0x4F9, 0.0f, 0.0f);
                         func_80614D00(D_807FBB44, current_actor_pointer->animation_state->unk48, 0);
@@ -391,7 +391,7 @@ void func_8069FDA0(void) {
             func_8068C350(&func_8069FA40, current_actor_pointer, 3);
         }
         if ((current_actor_pointer->unk15F == 0) && (current_actor_pointer->unk160 == 3)) {
-            func_80677FA8(0x104, 0);
+            func_80677FA8(ACTOR_TEXT_OVERLAY, 0);
             D_807FBB44->unk160 = current_actor_pointer->unkEE;
             D_807FBB44->unk15F = D_80750AD4;
             D_807FBB44->y_position = 80.0f;
@@ -400,7 +400,7 @@ void func_8069FDA0(void) {
             return;
         }
         if ((current_actor_pointer->unk15F >= 0x1E) && (current_actor_pointer->unk15F < 0x25) && (current_actor_pointer->unk160 == 5)) {
-            func_80677FA8(0x104, 0);
+            func_80677FA8(ACTOR_TEXT_OVERLAY, 0);
             D_807FBB44->unk160 = current_actor_pointer->unkEE;
             if (current_actor_pointer->unk15F == 0x23) {
                 D_807FBB44->unk15F = 0x24;
@@ -416,7 +416,7 @@ void func_8069FDA0(void) {
         temp_v1 = current_actor_pointer->unk15F & 0x3F;
         if ((current_actor_pointer->unk15F & 0xC0) && (temp_v1 != 0)) {
             sp22 = 0x3FC - temp_v1;
-            func_80677FA8(0x104, 0);
+            func_80677FA8(ACTOR_TEXT_OVERLAY, 0);
             D_807FBB44->unk160 = current_actor_pointer->unkEE;
             D_807FBB44->unk15F = ((current_actor_pointer->unk15F & 0xC0) + (current_actor_pointer->unk15F & 0x3F)) - 1;
             if (current_actor_pointer->unk15F & 0x80) {
@@ -679,7 +679,7 @@ void func_806A112C(void) {
             temp_f20 = 75.0f * sp38;
             var_s0_3 = 1;
             do {
-                func_80677FA8(0x94, 0xE1);
+                func_80677FA8(ACTOR_ROPE, 0xE1);
                 *D_807FBB44->additional_actor_data = *temp_s5;
                 D_807FBB44->unk15F = var_s0_3;
                 D_807FBB44->y_rotation = current_actor_pointer->y_rotation + ((var_s0_3 / 3) << 0xA);

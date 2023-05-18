@@ -978,7 +978,7 @@ void func_80032024(void) {
         if (D_80033738 == 0x14) {
             func_806782C0(current_actor_pointer);
             D_80033738++;
-            func_80677FA8(0x14D, 0xD7);
+            func_80677FA8(ACTOR_BARREL_MAIN_MENU, 0xD7);
             temp_f0 = DK_barrel_scale;
             D_807FBB44->animation_state->scale_x = temp_f0;
             D_807FBB44->animation_state->scale_y = temp_f0;

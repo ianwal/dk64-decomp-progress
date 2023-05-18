@@ -182,7 +182,7 @@ s32 func_806FBD5C(s16, s32);
 void func_8069D0F8(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
     GlobalASMStruct_8069D0F8 *temp_s0;
 
-    if (func_80677FA8(0xE8, 0) != 0) {
+    if (func_80677FA8(ACTOR_TEXT_OVERLAY, 0) != 0) {
         temp_s0 = D_807FBB44->additional_actor_data;
         if (arg0 & 0x80) {
             temp_s0->unkA = func_806FDB8C(arg0 & 0xff7f, arg3, 2, 160.0f, arg2, 0.0f);

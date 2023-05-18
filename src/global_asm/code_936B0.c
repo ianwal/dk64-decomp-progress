@@ -206,7 +206,7 @@ void func_80690470(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
 
     PaaD = arg0->PaaD;
-    func_80677FA8(0x13F, 0xDA); // Spawn actor 319, propeller (boat)
+    func_80677FA8(ACTOR_PROPELLER, 0xDA); // Spawn actor 319, propeller (boat)
     RaaD = D_807FBB44->RaaD;
     RaaD->unk28 = PaaD->unk1A4;
     func_80690094(D_807FBB44, arg0);
@@ -301,7 +301,7 @@ extern s32 D_807F5D10;
 void func_80661520(f32, f32, f32, f32, f32, f32);
 
 void func_80691830(s16 arg0, f32 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {
-    func_80677FA8(0x102, arg0); // Spawn actor: Shockwave (boss)
+    func_80677FA8(ACTOR_BOSS_SHOCKWAVE, arg0); // Spawn actor: Shockwave (boss)
     func_8067B238(D_807FBB44, current_actor_pointer, arg1);
     D_807FBB44->unkF0 = arg0;
     D_807FBB44->unk16A = arg2;
@@ -330,7 +330,7 @@ typedef struct {
 void func_80691930(u8 arg0, u8 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5) {
     TempAAD2 *temp_v0;
 
-    func_80677FA8(0x107, 0);
+    func_80677FA8(ACTOR_BOSS_DOGADON_SHOCKWAVE, 0);
     func_8067B238(D_807FBB44, current_actor_pointer, 0.15f);
     temp_v0 = D_807FBB44->additional_actor_data;
     temp_v0->unk11 = arg0;

@@ -13,7 +13,7 @@ typedef struct {
 
 // TODO: Quite close
 void func_806A2A10(s16 arg0, s16 arg1, u8 arg2) {
-    func_80677FA8(0xB0, 0); // spawnActorWrapper(ACTOR_TIMER_CONTROLLER)
+    func_80677FA8(ACTOR_TIMER_CONTROLLER, 0); // spawnActorWrapper(ACTOR_TIMER_CONTROLLER)
     if ((arg0 & 0x8000) != 0) {
         D_807FBB44->unk15F = 0xB;
         arg2--;

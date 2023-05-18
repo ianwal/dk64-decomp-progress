@@ -159,7 +159,7 @@ s32 func_80677ED0(Struct80677ED0 *arg0) {
 /*
 // TODO: Regalloc
 // Spawn actor and call constructor?
-s32 func_80677FA8(s32 arg0, void *arg1) {
+s32 func_80677FA8(Actors arg0, void *arg1) {
     if (func_80678050(arg0) && D_8074DA30[D_8074D8D4[arg0]](&arg1)) {
         return TRUE;
     }
