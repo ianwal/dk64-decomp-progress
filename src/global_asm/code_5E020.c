@@ -113,5 +113,15 @@ void func_80659574(void) {
     }
 }
 
-// Similar to above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E020/func_806595B0.s")
+// Did they literally make the same function twice?
+void func_806595B0(void) {
+    GlobalASMStruct78 *var_v0;
+    s32 i;
+
+    for (i = 0; i < 100; i++) {
+        var_v0 = &D_807F7370[i]->unk0;
+        while (var_v0 != NULL) {
+            var_v0 = var_v0->unk8;
+        }
+    };
+}
