@@ -1646,7 +1646,7 @@ us,.code,func_8070D568,236,no
 us,.code,func_806C7230,8,yes
 us,.code,func_8064EE08,544,no
 us,.code,func_80713EA8,8,yes
-us,.code,func_806978FC,140,no
+us,.code,func_806978FC,140,yes
 us,.code,func_80611160,12,yes
 us,.code,func_806E7088,20,yes
 us,.code,func_8068FF40,280,yes
