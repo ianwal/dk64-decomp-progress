@@ -543,26 +543,21 @@ void func_80678BBC(Actor *arg0) {
     }
 }
 
-// TODO: Very doable, just some arrays to sort out
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80678CC8.s")
-
 s32 func_8067B3F4(s32 arg0);
 void func_80679178(Actor *arg0);
 void func_80678E6C(Actor *arg0);
 void func_80678E14(Actor *arg0);
 
-/*
 void func_80678CC8(Actor *arg0) {
     u32 temp_v0;
     u32 temp_v0_2;
 
-    // TODO: How do I write this?
-    if (D_8074DA30[D_8074D8D4[arg0->unk58]] == &func_8067B3F4) {
+    if (*(s32*)(&D_8074DA30[D_8074D8D4[arg0->unk58]]) == (s32)&func_8067B3F4) {
         guTranslateF(&arg0->unkC, arg0->x_position, arg0->y_position, arg0->z_position);
     }
     func_80665FB4(arg0);
     func_80678E6C(arg0);
-    if ((arg0->object_properties_bitfield * 0x10) >= 0) {
+    if (!(arg0->object_properties_bitfield & 0x8000000)) {
         arg0->object_properties_bitfield &= ~0x200;
         if (arg0->animation_state && ((func_8061421C(arg0), temp_v0_2 = arg0->object_properties_bitfield, ((temp_v0_2 & 0x500) != 0)) || (arg0->unk156 != 0)) && ((temp_v0_2 & 0x4000) == 0)) {
             func_80614A64(arg0);
@@ -577,7 +572,6 @@ void func_80678CC8(Actor *arg0) {
     func_80687F7C(arg0);
     arg0->object_properties_bitfield |= 0x10;
 }
-*/
 
 void func_80678DD8(Actor *arg0) {
     func_8061421C();
