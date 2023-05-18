@@ -981,7 +981,7 @@ struct actor {
     u32 unk4C;
     u32 unk50;
     u32 unk54;
-    u32 unk58;
+    Actors unk58;
     u16 interactable; // Bitfield at 0x5C
     u16 unk5E;
     union {
