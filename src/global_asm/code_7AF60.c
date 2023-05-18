@@ -169,17 +169,10 @@ u8 func_80676B70(Actor *arg0, void *arg1, s32 arg2) {
             || func_80714608(0));
 }
 
-// CharacterChange and ActorAdditionalData struct usages
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676BCC.s")
-
-/*
-// TODO: Regalloc
 u8 func_80676BCC(s32 arg0, Actor *arg1, s32 arg2) {
-    PlayerAdditionalActorData *PaaD = arg1->PaaD;
-    u8 temp = PaaD->unk1A4;
-    return (character_change_array[PaaD->unk1A4].unk2C0 == 2);
+    u8 temp = arg1->PaaD->unk1A4;
+    return (character_change_array[temp].unk2C0 == 2);
 }
-*/
 
 u8 func_80676C10(s32 arg0, Actor *arg1, s32 arg2) {
     PlayerAdditionalActorData* paad = arg1->PaaD;
