@@ -5,7 +5,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_807094D0.s")
 
-/*
 extern u8 D_807444F4;
 extern f32 D_807FD9C4;
 extern s8 D_807FD9BC;
@@ -16,8 +15,9 @@ extern s32 D_807FD9C8;
 
 void func_80737638(s32, s32, s32, s32, f32, s32, s32);
 
+/*
 // TODO: Regalloc, and last function call is sus
-void func_807094D0(u8 arg0) {
+void func_807094D0(u8 arg0) { // init zipper
     D_807444F4 = is_cutscene_active;
     switch (arg0) {
         case 2:

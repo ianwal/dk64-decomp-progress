@@ -4,7 +4,40 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80735AA0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80735CF4.s")
+void func_80735DBC(ALEvent *);                            /* extern */
+
+typedef struct {
+    u8 unk0[0x14];
+    s32 unk14; // ALEventQueue
+    u8 unk18[0x28-0x18];
+    s16 unk28;
+    u8 unk2A[0x48-0x2A];
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+} struct_80735CF4; // Probably something in the audio library.
+
+s32 func_80735CF4(struct_80735CF4 *arg0) {
+    struct_80735CF4 *sp2C;
+    ALEvent sp1C;
+
+    sp2C = arg0;
+    do {
+        if (sp2C->unk28 == 0x20) {
+            if (FALSE);
+            sp1C.type = 0x20;
+            alEvtqPostEvent(&sp2C->unk14, &sp1C, sp2C->unk48);
+        } else {
+            func_80735DBC(&sp2C->unk28);
+            if (FALSE);
+        }
+        sp2C->unk4C = alEvtqNextEvent(&sp2C->unk14, &sp2C->unk28);
+    } while (sp2C->unk4C == 0);
+    sp2C->unk50 += sp2C->unk4C;
+    return sp2C->unk4C;
+}
+
+
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80735DBC.s")

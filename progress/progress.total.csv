@@ -846,7 +846,7 @@ us,.code,func_8071A674,572,no
 us,.code,func_80723CCC,700,no
 us,.code,func_806C7218,8,yes
 us,.code,func_806844EC,32,yes
-us,.code,func_80735CF4,200,no
+us,.code,func_80735CF4,200,yes
 us,.code,func_8068E7B4,508,no
 us,.code,func_8071495C,16,yes
 us,.code,func_806C9DE0,48,yes
