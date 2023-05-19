@@ -3677,10 +3677,6 @@ void func_806D6F0C(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D6F64.s")
-
-/*
-// TODO: Annoying bit shift stuff with the function call inside case 0
 void func_806D6F64(void) {
     func_806EB0C0(0x3C, NULL, cc_player_index);
     current_actor_pointer->unk64 |= 0x200;
@@ -3689,7 +3685,7 @@ void func_806D6F64(void) {
             func_806DF6D4(3);
             extra_player_info_pointer->unk4 = D_8075305C[D_807FD584];
             extra_player_info_pointer->unkA = current_actor_pointer->unkEE;
-            func_806DF494(&current_actor_pointer->y_rotation, (current_actor_pointer->unkEE + 0x800) & 0xFFF, extra_player_info_pointer->unk48 & 0xFFF);
+            func_806DF494(&current_actor_pointer->y_rotation, ((current_actor_pointer->unkEE + 0x800) & 0xFFF), extra_player_info_pointer->unk48 << 1);
             break;
         case 1:
             func_806DF6D4(3);
@@ -3703,7 +3699,6 @@ void func_806D6F64(void) {
     func_806CC8B8();
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 s16 func_806CC190(s16, s16, f32);
 
