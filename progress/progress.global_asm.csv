@@ -211,7 +211,7 @@ us,.code,func_8066BD54,140,no
 us,.code,func_80663844,392,yes
 us,.code,func_80731D20,328,no
 us,.code,func_8069D0D8,32,yes
-us,.code,func_80664A38,632,no
+us,.code,func_80664A38,628,yes
 us,.code,func_806EE7F4,132,yes
 us,.code,func_806C7B00,52,yes
 us,.code,func_8064F308,80,yes

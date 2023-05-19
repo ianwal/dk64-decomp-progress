@@ -73,4 +73,22 @@ void func_80664834(s16 arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68EA0/func_80664A38.s")
+extern s32 D_80720A7C; // TODO: Datatype
+
+void func_80664A38(s16 arg0) {
+    f32 sp34;
+
+    if (((rand() % 10000) % 10) == 0) {
+        sp34 = D_807F9430[arg0].unk8 / 25.0;
+        func_807149B8(1);
+        func_80714998(2);
+        func_80714A28(4);
+        func_80714CC0(
+            &D_80720A7C,
+            0.4f,
+            D_807F9430[arg0].unk2 + (((((rand() % 10000) % 300) / 20.0) - 7.5) * sp34),
+            D_807F9430[arg0].unk4 + ((((rand() % 10000) % 600) / 20.0) * sp34),
+            D_807F9430[arg0].unk6 + (((((rand() % 10000) % 300) / 20.0) - 7.5) * sp34)
+        );
+    }
+}
