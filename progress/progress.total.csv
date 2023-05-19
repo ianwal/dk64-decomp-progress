@@ -389,7 +389,7 @@ us,.code,func_8072E54C,88,yes
 us,.code,func_806330C4,820,no
 us,.code,func_806641A0,548,no
 us,.code,func_80665E48,76,yes
-us,.code,func_806645B8,100,no
+us,.code,func_806645B8,100,yes
 us,.code,func_80639FC0,972,no
 us,.code,func_8070CDD0,592,no
 us,.code,func_806E8F68,264,yes
