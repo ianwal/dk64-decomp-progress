@@ -71,7 +71,37 @@ void func_80736FB8(struct_80736FB8 *arg0) {
     func_807370A4(&D_807563CC->unk14, arg0, 0xFFFF);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737028.s")
+f32 func_80739FE0(s8);                              /* extern */
+
+// All of these structs are probably from the audio library
+typedef struct {
+    u8 unk0[0x5];
+    s8 unk5;
+} struct_80737028_2;
+
+typedef struct {
+    u8 unk0[4];
+    struct_80737028_2* unk4;
+} struct_80737028_1;
+
+typedef struct {
+    u8 unk0[0x8];
+    struct_80737028_1* unk8;
+    u8 unkC[0x2C-0xC];
+    f32 unk2C;
+} struct_80737028_0;
+
+void func_80737028(struct_80737028_0 *arg0) {
+    // TODO: Confirm AL Stuff
+    ALEvent sp20;
+    f32 sp1C;
+
+    sp1C = func_80739FE0(arg0->unk8->unk4->unk5) * arg0->unk2C;
+    sp20.type = 0x10;
+    sp20.msg.vol.voice = (void*)arg0;
+    sp20.msg.vol.delta = *(s32*)(&sp1C);
+    alEvtqPostEvent(&D_807563CC->unk14, &sp20, 0x8235);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_807370A4.s")
 
