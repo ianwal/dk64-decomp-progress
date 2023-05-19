@@ -613,8 +613,7 @@ void func_8062DB70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E1F8.s")
 
-/*
-s32 func_8062E3B4(f32 *, f32 *, s32, s32 *, s32, f64, s32);
+void func_8062E3B4(f32 *, f32 *, s32, s32 *, s32, f64, s32);
 
 typedef struct {
     s32 unk0;
@@ -623,43 +622,55 @@ typedef struct {
     s32 unkC;
     s32 unk10;
     s32 unk14;
-    s32 unk18;
+    u8 unk18;
+    u8 unk19;
+    u8 unk1A;
+    u8 unk1B;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34[3];
 } Struct8062E1F8;
 
-s32 func_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s32 *arg7) {
+/*
+// TODO: Regalloc... t6 t7 t8
+s32 func_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, Struct8062E1F8 *arg7) {
+    Struct8062E1F8 *temp_a0;
+    s32 pad[1];
     f32 sp88[4][4];
+    s32 pad3[2];
     f32 sp40[4][4];
     s32 sp3C;
-    Struct8062E1F8 *temp_a0;
-    int var_v0;
-
-    temp_a0 = &(arg7[arg0 << 6]);
+    s32 pad2;
+    temp_a0 = &arg7[arg0];
     func_8062E3B4(temp_a0, &sp88, temp_a0->unk18, &sp3C, 0, arg1, 0);
     if (sp3C == 0) {
-        return 0;
+        return FALSE;
     }
     func_8062E3B4(&sp88, &sp40, sp3C, &sp3C, 0, arg4, 1);
     if (sp3C == 0) {
-        return 0;
+        return FALSE;
     }
     func_8062E3B4(&sp40, &sp88, sp3C, &sp3C, 1, arg2, 0);
     if (sp3C == 0) {
-        return 0;
+        return FALSE;
     }
     func_8062E3B4(&sp88, &sp40, sp3C, &sp3C, 1, arg5, 1);
     if (sp3C == 0) {
-        return 0;
+        return FALSE;
     }
     func_8062E3B4(&sp40, &sp88, sp3C, &sp3C, 2, arg3, 0);
     if (sp3C == 0) {
-        return 0;
+        return FALSE;
     }
     func_8062E3B4(&sp88, &sp40, sp3C, &sp3C, 2, arg6, 1);
-    var_v0 = 0;
     if (sp3C != 0) {
-        var_v0 = 1;
+        return TRUE;
     }
-    return var_v0;
+    return FALSE;
 }
 */
 

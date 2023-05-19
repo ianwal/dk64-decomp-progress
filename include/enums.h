@@ -582,7 +582,7 @@ typedef enum actors_e {
     ACTOR_BUG,
     ACTOR_UNKNOWN_341,
     ACTOR_TRY_AGAIN_DIALOG,
-    ACTOR_PAUSE_MENU_MYSTERY_MENU,
+    ACTOR_PAUSE_MENU_MYSTERY_MENU
 } Actors;
 
 typedef enum sfx_e{

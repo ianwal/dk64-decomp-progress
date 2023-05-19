@@ -82,23 +82,19 @@ extern u16 D_807FC930[];
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_805FEF10.s")
 
 /*
-// TODO: Pretty close
+// TODO: Close
 // arg0 appears to be a pointer to a flag index
 s32 func_805FEF10(s32 *arg0) {
     s32 found;
     s32 i;
-    GlobalASMStruct41* data_item;
+    s32 max = 4;
 
-    data_item = &D_80744800[0];
     found = FALSE;
-    i = 0;
-    while (!found && i < 4) {
-        i++;
-        found = player_pointer->unk58 == data_item->unk0;
+    for (i = 0; !found && i < max; i++) {
+        found = player_pointer->unk58 == D_80744800[i].unk0;
         if (found) {
-            *arg0 = data_item->unk4;
+            *arg0 = D_80744800[i].unk4;
         }
-        data_item++;
     }
     return found;
 }
