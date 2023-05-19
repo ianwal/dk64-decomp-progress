@@ -201,7 +201,7 @@ void func_806D3608(void);
 s16 func_806CE4E4(Actor*, f32, f32, s32);
 
 void func_806F142C(Actor*);
-void func_80608528(Actor*, s32, s32, s32, s32);
+void func_80608528(Actor*, s16, s32, s32, s32);
 
 void func_806DF494(s16*, s16, s16);
 
@@ -3806,12 +3806,8 @@ void func_806D72D4(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D7510.s")
-
-/*
 extern s16 D_807538C8[];
 
-// TODO: Annoying bit shift stuff with the function call inside case 0
 void func_806D7510(void) {
     f32 temp_f0;
     f32 temp_f2;
@@ -3822,7 +3818,7 @@ void func_806D7510(void) {
         case 0:
             func_806EB0C0(0x3C, NULL, cc_player_index);
             func_806DF6D4(4);
-            func_806DF494(&current_actor_pointer->y_rotation, (current_actor_pointer->unkEE + 0x800) & 0xFFF, (extra_player_info_pointer->unk48 << 0x11) >> 0x10);
+            func_806DF494(&current_actor_pointer->y_rotation, (current_actor_pointer->unkEE + 0x800) & 0xFFF, (extra_player_info_pointer->unk48) << 0x1);
             if (current_actor_pointer->unkFC != 0) {
                 current_actor_pointer->unkB8 = current_actor_pointer->unkB8 * 0.5;
             }
@@ -3839,22 +3835,15 @@ void func_806D7510(void) {
             func_806EB0C0(0x18, NULL, cc_player_index);
             break;
     }
-    temp_f0 = current_actor_pointer->unkAC;
-    temp_f2 = D_807538C8[D_807FD584];
-    if (temp_f0 < (temp_f2 + current_actor_pointer->y_position)) {
-        current_actor_pointer->y_position = temp_f0 - temp_f2;
+    if (current_actor_pointer->unkAC < ( D_807538C8[D_807FD584] + current_actor_pointer->y_position)) {
+        current_actor_pointer->y_position = current_actor_pointer->unkAC -  D_807538C8[D_807FD584];
     }
     extra_player_info_pointer->unk4 = 0.0f;
     extra_player_info_pointer->unk30 = 2.0f;
     func_806CC8F0();
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D7704.s")
-
-/*
-// TODO: Annoying bit shift stuff with the function call inside case 0
 void func_806D7704(void) {
     func_806EB0C0(0x3C, NULL, cc_player_index);
     current_actor_pointer->unk64 |= 0x200;
@@ -3868,10 +3857,9 @@ void func_806D7704(void) {
                 extra_player_info_pointer->unk1A3 = 0;
             }
             extra_player_info_pointer->unkA = current_actor_pointer->unkEE;
-            // TODO: Mismatch is here
             func_806DF494(&current_actor_pointer->y_rotation,
                           (current_actor_pointer->unkEE + 0x800) & 0xFFF,
-                          (extra_player_info_pointer->unk48 << 0x11) >> 0x10);
+                          (extra_player_info_pointer->unk48 << 0x1));
             break;
         case 1:
             func_806DF6D4(3);
@@ -3885,7 +3873,6 @@ void func_806D7704(void) {
     func_806CC8B8();
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_806D7878(void) {
     f64 temp_f0 = current_actor_pointer->animation_state->scale_y;
@@ -3921,15 +3908,11 @@ void func_806D79E4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D7A28.s")
-
 extern f32 D_80753094[];
 extern f32 D_80753024[];
 
-/*
-// TODO: Annoying bit shift stuff with the angles
 void func_806D7A28(void) {
-    s32 temp_v0;
+    u8 temp_v0;
 
     func_806EB0C0(0x3C, NULL, cc_player_index);
     func_806DF6D4(1);
@@ -3946,7 +3929,7 @@ void func_806D7A28(void) {
         case 1:
             extra_player_info_pointer->unk4 = D_80753094[D_807FD584];
             extra_player_info_pointer->unkA = current_actor_pointer->unkEE;
-            func_806DF494(&current_actor_pointer->y_rotation, (current_actor_pointer->unkEE + 0x800) & 0xFFF, (extra_player_info_pointer->unk48 << 0x11) >> 0x10);
+            func_806DF494(&current_actor_pointer->y_rotation, (current_actor_pointer->unkEE + 0x800) & 0xFFF, (extra_player_info_pointer->unk48 << 0x1));
             func_806CC8B8();
             extra_player_info_pointer->unk11C = 0xF;
             extra_player_info_pointer->unk11D = 0;
@@ -3960,7 +3943,7 @@ void func_806D7A28(void) {
             temp_v0 = func_80714608(0);
             if ((extra_player_info_pointer->unk11C == 0) && (extra_player_info_pointer->unk11D == 0)) {
                 if ((temp_v0) == 0) {
-                    func_806CF918(extra_player_info_pointer->unk11C, temp_v0);
+                    func_806CF918();
                 }
                 extra_player_info_pointer->unk11D = 1;
             } else {
@@ -3978,7 +3961,7 @@ void func_806D7A28(void) {
             if (((extra_player_info_pointer->unk1F0 & 0x1000) != 0) && ((object_timer & 3) == 0)) {
                 func_807149C8(0x64, 0x64, 0x64, 0xC8);
                 func_80714998(2);
-                func_8068588C(current_actor_pointer, (((rand() >> 0xF) % 32767) % 8) + 1, 0x3ECCCCCD, 0.0f, 0.0f, 0.0f, -0x50);
+                func_8068588C(current_actor_pointer, (((rand() >> 0xF) % 32767) % 8) + 1, 0.4f, 0.0f, 0.0f, 0.0f, -0x50);
             }
             current_actor_pointer->unkB8 = 0.0f;
             func_806CC970();
@@ -3992,7 +3975,6 @@ void func_806D7A28(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_806D7DF8(void) {
     switch (current_actor_pointer->control_state_progress) {

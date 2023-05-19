@@ -634,7 +634,7 @@ us,.code,func_8070CD14,48,yes
 us,.code,func_806AB808,612,no
 us,.code,func_80667174,12,yes
 us,.code,func_8064F028,412,yes
-us,.code,func_806D7704,372,no
+us,.code,func_806D7704,372,yes
 us,.code,func_80678428,48,yes
 us,.code,func_8062FBC8,840,no
 us,.code,func_80649BF0,388,no
@@ -1314,7 +1314,7 @@ us,.code,func_8068C0B4,120,yes
 us,.code,func_80689A80,144,yes
 us,.code,func_80651708,508,no
 us,.code,getFlagBlockAddress,340,no
-us,.code,func_806D7510,500,no
+us,.code,func_806D7510,500,yes
 us,.code,func_80689EE4,72,yes
 us,.code,func_80729EB0,1440,no
 us,.code,func_80732D80,44,yes
@@ -1725,7 +1725,7 @@ us,.code,func_8062BDB0,372,no
 us,.code,func_8070C8F4,156,yes
 us,.code,func_806755A8,616,no
 us,.code,func_806E5EA8,44,yes
-us,.code,func_806D7A28,976,no
+us,.code,func_806D7A28,976,yes
 us,.code,func_806CA2AC,56,yes
 us,.code,func_80731B88,408,no
 us,.code,func_8067641C,188,yes
