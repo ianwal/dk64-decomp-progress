@@ -1123,14 +1123,11 @@ void func_806588E0(s32 fileIndex) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658930.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658B08.s")
-
 extern s32 D_807F6C20;
 
-/*
-// TODO: Extremely close, 2 instructions swapped
 s16 func_80658B08(s8 arg0, u8 *arg1, s16 arg2) {
     s16 i;
+    s16 j;
     s16 count;
     Struct807F6C1C *temp;
 
@@ -1138,15 +1135,16 @@ s16 func_80658B08(s8 arg0, u8 *arg1, s16 arg2) {
     if (arg0 == -1) {
         return 0;
     }
-    for (i = 0; i < D_807F6C20 && count < arg2; i++) {
+    for (i = 0; i < D_807F6C20 && count < arg2;) {
         if (arg0 == D_807F6C1C[i].unk2) {
             arg1[count] = D_807F6C1C[i].unk4;
             count += 1;
         }
+        j = i + 1;
+        i = j;
     }
     return count;
 }
-*/
 
 s32 func_807009F4(s16);
 s16 func_80700AE4(s16, s16);
