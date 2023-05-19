@@ -37,12 +37,39 @@ s32 func_80735CF4(struct_80735CF4 *arg0) {
     return sp2C->unk4C;
 }
 
-
-
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80735DBC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80736FB8.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+} Struct807563CC;
+extern Struct807563CC *D_807563CC;
+
+void func_807370A4(s32, void *, s32);                    /* extern */
+void func_8073749C(void *);                            /* extern */
+void func_8073B6B0(void *);                            /* extern */
+void func_8073B750(void *);                            /* extern */
+
+typedef struct {
+    u8 unk0[0xC];
+    void* unkC;
+    u8 unk10[0x43-0x10];
+    u8 unk43;
+} struct_80736FB8;
+
+void func_80736FB8(struct_80736FB8 *arg0) {
+    if (arg0->unk43 & 4) {
+        func_8073B6B0(&arg0->unkC);
+        func_8073B750(&arg0->unkC);
+    }
+    func_8073749C(arg0);
+    func_807370A4(&D_807563CC->unk14, arg0, 0xFFFF);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737028.s")
 
@@ -102,17 +129,7 @@ struct Struct80737990 {
     u8 unk43;
 };
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-} Struct807563CC;
-
 extern Struct80737990 *D_807563C0;
-extern Struct807563CC *D_807563CC;
 
 void func_80737924(Struct80737990 *arg0) {
     s32 pad2[2];
