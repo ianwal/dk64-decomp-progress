@@ -694,8 +694,6 @@ void func_80681BD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80682DF4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80682E38.s")
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -722,8 +720,6 @@ typedef struct {
     s16 unk0;
 } AAD_80682E38;
 
-/*
-// TODO: Regalloc v0 t1
 void func_80682E38(Struct80682E38_arg0 *arg0) {
     s32 var_a2;
     s16 var_a1;
@@ -759,13 +755,12 @@ void func_80682E38(Struct80682E38_arg0 *arg0) {
             }
             func_80682DF4(D_807FBB44, temp_s0, var_a2);
         } else {
-            // Regalloc here
-            D_807FBB44->RaaD2->unk0 = i;
+            RaceAdditionalActorData2 *RaaD2 = D_807FBB44->RaaD2;
+            RaaD2->unk0 = i;
         }
     }
     func_80682AB4(arg0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8068304C.s")
 
