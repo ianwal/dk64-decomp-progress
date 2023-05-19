@@ -619,7 +619,7 @@ us,.code,func_806D9134,80,yes
 us,.code,func_8072A714,200,yes
 us,.code,func_8072A7DC,144,yes
 us,.code,func_8063DB3C,156,yes
-us,.code,func_8070E808,192,no
+us,.code,func_8070E808,192,yes
 us,.code,func_806D03BC,76,yes
 us,.code,func_806EFC38,280,yes
 us,.code,func_80602E6C,1236,no

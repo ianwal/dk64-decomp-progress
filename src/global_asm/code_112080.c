@@ -391,15 +391,30 @@ void func_8070E2AC(s32 arg0, Struct8070E2AC_arg1 *arg1, Struct8070E2AC_arg2 *arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E750.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E808.s")
+typedef struct {
+    u8 unk0[0x54 - 0x0];
+    u8 unk54;
+} AAD_8070E808;
 
-/*
+typedef struct {
+    u16 unk0;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+} Struct8070D754_unk8;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    Struct8070D754_unk8 *unk8;
+} Struct8070D754;
+
+extern s32 D_8061DA84; // TODO: Datatype
+
 void func_8070E808(Actor *arg0, Actor *arg1) {
-    void *sp24;
-    void *sp20;
-    void *temp_a0;
-    void *temp_v0;
-    void *temp_v0_2;
+    AAD_8070E808 *sp24;
+    Struct8070D754 *temp_v0;
+    Struct8070D754_unk8 *temp_a0;
 
     sp24 = arg0->additional_actor_data;
     temp_v0 = func_8070D754(arg1);
@@ -411,14 +426,11 @@ void func_8070E808(Actor *arg0, Actor *arg1) {
         arg0->control_state = 4;
         return;
     }
-    temp_v0_2 = temp_v0->unk8;
-    sp20 = temp_v0;
-    func_8070E548(arg0, temp_v0_2->unk0, temp_v0_2->unk2);
+    func_8070E548(arg0, temp_v0->unk8->unk0, temp_v0->unk8->unk2);
     temp_a0 = temp_v0->unk8;
     temp_v0->unk8 = temp_a0->unk4;
     func_8061134C(temp_a0);
 }
-*/
 
 extern s32 D_807550C4;
 extern u8 D_807550CC;
