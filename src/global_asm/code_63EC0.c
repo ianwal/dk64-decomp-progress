@@ -362,6 +362,7 @@ void func_80662188(u8 arg0) {
     D_80748A9C[arg0].unk0 = getPointerTableFile(0x19, 0x75C, 1, 0);
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_806621D0.s")
 
 void func_806623CC(s32 arg0) {

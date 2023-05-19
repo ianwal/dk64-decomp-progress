@@ -2513,7 +2513,7 @@ us,.code,func_8065996C,1092,no
 us,.code,func_80692640,768,no
 us,.code,func_8067470C,376,no
 us,.code,func_80650684,100,yes
-us,.code,func_80664834,516,no
+us,.code,func_80664834,516,yes
 us,.code,func_8066EABC,48,no
 us,.code,func_80685D84,244,yes
 us,.code,func_806CC920,40,yes

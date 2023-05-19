@@ -901,6 +901,51 @@ loop_7:
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80672134.s")
 
+extern f64 D_80759150;
+
+/*
+// TODO: Extremely close
+s16 func_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s16 var_a3;
+    s16 temp_v0_2;
+    s16 var_a1;
+    f32 var_f2;
+    s16 var_v0;
+
+    if (arg1 >= arg0 && arg2 >= arg0 && arg1 >= arg2) {
+        return 9999;
+    } else if (arg2 < arg0 && arg1 >= arg2) {
+        return 9999;
+    } else {
+        var_a3 = arg2 + 0x800;
+        if (var_a3 >= 0x1000) {
+            var_a3 = var_a3 - 0x1000;
+        }
+        temp_v0_2 = func_80672A70(arg0, arg1);
+        var_a1 = ABS(arg0 - temp_v0_2);
+        if (var_a1 >= 0x800) {
+            var_a1 = 0xFFF - var_a1;
+        }
+        var_v0 = ABS(var_a3 - temp_v0_2);
+        if (var_v0 >= 0x800) {
+            var_v0 = 0xFFF - var_v0;
+        }
+        if (var_a1 != 0) {
+            var_f2 = (f32)var_v0 / var_a1;
+        } else {
+            var_f2 = 0.0f;
+        }
+        if (var_f2 > 1.0) {
+            var_f2 = 1.0f;
+        }
+        if (var_f2 < D_80759150) {
+            var_f2 = 0.0f;
+        }
+        return arg3 * var_f2;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80672328.s")
 
 extern f64 D_80759158;

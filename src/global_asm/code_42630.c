@@ -735,6 +735,48 @@ void func_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644EC8.s")
 
+u32 func_806119A0();
+void func_8071AADC(void);
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct807F5FD4;
+
+extern s32 D_8071E3EC; // TODO: Datatype
+extern Struct807F5FD4 *D_807F5FD4;
+extern s32 D_80720BC4; // TODO: Datatype
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80645700_sp20;
+
+/*
+// TODO: Close
+void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
+    u32 sp2C;
+
+    if (((func_806119A0() / 10000) % arg2) == 0) {
+        sp2C = (func_806119A0() / 10000) % arg3;
+        func_80714998(2);
+        func_80714950(0x10064);
+        func_8071498C(&func_8071AADC);
+        func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4[sp2C].unk0, D_807F5FD4[sp2C].unk4, D_807F5FD4[sp2C].unk8);
+    }
+    if (((func_806119A0() / 10000) % arg2) == 0) {
+        sp2C = (func_806119A0() / 10000) % arg3;
+        func_80714998(2);
+        func_80714950(0x10064);
+        func_8071498C(&func_8071AADC);
+        func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4[sp2C].unk0, D_807F5FD4[sp2C].unk4, D_807F5FD4[sp2C].unk8);
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806450C0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645238.s")
@@ -754,21 +796,6 @@ void func_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645700.s")
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-} Struct807F5FD4;
-
-extern s32 D_8071E3EC; // TODO: Datatype
-extern Struct807F5FD4 *D_807F5FD4;
-extern s32 D_80720BC4; // TODO: Datatype
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-} Struct80645700_sp20;
 
 /*
 // TODO: Pretty close
@@ -916,6 +943,33 @@ void func_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647834.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647A14.s")
+
+extern f32 D_80758A08;
+// extern s32 D_8071FC8C; // TODO: Datatype
+
+/*
+// TODO: Float nonsense, possibly rodata
+void func_80647A14(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    s32 i;
+    f32 temp_f26;
+    f32 var_f20;
+
+    temp_f26 = D_80758A08;
+    var_f20 = 0.0f;
+    for (i = 0; i < 6; i++) {
+        func_8071496C(i << 1);
+        func_807149B8(1);
+        func_807149FC(7);
+        func_8071498C(&func_8071F1D0);
+        func_80714998(1);
+        func_80714950(var_f20);
+        func_80714CC0(&D_8071FC8C, 0.5f, D_807F621C, D_807F6220, D_807F6224);
+        func_80714950(var_f20 + 2048.0f);
+        func_80714CC0(&D_8071FC8C, 0.5f, D_807F621C, D_807F6220, D_807F6224);
+        var_f20 += temp_f26;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647B74.s")
 
