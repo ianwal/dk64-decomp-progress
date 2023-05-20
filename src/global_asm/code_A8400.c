@@ -54,103 +54,6 @@ extern f32 D_8075A7A0;
 extern f32 D_8075A7A4;
 extern f64 D_8075A7A8;
 
-typedef struct struct806A57C0_2 Struct806A57C0_2;
-typedef struct struct806A57C0_3 Struct806A57C0_3;
-
-struct struct806A57C0_3 {
-    s16 unk0;
-    u8 unk2; // Used
-    u8 unk3;
-    f32 unk4; // Used
-    f32 unk8; // Used
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-    s32 unk60;
-    s32 unk64;
-    s32 unk68;
-    s32 unk6C;
-    s32 unk70;
-    s32 unk74;
-    s32 unk78;
-    s32 unk7C;
-    s32 unk80;
-    s32 unk84;
-    s32 unk88;
-    s32 unk8C;
-    s32 unk90;
-    s32 unk94;
-    s32 unk98;
-    s32 unk9C;
-    Struct806A57C0_3 *unkA0; // Used
-};
-
-struct struct806A57C0_2 {
-    u8 unk0; // Used
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-    s32 unk8;
-    Struct806A57C0_3 *unkC;
-    u16 unk10; // Used
-    u16 unk12;
-    s32 unk14;
-    f32 unk18;
-    Struct806A57C0_2 *unk1C;
-};
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    Struct806A57C0_2 *unkC; // Used
-    u8 unk10;
-    u8 unk11;
-    u8 unk12;
-    u8 unk13;
-    f32 unk14; // Used
-    s32 unk18;
-    u8 unk1C;
-    u8 unk1D; // Used
-    u8 unk1E;
-    u8 unk1F;
-    f32 unk20; // Used
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s16 unk38;
-    s16 unk3A;
-    s32 unk3C;
-    f32 unk40; // Used
-    f32 unk44; // Used
-    f32 unk48; // Used
-    f32 unk4C; // Used
-    f32 unk50;
-    u8 unk54;
-    u8 unk55; // Used
-} AAD_806A4DDC;
-
 void func_806A3B78(s32 *arg0, AAD_806A4DDC *arg1, Struct806A57C0_2 *arg2, u8 arg3, u8 *arg4) {
     s32 sp44;
     s32 i;
@@ -403,7 +306,7 @@ void func_806A57C0(AAD_806A4DDC *arg0) {
     if ((var_v1 != NULL) && (var_v1->unkC->unk2 == 0)) {
         while (var_v1 != NULL) {
             var_v0 += var_v1->unk18;
-            var_v1 = var_v1->unk1C;
+            var_v1 = var_v1->next;
         }
         if (var_v0 < D_8075A978) {
             arg0->unk14 = (D_8075A978 - var_v0) * 0.5;
@@ -421,37 +324,6 @@ extern f32 D_8075A990;
 extern u8 D_807503F0;
 int func_806A4284();
 
-typedef struct {
-    u16 unk0;
-    u16 unk2;
-    Actor *unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    f32 unk14;
-    f32 unk18;
-    u8 unk1C;
-    u8 unk1D;
-    u8 unk1E;
-    u8 unk1F;
-    f32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    void* unk34;
-    s16 unk38;
-    s16 unk3A;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    u8 unk54;
-    u8 unk55;
-} AAD_806A5868;
-
 void func_806A5174(Actor*, void*, f32);
 void func_8070DA74(Actor*);
 void func_8070E808(Actor *arg0, Actor *arg1);
@@ -461,7 +333,7 @@ void func_806A4DDC(Actor *arg0);
 /*
 // TODO: Extremely close, one statement left to fix
 void func_806A5868(void) {
-    AAD_806A5868 *var_a3;
+    AAD_806A4DDC *var_a3;
     f32 sp18;
     f32 var_f0;
     s32 var_v0_2;

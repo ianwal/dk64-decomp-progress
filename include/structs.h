@@ -934,6 +934,103 @@ typedef struct TempAAD {
     s8 unk24;
 } TempAAD;
 
+typedef struct struct806A57C0_2 Struct806A57C0_2;
+typedef struct struct806A57C0_3 Struct806A57C0_3;
+
+struct struct806A57C0_3 {
+    s16 unk0;
+    u8 unk2; // Used
+    u8 unk3;
+    f32 unk4; // Used
+    f32 unk8; // Used
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    Struct806A57C0_3 *unkA0; // Used
+};
+
+struct struct806A57C0_2 {
+    u8 unk0; // Used
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+    Struct806A57C0_3 *unkC;
+    u16 unk10; // Used
+    u16 unk12;
+    s32 unk14;
+    f32 unk18;
+    Struct806A57C0_2 *next; // 0x1C
+};
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    Struct806A57C0_2 *unkC; // Used
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    f32 unk14; // Used
+    s32 unk18;
+    u8 unk1C;
+    u8 unk1D; // Used
+    u8 unk1E;
+    u8 unk1F;
+    f32 unk20; // Used
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s16 unk38;
+    s16 unk3A;
+    s32 unk3C;
+    f32 unk40; // Used
+    f32 unk44; // Used
+    f32 unk48; // Used
+    f32 unk4C; // Used
+    f32 unk50;
+    u8 unk54;
+    u8 unk55; // Used
+} AAD_806A4DDC;
+
 // TODO: This appears to be a "texture renderer" according to ScriptHawk, needs a better name though. Linked list at Actor->unk158
 typedef struct global_asm_struct_60 GlobalASMStruct60;
 
