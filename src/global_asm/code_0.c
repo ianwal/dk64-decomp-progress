@@ -8,7 +8,7 @@ extern s32 D_8000DDE4;
 extern s32 D_8076A084;
 extern u8 D_807467CC;
 extern u8 D_8076A0B2;
-extern s32 D_80769018;
+extern Mtx D_80769018;
 extern u16 D_8076A09C;
 extern f32 D_807444B8;
 extern f32 D_807444BC;
@@ -42,7 +42,7 @@ extern f32 loading_zone_transition_speed;
 extern u8 D_807444F8;
 extern u8 loading_zone_transition_type;
 
-extern s32 D_80767E68;
+extern Mtx D_80767E68;
 extern Mtx D_80767CE8;
 extern Mtx D_80768E98;
 
@@ -75,7 +75,7 @@ extern OSMesg D_8076A108;
 
 extern OSTimer D_8076A130;
 
-void func_805FB750(s32 arg0, s32 arg1, s32 arg2) {
+void func_805FB750(s32 arg0, s32 arg1, void* arg2) {
     s32 sp2C;
 
     sp2C = D_8000DDCC;
@@ -228,7 +228,7 @@ void func_805FBE04(void) {
     f32 FOV;
 
     osWriteBackDCacheAll();
-    osInvalDCache(0x80000000, 0x800000);
+    osInvalDCache((void*)0x80000000, 0x800000);
     D_8076A080 = &D_807FF100;
     func_8060B140(D_8000DDE4, D_8076A080, &D_8076A084, 0, 0, 0, 0);
     D_8076A0A4 = 0;
@@ -342,7 +342,7 @@ void func_805FBFF4(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FC2B0.s")
 
 extern s32 *D_8076A048;
-extern s32 D_8076A050[];
+extern void* D_8076A050[];
 extern s32 D_8076A150;
 extern s32 D_8076A088;
 extern s32 D_8076A08C;
@@ -514,8 +514,8 @@ void func_805FE544(u8 arg0) {
     } else {
         D_8076A058 = arg0 * 3000;
     }
-    D_8076A050[0] = malloc(D_8076A058 * 8);
-    D_8076A050[1] = malloc(D_8076A058 * 8);
+    D_8076A050[0] = (void*)malloc(D_8076A058 * 8);
+    D_8076A050[1] = (void*)malloc(D_8076A058 * 8);
     func_805FE71C(func_805FE634(D_8076A050[0], 0), 0, &D_8076A088, 1);
     func_805FE71C(func_805FE634(D_8076A050[1], 1), 1, &D_8076A088, 1);
 }
@@ -547,8 +547,8 @@ void func_8072ED90();
 void func_80658BD0();
 
 void func_80630300();
-void func_80650E20(s32 arg0);
-void func_8062F050(s32 arg0);
+void func_80650E20(s32* arg0);
+void func_8062F050(s32* arg0);
 void func_8065D170();
 void func_806588E0(s32 arg0);
 void func_80688940();
@@ -560,18 +560,18 @@ void func_806D0430(f32 arg0);
 void func_805FE544(u8 arg0);
 
 void func_80631FAC(Maps arg0, s32 arg1);
-void func_806886E0(s32 arg0, s32 arg1, s32 arg2);
+void func_806886E0(s32* arg0, s32 arg1, s32 arg2);
 void func_80663DA0();
 void func_8065A570();
 void func_80677D80();
 void func_8068A7B0();
 
-void func_80626264(s32);
+void func_80626264(void*);
 void func_80712B80();
 void func_806C7D40(s32 arg0);
 void func_80714670();
 
-void func_80724C78(s32 arg0);
+void func_80724C78(void* arg0);
 void func_8061EA78();
 void func_806F4778();
 void func_8070E8C8();
@@ -595,7 +595,7 @@ void func_805FB944(s32);
 
 void func_805FE7FC(void) {
     s32 *mapGeometry;
-    s32 *sp28;
+    void *sp28;
     s32 *mapSetup;
     f32 phi_f0;
     s32 map;
