@@ -14,16 +14,17 @@ extern f32 D_807FC7B8;
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068E9B0.s")
 
 /*
-void func_8068E9B0(Actor *arg0) {
+// TODO: Quite close
+void func_8068E9B0(Actor **arg0) {
     f32 sp2C;
     Actor *vehicle;
 
-    vehicle = arg0->PaaD->vehicle_actor_pointer;
-    func_80671C0C(vehicle, 9, arg0->x_position, &sp2C, arg0->z_position);
-    if (arg0->y_position < sp2C) {
-        arg0->y_position = sp2C;
+    vehicle = (*arg0)->PaaD->vehicle_actor_pointer;
+    func_80671C0C(vehicle, 9, &(*arg0)->x_position, &sp2C, &(*arg0)->z_position);
+    if ((*arg0)->y_position < sp2C) {
+        (*arg0)->y_position = sp2C;
     }
-    arg0->y_rotation = vehicle->y_rotation;
+    (*arg0)->y_rotation = vehicle->y_rotation;
     func_806319C4(arg0, 0);
 }
 */

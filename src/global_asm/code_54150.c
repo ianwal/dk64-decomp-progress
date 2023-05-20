@@ -111,9 +111,31 @@ void func_806506E8(GlobalASMStruct9 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650794.s")
+void func_80650794(s16 arg0, s16 arg1, u8 arg2, f32 arg3) {
+    OM2_unk78 *temp_v1;
+    u8 var_a0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_806508B4.s")
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        var_a0 = 8.0f * arg3;
+        if (var_a0 >= 0x10) {
+            var_a0 = 0xF;
+        }
+        temp_v1[arg1 + 1].unk7 = (var_a0 * 0x10) + arg2;
+    }
+}
+
+void func_806508B4(s16 arg0, s16 arg1, s16 arg2) {
+    OM2_unk78 *temp_v0;
+    OM2_unk78 *temp_v1;
+
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v1[arg1].unk12 = arg2;
+        temp_v1[arg1 + 1].unk2 = 1;
+        temp_v1[arg1].unk10 = 0;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8065092C.s")
 
@@ -132,34 +154,104 @@ void func_8065092C(s16 arg0, s16 arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650998.s")
+void func_80650998(s16 arg0, s16 arg1) {
+    OM2_unk78 *temp_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650A04.s")
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v1[arg1 + 1].unk5 = 0;
+        temp_v1[arg1].unkC = 0;
+    }
+}
+
+void func_80650A04(s16 arg0, s16 arg1, s16 arg2) {
+    OM2_unk78 *temp_v1;
+
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v1[arg1 + 1].unk0 = arg2;
+    }
+}
 
 s16 func_80650A70(s16 arg0, s16 arg1) {
     s16 var_v0;
     OM2_unk78 *temp_v1;
 
     temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
-    var_v0 = NULL;
+    var_v0 = 0;
     if (temp_v1 != NULL) {
-        // TODO: Is this right?
         return temp_v1[arg1 + 1].unk0;
     }
     return var_v0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650AD8.s")
+void func_80650AD8(s16 arg0, s16 arg1, s16 arg2, f32 arg3) {
+    OM2_unk78 *temp_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650B50.s")
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v1[arg1].unkC = arg3;
+        temp_v1[arg1 + 1].unk5 = arg2;
+    }
+}
 
-// Doable, needs ObjectModel2 -> 0x78 defined
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650BBC.s")
+void func_80650B50(s16 arg0, s16 arg1, s16 arg2) {
+    OM2_unk78 *temp_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650C28.s")
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v1[arg1 + 1].unk3 = arg2;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650C98.s")
+void func_80650BBC(s16 arg0, s16 arg1, s16 arg2) {
+    OM2_unk78 *temp_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650D04.s")
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v1[arg1 + 1].unk4 = arg2;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_80650D8C.s")
+void func_80650C28(s16 arg0, s16 arg1, s16 arg2) {
+    OM2_unk78 *temp_v1;
+
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v1[arg1].unk10 = 0;
+        temp_v1[arg1].unk12 = arg2;
+    }
+}
+
+void func_80650C98(s16 arg0, s16 arg1, s16 arg2) {
+    OM2_unk78 *temp_v1;
+
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v1[arg1 + 1].unk6 = arg2;
+    }
+}
+
+u8 func_80650D04(s16 arg0, s16 arg1) {
+    OM2_unk78 *temp_v1;
+    s32 var_v0;
+
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        return temp_v1[arg1 + 1].unk2 == 1 ? 1 : 0;
+    }
+    return 0;
+}
+
+void func_80650D8C(s16 arg0, s16 arg1, s16 *arg2, f32 *arg3, u8 *arg4) {
+    OM2_unk78 *temp_v0;
+    OM2_unk78 *temp_v1;
+
+    temp_v1 = D_807F6000[func_80659470(arg0)].unk78;
+    if (temp_v1 != NULL) {
+        temp_v0 = &temp_v1[arg1];
+        *arg3 = temp_v1[arg1].unkC;
+        *arg2 = temp_v1[arg1 + 1].unk5;
+        *arg4 = temp_v1[arg1 + 1].unk3;
+    }
+}

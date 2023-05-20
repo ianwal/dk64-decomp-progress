@@ -999,7 +999,8 @@ struct struct806A57C0_2 {
 };
 
 typedef struct {
-    s32 unk0;
+    u16 unk0; // Used
+    s16 unk2;
     s32 unk4;
     s32 unk8;
     Struct806A57C0_2 *unkC; // Used
@@ -1008,7 +1009,7 @@ typedef struct {
     u8 unk12;
     u8 unk13;
     f32 unk14; // Used
-    s32 unk18;
+    f32 unk18; // Used
     u8 unk1C;
     u8 unk1D; // Used
     u8 unk1E;
@@ -1053,6 +1054,10 @@ struct global_asm_struct_60 {
     u8 unk23;
     GlobalASMStruct60 *next; // at 0x24
 };
+
+typedef struct {
+    s32 unk0; // TODO: Proper members
+} FloorTriangle;
 
 struct actor {
     u32 *unk0; // Small header on top of DisplayList Pointer // TODO: Proper type
@@ -1215,7 +1220,7 @@ struct actor {
     };
     u32 unk148; // Used
     u32 unk14C; // Used
-    void *unk150; // TODO: Floor Triangle Pointer
+    FloorTriangle *unk150;
     u8 control_state; // at 0x154
     u8 control_state_progress; // at 0x155
     u8 unk156;

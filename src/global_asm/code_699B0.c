@@ -873,6 +873,17 @@ void func_806685E0(Struct806685E0_arg0 *arg0, f32 arg1) {
 // Doable, small struct loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806688B8.s")
 
+typedef struct {
+    FloorTriangle *unk0;
+    FloorTriangle *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct807F9514;
+
+extern Struct807F9514 *D_807F9514;
+extern u16 D_807FBB34;
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066893C.s")
 
 /*

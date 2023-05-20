@@ -362,12 +362,16 @@ struct OM2_unk74 {
 
 typedef struct {
     s16 unk0;
-    s8 unk2;
-    s8 unk3;
-    s32 unk4;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    s8 unk5;
+    u8 unk6;
+    u8 unk7;
     s32 unk8;
-    s32 unkC;
-    s32 unk10;
+    f32 unkC;
+    s16 unk10;
+    s16 unk12;
 } OM2_unk78;
 
 typedef struct object_model2 {

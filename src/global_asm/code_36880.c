@@ -747,7 +747,20 @@ void func_80636C00(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806392BC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806398E4.s")
+void func_806398E4(s32 arg0, u8 arg1, u8 arg2) {
+    Model2Model *temp_v0;
+
+    if (arg1 == 1) {
+        arg0 = func_80659470(arg0);
+    }
+    temp_v0 = D_807F6000[arg0].model_pointer;
+    if (arg2 != 0) {
+        temp_v0->unk4E |= 1;
+    } else {
+        temp_v0->unk4E &= 0xFFFE;
+    }
+    temp_v0->unk4E &= 0xFFFD;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639968.s")
 
