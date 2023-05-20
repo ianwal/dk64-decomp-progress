@@ -1,22 +1,49 @@
 #include <ultra64.h>
 #include "functions.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68EA0/func_806641A0.s")
-
+extern s32 D_80747D70;
 extern s16 D_807F9434;
 
 typedef struct {
-    u16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
+    u16 unk0; // Object Model 2 Type
+    s16 unk2; // X Position
+    s16 unk4; // Y Position
+    s16 unk6; // Z Position
+    s16 unk8; // Scale
     s16 unkA;
 } Struct807F9430;
 
 extern Struct807F9430 *D_807F9430;
 
 void func_806643C4(s32 arg0, s32 arg1, f32 arg2);
+
+void func_806641A0(void) {
+    s32 i, count;
+
+    count = 0;
+    for (i = 0; i < D_80747D70; i++) {
+        if (func_8066461C(D_807F6000[i].object_type) != 0) {
+            count++;
+        }
+    }
+    D_807F9434 = count;
+    if (count != 0) {
+        D_807F9430 = malloc(count * sizeof(Struct807F9430));
+        count = 0;
+        for (i = 0; i < D_80747D70; i++) {
+            if (func_8066461C(D_807F6000[i].object_type) != 0) {
+                D_807F9430[count].unk0 = D_807F6000[i].object_type;
+                D_807F9430[count].unk2 = D_807F6000[i].x_position;
+                D_807F9430[count].unk4 = D_807F6000[i].y_position;
+                D_807F9430[count].unk6 = D_807F6000[i].z_position;
+                func_806643C4(count, D_807F6000[i].object_type, D_807F6000[i].y_rotation);
+                D_807F9430[count].unk8 = D_807F6000[i].hitbox_scale * 100.0;
+                D_807F9430[count].unkA = D_807F6000[i].unk88;
+                count++;
+            }
+        }
+    }
+}
 
 void func_806643C4(s32 arg0, s32 arg1, f32 arg2) {
     f32 temp[2];
@@ -76,7 +103,6 @@ s32 func_8066461C(s16 arg0) {
 
 s32 func_8063C2A8(s16);
 extern f64 D_80758E10;
-extern s16 D_807F9434;
 void func_80664A38(s16 arg0);
 void func_80664834(s16 arg0);
 
