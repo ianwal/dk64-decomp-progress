@@ -773,7 +773,7 @@ void func_80630300(void);
 void func_8063039C(void);
 void func_806307AC(Chunk14 *current);
 void func_806307CC(Chunk14 *arg0, s32 arg1, u8 arg2, u8 arg3, s8 *arg4);
-s32 func_80663FCC(s16 model2ArrayIndex);
+u8 func_80663FCC(s16 model2ArrayIndex);
 s32 func_80629148(void);
 void func_806CBE90(void);
 s16 func_806CC14C(s16 arg0, s16 arg1);

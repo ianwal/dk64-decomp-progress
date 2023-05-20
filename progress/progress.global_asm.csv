@@ -3180,7 +3180,7 @@ us,.code,func_806423A8,216,yes
 us,.code,func_806086CC,1756,no
 us,.code,func_80672134,500,no
 us,.code,func_8073E268,504,no
-us,.code,func_80663DA0,556,no
+us,.code,func_80663DA0,556,yes
 us,.code,playSound,1068,no
 us,.code,func_806C9D7C,96,yes
 us,.code,func_806D8308,516,no
