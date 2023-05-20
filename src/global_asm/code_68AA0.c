@@ -11,7 +11,7 @@ typedef struct {
     s16 unk2;
     s16 unk4;
     u8 unk6;
-    u8 unk7;
+    s8 unk7[1];
     s8 unk8[1];
     s8 unk9;
     s16 unkA;
@@ -42,8 +42,8 @@ void func_80663DA0(void) {
                 D_807F9420[count].unk2 = D_807F6000[i].y_position;
                 D_807F9420[count].unk4 = D_807F6000[i].z_position;
                 D_807F9420[count].unk6 = temp_v0;
-                D_807F9420[count].unk7 = func_806531B8(D_807F6000[i].x_position, D_807F6000[i].y_position, D_807F6000[i].z_position, 0);
-                temp_v0_2 = func_80658B08(D_807F9420[count].unk7, &D_807F9420[count].unk8, 4);
+                D_807F9420[count].unk7[0] = func_806531B8(D_807F6000[i].x_position, D_807F6000[i].y_position, D_807F6000[i].z_position, 0);
+                temp_v0_2 = func_80658B08(D_807F9420[count].unk7[0], &D_807F9420[count].unk8, 4);
                 if (temp_v0_2 != 4) {
                     D_807F9420[count].unk8[temp_v0_2] = -1;
                 }
@@ -68,3 +68,33 @@ u8 func_80663FCC(s16 model2ArrayIndex) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68AA0/func_80664044.s")
+
+void func_80603340(f32, f32, f32, u8, s32, f32);
+
+/*
+// TODO: Very close
+void func_80664044(u8 arg0, u8 arg1, u8 arg2, f32 arg3) {
+    s32 found;
+    s32 j;
+    s32 i;
+
+    for (i = 0; i < D_807F9424; i++) {
+        if (arg0 == D_807F9420[i].unk6) {
+            found = FALSE;
+            j = 0;
+            while (TRUE) {
+                if (D_807F9420[i].unk7[j] == character_change_array->chunk) {
+                    found = TRUE;
+                }
+                j++;
+                if (j >= 5 || found || D_807F9420[i].unk7[j] == -1) {
+                    break;
+                }
+            }
+            if (found) {
+                func_80603340(D_807F9420[i].unk0, D_807F9420[i].unk2, D_807F9420[i].unk4, arg1, arg2, arg3);
+            }
+        }
+    }
+}
+*/

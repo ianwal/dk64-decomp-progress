@@ -1228,7 +1228,7 @@ typedef struct {
     f32     near; // 0x284
     f32     far; // 0x288
     s32     unk28C;
-    u16     chunk; // 0x290
+    s16     chunk; // 0x290
     s16     unk292;
     CharacterChange294 *unk294; // Used
     s32     new_controller_inputs; // bitfield 0x298

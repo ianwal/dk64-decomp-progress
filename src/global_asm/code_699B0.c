@@ -533,6 +533,7 @@ u8 func_8066641C(void) {
     return D_807F951D;
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666428.s")
 
 u8 func_80666A88(void) {

@@ -1,10 +1,17 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-typedef struct Temp8070D6D8 {
+typedef struct {
     s32 unk0;
     s32 unk4;
+} Struct8070D654;
+
+typedef struct Temp8070D6D8 {
+    u8 unk0; // Used
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    Struct8070D654 *unk4;
     u16 unk8; // Size
     u16 unkA;
     void *unkC; // Next?
@@ -45,7 +52,17 @@ void func_8070D3CC(Struct8070D3CC_arg0 *arg0, Struct8070D3CC_arg1 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D568.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D654.s")
+void func_8070D654(Temp8070D6D8 *arg0, void *arg1) {
+    s32 i;
+    Struct8070D654 *var_s0;
+
+    arg0->unk4 = malloc(arg0->unk0 * sizeof(Struct8070D654));
+    var_s0 = arg0->unk4;
+    for (i = 0; i < arg0->unk0; i++) {
+        func_8070D568(var_s0, arg1);
+        var_s0++;
+    }
+}
 
 Temp8070D6D8 *func_8070D6D8(void *arg0) {
     Temp8070D6D8 *temp_s0;
