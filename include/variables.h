@@ -1,3 +1,4 @@
+#define ARRAY_COUNT(arr) (sizeof(arr) / sizeof(arr[0]))
 extern s8 story_skip;
 extern s8 widescreen_enabled;
 extern PlayerAdditionalActorData *extra_player_info_pointer;

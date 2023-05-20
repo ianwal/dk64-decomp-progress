@@ -4,15 +4,13 @@
 
 extern u8 D_807444FC;
 
-typedef struct waterStruct2 WaterStruct2;
-
-struct waterStruct2 {
+typedef struct WaterStruct2 { //this and Critter are the same?
     u8 unk0;
     u8 unk1;
     u8 unk2;
     u8 unk3;
     s32 unk4;
-    WaterStruct2 *next; // At 0x8
+    struct WaterStruct2 *next; // At 0x8
     u8 padC[0x24 - 0xC];
     f32 unk24;
     u8 pad28[0x1E1 - 0x28];
@@ -23,7 +21,31 @@ struct waterStruct2 {
     s16 unk1E6;
     s32 unk1E8;
     s32 unk1EC;
-};
+} WaterStruct2;
+
+typedef struct Critter {  //this and Critter are the same?
+    s16 unk0;
+    u8 unk2[2];
+    s16 unk4;
+    u8 unk6[2];
+    f32 x_pos; // 0x8
+    f32 y_pos; // 0xC
+    f32 z_pos; // 0x10
+    f32 unk14;
+    u8 unk18[0x28-0x18];
+    f32 unk28;
+    u8 unk2C[0x30-0x2C];
+    f32 unk30;
+    u8 unk34[0x42-0x34];
+    s16 unk42;
+    s16 unk44;
+    u8 unk46[0x48-0x46];
+    f32 unk48;
+    f32 unk4C;
+    u8 unk50[0x1E0-0x50];
+    u8 unk1E0;
+    u8 unk1E1;
+} Critter;
 
 typedef struct WaterStruct5 {
     u8 pad0[0x1C - 0x0];
@@ -31,6 +53,16 @@ typedef struct WaterStruct5 {
     u8 pad1D[0x25 - 0x1D];
     u8 unk25;
 } WaterStruct5;
+
+typedef struct WaterStruct6 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+} WaterStruct6;
 
 // TODO: Merge into WaterStruct2, they're likely the same type
 typedef struct WaterStruct4 {
@@ -142,32 +174,8 @@ extern f64 D_80029FF0;
 extern f32 D_80029FF8;
 extern u8 D_80770DC9;
 
-typedef struct {
-    s16 unk0;
-    u8 unk2[2];
-    s16 unk4;
-    u8 unk6[2];
-    f32 x_pos; // 0x8
-    f32 y_pos; // 0xC
-    f32 z_pos; // 0x10
-    f32 unk14;
-    u8 unk18[0x28-0x18];
-    f32 unk28;
-    u8 unk2C[0x30-0x2C];
-    f32 unk30;
-    u8 unk34[0x42-0x34];
-    s16 unk42;
-    s16 unk44;
-    u8 unk46[0x48-0x46];
-    f32 unk48;
-    f32 unk4C;
-    u8 unk50[0x1E0-0x50];
-    u8 unk1E0;
-    u8 unk1E1;
-} struct_critter;
-
 // Listed as "Bat Critter Behavior" in Ghidra
-void func_800245B8(struct_critter *arg0) {
+void func_800245B8(Critter *arg0) {
     f32 temp_f2;
     s32 temp_a0;
     f32 sp3C;
@@ -213,7 +221,7 @@ extern f64 D_8002A008;
 
 /*
 Regalloc
-void func_80024B78(struct_critter *arg0) {
+void func_80024B78(Critter *arg0) {
     f32 temp_f0;
     f32 temp_f2;
 
@@ -241,7 +249,7 @@ void D_8071FC40(void);
 
 /*
 Bunch of stack/regalloc issues
-void func_80024F28(struct_critter *arg0) {
+void func_80024F28(Critter *arg0) {
     f32 sp44;
     s16 sp3E;
     f32 temp_f2;
@@ -289,7 +297,7 @@ void func_80024F28(struct_critter *arg0) {
 
 extern f32 D_8002A028;
 
-void func_80025500(struct_critter *arg0) {
+void func_80025500(Critter *arg0) {
     if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1) && ((s16) (func_806119A0() % 255U) < 6)) {
         func_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_806119A0() & 3) + 0x1A9), 0xFF, 0x5A, 0x1E, 0x5A, D_8002A028, 0);
     }
@@ -360,21 +368,11 @@ s32 func_80025D1C(s32 arg0, struct_master_critter_ctrlr *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025DB8.s")
 
-void func_80025DB8(WaterStruct4*, WaterStruct4*, s32, s16, s32);
+void func_80025DB8(WaterStruct6*, WaterStruct6*, s32, s16, s32);
 
-void func_80025F3C(void *arg0, s32 arg1, u8 arg2, u8 arg3) {
+void func_80025F3C(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2, u8 arg3) {
     func_80025DB8(arg0, arg1, arg2, func_806119A0() & 0xFFF, arg3);
 }
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-} WaterStruct6;
 
 void func_80025F8C(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2) {
     func_80025F3C(arg0, arg1, arg2, 0);
@@ -405,15 +403,21 @@ void func_80024000(WaterStruct4*, s32, f32);
 void func_800262C0(WaterStruct4*, s32);
 extern s32 D_80029BA8;
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s16 unk8;
-    s16 unkA;
+typedef struct WaterStruct7 {
+    /* 0x00 */ s32 unk0;
+    /* 0x04 */ s32 unk4;
+    /* 0x08 */ s16 unk8;
+    /* 0x0A */ s16 unkA;
+    /* 0x0C */ char unk_0C[0x20];
 } WaterStruct7;
+
 extern WaterStruct7 *D_80029BA4;
 
-extern void *D_80029BA0;
+typedef struct unkStruct_80029BA0 {
+/* 0x00 */ char unk_00[8];
+} unkStruct_80029BA0;
+
+extern unkStruct_80029BA0* D_80029BA0;
 
 // TODO: arg1 might be a different type
 void func_80026338(WaterStruct4 *arg0, WaterStruct5 *arg1) {
@@ -603,9 +607,11 @@ extern void func_80611690(void*);
 
 void func_80026FD0(s32 arg0) {
     D_80029BA8 = 0;
-    func_80611690(D_80029BA0 = malloc(8));
+    D_80029BA0 = malloc(sizeof(unkStruct_80029BA0));
+    func_80611690(D_80029BA0);
     func_80026E0C(arg0);
-    func_80611690(D_80029BA4 = malloc(0x2C));
+    D_80029BA4 = malloc(sizeof(WaterStruct7));
+    func_80611690(D_80029BA4);
 }
 
 s32 func_80027034(s32 arg0) {

@@ -62,7 +62,7 @@ typedef struct {
 
 extern EnemySpawnerLocator *D_80755694;
 
-void func_80724C78(s32 arg0) {
+void func_80724C78(void* arg0) {
     func_80728300(arg0, D_80755690, D_80755694);
 }
 
