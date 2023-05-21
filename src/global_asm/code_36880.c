@@ -323,8 +323,15 @@ void func_80632FCC(s16 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806333F8.s")
 
-// Loop, struct arg1, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80633570.s")
+void func_80633570(GlobalASMStruct83 *arg0) {
+    GlobalASMStruct83 *next;
+
+    while (arg0 != NULL) {
+        next = arg0->next;
+        func_8061130C(arg0);
+        arg0 = next;
+    }
+}
 
 void func_806335B0(s32 arg0, u8 arg1, s32 arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
     s32 var_v0;
@@ -496,17 +503,97 @@ void func_80635098(Model2Model50_B8 *arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
+// Similar to below, loops over DL looking for specific commands (G_SETTIMG (0xFD), G_SETPRIMCOLOR (0xFA))
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635114.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635214.s")
 
+/*
+// Aooears to find the offset of the first G_ENDDL command in a Display List
+// TODO: Regalloc
+s32 func_80635214(Gfx *arg0) {
+    s32 found;
+    s32 offset;
+
+    offset = 0;
+    found = FALSE;
+    while (!found) {
+        if (((arg0++)->words.w0 >> 0x18) == G_ENDDL) {
+            found = TRUE;
+        }
+        offset += 8;
+    }
+    return offset;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063524C.s")
+
+typedef struct {
+    s32 unk0; // TODO: proper members
+} Struct80635548_unk24;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    u8 unk20;
+    u8 unk21;
+    u8 unk22;
+    u8 unk23;
+    Struct80635548_unk24 *unk24[1]; // TODO: How many?
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    void *unk34[1]; // TODO: How many?
+} Struct80635548;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635468.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635548.s")
+/*
+// TODO: Hmm
+void func_80635468(Struct80635548_unk24 *arg0, Struct80635548 *arg1) {
+    s16 temp_a1;
+    s32 i;
+    s32 var_v0;
+    void *var_s2;
+
+    var_s2 = arg0->unk70 + arg0 + 4;
+    if (*(arg0->unk6C + arg0) != 0) {
+        var_v0 = 7;
+    } else {
+        var_v0 = 0x19;
+    }
+    for (i = 0; i < arg1->unk20; i++) {
+        arg1->unk24[i] = getPointerTableFile(var_v0, var_s2->unk0, 1, 0);
+        temp_a1 = var_s2->unk2;
+        if (temp_a1 != -1) {
+            arg1->unk34[i] = getPointerTableFile(var_v0, temp_a1, 1, 0);
+        } else {
+            arg1->unk34[i] = NULL;
+        }
+        var_s2 += 0x30;
+    }
+}
+*/
+
+void func_80635548(s32 arg0, Struct80635548 *arg1) {
+    s32 i;
+
+    for (i = 0; i < arg1->unk20; i++) {
+        arg1->unk24[i] = 0;
+        arg1->unk34[i] = 0;
+    }
+}
 
 extern s32 D_80747D70;
+
+void func_806355DC(s32 arg0, u8 arg1);
 
 void func_80635588(void) {
     s32 temp_s1;
@@ -519,13 +606,105 @@ void func_80635588(void) {
     func_80659350();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806355DC.s")
+void func_80605380(s16);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806357F8.s")
+void func_8063DE68(void*);
+void func_8072F09C(s32 arg0);
+void func_806645B8(s16 arg0);
 
+void func_806348B4(void *arg0);
+void func_8066C904(void *arg0);
+
+Chunk14 *func_80630588(Chunk14 *arg0, s32 arg1, u8 arg2, u8 *arg3);
+
+void func_806338B4(void *arg0);
+void func_8064F804(void *arg0);
+
+void func_806593C8(s32 arg0, s32 arg1);
+void func_80636074(ObjectModel2 *arg0);
+
+void func_806355DC(s32 arg0, u8 arg1) {
+    s16 sp36;
+    s16 sp34;
+    u8 sp33;
+
+    if (arg1 == 1) {
+        arg0 = func_80659470(arg0);
+    }
+    func_8062D2AC(D_807F6000[arg0].model_pointer, &sp34, 0);
+    func_80630588(0, D_807F6000[arg0].model_pointer, 2, &sp33);
+    func_8066C904(&D_807F6000[arg0].unk28);
+    func_806348B4(&D_807F6000[arg0].unk48);
+    func_80633570(D_807F6000[arg0].unk70);
+    func_806338B4(D_807F6000[arg0].unk74);
+    func_8064F804(D_807F6000[arg0].unk78);
+    func_80636074(&D_807F6000[arg0]);
+    if (D_807F6000[arg0].unk7C != NULL) {
+        func_8063DE68(D_807F6000[arg0].unk7C);
+    }
+    D_807F6240[D_807F6000[arg0].unk8A] = -1;
+    func_806645B8(D_807F6000[arg0].unk88);
+    sp36 = D_807F6000[arg0].unk88;
+    func_806594C8(sp36);
+    func_8072F09C(sp36);
+    if (D_807F6000[arg0].unk7C != NULL) {
+        if (D_807F6000[arg0].unk7C->unk10 != -1) {
+            func_80605380(D_807F6000[arg0].unk7C->unk10);
+        }
+        if (D_807F6000[arg0].unk7C->unk12 != -1) {
+            func_80605380( D_807F6000[arg0].unk7C->unk12);
+        }
+    }
+    if ((arg0 + 1) != D_80747D70) {
+        func_806593C8(D_807F6000[D_80747D70 - 1].unk88, arg0);
+    }
+    memcpy(&D_807F6000[arg0], &D_807F6000[D_80747D70 - 1], sizeof(ObjectModel2));
+    D_80747D70 -= 1;
+}
+
+void func_806357F8(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg5, f32 *arg6, f32 *arg7, f32 *arg8, u8 arg9) {
+    if (arg9 == 1) {
+        arg0 = func_80659470(arg0);
+    }
+    *arg1 = D_807F6000[arg0].x_position;
+    *arg2 = D_807F6000[arg0].y_position;
+    *arg3 = D_807F6000[arg0].z_position;
+    *arg4 = D_807F6000[arg0].x_rotation;
+    *arg5 = D_807F6000[arg0].y_rotation;
+    *arg6 = D_807F6000[arg0].z_rotation;
+    *arg7 = D_807F6000[arg0].hitbox_scale;
+    *arg8 = D_807F6000[arg0].unk1C;
+}
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806358E8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635EF0.s")
+
+extern u16 D_807FBB34;
+
+/*
+// TODO: Small stack problem and regalloc
+s32 func_80635EF0(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 arg5, u16 arg6) {
+    Actor *temp_a2;
+    s32 i;
+
+    for (i = 0; i < D_807FBB34; i++) {
+        temp_a2 = D_807FB930[i].unk0;
+        if (temp_a2->interactable & arg6) {
+            if ((arg0 - arg3) <= temp_a2->x_position
+            && (arg1 - arg4) <= temp_a2->y_position
+            && (arg2 - arg5) <= temp_a2->z_position
+            && temp_a2->x_position <= (arg3 + arg0)
+            && temp_a2->y_position <= (arg4 + arg1)
+            && temp_a2->z_position <= (arg5 + arg2)) {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+*/
 
 void func_80636014(s32 arg0, u8 arg1, u8 arg2) {
     if (arg1 == 1) {
@@ -534,9 +713,78 @@ void func_80636014(s32 arg0, u8 arg1, u8 arg2) {
     func_8062D094(D_807F6000[arg0].model_pointer, arg2);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636074.s")
+void func_80636380(s32 arg0, Struct80635548 *arg1);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636164.s")
+void func_80636074(ObjectModel2 *arg0) {
+    Model2Model50_B8 *var_s0;
+    Model2Model50_B8 *temp_a0_3;
+    Model2Model54_BC *sp24;
+    s32 temp_a0;
+
+    switch (arg0->unk86) {
+        case 2:
+            var_s0 = arg0->model_pointer->unk50;
+            sp24 = arg0->model_pointer->unk54;
+            func_80636380(arg0->unk24, arg0->model_pointer);
+            break;
+        case 1:
+            var_s0 = arg0->model_pointer->unkB8;
+            sp24 = arg0->model_pointer->unkBC;
+            func_806365D0(arg0, arg0->unk24, arg0->model_pointer);
+            break;
+    }
+    while (var_s0 != NULL) {
+        temp_a0 = var_s0->unk3C;
+        if (temp_a0 != 0) {
+            func_8066B434(temp_a0, 0x9DB, 7);
+        }
+        temp_a0 = var_s0->unk40;
+        if (temp_a0 != 0) {
+            func_8066B434(temp_a0, 0x9DC, 7);
+        }
+        temp_a0_3 = var_s0;
+        var_s0 = var_s0->next;
+        func_8061130C(temp_a0_3);
+    }
+    if (sp24 != NULL) {
+        func_8066B434(sp24->unk0, 0x9E5, 7);
+        func_8061130C(sp24);
+    }
+}
+
+void func_80636164(Model2Model *arg0, u8 arg1) {
+    Model2Model50_B8 *temp_a0;
+    Model2Model50_B8 *var_s0;
+
+    switch (arg1) {
+        case 2:
+            var_s0 = arg0->unk50;
+            break;
+        case 1:
+            var_s0 = arg0->unkB8;
+            break;
+        default:
+            return;
+    }
+
+    while (var_s0 != NULL) {
+        temp_a0 = var_s0->unk3C;
+        if (temp_a0 != NULL) {
+            if (var_s0->unkD0 == 0) {
+                func_8066B434(temp_a0, 0xA09, 7);
+                var_s0->unk3C = NULL;
+            }
+        }
+        temp_a0 = var_s0->unk40;
+        if (temp_a0 != NULL) {
+            if (var_s0->unkD0 == 0) {
+                func_8066B434(temp_a0, 0xA0E, 7);
+                var_s0->unk40 = NULL;
+            }
+        }
+        var_s0 = var_s0->next;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636210.s")
 
@@ -568,43 +816,18 @@ void func_806362C4(s32 arg0, u8 arg1) {
     }
 }
 
-// TODO: Any overlap with documented structs?
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    u8 unk20;
-    u8 unk21;
-    s16 unk22;
-    void *unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    void *unk34;
-} Struct80636380;
+void func_8061134C(void*);
 
-void func_80636380(s32 arg0, Struct80636380 *arg1) {
-    Struct80636380 *phi_s0;
+void func_80636380(s32 arg0, Struct80635548 *arg1) {
     s32 i;
 
-    phi_s0 = arg1;
-    i = 0;
-    while (i < arg1->unk20) {
-        if (phi_s0->unk24 != 0) {
-            func_8066B434(phi_s0->unk24, 0xA69, 7);
+    for (i = 0; i < arg1->unk20; i++) {
+        if (arg1->unk24[i] != 0) {
+            func_8066B434(arg1->unk24[i], 0xA69, 7);
         }
-        if (phi_s0->unk34 != 0) {
-            func_8066B434(phi_s0->unk34, 0xA6A, 7);
+        if (arg1->unk34[i] != 0) {
+            func_8066B434(arg1->unk34[i], 0xA6A, 7);
         }
-        // TODO: Not good at all.
-        // I think arg1 is an array of pointers
-        ((s32)phi_s0) += 4;
-        i++;
     }
     func_8066B434(arg0, 0xA6E, 7);
     func_8061134C(arg1->unk1C);

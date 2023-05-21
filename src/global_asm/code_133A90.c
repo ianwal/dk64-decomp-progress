@@ -68,9 +68,7 @@ u8 func_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
             *arg2 = D_807F6000[model2ArrayIndex].x_position;
             *arg3 = D_807F6000[model2ArrayIndex].y_position;
             *arg4 = D_807F6000[model2ArrayIndex].z_position;
-            // TODO: Better way to match this once proper type is known
-            // It'll probably be D_807F6000[model2ArrayIndex].unk24->unk0
-            if (*((s32*)D_807F6000[model2ArrayIndex].unk24) & 1) {
+            if (D_807F6000[model2ArrayIndex].unk24->unk0 & 1) {
                 phi_t0 = TRUE;
             }
             break;

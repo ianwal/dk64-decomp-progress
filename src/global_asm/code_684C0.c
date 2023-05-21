@@ -1,15 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-typedef struct global_asm_struct_83 GlobalASMStruct83;
-struct global_asm_struct_83 {
-    Actor* unk0;
-    u32 unk4;
-    Actor* unk8;
-    GlobalASMStruct83 *next;
-};
-
 typedef struct {
     s16 min_x; // 0
     s16 min_y; // 2

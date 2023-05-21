@@ -8,17 +8,12 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8064F6F8.s")
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-} GlobalASMStruct9;
-
-void func_80650684(GlobalASMStruct9*);
-//display list struct ? idk
-void func_8064F804(GlobalASMStruct9 *arg0) {
+void func_80650684(OM2_unk78*);
+void func_8064F804(OM2_unk78 *arg0) {
     if (arg0) {
-        func_8061134C(arg0->unk0);
-        func_8061134C(arg0->unk4);
+        // TODO: Hmm...
+        func_8061134C(*((s32*)&arg0->unk0));
+        func_8061134C(*((s32*)&arg0->unk4));
         func_80650684(arg0);
         func_8061130C(arg0);
     }
@@ -40,7 +35,7 @@ void func_8064F954(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_806500E0.s")
 
 typedef struct {
-    GlobalASMStruct9* unk0; // Used
+    OM2_unk78* unk0; // Used
     void *unk4; // TODO: Which struct?
     void *unk8; // TODO: Which struct?
     u8 unkC; // Used
@@ -60,7 +55,7 @@ void func_8065051C(void) {
     }
 }
 
-void func_8065054C(GlobalASMStruct9 *arg0, void *arg1, void *arg2) {
+void func_8065054C(OM2_unk78 *arg0, void *arg1, void *arg2) {
     s32 found = FALSE;
     s32 i = 0;
 
@@ -81,7 +76,7 @@ void func_8065054C(GlobalASMStruct9 *arg0, void *arg1, void *arg2) {
     }
 }
 
-void func_806505F0(GlobalASMStruct9 *arg0) {
+void func_806505F0(OM2_unk78 *arg0) {
     s32 i;
     for (i = 0; i < 0x28; i++) {
         if (D_807F6960[i].unk0 && arg0 == D_807F6960[i].unk8) {
@@ -90,7 +85,7 @@ void func_806505F0(GlobalASMStruct9 *arg0) {
     }
 }
 
-void func_80650684(GlobalASMStruct9 *arg0) {
+void func_80650684(OM2_unk78 *arg0) {
     s32 i;
     for (i = 0; i < 0x28; i++) {
         if (arg0 == D_807F6960[i].unk0) {
@@ -99,7 +94,7 @@ void func_80650684(GlobalASMStruct9 *arg0) {
     }
 }
 
-void func_806506E8(GlobalASMStruct9 *arg0) {
+void func_806506E8(OM2_unk78 *arg0) {
     s32 i;
     for (i = 0; i < 0x28; i++) {
         if (arg0 == D_807F6960[i].unk0 && D_807F6960[i].unkC == D_807444FC) {
