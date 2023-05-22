@@ -4,9 +4,9 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_137630/func_80732930.s")
 
-/*
 extern f32 D_80760190;
 
+/*
 // No idea why this doesn't match, something to do with the shift
 f32 func_80732930(u8 arg0) {
     f32 sp4;

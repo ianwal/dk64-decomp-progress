@@ -964,6 +964,7 @@ typedef struct {
 } GlobalASMStruct_8062F3A0;
 
 /*
+// TODO: Arg0 probably Gfx*
 void func_8062F3A0(GlobalASMStruct_8062F3A0 *arg0, GlobalASMStruct_8062F3A0 *arg1) {
     while (arg0 != arg1) {
         if ((arg0->unk0 >> 0x18) == 0xFD) {
