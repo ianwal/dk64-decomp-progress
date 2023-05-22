@@ -9,19 +9,13 @@ extern f64 D_8075A590;
 extern f64 D_8075A598;
 extern f64 D_8075A5A0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_806A1580.s")
-
 extern f32 D_8075A550;
 extern u8 D_807FBD70;
 extern u8 D_807506C0[];
 
 f32 func_80665AE4(s32, s32, s32, s32);
 
-/*
-// TODO: Everything matches, but the stack is too big
-// Perhaps a dxz macro?
 void func_806A1580(void) {
-    f32 dx, dz;
     s16 sp36;
     Actor *sp30;
 
@@ -36,18 +30,14 @@ void func_806A1580(void) {
         current_actor_pointer->unk64 |= 0x28;
         func_8068848C(current_actor_pointer, 0, 1);
     }
-    dx = player_pointer->x_position - current_actor_pointer->x_position;
-    dz = player_pointer->z_position - current_actor_pointer->z_position;
-    if (((dx * dx) + (dz * dz)) < D_8075A550) {
+    if ((((player_pointer->x_position - current_actor_pointer->x_position) * (player_pointer->x_position - current_actor_pointer->x_position)) + ((player_pointer->z_position - current_actor_pointer->z_position) * (player_pointer->z_position - current_actor_pointer->z_position))) < D_8075A550) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
     } else {
         current_actor_pointer->object_properties_bitfield &= ~0x400;
     }
     if (sp30) {
         if (sp36 == D_807506C0[sp30->unk15F]) {
-            dx = current_actor_pointer->x_position - player_pointer->x_position;
-            dz = current_actor_pointer->z_position - player_pointer->z_position;
-            if (((dx * dx) + (dz * dz)) > 900.0f) {
+            if ((((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position)) + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position))) > 900.0f) {
                 sp30->unkEC = func_80665AE4(current_actor_pointer->x_position, current_actor_pointer->z_position, player_pointer->x_position, player_pointer->z_position) - func_80665AE4(character_change_array->look_at_at_x, character_change_array->look_at_at_z, character_change_array->look_at_eye_x, character_change_array->look_at_eye_z);
             }
             if (func_80688540(current_actor_pointer, 0) == 0) {
@@ -73,7 +63,6 @@ void func_806A1580(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 extern f64 D_8075A558;
 

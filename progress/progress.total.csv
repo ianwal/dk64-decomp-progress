@@ -1612,7 +1612,7 @@ us,.code,func_8065776C,520,no
 us,.code,func_806436E0,364,no
 us,.code,func_806E1F8C,256,yes
 us,.code,func_8072E1A4,136,yes
-us,.code,func_806A1580,808,no
+us,.code,func_806A1580,808,yes
 us,.code,func_80729E6C,68,yes
 us,.code,func_80678050,624,no
 us,.code,func_80632E10,100,yes
