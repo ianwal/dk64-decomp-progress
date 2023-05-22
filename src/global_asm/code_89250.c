@@ -154,36 +154,23 @@ void func_80684A00(s16 arg0, s8 arg1) {
     );
 }
 
-// Similar to above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80684BB0.s")
-
 extern f64 D_80759AC8;
 extern f64 D_80759AD0;
 extern f64 D_80759AD8;
 extern s32 D_8071F2F8;
 
-/*
 void func_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
     f32 sp54;
     f32 sp50;
     f32 sp4C;
     f32 sp48;
-    s32 temp; // Padding, TODO: Can we get rid of this?
-    f64 temp_f0;
-    f64 phi_f2;
 
     sp48 = current_actor_pointer->animation_state->scale_y / D_80759AC8;
     func_80671C0C(current_actor_pointer, arg0, &sp54, &sp50, &sp4C);
     func_80714950(arg1 + (arg2 << 0x10));
     func_8071498C(&D_8071F2F8);
     func_807149B8(1);
-    temp_f0 = arg2 * D_80759AD0;
-    if (temp_f0 < 2.0) {
-        phi_f2 = 2.0;
-    } else {
-        phi_f2 = temp_f0;
-    }
-    func_807149FC(0, phi_f2); // TODO: This might be wrong
+    func_807149FC(MAX(2.0, arg2 * D_80759AD0));
     func_80714CC0(
         D_8074E880[((rand() >> 0xF) % 1000) % 3],
         sp48 * D_80759AD8,
@@ -192,7 +179,6 @@ void func_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
         ((rand() >> 0xF) % 60) + (sp4C - 30.0f)
     );
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80684D98.s")
 
