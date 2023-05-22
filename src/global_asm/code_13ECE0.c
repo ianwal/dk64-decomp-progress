@@ -26,10 +26,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13ECE0/func_8073A900.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13ECE0/func_8073A98C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13ECE0/func_8073AA74.s")
-
 typedef struct {
     s32 unk0;
     s16 unk4;
@@ -70,29 +66,11 @@ typedef struct {
 } Struct8073AB00_unk60;
 
 typedef struct {
-    u8 unk0[0x60 - 0x0];
+    u8 unk0[0x34 - 0x0];
+    u8 unk34;
+    u8 unk35[0x60 - 0x35];
     Struct8073AB00_unk60 *unk60;
 } Struct8073AB00;
-
-void func_8073AB00(Struct8073AB00 *arg0, s32 arg1) {
-    arg0->unk60[arg1].unk6 = 0;
-    arg0->unk60[arg1].unkA = 0;
-    arg0->unk60[arg1].unk7 = 0x40;
-    arg0->unk60[arg1].unk9 = 0x7F;
-    arg0->unk60[arg1].unk8 = 5;
-    arg0->unk60[arg1].unkC = 0;
-    arg0->unk60[arg1].unk4 = 0xC8;
-    arg0->unk60[arg1].unk14 = 1.0f;
-    arg0->unk60[arg1].unk10 = 0;
-    arg0->unk60[arg1].unkD = 0xFF;
-    arg0->unk60[arg1].unkE = 0xFF;
-    arg0->unk60[arg1].unkF = 0;
-    arg0->unk60[arg1].unkB = 0;
-    arg0->unk60[arg1].unk13 = 0;
-    arg0->unk60[arg1].unk12 = 0;
-    arg0->unk60[arg1].unk11 = 0;
-    arg0->unk60[arg1].unk32 = 0;
-}
 
 typedef struct {
     s32 unk0;
@@ -123,6 +101,63 @@ typedef struct {
     s16 unkE;
     Struct8073AD50_arg1_unk10 *unk10;
 } Struct8073AD50_arg1;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    Struct8073AD50_arg1 *unkC[1]; // TODO: How many elements
+} Struct8073A98C_arg1;
+
+void func_8073AB00(Struct8073AB00 *arg0, s32 arg1);
+void func_8073AD50(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s32 arg2);
+
+void func_8073A98C(Struct8073AB00 *arg0, Struct8073A98C_arg1 *arg1) {
+    s32 i;
+    Struct8073AD50_arg1 *sp18;
+
+    sp18 = NULL;
+    for (i = 0; sp18 == NULL; i++) {
+        sp18 = arg1->unkC[i];
+    }
+    for (i = 0; i < arg0->unk34; i++) {
+        func_8073AB00(arg0, i);
+        func_8073AD50(arg0, sp18, i);
+    }
+    if (arg1->unk8 != 0) {
+        func_8073AB00(arg0, i);
+        func_8073AD50(arg0, arg1->unk8, 9);
+    }
+}
+
+void func_8073AA74(Struct8073AB00 *arg0) {
+    s32 i;
+
+    for (i = 0; i < arg0->unk34; i++) {
+        arg0->unk60[i].unk0 = 0;
+        func_8073AB00(arg0, i);
+    }
+}
+
+void func_8073AB00(Struct8073AB00 *arg0, s32 arg1) {
+    arg0->unk60[arg1].unk6 = 0;
+    arg0->unk60[arg1].unkA = 0;
+    arg0->unk60[arg1].unk7 = 0x40;
+    arg0->unk60[arg1].unk9 = 0x7F;
+    arg0->unk60[arg1].unk8 = 5;
+    arg0->unk60[arg1].unkC = 0;
+    arg0->unk60[arg1].unk4 = 0xC8;
+    arg0->unk60[arg1].unk14 = 1.0f;
+    arg0->unk60[arg1].unk10 = 0;
+    arg0->unk60[arg1].unkD = 0xFF;
+    arg0->unk60[arg1].unkE = 0xFF;
+    arg0->unk60[arg1].unkF = 0;
+    arg0->unk60[arg1].unkB = 0;
+    arg0->unk60[arg1].unk13 = 0;
+    arg0->unk60[arg1].unk12 = 0;
+    arg0->unk60[arg1].unk11 = 0;
+    arg0->unk60[arg1].unk32 = 0;
+}
 
 void func_8073AD50(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s32 arg2) {
     Struct8073AD50_arg1_unk10 *temp;
