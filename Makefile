@@ -471,6 +471,7 @@ build/us/src/global_asm/code_13CFA0.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_13D0B0.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_13D020.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_13D100.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/code_13ECE0.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_140260.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_140600.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_141520.c.o: OPT_FLAGS = -g
