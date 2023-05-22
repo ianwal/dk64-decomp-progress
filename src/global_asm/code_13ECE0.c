@@ -48,7 +48,23 @@ typedef struct {
     u8 unk12;
     u8 unk13;
     f32 unk14;
-    u8 unk18[0x32 - 0x18];
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s8 unk24;
+    s8 unk25;
+    s8 unk26;
+    s8 unk27;
+    s8 unk28;
+    s8 unk29;
+    s8 unk2A;
+    s8 unk2B;
+    s8 unk2C;
+    s8 unk2D;
+    s8 unk2E;
+    s8 unk2F;
+    s8 unk30;
+    s8 unk31;
     s8 unk32;
     s8 unk33;
 } Struct8073AB00_unk60;
@@ -78,6 +94,63 @@ void func_8073AB00(Struct8073AB00 *arg0, s32 arg1) {
     arg0->unk60[arg1].unk32 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13ECE0/func_8073AD50.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    u8 unkC;
+    u8 unkD;
+} Struct8073AD50_arg1_unk10_unk0;
+
+typedef struct {
+    Struct8073AD50_arg1_unk10_unk0 *unk0;
+} Struct8073AD50_arg1_unk10;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    s16 unkC;
+    s16 unkE;
+    Struct8073AD50_arg1_unk10 *unk10;
+} Struct8073AD50_arg1;
+
+void func_8073AD50(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s32 arg2) {
+    Struct8073AD50_arg1_unk10 *temp;
+    arg0->unk60[arg2].unk0 = arg1;
+    arg0->unk60[arg2].unk7 = arg1->unk1;
+    arg0->unk60[arg2].unk9 = arg1->unk0;
+    arg0->unk60[arg2].unk8 = arg1->unk2;
+    arg0->unk60[arg2].unk4 = arg1->unkC;
+    if (arg1->unkE == 0) {
+        return;
+    }
+    temp = arg1->unk10;
+    arg0->unk60[arg2].unk18 = temp->unk0->unk0;
+    arg0->unk60[arg2].unk1C = temp->unk0->unk4;
+    arg0->unk60[arg2].unk20 = temp->unk0->unk8;
+    arg0->unk60[arg2].unk25 = temp->unk0->unkC;
+    arg0->unk60[arg2].unk26 = temp->unk0->unkD;
+    arg0->unk60[arg2].unk27 = 0;
+    arg0->unk60[arg2].unk28 = arg1->unk4;
+    arg0->unk60[arg2].unk29 = arg1->unk5;
+    arg0->unk60[arg2].unk2A = arg1->unk6;
+    arg0->unk60[arg2].unk2B = arg1->unk7;
+    arg0->unk60[arg2].unk2C = arg1->unk8;
+    arg0->unk60[arg2].unk2D = arg1->unk9;
+    arg0->unk60[arg2].unk2E = arg1->unkA;
+    arg0->unk60[arg2].unk2F = arg1->unkB;
+    arg0->unk60[arg2].unk24 = 0;
+    arg0->unk60[arg2].unk31 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13ECE0/func_8073B08C.s")

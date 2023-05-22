@@ -669,7 +669,7 @@ us,.code,func_8064D418,1128,no
 us,.code,func_8068A4C8,64,yes
 us,.code,func_80663040,76,yes
 us,.code,func_80706F90,1916,no
-us,.code,func_8073AD50,828,no
+us,.code,func_8073AD50,828,yes
 us,.code,func_80672AFC,32,yes
 us,.code,func_806C4AC4,968,no
 us,.code,func_8060E7EC,224,yes
