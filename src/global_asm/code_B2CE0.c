@@ -73,35 +73,29 @@ void func_806AE2B0(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_806AE394.s")
-
 extern f32 D_8075AE30;
 
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 void func_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 
-/*
-// TODO: Our stack is too big, only issue
 void func_806AE394(f32 arg0, f32 arg1) {
-    f32 dx;
-    f32 dz;
-    f32 dy;
-    s32 pad;
-    f32 sp50[6];
+    f32 x1;
+    f32 y1;
+    f32 z1;
+    f32 x2;
+    f32 y2;
+    f32 z2;
     s16 sp4E;
 
-    func_80671C0C(current_actor_pointer, 1, &sp50[5], &sp50[4], &sp50[3]);
-    func_80671C0C(current_actor_pointer, 2, &sp50[2], &sp50[1], &sp50[0]);
-    sp4E = func_80665DE0(sp50[2], sp50[0], sp50[5], sp50[3]);
-    func_8070033C(sp50[5], sp50[4], sp50[3], sp50[2], sp50[1], sp50[0], D_8075AE30, 0xFF, 0xFF, 0xFF);
-    sp50[5] = (func_80612794(sp4E) * arg0) + current_actor_pointer->x_position;
-    sp50[3] = (func_80612790(sp4E) * arg0) + current_actor_pointer->z_position;
-    func_8065A708(sp50[5], current_actor_pointer->y_position, sp50[3], 0.0f, 0.0f, 0.0f, arg1, 0, 0xFF, 0xFF, 0xFF);
+    func_80671C0C(current_actor_pointer, 1, &x1, &y1, &z1);
+    func_80671C0C(current_actor_pointer, 2, &x2, &y2, &z2);
+    sp4E = func_80665DE0(x2, z2, x1, z1);
+    func_8070033C(x1, y1, z1, x2, y2, z2, D_8075AE30, 0xFF, 0xFF, 0xFF);
+    x1 = (func_80612794(sp4E) * arg0) + current_actor_pointer->x_position;
+    z1 = (func_80612790(sp4E) * arg0) + current_actor_pointer->z_position;
+    func_8065A708(x1, current_actor_pointer->y_position, z1, 0.0f, 0.0f, 0.0f, arg1, 0, 0xFF, 0xFF, 0xFF);
     if (current_actor_pointer->control_state != 0) {
-        dx = D_807FDC94->x_position - sp50[5];
-        dy = D_807FDC94->y_position - current_actor_pointer->y_position;
-        dz = D_807FDC94->z_position - sp50[3];
-        if (((dx * dx) + (dy * dy) + (dz * dz)) < (arg1 * arg1)) {
+        if ((((D_807FDC94->x_position - x1) * (D_807FDC94->x_position - x1)) + ((D_807FDC94->y_position - current_actor_pointer->y_position) * (D_807FDC94->y_position - current_actor_pointer->y_position)) + ((D_807FDC94->z_position - z1) * (D_807FDC94->z_position - z1))) < (arg1 * arg1)) {
             current_actor_pointer->y_rotation = func_80665DE0(D_807FDC94->x_position, D_807FDC94->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position);
             func_806EB0C0(0x43, current_actor_pointer, 0);
             current_actor_pointer->control_state = 0;
@@ -109,7 +103,6 @@ void func_806AE394(f32 arg0, f32 arg1) {
         }
     }
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_806AE588.s")
