@@ -17,10 +17,8 @@ typedef struct WaterStruct2 { //this and Critter are the same?
     u8 unk1E1;
     u8 unk1E2;
     u8 unk1E3;
-    s16 unk1E4;
-    s16 unk1E6;
-    s32 unk1E8;
-    s32 unk1EC;
+    s16 unk1E4[2];
+    s32 unk1E8[2];
 } WaterStruct2;
 
 typedef struct Critter {  //this and Critter are the same?
@@ -102,7 +100,7 @@ void func_8002409C(WaterStruct2 *arg0) {
     phi_v0 = arg0->next;
     for (phi_v1 = 0; phi_v1 < arg0->unk2; phi_v1++) {
         phi_v0->unk24 = 7.0f;
-        phi_v0->unk1E4 = 0x82;
+        phi_v0->unk1E4[0] = 0x82;
         phi_v0->unk1E1 |= 2;
         phi_v0++;
     }
@@ -123,8 +121,8 @@ void func_800240EC(WaterStruct2 *arg0) {
     }
     for (phi_a2 = 0; phi_a2 < arg0->unk2; phi_a2++) {
         phi_v0->unk24 = 5.0f;
-        phi_v0->unk1E4 = phi_v1;
-        phi_v0->unk1E6 = phi_a1;
+        phi_v0->unk1E4[0] = phi_v1;
+        phi_v0->unk1E4[1] = phi_a1;
         phi_v0++;
     }
 }
@@ -134,30 +132,36 @@ void func_800240EC(WaterStruct2 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002427C.s")
 
-// Doable, similar to below
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002448C.s")
 
 s32 func_8066B0F8(s32, u16, s32, s32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024518.s")
-
-// TODO: Very doable, we are passed an array of pointers I think
-// Not sure on how to write that right now
 /*
-void func_80024518(WaterStruct2 *arg0) {
-    WaterStruct2 *phi_s0;
+// TODO: Not sure what's wrong here...
+void func_8002448C(WaterStruct2 *arg0) {
     s32 i;
 
-    phi_s0 = arg0;
-    for (i = 0; i < 8; i += 4) {
-        if (phi_s0->unk1E8 != 0) {
-            func_8066B434(phi_s0->unk1E8, 0x179, 0x5A);
-            phi_s0->unk1E8 = 0;
+    for (i = 0; i < 2; i++) {
+        u16 temp = arg0->unk1E4[i];
+        if (temp != 0 && arg0->unk1E8[i] == 0) {
+            arg0->unk1E8[i] = func_8066B0F8(0xE, temp, 0, 0);
         }
-        phi_s0++;
     }
 }
 */
+
+void func_80024518(WaterStruct2 *arg0) {
+    s32 i;
+    s32 temp;
+
+    for (i = 0; i < 2; i++) {
+        temp = arg0->unk1E8[i];
+        if (temp != 0) {
+            func_8066B434(temp, 0x179, 0x5A);
+            arg0->unk1E8[i] = 0;
+        }
+    }
+}
 
 void func_80024578(WaterStruct2 *arg0) {
     if (arg0->unk1E1 & 1) {
@@ -167,9 +171,9 @@ void func_80024578(WaterStruct2 *arg0) {
     }
 }
 
-void func_80024578(WaterStruct2 *);                            /* extern */
-void func_8060956C(f32, f32, f32, s32, u8, f32, u8, u8); /* extern */
-u32 func_806119A0();                                /* extern */
+void func_80024578(WaterStruct2 *);
+void func_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
+u32 func_806119A0();
 extern f64 D_80029FF0;
 extern f32 D_80029FF8;
 extern u8 D_80770DC9;

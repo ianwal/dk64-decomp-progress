@@ -1128,7 +1128,7 @@ struct actor {
     u16 unk6A; // is_grounded?
     u16 unk6C;
     s16 unk6E;
-    u16 unk70;
+    s16 unk70;
     u16 unk72;
     f32 unk74;
     u8 unk78;

@@ -91,6 +91,106 @@ typedef struct {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80024000.s")
 
+extern f64 D_8002FD00;
+extern f64 D_8002FD08;
+extern f64 D_8002FD10;
+extern f64 D_8002FD18;
+extern f64 D_8002FD20;
+extern f64 D_8002FD28;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    f32 unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+} Struct8002FB10_8002FB70;
+
+extern Struct8002FB10_8002FB70 D_8002FB10[];
+extern Struct8002FB10_8002FB70 D_8002FB70[];
+
+f32 func_80611BB4(f32, f32);
+
+/*
+// TODO: Quite close, float nonsense
+void func_80024000(void) {
+    f32 var_f0;
+    f32 sp50;
+    f32 temp_f0_2;
+    f32 var_f12;
+    f32 sp44;
+    f32 sp40;
+    f32 var_f22;
+    f32 var_f20;
+    u8 sp37;
+    Struct8002FB10_8002FB70 *var_t0;
+    s16 var_v1;
+
+    sp37 = D_807FDC90->unk24;
+    if (current_map == MAP_CAVES_BEETLE_RACE) {
+        var_t0 = &D_8002FB10;
+    } else {
+        var_t0 = &D_8002FB70;
+    }
+    sp44 = current_actor_pointer->unkB8;
+    sp40 = func_80612794(current_actor_pointer->unkE0 * D_8002FD00) * 20.0f;
+    if (func_8000AC60(((current_actor_pointer->x_position - D_807FDCA0->unk14[D_807FDC90->unk25].unk0) * (current_actor_pointer->x_position - D_807FDCA0->unk14[D_807FDC90->unk25].unk0)) + ((current_actor_pointer->z_position - D_807FDCA0->unk14[D_807FDC90->unk25].unk4) * (current_actor_pointer->z_position - D_807FDCA0->unk14[D_807FDC90->unk25].unk4))) < D_807FDCA0->unk14[D_807FDC90->unk25].unk7) {
+        var_f12 = ABS(current_actor_pointer->y_position - (f32)D_807FDCA0->unk14[D_807FDC90->unk25].unk2);
+        if (var_f12 < 80.0f) {
+            if (D_807FDC90->unk25 < (D_807FDCA0->unk10 - 1)) {
+                if (D_807FDC90->unk25 == var_t0[sp37].unk0) {
+                    current_actor_pointer->y_acceleration = var_t0[sp37].unk4;
+                    if (var_t0[sp37].unk8 == 1) {
+                        func_80614EBC(current_actor_pointer, 0x286);
+                        current_actor_pointer->y_velocity = 200.0f;
+                        current_actor_pointer->control_state++;
+                    }
+                    D_807FDC90->unk24++;
+                }
+                D_807FDC90->unk25++;
+            }
+        }
+    }
+    var_f0 = (current_actor_pointer->y_position - D_807FBB48->y_position);
+    var_f0 *= 0.25f;
+    var_f0 = MIN(6.0f, var_f0);
+    var_f0 = MAX(-6.0f, var_f0);
+    var_f0 += ((D_807FDCA0->unk14[D_807FDC90->unk25].unk8 - (current_actor_pointer->unkB8 / 10.0f)) * D_8002FD08);
+    var_v1 = (s16)((func_80611BB4(-(current_actor_pointer->x_position - D_807FDCA0->unk14[D_807FDC90->unk25].unk0), -(current_actor_pointer->z_position - D_807FDCA0->unk14[D_807FDC90->unk25].unk4)) * 4096.0) / D_8002FD10) - current_actor_pointer->unkEE;
+    if (var_v1 >= 0x800) {
+        var_v1 -= 4096.0;
+    }
+    if (var_v1 < -0x800) {
+        var_v1 += 4096.0;
+    }
+    sp50 = (current_actor_pointer->unkB8 * var_v1) / D_8002FD18;
+    var_f20 = func_80612794(current_actor_pointer->unkEE) * sp44;
+    var_f22 = func_80612790(current_actor_pointer->unkEE) * sp44;
+    if (current_actor_pointer->unk6A & 1) {
+        var_f20 += func_80612794(current_actor_pointer->unkDC) * sp40;
+        var_f22 += func_80612790(current_actor_pointer->unkDC) * sp40;
+    }
+    var_f20 += (func_80612794(current_actor_pointer->unkEE) * var_f0) + (func_80612790(current_actor_pointer->unkEE) * sp50);
+    var_f22 += (func_80612790(current_actor_pointer->unkEE) * var_f0) - (func_80612794(current_actor_pointer->unkEE) * sp50);
+    sp44 = func_8000AC60((var_f20 * var_f20) + (var_f22 * var_f22));
+    temp_f0_2 = func_80611BB4(var_f20, var_f22);
+    if (current_actor_pointer->y_acceleration != -20.0f && current_actor_pointer->y_acceleration != -360.0f) {
+        current_actor_pointer->unkB8 = D_807FDCA0->unk14[D_807FDC90->unk25].unk8 * 10.0;
+    } else {
+        current_actor_pointer->unkB8 = sp44;
+    }
+    current_actor_pointer->unkEE = (temp_f0_2 * 4096.0) / D_8002FD20;
+    if (current_actor_pointer->unk6A & 1) {
+        current_actor_pointer->unkB8 -= (f32)((current_actor_pointer->unkB8 * current_actor_pointer->unkB8) / D_8002FD28);
+        if (current_actor_pointer->unkB8 < 0.0f) {
+            current_actor_pointer->unkB8 = 0.0f;
+        }
+    }
+}
+*/
+
 int func_80024634(RaceStruct8 *arg0, RaceStruct9 *arg1) {
     return arg0->unk36 && 
            !isFlagSet(arg1->unk1A, FLAG_TYPE_PERMANENT) &&
@@ -201,19 +301,14 @@ void func_80026050(RaceStruct6 *arg0, RaceStruct6 *arg1, s32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026098.s")
 
 /*
-// TODO: Float regalloc and stack nonsense
+// TODO: Float regalloc
 void func_80026098(Struct80026098 *arg0, Struct80026098 *arg1) {
     s16 sp2E;
+    s16 pad[2];
     f32 sp24;
-    f32 temp_f14;
-    f32 temp_f2;
-    f32 temp_f2_2;
-    f32 temp;
 
     sp2E = (func_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / D_8002FDD8;
-    temp_f2 = arg1->unk8 - arg0->unk8;
-    temp_f14 = arg1->unk0 - arg0->unk0;
-    sp24 = current_actor_pointer->unkB8 * D_8002FDE0 * func_8000AC60((temp_f2 * temp_f2) + (temp_f14 * temp_f14));
+    sp24 = current_actor_pointer->unkB8 * D_8002FDE0 * func_8000AC60(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
     current_actor_pointer->x_position = arg1->unk0 + (sp24 * func_80612794(sp2E));
     current_actor_pointer->z_position = arg1->unk8 + (sp24 * func_80612790(sp2E));
     current_actor_pointer->y_position = (D_8002FDE8 * (arg0->unk4 - current_actor_pointer->y_position)) + current_actor_pointer->y_position;
@@ -265,7 +360,36 @@ void func_80026CA8(void) {
     func_80604CBC(current_actor_pointer, 0x12E, 0, 1, 1, 0xFF, 1.0f, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026D2C.s")
+extern f64 D_8002FE40;
+extern f64 D_8002FE48;
+extern f64 D_8002FE50;
+extern f64 D_8002FE58;
+extern s16 D_80770628[];
+extern f32 D_80770B68[];
+extern f32 D_80770BC0[];
+
+u32 func_806119A0(void);
+
+void func_80026D2C(f32 arg0) {
+    s16 temp;
+    s32 pad;
+    temp = D_80770628[current_actor_pointer->unk6E];
+    D_80770B68[temp] = (arg0 / 20.0) + 1.0;
+    D_80770BC0[temp] = 1.0f;
+    temp = D_80770628[current_actor_pointer->unk70];
+    current_actor_pointer->unk74 = arg0 / 20.0;
+    if (current_actor_pointer->unk74 > 1.0) {
+        current_actor_pointer->unk74 = 1.0f;
+    }
+    if (current_actor_pointer->unk74 < 0.0) {
+        current_actor_pointer->unk74 = 0.0f;
+    }
+
+    if (D_80770BC0[temp] == 0.0f) {
+        D_80770B68[temp] = (((func_806119A0() / D_8002FE40) * D_8002FE48) + D_8002FE50) * (D_8002FE58 + (arg0 / 15.0));
+        D_80770BC0[temp] = 3.0f;
+    }
+}
 
 void func_80026EE4(s32 arg0, Actor *arg1) {
     // TODO: Which aaD type are they actually expecting here?

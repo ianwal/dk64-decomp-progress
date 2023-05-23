@@ -93,8 +93,10 @@ typedef struct {
     s16 unk0; // X Position
     s16 unk2; // Y Position
     s16 unk4; // Z Position
-    s16 unk6;
-    s16 unk8;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
 } Struct807FDCA0_unk14;
 
 // TODO: What is this datatype?
@@ -103,7 +105,8 @@ typedef struct Struct807FDCA0 {
     s32 unk4;
     s32 unk8;
     s32 unkC;
-    s32 unk10;
+    s16 unk10;
+    s16 unk12;
     Struct807FDCA0_unk14 *unk14;
     s8 unk18;
     s8 unk19; // Used
