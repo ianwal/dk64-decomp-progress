@@ -6283,17 +6283,12 @@ void func_806E382C(void) {
     func_806CFE7C();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E384C.s")
-
 extern f32 D_8075D214;
 
-/*
-// TODO: Very close, minor datatype/regalloc(?) issues
 void func_806E384C(void) {
-    f32 temp_f2;
     s32 temp_f18;
+    f32 temp_f2;
     f32 phi_f0;
-    s32 temp;
 
     phi_f0 = extra_player_info_pointer->unk1A0 + 0x9E8;
     if (phi_f0 >= 32768) {
@@ -6303,15 +6298,15 @@ void func_806E384C(void) {
     if (current_actor_pointer->unk6E[0] == -1) {
         func_80604CBC(current_actor_pointer, 0x114, 0, 0, 0, 0xFF, 1.0f, 0);
     }
-    current_actor_pointer->y_acceleration = D_807536E4[D_807FD584] + (-2 * D_807536E4[D_807FD584] * func_80612790(phi_f0));
-    if (current_actor_pointer->y_velocity < 0.0f) {
-        current_actor_pointer->y_acceleration = current_actor_pointer->y_acceleration - (current_actor_pointer->y_velocity / 100.0);
+    current_actor_pointer->y_acceleration = (-2 * D_807536E4[D_807FD584] * func_80612790(phi_f0)) + D_807536E4[D_807FD584];
+    if (current_actor_pointer->y_velocity < 0) {
+        current_actor_pointer->y_acceleration -= (current_actor_pointer->y_velocity / 100.0);
     }
     if (current_actor_pointer->unk6A & 1) {
         extra_player_info_pointer->unk30 = D_80753250[D_807FD584];
     } else {
-        temp_f2 = func_80612794(current_actor_pointer->y_velocity, 0.0f, phi_f0, phi_f0, &D_807FD584) * 8.0f;
-        if (temp_f2 >= 0.0f) {
+        temp_f2 = func_80612794(phi_f0) * 8.0f;
+        if (temp_f2 >= 0) {
             phi_f0 = current_actor_pointer->y_rotation;
         } else {
             phi_f0 = current_actor_pointer->y_rotation + 0x800;
@@ -6319,17 +6314,12 @@ void func_806E384C(void) {
                 phi_f0 -= 4096;
             }
         }
-        if (temp_f2 > 0.0f) {
-            extra_player_info_pointer->unk2C = temp_f2;
-        } else {
-            extra_player_info_pointer->unk2C = -temp_f2;
-        }
+        extra_player_info_pointer->unk2C = ABS(temp_f2);
         func_806CD424(phi_f0, 900, extra_player_info_pointer->unk38);
         extra_player_info_pointer->unk30 = ((current_actor_pointer->unkB8 * current_actor_pointer->unkB8) / D_8075D214) + 1.0f;
     }
     extra_player_info_pointer->unk1A2 = 1;
 }
-*/
 
 extern f32 D_8075D218;
 
@@ -6636,12 +6626,12 @@ s32 func_806E527C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E52D0.s")
 
 s32 func_806E5488(Actor *arg0);
-s32 func_806E560C(Actor *arg0);
+u32 func_806E560C(Actor *arg0);
 
 /*
 // TODO: Stack issue...
 void func_806E52D0(void) {
-    s32 temp_v1;
+    u32 temp_v1;
 
     if ((D_807FD610[cc_player_index].unk2C & U_CBUTTONS)
         && (object_timer >= 3U)
@@ -6653,17 +6643,17 @@ void func_806E52D0(void) {
         && (func_806E527C() == 0)
         && (extra_player_info_pointer->unk245 == 0)) {
         temp_v1 = func_806E560C(current_actor_pointer);
-        if ((current_map != MAP_KROOL_FIGHT_LANKY_PHASE || temp_v1 != 0)) {
-            if (func_806F8AD4(7, cc_player_index) != 0 || temp_v1 != 0) {
+        if ((current_map != MAP_KROOL_FIGHT_LANKY_PHASE || temp_v1)) {
+            if (func_806F8AD4(7, cc_player_index) != 0 || temp_v1) {
                 func_806EB0C0(0x53, NULL, extra_player_info_pointer->unk1A4);
                 if (!(D_807FBB68 & 2)) {
                     current_actor_pointer->noclip_byte = 1;
                 }
-                if (temp_v1 == 0) {
+                if (!temp_v1) {
                     func_806F91B4(7, cc_player_index, -1);
                 }
             }
-            if (temp_v1 == 0) {
+            if (!temp_v1) {
                 func_806F8BC4(7, 0, 0);
             }
         }

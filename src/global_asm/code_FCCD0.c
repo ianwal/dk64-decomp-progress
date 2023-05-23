@@ -332,8 +332,6 @@ u8 func_806F9470(u16 arg0, Maps map) {
     return (1 << getLevelIndex(map, 1)) & arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F94AC.s")
-
 extern f64 D_8075DAD0;
 
 typedef struct {
@@ -356,22 +354,20 @@ typedef struct {
     f32 unk364;
 } Struct806F94AC_arg0;
 
-/*
-// TODO: Float regalloc
 void func_806F94AC(Struct806F94AC_arg0 *arg0, s32 arg1) {
     f32 temp_f12;
     f32 var_f2;
+    f32 temp;
     Struct806F94AC_arg0_unk330 *temp_v0;
 
-    temp_f12 = 32.0f / (arg0->unk330->unk9 * arg0->unk330->unkE);
-    var_f2 = temp_f12;
+    temp = (arg0->unk330->unk9 * arg0->unk330->unkE);
+    var_f2 = 32.0f / temp;
     if (arg1 == 9) {
-        var_f2 = temp_f12 * D_8075DAD0;
+        var_f2 = 32.0f / temp * D_8075DAD0;
     }
-    arg0->unk360 *=  var_f2;
-    arg0->unk364 *=  var_f2;
+    arg0->unk360 *= var_f2;
+    arg0->unk364 *= var_f2;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9518.s")
 

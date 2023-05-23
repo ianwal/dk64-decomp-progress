@@ -31,11 +31,34 @@ void func_806F4D70(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     D_807FD740[arg0].unk4 = arg2;
     D_807FD740[arg0].unk8 = arg3;
     D_807FD740[arg0].unkC = arg4;
-    D_807FD780[arg0] = 0;
+    D_807FD780[arg0] = NULL;
 }
 
-// Doable, some kind of struct (0x14, 0x10) init, float stuff too
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F4DC0.s")
+
+/*
+// Close, nonsense at the top
+void func_806F4DC0(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    Struct807FD740 **var_v1;
+    void *temp_v0_2;
+    Struct807FD740 *var_v0;
+
+    var_v1 = &D_807FD780[arg0];
+    var_v0 = D_807FD780[arg0];
+    while (var_v0 != NULL) {
+        var_v1 = var_v0 + 1;
+        var_v0 = *var_v1;
+    }
+    temp_v0_2 = malloc(0x14);
+    *var_v1 = temp_v0_2;
+    func_80611690(temp_v0_2);
+    (*var_v1)->unk0 = arg1;
+    (*var_v1)->unk4 = arg2;
+    (*var_v1)->unk8 = arg3;
+    (*var_v1)->unkC = arg4;
+    func_8061134C(*var_v1);
+}
+*/
 
 extern s16 D_80753EF0; // TODO: Array of 0xA structs?
 

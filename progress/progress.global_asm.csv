@@ -1810,7 +1810,7 @@ us,.code,getExitData,364,yes
 us,.code,func_8071497C,16,yes
 us,.code,func_8065C990,1040,no
 us,.code,func_8068613C,516,no
-us,.code,func_806E384C,692,no
+us,.code,func_806E384C,692,yes
 us,.code,func_806AD7AC,160,yes
 us,.code,func_806F4778,1528,no
 us,.code,func_806DEAA4,560,no
@@ -2789,7 +2789,7 @@ us,.code,func_8066CDF8,236,no
 us,.code,func_806DAA14,200,yes
 us,.code,func_806E2140,284,yes
 us,.code,func_806F8EB4,40,yes
-us,.code,func_806F94AC,108,no
+us,.code,func_806F94AC,108,yes
 us,.code,func_806F91B4,568,no
 us,.code,func_80649D74,140,no
 us,.code,func_806E07F8,1012,no
