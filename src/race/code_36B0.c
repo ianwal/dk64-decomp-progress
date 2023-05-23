@@ -72,7 +72,31 @@ extern f64 D_8002FDD8;
 extern f64 D_8002FDE0;
 extern f64 D_8002FDE8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_800276B0.s")
+typedef struct RaceStruct15 {
+    s16 unk0;
+    u16 unk2;
+} RaceStruct15;
+s32 func_800276B0(s32 arg0, RaceStruct15 *arg1, RaceStruct15 *arg2) {
+    s32 var_v0;
+    s32 sign;
+    s32 var_v1;
+
+    var_v1 = arg2->unk2 - arg1->unk2;
+    if (var_v1 > 0) {
+        var_v0 = var_v1;
+    } else {
+        var_v0 = -var_v1;
+    }
+    if ((arg0 / 2) < var_v0) {
+        if (var_v1 >= 0) {
+            sign = 1;
+        } else {
+            sign = -1;
+        }
+        var_v1 -= sign * arg0;
+    }
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027710.s")
 
