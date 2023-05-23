@@ -13,7 +13,6 @@ void func_806319C4(Actor*, s32);
 void func_80724E48(u8);
 void func_806F09F0(Actor*, u16);
 
-void func_80665564(Actor*, f32);
 void func_806651FC(Actor*);
 void func_80724CA4(s32, s32);
 

@@ -212,22 +212,17 @@ void func_80604C80(u8 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80605044.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80605314.s")
-
 void func_80605380(s16);
 
-/*
-// TODO: Very close
 void func_80605314(Actor *arg0, u8 arg1) {
-    if (arg0[arg1].unk6E >= 0) {
-        func_80605380(arg0[arg1].unk6E);
-        arg0[arg1].unk6E = -1;
+    if (arg0->unk6E[arg1] >= 0) {
+        func_80605380(arg0->unk6E[arg1]);
+        arg0->unk6E[arg1] = -1;
         if (arg1 == 0) {
             arg0->unk72 = 0;
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80605380.s")
 
@@ -248,7 +243,9 @@ void func_80608528(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4) {
     func_806086CC(arg0->x_position, arg0->y_position, arg0->z_position, arg1, arg2, arg3, arg4, 0x4B, D_80756DFC, var_v0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_806085DC.s")
+void func_806085DC(s16 arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6) {
+    func_806086CC(D_807F6000[arg0].x_position, D_807F6000[arg0].y_position, D_807F6000[arg0].z_position, arg1, arg2, arg3, arg4, arg5, arg6, 0);
+}
 
 void func_8060956C(f32, f32, f32, s16, s32, f32, s32, s32);
 
@@ -276,6 +273,33 @@ void func_8060A4D0(s32 arg0, f32 arg1) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_8060A500.s")
+
+extern f64 D_80756FF0;
+extern f64 D_80756FF8;
+
+/*
+// TODO: probably needs rodata
+void func_8060A500(void) {
+    f32 var_f12;
+    f64 temp_f20;
+    f64 temp_f22;
+    s8 i;
+
+    temp_f22 = D_80756FF0;
+    temp_f20 = D_80756FF8;
+    for (i = 0; i < 4; i++) {
+        if (D_80770598[i] != 0) {
+            D_80770568[D_80770598[i]] = D_80770568[D_80770598[i]] + ((D_80770578[i] - D_80770568[D_80770598[i]]) * temp_f20);
+            var_f12 = ABS(D_80770578[i] - D_80770568[D_80770598[i]]);
+            if (var_f12 < temp_f22) {
+                D_80770568[D_80770598[i]] = D_80770578[i];
+                D_80770598[i] = 0;
+            }
+            func_8060A398(i);
+        }
+    }
+}
+*/
 
 void func_8060A60C(s32 arg0, f32 arg1) {
     D_80770578[arg0] = arg1;

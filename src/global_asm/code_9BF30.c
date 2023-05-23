@@ -99,7 +99,6 @@ void func_80697988(void) {
 
 void func_8065D254(Actor *, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_806651FC(Actor *);
-void func_80665564(Actor *, f32);
 void func_8066E8E4(Actor *, f32, f32, f32, f32, s32);
 extern s32 D_8071ABDC; // TODO: Datatype
 extern s32 D_8071FBA0; // TODO: Datatype
@@ -139,7 +138,7 @@ void func_80697CEC(void) {
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         sp68 = D_807502C0;
-        current_actor_pointer->unk6E = -2;
+        current_actor_pointer->unk6E[0] = -2;
         current_actor_pointer->unk6A &= ~1;
         current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / D_8075A220) * D_8075A224;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;

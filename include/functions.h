@@ -35,6 +35,8 @@ void func_80629174(void);
 
 void func_80729B00(void);
 
+void func_80665564(Actor *arg0, f32 arg1);
+
 s16 func_80665DE0(f32, f32, f32, f32);
 
 // TODO: Figure out why adding this here causes func_806CF42C to not match

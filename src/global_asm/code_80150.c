@@ -3,7 +3,6 @@
 
 void func_806319C4(Actor*, s32);
 void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-void func_80665564(Actor*, f32);
 void func_80683AD8();
 
 extern f64 D_80759560;
@@ -85,7 +84,6 @@ void func_8067BD28(void) {
     }
 }
 
-void func_80665564(Actor*, f32);
 u8 func_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3);
 
 void func_8067BDB8(void) {

@@ -439,8 +439,6 @@ typedef struct {
     s32 unk4;
 } AAD_806A018C;
 
-void func_80665564(Actor*, f32);
-
 void func_806A018C(void) {
     AAD_806A018C *temp_s1;
 

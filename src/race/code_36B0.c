@@ -189,7 +189,7 @@ void func_80027C60(void) {
 void func_800283D4(f32 arg0) {
     s32 temp_a0;
 
-    temp_a0 = D_80770628[current_actor_pointer->unk6E];
+    temp_a0 = D_80770628[current_actor_pointer->unk6E[0]];
     current_actor_pointer->unk74 = 1.0f;
     D_80770B68[temp_a0] = (arg0 * D_8002FF84) + 1.0;
     D_80770BC0[temp_a0] = 1.0f;
@@ -512,8 +512,6 @@ void func_8002DB90(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002DC24.s")
-
-void func_80665564(Actor*, f32);
 
 /*
 // TODO: Pretty close, datatype issue for RaaD->unk0 though

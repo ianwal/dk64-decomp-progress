@@ -17,3 +17,5 @@ character_change_array = 0x807FC924;
 cc_number_of_players = 0x807FC928;
 cc_player_index = 0x807FC929;
 extra_player_info_pointer = 0x807FD580;
+
+D_8002DDA8 = 0x8002DDA8;

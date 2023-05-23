@@ -15,7 +15,6 @@ void func_80690A28(u8, s32, f32, f32, f32, f32, f32, Actor*);
 s32 func_80726164(Actor*, s16, s16, s16, void*);
 void func_806B3E7C();
 void func_806653C0(Actor*, f32, f32);
-void func_80665564(Actor*, f32);
 void func_807248B0(Actor*, f32);
 
 // Jumptable
@@ -655,7 +654,7 @@ void func_806B54BC(void) {
         temp_s1->unkC = current_actor_pointer->y_position;
         temp_s1->unk12 = (func_806119A0() & 0xFF) + 0x78;
     }
-    if ((current_actor_pointer->control_state != 0x37) && (current_actor_pointer->unk6E == -1)) {
+    if ((current_actor_pointer->control_state != 0x37) && (current_actor_pointer->unk6E[0] == -1)) {
         func_80604CBC(current_actor_pointer, 0x10E, 0, 0, 0, 0xFF, 1.0f, 0);
     }
     switch (current_actor_pointer->control_state) {

@@ -595,7 +595,7 @@ void func_806CBE44(void) {
 void func_806CBE90(void) {
     if ((current_actor_pointer->unk6A & 0x21) == 1) {
         if ((current_actor_pointer->unk6A & 0x200) != 0) {
-            if (current_actor_pointer->unk6E == -1) {
+            if (current_actor_pointer->unk6E[0] == -1) {
                 func_80604CBC(current_actor_pointer, 0x10D, 0, 1, 0, 0xFF, 1.0f, 0);
             }
             current_actor_pointer->control_state = 0xF;
@@ -735,7 +735,6 @@ extern s16 D_80753A2C[];
 
 void func_80665160(Actor *, s16, s16);
 void func_806653C0(Actor *, f32, f32);
-void func_80665564(Actor*, f32);
 
 /*
 // TODO: WIP, might need some more temp variables or split apart float operations into separate lines
@@ -2480,7 +2479,7 @@ void func_806D2BD0(void) {
     func_806CC8B8();
     func_806319C4(current_actor_pointer, 0);
     if (func_8061CB50()) {
-        if (current_actor_pointer->unk6E != -1) {
+        if (current_actor_pointer->unk6E[0] != -1) {
             func_80605314(current_actor_pointer, 0);
         }
     }
@@ -6301,7 +6300,7 @@ void func_806E384C(void) {
         phi_f0 -= 65536;
     }
     phi_f0 /= 16;
-    if (current_actor_pointer->unk6E == -1) {
+    if (current_actor_pointer->unk6E[0] == -1) {
         func_80604CBC(current_actor_pointer, 0x114, 0, 0, 0, 0xFF, 1.0f, 0);
     }
     current_actor_pointer->y_acceleration = D_807536E4[D_807FD584] + (-2 * D_807536E4[D_807FD584] * func_80612790(phi_f0));

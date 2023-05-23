@@ -1127,7 +1127,7 @@ struct actor {
     u16 unk68;
     u16 unk6A; // is_grounded?
     u16 unk6C;
-    s16 unk6E;
+    s16 unk6E[1]; // TODO: How many elements?
     s16 unk70;
     u16 unk72;
     f32 unk74;

@@ -506,8 +506,113 @@ void func_80028648(ARG0_80028648 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002881C.s")
 
-// Doable, aaD
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80028E3C.s")
+
+extern s16 D_8002D8C0[];
+
+extern f64 D_8002DD98;
+extern f32 D_8002DDA0;
+extern f32 D_8002DDA4;
+extern f32 D_8002DDA8;
+
+typedef struct {
+    Actor *unk0;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    s32 unk8;
+    f32 unkC;
+} AAD_80028E3C;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+    s8 unk10;
+} AAD_80028E3C_2;
+
+void func_80608528(Actor*, s16, u8, s32, s32);
+
+/*
+// TODO: Very close
+void func_80028E3C(void) {
+    AAD_80028E3C *aaD;
+    AAD_80028E3C_2 *aaD2;
+    f32 temp_f2;
+    f64 temp_f0;
+    f32 var_f0_2;
+    f32 var_f2;
+    s16 var_a3;
+    s32 var_a0;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    aaD2 = aaD->unk0->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->y_rotation = (rand() >> 0xF) % 4096;
+        current_actor_pointer->y_acceleration = -10.0f;
+        current_actor_pointer->unk6A &= 0xFFFE;
+        func_80613C48(current_actor_pointer, 0x688, 0.0f, 0.0f);
+        func_80614D00(current_actor_pointer, 1.0f, 0.0f);
+    }
+    if (aaD2->unk10 == -1) {
+        if (aaD->unk4 == 0) {
+            if (aaD2->unkC < 220.0f) {
+                if (aaD->unk5 == 0) {
+                    var_a0 = 0x7F;
+                    aaD->unk5 = 1;
+                    var_a3 = aaD->unk6 % 3;
+                    if ((aaD->unk6 / 3) != 0) {
+                        var_a3 = 2 - var_a3;
+                        var_a0 = 0x64;
+                    }
+                    func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, D_8002D8C0[var_a3], 0xFF, var_a0, 0, 0, 0.0f, 0);
+                }
+                if (aaD2->unkC < 40.0f) {
+                    aaD->unk4 = 1;
+                    func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x1ED, 0xFF, 0x7F, 0, 0, 0.0f, 0);
+                    func_80608528(current_actor_pointer, 0x76, 0xFF, 0x7F, 0x1E);
+                    current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
+                    current_actor_pointer->unkB8 = 10.0f;
+                    func_80614EBC(aaD->unk0, 0x1F7);
+                }
+            }
+        }
+    }
+    if (aaD->unk4 == 0) {
+        func_80671C0C(aaD->unk0, 1, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+    } else {
+        if (current_actor_pointer->unk6A & 1) {
+            if (!(current_actor_pointer->unk6C & 1)) {
+                f64 temp = D_8002DD98;
+                current_actor_pointer->y_velocity = aaD->unkC * D_8002DDA0;
+                func_80608528(current_actor_pointer, 0xFF, (u32)MAX(temp, -aaD->unkC * 1.5), 0x7F, 0xA);
+            }
+        }
+        current_actor_pointer->y_velocity += current_actor_pointer->y_acceleration;
+        aaD->unkC = current_actor_pointer->y_velocity;
+        func_8067ACB4(current_actor_pointer);
+        func_806651FC(current_actor_pointer);
+        func_80665564(current_actor_pointer, 0);
+    }
+    current_actor_pointer->y_rotation = current_actor_pointer->y_rotation + aaD2->unkC;
+    if (current_actor_pointer->y_rotation >= 0x1000) {
+        current_actor_pointer->y_rotation = current_actor_pointer->y_rotation - 0x1000;
+    }
+    temp_f2 = D_8002DDA4 / aaD2->unkC;
+    current_actor_pointer->x_rotation = func_80612794(current_actor_pointer->y_rotation) * -temp_f2;
+    current_actor_pointer->z_rotation = func_80612790(current_actor_pointer->y_rotation) * temp_f2;
+    temp_f2 = temp_f2 * D_8002DDA8;
+    if (temp_f2 < 1) {
+        var_f2 = 1;
+    } else {
+        var_f2 = MIN(2.5f, temp_f2);
+    }
+    func_80614D00(current_actor_pointer, var_f2, 0.0f);
+    func_806319C4(current_actor_pointer, 0);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80029364.s")
 
@@ -805,8 +910,7 @@ typedef struct {
 } AAD_8002C8EC_2;
 
 void func_8002C8EC(void) {
-    s32 twemp;
-    s32 twees[2];
+    s32 pad[3];
     f32 sp40;
     f32 sp3C;
     f32 sp38;

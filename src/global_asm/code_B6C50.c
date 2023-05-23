@@ -6,7 +6,6 @@
 extern s32 D_8072030C;
 extern f64 D_8075B3C0;
 
-void func_80665564(Actor*, f32);
 void func_806319C4(Actor*, s32);
 
 /*

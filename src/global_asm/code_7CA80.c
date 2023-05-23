@@ -247,7 +247,7 @@ s32 func_80678050(u16 arg0) {
         newActor->unk114 = NULL;
         newActor->unk118 = 0;
         newActor->unk11C = NULL;
-        newActor->unk6E = -1;
+        newActor->unk6E[0] = -1;
         newActor->unk70 = -1;
         newActor->unk150 = NULL;
         newActor->unk12C = -1;

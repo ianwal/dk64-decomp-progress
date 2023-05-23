@@ -373,7 +373,7 @@ u32 func_806119A0(void);
 void func_80026D2C(f32 arg0) {
     s16 temp;
     s32 pad;
-    temp = D_80770628[current_actor_pointer->unk6E];
+    temp = D_80770628[current_actor_pointer->unk6E[0]];
     D_80770B68[temp] = (arg0 / 20.0) + 1.0;
     D_80770BC0[temp] = 1.0f;
     temp = D_80770628[current_actor_pointer->unk70];

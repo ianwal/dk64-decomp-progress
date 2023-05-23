@@ -159,10 +159,10 @@ void func_806B7EA0(void) {
             temp_s0->unk14 = D_807FDC94->z_position;
             D_807FDC90->unk2C = 0x14;
         }
-        current_actor_pointer->unk6E++;
-        if (temp_s0->unk18 < current_actor_pointer->unk6E) {
+        current_actor_pointer->unk6E[0]++;
+        if (temp_s0->unk18 < current_actor_pointer->unk6E[0]) {
             playSound(0x15B, 0x7FFF, 63.0f, 1.0f, 0, 0x80);
-            current_actor_pointer->unk6E = 0;
+            current_actor_pointer->unk6E[0] = 0;
             if (temp_s0->unk18 > 2.0f) {
                 temp_s0->unk18 -= D_8075B898;
             }
