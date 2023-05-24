@@ -1255,7 +1255,9 @@ typedef struct enemy_info {
     u8 cutscene_model_index; // at 0x0A
     u8 unkB;
     u32 unkC;
-    u32 unk10;
+    u16 unk10;
+    u8 unk12;
+    u8 unk13;
     u32 unk14;
     Actor *unk18; // TODO: Is this accurate?
     u32 unk1C;
@@ -1828,6 +1830,21 @@ struct ActorSpawner {
     ActorSpawner* next_spawner; // At 0x68
     u8 pad6C[0x80 - 0x6C];
 };
+
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    u8 unk17;
+} Struct8075EB80;
+
+extern Struct8075EB80 D_8075EB80[];
 
 // TODO: Use that clever tuple thing from BKomp
 typedef struct {

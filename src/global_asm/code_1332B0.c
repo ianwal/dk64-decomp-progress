@@ -183,4 +183,20 @@ void func_8072EC94(s32 arg0, u8 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_8072ECFC.s")
+void func_8072ECFC(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s32 i;
+    s32 found;
+    Struct80755A14_unk4 *var_v1;
+
+    found = FALSE;
+    var_v1 = D_80755A14->unk4;
+    for (i = 0; i < D_80755A14->unk0 && !found; i++) {
+        if (arg0 == var_v1->unkA) {
+            var_v1->unk0 = arg1;
+            var_v1->unk2 = arg2;
+            var_v1->unk4 = arg3;
+            found = TRUE;
+        }
+        var_v1++;
+    }
+}

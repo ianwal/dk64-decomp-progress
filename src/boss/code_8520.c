@@ -3,7 +3,7 @@
 
 void func_80690A28(s16, s16, f32, f32, f32, f32, f32, Actor*);
 void func_8002C520(s16, s16, s16);
-void func_807271F4(s32, s16, s16, s16, s16, s32, s32);
+Actor *func_807271F4(s32, s16, s16, s16, s16, s32, s32);
 
 void func_8002C520(s16 arg0, s16 arg1, s16 arg2) {
     func_807271F4(arg0,

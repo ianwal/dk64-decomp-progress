@@ -1,6 +1,60 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct Struct80755690_unk4 Struct80755690_unk4;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    u8 unk6;
+    s8 unk7;
+    s16 unk8;
+} Struct80755690_unk4_unk14;
+
+struct Struct80755690_unk4 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s16 unkC;
+    u8 unkE;
+    u8 unkF;
+    s16 unk10;
+    s16 unk12;
+    Struct80755690_unk4_unk14 *unk14;
+    u8 unk18;
+    u8 unk19;
+    u8 unk1A;
+    u8 unk1B;
+    Struct80755690_unk4 *unk1C;
+    s8 unk20;
+    s8 unk21;
+    s8 unk22;
+    s8 unk23;
+};
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    Struct80755690_unk4 *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+} Struct80755690;
+
+extern Struct80755690 *D_80755690;
+
+typedef struct {
+    s16 count;
+    s16 unk2;
+    EnemySpawner *firstSpawner;
+} EnemySpawnerLocator;
+
+extern EnemySpawnerLocator *D_80755694;
+
 void func_807248B0(Actor *arg0, f32 arg1) {
     LedgeInfo *temp_v0;
 
@@ -42,25 +96,49 @@ s32 func_80724A20(void) {
     return found;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724A9C.s")
+void func_80724A9C(u8 arg0, u8 arg1, u8 arg2) {
+    Struct80755690_unk4 *var_v0;
+    s16 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80724B5C.s")
+    var_v0 = D_80755690->unk4;
+    for (i = 0; i < D_80755690->unk0; i++) {
+        if (var_v0->unk18 == arg0) {
+            if (arg1 < var_v0->unk10) {
+                if (arg2) {
+                    var_v0->unk14[arg1].unk6 |= 0x80;
+                    return;
+                }
+                var_v0->unk14[arg1].unk6 &= 0xFF7F;
+            }
+            break;
+        }
+        var_v0++;
+    }
+}
+
+void func_80724B5C(u8 arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
+    Struct80755690_unk4 *var_v0;
+    s16 i;
+
+    var_v0 = D_80755690->unk4;
+    for (i = 0; i < D_80755690->unk0; i++) {
+        if (var_v0->unk18 == arg0) {
+            if (arg1 < var_v0->unk10) {
+                *arg2 = var_v0->unk14[arg1].unk0;
+                *arg3 = var_v0->unk14[arg1].unk2;
+                *arg4 = var_v0->unk14[arg1].unk4;
+            }
+            break;
+        }
+        var_v0++;
+    }
+}
 
 void func_80724C2C(s16 arg0) {
     current_actor_pointer->y_rotation = \
     current_actor_pointer->unkEE = D_807FBD6C->unkEE + 0x800 & 0xFFF;
     current_actor_pointer->unkB8 = arg0;
 }
-
-extern s32 D_80755690;
-
-typedef struct {
-    s16 count;
-    s16 unk2;
-    EnemySpawner *firstSpawner;
-} EnemySpawnerLocator;
-
-extern EnemySpawnerLocator *D_80755694;
 
 void func_80724C78(void* arg0) {
     func_80728300(arg0, D_80755690, D_80755694);
@@ -198,6 +276,40 @@ void func_80726E60(u16 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80726EE0.s")
 
+/*
+// TODO: Regalloc on var_s0->tied_actor
+void func_80726EE0(u8 arg0) {
+    EnemySpawner *var_s0;
+    s16 i;
+
+    var_s0 = D_80755694->firstSpawner;
+    for (i = 0; i < D_80755694->count; i++)  {
+        if (!(var_s0->properties_bitfield & 0x80)) {
+            if (var_s0->spawn_state == 5 && (var_s0->tied_actor->interactable & 2)) {
+                func_80679290(var_s0->tied_actor, 0, 8, 0, 0, 0, 1);
+            } else if (var_s0->spawn_state == 6 && (var_s0->tied_actor->interactable & 2)) {
+                var_s0->spawn_state = 7;
+                var_s0->respawn_time = var_s0->respawn_timer_init * 0x1E;
+                func_8061CFCC();
+                func_806782C0(var_s0->tied_actor);
+            }
+            switch (arg0) {
+                case 0:
+                case 1:
+                    var_s0->properties_bitfield |= 2;
+                    break;
+                case 2:
+                    var_s0->properties_bitfield &= ~2;
+                    break;
+                default:
+                    break;
+            }
+        }
+        var_s0++;
+    }
+}
+*/
+
 Actor *func_807270C0(s16, u16); // getSpawnerTiedActor()
 void func_80678428(Actor*);
 
@@ -215,8 +327,7 @@ Actor *func_807270C0(s16 spawn_trigger, u16 arg1) {
     EnemySpawner *var_v1;
 
     var_v1 = D_80755694->firstSpawner;
-    i = 0;
-    while (i < D_80755694->count) {
+    for (i = 0; i < D_80755694->count; i++) {
         if (spawn_trigger == var_v1->spawn_trigger) {
             if (var_v1->spawn_state == 5) {
                 var_v1->properties_bitfield |= arg1;
@@ -228,18 +339,60 @@ Actor *func_807270C0(s16 spawn_trigger, u16 arg1) {
                 return var_v1->tied_actor;
             }
         }
-        i++;
         var_v1++;
     }
     return NULL;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80727194.s")
+u8 func_80727194(Actor *arg0) {
+    s16 i;
+    EnemySpawner *var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807271F4.s")
+    var_v1 = D_80755694->firstSpawner;
+    for (i = 0; i < D_80755694->count; i++) {
+        if (arg0 == var_v1->tied_actor) {
+            if (var_v1->spawn_state == 5) {
+                return var_v1->spawn_trigger;
+            }
+        }
+        var_v1++;
+    }
+    return 0;
+}
+
+Actor *func_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6) {
+    s16 i;
+    Struct8075EB80 *temp_v0;
+    EnemySpawner *var_s0;
+
+    var_s0 = D_80755694->firstSpawner;
+    for (i = 0; i < D_80755694->count; i++) {
+        if (arg0 == var_s0->spawn_trigger) {
+            if (var_s0->spawn_state != 5) {
+                temp_v0 = &D_8075EB80[var_s0->alternative_enemy_spawn];
+                if (func_80677FA8(temp_v0->unk0, temp_v0->unk2) != 0) {
+                    var_s0->properties_bitfield |= 4;
+                    func_80726744(D_807FBB44, var_s0);
+                    if (arg1 != 0) {
+                        D_807FBB44->x_position = arg1;
+                        D_807FBB44->y_position = arg2;
+                        D_807FBB44->z_position = arg3;
+                        D_807FBB44->unkEE = arg4;
+                        D_807FBB44->y_rotation = arg4;
+                    }
+                    D_807FBB44->unkB8 = arg5;
+                    D_807FBB44->y_velocity = arg6;
+                    D_807FBB44->unk6A = 0;
+                    return D_807FBB44;
+                }
+            }
+        }
+        var_s0++;
+    }
+    return NULL;
+}
 
 f32 func_80665AE4(s32, s32, s16, s16);
-s32 func_807271F4(s16, s16, s16, s16, s32, s32, s32);
 
 void func_807273A8(s16 arg0, u8 arg1) {
     u8 temp_t0;
@@ -266,14 +419,32 @@ void func_8072752C(s16 arg0, s16 x1, s16 y1, s16 z1, s16 x2, s16 y2, s16 z2, s16
     }
 }
 
+// Current map access as struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80727678.s")
 
-// Unknown struct arg0
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807278C0.s")
+extern u8 D_80755698[];
+
+void func_807278C0(EnemyInfo *arg0) {
+    u8 temp_v0;
+
+    if (current_map == MAP_FUNGI && extra_player_info_pointer->unk1F0 & 0x100000 && D_80755698[arg0->enemy_type] != 0xA) {
+        switch (arg0->enemy_type) {
+            case 28: // TODO: Enemy type enum
+                arg0->unk44 = 0x63;
+                return;
+            case 9: // TODO: Enemy type enum
+                arg0->unk44 = 0x54;
+                return;
+            case 44: // TODO: Enemy type enum
+                arg0->unk44 = 0x67;
+                return;
+        }
+    } else {
+        arg0->unk44 = arg0->enemy_type;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80727958.s")
-
-extern u8 D_80755698[];
 
 u8 func_80652F24(s16, s16);
 
@@ -281,7 +452,9 @@ u8 func_80727F20(EnemyInfo *arg0, s32 arg1) {
     return (((character_change_array[0].look_at_eye_x - arg0->x_position) * (character_change_array[0].look_at_eye_x - arg0->x_position))
         + ((character_change_array[0].look_at_eye_y - arg0->y_position) * (character_change_array[0].look_at_eye_y - arg0->y_position))
         + ((character_change_array[0].look_at_eye_z - arg0->z_position) * (character_change_array[0].look_at_eye_z - arg0->z_position)) < arg1)
-        && ((D_80755698[arg0->unk44] == 6) || (arg0->unk46 & 0x20) || func_80652F24(0, arg0->unk40));
+        && ((D_80755698[arg0->unk44] == 6)
+            || (arg0->unk46 & 0x20)
+            || func_80652F24(0, arg0->unk40));
 }
 
 u8 func_80728004(EnemyInfo *arg0, s32 arg1) {
@@ -289,16 +462,54 @@ u8 func_80728004(EnemyInfo *arg0, s32 arg1) {
         + ((character_change_array[0].look_at_eye_y - arg0->unk18->y_position) * (character_change_array[0].look_at_eye_y - arg0->unk18->y_position))
         + ((character_change_array[0].look_at_eye_z - arg0->unk18->z_position) * (character_change_array[0].look_at_eye_z - arg0->unk18->z_position))))
         && ((arg0->unk18->interactable & 0x40)
-        || (arg0->unk46 & 0x20)
-        || func_80652F24(0, arg0->unk40));
+            || (arg0->unk46 & 0x20)
+            || func_80652F24(0, arg0->unk40));
 }
 
-// Very doable, dx,dy,dz and a large conditional check at the end that will need to be simplified
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807280C8.s")
+u8 func_807280C8(EnemyInfo *arg0, s32 arg1) {
+    return (arg1 < (((character_change_array[0].look_at_eye_x - arg0->unk18->x_position) * (character_change_array[0].look_at_eye_x - arg0->unk18->x_position))
+        + ((character_change_array[0].look_at_eye_y - arg0->unk18->y_position) * (character_change_array[0].look_at_eye_y - arg0->unk18->y_position))
+        + ((character_change_array[0].look_at_eye_z - arg0->unk18->z_position) * (character_change_array[0].look_at_eye_z - arg0->unk18->z_position))))
+        || (!(arg0->unk18->interactable & 0x40)
+            && !(arg0->unk46 & 0x20)
+            && !func_80652F24(0, arg0->unk40));
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_8072818C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_8072827C.s")
+/*
+// TODO: Close
+u8 func_8072818C(EnemyInfo *arg0, s32 arg1) {
+    f32 temp_f0;
+
+    temp_f0 = sqrtf(arg1) * 1.5;
+    return ((arg0->unk18->interactable & 2) && !(arg0->unk46 & 0x20) && arg0->unk12 == 2)
+        && ((temp_f0) * (temp_f0)) < 
+            ((character_change_array[0].look_at_eye_z - arg0->unk18->z_position) * (character_change_array[0].look_at_eye_z - arg0->unk18->z_position))
+            + ((character_change_array[0].look_at_eye_y - arg0->unk18->y_position) * (character_change_array[0].look_at_eye_y - arg0->unk18->y_position))
+            + ((character_change_array[0].look_at_eye_x - arg0->unk18->x_position) * (character_change_array[0].look_at_eye_x - arg0->unk18->x_position));
+}
+*/
+
+void func_8072827C(Struct80755690_unk4 *arg0) {
+    s16 i;
+    Struct80755690_unk4 *var_v0;
+
+    var_v0 = D_80755690->unk4;
+    for (i = 0; i < D_80755690->unk0; i++) {
+        var_v0->unk1C = 0;
+        var_v0->unk20 = 0;
+        if (var_v0->unk18 == arg0->unkE) {
+            arg0->unk1C = var_v0;
+            break;
+        } else {
+            var_v0++;
+        }
+    }
+    if (arg0->unk1C == NULL) {
+        arg0->unk1C = D_80755690->unk4;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80728300.s")
 

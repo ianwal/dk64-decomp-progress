@@ -109,20 +109,6 @@ void func_80729E6C(void) {
 
 extern f64 D_8075FD20;
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-    u8 unk17;
-} Struct8075EB80;
-
-extern Struct8075EB80 D_8075EB80[];
-
 void func_8065D254(Actor *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, u8 arg6, s16 arg7, u8 arg8, s16 arg9, f32 argA);
 
 /*
