@@ -172,18 +172,18 @@ void func_80714A9C(void) {
     D_807FDB3A = 0x258;
 }
 
-s32 func_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, s32);
+void *func_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, s32);
 
-void func_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
+void *func_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
     f32 sp3C;
     f32 sp38;
     f32 sp34;
 
     func_806335B0(arg2, 1, arg3, &sp3C, &sp38, &sp34);
-    func_80714D08(arg0, arg1, sp3C, sp38, sp34, 0, arg2, arg3, arg4);
+    return func_80714D08(arg0, arg1, sp3C, sp38, sp34, 0, arg2, arg3, arg4);
 }
 
-s32 func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
+void *func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
     f32 sp3C;
     f32 sp38;
     f32 sp34;
@@ -195,7 +195,7 @@ s32 func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
     return func_80714D08(arg0, arg1, sp3C, sp38, sp34, arg2, 0, arg3, arg4);
 }
 
-s32 func_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+void *func_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return func_80714D08(arg0, arg1, arg2, arg3, arg4, 0, 0, 0, 0);
 }
 

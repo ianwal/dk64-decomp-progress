@@ -41,37 +41,6 @@ typedef struct {
     u8 unk1;
 } Struct80027840;
 
-typedef struct enemy_info {
-    u8 enemy_type; // at 0x00
-    u8 unk1;
-    u16 y_rotation; // at 0x02
-    s16 x_position; // at 0x04
-    s16 y_position; // at 0x06
-    s16 z_position; // at 0x08
-    u8 cutscene_model_index; // at 0x0A
-    u8 unkB;
-    u32 unkC;
-    u32 unk10;
-    u32 unk14;
-    u32 unk18;
-    u32 unk1C;
-    Struct80027840 *unk20;
-    u16 unk24;
-    u16 unk26;
-    u16 unk28; // Used
-    s16 unk2A; // Used
-    u32 unk2C;
-    f32 unk30; // Used
-    f32 unk34; // Used
-    f32 unk38; // Used
-    f32 unk3C; // at 0x3C
-    s16 unk40; // Used
-    s16 unk42;
-    u8 unk44; // Used
-    u8 unk45;
-    u16 unk46; // Used
-} EnemyInfo;
-
 typedef struct ledge_info_8c LedgeInfo8C;
 
 struct ledge_info_8c {
@@ -396,6 +365,14 @@ typedef struct {
     s8 unk12;
     s8 unk13;
 } Actor114;
+
+typedef struct {
+    s32 unk0; // TODO: Proper members
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10;
+} Actor118;
 
 typedef struct {
     s16 unk0;
@@ -1196,7 +1173,7 @@ struct actor {
     u8 unk112;
     u8 unk113;
     Actor114 *unk114;
-    u32 unk118;
+    Actor118 *unk118;
     Actor *unk11C;
     f32 unk120;
     Actor124 *unk124;
@@ -1267,6 +1244,37 @@ struct actor {
         Actor17C *unk17C;
     };
 };
+
+typedef struct enemy_info {
+    u8 enemy_type; // at 0x00
+    u8 unk1;
+    u16 y_rotation; // at 0x02
+    s16 x_position; // at 0x04
+    s16 y_position; // at 0x06
+    s16 z_position; // at 0x08
+    u8 cutscene_model_index; // at 0x0A
+    u8 unkB;
+    u32 unkC;
+    u32 unk10;
+    u32 unk14;
+    Actor *unk18; // TODO: Is this accurate?
+    u32 unk1C;
+    Struct80027840 *unk20;
+    u16 unk24;
+    u16 unk26;
+    u16 unk28; // Used
+    s16 unk2A; // Used
+    u32 unk2C;
+    f32 unk30; // Used
+    f32 unk34; // Used
+    f32 unk38; // Used
+    f32 unk3C; // at 0x3C
+    s16 unk40; // Used
+    s16 unk42;
+    u8 unk44; // Used
+    u8 unk45;
+    u16 unk46; // Used
+} EnemyInfo;
 
 typedef struct {
     u8 unk0;

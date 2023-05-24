@@ -1369,105 +1369,37 @@ s16 func_8067AF74(Actor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067B01C.s")
 
 /*
-// TODO: WIP, seems to be removing gaps in the actor list?
-// Original output is below this implementation
+// TODO: Close
 void func_8067B01C(void) {
     Actor *temp_a1;
     s32 temp_a0_2;
     s32 temp_a3;
-    s32 phi_v1;
-    u32 phi_t0;
-    s32 phi_a3;
-    s32 phi_a3_2;
+    s16 i;
+    s16 newSlot;
+    Actor *phi_a3_2;
     s32 phi_v0;
 
+    // TODO: Problem is somewhere in this loop (probably the inner loop)
     phi_v0 = FALSE;
-    phi_v1 = 1;
-
-    if (actor_count >= 2) {
-        do {
-            temp_a1 = actor_list[phi_v1];
-            phi_a3 = phi_v1;
-            if ((s32)actor_list[phi_v1] < (s32)actor_list[phi_v1 - 1]) {
-                phi_t0 = actor_list[phi_v1 - 1];
-                do {
-                    phi_t0 = actor_list[phi_a3 - 1];
-                    phi_a3--;
-                } while ((s32)actor_list[phi_a3] < (s32)actor_list[phi_a3 - 1]);
-            }
-            actor_list[phi_a3] = actor_list[phi_v1];
-            phi_v1++;
-        } while (phi_v1 < actor_count);
+    for (i = 1; i < actor_count; i++) {
+        temp_a1 = actor_list[i];
+        newSlot = i;
+        phi_a3_2 = actor_list[newSlot - 1];
+        while (actor_list[newSlot] < phi_a3_2) {
+            phi_a3_2 = actor_list[newSlot - 1];
+            newSlot--;
+        }
+        actor_list[newSlot] = temp_a1;
     }
 
-    // This part looks fine :)
     actor_count = 0;
-    do {
+    while (!phi_v0) {
         if ((s32)actor_list[actor_count] == -1) {
             phi_v0 = TRUE;
         } else {
             actor_count++;
         }
-    } while (!phi_v0);
-}
-*/
-
-/*
-void func_8067B01C(void) {
-    Actor **temp_a2;
-    Actor **temp_a2_2;
-    Actor **temp_a2_3;
-    Actor *temp_a1;
-    s16 temp_a0;
-    s16 temp_a0_2;
-    s16 temp_a3;
-    s16 temp_v1;
-    u32 temp_t0;
-    s16 phi_v1;
-    u32 phi_t0;
-    Actor **phi_a2;
-    s16 phi_a3;
-    s16 phi_a3_2;
-    s32 phi_v0;
-
-    temp_a0 = actor_count;
-    phi_v1 = 1;
-    phi_v0 = 0;
-    if (temp_a0 >= 2) {
-        do {
-            temp_a2 = &actor_list[phi_v1];
-            temp_a1 = temp_a2->unk0;
-            phi_a3 = phi_v1;
-            phi_a3_2 = phi_v1;
-            if (temp_a1 < temp_a2->unk-4) {
-                temp_a2_2 = &actor_list[phi_v1];
-                phi_t0 = temp_a2_2->unk-4;
-                phi_a2 = temp_a2_2;
-                do {
-                    temp_a3 = phi_a3 - 1;
-                    *phi_a2 = phi_t0;
-                    temp_a2_3 = &actor_list[temp_a3];
-                    temp_t0 = temp_a2_3->unk-4;
-                    phi_t0 = temp_t0;
-                    phi_a2 = temp_a2_3;
-                    phi_a3 = temp_a3;
-                    phi_a3_2 = temp_a3;
-                } while (temp_a1 < temp_t0);
-            }
-            temp_v1 = phi_v1 + 1;
-            actor_list[phi_a3_2] = temp_a1;
-            phi_v1 = temp_v1;
-        } while (temp_v1 < temp_a0);
     }
-    actor_count = 0;
-    do {
-        temp_a0_2 = actor_count;
-        if (actor_list[temp_a0_2] == -1) {
-            phi_v0 = 1;
-        } else {
-            actor_count = temp_a0_2 + 1;
-        }
-    } while (phi_v0 == 0);
 }
 */
 

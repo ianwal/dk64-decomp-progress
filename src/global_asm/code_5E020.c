@@ -121,5 +121,5 @@ void func_806595B0(void) {
         while (var_v0 != NULL) {
             var_v0 = var_v0->unk8;
         }
-    };
+    }
 }

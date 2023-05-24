@@ -71,8 +71,6 @@ void func_80029450(void) {
 }
 */
 
-
-
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_800294EC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029640.s")

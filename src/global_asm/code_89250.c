@@ -383,15 +383,43 @@ void func_8068588C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5
     func_806858E8(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 }
 
-// Returns struct from function call in a weird way... Doable once we figure out which struct is returned.
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_806858E8.s")
+extern s32 D_80718080; // TODO: Datatype
 
-// Surprisingly doable, just a huge function call that will be interesting to decipher
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80685984.s")
+typedef struct {
+    u8 unk0[0x338 - 0x0];
+    Actor *unk338;
+} Struct806858E8;
+
+void func_806858E8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
+    if (arg0 != NULL) {
+        if (arg1 != 0) {
+            func_80671C0C(arg0, arg1, &arg3, &arg4, &arg5);
+        }
+    }
+    func_8071498C(&D_80718080);
+    func_80714950(arg6);
+    ((Struct806858E8*)func_80714CC0(&D_8071FFA0, arg2, arg3, arg4 + 5.0f, arg5))->unk338 = arg0;
+}
+
+extern s32 D_80719EF4; // TODO: Datatype
+extern s32 D_8071FFA0; // TODO: Datatype
+
+void func_80685984(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    s32 pad;
+
+    if (((rand() >> 0xF) % 100) >= 0x33) {
+        func_80714998(2);
+        func_80714950((rand() >> 0xF) % 360);
+        func_807149B8(1);
+        func_807149C8(0x9B, 0x9B, 0x9B, 0xC8);
+        func_8071498C(&D_80719EF4);
+        func_80714CC0(&D_8071FFA0, arg0, (((rand() >> 0xF) % 100000) % 10) + (arg1 - 5.0f), arg2, (((rand() >> 0xF) % 100000) % 10) + (arg3 - 5.0f));
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80685B44.s")
 
-extern s32 D_807180F4; // TODO: Datatype, just for pointer
+extern s32 D_807180F4; // TODO: Datatype
 
 /*
 // TODO: Pretty close
@@ -437,62 +465,39 @@ void func_80685D84(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80685F60.s")
 
-/*
-extern f32 D_80753A08[];
-extern f32 D_80753A18[];
+extern s16 D_80753A08[];
+extern s16 D_80753A18[];
 
-// TODO: Doable, just need to figure out what actor118 points to
+void func_80685E78(Actor*);
+
+/*
+// TODO: Close, something up with phi_v1
 void func_80685F60(Actor *actor) {
-    u8 sp1B;
-    Actor *temp_a1;
-    f32 temp_f0;
-    u32 temp_a0;
-    u32 temp_v0;
-    u8 temp_t9;
     f32 phi_f0;
     u8 phi_v1;
-    u8 phi_v1_2;
-    Actor *phi_a1;
-    u8 phi_v1_3;
 
-    temp_a1 = actor;
     phi_v1 = 0;
-    phi_a1 = temp_a1;
-    phi_v1_3 = 0;
-    if ((actor->unk0 != 0) && (actor->animation_state != 0)) {
+    if ((actor->unk0 != NULL) && (actor->animation_state != NULL)) {
         if (actor->interactable == 1) {
-            if (character_change_array[cc_player_index].unk2C0 == 1) { // TODO: This is marked f32 in the struct, which is correct?
-                phi_f0 = D_80753A08[actor->unk58 * 2];
+            if (character_change_array[cc_player_index].unk2C0 == 1) {
+                phi_f0 = D_80753A08[actor->unk58];
             } else {
-                phi_f0 = D_80753A18[actor->unk58 * 2];
+                phi_f0 = D_80753A18[actor->unk58];
             }
         } else {
-            phi_f0 = temp_a1->unk15E;
+            phi_f0 = actor->unk15E;
         }
-        if ((temp_a1->unkAC - phi_f0) <= temp_a1->y_position) {
-            temp_a0 = object_timer;
+        if ((actor->unkAC - phi_f0) <= actor->y_position) {
             if ((object_timer & 3) == 0) {
-                if (temp_a1->unkB8 != 0.0) {
-                    phi_v1_3 = 1;
-                }
-                temp_v0 = temp_a1->unk118;
-                phi_v1 = phi_v1_3 & 0xFF;
-                if ((temp_v0) && (temp_v0->unk10 != 0)) {
-                    phi_v1 = 1;
-                }
+                phi_v1 = (actor->unkB8 != 0.0) || ((actor->unk118) && (actor->unk118->unk10 != 0)) ? 1 : 0;
             }
-            phi_v1_2 = phi_v1;
-            if (phi_v1 != 0) {
-                sp1B = phi_v1;
-                actor = temp_a1;
-                func_80714950(1, temp_a1);
-                phi_v1_2 = phi_v1;
-                phi_a1 = actor;
-            } else if ((temp_a1->unkB8 == 0.0) && (((object_timer % 24) == 0) || (temp_a1->unkBC != 0.0))) {
-                phi_v1_2 = 1;
+            if (phi_v1) {
+                func_80714950(1);
+            } else {
+                phi_v1 = (actor->unkB8 == 0.0) && (((object_timer % 24U) == 0) || (actor->unkBC != 0.0)) ? 1 : 0;
             }
-            if (phi_v1_2 != 0) {
-                func_80685E78(phi_a1, phi_a1);
+            if (phi_v1) {
+                func_80685E78(actor);
             }
         }
     }
@@ -660,8 +665,6 @@ void func_806877C8(u8 arg0) {
     func_80714C08(&D_8072006C, 1.0f, current_actor_pointer, arg0, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068780C.s")
-
 void func_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
@@ -671,11 +674,7 @@ extern s32 D_80720B24;
 extern f64 D_80759BA0;
 extern f32 D_80759BA8;
 
-/*
-// TODO: Very close, our stack is too big
 void func_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
-    f32 dx;
-    f32 dz;
     f32 sp74;
     f32 sp70;
     f32 sp6C;
@@ -702,9 +701,7 @@ void func_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     if (sp5C < 270.0f) {
         sp5C += 180.0f;
     }
-    dx = sp58 - sp50;
-    dz = sp54 - sp4C;
-    sp48 = sqrtf((dx * dx) + (dz * dz));
+    sp48 = sqrtf(((sp58 - sp50) * (sp58 - sp50)) + ((sp54 - sp4C) * (sp54 - sp4C)));
     func_807149B8(1);
     func_807149FC(1);
     func_80714950(sp5C);
@@ -715,11 +712,12 @@ void func_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
         func_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 150.0f, 0, 0x96, 0x64, 0xFF);
     }
     if ((current_actor_pointer->unk58 == ACTOR_BOSS_ARMY_DILLO) && (((rand() >> 0xF) % 1000) >= 0x385)) {
+        s16 temp;
         func_806877C8(((((rand() >> 0xF) % 32767) % 10) + 0xD));
-        func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, ((rand() >> 0xF) % 1000) >= 0x1F5 ? 0x8A : 0xA1, 0xFF, 0x7F, 0x28, 0, D_80759BA8, 0);
+        temp = ((rand() >> 0xF) % 1000) >= 0x1F5 ? 0x8A : 0xA1;
+        func_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, temp, 0xFF, 0x7F, 0x28, 0, D_80759BA8, 0);
     }
 }
-*/
 
 void func_80687C48(void) {
     playSound(0xF2, 0x7FFF, 63.0f, 1.0f, 0, 0);

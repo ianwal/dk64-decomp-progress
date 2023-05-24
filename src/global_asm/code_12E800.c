@@ -571,28 +571,14 @@ void func_8072C870(u8 arg0, u8 arg1, s32 arg2) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072C918.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072CFE8.s")
-
-/*
 void func_8072CFE8(s16 *arg0, s16 *arg1, s16 *arg2) {
-    s32 temp_v1;
-    u8 temp_v1_2;
-    s32 temp_1;
-
-    temp_v1 = D_807FDC90->unk25;
-    temp_v1 &= 0x7F;
-    temp_v1 += 1;
-    if (temp_v1 < D_807FDC9C->unk11) {
-        temp_v1 = (u8)temp_v1;
-    } else {
-        temp_v1 = (u8)0;
-    }
-    temp_v1_2 = D_807FDC98->unk20[temp_v1].unk0;
-    *arg0 = D_807FDCA0->unk14[temp_v1_2].unk0;
-    *arg1 = D_807FDCA0->unk14[temp_v1_2].unk2;
-    *arg2 = D_807FDCA0->unk14[temp_v1_2].unk4;
+    u8 temp_v1;
+    u8 temp = D_807FDC90->unk25 & 0x7F;
+    temp_v1 = D_807FDC98->unk20[((temp) + 1) < D_807FDC9C->unk11 ? (u8)((temp) + 1) : 0].unk0;
+    *arg0 = D_807FDCA0->unk14[temp_v1].unk0;
+    *arg1 = D_807FDCA0->unk14[temp_v1].unk2;
+    *arg2 = D_807FDCA0->unk14[temp_v1].unk4;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072D08C.s")
 

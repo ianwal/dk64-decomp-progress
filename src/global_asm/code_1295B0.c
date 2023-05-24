@@ -253,26 +253,18 @@ void func_807273A8(s16 arg0, u8 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_8072752C.s")
-
-/*
-// TODO: Everything matches apart from stack offset
 void func_8072752C(s16 arg0, s16 x1, s16 y1, s16 z1, s16 x2, s16 y2, s16 z2, s16 arg7, s16 arg8) {
     s16 sp46;
     f32 sp40;
-    s32 dx, dy, dz;
+    s32 pad[2];
 
-    dx = (x2 - x1) * (x2 - x1);
-    dy = (y2 - y1) * (y2 - y1);
-    dz = (z2 - z1) * (z2 - z1);
     sp46 = func_80665DE0(x2, z2, x1, z1);
-    sp40 = sqrtf(dx + dy + dz);
-    if (func_807271F4(arg0, x1, y1, z1, sp46, sqrtf(dx + dz) / (sp40 / arg7), arg8)) {
+    sp40 = sqrtf(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)) + ((z2 - z1) * (z2 - z1)));
+    if (func_807271F4(arg0, x1, y1, z1, sp46, sqrtf(((x2 - x1) * (x2 - x1)) + ((z2 - z1) * (z2 - z1))) / (sp40 / arg7), arg8)) {
         D_807FBB44->control_state = 0x17;
         D_807FBB44->control_state_progress = 0;
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80727678.s")
 
@@ -281,29 +273,25 @@ void func_8072752C(s16 arg0, s16 x1, s16 y1, s16 z1, s16 x2, s16 y2, s16 z2, s16
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80727958.s")
 
-// TODO: Regalloc v1 a3
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80727F20.s")
-
 extern u8 D_80755698[];
 
 u8 func_80652F24(s16, s16);
 
-/*
-// TODO: Regalloc v1 a3
 u8 func_80727F20(EnemyInfo *arg0, s32 arg1) {
-    f32 dz, dy, dx;
-
-    dz = character_change_array[0].look_at_eye_z - arg0->z_position;
-    dx = character_change_array[0].look_at_eye_x - arg0->x_position;
-    dy = character_change_array[0].look_at_eye_y - arg0->y_position;
-
-    return ((dz * dz) + ((dx * dx) + (dy * dy)) < arg1)
+    return (((character_change_array[0].look_at_eye_x - arg0->x_position) * (character_change_array[0].look_at_eye_x - arg0->x_position))
+        + ((character_change_array[0].look_at_eye_y - arg0->y_position) * (character_change_array[0].look_at_eye_y - arg0->y_position))
+        + ((character_change_array[0].look_at_eye_z - arg0->z_position) * (character_change_array[0].look_at_eye_z - arg0->z_position)) < arg1)
         && ((D_80755698[arg0->unk44] == 6) || (arg0->unk46 & 0x20) || func_80652F24(0, arg0->unk40));
 }
-*/
 
-// Very doable, dx,dy,dz and a large conditional check at the end that will need to be simplified
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80728004.s")
+u8 func_80728004(EnemyInfo *arg0, s32 arg1) {
+    return (arg1 > (((character_change_array[0].look_at_eye_x - arg0->unk18->x_position) * (character_change_array[0].look_at_eye_x - arg0->unk18->x_position))
+        + ((character_change_array[0].look_at_eye_y - arg0->unk18->y_position) * (character_change_array[0].look_at_eye_y - arg0->unk18->y_position))
+        + ((character_change_array[0].look_at_eye_z - arg0->unk18->z_position) * (character_change_array[0].look_at_eye_z - arg0->unk18->z_position))))
+        && ((arg0->unk18->interactable & 0x40)
+        || (arg0->unk46 & 0x20)
+        || func_80652F24(0, arg0->unk40));
+}
 
 // Very doable, dx,dy,dz and a large conditional check at the end that will need to be simplified
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807280C8.s")
