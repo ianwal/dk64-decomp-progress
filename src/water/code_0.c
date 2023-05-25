@@ -5,10 +5,13 @@
 extern u8 D_807444FC;
 
 typedef struct WaterStruct5 {
-    u8 pad0[0x1C - 0x0];
+    u8 pad0[0xA - 0x0];
+    s16 unkA;
+    u8 unkC[0x1C - 0xC];
     u8 unk1C;
     u8 pad1D[0x25 - 0x1D];
     u8 unk25;
+    u8 unk26[0x2C - 0x26];
 } WaterStruct5;
 
 typedef struct Critter {
@@ -36,7 +39,7 @@ typedef struct Critter {
     f32 unk48;
     f32 unk4C;
     u8 unk50[0x54-0x50];
-    void *unk54;
+    WaterStruct5 *unk54;
     WaterStruct5 *unk58;
     u8 unk5C[0x1E0-0x5C];
     u8 unk1E0;
@@ -47,14 +50,14 @@ typedef struct Critter {
     s32 unk1E8[2];
 } Critter;
 
-typedef struct WaterStruct2 {
-    u8 unk0;
+typedef struct CritterController {
+    u8 critter_count;
     u8 unk1;
     u8 unk2;
     u8 unk3;
     s32 unk4;
     Critter *critter;
-} WaterStruct2;
+} CritterController;
 
 typedef struct WaterStruct6 {
     s16 unk0;
@@ -69,7 +72,7 @@ typedef struct WaterStruct6 {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024000.s")
 
-void func_8002409C(WaterStruct2 *arg0) {
+void func_8002409C(CritterController *arg0) {
     Critter *phi_v0;
     s32 phi_v1;
 
@@ -82,7 +85,7 @@ void func_8002409C(WaterStruct2 *arg0) {
     }
 }
 
-void func_800240EC(WaterStruct2 *arg0) {
+void func_800240EC(CritterController *arg0) {
     Critter *critter;
     s16 phi_v1;
     s16 phi_a1;
@@ -91,7 +94,7 @@ void func_800240EC(WaterStruct2 *arg0) {
     critter = arg0->critter;
     phi_v1 = 0x7A;
     phi_a1 = 0x7B;
-    if (arg0->unk0 == 1) {
+    if (arg0->critter_count == 1) {
         phi_v1 = 0x80;
         phi_a1 = 0x81;
     }
@@ -292,14 +295,7 @@ s32 func_800257D4(s32);                             /* extern */
 s32 func_80025AD0(s32, s32);                        /* extern */
 extern s32 D_80029BA8;
 
-typedef struct {
-    u8 critter_count;
-    u8 unk1[3];
-    s32 unk4;
-    s32 unk8;
-} struct_master_critter_ctrlr;
-
-s32 func_80025D1C(s32 arg0, struct_master_critter_ctrlr *arg1) {
+s32 func_80025D1C(s32 arg0, CritterController *arg1) {
     s32 i;
     s32 var_s1;
 
@@ -313,7 +309,7 @@ s32 func_80025D1C(s32 arg0, struct_master_critter_ctrlr *arg1) {
     }
     for (i = 0; i < arg1->critter_count; i++) {
         arg0 = func_80025AD0(arg0, var_s1);
-        var_s1 += sizeof(struct_master_critter_ctrlr);
+        var_s1 += sizeof(CritterController);
     }
     return arg0;
 }
@@ -355,15 +351,7 @@ void func_80024000(Critter*, s32, f32);
 void func_800262C0(Critter*, s32);
 extern s32 D_80029BA8;
 
-typedef struct WaterStruct7 {
-    /* 0x00 */ s32 unk0;
-    /* 0x04 */ s32 unk4;
-    /* 0x08 */ s16 unk8;
-    /* 0x0A */ s16 unkA;
-    /* 0x0C */ char unk_0C[0x20];
-} WaterStruct7;
-
-extern WaterStruct7 *D_80029BA4;
+extern WaterStruct5 *D_80029BA4;
 
 typedef struct unkStruct_80029BA0 {
 /* 0x00 */ char unk_00[8];
@@ -388,7 +376,7 @@ void func_80026338(Critter *arg0, WaterStruct5 *arg1) {
             break;
     }
     if ((arg0->unk3C < phi_v0) && 
-        (((WaterStruct5*)arg0->unk58)->unk25)) {
+        (arg0->unk58->unk25)) {
           arg0->unk1E0 = 2;
           if (arg0->unk1E2 == 0) {
               arg0->unk54 = D_80029BA4;
@@ -444,13 +432,9 @@ s32 func_80026530(Critter *arg0, s32 arg1) {
 
 extern f64 D_8002A078;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80026904.s")
-
-// Doable, pretty close
-/*
-void func_80026904(Critter *arg0, WaterStruct2 *arg1) {
+void func_80026904(Critter *arg0, CritterController *arg1) {
     if (arg0->unk1E2 == 2) {
-        func_8002646C(arg1->critter, arg1);
+        func_8002646C(arg0, arg1->critter);
         return;
     }
     if (arg0->unk1E2 == 0) {
@@ -461,8 +445,11 @@ void func_80026904(Critter *arg0, WaterStruct2 *arg1) {
                 return;
             }
             if ((arg0->unk1E0 == 2) && (arg0->unk3C < D_80029BA4->unkA)) {
-                func_80025DB8(arg0->unk54, arg0, 0, ((func_80665DE0(arg0->unk8, arg0->unk10, D_807FBB48->x_position, D_807FBB48->z_position) + (func_806119A0() & 0x7FF)) - 0x400), 1);
+                s16 temp;
+                temp = func_80665DE0(arg0->x_pos, arg0->z_pos, D_807FBB48->x_position, D_807FBB48->z_position);
+                temp += (func_806119A0() & 0x7FF) - 0x400;
                 arg0->unk1E0 = 1;
+                func_80025DB8(arg0->unk54, arg0, 0, temp, 1);
             }
         } else if (D_80029BA4 == arg0->unk54) {
             arg0->unk54 = arg0->unk58;
@@ -471,9 +458,7 @@ void func_80026904(Critter *arg0, WaterStruct2 *arg1) {
         }
     }
 }
-*/
 
-// TODO: Collapse some structs into 1, ws4, ws5, ws2(?)
 s32 func_80026A5C(Critter *arg0, s32 arg1) {
     WaterStruct5 *temp_v0;
 
@@ -562,7 +547,7 @@ void func_80026FD0(s32 arg0) {
     D_80029BA0 = malloc(sizeof(unkStruct_80029BA0));
     func_80611690(D_80029BA0);
     func_80026E0C(arg0);
-    D_80029BA4 = malloc(sizeof(WaterStruct7));
+    D_80029BA4 = malloc(sizeof(WaterStruct5));
     func_80611690(D_80029BA4);
 }
 

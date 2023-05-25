@@ -30,7 +30,7 @@ us,.code,func_80029118,1476,no
 us,.code,func_80027DC0,864,no
 us,.code,func_80028DE8,256,no
 us,.code,func_80028120,1824,no
-us,.code,func_80026904,344,no
+us,.code,func_80026904,344,yes
 us,.code,func_80025AD0,588,no
 us,.code,func_8002427C,528,no
 us,.code,func_800245B8,572,yes
