@@ -534,18 +534,15 @@ s8 func_806C9830(s8 arg0, Actor *arg1) {
     return phi_a2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C9974.s")
-
 void func_80026E20(u8, s8);
 
 extern s32 D_807552EC;
 
-/*
-// TODO: Close, something going on with the stack
 s32 func_806C9974(u8 arg0, s8 arg1) {
-    s32 phi_v0;
+    CharacterChange *temp2 = &character_change_array[arg0];
+    PlayerProgress *temp = &D_807FC950[arg0];
 
-    character_change_array[arg0].unk2E2 |= 0x11;
+    temp2->unk2E2 |= 0x11;
     if ((cc_number_of_players >= 2) && (arg1 < 0) && (D_807552EC == 1)) {
         func_80026E20(arg0, arg1); // In the multiplayer overlay
     }
@@ -553,16 +550,15 @@ s32 func_806C9974(u8 arg0, s8 arg1) {
         func_8060E7EC(arg0, 0xFF, 5);
     }
     if (!(D_807FBB64 & 0x800)) {
-        D_807FC950[arg0].unk2FD += arg1;
+        temp->unk2FD += arg1;
     }
-    phi_v0 = FALSE;
-    if ((D_807FC950[arg0].unk2FD + D_807FC950[arg0].health) <= 0) {
-        character_change_array[arg0].unk2E2 |= 0xC0;
-        phi_v0 = TRUE;
+    if ((temp->health + temp->unk2FD) <= 0) {
+        temp2->unk2E2 |= 0xC0;
+        return TRUE;
+    } else {
+        return FALSE;
     }
-    return phi_v0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C9AE0.s")
 
@@ -575,12 +571,11 @@ void func_806C7B00(void);
 /*
 // TODO: Excruciatingly close
 // Something weird going on with a0 and s2
-// Stray branch, also
 void func_806C9AE0(void) {
     PlayerProgress *PP;
     s32 playerIndex;
     s32 kongIndex;
-
+    
     for (playerIndex = 0; playerIndex < 4; playerIndex++) {
         PP = &D_807FC950[playerIndex];
         bzero(PP, sizeof(PlayerProgress));
@@ -593,8 +588,10 @@ void func_806C9AE0(void) {
             for (kongIndex = 0; kongIndex < 6; kongIndex++) {
                 PP->character_progress[kongIndex].simian_slam = 1;
             }
+            PP->melons = 1;
+        } else {
+            PP->melons = 1;
         }
-        PP->melons = 1;
         func_80709464(playerIndex);
     }
     func_806C7B00();
