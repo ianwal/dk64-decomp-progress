@@ -31,7 +31,10 @@ typedef struct {
     s32 unk4;
     s32 unk8;
     s32 unkC;
-    s32 unk10;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
     s32 unk14;
     s32 unk18;
     s32 unk1C;
@@ -50,13 +53,18 @@ extern RaceStruct2 *D_8002FCF0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002E960.s")
 
-void *func_8002E9AC(u8 arg0, RaceStruct2 *arg1) {
-    arg1 = D_8002FCF0;
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002E9AC.s")
+
+/*
+// TODO: Regalloc a1 v1, if I make it an arg it causes func_8002F36C and func_8002F420 to not match
+void *func_8002E9AC(u8 arg0) {
+    RaceStruct2 *arg1 = D_8002FCF0;
     if ((arg1 == 0) || (arg0 >= arg1->unk8)) {
         return 0;
     }
     return &arg1->unkC[arg0];
 }
+*/
 
 // arg0 is checkpoint file pointer
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002E9F8.s")
@@ -215,7 +223,7 @@ u8 func_8002F280(Struct8002F280_arg0 *arg0) {
 }
 */
 
-void func_8002F04C(f32, f32, f32, f32, f32, f32, f32, f32);
+f32 func_8002F04C(f32, f32, f32, f32, f32, f32, f32, f32);
 typedef struct RaceStruct10 {
     s16 unk0;
     s16 unk2;
@@ -225,13 +233,13 @@ typedef struct RaceStruct10 {
     f32 unkC;
 } RaceStruct10;
 
-void func_8002F304(RaceStruct10 *arg0, f32 arg1, f32 arg2) {
+f32 func_8002F304(RaceStruct10 *arg0, f32 arg1, f32 arg2) {
     f32 temp_f0;
     f32 temp_f2;
 
     temp_f0 = arg0->unkC;
     temp_f2 = arg0->unk8;
-    func_8002F04C(  arg0->unk0, 
+    return func_8002F04C(arg0->unk0, 
                     arg0->unk4, 
                     -temp_f0, 
                     temp_f2, 
@@ -241,13 +249,10 @@ void func_8002F304(RaceStruct10 *arg0, f32 arg1, f32 arg2) {
                     temp_f0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F36C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F420.s")
-
 // TODO: Is this the same as RaceStruct6?
 typedef struct RaceStruct13 {
-    s32 unk0;
+    u16 unk0;
+    u16 unk2;
     u16 *unk4;
     u16 unk8;
     u16 unkA;
@@ -267,20 +272,31 @@ typedef struct RaceStruct13 {
     u16 unk3C;
 } RaceStruct13;
 
-void func_8002F36C(s32, s32);
+void func_8002DCF0(void*, s32);
+void func_8002F36C(RaceStruct13*, RaceStruct13*);
 
-/*
-// TODO: Regalloc, boo
-void func_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
+void func_8002F36C(RaceStruct13 *arg0, RaceStruct13 *arg1) {
+    RaceStruct2_unkC *temp_v0;
+    s32 temp;
+
     if (arg1->unk8) {
-        if (arg0->unk3C == arg0->unk3A) {
-            u8 temp2 = arg1->unk4[arg0->unk3C] & 0xFF;
-            func_8002DCF0(func_8002E9AC(temp2, arg1), 0);
-            func_8002F36C(arg0, arg1);
-        }
+        do {
+            arg0->unk3C++;
+            arg0->unk3C = arg0->unk3C % arg1->unk0;
+            temp = arg1->unk4[arg0->unk3C];
+            temp_v0 = func_8002E9AC(temp & 0xFF);
+        } while (!temp_v0->unk10);
+        func_8002DCF0(temp_v0, 1);
     }
 }
-*/
+
+void func_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
+    if (arg1->unk8 && arg0->unk3C == arg0->unk3A) {
+        s32 temp = arg1->unk4[arg0->unk3C];
+        func_8002DCF0(func_8002E9AC(temp & 0xFF), 0);
+        func_8002F36C(arg0, arg1);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F490.s")
 
