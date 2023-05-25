@@ -21,7 +21,7 @@ us,.code,func_80028840,104,yes
 us,.code,func_80026410,92,yes
 us,.code,func_80026B78,292,no
 us,.code,func_800296DC,276,no
-us,.code,func_80026E0C,452,no
+us,.code,func_80026E0C,452,yes
 us,.code,func_80026C9C,368,no
 us,.code,func_80028EE8,356,no
 us,.code,func_80026298,40,yes

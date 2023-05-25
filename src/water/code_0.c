@@ -5,7 +5,10 @@
 extern u8 D_807444FC;
 
 typedef struct WaterStruct5 {
-    u8 pad0[0xA - 0x0];
+    s16 x_position; // 0x00
+    s16 y_position; // 0x02
+    s16 z_position; // 0x04
+    u8 unk6[0xA - 0x6];
     s16 unkA;
     u8 unkC[0x1C - 0xC];
     u8 unk1C;
@@ -291,8 +294,8 @@ Gfx *func_800257D4(Gfx *arg0) {
 // Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025AD0.s")
 
-s32 func_800257D4(s32);                             /* extern */
-s32 func_80025AD0(s32, s32);                        /* extern */
+s32 func_800257D4(s32);
+s32 func_80025AD0(s32, s32);
 extern s32 D_80029BA8;
 
 s32 func_80025D1C(s32 arg0, CritterController *arg1) {
@@ -353,17 +356,22 @@ extern s32 D_80029BA8;
 
 extern WaterStruct5 *D_80029BA4;
 
+// CritterController again?
 typedef struct unkStruct_80029BA0 {
-/* 0x00 */ char unk_00[8];
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
 } unkStruct_80029BA0;
 
 extern unkStruct_80029BA0* D_80029BA0;
 
-// TODO: arg1 might be a different type
-void func_80026338(Critter *arg0, WaterStruct5 *arg1) {
+void func_80026338(Critter *arg0, CritterController *arg1) {
     s32 phi_v0;
 
-    switch (arg1->pad0[0]) {
+    switch (arg1->critter_count) {
         case 3:
             phi_v0 = 6400;
             break;
@@ -375,16 +383,15 @@ void func_80026338(Critter *arg0, WaterStruct5 *arg1) {
             phi_v0 = 6400;
             break;
     }
-    if ((arg0->unk3C < phi_v0) && 
-        (arg0->unk58->unk25)) {
-          arg0->unk1E0 = 2;
-          if (arg0->unk1E2 == 0) {
-              arg0->unk54 = D_80029BA4;
-          } else {
-              func_800262C0(arg0, arg1);
-          }
-          func_80025F3C(arg0->unk54, arg0, 1, 1);
-          func_80024000(arg0, arg1, arg0->unk38);
+    if ((arg0->unk3C < phi_v0) && (arg0->unk58->unk25)) {
+        arg0->unk1E0 = 2;
+        if (arg0->unk1E2 == 0) {
+            arg0->unk54 = D_80029BA4;
+        } else {
+            func_800262C0(arg0, arg1);
+        }
+        func_80025F3C(arg0->unk54, arg0, 1, 1);
+        func_80024000(arg0, arg1, arg0->unk38);
     }
 }
 
@@ -537,14 +544,71 @@ void func_80026C9C(void *arg0) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80026E0C.s")
+extern s32 D_807F6C28;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    u8 unk6[0x24 - 0x6];
+    u8 unk24;
+    u8 unk25;
+    u8 unk26;
+    u8 unk27;
+    s16 unk28;
+    s16 unk2A;
+} Struct80026E0C;
 
 void func_80026E0C(s32);
 void func_80611690(void*);
 
+s16 func_806531B8(f32, f32, f32, s16);
+
+void func_80026E0C(s32 arg0) {
+    s32 j;
+    unkStruct_80029BA0 *var_s2;
+    Struct80026E0C *var_s0;
+    s32 i;
+    s32 var_s3;
+
+    if (arg0 != 0) {
+        func_80003000(D_80029BA0, arg0, 1);
+        var_s3 = arg0 + 1;
+        for (i = 0; i < D_80029BA0->unk0; i++) {
+            j = 0;
+            if (i == 0) {
+                D_80029BA0->unk4 = malloc(D_80029BA0->unk0 * 0xC);
+                func_80611690(D_80029BA0->unk4);
+                var_s2 = D_80029BA0->unk4;
+            } else {
+                var_s2++;
+            }
+            func_80003000(var_s2, var_s3, 3);
+            var_s3 += 3;
+            while (j < var_s2->unk1) {
+                if (j == 0) {
+                    var_s2->unk4 = malloc(var_s2->unk1 * sizeof(Struct80026E0C));
+                    func_80611690(var_s2->unk4);
+                    var_s0 = var_s2->unk4;
+                } else {
+                    var_s0++;
+                }
+                func_80003000(var_s0, var_s3, 0x20);
+                if (D_807F6C28 != 0) {
+                    var_s0->unk28 = func_806531B8(var_s0->unk0, var_s0->unk2, var_s0->unk4, 0);
+                    var_s0->unk24 = 0xFF;
+                }
+                j += 1;
+                var_s3 += 0x20;
+            }
+            func_80027118(var_s2);
+        }
+    }
+}
+
 void func_80026FD0(s32 arg0) {
     D_80029BA8 = 0;
-    D_80029BA0 = malloc(sizeof(unkStruct_80029BA0));
+    D_80029BA0 = malloc(8); // TODO: Something up here...
     func_80611690(D_80029BA0);
     func_80026E0C(arg0);
     D_80029BA4 = malloc(sizeof(WaterStruct5));
