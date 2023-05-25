@@ -60,7 +60,7 @@ extern RaceStruct2 *D_8002FCF0;
 void *func_8002E9AC(u8 arg0) {
     RaceStruct2 *arg1 = D_8002FCF0;
     if ((arg1 == 0) || (arg0 >= arg1->unk8)) {
-        return 0;
+        return NULL;
     }
     return &arg1->unkC[arg0];
 }
@@ -120,8 +120,6 @@ void func_8002ED04(f32 arg0, s32 arg1, u8 arg2) {
     sp1C->unk0 = arg1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002EDD4.s")
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -145,15 +143,12 @@ void func_80008810(f32*, f32, f32, f32, f32*, f32*, f32*);
 void func_80005D80(f32*, f32, f32, f32);
 void func_800088B0(void*, void*, void*);
 
-/*
-// TODO: Very close, it's using too many s registers
 void func_8002EDD4(Struct8002EDD4_arg0 *arg0) {
-    f32 spD0[16];
-    f32 sp90[16];
-    s32 temp[5];
+    f32 spD0[4][4];
+    f32 sp90[4][4];
     f32 var_f22;
+    s32 temp[5];
     u8 i;
-
     if (arg0->unk10 != 0) {
         if (arg0->unk18 == 2) {
             var_f22 = arg0->unk1A * 0.5f;
@@ -161,7 +156,7 @@ void func_8002EDD4(Struct8002EDD4_arg0 *arg0) {
                 func_8002ED04(arg0->unk14, arg0->unk10, i ^ 1);
                 arg0->unk1C[i] = D_807FBB44;
                 D_807FBB44->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
-                if (i != 0) {
+                if (i) {
                     var_f22 *= -1.0f;
                 }
                 func_80008620(&spD0, D_807FBB44->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
@@ -169,17 +164,16 @@ void func_8002EDD4(Struct8002EDD4_arg0 *arg0) {
                 func_800088B0(&spD0, &sp90, &spD0);
                 func_80008810(&spD0, var_f22, 0.0f, 0.0f, &D_807FBB44->x_position, &D_807FBB44->y_position, &D_807FBB44->z_position);
             }
-            return;
+        } else {
+            func_8002ED04(arg0->unk14, arg0->unk10, (arg0->unk18 == 1));
+            arg0->unk1C[0] = D_807FBB44;
+            D_807FBB44->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
+            D_807FBB44->x_position = arg0->unk0;
+            D_807FBB44->y_position = arg0->unk2;
+            D_807FBB44->z_position = arg0->unk4;
         }
-        func_8002ED04(arg0->unk14, arg0->unk10, (arg0->unk18 == 1));
-        arg0->unk1C[0] = D_807FBB44;
-        D_807FBB44->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
-        D_807FBB44->x_position = arg0->unk0;
-        D_807FBB44->y_position = arg0->unk2;
-        D_807FBB44->z_position = arg0->unk4;
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F04C.s")
 
