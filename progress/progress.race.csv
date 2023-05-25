@@ -1,6 +1,6 @@
 version,section,function,length,matching
 us,.code,func_800274C0,488,yes
-us,.code,func_8002D2C0,120,no
+us,.code,func_8002D2C0,120,yes
 us,.code,func_8002DD70,48,yes
 us,.code,func_80027AF8,56,yes
 us,.code,func_8002CAC8,292,no
@@ -22,7 +22,7 @@ us,.code,func_80024690,4320,no
 us,.code,func_8002A7F8,1652,no
 us,.code,castleCarRaceSetup,76,yes
 us,.code,func_80027BD0,144,no
-us,.code,func_8002DC24,204,no
+us,.code,func_8002DC24,204,yes
 us,.code,func_8002D72C,40,yes
 us,.code,func_80026F04,1468,no
 us,.code,func_80029F88,248,no
@@ -76,7 +76,7 @@ us,.code,func_8002B610,184,no
 us,.code,func_8002C63C,304,no
 us,.code,func_80026050,72,yes
 us,.code,func_800261E0,372,yes
-us,.code,func_8002DCF0,128,no
+us,.code,func_8002DCF0,128,yes
 us,.code,func_80027880,160,no
 us,.code,func_80025770,28,yes
 us,.code,func_8002F950,448,no

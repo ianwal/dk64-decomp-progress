@@ -529,8 +529,8 @@ typedef struct another_additional_actor_data {
 } AnotherAdditionalActorData;
 
 typedef struct race_additional_actor_data {
-    s16  unk0;
-    s16  unk2; // used
+    s16 unk0;
+    s16 unk2; // used
     f32 unk4;
     s16 unk8;
     s16 unkA;

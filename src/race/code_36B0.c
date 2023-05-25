@@ -396,8 +396,6 @@ block_4:
 // RaaD->unk20 struct array use
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002D224.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002D2C0.s")
-
 extern f32 D_800300E8;
 
 typedef struct RaceStruct12 {
@@ -407,15 +405,14 @@ typedef struct RaceStruct12 {
     u8 unk28;
 } RaceStruct12;
 
-/*
 f32 func_8002D2C0(RaceStruct12 *arg0) {
     if ((arg0->unk26 >= 0xB) && (arg0->unk26 < 0xF) && 
         (D_807FD610[arg0->unk28].unk2A & 0x2000)) {
-            return (arg0->unk26 - 0xA) * D_800300E8;
+            f32 temp = (arg0->unk26 - 0xA);
+            return temp * D_800300E8;
     }
     return 0.0f;
 }
-*/
 
 void func_8002D338(Actor *arg0, RaceStruct0 *arg1) {
     Actor *temp = arg1->unkC;
@@ -511,18 +508,21 @@ void func_8002DB90(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002DC24.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    f32 unk4;
+} AAD_8002DC24;
 
-/*
-// TODO: Pretty close, datatype issue for RaaD->unk0 though
-// Case 2 function call and default function call may be swapped
 void func_8002DC24(void) {
-    RaceAdditionalActorData *RaaD = current_actor_pointer->RaaD;
+    AAD_8002DC24 *RaaD = current_actor_pointer->RaaD;
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         RaaD->unk4 = current_actor_pointer->animation_state->scale_y;
     }
     switch (RaaD->unk0) {
-        default:
+        case 2:
             func_8002DB90();
             break;
         case 1:
@@ -532,15 +532,12 @@ void func_8002DC24(void) {
             current_actor_pointer->unk6A |= 4;
             current_actor_pointer->unk6C |= 4;
             break;
-        case 2:
-            func_8002DA68();
+        default:
+            func_8002DA68(RaaD);
             break;
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
-
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002DCF0.s")
 
 typedef struct RaceStruct14 {
     s32 unk0;
@@ -550,7 +547,7 @@ typedef struct RaceStruct14 {
     s32 unk10;
     s32 unk14;
     s32 unk18;
-    Actor *unk1C; // Used
+    Actor *unk1C[2]; // Used
 } RaceStruct14;
 
 // TODO: Any overlap with existing PaaD/RaaD?
@@ -562,38 +559,31 @@ typedef struct RaceAdditionalActorData3 {
 
 void func_8002DCF0(RaceStruct14 *arg0, s32 arg1);
 
-/*
-// TODO: Doable, pretty close
 void func_8002DCF0(RaceStruct14 *arg0, s32 arg1) {
-    s32 temp_t1;
-    s32 var_v0;
-    RaceAdditionalActorData3 *temp_a1;
+    u8 i;
+    RaceAdditionalActorData3 *RaaD;
     Actor *temp_v1;
 
-    var_v0 = 0;
-    do {
-        temp_v1 = arg0[var_v0].unk1C;
-        temp_t1 = (var_v0 + 1);
+    for (i = 0; i < 2; i++) {
+        temp_v1 = arg0->unk1C[i];
         if (temp_v1 != NULL) {
-            temp_a1 = temp_v1->RaaD;
+            RaaD = temp_v1->RaaD;
             if (arg1 == 1) {
-                if (temp_a1->unk8 == 0) {
+                if (RaaD->unk8 == 0) {
                     temp_v1->control_state = arg1;
                 }
-                temp_a1->unk8++;
+                RaaD->unk8++;
             } else {
-                if (temp_a1->unk8 != 0) {
-                    temp_a1->unk8--;
+                if (RaaD->unk8) {
+                    RaaD->unk8--;
                 }
-                if (temp_a1->unk8 == 0) {
+                if (RaaD->unk8 == 0) {
                     temp_v1->control_state = arg1;
                 }
             }
         }
-        var_v0 = temp_t1;
-    } while (temp_t1 < 2);
+    }
 }
-*/
 
 f32 func_8002DD70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return ((arg4 - arg2) * ((arg0 - arg1) / (arg3 - arg1))) + arg2;

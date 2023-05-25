@@ -49,8 +49,8 @@ us,.code,func_80026FD0,100,yes
 us,.code,func_800257D4,220,no
 us,.code,func_80027448,2424,no
 us,.code,func_8002448C,140,yes
-us,.code,func_800258B0,396,no
 us,.code,func_80027034,88,yes
+us,.code,func_800258B0,396,yes
 us,.code,func_8002708C,140,yes
 us,.code,func_800240EC,104,yes
 us,.code,func_8002409C,80,yes

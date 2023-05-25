@@ -1,9 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-extern u8 D_807444FC;
-
 typedef struct WaterStruct5 {
     s16 x_position; // 0x00
     s16 y_position; // 0x02
@@ -87,6 +84,32 @@ typedef struct WaterStruct6 {
     f32 unk20;
 } WaterStruct6;
 
+typedef struct {
+    u8 pad0[0x2C];
+} WaterStruct0;
+
+typedef struct {
+    u8 pad0[0x4];
+    WaterStruct0 *unk4;
+} WaterStruct1;
+
+void func_80024000(Critter*, s32, f32);
+void func_800262C0(Critter*, CritterController*);
+
+// CritterController again?
+typedef struct unkStruct_80029BA0 {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+} unkStruct_80029BA0;
+
+extern s32 D_80029BA8;
+extern u8 D_807444FC;
+extern unkStruct_80029BA0* D_80029BA0;
+
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024000.s")
 
@@ -128,6 +151,58 @@ void func_800240EC(CritterController *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024154.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002427C.s")
+
+extern f64 D_80029FE0;
+extern f64 D_80029FE8;
+
+extern f32 *D_80029F74;
+
+/*
+// Hmm, might need rodata?
+void func_8002427C(CritterController *arg0) {
+    f32 sp68[4][4];
+    Critter *var_s0;
+    f64 temp_f22;
+    f64 temp_f24;
+    s32 i;
+    u8 var_s2;
+
+    var_s0 = arg0->critter;
+    sp68[0][0] = D_80029F74[0];
+    sp68[0][1] = D_80029F74[1];
+    var_s2 = 0;
+    temp_f24 = D_80029FE0;
+    temp_f22 = D_80029FE8;
+    for (i = 0; i < arg0->unk2; i++) {
+            if (var_s2 == 0) {
+                if (!((arg0->unk2 * temp_f22) < i)) {
+                    goto block_6;
+                }
+                goto block_14;
+            }
+block_6:
+            if (var_s2 == 1) {
+                if (!(( arg0->unk2 * 0.5) < i)) {
+                    goto block_10;
+                }
+                goto block_14;
+            }
+block_10:
+            if (var_s2 == 2) {
+                if ((arg0->unk2 * temp_f24) < i) {
+block_14:
+                    var_s2++;
+                }
+            }
+            var_s0->unk24 = 20.0f;
+            var_s0->unk1E1 |= 4;
+            var_s0->unk1E8[0] = 0;
+            var_s0->unk1E4[0] = (&sp68[0])[var_s2];
+            func_80024000(var_s0, arg0, var_s0->unk38 * 0.5);
+            var_s0++;
+    }
+}
+*/
 
 s32 func_8066B0F8(s32, s32, s32, s32);
 
@@ -302,7 +377,43 @@ Gfx *func_800257D4(Gfx *arg0) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800258B0.s")
+void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
+    s32 temp;
+    f32 sp40;
+    f32 sp3C;
+    s32 temp2;
+    f32 sp34;
+    f32 temp_f0;
+    f32 temp_f14;
+    f32 temp_f14_2;
+    f32 temp_f20;
+    f32 temp_f22;
+
+    temp_f20 = func_80612794(arg1);
+    temp_f22 = func_80612790(arg1);
+    sp40 = func_80612794(arg2);
+    sp34 = func_80612790(arg2);
+    sp3C = func_80612794(arg3);
+    temp_f0 = func_80612790(arg3);
+    arg0[0][0] = sp34 * temp_f0 * arg4;
+    arg0[0][1] = sp34 * sp3C * arg4;
+    arg0[0][2] = -sp40 * arg4;
+    arg0[0][3] = 0.0f;
+    temp_f14 = temp_f20 * sp40;
+    arg0[1][0] = ((temp_f14 * temp_f0) - (temp_f22 * sp3C)) * arg4;
+    arg0[1][1] = ((temp_f14 * sp3C) + (temp_f22 * temp_f0)) * arg4;
+    arg0[1][2] = temp_f20 * sp34 * arg4;
+    arg0[1][3] = 0.0f;
+    temp_f14_2 = temp_f22 * sp40;
+    arg0[2][0] = ((temp_f14_2 * temp_f0) + (temp_f20 * sp3C)) * arg4;
+    arg0[2][1] = ((temp_f14_2 * sp3C) - (temp_f20 * temp_f0)) * arg4;
+    arg0[2][2] = temp_f22 * sp34 * arg4;
+    arg0[2][3] = 0.0f;
+    arg0[3][0] = arg5;
+    arg0[3][1] = arg6;
+    arg0[3][2] = arg7;
+    arg0[3][3] = 1.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025A3C.s")
 
@@ -433,15 +544,6 @@ void func_8002601C(Critter *arg0) {
 }
 */
 
-typedef struct {
-    u8 pad0[0x2C];
-} WaterStruct0;
-
-typedef struct {
-    u8 pad0[0x4];
-    WaterStruct0 *unk4;
-} WaterStruct1;
-
 WaterStruct0 *func_80026298(WaterStruct1 *arg0, u8 arg1) {
     WaterStruct0 *temp_v1 = arg0->unk4;
     return &temp_v1[arg1];
@@ -457,22 +559,6 @@ void func_800262C0(Critter *arg0, CritterController *arg1) {
     arg0->unk50[0] = var_a1;
     arg0->unk54 = func_80026298(arg1, var_a1);
 }
-
-void func_80024000(Critter*, s32, f32);
-void func_800262C0(Critter*, CritterController*);
-extern s32 D_80029BA8;
-
-// CritterController again?
-typedef struct unkStruct_80029BA0 {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-    s32 unk8;
-} unkStruct_80029BA0;
-
-extern unkStruct_80029BA0* D_80029BA0;
 
 void func_80026338(Critter *arg0, CritterController *arg1) {
     s32 phi_v0;
