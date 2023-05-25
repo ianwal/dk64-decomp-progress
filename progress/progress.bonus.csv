@@ -13,7 +13,7 @@ us,.code,func_800240F0,104,yes
 us,.code,func_800256C4,72,yes
 us,.code,func_8002D2F0,1032,no
 us,.code,func_800277F8,1820,no
-us,.code,func_800284C0,392,no
+us,.code,func_800284C0,392,yes
 us,.code,func_80026CF0,1220,no
 us,.code,func_80028648,468,no
 us,.code,func_80025480,48,yes

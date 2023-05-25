@@ -375,8 +375,6 @@ void func_800277F8(void) {
 // TODO: Similar to above but for TTT
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80027F14.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_800284C0.s")
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -403,8 +401,6 @@ extern u8 D_807FBB85;
 
 void func_8072881C(s32, void*);
 
-/*
-// TODO: Extremely close
 void func_800284C0(void) {
     AAD_800284C0 *temp_a2;
     AAD_800284C0_unk0 *temp_a3;
@@ -419,15 +415,9 @@ void func_800284C0(void) {
     switch (current_actor_pointer->control_state) {
         case 0:
             if (D_807FBB85 != 0) {
-                var_a1 = temp_a2->unk8 ? 2 : 1;
-                if ((temp_a3->unk22 - var_a1) < 0) {
-                    temp_a3->unk22 = 0;
-                } else {
-                    temp_a3->unk22 -= temp_a2->unk8 ? 2 : 1;
-                }
+                temp_a3->unk22 = MAX(0, temp_a3->unk22 - (temp_a2->unk8 ? 2 : 1));
                 func_806FDAB8(temp_a3->unk25, 3.1415927f);
-                var_a1 = temp_a2->unk8 ? 0x212 : 0x210;
-                func_80614EBC(current_actor_pointer, var_a1);
+                func_80614EBC(current_actor_pointer, (temp_a2->unk8 ? 0x212 : 0x210));
                 current_actor_pointer->control_state = 1;
                 current_actor_pointer->control_state_progress = 0;
                 break;
@@ -444,7 +434,6 @@ void func_800284C0(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80028648.s")
 
