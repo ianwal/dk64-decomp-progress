@@ -555,7 +555,7 @@ void func_806C1E44(void) {
 */
 
 extern s32 D_8071FC40; // TODO: Proper datatype
-extern s32 D_80718BF4; // TODO: Proper datatype
+void func_80718BF4(void);
 
 extern s16 D_807F62B4;
 extern u8 D_807FBDC4;
@@ -595,7 +595,7 @@ void func_806C226C(void) {
             if (current_actor_pointer->unk6A & 4) {
                 func_8072A920(2, 0, D_807FDC90->unkA, D_807FDC90->unkC, D_807FDC90->unkE, 0x46, 30.0f, 100.0f, 0);
                 if (((rand() >> 0xF) % 1000) >= 0x3A3) {
-                    func_8071498C(&D_80718BF4);
+                    func_8071498C(&func_80718BF4);
                     func_807149B8(1);
                     func_807149FC(-1);
                     func_80714CC0(&D_8071FC40, 0.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);

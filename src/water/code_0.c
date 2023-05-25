@@ -181,120 +181,96 @@ extern u8 D_80770DC9;
 // Listed as "Bat Critter Behavior" in Ghidra
 void func_800245B8(Critter *arg0) {
     f32 temp_f2;
-    s32 temp_a0;
-    f32 sp3C;
     u32 rng_val;
-    s32 temp_a0_2;
-
-    if (rng_val);
+    f32 sp3C;
     
     if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1)) {
         rng_val = func_806119A0();
-        sp3C = (f32) ((f64) arg0->unk28 * D_80029FF0);
-        if ((s16) (rng_val % 255U) < 6) {
-            func_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, (s16) ((func_806119A0() & 3) + 0x1A9), (u8) 0xFF, (s16) 0x7F, (u8) 0x1E, (u8) 0x5A, D_80029FF8, (u8) 0);
+        sp3C = arg0->unk28 * D_80029FF0;
+        if ((s16)(rng_val % 255U) < 6) {
+            func_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_806119A0() & 3) + 0x1A9), 0xFF, 0x7F, 0x1E, 0x5A, D_80029FF8, 0);
         }
-        arg0->unk42 = (s16) (s32) ((f32) arg0->unk42 + (1200.0f * sp3C));
-        arg0->unk42 = (s16) (arg0->unk42 & 0xFFF);
+        arg0->unk42 = arg0->unk42 + (1200.0f * sp3C);
+        arg0->unk42 &= 0xFFF;
         if (arg0->unk44 >= 0x801) {
-            temp_a0 = arg0->unk42;
-            if (temp_a0 < 0x800) {
+            if (arg0->unk42 < 0x800) {
                 func_8060956C(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x5E, (D_80770DC9 * 0x64) + 0x73, 2.0f, 0x1E, 0x4B);
             }
         } else {
-            temp_a0_2 = arg0->unk42;
-            if (temp_a0_2 >= 0x801) {
+            if (arg0->unk42 >= 0x801) {
                 func_8060956C(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x5F, (D_80770DC9 * 0x64) + 0x73, 2.0f, 0x1E, 0x4B);
             }
         }
         temp_f2 = 1.0f - func_80612790(arg0->unk42);
-        arg0->unk48 = (f32) (60.0f * temp_f2);
-        arg0->unk14 = (f32) ((f64) (arg0->unk28 * temp_f2) * 0.5);
+        arg0->unk48 = 60.0f * temp_f2;
+        arg0->unk14 = (arg0->unk28 * temp_f2) * 0.5;
     }
     func_80024578(arg0);
 }
 
-
 // Display list stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800247F4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024B78.s")
-
 extern f64 D_8002A000;
 extern f64 D_8002A008;
+extern f64 D_8002A010;
 
-/*
-Regalloc
 void func_80024B78(Critter *arg0) {
     f32 temp_f0;
     f32 temp_f2;
 
     if (arg0->unk1E1 & 1) {
-        temp_f2 = (f32) ((f64) arg0->unk28 * D_8002A000);
-        arg0->unk42 = (s16) (s32) ((f64) arg0->unk42 + (D_8002A008 * (0.5 + (f64) (10.0f * temp_f2))));
-        arg0->unk42 = (s16) (arg0->unk42 & 0xFFF);
+        temp_f2 = (arg0->unk28 * D_8002A000);
+        arg0->unk42 = (arg0->unk42 + (D_8002A008 * (0.5 + (10.0f * temp_f2))));
+        arg0->unk42 &= 0xFFF;
         temp_f0 = func_80612794(arg0->unk42);
-        arg0->unk48 = (f32) ((((-15.0f * temp_f2) + 45.0f) * temp_f0) + (temp_f2 * 30.0f));
-        arg0->unk14 = (f32) ((f64) (arg0->unk28 * temp_f0) * *(f64 *)0x8002A010);
+        arg0->unk48 = ((((-15.0f * temp_f2) + 45.0f) * temp_f0) + (temp_f2 * 30.0f));
+        arg0->unk14 = ((arg0->unk28 * temp_f0) * D_8002A010);
     }
     func_80024578(arg0);
 }
-*/
 
 // Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024C88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024F28.s")
-
 extern f32 D_8002A018;
 extern f64 D_8002A020;
-void D_80718BF4(void);
-void D_8071FC40(void);
+void func_80718BF4(void);
+extern s32 D_8071FC40;
 
-/*
-Bunch of stack/regalloc issues
 void func_80024F28(Critter *arg0) {
-    f32 sp44;
-    s16 sp3E;
-    f32 temp_f2;
-    f32 temp_f0;
-    s16 var_v0;
     s16 temp_v1;
+    f32 temp_f2;
+    f32 sp44;
     f32 sp40;
+    s16 sp3E;
+    s32 temp;
 
     if (arg0->unk1E1 & 1) {
-        temp_f0 = arg0->unk30;
         temp_v1 = func_806119A0() % 400U;
-        if (temp_f0 < 0.0f) {
-            sp40 = 0.0f;
-        } else {
-            sp40 = temp_f0;
-        }
+        sp40 = MAX(0.0f, arg0->unk30);
         sp3E = func_806CC10C(arg0->unk0, arg0->unk4);
         if (temp_v1 <= 0) {
             func_807149B8(1U);
             func_80714950(1);
             func_807149FC(-1);
-            func_8071498C(&D_80718BF4);
+            func_8071498C(&func_80718BF4);
             func_80714CC0(&D_8071FC40, 0.0f, arg0->x_pos, arg0->y_pos, arg0->z_pos);
         }
-        var_v0 = -sp3E;
-        if (sp3E > 0) {
-            var_v0 = sp3E;
-        }
-        if (var_v0 >= 0x5B) {
+        temp = ABS(sp3E);
+        if (!(temp < 0x5B)) {
             func_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x16F, 0x46, 0xDC, 0x1E, 0x5A, D_8002A018, 0);
         }
-        arg0->unk42 = ((f64) arg0->unk42 + (200.0 * (1.5 + (f64) (150.0f * arg0->unk30))));
-        arg0->unk42 = arg0->unk42 & 0xFFF;
+        arg0->unk42 = (arg0->unk42 + (200.0 * (1.5 + (150.0f * arg0->unk30))));
+        arg0->unk42 &= 0xFFF;
         temp_f2 = func_80612794(arg0->unk42) * (10.0f + (200.0f * sp40));
-        sp44 = temp_f2 + (temp_f2 * ((f32) sp3E * 0.00024414062f));
-        arg0->unk4C = (func_80612794(arg0->unk42 + 0xC8) * 2.0f);
-        arg0->unk48 = ((f64) sp44 + ((f64) sp3E * D_8002A020));
+        temp_f2 += (temp_f2 * (sp3E * 0.00024414062f));
+        sp44 = temp_f2;
+        arg0->unk4C = (func_80612794(arg0->unk42 + 0xC8) * 2);
+        arg0->unk48 = (sp44 + (sp3E * D_8002A020));
     }
     func_80024578(arg0);
 }
-*/
 
 // Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002516C.s")
@@ -606,8 +582,8 @@ void func_80026C9C(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80026E0C.s")
 
-extern void func_80026E0C(s32);
-extern void func_80611690(void*);
+void func_80026E0C(s32);
+void func_80611690(void*);
 
 void func_80026FD0(s32 arg0) {
     D_80029BA8 = 0;

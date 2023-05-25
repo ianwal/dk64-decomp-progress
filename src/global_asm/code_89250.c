@@ -4,7 +4,6 @@
 
 extern s32 D_80717D4C;
 extern s32 D_80717930;
-extern s32 D_80718BF4;
 extern s32 D_807197B4;
 extern s32 D_8071827C;
 extern s32 D_80719B88;
@@ -182,9 +181,11 @@ void func_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80684D98.s")
 
+void func_80718BF4(void);
+
 void func_80685020(u8 arg0, u8 arg1) {
     if ((arg0 & object_timer) == 0) {
-        func_8071498C(&D_80718BF4);
+        func_8071498C(&func_80718BF4);
         func_807149B8(1);
         func_807149FC(-1);
         func_80714A28(4);

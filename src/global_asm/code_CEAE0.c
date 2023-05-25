@@ -1182,7 +1182,7 @@ void func_806CF4B8(Actor *arg0) {
 
 extern s32 D_8071FC40;
 extern u8 D_80750AD0;
-extern s32 D_80718BF4; // TODO: Datatype
+void func_80718BF4(void);
 
 void func_806CF580(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -1223,7 +1223,7 @@ void func_806CF580(void) {
         && (D_80750AD0 == 0)
         && ((extra_player_info_pointer->unkD0 + 9) < (u32)object_timer)
         && (((func_806119A0() % 2500) / 200) == 0)) {
-        func_8071498C(&D_80718BF4);
+        func_8071498C(&func_80718BF4);
         func_807149B8(1);
         func_807149FC(-1);
         func_80714C08(&D_8071FC40, 0.0f, current_actor_pointer, 4, 0);
