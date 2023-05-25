@@ -8,11 +8,19 @@ typedef struct WaterStruct5 {
     s16 x_position; // 0x00
     s16 y_position; // 0x02
     s16 z_position; // 0x04
-    u8 unk6[0xA - 0x6];
+    s16 unk6;
+    s16 unk8;
     s16 unkA;
-    u8 unkC[0x1C - 0xC];
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s32 unk14;
+    s32 unk18;
     u8 unk1C;
-    u8 pad1D[0x25 - 0x1D];
+    u8 pad1D[0x20 - 0x1D];
+    f32 unk20;
+    u8 unk24;
     u8 unk25;
     u8 unk26[0x2C - 0x26];
 } WaterStruct5;
@@ -67,9 +75,16 @@ typedef struct WaterStruct6 {
     s16 unk2;
     s16 unk4;
     s16 unk6;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
 } WaterStruct6;
 
 // Jumptable
@@ -317,15 +332,54 @@ s32 func_80025D1C(s32 arg0, CritterController *arg1) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025DB8.s")
+void func_80025DB8(WaterStruct6*, WaterStruct6*, u8, s16, u8);
 
-void func_80025DB8(WaterStruct6*, WaterStruct6*, s32, s16, s32);
+void func_80025DB8(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2, s16 arg3, u8 arg4) {
+    f32 sp2C;
+    s32 temp;
+    f32 var_f0;
+    f32 *var_v0;
+    f32 *var_v1;
+    f32 *var_a2;
+    f32 temp_f2;
+
+    var_f0 = arg0->unkC;
+    if (!(arg2)) {
+        sp2C = arg0->unk14;
+        var_f0 += arg0->unk10;
+    } else {
+        sp2C = (func_806119A0() & 0xFFF) * 0.00024414062f * arg0->unk8;
+    }
+    temp_f2 = ((func_806119A0(arg0, arg1) & 0xFFF) * 0.00024414062f * var_f0) - (0.5 * var_f0);
+    if (arg4 != 0) {
+        var_v0 = &arg1->unk18;
+        var_v1 = &arg1->unk1C;
+        var_a2 = &arg1->unk20;
+    } else {
+        var_v0 = &arg1->unk8;
+        var_v1 = &arg1->unkC;
+        var_a2 = &arg1->unk10;
+    }
+    *var_v1 = temp_f2;
+    *var_v0 = func_80612794(arg3) * sp2C;
+    *var_a2 = func_80612790(arg3) * sp2C;
+}
 
 void func_80025F3C(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2, u8 arg3) {
     func_80025DB8(arg0, arg1, arg2, func_806119A0() & 0xFFF, arg3);
 }
 
-void func_80025F8C(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2) {
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+} WaterStruct7;
+
+void func_80025F8C(WaterStruct7 *arg0, WaterStruct7 *arg1, u8 arg2) {
     func_80025F3C(arg0, arg1, arg2, 0);
     arg1->unk8 += arg0->unk0;
     arg1->unkC += arg0->unk2;
@@ -333,6 +387,51 @@ void func_80025F8C(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002601C.s")
+
+extern f32 D_8002A044;
+
+extern WaterStruct5 *D_80029BA4;
+
+/*
+// TODO: Kinda close, lots of float nonsense to sort out
+void func_8002601C(Critter *arg0) {
+    CharacterChange *temp_v1_2;
+    f32 temp_f12;
+    f32 temp_f2;
+    f32 var_f0;
+    s32 temp_t4;
+    s32 temp_v1;
+
+    temp_f2 = arg0->unk58->unk18 + 122500;
+    if (arg0->unk58->unk24 != D_807444FC) {
+        f32 x2, z2;
+        var_f0 = 0.0f;
+        x2 = arg0->unk58->x_position;
+        z2 = arg0->unk58->z_position;
+        temp_t4 = ((arg0->unk58->unkC + arg0->unk58->unk10) >> 1);
+        arg0->unk58->unk25 = (((D_80029BA4->y_position < (arg0->unk58->y_position + temp_t4)) && ((arg0->unk58->y_position - temp_t4) < D_80029BA4->y_position))
+            && (((x2 - D_807FBB48->x_position) * (x2 - D_807FBB48->x_position))
+            + ((z2 - D_807FBB48->z_position) * (z2 - D_807FBB48->z_position))) < arg0->unk58->unk18);
+        arg0->unk58->unk24 = D_807444FC;
+        temp_f12 = (((arg0->unk58->x_position - character_change_array[cc_player_index].look_at_eye_x) * (arg0->unk58->x_position - character_change_array[cc_player_index].look_at_eye_x))
+            + ((arg0->unk58->y_position - character_change_array[cc_player_index].look_at_eye_y) * (arg0->unk58->y_position - character_change_array[cc_player_index].look_at_eye_y))
+            + ((arg0->unk58->z_position - character_change_array[cc_player_index].look_at_eye_z) * (arg0->unk58->z_position - character_change_array[cc_player_index].look_at_eye_z)));
+        arg0->unk58->unk20 = temp_f12;
+        if (temp_f12 < temp_f2) {
+            var_f0 = (temp_f2 - temp_f12) * D_8002A044;
+            if (var_f0 > 1.0f) {
+                var_f0 = 1.0f;
+            }
+        }
+        arg0->unk58->unk26[0] = 255.0f * var_f0;
+    }
+    if (arg0->unk58->unk20 < temp_f2) {
+        arg0->unk1E1 |= 1;
+    } else {
+        arg0->unk1E1 &= ~1;
+    }
+}
+*/
 
 typedef struct {
     u8 pad0[0x2C];
@@ -348,13 +447,20 @@ WaterStruct0 *func_80026298(WaterStruct1 *arg0, u8 arg1) {
     return &temp_v1[arg1];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800262C0.s")
+void func_800262C0(Critter *arg0, CritterController *arg1) {
+    u8 var_a1;
+
+    var_a1 = (func_806119A0() % (arg1->unk1 - 1));
+    if (var_a1 >= arg0->unk50[0]) {
+        var_a1++;
+    }
+    arg0->unk50[0] = var_a1;
+    arg0->unk54 = func_80026298(arg1, var_a1);
+}
 
 void func_80024000(Critter*, s32, f32);
-void func_800262C0(Critter*, s32);
+void func_800262C0(Critter*, CritterController*);
 extern s32 D_80029BA8;
-
-extern WaterStruct5 *D_80029BA4;
 
 // CritterController again?
 typedef struct unkStruct_80029BA0 {
@@ -504,41 +610,50 @@ s32 func_80026A5C(Critter *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80026C9C.s")
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s16 unk14;
+    s16 unk16;
+} Struct80029BAC_inner;
+
+typedef struct {
+    Struct80029BAC_inner unk0[5];
+} Struct80029BAC;
+
+extern Struct80029BAC D_80029BAC[];
+
 /*
-void func_80026C9C(void *arg0) {
-    s32 temp_s1;
-    u8 temp_v1;
-    void *temp_t5;
-    void *temp_v0;
+// TODO: Pretty close
+void func_80026C9C(CritterController *arg0) {
+    WaterStruct5 *temp_t5;
+    Struct80029BAC_inner *temp_v0;
     u8 *phi_s0;
     u8 phi_v1;
-    s32 phi_s1;
+    s32 i;
 
-    if (arg0 != 0) {
-        D_80029BA4->unk0 = D_807FBB48->x_position;
-        D_80029BA4->unk4 = D_807FBB48->z_position;
+    if (arg0 != NULL) {
+        D_80029BA4->x_position = D_807FBB48->x_position;
+        D_80029BA4->z_position = D_807FBB48->z_position;
         phi_s0 = arg0->unk4;
-        phi_s1 = 0;
-        if (arg0->unk0 > 0) {
-            do {
-                temp_v1 = *phi_s0;
-                phi_v1 = temp_v1;
-                if (temp_v1 > 0) {
-                    phi_v1 = temp_v1 - 1;
-                }
-                temp_v0 = (phi_v1 * 0x18) + ((current_character_index * 0x78) + &D_80029BAC);
-                D_80029BA4->unk2 = D_807FBB48->y_position + temp_v0->unk14;
-                temp_t5 = D_80029BA4;
-                temp_t5->unk8 = temp_v0->unk0;
-                temp_t5->unkC = temp_v0->unk4;
-                temp_t5->unk10 = temp_v0->unk8;
-                temp_t5->unk14 = temp_v0->unkC;
-                temp_t5->unk18 = temp_v0->unk10;
-                func_80026B78(phi_s0);
-                temp_s1 = phi_s1 + 1;
-                phi_s0 += 0xC;
-                phi_s1 = temp_s1;
-            } while (temp_s1 < arg0->unk0);
+        for (i = 0; i < arg0->critter_count; i++) {
+            phi_v1 = *phi_s0;
+            if (phi_v1 > 0) {
+                phi_v1--;
+            }
+            temp_v0 = &D_80029BAC[current_character_index[0]].unk0[phi_v1];
+            D_80029BA4->y_position = D_807FBB48->y_position + temp_v0->unk14;
+            temp_t5 = D_80029BA4;
+            temp_t5->unk8 = temp_v0->unk0;
+            temp_t5->unkC = temp_v0->unk4;
+            temp_t5->unk10 = temp_v0->unk8;
+            temp_t5->unk14 = temp_v0->unkC;
+            temp_t5->unk18 = temp_v0->unk10;
+            func_80026B78(phi_s0);
+            phi_s0 += 0xC;
         }
     }
 }
@@ -625,7 +740,23 @@ s32 func_80027034(s32 arg0) {
     return arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002708C.s")
+void func_8002708C(CritterController *arg0) {
+    Critter *var_s0;
+    s32 i;
+    u8 temp_s2;
+
+    var_s0 = arg0->critter;
+    temp_s2 = arg0->unk2;
+    for (i = 0; i < temp_s2 && var_s0 != NULL; i++) {
+        func_80024518(var_s0);
+        var_s0++;
+    }
+    if (arg0->critter != NULL) {
+        func_8061134C(arg0->critter);
+    }
+    arg0->critter = NULL;
+    arg0->unk2 = 0;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80027118.s")
