@@ -69,7 +69,7 @@ us,.code,func_8002F284,1092,no
 us,.code,func_80028D3C,364,no
 us,.code,func_800252AC,2100,no
 us,.code,func_80030340,1364,no
-us,.code,func_80027738,208,no
+us,.code,func_80027738,208,yes
 us,.code,func_80031B08,1308,no
 us,.code,func_800275EC,16,yes
 us,.code,func_80029AAC,264,yes

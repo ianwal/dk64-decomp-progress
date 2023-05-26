@@ -2772,7 +2772,7 @@ us,.code,func_8069D930,292,no
 us,.code,func_80659544,48,yes
 us,.code,func_80723F88,460,no
 us,.code,func_806F13C8,100,yes
-us,.code,func_806C3A8C,1156,no
+us,.code,func_806C3A8C,1152,yes
 us,.code,func_8066B020,76,yes
 us,.code,func_806EE02C,64,yes
 us,.code,func_806ECCDC,248,yes

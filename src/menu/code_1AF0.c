@@ -463,27 +463,25 @@ s32 func_800275EC(s32 arg0) {
 // Perhaps a tamper protection mechanism
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_800275FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_80027738.s")
-
-/*
-// TODO: Pretty close, some minor issues with stack, args, regalloc?
 void func_80027738(void) {
-    PlayerProgress *var1;
+    Actor178 *temp;
+    CharacterProgress *var1;
     func_80729B00();
+
     if (current_map == MAP_FUNKYS_STORE) {
-        var1 = &D_807FC950[current_character_index[0]];
+        temp = current_actor_pointer->unk178;
+        var1 = &D_807FC950[0].character_progress[current_character_index[0]];
         if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-            func_800266F0(current_actor_pointer->unk178, var1, 0x176);
+            func_800266F0(temp, var1, 0x176);
         }
-        func_80027028(current_actor_pointer->unk178, var1, 0x176);
+        func_80027028(temp, var1, 0x176);
     }
-    if ((current_actor_pointer->object_properties_bitfield << 3) != 0) {
+    if ((current_actor_pointer->object_properties_bitfield & (0x80000000 >> 3))) {
         func_80729B00();
         func_806BFBF4();
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_80027808.s")
