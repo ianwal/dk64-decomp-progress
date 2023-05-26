@@ -74,7 +74,6 @@ void func_806BD170(void) {
     }
 }
 
-// Doable, big, interesting
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_806BD3E4.s")
 
 extern f32 D_807FC8D4;
@@ -93,25 +92,24 @@ typedef struct {
 // TODO: Close...
 void func_806BD3E4(void) {
     Actor178_806BD3E4 *sp34;
+    s32 sp30;
+    s32 sp2C;
     u8 sp2B;
+    u8 temp;
     u16 sp28;
-    s16 sp26;
-    f32 dx;
-    f32 dy;
-    s16 var_t0;
     s16 var_v1;
-    s8 temp_v0_2;
+    s16 var_t0;
 
     var_v1 = D_8076A0A6;
-    sp34 = (Actor178_806BD3E4*)current_actor_pointer->unk178;
+    sp34 = current_actor_pointer->unk178;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        if (areAllKeysTurnedIn() != 0) {
+        if (areAllKeysTurnedIn()) {
             current_actor_pointer->control_state = 0x40;
             return;
         }
         current_actor_pointer->draw_distance = 2000;
         current_actor_pointer->object_properties_bitfield |= 0x400;
-        sp26 = 0;
+        var_v1 = 0;
         D_807506B4 = 0;
         func_80677FA8(ACTOR_KLUMSY_CAGE, 0xC4);
         func_8067B238(D_807FBB44, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
@@ -125,25 +123,20 @@ void func_806BD3E4(void) {
         if (D_80750660 != 0) {
             D_80750660 = 0;
         }
-        var_v1 = sp26;
-        if (isFlagSet(0x1BB, 0) == 0) {
+        if (isFlagSet(0x1BB, FLAG_TYPE_PERMANENT) == 0) {
             current_actor_pointer->control_state = 1;
         }
     }
     var_t0 = -1;
-    if (var_v1 != 0) {
+    if (var_v1) {
         var_t0 = 0;
-        if (!(var_v1 & 1)) {
-            do {
-                var_v1 = var_v1 >> 1;
-                var_t0 += 1;
-            } while (!(var_v1 & 1));
+        while (!(var_v1 & 1)) {
+            var_v1 >>= 1;
+            var_t0++;
         }
     }
-    dx = current_actor_pointer->x_position - player_pointer->x_position;
-    dy = current_actor_pointer->z_position - player_pointer->z_position;
+    D_807FC8D4 = ((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position)) + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position));
     sp28 = 0;
-    D_807FC8D4 = (dx * dx) + (dy * dy);
     switch (current_actor_pointer->control_state) {
         case 1:
             func_80614EBC(current_actor_pointer, 0x2EF);
@@ -161,25 +154,22 @@ void func_806BD3E4(void) {
         case 3:
             if (current_actor_pointer->control_state_progress & 1) {
                 current_actor_pointer->control_state_progress++;
-                sp28 = 0x28;
-                sp2B = 0xF;
+                sp2B = 0xF;sp28 = 0x28;
             }
             break;
     }
     if ((func_8061CB50() == 0) && (current_actor_pointer->animation_state->unk64 != 0x2F0)) {
         func_80614EBC(current_actor_pointer, 0x2F0);
     }
-    if (sp28 != 0) {
+    if (sp28) {
         func_8061F0B0(D_807F5D10, sp2B, sp28);
     }
     if (var_t0 >= 0) {
-        temp_v0_2 = D_807506B4 + 1;
         if (var_t0 == D_807506A8[D_807506B4]) {
-            D_807506B4 = temp_v0_2;
-            if (D_807506A8[D_807506B4] == -1) {
+            if (D_807506A8[++D_807506B4] == -1) {
                 playSound(0x1DA, 0x7FFF, 63.0f, 1.0f, 5, 0);
-                setFlag(0x28, 1, 1);
-                setFlag(0x26, 1, 1);
+                setFlag(0x28, TRUE, FLAG_TYPE_GLOBAL);
+                setFlag(0x26, TRUE, FLAG_TYPE_GLOBAL);
                 D_807506B4 = -1;
             }
         } else {

@@ -66,14 +66,8 @@ typedef struct Struct807FD610 {
     f32 unk4; // Probably float
     f32 unk8; // Probably float
     f32 unkC; // Probably float
-    f32 unk10;
-    f32 unk14;
-    f32 unk18;
-    s32 unk1C;
-    s16 unk20;
-    s16 unk22;
-    s16 unk24;
-    s16 unk26;
+    f32 unk10[4];
+    s16 unk20[4];
     s16 unk28; // Used
     u16 unk2A; // Used, controller button bitfield
     u16 unk2C; // Used, controller button bitfield
@@ -182,9 +176,7 @@ extern GlobalASMStruct58 *D_807F93C0;
 // TODO: What are these actually?
 typedef struct Temp10Big {
     s32 unk0;
-    s16 unk4;
-    s8 unk6;
-    s8 unk7;
+    s32 unk4;
     s32 unk8;
     s32 unkC;
 } Temp10Big;

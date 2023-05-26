@@ -1056,7 +1056,13 @@ typedef struct {
     Actor *unk10;
 } GlobalASMStruct61;
 
-void func_806CEFBC(void); // TODO: Proper signature, just for function pointer
+typedef struct {
+    f32 unk0;
+    Actor *unk4;
+    Actor *unk8;
+} Struct806CEFBC;
+
+void func_806CEFBC(Struct806CEFBC*); // TODO: Proper signature, just for function pointer
 
 void func_806CEE64(f32 arg0) {
     GlobalASMStruct61 *temp_v0;
@@ -1100,6 +1106,30 @@ void func_806CEED8(void) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CEFBC.s")
+
+/*
+void func_806CEFBC(Struct806CEFBC *arg0) {
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    s32 sp34;
+    s32 sp30;
+    f32 temp_f10;
+    f32 temp_f6;
+    f32 temp_f8;
+
+    func_806CF2EC(&sp34, &sp30);
+    func_80671C0C(arg0->unk4, sp34, &sp60, &sp58, &sp50);
+    func_80671C0C(arg0->unk4, sp30, &sp64, &sp5C, &sp54);
+    temp_f10 = ((((sp64 + sp60) / 2.0f) - arg0->unk8->x_position) * arg0->unk0) + arg0->unk8->x_position;
+    temp_f6 = ((((sp5C + sp58) / 2.0f) - arg0->unk8->y_position) * arg0->unk0) + arg0->unk8->y_position;
+    temp_f8 = ((((sp54 + sp50) / 2.0f) - arg0->unk8->z_position) * arg0->unk0) + arg0->unk8->z_position;
+    func_8067A70C(arg0->unk4, arg0->unk8, temp_f10, temp_f6, temp_f8, 2, 1);
+}
+*/
 
 void func_806CF138(void); // TODO: Proper signature, just for function pointer
 
@@ -3277,7 +3307,9 @@ void func_806D5218(void) {
 }
 
 extern f32 D_8075352C[];
-
+extern f64 D_8075CD98;
+extern f32 D_807530F0[];
+extern s16 D_807538C8[];
 extern f32 D_80750FC0;
 extern s32 D_80750FC8;
 extern s32 D_80750FCC;
@@ -3422,8 +3454,6 @@ void func_806D59E4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-extern f64 D_8075CD98;
-
 void func_806D5B44(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -3563,8 +3593,6 @@ void func_806D5CCC(void) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D6558.s")
-
-extern f32 D_8075352C[];
 
 s32 func_806D69A4(void) {
     if (current_actor_pointer->unkFC != 0) {
@@ -3750,12 +3778,6 @@ void func_806D7238(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D72D4.s")
-
-extern f32 D_807530F0[];
-
-/*
-// TODO: Minor conditional logic issues around the else blocks
 void func_806D72D4(void) {
     f32 temp_f0;
 
@@ -3778,18 +3800,16 @@ void func_806D72D4(void) {
                     current_actor_pointer->unkEE = (current_actor_pointer->y_rotation + 0x800) & 0xFFF;
                     current_actor_pointer->unkB8 = 150.0f;
                     func_806CC948();
+                    break;
                 } else if (temp_f0 >= 48.0f) {
                     current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
                     current_actor_pointer->unkB8 = 60.0f;
                     func_806CC948();
-                } else {
-                    current_actor_pointer->unkB8 = 0.0f;
-                    func_806CC8B8();    
+                    break;
                 }
-            } else {
-                current_actor_pointer->unkB8 = 0.0f;
-                func_806CC8B8();
             }
+            current_actor_pointer->unkB8 = 0.0f;
+            func_806CC8B8();
             break;
         case 2:
             current_actor_pointer->unkB8 = 0.0f;
@@ -3798,9 +3818,6 @@ void func_806D72D4(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
-
-extern s16 D_807538C8[];
 
 void func_806D7510(void) {
     f32 temp_f0;

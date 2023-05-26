@@ -1778,7 +1778,7 @@ us,.code,func_80652F24,120,yes
 us,.code,func_807271F4,436,yes
 us,.code,func_806CA0E8,204,yes
 us,.code,func_8060C648,112,yes
-us,.code,func_806D72D4,572,no
+us,.code,func_806D72D4,572,yes
 us,.code,func_806E8A8C,100,yes
 us,.code,func_806C9434,412,yes
 us,.code,alEvtqFlushType,208,yes

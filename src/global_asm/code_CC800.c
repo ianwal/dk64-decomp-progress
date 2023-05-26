@@ -169,18 +169,17 @@ extern f32 D_807535E8[];
 void func_806F09F0(Actor*, u16);
 
 /*
-// TODO: Good progress made
-void func_806C850C(s32 arg0, s32 arg1) {
+// TODO: Very close!!!
+void func_806C850C(s32 arg0, u8 arg1) {
     Temp10Big *sp2C;
-    Struct807FD610 *temp_v0_2;
-    PlayerAdditionalActorData *temp_t7;
-
-    arg1 &= 0xFF;
+    f32 temp;
+    f32 temp3;
+    s32 i;
 
     if (cc_number_of_players >= 2) {
         current_character_index[arg1] = current_character_index[func_8060AB38(arg1)];
     }
-    if ((arg1 == 0) && (current_map == MAP_MAIN_MENU)) {
+    if ((!arg1) && (current_map == MAP_MAIN_MENU)) {
         current_character_index[0] = 0;
     }
     sp2C = &D_8075C410[current_character_index[arg1]];
@@ -206,17 +205,18 @@ void func_806C850C(s32 arg0, s32 arg1) {
     extra_player_info_pointer->unk1A4 = arg1;
     extra_player_info_pointer->unk11E = -1;
     extra_player_info_pointer->unk244 = 0;
-    D_807FD584 = sp2C->unk4;
     extra_player_info_pointer->unk120 = -0x64;
+    D_807FD584 = sp2C->unk4;
     extra_player_info_pointer->unk1EE = D_807FBB44->unk58;
     func_806E2C74(D_807FBB48);
     func_80677FA8(ACTOR_CAMERA, 0);
     extra_player_info_pointer->unk104 = D_807FBB44;
-    if (arg1 == 0) {
+    if (!arg1) {
         D_807F5D10 = D_807FBB44;
     }
     D_807FBB44->object_properties_bitfield |= 0x100000;
     func_806C8D20(D_807FBB48);
+    temp = D_8075C4B0;
     extra_player_info_pointer->unk26 = 0x64;
     D_807FBB48->y_acceleration = D_80753578[D_807FD584];
     D_807FBB48->terminal_velocity = D_807535E8[D_807FD584];
@@ -228,12 +228,12 @@ void func_806C850C(s32 arg0, s32 arg1) {
     extra_player_info_pointer->unk16 = 0;
     extra_player_info_pointer->unk10C = 0;
     extra_player_info_pointer->unk1A0 = 0;
-    extra_player_info_pointer->unk1C0 = D_8075C4B0;
-    extra_player_info_pointer->unk1C4 = D_8075C4B0;
-    extra_player_info_pointer->unk1C8 = D_8075C4B0;
-    extra_player_info_pointer->unk1CC = D_8075C4B0;
-    extra_player_info_pointer->unk1D0 = D_8075C4B0;
-    extra_player_info_pointer->unk1D4 = D_8075C4B0;
+    extra_player_info_pointer->unk1C0 = temp;
+    extra_player_info_pointer->unk1C4 = temp;
+    extra_player_info_pointer->unk1C8 = temp;
+    extra_player_info_pointer->unk1CC = temp;
+    extra_player_info_pointer->unk1D0 = temp;
+    extra_player_info_pointer->unk1D4 = temp;
     extra_player_info_pointer->unk245 = 0;
     extra_player_info_pointer->unk21E = 0x1E;
     extra_player_info_pointer->unkC8 = -1;
@@ -242,7 +242,7 @@ void func_806C850C(s32 arg0, s32 arg1) {
     extra_player_info_pointer->unk264 = -1;
     extra_player_info_pointer->unk258 = 1.0f;
     extra_player_info_pointer->unk25C = 1.0f;
-    if (isFlagSet(0xCE, 0) != 0) {
+    if (isFlagSet(0xCE, FLAG_TYPE_PERMANENT)) {
         extra_player_info_pointer->unk1F0 |= 0x100000;
     }
     func_806C8220(1, D_807FBB48->unk178, D_807FBB48->unk58);
@@ -251,14 +251,10 @@ void func_806C850C(s32 arg0, s32 arg1) {
     D_807FBB48->unkDE = 0x400;
     extra_player_info_pointer->unk1B0 = 0;
     extra_player_info_pointer->unk1AC = NULL;
-    D_807FD610[arg1].unk10 = D_807FD610[arg1].unk4;
-    D_807FD610[arg1].unk14 = D_807FD610[arg1].unk4;
-    D_807FD610[arg1].unk18 = D_807FD610[arg1].unk4;
-    D_807FD610[arg1].unk1C = D_807FD610[arg1].unk4;
-    D_807FD610[arg1].unk20 = D_807FD610[arg1].unk28;
-    D_807FD610[arg1].unk22 = D_807FD610[arg1].unk28;
-    D_807FD610[arg1].unk24 = D_807FD610[arg1].unk28;
-    D_807FD610[arg1].unk26 = D_807FD610[arg1].unk28;
+    for (i = 0; i < 4; i++) {
+        D_807FD610[arg1].unk20[i] = D_807FD610[arg1].unk28;
+        D_807FD610[arg1].unk10[i] = D_807FD610[arg1].unk4;
+    }
     func_806CFF9C(D_807FBB48);
     func_806C90C4(arg0);
     func_806C8984();
@@ -276,7 +272,7 @@ u8 func_806C8D2C(s16 arg0) {
     s32 i;
     for (i = 0; i < 10; i++) {
         if (arg0 == D_8075C410[i].unk0) {
-            return D_8075C410[i].unk7;
+            return D_8075C410[i].unk4;
         }
     }
     return 0;
@@ -321,8 +317,6 @@ void func_806C8EE8(void) {
     func_806C8F8C(&D_8075C410[current_character_index[cc_player_index]]);
     func_8060098C(&func_806C9C80, 0x14, cc_player_index, 0, 0);
 }
-
-extern s16 D_807FD584;
 
 void func_806C8F8C(Struct806C8F8C_arg0 *arg0) {
     D_807FBB48->unk58 = arg0->unk0;
