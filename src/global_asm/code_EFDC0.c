@@ -308,21 +308,16 @@ void func_806EBDC4(void) {
     extra_player_info_pointer->vehicle_actor_pointer = character_change_array[cc_player_index].unk2A0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_806EBE8C.s")
-
-/*
-// TODO: Incorrect order of operation for loading function params for the call after the if statement
 void func_80026004(Actor178*, s32, f32);
 
 void func_806EBE8C(void) {
-    Actor *vehicle;
+    Actor *vehicle = extra_player_info_pointer->vehicle_actor_pointer;
+    Actor178 *temp = vehicle->unk178;
 
-    vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     if (vehicle->control_state < 3) {
-        func_80026004(vehicle->unk178, 0x1E, 1.0f);
+        func_80026004(temp, 0x1E, 1.0f);
     }
 }
-*/
 
 void func_806EBED0(void) {
     extra_player_info_pointer->vehicle_actor_pointer->y_velocity += 200.0f;

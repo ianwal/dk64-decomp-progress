@@ -2003,7 +2003,7 @@ us,.code,func_80663A80,360,yes
 us,.code,func_806D2BD0,132,yes
 us,.code,func_806CCB94,124,yes
 us,.code,func_80656F14,1444,no
-us,.code,func_806EBE8C,68,no
+us,.code,func_806EBE8C,68,yes
 us,.code,func_806D2A14,140,yes
 us,.code,func_80669588,200,yes
 us,.code,func_807375E0,40,yes

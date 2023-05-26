@@ -7661,7 +7661,6 @@ void func_806E8F68(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E9070.s")
 
 /*
-
 // TODO: D_80767CC0 might be a struct.280 access, or an array? idk
 void func_806E9070(void) {
     if (D_807FD610[cc_player_index].unk2C & A_BUTTON) {
