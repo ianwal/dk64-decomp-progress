@@ -13,10 +13,19 @@ struct Struct807FDB00 {
     Struct807FDB00 *next;
 };
 
+typedef struct Struct807FDB04 Struct807FDB04;
+
+struct Struct807FDB04 {
+    u8 unk0[0x338 - 0x0];
+    Actor *unk338;
+    u8 unk33C[0x39C - 0x33C];
+    Struct807FDB04 *next;
+};
+
 // TODO: Is this a huge static struct?
 // If so, we can match this whole file pretty much
 extern Struct807FDB00 *D_807FDB00;
-extern s32 D_807FDB04;
+extern Struct807FDB04 *D_807FDB04;
 extern s32 D_807FDB08;
 extern u8 D_807FDB0C;
 extern u8 D_807FDB0D;
@@ -46,7 +55,7 @@ void func_80714A9C(void);
 
 void func_80714670(void) {
     D_807FDB00 = NULL;
-    D_807FDB04 = 0;
+    D_807FDB04 = NULL;
     D_807FDB08 = 0;
     func_80714A9C();
 }
@@ -76,7 +85,20 @@ void func_807146F4(s16 *arg0, s16 *arg1, s16 *arg2) {
     *arg2 = arg0[8];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80714708.s")
+// TODO: Struct?
+void func_80714708(u8 *arg0, s16 *arg1, s16 *arg2) {
+    u8 pad1F;
+    u8 pad1E;
+    u8 pad1D;
+    u8 pad1C;
+    u8 sp1B;
+    u8 sp1A;
+
+    func_807146E0(arg0, &sp1B, &sp1A);
+    func_807146F4(arg0, arg1, arg2);
+    *arg1 *= sp1B;
+    *arg2 *= sp1A;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80714778.s")
 
@@ -205,14 +227,37 @@ void *func_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715270.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071586C.s")
+void func_8071586C(Actor *arg0) {
+    Struct807FDB04 *var_s0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807158C0.s")
+    var_s0 = D_807FDB04;
+    while (var_s0 != NULL) {
+        if (arg0 == var_s0->unk338) {
+            func_80715908(var_s0);
+        }
+        var_s0 = var_s0->next;
+    }
+}
 
+void func_807158C0(void) {
+    Struct807FDB04 *temp_s1;
+    Struct807FDB04 *var_s0;
+
+    var_s0 = D_807FDB04;
+    while (var_s0 != NULL) {
+        temp_s1 = var_s0->next;
+        func_80715908(var_s0);
+        var_s0 = temp_s1;
+    }
+}
+
+// OSTime
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715908.s")
 
+// Get pointer table file
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715A3C.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715B30.s")
 
 void func_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
@@ -229,8 +274,10 @@ void func_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 // displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715E94.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80716F10.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80716FB4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717100.s")
@@ -252,9 +299,61 @@ void func_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717D4C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717D84.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+} Struct80717D84_unk384;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717DB4.s")
+typedef struct {
+    u8 unk0[0x340 - 0x0];
+    f32 unk340;
+    f32 unk344;
+    f32 unk348;
+    u8 unk34C[0x35C - 0x34C];
+    s32 unk35C;
+    u8 unk360[0x36D - 0x360];
+    u8 unk36D;
+    u8 unk36E[0x384 - 0x36E];
+    Struct80717D84_unk384 *unk384;
+} Struct80717D84;
+
+void func_80717D84(Struct80717D84 *arg0, s8 *arg1) {
+    s32 temp_v0;
+    u8 temp_v1;
+
+    temp_v0 = arg0->unk35C;
+    temp_v1 = arg0->unk36D;
+    if (temp_v0 < temp_v1) {
+        arg0->unk36D = temp_v1 - temp_v0;
+        return;
+    }
+    arg0->unk36D = 0;
+    *arg1 = 1;
+}
+
+void func_80717DB4(Struct80717D84 *arg0, s32 arg1) {
+    Struct80717D84_unk384 *temp;
+    if (arg0->unk384 == NULL) {
+        temp = malloc(0x10);
+        arg0->unk384 = temp;
+        temp->unk0 = arg0->unk340;
+        temp->unk4 = arg0->unk348;
+        temp->unk8 = 0;
+        temp->unkA = 0;
+        temp->unkC = ((rand() % 10000) % 150) - 0x4B;
+        temp->unkE = ((rand() % 10000) % 150) - 0x4B;
+    }
+    temp = arg0->unk384;
+    arg0->unk340 = (func_80612794(temp->unk8) * 6.0) + temp->unk0;
+    arg0->unk348 = (func_80612794(temp->unkA) * 6.0) + temp->unk4;
+    temp->unk8 += temp->unkC;
+    temp->unkA += temp->unkE;
+    arg0->unk344 = arg0->unk344 - (arg0->unk35C / 100.0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717F1C.s")
 

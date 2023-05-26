@@ -311,12 +311,12 @@ void func_80029AAC(Actor *arg0, s32 arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80029BB4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80029D30.s")
-
-/*
-// TODO: Similar to one I ran into before... Not sure why it doesn't match
+// TODO: Might be a fake match since func_80030894 probably takes a void* as an arg instead of s32
+// We'll see when .rodata and .data shake out I guess...
 void func_80029D30(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
+    s32 temp;
+
     MaaD->unk17 = 0;
     func_80030894(MaaD, &D_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
     func_80030894(MaaD, &D_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
@@ -335,7 +335,6 @@ void func_80029D30(Actor *arg0, s32 arg1) {
     func_80030894(MaaD, &D_807204BC, 0xA0, 0x78, 1.0f, 2, 4);
     func_80030894(MaaD, &D_80720C34, 0xA0, 0xD2, 0.75f, 2, 0);
 }
-*/
 
 extern void* D_8071FBC8;
 extern void* D_8071FE08;
