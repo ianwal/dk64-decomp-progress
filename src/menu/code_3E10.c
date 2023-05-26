@@ -54,7 +54,7 @@ extern s8 menu_selection_available;
 extern f32 menu_icon_transition_scale;
 extern f32 DK_barrel_scale;
 
-void func_80030894(MenuAdditionalActorData*,void*,u16,u8,f32,u8,u8); // Param 1 is ActorAdditionalData
+void func_80030894(MenuAdditionalActorData*,s32,u16,u8,f32,u8,u8); // Param 1 is ActorAdditionalData
 
 void func_80027E10(void) {
     s32 phi_a0 = 1;
@@ -110,14 +110,12 @@ void func_80027F40(Actor *arg0, s32 arg1) {
 // Displaylist stuff, text labels
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_800286C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80028834.s")
+s8 current_menu_selection;
 
-/*
-// TODO: Our stack is too big, that's the only difference
+// TODO: Might be a fake match since func_80030894 probably takes a void* as an arg instead of s32
+// We'll see when .rodata and .data shake out I guess...
 void func_80028834(Actor *arg0, s32 arg1) {
-    s32 temp;
     MenuAdditionalActorData *MaaD;
-    s32 temp2;
 
     MaaD = arg0->MaaD;
     is_in_submenu = 0;
@@ -127,13 +125,12 @@ void func_80028834(Actor *arg0, s32 arg1) {
     D_80745844 = func_8060C6B8(0x1E, 0, 0, 0);
     func_80027E10();
     MaaD->unk17 = current_menu_selection;
-    temp = &D_80721444;
     func_80030894(MaaD, &D_80720C34, 0xA0, 0xD2, 0.75f, 2, 0);
-    func_80030894(MaaD, temp, 0, 0, adventure_barrel_scale, 2, 0x12);
-    func_80030894(MaaD, temp, 1, 0, options_barrel_scale, 2, 0x12);
-    func_80030894(MaaD, temp, 2, 0, mystery_barrel_scale, 2, 0x12);
-    func_80030894(MaaD, temp, 3, 0, battle_barrel_scale, 2, 0x12);
-    func_80030894(MaaD, temp, 4, 0, sound_barrel_scale, 2, 0x12);
+    func_80030894(MaaD, &D_80721444, 0, 0, adventure_barrel_scale, 2, 0x12);
+    func_80030894(MaaD, &D_80721444, 1, 0, options_barrel_scale, 2, 0x12);
+    func_80030894(MaaD, &D_80721444, 2, 0, mystery_barrel_scale, 2, 0x12);
+    func_80030894(MaaD, &D_80721444, 3, 0, battle_barrel_scale, 2, 0x12);
+    func_80030894(MaaD, &D_80721444, 4, 0, sound_barrel_scale, 2, 0x12);
     func_80030894(MaaD, &D_8072052C, 0, 0, adventure_icon_scale, 2, 6);
     func_80030894(MaaD, &D_807211D0, 1, 0, options_icon_scale, 2, 6);
     // Is the mystery menu not unlocked?
@@ -162,7 +159,6 @@ void func_80028834(Actor *arg0, s32 arg1) {
     foreground_shading_intensity = 1.0f;
     global_properties_bitfield &= 0xFFFEFFFF;
 }
-*/
 
 void func_80028C18(void) {
 

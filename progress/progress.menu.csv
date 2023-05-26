@@ -100,7 +100,7 @@ us,.code,func_80025D14,48,yes
 us,.code,func_80030894,508,no
 us,.code,func_80027988,1124,no
 us,.code,func_80031A5C,172,no
-us,.code,func_80028834,996,no
+us,.code,func_80028834,996,yes
 us,.code,func_80024224,500,no
 us,.code,func_8002EE18,336,yes
 us,.code,func_8002F75C,400,no
