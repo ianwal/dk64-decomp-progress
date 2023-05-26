@@ -1,9 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// Doable, big, interesting
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_806BD170.s")
-
 extern s8 D_80750660;
 extern s8 D_807506A4;
 extern s8 D_807FC8D0;
@@ -16,34 +13,35 @@ typedef struct {
     Actor *unk4;
 } PadlockAAD;
 
-/*
 void func_806BD170(void) {
-    PadlockAAD *temp_v0;
+    Actor* highest_priority_padlock;
     s16 keyIndex;
     s16 sp50;
-    s16 temp_s2;
-    u32 key_collected_flag;
-    Actor* highest_priority_padlock;
+    s16 keysCollected;
 
     sp50 = -1;
     keyIndex = 0;
-    for (; keyIndex < 8; keyIndex++) {
+    keysCollected = 0;
+    while (keyIndex < 8) {
         // Key[keyIndex] Turned Flag
         if (!isFlagSet(0x1BC + keyIndex, FLAG_TYPE_PERMANENT)) {
+            PadlockAAD *temp_v0;
+            s16 temp2 = 260 + (keyIndex * 512);
             // Spawn Padlock
             func_80677FA8(ACTOR_PADLOCK_KLUMSY, 0xCD);
-            temp_s2 = 260 + (keyIndex * 512);
             D_807FBB44->draw_distance = 2000;
             D_807FBB44->object_properties_bitfield |= 0x800400;
             D_807FBB44->object_properties_bitfield &= ~0x8000;
+            
             D_807FBB44->unk16A = 0xFF;
             D_807FBB44->unk16B = 0xFF;
             D_807FBB44->unk16C = 0xFF;
             D_807FBB44->shadow_opacity = 0xFF;
-            D_807FBB44->x_position = (func_80612794(temp_s2) * 270.0f) + current_actor_pointer->x_position;
-            D_807FBB44->z_position = (func_80612790(temp_s2) * 270.0f) + current_actor_pointer->z_position;
+
+            D_807FBB44->x_position = (func_80612794(temp2) * 270.0f) + current_actor_pointer->x_position;
+            D_807FBB44->z_position = (func_80612790(temp2) * 270.0f) + current_actor_pointer->z_position;
             D_807FBB44->y_position = 100.0f;
-            D_807FBB44->y_rotation = temp_s2;
+            D_807FBB44->y_rotation = temp2;
             D_807FBB44->unk146 = 0;
             D_807FBB44->control_state = 0;
             temp_v0 = D_807FBB44->additional_actor_data;
@@ -53,24 +51,28 @@ void func_806BD170(void) {
             // Key Collected Flag
             if (isFlagSet(D_80744710[keyIndex], FLAG_TYPE_PERMANENT)) {
                 sp50 = keyIndex;
-                D_807FBB44->control_state = 5;
                 highest_priority_padlock = D_807FBB44;
+                highest_priority_padlock->control_state = 5;
+                keysCollected++;
             }
         }
+        keyIndex++;
     }
     D_807506A4 = 0;
     // Isles: Japes Boulder Smashed
     if (!isFlagSet(0x1BB, FLAG_TYPE_PERMANENT)) {
         sp50 = -1;
     }
-    if ((D_80750660 == 0) && (sp50 != -1)) {
-        highest_priority_padlock->unk146 = 1;
-        highest_priority_padlock->control_state = 1;
-        D_80750660 = 1;
-        D_807FC8D0 = sp50;
+    if (!D_80750660) {
+        s32 temp = 1;
+        if (sp50 != -1) {
+            highest_priority_padlock->unk146 = temp;
+            highest_priority_padlock->control_state = 1;
+            D_80750660 = 1;
+            D_807FC8D0 = sp50;
+        }
     }
 }
-*/
 
 // Doable, big, interesting
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_806BD3E4.s")

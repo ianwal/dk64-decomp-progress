@@ -2620,7 +2620,7 @@ us,.code,func_806B2790,1484,no
 us,.code,func_80627C10,76,yes
 us,.code,func_80661E34,144,no
 us,.code,func_806CC8A8,16,yes
-us,.code,func_806BD170,628,no
+us,.code,func_806BD170,628,yes
 us,.code,func_8062A130,248,yes
 us,.code,func_806B4DCC,808,yes
 us,.code,func_8071586C,84,no
