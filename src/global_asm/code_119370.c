@@ -350,11 +350,16 @@ extern f64 D_8075E890;
 extern f64 D_8075E898;
 extern f32 D_8075E8A0;
 extern f64 D_8075E8A8;
+extern f64 D_8075EA70;
+extern f64 D_8075EA78;
+extern f32 D_8075EA80;
+extern f64 D_8075EA88;
 extern f32 D_8075EA90;
 extern f64 D_8075EA98;
 extern f64 D_8075EAA0;
 extern f64 D_8075EAB8;
 extern f64 D_8075EAC0;
+extern f64 D_8075EAC8;
 
 void func_80717CE8(Struct80717D84 *arg0, s32 arg1) {
     if (arg0->unk36D != 0xFF) {
@@ -621,13 +626,148 @@ void func_8071C818(otherSpriteControl *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E028.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E110.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+} Struct80717D84_unk384_8071E110;
+
+void func_8071E110(Struct80717D84 *arg0, u8 arg1, u16 arg2, f32 arg3, f32 arg4, s32 arg5) {
+    Struct80717D84_unk384_8071E110 *temp_v0;
+
+    temp_v0 = malloc(sizeof(Struct80717D84_unk384_8071E110));
+    arg0->unk384 = temp_v0;
+    temp_v0->unk0 = arg1;
+    temp_v0->unk4 = arg4;
+    temp_v0->unk8 = arg3;
+    temp_v0->unkC = 1.0f / arg5;
+    temp_v0->unk10 = 0.0f;
+    temp_v0->unk14 = arg2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E1C8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E3EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E864.s")
+s32 func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, u32, u32, u32); // extern
+extern f64 D_8075EA58;
+extern f64 D_8075EA60;
+extern f32 D_8075EA68;
+extern f32 D_8075EA6C;
+
+s32 func_806531B8(f32, f32, f32, s32);
+
+/*
+// TODO: Float regalloc
+void func_8071E3EC(Struct80717D84 *arg0, s8 *arg1) {
+    f32 *var_v1;
+    f32 temp_f0;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f64 temp;
+    f64 var_f0;
+    f64 temp3;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(0xC);
+        var_v1 = arg0->unk384;
+        var_v1[0] = 0.0f;
+        var_v1[1] = 0.0f;
+        var_v1[2] = func_806531B8(arg0->unk340, arg0->unk344, arg0->unk348, 0);
+    }
+    var_v1 = arg0->unk384;
+    if (var_v1[1] == 0.0) {
+        temp = D_8075EA58;
+        var_v1[0] = var_v1[0] + 30.0;
+        if (temp < var_v1[0]) {
+            var_v1[0] = 300.0f;
+            var_v1[1] = 1.0f;
+        }
+    } else {
+        var_v1[0] = var_v1[0] - 30.0;
+        if (var_v1[0] < 30.0) {
+            *arg1 = 1;
+            var_v1[0] = 30.0f;
+        }
+    }
+    if (var_v1[0] < D_8075EA60) {
+        sp4C = var_v1[0] / D_8075EA60;
+    } else {
+        sp4C = 1.0f;
+    }
+    func_80659610(1000);
+    func_80659600(var_v1[2]);
+    switch (arg0->unk35C) {
+        case 0:
+            sp48 = 1.0f;
+            sp44 = 1.0f;
+            sp40 = 1.0f;
+            func_806595F0(2);
+            func_80659610(1000);
+            break;
+        case 1:
+            sp48 = 1.0f;
+            sp44 = 0.5f;
+            sp40 = D_8075EA68;
+            func_806595F0(3);
+            func_80659610(1000);
+            break;
+        case 2:
+            sp48 = 1.0f;
+            sp44 = 0.5f;
+            sp40 = D_8075EA6C;
+            func_806595F0(2);
+            func_80659610(2000);
+            break;
+        case 3:
+            sp48 = 1.0f;
+            sp44 = 1.0f;
+            sp40 = 1.0f;
+            func_806595F0(2);
+            func_80659610(0x7D0);
+            break;
+    }
+    temp_f0 = 255.0f * sp4C;
+    func_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_v1[0], 0, temp_f0 * sp48, temp_f0 * sp44, temp_f0 * sp40);
+}
+*/
+
+void func_8071E864(Struct80717D84 *arg0, s8 *arg1) {
+    f32 sp24;
+    f32 temp_f12;
+    f32 *var_v1;
+    f64 temp;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(8);
+        var_v1 = arg0->unk384;
+        var_v1[0] = 10.0f;
+        var_v1[1] = arg0->unk35C * 0x154;
+    }
+    var_v1 = arg0->unk384;
+    var_v1[0] -= D_8075EA70;
+    if (var_v1[0] < D_8075EA78) {
+        var_v1[0] = D_8075EA80;
+    }
+    sp24 = func_80612794(var_v1[1]) * var_v1[0];
+    temp_f12 = func_80612790(var_v1[1]) * var_v1[0];
+    temp = D_8075EA88;
+    arg0->unk360 *= temp;
+    arg0->unk364 *= temp;
+    if (arg0->unk360 > 8.0) {
+        arg0->unk36D -= 0x32;
+        if (arg0->unk36D < 0x33) {
+            *arg1 = 1;
+        }
+    }
+    arg0->unk340 = arg0->unk340 + sp24;
+    arg0->unk348 = arg0->unk348 + temp_f12;
+}
 
 void func_8071EA24(Struct80717D84 *arg0, s32 arg1) {
     f32 *var_v0;
@@ -715,12 +855,75 @@ void func_8071F078(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk344 += var_v1[1];
 }
 
-// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F1D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F2F8.s")
+extern s8 D_8075567C;
+
+/*
+// TODO: Close
+void func_8071F1D0(Struct80717D84 *arg0, s8 *arg1) {
+    f32 *var_v1;
+    s32 temp2;
+    s32 temp3;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(0xC);
+        temp3 = D_8075567C;
+        var_v1 = arg0->unk384;
+        var_v1[0] = arg0->unk340;
+        var_v1[1] = arg0->unk348;
+        var_v1[2] = temp3;
+        D_8075567C = -temp3;
+    }
+    var_v1 = arg0->unk384;
+    arg0->unk340 = (func_80612794(arg0->unk35C) * 14.0f) + *var_v1;
+    arg0->unk348 = (func_80612790(arg0->unk35C) * 14.0f) + var_v1[1];
+    arg0->unk344 += 0.5f;
+    if (arg0->unk36D >= 5) {
+        arg0->unk36D -= 4;
+    } else {
+        *arg1 = 1;
+    }
+    temp2 = var_v1[2] * 200.0;
+    arg0->unk35C += temp2;
+}
+*/
+
+void func_8071F2F8(Struct80717D84 *arg0, s32 arg1) {
+    f32 *var_v1;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(8);
+        var_v1 = arg0->unk384;
+        var_v1[0] = arg0->unk35C & 0xFFFF;
+        var_v1[1] = arg0->unk35C >> 0x10;
+    }
+    var_v1 = arg0->unk384;
+    arg0->unk344 += var_v1[0];
+    if (var_v1[0] > -20.0f) {
+        var_v1[0] -= (var_v1[1] * D_8075EAC8);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F3C0.s")
+
+extern f64 D_8075EAD0;
+
+/*
+// TODO: Minor float regalloc
+void func_8071F3C0(Struct80717D84 *arg0, s32 arg1) {
+    f32 *var_v1;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(4);
+        var_v1 = arg0->unk384;
+        *var_v1 = arg0->unk364 * D_8075EAD0;
+    }
+    var_v1 = arg0->unk384;
+    arg0->unk360 = arg0->unk338->animation_state->scale_y * *var_v1;
+    arg0->unk364 = arg0->unk360;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F444.s")
 
