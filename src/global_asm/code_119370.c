@@ -321,7 +321,9 @@ typedef struct {
     f32 unk340;
     f32 unk344;
     f32 unk348;
-    u8 unk34C[0x35C - 0x34C];
+    s16 unk34C;
+    s16 unk34E;
+    u8 unk350[0x35C - 0x350];
     s32 unk35C;
     f32 unk360;
     f32 unk364;
@@ -541,11 +543,27 @@ void func_80719B88(Struct80717D84 *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071ABDC.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071AF30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B1AC.s")
+extern f32 D_8075E950;
+extern f32 D_8075E954;
+extern f32 D_8075E958;
+extern f32 D_8075E95C;
+extern f32 D_8075E960;
+extern f32 D_8075E964;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B24C.s")
+void func_8071B1AC(Struct80717D84 *arg0, s32 arg1) {
+    arg0->unk344 -= (D_8075E950 * 0.5);
+    arg0->unk340 += (D_8075E954 * func_80612794(arg0->unk35C));
+    arg0->unk348 += (D_8075E958 * func_80612790(arg0->unk35C));
+}
+
+void func_8071B24C(Struct80717D84 *arg0, s32 arg1) {
+    arg0->unk344 += (D_8075E95C * 0.5);
+    arg0->unk340 += (D_8075E960 * func_80612794(arg0->unk35C));
+    arg0->unk348 += (D_8075E964 * func_80612790(arg0->unk35C));
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B2EC.s")
 
@@ -555,7 +573,18 @@ void func_80719B88(Struct80717D84 *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B758.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B89C.s")
+void func_8071B89C(Struct80717D84 *arg0, s32 arg1) {
+    f32 temp_f0;
+    s16 var_v0;
+
+    var_v0 = arg0->unk34E;
+    if (var_v0 >= 5) {
+        var_v0 = 4;
+    }
+    temp_f0 = (var_v0 / (4.0f / 1.0f)) * 3.0;
+    arg0->unk360 = temp_f0;
+    arg0->unk364 = temp_f0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B8EC.s")
 
@@ -571,6 +600,7 @@ void func_80719B88(Struct80717D84 *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C48C.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C620.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C818.s")
@@ -601,29 +631,115 @@ void func_8071C818(otherSpriteControl *arg0, s8 *arg1) {
 }
 */
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C914.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C9E8.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071CDE0.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D0F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D260.s")
+void func_8071D260(Struct80717D84 *arg0, s8 *arg1) {
+    arg0->unk36D -= arg0->unk35C;
+    if (arg0->unk35C >= arg0->unk36D) {
+        *arg1 = 1;
+    }
+}
 
+// Doable, fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D28C.s")
 
-// More sprite stuff?
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D5BC.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D784.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D94C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071DB74.s")
+extern f32 D_8075EA10;
+extern f64 D_8075EA18;
+extern f32 D_8075EA20;
+extern f32 D_8075EA24;
 
+void func_8071D94C(Actor *arg0, Struct80717D84 *arg1, s8 *arg2);
+
+/*
+// TODO: Close
+void func_8071D94C(Actor *arg0, Struct80717D84 *arg1, s8 *arg2) {
+    s16 temp;
+    s16 sp34;
+    f32 sp30;
+    f32 var_f2;
+    f32 sp28;
+    Struct80717D84_unk384_f32 *sp24;
+    f64 temp2;
+
+    arg1->unk384 = malloc(0x10);
+    sp24 = arg1->unk384;
+    arg1->unk340 += (2.0f * (func_806119FC() - 0.5f));
+    arg1->unk344 += (2.0f * (func_806119FC() - 0.5f));
+    arg1->unk348 += (2.0f * (func_806119FC() - 0.5f));
+    if (arg0 != NULL) {
+        sp34 = (arg0->y_rotation + (func_806119A0() & 0x1FF) + 0x700) & 0xFFF;
+        var_f2 = arg0->unkB8 * D_8075EA10;
+        if (!(var_f2 < 1.0f)) {
+            var_f2 = 1.0f;
+        }
+        if (var_f2 < D_8075EA18) {
+            *arg2 = 1;
+        }
+        sp28 = var_f2 * 1.5f * D_8075EA20;
+        arg1->unk338 = arg0;
+    } else {
+        var_f2 = D_8075EA24;
+        sp34 = func_806119A0() % 4095U;
+        sp28 = (func_806119FC() + 1.0f) * 3.0f;
+    }
+    arg1->unk360 *= (func_806119FC() + 1.0f) * 0.5;
+    arg1->unk36D = 0x82;
+    arg1->unk364 = arg1->unk360;
+    sp30 = func_806119FC() * var_f2;
+    sp24->unk0 = func_80612794(sp34) * sp30;
+    sp24->unk4 = func_80612790(sp34) * sp30;
+    sp24->unk8 = sp28;
+    func_8066715C(&sp24->unkC);
+}
+*/
+
+void func_8071DB74(Struct80717D84 *arg0, u8 *arg1) {
+    Struct80717D84_unk384_f32 *var_v1;
+
+    if (arg0->unk384_f32 == NULL) {
+        func_8071D94C(NULL, arg0, arg1);
+    }
+    var_v1 = arg0->unk384_f32;
+    var_v1->unk8 = var_v1->unk8 + -0.5f;
+    arg0->unk340 = arg0->unk340 + var_v1->unk0;
+    arg0->unk344 = arg0->unk344 + var_v1->unk8;
+    arg0->unk348 = arg0->unk348 + var_v1->unk4;
+    if (*arg1 == 0) {
+        if (arg0->unk338 != NULL) {
+            if (arg0->unk344 <= arg0->unk338->unkAC) {
+                *arg1 = 1;
+            }
+        } else if (arg0->unk344 <= var_v1->unkC) {
+            *arg1 = 1;
+        }
+        if (*arg1 != 0) {
+            func_80718124(arg0->unk360 * 5.0f, arg0->unk340, arg0->unk344, arg0->unk348);
+        }
+    }
+}
+
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071DC90.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E028.s")
 
 typedef struct {
