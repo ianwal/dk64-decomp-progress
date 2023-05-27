@@ -35,11 +35,18 @@ typedef struct {
 } Struct80717D84_unk384_80717100;
 
 typedef struct {
+    u8 unk0[0x16 - 0x0];
+    s16 unk16;
+} Struct80717D84_unk330;
+
+typedef struct {
     u8 unk0[0x128 - 0x0];
     float unk128[4][4]; // TODO: How many?
     u8 unk168[0x32C - 0x168];
     u8 unk32C;
-    u8 unk32D[0x338 - 0x32D];
+    u8 unk32D[0x330 - 0x32D];
+    Struct80717D84_unk330 *unk330;
+    s32 unk334;
     Actor *unk338;
     s32 unk33C;
     f32 unk340;
@@ -47,7 +54,12 @@ typedef struct {
     f32 unk348;
     s16 unk34C;
     s16 unk34E;
-    u8 unk350[0x35C - 0x350];
+    u8 unk350;
+    u8 unk351;
+    u8 unk352;
+    u8 unk353;
+    s32 unk354;
+    s32 unk358;
     s32 unk35C;
     f32 unk360;
     f32 unk364;
@@ -463,7 +475,43 @@ void func_80717814(Struct80717D84 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717930.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717B64.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct80717D84_unk384_80717B64;
+
+void func_80717B64(Struct80717D84 *arg0, s8 *arg1) {
+    Struct80717D84_unk384_80717B64 *var_v1;
+    s32 var_v1_2;
+    f32 temp_f16;
+    f32 temp_f0_2;
+
+    temp_f16 = (arg0->unk34C * 3) / 4;
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(6);
+        var_v1 = arg0->unk384;
+        var_v1->unk0 = 0;
+        var_v1->unk2 = arg0->unk330->unk16 * arg0->unk350;
+        var_v1->unk4 = arg0->unk36D;
+    }
+    var_v1 = arg0->unk384;
+    if (var_v1->unk2 == var_v1->unk0) {
+        *arg1 = 1;
+    } else {
+        var_v1->unk0++;
+    }
+    temp_f0_2 = sqrtf(((character_change_array->look_at_eye_z - arg0->unk348) * (character_change_array->look_at_eye_z - arg0->unk348)) + (((character_change_array->look_at_eye_x - arg0->unk340) * (character_change_array->look_at_eye_x - arg0->unk340)) + ((character_change_array->look_at_eye_y - arg0->unk344) * (character_change_array->look_at_eye_y - arg0->unk344))));
+    if (temp_f0_2 < temp_f16) {
+        arg0->unk36D = var_v1->unk4;
+        return;
+    }
+    var_v1_2 = var_v1->unk4 * ((temp_f0_2 - temp_f16) / (arg0->unk34C - temp_f16));
+    if (var_v1->unk4 < var_v1_2) {
+        var_v1_2 = var_v1->unk4;
+    }
+    arg0->unk36D = var_v1->unk4 - var_v1_2;
+}
 
 void func_80717CE8(Struct80717D84 *arg0, s32 arg1) {
     if (arg0->unk36D != 0xFF) {
@@ -654,6 +702,8 @@ extern f32 D_8075E958;
 extern f32 D_8075E95C;
 extern f32 D_8075E960;
 extern f32 D_8075E964;
+extern f32 D_8075E978;
+extern f64 D_8075E980;
 
 void func_8071B1AC(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk344 -= (D_8075E950 * 0.5);
@@ -669,11 +719,38 @@ void func_8071B24C(Struct80717D84 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B2EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B44C.s")
+void func_8071B44C(Struct80717D84 *arg0, s32 arg1) {
+    f32 temp_f6;
+    f32 *var_v1;
 
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(4);
+        var_v1 = arg0->unk384;
+        *var_v1 = arg0->unk338->unkB8;
+    }
+    var_v1 = arg0->unk384;
+    arg0->unk344 += (D_8075E978 * 0.5);
+    temp_f6 = *var_v1 * D_8075E980;
+    arg0->unk340 += (temp_f6 * func_80612794(arg0->unk35C));
+    arg0->unk348 += (temp_f6 * func_80612790(arg0->unk35C));
+}
+
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B520.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B758.s")
+extern f64 D_8075E990;
+
+void func_8071B758(Struct80717D84 *arg0, s32 arg1) {
+    f32 var_f0;
+    u8 temp_t0;
+
+    var_f0 = (f32)(arg0->unk330->unk16 - arg0->unk34E) / arg0->unk330->unk16;
+    if (D_8075E990 < var_f0) {
+        var_f0 = 1.0f;
+    }
+    temp_t0 = ((-155.0f * var_f0) + 255.0f);
+    func_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 50.0f, 0, temp_t0, temp_t0, temp_t0);
+}
 
 void func_8071B89C(Struct80717D84 *arg0, s32 arg1) {
     f32 temp_f0;
@@ -688,8 +765,41 @@ void func_8071B89C(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk364 = temp_f0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B8EC.s")
+extern s32 D_80717D4C; // TODO: Datatype
+extern s32 D_8071FFA0; // TODO: Datatype
+extern f32 D_8075E998;
 
+void func_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
+
+    if (arg0->unk358 == 0) {
+        if (arg0->unk36D < 0xE1) {
+            arg0->unk36D += 0x1E;
+        } else {
+            arg0->unk36D = 0xFF;
+        }
+    }
+    if ((arg0->unk34E == 3) || (arg0->unk34E == 0x11) || (arg0->unk34E == 0x15)) {
+        func_806086CC(arg0->unk340, arg0->unk344, arg0->unk348, 0x14F, 0xFF, 0x7F, 0x1E, 0x4B, D_8075E998, 0);
+    }
+    if ((arg0->unk354 - arg0->unk358) < 3) {
+        if (arg0->unk36D >= 0xB) {
+            arg0->unk36D -= 0xA;
+            return;
+        }
+        *arg1 = 1;
+        return;
+    }
+    if (((rand() >> 0xF) % 100) >= 0x5B) {
+        func_80714998(3);
+        func_8071498C(&D_80717D4C);
+        func_80714950(-0xA);
+        func_807149B8(1);
+        func_807149C8(0x9B, 0x9B, 0x9B, 0x96);
+        func_80714CC0(&D_8071FFA0, 0.8f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk340, arg0->unk344 + 10.0f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk348);
+    }
+}
+
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BB14.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BC80.s")
