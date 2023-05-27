@@ -350,13 +350,8 @@ void func_80717D4C(Struct80717D84 *arg0, s32 arg1) {
 }
 
 void func_80717D84(Struct80717D84 *arg0, s8 *arg1) {
-    s32 temp_v0;
-    u8 temp_v1;
-
-    temp_v0 = arg0->unk35C;
-    temp_v1 = arg0->unk36D;
-    if (temp_v0 < temp_v1) {
-        arg0->unk36D = temp_v1 - temp_v0;
+    if (arg0->unk35C < arg0->unk36D) {
+        arg0->unk36D -= arg0->unk35C;
         return;
     }
     arg0->unk36D = 0;
@@ -642,7 +637,18 @@ void func_8071C818(otherSpriteControl *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071EEE0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071EFDC.s")
+extern f64 D_8075EAB8;
+extern f64 D_8075EAC0;
+
+void func_8071EFDC(Struct80717D84 *arg0, s8 *arg1) {
+    f64 temp = D_8075EAB8;
+    arg0->unk36D -= 5;
+    arg0->unk360 *= temp;
+    arg0->unk364 *= temp;
+    if (arg0->unk36D < 6) {
+        *arg1 = 1;
+    }
+}
 
 // TODO: Which struct is this?
 typedef struct {
@@ -662,8 +668,24 @@ void func_8071F034(Struct8071F034_arg0 *arg0, s32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F078.s")
+void func_8071F078(Struct80717D84 *arg0, s32 arg1) {
+    f32 *var_v1;
 
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(8);
+        var_v1 = arg0->unk384;
+        var_v1[0] = (((rand() >> 0xF) % 100) / 10.0) + 2.0;
+        var_v1[1] = -8.0 - (((rand() >> 0xF) % 100) / D_8075EAC0);
+        arg0->unk35C += (s16)((rand() >> 0xF) % 800) - 0x190;
+        arg0->unk35C %= 0xFFF;
+    }
+    var_v1 = arg0->unk384;
+    arg0->unk340 += (var_v1[0] * func_80612794(arg0->unk35C));
+    arg0->unk348 += (var_v1[0] * func_80612790(arg0->unk35C));
+    arg0->unk344 += var_v1[1];
+}
+
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F1D0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F2F8.s")
@@ -672,8 +694,11 @@ void func_8071F034(Struct8071F034_arg0 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F444.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F660.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F758.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F8E4.s")
