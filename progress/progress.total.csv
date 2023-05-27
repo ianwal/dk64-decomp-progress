@@ -601,7 +601,7 @@ us,.code,func_8073749C,324,no
 us,.code,func_80650998,108,yes
 us,.code,func_806A0310,32,yes
 us,.code,func_8073B750,224,no
-us,.code,func_8071EDEC,184,no
+us,.code,func_8071EDEC,184,yes
 us,.code,func_8062F388,24,yes
 us,.code,func_8067E348,136,yes
 us,.code,func_806E0050,44,yes
@@ -1131,7 +1131,7 @@ us,.code,func_806852C4,204,yes
 us,.code,func_80687F7C,76,yes
 us,.code,func_8063367C,192,no
 us,.code,func_805FB5C4,396,no
-us,.code,func_80717F1C,356,no
+us,.code,func_80717F1C,356,yes
 us,.code,func_80633D30,144,no
 us,.code,func_8073C8D0,120,no
 us,.code,func_80666428,1632,no
@@ -1991,7 +1991,7 @@ us,.code,func_8063373C,376,no
 us,.code,n_alAudioFrame,548,no
 us,.code,func_8065EA98,52,yes
 us,.code,func_806D0468,568,no
-us,.code,func_8071EA24,332,no
+us,.code,func_8071EA24,332,yes
 us,.code,func_80713088,76,yes
 us,.code,func_806E0294,308,yes
 us,.code,func_8071EB70,636,no
@@ -2016,7 +2016,7 @@ us,.code,func_806CF398,148,yes
 us,.code,func_80662108,8,yes
 us,.code,func_80731E68,452,no
 us,.code,func_806E78E0,24,yes
-us,.code,func_8071EEA4,60,no
+us,.code,func_8071EEA4,60,yes
 us,.code,func_80632630,560,no
 us,.code,func_806915B0,640,no
 us,.code,func_806EE5A4,144,yes

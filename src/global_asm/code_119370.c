@@ -335,6 +335,27 @@ typedef struct {
     };
 } Struct80717D84;
 
+extern s32 D_80718380; // Function pointer?
+extern s32 D_8071FEF4;
+
+extern s16 D_807502D0;
+
+extern f32 D_8075E728;
+extern f32 D_8075E72C;
+extern f32 D_8075E730;
+extern f64 D_8075E738;
+extern f64 D_8075E740;
+extern f64 D_8075E888;
+extern f64 D_8075E890;
+extern f64 D_8075E898;
+extern f32 D_8075E8A0;
+extern f64 D_8075E8A8;
+extern f32 D_8075EA90;
+extern f64 D_8075EA98;
+extern f64 D_8075EAA0;
+extern f64 D_8075EAB8;
+extern f64 D_8075EAC0;
+
 void func_80717CE8(Struct80717D84 *arg0, s32 arg1) {
     if (arg0->unk36D != 0xFF) {
         arg0->unk36D += 0x14;
@@ -378,18 +399,10 @@ void func_80717DB4(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk344 = arg0->unk344 - (arg0->unk35C / 100.0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717F1C.s")
-
-extern f32 D_8075E728;
-extern f32 D_8075E72C;
-extern f32 D_8075E730;
-extern f64 D_8075E738;
-
-/*
-// TODO: Close, rodata?
 void func_80717F1C(Struct80717D84 *arg0, s32 arg1) {
     Struct80717D84_unk384_f32 *var_v0;
     Actor *temp_s0;
+    f64 temp;
 
     if (arg0->unk384 == NULL) {
         temp_s0 = arg0->unk338;
@@ -406,18 +419,13 @@ void func_80717F1C(Struct80717D84 *arg0, s32 arg1) {
         var_v0->unkC = D_8075E730;
     }
     var_v0 = arg0->unk384;
+    temp = D_8075E738;
     arg0->unk344 -= (arg0->unk35C / 100.0);
     arg0->unk340 += var_v0->unk0;
     arg0->unk348 += var_v0->unk4;
-    var_v0->unk0 = var_v0->unk0 * D_8075E738;
-    var_v0->unk4 = var_v0->unk4 * D_8075E738;
+    var_v0->unk0 = var_v0->unk0 * temp;
+    var_v0->unk4 = var_v0->unk4 * temp;
 }
-*/
-
-extern f64 D_8075E740;
-extern s16 D_807502D0;
-extern s32 D_80718380; // Function pointer?
-extern s32 D_8071FEF4;
 
 void func_80718080(Struct80717D84 *arg0, s32 arg1) {
     func_80717F1C(arg0, arg1);
@@ -477,12 +485,6 @@ void func_80718188(Struct80717D84 *arg0, s8 *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807195D4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807197B4.s")
-
-extern f64 D_8075E888;
-extern f64 D_8075E890;
-extern f64 D_8075E898;
-extern f32 D_8075E8A0;
-extern f64 D_8075E8A8;
 
 void func_80719A0C(Struct80717D84 *arg0, s8 *arg1) {
     f32 temp;
@@ -627,18 +629,46 @@ void func_8071C818(otherSpriteControl *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E864.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071EA24.s")
+void func_8071EA24(Struct80717D84 *arg0, s32 arg1) {
+    f32 *var_v0;
 
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(0xC);
+        var_v0 = arg0->unk384;
+        var_v0[0] = func_806119FC() * D_8075EA90;
+        var_v0[1] = ((func_806119FC() * 0.5) + 1.0) * 5.0;
+        var_v0[2] = 15.0f;
+    }
+    var_v0 = arg0->unk384;
+    var_v0[1] -= 1.0f;
+    var_v0[2] *= D_8075EA98;
+    arg0->unk340 += (var_v0[2] * func_80612794(var_v0[0]));
+    arg0->unk348 += (var_v0[2] * func_80612790(var_v0[0]));
+    arg0->unk344 += var_v0[1];
+}
+
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071EB70.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071EDEC.s")
+void func_8071EDEC(Struct80717D84 *arg0, s32 arg1) {
+    f64 temp;
+    f32 sp34;
+    f32 sp30;
+    f32 sp2C;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071EEA4.s")
+    func_80671C0C(arg0->unk35C, 1, &sp34, &sp30, &sp2C);
+    temp = D_8075EAA0;
+    arg0->unk340 += (sp34 - arg0->unk340) * temp;
+    arg0->unk344 += (sp30 - arg0->unk344) * temp;
+    arg0->unk348 += (sp2C - arg0->unk348) * temp;
+}
 
+void func_8071EEA4(Struct80717D84 *arg0, s32 arg1) {
+    arg0->unk364 = (arg0->unk35C / 100.0) + 1.0;
+}
+
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071EEE0.s")
-
-extern f64 D_8075EAB8;
-extern f64 D_8075EAC0;
 
 void func_8071EFDC(Struct80717D84 *arg0, s8 *arg1) {
     f64 temp = D_8075EAB8;
