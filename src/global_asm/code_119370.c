@@ -887,10 +887,13 @@ void func_807189BC(Struct80717D84 *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80718BF4.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071910C.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807195D4.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807197B4.s")
 
 void func_80719A0C(Struct80717D84 *arg0, s8 *arg1) {
@@ -925,7 +928,50 @@ void func_80719B88(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80719C00.s")
+extern f32 D_8075E8B0;
+extern f32 D_8075E8B4;
+extern f64 D_8075E8B8;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+} Struct80717D84_unk384_80719C00;
+
+void func_80719C00(Struct80717D84 *arg0, s8 *arg1) {
+    Struct80717D84_unk384_80719C00 *var_v1;
+    f32 var_f2;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80719C00));
+        var_v1 = arg0->unk384;
+        var_v1->unk0 = arg0->unk340;
+        var_v1->unk4 = arg0->unk348;
+        var_v1->unk8 = 0.0f;
+        var_v1->unkC = arg0->unk35C * D_8075E8B0;
+        var_v1->unk10 = ((arg0->unk35C % 3) * 0x64) - 0x64;
+        var_v1->unk14 = D_8075E8B4;
+    }
+    var_v1 = arg0->unk384;
+    arg0->unk344 += D_8075E8B8;
+    if (var_v1->unk14 < 15.0f) {
+        var_f2 = var_v1->unk14;
+    } else {
+        var_f2 = 15.0f;
+    }
+    var_v1->unk14 -= var_f2;
+    arg0->unk36D = MIN(255.0f, var_v1->unk14);
+    var_v1->unk8 += 1.5;
+    var_v1->unkC += var_v1->unk10;
+    arg0->unk340 = (func_80612794(var_v1->unkC) * var_v1->unk8) + var_v1->unk0;
+    arg0->unk348 = (func_80612790(var_v1->unkC) * var_v1->unk8) + var_v1->unk4;
+    if (arg0->unk36D == 0) {
+        *arg1 = 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80719EF4.s")
 
