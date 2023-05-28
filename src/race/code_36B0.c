@@ -343,34 +343,58 @@ void func_8002D0FC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002D148.s")
 
-/*
 s8 func_806FDB8C(s32, s32, s32, f32, f32, f32);
-s32 func_8070E750(s32, s32, s32, u8);
+s32 func_8070E750(s32, s32, s32);
 
-void func_8002D148(void *arg0, s32 arg1) {
-    u8 temp_t6;
+extern s32 D_8002FCD4[];
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s8 unk24;
+    s8 unk25;
+    s8 unk26;
+    u8 unk27;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    u8 unk34;
+    s8 unk35;
+    u8 unk36;
+    s8 unk37[0x45 - 0x37];
+    u8 unk45;
+    s8 unk46;
+} Struct8002D148_unk4;
+
+typedef struct {
+    s32 unk0;
+    Struct8002D148_unk4 *unk4;
+} Struct8002D148;
+
+/*
+// TODO: Regalloc
+void func_8002D148(Struct8002D148 *arg0, u8 arg1) {
     u8 var_a3;
-    void *temp_v0;
-    void *temp_v0_2;
+    Struct8002D148_unk4 *temp_v0;
 
     temp_v0 = arg0->unk4;
-    temp_t6 = arg1 & 0xFF;
-    if (temp_t6 != temp_v0->unk34) {
-        temp_v0->unk34 = temp_t6;
+    if (temp_v0->unk34 != arg1) {
+        temp_v0->unk34 = arg1;
         arg0->unk4->unk35 = 0;
-        if (temp_t6 == 3) {
-            temp_v0_2 = arg0->unk4;
-            var_a3 = temp_v0_2->unk36;
-            if (current_actor_pointer->RaaD->unk1E != (var_a3 + 1)) {
-                if (temp_v0_2->unk45 != 0) {
-                    goto block_4;
-                }
-            } else {
-block_4:
+        if (arg1 == 3) {
+            var_a3 = arg0->unk4->unk36;
+            if (current_actor_pointer->RaaD->unk1E == (arg0->unk4->unk36 + 1) || arg0->unk4->unk45 != 0) {
                 var_a3 = 3;
             }
-            if (temp_v0_2->unk27 == 0) {
-                arg0->unk4->unk46 = func_806FDB8C(1, func_8070E750(0x26, D_8002FCD4[var_a3], 1, var_a3), 2, 160.0f, 100.0f, 0.0f);
+            if (arg0->unk4->unk27 == 0) {
+                arg0->unk4->unk46 = func_806FDB8C(1, func_8070E750(0x26, D_8002FCD4[var_a3], 1), 2, 160.0f, 100.0f, 0.0f);
             }
         }
     }

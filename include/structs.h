@@ -540,7 +540,7 @@ typedef struct race_additional_actor_data {
     s16 unk18;
     s16 unk1A;
     u16 unk1C;
-    s8 unk1E;
+    u8 unk1E;
     s8 unk1F;
     s32 unk20;
     u8  unk24;

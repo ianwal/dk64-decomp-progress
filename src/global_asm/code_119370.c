@@ -1117,7 +1117,34 @@ void func_8071B24C(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk348 += (D_8075E964 * func_80612790(arg0->unk35C));
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B2EC.s")
+extern f32 D_8075E968;
+extern f64 D_8075E970;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80717D84_unk384_8071B2EC;
+
+void func_8071B2EC(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp24;
+    Struct80717D84_unk384_8071B2EC *var_v1;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(8);
+        var_v1 = arg0->unk384;
+        var_v1->unk0 = arg0->unk338->unkEE;
+        arg0->unk384->unk4 = arg0->unk338->unkB8 + 30.0f;
+    }
+    var_v1 = arg0->unk384;
+    arg0->unk344 += (D_8075E968 * 0.5);
+    sp24 = var_v1->unk4 * D_8075E970;
+    arg0->unk340 += (sp24 * func_80612794(var_v1->unk0));
+    arg0->unk348 += (sp24 * func_80612790(arg0->unk384->unk0));
+    arg0->unk384->unk4 -= 15.0f;
+    if (arg0->unk384->unk4 < 0.0f) {
+        arg0->unk384->unk4 = 0.0f;
+    }
+}
 
 void func_8071B44C(Struct80717D84 *arg0, s32 arg1) {
     f32 temp_f6;
@@ -1195,12 +1222,57 @@ void func_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BB14.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BC80.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BE04.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C004.s")
 
+extern s32 D_807201D4; // TODO: Datatype
+void func_8071C24C(void); // TODO: Signature
+
+/*
+// TODO: Close
+void func_8071C004(Struct80717D84 *arg0, s8 *arg1) {
+    f32 temp_f0;
+    s16 sp44[3];
+    f32 temp;
+
+    if (current_map == MAP_HELM_LOBBY) {
+        sp44[0] = 0xFF;
+        sp44[1] = 0x46;
+        sp44[2] = 0;
+    } else {
+        sp44[2] = 0xFF;
+        sp44[1] = 0xFF;
+        sp44[0] = 0xFF;
+    }
+    switch (arg0->unk35C) {
+        case 0:
+            if ((arg0->unk34E == 0xA) && (arg0->unk351 == 0)) {
+                func_806086CC(arg0->unk340, arg0->unk344, arg0->unk348, 0xE4, 0xFF, 0x7F, 0x1E, 0x46, 9.0f, 0);
+                func_807149FC(-1);
+                func_807149B8(1);
+                func_8071498C(&func_8071C24C);
+                func_80714CC0(&D_807201D4, 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
+                return;
+            }
+            temp_f0 = (arg0->unk330->unk16 * 2);
+            temp = 200.0f * (1.0 - ((temp_f0 - ((arg0->unk34E * 2) + arg0->unk351)) / temp_f0));
+            func_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, temp, 0, 0xFF, sp44[1], sp44[2]);
+            return;
+        case 1:
+            temp_f0 = (arg0->unk330->unk16 * 2);
+            temp = 200.0f * ((temp_f0 - ((arg0->unk34E * 2) + arg0->unk351)) / temp_f0);
+            func_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, temp, 0, 0xFF, sp44[1], sp44[2]);
+            return;
+    }
+}
+*/
+
+// Similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C24C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C48C.s")
