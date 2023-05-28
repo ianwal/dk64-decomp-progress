@@ -973,13 +973,64 @@ void func_80719C00(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80719EF4.s")
+extern f32 D_8075E8C0;
+extern f64 D_8075E8C8;
+extern f64 D_8075E8D0;
+extern f32 D_8075E8D8;
+extern f32 D_8075E8DC;
+extern f32 D_8075E8E0;
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80717D84_unk384_80719EF4;
+
+void func_80719EF4(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp1C;
+    f32 temp_f2;
+    f32 temp;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80719EF4));
+        arg0->unk384->unk0 = D_8075E8C0;
+        arg0->unk384->unk4 = arg0->unk35C;
+    }
+    arg0->unk384->unk0 -= D_8075E8C8;
+    if (arg0->unk384->unk0 < D_8075E8D0) {
+        arg0->unk384->unk0 = D_8075E8D8;
+    }
+    temp = func_80612D1C(D_8075E8DC * arg0->unk384->unk4);
+    sp1C = (temp * arg0->unk384->unk0);
+    temp = func_80612D10(D_8075E8E0 * arg0->unk384->unk4);
+    temp_f2 = (temp * arg0->unk384->unk0);
+    arg0->unk340 += sp1C;
+    arg0->unk348 += temp_f2;
+    arg0->unk344 += 1.0f;
+}
+
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071A038.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071A1E4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071A440.s")
+extern Struct80717D84 *D_80028C30;
+extern f64 D_8075E8F8;
+
+void func_8071A440(Struct80717D84 *arg0, s32 arg1) {
+    f32 var_f0;
+
+    var_f0 = (f32)(arg0->unk330->unk16 - arg0->unk34E) / arg0->unk330->unk16;
+    if (D_8075E8F8 < var_f0) {
+        var_f0 = 1.0f;
+    }
+    if (extra_player_info_pointer->vehicle_actor_pointer == arg0->unk35C_actor) {
+        if (arg0 == D_80028C30) {
+            func_806595F0(1);
+            func_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f0 * 50.0, 0, 0xFF, (-80.0f * var_f0) + 255.0f, (-205.0f * var_f0) + 255.0f);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071A674.s")
 
