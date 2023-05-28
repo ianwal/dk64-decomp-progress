@@ -84,8 +84,6 @@ void func_8070F570(void) {
 // Doable, needs some structs defined though (arg0)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FA58.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FC40.s")
-
 extern f32 D_8075E4D8;
 
 typedef struct {
@@ -93,19 +91,18 @@ typedef struct {
     f32 unk4;
 } Struct8070FC40_arg0;
 
-/*
 void func_8070FC40(Struct8070FC40_arg0 *arg0) {
-    f32 temp_f0;
+    f32 temp2 = arg0->unk4; // TODO: Hmm...
+    f32 temp = D_8075E4D8;
 
-    if (arg0->unk4 > D_8075E4D8) {
-        arg0->unk4 = (arg0->unk4 - D_8075E4D8) + 2.0f;
+    if (arg0->unk4 > temp) {
+        arg0->unk4 = (arg0->unk4 - temp) + 2.0f;
     }
     if (arg0->unk4 < 2.0f) {
-        arg0->unk4 = D_8075E4D8 - arg0->unk4;
+        arg0->unk4 = temp - arg0->unk4;
     }
     arg0->unk4 = (s32)arg0->unk4 % 320;
 }
-*/
 
 // Big, need structs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FCCC.s")
