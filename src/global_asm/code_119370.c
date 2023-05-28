@@ -1084,8 +1084,44 @@ void func_8071C818(Struct80717D84 *arg0, s8 *arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071CDE0.s")
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D0F0.s")
+extern u16 D_807FC930[];
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct80717D84_unk384_8071D0F0;
+
+void func_8071D0F0(Struct80717D84 *arg0, s8 *arg1) {
+    Struct80717D84_unk384_8071D0F0 *var_t0;
+    u16 *temp_v1;
+    Actor *sp2C;
+    f32 temp_f0;
+    f32 temp_f12;
+    f32 temp_f14;
+    f32 temp_f2;
+
+    sp2C = arg0->unk35C_actor;
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_8071D0F0));
+        var_t0 = arg0->unk384;
+        var_t0->unk0 = 30.0f;
+    }
+    var_t0 = arg0->unk384;
+    func_80671C0C(sp2C, 1, &var_t0->unk4, &var_t0->unk8, &var_t0->unkC);
+    temp_f0 = var_t0->unk0 / 30.0;
+    arg0->unk340 = ((player_pointer->x_position - var_t0->unk4) * temp_f0) + var_t0->unk4;
+    arg0->unk344 = ((player_pointer->y_position - var_t0->unk8) * temp_f0) + var_t0->unk8;
+    arg0->unk348 = ((player_pointer->z_position - var_t0->unkC) * temp_f0) + var_t0->unkC;
+    var_t0->unk0 -= 1.0f;
+    if (var_t0->unk0 == 0.0f) {
+        extra_player_info_pointer->unk1F0 |= 0x20000;
+        temp_v1 = &D_807FC930[getLevelIndex(D_8076A0AB, 0)];
+        *temp_v1 += 1;
+        *arg1 = 1;
+    }
+}
 
 void func_8071D260(Struct80717D84 *arg0, s8 *arg1) {
     arg0->unk36D -= arg0->unk35C;
@@ -1254,7 +1290,46 @@ void func_8071E110(Struct80717D84 *arg0, u8 arg1, u16 arg2, f32 arg3, f32 arg4, 
     temp_v0->unk14 = arg2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E1C8.s")
+void func_8071E1C8(Struct80717D84 *arg0, s8 *arg1) {
+    f32 temp_f0;
+    s32 pad2;
+    f32 sp3C;
+    s32 pad[3];
+    f32 sp2C;
+    Actor *temp_s2;
+    f32 var_f2;
+    Struct80717D84_unk384_8071E110 *temp_v0;
+    f32 temp;
+
+    if (arg0->unk384 == NULL) {
+        *arg1 = 1;
+        return;
+    }
+    temp_v0 = arg0->unk384;
+    temp_s2 = arg0->unk35C_actor;
+    if (func_8067AF44(temp_s2) == 0) {
+        *arg1 = 1;
+        return;
+    }
+    temp = (temp_v0->unk10 * ((1 - (temp_v0->unk0 * 2)) * 2048));
+    temp = (s16)temp & 0xFFF;
+    sp2C = func_80612794(temp) * temp_v0->unk8;
+    temp_v0->unk14 += (2.0 * ((1 - (temp_v0->unk0 * 2)) * 4096) * temp_v0->unkC);
+    temp_v0->unk14 = (s16)temp_v0->unk14 & 0xFFF;
+    sp3C = func_80612794(temp_v0->unk14) * sp2C;
+    temp_f0 = func_80612790(temp_v0->unk14) * sp2C;
+    var_f2 = temp_v0->unk10 * temp_v0->unk4;
+    if (temp_v0->unk0 == 0.0f) {
+        var_f2 = temp_v0->unk4 - var_f2;
+    }
+    arg0->unk340 = temp_s2->x_position + sp3C;
+    arg0->unk348 = temp_s2->z_position + temp_f0;
+    arg0->unk344 = temp_s2->y_position + var_f2;
+    temp_v0->unk10 = temp_v0->unk10 + temp_v0->unkC;
+    if (temp_v0->unk10 >= 1.0f) {
+        *arg1 = 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E3EC.s")
 
