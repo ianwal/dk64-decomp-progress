@@ -155,9 +155,44 @@ void func_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f3
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072F09C.s")
+void func_8072F09C(Actor *arg0) {
+    GlobalASMStruct82 **var_s2;
+    GlobalASMStruct82 *next;
+    GlobalASMStruct82 *current;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072F120.s")
+    var_s2 = &D_807FDCC0;
+    current = D_807FDCC0;
+    if (current != NULL) {
+        do {
+            if (arg0 == current->unk0) {
+                *var_s2 = current->next;
+                next = current->next;
+                func_8061130C(current);
+                current = next;
+            } else {
+                var_s2 = &current->next;
+                current = current->next;
+            }
+        } while (current != NULL);
+    }
+}
+
+void func_8072F230(Actor*, u8, u8);
+
+void func_8072F120(void) {
+    u8 i;
+    s32 var_v1;
+
+    for (i = 0; i < cc_number_of_players; i++) {
+        if (character_change_array[i].does_player_exist) {
+            var_v1 = isFlagSet(0x183, FLAG_TYPE_PERMANENT)
+                || (D_807FBB64 & 0x10000000)
+                || (cc_number_of_players > 1)
+                || gameIsInDKTVMode();
+            func_8072F230(character_change_array[i].player_pointer, i, var_v1);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072F230.s")
 

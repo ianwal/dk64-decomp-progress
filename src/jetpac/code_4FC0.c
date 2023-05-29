@@ -459,8 +459,22 @@ s32 func_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002ABDC.s")
 
-// Pretty doable, small loop over JetpacStruct array, some nonsense going on with the stack/temp vars though
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AD8C.s")
+void func_8002AD8C(void) {
+    JetpacStruct *var_s0;
+    s32 i;
+
+    var_s0 = &D_8002F1DC;
+    if (func_80026FE0() == 0) {
+        for (i = 0; i < 6; i++) {
+            if (var_s0->unk14 >= 2) {
+                if (var_s0->unk4C != 0) {
+                    func_80029204(var_s0);
+                }
+            }
+            var_s0++;
+        }
+    }
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AE00.s")

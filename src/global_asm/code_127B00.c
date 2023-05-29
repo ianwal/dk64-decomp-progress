@@ -30,7 +30,8 @@ s32 func_80722FEC(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_80723020.s")
 
 typedef struct {
-    u8 pad0[0x14];
+    Actor *unk0;
+    u8 pad4[0x14 - 0x4];
     s8 unk14;
     s8 unk15;
     s8 unk16;
@@ -79,9 +80,17 @@ void func_80723380(s32 arg0, u8 arg1) {
     }
 }
 
-// TODO: Very doable, loop thingy, might need a pointer defined
-// Actor* arg0
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_807233B4.s")
+void func_807233B4(Actor *arg0) {
+    s32 i;
+
+    for (i = 0; i < 0x20; i++) {
+        if (D_807FDBF8[i] != NULL) {
+            if (arg0 == D_807FDBF8[i]->unk0) {
+                func_80723428(i);
+            }
+        }
+    }
+}
 
 void func_80723428(s32 arg0) {
     if (arg0 == -1 || D_807FDBF8[arg0]) {
