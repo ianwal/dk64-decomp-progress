@@ -11,7 +11,6 @@
 extern f32 D_8075B878;
 
 void func_806907F0(f32, f32, f32);
-void func_80690A28(s16, s32, f32, f32, f32, f32, f32, Actor*);
 
 void func_806B7BB8(s32 arg0) {
     s32 phi_v1;

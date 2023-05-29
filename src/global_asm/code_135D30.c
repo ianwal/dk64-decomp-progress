@@ -155,45 +155,37 @@ void func_80731410(s16 arg0, s16 arg1, s16 arg2, u8 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_807314F4.s")
-
-/*
-// Not sure why this doesn't match
 void func_807314F4(s16 arg0, s16 arg1) {
+    s32 max = 0x71;
     s32 i;
-    s32 j;
 
-    for (i = 0; i < 0x71; i++) {
+    for (i = 0; i < max; i++) {
         if ((arg0 == D_80755A20[i].unk0) && (arg1 == D_80755A20[i].unk2)) {
             setFlag(D_80755A20[i].unk4, TRUE, FLAG_TYPE_PERMANENT);
             return;
         }
     }
 
-    for (j = 0; j < 24; j++) {
-        if (D_807FDCD0[j].unk7 && arg0 == D_807FDCD0[j].unk0 && arg1 == D_807FDCD0[j].unk2) {
-            setFlag(D_807FDCD0[j].unk4, TRUE, FLAG_TYPE_PERMANENT);
-            D_807FDCD0[j].unk7 = 0;
+    for (i = 0; i < 24; i++) {
+        if (D_807FDCD0[i].unk7 && arg0 == D_807FDCD0[i].unk0 && arg1 == D_807FDCD0[i].unk2) {
+            setFlag(D_807FDCD0[i].unk4, TRUE, FLAG_TYPE_PERMANENT);
+            D_807FDCD0[i].unk7 = 0;
             return;
         }
     }
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_807315D4.s")
-
-/*
-// Not sure why this doesn't work
 u8 func_807315D4(s16 arg0, s16 arg1) {
     s32 i;
-    for (i = 0; i < 0x71; i++) {
+    s32 max = 0x71;
+
+    for (i = 0; i < max; i++) {
         if ((arg0 == D_80755A20[i].unk0) && (arg1 == D_80755A20[i].unk2)) {
             return isFlagSet(D_80755A20[i].unk4, FLAG_TYPE_PERMANENT);
         }
     }
     return FALSE;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_80731654.s")
 

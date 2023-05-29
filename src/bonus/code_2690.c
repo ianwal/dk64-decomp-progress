@@ -99,7 +99,6 @@ void func_8002733C(s32 arg0) {
 */
 
 void func_806907F0(f32, f32, f32);
-void func_80690A28(s32, s32, f32, f32, f32, f32, f32, Actor *);
 extern f32 D_8002DD28;
 
 void func_800274A0(f32 arg0, f32 arg1, f32 arg2) {

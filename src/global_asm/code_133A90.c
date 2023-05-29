@@ -162,18 +162,16 @@ void func_8072F09C(Actor *arg0) {
 
     var_s2 = &D_807FDCC0;
     current = D_807FDCC0;
-    if (current != NULL) {
-        do {
-            if (arg0 == current->unk0) {
-                *var_s2 = current->next;
-                next = current->next;
-                func_8061130C(current);
-                current = next;
-            } else {
-                var_s2 = &current->next;
-                current = current->next;
-            }
-        } while (current != NULL);
+    while (current != NULL) {
+        if (arg0 == current->unk0) {
+            *var_s2 = current->next;
+            next = current->next;
+            func_8061130C(current);
+            current = next;
+        } else {
+            var_s2 = &current->next;
+            current = current->next;
+        }
     }
 }
 

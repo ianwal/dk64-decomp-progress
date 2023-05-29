@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_80690A28(s16, s16, f32, f32, f32, f32, f32, Actor*);
 void func_8002C520(s16, s16, s16);
 Actor *func_807271F4(s32, s16, s16, s16, s16, s32, s32);
 

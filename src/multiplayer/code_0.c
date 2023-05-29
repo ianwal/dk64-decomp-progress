@@ -213,7 +213,6 @@ typedef struct {
     s32 unk4;
     s32 unk8;
     s32 unkC;
-
 } struct_80026FA4;
 
 struct_80026FA4 *func_80025378();                              /* extern */
