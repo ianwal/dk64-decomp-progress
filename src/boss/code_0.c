@@ -2,7 +2,7 @@
 #include "functions.h"
 
 void func_8072AB74(s32, f32, f32, s32, f32);
-s32 func_80024568(s32, s32, f32, f32, f32);
+s32 func_80024568(s32, u8, f32, f32, f32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024000.s")
 
@@ -111,19 +111,14 @@ void func_8002413C(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024300.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_8002450C.s")
+typedef struct {
+    u8 unk0[0x6 - 0x0];
+    u8 unk6[1]; // TODO: How many elements?
+} Struct8002450C;
 
-void func_8002450C(u8 *, s32, u8);
-
-/*
-// TODO: t6 t7 regalloc...
-void func_8002450C(u8 *arg0, s32 arg1, u8 arg2) {
-    s32 phi_1;
-    
-    phi_1 = *(s32*)(&arg1);
-    arg0[(u8)(phi_1) + 6] = arg2;
+void func_8002450C(Struct8002450C *arg0, u8 arg1, u8 arg2) {    
+    arg0->unk6[arg1] = arg2;
 }
-*/
 
 void func_80024524(u8 arg0, s16 arg1) {
     AnimationStateUnk1C *temp_v0;
@@ -167,16 +162,16 @@ void func_80024FA8(s32 arg0, s32 arg1, s32 arg2, u8 *arg3) {
     switch (current_actor_pointer->control_state_progress) {
         case 2:
             while (arg3[i] != 0xFF) {
-                func_8002450C(arg1, arg3[i++] & 0xFF, 1);
+                func_8002450C(arg1, arg3[i++], 1);
             }
             current_actor_pointer->control_state_progress = 3;
             return;
         case 3:
             while (arg3[i] != 0xFF) {
                 if ((current_actor_pointer->control_state == 0x27) || (current_actor_pointer->control_state == 0x2E)) {
-                    phi_v0_2 = func_80024568(arg1, arg3[i++] & 0xFF, 50.0f, 70.0f, 90.0f);
+                    phi_v0_2 = func_80024568(arg1, arg3[i++], 50.0f, 70.0f, 90.0f);
                 } else {
-                    phi_v0_2 = func_80024568(arg1, arg3[i++] & 0xFF, 10.0f, 15.0f, 50.0f);
+                    phi_v0_2 = func_80024568(arg1, arg3[i++], 10.0f, 15.0f, 50.0f);
                 }
             }
             if (phi_v0_2 != 0) {
@@ -194,13 +189,13 @@ void func_800251A0(s32 arg0, s32 arg1, s32 arg2, u8 *arg3) {
     switch (current_actor_pointer->control_state_progress) {
         case 2:
             while (arg3[i] != 0xFF) {
-                func_8002450C(arg1, arg3[i++] & 0xFF, 3);
+                func_8002450C(arg1, arg3[i++], 3);
             }
             current_actor_pointer->control_state_progress = 3;
             break;
         case 3:
             while (arg3[i] != 0xFF) {
-                phi_v1 = func_80024568(arg1, arg3[i++] & 0xFF, 10.0f, 20.0f, 30.0f) & 0xFF;
+                phi_v1 = func_80024568(arg1, arg3[i++], 10.0f, 20.0f, 30.0f) & 0xFF;
             }
             if (phi_v1 != 0) {
                 current_actor_pointer->control_state_progress = 4;

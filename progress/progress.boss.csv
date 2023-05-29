@@ -34,7 +34,7 @@ us,.code,func_8002EA14,104,yes
 us,.code,func_8002C964,2252,no
 us,.code,func_80028458,32,yes
 us,.code,func_8002FF74,2324,no
-us,.code,func_8002450C,24,no
+us,.code,func_8002450C,24,yes
 us,.code,func_800251A0,380,yes
 us,.code,func_800292B0,272,yes
 us,.code,func_80024FA8,504,yes

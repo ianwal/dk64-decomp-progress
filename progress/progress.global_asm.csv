@@ -2285,7 +2285,7 @@ us,.code,func_80703AB0,584,no
 us,.code,func_806CD988,24,yes
 us,.code,func_8064EC60,264,no
 us,.code,func_80682DF4,68,no
-us,.code,func_8070DB7C,32,no
+us,.code,func_8070DB7C,32,yes
 us,.code,func_806FB418,96,yes
 us,.code,func_8073C9C0,68,yes
 us,.code,func_806FB490,644,no

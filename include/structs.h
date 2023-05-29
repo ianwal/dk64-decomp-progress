@@ -528,6 +528,18 @@ typedef struct another_additional_actor_data {
     u8 unk13; // Used in func_806925AC
 } AnotherAdditionalActorData;
 
+typedef struct {
+    u8 unk0[0x27 - 0x0];
+    u8 unk27;
+    u8 unk28[0x36 - 0x28];
+    u8 unk36;
+} RaaD_unk20_unk4;
+
+typedef struct {
+    s32 unk0;
+    RaaD_unk20_unk4 *unk4;
+} RaaD_unk20;
+
 typedef struct race_additional_actor_data {
     s16 unk0;
     s16 unk2; // used
@@ -542,7 +554,7 @@ typedef struct race_additional_actor_data {
     u16 unk1C;
     u8 unk1E;
     s8 unk1F;
-    s32 unk20;
+    RaaD_unk20 *unk20; // Array
     u8  unk24;
     u8  unk25;
     s8  unk26;

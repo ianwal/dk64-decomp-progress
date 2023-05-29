@@ -256,14 +256,14 @@ void func_8002B6F4(RaceStruct7 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002B964.s")
 
-void func_80611690(void*);
+void func_80611690(RaaD_unk20*);
 
 void func_8002BBD0(Actor *arg0, s32 arg1) {
     RaceAdditionalActorData *sp1C;
-    void *temp_v0;
+    RaaD_unk20 *temp_v0;
 
     sp1C = arg0->RaaD;
-    temp_v0 = malloc(arg1 * 8);
+    temp_v0 = malloc(arg1 * sizeof(RaaD_unk20));
     sp1C->unk20 = temp_v0;
     func_80611690(temp_v0);
     sp1C->unk1E = arg1;
@@ -271,10 +271,79 @@ void func_8002BBD0(Actor *arg0, s32 arg1) {
     arg0->control_state = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002BC2C.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s8 unk24;
+    s8 unk25;
+    u8 unk26;
+    u8 unk27;
+    u8 unk28;
+    u8 unk29;
+    u8 unk2A;
+    u8 unk2B;
+    s32 unk2C;
+    s32 unk30;
+    u8 unk34;
+    s8 unk35;
+    u8 unk36;
+    u8 unk37;
+    u8 unk38;
+    u8 unk39;
+    s16 unk3A;
+    u16 unk3C;
+    s8 unk3E[0x45 - 0x3E];
+    u8 unk45;
+    s8 unk46;
+    u8 unk47;
+    u32 unk48;
+} Struct8002D148_unk4;
 
-// aaD use
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002BCB0.s")
+typedef struct {
+    s32 unk0;
+    Struct8002D148_unk4 *unk4;
+} Struct8002D148;
+
+u16 *func_8002E960(u8);
+
+void func_8002BC2C(Actor *arg0, s32 arg1, s32 arg2, Struct8002D148_unk4 *arg3) {
+    u16 *temp_v0_2;
+    RaceAdditionalActorData *RaaD;
+    RaaD_unk20 *temp_v0;
+
+    RaaD = arg0->RaaD;
+    temp_v0 = RaaD->unk20;
+    temp_v0[arg1].unk0 = arg2;
+    temp_v0[arg1].unk4 = arg3;
+    arg3->unk45 = 0;
+    arg3->unk3A = 0;
+    arg3->unk37 = 1;
+    if (arg3->unk27 == 0) {
+        temp_v0_2 = func_8002E960(RaaD->unk26);
+        if (temp_v0_2 != NULL) {
+            arg3->unk3C = *temp_v0_2 - 1;
+            func_8002F36C(arg3, temp_v0_2);
+        }
+        arg3->unk48 = func_806C7C94(arg3->unk28);
+    }
+}
+
+void func_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3) {
+    RaceAdditionalActorData *aaD;
+    RaaD_unk20 *temp_t0;
+
+    aaD = arg0->RaaD;
+    temp_t0 = aaD->unk20;
+    *arg2 = temp_t0[arg1].unk0;
+    *arg3 = temp_t0[arg1].unk4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002BCD4.s")
 
@@ -348,36 +417,6 @@ s32 func_8070E750(s32, s32, s32);
 
 extern s32 D_8002FCD4[];
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s8 unk24;
-    s8 unk25;
-    s8 unk26;
-    u8 unk27;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    u8 unk34;
-    s8 unk35;
-    u8 unk36;
-    s8 unk37[0x45 - 0x37];
-    u8 unk45;
-    s8 unk46;
-} Struct8002D148_unk4;
-
-typedef struct {
-    s32 unk0;
-    Struct8002D148_unk4 *unk4;
-} Struct8002D148;
-
 /*
 // TODO: Regalloc
 void func_8002D148(Struct8002D148 *arg0, u8 arg1) {
@@ -401,8 +440,22 @@ void func_8002D148(Struct8002D148 *arg0, u8 arg1) {
 }
 */
 
-// RaaD->unk20 struct array use
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002D224.s")
+void func_8002D148(RaaD_unk20*, u8);
+
+void func_8002D224(u8 arg0) {
+    RaaD_unk20 *var_s0;
+    s32 i;
+    RaceAdditionalActorData *RaaD;
+
+    RaaD = current_actor_pointer->RaaD;
+    var_s0 = RaaD->unk20;
+    current_actor_pointer->control_state = arg0;
+    for (i = 0; i < RaaD->unk1E; i++) {
+        if (var_s0[i].unk0 != 0) {
+            func_8002D148(&var_s0[i], arg0);
+        }
+    }
+}
 
 extern f32 D_800300E8;
 
@@ -436,8 +489,33 @@ extern f32 D_800300F0;
 // dx dy dz calculation
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002D360.s")
 
-// RaaD->unk20-> struct array 0x8 big loop
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002D40C.s")
+void func_8002D40C(void) {
+    s32 song;
+    s32 i;
+    RaceAdditionalActorData *RaaD;
+    RaaD_unk20_unk4 *temp_v0_2;
+    RaaD_unk20 *var_a0;
+
+    RaaD = current_actor_pointer->RaaD;
+    song = 0;
+    i = RaaD->unk1E - 1;
+    var_a0 = &RaaD->unk20[i];
+    while (song == 0 && i >= 0) {
+        if (RaaD->unk20[i].unk4->unk27 == 1) {
+            if (RaaD->unk20[i].unk4->unk36 != 0) {
+                song = 0x56;
+            } else {
+                song = 0x57;
+            }
+        }
+        i--;
+        var_a0--;
+    }
+    if (song == 0) {
+        song = 0x56;
+    }
+    playSong(song, 1.0f);
+}
 
 void func_8002D4A0(void) {
     s32 song;
@@ -463,6 +541,7 @@ void func_8002D4A0(void) {
     playSong(song, phi_f0);
 }
 
+// RaaD 0x20 array
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002D524.s")
 
 void func_8002D72C(Actor *arg0) {
@@ -655,6 +734,7 @@ f32 func_8002E1C8(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2
     return var_f2;
 }
 
+// Doable, A178 & A17C stuff though
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002E2C8.s")
 
 void func_8002E464(s32 arg0, Actor *arg1) {
