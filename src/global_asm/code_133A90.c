@@ -7,43 +7,153 @@ s32 func_8063367C(s32, s32, s32);
 s32 func_80671D64(s32, s32);
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
     s16 unk10;
     s16 unk12;
     s16 unk14;
     s16 unk16;
-    s32 unk18;
+    s8 unk18;
+    s8 unk19;
+    s8 unk1A;
+    s8 unk1B;
 } Unk34;
 
-typedef struct {
-    s32 unk0; // Used
+typedef struct GlobalASMStruct82 GlobalASMStruct82;
+
+struct GlobalASMStruct82 {
+    Actor *unk0; // Used
     u8 unk4; // Used
     u8 unk5;
-    u16 unk6;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10[4];
-    s32 unk20[4];
-    s32 unk30;
+    u8 unk6;
+    u8 unk7;
+    f32 unk8;
+    f32 unkC;
+    s32 unk10;
+    f32 unk14;
+    s8 unk18;
+    s8 unk19;
+    s8 unk1A;
+    s8 unk1B;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    s8 unk30;
+    s8 unk31;
+    s8 unk32;
+    s8 unk33;
     Unk34 *unk34;
-} GlobalASMStruct82; // TODO: Might be D_807FDCC0
+    GlobalASMStruct82 *next;
+};
 
-extern s32 D_807FDCC0;
+extern GlobalASMStruct82 *D_807FDCC0;
 
 void func_8072ED90(void) {
-    D_807FDCC0 = 0;
+    D_807FDCC0 = NULL;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072ED9C.s")
+void func_8072ED9C(Actor *arg0, u8 arg1, u8 arg2) {
+    s32 found;
+    GlobalASMStruct82 *current;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072EE0C.s")
+    current = D_807FDCC0;
+    found = FALSE;
+    while (current != NULL && !found) {
+        if (arg0 == current->unk0 && current->unk5 == arg1) {
+            found = TRUE;
+        } else {
+            current = current->next;
+        }
+    }
+    if (found) {
+        current->unk31 = arg2;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072EE7C.s")
+void func_8072EE0C(Actor *arg0, u8 arg1, u8 arg2) {
+    s32 found;
+    GlobalASMStruct82 *current;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072EF7C.s")
+    current = D_807FDCC0;
+    found = FALSE;
+    while (current != NULL && !found) {
+        if (arg0 == current->unk0 && current->unk5 == arg1) {
+            found = TRUE;
+        } else {
+            current = current->next;
+        }
+    }
+    if (found) {
+        current->unk18 = arg2;
+    }
+}
+
+void func_8072EE7C(s32 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, u8 argB, f32 argC, f32 argD, u8 argE) {
+    GlobalASMStruct82 **var_t0;
+    GlobalASMStruct82 *current;
+    GlobalASMStruct82 *sp18;
+
+    var_t0 = &D_807FDCC0;
+    current = D_807FDCC0;
+    while (current != NULL) {
+        var_t0 = &current->next;
+        current = current->next;
+    }
+    current = malloc(sizeof(GlobalASMStruct82));
+    *var_t0 = current;
+    current->unk0 = arg0;
+    current->unk4 = arg1;
+    current->unk5 = arg2;
+    current->unk6 = arg3;
+    current->unk7 = arg4;
+    current->unk8 = arg5;
+    current->unkC = arg6;
+    current->unk14 = arg7;
+    current->unk1C = arg8;
+    current->unk20 = arg9;
+    current->unk24 = argA;
+    current->unk18 = argB;
+    current->unk28 = argC;
+    current->unk2C = argD;
+    current->unk30 = argE;
+    current->unk31 = 1;
+    current->next = NULL;
+    current->unk34 = malloc(arg4 * sizeof(Unk34));
+}
+
+void func_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, u8 arg8, s16 arg9, s16 argA, s16 argB, s16 argC) {
+    GlobalASMStruct82 *current;
+    s32 found;
+
+    current = D_807FDCC0;
+    found = FALSE;
+    while (current != NULL && !found) {
+        if (arg0 == current->unk0 && current->unk5 == arg1) {
+            found = TRUE;
+        } else {
+            current = current->next;
+        }
+    }
+    if (found) {
+        current->unk34[arg2].unk0 = arg3;
+        current->unk34[arg2].unk1 = arg4;
+        current->unk34[arg2].unk4 = arg5;
+        current->unk34[arg2].unk8 = arg6;
+        current->unk34[arg2].unkC = arg7;
+        current->unk34[arg2].unk18 = arg8;
+        current->unk34[arg2].unk10 = arg9;
+        current->unk34[arg2].unk14 = argA;
+        current->unk34[arg2].unk12 = argB;
+        current->unk34[arg2].unk16 = argC;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072F09C.s")
 

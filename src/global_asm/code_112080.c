@@ -251,12 +251,19 @@ void func_8070DA28(AAD_806A4DDC *arg0) {
 
 typedef struct Struct8070DB9C Struct8070DB9C;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+} Struct8070DB9C_unk4;
+
 struct Struct8070DB9C {
     u8 unk0;
     u8 unk1;
     u8 unk2;
     u8 unk3;
-    s32 unk4;
+    Struct8070DB9C_unk4 *unk4;
     Struct8070DB9C *unk8;
 };
 
@@ -291,7 +298,14 @@ void func_8070DB9C(Struct8070DB9C *arg0) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DC40.s")
+void func_8070DC40(Struct8070DB9C *arg0) {
+    s32 i;
+
+    for (i = 0; i < arg0->unk0; i++) {
+        func_8070DB9C(&arg0->unk4[i]);
+    }
+    func_8061134C(arg0->unk4);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DCA4.s")
 

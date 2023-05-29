@@ -14,12 +14,27 @@ void func_806FB488(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FB714.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FB8B0.s")
+s32 func_806FB490(u8, s32, s32, s16, s32, s8 *, s32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FB914.s")
+typedef struct {
+    u8 unk0[0x17C - 0x0];
+    s16 unk17C;
+    u8 unk17E;
+} Struct80754A18;
 
 extern s32 *D_807FD7F0; // Array of 43 texture pointers
 extern u8 *D_807FD7F4; // Array of 43 u8's
+extern Struct80754A18 *D_80754A18;
+
+void func_806FB8B0(s32 arg0) {
+    s8 sp2F;
+
+    sp2F = 0;
+    func_806FBB9C(2);
+    func_806FB490(D_80754A18->unk17E, arg0, D_807FD7F0[2], D_80754A18->unk17C, 2, &sp2F, 0x30);
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FB914.s")
 
 void func_806FBB58() {
     D_807FD7F0 = malloc(sizeof(s32) * 43);

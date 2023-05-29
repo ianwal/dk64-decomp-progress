@@ -5451,8 +5451,30 @@ void func_806DF670(s16 *arg0, s16 arg1, s16 arg2) {
 // controlStateControl()
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DF6D4.s")
 
-// bitfield & loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DFF34.s")
+
+/*
+// TODO: Pretty close
+u16 func_806DFF34(u32 arg0, u16 *arg1) {
+    u16 var_a2;
+    u16 var_v1;
+    u32 var_v0;
+
+    var_v0 = *arg1;
+    var_v1 = 0;
+    var_a2 = 0;
+    while (var_v0 != 0) {
+        var_v1 |= var_v0;
+        arg1++;
+        if (var_v0 & arg0) {
+            var_a2 |= arg1[0];
+        }
+        var_v0 = arg1[1];
+        arg1++;
+    }
+    return (var_a2 | (arg0 & ~var_v1));
+}
+*/
 
 f32 func_806DFFA0(f32 arg0, s16 arg1, s16 arg2) {
     return func_80612790(arg2 - arg1) * arg0;
