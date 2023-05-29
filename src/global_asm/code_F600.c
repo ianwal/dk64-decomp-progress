@@ -1,10 +1,12 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s8 D_80746834;
+
 extern OSContStatus D_807ECCD0;
 extern void *D_807ECCE0;
 extern OSMesgQueue D_807ECCF0;
-extern s8 D_807ECD08;
+extern u8 D_807ECD08;
 extern u8 D_807ECD09;
 extern u8 D_807ECD10;
 extern u8 D_807ECD28;
@@ -42,7 +44,14 @@ void func_8060A9BC(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_8060AA04.s")
+void func_8060AA04(void) {
+    if (D_807ECD08 != 0) {
+        D_80746834 = 2;
+        osRecvMesg(&D_807ECCF0, NULL, 1);
+        D_80746834 = 0;
+        D_807ECD08 = 0;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_8060AA58.s")
 

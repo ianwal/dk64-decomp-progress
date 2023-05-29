@@ -398,7 +398,11 @@ void func_806338F4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806348B4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80634908.s")
+void func_80633A1C(s32 arg0, void *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8);
+
+void func_80634908(s32 arg0, void *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
+    func_80633A1C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063495C.s")
 

@@ -31,19 +31,14 @@ void func_8070C210(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 a
     mf[3][2] = arg6;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_8070C27C.s")
+void func_8070C210(float (*mf)[4], f32, f32, f32, f32, f32, f32);
 
-/*
-void func_8070C210(Mtx*, f32, f32, f32, f32, f32, f32);
-
-// TODO: Something off here with stack/params
 void func_8070C27C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
-    Mtx sp28;
+    f32 sp28[4][4];
 
-    func_8070C210(&sp28, arg1, arg2, arg4, arg5, arg6, arg7);
+    func_8070C210(&sp28, arg1, arg2, arg3, arg4, arg5, arg6);
     guMtxF2L(&sp28, arg0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_8070C2D8.s")
 

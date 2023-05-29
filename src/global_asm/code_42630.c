@@ -1072,8 +1072,9 @@ void func_8064A194(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064A804.s")
 
-// Something to do with caves ice tomato board
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064AAC4.s")
+void func_8064AAC4(s32 arg0, s16 arg1, s8 arg2, s32 arg3) {
+    func_806BD094(D_807F6000[func_80659470(arg1)].unk8A, arg2);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064AB1C.s")
 
@@ -1089,24 +1090,21 @@ void func_8064B118(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B190.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B204.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B260.s")
-
-/*
 typedef struct {
-    s32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} GlobalASMStruct54;
+    u8 unk0[0x14 - 0x0];
+    f32 unk14[1]; // TODO: How many?
+} Struct8064BAF4;
 
-void func_8064B260(GlobalASMStruct54 *arg0, s32 arg1, s16 arg2, s32 arg3) {
-    arg0[arg2 + 1].unk4 = player_pointer->unk100;
-    arg0[arg2 + 1].unk8 = player_pointer->unk104;
-    arg0[arg2 + 1].unkC = player_pointer->unk108;
+void func_8064B204(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s32 arg3) {
+    arg0->unk14[arg2] = -1.0 - arg0->unk14[arg2];
+    arg0->unk14[arg2] = 0.0 - arg0->unk14[arg2];
 }
-*/
+
+void func_8064B260(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s32 arg3) {
+    arg0->unk14[arg2] = player_pointer->unk100;
+    arg0->unk14[arg2 + 1] = player_pointer->unk104;
+    arg0->unk14[arg2 + 2] = player_pointer->unk108;
+}
 
 extern f32 D_807F621C;
 extern f32 D_807F6220;
@@ -1334,7 +1332,9 @@ void func_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B9E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064BAF4.s")
+u8 func_8064BAF4(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s16 arg3) {
+    return arg0->unk14[arg2] < arg0->unk14[arg3];
+}
 
 // TODO: This probably returns the result of func_805FF0C8, if not, this is cursed
 void func_8064BB4C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {

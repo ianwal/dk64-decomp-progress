@@ -123,3 +123,9 @@ void func_807380CC(s32 arg0, s32 arg1, u8 arg2) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13CB50/func_80738118.s")
+
+/*
+void func_80738118(s32 arg0, s32 arg1, u8 arg2) {
+    func_807382A0(arg0, 0, arg1 | 0xB0, 0xFC, arg2);
+}
+*/

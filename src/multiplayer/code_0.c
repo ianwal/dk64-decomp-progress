@@ -3,7 +3,30 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80024000.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800241F4.s")
+typedef struct {
+    u8 unk0[0x2FE - 0x0];
+    u16 unk2FE[4]; // TODO: how many?
+} Struct800241F4;
+
+s32 func_800241F4(Struct800241F4 *arg0, s32 arg1) {
+    s32 var_v1;
+    s32 temp = arg1;
+
+    var_v1 = -arg0->unk2FE[temp];
+    if (temp != 0) {
+        var_v1 += arg0->unk2FE[0];
+    }
+    if (temp != 1) {
+        var_v1 += arg0->unk2FE[1];
+    }
+    if (temp != 2) {
+        var_v1 += arg0->unk2FE[2];
+    }
+    if (temp != 3) {
+        var_v1 += arg0->unk2FE[3];
+    }
+    return var_v1;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80024254.s")

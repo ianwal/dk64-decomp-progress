@@ -41,7 +41,7 @@ us,.code,func_80027CE8,1024,no
 us,.code,func_8002E1C8,256,yes
 us,.code,sealRaceSetup,32,yes
 us,.code,func_8002ECD4,48,yes
-us,.code,func_8002F280,132,no
+us,.code,func_8002F280,132,yes
 us,.code,func_8002E2C8,412,no
 us,.code,func_8002E9AC,76,no
 us,.code,func_8002BBD0,92,yes
