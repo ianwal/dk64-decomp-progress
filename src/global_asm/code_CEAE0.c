@@ -149,9 +149,9 @@ typedef struct {
     u8 unk2;
     u8 unk3;
     u8 unk4;
-} GlobalASMStruct0;
+} Struct807FD568;
 
-extern GlobalASMStruct0 *D_807FD568; // TODO: Unknown struct
+extern Struct807FD568 *D_807FD568; // TODO: Unknown struct
 
 extern s16 D_807FD584; // index into a ton of arrays
 extern u8 D_807FD586;

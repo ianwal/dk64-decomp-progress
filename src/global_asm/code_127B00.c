@@ -115,5 +115,9 @@ s16 func_807245D8(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_807245F0.s")
 
-// Unknown struct arg0, only function that calls it is a jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_80724874.s")
+void func_80724874(Actor *arg0) {
+    if (arg0->unk118 != NULL) {
+        func_8061130C(arg0->unk118);
+        arg0->unk118 = NULL;
+    }
+}

@@ -99,7 +99,7 @@ void func_8002452C(void) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025264.s")
 
-// D_80026FA4 struct array? Loop
+// D_80026FA4 struct array? Loop, very fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025378.s")
 
 s32 func_800253C8(void) {

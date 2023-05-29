@@ -126,31 +126,24 @@ void func_8066E21C(LedgeInfo *ledgeInfo) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066E2C0.s")
 
-typedef struct {
-    u8  pad0[0x24];
-    u16 unk24;
-    u8 unk26;
-    u8 unk27;
-} GlobalASMStruct0;
+LedgeInfo8C *func_8066EAEC(Actor*, s32);
 
-GlobalASMStruct0 *func_8066EAEC(s32, s32);
-
-void func_8066E5CC(s32 arg0, s32 arg1, u16 arg2) {
-    GlobalASMStruct0 *temp_v0 = func_8066EAEC(arg0, arg1);
+void func_8066E5CC(Actor *arg0, s32 arg1, u16 arg2) {
+    LedgeInfo8C *temp_v0 = func_8066EAEC(arg0, arg1);
     if (temp_v0) {
         temp_v0->unk24 = arg2;
     }
 }
 
-void func_8066E5F8(s32 arg0, s32 arg1, u8 arg2) {
-    GlobalASMStruct0 *temp_v0 = func_8066EAEC(arg0, arg1);
+void func_8066E5F8(Actor *arg0, s32 arg1, u8 arg2) {
+    LedgeInfo8C *temp_v0 = func_8066EAEC(arg0, arg1);
     if (temp_v0) {
         temp_v0->unk27 |= arg2;
     }
 }
 
-void func_8066E62C(s32 arg0, s32 arg1, u8 arg2) {
-    GlobalASMStruct0 *temp_v0 = func_8066EAEC(arg0, arg1);
+void func_8066E62C(Actor *arg0, s32 arg1, u8 arg2) {
+    LedgeInfo8C *temp_v0 = func_8066EAEC(arg0, arg1);
     if (temp_v0) {
         temp_v0->unk27 &= ~arg2;
     }
@@ -303,24 +296,53 @@ f32 func_8066E9EC(Actor *arg0, s32 arg1, f32 arg2) {
 }
 */
 
-void func_8066EA64(s32 arg0, s32 arg1) {
-    GlobalASMStruct0 *temp_v0 = func_8066EAEC(arg0, arg1);
+void func_8066EA64(Actor *arg0, s32 arg1) {
+    LedgeInfo8C *temp_v0 = func_8066EAEC(arg0, arg1);
     if (temp_v0) {
         temp_v0->unk26 = 1;
     }
 }
 
-void func_8066EA90(s32 arg0, s32 arg1) {
-    GlobalASMStruct0 *temp_v0 = func_8066EAEC(arg0, arg1);
+void func_8066EA90(Actor *arg0, s32 arg1) {
+    LedgeInfo8C *temp_v0 = func_8066EAEC(arg0, arg1);
     if (temp_v0) {
         temp_v0->unk26 = 0;
     }
 }
 
-//related to the struct used above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066EABC.s")
+void func_8066EABC(Actor *arg0) {
+    LedgeInfo *ledgeInfo;
+    LedgeInfo8C *current;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066EAEC.s")
+    ledgeInfo = arg0->ledge_info_pointer;
+    if (ledgeInfo != NULL) {
+        current = ledgeInfo->unk8C;
+        while (current != NULL) {
+            current->unk26 = 0;
+            current = current->next;
+        }
+    }
+}
+
+LedgeInfo8C *func_8066EAEC(Actor *arg0, s32 arg1) {
+    LedgeInfo *ledgeInfo;
+    LedgeInfo8C *current;
+
+    ledgeInfo = arg0->ledge_info_pointer;
+    arg1--;
+    if (ledgeInfo != NULL) {
+        current = ledgeInfo->unk8C;
+        while (arg1 != 0 && current != NULL) {
+            arg1--;
+            current = current->next;
+        }
+        if (current != NULL) {
+            return current;
+        }
+        return NULL;
+    }
+    return NULL;
+}
 
 void func_8066EB40(Actor *arg0, f32 arg1) {
     LedgeInfo *ledgeInfo = arg0->ledge_info_pointer;

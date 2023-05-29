@@ -214,17 +214,16 @@ extern Struct80755DA8 D_80755DA8[]; // 0x1F
 // TODO: Close
 s16 func_80731784(s16 map, s16 spawnerID, s32 *arg2) {
     s16 i;
+    s16 max = 0x1F;
 
     *arg2 = 0;
-    i = 0;
-    while (i < 0x1F) {
+    for (i = 0; i < max; i++) {
         if (map == D_80755DA8[i].map) {
             if (spawnerID == D_80755DA8[i].spawnerID) {
                 *arg2 = i;
                 return D_80755DA8[i].flagIndex;
             }
         }
-        i++;
     }
     return -1;
 }
@@ -250,8 +249,25 @@ s16 func_8073195C(s16 arg0) {
     return D_80755F4C[arg0].unk0;
 }
 
-// Doable, unrolled loop, struct array
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_8073198C.s")
+typedef struct {
+    s16 unk0;
+    u8 unk2;
+    u8 unk3;
+} Struct80755F50;
+
+extern Struct80755F50 D_80755F50[];
+
+u8 func_8073198C(s16 arg0) {
+    s32 i;
+    s32 max = 0x35;
+
+    for (i = 0; i < max; i++) {
+        if (arg0 == D_80755F50[i].unk0) {
+            return D_80755F50[i].unk2;
+        }
+    }
+    return 0;
+}
 
 // Returns a permanent flag index
 s32 func_807319D8(s32 arg0, s32 arg1, s32 arg2) {

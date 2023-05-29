@@ -224,7 +224,7 @@ typedef struct {
     s32 unk264;
     s32 unk268;
     GlobalASMStruct6 *unk26C;
-    s32 unk270;
+    GlobalASMStruct6 *unk270;
     s32 unk274;
 } GlobalASMStruct87;
 
@@ -247,7 +247,7 @@ s32 func_8060EE58(s32 arg0) {
 // Jumptable, appears to be the main function of a thread
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060EE60.s")
 
-s32 func_8060F928(GlobalASMStruct87*, GlobalASMStruct6*);
+void func_8060F928(GlobalASMStruct87*, GlobalASMStruct6*);
 
 void func_8060F1D0(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
     func_8060F928(arg0, arg1);
@@ -279,25 +279,20 @@ void func_8060F208(GlobalASMStruct87 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F854.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F928.s")
-
-/*
-s32 func_8060F928(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
+void func_8060F928(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
     s32 temp_v0;
 
     temp_v0 = arg1->unk10;
     if (temp_v0 == 2) {
-        //*arg0->unk26C = arg1;
+        arg0->unk26C->unk0 = arg1;
         arg0->unk26C = arg1;
     } else {
-        //*arg0->unk270 = arg1;
+        arg0->unk270->unk0 = arg1;
         arg0->unk270 = arg1;
     }
     arg1->unk0 = 0;
     arg1->unk4 = 2;
-    return temp_v0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F960.s")
 

@@ -82,9 +82,12 @@ void *func_806022DC(void *arg0) {
 }
 */
 
+// Libultra stuff osRecvMesg, alUnlink, alLink
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602314.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602430.s")
+u8 func_80602430(s16 arg0) {
+    return ((D_80745658[arg0] & 6) >> 1);
+}
 
 u8 func_8060245C(s16 arg0) {
     return (D_80745658[arg0] & 0x78) >> 3;
@@ -94,6 +97,7 @@ void func_80602488(u8 arg0) {
     D_80745654 = arg0;
 }
 
+// Doable, kinda annoying
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602498.s")
 
 void func_806025AC(s32 arg0, s32 arg1, s32 arg2) {

@@ -934,7 +934,15 @@ void func_80669588(s32 arg0, f32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669650.s")
+s32 func_80669650(u8 arg0, u8 *arg1) {
+    u8 i;
+    for (i = 0; i < 2; i++) {
+        if (arg1[i] != 0xFF && arg0 == arg1[i]) {
+            return 0;
+        }
+    }
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806696A0.s")
 

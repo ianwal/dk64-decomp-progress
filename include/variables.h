@@ -142,8 +142,13 @@ extern GlobalASMStruct53 D_807FB930[];
 
 typedef struct global_asm_struct_58 GlobalASMStruct58;
 
+typedef struct {
+    u8 unk0[0x64 - 0x0];
+    u8 unk64;
+} GlobalASMStruct58_unk0;
+
 struct global_asm_struct_58 {
-    void *unk0; // used, at least 0x65 big (func_80661264, func_8065F5F0), not sure what datatype though
+    GlobalASMStruct58_unk0 *unk0; // used, at least 0x65 big (func_80661264, func_8065F5F0), not sure what datatype though
     f32 unk4; // used
     f32 unk8; // used
     f32 unkC; // used

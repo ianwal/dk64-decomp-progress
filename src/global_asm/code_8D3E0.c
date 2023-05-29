@@ -291,11 +291,25 @@ u16 func_80688C84(u16 arg0) {
 }
 */
 
-// Something unk124
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80688CC4.s")
+typedef struct {
+    f32 unk0[8];
+} A124_80688CC4;
 
-// Something unk124
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80688CF4.s")
+void func_80688CC4(Actor *arg0, s16 arg1, f32 arg2) {
+    if (arg1 < 8) {
+        ((A124_80688CC4*)arg0->unk124)->unk0[arg1] = arg2;
+    }
+}
+
+typedef struct {
+    s32 unk0[8];
+} A124_80688CF4;
+
+void func_80688CF4(Actor *arg0, s16 arg1, s32 arg2) {
+    if (arg1 < 8) {
+        ((A124_80688CF4*)arg0->unk124)->unk0[arg1] = arg2;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80688D20.s")
 

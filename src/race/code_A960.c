@@ -42,9 +42,18 @@ typedef struct {
     s32 unk24;
 } RaceStruct2_unkC;
 
-typedef struct RaceStruct2 {
+typedef struct {
     s32 unk0;
     s32 unk4;
+    s32 unk8;
+} RaceStruct2_unk4;
+
+typedef struct RaceStruct2 {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    RaceStruct2_unk4 *unk4;
     u16 unk8;
     s16 unkA;
     RaceStruct2_unkC *unkC;
@@ -53,16 +62,25 @@ extern RaceStruct2 *D_8002FCF0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002E960.s")
 
+/*
+// TODO: Regalloc a1 v1
+void *func_8002E960(u8 arg0) {
+    if (D_8002FCF0 == NULL || arg0 >= D_8002FCF0->unk0) {
+        return NULL;
+    }
+    return &D_8002FCF0->unk4[arg0];
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002E9AC.s")
 
 /*
 // TODO: Regalloc a1 v1, if I make it an arg it causes func_8002F36C and func_8002F420 to not match
 void *func_8002E9AC(u8 arg0) {
-    RaceStruct2 *arg1 = D_8002FCF0;
-    if ((arg1 == 0) || (arg0 >= arg1->unk8)) {
+    if ((D_8002FCF0 == NULL) || (arg0 >= D_8002FCF0->unk8)) {
         return NULL;
     }
-    return &arg1->unkC[arg0];
+    return &D_8002FCF0->unkC[arg0];
 }
 */
 

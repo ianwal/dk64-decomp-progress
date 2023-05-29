@@ -4,6 +4,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8064F450.s")
 
+// OM2_unk24 shenanigans
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8064F6C0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8064F6F8.s")

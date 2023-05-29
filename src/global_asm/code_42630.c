@@ -1093,22 +1093,18 @@ void func_8064B118(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B260.s")
 
+/*
 typedef struct {
     s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    f32 unk14;
-    f32 unk18;
-    f32 unk1C;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
 } GlobalASMStruct54;
 
-/*
 void func_8064B260(GlobalASMStruct54 *arg0, s32 arg1, s16 arg2, s32 arg3) {
-    arg0[arg2].unk14 = player_pointer->unk100;
-    arg0[arg2].unk18 = player_pointer->unk104;
-    arg0[arg2].unk1C = player_pointer->unk108;
+    arg0[arg2 + 1].unk4 = player_pointer->unk100;
+    arg0[arg2 + 1].unk8 = player_pointer->unk104;
+    arg0[arg2 + 1].unkC = player_pointer->unk108;
 }
 */
 

@@ -361,10 +361,30 @@ void func_806335B0(s32 arg0, u8 arg1, s32 arg2, f32 *arg3, f32 *arg4, f32 *arg5)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063373C.s")
 
-// Loop, struct arg1, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806338B4.s")
+void func_806338B4(OM2_unk74 *arg0);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806338F4.s")
+void func_806338B4(OM2_unk74 *current) {
+    OM2_unk74 *next;
+
+    if (current != NULL) {
+        do {
+            next = current->next;
+            func_8061130C(current);
+            current = next;
+        } while (next != NULL);
+    }
+}
+
+void func_806338F4(s32 arg0) {
+    OM2_unk48 *temp_v0;
+    u8 i;
+
+    temp_v0 = &D_807F6000[arg0].unk48;
+    for (i = 0; i < 2; i++) {
+        temp_v0->unk25[i] = 0xFF;
+    }
+    temp_v0->unk24 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063393C.s")
 
@@ -617,7 +637,6 @@ void func_8066C904(void *arg0);
 
 Chunk14 *func_80630588(Chunk14 *arg0, s32 arg1, u8 arg2, u8 *arg3);
 
-void func_806338B4(void *arg0);
 void func_8064F804(void *arg0);
 
 void func_806593C8(s32 arg0, s32 arg1);

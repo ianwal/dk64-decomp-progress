@@ -65,6 +65,17 @@ s32 func_8073202C(s32 arg0, s32 *arg1, s32 *arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80732064.s")
 
+/*
+// Regalloc
+s32 func_80732064(s32 arg0, s32 *arg1) {
+    if ((arg0 & 0xFFFF0000) == 0x27BD0000) {
+        *arg1 += (s16)arg0;
+        return TRUE;
+    }
+    return FALSE;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_8073209C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80732158.s")

@@ -182,6 +182,7 @@ void *func_806111F8(s32 arg0, u32 arg1) {
 }
 */
 
+// free()?
 void func_8061130C(HeapHeader *arg0) {
     // TODO: Oof, I don't like the second condition there but it does match...
     if ((arg0 != D_807F5A64) && ((--arg0)->unkB == 0)) {

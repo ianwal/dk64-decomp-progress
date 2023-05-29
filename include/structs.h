@@ -1555,7 +1555,7 @@ struct OM2_unk74 {
     f32 unk0;
     f32 unk4;
     f32 unk8;
-    s32 next;
+    OM2_unk74 *next;
 };
 
 typedef struct {
@@ -1571,6 +1571,12 @@ typedef struct {
     s16 unk10;
     s16 unk12;
 } OM2_unk78;
+
+typedef struct {
+    u8 unk0[0x24 - 0x0];
+    u8 unk24;
+    u8 unk25[2];
+} OM2_unk48;
 
 typedef struct object_model2 {
     f32 x_position; // at 0x00
@@ -1591,7 +1597,7 @@ typedef struct object_model2 {
     s32 unk3C;
     s32 unk40;
     s32 unk44;
-    s32 unk48;
+    OM2_unk48 *unk48;
     s32 unk4C;
     s32 unk50;
     s32 unk54;

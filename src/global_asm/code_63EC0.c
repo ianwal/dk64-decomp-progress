@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 typedef struct global_asm_struct_18 {
     void* unk0; // Texture pointer usually
     void* unk4;
@@ -104,8 +102,17 @@ s32 func_8066104C(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80661054.s")
 
-// Needs definition for D_807F93C0->unk0->unk64
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80661264.s")
+void func_80661264(s32 arg0, u8 arg1) {
+    GlobalASMStruct58 *current;
+    current = D_807F93C0;
+    while (current != NULL && arg0 != 0) {
+        current = current->next;
+        arg0 -= 1;
+    }
+    if (current != NULL) {
+        current->unk0->unk64 = arg1;
+    }
+}
 
 void func_806612B4(s32 arg0, u8 arg1) {
     GlobalASMStruct58 *phi_v0 = D_807F93C0;

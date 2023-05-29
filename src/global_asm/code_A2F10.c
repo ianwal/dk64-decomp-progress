@@ -73,7 +73,6 @@ void func_8066E8E4(void *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5)
 f32 func_8066E9EC(Actor *arg0, s32 arg1, f32 arg2);
 void func_8066EB40(Actor *arg0, f32 arg1);
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
-void func_8066E5F8(s32 arg0, s32 arg1, u8 arg2);
 
 /*
 // TODO: Doable, great progress made
