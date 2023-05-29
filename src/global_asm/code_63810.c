@@ -59,4 +59,20 @@ void func_8065EFF0(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63810/func_8065F134.s")
+void func_8065F134(s32 arg0, u8 arg1) {
+    u8 *sp1C;
+    s32 temp_v0;
+
+    temp_v0 = func_80659470(arg0);
+    if (temp_v0 != -1) {
+        switch (D_807F6000[temp_v0].unk86) {
+            case 2:
+                sp1C = &D_807F6000[temp_v0].model_pointer->unk5B;
+                break;
+            case 1:
+                sp1C = &D_807F6000[temp_v0].model_pointer->unkC3;
+                break;
+        }
+        *sp1C = arg1;
+    }
+}

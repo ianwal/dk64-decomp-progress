@@ -392,6 +392,33 @@ void func_806338F4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80633D30.s")
 
+/*
+// TODO: Regalloc
+void func_80633D30(f32 *arg0, f32 *arg1) {
+    s32 i;
+    f32 *a0;
+
+    i = 0;a0 = arg0;
+
+    while (i < 0xC) {
+        i += 4;
+        if (a0[0] < arg1[0]) {
+            arg1[0] = a0[0];
+        }
+        if (a0[6] < arg1[2]) {
+            arg1[2] = a0[6];
+        }
+        if (arg1[3] < a0[0]) {
+            arg1[3] = a0[0];
+        }
+        if (arg1[5] < a0[6]) {
+            arg1[5] = a0[6];
+        }
+        a0++;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80633DC0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80634768.s")

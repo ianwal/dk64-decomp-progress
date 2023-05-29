@@ -1458,7 +1458,10 @@ typedef struct {
     u8 unk4F; // Used
     Model2Model50_B8 *unk50; // Used, pointer
     Model2Model54_BC *unk54;
-    s32 unk58;
+    u8 unk58;
+    u8 unk59;
+    u8 unk5A;
+    u8 unk5B;
     s32 unk5C;
     s32 unk60[4];
     s32 unk70[4];
@@ -1469,6 +1472,10 @@ typedef struct {
     s32 unkB4;
     Model2Model50_B8 *unkB8; // Used, pointer
     Model2Model54_BC *unkBC; // Used
+    u8 unkC0;
+    u8 unkC1;
+    u8 unkC2;
+    u8 unkC3;
 } Model2Model;
 
 typedef struct {

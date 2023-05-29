@@ -125,31 +125,3 @@ void func_8073239C(void) {
     osStartThread(&D_807FDDA0);
     D_807563B0 = 1;
 }
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80732420.s")
-
-/*
-typedef struct global_asm_struct_2 {
-    u32 unk0;
-    u32 unk4;
-    u32 unk8;
-    u32 unkC;
-} GlobalASMStruct2;
-
-void func_80732420(u32 *arg0, u32 arg1, u32 arg2) {
-    arg0[0] = arg1;
-    arg0[2] = arg2;
-    arg0[1] = arg0[0];
-    arg0[3] = 0;
-    //arg0->unk0 = arg1;
-    //arg0->unk8 = arg2;
-    //arg0->unkC = 0;
-    //arg0->unk4 = arg0->unk0;
-}
-*/
-
-void func_8073243C(void) {
-
-}
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80732444.s")

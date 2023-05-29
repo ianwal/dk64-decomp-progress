@@ -809,8 +809,25 @@ void func_8002F8EC() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002F980.s")
 
-// Needs .rodata?
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002FB88.s")
+
+extern f64 D_80033D48;
+extern f32 D_80033F68[];
+extern f32 D_80033F80[];
+extern f32 D_80033F98[];
+
+/*
+// TODO: Not sure...
+s32 func_8002FB88(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    s32 temp_v1;
+
+    temp_v1 = (arg1 & 0x7F);
+    D_80033F68[temp_v1] = (arg2 * 4.0f) - 32.0;
+    D_80033F80[temp_v1] = (arg3 * 4.0f) - 100.0;
+    D_80033F98[temp_v1] = arg4 * D_80033D48;
+    return arg0;
+}
+*/
 
 void func_8002FC1C(Actor *arg0, MenuAdditionalActorData *MaaD, s32 arg2) {
     if (MaaD->unk16 == 0) {

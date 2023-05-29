@@ -69,6 +69,17 @@ GlobalASMStruct2 *func_806FD9B4(s16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FD9FC.s")
 
+/*
+s32 func_806FD9FC(s32 arg0, s16 arg1, s16 arg2) {
+    s32 temp_t2;
+
+    temp_t2 = func_806FD9B4(arg1)->unk8[arg2];
+    arg0 = temp_t2;
+    arg0->unk30->unk4 = temp_t2->unk40->unk4;
+    return arg0;
+}
+*/
+
 f32 func_806FDA8C(s16 arg0) {
     return func_806FD9B4(arg0)->unk18;
 }
@@ -168,7 +179,22 @@ void func_806FFF5C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80700088.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807002AC.s")
+s32 func_80700088(f32 arg0, s32 arg1);
+
+void func_807002AC(u16 *arg0, s16 **arg1, f32 arg2) {
+    s16 *temp_v0;
+    s16 *var_s0;
+    s16 i;
+
+    temp_v0 = malloc(0xA000);
+    *arg1 = temp_v0;
+    func_8061134C(temp_v0);
+    var_s0 = *arg1;
+    for (i = 0; i < 0x5000; i++) {
+        *var_s0 = func_80700088(arg2, *arg0++);
+        var_s0++;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_8070033C.s")
 

@@ -240,6 +240,7 @@ void func_8060ED6C(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1, s32 arg2, s3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060EDD0.s")
 
+// TODO: Is this returning &struct->unk58? Likely actor
 s32 func_8060EE58(s32 arg0) {
     return arg0 + 0x58;
 }

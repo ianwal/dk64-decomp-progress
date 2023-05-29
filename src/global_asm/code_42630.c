@@ -178,8 +178,15 @@ void func_8063DE68(Struct8063DE68_arg0 *arg0) {
 // Probably initting a struct, easy way to figure out the shape
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DED0.s")
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DFEC.s")
+void func_8063DFEC(s32 arg0, void *arg1) {
+    s16 temp_v0;
+
+    temp_v0 = func_80659470(D_807F6240[arg0]);
+    if (temp_v0 != -1) {
+        memcpy(&D_807F6000[temp_v0].unk7C->unk14, arg1, 0x20);
+        D_807F66F0[arg0] = 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063E078.s")
 

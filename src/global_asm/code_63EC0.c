@@ -311,11 +311,11 @@ typedef struct {
 } Struct80661AB4_1;
 
 void func_80661AB4(Struct80661AB4_1 *arg0) {
-    arg0->unk0->unk3C = arg0->unk0->unk3C - arg0->unk0->unk34;
+    arg0->unk0->unk3C -= arg0->unk0->unk34;
     if (arg0->unk0->unk3C < 0.0) {
         arg0->unk0->unk3C = 255.0f;
     }
-    arg0->unk0->unk40 = arg0->unk0->unk40 - arg0->unk0->unk38;
+    arg0->unk0->unk40 -= arg0->unk0->unk38;
     if (arg0->unk0->unk40 < 0.0) {
         arg0->unk0->unk40 = 255.0f;
     }
@@ -334,8 +334,16 @@ void func_80661B84(u8 arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80661BF0.s")
 
-// Needs some fiddly struct defintions
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80661E34.s")
+void func_80661E34(Struct80661AB4_1 *arg0) {
+    arg0->unk0->unk3C -= arg0->unk0->unk34;
+    if (arg0->unk0->unk3C < 0.0) {
+        arg0->unk0->unk3C = 255.0f;
+    }
+    arg0->unk30 = arg0->unk30 + arg0->unk0->unk14;
+    arg0->unk34 = arg0->unk34 + arg0->unk0->unk18;
+    arg0->unk38 = arg0->unk38 + arg0->unk0->unk2C;
+    arg0->unk3C = arg0->unk3C + arg0->unk0->unk30;
+}
 
 void func_80661EC4(u8 arg0) {
     // Texture

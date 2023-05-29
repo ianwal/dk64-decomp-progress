@@ -51,8 +51,6 @@ void func_80735958(Struct80735958 *arg0, f32 arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_137C10/func_807359A0.s")
-
 typedef struct {
     u8 unk0[0x18 - 0x0];
     s32 unk18;
@@ -64,22 +62,23 @@ typedef struct {
     s32 unk48;
 } Struct807359A0;
 
-/*
-// TODO: Very close, branch nonsense
 void func_807359A0(Struct807359A0 *arg0) {
     s32 pad[3];
     s16 pad2;
     s16 sp20;
     s32 sp1C;
 
-    if (arg0->unk2C == 1 && !arg0->unk18) {
-        if (!func_8073D060(arg0->unk18, &sp1C)) {
-            sp20 = 0;
-            alEvtqPostEvent(&arg0->unk48, &sp20, arg0->unk24 * sp1C);
-        }
+    if (!(arg0->unk2C == 1) || !arg0->unk18) {
+        return;
     }
+
+    if (!func_8073D060(arg0->unk18, &sp1C)) {
+        return;
+    }
+
+    sp20 = 0;
+    alEvtqPostEvent(&arg0->unk48, &sp20, arg0->unk24 * sp1C);
 }
-*/
 
 typedef struct {
     u8 unk0[0x88 - 0x0];

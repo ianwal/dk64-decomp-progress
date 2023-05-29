@@ -459,6 +459,7 @@ build/us/src/dk64_boot/libc/ll%.o: OPT_FLAGS := -O1
 build/us/src/dk64_boot/os/%.c.o: OPT_FLAGS = -O1
 
 build/us/src/global_asm/audio/%.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/code_137120.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_1371D0.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_137630.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_137C10.c.o: OPT_FLAGS = -g
