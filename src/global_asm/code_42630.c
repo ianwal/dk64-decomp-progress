@@ -1198,6 +1198,39 @@ void func_8064B370(GlobalASMStruct86 **arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B3F8.s")
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+} Struct8064B3F8;
+
+/*
+// TODO: v1 a0 regalloc
+void func_8064B3F8(Struct8064B3F8 **arg0, s16 arg1, s16 arg2, s16 arg3) {
+    Struct8064B3F8 *temp_t0;
+    Struct8064B3F8 *temp_a0;
+    f32 temp;
+    f32 temp2;
+    f32 temp3;
+    s32 temp4;
+
+    temp_t0 = *arg0;
+    temp_a0 = &arg0[arg3];
+    temp4 = func_80659470(arg1);
+    temp = D_807F6000[temp4].x_position;
+    temp2 = D_807F6000[temp4].y_position;
+    temp3 = D_807F6000[temp4].z_position;
+    temp_a0->unk14 = (temp_t0->unk0 - temp) / arg2;
+    temp_a0->unk18 = (temp_t0->unk4 - temp2) / arg2;
+    temp_a0->unk1C = (temp_t0->unk8 - temp3) / arg2;
+}
+*/
+
 extern f32 D_807F621C;
 extern f32 D_807F6220;
 extern f32 D_807F6224;

@@ -45,8 +45,24 @@ void func_8060B7F0(void) {
     }
 }
 
-// Libultra 64 bit stuff, timer
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060B84C.s")
+u64 func_80005818(u64, u64);
+u64 func_80005918(u64, u64);
+u64 func_80007688(f32); 
+extern s8 D_80746834;
+extern OSMesgQueue D_807EE0D0;
+
+void func_8060B84C(f32 arg0) {
+    OSTimer sp48;
+    u64 temp_ret_3;
+    OSMesg sp3C;
+    void *sp38;
+
+    temp_ret_3 = func_80005818(func_80005918(func_80007688(arg0 * 1000.0f), 0xBB8), 0x40);
+    osSetTimer(&sp48, temp_ret_3, 0, &D_807EE0D0, sp3C);
+    D_80746834 = 1;
+    osRecvMesg(&D_807EE0D0, &sp38, 1);
+    D_80746834 = 0;
+}
 
 void func_8060B8F8(s32 arg0) {
     if (osGetThreadId(0) == 9) {

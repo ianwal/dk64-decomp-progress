@@ -196,7 +196,7 @@ typedef struct {
     s8 unk1;
     s16 spawnerID;
     s16 flagIndex;
-    s8 unk6;
+    u8 unk6;
     s8 unk7;
 } Struct80755DA8;
 
@@ -221,10 +221,56 @@ s16 func_80731784(s16 map, s16 spawnerID, s32 *arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_807317FC.s")
+s16 func_80731784(s16, s16, s32 *);
 
-// Seems doable, but stack/datatype/address issues, hmm
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_807318AC.s")
+s32 func_807317FC(s16 arg0, s16 arg1) {
+    s32 flagIndex;
+    s32 sp20;
+    u8 flagIsSet;
+
+    flagIndex = func_80731784(arg0, arg1, &sp20);
+    if ((flagIndex >= 0)) {
+        flagIsSet = isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
+        if (flagIsSet && D_80755DA8[sp20].unk6) {
+            return 1;
+        }
+        if (!(flagIsSet) && !D_80755DA8[sp20].unk6) {
+            return 1;
+        }
+        return 0;
+    }
+    return 1;
+}
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    s16 unk4; // Permanent Flag Index
+    u8 unk6;
+    u8 unk7;
+} Struct80755EA0;
+
+extern Struct80755EA0 D_80755EA0[];
+
+s32 func_807318AC(s16 arg0, s16 arg1) {
+    s32 i;
+    s32 max = 0x16;
+    s32 pad;
+
+    for (i = 0; i < max; i++) {
+        if (arg0 == D_80755EA0[i].unk0 && arg1 == D_80755EA0[i].unk2) {
+            if (isFlagSet(D_80755EA0[i].unk4, FLAG_TYPE_PERMANENT)) {
+                return 0;
+            }
+            if (D_80755EA0[i].unk6) {
+                setFlag(D_80755EA0[i].unk4, TRUE, FLAG_TYPE_PERMANENT);
+            }
+            return 1;
+        }
+    }
+    return 1;
+}
 
 typedef struct {
     s16 unk0;

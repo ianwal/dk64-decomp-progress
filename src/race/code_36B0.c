@@ -228,7 +228,35 @@ void func_8002AE6C(s32 arg0, Actor *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002B518.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002B610.s")
+extern f32 D_8003008C;
+
+typedef struct {
+    u8 unk0[0x35 - 0x0];
+    u8 unk35;
+} Struct8002B610_arg0;
+
+typedef struct {
+    u8 unk0[0x28 - 0x0];
+    u8 unk28;
+} Struct8002B610_arg4;
+
+typedef struct {
+    s32 unk0;
+    Struct8002B610_arg4 *unk4;
+} Struct8002B610_arg1;
+
+void func_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+
+void func_8002B610(Struct8002B610_arg0 *arg0, Struct8002B610_arg1 *arg1) {
+    if (arg0->unk35 == 0) {
+        Struct8002B610_arg4 *T = arg1->unk4;
+        Actor *A = character_change_array[T->unk28].player_pointer;
+        PlayerAdditionalActorData *PaaD = A->PaaD;
+        func_8061C6A8(PaaD->unk104, arg1->unk0, 4, 0x800, 0xBE, 0, 0x4A, 0xAE, 0x2D, 0, D_8003008C);
+        arg0->unk35++;
+    }
+    func_800282D8();
+}
 
 s32 func_8002B6C8(Struct8002E8EC_arg1 *arg0, Struct8002E8EC_arg1 *arg1) {
     return D_8002FCAC[func_8002E8EC(arg0, arg1, 0xA)];

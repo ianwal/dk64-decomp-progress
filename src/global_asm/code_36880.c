@@ -836,7 +836,24 @@ void func_80636164(Model2Model *arg0, u8 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636210.s")
+void func_80636210(Model2Model *arg0, u8 arg1) {
+    if (arg1 == 2) {
+        if (arg0->unk50 == 0) {
+            s32 i;
+            Model2Model *temp = arg0;
+            for (i = 0; i < temp->unk20; i++) {
+                if (temp->unk24[i] != NULL) {
+                    func_8066B434(temp->unk24[i], 0xA2B, 7);
+                    temp->unk24[i] = NULL;
+                }
+                if (temp->unk34[i] != NULL) {
+                    func_8066B434(temp->unk34[i], 0xA30, 7);
+                    temp->unk34[i] = NULL;
+                }
+            }
+        }
+    }
+}
 
 void func_806362C4(s32 arg0, u8 arg1) {
     Model2Model54_BC *temp_a3;

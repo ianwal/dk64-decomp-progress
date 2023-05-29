@@ -41,8 +41,17 @@ void func_80026C54(void) {
 // jumptable, can't auto decompile
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027778.s")
 
-// probably doable, disable &&/|| for cleaner output
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027CF4.s")
+extern f32 D_80028DD0;
+
+void func_80027CF4(void) {
+    if (current_actor_pointer->control_state_progress == 0) {
+        if (func_8072DE10(10000) != 0 || (((D_807FDC94->x_position - current_actor_pointer->x_position) * (D_807FDC94->x_position - current_actor_pointer->x_position))
+                + ((D_807FDC94->y_position - current_actor_pointer->y_position) * (D_807FDC94->y_position - current_actor_pointer->y_position))
+                + ((D_807FDC94->z_position - current_actor_pointer->z_position) * (D_807FDC94->z_position - current_actor_pointer->z_position))) < D_80028DD0) {
+            func_80614EBC(current_actor_pointer, 0x280);
+        }
+    }
+}
 
 // small, structs, TRIPLE dereference
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027DA0.s")

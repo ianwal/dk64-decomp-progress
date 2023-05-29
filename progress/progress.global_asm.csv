@@ -160,7 +160,7 @@ us,.code,func_80738230,104,yes
 us,.code,func_806FD094,1020,no
 us,.code,func_806E5044,472,yes
 us,.code,func_80737E30,8,yes
-us,.code,func_8060B84C,172,no
+us,.code,func_8060B84C,172,yes
 us,.code,func_806EE1C4,168,yes
 us,.code,func_80684D98,648,no
 us,.code,func_8061116C,32,yes
@@ -1141,7 +1141,7 @@ us,.code,func_8066D2F4,488,no
 us,.code,func_806E8DB4,76,yes
 us,.code,func_806A8158,4044,no
 us,.code,func_806A80C0,152,yes
-us,.code,func_8066E8E4,172,no
+us,.code,func_8066E8E4,172,yes
 us,.code,func_8066CB88,336,no
 us,.code,func_807040E0,40,yes
 us,.code,func_8070E8C8,20,yes
@@ -1549,7 +1549,7 @@ us,.code,func_805FC98C,216,no
 us,.code,func_8065F614,100,yes
 us,.code,func_806EBDAC,24,yes
 us,.code,func_8060B110,36,yes
-us,.code,func_80636210,180,no
+us,.code,func_80636210,180,yes
 us,.code,func_8064C3E8,348,no
 us,.code,func_8072D9D4,140,yes
 us,.code,func_806DAF5C,304,yes
@@ -1708,7 +1708,7 @@ us,.code,func_8068A830,40,yes
 us,.code,func_80719B88,120,yes
 us,.code,func_806CC948,40,yes
 us,.code,func_8071EFDC,88,yes
-us,.code,func_807318AC,176,no
+us,.code,func_807318AC,176,yes
 us,.code,func_8063CF0C,48,yes
 us,.code,func_80658E8C,644,no
 us,.code,func_80631EB8,160,no
@@ -2530,7 +2530,7 @@ us,.code,func_8063DED0,284,no
 us,.code,func_805FE398,316,no
 us,.code,func_807131BC,96,yes
 us,.code,func_8062D2F0,244,no
-us,.code,func_80611850,172,no
+us,.code,func_80611850,172,yes
 us,.code,gameIsInAdventureMode,52,yes
 us,.code,func_806319C4,444,no
 us,.code,func_806B1F28,32,yes
@@ -2632,7 +2632,7 @@ us,.code,func_8066635C,156,yes
 us,.code,func_8067B238,72,yes
 us,.code,func_806AA304,4584,no
 us,.code,func_806A3C6C,308,no
-us,.code,func_807317FC,176,no
+us,.code,func_807317FC,176,yes
 us,.code,func_8071E1C8,548,yes
 us,.code,func_80714638,40,yes
 us,.code,func_80644CC0,144,no
@@ -2704,7 +2704,7 @@ us,.code,func_80688C84,64,no
 us,.code,func_806F0184,84,yes
 us,.code,func_80611408,300,no
 us,.code,func_80644E2C,156,yes
-us,.code,func_80656E58,188,no
+us,.code,func_80656E58,188,yes
 us,.code,func_8066F84C,960,no
 us,.code,func_80642480,128,yes
 us,.code,func_806C19F4,348,yes
@@ -3123,7 +3123,7 @@ us,.code,func_80602314,284,no
 us,.code,func_80694948,984,no
 us,.code,func_8060BBE0,192,no
 us,.code,func_8073A3C4,196,no
-us,.code,func_8072D08C,176,no
+us,.code,func_8072D08C,176,yes
 us,.code,func_8066A834,340,no
 us,.code,func_8073BC74,336,yes
 us,.code,func_806018D4,104,yes

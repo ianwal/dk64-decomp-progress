@@ -238,7 +238,35 @@ void func_8066E854(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     *phi_a0 = temp_v0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066E8E4.s")
+void func_8066E8E4(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
+    LedgeInfo8C **var_a0;
+    LedgeInfo8C *var_v1;
+    LedgeInfo8C *temp_v0;
+    LedgeInfo *temp_a1;
+
+    temp_a1 = arg0->ledge_info_pointer;
+    temp_v0 = malloc(sizeof(LedgeInfo8C));
+    temp_v0->next = NULL;
+    var_a0 = &temp_a1->unk8C;
+    temp_v0->unk0 = arg1;
+    temp_v0->unk4 = arg2;
+    temp_v0->unk8 = arg3;
+    temp_v0->unkC = arg4;
+    temp_v0->unk20 = arg5;
+    temp_v0->unk10 = 0;
+    temp_v0->unk14 = 0;
+    temp_v0->unk18 = 0;
+    temp_v0->unk1C = 0;
+    temp_v0->unk26 = 1;
+    temp_v0->unk24 = 0;
+    temp_v0->unk27 = 0;
+    var_v1 = temp_a1->unk8C;
+    while (var_v1 != NULL) {
+        var_a0 = &var_v1->next;
+        var_v1 = var_v1->next;
+    }
+    *var_a0 = temp_v0;
+}
 
 // TODO: Matches, but kinda ugly
 // Any cleanup possible?

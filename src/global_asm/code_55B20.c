@@ -1003,8 +1003,20 @@ void func_80655BF0(void) {
 // Displaylist stuff, chunks
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80656B98.s")
 
-// TODO: Easy, just needs Chunk4C struct
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80656E58.s")
+void func_80656E58(s16 arg0, s16 arg1, u8 arg2, u8 arg3) {
+    s32 i;
+
+    for (i = 0; i < chunk_array_pointer[arg0].unk50; i++) {
+        if (arg1 == chunk_array_pointer[arg0].unk4C[i].unk0) {
+            if (arg3) {
+                chunk_array_pointer[arg0].unk4C[i].unk2 |= (1 << arg2);
+                return;
+            }
+            chunk_array_pointer[arg0].unk4C[i].unk2 &= ~(1 << arg2);
+            return;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80656F14.s")
 

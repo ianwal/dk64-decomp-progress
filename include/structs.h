@@ -44,9 +44,9 @@ typedef struct {
 typedef struct ledge_info_8c LedgeInfo8C;
 
 struct ledge_info_8c {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
     f32 unkC; // Used
     s32 unk10;
     s32 unk14;
@@ -1448,8 +1448,17 @@ typedef struct {
 typedef struct {
     s32 unk0[4];
     s32 unk10[4];
-    s32 unk20[4];
-    s32 unk30[4];
+    u8 unk20;
+    u8 unk21;
+    u8 unk22;
+    u8 unk23;
+    void *unk24[1]; // TODO: How many?
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    void *unk34[1]; // TODO: How many?
+    s32 unk38;
+    s32 unk3C;
     s32 unk40;
     s32 unk44;
     s32 unk48;
@@ -1661,6 +1670,20 @@ typedef struct {
 } Chunk78_7C;
 
 typedef struct {
+    s16 unk0;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+} Chunk4C;
+
+typedef struct {
     u8  loaded;
     u8  unk1; // used
     u8  unk2;
@@ -1677,7 +1700,10 @@ typedef struct {
     Chunk14 *unk1C; // TODO: Same struct as unk14?
     s32 unk20;
     s32 unk24;
-    u8  pad8[0x68 - 0x28];
+    u8  pad8[0x4C - 0x28];
+    Chunk4C *unk4C;
+    s32 unk50;
+    u8  pad54[0x68 - 0x54];
     s32 deload1; // 0x68
     s32 deload2; // 0x6C
     s32 deload3; // 0x70

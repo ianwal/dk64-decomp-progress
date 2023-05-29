@@ -566,7 +566,18 @@ void func_8072CFE8(s16 *arg0, s16 *arg1, s16 *arg2) {
     *arg2 = D_807FDCA0->unk14[temp_v1].unk4;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072D08C.s")
+void func_8072D08C(void) {
+    u8 sp1F;
+    u8 sp1E;
+    s16 sp1C;
+    s16 sp1A;
+    s16 sp18;
+
+    sp1F = D_807FDC90->unk25 & 0x7F;
+    sp1E = D_807FDC98->unk20[sp1F].unk0;
+    func_8072CFE8(&sp1C, &sp1A, &sp18);
+    func_80665DE0(sp1C, sp18, D_807FDCA0->unk14[sp1E].unk0, D_807FDCA0->unk14[sp1E].unk4);
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072D13C.s")

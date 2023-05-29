@@ -135,6 +135,85 @@ void func_8062B220(GlobalASMStruct64 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062B3C4.s")
 
+typedef struct Struct8062F420 Struct8062F420;
+
+struct Struct8062F420 {
+    s32 unk0;
+    Struct8062F420 *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s16 unk70[1]; // TODO: How many?
+    s16 unk72;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+    s32 unkA4;
+    s32 unkA8;
+    u8 unkAC[4]; // TODO: How many?
+    s32 unkB0;
+    s32 unkB4;
+    u8 unkB8;
+    u8 unkB9;
+    u8 unkBA;
+    u8 unkBB;
+    s32 unkBC;
+    s32 unkC0;
+    u8 unkC4;
+    u8 unkC5;
+};
+
+/*
+// TODO: Hmm, something going on with s0 s4
+void func_8062B3C4(Struct8062F420 *arg0, s32 *arg1) {
+    s32 i;
+    Struct8062F420 *current = arg0;
+
+    while (current) {
+        for (i = 0; i < current->unkC5; i++) {
+            func_8063C3C0(current->unk70[i]);
+            if (*arg1 < current->unkAC[i] + 1) {
+                *arg1 = current->unkAC[i] + 1;
+            }
+        }
+        func_8062B3C4(current->unk0, arg1);
+        current = current->unk4;
+    }
+}
+*/
+
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -978,65 +1057,6 @@ void func_8062F3A0(GlobalASMStruct_8062F3A0 *arg0, GlobalASMStruct_8062F3A0 *arg
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F420.s")
-
-typedef struct Struct8062F420 Struct8062F420;
-
-struct Struct8062F420 {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-    s32 unk60;
-    s32 unk64;
-    s32 unk68;
-    s32 unk6C;
-    s32 unk70;
-    s32 unk74;
-    s32 unk78;
-    s32 unk7C;
-    s32 unk80;
-    s32 unk84;
-    s32 unk88;
-    s32 unk8C;
-    s32 unk90;
-    s32 unk94;
-    s32 unk98;
-    s32 unk9C;
-    s32 unkA0;
-    s32 unkA4;
-    s32 unkA8;
-    s32 unkAC;
-    s32 unkB0;
-    s32 unkB4;
-    u8 unkB8;
-    u8 unkB9;
-    u8 unkBA;
-    u8 unkBB;
-    s32 unkBC;
-    s32 unkC0;
-    u8 unkC4;
-    u8 unkC5;
-};
 
 /*
 void func_8062F420(Struct8062F420 *arg0, s32 arg1, s32 arg2) {
