@@ -76,19 +76,17 @@ void func_800336C0(void) {
 // Oof, I had a crack at this one but it's very fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_80033784.s")
 
-// Very doable, just gotta figure out some structs
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_8003392C.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+} Struct8003392C;
 
-/*
-void func_8003392C(void *arg0) {
-    void *temp_v0;
-    void *temp_v1;
-
+void func_8003392C(Struct8003392C *arg0) {
     func_80690814(current_actor_pointer, 1);
-    temp_v0 = D_807FDCA0->unk14 + (arg0->unk3 * 0xA);
-    func_80690A28(0x2C, 2, current_actor_pointer->animation_state->scale_y, temp_v0->unk0, temp_v0->unk2, temp_v0->unk4, 1200.0f, temp_v1);
+    func_80690A28(0x2C, 2, current_actor_pointer->animation_state->scale_y, D_807FDCA0->unk14[arg0->unk3].unk0, D_807FDCA0->unk14[arg0->unk3].unk2, D_807FDCA0->unk14[arg0->unk3].unk4, 1200.0f, current_actor_pointer);
 }
-*/
 
 u8 func_800339D8(BossStruct2 *arg0, u8 *arg1) {
     if ((player_pointer->y_position < current_actor_pointer->y_position - 10.0f)) {

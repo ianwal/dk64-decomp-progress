@@ -243,7 +243,29 @@ loop_2:
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025FFC.s")
+void func_80715908(s32);
+
+typedef struct {
+    u8 unk0[0x50 - 0x0];
+    s32 unk50[8];
+    u8 unk70;
+} Struct80025FFC;
+
+void func_80025FFC(Struct80025FFC *arg0) {
+    s32 temp_a0;
+    s32 i;
+
+    if (arg0->unk70 != 0) {
+        for (i = 0; i < cc_number_of_players * 2; i++) {
+            temp_a0 = arg0->unk50[i];
+            if (temp_a0 != NULL) {
+                func_80715908(temp_a0);
+            }
+            arg0->unk50[i] = NULL;
+        }
+    }
+    arg0->unk70 = 0;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80026094.s")
@@ -252,8 +274,8 @@ void func_800268C0(u8 arg0) {
     D_80026F70 |= arg0;
 }
 
-void func_806F0C18(Actor*);                                  /* extern */
-void func_806F91B4(s32, u8, s16);                          /* extern */
+void func_806F0C18(Actor*);
+void func_806F91B4(s32, u8, s16);
 extern s32 D_807552E8;
 
 void func_800268DC(Actor *arg0, PlayerAdditionalActorData *arg1, PlayerProgress *arg2) {

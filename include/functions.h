@@ -838,7 +838,7 @@ void func_806CF398(Actor *arg0);
 void func_806CF42C(Actor *arg0);
 void func_806CF878(void);
 u8 func_806CFC90(Actor *arg0, s32 arg1, u8 arg2, f32 arg3);
-u8 func_8066635C(Actor *, f32, f32, f32, s32);
+u8 func_8066635C(Actor *, f32, f32, f32, f32*);
 u8 func_80666AE0();
 void func_806CFDA8();
 void func_806CFDEC();

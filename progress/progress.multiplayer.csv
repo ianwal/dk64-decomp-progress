@@ -7,7 +7,7 @@ us,.code,func_800253C8,60,yes
 us,.code,func_80025CE8,668,no
 us,.code,func_80026E20,336,no
 us,.code,func_80024254,168,no
-us,.code,func_80025FFC,152,no
+us,.code,func_80025FFC,152,yes
 us,.code,func_80026BD8,360,no
 us,.code,func_800246EC,748,no
 us,.code,func_80025608,76,yes

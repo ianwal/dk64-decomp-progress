@@ -211,11 +211,8 @@ f32 func_806614D0(s32 arg0) {
     return 0.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80661520.s")
-
 extern u8 D_807F93C4;
-extern f32 D_807F93C8;
-extern f32 D_807F93CC;
+extern f32 D_807F93C8[2];
 extern f32 D_807F93D0;
 extern f32 D_807F93D4;
 extern f32 D_807F93D8;
@@ -224,12 +221,10 @@ extern f32 D_807F93E0;
 extern f32 D_807F93E4;
 extern f32 D_807F93E8;
 
-/*
 void func_80661520(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
     if (D_807F93C4 == 0) {
-        // TODO: Something up with arg0 arg1
-        D_807F93C8 = arg0;
-        D_807F93CC = arg1;
+        D_807F93C8[0] = arg0;
+        D_807F93C8[1] = arg1;
         D_807F93D4 = 0.0f;
         D_807F93D0 = arg2;
         D_807F93D8 = arg3;
@@ -240,7 +235,6 @@ void func_80661520(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
         D_807F93C4 = 1;
     }
 }
-*/
 
 void func_806615BC(void) {
     if (D_807F93C4 != 0) {

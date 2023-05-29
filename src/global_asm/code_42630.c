@@ -924,7 +924,23 @@ void func_80647108(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_80714B84(&D_8071FFA0, 1.5f, arg1, 1, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647170.s")
+void func_80647170(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+    f32 sp4C;
+    f32 sp48;
+    s32 sp44;
+    s32 var_v0;
+    s32 var_v1;
+
+    func_806335B0(arg1, 1, 2, &sp4C, &sp48, &sp44);
+    if (arg2 != 0) {
+        var_v0 = 0;
+        var_v1 = 0;
+    } else {
+        var_v0 = 0xFF;
+        var_v1 = 0xC8;
+    }
+    func_8065A708(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 80.0f, 0, 0xFF, var_v0, var_v1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647218.s")
 

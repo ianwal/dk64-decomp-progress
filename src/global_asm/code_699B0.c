@@ -501,11 +501,8 @@ void func_80666290(Actor *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 arg5)
     func_80666428(arg0, sp3C, sp38, sp34, arg1, arg2, arg3, arg4, arg5);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066635C.s")
-
-/*
-// TODO: Might return u8 from somewhere
-void func_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4) {
+// BUG: Missing return?
+u8 func_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4) {
     u8 sp3F;
     u8 sp3E;
     s32 sp38;
@@ -520,7 +517,6 @@ void func_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4) {
     func_80666428(0, arg1, arg2, arg3, &sp3F, &sp38, &sp3E, &sp34, 0);
     *arg4 = D_807F948C;
 }
-*/
 
 void func_806663F8(void) {
     D_807F94AE = 0;
@@ -950,6 +946,7 @@ s32 func_80669650(u8 arg0, u8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669930.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806699C4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669A6C.s")
