@@ -34,7 +34,7 @@ void func_8002A240(void) {
 
 void func_8002A41C(u8 arg0) {
     s32 pad;
-    s32 temp_v0;
+    Actor *temp_v0;
     void *sp2C;
 
     switch (arg0) {

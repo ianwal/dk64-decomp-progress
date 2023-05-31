@@ -165,7 +165,6 @@ typedef struct MultiplayerStruct2 {
 MultiplayerStruct2 *func_80025378();
 s32 func_80025404();
 s32 func_80025608(s32);
-Actor *func_8067ADB4(s32);
 s32 func_806F5EB4(s32, s32, s16, s16, s32);
 void func_806F5FE8(s32, s16, s16, s16, s32);
 extern s32 D_807552E8;
@@ -302,9 +301,8 @@ void func_8002698C(MultiplayerStruct0 *arg0) {
     }
 }
 
-void func_80025F84();                                  
-Actor *func_8067ADB4(u32);                         
-void func_806A5DF0(u16, f32, f32, f32, s32, s32, s32, s32); 
+void func_80025F84();
+void func_806A5DF0(u16, f32, f32, f32, s32, s32, s32, s32);
 extern s32 D_807552E8;
 
 typedef struct {

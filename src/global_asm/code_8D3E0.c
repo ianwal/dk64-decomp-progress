@@ -16,7 +16,7 @@ typedef struct {
     f32 unkC;
 } Struct80689250;
 
-ActorSpawner *func_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, void *arg6, u8 arg7, s32 arg8, s16 arg9);
+ActorSpawner *func_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, void *arg6, u8 arg7, Actor *arg8, s16 arg9);
 
 typedef struct {
     s16 unk0;
@@ -381,7 +381,7 @@ void func_80688F74(Actor *arg0, f32 x, f32 y, f32 z) {
 
 void func_80689064(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5) {
     Struct807500B4 sp38 = D_807500B4;
-    func_80689250(arg0, arg1, arg2, arg3, arg4, arg5, &sp38, 0, 0, func_80688E08());
+    func_80689250(arg0, arg1, arg2, arg3, arg4, arg5, &sp38, 0, NULL, func_80688E08());
 }
 
 void func_80689114(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, Actor *arg6) {
@@ -389,7 +389,7 @@ void func_80689114(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, A
     func_80689250(arg0 - 0x10, arg1, arg2, arg3, arg4, arg5, &sp38, 1, arg6, func_80688E08());
 }
 
-void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6, Struct807500B4 *arg7) {
+void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, Actor *arg6, Struct807500B4 *arg7) {
     func_80689250(arg0 - 0x10, arg1, arg2, arg3, arg4, arg5, arg7, 1, arg6, func_80688E08());
 }
 
@@ -397,7 +397,7 @@ void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s
 
 /*
 // TODO: Close
-ActorSpawner *func_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, void *arg6, u8 arg7, s32 arg8, s16 arg9) {
+ActorSpawner *func_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, void *arg6, u8 arg7, Actor *arg8, s16 arg9) {
     ActorSpawner *sp2C;
     ActorSpawner *temp_v0;
     ActorSpawner *var_v1;
@@ -556,11 +556,11 @@ void func_80689418(void) {
 }
 */
 
-void func_806896D0(s32 arg0) {
+void func_806896D0(ActorSpawner *arg0) {
     func_80689710(arg0, 1);
 }
 
-void func_806896F0(s32 arg0) {
+void func_806896F0(ActorSpawner *arg0) {
     func_80689710(arg0, 0);
 }
 

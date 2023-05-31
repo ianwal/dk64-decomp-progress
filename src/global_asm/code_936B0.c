@@ -246,7 +246,7 @@ extern f32 D_807FC7B8;
 extern f64 D_8075A0C0;
 extern f64 D_8075A0C8;
 
-void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, s32 arg6) {
+void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, Actor *arg6) {
     s32 temp;
     s32 temp2;
     f32 sp28[6];
@@ -266,11 +266,11 @@ void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, s
 extern f32 D_807FC7B0;
 extern f32 D_807FC7B8;
 
-void func_80690A28(s16 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7) {
+void func_80690A28(s16 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, Actor *arg7) {
     func_80690930(func_80665DE0(arg3, arg5, D_807FC7B0, D_807FC7B8), arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
 }
 
-void func_80690AB0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s32 arg9) {
+void func_80690AB0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, Actor *arg9) {
     s16 temp_t0;
     s16 temp_t6;
     s16 var_s0;
@@ -288,7 +288,7 @@ void func_80690AB0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f
     func_80690930(var_s0, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9);
 }
 
-void func_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 arg4, f32 arg5, s32 arg6) {
+void func_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 arg4, f32 arg5, Actor *arg6) {
     f32 sp34;
     f32 sp30;
     f32 sp2C;

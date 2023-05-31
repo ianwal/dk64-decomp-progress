@@ -744,8 +744,8 @@ void func_80688EE4(s16 id, f32 x, f32 y, f32 z);
 void func_80688F74(Actor *arg0, f32 x, f32 y, f32 z);
 void func_80689064(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5);
 void func_8068A1B8(void);
-void func_806896D0(s32 arg0);
-void func_806896F0(s32 arg0);
+void func_806896D0(ActorSpawner *arg0);
+void func_806896F0(ActorSpawner *arg0);
 void func_806897F0(Actor *arg0);
 void func_806898A8(void);
 s32 func_806898F8(void);
@@ -1466,9 +1466,9 @@ void func_806903BC(Actor *actor, RaceAdditionalActorData *arg1);
 void func_806907B8(void);
 void func_806907E0(void);
 void func_80690814(Actor *arg0, s32 arg1);
-void func_80690930(s16 arg0, s16 arg1, s16 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, s32 arg8);
-void func_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 arg4, f32 arg5, s32 arg6);
-void func_80690A28(s16 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, s32 arg7);
+void func_80690930(s16 arg0, s16 arg1, s16 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, Actor *arg8);
+void func_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 arg4, f32 arg5, Actor *arg6);
+void func_80690A28(s16 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, Actor *arg7);
 void func_80691830(s16 arg0, f32 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9);
 void func_80691930(u8 arg0, u8 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5);
 void func_80692500(void);
@@ -1656,7 +1656,7 @@ void func_806EBE8C(void);
 void func_806EFA3C(void);
 void func_8066E8E4(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5);
 void func_80608528(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4);
-void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, s32 arg6);
+void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, Actor *arg6);
 void func_8067C2B8(void);
 void func_8067E43C(void);
 void func_8067E510(void);
@@ -1717,7 +1717,7 @@ void func_8070D9AC(Struct806A57C0_2 *arg0);
 void func_806A57C0(AAD_806A4DDC *arg0);
 void func_8070E808(Actor *arg0, Actor *arg1);
 void func_8070DA28(AAD_806A4DDC *arg0);
-void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6, Struct807500B4 *arg7);
+void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, Actor *arg6, Struct807500B4 *arg7);
 void func_806A7600(void *arg0);
 void func_8072EE7C(s32 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, u8 argB, f32 argC, f32 argD, u8 argE);
 void func_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, u8 arg8, s16 arg9, s16 argA, s16 argB, s16 argC);
@@ -1880,7 +1880,7 @@ void func_806357F8(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *ar
 void func_806362C4(s32 arg0, u8 arg1);
 void func_806398E4(s32 arg0, u8 arg1, u8 arg2);
 void func_8063A8C4(s16 arg0, u8 arg1, f32 arg2);
-void func_80690AB0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, s32 arg9);
+void func_80690AB0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, Actor *arg9);
 void func_80737990(u8 arg0);
 void func_80737A4C(void);
 void func_80737A74(void);
@@ -1921,6 +1921,7 @@ s32 func_80600340(s32 arg0, u8 arg1, s32 *arg2);
 void func_80738400(ALSeqPlayer *arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4);
 
 ActorCollision *func_80679490(Actor *, s32, u8, s32, void*);
+Actor *func_8067ADB4(u16);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		((d) > 0) ? (d) : -(d)

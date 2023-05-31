@@ -1921,7 +1921,7 @@ struct ActorSpawner {
     s16 unk4A;
     u8 unk4C; // Used
     u8 unk4D;
-    s32 unk50; // TODO: Actor*?
+    Actor *unk50;
     f32 unk54;
     s16 unk58;
     s16 id; // At 0x5A
