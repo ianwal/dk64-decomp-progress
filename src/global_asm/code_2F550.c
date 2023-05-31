@@ -9,13 +9,11 @@ extern f32 D_80758164;
 extern f64 D_80758168;
 
 extern void *D_807F5DE4; // TODO: Actually a pointer to a struct (map model?)
-extern s32 D_807F5E60;
+extern void *D_807F5E60;
 extern s8 D_807F5FEC;
 extern s32 D_807F6C28;
 
-extern s32 D_807F5E60;
-
-void func_8062D0CC(s32, s32, s32, u8);
+void func_8062D0CC(void*, void*, Model2Model*, u8);
 void func_8062D3E4(s32 arg0);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062A850.s")
@@ -627,11 +625,13 @@ void func_8062CA0C(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062CEA8.s")
 
-void func_8062D094(s32 arg0, u8 arg1) {
+void func_8062D094(Model2Model *arg0, u8 arg1) {
     func_8062D0CC(D_807F5DE4, D_807F5E60, arg0, arg1);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D0CC.s")
+
+s32 func_8062D1E0(void*, void*);
 
 void func_8062D1A8() {
     if (!gameIsInDKTVMode()) {
@@ -904,7 +904,6 @@ extern f32 D_80758190;
 extern MapGeometryHeader *D_807F5DE0;
 extern void *D_807F5DE8;
 extern void *D_807F5DEC;
-extern s32 D_807F5E60;
 extern s8 D_807F5FC1;
 extern void *D_807F5FC4;
 extern s32 D_807F5FC8;

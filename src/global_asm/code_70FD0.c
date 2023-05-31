@@ -181,7 +181,7 @@ void func_8066E6C8(Actor *arg0, s32 arg1, u8 arg2) {
     }
 }
 
-void func_8066E72C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, s32 arg7, s32 arg8) {
+void func_8066E72C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, void *arg7, s32 arg8) {
     LedgeInfo *ledgeInfo = malloc(0xC4); // TODO: sizeof(LedgeInfo) + something?
 
     ledgeInfo->unk0 = arg0 * 8.0f;
@@ -217,7 +217,7 @@ void func_8066E854(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     LedgeInfo *temp_a1;
     LedgeInfo90 *temp_v0;
     LedgeInfo90 *temp_v1;
-    void **phi_a0;
+    LedgeInfo90 **phi_a0;
 
     temp_a1 = arg0->ledge_info_pointer;
     temp_v0 = malloc(sizeof(LedgeInfo90));

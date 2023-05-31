@@ -1,8 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    u8 unk0[0x6 - 0x0];
+    u8 unk6[1]; // TODO: How many elements?
+} Struct8002450C;
+
 void func_8072AB74(s32, f32, f32, s32, f32);
-s32 func_80024568(s32, u8, f32, f32, f32);
+s32 func_80024568(Struct8002450C*, u8, f32, f32, f32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024000.s")
 
@@ -111,11 +116,6 @@ void func_8002413C(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_80024300.s")
 
-typedef struct {
-    u8 unk0[0x6 - 0x0];
-    u8 unk6[1]; // TODO: How many elements?
-} Struct8002450C;
-
 void func_8002450C(Struct8002450C *arg0, u8 arg1, u8 arg2) {    
     arg0->unk6[arg1] = arg2;
 }
@@ -155,7 +155,7 @@ void func_80024EAC(void) {
     }
 }
 
-void func_80024FA8(s32 arg0, s32 arg1, s32 arg2, u8 *arg3) {
+void func_80024FA8(s32 arg0, Struct8002450C *arg1, s32 arg2, u8 *arg3) {
     u8 i = 0;
     u8 phi_v0_2 = 0;
 
@@ -182,7 +182,7 @@ void func_80024FA8(s32 arg0, s32 arg1, s32 arg2, u8 *arg3) {
     }
 }
 
-void func_800251A0(s32 arg0, s32 arg1, s32 arg2, u8 *arg3) {
+void func_800251A0(s32 arg0, Struct8002450C *arg1, s32 arg2, u8 *arg3) {
     u8 i = 0;
     s32 phi_v1 = 0;
 

@@ -729,10 +729,8 @@ void func_806791EC(Actor *arg0, s32 arg1) {
     arg0->unk138 &= ~arg1;
 }
 
-ActorCollision *func_80679490(Actor *, s32, u8, s32, s32);
-
 // TODO: Clean this up
-void func_80679200(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5) {
+void func_80679200(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, s32 arg4, void *arg5) {
     ActorCollision **sp28;
     ActorCollision **var_v1;
     ActorCollision *var_t0;
@@ -837,7 +835,7 @@ void func_80679334(void) {
 }
 */
 
-ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, s32 arg4) {
+ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, void *arg4) {
     ActorCollision *temp_v0 = malloc(sizeof(ActorCollision));
     temp_v0->unk0 = arg1;
     temp_v0->unk4 = arg2;
@@ -1092,7 +1090,7 @@ typedef struct {
     s16 unkE;
 } GlobalASMStruct34;
 
-void func_8067A69C(s32 arg0, s32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5) {
+void func_8067A69C(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5) {
     GlobalASMStruct38 *temp_v0 = malloc(0xC);
     temp_v0->unk0 = arg2;
     temp_v0->unk4 = arg3;
@@ -1121,7 +1119,7 @@ void func_8067A784(Actor *arg0, Actor *arg1, s16 arg2, f32 arg3, s16 arg4) {
     func_80679200(arg1, arg0, 0x4000, 0, 1, temp_v0);
 }
 
-void func_8067A7EC(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, u8 arg6) {
+void func_8067A7EC(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, u8 arg6) {
     GlobalASMStruct28 *temp_v0;
 
     temp_v0 = malloc(0x14);
@@ -1133,7 +1131,7 @@ void func_8067A7EC(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, u
     func_80679200(arg1, arg0, 1, 0, 1, temp_v0);
 }
 
-void func_8067A864(s32 arg0, s32 arg1, s16 arg2, s16 arg3, void *arg4, void *arg5, s32 arg6, s32 arg7, s32 arg8) {
+void func_8067A864(Actor *arg0, Actor *arg1, s16 arg2, s16 arg3, void *arg4, void *arg5, s32 arg6, s32 arg7, s32 arg8) {
     GlobalASMStruct29 *temp_v0;
 
     temp_v0 = malloc(0x40);
@@ -1147,7 +1145,7 @@ void func_8067A864(s32 arg0, s32 arg1, s16 arg2, s16 arg3, void *arg4, void *arg
     func_80679200(arg1, arg0, 0x10000, 0, 1, temp_v0);
 }
 
-void func_8067A908(s32 arg0, s32 arg1, void *arg2, void *arg3, s32 arg4, s32 arg5, s32 arg6) {
+void func_8067A908(Actor *arg0, Actor *arg1, void *arg2, void *arg3, s32 arg4, s32 arg5, s32 arg6) {
     GlobalASMStruct29 *temp_v0; // TODO: What type is this actually? It's probably not the same struct as above since there's 0x40 vs 0x3C in the malloc call
 
     temp_v0 = malloc(0x3C);
@@ -1159,7 +1157,7 @@ void func_8067A908(s32 arg0, s32 arg1, void *arg2, void *arg3, s32 arg4, s32 arg
     func_80679200(arg1, arg0, 0x20000, 0, 1, temp_v0);
 }
 
-void func_8067A99C(s32 arg0, s32 arg1, s32 arg2) {
+void func_8067A99C(Actor *arg0, Actor *arg1, s32 arg2) {
     GlobalASMStruct30 *temp_v0; // TODO: What type is this actually?
 
     temp_v0 = malloc(4);
@@ -1167,7 +1165,7 @@ void func_8067A99C(s32 arg0, s32 arg1, s32 arg2) {
     func_80679200(arg1, arg0, 0x40000, 0, 1, temp_v0);
 }
 
-void func_8067A9F0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+void func_8067A9F0(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, f32 arg4) {
     GlobalASMStruct31 *temp_v0;
 
     temp_v0 = malloc(0xC);
@@ -1177,7 +1175,7 @@ void func_8067A9F0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     func_80679200(arg1, arg0, 0x100000, 0, 1, temp_v0);
 }
 
-void func_8067AA58(s32 arg0, s32 arg1, f32 arg2, f32 arg3) {
+void func_8067AA58(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3) {
     GlobalASMStruct32 *temp_v0;
 
     temp_v0 = malloc(8);
@@ -1186,7 +1184,7 @@ void func_8067AA58(s32 arg0, s32 arg1, f32 arg2, f32 arg3) {
     func_80679200(arg1, arg0, 0x200000, 0, 1, temp_v0);
 }
 
-void func_8067AAB8(Actor* arg0, s32 arg1, s16 arg2, f32 arg3, s16 arg4) {
+void func_8067AAB8(Actor* arg0, Actor *arg1, s16 arg2, f32 arg3, s16 arg4) {
     GlobalASMStruct33 *temp_v0;
 
     temp_v0 = malloc(0xC);
@@ -1208,7 +1206,7 @@ void func_8067AB20(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, void *arg4, u8 a
     func_80679290(arg1, arg0, arg2, arg3, 1, sp2C, 1);
 }
 
-void func_8067ABC0(s32 arg0, s32 arg1, u8 arg2, s16 arg3, s16 arg4, f32 arg5, f32 arg6, f32 arg7) {
+void func_8067ABC0(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, f32 arg5, f32 arg6, f32 arg7) {
     GlobalASMStruct34 *temp_v0;
 
     temp_v0 = malloc(0x10);

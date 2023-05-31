@@ -384,7 +384,7 @@ void func_80689064(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5) {
     func_80689250(arg0, arg1, arg2, arg3, arg4, arg5, &sp38, 0, 0, func_80688E08());
 }
 
-void func_80689114(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6) {
+void func_80689114(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, Actor *arg6) {
     Struct807500B4 sp38 = D_807500D4;
     func_80689250(arg0 - 0x10, arg1, arg2, arg3, arg4, arg5, &sp38, 1, arg6, func_80688E08());
 }

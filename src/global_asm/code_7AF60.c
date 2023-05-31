@@ -1,30 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-} Struct80676CB0_unk10;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    Struct80676CB0_unk10 *unk10;
-    s32 unk14;
-    s32 unk18;
-} Struct80676CB0;
-
 u8 func_80676CB0(Struct80676CB0 *arg0, u8 arg1);
 
 s32 func_806D0DE4(Actor *arg0, Actor *arg1);
-u8 func_806767E0(s32, s32, s32);
 
 extern u8 D_807F6902;
 extern f64 D_807591E0;
@@ -33,11 +12,11 @@ void func_80676260(Actor *arg0, Actor *arg1, s32 arg2) {
     func_806D0DE4(arg0, arg1);
 }
 
-u8 func_80676280(Actor *arg0, s32 arg1, s32 arg2) {
+u8 func_80676280(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return func_806D10D0(arg1) && D_807F6902 == 0;
 }
 
-u8 func_806762C0(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_806762C0(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return func_806767E0(arg0, arg1, arg2) && func_80676280(arg0, arg1, arg2);
 }
 
@@ -51,8 +30,6 @@ u8 func_80676308(Actor *arg0, Actor *arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676338.s")
 
-u8 func_8067641C(Actor*, Actor*, s32);
-
 /*
 // TODO: Not exactly sure what's wrong here
 s32 func_80676338(Actor *arg0, Actor *arg1, s32 arg2) {
@@ -62,15 +39,15 @@ s32 func_80676338(Actor *arg0, Actor *arg1, s32 arg2) {
 }
 */
 
-u8 func_8067641C(Actor *arg0, Actor *arg1, s32 arg2) {
+u8 func_8067641C(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return (func_806CC14C(func_80665DE0((s16)arg0->x_position, (s16)arg0->z_position, (s16)arg1->x_position, (s16)arg1->z_position), arg1->y_rotation) < 0x3A9);
 }
 
-u8 func_806764D8(Actor *arg0, Actor *arg1, s32 arg2) {
+u8 func_806764D8(Actor *arg0, Actor *arg1, Actor *arg2) {
     return D_807591E0 < func_80665E94(arg0->x_position, arg0->y_position, arg0->z_position, arg1->x_position, arg1->y_position, arg1->z_position, 0);
 }
 
-u8 func_80676540(s32 arg0, Actor *arg1, Actor *arg2) {
+u8 func_80676540(Actor *arg0, Actor *arg1, Actor *arg2) {
     return func_806764D8(arg0, arg1, arg2) && arg1->y_velocity < -100.0f;
 }
 
@@ -92,31 +69,31 @@ u8 func_806765E8(Actor *arg0, Actor *arg1, s32 arg2) {
     return arg1->distance_from_floor < 10.f && arg1->y_position < position[1];
 }
 
-u8 func_80676690(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_80676690(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return func_80676CB0(arg2, 1) && func_8067641C(arg0, arg1, arg2);
 }
 
-u8 func_806766E0(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_806766E0(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return func_80676CB0(arg2, 2) && func_8067641C(arg0, arg1, arg2);
 }
 
-u8 func_80676730(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_80676730(s32 arg0, s32 arg1, Struct80676CB0 *arg2) {
     return func_80676CB0(arg2, 1);
 }
 
-u8 func_8067675C(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_8067675C(s32 arg0, s32 arg1, Struct80676CB0 *arg2) {
     return func_80676CB0(arg2, 3);
 }
 
-u8 func_80676788(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_80676788(s32 arg0, s32 arg1, Struct80676CB0 *arg2) {
     return func_80676CB0(arg2, 5);
 }
 
-u8 func_806767B4(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_806767B4(s32 arg0, s32 arg1, Struct80676CB0 *arg2) {
     return func_80676CB0(arg2, 4);
 }
 
-u8 func_806767E0(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_806767E0(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return func_80676CB0(arg2, 2);
 }
 
@@ -158,12 +135,14 @@ u8 func_80676A70(s32 arg0, s32 arg1, s32 arg2) {
 // CharacterChange and ActorAdditionalData struct usages
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676AB8.s")
 
-u8 func_80676B38(Actor *arg0, void *arg1, s32 arg2) {
+s32 func_80676AB8(Actor*, Actor*, Actor*);
+
+u8 func_80676B38(Actor *arg0, Actor *arg1, Actor *arg2) {
     // Actor->isGrounded?
     return func_80676AB8(arg0, arg1, arg2) && arg0->unk6A & 1;
 }
 
-u8 func_80676B70(Actor *arg0, void *arg1, s32 arg2) {
+u8 func_80676B70(Actor *arg0, Actor *arg1, Actor *arg2) {
     return func_80676AB8(arg0, arg1, arg2)
         && (func_80676540(arg1, arg0, arg2)
             || func_80714608(0));
@@ -180,7 +159,7 @@ u8 func_80676C10(s32 arg0, Actor *arg1, s32 arg2) {
     return phi_v1 || func_806769A8(arg0, arg1, arg2);
 }
 
-u8 func_80676C64(s32 arg0, Actor *arg1, s32 arg2) {
+u8 func_80676C64(s32 arg0, Actor *arg1, Struct80676CB0 *arg2) {
     if (func_80676CB0(arg2, 1) && arg1->control_state == 0x1C) {
         return TRUE;
     }

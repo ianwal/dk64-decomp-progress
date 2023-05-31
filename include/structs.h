@@ -41,6 +41,26 @@ typedef struct {
     u8 unk1;
 } Struct80027840;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct80676CB0_unk10;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    Struct80676CB0_unk10 *unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct80676CB0;
+
 typedef struct ledge_info_8c LedgeInfo8C;
 
 struct ledge_info_8c {
@@ -500,7 +520,7 @@ struct actor_collision {
     u16 unk6;
     Actor *collisionSource;
     u32 unkC;
-    u32 unk10;
+    void *unk10; // Can be many different types
     ActorCollision* next;
     ActorCollision* prev;
 };

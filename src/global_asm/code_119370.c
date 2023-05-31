@@ -453,6 +453,7 @@ void *func_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return func_80714D08(arg0, arg1, arg2, arg3, arg4, 0, 0, 0, 0);
 }
 
+// Doable, init for the 0x374 struct thing
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80714D08.s")
 
 // Doable, needs a struct array size 0x10 at Struct807FDB04->unk28

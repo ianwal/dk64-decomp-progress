@@ -531,7 +531,7 @@ extern f64 D_8075A9A8;
 
 void func_807149FC(s32 arg0);
 
-void func_806A5EAC(AAD_806A5EAC *arg0, s32 arg1, f32 arg2) {
+void func_806A5EAC(AAD_806A5EAC *arg0, void *arg1, f32 arg2) {
     if (D_807FBB68 & 0x10) {
         arg2 *= 2.0f;
     }
@@ -722,7 +722,7 @@ extern u8 D_807FBD70;
 extern s32 D_8076A068;
 extern s32 D_8071EB70;
 
-s32 func_80723020(s32 arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
+s32 func_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
 void func_8066EB40(Actor*, f32);
 void func_8066E854(Actor*, f32, f32, f32, s32);
 void func_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
@@ -737,7 +737,7 @@ typedef struct {
     s16 unk6;
 } AAD_806A7600;
 
-void func_806A7600(s32 arg0) {
+void func_806A7600(void *arg0) {
     AAD_806A7600 *sp34;
     s16 permanentFlagIndex;
     s32 var_a0_2;
