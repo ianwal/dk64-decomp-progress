@@ -10,13 +10,13 @@ extern u8 D_807FF0F8[];
 
 void func_80737CF4(s32 arg0, s32 arg1);
 
-void func_80737C20(u8 arg0) {
+void func_80737C20(s32 arg0) {
     s32 sp24;
 
     D_807FF0F0 = 0;
     D_807FF0F1 = 0;
     D_807FF0F2 = 0;
-    switch (arg0) {
+    switch ((u8)arg0) {
         case 1:
             D_807FF0F1 = 1;
             break;

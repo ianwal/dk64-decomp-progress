@@ -207,8 +207,6 @@ void func_8002FEC0(Actor* arg0[], u8 arg1, s32 arg2) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_8002FF74.s")
 
-void func_80724DB0(s32, s32);
-
 void func_80030888(void) {
     Actor* temp;
     Actor178* temp_2;

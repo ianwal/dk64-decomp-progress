@@ -30,25 +30,6 @@ void func_8073BB10(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4) {
     arg4[2] = ((1.0f + sp38) - sp34) / (1.0f + sp38 + sp34);
 }
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8[1]; // TODO: How many elements?
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s32 unk10;
-    s32 unk14;
-    s16 unk18;
-    s16 unk1A;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-} Struct8073BC74;
-
 void func_8073BC74(Struct8073BC74 *arg0) {
     s32 sp14;
     s32 sp10;
@@ -137,7 +118,6 @@ void func_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_140600/func_8073C040.s")
 
 s16 *func_80732444(s32, s32, s32, u8, s32);
-void func_8073BC74(Struct8073BC74 *arg0);
 extern s32 D_80756458[];
 extern f32 D_807604C8;
 

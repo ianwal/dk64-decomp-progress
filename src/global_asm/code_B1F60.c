@@ -9,7 +9,6 @@ void func_806782C0(Actor *);
 s32 func_8072881C(s32, s32);
 s32 func_8072AB74(u8, f32, f32, s32, f32);
 s32 func_8072D714(s32, s32);
-s32 func_8072DEA8(s32, s32, s32);
 
 extern f64 D_8075AE10;
 extern f32 D_8075AE18;

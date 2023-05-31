@@ -26,8 +26,6 @@ typedef struct {
     u16 unk18; // used
 } AAD_80729B00;
 
-void func_80608528(Actor *, s32, s32, s16, s32);
-void func_80605314(Actor *, s32);
 void func_806663F8(void);
 
 /*

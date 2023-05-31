@@ -2,7 +2,6 @@
 #include "functions.h"
 
 s8 func_806531B8(f32, f32, f32, s16);
-s16 func_80658B08(s8, void *, s16);
 extern s32 D_80747D70;
 extern s16 D_807F9424;
 

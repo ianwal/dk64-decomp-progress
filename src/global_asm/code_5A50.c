@@ -5,15 +5,12 @@
 extern s32 D_8000DDCC;
 extern s32 D_8076D200;
 
-s32 func_80737E30(ALSeqPlayer*, u8);
 void func_80737E50(ALSeqPlayer*);
 void func_80737F0C(s32, s32, u8);
 void func_80738080(s32, u8, u8);
 void func_807380CC(ALSeqPlayer*, s32, u8);
 void func_80738118(s32, s32, u8);
 void func_807382A0(s32, s32, u8, u8, u8);
-void func_80738400(s32, u8, u8, u8, s32);
-void func_807381D8(s32, f32, f32);
 void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 
 // Struct on the stack? Big malloc
@@ -30,13 +27,13 @@ void func_806010A0(void) {
 }
 
 void func_80601120(u8 arg0) {
-    if (func_80737E30(D_8076BF20[arg0], arg0) == 0) {
+    if (func_80737E30(D_8076BF20[arg0]) == 0) {
         func_80737E50(D_8076BF20[arg0]);
     }
 }
 
 void func_8060116C(u8 arg0) {
-    func_80737E30(D_8076BF20[arg0], arg0);
+    func_80737E30(D_8076BF20[arg0]);
 }
 
 void func_806011A0(u8 arg0, s32 arg1) {
@@ -142,7 +139,7 @@ void func_80601780(u8 arg0, s32 arg1) {
 }
 
 void func_806017B4(u8 arg0) {
-    func_807383B0(D_8076BF20[arg0], arg0);
+    func_807383B0(D_8076BF20[arg0]);
 }
 
 void func_806017E8(u8 arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4) {

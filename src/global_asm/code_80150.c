@@ -358,7 +358,6 @@ extern s32 D_8071FEAC; // TODO: Datatype
 extern f64 D_80759550;
 
 u32 func_806119A0(void);
-void func_80608528(Actor*, s32, s32, s32, s32);
 
 /*
 // TODO: Pretty close

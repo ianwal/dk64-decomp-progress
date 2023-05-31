@@ -2,13 +2,11 @@
 #include "functions.h"
 
 
-u8 func_806C9974(u8, s32);
 void func_80614D48(Actor*, f32, f32);
 extern s32 D_807FD6F0[];
 void func_806CD424(s16, f32, f32);
 extern void (*action_initiation_function_list[])(void);
 
-void func_80605314(Actor*, u8);
 void func_8062217C(Actor*, s32);
 void func_80627878(Actor*);
 void func_806F0D68(Actor*);

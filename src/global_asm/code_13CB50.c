@@ -1,18 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct {
-    u8 unk0[0x48 - 0x0];
-    s32 unk48;
-} Struct80737E50;
+void func_80737E50(ALSeqPlayer* arg0) {
+    ALEvent sp18;
 
-void func_80737E50(Struct80737E50 *arg0) {
-    s32 pad[3];
-    s16 pad2;
-    s16 sp18; // TODO: ALEvent struct
-
-    sp18 = 0xF;
-    alEvtqPostEvent(&arg0->unk48, &sp18, 0);
+    sp18.type = AL_SEQP_PLAY_EVT;
+    alEvtqPostEvent(&arg0->evtq, &sp18, 0);
 }
 
 typedef struct {
@@ -129,3 +122,4 @@ void func_80738118(s32 arg0, s32 arg1, u8 arg2) {
     func_807382A0(arg0, 0, arg1 | 0xB0, 0xFC, arg2);
 }
 */
+

@@ -3,11 +3,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9CE20/func_80698120.s")
 
-// void func_80608528(f32, Actor *, s32, s32, s32, s32);
-void func_80608528(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4);
-// f32 func_80612D1C(f32, u32);
-// ? func_806319C4(void *, ?);
-void func_8072EE7C(Actor *, s32, s32, s32, f32, f32, f32, f32, f32, s32, f32, f32, s32);
 void func_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, u8 arg8, s16 arg9, s16 argA, s16 argB, s16 argC);
 extern s32 D_80744478;
 extern s16 D_8075037C;

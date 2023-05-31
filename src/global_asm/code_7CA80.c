@@ -25,7 +25,6 @@ s16 func_8067AF74(Actor*);
 s32 func_806782E8(Actor *arg0);
 
 void func_806785D4(Actor*);
-void func_80605314(Actor*, u8);
 void func_8062D26C(Actor*);
 void func_806783BC();
 void func_806136B4();
@@ -35,7 +34,6 @@ void func_8067AEFC(Actor*);
 void func_8070DA74(Actor*);
 void func_8071586C(Actor*);
 void func_807233B4(Actor*);
-void func_8072F09C(void *);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80677D80.s")
 
@@ -116,7 +114,7 @@ func_8067B2A0
 func_8067B2A8
 */
 
-extern s32 (*D_8074DA30[])(void*);
+extern s32 (*D_8074DA30[])(s32);
 extern u8 D_8074D8D4[];
 
 typedef struct {
@@ -154,7 +152,7 @@ s32 func_80677ED0(Struct80677ED0 *arg0) {
     return FALSE;
 }
 
-s32 func_80677FA8(Actors arg0, void *arg1) {
+s32 func_80677FA8(Actors arg0, s32 arg1) {
     s32 master_type;
 
     if (func_80678050(arg0)) {
@@ -173,7 +171,6 @@ s32 func_80678014(s32 arg0) {
     }
     return FALSE;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80678050.s")
 

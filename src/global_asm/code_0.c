@@ -584,7 +584,6 @@ void func_8066BDE0(void);
 
 void func_80701C90(void);
 void func_80629190(void);
-void func_80664CB0(s32 arg0);
 void func_80600590(s32 arg0);
 
 void func_806641A0();

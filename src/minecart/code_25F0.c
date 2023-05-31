@@ -62,7 +62,6 @@ void func_80027CF4(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027EE8.s")
 
 f32 func_8000AC60(f32);
-void func_80608528(Actor *, s32, s32, s16, s32);
 f32 func_806119A0();
 extern f64 D_80028DD8;
 typedef struct MinecartStruct1 {

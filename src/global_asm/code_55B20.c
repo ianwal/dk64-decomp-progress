@@ -18,8 +18,7 @@ extern u16 D_807F735A;
 extern u16 D_807F735C;
 extern u16 D_807F735E;
 
-void func_80636164(s32, u8);
-void func_80636210(s32, u8);
+void func_80636210(Model2Model *arg0, u8 arg1);
 void func_8063B4C0(Chunk14*, u8);
 s32 func_8063A38C(Chunk14*, Chunk14*, f32, f32, f32);
 
@@ -381,6 +380,8 @@ void func_806526E0(u8 arg0) {
         }
     }
 }
+
+Chunk14 *func_8063070C(Chunk14 *arg0);
 
 void func_80652790(u8 arg0) {
     s32 i;

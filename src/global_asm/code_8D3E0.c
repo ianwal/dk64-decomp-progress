@@ -1,18 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unkC;
-    s32 unk8;
-    s32 unk10;
-    s32 unk14;
-    s32 unk1C;
-    s32 unk18;
-} Struct807500B4;
-
 extern Struct807500B4 D_807500B4; // TODO: Array?
 extern Struct807500B4 D_807500D4; // TODO: D_807500D4[1]?
 

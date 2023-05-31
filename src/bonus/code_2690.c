@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-s32 func_80677FA8(Actors arg0, void *arg1);
-
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80026690.s")
 
@@ -521,7 +519,6 @@ typedef struct {
     s8 unk10;
 } AAD_80028E3C_2;
 
-void func_80608528(Actor*, s16, u8, s32, s32);
 
 /*
 // TODO: Very close

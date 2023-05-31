@@ -102,6 +102,18 @@ typedef struct {
 } Struct80717D84_unk384_80719EF4;
 
 typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct80717D84_unk384_8071D0F0;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80717D84_unk384_8071B2EC;
+
+typedef struct {
     u8 unk0[0x16 - 0x0];
     s16 unk16;
 } Struct80717D84_unk330;
@@ -1120,11 +1132,6 @@ void func_8071B24C(Struct80717D84 *arg0, s32 arg1) {
 extern f32 D_8075E968;
 extern f64 D_8075E970;
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-} Struct80717D84_unk384_8071B2EC;
-
 void func_8071B2EC(Struct80717D84 *arg0, s32 arg1) {
     f32 sp24;
     Struct80717D84_unk384_8071B2EC *var_v1;
@@ -1316,13 +1323,6 @@ void func_8071C818(Struct80717D84 *arg0, s8 *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071CDE0.s")
 
 extern u16 D_807FC930[];
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Struct80717D84_unk384_8071D0F0;
 
 void func_8071D0F0(Struct80717D84 *arg0, s8 *arg1) {
     Struct80717D84_unk384_8071D0F0 *var_t0;
@@ -1759,17 +1759,7 @@ void func_8071EFDC(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// TODO: Which struct is this?
-typedef struct {
-    u8 unk0[0x340 - 0x0];
-    f32 unk340;
-    f32 unk344;
-    f32 unk348;
-    s16 unk34C;
-    s16 unk34E;
-} Struct8071F034_arg0;
-
-void func_8071F034(Struct8071F034_arg0 *arg0, s32 arg1) {
+void func_8071F034(Struct80717D84 *arg0, s32 arg1) {
     if (arg0->unk34E == 0) {
         arg0->unk340 = player_pointer->x_position;
         arg0->unk344 = player_pointer->y_position;

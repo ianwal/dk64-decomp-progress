@@ -5,8 +5,6 @@
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F09F0.s")
 
-void func_80608528(Actor*, s32, s32, s32, s32);
-
 void func_80614FD8(void*);
 void func_80614F28(void*);
 

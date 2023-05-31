@@ -1717,6 +1717,36 @@ typedef struct {
     u8  pad2[0x1C8 - 0x88]; // total size 0x1C8
 } Chunk;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unkC;
+    s32 unk8;
+    s32 unk10;
+    s32 unk14;
+    s32 unk1C;
+    s32 unk18;
+} Struct807500B4;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8[1]; // TODO: How many elements?
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s32 unk10;
+    s32 unk14;
+    s16 unk18;
+    s16 unk1A;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+} Struct8073BC74;
+
 // func_80712944, func_8060AC34
 typedef struct global_asm_struct_12 {
     u16 unk0;

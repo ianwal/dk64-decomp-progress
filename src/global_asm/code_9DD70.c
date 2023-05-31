@@ -5,8 +5,6 @@
 extern s8 D_807F6951;
 extern s8 D_807F6950;
 
-void func_8070D8C0(Actor*, s32, u8);
-
 f32 func_80611BB4(f32, f32);
 extern f64 D_8075A2D0;
 

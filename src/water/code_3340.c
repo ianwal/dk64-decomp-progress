@@ -174,7 +174,6 @@ s32 func_8061CB08();
 s32 func_8061CB38();
 s32 func_806A2A10(s32, s32, u8);
 u8 func_806FDB8C(s16, s32, s32, f32, f32, f32);
-s32 func_8070D8C0(void *, s32, u8);
 extern s32 D_80004520;
 extern s32 D_800046C0;
 extern s32 D_80006F10;

@@ -13,8 +13,6 @@ extern Gfx *func_806FD490(Gfx *, s32, s32, s32, s32 *);
 extern void func_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 extern void func_8070E8F0(Gfx**, Sprite*);
 
-// TODO: This signature is sus
-extern void func_8070F2C8(s32, s16, s32, u8);
 
 void func_8002419C(void *arg0, Gfx **arg1);
 void func_80024940(Gfx **gpp);
@@ -1824,7 +1822,7 @@ void func_8002AFA4(Gfx **arg0, s32 arg1) {
     );
     sp4C = *arg0;
     func_8070E8F0(&sp4C, &D_8004AC00[D_807444FC].sprite[arg1]);
-    func_8070F2C8(0x400, phi_f0, 1 & D_8004BCD0[arg1].unk1A & 1, D_8004BCD0[arg1].unk1B);
+    func_8070F2C8(0x400, phi_f0, D_8004BCD0[arg1].unk1A & 1, D_8004BCD0[arg1].unk1B);
 
     if (D_8004A338[D_8004BCD0[arg1].unk18] & 2) {
         func_8070F2FC(&sp4C, 

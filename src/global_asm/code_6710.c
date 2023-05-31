@@ -30,8 +30,6 @@ typedef struct {
 
 extern Struct8074593C D_8074593C[];
 
-extern s32 func_80737E30(s32, u8);
-
 u8 func_80602430(s16 arg0);
 u8 func_8060245C(s16 arg0);
 void func_80602B60(s32 arg0, u8 arg1);
@@ -174,7 +172,7 @@ f32 func_80602D4C(s32 arg0) {
     u8 temp_v0 = func_80602430(arg0);
 
     if (arg0 == D_80770560[temp_v0]) {
-        if (func_80737E30(D_8076BF20[temp_v0], temp_v0) == 1) {
+        if (func_80737E30(D_8076BF20[temp_v0]) == 1) {
             return D_80770568[temp_v0];
         }
     }

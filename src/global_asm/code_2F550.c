@@ -852,7 +852,6 @@ void func_8065E040(s32);
 /*
 ? func_8062B3C4(void *, s32 *);
 ? func_8062B478(s32);
-s32 func_8062BA74(void *);
 ? func_8062F318();
 ? func_8062F328(void *);
 ? func_8062F3A0(void *, void *);

@@ -507,7 +507,6 @@ void func_80685F60(Actor *actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068613C.s")
 
-void func_80608528(Actor *, s32, s32, s32, s32);
 s32 func_806119A0();
 extern s32 D_8071DB74; // TODO: Datatype
 extern s32 D_8071FC0C; // TODO: Datatype

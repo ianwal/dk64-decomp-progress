@@ -16,7 +16,6 @@ void func_8073C9C0(s32 arg0, s16 arg1, s32 arg2) {
     func_8073DA30(sp1C, arg1, arg2);
 }
 
-s32 func_8073BE54(void *, f32);
 extern f32 D_807604D0;
 
 typedef struct {

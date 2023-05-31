@@ -201,7 +201,6 @@ void func_806D3608(void);
 s16 func_806CE4E4(Actor*, f32, f32, s32);
 
 void func_806F142C(Actor*);
-void func_80608528(Actor*, s16, s32, s32, s32);
 
 void func_806DF494(s16*, s16, s16);
 
@@ -214,7 +213,6 @@ s32 func_806E9D1C(s16 arg0, u8 arg1, u8 arg2);
 void func_806EA568(void);
 s16 func_8062773C(s32);
 Actor *func_807270C0(s8, s32); // getSpawnerTiedActor()
-void func_80605314(Actor*, s32);
 s32 func_806FA7A4(s32); // TODO: Might return s16
 
 void func_806C9DE0(void) {
@@ -303,7 +301,7 @@ void func_806CA048(Actor *actor, PlayerAdditionalActorData *arg1) {
             arg1->unk249 = 0;
         } else if (actor->interactable & 2) {
             arg1->unk248 = -1;
-            arg1->unk249 = func_80727194();
+            arg1->unk249 = func_80727194(actor);
         } else {
             phi_v1 = TRUE;
         }

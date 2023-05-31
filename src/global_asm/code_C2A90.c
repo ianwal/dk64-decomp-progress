@@ -14,9 +14,6 @@ void func_80724E48(u8);
 void func_806F09F0(Actor*, u16);
 
 void func_806651FC(Actor*);
-void func_80724CA4(s32, s32);
-
-void func_8070D8C0(Actor*, s32, s32);
 
 u8 func_806BDD90(void) {
     s16 i;
@@ -250,8 +247,6 @@ extern s32 D_8071A8B0; // TODO: Proper datatype
 extern s32 D_8071C818; // TODO: Proper datatype
 extern s32 D_8071FB08; // TODO: Proper datatype
 extern s32 D_807200D4; // TODO: Proper datatype
-
-void func_8069084C(s32, s32, f32, s16, f32, f32, Actor*);
 
 void func_806C1734(void) {
     s32 pad2; // TODO: Can we get rid of these?

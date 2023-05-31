@@ -186,7 +186,9 @@ extern u8 D_80744828;
 extern u16 D_8076AEF4;
 extern u8 D_8076AEF6;
 
-void func_805FF1B0(s8 player_index) {
+extern u16 D_80744748[];
+
+void func_805FF1B0(s32 player_index) {
     u16 pad;
     u16 new_map;
     s32 limit;
@@ -210,7 +212,7 @@ void func_805FF1B0(s8 player_index) {
             found_special_void = 0;
             new_exit = 0;
             level_index = getLevelIndex((u8)current_map, 0U);
-            new_map = *(u16*)(0x80744748 + (level_index << 1));
+            new_map = D_80744748[level_index];
             while ((!found_special_void) && (i < limit)) {
                 if (current_map == D_8074475C[i].void_map) {
                     new_map = D_8074475C[i].dest_map;
@@ -227,8 +229,6 @@ void func_805FF1B0(s8 player_index) {
     func_805FF378(new_map, new_exit);
     D_80744828 = 0;
 }
-
-
 
 void func_805FF2F4(void) {
     Maps map;

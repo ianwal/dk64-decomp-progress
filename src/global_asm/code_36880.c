@@ -660,15 +660,12 @@ void func_80635588(void) {
 void func_80605380(s16);
 
 void func_8063DE68(void*);
-void func_8072F09C(s32 arg0);
 void func_806645B8(s16 arg0);
 
 void func_806348B4(void *arg0);
 void func_8066C904(void *arg0);
 
 Chunk14 *func_80630588(Chunk14 *arg0, s32 arg1, u8 arg2, u8 *arg3);
-
-void func_8064F804(void *arg0);
 
 void func_806593C8(s32 arg0, s32 arg1);
 void func_80636074(ObjectModel2 *arg0);

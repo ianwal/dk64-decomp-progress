@@ -28,8 +28,6 @@ extern f32 D_807F6238;
 extern s8 D_807F6950;
 extern s8 D_807F6951;
 
-void func_806335B0(s16, s32, s32, f32*, f32*, f32*);
-
 s32 func_806418E8(s16, s16, s16);
 u8 func_8064EC60(s32, s16, s16, s16);
 extern void func_8064EE08(void);
@@ -851,8 +849,6 @@ block_8:
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645A64.s")
 
-void func_806085DC(s16, u16, u8, u8, s32, s32, f32);
-
 void func_80645B9C(gASMStruct3 *arg0, s16 arg1, s32 arg2, s32 arg3) {
     if (((s32) (0x243 - arg0->unk44) % 60) == 0) {
         func_806085DC(arg1, 0x38, 0xFF, 0x7F, 0, 0x3C, 0.0f);
@@ -1535,8 +1531,6 @@ void func_8064C250(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 extern f32 D_80758B28;
 
-void func_80650D8C(s16, s32, s16*, u16*, u8*);
-
 void func_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     s16 sp3E;
     u32 sp38;
@@ -1566,8 +1560,6 @@ void func_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 extern u16 D_807446C0[];
 extern u16 D_807FC930[];
-
-void func_80650AD8(s16, s32, s32, f32);
 
 void func_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 phi_f0;

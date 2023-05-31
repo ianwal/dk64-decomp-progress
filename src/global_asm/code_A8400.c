@@ -143,7 +143,6 @@ void func_806A495C(void *arg0, void *arg1, void *arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A4B84.s")
 
-void func_8070D9AC(void *arg0);
 void func_806A4B84(f32 arg0, Actor *arg1, AAD_806A4DDC *arg2, Struct806A57C0_2 *arg3, u8 arg4, u8 *arg5);
 
 /*
@@ -326,7 +325,6 @@ int func_806A4284();
 void func_806A5174(Actor*, void*, f32);
 void func_8070DA74(Actor*);
 void func_8070E808(Actor *arg0, Actor *arg1);
-void func_8070DA28(void *arg0);
 void func_806A4DDC(Actor *arg0);
 
 /*
@@ -504,8 +502,6 @@ void func_806A5C60(Actor *arg0) {
 
 extern f32 D_8075A9A0;
 extern s32 D_807FBB68;
-
-void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6, f32 *arg7);
 
 /*
 // TODO: Close, float regalloc
@@ -728,7 +724,6 @@ extern s32 D_8071EB70;
 
 s32 func_80723020(s32 arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
 void func_8066EB40(Actor*, f32);
-void func_8066E8E4(void *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5);
 void func_8066E854(Actor*, f32, f32, f32, s32);
 void func_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
 void func_80723484(s32, Actor*);

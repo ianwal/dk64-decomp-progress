@@ -374,7 +374,6 @@ void func_806C90C4(s32 exitIndex) {
 }
 
 void func_806C9434(s32 arg0);
-void func_80605314(Actor*, u8);
 
 void func_806C92C4(s32 arg0) {
     func_80672C30(D_807FBB48);

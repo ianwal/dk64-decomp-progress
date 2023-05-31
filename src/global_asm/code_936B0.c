@@ -246,8 +246,6 @@ extern f32 D_807FC7B8;
 extern f64 D_8075A0C0;
 extern f64 D_8075A0C8;
 
-void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, s32 arg6, f32 *arg7);
-
 void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, s32 arg6) {
     s32 temp;
     s32 temp2;

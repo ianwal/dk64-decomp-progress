@@ -99,7 +99,6 @@ void func_80697988(void) {
 
 void func_8065D254(Actor *, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_806651FC(Actor *);
-void func_8066E8E4(Actor *, f32, f32, f32, f32, s32);
 extern s32 D_8071ABDC; // TODO: Datatype
 extern s32 D_8071FBA0; // TODO: Datatype
 extern s32 D_8071F758; // TODO: Datatype

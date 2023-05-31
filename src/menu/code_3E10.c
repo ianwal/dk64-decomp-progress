@@ -2,7 +2,6 @@
 #include "functions.h"
 
 
-void func_80737C20(s32);
 extern s8 D_80745844;
 void func_80030340(Actor*, s32, s32, s32);
 void func_8061D4E4(s32);
