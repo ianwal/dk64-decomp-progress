@@ -9,7 +9,7 @@
     </mask>
     <g mask="url(#anybadge_1)">
         <path fill="#555" d="M0 0h71v20H0z"/>
-        <path fill="#c07d00" d="M71 0h67v20H71z"/>
+        <path fill="#c08a00" d="M71 0h67v20H71z"/>
         <path fill="url(#b)" d="M0 0h138v20H0z"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
@@ -17,7 +17,7 @@
         <text x="35.5" y="14">dk64_boot</text>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="105.5" y="15" fill="#010101" fill-opacity=".3">32.5209%</text>
-        <text x="104.5" y="14">32.5209%</text>
+        <text x="105.5" y="15" fill="#010101" fill-opacity=".3">35.9244%</text>
+        <text x="104.5" y="14">35.9244%</text>
     </g>
 </svg>

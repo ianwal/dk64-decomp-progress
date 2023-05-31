@@ -23,7 +23,7 @@ us,boot,__osAiDeviceBusy,48,yes
 us,boot,osEepromLongRead,140,yes
 us,boot,func_80001700,1012,no
 us,boot,func_80002790,152,no
-us,boot,func_800022D4,288,no
+us,boot,func_800022D4,288,yes
 us,boot,func_80002724,44,no
 us,boot,__osPackRamWriteDataSafe,128,no
 us,boot,func_80005948,96,no
@@ -41,7 +41,7 @@ us,boot,__osExceptionPreamble,16,yes
 us,boot,__osSpSetStatus,12,yes
 us,boot,func_80002D60,132,no
 us,boot,func_800075CC,28,no
-us,boot,func_800010C0,1600,no
+us,boot,func_800010C0,1600,yes
 us,boot,func_800004F4,180,yes
 us,boot,func_800075E8,160,no
 us,boot,osSendMesg,332,yes
