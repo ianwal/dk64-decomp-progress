@@ -448,7 +448,11 @@ build/us/src/dk64_boot/dk64_boot_7F60.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/gu/%.c.o: OPT_FLAGS = -O3
 build/us/src/dk64_boot/gu/nonmatching/%.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/%.c.o: OPT_FLAGS = -O1
+build/us/src/dk64_boot/io/conteepprobe.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/conteepwrite.c.o: OPT_FLAGS = -O2
+build/us/src/dk64_boot/io/conteepread.c.o: OPT_FLAGS = -O2
+build/us/src/dk64_boot/io/sirawdma.c.o: OPT_FLAGS = -O2
+
 build/us/src/dk64_boot/io/contpfs.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/contpfs.c.o: MIPSISET := -mips3 -o32
 build/us/src/dk64_boot/io/motor.c.o: OPT_FLAGS = -O2

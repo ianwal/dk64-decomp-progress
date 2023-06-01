@@ -149,7 +149,7 @@ segments:
       - [0xC620, c, gu/normalize]             #DONE
       - [0xC6B0, c, io/piacs]
       - [0xC770, hasm, probetlb]              #DONE
-      - [0xC830, c, os/setIntMask]
+      - [0xC830, hasm, os/setIntMask]
       - [0xC8D0, c, os/destroythread]         #DONE
       - [0xC9E0, hasm, os/setcompare]
       - [0xC9F0, c, io/si]

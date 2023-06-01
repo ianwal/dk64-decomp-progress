@@ -1,10 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/sirawdma/__osSiRawStartDma.s")
-#else
 s32 __osSiRawStartDma(s32 direction, void *dramAddr)
 {
     if (IO_READ(SI_STATUS_REG) &  (SI_STATUS_DMA_BUSY | SI_STATUS_RD_BUSY))
@@ -21,8 +17,7 @@ s32 __osSiRawStartDma(s32 direction, void *dramAddr)
         IO_WRITE(SI_PIF_ADDR_WR64B_REG, 0x1FC007C0);
 
     if (direction == OS_READ)
-        osInvalDCache(dramAddr, 64);//bzero(dramAddr, 64);
+        osInvalDCache(dramAddr, 64);
 
     return 0;
 }
-#endif

@@ -11,7 +11,7 @@ extern OSTimer* __osTimerList;
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/timerintr/__osTimerServicesInit.s")
 
 /*
-// TODO: Very close, just issues with temp variables
+// TODO: Very close, just issues with the OSTime write
 void __osTimerServicesInit(void) {
     __osCurrentTime = 0;
     __osBaseCounter = 0;
@@ -21,7 +21,7 @@ void __osTimerServicesInit(void) {
     __osTimerList->value = 0;
     __osTimerList->interval = __osTimerList->value;
     __osTimerList->mq = NULL;
-    __osTimerList->msg = NULL;
+    __osTimerList->msg = 0;
 }
 */
 

@@ -4,7 +4,7 @@
 void func_8073B560(ALPlayer *arg0) {
     OSIntMask sp1C;
 
-    sp1C = osSetIntMask(1);
+    sp1C = osSetIntMask(OS_IM_NONE);
     arg0->samplesLeft = n_syn->curSamples;
     arg0->next = n_syn->head;
     n_syn->head = arg0;
@@ -14,7 +14,7 @@ void func_8073B560(ALPlayer *arg0) {
 void func_8073B5D0(ALPlayer *arg0) {
     OSIntMask sp1C;
 
-    sp1C = osSetIntMask(1);
+    sp1C = osSetIntMask(OS_IM_NONE);
     arg0->samplesLeft = n_syn->curSamples;
     arg0->next = n_syn->head;
     n_syn->head = arg0;
@@ -24,7 +24,7 @@ void func_8073B5D0(ALPlayer *arg0) {
 void func_8073B640(ALPlayer *arg0) {
     OSIntMask sp1C;
 
-    sp1C = osSetIntMask(1);
+    sp1C = osSetIntMask(OS_IM_NONE);
     arg0->samplesLeft = n_syn->curSamples;
     arg0->next = n_syn->head;
     n_syn->head = arg0;

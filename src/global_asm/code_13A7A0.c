@@ -183,7 +183,7 @@ void func_80737990(u8 arg0) {
     s16 sp1C; // TODO: ALEvent
     Struct80737990 *sp18;
 
-    sp2C = osSetIntMask(1);
+    sp2C = osSetIntMask(OS_IM_NONE);
     sp18 = D_807563C0;
     while (sp18 != NULL) {
         sp1C = 0x400;
