@@ -4103,7 +4103,7 @@ us,boot,osGetThreadPri,24,yes
 us,boot,guTranslateF,72,yes
 us,boot,osInvalICache,128,yes
 us,boot,osSetEventMesg,104,yes
-us,boot,func_800023F4,236,no
+us,boot,func_800023F4,232,yes
 us,boot,guRotateF,404,no
 us,boot,guMtxCatL,88,yes
 us,boot,func_80002CE8,120,no

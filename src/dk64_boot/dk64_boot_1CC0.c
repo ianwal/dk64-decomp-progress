@@ -522,4 +522,27 @@ int *m;                 /* maximum lookup bits, returns actual */
   return 2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1CC0/func_800023F4.s")
+int func_800023F4(void) { //int inflate()
+    int e;
+    int r;
+    unsigned h;
+
+    D_80013AF0 = 0;
+    D_80013AB8 = 0;
+    D_80013AB4 = 0;
+    h = 0;
+    do {
+      D_80013ABC = 0;
+      if (r = func_800022D4(&e))
+        return r;
+      if (D_80013ABC > h)
+        h = D_80013ABC;
+    } while (!e);
+
+    while (D_80013AB8 >= 8) {
+      D_80013AB8 -= 8;
+      D_80013AEC -= 1;
+    }
+    D_80013AEC += 8;
+    return 0;
+}
