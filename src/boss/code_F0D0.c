@@ -10,7 +10,6 @@ extern f64 D_80036C58;
 extern s32 D_8071720C; // TODO: Datatype
 extern void *D_8074E880[];
 extern f32 D_80036DB4;
-extern s32 D_807F5D10;
 
 typedef struct BossStruct0 {
     u8 unk0;

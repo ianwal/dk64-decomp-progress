@@ -1,11 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "controller.h"
 
 void __osSiGetAccess(void);
 void __osSiRelAccess(void);
 
 extern u8 D_80014E01;
-extern u8 __osContLastCmd;
 
 s32 func_80007360(u8 arg0) {
     s32 sp1C;

@@ -36,6 +36,8 @@ extern u8 current_file;
 
 extern s32 D_807FBB64; // shadow_display_bitfield, shockwave_bitfield, long_distance_actor_spawn
 
+extern Actor *D_807F5D10;
+
 extern u8 D_8076A0AB; // Map
 extern s16 D_807F6240[];
 

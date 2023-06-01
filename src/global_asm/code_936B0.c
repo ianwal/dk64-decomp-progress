@@ -303,8 +303,6 @@ void func_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 arg4, f32 arg5
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_806915B0.s")
 
-extern s32 D_807F5D10;
-
 void func_80661520(f32, f32, f32, f32, f32, f32);
 
 void func_80691830(s16 arg0, f32 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {

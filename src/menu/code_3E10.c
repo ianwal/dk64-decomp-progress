@@ -4,8 +4,7 @@
 
 extern s8 D_80745844;
 void func_80030340(Actor*, s32, s32, s32);
-void func_8061D4E4(s32);
-extern s32 D_807F5D10;
+void func_8061D4E4(Actor*);
 extern s8 opening_cutscene_transition;
 extern s8 D_80745844;
 extern f32 adventure_barrel_scale;

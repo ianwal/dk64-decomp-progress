@@ -6,7 +6,6 @@
 extern f32 D_8075C260;
 extern f32 D_8075C264;
 extern f32 D_8075C268;
-extern s32 D_807F5D10;
 
 void func_8061C518(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_8061C464(s32, Actor *, s32, s16, s32, s32, s32, s32, s32, s32, f32);

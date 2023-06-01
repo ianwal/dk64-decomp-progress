@@ -471,7 +471,6 @@ void func_806A0310(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_806A0330.s")
 
-extern s32 D_807F5D10;
 extern f32 D_80750398;
 extern f32 D_8075A504;
 extern f32 D_8075A508;

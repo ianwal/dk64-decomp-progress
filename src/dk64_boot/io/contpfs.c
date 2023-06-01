@@ -1,10 +1,6 @@
 #include <os_internal.h>
 #include "controller.h"
 
-
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/contpfs/__osSumcalc.s")
-#else
 u16 __osSumcalc(u8 *ptr, int length)
 {
     int i;
@@ -19,7 +15,6 @@ u16 __osSumcalc(u8 *ptr, int length)
     }
     return sum & 0xffff;
 }
-#endif
 
 #ifndef NONMATHCING
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/contpfs/__osIdCheckSum.s")
@@ -49,6 +44,7 @@ s32 __osIdCheckSum(u16 *ptr, u16 *csum, u16 *icsum)
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/contpfs/__osCheckPackId.s")
 
+// Nope
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/contpfs/__osGetId.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/contpfs/func_8000D7E0.s")

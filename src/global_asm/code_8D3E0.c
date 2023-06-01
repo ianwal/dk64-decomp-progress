@@ -4,7 +4,7 @@
 extern Struct807500B4 D_807500B4; // TODO: Array?
 extern Struct807500B4 D_807500D4; // TODO: D_807500D4[1]?
 
-void func_80631F58(s32, void *, void **);
+void func_80631F58(void*, void*, void**);
 s16 func_806531B8(f32, f32, f32, s16);
 void func_8066B424(void);
 u16 func_80688C84(u16);
@@ -146,7 +146,7 @@ void func_80688940(void) {
     s32 mapIndex;
     s32 sp60;
     s32 *sp5C;
-    s32 setup;
+    void *setup;
     u16 phi_s3;
     GlobalASMStruct18 *phi_s1;
 
@@ -688,7 +688,7 @@ void func_80689958(s32 *arg0) {
     }
 }
 
-void func_80689A80(s16 arg0, s32 arg1) {
+void func_80689A80(s16 arg0, void *arg1) {
     s32 found = FALSE;
     ActorSpawner *spawner = actor_spawner_pointer;
 

@@ -160,7 +160,6 @@ void func_806C81DC(s16 arg0, s16 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C850C.s")
 
 extern f32 D_8075C4B0;
-extern Actor *D_807F5D10;
 extern s16 D_807FD584;
 
 extern f32 D_80753578[];

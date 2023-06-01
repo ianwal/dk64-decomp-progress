@@ -78,7 +78,6 @@ void func_806BD170(void) {
 
 extern f32 D_807FC8D4;
 extern s16 D_8076A0A6;
-extern s32 D_807F5D10;
 extern s8 D_807506B4;
 extern s8 D_807506A8[];
 

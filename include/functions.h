@@ -657,7 +657,7 @@ void func_8068C080(void);
 void func_8068C0B4(void);
 void func_8068C2EC(void);
 void func_8068C2F8(Actor *arg0);
-void func_8068C350(s32 arg0, Actor *arg1, u8 arg2);
+void func_8068C350(void *arg0, Actor *arg1, u8 arg2);
 s32 func_8060C6B8(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex);
 s16 func_80631C20(u8);
 void func_8060B7F0(void);
@@ -750,7 +750,7 @@ void func_806897F0(Actor *arg0);
 void func_806898A8(void);
 s32 func_806898F8(void);
 void func_80689958(s32 *arg0);
-void func_80689A80(s16 arg0, s32 arg1);
+void func_80689A80(s16 arg0, void *arg1);
 u8 func_80689B10(s16 arg0, u8 arg1, u8 arg2);
 s32 func_80689BAC(s16 arg0);
 s32 func_80689E98(s32 arg0);
@@ -874,7 +874,7 @@ void func_806D21E4(void);
 void func_806D2238(void);
 void func_806D22A0();
 void func_806D22C0(void);
-void func_806D2330(s32 arg0);
+void func_806D2330(void *arg0);
 void func_806D239C(void);
 void func_806D24A8(void);
 void func_806D24E4(void);
@@ -1127,7 +1127,7 @@ void func_806C19F4(void);
 void func_806C1CCC(void);
 void func_80684550(Actor*, u8, f32);
 void func_806C27DC(void);
-void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, f32 arg7);
+void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, void *arg6, f32 arg7);
 void func_806C2D7C();
 void func_8068A350(Actor *arg0, s32 arg1, s32 arg2);
 void func_8068A4C8(Actor *arg0, s32 arg1, s32 arg2);
@@ -1922,6 +1922,7 @@ void func_80738400(ALSeqPlayer *arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4);
 
 ActorCollision *func_80679490(Actor *, s32, u8, s32, void*);
 Actor *func_8067ADB4(u16);
+LedgeInfo *func_80665F24(Actor*);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		((d) > 0) ? (d) : -(d)

@@ -3,7 +3,6 @@
 
 void func_8061C464(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
-extern s32 D_807F5D10;
 extern f32 D_80036AB0;
 extern f32 D_80036AB4;
 extern f64 D_80036AB8;

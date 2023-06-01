@@ -2273,14 +2273,15 @@ void func_806D22C0(void) {
 }
 
 typedef struct {
-    s32 unk0;
+    void *unk0; // Function pointer
     u8  unk4;
     s8  unk5;
     s16 unk6;
     Actor *unk8;
 } GlobalASMStruct1;
 
-void func_806D2330(s32 arg0) {
+// TODO: Arg0 is a function pointer
+void func_806D2330(void *arg0) {
     GlobalASMStruct1 *temp_v0 = malloc(0x14);
     temp_v0->unk0 = arg0;
     temp_v0->unk8 = D_807FBB48; // player_pointer

@@ -18,7 +18,6 @@ s16 actor_count;
 
 s32 func_8067B2C0(s32);
 void func_80678F64(Actor*);
-LedgeInfo *func_80665F24(Actor*);
 void func_8067B01C(void);
 void func_8067B100(Actor *player);
 s16 func_8067AF74(Actor*);

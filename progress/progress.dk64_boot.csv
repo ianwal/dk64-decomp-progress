@@ -80,9 +80,9 @@ us,boot,func_800057B0,44,no
 us,boot,osSetIntMask,160,yes
 us,boot,func_80007724,24,no
 us,boot,osGetCount,16,yes
-us,boot,osContInit,368,no
+us,boot,osContInit,368,yes
 us,boot,osPiStartDma,268,yes
-us,boot,__osSumcalc,116,no
+us,boot,__osSumcalc,116,yes
 us,boot,func_80002E98,52,no
 us,boot,bzero,160,yes
 us,boot,__osInsertTimer,392,yes
@@ -160,7 +160,7 @@ us,boot,guPosition,112,no
 us,boot,func_80000EEC,320,no
 us,boot,__osResetGlobalIntMask,88,yes
 us,boot,__osException,1316,yes
-us,boot,__osContGetInitData,208,no
+us,boot,__osContGetInitData,208,yes
 us,boot,__osGetFpcCsr,16,yes
 us,boot,__osSiRawStartDma,172,yes
 us,boot,guScale,72,yes
@@ -169,7 +169,7 @@ us,boot,__osDisableInt,32,yes
 us,boot,__osViInit,316,yes
 us,boot,func_80001DB0,1316,yes
 us,boot,func_80000E48,164,no
-us,boot,__osPackRequestData,256,no
+us,boot,__osPackRequestData,244,yes
 us,boot,osPiRawStartDma,224,yes
 us,boot,func_800004B4,64,yes
 us,boot,osStopThread,192,yes

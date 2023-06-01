@@ -4,7 +4,6 @@
 
 // contreaddata.c
 
-extern u8 __osContLastCmd;
 extern OSPifRam D_80014DC0; // __osContPifRam
 extern u8 D_80014E01; // __osMaxControllers
 

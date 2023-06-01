@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern s32 D_807F5D10;
 extern f32 D_8075BEA8;
 extern f64 D_8075BEB0;
 extern u8 D_807506C0[];
@@ -713,7 +712,7 @@ void func_806C28B8(void) {
 extern s32 D_80717D84;
 extern f64 D_8075BED8;
 
-void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6, f32 arg7) {
+void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, void *arg6, f32 arg7) {
     func_807149A8(1000);
     func_80714998(0xFF);
     func_80714944(((rand() >> 0xF) % 32767) % 11);

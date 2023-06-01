@@ -284,7 +284,7 @@ void *func_8068C12C(u16 textureIndex) {
 }
 
 typedef struct {
-    s32 unk0;
+    void *unk0; // TODO: Function pointer
     Actor *unk4; // Used
     s8 unk8; // Used
     s8 unk9;
@@ -312,7 +312,7 @@ void func_8068C2F8(Actor *arg0) {
 }
 
 // TODO: Arg0 is a function pointer
-void func_8068C350(s32 arg0, Actor *arg1, u8 arg2) {
+void func_8068C350(void *arg0, Actor *arg1, u8 arg2) {
     if (D_807501E0 < 8) {
         D_807FC630[D_807501E0].unk0 = arg0;
         D_807FC630[D_807501E0].unk4 = arg1;
