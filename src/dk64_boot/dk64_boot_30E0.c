@@ -25,7 +25,7 @@ void func_800024E0(u8 **arg0, s32 *arg1, void *arg2) {
     }
     D_8000EEE0 = func_800025A4();
     if (D_8000EEE0 >= 0) {
-        func_800023F4();
+        func_800023F4(); // inflate()
         (*arg0) += D_80013AEC;
         (*arg1) += D_80013AF0;
     }

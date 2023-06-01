@@ -91,6 +91,7 @@ __osEnqueueAndYield = 0x800096BC;
 __osEnqueueThread = 0x800097BC;
 __osPopThread = 0x80009804;
 __osDispatchThread = 0x80009814;
+__osCleanupThread = 0x80009990;
 __osViInit = 0x800099A0;
 __osTimerServicesInit = 0x80009AE0;
 __osTimerInterrupt = 0x80009B6C;

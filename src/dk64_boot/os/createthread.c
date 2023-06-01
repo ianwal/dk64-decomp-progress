@@ -1,11 +1,6 @@
 #include <os_internal.h>
 #include <R4300.h>
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/createthread/osCreateThread.s")
-
-/*
-// TODO: Needs __osCleanupThread(void) address
 void __osCleanupThread(void);
 extern OSThread *__osActiveQueue;
 
@@ -33,4 +28,3 @@ void osCreateThread(OSThread *t, OSId id, void (*entry)(void *), void *arg, void
     __osActiveQueue = t;
     __osRestoreInt(saveMask);
 }
-*/

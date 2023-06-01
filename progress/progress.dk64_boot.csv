@@ -185,7 +185,6 @@ us,boot,sinf,448,no
 us,boot,__osPfsRequestData,208,no
 us,boot,func_80005A44,44,no
 us,boot,func_800029EC,68,no
-us,boot,func_800074E0,208,no
 us,boot,func_800009D0,88,yes
 us,boot,guMtxXFML,96,yes
 us,boot,func_80000450,100,yes
@@ -196,7 +195,7 @@ us,boot,__osGetId,428,no
 us,boot,osCreatePiManager,368,no
 us,boot,func_80000A30,112,no
 us,boot,func_8000D8B4,732,no
-us,boot,osCreateThread,336,no
+us,boot,osCreateThread,324,yes
 us,boot,func_800059A8,156,no
 us,boot,osViBlack,112,yes
 us,boot,func_80002C74,116,no
@@ -213,7 +212,7 @@ us,boot,osSpTaskLoad,400,yes
 us,boot,osViSetSpecialFeatures,440,yes
 us,boot,__osGetSR,16,yes
 us,boot,guMtxIdentF,136,yes
-us,boot,func_80007454,140,no
+us,boot,func_80007454,140,yes
 us,boot,__osPfsGetInitData,208,no
 us,boot,__osViSwapContext,768,no
 us,boot,viMgrMain,400,no
