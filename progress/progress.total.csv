@@ -562,7 +562,7 @@ us,.code,func_80636380,188,yes
 us,.code,func_8062D0CC,220,no
 us,.code,func_806019B8,76,yes
 us,.code,func_806F9CD0,188,no
-us,.code,func_80676A0C,100,no
+us,.code,func_80676A0C,100,yes
 us,.code,func_806E41B4,56,yes
 us,.code,func_8065E81C,552,no
 us,.code,func_80697988,868,no
@@ -1235,7 +1235,7 @@ us,.code,func_807138A4,40,yes
 us,.code,func_806485A0,548,no
 us,.code,func_8062D620,1236,no
 us,.code,func_806417BC,184,no
-us,.code,func_806769A8,100,no
+us,.code,func_806769A8,100,yes
 us,.code,gameIsInDKTheatreMode,52,yes
 us,.code,func_806E14DC,340,yes
 us,.code,func_80739FE0,144,no
@@ -2293,7 +2293,7 @@ us,.code,func_80631B8C,64,yes
 us,.code,func_806E7900,584,yes
 us,.code,func_8072F4A8,244,yes
 us,.code,func_806D24E4,232,yes
-us,.code,func_80676AB8,128,no
+us,.code,func_80676AB8,128,yes
 us,.code,func_80646058,1816,no
 us,.code,func_80731030,60,no
 us,.code,func_80650A70,104,yes
@@ -2819,7 +2819,7 @@ us,.code,func_806DF670,100,yes
 us,.code,func_806F603C,456,yes
 us,.code,func_8067AEFC,72,yes
 us,.code,func_806762C0,72,yes
-us,.code,func_80676D00,464,no
+us,.code,func_80676D00,460,yes
 us,.code,func_8072A920,352,yes
 us,.code,func_80672E64,8,yes
 us,.code,func_806E186C,484,yes
