@@ -3,15 +3,22 @@
 #include <ultra64.h>
 
 extern u8 *D_80013AC0; // extern u8 *inbuf;
-// extern u8 *D_80007284; //slide
+extern u8 *D_80013AC4; //slide
 extern u32 D_80013AEC; // extern u32 inptr;
 extern u32 D_80013AF0; // wp
 extern struct huft *D_80013AB0; //unk
 extern u32 D_80013AB4; // extern u32 bb;
 extern u32 D_80013AB8; // extern u32 bk; 
-// extern u32 crc1; //crc1
-// extern u32 crc2; //crc2
 extern s32 D_80013ABC; //hufts
+
+extern u8 D_8000EDE0[]; // border
+extern u16 D_8000EDF4[]; // cplens
+extern u8 D_8000EE34[]; // cplext
+extern u16 D_8000EE54[]; // cpdist
+extern u8 D_8000EE90[]; // cpdext
+extern s32 D_8000EED4; // lbits
+extern s32 D_8000EED8; // dbits
+extern u16 mask_bits[]; // mask_bits
 
 #ifndef WSIZE
 #  define WSIZE 0x8000     /* window size--must be a power of two, and */

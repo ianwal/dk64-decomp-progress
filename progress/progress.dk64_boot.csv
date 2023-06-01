@@ -143,7 +143,7 @@ us,boot,__osSiCreateAccessQueue,80,no
 us,boot,__osSiDeviceBusy,48,no
 us,boot,func_80005070,336,no
 us,boot,__osTimerServicesInit,140,no
-us,boot,func_80001AF4,340,no
+us,boot,func_80001AF4,340,yes
 us,boot,__osPfsRequestOneChannel,196,no
 us,boot,__osSiRawWriteIo,76,yes
 us,boot,guRotate,92,no
@@ -154,7 +154,7 @@ us,boot,__osPfsGetOneChannelData,156,no
 us,boot,osJamMesg,336,yes
 us,boot,__osSpSetPc,52,yes
 us,boot,func_80007788,56,no
-us,boot,func_80001C48,360,no
+us,boot,func_80001C48,360,yes
 us,boot,osViGetNextFramebuffer,64,yes
 us,boot,guPosition,112,no
 us,boot,func_80000EEC,320,no
@@ -167,7 +167,7 @@ us,boot,guScale,72,yes
 us,boot,osAiSetNextBuffer,164,yes
 us,boot,__osDisableInt,32,yes
 us,boot,__osViInit,316,yes
-us,boot,func_80001DB0,1316,no
+us,boot,func_80001DB0,1316,yes
 us,boot,func_80000E48,164,no
 us,boot,__osPackRequestData,256,no
 us,boot,osPiRawStartDma,224,yes

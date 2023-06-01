@@ -5,9 +5,9 @@
 
 // This is equivalent to https://gitlab.com/banjo.decomp/banjo-kazooie/-/blob/master/src/done/inflate.c
 
-s32 func_80001AF4(void); // inflate_stored();
-s32 func_80001C48(void); // inflate_fixed();
-s32 func_80001DB0(void); // inflate_dynamic();
+int func_80001AF4(void); // inflate_stored();
+int func_80001C48(void); // inflate_fixed();
+int func_80001DB0(void); // inflate_dynamic();
 int func_800022D4(int *e); // inflate_block();
 
 int func_800010C0(b, n, s, d, e, t, m) // int huft_build(b, n, s, d, e, t, m)
@@ -200,16 +200,11 @@ int *m;                 /* maximum lookup bits, returns actual */
    return y != 0 && g != 1;
 }
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1CC0/func_80001700.s")
 
-// TODO: Need address of:
-    // mask_bits
-    // D_80007284
-    // crc1
-    // crc2
-
 #if FALSE
+
+// TODO: Hmmmm....
 //^inflate_codes
 /* static */ int func_80001700(struct huft *tl, struct huft *td, s32 bl, s32 bd) // int inflate_codes(struct huft *tl, struct huft *td, s32 bl, s32 bd)
 {
@@ -232,7 +227,7 @@ int *m;                 /* maximum lookup bits, returns actual */
   md = mask_bits[bd];
 
   for (;;)                      /* do until end of block */
-  {
+  {//L80000D78
     NEEDBITS((unsigned)bl)
     if ((e = (t = tl + ((unsigned)b & ml))->e) > 16)
       do {
@@ -245,44 +240,45 @@ int *m;                 /* maximum lookup bits, returns actual */
     {
 
       tmp = (u8)t->v.n;
-      D_80007284[w++] = tmp;
-      crc1 += tmp;  
-      crc2 ^= tmp << (crc1 & 0x17);
+      D_80013AC4[w++] = tmp;
+      // crc1 += tmp;  
+      // crc2 ^= tmp << (crc1 & 0x17);
     }
     else                        /* it's an EOB or a length */
-    {
+    {//L80000EAC
        /* exit if end of block */
       if (e == 15)
         break;
 
        /* get length of block to copy */
-      NEEDBITS(e)
+      NEEDBITS(e) //L80000EAC - L80000ED8 
       n = t->v.n + ((unsigned)b & mask_bits[e]);
       DUMPBITS(e);
 
        /* decode distance of block to copy */
-      NEEDBITS((unsigned)bd)
+      NEEDBITS((unsigned)bd)//L80000F04 - L80000F2C
       if ((e = (t = td + ((unsigned)b & md))->e) > 16)
         do {
           DUMPBITS(t->b)
           e -= 16;
           NEEDBITS(e)
         } while ((e = (t = t->v.t + ((unsigned)b & mask_bits[e]))->e) > 16);
-      
+      //L80000FC8
       DUMPBITS(t->b)
-      NEEDBITS(e)
+      NEEDBITS(e) //L80000FE0 - L80001008
       d = w - t->v.n - ((unsigned)b & mask_bits[e]);
       DUMPBITS(e)
       
        /* do the copy */
       do{
-        tmp = D_80007284[d++];
-        D_80007284[w++] = tmp;
-        crc1 += tmp;
-        crc2 ^= tmp << (crc1 & 0x17);
+        tmp =  D_80013AC4[d++];
+        D_80013AC4[w++] = tmp;
+        // crc1 += tmp;
+        // crc2 ^= tmp << (crc1 & 0x17);
       }while(--n);
     }
   }
+
   /* restore the globals from the locals */
   D_80013AF0 = w; // wp = w; /* restore global window pointer */
   D_80013AB4 = b; // bb = b; /* restore global bit buffer */
@@ -291,13 +287,197 @@ int *m;                 /* maximum lookup bits, returns actual */
   /* done */
   return 0;
 }
+
 #endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1CC0/func_80001AF4.s")
+/* static */ int func_80001AF4(void) // int inflate_stored(void)
+/* "decompress" an inflated type 0 (stored) block. */
+{
+  unsigned n;           /* number of bytes in block */
+  unsigned w;           /* current window position */
+  register u32 b;       /* bit buffer */
+  register unsigned k;  /* number of bits in bit buffer */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1CC0/func_80001C48.s")
+  /* make local copies of globals */
+  b = D_80013AB4;                       /* initialize bit buffer */
+  k = D_80013AB8;
+  w = D_80013AF0;                       /* initialize window position */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1CC0/func_80001DB0.s")
+
+  /* go to byte boundary */
+  n = k & 7;
+  DUMPBITS(n);
+
+
+   /* get the length and its complement */
+   NEEDBITS(16)
+   n = ((unsigned)b & 0xffff);
+   DUMPBITS(16)
+   NEEDBITS(16)
+   DUMPBITS(16)
+
+
+   /* read and output the compressed data */
+   while (n--)
+   {
+     NEEDBITS(8)
+     D_80013AC4[w++] = (u8) b;
+     DUMPBITS(8)
+   }
+
+  /* restore the globals from the locals */
+  D_80013AF0 = w;                       /* restore global window pointer */
+  D_80013AB4 = b;                       /* restore global bit buffer */
+  D_80013AB8 = k;
+  return 0;
+}
+
+/* static */ int func_80001C48(void) //int inflate_fixed(void)
+/* decompress an inflated type 1 (fixed Huffman codes) block.  We should
+   either replace this with a custom decoder, or at least precompute the
+   Huffman tables. */
+{
+  int i;                /* temporary variable */
+  struct huft *tl;      /* literal/length code table */
+  struct huft *td;      /* distance code table */
+  int bl;               /* lookup bits for tl */
+  int bd;               /* lookup bits for td */
+  unsigned l[288];      /* length list for huft_build */
+
+
+  /* set up literal table */
+  for (i = 0; i < 144; i++)
+    l[i] = 8;
+  for (; i < 256; i++)
+    l[i] = 9;
+  for (; i < 280; i++)
+    l[i] = 7;
+  for (; i < 288; i++)          /* make a complete, but wrong code set */
+    l[i] = 8;
+  bl = 7;
+  func_800010C0(l, 288, 257, D_8000EDF4, D_8000EE34, &tl, &bl);
+
+   /* set up distance table */
+   for (i = 0; i < 30; i++)      /* make an incomplete code set */
+     l[i] = 5;
+   bd = 5;
+   func_800010C0(l, 30, 0, D_8000EE54, D_8000EE90, &td, &bd);
+
+   /* decompress until an end-of-block code */
+    func_80001700(tl, td, bl, bd);
+
+  return 0;
+}
+
+/* static */ int func_80001DB0(void) //int inflate_dynamic(void)/* decompress an inflated type 2 (dynamic Huffman codes) block. */
+{
+  int i;                /* temporary variables */
+  unsigned j;
+  unsigned l;           /* last length */
+  unsigned m;           /* mask for bit lengths table */
+  unsigned n;           /* number of lengths to get */
+  struct huft *tl;      /* literal/length code table */
+  struct huft *td;      /* distance code table */
+  int bl;               /* lookup bits for tl */
+  int bd;               /* lookup bits for td */
+  unsigned nb;          /* number of bit length codes */
+  unsigned nl;          /* number of literal/length codes */
+  unsigned nd;          /* number of distance codes */
+
+  register unsigned k;  /* number of bits in bit buffer */
+
+  register u32 b;       /* bit buffer */
+
+  unsigned ll[286+30];  /* literal/length and distance code lengths */
+
+  /* make local bit buffer */
+  b = D_80013AB4;
+  k = D_80013AB8;
+
+
+   /* read in table lengths */
+   NEEDBITS(5)
+   nl = 257 + ((unsigned)b & 0x1f);      /* number of literal/length codes */
+   DUMPBITS(5)
+   NEEDBITS(5)
+   nd = 1 + ((unsigned)b & 0x1f);        /* number of distance codes */
+   DUMPBITS(5)
+   NEEDBITS(4)
+   nb = 4 + ((unsigned)b & 0xf);         /* number of bit length codes */
+   DUMPBITS(4)
+
+   /* read in bit-length-code lengths */
+   for (j = 0; j < nb; j++)
+   {
+     NEEDBITS(3)
+     ll[D_8000EDE0[j]] = (unsigned)b & 7;
+     DUMPBITS(3)
+   }
+   for (; j < 19; j++)
+     ll[D_8000EDE0[j]] = 0;
+
+
+    /* build decoding table for trees--single level, 7 bit lookup */
+    bl = 7;
+    func_800010C0(ll, 19, 19, NULL, NULL, &tl, &bl);
+
+
+   /* read in literal and distance code lengths */
+   n = nl + nd;
+   m = mask_bits[bl];
+   i = l = 0;
+   while ((unsigned)i < n)
+   {
+      NEEDBITS((unsigned)bl)
+     j = (td = tl + ((unsigned)b & m))->b;
+     DUMPBITS(j)
+     j = td->v.n;
+     if (j < 16)                 /* length of code in bits (0..15) */
+       ll[i++] = l = j;          /* save last length in l */
+     else if (j == 16)           /* repeat last length 3 to 6 times */
+     {
+       NEEDBITS(2)
+       j = 3 + ((unsigned)b & 3);
+       DUMPBITS(2)
+       while (j--)
+         ll[i++] = l;
+     }
+     else if (j == 17)           /* 3 to 10 zero length codes */
+     {
+       NEEDBITS(3)
+       j = 3 + ((unsigned)b & 7);
+       DUMPBITS(3)
+       while (j--)
+         ll[i++] = 0;
+       l = 0;
+     }
+     else                        /* j == 18: 11 to 138 zero length codes */
+     {
+       NEEDBITS(7)
+       j = 11 + ((unsigned)b & 0x7f);
+       DUMPBITS(7)
+       while (j--)
+         ll[i++] = 0;
+       l = 0;
+     }
+    }
+
+   /* restore the global bit buffer */
+   D_80013AB4 = b;
+   D_80013AB8 = k;
+
+   /* build the decoding tables for literal/length and distance codes */
+   bl = D_8000EED4;
+   func_800010C0(ll, nl, 257, D_8000EDF4, D_8000EE34, &tl, &bl);
+   bd = D_8000EED8;
+   func_800010C0(ll + nl, nd, 0, D_8000EE54, D_8000EE90, &td, &bd);
+
+   /* decompress until an end-of-block code */
+   func_80001700(tl, td, bl, bd);
+
+  return 0;
+}
+
 
 /* static */ int func_800022D4(int *e) // inflate_block()
 /* decompress an inflated block */
