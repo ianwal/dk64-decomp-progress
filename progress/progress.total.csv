@@ -207,7 +207,7 @@ us,.code,func_806E8AF0,56,yes
 us,.code,func_8060B700,80,yes
 us,.code,func_80704108,40,yes
 us,.code,func_807359A0,148,yes
-us,.code,func_8066BD54,140,no
+us,.code,func_8066BD54,140,yes
 us,.code,func_80663844,392,yes
 us,.code,func_80731D20,328,no
 us,.code,func_8069D0D8,32,yes
@@ -1131,7 +1131,7 @@ us,.code,func_80687F7C,76,yes
 us,.code,func_8063367C,192,no
 us,.code,func_805FB5C4,396,no
 us,.code,func_80717F1C,356,yes
-us,.code,func_80633D30,144,no
+us,.code,func_80633D30,144,yes
 us,.code,func_8073C8D0,120,no
 us,.code,func_80666428,1632,no
 us,.code,func_806AA09C,616,no
@@ -3065,7 +3065,7 @@ us,.code,func_806E9874,132,yes
 us,.code,func_80678458,216,yes
 us,.code,func_806F8278,196,no
 us,.code,func_806EC2CC,240,yes
-us,.code,func_8066BC5C,248,no
+us,.code,func_8066BC5C,248,yes
 us,.code,func_8066C0DC,472,no
 us,.code,func_806F8A8C,72,yes
 us,.code,func_8062EE48,344,no
@@ -3980,7 +3980,7 @@ us,boot,func_80002750,52,yes
 us,boot,__osContDataCrc,160,no
 us,boot,func_80002ECC,76,no
 us,boot,__osSetCompare,16,yes
-us,boot,guMtxL2F,184,no
+us,boot,guMtxL2F,180,yes
 us,boot,__osPiCreateAccessQueue,80,yes
 us,boot,func_800005A8,984,no
 us,boot,func_80007360,100,yes
@@ -3992,7 +3992,7 @@ us,boot,osEepromLongRead,140,yes
 us,boot,func_80001700,1012,no
 us,boot,func_80002790,152,no
 us,boot,func_800022D4,288,yes
-us,boot,func_80002724,44,no
+us,boot,func_80002724,44,yes
 us,boot,__osPackRamWriteDataSafe,128,no
 us,boot,func_80005948,96,no
 us,boot,func_80005818,60,no

@@ -33,20 +33,14 @@ void func_800024E0(u8 **arg0, s32 *arg1, void *arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_30E0/func_800025A4.s")
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_30E0/func_80002724.s")
-#else
 u32 func_80002724(u32 arg0, s32 arg1) {
     u32 v1 = 0;
     do {
         v1 |= (arg0 & 1);
-        arg1--;
-        arg0 >>= 1;
-        v1 <<= 1;
-    } while (arg1 > 0);
+        arg0 >>= 1;v1 <<= 1;
+    } while (--arg1 > 0);
     return v1 >> 1;
 }
-#endif
 
 // Lol
 void func_80002750(void) {

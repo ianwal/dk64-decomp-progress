@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 s32 __osSpSetPc(u32 data)
 {
     register u32 stat = IO_READ(SP_STATUS_REG);

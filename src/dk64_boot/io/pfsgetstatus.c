@@ -1,10 +1,82 @@
 #include <ultra64.h>
 #include "functions.h"
+#include <os_internal.h>
+#include "controller.h"
+#include "siint.h"
 
+void __osPfsRequestOneChannel(int channel);
+void __osPfsGetOneChannelData(int channel, OSContStatus *data);
 
+extern OSPifRam D_800164F0; // __osPfsPifRam
+extern s8 D_80010304;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsGetStatus.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsRequestOneChannel.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsGetOneChannelData.s")
+
+/*
+s32 __osPfsGetStatus(OSMesgQueue *queue, int channel)
+{
+    s32 ret;
+    OSMesg dummy;
+    OSContStatus data;
+    D_80010304 = 0xFA;
+    ret = 0;
+    __osPfsRequestOneChannel(channel);
+    ret = __osSiRawStartDma(OS_WRITE, &D_800164F0);
+    osRecvMesg(queue, &dummy, OS_MESG_BLOCK);
+    ret = __osSiRawStartDma(OS_READ, &D_800164F0);
+    osRecvMesg(queue, &dummy, OS_MESG_BLOCK);
+    __osPfsGetOneChannelData(channel, &data);
+    if (((data.status & CONT_CARD_ON) != 0) && ((data.status & CONT_CARD_PULL) != 0))
+        return PFS_ERR_NEW_PACK;
+    if ((data.errno != 0) || ((data.status & CONT_CARD_ON) == 0))
+        return PFS_ERR_NOPACK;
+    if ((data.status & CONT_ADDR_CRC_ER) != 0)
+        return PFS_ERR_CONTRFAIL;
+    return ret;
+}
+
+void __osPfsRequestOneChannel(int channel)
+{
+    u8 *ptr;
+    __OSContRequesFormatShort requestformat;
+    int i;
+
+    __osContLastCmd = CONT_CMD_REQUEST_STATUS;
+    D_800164F0.pifstatus = CONT_CMD_EXE;
+    ptr = (u8 *)&D_800164F0;
+
+    requestformat.txsize = CONT_CMD_REQUEST_STATUS_TX;
+    requestformat.rxsize = CONT_CMD_REQUEST_STATUS_RX;
+    requestformat.cmd = CONT_CMD_REQUEST_STATUS;
+    requestformat.typeh = CONT_CMD_NOP;
+    requestformat.typel = CONT_CMD_NOP;
+    requestformat.status = CONT_CMD_NOP;
+    for (i = 0; i < channel; i++)
+        *ptr++ = 0;
+
+    *(__OSContRequesFormatShort *)ptr = requestformat;
+    ptr += sizeof(__OSContRequesFormatShort);
+    *ptr = CONT_CMD_END;
+}
+
+void __osPfsGetOneChannelData(int channel, OSContStatus *data)
+{
+    u8 *ptr;
+    __OSContRequesFormatShort requestformat;
+    int i;
+    ptr = (u8*)&D_800164F0;
+    for (i = 0; i < channel; i++)
+        ptr++;
+    requestformat = *(__OSContRequesFormatShort *)ptr;
+    data->errno = CHNL_ERR(requestformat);
+    if (data->errno == 0)
+    {
+        data->type = (requestformat.typel << 8) | (requestformat.typeh);
+        data->status = requestformat.status;
+    }
+}
+*/

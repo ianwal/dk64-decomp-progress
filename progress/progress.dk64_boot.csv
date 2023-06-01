@@ -12,7 +12,7 @@ us,boot,func_80002750,52,yes
 us,boot,__osContDataCrc,160,no
 us,boot,func_80002ECC,76,no
 us,boot,__osSetCompare,16,yes
-us,boot,guMtxL2F,184,no
+us,boot,guMtxL2F,180,yes
 us,boot,__osPiCreateAccessQueue,80,yes
 us,boot,func_800005A8,984,no
 us,boot,func_80007360,100,yes
@@ -24,7 +24,7 @@ us,boot,osEepromLongRead,140,yes
 us,boot,func_80001700,1012,no
 us,boot,func_80002790,152,no
 us,boot,func_800022D4,288,yes
-us,boot,func_80002724,44,no
+us,boot,func_80002724,44,yes
 us,boot,__osPackRamWriteDataSafe,128,no
 us,boot,func_80005948,96,no
 us,boot,func_80005818,60,no

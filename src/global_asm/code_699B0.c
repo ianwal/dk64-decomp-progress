@@ -1627,6 +1627,9 @@ void func_8066BAB8(s32 arg0, u8 arg1, u16 arg2) {
     }
 }
 
+GlobalASMStruct40 *func_8066BD54(GlobalASMStruct40 *arg0, s32 *arg1, s32 *arg2, s32 *arg3, s32 *arg4, s8 *arg5);
+GlobalASMStruct40 *func_8066BC5C(GlobalASMStruct40 *arg0, u32 arg1, s32 *arg2, s32 *arg3);
+
 s32 func_8066BB44(Struct8066BB44 *arg0, u32 arg1) {
     s8 sp2F;
     s16 sp2C;
@@ -1657,14 +1660,9 @@ void func_8066BC00(s32 arg0, s32 arg1, s32 arg2) {
     D_807F9628[sp1C] = func_8066BC5C(D_807F9628[sp1C], arg0, arg1, arg2);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BC5C.s")
-
-/*
-// TODO: Quite close, similar issue as below
 GlobalASMStruct40 *func_8066BC5C(GlobalASMStruct40 *arg0, u32 arg1, s32 *arg2, s32 *arg3) {
     GlobalASMStruct40 *phi_s0;
 
-    // phi_s0 = arg0;
     if (arg0) {
         if (arg1 == arg0->unk0) {
             *arg2 = arg0->unk4;
@@ -1674,11 +1672,13 @@ GlobalASMStruct40 *func_8066BC5C(GlobalASMStruct40 *arg0, u32 arg1, s32 *arg2, s
                 arg0 = NULL;
             } else {
                 if (!arg0->unk14) {
+                    phi_s0 = arg0;
                     arg0 = arg0->unk18;
-                    func_8061130C(arg0);
+                    func_8061130C(phi_s0);
                 } else if (!arg0->unk18) {
+                    phi_s0 = arg0;
                     arg0 = arg0->unk14;
-                    func_8061130C(arg0);
+                    func_8061130C(phi_s0);
                 } else {
                     arg0->unk18 = func_8066BD54(arg0->unk18, arg0, &arg0->unk4, &arg0->unk8, &arg0->unkC, &arg0->unk10);
                 }
@@ -1691,12 +1691,7 @@ GlobalASMStruct40 *func_8066BC5C(GlobalASMStruct40 *arg0, u32 arg1, s32 *arg2, s
     }
     return arg0;
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066BD54.s")
-
-/*
-// TODO: a0/s0 mixup in one spot... Not sure how to fix
 GlobalASMStruct40 *func_8066BD54(GlobalASMStruct40 *arg0, s32 *arg1, s32 *arg2, s32 *arg3, s32 *arg4, s8 *arg5) {
     GlobalASMStruct40 *pad;
 
@@ -1706,14 +1701,14 @@ GlobalASMStruct40 *func_8066BD54(GlobalASMStruct40 *arg0, s32 *arg1, s32 *arg2, 
         *arg3 = arg0->unk8;
         *arg4 = arg0->unkC;
         *arg5 = arg0->unk10;
+        pad = arg0;
         arg0 = arg0->unk18;
-        func_8061130C(arg0);
+        func_8061130C(pad);
     } else {
         arg0->unk14 = func_8066BD54(arg0->unk14, arg1, arg2, arg3, arg4, arg5);
     }
     return arg0;
 }
-*/
 
 void func_8066BDE0() {
     int i;

@@ -38,29 +38,24 @@ void guMtxIdent(Mtx *m) {
     guMtxF2L(&sp18, m);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/guMtxL2F.s")
+void guMtxL2F(float mf[4][4], Mtx *m)
+{
+	int		i, j;
+	unsigned int	e1,e2;
+	unsigned int	*ai,*af;
+	int		q1,q2;
 
-/*
-void guMtxL2F(float mf[4][4], Mtx *m) {
-    int r, c;
-    u32 tmp1;
-    u32 tmp2;
-    u32 *m1;
-    u32 *m2;
-    s32 stmp1, stmp2;
-    m1 = (u32 *)&m->m[0][0];
-    m2 = (u32 *)&m->m[2][0];
-    for (r = 0; r < 4; r++)
-    {
-        for (c = 0; c < 2; c++)
-        {
-            tmp1 = (*m1 & 0xffff0000) | ((*m2 >> 0x10) & 0xffff);
-            tmp2 = ((*m1++ << 0x10) & 0xffff0000) | (*m2++ & 0xffff);
-            stmp1 = *(s32 *)&tmp1;
-            stmp2 = *(s32 *)&tmp2;
-            mf[r][c * 2 + 0] = stmp1 / 65536.0f;
-            mf[r][c * 2 + 1] = stmp2 / 65536.0f;
-        }
-    }
+	ai=(unsigned int *) &m->m[0][0];
+	af=(unsigned int *) &m->m[2][0];
+
+	for (i=0; i<4; i++)
+	for (j=0; j<2; j++) {
+		e1 = (*ai & 0xffff0000) | ((*af >> 16) & 0xffff);
+		e2 = ((*(ai++) << 16) & 0xffff0000) | (*(af++) & 0xffff);
+		q1 = *((int *)&e1); 
+		q2 = *((int *)&e2); 
+
+		mf[i][j*2] = FIX32TOF(q1);
+		mf[i][j*2+1] = FIX32TOF(q2);
+	}
 }
-*/

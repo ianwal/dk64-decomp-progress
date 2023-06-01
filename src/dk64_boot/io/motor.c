@@ -2,7 +2,7 @@
 #include "controller.h"
 #include "siint.h"
 
-extern u8 D_80014E00;
+extern u8 __osContLastCmd;
 extern OSPifRam D_80014E50[];
 
 #ifndef NONMATCHING
@@ -27,7 +27,7 @@ s32 osMotorStartStop(OSPfs *pfs, int arg1)
     for (i = 0; i < 0x20; i++)
         ramreadformat->data[i] = arg1;
 
-    D_80014E00 = CONT_CMD_END;
+    __osContLastCmd = CONT_CMD_END;
     __osSiRawStartDma(OS_WRITE, D_80014E50[pfs->channel].ramarray);
     osRecvMesg(pfs->queue, NULL, OS_MESG_BLOCK);
     __osSiRawStartDma(OS_READ, D_80014E50[pfs->channel].ramarray);
@@ -46,7 +46,6 @@ s32 osMotorStartStop(OSPfs *pfs, int arg1)
     return ret;
 }
 #endif
-
 
 #ifndef NONMATCHING
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/motor/_MakeMotorData.s")
