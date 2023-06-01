@@ -13,7 +13,7 @@ us,boot,__osContDataCrc,160,no
 us,boot,func_80002ECC,76,no
 us,boot,__osSetCompare,16,yes
 us,boot,guMtxL2F,184,no
-us,boot,__osPiCreateAccessQueue,80,no
+us,boot,__osPiCreateAccessQueue,80,yes
 us,boot,func_800005A8,984,no
 us,boot,func_80007360,100,yes
 us,boot,__osDispatchThread,396,yes
@@ -50,7 +50,7 @@ us,boot,sqrtf,16,yes
 us,boot,__osPfsGetStatus,208,no
 us,boot,__osSetGlobalIntMask,76,yes
 us,boot,osUnmapTLBAll,80,yes
-us,boot,__osPiGetAccess,68,no
+us,boot,__osPiGetAccess,68,yes
 us,boot,osSetThreadPri,224,yes
 us,boot,__osSpGetStatus,12,yes
 us,boot,memcpy,288,no
@@ -112,13 +112,13 @@ us,boot,__osRestoreInt,32,yes
 us,boot,__osViGetCurrentContext,12,yes
 us,boot,osSetTime,36,yes
 us,boot,osViSetMode,104,yes
-us,boot,__osPiRelAccess,44,no
+us,boot,__osPiRelAccess,44,yes
 us,boot,func_80002DE4,180,no
 us,boot,osInitialize,704,no
 us,boot,func_800031E0,44,no
 us,boot,func_80002828,184,no
 us,boot,__osPackEepWriteData,172,no
-us,boot,osPfsIsPlug,416,no
+us,boot,osPfsIsPlug,416,yes
 us,boot,send_mesg,232,yes
 us,boot,__osEnqueueThread,72,yes
 us,boot,osEPiRawWriteIo,352,no
@@ -182,7 +182,7 @@ us,boot,osPiGetStatus,12,yes
 us,boot,osSpTaskStartGo,64,yes
 us,boot,func_80000CD4,184,yes
 us,boot,sinf,448,no
-us,boot,__osPfsRequestData,208,no
+us,boot,__osPfsRequestData,208,yes
 us,boot,func_80005A44,44,no
 us,boot,func_800029EC,68,no
 us,boot,func_800009D0,88,yes
@@ -213,7 +213,7 @@ us,boot,osViSetSpecialFeatures,440,yes
 us,boot,__osGetSR,16,yes
 us,boot,guMtxIdentF,136,yes
 us,boot,func_80007454,140,yes
-us,boot,__osPfsGetInitData,208,no
+us,boot,__osPfsGetInitData,208,yes
 us,boot,__osViSwapContext,768,no
 us,boot,viMgrMain,400,no
 us,boot,__osContRamReadData,560,no

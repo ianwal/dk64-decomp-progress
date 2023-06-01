@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
 extern OSDevMgr __osPiDevMgr;
 
 OSMesgQueue *osPiGetCmdQueue(void) {

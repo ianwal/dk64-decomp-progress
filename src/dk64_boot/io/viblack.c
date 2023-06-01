@@ -1,5 +1,6 @@
 #include <os_internal.h>
 #include "viint.h"
+
 void osViBlack(u8 active)
 {
     register u32 saveMask = __osDisableInt();

@@ -3,7 +3,6 @@
 
 void *osViGetNextFramebuffer(void)
 {
-
     register u32 saveMask;
     void *framep;
     saveMask = __osDisableInt();

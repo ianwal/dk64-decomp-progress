@@ -453,6 +453,8 @@ build/us/src/dk64_boot/io/conteepwrite.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/conteepread.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/sirawdma.c.o: OPT_FLAGS = -O2
 
+build/us/src/dk64_boot/io/viswapcontext.c.o: OPT_FLAGS = -O2
+
 build/us/src/dk64_boot/io/contpfs.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/contpfs.c.o: MIPSISET := -mips3 -o32
 build/us/src/dk64_boot/io/motor.c.o: OPT_FLAGS = -O2
