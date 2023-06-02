@@ -14,7 +14,6 @@ extern s8 D_807F5FEC;
 extern s32 D_807F6C28;
 
 void func_8062D0CC(void*, void*, Model2Model*, u8);
-void func_8062D3E4(s32 arg0);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062A850.s")
 
@@ -656,7 +655,9 @@ void func_8062D2AC(s32 arg0, s32 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D2F0.s")
 
-void func_8062D3E4(s32 arg0) {
+void func_8062D414(void*, void*, void*);
+
+void func_8062D3E4(void *arg0) {
     func_8062D414(D_807F5DE4, D_807F5E60, arg0);
 }
 

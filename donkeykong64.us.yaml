@@ -129,8 +129,8 @@ segments:
       - [0xB0F0, c, io/pirawread]             #DONE
       - [0xB150, c, io/pimgr]
       - [0xB2C0, c, gu/nonmatching/mtxutil]
-      - [0xB530, c, cosf]
-      - [0xB6A0, c, sinf]
+      - [0xB530, c, gu/cosf]
+      - [0xB6A0, c, gu/sinf]
       - [0xB860, hasm, gu/sqrt]               #DONE
       - [0xB870, c, io/ai]                    #DONE
       - [0xB8A0, c, os/jammesg]               #DONE

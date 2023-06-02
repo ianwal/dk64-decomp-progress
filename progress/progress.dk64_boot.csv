@@ -88,7 +88,6 @@ us,boot,bzero,160,yes
 us,boot,__osInsertTimer,392,yes
 us,boot,__osEnqueueAndYield,256,yes
 us,boot,__osSpDeviceBusy,44,yes
-us,boot,cosf,368,no
 us,boot,osSpTaskYield,32,yes
 us,boot,guMtxCatF,360,yes
 us,boot,__osPopThread,16,yes
@@ -125,6 +124,7 @@ us,boot,osEPiRawWriteIo,352,no
 us,boot,guLookAtF,696,yes
 us,boot,guAlignF,448,no
 us,boot,__osTimerInterrupt,376,yes
+us,boot,__sinf,448,yes
 us,boot,osPiGetCmdQueue,40,yes
 us,boot,__osProbeTLB,192,yes
 us,boot,bcopy,784,yes
@@ -181,7 +181,6 @@ us,boot,func_800073D0,132,yes
 us,boot,osPiGetStatus,12,yes
 us,boot,osSpTaskStartGo,64,yes
 us,boot,func_80000CD4,184,yes
-us,boot,sinf,448,no
 us,boot,__osPfsRequestData,208,yes
 us,boot,func_80005A44,44,no
 us,boot,func_800029EC,68,no
@@ -202,6 +201,7 @@ us,boot,osViBlack,112,yes
 us,boot,func_80002C74,116,no
 us,boot,func_800055D0,156,yes
 us,boot,func_8000773C,24,no
+us,boot,__cosf,360,yes
 us,boot,__osPackEepReadData,140,no
 us,boot,osEepromWrite,376,no
 us,boot,func_80002F54,172,no

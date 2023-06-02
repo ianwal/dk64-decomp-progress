@@ -1532,7 +1532,7 @@ u8 func_8072E22C(u16 arg0);
 void func_8072E2B0(Actor *arg0, f32 *arg1, f32 *arg2, f32 *arg3);
 u8 func_8072E54C(void);
 void func_80627C10(u8 arg0);
-void func_8062D3E4(s32 arg0);
+void func_8062D3E4(void *arg0);
 void func_8062B478(s32 arg0);
 f32 func_8062B840(s8 arg0);
 void func_8062B86C(s32 arg0, f32 arg1, f32 arg2);
