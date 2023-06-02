@@ -16,7 +16,7 @@ struct HeapHeader {
 };
 
 typedef struct {
-    s32 unk0; // Used
+    void *unk0; // Used
     s8 unk4; // Used
     s8 unk5;
     s8 unk6;
@@ -197,7 +197,7 @@ void func_8061134C(HeapHeader *arg0) {
     }
 }
 
-void func_8061138C(s32 arg0) {
+void func_8061138C(void *arg0) {
     while (D_807F5A58 >= 0xA00) {
         func_80611730();
     }

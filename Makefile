@@ -453,6 +453,8 @@ build/us/src/dk64_boot/io/conteepwrite.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/conteepread.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/sirawdma.c.o: OPT_FLAGS = -O2
 
+
+build/us/src/dk64_boot/io/pimgr.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/pfsgetstatus.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/epirawwrite.c.o: OPT_FLAGS = -O2
 
@@ -468,6 +470,9 @@ build/us/src/dk64_boot/libc/%.c.o: OPT_FLAGS = -O3
 build/us/src/dk64_boot/libc/ll%.o: MIPSISET := -mips3 -o32
 build/us/src/dk64_boot/libc/ll%.o: OPT_FLAGS := -O1
 build/us/src/dk64_boot/os/%.c.o: OPT_FLAGS = -O1
+build/us/src/dk64_boot/dk64_boot_CA20.c.o: OPT_FLAGS = -O2
+
+build/us/src/dk64_boot/dk64_boot_5C70.c.o: OPT_FLAGS = -O2
 
 build/us/src/global_asm/audio/%.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_137120.c.o: OPT_FLAGS = -g
@@ -491,8 +496,6 @@ build/us/src/global_asm/code_141520.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_1435A0.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_1435C0.c.o: OPT_FLAGS = -g
 build/us/src/global_asm/code_145950.c.o: OPT_FLAGS = -g
-
-build/us/src/dk64_boot/libc/llcvt.c.i: 
 
 #build/us/src/dk64_boot/gu/%.c.o: INCLUDE_CFLAGS = -I . -I include -I include/2.0L -I include/2.0L/PR
 

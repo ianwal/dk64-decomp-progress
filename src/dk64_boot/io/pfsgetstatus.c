@@ -8,13 +8,9 @@ void __osPfsRequestOneChannel(int channel);
 void __osPfsGetOneChannelData(int channel, OSContStatus *data);
 
 extern OSPifRam D_800164F0; // __osPfsPifRam
-extern s8 D_80010304;
+extern u8 D_80010304;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsGetStatus.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsRequestOneChannel.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsGetOneChannelData.s")
 
 /*
 s32 __osPfsGetStatus(OSMesgQueue *queue, int channel)
@@ -38,7 +34,11 @@ s32 __osPfsGetStatus(OSMesgQueue *queue, int channel)
         return PFS_ERR_CONTRFAIL;
     return ret;
 }
+*/
 
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsRequestOneChannel.s")
+
+/*
 void __osPfsRequestOneChannel(int channel)
 {
     u8 *ptr;
@@ -62,6 +62,7 @@ void __osPfsRequestOneChannel(int channel)
     ptr += sizeof(__OSContRequesFormatShort);
     *ptr = CONT_CMD_END;
 }
+*/
 
 void __osPfsGetOneChannelData(int channel, OSContStatus *data)
 {
@@ -79,4 +80,3 @@ void __osPfsGetOneChannelData(int channel, OSContStatus *data)
         data->status = requestformat.status;
     }
 }
-*/

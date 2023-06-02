@@ -37,3 +37,12 @@ D_8000EED4 = 0x8000EED4;
 D_8000EED8 = 0x8000EED8;
 
 __osCleanupThread = 0x80009990;
+osPiRawStartDma = 0x800045D0;
+osEPiRawStartDma = 0x8000BE20;
+__osPiDevMgr = 0x800101B0;
+piEventBuf = 0x800162B8;
+piEventQueue = 0x800162A0;
+piThreadStack = 0x800152A0;
+piThread = 0x800150F0;
+__osPiAccessQueue = 0x80016328;
+__osPiAccessQueueEnabled = 0x80010200;

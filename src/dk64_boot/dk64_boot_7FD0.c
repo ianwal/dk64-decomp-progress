@@ -43,7 +43,7 @@ void func_80007454(OSContPad *data) //void osContGetReadData(OSContPad *data)
     }
 }
 
-static void func_800074E0(void) //static void __osPackReadData(void)
+void func_800074E0(void) //static void __osPackReadData(void)
 {
     u8 *ptr;
     __OSContReadFormat readformat;

@@ -3997,7 +3997,6 @@ us,boot,__osPackRamWriteDataSafe,128,no
 us,boot,func_80005948,96,no
 us,boot,func_80005818,60,no
 us,boot,osDpGetStatus,12,yes
-us,boot,func_8000BE20,480,no
 us,boot,osEPiRawReadIo,352,no
 us,boot,__osEepStatus,428,no
 us,boot,guLookAtHiliteF,1848,no
@@ -4039,6 +4038,7 @@ us,boot,func_80005918,48,no
 us,boot,__osContRamWrite,592,no
 us,boot,func_80000980,80,yes
 us,boot,osEepromProbe,112,yes
+us,boot,osEPiRawStartDma,480,no
 us,boot,__osSetTimerIntr,116,yes
 us,boot,guOrthoF,340,yes
 us,boot,__osSetSR,16,yes
@@ -4109,7 +4109,7 @@ us,boot,guMtxCatL,88,yes
 us,boot,func_80002CE8,120,no
 us,boot,__osSiCreateAccessQueue,80,yes
 us,boot,__osSiDeviceBusy,44,yes
-us,boot,func_80005070,336,no
+us,boot,func_80005070,324,yes
 us,boot,__osTimerServicesInit,140,no
 us,boot,func_80001AF4,340,yes
 us,boot,__osPfsRequestOneChannel,196,no
@@ -4118,7 +4118,7 @@ us,boot,guRotate,92,no
 us,boot,osAiGetLength,12,yes
 us,boot,func_8000D7E0,212,no
 us,boot,osInvalDCache,176,yes
-us,boot,__osPfsGetOneChannelData,156,no
+us,boot,__osPfsGetOneChannelData,152,yes
 us,boot,osJamMesg,336,yes
 us,boot,__osSpSetPc,52,yes
 us,boot,func_80007788,56,no
@@ -4153,6 +4153,7 @@ us,boot,sinf,448,no
 us,boot,__osPfsRequestData,208,yes
 us,boot,func_80005A44,44,no
 us,boot,func_800029EC,68,no
+us,boot,func_800074E0,200,yes
 us,boot,func_800009D0,88,yes
 us,boot,guMtxXFML,96,yes
 us,boot,func_80000450,100,yes
@@ -4160,7 +4161,7 @@ us,boot,osSetTimer,212,yes
 us,boot,osMapTLBRdb,96,yes
 us,boot,func_80005854,44,no
 us,boot,__osGetId,428,no
-us,boot,osCreatePiManager,368,no
+us,boot,osCreatePiManager,368,yes
 us,boot,func_80000A30,112,no
 us,boot,func_8000D8B4,732,no
 us,boot,osCreateThread,324,yes

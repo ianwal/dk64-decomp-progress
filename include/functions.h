@@ -1389,7 +1389,7 @@ u8 func_80611154(void);
 void func_80611160(void);
 void func_8061116C(void);
 s32 func_806111BC(s32 arg0, s32 arg1);
-void func_8061138C(s32 arg0);
+void func_8061138C(void *arg0);
 // void func_80611594(u8 *arg0);
 // void func_8061159C(u8 *arg0);
 // s32 func_80611688(HeapHeader *arg0);

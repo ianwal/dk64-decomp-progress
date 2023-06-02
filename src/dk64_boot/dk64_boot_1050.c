@@ -94,7 +94,7 @@ void func_800005A8(s32 arg0) {
         func_80000A30();
     } else {
         func_80000450(&D_11320, &D_113F0, 0x805FB000);
-        D_8000DCB4 = func_80005070(0x5622);
+        D_8000DCB4 = func_80005070(22050); // osAiSetFrequency
         bzero(0x805FB300, 0x204D00);
         sp34 = 0x80020000;
         sp30 = 0x805FB300;
