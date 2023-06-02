@@ -620,6 +620,31 @@ void func_80643274(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643354.s")
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct807F5FD4;
+extern Struct807F5FD4 *D_807F5FD4;
+
+/*
+void func_80643354(s32 arg0, u32 arg1, u32 arg2) {
+    u32 sp24;
+    Struct807F5FD4 *temp_v0;
+
+    if ((object_timer % arg2) == 0) {
+        sp24 = (func_806119A0() / 10000) % arg1;
+        func_807149C8(0xFF, 0xFF, 0xFF, 0x64);
+        func_80714950(-0x78);
+        func_8071498C(&func_80717D4C);
+        func_807149B8(1);
+        func_80714998(3);
+        temp_v0 = &D_807F5FD4[sp24];
+        func_80714CC0(&D_8071FFA0, 1.5f, temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643440.s")
 
 void func_806436A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
@@ -744,14 +769,7 @@ void func_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 void func_8071AADC(void);
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-} Struct807F5FD4;
-
 extern s32 D_8071E3EC; // TODO: Datatype
-extern Struct807F5FD4 *D_807F5FD4;
 extern s32 D_80720BC4; // TODO: Datatype
 
 typedef struct {

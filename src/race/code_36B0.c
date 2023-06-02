@@ -226,14 +226,44 @@ void func_8002AE6C(s32 arg0, Actor *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002B180.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002B518.s")
-
-extern f32 D_8003008C;
-
 typedef struct {
-    u8 unk0[0x35 - 0x0];
+    u8 unk0[0x30 - 0x0];
+    Actor *unk30;
+    u8 unk34;
     u8 unk35;
 } Struct8002B610_arg0;
+
+void func_8002D72C(Actor *arg0);
+void func_8002D754(Actor *arg0);
+
+void func_8002B518(Struct8002B610_arg0 *arg0) {
+    switch (arg0->unk35) {
+        case 0:
+            if (current_actor_pointer->object_properties_bitfield & 0x02000000) {
+                arg0->unk35++;
+            }
+            break;
+        case 1:
+            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+                func_8061CB08();
+                arg0->unk35++;
+            }
+            break;
+        case 2:
+            if (func_80629148() != 0) {
+                func_80629174();
+                arg0->unk35++;
+            }
+            break;
+    }
+    if (arg0->unk35 < 3) {
+        func_8002D72C(arg0->unk30);
+        return;
+    }
+    func_8002D754(arg0->unk30);
+}
+
+extern f32 D_8003008C;
 
 typedef struct {
     u8 unk0[0x28 - 0x0];

@@ -1071,32 +1071,180 @@ void func_8065756C(s16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80657974.s")
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+} Struct807F6C14;
+
+extern Struct807F6C14 *D_807F6C14;
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    u8 unk28;
+    u8 unk29;
+    u8 unk2A;
+    u8 unk2B;
+    f32 unk2C;
+} Struct807F6C24;
+
+extern Struct807F6C24 *D_807F6C24;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+} Struct80657974_arg4;
+
+/*
+// TODO: Hmm, not sure what's missing here...
+void func_80657974(s32 arg0, f32 arg1, f32 arg2, f32 arg3, Struct80657974_arg4 *arg4) {
+    switch (D_807F6C24[arg0].unk28) {
+        case 0:
+            arg4->unk20 = arg1;
+            arg4->unk24 = arg2;
+            arg4->unk0 = D_807F6C14[arg0].unk0;
+            arg4->unk10 = D_807F6C14[arg0].unk10;
+            arg4->unk4 = D_807F6C14[arg0].unk4;
+            arg4->unk14 = D_807F6C14[arg0].unk14;
+            arg4->unk8 = D_807F6C14[arg0].unk8;
+            arg4->unk18 = D_807F6C14[arg0].unk18;
+            arg4->unkC = D_807F6C14[arg0].unkC;
+            arg4->unk1C = D_807F6C14[arg0].unk1C;
+            break;
+        case 1:
+            arg4->unk20 = arg1;
+            arg4->unk24 = arg3;
+            arg4->unk0 = D_807F6C14[arg0].unk0;
+            arg4->unk10 = D_807F6C14[arg0].unk20;
+            arg4->unk4 = D_807F6C14[arg0].unk4;
+            arg4->unk14 = D_807F6C14[arg0].unk24;
+            arg4->unk8 = D_807F6C14[arg0].unk8;
+            arg4->unk18 = D_807F6C14[arg0].unk28;
+            arg4->unkC = D_807F6C14[arg0].unkC;
+            arg4->unk1C = D_807F6C14[arg0].unk2C;
+            break;
+        case 2:
+            arg4->unk20 = arg2;
+            arg4->unk24 = arg3;
+            arg4->unk0 = D_807F6C14[arg0].unk10;
+            arg4->unk10 = D_807F6C14[arg0].unk20;
+            arg4->unk4 = D_807F6C14[arg0].unk14;
+            arg4->unk14 = D_807F6C14[arg0].unk24;
+            arg4->unk8 = D_807F6C14[arg0].unk18;
+            arg4->unk18 = D_807F6C14[arg0].unk28;
+            arg4->unkC = D_807F6C14[arg0].unk1C;
+            arg4->unk1C = D_807F6C14[arg0].unk2C;
+            break;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80657CB0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80657E24.s")
+void func_80657E24(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 *arg8, s32 *arg9, s32 *argA, s32 *argB) {
+    if (arg0 == arg2 || arg1 == arg3) {
+        *arg8 = arg4;
+        *arg9 = arg5;
+        *argA = arg6;
+        *argB = arg7;
+        return;
+    }
+    if (arg4 == arg6 || arg5 == arg7) {
+        *arg8 = arg0;
+        *arg9 = arg1;
+        *argA = arg2;
+        *argB = arg3;
+        return;
+    }
+    if (arg0 < arg4) {
+        *arg8 = arg0;
+    } else {
+        *arg8 = arg4;
+    }
+    if (arg1 < arg5) {
+        *arg9 = arg1;
+    } else {
+        *arg9 = arg5;
+    }
+    if (arg6 < arg2) {
+        *argA = arg2;
+    } else {
+        *argA = arg6;
+    }
+    if (arg7 < arg3) {
+        *argB = arg3;
+    } else {
+        *argB = arg7;
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80657F14.s")
+s32 func_80657F14(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 *arg8, s32 *arg9, s32 *argA, s32 *argB) {
+    if (arg0 == -1) {
+        return FALSE;
+    }
+    if (arg4 == -1) {
+        return FALSE;
+    }
+    if (arg4 < arg0) {
+        *arg8 = arg0;
+    } else {
+        *arg8 = arg4;
+    }
+    if (arg5 < arg1) {
+        *arg9 = arg1;
+    } else {
+        *arg9 = arg5;
+    }
+    if (arg2 < arg6) {
+        *argA = arg2;
+    } else {
+        *argA = arg6;
+    }
+    if (arg3 < arg7) {
+        *argB = arg3;
+    } else {
+        *argB = arg7;
+    }
+    if (*arg8 >= *argA) {
+        return FALSE;
+    }
+    if (*arg9 >= *argB) {
+        return FALSE;
+    }
+    return TRUE;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658000.s")
 
 f32 func_8000773C(s32, s32);
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    f32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-} Struct807F6C24;
-
-extern Struct807F6C24 *D_807F6C24;
 
 /*
 // TODO: Regalloc

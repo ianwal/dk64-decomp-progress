@@ -1080,7 +1080,7 @@ us,.code,func_8060A4D0,48,yes
 us,.code,func_806D205C,392,no
 us,.code,func_806FF01C,296,no
 us,.code,func_80715E38,92,yes
-us,.code,func_80657F14,236,no
+us,.code,func_80657F14,236,yes
 us,.code,func_806C15E8,88,yes
 us,.code,func_806898A8,80,yes
 us,.code,isIntroStoryPlaying,12,yes
@@ -2248,7 +2248,7 @@ us,.code,func_806AE394,500,yes
 us,.code,func_806D850C,752,yes
 us,.code,func_8064EB3C,96,yes
 us,.code,func_8073D1F0,2112,no
-us,.code,func_80657E24,240,no
+us,.code,func_80657E24,240,yes
 us,.code,func_806F0C18,336,no
 us,.code,func_806E8880,44,yes
 us,.code,func_806A5EAC,152,yes
@@ -3546,7 +3546,7 @@ us,.code,func_8002AE9C,740,no
 us,.code,func_8002F04C,96,no
 us,.code,func_8002E8EC,112,yes
 us,.code,func_8002BEE8,612,no
-us,.code,func_8002B518,248,no
+us,.code,func_8002B518,248,yes
 us,.code,func_8002F784,392,no
 us,.code,func_8002E9F8,528,no
 us,.code,func_8002EDD4,632,yes
