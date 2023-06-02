@@ -1793,10 +1793,6 @@ void func_806D0A84(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D0DE4.s")
-
-/*
-// TODO: Regalloc :(
 u8 func_806D0DE4(Actor *arg0, Actor *arg1) {
     s32 var_a2;
     u8 var_v0;
@@ -1809,15 +1805,16 @@ u8 func_806D0DE4(Actor *arg0, Actor *arg1) {
         return 0;
     }
     if (arg0->interactable & 1) {
-        var_v0 = character_change_array[arg0->PaaD->unk1A4].unk2C0;
+        PlayerAdditionalActorData *PaaD = arg0->PaaD;
+        var_v0 = character_change_array[PaaD->unk1A4].unk2C0;
     }
     if (arg1->interactable & 1) {
-        var_v1 = character_change_array[arg1->PaaD->unk1A4].unk2C0;
+        PlayerAdditionalActorData *PaaD = arg1->PaaD;
+        var_v1 = character_change_array[PaaD->unk1A4].unk2C0;
         var_a2 = arg1->control_state != 0x7C;
     }
     return var_v0 < var_v1 && var_a2;
 }
-*/
 
 extern s16 D_8075387C[];
 extern s16 D_807538B8[];
@@ -2546,10 +2543,6 @@ void func_806D2D38(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D2DC4.s")
-
-/*
-// Regalloc
 void func_806D2DC4(void) {
     u8 newControlState;
     s32 phi_a1;
@@ -2561,20 +2554,16 @@ void func_806D2DC4(void) {
         current_actor_pointer->control_state_progress--;
         phi_a1 = 0x14;
     }
-    if ((u32)object_timer > 1 && !func_806DF6D4(phi_a1)) {
+    if (object_timer > 1U && !func_806DF6D4(phi_a1)) {
         newControlState = func_806CDD24(current_actor_pointer, current_actor_pointer->unkB8, extra_player_info_pointer->unk4, 1);
         if (newControlState != 0xC) {
-            // TODO: Non matching here
-            // TODO: It's using t2 instead of t4
-            current_actor_pointer->control_state = newControlState;
-            // TODO: It's using t3 instead of t5
+            current_actor_pointer->control_state = newControlState & 0xFF;
             current_actor_pointer->control_state_progress = 0;
         }
     }
     func_806CC8B8();
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D2E9C.s")
 
@@ -2668,9 +2657,6 @@ void func_806D2E9C(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D3224.s")
-
-/*
 void func_806D3224(void) {
     u8 newControlState;
 
@@ -2678,17 +2664,13 @@ void func_806D3224(void) {
     if (func_806DF6D4(0x1D) == 0) {
         newControlState = func_806CE174(current_actor_pointer, current_actor_pointer->unkB8, extra_player_info_pointer->unk4, 1);
         if (newControlState != 0x5D) {
-            // TODO: Non matching here
-            // TODO: It's using t8 instead of t0
-            current_actor_pointer->control_state = newControlState;
-            // TODO: It's using t9 instead of t1
+            current_actor_pointer->control_state = newControlState & 0xFF;
             current_actor_pointer->control_state_progress = 0;
         }
     }
     func_806CC8B8();
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_806D32C0(void) {
     if ((current_map == MAP_BUSY_BARREL_BARRAGE_EASY)
@@ -2702,10 +2684,6 @@ void func_806D32C0(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D332C.s")
-
-/*
-// TODO: Regalloc
 void func_806D332C(void) {
     u8 newControlState;
 
@@ -2717,7 +2695,7 @@ void func_806D332C(void) {
     if (func_806DF6D4(0x13) == 0) {
         newControlState = func_806CDD24(current_actor_pointer, current_actor_pointer->unkB8, extra_player_info_pointer->unk4, 1);
         if (newControlState != 0xD) {
-            current_actor_pointer->control_state = newControlState;
+            current_actor_pointer->control_state = newControlState & 0xFF;
             current_actor_pointer->control_state_progress = 0;
         }
     }
@@ -2737,27 +2715,19 @@ void func_806D332C(void) {
     extra_player_info_pointer->unkE = extra_player_info_pointer->unkA;
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D34B4.s")
-
-/*
 void func_806D34B4(void) {
     u8 newControlState;
     if (func_806DF6D4(0x1C) == 0) {
         newControlState = func_806CE174(current_actor_pointer, current_actor_pointer->unkB8, extra_player_info_pointer->unk4, 1);
         if (newControlState != 0x5E) {
-            // TODO: Non matching here
-            // TODO: It's using t7 instead of t9
-            current_actor_pointer->control_state = newControlState;
-            // TODO: It's using t8 instead of t0
+            current_actor_pointer->control_state = newControlState & 0xFF;
             current_actor_pointer->control_state_progress = 0;
         }
     }
     func_806CC8B8();
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_806D3530(void) {
     if (((current_actor_pointer->unk9C - current_actor_pointer->y_position) > 50.0f) && (current_actor_pointer->distance_from_floor > 250.0f)) {
@@ -3402,6 +3372,7 @@ void func_806D5834(void) {
             current_actor_pointer->control_state_progress++;
             extra_player_info_pointer->unk5C = D_80767CC0 - 0x64;
             extra_player_info_pointer->unk48 = 0x50;
+            // Fallthrough
         case 1:
             func_806DF6D4(9);
             extra_player_info_pointer->unk30 = 10.0f;
