@@ -29,6 +29,7 @@ extern u8 D_807FB604;
 // Doable, model2 matrix stuff, might need some more structs/arrays defined though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066C610.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066C7F4.s")
 
 void func_8066C8B0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {

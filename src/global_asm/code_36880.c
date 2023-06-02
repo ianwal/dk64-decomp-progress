@@ -357,6 +357,7 @@ void func_806335B0(s32 arg0, u8 arg1, s32 arg2, f32 *arg3, f32 *arg4, f32 *arg5)
     }
 }
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063367C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063373C.s")

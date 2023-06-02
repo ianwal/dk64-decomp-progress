@@ -1056,12 +1056,8 @@ void func_8064A180(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064A194.s")
-
 extern u8 D_80748214[];
 
-/*
-// TODO: Regalloc t3 t4 a2
 void func_8064A194(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     u8 found;
     s32 i;
@@ -1069,23 +1065,23 @@ void func_8064A194(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     u8 *var_v0_2;
 
     i = 0;
-    found = 0;
+    found = FALSE;
     temp_a0 = D_807F6000[func_80659470(arg1)].unk8A;
     while (!found) {
         if (temp_a0 == D_80748214[i]) {
-            found = 1;
+            found = TRUE;
         } else {
-            i += 1;
+            i++;
         }
     }
     if (i == 0x16) {
-        var_v0_2 = &D_80748214;
+        var_v0_2 = &D_80748214[0];
     } else {
-        var_v0_2 = &D_80748214[i + 1];
+        // TODO: Yuk
+        i++;var_v0_2 = &D_80748214[i];
     }
     func_806418E8(*var_v0_2, 0xA, 0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064A258.s")
 

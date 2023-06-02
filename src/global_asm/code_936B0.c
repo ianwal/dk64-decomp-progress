@@ -471,12 +471,10 @@ void func_80695B50() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80696A6C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_806970CC.s")
-
-/*
-// TODO: Regalloc at the end :(
 void func_806970CC(void) {
-    s32 temp_v0;
+    s16 temp_v0;
+    s16 temp;
+    s16 temp2;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unkFA = 9000;
@@ -484,11 +482,12 @@ void func_806970CC(void) {
     func_80696A6C();
     if ((current_actor_pointer->unkFC != 0) && (func_806725A0(current_actor_pointer, current_actor_pointer->unkEE) == 0)) {
         func_80608528(current_actor_pointer, 0xF5, 0xFF, 0x7F, 0x1E);
-        temp_v0 = func_80672A70(current_actor_pointer->unkF4, current_actor_pointer->unkF6, current_actor_pointer);
-        current_actor_pointer->unkEE = temp_v0 + (temp_v0 - ((current_actor_pointer->unkEE + 0x800) & 0xFFF));
+        temp_v0 = func_80672A70(current_actor_pointer->unkF4, current_actor_pointer->unkF6);
+        temp = ((current_actor_pointer->unkEE) + 0x800) & 0xFFF;
+        temp2 = (temp_v0 - temp);
+        current_actor_pointer->unkEE = temp_v0 + temp2;
     }
 }
-*/
 
 extern u16 D_807FBB34;
 

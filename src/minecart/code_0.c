@@ -44,8 +44,6 @@ void func_800241A0(s16 *arg0, u8 arg1, u8 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_80024254.s")
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -67,26 +65,24 @@ typedef struct {
     u8 unk3F;
 } Struct80024254_arg0;
 
-/*
-// TODO: Regalloc
 void func_80024254(Struct80024254_arg0 *arg0) {
-    if (current_actor_pointer->unkB8 != arg0->unk3E) {
-        if (current_actor_pointer->unkB8 < arg0->unk3E) {
-            if (arg0->unk3E < current_actor_pointer->unkB8 + 8.0f) {
-                current_actor_pointer->unkB8 = arg0->unk3E;
+    u8 temp = arg0->unk3E;
+    if (current_actor_pointer->unkB8 != temp) {
+        if (current_actor_pointer->unkB8 < temp) {
+            if (temp < current_actor_pointer->unkB8 + 8.0f) {
+                current_actor_pointer->unkB8 = temp;
             } else {
                 current_actor_pointer->unkB8 += 8.0f;
             }
-        } else if (arg0->unk3E < current_actor_pointer->unkB8) {
-            if (current_actor_pointer->unkB8 - 8.0f < arg0->unk3E) {
-                current_actor_pointer->unkB8 = arg0->unk3E;
+        } else if (temp < current_actor_pointer->unkB8) {
+            if (current_actor_pointer->unkB8 - 8.0f < temp) {
+                current_actor_pointer->unkB8 = temp;
             } else {   
                 current_actor_pointer->unkB8 -= 8.0f;
             }
         }
     }
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_8002430C.s")

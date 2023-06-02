@@ -18,6 +18,13 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_63B0/func_80005948.s")
 
+/*
+void func_80005948(u64 *arg0, u64 *arg1, u64 arg2, s16 arg4) {
+    *arg0 = arg2 / arg4;
+    *arg1 = arg2 % arg4;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_63B0/func_800059A8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_63B0/func_80005A44.s")
