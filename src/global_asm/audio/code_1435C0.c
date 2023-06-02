@@ -2,7 +2,7 @@
 #include "functions.h"
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1435C0/func_8073E8C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_8073E8C0.s")
 
 typedef struct {
     u8 unk0[0x48 - 0x0];
@@ -58,7 +58,7 @@ s32 func_8073F1E4(Struct8073F1E4 *arg0, s32 arg1, s32 *arg2) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1435C0/func_8073F328.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_8073F328.s")
 
 extern f32 D_80760554;
 
@@ -97,7 +97,7 @@ s16 func_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
     return spE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1435C0/func_8073F81C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_8073F81C.s")
 
 /*
 // TODO: Something wrong with the shifts
@@ -115,4 +115,4 @@ s16 func_8073F81C(s16 arg0, s32 arg1, s16 arg2, u16 arg3) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1435C0/func_8073F8A0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_8073F8A0.s")

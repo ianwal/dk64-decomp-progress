@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80735AA0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_80735AA0.s")
 
 void func_80735DBC(ALEvent *);                            /* extern */
 
@@ -38,7 +38,7 @@ s32 func_80735CF4(struct_80735CF4 *arg0) {
 }
 
 // jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80735DBC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_80735DBC.s")
 
 typedef struct {
     s32 unk0;
@@ -103,13 +103,13 @@ void func_80737028(struct_80737028_0 *arg0) {
     alEvtqPostEvent(&D_807563CC->unk14, &sp20, 0x8235);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_807370A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_807370A4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737198.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_80737198.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_8073726C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_8073726C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_8073749C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_8073749C.s")
 
 typedef struct {
     s32 unk0;
@@ -149,7 +149,7 @@ u8 func_80737608(Struct_807375E0 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737638.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_80737638.s")
 
 typedef struct Struct80737990 Struct80737990;
 
@@ -227,4 +227,4 @@ u16 func_80737B2C(u8 arg0) {
     return D_807FF0E4[arg0];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_13A7A0/func_80737B58.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_80737B58.s")

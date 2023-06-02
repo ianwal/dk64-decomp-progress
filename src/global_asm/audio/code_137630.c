@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_137630/func_80732930.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137630/func_80732930.s")
 
 extern f32 D_80760190;
 

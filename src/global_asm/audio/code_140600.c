@@ -1,11 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_140600/func_8073B900.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_8073B900.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_140600/func_8073B9B0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_8073B9B0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_140600/func_8073BA60.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_8073BA60.s")
 
 f32 func_80611BB4(f32, f32);
 extern f32 D_807604B0;
@@ -57,7 +57,7 @@ void func_8073BC74(Struct8073BC74 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_140600/func_8073BDC4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_8073BDC4.s")
 
 extern f32 D_807604B8;
 extern f32 D_807604BC;
@@ -115,7 +115,7 @@ void func_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_140600/func_8073C040.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_8073C040.s")
 
 s16 *func_80732444(s32, s32, s32, u8, s32);
 extern s32 D_80756458[];
@@ -270,4 +270,4 @@ void func_8073C040(s16 **arg0, Struct8073C040_arg1 *arg1, s16 arg2, s32 arg3) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_140600/func_8073C604.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_8073C604.s")

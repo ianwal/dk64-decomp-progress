@@ -2,7 +2,7 @@
 #include "functions.h"
 
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_145950/func_80740C50.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_145950/func_80740C50.s")
 
 void func_807407A8(void *, s32, void*);
 
