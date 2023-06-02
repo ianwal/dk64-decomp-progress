@@ -582,11 +582,92 @@ s32 func_80642500(f32 *arg0, u8 arg1, s16 arg2) {
 }
 */
 
+// TODO: Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806425FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80642748.s")
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+extern f32 D_807F6228;
+extern f32 D_807F622C;
+extern f32 D_807F6230;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80642844.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    f32 unk14[1]; // TODO: How many?
+} Struct80642844;
+
+void func_80642748(s16 arg0, s16 arg1, Struct80642844 *arg2, s32 arg3, u8 arg4) {
+    f32 var_f0;
+
+    var_f0 = arg1 / 10.0f;
+    if ((u8)(arg0 & 0xFF) == 1) {
+        var_f0 = arg2->unk14[arg1];
+    }
+    switch ((u8)(arg0 >> 8) & 0xFF) {
+        case 0:
+            if (arg4 == 1) {
+                D_807F6228 += var_f0;
+            } else {
+                D_807F6228 = var_f0;
+            }
+            break;
+        case 1:
+            if (arg4 == 1) {
+                D_807F622C += var_f0;
+                return;
+            } else {
+                D_807F622C = var_f0;
+            }
+            break;
+        case 2:
+            if (arg4 == 1) {
+                D_807F6230 += var_f0;
+                return;
+            } else {
+                D_807F6230 = var_f0;
+            }
+            break;
+    }
+}
+
+void func_80642844(s16 arg0, s16 arg1, Struct80642844 *arg2, s32 arg3, u8 arg4) {
+    f32 var_f0;
+
+    var_f0 = arg1 / 10.0f;
+    // TODO: Wtf
+    if (((u8)arg0 & 0xFF) == 1) {
+        var_f0 = arg2->unk14[arg1];
+    }
+    // TODO: Wtf
+    switch ((u8)(arg0 >> 8) & 0xFF) {
+        case 0:
+            if (arg4 == 1) {
+                D_807F621C += var_f0;
+            } else {
+                D_807F621C = var_f0;
+            }
+            break;
+        case 1:
+            if (arg4 == 1) {
+                D_807F6220 += var_f0;
+            } else {
+                D_807F6220 = var_f0;
+            }
+            break;
+        case 2:
+            if (arg4 == 1) {
+                D_807F6224 += var_f0;
+            } else {
+                D_807F6224 = var_f0;
+            }
+            break;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80642940.s")
 

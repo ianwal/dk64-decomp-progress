@@ -1609,7 +1609,16 @@ typedef struct {
 } OM2_unk78;
 
 typedef struct {
-    u8 unk0[0x24 - 0x0];
+    u8 unk0[0x10 - 0x0];
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+} OM2_unk28;
+
+typedef struct {
+    u8 unk0[0x8 - 0x0];
+    s32 unk8;
+    u8 unkC[0x24 - 0xC];
     u8 unk24;
     u8 unk25[2];
 } OM2_unk48;
@@ -1625,7 +1634,7 @@ typedef struct object_model2 {
     f32 unk1C;
     Model2Model *model_pointer; // at 0x20
     OM2_unk24 *unk24; // labelled behavior_type_pointer in ScriptHawk
-    s32 unk28;
+    OM2_unk28 *unk28;
     s32 unk2C;
     s32 unk30;
     s32 unk34;

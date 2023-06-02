@@ -31,7 +31,30 @@ void func_8065F49C(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065F4F4.s")
+void func_8065F4F4(GlobalASMStruct58 *arg0) {
+    if (arg0->unk0->unkC < arg0->unk10) {
+        arg0->unk0->unkC += arg0->unk18;
+        if (arg0->unk10 < arg0->unk0->unkC) {
+            arg0->unk0->unkC = arg0->unk10;
+        }
+    } else {
+        arg0->unk0->unkC -= arg0->unk18;
+        if (arg0->unk0->unkC < arg0->unk10) {
+            arg0->unk0->unkC = arg0->unk10;
+        }
+    }
+    if (arg0->unk0->unk10 < arg0->unk14) {
+        arg0->unk0->unk10 += arg0->unk18;
+        if (arg0->unk14 < arg0->unk0->unk10) {
+            arg0->unk0->unk10 = arg0->unk14;
+        }
+    } else {
+        arg0->unk0->unk10 -= arg0->unk18;
+        if (arg0->unk0->unk10 < arg0->unk14) {
+            arg0->unk0->unk10 = arg0->unk14;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065F5F0.s")
 
@@ -54,6 +77,58 @@ void func_8065F614(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065F678.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065F964.s")
+
+void func_806545D4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4, f32 arg5, s32 arg6, u8 arg7, f32 (*arg8)[4], s32 arg9, f32 *argA);
+void func_80657E24(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 *arg8, s32 *arg9, s32 *argA, s32 *argB);
+
+/*
+// TODO: Pretty close
+void func_8065F964(GlobalASMStruct58 *arg0, f32 arg1, f32 arg2, s32 arg3, u8 arg4, f32 arg5[4][4], s32 arg6) {
+    s32 spB4;
+    s32 spB0;
+    s32 spAC;
+    s32 spA8;
+    f32 sp70;
+    Chunk *chunk;
+    s32 i;
+    s32 var_s2;
+    s32 var_s3;
+    s32 var_s4;
+    s32 var_s5;
+
+    var_s2 = 0;
+    var_s3 = 0;
+    var_s4 = 0;
+    var_s5 = 0;
+    for (i = 0; i < arg0->unk0->unk67; i++) {
+        chunk = &chunk_array_pointer[arg0->unk0->unk50[i]];
+        if (chunk->loaded == 1) {
+            func_80657E24(
+                var_s2,
+                var_s3,
+                var_s4,
+                var_s5,
+                chunk->deload1,
+                chunk->deload2,
+                chunk->deload3,
+                chunk->deload4,
+                &spB4,
+                &spB0,
+                &spAC,
+                &spA8);
+            var_s2 = spB4;
+            var_s3 = spB0;
+            var_s4 = spAC;
+            var_s5 = spA8;
+        }
+    }
+    func_806545D4(var_s2, var_s3, var_s4, var_s5, arg1, arg2, arg3, arg4, arg5, arg6, &sp70);
+    arg0->unk40 = var_s2;
+    arg0->unk42 = var_s3;
+    arg0->unk44 = var_s4;
+    arg0->unk46 = var_s5;
+}
+*/
 
 typedef struct {
     s32 unk0[4];

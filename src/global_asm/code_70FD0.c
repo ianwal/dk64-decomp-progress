@@ -45,6 +45,39 @@ void func_8066C8B0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066CCD8.s")
 
+extern s32 D_80747D70;
+extern s16 D_80748E40;
+
+/*
+// TODO: Hmm, are OM2_unk28 and OM2_unk48 substructs?
+void func_8066CCD8(void) {
+    OM2_unk48 *temp_a0_2;
+    ObjectModel2 *var_v1;
+    OM2_unk28 *temp_a0;
+
+    if (D_80747D70 != 0) {
+        D_80748E40 += 1;
+        if (D_80748E40 >= D_80747D70) {
+            D_80748E40 = 0;
+        }
+        var_v1 = &D_807F6000[D_80748E40];
+        temp_a0 = var_v1->unk28;
+        if (var_v1->unk28->unk15 & 1) {
+            if ((object_timer - var_v1->unk28->unk10) >= 0x1FU) {
+                func_8066C904(temp_a0);
+            }
+        }
+        var_v1 = &D_807F6000[D_80748E40];
+        temp_a0_2 = var_v1->unk48;
+        if (temp_a0_2->unk24 & 1) {
+            if ((object_timer - temp_a0_2->unk8) >= 0x1FU) {
+                func_806348B4(temp_a0_2);
+            }
+        }
+    }
+}
+*/
+
 void func_8066CDD0() {
     func_8066CDF8();
     func_806687E0();

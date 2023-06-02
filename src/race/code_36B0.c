@@ -207,6 +207,35 @@ void sealRaceSetup() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80029F88.s")
 
+extern f64 D_8002FFF0;
+extern f32 D_8002FFEC;
+
+/*
+// TODO: hmm
+void func_80029F88(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+    s32 temp_f2;
+    f32 var_f12;
+    f64 var_f2;
+    AnimationStateUnk0 *temp_v0;
+
+    temp_v0 = arg0->animation_state->unk0;
+    if (arg2 != 0.0f) {
+        temp_f2 = arg3 / arg2;
+        if (!(temp_f2 <= 0.0f)) {
+            var_f12 = (arg4 - temp_v0->unk4) / temp_f2;
+            if (var_f12 < 0.0f) {
+                var_f12 = D_8002FFEC;
+            }
+            var_f12 /= MIN(temp_v0->unk24, D_8002FFF0);
+            if (var_f12 > 2.0f) {
+                var_f12 = 2.0f;
+            }
+            func_80614D00(arg0, var_f12, 0.0f);
+        }
+    }
+}
+*/
+
 s32 func_8002A080(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1) {
     return D_8002FC5C[func_8002E8EC(arg0, arg1, 0xA)];
 }

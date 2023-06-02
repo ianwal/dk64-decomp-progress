@@ -145,8 +145,18 @@ extern GlobalASMStruct53 D_807FB930[];
 typedef struct global_asm_struct_58 GlobalASMStruct58;
 
 typedef struct {
-    u8 unk0[0x64 - 0x0];
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    u8 unk14[0x50 - 0x14];
+    s16 unk50[2]; // TODO: How many?
+    u8 unk54[0x64 - 0x54];
     u8 unk64;
+    u8 unk65;
+    u8 unk66;
+    u8 unk67;
 } GlobalASMStruct58_unk0;
 
 struct global_asm_struct_58 {
@@ -166,8 +176,10 @@ struct global_asm_struct_58 {
     s32 unk34;
     s32 unk38;
     s32 unk3C;
-    s32 unk40;
-    s32 unk44;
+    s16 unk40;
+    s16 unk42;
+    s16 unk44;
+    s16 unk46;
     s16 unk48;
     s8 unk4A; // used
     s8 unk4B; // used
