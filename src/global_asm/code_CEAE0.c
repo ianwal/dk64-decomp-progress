@@ -1082,18 +1082,20 @@ extern f32 D_8075CBE0;
 extern f64 D_8075CBE8;
 f32 func_80611BB4(f32, f32);
 
+void func_806CF2EC(s32*, s32*);
+
 /*
-// TODO: Very doable, just stack offsets to fix
+// TODO: Very doable, just stack offset to fix
 void func_806CEED8(void) {
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
-    f32 sp30;
-    f32 sp28;
-    s32 sp24;
-    s32 sp20;
+    f32 sp44; // 44
+    f32 sp40; // 40
+    f32 sp3C; // 3C
+    f32 sp38; // 38
+    f32 sp34; // 34
+    f32 sp30; // 30
+    s32 sp20; // 2C // TODO: Needs to move to sp20
+    f32 sp28; // 28
+    s32 sp24; // 24
 
     func_806CF2EC(&sp24, &sp20);
     func_80671C0C(current_actor_pointer, sp24, &sp40, &sp38, &sp30);

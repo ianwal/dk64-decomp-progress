@@ -433,35 +433,26 @@ void func_805FC2B0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FC98C.s")
 
-u64 func_80005818(u64, f32, u32);
-u64 func_80005918(s32, u32, f32, u32);
-extern s32 D_807445B8; // OSTime?
-extern u32 D_807445BC;
-extern s32 D_807445C0; // OSTime?
-extern u32 D_807445C4;
-extern s32 D_80750AB0;
+u64 func_80005818(u64, u64);
+u64 func_80005918(OSTime, u64);
+extern OSTime D_807445B8;
+extern OSTime D_807445C0;
+extern u32 D_80750AB0;
 
 /*
-// TODO: 64 bit nonsense
+// TODO: Regalloc t0 t1
 s32 func_805FC98C(void) {
-    u32 sp1C;
-    s32 sp18;
-    s32 temp_t8;
+    OSTime sp18;
+    OSTime temp_t8;
     u32 temp_t7;
-    u32 temp_t9;
     OSTime currentTime;
 
     currentTime = osGetTime();
-    temp_t8 = (currentTime - D_807445B8) - (currentTime < D_807445BC);
-    temp_t9 = currentTime - D_807445BC;
-    sp1C = temp_t9;
-    sp18 = temp_t8;
+    temp_t8 = (currentTime - D_807445B8);
     if (global_properties_bitfield & 2) {
-        temp_t9 = (temp_t9 - currentTime) + D_807445C4;
-        sp18 = (temp_t9 < D_807445C4) + ((temp_t8 - currentTime) - (temp_t9 < currentTime)) + D_807445C0;
-        sp1C = temp_t9;
+        temp_t8 = temp_t8 - currentTime + D_807445C0;
     }
-    return func_80005818(func_80005818(func_80005918(sp18, sp1C, 0, 0x40), 0, 3000), 0, 1000000) + D_80750AB0;
+    return func_80005818(func_80005818(func_80005918(temp_t8, 0x40), 3000), 1000000) + D_80750AB0;
 }
 */
 

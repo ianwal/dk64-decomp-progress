@@ -50,8 +50,6 @@ u8 isFlagSet(s16 flagIndex, u8 flagType) { // TODO: Can we use the FlagTypes enu
     return flagBlock[flagByte] >> (s16)(flagIndex - flagByte * 8) & 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_807311C4.s")
-
 typedef struct {
     s16 unk0; // Start Permanent Flag Index
     s16 unk2; // End Permanent Flag Index
@@ -60,16 +58,15 @@ typedef struct {
 } Struct80756024;
 extern Struct80756024 D_80756024[];
 
-void func_807311C4(s16, s32);
+void func_807311C4(s16);
 
-/*
-void func_807311C4(s16 arg0, s32 arg1) {
+void func_807311C4(s16 flagIndex) {
     s32 i;
     s32 chosenFlag;
 
     chosenFlag = -1;
-    for (i = 0; i < 0x21 && chosenFlag == -1; i++) {
-        if (arg0 >= D_80756024[i].unk0 && D_80756024[i].unk2 >= arg0) {
+    for (i = 0; i < 0x21U && chosenFlag == -1; i++) {
+        if (flagIndex >= D_80756024[i].unk0 && D_80756024[i].unk2 >= flagIndex) {
             if (func_80731AA8(D_80756024[i].unk0, (D_80756024[i].unk2 - D_80756024[i].unk0) + 1, FLAG_TYPE_PERMANENT) == D_80756024[i].unk4) {
                 chosenFlag = D_80756024[i].unk6;
             }
@@ -80,7 +77,6 @@ void func_807311C4(s16 arg0, s32 arg1) {
         setFlag(chosenFlag, TRUE, FLAG_TYPE_GLOBAL);
     }
 }
-*/
 
 void setFlag(s16 flagIndex, u8 newValue, u8 flagType) {
     u8 *flagBlock;
@@ -104,7 +100,7 @@ void setFlag(s16 flagIndex, u8 newValue, u8 flagType) {
             flagBlock[flagByte] &= ~(1 << (s16)(flagIndex - (flagByte * 8)));
         }
         if (newValue && (flagType == FLAG_TYPE_PERMANENT)) {
-            func_807311C4(flagIndex, flagType);
+            func_807311C4(flagIndex);
         }
     }
 }

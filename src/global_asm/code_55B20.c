@@ -991,7 +991,7 @@ void func_80655BF0(void) {
         }
     }
     D_807F70AA++;
-    if (D_807F6C28 == (D_807F70AA)) {
+    if (D_807F6C28 == D_807F70AA) {
         D_807F70AA = 0;
     }
 }

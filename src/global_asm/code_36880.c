@@ -387,6 +387,7 @@ void func_806338F4(s32 arg0) {
     temp_v0->unk24 = 0;
 }
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063393C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80633A1C.s")

@@ -333,10 +333,10 @@ void func_80661E34(Struct80661AB4_1 *arg0) {
     if (arg0->unk0->unk3C < 0.0) {
         arg0->unk0->unk3C = 255.0f;
     }
-    arg0->unk30 = arg0->unk30 + arg0->unk0->unk14;
-    arg0->unk34 = arg0->unk34 + arg0->unk0->unk18;
-    arg0->unk38 = arg0->unk38 + arg0->unk0->unk2C;
-    arg0->unk3C = arg0->unk3C + arg0->unk0->unk30;
+    arg0->unk30 += arg0->unk0->unk14;
+    arg0->unk34 += arg0->unk0->unk18;
+    arg0->unk38 += arg0->unk0->unk2C;
+    arg0->unk3C += arg0->unk0->unk30;
 }
 
 void func_80661EC4(u8 arg0) {
@@ -383,6 +383,7 @@ void func_806623D4(u8 arg0) {
     D_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3B9, 1, 0);
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8066241C.s")
 
 void func_806625D0(u8 arg0) {
@@ -390,6 +391,7 @@ void func_806625D0(u8 arg0) {
     D_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3D2, 1, 0);
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80662618.s")
 
 void func_806627CC(u8 arg0) {
@@ -398,6 +400,24 @@ void func_806627CC(u8 arg0) {
     D_80748A90[arg0].unk10 = getPointerTableFile(7, 0x3DB, 1, 0);
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80662838.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80662AB4.s")
+void func_80662AB4(Struct80661AB4_1 *arg0) {
+    Struct80661AB4_2 *temp_v0;
+    Struct80661AB4_2 *temp_v0_2;
+    Struct80661AB4_2 *temp_v0_3;
+
+    arg0->unk0->unk3C -= arg0->unk0->unk34;
+    if (arg0->unk0->unk3C < 0.0) {
+        arg0->unk0->unk3C = 255.0f;
+    }
+    arg0->unk0->unk40 -= arg0->unk0->unk38;
+    if (arg0->unk0->unk40 < 0.0) {
+        arg0->unk0->unk40 = 255.0f;
+    }
+    arg0->unk30 += arg0->unk0->unk14;
+    arg0->unk34 += arg0->unk0->unk18;
+    arg0->unk38 += arg0->unk0->unk2C;
+    arg0->unk3C += arg0->unk0->unk30;
+}

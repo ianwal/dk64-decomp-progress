@@ -1077,6 +1077,7 @@ void func_8066A584(s32 arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A64C.s")
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A75C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066A834.s")
