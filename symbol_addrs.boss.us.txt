@@ -9,6 +9,7 @@ setFlag = 0x8073129C;
 gameIsInMysteryMenuMinigameMode = 0x8071441C;
 
 func_8071CDE0 = 0x8071CDE0;
+func_8071E864 = 0x8071E864;
 
 is_cutscene_active = 0x807444EC;
 game_mode_copy = 0x80755314;

@@ -1,183 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-} Struct80717D84_unk384_80717814;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-} Struct80717D84_unk384;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Struct80717D84_unk384_f32;
-
-typedef struct {
-    s16 unk0;
-} Struct80717D84_unk384_s16;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-} Struct80717D84_unk384_80717100;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-} Struct80717D84_unk384_8071720C;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-} Struct80717D84_unk384_80717B64;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-} Struct80717D84_unk384_8071DC90;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-} Struct80717D84_unk384_8071E110;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Struct80717D84_unk384_8071F444;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-} Struct80717D84_unk384_80717930;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-} Struct80717D84_unk384_807189BC;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-} Struct80717D84_unk384_80719C00;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-} Struct80717D84_unk384_80719EF4;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Struct80717D84_unk384_8071D0F0;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-} Struct80717D84_unk384_8071B2EC;
-
-typedef struct {
-    u8 unk0[0x16 - 0x0];
-    s16 unk16;
-} Struct80717D84_unk330;
-
-typedef struct {
-    u8 unk0[0x128 - 0x0];
-    float unk128[4][4]; // TODO: How many?
-    u8 unk168[0x32C - 0x168];
-    u8 unk32C;
-    u8 unk32D[0x330 - 0x32D];
-    Struct80717D84_unk330 *unk330;
-    s32 unk334;
-    Actor *unk338;
-    s32 unk33C;
-    f32 unk340;
-    f32 unk344;
-    f32 unk348;
-    s16 unk34C;
-    s16 unk34E;
-    u8 unk350;
-    u8 unk351;
-    u8 unk352;
-    u8 unk353;
-    s32 unk354;
-    s32 unk358;
-    union {
-        s32 unk35C;
-        u32 unk35C_u32;
-        Actor *unk35C_actor;
-    };
-    f32 unk360;
-    f32 unk364;
-    u8 unk368[0x36D - 0x368];
-    u8 unk36D;
-    u8 unk36E[0x384 - 0x36E];
-    union {
-        Struct80717D84_unk384 *unk384;
-        Struct80717D84_unk384_f32 *unk384_f32;
-        Struct80717D84_unk384_s16 *unk384_s16;
-        Struct80717D84_unk384_80717100 *unk384_80717100;
-        Struct80717D84_unk384_80717814 *unk384_80717814;
-    };
-    s32 unk388;
-    u16 unk38C;
-} Struct80717D84;
-
-typedef struct Struct807FDB00 Struct807FDB00; 
-
-struct Struct807FDB00 {
-    s32 unk0;
-    s32 unk4;
-    u8 unk8[0x24 - 0x8];
-    Struct807FDB00 *next;
-};
-
-typedef struct Struct807FDB04 Struct807FDB04;
-
-struct Struct807FDB04 {
-    u8 unk0[0x338 - 0x0];
-    Actor *unk338;
-    u8 unk33C[0x39C - 0x33C];
-    Struct807FDB04 *next;
-};
-
 extern u8 D_8074450C;
 
 extern Struct807FDB00 *D_807FDB00;
@@ -251,7 +74,6 @@ extern f32 D_8075E964;
 extern f32 D_8075E978;
 extern f64 D_8075E980;
 extern f64 D_8075E990;
-extern s32 D_80717D4C; // TODO: Datatype
 extern s32 D_8071FFA0; // TODO: Datatype
 extern f32 D_8075E998;
 extern f32 D_8075EA28;
@@ -1219,7 +1041,7 @@ void func_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
     }
     if (((rand() >> 0xF) % 100) >= 0x5B) {
         func_80714998(3);
-        func_8071498C(&D_80717D4C);
+        func_8071498C(&func_80717D4C);
         func_80714950(-0xA);
         func_807149B8(1);
         func_807149C8(0x9B, 0x9B, 0x9B, 0x96);

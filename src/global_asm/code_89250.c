@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-extern s32 D_80717D4C;
 extern s32 D_80717930;
 extern s32 D_807197B4;
 extern s32 D_8071827C;
@@ -143,7 +141,7 @@ void func_80684A00(s16 arg0, s8 arg1) {
     sp30 = current_actor_pointer->animation_state->scale_y / D_80759AB8;
     func_80671C0C(current_actor_pointer, arg0, &sp3C, &sp38, &sp34);
     func_80714950((((rand() >> 0xF) % 100) + 400) * arg1);
-    func_8071498C(&D_80717D4C);
+    func_8071498C(&func_80717D4C);
     func_807149B8(1);
     func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3],
         sp30 * D_80759AC0,
@@ -239,7 +237,7 @@ void func_80685210(f32 arg0, s16 arg1, s16 arg2) {
     if ((((u32) object_timer % 3) == 0) && (arg1 < current_actor_pointer->unkB8)) {
         func_80714998(2);
         func_807149B8(1);
-        func_8071498C(&D_80717D4C);
+        func_8071498C(&func_80717D4C);
         func_80714950(-0x32);
         func_80714A28(4);
         func_80714C08(&D_8071FF18, arg0, current_actor_pointer, arg2, 0);

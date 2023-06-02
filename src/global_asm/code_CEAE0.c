@@ -3318,7 +3318,6 @@ extern f32 D_80750FD8;
 extern f64 D_8075CD80;
 extern void *D_8074E880[];
 extern s32 D_80750FC4; // TODO: Datatype
-void func_80717D4C(void); // TODO: Proper signature, just needed right now for function pointer
 
 void func_806D5300(void) {
     s32 pad;

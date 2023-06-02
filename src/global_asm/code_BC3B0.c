@@ -199,7 +199,6 @@ void func_806B7EA0(void) {
 */
 
 extern f64 D_8075B8A0;
-extern s32 D_80717D4C; // TODO: Datatype
 extern s32 D_807201D4; // TODO: Datatype
 
 void func_8066EB40(Actor*, f32);
@@ -226,7 +225,7 @@ void func_806B83E4(void) {
         func_807149FC(3);
         func_807149B8(1);
         func_80714950(-0x1C2);
-        func_8071498C(&D_80717D4C);
+        func_8071498C(&func_80717D4C);
         func_80714CC0(&D_807201D4, 1.2f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0, current_actor_pointer->z_position);
     }
     if (D_807FDC90->unk2C != 0) {

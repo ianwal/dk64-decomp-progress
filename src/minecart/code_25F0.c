@@ -21,11 +21,10 @@ void func_80026B6C(MinecartStruct0 *arg0, f32 arg1) {
 }
 
 extern s32 D_8074E880[];
-extern s32 D_80717D4C; // TODO: Datatype
 
 void func_80026C54(void) {
     func_80714950(((rand() >> 0xF) % 100) + 300);
-    func_8071498C(&D_80717D4C);
+    func_8071498C(&func_80717D4C);
     func_807149B8(1);
     func_80714A28(4);
     func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3],

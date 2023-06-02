@@ -17,7 +17,6 @@ typedef struct {
 } Struct80024000;
 
 extern s32 D_8071FFA0;
-extern s32 D_8071E864;
 extern Struct80024000 D_8003598C[];
 
 // TODO: Close, just gotta figure out sp48 and D_8003598C
@@ -30,7 +29,7 @@ void func_80024000(void) {
         func_8067E2E4(current_actor_pointer, sp48[i].unk0, 3.0f);
     }
     for (i = 0; i < 0xC; i++) {
-        func_8071498C(&D_8071E864);
+        func_8071498C(&func_8071E864);
         func_80714950(i);
         func_807149B8(1);
         func_807149C8(0x8C, 0x8C, 0x8C, 0xFF);

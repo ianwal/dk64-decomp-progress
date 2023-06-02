@@ -3,7 +3,6 @@
 
 
 extern s32 D_8071720C;
-extern s32 D_80717D4C;
 extern s32 D_8074E880[];
 extern u8 D_80750628[];
 extern f32 D_8075B9E0;
@@ -28,7 +27,7 @@ void func_806B9CE0(u8 arg0, s8 arg1) {
             break;
         case 1:
             func_80714950(-0x258);
-            func_8071498C(&D_80717D4C);
+            func_8071498C(&func_80717D4C);
             break;
     }
     func_807149B8(1);

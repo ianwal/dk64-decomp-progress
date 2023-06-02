@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-extern s32 D_80717D4C;
 extern s32 D_8071AADC;
 extern s32 D_8071FBC8;
 extern s32 D_8071FF18;
@@ -331,27 +329,24 @@ void func_80641B00(s16 arg0, s16 arg1, s16 arg2) {
     D_807F6000[arg0].unk7C->unkA0 = D_807F6000[arg1].unk7C->unkA0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641BCC.s")
-
 extern u16 D_807FBB34;
 
-/*
-// TODO: Regalloc a0 a1, boo
 void func_80641BCC(s16 arg0, s16 arg1, s16 arg2) {
     s32 i;
+    Actor *temp;
     for (i = 0; i < D_807FBB34; i++) {
-        if (!(D_807FB930[i].unk0->object_properties_bitfield & 0x2000)
-            && (arg0 == D_807FB930[i].unk0->unk58)
-            && (arg2 == D_807FB930[i].unk0->unk10C)) {
+        temp = D_807FB930[i].unk0;
+        if (!(temp->object_properties_bitfield & 0x2000)
+            && (arg0 == temp->unk58)
+            && (arg2 == temp->unk10C)) {
             if (arg1 != 0) {
-                D_807FB930[i].unk0->unk68 |= 4;
+                temp->unk68 |= 4;
             } else {
-                D_807FB930[i].unk0->unk68 &= ~4;
+                temp->unk68 &= ~4;
             }
         }
     }
 }
-*/
 
 void func_80641C98(s16 arg0, s16 arg1, s16 arg2) {
     s32 var_s2;
@@ -627,31 +622,24 @@ void func_8064384C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806438B8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643B24.s")
-
 void func_80714950(s32);
-extern s32 D_80717D4C;
 
-/*
-// TODO: Close, minor stack issue
 void func_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
-    s32 temp = &D_80717D4C;
     if ((object_timer % 5U) == 0) {
         func_80714950(-0x78);
-        func_8071498C(temp);
+        func_8071498C(&func_80717D4C);
         func_807149B8(1);
         func_80714998(3);
         func_807149C8(0xFF, 0xFF, 0xFF, 0x96);
         func_80714B84(&D_8071FFA0, 1.0f, arg1, 1, 0);
         func_80714950(-0x78);
-        func_8071498C(temp);
+        func_8071498C(&func_80717D4C);
         func_807149B8(1);
         func_80714998(3);
         func_807149C8(0xFF, 0xFF, 0xFF, 0x96);
         func_80714B84(&D_8071FFA0, 1.0f, arg1, 2, 0);
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643C0C.s")
 
@@ -914,7 +902,7 @@ void func_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 void func_80647108(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_80714950(-0x78);
-    func_8071498C(&D_80717D4C);
+    func_8071498C(&func_80717D4C);
     func_807149B8(1);
     func_80714998(3);
     func_80714B84(&D_8071FFA0, 1.5f, arg1, 1, 0);
@@ -946,7 +934,7 @@ void func_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
     sp34 = ((func_806119A0() / 1000U) % 10) + 1;
     func_80714950(-0x28A - ((func_806119A0() / 1000U) % 200));
-    func_8071498C(&D_80717D4C);
+    func_8071498C(&func_80717D4C);
     func_807149B8(1);
     func_80714998(9);
     func_807149C8(0xFF, 0xFF, 0xFF, 0x64);
@@ -1024,7 +1012,18 @@ int func_80648C50() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80648C84.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064911C.s")
+void func_8064911C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+    s32 i;
+
+    for (i = 1; i < 8; i++) {
+        func_80714950(-0x78);
+        func_8071498C(&func_80717D4C);
+        func_807149B8(1);
+        func_80714998(3);
+        func_807149C8(0xFF, 0xFF, 0xFF, 0x96);
+        func_80714B84(&D_8071FFA0, 3.5f, arg1, i, 0);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806491F4.s")
 

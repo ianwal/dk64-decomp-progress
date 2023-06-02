@@ -28,6 +28,9 @@ void func_80613C48(Actor*, s16, f32, f32);
 u8 func_806EB0C0(s16 arg0, Actor *actor, u8 playerIndex);
 void func_8067B238(Actor *destination, Actor *source, f32 scale);
 
+void func_80717D4C(Struct80717D84 *arg0, s32 arg1);
+void func_8071E864(Struct80717D84 *arg0, s8 *arg1);
+
 void func_80684900(u8);
 f32 func_80612794(s16);
 void func_80614E78(Actor*, s32);

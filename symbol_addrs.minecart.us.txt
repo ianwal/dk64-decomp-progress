@@ -4,6 +4,8 @@ malloc = 0x80610FE8;
 rand = 0x80611A44;
 playCutscene = 0x8061CC40;
 
+func_80717D4C = 0x80717D4C;
+
 game_mode_copy = 0x80755314;
 game_mode = 0x80755318;
 object_timer = 0x8076A064;

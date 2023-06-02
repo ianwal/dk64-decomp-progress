@@ -2,7 +2,6 @@
 #include "functions.h"
 
 
-extern s32 D_80717D4C;
 extern s32 D_8071FFA0;
 extern s32 D_8071C9E8; // TODO: Datatype
 extern s32 D_8074E880[]; // TODO: Datatype
@@ -17,7 +16,7 @@ void func_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
 void func_806B8BDC(s16 arg0, s16 arg1, s16 arg2) {
     func_80714998(2);
-    func_8071498C(&D_80717D4C);
+    func_8071498C(&func_80717D4C);
     func_80714950(-0x28);
     func_807149B8(1);
     func_807149C8(0xFF, 0xFF, 0xFF, 0xC8);

@@ -22,7 +22,7 @@ us,.code,func_805FFFC8,124,yes
 us,.code,func_80652EBC,104,yes
 us,.code,func_80666AEC,12,yes
 us,.code,func_8066BF0C,228,yes
-us,.code,func_80643B24,232,no
+us,.code,func_80643B24,232,yes
 us,.code,func_806ED6B0,2376,no
 us,.code,func_806EB364,156,yes
 us,.code,func_806FA504,160,yes
@@ -1243,7 +1243,7 @@ us,.code,func_8070C27C,92,yes
 us,.code,func_80636A8C,92,yes
 us,.code,func_806F5270,264,no
 us,.code,func_80671880,492,no
-us,.code,func_8064911C,216,no
+us,.code,func_8064911C,216,yes
 us,.code,func_806B7BB8,188,yes
 us,.code,func_80660070,1200,no
 us,.code,gameIsInSnidesBonusGameMode,52,yes
@@ -1323,7 +1323,7 @@ us,.code,func_80645A64,312,no
 us,.code,func_806EB0C0,184,yes
 us,.code,func_8065D994,1708,no
 us,.code,func_80658BD0,64,yes
-us,.code,func_80641BCC,204,no
+us,.code,func_80641BCC,204,yes
 us,.code,func_8060AC7C,1172,no
 us,.code,func_807382A0,116,yes
 us,.code,func_806A5F44,96,yes
@@ -2138,7 +2138,7 @@ us,.code,func_80736FB8,112,yes
 us,.code,func_807094D0,276,no
 us,.code,func_8060B49C,56,yes
 us,.code,func_806B3E08,116,yes
-us,.code,func_806A1FD8,848,no
+us,.code,func_806A1FD8,848,yes
 us,.code,func_8060131C,132,yes
 us,.code,func_8062B220,420,no
 us,.code,func_806ED420,232,yes

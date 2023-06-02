@@ -25,6 +25,9 @@ gameIsInMainMenuMode = 0x80714450;
 playerCanDive = 0x806E770C;
 getLevelIndex = 0x805FF030;
 
+func_80717D4C = 0x80717D4C;
+func_8071E864 = 0x8071E864;
+
 n_alInit = 0x80739320;
 n_alClose = 0x8073938C;
 alLink = 0x807393E0;

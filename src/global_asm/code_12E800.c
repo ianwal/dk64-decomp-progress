@@ -2,7 +2,6 @@
 #include "functions.h"
 
 extern s32 D_8071FB34;
-extern s32 D_80717D4C;
 extern s32 D_8071FF18;
 extern f64 D_8075FF20;
 void func_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
@@ -669,7 +668,7 @@ void func_8072DA60(void) {
 void func_8072DAA4(void) {
     func_80714998(2);
     func_807149B8(1);
-    func_8071498C(&D_80717D4C);
+    func_8071498C(&func_80717D4C);
     func_80714950(-0x28 - ((rand() >> 0xF) % 15));
     func_80714CC0(&D_8071FF18,
                   (((rand() >> 0xF) % 1000) / D_8075FF20) + 0.5,

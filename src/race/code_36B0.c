@@ -707,15 +707,6 @@ f32 func_8002DD70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002DDA0.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002DE78.s")
-
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002DF38.s")
-
-f32 func_8002DDA0(f32, void *);
-void func_8002DE78(void *, s32, void *, s32);
-
 typedef struct {
     u8 unk0[0xF - 0x0];
     u8 unkF;
@@ -733,6 +724,16 @@ typedef struct {
     s32 unk1C;
     f32 unk20;
 } Struct8002E1C8_arg2;
+
+f32 func_8002DDA0(f32 arg0, Struct8002E1C8_arg2 *arg1);
+
+// Jumptable
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002DE78.s")
+
+// Jumptable
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002DF38.s")
+
+void func_8002DE78(void *, s32, void *, s32);
 
 f32 func_8002E1C8(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2, s32 arg3) {
     f32 var_f2;

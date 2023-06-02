@@ -106,7 +106,6 @@ void func_806A1ABC(void) {
 
 extern f32 D_8075A560;
 extern f64 D_8075A568;
-extern s32 D_8071E864;
 extern s32 D_8071FFA0;
 
 void func_807248B0(Actor*, f32);
@@ -173,7 +172,7 @@ void func_806A1AC4(void) {
                         sp40 = &D_8071FFA0;
                         while (i < 0xC) {
                             temp_f20 = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * temp_f22;
-                            func_8071498C(&D_8071E864);
+                            func_8071498C(&func_8071E864);
                             func_80714950(i);
                             func_807149B8(1);
                             func_807149C8(0x8C, 0x8C, 0x8C, 0xFF);
@@ -223,9 +222,6 @@ void func_806A1FD0(void) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_806A1FD8.s")
-
-extern s32 D_80717D4C;
 extern s32 D_8071FF18;
 
 typedef struct {
@@ -237,18 +233,15 @@ typedef struct {
 
 void func_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
 
-/*
-// TODO: Ridiculously close, our stack is too big and the load of at s1 is swapped in one spot
 void func_806A1FD8(void) {
-    s32 var_s1;
-    s32 var_s0;
     s32 var_v1;
     AAD_806A1FD8 *aaD;
-    Actor *temp_s0;
+    s32 i;
     u8 var_a1;
     f32 sp54;
     f32 sp50;
     f32 sp4C;
+    Actor *temp_s0;
 
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -266,24 +259,24 @@ void func_806A1FD8(void) {
         var_a1 = FALSE;
         if (current_actor_pointer->unk114 != NULL) {
             var_v1 = current_actor_pointer->unk114->unk10;
-            var_s1 = 0;
+            i = 0;
             while (var_v1 != 0 && !var_a1) {
-                temp_s0 = current_actor_pointer->unk114->unk0[var_s1];
+                temp_s0 = current_actor_pointer->unk114->unk0[i];
                 if ((func_8067AF44(temp_s0) != 0) && (temp_s0 == player_pointer)) {
                     var_a1 = TRUE;
                 }
                 var_v1--;
-                var_s1++;
+                i++;
             }
         }
         if (var_a1 && aaD->unk0 == 0) {
-            for (var_s0 = 1; var_s0 < 9; var_s0++) {
+            for (i = 1; i < 9; i++) {
                 func_80714998(2);
                 func_807149B8(1);
-                func_8071498C(&D_80717D4C);
+                func_8071498C(&func_80717D4C);
                 func_80714950(-0x64);
                 func_807149C8(0x64, 0x46, 0x1E, 0xFF);
-                func_80671C0C(current_actor_pointer, var_s0, &sp54, &sp50, &sp4C);
+                func_80671C0C(current_actor_pointer, i, &sp54, &sp50, &sp4C);
                 func_80714CC0(&D_8071FF18, 2.0f, sp54, sp50 + 10.0, sp4C);
             }
             aaD->unk0 = 0xF;
@@ -315,7 +308,6 @@ void func_806A1FD8(void) {
     func_806319C4(current_actor_pointer, 0);
     current_actor_pointer->y_position = aaD->unk8;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_806A2328.s")
 
