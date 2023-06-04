@@ -1249,8 +1249,8 @@ us,.code,func_80660070,1200,no
 us,.code,gameIsInSnidesBonusGameMode,52,yes
 us,.code,func_806F3E0C,1820,no
 us,.code,func_80651904,608,no
-us,.code,func_8071720C,504,yes
 us,.code,func_8061138C,124,yes
+us,.code,func_8071720C,504,yes
 us,.code,func_806970CC,184,yes
 us,.code,func_806DA3E4,244,no
 us,.code,func_8062D3E4,48,yes
@@ -1866,8 +1866,8 @@ us,.code,func_806EA460,264,yes
 us,.code,func_806EBF74,92,yes
 us,.code,func_806EBB44,140,yes
 us,.code,func_8065F964,416,no
-us,.code,func_80719C00,756,yes
 us,.code,func_806D7170,200,yes
+us,.code,func_80719C00,756,yes
 us,.code,func_806E1E54,312,yes
 us,.code,func_80673240,104,no
 us,.code,func_8067A69C,112,yes
@@ -3254,8 +3254,8 @@ us,.code,func_8066461C,80,yes
 us,.code,func_8063CADC,100,yes
 us,.code,func_806FFB2C,216,no
 us,.code,func_806F1380,72,yes
-us,.code,func_80716FB4,332,no
 us,.code,func_80685020,176,yes
+us,.code,func_80716FB4,332,no
 us,.code,func_80673FDC,164,no
 us,.code,func_8067B42C,32,yes
 us,.code,func_8070AF24,312,no
@@ -3982,7 +3982,7 @@ us,boot,guMtxL2F,180,yes
 us,boot,__osPiCreateAccessQueue,80,yes
 us,boot,func_800005A8,984,no
 us,boot,func_80007360,100,yes
-us,boot,__osDispatchThread,396,yes
+us,boot,__osDispatchThread,380,yes
 us,boot,guTranslate,84,yes
 us,boot,func_80000D8C,188,yes
 us,boot,__osAiDeviceBusy,48,yes
@@ -4093,6 +4093,7 @@ us,boot,__osTimerInterrupt,376,yes
 us,boot,__sinf,448,yes
 us,boot,osPiGetCmdQueue,40,yes
 us,boot,__osProbeTLB,192,yes
+us,boot,__osCleanupThread,16,yes
 us,boot,bcopy,784,yes
 us,boot,osPiRawReadIo,84,yes
 us,boot,func_80003120,192,no

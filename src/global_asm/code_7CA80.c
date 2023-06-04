@@ -849,7 +849,7 @@ ActorCollision *func_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, void *a
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_806794EC.s")
 
 extern u8 D_807FBB85;
-extern s32 D_8071F758; // TODO: Datatype
+int func_8071F758(); // TODO: Signature
 extern s32 D_80720E2C; // TODO: Datatype
 
 void func_80686CF8(Actor *actor);
@@ -881,7 +881,7 @@ void func_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
                         sp3C = 0x27;
                         break;
                     case 3:
-                        temp = &D_8071F758;
+                        temp = &func_8071F758;
                         func_807149FC(0xF0);
                         func_807149B8(1);
                         func_8071498C(temp);

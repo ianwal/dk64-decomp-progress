@@ -2,7 +2,6 @@
 #include "functions.h"
 
 extern s32 D_80720120;
-extern s32 D_8071720C;
 extern s32 D_8071EDEC;
 extern s32 D_8074E880[];
 
@@ -93,7 +92,7 @@ void func_8002A5CC(void) {
     func_80714950(current_actor_pointer);
     func_807149C8(0xFF, 0xD7, 0x58, 0xFF);
     func_80714CC0(&D_80720120, 1.5f, sp6C, sp68, sp64);
-    tmp_s2 = &D_8071720C;
+    tmp_s2 = &func_8071720C;
     for (phi_s0 = 0; phi_s0 < 4; phi_s0++) {
         func_80714998(2);
         func_8071498C(tmp_s2);

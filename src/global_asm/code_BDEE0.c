@@ -2,7 +2,6 @@
 #include "functions.h"
 
 
-extern s32 D_8071720C;
 extern s32 D_8074E880[];
 extern u8 D_80750628[];
 extern f32 D_8075B9E0;
@@ -23,7 +22,7 @@ void func_806B9CB0() {
 void func_806B9CE0(u8 arg0, s8 arg1) {
     switch (arg0) {
         case 0:
-            func_8071498C(&D_8071720C);
+            func_8071498C(&func_8071720C);
             break;
         case 1:
             func_80714950(-0x258);

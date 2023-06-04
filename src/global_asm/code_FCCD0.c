@@ -437,7 +437,7 @@ void func_806F966C(Struct806F9744_arg0 **arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F96CC.s")
 
-extern s32 D_8071BE04; // TODO: Datatype
+int func_8071BE04(); // TODO: Signature
 
 void func_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     s32 temp[2]; // TODO: Hmm
@@ -454,7 +454,7 @@ void func_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32 arg3, s32 
     func_80714998(sp2C);
     func_80714944(arg4);
     func_80714950(arg0);
-    func_8071498C(&D_8071BE04);
+    func_8071498C(&func_8071BE04);
     func_80714A28(0x21);
     if (arg1 == 3) {
         func_807149C8(0xFF, 0, 0, 0xFF);

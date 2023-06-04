@@ -720,7 +720,7 @@ void func_806A7518(void) {
 
 extern u8 D_807FBD70;
 extern s32 D_8076A068;
-extern s32 D_8071EB70;
+int func_8071EB70(); // TODO: Signature
 
 s32 func_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
 void func_8066EB40(Actor*, f32);
@@ -818,7 +818,7 @@ void func_806A7600(void *arg0) {
             if (var_a0_2 != 0) {
                 func_807149C8(0xFF, 0xFF, 0xFF, 0x96);
             } else {
-                func_8071498C(&D_8071EB70);
+                func_8071498C(&func_8071EB70);
                 func_80714950(0x226);
             }
             func_80714A28(4);
@@ -873,8 +873,7 @@ typedef struct {
     s32 unk0[7];
 } Struct807504A4;
 
-extern s32 D_8071D28C;
-extern s32 D_8071EB70;
+int func_8071D28C(); // TODO: Signature
 extern s32 D_80721170;
 extern Struct807504A4 D_807504A4;
 extern f32 D_8075AA78;
@@ -901,7 +900,7 @@ void func_806A7BDC(void) {
     if ((sp64 != 0) && (D_807FBD70 == 4) && ((object_timer % 5U) == 0)) {
         sp60 = ((rand() >> 0xF) % 255) % 7;
         sp44 = D_807504A4;
-        func_8071498C(&D_8071D28C);
+        func_8071498C(&func_8071D28C);
         func_807149FC(-1);
         func_807149B8(1);
         func_80714950(0x64);
@@ -912,7 +911,7 @@ void func_806A7BDC(void) {
     }
     if (!(object_timer & 0xF)) {
         func_807149B8(1);
-        func_8071498C(&D_8071EB70);
+        func_8071498C(&func_8071EB70);
         func_80714950(0x226);
         func_80714998(2);
         func_807149C8(0xFF, 0xFF, 0xFF, sp64 != 0 ? 0xFF : 0x7F);

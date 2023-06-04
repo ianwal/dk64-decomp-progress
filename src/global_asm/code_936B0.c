@@ -397,7 +397,7 @@ void func_806925AC(void) {
 
 void func_8061EF4C(Actor*, s32, s32, f32, f32, f32, f32, f32);
 
-extern s32 D_8071A8B0; // TODO: Datatype
+int func_8071A8B0(); // TODO: Signature
 extern s32 D_8071ABDC; // TODO: Datatype
 extern s32 D_807200EC; // TODO: Datatype
 extern s32 D_80720120; // TODO: Datatype
@@ -412,7 +412,7 @@ void func_8069329C(void) {
 
     func_807149B8(1);
     func_80714950(0x1006E);
-    func_8071498C(&D_8071A8B0);
+    func_8071498C(&func_8071A8B0);
     func_80714CC0(&D_80720120, 2.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 22.0f, current_actor_pointer->z_position);
     for (phi_s0 = 0; phi_s0 < cc_number_of_players; phi_s0++) {
         func_8061EF4C(character_change_array[phi_s0].player_pointer->PaaD->unk104, 7, 0x16, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 200.0f, 400.0f);

@@ -101,7 +101,6 @@ void func_8065D254(Actor *, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_806651FC(Actor *);
 extern s32 D_8071ABDC; // TODO: Datatype
 extern s32 D_8071FBA0; // TODO: Datatype
-extern s32 D_8071F758; // TODO: Datatype
 extern f32 D_8075A220;
 extern f32 D_8075A224;
 extern f64 D_8075A228;
@@ -157,7 +156,7 @@ void func_80697CEC(void) {
             func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
         }
         if (aaD->unk13 == 3) {
-            func_8071498C(&D_8071F758);
+            func_8071498C(&func_8071F758);
         }
         func_80714C08(sp68.unk0[aaD->unk13], current_actor_pointer->unk124->unkC, current_actor_pointer, 1, 2);
         aaD->unk0 = D_8076A068;

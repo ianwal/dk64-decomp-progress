@@ -33,7 +33,6 @@ extern s32 D_807F6010;
 extern s32 *D_8076A0A0;
 extern s16 D_8076A0AA;
 extern s32 next_exit;
-extern s32 D_806025AC;
 extern u8 D_807F6008;
 extern u8 D_80745BDC[]; // Might be a struct array
 extern f32 D_807565D8;
@@ -700,7 +699,7 @@ void func_805FE7FC(void) {
         func_8068C2EC();
         func_806F4778();
         func_8070E8C8();
-        func_8060098C(&D_806025AC, 2, 0, 0, 0);
+        func_8060098C(&func_806025AC, 2, 0, 0, 0);
         if (D_807FBB64 & 0x1000) {
             sp28 = getPointerTableFile(0x16, current_map, 1, 1);
             func_80026FD0(sp28);

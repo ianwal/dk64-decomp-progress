@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern s32 D_8071AADC;
 extern s32 D_8071FBC8;
 extern s32 D_8071FF18;
 extern s32 D_8071FFA0;
@@ -837,11 +836,11 @@ void func_80644D50(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 extern s32 D_8074E880[];
-extern s32 D_80717760;
+int func_80717760(); // TODO: Signature
 
 void func_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_807149FC(-1);
-    func_8071498C(&D_80717760);
+    func_8071498C(&func_80717760);
     func_80714950(0x50);
     func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], 0.5f, D_807F621C, D_807F6220, D_807F6224);
 }
@@ -893,7 +892,7 @@ void func_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
         sp24 = (func_806119A0() / 10000U) % arg3;
         func_80714998(2);
         func_80714950(0x10064);
-        func_8071498C(&D_8071AADC);
+        func_8071498C(&func_8071AADC);
         func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
         func_807149B8(1);
         func_80714B84(&D_80720A7C, 0.5f, arg1, sp24 + 1, 0);

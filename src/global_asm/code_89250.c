@@ -1,13 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern s32 D_80717930;
-extern s32 D_807197B4;
-extern s32 D_8071827C;
-extern s32 D_80719B88;
-extern s32 D_80719C00[];
-extern s32 D_8071AF30;
-extern s32 D_8071EFDC;
+int func_80717930(); // TODO: Signature
+int func_807197B4(); // TODO: Signature
+int func_8071827C(); // TODO: Signature
+int func_80719B88(); // TODO: Signature
+int func_80719C00(); // TODO: Signature
+int func_8071AF30(); // TODO: Signature
+int func_8071EFDC(); // TODO: Signature
 extern s32 D_8071FC40;
 extern s32 D_8071FF18;
 extern s32 D_8071FF40;
@@ -40,7 +40,7 @@ void func_80685F60(Actor *actor);
 
 void func_80684550(Actor *arg0, u8 arg1, f32 arg2) {
     func_807149B8(1);
-    func_8071498C(&D_8071AF30);
+    func_8071498C(&func_8071AF30);
     func_80714950(arg0);
     func_80714A28(4);
     func_80714C08(&D_80720120, arg2, current_actor_pointer, arg1, 0);
@@ -113,7 +113,7 @@ void func_80684850(u8 arg0) {
         func_80714998(2);
         func_807149B8(1);
         func_807149FC(0x3C);
-        func_8071498C(&D_807197B4);
+        func_8071498C(&func_807197B4);
         if (arg0) {
             func_80714C08(&D_8071FF58, 0.05f, current_actor_pointer, arg0, 0);
             return;
@@ -129,7 +129,7 @@ void func_80684900(u8 arg0) {
         func_80714950(((rand() >> 0xF) % 8) + 6);
     }
     func_807149FC(2);
-    func_8071498C(&D_80717930);
+    func_8071498C(&func_80717930);
     func_807149B8(1);
     func_80714A28(4);
     func_80714C08(&D_8072139C, (((rand() >> 0xF) % 50) / 80.0) + D_80759AB0, current_actor_pointer, 8, 0);
@@ -154,7 +154,6 @@ void func_80684A00(s16 arg0, s8 arg1) {
 extern f64 D_80759AC8;
 extern f64 D_80759AD0;
 extern f64 D_80759AD8;
-extern s32 D_8071F2F8;
 
 void func_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
     f32 sp54;
@@ -165,7 +164,7 @@ void func_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
     sp48 = current_actor_pointer->animation_state->scale_y / D_80759AC8;
     func_80671C0C(current_actor_pointer, arg0, &sp54, &sp50, &sp4C);
     func_80714950(arg1 + (arg2 << 0x10));
-    func_8071498C(&D_8071F2F8);
+    func_8071498C(&func_8071F2F8);
     func_807149B8(1);
     func_807149FC(MAX(2.0, arg2 * D_80759AD0));
     func_80714CC0(
@@ -314,9 +313,8 @@ void func_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
             func_806852C4(arg0, arg2, arg3, arg4);
         }
         if (arg1 >= 2) {
-            temp_s0 = &D_80719B88;
             for (phi_s0 = 0; phi_s0 < 8; phi_s0++) {
-                func_8071498C(temp_s0);
+                func_8071498C(&func_80719B88);
                 func_80714950(phi_s0);
                 func_807149B8(1);
                 func_807149FC(-1);
@@ -325,9 +323,8 @@ void func_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
             }
         }
         if (arg1 >= 3) {
-            temp_s0 = &D_80719C00;
             for (phi_s0 = 0; phi_s0 < 9; phi_s0++) {
-                func_8071498C(temp_s0);
+                func_8071498C(&func_80719C00);
                 func_80714950(phi_s0);
                 func_807149B8(1);
                 func_807149FC(-1);
@@ -382,8 +379,6 @@ void func_8068588C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5
     func_806858E8(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 }
 
-extern s32 D_80718080; // TODO: Datatype
-
 typedef struct {
     u8 unk0[0x338 - 0x0];
     Actor *unk338;
@@ -395,12 +390,11 @@ void func_806858E8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5
             func_80671C0C(arg0, arg1, &arg3, &arg4, &arg5);
         }
     }
-    func_8071498C(&D_80718080);
+    func_8071498C(&func_80718080);
     func_80714950(arg6);
     ((Struct806858E8*)func_80714CC0(&D_8071FFA0, arg2, arg3, arg4 + 5.0f, arg5))->unk338 = arg0;
 }
 
-extern s32 D_80719EF4; // TODO: Datatype
 extern s32 D_8071FFA0; // TODO: Datatype
 
 void func_80685984(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
@@ -411,7 +405,7 @@ void func_80685984(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
         func_80714950((rand() >> 0xF) % 360);
         func_807149B8(1);
         func_807149C8(0x9B, 0x9B, 0x9B, 0xC8);
-        func_8071498C(&D_80719EF4);
+        func_8071498C(&func_80719EF4);
         func_80714CC0(&D_8071FFA0, arg0, (((rand() >> 0xF) % 100000) % 10) + (arg1 - 5.0f), arg2, (((rand() >> 0xF) % 100000) % 10) + (arg3 - 5.0f));
     }
 }
@@ -557,7 +551,7 @@ void func_8068613C(Actor *arg0) {
 void func_80686340(void) {
     func_807149B8(1);
     func_807149FC(0x14);
-    func_8071498C(&D_8071827C);
+    func_8071498C(&func_8071827C);
     func_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
     func_80714A28(4);
 }
@@ -644,7 +638,7 @@ void func_80687400(void) {
     playSound(0x2D4, 0x7FFF, 63.0f, 1.0f, 0, 0);
     func_807149FC(0xC8);
     func_8071495C();
-    func_8071498C(&D_8071EFDC);
+    func_8071498C(&func_8071EFDC);
     func_80714CC0(&D_80721158, 1.0f, 160.0f, 120.0f, -10.0f);
 }
 
@@ -666,7 +660,7 @@ void func_806877C8(u8 arg0) {
 void func_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
-extern s32 D_8071E028;
+int func_8071E028(); // TODO: Signature
 extern s32 D_80720B24;
 
 extern f64 D_80759BA0;
@@ -703,7 +697,7 @@ void func_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     func_807149B8(1);
     func_807149FC(1);
     func_80714950(sp5C);
-    func_8071498C(&D_8071E028);
+    func_8071498C(&func_8071E028);
     func_80714CC0(&D_80720B24, sp48 * D_80759BA0, (sp74 + sp68) * 0.5, (sp70 + sp64) * 0.5, (sp6C + sp60) * 0.5);
     if (((rand() >> 0xF) % 1000) & 1) {
         func_806595F0(1);
@@ -722,7 +716,7 @@ void func_80687C48(void) {
     playSong(0x97, 1.0f);
     func_807149FC(0xC8);
     func_8071495C();
-    func_8071498C(&D_8071EFDC);
+    func_8071498C(&func_8071EFDC);
     func_80714CC0(&D_80720558, 1.0f, 160.0f, 120.0f, -10.0f);
 }
 
@@ -731,6 +725,6 @@ void func_80687CC8(void) {
     playSong(0x97, 1.0f);
     func_807149FC(0xC8);
     func_8071495C();
-    func_8071498C(&D_8071EFDC);
+    func_8071498C(&func_8071EFDC);
     func_80714CC0(&D_807210EC, 1.0f, 160.0f, 120.0f, -10.0f);
 }

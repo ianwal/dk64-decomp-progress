@@ -19,14 +19,14 @@ void func_806D0408(void);
 void func_806D06A0(void);
 void func_80714950(s32);
 
-extern s32 D_806FF358;
-extern s32 D_806FF32C;
-extern s32 D_806FF75C;
-extern s32 D_806FF01C;
+int func_806FF358(); // TODO: Signature
+void func_806FF32C(s32 arg0, Actor *arg1);
+int func_806FF75C(); // TODO: Signature
+int func_806FF01C(); // TODO: Signature
 
-extern s32 D_80716FB4; // TODO: Proper datatype
-extern s32 D_80717930;
-extern s32 D_8071B2EC;
+int func_80716FB4(); // TODO: Signature
+int func_80717930(); // TODO: Signature
+int func_8071B2EC(); // TODO: Signature
 extern s32 D_8071FB08; // TODO: Proper datatype
 extern s32 D_8071FFA0;
 extern s32 D_8071FF18;
@@ -447,7 +447,7 @@ void func_806CB53C(void) {
         if (extra_player_info_pointer->unk23E != 0) {
             func_80714950(((rand() >> 0xF) % 10) + 0x8008);
             func_807149FC(2);
-            func_8071498C(&D_80717930);
+            func_8071498C(&func_80717930);
             func_807149B8(1);
             func_80714A28(6);
             func_80714C08(&D_8071FFA0, (((rand() >> 0xF) % 50) / 80.0) + 0.5, current_actor_pointer, 2, 0);
@@ -543,7 +543,7 @@ void func_806CB53C(void) {
         if (extra_player_info_pointer->unk1FE != -1) {
             extra_player_info_pointer->unk1FE -= 1;
             if (!(extra_player_info_pointer->unk1FE & 7)) {
-                func_8071498C(&D_80716FB4);
+                func_8071498C(&func_80716FB4);
                 func_807149B8(1);
                 func_807149FC(3);
                 func_80714CC0(&D_8071FB08, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
@@ -1266,7 +1266,7 @@ void func_806CF878(void) {
         if ((current_actor_pointer->control_state_progress >= 5) && (current_actor_pointer->y_velocity > 30.0f)) {
             func_80714998(2);
             func_807149B8(1);
-            func_8071498C(&D_80716FB4);
+            func_8071498C(&func_80716FB4);
             func_80714CC0(&D_8071FB08, 0.8f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
     }
@@ -2450,10 +2450,10 @@ void func_806D2954(s16 arg0) {
     if ((extra_player_info_pointer->unk8C != 0) && func_805FCA64()) {
         if (D_807FD568->unk2 == 7) {
             arg0 = 0xF;
-            func_8068C350(&D_806FF75C, current_actor_pointer, 5);
+            func_8068C350(&func_806FF75C, current_actor_pointer, 5);
         } else {
             arg0 = 0xE;
-            func_8068C350(&D_806FF01C, current_actor_pointer, 5);
+            func_8068C350(&func_806FF01C, current_actor_pointer, 5);
         }
     }
     if (current_actor_pointer->control_state_progress != 0) {
@@ -2470,9 +2470,9 @@ void func_806D2A14(s16 arg0) {
     }
     if (func_805FCA64()) {
         if (!func_806DF6D4(arg0)) {
-            func_8068C350(&D_806FF358, current_actor_pointer, 3);
+            func_8068C350(&func_806FF358, current_actor_pointer, 3);
         }
-        func_8068C350(&D_806FF32C, current_actor_pointer, 3);
+        func_8068C350(&func_806FF32C, current_actor_pointer, 3);
     }
 }
 
@@ -3622,25 +3622,25 @@ void func_806D6B00(void) {
                 extra_player_info_pointer->unk30 = D_80753548[D_807FD584];
                 if (current_actor_pointer->unkB8 > 20.0f) {
                     if ((func_806119A0() % 3) == 0) { // RNG
-                        func_8071498C(&D_8071B2EC);
+                        func_8071498C(&func_8071B2EC);
                         func_80714998(2);
                         func_807149B8(1);
                         func_80714C08(&D_8071FF18, 0.2f, current_actor_pointer, 2, 0);
                     }
                     if ((func_806119A0() % 3) == 0) { // RNG
-                        func_8071498C(&D_8071B2EC);
+                        func_8071498C(&func_8071B2EC);
                         func_80714998(2);
                         func_807149B8(1);
                         func_80714C08(&D_8071FF18, 0.2f, current_actor_pointer, 3, 0);
                     }
                     if ((func_806119A0() % 3) == 0) { // RNG
-                        func_8071498C(&D_8071B2EC);
+                        func_8071498C(&func_8071B2EC);
                         func_80714998(2);
                         func_807149B8(1);
                         func_80714C08(&D_8071FF18, 0.2f, current_actor_pointer, 9, 0);
                     }
                     if ((func_806119A0() % 3) == 0) { // RNG
-                        func_8071498C(&D_8071B2EC);
+                        func_8071498C(&func_8071B2EC);
                         func_80714998(2);
                         func_807149B8(1);
                         func_80714C08(&D_8071FF18, 0.2f, current_actor_pointer, 0xA, 0);

@@ -26,3 +26,5 @@ extra_player_info_pointer = 0x807FD580;
 
 D_8003598C = 0x8003598C;
 D_80036A20 = 0x80036A20;
+
+func_8071720C = 0x8071720C;

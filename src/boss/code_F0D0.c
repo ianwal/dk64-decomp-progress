@@ -7,7 +7,6 @@
 void func_8061EF4C(s32, s32, s32, f32, f32, f32, f32, f32);
 
 extern f64 D_80036C58;
-extern s32 D_8071720C; // TODO: Datatype
 extern void *D_8074E880[];
 extern f32 D_80036DB4;
 
@@ -62,7 +61,7 @@ void func_800336C0(void) {
 
     sp24 = current_actor_pointer->animation_state->scale_y / D_80036C58;
     func_80714998(2);
-    func_8071498C(&D_8071720C);
+    func_8071498C(&func_8071720C);
     func_807149B8(1);
     func_80714950(1);
     func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3],

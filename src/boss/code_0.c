@@ -221,7 +221,7 @@ void func_80025364(void) {
 extern f64 D_80035D50;
 extern f64 D_80035D58;
 extern f64 D_80035D60;
-extern void *D_8071AF30;
+int func_8071AF30();
 extern void *D_80720120;
 
 /*
@@ -232,7 +232,7 @@ void func_800253AC(void) {
 
     phi_f2 = MAX(current_actor_pointer->y_velocity, 0.0);
     func_807149B8(1);
-    func_8071498C(&D_8071AF30);
+    func_8071498C(&func_8071AF30);
     func_807149A8(1000);
     func_80714950(current_actor_pointer);
     phi_f2 /= D_80035D50;
@@ -241,7 +241,7 @@ void func_800253AC(void) {
     phi_f2 *= 4.0f;
     func_80714C08(&D_80720120, phi_f2, current_actor_pointer, 3, 0);
     func_807149B8(1);
-    func_8071498C(&D_8071AF30);
+    func_8071498C(&func_8071AF30);
     func_807149A8(1000);
     func_80714950(current_actor_pointer);
     func_80714C08(&D_80720120, phi_f2, current_actor_pointer, 4, 0);

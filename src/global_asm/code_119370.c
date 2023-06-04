@@ -32,9 +32,9 @@ extern s16 D_807FDB42;
 
 extern f64 D_8075E708;
 extern f64 D_8075E710;
-extern s32 D_80717404; // TODO: Datatype
+int func_80717404(); // TODO: Signature
 extern s32 D_8074E880[]; // TODO: Datatype
-extern s32 D_80718380; // Function pointer?
+int func_80718380(); // TODO: Signature
 extern s32 D_8071FEF4;
 
 extern s16 D_807502D0;
@@ -503,7 +503,7 @@ void func_80717760(Struct80717D84 *arg0, s8 *arg1) {
     if (arg0->unk35C != 0) {
         arg0->unk35C--;
         func_807149B8(1);
-        func_8071498C(&D_80717404);
+        func_8071498C(&func_80717404);
         func_80714950(0xA);
         func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
         return;
@@ -686,7 +686,7 @@ void func_807180F4(s32 arg0, s32 arg1) {
 void func_80718124(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     func_807149B8(1);
     func_80714998(3);
-    func_8071498C(&D_80718380);
+    func_8071498C(&func_80718380);
     func_80714CC0(&D_8071FEF4, arg0, arg1, arg2, arg3);
 }
 

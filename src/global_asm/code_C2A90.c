@@ -242,8 +242,8 @@ void func_806C1640(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-extern s32 D_8071A8B0; // TODO: Proper datatype
-extern s32 D_8071C818; // TODO: Proper datatype
+int func_8071A8B0(); // TODO: Signature
+int func_8071C818(); // TODO: Signature
 extern s32 D_8071FB08; // TODO: Proper datatype
 extern s32 D_807200D4; // TODO: Proper datatype
 
@@ -271,7 +271,7 @@ void func_806C1734(void) {
                     if ((current_actor_pointer->y_velocity > 30.0f) && !(object_timer & 3)) {
                         func_80714998(2);
                         func_807149B8(1);
-                        func_8071498C(&D_8071C818);
+                        func_8071498C(&func_8071C818);
                         func_80714C08(&D_8071FB08, 0.8f, current_actor_pointer, 5, 0);
                     }
                     break;
@@ -292,7 +292,7 @@ void func_806C1734(void) {
                         sp29 = ((rand() >> 0xF) % 32767) % 2;
                         func_807149B8(1);
                         func_80714950(0x50);
-                        func_8071498C(&D_8071A8B0);
+                        func_8071498C(&func_8071A8B0);
                         func_80714C08(&D_807200D4, 0.5f, current_actor_pointer, sp29 + 9, 2);
                     }
                     break;
@@ -404,7 +404,7 @@ void func_806C1B50(void) {
 }
 */
 
-extern s32 D_807035C4; // TODO: Datatype
+int func_807035C4(); // TODO: Signature
 
 void func_806C1CCC(void) {
     func_80729B00();
@@ -423,7 +423,7 @@ void func_806C1CCC(void) {
         func_806BFBF4();
         if (current_actor_pointer->object_properties_bitfield & 4) {
             if ((current_actor_pointer->animation_state->unk0->unk10 == 0x2C4) && (current_actor_pointer->animation_state->unk0->unk4 > 25.0f)) {
-                func_8068C350(&D_807035C4, 0, 3);
+                func_8068C350(&func_807035C4, 0, 3);
             }
         }
         func_80724E48(D_807FDC94 == player_pointer ? 5 : 7);
@@ -439,7 +439,7 @@ void func_806C1CCC(void) {
 
 extern s32 D_80720B58; // TODO: Datatype
 
-extern s32 D_807197B4; // TODO: Datatype
+int func_807197B4(); // TODO: Signature
 extern s32 D_8071FF58; // TODO: Datatype
 extern s32 D_8071F078; // TODO: Datatype
 
@@ -495,7 +495,7 @@ void func_806C1E44(void) {
                             func_80714998(2);
                             func_807149B8(1);
                             func_807149FC(0x28);
-                            func_8071498C(&D_807197B4);
+                            func_8071498C(&func_807197B4);
                             func_80714C08(&D_8071FF58, 0.05f, current_actor_pointer, 1, 0);
                         }
                     }
@@ -709,7 +709,7 @@ void func_806C28B8(void) {
 }
 */
 
-extern s32 D_80717D84;
+int func_80717D84(); // TODO: Signature
 extern f64 D_8075BED8;
 
 void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, void *arg6, f32 arg7) {
@@ -717,7 +717,7 @@ void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, void
     func_80714998(0xFF);
     func_80714944(((rand() >> 0xF) % 32767) % 11);
     func_807149C8(arg0, arg1, arg2, 0xFF);
-    func_8071498C(&D_80717D84);
+    func_8071498C(&func_80717D84);
     func_80714950(2);
     func_80714CC0(arg6, arg7 * D_8075BED8, arg3, arg4, arg5);
 }
