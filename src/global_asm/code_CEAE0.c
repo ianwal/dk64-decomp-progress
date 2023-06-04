@@ -4302,12 +4302,9 @@ void func_806D97A4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D9820.s")
-
-/*
-// TODO: Close, that comparison with 1.875 is sus
 void func_806D9820(void) {
     f32 temp_f0;
+    f32 temp_f4;
 
     func_806DF6D4(0x4A);
     switch (current_actor_pointer->control_state_progress) {
@@ -4318,10 +4315,8 @@ void func_806D9820(void) {
             } else {
                 func_806CC8B8();
             }
-            // TODO: Problem is here
-            // Missing cvt.s.d and cvt.d.s after the mul.d instruction
-            // Typecasts?
-            temp_f0 = MAX(current_actor_pointer->unkB8 * D_8075CE68, (s32)1.875);
+            temp_f4 = current_actor_pointer->unkB8 * D_8075CE68;
+            temp_f0 = MAX((f64)(temp_f4), (s32)1.875);
             func_80614D00(current_actor_pointer, temp_f0, 0.0f);
             break;
         case 1:
@@ -4330,7 +4325,6 @@ void func_806D9820(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_806D9924(Actor *actor) {
     actor->z_rotation = 0;

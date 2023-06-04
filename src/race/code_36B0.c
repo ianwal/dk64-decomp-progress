@@ -92,7 +92,7 @@ typedef struct {
     f32 unk8;
 } Struct80027880;
 
-extern Struct80027880 *D_807F5FD4[];
+extern Struct80027880 *D_807F5FD4;
 
 /*
 // TODO: Very close
@@ -433,6 +433,58 @@ void func_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002BCD4.s")
+
+extern f32 D_800300D0;
+extern f32 D_800300D4;
+extern f32 D_800300D8;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+} AAD_8002BCD4;
+
+/*
+// TODO: Close
+void func_8002BCD4(Actor *arg0) {
+    f32 var_f0;
+    f32 var_f12;
+    f32 var_f14;
+    f32 var_f2;
+    Struct80027880 *temp_a2;
+    Struct80027880 *var_v1;
+    AAD_8002BCD4 *aaD;
+
+    var_f12 = -1.0f;
+    var_f14 = -1.0f; 
+    var_f0 = D_800300D0;
+    var_f2 = D_800300D0;
+    aaD = arg0->additional_actor_data;
+    var_v1 = &D_807F5FD4[0].unk0;
+    temp_a2 = &D_807F5FD4[1].unk0;
+    while (var_v1 < temp_a2) {
+        if (var_v1->unk0 < var_f0) {
+            var_f0 = var_v1->unk0;
+        }
+        if (var_v1->unk8 < var_f2) {
+            var_f2 = var_v1->unk8;
+        }
+        if (var_f12 < var_v1->unk0) {
+            var_f12 = var_v1->unk0;
+        }
+        if (var_f14 < var_v1->unk8) {
+            var_f14 = var_v1->unk8;
+        }
+        var_v1++;
+    }
+    aaD->unkC = (((var_f12 - var_f0) * 0.5f) + var_f0) - 10.0f;
+    aaD->unk10 = (((var_f14 - var_f2) * 0.5f) + var_f2) - 20.0f;
+    aaD->unk4 = D_800300D4 / (var_f12 - var_f0);
+    aaD->unk8 = D_800300D8 / (var_f14 - var_f2);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002BDDC.s")
 

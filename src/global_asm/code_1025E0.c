@@ -175,6 +175,7 @@ void func_806FFF5C(void) {
     getPointerTableFile(0x19, 0x138B, 1, 1);
 }
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FFF88.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80700088.s")
