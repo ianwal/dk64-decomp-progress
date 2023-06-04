@@ -1528,7 +1528,7 @@ us,.code,func_806B54BC,1488,yes
 us,.code,func_80659574,60,yes
 us,.code,func_806534E0,420,no
 us,.code,func_80724994,140,yes
-us,.code,func_8064AB1C,268,no
+us,.code,func_8064AB1C,268,yes
 us,.code,func_8068B81C,20,yes
 us,.code,func_8066E5CC,44,yes
 us,.code,func_806C8F8C,312,yes
@@ -3165,7 +3165,7 @@ us,.code,func_806FFF5C,44,yes
 us,.code,func_806A0330,676,no
 us,.code,func_8069A7C8,940,no
 us,.code,func_8071F3C0,132,no
-us,.code,func_8064C708,268,no
+us,.code,func_8064C708,268,yes
 us,.code,func_80681BD8,576,yes
 us,.code,func_806D7098,216,yes
 us,.code,func_80675180,180,no
@@ -3982,7 +3982,7 @@ us,boot,guMtxL2F,180,yes
 us,boot,__osPiCreateAccessQueue,80,yes
 us,boot,func_800005A8,984,no
 us,boot,func_80007360,100,yes
-us,boot,__osDispatchThread,380,yes
+us,boot,__osDispatchThread,396,yes
 us,boot,guTranslate,84,yes
 us,boot,func_80000D8C,188,yes
 us,boot,__osAiDeviceBusy,48,yes
@@ -4093,7 +4093,6 @@ us,boot,__osTimerInterrupt,376,yes
 us,boot,__sinf,448,yes
 us,boot,osPiGetCmdQueue,40,yes
 us,boot,__osProbeTLB,192,yes
-us,boot,__osCleanupThread,16,yes
 us,boot,bcopy,784,yes
 us,boot,osPiRawReadIo,84,yes
 us,boot,func_80003120,192,no

@@ -16,7 +16,7 @@ us,boot,guMtxL2F,180,yes
 us,boot,__osPiCreateAccessQueue,80,yes
 us,boot,func_800005A8,984,no
 us,boot,func_80007360,100,yes
-us,boot,__osDispatchThread,380,yes
+us,boot,__osDispatchThread,396,yes
 us,boot,guTranslate,84,yes
 us,boot,func_80000D8C,188,yes
 us,boot,__osAiDeviceBusy,48,yes
@@ -127,7 +127,6 @@ us,boot,__osTimerInterrupt,376,yes
 us,boot,__sinf,448,yes
 us,boot,osPiGetCmdQueue,40,yes
 us,boot,__osProbeTLB,192,yes
-us,boot,__osCleanupThread,16,yes
 us,boot,bcopy,784,yes
 us,boot,osPiRawReadIo,84,yes
 us,boot,func_80003120,192,no

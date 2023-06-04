@@ -5,6 +5,7 @@ rand = 0x80611A44;
 playCutscene = 0x8061CC40;
 
 func_80717D4C = 0x80717D4C;
+func_8071A440 = 0x8071A440;
 
 game_mode_copy = 0x80755314;
 game_mode = 0x80755318;

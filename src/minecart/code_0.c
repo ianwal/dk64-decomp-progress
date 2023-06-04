@@ -28,7 +28,6 @@ void func_800240DC(u8 arg0, u8 arg1) {
     }
 }
 
-extern s32 D_8071A440; // TODO: Proper datatype
 extern s32 D_80028C30; // TODO: Proper datatype
 extern s32 D_8072006C; // TODO: Proper datatype
 
@@ -39,7 +38,7 @@ void func_800241A0(s16 *arg0, u8 arg1, u8 arg2) {
     if (((func_806119A0() & 0xFF) >= (u32)arg2) && (*arg0 == 0)) {
         func_80608528(current_actor_pointer, 0x8A, 0x96, 0x7F, 0x32);
         func_80714950(current_actor_pointer);
-        func_8071498C(&D_8071A440);
+        func_8071498C(&func_8071A440);
         D_80028C30 = func_80714C08(&D_8072006C, 0.4f, current_actor_pointer, arg1 + 7, 2);
     }
 }

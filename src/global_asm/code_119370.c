@@ -11,7 +11,7 @@ extern u8 D_807FDB0D;
 extern u8 D_807FDB0E;
 extern u8 D_807FDB0F;
 extern s32 D_807FDB10;
-extern s32 D_807FDB14;
+extern void *D_807FDB14; // TODO: Function pointer
 extern u8 D_807FDB18;
 extern u16 D_807FDB1A;
 extern u8 D_807FDB1C;

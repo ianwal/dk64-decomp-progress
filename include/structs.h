@@ -1583,6 +1583,17 @@ typedef struct {
     s32 unk38;
     s16 unk3C;
     s16 unk3E;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
 } OM2_unk24;
 
 typedef struct OM2_unk74 OM2_unk74;

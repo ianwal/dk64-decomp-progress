@@ -720,7 +720,6 @@ void func_806A7518(void) {
 
 extern u8 D_807FBD70;
 extern s32 D_8076A068;
-int func_8071EB70(); // TODO: Signature
 
 s32 func_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
 void func_8066EB40(Actor*, f32);

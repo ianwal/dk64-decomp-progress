@@ -1928,9 +1928,11 @@ Actor *func_8067ADB4(u16);
 LedgeInfo *func_80665F24(Actor*);
 
 void func_8071720C(Struct80717D84 *arg0, s32 arg1);
-void func_8071F2F8(Struct80717D84 *arg0, s32 arg1);
 void func_80718080(Struct80717D84 *arg0, s32 arg1);
 void func_80719EF4(Struct80717D84 *arg0, s32 arg1);
+void func_8071A440(Struct80717D84 *arg0, s32 arg1);
+void func_8071EB70(Struct80717D84 *arg0, s32 arg1);
+void func_8071F2F8(Struct80717D84 *arg0, s32 arg1);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		((d) > 0) ? (d) : -(d)

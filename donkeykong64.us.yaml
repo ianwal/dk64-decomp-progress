@@ -3,16 +3,10 @@ options:
   find_file_boundaries: True
   compiler: "IDO"
   platform: n64
-  asm_endlabels: yes
-  cpp_args:
-    - "-Iinclude"
-    - "-Iinclude/2.0L"
-    - "-D_LANGUAGE_C"
+  asm_end_label: "endlabel"
   generated_c_preamble: |
     #include <ultra64.h>
     #include "functions.h"
-  create_detected_syms: yes
-  undefined_syms_path: undefined_syms.us.txt
   undefined_funcs_auto_path: undefined_funcs_auto.us.txt
   undefined_syms_auto_path: undefined_syms_auto.us.txt
   symbol_addrs_path: symbol_addrs.dk64_boot.us.txt

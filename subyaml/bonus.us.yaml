@@ -3,19 +3,14 @@ options:
   find_file_boundaries: yes
   compiler: "IDO"
   platform: n64
-  cpp_args:
-    - "-Iinclude"
-    - "-Iinclude/2.0L"
-    - "-D_LANGUAGE_C"
+  asm_end_label: "endlabel"
   generated_c_preamble: |
     #include <ultra64.h>
     #include "functions.h"
-  create_detected_syms: yes
-  undefined_syms_path: undefined_syms.us.txt
   symbol_addrs_path: symbol_addrs.bonus.us.txt
   undefined_funcs_auto_path: undefined_funcs_auto.bonus.us.txt
   undefined_syms_auto_path: undefined_syms_auto.bonus.us.txt
-  base_path: .
+  base_path: ..
   target_path: build/us/bonus.us.bin
   asset_path: bin
   build_path: build/us
