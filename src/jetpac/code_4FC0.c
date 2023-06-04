@@ -23,8 +23,8 @@ void func_800291AC(JetpacStruct5 *arg0) {
     arg0->unk14 = 4;
     arg0->unk2C = 0;
     arg0->unk38 = 0;
-    arg0->unk30 = (s32) ((s32) arg0->unk0 & 0xFFF8);
-    arg0->unk34 = (s32) ((s32) arg0->unk4 & 0xFFF8);
+    arg0->unk30 = (s32)arg0->unk0 & 0xFFF8;
+    arg0->unk34 = (s32)arg0->unk4 & 0xFFF8;
     func_80024E70(5);
 }
 
@@ -40,7 +40,7 @@ void func_80029204(JetpacStruct *arg0) {
         return;
     }
     if (temp_v0 == 4) {
-        func_80025A60(((s8*)(&(*arg0))) + 0x30);
+        func_80025A60(&arg0->unk30);
         if (arg0->unk38 < 7) {
             func_80025700(arg0->unk4C, arg0->unk0, arg0->unk4, ((s8*)(&(*arg0))) + 0x10, arg0->unk18);
         }
@@ -299,14 +299,14 @@ void func_80029B90(JetpacStruct8 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029C1C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029E0C.s")
-
-f32 func_80027210();                          /* extern */
+f32 func_80027210();
 extern void* D_8002E878;
 extern f32 D_8002EBCC;
 extern void func_80029F7C(struct_8002998C*, s32);
 
-/*
+extern s32 D_8002BA6C;
+extern f32 D_8002EBD0;
+
 void func_80029E0C(struct_80029640 *arg0) {
     arg0->unk48 = &func_80029F7C;
     arg0->unk44 = 0x37;
@@ -319,14 +319,13 @@ void func_80029E0C(struct_80029640 *arg0) {
         arg0->unk18 = 1;
     }
     arg0->unk8 = 0.0f;
-    if (*(s32 *)0x8002BA6C) {
+    if (D_8002BA6C) {
         arg0->unkC = D_8002EBCC;
     } else {
-        arg0->unkC = *(f32 *)0x8002EBD0;
+        arg0->unkC = D_8002EBD0;
     }
     arg0->unk4C = &D_8002E878;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029F7C.s")
 
@@ -362,17 +361,15 @@ extern f64 D_8002EC08;
 /*
 // TODO: Close
 f32 func_8002A2DC(f32 arg0, f32 arg1) {
-    f32 phi_f14;
-
     if (arg0 < 0.0f) {
-        phi_f14 = arg1 - D_8002EBF0;
+        arg1 -= D_8002EBF0;
     } else {
-        phi_f14 = arg1 + D_8002EBF8;
+        arg1 += D_8002EBF8;
     }
-    if (phi_f14 < D_8002EC00) {
+    if (arg1 < D_8002EC00) {
         return D_8002EC00;
     }
-    return MIN(D_8002EC08, phi_f14);
+    return MIN(D_8002EC08, arg1);
 }
 */
 
@@ -410,7 +407,6 @@ void func_8002A6C0(JetpacStruct *arg0) {
     func_8002A67C(arg0);
     arg0->unk4C = &D_8002E8A8;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002A758.s")
 

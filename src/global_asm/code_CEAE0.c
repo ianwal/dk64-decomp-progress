@@ -5369,17 +5369,17 @@ void func_806DF44C(Actor* arg0, PlayerAdditionalActorData *arg1, u8 arg2) {
 // TODO: Fiddly but doable
 void func_806DF494(s16 *arg0, s16 arg1, s16 arg2) {
     s16 temp_v0;
-    s16 phi_a2;
+    s32 temp2;
     s32 phi_t0;
     s16 phi_v0;
 
     arg1 &= 0xFFF;
-    temp_v0 = arg1 - *arg0;
+    temp_v0 = (arg1 - *arg0);
     if (temp_v0) {
-        phi_a2 = ABS(temp_v0);
-        phi_v0 = temp_v0 / phi_a2;
-        if (phi_a2 >= 0x801) {
-            phi_a2 = 0x1000 - phi_a2;
+        arg2 = ABS(temp_v0);
+        phi_v0 = temp_v0 / arg2;
+        if (arg2 >= 0x801) {
+            arg2 = 0x1000 - arg2;
             phi_v0 *= -1;
         }
         if (arg2 > 0) {
@@ -5387,7 +5387,7 @@ void func_806DF494(s16 *arg0, s16 arg1, s16 arg2) {
         } else {
             phi_t0 = -arg2;
         }
-        if (phi_a2 < phi_t0) {
+        if (arg2 < phi_t0) {
             *arg0 = arg1;
         } else {
             *arg0 += (phi_v0 * arg2);

@@ -793,29 +793,26 @@ void func_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644A18.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644CC0.s")
-
 void func_80644A18(s32, s32, s32, f32);
 
-/*
-void func_80644CC0(void **arg0, s32 arg1, s32 arg2, s32 arg3) {
-    void *sp1C;
-    void *temp_v0;
-    void *var_v1;
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80644CC0;
 
-    var_v1 = *arg0;
-    if (var_v1 == NULL) {
-        temp_v0 = malloc(8);
-        *arg0 = temp_v0;
-        temp_v0->unk0 = 0.0f;
-        temp_v0->unk4 = 0.0f;
-        var_v1 = *arg0;
+void func_80644CC0(void **arg0, s32 arg1, s32 arg2, s32 arg3) {
+    Struct80644CC0 *var_v1;
+
+    if (*arg0 == NULL) {
+        var_v1 = malloc(8);
+        *arg0 = var_v1;
+        var_v1->unk0 = 0.0f;
+        var_v1->unk4 = 0.0f;
     }
-    sp1C = var_v1;
+    var_v1 = *arg0;
     func_80644A18(var_v1, 2, 0x16, 1.0f);
-    func_80644A18(sp1C + 4, 4, 0x18, 0.8f);
+    func_80644A18(&var_v1->unk4, 4, 0x18, 0.8f);
 }
-*/
 
 void func_8065A660(f32, f32);
 

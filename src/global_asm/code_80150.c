@@ -759,26 +759,26 @@ void func_80682E38(Struct80682E38_arg0 *arg0) {
     func_80682AB4(arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8068304C.s")
-
-/*
 typedef struct {
     s32 unk0[5];
 } Struct8074E834;
 
 extern Struct8074E834 D_8074E834;
 
-// TODO: Regalloc
+typedef struct {
+    u8 unk0;
+} AAD_8068304C;
+
 void func_8068304C(void) {
     Struct8074E834 sp2C;
-    u8 *sp28;
-    if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
+    AAD_8068304C *sp28;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         sp2C = D_8074E834;
         sp28 = current_actor_pointer->additional_actor_data;
         current_actor_pointer->object_properties_bitfield |= 0x1000;
         func_8068842C(current_actor_pointer, 0, 1);
         func_80688460(current_actor_pointer, 0, 1);
-        func_806883F4(current_actor_pointer, 0, sp2C.unk0[*sp28], 0);
+        func_806883F4(current_actor_pointer, 0, sp2C.unk0[sp28->unk0], 0);
         func_80614EBC(current_actor_pointer, 0x329);
     }
     current_actor_pointer->unk16D = current_actor_pointer->unk15F;
@@ -786,7 +786,6 @@ void func_8068304C(void) {
     current_actor_pointer->y_rotation &= 0xFFF;
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 // Function pointer in a local variable, needs some PaaD untangling
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80683158.s")

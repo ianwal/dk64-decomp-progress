@@ -2302,7 +2302,7 @@ us,.code,func_8063D608,48,yes
 us,.code,func_8067E6E4,32,yes
 us,.code,func_8072F59C,824,no
 us,.code,func_80737B58,200,no
-us,.code,func_8068304C,268,no
+us,.code,func_8068304C,268,yes
 us,.code,func_806D2D38,140,yes
 us,.code,func_806E6318,80,yes
 us,.code,func_806DA320,196,yes
@@ -2632,7 +2632,7 @@ us,.code,func_806A3C6C,308,no
 us,.code,func_807317FC,176,yes
 us,.code,func_8071E1C8,548,yes
 us,.code,func_80714638,40,yes
-us,.code,func_80644CC0,144,no
+us,.code,func_80644CC0,144,yes
 us,.code,func_80650ECC,2108,no
 us,.code,func_806EA9B4,144,yes
 us,.code,func_806116E0,68,yes
@@ -2959,7 +2959,7 @@ us,.code,func_806DD874,572,yes
 us,.code,func_80611688,8,yes
 us,.code,func_8063E5B4,256,no
 us,.code,func_80699070,184,yes
-us,.code,func_80685708,276,no
+us,.code,func_80685708,276,yes
 us,.code,func_806025D4,1216,no
 us,.code,func_806A0864,784,no
 us,.code,func_806E3040,444,no
@@ -3798,7 +3798,7 @@ us,.code,func_80027728,1216,no
 us,.code,func_80029C1C,496,no
 us,.code,func_80024408,564,no
 us,.code,func_80028BD0,108,yes
-us,.code,func_80029E0C,368,no
+us,.code,func_80029E0C,368,yes
 us,.code,func_80026A3C,116,yes
 us,.code,func_80028CF8,268,no
 us,.code,func_80025C40,96,yes
