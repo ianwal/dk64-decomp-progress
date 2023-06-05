@@ -122,8 +122,36 @@ void func_8002452C(void) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025264.s")
 
-// D_80026FA4 struct array? Loop, very fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025378.s")
+
+typedef struct {
+    s32 map; // TODO: ?
+    s32 unk4;
+    s32 unk8;
+    s32 unkC[4];
+    s32 unk1C;
+} Struct80025F84;
+
+Struct80025F84 *func_80025378();
+
+extern Struct80025F84 D_80026FA4[];
+
+/*
+// TODO: Close
+Struct80025F84 *func_80025378(void) {
+    Struct80025F84 *var_a1;
+    Struct80025F84 *var_v1;
+    u32 i;
+
+    var_v1 = NULL;
+    for (i = 0; var_v1 == NULL && i < 4U; i++) {
+        if (current_map == D_80026FA4[i].map) {
+            var_v1 = &D_80026FA4[i];
+        }
+    }
+    return var_v1;
+}
+*/
 
 s32 func_800253C8(void) {
     return (((rand() >> 0xF) % 32767) % 211) + 90;
@@ -204,43 +232,15 @@ void func_80025654(MultiplayerStruct4 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025CE8.s")
 
-// Doable, loop, struct
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025F84.s")
-
-typedef struct {
-    s32 map;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-} struct_80026FA4;
-
-struct_80026FA4 *func_80025378();                              /* extern */
-
-/*
 void func_80025F84(void) {
-    s32 var_s0;
-    s32 var_v0;
-    struct_80026FA4 *temp_v0;
-    struct_80026FA4 *var_s1;
+    s32 i;
+    Struct80025F84 *temp_v0;
 
     temp_v0 = func_80025378();
-    var_s0 = 0 * 4;
-    var_s1 = temp_v0 + var_s0;
-    if (temp_v0->unkC != -1) {
-        var_v0 = var_s1->unkC;
-loop_2:
-        func_8063DA40((s16) var_v0, 0);
-        var_s0 += 4;
-        var_s1 = (u32*)var_s1 + 1;
-        if (var_s0 < 0x10) {
-            var_v0 = var_s1->unkC;
-            if (var_v0 != -1) {
-                goto loop_2;
-            }
-        }
+    for (i = 0; i < 4 && temp_v0->unkC[i] != -1; i++) {
+        func_8063DA40(temp_v0->unkC[i], 0);
     }
 }
-*/
 
 void func_80715908(s32);
 

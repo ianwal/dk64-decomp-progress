@@ -1743,7 +1743,9 @@ typedef struct {
     u8  pad8[0x4C - 0x28];
     Chunk4C *unk4C;
     s32 unk50;
-    u8  pad54[0x68 - 0x54];
+    u8  pad54[0x60 - 0x54];
+    s32 unk60[1]; // TODO: How many?
+    s32 unk64;
     s32 deload1; // 0x68
     s32 deload2; // 0x6C
     s32 deload3; // 0x70

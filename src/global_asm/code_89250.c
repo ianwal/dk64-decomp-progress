@@ -233,7 +233,7 @@ void func_806850D0(void) {
 */
 
 void func_80685210(f32 arg0, s16 arg1, s16 arg2) {
-    if ((((u32) object_timer % 3) == 0) && (arg1 < current_actor_pointer->unkB8)) {
+    if ((((u32)object_timer % 3) == 0) && (arg1 < current_actor_pointer->unkB8)) {
         func_80714998(2);
         func_807149B8(1);
         func_8071498C(&func_80717D4C);
@@ -244,11 +244,11 @@ void func_80685210(f32 arg0, s16 arg1, s16 arg2) {
 }
 
 void func_806852C4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
-    s16 phi_s0;
+    s16 i;
 
-    for (phi_s0 = 0; phi_s0 < 8; phi_s0++) {
+    for (i = 0; i < 8; i++) {
         func_8071498C(&func_80719A0C);
-        func_80714950(phi_s0);
+        func_80714950(i);
         func_807149B8(1);
         func_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
         func_80714CC0(&D_8071FFA0, arg0, arg1, arg2, arg3);
@@ -306,16 +306,16 @@ void func_80685390(void) {
 
 void func_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s32 temp_s0;
-    s32 phi_s0;
+    s32 i;
 
     if (D_80750AD0 == 0) {
         if (arg1 > 0) {
             func_806852C4(arg0, arg2, arg3, arg4);
         }
         if (arg1 >= 2) {
-            for (phi_s0 = 0; phi_s0 < 8; phi_s0++) {
+            for (i = 0; i < 8; i++) {
                 func_8071498C(&func_80719B88);
-                func_80714950(phi_s0);
+                func_80714950(i);
                 func_807149B8(1);
                 func_807149FC(-1);
                 func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
@@ -323,13 +323,13 @@ void func_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
             }
         }
         if (arg1 >= 3) {
-            for (phi_s0 = 0; phi_s0 < 9; phi_s0++) {
+            for (i = 0; i < 9; i++) {
                 func_8071498C(&func_80719C00);
-                func_80714950(phi_s0);
+                func_80714950(i);
                 func_807149B8(1);
                 func_807149FC(-1);
                 func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
-                func_80714CC0(D_8074E880[phi_s0 % 3], arg0, arg2, arg3, arg4);
+                func_80714CC0(D_8074E880[i % 3], arg0, arg2, arg3, arg4);
             }
         }
     }

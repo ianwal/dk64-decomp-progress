@@ -1565,7 +1565,7 @@ us,.code,_n_freePVoice,64,yes
 us,.code,func_8063D990,64,yes
 us,.code,func_806E65BC,540,no
 us,.code,func_806D3AE8,32,yes
-us,.code,func_80655AD0,288,no
+us,.code,func_80655AD0,288,yes
 us,.code,func_80698120,3788,no
 us,.code,func_80645C04,272,yes
 us,.code,func_80697230,1740,no
@@ -3428,7 +3428,7 @@ us,.code,func_800269C8,324,yes
 us,.code,func_800249D8,716,no
 us,.code,func_800241F4,96,yes
 us,.code,func_80025378,80,no
-us,.code,func_80025F84,120,no
+us,.code,func_80025F84,120,yes
 us,.code,func_800268DC,176,yes
 us,.code,func_8002449C,144,yes
 version,section,function,length,matching
@@ -3930,7 +3930,7 @@ us,.code,func_800336C0,196,yes
 us,.code,func_8002FC48,80,yes
 us,.code,func_80028818,8,yes
 us,.code,func_80030EC4,3036,no
-us,.code,func_800253AC,292,no
+us,.code,func_800253AC,292,yes
 us,.code,func_80032B08,1480,no
 us,.code,func_80029468,3544,no
 us,.code,func_80027840,180,no

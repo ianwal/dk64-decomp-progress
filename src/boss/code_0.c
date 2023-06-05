@@ -216,37 +216,32 @@ void func_80025364(void) {
     func_8066EA64(current_actor_pointer, 5);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_800253AC.s")
-
 extern f64 D_80035D50;
 extern f64 D_80035D58;
 extern f64 D_80035D60;
 int func_8071AF30();
 extern void *D_80720120;
 
-/*
-// Doable, just need the energy
 void func_800253AC(void) {
-    void *temp;
+    s32 pad2;
     f64 phi_f2;
+    s32 pad;
+    void *temp = &func_8071AF30;
+    f32 temp2;
 
     phi_f2 = MAX(current_actor_pointer->y_velocity, 0.0);
     func_807149B8(1);
-    func_8071498C(&func_8071AF30);
+    func_8071498C(temp);
     func_807149A8(1000);
     func_80714950(current_actor_pointer);
-    phi_f2 /= D_80035D50;
-    phi_f2 *= D_80035D58;
-    phi_f2 += D_80035D60;
-    phi_f2 *= 4.0f;
-    func_80714C08(&D_80720120, phi_f2, current_actor_pointer, 3, 0);
+    temp2 = ((f32)((f32)(((phi_f2 / D_80035D50)) * D_80035D58) + D_80035D60) * 4.0f);
+    func_80714C08(&D_80720120, temp2, current_actor_pointer, 3, 0);
     func_807149B8(1);
-    func_8071498C(&func_8071AF30);
+    func_8071498C(temp);
     func_807149A8(1000);
     func_80714950(current_actor_pointer);
-    func_80714C08(&D_80720120, phi_f2, current_actor_pointer, 4, 0);
+    func_80714C08(&D_80720120, temp2, current_actor_pointer, 4, 0);
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_800254D0.s")

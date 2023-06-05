@@ -1565,7 +1565,7 @@ us,.code,_n_freePVoice,64,yes
 us,.code,func_8063D990,64,yes
 us,.code,func_806E65BC,540,no
 us,.code,func_806D3AE8,32,yes
-us,.code,func_80655AD0,288,no
+us,.code,func_80655AD0,288,yes
 us,.code,func_80698120,3788,no
 us,.code,func_80645C04,272,yes
 us,.code,func_80697230,1740,no

@@ -971,7 +971,25 @@ void func_80655258(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655410.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655AD0.s")
+extern u8 D_807444FC;
+extern s32 D_807F6C28;
+extern u8 D_807F713A;
+
+void func_80655AD0(void) {
+    s32 i;
+
+    if (D_807F713A) {
+        func_8065E81C(0, 0x190);
+    }
+    for (i = 0; i < D_807F6C28; i++) {
+        if (chunk_array_pointer[i].unk3 && chunk_array_pointer[i].visible != 2 && !chunk_array_pointer[i].unk4) {
+            if (chunk_array_pointer[i].unk60[D_807444FC]) {
+                func_8061130C(chunk_array_pointer[i].unk60[D_807444FC]);
+                chunk_array_pointer[i].unk60[D_807444FC] = 0;
+            }
+        }
+    }
+}
 
 void func_80655BF0(void) {
     Chunk14 *current;
@@ -1288,7 +1306,6 @@ extern s32 D_807F6C20;
 
 s16 func_80658B08(s8 arg0, u8 *arg1, s16 arg2) {
     s16 i;
-    s16 j;
     s16 count;
     Struct807F6C1C *temp;
 
@@ -1299,10 +1316,9 @@ s16 func_80658B08(s8 arg0, u8 *arg1, s16 arg2) {
     for (i = 0; i < D_807F6C20 && count < arg2;) {
         if (arg0 == D_807F6C1C[i].unk2) {
             arg1[count] = D_807F6C1C[i].unk4;
-            count += 1;
+            count++;
         }
-        j = i + 1;
-        i = j;
+        i++;
     }
     return count;
 }

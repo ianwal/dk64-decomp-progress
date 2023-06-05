@@ -14,19 +14,12 @@ s32 func_80027060(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f3
 }
 
 void func_80027108(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f2;
-    f32 temp_f2_2;
-
     if (arg0 < 0.0f) {
         if (arg1 <= 0.0f) {
-            temp_f0 = arg0 + 256.0f;
-            temp_f2 = arg1 + 256.0f;
-            *arg2 = temp_f0;
-            *arg3 = temp_f2;
-            *arg4 = temp_f0;
-            *arg5 = temp_f2;
+            *arg2 = arg0 + 256.0f;
+            *arg3 = arg1 + 256.0f;
+            *arg4 = arg0 + 256.0f;
+            *arg5 = arg1 + 256.0f;
             return;
         }
         *arg2 = 0.0f;
@@ -36,12 +29,10 @@ void func_80027108(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg
         return;
     }
     if (arg0 >= 256.0f) {
-        temp_f0_2 = arg0 - 256.0f;
-        temp_f2_2 = arg1 - 256.0f;
-        *arg2 = temp_f0_2;
-        *arg3 = temp_f2_2;
-        *arg4 = temp_f0_2;
-        *arg5 = temp_f2_2;
+        *arg2 = arg0 - 256.0f;
+        *arg3 = arg1 - 256.0f;
+        *arg4 = arg0 - 256.0f;
+        *arg5 = arg1 - 256.0f;
         return;
     }
     if (arg1 > 256.0f) {
