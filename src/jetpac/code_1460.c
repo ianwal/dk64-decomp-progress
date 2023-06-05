@@ -196,26 +196,23 @@ void func_80025CB0(JetpacStruct0 *arg0) {
     u32 var_v0;
     u32 var_v1;
 
-    var_v0 = arg0->unk14;
-    if ((var_v0 == 3) && (arg0->unk40 < (u32)arg0->unk2C)) {
+    if ((arg0->unk14 == 3) && (arg0->unk40 < (u32)arg0->unk2C)) {
         func_80025CA0(arg0);
-        var_v0 = arg0->unk14;
     }
-    if ((var_v0 == 4) && (arg0->unk24 == arg0->unk1C)) {
+    if ((arg0->unk14 == 4) && (arg0->unk24 == arg0->unk1C)) {
         arg0->unk14 = 0;
         arg0->unk2C = 0;
-        var_v0 = 0;
     }
-    if (var_v0 != 0) {
-        if (var_v0 == 3) {
-            if (arg0->unk18 != 0) {
+    if (arg0->unk14) {
+        if (arg0->unk14 == 3) {
+            if (arg0->unk18) {
                 var_f12 = arg0->unk1C;
                 if (arg0->unk2C < 4) {
                     var_v1 = arg0->unk2C;
                 } else {
                     var_v1 = 4;
                 }
-                var_f0 = (var_v1 * 8) + arg0->unk1C;
+                var_f0 = ((f32)(var_v1 * 8)) + arg0->unk1C;
             } else {
                 var_f0 = arg0->unk24;
                 if (arg0->unk2C < 4) {
@@ -223,10 +220,10 @@ void func_80025CB0(JetpacStruct0 *arg0) {
                 } else {
                     var_v1 = 4;
                 }
-                var_f12 = arg0->unk24 - (var_v1 * 8);
+                var_f12 = arg0->unk24 - ((f32)(var_v1 * 8));
             }
             // TODO: These function calls are sus, have a look at m2c output again
-            if (func_8002A974(var_f12, arg0->unk20, var_f0, arg0->unk28) != 0) {
+            if (func_8002A974(var_f12, arg0->unk20, var_f0, arg0->unk28)) {
                 func_80025CA0(arg0);
                 return;
             }
@@ -234,11 +231,11 @@ void func_80025CB0(JetpacStruct0 *arg0) {
                 func_80025CA0(arg0);
                 return;
             }
-            if (func_800283EC(var_f12, arg0->unk20, var_f0, arg0->unk28) != 0) {
+            if (func_800283EC(var_f12, arg0->unk20, var_f0, arg0->unk28)) {
                 func_80025CA0(arg0);
                 return;
             }
-            if (arg0->unk18 != 0) {
+            if (arg0->unk18) {
                 arg0->unk1C -= 8;
                 if (arg0->unk2C >= 0xD) {
                     arg0->unk24 -= 8;
@@ -249,10 +246,10 @@ void func_80025CB0(JetpacStruct0 *arg0) {
                     arg0->unk1C += 8;
                 }
             }
-            arg0->unk2C += 1;
+            arg0->unk2C++;
             return;
         }
-        if (var_v0 == 4) {
+        if (arg0->unk14 == 4) {
             if ((arg0->unk2C + ((arg0->unk24 - arg0->unk1C) / 8)) >= 0xD) {
                 if (arg0->unk18 != 0) {
                     arg0->unk24 -= 8;
@@ -260,7 +257,7 @@ void func_80025CB0(JetpacStruct0 *arg0) {
                     arg0->unk1C += 8;
                 }
             }
-            arg0->unk2C += 1;
+            arg0->unk2C++;
         }
     }
 }
@@ -350,17 +347,13 @@ void func_80026CA4(void) {
 //function pointer from struct
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026CEC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026D48.s")
-
 extern s32 D_8002F064;
 
-/*
 int func_80026FE0(void);
 void func_80026318(s32*);
 void func_80024E70(s32);
 extern JetpacStruct10 D_8002F050;
 
-// TODO: Very close, but wtf
 void func_80026D48(void) {
     s32 phi_v0;
 
@@ -374,12 +367,12 @@ void func_80026D48(void) {
         if (phi_v0 == 3) {
             func_80026318(&D_8002F050);
         }
-        if (D_8002F064 == 4) {
+        phi_v0 = D_8002F064;
+        if (phi_v0 == 4) {
             func_80026A3C(&D_8002F050);
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026DC8.s")
 
@@ -392,7 +385,7 @@ int func_80026FE0(void) {
 void func_80027010(JetpacStruct3 *arg0) {
     if (arg0->unk44 >= 0xE) {
         arg0->unk44 = 0;
-        arg0->unk3C = (s32) ((s32) arg0->unk0 & 0xFFF8);
-        arg0->unk40 = (s32) (arg0->unk4 + 7.0f);
+        arg0->unk3C = (s32)arg0->unk0 & 0xFFF8;
+        arg0->unk40 = arg0->unk4 + 7.0f;
     }
 }

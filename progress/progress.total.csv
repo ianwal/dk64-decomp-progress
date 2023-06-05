@@ -3787,7 +3787,7 @@ us,.code,func_8002466C,564,yes
 us,.code,func_80025A60,272,no
 us,.code,func_80028FC0,164,no
 us,.code,func_8002AEC8,52,yes
-us,.code,func_80026D48,128,no
+us,.code,func_80026D48,128,yes
 us,.code,func_80029AF8,152,yes
 us,.code,func_80024390,120,yes
 us,.code,func_800298C8,100,yes
