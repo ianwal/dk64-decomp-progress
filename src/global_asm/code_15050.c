@@ -262,25 +262,19 @@ s32 func_80611688(HeapHeader *arg0) {
     return arg0[-1].size;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80611690.s")
-
-/*
-// TODO: Close
+// Appears to be an 8 byte aligned memset implementation
 void func_80611690(HeapHeader *arg0) {
-    u32 *var_v0;
+    u64 *var_v0;
     u16 var_v1;
 
     var_v0 = arg0;
     var_v1 = arg0[-1].size / 8U;
     while (var_v1--) {
-        var_v0[0] = 0;
-        var_v0[1] = 0;
-        var_v0 += 2;
+        *var_v0++ = 0;
     }
 }
-*/
 
-// Appears to be a memset implementation
+// Appears to be a 4 byte aligned memset implementation
 void func_806116E0(HeapHeader *arg0, s32 arg1) {
     s32 *var_v0;
     u16 var_v1;

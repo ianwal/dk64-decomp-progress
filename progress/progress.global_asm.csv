@@ -685,7 +685,7 @@ us,.code,func_806612B4,76,yes
 us,.code,func_8071E028,232,no
 us,.code,func_806D2CAC,140,yes
 us,.code,func_8060E980,168,yes
-us,.code,func_80611690,80,no
+us,.code,func_80611690,80,yes
 us,.code,func_806EA8FC,92,yes
 us,.code,func_806D1DEC,164,yes
 us,.code,func_80730E18,536,no
