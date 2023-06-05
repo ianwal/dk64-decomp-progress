@@ -348,9 +348,7 @@ void func_8067C6FC(void) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067C71C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067DCC0.s")
-
-extern s32 D_8071910C; // TODO: Datatype
+int func_8071910C(); // TODO: Signature
 extern s32 D_8071FE08; // TODO: Datatype
 extern s32 D_8071FE64; // TODO: Datatype
 extern s32 D_8071FE88; // TODO: Datatype
@@ -359,12 +357,12 @@ extern f64 D_80759550;
 
 u32 func_806119A0(void);
 
-/*
 // TODO: Pretty close
 void func_8067DCC0(void) {
     f32 temp_f20;
     s32 temp_s0;
     s32 i;
+    s32 pad;
 
     temp_f20 = current_actor_pointer->animation_state->scale_y / D_80759550;
     func_8060E7EC(0, 0xB4, 0xA);
@@ -373,10 +371,10 @@ void func_8067DCC0(void) {
     func_80714CC0(&D_8071FE08, temp_f20 * 0.75, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
     func_80608528(current_actor_pointer, 0x23, 0xFF, 0x7F, 1);
     for (i = 0; i < 7; i++) {
-        temp_s0 = (func_806119A0() / 10000) % 3;
+        temp_s0 = (s32)(func_806119A0() / 10000) % 3;
         func_807149B8(1);
         func_807149FC(0xA);
-        func_8071498C(&D_8071910C);
+        func_8071498C(&func_8071910C);
         func_80714998(2);
         func_80714950(2);
         switch (temp_s0) {
@@ -392,7 +390,6 @@ void func_8067DCC0(void) {
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067DF44.s")
 

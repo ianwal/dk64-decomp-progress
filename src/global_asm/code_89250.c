@@ -407,13 +407,7 @@ void func_80685984(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80685B44.s")
-
-extern s32 D_807180F4; // TODO: Datatype
-
-/*
-// TODO: Pretty close
-void func_80685B44(void *arg0, s32 arg1, f32 arg2, u8 arg3, u8 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8) {
+void func_80685B44(void *arg0, u8 arg1, f32 arg2, u8 arg3, u8 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8) {
     s8 temp_s0;
     s8 temp_s4;
     s16 i;
@@ -422,16 +416,15 @@ void func_80685B44(void *arg0, s32 arg1, f32 arg2, u8 arg3, u8 arg4, s16 arg5, s
         temp_s4 = (((rand() >> 0xF) % 32767) % (arg4 * 2)) + -arg4;
         temp_s0 = (((rand() >> 0xF) % 32767) % (arg4 * 2)) + -arg4;
         func_80714950(-arg5 - ((rand() >> 0xF) % 80));
-        func_8071498C(&D_807180F4);
+        func_8071498C(&func_807180F4);
         func_807149B8(1);
         func_80714998(2);
-        if (arg1 != 0) {
+        if (arg1) {
             func_8071496C(arg1);
         }
         func_80714CC0(arg0, arg2, arg6 + temp_s4, arg7, arg8 + temp_s0);
     }
 }
-*/
 
 void func_80685D84(Actor *arg0) {
     if (!(arg0->unk64 & 4)) {

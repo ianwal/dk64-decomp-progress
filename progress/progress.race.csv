@@ -91,7 +91,7 @@ us,.code,func_8002B518,248,yes
 us,.code,func_8002F784,392,no
 us,.code,func_8002E9F8,528,no
 us,.code,func_8002EDD4,632,yes
-us,.code,func_8002D148,220,no
+us,.code,func_8002D148,220,yes
 us,.code,func_8002D754,36,yes
 us,.code,func_8002B964,620,no
 us,.code,func_80026098,328,no

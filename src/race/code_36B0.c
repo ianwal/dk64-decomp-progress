@@ -549,26 +549,22 @@ void func_8002D0FC(void) {
     RaaD->unk24 = 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002D148.s")
-
 s8 func_806FDB8C(s32, s32, s32, f32, f32, f32);
 s32 func_8070E750(s32, s32, s32);
 
 extern s32 D_8002FCD4[];
 
-/*
-// TODO: Regalloc
 void func_8002D148(Struct8002D148 *arg0, u8 arg1) {
     u8 var_a3;
-    Struct8002D148_unk4 *temp_v0;
+    RaceAdditionalActorData *aaD;
 
-    temp_v0 = arg0->unk4;
-    if (temp_v0->unk34 != arg1) {
-        temp_v0->unk34 = arg1;
+    if (arg0->unk4->unk34 != arg1) {
+        arg0->unk4->unk34 = arg1;
         arg0->unk4->unk35 = 0;
         if (arg1 == 3) {
+            aaD = current_actor_pointer->RaaD;
             var_a3 = arg0->unk4->unk36;
-            if (current_actor_pointer->RaaD->unk1E == (arg0->unk4->unk36 + 1) || arg0->unk4->unk45 != 0) {
+            if (((var_a3 + 1) == aaD->unk1E) || arg0->unk4->unk45) {
                 var_a3 = 3;
             }
             if (arg0->unk4->unk27 == 0) {
@@ -577,9 +573,6 @@ void func_8002D148(Struct8002D148 *arg0, u8 arg1) {
         }
     }
 }
-*/
-
-void func_8002D148(RaaD_unk20*, u8);
 
 void func_8002D224(u8 arg0) {
     RaaD_unk20 *var_s0;
