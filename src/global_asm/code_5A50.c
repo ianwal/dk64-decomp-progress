@@ -170,7 +170,7 @@ typedef struct {
     struct_sub_8076C328 unk0[4];
 } struct_8076C328;
 
-void func_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);                   /* extern */
+void func_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);
 extern struct_8076BF48 D_8076BF48[];
 extern struct_8076C328 D_8076C328[];
 
@@ -178,7 +178,7 @@ void func_806018D4(u8 arg0, u8 arg1, s32 arg2) {
     func_80738E58(&D_8076BF48[arg0], &D_8076C328[arg0], arg1, arg2);
 }
 
-void func_80738BB8(struct_8076BF48*, struct_sub_8076C328 *, u8, u8);             /* extern */
+void func_80738BB8(struct_8076BF48*, struct_sub_8076C328 *, u8, u8);
 
 void func_8060193C(u8 arg0, u8 arg1) {
     func_80738BB8(

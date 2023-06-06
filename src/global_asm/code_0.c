@@ -88,8 +88,8 @@ void func_805FB750(s32 arg0, s32 arg1, void* arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FB944.s")
 
-void func_805FB7E4();                                  /* extern */
-void func_80610350(u8, u8);                       /* extern */
+void func_805FB7E4();
+void func_80610350(u8, u8);
 extern OSViMode *D_8000EF20[];
 extern s16 D_80744494;
 extern s16 D_80744498;

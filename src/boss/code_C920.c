@@ -16,10 +16,6 @@ typedef struct BossStruct3 {
     u8 unk14; // Used
 } BossStruct3;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_C920/func_80030920.s")
-
-/*
-// TODO: Regalloc :(
 void func_80030920(s32 arg0) {
     extra_player_info_pointer->unk1FE = 1;
     func_800290D4(1);
@@ -39,7 +35,6 @@ void func_80030920(s32 arg0) {
     }
     func_8061C464(D_807F5D10, player_pointer, 4, 0x800, 0x5A, 0, 0x46, 0x64, 0x3A, 0, D_80036AB0);
 }
-*/
 
 void func_80030AE0(BossStruct3 *arg0) {
     func_800290D4(0);

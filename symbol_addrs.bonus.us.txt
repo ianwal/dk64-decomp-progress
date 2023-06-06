@@ -5,6 +5,7 @@ rand = 0x80611A44;
 playCutscene = 0x8061CC40;
 
 func_80717404 = 0x80717404;
+func_8071A038 = 0x8071A038;
 
 is_cutscene_active = 0x807444EC;
 enemies_killed = 0x80744508;
@@ -21,3 +22,5 @@ cc_player_index = 0x807FC929;
 extra_player_info_pointer = 0x807FD580;
 
 D_8002DDA8 = 0x8002DDA8;
+
+D_8071FFD4 = 0x8071FFD4;

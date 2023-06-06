@@ -62,39 +62,41 @@ void func_80027308(BonusStruct0 *arg0, s32 *arg1) {
     func_806782C0(current_actor_pointer);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002733C.s")
-
-/*
 void func_8071A038();
 
-void func_8002733C(s32 arg0) {
+extern s32 D_8071FFD4;
+
+typedef struct {
+    s32 unk0;
+    void *unk4[1];
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s8 unk18[1];
+} Struct8002733C;
+
+void func_8002733C(Struct8002733C *arg0) {
     s16 i;
     s16 var_s2;
-    s32 temp_a0;
-    void *temp_s1;
-    void *temp_s3;
 
     var_s2 = 0x118;
     for (i = 0; i < 5; i++) {
-        temp_s3 = arg0[i];
-        temp_a0 = temp_s3->unk4;
-        if (temp_a0 != 0) {
-            func_80715908(temp_a0);
+        if (arg0->unk4[i] != NULL) {
+            func_80715908(arg0->unk4[i]);
         }
-        temp_s1 = arg0[i];
-        temp_s1->unk18 = 0;
+        arg0->unk18[i] = 0;
         func_8071495C();
         func_807149FC(-1);
         func_80714998(2);
         func_80714944(i * 3);
         func_8071498C(&func_8071A038);
-        func_80714950(&temp_s1->unk18);
-        temp_s3->unk4 = func_80714CC0(&D_8071FFD4, 1.0f, var_s2, 210.0f, -10.0f);
+        func_80714950(&arg0->unk18[i]);
+        arg0->unk4[i] = func_80714CC0(&D_8071FFD4, 1.0f, var_s2, 210.0f, -10.0f);
         var_s2 -= 0x1E;
     }
     playSound(0x3E4, 0x7FFF, 63.0f, 1.0f, 5, 0);
 }
-*/
 
 void func_806907F0(f32, f32, f32);
 extern f32 D_8002DD28;

@@ -4,7 +4,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_80735AA0.s")
 
-void func_80735DBC(ALEvent *);                            /* extern */
+void func_80735DBC(ALEvent *);
 
 typedef struct {
     u8 unk0[0x14];
@@ -50,10 +50,10 @@ typedef struct {
 } Struct807563CC;
 extern Struct807563CC *D_807563CC;
 
-void func_807370A4(s32, void *, s32);                    /* extern */
-void func_8073749C(void *);                            /* extern */
-void func_8073B6B0(void *);                            /* extern */
-void func_8073B750(void *);                            /* extern */
+void func_807370A4(s32, void *, s32);
+void func_8073749C(void *);
+void func_8073B6B0(void *);
+void func_8073B750(void *);
 
 typedef struct {
     u8 unk0[0xC];
@@ -71,7 +71,7 @@ void func_80736FB8(struct_80736FB8 *arg0) {
     func_807370A4(&D_807563CC->unk14, arg0, 0xFFFF);
 }
 
-f32 func_80739FE0(s8);                              /* extern */
+f32 func_80739FE0(s8);
 
 // All of these structs are probably from the audio library
 typedef struct {
