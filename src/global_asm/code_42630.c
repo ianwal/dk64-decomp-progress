@@ -170,8 +170,71 @@ void func_8063DE68(Struct8063DE68_arg0 *arg0) {
     func_8061130C(arg0); // Heap Something
 }
 
-// Probably initting a struct, easy way to figure out the shape
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063DED0.s")
+void func_8063DED0(OM2_unk7C *arg0) {
+    s32 i = 0;
+    f32 *temp = arg0;
+    
+    // TODO: Hmm...
+    while (i < 8) {
+        temp[6] = 1.0f;
+        temp[7] = 1.0f;
+        temp[8] = 1.0f;
+        temp += 4;
+        temp[1] = 1.0f;
+        i += 4;
+    }
+    arg0->unk10 = -1;
+    arg0->unk12 = -1;
+    arg0->unk38 = -1;
+    arg0->unk0 = 0;
+    arg0->unk40 = 0;
+    arg0->unk42 = 0;
+    arg0->unk44[0] = 0;
+    arg0->unk44[1] = 0;
+    arg0->unk48[0] = 0;
+    arg0->unk48[1] = 0;
+    arg0->unk48[2] = 0;
+    arg0->unk4B[0] = 0;
+    arg0->unk4B[1] = 0;
+    arg0->unk4B[2] = 0;
+    arg0->unk4E = 0;
+    arg0->unk4F = 0;
+    arg0->unk50 = 0;
+    arg0->unk51 = 0;
+    arg0->unk52 = 0;
+    arg0->unk53 = 0;
+    arg0->unk80 = 0;
+    arg0->unk82 = 0;
+    arg0->unk84 = 0x7FFF;
+    arg0->unk86 = 0x7FFF;
+    arg0->unk88 = 0;
+    arg0->unk8A = 0xFFF;
+    arg0->unk94 = 0;
+    arg0->unk54 = 0;
+    arg0->unk5C = 0;
+    arg0->unk67 = 0;
+    arg0->unk6E = 1;
+    arg0->unk6F = 0;
+    arg0->unk62 = 0;
+    arg0->unk64 = 0;
+    arg0->unk60 = 0;
+    arg0->unk66 = 0xFF;
+    arg0->unk70 = 1;
+    arg0->unk71 = 1;
+    arg0->unk9A = 0;
+    arg0->unk9B = 0;
+    arg0->unk98 = 0;
+    arg0->unk4 = -1;
+    arg0->unk8 = 0.0f;
+    arg0->unkC = 0.0f;
+    arg0->unk34 = 0.0f;
+    arg0->unk3C = 0.0f;
+    arg0->unk74 = 0.0f;
+    arg0->unk78 = 0.0f;
+    arg0->unk7C = 0.0f;
+    arg0->unk8C = 0.0f;
+    arg0->unk90 = 0.0f;
+}
 
 void func_8063DFEC(s32 arg0, void *arg1) {
     s16 temp_v0;
@@ -183,7 +246,19 @@ void func_8063DFEC(s32 arg0, void *arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063E078.s")
+void func_8063E078(OM2_unk7C *arg0) {
+    u8 i;
+
+    for (i = 0; i < 2; i++) {
+        if (arg0->unk44[i] != 0) {
+            arg0->unk44[i]--;
+        }
+    }
+    for (i = 0; i < 3; i++) {
+        arg0->unk4B[i] = arg0->unk48[i];
+    }
+    arg0->unk4E = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063E0D4.s")
 
@@ -265,55 +340,39 @@ void func_8064199C(Struct8064199C_arg0 *arg0, s8 arg1, s16 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806419F8.s")
-
-/*
-// TODO: Likely needs to be split into switch cases
+// TODO: Get rid of GOTOs
 s32 func_806419F8(void) {
-    CharacterChange *temp_v1;
-    s16 temp_a1;
-    temp_v1 = &character_change_array[0];
+    PlayerAdditionalActorData *PaaD = character_change_array->player_pointer->PaaD;
 
-    if (
-        ((player_pointer->control_state == 0x42) && ((temp_a1 = temp_v1->player_pointer->PaaD->unkBC, (temp_a1 == 0x62)) || (temp_a1 == 0x88) || (temp_a1 == 0x17)))
-        || (player_pointer->control_state == 0x52)
-        || (player_pointer->control_state == 0x67)
-        || ((temp_v1->action_initiated == 0x1C)) || (temp_v1->action_initiated == 0x53)) {
-        return 0;
+    if (player_pointer->control_state == 0x42) {
+        if (PaaD->unkBC == 0x62 || PaaD->unkBC == 0x88 || PaaD->unkBC == 0x17) {
+            goto block_8;
+        }
     }
+    if (player_pointer->control_state == 0x52 || player_pointer->control_state == 0x67) {
+        goto block_8;
+    }
+    if (character_change_array->action_initiated == 0x1C) {
+        goto block_8;
+    }
+    if (character_change_array->action_initiated != 0x53) {
+        goto block_9;
+    }
+block_8:
+    return 0;
+block_9:
     return 1;
-
-    // TODO: aaa
-    // switch (player_pointer->control_state) {
-    //     case 0x42:
-    //         switch (character_change_array[0].player_pointer->PaaD->unkBC) {
-    //             case 0x62:
-    //             case 0x88:
-    //             case 0x17:
-    //                 return 0;
-    //         }
-    //         break;
-    //     case 0x52:
-    //     case 0x67:
-    //         return 0;
-    // }
-    // switch (character_change_array[0].action_initiated) {
-    //     case 0x1C:
-    //     case 0x53:
-    //         return 0;
-    // }
 }
-*/
 
 extern u8 D_807F6938;
 extern s16 D_807F6918[];
 
 // TODO: This does match but the types on the externs are sus
 void func_80641A78(void) {
-    s32 phi_s0;
+    s32 i;
 
-    for (phi_s0 = 0; phi_s0 < D_807F6938; phi_s0++) {
-        func_806355DC(D_807F6240[D_807F6918[phi_s0]], 1);
+    for (i = 0; i < D_807F6938; i++) {
+        func_806355DC(D_807F6240[D_807F6918[i]], 1);
     }
 }
 

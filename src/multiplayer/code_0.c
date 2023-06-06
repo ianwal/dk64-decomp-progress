@@ -274,7 +274,6 @@ void func_800268C0(u8 arg0) {
 }
 
 void func_806F0C18(Actor*);
-void func_806F91B4(s32, u8, s16);
 extern s32 D_807552E8;
 
 void func_800268DC(Actor *arg0, PlayerAdditionalActorData *arg1, PlayerProgress *arg2) {

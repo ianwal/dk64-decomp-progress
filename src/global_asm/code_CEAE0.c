@@ -7850,8 +7850,7 @@ void func_806E9B3C(void) {
 /*
 // TODO: Regalloc
 void func_806E9BA8(s32 arg0) {
-    s32 temp = cc_player_index;
-    if ((D_807FD610[temp].unk2C & B_BUTTON) && !(extra_player_info_pointer->unk1F0 & 0x8000) && func_806F8AD4(6, temp) > 0) {
+    if ((D_807FD610[cc_player_index].unk2C & B_BUTTON) && !(extra_player_info_pointer->unk1F0 & 0x8000) && func_806F8AD4(6, cc_player_index) > 0) {
         playSound(0x263, 0x7FFF, 63.0f, 1.0f, 0xA, 0);
         current_actor_pointer->control_state = arg0;
         current_actor_pointer->control_state_progress = 0;
