@@ -260,23 +260,24 @@ void func_80704108(u8 arg0, u8 arg1, u8 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80704444.s")
 
 /*
-// TODO: REGALLOC'D
+// TODO: Regalloc
 typedef struct {
-    u16 unk0;
-    u16 unk2;
-    u16 unk4;
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
     s16 unk6;
     s16 unk8;
     s16 unkA;
 } GlobalASMStruct3;
 
-void func_80704444(GlobalASMStruct3 *arg0, u16 arg1, u16 arg2, s16 arg3, s16 arg4, u8 arg5) {
+void func_80704444(GlobalASMStruct3 *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg5) {
     arg0->unk0 = arg1;
     arg0->unk2 = arg2;
     arg0->unk4 = 1000;
-    arg0->unk8 = arg3 << arg5;
-    arg0->unkA = arg4 << arg5;
-}*/
+    arg0->unk8 = (arg3 << arg5);
+    arg0->unkA = (arg4 << arg5);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80704484.s")
 

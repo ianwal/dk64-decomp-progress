@@ -11,37 +11,29 @@ extern f32 D_807FC7B0;
 extern f32 D_807FC7B4;
 extern f32 D_807FC7B8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068E9B0.s")
-
-/*
-// TODO: Quite close
 void func_8068E9B0(Actor **arg0) {
     f32 sp2C;
-    Actor *vehicle;
+    PlayerAdditionalActorData *PaaD = (*arg0)->PaaD;
 
-    vehicle = (*arg0)->PaaD->vehicle_actor_pointer;
-    func_80671C0C(vehicle, 9, &(*arg0)->x_position, &sp2C, &(*arg0)->z_position);
+    func_80671C0C(PaaD->vehicle_actor_pointer, 9, &(*arg0)->x_position, &sp2C, &(*arg0)->z_position);
     if ((*arg0)->y_position < sp2C) {
         (*arg0)->y_position = sp2C;
     }
-    (*arg0)->y_rotation = vehicle->y_rotation;
-    func_806319C4(arg0, 0);
+    (*arg0)->y_rotation = PaaD->vehicle_actor_pointer->y_rotation;
+    func_806319C4(*arg0, 0);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068EA38.s")
-
-/*
-// TODO: Regalloc
 void func_8068EA38(Actor **arg0) {
     PlayerAdditionalActorData *PaaD;
+    RaceAdditionalActorData *RaaD;
     Actor *vehicle;
 
     PaaD = (*arg0)->PaaD;
-    vehicle = (*arg0)->PaaD->vehicle_actor_pointer;
+    vehicle = PaaD->vehicle_actor_pointer;
     if (vehicle) {
-        if (vehicle->RaaD->unk34 < 5) {
-            (*arg0)->x_position = vehicle->x_position;
+        RaaD = vehicle->RaaD;
+        if (RaaD->unk34 < 5) {
+            (*arg0)->x_position = PaaD->vehicle_actor_pointer->x_position;
             (*arg0)->y_position = PaaD->vehicle_actor_pointer->y_position;
             (*arg0)->z_position = PaaD->vehicle_actor_pointer->z_position;
             (*arg0)->y_rotation = PaaD->vehicle_actor_pointer->y_rotation;
@@ -49,9 +41,9 @@ void func_8068EA38(Actor **arg0) {
             (*arg0)->x_rotation = PaaD->vehicle_actor_pointer->x_rotation;
             (*arg0)->unkAC = PaaD->vehicle_actor_pointer->unkAC;
             if (PaaD->vehicle_actor_pointer->unk58 == ACTOR_CAR_FACTORY_PLAYER) {
-                (*arg0)->unkB8 = vehicle->unkB8 * 10.0f;
+                (*arg0)->unkB8 = PaaD->vehicle_actor_pointer->unkB8 * 10.0f;
             } else {
-                (*arg0)->unkB8 = vehicle->unkB8;
+                (*arg0)->unkB8 = PaaD->vehicle_actor_pointer->unkB8;
             }
         } else {
             (*arg0)->unkB8 = 0.0f;
@@ -59,7 +51,6 @@ void func_8068EA38(Actor **arg0) {
     }
     func_806319C4(*arg0, 0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068EB3C.s")
 

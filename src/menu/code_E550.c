@@ -3,7 +3,6 @@
 
 
 s32 func_80629148(void);
-void func_806319C4(Actor*, s32);
 void func_8068A858(s32 *, s32 *, s32 *);
 extern s32 D_80033FB0;
 extern s32 D_80033FB1;

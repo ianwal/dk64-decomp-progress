@@ -431,16 +431,11 @@ void func_8072B608(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B79C.s")
-
-/*
-// Regalloc
-void func_8072B79C(s16 arg0, u16 arg1, s16 arg2) {
+void func_8072B79C(s16 arg0, s16 arg1, s16 arg2) {
     D_807FDC98->unk26 = arg0;
     D_807FDC98->unk28 = arg1;
     D_807FDC98->unk2A = arg2;
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B7CC.s")

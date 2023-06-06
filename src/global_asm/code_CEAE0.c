@@ -4,7 +4,6 @@
 
 void func_8062217C(Actor*, u8);
 s32 func_80629148(void);
-void func_806319C4(Actor*, s32);
 void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
 void func_806CBE90(void);

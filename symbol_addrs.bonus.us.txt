@@ -4,6 +4,8 @@ malloc = 0x80610FE8;
 rand = 0x80611A44;
 playCutscene = 0x8061CC40;
 
+func_80717404 = 0x80717404;
+
 is_cutscene_active = 0x807444EC;
 enemies_killed = 0x80744508;
 game_mode_copy = 0x80755314;

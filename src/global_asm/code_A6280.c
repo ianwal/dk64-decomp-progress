@@ -2,7 +2,6 @@
 #include "functions.h"
 
 
-void func_806319C4(Actor *, s32);
 void func_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
 extern f64 D_8075A588;
 extern f64 D_8075A590;

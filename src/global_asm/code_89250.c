@@ -594,7 +594,6 @@ void func_80686F90(u8 arg0, s16 arg1, s16 arg2) {
 
 /*
 void func_806782C0(Actor*);
-void func_806319C4(Actor*, s32);
 
 void func_80687080(void) {
     f64 scaleMult;

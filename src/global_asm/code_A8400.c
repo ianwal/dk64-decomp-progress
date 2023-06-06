@@ -33,7 +33,6 @@ void func_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_806A6DB4(s32 arg0);
 void func_8065D254(Actor *actor, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
 void func_80686CF8(Actor *actor);
-void func_806319C4(Actor *arg0, s32 arg1);
 
 void func_806A664C(f32 arg0);
 void func_80714A08(f32 arg0, f32 arg1);

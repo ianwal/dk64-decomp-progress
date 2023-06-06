@@ -10,7 +10,7 @@ s32 func_80725BA4(s16, s16, s32);
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_6240/func_8002A240.s")
 
 /*
-// TODO: Pretty close, missing some float instructions near the bottom though
+// TODO: Quite close
 void func_8002A240(void) {
     Actor17C *temp_s0;
     f32 temp_f10;
@@ -18,7 +18,7 @@ void func_8002A240(void) {
     temp_s0 = current_actor_pointer->unk17C;
     if (temp_s0->unk4 != 0) {
         temp_s0->unk4--;
-        temp_f10 = func_80612794(((temp_s0->unk4 / 10.0) * ((temp_s0->unk8 * 0) - 0x400)) + (temp_s0->unk8 + 0x400)) * 20.0;
+        temp_f10 = func_80612794((temp_s0->unk4 / 10.0) * (temp_s0->unk8 + -0x400) + (temp_s0->unk8 + 0x400)) * 20.0;
         current_actor_pointer->x_position += temp_f10 * func_80612794(temp_s0->unk6);
         current_actor_pointer->z_position += temp_f10 * func_80612790(temp_s0->unk6);
         if (temp_s0->unk4 == 0) {
@@ -27,7 +27,7 @@ void func_8002A240(void) {
     } else if (((rand() >> 0xF) % 1000) >= 0x3AD) {
         temp_s0->unk4 = 0xA;
     }
-    current_actor_pointer->y_position += 8.0 * func_80612794(object_timer * 200.0);
+    current_actor_pointer->y_position += 8.0 * func_80612794((u32)object_timer * 200.0);
 }
 */
 

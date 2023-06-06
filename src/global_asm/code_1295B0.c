@@ -274,10 +274,6 @@ void func_80726E60(u16 arg0, u8 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80726EE0.s")
-
-/*
-// TODO: Regalloc on var_s0->tied_actor
 void func_80726EE0(u8 arg0) {
     EnemySpawner *var_s0;
     s16 i;
@@ -290,7 +286,7 @@ void func_80726EE0(u8 arg0) {
             } else if (var_s0->spawn_state == 6 && (var_s0->tied_actor->interactable & 2)) {
                 var_s0->spawn_state = 7;
                 var_s0->respawn_time = var_s0->respawn_timer_init * 0x1E;
-                func_8061CFCC();
+                func_8061CFCC(var_s0->tied_actor);
                 func_806782C0(var_s0->tied_actor);
             }
             switch (arg0) {
@@ -308,7 +304,6 @@ void func_80726EE0(u8 arg0) {
         var_s0++;
     }
 }
-*/
 
 Actor *func_807270C0(s16, u16); // getSpawnerTiedActor()
 void func_80678428(Actor*);

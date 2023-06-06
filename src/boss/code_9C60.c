@@ -3,7 +3,6 @@
 
 void func_80613CA8(Actor*, s16, f32, f32);
 void func_8002FB7C(u8);
-void func_806319C4(Actor*, s8);
 
 extern u16 D_807FBB34;
 extern f64 D_80036A18;
