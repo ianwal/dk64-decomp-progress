@@ -556,7 +556,7 @@ typedef struct {
 } RaaD_unk20_unk4;
 
 typedef struct {
-    s32 unk0;
+    Actor *unk0;
     RaaD_unk20_unk4 *unk4;
 } RaaD_unk20;
 
@@ -583,7 +583,7 @@ typedef struct race_additional_actor_data {
     s8 unk29; // Used
     s16 unk2A;
     s32 unk2C;
-    s32 unk30;
+    Actor *unk30;
     u8 unk34;
     u8 unk35;
     u8 unk36;
@@ -1275,6 +1275,8 @@ struct actor {
     union {
         Actor17C *unk17C;
     };
+    s32 unk180;
+    void* unk184;
 };
 
 typedef struct enemy_info {

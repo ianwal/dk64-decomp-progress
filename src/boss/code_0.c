@@ -1,6 +1,12 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern f64 D_80035D50;
+extern f64 D_80035D58;
+extern f64 D_80035D60;
+int func_8071AF30();
+extern void *D_80720120;
+
 typedef struct {
     u8 unk0[0x6 - 0x0];
     u8 unk6[1]; // TODO: How many elements?
@@ -215,12 +221,6 @@ void func_80025364(void) {
     func_8066EA64(current_actor_pointer, 4);
     func_8066EA64(current_actor_pointer, 5);
 }
-
-extern f64 D_80035D50;
-extern f64 D_80035D58;
-extern f64 D_80035D60;
-int func_8071AF30();
-extern void *D_80720120;
 
 void func_800253AC(void) {
     s32 pad2;

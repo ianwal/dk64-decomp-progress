@@ -64,7 +64,7 @@ extern f32 D_80759F78;
 extern s32 D_80720054; // TODO: Datatype
 
 /*
-// TODO: Very  close
+// TODO: Very close
 void func_8068ECF4(s32 arg0, u8 arg1) {
     ActorAnimationState *temp_v0;
     f32 temp_f0;
@@ -152,7 +152,7 @@ void func_8068FF40(u8 arg0, Struct8068FF40_arg1 *arg1, Struct8068FF40_arg2 *arg2
 }
 
 void func_80690058(Actor *arg0, s32 arg1) {
-    arg0->animation_state->unk1C = malloc(arg1 * 8);
+    arg0->animation_state->unk1C = malloc(arg1 * sizeof(AnimationStateUnk1C));
     func_80611690(arg0->animation_state->unk1C);
 }
 
@@ -188,27 +188,24 @@ void func_806903BC(Actor *actor, RaceAdditionalActorData *arg1) {
     arg1->unk0 = angle;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690470.s")
-
-/*
-// TODO: Not sure what I'm missing here... hmm
 void func_80690470(Actor *arg0) {
-    Actor *sp18;
-    RaceAdditionalActorData *RaaD;
     PlayerAdditionalActorData *PaaD;
+    RaceAdditionalActorData *RaaD;
+    s32 pad;
+    Actor *sp18;
 
     PaaD = arg0->PaaD;
-    func_80677FA8(ACTOR_PROPELLER, 0xDA); // Spawn actor 319, propeller (boat)
-    RaaD = D_807FBB44->RaaD;
+    func_80677FA8(ACTOR_PROPELLER, 0xDA);
+    sp18 = D_807FBB44;
+    RaaD = sp18->RaaD;
     RaaD->unk28 = PaaD->unk1A4;
-    func_80690094(D_807FBB44, arg0);
+    func_80690094(sp18, arg0);
     RaaD->unk35 = 0;
     RaaD->unk27 = 0;
     RaaD->unk0 = arg0->y_rotation;
-    PaaD->vehicle_actor_pointer = D_807FBB44;
-    D_807FBB44->object_properties_bitfield &= 0xFFFDFFFF;
+    PaaD->vehicle_actor_pointer = sp18;
+    sp18->object_properties_bitfield &= 0xFFFDFFFF;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690500.s")
 

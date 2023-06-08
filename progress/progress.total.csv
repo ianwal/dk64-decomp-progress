@@ -448,7 +448,7 @@ us,.code,func_8064F404,64,yes
 us,.code,func_806EFA3C,272,yes
 us,.code,func_8063CA7C,96,yes
 us,.code,func_8060EE60,880,no
-us,.code,func_80690470,144,no
+us,.code,func_80690470,144,yes
 us,.code,func_8068A10C,12,yes
 us,.code,func_806FB914,580,no
 us,.code,func_80690BE8,120,yes

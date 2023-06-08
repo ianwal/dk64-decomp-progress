@@ -400,7 +400,7 @@ typedef struct {
 
 u16 *func_8002E960(u8);
 
-void func_8002BC2C(Actor *arg0, s32 arg1, s32 arg2, Struct8002D148_unk4 *arg3) {
+void func_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, Struct8002D148_unk4 *arg3) {
     u16 *temp_v0_2;
     RaceAdditionalActorData *RaaD;
     RaaD_unk20 *temp_v0;

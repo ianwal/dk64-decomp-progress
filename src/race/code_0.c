@@ -221,55 +221,142 @@ s32 func_8002578C(s32 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80025E9C.s")
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    Actor *unk34;
+} Actor178_80025E9C;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s8 unk24;
+    s8 unk25;
+    s8 unk26;
+    s8 unk27;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s8 unk34;
+    s8 unk35;
+    s8 unk36;
+    s8 unk37;
+} Actor178_80025E9C_2;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s8 unk24;
+    s8 unk25;
+    s8 unk26;
+    s8 unk27;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s8 unk34;
+    s8 unk35;
+    s8 unk36;
+    s8 unk37;
+} Actor178_80025E9C_3;
+
+typedef struct {
+    Actor *unk0;
+    RaceAdditionalActorData *unk4;
+} Actor184_80025E9C;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    Actor *unk30;
+    s32 unk34;
+} Actor17C_80025E9C;
+
+void func_8002BBD0(Actor *arg0, s32 arg1);
+void func_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
+
+Actor *func_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
+
 /*
 void func_80025E9C(Actor *arg0) {
-    RaceAdditionalActorData *sp54;
-    Actor *sp40;
-    Actor *sp3C;
-    Actor *temp_s2;
+    RaceAdditionalActorData *aaD;
+    s32 pad;
+    Actor *playerCar;
+    Actor178_80025E9C_2 *a178_2;
+    Actor *raceCamera;
     Actor *temp_v0;
-    Actor *temp_v1_2;
-    Actor178 *temp_s0_2;
-    Actor178 *temp_s1;
-    Actor17C *temp_s1_2;
-    RaceAdditionalActorData *temp_s0;
-    void *temp_v1;
+    Actor178_80025E9C *a178;
+    Actor17C_80025E9C *a17C;
+    RaceAdditionalActorData *aaD_2;
+    Actor184_80025E9C *temp_v1;
 
-    sp54 = arg0->additional_actor_data;
-    func_8002BBD0(2);
+    aaD = arg0->additional_actor_data;
+    func_8002BBD0(arg0, 2);
     func_80677FA8(ACTOR_CAR_FACTORY_PLAYER, 0x95);
-    temp_s2 = D_807FBB44;
-    temp_s0 = temp_s2->additional_actor_data;
-    func_8002BC2C(arg0, 1, temp_s2, temp_s0);
-    temp_s0->unk37 = 0;
-    temp_s0->unk27 = 0;
-    temp_s0->unk30 = arg0;
-    temp_s0->unk36 = 1;
-    temp_s0->unk28 = 0;
-    temp_s1 = temp_s2->unk178;
+    playerCar = D_807FBB44;
+    aaD_2 = playerCar->additional_actor_data;
+    func_8002BC2C(arg0, 1, playerCar, aaD_2);
+    aaD_2->unk37 = 0;
+    aaD_2->unk27 = 0;
+    aaD_2->unk30 = arg0;
+    aaD_2->unk36 = 1;
+    aaD_2->unk28 = 0;
+    a178 = playerCar->unk178;
     temp_v0 = func_807271F4(1, 0, 0, 0, 0, 0, 0);
-    sp40 = temp_v0;
-    temp_s1->unk30 = temp_v0;
+    a178->unk30 = temp_v0;
     temp_v1 = temp_v0->unk184;
-    temp_v1->unk4 = temp_s0;
-    temp_v1->unk0 = temp_s2;
+    temp_v1->unk4 = aaD_2;
+    temp_v1->unk0 = playerCar;
     func_80677FA8(ACTOR_CAMERA_CARRACE, 0);
-    temp_v1_2 = D_807FBB44;
-    temp_s1->unk34 = temp_v1_2;
-    temp_s0_2 = sp40->unk178;
-    sp3C = temp_v1_2;
-    func_8002BC2C(arg0, 0, sp40, temp_s0_2);
-    temp_s0_2->unk37 = 0;
-    temp_s0_2->unk27 = 1;
-    temp_s0_2->unk30 = arg0;
-    temp_s0_2->unk36 = 0;
-    temp_s1_2 = sp40->unk17C;
-    temp_s1_2->unk30 = temp_s2;
-    temp_s1_2->unk34 = temp_v1_2;
-    temp_v1_2->RaaD->unk30 = arg0;
-    temp_v1_2->unk178->unk30 = temp_s2;
+    raceCamera = D_807FBB44;
+    a178->unk34 = raceCamera;
+    a178_2 = temp_v0->unk178;
+    func_8002BC2C(arg0, 0, temp_v0, a178_2);
+    a178_2->unk37 = 0;
+    a178_2->unk27 = 1;
+    a178_2->unk30 = arg0;
+    a178_2->unk36 = 0;
+    a17C = temp_v0->unk17C;
+    a17C->unk30 = playerCar;
+    a17C->unk34 = raceCamera;
+    raceCamera->RaaD->unk30 = arg0;
+    ((Actor178_80025E9C_3*)raceCamera->unk178)->unk30 = playerCar;
     D_80750AC4 = 0;
-    sp54->unk25 = 1;
+    aaD->unk25 = 1;
 }
 */
 
