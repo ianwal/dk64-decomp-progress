@@ -62,12 +62,8 @@ void func_8069AFF0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069B3FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069B85C.s")
-
 extern s32 D_8076A068;
 
-/*
-// TODO: Regalloc :(
 s32 func_8069B85C(void) {
     Actor *temp_v1;
     ActorCollision *collision = current_actor_pointer->collision_queue_pointer;
@@ -75,15 +71,17 @@ s32 func_8069B85C(void) {
     while (collision) {
         if ((collision->unk0 == 0x8000) && (func_8067AF44(collision->collisionSource))) {
             temp_v1 = collision->collisionSource;
-            if ((temp_v1->interactable & 1) && ((D_8076A068 - temp_v1->PaaD->unk120) < 2U)) {
-                return TRUE;
+            if (temp_v1->interactable & 1) {
+                PlayerAdditionalActorData *PaaD = temp_v1->PaaD;
+                if ((D_8076A068 - PaaD->unk120) < 2U) {
+                    return TRUE;
+                }
             }
         }
         collision = collision->next;
     }
     return FALSE;
 }
-*/
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069B908.s")
