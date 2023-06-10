@@ -3935,7 +3935,7 @@ us,.code,func_80032B08,1480,no
 us,.code,func_80029468,3544,no
 us,.code,func_80027840,180,no
 us,.code,func_800290D4,108,yes
-us,.code,func_800334A4,540,no
+us,.code,func_800334A4,540,yes
 us,.code,func_80024000,316,no
 us,.code,func_8002D230,2608,no
 us,.code,func_80027950,224,yes
