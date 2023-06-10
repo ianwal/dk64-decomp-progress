@@ -1,10 +1,18 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 extern s32 D_8071FFA0;
-int func_8071C9E8(); // TODO: Signature
 extern s32 D_8074E880[]; // TODO: Datatype
+
+extern f32 D_8075B8B0;
+extern f32 D_8075B8B4;
+extern f32 D_8075B8B8;
+extern s16 D_807F6248;
+extern s16 D_807F624C;
+extern f64 D_8075B8C0;
+
+int func_8071C9E8(); // TODO: Signature
+extern void func_80659670(f32, f32, f32, s32);
 
 void func_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     func_8071498C(&func_8071C9E8);
@@ -23,18 +31,6 @@ void func_806B8BDC(s16 arg0, s16 arg1, s16 arg2) {
     func_80714CC0(&D_8071FFA0, 2.0f, arg0, arg1, arg2);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BD820/func_806B8C78.s")
-
-extern f32 D_8075B8B0;
-extern f32 D_8075B8B4;
-extern f32 D_8075B8B8;
-extern s16 D_807F6248;
-extern s16 D_807F624C;
-
-extern void func_80659670(f32, f32, f32, s32);
-
-/*
-// TODO: Regalloc, damn it
 void func_806B8C78(void) {
     switch (current_actor_pointer->control_state) {
         case 1:
@@ -48,7 +44,7 @@ void func_806B8C78(void) {
                     if (current_actor_pointer->y_position > -20.0f) {
                         current_actor_pointer->y_position -= current_actor_pointer->y_velocity;
                     }
-                    current_actor_pointer->y_velocity = MAX(current_actor_pointer->y_velocity + 0.5, 8.0f);
+                    current_actor_pointer->y_velocity = MIN(current_actor_pointer->y_velocity + 0.5, 8.0f);
                     break;
             }
             break;
@@ -71,7 +67,7 @@ void func_806B8C78(void) {
                 current_actor_pointer->control_state = 0x40;
             }
             if (D_807FDC90->unk2C < 0x28) {
-                func_8063C1EC(4, 0x10, &D_807FDC90);
+                func_8063C1EC(4, 0x10);
                 func_8063C1EC(6, 0x10);
                 func_8063C248(5, 0x10);
                 func_8063C248(7, 0x10);
@@ -101,9 +97,6 @@ void func_806B8C78(void) {
             }
     }
 }
-*/
-
-extern f64 D_8075B8C0;
 
 void func_806B904C(void) {
     f32 temp_f0;

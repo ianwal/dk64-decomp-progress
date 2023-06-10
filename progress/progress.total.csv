@@ -3223,7 +3223,7 @@ us,.code,func_806A1AC4,1124,no
 us,.code,func_807146F4,20,yes
 us,.code,func_806B486C,76,yes
 us,.code,func_80722FEC,52,yes
-us,.code,func_806B8C78,980,no
+us,.code,func_806B8C78,980,yes
 us,.code,func_8069AB74,1148,no
 us,.code,func_806FBEAC,68,no
 us,.code,malloc,364,no
