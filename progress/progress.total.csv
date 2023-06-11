@@ -2215,7 +2215,7 @@ us,.code,func_80604BE8,152,yes
 us,.code,func_80717100,268,no
 us,.code,func_806A7BDC,788,yes
 us,.code,gameIsInMysteryMenuMinigameMode,52,yes
-us,.code,func_8062E548,192,no
+us,.code,func_8062E548,192,yes
 us,.code,func_80650794,288,yes
 us,.code,func_806F70FC,636,no
 us,.code,func_806D3A38,144,yes

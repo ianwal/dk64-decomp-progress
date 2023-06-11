@@ -19,7 +19,7 @@ f32 func_80732930(u8 arg0) {
             sp0 *= sp4;
         }
         sp4 *= sp4;
-        arg0 = (arg0 >> 1);
+        arg0 >>= 1;
     }
     return sp0;
 }

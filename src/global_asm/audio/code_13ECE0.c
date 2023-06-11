@@ -1,23 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-// Hmm, possibly audio stuff?
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_80739FE0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A070.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A130.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A2A4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A3C4.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A488.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A518.s")
-
 typedef struct {
     s32 unk0;
     s16 unk4;
@@ -135,6 +118,20 @@ typedef struct {
     u8 unk0[0x24 - 0x0];
     s32 unk24;
 } Struct8073A8BC;
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_80739FE0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A070.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A130.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A2A4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A3C4.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A488.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_8073A518.s")
 
 s16 func_8073A690(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
     u32 sp4;

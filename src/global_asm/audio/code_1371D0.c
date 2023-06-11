@@ -12,16 +12,6 @@ typedef struct {
     Struct807324D0_unk4 unk4[4];
 } Struct807324D0;
 
-void func_807324D0(Struct807324D0 *arg0, s32 arg1) {
-    s32 sp4;
-    s32 sp0;
-
-    sp4 = arg1;
-    for (sp0 = 0; sp0 < arg0->unk2; sp0++) {
-        arg0->unk4[sp0].unk0 += sp4;
-    }
-}
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -70,6 +60,16 @@ void func_80732730(Struct80732730 *arg0, s32 arg1, s32 arg2);
 void func_807327F4(Struct807327F4 *arg0, s32 arg1, s32 arg2);
 void func_80732894(GlobalASMStruct69 *arg0, s32 arg1, s32 arg2);
 void func_80732618(Struct80732618 *arg0, s32 arg1, s32 arg2);
+
+void func_807324D0(Struct807324D0 *arg0, s32 arg1) {
+    s32 sp4;
+    s32 sp0;
+
+    sp4 = arg1;
+    for (sp0 = 0; sp0 < arg0->unk2; sp0++) {
+        arg0->unk4[sp0].unk0 += sp4;
+    }
+}
 
 void func_80732534(Struct80732534 *arg0, s32 arg1) {
     s32 sp24;

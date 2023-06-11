@@ -100,6 +100,7 @@ s16 func_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_8073F81C.s")
 
 /*
+// __n_getVol?
 // TODO: Something wrong with the shifts
 s16 func_8073F81C(s16 arg0, s32 arg1, s16 arg2, u16 arg3) {
     s32 sp4;

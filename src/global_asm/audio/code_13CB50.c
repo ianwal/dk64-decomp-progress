@@ -1,21 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_80737E50(ALSeqPlayer* arg0) {
-    ALEvent sp18;
-
-    sp18.type = AL_SEQP_PLAY_EVT;
-    alEvtqPostEvent(&arg0->evtq, &sp18, 0);
-}
-
 typedef struct {
     u8 unk0[0x84 - 0x0];
     s32 unk84;
 } Struct80737E90;
-
-void func_80737E90(Struct80737E90 *arg0, s32 arg1) {
-    arg0->unk84 = arg1;
-}
 
 typedef struct {
     u8 unk0;
@@ -44,17 +33,6 @@ typedef struct {
     Struct80737EA4_unk20 *unk20;
 } Struct80737EA4;
 
-void func_80737EA4(Struct80737EA4 *arg0, u8 arg1, u8 arg2) {
-    Struct80737EA4_unk20_unkC *sp4;
-
-    if (arg1 < arg0->unk20[0].unk0[0]) { // TODO: Wtf?
-        sp4 = arg0->unk20[arg1 + 3].unkC; // TODO: Wtf?
-        if (sp4 != NULL) {
-            sp4->unk3 = (arg2 * 2) | (sp4->unk3 & 1);
-        }
-    }
-}
-
 typedef struct {
     u8 unk0[0xD - 0x0];
     u8 unkD;
@@ -72,6 +50,28 @@ typedef struct {
     u8 unk38[0x60 - 0x35];
     Struct80737F0C_unk60 *unk60;  
 } Struct80737F0C;
+
+void func_80737E50(ALSeqPlayer* arg0) {
+    ALEvent sp18;
+
+    sp18.type = AL_SEQP_PLAY_EVT;
+    alEvtqPostEvent(&arg0->evtq, &sp18, 0);
+}
+
+void func_80737E90(Struct80737E90 *arg0, s32 arg1) {
+    arg0->unk84 = arg1;
+}
+
+void func_80737EA4(Struct80737EA4 *arg0, u8 arg1, u8 arg2) {
+    Struct80737EA4_unk20_unkC *sp4;
+
+    if (arg1 < arg0->unk20[0].unk0[0]) { // TODO: Wtf?
+        sp4 = arg0->unk20[arg1 + 3].unkC; // TODO: Wtf?
+        if (sp4 != NULL) {
+            sp4->unk3 = (arg2 * 2) | (sp4->unk3 & 1);
+        }
+    }
+}
 
 void func_80737F0C(Struct80737F0C *arg0, s32 arg1, u8 arg2) {
     arg0->unk60[arg1].unk10 = arg2;

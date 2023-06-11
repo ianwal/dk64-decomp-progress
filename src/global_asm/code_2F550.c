@@ -756,16 +756,10 @@ s32 func_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s1
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E3B4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E548.s")
-
-/*
-s32 func_8062E548(s16 *arg0, u8 arg1, f64 arg2, f64 arg3, u8 arg4) {
+s32 func_8062E548(s16 *arg0, u8 arg1, f64 arg3, u8 arg4) {
     f64 phi_f0;
 
     switch (arg1) {
-        default:
-            phi_f0 = phi_f0; // ??
-            break;
         case 0:
             phi_f0 = arg0[0];
             break;
@@ -790,7 +784,6 @@ s32 func_8062E548(s16 *arg0, u8 arg1, f64 arg2, f64 arg3, u8 arg4) {
     }
     return 0;
 }
-*/
 
 void func_8062E608(void *arg0, s32 *arg1, s32 arg2) {
     // TODO: sizeof()?
