@@ -324,15 +324,12 @@ void func_805FF660(u8 arg0) {
     D_80744820 = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_805FF670.s")
-
 void func_806A5DF0(s32, f32, f32, f32, u16, s32, s32, s32);
 
-/*
-// TODO: Pretty close, something up with that big function call
 void func_805FF670(void) {
     f32 temp_f20;
     s16 spawn_x;
+    s16 spawn_z;
     s16 phi_s1;
 
     if (D_80744820 != 0) {
@@ -341,11 +338,12 @@ void func_805FF670(void) {
         for (phi_s1 = 0; phi_s1 < D_80744820; phi_s1++) {
             temp_f20 = (phi_s1 * 2) + 0x1E;
             spawn_x = player_pointer->x_position - (func_80612794(player_pointer->y_rotation) * temp_f20);
+            spawn_z = player_pointer->z_position - (func_80612790(player_pointer->y_rotation) * temp_f20);
             func_806A5DF0(
                 0x35,
                 spawn_x,
                 player_pointer->y_position + 20.0f + (phi_s1 * 5),
-                player_pointer->z_position - (func_80612790(player_pointer->y_rotation) * temp_f20),
+                spawn_z,
                 player_pointer->y_rotation,
                 1,
                 -1,
@@ -355,7 +353,6 @@ void func_805FF670(void) {
         D_80744820 = 0;
     }
 }
-*/
 
 s32 func_805FF800(Maps *arg0, s32 *arg1) {
     s32 phi_v1 = FALSE;

@@ -1153,7 +1153,7 @@ us,.code,func_806DB08C,56,yes
 us,.code,__n_freeParam,44,yes
 us,.code,func_80676280,64,yes
 us,.code,func_8068A508,604,no
-us,.code,func_805FF670,400,no
+us,.code,func_805FF670,400,yes
 us,.code,func_80732894,152,yes
 us,.code,func_8060B140,752,no
 us,.code,func_80601780,52,yes
