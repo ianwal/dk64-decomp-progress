@@ -11,7 +11,11 @@ extern f32 D_80758CAC;
 extern f32 *D_8076A0B4;
 extern f32 *D_8076A0B8;
 extern f32 *D_8076A0BC;
+extern f32 *D_8076A0C0; // pointer to an array of floats
+extern f32 *D_8076A0C4;
+extern f32 *D_8076A0C8;
 
+extern s32 D_807F6C28;
 extern s16 D_807F7EC8;
 
 extern u8 D_807F7EF8;
@@ -45,162 +49,53 @@ void func_80659620(f32 *arg0, f32 *arg1, f32 *arg2, s16 arg3) {
     *arg2 = D_8076A0BC[arg3];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_80659670.s")
-
-extern f32 *D_8076A0B4;
-extern f32 *D_8076A0B8;
-extern f32 *D_8076A0BC;
-extern s32 D_807F6C28;
-
-/*
-// TODO: Close, similar to func_80659DB0
 void func_80659670(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
-    s32 var_a0;
     u8 var_v1;
-    s32 var_v1_2;
+    s32 iChunk;
 
     if (D_807F6C28 <= 0) {
         var_v1 = 1;
     } else {
         var_v1 = D_807F6C28;
     }
-    var_a0 = 0;
     if (arg3 != -1) {
         if (arg3 < var_v1) {
-            if (arg0 <= 1.0f) {
-                D_8076A0B4[arg3] = arg0;
-            } else {
-                D_8076A0B4[arg3] = 1.0f;
-            }
-            if (arg1 <= 1.0f) {
-                D_8076A0B8[arg3] = arg1;
-            } else {
-                D_8076A0B8[arg3] = 1.0f;
-            }
-            if (arg2 <= 1.0f) {
-                D_8076A0BC[arg3] = arg2;
-            } else {
-                D_8076A0BC[arg3] = 1.0f;
-            }
+            D_8076A0B4[arg3] = arg0 <= 1.0f ? arg0 : 1.0f;
+            D_8076A0B8[arg3] = arg1 <= 1.0f ? arg1 : 1.0f;
+            D_8076A0BC[arg3] = arg2 <= 1.0f ? arg2 : 1.0f;
         }
-    } else if (var_v1 > 0) {
-        if (var_v1 & 1) {
-            var_a0 = 1;
-            if (arg0 <= 1.0f) {
-                D_8076A0B4[0] = arg0;
-            } else {
-                D_8076A0B4[0] = 1.0f;
-            }
-            if (arg1 <= 1.0f) {
-                D_8076A0B8[0] = arg1;
-            } else {
-                D_8076A0B8[0] = 1.0f;
-            }
-            if (arg2 <= 1.0f) {
-                D_8076A0BC[0] = arg2;
-            } else {
-                D_8076A0BC[0] = 1.0f;
-            }            
-        }
-        if (var_v1 != 1) {
-            for (var_v1_2 = var_a0; var_v1_2 < var_v1; var_v1_2 += 2) {
-                if (arg0 <= 1.0f) {
-                    D_8076A0B4[var_v1_2] = arg0;
-                } else {
-                    D_8076A0B4[var_v1_2] = 1.0f;
-                }
-                if (arg1 <= 1.0f) {
-                    D_8076A0B8[var_v1_2] = arg1;
-                } else {
-                    D_8076A0B8[var_v1_2] = 1.0f;
-                }
-                if (arg2 <= 1.0f) {
-                    D_8076A0BC[var_v1_2] = arg2;
-                } else {
-                    D_8076A0BC[var_v1_2] = 1.0f;
-                }
-                if (arg0 <= 1.0f) {
-                    D_8076A0B4[var_v1_2 + 1] = arg0;
-                } else {
-                    D_8076A0B4[var_v1_2 + 1] = 1.0f;
-                }
-                if (arg1 <= 1.0f) {
-                    D_8076A0B8[var_v1_2 + 1] = arg1;
-                } else {
-                    D_8076A0B8[var_v1_2 + 1] = 1.0f;
-                }
-                if (arg2 <= 1.0f) {
-                    D_8076A0BC[var_v1_2 + 1] = arg2;
-                } else {
-                    D_8076A0BC[var_v1_2 + 1] = 1.0f;
-                }
-            }
+    } else {
+        for (iChunk = 0; iChunk < var_v1; iChunk++) {
+            D_8076A0B4[iChunk] = arg0 <= 1.0f ? arg0 : 1.0f;
+            D_8076A0B8[iChunk] = arg1 <= 1.0f ? arg1 : 1.0f;
+            D_8076A0BC[iChunk] = arg2 <= 1.0f ? arg2 : 1.0f;
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065996C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_80659DB0.s")
-
-/*
-extern f32 *D_8076A0C0; // pointer to an array of floats
-extern f32 *D_8076A0C4;
-extern f32 *D_8076A0C8;
-extern s32 D_807F6C28;
-
-// TODO: MIN/MAX macros?
 void func_80659DB0(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
     u8 phi_v1;
-    s32 iChunk;
+    u8 iChunk;
 
     if (D_807F6C28 <= 0) {
         phi_v1 = 1;
     } else {
         phi_v1 = D_807F6C28;
     }
-    iChunk = 0;
-    if (arg3 == -1) {
-        if (phi_v1 != 0) {
-            do {
-                if (arg0 <= 1.0f) {
-                    D_8076A0C0[iChunk] = arg0;
-                } else {
-                    D_8076A0C0[iChunk] = 1.0f;
-                }
-                iChunk++;
-                if (arg1 <= 1.0f) {
-                    D_8076A0C4[iChunk] = arg1;
-                } else {
-                    D_8076A0C4[iChunk] = 1.0f;
-                }
-                if (arg2 <= 1.0f) {
-                    D_8076A0C8[iChunk] = arg2;
-                } else {
-                    D_8076A0C8[iChunk] = 1.0f;
-                }
-            } while (iChunk < phi_v1);
-        }
+    if (arg3 != -1) {
+        D_8076A0C0[arg3] = arg0 <= 1.0f ? arg0 : 1.0f;
+        D_8076A0C4[arg3] = arg1 <= 1.0f ? arg1 : 1.0f;
+        D_8076A0C8[arg3] = arg2 <= 1.0f ? arg2 : 1.0f;
     } else {
-        if (arg0 <= 1.0f) {
-            D_8076A0C0[arg3] = arg0;
-        } else {
-            D_8076A0C0[arg3] = 1.0f;
-        }
-        if (arg1 <= 1.0f) {
-            D_8076A0C4[arg3] = arg1;
-        } else {
-            D_8076A0C4[arg3] = 1.0f;
-        }
-        if (arg2 <= 1.0f) {
-            D_8076A0C8[arg3] = arg2;
-        } else {
-            D_8076A0C8[arg3] = 1.0f;
+        for (iChunk = 0; iChunk < phi_v1; iChunk++) {
+            D_8076A0C0[iChunk] = arg0 <= 1.0f ? arg0 : 1.0f;
+            D_8076A0C4[iChunk] = arg1 <= 1.0f ? arg1 : 1.0f;
+            D_8076A0C8[iChunk] = arg2 <= 1.0f ? arg2 : 1.0f;
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_80659F7C.s")
 

@@ -2812,7 +2812,7 @@ us,.code,func_8069F020,2276,no
 us,.code,func_806883C8,44,yes
 us,.code,func_8072E5FC,324,no
 us,.code,func_80672C30,64,yes
-us,.code,func_80659670,764,no
+us,.code,func_80659670,764,yes
 us,.code,func_806DF670,100,yes
 us,.code,func_806F603C,456,yes
 us,.code,func_8067AEFC,72,yes
@@ -2887,7 +2887,7 @@ us,.code,func_806CF580,760,yes
 us,.code,func_805FB300,708,no
 us,.code,func_8060E6E8,180,yes
 us,.code,func_806791EC,20,yes
-us,.code,func_80659DB0,460,no
+us,.code,func_80659DB0,460,yes
 us,.code,func_80726EE0,412,yes
 us,.code,func_806696A0,400,no
 us,.code,func_806FD9B4,72,yes
