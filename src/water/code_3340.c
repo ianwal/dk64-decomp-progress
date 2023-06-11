@@ -24,20 +24,14 @@ void func_80027340(s32 arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80027448.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80027DC0.s")
-
 extern f32 D_8002A110;
 extern f32 D_8002A114;
 
-/*
-// TODO: Regalloc, everything else matches :(
 void func_80027DC0(void) {
     s32 temp[2];
     Actor *sp34;
     f32 dx;
     f32 dz;
-    f32 temp2;
-    s32 phi_t5;
 
     func_80729B00();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -59,9 +53,7 @@ void func_80027DC0(void) {
     dz = current_actor_pointer->z_position - player_pointer->z_position;
     switch (current_actor_pointer->control_state) {
         case 1:
-            temp2 = (dx * dx) + (dz * dz);
-            phi_t5 = temp2 < D_8002A110;
-            if (phi_t5) {
+            if ((((dx * dx) + (dz * dz)) < D_8002A110) != 0) {
                 // Unlock the camera
                 setFlag(0x179, TRUE, FLAG_TYPE_PERMANENT);
                 playCutscene(player_pointer, 0, 1);
@@ -97,9 +89,7 @@ void func_80027DC0(void) {
             }
             break;
         case 3:
-            temp2 = (dx * dx) + (dz * dz);
-            phi_t5 = temp2 < D_8002A114;
-            if (phi_t5) {
+            if ((((dx * dx) + (dz * dz)) < D_8002A114) != 0) {
                 playCutscene(current_actor_pointer, 1, 1);
                 func_80629174();
                 current_actor_pointer->control_state = 4;
@@ -110,7 +100,6 @@ void func_80027DC0(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80028120.s")
