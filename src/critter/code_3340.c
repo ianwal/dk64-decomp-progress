@@ -22,7 +22,7 @@ void func_80027340(s32 arg0) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80027448.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80027448.s")
 
 extern f32 D_8002A110;
 extern f32 D_8002A114;
@@ -102,7 +102,7 @@ void func_80027DC0(void) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80028120.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80028120.s")
 
 void func_80028840() {
     D_8002A1C0 = getPointerTableFile(0x13, 4, 1, 1);
@@ -112,17 +112,17 @@ void func_80028840() {
     D_8002A1CC = 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_800288A8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_800288A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80028A9C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80028A9C.s")
 
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80028DE8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80028DE8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80028EE8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80028EE8.s")
 
 // Weird struct/array accesses. Probably doable.
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_8002904C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_8002904C.s")
 
 extern u16 D_8002A1CC;
 extern u16 D_8002A1CE;
@@ -154,7 +154,7 @@ s32 (*func_80029110(s32 arg0))(s32 *, s32) {
     return ~arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_80029118.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80029118.s")
 
 void func_800296DC();
 
@@ -339,4 +339,4 @@ void func_80029118(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_3340/func_800296DC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_800296DC.s")

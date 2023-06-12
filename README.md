@@ -12,7 +12,7 @@
 - <img src="./progress/progress_minecart.svg">
 - <img src="./progress/progress_multiplayer.svg">
 - <img src="./progress/progress_race.svg">
-- <img src="./progress/progress_water.svg">
+- <img src="./progress/progress_critter.svg">
 
 Grab tools
 
@@ -42,7 +42,7 @@ where the following are supported values of `<module_id>`
 - `minecart`
 - `bonus`
 - `race`
-- `water`
+- `critter`
 - `boss`
 - `arcade`
 - `jetpac`
@@ -52,8 +52,8 @@ where the following are supported values of `<module_id>`
 Ubuntu 18.04 or higher.
 
 ```sh
-apt-get update && \
-  apt-get install -y \
+sudo apt-get update && \
+  sudo apt-get install -y \
     binutils-mips-linux-gnu \
     build-essential \
     gcc-mips-linux-gnu \

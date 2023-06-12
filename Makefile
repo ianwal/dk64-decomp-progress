@@ -39,7 +39,7 @@ PNG_TO_INCC       := $(PYTHON) tools/build/img/build.py
 ### Files and Directories ###
 
 # Inputs
-OVERLAYS := global_asm menu multiplayer minecart race bonus water arcade jetpac boss
+OVERLAYS := global_asm menu multiplayer minecart race bonus critter arcade jetpac boss
 
 # Creates a list of all the source files for the given overlay (e.g. BGS_C_SRCS)
 # Appends that list to OVERLAY_C_FILES

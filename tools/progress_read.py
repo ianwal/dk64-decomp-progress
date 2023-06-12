@@ -18,7 +18,7 @@ overlay_sizes = {
     'minecart'    : 0x004b90,
     'race'        : 0x00bb10,
     'bonus'       : 0x009860,
-    'water'       : 0x0057f0,
+    'critter'       : 0x0057f0,
     'arcade'      : 0x00e220,
     'jetpac'      : 0x007090,
     'boss'        : 0x0118b0,

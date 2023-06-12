@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct WaterStruct5 {
+typedef struct CritterStruct5 {
     s16 x_position; // 0x00
     s16 y_position; // 0x02
     s16 z_position; // 0x04
@@ -20,7 +20,7 @@ typedef struct WaterStruct5 {
     u8 unk24;
     u8 unk25;
     u8 unk26[0x2C - 0x26];
-} WaterStruct5;
+} CritterStruct5;
 
 typedef struct Critter {
     s16 unk0;
@@ -47,8 +47,8 @@ typedef struct Critter {
     f32 unk48;
     f32 unk4C;
     u8 unk50[0x54-0x50];
-    WaterStruct5 *unk54;
-    WaterStruct5 *unk58;
+    CritterStruct5 *unk54;
+    CritterStruct5 *unk58;
     u8 unk5C[0x1E0-0x5C];
     u8 unk1E0;
     u8 unk1E1;
@@ -67,7 +67,7 @@ typedef struct CritterController {
     Critter *critter;
 } CritterController;
 
-typedef struct WaterStruct6 {
+typedef struct CritterStruct6 {
     s16 unk0;
     s16 unk2;
     s16 unk4;
@@ -82,16 +82,16 @@ typedef struct WaterStruct6 {
     f32 unk18;
     f32 unk1C;
     f32 unk20;
-} WaterStruct6;
+} CritterStruct6;
 
 typedef struct {
     u8 pad0[0x2C];
-} WaterStruct0;
+} CritterStruct0;
 
 typedef struct {
     u8 pad0[0x4];
-    WaterStruct0 *unk4;
-} WaterStruct1;
+    CritterStruct0 *unk4;
+} CritterStruct1;
 
 void func_80024000(Critter*, s32, f32);
 void func_800262C0(Critter*, CritterController*);
@@ -111,7 +111,7 @@ extern u8 D_807444FC;
 extern unkStruct_80029BA0* D_80029BA0;
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024000.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80024000.s")
 
 void func_8002409C(CritterController *arg0) {
     Critter *phi_v0;
@@ -148,9 +148,9 @@ void func_800240EC(CritterController *arg0) {
 }
 
 // Odd stack struct
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024154.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80024154.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002427C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_8002427C.s")
 
 extern f64 D_80029FE0;
 extern f64 D_80029FE8;
@@ -277,7 +277,7 @@ void func_800245B8(Critter *arg0) {
 }
 
 // Display list stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800247F4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800247F4.s")
 
 extern f64 D_8002A000;
 extern f64 D_8002A008;
@@ -299,7 +299,7 @@ void func_80024B78(Critter *arg0) {
 }
 
 // Display List
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80024C88.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80024C88.s")
 
 extern f32 D_8002A018;
 extern f64 D_8002A020;
@@ -341,7 +341,7 @@ void func_80024F28(Critter *arg0) {
 }
 
 // Display List
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002516C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_8002516C.s")
 
 extern f32 D_8002A028;
 
@@ -353,10 +353,10 @@ void func_80025500(Critter *arg0) {
 }
 
 // Display List
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800255C4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800255C4.s")
 
 // Display List
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_800257D4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800257D4.s")
 
 /*
 // TODO: Displaylist stuff
@@ -415,10 +415,10 @@ void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 a
     arg0[3][3] = 1.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025A3C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80025A3C.s")
 
 // Display List
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80025AD0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80025AD0.s")
 
 s32 func_800257D4(s32);
 s32 func_80025AD0(s32, s32);
@@ -443,9 +443,9 @@ s32 func_80025D1C(s32 arg0, CritterController *arg1) {
     return arg0;
 }
 
-void func_80025DB8(WaterStruct6*, WaterStruct6*, u8, s16, u8);
+void func_80025DB8(CritterStruct6*, CritterStruct6*, u8, s16, u8);
 
-void func_80025DB8(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2, s16 arg3, u8 arg4) {
+void func_80025DB8(CritterStruct6 *arg0, CritterStruct6 *arg1, u8 arg2, s16 arg3, u8 arg4) {
     f32 sp2C;
     s32 temp;
     f32 var_f0;
@@ -476,7 +476,7 @@ void func_80025DB8(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2, s16 arg3, u8
     *var_a2 = func_80612790(arg3) * sp2C;
 }
 
-void func_80025F3C(WaterStruct6 *arg0, WaterStruct6 *arg1, u8 arg2, u8 arg3) {
+void func_80025F3C(CritterStruct6 *arg0, CritterStruct6 *arg1, u8 arg2, u8 arg3) {
     func_80025DB8(arg0, arg1, arg2, func_806119A0() & 0xFFF, arg3);
 }
 
@@ -488,20 +488,20 @@ typedef struct {
     f32 unk8;
     f32 unkC;
     f32 unk10;
-} WaterStruct7;
+} CritterStruct7;
 
-void func_80025F8C(WaterStruct7 *arg0, WaterStruct7 *arg1, u8 arg2) {
+void func_80025F8C(CritterStruct7 *arg0, CritterStruct7 *arg1, u8 arg2) {
     func_80025F3C(arg0, arg1, arg2, 0);
     arg1->unk8 += arg0->unk0;
     arg1->unkC += arg0->unk2;
     arg1->unk10 += arg0->unk4;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002601C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_8002601C.s")
 
 extern f32 D_8002A044;
 
-extern WaterStruct5 *D_80029BA4;
+extern CritterStruct5 *D_80029BA4;
 
 /*
 // TODO: Kinda close, lots of float nonsense to sort out
@@ -544,8 +544,8 @@ void func_8002601C(Critter *arg0) {
 }
 */
 
-WaterStruct0 *func_80026298(WaterStruct1 *arg0, u8 arg1) {
-    WaterStruct0 *temp_v1 = arg0->unk4;
+CritterStruct0 *func_80026298(CritterStruct1 *arg0, u8 arg1) {
+    CritterStruct0 *temp_v1 = arg0->unk4;
     return &temp_v1[arg1];
 }
 
@@ -624,10 +624,10 @@ s32 func_80026530(Critter *arg0, s32 arg1) {
 }
 
 // Seems doable, lots of float bs though
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_8002658C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_8002658C.s")
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80026874.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80026874.s")
 
 extern f64 D_8002A078;
 
@@ -659,7 +659,7 @@ void func_80026904(Critter *arg0, CritterController *arg1) {
 }
 
 s32 func_80026A5C(Critter *arg0, s32 arg1) {
-    WaterStruct5 *temp_v0;
+    CritterStruct5 *temp_v0;
 
     if (arg0->unk1E2 == 1) {
         temp_v0 = arg0->unk54;
@@ -692,9 +692,9 @@ s32 func_80026A5C(Critter *arg0, s32 arg1) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80026B78.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80026B78.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80026C9C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80026C9C.s")
 
 typedef struct {
     s32 unk0;
@@ -715,7 +715,7 @@ extern Struct80029BAC D_80029BAC[];
 /*
 // TODO: Pretty close
 void func_80026C9C(CritterController *arg0) {
-    WaterStruct5 *temp_t5;
+    CritterStruct5 *temp_t5;
     Struct80029BAC_inner *temp_v0;
     u8 *phi_s0;
     u8 phi_v1;
@@ -812,7 +812,7 @@ void func_80026FD0(s32 arg0) {
     D_80029BA0 = malloc(8); // TODO: Something up here...
     func_80611690(D_80029BA0);
     func_80026E0C(arg0);
-    D_80029BA4 = malloc(sizeof(WaterStruct5));
+    D_80029BA4 = malloc(sizeof(CritterStruct5));
     func_80611690(D_80029BA4);
 }
 
@@ -845,4 +845,4 @@ void func_8002708C(CritterController *arg0) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/water/code_0/func_80027118.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80027118.s")

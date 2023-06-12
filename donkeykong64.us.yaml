@@ -209,7 +209,7 @@ segments:
     start: 0xDF600
     subsegments:
       - [0xDF600, bin]
-  - name: water.us.rzip
+  - name: critter.us.rzip
     type: bin
     start: 0xE6780
     subsegments:

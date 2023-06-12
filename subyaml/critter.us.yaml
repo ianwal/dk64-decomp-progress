@@ -1,5 +1,5 @@
 options:
-  basename: water
+  basename: critter
   find_file_boundaries: yes
   compiler: "IDO"
   platform: n64
@@ -7,16 +7,16 @@ options:
   generated_c_preamble: |
     #include <ultra64.h>
     #include "functions.h"
-  symbol_addrs_path: symbol_addrs.water.us.txt
-  undefined_funcs_auto_path: undefined_funcs_auto.water.us.txt
-  undefined_syms_auto_path: undefined_syms_auto.water.us.txt
+  symbol_addrs_path: symbol_addrs.critter.us.txt
+  undefined_funcs_auto_path: undefined_funcs_auto.critter.us.txt
+  undefined_syms_auto_path: undefined_syms_auto.critter.us.txt
   base_path: ..
-  target_path: build/us/water.us.bin
+  target_path: build/us/critter.us.bin
   asset_path: bin
   build_path: build/us
 segments:
   - name: code
-    dir: water
+    dir: critter
     type: code
     start: 0x00000000
     vram: 0x80024000
@@ -24,7 +24,7 @@ segments:
       - [0x0, c, code_0]
       - [0x3340, c, code_3340]
   - name: data
-    dir: water
+    dir: critter
     type: code
     start: 0x57F0
     vram: 0x800297F0

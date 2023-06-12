@@ -1,17 +1,33 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    u8 unk0[0xF8];
+} struct_8076BF48;
+
+typedef struct {
+    u8 unk0[0xEC];
+} struct_sub_8076C328;
+
+typedef struct {
+    struct_sub_8076C328 unk0[4];
+} struct_8076C328;
 
 extern s32 D_8000DDCC;
 extern s32 D_8076D200;
 
+extern struct_8076BF48 D_8076BF48[];
+extern struct_8076C328 D_8076C328[];
+
+void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 void func_80737E50(ALSeqPlayer*);
 void func_80737F0C(s32, s32, u8);
 void func_80738080(s32, u8, u8);
 void func_807380CC(ALSeqPlayer*, s32, u8);
 void func_80738118(s32, s32, u8);
 void func_807382A0(s32, s32, u8, u8, u8);
-void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
+void func_80738BB8(struct_8076BF48*, struct_sub_8076C328 *, u8, u8);
+void func_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);
 
 // Struct on the stack? Big malloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5A50/func_80600D50.s")
@@ -158,27 +174,9 @@ ALMicroTime func_806018B4(u8 arg0) {
     return D_8076BF20[arg0]->curTime;
 }
 
-typedef struct {
-    u8 unk0[0xF8];
-} struct_8076BF48;
-
-typedef struct {
-    u8 unk0[0xEC];
-} struct_sub_8076C328;
-
-typedef struct {
-    struct_sub_8076C328 unk0[4];
-} struct_8076C328;
-
-void func_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);
-extern struct_8076BF48 D_8076BF48[];
-extern struct_8076C328 D_8076C328[];
-
 void func_806018D4(u8 arg0, u8 arg1, s32 arg2) {
     func_80738E58(&D_8076BF48[arg0], &D_8076C328[arg0], arg1, arg2);
 }
-
-void func_80738BB8(struct_8076BF48*, struct_sub_8076C328 *, u8, u8);
 
 void func_8060193C(u8 arg0, u8 arg1) {
     func_80738BB8(
@@ -191,4 +189,3 @@ void func_8060193C(u8 arg0, u8 arg1) {
 void func_806019B8(u8 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     func_807382A0(D_8076BF20[arg0], arg1, arg2, arg3, arg4);
 }
-
