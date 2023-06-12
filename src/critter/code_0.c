@@ -93,9 +93,6 @@ typedef struct {
     CritterStruct0 *unk4;
 } CritterStruct1;
 
-void func_80024000(Critter*, s32, f32);
-void func_800262C0(Critter*, CritterController*);
-
 // CritterController again?
 typedef struct unkStruct_80029BA0 {
     u8 unk0;
@@ -106,9 +103,61 @@ typedef struct unkStruct_80029BA0 {
     s32 unk8;
 } unkStruct_80029BA0;
 
-extern s32 D_80029BA8;
-extern u8 D_807444FC;
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+} CritterStruct7;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    u8 unk6[0x24 - 0x6];
+    u8 unk24;
+    u8 unk25;
+    u8 unk26;
+    u8 unk27;
+    s16 unk28;
+    s16 unk2A;
+} Struct80026E0C;
+
 extern unkStruct_80029BA0* D_80029BA0;
+extern s32 D_80029BA8;
+extern f64 D_80029FF0;
+extern f32 D_80029FF8;
+extern f64 D_8002A000;
+extern f64 D_8002A008;
+extern f64 D_8002A010;
+extern f32 D_8002A018;
+extern f64 D_8002A020;
+extern f32 D_8002A028;
+extern f64 D_8002A078;
+
+extern s32 D_8071FC40;
+extern u8 D_807444FC;
+extern u8 D_80770DC9;
+extern s32 D_807F6C28;
+
+void func_80024000(Critter*, s32, f32);
+void func_80024578(Critter *);
+s32 func_800257D4(s32);
+s32 func_80025AD0(s32, s32);
+void func_80025DB8(CritterStruct6*, CritterStruct6*, u8, s16, u8);
+void func_800262C0(Critter*, CritterController*);
+void func_8002646C(Critter*, Critter*);
+void func_80026E0C(s32);
+
+void func_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
+void func_80611690(void*);
+s16 func_806531B8(f32, f32, f32, s16);
+s32 func_8066B0F8(s32, s32, s32, s32);
+u32 func_806119A0();
+void func_80718BF4(void);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80024000.s")
@@ -204,8 +253,6 @@ block_14:
 }
 */
 
-s32 func_8066B0F8(s32, s32, s32, s32);
-
 void func_8002448C(Critter *arg0) {
     s32 i;
     u16 temp;
@@ -238,13 +285,6 @@ void func_80024578(Critter *arg0) {
         func_80024518(arg0);
     }
 }
-
-void func_80024578(Critter *);
-void func_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
-u32 func_806119A0();
-extern f64 D_80029FF0;
-extern f32 D_80029FF8;
-extern u8 D_80770DC9;
 
 // Listed as "Bat Critter Behavior" in Ghidra
 void func_800245B8(Critter *arg0) {
@@ -279,10 +319,6 @@ void func_800245B8(Critter *arg0) {
 // Display list stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800247F4.s")
 
-extern f64 D_8002A000;
-extern f64 D_8002A008;
-extern f64 D_8002A010;
-
 void func_80024B78(Critter *arg0) {
     f32 temp_f0;
     f32 temp_f2;
@@ -300,11 +336,6 @@ void func_80024B78(Critter *arg0) {
 
 // Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80024C88.s")
-
-extern f32 D_8002A018;
-extern f64 D_8002A020;
-void func_80718BF4(void);
-extern s32 D_8071FC40;
 
 void func_80024F28(Critter *arg0) {
     s16 temp_v1;
@@ -342,8 +373,6 @@ void func_80024F28(Critter *arg0) {
 
 // Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_8002516C.s")
-
-extern f32 D_8002A028;
 
 void func_80025500(Critter *arg0) {
     if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1) && ((s16) (func_806119A0() % 255U) < 6)) {
@@ -420,10 +449,6 @@ void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 a
 // Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80025AD0.s")
 
-s32 func_800257D4(s32);
-s32 func_80025AD0(s32, s32);
-extern s32 D_80029BA8;
-
 s32 func_80025D1C(s32 arg0, CritterController *arg1) {
     s32 i;
     s32 var_s1;
@@ -442,8 +467,6 @@ s32 func_80025D1C(s32 arg0, CritterController *arg1) {
     }
     return arg0;
 }
-
-void func_80025DB8(CritterStruct6*, CritterStruct6*, u8, s16, u8);
 
 void func_80025DB8(CritterStruct6 *arg0, CritterStruct6 *arg1, u8 arg2, s16 arg3, u8 arg4) {
     f32 sp2C;
@@ -479,16 +502,6 @@ void func_80025DB8(CritterStruct6 *arg0, CritterStruct6 *arg1, u8 arg2, s16 arg3
 void func_80025F3C(CritterStruct6 *arg0, CritterStruct6 *arg1, u8 arg2, u8 arg3) {
     func_80025DB8(arg0, arg1, arg2, func_806119A0() & 0xFFF, arg3);
 }
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-} CritterStruct7;
 
 void func_80025F8C(CritterStruct7 *arg0, CritterStruct7 *arg1, u8 arg2) {
     func_80025F3C(arg0, arg1, arg2, 0);
@@ -599,8 +612,6 @@ void func_80026410(Critter *arg0) {
     }
 }
 
-void func_8002646C(Critter*, Critter*);
-
 void func_8002646C(Critter *arg0, Critter *arg1) {
     arg0->unk28 = arg1->unk28;
     arg0->unk58 = arg1->unk58;
@@ -628,8 +639,6 @@ s32 func_80026530(Critter *arg0, s32 arg1) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80026874.s")
-
-extern f64 D_8002A078;
 
 void func_80026904(Critter *arg0, CritterController *arg1) {
     if (arg0->unk1E2 == 2) {
@@ -744,26 +753,6 @@ void func_80026C9C(CritterController *arg0) {
     }
 }
 */
-
-extern s32 D_807F6C28;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    u8 unk6[0x24 - 0x6];
-    u8 unk24;
-    u8 unk25;
-    u8 unk26;
-    u8 unk27;
-    s16 unk28;
-    s16 unk2A;
-} Struct80026E0C;
-
-void func_80026E0C(s32);
-void func_80611690(void*);
-
-s16 func_806531B8(f32, f32, f32, s16);
 
 void func_80026E0C(s32 arg0) {
     s32 j;

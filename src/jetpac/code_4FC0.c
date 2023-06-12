@@ -1,13 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80028FC0.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029064.s")
-
-void func_80024E70(u8);
 typedef struct JetpacStruct5 {
     f32 unk0;
     f32 unk4;
@@ -19,6 +12,115 @@ typedef struct JetpacStruct5 {
     s32 unk34;
     s32 unk38;
 } JetpacStruct5;
+
+typedef struct {
+    // Enemy Struct?
+    u8 unk0[4];
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10[0x18-0x10];
+    s32 unk18;
+    u8 unk1C[0x28-0x1C];
+    s32 unk28;
+    s32 unk2C;
+    u8 unk30[0x40-0x30];
+    u32 unk40;
+    s32 unk44;
+    void* unk48;
+    void* unk4C;
+} struct_80029640;
+
+typedef struct JetpacStruct9 {
+    u8 pad0[0x18];
+} JetpacStruct9;
+
+typedef struct JetpacStruct8 {
+    u8 pad0[0xC];
+    f32 unkC;
+} JetpacStruct8;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+} struct_8002998C;
+
+extern JetpacStruct9 D_8002E800[];
+extern JetpacStruct D_8002F1DC[6];
+extern f32 D_8002EBB0;
+extern f32 D_8002EBB4;
+extern f32 D_8002EBB8;
+extern s32 D_8002E830;
+extern f32 D_8002EBBC;
+extern f32 D_8002EBC0;
+extern f32 D_8002EBC4;
+extern f32 D_8002EBC8;
+extern void* D_8002E878;
+extern f32 D_8002EBCC;
+extern s32 D_8002BA6C;
+extern f32 D_8002EBD0;
+extern s32 D_8002E890;
+extern s32 D_8002F050; // TODO: Datatype
+extern f32 D_8002F054;
+extern s32 D_8002F078;
+extern f64 D_8002EC10;
+extern s32 D_8002E8A8;
+extern f32 D_8002EC18;
+extern f32 D_8002EC1C;
+extern s32 D_8002E8C0;
+extern s32 D_8002E8D8;
+extern JetpacPlayerStruct D_8002EC30;
+extern s32 D_8002E8F0;
+extern s32 D_8002F3BC;
+extern s8 D_8002E9C0;
+extern s8 D_8002E9C4;
+extern s8 D_8002E9C8;
+extern s8 D_8002E9CC;
+extern s8 D_80045BE0;
+extern s8 D_80045BE1;
+extern s8 D_80045BE2;
+extern s8 D_80045BE3;
+
+void func_80025700(s32, s32, s32, s32, s32);
+void func_80025A60(s32);
+f32 func_80027210();
+void func_80024E70(u8);
+void func_80029640(struct_80029640*, f32, f32);
+extern void func_800298C8(JetpacStruct *arg0);
+void func_8002976C(JetpacStruct*);
+extern void (func_8002998C)();
+f32 func_80027210();
+void func_80029B90();
+f32 func_80027380(s32 *);
+f32 func_800273C8(JetpacStruct *);
+f32 func_8002A2DC(f32, f32);
+//void func_8002A67C(JetpacStruct *);
+f32 func_80027210();
+s32 func_80027250(f32, f32, f32, f32, f32, f32, f32, f32);
+extern void (func_8002A758)();
+void func_8002A374(JetpacStruct*);
+void func_8002A530(JetpacStruct *arg0);
+extern void func_80029F7C(struct_8002998C*, s32);
+f32 func_80027210();
+extern void (func_80029C1C)();
+s32 func_80028CF8(f32, f32, f32, f32, s32);
+s32 func_80029064(void *);
+void func_800294EC(void *, s32);
+
+#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80028FC0.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029064.s")
+
 void func_800291AC(JetpacStruct5 *arg0) {
     arg0->unk14 = 4;
     arg0->unk2C = 0;
@@ -27,9 +129,6 @@ void func_800291AC(JetpacStruct5 *arg0) {
     arg0->unk34 = (s32)arg0->unk4 & 0xFFF8;
     func_80024E70(5);
 }
-
-void func_80025700(s32, s32, s32, s32, s32);
-void func_80025A60(s32);
 
 void func_80029204(JetpacStruct *arg0) {
     if (arg0->unk14 == 3) {
@@ -69,27 +168,6 @@ void func_80029450(void) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_800294EC.s")
-
-f32 func_80027210();
-extern JetpacStruct D_8002F1DC[6];
-
-typedef struct {
-    // Enemy Struct?
-    u8 unk0[4];
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    u8 unk10[0x18-0x10];
-    s32 unk18;
-    u8 unk1C[0x28-0x1C];
-    s32 unk28;
-    s32 unk2C;
-    u8 unk30[0x40-0x30];
-    u32 unk40;
-    s32 unk44;
-    void* unk48;
-    void* unk4C;
-} struct_80029640;
 
 void func_80029640(struct_80029640 *arg0, f32 arg1, f32 arg2) {
     JetpacStruct *var_v0;
@@ -138,31 +216,16 @@ void func_80029640(struct_80029640 *arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002976C.s")
 
-void func_80029640(struct_80029640*, f32, f32);
-extern void func_800298C8(JetpacStruct *arg0);
-
 void func_80029884(struct_80029640 *arg0) {
     arg0->unk28 = 0xB;
     func_80029640(arg0, 1.60000002384f, 0.5f);
     arg0->unk48 = &func_800298C8;
 }
 
-void func_8002976C(JetpacStruct*);
-typedef struct JetpacStruct9 {
-    u8 pad0[0x18];
-} JetpacStruct9;
-extern JetpacStruct9 D_8002E800[];
-
 void func_800298C8(JetpacStruct *arg0) {
     func_8002976C(arg0);
     arg0->unk4C = &D_8002E800[(s32)arg0->unk0 % 2];
 }
-
-extern f32 D_8002EBB0;
-extern f32 D_8002EBB4;
-extern f32 D_8002EBB8;
-extern s32 D_8002E830;
-extern void (func_8002998C)();
 
 void func_8002992C(JetpacStruct *arg0) {
     arg0->unk48 = &func_8002998C;
@@ -175,25 +238,6 @@ void func_8002992C(JetpacStruct *arg0) {
     arg0->unkC = D_8002EBB8;
     arg0->unk4C = &D_8002E830;
 }
-
-s32 func_80028CF8(f32, f32, f32, f32, s32);         
-s32 func_80029064(void *);                          
-void func_800294EC(void *, s32);                       
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-} struct_8002998C;
 
 void func_8002998C(struct_8002998C *arg0) {
     s32 temp_v0_2;
@@ -228,12 +272,6 @@ void func_8002998C(struct_8002998C *arg0) {
     }
 }
 
-f32 func_80027210();
-void func_80029B90();
-extern f32 D_8002EBBC;
-extern f32 D_8002EBC0;
-extern void (func_80029C1C)();
-
 void func_80029AF8(JetpacStruct *arg0) {
     arg0->unk48 = &func_80029C1C;
     arg0->unk44 = 0x28;
@@ -245,13 +283,6 @@ void func_80029AF8(JetpacStruct *arg0) {
     func_80029B90(arg0);
     arg0->unk2C = (func_80027210() * 60.0f) + 10.0f;
 }
-
-extern f32 D_8002EBC4;
-extern f32 D_8002EBC8;
-typedef struct JetpacStruct8 {
-    u8 pad0[0xC];
-    f32 unkC;
-} JetpacStruct8;
 
 void func_80029B90(JetpacStruct8 *arg0) {
     if (arg0->unkC == 0.0) {
@@ -266,14 +297,6 @@ void func_80029B90(JetpacStruct8 *arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029C1C.s")
-
-f32 func_80027210();
-extern void* D_8002E878;
-extern f32 D_8002EBCC;
-extern void func_80029F7C(struct_8002998C*, s32);
-
-extern s32 D_8002BA6C;
-extern f32 D_8002EBD0;
 
 void func_80029E0C(struct_80029640 *arg0) {
     arg0->unk48 = &func_80029F7C;
@@ -297,8 +320,6 @@ void func_80029E0C(struct_80029640 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029F7C.s")
 
-void  func_8002A374(JetpacStruct*);
-void func_8002A530(JetpacStruct *arg0);
 
 void func_8002A254(JetpacStruct *arg0) {
     arg0->unk48 = &func_8002A530;
@@ -310,8 +331,6 @@ void func_8002A254(JetpacStruct *arg0) {
     }
     func_8002A374(arg0);
 }
-
-extern s32 D_8002E890;
 
 void func_8002A2AC(JetpacStruct *arg0) {
     arg0->unk28 = 8;
@@ -340,13 +359,6 @@ f32 func_8002A2DC(f32 arg0, f32 arg1) {
     return MIN(D_8002EC08, arg1);
 }
 */
-
-f32 func_80027380(s32 *);
-f32 func_800273C8(JetpacStruct *);
-f32 func_8002A2DC(f32, f32);
-extern s32 D_8002F050; // TODO: Datatype
-extern f32 D_8002F054;
-extern s32 D_8002F078;
 
 void func_8002A374(JetpacStruct *arg0) {
     f32 temp_f0;
@@ -420,8 +432,6 @@ void func_8002A530(JetpacStruct *arg0) {
     }
 }
 
-extern f64 D_8002EC10;
-
 void func_8002A67C(JetpacStruct *arg0) {
     s32 temp_f6;
 
@@ -429,14 +439,6 @@ void func_8002A67C(JetpacStruct *arg0) {
     arg0->unkC = ((f64)D_8002EC10 / (f64)temp_f6);
     arg0->unk2C++;
 }
-
-
-f32 func_80027210();
-//void func_8002A67C(JetpacStruct *);
-extern s32 D_8002E8A8;
-extern f32 D_8002EC18;
-extern f32 D_8002EC1C;
-extern void (func_8002A758)();
 
 void func_8002A6C0(JetpacStruct *arg0) {
     arg0->unk48 = &func_8002A758;
@@ -492,7 +494,6 @@ void func_8002A758(JetpacStruct *arg0) {
 }
 */
 
-extern s32 D_8002E8C0;
 void func_8002A8F0(struct_80029640 *arg0) {
     arg0->unk28 = 0xE;
     arg0->unk4C = &D_8002E8C0;
@@ -500,17 +501,11 @@ void func_8002A8F0(struct_80029640 *arg0) {
     arg0->unk48 = &func_8002976C;
 }
 
-extern s32 D_8002E8D8;
-
 void func_8002A944(JetpacStruct *arg0) {
     arg0->unk28 = 0xE;
     arg0->unk4C = &D_8002E8D8;
     func_8002A254(arg0);
 }
-
-extern JetpacPlayerStruct D_8002EC30;
-
-s32 func_80027250(f32, f32, f32, f32, f32, f32, f32, f32);
 
 s32 func_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     Competitor *player;
@@ -533,9 +528,6 @@ s32 func_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AAD4.s")
-
-extern s32 D_8002E8F0;
-extern s32 D_8002F3BC;
 
 void func_8002ABDC(void) {
     JetpacStruct *var_s0;
@@ -602,22 +594,12 @@ void func_8002AD8C(void) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AE00.s")
 
-extern s8 D_80045BE0;
-extern s8 D_80045BE1;
-extern s8 D_80045BE2;
-extern s8 D_80045BE3;
-
 void func_8002AE94(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
     D_80045BE0 = arg0;
     D_80045BE1 = arg1;
     D_80045BE2 = arg2;
     D_80045BE3 = arg3;
 }
-
-extern s8 D_8002E9C0;
-extern s8 D_8002E9C4;
-extern s8 D_8002E9C8;
-extern s8 D_8002E9CC;
 
 void func_8002AEC8(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
     D_8002E9C0 = arg0;
