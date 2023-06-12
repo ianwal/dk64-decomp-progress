@@ -97,7 +97,6 @@ void func_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
                                 var_v1 = 1;
                             }
                             if (var_v1 != 0) {
-                                // TODO: Problem is here
                                 temp = var_s1[i].unk8;
                                 temp_4 = D_807FBB70.unk200;
                                 temp_3 = D_807FBB70.unk201;

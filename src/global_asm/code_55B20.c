@@ -582,31 +582,28 @@ s32 func_806533C4(f32 arg0, f32 arg1, f32 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806534E0.s")
-
 s32 func_80653684(Chunk78_7C*, f32, f32);
 s32 func_80653804(Chunk78_7C*, f32, f32);
 
-/*
-// TODO: Very close
 s32 func_806534E0(f32 arg0, f32 arg1, f32 arg2, s16 chunkIndex, s8 *arg4, f32 *arg5) {
-    Chunk* chunk = &chunk_array_pointer[chunkIndex];
     Chunk78_7C *phi_s0;
+    Chunk78_7C *temp;
 
-    if (arg0 < chunk->unk80) {
+    if (arg0 < chunk_array_pointer[chunkIndex].unk80) {
         return FALSE;
     }
-    if (arg2 < chunk->unk82) {
+    if (arg2 < chunk_array_pointer[chunkIndex].unk82) {
         return FALSE;
     }
-    if (chunk->unk84 < arg0) {
+    if (chunk_array_pointer[chunkIndex].unk84 < arg0) {
         return FALSE;
     }
-    if (chunk->unk86 < arg2) {
+    if (chunk_array_pointer[chunkIndex].unk86 < arg2) {
         return FALSE;
     }
-    phi_s0 = chunk->unk78;
-    while (phi_s0 != chunk->unk7C) {
+    phi_s0 = chunk_array_pointer[chunkIndex].unk78;
+    temp = chunk_array_pointer[chunkIndex].unk7C;
+    while (phi_s0 != temp) {
         if (func_80653684(phi_s0, arg0, arg2) && func_80653804(phi_s0, arg0, arg2)) {
             if (phi_s0->unk12 & 1) {
                 *arg4 = 0;
@@ -620,7 +617,6 @@ s32 func_806534E0(f32 arg0, f32 arg1, f32 arg2, s16 chunkIndex, s8 *arg4, f32 *a
     }
     return FALSE;
 }
-*/
 
 // TODO: Can this be cleaned up any more?
 s32 func_80653684(Chunk78_7C *arg0, f32 arg1, f32 arg2) {

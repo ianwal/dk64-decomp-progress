@@ -1,12 +1,16 @@
 #include <ultra64.h>
 #include "functions.h"
 
-u8 func_80676CB0(Struct80676CB0 *arg0, u8 arg1);
-
-s32 func_806D0DE4(Actor *arg0, Actor *arg1);
-
 extern u8 D_807F6902;
 extern f64 D_807591E0;
+extern f32 D_80759250;
+extern f32 D_80759254;
+extern f32 D_80759258;
+
+u8 func_80676CB0(Struct80676CB0 *arg0, u8 arg1);
+s32 func_806D0DE4(Actor *arg0, Actor *arg1);
+u8 func_80676AB8(Actor*, Actor*, Actor*);
+s32 func_806EB400(Actor *);
 
 void func_80676260(Actor *arg0, Actor *arg1, s32 arg2) {
     func_806D0DE4(arg0, arg1);
@@ -28,16 +32,16 @@ u8 func_80676308(Actor *arg0, Actor *arg1, s32 arg2) {
     return FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_80676338.s")
+// TODO: Can we clean this up any more?
+u8 func_80676338(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
+    u8 var_a0;
 
-/*
-// TODO: Not exactly sure what's wrong here
-s32 func_80676338(Actor *arg0, Actor *arg1, s32 arg2) {
-    s32 temp = (func_806CC14C(func_80665DE0((s16)arg0->x_position, (s16)arg0->z_position, (s16)arg1->x_position, (s16)arg1->z_position), arg0->y_rotation) < 0x200);
-    return temp
-        && func_8067641C(arg0, arg1, arg2);
+    var_a0 = func_806CC14C(func_80665DE0((s16)arg0->x_position, (s16)arg0->z_position, (s16)arg1->x_position, (s16)arg1->z_position), arg0->y_rotation) < 0x200;
+    if (var_a0) {
+        var_a0 = func_8067641C(arg0, arg1, arg2);
+    }
+    return var_a0;
 }
-*/
 
 u8 func_8067641C(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return (func_806CC14C(func_80665DE0((s16)arg0->x_position, (s16)arg0->z_position, (s16)arg1->x_position, (s16)arg1->z_position), arg1->y_rotation) < 0x3A9);
@@ -124,8 +128,6 @@ u8 func_80676A70(s32 arg0, s32 arg1, s32 arg2) {
     return func_806769A8(arg0, arg1, arg2) && func_8067680C(arg0, arg1, arg2);
 }
 
-u8 func_80676AB8(Actor*, Actor*, Actor*);
-
 // TODO: Simplify this
 u8 func_80676AB8(Actor *arg0, Actor *arg1, Actor *arg2) {
     u8 var_v1;
@@ -184,11 +186,6 @@ u8 func_80676CB0(Struct80676CB0 *arg0, u8 arg1) {
     }
     return FALSE;
 }
-
-s32 func_806EB400(Actor *);
-extern f32 D_80759250;
-extern f32 D_80759254;
-extern f32 D_80759258;
 
 void func_80676D00(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3) {
     u8 temp_a2;
