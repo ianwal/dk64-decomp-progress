@@ -3863,7 +3863,7 @@ us,.code,func_80026DC8,536,no
 us,.code,func_80027BE8,380,no
 us,.code,func_80027210,64,yes
 us,.code,func_80029640,300,yes
-us,.code,func_80027250,224,no
+us,.code,func_80027250,224,yes
 us,.code,func_80024C90,184,yes
 us,.code,func_8002AEFC,404,no
 us,.code,func_80028950,156,no
