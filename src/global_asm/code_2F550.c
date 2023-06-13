@@ -667,25 +667,14 @@ void func_8062D3E4(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062DAF4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062DB70.s")
-
-/*
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Struct807F5E50;
-
-extern Struct807F5E50 D_807F5E50;
+extern f32 D_807F5E50[4];
 
 void func_8062DB70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
-    D_807F5E50.unk0 = arg3 - arg0;
-    D_807F5E50.unk8 = arg5 - arg2;
-    D_807F5E50.unk4 = arg4 - arg1;
-    D_807F5E50.unkC = -((D_807F5E50.unk8 * arg2) + ((D_807F5E50.unk0 * arg0) + (D_807F5E50.unk4 * arg1)));
+    D_807F5E50[0] = arg3 - arg0;
+    D_807F5E50[1] = arg4 - arg1;
+    D_807F5E50[2] = arg5 - arg2;
+    D_807F5E50[3] = -((D_807F5E50[0] * arg0) + (D_807F5E50[1] * arg1) + (D_807F5E50[2] * arg2));
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062DBDC.s")
 

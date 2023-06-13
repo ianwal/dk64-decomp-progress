@@ -42,7 +42,28 @@ void func_8070C27C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_8070C2D8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_8070C590.s")
+void func_8070C590(f32 (*arg0)[4], f32 (*arg1)[4], f32 (*arg2)[4]) {
+    arg2[0][0] = (arg0[0][0] * arg1[0][0]) + (arg0[0][1] * arg1[1][0]) + (arg0[0][2] * arg1[2][0]);
+    arg2[0][1] = (arg0[0][0] * arg1[0][1]) + (arg0[0][1] * arg1[1][1]) + (arg0[0][2] * arg1[2][1]);
+    arg2[0][2] = (arg0[0][0] * arg1[0][2]) + (arg0[0][1] * arg1[1][2]) + (arg0[0][2] * arg1[2][2]);
+
+    arg2[1][0] = (arg0[1][0] * arg1[0][0]) + (arg0[1][1] * arg1[1][0]) + (arg0[1][2] * arg1[2][0]);
+    arg2[1][1] = (arg0[1][0] * arg1[0][1]) + (arg0[1][1] * arg1[1][1]) + (arg0[1][2] * arg1[2][1]);
+    arg2[1][2] = (arg0[1][0] * arg1[0][2]) + (arg0[1][1] * arg1[1][2]) + (arg0[1][2] * arg1[2][2]);
+
+    arg2[2][0] = (arg0[2][0] * arg1[0][0]) + (arg0[2][1] * arg1[1][0]) + (arg0[2][2] * arg1[2][0]);
+    arg2[2][1] = (arg0[2][0] * arg1[0][1]) + (arg0[2][1] * arg1[1][1]) + (arg0[2][2] * arg1[2][1]);
+    arg2[2][2] = (arg0[2][0] * arg1[0][2]) + (arg0[2][1] * arg1[1][2]) + (arg0[2][2] * arg1[2][2]);
+
+    arg2[3][0] = (arg0[3][0] * arg1[0][0]) + (arg0[3][1] * arg1[1][0]) + (arg0[3][2] * arg1[2][0]) + arg1[3][0];
+    arg2[3][1] = (arg0[3][0] * arg1[0][1]) + (arg0[3][1] * arg1[1][1]) + (arg0[3][2] * arg1[2][1]) + arg1[3][1];
+    arg2[3][2] = (arg0[3][0] * arg1[0][2]) + (arg0[3][1] * arg1[1][2]) + (arg0[3][2] * arg1[2][2]) + arg1[3][2];
+
+    arg2[0][3] = 0.0f;
+    arg2[1][3] = 0.0f;
+    arg2[2][3] = 0.0f;
+    arg2[3][3] = 1.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_8070C808.s")
 
