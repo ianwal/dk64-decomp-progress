@@ -29,7 +29,7 @@ void func_806B1F50(void) {
         D_807FBB44->object_properties_bitfield |= 0x1000;
         func_807149B8(1);
         func_807149FC(-1);
-        func_807149A8(D_807FBB44->draw_distance * 0.75); // Issue here
+        func_807149A8(D_807FBB44->draw_distance * 0.75);
         func_80714C08(&D_8072030C, 0.28f, D_807FBB44, 1, 2);
         func_80614EBC(current_actor_pointer, 0x300);
         func_80604CBC(current_actor_pointer, 0x135, 0x64, 0, 0, 0x78, 1.0f, 0);
@@ -62,7 +62,7 @@ void func_806B1F50(void) {
                     func_80608528(current_actor_pointer, 0xED, 0xFF, 0x7F, 0x14);
                     func_8067DF44(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, (current_actor_pointer->animation_state->scale_y * 2) / D_8075B3C0, 0, 1);
                     func_806782C0(D_807FDC94);
-                    current_actor_pointer->control_state_progress += 1;
+                    current_actor_pointer->control_state_progress++;
                     break;
                 case 0x64:
                     func_806782C0(current_actor_pointer->unk11C);
@@ -75,21 +75,23 @@ void func_806B1F50(void) {
                 }
             break;
         default:
-            if ((current_actor_pointer->unk11C != NULL) && (current_actor_pointer->unk11C->control_state == 5)) {
-                current_actor_pointer->unk138 &= 0xFFFF7FFF;
-                func_80605314(current_actor_pointer, 0);
-                func_80726EE0(0);
-                func_8071586C(D_807FDC94);
-                func_806782C0(current_actor_pointer->unk11C);
-                current_actor_pointer->control_state = 0x27;
-                current_actor_pointer->control_state_progress = 0;
-                playCutscene(current_actor_pointer, 3, 1);
-                func_80614EBC(current_actor_pointer, 0x307);
-                current_actor_pointer->y_rotation += 0x800;
-                current_actor_pointer->z_position += 5.0f;
+            if (current_actor_pointer->unk11C != NULL) {
+                if (current_actor_pointer->unk11C->control_state == 5) {
+                    current_actor_pointer->unk138 &= 0xFFFF7FFF;
+                    func_80605314(current_actor_pointer, 0);
+                    func_80726EE0(0);
+                    func_8071586C(D_807FDC94);
+                    func_806782C0(current_actor_pointer->unk11C);
+                    current_actor_pointer->control_state = 0x27;
+                    current_actor_pointer->control_state_progress = 0;
+                    playCutscene(current_actor_pointer, 3, 1);
+                    func_80614EBC(current_actor_pointer, 0x307);
+                    current_actor_pointer->y_rotation += 0x800;
+                    current_actor_pointer->z_position += 5.0f;
+                }
             }
-            if ((current_actor_pointer->control_state_progress != 0) && (func_8067AF44(D_807FDC94) != 0) && ((object_timer % 7) == 0)) {
-                sp37 = (current_actor_pointer->control_state_progress * -0x1E) + 0xB4;
+            if ((current_actor_pointer->control_state_progress != 0) && (func_8067AF44(D_807FDC94) != 0) && ((object_timer % 7U) == 0)) {
+                sp37 = (current_actor_pointer->control_state_progress * -30) + 180;
                 func_80714998(3);
                 func_807149C8(sp37, sp37, sp37, current_actor_pointer->shadow_opacity);
                 func_8068588C(D_807FDC94, 1, 1.0f, 0.0f, 0.0f, 0.0f, -0x96);

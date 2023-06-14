@@ -311,7 +311,7 @@ void func_8071496C(s16 arg0);
 void func_8071497C(u16 arg0);
 void func_8071498C(void *arg0);
 void func_80714998(u8 arg0);
-void func_807149A8(u16 arg0);
+void func_807149A8(s16 arg0);
 void func_807149B8(u8 arg0);
 void func_807149FC(s32 arg0);
 void func_80714A08(f32 arg0, f32 arg1);

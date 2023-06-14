@@ -186,7 +186,7 @@ void func_80714998(u8 arg0) {
     D_807FDB1C = arg0;
 }
 
-void func_807149A8(u16 arg0) {
+void func_807149A8(s16 arg0) {
     D_807FDB3A = arg0;
 }
 
@@ -793,9 +793,52 @@ void func_80718380(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// Matrix stuff
-// Hmm, I think it needs rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807184F4.s")
+
+extern f64 D_8075E750;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80717D84_unk384_807184F4;
+
+/*
+void func_807184F4(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp70[4][4];
+    f32 sp30[4][4];
+    Actor *temp_v0_2;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(8);
+        arg0->unk384_f32->unk0 = 0.0f;
+        arg0->unk384_f32->unk4 = (func_806119A0() % 400) / 100;
+    }
+    guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(&sp30[0], arg0->unk384->unk0, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guRotateF(&sp30[0], 90.0f, 1.0f, 0.0f, 0.0f);
+    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    temp_v0_2 = arg0->unk338;
+    if (temp_v0_2 != NULL) {
+        arg0->unk344 = temp_v0_2->unkAC;
+    }
+    guTranslateF(&sp30[0], arg0->unk340, arg0->unk344, arg0->unk348);
+    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guMtxF2L(&sp70[0], arg0->unk128[D_807444FC]);
+    if (arg0->unk35C != 0) {
+        arg0->unk384_f32->unk0 += arg0->unk384_f32->unk4;
+        // TODO: Need rodata?
+        arg0->unk360 -= D_8075E750;
+        arg0->unk364 -= D_8075E750;
+        if (arg0->unk36D >= 0xA) {
+            arg0->unk36D -= 0xA;
+        } else {
+            arg0->unk36D = 0;
+        }
+    }
+    arg0->unk32C = 3;
+}
+*/
 
 // Matrix stuff
 // Hmm, I think it needs rodata
@@ -837,11 +880,105 @@ void func_807189BC(Struct80717D84 *arg0, s8 *arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071910C.s")
 
-// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807195D4.s")
 
-// Matrix stuff
+extern f32 D_8075E840;
+extern f32 D_8075E844;
+extern f64 D_8075E848;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80717D84_unk384_807195D4;
+
+/*
+// TODO: Hmm might need rodata?
+void func_807195D4(Struct80717D84 *arg0, s32 arg1) {
+    f32 temp;
+    f32 sp6C[4][4];
+    f32 sp2C[4][4];
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(8);
+        arg0->unk384_f32->unk0 = arg0->unk35C * 2;
+        arg0->unk384_f32->unk4 = 0.0f;
+        arg0->unk36D = 0;
+    }
+    if (arg0->unk36D >= 0xDD) {
+        arg0->unk36D = 0xFF;
+    } else {
+        arg0->unk36D += 0x14;
+    }
+    arg0->unk340 += (f32)(func_80612D1C(arg0->unk384_f32->unk0 * D_8075E840) * 2.5);
+    arg0->unk344 += (f32)(3.5);
+    arg0->unk348 += (f32)(func_80612D10(arg0->unk384_f32->unk0 * D_8075E844) * 2.5);
+    arg0->unk384_f32->unk0 += 8.0;
+    arg0->unk384_f32->unk4 += D_8075E848;
+    guScaleF(&sp6C[0], arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(&sp2C[0], arg0->unk384->unk4, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp6C[0], &sp2C[0], &sp6C[0]);
+    guMtxF2L(&sp6C[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807197B4.s")
+
+extern f64 D_8075E850;
+extern f64 D_8075E858;
+extern f64 D_8075E860;
+extern f64 D_8075E868;
+extern f64 D_8075E870;
+extern f64 D_8075E878;
+extern f64 D_8075E880;
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_807197B4;
+
+/*
+// TODO: Probably needs rodata...
+void func_807197B4(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp78[4][4];
+    f32 sp34;
+    f32 sp2C;
+    f32 temp_f0;
+    f64 temp_f10;
+    Struct80717D84_unk384_807197B4 *var_v1;
+    u8 temp_v0_2;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_807197B4));
+        var_v1 = arg0->unk384;
+        var_v1->unk0 = 0;
+        var_v1->unk4 = arg0->unk360;
+        var_v1->unk8 = arg0->unk364;
+    }
+    var_v1 = arg0->unk384;
+    var_v1->unk4 += D_8075E850;
+    var_v1->unk8 += D_8075E850;
+    arg0->unk340 -= func_80612D1C(arg0->unk35C * 2) * D_8075E858;
+    arg0->unk344 += D_8075E860;
+    arg0->unk348 -= func_80612D10(arg0->unk35C * 2) * D_8075E868;
+    arg0->unk360 = var_v1->unk4;
+    arg0->unk364 = var_v1->unk8;
+    arg0->unk360 *= (1.0 + (func_80612D1C(var_v1->unk0 * D_8075E870) * D_8075E880));
+    arg0->unk364 *= (1.0 + (func_80612D1C(var_v1->unk0 * D_8075E878) * D_8075E880));
+    var_v1->unk0++;
+    if ((arg0->unk354 - arg0->unk358) < 0xA) {
+        if (arg0->unk36D >= 0x16) {
+            arg0->unk36D -= 0x14;
+        } else {
+            arg0->unk36D = 0;
+        }
+    }
+    guScaleF(&sp78[0], arg0->unk360, arg0->unk364, 0.0f);
+    guMtxF2L(&sp78[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
+*/
 
 void func_80719A0C(Struct80717D84 *arg0, s8 *arg1) {
     f32 temp;
@@ -962,8 +1099,68 @@ void func_8071A038(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk32C = 3;
 }
 
-// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071A1E4.s")
+
+extern f64 D_8075E8F0;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_8071A1E4;
+
+/*
+// TODO: Regalloc
+void func_8071A1E4(Struct80717D84 *arg0, s32 arg1) {
+    Struct80717D84_unk384_8071A1E4 *var_v0;
+    s32 pad;
+    s32 pad2;
+    f32 sp8C[4][4];
+    f32 sp4C[4][4];
+    s8 sp4B;
+    s8 sp4A;
+    s8 sp49;
+    s8 sp48;
+    s16 sp46;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+
+    var_v0 = arg0->unk384;
+    if (var_v0 == NULL) {
+        sp48 = -(func_806119A0() / 10000) % 30;
+        sp46 = (func_806119A0() / 10000) % 180;
+        guRotateF(&sp8C[0], sp48, 0.0f, 1.0f, 0.0f);
+        // TODO: Regalloc here, arg0->unk35C is using v0 instead of t5
+        sp4B = arg0->unk35C >> 0x10;
+        sp4A = arg0->unk35C >> 8;
+        sp49 = arg0->unk35C;
+        arg0->unk384 = malloc(0xC);
+        guAlignF(&sp4C[0], sp46, sp4B, sp4A, sp49);
+        guMtxCatF(&sp8C[0], &sp4C[0], &sp8C[0]);
+        guMtxXFMF(&sp8C[0], 0.0f, 0.0f, -2.0f, &sp40, &sp3C, &sp38);
+        arg0->unk384_f32->unk0 = sp40 * 0.5;
+        if (sp3C < 0.0f) {
+            arg0->unk384_f32->unk4 = -sp3C * 0.5;
+        } else {
+            arg0->unk384_f32->unk4 = sp3C * 0.5;
+        }
+        arg0->unk384_f32->unk8 = sp38 * 0.5;
+    }
+    var_v0 = arg0->unk384;
+    arg0->unk340 += var_v0->unk0;
+    arg0->unk344 += var_v0->unk4;
+    arg0->unk348 += var_v0->unk8;
+    if ((arg0->unk354 - arg0->unk358) < 0xA) {
+        var_v0->unk4 -= D_8075E8F0;
+        if (arg0->unk36D >= 0x16) {
+            arg0->unk36D -= 0x14;
+            return;
+        }
+        arg0->unk36D = 0;
+    }
+}
+*/
 
 void func_8071A440(Struct80717D84 *arg0, s32 arg1) {
     f32 var_f0;
@@ -1107,6 +1304,54 @@ void func_8071B44C(Struct80717D84 *arg0, s32 arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071B520.s")
 
+extern f64 D_8075E988;
+
+/*
+void func_8071B520(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp80[4][4];
+    f32 sp40[4][4];
+    f32 sp3C;
+    f32 var_f10;
+    f32 var_f2;
+    f32 var_f4;
+    s16 temp_v0;
+    u8 temp_t6;
+    u8 temp_t7;
+
+    sp3C = arg0->unk344;
+    if (func_80667110(arg0->unk340, arg0->unk348, &sp3C) != 0) {
+        // TODO: This is probably a macro, which one?
+        // Kinda like ABS but not zero based?
+        if (arg0->unk344 < sp3C) {
+            var_f2 = sp3C - arg0->unk344;
+        } else {
+            var_f2 = -(sp3C - arg0->unk344);
+        }
+        if (var_f2 > 10.0) {
+            goto block_5;
+        }
+    } else {
+block_5:
+        if (arg0->unk34E >= 7) {
+            arg0->unk344 -= (D_8075E988 * ((0xE - (20.0f - (arg0->unk34E + ((f32)arg0->unk351 / arg0->unk350)))) / 14.0));
+        }
+    }
+    if (arg0->unk34E == 0x10) {
+        arg0->unk350 = 0xA;
+    }
+    guScaleF(&sp80[0], arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(&sp40[0], (arg0->unk35C * 0x168) / 4096, 0.0f, 1.0f, 0.0f);
+    guMtxCatF(&sp80[0], &sp40[0], &sp80[0]);
+    guTranslateF(&sp40[0], arg0->unk340, arg0->unk344, arg0->unk348);
+    guMtxCatF(&sp80[0], &sp40[0], &sp80[0]);
+    guMtxF2L(&sp80[0], arg0->unk128[D_807444FC]);
+    if (arg0->unk34E >= 0x13) {
+        arg0->unk36D -= 0x14;
+    }
+    arg0->unk32C = 3;
+}
+*/
+
 void func_8071B758(Struct80717D84 *arg0, s32 arg1) {
     f32 var_f0;
     u8 temp_t0;
@@ -1164,11 +1409,90 @@ void func_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BB14.s")
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BC80.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_8071BC80;
 
-// Matrix stuff
+void func_8071BC80(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp90[4][4];
+    f32 sp50[4][4];
+    Struct80717D84_unk384_8071BC80 *var_v0;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+
+    var_v0 = arg0->unk384;
+    if (var_v0 == NULL) {
+        arg0->unk384 = malloc(0xC);
+        guRotateF(&sp90[0], -(f32)((func_806119A0() % 36000) / 1000), 1.0f, 0.0f, 0.0f);
+        guRotateF(&sp50[0], (arg0->unk35C * 0x168) / 4096, 0.0f, 1.0f, 0.0f);
+        guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);
+        guMtxXFMF(&sp90[0], 0.0f, 0.0f, 10.0f, &sp48, &sp44, &sp40);
+        arg0->unk384_f32->unk0 = sp48;
+        arg0->unk384_f32->unk4 = sp44;
+        arg0->unk384_f32->unk8 = sp40;
+    }
+    var_v0 = arg0->unk384;
+    arg0->unk340 += var_v0->unk0;
+    arg0->unk344 += var_v0->unk4;
+    arg0->unk348 += var_v0->unk8;
+}
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BE04.s")
+
+extern f64 D_8075E9A8;
+extern f64 D_8075E9B0;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    u8 unk4;
+} Struct80717D84_unk35C_unk14;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    f32 unk4;
+    f32 unk8;
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    Struct80717D84_unk35C_unk14 *unk14;
+} Struct80717D84_unk35C;
+
+/*
+// TODO: Stack is too big, only difference
+void func_8071BE04(Struct80717D84 *arg0, s32 arg1) {
+    f32 var_f12;
+    f32 temp_f0;
+    f32 sp70[4][4];
+    f32 sp30[4][4];
+    s32 pad;
+    Struct80717D84_unk35C *sp28;
+    Struct80717D84_unk35C_unk14 *sp24;
+    f32 sp20;
+
+    sp28 = arg0->unk35C;
+    sp24 = sp28->unk14;
+    temp_f0 = func_80612794(sp28->unk10);
+    arg0->unk36D = sp24->unk0 * temp_f0;
+    sp20 = (1.0f - temp_f0);
+    var_f12 = arg0->unk364;
+    if (sp24->unk4 != 0) {
+        var_f12 = arg0->unk364 * ((func_80612794(sp24->unk2) * D_8075E9A8) + D_8075E9B0);
+        sp24->unk2 += 0xAA;
+        sp24->unk2 &= 0xFFF;
+    }
+    guScaleF(&sp70[0], arg0->unk360, var_f12, 0.0f);
+    guTranslateF(&sp30[0], arg0->unk340 + (sp28->unk4 * sp20), arg0->unk344 + (sp28->unk8 * sp20), arg0->unk348);
+    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guMtxF2L(&sp70[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 3;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C004.s")
 
@@ -1219,8 +1543,38 @@ void func_8071C004(Struct80717D84 *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C48C.s")
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C620.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_8071C620;
+
+void func_8071C620(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp90[4][4];
+    f32 sp50[4][4];
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    Struct80717D84_unk384_8071C620 *var_v0;
+
+    var_v0 = arg0->unk384;
+    if (var_v0 == NULL) {
+        arg0->unk384 = malloc(0xC);
+        guRotateF(&sp90[0], (func_806119A0() % 36000) / 100, 1.0f, 0.0f, 0.0f);
+        guRotateF(&sp50[0], (func_806119A0() % 36000) / 100, 0.0f, 0.0f, 1.0f);
+        guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);
+        guRotateF(&sp90[0], (func_806119A0() % 36000) / 100, 0.0f, 1.0f, 0.0f);
+        guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);
+        guMtxXFMF(&sp90[0], 0.0f, 0.0f, 0.5f, &sp4C, &sp48, &sp44);
+        arg0->unk384_f32->unk0 = sp4C;
+        arg0->unk384_f32->unk4 = sp48;
+        arg0->unk384_f32->unk8 = sp44;
+    }
+    var_v0 = arg0->unk384;
+    arg0->unk340 += var_v0->unk0;
+    arg0->unk344 += var_v0->unk4;
+    arg0->unk348 += var_v0->unk8;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C818.s")
 

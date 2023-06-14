@@ -1579,7 +1579,7 @@ us,.code,func_8060B7C4,12,yes
 us,.code,func_80648C84,1176,no
 us,.code,func_8073F1E4,324,yes
 us,.code,func_80610268,156,yes
-us,.code,func_8071C620,504,no
+us,.code,func_8071C620,504,yes
 us,.code,func_80715B30,776,no
 us,.code,func_8065EA44,84,yes
 us,.code,func_806ECA74,80,yes
@@ -1595,7 +1595,7 @@ us,.code,func_8062A348,168,yes
 us,.code,func_8071ABDC,852,no
 us,.code,func_80723428,92,yes
 us,.code,func_806A7BB8,36,yes
-us,.code,func_8071BC80,388,no
+us,.code,func_8071BC80,388,yes
 us,.code,func_806EB964,160,yes
 us,.code,func_8070B7EC,2580,no
 us,.code,func_806FB8B0,100,yes

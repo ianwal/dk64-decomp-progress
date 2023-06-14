@@ -285,12 +285,16 @@ u8 func_806C8D2C(s16 arg0) {
 // TODO: Missing something
 s32 func_806C8DE0(s32 playerIndex) {
     s32 phi_v1;
+    PlayerAdditionalActorData *PaaD;
+    Actor *Player;
 
     phi_v1 = current_character_index[playerIndex];
     switch (phi_v1) {
         case 6:
         case 7:
-            phi_v1 = func_806C8D2C(character_change_array[playerIndex].player_pointer->PaaD->unk1EE);
+            Player = character_change_array[playerIndex].player_pointer;
+            PaaD = Player->PaaD;
+            phi_v1 = func_806C8D2C(PaaD->unk1EE);
     }
     return phi_v1;
 }
