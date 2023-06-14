@@ -192,8 +192,6 @@ void func_806C55D8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_806C5C20.s")
 
-void func_80659670(f32, f32, f32, s16);
-
 void func_806C5FEC(void) {
     YetAnotherAdditionalActorData5 *temp_v1;
     PlayerAdditionalActorData *temp_a0;

@@ -23,7 +23,6 @@ s32 func_806A80C0(s8 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A9124.s")
 
-void func_8061134C(s32);
 extern s32 *D_807FC7E8;
 
 typedef struct TempStruct807FC7F0 {

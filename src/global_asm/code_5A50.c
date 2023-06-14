@@ -128,12 +128,11 @@ void func_8060151C(u8 arg0, s32 arg1, s32 arg2) {
     }
 }
 
-// TODO: Double check datatypes, it's fine for now though
 void func_806015E0(u8 arg0, s32 arg1, s32 arg2) {
     s32 i;
     for (i = 0; i < 0x10; i++) {
         if ((1 << i) & arg1) {
-            func_80738230(D_8076BF20[arg0], i & 0xFF, arg2 & 0xFF);
+            func_80738230(D_8076BF20[arg0], i, arg2);
         }
     }
 }

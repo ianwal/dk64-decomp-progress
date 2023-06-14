@@ -872,8 +872,6 @@ void func_806362C4(s32 arg0, u8 arg1) {
     }
 }
 
-void func_8061134C(void*);
-
 void func_80636380(s32 arg0, Struct80635548 *arg1) {
     s32 i;
 

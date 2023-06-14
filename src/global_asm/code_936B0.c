@@ -385,7 +385,6 @@ void func_806925AC(void) {
 
 void func_8061EF4C(Actor*, s32, s32, f32, f32, f32, f32, f32);
 
-int func_8071A8B0(); // TODO: Signature
 extern s32 D_8071ABDC; // TODO: Datatype
 extern s32 D_807200EC; // TODO: Datatype
 extern s32 D_80720120; // TODO: Datatype

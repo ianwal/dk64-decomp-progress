@@ -152,8 +152,6 @@ extern s32 D_807213D0; // TODO: Datatype
 extern f32 D_80758E18;
 extern f32 D_80758E1C;
 
-void func_80717DB4(void);
-
 void func_80664834(s16 arg0) {
     if (((rand() % 10000) % 12) == 0) {
         func_807149B8(1);

@@ -297,8 +297,6 @@ void func_806417BC(s16 arg0, s16 arg1) {
 }
 */
 
-void func_8061134C(s16*);
-
 void func_80641874(s16 arg0, s16 arg1) {
     s16 *temp_v0;
     Actor *sp20;
@@ -890,7 +888,6 @@ void func_80644D50(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 extern s32 D_8074E880[];
-int func_80717760(); // TODO: Signature
 
 void func_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_807149FC(-1);
@@ -900,8 +897,6 @@ void func_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644EC8.s")
-
-void func_8071AADC(void);
 
 int func_8071E3EC(); // TODO: Signature
 extern s32 D_80720BC4; // TODO: Datatype
@@ -1450,8 +1445,6 @@ void func_8064B514(u8 arg0, u8 arg1, u8 arg2, s16 arg3) {
 void func_8064B574(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_80726EE0(3);
 }
-
-s32 func_80659670(f32, f32, f32, s16);
 
 typedef struct {
     f32 unk0;

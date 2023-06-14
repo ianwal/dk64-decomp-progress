@@ -34,7 +34,7 @@ segments:
       - [0x1000, hasm, entry]                 #DONE
       - [0x1050, c, dk64_boot_1050]
       - [0x1630, c, dk64_boot_1630]
-      - [0x1CC0, c, dk64_boot_1CC0]
+      - [0x1CC0, c, inflate]
       - [0x30E0, c, dk64_boot_30E0]
       - [0x3390, c, dk64_boot_3390]
       - [0x3C00, c, dk64_boot_3C00]

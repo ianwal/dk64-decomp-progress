@@ -241,7 +241,6 @@ void func_806C1640(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-int func_8071A8B0(); // TODO: Signature
 int func_8071C818(); // TODO: Signature
 extern s32 D_8071FB08; // TODO: Proper datatype
 extern s32 D_807200D4; // TODO: Proper datatype
@@ -708,7 +707,6 @@ void func_806C28B8(void) {
 }
 */
 
-int func_80717D84(); // TODO: Signature
 extern f64 D_8075BED8;
 
 void func_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, void *arg6, f32 arg7) {

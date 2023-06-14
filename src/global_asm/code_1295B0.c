@@ -144,8 +144,6 @@ void func_80724C78(void* arg0) {
     func_80728300(arg0, D_80755690, D_80755694);
 }
 
-void func_80611690(AnimationStateUnk1C *);
-
 void func_80724CA4(s16 arg0, s16 arg1) {
     AnimationStateUnk1C *temp_v0;
     current_actor_pointer->animation_state->unk1C = malloc(8 + (arg1 * 8U));

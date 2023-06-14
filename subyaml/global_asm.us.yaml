@@ -34,7 +34,7 @@ segments:
       - [0x131B0, c, code_131B0]
       - [0x14CF0, c, code_14CF0]
       - [0x15010, c, code_15010]
-      - [0x15050, c, code_15050]
+      - [0x15050, c, heap]
       - [0x16550, c, done/code_16550]
       - [0x166A0, bin, code_166A0]
       - [0x1E2D0, bin, code_1E2D0]

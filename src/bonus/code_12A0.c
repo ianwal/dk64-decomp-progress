@@ -35,6 +35,7 @@ int func_80717404(); // TODO: Signature
 extern void* D_8074E880[];
 
 /*
+// TODO: Rodata?
 void func_800254B0(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s16 i;
 

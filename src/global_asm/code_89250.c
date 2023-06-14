@@ -1,13 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
 
-int func_80717930(); // TODO: Signature
 int func_807197B4(); // TODO: Signature
 int func_8071827C(); // TODO: Signature
-int func_80719B88(); // TODO: Signature
-int func_80719C00(); // TODO: Signature
 int func_8071AF30(); // TODO: Signature
-int func_8071EFDC(); // TODO: Signature
 extern s32 D_8071FC40;
 extern s32 D_8071FF18;
 extern s32 D_8071FF40;
@@ -33,7 +29,6 @@ extern f64 D_80759B60; // y
 extern f64 D_80759B70;
 extern f64 D_80759B68;
 
-void func_80719A0C(void); // Function pointer
 void func_806858E8(Actor*, s16, f32, f32, f32, f32, s32);
 void func_80686390(Actor*, f32, f32, f32, f32);
 void func_80685F60(Actor *actor);
@@ -551,8 +546,6 @@ void func_80686340(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068696C.s")
 
 extern f32 D_80759B50;
-
-extern void func_8071DC90(void); // Function pointer
 
 /*
 // TODO: Weird regalloc again, at s2, s3

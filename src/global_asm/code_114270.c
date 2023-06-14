@@ -27,8 +27,6 @@ extern s32 D_807FD9F0[];
 extern u8 D_807FDA1C;
 void func_80710CA0(void); // TODO: Datatypes
 
-void func_8061134C(s32);
-
 typedef struct {
     u16 unk0;
     s16 unk2;

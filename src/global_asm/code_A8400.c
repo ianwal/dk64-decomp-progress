@@ -931,8 +931,6 @@ typedef struct {
     s16 unk4;
 } AAD_806A7EF0;
 
-void func_80611690(void*);
-
 void func_806A7EF0(void) {
     AAD_806A7EF0 *aaD;
     AnimationStateUnk20 *temp_v0_2;

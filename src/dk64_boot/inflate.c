@@ -200,7 +200,7 @@ int *m;                 /* maximum lookup bits, returns actual */
    return y != 0 && g != 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1CC0/func_80001700.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/inflate/func_80001700.s")
 
 #if FALSE
 

@@ -2,7 +2,6 @@
 #include "functions.h"
 
 
-void func_8061134C(s32);
 s32 func_8063367C(s32, s32, s32);
 s32 func_80671D64(s32, s32);
 

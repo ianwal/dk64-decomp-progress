@@ -3,6 +3,18 @@
 
 /* your struct definitions go here */
 
+typedef struct HeapHeader HeapHeader;
+
+struct HeapHeader {
+    HeapHeader *prev;
+    s32 size; // Used
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB; // Used
+    s32 unkC;
+};
+
 typedef struct character_progress {
     u8 moves; // at 0x00
     u8 simian_slam; // at 0x01

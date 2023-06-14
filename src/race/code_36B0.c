@@ -343,8 +343,6 @@ void func_8002B6F4(RaceStruct7 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002B964.s")
 
-void func_80611690(RaaD_unk20*);
-
 void func_8002BBD0(Actor *arg0, s32 arg1) {
     RaceAdditionalActorData *sp1C;
     RaaD_unk20 *temp_v0;

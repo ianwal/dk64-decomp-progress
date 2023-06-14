@@ -1,20 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// This file manages the heap
-
-typedef struct HeapHeader HeapHeader;
-
-struct HeapHeader {
-    HeapHeader *prev;
-    s32 size; // Used
-    u8 unk8;
-    u8 unk9;
-    u8 unkA;
-    u8 unkB; // Used
-    s32 unkC;
-};
-
 typedef struct {
     void *unk0; // Used
     s8 unk4; // Used
@@ -36,11 +22,11 @@ extern s32 D_807F5A68;
 
 void *func_806111F8(s32 arg0, u32 arg1);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80610350.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80610350.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_806109EC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_806109EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80610A88.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80610A88.s")
 
 // TODO: Datatypes are sus
 void func_80610B84(s32 arg0, s32 arg1, u32 arg2) {
@@ -55,15 +41,15 @@ void func_80610B84(s32 arg0, s32 arg1, u32 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80610BD8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80610BD8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80610C74.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80610C74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80610DCC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80610DCC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80610E84.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80610E84.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/malloc.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/malloc.s")
 
 u8 func_80611154(void) {
     return D_80746A37;
@@ -100,7 +86,7 @@ s32 func_806111BC(s32 arg0, s32 arg1) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_806111F8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_806111F8.s")
 
 typedef struct Struct807F0988_unk8 Struct807F0988_unk8;
 
@@ -206,10 +192,10 @@ void func_8061138C(void *arg0) {
     D_807F5A58++;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80611408.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80611408.s")
 
 // Looks fiddly... hmm
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80611534.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80611534.s")
 
 void func_80611594(HeapHeader *arg0) {
     arg0[-1].unkB = 0;
@@ -219,7 +205,7 @@ void func_8061159C(HeapHeader *arg0) {
     arg0[-1].unkB = 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_806115A8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_806115A8.s")
 
 /*
 // TODO: Close, might only have 1 param
@@ -233,7 +219,7 @@ void func_806115A8(HeapHeader **arg0, HeapHeader *arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80611614.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80611614.s")
 
 extern s32 D_807F5A68;
 
@@ -263,12 +249,12 @@ s32 func_80611688(HeapHeader *arg0) {
 }
 
 // Appears to be an 8 byte aligned memset implementation
-void func_80611690(HeapHeader *arg0) {
+void func_80611690(void *arg0) {
     u64 *var_v0;
     u16 var_v1;
 
     var_v0 = arg0;
-    var_v1 = arg0[-1].size / 8U;
+    var_v1 = ((HeapHeader*)arg0)[-1].size / 8U;
     while (var_v1--) {
         *var_v0++ = 0;
     }
@@ -291,7 +277,7 @@ void func_80611724(s32 arg0, s32 arg1) {
 }
 
 // TODO: Blursed, maybe anti piracy?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_15050/func_80611730.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80611730.s")
 
 void func_80611844(void) {
 

@@ -24,8 +24,6 @@ int func_806FF75C(); // TODO: Signature
 int func_806FF01C(); // TODO: Signature
 
 int func_80716FB4(); // TODO: Signature
-int func_80717930(); // TODO: Signature
-int func_8071B2EC(); // TODO: Signature
 extern s32 D_8071FB08; // TODO: Proper datatype
 extern s32 D_8071FFA0;
 extern s32 D_8071FF18;
@@ -5185,8 +5183,6 @@ void func_806DECD4(void) {
 
 extern s32 D_80750FE0[];
 extern s32 D_80750FF0;
-
-void func_80659670(f32, f32, f32, s16);
 
 typedef struct BoulderAAD {
     u32 unk0;

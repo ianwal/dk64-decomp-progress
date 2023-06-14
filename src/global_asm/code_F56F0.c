@@ -766,8 +766,6 @@ extern f64 D_8075D818;
 extern f64 D_8075D820;
 extern f64 D_8075D828;
 
-void func_80611690(void*);
-
 void func_806F39E8(Actor *arg0, ExitData *arg1, u8 arg2) {
     Struct80753E90_unk4 *temp_v0_2;
     Struct80753E90_unk4 *temp;

@@ -12,7 +12,6 @@ extern s16 D_807F624C;
 extern f64 D_8075B8C0;
 
 int func_8071C9E8(); // TODO: Signature
-extern void func_80659670(f32, f32, f32, s32);
 
 void func_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     func_8071498C(&func_8071C9E8);

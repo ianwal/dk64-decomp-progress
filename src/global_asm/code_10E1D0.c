@@ -59,7 +59,6 @@ void func_807094D0(u8 arg0) { // init zipper
 s32 func_805FE71C(s32, u8, s32 *, ?);
 s32 func_805FE7B4(s32 *, s32 *, s32 *, ?);
 s32 func_80610044(s32, s32, ?, ?, s32, s32);
-s32 func_8061134C(s32);
 s32 func_8061CBCC();
 s32 func_8070AC74(s32, s32 *, u8 *);
 s32 func_8070AF24(s32 *, u8 *);

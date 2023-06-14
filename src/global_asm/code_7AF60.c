@@ -8,7 +8,6 @@ extern f32 D_80759254;
 extern f32 D_80759258;
 
 u8 func_80676CB0(Struct80676CB0 *arg0, u8 arg1);
-s32 func_806D0DE4(Actor *arg0, Actor *arg1);
 u8 func_80676AB8(Actor*, Actor*, Actor*);
 s32 func_806EB400(Actor *);
 

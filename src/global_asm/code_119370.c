@@ -311,7 +311,6 @@ void func_807158C0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715908.s")
 
 /*
-? func_8061134C(void *);                            // extern
 ? func_8062D26C(void *, void *, ?);                 // extern
 ? func_80630588(?, void *, ?, ? *);                 // extern
 extern s32 D_80000310;

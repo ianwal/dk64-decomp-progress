@@ -253,10 +253,10 @@ void func_800277F8(void) {
     Actor* CAP;
 
     CAP = current_actor_pointer;
-    a178 = CAP->unk178;
-    aaD = CAP->additional_actor_data;
-    if (!(CAP->object_properties_bitfield & 0x10)) {
-        a178->unk25 = func_806FDB8C(1, func_8070E750(0x1A, 2, 1, CAP), 8, 0.0f, 0.0f, 0.0f);
+    aaD = current_actor_pointer->additional_actor_data;
+    a178 = current_actor_pointer->unk178;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        a178->unk25 = func_806FDB8C(1, func_8070E750(0x1A, 2, 1), 8, 0.0f, 0.0f, 0.0f);
         func_806FDAB8(a178->unk25, 0.0f);
         aaD->unk23 = 5;
         aaD->unk0 = -2;
@@ -348,10 +348,8 @@ void func_800277F8(void) {
                 current_actor_pointer->control_state = 1;
                 break;
         }
-    } else if (aaD->unk0 != -2) {
-        if (aaD->unk0 != -1) {
-
-        } else if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+    } else if (aaD->unk0 != -2 && aaD->unk0 != -1) {
+        if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
             aaD->unk0 = 1;
             func_806A2B08(CAP->unk11C);
             func_8002733C(aaD);

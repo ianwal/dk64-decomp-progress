@@ -8,7 +8,6 @@ extern s32 D_80750600[];
 // TODO: Are these 4 correct?
 extern s32 D_8071FFA0;
 extern f32 D_8075B2A0;
-void func_80685B44(void*, s32, f32, s32, s32, s32, s32, s32, s32);
 
 void func_806B11C0(u8 arg0) {
     f32 sp3C, sp38, sp34;
