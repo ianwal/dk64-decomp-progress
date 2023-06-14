@@ -2328,8 +2328,8 @@ typedef struct {
         u32 unk35C_u32;
         Actor *unk35C_actor;
     };
-    f32 unk360;
-    f32 unk364;
+    f32 unk360; // X
+    f32 unk364; // Y
     u8 unk368[0x36D - 0x368];
     u8 unk36D;
     u8 unk36E[0x384 - 0x36E];
