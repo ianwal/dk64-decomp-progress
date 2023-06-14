@@ -2312,9 +2312,9 @@ typedef struct {
     s32 unk334;
     Actor *unk338;
     s32 unk33C;
-    f32 unk340;
-    f32 unk344;
-    f32 unk348;
+    f32 unk340; // X
+    f32 unk344; // Y
+    f32 unk348; // Z
     s16 unk34C;
     s16 unk34E;
     u8 unk350;

@@ -1250,8 +1250,22 @@ void func_8071C818(Struct80717D84 *arg0, s8 *arg1) {
 }
 */
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C914.s")
+extern f64 D_8075E9D0;
+
+void func_8071C914(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp70[4][4];
+    f32 sp30[4][4];
+    f32 temp_f0;
+
+    arg0->unk360 = arg0->unk360 * D_8075E9D0;
+    arg0->unk35C += 0xA;
+    arg0->unk364 = arg0->unk360;
+    guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(&sp30[0], arg0->unk35C, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guMtxF2L(&sp70[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
 
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C9E8.s")
@@ -1301,11 +1315,72 @@ void func_8071D260(Struct80717D84 *arg0, s8 *arg1) {
 // Doable, fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D28C.s")
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D5BC.s")
+extern f64 D_8075EA08;
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D784.s")
+void func_8071D5BC(Struct80717D84 *arg0, s8 *arg1) {
+    f32 sp80[4][4];
+    f32 sp40[4][4];
+    s32 temp_f8;
+
+    temp_f8 = arg0->unk360 * 20.0f;
+    if (player_pointer->y_position <= arg0->unk344) {
+        if (arg0->unk344 < (player_pointer->y_position + player_pointer->unk15E)) {
+            if ((((player_pointer->x_position - arg0->unk340) * (player_pointer->x_position - arg0->unk340)) + ((player_pointer->z_position - arg0->unk348) * (player_pointer->z_position - arg0->unk348))) < (temp_f8 * temp_f8)) {
+                func_806EB0C0(0x2E, NULL, 0);
+            }
+        }
+    }
+    guScaleF(&sp80[0], arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(&sp40[0], 90.0f, 1.0f, 0.0f, 0.0f);
+    guMtxCatF(&sp80[0], &sp40[0], &sp80[0]);
+    guTranslateF(&sp40[0], arg0->unk340, arg0->unk344, arg0->unk348);
+    guMtxCatF(&sp80[0], &sp40[0], &sp80[0]);
+    if (arg0->unk36D >= 9) {
+        arg0->unk36D -= 9;
+    } else {
+        *arg1 = 1;
+    }
+    arg0->unk360 *= D_8075EA08;
+    arg0->unk364 = arg0->unk360;
+    guMtxF2L(&sp80[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 3;
+}
+
+extern f32 D_80755674;
+extern f32 D_80755678;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_8071D784;
+
+void func_8071D784(Struct80717D84 *arg0, s8 *arg1) {
+    f32 sp90[4][4];
+    f32 sp50[4][4];
+    s32 pad;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(0xC);
+        guRotateF(&sp90[0], -(f32)((func_806119A0() % 36000) / 1000), 1.0f, 0.0f, 0.0f);
+        guRotateF(&sp50[0], (arg0->unk35C * 0x168) / 4096, 0.0f, 1.0f, 0.0f);
+        guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);
+        guMtxXFMF(&sp90[0], 0.0f, 0.0f, D_80755678, &sp48, &sp44, &sp40);
+        arg0->unk384_f32->unk0 = sp48;
+        arg0->unk384_f32->unk4 = sp44;
+        arg0->unk384_f32->unk8 = sp40;
+    }
+    arg0->unk340 += arg0->unk384_f32->unk0;
+    arg0->unk344 += arg0->unk384_f32->unk4;
+    arg0->unk384_f32->unk4 += D_80755674;
+    arg0->unk348 = arg0->unk348 + arg0->unk384_f32->unk8;
+    if (arg0->unk344 <= player_pointer->y_position) {
+        *arg1 = 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D94C.s")
 
@@ -1442,8 +1517,17 @@ void func_8071DC90(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E028.s")
+void func_8071E028(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp68[4][4];
+    f32 sp28[4][4];
+    guScaleF(&sp68[0], arg0->unk360, arg0->unk364, 0.0f);
+    guTranslateF(&sp28[0], 0.0f, arg0->unk364 * 20.0f, 0.0f);
+    guMtxCatF(&sp68[0], &sp28[0], &sp68[0]);
+    guRotateF(&sp28[0], arg0->unk35C, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp68[0], &sp28[0], &sp68[0]);
+    guMtxF2L(&sp68[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
 
 void func_8071E110(Struct80717D84 *arg0, u8 arg1, u16 arg2, f32 arg3, f32 arg4, s32 arg5) {
     Struct80717D84_unk384_8071E110 *temp_v0;
@@ -1683,8 +1767,38 @@ void func_8071EEA4(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk364 = (arg0->unk35C / 100.0) + 1.0;
 }
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071EEE0.s")
+extern f32 D_8075EAA8;
+extern f64 D_8075EAB0;
+
+void func_80612CA0(f32 (*)[4], f32);
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_8071EEE0;
+
+void func_8071EEE0(Struct80717D84 *arg0, s32 arg1) {
+    Struct80717D84_unk384_8071EEE0 *var_v1;
+    f32 sp6C[4][4];
+    f32 sp2C[4][4];
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(0xC);
+        var_v1 = arg0->unk384;
+        var_v1->unk0 = D_8075EAA8;
+        var_v1->unk4 = arg0->unk360;
+        var_v1->unk8 = 0.0f;
+    }
+    var_v1 = arg0->unk384;
+    var_v1->unk0 = ((var_v1->unk4 - var_v1->unk0) * D_8075EAB0) + var_v1->unk0;
+    var_v1->unk8 = var_v1->unk8 + 5.0f;
+    guScaleF(&sp6C[0], arg0->unk360, arg0->unk364, 0.0f);
+    func_80612CA0(&sp2C[0], var_v1->unk8);
+    guMtxCatF(&sp6C[0], &sp2C[0], &sp6C[0]);
+    guMtxF2L(&sp6C[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
 
 void func_8071EFDC(Struct80717D84 *arg0, s8 *arg1) {
     f64 temp = D_8075EAB8;
@@ -1820,10 +1934,26 @@ void func_8071F444(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F660.s")
 
-void func_80612CA0(f32 (*)[4], f32);
+/*
+// TODO: Stack is too big, only issue
+void func_8071F660(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp68[4][4];
+    f32 sp28[4][4];
+    f32 sp24;
+
+    sp24 = ((f32)arg0->unk358 / (arg0->unk354 - 1));
+    arg0->unk364 = \
+    arg0->unk360 = func_80612794(sp24 * 2048.0f) * 3.0;
+    guScaleF(&sp68[0], arg0->unk360, arg0->unk364, 0.0f);
+    func_80612CA0(&sp28[0], sp24 * 180.0f);
+    guMtxCatF(&sp68[0], &sp28[0], &sp68[0]);
+    guMtxF2L(&sp68[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
+*/
+
 extern f32 D_8075EAE0;
 extern f64 D_8075EAE8;
 extern f64 D_8075EAF0;
