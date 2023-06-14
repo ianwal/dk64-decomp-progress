@@ -13,6 +13,7 @@ extern u8 D_80010304;
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsGetStatus.s")
 
 /*
+// TODO: Needs libultra 2.0I headers I think
 s32 __osPfsGetStatus(OSMesgQueue *queue, int channel)
 {
     s32 ret;

@@ -454,6 +454,7 @@ build/us/src/dk64_boot/io/%.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/io/conteepprobe.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/conteepwrite.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/conteepread.c.o: OPT_FLAGS = -O2
+build/us/src/dk64_boot/io/contreaddata.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/sirawdma.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/pimgr.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/pfsgetstatus.c.o: OPT_FLAGS = -O2

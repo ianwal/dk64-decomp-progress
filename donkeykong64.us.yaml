@@ -80,7 +80,7 @@ segments:
       - [0x7B10, c, os/pidma]                 #DONE
       - [0x7C20, c, io/controller]
       - [0x7F60, c, dk64_boot_7F60]
-      - [0x7FD0, c, dk64_boot_7FD0]
+      - [0x7FD0, c, io/contreaddata]
       - [0x81B0, c, libc/llcvt]
       - [0x83C0, c, os/settimer]              #DONE
       - [0x84A0, c, os/getthreadid]           #DONE

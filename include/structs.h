@@ -2304,8 +2304,8 @@ typedef struct {
 
 typedef struct {
     u8 unk0[0x128 - 0x0];
-    float unk128[4][4]; // TODO: How many?
-    u8 unk168[0x32C - 0x168];
+    float unk128[2][4][4]; // TODO: How many?
+    u8 unk1A8[0x32C - 0x1A8];
     u8 unk32C;
     u8 unk32D[0x330 - 0x32D];
     Struct80717D84_unk330 *unk330;

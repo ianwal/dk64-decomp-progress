@@ -1642,7 +1642,7 @@ s32 func_80600530(void);
 // Round 2
 s32 func_80737E30(ALSeqPlayer*);
 void func_80737E50(ALSeqPlayer*);
-void func_807382A0(s32, s32, u8, u8, u8);
+void func_807382A0(ALSeqPlayer*, s32, u8, u8, u8);
 void func_807381D8(ALSeqPlayer *seqp, f32 arg1, f32 arg2);
 void func_806018D4(u8 arg0, u8 arg1, s32 arg2);
 void func_8060193C(u8 arg0, u8 arg1);

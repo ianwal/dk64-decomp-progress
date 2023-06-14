@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_807382A0(s32 arg0, s32 arg1, u8 arg2, u8 arg3, u8 arg4) {
+void func_807382A0(ALSeqPlayer *arg0, s32 arg1, u8 arg2, u8 arg3, u8 arg4) {
     s32 sp2C;
     u8 sp2B;
     u8 sp2A;
@@ -19,5 +19,5 @@ void func_807382A0(s32 arg0, s32 arg1, u8 arg2, u8 arg3, u8 arg4) {
     sp2A = arg4;
     sp2C = 0;
     sp1C = arg1;
-    alEvtqPostEvent(arg0 + 0x48, &sp20, sp1C);
+    alEvtqPostEvent(&arg0->evtq, &sp20, sp1C);
 }

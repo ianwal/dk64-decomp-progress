@@ -320,7 +320,6 @@ OSTime func_806119A0(void);
 
 void func_80715908(void *arg0) {
     ? sp3F;
-    s32 temp_v0;
     s32 var_s1;
     void *temp_a0;
     void *temp_s0;
@@ -351,7 +350,6 @@ void func_80715908(void *arg0) {
         } while (var_s1 < arg0->unk20);
     }
     if (D_80000310 != 0x17D9) {
-        temp_v0 = ;
         osSetTime(func_806119A0());
     }
     temp_s0 = arg0->unk398;
@@ -390,11 +388,43 @@ void func_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 // displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715E94.s")
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80716F10.s")
+extern u8 D_807444FC;
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80716FB4.s")
+void func_80716F10(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp68[4][4];
+    f32 sp28[4][4];
+    guScaleF(&sp68[0], arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(&sp28[0], arg0->unk35C, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp68[0], &sp28[0], &sp68[0]);
+    guMtxF2L(&sp68[0], &arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
+
+u32 func_806119A0();
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80717D84_unk384_80716FB4;
+
+void func_80716FB4(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp70[4][4];
+    f32 sp30[4][4];
+    Struct80717D84_unk384_80716FB4 *var_v1;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80716FB4));
+        arg0->unk384->unk0 = (func_806119A0() % 36000) / 100;
+        arg0->unk384->unk4 = (func_806119A0() % 400) / 100;
+    }
+    var_v1 = arg0->unk384;
+    var_v1->unk0 += var_v1->unk4;
+    guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(&sp30[0], arg0->unk384->unk0, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guMtxF2L(&sp70[0], &arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717100.s")
 
@@ -1111,10 +1141,10 @@ void func_8071C004(Struct80717D84 *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C818.s")
 
-extern u8 D_807444FC;
 extern f64 D_8075E9C8;
 
 /*
+// TODO: Rodata?
 // TODO: Close
 void func_8071C818(Struct80717D84 *arg0, s8 *arg1) {
     f64 temp = D_8075E9C8;

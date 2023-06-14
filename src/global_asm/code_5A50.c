@@ -25,7 +25,6 @@ void func_80737F0C(s32, s32, u8);
 void func_80738080(s32, u8, u8);
 void func_807380CC(ALSeqPlayer*, s32, u8);
 void func_80738118(s32, s32, u8);
-void func_807382A0(s32, s32, u8, u8, u8);
 void func_80738BB8(struct_8076BF48*, struct_sub_8076C328 *, u8, u8);
 void func_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);
 
