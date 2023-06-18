@@ -16,7 +16,6 @@ void func_806F91B4(s32, s32, s16);
 
 void func_806D0408(void);
 void func_806D06A0(void);
-void func_80714950(s32);
 
 int func_806FF358(); // TODO: Signature
 void func_806FF32C(s32 arg0, Actor *arg1);

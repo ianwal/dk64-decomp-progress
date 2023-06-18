@@ -33,8 +33,6 @@ void func_8065A708(f32, f32, s32, f32, f32, f32, f32, s32, u8, u8, u8); // TODO:
 
 u8 func_80661300(s32);
 
-void func_80714950(s32);
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063D930.s")
 
 extern u8 D_807F66F0[];
@@ -795,8 +793,6 @@ void func_8064384C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806438B8.s")
-
-void func_80714950(s32);
 
 void func_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     if ((object_timer % 5U) == 0) {

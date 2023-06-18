@@ -82,8 +82,115 @@ void func_806BDEC8(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-// Doable lookin
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806BE09C.s")
+void func_8061C518(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_806F91B4(s32, u8, s32);
+extern s32 D_8071D0F0; // TODO: Datatype
+extern u16 D_807446C0[];
+extern f32 D_8075BBE8;
+extern f64 D_8075BBF0;
+extern f64 D_8075BBF8;
+extern f32 D_8075BC00;
+extern u16 D_807FC930[];
+
+void func_806BE09C(void) {
+    PlayerAdditionalActorData *sp4C;
+    u8 temp;
+    u8 temp2;
+    u8 levelIndex;
+    f32 sp44;
+    f32 temp_f2;
+    CharacterProgress *sp3C;
+    f32 sp40;
+    s32 i;
+    s32 count = 0;
+
+    sp4C = player_pointer->additional_actor_data;
+    levelIndex = getLevelIndex(D_8076A0AB, 0);
+    sp44 = D_807FC930[levelIndex] / (f32)D_807446C0[levelIndex];
+    if (func_806BDD90() == 1) {
+        D_807FDC90->unk2C = func_806F8AD4(0, 0);
+        if (D_807FDC90->unk2C != 0) {
+            current_actor_pointer->control_state = 0x12;
+            current_actor_pointer->control_state_progress = 0;
+            D_807FDC90->unk2E = 0x32;
+            func_80614EBC(current_actor_pointer, 0x28A);
+            func_8061C518(sp4C->unk104, player_pointer, 4, 0x990, 0x5A, -0x2E, 0x3C, 0xA, 0x20, 0, D_8075BBE8);
+            player_pointer->y_rotation = func_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, player_pointer->x_position, player_pointer->z_position);
+            player_pointer->unkEE = player_pointer->y_rotation;
+        }
+    }
+    func_80724E48(0);
+    if (sp44 > 1.0f) {
+        sp44 = 1.0f;
+    }
+    temp_f2 = D_807FDC90->unk30 + ((D_8075BBF0 - D_807FDC90->unk30) * sp44);
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_807248B0(current_actor_pointer, temp_f2);
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x12:
+            func_807248B0(current_actor_pointer, ((temp_f2 - current_actor_pointer->animation_state->scale_x) * D_8075BBF8) + current_actor_pointer->animation_state->scale_x);
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    if (D_807FDC90->unk2E != 0) {
+                        D_807FDC90->unk2E--;
+                        if (D_807FDC90->unk2E == 0) {
+                            func_8061C518(sp4C->unk104, current_actor_pointer, 4, 0x305, 0x14A, 3, 0x32, 0x7F, 0x5A, 0, D_8075BC00);
+                        }
+                    }
+                    if (D_807FDC90->unk2C != 0) {
+                        if (!(object_timer & 3)) {
+                            sp3C = &D_807FC950->character_progress[*current_character_index];
+                            D_807FDC90->unk2C--;
+                            func_806F91B4(0, 0, -1);
+                            sp3C->coloured_bananas_fed_to_tns[levelIndex]++;
+                            for (i = 0; i < 5; i++) { count += D_807FC950[0].character_progress[i].coloured_bananas_fed_to_tns[levelIndex]; }
+                            if (count >= D_807446C0[levelIndex]) {
+                                D_807FDC90->unk2C = 0;
+                                func_806F8D58(0, 0);
+                            }
+                            func_8071498C(&D_8071D0F0);
+                            func_807149FC(-1);
+                            func_807149B8(1);
+                            func_80714950(current_actor_pointer);
+                            func_80714C08(func_806FACE8(0), 0.3f, player_pointer, 4, 0);
+                        }
+                    } else if (D_807FDC90->unk2E == 0) {
+                        D_807FDC90->unk2C = 0x1E;
+                        current_actor_pointer->control_state_progress = 1;
+                    }
+                    break;
+                case 1:
+                    if (D_807FDC90->unk2C != 0) {
+                        D_807FDC90->unk2C--;
+                    } else {
+                        func_80614EBC(current_actor_pointer, 0x28B);
+                        current_actor_pointer->control_state = 0x27;
+                        current_actor_pointer->control_state_progress = 0;
+                    }
+                    break;
+            }
+            break;
+        case 0x27:
+            if (current_actor_pointer->control_state_progress == 1) {
+                func_80685520(4.0f, 1, current_actor_pointer->x_position, current_actor_pointer->y_position + 5.0f, current_actor_pointer->z_position);
+                current_actor_pointer->control_state = 0x28;
+                current_actor_pointer->control_state_progress = 0;
+                D_807FDC90->unk2C = 0x3C;
+            }
+            break;
+        case 0x28:
+            D_807FDC90->unk2C -= 1;
+            if (D_807FDC90->unk2C == 0) {
+                current_actor_pointer->control_state = 0;
+                current_actor_pointer->control_state_progress = 0;
+                D_807FDC90->unk2E = 0;
+            }
+            break;
+    }
+    func_8072881C(0, &D_807FDC90->unk28);
+    func_806319C4(current_actor_pointer, 0);
+}
 
 void func_806BE674(u8 arg0) {
     s16 i;
