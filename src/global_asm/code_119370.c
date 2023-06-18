@@ -1,7 +1,82 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern Struct80717D84 *D_80028C30;
+
+extern s32 D_8071FEF4;
+extern s32 D_8071FFA0; // TODO: Datatype
+
+extern s32 D_8074E880[]; // TODO: Datatype
+
+extern u8 D_807444FC;
 extern u8 D_8074450C;
+
+extern s16 D_807502D0;
+
+extern f32 D_8075E728;
+extern f32 D_8075E72C;
+extern f32 D_8075E730;
+extern f64 D_8075E738;
+extern f64 D_8075E740;
+extern f64 D_8075E888;
+extern f64 D_8075E890;
+extern f64 D_8075E898;
+extern f32 D_8075E8A0;
+extern f64 D_8075E8A8;
+extern f64 D_8075EA70;
+extern f64 D_8075EA78;
+extern f32 D_8075EA80;
+extern f64 D_8075EA88;
+extern f32 D_8075EA90;
+extern f64 D_8075EA98;
+extern f64 D_8075EAA0;
+extern f64 D_8075EAB8;
+extern f64 D_8075EAC0;
+extern f64 D_8075EAC8;
+
+extern f64 D_8075EAD8;
+
+extern f64 D_8075E6D0;
+extern f64 D_8075E6D8;
+
+extern f64 D_8075E708;
+extern f64 D_8075E710;
+extern f64 D_8075E718;
+extern f64 D_8075E720;
+
+extern f64 D_8075E770;
+extern f64 D_8075E778;
+extern f64 D_8075E780;
+
+extern f32 D_8075E8B0;
+extern f32 D_8075E8B4;
+extern f64 D_8075E8B8;
+extern f32 D_8075E8C0;
+extern f64 D_8075E8C8;
+extern f64 D_8075E8D0;
+extern f32 D_8075E8D8;
+extern f32 D_8075E8DC;
+extern f32 D_8075E8E0;
+
+extern f64 D_8075E8F8;
+
+extern f32 D_8075E950;
+extern f32 D_8075E954;
+extern f32 D_8075E958;
+extern f32 D_8075E95C;
+extern f32 D_8075E960;
+extern f32 D_8075E964;
+extern f32 D_8075E978;
+extern f64 D_8075E980;
+extern f64 D_8075E990;
+extern f32 D_8075E998;
+extern f32 D_8075EA28;
+extern f32 D_8075EA2C;
+extern f64 D_8075EA30;
+extern f32 D_8075EA38;
+extern f64 D_8075EA40;
+extern f64 D_8075EA48;
+extern f32 D_8075EA50;
 
 extern Struct807FDB00 *D_807FDB00;
 extern Struct807FDB04 *D_807FDB04;
@@ -30,84 +105,12 @@ extern s16 D_807FDB3E;
 extern s16 D_807FDB40;
 extern s16 D_807FDB42;
 
-extern f64 D_8075E708;
-extern f64 D_8075E710;
-int func_80717404(); // TODO: Signature
-extern s32 D_8074E880[]; // TODO: Datatype
-void func_80718380(Struct80717D84 *arg0, s8 *arg1);
-extern s32 D_8071FEF4;
-
-extern s16 D_807502D0;
-
-extern f64 D_8075EAD8;
-
-extern f32 D_8075E728;
-extern f32 D_8075E72C;
-extern f32 D_8075E730;
-extern f64 D_8075E738;
-extern f64 D_8075E740;
-extern f64 D_8075E888;
-extern f64 D_8075E890;
-extern f64 D_8075E898;
-extern f32 D_8075E8A0;
-extern f64 D_8075E8A8;
-extern f64 D_8075EA70;
-extern f64 D_8075EA78;
-extern f32 D_8075EA80;
-extern f64 D_8075EA88;
-extern f32 D_8075EA90;
-extern f64 D_8075EA98;
-extern f64 D_8075EAA0;
-extern f64 D_8075EAB8;
-extern f64 D_8075EAC0;
-extern f64 D_8075EAC8;
-
-extern f64 D_8075E6D0;
-extern f64 D_8075E6D8;
-
-extern f32 D_8075E950;
-extern f32 D_8075E954;
-extern f32 D_8075E958;
-extern f32 D_8075E95C;
-extern f32 D_8075E960;
-extern f32 D_8075E964;
-extern f32 D_8075E978;
-extern f64 D_8075E980;
-extern f64 D_8075E990;
-extern s32 D_8071FFA0; // TODO: Datatype
-extern f32 D_8075E998;
-extern f32 D_8075EA28;
-extern f32 D_8075EA2C;
-extern f64 D_8075EA30;
-extern f32 D_8075EA38;
-extern f64 D_8075EA40;
-extern f64 D_8075EA48;
-extern f32 D_8075EA50;
-
-extern f64 D_8075E718;
-extern f64 D_8075E720;
-
-extern f64 D_8075E770;
-extern f64 D_8075E778;
-extern f64 D_8075E780;
-
-extern f32 D_8075E8B0;
-extern f32 D_8075E8B4;
-extern f64 D_8075E8B8;
-
-extern f32 D_8075E8C0;
-extern f64 D_8075E8C8;
-extern f64 D_8075E8D0;
-extern f32 D_8075E8D8;
-extern f32 D_8075E8DC;
-extern f32 D_8075E8E0;
-
-extern Struct80717D84 *D_80028C30;
-extern f64 D_8075E8F8;
-
+u32 func_806119A0();
 void *func_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, s32);
 s32 func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, u32, u32, u32);
 void func_80714A9C(void);
+void func_80718380(Struct80717D84 *arg0, s8 *arg1);
+int func_80717404(); // TODO: Signature
 
 void func_80714670(void) {
     D_807FDB00 = NULL;
@@ -388,8 +391,6 @@ void func_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 // displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715E94.s")
 
-extern u8 D_807444FC;
-
 void func_80716F10(Struct80717D84 *arg0, s32 arg1) {
     f32 sp68[4][4];
     f32 sp28[4][4];
@@ -399,8 +400,6 @@ void func_80716F10(Struct80717D84 *arg0, s32 arg1) {
     guMtxF2L(&sp68[0], &arg0->unk128[D_807444FC]);
     arg0->unk32C = 2;
 }
-
-u32 func_806119A0();
 
 typedef struct {
     f32 unk0;
@@ -1246,8 +1245,45 @@ void func_8071AADC(Struct80717D84 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071ABDC.s")
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071AF30.s")
+extern f64 D_8075E930;
+extern f64 D_8075E938;
+extern f64 D_8075E940;
+extern f64 D_8075E948;
+
+void func_8071AF30(Struct80717D84 *arg0, s8 *arg1) {
+    f32 sp78[4][4];
+    f32 sp38[4][4];
+    s32 sp34;
+    Actor *temp_s1;
+
+    temp_s1 = arg0->unk35C_actor;
+    if (temp_s1->object_properties_bitfield & 4) {
+        if (arg0->unk384 == NULL) {
+            arg0->unk384 = malloc(0x40);
+            sp34 = (func_806119A0() % 36000) / 100;
+            guScaleF(&sp78[0], arg0->unk360, arg0->unk364, 0.0f);
+            guRotateF(&sp38[0], sp34, 0.0f, 0.0f, 1.0f);
+            guMtxCatF(&sp78[0], &sp38[0], &sp78[0]);
+            guMtxF2L(&sp78[0], arg0->unk384);
+            arg0->unk36D = 0xC8;
+        }
+        if (temp_s1->unk58 == 0xC5 && arg0->unk360 < 0.5) {
+            arg0->unk340 -= (10.0 * arg0->unk360 * func_80612794(temp_s1->unkEE));
+            arg0->unk348 -= (10.0 * arg0->unk360 * func_80612790(temp_s1->unkEE));
+        } else {
+            arg0->unk340 += (temp_s1->unkB8 * D_8075E930 * func_80612794(temp_s1->unkEE));
+            arg0->unk348 += (temp_s1->unkB8 * D_8075E938 * func_80612790(temp_s1->unkEE));
+            arg0->unk344 -= D_8075E940;
+        }
+        if (temp_s1->unk58 == 0xFE) {
+            arg0->unk344 -= D_8075E948;
+        }
+        memcpy(arg0->unk128[D_807444FC], arg0->unk384, 0x40);
+        arg0->unk32C = 2;
+        return;
+    }
+    *arg1 = 1;
+}
 
 void func_8071B1AC(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk344 -= (D_8075E950 * 0.5);
@@ -1406,8 +1442,32 @@ void func_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BB14.s")
+extern f64 D_8075E9A0;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80717D84_unk384_8071BB14;
+
+void func_8071BB14(Struct80717D84 *arg0, s32 arg1) {
+    f32 sp70[4][4];
+    f32 sp30[4][4];
+    Struct80717D84_unk384_8071BB14 *var_v1;
+
+    var_v1 = arg0->unk384;
+    if (var_v1 == NULL) {
+        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_8071BB14));
+        arg0->unk384->unk0 = ((func_806119A0() % 36000) / 100);
+        arg0->unk384->unk4 = (func_806119A0() % 10000) / D_8075E9A0;
+        var_v1 = arg0->unk384;
+    }
+    arg0->unk344 = arg0->unk344 + (var_v1->unk4 + 1.0);
+    guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(&sp30[0], arg0->unk384->unk0, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guMtxF2L(&sp70[0], arg0->unk128[D_807444FC]);
+    arg0->unk32C = 2;
+}
 
 typedef struct {
     f32 unk0;
@@ -1425,7 +1485,7 @@ void func_8071BC80(Struct80717D84 *arg0, s32 arg1) {
 
     var_v0 = arg0->unk384;
     if (var_v0 == NULL) {
-        arg0->unk384 = malloc(0xC);
+        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_8071BC80));
         guRotateF(&sp90[0], -(f32)((func_806119A0() % 36000) / 1000), 1.0f, 0.0f, 0.0f);
         guRotateF(&sp50[0], (arg0->unk35C * 0x168) / 4096, 0.0f, 1.0f, 0.0f);
         guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);

@@ -860,14 +860,7 @@ void func_806685E0(Struct806685E0_arg0 *arg0, f32 arg1) {
     }
 }
 
-// Doable, small malloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806686F4.s")
-
-// Doable, small struct loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806687E0.s")
-
-// Doable, small struct loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806688B8.s")
+void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 
 typedef struct {
     FloorTriangle *unk0;
@@ -878,6 +871,43 @@ typedef struct {
 } Struct807F9514;
 
 extern Struct807F9514 *D_807F9514;
+extern s32 D_807F9518;
+extern u8 D_807F951C;
+
+void func_806686F4(s32 arg0) {
+    s32 sp34;
+
+    if (D_807F9514[arg0].unk0 == NULL) {
+        sp34 = D_807F9514[arg0].unk10;
+        if (sp34 != 0) {
+            D_807F9514[arg0].unk0 = malloc(sp34);
+            D_807F9514[arg0].unk4 = &D_807F9514[arg0].unk0[sp34 / 24U];
+            func_8060B140(D_807F9514[arg0].unkC, D_807F9514[arg0].unk0, &sp34, 0, 0, 0, 0);
+        }
+    }
+    D_807F9514[arg0].unk8 = object_timer;
+}
+
+void func_806687E0(void) {
+    s32 i;
+
+    if (D_807F951C == 0) {
+        for (i = 0; i < D_807F9518; i++) {
+            if (D_807F9514[i].unk0 != 0) {
+                if ((object_timer - D_807F9514[i].unk8) >= 0x15U) {
+                    func_806688B8(i);
+                    func_8061130C(D_807F9514[i].unk0);
+                    D_807F9514[i].unk0 = NULL;
+                    D_807F9514[i].unk4 = NULL;
+                }
+            }
+        }
+    }
+}
+
+// Doable, small struct loop
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806688B8.s")
+
 extern u16 D_807FBB34;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066893C.s")
@@ -1174,8 +1204,6 @@ extern s32 D_807F9628[];
 extern s32 D_807F9680;
 extern u8 D_807FB220;
 extern u8 D_807FB221;
-
-void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 
 void func_8066ADA0(void) {
     s32 i;

@@ -890,6 +890,25 @@ void func_80636380(s32 arg0, Struct80635548 *arg1) {
     func_8061134C(arg1->unk18);
 }
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s16 unk3C; // Used
+} Struct807F6160_unk10;
+
 typedef struct struct_807F6160 Struct807F6160;
 
 struct struct_807F6160 {
@@ -897,7 +916,7 @@ struct struct_807F6160 {
     s32 unk4;
     s32 unk8;
     s32 unkC;
-    void *unk10; // Pointer to something at least 0x3C big, see func_806364C4
+    Struct807F6160_unk10 *unk10; // Pointer to something at least 0x3C big, see func_806364C4
     s32 unk14;
     Struct807F6160 *unk18; // Linked list
 };
@@ -924,8 +943,34 @@ void func_80636448(s32 arg0, s32 arg1, s32 arg2, s32 arg3, void *arg4) {
     new->unk10 = arg4;
 }
 
-// Doable, small struct loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806364C4.s")
+void func_80636784(s32, s32, s32, s32, s32);
+
+void func_806364C4(void) {
+    Struct807F6160 *next;
+    Struct807F6160 *current;
+    Struct807F6160 *var_s1;
+
+    current = D_807F6160;
+    var_s1 = NULL;
+    while (current != NULL) {
+        next = current->unk18;
+        if (object_timer == current->unk14) {
+            current->unk10->unk3C--;
+            func_80636784(current->unk0, current->unk4, 0, 0, current->unk10->unk3C == 0);
+            func_80636784(current->unk8, current->unkC, 0, 1, current->unk10->unk3C == 0);
+            func_8066B434(current->unk10, 0xAB1, 7);
+            if (var_s1 == NULL) {
+                D_807F6160 = current->unk18;
+            } else {
+                var_s1->unk18 = current->unk18;
+            }
+            func_8061130C(current);
+        } else {
+            var_s1 = current;
+        }
+        current = next;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806365D0.s")
 

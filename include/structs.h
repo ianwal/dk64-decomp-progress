@@ -1078,6 +1078,11 @@ struct global_asm_struct_60 {
 
 typedef struct {
     s32 unk0; // TODO: Proper members
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
 } FloorTriangle;
 
 struct actor {
