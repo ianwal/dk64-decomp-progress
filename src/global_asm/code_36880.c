@@ -731,8 +731,6 @@ void func_806357F8(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *ar
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635EF0.s")
 
-extern u16 D_807FBB34;
-
 /*
 // TODO: Small stack problem and regalloc
 s32 func_80635EF0(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 arg5, u16 arg6) {
@@ -1023,6 +1021,7 @@ u8 func_80636A8C(s32 arg0) {
 // Annoying struct stuff, doable otherwise, maybe object model 2?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636AE8.s")
 
+// Appears to parse a displaylist looking for 0xFD commands
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636B50.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636C00.s")
@@ -1102,6 +1101,40 @@ void func_806398E4(s32 arg0, u8 arg1, u8 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639CD0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639F1C.s")
+
+/*
+// TODO: Close
+s32 func_80639F1C(Model2Model50_B8 *arg0, s32 *arg1, s32 *arg2) {
+    s32 var_v1;
+    s32 temp;
+
+    var_v1 = FALSE;
+    switch (arg0->unk48) {
+        case 1:
+            if (arg0->unk4C == ++arg0->unk50) {
+                arg0->unk50 = 0;
+                if (arg0->unk58 == ++arg0->unk54) {
+                    arg0->unk54 = 0;
+                }
+                var_v1 = TRUE;
+            }
+            break;
+        case 0:
+            if (arg0->unk49) {
+                var_v1 = TRUE;
+            }
+            break;
+    }
+    *arg1 = arg0->unk54;
+    temp = arg0->unk54 + 1;
+    if (arg0->unk54 + 1 == arg0->unk58) {
+        *arg2 = 0;
+    } else {
+        *arg2 = arg0->unk54;
+    }
+    return var_v1;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639FC0.s")
 

@@ -74,7 +74,6 @@ void func_8068A4C8(Actor *arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F050/func_8068A508.s")
 
-extern u16 D_807FBB34;
 extern s32 D_807552F4[];
 
 /*

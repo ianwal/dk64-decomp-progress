@@ -48,8 +48,6 @@ void func_8072E740(Maps map) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_8072E7DC.s")
 
 /*
-extern u16 D_807FBB34;
-
 // TODO: Quite close, out stack is too small and something is missing at the end
 s32 func_8072E7DC(s16 arg0, Actor **arg1) {
     Actor *sp4;

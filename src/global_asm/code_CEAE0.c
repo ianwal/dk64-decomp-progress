@@ -4887,7 +4887,6 @@ extern f64 D_8075D000;
 extern f64 D_8075D008;
 extern f64 D_8075D010;
 extern f32 D_8075D018;
-extern u16 D_807FBB34;
 
 /*
 // TODO: Kinda close, good progress made

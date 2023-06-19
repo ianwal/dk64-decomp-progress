@@ -297,8 +297,31 @@ void func_8060F928(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F960.s")
 
-// D_807F04C0.unk4C4
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060FA5C.s")
+
+/*
+extern OSTime D_807F04C0;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} GlobalASMStruct87_unk274;
+
+// TODO: Something up with the OSTime write
+void func_8060FA5C(GlobalASMStruct87 *arg0) {
+    GlobalASMStruct87_unk274 *temp_v0;
+
+    temp_v0 = arg0->unk274;
+    if (temp_v0->unk10 == 1) {
+        temp_v0->unk4 = 3;
+        D_807F04C0 = osGetTime();
+        osSpTaskYield();
+    }
+}
+*/
 
 void func_8060FAA4(OSMesgQueue *arg0, OSMesg arg1, s32 arg2) {
     osGetTime();

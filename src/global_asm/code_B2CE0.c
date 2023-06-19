@@ -129,7 +129,7 @@ extern f64 D_8075B098;
 extern s32 D_8072073C; // TODO: Proper datatype
 extern s32 D_8071910C; // TODO: Proper datatype
 
-// TODO: May need .data defined? s3 s2 regalloc
+// TODO: May need .rodata defined? s3 s2 regalloc
 void func_806AFA60(u8 arg0) {
     f32 temp_f22;
     f64 temp_f20;
@@ -241,7 +241,6 @@ void func_806B0354(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_806B0770.s")
 
 extern f32 D_8075B1AC;
-extern u16 D_807FBB34;
 
 /*
 // TODO: Might need .rodata for D_8075B1AC?

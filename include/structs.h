@@ -1548,12 +1548,12 @@ typedef struct {
     s16 unk42;
     s16 unk44[2];
     u8 unk48[3];
-    s8 unk4B[3];
+    u8 unk4B[3];
     s8 unk4E;
     s8 unk4F;
     s8 unk50;
     s8 unk51;
-    s8 unk52;
+    u8 unk52;
     s8 unk53;
     s8 unk54;
     s8 unk55;
@@ -1589,9 +1589,9 @@ typedef struct {
     u16 unk8A;
     f32 unk8C;
     f32 unk90;
-    s32 unk94;
+    Actor *unk94;
     s16 unk98;
-    s8 unk9A;
+    u8 unk9A;
     s8 unk9B;
     s32 unk9C;
     s32 unkA0;

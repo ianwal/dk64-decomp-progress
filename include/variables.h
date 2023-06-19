@@ -34,6 +34,7 @@ extern u16 enemies_killed;
 extern Chunk *chunk_array_pointer;
 extern u8 current_file;
 
+extern u16 D_807FBB34;
 extern s32 D_807FBB64; // shadow_display_bitfield, shockwave_bitfield, long_distance_actor_spawn
 
 extern Actor *D_807F5D10;
@@ -219,7 +220,7 @@ extern ObjectModel2 *D_807F6000;
 
 extern u16 D_80744710[]; // = { // Permanent flag index lookup array
 //     26, // Key 1 Collected
-//     74, // key 2 Collected
+//     74, // Key 2 Collected
 //     138, // Key 3 Collected
 //     168, // Key 4 Collected
 //     236, // Key 5 Collected

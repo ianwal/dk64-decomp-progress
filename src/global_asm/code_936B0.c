@@ -1,11 +1,14 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 extern u8 D_80750270;
 extern s16 D_807502D0;
 extern f32 D_807502E4;
+
+extern f64 D_8075A070;
 extern f32 D_8075A0B8; // 16.0627460479736328125
+extern f64 D_8075A0C0;
+extern f64 D_8075A0C8;
 
 extern f32 D_807FC7B0;
 extern f32 D_807FC7B4;
@@ -113,8 +116,6 @@ void func_8068ECF4(s32 arg0, u8 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068EF54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068F72C.s")
-
-extern f64 D_8075A070;
 
 typedef struct {
     s32 unk0;
@@ -227,13 +228,6 @@ void func_80690814(Actor *arg0, s32 arg1) {
     func_80671C0C(arg0, arg1, &D_807FC7B0, &D_807FC7B4, &D_807FC7B8);
 }
 
-extern u8 D_80750270;
-extern f32 D_807FC7B0;
-extern f32 D_807FC7B4;
-extern f32 D_807FC7B8;
-extern f64 D_8075A0C0;
-extern f64 D_8075A0C8;
-
 void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, Actor *arg6) {
     s32 temp;
     s32 temp2;
@@ -249,10 +243,19 @@ void func_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, A
     D_80750270 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690930.s")
+void func_80690930(s16 arg0, s16 arg1, s16 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, Actor *arg8) {
+    f32 sp2C;
+    f32 sp28;
+    f32 temp_f0_2;
+    f32 temp_f14_2;
+    f32 temp_f2_2;
 
-extern f32 D_807FC7B0;
-extern f32 D_807FC7B8;
+    temp_f0_2 = sqrtf(((arg4 - D_807FC7B0) * (arg4 - D_807FC7B0)) + ((arg5 - D_807FC7B4) * (arg5 - D_807FC7B4)) + ((arg6 - D_807FC7B8) * (arg6 - D_807FC7B8)));
+    temp_f2_2 = (arg4 - D_807FC7B0);
+    sp28 = arg5 - D_807FC7B4;
+    sp2C = temp_f0_2;
+    func_8069084C(arg1, arg2, arg3, arg0, sqrtf(((arg4 - D_807FC7B0) * (arg4 - D_807FC7B0)) + ((arg6 - D_807FC7B8) * (arg6 - D_807FC7B8))) / (sp2C / arg7), sp28 / (sp2C / arg7), arg8);
+}
 
 void func_80690A28(s16 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, Actor *arg7) {
     func_80690930(func_80665DE0(arg3, arg5, D_807FC7B0, D_807FC7B8), arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7);
@@ -475,8 +478,6 @@ void func_806970CC(void) {
         current_actor_pointer->unkEE = temp_v0 + temp2;
     }
 }
-
-extern u16 D_807FBB34;
 
 void func_80697184(void) {
     Actor *temp_a0;

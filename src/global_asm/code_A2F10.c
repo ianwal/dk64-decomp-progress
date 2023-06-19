@@ -10,8 +10,6 @@ void func_8069E490(u16 arg0, s16 arg1) {
     func_806A5DF0(arg0, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 0, arg1, current_actor_pointer);
 }
 
-extern u16 D_807FBB34;
-
 void func_8069E4E0(s16 arg0) {
     Actor *temp_a1;
     s16 i;
@@ -614,8 +612,6 @@ void func_806A0F78(Actor *arg0, u8 arg1, u8 arg2) {
     func_80688460(arg0, 1, 1);
     func_806883F4(arg0, 1, arg2, 0.0f);
 }
-
-extern u16 D_807FBB34;
 
 void func_806A1008(u8 arg0, u8 arg1) {
     Actor *temp_a0;

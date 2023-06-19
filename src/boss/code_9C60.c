@@ -4,7 +4,6 @@
 void func_80613CA8(Actor*, s16, f32, f32);
 void func_8002FB7C(u8);
 
-extern u16 D_807FBB34;
 extern u8 D_807FBD70;
 extern f64 D_80036A18;
 

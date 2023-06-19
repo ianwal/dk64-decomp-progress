@@ -210,11 +210,26 @@ void func_80604C80(u8 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80604CBC.s")
 
+s16 func_80604D70(Actor *arg0, s16 arg1, u8 arg2, s32 arg3, u8 arg4, f32 arg5, s8 arg6);
+void func_80605380(s16);
+
+/*
+// TODO: Very close, call to func_80605314 is pulling a1 from temp reg instead of stack
+void func_80604CBC(Actor *arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, s8 arg7) {
+    if (arg0->unk6E[arg4] != -1) {
+        if (arg1 != D_80770710[D_80770628[arg0->unk6E[arg4]]]) {
+            func_80605314(arg0, arg4);
+        } else {
+            return;
+        }
+    }
+    arg0->unk6E[arg4] = func_80604D70(arg0, arg1, arg2, arg3, arg5, arg6, arg7);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80604D70.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80605044.s")
-
-void func_80605380(s16);
 
 void func_80605314(Actor *arg0, u8 arg1) {
     if (arg0->unk6E[arg1] >= 0) {

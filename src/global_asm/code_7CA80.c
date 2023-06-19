@@ -5,7 +5,6 @@
 extern f64 D_80759380;
 extern u8 D_807F94B4;
 
-extern u16 D_807FBB34;
 extern u8 D_807FBC55;
 extern u8 D_807FBE08;
 extern u8 D_807FBE09;
@@ -173,7 +172,6 @@ s32 func_80678014(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80678050.s")
 
-extern u16 D_807FBB34;
 extern u16 D_807FBB3E;
 extern u16 *D_8074E218[];
 extern u16 D_8074DA58[];

@@ -444,7 +444,39 @@ void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 a
     arg0[3][3] = 1.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80025A3C.s")
+void func_8000A6C0(s32 *, void *);
+void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
+extern f32 D_8002A02C;
+extern u8 D_807444FC;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+    f32 unk3C;
+    u8 unk40[0x60 - 0x40];
+    f32 unk60[2][4][4]; // At least 2 4x4 matrices
+} Struct80025A3C;
+
+void func_80025A3C(Struct80025A3C *arg0) {
+    f32 sp30[4][4];
+
+    func_800258B0(&sp30, -arg0->unk2, arg0->unk0, 0, arg0->unk38 * D_8002A02C, arg0->unk8, arg0->unkC + arg0->unk14, arg0->unk10);
+    func_8000A6C0(&sp30, arg0->unk60[D_807444FC]);
+}
 
 // Display List
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80025AD0.s")

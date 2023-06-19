@@ -58,8 +58,21 @@ f32 func_8062A850(void) {
 // Rotating a bunch of matrices
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062A944.s")
 
-// Matrix, loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062AC68.s")
+void func_8062FF10(f32 (*)[4], f32 (*)[4]);
+extern f32 D_807F5E20[][3];
+extern f32 D_807F5DF0[][3];
+
+void func_8062AC68(void *arg0) {
+    f32 sp98[4][4];
+    f32 sp58[4][4];
+    s32 i;
+
+    guMtxL2F(&sp98[0], arg0);
+    func_8062FF10(&sp58[0], &sp98[0]);
+    for (i = 0; i < 4; i++) {
+        guMtxXFMF(&sp58[0], D_807F5DF0[i][0], D_807F5DF0[i][1], D_807F5DF0[i][2], &D_807F5E20[i][0], &D_807F5E20[i][1], &D_807F5E20[i][2]);
+    }
+}
 
 // Copying matrices?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062AD28.s")
@@ -567,6 +580,8 @@ void func_8062C1C0(s32 arg0) {
     D_807F5FEC = 1;
 }
 
+void func_8062EFA0(void);
+
 void func_8062C22C(void) {
     if (D_807F6C28 != 0) {
         func_80655BF0();
@@ -630,7 +645,25 @@ void func_8062D094(Model2Model *arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D0CC.s")
 
-s32 func_8062D1E0(void*, void*);
+typedef struct Struct8062D1E0_arg0 Struct8062D1E0_arg0;
+typedef struct Struct8062D1E0_arg1 Struct8062D1E0_arg1;
+
+struct Struct8062D1E0_arg0 {
+    Struct8062D1E0_arg0 *unk0;
+    Struct8062D1E0_arg0 *next;
+    u8 unk8[0xB8 - 0x8];
+    u8 unkB8;
+};
+
+struct Struct8062D1E0_arg1 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    Struct8062D1E0_arg1 *unkC;
+    s32 unk10;
+};
+
+void func_8062D1E0(Struct8062D1E0_arg0 *arg0, Struct8062D1E0_arg1 *arg1);
 
 void func_8062D1A8() {
     if (!gameIsInDKTVMode()) {
@@ -639,6 +672,34 @@ void func_8062D1A8() {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D1E0.s")
+
+/*
+// TODO: Close
+void func_8062D1E0(Struct8062D1E0_arg0 *arg0, Struct8062D1E0_arg1 *arg1) {
+    Struct8062D1E0_arg0 *var_s0;
+    Struct8062D1E0_arg1 *var_s1;
+
+    var_s0 = arg0;
+    var_s1 = arg1;
+    while (var_s0 != NULL) {
+        switch (var_s0->unkB8) {
+            default:
+                return;
+            case 2:
+                func_8065297C();
+                return;
+            case 1:
+                func_806323C0(var_s1->unk4);
+                return;
+            case 0:
+                func_8062D1E0(var_s0->unk0, var_s1->unkC);
+                var_s0 = var_s0->next;
+                var_s1 = var_s1->unk10;
+                break;
+        }
+    }
+}
+*/
 
 void func_8062D2AC(s32 arg0, s32 arg1, u8 arg2);
 
@@ -665,7 +726,23 @@ void func_8062D3E4(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D620.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062DAF4.s")
+s32 func_8062DBDC(s16, s16, s16, s16, s32, s32, f32, f32, f32, f32, s32 *);
+extern s32 D_807F5E68; // TODO: Datatype
+extern f32 D_807F5FA8;
+
+typedef struct {
+    u8 unk0[0xA0 - 0x0];
+    s16 unkA0;
+    s16 unkA2;
+    s16 unkA4;
+    s16 unkA6;
+    s16 unkA8;
+    s16 unkAA;
+} Struct8062DAF4;
+
+void func_8062DAF4(Struct8062DAF4 *arg0, f32 arg1, f32 arg2, f32 arg3) {
+    func_8062DBDC(arg0->unkA0, arg0->unkA2, arg0->unkA4, arg0->unkA6, arg0->unkA8, arg0->unkAA, arg1, arg2, arg3, D_807F5FA8, &D_807F5E68);
+}
 
 extern f32 D_807F5E50[4];
 
@@ -823,7 +900,33 @@ void func_8062E67C(Struct8062E67C *arg0, Struct8062E67C *arg1, u8 arg2, f64 arg4
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062EE48.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062EFA0.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    void *unk8;
+    u8 unkC[0x7C - 0xC];
+} Struct807F5FC4;
+
+extern u8 D_807F5FC1;
+extern Struct807F5FC4 *D_807F5FC4;
+
+void func_8062EFA0(void) {
+    s32 i;
+    void *temp_a0;
+
+    for (i = 0; i < D_807F5FC1; i++) {
+        if (func_80652E58(D_807F5FC4[i].unk1) == 0) {
+            temp_a0 = D_807F5FC4[i].unk8;
+            if (temp_a0 != NULL) {
+                func_8066B434(temp_a0, 0x7FB, 5);
+                D_807F5FC4[i].unk8 = 0;
+            }
+        }
+    }
+}
 
 // Appears to parse the map geometry format!
 // Surprisingly doable
@@ -886,8 +989,6 @@ extern f32 D_80758190;
 extern MapGeometryHeader *D_807F5DE0;
 extern void *D_807F5DE8;
 extern void *D_807F5DEC;
-extern s8 D_807F5FC1;
-extern void *D_807F5FC4;
 extern s32 D_807F5FC8;
 extern void *D_807F5FCC;
 extern s32 D_807F5FD0;

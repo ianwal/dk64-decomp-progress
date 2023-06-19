@@ -481,8 +481,26 @@ u8 func_80652BC8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     return phi_s1;
 }
 
-// Doable, but surprisingly fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80652DB4.s")
+
+/*
+// TODO: Surprisingly fiddly
+s32 func_80652DB4(f32 arg0, f32 arg1, f32 arg2) {
+    s16 temp_v0;
+    s16 i;
+
+    if (D_807F6C28 == 0) {
+        return 0xFF;
+    }
+    temp_v0 = func_806531B8(arg0, arg1, arg2, 0);
+    for (i = 0; i < D_807F6C80; i++) {
+        if (D_807F6C58[i] == temp_v0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+*/
 
 u8 func_80652E58(s16 arg0) {
     if (D_807F6C28 == 0) {
@@ -1011,6 +1029,21 @@ void func_80655BF0(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655CF8.s")
+
+extern s16 D_807F6C30[];
+
+/*
+// TODO: Close, it's an unrolled loop
+s32 func_80655CF8(s16 arg0, s32 arg1) {
+    s32 i;
+    for (i = 0; i < arg1; i++) {
+        if (arg0 == D_807F6C30[i]) {
+            return 1;
+        }
+    }
+    return 0;
+}
+*/
 
 // displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655DD0.s")

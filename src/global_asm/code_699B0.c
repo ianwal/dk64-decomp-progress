@@ -905,10 +905,8 @@ void func_806687E0(void) {
     }
 }
 
-// Doable, small struct loop
+// Surprisingly tricky, small struct loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806688B8.s")
-
-extern u16 D_807FBB34;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066893C.s")
 
@@ -976,8 +974,37 @@ s32 func_80669650(u8 arg0, u8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669930.s")
 
-// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806699C4.s")
+
+void func_8062FF10(f32 (*)[4], void *);
+void func_8066C610(s16, s8, void *);
+
+typedef struct {
+    u8 unk0[0x100 - 0x0];
+    f32 unk100;
+    f32 unk104;
+    f32 unk108;
+    s16 unk10C;
+    s8 unk10E;
+    s8 unk10F;
+} Struct806699C4;
+
+/*
+// TODO: Regalloc
+void func_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, s8 arg3, f32 arg4, f32 arg5, f32 arg6) {
+    u8 pad[0x28];
+    f32 spB0[4][4];
+    f32 sp70[4][4];
+    f32 sp30[4][4];
+
+    arg0->unk10C = D_807F6000[arg1].unk88;
+    arg0->unk10E = arg3;
+    arg0->unk10F = arg2;
+    func_8066C610(arg1, arg2, &spB0);
+    func_8062FF10(&sp30[0], &spB0);
+    guMtxXFMF(&sp30[0], arg4, arg5, arg6, &arg0->unk100, &arg0->unk104, &arg0->unk108);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669A6C.s")
 

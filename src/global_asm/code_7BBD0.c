@@ -7,7 +7,6 @@
 extern s8 D_807FB5FD;
 extern u8 D_807FB5FF;
 extern s8 D_807FB600;
-extern u16 D_807FBB34;
 
 /*
 // TODO: Painfully close, only difference is it's using 0x50 on the stack instead of 0x54 for a variable
