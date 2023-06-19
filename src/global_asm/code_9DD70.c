@@ -291,12 +291,25 @@ void func_8069DA54(void) {
     }
 }
 
-// Negative struct offset in loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DC10.s")
+
+void func_8069DC10(s32 *arg0, s32 *arg1[], u8 arg2);
+
+/*
+void func_8069DC10(s32 *arg0, s32 *arg1[], u8 arg2) {
+    s16 i;
+    s16 j;
+
+    for (i = 0; i < 0x20; i++) {
+        for (j = 0; j < arg2; j++) {
+            arg0[j] = arg1[j][i * arg2];
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DC80.s")
 
-void func_8069DC10(s32, void*, u8);
 s32 func_806FBB9C(s16 textureIndex);
 
 /*

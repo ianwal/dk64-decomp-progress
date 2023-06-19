@@ -36,7 +36,14 @@ void func_8066C8B0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f
     func_8066C2D0(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066C904.s")
+void func_8066C904(OM2_unk28 *arg0) {
+    if (arg0->unk18 != 0) {
+        if (arg0->unk15 & 1) {
+            func_8061130C(arg0->unk18, arg0);
+        }
+    }
+    arg0->unk15 &= 0xFFFE;
+}
 
 // Loads walls for the current map from pointer table 2
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066C958.s")

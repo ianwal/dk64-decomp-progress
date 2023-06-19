@@ -43,8 +43,23 @@ void func_806A2B20(Actor *arg0) {
     }
 }
 
-// 64 bit & aaD stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_806A2B38.s")
+
+extern OSTime D_807FC7D0;
+
+typedef struct {
+    OSTime unk0;
+} AAD_806A2B38;
+
+/*
+// TODO: Close
+void func_806A2B38(Actor *arg0) {
+    OSTime temp_ret;
+
+    temp_ret = osGetTime();
+    D_807FC7D0 = temp_ret - ((AAD_806A2B38*)arg0->additional_actor_data)->unk0;
+}
+*/
 
 void func_806A2B80(Actor *arg0) {
     arg0->control_state = 3;

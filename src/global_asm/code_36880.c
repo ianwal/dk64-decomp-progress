@@ -415,7 +415,18 @@ void func_80633D30(f32 *arg0, f32 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80634768.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806348B4.s")
+void func_806348B4(OM2_unk48 *arg0);
+
+void func_806348B4(OM2_unk48 *arg0) {
+    s32 temp_a2;
+
+    if (arg0->unk0 != 0) {
+        if (arg0->unk24 & 1) {
+            func_8061130C(arg0->unk0, arg0);
+        }
+    }
+    arg0->unk24 &= 0xFFFE;
+}
 
 void func_80633A1C(s32 arg0, void *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8);
 
@@ -654,8 +665,8 @@ void func_80605380(s16);
 void func_8063DE68(void*);
 void func_806645B8(s16 arg0);
 
-void func_806348B4(void *arg0);
-void func_8066C904(void *arg0);
+
+void func_8066C904(OM2_unk28 *arg0);
 
 Chunk14 *func_80630588(Chunk14 *arg0, s32 arg1, u8 arg2, u8 *arg3);
 

@@ -1300,6 +1300,14 @@ void func_8064B150(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B190.s")
 
+/*
+// TODO: Float regalloc
+void func_8064B190(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s16 arg3) {
+    f32 temp = -10.0 - arg0->unk14[arg2];
+    arg0->unk14[arg3] = -1.0 * (f32)(temp / -10.0);
+}
+*/
+
 void func_8064B204(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s32 arg3) {
     arg0->unk14[arg2] = -1.0 - arg0->unk14[arg2];
     arg0->unk14[arg2] = 0.0 - arg0->unk14[arg2];

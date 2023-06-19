@@ -218,11 +218,18 @@ void func_80701C90(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80701CA0.s")
 
-// Yikes, lots of params. Perhaps it's passing a struct by value on the stack?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807023E8.s")
+// TODO: Is this signature correct?
+void func_807024E0(s32, s32, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
-// Yikes, lots of params. Perhaps it's passing a struct by value on the stack?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80702464.s")
+// TODO: Is this signature correct?
+void func_807023E8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC) {
+    func_807024E0(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, 1, 0x10, 0, 0);
+}
+
+// TODO: Is this signature correct?
+void func_80702464(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, u8 argD, u8 argE) {
+    func_807024E0(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, 0, 0);
+}
 
 // displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807024E0.s")

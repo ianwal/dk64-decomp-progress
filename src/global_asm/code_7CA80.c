@@ -457,23 +457,17 @@ void func_8067881C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80678824.s")
 
-/*
-// TODO: This is sus
-extern s8 D_807FBE09;
 extern s16 D_807FBF10;
-extern s32 D_807FBFE4;
-extern s32 D_807FBFE0;
-extern s32 D_807FBFE4;
-extern s32 D_807FBFE8;
-extern s32 D_807FBFEC;
+extern void* D_807FBFE0[];
 
+/*
 void func_80678824(void) {
+    s32 i;
     D_807FBE09 = 1;
     D_807FBF10 = 0;
-    //D_807FBFE4 = 0;
-    D_807FBFE0 = 0;
-    D_807FBFE8 = 0;
-    D_807FBFEC = 0;
+    for (i = 0; i < 4; i++) {
+        D_807FBFE0[i] = NULL;
+    }
     func_8067889C(1); // updateLoadedActors()?
     func_8067889C(2); // updateLoadedActors()?
     func_806790F4(1);
@@ -655,8 +649,6 @@ s32 func_80679010(Actor *arg0, Actor *arg1) {
     }
     return FALSE;
 }
-
-extern void* D_807FBFE0[];
 
 // Several different types of structs are passed into this function
 void func_80679064(void *arg0) {

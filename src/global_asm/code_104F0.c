@@ -74,8 +74,18 @@ void func_8060B8F8(s32 arg0) {
     }
 }
 
-// Hmm, checksum?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060B968.s")
+extern s32 D_807463C0[];
+
+s32 func_8060B968(u8 *arg0, u16 arg1) {
+    u32 var_v1 = -1;
+    u32 temp = arg1--;
+
+    while (temp != 0) {
+        var_v1 = D_807463C0[(u8)(*arg0 ^ var_v1)] ^ (var_v1 >> 8);temp = arg1--;
+        arg0++;
+    }
+    return var_v1 ^ -1;
+}
 
 u8 getEEPROMSaveSlot(s32 fileIndex) {
     u8 i;

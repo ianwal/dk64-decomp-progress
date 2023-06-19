@@ -97,6 +97,13 @@ void func_80737FD8(ALSeqPlayer *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB50/func_8073801C.s")
 
+/*
+void func_8073801C(ALSeqPlayer *arg0, s32 arg1) {
+    arg0->chanMask |= 1 << arg1;
+    func_807382A0(arg0, 0, arg1 | 0xB0, 0xFF, 0xFF);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB50/func_80738080.s")
 
 /*

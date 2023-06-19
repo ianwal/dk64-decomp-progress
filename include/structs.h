@@ -1659,10 +1659,14 @@ typedef struct {
     s32 unk10;
     u8 unk14;
     u8 unk15;
+    u8 unk16;
+    u8 unk17;
+    s32 unk18;
 } OM2_unk28;
 
 typedef struct {
-    u8 unk0[0x8 - 0x0];
+    s32 unk0;
+    s32 unk4;
     s32 unk8;
     u8 unkC[0x24 - 0xC];
     u8 unk24;

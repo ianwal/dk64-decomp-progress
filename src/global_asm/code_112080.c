@@ -297,17 +297,26 @@ typedef struct Struct8070DB9C Struct8070DB9C;
 typedef struct {
     s32 unk0;
     s32 unk4;
+} Struct8070DB9C_unk4;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
     s32 unk8;
     s32 unkC;
-} Struct8070DB9C_unk4;
+} Struct8070DB9C_unk4_10;
 
 struct Struct8070DB9C {
     u8 unk0;
     u8 unk1;
     u8 unk2;
     u8 unk3;
-    Struct8070DB9C_unk4 *unk4;
+    union {
+        Struct8070DB9C_unk4 *unk4;
+        Struct8070DB9C_unk4_10 *unk4_10;
+    };
     Struct8070DB9C *unk8;
+    s32 unkC;
 };
 
 void func_8070DB7C(Struct8070DB9C *arg0) {
@@ -345,12 +354,21 @@ void func_8070DC40(Struct8070DB9C *arg0) {
     s32 i;
 
     for (i = 0; i < arg0->unk0; i++) {
-        func_8070DB9C(&arg0->unk4[i]);
+        func_8070DB9C(&arg0->unk4_10[i]);
     }
     func_8061134C(arg0->unk4);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DCA4.s")
+void func_8070DCA4(Struct8070DB9C *arg0) {
+    s32 i;
+
+    for (i = 0; i < arg0->unk0; i++) {
+        func_8070DC40(&arg0->unk4[i]);
+    }
+    func_8061134C(arg0->unk4);
+    func_8061134C(arg0->unkC);
+    func_8061134C(arg0);
+}
 
 void func_8070DD18(Struct807550C0 *arg0) {
     func_8070DCA4(arg0->unk4);

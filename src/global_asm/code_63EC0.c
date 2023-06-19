@@ -7,7 +7,10 @@ typedef struct global_asm_struct_18 {
     void* unk8;
     void* unkC; // Texture pointer usually
     void* unk10; // Texture pointer usually
-    u8 pad8[0x18 - 0x14];
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    u8 unk17;
 } GlobalASMStruct18;
 
 // TODO: Could this just be an array of void*?
@@ -56,9 +59,10 @@ void func_8065F4F4(GlobalASMStruct58 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065F5F0.s")
+u8 func_8065F5F0(GlobalASMStruct58 *arg0) {
+    return D_80748A90[arg0->unk0->unk66].unk15;
+}
 
-s32 func_8065F5F0(GlobalASMStruct58 *); 
 void func_806615BC(void);
 
 void func_8065F614(void) {

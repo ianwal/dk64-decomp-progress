@@ -259,16 +259,16 @@ void func_8060F1D0(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F208.s")
 
+extern OSTime D_807F04D0;
+
 /*
-// TODO: Which types are these?
 void func_8060F208(GlobalASMStruct87 *arg0) {
     if (arg0->unk274 != 0) {
         func_8060FA5C();
-        return;
+    } else {
+        D_807F04D0 = 0;
+        func_8060F960(arg0, 0);
     }
-    D_807F04D0.unk0 = 0;
-    D_807F04D0.unk4D4 = 0;
-    func_8060F960(0);
 }
 */
 

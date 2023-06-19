@@ -263,7 +263,27 @@ void func_80025CB0(JetpacStruct0 *arg0) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025F48.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+}Struct8002C4D0;
+
+s32 func_80025700(Struct8002C4D0 *, s32, s32, s32, s32);          // extern
+extern Struct8002C4D0 D_8002C4D0[];
+
+void func_80025F48(s32 arg0, s32 *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+    s32 temp_t2;
+
+    func_80025700(&D_8002C4D0[arg0], *arg1, arg3, arg4, arg5);
+    *arg1 += arg2;
+    if (*arg1 < 0) {
+        *arg1 += 0x100;
+    }
+}
 
 void func_80025FC4(JetpacStruct *arg0) {
     s32 sp6C;
