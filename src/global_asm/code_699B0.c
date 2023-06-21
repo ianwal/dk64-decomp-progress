@@ -935,14 +935,70 @@ s32 func_8066893C(Struct8066893C *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806689F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80668B28.s")
+// TODO: Any more cleanup possible?
+s32 func_80668B28(Struct8066893C *arg0, s32 arg1, s32 arg2) {
+    s32 temp_a3;
+    s32 temp_v0;
+    s32 temp_v1;
+    s32 var_a1;
+
+    temp_v0 = arg0->unk0;
+    temp_v1 = arg0->unk2;
+    temp_a3 = arg0->unk4;
+    var_a1 = MIN(temp_v0, temp_v1);
+    if (var_a1 >= temp_a3) {
+        var_a1 = temp_a3;
+    }
+    if (arg1 < var_a1) {
+        return 0;
+    }
+    var_a1 = MAX(temp_v0, temp_v1);
+    if (temp_a3 >= var_a1) {
+        var_a1 = temp_a3;
+    }
+    if (var_a1 < arg1) {
+        return 0;
+    }
+    temp_v0 = arg0->unkC;
+    temp_v1 = arg0->unkE;
+    temp_a3 = arg0->unk10;
+    var_a1 = MIN(temp_v0, temp_v1);
+    if (var_a1 >= temp_a3) {
+        var_a1 = temp_a3;
+    }
+    if (arg2 < var_a1) {
+        return 0;
+    }
+    var_a1 = MAX(temp_v0, temp_v1);
+    if (temp_a3 >= var_a1) {
+        var_a1 = temp_a3;
+    }
+    if (var_a1 < arg2) {
+        return 0;
+    }
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80668C30.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80668E9C.s")
 
 s32 func_80669930(void*);
-void func_80669830(s32, void*, s32);
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    u8 unk24;
+} Struct80669830;
+
+void func_80669830(s32 arg0, Struct80669830 *arg1, u8 arg2);
 
 void func_80669588(s32 arg0, f32 arg1) {
     if (D_807F9510 != 0xA) {
@@ -971,6 +1027,27 @@ s32 func_80669650(u8 arg0, u8 *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806696A0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669830.s")
+
+void func_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
+
+/*
+// TODO: Close
+void func_80669830(s32 arg0, Struct80669830 *arg1, u8 arg2) {
+    f32 sp30[4][4];
+
+    sp30[2][1] = arg1->unk8 - arg1->unk0;
+    sp30[2][2] = arg1->unk14 - arg1->unkC;
+    sp30[2][3] = arg1->unk20 - arg1->unk18;
+    sp30[1][2] = arg1->unk4 - arg1->unk0;
+    sp30[1][3] = arg1->unk10 - arg1->unkC;
+    sp30[2][0] = arg1->unk1C - arg1->unk18;
+    sp30[0][3] = (sp30[2][2] * sp30[2][0]) - (sp30[1][3] * sp30[2][3]);
+    sp30[1][0] = (sp30[2][3] * sp30[1][2]) - (sp30[2][0] * sp30[2][1]);
+    sp30[1][2] = (sp30[2][1] * sp30[1][3]) - (sp30[1][2] * sp30[2][2]);
+    sp30[0][0] = sp30[2][2];
+    func_80666AF8(arg0, sp30[0][3], sp30[1][0], sp30[1][2], arg1->unk24, arg2, 1);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669930.s")
 

@@ -786,7 +786,7 @@ void func_8065F678(f32, f32, f32, u8);
 void func_8066308C(f32, f32, f32);
 extern u8 D_807444FC;
 extern s32 D_807F5E20; // TODO: Datatype
-extern s32 D_807F5E68; // TODO: Datatype
+extern f32 D_807F5E68[2][4][4]; // TODO: How many? At least 2
 extern f32 D_807F5FB0;
 extern s32 D_807F6C80;
 extern u8 D_807F70AB;
@@ -1318,6 +1318,20 @@ u8 func_80658000(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806582F8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_8065850C.s")
+
+/*
+// TODO: oof
+void func_8065850C(f32 arg0[4][4], f32 arg1[4][4], s32 arg2, f32 arg3[4][4]) {
+    f32 (*temp_v0)[4];
+    f64 temp_f24;
+
+    temp_v0 = &D_807F5E68[arg2][0][0];
+    temp_f24 = (temp_v0[3][2] + ((temp_v0[2][0] * arg0[0][0]) + (temp_v0[2][2] * arg0[0][1]) + (temp_v0[3][0] * arg0[0][2]))) / (((arg0[0][2] - arg1[0][2]) * temp_v0[3][0]) + ((temp_v0[2][0] * (arg0[0][0] - arg1[0][0])) + (temp_v0[2][2] * (arg0[0][1] - arg1[0][1]))));
+    arg3[0][0] = ((arg1[0][0] - arg0[0][0]) * temp_f24) + arg0[0][0];
+    arg3[0][1] = ((arg1[0][1] - arg0[0][1]) * temp_f24) + arg0[0][1];
+    arg3[0][2] = ((arg1[0][2] - arg0[0][2]) * temp_f24) + arg0[0][2];
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658624.s")
 

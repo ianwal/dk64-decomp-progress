@@ -214,7 +214,31 @@ void func_80029640(struct_80029640 *arg0, f32 arg1, f32 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002976C.s")
+void func_8002976C(JetpacStruct *arg0) {
+    switch (arg0->unk14) {
+        case 3:
+            if (func_80028CF8(
+                arg0->unk1C + arg0->unk0 + arg0->unk8,
+                arg0->unk20 + arg0->unk4 + arg0->unkC,
+                arg0->unk24 + arg0->unk0 + arg0->unk8,
+                arg0->unk28 + arg0->unk4 + arg0->unkC, 1) >= 0) {
+                func_800291AC(arg0);
+                return;
+            }
+            if (func_80029064(arg0) == 0) {
+                arg0->unk0 += arg0->unk8;
+                arg0->unk4 += arg0->unkC;
+                return;
+            }
+            return;
+        case 4:
+            arg0->unk2C++;
+            if (arg0->unk2C >= 0xF) {
+                arg0->unk14 = 0;
+            }
+            break;
+    }
+}
 
 void func_80029884(struct_80029640 *arg0) {
     arg0->unk28 = 0xB;
@@ -527,7 +551,25 @@ s32 func_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AAD4.s")
+void func_80029450();
+extern JetpacStruct D_8002E964;
+
+void func_8002AAD4(void) {
+    s32 i;
+    JetpacStruct sp24;
+    JetpacStruct *var_v0;
+
+    sp24 = D_8002E964;
+    var_v0 = &D_8002F1DC;
+    for (i = 0; i < 6; i++) {
+        *var_v0 = sp24;
+        var_v0++;
+    }
+    for (i = 0; i < 3; i++) {
+        func_80029450();
+    }
+    D_8002E8F0 = func_80027210() * 180.0f;
+}
 
 void func_8002ABDC(void) {
     JetpacStruct *var_s0;

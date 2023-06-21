@@ -9,6 +9,37 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8064F6F8.s")
 
+s32 func_806358E8(s16, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32); // extern
+
+typedef struct {
+    void *unk0;
+    void *unk4;
+} OM2_unk78_8064F6F8;
+
+/*
+// TODO: Not sure what's missing
+void func_8064F6F8(void *arg0, s16 arg1) {
+    s32 pad;
+    OM2_unk78_8064F6F8 *sp68;
+    u32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+
+    sp68 = D_807F6000[arg1].unk78;
+    sp64 = D_807F6000[arg1].unk24->unk0 + D_807F6000[arg1].unk24->unk68;
+    memcpy(sp68->unk0, arg0, sp64);
+    memcpy(sp68->unk4, arg0, sp64);
+    func_806357F8(arg1, &sp60, &sp5C, &sp58, &sp54, &sp50, &sp4C, &sp48, &sp44, 0);
+    func_806358E8(arg1, sp60, sp5C, sp58, sp54, sp50, sp4C, sp48, sp44, 0, 0, 0, 0, 1);
+}
+*/
+
 void func_80650684(OM2_unk78*);
 void func_8064F804(OM2_unk78 *arg0) {
     if (arg0) {

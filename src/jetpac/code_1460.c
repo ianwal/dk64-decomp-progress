@@ -115,7 +115,55 @@ void func_80025904(Gfx **arg0) {
 }
 #endif
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025A60.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+}Struct8002C4D0;
+
+s32 func_80025700(Struct8002C4D0 *, s32, s32, s32, s32);
+extern Struct8002C4D0 D_8002C4D0[];
+
+typedef struct {
+    u8 unk0[0x18 - 0x0];
+} Struct8002B9C0;
+
+extern Struct8002B9C0 D_8002B9C0[];
+
+// TODO: Appears to be a substruct of JetpacStruct from 0x30 onwards
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+} Struct80025A60;
+
+extern f32 func_80027210();
+
+void func_80025A60(Struct80025A60 *arg0) {
+    s32 sp2C;
+
+    sp2C = (arg0->unk8 / 14.0f) * 6.0f;
+    if ((arg0->unk8 % 7) == 0) {
+        if (func_80027210() < 0.5) {
+            arg0->unkD = 0;
+        } else {
+            arg0->unkD = 0xFF;
+        }
+        if (func_80027210() < 0.5) {
+            arg0->unkE = 0;
+        } else {
+            arg0->unkE = 0xFF;
+        }
+    }
+    func_80025700(&D_8002B9C0[sp2C], arg0->unk0, arg0->unk4, &arg0->unkC, 0);
+    arg0->unk8++;
+}
 
 typedef struct JetpacStruct5 {
     f32 unk0;
@@ -262,18 +310,6 @@ void func_80025CB0(JetpacStruct0 *arg0) {
     }
 }
 */
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-}Struct8002C4D0;
-
-s32 func_80025700(Struct8002C4D0 *, s32, s32, s32, s32);          // extern
-extern Struct8002C4D0 D_8002C4D0[];
 
 void func_80025F48(s32 arg0, s32 *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     s32 temp_t2;
