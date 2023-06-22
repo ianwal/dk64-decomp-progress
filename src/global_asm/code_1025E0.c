@@ -199,6 +199,7 @@ void func_807002AC(u16 *arg0, s16 **arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_8070033C.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_8070068C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807007B8.s")
@@ -209,7 +210,7 @@ void func_807002AC(u16 *arg0, s16 **arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80700BF4.s")
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80701098.s")
 
 void func_80701C90(void) {

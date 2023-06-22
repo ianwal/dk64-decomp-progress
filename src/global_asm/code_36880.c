@@ -413,7 +413,48 @@ void func_80633D30(f32 *arg0, f32 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80633DC0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80634768.s")
+typedef struct {
+    s16 unk0; // X1
+    s16 unk2; // Y1
+    s16 unk4; // Z1
+    s16 unk6; // X2
+    s16 unk8; // Y2
+    s16 unkA; // Z2
+    s16 unkC; // X3
+    s16 unkE; // Y3
+    s16 unk10; // Z3
+    u8 unk12;
+    s8 unk13;
+    u8 unk14;
+    u8 unk15;
+} Struct80634768;
+
+typedef struct {
+    f32 unk0; // X1
+    f32 unk4; // Y1
+    f32 unk8; // Z1
+    f32 unkC; // X2
+    f32 unk10; // Y2
+    f32 unk14; // Z2
+    f32 unk18; // X3
+    f32 unk1C; // Y3
+    f32 unk20; // Z3
+    s8 unk24;
+    s8 unk25;
+    s8 unk26;
+    s8 unk27;
+} Struct80634768_arg1;
+
+s32 func_80634768(Struct80634768 *arg0, Struct80634768_arg1 *arg1, f32 (*arg2)[4]) {
+    guMtxXFMF(arg2, arg0->unk0, arg0->unk2, arg0->unk4, &arg1->unk0, &arg1->unkC, &arg1->unk18);
+    guMtxXFMF(arg2, arg0->unk6, arg0->unk8, arg0->unkA, &arg1->unk4, &arg1->unk10, &arg1->unk1C);
+    guMtxXFMF(arg2, arg0->unkC, arg0->unkE, arg0->unk10, &arg1->unk8, &arg1->unk14, &arg1->unk20);
+    arg1->unk24 = arg0->unk12;
+    arg1->unk25 = arg0->unk14;
+    arg1->unk26 = arg0->unk13;
+    arg1->unk27 = arg0->unk15;
+    return 1;
+}
 
 void func_806348B4(OM2_unk48 *arg0);
 

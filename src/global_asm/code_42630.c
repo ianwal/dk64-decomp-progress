@@ -723,7 +723,7 @@ s32 func_80642500(f32 *arg0, u8 arg1, s16 arg2) {
 }
 */
 
-// TODO: Doable
+// TODO: Doable, probably needs .rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806425FC.s")
 
 extern f32 D_807F621C;
@@ -1068,7 +1068,17 @@ void func_80645700(Struct80645700_sp20 **arg0, s32 arg1, s16 arg2, s16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806458C8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645A64.s")
+void func_80645A64(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+    s16 i;
+
+    for (i = 0; i < arg2; i++) {
+        func_80714950(-0x96 - ((rand() >> 0xF) % 80));
+        func_8071498C(func_80717D4C);
+        func_807149B8(1);
+        func_80714998(2);
+        func_80714B84(&D_8071FFA0, 1.0f, arg1, i + 1, 0);
+    }
+}
 
 void func_80645B9C(gASMStruct3 *arg0, s16 arg1, s32 arg2, s32 arg3) {
     if (((s32) (0x243 - arg0->unk44) % 60) == 0) {
@@ -1857,6 +1867,44 @@ void func_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064CD3C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D0C4.s")
+
+void func_8065092C(s16, s16);
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+
+/*
+void func_8064D0C4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+    f32 sp24;
+    f32 sp20;
+    u8 temp_v0; // TODO: Changing this to s32 fixes the bottom of the function but breaks the stack alignment and size
+    u8 sp1E;
+
+    sp1E = 2;
+    sp24 = D_807F6220 + 20.0f;
+    if (func_80667110(D_807F621C, D_807F6224, &sp24)) {
+        if (func_8066715C(&sp20)) {
+            if (sp20 < sp24) {
+                sp1E = 0;
+                D_807F6220 = sp24;
+            } else {
+                sp1E = 1;
+                D_807F6220 = sp20;
+            }
+        }
+    }
+    if (arg2 != 0) {
+        temp_v0 = func_80650D04(arg1, 1);
+        if (sp1E == 1 && !temp_v0) {
+            func_806508B4(arg1, 1, -1);
+            func_806508B4(arg1, 2, -1);
+        } else if (sp1E == 0 && temp_v0) {
+            func_8065092C(arg1, 1);
+            func_8065092C(arg1, 2);
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D1E8.s")
 

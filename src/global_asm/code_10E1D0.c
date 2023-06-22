@@ -148,6 +148,7 @@ void func_8070A934(s32 nextMap, s32 nextExit) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070AC74.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070AF24.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070B05C.s")

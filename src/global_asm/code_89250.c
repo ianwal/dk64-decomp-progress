@@ -488,7 +488,6 @@ s32 func_806119A0();
 extern s32 D_8071DB74; // TODO: Datatype
 extern s32 D_8071FC0C; // TODO: Datatype
 extern s32 D_80720B58; // TODO: Datatype
-extern u8 D_80750AD0;
 extern f64 D_80759B18;
 extern f64 D_80759B20;
 extern f64 D_80759B28;
@@ -567,7 +566,30 @@ void func_8068696C(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80686CF8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80686E40.s")
+void func_80686E40(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s32 i;
+    s32 var_s4;
+    s32 var_s5;
+
+    if (D_80750AD0 != 0) {
+        var_s5 = 3;
+    } else {
+        var_s5 = 0x10;
+    }
+    if (D_80750AD0 != 0) {
+        var_s4 = 0;
+    } else {
+        var_s4 = 2;
+    }
+    for (i = 0; i < var_s5; i++) {
+        func_807149B8(1);
+        func_807149FC(1);
+        func_8071498C(&func_80717930);
+        func_8071496C(i >> var_s4);
+        func_80714950(arg3);
+        func_80714CC0(D_8074E880[i % 3], 0.5f, arg0, arg1, arg2);
+    }
+}
 
 void func_80686F90(u8 arg0, s16 arg1, s16 arg2) {
     func_80677FA8(ACTOR_BOSS_DOGADON_LIGHTBEAM, 0xC0); // Spawn actor: Light beam (boss fights)

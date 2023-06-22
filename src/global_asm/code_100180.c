@@ -52,7 +52,34 @@ s32 func_806FBB9C(s16 textureIndex) {
     return D_807FD7F0[textureIndex];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FBC34.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+} Struct80754A34;
+
+extern Struct80754A34 D_80754A34[];
+
+void func_806FBC34(void) {
+    s16 i;
+    s16 k;
+    s16 j;
+    Struct80754A34 *temp_s3;
+
+    i = 0;
+    for (j = 0; j < 8; j++) {
+        for (k = 0; k < D_80754A34[j].unk1; k++) {
+            if (D_807FD7F4[i++]) {
+                if (--D_807FD7F4[i - 1] == 0) {
+                    func_8066B434(D_807FD7F0[i - 1], 0x156, 0x23);
+                }
+            }
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FBD5C.s")
 
@@ -93,16 +120,9 @@ s16 func_806FBEAC(u8 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FD7A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FD894.s")
-
-extern u8 D_80754A34[];
-
-/*
-// TODO: Very odd regalloc, might need a struct array at D_80754A34
 u8 func_806FD894(s16 arg0) {
     if (arg0 & 0x80) {
         arg0 ^= 0x80;
     }
-    return D_80754A34[(arg0 * 4 - arg0 << 1) + 2];
+    return D_80754A34[arg0].unk2;
 }
-*/

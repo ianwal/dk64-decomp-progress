@@ -759,8 +759,21 @@ void func_8002DEE8(Actor *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002E8B8.s")
 
-// Doable, but some weird struct offset stuff going on again
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002ECE8.s")
+void func_8002ECE8(void) {
+    s32 i;
+    for (i = 0; i < 5; i++) {
+        D_80744548[i].unk0 = func_8060C6B8(0x19, 0, i, 0);
+        D_80744548[i].unk2 = func_8060C6B8(0x16, 0, i, 0);
+        D_80744548[i].unk3 = func_8060C6B8(0x17, 0, i, 0);
+        D_80744548[i].unk4 = func_8060C6B8(0x18, 0, i, 0);
+        D_80744548[i].unk5 = 0;
+        D_80744568[i].unk0 = func_8060C6B8(0x1D, 0, i, 0);
+        D_80744568[i].unk2 = func_8060C6B8(0x1A, 0, i, 0);
+        D_80744568[i].unk3 = func_8060C6B8(0x1B, 0, i, 0);
+        D_80744568[i].unk4 = func_8060C6B8(0x1C, 0, i, 0);
+        D_80744568[i].unk5 = 0;
+    }
+}
 
 void func_8002EE18(void) {
     s32 i;
