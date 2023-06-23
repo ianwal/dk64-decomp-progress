@@ -664,6 +664,7 @@ void func_8066F400(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066F84C.s")
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066FC0C.s")
 
 // Jumptable

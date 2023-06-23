@@ -564,6 +564,7 @@ s32 func_806FA7A4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA7BC.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA9C0.s")
 
 // Displaylist stuff

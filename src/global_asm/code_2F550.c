@@ -524,7 +524,80 @@ block_14:
 }
 */
 
-u8 func_8062BDB0(s32 arg0, void *arg1, void *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s16 unk1C;
+    s16 unk1E;
+    s32 unk20;
+    u8 unk24;
+} Struct8062BDB0_arg2_unk4;
+
+typedef struct {
+    s32 unk0;
+    Struct8062BDB0_arg2_unk4 *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct8062BDB0_arg2;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+    s32 unkA4;
+    s32 unkA8;
+    s32 unkAC;
+    s32 unkB0;
+    s32 unkB4;
+    u8 unkB8;
+} Struct8062BDB0_arg1;
+
+u8 func_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_arg2 *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
+
 u8 func_80668E9C(void *arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 *arg5);
 extern void *D_807F5DE4;
 
@@ -563,6 +636,37 @@ u8 func_8062BCC8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BDB0.s")
+
+/*
+// TODO: Just operands flipped in an OR instruction...
+u8 func_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_arg2 *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
+    u8 var_s1;
+    Struct8062BDB0_arg2_unk4 *var_s0;
+
+    var_s1 = 0;
+    switch (arg1->unkB8) {
+        case 2:
+            return func_80652BC8(arg0, arg3, arg4, arg5, arg6);
+        case 1:
+            var_s0 = arg2->unk4;
+            if (var_s0 != NULL) {
+                do {
+                    if (var_s0->unk24 == 1) {
+                        var_s1 |= func_80668E9C(arg0, var_s0->unk1E, arg3, arg4, arg5, arg6);
+                    }
+                    var_s0 = var_s0->unk14;
+                } while (var_s0 != NULL);
+            }
+            return var_s1;
+        case 0:
+            // TODO: Problem here
+            var_s1 |= func_8062BDB0(arg0, arg1->unk0, arg2->unkC, arg3, arg4, arg5, arg6);
+            return var_s1 | func_8062BDB0(arg0, arg1->unk4, arg2->unk10, arg3, arg4, arg5, arg6);
+    }
+    return 0;
+}
+*/
+
 
 // Display List stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BF24.s")

@@ -932,8 +932,49 @@ void func_80030258(Gfx *dl, s32 arg1) {
 // Jumptable, 508 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80030894.s")
 
-// Doable, big unknown struct passed in though
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80030A90.s")
+s32 func_806119A0();
+extern f32 D_80033E0C;
+extern f32 D_80033E10;
+extern f32 D_80033E14;
+extern u8 D_807444FC;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct80030A90_malloc;
+
+extern func_80008620(void*, f32, f32, f32, f32);
+
+void func_80030A90(Struct80717D84 *arg0, s32 arg1) {
+    s32 temp;
+    s16 sp72;
+    f32 sp30[4][4];
+    Struct80030A90_malloc *var_v0;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(0x10);
+        var_v0 = arg0->unk384;
+        sp72 = func_806119A0() * 0x10;
+        var_v0->unk0 = func_80612794(sp72) * 60.0f;
+        var_v0->unk4 = func_80612790(sp72) * 60.0f;
+        var_v0->unk8 = func_806119FC() * D_80033E0C;
+        arg0->unk340 += (var_v0->unk0 * 3.0f);
+        arg0->unk344 += (var_v0->unk4 * 3.0f);
+        if (var_v0->unk0 > 0.0f) {
+            var_v0->unkC = D_80033E10;
+        } else {
+            var_v0->unkC = D_80033E14;
+        }
+    }
+    var_v0 = arg0->unk384;
+    arg0->unk340 += var_v0->unk0;
+    arg0->unk344 += var_v0->unk4;
+    var_v0->unk8 += var_v0->unkC;
+    func_80008620(&sp30, var_v0->unk8, 0, 0, 1.0f);
+    func_8000A6C0(&sp30, &arg0->unk128[D_807444FC]);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80030C14.s")
 

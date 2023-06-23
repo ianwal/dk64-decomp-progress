@@ -74,7 +74,6 @@ void func_806AE2B0(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
 extern f32 D_8075AE30;
 
-void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 void func_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 
 void func_806AE394(f32 arg0, f32 arg1) {

@@ -406,8 +406,6 @@ void func_8072B59C(u8 arg0, s16 arg1, s32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B608.s")
 
 /*
-void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
-
 // TODO: .rodata nonsense?
 void func_8072B608(void) {
     f32 var_f2;

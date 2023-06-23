@@ -31,6 +31,8 @@ void func_8067B238(Actor *destination, Actor *source, f32 scale);
 void func_80717D4C(Struct80717D84 *arg0, s32 arg1);
 void func_8071E864(Struct80717D84 *arg0, s8 *arg1);
 
+
+void func_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA);
 void func_80684900(u8);
 f32 func_80612794(s16);
 void func_80614E78(Actor*, s32);

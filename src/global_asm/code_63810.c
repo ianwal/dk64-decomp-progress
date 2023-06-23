@@ -21,7 +21,6 @@ typedef struct {
     s16 unk1A;
 } GlobalASMStruct51;
 
-void func_8065A708(f32, f32, s32, f32, f32, f32, f32, s32, s32, s32, s32);
 extern s32 D_807FBB68;
 extern s16 D_80748A84;
 extern GlobalASMStruct51 D_807F9070[];

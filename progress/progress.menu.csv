@@ -62,7 +62,7 @@ us,.code,func_8002907C,152,yes
 us,.code,func_800261C0,144,yes
 us,.code,func_8002DBDC,780,no
 us,.code,func_80026804,112,yes
-us,.code,func_80030A90,388,no
+us,.code,func_80030A90,388,yes
 us,.code,func_80025AE0,8,yes
 us,.code,func_8002ADC8,2368,no
 us,.code,func_8002F284,1092,no

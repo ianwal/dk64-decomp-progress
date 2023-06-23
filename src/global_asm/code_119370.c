@@ -107,7 +107,6 @@ extern s16 D_807FDB42;
 
 u32 func_806119A0();
 void *func_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, s32);
-s32 func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, u32, u32, u32);
 void func_80714A9C(void);
 void func_80718380(Struct80717D84 *arg0, s8 *arg1);
 int func_80717404(); // TODO: Signature

@@ -547,7 +547,7 @@ void func_80686340(void) {
 extern f32 D_80759B50;
 
 /*
-// TODO: Weird regalloc again, at s2, s3
+// Probably needs rodata
 void func_8068696C(Actor *arg0) {
     s32 phi_s0;
     f32 temp_f20 = D_80759B50;
@@ -561,9 +561,10 @@ void func_8068696C(Actor *arg0) {
 }
 */
 
-// Probably will have the same regalloc as above
+// Probably needs rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80686A5C.s")
 
+// Probably needs rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80686CF8.s")
 
 void func_80686E40(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
@@ -662,7 +663,6 @@ void func_806877C8(u8 arg0) {
 }
 
 void func_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
-void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
 int func_8071E028(); // TODO: Signature
 extern s32 D_80720B24;

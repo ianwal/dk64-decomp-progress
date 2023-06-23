@@ -203,7 +203,6 @@ extern s32 D_807201D4; // TODO: Datatype
 
 void func_8066EB40(Actor*, f32);
 void func_8066E854(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4);
-void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
 void func_806B83E4(void) {
     u8 temp;

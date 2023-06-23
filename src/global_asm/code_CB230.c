@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-s32 func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, u8, u8, u8);
 extern f32 D_8075C380;
 extern f64 D_8075C388;
 extern f64 D_8075C390;

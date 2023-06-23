@@ -261,7 +261,33 @@ void func_80704108(u8 arg0, u8 arg1, u8 arg2) {
     D_807FD899 = arg2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80704130.s")
+extern f64 D_8075DF78;
+extern f64 D_8075DF80;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s32 unk4;
+    s32 unk8;
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+    u8 unkF;
+} Struct80704130;
+
+void func_80704130(Struct80704130 *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5) {
+    arg0->unkC = arg1;
+    arg0->unkD = arg2;
+    arg0->unkE = arg3;
+    arg0->unkF = arg4;
+    if (arg5 & 0x10) {
+        if (arg5 & 0x40) {
+            arg0->unk2 += (64.0f * func_80612794((arg4 * D_8075DF78) + 1024.0));
+        } else {
+            arg0->unk2 -= (64.0f * func_80612794((arg4 * D_8075DF80) + 1024.0));
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80704298.s")
 

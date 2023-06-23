@@ -1083,18 +1083,64 @@ void func_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, s8 arg3, f32 arg4, f
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669A6C.s")
+extern f32 D_80758FE0;
+
+void func_80669A6C(Actor *arg0) {
+    s32 pad;
+    s32 pad2;
+    s32 pad3;
+    s32 pad4;
+    s32 pad5;
+    s32 pad6;
+    s32 pad7;
+    s32 pad8;
+    s32 pad9;
+    s32 padA;
+    f32 sp90[4][4];
+    f32 sp50[4][4];
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    s16 sp42;
+    OM2_unk7C *temp_v1;
+
+    sp42 = func_80659470(arg0->unk10C);
+    if (sp42 != -1) {
+        func_8066C610(sp42, arg0->unk10F, &sp90[0]);
+        temp_v1 = D_807F6000[sp42].unk7C;
+        if (temp_v1 != NULL) {
+            if (arg0->unkFC == 0) {
+                arg0->y_rotation += ((temp_v1->unk34 * D_80758FE0) / 360.0f);
+                if (arg0->y_rotation >= 0x1000) {
+                    arg0->y_rotation -= 0x1000;
+                }
+                if (arg0->y_rotation < 0) {
+                    arg0->y_rotation += 0xFFF;
+                }
+            }
+            arg0->unk100 += D_807F6000[sp42].unk7C->unk8;
+            arg0->unk108 += D_807F6000[sp42].unk7C->unkC;
+        }
+        guMtxXFMF(&sp90[0], arg0->unk100, arg0->unk104, arg0->unk108, &sp4C, &sp48, &sp44);
+        arg0->unk94 = sp4C;
+        arg0->unk98 = sp44;
+        if (arg0->unkFC == 0) {
+            arg0->x_position = sp4C;
+            arg0->z_position = sp44;
+        }
+    }
+}
 
 typedef struct {
-    f32     unk0;
-    f32     unk4;
-    f32     unk8;
-    f32     unkC;
-    f32     unk10;
-    f32     unk14;
-    f32     unk18;
-    f32     unk1C;
-    f32     unk20;
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
 } GlobalASMStruct80;
 
 int func_80669BE8(GlobalASMStruct80 *arg0, f32 arg1, f32 arg2) {

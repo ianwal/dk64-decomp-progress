@@ -1024,6 +1024,7 @@ void func_806364C4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806365D0.s")
 
+// Appears to parse a displaylist looking for 0xFD command
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636784.s")
 
 // Object Model 2 Geometry

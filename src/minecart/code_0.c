@@ -87,7 +87,6 @@ void func_80024254(Struct80024254_arg0 *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_8002430C.s")
 
 void func_8065A660(f32, f32);
-void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
 void func_80024768(void) {
     f32 sp4C;

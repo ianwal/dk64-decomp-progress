@@ -134,7 +134,6 @@ void func_8068B9B4(void) {
     }
 }
 
-void func_8065A708(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 void func_8072167C(s16, s16, s16, s16);
 
 // TODO: Probably overlap with an existing aaD
