@@ -17,6 +17,11 @@ void setFlag(s16 flagIndex, u8 newValue, u8 flagType);
 u8 isFlagSet(s16 flagIndex, u8 flagType);
 ExitData *getExitData(s32 exitIndex);
 
+f32 func_8000773C(s64);
+
+Actor *func_807270C0(s16 spawn_trigger, u16 arg1);
+Actor *func_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
+
 // TODO: What do the params mean?
 void playCutscene(Actor*, s16, s32);
 void playSong(s32, f32);

@@ -1112,9 +1112,6 @@ void func_8065756C(s16 arg0) {
     D_807F6C58[D_807F6C80++] = arg0;
 }
 
-// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806575D0.s")
-
-f32 func_8000773C(s64);
 void func_80657CB0(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4, f32 *arg5, f32 *arg6);
 
 typedef struct {
@@ -1245,7 +1242,21 @@ void func_80657974(s32 arg0, f32 arg1, f32 arg2, f32 arg3, Struct80657974_arg4 *
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80657CB0.s")
+void func_80657CB0(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4, f32 *arg5, f32 *arg6) {
+    s32 temp;
+    f32 sp30;
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+
+    sp24 = func_8000773C(-D_807F6C24[arg0].unk18);
+    sp28 = func_8000773C(D_807F6C24[arg0].unk8);
+    sp2C = func_8000773C(D_807F6C24[arg0].unk0);
+    sp30 = (sp24 - ((func_8000773C(D_807F6C24[arg0].unk10) * arg3) + ((sp2C * arg1) + (sp28 * arg2)))) / D_807F6C24[arg0].unk24;
+    *arg4 = (func_8000773C(D_807F6C24[arg0].unk0) * sp30) + arg1;
+    *arg5 = (func_8000773C(D_807F6C24[arg0].unk8) * sp30) + arg2;
+    *arg6 = (func_8000773C(D_807F6C24[arg0].unk10) * sp30) + arg3;
+}
 
 void func_80657E24(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 *arg8, s32 *arg9, s32 *argA, s32 *argB) {
     if (arg0 == arg2 || arg1 == arg3) {

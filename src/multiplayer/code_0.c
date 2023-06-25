@@ -228,7 +228,48 @@ void func_80025654(MultiplayerStruct4 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025794.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025B48.s")
+typedef struct {
+    u8 unk0[0x18 - 0x0];
+    Actor *unk18;
+    s16 unk1C;
+} Struct80025B48;
+
+void func_80025B48(Struct80025B48 *arg0) {
+    s32 var_a2;
+
+    var_a2 = 0;
+    if (arg0->unk18 != NULL) {
+        if (arg0->unk18->control_state == 0x40) {
+            arg0->unk18 = NULL;
+            var_a2 = 1;
+        }
+    } else {
+        var_a2 = 1;
+    }
+    if (arg0->unk1C == 0) {
+        if (var_a2) {
+            arg0->unk1C = (((rand() >> 0xF) % 32767) % 271) + 0x1E;
+        }
+    } else {
+        arg0->unk1C--;
+    }
+    if (var_a2) {
+        if (arg0->unk1C == 0) {
+            var_a2 = (((rand() >> 0xF) % 32767) % 3) + 1;
+            if (var_a2 == 3) {
+                var_a2 += (((rand() >> 0xF) % 32767) % 5);
+            }
+            arg0->unk18 = func_807270C0(var_a2, 0);
+            if (arg0->unk18 == NULL) {
+                arg0->unk18 = func_807271F4(var_a2, 0, 0, 0, 0, 0, 0);
+            }
+            if (arg0->unk18 != NULL) {
+                arg0->unk18->control_state = 0x36;
+                arg0->unk18->control_state_progress = 0;
+            }
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025CE8.s")
 

@@ -51,6 +51,80 @@ void func_80731B60(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80731E68.s")
 
+extern s32 D_80756360[];
+extern s32 D_807563B8;
+
+extern s32 D_80760168; // TODO: Datatype
+extern s32 D_80760170; // TODO: Datatype
+extern s32 D_80760174; // TODO: Datatype
+extern s32 D_80760178; // TODO: Datatype
+extern s32 D_8076017C; // TODO: Datatype
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} Struct807FEF88;
+
+extern Struct807FEF88 D_807FEF88[];
+extern s32 D_807FF018;
+extern s32 D_807FEF7C;
+
+typedef struct {
+    u8 unk0[0xE4 - 0x0];
+    s32 unkE4;
+    u8 unkE8[0xFC - 0xE8];
+    s32 unkFC;
+} Struct80731E68_unk20;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    Struct80731E68_unk20 *unk20;
+} Struct80731E68;
+
+/*
+// TODO: Regalloc
+void func_80731E68(Struct80731E68 *arg0) {
+    s32 *var_s1;
+    s32 j;
+    s32 i;
+    Struct80731E68_unk20 *temp_s6;
+
+    D_807FEF78 = 2;
+    D_807FEF84 = 0xFFFF;
+    D_807FEF86 = 1;
+    temp_s6 = &arg0->unk20;
+    for (i = 0; i < 0x18; i += 6) {
+        D_807FEF7C = i * 3;
+        D_807FEF70 = i * 3;
+        D_807FEF74 = i;
+        func_80731D20(&D_80760168);
+        func_80731D20(&D_80760170, temp_s6->unkFC);
+        func_80731D20(&D_80760174, temp_s6->unkE4);
+        if (D_807563B8 >= 4) {
+            for (j = 0; j < D_807FF018; j++) {
+                func_80731D20(&D_80760178, D_807FEF88[j].unk0);
+            }
+        }
+    }
+    if (D_807FF01C != 0) {
+        func_80731D20(&D_8076017C, D_80756360[D_807FF01C], D_807FF020, D_807FF024, D_807FF028);
+    }
+    if (D_807563B8 < 4) {
+        D_807563B8++;
+    }
+    if (D_807563B8 == 4) {
+        func_80732158(arg0);
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_8073202C.s")
 
 /*

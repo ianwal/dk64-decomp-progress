@@ -207,7 +207,6 @@ f32 func_806E03C8(f32, f32);
 s32 func_806E9D1C(s16 arg0, u8 arg1, u8 arg2);
 void func_806EA568(void);
 s16 func_8062773C(s32);
-Actor *func_807270C0(s8, s32); // getSpawnerTiedActor()
 s32 func_806FA7A4(s32); // TODO: Might return s16
 
 void func_806C9DE0(void) {

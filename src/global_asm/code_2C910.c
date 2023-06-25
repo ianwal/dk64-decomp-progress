@@ -3,7 +3,6 @@
 
 
 extern u8 D_80757F70[];
-Actor *func_807270C0(s16 arg0, s32 arg1);
 
 void func_80627C10(u8 arg0) {
     s32 index = arg0 * 3;

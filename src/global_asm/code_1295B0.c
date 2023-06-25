@@ -303,7 +303,6 @@ void func_80726EE0(u8 arg0) {
     }
 }
 
-Actor *func_807270C0(s16, u16); // getSpawnerTiedActor()
 void func_80678428(Actor*);
 
 void func_8072707C(s16 arg0, u8 arg1, u16 arg2) {

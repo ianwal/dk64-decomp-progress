@@ -893,6 +893,64 @@ s32 func_806717FC(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671A6C.s")
 
+typedef struct {
+    u8 unk0[0x70 - 0x0];
+    f32 *unk70;
+    f32 *unk74[1]; // TODO: How many?
+    u8 unk78[0x84 - 0x78];
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+} Struct80671A6C;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    void *next;
+} Struct80671A6C_unk90;
+
+/*
+// TODO: Very close, temp_s6 might be a matrix pointer
+void func_80671A6C(Struct80671A6C *arg0, s32 arg1) {
+    f32 spA4;
+    f32 spA0;
+    f32 sp9C;
+    f32 sp5C[4][4];
+    s32 *temp_s6;
+    u8 var_v0;
+    Struct80671A6C_unk90 *var_s0;
+
+    if ((arg1 & 0xFF) || object_timer != arg0->unk84) {
+        if (object_timer == arg0->unk88) {
+            var_v0 = D_807444FC;
+        } else {
+            var_v0 = D_807444FC ^ 1;
+        }
+        var_s0 = arg0->unk90;
+        temp_s6 = arg0->unk74[var_v0];
+        while (var_s0 != NULL) {
+            if (var_s0->unk18 == -1) {
+                memcpy(&sp5C[0], arg0->unk70, 0x40);
+                guMtxXFMF(&sp5C[0], var_s0->unk0, var_s0->unk4, var_s0->unk8, &spA4, &spA0, &sp9C);
+            } else {
+                guMtxXFML(temp_s6[var_s0->unk18], var_s0->unk0, var_s0->unk4, var_s0->unk8, &spA4, &spA0, &sp9C);
+            }
+            var_s0->unkC = spA4 * 8.0f;
+            var_s0->unk10 = spA0 * 8.0f;
+            var_s0->unk14 = sp9C * 8.0f;
+            var_s0 = var_s0->next;
+        }
+        arg0->unk84 = object_timer;
+    }
+}
+*/
+
 u8 func_80671C0C(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
     s32 var_v0_2;
     LedgeInfo90 *current;

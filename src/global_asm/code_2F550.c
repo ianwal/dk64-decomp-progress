@@ -861,6 +861,48 @@ void func_8062DB70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E040.s")
 
+/*
+f32 func_8062E040(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, f32 arg6, f32 arg7, f32 arg8) {
+    f32 sp3C;
+    f32 sp30;
+    f32 sp38;
+    f32 var_f20;
+    f32 temp_f24;
+    f32 temp_f16_2;
+    f32 temp_f22;
+
+    sp3C = (arg0 - arg6) * (arg0 - arg6);
+    sp38 = (arg1 - arg7) * (arg1 - arg7);
+    temp_f22 = (arg2 - arg8) * (arg2 - arg8);
+    temp_f24 = (arg5 - arg8) * (arg5 - arg8);
+    var_f20 = (sp3C + sp38) + temp_f22;
+    sp30 = (sp3C + sp38) + temp_f24;
+    if (sp30 < var_f20) {
+        var_f20 = sp30;
+    }
+    temp_f16_2 = (arg4 - arg7) * (arg4 - arg7);
+    if (((sp3C + temp_f16_2) + temp_f22) < var_f20) {
+        var_f20 = ((sp3C + temp_f16_2) + temp_f22);
+    }
+    if (((sp3C + temp_f16_2) + temp_f24) < var_f20) {
+        var_f20 = ((sp3C + temp_f16_2) + temp_f24);
+    }
+    if (((((arg3 - arg6) * (arg3 - arg6)) + sp38) + temp_f22) < var_f20) {
+        var_f20 = ((((arg3 - arg6) * (arg3 - arg6)) + sp38) + temp_f22);
+    }
+    if (((((arg3 - arg6) * (arg3 - arg6)) + sp38) + temp_f24) < var_f20) {
+        var_f20 = ((((arg3 - arg6) * (arg3 - arg6)) + sp38) + temp_f24);
+    }
+    if (((((arg3 - arg6) * (arg3 - arg6)) + temp_f16_2) + temp_f22) < var_f20) {
+        var_f20 = ((((arg3 - arg6) * (arg3 - arg6)) + temp_f16_2) + temp_f22);
+    }
+    if (((((arg3 - arg6) * (arg3 - arg6)) + temp_f16_2) + temp_f24) < var_f20) {
+        var_f20 = ((((arg3 - arg6) * (arg3 - arg6)) + temp_f16_2) + temp_f24);
+    }
+    return sqrtf(var_f20);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E1F8.s")
 
 void func_8062E3B4(f32 *, f32 *, s32, s32 *, s32, f64, s32);

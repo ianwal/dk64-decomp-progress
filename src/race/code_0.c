@@ -309,8 +309,6 @@ typedef struct {
 void func_8002BBD0(Actor *arg0, s32 arg1);
 void func_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
 
-Actor *func_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
-
 /*
 void func_80025E9C(Actor *arg0) {
     RaceAdditionalActorData *aaD;

@@ -327,8 +327,6 @@ typedef struct {
     s16 unk2E; // Used
 } AAD_806BB604;
 
-Actor *func_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
-
 s32 func_806BB604(u8 arg0, s16 arg1, s16 arg2, s32 arg3) {
     AAD_806BB604 *aaD;
 

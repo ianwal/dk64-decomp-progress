@@ -2,7 +2,7 @@ version,section,function,length,matching
 us,.code,func_800245B0,316,no
 us,.code,func_8002698C,60,yes
 us,.code,func_80025654,320,no
-us,.code,func_80025B48,416,no
+us,.code,func_80025B48,416,yes
 us,.code,func_800253C8,60,yes
 us,.code,func_80025CE8,668,no
 us,.code,func_80026E20,336,no

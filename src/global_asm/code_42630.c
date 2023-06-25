@@ -523,7 +523,6 @@ typedef struct {
 } GlobalASMStruct44;
 
 s32 func_80678014(s32);
-Actor *func_807270C0(s16, s32); // getSpawnerTiedActor()
 extern s16 D_807F693C;
 extern u8 D_807F693F;
 
@@ -818,8 +817,35 @@ void func_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80642C78.s")
 
-extern f64 D_80758930;
 u32 func_806119A0();
+
+/*
+void func_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+    s32 i;
+    u8 temp_v1;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+
+    switch (D_807F6000[(s16)func_80659470(arg1)].unk78[2].unk5) {
+        case 0xD:
+        case 0x15:
+        case 0x19:
+            for (i = 1; i < 0xF; i++) {
+                func_806335B0(arg1, 1, i, &sp6C, &sp68, &sp64);
+                func_807149B8(1);
+                func_80714998(2);
+                func_80714950(-0x14 - ((func_806119A0() / 10000) % 50));
+                func_807149C8(0xE1, 0x87, 0x38, 0xFF);
+                func_8071498C(&func_80717D4C);
+                func_80714CC0(&D_8071FF18, 0.5f, sp6C, sp68 + 2.0f, sp64);
+            }
+            break;
+    }
+}
+*/
+
+extern f64 D_80758930;
 
 void func_80642E34(s32 **arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 sp5C;
@@ -1269,7 +1295,33 @@ void func_8064774C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647834.s")
+u32 func_806119A0();
+
+extern s32 D_80720EA4;
+int func_8071910C(); // TODO: Signature
+
+void func_80647834(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+    s32 i;
+    f32 temp;
+
+    for (i = 0; i < 0xC; i++) {
+        func_807149B8(1);
+        func_807149FC(0x3C);
+        func_8071498C(func_8071910C);
+        func_80714998(2);
+        func_80714950(4);
+        temp = ((func_806119A0() / 1000) % 80);
+        func_80714CC0(&D_80720EA4, 1.0f, D_807F621C, D_807F6220 + temp, D_807F6224);
+    }
+    for (i = 1; i != 6; i++) {
+        func_80714950(-0x78);
+        func_8071498C(func_80717D4C);
+        func_807149B8(1);
+        func_80714998(3);
+        func_807149C8(0xFF, 0xFF, 0xFF, 0x78);
+        func_80714B84(&D_8071FFA0, 3.0f, arg1, i, 0);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647A14.s")
 
