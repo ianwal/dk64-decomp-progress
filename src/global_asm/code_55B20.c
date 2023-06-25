@@ -947,7 +947,7 @@ s32 func_80654E84(Struct80654E84 *arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655258.s")
 
-s32 func_8062DBDC(s16, s16, s16, s16, s32, s32, f32, f32, f32, f32, u8 *); // extern
+s32 func_8062DBDC(s16, s16, s16, s16, s32, s32, f32, f32, f32, f32, u8 *);
 extern f32 D_807F5FAC;
 extern s32 D_807F70AC;
 
@@ -1112,11 +1112,10 @@ void func_8065756C(s16 arg0) {
     D_807F6C58[D_807F6C80++] = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806575D0.s")
+// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806575D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_8065776C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80657974.s")
+f32 func_8000773C(s64);
+void func_80657CB0(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4, f32 *arg5, f32 *arg6);
 
 typedef struct {
     f32 unk0;
@@ -1136,26 +1135,6 @@ typedef struct {
 extern Struct807F6C14 *D_807F6C14;
 
 typedef struct {
-    s32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    f32 unk18;
-    f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    u8 unk28;
-    u8 unk29;
-    u8 unk2A;
-    u8 unk2B;
-    f32 unk2C;
-} Struct807F6C24;
-
-extern Struct807F6C24 *D_807F6C24;
-
-typedef struct {
     f32 unk0;
     f32 unk4;
     f32 unk8;
@@ -1169,6 +1148,58 @@ typedef struct {
     f32 unk28;
     f32 unk2C;
 } Struct80657974_arg4;
+
+void func_80657974(s32 arg0, f32 arg1, f32 arg2, f32 arg3, Struct80657974_arg4 *arg4);
+
+typedef struct {
+    s64 unk0;
+    s64 unk8;
+    s64 unk10;
+    s64 unk18;
+    f32 unk20;
+    f32 unk24;
+    u8 unk28;
+    u8 unk29;
+    u8 unk2A;
+    u8 unk2B;
+    f32 unk2C;
+} Struct807F6C24;
+
+extern Struct807F6C24 *D_807F6C24;
+
+s32 func_806575D0(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    f32 var_f2;
+    s32 temp;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    u8 sp4C[40];
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+
+    sp40 = func_8000773C(D_807F6C24[arg0].unk10);
+    sp44 = func_8000773C(D_807F6C24[arg0].unk8);
+    sp48 = func_8000773C(D_807F6C24[arg0].unk0);
+    var_f2 = (func_8000773C(D_807F6C24[arg0].unk18) + ((sp48 * arg1) + (sp44 * arg2) + (sp40 * arg3))) / D_807F6C24[arg0].unk20;
+    if (var_f2 < 0.0) {
+        var_f2 = 0.0 - var_f2;
+    }
+    if (var_f2 > 80.0) {
+        return 0;
+    } else {
+        func_80657CB0(arg0, arg1, arg2, arg3, &sp7C, &sp78, &sp74);
+        func_80657974(arg0, sp7C, sp78, sp74, &sp4C);
+        if (func_8065776C(&sp4C) != 0) {
+            return 1;
+        }
+    }
+    return 0;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_8065776C.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80657974.s")
 
 /*
 // TODO: Hmm, not sure what's missing here...
@@ -1289,12 +1320,6 @@ s32 func_80657F14(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s3
     return TRUE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658000.s")
-
-f32 func_8000773C(s32, s32);
-
-/*
-// TODO: Regalloc
 u8 func_80658000(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
     f32 temp[2];
     f32 sp2C;
@@ -1302,16 +1327,15 @@ u8 func_80658000(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
     f32 sp24;
     f32 var_f12;
 
-    sp24 = func_8000773C(D_807F6C24[arg0].unk10, D_807F6C24[arg0].unk14);
-    sp28 = func_8000773C(D_807F6C24[arg0].unk8, D_807F6C24[arg0].unkC);
-    sp2C = func_8000773C(D_807F6C24[arg0].unk0, D_807F6C24[arg0].unk4);
-    var_f12 = (func_8000773C(D_807F6C24[arg0].unk18, D_807F6C24[arg0].unk1C) + ((sp2C * arg1) + (sp28 * arg2) + (sp24 * arg3))) / D_807F6C24[arg0].unk20;
+    sp24 = func_8000773C(D_807F6C24[arg0].unk10);
+    sp28 = func_8000773C(D_807F6C24[arg0].unk8);
+    sp2C = func_8000773C(D_807F6C24[arg0].unk0);
+    var_f12 = (func_8000773C(D_807F6C24[arg0].unk18) + ((sp2C * arg1) + (sp28 * arg2) + (sp24 * arg3))) / D_807F6C24[arg0].unk20;
     if (var_f12 < 0.0) {
         var_f12 = 0.0 - var_f12;
     }
     return var_f12 <= arg4;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80658134.s")
 

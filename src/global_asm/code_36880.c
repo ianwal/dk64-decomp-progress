@@ -743,7 +743,7 @@ void func_806355DC(s32 arg0, u8 arg1) {
             func_80605380(D_807F6000[arg0].unk7C->unk10);
         }
         if (D_807F6000[arg0].unk7C->unk12 != -1) {
-            func_80605380( D_807F6000[arg0].unk7C->unk12);
+            func_80605380(D_807F6000[arg0].unk7C->unk12);
         }
     }
     if ((arg0 + 1) != D_80747D70) {

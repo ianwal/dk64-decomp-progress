@@ -9,7 +9,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8064F6F8.s")
 
-s32 func_806358E8(s16, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32); // extern
+s32 func_806358E8(s16, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32);
 
 typedef struct {
     void *unk0;

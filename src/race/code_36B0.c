@@ -490,6 +490,7 @@ void func_8002BCD4(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002BEE8.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002C14C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002C2E8.s")
@@ -498,10 +499,10 @@ void func_8002BCD4(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002C76C.s")
 
-s32 func_8002C14C(s32, void *);                     // extern
-s32 func_8002C2E8(s32, void *);                     // extern
-s32 func_8002C63C(s32, void *);                     // extern
-s32 func_8002C76C(s32, void *);                     // extern
+s32 func_8002C14C(s32, void *);
+s32 func_8002C2E8(s32, void *);
+s32 func_8002C63C(s32, void *);
+s32 func_8002C76C(s32, void *);
 
 s32 func_8002CAC8(s32 arg0, Actor *arg1, RaceAdditionalActorData *arg2) {
     RaceAdditionalActorData2 *sp24;
@@ -570,6 +571,8 @@ void func_8002D0B0() {
     RaaD->unk0 = 0xE;
     RaaD->unk24 = 2;
 }
+
+void func_8002E2C8(Actor *arg0);
 
 void func_8002D0FC(void) {
     RaceAdditionalActorData2 *RaaD;
@@ -899,8 +902,71 @@ f32 func_8002E1C8(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2
     return var_f2;
 }
 
-// Doable, A178 & A17C stuff though
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_8002E2C8.s")
+typedef struct {
+    u8 unk0[0x25 - 0x0];
+    u8 unk25;
+    u8 unk26;
+} AAD_8002E2C8;
+
+typedef struct {
+    u8 unk0[0x27 - 0x0];
+    u8 unk27;
+    u8 unk28;
+    u8 unk29[0x30 - 0x29];
+    s32 unk30;
+    u8 unk34[0x36 - 0x34];
+    u8 unk36;
+} AAD_8002E2C8_Actor315;
+
+typedef struct {
+    u8 unk0[0x27 - 0x0];
+    u8 unk27;
+} A178_8002E2C8;
+
+void func_8002E2C8(Actor *arg0) {
+    AAD_8002E2C8 *sp5C;
+    AAD_8002E2C8_Actor315 *sp58;
+    Actor *sp54;
+    Actor17C *temp_a2;
+    s32 var_s1;
+    s32 i;
+    s32 var_s4;
+
+    var_s4 = cc_number_of_players;
+    var_s1 = 0;
+    sp5C = arg0->additional_actor_data;
+    if (var_s4 == 1) {
+        var_s4++;
+    }
+    func_8002BBD0(arg0, var_s4);
+    if (cc_number_of_players == 1) {
+        sp54 = func_807271F4(1, 0, 0, 0, 0, 0, 0);
+        sp58 = sp54->unk178;
+        sp58->unk27 = 1;
+        func_8002BC2C(arg0, 0, sp54, sp58);
+        var_s1 = 1;
+        temp_a2 = sp54->unk17C;
+        func_8002BCB0(arg0, 0, temp_a2, &temp_a2->unk4);
+        sp5C->unk25 = 1;
+    } else {
+        sp5C->unk25 = 0;
+    }
+    for (i = 0; i < cc_number_of_players; i++) {
+        func_80677FA8(ACTOR_UNKNOWN_315, 0);
+        sp54 = D_807FBB44;
+        sp58 = sp54->additional_actor_data;
+        sp58->unk27 = 0;
+        func_8002BC2C(arg0, var_s1, sp54, sp58);
+        var_s1 += 1;
+        sp58->unk28 = i;
+    }
+    for (i = 0; i < var_s4; i++) {
+        func_8002BCB0(arg0, i, &sp54, &sp58);
+        sp58->unk36 = i;
+        sp58->unk30 = arg0;
+    }
+    sp5C->unk26 = 0;
+}
 
 void func_8002E464(s32 arg0, Actor *arg1) {
     // TODO: Which aaD type are they actually expecting here?

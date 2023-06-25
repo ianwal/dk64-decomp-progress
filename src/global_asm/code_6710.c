@@ -243,6 +243,39 @@ void func_80605314(Actor *arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80605380.s")
 
+extern s32 D_807705A0[];
+extern s16 D_807705F8[];
+extern s16 D_80770658[];
+extern s8 D_807706F8[];
+extern s16 D_80770740[];
+
+typedef struct {
+    s16 unk0[22];
+} Struct807707A0;
+
+extern Struct807707A0 D_807707A0[];
+
+/*
+// TODO: Close, maybe needs some temp variables?
+void func_80605380(s16 arg0) {
+    if (--D_80770740[D_80770628[arg0]] != 0) {
+        D_80770658[D_807707A0[D_80770628[arg0]].unk0[D_80770740[D_80770628[arg0]]]] = D_80770658[D_807707A0[D_80770628[arg0]].unk0[D_80770658[arg0]]];
+        D_807707A0[D_80770628[arg0]].unk0[D_80770658[arg0]] = D_807707A0[D_80770628[arg0]].unk0[D_80770740[D_80770628[arg0]]];
+    } else {
+        D_80770710[D_80770628[arg0]] = 0;
+        D_807706F8[D_80770628[arg0]] = 0;
+    }
+    if (D_80770740[D_80770628[arg0]] < 0 || D_80770740[D_80770628[arg0]] >= 0x17) {
+        func_80732354(9, D_80770740[D_80770628[arg0]], 0, 0);
+    }
+    D_807707A0[D_80770628[arg0]].unk0[D_80770740[D_80770628[arg0]]] = -1;
+    D_807705F8[arg0] = -1;
+    D_807705A0[arg0] = 0;
+    D_80770628[arg0] = -1;
+    D_80770658[arg0] = -1;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80605510.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_806057F8.s")

@@ -24,6 +24,8 @@ typedef struct {
     s8 unk38;
     s8 unk39;
     u16 unk3A;
+    s32 unk3C;
+    f32 unk40;
 } RaceStruct6;
 
 typedef struct {
@@ -277,6 +279,7 @@ typedef struct RaceStruct13 {
 
 void func_8002DCF0(void*, s32);
 void func_8002F36C(RaceStruct13*, RaceStruct13*);
+void *func_8002E9AC(u8);
 
 void func_8002F36C(RaceStruct13 *arg0, RaceStruct13 *arg1) {
     RaceStruct2_unkC *temp_v0;
@@ -287,7 +290,7 @@ void func_8002F36C(RaceStruct13 *arg0, RaceStruct13 *arg1) {
             arg0->unk3C++;
             arg0->unk3C = arg0->unk3C % arg1->unk0;
             temp = arg1->unk4[arg0->unk3C];
-            temp_v0 = func_8002E9AC(temp & 0xFF);
+            temp_v0 = func_8002E9AC(temp);
         } while (!temp_v0->unk10);
         func_8002DCF0(temp_v0, 1);
     }
@@ -296,7 +299,7 @@ void func_8002F36C(RaceStruct13 *arg0, RaceStruct13 *arg1) {
 void func_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
     if (arg1->unk8 && arg0->unk3C == arg0->unk3A) {
         s32 temp = arg1->unk4[arg0->unk3C];
-        func_8002DCF0(func_8002E9AC(temp & 0xFF), 0);
+        func_8002DCF0(func_8002E9AC(temp), 0);
         func_8002F36C(arg0, arg1);
     }
 }
@@ -304,6 +307,65 @@ void func_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F490.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F784.s")
+
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    s16 unk4[1]; // TODO: How many?
+} Struct8002F784;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct8002E9AC;
+
+/*
+// TODO: Quite close
+f32 func_8002F784(Struct8002F784 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) {
+    s32 sp54;
+    f32 temp;
+    f32 temp2;
+    f32 var_f20;
+    f32 var_f22;
+    f32 var_f24;
+    s32 temp_s1;
+    s32 i;
+    s32 var_s2;
+    s32 var_s4;
+    s32 var_v0;
+    Struct8002E9AC *temp_s0;
+
+    i = (arg1->unk37 * arg0->unk0) + arg1->unk3A;
+    var_s4 = (arg2->unk37 * arg0->unk0) + arg2->unk3A;
+    sp54 = var_s4 - i;
+    var_f20 = arg1->unk40 - arg2->unk40;
+    if (sp54 < 0) {
+        temp_s1 = i ^ var_s4;
+        var_s4 ^= temp_s1;
+        i = temp_s1 ^ var_s4;
+        var_f20 = -var_f20;
+    }
+    var_s2 = 1;
+    if (i != var_s4) {
+        for (; i <= var_s4; i++) {
+            temp_s0 = func_8002E9AC(arg0->unk4[i % arg0->unk0]);
+            var_s2 = 0;
+            if (var_s2 == 0) {
+                var_f20 += func_8002F304(temp_s0, var_f22, var_f24);
+            }
+            var_f22 = temp_s0->unk0;
+            var_f24 = temp_s0->unk4;
+        }
+    }
+    if (sp54 >= 0) {
+        var_v0 = 1;
+    } else {
+        var_v0 = -1;
+    }
+    return var_f20 * var_v0;
+}
+*/
 
 f32 func_8002F90C(RaceStruct6 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) {
     f32 temp = ((arg1->unk37 - 1) * arg0->unk0) + arg1->unk3A;

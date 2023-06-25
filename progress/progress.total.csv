@@ -39,7 +39,7 @@ us,.code,func_806B513C,416,yes
 us,.code,func_80610C74,344,no
 us,.code,func_8064C134,284,no
 us,.code,func_8067E4D4,60,yes
-us,.code,func_806458C8,412,no
+us,.code,func_806458C8,412,yes
 us,.code,func_8066A584,200,yes
 us,.code,func_806688B8,132,no
 us,.code,func_8071B758,324,yes
@@ -2671,7 +2671,7 @@ us,.code,func_806BB32C,212,yes
 us,.code,func_80737EA4,104,yes
 us,.code,func_806A6230,132,yes
 us,.code,func_8066F274,396,yes
-us,.code,func_80642E34,400,no
+us,.code,func_80642E34,400,yes
 us,.code,func_806613E8,88,yes
 us,.code,func_80660D38,788,no
 us,.code,func_806739D8,104,no
@@ -3087,7 +3087,7 @@ us,.code,func_806C4EB4,44,yes
 us,.code,func_806FF144,488,no
 us,.code,func_807385F0,380,no
 us,.code,func_80641F68,8,yes
-us,.code,func_80658000,308,no
+us,.code,func_80658000,308,yes
 us,.code,func_806522CC,168,yes
 us,.code,func_80737A9C,40,yes
 us,.code,func_80642940,688,no
@@ -3501,7 +3501,7 @@ us,.code,func_8002E1C8,256,yes
 us,.code,sealRaceSetup,32,yes
 us,.code,func_8002ECD4,48,yes
 us,.code,func_8002F280,132,yes
-us,.code,func_8002E2C8,412,no
+us,.code,func_8002E2C8,412,yes
 us,.code,func_8002E9AC,76,no
 us,.code,func_8002BBD0,92,yes
 us,.code,func_8002D0B0,76,yes

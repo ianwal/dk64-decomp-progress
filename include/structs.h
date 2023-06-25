@@ -1229,7 +1229,8 @@ struct actor {
     s16 shadow_opacity; // at 0x128, max value 0xFF
     s16 draw_distance; // at 0x12A
     s16 unk12C; // Used
-    s16 unk12E;
+    u8 unk12E;
+    u8 unk12F; // Used
     u8 unk130; // Used
     u8 unk131; // Used
     s16 unk132; // Used

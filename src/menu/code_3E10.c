@@ -982,6 +982,64 @@ void func_80030A90(Struct80717D84 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_800317E8.s")
 
+f32 func_8000AC60(f32, f32);
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    s32 unk8;
+    s16 unkC;
+    s16 unkE;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    s8 unk17;
+} Struct800317E8;
+
+/*
+// TODO: Float regalloc
+s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7) {
+    f32 temp_f0_2;
+    f32 var_f0;
+    f32 var_f18;
+    s32 var_v1;
+
+    arg1 -= 160.0f;
+    arg2 -= 120.0f;
+    var_f18 = func_8000AC60((arg1 * arg1) + (arg2 * arg2), arg1);
+    if (var_f18 < 20.0f) {
+        var_f18 = 20.0f;
+    }
+    var_v1 = arg0->unk17;
+    if (arg0->unk4 != 0.0f) {
+        if (arg0->unk4 > 0.5f) {
+            var_v1++;
+        }
+        if (var_v1 >= arg5) {
+            var_v1 -= arg5;
+        }
+    }
+    var_f0 = arg0->unk0 * 0.5f;
+    if (arg6 == 1) {
+        var_f0 += arg0->unk4;
+    }
+    var_f0 = (2.0f * var_f0) - 1.0f;
+    if (var_f0 < 0.0f) {
+        var_f0 = -var_f0;
+    }
+    var_f0 = 1.0f - var_f0;
+    if (var_f0 < 0.0f) {
+        var_f0 = 0.0f;
+    }
+    temp_f0_2 = ((100.0f / var_f18) * var_f0 * arg7) + 1.0f;
+    *arg3 = (arg1 * temp_f0_2) + 160.0f;
+    *arg4 = (arg2 * temp_f0_2) + 120.0f;
+    *arg4 = (arg2 * temp_f0_2) + 120.0f + arg0->unkC;
+    return var_v1;
+}
+*/
+
 // Float maths, looks doable, not sure which struct is passed in arg0 though
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80031980.s")
 

@@ -1026,6 +1026,38 @@ s32 func_80669650(u8 arg0, u8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806696A0.s")
 
+void func_806699C4(void *arg0, s16 arg1, s8 arg2, s8 arg3, f32 arg4, f32 arg5, f32 arg6);
+
+typedef struct {
+    f32 unk0; // X Position
+    f32 unk4; // Y Position
+    f32 unk8; // Z Position
+    void *next;
+} Struct806696A0;
+
+/*
+// TODO: Very close, just some float stuff
+void func_806696A0(Actor *arg0, s16 arg1, Struct806696A0 *arg2) {
+    u8 var_s2;
+
+    var_s2 = 0;
+    while (arg2 != NULL) {
+        if (sqrtf(((arg2->unk0 - arg0->x_position) * (arg2->unk0 - arg0->x_position)) + ((arg2->unk8 - arg0->z_position) * (arg2->unk8 - arg0->z_position))) < 5.0) {
+            f32 dy = (arg2->unk4 - arg0->y_position);
+            if (dy > 0.0f && dy < 25.0) {
+                func_806699C4(arg0, arg1, -1, 0, arg2->unk0, arg2->unk4, arg2->unk8);
+                arg0->locked_to_pad = 3;
+                arg0->unk12F = var_s2;
+                D_807F946C = 1;
+                D_807F9468 = arg2->unk4 - 10.0f;
+            }
+        }
+        arg2 = arg2->next;
+        var_s2++;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669830.s")
 
 void func_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
