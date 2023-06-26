@@ -26,8 +26,55 @@ extern u8 D_807FB604;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066C2D0.s")
 
-// Doable, model2 matrix stuff, might need some more structs/arrays defined though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066C610.s")
+
+extern u8 D_807444FC;
+
+/*
+void func_8066C610(s16 arg0, s8 arg1, f32 (*arg2)[4]) {
+    f32 spEC;
+    f32 spE8;
+    f32 spE4;
+    f32 spE0;
+    f32 spDC;
+    f32 spD8;
+    f32 spD4;
+    f32 spD0;
+    f32 sp8C[4][4];
+    f32 sp4C[4][4];
+    s32 sp48;
+    void *sp44;
+    OM2_unk24 *temp_v0_2;
+    OM2_unk78 *temp_v0;
+    ObjectModel2 *temp_v1;
+
+    temp_v1 = &D_807F6000[arg0];
+    temp_v0 = temp_v1->unk78;
+    if (temp_v0 != NULL) {
+        sp48 = *(temp_v0 + (D_807444FC * 4));
+    } else {
+        sp48 = 0;
+    }
+    temp_v0_2 = temp_v1->unk24;
+    sp44 = temp_v0_2->unk60 + temp_v0_2;
+    func_806357F8(arg0, &spEC, &spE8, &spE4, &spE0, &spDC, &spD8, &spD4, &spD0, 0);
+    guScaleF(&sp8C[0], spD4, spD4, spD4);
+    guRotateF(&sp4C[0], spE0, 1.0f, 0.0f, 0.0f);
+    guMtxCatF(&sp8C[0], &sp4C[0], &sp8C[0]);
+    guRotateF(&sp4C[0], spDC, 0.0f, 1.0f, 0.0f);
+    guMtxCatF(&sp8C[0], &sp4C[0], &sp8C[0]);
+    guRotateF(&sp4C[0], spD8, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp8C[0], &sp4C[0], &sp8C[0]);
+    guTranslateF(&sp4C[0], spEC, spE8, spE4);
+    if (arg1 != -1) {
+        guMtxCatF(&sp8C[0], &sp4C[0], &sp8C[0]);
+        func_8066C7F4((arg1 << 5) + sp44, sp48, arg2);
+        guMtxCatF(arg2, &sp8C[0], arg2);
+        return;
+    }
+    guMtxCatF(&sp8C[0], &sp4C[0], arg2);
+}
+*/
 
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066C7F4.s")

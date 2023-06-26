@@ -165,6 +165,7 @@ void func_80027C60(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027CE8.s")
 
+// Huh, actor184 stuff...?
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_800280E8.s")
 
 // Jumptable

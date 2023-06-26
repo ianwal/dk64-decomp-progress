@@ -19,7 +19,7 @@ us,.code,func_80024A4C,64,yes
 us,.code,func_800292C4,396,no
 us,.code,func_8002A374,444,yes
 us,.code,func_80027728,1216,no
-us,.code,func_80029C1C,496,no
+us,.code,func_80029C1C,496,yes
 us,.code,func_80024408,564,no
 us,.code,func_80028BD0,108,yes
 us,.code,func_80029E0C,368,yes

@@ -52,8 +52,32 @@ void func_80027CF4(void) {
     }
 }
 
-// small, structs, TRIPLE dereference
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027DA0.s")
+typedef struct {
+    u8 unk0[0x34 - 0x0];
+    u8 *unk34;
+    u8 unk38[0x42 - 0x38];
+    u8 unk42;
+} AAD_80027DA0;
+
+// TODO: Any cleanup possible?
+void func_80027DA0(AAD_80027DA0 *arg0) {
+    u8 temp_a2;
+    AAD_80027DA0 *temp;
+    PlayerAdditionalActorData *PaaD;
+
+    PaaD = D_807FDC94->PaaD;
+    temp = PaaD->vehicle_actor_pointer->additional_actor_data;
+    temp_a2 = temp->unk34[0] - 0x10;
+    if (temp_a2 < arg0->unk34[0]) {
+        arg0->unk42 = 1;
+    } else {
+        if (arg0->unk34[0] < temp_a2) {
+            arg0->unk42 = 2;
+        } else {
+            arg0->unk42 = 0;
+        }
+    }
+}
 
 // structs
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027E04.s")
