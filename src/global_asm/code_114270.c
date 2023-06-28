@@ -79,8 +79,56 @@ void func_8070F570(void) {
 // Doable, needs some structs defined though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070F5CC.s")
 
-// Doable, needs some structs defined though (arg0)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FA58.s")
+extern f32 D_8075E4C0;
+extern f32 D_8075E4C4;
+extern f32 D_8075E4C8;
+extern f32 D_8075E4CC;
+extern f64 D_8075E4D0;
+
+extern s16 D_807FDA1E;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+} Struct8070FA58;
+
+void func_8070FA58(Struct8070FA58 *arg0) {
+    f32 sp30;
+    f32 temp_f2_2;
+    f32 temp_f0;
+    f32 temp_f2;
+    s16 sp26;
+    f32 sp20;
+    f32 var_f12;
+
+    temp_f0 = character_change_array->look_at_eye_z - arg0->unk1C;
+    temp_f2 = character_change_array->look_at_eye_x - arg0->unk18;
+    temp_f2_2 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2));
+    arg0->unk18 = character_change_array->look_at_eye_x;
+    arg0->unk1C = character_change_array->look_at_eye_z;
+    var_f12 = character_change_array->unk2C4 - arg0->unk14;
+    if (D_8075E4C0 < var_f12) {
+        var_f12 = D_8075E4C4 - var_f12;
+    }
+    if (var_f12 < D_8075E4C8) {
+        var_f12 = D_8075E4CC - var_f12;
+    }
+    arg0->unk4 += ((var_f12 * 180.0f) - (D_8075E4D0 * D_807FDA1E));
+    sp30 = temp_f2_2;
+    arg0->unk4 += (4.0f * temp_f2_2 * func_80612D1C(var_f12));
+    sp26 = func_80665DE0(character_change_array->look_at_eye_x, character_change_array->look_at_eye_z, character_change_array->unk21C, character_change_array->unk224);
+    temp_f0 = character_change_array->look_at_eye_z - character_change_array->unk224;
+    temp_f2 = character_change_array->look_at_eye_x - character_change_array->unk21C;
+    sp20 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2));
+    arg0->unk4 -= (2.0 * sp20 * func_80612794(func_806CC10C(character_change_array->unk2C8, sp26)));
+    arg0->unk14 = character_change_array->unk2C4;
+}
 
 extern f32 D_8075E4D8;
 
@@ -142,8 +190,50 @@ u8 func_8071006C(Struct8071006C_arg0 *arg0) {
 // Need arg0 struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807102AC.s")
 
-// Need arg0 struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807103E0.s")
+
+extern f64 D_8075E4F0;
+extern f64 D_8075E4F8;
+extern f32 D_807FD9EC;
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s16 unk20;
+    s16 unk22;
+    s16 unk24;
+    s16 unk26;
+    f32 unk28;
+    u8 unk2C[0xB1 - 0x2C];
+    u8 unkB1;
+    u8 unkB2;
+    u8 unkB3;
+} Struct807103E0;
+
+/*
+// TODO: Regalloc
+u8 func_807103E0(Struct807103E0 *arg0) {
+    func_8070FA58(arg0); // TODO: Consolidate structs?
+    arg0->unk4 += func_80612794(arg0->unk22 * 0.5) * (f32)(arg0->unk28 * D_8075E4F0);
+    func_8070FC40(arg0); // TODO: Consolidate structs?
+    arg0->unk8 = arg0->unk4;
+    arg0->unkC += (1.0 + func_80612794(arg0->unk22)) * (f32)(1.0 + (arg0->unk20 * D_8075E4F8));
+    arg0->unk22 += 0x64;
+    arg0->unk24 = (func_80612794(arg0->unk22 * 0.5) * 0.5 + 0.5) * ((arg0->unkB3 * 4) - (arg0->unkB3 * -4)) + (arg0->unkB3 * -4);
+    if (((ABS(arg0->unk10)) * 140.0f) < arg0->unkC) {
+        if (arg0->unkB1 >= 0xA) {
+            arg0->unkB1 -= 0xA;
+        }
+    }
+    return D_807FD9EC < arg0->unkC || arg0->unkB1 < 0xA;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807105D4.s")
 

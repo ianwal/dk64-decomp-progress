@@ -274,6 +274,7 @@ void func_8060F208(GlobalASMStruct87 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F254.s")
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F54C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F730.s")

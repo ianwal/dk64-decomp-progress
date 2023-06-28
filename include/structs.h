@@ -1933,7 +1933,10 @@ typedef struct JetpacPlayerStruct {
     s32 unk0;
     s32 unk4;
     s32 unk8;
-    s32 unkC;
+    s8 unkC;
+    s8 unkD;
+    s8 unkE;
+    s8 unkF;
     s32 unk10;
     s32 unk14;
     s32 unk18;

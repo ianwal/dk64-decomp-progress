@@ -91,6 +91,9 @@ extern s32 D_8002EDE4;
 Gfx **func_8002AE00(Gfx**);
 void func_8002AE94(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 
+// TODO: Arg2 might be s16... Causes a mismatch in func_80024D48.
+void func_8002AEFC(void **arg0, s32 arg1, s32 arg2, s16 arg3, s32 arg4);
+
 /*
 // TODO: Annoyingly close, just weird offset nonsense on the lives read
 void func_80024408(Gfx **arg0) {
@@ -227,7 +230,56 @@ void func_80024A4C(void) {
     func_8060DEA8();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_80024A8C.s")
+extern s32 D_8002BA6C;
+extern s32 D_8002EA94; // TODO: Datatype
+extern s32 D_8002EA9C; // TODO: Datatype
+extern s32 D_8002EAAC; // TODO: Datatype
+
+void func_80024A8C(s32 arg0) {
+    enum map_e var_a0;
+
+    func_80024408();
+    func_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
+    func_8002AEFC(arg0, &D_8002EA94, 0x88, 0x70, D_8002BA6C != 0 && D_8002EC30.unkC == 1);
+    func_8002AEFC(arg0, &D_8002EA9C, 0x68, 0x80, D_8002BA6C != 0 && D_8002EC30.unkC == 2);
+    func_8002AEFC(arg0, &D_8002EAAC, 0x70, 0x90, D_8002BA6C != 0 && D_8002EC30.unkC == 0);
+    if (D_8002EC30.unk8 & 0xE000) {
+        switch (D_8002EC30.unkC) {
+            default:
+            case 0:
+                if (D_8002EC30.unk798 != 0) {
+                    var_a0 = MAP_CRANKYS_LAB;
+                } else {
+                    var_a0 = MAP_MAIN_MENU;
+                }
+                func_805FF378(var_a0, 0);
+                break;
+            case 1:
+                D_8002EC30.unk78C = 2;
+                break;
+            case 2:
+                if (D_8002EC30.unk18 != 0) {
+                    func_8060C8AC(1);
+                    D_8002EC30.unk18 = func_8060C6B8(0x11, 0, 0, 0);
+                    func_80024A4C();
+                    break;
+                }
+                break;
+        }
+    }
+    if (D_8002EC30.unk8 & 0x400) {
+        D_8002EC30.unkC++;
+    }
+    if (D_8002EC30.unk8 & 0x800) {
+        D_8002EC30.unkC--;
+    }
+    if (D_8002EC30.unkC >= 3) {
+        D_8002EC30.unkC = 0;
+    }
+    if (D_8002EC30.unkC < 0) {
+        D_8002EC30.unkC = 2;
+    }
+}
 
 void func_80024C90(s32 arg0) {
     Competitor *player = &D_8002EC30.player[D_8002EC30.player_index];

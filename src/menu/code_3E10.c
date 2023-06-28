@@ -820,6 +820,61 @@ void func_8002F8EC() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002F980.s")
 
+void func_800317E8(f32, f32, void *, f32, s32, f32 *, f32 *, s32, s32, f32); // extern
+s32 func_806FC530(s32, s16, s16, s16, void *, s32);    // extern
+extern s32 D_800339C4; // TODO: Datatype
+extern f32 D_80033F44;
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    s8 unk17;
+} Struct8002F980_arg1;
+
+/*
+// TODO: Progress made, kinda fiddly
+s32 func_8002F980(s32 arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3, s32 *arg4, s16 arg5, f32 *arg6, s32 arg7, s16 arg8) {
+    f32 var_f0;
+    s32 var_v0;
+    f32 sp3C;
+    f32 sp38;
+    s32 var_v1;
+
+    var_v1 = arg1->unk17;
+    if (arg1->unk4 != 0.0f) {
+        if (arg1->unk4 > 0.5f) {
+            var_v1 += 1;
+        }
+        if (var_v1 >= arg3) {
+            var_v1 = 0;
+        }
+    }
+    var_f0 = arg1->unk4 - 0.5f;
+    if (var_f0 < 0.0f) {
+        var_f0 = -var_f0;
+    }
+    var_f0 = (0.5f - var_f0) * 800.0f;
+    if (D_80033F44 < 0.0f) {
+        var_f0 = -var_f0;
+    }
+    func_800317E8(0.0f, 0.5f, arg1, var_f0 + 160.0, arg7, &sp3C, &sp38, 2, 0, 2.0f);
+    if (arg8 & (1 << var_v1)) {
+        var_v0 = func_806FC530(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, arg2[var_v1], 0x81);
+    } else {
+        var_v0 = func_806FC530(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, &D_800339C4, 0x81);
+    }
+    *arg6 = var_f0;
+    *arg4 = var_v1;
+    return var_v0;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002FB88.s")
 
 extern f64 D_80033D48;

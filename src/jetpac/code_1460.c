@@ -122,16 +122,12 @@ typedef struct {
     s32 unkC;
     s32 unk10;
     s32 unk14;
-}Struct8002C4D0;
+} Struct8002C4D0;
 
 s32 func_80025700(Struct8002C4D0 *, s32, s32, s32, s32);
+
 extern Struct8002C4D0 D_8002C4D0[];
-
-typedef struct {
-    u8 unk0[0x18 - 0x0];
-} Struct8002B9C0;
-
-extern Struct8002B9C0 D_8002B9C0[];
+extern Struct8002C4D0 D_8002B9C0[];
 
 // TODO: Appears to be a substruct of JetpacStruct from 0x30 onwards
 typedef struct {
@@ -390,6 +386,60 @@ void func_80026A3C(JetpacStruct10 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026AB0.s")
 
+extern Struct8002C4D0 D_8002C330;
+extern Struct8002C4D0 D_8002C348[];
+
+extern Struct8002C4D0 D_8002C3A8[];
+extern f32 D_8002F050;
+extern f32 D_8002F054;
+extern s32 D_8002F060;
+extern s32 D_8002F064;
+extern s32 D_8002F068;
+extern s32 D_8002F080;
+extern s32 D_8002F08C;
+extern s32 D_8002F094;
+
+/*
+void func_80026AB0(void) {
+    f32 temp_f2;
+    f32 var_f0;
+    s32 temp_v0;
+    s32 var_a1;
+
+    var_a1 = 1;
+    if (D_8002F064 >= 2) {
+        if (D_8002F064 == 4 && D_8002F094 >= 8) {
+            var_a1 = 0;
+        }
+        temp_v0 = func_80025B70(&D_8002F050);
+        var_f0 = D_8002F050;
+        temp_f2 = D_8002F054;
+        if (var_a1 != 0) {
+            if (D_8002F080 == 0) {
+                func_80025700(&D_8002C3A8[temp_v0], (s16)var_f0 & 0xFFFE, temp_f2, &D_8002F060, D_8002F068);
+            } else {
+                func_80025700(&D_8002C330, var_f0, temp_f2, &D_8002F060, D_8002F068);
+                if (D_8002F068 == 0) {
+                    if (temp_v0 == 4) {
+                        var_f0 -= 1.0f;
+                    }
+                    var_f0 -= 3.0f;
+                } else {
+                    if (temp_v0 == 4) {
+                        var_f0 += 1.0f;
+                    }
+                    var_f0 += 10.0f;
+                }
+                func_80025700(&D_8002C348[temp_v0], var_f0, temp_f2 + 18.0f, &D_8002F060, D_8002F068);
+            }
+        }
+        if (D_8002F094 < 0xE) {
+            func_80025A60(&D_8002F08C);
+        }
+    }
+}
+*/
+
 void func_80025FC4(JetpacStruct*);
 extern JetpacStruct D_8002F09C[]; // At least 4 big
 
@@ -408,7 +458,7 @@ extern s32 D_8002F064;
 int func_80026FE0(void);
 void func_80026318(s32*);
 void func_80024E70(s32);
-extern JetpacStruct10 D_8002F050;
+// extern JetpacStruct10 D_8002F050;
 
 void func_80026D48(void) {
     s32 phi_v0;

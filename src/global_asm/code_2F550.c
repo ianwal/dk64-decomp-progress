@@ -820,13 +820,71 @@ void func_8062D2AC(s32 arg0, s32 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D2F0.s")
 
-void func_8062D414(void*, void*, void*);
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    u8 unk8[0xB8 - 0x8];
+    u8 unkB8;
+} Struct8062D414_arg0;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct8062D414_arg1;
+
+void func_8062D414(Struct8062D414_arg0 *arg0, Struct8062D414_arg1 *arg1, Chunk14 *arg2);
 
 void func_8062D3E4(void *arg0) {
     func_8062D414(D_807F5DE4, D_807F5E60, arg0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D414.s")
+s32 func_8062E898(void *, void *, f32, f32, f32);
+void func_806306D0(Chunk14 *);
+void func_80652374(Chunk14 *);
+
+// Arg0 might be map model
+void func_8062D414(Struct8062D414_arg0 *arg0, Struct8062D414_arg1 *arg1, Chunk14 *arg2) {
+    s32 temp;
+    Chunk14 *var_s1;
+    Chunk14 *var_s2;
+    s16 sp5A;
+
+    var_s1 = NULL;
+    var_s2 = NULL;
+    if (arg0 != NULL) {
+        switch (arg0->unkB8) {
+            case 2:
+                while (arg2 != NULL) {
+                    func_80652374(arg2);
+                    arg2 = arg2->next;
+                }
+                break;
+            case 1:
+                while (arg2 != NULL) {
+                    arg1->unk4 = func_806303C4(arg1->unk4, arg2->unk24, arg2->unk0, arg2->unk4, arg2->unk8, arg2->unkC, arg2->unk1C, arg2->unk1E, arg2->unk22, arg2->unk20, 0);
+                    arg2 = arg2->next;
+                }
+                break;
+            case 0:
+                while (arg2 != NULL) {
+                    if (func_8062E898(arg0, &sp5A, arg2->unk4, arg2->unk8, arg2->unkC) != 0) {
+                        var_s2 = func_806303C4(var_s2, arg2->unk24, arg2->unk0, arg2->unk4, arg2->unk8, arg2->unkC, arg2->unk1C, arg2->unk1E, arg2->unk22, arg2->unk20, 0);
+                    } else {
+                        var_s1 = func_806303C4(var_s1, arg2->unk24, arg2->unk0, arg2->unk4, arg2->unk8, arg2->unkC, arg2->unk1C, arg2->unk1E, arg2->unk22, arg2->unk20, 0);
+                    }
+                    arg2 = arg2->next;
+                }
+                func_8062D414(arg0->unk0, arg1->unkC, var_s1);
+                func_8062D414(arg0->unk4, arg1->unk10, var_s2);
+                func_806306D0(var_s1);
+                func_806306D0(var_s2);
+                break;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D620.s")
 

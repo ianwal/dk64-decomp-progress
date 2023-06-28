@@ -181,6 +181,93 @@ s32 func_8066D250(Struct8066D250 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066DB40.s")
 
+typedef struct {
+    s16 unk0[9];
+    s16 unk12;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+} Struct8066DB40_arg0;
+
+typedef struct {
+    s64 unk0;
+    s64 unk8;
+    s64 unk10;
+    s64 unk18;
+    f32 unk20;
+    s16 unk24;
+    s16 unk26;
+} Struct8066DB40_arg1;
+
+typedef struct {
+    s32 sp4C[9];
+    s16 sp70;
+    s8 sp72;
+    s8 sp73;
+    u8 sp74;
+    s8 sp75;
+    s8 sp76;
+    s8 sp77;
+    u8 sp78;
+    s8 sp79;
+} Struct8066DB40_stack4C;
+
+/*
+// TODO: Very close
+s32 func_8066DB40(Struct8066DB40_arg0 *arg0, Struct8066DB40_arg1 *arg1) {
+    s32 pad;
+    Struct8066DB40_stack4C sp4C;    
+    f32 sp48;
+    s64 sp40;
+    s64 sp38;
+    s64 sp30;
+    s64 sp28;
+    s32 pad2;
+
+    sp4C.sp4C[0] = arg0->unk0[0];
+    sp4C.sp4C[1] = arg0->unk0[1];
+    sp4C.sp4C[2] = arg0->unk0[2];
+    sp4C.sp4C[3] = arg0->unk0[3];
+    sp4C.sp4C[4] = arg0->unk0[4];
+    sp4C.sp4C[5] = arg0->unk0[5];
+    sp4C.sp4C[6] = arg0->unk0[6];
+    sp4C.sp4C[7] = arg0->unk0[7];
+    sp4C.sp4C[8] = arg0->unk0[8];
+    sp4C.sp4C[0] *= 8;
+    sp4C.sp4C[1] *= 8;
+    sp4C.sp4C[2] *= 8;
+    sp4C.sp4C[3] *= 8;
+    sp4C.sp4C[4] *= 8;
+    sp4C.sp4C[5] *= 8;
+    sp4C.sp4C[6] *= 8;
+    sp4C.sp4C[7] *= 8;
+    sp4C.sp4C[8] *= 8;
+
+    sp4C.sp70 = arg0->unk12;
+    sp4C.sp74 = arg0->unk14;
+    sp4C.sp75 = 0;
+    sp4C.sp77 = 0;
+    if (arg0->unk16 & 4) {
+        sp4C.sp79 = 1;
+    } else {
+        sp4C.sp79 = 0;
+    }
+    sp4C.sp78 = arg0->unk15;
+    sp4C.sp73 = 1;
+    func_8066DD34(&sp28);
+    arg1->unk0 = sp28;
+    arg1->unk8 = sp30;
+    arg1->unk10 = sp38;
+    arg1->unk18 = sp40;
+    arg1->unk20 = sp48;
+    arg1->unk24 = MIN(arg0->unk0[1], arg0->unk0[4]);
+    arg1->unk24 = MIN(arg1->unk24, arg0->unk0[7]);
+    arg1->unk26 = MAX(arg0->unk0[1], arg0->unk0[4]);
+    arg1->unk26 = MAX(arg1->unk26, arg0->unk0[7]);
+    return 1;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066DD34.s")
 
 void func_8066E21C(LedgeInfo *ledgeInfo) {

@@ -2473,8 +2473,13 @@ u8 func_8064EB9C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return temp == current_character_index[0];
 }
 
-// Doable, but tricky, maybe array lookup
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064EC04.s")
+extern s16 D_807446D0[];
+
+u8 func_8064EC04(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    s16 sp1E;
+    sp1E = func_80600530();
+    return ((s16)func_806FB418() >= D_807446D0[sp1E]);
+}
 
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064EC60.s")
