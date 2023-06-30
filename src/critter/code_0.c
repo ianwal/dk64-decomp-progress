@@ -139,7 +139,6 @@ extern f32 D_8002A028;
 extern f64 D_8002A078;
 
 extern s32 D_8071FC40;
-extern u8 D_807444FC;
 extern u8 D_80770DC9;
 extern s32 D_807F6C28;
 
@@ -446,7 +445,6 @@ void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 a
 void func_8000A6C0(s32 *, void *);
 void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 extern f32 D_8002A02C;
-extern u8 D_807444FC;
 
 typedef struct {
     s16 unk0;

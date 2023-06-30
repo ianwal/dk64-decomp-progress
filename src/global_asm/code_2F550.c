@@ -1391,6 +1391,7 @@ loop_1:
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F640.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F998.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062FBC8.s")

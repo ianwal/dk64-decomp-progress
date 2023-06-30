@@ -173,7 +173,46 @@ void func_80690094(Actor *arg0, Actor *arg1) {
     func_8067B238(arg0, arg1, 0.15f);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690190.s")
+u32 func_806119A0();
+extern f64 D_8075A078;
+extern f64 D_8075A080;
+extern f64 D_8075A088;
+extern f64 D_8075A090;
+extern f64 D_8075A098;
+extern f64 D_8075A0A0;
+extern f64 D_8075A0A8;
+extern f64 D_8075A0B0;
+extern s16 D_80770628[];
+extern f32 D_80770B68[];
+extern f32 D_80770BC0[];
+
+typedef struct {
+    f32 unk0;
+    f32 unk4; // Used
+} Struct80690190;
+
+void func_80690190(Struct80690190 *arg0, s32 arg1) {
+    s16 temp_a1;
+
+    temp_a1 = D_80770628[current_actor_pointer->unk6E[0]];
+    if (current_actor_pointer->y_position < (current_actor_pointer->unkAC + 4.0f)) {
+        D_80770B68[temp_a1] = (current_actor_pointer->unkB8 / D_8075A078) + 1.0;
+        D_80770BC0[temp_a1] = 1.0f;
+    } else {
+        D_80770B68[temp_a1] = arg0->unk4 + D_8075A080;
+        D_80770BC0[temp_a1] = 5.0f;
+    }
+    temp_a1 = D_80770628[current_actor_pointer->unk70];
+    if (current_actor_pointer->y_position < (current_actor_pointer->unkAC + 4.0f)) {
+        if (D_80770BC0[temp_a1] == 0.0f) {
+            D_80770B68[temp_a1] = (((func_806119A0() / D_8075A088) * D_8075A090) + D_8075A098) * (D_8075A0A8 + (current_actor_pointer->unkB8 / D_8075A0A0));
+            D_80770BC0[temp_a1] = 1.0f;
+        }
+    } else {
+        D_80770B68[temp_a1] = (arg0->unk4 * 1.5) + D_8075A0B0;
+        D_80770BC0[temp_a1] = 8.0f;
+    }
+}
 
 void func_806903BC(Actor *actor, RaceAdditionalActorData *arg1) {
     ExitData *exit;

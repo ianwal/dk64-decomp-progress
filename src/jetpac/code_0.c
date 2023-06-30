@@ -10,7 +10,6 @@ extern s32 D_8076A048;
 extern f32 D_807FD888;
 extern s32 D_8076A088;
 extern u8 D_80767CE8[];
-extern u8 D_807444FC;
 extern u8 D_8076A0B1;
 extern s32 D_8076A08C;
 extern s32 D_8076A050[];

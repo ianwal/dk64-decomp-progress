@@ -209,7 +209,41 @@ s32 func_8063254C(s32 arg0, s32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, s16 *arg
     return found;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632630.s")
+void func_806306D0(void *);
+s16 func_80632860(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, u8 argA, u8 argB, Chunk14 **argC);
+extern s32 D_80747D70;
+extern u8 D_807F6008;
+extern s16 D_807F614A;
+
+s16 func_80632630(s32 arg0, f32 x, f32 y, f32 z, f32 arg4, u8 arg5) {
+    void *sp5C;
+    s16 temp_v0;
+    f32 hitboxScale;
+
+    sp5C = NULL;
+    if (D_80747D70 >= D_807F614A) {
+        func_80732354(8, 0, 0, 0);
+    }
+    if (arg5 == 0 && D_807F6008 != 0) {
+        return -1;
+    }
+    hitboxScale = func_80636A44(arg0);
+    D_807F6000[D_80747D70].x_position = x;
+    D_807F6000[D_80747D70].y_position = y;
+    D_807F6000[D_80747D70].z_position = z;
+    D_807F6000[D_80747D70].hitbox_scale = hitboxScale;
+    D_807F6000[D_80747D70].x_rotation = 0.0f;
+    D_807F6000[D_80747D70].y_rotation = 0.0f;
+    D_807F6000[D_80747D70].z_rotation = 0.0f;
+    D_807F6000[D_80747D70].unk1C = (y - arg4);
+    D_807F6000[D_80747D70].unk8C = 0;
+    temp_v0 = func_80632860(D_80747D70, arg0, x, y, z, 0.0f, 0.0f, 0.0f, hitboxScale, (y - arg4), 1, 0, &sp5C);
+    func_8062D3E4(sp5C);
+    func_806306D0(sp5C);
+    D_807F6000[D_80747D70].unk8A = func_8063D9D0(temp_v0, arg5);
+    D_80747D70++;
+    return temp_v0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632860.s")
 

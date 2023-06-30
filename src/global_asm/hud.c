@@ -105,7 +105,7 @@ void func_806F8170(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
     *arg3 = D_80754280[0].hud_item[arg0].unk_18;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F8278.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F8278.s")
 
 /*
 // TODO: Not sure why this doesn't match
@@ -126,7 +126,7 @@ void func_806F8278(u8 playerIndex) {
 */
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F833C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F833C.s")
 
 void func_806F8A8C(u8 arg0, u8 playerIndex, s32 arg2) {
     PlayerHUD* temp = func_806F7FD0(playerIndex);
@@ -265,9 +265,9 @@ s32 func_806F8EB4() {
 }
 
 // Jumptable, getMaxItemCapacity(HUDItemIndex, playerIndex)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F8EDC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F8EDC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F91B4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F91B4.s")
 
 /*
 // TODO: Very close :eyes:
@@ -369,7 +369,7 @@ void func_806F94AC(Struct806F94AC_arg0 *arg0, s32 arg1) {
     arg0->unk364 *= var_f2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9518.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F9518.s")
 
 /*
 // TODO: Pretty close... hmm
@@ -435,7 +435,7 @@ void func_806F966C(Struct806F9744_arg0 **arg0) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F96CC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F96CC.s")
 
 int func_8071BE04(); // TODO: Signature
 
@@ -470,7 +470,7 @@ void func_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32 arg3, s32 
     func_806F94AC(temp_s0->unk8, arg1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9848.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F9848.s")
 
 extern f32 D_807FD7A0[];
 extern f32 D_807FD7B8[];
@@ -499,9 +499,9 @@ void func_806F9AF0(Struct806F9AF0_arg0 *arg0, s8 *arg1) {
     D_807FD7A0[temp] = -200.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9B64.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F9B64.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9CD0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F9CD0.s")
 
 /*
 // TODO: Very close, registers the wrong way round in an addu
@@ -520,10 +520,10 @@ void func_806F9CD0(s32 arg0) {
 */
 
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806F9D8C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F9D8C.s")
 
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA1A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FA1A4.s")
 
 typedef struct {
     s32 unk0;
@@ -548,7 +548,7 @@ s32 func_806FA504(s32 arg0, Struct806FA504_arg1 *arg1, s32 arg2, s32 arg3) {
     return arg3;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA5A4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FA5A4.s")
 
 // TODO: This matches but is ugly, can we minify it somehow
 // Ternary doesn't work
@@ -562,13 +562,13 @@ s32 func_806FA7A4(s32 arg0) {
     return phi_v1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA7BC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FA7BC.s")
 
 // Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FA9C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FA9C0.s")
 
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FAB20.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FAB20.s")
 
 extern s32 D_80754288;
 
@@ -579,9 +579,9 @@ void func_806FAC64(u8 arg0) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FACE8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FACE8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FAFE4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FAFE4.s")
 
 void func_806FB218(void) {
     s32 i;
@@ -600,10 +600,10 @@ void func_806FB290() {
 }
 
 // Quite fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FB2B8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FB2B8.s")
 
 // setHudItemAsInfinite(hudItemIndex, playerIndex, unknownValue)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FB370.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FB370.s")
 
 /*
 // TODO: Something up with datatypes or struct sizes?
@@ -618,7 +618,7 @@ void func_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FCCD0/func_806FB3D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FB3D0.s")
 
 /*
 // TODO: Same deal as above

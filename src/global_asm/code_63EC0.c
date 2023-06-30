@@ -160,6 +160,56 @@ s32 func_8065FB04(GlobalASMStruct81 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065FB64.s")
 
+s16 func_8065BAA0(f32 arg0, f32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s32 arg9, s8 *argA);
+void func_8065C990(s32 arg0, s32 arg1, s32 arg2, void *arg3, s32 arg26, s32 arg27);
+extern f32 D_8076A0B4[];
+extern s32 D_807F78C0;
+extern f32 D_807F7EEC[];
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+} Struct8065FB64;
+
+/*
+void func_8065FB64(f32 arg0, f32 arg1, s32 arg2) {
+    u8 sp8F;
+    GlobalASMStruct58 *current;
+    GlobalASMStruct58_unk0 *temp_v0_2;
+    f32 temp_f0;
+    f32 temp_f2;
+    s16 temp_s1;
+    Struct8065FB64 *temp_a0;
+    s32 temp_v0_3;
+    u8 temp_v0;
+
+    current = D_807F93C0;
+    while (current != NULL) {
+        if (current->unk4C & 1 && !(current->unk4C & 2)) {
+            temp_v0_2 = current->unk0;
+            temp_s1 = temp_v0_2->unk50[0];
+            if (temp_v0_2->unk68 != 0) {
+                temp_f2 = temp_v0_2->unk10 + temp_v0_2->unkC;
+                temp_f0 = temp_v0_2->unk4E + current->unk4;
+                temp_v0_3 = func_8065BAA0(arg0, arg1, arg2, temp_v0_2->unk46, temp_f0 - temp_f2, temp_v0_2->unk48, temp_v0_2->unk4A, temp_f0 + temp_f2, temp_v0_2->unk4C, temp_s1, &sp8F);
+                // TODO: For loop?
+                D_807F7EEC[0] = D_8076A0B4[temp_s1];
+                D_807F7EEC[1] = D_8076A0B4[temp_s1 + 1];
+                D_807F7EEC[2] = D_8076A0B4[temp_s1 + 2];
+                if (global_properties_bitfield & 0x10) {
+                    temp_a0 = current->unk1C[D_807444FC];
+                    func_8065C990(temp_a0, &temp_a0[current->unk48], 1, &D_807F78C0, temp_v0_3, chunk_array_pointer[temp_s1].unk3 == 1);
+                }
+                current->unk4C |= 2;
+            }
+        }
+        current = current->next;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065FD88.s")
 
 // Displaylist stuff (chunk)

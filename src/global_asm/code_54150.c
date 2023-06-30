@@ -77,7 +77,6 @@ typedef struct {
 } GlobalASMStruct10;
 
 extern GlobalASMStruct10 D_807F6960[];
-extern u8 D_807444FC;
 extern s8 D_807F6BEC;
 
 void func_8065051C(void) {

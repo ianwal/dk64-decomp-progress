@@ -34,6 +34,8 @@ extern u16 enemies_killed;
 extern Chunk *chunk_array_pointer;
 extern u8 current_file;
 
+extern u8 D_807444FC;
+
 extern u16 D_807FBB34;
 extern s32 D_807FBB64; // shadow_display_bitfield, shockwave_bitfield, long_distance_actor_spawn
 
@@ -151,13 +153,19 @@ typedef struct {
     f32 unk8;
     f32 unkC;
     f32 unk10;
-    u8 unk14[0x50 - 0x14];
+    u8 unk14[0x46 - 0x14];
+    s16 unk46; // Used
+    s16 unk48;
+    s16 unk4A;
+    s16 unk4C;
+    s16 unk4E; // Used
     s16 unk50[2]; // TODO: How many?
     u8 unk54[0x64 - 0x54];
     u8 unk64;
     u8 unk65;
     u8 unk66;
     u8 unk67;
+    u8 unk68;
 } GlobalASMStruct58_unk0;
 
 struct global_asm_struct_58 {
@@ -168,7 +176,7 @@ struct global_asm_struct_58 {
     f32 unk10; // used
     f32 unk14; // used
     f32 unk18; // used
-    s32 unk1C;
+    s32 unk1C[1]; // TODO: How many?
     s32 unk20;
     s32 unk24;
     s32 unk28;
@@ -184,7 +192,7 @@ struct global_asm_struct_58 {
     s16 unk48;
     s8 unk4A; // used
     s8 unk4B; // used
-    s8 unk4C; // used
+    u8 unk4C; // used
     s8 unk4D;
     s16 unk4E;
     GlobalASMStruct58 *next; // used

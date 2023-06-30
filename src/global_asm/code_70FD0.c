@@ -28,8 +28,6 @@ extern u8 D_807FB604;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066C610.s")
 
-extern u8 D_807444FC;
-
 /*
 void func_8066C610(s16 arg0, s8 arg1, f32 (*arg2)[4]) {
     f32 spEC;
@@ -657,8 +655,6 @@ s32 func_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066F06C.s")
-
-extern u8 D_807444FC;
 
 /*
 // TODO: Close, doable

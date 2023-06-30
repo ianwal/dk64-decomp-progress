@@ -103,7 +103,7 @@ segments:
       - [0xEFDC0, c, code_EFDC0]
       - [0xF56F0, c, code_F56F0]
       - [0xF9450, c, code_F9450]
-      - [0xFCCD0, c, code_FCCD0]
+      - [0xFCCD0, c, hud]
       - [0x100180, c, code_100180]
       - [0x1025E0, c, code_1025E0]
       - [0x10D2D0, c, code_10D2D0]

@@ -8,7 +8,6 @@ extern s32 D_8071FFA0; // TODO: Datatype
 
 extern s32 D_8074E880[]; // TODO: Datatype
 
-extern u8 D_807444FC;
 extern u8 D_8074450C;
 
 extern s16 D_807502D0;

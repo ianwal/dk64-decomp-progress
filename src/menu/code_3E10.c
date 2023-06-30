@@ -991,7 +991,6 @@ s32 func_806119A0();
 extern f32 D_80033E0C;
 extern f32 D_80033E10;
 extern f32 D_80033E14;
-extern u8 D_807444FC;
 
 typedef struct {
     f32 unk0;

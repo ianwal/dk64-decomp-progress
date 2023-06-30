@@ -23,7 +23,6 @@ extern s32 D_8076A094;
 extern s32 D_8076A098;
 extern u16 D_80750AC4;
 extern u8 D_8076A0A4;
-extern u8 D_807444FC;
 extern s32 D_8076A068;
 extern u16 *D_807ECDF4;
 extern s32 D_8076A06C;

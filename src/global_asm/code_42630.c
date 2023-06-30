@@ -1186,7 +1186,68 @@ void func_80645C04(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_8065A708(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 600.0f, 0, 0xFF, 0xFF, 0xFF);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645D14.s")
+typedef struct {
+    u8 unk0[0x90 - 0x0];
+    f32 unk90;
+    u8 unk94[0xFA - 0x94];
+    u8 unkFA;
+} AAD_80645D14;
+
+void func_80645D14(s32 **arg0, s32 arg1, s16 arg2, s32 arg3) {
+    s32 *var_v1;
+    s32 pad;
+    s32 pad2;
+    AAD_80645D14 *temp_a2;
+    u8 sp1F;
+    PlayerAdditionalActorData *PaaD;
+    Actor *temp;
+
+    sp1F = FALSE;
+    if (*arg0 == NULL) {
+        *arg0 = malloc(4);
+        var_v1 = *arg0;
+        *var_v1 = 1;
+    }
+    var_v1 = *arg0;
+    PaaD = character_change_array->player_pointer->PaaD;
+    temp = PaaD->unk104;
+    temp_a2 = temp->additional_actor_data;
+    if (temp_a2->unkFA != 0) {
+        if (character_change_array->look_at_eye_y < (temp_a2->unk90 + 3.0f)) {
+            sp1F = TRUE;
+        }
+    }
+    if (*var_v1 != 0) {
+        if (sp1F == 0) {
+            if (arg2 == 9) {
+                func_80656E58(9, 4, 1, 0);
+                func_80656E58(9, 5, 1, 0);
+                func_80656E58(9, 6, 1, 0);
+            } else {
+                func_80656E58(0xF, 0xF, 1, 0);
+                func_80656E58(0xE, 0x11, 1, 0);
+                func_80656E58(0xD, 0x13, 1, 0);
+                func_80656E58(0xC, 0x15, 1, 0);
+            }
+            *var_v1 = 0;
+        }
+    }
+    if (*var_v1 == 0) {
+        if (sp1F != 0) {
+            if (arg2 == 9) {
+                func_80656E58(9, 4, 1, 1);
+                func_80656E58(9, 5, 1, 1);
+                func_80656E58(9, 6, 1, 1);
+            } else {
+                func_80656E58(0xF, 0xF, 1, 1);
+                func_80656E58(0xE, 0x11, 1, 1);
+                func_80656E58(0xD, 0x13, 1, 1);
+                func_80656E58(0xC, 0x15, 1, 1);
+            }
+            *var_v1 = 1;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645F40.s")
 
@@ -1195,7 +1256,7 @@ extern f64 D_807589E8;
 extern f64 D_807589F0;
 extern s32 D_80720B00;
 
-// TODO: Very close, doable
+// TODO: Very close, doable, probably needs rodata
 void func_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
     f32 phi_f22 = 0.0f;
@@ -2226,6 +2287,7 @@ void func_8064D0C4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 }
 */
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D1E8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D418.s")

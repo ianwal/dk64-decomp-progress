@@ -782,7 +782,6 @@ void func_80655410(f32, f32, f32);
 void func_80656F14(s16, s32, s16, s16, s32, s32, f32, f32, f32);
 void func_8065F678(f32, f32, f32, u8);
 void func_8066308C(f32, f32, f32);
-extern u8 D_807444FC;
 extern s32 D_807F5E20; // TODO: Datatype
 extern f32 D_807F5E68[2][4][4]; // TODO: How many? At least 2
 extern f32 D_807F5FB0;
@@ -983,7 +982,6 @@ void func_80655258(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655410.s")
 
-extern u8 D_807444FC;
 extern s32 D_807F6C28;
 extern u8 D_807F713A;
 
