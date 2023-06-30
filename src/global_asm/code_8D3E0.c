@@ -5,7 +5,6 @@ extern Struct807500B4 D_807500B4; // TODO: Array?
 extern Struct807500B4 D_807500D4; // TODO: D_807500D4[1]?
 
 void func_80631F58(void*, void*, void**);
-s16 func_806531B8(f32, f32, f32, s16);
 void func_8066B424(void);
 u16 func_80688C84(u16);
 

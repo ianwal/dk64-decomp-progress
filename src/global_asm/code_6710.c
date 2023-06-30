@@ -188,6 +188,7 @@ f32 func_80602D4C(s32 arg0) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80603450.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_806049CC.s")
 
 void func_80604BE8(u8 arg0, f32 arg1, f32 arg2) {

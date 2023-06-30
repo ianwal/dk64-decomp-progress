@@ -637,7 +637,45 @@ void func_80687080(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_806871DC.s")
+void func_806871DC(u8 arg0) {
+    s16 var_s4;
+    u8 var_v0;
+    u8 var_s2;
+
+    var_s2 = (((object_timer & 3) * 4) + 3);
+    for (var_s4 = 0; var_s4 < 4; var_s4++) {
+        if (var_s2 == 0x10) {
+            var_v0 = 0x14;
+        } else if (var_s2 == 0x11) {
+            var_v0 = 0x15;
+        } else {
+            var_v0 = var_s2;
+        }
+        switch (arg0) {
+            case 3:
+                if (var_v0 < 0xA) {
+                    break;
+                }
+            case 1:
+                func_80714998(1);
+                func_807149C8(0xB4, 0xB4, 0xB4, 0xC8);
+                func_8068588C(current_actor_pointer, var_v0, 2.0f, 0.0f, 0.0f, 0.0f, -0x78);
+                break;
+            case 2:
+                if (var_v0 < 0xA) {
+                    break;
+                }
+            case 0:
+                func_807149B8(1);
+                func_8071498C(func_80717D4C);
+                func_80714950(-0x3E8);
+                func_807149C8(0xFF, 0xD7, 0x58, 0xFF);
+                func_80714C08(&D_80720120, (((rand() >> 0xF) % 100) / 30.0) + 1.0, current_actor_pointer, var_v0, 0);
+                break;
+        }
+        var_s2++;
+    }
+}
 
 void func_80687400(void) {
     playSound(0x2D4, 0x7FFF, 63.0f, 1.0f, 0, 0);

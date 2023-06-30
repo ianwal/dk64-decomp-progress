@@ -1954,7 +1954,33 @@ typedef struct JetpacPlayerStruct {
     s32 unk36C; // Used
     s32 unk370;
     s32 unk374; // Used
-    u8 pad0[0x78C - 0x378];
+    u8 pad378[0x420 - 0x378];
+    f32 unk420;
+    f32 unk424;
+    f32 unk428;
+    f32 unk42C;
+    u8 unk430;
+    u8 unk431;
+    u8 unk432;
+    u8 unk433;
+    s32 unk434;
+    s32 unk438;
+    s32 unk43C;
+    s32 unk440;
+    s32 unk444;
+    s32 unk448;
+    s32 unk44C;
+    s32 unk450;
+    s32 unk454;
+    s32 unk458;
+    s32 unk45C;
+    s32 unk460;
+    s32 unk464;
+    u8 unk468;
+    u8 unk469;
+    u8 unk46A;
+    u8 unk46B;
+    u8 pad46C[0x78C - 0x46C];
     s32 unk78C;
     s32 unk790;
     s32 unk794;

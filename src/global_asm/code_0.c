@@ -105,7 +105,6 @@ extern s8 D_80744510;
 extern s32 D_80744584[][2];
 extern s8 D_807445A0;
 extern s8 D_807445A4;
-extern s16 D_8076A0AA;
 extern s16 D_80744490;
 
 /*

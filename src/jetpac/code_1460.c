@@ -480,7 +480,41 @@ void func_80026D48(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026DC8.s")
+extern JetpacStruct D_8002C518;
+extern s32 D_8002F084;
+extern s32 D_8002F088;
+
+void func_80026DC8(void) {
+    s32 i;
+    JetpacStruct sp1C;
+
+    sp1C = D_8002C518;
+    D_8002EC30.unk428 = 0.0f;
+    D_8002EC30.unk42C = 0.0f;
+    D_8002EC30.unk430 = 0xFF;
+    D_8002EC30.unk431 = 0xFF;
+    D_8002EC30.unk432 = 0xFF;
+    D_8002EC30.unk433 = 1;
+    D_8002EC30.unk434 = 1;
+    D_8002EC30.unk44C = 0;
+    D_8002EC30.unk438 = 0;
+    D_8002EC30.unk464 = 0xE;
+    D_8002EC30.unk468 = 0xFF;
+    D_8002EC30.unk46B = 1;
+    D_8002EC30.unk440 = 0;
+    D_8002EC30.unk43C = 0;
+    D_8002EC30.unk444 = 0x10;D_8002EC30.unk448 = 0x18;
+
+    D_8002EC30.unk450 = 1;
+    D_8002EC30.unk420 = 126.0f;
+    D_8002EC30.unk424 = 160.0f;
+    func_80025BB8(&D_8002F050, 0);
+    D_8002F084 = 3;
+    D_8002F088 = 4;
+    for (i = 0; i < 4; i++) {
+        D_8002F09C[i] = sp1C;
+    }
+}
 
 extern s32 D_8002F07C;
 

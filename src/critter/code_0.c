@@ -154,7 +154,6 @@ void func_80026E0C(s32);
 
 void func_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
 void func_80611690(void*);
-s16 func_806531B8(f32, f32, f32, s16);
 s32 func_8066B0F8(s32, s32, s32, s32);
 u32 func_806119A0();
 void func_80718BF4(void);

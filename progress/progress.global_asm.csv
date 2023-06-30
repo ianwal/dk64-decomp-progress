@@ -2350,7 +2350,7 @@ us,.code,func_80602498,276,no
 us,.code,func_80643F38,356,no
 us,.code,func_8060EA28,556,yes
 us,.code,func_806A7B94,36,yes
-us,.code,func_8072EA90,516,no
+us,.code,func_8072EA90,516,yes
 us,.code,func_8068C20C,224,no
 us,.code,func_80636EFC,256,no
 us,.code,func_806EA334,300,yes
@@ -3039,7 +3039,7 @@ us,.code,func_8067760C,148,no
 us,.code,func_806EAF6C,128,yes
 us,.code,alEvtqNextEvent,164,yes
 us,.code,func_805FF8F8,64,yes
-us,.code,func_806871DC,548,no
+us,.code,func_806871DC,548,yes
 us,.code,alEvtqNew,156,yes
 us,.code,func_8060188C,40,yes
 us,.code,func_8064F358,172,yes

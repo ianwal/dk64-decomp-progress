@@ -208,7 +208,6 @@ s32 func_806522CC(s16 arg0, s16 arg1, s16 arg2) {
 }
 
 s32 func_80630324(u8, void *);
-s16 func_806531B8(f32, f32, f32, s16);
 
 typedef struct {
     s32 unk0;
@@ -777,7 +776,6 @@ void func_8062A944(f32, f32, f32);
 void func_8062AC68(void *);
 void func_8062AD28(f32, f32, f32, void *, void *);
 void func_806521F8();
-s16 func_806531B8(f32 arg0, f32 arg1, f32 arg2, s16 arg3);
 void func_80654380(f32, f32, f32);
 void func_806547A8(f32, f32, f32);
 void func_80655410(f32, f32, f32);

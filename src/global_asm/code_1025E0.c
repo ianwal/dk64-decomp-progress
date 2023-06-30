@@ -178,6 +178,7 @@ void func_806FFF5C(void) {
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FFF88.s")
 
+// Haha what, some crazy one liner
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80700088.s")
 
 s32 func_80700088(f32 arg0, s32 arg1);

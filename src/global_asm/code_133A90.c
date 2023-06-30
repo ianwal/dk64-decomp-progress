@@ -275,4 +275,5 @@ void func_80730D60(s32 arg0, u8 arg1, u8 arg2, u8 arg3, s32 *arg4, s32 *arg5) {
     }
 }
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_80730E18.s")

@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-s8 func_806531B8(f32, f32, f32, s16);
 extern s32 D_80747D70;
 extern s16 D_807F9424;
 

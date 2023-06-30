@@ -83,7 +83,7 @@ us,.code,func_800248A0,72,yes
 us,.code,func_8002AAD4,264,yes
 us,.code,func_80027EC0,1152,no
 us,.code,func_800283EC,344,no
-us,.code,func_80026DC8,536,no
+us,.code,func_80026DC8,536,yes
 us,.code,func_80027BE8,380,no
 us,.code,func_80027210,64,yes
 us,.code,func_80029640,300,yes

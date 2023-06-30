@@ -2003,8 +2003,6 @@ extern f64 D_8075EA60;
 extern f32 D_8075EA68;
 extern f32 D_8075EA6C;
 
-s32 func_806531B8(f32, f32, f32, s32);
-
 /*
 // TODO: Float regalloc
 void func_8071E3EC(Struct80717D84 *arg0, s8 *arg1) {

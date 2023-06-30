@@ -2248,6 +2248,64 @@ void func_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D978.s")
 
+extern f64 D_80758B50;
+extern f64 D_80758B58;
+extern f64 D_80758B60;
+extern f64 D_80758B68;
+
+typedef struct {
+    u8 unk0[0x48 - 0x0];
+    u8 unk48;
+} Struct8064D978;
+
+/*
+// TODO: Very close, stack and float regalloc issues
+void func_8064D978(Struct8064D978 *arg0, s16 arg1, s16 arg2, s32 arg3) {
+    u8 levelIndex;
+    s16 sp36;
+    f32 var_f2;
+    u8 sp2F;
+    f32 var_f0;
+
+    levelIndex = getLevelIndex(D_8076A0AB, 0);
+    var_f0 = (f32)D_807FC930[levelIndex] / D_807446C0[levelIndex];
+    if (var_f0 > 1.0) {
+        var_f0 = 1.0f;
+    }
+    if (arg2 == 0) {
+        var_f0 = 1.0f - var_f0;
+    }
+    func_80650D8C(arg1, 1, &sp36, &var_f2, &sp2F);
+    func_80650A04(arg1, 1, 0);
+    if (var_f0 < var_f2) {
+        var_f2 -= D_80758B50;
+        if (var_f2 < var_f0) {
+            var_f2 = var_f0;
+        }
+    } else {
+        var_f2 += D_80758B58;
+        if (var_f0 < var_f2) {
+            var_f2 = var_f0;
+        }
+    }
+    if (arg2 != 0) {
+        if (D_80758B60 <= var_f2) {
+            if (D_80758B60 <= var_f0) {
+                arg0->unk48 = 0x14;
+            }
+        }
+    } else {
+        if (var_f2 <= D_80758B68) {
+            if (var_f0 <= D_80758B68) {
+                arg0->unk48 = 0x14;
+            }
+        }
+    }
+    func_80650AD8(arg1, 1, sp36, var_f2);
+    func_806508B4(arg1, 1, 1);
+}
+*/
+
 void func_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     s16 sp5E;
     f32 sp58;
