@@ -930,7 +930,57 @@ void func_8064384C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_8067DF44(temp_v1->x_position, temp_v1->y_position, temp_v1->z_position, temp_v1->hitbox_scale, 0, 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806438B8.s")
+u32 func_806119A0();
+extern s32 D_8071FE08; // TODO: Datatype
+extern s32 D_8071FE64;
+extern s32 D_8071FE88;
+extern s32 D_8071FEAC;
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+
+int func_8071910C();
+
+void func_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s32 pad;
+    s32 temp_s0;
+    s32 i;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+
+    if (arg2 == 1) {
+        func_806335B0(arg1, 1, arg3, &sp60, &sp5C, &sp58);
+    } else {
+        sp60 = D_807F621C;
+        sp5C = D_807F6220;
+        sp58 = D_807F6224;
+    }
+    func_807149B8(0);
+    func_807149FC(1);
+    func_80714950(0x100C8);
+    func_8071498C(&func_8071A8B0);
+    func_80714CC0(&D_8071FE08, 1.5f, sp60, sp5C, sp58);
+    for (i = 0; i < 7; i++) {
+        temp_s0 = (s32)(func_806119A0() / 10000) % 3;
+        func_807149B8(1);
+        func_807149FC(0xA);
+        func_8071498C(&func_8071910C);
+        func_80714998(2);
+        func_80714950(7);
+        switch (temp_s0) {
+            case 0:
+                func_80714CC0(&D_8071FE64, 0.5f, sp60, sp5C, sp58);
+                break;
+            case 1:
+                func_80714CC0(&D_8071FE88, 0.5f, sp60, sp5C, sp58);
+                break;
+            case 2:
+                func_80714CC0(&D_8071FEAC, 0.5f, sp60, sp5C, sp58);
+                break;
+        }
+    }
+}
 
 void func_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     if ((object_timer % 5U) == 0) {

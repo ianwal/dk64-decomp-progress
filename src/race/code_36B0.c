@@ -182,7 +182,7 @@ void func_800283D4(f32 arg0) {
 // Doable, looks like an unrolled loop
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80028E20.s")
 
-// TODO: Actor17C stuff
+// Doable, Actor17C stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80029054.s")
 
 s32 func_8002CAC8(s32 arg0, Actor *arg1, RaceAdditionalActorData *arg2);

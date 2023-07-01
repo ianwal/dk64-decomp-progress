@@ -185,7 +185,7 @@ us,.code,areAllKeysTurnedIn,92,yes
 us,.code,func_80666A94,12,yes
 us,.code,func_806349FC,716,no
 us,.code,func_806E34D8,84,yes
-us,.code,func_806438B8,620,no
+us,.code,func_806438B8,620,yes
 us,.code,func_8066CCD8,248,no
 us,.code,func_806D5218,232,yes
 us,.code,func_8064F6C0,56,no

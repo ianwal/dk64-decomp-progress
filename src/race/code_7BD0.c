@@ -102,8 +102,16 @@ typedef struct {
     f32 unk10;
 } AAD_8002BCD4;
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80027880;
+
+extern Struct80027880 *D_807F5FD4;
+
 /*
-// TODO: Close
+// TODO: Close rodata?
 void func_8002BCD4(Actor *arg0) {
     f32 var_f0;
     f32 var_f12;
