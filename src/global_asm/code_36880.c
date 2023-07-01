@@ -1174,6 +1174,7 @@ void func_806398E4(s32 arg0, u8 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639C04.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639CD0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639F1C.s")

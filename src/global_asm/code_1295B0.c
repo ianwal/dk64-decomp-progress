@@ -209,7 +209,7 @@ u8 func_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80726164.s")
 
-// arg0 Actor
+// arg0 Actor, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_807264B0.s")
 
 typedef struct global_asm_struct_8 {

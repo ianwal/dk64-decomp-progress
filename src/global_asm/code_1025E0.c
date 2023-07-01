@@ -203,6 +203,7 @@ void func_807002AC(u16 *arg0, s16 **arg1, f32 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_8070068C.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807007B8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807009F4.s")
@@ -233,14 +234,44 @@ void func_80702464(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s
     func_807024E0(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, 0, 0);
 }
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807024E0.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80703374.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807035C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80703850.s")
+extern s16 D_80744490;
+extern s16 D_80744494;
+extern s16 D_80744498;
+extern s16 D_8074449C;
+extern s16 D_807444A0;
+extern s16 D_807444A4;
+extern s16 D_807444AC;
+extern s16 D_807444B0;
+extern f64 D_8075DF48;
+
+void func_80703850(u8 arg0) {
+    f32 temp_f0;
+    s16 temp_a0;
+    s16 temp_a0_2;
+    s16 temp_a1;
+
+    temp_f0 = (f32)arg0 / D_8075DF48;
+    if (func_805FCA64() != 0) {
+        character_change_array->unk272 = D_8074449C + ((((D_80744494 >> 1) - D_8074449C) - 1) * temp_f0);
+        character_change_array->unk276 = D_807444A4 + (((D_80744494 >> 1) - D_807444A4) * temp_f0);
+    } else {
+        character_change_array->unk272 = D_807444AC + ((((D_80744494 >> 1) - D_807444AC) - 1) * temp_f0);
+        character_change_array->unk276 = D_807444B0 + (((D_80744494 >> 1) - D_807444B0) * temp_f0);
+    }
+    character_change_array->unk270 = D_80744498 + ((((D_80744490 >> 1) - D_80744498) - 1) * temp_f0);
+    character_change_array->unk274 = D_807444A0 + (((D_80744490 >> 1) - D_807444A0) * temp_f0);
+    character_change_array->unk27A = character_change_array->unk276 - character_change_array->unk272;
+    character_change_array->unk278 = character_change_array->unk274 - character_change_array->unk270;
+    character_change_array->unk280 = (f32)character_change_array->unk278 / character_change_array->unk27A;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80703AB0.s")
 

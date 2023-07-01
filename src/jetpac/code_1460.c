@@ -230,6 +230,8 @@ s32 func_80028CF8(f32, f32, f32, f32, s32);
 s32 func_8002A974(f32, f32, f32, f32);
 s32 func_800283EC(f32, f32, f32, f32);
 
+void func_80025CB0(JetpacStruct0 *arg0);
+
 /*
 void func_80025CB0(JetpacStruct0 *arg0) {
     f32 var_f0;
@@ -358,7 +360,91 @@ void func_80025FC4(JetpacStruct *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_800260DC.s")
+extern f32 D_8002EB30;
+void func_80024E70(s32);
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10[2];
+    u8 unk12;
+    u8 unk13;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+} Struct80025C40_ret;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    s32 unk24;
+} Struct800260DC;
+
+void func_800260DC(Struct800260DC *arg0) {
+    Struct80025C40_ret *temp_v0;
+    s32 temp_f4;
+    s32 temp_f16_2;
+
+    temp_v0 = func_80025C40(arg0);
+    if (temp_v0 == NULL) {
+        if ((ABS(arg0->unkC)) < D_8002EB30) {
+            if (arg0->unk4 < 152.0f) {
+                func_80024E70(6);
+            }
+        }
+    } else {
+        temp_v0->unk18 = arg0->unk18;
+        if (temp_v0->unk18 != 0) {
+            temp_v0->unk0 = ((s32)(arg0->unk0 + arg0->unk1C) / 8) * 8;
+            temp_v0->unk8 = -8.0f;
+        } else {
+            temp_v0->unk0 = ((s32)(arg0->unk0 + arg0->unk24 + 6.0f) / 8) * 8;
+            temp_v0->unk8 = 8.0f;
+        }
+        temp_v0->unk1C = temp_v0->unk0;
+        temp_v0->unk24 = temp_v0->unk0;
+        temp_v0->unk4 = arg0->unk4 + 10.0f;
+        temp_v0->unkC = 0.0f;
+        temp_f16_2 = temp_v0->unk4;
+        temp_v0->unk28 = temp_f16_2 + 1;
+        temp_v0->unk20 = temp_f16_2;
+        temp_f4 = func_80027210() * 3.0f;
+        temp_v0->unk10[0] = 0xFF;
+        temp_v0->unk10[1] = 0xFF;
+        if (temp_f4 < 2) {
+            temp_v0->unk10[temp_f4] = 0;
+        }
+        temp_v0->unk12 = 0xFF;
+        temp_v0->unk13 = 1;
+        temp_v0->unk14 = 3;
+        temp_v0->unk2C = 0;
+        temp_v0->unk40 = (s32)(func_80027210() * 8.0f) + 0xD;
+        temp_v0->unk48 = &func_80025CB0;
+        temp_v0->unk4C = 0;
+        func_80024E70(6);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026318.s")
 
@@ -457,7 +543,6 @@ extern s32 D_8002F064;
 
 int func_80026FE0(void);
 void func_80026318(s32*);
-void func_80024E70(s32);
 // extern JetpacStruct10 D_8002F050;
 
 void func_80026D48(void) {

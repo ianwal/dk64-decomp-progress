@@ -184,6 +184,7 @@ void func_800283D4(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80028AD0.s")
 
+// Doable, looks like an unrolled loop
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80028E20.s")
 
 // TODO: Actor17C stuff

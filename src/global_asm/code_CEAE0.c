@@ -6991,50 +6991,41 @@ void func_806E6A38(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E6B98.s")
 
-/*
 extern f64 D_8075D328;
 
-// TODO: Pretty close
+/*
+// TODO: Very close
 void func_806E6B98(void) {
-    s16 sp18;
     f64 temp_f0;
-    s16 temp_v0;
-    s8 temp_v0_2;
     s16 phi_v0;
     s16 phi_a1;
     s16 phi_a2;
-    s32 phi_v0_2;
-    f64 phi_f2;
+    s16 rot;
 
-    temp_v0 = current_actor_pointer->y_rotation;
-    sp18 = 0x10;
-    phi_a1 = 0;
+    phi_v0 = current_actor_pointer->y_rotation;
+    phi_a2 = 0x10;
     if (D_807FD610[cc_player_index].unk30 != 0) {
         if (current_character_index[cc_player_index] == 7) {
-            phi_v0 = temp_v0 - (D_807FD610[cc_player_index].unk2E * D_8075D328);
+            phi_v0 -= (D_807FD610[cc_player_index].unk2E * D_8075D328);
         } else {
-            phi_v0 = temp_v0 - (D_807FD610[cc_player_index].unk2E * 0.5);
+            phi_v0 -= (D_807FD610[cc_player_index].unk2E * 0.5);
         }
         current_actor_pointer->y_rotation = phi_v0 & 0xFFF;
-        phi_v0_2 = -1;
         if (D_807FD610[cc_player_index].unk2E >= 0) {
-            phi_v0_2 = 1;
+            phi_v0 = 1;
+        } else {
+            phi_v0 = -1;
         }
-        phi_a1 = (phi_v0_2 * D_80753B34[D_807FD584]) & 0xFFF;
+        phi_a1 = (phi_v0 * D_80753B34[D_807FD584]) & 0xFFF;
+    } else {
+        phi_a1 = 0;
     }
     func_806DF494(&current_actor_pointer->x_rotation, phi_a1, 0x10);
-    temp_v0_2 = D_807FD610[cc_player_index].unk2F;
-    phi_a2 = sp18;
+    rot = ((D_80753B44[D_807FD584] * D_807FD610[cc_player_index].unk2F) / 70) & 0xFFF;
     if (current_character_index[cc_player_index] == 7) {
-        temp_f0 = temp_v0_2 * 0.5;
-        if (temp_f0 > 0.0) {
-            phi_f2 = temp_f0;
-        } else {
-            phi_f2 = -temp_f0;
-        }
-        phi_a2 = phi_f2 + 16.0;
+        phi_a2 = (ABS(D_807FD610[cc_player_index].unk2F * 0.5)) + 16.0;
     }
-    func_806DF494(&current_actor_pointer->z_rotation, ((temp_v0_2 * D_80753B44[D_807FD584]) / 70) & 0xFFF, phi_a2);
+    func_806DF494(&current_actor_pointer->z_rotation, rot, phi_a2);
 }
 */
 
