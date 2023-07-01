@@ -611,7 +611,72 @@ void func_80028E3C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002A398.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002AAA4.s")
+s32 func_806119A0();
+extern s16 D_8002D900;
+
+typedef struct {
+    s32 unk0;
+    s8 unk4;
+} AAD_PPPFairy;
+
+typedef struct {
+    u8 unk0[0x06 - 0x0];
+    s16 unk6;
+} AAD_8002AAA4;
+
+void func_8002AAA4(void) {
+    AAD_8002AAA4 *aaD;
+    s32 pad;
+    s32 pad2;
+    Actor *fairy;
+    s32 sp54;
+    AnimationStateUnk0 *sp50;
+    ActorAnimationState *animationState;
+    GlobalASMStruct53 *var_s0;
+    f32 dy;
+    f32 dx;
+    s32 i;
+    AAD_PPPFairy *fairyAAD;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    animationState = current_actor_pointer->animation_state;
+    sp50 = animationState->unk0;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_80614EBC(current_actor_pointer, 0x239);
+        current_actor_pointer->noclip_byte = 0x24;
+        animationState = current_actor_pointer->animation_state;
+    }
+    sp54 = animationState->unk64;
+    if (sp54 == 0x239) {
+        for (i = 0; i < D_807FBB34; i++) {
+            fairy = D_807FB930[i].unk0;
+            if (fairy->unk58 == ACTOR_MINIGAME_PERILPATHPANIC_FAIRY) {
+                dx = fairy->x_position - current_actor_pointer->x_position;
+                dy = fairy->y_position - current_actor_pointer->y_position;
+                if (dx < 5.0 && dx > -5.0 ) {
+                    if (dy < 20.0f && dy > -20.0) {
+                        fairyAAD = fairy->additional_actor_data;
+                        fairyAAD->unk4 = 8;
+                        func_80614EBC(current_actor_pointer, 0x23B);
+                    }
+                }
+            }
+        }
+    }
+    if (sp54 == 0x239 || sp54 == 0x23B || (sp54 == 0x238 && sp50 != NULL && sp50->unk4 > 48.0f)) {
+        if (D_807FBB85 == 1) {
+            func_80614EBC(current_actor_pointer, 0x23C);
+            aaD->unk6 = ((func_806119A0() & 7) + 6) * D_8002D900;
+        }
+    }
+    if (sp54 == 0x23A) {
+        aaD->unk6--;
+        if (aaD->unk6 == 0) {
+            func_80614EBC(current_actor_pointer, 0x238);
+        }
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002AD10.s")
 

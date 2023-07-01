@@ -18,7 +18,7 @@ s32 func_806A80C0(s8 arg0) {
     return 0;
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A8158.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A9124.s")
@@ -69,13 +69,13 @@ void func_806A9124(void) {
 }
 */
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A921C.s")
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A92B4.s")
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806AA09C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806AA304.s")

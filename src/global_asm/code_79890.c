@@ -99,4 +99,50 @@ void func_80675380(Actor *arg0, Actor *arg1) {
 // Matrix nonsense
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_80675478.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_806755A8.s")
+s32 func_80611E60(s32);
+s32 func_806742C0(s16, s16, s32, s32);
+extern f64 D_807591A0;
+extern f64 D_807591A8;
+extern f64 D_807591B0;
+extern f64 D_807591B8;
+
+void func_806755A8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+    s32 var_v1;
+    s32 pad;
+    f32 temp_f0;
+    s16 sp32;
+    s32 var_t0;
+    s32 var_v0;
+
+    var_t0 = arg2 - arg0;
+    var_v0 = ABS(arg2 - arg0);
+    if (var_v0 < 0x2711) {
+        var_v1 = arg3 - arg1;
+        if ((ABS(var_v1)) < 0x2711) {
+            temp_f0 = sqrtf((var_t0 * var_t0) + (var_v1 * var_v1));
+            if (temp_f0 != 0.0) {
+                if (var_t0 >= 0) {
+                    if (var_v1 >= 0) {
+                        sp32 = func_80611E60((var_t0 * D_807591A0) / temp_f0) >> 4;
+                    }
+                }
+                if (var_t0 >= 0) {
+                    if (var_v1 < 0) {
+                        sp32 = (func_80611E60(((arg1 - arg3) * D_807591A8) / temp_f0) >> 4) + 0x400;
+                    }
+                }
+                if (var_t0 < 0) {
+                    if (var_v1 < 0) {
+                        sp32 = (func_80611E60(((arg0 - arg2) * D_807591B0) / temp_f0) >> 4) + 0x800;
+                    }
+                }
+                if (var_t0 < 0) {
+                    if (var_v1 >= 0) {
+                        sp32 = (func_80611E60((var_v1 * D_807591B8) / temp_f0) >> 4) + 0xC00;
+                    }
+                }
+                func_806742C0(sp32 + 0x400, sp32 - 0x400, arg4, arg5);
+            }
+        }
+    }
+}

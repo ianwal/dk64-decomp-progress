@@ -1720,7 +1720,7 @@ us,.code,func_80675478,304,no
 us,.code,func_8070CC8C,56,yes
 us,.code,func_8062BDB0,372,no
 us,.code,func_8070C8F4,156,yes
-us,.code,func_806755A8,616,no
+us,.code,func_806755A8,604,yes
 us,.code,func_806E5EA8,44,yes
 us,.code,func_806D7A28,976,yes
 us,.code,func_806CA2AC,56,yes

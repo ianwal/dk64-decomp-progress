@@ -266,9 +266,14 @@ typedef struct actor_animation_state {
     s32 unk28;
     s32 unk2C;
     s32 unk30;
-    f32 scale_x; // at 0x34
-    f32 scale_y; // at 0x38
-    f32 scale_z; // at 0x3C
+    union {
+        struct {
+            f32 scale_x; // at 0x34
+            f32 scale_y; // at 0x38
+            f32 scale_z; // at 0x3C
+        };
+        f32 scale[3];
+    };
     s32 unk40;
     s32 unk44;
     f32 unk48;
