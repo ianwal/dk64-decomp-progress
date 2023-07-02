@@ -125,7 +125,7 @@ void func_80027EE8(MinecartStruct1 *arg0) {
 }
 */
 
-s32 func_8072177C(void *, s16, s16, s16, s32, s32, s32, s32, s32); // extern
+s32 func_8072177C(void *, s16, s16, s16, s32, s32, s32, s32, s32);
 
 typedef struct {
     u8 unk0[0x10 - 0x0];

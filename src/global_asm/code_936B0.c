@@ -246,7 +246,75 @@ void func_80690470(Actor *arg0) {
     sp18->object_properties_bitfield &= 0xFFFDFFFF;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690500.s")
+s32 func_8061C6A8(s32, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+s32 func_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
+extern f32 D_80750300;
+extern f32 D_8075A0BC;
+
+typedef struct {
+    u8 unk0[0x28 - 0x0];
+    u8 unk28;
+    u8 unk29[0x34 - 0x29];
+    u8 unk34;
+} AAD_80690500;
+
+typedef struct {
+    u8 unk0[0xF3 - 0x0];
+    u8 unkF3;
+} AAD_80690500_unk104;
+
+typedef struct {
+    s32 unk0;
+} A178_80690500;
+
+void func_80690500(void) {
+    AAD_80690500 *aaD;
+    Actor *player;
+    PlayerAdditionalActorData *PaaD;
+    A178_80690500 *a178;
+    AAD_80690500_unk104 *aaD_104;
+    u8 sp4B;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    a178 = current_actor_pointer->unk178;
+    player = character_change_array[aaD->unk28].player_pointer;
+    PaaD = player->PaaD;
+    aaD_104 = PaaD->unk104->additional_actor_data;
+    sp4B = current_actor_pointer->unk6A & 1;
+    aaD->unk34 = 2;
+    func_80690190(aaD, a178);
+    if (is_cutscene_active == 0) {
+        if (aaD_104->unkF3 != 4) {
+            func_8061C6A8(PaaD->unk104, current_actor_pointer, 4, 0x800, 0xA0, 0, 6, 0x12C, 0x8F, 0, D_8075A0BC);
+        }
+    }
+    func_8068F72C(aaD, a178, 1, 1);
+    func_8068FF40(sp4B, aaD, a178);
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->y_acceleration = D_80750300;
+        current_actor_pointer->noclip_byte = 0x3C;
+        func_806EB0C0(0x4C, current_actor_pointer, PaaD->unk1A4);
+    }
+    if (func_8061CB50() == 0 || (func_8061CB50() != 0 && player_pointer->unk6A & 0x100)) {
+        func_80671C0C(current_actor_pointer, 1, &sp44, &sp40, &sp3C);
+        func_8065A708(sp44, sp40, sp3C, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xFF, 0xFF, 0xFF);
+        if (isFlagSet(0x6B, 2) == 0) {
+            if (func_8061CB50() != 0) {
+                if (player_pointer->unk6A & 0x100) {
+                    func_80671C0C(current_actor_pointer, 2, &sp44, &sp40, &sp3C);
+                    func_8070033C(sp44, sp40, sp3C, 0.0f, 0.0f, 0.0f, 0.0f, 0xFF, 0xFF, 0xFF);
+                }
+            }
+            if (func_8061CB50() == 0) {
+                player_pointer->unk6A &= 0xFEFF;
+            }
+        }
+    }
+    func_806319C4(current_actor_pointer, 0);
+}
 
 void func_806907B8(void) {
     func_806319C4(current_actor_pointer, 0);

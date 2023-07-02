@@ -35,7 +35,7 @@ struct GlobalASMStruct82 {
     f32 unkC;
     s32 unk10;
     f32 unk14;
-    s8 unk18;
+    u8 unk18;
     s8 unk19;
     s8 unk1A;
     s8 unk1B;
@@ -246,7 +246,70 @@ s32 func_8072F8D4(GlobalASMStruct82 *arg0, s32 arg1, s16 arg2) {
     return FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072FA14.s")
+s32 func_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
+extern f64 D_8075FF60;
+extern f32 D_8075FF68;
+extern f64 D_8075FF70;
+extern f32 D_8075FF78;
+extern f32 D_8075FF7C;
+extern f64 D_8075FF80;
+extern f64 D_8075FF88;
+
+f32 func_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, GlobalASMStruct82 *arg2, u8 arg3) {
+    u8 temp_t0;
+    u8 temp_t1;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 var_f2;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+
+    temp_t0 = arg2->unk34[arg3].unk0;
+    temp_t1 = arg2->unk34[arg3].unk1;
+    switch (arg2->unk4) {
+        case 0:
+            func_80671C0C(arg2->unk0, temp_t0, &sp6C, &sp70, &sp74);
+            func_80671C0C(arg2->unk0, temp_t1, &sp78, &sp7C, &sp80);
+            break;
+        case 1:
+        case 2:
+            func_806335B0(arg2->unk0, 1, temp_t0, &sp6C, &sp70, &sp74);
+            func_806335B0(arg2->unk0, 1, temp_t1, &sp78, &sp7C, &sp80);
+            break;
+    }
+    func_80671C0C(arg0, 1, &sp58, &sp54, &sp50);
+    func_8061F2B8(sp58, sp54, sp50, sp6C, sp70, sp74, sp78, sp7C, sp80, &sp68, &sp64, &sp60);
+    var_f2 = (sp64 - sp70) / (sp7C - sp70);
+    if (arg2->unk18 == 2 || arg2->unk18 == 3) {
+        if (arg3 == 0) {
+            if (var_f2 < D_8075FF60) {
+                var_f2 = D_8075FF68;
+            }
+        }
+    }
+    if (arg2->unk18 == 1 || arg2->unk18 == 3) {
+        if ((arg3 + 1) == arg2->unk7) {
+            if (D_8075FF70 < var_f2) {
+                var_f2 = D_8075FF78;
+            }
+        }
+    }
+    arg1->unk13C = arg0->x_position;
+    arg1->unk140 = arg0->y_position;
+    arg1->unk144 = arg0->z_position;
+    arg1->unk148 = 0.0f;
+    memcpy(&arg1->unk15C, &arg0->unkC, 0x40);
+    arg0->y_rotation = ((func_80665E48(sp68, sp60, arg0->x_position, arg0->z_position) * D_8075FF7C) / D_8075FF80) * D_8075FF88;
+    return var_f2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072FCC4.s")
 

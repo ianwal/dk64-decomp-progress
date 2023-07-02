@@ -837,10 +837,10 @@ typedef struct player_additional_actor_data {
     Actor *unk130;
     s32 unk134;
     s32 unk138;
-    s32 unk13C;
-    s32 unk140;
-    s32 unk144;
-    s32 unk148;
+    f32 unk13C;
+    f32 unk140;
+    f32 unk144;
+    f32 unk148;
     f32 unk14C; // Used
     f32 unk150; // Used
     s16 unk154; // Used

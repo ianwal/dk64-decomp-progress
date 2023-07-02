@@ -820,8 +820,8 @@ void func_8002F8EC() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002F980.s")
 
-void func_800317E8(f32, f32, void *, f32, s32, f32 *, f32 *, s32, s32, f32); // extern
-s32 func_806FC530(s32, s16, s16, s16, void *, s32);    // extern
+void func_800317E8(f32, f32, void *, f32, s32, f32 *, f32 *, s32, s32, f32);
+s32 func_806FC530(s32, s16, s16, s16, void *, s32);
 extern s32 D_800339C4; // TODO: Datatype
 extern f32 D_80033F44;
 

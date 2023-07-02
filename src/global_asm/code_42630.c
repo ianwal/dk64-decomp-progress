@@ -807,7 +807,33 @@ void func_80642844(s16 arg0, s16 arg1, Struct80642844 *arg2, s32 arg3, u8 arg4) 
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80642940.s")
+u32 func_806119A0();
+extern s32 D_8071FC58;
+
+void func_80642940(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    f32 var_f18;
+    f32 var_f4;
+    f32 var_f6;
+    s32 i;
+
+    for (i = 0; i < 1; i++) {
+        var_f6 = (((func_806119A0() / 10000) % 200) / 10.0) - 10.0;
+        var_f4 = (((func_806119A0() / 10000) % 200) / 10.0) - 7.0;
+        var_f18 = (((func_806119A0() / 10000) % 200) / 10.0) - 10.0;
+        func_807149B8(1);
+        func_807149FC(2);
+        func_80714950(0x64);
+        func_8071498C(func_80717D4C);
+        func_80714CC0(
+            &D_8071FC58,
+            0.5f,
+            D_807F621C + var_f6,
+            D_807F6220 + var_f4,
+            D_807F6224 + var_f18
+        );
+    }
+    func_8065A708(D_807F621C, D_807F6220, D_807F6224, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xA6, 0x30, 0xFF);
+}
 
 void func_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_80714B84(&D_8071FF18, 0.3f, arg1, 1, 0);
@@ -1550,8 +1576,6 @@ void func_80647D7C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         }
     }
 }
-
-
 
 // Malloc & Matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80648000.s")
