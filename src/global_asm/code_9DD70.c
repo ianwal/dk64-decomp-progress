@@ -5,7 +5,6 @@
 extern s8 D_807F6951;
 extern s8 D_807F6950;
 
-f32 func_80611BB4(f32, f32);
 extern f64 D_8075A2D0;
 
 void func_80699070(s16 *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {

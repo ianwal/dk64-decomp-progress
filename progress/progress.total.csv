@@ -3437,7 +3437,7 @@ us,.code,func_80024B00,888,no
 us,.code,func_80024768,296,yes
 us,.code,func_80024E78,344,no
 us,.code,func_80024914,492,yes
-us,.code,func_80027E04,228,no
+us,.code,func_80027E04,228,yes
 us,.code,func_80024254,184,yes
 us,.code,func_80027778,1404,no
 us,.code,func_80026DA8,2512,no

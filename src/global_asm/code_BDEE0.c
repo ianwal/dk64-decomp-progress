@@ -9,7 +9,6 @@ extern f32 D_8075B9E0;
 void func_80612BC0(Mtx*, f32);
 void func_80612C30(Mtx*, f32);
 void func_80611A70(f32, f32, f32*, f32*);
-f32 func_80611BB4(f32, f32);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_806B91E0.s")

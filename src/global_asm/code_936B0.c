@@ -59,7 +59,6 @@ void func_8068EA38(Actor **arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068ECF4.s")
 
-f32 func_80611BB4(f32, f32);
 extern f32 D_80759F70;
 extern f32 D_80759F74;
 extern f32 D_80759F78;

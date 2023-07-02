@@ -402,8 +402,6 @@ typedef struct {
     s16 unk6;
 } Struct806F2754;
 
-f32 func_80611BB4(f32, f32);
-
 /*
 // TODO: Very close
 void func_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {

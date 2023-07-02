@@ -212,7 +212,6 @@ f32 func_8002F04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F0AC.s")
 
-f32 func_80611BB4(f32, f32);
 extern f32 D_80030150;
 
 typedef struct {

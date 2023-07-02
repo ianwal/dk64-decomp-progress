@@ -14,8 +14,8 @@ extern u8 D_807F946C;
 extern u8 D_807F946E;
 extern f32 D_807F9488;
 extern f32 D_807F948C;
-extern s16 D_807F9490;
-extern s16 D_807F9498;
+extern s16 D_807F9490[];
+extern s16 D_807F9498[];
 extern s16 D_807F94A2;
 extern s16 D_807F94A4;
 extern u8 D_807F94AA;
@@ -387,8 +387,6 @@ f32 func_80665E48(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return (func_80665DE0(arg0, arg1, arg2, arg3) * D_80758EB0) * 0.00048828125;
 }
 
-f32 func_80611BB4(f32, f32);
-
 f32 func_80665E94(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s16 arg6) {
     f32 temp_f0;
     f32 temp_f2;
@@ -567,6 +565,63 @@ u8 func_80666AEC(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666AF8.s")
 
+extern f64 D_80758EE8;
+extern f32 D_80758EF0;
+extern f64 D_80758EF8;
+extern f32 D_80758F00;
+extern s16 D_807F9498[];
+extern u8 D_807F949E[];
+extern s16 D_807F94A6;
+extern s16 D_807F94A8;
+
+/*
+// TODO: Close
+void func_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6) {
+    s16 var_v0;
+    f32 temp_f0_2;
+    f32 var_f14;
+
+    if (arg4 == 0xFF) {
+        arg4 = 0;
+    }
+    if (arg4 == 0xFE) {
+        arg4 = 0;
+    }
+    D_807F949E[arg6] = arg4;
+    if (arg3 > 0.0f) {
+        var_f14 = arg3;
+    } else {
+        var_f14 = -arg3;
+    }
+    if (var_f14 < D_80758EE8) {
+        var_v0 = 0x400;
+    } else {
+        var_v0 = (func_80611BB4(ABS(arg1), var_f14) / D_80758EF0) * 2048.0f;
+    }
+    if (arg1 >= 0.0 && arg3 >= 0.0) {
+        var_v0 -= 0x800;
+    } else if (arg1 >= 0.0 && arg3 < 0.0) {
+        var_v0 = -var_v0;
+    } else if (arg1 < 0.0 && arg3 >= 0.0) {
+        var_v0 = 0x800 - var_v0;
+    }
+    if (arg5 != 0) {
+        D_807F9490[arg6] = var_v0 & 0xFFF;
+    }
+    D_807F94A6 = var_v0 & 0xFFF;
+    temp_f0_2 = sqrtf((arg1 * arg1) + (arg3 * arg3));
+    if (temp_f0_2 < D_80758EF8) {
+        var_v0 = 0x400;
+    } else {
+        var_v0 = (func_80611BB4(ABS(arg2), temp_f0_2) / D_80758F00) * 2048.0f;
+    }
+    if (arg5 != 0) {
+        D_807F9498[arg6] = var_v0;
+    }
+    D_807F94A8 = var_v0;
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666D88.s")
 
 extern f32 D_80752F7C[];
@@ -712,8 +767,8 @@ s32 func_80667110(f32 arg0, f32 arg1, f32 *arg2) {
     D_807F9484 = 0;
     D_807F9510 = 0;
     func_80667180(arg0, arg1, arg2, 0);
-    D_807F94A4 = D_807F9498;
-    D_807F94A2 = D_807F9490;
+    D_807F94A4 = D_807F9498[0];
+    D_807F94A2 = D_807F9490[0];
 }
 
 u8 func_8066715C(f32 *arg0) {

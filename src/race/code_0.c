@@ -111,8 +111,6 @@ typedef struct {
 extern Struct8002FB10_8002FB70 D_8002FB10[];
 extern Struct8002FB10_8002FB70 D_8002FB70[];
 
-f32 func_80611BB4(f32, f32);
-
 /*
 // TODO: Quite close, float nonsense
 void func_80024000(void) {

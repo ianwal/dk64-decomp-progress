@@ -136,8 +136,6 @@ typedef struct {
     s32 unk2C;
 } AAD_80027548;
 
-f32 func_80611BB4(f32, f32);
-
 void func_80626F8C(f32, f32, f32, f32*, f32*, s32, f32, s32);
 f32 func_8000AC60(f32);
 

@@ -79,13 +79,24 @@ void func_80027DA0(AAD_80027DA0 *arg0) {
     }
 }
 
-// structs
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027E04.s")
+void func_80027E04(void) {
+    u16 temp_v1;
+    PlayerAdditionalActorData *PaaD = D_807FDC94->PaaD;
+
+    temp_v1 = current_actor_pointer->animation_state->unk1C->unk4;
+    if (temp_v1 >= 0x47D1 && temp_v1 < 0xB830) {
+        D_807FDC90->unk26 = MAX(9, D_807FDC90->unk26 - 5);
+    } else if (!(temp_v1 >= 0x3830 && temp_v1 < 0xC7D1)) {
+        D_807FDC90->unk26 = MIN(D_807FDC9C->unkD, D_807FDC90->unk26 + 5);
+    } else {
+        D_807FDC90->unk26 = PaaD->vehicle_actor_pointer->unkB8;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_80027EE8.s")
 
 f32 func_8000AC60(f32);
-f32 func_806119A0();
+u32 func_806119A0();
 extern f64 D_80028DD8;
 typedef struct MinecartStruct1 {
     u8 pad0[0x3A];
@@ -98,14 +109,15 @@ typedef struct MinecartStruct1 {
 // TODO: Good progress made
 void func_80027EE8(MinecartStruct1 *arg0) {
     f32 temp_f0_3;
+    f32 dx = (current_actor_pointer->x_position - D_807FDC94->x_position);
+    f32 dy = (current_actor_pointer->y_position - D_807FDC94->y_position);
+    f32 dz = (current_actor_pointer->z_position - D_807FDC94->z_position);
 
-    temp_f0_3 = func_8000AC60((current_actor_pointer->x_position - D_807FDC94->x_position) * (current_actor_pointer->x_position - D_807FDC94->x_position)
-                             + (current_actor_pointer->y_position - D_807FDC94->y_position) * (current_actor_pointer->y_position - D_807FDC94->y_position)
-                             + (current_actor_pointer->z_position - D_807FDC94->z_position) * (current_actor_pointer->z_position - D_807FDC94->z_position));
+    temp_f0_3 = func_8000AC60((dx * dx) + (dy * dy) + (dz * dz));
     if (temp_f0_3 < 200.0f) {
         arg0->unk3A++;
         if (arg0->unk3A >= 9) {
-            func_80608528(current_actor_pointer, 0x1F, 0xFF, 127.0f - (temp_f0_3 - (f32) arg0->unk3C), 0);
+            func_80608528(current_actor_pointer, 0x1F, 0xFF, 127.0f - (temp_f0_3 - arg0->unk3C), 0);
             arg0->unk3A = ((func_806119A0() / D_80028DD8) * 3.0);
         }
     }

@@ -7,7 +7,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_8073BA60.s")
 
-f32 func_80611BB4(f32, f32);
 extern f32 D_807604B0;
 extern f32 D_807604B4;
 
