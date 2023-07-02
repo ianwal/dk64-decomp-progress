@@ -55,7 +55,36 @@ void func_8068EA38(Actor **arg0) {
     func_806319C4(*arg0, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068EB3C.s")
+void func_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *); // extern
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct8068EB3C_arg4;
+
+s32 func_8068EB3C(f32 arg0, f32 arg1, f32 arg2, Struct8068EB3C_arg4 *arg3, Struct8068EB3C_arg4 *arg4, Struct8068EB3C_arg4 *arg5, Struct8068EB3C_arg4 *arg6, f32 *arg7, f32 *arg8, f32 *arg9) {
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+
+    func_8061F2B8(arg0, arg1, arg2, arg3->unk0, arg3->unk4, arg3->unk8, arg4->unk0, arg4->unk4, arg4->unk8, &sp48, &sp4C, &sp50);
+    func_8061F2B8(arg0, arg1, arg2, arg5->unk0, arg5->unk4, arg5->unk8, arg6->unk0, arg6->unk4, arg6->unk8, &sp54, &sp58, &sp5C);
+    if ((((arg0 - sp48) * (arg0 - sp48)) + ((arg1 - sp4C) * (arg1 - sp4C)) + ((arg2 - sp50) * (arg2 - sp50))) < (((arg2 - sp5C) * (arg2 - sp5C)) + (((arg0 - sp54) * (arg0 - sp54)) + ((arg1 - sp58) * (arg1 - sp58))))) {
+        *arg7 = sp48;
+        *arg8 = sp4C;
+        *arg9 = sp50;
+        return 0;
+    } else {
+        *arg7 = sp54;
+        *arg8 = sp58;
+        *arg9 = sp5C;
+        return 1;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068ECF4.s")
 

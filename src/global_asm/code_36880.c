@@ -445,7 +445,88 @@ void func_80633D30(f32 *arg0, f32 *arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80633DC0.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+} Struct80633DC0_arg1;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+} Struct80633DC0_arg2;
+
+void func_80633DC0(f32 (*arg0)[4], Struct80633DC0_arg1 *arg1, Struct80633DC0_arg2 *arg2) {
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    guMtxXFMF(arg0, arg1->unk0, arg1->unk2, arg1->unk4, &sp3C, &sp38, &sp34);
+    arg2->unkC = sp3C;
+    arg2->unk10 = sp38;
+    arg2->unk14 = sp34;
+    arg2->unk18 = sp3C;
+    arg2->unk1C = sp38;
+    arg2->unk20 = sp34;
+    guMtxXFMF(arg0, arg1->unk6, arg1->unk2, arg1->unk4, &sp3C, &sp38, &sp34);
+    arg2->unkC = MIN(arg2->unkC, sp3C);
+    arg2->unk10 = MIN(arg2->unk10, sp38);
+    arg2->unk14 = MIN(arg2->unk14, sp34);
+    arg2->unk18 = MAX(arg2->unk18, sp3C);
+    arg2->unk1C = MAX(arg2->unk1C, sp38);
+    arg2->unk20 = MAX(arg2->unk20, sp34);
+    guMtxXFMF(arg0, arg1->unk0, arg1->unk2, arg1->unkA, &sp3C, &sp38, &sp34);
+    arg2->unkC = MIN(arg2->unkC, sp3C);
+    arg2->unk10 = MIN(arg2->unk10, sp38);
+    arg2->unk14 = MIN(arg2->unk14, sp34);
+    arg2->unk18 = MAX(arg2->unk18, sp3C);
+    arg2->unk1C = MAX(arg2->unk1C, sp38);
+    arg2->unk20 = MAX(arg2->unk20, sp34);
+    guMtxXFMF(arg0, arg1->unk6, arg1->unk2, arg1->unkA, &sp3C, &sp38, &sp34);
+    arg2->unkC = MIN(arg2->unkC, sp3C);
+    arg2->unk10 = MIN(arg2->unk10, sp38);
+    arg2->unk14 = MIN(arg2->unk14, sp34);
+    arg2->unk18 = MAX(arg2->unk18, sp3C);
+    arg2->unk1C = MAX(arg2->unk1C, sp38);
+    arg2->unk20 = MAX(arg2->unk20, sp34);
+    guMtxXFMF(arg0, arg1->unk0, arg1->unk8, arg1->unk4, &sp3C, &sp38, &sp34);
+    arg2->unkC = MIN(arg2->unkC, sp3C);
+    arg2->unk10 = MIN(arg2->unk10, sp38);
+    arg2->unk14 = MIN(arg2->unk14, sp34);
+    arg2->unk18 = MAX(arg2->unk18, sp3C);
+    arg2->unk1C = MAX(arg2->unk1C, sp38);
+    arg2->unk20 = MAX(arg2->unk20, sp34);
+    guMtxXFMF(arg0, arg1->unk6, arg1->unk8, arg1->unk4, &sp3C, &sp38, &sp34);
+    arg2->unkC = MIN(arg2->unkC, sp3C);
+    arg2->unk10 = MIN(arg2->unk10, sp38);
+    arg2->unk14 = MIN(arg2->unk14, sp34);
+    arg2->unk18 = MAX(arg2->unk18, sp3C);
+    arg2->unk1C = MAX(arg2->unk1C, sp38);
+    arg2->unk20 = MAX(arg2->unk20, sp34);
+    guMtxXFMF(arg0, arg1->unk0, arg1->unk8, arg1->unkA, &sp3C, &sp38, &sp34);
+    arg2->unkC = MIN(arg2->unkC, sp3C);
+    arg2->unk10 = MIN(arg2->unk10, sp38);
+    arg2->unk14 = MIN(arg2->unk14, sp34);
+    arg2->unk18 = MAX(arg2->unk18, sp3C);
+    arg2->unk1C = MAX(arg2->unk1C, sp38);
+    arg2->unk20 = MAX(arg2->unk20, sp34);
+    guMtxXFMF(arg0, arg1->unk6, arg1->unk8, arg1->unkA, &sp3C, &sp38, &sp34);
+    arg2->unkC = MIN(arg2->unkC, sp3C);
+    arg2->unk10 = MIN(arg2->unk10, sp38);
+    arg2->unk14 = MIN(arg2->unk14, sp34);
+    arg2->unk18 = MAX(arg2->unk18, sp3C);
+    arg2->unk1C = MAX(arg2->unk1C, sp38);
+    arg2->unk20 = MAX(arg2->unk20, sp34);
+}
 
 typedef struct {
     s16 unk0; // X1
