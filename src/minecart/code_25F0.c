@@ -125,8 +125,73 @@ void func_80027EE8(MinecartStruct1 *arg0) {
 }
 */
 
-// big, structs, floats
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_800280BC.s")
+s32 func_8072177C(void *, s16, s16, s16, s32, s32, s32, s32, s32); // extern
+
+typedef struct {
+    u8 unk0[0x10 - 0x0];
+    s16 unk10;
+    u8 unk12[0x34 - 0x12];
+    s32 unk34;
+} A178_800280BC;
+
+void func_800280BC(void) {
+    A178_800280BC *sp54;
+    Struct807FBB70_unk278 *temp_v1;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    u8 *temp_v0_2;
+
+    sp54 = current_actor_pointer->unk178;
+    func_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_80724CA4(2, 1);
+        D_807FDC90->unk35 = 6;
+    }
+    if (D_807FBB70.unk15 != 0) {
+        func_80608528(current_actor_pointer, 0xF6, 0xFF, 0x7F, 0x1E);
+        func_8061F0B0(D_807F5D10, 0xA, 0x14);
+        current_actor_pointer->control_state = 0x40;
+        func_8067E278(0, 1);
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0:
+            if (D_807FBB70.unk254 != 0) {
+                temp_v1 = D_807FBB70.unk278[0];
+                temp_v0_2 = malloc(2);
+                temp_v0_2[0] = temp_v1->unk2;
+                temp_v0_2[1] = 0xFF;
+                sp54->unk34 = temp_v0_2;
+                sp54->unk10 = temp_v1->unk4;
+                D_807FDC90->unk26 = 0x46;
+                current_actor_pointer->unkB8 = 0.0f;
+                current_actor_pointer->control_state++;
+            } else {
+                func_80724E48(1);
+                func_80027CF4();
+                func_806319C4(current_actor_pointer, 0);
+                break;
+            }
+        case 1:
+            func_80724E48(1);
+            func_80027CF4();
+            func_80027E04();
+            func_8068ECF4(6, 0xFF);
+            func_8072B438(0x200);
+            func_800253C0(sp54, 0x7FFF, 0x23);
+            func_80671C0C(current_actor_pointer, 5, &sp44, &sp48, &sp4C);
+            func_8072177C(current_actor_pointer, sp44, sp48, sp4C, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+            func_80027EE8(sp54);
+            break;
+        case 2:
+            current_actor_pointer->control_state = 0x40;
+            func_806319C4(current_actor_pointer, 0);
+            break;
+        default:
+            func_806319C4(current_actor_pointer, 0);
+            break;
+    }
+}
 
 // big, structs, floats
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_8002835C.s")
