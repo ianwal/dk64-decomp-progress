@@ -1911,7 +1911,8 @@ typedef struct JetpacItem {
 typedef struct CompetitorSub14 {
     u8 unk0[0x8];
     f32 unk8;
-    u8 unkC[0x1C-0xC];
+    f32 unkC;
+    u8 unk10[0x1C-0x10];
     s32 unk1C;
     u8 unk20[0x48-0x20];
     void* code;

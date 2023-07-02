@@ -331,7 +331,39 @@ void func_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 arg4, f32 arg5
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690F30.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_806915B0.s")
+extern s32 D_8071FFA0;
+extern u8 D_80750AD0;
+
+void func_806915B0(void) {
+    f32 randomZ;
+    f32 randomY;
+    f32 randomX;
+    s32 i;
+    s32 max;
+
+    if (D_80750AD0 != 0) {
+        max = 3;
+    } else {
+        max = 6;
+    }
+    for (i = 0; i < max; i++) {
+        randomX = ((((func_806119A0()) / 10000) % 200) / 5.0) - 20.0;
+        randomY = ((((func_806119A0()) / 10000) % 200) / 5.0) - 20.0;
+        randomZ = ((((func_806119A0()) / 10000) % 200) / 5.0) - 20.0;
+        func_807149B8(1);
+        func_807149C8(0x8C, 0x8C, 0x8C, 0x64);
+        func_80714950(i * -0x14);
+        func_80714998(3);
+        func_8071498C(func_80717D4C);
+        func_80714CC0(
+            &D_8071FFA0,
+            2.0f,
+            current_actor_pointer->x_position +         randomX,
+            current_actor_pointer->y_position + 42.0f + randomY,
+            current_actor_pointer->z_position +         randomZ
+        );
+    }
+}
 
 void func_80661520(f32, f32, f32, f32, f32, f32);
 

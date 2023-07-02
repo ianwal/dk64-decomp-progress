@@ -930,7 +930,6 @@ void func_8064384C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_8067DF44(temp_v1->x_position, temp_v1->y_position, temp_v1->z_position, temp_v1->hitbox_scale, 0, 1);
 }
 
-u32 func_806119A0();
 extern s32 D_8071FE08; // TODO: Datatype
 extern s32 D_8071FE64;
 extern s32 D_8071FE88;
@@ -1406,8 +1405,6 @@ void func_8064774C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-u32 func_806119A0();
-
 extern s32 D_80720EA4;
 int func_8071910C(); // TODO: Signature
 
@@ -1474,8 +1471,43 @@ void func_80647CF4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_80714B84(&D_8071FBC8, 3.0, arg1, 1, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647D7C.s")
+extern s32 D_8071FC40;
 
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+
+int func_80718BF4();
+
+void func_80647D7C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    f32 randomX;
+    f32 randomZ;
+    f32 randomY;
+    s32 i;
+
+    if (!((func_806119A0() / 10000) & 1)) {
+        for (i = 0; i < 0xC; i++) {
+            randomX = (f32)((func_806119A0() / 10000) % 200) * 0.25 - 2.0;
+            randomY = (f32)((func_806119A0() / 10000) % 200) * 0.25 - 2.0;
+            randomZ = (f32)((func_806119A0() / 10000) % 200) * 0.25 - 2.0;
+            func_807149B8(1);
+            func_80714950(1);
+            func_807149FC(-1);
+            func_8071498C(func_80718BF4);
+            func_80714CC0(
+                &D_8071FC40,
+                0.0f,
+                D_807F621C + randomX,
+                D_807F6220 + randomY,
+                D_807F6224 + randomZ
+            );
+        }
+    }
+}
+
+
+
+// Malloc & Matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80648000.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064826C.s")

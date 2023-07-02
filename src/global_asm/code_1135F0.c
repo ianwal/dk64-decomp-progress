@@ -69,4 +69,5 @@ void func_8070F2C8(s16 arg0, s16 arg1, u8 arg2, u8 arg3) {
     D_807FD9D5 = arg3;
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1135F0/func_8070F2FC.s")

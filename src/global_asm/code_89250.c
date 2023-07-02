@@ -171,9 +171,39 @@ void func_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
     );
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80684D98.s")
-
+extern s32 D_8071FC40;
 void func_80718BF4(void);
+
+u32 func_806119A0();
+
+void func_80684D98(u8 arg0) {
+    f32 randomX;
+    f32 randomZ;
+    f32 randomY;
+    s32 i;
+
+    if (((func_806119A0() / 10000) % arg0) == 0) {
+        if (D_80750AD0 == 0) {
+            for (i = 0; i < 4; i++) {
+                randomX = (f32)((func_806119A0() / 10000) % 200) / 10.0 - 5.0;
+                randomY = (f32)((func_806119A0() / 10000) % 200) / 10.0 - 5.0;
+                randomZ = (f32)((func_806119A0() / 10000) % 200) / 10.0 - 5.0;
+                func_807149B8(1);
+                func_80714950(1);
+                func_807149FC(-1);
+                func_8071498C(&func_80718BF4);
+                func_80714A28(4);
+                func_80714CC0(
+                    &D_8071FC40,
+                    0.0f,
+                    current_actor_pointer->x_position + randomX,
+                    current_actor_pointer->y_position + randomY,
+                    current_actor_pointer->z_position + randomZ
+                );
+            }
+        }
+    }
+}
 
 void func_80685020(u8 arg0, u8 arg1) {
     if ((arg0 & object_timer) == 0) {
@@ -484,7 +514,6 @@ void func_80685F60(Actor *actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068613C.s")
 
-s32 func_806119A0();
 extern s32 D_8071DB74; // TODO: Datatype
 extern s32 D_8071FC0C; // TODO: Datatype
 extern s32 D_80720B58; // TODO: Datatype

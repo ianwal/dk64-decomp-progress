@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-s32 func_8063367C(s32, s32, s32);
+s32 func_8063367C(s32, u8, s32);
 s32 func_80671D64(s32, s32);
 
 typedef struct {
@@ -191,6 +191,7 @@ void func_8072F120(void) {
     }
 }
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072F230.s")
 
 u8 func_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
@@ -257,7 +258,35 @@ s32 func_8072F8D4(GlobalASMStruct82 *arg0, s32 arg1, s16 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_80730408.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_80730AEC.s")
+f32 func_80627A00(f64, f32, f32, f32, f32);
+
+void func_80730AEC(u8 arg0, f32 arg1, GlobalASMStruct82 *arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
+    u8 sp7C[4];
+    f32 sp4C[4][3];
+
+    sp7C[0] = arg2->unk34[MAX(arg0 - 1, 0)].unk0;
+    sp7C[1] = arg2->unk34[arg0].unk0;
+    sp7C[2] = arg2->unk34[arg0].unk1;
+    sp7C[3] = arg2->unk34[MIN((arg0 + 1), (arg2->unk7 - 1))].unk1;
+    switch (arg2->unk4) {
+        case 1:
+        case 2:
+            func_806335B0(arg2->unk0, 1, sp7C[0], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            func_806335B0(arg2->unk0, 1, sp7C[1], &sp4C[1][0], &sp4C[1][1], &sp4C[1][2]);
+            func_806335B0(arg2->unk0, 1, sp7C[2], &sp4C[2][0], &sp4C[2][1], &sp4C[2][2]);
+            func_806335B0(arg2->unk0, 1, sp7C[3], &sp4C[3][0], &sp4C[3][1], &sp4C[3][2]);
+            break;
+        case 0:
+            func_80671C0C(arg2->unk0, sp7C[0], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            func_80671C0C(arg2->unk0, sp7C[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            func_80671C0C(arg2->unk0, sp7C[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            func_80671C0C(arg2->unk0, sp7C[2], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            break;
+    }
+    *arg3 = func_80627A00(arg1, sp4C[0][0], sp4C[1][0], sp4C[2][0], sp4C[3][0]);
+    *arg4 = func_80627A00(arg1, sp4C[0][1], sp4C[1][1], sp4C[2][1], sp4C[3][1]);
+    *arg5 = func_80627A00(arg1, sp4C[0][2], sp4C[1][2], sp4C[2][2], sp4C[3][2]);
+}
 
 void func_80730D60(s32 arg0, u8 arg1, u8 arg2, u8 arg3, s32 *arg4, s32 *arg5) {
     switch (arg1) {

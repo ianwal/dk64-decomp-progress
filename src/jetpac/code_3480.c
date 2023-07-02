@@ -157,20 +157,18 @@ void func_80028634(void) {
     Competitor *temp_v0;
     f32 var_f18;
     s32 temp_f16;
-    s32 var_a1;
-    Struct80028544 *var_v1;
+    s32 i;
+    s32 max = 0x40;
+    CompetitorSub14 *temp;
 
     temp_v0 = &D_8002EC30.player[D_8002EC30.player_index];
-    var_v1 = temp_v0->pad0;
     temp_v0->lives_consumed = 8;
-    var_a1 = 0x0;
-    for (var_a1 = 0x0; var_a1 < 0x30; var_a1 += 0x10) {
-        var_v1->unk8 = 168.0f;
-        var_v1->unkC = var_a1 + 136.0f;
-        var_v1++;
+    temp = temp_v0->unk14;
+    for (i = 0; i < max; i += 0x10) {
+        temp->unk8 = 168.0f;
+        temp->unkC = i + 136.0f;
+        temp++;
     }
-    var_v1[-1].unk8 = 168.0f;
-    var_v1[-1].unkC = var_a1 + 136.0f;
 }
 */
 

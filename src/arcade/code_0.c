@@ -2556,9 +2556,6 @@ void func_8002CD64(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002D6FC.s")
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002E158.s")
-#else
 extern u8 D_80037788[];
 extern u8 D_80037990[];
 
@@ -2566,13 +2563,17 @@ extern f64 D_8004AB10;
 extern f64 D_8004AB18;
 extern f32 D_8004AB20;
 
+#ifndef NONMATCHING
+#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002E158.s")
+#else
+// TODO: Extremely close, maybe need rodata?
 void func_8002E158(s32 arg0) {
-    f32 tmp_f0;
+    f32 dy;
 
     if (arcade_game_state != 0)
         return;
     
-    D_8004BCD0[arg0].unk0 += D_8004BCD0[arg0].unk8;
+    D_8004BCD0[arg0].x_position += D_8004BCD0[arg0].x_velocity;
     D_8004BCD0[arg0].unk10 += D_8004AB10;
     switch((s32)D_8004BCD0[arg0].unk10 & 0x1) {
         case 0:
@@ -2582,29 +2583,28 @@ void func_8002E158(s32 arg0) {
             D_8004BCD0[arg0].unk14 = &D_80037990;
             break;
     }
-    D_8004BCD0[arg0].unk4 += 5.0f;
-    if (D_8004BCD0[arg0].unkC < 5.0f) {
-        D_8004BCD0[arg0].unkC += D_8004AB18;
+    D_8004BCD0[arg0].y_position += 5.0f;
+    if (D_8004BCD0[arg0].y_velocity < 5.0f) {
+        D_8004BCD0[arg0].y_velocity += D_8004AB18;
     }
-    if (81.0f < D_8004BCD0[arg0].unk4) {
-        if (D_8004BCD0[arg0].unk0 < 220.0f) {
-            D_8004BCD0[arg0].unk4 = 81.0f;
-            D_8004BCD0[arg0].unkC = -3.5f;
-            if (40.0f < D_8004BCD0[arg0].unk0) {
+    if (D_8004BCD0[arg0].y_position > 81.0f) {
+        if (D_8004BCD0[arg0].x_position < 220.0f) {
+            D_8004BCD0[arg0].y_position = 81.0f;
+            D_8004BCD0[arg0].y_velocity = -3.5f;
+            if (40.0f < D_8004BCD0[arg0].x_position) {
                 func_80737638(D_8076D1F8, SFX_43_ARCADE_SPRING_SPRINGING, 0x7fff, 0x3f, 1.0f, 0, NULL);
-            }//L8002E2B4
-        }//L8002E2C0
-        else if (0.0f != D_8004BCD0[arg0].unk8) {
-            D_8004BCD0[arg0].unk8 = 0.0f;
+            }
+        } else if (D_8004BCD0[arg0].x_velocity != 0.0f) {
+            D_8004BCD0[arg0].x_velocity = 0.0f;
             func_80737638(D_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7fff, 0x3f, 1.0f, 0, NULL);
         }
-    }//L8002E30C
-    if (D_8004AB20 < D_8004BCD0[arg0].unk4) {
+    }
+    if (D_8004AB20 < D_8004BCD0[arg0].y_position) {
         D_8004BCD0[arg0].unk18 = 0;
     }
-    if (__arcade_abs_w(D_8004BCD0[arg0].unk0 - D_8004BCD0[D_8004C71F].unk0) < 7) {
-        tmp_f0 = D_8004BCD0[arg0].unk4 - D_8004BCD0[D_8004C71F].unk4;
-        if (tmp_f0 < 4.0f && -8.0f < tmp_f0 ) {
+    if (__arcade_abs_w(D_8004BCD0[arg0].x_position - D_8004BCD0[D_8004C71F].x_position) < 7) {
+        dy = D_8004BCD0[arg0].y_position - D_8004BCD0[D_8004C71F].y_position;
+        if (dy < 4.0f && -8.0f < dy) {
             func_80027E8C();
         }
     }

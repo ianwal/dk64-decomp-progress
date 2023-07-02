@@ -981,6 +981,79 @@ s32 func_80668B28(Struct8066893C *arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80668C30.s")
 
+/*
+// TODO: Progress made
+u8 func_80668C30(Struct8066893C *arg0, f32 arg1, f32 arg2) {
+    f64 temp_f22;
+    f64 temp_f24;
+    f64 var_f0;
+    f64 var_f12;
+    f64 var_f14;
+    f64 var_f16;
+    f64 var_f18;
+    f64 var_f20;
+    f64 var_f2;
+    s32 var_a0;
+    s32 i;
+    s32 var_t3;
+    s32 var_v1;
+
+    var_v1 = FALSE;
+    temp_f22 = (arg0->unk0 + ((arg0->unk4 + arg0->unk2) * 0.5)) * 0.5;
+    temp_f24 = (arg0->unkC + ((arg0->unk10 + arg0->unkE) * 0.5)) * 0.5;
+    for (i = 0; i < 3; i++) {
+        switch (i) {
+            default:
+                var_f0 = (arg1 - var_f16) * var_f14;
+                var_f2 = (arg2 - var_f18) * var_f12;
+                var_f20 = ((temp_f22 - var_f16) * var_f14) - ((temp_f24 - var_f18) * var_f12);
+                break;
+            case 0:
+                var_f18 = arg0->unkC;
+                var_f16 = arg0->unk0;
+                var_f14 = arg0->unkE - arg0->unkC;
+                var_f12 = arg0->unk2 - arg0->unk0;
+                var_f0 = (arg1 - arg0->unk0) * var_f14;
+                var_f2 = (arg2 - var_f18) * var_f12;
+                var_f20 = ((temp_f22 - arg0->unk0) * var_f14) - ((temp_f24 - var_f18) * var_f12);
+                break;
+            case 1:
+                var_f18 = arg0->unkC;
+                var_f16 = arg0->unk0;
+                var_f14 = arg0->unk10 - arg0->unkC;
+                var_f12 = arg0->unk4 - arg0->unk0;
+                var_f0 = (arg1 - arg0->unk0) * var_f14;
+                var_f2 = (arg2 - var_f18) * var_f12;
+                var_f20 = ((temp_f22 - arg0->unk0) * var_f14) - ((temp_f24 - var_f18) * var_f12);
+                break;
+            case 2:
+                var_f16 = arg0->unk2;
+                var_f18 = arg0->unkE;
+                var_f12 = arg0->unk4 - arg0->unk2;
+                var_f14 = arg0->unk10 - arg0->unkE;
+                var_f0 = (arg1 - var_f16) * var_f14;
+                var_f2 = (arg2 - var_f18) * var_f12;
+                var_f20 = ((temp_f22 - var_f16) * var_f14) - ((temp_f24 - var_f18) * var_f12);
+                break;
+        }
+        if (var_f2 <= var_f0) {
+            var_t3 = 1;
+        } else {
+            var_t3 = -1;
+        }
+        if (var_f20 >= 0.0) {
+            var_a0 = 1;
+        } else {
+            var_a0 = -1;
+        }
+        if (var_a0 != var_t3) {
+            var_v1 = TRUE;
+        }
+    }
+    return (var_v1 == 0);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80668E9C.s")
 
 s32 func_80669930(void*);
