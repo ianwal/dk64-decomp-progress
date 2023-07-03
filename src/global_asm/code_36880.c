@@ -1228,10 +1228,10 @@ void func_80636C00(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636EFC.s")
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636FFC.s")
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80637B6C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806392BC.s")
@@ -1322,7 +1322,7 @@ void func_8063A8C4(s16 arg0, u8 arg1, f32 arg2) {
     }
 }
 
-// display list something
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063A968.s")
 
 void func_8063B4A4(void) {
@@ -1425,7 +1425,7 @@ void func_8063C4A8(void) {
     D_807F6174 = 255.0f;
 }
 
-// display list stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063C4C4.s")
 
 void func_8063C6D8(void) {
@@ -1444,7 +1444,7 @@ void func_8063C784(void) {
     D_807F617C = getPointerTableFile(0x19, 0x565, 1, 0); // Texture
 }
 
-// display list stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063C7C4.s")
 
 void func_8063CA7C(void) {
@@ -1511,7 +1511,7 @@ void func_8063D288(void) {
     }
 }
 
-// display list stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063D2E4.s")
 
 void func_8063D468(void) {
@@ -1525,7 +1525,7 @@ void func_8063D494(void) {
     D_807F6198 = 0.0f;
 }
 
-// display list stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063D4A4.s")
 
 void func_8063D5AC(void) {

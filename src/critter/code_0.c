@@ -197,6 +197,7 @@ void func_800240EC(CritterController *arg0) {
 // Odd stack struct
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80024154.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_8002427C.s")
 
 extern f64 D_80029FE0;
@@ -205,7 +206,6 @@ extern f64 D_80029FE8;
 extern f32 *D_80029F74;
 
 /*
-// Hmm, might need rodata?
 void func_8002427C(CritterController *arg0) {
     f32 sp68[4][4];
     Critter *var_s0;
@@ -314,7 +314,7 @@ void func_800245B8(Critter *arg0) {
     func_80024578(arg0);
 }
 
-// Display list stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800247F4.s")
 
 void func_80024B78(Critter *arg0) {
@@ -332,7 +332,7 @@ void func_80024B78(Critter *arg0) {
     func_80024578(arg0);
 }
 
-// Display List
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80024C88.s")
 
 void func_80024F28(Critter *arg0) {
@@ -369,7 +369,7 @@ void func_80024F28(Critter *arg0) {
     func_80024578(arg0);
 }
 
-// Display List
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_8002516C.s")
 
 void func_80025500(Critter *arg0) {
@@ -379,10 +379,10 @@ void func_80025500(Critter *arg0) {
     func_80024578(arg0);
 }
 
-// Display List
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800255C4.s")
 
-// Display List
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800257D4.s")
 
 /*
@@ -475,7 +475,7 @@ void func_80025A3C(Struct80025A3C *arg0) {
     func_8000A6C0(&sp30, arg0->unk60[D_807444FC]);
 }
 
-// Display List
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80025AD0.s")
 
 s32 func_80025D1C(s32 arg0, CritterController *arg1) {

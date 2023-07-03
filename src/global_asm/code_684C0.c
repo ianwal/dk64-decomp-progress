@@ -15,7 +15,7 @@ typedef struct {
 
 typedef struct global_asm_struct_85 GlobalASMStruct85;
 struct global_asm_struct_85 {
-    GlobalASMStruct84* unk0;
+    GlobalASMStruct84* unk0; // Bounding Box
     GlobalASMStruct83* unk4;
     GlobalASMStruct85* next;
 };
@@ -102,61 +102,57 @@ void func_80663A80(void) {
     Actor *temp_v1;
     GlobalASMStruct83 **var_s1;
     GlobalASMStruct83 *temp_a0;
-    GlobalASMStruct83 *var_s0;
-    GlobalASMStruct84 *temp_v0;
-    GlobalASMStruct85 *var_s2;
+    GlobalASMStruct83 *current83;
+    GlobalASMStruct84 *boundingBox;
+    GlobalASMStruct85 *current85;
 
-    var_s2 = D_807F9410;
-    while (var_s2 != NULL) {
-        var_s0 = var_s2->unk4;
-        var_s1 = &var_s2->unk4;
-        while (var_s0 != NULL) {
-            temp_v0 = var_s2->unk0;
-            temp_v1 = var_s0->unk0;
-            if ((temp_v1->x_position < temp_v0->min_x)
-                || (temp_v1->y_position < temp_v0->min_y)
-                || (temp_v1->z_position < temp_v0->min_z)
-                || (temp_v0->max_x < temp_v1->x_position)
-                || (temp_v0->max_y < temp_v1->y_position)
-                || (temp_v0->max_z < temp_v1->z_position)) {
-                temp_v1->unk156 -= 1;
-                func_806782C0(var_s0->unk8);
-                temp_a0 = var_s0;
-                *var_s1 = var_s0->next;
-                var_s0 = var_s0->next;
+    current85 = D_807F9410;
+    while (current85 != NULL) {
+        current83 = current85->unk4;
+        var_s1 = &current85->unk4;
+        while (current83 != NULL) {
+            boundingBox = current85->unk0;
+            temp_v1 = current83->unk0;
+            if ((temp_v1->x_position < boundingBox->min_x)
+                || (temp_v1->y_position < boundingBox->min_y)
+                || (temp_v1->z_position < boundingBox->min_z)
+                || (boundingBox->max_x < temp_v1->x_position)
+                || (boundingBox->max_y < temp_v1->y_position)
+                || (boundingBox->max_z < temp_v1->z_position)) {
+                temp_v1->unk156--;
+                func_806782C0(current83->unk8);
+                temp_a0 = current83;
+                *var_s1 = current83->next;
+                current83 = current83->next;
                 func_8061130C(temp_a0);
             } else {
-                var_s1 = &var_s0->next;
-                var_s0 = var_s0->next;
+                var_s1 = &current83->next;
+                current83 = current83->next;
             }
         }
-        var_s2 = var_s2->next;
+        current85 = current85->next;
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_684C0/func_80663BE8.s")
-
-/*
-// TODO: Regalloc :(
 void func_80663BE8(Actor *arg0) {
     GlobalASMStruct83 **var_v1;
-    GlobalASMStruct83 *var_a0;
-    GlobalASMStruct85 *var_a2;
+    GlobalASMStruct83 *current83;
+    GlobalASMStruct85 *current85;
 
-    var_a2 = D_807F9410;
-    while (var_a2 != NULL) {
-        var_v1 = &var_a2->unk4;
-        var_a0 = var_a2->unk4;
-        while (var_a0 != NULL) {
-            if (arg0 == var_a0->unk8) {
-                *var_v1 = var_a0->next;
-                func_8061130C(var_a0);
+    current85 = D_807F9410;
+    while (current85 != NULL) {
+        var_v1 = &current85->unk4;
+        current83 = current85->unk4;
+        while (current83 != NULL) {
+            Actor *temp = current83->unk8;
+            if (arg0 == temp) {
+                *var_v1 = current83->next;
+                func_8061130C(current83);
                 return;
             }
-            var_v1 = &var_a0->next;
-            var_a0 = var_a0->next;
+            var_v1 = &current83->next;
+            current83 = current83->next;
         }
-        var_a2 = var_a2->next;
+        current85 = current85->next;
     }
 }
-*/

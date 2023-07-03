@@ -687,6 +687,15 @@ void func_80681BD8(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_80682DF4.s")
 
+void func_80682DF4(Actor *, u16 *, s32);
+
+/*
+extern u16 D_807FBB54[];
+void func_80682DF4(Actor *arg0, u16 *arg1, s32 arg2) {
+    func_80614EBC(arg0, D_807FBB54[(((arg2 * 7) + *arg1) - 2)]);
+}
+*/
+
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -695,9 +704,7 @@ typedef struct {
 } GlobalASMStruct45;
 
 extern GlobalASMStruct45 D_8074E814[];
-
 void func_80682AB4(void *);
-void func_80682DF4(Actor *, void *, s32);
 void func_806F09F0(Actor *, u16);
 
 typedef struct {

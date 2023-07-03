@@ -1041,7 +1041,7 @@ s32 func_80655CF8(s16 arg0, s32 arg1) {
 }
 */
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655DD0.s")
 
 // Displaylist stuff, chunks

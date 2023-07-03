@@ -120,6 +120,7 @@ void func_806AEE08(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_806AF688.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_806AFA60.s")
 
 /*
@@ -128,7 +129,6 @@ extern f64 D_8075B098;
 extern s32 D_8072073C; // TODO: Proper datatype
 extern s32 D_8071910C; // TODO: Proper datatype
 
-// TODO: May need .rodata defined? s3 s2 regalloc
 void func_806AFA60(u8 arg0) {
     f32 temp_f22;
     f64 temp_f20;
@@ -237,12 +237,12 @@ void func_806B0354(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_806B0770.s")
 
 extern f32 D_8075B1AC;
 
 /*
-// TODO: Might need .rodata for D_8075B1AC?
 s32 func_806B0770(void) {
     f32 dx, dy, dz;
     Actor *temp_a0;

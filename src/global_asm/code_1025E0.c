@@ -114,6 +114,7 @@ void func_806FDF1C(s16 arg0, s32 arg1) {
     func_80002A30(func_806FD9B4(arg0)->unk4, arg1);
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FDF54.s")
 
 extern f32 D_8075DD58;
@@ -122,7 +123,6 @@ extern f64 D_8075DD60;
 extern f32 D_8075DD68;
 
 /*
-// TODO: Float nonsense :( Maybe rodata?
 void func_806FDF54(f32 *arg0, f32 *arg1) {
     while (*arg1 < 0.0f) {
         *arg1 += D_8075DD58;

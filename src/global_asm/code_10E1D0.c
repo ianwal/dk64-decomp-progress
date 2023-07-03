@@ -146,6 +146,7 @@ void func_8070A934(s32 nextMap, s32 nextExit) {
 }
 */
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070AC74.s")
 
 // Doable

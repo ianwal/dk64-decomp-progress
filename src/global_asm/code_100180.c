@@ -83,29 +83,17 @@ void func_806FBC34(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FBD5C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FBEAC.s")
-
-/*
-// TODO: Doable, hmm
 s16 func_806FBEAC(u8 *arg0) {
     s16 count;
-    u8 temp_v0;
-    u8 *var_a0;
 
     count = 0;
-    var_a0 = &arg0[1];
-    if (arg0[0] != 0) {
-        do {
-            if (var_a0[-1] != 0x20) {
-                count++;
-            }
-            temp_v0 = var_a0[0];
-            var_a0++;
-        } while (temp_v0 != 0);
+    while (*arg0++) {
+        if (arg0[-1] != 0x20) {
+            count++;
+        }
     }
     return count;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FBEF0.s")
 

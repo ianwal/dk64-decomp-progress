@@ -359,13 +359,13 @@ void func_8063E6B4(OM2_unk7C *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063E72C.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063EA14.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063FA48.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641724.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806417BC.s")
@@ -720,7 +720,7 @@ s32 func_80642500(f32 *arg0, u8 arg1, s16 arg2) {
 }
 */
 
-// TODO: Doable, probably needs .rodata
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806425FC.s")
 
 extern f32 D_807F621C;
@@ -1072,12 +1072,13 @@ void func_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643C0C.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643F38.s")
 
 extern s32 D_8074E880[];
 
 /*
-extern f32 D_80758968; // TODO: Probably rodata
+extern f32 D_80758968;
 
 void func_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 temp_f20;
@@ -1370,6 +1371,7 @@ void func_80645D14(s32 **arg0, s32 arg1, s16 arg2, s32 arg3) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645F40.s")
 
 /*
@@ -1377,7 +1379,6 @@ extern f64 D_807589E8;
 extern f64 D_807589F0;
 extern s32 D_80720B00;
 
-// TODO: Very close, doable, probably needs rodata
 void func_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
     f32 phi_f22 = 0.0f;
@@ -1503,13 +1504,13 @@ void func_80647834(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647A14.s")
 
 extern f32 D_80758A08;
 // extern s32 D_8071FC8C; // TODO: Datatype
 
 /*
-// TODO: Float nonsense, possibly rodata
 void func_80647A14(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 i;
     f32 temp_f26;
@@ -2098,6 +2099,7 @@ u8 func_8064BE58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return D_807552E8 == 5;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064BE80.s")
 
 /*
@@ -2635,35 +2637,48 @@ void func_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064E174.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064E428.s")
+s32 func_8064E174(s32, s16, s16, s32 *, s32, s32, s32);
 
-s32 func_8064E174(s16, s16, s32 *, s32, s32, s32);
+typedef struct {
+    s32 unk0;
+} Struct807482DC;
 
-/*
-extern s32 D_807482DC;
+typedef struct {
+    u8 unk0[5];
+} Struct807482E0;
 
-void func_8064E428(s16 arg1, s16 arg2, s32 arg3) {
-    s32 sp2C;
+typedef struct {
+    u8 unk0[3];
+} Struct807482E8;
 
-    sp2C = D_807482DC;
-    func_8064E174(arg1, arg2, &sp2C, 4, 5, 0x14);
+typedef struct {
+    s32 unk0;
+} Struct807482EC;
+
+extern Struct807482E0 D_807482E0;
+extern Struct807482E8 D_807482E8;
+extern Struct807482EC D_807482EC;
+extern Struct807482DC D_807482DC;
+
+void func_8064E428(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+    Struct807482DC sp2C = D_807482DC;
+    func_8064E174(arg0, arg1, arg2, &sp2C, 4, 5, 0x14);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064E48C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064E4F8.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064E55C.s")
-
-/*
-extern s32 D_807482EC;
-
-void func_8064E55C(s16 arg1, s16 arg2, s32 arg3) {
-    s32 sp2C = D_807482EC;
-    func_8064E174(arg1, arg2, &sp2C, 3, 7, 0x14);
+void func_8064E48C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+    Struct807482E0 sp28 = D_807482E0;
+    func_8064E174(arg0, arg1, arg2, &sp28, 5, 4, 0x14);
 }
-*/
+
+void func_8064E4F8(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+    Struct807482E8 sp2C = D_807482E8;
+    func_8064E174(arg0, arg1, arg2, &sp2C, 3, 7, 0x14);
+}
+
+void func_8064E55C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+    Struct807482EC sp2C = D_807482EC;
+    func_8064E174(arg0, arg1, arg2, &sp2C, 3, 7, 0x14);
+}
 
 typedef struct {
     u8 unk0[0x60 - 0x0];

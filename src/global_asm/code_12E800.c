@@ -572,6 +572,7 @@ void func_8072D08C(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072D13C.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072D714.s")
 
 extern f64 D_8075FF10;

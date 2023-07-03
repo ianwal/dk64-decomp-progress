@@ -573,7 +573,7 @@ void func_80713270(void) {
     }
 }
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807132DC.s")
 
 s32 *func_805FD030(s32 *arg0);
@@ -789,7 +789,7 @@ void func_807144B8(s8 arg0) {
     D_807445B8 = osGetTime();
     D_80755350 = 0;
     func_806C9AE0();
-    func_80731030();
+    func_80731030(); // clearTemporaryFlags()
     func_8060DC3C(arg0, 1);
     current_character_index[0] = 0; // DK
     if (func_8060C6B8(0xD, 0, 0, current_file) || story_skip) {

@@ -25,6 +25,9 @@ extern f64 D_80759A90;
 extern f64 D_80759A98;
 extern f64 D_80759AA0;
 extern f64 D_80759AA8;
+extern f64 D_80759AC8;
+extern f64 D_80759AD0;
+extern f64 D_80759AD8;
 extern f64 D_80759B60; // y
 extern f64 D_80759B70;
 extern f64 D_80759B68;
@@ -146,10 +149,6 @@ void func_80684A00(s16 arg0, s8 arg1) {
     );
 }
 
-extern f64 D_80759AC8;
-extern f64 D_80759AD0;
-extern f64 D_80759AD8;
-
 void func_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
     f32 sp54;
     f32 sp50;
@@ -219,6 +218,7 @@ void func_80685020(u8 arg0, u8 arg1) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_806850D0.s")
 
 /*
@@ -512,6 +512,7 @@ void func_80685F60(Actor *actor) {
 }
 */
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068613C.s")
 
 extern s32 D_8071DB74; // TODO: Datatype
@@ -571,12 +572,12 @@ void func_80686340(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80686390.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_8068696C.s")
 
 extern f32 D_80759B50;
 
 /*
-// Probably needs rodata
 void func_8068696C(Actor *arg0) {
     s32 phi_s0;
     f32 temp_f20 = D_80759B50;
@@ -590,10 +591,10 @@ void func_8068696C(Actor *arg0) {
 }
 */
 
-// Probably needs rodata
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80686A5C.s")
 
-// Probably needs rodata
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80686CF8.s")
 
 void func_80686E40(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
@@ -635,6 +636,7 @@ void func_80686F90(u8 arg0, s16 arg1, s16 arg2) {
     D_807FBB44->animation_state->scale_y *= D_80759B60;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80687080.s")
 
 /*

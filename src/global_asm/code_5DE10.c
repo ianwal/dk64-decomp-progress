@@ -29,8 +29,8 @@ u8 func_80659190(void) {
     return D_807F7360;
 }
 
-//display list stuff?
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5DE10/func_8065919C.s")
 
-//display list stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5DE10/func_806592B4.s")

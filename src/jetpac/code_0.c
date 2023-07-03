@@ -91,7 +91,7 @@ Gfx **func_8002AE00(Gfx**);
 void func_8002AE94(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 
 // TODO: Arg2 might be s16... Causes a mismatch in func_80024D48.
-void func_8002AEFC(void **arg0, s32 arg1, s32 arg2, s16 arg3, s32 arg4);
+void func_8002AEFC(Gfx **arg0, s32 arg1, s32 arg2, s16 arg3, s32 arg4);
 
 /*
 // TODO: Annoyingly close, just weird offset nonsense on the lives read
@@ -141,7 +141,7 @@ extern s32 D_8002EA48;
 extern s32 D_8002EA60;
 extern s32 D_8002EA70;
 
-void func_8002466C(s32 arg0) {
+void func_8002466C(Gfx **arg0) {
     s32 sp28[10]; // TODO: Datatype
 
     func_80024408();
@@ -234,7 +234,7 @@ extern s32 D_8002EA94; // TODO: Datatype
 extern s32 D_8002EA9C; // TODO: Datatype
 extern s32 D_8002EAAC; // TODO: Datatype
 
-void func_80024A8C(s32 arg0) {
+void func_80024A8C(Gfx **arg0) {
     enum map_e var_a0;
 
     func_80024408();
@@ -304,7 +304,7 @@ void func_80027D64(Competitor *);
 void func_80028340(Competitor *);
 void func_80025368(Competitor *arg0);
 
-void func_80024D48(s32 arg0) {
+void func_80024D48(Gfx **arg0) {
     s32 sp4C;
     s32 sp2C[8];
 

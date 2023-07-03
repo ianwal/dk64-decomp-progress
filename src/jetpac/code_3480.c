@@ -178,7 +178,27 @@ void func_80028634(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_800289EC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028B54.s")
+extern s32 D_8002D190[];
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+} Struct8002D1A0;
+
+extern Struct8002D1A0 D_8002D1A0[];
+extern s32 D_8002D1B8;
+
+void func_80028B54(s32 *arg0) {
+    s32 i;
+    s32 temp = *arg0 / 4;
+    for (i = 0; i < 6; i++) {
+        D_8002D1A0[i].unk0 = D_8002D190[temp % 4];
+    }    
+}
 
 void func_80028BD0(JetpacStruct*, s32, s32, s32, u8, u8, u8); 
 

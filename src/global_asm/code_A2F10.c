@@ -628,6 +628,18 @@ void func_806A1008(u8 arg0, u8 arg1) {
 // AnimationState->unk24
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_806A10BC.s")
 
+/*
+void func_806A10BC(s32 *arg0) {
+    AnimationStateUnk24 *var_v0;
+    s16 i;
+
+    var_v0 = current_actor_pointer->animation_state->unk24;
+    for (i = 0; i < 7; i++) {
+        var_v0[i].unkC = *(*arg0 + (i * 0x34 * 4) + (current_actor_pointer->unk168 * 4));
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_806A112C.s")
 
 extern u8 D_807503D4;

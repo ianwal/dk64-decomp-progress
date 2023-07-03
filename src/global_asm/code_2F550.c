@@ -668,7 +668,7 @@ u8 func_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_arg2 *arg2,
 */
 
 
-// Display List stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BF24.s")
 
 void func_8062C1C0(s32 arg0) {

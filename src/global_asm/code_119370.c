@@ -386,7 +386,7 @@ void func_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
     sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f16 * temp_f16));
 }
 
-// displaylist stuff
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80715E94.s")
 
 void func_80716F10(Struct80717D84 *arg0, s32 arg1) {
@@ -732,12 +732,12 @@ void func_80718188(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071827C.s")
 
 extern f64 D_8075E748;
 
 /*
-// TODO: Rodata?
 void func_8071827C(Struct80717D84 *arg0, s32 arg1) {
     f32 sp70[4][4];
     f32 sp30[4][4];
@@ -790,6 +790,7 @@ void func_80718380(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807184F4.s")
 
 extern f64 D_8075E750;
@@ -824,7 +825,7 @@ void func_807184F4(Struct80717D84 *arg0, s32 arg1) {
     guMtxF2L(&sp70[0], arg0->unk128[D_807444FC]);
     if (arg0->unk35C != 0) {
         arg0->unk384_f32->unk0 += arg0->unk384_f32->unk4;
-        // TODO: Need rodata?
+        // TODO: Need rodata
         arg0->unk360 -= D_8075E750;
         arg0->unk364 -= D_8075E750;
         if (arg0->unk36D >= 0xA) {
@@ -838,7 +839,7 @@ void func_807184F4(Struct80717D84 *arg0, s32 arg1) {
 */
 
 // Matrix stuff
-// Hmm, I think it needs rodata
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807186C8.s")
 
 void func_807189BC(Struct80717D84 *arg0, s8 *arg1) {
@@ -877,6 +878,7 @@ void func_807189BC(Struct80717D84 *arg0, s8 *arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071910C.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807195D4.s")
 
 extern f32 D_8075E840;
@@ -889,7 +891,6 @@ typedef struct {
 } Struct80717D84_unk384_807195D4;
 
 /*
-// TODO: Hmm might need rodata?
 void func_807195D4(Struct80717D84 *arg0, s32 arg1) {
     f32 temp;
     f32 sp6C[4][4];
@@ -919,6 +920,7 @@ void func_807195D4(Struct80717D84 *arg0, s32 arg1) {
 }
 */
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_807197B4.s")
 
 extern f64 D_8075E850;
@@ -936,7 +938,6 @@ typedef struct {
 } Struct80717D84_unk384_807197B4;
 
 /*
-// TODO: Probably needs rodata...
 void func_807197B4(Struct80717D84 *arg0, s32 arg1) {
     f32 sp78[4][4];
     f32 sp34;
@@ -1669,6 +1670,7 @@ void func_8071C620(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk348 += var_v0->unk8;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C818.s")
 
 extern f64 D_8075E9C8;
@@ -1676,8 +1678,6 @@ extern f64 D_8075E9C8;
 void func_8071C818(Struct80717D84 *arg0, s8 *arg1);
 
 /*
-// TODO: Rodata?
-// TODO: Close
 void func_8071C818(Struct80717D84 *arg0, s8 *arg1) {
     f64 temp = D_8075E9C8;
     float sp70[4][4];

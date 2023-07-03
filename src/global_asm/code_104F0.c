@@ -530,7 +530,7 @@ u8 *getFlagBlockAddress(u8 flagType) {
     switch (flagType) {
         case FLAG_TYPE_PERMANENT:
             if ((gameIsInDKTVMode()) || (cc_number_of_players >= 2)) {
-                func_80731030();
+                func_80731030(); // clearTemporaryFlags()
                 bzero(&D_807EDEB0, FILE_SIZE_BYTES);
                 phi_v1 = &D_807EDEB0;
             } else {

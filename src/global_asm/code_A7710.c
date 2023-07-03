@@ -66,7 +66,7 @@ void func_806A2B80(Actor *arg0) {
     arg0->control_state_progress = 0;
 }
 
-// actor + displaylist stuff
+// Displaylist stuff (actor)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_806A2B90.s")
 
 // Jumptable

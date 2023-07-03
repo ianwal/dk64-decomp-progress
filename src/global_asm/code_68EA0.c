@@ -99,6 +99,7 @@ s32 func_8066461C(s16 arg0) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68EA0/func_8066466C.s")
 
 s32 func_8063C2A8(s16);
@@ -107,7 +108,6 @@ void func_80664A38(s16 arg0);
 void func_80664834(s16 arg0);
 
 /*
-// TODO: Very close, getting owned by rodata again?
 void func_8066466C(void) {
     f32 temp_f0;
     f32 temp_f12;

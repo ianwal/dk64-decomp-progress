@@ -217,6 +217,7 @@ s32 arcade_get_object_type_count(enum ARCADE_OBJ_E arg0) {
 }
 
 #ifndef NONMATCHING //needs .rodata and .data sections defined
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_80024940.s")
 #else
 void func_80024940(Gfx **gpp) {
@@ -2564,9 +2565,9 @@ extern f64 D_8004AB18;
 extern f32 D_8004AB20;
 
 #ifndef NONMATCHING
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002E158.s")
 #else
-// TODO: Extremely close, maybe need rodata?
 void func_8002E158(s32 arg0) {
     f32 dy;
 

@@ -135,6 +135,7 @@ void func_806651FC(Actor *arg0) {
 }
 */
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806653C0.s")
 
 f32 func_80612794(s16);

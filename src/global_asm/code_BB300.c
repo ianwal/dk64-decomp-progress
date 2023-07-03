@@ -7,6 +7,7 @@ extern u8 D_807FBD70;
 
 void func_8072AB74(s32, f32, f32, s32, f32);
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_806B6600.s")
 
 extern f64 D_8075B760;
@@ -26,7 +27,6 @@ typedef struct {
 } AnimationState1C_806B6600;
 
 /*
-// TODO: Progress made, rodata issue?
 void func_806B6600(u8 arg0) {
     Actor178_806B6600 *temp_v0;
     f32 temp_f0;

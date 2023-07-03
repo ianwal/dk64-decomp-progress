@@ -49,7 +49,7 @@ void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 void func_8060AA04();
 void func_80631B80();
 void func_806C9AE0();
-void func_80731030();
+void func_80731030(); // clearTemporaryFlags()
 void func_805FF118();
 void func_8063DB0C();
 
@@ -241,7 +241,7 @@ void func_805FBE04(void) {
     D_8076A0B1 |= 4;
     func_80631B80();
     func_806C9AE0();
-    func_80731030();
+    func_80731030(); // clearTemporaryFlags()
     func_805FF118();
     func_8063DB0C();
     FOV = func_8062A850(); // getFieldOfView()
@@ -485,13 +485,13 @@ void *func_805FD030(Gfx *arg0) {
     return arg0++;
 }
 
-// display list something
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FD088.s")
 
-// display list something?
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE398.s")
 
-// display list arg0
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE4D4.s")
 
 extern s32 D_8076A058;
@@ -508,13 +508,13 @@ void func_805FE544(u8 arg0) {
     func_805FE71C(func_805FE634(D_8076A050[1], 1), 1, &D_8076A088, 1);
 }
 
-// display list something?
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE634.s")
 
-// display list something?
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE71C.s")
 
-// display list something?
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE7B4.s")
 
 void func_80712A40(void);

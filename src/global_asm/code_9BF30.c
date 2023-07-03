@@ -95,6 +95,7 @@ void func_80697988(void) {
 }
 */
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_80697CEC.s")
 
 void func_8065D254(Actor *, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);

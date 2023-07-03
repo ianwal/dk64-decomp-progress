@@ -279,6 +279,7 @@ void func_80605380(s16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80605510.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_806057F8.s")
 
 extern f32 D_80756DFC;
@@ -323,13 +324,13 @@ void func_8060A4D0(s32 arg0, f32 arg1) {
     func_8060A398(arg0);
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_8060A500.s")
 
 extern f64 D_80756FF0;
 extern f64 D_80756FF8;
 
 /*
-// TODO: probably needs rodata
 void func_8060A500(void) {
     f32 var_f12;
     f64 temp_f20;

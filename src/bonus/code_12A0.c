@@ -28,6 +28,7 @@ u8 func_80025480(Actor **arg0, u8 arg1) {
     return D_8002D8B0[arg1][arg0[arg1]->unk15F];
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800254B0.s")
 
 extern f32 D_8002DCB4;
@@ -35,7 +36,6 @@ int func_80717404(); // TODO: Signature
 extern void* D_8074E880[];
 
 /*
-// TODO: Rodata?
 void func_800254B0(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s16 i;
 

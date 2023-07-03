@@ -88,6 +88,7 @@ void func_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3) {
     *arg3 = temp_t0[arg1].unk4;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002BCD4.s")
 
 extern f32 D_800300D0;
@@ -111,7 +112,6 @@ typedef struct {
 extern Struct80027880 *D_807F5FD4;
 
 /*
-// TODO: Close rodata?
 void func_8002BCD4(Actor *arg0) {
     f32 var_f0;
     f32 var_f12;

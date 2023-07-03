@@ -89,6 +89,7 @@ void func_80028458() {
     func_805FF8F8();
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_80028478.s")
 
 extern f32 D_80036050;
