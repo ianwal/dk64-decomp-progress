@@ -38,6 +38,7 @@ void func_8065CDA0(u8 arg0) {
     D_807F7F00 = arg0;
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065CDB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_8065CE4C.s")

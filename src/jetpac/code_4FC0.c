@@ -117,7 +117,17 @@ s32 func_80028CF8(f32, f32, f32, f32, s32);
 s32 func_80029064(void *);
 void func_800294EC(void *, s32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80028FC0.s")
+void *func_80028FC0(void) {
+    s32 i;
+    JetpacStruct *temp = &D_8002F1DC[0];
+    for (i = 0; i < 6; i++) {
+        if (temp->unk14 == 0) {
+            return temp;
+        }
+        temp++;
+    }
+    return NULL;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_80029064.s")
 

@@ -133,7 +133,7 @@ s32 func_80677148(Actor *arg0, Actor *arg1) {
     f32 var_f2;
     s16 temp_v0_2;
     s32 var_s1;
-    void *temp_s0;
+    LedgeInfo *temp_s0;
     Struct807FB5D8 *temp_v0;
 
     sp15F = 0;
@@ -232,6 +232,25 @@ block_26:
 
 // guMtxL2F, memcpy, object_timer, struct->unk88
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_8067760C.s")
+
+/*
+void func_8067760C(LedgeInfo *arg0, f32 (*arg1)[4], s8 arg2) {
+    u8 var_v0;
+    LedgeInfo74 *temp;
+
+    if (object_timer == arg0->unk88) {
+        var_v0 = D_807444FC;
+    } else {
+        var_v0 = (D_807444FC ^ 1);
+    }
+    if (arg2 == -1) {
+        memcpy(arg1, arg0->unk70, 0x40);
+        return;
+    }
+    temp = &arg0->unk74[var_v0]->unk0;
+    guMtxL2F(arg1, temp->unk0[arg2]);
+}
+*/
 
 // Bleh matrix nonsense
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_806776A0.s")

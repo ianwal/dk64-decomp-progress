@@ -153,15 +153,19 @@ void func_8002BCD4(Actor *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002BDDC.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002BEE8.s")
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002C14C.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002C2E8.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002C63C.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002C76C.s")
 
 s32 func_8002C14C(s32, void *);
@@ -198,6 +202,7 @@ s32 func_8002CAC8(s32 arg0, Actor *arg1, RaceAdditionalActorData *arg2) {
     return arg0;
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002CBEC.s")
 
 void func_8002CFF0(void) {

@@ -2330,6 +2330,7 @@ void func_8071F2F8(Struct80717D84 *arg0, s32 arg1) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F3C0.s")
 
 extern f64 D_8075EAD0;

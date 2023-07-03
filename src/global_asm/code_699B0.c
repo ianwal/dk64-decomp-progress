@@ -831,7 +831,50 @@ u8 func_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806672B8.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066785C.s")
+
+/*
+extern f64 D_80758F18;
+extern f64 D_80758F20;
+extern f64 D_80758F28;
+extern f64 D_80758F30;
+
+f32 func_8066785C(void *arg0, f32 arg1, f32 arg2) {
+    f64 temp_f0;
+    f64 temp_f12;
+    f64 temp_f16;
+    f64 temp_f18;
+    f64 temp_f20;
+    f64 temp_f22;
+    f64 temp_f24;
+    f64 temp_f2;
+    f64 temp_f2_2;
+    s16 temp_a1;
+    s16 temp_a2;
+    s16 temp_a3;
+    s16 temp_t0;
+    s16 temp_v0;
+    s16 temp_v1;
+
+    temp_a2 = arg0->unk8;
+    temp_a1 = arg0->unk6;
+    temp_v1 = arg0->unk2;
+    temp_v0 = arg0->unk0;
+    temp_a3 = arg0->unkC;
+    temp_f18 = temp_a1 - temp_a2;
+    temp_t0 = arg0->unkE;
+    temp_f16 = temp_v0 - temp_v1;
+    temp_f2_2 = temp_a3 - arg0->unk10;
+    temp_f0 = temp_a3 - temp_t0;
+    temp_f22 = temp_a1 - arg0->unkA;
+    temp_f20 = temp_v0 - arg0->unk4;
+    temp_f24 = (temp_f18 * temp_f2_2) - (temp_f0 * temp_f22);
+    temp_f12 = (temp_f0 * temp_f20) - (temp_f16 * temp_f2_2);
+    temp_f2 = (temp_f16 * temp_f22) - (temp_f18 * temp_f20);
+    return (D_80758F28 * (0.0 - (((arg1 * temp_f24) + (temp_f12 * D_80758F18) + (temp_f2 * arg2) + -((temp_t0 * temp_f2) + ((temp_f24 * temp_v1) + (temp_f12 * temp_a2)))) / (temp_f12 * *0x80758F20)))) - D_80758F30;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806679BC.s")
 
@@ -944,6 +987,8 @@ void func_806686F4(s32 arg0) {
     D_807F9514[arg0].unk8 = object_timer;
 }
 
+void func_806688B8(s32 arg0);
+
 void func_806687E0(void) {
     s32 i;
 
@@ -961,8 +1006,21 @@ void func_806687E0(void) {
     }
 }
 
-// Surprisingly tricky, small struct loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806688B8.s")
+void func_806688B8(s32 arg0) {
+    s32 i;
+    FloorTriangle *f1 = D_807F9514[arg0].unk0;
+    FloorTriangle *f2 = D_807F9514[arg0].unk4;
+
+    for (i = 0; i < D_807FBB34; i++) {
+        Actor *actor = D_807FB930[i].unk0;
+        FloorTriangle *actorFloor = actor->unk150;
+        if (!(actor->object_properties_bitfield & 0x2000)) {
+            if (actorFloor >= f1 && f2 >= actorFloor) {
+                actor->unk150 = NULL;
+            }
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066893C.s")
 
@@ -1112,7 +1170,7 @@ u8 func_80668C30(Struct8066893C *arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80668E9C.s")
 
-s32 func_80669930(void*);
+s32 func_80669930(f32[4][4]);
 
 typedef struct {
     f32 unk0;
@@ -1211,6 +1269,30 @@ void func_80669830(s32 arg0, Struct80669830 *arg1, u8 arg2) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669930.s")
+
+/*
+s32 func_80669930(f32 arg0[4][4]) {
+    f32 sp1C;
+    f32 sp14;
+    f32 sp10;
+    f32 sp8;
+    f32 sp4;
+    s32 var_v0;
+    f32 temp_f4;
+
+    var_v0 = 0;
+    sp14 = arg0[0][2] - arg0[0][0];
+    sp8 = arg0[0][1] - arg0[0][0];
+    sp1C = arg0[2][0] - arg0[1][2];
+    sp10 = arg0[0][3] - arg0[1][2];
+    temp_f4 = (sp1C * sp8) - (sp10 * sp14);
+    sp4 = temp_f4;
+    if (temp_f4 <= 0.0) {
+        var_v0 = 1;
+    }
+    return var_v0;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806699C4.s")
 

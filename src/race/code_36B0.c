@@ -55,6 +55,7 @@ typedef struct RaceStruct15 {
     s16 unk0;
     u16 unk2;
 } RaceStruct15;
+
 s32 func_800276B0(s32 arg0, RaceStruct15 *arg1, RaceStruct15 *arg2) {
     s32 var_v0;
     s32 sign;

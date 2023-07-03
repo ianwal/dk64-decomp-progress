@@ -313,6 +313,29 @@ typedef struct {
 
 void func_806C8F8C(Struct806C8F8C_arg0 *arg0);
 
+/*
+void func_806C8E58(s16 arg0) {
+    u8 var_a1;
+    u8 var_v0;
+    u8 *temp_v1;
+    u8 temp_t3;
+
+    temp_v1 = &current_character_index[cc_player_index];
+    var_a1 = 0;
+    var_v0 = 0;
+    *temp_v1 = 0;
+    while (var_a1 == 0) {
+        if (arg0 == D_8075C410[var_v0].unk0) {
+            var_a1 = 1;
+        } else {
+            var_v0++;
+            *temp_v1 = var_v0;
+        }
+    }
+    func_806C8F8C(&D_8075C410[var_v0]);
+}
+*/
+
 void func_806C8EE8(void) {
     current_character_index[cc_player_index]++;
     current_character_index[cc_player_index] %= 8;

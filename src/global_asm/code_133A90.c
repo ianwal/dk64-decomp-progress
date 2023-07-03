@@ -313,7 +313,25 @@ f32 func_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, GlobalASMStruct8
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072FCC4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072FDD4.s")
+// TODO: Any cleanup possible? This is an odd one...
+void func_8072FDD4(GlobalASMStruct82 *arg0, f32 arg1, s8 *arg2, f32 *arg3) {
+    f32 var_f0;
+    u8 i;
+
+    var_f0 = arg1;
+    i = 0;
+    while (TRUE) {
+        arg1 = var_f0;
+        var_f0 -= arg0->unk34[i].unk4;
+        i++;
+        if (!(0.0 < var_f0) || i >= arg0->unk7) {
+            i--;
+            break;
+        }
+    }
+    *arg2 = i;
+    *arg3 = arg1 / arg0->unk34[i].unk4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072FE60.s")
 

@@ -492,9 +492,6 @@ void func_8060DEC8(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_8060E128.s")
-
-/*
 void func_8060E128(s32 arg0) {
     s32 sp2C;
 
@@ -503,9 +500,6 @@ void func_8060E128(s32 arg0) {
         D_807467D0[sp2C]();
     }
 }
-*/
-
-void func_8060E128(void); // forward declaration for function pointer
 
 void func_8060E1A8(void) {
     func_8060B7F0();

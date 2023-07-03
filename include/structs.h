@@ -147,6 +147,10 @@ typedef struct {
     s8 unk2B;
 } LedgeInfoA0;
 
+typedef struct {
+    f32 unk0[1][4][4]; // TODO: How many? At least 2
+} LedgeInfo74;
+
 typedef struct ledge_info {
     s32 unk0;
     s32 unk4;
@@ -185,7 +189,7 @@ typedef struct ledge_info {
     u8 unk6E;
     u8 unk6F;
     u32 unk70;
-    u32 *unk74; // TODO: What is this?
+    LedgeInfo74 (*unk74)[]; // TODO: How many?
     u32 unk78;
     s32 unk7C;
     s32 unk80; // object_timer gets written here

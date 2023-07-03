@@ -210,17 +210,19 @@ void func_8060EC54(s32 arg0) {
 // osCreateThread, osStartThread, function pointer, neat
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060EC80.s")
 
-typedef struct {
-    s32 unk0;
+typedef struct GlobalASMStruct6 GlobalASMStruct6;
+
+struct GlobalASMStruct6 {
+    GlobalASMStruct6 *next;
     s32 unk4;
     s32 unk8;
     s32 unkC;
     s32 unk10;
-} GlobalASMStruct6;
+};
 
 typedef struct {
     u8  pad0[0x260 - 0x0];
-    s32 unk260;
+    GlobalASMStruct6 *unk260;
     s32 unk264;
     s32 unk268;
     GlobalASMStruct6 *unk26C;
@@ -231,14 +233,36 @@ typedef struct {
 void func_8060ED6C(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1, s32 arg2, s32 arg3, s32 arg4) {
     OSIntMask oldInterruptMask = osSetIntMask(OS_IM_NONE);
     arg1->unk4 = arg2;
-    arg1->unk0 = arg0->unk260;
+    arg1->next = arg0->unk260;
     arg0->unk260 = arg1;
     arg1->unk8 = arg3;
     arg1->unkC = arg4;
     osSetIntMask(oldInterruptMask);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060EDD0.s")
+void func_8060EDD0(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
+    GlobalASMStruct6 *current;
+    GlobalASMStruct6 *var_a2;
+    OSIntMask oldInterruptMask;
+
+    current = arg0->unk260;
+    var_a2 = NULL;
+    oldInterruptMask = osSetIntMask(1);
+    while (current != NULL) {
+        if (current == arg1) {
+            if (var_a2 != NULL) {
+                var_a2->next = arg1->next;
+            } else {
+                arg0->unk260 = arg1->next;
+            }
+            break;
+        } else {
+            var_a2 = current;
+            current = current->next;
+        }
+    }
+    osSetIntMask(oldInterruptMask);
+}
 
 // TODO: Is this returning &struct->unk58? Likely actor
 s32 func_8060EE58(s32 arg0) {
@@ -286,13 +310,13 @@ void func_8060F928(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
 
     temp_v0 = arg1->unk10;
     if (temp_v0 == 2) {
-        arg0->unk26C->unk0 = arg1;
+        arg0->unk26C->next = arg1;
         arg0->unk26C = arg1;
     } else {
-        arg0->unk270->unk0 = arg1;
+        arg0->unk270->next = arg1;
         arg0->unk270 = arg1;
     }
-    arg1->unk0 = 0;
+    arg1->next = NULL;
     arg1->unk4 = 2;
 }
 

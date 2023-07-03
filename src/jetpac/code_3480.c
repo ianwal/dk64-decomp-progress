@@ -149,32 +149,35 @@ void func_800285DC(void) {
     player->fun_ptr2(&player->next_item_pointer,5);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028634.s")
-
-/*
-// TODO: Pretty close, not sure what's up with the last writes
 void func_80028634(void) {
-    Competitor *temp_v0;
-    f32 var_f18;
-    s32 temp_f16;
     s32 i;
-    s32 max = 0x40;
+    Competitor *temp_v0;
     CompetitorSub14 *temp;
 
     temp_v0 = &D_8002EC30.player[D_8002EC30.player_index];
-    temp_v0->lives_consumed = 8;
     temp = temp_v0->unk14;
-    for (i = 0; i < max; i += 0x10) {
+    temp_v0->lives_consumed = 8;
+    for (i = 0; i < 3; i++, temp++) {
         temp->unk8 = 168.0f;
-        temp->unkC = i + 136.0f;
-        temp++;
+        temp->unkC = (i * 16) + 136.0f;
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_800286D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80028950.s")
+void func_80028950(void) {
+    s32 i;
+    Competitor *temp_v0;
+    CompetitorSub14 *var_v1;
+
+    temp_v0 = &D_8002EC30.player[D_8002EC30.player_index];
+    var_v1 = &temp_v0->unk14[0].unk0;
+    temp_v0->lives_consumed = 2;
+    for (i = 0; i < 3; i++, var_v1++) {
+        var_v1->unk8 = 168.0f;
+        var_v1->unkC = (i * 16) + -8.0f;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_800289EC.s")
 
@@ -190,7 +193,6 @@ typedef struct {
 } Struct8002D1A0;
 
 extern Struct8002D1A0 D_8002D1A0[];
-extern s32 D_8002D1B8;
 
 void func_80028B54(s32 *arg0) {
     s32 i;
@@ -198,24 +200,6 @@ void func_80028B54(s32 *arg0) {
     for (i = 0; i < 6; i++) {
         D_8002D1A0[i].unk0 = D_8002D190[temp % 4];
     }    
-}
-
-void func_80028BD0(JetpacStruct*, s32, s32, s32, u8, u8, u8); 
-
-void func_80028BD0(JetpacStruct *arg0, s32 arg1, s32 arg2, s32 arg3, u8 arg4, u8 arg5, u8 arg6) {
-    arg0->unk30 = arg3;
-    arg0->unk0 = arg1;
-    arg0->unk4 = arg2;
-    arg0->unk8 = 0.0f;
-    arg0->unkC = 0.0f;
-    arg0->unk10 = arg4;
-    arg0->unk11 = arg5;
-    arg0->unk12 = arg6;
-    arg0->unk13 = 0xFF;
-    arg0->unk20 = arg2;
-    arg0->unk1C = arg1;
-    // TODO: Why does this need to be on the same line? Just ido being shite?
-    arg0->unk24 = arg3 * 8 + arg1 + 0x10; arg0->unk28 = arg2 + 0xC;
 }
 
 typedef struct Struct8002EF80 {
@@ -236,6 +220,24 @@ typedef struct Struct8002EF80 {
     s32 unk2C;
     s32 unk30;
 } Struct8002EF80;
+
+void func_80028BD0(Struct8002EF80*, s32, s32, s32, u8, u8, u8); 
+
+void func_80028BD0(Struct8002EF80 *arg0, s32 arg1, s32 arg2, s32 arg3, u8 arg4, u8 arg5, u8 arg6) {
+    arg0->unk30 = arg3;
+    arg0->unk0 = arg1;
+    arg0->unk4 = arg2;
+    arg0->unk8 = 0.0f;
+    arg0->unkC = 0.0f;
+    arg0->unk10 = arg4;
+    arg0->unk11 = arg5;
+    arg0->unk12 = arg6;
+    arg0->unk13 = 0xFF;
+    arg0->unk20 = arg2;
+    arg0->unk1C = arg1;
+    // TODO: Why does this need to be on the same line? Just ido being shite?
+    arg0->unk24 = arg3 * 8 + arg1 + 0x10; arg0->unk28 = arg2 + 0xC;
+}
 
 extern Struct8002EF80 D_8002EF80[4];
 
