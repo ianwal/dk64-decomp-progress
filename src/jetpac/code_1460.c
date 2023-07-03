@@ -57,6 +57,7 @@ void func_80025460(void) {
     }
 }
 
+// TODO: Needs shape on D_8002F3D0->unk60
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_800254B8.s")
 
 void func_800255D4(Gfx **arg0) {

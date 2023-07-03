@@ -127,21 +127,21 @@ extern JetpacPlayerStruct D_8002EC30;
 
 void func_80028544(void) {
     void (*temp_v0)(void *, s32);
-    s32 var_s1;
+    s32 i;
     CompetitorSub14 *var_s0;
     JetpacPlayerStruct* player;
 
     player = &D_8002EC30.player[D_8002EC30.player_index];
     var_s0 = &player->unk14;
-    for (var_s1 = 0; var_s1 < 4; var_s1 ++) {
+    for (i = 0; i < 4; i++) {
         if (var_s0->unk1C >= 2) {
             temp_v0 = var_s0->code;
             if (temp_v0 != NULL) {
-                temp_v0(var_s0, var_s1);
+                temp_v0(var_s0, i);
             }
         }
-        var_s0 += 1;
-    };
+        var_s0++;
+    }
 }
 
 void func_800285DC(void) {

@@ -339,4 +339,5 @@ void func_80029118(void) {
 }
 */
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_800296DC.s")

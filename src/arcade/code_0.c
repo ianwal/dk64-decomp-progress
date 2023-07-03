@@ -284,7 +284,6 @@ void func_80024A50(s32 arg0) {
 }
 #endif
 
-// update saved scores
 #ifndef NONMATCHING
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_80024B04.s")
 #else

@@ -1,9 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern s32 D_8002FC5C[];
-extern s32 D_8002FCAC[];
-
 extern u16 D_80750AC4;
 
 s32 func_8002E8EC(s32, s32, s32);
