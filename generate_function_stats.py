@@ -15,54 +15,114 @@ excludePaths = [
 
 precision = 4
 
-print("file function bytes flags cutscenes cc_array actor getPointerTableFile maps exits D_807FBB70 matrix rand malloc jalratio labelratio floatratio doable regalloc stack")
+standardSearchColumns = {
+    "matrix": [
+        "guMtxIdent",
+        "guMtxIdentF",
+        "guOrtho",
+        "guOrthoF",
+        "guFrustum",
+        "guFrustumF",
+        "guPerspective",
+        "guPerspectiveF",
+        "guLookAt",
+        "guLookAtF",
+        "guLookAtReflect",
+        "guLookAtReflectF",
+        "guLookAtHilite",
+        "guLookAtHiliteF",
+        "guLookAtStereo",
+        "guLookAtStereoF",
+        "guRotate",
+        "guRotateF",
+        "guRotateRPY",
+        "guRotateRPYF",
+        "guAlign",
+        "guAlignF",
+        "guScale",
+        "guScaleF",
+        "guTranslate",
+        "guTranslateF",
+        "guPosition",
+        "guPositionF",
+        "guMtxF2L",
+        "guMtxL2F",
+        "guMtxCatF",
+        "guMtxCatL",
+        "guMtxXFMF",
+        "guMtxXFML",
+    ],
+    "actors": [
+        "current_actor_pointer",
+        "player_pointer",
+        "D_807FBB44",
+        "D_807FBB48",
+        "D_807FBB4C",
+        "D_807FBD6C",
+        "D_807FDC94",
+    ],
+    "rand": [
+        "rand",
+        "func_806119A0",
+    ],
+    "malloc": [
+        "malloc",
+    ],
+    "flags": [
+        "setFlag",
+        "isFlagSet",
+    ],
+    "cutscene": [
+        "playCutscene",
+        "is_cutscene_active",
+    ],
+    "cc": [
+        "character_change_array",
+        "cc_player_index",
+        "cc_number_of_players",
+        "current_character_index",
+    ],
+    "D_807FBB70": [
+        "D_807FBB70",
+    ],
+    "pointerTable": [
+        "getPointerTableFile",
+    ],
+    "map": [
+        "current_map",
+        "next_map",
+    ],
+    "exit": [
+        "current_exit",
+        "next_exit",
+    ],
+    "floats": [
+        " mtc1 ", " mfc1 ",
+        " lwc1 ", " ldc1 ",
+        " swc1 ", " sdc1 ",
+    ],
+}
 
-matrixFunctions = [
-    "guMtxIdent",
-    "guMtxIdentF",
-    "guOrtho",
-    "guOrthoF",
-    "guFrustum",
-    "guFrustumF",
-    "guPerspective",
-    "guPerspectiveF",
-    "guLookAt",
-    "guLookAtF",
-    "guLookAtReflect",
-    "guLookAtReflectF",
-    "guLookAtHilite",
-    "guLookAtHiliteF",
-    "guLookAtStereo",
-    "guLookAtStereoF",
-    "guRotate",
-    "guRotateF",
-    "guRotateRPY",
-    "guRotateRPYF",
-    "guAlign",
-    "guAlignF",
-    "guScale",
-    "guScaleF",
-    "guTranslate",
-    "guTranslateF",
-    "guPosition",
-    "guPositionF",
-    "guMtxF2L",
-    "guMtxL2F",
-    "guMtxCatF",
-    "guMtxCatL",
-    "guMtxXFMF",
-    "guMtxXFML",
-]
+# Print CSV header
+print(
+    "file",
+    "function",
+    "bytes",
+    end=" "
+)
 
-actors = [
-    "current_actor_pointer",
-    "player_pointer",
-    "D_807FBB44",
-    "D_807FBB48",
-    "D_807FBB4C",
-    "D_807FBD6C",
-    "D_807FDC94"
-]
+# For each column, print the value
+for column in standardSearchColumns:
+    print(column, end=" ")
+
+print(
+    "jalratio",
+    "labelratio",
+    "floatratio",
+    "doable",
+    "regalloc",
+    "stack",
+)
 
 for root, dirs, files in os.walk(searchPath):
     for file in files:
@@ -97,84 +157,49 @@ for root, dirs, files in os.walk(searchPath):
                             # Parse ASM and compute row for function
                             ASMFile = line.replace("#pragma GLOBAL_ASM(\"", "").replace("\")\n", "")
                             with open(ASMFile, "r") as fh_asm:
+                                # Reset function stats
                                 size = 0
                                 jals = 0
-                                setFlagCount = 0
-                                isFlagSet = 0
-                                cutscene = 0
-                                current_actor_pointer = 0
-                                getPointerTableFile = 0
                                 labels = 0
-                                floats = 0
-                                maps = 0
-                                exits = 0
-                                d_807FBB70 = 0
-                                cc_array = 0
-                                matrixFunctionCount = 0
-                                rand = 0
-                                malloc = 0
+                                columns = {}
+                                for column in standardSearchColumns:
+                                    columns[column] = 0
+
                                 for line in fh_asm:
                                     if "// " in line:
                                         if "Jumptable" in line:
                                             jumptable = True
                                         if "Displaylist stuff" in line:
                                             displaylist = True
-                                    matrixFunctionCount += sum(matrixFunction in line for matrixFunction in matrixFunctions)
-                                    current_actor_pointer += sum(actor in line for actor in actors)
-                                    if "rand" in line:
-                                        rand += 1
-                                    if "malloc" in line:
-                                        malloc += 1
+                                    for column in standardSearchColumns:
+                                        columns[column] += sum(searchTerm in line for searchTerm in standardSearchColumns[column])
                                     if "jal" in line:
                                         jals += 1
-                                    if "setFlag" in line:
-                                        setFlagCount += 1
-                                    if "isFlagSet" in line:
-                                        isFlagSet += 1
-                                    if "playCutscene" in line or "is_cutscene_active" in line:
-                                        cutscene += 1
-                                    if "character_change_array" in line or "cc_player_index" in line or "cc_number_of_players" in line or "current_character_index" in line:
-                                        cc_array += 1
-                                    if "D_807FBB70" in line:
-                                        d_807FBB70 += 1
-                                    if "getPointerTableFile" in line:
-                                        getPointerTableFile += 1
-                                    if "current_map" in line or "next_map" in line:
-                                        maps += 1
-                                    if "current_exit" in line or "next_exit" in line:
-                                        exits += 1
                                     if line.startswith("/* "):
                                         size += 4
                                     if line.startswith(".L80"):
                                         labels += 1
-                                    if " mtc1 " in line or " mfc1 " in line:
-                                        floats += 1
-                                    if " lwc1 " in line or " ldc1 " in line:
-                                        floats += 1
-                                    if " swc1 " in line or " sdc1 " in line:
-                                        floats += 1
 
                                 ASMFilePath = ASMFile.split("/")
-                                print(ASMFile.replace(ASMFilePath[-1], ""),
+
+                                print(
+                                    ASMFile.replace(ASMFilePath[-1], ""),
                                     ASMFilePath[-1].replace(".s", ""),
                                     size,
-                                    setFlagCount + isFlagSet,
-                                    cutscene,
-                                    cc_array,
-                                    current_actor_pointer,
-                                    getPointerTableFile,
-                                    maps,
-                                    exits,
-                                    d_807FBB70,
-                                    matrixFunctionCount,
-                                    rand,
-                                    malloc,
+                                    end=" ")
+
+                                # For each column, print the value
+                                for column in columns:
+                                    print(columns[column], end=" ")
+
+                                print(
                                     round(jals / size, precision),
                                     round(labels / size, precision),
-                                    round(floats / size, precision),
+                                    round(columns["floats"] / size, precision),
                                     "True" if doable else "-",
                                     "True" if regalloc else "-",
-                                    "True" if stack else "-")
+                                    "True" if stack else "-"
+                                )
                         continue
 
                     jumptable = False
