@@ -913,6 +913,7 @@ void func_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A09C.s")
 
 typedef struct Struct8067A09C Struct8067A09C;
@@ -929,7 +930,6 @@ struct Struct8067A09C {
 };
 
 /*
-// TODO: Regalloc
 Struct8067A09C *func_8067A09C(Struct8067A09C *arg0) {
     s32 var_a1;
     Struct8067A09C *temp_a2;

@@ -804,7 +804,7 @@ void func_8002F6C8(Actor *arg0, s32 arg1) {
     }
 }
 
-// Negative struct offset nonsense
+// Doable, unrolled loop
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002F75C.s")
 
 extern f32 D_80033D44;

@@ -1900,7 +1900,7 @@ us,.code,func_80689064,176,yes
 us,.code,n_alInit,108,yes
 us,.code,func_80679064,144,yes
 us,.code,func_806FA9C0,352,no
-us,.code,func_806EA568,100,no
+us,.code,func_806EA568,100,yes
 us,.code,func_806B4194,276,yes
 us,.code,func_806B8BDC,156,yes
 us,.code,func_806D80A8,608,yes
@@ -3162,7 +3162,7 @@ us,.code,func_807197B4,600,no
 us,.code,func_8068A164,84,yes
 us,.code,func_806BCF98,252,no
 us,.code,func_806FFF5C,44,yes
-us,.code,func_806A0330,676,no
+us,.code,func_806A0330,676,yes
 us,.code,func_8069A7C8,940,no
 us,.code,func_8071F3C0,132,no
 us,.code,func_8064C708,268,yes

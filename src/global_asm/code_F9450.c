@@ -478,6 +478,7 @@ s32 func_806F70A8(s16 arg0) {
     return FALSE;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F70FC.s")
 
 extern f64 D_8075D950;

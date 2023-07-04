@@ -8002,19 +8002,12 @@ void func_806EA460(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806EA568.s")
-
-/*
-// TODO: Regalloc
 void func_806EA568(void) {
-    // TODO: Switch case?
-    // TODO: Bitfield syntax?
-    if (((D_807FD610[cc_player_index].unk2A & (L_CBUTTONS | R_CBUTTONS)) != L_CBUTTONS)
-    && ((D_807FD610[cc_player_index].unk2A & (L_CBUTTONS | R_CBUTTONS)) != R_CBUTTONS)) {
+    u16 temp = D_807FD610[cc_player_index].unk2A & (L_CBUTTONS | R_CBUTTONS);
+    if (temp != L_CBUTTONS && temp != R_CBUTTONS) {
         func_80605314(current_actor_pointer, 0);
     }
 }
-*/
 
 void func_806EA5CC(void) {
     if (func_806E9580()) {

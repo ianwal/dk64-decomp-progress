@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FD8E0.s")
 
 s32 func_806FBD5C(s16, void*);
@@ -8,7 +9,6 @@ void *func_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5)
 extern s16 D_80744490;
 
 /*
-// TODO: Small regalloc
 void func_806FD8E0(void *arg0, s16 arg1, void *arg2, s16 arg3, u8 arg4) {
     func_806FC530(arg0, arg1, (D_80744490 - func_806FBD5C(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
 }
@@ -324,10 +324,10 @@ void func_80704130(Struct80704130 *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80704298.s")
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80704444.s")
 
 /*
-// TODO: Regalloc
 typedef struct {
     s16 unk0;
     s16 unk2;

@@ -423,10 +423,10 @@ void func_80716FB4(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk32C = 2;
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80717100.s")
 
 /*
-// TODO: Regalloc
 void func_80717100(Struct80717D84 *arg0, s32 arg1) {
     Struct80717D84_unk384_80717100 *var_v1;
 
@@ -1097,6 +1097,7 @@ void func_8071A038(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk32C = 3;
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071A1E4.s")
 
 extern f64 D_8075E8F0;
@@ -1108,7 +1109,6 @@ typedef struct {
 } Struct80717D84_unk384_8071A1E4;
 
 /*
-// TODO: Regalloc
 void func_8071A1E4(Struct80717D84 *arg0, s32 arg1) {
     Struct80717D84_unk384_8071A1E4 *var_v0;
     s32 pad;
@@ -2030,6 +2030,7 @@ void func_8071E1C8(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
+// rodata, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071E3EC.s")
 
 extern f64 D_8075EA58;
@@ -2038,7 +2039,6 @@ extern f32 D_8075EA68;
 extern f32 D_8075EA6C;
 
 /*
-// TODO: Float regalloc
 void func_8071E3EC(Struct80717D84 *arg0, s8 *arg1) {
     f32 *var_v1;
     f32 temp_f0;
@@ -2330,13 +2330,12 @@ void func_8071F2F8(Struct80717D84 *arg0, s32 arg1) {
     }
 }
 
-// rodata
+// rodata, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F3C0.s")
 
 extern f64 D_8075EAD0;
 
 /*
-// TODO: Minor float regalloc
 void func_8071F3C0(Struct80717D84 *arg0, s32 arg1) {
     f32 *var_v1;
 

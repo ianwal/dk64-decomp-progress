@@ -45,6 +45,7 @@ int func_8069E660(Actor *arg0, f32 arg1, f32 arg2) {
 // Jumptable, a fun one though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_8069E724.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_8069E774.s")
 
 extern u8 D_80750AB8;
@@ -83,8 +84,9 @@ void func_8069E774(void) {
     AAD_8069E774 *var_t0;
     s32 playerIndex;
     Actor *player;
-    PlayerAdditionalActorData *pad;
+    u8 max;
     s32 sp60;
+    PlayerAdditionalActorData *pad;
 
     sp8E = 300;
     sp87 = 0;
@@ -160,9 +162,7 @@ void func_8069E774(void) {
     current_actor_pointer->animation_state->scale_y += (D_8075A4A0 * func_80612794(current_actor_pointer->unkEE));
     current_actor_pointer->unkEE += 0x1F4;
     current_actor_pointer->y_rotation += 0x32;
-    current_actor_pointer->control_state += 1;
-    // ./diff.sh 0xA3800
-    // TODO: v0 v1 regalloc here
+    current_actor_pointer->control_state++;
     if (current_actor_pointer->control_state == current_actor_pointer->unk168) {
         func_80688460(current_actor_pointer, 0, 0);
     } else if (current_actor_pointer->unk168 < current_actor_pointer->control_state) {
@@ -178,16 +178,17 @@ void func_8069E774(void) {
     func_806595F0(1);
     func_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 0, 0, current_actor_pointer->animation_state->scale_x * sp8E * var_t0->unk0, 0, var_t0->unk10, var_t0->unk11, var_t0->unk12);
     if (current_map != MAP_DK_RAP) {
-        if ((sp7F == 0) || (current_actor_pointer->unk15F != 0)) {
+        if ((!sp7F) || (current_actor_pointer->unk15F != 0)) {
             sp60 = 0x2E;
             if (func_80714608(0) != 0) {
                 sp60 = 0xE;
             }
             sp88 = current_actor_pointer->animation_state->scale_x * sp8E;
             sp88 *= sp88;
+            // max = cc_number_of_players;
             for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
                 player = character_change_array[playerIndex].player_pointer;
-                if ((sp7F == 0) || ((playerIndex != PaaD->unk1A4) && (player->control_state != 0x84))) {
+                if ((!sp7F) || ((playerIndex != PaaD->unk1A4) && (player->control_state != 0x84))) {
                     if (func_8069E660(player, player->unk15E, sp88) != 0) {
                         func_806EB0C0(sp60, current_actor_pointer, playerIndex);
                     }
@@ -466,23 +467,22 @@ void func_806A0310(void) {
     func_806A018C();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_806A0330.s")
-
 extern f32 D_80750398;
 extern f32 D_8075A504;
 extern f32 D_8075A508;
 extern u8 D_807FBD70;
-extern s32 D_8071BB14;
 extern s32 D_80720BE8;
 
 void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
-/*
+int func_8071BB14();
+
 void func_806A0330(void) {
+    s32 pad[8];
+    s32 i;
     f32 sp68;
     f32 sp64;
     f32 sp60;
-    s32 var_s0;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->noclip_byte = 0x1C;
@@ -509,21 +509,18 @@ void func_806A0330(void) {
     if ((D_807FBD70 == 4) || (current_actor_pointer->unkFC != 0) || ((current_actor_pointer->unk6A & 1) && !(current_actor_pointer->unk6C & 1))) {
         func_8061F0B0(D_807F5D10, 0xF, 0xF);
         func_80608528(current_actor_pointer, 0x162, 0xE1, 0x3C, 1);
-        var_s0 = 1;
-        do {
-            func_80671C0C(current_actor_pointer, var_s0, &sp68, &sp64, &sp60);
-            func_8071496C(var_s0);
+        for (i = 1; i < 7; i++) {
+            func_80671C0C(current_actor_pointer, i, &sp68, &sp64, &sp60);
+            func_8071496C(i);
             func_807149B8(1);
-            func_8071498C(&D_8071BB14);
+            func_8071498C(&func_8071BB14);
             func_807149C8(0xFF, 0xFF, 0xFF, 0x96);
             func_80714CC0(&D_80720BE8, 1.5f, sp68, sp64, sp60);
-            var_s0 += 1;
-        } while (var_s0 != 7);
+        }
         func_806782C0(current_actor_pointer);
     }
-    func_806319C4(current_actor_pointer, 0, current_actor_pointer);
+    func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_806A05D4(void) {
     func_806319C4(current_actor_pointer, 0);

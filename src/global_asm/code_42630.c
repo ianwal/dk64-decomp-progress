@@ -1778,10 +1778,10 @@ void func_8064B150(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s16 arg3) {
     arg0->unk14[arg2] = arg0->unk14[arg2] + arg0->unk14[arg3];
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B190.s")
 
 /*
-// TODO: Float regalloc
 void func_8064B190(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s16 arg3) {
     f32 temp = -10.0 - arg0->unk14[arg2];
     arg0->unk14[arg3] = -1.0 * (f32)(temp / -10.0);
@@ -1858,6 +1858,7 @@ void func_8064B370(GlobalASMStruct86 **arg0, s32 arg1, s32 arg2, s32 arg3) {
     D_807F6238 = temp_v0->unk24;
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B3F8.s")
 
 typedef struct {
@@ -1872,7 +1873,6 @@ typedef struct {
 } Struct8064B3F8;
 
 /*
-// TODO: v1 a0 regalloc
 void func_8064B3F8(Struct8064B3F8 **arg0, s16 arg1, s16 arg2, s16 arg3) {
     Struct8064B3F8 *temp_t0;
     Struct8064B3F8 *temp_a0;
@@ -1897,13 +1897,13 @@ void func_8064B4AC(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_806335B0(D_807F6240[arg2], 1, arg3, &D_807F621C, &D_807F6220, &D_807F6224);
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B514.s")
 
 /*
 void func_806FAC64(u8);
 void func_806F8D58(s32, s32);
 
-// TODO: Regalloc, using t6 instead of t8
 void func_8064B514(u8 arg0, u8 arg1, u8 arg2, s16 arg3) {
     func_806FAC64(arg2);
     if (arg3) {
@@ -1963,10 +1963,10 @@ void func_8064B5A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B798.s")
 
 /*
-// TODO: Regalloc (t7 t8 t9)
 void func_8064B798(s32 arg0, s32 arg1, u8 arg2, s32 arg3) {
     PlayerAdditionalActorData *temp_v0 = character_change_array[0].player_pointer->PaaD;
     temp_v0->unk1FC = arg2;
@@ -2140,6 +2140,7 @@ s32 func_8064BF58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return FALSE;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064BFD0.s")
 
 extern f64 D_80758AC0;

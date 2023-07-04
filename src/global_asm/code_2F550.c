@@ -961,6 +961,7 @@ f32 func_8062E040(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, f3
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E1F8.s")
 
 void func_8062E3B4(f32 *, f32 *, s32, s32 *, s32, f64, s32);
@@ -986,7 +987,6 @@ typedef struct {
 } Struct8062E1F8;
 
 /*
-// TODO: Regalloc... t6 t7 t8
 s32 func_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, Struct8062E1F8 *arg7) {
     Struct8062E1F8 *temp_a0;
     s32 pad[1];

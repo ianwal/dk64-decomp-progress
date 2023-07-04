@@ -15,9 +15,9 @@ void func_80027840(Struct80027840 *arg0) {
     D_807FDC9C->unk11 = arg0->unk0;
     D_807FDC98->unk20 = malloc(arg0->unk0 * sizeof(Struct80027840));
     var_v1 = D_807FDC98->unk20;
-    for (i = 0; i < arg0->unk0; i++) {
-        var_v1[i].unk0 = arg0[i].unk1;
-        var_v1[i].unk1 = 0;
+    for (i = 0; i < arg0->unk0; i++, var_v1++) {
+        var_v1->unk0 = arg0[i].unk1;
+        var_v1->unk1 = 0;
     }
 }
 */

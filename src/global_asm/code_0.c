@@ -1,63 +1,62 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-extern s32 *D_8076A080;
-extern s32 D_807FF100;
+extern s32 D_8000DDCC;
 extern s32 D_8000DDE4;
-extern s32 D_8076A084;
-extern u8 D_807467CC;
-extern u8 D_8076A0B2;
-extern Mtx D_80769018;
-extern u16 D_8076A09C;
+
+extern u8 D_8074447C;
+extern u8 D_80744480;
+extern u8 D_80744484;
+extern u8 D_80744488;
 extern f32 D_807444B8;
 extern f32 D_807444BC;
 extern f32 D_807444C4;
 extern f32 D_807444C8;
+extern u8 D_807444F8;
+extern u8 D_80744500;
+extern u8 D_8074450C;
+extern u8 D_80745BDC[]; // Might be a struct array
+
+extern s32 *D_8076A080;
+extern s32 D_8076A084;
+extern u8 D_807467CC;
+extern u8 D_8076A0B2;
+extern Mtx D_80769018;
+extern s32 D_8076A090;
+extern s32 D_8076A094;
+extern s32 D_8076A098;
+extern u16 D_8076A09C;
 extern u8 D_8076A0B1; // map_state
 extern u8 D_8076A0B3; // cutscene_bar_state
 
 extern u8 D_80746830;
-extern s32 D_8076A090;
-extern s32 D_8076A094;
-extern s32 D_8076A098;
-extern u16 D_80750AC4;
-extern u8 D_8076A0A4;
-extern s32 D_8076A068;
-extern u16 *D_807ECDF4;
-extern s32 D_8076A06C;
-extern u8 D_80744500;
+
 extern u8 D_80750AC0; // number_of_players?
-extern s32 D_807F6010;
-extern s32 *D_8076A0A0;
-extern s16 D_8076A0AA;
-extern s32 next_exit;
-extern u8 D_807F6008;
-extern u8 D_80745BDC[]; // Might be a struct array
+extern u16 D_80750AC4;
+
 extern f32 D_807565D8;
-extern f32 D_807FD888; // loading_zone_fadeout_progress
-extern f32 loading_zone_transition_speed;
-extern u8 D_807444F8;
-extern u8 loading_zone_transition_type;
 
 extern Mtx D_80767E68;
 extern Mtx D_80767CE8;
 extern Mtx D_80768E98;
 
-f32 func_8062A850(void);
-void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
-void func_8060AA04();
-void func_80631B80();
-void func_806C9AE0();
-void func_80731030(); // clearTemporaryFlags()
-void func_805FF118();
-void func_8063DB0C();
+extern s32 D_8076A058;
+extern s32 D_8076A068;
+extern s32 D_8076A06C;
+extern s32 *D_8076A0A0;
+extern u8 D_8076A0A4;
+extern s16 D_8076A0AA;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FB300.s")
+extern u16 *D_807ECDF4;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FB5C4.s")
+extern s32 D_807FF100;
+extern u8 D_807F6008;
+extern s32 D_807F6010;
+extern s32 next_exit;
+extern f32 D_807FD888; // loading_zone_fadeout_progress
+extern f32 loading_zone_transition_speed;
+extern u8 loading_zone_transition_type;
 
-extern s32 D_8000DDCC;
 extern OSIoMesg D_807ECE00;
 extern OSMesgQueue D_807655F0;
 extern OSMesg D_80765608;
@@ -68,10 +67,91 @@ extern OSMesg D_807656E8;
 extern OSMesgQueue D_807659E8;
 extern OSMesg D_80765A00;
 
-extern OSMesg D_8076A128;
 extern OSMesg D_8076A108;
-
+extern OSMesg D_8076A128;
 extern OSTimer D_8076A130;
+
+/* rom */
+extern Gfx **D_1000020;
+extern Gfx **D_1000030;
+extern Gfx **D_1000068;
+extern Gfx **D_1000040;
+
+f32 func_8062A850(void);
+void func_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
+void func_8060AA04();
+void func_80631B80();
+void func_806C9AE0();
+void func_80731030(); // clearTemporaryFlags()
+void func_805FF118();
+void func_8063DB0C();
+
+void func_80712A40(void);
+void func_80605510(void);
+void func_8068C080(void);
+void func_8070F570(void);
+void func_80600950(void);
+
+void func_8060A4D0(s32 arg0, f32 arg1);
+
+void func_8066ADA0(void);
+void func_806FBB58(void);
+void func_806FD9A0(void);
+
+void func_80705B30();
+void func_807215EC();
+void func_8072ED90();
+void func_80658BD0();
+
+void func_80630300();
+void func_80650E20(s32* arg0);
+void func_8062F050(s32* arg0);
+void func_8065D170();
+void func_806588E0(s32 arg0);
+void func_80688940();
+void func_80631C3C();
+void func_8063643C();
+
+void func_806C7C10(void);
+void func_806D0430(f32 arg0);
+void func_805FE544(u8 arg0);
+
+void func_80631FAC(Maps arg0, s32 arg1);
+void func_806886E0(s32* arg0, s32 arg1, s32 arg2);
+void func_80663DA0();
+void func_8065A570();
+void func_80677D80();
+void func_8068A7B0();
+
+void func_80626264(void*);
+void func_80712B80();
+void func_806C7D40(s32 arg0);
+void func_80714670();
+
+void func_80724C78(void* arg0);
+void func_8061EA78();
+void func_806F4778();
+void func_8070E8C8();
+void func_8060098C(s32 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
+
+void func_80026FD0(s32 arg0);
+void func_8002EC08(s32 arg0);
+
+void func_8066BDE0(void);
+
+void func_80701C90(void);
+void func_80629190(void);
+void func_80600590(s32 arg0);
+
+void func_806641A0();
+
+void func_80712BD4();
+void func_805FF670();
+void func_805FB944(s32);
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FB300.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FB5C4.s")
 
 void func_805FB750(s32 arg0, s32 arg1, void* arg2) {
     s32 sp2C;
@@ -428,6 +508,7 @@ void func_805FC2B0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FC668.s")
 
+// regalloc, rodata?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FC98C.s")
 
 u64 func_80005818(u64, u64);
@@ -437,7 +518,6 @@ extern OSTime D_807445C0;
 extern u32 D_80750AB0;
 
 /*
-// TODO: Regalloc t0 t1
 s32 func_805FC98C(void) {
     OSTime sp18;
     OSTime temp_t8;
@@ -458,14 +538,6 @@ u8 func_805FCA64(void) { // getCutsceneBarState()
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FCA94.s")
-
-extern u8 D_8074450C;
-
-/* rom */
-extern Gfx **D_1000020;
-extern Gfx **D_1000030;
-extern Gfx **D_1000068;
-extern Gfx **D_1000040;
 
 void *func_805FCFD8(Gfx *arg0) {
     if (D_8074450C == 2) {
@@ -494,8 +566,6 @@ void *func_805FD030(Gfx *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE4D4.s")
 
-extern s32 D_8076A058;
-
 void func_805FE544(u8 arg0) {
     if (D_807FBB64 & 1) {
         D_8076A058 = 6000;
@@ -516,69 +586,6 @@ void func_805FE544(u8 arg0) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE7B4.s")
-
-void func_80712A40(void);
-void func_80605510(void);
-void func_8068C080(void);
-void func_8070F570(void);
-void func_80600950(void);
-
-void func_8060A4D0(s32 arg0, f32 arg1);
-
-void func_8066ADA0(void);
-void func_806FBB58(void);
-void func_806FD9A0(void);
-
-void func_80705B30();
-void func_807215EC();
-void func_8072ED90();
-void func_80658BD0();
-
-void func_80630300();
-void func_80650E20(s32* arg0);
-void func_8062F050(s32* arg0);
-void func_8065D170();
-void func_806588E0(s32 arg0);
-void func_80688940();
-void func_80631C3C();
-void func_8063643C();
-
-void func_806C7C10(void);
-void func_806D0430(f32 arg0);
-void func_805FE544(u8 arg0);
-
-void func_80631FAC(Maps arg0, s32 arg1);
-void func_806886E0(s32* arg0, s32 arg1, s32 arg2);
-void func_80663DA0();
-void func_8065A570();
-void func_80677D80();
-void func_8068A7B0();
-
-void func_80626264(void*);
-void func_80712B80();
-void func_806C7D40(s32 arg0);
-void func_80714670();
-
-void func_80724C78(void* arg0);
-void func_8061EA78();
-void func_806F4778();
-void func_8070E8C8();
-void func_8060098C(s32 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
-
-void func_80026FD0(s32 arg0);
-void func_8002EC08(s32 arg0);
-
-void func_8066BDE0(void);
-
-void func_80701C90(void);
-void func_80629190(void);
-void func_80600590(s32 arg0);
-
-void func_806641A0();
-
-void func_80712BD4();
-void func_805FF670();
-void func_805FB944(s32);
 
 void func_805FE7FC(void) {
     s32 *mapGeometry;
@@ -745,11 +752,6 @@ void func_805FE7FC(void) {
     func_80600590(current_map);
     D_80746830 = 0;
 }
-
-extern u8 D_8074447C;
-extern u8 D_80744480;
-extern u8 D_80744484;
-extern u8 D_80744488;
 
 void func_805FEE84(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     D_8074447C = arg0;

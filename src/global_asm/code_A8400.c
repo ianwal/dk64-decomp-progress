@@ -41,7 +41,7 @@ void func_806A3700(s32 arg0, s32 arg1) {
 
 }
 
-// Displaylist and matrix stuff
+// Displaylist stuff (matrix)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A370C.s")
 
 extern f32 D_8075A760;
@@ -92,6 +92,7 @@ void func_806A3DA0(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, AAD_806A4DDC *arg4)
 */
 
 // Matrix stuff
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A3E9C.s")
 
 // Displaylist stuff

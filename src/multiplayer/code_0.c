@@ -271,6 +271,7 @@ void func_80025B48(Struct80025B48 *arg0) {
     }
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80025CE8.s")
 
 void func_80025F84(void) {

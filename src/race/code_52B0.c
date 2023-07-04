@@ -168,6 +168,7 @@ void func_8002B6F4(RaceStruct7 *arg0, s32 arg1) {
     }
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_8002B76C.s")
 
 void func_8002DE78(void *, s32, void *, s32);

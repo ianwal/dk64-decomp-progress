@@ -163,12 +163,12 @@ void func_806508B4(s16 arg0, s16 arg1, s16 arg2) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8065092C.s")
 
 void func_8064FA7C(void*, void*);
 
 /*
-// TODO: Regalloc :(
 void func_8065092C(s16 arg0, s16 arg1) {
     OM2_unk78 *temp_a0;
 

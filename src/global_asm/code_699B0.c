@@ -623,6 +623,7 @@ void func_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666D88.s")
 
 extern f32 D_80752F7C[];
@@ -637,7 +638,6 @@ extern s8 D_807F9464;
 extern s16 D_807FD584;
 
 /*
-// TODO: Regalloc v0 v1 a2
 void func_80666D88(f32 arg0, f32 arg1, u8 arg2, Actor *arg3, u8 arg4) {
     f32 *var_v0;
     f32 *var_v1;
@@ -1294,6 +1294,7 @@ s32 func_80669930(f32 arg0[4][4]) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806699C4.s")
 
 void func_8062FF10(f32 (*)[4], void *);
@@ -1310,7 +1311,6 @@ typedef struct {
 } Struct806699C4;
 
 /*
-// TODO: Regalloc
 void func_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, s8 arg3, f32 arg4, f32 arg5, f32 arg6) {
     u8 pad[0x28];
     f32 spB0[4][4];

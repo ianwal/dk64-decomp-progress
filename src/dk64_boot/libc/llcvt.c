@@ -23,7 +23,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/func_80007788.s")
 
-// Not sure whcih order these are in yet
+// Not sure which order these are in yet
 
 // long long __d_to_ll(double d) {
 //    return d;

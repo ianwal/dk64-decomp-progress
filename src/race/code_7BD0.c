@@ -327,9 +327,38 @@ void func_8002D338(Actor *arg0, RaceStruct0 *arg1) {
 extern f32 D_800300EC;
 extern f32 D_800300F0;
 
-// RaaD->actor30?->Raad->stuff
-// dx dy dz calculation
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002D360.s")
+// Appears to find the closest actor to whatever is passed in
+Actor *func_8002D360(Actor *arg0) {
+    f32 distance;
+    f32 closestDistance;
+    s32 i;
+    RaaD_unk20 *var_a1;
+    RaceAdditionalActorData *RaaD2;
+    RaceAdditionalActorData *RaaD;
+    Actor *examinedActor;
+    Actor *temp;
+    Actor *closestActor;
+
+    closestDistance = D_800300EC;
+    RaaD = arg0->RaaD;
+    temp = RaaD->unk30;
+    RaaD2 = temp->RaaD;
+    closestActor = NULL;
+    var_a1 = RaaD2->unk20;
+    for (i = 0; i < RaaD2->unk1E; i++) {
+        examinedActor = var_a1[i].unk0;
+        if (examinedActor != NULL) {
+            if (examinedActor != arg0) {
+                distance = ((arg0->x_position - examinedActor->x_position) * (arg0->x_position - examinedActor->x_position)) + ((arg0->y_position - examinedActor->y_position) * (arg0->y_position - examinedActor->y_position)) + ((arg0->z_position - examinedActor->z_position) * (arg0->z_position - examinedActor->z_position));
+                if (distance < closestDistance) {
+                    closestActor = examinedActor;
+                    closestDistance = distance;
+                }
+            }
+        }
+    }
+    return closestActor;
+}
 
 void func_8002D40C(void) {
     s32 song;

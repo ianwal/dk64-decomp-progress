@@ -2611,6 +2611,7 @@ void func_8002E158(s32 arg0) {
 }
 #endif
 
+// regalloc, stack, close
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002E3D4.s")
 
 extern f32 D_8004AB24;
@@ -2619,7 +2620,6 @@ extern u8 D_800326B8; // imageData
 extern u8 D_80032900; // imageData
 
 /*
-// TODO: Quite close, regalloc, stack too big, minor issue with loading 2 into register
 void func_8002E3D4(s32 arg0) {
     s32 temp_a2;
     ArcadeStruct1 *temp_v1_3;
@@ -2928,9 +2928,9 @@ void func_8002EEB8(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002F82C.s")
 
 #ifndef NONMATCHING
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002FE28.s")
 #else
-// TODO: Regalloc and some other minor stuff
 void func_8002FE28(s32 arg0) {
     if (arcade_game_state == 0) {
         D_8004BCD0[arg0].unk10 += 1.0f;

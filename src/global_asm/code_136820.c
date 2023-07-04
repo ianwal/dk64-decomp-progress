@@ -49,6 +49,7 @@ void func_80731B60(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80731D20.s")
 
+// regalloc, rodata?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80731E68.s")
 
 extern s32 D_80756360[];
@@ -89,7 +90,6 @@ typedef struct {
 } Struct80731E68;
 
 /*
-// TODO: Regalloc
 void func_80731E68(Struct80731E68 *arg0) {
     s32 *var_s1;
     s32 j;
@@ -137,10 +137,10 @@ s32 func_8073202C(s32 arg0, s32 *arg1, s32 *arg2) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80732064.s")
 
 /*
-// Regalloc
 s32 func_80732064(s32 arg0, s32 *arg1) {
     if ((arg0 & 0xFFFF0000) == 0x27BD0000) {
         *arg1 += (s16)arg0;

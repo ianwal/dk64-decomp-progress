@@ -1,8 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_807094D0.s")
 
 extern u8 D_807444F4;
@@ -13,10 +12,9 @@ extern u8 D_807FD9BD;
 extern s32 D_8076D1F8;
 extern s32 D_807FD9C8;
 
-void func_80737638(s32, s32, s32, s32, f32, s32, s32);
+void func_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
 /*
-// TODO: Regalloc, and last function call is sus
 void func_807094D0(u8 arg0) { // init zipper
     D_807444F4 = is_cutscene_active;
     switch (arg0) {

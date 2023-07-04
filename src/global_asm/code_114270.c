@@ -153,6 +153,7 @@ void func_8070FC40(Struct8070FC40_arg0 *arg0) {
 // Big, need structs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FCCC.s")
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8071006C.s")
 
 typedef struct {
@@ -169,7 +170,6 @@ typedef struct {
 extern f64 D_8075E4E0;
 
 /*
-// TODO: Fiddly float regalloc
 u8 func_8071006C(Struct8071006C_arg0 *arg0) {
     func_8070FA58();
     func_8070FC40(arg0);
@@ -190,6 +190,7 @@ u8 func_8071006C(Struct8071006C_arg0 *arg0) {
 // Need arg0 struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807102AC.s")
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807103E0.s")
 
 extern f64 D_8075E4F0;
@@ -217,7 +218,6 @@ typedef struct {
 } Struct807103E0;
 
 /*
-// TODO: Regalloc
 u8 func_807103E0(Struct807103E0 *arg0) {
     func_8070FA58(arg0); // TODO: Consolidate structs?
     arg0->unk4 += func_80612794(arg0->unk22 * 0.5) * (f32)(arg0->unk28 * D_8075E4F0);
@@ -241,6 +241,7 @@ u8 func_807103E0(Struct807103E0 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80711410.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80711950.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80711BD0.s")
@@ -439,10 +440,10 @@ void func_80712830(Actor *arg0, s32 exit) {
     }
 }
 
+// rodata, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80712944.s")
 
 /*
-// TODO: Regalloc
 void func_80712944(GlobalASMStruct12 *arg0) {
     func_8060AC34(arg0); // wrapper for subdragHookFunction()
     arg0->unk2 &= D_8075530C;

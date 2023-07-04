@@ -330,31 +330,32 @@ void func_80024D48(Gfx **arg0) {
     }
 }
 
+// rodata?
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_80024E70.s")
 
 extern s32 D_80770DF8[];
-extern s32 D_8076D1F8;
+extern void *D_8076D1F8;
 extern s16 D_8002BA52[];
 
-void func_80737638(s32, s16, u16, s32, f32, s32, s32);
 void func_80737924(s32);
+
+void func_80737638(void *arg0, enum sfx_e arg1, u32 arg2, u32 arg3, f32 arg4, u32 arg5, void *arg6);
 
 /*
 // TODO: Pretty close...
 void func_80024E70(s32 arg0) {
-    s32 i;
-    s32 temp_a0;
-
-    if (arg0 < 7) {
-        while (i < 7) {
-            temp_a0 = D_80770DF8[arg0];
-            if (temp_a0 != 0) {
-                func_80737924(temp_a0);
-            }
-            i++;
+    s32 i = arg0;
+    s16 sfx;
+    void* temp;
+    while (i < 7) {
+        if (D_80770DF8[i] != 0) {
+            func_80737924(D_80770DF8[i]);
         }
+        i++;
     }
-    func_80737638(D_8076D1F8, D_8002BA52[arg0], 0x7FFF, 0x3F, 1.0f, 0, &D_80770DF8[arg0]);
+    temp = D_8076D1F8;
+    sfx = D_8002BA52[arg0];
+    func_80737638(temp, sfx, 0x7FFF, 0x3F, 1.0f, 0, &D_80770DF8[arg0]);
 }
 */
 

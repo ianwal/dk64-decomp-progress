@@ -739,6 +739,7 @@ void func_8002AD10(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002AED8.s")
 
+// regalloc, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002B920.s")
 
 extern f32 D_8002DE40;
@@ -771,7 +772,6 @@ typedef struct {
 } AAD_8002B920_2;
 
 /*
-// TODO: Good progress made, our stack is too big and there's some regalloc issues
 void func_8002B920(void) {
     AAD_8002B920 *aaD1;
     AAD_8002B920_2 *aaD2;

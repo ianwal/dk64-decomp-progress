@@ -151,10 +151,10 @@ s32 func_80631D8C(u8 arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80631EB8.s")
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80631F58.s")
 
 /*
-// TODO: Regalloc
 void func_80631F58(s32 *arg0, s32 **arg1, void **arg2) {
     s32 count;
     if (arg0 == NULL) {
@@ -319,10 +319,10 @@ u8 func_80632F74(f32 arg0, f32 arg1, f32 arg2) {
     return 0xF;
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632FCC.s")
 
 /*
-// TODO: Regalloc
 void func_80632FCC(s16 arg0, u8 arg1) {
     s32 pad[5];
     Model2Model54_BC *var_a0_2;
@@ -714,13 +714,14 @@ void func_80635098(Model2Model50_B8 *arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 // Similar to below, loops over DL looking for specific commands (G_SETTIMG (0xFD), G_SETPRIMCOLOR (0xFA))
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635114.s")
 
+// Displaylist stuff, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635214.s")
 
 /*
-// Aooears to find the offset of the first G_ENDDL command in a Display List
-// TODO: Regalloc
+// Appears to find the offset of the first G_ENDDL command in a Display List
 s32 func_80635214(Gfx *arg0) {
     s32 found;
     s32 offset;
@@ -1140,6 +1141,7 @@ void func_806364C4(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806365D0.s")
 
 // Appears to parse a displaylist looking for 0xFD command
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636784.s")
 
 // Object Model 2 Geometry
@@ -1179,6 +1181,7 @@ u8 func_80636A8C(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636AE8.s")
 
 // Appears to parse a displaylist looking for 0xFD commands
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636B50.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636C00.s")

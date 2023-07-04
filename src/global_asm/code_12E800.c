@@ -160,12 +160,12 @@ void func_8072A7DC(void) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072A86C.s")
 
 u8 func_8072AB74(u8 arg0, f32 arg1, f32 arg2, u16 arg3, f32 arg4);
 
 /*
-// TODO: t8 a3 regalloc? Odd one
 void func_8072A86C(s16 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4) {
     current_actor_pointer->y_velocity = func_80612794(current_actor_pointer->unkF0) * -arg3;
     func_8072AB74(arg0, arg1, arg2, (arg4 | 0x1080) & 0xFFFF, current_actor_pointer->unk15E * 0.5);
@@ -361,10 +361,10 @@ void func_8072B330(u16 arg0) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B438.s")
 
 /*
-// TODO: Close, float regalloc
 void func_8072B438(u16 arg0) {
     s32 temp_v1;
     f32 var_f12;
@@ -780,10 +780,10 @@ void func_8072E02C(void) {
     current_actor_pointer->x_rotation += (-current_actor_pointer->x_rotation * D_8075FF38);
 }
 
+// regalloc, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072E0A8.s")
 
 /*
-// Quite close, float regalloc and stack/datatype issues
 u8 func_8072E0A8(s32 arg0, s16 arg1) {
     u8 sp1F;
     f32 dx;
