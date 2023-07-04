@@ -349,10 +349,10 @@ void func_806F6554(u8 arg0, Struct806F6554_arg1 *arg1) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F6644.s")
 
 /*
-// TODO: Regalloc
 s32 func_806F6644(s16 arg0, s32 arg1, u16 arg2) {
     u8 temp_a0;
 

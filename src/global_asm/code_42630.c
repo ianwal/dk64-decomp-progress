@@ -2463,6 +2463,7 @@ void func_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_80650A04(arg1, 1, 0);
 }
 
+// stack, float, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064D978.s")
 
 extern f64 D_80758B50;
@@ -2476,7 +2477,6 @@ typedef struct {
 } Struct8064D978;
 
 /*
-// TODO: Very close, stack and float regalloc issues
 void func_8064D978(Struct8064D978 *arg0, s16 arg1, s16 arg2, s32 arg3) {
     u8 levelIndex;
     s16 sp36;

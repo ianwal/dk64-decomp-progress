@@ -498,13 +498,13 @@ void func_806A5C60(Actor *arg0) {
 }
 */
 
+// rodata, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A5DF0.s")
 
 extern f32 D_8075A9A0;
 extern s32 D_807FBB68;
 
 /*
-// TODO: Close, float regalloc
 void func_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7) {
     f32 var_f0;
     f32 sp2C[8];

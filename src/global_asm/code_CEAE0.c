@@ -1949,13 +1949,13 @@ void func_806D1420(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D1568.s")
 
 void func_806CC638(f32 arg0);
 extern s16 D_80753A78[];
 
 /*
-// TODO: Insanely close, float regalloc
 void func_806D1568(void) {
     f64 temp_f0;
     f64 temp_f2;
@@ -3120,13 +3120,13 @@ void func_806D45A4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D4758.s")
 
 extern f64 D_8075CD18;
 extern f64 D_8075CD20;
 
 /*
-// TODO: Regalloc v0 v1
 void func_806D4758(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -3196,10 +3196,10 @@ void func_806D491C(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D4A70.s")
 
 /*
-// TODO: Regalloc: It's using v0 instead of v1 for PaaD
 void func_806D4A70(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -3350,6 +3350,7 @@ void func_806D57F0(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// rodata, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D5834.s")
 
 extern f64 D_8075CD88;
@@ -3358,7 +3359,6 @@ extern f64 D_8075CD90;
 extern s32 D_80767CC0;
 
 /*
-// TODO: Stupidly close, regalloc v0 v1, temp variable for control state?
 void func_806D5834(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -4425,13 +4425,13 @@ void func_806D9AD4(void) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D9D58.s")
 
 extern f32 D_8075CE88;
 extern f64 D_8075CE80;
 
 /*
-// TODO: Float regalloc
 void func_806D9D58(void) {
     f32 phi_f0;
 
@@ -4493,12 +4493,12 @@ void func_806DA320(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DA3E4.s")
 
 extern f64 D_8075CEB8;
 
 /*
-// TODO: Float regalloc
 void func_806DA3E4(void) {
     f64 temp_f16;
 
@@ -5950,10 +5950,10 @@ void func_806E1A50() {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E1BA4.s")
 
 /*
-// TODO: Regalloc
 void func_806E1BA4(void) {
     if (D_807FD610[cc_player_index].unk2C & A_BUTTON) {
         extra_player_info_pointer->unk58 = D_80767CC0;
@@ -6153,13 +6153,13 @@ void func_806E2FE8(void) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E3040.s")
 
 extern f32 D_8075371C[];
 extern f32 D_8075378C[];
 
 /*
-// TODO: Regalloc, a3 v1
 void func_806E3040(void) {
     if (D_807FD610[cc_player_index].unk2C & A_BUTTON) {
         extra_player_info_pointer->unk58 = D_80767CC0;
@@ -7826,10 +7826,10 @@ void func_806E9B3C(void) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E9BA8.s")
 
 /*
-// TODO: Regalloc
 void func_806E9BA8(s32 arg0) {
     if ((D_807FD610[cc_player_index].unk2C & B_BUTTON) && !(extra_player_info_pointer->unk1F0 & 0x8000) && func_806F8AD4(6, cc_player_index) > 0) {
         playSound(0x263, 0x7FFF, 63.0f, 1.0f, 0xA, 0);

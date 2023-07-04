@@ -33,6 +33,7 @@ void func_8070DA74(Actor*);
 void func_8071586C(Actor*);
 void func_807233B4(Actor*);
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80677D80.s")
 
 typedef struct {
@@ -60,7 +61,6 @@ extern void *D_807FBB5C;
 extern s16 D_807FBFD8;
 
 /*
-// TODO: a1 a2 regalloc
 void func_80677D80(void) {
     u16 i;
 

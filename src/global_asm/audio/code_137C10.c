@@ -19,6 +19,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_80735864.s")
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_80735958.s")
 
 typedef struct {
@@ -41,7 +42,6 @@ typedef struct {
 } Struct80735958;
 
 /*
-// TODO: Float regalloc lol
 void func_80735958(Struct80735958 *arg0, f32 arg1) {
     if (arg0->unk18 != NULL) {
         arg0->unk24 = arg1 * arg0->unk18->unk8;

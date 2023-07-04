@@ -1293,13 +1293,13 @@ void func_8062F318(void) {
     D_807F5FED = 1;
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F328.s")
 
 // extern s32 D_807F5FD0;
 // extern s32 *D_807F5FD4;
 
 /*
-// Regalloc
 void func_8062F328(s32 arg0) {
     s32 temp_a1;
     s32 i;

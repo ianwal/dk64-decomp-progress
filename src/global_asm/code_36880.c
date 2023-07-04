@@ -886,10 +886,10 @@ void func_806357F8(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *ar
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806358E8.s")
 
+// stack, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635EF0.s")
 
 /*
-// TODO: Small stack problem and regalloc
 s32 func_80635EF0(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 arg5, u16 arg6) {
     Actor *temp_a2;
     s32 i;

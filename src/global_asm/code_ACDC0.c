@@ -21,6 +21,7 @@ s32 func_806A80C0(s8 arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A8158.s")
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A9124.s")
 
 extern s32 *D_807FC7E8;
@@ -42,8 +43,6 @@ extern TempStruct807FC7F0 D_807FC7F0;
 extern TempStruct807FC7F8 D_807FC7F8;
 
 /*
-// TODO: Close, doable
-// TODO: Regalloc, something iffy with global_properties_bitfield set
 void func_806A9124(void) {
     s32 temp_t8;
     s32 i;

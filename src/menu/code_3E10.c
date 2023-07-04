@@ -501,10 +501,10 @@ void func_8002AB80(Actor *arg0, s32 arg1) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002ACD4.s")
 
 /*
-// TODO: Very close, regalloc t1 t2 and a li/sb flipped
 s32 func_8002ACD4(s32 arg0) {
     Struct8076A0E8 *temp_a3;
     s32 found;
@@ -535,10 +535,10 @@ s32 func_8002ACD4(s32 arg0) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002AD50.s")
 
 /*
-// TODO: Very close, regalloc t1 t2 and a li/sb flipped
 s32 func_8002AD50(s32 arg0) {
     Struct8076A0E8 *temp_a3;
     s32 var_a2;
@@ -605,6 +605,7 @@ void func_8002C584(Actor *arg0, s32 arg1) {
 // TODO: Huge, very doable, need energy
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002CB18.s")
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002CFA4.s")
 
 extern s16 D_80033670;
@@ -627,7 +628,6 @@ s32 func_80737B58(s32, u16);
 void func_8060A398(s32);
 
 /*
-// TODO: Regalloc v0 v1
 void func_8002CFA4(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
     s8 sp23 = FALSE;
@@ -1034,6 +1034,7 @@ void func_80030A90(Struct80717D84 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8003155C.s")
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_800317E8.s")
 
 f32 func_8000AC60(f32, f32);
@@ -1052,7 +1053,6 @@ typedef struct {
 } Struct800317E8;
 
 /*
-// TODO: Float regalloc
 s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7) {
     f32 temp_f0_2;
     f32 var_f0;

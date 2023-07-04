@@ -378,10 +378,10 @@ void func_80026050(RaceStruct6 *arg0, RaceStruct6 *arg1, s32 arg2) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026098.s")
 
 /*
-// TODO: Float regalloc
 void func_80026098(Struct80026098 *arg0, Struct80026098 *arg1) {
     s16 sp2E;
     s16 pad[2];

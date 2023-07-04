@@ -219,12 +219,12 @@ void func_806115A8(HeapHeader **arg0, HeapHeader *arg1) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_80611614.s")
 
 extern s32 D_807F5A68;
 
 /*
-// TODO: Regalloc, datatypes are sus
 void func_80611614(HeapHeader **arg0) {
     s32 temp_t7;
     s32 i;

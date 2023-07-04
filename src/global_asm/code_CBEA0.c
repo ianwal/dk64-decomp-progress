@@ -106,6 +106,7 @@ void func_806C7268(void) {
 
 }
 
+// stack, float, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CBEA0/func_806C7270.s")
 
 typedef struct {
@@ -136,7 +137,6 @@ extern u8 *D_807FC8F0;
 extern void func_806C75A4(); // TODO: Signature
 
 /*
-// TODO: Quite close, just stack, float nonsense, and a regalloc left
 void func_806C7270(void) {
     f32 temp_f0;
     f32 temp_f12;

@@ -153,13 +153,13 @@ void func_806F149C(Actor *arg0) {
     func_806D0150(arg0);
 }
 
+// regalloc stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F14BC.s")
 
 extern f64 D_8075D6C8;
 extern f32 D_8075D6C4;
 
 /*
-// TODO: Float regalloc, stack too big
 void func_806F14BC(Actor *arg0) {
     s32 temp_v0;
     f32 var_f0;
@@ -215,6 +215,7 @@ s32 func_806F1668(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return phi_f12 + 0.5;
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F1768.s")
 
 extern u16 D_80752F20[];
@@ -231,7 +232,6 @@ typedef struct {
 } Struct806F1858;
 
 /*
-// TOOD: Regalloc v0 v1
 void func_806F1768(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     s32 temp_v1;
     u16 temp_v0;
@@ -257,10 +257,10 @@ void func_806F1768(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F1858.s")
 
 /*
-// TOOD: Regalloc v0 v1
 void func_806F1858(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     s32 temp_v1;
     s32 temp;
@@ -278,10 +278,10 @@ void func_806F1858(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_806F18F4.s")
 
 /*
-// TODO: Regalloc v0 v1
 void func_806F18F4(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     s32 temp_v1;
     s32 temp;

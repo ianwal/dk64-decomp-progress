@@ -62,10 +62,10 @@ typedef struct RaceStruct2 {
 } RaceStruct2;
 extern RaceStruct2 *D_8002FCF0;
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002E960.s")
 
 /*
-// TODO: Regalloc a1 v1
 void *func_8002E960(u8 arg0) {
     if (D_8002FCF0 == NULL || arg0 >= D_8002FCF0->unk0) {
         return NULL;
@@ -74,10 +74,10 @@ void *func_8002E960(u8 arg0) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002E9AC.s")
 
 /*
-// TODO: Regalloc a1 v1, if I make it an arg it causes func_8002F36C and func_8002F420 to not match
 void *func_8002E9AC(u8 arg0) {
     if ((D_8002FCF0 == NULL) || (arg0 >= D_8002FCF0->unk8)) {
         return NULL;
@@ -195,10 +195,10 @@ void func_8002EDD4(Struct8002EDD4_arg0 *arg0) {
     }
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F04C.s")
 
 /*
-// TODO: Float regalloc
 f32 func_8002F04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 phi_f2;
 
