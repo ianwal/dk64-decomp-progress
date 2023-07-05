@@ -505,26 +505,23 @@ void func_8072827C(Struct80755690_unk4 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_80728300.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_8072881C.s")
 
-//s32 func_80688540(Actor*, u8);
-
 /*
-// TODO: Pretty close, might be missing a temp variable?
-// Datatypes could also differ for the & 0x7F function calls
-u8 func_8072881C(s32 arg0, u32 *arg1) {
+u8 func_8072881C(u8 arg0, u32 *arg1) {
     u8 phi_v1 = FALSE;
     if ((arg0 & 0x80)
         || (*arg1 + 50 < object_timer
-            && (((rand() >> 0xF) % 1000) < 0x3C1) == 0
+            && !(((rand() >> 0xF) % 1000) < 0x3C1)
             && !func_80688540(current_actor_pointer, arg0))) {
-        func_80688370(current_actor_pointer, arg0 & 0x7F, 1.0f);
-        func_806883C8(current_actor_pointer, arg0 & 0x7F, 1);
-        func_8068839C(current_actor_pointer, arg0 & 0x7F, 0);
-        func_806884B8(current_actor_pointer, arg0 & 0x7F, 3);
-        func_80688514(current_actor_pointer, arg0 & 0x7F);
-        func_806883F4(current_actor_pointer, arg0 & 0x7F, 0, 0);
-        func_8068842C(current_actor_pointer, arg0 & 0x7F, 2);
+        func_80688370(current_actor_pointer, arg0, 1.0f);
+        func_806883C8(current_actor_pointer, arg0, 1);
+        func_8068839C(current_actor_pointer, arg0, 0);
+        func_806884B8(current_actor_pointer, arg0, 3);
+        func_80688514(current_actor_pointer, arg0);
+        func_806883F4(current_actor_pointer, arg0, 0, 0);
+        func_8068842C(current_actor_pointer, arg0, 2);
         *arg1 = object_timer;
         phi_v1 = TRUE;
     }

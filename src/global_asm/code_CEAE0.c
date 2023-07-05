@@ -1264,7 +1264,7 @@ void func_806CF878(void) {
     }
 }
 
-// Doable
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF918.s")
 
 extern f32 D_8075CC68;
@@ -1272,15 +1272,14 @@ void func_807195D4(void);
 extern s32 D_8071FF40;
 
 /*
-// TODO: Very close now, it's just setting at, s1, s2, s3 in the wrong order
 void func_806CF918(void) {
     s32 i;
     f32 uvar = D_8075CC68;
 
-    for (i = 0; i < 0xC8; i += 0x28) {
+    for (i = 0; i < 5; i++) {
         func_8071498C(&func_807195D4);
         func_807149B8(1);
-        func_80714950(i);
+        func_80714950(i * 0x28);
         func_807149FC(0x45);
         func_80714C08(&D_8071FF40, uvar, current_actor_pointer, 6, 2);
     }
@@ -1949,26 +1948,21 @@ void func_806D1420(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D1568.s")
-
 void func_806CC638(f32 arg0);
 extern s16 D_80753A78[];
 
-/*
 void func_806D1568(void) {
     f64 temp_f0;
     f64 temp_f2;
-    f64 temp;
+    f32 temp;
 
     extra_player_info_pointer->unk24++;
     extra_player_info_pointer->unk2C = D_80753AFC[D_807FD584];
     switch (current_actor_pointer->control_state_progress) {
         case 0:
             func_806DF6D4(0x4C);
-            // TODO: Float regalloc here
-            temp = -current_actor_pointer->y_velocity;
-            current_actor_pointer->y_velocity = func_806CD898(current_actor_pointer->y_velocity, 0.0f, temp * 0.125f);
+            temp = (f64)-current_actor_pointer->y_velocity * 0.125f;
+            current_actor_pointer->y_velocity = func_806CD898(current_actor_pointer->y_velocity, 0.0f, temp);
             if (extra_player_info_pointer->unk24 >= 6) {
                 if ((current_actor_pointer->unkB8 != 0.0f) || (extra_player_info_pointer->unk10 != 0)) {
                     current_actor_pointer->control_state_progress = 3;
@@ -2035,7 +2029,6 @@ void func_806D1568(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_806D19A8(void) {
     current_actor_pointer->y_velocity = func_806CD898(current_actor_pointer->y_velocity, 50.0f, 4.0f);
@@ -2178,21 +2171,23 @@ void func_806D1F28(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// doable, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D205C.s")
 
 typedef struct {
-    s32 unk0;
-    u8 unk4;
+    u16 unk0;
+    u16 unk2;
+    u16 unk4;
 } Struct80750FB0;
 
 extern Struct80750FB0 D_80750FB0;
 
-s32 func_80688D20(s16, s16, s32, s32);
+void func_80688D20(s16, s16, s16, f32);
 
 /*
-// TODO: Very close
 void func_806D205C(void) {
-    s32 sp2C;
+    s16 unk2E;
+    Struct80750FB0 sp2C;
     Struct80750FB0 sp1C;
 
     sp1C = D_80750FB0;
@@ -2209,15 +2204,9 @@ void func_806D205C(void) {
         current_actor_pointer->y_velocity = current_actor_pointer->y_velocity * 0.25;
         func_806CC8F0();
     }
-    if (func_80629148() == 0) {
-        extra_player_info_pointer->unk23C -= 1;
-        if (extra_player_info_pointer->unk23C == 0) {
-            goto block_7;
-        }
-    } else {
-block_7:
+    if (func_80629148() || --extra_player_info_pointer->unk23C == 0) {
         if (gameIsInSnidesBonusGameMode() == FALSE) {
-            func_80688D20(sp2C, func_80600340(&sp1C, 3, &sp2C), 7, 0x40000000);
+            func_80688D20(unk2E, func_80600340(&sp1C, 3, &sp2C.unk4), 7, 2.0f);
         }
         func_805FF898();
         current_actor_pointer->control_state_progress += 1;
@@ -2559,6 +2548,7 @@ void func_806D2DC4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D2E9C.s")
 
 extern f32 D_8075CCF0;
@@ -2570,7 +2560,6 @@ extern f64 D_8075CD00;
 f32 func_806F46B0(s16 arg0);
 
 /*
-// TODO: Doable, close, top matches all good
 void func_806D2E9C(void) {
     f32 temp_f12;
     f32 temp_f12_2;
@@ -4280,6 +4269,7 @@ void func_806D91A4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D9320.s")
 
 void func_806D97A4(void) {
@@ -4371,6 +4361,7 @@ void func_806D9940(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D9AD4.s")
 
 extern s32 D_8071FC8C;
@@ -4378,7 +4369,6 @@ extern s32 D_80717100;
 extern f64 D_8075CE78;
 
 /*
-// TODO: Close, doable
 void func_806D9AD4(void) {
     f32 sp28;
 
@@ -4493,7 +4483,7 @@ void func_806DA320(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-// regalloc
+// regalloc, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DA3E4.s")
 
 extern f64 D_8075CEB8;
@@ -5352,31 +5342,24 @@ void func_806DF44C(Actor* arg0, PlayerAdditionalActorData *arg1, u8 arg2) {
     func_806DF3D0(arg0, arg1, arg2);
 }
 
+// Close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DF494.s")
 
 /*
-// TODO: Fiddly but doable
 void func_806DF494(s16 *arg0, s16 arg1, s16 arg2) {
-    s16 temp_v0;
-    s32 temp2;
-    s32 phi_t0;
     s16 phi_v0;
+    s16 temp2;
 
     arg1 &= 0xFFF;
-    temp_v0 = (arg1 - *arg0);
-    if (temp_v0) {
-        arg2 = ABS(temp_v0);
-        phi_v0 = temp_v0 / arg2;
+    phi_v0 = (arg1 - *arg0);
+    if (phi_v0) {
+        arg2 = ABS(phi_v0);
+        phi_v0 /= arg2;
         if (arg2 >= 0x801) {
             arg2 = 0x1000 - arg2;
             phi_v0 *= -1;
         }
-        if (arg2 > 0) {
-            phi_t0 = arg2;
-        } else {
-            phi_t0 = -arg2;
-        }
-        if (arg2 < phi_t0) {
+        if (arg2 < (ABS(arg2))) {
             *arg0 = arg1;
         } else {
             *arg0 += (phi_v0 * arg2);
@@ -5386,8 +5369,28 @@ void func_806DF494(s16 *arg0, s16 arg1, s16 arg2) {
 }
 */
 
-// Similar to above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DF5A0.s")
+void func_806DF5A0(s16 *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s16 var_v0;
+    s16 var_a2;
+
+    arg1 &= 0xFFF;
+    var_v0 = (arg1 - *arg0);
+    if (var_v0) {
+        var_a2 = ABS(var_v0);
+        var_v0 &= 0xFFF;
+        if (var_a2 >= 0x801) {
+            var_a2 = 0x1000 - var_a2;
+        }
+        if (arg2 >= var_a2) {
+            *arg0 = arg1;
+        } else if (arg3 < var_v0) {
+            *arg0 = *arg0 - arg2;
+        } else {
+            *arg0 = *arg0 + arg2;
+        }
+        *arg0 &= 0xFFF;
+    }
+}
 
 void func_806DF670(s16 *arg0, s16 arg1, s16 arg2) {
     s16 temp_v0 = arg1 - *arg0;

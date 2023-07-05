@@ -1094,8 +1094,25 @@ s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4
 }
 */
 
-// Float maths, looks doable, not sure which struct is passed in arg0 though
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80031980.s")
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct80031980;
+
+/*
+f32 func_80031980(Struct80031980 *arg0, f32 arg1, f32 *arg2) {
+    f32 temp =  ( (2.0f * arg0->unk0) + (-2.0f * arg0->unk4) +          arg0->unk8)  + arg0->unkC;
+    f32 temp2 = ((-3.0f * arg0->unk0) +  (3.0f * arg0->unk4) + (-2.0f * arg0->unk8)) - arg0->unkC;
+    if (arg2 != NULL) {
+        *arg2 =           arg0->unk8 + (3.0f * temp * arg1) + (2.0f * temp2 * arg1);
+    }
+    return arg0->unk0 +   arg0->unk8 + (      temp * arg1) + (       temp2 * arg1);
+}
+*/
 
 // Jumptable, 172 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80031A5C.s")

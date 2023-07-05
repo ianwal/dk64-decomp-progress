@@ -421,8 +421,36 @@ void func_806338F4(s32 arg0) {
     temp_v0->unk24 = 0;
 }
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063393C.s")
+void func_8063393C(s32 arg0, u8 arg1, u8 arg2, u8 arg3) {
+    s32 i;
+    u8 var_t0;
+    u8 var_a1;
+    u8 *temp_a2;
+
+    i = 0;
+    var_t0 = FALSE;
+    if (arg1 == 1) {
+        arg0 = func_80659470(arg0);
+    }
+    temp_a2 = &D_807F6000[arg0].unk6D[i];
+    if (arg3) {
+        var_a1 = arg2;
+    } else {
+        var_a1 = 0xFF;
+    }
+    while (i < 2 && !var_t0) {
+        if (var_a1 == temp_a2[i]) {
+            var_t0 = TRUE;
+        } else {
+            i++;
+        }
+    }
+    if (arg3) {
+        temp_a2[i] = 0xFF;
+    } else {
+        temp_a2[i] = arg2;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80633A1C.s")
 

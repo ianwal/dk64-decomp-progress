@@ -1196,7 +1196,7 @@ extern void *D_807F5DEC;
 extern s32 D_807F5FC8;
 extern void *D_807F5FCC;
 extern s32 D_807F5FD0;
-extern void *D_807F5FD4;
+extern s32 *D_807F5FD4; // TODO: Which struct?
 extern f32 D_807F5FDC;
 extern s16 D_807F5FE4;
 extern s16 D_807F5FE6;
@@ -1293,24 +1293,17 @@ void func_8062F318(void) {
     D_807F5FED = 1;
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F328.s")
-
-// extern s32 D_807F5FD0;
-// extern s32 *D_807F5FD4;
-
-/*
 void func_8062F328(s32 arg0) {
-    s32 temp_a1;
     s32 i;
+    s32 temp;
 
     if (D_807F5FD0 != 0) {
         for (i = 0; i <= D_807F5FD0; i++) {
-            D_807F5FD4[i] += arg0;
+            temp = D_807F5FD4[i];
+            D_807F5FD4[i] = temp + arg0;
         }
     }
 }
-*/
 
 s32 func_8062F388(s32 *arg0) {
     *arg0 = D_807F5FCC;

@@ -1164,6 +1164,7 @@ void func_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], 0.5f, D_807F621C, D_807F6220, D_807F6224);
 }
 
+// close, needs shape for D_807F5FD4
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644EC8.s")
 
 int func_8071E3EC(); // TODO: Signature
@@ -1175,7 +1176,6 @@ typedef struct {
 } Struct80645700_sp20;
 
 /*
-// TODO: Close
 void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     u32 sp2C;
 
@@ -1198,7 +1198,49 @@ void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
 }
 */
 
+// needs shape for D_807F5FD4
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806450C0.s")
+
+/*
+u32 func_806119A0();
+extern ? D_80718188;
+extern f32 D_807480E8;
+extern u8 D_807480EF;
+extern s32 D_807F5FD4;
+
+// TODO: Needs shape for D_807F5FD4
+void func_806450C0(s32 arg0, ? arg1, s16 arg2, s16 arg3) {
+    u32 sp34;
+    f32 sp30;
+    s32 sp2C;
+    s32 *temp_a0;
+    s32 temp_a1;
+    s32 temp_t1;
+    u32 temp_hi;
+    void *temp_a3;
+    void *temp_v0;
+
+    if (((func_806119A0() / 10000) % 10) == 0) {
+        temp_hi = (func_806119A0() / 10000) % arg3;
+        temp_t1 = arg2 * 4;
+        sp34 = temp_hi;
+        temp_a0 = D_807F5FD4 + temp_t1;
+        temp_a1 = temp_hi * 0xC;
+        sp30 = (*temp_a0 + temp_a1)->unk4;
+        temp_a3 = *temp_a0 + temp_a1;
+        sp2C = temp_t1;
+        if (func_80667110(temp_a3->unk0, temp_a3->unk8, &sp30) != 0) {
+            func_80714950(sp30 + 2.0);
+            func_8071498C(&func_80718188);
+            func_807149FC(-1);
+            func_807149B8(1);
+            func_807149C8(0xFF, 0xFF, 0xFF, D_807480EF);
+            temp_v0 = *(D_807F5FD4 + sp2C) + (sp34 * 0xC);
+            func_80714CC0(&D_80720CD8, D_807480E8, temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645238.s")
 
@@ -1216,6 +1258,7 @@ void func_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     }
 }
 
+// needs shape for D_807F5FD4
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645700.s")
 
 /*

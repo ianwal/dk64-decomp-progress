@@ -45,9 +45,6 @@ void func_8060B7F0(void) {
     }
 }
 
-u64 func_80005818(u64, u64);
-u64 func_80005918(u64, u64);
-u64 func_80007688(f32); 
 extern s8 D_80746834;
 extern OSMesgQueue D_807EE0D0;
 

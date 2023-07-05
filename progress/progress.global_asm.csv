@@ -125,14 +125,14 @@ us,.code,func_8073E8A0,28,yes
 us,.code,func_806A61D0,96,yes
 us,.code,func_80600950,12,yes
 us,.code,func_80711410,1344,no
-us,.code,func_806D1568,1088,no
+us,.code,func_806D1568,1088,yes
 us,.code,func_806E9ACC,112,yes
 us,.code,func_806ACFFC,612,no
 us,.code,func_8060CBBC,1260,no
 us,.code,func_805FF158,16,yes
 us,.code,func_8067AE90,108,yes
 us,.code,func_8065FB04,96,yes
-us,.code,func_8063393C,224,no
+us,.code,func_8063393C,224,yes
 us,.code,func_80674E14,876,no
 us,.code,func_806F14BC,428,no
 us,.code,func_806C71D0,8,yes
@@ -2834,7 +2834,7 @@ us,.code,func_8072DE44,100,yes
 us,.code,func_806C8D20,12,yes
 us,.code,func_806E84A4,28,yes
 us,.code,func_80662838,636,no
-us,.code,func_806DF5A0,208,no
+us,.code,func_806DF5A0,208,yes
 us,.code,func_806EB400,180,no
 us,.code,func_80712628,12,yes
 us,.code,alEvtqPostEvent,384,yes
@@ -3112,7 +3112,7 @@ us,.code,func_80653EA8,192,no
 us,.code,func_806EBAF4,80,yes
 us,.code,func_8066E72C,296,yes
 us,.code,func_806785D4,504,yes
-us,.code,func_8062F328,96,no
+us,.code,func_8062F328,96,yes
 us,.code,func_8067FB6C,3080,no
 us,.code,func_80645B9C,104,yes
 us,.code,func_80602314,284,no

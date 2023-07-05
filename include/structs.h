@@ -713,7 +713,7 @@ typedef struct player_additional_actor_data {
         };
         s16 unk16;
     };
-    u16 unk18; // Used
+    s16 unk18; // Used
     u16 unk1A;
     f32 unk1C; // Used
     f32 unk20; // Used
@@ -1711,7 +1711,10 @@ typedef struct object_model2 {
     s32 unk60;
     s32 unk64;
     s32 unk68;
-    s32 unk6C;
+    u8 unk6C;
+    u8 unk6D[1]; // TODO: How many?
+    u8 unk6E;
+    u8 unk6F;
     GlobalASMStruct83 *unk70;
     OM2_unk74 *unk74;
     OM2_unk78 *unk78; // used in func_80650AD8, weird format
