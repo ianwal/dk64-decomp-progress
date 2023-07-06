@@ -2,6 +2,9 @@
 
 import os;
 
+precision = 4
+totalCodeBytes = 1647440 # Used to calculate how much percentage a function is worth
+
 searchPath = "src"
 excludePaths = [
     "src/dk64_boot",
@@ -13,7 +16,31 @@ excludePaths = [
     "src/global_asm/code_77B90.c",
 ]
 
-precision = 4
+commentSearch = {
+    "jumptable": [
+        "jump table",
+        "jumptable",
+    ],
+    "displaylist": [
+        "display list",
+        "displaylist",
+    ],
+    "rodata": [
+        "rodata",
+    ],
+    "doable": [
+        "doable",
+    ],
+    "close": [
+        "close",
+    ],
+    "regalloc": [
+        "regalloc",
+    ],
+    "stack": [
+        "stack",
+    ],
+}
 
 standardSearchColumns = {
     "matrix": [
@@ -111,10 +138,11 @@ print(
     "file",
     "function",
     "bytes",
+    "worth",
     end=" "
 )
 
-# For each column, print the value
+# For each column, print the name of the column
 for column in standardSearchColumns:
     print(column, end=" ")
 
@@ -122,41 +150,36 @@ print(
     "jalratio",
     "labelratio",
     "floatratio",
-    "doable",
-    "regalloc",
-    "stack",
+    end=" "
 )
+
+# For each comment search term, print the name of the search
+for comment in commentSearch:
+    print(comment, end=" ")
+
+# Newline
+print()
 
 for root, dirs, files in os.walk(searchPath):
     for file in files:
         fullFile = os.path.join(root, file)
         if sum(excludePath in fullFile for excludePath in excludePaths) == 0 and file.endswith('.c'):
             with open(fullFile, "r") as fh_c:
-                jumptable = False
-                rodata = False
-                displaylist = False
-                doable = False
-                regalloc = False
-                stack = False
+                comments = {}
+                for comment in commentSearch:
+                    comments[comment] = False
+
                 for line in fh_c:
                     if line.startswith("//"):
                         lowerCaseComment = line.lower()
-                        if "jump table" in lowerCaseComment or "jumptable" in lowerCaseComment:
-                            jumptable = True
-                        if "rodata" in lowerCaseComment:
-                            rodata = True
-                        if "display list" in lowerCaseComment or "displaylist" in lowerCaseComment:
-                            displaylist = True
-                        if "doable" in lowerCaseComment:
-                            doable = True
-                        if "regalloc" in lowerCaseComment:
-                            regalloc = True
-                        if "stack" in lowerCaseComment:
-                            stack = True
+                        for comment in commentSearch:
+                            check = sum(searchTerm in lowerCaseComment for searchTerm in commentSearch[comment])
+                            if check > 0:
+                                comments[comment] = True
                         continue
 
                     if "#pragma GLOBAL_ASM(" in line:
-                        if not jumptable and not rodata and not displaylist:
+                        if (not comments["jumptable"] and not comments["rodata"] and not comments["displaylist"]):
                             # Parse ASM and compute row for function
                             ASMFile = line.replace("#pragma GLOBAL_ASM(\"", "").replace("\")\n", "")
                             with open(ASMFile, "r") as fh_asm:
@@ -169,11 +192,6 @@ for root, dirs, files in os.walk(searchPath):
                                     columns[column] = 0
 
                                 for line in fh_asm:
-                                    if "// " in line:
-                                        if "Jumptable" in line:
-                                            jumptable = True
-                                        if "Displaylist stuff" in line:
-                                            displaylist = True
                                     for column in standardSearchColumns:
                                         columns[column] += sum(searchTerm in line for searchTerm in standardSearchColumns[column])
                                     if "jal" in line:
@@ -189,6 +207,7 @@ for root, dirs, files in os.walk(searchPath):
                                     ASMFile.replace(ASMFilePath[-1], ""),
                                     ASMFilePath[-1].replace(".s", ""),
                                     size,
+                                    f"{str(round(size / totalCodeBytes * 100, precision)).ljust(precision + 2, '0')}%",
                                     end=" ")
 
                                 # For each column, print the value
@@ -199,15 +218,16 @@ for root, dirs, files in os.walk(searchPath):
                                     round(jals / size, precision),
                                     round(labels / size, precision),
                                     round(columns["floats"] / size, precision),
-                                    "True" if doable else "-",
-                                    "True" if regalloc else "-",
-                                    "True" if stack else "-"
+                                    end=" "
                                 )
+
+                                # For each comment search, print the value
+                                for comment in comments:
+                                    print("True" if comments[comment] else "-", end=" ")
+
+                                # Newline
+                                print()
                         continue
 
-                    jumptable = False
-                    rodata = False
-                    displaylist = False
-                    doable = False
-                    regalloc = False
-                    stack = False
+                    for comment in commentSearch:
+                        comments[comment] = False
