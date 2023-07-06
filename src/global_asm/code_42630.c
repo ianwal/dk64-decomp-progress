@@ -982,7 +982,7 @@ void func_806436A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_80643354(0, arg2, arg3);
 }
 
-// Doable
+// Doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806436E0.s")
 
 extern s32 D_8071FB54;
@@ -1005,25 +1005,25 @@ void func_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 sp2C;
     s32 var_a0;
     s32 var_a1;
-    Struct806436E0_malloc *temp_v0;
     Struct807F5FD4_unk0 *temp_v0_2;
     Struct806436E0_malloc *var_v1;
 
     if (arg0->unk0 == NULL) {
-        arg0->unk0 = malloc(sizeof(Struct806436E0_malloc));
-        var_v1 = arg0->unk0;
-        temp_v0->unk0 = 0;
-        temp_v0->unk4 = 0;
+        var_v1 = malloc(sizeof(Struct806436E0_malloc));;
+        arg0->unk0 = var_v1;
+        var_v1->unk0 = 0;
+        var_v1->unk4 = 0;
     }
     var_v1 = arg0->unk0;
     if (var_v1->unk0 == 0) {
         var_v1->unk4++;
-        if (((D_807F5FD4->unk4 - D_807F5FD4->unk0) / 12U) == var_v1->unk4) {
+        if (((D_807F5FD4->unk0[1] - D_807F5FD4->unk0[0])) == var_v1->unk4) {
             var_v1->unk4 = 0;
         }
-        sp34 = D_807F5FD4->unk0[var_v1->unk4].unk0;
-        sp30 = D_807F5FD4->unk0[var_v1->unk4].unk4;
-        sp2C = D_807F5FD4->unk0[var_v1->unk4].unk8;
+        temp_v0_2 = &D_807F5FD4->unk0[0][var_v1->unk4];
+        sp34 = temp_v0_2->unk0;
+        sp30 = temp_v0_2->unk4;
+        sp2C = temp_v0_2->unk8;
         func_80714998(2);
         func_807149B8(1);
         func_80714950(0);
@@ -1291,11 +1291,6 @@ void func_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-// needs shape for D_807F5FD4
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645700.s")
-
-/*
-// TODO: Pretty close
 void func_80645700(Struct80645700_sp20 **arg0, s32 arg1, s16 arg2, s16 arg3) {
     u32 sp24;
     Struct80645700_sp20 *var_v1;
@@ -1316,7 +1311,7 @@ void func_80645700(Struct80645700_sp20 **arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_80714950(3);
     func_8071498C(&func_8071E3EC);
     func_807149A8(0x7D0);
-    func_80714CC0(&D_80720BC4, 2.5f, D_807F5FD4[sp24]->unk0, D_807F5FD4[sp24]->unk4, D_807F5FD4[sp24]->unk8);
+    func_80714CC0(&D_80720BC4, 2.5f, D_807F5FD4->unk0[0][sp24].unk0, D_807F5FD4->unk0[0][sp24].unk4, D_807F5FD4->unk0[0][sp24].unk8);
     if (arg3) {
         if (player_pointer->control_state == 0x42) {
             var_v1->unk0 = player_pointer->y_position;
@@ -1329,7 +1324,6 @@ void func_80645700(Struct80645700_sp20 **arg0, s32 arg1, s16 arg2, s16 arg3) {
         }
     }
 }
-*/
 
 extern f32 D_807F621C;
 extern f32 D_807F6220;

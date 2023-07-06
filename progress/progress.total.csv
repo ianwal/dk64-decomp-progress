@@ -2963,7 +2963,7 @@ us,.code,func_80685708,276,yes
 us,.code,func_806025D4,1216,no
 us,.code,func_806A0864,784,no
 us,.code,func_806E3040,444,no
-us,.code,func_80645700,456,no
+us,.code,func_80645700,456,yes
 us,.code,func_80605380,400,no
 us,.code,func_8067BA7C,492,no
 us,.code,func_80671F54,480,no

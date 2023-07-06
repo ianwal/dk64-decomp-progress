@@ -66,6 +66,7 @@ s32 func_800276B0(s32 arg0, RaceStruct15 *arg1, RaceStruct15 *arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027710.s")
 
+// stack, regalloc, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027880.s")
 
 /*
@@ -78,9 +79,9 @@ void func_80027880(s32 arg0, u16 arg1, u16 arg2) {
 
     temp = func_80025770(arg0, arg1);
     
-    dx = D_807F5FD4[arg1][arg2].unk0 - D_807F5FD4[arg1][temp].unk0;
-    dy = D_807F5FD4[arg1][arg2].unk4 - D_807F5FD4[arg1][temp].unk4;
-    dz = D_807F5FD4[arg1][arg2].unk8 - D_807F5FD4[arg1][temp].unk8;
+    dx = D_807F5FD4->unk0[arg1][arg2].unk0 - D_807F5FD4->unk0[arg1][temp].unk0;
+    dy = D_807F5FD4->unk0[arg1][arg2].unk4 - D_807F5FD4->unk0[arg1][temp].unk4;
+    dz = D_807F5FD4->unk0[arg1][arg2].unk8 - D_807F5FD4->unk0[arg1][temp].unk8;
     func_8000AC60((dx * dx) + (dy * dy) + (dz * dz));
 }
 */
@@ -126,7 +127,37 @@ void func_80027B30(RaceStruct3 *arg0) {
     arg0->unk8 = 0.0f;
 }
 
+// doable, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027BD0.s")
+
+/*
+typedef struct {
+    u8 unk0[0x37 - 0x0];
+    s8 unk37;
+    u8 unk38;
+    u8 unk39;
+    u16 unk3A;
+} Struct80027BD0_arg1;
+
+typedef struct {
+    u8 unk0[0x24 - 0x0];
+    u8 unk24;
+} Struct80027BD0_arg2;
+
+f32 func_80027BD0(u8 *arg0, Struct80027BD0_arg1 *arg1, Struct80027BD0_arg2 *arg2) {
+    f32 var_f2;
+    s32 count;
+    s8 temp_v0;
+    u8 temp_a2;
+
+    var_f2 = 0.0f;
+    if (arg1->unk37 > 0) {
+        count = (D_807F5FD4->unk0[*arg0 + 1] - D_807F5FD4->unk0[*arg0]);
+        var_f2 = (f32)(((arg1->unk37 - 1) * count) + arg1->unk3A) / (arg2->unk24 * count);
+    }
+    return var_f2;
+}
+*/
 
 void func_80027C60(void) {
     s32 phi_s0;
