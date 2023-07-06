@@ -1706,18 +1706,13 @@ void func_8064911C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806491F4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806493C4.s")
-
-/*
 extern s32 D_80721298; // TODO: Datatype
 
 int func_8071F660(); // TODO: Signature
 
-// TODO: Need proper shape for D_807F5FD4
 void func_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     u8 temp_s1;
     s32 i;
-    Struct807F5FD4 *temp_v0;
 
     for (i = 0; i < arg2; i++) {
         temp_s1 = (((rand() >> 0xF) % 32767) % (arg3 + 1));
@@ -1725,11 +1720,9 @@ void func_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_807149A8(0x7D0);
         func_8071498C(func_8071F660);
         func_807149FC(8);
-        temp_v0 = D_807F5FD4[temp_s1 * 0xC];
-        func_80714CC0(&D_80721298, 1.0f, temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
+        func_80714CC0(&D_80721298, 1.0f, D_807F5FD4->unk0[temp_s1].unk0, D_807F5FD4->unk0[temp_s1].unk4, D_807F5FD4->unk0[temp_s1].unk8);
     }
 }
-*/
 
 void func_8064954C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
