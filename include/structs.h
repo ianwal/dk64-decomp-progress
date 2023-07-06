@@ -3,6 +3,19 @@
 
 /* your struct definitions go here */
 
+// Finally!!!
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct807F5FD4_unk0;
+
+typedef struct {
+    Struct807F5FD4_unk0 *unk0[2];
+    s32 unk8;
+} Struct807F5FD4;
+extern Struct807F5FD4 *D_807F5FD4;
+
 typedef struct HeapHeader HeapHeader;
 
 struct HeapHeader {

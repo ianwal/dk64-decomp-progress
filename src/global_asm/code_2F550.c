@@ -1180,7 +1180,6 @@ extern void *D_807F5DEC;
 extern s32 D_807F5FC8;
 extern void *D_807F5FCC;
 extern s32 D_807F5FD0;
-extern s32 *D_807F5FD4; // TODO: Which struct?
 extern f32 D_807F5FDC;
 extern s16 D_807F5FE4;
 extern s16 D_807F5FE6;
@@ -1282,8 +1281,8 @@ void func_8062F328(s32 arg0) {
 
     if (D_807F5FD0 != 0) {
         for (i = 0; i <= D_807F5FD0; i++) {
-            temp = D_807F5FD4[i];
-            D_807F5FD4[i] = temp + arg0;
+            temp = D_807F5FD4->unk0[i];
+            D_807F5FD4->unk0[i] = temp + arg0;
         }
     }
 }

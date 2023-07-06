@@ -68,14 +68,6 @@ s32 func_800276B0(s32 arg0, RaceStruct15 *arg1, RaceStruct15 *arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027880.s")
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-} Struct80027880;
-
-extern Struct80027880 *D_807F5FD4;
-
 /*
 // TODO: Very close
 void func_80027880(s32 arg0, u16 arg1, u16 arg2) {

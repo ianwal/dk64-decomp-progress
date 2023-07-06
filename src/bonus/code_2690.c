@@ -184,13 +184,6 @@ u8 func_80027548(f32 arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_800277F8.s")
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-} Struct807F5FD4;
-extern Struct807F5FD4 *D_807F5FD4; // TODO: Seems to be a pointer to the struct array
-
 extern f32 D_8002DD40;
 extern f32 D_8002DD44;
 extern f32 D_8002DD48;
@@ -430,6 +423,7 @@ void func_800284C0(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// doable close regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80028648.s")
 
 typedef struct {
@@ -458,30 +452,31 @@ typedef struct {
 } AAD_80028648_2;
 
 /*
-// TODO: Pretty close
 void func_80028648(ARG0_80028648 *arg0) {
     s32 i;
-    AAD_80028648 *temp_s2;
-    AAD_80028648_2 *temp_v0_2;
+    AAD_80028648 *snakeAAD;
+    AAD_80028648_2 *turtleAAD;
+    Struct807F5FD4_unk0 *temp;
 
     for (i = 1; i < 7; i++) {
         if (func_80677FA8(ACTOR_SNAKE, 0x15) != 0) {
-            temp_s2 = D_807FBB44->additional_actor_data;
-            temp_s2->unk0 = current_actor_pointer;
-            temp_s2->unk11 = (((rand() >> 0xF) % 32767) % ((arg0->unk1C - arg0->unk1B) + 1)) + arg0->unk1B;
+            snakeAAD = D_807FBB44->additional_actor_data;
+            snakeAAD->unk0 = current_actor_pointer;
+            snakeAAD->unk11 = (((rand() >> 0xF) % 32767) % ((arg0->unk1C - arg0->unk1B) + 1)) + arg0->unk1B;
+            temp = &D_807F5FD4->unk0[0][i];
             func_80614EBC(D_807FBB44, 0x1F5);
-            D_807FBB44->x_position = D_807F5FD4[i].unk0;
-            D_807FBB44->y_position = D_807F5FD4[i].unk4;
-            D_807FBB44->z_position = D_807F5FD4[i].unk8;
+            D_807FBB44->x_position = temp->unk0;
+            D_807FBB44->y_position = temp->unk4;
+            D_807FBB44->z_position = temp->unk8;
             D_807FBB44->object_properties_bitfield |= 0x1000;
             D_807FBB44->y_rotation = 0x800;
-            arg0->unk0[i] = D_807FBB44;
+            arg0->unk0[i - 1] = D_807FBB44;
             if (func_80677FA8(ACTOR_TURTLE, 0x16) != 0) {
-                temp_v0_2 = D_807FBB44->additional_actor_data;
-                temp_v0_2->unk0 = D_807FBB44;
-                temp_v0_2->unk6 = i - 1;
-                temp_s2->unk4 = D_807FBB44;
-                temp_v0_2->unk8 = -1;
+                turtleAAD = D_807FBB44->additional_actor_data;
+                turtleAAD->unk0 = D_807FBB44;
+                turtleAAD->unk6 = i - 1;
+                snakeAAD->unk4 = D_807FBB44;
+                turtleAAD->unk8 = -1;
             }
         }
     }
@@ -609,7 +604,6 @@ void func_80028E3C(void) {
 extern s16 D_8002D8C8[];
 extern ? D_8002D8D4;
 extern f32 D_8002DDB8;
-extern s32 *D_807F5FD4;
 
 void func_80029E54(Actor *arg0) {
     s16 *var_s2;
@@ -734,8 +728,6 @@ void func_8002AAA4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002AD10.s")
-
 extern f32 D_8002DDEC;
 
 typedef struct {
@@ -750,10 +742,8 @@ typedef struct {
     s16 unkA;
 } a8D_8002AD10;
 
-/*
-// TODO: Very close!
 void func_8002AD10(void) {
-    s32 pad1;
+    Struct807F5FD4_unk0 *pad1;
     aaD_8002AD10 *var_t0;
     Actor *pad2;
     a8D_8002AD10 *temp_a2;
@@ -767,8 +757,8 @@ void func_8002AD10(void) {
     if (var_t0->unk4 == 0 || var_t0->unk4 >= 5) {
         current_actor_pointer->x_position -= 1.5;
     }
-    // TODO: Problem is here
-    if (current_actor_pointer->x_position < D_807F5FD4[3].unk8 - 50.0) {
+    pad1 = &D_807F5FD4->unk0[0][3];
+    if (current_actor_pointer->x_position < pad1->unk0 - 50.0) {
         if (temp_a2->unkA > 0) {
             temp_a2->unkA--;
         }
@@ -792,7 +782,6 @@ void func_8002AD10(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002AED8.s")

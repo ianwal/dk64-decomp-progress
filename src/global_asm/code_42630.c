@@ -960,20 +960,6 @@ void func_80643274(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-// Finally!!!
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-} Struct807F5FD4_unk0;
-
-typedef struct {
-    Struct807F5FD4_unk0 *unk0;
-    Struct807F5FD4_unk0 *unk4;
-    s32 unk8;
-} Struct807F5FD4;
-extern Struct807F5FD4 *D_807F5FD4;
-
 void func_80643354(s32 arg0, u32 arg1, u32 arg2) {
     u32 sp24;
     Struct807F5FD4_unk0 *temp_v0;
@@ -985,7 +971,7 @@ void func_80643354(s32 arg0, u32 arg1, u32 arg2) {
         func_8071498C(&func_80717D4C);
         func_807149B8(1);
         func_80714998(3);
-        temp_v0 = &D_807F5FD4->unk0[sp24];
+        temp_v0 = &D_807F5FD4->unk0[0][sp24];
         func_80714CC0(&D_8071FFA0, 1.5f, temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
     }
 }
@@ -1234,7 +1220,7 @@ void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_80714950(0x10064);
         func_8071498C(&func_8071AADC);
         func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
-        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4->unk0[sp2C].unk0, D_807F5FD4->unk0[sp2C].unk4, D_807F5FD4->unk0[sp2C].unk8);
+        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4->unk0[0][sp2C].unk0, D_807F5FD4->unk0[0][sp2C].unk4, D_807F5FD4->unk0[0][sp2C].unk8);
     }
     if (((func_806119A0() / 10000) % arg2) == 0) {
         sp2C = (func_806119A0() / 10000) % arg3;
@@ -1242,7 +1228,7 @@ void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_80714950(0x10064);
         func_8071498C(&func_8071AADC);
         func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
-        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4->unk4[sp2C].unk0, D_807F5FD4->unk4[sp2C].unk4, D_807F5FD4->unk4[sp2C].unk8);
+        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4->unk0[1][sp2C].unk0, D_807F5FD4->unk0[1][sp2C].unk4, D_807F5FD4->unk0[1][sp2C].unk8);
     }
 }
 
@@ -1254,7 +1240,6 @@ u32 func_806119A0();
 extern ? D_80718188;
 extern f32 D_807480E8;
 extern u8 D_807480EF;
-extern s32 D_807F5FD4;
 
 // TODO: Needs shape for D_807F5FD4
 void func_806450C0(s32 arg0, ? arg1, s16 arg2, s16 arg3) {
@@ -1720,7 +1705,7 @@ void func_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_807149A8(0x7D0);
         func_8071498C(func_8071F660);
         func_807149FC(8);
-        func_80714CC0(&D_80721298, 1.0f, D_807F5FD4->unk0[temp_s1].unk0, D_807F5FD4->unk0[temp_s1].unk4, D_807F5FD4->unk0[temp_s1].unk8);
+        func_80714CC0(&D_80721298, 1.0f, D_807F5FD4->unk0[0][temp_s1].unk0, D_807F5FD4->unk0[0][temp_s1].unk4, D_807F5FD4->unk0[0][temp_s1].unk8);
     }
 }
 
