@@ -1217,9 +1217,6 @@ void func_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_80714CC0(D_8074E880[((rand() >> 0xF) % 1000) % 3], 0.5f, D_807F621C, D_807F6220, D_807F6224);
 }
 
-// close, needs shape for D_807F5FD4
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80644EC8.s")
-
 int func_8071E3EC(); // TODO: Signature
 extern s32 D_80720BC4; // TODO: Datatype
 
@@ -1228,7 +1225,6 @@ typedef struct {
     f32 unk4;
 } Struct80645700_sp20;
 
-/*
 void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     u32 sp2C;
 
@@ -1238,7 +1234,7 @@ void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_80714950(0x10064);
         func_8071498C(&func_8071AADC);
         func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
-        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4[sp2C].unk0, D_807F5FD4[sp2C].unk4, D_807F5FD4[sp2C].unk8);
+        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4->unk0[sp2C].unk0, D_807F5FD4->unk0[sp2C].unk4, D_807F5FD4->unk0[sp2C].unk8);
     }
     if (((func_806119A0() / 10000) % arg2) == 0) {
         sp2C = (func_806119A0() / 10000) % arg3;
@@ -1246,10 +1242,9 @@ void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_80714950(0x10064);
         func_8071498C(&func_8071AADC);
         func_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
-        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4[sp2C].unk0, D_807F5FD4[sp2C].unk4, D_807F5FD4[sp2C].unk8);
+        func_80714CC0(&D_80720A7C, 1.2f, D_807F5FD4->unk4[sp2C].unk0, D_807F5FD4->unk4[sp2C].unk4, D_807F5FD4->unk4[sp2C].unk8);
     }
 }
-*/
 
 // needs shape for D_807F5FD4
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806450C0.s")
