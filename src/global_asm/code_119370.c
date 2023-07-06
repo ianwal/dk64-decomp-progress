@@ -297,7 +297,6 @@ Struct80717D84 *func_80714D08(void *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4
     s32 i;
     s32 var_v0;
     Struct807FDB00 *var_s0;
-    Struct80717D84 *var_s0_2;
 
     func_80714778(arg1);
     var_s0 = D_807FDB00;

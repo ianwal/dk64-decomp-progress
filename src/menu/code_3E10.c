@@ -885,6 +885,45 @@ void func_8002F6C8(Actor *arg0, s32 arg1) {
 // Doable, unrolled loop
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002F75C.s")
 
+/*
+extern s8 D_800339A8;
+extern s8 D_80033F60;
+extern s8 D_80033F61;
+extern s16 D_80744518;
+
+void func_8002F75C(void) {
+    MenuStruct7 *var_v0;
+    s32 var_a2;
+    s32 i;
+
+    if (D_800339A8 == 0) {
+        var_v0 = &D_80744548;
+    } else {
+        var_v0 = &D_80744568;
+    }
+    for (i = 0; i < 4; i++) {
+        if (D_80744518 >= var_v0[i].unk0) {
+            for (var_a2 = 0; var_a2 <= 4; var_a2++) {
+                // var_v0[var_a2] = var_v0[var_a2 + 1];
+                var_v0[var_a2].unk0 = var_v0[var_a2 + 1].unk0;
+                var_v0[var_a2].unk2 = var_v0[var_a2 + 1].unk2;
+                var_v0[var_a2].unk3 = var_v0[var_a2 + 1].unk3;
+                var_v0[var_a2].unk4 = var_v0[var_a2 + 1].unk4;
+                var_v0[var_a2].unk5 = var_v0[var_a2 + 1].unk5;
+            }
+            var_v0[i].unk0 = D_80744518;
+            var_v0[i].unk2 = 0x2E;
+            var_v0[i].unk3 = 0x2E;
+            var_v0[i].unk4 = 0x2E;
+            D_80033F60 = i;
+            D_80033F61 = 0;
+            return;
+        }
+    }
+    D_80033F60 = -1;
+}
+*/
+
 extern f32 D_80033D44;
 
 void func_8002F8EC() {

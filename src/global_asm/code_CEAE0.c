@@ -1123,7 +1123,12 @@ void func_806CEFBC(Struct806CEFBC *arg0) {
 }
 */
 
-void func_806CF138(void); // TODO: Proper signature, just for function pointer
+typedef struct {
+    Actor *unk0;
+    Actor *unk4;
+} Struct806CF138;
+
+void func_806CF138(Struct806CF138 *arg0);
 
 typedef struct {
     void *unk0; // function pointer
@@ -1148,8 +1153,50 @@ void func_806CF0D0(void) {
     }
 }
 
-// Doable, just fiddly float stuff
+// progress made, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF138.s")
+
+extern f32 D_8075CBF0;
+extern f64 D_8075CBF8;
+extern f32 D_8075CC00;
+
+/*
+void func_806CF138(Struct806CF138 *arg0) {
+    // TODO: This could be a matrix
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    s32 pad2;
+    f32 sp54;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 temp_f14;
+    s32 sp30;
+    s32 sp2C;
+
+    func_806CF2EC(&sp30, &sp2C);
+    func_80671C0C(arg0->unk0, sp30, &sp70, &sp68, &sp60);
+    func_80671C0C(arg0->unk0, sp2C, &sp74, &sp6C, &sp64);
+    sp5C = (sp6C - sp68);
+    temp_f14 = (sp74 - sp70);
+    sp54 = func_806118FC(sp5C / sqrtf(((sp64 - sp60) * (sp64 - sp60)) + ((temp_f14 * temp_f14) + (sp5C * sp5C)))) * D_8075CBF0;
+    sp48 = func_80612794(arg0->unk0->y_rotation) * 50.0f;
+    sp4C = func_80612790(arg0->unk0->y_rotation) * 50.0f;
+    sp40 = (sp74 - sp70);
+    sp44 = (sp64 - sp60);
+    sp3C = (sp44 * sp4C) + (sp48 * sp40);
+    sp38 = sqrtf((sp4C * sp4C) + (sp48 * sp48));
+    func_8067AA58(arg0->unk0, arg0->unk4, sp54, D_8075CBF8 - (func_80611850(sp3C / (sp38 * sqrtf((sp44 * sp44) + (sp40 * sp40)))) * D_8075CC00));
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CF2EC.s")
@@ -4361,15 +4408,19 @@ void func_806D9940(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-// close, doable
+// close, doable, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D9AD4.s")
 
 extern s32 D_8071FC8C;
-extern s32 D_80717100;
 extern f64 D_8075CE78;
+
+int func_80717100();
+
+void func_805FF9AC(enum map_e arg0, s32 arg1, s32 arg2, s16 arg3);
 
 /*
 void func_806D9AD4(void) {
+    s32 pad;
     f32 sp28;
 
     func_806DF6D4(1);
@@ -4378,9 +4429,8 @@ void func_806D9AD4(void) {
         sp28 = ((rand() >> 0xF) % 30) + current_actor_pointer->y_position;
         rand();
         func_807149B8(1);
-        // TODO: Problem seems to be here
-        func_80714950((extra_player_info_pointer->unk23C << 0x10) + (15.0 * (current_actor_pointer->shadow_opacity / D_8075CE78)));
-        func_8071498C(&D_80717100);
+        func_80714950((extra_player_info_pointer->unk23C << 0x10) + (s32)(15.0 * (current_actor_pointer->shadow_opacity / D_8075CE78)));
+        func_8071498C(&func_80717100);
         func_80714CC0(&D_8071FC8C, 0.5f, current_actor_pointer->x_position, sp28, current_actor_pointer->z_position);
     }
     switch (current_actor_pointer->control_state_progress) {
@@ -4392,15 +4442,15 @@ void func_806D9AD4(void) {
             break;
         case 1:
             extra_player_info_pointer->unk23C += 0x1E;
-            if (extra_player_info_pointer->unk23C >= 0x191) {
+            if (extra_player_info_pointer->unk23C > 0x190) {
                 extra_player_info_pointer->unk23C = 0x190;
             }
             if (extra_player_info_pointer->unk23C == 0xD2) {
                 func_80608528(current_actor_pointer, 0x264, 0xFF, 0x64, 0x19);
             }
-            if (extra_player_info_pointer->unk23C >= 0x12D) {
-                extra_player_info_pointer->unk1F0 &= -0x41;
-                current_actor_pointer->shadow_opacity += -5;
+            if (extra_player_info_pointer->unk23C > 0x12C) {
+                extra_player_info_pointer->unk1F0 &= ~0x40;
+                current_actor_pointer->shadow_opacity -= 5;
                 if (current_actor_pointer->shadow_opacity < 0xA) {
                     current_actor_pointer->control_state_progress++;
                 }
@@ -6504,8 +6554,6 @@ void func_806E384C(void) {
 
 extern f32 D_8075D218;
 
-void func_806E384C(void);
-
 void func_806E3B00(void) {
     if (!(D_807FD610[cc_player_index].unk2A & Z_TRIG)) {
         if (func_806F8AD4(5, cc_player_index) && (extra_player_info_pointer->unk1A3)) {
@@ -6560,8 +6608,75 @@ void func_806E3D14(f32 arg0) {
     extra_player_info_pointer->unk1A0 = phi_f0;
 }
 
-// Yeah probably doable, weird pointer to 0x80800000 maybe though?
+// rodata regalloc close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E3E40.s")
+
+extern f32 D_8075D228;
+extern f64 D_8075D230;
+extern f64 D_8075D238;
+extern f32 D_8075D240;
+extern u8 D_807FD6E0;
+extern u8 D_807FD6E1;
+
+/*
+void func_806E3E40(void) {
+    f32 sp34; // sp34
+    s32 pad; // sp30
+    f32 var_f12;
+    f32 var_f2;
+
+    if (!func_806F8AD4(5, cc_player_index) || !extra_player_info_pointer->unk1A3) {
+        return;
+    }
+
+    if (D_807FD610[cc_player_index].unk2C & 0x2000) {
+        D_807FD6E0 = 0;
+        D_807FD6E1 = 0;
+    }
+    sp34 = (current_actor_pointer->unkEE - current_actor_pointer->y_rotation);
+    if (sp34 < 0) {
+        sp34 += 4096;
+    }
+    var_f2 = func_80612794(sp34) * current_actor_pointer->unkB8;
+    if (ABS(var_f2) > 10) {
+        var_f12 = sp34 > 2048 ? 1024 : 3072;
+        var_f12 += current_actor_pointer->y_rotation;
+        if (var_f12 >= 4096) {
+            var_f12 -= 4096;
+        }
+        extra_player_info_pointer->unk2C = 8;
+        func_806CD424(var_f12, 0, extra_player_info_pointer->unk38);
+    }
+    sp34 = func_80612790(sp34) * current_actor_pointer->unkB8;
+    var_f2 = current_actor_pointer->y_velocity;
+    if (var_f2 > 0) {
+        var_f2 = 0;
+    }
+    if (ABS(sp34) > 10) {
+        var_f12 = D_8075D238 + (((func_80611BB4(ABS(var_f2), sp34) - D_8075D228) * 16384.0) / D_8075D230);
+    } else {
+        var_f12 = D_8075D240;
+    }
+    func_806E3D14(var_f12);
+    if (((ABS(sp34) > 10) || (current_actor_pointer->y_velocity < 0))) {
+        if (D_807FD6E1 == 0) {
+            D_807FD6E0 = 4;
+        }
+    }
+    if (D_807FD6E0 != 0) {
+        D_807FD6E0 -= 1;
+        if (D_807FD6E0 == 0) {
+            D_807FD6E1 = 8;
+        }
+        func_806E384C();
+    } else {
+        func_80605314(current_actor_pointer, 0);
+    }
+    if (D_807FD6E1 != 0) {
+        D_807FD6E1--;
+    }
+}
+*/
 
 void func_806E41B4() {
     func_80614E78(current_actor_pointer, 0x15);

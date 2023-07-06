@@ -839,8 +839,11 @@ typedef struct player_additional_actor_data {
     s32 unk128;
     s32 unk12C;
     Actor *unk130;
-    s32 unk134;
-    s32 unk138;
+    s8 unk134;
+    s8 unk135;
+    s8 unk136;
+    s8 unk137;
+    f32 unk138;
     f32 unk13C;
     f32 unk140;
     f32 unk144;

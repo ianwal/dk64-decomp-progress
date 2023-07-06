@@ -45,7 +45,7 @@ struct GlobalASMStruct82 {
     f32 unk28;
     f32 unk2C;
     s8 unk30;
-    s8 unk31;
+    u8 unk31;
     s8 unk32;
     s8 unk33;
     Unk34 *unk34;
@@ -191,8 +191,79 @@ void func_8072F120(void) {
     }
 }
 
-// Doable
+// close, beq vs beql and beqz vs beqzl
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_8072F230.s")
+
+extern f32 D_8075FF50;
+
+f32 func_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, GlobalASMStruct82 *arg2, u8 arg3);
+void func_8072FCC4(void *arg0, s32 arg1, f32 arg2, f32 *arg3);
+u8 func_8072F59C(void *arg0, GlobalASMStruct82 *arg1, f32 *arg2, s8 *arg3);
+
+/*
+void func_8072F230(Actor *arg0, u8 arg1, u8 arg2) {
+    s32 pad;
+    f32 sp90; // sp90
+    f32 sp8C; // sp8C
+    f32 sp88; // sp88
+    f32 dx;
+    f32 dy;
+    f32 sp7C; // sp7C
+    f32 dz;
+    f32 least;
+    u8 sp73;
+    u8 sp72;
+    f32 sp6C; // sp6C
+    GlobalASMStruct82 *current;
+    PlayerAdditionalActorData *PaaD; // sp64
+    GlobalASMStruct82 *found;
+    u8 temp_s1;
+    u8 var_s4;
+
+    PaaD = arg0->additional_actor_data;
+    current = D_807FDCC0;
+    least = D_8075FF50;
+    found = NULL;
+    var_s4 = arg0->unk58 == ACTOR_CHUNKY && character_change_array[PaaD->unk1A4].unk2C0 == 2;
+    while (current != NULL) {
+        temp_s1 = func_8072F4A8(current->unk0, current->unk4, &sp90, &sp8C, &sp88);
+        dx = (arg0->x_position - sp90);
+        dy = (arg0->y_position - sp8C);
+        dz = (arg0->z_position - sp88);
+        if (sqrtf((dx * dx) + (dy * dy) + (dz * dz)) < current->unk1C) {
+            if (!current->unk31 || (current->unk6 != 1 && arg2 && current->unk0->object_properties_bitfield & 0x04000000)) {
+                if (!temp_s1 || !var_s4) {
+                    if (func_8072F59C(arg0, current, &sp7C, &sp72)) {
+                        if (sp7C < least) {
+                            least = sp7C;
+                            found = current;
+                            sp73 = sp72;
+                        }
+                    }
+                }
+            }
+        }
+        current = current->next;
+    }
+    if (found != NULL) {
+        func_8072FCC4(found, sp73, func_8072FA14(arg0, PaaD, found, sp73), &sp6C);
+        PaaD->unk138 = sp6C;
+        PaaD->unk130 = found->unk0;
+        PaaD->unk134 = found->unk5;
+        PaaD->unk19C = 0;
+        PaaD->unk19E = 0xFFF;
+        arg0->unkB8 = 0.0f;
+        switch (found->unk6) {
+            case 0:
+                func_806EB0C0(0xC, NULL, arg1);
+                break;
+            case 1:
+                func_806EB0C0(0xB, NULL, arg1);
+                break;
+        }
+    }
+}
+*/
 
 u8 func_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
     s16 model2ArrayIndex;

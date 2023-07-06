@@ -1132,29 +1132,13 @@ void func_8062EFA0(void) {
     }
 }
 
-// Appears to parse the map geometry format!
-// Surprisingly doable
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F050.s")
 
 void func_8063C390(void);
 void func_8065E040(s32);
-/*
-? func_8062B3C4(void *, s32 *);
-? func_8062B478(s32);
-? func_8062F318();
-? func_8062F328(void *);
-? func_8062F3A0(void *, void *);
-? func_8062F420(void *, void *, void *);
-? func_80650ECC(void *);
-? func_80659110(s32);
-? func_8065996C(?);
-? func_8065CDA0(s32);
-? func_8065F1C0(void *);
-? func_80662B90(void *);
-? func_806637C0(void *);
-? func_80666090(void *);
-? func_8066C958(void *);
-*/
+
+void func_8062F328(s32 arg0);
 
 typedef struct {
     s32 unk0;
@@ -1224,7 +1208,6 @@ void func_8065996C(s16);
 
 /*
 void func_8062F050(MapGeometryHeader *arg0) {
-    s32 sp50;
     s32 *temp_a0;
     s32 *temp_a1;
     s32 *temp_v1;

@@ -517,7 +517,6 @@ typedef struct {
     s8 unk10;
 } AAD_80028E3C_2;
 
-
 /*
 // TODO: Very close
 void func_80028E3C(void) {
@@ -602,8 +601,67 @@ void func_80028E3C(void) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80029B9C.s")
 
-// Doable, actor17C nonsense
+// rodata, needs D_807F5FD4 shape, otherwise doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80029E54.s")
+
+/*
+? func_806F0C18(Actor *, s16 *);                    // extern
+extern s16 D_8002D8C8[];
+extern ? D_8002D8D4;
+extern f32 D_8002DDB8;
+extern s32 *D_807F5FD4;
+
+void func_80029E54(Actor *arg0) {
+    s16 *var_s2;
+    Actor *temp_v0;
+    Actor *temp_v0_2;
+    f32 temp_f22;
+    f32 var_f0;
+    s16 *a17C;
+    s32 temp_s7;
+    s32 var_s1;
+    s32 var_s4;
+    s8 temp_t7;
+    void *temp_a0;
+    void *aaD;
+
+    temp_f22 = D_8002DDB8;
+    temp_s7 = arg0->unk178;
+    var_s2 = &D_8002D8C8;
+    var_s1 = 1;
+    do {
+        if (func_80677FA8(ACTOR_MINIGAME_KRAZYKONGKLAMOUR_KONG, var_s2[var_s1]) != 0) {
+            temp_t7 = var_s1 - 1;
+            aaD = current_actor_pointer->additional_actor_data;
+            a17C = current_actor_pointer->unk17C;
+            a17C->unk0 = var_s2[var_s1];
+            aaD->unk0 = arg0;
+            aaD->unk4 = temp_t7;
+            temp_a0 = (((temp_s7 + (temp_t7 & 0xFF))->unk8 & 0x7F) * 0xC) + *D_807F5FD4 + 0xC;
+            current_actor_pointer->x_position = temp_a0->unk0;
+            current_actor_pointer->y_position = temp_a0->unk4;
+            current_actor_pointer->z_position = temp_a0->unk8;
+            current_actor_pointer->control_state = 0;
+            temp_v0_2 = D_807FBB44;
+            temp_v0_2->object_properties_bitfield |= 0x1000;
+            D_807FBB44->y_rotation = 0x800;
+            if (var_s1 != 6) {
+                func_806F0C18(D_807FBB44, a17C);
+                func_80614EBC(D_807FBB44, D_8002D8D4[var_s1]);
+            }
+            if (var_s1 != 6) {
+                var_f0 = 0.25f;
+            } else {
+                var_f0 = temp_f22;
+            }
+            D_807FBB44->animation_state->scale[0] = var_f0;
+            D_807FBB44->animation_state->scale[1] = var_f0;
+            D_807FBB44->animation_state->scale[2] = var_f0;
+        }
+        var_s1 += 1;
+    } while (var_s1 != 7);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_8002A010.s")
 

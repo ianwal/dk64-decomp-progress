@@ -960,19 +960,23 @@ void func_80643274(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643354.s")
-
+// Finally!!!
 typedef struct {
     f32 unk0;
     f32 unk4;
     f32 unk8;
-} Struct807F5FD4;
-extern Struct807F5FD4 **D_807F5FD4;
+} Struct807F5FD4_unk0;
 
-/*
+typedef struct {
+    Struct807F5FD4_unk0 *unk0;
+    Struct807F5FD4_unk0 *unk4;
+    s32 unk8;
+} Struct807F5FD4;
+extern Struct807F5FD4 *D_807F5FD4;
+
 void func_80643354(s32 arg0, u32 arg1, u32 arg2) {
     u32 sp24;
-    Struct807F5FD4 *temp_v0;
+    Struct807F5FD4_unk0 *temp_v0;
 
     if ((object_timer % arg2) == 0) {
         sp24 = (func_806119A0() / 10000) % arg1;
@@ -981,11 +985,10 @@ void func_80643354(s32 arg0, u32 arg1, u32 arg2) {
         func_8071498C(&func_80717D4C);
         func_807149B8(1);
         func_80714998(3);
-        temp_v0 = &D_807F5FD4[sp24];
+        temp_v0 = &D_807F5FD4->unk0[sp24];
         func_80714CC0(&D_8071FFA0, 1.5f, temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643440.s")
 
@@ -995,6 +998,56 @@ void func_806436A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
 
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806436E0.s")
+
+extern s32 D_8071FB54;
+
+int func_8071C004();
+
+typedef struct {
+    u32 unk0;
+    u32 unk4;
+} Struct806436E0_malloc;
+
+typedef struct {
+    Struct806436E0_malloc *unk0;
+} Struct806436E0_arg0;
+
+/*
+void func_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
+    s32 sp34;
+    s32 sp30;
+    s32 sp2C;
+    s32 var_a0;
+    s32 var_a1;
+    Struct806436E0_malloc *temp_v0;
+    Struct807F5FD4_unk0 *temp_v0_2;
+    Struct806436E0_malloc *var_v1;
+
+    if (arg0->unk0 == NULL) {
+        arg0->unk0 = malloc(sizeof(Struct806436E0_malloc));
+        var_v1 = arg0->unk0;
+        temp_v0->unk0 = 0;
+        temp_v0->unk4 = 0;
+    }
+    var_v1 = arg0->unk0;
+    if (var_v1->unk0 == 0) {
+        var_v1->unk4++;
+        if (((D_807F5FD4->unk4 - D_807F5FD4->unk0) / 12U) == var_v1->unk4) {
+            var_v1->unk4 = 0;
+        }
+        sp34 = D_807F5FD4->unk0[var_v1->unk4].unk0;
+        sp30 = D_807F5FD4->unk0[var_v1->unk4].unk4;
+        sp2C = D_807F5FD4->unk0[var_v1->unk4].unk8;
+        func_80714998(2);
+        func_807149B8(1);
+        func_80714950(0);
+        func_8071498C(&func_8071C004);
+        func_80714CC0(&D_8071FB54, 0.667f, sp34, sp30 + 0xA, sp2C);
+        var_v1->unk0 = 0x19;
+    }
+    var_v1->unk0--;
+}
+*/
 
 void func_8064384C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     ObjectModel2 *temp_v1 = &D_807F6000[func_80659470(arg1)];
