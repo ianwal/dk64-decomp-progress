@@ -112,7 +112,6 @@ int gameIsInMainMenuMode(void);
 int gameIsInAdventureMode(void);
 int gameIsInDKTheatreMode(void);
 int gameIsInQuitGameMode(void);
-void *func_80714CC0(void*, f32, f32, f32, f32);
 
 // countSetFlags(startIndex, length, flagType);
 s32 func_80731AA8(s32 startIndex, s32 length, u8 flagType);
@@ -335,8 +334,11 @@ void func_80714A28(u16 arg0);
 void func_80714A38(u8 arg0);
 void func_80714A58(u16 arg0);
 void func_80714A68(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
-void *func_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4);
-void *func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4);
+
+Struct80717D84 *func_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4);
+Struct80717D84 *func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4);
+Struct80717D84 *func_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+
 void func_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5);
 void func_807180F4(s32 arg0, s32 arg1);
 void func_80718124(f32 arg0, f32 arg1, f32 arg2, f32 arg3);
@@ -2056,6 +2058,6 @@ void alEvtqFlushType(ALEventQueue *evtq, s16 type);
 void alSeqpStop(ALSeqPlayer *seqp);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
-#define	ABS(d)		((d) > 0) ? (d) : -(d)
+#define	ABS(d)		(((d) > 0) ? (d) : -(d))
 
 #endif

@@ -401,11 +401,6 @@ void func_8068588C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5
     func_806858E8(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 }
 
-typedef struct {
-    u8 unk0[0x338 - 0x0];
-    Actor *unk338;
-} Struct806858E8;
-
 void func_806858E8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
     if (arg0 != NULL) {
         if (arg1 != 0) {
@@ -414,7 +409,7 @@ void func_806858E8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5
     }
     func_8071498C(&func_80718080);
     func_80714950(arg6);
-    ((Struct806858E8*)func_80714CC0(&D_8071FFA0, arg2, arg3, arg4 + 5.0f, arg5))->unk338 = arg0;
+    func_80714CC0(&D_8071FFA0, arg2, arg3, arg4 + 5.0f, arg5)->unk338 = arg0;
 }
 
 extern s32 D_8071FFA0; // TODO: Datatype
@@ -468,8 +463,35 @@ void func_80685D84(Actor *arg0) {
     }
 }
 
-// Returns struct from function call in a weird way... Doable once we figure out which struct is returned.
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80685E78.s")
+
+extern s32 D_8071FED0; // TODO: Datatype
+extern f64 D_80759B08;
+extern f64 D_80759B10;
+
+void func_807184F4(Struct80717D84 *arg0, s32 arg1);
+
+/*
+void func_80685E78(Actor *arg0) {
+    f32 sp28;
+    ActorAnimationState *temp_v0;
+
+    temp_v0 = arg0->animation_state;
+    if (temp_v0 != NULL) {
+        sp28 = temp_v0->scale_y / D_80759B08;
+    } else {
+        sp28 = 1.0;
+    }
+    func_80714998(3);
+    func_807149B8(1);
+    func_807149FC(1);
+    func_8071498C(&func_807184F4);
+    func_80714A28(4);
+    func_807149C8(0xC8, 0xFF, 0xFF, 0xC8);
+    func_80714CC0(&D_8071FED0, sp28 * D_80759B10, arg0->x_position, arg0->unkAC, arg0->z_position)->unk338 = arg0;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_80685F60.s")
 

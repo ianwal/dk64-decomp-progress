@@ -1259,7 +1259,7 @@ us,.code,func_8070E34C,508,no
 us,.code,func_806E3E40,884,no
 us,.code,func_8064BE80,216,no
 us,.code,func_8062DAF4,124,yes
-us,.code,func_80714D08,916,no
+us,.code,func_80714D08,916,yes
 us,.code,func_8073BA60,176,no
 us,.code,func_8062B478,440,yes
 us,.code,func_80652E58,100,yes

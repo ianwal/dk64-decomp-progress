@@ -2354,16 +2354,31 @@ typedef struct {
     s16 unk16;
 } Struct80717D84_unk330;
 
+typedef struct Struct80717D84 Struct80717D84;
+
 typedef struct {
-    u8 unk0[0x128 - 0x0];
+    void *unk0;
+    void *unk4;
+} Struct80717D84_unk0;
+
+struct Struct80717D84 {
+    Struct80717D84_unk0 unk0[4]; // TODO: How many?
+    u8 unk20;
+    u8 unk21[0x128 - 0x21];
     float unk128[2][4][4]; // TODO: How many?
-    u8 unk1A8[0x32C - 0x1A8];
+    u8 unk1A8[0x328 - 0x1A8];
+    void *unk328;
     u8 unk32C;
     u8 unk32D[0x330 - 0x32D];
     Struct80717D84_unk330 *unk330;
-    s32 unk334;
+    s8 unk334;
+    s8 unk335;
+    s8 unk336;
+    s8 unk337;
     Actor *unk338;
-    s32 unk33C;
+    s16 unk33C;
+    s8 unk33E;
+    s8 unk33F;
     f32 unk340; // X
     f32 unk344; // Y
     f32 unk348; // Z
@@ -2382,9 +2397,15 @@ typedef struct {
     };
     f32 unk360; // X
     f32 unk364; // Y
-    u8 unk368[0x36D - 0x368];
+    s16 unk368;
+    u8 unk36A;
+    u8 unk36B;
+    u8 unk36C;
     u8 unk36D;
-    u8 unk36E[0x384 - 0x36E];
+    u8 unk36E;
+    u8 unk36F;
+    u8 unk370[0x380 - 0x370];
+    s32 unk380;
     union {
         Struct80717D84_unk384 *unk384;
         Struct80717D84_unk384_f32 *unk384_f32;
@@ -2392,16 +2413,36 @@ typedef struct {
         Struct80717D84_unk384_80717100 *unk384_80717100;
         Struct80717D84_unk384_80717814 *unk384_80717814;
     };
-    s32 unk388;
+    s16 unk388;
+    s8 unk38A;
+    s8 unk38B;
     u16 unk38C;
-} Struct80717D84;
+    u16 unk38E;
+    u16 unk390;
+    u16 unk392;
+    u16 unk394;
+    Struct80717D84 *unk398; // Prev?
+    Struct80717D84 *unk39C; // Next?
+};
 
-typedef struct Struct807FDB00 Struct807FDB00; 
+typedef struct Struct807FDB00 Struct807FDB00;
 
 struct Struct807FDB00 {
-    s32 unk0;
+    void *unk0;
     s32 unk4;
-    u8 unk8[0x24 - 0x8];
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+    u8 unkF;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    u8 unk14[0x24 - 0x14];
     Struct807FDB00 *next;
 };
 

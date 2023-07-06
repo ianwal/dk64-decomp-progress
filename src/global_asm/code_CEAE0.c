@@ -5404,9 +5404,194 @@ void func_806DF670(s16 *arg0, s16 arg1, s16 arg2) {
     }
 }
 
-// Surprisingly doable, quite large though
-// controlStateControl()
+// doable, stack regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DF6D4.s")
+
+/*
+u16 func_806DFF34(u16, s32 *);
+extern s32 D_80750FF0;
+extern f64 D_8075D0E0;
+extern f32 D_8075D0E8;
+
+typedef struct {
+    u16 unk0;
+    s8 unk2;
+    s8 unk3; // Used
+} Struct807ECDEC;
+
+extern Struct807ECDEC *D_807ECDEC;
+
+typedef struct {
+    void (*unk0)(void); // Start Button Pressed Handler
+    void (*unk4)(void); // Always Called (before input handlers)
+    void (*unk8)(void); // A Button Pressed Handler
+    void (*unkC)(void); // B Button Pressed Handler
+    void (*unk10)(void); // Z Button Pressed Handler
+    void (*unk14)(void); // A Button Released Handler
+    void (*unk18)(void); // B Button Released Handler
+    void (*unk1C)(void); // Z Button Released Handler
+    void (*unk20)(void); // L Button Pressed Handler
+    void (*unk24)(void); // R Button Pressed Handler
+    void (*unk28)(void);
+    void (*unk2C)(void); // R Button Released Handler
+    void (*unk30)(void); // C-Up Pressed Handler
+    void (*unk34)(void); // C-Left Pressed Handler
+    void (*unk38)(void); // C-Right Pressed Handler
+    void (*unk3C)(void); // C-Down Pressed Handler
+    void (*unk40)(void); // Always Called (after input handlers)
+} ControlStateInputHandler;
+extern ControlStateInputHandler D_80751004[]; // TODO: rodata?
+
+extern u16 D_807ECDF0;
+
+s32 func_806DF6D4(s32 controlState) {
+    ControlStateInputHandler *inputHandler;
+    f32 temp_f18;
+    f32 var_f14; // sp44
+    f32 var_f2; // sp40
+    f32 temp_f8;
+    f32 var_f16; // sp38
+    s16 var_t0;
+    s32 var_a0;
+    s32 oldControlState; // sp2C
+    f32 temp_f12;
+
+    oldControlState = D_807FBB48->control_state;
+
+    // Read button inputs
+    D_807FD610[cc_player_index].unk2A = func_806DFF34(D_807ECDEC->unk0, &D_80750FF0);
+    D_807FD610[cc_player_index].unk2C = func_806DFF34(D_807ECDF0, &D_80750FF0);
+
+    // Buttons disabled?
+    if (extra_player_info_pointer->unk1F4 & 0x20) {
+        D_807FD610[cc_player_index].unk2A = 0;
+        D_807FD610[cc_player_index].unk2C = 0;
+    }
+
+    // Read joystick inputs and clamp between -80 and 80
+    D_807ECDEC->unk2 = MIN(MAX(D_807ECDEC->unk2, -80), 80);
+    D_807ECDEC->unk3 = MIN(MAX(D_807ECDEC->unk3, -80), 80);
+    D_807FD610[cc_player_index].unk2E = D_807ECDEC->unk2;
+    D_807FD610[cc_player_index].unk2F = D_807ECDEC->unk3;
+
+    // Joystick disabled?
+    if (extra_player_info_pointer->unk1F4 & 0x20) {
+        D_807FD610[cc_player_index].unk2E = 0;
+        D_807FD610[cc_player_index].unk2F = 0;
+    }
+    // Joystick movement halved?
+    if (extra_player_info_pointer->unk1F0 & 0x100) {
+        D_807FD610[cc_player_index].unk2E *= 0.5;
+        D_807FD610[cc_player_index].unk2F *= 0.5;
+    }
+    // Joystick inverted?
+    if (extra_player_info_pointer->unk1F0 & 0x80) {
+        D_807FD610[cc_player_index].unk2E = -D_807FD610[cc_player_index].unk2E;
+        D_807FD610[cc_player_index].unk2F = -D_807FD610[cc_player_index].unk2F;
+    }
+
+    // Compute absolute joystick magnitude
+    D_807FD610[cc_player_index].unk30 = ABS(D_807FD610[cc_player_index].unk2E);
+    D_807FD610[cc_player_index].unk31 = ABS(D_807FD610[cc_player_index].unk2F);
+
+    // Joystick deadzone
+    if (D_807FD610[cc_player_index].unk30 < 5 && D_807FD610[cc_player_index].unk31 < 5) {
+        D_807FD610[cc_player_index].unk2E = 0;
+        D_807FD610[cc_player_index].unk30 = 0;
+        D_807FD610[cc_player_index].unk2F = 0;
+        D_807FD610[cc_player_index].unk31 = 0;
+    }
+    if (D_807FD610[cc_player_index].unk30 < 2) {
+        D_807FD610[cc_player_index].unk2E = 0;
+        D_807FD610[cc_player_index].unk30 = 0;
+    }
+    if (D_807FD610[cc_player_index].unk31 < 2) {
+        D_807FD610[cc_player_index].unk2F = 0;
+        D_807FD610[cc_player_index].unk31 = 0;
+    }
+    var_f14 = D_807FD610[cc_player_index].unk30 * D_807FD610[cc_player_index].unk30;
+    var_f2 = D_807FD610[cc_player_index].unk31 * D_807FD610[cc_player_index].unk31;
+    var_f16 = sqrtf(var_f14 + var_f2);
+    if (var_f2 < var_f14) {
+        temp_f12 = var_f14;
+        var_f14 = var_f2;
+        var_f2 = temp_f12;
+    }
+    if (var_f2 != 0.0f) {
+        var_f16 *= (f32)(1.0 - ((var_f14 / var_f2) * D_8075D0E0));
+    }
+    if (var_f16 > 70.0f) {
+        var_f16 = 70.0f;
+    }
+    temp_f8 = D_807FD610[cc_player_index].unk4;
+    D_807FD610[cc_player_index].unk4 = var_f16;
+    D_807FD610[cc_player_index].unkC = var_f16 - temp_f8;
+    if (var_f16 != 0.0f) {
+        D_807FD610[cc_player_index].unk0 = 0;
+        D_807FD610[cc_player_index].unk8 = (var_f16 - 5.0f) / 65.0f;
+    } else {
+        D_807FD610[cc_player_index].unk0++;
+        D_807FD610[cc_player_index].unk8 = 0.0f;
+    }
+    if (var_f16 != 0.0f) {
+        var_t0 = (func_80611BB4(D_807FD610[cc_player_index].unk2E, -D_807FD610[cc_player_index].unk2F) * 4096.0f) / D_8075D0E8;
+        D_807FD610[cc_player_index].unk28 = (character_change_array[cc_player_index].unk2C8 + var_t0);
+        D_807FD610[cc_player_index].unk28 &= 0xFFF;
+    } else {
+        var_t0 = D_807FD610[cc_player_index].unk20[0];
+    }
+    for (var_a0 = 3; var_a0 != 0; var_a0--) {
+        D_807FD610[cc_player_index].unk20[var_a0] = D_807FD610[cc_player_index].unk20[var_a0 - 1];
+        D_807FD610[cc_player_index].unk10[var_a0] = D_807FD610[cc_player_index].unk10[var_a0 - 1];
+    }
+    D_807FD610[cc_player_index].unk20[var_a0] = var_t0;
+    D_807FD610[cc_player_index].unk10[var_a0] = var_f16;
+
+    // Handle inputs for this control state
+    inputHandler = &D_80751004[controlState];
+    inputHandler->unk4();
+    if (D_807FD610[cc_player_index].unk2A & START_BUTTON) {
+        inputHandler->unk0();
+    }
+    if (D_807FD610[cc_player_index].unk2A & A_BUTTON) {
+        inputHandler->unk8();
+    } else {
+        inputHandler->unk14();
+    }
+    if (D_807FD610[cc_player_index].unk2A & B_BUTTON) {
+        inputHandler->unkC();
+    } else {
+        inputHandler->unk18();
+    }
+    if (D_807FD610[cc_player_index].unk2A & Z_TRIG) {
+        inputHandler->unk10();
+    } else {
+        inputHandler->unk1C();
+    }
+    if (D_807FD610[cc_player_index].unk2A & R_TRIG) {
+        inputHandler->unk24();
+    } else {
+        inputHandler->unk2C();
+    }
+    if (D_807FD610[cc_player_index].unk2A & L_TRIG) {
+        inputHandler->unk20();
+    }
+    if (D_807FD610[cc_player_index].unk2A & U_CBUTTONS) {
+        inputHandler->unk30();
+    }
+    if (D_807FD610[cc_player_index].unk2A & D_CBUTTONS) {
+        inputHandler->unk3C();
+    }
+    if (D_807FD610[cc_player_index].unk2A & L_CBUTTONS) {
+        inputHandler->unk34();
+    }
+    if (D_807FD610[cc_player_index].unk2A & R_CBUTTONS) {
+        inputHandler->unk38();
+    }
+    inputHandler->unk40();
+    return D_807FBB48->control_state - oldControlState;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806DFF34.s")
 

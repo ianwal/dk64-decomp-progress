@@ -52,7 +52,7 @@ extern s8 menu_selection_available;
 extern f32 menu_icon_transition_scale;
 extern f32 DK_barrel_scale;
 
-void func_80030894(MenuAdditionalActorData*,s32,u16,u8,f32,u8,u8); // Param 1 is ActorAdditionalData
+void func_80030894(MenuAdditionalActorData*,s32,u16,u16,f32,u8,u8); // Param 1 is ActorAdditionalData
 
 void func_80027E10(void) {
     s32 phi_a0 = 1;
@@ -575,11 +575,89 @@ s32 func_8002AD50(s32 arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002B708.s")
 
-// Huge, fiddly struct negative offset stuff
-// Reasonably doable though
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002C0C8.s")
+extern s16 D_8003386C[];
+extern f32 D_80033CDC;
+extern f32 D_80033CE0;
+extern f32 D_80033CE4;
+extern s8 D_80033FAD;
+extern s8 D_80033FAE;
+extern s8 D_80033FAF;
+extern s32 D_80720D5C;
+extern s32 D_80720D80;
+extern s32 D_807211AC;
+extern s8 D_8074451C;
+extern s16 D_80744544;
+
+typedef struct {
+    u8 unk0[0x17 - 0x0];
+    u8 unk17;
+} AAD_8002C0C8;
+
+typedef struct {
+    Actor *unk0;
+    s32 unk4;
+    s8 unk8;
+} AAD_MultiplayerMenuKong;
 
 void func_8002F8EC();
+
+void func_8002C0C8(Actor *arg0, s32 arg1) {
+    s32 var_s1;
+    s32 i;
+    AAD_8002C0C8 *temp_s6;
+    AAD_MultiplayerMenuKong *temp_v1;
+
+    temp_s6 = arg0->additional_actor_data;
+    func_8002F8EC();
+    D_80033FAF = 1;
+    var_s1 = 0x1D;
+    for (i = 1; i < 5; i++) {
+        if (isFlagSet(var_s1, 1) != 0) {
+            D_80033FAF |= 1 << i;
+        }
+        var_s1 += 1;
+    }
+    if (D_80744544 & 1) {
+        D_80033FAF |= 0x20;
+    }
+    D_80033FAE = 0;
+    D_80033FAD = 0;
+    if (D_8076A104 != 0) {
+        if (D_8074451C >= 5) {
+            D_8074451C = 0;
+        }
+    }
+    temp_s6->unk17 = D_8074451C;
+    for (i = 0; i < 4; i++) {
+        Actor17C *temp;
+        func_80677FA8(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_8003386C[D_8076A0E4[i] & 0x7F]);
+        temp = D_807FBB44->unk17C;
+        temp->unk0_s16[0] = D_8003386C[D_8076A0E4[i] & 0x7F];
+        D_807FBB44->control_state = i;
+        D_807FBB44->control_state_progress = D_8076A0E4[i] & 0x7F;
+        temp_v1 = D_807FBB44->additional_actor_data;
+        temp_v1->unk0 = arg0;
+        temp_v1->unk8 = 0;
+    }
+    func_80030894(temp_s6, &D_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
+    func_80030894(temp_s6, &D_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
+    func_80030894(temp_s6, &D_80720C34, 0xA0, 0x7D, 0.75f, 2, 4);
+    func_80030894(temp_s6, &D_80720D80, 0xA0, 0x10, 0.5f, 2, 0);
+    func_80030894(temp_s6, &D_807211AC, 0xA0, 0xDC, 0.75f, 2, 0);
+    func_80030894(temp_s6, &D_807211D0, 1, 1, D_80033CDC, 2, 0xF);
+    func_80030894(temp_s6, &D_807211D0, 2, 2, D_80033CE0, 2, 0xF);
+    func_80030894(temp_s6, &D_807211D0, 3, 3, D_80033CE4, 2, 0xF);
+    func_80030894(temp_s6, &D_80720CF0, 0x122, 0xD2, 0.75f, 2, 0xB);
+    func_80030894(temp_s6, &D_80720D14, 0x23, 0xD2, 0.75f, 2, 0xB);
+    func_80030894(temp_s6, &D_80720C34, 0xA0, 0x16D, 0.75f, 2, 4);
+    func_80030894(temp_s6, &D_80720D5C, 0xA0, 0xDC, 0.5f, 2, 0xB);
+    func_80030894(temp_s6, &D_80720D80, 0xA0, 0x10, 0.5f, 2, 0x13);
+    func_80030894(temp_s6, &D_80720CF0, 0x122, 0xD2, 0.75f, 2, 0xD);
+    func_80030894(temp_s6, &D_80720D14, 0x23, 0xD2, 0.75f, 2, 0xD);
+    func_80030894(temp_s6, &D_80720C34, 0xA0, 0x23F, 0.75f, 2, 4);
+    func_80030894(temp_s6, &D_80720D5C, 0xA0, 0xDC, 0.5f, 2, 0xD);
+}
+
 void func_8002FC1C(Actor*, MenuAdditionalActorData*, s32);
 
 void func_8002C584(Actor *arg0, s32 arg1) {

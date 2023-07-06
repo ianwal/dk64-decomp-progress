@@ -79,7 +79,7 @@ extern f32 D_8075EA50;
 
 extern Struct807FDB00 *D_807FDB00;
 extern Struct807FDB04 *D_807FDB04;
-extern s32 D_807FDB08;
+extern Struct80717D84 *D_807FDB08;
 extern u8 D_807FDB0C;
 extern u8 D_807FDB0D;
 extern u8 D_807FDB0E;
@@ -87,7 +87,7 @@ extern u8 D_807FDB0F;
 extern s32 D_807FDB10;
 extern void *D_807FDB14; // TODO: Function pointer
 extern u8 D_807FDB18;
-extern u16 D_807FDB1A;
+extern s16 D_807FDB1A;
 extern u8 D_807FDB1C;
 extern u8 D_807FDB1D;
 extern f32 D_807FDB20;
@@ -98,14 +98,14 @@ extern s32 D_807FDB30;
 extern u16 D_807FDB34;
 extern u16 D_807FDB36;
 extern s16 D_807FDB38;
-extern u16 D_807FDB3A;
+extern s16 D_807FDB3A;
 extern s16 D_807FDB3C;
 extern s16 D_807FDB3E;
 extern s16 D_807FDB40;
 extern s16 D_807FDB42;
 
 u32 func_806119A0();
-void *func_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, s32);
+Struct80717D84 *func_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, u8);
 void func_80714A9C(void);
 void func_80718380(Struct80717D84 *arg0, s8 *arg1);
 int func_80717404(); // TODO: Signature
@@ -251,7 +251,7 @@ void func_80714A9C(void) {
     D_807FDB3A = 0x258;
 }
 
-void *func_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
+Struct80717D84 *func_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
     f32 sp3C;
     f32 sp38;
     f32 sp34;
@@ -260,7 +260,7 @@ void *func_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
     return func_80714D08(arg0, arg1, sp3C, sp38, sp34, 0, arg2, arg3, arg4);
 }
 
-void *func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
+Struct80717D84 *func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
     f32 sp3C;
     f32 sp38;
     f32 sp34;
@@ -272,12 +272,124 @@ void *func_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
     return func_80714D08(arg0, arg1, sp3C, sp38, sp34, arg2, 0, arg3, arg4);
 }
 
-void *func_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
+Struct80717D84 *func_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return func_80714D08(arg0, arg1, arg2, arg3, arg4, 0, 0, 0, 0);
 }
 
-// Doable, init for the 0x374 struct thing
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_80714D08.s")
+extern u8 D_80750AB4;
+extern Struct807FDB00 *D_807FDB00;
+extern u8 D_807FDB0C;
+extern u8 D_807FDB0D;
+extern u8 D_807FDB0E;
+extern u8 D_807FDB0F;
+extern u8 D_807FDB18;
+extern u8 D_807FDB1D;
+extern f32 D_807FDB20;
+extern f32 D_807FDB24;
+extern u8 D_807FDB28;
+extern u16 D_807FDB36;
+extern s16 D_807FDB3C;
+
+void func_80714778(f32);
+
+Struct80717D84 *func_80714D08(void *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, s32 arg6, s32 arg7, u8 arg8) {
+    Struct80717D84 *sp2C;
+    s32 i;
+    s32 var_v0;
+    Struct807FDB00 *var_s0;
+    Struct80717D84 *var_s0_2;
+
+    func_80714778(arg1);
+    var_s0 = D_807FDB00;
+    var_v0 = 0;
+    while (!var_v0 && var_s0 != NULL) {
+        if (arg0 == var_s0->unk0) {
+            var_v0 = 1;
+        } else {
+            var_s0 = var_s0->next;
+        }
+    }
+    if (var_v0 == 0) {
+        func_80714A9C();
+        return NULL;
+    }
+    sp2C = malloc(sizeof(Struct80717D84));
+    if (D_807FDB04 != NULL) {
+        D_807FDB08->unk39C = sp2C;
+        sp2C->unk398 = D_807FDB08;
+    } else {
+        D_807FDB04 = sp2C;
+        sp2C->unk398 = NULL;
+    }
+    D_807FDB08 = sp2C;
+    if (D_807FDB1D != 0) {
+        arg2 *= 4.0f;
+        arg3 *= 4.0f;
+        arg4 *= 4.0f;
+        arg1 *= 4.0f;
+        D_807FDB20 *= 4.0f;
+        D_807FDB24 *= 4.0f;
+    }
+    sp2C->unk340 = arg2;
+    sp2C->unk344 = arg3;
+    sp2C->unk348 = arg4;
+    if (D_807FDB28 != 0) {
+        sp2C->unk360 = D_807FDB20;
+        sp2C->unk364 = D_807FDB24;
+    } else {
+        sp2C->unk360 = arg1;
+        sp2C->unk364 = arg1;
+    }
+    if (D_807FDB0F != 0) {
+        sp2C->unk36A = D_807FDB0C;
+        sp2C->unk36B = D_807FDB0D;
+        sp2C->unk36C = D_807FDB0E;
+        sp2C->unk36D = D_807FDB0F;
+    } else {
+        sp2C->unk36A = var_s0->unk10;
+        sp2C->unk36B = var_s0->unk11;
+        sp2C->unk36C = var_s0->unk12;
+        sp2C->unk36D = var_s0->unk13;
+    }
+    sp2C->unk36E = D_807FDB18;
+    sp2C->unk36F = D_807FDB1D;
+    sp2C->unk368 = D_807FDB1A;
+    sp2C->unk380 = var_s0->unk8 * var_s0->unk9;
+    sp2C->unk334 = arg8;
+    sp2C->unk338 = arg5;
+    sp2C->unk33C = arg6;
+    sp2C->unk33E = arg7;
+    sp2C->unk34E = D_807FDB30;
+    sp2C->unk350 = D_807FDB1C;
+    sp2C->unk351 = 0;
+    sp2C->unk354 = D_807FDB10;
+    sp2C->unk358 = 0;
+    sp2C->unk35C = D_807FDB2C;
+    if (D_807FBB64 & 0x100) {
+        sp2C->unk34C = 0x7D0;
+    } else {
+        sp2C->unk34C = D_807FDB3A;
+    }
+    sp2C->unk330 = var_s0;
+    sp2C->unk39C = 0;
+    sp2C->unk328 = D_807FDB14;
+    sp2C->unk384 = 0;
+    sp2C->unk388 = D_807FDB38;
+    sp2C->unk38A = -1;
+    sp2C->unk38C = D_807FDB36;
+    sp2C->unk38E = D_807FDB3C;
+    sp2C->unk390 = D_807FDB3E;
+    sp2C->unk392 = D_807FDB40;
+    sp2C->unk394 = D_807FDB42;
+    for (i = 0; i < D_80750AB4; i++) {
+        sp2C->unk0[i].unk0 = malloc(0x200);
+        sp2C->unk0[i].unk4 = malloc(0x200);
+    }
+    sp2C->unk20 = D_80750AB4;
+    func_8071509C(sp2C);
+    func_80714A9C();
+    return sp2C;
+}
 
 // Doable, needs a struct array size 0x10 at Struct807FDB04->unk28
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071509C.s")
