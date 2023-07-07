@@ -189,8 +189,54 @@ void func_800283D4(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80028AD0.s")
 
-// Doable, looks like an unrolled loop
+// close, doable, unrolled loop
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80028E20.s")
+
+extern f32 D_8002FFA4;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+} Struct80028E20_arg0;
+
+/*
+void func_80028E20(Struct80028E20_arg0 *arg0) {
+    f32 y;
+    f32 z;
+    f32 d;
+    f32 dx;
+    f32 dy;
+    f32 dz;
+    f32 x;
+    f32 lowest;
+    s32 j;
+    s32 count;
+    s32 i;
+    Struct807F5FD4_unk0 *var_a2;
+
+    count = (D_807F5FD4->unk0[1] - D_807F5FD4->unk0[0]);
+    var_a2 = D_807F5FD4->unk0[0];
+    lowest = D_8002FFA4;
+    x = current_actor_pointer->x_position;
+    y = current_actor_pointer->y_position;
+    z = current_actor_pointer->z_position;
+    for (i = 0; i < 3; i++) {
+        for (j = 0; j < count; j++) {
+            dx = x - var_a2[j].unk0;
+            dy = y - var_a2[j].unk4;
+            dz = z - var_a2[j].unk8;
+            d = (dx * dx) + (dy * dy) + (dz * dz);
+            if (d < lowest) {
+                arg0->unk2 = j;
+                arg0->unk0 = i;
+                arg0->unk1 = i;
+                lowest = d;
+            }
+        }
+    }
+}
+*/
 
 s32 func_8072177C(void *, s16, s16, s16, s32, s32, s32, s32, s32);
 

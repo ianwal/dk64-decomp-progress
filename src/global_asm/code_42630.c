@@ -973,7 +973,35 @@ void func_80643354(s32 arg0, u32 arg1, u32 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643440.s")
+typedef struct {
+    s16 unk0;
+} Struct80643440_arg0_unk0;
+
+typedef struct {
+    Struct80643440_arg0_unk0 *unk0;
+} Struct80643440_arg0;
+
+void func_80643440(Struct80643440_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
+    f32 temp_f24;
+    Struct80643440_arg0_unk0 *var_v1;
+
+    if (arg0->unk0 == NULL) {
+        arg0->unk0 = malloc(sizeof(Struct80643440_arg0_unk0));
+        var_v1 = arg0->unk0;
+        var_v1->unk0 = 0;
+    }
+    var_v1 = arg0->unk0;
+    temp_f24 = D_807F5FD4->unk0[1][0].unk4 + ((D_807F5FD4->unk0[1][1].unk4 - D_807F5FD4->unk0[1][0].unk4) * ((func_80612794(var_v1->unk0) * 0.5) + 0.5));
+    func_80659610(1500);
+    func_8065A708(D_807F5FD4->unk0[1][0].unk0, temp_f24, D_807F5FD4->unk0[1][0].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
+    temp_f24 = D_807F5FD4->unk0[1][2].unk4 + ((D_807F5FD4->unk0[1][3].unk4 - D_807F5FD4->unk0[1][2].unk4) * ((func_80612794(var_v1->unk0 + 1300) * 0.5) + 0.5));
+    func_80659610(1500);
+    func_8065A708(D_807F5FD4->unk0[1][2].unk0, temp_f24, D_807F5FD4->unk0[1][2].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
+    temp_f24 = D_807F5FD4->unk0[1][4].unk4 + ((D_807F5FD4->unk0[1][5].unk4 - D_807F5FD4->unk0[1][4].unk4) * ((func_80612794(var_v1->unk0 + 2600) * 0.5) + 0.5));
+    func_80659610(1500);
+    func_8065A708(D_807F5FD4->unk0[1][4].unk0, temp_f24, D_807F5FD4->unk0[1][4].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
+    var_v1->unk0 += 0x32;
+}
 
 void func_806436A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_80643354(0, arg2, arg3);

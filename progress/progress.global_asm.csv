@@ -1383,7 +1383,7 @@ us,.code,func_80692E50,1100,no
 us,.code,func_80727678,584,no
 us,.code,func_806D2AA0,240,yes
 us,.code,func_806F1C04,684,no
-us,.code,func_80643440,612,no
+us,.code,func_80643440,612,yes
 us,.code,func_8066E664,100,yes
 us,.code,func_80661658,72,yes
 us,.code,func_80602430,44,yes
