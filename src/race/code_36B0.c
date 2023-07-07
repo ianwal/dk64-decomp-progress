@@ -160,11 +160,11 @@ f32 func_80027BD0(u8 *arg0, Struct80027BD0_arg1 *arg1, Struct80027BD0_arg2 *arg2
 */
 
 void func_80027C60(void) {
-    s32 phi_s0;
+    s32 i;
 
-    for (phi_s0 = 1; phi_s0 != 3; phi_s0++) {
+    for (i = 1; i != 3; i++) {
         func_807149B8(1);
-        func_80714C08(&D_80720120, 1.0f, current_actor_pointer, phi_s0, 0);
+        func_80714C08(&D_80720120, 1.0f, current_actor_pointer, i, 0);
     }
 }
 

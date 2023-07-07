@@ -843,8 +843,6 @@ void func_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80642C78.s")
 
-u32 func_806119A0();
-
 /*
 void func_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
@@ -898,7 +896,6 @@ void func_80642E34(s32 **arg0, s16 arg1, s16 arg2, s32 arg3) {
     }
 }
 
-u32 func_806119A0();
 extern f64 D_80758938;
 extern f64 D_80758940;
 extern f64 D_80758948;
@@ -982,31 +979,26 @@ void func_806436A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_80643354(0, arg2, arg3);
 }
 
-// Doable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806436E0.s")
-
 extern s32 D_8071FB54;
 
 int func_8071C004();
 
 typedef struct {
     u32 unk0;
-    u32 unk4;
+    s32 unk4;
 } Struct806436E0_malloc;
 
 typedef struct {
     Struct806436E0_malloc *unk0;
 } Struct806436E0_arg0;
 
-/*
 void func_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
+    Struct807F5FD4_unk0 *temp_v0_2;
+    Struct806436E0_malloc *var_v1;
     s32 sp34;
     s32 sp30;
     s32 sp2C;
-    s32 var_a0;
-    s32 var_a1;
-    Struct807F5FD4_unk0 *temp_v0_2;
-    Struct806436E0_malloc *var_v1;
+    s32 count;
 
     if (arg0->unk0 == NULL) {
         var_v1 = malloc(sizeof(Struct806436E0_malloc));;
@@ -1016,8 +1008,9 @@ void func_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
     }
     var_v1 = arg0->unk0;
     if (var_v1->unk0 == 0) {
+        count = (D_807F5FD4->unk0[1] - D_807F5FD4->unk0[0]);
         var_v1->unk4++;
-        if (((D_807F5FD4->unk0[1] - D_807F5FD4->unk0[0])) == var_v1->unk4) {
+        if (count == var_v1->unk4) {
             var_v1->unk4 = 0;
         }
         temp_v0_2 = &D_807F5FD4->unk0[0][var_v1->unk4];
@@ -1033,7 +1026,6 @@ void func_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
     }
     var_v1->unk0--;
 }
-*/
 
 void func_8064384C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     ObjectModel2 *temp_v1 = &D_807F6000[func_80659470(arg1)];
@@ -1232,48 +1224,28 @@ void func_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-// needs shape for D_807F5FD4
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806450C0.s")
-
-/*
-u32 func_806119A0();
-extern ? D_80718188;
+extern s32 D_80718188;
 extern f32 D_807480E8;
 extern u8 D_807480EF;
+extern s32 D_80720CD8;
 
-// TODO: Needs shape for D_807F5FD4
-void func_806450C0(s32 arg0, ? arg1, s16 arg2, s16 arg3) {
-    u32 sp34;
-    f32 sp30;
-    s32 sp2C;
-    s32 *temp_a0;
-    s32 temp_a1;
-    s32 temp_t1;
+void func_806450C0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     u32 temp_hi;
-    void *temp_a3;
-    void *temp_v0;
+    f32 sp30;
 
     if (((func_806119A0() / 10000) % 10) == 0) {
         temp_hi = (func_806119A0() / 10000) % arg3;
-        temp_t1 = arg2 * 4;
-        sp34 = temp_hi;
-        temp_a0 = D_807F5FD4 + temp_t1;
-        temp_a1 = temp_hi * 0xC;
-        sp30 = (*temp_a0 + temp_a1)->unk4;
-        temp_a3 = *temp_a0 + temp_a1;
-        sp2C = temp_t1;
-        if (func_80667110(temp_a3->unk0, temp_a3->unk8, &sp30) != 0) {
+        sp30 = D_807F5FD4->unk0[arg2][temp_hi].unk4;
+        if (func_80667110(D_807F5FD4->unk0[arg2][temp_hi].unk0, D_807F5FD4->unk0[arg2][temp_hi].unk8, &sp30) != 0) {
             func_80714950(sp30 + 2.0);
             func_8071498C(&func_80718188);
             func_807149FC(-1);
             func_807149B8(1);
             func_807149C8(0xFF, 0xFF, 0xFF, D_807480EF);
-            temp_v0 = *(D_807F5FD4 + sp2C) + (sp34 * 0xC);
-            func_80714CC0(&D_80720CD8, D_807480E8, temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
+            func_80714CC0(&D_80720CD8, D_807480E8, D_807F5FD4->unk0[arg2][temp_hi].unk0, D_807F5FD4->unk0[arg2][temp_hi].unk4, D_807F5FD4->unk0[arg2][temp_hi].unk8);
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645238.s")
 
