@@ -2611,82 +2611,73 @@ void func_8002E158(s32 arg0) {
 }
 #endif
 
-// regalloc, stack, close
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002E3D4.s")
-
 extern f32 D_8004AB24;
 extern u8 D_80032470; // imageData
 extern u8 D_800326B8; // imageData
 extern u8 D_80032900; // imageData
 
-/*
 void func_8002E3D4(s32 arg0) {
-    s32 temp_a2;
-    ArcadeStruct1 *temp_v1_3;
-    ArcadeStruct1 *var_a1;
+    s32 newFlameIndex;
 
     if (arcade_game_state == 0) {
-        var_a1 = &D_8004BCD0[arg0];
         D_8004BCD0[arg0].unk1C--;
-        if (var_a1->unk1C >= 0x15) {
-            var_a1->unk1C = func_80024644() & 0xF;
-            var_a1->unk1D = var_a1->unk1D == 0;
+        if (D_8004BCD0[arg0].unk1C >= 0x15) {
+            D_8004BCD0[arg0].unk1C = func_80024644() & 0xF;
+            D_8004BCD0[arg0].unk1D = !(D_8004BCD0[arg0].unk1D);
         }
-        switch (var_a1->unk19) {
+        switch (D_8004BCD0[arg0].unk19) {
             case 2:
-                switch (var_a1->unk1D) {
+                switch (D_8004BCD0[arg0].unk1D) {
                     case 0:
-                        var_a1->unk14 = &D_80032228;
+                        D_8004BCD0[arg0].unk14 = &D_80032228;
                         break;
                     case 1:
-                        var_a1->unk14 = &D_80032470;
+                        D_8004BCD0[arg0].unk14 = &D_80032470;
                         break;
                 }
-                temp_a2 = func_800246C8(D_8004A76C, 5.0f);
+                newFlameIndex = func_800246C8(D_8004A76C, 5.0f);
                 if (arcade_background_visual == 4) {
-                    if (var_a1->unk10++ == (0x64 - (temp_a2 * 0x14))) {
-                        if (arcade_get_object_type_count(2) < temp_a2) {
-                            var_a1->unk19 = 3;
-                            var_a1->unk10 = 0.0f;
-                            return;
+                    if (D_8004BCD0[arg0].unk10++ == (0x64 - (newFlameIndex * 0x14))) {
+                        if (arcade_get_object_type_count(2) < newFlameIndex) {
+                            D_8004BCD0[arg0].unk19 = 3;
+                            D_8004BCD0[arg0].unk10 = 0.0f;
                         }
                     }
                 }
                 break;
             case 3:
-                if (var_a1->unk10++ > 40.0f) {
-                    var_a1->unk19 = 2;
-                    var_a1->unk10 = 0.0f;
-                    temp_v1_3 = &D_8004BCD0[func_80024828()];
-                    *temp_v1_3 = arcade_flame_enemy_obj_template;
-                    temp_v1_3->unk19 = 3;
-                    temp_v1_3->y_velocity = -1.0f;
+                if (D_8004BCD0[arg0].unk10++ > 40.0f) {
+                    D_8004BCD0[arg0].unk19 = 2;
+                    D_8004BCD0[arg0].unk10 = 0;
+                    newFlameIndex = func_80024828();
+                    D_8004BCD0[newFlameIndex] = arcade_flame_enemy_obj_template;
+                    D_8004BCD0[newFlameIndex].unk19 = 3;
+                    D_8004BCD0[newFlameIndex].y_velocity = -1;
                     if (arcade_background_visual == 1) {
-                        temp_v1_3->x_velocity = D_8004AB24;
+                        D_8004BCD0[newFlameIndex].x_velocity = D_8004AB24;
                     } else {
-                        if (D_8004BCD0[D_8004C71F].x_position < 160.0f) {
-                            temp_v1_3->x_velocity = -0.5f;
+                        if (D_8004BCD0[D_8004C71F].x_position < 160) {
+                            D_8004BCD0[newFlameIndex].x_velocity = -0.5f;
                         } else {
-                            temp_v1_3->x_velocity = 0.5f;
+                            D_8004BCD0[newFlameIndex].x_velocity = 0.5f;
                         }
-                        temp_v1_3->unk1A = 0;
-                        temp_v1_3->x_position = 160.0f;
-                        temp_v1_3->y_position = 135.0f;
+                        D_8004BCD0[newFlameIndex].unk1A = 0;
+                        D_8004BCD0[newFlameIndex].x_position = 160;
+                        D_8004BCD0[newFlameIndex].y_position = 135;
                     }
                 }
-                switch (var_a1->unk1D) {
+                switch (D_8004BCD0[arg0].unk1D) {
                     case 0:
-                        var_a1->unk14 = &D_800326B8;
-                        return;
+                        D_8004BCD0[arg0].unk14 = &D_800326B8;
+                        break;
                     case 1:
-                        var_a1->unk14 = &D_80032900;
+                        D_8004BCD0[arg0].unk14 = &D_80032900;
                         break;
                 }
                 break;
         }
     }
 }
-*/
 
 void arcade_pauline_top_update(s32 arg0) {
     ArcadeStruct1 *pauline = & D_8004BCD0[arg0];

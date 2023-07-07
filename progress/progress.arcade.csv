@@ -9,7 +9,7 @@ us,.code,arcade_pie_update,360,yes
 us,.code,func_8002AF2C,120,yes
 us,.code,func_80030FEC,500,yes
 us,.code,arcade_75m_setup,1792,yes
-us,.code,func_8002E3D4,780,no
+us,.code,func_8002E3D4,780,yes
 us,.code,func_800252D8,452,yes
 us,.code,func_8002F82C,1532,no
 us,.code,arcade_100m_setup,1460,yes
