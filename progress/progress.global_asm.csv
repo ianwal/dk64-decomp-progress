@@ -2798,7 +2798,7 @@ us,.code,func_80688F74,76,yes
 us,.code,func_8065A654,12,yes
 us,.code,func_806C8220,748,no
 us,.code,func_807126B0,196,yes
-us,.code,func_806049CC,540,no
+us,.code,func_806049CC,540,yes
 us,.code,func_8060D2C8,1184,no
 us,.code,func_806306D0,60,no
 us,.code,func_8070D928,72,yes
