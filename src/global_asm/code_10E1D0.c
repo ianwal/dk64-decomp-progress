@@ -1,20 +1,16 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_807094D0.s")
-
 extern u8 D_807444F4;
 extern f32 D_807FD9C4;
 extern s8 D_807FD9BC;
-extern s8 D_807444F8;
+extern u8 D_807444F8;
 extern u8 D_807FD9BD;
 extern s32 D_8076D1F8;
 extern s32 D_807FD9C8;
 
 void func_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
-/*
 void func_807094D0(u8 arg0) { // init zipper
     D_807444F4 = is_cutscene_active;
     switch (arg0) {
@@ -28,8 +24,8 @@ void func_807094D0(u8 arg0) { // init zipper
             D_807FD9C4 = 0.5f;
             D_807FD9BC = 0;
             D_807444F8 = 2;
-            is_cutscene_active = 2;
-            D_807FD9BD = 6;
+            is_cutscene_active = 6;
+            D_807FD9BD = 2;
             if ((D_807444F4 == 1) && (D_807FBB64 & 1)) {
                 func_80600BBC(0);
             }
@@ -37,7 +33,6 @@ void func_807094D0(u8 arg0) { // init zipper
     }
     func_80737638(D_8076D1F8, 0x1BC, 0x7FFF, 0x3F, 1.0f, 0, &D_807FD9C8);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_807095E4.s")
 
@@ -147,8 +142,52 @@ void func_8070A934(s32 nextMap, s32 nextExit) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070AC74.s")
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070AF24.s")
+extern s32 D_80744470[];
+extern s16 D_80744490;
+extern s16 D_80744494;
+extern s32 D_80755068;
+extern s32 D_8075506C;
+extern void *D_807FD9A4;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+} Struct807FD9A8;
+
+extern Struct807FD9A8 *D_807FD9A8;
+extern void *D_807FD9AC;
+extern void *D_807FD9B0;
+extern void *D_807FD9B8;
+
+void func_8070AF24(void) {
+    switch (D_807444F8) {
+        case 1:
+            D_80755068 = 0;
+            D_8075506C = 0;
+            break;
+        case 2:
+            D_80755068 = 0x78;
+            break;
+    }
+    D_807FD9B8 = getPointerTableFile(0x13, 1, 1, 1);
+    D_807FD9B0 = malloc(D_80744490 * D_80744494 * 2);
+    func_8070A848(D_807FD9B0, D_80744470[D_807444FC]);
+    func_80709890(D_807FD9B8, &D_807FD9A8, &D_807FD9AC, 0);
+    func_80709ACC(D_807FD9A8);
+    D_807FD9A4 = D_807FD9A8->unk8;
+    D_807FD9A8->unk8 = malloc(D_807FD9A8->unk0 * 0xC);
+    func_807095E4(D_807FD9A8->unk24, D_807FD9A8->unk28);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070B05C.s")
 

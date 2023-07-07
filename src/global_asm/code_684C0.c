@@ -22,9 +22,33 @@ struct global_asm_struct_85 {
 
 extern GlobalASMStruct85 *D_807F9410;
 
-// TODO: Doable, fiddly struct loop with D_807F9410, could use file specifc ctx
-// MapGeometryHeader arg0
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_684C0/func_806637C0.s")
+
+/*
+void func_806637C0(MapGeometryHeader *arg0) {
+    s32 *temp_v0;
+    s32 temp_s2;
+    s32 temp_t7;
+    s32 i;
+    GlobalASMStruct85 **var_s1;
+    GlobalASMStruct85 *temp_v0_2;
+
+    var_s1 = &D_807F9410;
+    temp_v0 = arg0->unk54 + arg0;
+    temp_s2 = *temp_v0;
+    D_807F9410 = NULL;
+    for (i = 0; i < temp_s2; i++) {
+        temp_v0_2 = malloc(sizeof(GlobalASMStruct85));
+        *var_s1 = temp_v0_2;
+        temp_t7 = i * 0x10;
+        var_s1 = temp_v0_2 + 8;
+        temp_v0_2->unk0 = temp_t7 + (temp_v0 + 4);
+        temp_v0_2->unk4 = NULL;
+        temp_v0_2->next = NULL;
+    }
+}
+*/
 
 s32 func_806639CC(Actor*, GlobalASMStruct83*);
 void func_80663A0C(Actor *arg0, GlobalASMStruct84 *arg1);

@@ -182,6 +182,7 @@ u8 func_80027548(f32 arg0, f32 arg1, f32 arg2) {
 }
 */
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_800277F8.s")
 
 extern f32 D_8002DD40;
@@ -230,22 +231,21 @@ typedef struct {
 u8 func_80027548(f32 arg0, f32 arg1, f32 arg2);
 u8 func_806FDB8C(s16, s32, s32, f32, f32, f32);
 void func_8061C464(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_800264E0(u8 arg0, u8 arg1);
+void func_800265C0(u8 arg0, u8 arg1);
+void func_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
 /*
-// TODO: Good progress made, doable
 void func_800277F8(void) {
     AAD_800277F8 *aaD;
-    Actor *temp_v0_4;
     A178_800277F8 *a178;
     f32 temp_f2;
     f32 var_f12;
     u8 temp_t2;
-    Struct807F5FD4 *temp_v0;
-    Actor* CAP;
+    Struct807F5FD4_unk0 *temp_v0;
 
-    CAP = current_actor_pointer;
     aaD = current_actor_pointer->additional_actor_data;
-    a178 = current_actor_pointer->unk178;
+    a178 = ((A178_800277F8*)current_actor_pointer->unk178);
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         a178->unk25 = func_806FDB8C(1, func_8070E750(0x1A, 2, 1), 8, 0.0f, 0.0f, 0.0f);
         func_806FDAB8(a178->unk25, 0.0f);
@@ -301,7 +301,7 @@ void func_800277F8(void) {
             }
             aaD->unk22 = var_f12;
         }
-        if (func_80027548(D_807F5FD4[aaD->unk22].unk0, D_807F5FD4[aaD->unk22].unk4, D_807F5FD4[aaD->unk22].unk8) == 2) {
+        if (func_80027548(D_807F5FD4->unk0[0][aaD->unk22].unk0, D_807F5FD4->unk0[0][aaD->unk22].unk4, D_807F5FD4->unk0[0][aaD->unk22].unk8) == 2) {
             aaD->unk25 = 0xFF;
             playSound(0x3BC, 0x7FFF, 63.0f, 1.0f, 0, 0);
         }
@@ -318,13 +318,12 @@ void func_800277F8(void) {
                     if (a178->unk27 < ((rand() >> 0xF) % 100)) {
                         temp_t2 = ((rand() >> 0xF) % 255) % 8;
                         if (a178->unk0[temp_t2] == 0) {
-                            temp_v0 = &D_807F5FD4[temp_t2 + 1];
+                            temp_v0 = &D_807F5FD4->unk0[0][temp_t2 + 1];
                             func_800271B4(temp_v0->unk0, temp_v0->unk4, temp_v0->unk8, temp_t2, a178);
                         }
                     }
                 }
-                temp_v0_4 = current_actor_pointer->unk11C;
-                if ((temp_v0_4->control_state == 4) && (temp_v0_4->control_state_progress != 0xFF)) {
+                if ((current_actor_pointer->unk11C->control_state == 4) && (current_actor_pointer->unk11C->control_state_progress != 0xFF)) {
                     current_actor_pointer->control_state = 0xFE;
                 }
                 break;
@@ -342,19 +341,17 @@ void func_800277F8(void) {
     } else if (aaD->unk0 != -2 && aaD->unk0 != -1) {
         if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
             aaD->unk0 = 1;
-            func_806A2B08(CAP->unk11C);
+            func_806A2B08(current_actor_pointer->unk11C);
             func_8002733C(aaD);
             playSong(8, 1.0f);
         }
-    } else {
-        if (is_cutscene_active != 1) {
-            aaD->unk0++;
-            func_806A2A10(0xDC, 0x2A, a178->unk29);
-            func_8070D8C0(CAP, 0, 1);
-        }
+    } else if (is_cutscene_active != 1) {
+        aaD->unk0++;
+        func_806A2A10(0xDC, 0x2A, a178->unk29);
+        func_8070D8C0(current_actor_pointer, 0, 1);
     }
     if (aaD->unk0 >= -1) {
-        func_8068C350(&func_80026940, CAP, 3);
+        func_8068C350(&func_80026940, current_actor_pointer, 3);
     }
     func_806319C4(current_actor_pointer, 0);
 }

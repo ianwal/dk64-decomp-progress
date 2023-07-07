@@ -1205,8 +1205,26 @@ u8 func_80636A8C(s32 arg0) {
     return phi_v1;
 }
 
-// Annoying struct stuff, doable otherwise, maybe object model 2?
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636AE8.s")
+
+/*
+void func_80636AE8(ObjectModel2 *);
+
+void func_8065CDB0(void *arg0, void *arg1);
+
+void func_80636AE8(ObjectModel2 *arg0) {
+    Model2Model *model;
+    s32 count1;
+    s32 count2;
+
+    model = arg0->model_pointer;
+    count1 = model->unkA0[2] - model->unkA0[0];
+    count2 = model->unkA0[4] - model->unkA0[2];
+    func_8065CDB0(model->unkA0[0], &model->unkA0[0][count1]);
+    func_8065CDB0(model->unkA0[2], &model->unkA0[2][count2]);
+}
+*/
 
 // Appears to parse a displaylist looking for 0xFD commands
 // Displaylist stuff
