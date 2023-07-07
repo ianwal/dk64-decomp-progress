@@ -4426,7 +4426,7 @@ void func_806D9AD4(void) {
     func_806DF6D4(1);
     if ((current_actor_pointer->control_state_progress == 1) || (current_actor_pointer->control_state_progress == 2)) {
         rand();
-        sp28 = ((rand() >> 0xF) % 30) + current_actor_pointer->y_position;
+        sp28 = current_actor_pointer->y_position + ((rand() >> 0xF) % 30);
         rand();
         func_807149B8(1);
         func_80714950((extra_player_info_pointer->unk23C << 0x10) + (s32)(15.0 * (current_actor_pointer->shadow_opacity / D_8075CE78)));

@@ -1398,7 +1398,7 @@ us,.code,func_8060E8EC,68,yes
 us,.code,func_80659600,16,yes
 us,.code,func_806850D0,320,no
 us,.code,func_80649E00,52,yes
-us,.code,func_8071D28C,816,no
+us,.code,func_8071D28C,816,yes
 us,.code,func_80610B84,84,yes
 us,.code,func_8060DC3C,620,no
 us,.code,func_806B88B8,608,yes

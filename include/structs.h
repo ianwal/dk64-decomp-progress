@@ -2366,7 +2366,8 @@ typedef struct {
 } Struct80717D84_unk384_8071B2EC;
 
 typedef struct {
-    u8 unk0[0x16 - 0x0];
+    s32 unk0;
+    u8 unk4[0x16 - 0x4];
     s16 unk16;
 } Struct80717D84_unk330;
 

@@ -1307,10 +1307,10 @@ void func_806398E4(s32 arg0, u8 arg1, u8 arg2) {
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639CD0.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80639F1C.s")
 
 /*
-// TODO: Close
 s32 func_80639F1C(Model2Model50_B8 *arg0, s32 *arg1, s32 *arg2) {
     s32 var_v1;
     s32 temp;

@@ -1870,8 +1870,68 @@ void func_8071D260(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// Doable, fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D28C.s")
+extern f32 D_8075E9E8;
+extern f64 D_8075E9F0;
+extern f64 D_8075E9F8;
+extern f64 D_8075EA00;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+} Struct80717D84_unk384_8071D28C;
+
+void func_8071D28C(Struct80717D84 *arg0, s8 *arg1) {
+    f32 temp_f0;
+    f32 temp_f0_2;
+    f32 temp_f2;
+    f32 temp_f2_2;
+    f32 temp_f6;
+    Actor *actor;
+    Struct80717D84_unk384_8071D28C *temp_v0;
+    Struct80717D84_unk384_8071D28C *var_v1;
+
+    actor = arg0->unk338;
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_8071D28C));
+        var_v1 = arg0->unk384;
+        temp_f0 = actor->x_position - arg0->unk340;
+        temp_f2 = actor->z_position - arg0->unk348;
+        var_v1->unk0 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2));
+        var_v1->unk4 = (func_806119FC() * 20.0f) + 10.0f;
+        var_v1->unk8 = func_806119FC() * D_8075E9E8;
+        var_v1->unkC = (func_806119FC() * 90.0f) + 10.0f;
+        var_v1->unk10 = actor->y_rotation;
+        var_v1->unk14 = func_806119FC() * 30.0f;
+        var_v1->unk18 = 0.0f;
+        var_v1->unk1C = (((f32)(((rand() >> 0xF) % 255) % 2) * 2)) - 1;
+    }
+    var_v1 = arg0->unk384;
+    var_v1->unk0 = ((var_v1->unk4 - var_v1->unk0) * D_8075E9F0) + var_v1->unk0;
+    var_v1->unk14 = ((120.0f - var_v1->unk14) * D_8075E9F8) + var_v1->unk14;
+    var_v1->unk10 = var_v1->unk10 + (var_v1->unk1C * var_v1->unk14);
+    var_v1->unk8 = var_v1->unk8 + var_v1->unkC;
+    arg0->unk340 = (func_80612794(var_v1->unk10) * var_v1->unk0) + actor->x_position;
+    arg0->unk348 = (func_80612790(var_v1->unk10) * var_v1->unk0) + actor->z_position;
+    arg0->unk344 += (D_8075EA00 * func_80612794(var_v1->unk8));
+    var_v1->unk18 = var_v1->unk18 + 1.0f;
+    if (var_v1->unk18 > 45.0f) {
+        *arg1 = 1;
+    }
+    if ((object_timer % (u32)arg0->unk35C) == 0) {
+        func_807149B8(1);
+        func_807149FC(-1);
+        func_80714950(0x2A);
+        func_8071498C(&func_8071D260);
+        func_80714A28(0x20);
+        func_80714CC0(arg0->unk330->unk0, arg0->unk360, arg0->unk340, arg0->unk344, arg0->unk348);
+    }
+}
 
 extern f64 D_8075EA08;
 
