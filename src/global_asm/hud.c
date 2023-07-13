@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_806F8D58(s32 arg0, s32 arg1);
-
 typedef struct global_asm_struct_71 GlobalASMStruct71;
 
 struct global_asm_struct_71 {

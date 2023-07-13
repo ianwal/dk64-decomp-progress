@@ -77,7 +77,7 @@ us,.code,func_80024F9C,260,no
 us,.code,func_8002A254,88,yes
 us,.code,func_80029450,156,no
 us,.code,func_80029B90,140,yes
-us,.code,func_80026CEC,92,no
+us,.code,func_80026CEC,92,yes
 us,.code,func_80026AB0,500,no
 us,.code,func_800248A0,72,yes
 us,.code,func_8002AAD4,264,yes

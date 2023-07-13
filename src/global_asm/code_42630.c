@@ -1960,14 +1960,7 @@ void func_8064B4AC(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_806335B0(D_807F6240[arg2], 1, arg3, &D_807F621C, &D_807F6220, &D_807F6224);
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B514.s")
-
-/*
-void func_806FAC64(u8);
-void func_806F8D58(s32, s32);
-
-void func_8064B514(u8 arg0, u8 arg1, u8 arg2, s16 arg3) {
+void func_8064B514(u8 arg0, u8 arg1, s8 arg2, s16 arg3) {
     func_806FAC64(arg2);
     if (arg3) {
         func_806F8D58(0xD, 0);
@@ -1975,7 +1968,6 @@ void func_8064B514(u8 arg0, u8 arg1, u8 arg2, s16 arg3) {
         func_806F8BC4(0xD, 1, 0); 
     }
 }
-*/
 
 void func_8064B574(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_80726EE0(3);
@@ -2026,15 +2018,10 @@ void func_8064B5A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064B798.s")
-
-/*
-void func_8064B798(s32 arg0, s32 arg1, u8 arg2, s32 arg3) {
+void func_8064B798(s32 arg0, s32 arg1, s8 arg2, s32 arg3) {
     PlayerAdditionalActorData *temp_v0 = character_change_array[0].player_pointer->PaaD;
     temp_v0->unk1FC = arg2;
 }
-*/
 
 void func_8064B7C0(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 

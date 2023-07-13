@@ -385,7 +385,7 @@ typedef struct {
     s32 unk3C;
     s32 unk40;
     s32 unk44;
-    s32 unk48;
+    s32 (*unk48)(s32);
     s32 unk4C;
 } Struct80025C40_ret;
 
@@ -477,7 +477,6 @@ extern Struct8002C4D0 D_8002C330;
 extern Struct8002C4D0 D_8002C348[];
 
 extern Struct8002C4D0 D_8002C3A8[];
-extern f32 D_8002F050;
 extern f32 D_8002F054;
 extern s32 D_8002F060;
 extern s32 D_8002F064;
@@ -537,14 +536,23 @@ void func_80026CA4(void) {
     }
 }
 
-//function pointer from struct
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80026CEC.s")
-
 extern s32 D_8002F064;
 
 int func_80026FE0(void);
 void func_80026318(s32*);
-// extern JetpacStruct10 D_8002F050;
+extern Struct80025C40_ret D_8002F050[4];
+
+void func_80026CEC(void) {
+    Struct80025C40_ret *temp_a0;
+    s32 i;
+
+    for (i = 0; i < 4; i++) {
+        temp_a0 = &D_8002F050[i].unk4C;
+        if (D_8002F050[i + 1].unk44 != 0) {
+            temp_a0->unk48(temp_a0);
+        }
+    }
+}
 
 void func_80026D48(void) {
     s32 phi_v0;

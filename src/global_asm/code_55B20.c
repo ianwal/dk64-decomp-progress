@@ -117,9 +117,6 @@ void func_80651BC0(s16 arg0, u8 arg1) {
     D_807F7078[arg0] = arg1;
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80651BE0.s")
-
 // Note: Needs to be aligned in memory by maximum 0x2: {s32 unk0; s32 unk4; u8 unk8; u8 unk9;} doesn't match
 typedef struct {
     u8 unk0;
@@ -134,11 +131,9 @@ typedef struct {
 
 extern Struct807F6C1C *D_807F6C1C;
 
-/*
-void func_80651BE0(s16 arg0, u8 arg1, s8 arg2) {
+void func_80651BE0(s16 arg0, u8 arg1, u8 arg2) {
     D_807F6C1C[arg0 * 2 + arg1].unk9 = arg2;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80651C2C.s")
 

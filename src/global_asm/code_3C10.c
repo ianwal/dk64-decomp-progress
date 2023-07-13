@@ -79,18 +79,12 @@ extern s32 D_807F6010;
 extern s32 D_807FBB68;
 extern u16 D_807FC930[];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_805FEF10.s")
-
-/*
-// TODO: Close
-// arg0 appears to be a pointer to a flag index
 s32 func_805FEF10(s32 *arg0) {
     s32 found;
     s32 i;
-    s32 max = 4;
 
     found = FALSE;
-    for (i = 0; !found && i < max; i++) {
+    for (i = 0; i < 4U && !found; i++) {
         found = player_pointer->unk58 == D_80744800[i].unk0;
         if (found) {
             *arg0 = D_80744800[i].unk4;
@@ -98,7 +92,6 @@ s32 func_805FEF10(s32 *arg0) {
     }
     return found;
 }
-*/
 
 s32 func_805FEF74(Maps map) {
     s32 lobbyIndex;

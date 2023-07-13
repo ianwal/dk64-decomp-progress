@@ -319,14 +319,11 @@ u8 func_80632F74(f32 arg0, f32 arg1, f32 arg2) {
     return 0xF;
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80632FCC.s")
-
-/*
 void func_80632FCC(s16 arg0, u8 arg1) {
-    s32 pad[5];
+    s32 pad[4];
+    Model2Model *model;
     Model2Model54_BC *var_a0_2;
-    s32 pad2;
+    OM2_unk24 *temp;
     f32 sp28;
     s16 sp26;
     s16 sp24;
@@ -337,12 +334,15 @@ void func_80632FCC(s16 arg0, u8 arg1) {
     sp28 = D_807F6000[arg0].y_position + 20.0f;
     if (func_80667110(D_807F6000[arg0].x_position, D_807F6000[arg0].z_position, &sp28) != 0) {
         func_80666AC4(&sp26, &sp24);
-        switch (D_807F6000[arg0].unk24->unk1C) {
+        temp = D_807F6000[arg0].unk24;
+        switch (temp->unk1C) {
             case 1:
-                var_a0_2 = D_807F6000[arg0].model_pointer->unkBC;
+                model = D_807F6000[arg0].model_pointer;
+                var_a0_2 = model->unkBC;
                 break;
             case 2:
-                var_a0_2 = D_807F6000[arg0].model_pointer->unk54;
+                model = D_807F6000[arg0].model_pointer;
+                var_a0_2 = model->unk54;
                 break;
         }
         if (var_a0_2 != NULL) {
@@ -351,7 +351,6 @@ void func_80632FCC(s16 arg0, u8 arg1) {
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806330C4.s")
 

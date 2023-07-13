@@ -116,8 +116,10 @@ Temp8070D6D8 *func_8070D6D8(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D754.s")
 
+extern void *D_807550C4;
+
 /*
-? *func_8070D754(? *arg0) {
+? *func_8070D754(void *arg0) {
     ? **var_s0;
     ? *temp_v0;
     ? *var_v1;
@@ -543,12 +545,11 @@ void func_8070E808(Actor *arg0, Actor *arg1) {
     func_8061134C(temp_a0);
 }
 
-extern s32 D_807550C4;
 extern u8 D_807550CC;
 
 void func_8070E8C8(void) {
     D_807550C0 = NULL;
-    D_807550C4 = 0;
+    D_807550C4 = NULL;
 }
 
 void func_8070E8DC(u8 arg0) {

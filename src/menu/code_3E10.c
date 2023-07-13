@@ -501,73 +501,51 @@ void func_8002AB80(Actor *arg0, s32 arg1) {
 }
 */
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002ACD4.s")
-
-/*
 s32 func_8002ACD4(s32 arg0) {
-    Struct8076A0E8 *temp_a3;
     s32 found;
-    s8 *var_t0;
     s32 var_v1;
     s32 temp;
 
     temp = D_8076A0E4[arg0];
     var_v1 = D_8076A100[arg0];
-    found = 0;
-    temp_a3 = &D_8076A0E8[temp];
-    var_t0 = &temp_a3->unk0[var_v1];
-    temp_a3->unk0[var_v1] = -1;
+    found = FALSE;
+    D_8076A0E8[temp].unk0[var_v1] = -1;
     while (!found) {
-        var_v1 += 1;
-        var_t0 += 1;
+        var_v1++;
         if (var_v1 >= 4) {
             var_v1 = 0;
-            var_t0 = temp_a3->unk0;
         }
-        if (var_t0[0] == -1) {
-            found = 1;
+        if (D_8076A0E8[temp].unk0[var_v1] == -1) {
+            found = TRUE;
             D_8076A100[arg0] = var_v1;
-            var_t0[0] = arg0;
+            D_8076A0E8[temp].unk0[var_v1] = arg0;
         }
     }
     return var_v1;
 }
-*/
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002AD50.s")
-
-/*
 s32 func_8002AD50(s32 arg0) {
-    Struct8076A0E8 *temp_a3;
-    s32 var_a2;
-    s8 *var_t0;
+    s32 found;
     s32 var_v1;
     s32 temp;
 
     temp = D_8076A0E4[arg0];
     var_v1 = D_8076A100[arg0];
-    var_a2 = 0;
-    temp_a3 = &D_8076A0E8[temp];
-    var_t0 = &temp_a3->unk0[var_v1];
-    temp_a3->unk0[var_v1] = -1;
-    while (!var_a2) {
-        var_v1 -= 1;
-        var_t0 -= 1;
+    found = FALSE;
+    D_8076A0E8[temp].unk0[var_v1] = -1;
+    while (!found) {
+        var_v1--;
         if (var_v1 < 0) {
             var_v1 = 3;
-            var_t0 = &temp_a3->unk0[3];
         }
-        if (var_t0[0] == -1) {
-            var_a2 = 1;
+        if (D_8076A0E8[temp].unk0[var_v1] == -1) {
+            found = TRUE;
             D_8076A100[arg0] = var_v1;
-            var_t0[0] = arg0;
+            D_8076A0E8[temp].unk0[var_v1] = arg0;
         }
     }
     return var_v1;
 }
-*/
 
 // Huge, something to do with inputs
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002ADC8.s")
@@ -937,7 +915,20 @@ void func_8002F8EC() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002F980.s")
 
-void func_800317E8(f32, f32, void *, f32, s32, f32 *, f32 *, s32, s32, f32);
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    s32 unk8;
+    s16 unkC;
+    s16 unkE;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    s8 unk17;
+} Struct800317E8;
+
+s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7);
 s32 func_806FC530(s32, s16, s16, s16, void *, s32);
 extern s32 D_800339C4; // TODO: Datatype
 extern f32 D_80033F44;
@@ -1156,19 +1147,6 @@ void func_80030A90(Struct80717D84 *arg0, s32 arg1) {
 
 f32 func_8000AC60(f32, f32);
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    s32 unk8;
-    s16 unkC;
-    s16 unkE;
-    s32 unk10;
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-    s8 unk17;
-} Struct800317E8;
-
 /*
 s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7) {
     f32 temp_f0_2;
@@ -1329,6 +1307,7 @@ s32 func_800322D0(s8 arg0) {
     return !func_8060C6B8(0xD, 0, 0, arg0);
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80032304.s")
 
 extern f64 D_80033ED8;

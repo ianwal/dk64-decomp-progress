@@ -1213,7 +1213,17 @@ s32 func_80669650(u8 arg0, u8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806696A0.s")
 
-void func_806699C4(void *arg0, s16 arg1, s8 arg2, s8 arg3, f32 arg4, f32 arg5, f32 arg6);
+typedef struct {
+    u8 unk0[0x100 - 0x0];
+    f32 unk100;
+    f32 unk104;
+    f32 unk108;
+    s16 unk10C;
+    s8 unk10E;
+    s8 unk10F;
+} Struct806699C4;
+
+void func_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, u8 arg3, f32 arg4, f32 arg5, f32 arg6);
 
 typedef struct {
     f32 unk0; // X Position
@@ -1294,24 +1304,10 @@ s32 func_80669930(f32 arg0[4][4]) {
 }
 */
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806699C4.s")
-
 void func_8062FF10(f32 (*)[4], void *);
 void func_8066C610(s16, s8, void *);
 
-typedef struct {
-    u8 unk0[0x100 - 0x0];
-    f32 unk100;
-    f32 unk104;
-    f32 unk108;
-    s16 unk10C;
-    s8 unk10E;
-    s8 unk10F;
-} Struct806699C4;
-
-/*
-void func_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, s8 arg3, f32 arg4, f32 arg5, f32 arg6) {
+void func_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, u8 arg3, f32 arg4, f32 arg5, f32 arg6) {
     u8 pad[0x28];
     f32 spB0[4][4];
     f32 sp70[4][4];
@@ -1324,7 +1320,6 @@ void func_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, s8 arg3, f32 arg4, f
     func_8062FF10(&sp30[0], &spB0);
     guMtxXFMF(&sp30[0], arg4, arg5, arg6, &arg0->unk100, &arg0->unk104, &arg0->unk108);
 }
-*/
 
 extern f32 D_80758FE0;
 

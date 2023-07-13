@@ -1140,39 +1140,6 @@ void func_8065E040(s32);
 
 void func_8062F328(s32 arg0);
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    u8 unk8;
-    u8 unk9;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s16 unk10;
-    s16 unk12;
-    s16 unk14;
-    s16 unk16;
-    s16 unk18;
-    s16 unk1A;
-    s16 unk1C;
-    s16 unk1E;
-    s16 unk20;
-    s16 unk22;
-    s16 unk24;
-    s16 unk26;
-    s16 unk28;
-    s16 unk2A;
-    s16 unk2C;
-    s16 unk2E;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-} MapGeometryHeader;
-
 extern f32 D_80758190;
 extern MapGeometryHeader *D_807F5DE0;
 extern void *D_807F5DE8;

@@ -76,8 +76,33 @@ void func_800242FC(MultiplayerStruct4 *arg0) {
     D_8076A105 = phi_s2;
 }
 
-// u64 nonsense, bleh, PaaD?
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800243C8.s")
+int func_80024000(); // TODO: Proper signature
+u64 func_800060B0();
+
+typedef struct {
+    OSTime unk0;
+    s32 unk8;
+    u32 unkC;
+} AAD_800243C8;
+
+void func_800243C8(void) {
+    s32 pad;
+    u64 temp_ret_3;
+    u64 temp;
+    AAD_800243C8 *temp_s0;
+
+    temp_s0 = current_actor_pointer->additional_actor_data;
+    temp = func_80005918(func_800060B0() - temp_s0->unk0, 0x40);
+    temp_ret_3 = func_80005818(temp, 0xBB8);
+    if (!(global_properties_bitfield & 2)) {
+        temp_s0->unk8 = temp_s0->unkC - func_80005818(temp_ret_3, 1000000);
+    }
+    if (!(temp_s0->unk8 > 0)) {
+        temp_s0->unk8 = 0;
+        func_800242FC(temp_s0);
+    }
+    func_8068C350(&func_80024000, current_actor_pointer, 7);
+}
 
 void func_8002449C(void) {
     s32 temp_v0;
@@ -139,7 +164,6 @@ extern Struct80025F84 D_80026FA4[];
 /*
 // TODO: Close
 Struct80025F84 *func_80025378(void) {
-    Struct80025F84 *var_a1;
     Struct80025F84 *var_v1;
     u32 i;
 

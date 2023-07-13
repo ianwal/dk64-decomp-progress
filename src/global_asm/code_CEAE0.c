@@ -156,9 +156,7 @@ extern f32 D_807FD888;
 
 void func_806CC970(void);
 void func_806CCB0C(void);
-void func_806CC8B8(void);
 f32 func_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
-void func_806CC8B8(void);
 void func_806CEE64(f32);
 void func_806CEED8(void);
 void func_806CFD68(void);
@@ -192,10 +190,7 @@ u8 func_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 
 void func_806D3608(void);
 
-
 s16 func_806CE4E4(Actor*, f32, f32, s32);
-
-void func_806F142C(Actor*);
 
 void func_806DF494(s16*, s16, s16);
 

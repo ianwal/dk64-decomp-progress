@@ -307,28 +307,22 @@ void func_8069DC10(s32 *arg0, s32 *arg1[], u8 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069DC80.s")
-
 s32 func_806FBB9C(s16 textureIndex);
 
-/*
-// TODO: Bleh, stack nonsense, beqzl vs beqz
-void *func_8069DC80(u8 arg0, s32 arg1, u8 arg2, u8 arg3, u8 arg4) {
+void *func_8069DC80(u8 arg0, void *arg1, u8 arg2, u8 arg3, u8 arg4) {
     s32 sp24;
-    void *temp_v0;
 
     sp24 = func_806FBB9C(arg0 + arg3);
     if (arg1) {
         func_8061134C(arg1);
     }
-    temp_v0 = malloc(arg4 << 7);
-    func_8069DC10(temp_v0, sp24, arg4);
+    arg1 = malloc(arg4 << 7);
+    func_8069DC10(arg1, sp24, arg4);
     func_8068842C(current_actor_pointer, arg2, -1);
     func_80688370(current_actor_pointer, arg2, 0);
-    func_80688320(current_actor_pointer, arg2, 0, temp_v0);
-    return temp_v0;
+    func_80688320(current_actor_pointer, arg2, 0, arg1);
+    return arg1;
 }
-*/
 
 extern u16 D_807446C0[];
 extern s16 D_807FC930[];
@@ -353,9 +347,9 @@ void func_8069DD40(void) {
             levelIndex = 0;
         }
         temp_s0 = D_807FC930[levelIndex];
-        temp_s1->unk0 = func_8069DC80(0x21, temp_s1->unk0, 0, (temp_s0 / 100) & 0xFF, 0x20);
-        temp_s1->unk4 = func_8069DC80(0x21, temp_s1->unk4, 1, ((temp_s0 % 100) / 10) & 0xFF, 0x20);
-        temp_s1->unk8 = func_8069DC80(0x21, temp_s1->unk8, 2, (temp_s0 % 10) & 0xFF, 0x20);
+        temp_s1->unk0 = func_8069DC80(0x21, temp_s1->unk0, 0, (temp_s0 / 100), 0x20);
+        temp_s1->unk4 = func_8069DC80(0x21, temp_s1->unk4, 1, ((temp_s0 % 100) / 10), 0x20);
+        temp_s1->unk8 = func_8069DC80(0x21, temp_s1->unk8, 2, (temp_s0 % 10), 0x20);
         current_actor_pointer->unk16A = 0xFF;
         current_actor_pointer->unk16B = 0xFF;
         current_actor_pointer->unk16C = 0xFF;
@@ -387,8 +381,8 @@ void func_8069DF58(void) {
 
     temp_v1 = current_actor_pointer->additional_actor_data;
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        temp_v1->unk0 = func_8069DC80(0x14, temp_v1->unk0, 0, (current_actor_pointer->control_state_progress / 10) & 0xFF, 0x10);
-        temp_v1->unk4 = func_8069DC80(0x14, temp_v1->unk4, 1, (current_actor_pointer->control_state_progress % 10) & 0xFF, 0x10);
+        temp_v1->unk0 = func_8069DC80(0x14, temp_v1->unk0, 0, (current_actor_pointer->control_state_progress / 10), 0x10);
+        temp_v1->unk4 = func_8069DC80(0x14, temp_v1->unk4, 1, (current_actor_pointer->control_state_progress % 10), 0x10);
     }
     func_806319C4(current_actor_pointer, 0);
 }
