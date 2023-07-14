@@ -205,7 +205,6 @@ u8 isIntroStoryPlaying(void) {
 
 extern s8 D_8074583C;
 extern u8 D_8076A0B1;
-extern u8 D_80755070;
 extern s32 D_807550A4;
 extern f32 D_8075E430;
 

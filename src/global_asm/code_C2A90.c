@@ -6,8 +6,6 @@ extern f64 D_8075BEB0;
 extern u8 D_807506C0[];
 extern s32 D_8071FBA0;
 
-void func_80729B00(void);
-
 void func_80724E48(u8);
 void func_806F09F0(Actor*, u16);
 
@@ -247,20 +245,19 @@ void func_806C10A0(u8 arg0, u16 arg1, s16 arg2) {
             if (func_80629148()) {
                 current_actor_pointer->control_state = 0x12;
                 current_actor_pointer->control_state_progress = 0;
-                return;
             }
-            return;
+            break;
         case 2:
             func_8072AB74(2, D_807FDC90->unkA, D_807FDC90->unkE, 0, 0.0f);
             func_8072D13C(2, 0);
-            return;
+            break;
         case 18:
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_8070D8C0(current_actor_pointer, arg1, arg0);
                     func_80614EBC(current_actor_pointer, arg2);
                     current_actor_pointer->control_state_progress++;
-                    return;
+                    break;
                 case 2:
                     // TODO: Proper bitfield syntax
                     if (((s32)(current_actor_pointer->object_properties_bitfield << 6) >= 0)) {
@@ -271,7 +268,6 @@ void func_806C10A0(u8 arg0, u16 arg1, s16 arg2) {
                         func_80614EBC(D_807FBB44, 0x298);
                         D_807FBB44->unk11C = current_actor_pointer;
                         current_actor_pointer->control_state_progress++;
-                        return;
                     }
                     break;
                 case 3:
@@ -540,20 +536,13 @@ void func_806C1CCC(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_806C1E44.s")
-
 extern s32 D_80720B58; // TODO: Datatype
 
 int func_807197B4(); // TODO: Signature
 extern s32 D_8071FF58; // TODO: Datatype
-extern s32 D_8071F078; // TODO: Datatype
 
-/*
-// TODO: Not sure what's going on here
-// It keeps messing a0 and s0 up around the function calls
-// Also, our stack is 0x10 too small
 void func_806C1E44(void) {
-    s32 phi_s0;
+    s32 i;
 
     func_80729B00();
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
@@ -604,7 +593,6 @@ void func_806C1E44(void) {
                             func_80714C08(&D_8071FF58, 0.05f, current_actor_pointer, 1, 0);
                         }
                     }
-                    break;
             }
             break;
         case 39:
@@ -615,10 +603,10 @@ void func_806C1E44(void) {
                     current_actor_pointer->control_state_progress = 1;
                     break;
                 case 3:
-                    for (phi_s0 = 0; phi_s0 < 0xA; phi_s0++) {
+                    for (i = 0; i < 0xA; i++) {
                         func_807149B8(1);
                         func_807149FC(0x28);
-                        func_8071498C(&D_8071F078);
+                        func_8071498C(&func_8071F078);
                         func_80714950(current_actor_pointer->y_rotation);
                         func_80714C08(&D_80720B58, 0.7f, current_actor_pointer, 1, 0);
                     }
@@ -651,7 +639,6 @@ void func_806C1E44(void) {
     }
     func_806319C4(current_actor_pointer, 0);
 }
-*/
 
 extern s32 D_8071FC40; // TODO: Proper datatype
 void func_80718BF4(void);

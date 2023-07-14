@@ -114,41 +114,44 @@ Temp8070D6D8 *func_8070D6D8(void *arg0) {
     return temp_s0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070D754.s")
+typedef struct Struct8070D754_temp_v0 Struct8070D754_temp_v0;
 
-extern void *D_807550C4;
+struct Struct8070D754_temp_v0 {
+    Actor *unk0; // Wrinkly
+    Actor *unk4; // Textbox
+    s32 unk8;
+    Struct8070D754_temp_v0 *next;
+};
 
-/*
-? *func_8070D754(void *arg0) {
-    ? **var_s0;
-    ? *temp_v0;
-    ? *var_v1;
+extern Struct8070D754_temp_v0 *D_807550C4;
 
-    var_s0 = &D_807550C4;
-    if ((D_807550C4 != NULL) && (arg0 != *D_807550C4)) {
-        var_v1 = D_807550C4;
-loop_3:
-        var_s0 = &*(var_v1 + 0xC);
-        var_v1 = *var_s0;
-        if (var_v1 != NULL) {
-            if (arg0 != *var_v1) {
-                goto loop_3;
-            }
-        }
+typedef struct {
+    s32 unk0;
+    Struct8070D754_temp_v0 *unk4;
+} TextBubbleAAD;
+
+// TODO: Any cleanup possible?
+Struct8070D754_temp_v0 *func_8070D754(Actor *arg0) {
+    Struct8070D754_temp_v0 **nextPointer;
+
+    nextPointer = &D_807550C4;
+    while ((*nextPointer != NULL) && (arg0 != (*nextPointer)->unk0)) {
+        nextPointer = &(*nextPointer)->next;
     }
-    if (*var_s0 == NULL) {
-        temp_v0 = malloc(0x10);
-        *var_s0 = temp_v0;
-        func_80611690(temp_v0);
-        (*var_s0)->unk0 = arg0;
-        func_80677FA8(ACTOR_TEXT_BUBBLE, 0, arg0);
+
+    if (*nextPointer == NULL) {
+        TextBubbleAAD *textAAD;
+        *nextPointer = malloc(sizeof(Struct8070D754_temp_v0));
+        func_80611690(*nextPointer);
+        (*nextPointer)->unk0 = arg0;
+        func_80677FA8(ACTOR_TEXT_BUBBLE, 0);
         D_807FBB44->control_state = 0;
-        (*var_s0)->unk4 = D_807FBB44;
-        D_807FBB44->additional_actor_data->unk4 = arg0;
+        (*nextPointer)->unk4 = D_807FBB44;
+        textAAD = D_807FBB44->additional_actor_data;
+        textAAD->unk4 = arg0;
     }
-    return *var_s0;
+    return *nextPointer;
 }
-*/
 
 typedef struct {
     s16 unk0;
@@ -213,7 +216,7 @@ void func_8070D8C0(Actor *arg0, u16 arg1, u8 arg2) {
     Struct8070D8C0 *temp_a0;
     AAD_8070D8C0 *aaD;
 
-    temp_a0 = func_8070D754();
+    temp_a0 = func_8070D754(arg0);
     aaD = ((AAD_8070D8C0*)temp_a0->unk4->additional_actor_data);
     aaD->unk54 = D_807550CC;
     D_807550CC = 0;

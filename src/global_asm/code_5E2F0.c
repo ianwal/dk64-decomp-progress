@@ -39,7 +39,7 @@ void func_80659600(s16 arg0) {
     D_807F7EFA = arg0;
 }
 
-void func_80659610(u16 arg0) {
+void func_80659610(s16 arg0) {
     D_807F7EFC = arg0;
 }
 

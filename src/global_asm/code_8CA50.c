@@ -4,7 +4,6 @@
 /*
 // See func_8072881C() for details
 void func_80688514(Actor *, s32);
-s32 func_80688540(Actor *, s32);
 */
 
 GlobalASMStruct60 *func_80688584(Actor*, s32);

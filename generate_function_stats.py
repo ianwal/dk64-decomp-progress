@@ -223,7 +223,7 @@ for root, dirs, files in os.walk(searchPath):
 
                                 # For each comment search, print the value
                                 for comment in comments:
-                                    print("True" if comments[comment] else "-", end=" ")
+                                    print(comment if comments[comment] else "-", end=" ")
 
                                 # Newline
                                 print()

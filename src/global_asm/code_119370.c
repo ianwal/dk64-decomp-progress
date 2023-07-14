@@ -2277,7 +2277,7 @@ void func_8071E3EC(Struct80717D84 *arg0, s8 *arg1) {
             sp44 = 1.0f;
             sp40 = 1.0f;
             func_806595F0(2);
-            func_80659610(0x7D0);
+            func_80659610(2000);
             break;
     }
     temp_f0 = 255.0f * sp4C;

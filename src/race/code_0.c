@@ -214,24 +214,8 @@ s32 func_8002578C(s32 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_8002597C.s")
 
+// Close, doable, regalloc, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80025E9C.s")
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    Actor *unk34;
-} Actor178_80025E9C;
 
 typedef struct {
     s32 unk0;
@@ -257,29 +241,6 @@ typedef struct {
 } Actor178_80025E9C_2;
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s8 unk24;
-    s8 unk25;
-    s8 unk26;
-    s8 unk27;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s8 unk34;
-    s8 unk35;
-    s8 unk36;
-    s8 unk37;
-} Actor178_80025E9C_3;
-
-typedef struct {
     Actor *unk0;
     RaceAdditionalActorData *unk4;
 } Actor184_80025E9C;
@@ -298,7 +259,7 @@ typedef struct {
     s32 unk28;
     s32 unk2C;
     Actor *unk30;
-    s32 unk34;
+    Actor *unk34;
 } Actor17C_80025E9C;
 
 void func_8002BBD0(Actor *arg0, s32 arg1);
@@ -307,15 +268,15 @@ void func_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
 /*
 void func_80025E9C(Actor *arg0) {
     RaceAdditionalActorData *aaD;
+    Actor178_80025E9C_2 *a178_2; // TODO: Shouldn't be on stack
+    s32 pad2;
     s32 pad;
     Actor *playerCar;
-    Actor178_80025E9C_2 *a178_2;
-    Actor *raceCamera;
-    Actor *temp_v0;
-    Actor178_80025E9C *a178;
-    Actor17C_80025E9C *a17C;
+    Actor *sp40; // sp40
+    Actor *raceCamera; // sp3C
+    Actor17C_80025E9C *a178;
     RaceAdditionalActorData *aaD_2;
-    Actor184_80025E9C *temp_v1;
+    Actor184_80025E9C *a184;
 
     aaD = arg0->additional_actor_data;
     func_8002BBD0(arg0, 2);
@@ -329,27 +290,30 @@ void func_80025E9C(Actor *arg0) {
     aaD_2->unk36 = 1;
     aaD_2->unk28 = 0;
     a178 = playerCar->unk178;
-    temp_v0 = func_807271F4(1, 0, 0, 0, 0, 0, 0);
-    a178->unk30 = temp_v0;
-    temp_v1 = temp_v0->unk184;
-    temp_v1->unk4 = aaD_2;
-    temp_v1->unk0 = playerCar;
+    sp40 = func_807271F4(1, 0, 0, 0, 0, 0, 0);
+    a178->unk30 = sp40;
+    a184 = sp40->unk184;
+    a184->unk4 = aaD_2;
+    a184->unk0 = playerCar;
     func_80677FA8(ACTOR_CAMERA_CARRACE, 0);
     raceCamera = D_807FBB44;
     a178->unk34 = raceCamera;
-    a178_2 = temp_v0->unk178;
-    func_8002BC2C(arg0, 0, temp_v0, a178_2);
+    pad = 1;
+    a178_2 = sp40->unk178;
+    func_8002BC2C(arg0, 0, sp40, a178_2);
     a178_2->unk37 = 0;
-    a178_2->unk27 = 1;
+    a178_2->unk27 = pad;
     a178_2->unk30 = arg0;
     a178_2->unk36 = 0;
-    a17C = temp_v0->unk17C;
-    a17C->unk30 = playerCar;
-    a17C->unk34 = raceCamera;
-    raceCamera->RaaD->unk30 = arg0;
-    ((Actor178_80025E9C_3*)raceCamera->unk178)->unk30 = playerCar;
+    a178 = sp40->unk17C;
+    a178->unk30 = playerCar;
+    a178->unk34 = raceCamera;
+    aaD_2 = raceCamera->RaaD;
+    aaD_2->unk30 = arg0;
+    a178_2 = raceCamera->unk178;
+    a178_2->unk30 = playerCar;
     D_80750AC4 = 0;
-    aaD->unk25 = 1;
+    aaD->unk25 = pad;
 }
 */
 

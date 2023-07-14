@@ -454,7 +454,7 @@ u8 func_8060B7C4(void);
 void func_8060B7D0(s32 *mapPointer, s32 *exitPointer);
 void func_8060A4D0(s32, f32);
 void func_80659600(s16 arg0);
-void func_80659610(u16);
+void func_80659610(s16);
 void func_806A3700(s32 arg0, s32 arg1);
 void func_806A5F44(void);
 void func_806A5FA4(void);
