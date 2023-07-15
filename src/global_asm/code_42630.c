@@ -1579,7 +1579,57 @@ void func_80646770(s32 **arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80646978.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80646DC4.s")
+extern s32 D_80720BE8;
+extern f32 D_80758A00;
+extern f32 D_80758A04;
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+int func_8071BB14();
+
+void func_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s32 pad2;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    s32 pad[6];
+    f32 var_f28;
+    s32 i;
+    f32 sp84[3];
+    s32 var_s5;
+
+    if (arg2 != 0) {
+        for (i = 1; i < 7; i++) {
+            func_806335B0(arg1, 1, i, &spB8, &spB4, &spB0);
+            func_8071496C(i);
+            func_807149B8(1);
+            func_8071498C(&func_8071BB14);
+            func_807149C8(0xFF, 0xFF, 0xFF, 0x96);
+            func_80714CC0(&D_80720BE8, 1.5f, spB8, spB4, spB0);
+        }
+        return;
+    }
+    var_f28 = D_80758A00;
+    var_s5 = 7;
+    if (arg3 != 0) {
+        var_f28 = D_80758A04;
+        var_s5 = 0xA;
+    }
+    for (i = 1; i < var_s5; i++) {
+        sp84[0] = (rand() % 300) + 300;
+        sp84[1] = i * 0x2A8;
+        sp84[2] = (rand() % 500) + 150;
+        if (arg3 == 0) {
+            func_806335B0(arg1, 1, i, &spB8, &spB4, &spB0);
+            spB4 += 10.0;
+        } else {
+            spB8 = ((func_806119FC() * 30.0) + D_807F621C) - 15.0;
+            spB4 = (func_806119FC() * 40.0) + D_807F6220;
+            spB0 = ((func_806119FC() * 30.0) + D_807F6224) - 15.0;
+        }
+        func_806891D8(0x5A, spB8, spB4, spB0, 0, var_f28, NULL, &sp84[0]);
+    }
+}
 
 void func_80647108(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_80714950(-0x78);
