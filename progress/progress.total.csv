@@ -1874,7 +1874,7 @@ us,.code,func_8067A69C,112,yes
 us,.code,func_80690190,556,yes
 us,.code,func_8060AC28,12,yes
 us,.code,func_80709344,248,yes
-us,.code,func_8067DF44,820,no
+us,.code,func_8067DF44,820,yes
 us,.code,func_806C61C8,868,yes
 us,.code,func_806B761C,68,yes
 us,.code,func_8070F5CC,1164,no

@@ -390,7 +390,55 @@ void func_8067DCC0(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_8067DF44.s")
+int func_8071ABDC();
+int func_8071BB14();
+extern s32 D_80720120;
+extern s32 D_80720340;
+extern s32 D_8072038C;
+extern f32 D_80759558;
+
+void func_8067DF44(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5) {
+    f64 sp80;
+    f32 sp7C;
+    f32 temp_f20;
+    f32 temp_f22;
+    f32 temp_f24;
+    s32 i;
+
+    if (arg5 != 0) {
+        func_806086CC(arg0, arg1, arg2, 0xF6, 0xFF, 0x7F, 0x19, 0x1E, D_80759558, 0);
+    }
+    func_807149B8(1);
+    func_8071498C(&func_8071B89C);
+    func_80714CC0(&D_80720120, 0.0f, arg0, arg1 + 5.0f, arg2);
+    sp80 = arg3;
+    sp7C = arg3 * 1.5;
+    for (i = 0; i < 5; i++) {
+        temp_f22 = (((rand() >> 0xF) % 20) - 0xA) * arg3;
+        temp_f24 = (((rand() >> 0xF) % 20) - 0xA) * arg3;
+        temp_f20 = (((rand() >> 0xF) % 20) - 0xA) * arg3;
+        func_8071496C(4);
+        func_807149B8(1);
+        func_807149FC(1);
+        func_8071498C(&func_8071BB14);
+        func_80714CC0(&D_80720340, sp7C, arg0 + temp_f22, arg1 + temp_f24, arg2 + temp_f20);
+    }
+    func_8071496C(4);
+    func_807149B8(1);
+    func_807149FC(1);
+    func_8071498C(&func_8071BB14);
+    func_80714CC0(&D_80720340, sp7C, arg0, arg1, arg2);
+    if (arg4 != 0) {
+        for (i = 0; i < 0xC; i++) {
+            func_807149B8(1);
+            func_807149FC(2);
+            func_80714950(i + 0x0B020000);
+            func_8071498C(&func_8071ABDC);
+            func_80714998(1);
+            func_80714CC0(&D_8072038C, sp80 * 0.5, arg0, arg1, arg2);
+        }
+    }
+}
 
 void func_8067E278(u8 arg0, u8 arg1) {
     func_8067DF44(current_actor_pointer->x_position,
