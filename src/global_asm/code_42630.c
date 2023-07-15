@@ -841,6 +841,7 @@ void func_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_80714B84(&D_8071FF18, 0.3f, arg1, 3, 0);
 }
 
+// doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80642C78.s")
 
 /*
@@ -1473,7 +1474,63 @@ void func_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80646058.s")
 
+// doable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80646770.s")
+
+extern f32 D_807480F0;
+
+/*
+void func_80646770(s32 **arg0, s32 arg1, s32 arg2, s32 arg3) {
+    Struct807F5FD4_unk0 *temp_v1;
+    Struct807F5FD4_unk0 *temp_v1_2;
+    f32 dz;
+    f32 dy;
+    f32 dx;
+    s32 *temp_v0;
+    s32 *var_v1;
+    s32 temp_fp;
+    s32 count;
+    s32 temp_t9;
+    s32 temp_t9_2;
+    s32 found;
+
+    var_v1 = *arg0;
+    found = FALSE;
+    if (var_v1 == NULL) {
+        temp_v0 = malloc(4);
+        *arg0 = temp_v0;
+        *temp_v0 = 0;
+        var_v1 = *arg0;
+    }
+    count = (D_807F5FD4->unk0[1] - D_807F5FD4->unk0[0]);
+    temp_fp = *var_v1;
+    (*var_v1)++;
+    if (count == *var_v1) {
+        *var_v1 = 0;
+    }
+    while (!found && temp_fp != *var_v1) {
+        temp_v1 = &D_807F5FD4->unk0[0][*var_v1];
+        dz = (character_change_array->look_at_eye_z - temp_v1->unk8);
+        dy = (character_change_array->look_at_eye_y - temp_v1->unk4);
+        dx = (character_change_array->look_at_eye_x - temp_v1->unk0);
+        if (sqrtf((dy * dy) + (dx * dx) + (dz * dz)) < D_807480F0) {
+            found = TRUE;
+            func_807149B8(1);
+            func_80714998(3);
+            func_80714950(0);
+            func_8071498C(&func_8071E3EC);
+            func_807149A8(0x320);
+            temp_v1_2 = &D_807F5FD4->unk0[0][*var_v1];
+            func_80714CC0(&D_80720BC4, 2.5f, temp_v1_2->unk0, temp_v1_2->unk4, temp_v1_2->unk8);
+        } else {
+            (*var_v1)++;
+            if (count == *var_v1) {
+                *var_v1 = 0;
+            }
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80646978.s")
 
@@ -1505,7 +1562,26 @@ void func_80647170(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_8065A708(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 80.0f, 0, 0xFF, var_v0, var_v1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647218.s")
+void func_80647218(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    s32 i;
+    f32 rand1;
+    f32 rand2;
+    f32 rand3;
+    f32 rand4;
+
+    for (i = 0; i < 6; i++) {
+        rand1 = (f32)((func_806119A0() / 1000) % 20) - 10.0;
+        rand2 = (f32)((func_806119A0() / 1000) % 20) - 10.0;
+        rand3 = (f32)((func_806119A0() / 1000) % 20) - 10.0;
+        rand4 = (f32)((f32)(((func_806119A0() / 1000) % 50) - 25.0) / 50.0);
+        func_80714950(-0xAA);
+        func_8071498C(func_80717D4C);
+        func_807149B8(1);
+        func_80714998(3);
+        func_8071496C(i << 1);
+        func_80714CC0(&D_8071FFA0, (rand4) + 1.5, D_807F621C + (rand1), D_807F6220 + (rand2), D_807F6224 + (rand3));
+    }
+}
 
 void func_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 sp34;
@@ -1648,8 +1724,50 @@ void func_80647D7C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-// Malloc & Matrix
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80648000.s")
+
+u32 func_806119A0();
+extern f64 D_80758A10;
+extern f64 D_80758A18;
+extern f32 D_807F621C;
+extern f32 D_807F6224;
+extern f32 D_807F6234;
+
+/*
+void func_80648000(OM2_unk7C *arg0, s16 arg1, s32 arg2, s32 arg3) {
+    s32 sp48;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 (*temp_s0)[4];
+    f32 (*temp_v0)[4];
+
+    if (arg0->unk0 == NULL) {
+        if (arg0->unk9A & 1) {
+            arg0->unk0 = malloc(0x44);
+            temp_v0 = arg0->unk0;
+            func_806335B0(arg1, 1, 1, &sp40, &temp_v0[4][0], &sp38);
+            temp_v0[4][0] = temp_v0[4][0] - 10.0;
+            guRotateF(temp_v0, D_807F622C, 0.0f, 1.0f, 0.0f);
+        }
+    }
+    if (arg0->unk9A & 1) {
+        if (((func_806119A0() / 10000) % 20) == 0) {
+            temp_s0 = arg0->unk0;
+            sp48 = ((rand() >> 0xF) % 100) / 100.0;
+            guMtxXFMF(temp_s0, (sp48 * 100.0) + -50.0, 0.0f, ((((rand() >> 0xF) % 100) / 100.0) * D_80758A10) + D_80758A18, &sp40, &sp3C, &sp38);
+            sp40 = (sp40 * D_807F6234) + D_807F621C;
+            sp38 = (sp38 * D_807F6234) + D_807F6224;
+            func_807149B8(1);
+            func_80714950(2);
+            func_807149FC(-1);
+            func_8071498C(&func_80718BF4);
+            func_80714CC0(&D_8071FC40, 0.0f, sp40, temp_s0[4][0], sp38);
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064826C.s")
 

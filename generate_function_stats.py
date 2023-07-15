@@ -115,6 +115,9 @@ standardSearchColumns = {
     "D_807F5FD4": [
         "D_807F5FD4",
     ],
+    "func_8071498C": [
+        "func_8071498C",
+    ],
     "pointerTable": [
         "getPointerTableFile",
     ],

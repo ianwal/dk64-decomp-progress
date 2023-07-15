@@ -597,7 +597,7 @@ void func_80028E3C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_80029E54.s")
 
 /*
-? func_806F0C18(Actor *, s16 *);                    // extern
+? func_806F0C18(Actor *, s16 *);
 extern s16 D_8002D8C8[];
 extern ? D_8002D8D4;
 extern f32 D_8002DDB8;

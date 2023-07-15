@@ -91,7 +91,7 @@ void func_80030E58() {
 // rodata, close, doable, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_C920/func_80032B08.s")
 
-s32 func_80614644(Actor *, AnimationStateUnk0 *, f32); // extern
+s32 func_80614644(Actor *, AnimationStateUnk0 *, f32);
 extern s8 D_80035B28;
 extern s16 D_80035B2C;
 extern f32 D_80035B3C;
