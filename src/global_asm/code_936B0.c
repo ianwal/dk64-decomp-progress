@@ -507,7 +507,66 @@ void func_80691930(u8 arg0, u8 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_806919E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_806921DC.s")
+extern s32 D_80720120;
+extern s32 D_80720BE8;
+extern f32 D_8075A118;
+extern f32 D_8075A11C;
+extern u32 D_8076A068;
+extern u8 D_807FBB85;
+int func_8071C914();
+
+typedef struct {
+    s32 unk0;
+    u8 unk4[0x12 - 0x4];
+    u8 unk12;
+    u8 unk13;
+} AAD_806921DC;
+
+void func_806921DC(u8 arg0) {
+    AAD_806921DC *sp2C;
+
+    sp2C = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unk6E[0] = -2;
+        current_actor_pointer->unk6A &= ~1;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / D_8075A118) * D_8075A11C;
+        current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
+        current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
+        current_actor_pointer->noclip_byte = 0x3C;
+        func_8066EB40(current_actor_pointer, 40.0f);
+        func_8066E8E4(current_actor_pointer, 0.0f, 0.0f, 0.0f, 30.0f, -1);
+        func_8066E854(current_actor_pointer, 0.0f, 0.0f, 0.0f, -1);
+        func_807149FC(1);
+        func_80714998(2);
+        func_807149B8(1);
+        func_8071498C(&func_8071C914);
+        func_80714950((rand() >> 0xF) % 360);
+        func_807149A8(2000);
+        switch (arg0) {
+            case 0:
+                func_807149C8(0xFF, 0xD7, 0x58, 0xFF);
+                func_80714C08(&D_80720120, current_actor_pointer->unk124->unkC, current_actor_pointer, 1, 2);
+                break;
+            case 1:
+                func_807149C8(0xC8, 0xC8, 0xFA, 0x9B);
+                func_80714C08(&D_80720BE8, current_actor_pointer->unk124->unkC, current_actor_pointer, 1, 2);
+                break;
+        }
+        sp2C->unk13 = current_actor_pointer->unk124->unk10;
+        sp2C->unk0 = D_8076A068;
+        sp2C->unk12 = 0;
+        current_actor_pointer->object_properties_bitfield |= 0x80000;
+    }
+    func_8067ACB4(current_actor_pointer);
+    func_806651FC(current_actor_pointer);
+    func_80665564(current_actor_pointer, 4.0f);
+    if ((current_actor_pointer->unk6A & 1)
+        || (current_actor_pointer->unkFC != 0)
+        || (D_807FBB85 != 0)
+        || (sp2C->unk0 + 0x18) < D_8076A068) {
+        func_806782C0(current_actor_pointer);
+    }
+}
 
 void func_80692500(void) {
     func_806921DC(0);
@@ -545,6 +604,7 @@ void func_806925AC(void) {
     }
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80692640.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80692940.s")
