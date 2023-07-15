@@ -1814,7 +1814,84 @@ void func_80648000(OM2_unk7C *arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064826C.s")
+extern s32 D_80721200;
+extern s32 D_8072121C;
+extern s32 D_80721238;
+extern s32 D_80721250;
+extern s32 D_8072126C;
+extern f64 D_80758A20;
+extern f64 D_80758A28;
+extern u32 D_8076A068;
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+extern f32 D_807F622C;
+
+void func_80716F10(Struct80717D84 *arg0, s32 arg1);
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+} Struct8064826C_malloc;
+
+typedef struct {
+    Struct8064826C_malloc *unk0;
+} Struct8064826C_arg0;
+
+void func_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
+    s32 *sp3C;
+    f32 sp38;
+    s32 pad2;
+    s32 pad;
+    f32 sp2C;
+    f32 sp28;
+    f32 temp_f0;
+    Struct8064826C_malloc *temp_v0;
+
+    sp2C = func_80612794(((D_807F622C + 90.0f) * 4096.0f) / 360.0f) * 15.0f;
+    sp28 = func_80612790(((D_807F622C + 90.0f) * 4096.0f) / 360.0f) * 15.0f;
+    if (arg0->unk0 == NULL) {
+        arg0->unk0 = malloc(sizeof(Struct8064826C_malloc));
+        temp_v0 = arg0->unk0;
+        temp_v0->unk0 = 0;
+        temp_v0->unk4 = 0;
+        temp_v0->unk8 = 0;
+    }
+    temp_v0 = arg0->unk0;
+    func_807149B8(1);
+    switch (arg2) {
+        case 0:
+            sp3C = &D_80721200;
+            break;
+        case 1:
+            sp3C = &D_8072121C;
+            break;
+        case 2:
+            sp3C = &D_80721250;
+            break;
+        case 3:
+            sp3C = &D_80721238;
+            break;
+    }
+    sp38 = func_80612794(temp_v0->unk0) * D_80758A20;
+    temp_f0 = func_80612794(temp_v0->unk4);
+    temp_v0->unk0 += 0x32;
+    temp_v0->unk4 += 0x64;
+    func_80714A08(sp38 + 1.0, (f32)(temp_f0 * D_80758A28) + 1.0);
+    func_807149A8(1400);
+    func_80714A28(4);
+    func_80714CC0(sp3C, 0.0f, D_807F621C + sp2C, (func_80612794(temp_v0->unk8) * 10.0) + (D_807F6220 + 80.0), D_807F6224 + sp28);
+    temp_v0->unk8 += 0x64;
+    if ((D_8076A068 % 12) == 0) {
+        func_807149B8(1);
+        func_80714950(0x5A);
+        func_8071498C(&func_80716F10);
+        func_807149A8(1400);
+        func_80714A28(4);
+        func_80714CC0(&D_8072126C, 2.0f, D_807F621C + sp2C, D_807F6220 + 30.0, D_807F6224 + sp28);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806485A0.s")
 

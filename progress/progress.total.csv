@@ -2730,7 +2730,7 @@ us,.code,func_806D9940,404,yes
 us,.code,func_80674ADC,180,no
 us,.code,func_807144B8,212,yes
 us,.code,func_80689418,696,no
-us,.code,func_8064826C,820,no
+us,.code,func_8064826C,820,yes
 us,.code,func_806EBED0,100,yes
 us,.code,func_80738D20,312,no
 us,.code,func_80679490,92,yes
