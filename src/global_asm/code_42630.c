@@ -1130,7 +1130,52 @@ void func_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643C0C.s")
+extern f64 D_80758958;
+extern f64 D_80758960;
+extern f32 D_807F621C;
+extern f32 D_807F6220;
+extern f32 D_807F6224;
+extern s32 D_807201D4;
+
+typedef struct {
+    void *unk0;
+    u8 unk4[0x49 - 0x4];
+    u8 unk49;
+} Struct80643C0C;
+
+void func_80643C0C(Struct80643C0C *arg0, s32 arg1, s16 arg2, s32 arg3) {
+    f32 var_f2;
+    f32 temp_f20;
+    s32 *var_v1;
+
+    if (arg0->unk0 == NULL) {
+        arg0->unk0 = malloc(8);
+    }
+    var_v1 = arg0->unk0;
+    if (arg2 == 1) {
+        *var_v1 = 0;
+    }
+    temp_f20 = (0x46 - (*var_v1)++) / 70.0f;
+    if (temp_f20 > 0.5) {
+        var_f2 = 1.0 - (2.0 * (temp_f20 - 0.5));
+    } else {
+        var_f2 = 2.0 * temp_f20;
+    }
+    func_8065A708(D_807F621C, D_807F6220, D_807F6224, 0.0f, 0.0f, 0.0f, 200.0f * var_f2, 0, 0xFF, (-80.0f * var_f2) + 255.0f, (-205.0f * var_f2) + 255.0f);
+    if (D_80758958 < temp_f20) {
+        if ((object_timer % 6U) == 0) {
+            func_807149FC(2);
+            func_807149B8(1);
+            func_80714950(-0x190);
+            func_807149C8(0xFF, 0xFF, 0xFF, 1);
+            func_8071498C(&func_80717CE8);
+            func_80714CC0(&D_807201D4, 1.2f, D_807F621C, D_807F6220 + 30.0, D_807F6224);
+        }
+    }
+    if (temp_f20 < D_80758960) {
+        arg0->unk49 = 1;
+    }
+}
 
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80643F38.s")

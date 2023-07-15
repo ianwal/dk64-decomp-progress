@@ -1238,7 +1238,7 @@ us,.code,gameIsInDKTheatreMode,52,yes
 us,.code,func_806E14DC,340,yes
 us,.code,func_80739FE0,144,no
 us,.code,func_8064B3F8,180,no
-us,.code,func_80643C0C,812,no
+us,.code,func_80643C0C,812,yes
 us,.code,func_8070C27C,92,yes
 us,.code,func_80636A8C,92,yes
 us,.code,func_806F5270,264,no
