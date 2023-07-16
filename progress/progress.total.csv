@@ -2365,7 +2365,7 @@ us,.code,func_807040D0,16,yes
 us,.code,func_8067A784,104,yes
 us,.code,func_805FC2B0,952,no
 us,.code,func_80713AA8,152,no
-us,.code,func_80705C00,860,no
+us,.code,func_80705C00,860,yes
 us,.code,func_806A8070,72,yes
 us,.code,func_8060F730,292,no
 us,.code,func_8067AC38,124,yes
@@ -3480,7 +3480,7 @@ us,.code,func_80027710,368,no
 us,.code,func_80024690,4320,no
 us,.code,func_8002A7F8,1652,no
 us,.code,castleCarRaceSetup,76,yes
-us,.code,func_80027BD0,144,no
+us,.code,func_80027BD0,144,yes
 us,.code,func_8002DC24,204,yes
 us,.code,func_8002D72C,40,yes
 us,.code,func_80026F04,1468,no

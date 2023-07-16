@@ -21,7 +21,7 @@ us,.code,func_80027710,368,no
 us,.code,func_80024690,4320,no
 us,.code,func_8002A7F8,1652,no
 us,.code,castleCarRaceSetup,76,yes
-us,.code,func_80027BD0,144,no
+us,.code,func_80027BD0,144,yes
 us,.code,func_8002DC24,204,yes
 us,.code,func_8002D72C,40,yes
 us,.code,func_80026F04,1468,no

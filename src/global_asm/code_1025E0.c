@@ -392,8 +392,35 @@ void func_80705B30(void) {
     D_807FD978 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80705C00.s")
+void func_8070033C(f32, f32, f32, f32, f32, f32, f32, u32, u32, u32);
+extern f64 D_8075DFB8;
+extern f64 D_8075DFC0;
 
+void func_80705C00(s16 arg0, s16 arg1, u8 arg2) {
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    s16 sp42;
+    s16 temp_f4; // sp40
+    s16 temp_v1; // sp3E
+
+    sp42 = func_80612794(arg0) * D_8075DFB8;
+    temp_v1 = func_80612790(arg0) * D_8075DFC0;
+    temp_f4 = arg1 - (8.0 * character_change_array->unk2CA);
+    switch (arg2) {
+        case 1:
+            func_80659620(&sp4C, &sp48, &sp44, player_pointer->unk12C);
+            if (sp4C > 0.5) {
+                func_8070033C(sp42, temp_f4, temp_v1, 0.0f, 0.0f, 0.0f, 0.0f, sp4C * 255.0f, sp48 * 255.0f, sp44 * 255.0f);
+            }
+            break;
+        case 0:
+            func_8070033C(sp42, temp_f4, temp_v1, 0.0f, 0.0f, 0.0f, 0.0f, 0xFF, 0xFF, 0xFF);
+            break;
+    }
+}
+
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80705F5C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807063B8.s")
