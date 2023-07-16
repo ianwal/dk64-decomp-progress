@@ -235,6 +235,7 @@ u8 func_807103E0(Struct807103E0 *arg0) {
 }
 */
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807105D4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80710CA0.s")
@@ -330,8 +331,33 @@ s32 func_80712548(void) {
     return func_80731AA8(0x1FD, 40, FLAG_TYPE_PERMANENT) + 10;
 }
 
-// loopy libultra stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80712574.s")
+typedef struct {
+    OSTime unk0;
+    s32 unk8;
+    s32 unkC;
+    u8 unk10;
+    u8 unk11;
+} Struct80755340;
+
+extern Struct80755340 D_80755340;
+extern u16 D_80755358[];
+
+void func_80712574(void) {
+    u32 i;
+    s32 found;
+
+    found = 0;
+    D_80755340.unk10 = 1;
+    D_80755340.unk11 = 0;
+    D_80755340.unk0 = osGetTime();
+    D_80755340.unkC = func_80712548() * 0x3C;
+    for (i = 0; i < 10 && !found; i++) {
+        if (D_80755358[i] < D_80755340.unkC) {
+            D_80755340.unk11 = i;
+            found = 1;
+        }
+    }
+}
 
 void func_8071261C(void) {
     D_80755350 = 0;

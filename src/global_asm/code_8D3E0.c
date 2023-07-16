@@ -376,7 +376,44 @@ void func_80688F74(Actor *arg0, f32 x, f32 y, f32 z) {
     }
 }
 
+// TODO: Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80688FC0.s")
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s16 unk30;
+    s16 unk32;
+    s16 unk34;
+    s16 unk36;
+} ActorSpawnerFromFile;
+
+/*
+void func_80688FC0(ActorSpawnerFromFile *arg0) {
+    s32 count;
+    s32 i;
+    ActorSpawnerFromFile *var_s2;
+
+    actor_spawner_pointer = NULL;
+    if (arg0 != NULL) {
+        count = *((s32*)arg0)++;
+        for (i = 0; i < count; i++) {
+            func_80689250(arg0[i].unk32, arg0[i].unk0, arg0[i].unk4, arg0[i].unk8, arg0[i].unk30, arg0[i].unkC, &arg0[i].unk10, 0, 0, arg0[i].unk34);
+        }
+        func_8068A1B8();
+    }
+}
+*/
 
 void func_80689064(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5) {
     Struct807500B4 sp38 = D_807500B4;

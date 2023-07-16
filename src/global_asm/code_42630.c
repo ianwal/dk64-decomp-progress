@@ -1321,6 +1321,7 @@ void func_806450C0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     }
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80645238.s")
 
 void func_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
@@ -2439,7 +2440,7 @@ u8 func_8064BE58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return D_807552E8 == 5;
 }
 
-// rodata
+// rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064BE80.s")
 
 /*
@@ -2447,7 +2448,6 @@ extern s32 D_807552F0;
 
 void func_806F91B4(s32, u8, s32);
 
-// Doable
 s32 func_8064BE80(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     s32 playerIndex;
     f32 temp;

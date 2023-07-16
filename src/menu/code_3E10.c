@@ -1212,6 +1212,7 @@ f32 func_80031980(Struct80031980 *arg0, f32 arg1, f32 *arg2) {
 // Jumptable, 172 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80031A5C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80031B08.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80032024.s")

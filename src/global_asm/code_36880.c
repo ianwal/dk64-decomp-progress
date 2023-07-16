@@ -1282,6 +1282,7 @@ void func_80636C00(void) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80637B6C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806392BC.s")
 
 void func_806398E4(s32 arg0, u8 arg1, u8 arg2) {

@@ -910,7 +910,7 @@ us,.code,func_806B52DC,480,yes
 us,.code,func_80686340,80,yes
 us,.code,func_8062BF24,668,no
 us,.code,func_80724DB0,152,yes
-us,.code,func_80712574,168,no
+us,.code,func_80712574,168,yes
 us,.code,func_805FBC5C,424,no
 us,.code,func_80665F24,144,no
 us,.code,func_806CFE30,76,yes

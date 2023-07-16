@@ -328,10 +328,10 @@ void func_8070DB7C(Struct8070DB9C *arg0) {
     func_8061134C(arg0->unk4);
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DB9C.s")
 
 /*
-// TODO: Very close
 void func_8070DB9C(Struct8070DB9C *arg0) {
     s32 var_s0;
     void *temp_a1;
