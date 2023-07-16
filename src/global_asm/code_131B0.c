@@ -303,6 +303,7 @@ void func_8060F208(GlobalASMStruct87 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F730.s")
 
+// GlobalASMStruct87* arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_8060F854.s")
 
 void func_8060F928(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {

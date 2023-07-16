@@ -368,9 +368,9 @@ void func_8063E6B4(OM2_unk7C *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641724.s")
 
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806417BC.s")
 
-// Very close
 /*
 void func_806417BC(s16 arg0, s16 arg1) {
     s16 sp44;
@@ -1586,7 +1586,6 @@ extern f32 D_80758A04;
 extern f32 D_807F621C;
 extern f32 D_807F6220;
 extern f32 D_807F6224;
-int func_8071BB14();
 
 void func_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 pad2;

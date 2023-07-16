@@ -278,6 +278,7 @@ void func_806B3F3C(void) {
     }
 }
 
+// doable regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_806B3F90.s")
 
 s16 func_806CC190(s16, s16, f32);

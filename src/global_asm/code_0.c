@@ -266,20 +266,29 @@ void func_805FB944(u8 arg0) {
 }
 */
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FBC5C.s")
 
 extern s32 D_8076A07C;
 extern OSMesgQueue D_8076A110;
-extern s32 D_8000DDE8;
-extern s32 D_8000DDE4;
 
 extern s32 D_80767CD8;
+
+typedef struct {
+    u8 *unk0;
+    u8 *unk4;
+    u8 pad8[0x10];
+} dk64_boot_struct_0;
+extern dk64_boot_struct_0 D_8000DCC4[];
+
+void func_8060EC80(OSMesgQueue *arg0, void *arg1, s32 arg2, s32 arg3, u8 arg4);
+
+void func_8060ED6C(void *arg0, void *arg1, s32 arg2, s32 arg3, s32 arg4);
 
 /*
 // TODO: Pretty close
 void func_805FBC5C(void) {
-    // This might be a static struct field access
-    D_8076A084 = D_8000DDE8 - D_8000DDE4;
+    D_8076A084 = D_8000DCC4[12].unk4 - D_8000DCC4[12].unk0;
     osCreateMesgQueue(&D_807655F0, &D_80765608, 0x32);
     osCreateMesgQueue(&D_807656D0, &D_807656E8, 0xC0);
     func_8060EC80(&D_80767A40, &D_80767A40, 0x19, osTvType, 1);

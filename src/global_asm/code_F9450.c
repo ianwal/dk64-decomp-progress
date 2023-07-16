@@ -289,7 +289,6 @@ void func_806F5FE8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4) {
     }
 }
 
-s16 func_80632630(s32, f32, f32, f32, f32, s32);
 void func_80686E40(f32, f32, f32, s32);
 void func_806A5DF0(s16, f32, f32, f32, s32, s32, s32, s32);
 void func_806F50C8(s16, s16, s32, s32, s32, s32);
@@ -349,11 +348,9 @@ void func_806F6554(u8 arg0, Struct806F6554_arg1 *arg1) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F6644.s")
-
-/*
 s32 func_806F6644(s16 arg0, s32 arg1, u16 arg2) {
+    PlayerAdditionalActorData *PaaD;
+    ObjectModel2 *temp;
     u8 temp_a0;
 
     switch (arg2) {
@@ -369,22 +366,24 @@ s32 func_806F6644(s16 arg0, s32 arg1, u16 arg2) {
             }
             break;
         case 0x98:
-            if (!(character_change_array[cc_player_index].player_pointer->PaaD->unk1F4 & 1)) {
+            PaaD = character_change_array[cc_player_index].player_pointer->PaaD;
+            if (!(PaaD->unk1F4 & 1)) {
                 return 0;
             }
             break;
         case 0x8E:
-            if (!(character_change_array[cc_player_index].player_pointer->PaaD->unk1F4 & 2)) {
+            PaaD = character_change_array[cc_player_index].player_pointer->PaaD;
+            if (!(PaaD->unk1F4 & 2)) {
                 return 0;
             }
             break;
         case 0x90:
-            if (D_807F6000[func_80659470(arg0)].unk7C->unk64 != 0xFF) {
+            temp = &D_807F6000[func_80659470(arg0)];
+            if (temp->unk7C->unk64 != 0xFF) {
                 return 0;
             }
             break;
     }
-
     temp_a0 = D_807F6000[func_80659470(arg0)].unk8C;
     if (temp_a0 & 8 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_DK) {
         return 0;
@@ -399,7 +398,6 @@ s32 func_806F6644(s16 arg0, s32 arg1, u16 arg2) {
     }
     return 1;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F69A8.s")
 

@@ -34,6 +34,7 @@ void func_806FB8B0(s32 arg0) {
     func_806FB490(D_80754A18->unk17E, arg0, D_807FD7F0[2], D_80754A18->unk17C, 2, &sp2F, 0x30);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FB914.s")
 
 void func_806FBB58() {
@@ -101,10 +102,13 @@ s16 func_806FBEAC(u8 *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FC530.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FCC88.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FD094.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FD490.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_806FD7A8.s")

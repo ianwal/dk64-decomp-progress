@@ -54,7 +54,6 @@ s32 func_805FE7B4(s32 *, s32 *, s32 *, ?);
 s32 func_80610044(s32, s32, ?, ?, s32, s32);
 s32 func_8061CBCC();
 s32 func_8070AC74(s32, s32 *, u8 *);
-s32 func_8070AF24(s32 *, u8 *);
 s32 func_8070B7EC(s32 *, s32, s32);
 extern u8 D_807444F4;
 extern void *D_807FD9A8;
@@ -87,7 +86,8 @@ void func_8070A934(s32 nextMap, s32 nextExit) {
     switch (D_807FD9BC) {
         case 0:
             D_807FD9BC = 1;
-            func_8070AF24(&object_timer, &D_807FD9BC);
+            // func_8070AF24(&object_timer, &D_807FD9BC);
+            func_8070AF24();
             break;
         }
         case 1:

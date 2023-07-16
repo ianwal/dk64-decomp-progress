@@ -74,6 +74,7 @@ void func_806BD170(void) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_806BD3E4.s")
 
 extern f32 D_807FC8D4;
@@ -88,7 +89,6 @@ typedef struct {
 } Actor178_806BD3E4;
 
 /*
-// TODO: Close...
 void func_806BD3E4(void) {
     Actor178_806BD3E4 *sp34;
     s32 sp30;

@@ -1,13 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B6C50/func_806B1F50.s")
 
 extern s32 D_8072030C;
 extern f64 D_8075B3C0;
 
 /*
-// TODO: Doable, very good progress made
 void func_806B1F50(void) {
     u8 sp37;
 

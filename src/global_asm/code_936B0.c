@@ -513,7 +513,6 @@ extern f32 D_8075A118;
 extern f32 D_8075A11C;
 extern u32 D_8076A068;
 extern u8 D_807FBB85;
-int func_8071C914();
 
 typedef struct {
     s32 unk0;

@@ -24,6 +24,7 @@ void func_806B7BB8(s32 arg0) {
     func_80690A28(phi_v1, 1, 0.5f, D_807FDC94->x_position, D_807FDC94->y_position, D_807FDC94->z_position, D_8075B878, current_actor_pointer);
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_806B7C74.s")
 
 extern f64 D_8075B880;

@@ -4,7 +4,6 @@
 extern f64 D_80035D50;
 extern f64 D_80035D58;
 extern f64 D_80035D60;
-int func_8071AF30();
 extern void *D_80720120;
 
 typedef struct {

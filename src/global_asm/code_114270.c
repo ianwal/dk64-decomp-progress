@@ -346,7 +346,7 @@ void func_80712574(void) {
     u32 i;
     s32 found;
 
-    found = 0;
+    found = FALSE;
     D_80755340.unk10 = 1;
     D_80755340.unk11 = 0;
     D_80755340.unk0 = osGetTime();
@@ -354,7 +354,7 @@ void func_80712574(void) {
     for (i = 0; i < 10 && !found; i++) {
         if (D_80755358[i] < D_80755340.unkC) {
             D_80755340.unk11 = i;
-            found = 1;
+            found = TRUE;
         }
     }
 }

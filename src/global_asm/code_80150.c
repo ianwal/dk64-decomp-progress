@@ -391,7 +391,6 @@ void func_8067DCC0(void) {
 }
 
 int func_8071ABDC();
-int func_8071BB14();
 extern s32 D_80720120;
 extern s32 D_80720340;
 extern s32 D_8072038C;

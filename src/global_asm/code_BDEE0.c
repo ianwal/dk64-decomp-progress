@@ -231,6 +231,7 @@ void func_806BB32C(void) {
     }
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_806BB400.s")
 
 extern f32 D_8075BAEC;

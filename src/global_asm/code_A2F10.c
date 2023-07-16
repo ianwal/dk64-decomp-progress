@@ -475,8 +475,6 @@ extern s32 D_80720BE8;
 
 void func_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
-int func_8071BB14();
-
 void func_806A0330(void) {
     s32 pad[8];
     s32 i;

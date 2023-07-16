@@ -872,7 +872,6 @@ typedef struct {
     s32 unk0[7];
 } Struct807504A4;
 
-int func_8071D28C(); // TODO: Signature
 extern s32 D_80721170;
 extern Struct807504A4 D_807504A4;
 extern f32 D_8075AA78;

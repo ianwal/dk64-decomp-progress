@@ -3,7 +3,6 @@
 
 int func_807197B4(); // TODO: Signature
 int func_8071827C(); // TODO: Signature
-int func_8071AF30(); // TODO: Signature
 extern s32 D_8071FC40;
 extern s32 D_8071FF18;
 extern s32 D_8071FF40;
@@ -755,7 +754,6 @@ void func_806877C8(u8 arg0) {
 
 void func_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
 
-int func_8071E028(); // TODO: Signature
 extern s32 D_80720B24;
 
 extern f64 D_80759BA0;

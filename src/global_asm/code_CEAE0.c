@@ -21,7 +21,6 @@ void func_806FF32C(s32 arg0, Actor *arg1);
 int func_806FF75C(); // TODO: Signature
 int func_806FF01C(); // TODO: Signature
 
-int func_80716FB4(); // TODO: Signature
 extern s32 D_8071FB08; // TODO: Proper datatype
 extern s32 D_8071FFA0;
 extern s32 D_8071FF18;

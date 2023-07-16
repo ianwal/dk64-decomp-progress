@@ -219,6 +219,7 @@ void func_8065FB64(f32 arg0, f32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80660520.s")
 
+// doable, Related to GlobalASMStruct58
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80660830.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_806608FC.s")

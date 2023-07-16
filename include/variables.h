@@ -136,7 +136,7 @@ typedef struct {
     s32 frame_count;
 } Struct80767A40;
 
-extern Struct80767A40 D_80767A40;
+extern Struct80767A40 D_80767A40; // TODO: Might be an array, see func_805FBC5C
 
 typedef struct {
     Actor* unk0;

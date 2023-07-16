@@ -579,6 +579,7 @@ s32 func_806C9974(u8 arg0, s8 arg1) {
     }
 }
 
+// close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C9AE0.s")
 
 extern u8 D_80750AC0;
