@@ -926,8 +926,8 @@ struct Struct8067A09C {
 };
 
 Struct8067A09C *func_8067A09C(Struct8067A09C *arg0) {
-    s32 var_a1;
-    Struct8067A09C *temp_a2;
+    s32 found;
+    Struct8067A09C *temp;
     Struct8067A09C *current;
     Struct8067A09C *var_v1;
 
@@ -936,17 +936,17 @@ Struct8067A09C *func_8067A09C(Struct8067A09C *arg0) {
         current = arg0->unk14;
         while (current != NULL) {
             arg0 = current->unk18;
-            var_a1 = FALSE;
-            while (arg0 != NULL && var_a1 == 0) {
+            found = FALSE;
+            while (arg0 != NULL && !found) {
                 if (current->unk0 >= arg0->unk0) {
-                    var_a1 = TRUE;
+                    found = TRUE;
                     current->unk18->unk14 = current->unk14;
                     if (current->unk14 != NULL) {
                         current->unk14->unk18 = current->unk18;
                     }
-                    temp_a2 = arg0->unk14;
+                    temp = arg0->unk14;
                     arg0->unk14 = current;
-                    current->unk14 = temp_a2;
+                    current->unk14 = temp;
                     if (current->unk14 != NULL) {
                         current->unk14->unk18 = current;
                     }
@@ -954,7 +954,7 @@ Struct8067A09C *func_8067A09C(Struct8067A09C *arg0) {
                 }
                 arg0 = arg0->unk18;
             }
-            if (var_a1 == FALSE) {
+            if (found == FALSE) {
                 current->unk18->unk14 = current->unk14;
                 if (current->unk14 != NULL) {
                     current->unk14->unk18 = current->unk18;

@@ -913,30 +913,30 @@ void func_806357F8(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *ar
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806358E8.s")
 
-// stack, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80635EF0.s")
-
-/*
-s32 func_80635EF0(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 arg5, u16 arg6) {
-    Actor *temp_a2;
+s32 func_80635EF0(f32 x1, f32 y1, f32 z1, s16 x2, s16 y2, s16 z2, u16 arg6) {
     s32 i;
+    f32 dx = x1 - x2;
+    f32 dy = y1 - y2;
+    f32 dz = z1 - z2;
+    f32 dx2 = x2 + x1;
+    f32 dy2 = y2 + y1;
+    f32 dz2 = z2 + z1;
 
     for (i = 0; i < D_807FBB34; i++) {
-        temp_a2 = D_807FB930[i].unk0;
-        if (temp_a2->interactable & arg6) {
-            if ((arg0 - arg3) <= temp_a2->x_position
-            && (arg1 - arg4) <= temp_a2->y_position
-            && (arg2 - arg5) <= temp_a2->z_position
-            && temp_a2->x_position <= (arg3 + arg0)
-            && temp_a2->y_position <= (arg4 + arg1)
-            && temp_a2->z_position <= (arg5 + arg2)) {
-                return 1;
+        Actor *temp = D_807FB930[i].unk0;
+        if (temp->interactable & arg6) {
+            if (dx <= temp->x_position
+            && dy <= temp->y_position
+            && dz <= temp->z_position
+            && temp->x_position <= dx2
+            && temp->y_position <= dy2
+            && temp->z_position <= dz2) {
+                return TRUE;
             }
         }
     }
-    return 0;
+    return FALSE;
 }
-*/
 
 void func_80636014(s32 arg0, u8 arg1, u8 arg2) {
     if (arg1 == 1) {

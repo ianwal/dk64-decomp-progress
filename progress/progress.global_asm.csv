@@ -994,7 +994,7 @@ us,.code,func_806E007C,252,yes
 us,.code,func_806CFE7C,40,yes
 us,.code,func_8073A690,296,yes
 us,.code,func_8064F6F8,268,no
-us,.code,func_80710174,312,no
+us,.code,func_80710174,312,yes
 us,.code,func_806F09F0,324,no
 us,.code,func_806E8E78,140,yes
 us,.code,func_8066A08C,1272,no
@@ -2585,7 +2585,7 @@ us,.code,isFlagSet,184,yes
 us,.code,func_806DE930,196,yes
 us,.code,func_80642204,212,yes
 us,.code,func_80739E24,56,no
-us,.code,func_8071006C,264,no
+us,.code,func_8071006C,264,yes
 us,.code,func_8066C8B0,84,yes
 us,.code,func_80634908,84,yes
 us,.code,func_806732A8,124,no
@@ -2693,7 +2693,7 @@ us,.code,func_80634EA4,56,yes
 us,.code,func_80683AD8,1460,no
 us,.code,func_80689250,456,no
 us,.code,func_8065CDA0,16,yes
-us,.code,func_80635EF0,292,no
+us,.code,func_80635EF0,292,yes
 us,.code,func_806365D0,436,no
 us,.code,func_8063D638,540,no
 us,.code,func_806E3C38,180,yes

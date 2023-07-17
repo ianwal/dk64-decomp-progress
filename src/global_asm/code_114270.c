@@ -153,25 +153,26 @@ void func_8070FC40(Struct8070FC40_arg0 *arg0) {
 // Big, need structs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8070FCCC.s")
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8071006C.s")
-
 typedef struct {
     s32 unk0;
     f32 unk4;
     f32 unk8;
     f32 unkC;
     f32 unk10;
-    u8 unk14[0xB0 - 0x14];
+    u8 unk14[0x20 - 0x14];
+    s16 unk20;
+    u8 unk22[0x28 - 0x22];
+    f32 unk28;
+    u8 unk2C[0xB0 - 0x2C];
     u8 unkB0;
     u8 unkB1;
 } Struct8071006C_arg0;
 
 extern f64 D_8075E4E0;
 
-/*
 u8 func_8071006C(Struct8071006C_arg0 *arg0) {
-    func_8070FA58();
+    f32 temp;
+    func_8070FA58(arg0);
     func_8070FC40(arg0);
     arg0->unk8 = arg0->unk4;
     if (arg0->unkB0++ >= 0xF) {
@@ -179,13 +180,27 @@ u8 func_8071006C(Struct8071006C_arg0 *arg0) {
             arg0->unkB1 -= 0x50;
         }
     }
-    arg0->unkC += (((30.0f - (((1.0f / (arg0->unk10 * 4.0f)) * 60.0f) - 30.0f)) + 30.0f) * D_8075E4E0);
+    temp = 1.0f / ((f64)arg0->unk10 * 4.0f) * 60.0f;
+    arg0->unkC += (((30.0f - ((temp) - 30.0f)) + 30.0f) * D_8075E4E0);
     return (arg0->unkC > 240.0f || arg0->unkB1 < 0x50);
 }
-*/
 
-// Similar to above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80710174.s")
+u8 func_80710174(Struct8071006C_arg0 *arg0) {
+    f32 temp;
+    func_8070FA58(arg0);
+    arg0->unk4 += func_80612794(arg0->unk20) * arg0->unk28;
+    func_8070FC40(arg0);
+    arg0->unk8 = arg0->unk4;
+    arg0->unk20 += 0x14;
+    temp = 1.0 / (arg0->unk10 * 4.0) * 8.0;
+    arg0->unkC = arg0->unkC + ((10.0f - (((temp) - 10.0f)) + 10.0f) * 0.25);
+    if (arg0->unkB0++ >= 0x3D) {
+        if (arg0->unkB1 >= 0xA) {
+            arg0->unkB1 -= 0xA;
+        }
+    }
+    return (arg0->unkC > 240.0f || arg0->unkB1 < 0xA);
+}
 
 // Need arg0 struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807102AC.s")
