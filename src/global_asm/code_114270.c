@@ -240,6 +240,7 @@ u8 func_807103E0(Struct807103E0 *arg0) {
     arg0->unk8 = arg0->unk4;
     arg0->unkC += (1.0 + func_80612794(arg0->unk22)) * (f32)(1.0 + (arg0->unk20 * D_8075E4F8));
     arg0->unk22 += 0x64;
+    // Problem is here, end of the line
     arg0->unk24 = (func_80612794(arg0->unk22 * 0.5) * 0.5 + 0.5) * ((arg0->unkB3 * 4) - (arg0->unkB3 * -4)) + (arg0->unkB3 * -4);
     if (((ABS(arg0->unk10)) * 140.0f) < arg0->unkC) {
         if (arg0->unkB1 >= 0xA) {

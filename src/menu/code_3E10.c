@@ -1142,14 +1142,9 @@ void func_80030A90(Struct80717D84 *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8003155C.s")
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_800317E8.s")
-
 f32 func_8000AC60(f32, f32);
 
-/*
 s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7) {
-    f32 temp_f0_2;
     f32 var_f0;
     f32 var_f18;
     s32 var_v1;
@@ -1181,13 +1176,12 @@ s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4
     if (var_f0 < 0.0f) {
         var_f0 = 0.0f;
     }
-    temp_f0_2 = ((100.0f / var_f18) * var_f0 * arg7) + 1.0f;
-    *arg3 = (arg1 * temp_f0_2) + 160.0f;
-    *arg4 = (arg2 * temp_f0_2) + 120.0f;
-    *arg4 = (arg2 * temp_f0_2) + 120.0f + arg0->unkC;
+    var_f0 = ((100.0f / var_f18) * var_f0 * arg7) + 1.0f;
+    *arg3 = (arg1 * var_f0) + 160.0f;
+    *arg4 = (arg2 * var_f0) + 120.0f;
+    *arg4 = (arg2 * var_f0) + 120.0f + arg0->unkC;
     return var_v1;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80031980.s")
 

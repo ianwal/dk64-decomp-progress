@@ -3329,7 +3329,7 @@ us,.code,func_800241E8,60,yes
 us,.code,func_80027F34,12,yes
 us,.code,func_8002F6C8,148,yes
 us,.code,func_80026684,108,yes
-us,.code,func_800317E8,408,no
+us,.code,func_800317E8,408,yes
 us,.code,func_80027E10,80,yes
 us,.code,func_8002DEE8,192,yes
 us,.code,func_8002FE08,180,yes
