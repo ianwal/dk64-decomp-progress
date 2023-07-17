@@ -295,6 +295,7 @@ void func_80605314(Actor *arg0, u8 arg1) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80605380.s")
 
 extern s32 D_807705A0[];

@@ -195,20 +195,19 @@ void func_8002EDD4(Struct8002EDD4_arg0 *arg0) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F04C.s")
-
-/*
 f32 func_8002F04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 phi_f2;
+    f32 temp;
+    f32 temp2;
 
     phi_f2 = 0.0f;
-    if ((arg7 * arg2) != (arg6 * arg3)) {
-        phi_f2 = (((arg4 - arg0) * arg3) + (arg2 * (arg1 - arg5))) / ((arg2 * arg7) - (arg6 * arg3));
+    temp = (arg7 * arg2);
+    temp2 = (arg6 * arg3);
+    if (temp != temp2) {
+        phi_f2 = (((arg4 - arg0) * arg3) + (arg2 * (arg1 - arg5))) / (temp - temp2);
     }
     return phi_f2;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F0AC.s")
 

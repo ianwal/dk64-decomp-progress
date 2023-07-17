@@ -912,9 +912,6 @@ void func_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067A09C.s")
-
 typedef struct Struct8067A09C Struct8067A09C;
 
 // TODO: Any overlap with existing structs?
@@ -928,54 +925,50 @@ struct Struct8067A09C {
     Struct8067A09C *unk18; // Doubly linked list
 };
 
-/*
 Struct8067A09C *func_8067A09C(Struct8067A09C *arg0) {
     s32 var_a1;
     Struct8067A09C *temp_a2;
-    Struct8067A09C *var_a0;
-    Struct8067A09C *var_v0;
+    Struct8067A09C *current;
     Struct8067A09C *var_v1;
 
     var_v1 = arg0;
     if (arg0 != NULL) {
-        var_v0 = arg0->unk14;
-        while (var_v0 != NULL) {
-            var_a0 = var_v0->unk18;
+        current = arg0->unk14;
+        while (current != NULL) {
+            arg0 = current->unk18;
             var_a1 = FALSE;
-            while (var_a0 != NULL && var_a1 == 0) {
-                if (var_v0->unk0 >= var_a0->unk0) {
+            while (arg0 != NULL && var_a1 == 0) {
+                if (current->unk0 >= arg0->unk0) {
                     var_a1 = TRUE;
-                    var_v0->unk18->unk14 = var_v0->unk14;
-                    if (var_v0->unk14 != NULL) {
-                        var_v0->unk14->unk18 = var_v0->unk18;
+                    current->unk18->unk14 = current->unk14;
+                    if (current->unk14 != NULL) {
+                        current->unk14->unk18 = current->unk18;
                     }
-                    // TODO: Regalloc here
-                    temp_a2 = var_a0->unk14;
-                    var_a0->unk14 = var_v0;
-                    var_v0->unk14 = temp_a2;
-                    if (temp_a2 != NULL) {
-                        temp_a2->unk18 = var_v0;
+                    temp_a2 = arg0->unk14;
+                    arg0->unk14 = current;
+                    current->unk14 = temp_a2;
+                    if (current->unk14 != NULL) {
+                        current->unk14->unk18 = current;
                     }
-                    var_v0->unk18 = var_a0;
+                    current->unk18 = arg0;
                 }
-                var_a0 = var_a0->unk18;
+                arg0 = arg0->unk18;
             }
             if (var_a1 == FALSE) {
-                var_v0->unk18->unk14 = var_v0->unk14;
-                if (var_v0->unk14 != NULL) {
-                    var_v0->unk14->unk18 = var_v0->unk18;
+                current->unk18->unk14 = current->unk14;
+                if (current->unk14 != NULL) {
+                    current->unk14->unk18 = current->unk18;
                 }
-                var_v0->unk18 = NULL;
-                var_v0->unk14 = var_v1;
-                var_v1->unk18 = var_v0;
-                var_v1 = var_v0;
+                current->unk18 = NULL;
+                current->unk14 = var_v1;
+                var_v1->unk18 = current;
+                var_v1 = current;
             }
-            var_v0 = var_v0->unk14;
+            current = current->unk14;
         }
     }
     return var_v1;
 }
-*/
 
 void func_8067A170(Actor* arg0, u8 arg1) {
     s32 i;
