@@ -361,10 +361,6 @@ void func_8072B330(u16 arg0) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072B438.s")
-
-/*
 void func_8072B438(u16 arg0) {
     s32 temp_v1;
     f32 var_f12;
@@ -373,26 +369,15 @@ void func_8072B438(u16 arg0) {
     if ((current_actor_pointer->unkB8 < -60.0f) && (current_actor_pointer->unk6A & 1) && ((object_timer % 5U) == 0)) {
         func_8072DAA4();
     }
-    if (temp_v1 != current_actor_pointer->unkB8) {
+    if (current_actor_pointer->unkB8 != temp_v1) {
         if (current_actor_pointer->unkB8 < temp_v1) {
-            var_f12 = current_actor_pointer->unkB8 + D_807FDC90->unk35;
-            if (temp_v1 < var_f12) {
-                current_actor_pointer->unkB8 = temp_v1;
-            } else {
-                current_actor_pointer->unkB8 = var_f12;
-            }
+            current_actor_pointer->unkB8 = MIN(temp_v1, (current_actor_pointer->unkB8 + D_807FDC90->unk35));
         } else if (temp_v1 < current_actor_pointer->unkB8) {
-            var_f12 = current_actor_pointer->unkB8 - D_807FDC90->unk35;
-            if (var_f12 < temp_v1) {
-                current_actor_pointer->unkB8 = temp_v1;
-            } else {
-                current_actor_pointer->unkB8 = var_f12;
-            }
+            current_actor_pointer->unkB8 = MAX(temp_v1, (current_actor_pointer->unkB8 - D_807FDC90->unk35));
         }
     }
     func_8072B330(arg0);
 }
-*/
 
 void func_8072B59C(u8 arg0, s16 arg1, s32 arg2) {
     current_actor_pointer->control_state = arg0;

@@ -579,25 +579,19 @@ s32 func_806C9974(u8 arg0, s8 arg1) {
     }
 }
 
-// close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_806C9AE0.s")
-
 extern u8 D_80750AC0;
 extern s8 D_80750ACC;
 extern s32 D_807FD56C;
 
 void func_806C7B00(void);
 
-/*
-// TODO: Excruciatingly close
-// Something weird going on with a0 and s2
 void func_806C9AE0(void) {
     PlayerProgress *PP;
     s32 playerIndex;
     s32 kongIndex;
     
-    for (playerIndex = 0; playerIndex < 4; playerIndex++) {
-        PP = &D_807FC950[playerIndex];
+    PP = D_807FC950;
+    for (playerIndex = 0; playerIndex < 4; playerIndex++, PP++) {
         bzero(PP, sizeof(PlayerProgress));
         if (D_80750AC0 >= 2) {
             if (D_807552E4.unk0 == 1) {
@@ -618,7 +612,6 @@ void func_806C9AE0(void) {
     D_80750ACC = 0;
     D_807FD56C = 0;
 }
-*/
 
 extern s32 D_80750B34[];
 
