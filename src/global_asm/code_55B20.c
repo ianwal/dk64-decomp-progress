@@ -340,7 +340,7 @@ Chunk14 *func_80630588(Chunk14*, s32, s32, u8*);
 /*
 // TODO: Quite close
 // Something to do with arg2? Loop condition? Break?
-u8 func_80652594(s32 arg0, s16 *arg1, u8 arg2) {
+u8 func_80652594(Model2Model *arg0, s16 *arg1, u8 arg2) {
     u8 sp4F;
     s16 i;
     s32 pad;
@@ -1019,6 +1019,7 @@ void func_80655BF0(void) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655CF8.s")
 
 extern s16 D_807F6C30[];

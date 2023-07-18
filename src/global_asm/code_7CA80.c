@@ -1342,10 +1342,10 @@ s16 func_8067AF74(Actor *arg0) {
     return -1;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067B01C.s")
 
 /*
-// TODO: Close
 void func_8067B01C(void) {
     Actor *temp_a1;
     s32 temp_a0_2;
@@ -1379,6 +1379,7 @@ void func_8067B01C(void) {
 }
 */
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_8067B100.s")
 
 extern s32 D_807ECDEC;
@@ -1387,7 +1388,6 @@ extern CharacterProgress *D_807FD568;
 extern s16 D_807FD584;
 
 /*
-// TODO: Very close
 void func_8067B100(Actor *player) {
     extra_player_info_pointer = player->PaaD;
     cc_player_index = extra_player_info_pointer->unk1A4;

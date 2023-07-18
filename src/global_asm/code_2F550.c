@@ -13,8 +13,6 @@ extern void *D_807F5E60;
 extern s8 D_807F5FEC;
 extern s32 D_807F6C28;
 
-void func_8062D0CC(void*, void*, Model2Model*, u8);
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062A850.s")
 
 /*
@@ -743,11 +741,52 @@ void func_8062CA0C(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062CEA8.s")
 
+typedef struct Struct8062D0CC_arg0 Struct8062D0CC_arg0;
+typedef struct Struct8062D0CC_arg1 Struct8062D0CC_arg1;
+
+struct Struct8062D0CC_arg0 {
+    Struct8062D0CC_arg0 *unk0;
+    Struct8062D0CC_arg0 *unk4;
+    u8 unk8[0xB8 - 0x8];
+    u8 unkB8;
+};
+
+struct Struct8062D0CC_arg1 {
+    s32 unk0;
+    Chunk14 *unk4;
+    s32 unk8;
+    Struct8062D0CC_arg1 *unkC;
+    Struct8062D0CC_arg1 *unk10;
+};
+
+u8 func_8062D0CC(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, u8 arg3);
+
 void func_8062D094(Model2Model *arg0, u8 arg1) {
     func_8062D0CC(D_807F5DE4, D_807F5E60, arg0, arg1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D0CC.s")
+u8 func_8062D0CC(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, u8 arg3) {
+    u8 temp;
+    s8 sp26;
+
+    sp26 = 0;
+    if (arg0 == NULL) {
+        return 0;
+    }
+    switch (arg0->unkB8) {
+        case 2:
+            func_806524A0(arg2, arg3);
+            return 1;
+        case 1:
+            func_806307CC(arg1->unk4, arg2, 0, arg3, &sp26);
+            return sp26;
+        case 0:
+            if (func_8062D0CC(arg0->unk0, arg1->unkC, arg2, arg3) != 0) {
+                return 1;
+            }
+            return func_8062D0CC(arg0->unk4, arg1->unk10, arg2, arg3);
+    }
+}
 
 typedef struct Struct8062D1E0_arg0 Struct8062D1E0_arg0;
 typedef struct Struct8062D1E0_arg1 Struct8062D1E0_arg1;
@@ -775,10 +814,10 @@ void func_8062D1A8() {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D1E0.s")
 
 /*
-// TODO: Close
 void func_8062D1E0(Struct8062D1E0_arg0 *arg0, Struct8062D1E0_arg1 *arg1) {
     Struct8062D1E0_arg0 *var_s0;
     Struct8062D1E0_arg1 *var_s1;
@@ -814,11 +853,36 @@ void func_8062D26C(Actor *arg0) {
     func_8062D2AC(arg0, &sp1C, 1);
 }
 
+u8 func_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, s32 arg3, u8 arg4);
+
 void func_8062D2AC(s32 arg0, s32 arg1, u8 arg2) {
     func_8062D2F0(D_807F5DE4, D_807F5E60, arg0, arg1, arg2);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062D2F0.s")
+u8 func_80652594(Model2Model *arg0, s16 *arg1, u8 arg2);
+
+u8 func_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, s32 arg3, u8 arg4) {
+    u8 sp27;
+
+    if (arg0 == NULL) {
+        return 0;
+    }
+    switch (arg0->unkB8) {
+        case 2:
+            return func_80652594(arg2, arg3, arg4);
+        case 1:
+            arg1->unk4 = func_80630588(arg1->unk4, arg2, 0, &sp27);
+            return sp27;
+        case 0:
+            if (func_8062D2F0(arg0->unk0, arg1->unkC, arg2, arg3, arg4) != 0) {
+                if (arg4 == 0) {
+                    return 1;
+                }
+            }
+            return func_8062D2F0(arg0->unk4, arg1->unk10, arg2, arg3, arg4);
+    }
+    return 0;
+}
 
 typedef struct {
     s32 unk0;

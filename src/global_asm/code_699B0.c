@@ -444,22 +444,18 @@ LedgeInfo *func_80665F24(Actor *arg0) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665FB4.s")
-
-/*
 extern f32 D_80758EB4;
 
 void func_8066EB50(Actor *actor, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 void func_80665FB4(Actor *arg0) {
-    f32 phi_f0;
-
     f32 xPos = arg0->x_position;
     f32 yPos = arg0->y_position;
     f32 zPos = arg0->z_position;
+    f32 phi_f0;
 
     if (arg0->animation_state) {
-        func_806303C4(yPos, zPos, arg0->draw_distance, 0, 1, -1, 1);
+        func_806303C4(NULL, 0, arg0, xPos, yPos, zPos, arg0->draw_distance, 0, 1, -1, 1);
     }
     if (arg0->ledge_info_pointer) {
         if (arg0->animation_state) {
@@ -472,7 +468,6 @@ void func_80665FB4(Actor *arg0) {
     }
     //return phi_f0;
 }
-*/
 
 // Loads floors from pointer table 3 for the current map
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666090.s")

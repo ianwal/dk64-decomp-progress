@@ -44,7 +44,41 @@ void func_807094D0(u8 arg0) { // init zipper
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070A220.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070A848.s")
+
+extern s16 D_80744490;
+extern s16 D_80744494;
+
+typedef struct {
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+    u32 unk10;
+    u32 unk14;
+    u32 unk18;
+    u32 unk1C;
+} Struct8070A848;
+
+/*
+void func_8070A848(Struct8070A848 *arg0, Struct8070A848 *arg1) {
+    Struct8070A848 *temp = arg1;
+    s32 i = 0;
+
+    while (i < (D_80744490 * D_80744494) / 16) {
+        arg0[i].unk0 = temp[i].unk0 | 0x10001;
+        arg0[i].unk4 = temp[i].unk4 | 0x10001;
+        arg0[i].unk8 = temp[i].unk8 | 0x10001;
+        arg0[i].unkC = temp[i].unkC | 0x10001;
+        arg0[i].unk10 = temp[i].unk10 | 0x10001;
+        arg0[i].unk14 = temp[i].unk14 | 0x10001;
+        arg0[i].unk18 = temp[i].unk18 | 0x10001;
+        arg0[i].unk1C = temp[i].unk1C | 0x10001;
+        i++;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070A934.s")
 
@@ -143,7 +177,6 @@ void func_8070A934(s32 nextMap, s32 nextExit) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070AC74.s")
 
 extern s32 D_80744470[];
-extern s16 D_80744490;
 extern s16 D_80744494;
 extern s32 D_80755068;
 extern s32 D_8075506C;

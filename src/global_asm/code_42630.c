@@ -3202,6 +3202,7 @@ u8 func_8064F1C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return D_807F6950;
 }
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064F210.s")
 
 extern f32 D_807F622C;
@@ -3209,13 +3210,19 @@ extern f32 D_807F622C;
 /*
 u8 func_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 sp2C;
+    f32 temp2;
+    f32 temp3;
+    f32 temp4;
+    s16 temp_f18;
     f32 temp_f0;
-    s32 temp_f18;
+    f32 temp;
 
     temp_f18 = (D_807F622C * 4096.0f) / 360.0f;
     sp2C = func_80612794(temp_f18);
     temp_f0 = func_80612790(temp_f18);
-    return (((player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position) + -((D_807F621C * sp2C) + (D_807F6224 * temp_f0))) > 6.0);
+    temp = -((D_807F621C * sp2C) + (D_807F6224 * temp_f0));
+    temp2 = (player_pointer->x_position * sp2C);
+    return (f64)(temp2 + (player_pointer->z_position * temp_f0) + temp) > 6;
 }
 */
 

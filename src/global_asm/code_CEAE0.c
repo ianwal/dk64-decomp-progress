@@ -1063,6 +1063,7 @@ void func_806CEE64(f32 arg0) {
     }
 }
 
+// stack, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CEED8.s")
 
 extern f32 D_8075CBE0;
@@ -1071,7 +1072,6 @@ extern f64 D_8075CBE8;
 void func_806CF2EC(s32*, s32*);
 
 /*
-// TODO: Very doable, just stack offset to fix
 void func_806CEED8(void) {
     f32 sp44; // 44
     f32 sp40; // 40
