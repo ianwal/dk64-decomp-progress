@@ -185,7 +185,7 @@ segments:
     start: 0x113F0
     subsegments:
       - [0x113F0, bin]
-  - name: code
+  - name: global_asm
     dir: global_asm
     type: code
     start: 0x2000000
@@ -330,16 +330,11 @@ segments:
       - [0x144E00, c, audio/code_144E00]
       - [0x145950, c, audio/code_145950]
       - [0x145D70, bin, code_145D70] #mips3
-  - name: data
-    type: code
-    dir: global_asm
-    start: 0x2149160
-    vram: 0x80744460
-    subsegments:
+      # Data
       - [0x149160, bin, data_149160]
       - [0x165190, .rodata, audio/synthesizer]
       - [0x1651A0, bin, data_1651A0]
-  - name: code
+  - name: menu
     dir: menu
     type: code
     start: 0x2165D50
@@ -350,14 +345,9 @@ segments:
       - [0x1AF0, c, code_1AF0]
       - [0x3E10, c, code_3E10]
       - [0xE550, c, code_E550]
-  - name: data
-    type: code
-    dir: menu
-    start: 0x2174CA0
-    vram: 0x80032F50
-    subsegments:
+      # Data
       - [0xEF50, bin, data_EF50]
-  - name: code
+  - name: multiplayer
     dir: multiplayer
     type: code
     start: 0x2175C60
@@ -365,14 +355,9 @@ segments:
     subsegments:
     exclusive_ram_id: overlay
       - [0x0, c, code_0]
-  - name: data
-    type: code
-    dir: multiplayer
-    start: 0x2178BD0
-    vram: 0x80026F70
-    subsegments:
+      # Data
       - [0x2F70, bin, data_2F70]
-  - name: code
+  - name: minecart
     dir: minecart
     type: code
     start: 0x2178D60
@@ -381,14 +366,9 @@ segments:
     subsegments:
       - [0x0, c, code_0]
       - [0x25F0, c, code_25F0]
-  - name: data
-    type: code
-    dir: minecart
-    start: 0x217D8F0
-    vram: 0x80028B90
-    subsegments:
+      # Data
       - [0x4B90, bin, data_4B90]
-  - name: code
+  - name: bonus
     dir: bonus
     type: code
     start: 0x217DB70
@@ -399,14 +379,9 @@ segments:
       - [0x12A0, c, code_12A0]
       - [0x2690, c, code_2690]
       - [0x9010, c, code_9010]
-  - name: data
-    dir: bonus
-    type: code
-    start: 0x21873D0
-    vram: 0x8002D860
-    subsegments:
+      # Data
       - [0x9860, bin, data_9860]
-  - name: code
+  - name: race
     dir: race
     type: code
     start: 0x2187A60
@@ -418,14 +393,9 @@ segments:
       - [0x52B0, c, code_52B0]
       - [0x7BD0, c, code_7BD0]
       - [0xA960, c, code_A960]
-  - name: data
-    type: code
-    dir: race
-    start: 0x2193570
-    vram: 0x8002FB10
-    subsegments:
+      # Data
       - [0xBB10, bin, data_BB10]
-  - name: code
+  - name: critter
     dir: critter
     type: code
     start: 0x2193BC0
@@ -434,14 +404,9 @@ segments:
     subsegments:
       - [0x0, c, code_0]
       - [0x3340, c, code_3340]
-  - name: data
-    dir: critter
-    type: code
-    start: 0x21993B0
-    vram: 0x800297F0
-    subsegments:
+      # Data
       - [0x57F0, bin, data_57F0]
-  - name: code
+  - name: boss
     dir: boss
     type: code
     start: 0x2199D70
@@ -457,14 +422,9 @@ segments:
       - [0x9C60, c, code_9C60]
       - [0xC920, c, code_C920]
       - [0xF0D0, c, code_F0D0]
-  - name: data
-    dir: boss
-    type: code
-    start: 0x21AB620
-    vram: 0x800358B0
-    subsegments:
+      # Data
       - [0x118B0, bin, data_118B0]
-  - name: code
+  - name: arcade
     dir: arcade
     type: code
     start: 0x21ACB30
@@ -472,12 +432,7 @@ segments:
     exclusive_ram_id: overlay
     subsegments:
       - [0x0, c, code_0]
-  - name: data
-    type: code
-    dir: arcade
-    start: 0x21BAD50
-    vram: 0x80032220
-    subsegments:
+      # Data
       - [0xE220, bin, data_E220]
       - [0xE228, rgba16, img/arcade_80032228.rgba16, 16, 16]
       - [0xE428, bin, data_E428]
@@ -592,7 +547,7 @@ segments:
       #- [0x26840, .rodata, code_0]
       #- [0x268D0, bin, data_268D0]
       - [0x26B80, .rodata, code_0]
-  - name: code
+  - name: jetpac
     dir: jetpac
     type: code
     start: 0x21D3730
@@ -604,11 +559,6 @@ segments:
       - [0x3060, c, code_3060]
       - [0x3480, c, code_3480]
       - [0x4FC0, c, code_4FC0]
-  - name: data
-    type: code
-    dir: jetpac
-    start: 0x21DA7C0
-    vram: 0x8002B090
-    subsegments:
+      # Data
       - [0x7090, bin, data_7090]
   - [0x2000000] # end of ROM
