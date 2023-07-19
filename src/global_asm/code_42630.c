@@ -2475,9 +2475,6 @@ s32 func_8064BF58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return FALSE;
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064BFD0.s")
-
 extern f64 D_80758AC0;
 extern f64 D_80758AC8;
 extern f32 D_807F6228;
@@ -2487,12 +2484,10 @@ typedef struct {
     f32 unk14[1]; // TODO: How many?
 } Struct8064BFD0;
 
-/*
 void func_8064BFD0(Struct8064BFD0 *arg0, s32 arg1, s16 arg2, s16 arg3) {
     f32 temp_f12;
-    f64 var_f2_2;
 
-    temp_f12 = (ABS(arg0->unk14[arg2]) / arg0->unk14[arg3 + 1]);
+    temp_f12 = ((f64)ABS(arg0->unk14[arg2]) / arg0->unk14[arg3 + 1]);
     if (arg0->unk14[arg2] > 0.0) {
         if (arg0->unk14[arg3] < temp_f12) {
             arg0->unk14[arg3] += D_80758AC0;
@@ -2503,18 +2498,37 @@ void func_8064BFD0(Struct8064BFD0 *arg0, s32 arg1, s16 arg2, s16 arg3) {
         }
     }
     D_807F6228 += arg0->unk14[arg3];
-    var_f2_2 = D_807F6228;
     if (D_807F6228 > 8.0) {
         D_807F6228 = 8.0f;
-        var_f2_2 = D_807F6228;
     }
-    if (var_f2_2 < -8.0) {
+    if (D_807F6228 < -8.0) {
         D_807F6228 = -8.0f;
     }
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064C134.s")
+extern f64 D_80758AD0;
+extern f64 D_80758AD8;
+extern f64 D_80758AE0;
+extern f64 D_80758AE8;
+extern f32 D_807F6228;
+
+void func_8064C134(Struct8064BFD0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
+    if (D_80758AD0 < D_807F6228 || D_807F6228 < D_80758AD8) {
+        if (D_807F6228 > 0.0) {
+            if (arg0->unk14[arg2] > -1.0) {
+                arg0->unk14[arg2] -= D_80758AE0;
+            }
+        } else {
+            if (arg0->unk14[arg2] < 1.0) {
+                arg0->unk14[arg2] += D_80758AE8;
+            }
+        }
+        D_807F6228 += arg0->unk14[arg2];
+    } else {
+        D_807F6228 = 0.0f;
+        arg0->unk14[arg2] = 0.0f;
+    }
+}
 
 void func_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
 
@@ -2891,6 +2905,7 @@ void func_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_80635018(arg1, 4, temp_f0, temp_f2);
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064DE04.s")
 
 extern f32 D_80758B78;

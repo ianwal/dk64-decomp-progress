@@ -193,6 +193,7 @@ void func_80602DC4(s32 arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602E6C.s")
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80603340.s")
 
 // jumptable

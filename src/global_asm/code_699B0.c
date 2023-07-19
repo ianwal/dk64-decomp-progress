@@ -1250,12 +1250,12 @@ void func_806696A0(Actor *arg0, s16 arg1, Struct806696A0 *arg2) {
 }
 */
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669830.s")
 
 void func_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
 
 /*
-// TODO: Close
 void func_80669830(s32 arg0, Struct80669830 *arg1, u8 arg2) {
     f32 sp30[4][4];
 

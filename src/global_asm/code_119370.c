@@ -2552,10 +2552,10 @@ void func_8071F444(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
+// stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F660.s")
 
 /*
-// TODO: Stack is too big, only issue
 void func_8071F660(Struct80717D84 *arg0, s32 arg1) {
     f32 sp68[4][4];
     f32 sp28[4][4];

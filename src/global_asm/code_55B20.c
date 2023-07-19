@@ -874,7 +874,26 @@ void func_80654380(f32 arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654A2C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654BC0.s")
+void func_80654BC0(s32 arg0, u8 arg1) {
+    s32 found;
+    s32 i;
+    s32 max;
+
+    for (i = 0, found = 0; !found && i < D_807F70AC; i++) {
+        if (arg0 == D_807F70B0[i].unk2) {
+            D_807F70B0[i].unk18 = arg1;
+            if (arg1) {
+                D_807F70B0[i].unk19 = 1;
+            }
+            found = TRUE;
+        }
+    }
+    for (i = 0; i < D_807F70AC; i++) {
+        if (arg0 == D_807F70B0[i].unk4) {
+            func_80654BC0(D_807F70B0[i].unk2, arg1);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654CCC.s")
 
@@ -937,6 +956,7 @@ s32 func_80654E84(Struct80654E84 *arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654FEC.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655258.s")
 
 s32 func_8062DBDC(s16, s16, s16, s16, s32, s32, f32, f32, f32, f32, u8 *);
@@ -944,7 +964,6 @@ extern f32 D_807F5FAC;
 extern s32 D_807F70AC;
 
 /*
-// TODO: Very close
 void func_80655258(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
     s32 i;
 
@@ -1060,12 +1079,12 @@ void func_80656E58(s16 arg0, s16 arg1, u8 arg2, u8 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80656F14.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806574B8.s")
 
 extern u8 D_807F7060[];
 extern u8 D_807F7070;
 
-// TODO: Close
 /*
 s32 func_806574B8(s32 arg0) {
     s32 i;

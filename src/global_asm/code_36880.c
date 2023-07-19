@@ -1274,6 +1274,8 @@ void func_80636C00(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636D38.s")
 
+// Appears to parse a displaylist looking for 0xFD commands
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_80636EFC.s")
 
 // Displaylist stuff

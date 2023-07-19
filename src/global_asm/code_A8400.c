@@ -76,12 +76,12 @@ void func_806A3B78(s32 *arg0, AAD_806A4DDC *arg1, Struct806A57C0_2 *arg2, u8 arg
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A3C6C.s")
 
+// stack, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A3DA0.s")
 
 void func_806A3DA0(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, AAD_806A4DDC *arg4);
 
 /*
-// TODO: Very close, sp20 gets stored in sp24...
 void func_806A3DA0(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, AAD_806A4DDC *arg4) {
     f32 sp20;
 
