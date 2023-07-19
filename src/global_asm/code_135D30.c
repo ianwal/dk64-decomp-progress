@@ -110,7 +110,8 @@ typedef struct {
     u8 unk1;
     s16 unk2;
     s16 unk4; // Used, permanent flag index
-    s16 unk6;
+    u8 unk6;
+    u8 unk7;
 } Struct80755A20;
 
 extern Struct80755A20 D_80755A20[];
@@ -183,8 +184,30 @@ u8 func_807315D4(s16 arg0, s16 arg1) {
     return FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_80731654.s")
+u8 func_80731654(s16 arg0, s16 arg1) {
+    s32 i;
+    s32 max = 0x71;
 
+    for (i = 0; i < max; i++) {
+        if (arg0 == D_80755A20[i].unk0) {
+            if (arg1 == D_80755A20[i].unk2) {
+                return D_80755A20[i].unk6;
+            }
+        }   
+    }
+    for (i = 0; i < 0x18; i++) {
+        if (D_807FDCD0[i].unk7 != 0) {
+            if (arg0 == D_807FDCD0[i].unk0) {
+                if (arg1 == D_807FDCD0[i].unk2) {
+                    return D_807FDCD0[i].unk6;
+                }
+            }
+        }
+    }
+    return 0;
+}
+
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_80731784.s")
 
 typedef struct {
@@ -199,7 +222,6 @@ typedef struct {
 extern Struct80755DA8 D_80755DA8[]; // 0x1F
 
 /*
-// TODO: Close
 s16 func_80731784(s16 map, s16 spawnerID, s32 *arg2) {
     s16 i;
     s16 max = 0x1F;

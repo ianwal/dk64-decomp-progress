@@ -152,6 +152,7 @@ s32 func_80732064(s32 arg0, s32 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_8073209C.s")
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80732158.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80732280.s")

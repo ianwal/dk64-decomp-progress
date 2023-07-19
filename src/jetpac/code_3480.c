@@ -57,6 +57,7 @@ s32 func_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     return 0;
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_800275F4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80027728.s")

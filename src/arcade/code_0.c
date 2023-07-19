@@ -288,8 +288,9 @@ void func_80024A50(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_80024B04.s")
 #else
 void func_80024B04(void) {
-    int i;
-    for (i = 0; i < (u8)5; i++) {
+    u8 i;
+    s32 max;
+    for (i = 0; i < 5; i++) {
         if (arcade_saved_high_scores[i] < arcade_current_score) {
             func_80024A50(i);
             break;
@@ -302,7 +303,8 @@ void func_80024B04(void) {
     arcade_background_visual = 0;
     D_8004C6DC = 0;
     D_8004C720 = 0;
-    for (i = 0; i < 0x50; i++) {
+    max = 0x50;
+    for (i = 0; i < max; i++) {
         D_8004BCD0[i].unk18 = 0;
         D_8004BCD0[0] = D_8004BCD0[i];
     }

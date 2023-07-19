@@ -2453,12 +2453,12 @@ void func_8071F078(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk344 += var_v1[1];
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071F1D0.s")
 
 extern s8 D_8075567C;
 
 /*
-// TODO: Close
 void func_8071F1D0(Struct80717D84 *arg0, s8 *arg1) {
     f32 *var_v1;
     s32 temp2;

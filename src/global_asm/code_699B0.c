@@ -88,6 +88,7 @@ void func_80665160(Actor *arg0, s16 arg1, s16 arg2) {
     }
 }
 
+// doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806651FC.s")
 
 f32 func_80612794(s16);
@@ -96,7 +97,6 @@ extern f32 D_80758E30;
 extern f64 D_80758E38;
 
 /*
-// TODO: Doable, float nonsense, close
 void func_806651FC(Actor *arg0) {
     f32 temp_f0;
     f32 sp28;
@@ -337,7 +337,26 @@ void func_80665ACC(Actor *arg0) {
     arg0->object_properties_bitfield |= 0x20; // TODO: What is this used for?
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665AE4.s")
+extern f32 D_80758E70;
+extern f32 D_80758E74;
+extern f64 D_80758E78;
+extern f64 D_80758E80;
+extern f32 D_80758E88;
+
+f32 func_80665AE4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    f32 sp1C;
+
+    if (arg2 >= arg0 && arg3 >= arg1) {
+        sp1C = func_80611BB4(arg3 - arg1, arg2 - arg0) + D_80758E70;
+    } else if (arg2 >= arg0 && arg3 < arg1) {
+        sp1C = D_80758E74 - func_80611BB4(arg1 - arg3, arg2 - arg0);
+    } else if (arg2 < arg0 && arg3 < arg1) {
+        sp1C = func_80611BB4(arg1 - arg3, arg0 - arg2) + D_80758E78;
+    } else if (arg2 < arg0 && arg3 >= arg1) {
+        sp1C = D_80758E80 - func_80611BB4(arg3 - arg1, arg0 - arg2);
+    }
+    return sp1C * D_80758E88;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665C18.s")
 
@@ -559,6 +578,7 @@ u8 func_80666AEC(void) {
     return D_807F94AA;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80666AF8.s")
 
 extern f64 D_80758EE8;
@@ -571,7 +591,6 @@ extern s16 D_807F94A6;
 extern s16 D_807F94A8;
 
 /*
-// TODO: Close
 void func_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6) {
     s16 var_v0;
     f32 temp_f0_2;
@@ -776,6 +795,7 @@ u8 func_80667174(void) {
     return D_807F94B5;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80667180.s")
 
 // s32 func_80666FC8(f32, f32, s32, u8, f32, s32);
@@ -784,7 +804,6 @@ u8 func_806679BC(f32, f32, f32 *);
 extern s8 D_807F94B6;
 
 /*
-// TODO: Close
 u8 func_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3) {
     u8 sp3F;
     f32 sp38;
@@ -1206,6 +1225,7 @@ s32 func_80669650(u8 arg0, u8 *arg1) {
     return 1;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806696A0.s")
 
 typedef struct {
@@ -1228,7 +1248,6 @@ typedef struct {
 } Struct806696A0;
 
 /*
-// TODO: Very close, just some float stuff
 void func_806696A0(Actor *arg0, s16 arg1, Struct806696A0 *arg2) {
     u8 var_s2;
 
@@ -1818,6 +1837,7 @@ void func_8066B4AC(s32 arg0, s32 arg1, s32 arg2) {
     }
 }
 
+// stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066B4D4.s")
 
 extern s32 D_8000DDCC;
