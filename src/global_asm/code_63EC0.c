@@ -216,6 +216,7 @@ void func_8065FB64(f32 arg0, f32 arg1, s32 arg2) {
 // Displaylist stuff (chunk)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065FEB8.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80660070.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80660520.s")

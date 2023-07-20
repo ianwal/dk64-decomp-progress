@@ -73,6 +73,7 @@ void func_80659670(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
     }
 }
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_8065996C.s")
 
 void func_80659DB0(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {

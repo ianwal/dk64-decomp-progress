@@ -18,6 +18,7 @@ void sealRaceSetup() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_800294A8.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_8002978C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_80029F88.s")
@@ -67,6 +68,7 @@ s32 func_8002A080(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1) {
     return D_8002FC5C[func_8002E8EC(arg0, arg1, 0xA)];
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_8002A0AC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/initializeCastleCarRace.s")
@@ -78,6 +80,7 @@ void func_8002AE6C(s32 arg0, Actor *arg1) {
     func_8068E474(func_8002CAC8(arg0, arg1, arg1->PaaD), arg1);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_8002AE9C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_8002B180.s")

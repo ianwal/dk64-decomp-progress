@@ -66,6 +66,7 @@ s32 func_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80027D64.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_80027EC0.s")
 
 s32 func_800274C0();

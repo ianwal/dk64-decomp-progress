@@ -1382,7 +1382,7 @@ void func_8063B4A4(void) {
     D_807F6938 = 0;
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063B4C0.s")
 
 // big, object model 2

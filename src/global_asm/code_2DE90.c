@@ -39,10 +39,10 @@ u8 func_806291A8(void) {
     return D_80747B20;
 }
 
-// big, can't auto decompile right now
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2DE90/func_806291B4.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2DE90/func_80629300.s")
 
 void func_8062A130(s32 arg0, s32 arg1, s32 arg2) {

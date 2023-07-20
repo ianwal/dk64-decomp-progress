@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_807085D0.s")
 
 typedef struct global_asm_struct_21 {

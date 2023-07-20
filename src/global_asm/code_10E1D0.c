@@ -40,6 +40,7 @@ void func_807094D0(u8 arg0) { // init zipper
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_80709ACC.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_80709BC4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070A220.s")
@@ -291,4 +292,5 @@ loop_10:
 }
 */
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_8070B7EC.s")

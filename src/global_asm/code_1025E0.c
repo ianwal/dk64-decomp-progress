@@ -206,6 +206,7 @@ void func_807002AC(u16 *arg0, s16 **arg1, f32 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807007B8.s")
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807009F4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80700AE4.s")
@@ -219,6 +220,7 @@ void func_80701C90(void) {
     D_807FD890 = 1;
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80701CA0.s")
 
 // TODO: Is this signature correct?
@@ -274,8 +276,10 @@ void func_80703850(u8 arg0) {
     character_change_array->unk280 = (f32)character_change_array->unk278 / character_change_array->unk27A;
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80703AB0.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80703CF8.s")
 
 void func_807040D0(u16 arg0) {

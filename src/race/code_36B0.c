@@ -182,6 +182,7 @@ void func_800283D4(f32 arg0) {
     D_80770BC0[temp_a0] = 1.0f;
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80028440.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80028AD0.s")

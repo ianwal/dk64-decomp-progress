@@ -9,6 +9,7 @@ extern u8 D_807FD9D4;  //fx
 extern u8 D_807FD9D5;  //fy
 
 #ifndef NONMATCHING
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1135F0/func_8070E8F0.s")
 #else
 void func_8070E8F0(Gfx **arg0, uSprite *arg1) {

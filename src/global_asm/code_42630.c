@@ -357,6 +357,7 @@ void func_8063E6B4(OM2_unk7C *arg0) {
     }
 }
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8063E72C.s")
 
 // Jumptable
@@ -1200,6 +1201,7 @@ void func_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 */
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064409C.s")
 
 void func_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {

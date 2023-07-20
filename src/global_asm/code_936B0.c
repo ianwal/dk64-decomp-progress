@@ -141,6 +141,7 @@ void func_8068ECF4(s32 arg0, u8 arg1) {
 }
 */
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068EF54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_8068F72C.s")
@@ -425,6 +426,7 @@ void func_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 arg4, f32 arg5
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690C60.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_80690F30.s")
 
 extern s32 D_8071FFA0;

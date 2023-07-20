@@ -59,6 +59,7 @@ void func_8069AFF0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069B010.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069B3FC.s")
 
 extern s32 D_8076A068;

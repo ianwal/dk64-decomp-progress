@@ -254,6 +254,7 @@ u8 func_807103E0(Struct807103E0 *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807105D4.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80710CA0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80711410.s")

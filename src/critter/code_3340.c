@@ -114,6 +114,7 @@ void func_80028840() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_800288A8.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80028A9C.s")
 
 // Displaylist stuff

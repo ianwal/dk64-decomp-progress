@@ -62,6 +62,7 @@ void func_8064F954(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8064FA7C.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_8064FB64.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_806500E0.s")

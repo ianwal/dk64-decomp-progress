@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80024000.s")
 
 typedef struct {

@@ -736,6 +736,7 @@ void func_8062CA0C(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     func_80630B70(arg0, D_807F5FF8, arg1, arg2, arg3, 0x30030, -1, 0);
 }
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062CA70.s")
 
 // Displaylist stuff

@@ -811,6 +811,7 @@ void func_8002DEE8(Actor *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002DFA8.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002E420.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002E8B8.s")
@@ -1090,6 +1091,7 @@ void func_80030258(Gfx *dl, s32 arg1) {
 }
 */
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80030340.s")
 
 // Jumptable, 508 bytes of code
@@ -1138,6 +1140,7 @@ void func_80030A90(Struct80717D84 *arg0, s32 arg1) {
     func_8000A6C0(&sp30, &arg0->unk128[D_807444FC]);
 }
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80030C14.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8003155C.s")
