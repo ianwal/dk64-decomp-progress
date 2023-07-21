@@ -47,7 +47,46 @@ void func_80731B60(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80731B88.s")
 
+// Close, regalloc, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80731D20.s")
+
+extern s32 D_807FEF70;
+extern s32 D_807FEF74;
+extern s32 D_807FEF78;
+extern s32 D_807FEF7C;
+
+/*
+void func_80731D20(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    u8 sp4D;
+    u8 sp4C;
+    u8 *var_s1;
+
+    func_8000320C(&sp4C, arg0, &arg1);
+    var_s1 = &sp4D;
+    while (sp4C != 0) {
+        switch (sp4C) {
+            case 0x20:
+                D_807FEF70 += D_807FEF78;
+                break;
+            case 9:
+                D_807FEF70 = D_807FEF70 / 8;
+                D_807FEF70++;
+                D_807FEF70 *= 8;
+                break;
+            case 0xA:
+                D_807FEF74 += D_807FEF78;
+                D_807FEF70 = D_807FEF7C;
+                break;
+            default:
+                func_80731B88(sp4C);
+                D_807FEF70 += D_807FEF78;
+                break;
+        }
+        sp4C = *var_s1;
+        var_s1 += 1;
+    }
+}
+*/
 
 // regalloc, rodata?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_80731E68.s")

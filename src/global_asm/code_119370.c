@@ -1748,6 +1748,7 @@ void func_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
     func_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 200.0f, 0, sp48[0], sp48[1], sp48[2]);
 }
 
+// Weird m2c errors
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C48C.s")
 
 typedef struct {

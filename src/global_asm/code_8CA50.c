@@ -27,10 +27,11 @@ void func_80687F7C(Actor *arg0) {
     }
 }
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_80687FC8.s")
 
 /*
-// TODO: Close, doable, just some fiddly last steps with order of operations
+// TODO: Just some fiddly last steps with order of operations
 // Maybe need to eliminate the last of the temporary variables
 void func_80687FC8(GlobalASMStruct60 *arg0) {
     s32 temp_f10;
@@ -239,10 +240,10 @@ GlobalASMStruct60 *func_80688584(Actor *arg0, s32 arg1) {
     return current;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_80688638.s")
 
 /*
-// TODO: Close
 void func_80688638(GlobalASMStruct60 **arg0) {
     GlobalASMStruct60 *temp_s0;
     GlobalASMStruct60 *temp_s2;

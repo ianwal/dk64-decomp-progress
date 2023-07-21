@@ -763,28 +763,23 @@ void func_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5,
     D_807FBFD8++;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_80679334.s")
 
 /*
-// TODO: Close
 void func_80679334(void) {
     Struct807FBF18 *var_s0;
     Actor *temp_s2;
     ActorCollision **var_a0;
-    ActorCollision *temp_s2_2;
-    ActorCollision *temp_t9;
     ActorCollision *var_a1;
     ActorCollision *var_v0;
-    s32 temp_t7;
-    s32 var_a0_2;
+    s32 found;
     s32 i;
-    u32 temp_a0;
     Struct807FBF18 *temp_v0;
 
     for (i = 0; i < D_807FBFD8; i++) {
-        temp_t7 = D_807FBF18[i].unk8 - 1;
-        D_807FBF18[i].unk8 = temp_t7;
-        if (temp_t7 == 0) {
+        D_807FBF18[i].unk8--;
+        if (D_807FBF18[i].unk8 == 0) {
             temp_s2 = D_807FBF18[i].unk4;
             if (func_8067AF44(temp_s2) != 0) {
                 var_v0 = temp_s2->collision_queue_pointer;
@@ -795,32 +790,30 @@ void func_80679334(void) {
                     var_a1 = var_v0;
                     var_v0 = var_v0->next;
                 }
-                temp_t9 = D_807FBF18[i].unk0;
-                *var_a0 = temp_t9;
-                temp_t9->prev = var_a1;
+                *var_a0 = D_807FBF18[i].unk0;
+                D_807FBF18[i].unk0->prev = var_a1;
             } else {
-                temp_s2_2 = D_807FBF18[i].unk0;
-                temp_a0 = temp_s2_2->unk10;
-                if (temp_a0 != 0) {
-                    func_8061130C(temp_a0);
+                temp_s2 = D_807FBF18[i].unk0;
+                if (temp_s2->unk10 != NULL) {
+                    func_8061130C(temp_s2->unk10);
                 }
-                func_8061130C(temp_s2_2);
+                func_8061130C(temp_s2);
             }
         }
     }
     do {
-        var_a0_2 = FALSE;
+        found = FALSE;
         for (i = 0; i < D_807FBFD8; i++) {
             if (D_807FBF18[i].unk8 == 0) {
-                D_807FBFD8--;
-                var_a0_2 = TRUE;
+                found = TRUE;
                 temp_v0 = &D_807FBF18[D_807FBFD8];
+                D_807FBFD8--;
                 D_807FBF18[i].unk0 = temp_v0->unk0;
                 D_807FBF18[i].unk4 = temp_v0->unk4;
                 D_807FBF18[i].unk8 = temp_v0->unk8;
             }
         }
-    } while (var_a0_2 != FALSE);
+    } while (found);
 }
 */
 

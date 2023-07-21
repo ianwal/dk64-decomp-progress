@@ -780,7 +780,6 @@ void func_8066308C(f32, f32, f32);
 extern s32 D_807F5E20; // TODO: Datatype
 extern f32 D_807F5E68[2][4][4]; // TODO: How many? At least 2
 extern f32 D_807F5FB0;
-extern s32 D_807F6C80;
 extern u8 D_807F70AB;
 extern s16 D_807F7138;
 extern f32 D_807F5FB4;
@@ -817,6 +816,7 @@ void func_80653B80(f32 arg0, f32 arg1, f32 arg2) {
 }
 
 // Loops over a DL and replaces texture indices with RDRAM pointers for G_SETTIMG commands
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80653DF0.s")
 
 // regalloc

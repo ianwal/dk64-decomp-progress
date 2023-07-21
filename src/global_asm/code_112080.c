@@ -380,10 +380,10 @@ void func_8070DD18(Struct807550C0 *arg0) {
     func_8061134C(arg0);
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070DD44.s")
 
 /*
-// TODO: Close
 void func_8070DD44(void) {
     Struct807550C0 **var_s0;
     Struct807550C0 *var_v0;

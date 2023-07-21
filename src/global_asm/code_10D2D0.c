@@ -30,25 +30,26 @@ void func_80708BB8(GlobalASMStruct21 *arg0) {
 }
 
 void func_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3);
+
+// regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_80708C24.s")
 
 void func_80026B0C(s32);
 s32 func_8070943C();
 
 /*
-// Regalloc :(
 void func_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3) {
-    s32 temp_v1_2;
-    s32 temp_lo;
-    s32 pad;
+    s32 pad2;
+    s32 pad3;
+    s32 segmentsPerMelon;
     u32 sp28;
 
     sp28 = (u8)arg1->unk2E2;
-    if (((u8)arg1->unk2E2 & 0x10)) {
-        arg1->unk2E2 = (arg1->unk2E2 ^ 0x10) & 0xFFFF;
+    if ((arg1->unk2E2 & 0x10)) {
+        arg1->unk2E2 = arg1->unk2E2 ^ 0x10;
         if (arg2->unk2FD > 0) {
-            temp_lo = arg2->melons * func_8070943C();
-            arg2->health = MIN(temp_lo, arg2->health + arg2->unk2FD);
+            segmentsPerMelon = func_8070943C();
+            arg2->health = MIN(arg2->health + arg2->unk2FD, arg2->melons * segmentsPerMelon);
         } else if (arg2->unk2FD < 0) {
             if (gameIsInAdventureMode() || gameIsInMysteryMenuMinigameMode()) {
                 arg2->health += arg2->unk2FD;

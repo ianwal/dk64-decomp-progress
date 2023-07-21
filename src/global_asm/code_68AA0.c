@@ -65,12 +65,12 @@ u8 func_80663FCC(s16 model2ArrayIndex) {
     return FALSE;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68AA0/func_80664044.s")
 
 void func_80603340(f32, f32, f32, u8, s32, f32);
 
 /*
-// TODO: Very close
 void func_80664044(u8 arg0, u8 arg1, u8 arg2, f32 arg3) {
     s32 found;
     s32 j;

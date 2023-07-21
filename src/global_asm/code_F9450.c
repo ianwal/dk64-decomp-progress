@@ -93,7 +93,95 @@ s32 func_806F4EBC(f32 arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F4F50.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F50C8.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct80753EFC;
+
+typedef struct Struct806F50C8 Struct806F50C8;
+
+struct Struct806F50C8 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s8 unkE;
+    s8 unkF;
+    s16 unk10;
+    u8 unk12;
+    u8 unk13;
+    s8 unk14;
+    s8 unk15;
+    s8 unk16;
+    s8 unk17;
+    Struct806F50C8 *unk18;
+};
+
+extern Struct80753EFC D_80753EFC[];
+extern s32 *D_80754244;
+extern s16 D_807FD720;
+extern Struct806F50C8 *D_807FD72C;
+
+void func_806F50C8(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8 arg5) {
+    Struct806F50C8 *temp_v0_2;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    s32 sp40;
+    s32 temp_v0_3;
+    Struct806F50C8 **var_v1;
+    Struct806F50C8 *current;
+
+    func_806357F8(arg0, &sp60, &sp5C, &sp58, &sp54, &sp50, &sp4C, &sp48, &sp44, 1);
+
+    if (!arg5) {
+        sp40 = func_806F4EBC(sp60, sp58);
+        if (!(D_807FD720 >= sp40 && sp40 >= 0)) {
+            return;
+        }
+    }
+
+    temp_v0_2 = malloc(0x1C);
+    temp_v0_2->unk8 = sp60;
+    temp_v0_2->unkA = sp5C;
+    temp_v0_2->unkC = sp58;
+    temp_v0_2->unk0 = arg0;
+
+    temp_v0_3 = func_806F4E74(arg1);
+    temp_v0_2->unk4 = D_80753EFC[temp_v0_3].unk0;
+    temp_v0_2->unk2 = arg1;
+    temp_v0_2->unkE = 0;
+    temp_v0_2->unk10 = arg2;
+    temp_v0_2->unk12 = arg3;
+    temp_v0_2->unk6 = -1;
+    temp_v0_2->unk13 = arg4;
+    temp_v0_2->unk14 = temp_v0_3;
+    temp_v0_2->unk18 = 0;
+    if (arg5) {
+        current = D_807FD72C;
+        var_v1 = &D_807FD72C;
+    } else {
+        current = D_80754244[sp40];
+        var_v1 = &D_80754244[sp40];
+    }
+    while (current != NULL) {
+        var_v1 = &current->unk18;
+        current = current->unk18;
+    }
+    *var_v1 = temp_v0_2;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F5270.s")
 
@@ -291,7 +379,6 @@ void func_806F5FE8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4) {
 
 void func_80686E40(f32, f32, f32, s32);
 void func_806A5DF0(s16, f32, f32, f32, s32, s32, s32, s32);
-void func_806F50C8(s16, s16, s32, s32, s32, s32);
 
 void func_806F603C(void) {
     s32 i;
@@ -317,10 +404,8 @@ void func_806F603C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_806F6204.s")
 
-extern s32 *D_80754244;
 extern s16 D_807FD726;
 extern s16 D_807FD728;
-extern s32 D_807FD72C;
 
 typedef struct {
     f32 unk0;

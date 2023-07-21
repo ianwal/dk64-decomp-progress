@@ -2240,7 +2240,7 @@ us,.code,func_8073A070,192,no
 us,.code,func_8067B2B8,8,yes
 us,.code,func_806D11FC,60,yes
 us,.code,func_80634FA0,120,yes
-us,.code,func_8066893C,180,no
+us,.code,func_8066893C,180,yes
 us,.code,func_806C4F5C,1660,no
 us,.code,func_806017B4,52,yes
 us,.code,func_80717404,860,no
@@ -2574,7 +2574,7 @@ us,.code,func_8064B828,64,yes
 us,.code,func_80733D8C,6296,no
 us,.code,func_8073209C,188,no
 us,.code,func_806D5008,528,no
-us,.code,func_80669930,148,no
+us,.code,func_80669930,148,yes
 us,.code,func_806F5DF8,188,yes
 us,.code,func_80610BD8,156,no
 us,.code,func_806C71A8,8,yes
@@ -2774,7 +2774,7 @@ us,.code,func_8066B020,76,yes
 us,.code,func_806EE02C,64,yes
 us,.code,func_806ECCDC,248,yes
 us,.code,func_80726DC0,44,yes
-us,.code,func_806F50C8,424,no
+us,.code,func_806F50C8,424,yes
 us,.code,func_80716F10,164,yes
 us,.code,func_80712A40,320,no
 us,.code,func_806E8C2C,296,no
@@ -3472,7 +3472,7 @@ us,.code,func_8002F420,112,yes
 us,.code,func_8002DF38,656,no
 us,.code,func_8002E960,76,no
 us,.code,func_8002B6C8,44,yes
-us,.code,func_80026B20,392,no
+us,.code,func_80026B20,392,yes
 us,.code,func_8002B6F4,120,yes
 us,.code,func_8002DE78,192,no
 us,.code,func_8002D338,40,yes
@@ -3561,7 +3561,7 @@ us,.code,func_8002BC2C,132,yes
 us,.code,func_8002E484,448,yes
 us,.code,func_80025E9C,320,no
 us,.code,func_80027920,472,no
-us,.code,initializeCastleCarRace,424,no
+us,.code,initializeCastleCarRace,424,yes
 us,.code,func_8002C14C,412,no
 us,.code,func_8002C76C,860,no
 us,.code,func_8002DA68,296,yes

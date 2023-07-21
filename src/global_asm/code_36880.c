@@ -617,7 +617,51 @@ void func_80634908(s32 arg0, void *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5,
     func_80633A1C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
+// TODO: Needs more shape on OM2_unk24
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063495C.s")
+
+/*
+void func_8063495C(OM2_unk24 *arg0, ObjectModel2 *arg1) {
+    Model2Model50_B8 *var_v0;
+    s16 *var_t0;
+    s32 *temp_a3;
+    s32 var_a0;
+    s32 var_t1;
+    s32 var_t2;
+
+    var_v0 = arg1->model_pointer->unk50;
+    if (var_v0 != NULL) {
+        do {
+            var_t1 = 0;
+            temp_a3 = arg0->unk70 + arg0;
+            var_a0 = *temp_a3;
+            var_t0 = temp_a3 + 4;
+            var_t2 = 0;
+            if (var_a0 != 0) {
+loop_2:
+                if (var_v0->unk5C == *var_t0) {
+                    var_t1 = 1;
+                } else {
+                    var_a0 -= 1;
+                    var_t0 += 0x30;
+                    var_t2 += 1;
+                }
+                if (var_a0 != 0) {
+                    if (var_t1 == 0) {
+                        goto loop_2;
+                    }
+                }
+            }
+            if (var_t1 != 0) {
+                var_v0->unk44 = arg1->model_pointer->unk0[var_t2].unk24;
+            } else {
+                var_v0->unk44 = 0;
+            }
+            var_v0 = var_v0->next;
+        } while (var_v0 != NULL);
+    }
+}
+*/
 
 // Init for Model2Model50_B8
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806349FC.s")

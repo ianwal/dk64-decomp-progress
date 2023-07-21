@@ -80,13 +80,13 @@ void func_8065F614(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065F678.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_8065F964.s")
 
 void func_806545D4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4, f32 arg5, s32 arg6, u8 arg7, f32 (*arg8)[4], s32 arg9, f32 *argA);
 void func_80657E24(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 *arg8, s32 *arg9, s32 *argA, s32 *argB);
 
 /*
-// TODO: Pretty close
 void func_8065F964(GlobalASMStruct58 *arg0, f32 arg1, f32 arg2, s32 arg3, u8 arg4, f32 arg5[4][4], s32 arg6) {
     s32 spB4;
     s32 spB0;

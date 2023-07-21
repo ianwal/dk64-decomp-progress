@@ -3,7 +3,7 @@
 
 extern u32 D_8002A1C0;
 extern u32 D_8002A1C4;
-extern s32 D_8002A1C8[];
+extern void* D_8002A1C8[];
 extern u16 D_8002A1CE;
 extern u16 D_8002A1CC;
 
@@ -122,7 +122,7 @@ void func_80028840() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80028EE8.s")
 
-// Weird struct/array accesses. Probably doable.
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_8002904C.s")
 
 extern u16 D_8002A1CC;
@@ -136,11 +136,13 @@ typedef struct {
 
 /*
 void func_8002904C(void) {
+    AAD_8002904C *aaD;
+    s32 temp;
+    aaD = current_actor_pointer->additional_actor_data;
     if (D_8002A1CC < 0xF0) {
-        if (D_8002A1CE >= D_8002A1C8[D_8002A1CC]) {
-            D_8002A1CC += 1;
-            current_actor_pointer->unkEE++;
-            ((AAD_8002904C*)current_actor_pointer->additional_actor_data)->unk810[current_actor_pointer->unkEE] = 0xC;
+        if (D_8002A1CE >= *((u16*)D_8002A1C8[D_8002A1CC])) {
+            D_8002A1CC++;
+            aaD->unk810[++current_actor_pointer->unkEE] = 0xC;
         }
     }
     if (current_actor_pointer->unk168 != 0) {

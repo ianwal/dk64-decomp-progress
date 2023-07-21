@@ -795,6 +795,7 @@ void func_806CC948(void) {
     func_806CC970();
 }
 
+// close, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806CC970.s")
 
 extern s32 D_80744478;

@@ -1036,30 +1036,20 @@ void func_806688B8(s32 arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_8066893C.s")
-
-/*
-// TODO: I don't know why this doesn't match
 s32 func_8066893C(Struct8066893C *arg0) {
-    f32 sp1C;
-    f32 sp14;
-    f32 sp10;
-    f32 sp8;
-    f32 sp4;
-    s32 var_v0;
+    f32 sp4[7];
 
-    var_v0 = 0;
-    sp14 = arg0->unk4 - arg0->unk0;
-    sp1C = arg0->unk10 - arg0->unkC;
-    sp8 = arg0->unk2 - arg0->unk0;
-    sp10 = arg0->unkE - arg0->unkC;
-    sp4 = (sp1C * sp8) - (sp10 * sp14);
-    if (sp4 <= 0.0) {
-        var_v0 = 1;
+    sp4[4] = arg0->unk4 - arg0->unk0;
+    sp4[6] = arg0->unk10 - arg0->unkC;
+    sp4[1] = arg0->unk2 - arg0->unk0;
+    sp4[3] = arg0->unkE - arg0->unkC;
+    sp4[0] = (sp4[6] * sp4[1]) - (sp4[4] * sp4[3]);
+    if (sp4[0] <= 0.0) {
+        return 1;
+    } else {
+        return 0;
     }
-    return var_v0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_806689F0.s")
 
@@ -1292,31 +1282,20 @@ void func_80669830(s32 arg0, Struct80669830 *arg1, u8 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80669930.s")
-
-/*
 s32 func_80669930(f32 arg0[4][4]) {
-    f32 sp1C;
-    f32 sp14;
-    f32 sp10;
-    f32 sp8;
-    f32 sp4;
-    s32 var_v0;
-    f32 temp_f4;
+    f32 sp4[7];
 
-    var_v0 = 0;
-    sp14 = arg0[0][2] - arg0[0][0];
-    sp8 = arg0[0][1] - arg0[0][0];
-    sp1C = arg0[2][0] - arg0[1][2];
-    sp10 = arg0[0][3] - arg0[1][2];
-    temp_f4 = (sp1C * sp8) - (sp10 * sp14);
-    sp4 = temp_f4;
-    if (temp_f4 <= 0.0) {
-        var_v0 = 1;
+    sp4[4] = arg0[0][2] - arg0[0][0];
+    sp4[6] = arg0[2][0] - arg0[1][2];
+    sp4[1] = arg0[0][1] - arg0[0][0];
+    sp4[3] = arg0[1][3] - arg0[1][2];
+    sp4[0] = (sp4[6] * sp4[1]) - (sp4[4] * sp4[3]);
+    if (sp4[0] <= 0.0) {
+        return 1;
+    } else {
+        return 0;
     }
-    return var_v0;
 }
-*/
 
 void func_8062FF10(f32 (*)[4], void *);
 void func_8066C610(s16, s8, void *);

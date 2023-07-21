@@ -467,12 +467,12 @@ void func_8002AB28(s32 arg0) {
     D_8076A0E4[arg0] = -0x80;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002AB80.s")
 
 extern s8 D_8076A0D6;
 
 /*
-// TODO: Very close
 void func_8002AB80(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *temp_s0;
     Struct8076A0E8 *var_v0;

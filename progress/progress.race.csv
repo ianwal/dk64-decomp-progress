@@ -13,7 +13,7 @@ us,.code,func_8002F420,112,yes
 us,.code,func_8002DF38,656,no
 us,.code,func_8002E960,76,no
 us,.code,func_8002B6C8,44,yes
-us,.code,func_80026B20,392,no
+us,.code,func_80026B20,392,yes
 us,.code,func_8002B6F4,120,yes
 us,.code,func_8002DE78,192,no
 us,.code,func_8002D338,40,yes
@@ -102,7 +102,7 @@ us,.code,func_8002BC2C,132,yes
 us,.code,func_8002E484,448,yes
 us,.code,func_80025E9C,320,no
 us,.code,func_80027920,472,no
-us,.code,initializeCastleCarRace,424,no
+us,.code,initializeCastleCarRace,424,yes
 us,.code,func_8002C14C,412,no
 us,.code,func_8002C76C,860,no
 us,.code,func_8002DA68,296,yes

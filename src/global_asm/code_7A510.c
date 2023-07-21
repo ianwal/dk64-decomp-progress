@@ -236,6 +236,7 @@ void func_80675DD0(Actor *arg0, Actor *arg1) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_80675E3C.s")
 
 /*

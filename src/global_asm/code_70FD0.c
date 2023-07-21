@@ -654,10 +654,10 @@ s32 func_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
     return 1;
 }
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066F06C.s")
 
 /*
-// TODO: Close, doable
 void func_8066F06C(LedgeInfo *arg0) {
     s32 temp;
     s32 i;
@@ -1021,7 +1021,27 @@ s32 func_806717FC(Actor *arg0) {
 // Actor & Matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671880.s")
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671A6C.s")
+
+typedef struct  {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+    f32 unk3C;
+} fmtx_temp;
 
 typedef struct {
     u8 unk0[0x70 - 0x0];
@@ -1046,35 +1066,34 @@ typedef struct {
 } Struct80671A6C_unk90;
 
 /*
-// TODO: Very close, temp_s6 might be a matrix pointer
-void func_80671A6C(Struct80671A6C *arg0, s32 arg1) {
+void func_80671A6C(Struct80671A6C *arg0, u8 arg1) {
+    fmtx_temp *temp_s6;
+    u8 var_v0;
     f32 spA4;
     f32 spA0;
     f32 sp9C;
     f32 sp5C[4][4];
-    s32 *temp_s6;
-    u8 var_v0;
-    Struct80671A6C_unk90 *var_s0;
+    Struct80671A6C_unk90 *current;
 
-    if ((arg1 & 0xFF) || object_timer != arg0->unk84) {
+    if ((arg1) || object_timer != arg0->unk84) {
         if (object_timer == arg0->unk88) {
             var_v0 = D_807444FC;
         } else {
             var_v0 = D_807444FC ^ 1;
         }
-        var_s0 = arg0->unk90;
+        current = arg0->unk90;
         temp_s6 = arg0->unk74[var_v0];
-        while (var_s0 != NULL) {
-            if (var_s0->unk18 == -1) {
+        while (current != NULL) {
+            if (current->unk18 == -1) {
                 memcpy(&sp5C[0], arg0->unk70, 0x40);
-                guMtxXFMF(&sp5C[0], var_s0->unk0, var_s0->unk4, var_s0->unk8, &spA4, &spA0, &sp9C);
+                guMtxXFMF(&sp5C[0], current->unk0, current->unk4, current->unk8, &spA4, &spA0, &sp9C);
             } else {
-                guMtxXFML(temp_s6[var_s0->unk18], var_s0->unk0, var_s0->unk4, var_s0->unk8, &spA4, &spA0, &sp9C);
+                guMtxXFML(&temp_s6[current->unk18], current->unk0, current->unk4, current->unk8, &spA4, &spA0, &sp9C);
             }
-            var_s0->unkC = spA4 * 8.0f;
-            var_s0->unk10 = spA0 * 8.0f;
-            var_s0->unk14 = sp9C * 8.0f;
-            var_s0 = var_s0->next;
+            current->unkC = spA4 * 8.0f;
+            current->unk10 = spA0 * 8.0f;
+            current->unk14 = sp9C * 8.0f;
+            current = current->next;
         }
         arg0->unk84 = object_timer;
     }

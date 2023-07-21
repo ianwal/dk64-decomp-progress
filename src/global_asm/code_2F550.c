@@ -13,6 +13,7 @@ extern void *D_807F5E60;
 extern s8 D_807F5FEC;
 extern s32 D_807F6C28;
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062A850.s")
 
 /*
@@ -153,7 +154,7 @@ struct Struct8062F420 {
     s32 unk10;
     s32 unk14;
     s32 unk18;
-    s32 unk1C;
+    s32 unk1C[1]; // TODO: How many?
     s32 unk20;
     s32 unk24;
     s32 unk28;
@@ -446,77 +447,77 @@ void func_8062BAE4(void) {
     func_80641A78();
 }
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BB2C.s")
 
-void func_8063B4C0(Chunk14*, u8);
+void func_8063B4C0(Chunk14*, s32);
 
 /*
-// TODO: Pretty close, need to untangle the conditionals
 void func_8062BB2C(Struct8062BB2C_arg0 *arg0, Struct8062BB2C_arg1 *arg1, u8 arg2) {
-    Struct8062BB2C_arg1_unk4 *temp_s1;
-    Struct8062BB2C_arg1_unk4 *var_s0_2;
+    Struct8062BB2C_arg1_unk4 *next;
+    Struct8062BB2C_arg1_unk4 *current;
+    s32 temp = arg2;
 
 loop_1:
     if (arg0 != NULL) {
-loop_2:
-        if (arg1->unk1 == 3) {
-            arg2 = 0;
-            func_8062BB2C(arg0->unk0, arg1->unkC, 0);
-            arg0 = arg0->unk4;
-            arg1 = arg1->unk10;
-            goto loop_1;
-        } else {
-            if (arg0->unkB8 != 0) {
-                if (arg0->unkB8 != 1) {
-                    if (arg0->unkB8 == 2) {
+        switch (arg1->unk1) {
+            case 3:
+                func_8062BB2C(arg0->unk0, arg1->unkC, 0);
+                temp = 0;
+                arg0 = arg0->unk4;
+                arg1 = arg1->unk10;
+                goto loop_1;
+                break;
+            default:
+                switch (arg0->unkB8) {
+                    case 2:
                         func_80652B04();
-                    }
-                } else {
-                    var_s0_2 = arg1->unk4;
-                    while (var_s0_2 != NULL) {
-                        temp_s1 = var_s0_2->unk14;
-                        func_8063B4C0(var_s0_2, arg2);
-                        var_s0_2 = temp_s1;
-                    }
+                        break;
+                    case 1:
+                        current = arg1->unk4;
+                        while (current != NULL) {
+                            next = current->unk14;
+                            func_8063B4C0(current, temp);
+                            current = next;
+                        }
+                        break;
+                    case 0:
+                        switch (arg1->unk1) {
+                            case 1:
+                            case 2:
+                                if (arg1->unk0 != 0) {
+                                    func_8062BB2C(arg0->unk4, arg1->unk10, temp);
+                                    temp = 0;
+                                    arg0 = arg0->unk0;
+                                    arg1 = arg1->unkC;
+                                    goto loop_1;
+                                } else {
+                                    func_8062BB2C(arg0->unk0, arg1->unkC, temp);
+                                    temp = 0;
+                                    arg0 = arg0->unk4;
+                                    arg1 = arg1->unk10;
+                                    goto loop_1;
+                                }
+                                break;
+                            case 0:
+                                if (arg1->unk0 == 0) {
+                                    func_8062BB2C(arg0->unk0, arg1->unkC, temp);
+                                    temp &= 0xFF;
+                                    arg0 = arg0->unk4;
+                                    arg1 = arg1->unk10;
+                                    goto loop_1;
+                                } else {
+                                    func_8062BB2C(arg0->unk4, arg1->unk10, temp);
+                                    temp &= 0xFF;
+                                    arg0 = arg0->unk0;
+                                    arg1 = arg1->unkC;
+                                    goto loop_1;
+                                }
+                                break;
+                        }
+                        break;
                 }
-            } else if (arg1->unk1 != 0) {
-                if (arg1->unk1 != 1) {
-                    if (arg1->unk1 == 2) {
-                        goto block_14;
-                    }
-                } else {
-block_14:
-                    if (arg1->unk0 != 0) {
-                        arg2 = 0;
-                        func_8062BB2C(arg0->unk4, arg1->unk10, arg2);
-                        arg0 = arg0->unk0;
-                        arg1 = arg1->unkC;
-                    } else {
-                        arg2 = 0;
-                        func_8062BB2C(arg0->unk0, arg1->unkC, arg2);
-                        arg0 = arg0->unk4;
-                        arg1 = arg1->unk10;
-                    }
-                    goto loop_1;
-                }
-            } else {
-                if (arg1->unk0 != 0) {
-                    func_8062BB2C(arg0->unk0, arg1->unkC, arg2);
-                    arg2 &= 0xFF;
-                    arg0 = arg0->unk4;
-                    arg1 = arg1->unk10;
-                    goto loop_1;
-                }
-                func_8062BB2C(arg0->unk4, arg1->unk10, arg2);
-                arg2 &= 0xFF;
-                arg0 = arg0->unk0;
-                arg1 = arg1->unkC;
-                if (arg0 == NULL) {
-
-                } else {
-                    goto loop_2;
-                }
-            }
+                break;
         }
     }
 }
@@ -668,6 +669,8 @@ u8 func_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_arg2 *arg2,
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062BF24.s")
+
+void func_8062EE48(u8 arg0);
 
 void func_8062C1C0(s32 arg0) {
     func_8065EFF0();
@@ -1029,7 +1032,13 @@ f32 func_8062E040(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, f3
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E1F8.s")
 
-void func_8062E3B4(f32 *, f32 *, s32, s32 *, s32, f64, s32);
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct8062E67C;
+
+void func_8062E3B4(Struct8062E67C *arg0, f32 *arg1, s32 arg2, s32 *arg3, s32 arg4, f64 arg6, s32 arg8);
 
 typedef struct {
     s32 unk0;
@@ -1089,7 +1098,36 @@ s32 func_8062E1F8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s1
 }
 */
 
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062E3B4.s")
+
+void func_8062E67C(Struct8062E67C *arg0, Struct8062E67C *arg1, u8 arg2, f64 arg4, Struct8062E67C *arg6);
+
+/*
+void func_8062E3B4(Struct8062E67C *arg0, f32 *arg1, s32 arg2, s32 *arg3, s32 arg4, f64 arg6, s32 arg8) {
+    s32 i;
+    Struct8062E67C sp60;
+    Struct8062E67C *temp;
+
+    *arg3 = 0;
+    temp = &arg0[arg2 - 1];
+    for (i = 0; i < arg2; i++, temp++, arg0++) {
+        if (func_8062E548(&arg0, arg4, arg6, arg8) != 0) {
+            if (func_8062E548(temp, arg4, arg6, arg8) != 0) {
+                func_8062E608(&arg0, arg3, arg1);
+            } else {
+                func_8062E67C(temp, &arg0, arg4, arg6, &sp60);
+                func_8062E608(&sp60, arg3, arg1);
+                func_8062E608(&arg0, arg3, arg1);
+            }
+        } else if (func_8062E548(temp, arg4, arg6, arg8) != 0) {
+            func_8062E67C(temp, &arg0, arg4, arg6, &sp60);
+            func_8062E608(&sp60, arg3, arg1);
+        }
+    }
+}
+*/
+
 
 s32 func_8062E548(s16 *arg0, u8 arg1, f64 arg3, u8 arg4) {
     f64 phi_f0;
@@ -1129,12 +1167,6 @@ void func_8062E608(void *arg0, s32 *arg1, s32 arg2) {
     }
 }
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-} Struct8062E67C;
-
 void func_8062E67C(Struct8062E67C *arg0, Struct8062E67C *arg1, u8 arg2, f64 arg4, Struct8062E67C *arg6) {
     f32 temp_f0;
 
@@ -1167,20 +1199,57 @@ void func_8062E67C(Struct8062E67C *arg0, Struct8062E67C *arg1, u8 arg2, f64 arg4
 // Hmm, DisplayList stuff?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062EDA8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062EE48.s")
-
 typedef struct {
     u8 unk0;
     u8 unk1;
     u8 unk2;
     u8 unk3;
-    s32 unk4;
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
     void *unk8;
-    u8 unkC[0x7C - 0xC];
+    s32 unkC[1]; // TODO: How many?
+    u8 unk10[0x7C - 0x10];
 } Struct807F5FC4;
 
 extern u8 D_807F5FC1;
 extern Struct807F5FC4 *D_807F5FC4;
+
+// close
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062EE48.s")
+
+/*
+void func_8062EE48(u8 arg0) {
+    s32 i;
+    s32 var_v1;
+    void *temp_a0;
+
+    for (i = 0; i < D_807F5FC1; i++) {
+        if (arg0 == D_807F5FC4[i].unk1) {
+            var_v1 = FALSE;
+            D_807F5FC4[i].unk4++;
+            if (D_807F5FC4[i].unk4 == D_807F5FC4[i].unk2) {
+                var_v1 = TRUE;
+                D_807F5FC4[i].unk4 = 0;
+                D_807F5FC4[i].unk5++;
+                if (D_807F5FC4[i].unk5 == D_807F5FC4[i].unk3) {
+                    D_807F5FC4[i].unk5 = 0;
+                }
+            }
+            if (D_807F5FC4[i].unk8 == NULL) {
+                var_v1 = TRUE;
+            }
+            if (var_v1) {
+                if (D_807F5FC4[i].unk8 != NULL) {
+                    func_8066B434(D_807F5FC4[i].unk8, 0x7E3, 5);
+                }
+                D_807F5FC4[i].unk8 = getPointerTableFile(7, D_807F5FC4[i].unkC[D_807F5FC4[i].unk5], 0, 0);
+            }
+        }
+    }
+}
+*/
 
 void func_8062EFA0(void) {
     s32 i;
@@ -1191,7 +1260,7 @@ void func_8062EFA0(void) {
             temp_a0 = D_807F5FC4[i].unk8;
             if (temp_a0 != NULL) {
                 func_8066B434(temp_a0, 0x7FB, 5);
-                D_807F5FC4[i].unk8 = 0;
+                D_807F5FC4[i].unk8 = NULL;
             }
         }
     }
@@ -1348,23 +1417,22 @@ void func_8062F3A0(GlobalASMStruct_8062F3A0 *arg0, GlobalASMStruct_8062F3A0 *arg
 }
 */
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_8062F420.s")
 
 /*
 void func_8062F420(Struct8062F420 *arg0, s32 arg1, s32 arg2) {
-    s32 temp_t6;
     s32 i;
-    Struct8062F420 *var_v0;
-
-loop_1:
     if (arg0 != NULL) {
         switch (arg0->unkB8) {
             case 0:
-                arg0->unk0 += arg1;
-                arg0->unk4 += arg1;
-                func_8062F420(arg0->unk0, arg1, arg2);
-                arg0 = arg0->unk4;
-                goto loop_1;
+                do {
+                    arg0->unk0 += arg1;
+                    arg0->unk4 += arg1;
+                    func_8062F420(arg0->unk0, arg1, arg2);
+                    arg0 = arg0->unk4;
+                } while (arg0 != NULL);
+                break;
             case 1:
             case 2:
                 if (arg0->unk8 != -1) {
@@ -1382,13 +1450,10 @@ loop_1:
                 if (arg0->unk18 != -1) {
                     arg0->unk18 += arg2;
                 }
-                var_v0 = arg0;
                 for (i = 0; i < arg0->unkC5; i++) {
-                    temp_t6 = var_v0->unk1C;
-                    var_v0 += 4;
-                    var_v0->unk18 = temp_t6 + arg2;
+                    arg0->unk1C[i] += arg2;
                 }
-                return;
+                break;
         }
     }
 }

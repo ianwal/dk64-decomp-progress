@@ -376,7 +376,7 @@ void func_80688F74(Actor *arg0, f32 x, f32 y, f32 z) {
     }
 }
 
-// TODO: Close
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80688FC0.s")
 
 typedef struct {

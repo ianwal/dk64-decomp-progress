@@ -467,10 +467,10 @@ u8 func_807280C8(EnemyInfo *arg0, s32 arg1) {
             && !func_80652F24(0, arg0->unk40));
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_8072818C.s")
 
 /*
-// TODO: Close
 u8 func_8072818C(EnemyInfo *arg0, s32 arg1) {
     f32 temp_f0;
 

@@ -677,24 +677,21 @@ void func_80642480(s16 arg0, s32 arg1) {
     }
 }
 
+// close, doable, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80642500.s")
 
 extern f64 D_80758918;
 
 /*
-// TODO: Pretty close
-s32 func_80642500(f32 *arg0, u8 arg1, s16 arg2) {
+s32 func_80642500(f32 *arg0, s16 arg1, s16 arg2) {
     f32 temp_f0;
     f32 temp_f2;
-    s32 temp_t5;
     f32 phi_f12;
     s32 phi_v1;
 
     phi_v1 = 0;
-    temp_f0 = arg0[arg1];
-    switch (arg1) {
-        default:
-            return 0;
+    temp_f0 = arg0[(u8)((u16)arg1 >> 8)];
+    switch ((u8)arg1) {
         case 0:
             temp_f2 = arg2 / 10.0f;
             if (temp_f2 < temp_f0) {
@@ -703,12 +700,12 @@ s32 func_80642500(f32 *arg0, u8 arg1, s16 arg2) {
                 phi_f12 = temp_f2 - temp_f0;
             }
             if (phi_f12 < D_80758918) {
-                return 1;
+                phi_v1 = 1;
             }
             break;
         case 1:
             if ((arg2 / 10.0f) < temp_f0) {
-                return 1;
+                phi_v1 = 1;
             }
             break;
         case 2:
@@ -1776,7 +1773,55 @@ void func_80647A14(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 */
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80647B74.s")
+
+typedef struct {
+    u32 unk0;
+    s32 unk4;
+} Struct80647B74;
+
+typedef struct {
+    Struct80647B74 *unk0;
+} Struct80647B74_arg0;
+
+/*
+void func_80647B74(Struct80647B74_arg0 *arg0, s16 arg1, s32 arg2, s32 arg3) {
+    Struct80647B74 *var_v1;
+
+    if (arg0->unk0 == NULL) {
+        arg0->unk0 = malloc(sizeof(Struct80647B74));
+        var_v1 = arg0->unk0;
+        var_v1->unk0 = 0;
+        var_v1->unk4 = 0;
+    }
+    var_v1 = arg0->unk0;
+    if ((var_v1->unk0 + 0x32) < object_timer) {
+        if (((rand() >> 0xF) % 1000) >= 0x353) {
+            var_v1->unk4 = 1;
+            var_v1->unk0 = object_timer;
+        }
+    }
+    switch (var_v1->unk4) {
+        case 1:
+            func_80635018(arg1, 1, 1, 0);
+            break;
+        case 3:
+            func_80635018(arg1, 1, 2, 0);
+            break;
+        case 5:
+            func_80635018(arg1, 1, 1, 0);
+            break;
+        case 7:
+            func_80635018(arg1, 1, 0, 0);
+            var_v1->unk4 = 0;
+            break;
+    }
+    if (var_v1->unk4 != 0) {
+        var_v1->unk4++;
+    }
+}
+*/
 
 void func_80647CF4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_80714998(2);
@@ -2704,6 +2749,7 @@ void func_8064C814(void **arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_8064C9F8.s")
 
 void func_8064CB3C(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {

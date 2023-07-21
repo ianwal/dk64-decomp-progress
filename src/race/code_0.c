@@ -396,8 +396,68 @@ void func_800261E0(Struct800261E0_arg0 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026354.s")
 
-// Actor17C stuff, bit of a can of worms...
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_80026B20.s")
+Actor *func_8002D360(Actor *);
+
+typedef struct {
+    u8 unk0[0x29 - 0x0];
+    u8 unk29;
+    u8 unk2A;
+    u8 unk2B;
+    Actor *unk2C;
+} Struct80026B20;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+} A178_80026B20;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    Actor *unk8;
+    Actor *unkC;
+} A17C_80026B20;
+
+void func_80026B20(Struct80026B20 *arg0) {
+    A178_80026B20 *a178_2;
+    A178_80026B20 *a178;
+    A17C_80026B20 *a17C;
+
+    if (arg0->unk2C == NULL && arg0->unk2A != 0) {
+        a178 = current_actor_pointer->unk178;
+        arg0->unk2A--;
+        func_80677FA8(ACTOR_MISSILE_CAR, 0x96);
+        a178_2 = D_807FBB44->unk178;
+        a17C = D_807FBB44->unk17C;
+        a17C->unkC = current_actor_pointer;
+        a17C->unk8 = func_8002D360(current_actor_pointer);
+        arg0->unk2C = D_807FBB44;
+        D_807FBB44->x_position = current_actor_pointer->x_position;
+        D_807FBB44->y_position = current_actor_pointer->y_position;
+        D_807FBB44->z_position = current_actor_pointer->z_position;
+        D_807FBB44->unkEE = current_actor_pointer->unkEE;
+        D_807FBB44->y_rotation = current_actor_pointer->y_rotation;
+        D_807FBB44->unkB8 = current_actor_pointer->unkB8;
+        *a178_2 = *a178;
+        playSound(0x18B, 0x7FFF, 64.0f, 1.0f, 0, 0);
+    } else {
+        playSound(0xE2, 0x7FFF, 64.0f, 1.0f, 0, 0);
+    }
+    arg0->unk29 = 0;
+}
 
 void func_80026CA8(void) {
     func_80604CBC(current_actor_pointer, 0x12D, 0, 1, 0, 0xFF, 1.0f, 0);

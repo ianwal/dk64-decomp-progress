@@ -442,11 +442,8 @@ extern s32 D_8071FB34; // TODO: Datatype
 /*
 // TODO: Switch case woes
 void func_806C1B50(void) {
-    AnimationStateUnk0 *temp_a0;
-    f32 var_f6;
-    s16 temp_v0;
     s32 var_v0;
-    s32 var_v1;
+    u32 var_v1;
 
     func_80729B00();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -458,40 +455,40 @@ void func_806C1B50(void) {
         func_806BFBF4();
         if (current_actor_pointer->object_properties_bitfield & 4) {
             if (current_actor_pointer->control_state_progress != 0) {
-                temp_a0 = current_actor_pointer->animation_state->unk0;
                 var_v1 = 7;
-                switch (temp_a0->unk10) {
+                switch (current_actor_pointer->animation_state->unk0->unk10) {
                     case 0x23E:
                         var_v0 = 0xD;
                         break;
                     case 0x23F:
+                        var_v1 = 7;
                         var_v0 = 0xE;
                         break;
                     case 0x240:
+                        var_v1 = 3;
                         var_v0 = 0x11;
-                        break;
+                        // fallthrough
                     default:
-                        var_v0 = 7;
+                        var_v1 = 3;
                         break;
+
                 }
-                // if (temp_v0 != 0x23E) {
+                // if (current_actor_pointer->control_state_progress != 0x23E) {
                 //     var_v1 = 7;
-                //     if (temp_v0 != 0x23F) {
+                //     if (current_actor_pointer->control_state_progress != 0x23F) {
                 //         var_v1 = 3;
-                //         if (temp_v0 != 0x240) {
+                //         if (current_actor_pointer->control_state_progress != 0x240) {
 
                 //         } else {
                 //             var_v0 = 0x11;
-                //             goto block_12;
                 //         }
                 //     } else {
                 //         var_v0 = 0xE;
-                //         goto block_12;
                 //     }
                 // } else {
                 //     var_v0 = 0xD;
                 // }
-                if (var_v1 < temp_a0->unk4) {
+                if (var_v1 < current_actor_pointer->animation_state->unk0->unk4) {
                     func_80714C08(&D_8071FB34, 0.5f, current_actor_pointer, var_v0, 0);
                     current_actor_pointer->control_state_progress = 0;
                 }
