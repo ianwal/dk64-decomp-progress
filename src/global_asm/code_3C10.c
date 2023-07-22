@@ -572,10 +572,10 @@ s32 func_80600080(Maps map) {
     return -1;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_80600174.s")
 
 /*
-// TODO: Bleh, matches everything except for some extra lui instructions being generated for some reason
 s16 func_80600174(f32 *arg0, f32 *arg1, f32 *arg2) {
     s32 i;
     GlobalASMStruct1* focused_parent;

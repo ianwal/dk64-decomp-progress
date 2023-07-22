@@ -3151,7 +3151,7 @@ void func_806D45A4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
-// regalloc
+// regalloc, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806D4758.s")
 
 extern f64 D_8075CD18;

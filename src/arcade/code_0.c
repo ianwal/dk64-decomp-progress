@@ -3372,9 +3372,10 @@ void func_80030FEC(void) {
     }
 }
 
-#ifndef NONMATCHING
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_800311E0.s")
-#else
+
+/*
 void func_800311E0(void) {
     u8 sp1F;
     u8 i;
@@ -3382,38 +3383,34 @@ void func_800311E0(void) {
     if (!(D_8004C6DC & 1)) {
         D_8004A308[1] = 1;
         D_8004A308[2] = -1;
-        if ((D_8004C6DC/0x15e) & 1) {
-            D_8004A308[3] = 1;
-        } else {
-            D_8004A308[3] = -1;
-        }
+        D_8004A308[3] = (D_8004C6DC / 0x15E) & 1 ? 1 : -1;
     } else {//L80031238
         for (i = 0; i < 4; i++) {\
             D_8004A308[i] = 0;
         }
     }
 
-    if (D_8004C6DC%0x78 == 0 && arcade_get_object_type_count(ARCADE_OBJ_04_PIE) < 5) {
+    if (D_8004C6DC % 0x78 == 0 && arcade_get_object_type_count(ARCADE_OBJ_04_PIE) < 5) {
         sp1F = func_80024764();
         D_8004BCD0[sp1F] = arcade_pie_obj_template;
-        if (func_80024644() >= 0x4001) {
-            if ((D_8004C6DC/ 350) & 1)
-                D_8004BCD0[sp1F].unk0 = 40.0f;
+        if (func_80024644() > 0x4000) {
+            if ((D_8004C6DC / 350) & 1)
+                D_8004BCD0[sp1F].x_position = 40;
             else
-                D_8004BCD0[sp1F].unk0 = 280.0f;
+                D_8004BCD0[sp1F].x_position = 280;
         } else {//L80031354
-            D_8004BCD0[sp1F].unk4 = 127.0f;
-            if (func_80024644() >= 0x4001) {
+            D_8004BCD0[sp1F].y_position = 127;
+            if (func_80024644() > 0x4000) {
                 D_8004BCD0[sp1F].unk1C = 1;
-                D_8004BCD0[sp1F].unk0 = 40.0f;
+                D_8004BCD0[sp1F].x_position = 40;
             } else {
                 D_8004BCD0[sp1F].unk1C = 2;
-                D_8004BCD0[sp1F].unk0 = 40.0f;
+                D_8004BCD0[sp1F].x_position = 280;
             }
         }
     }//L800313AC
 }
-#endif
+*/
 
 void func_800313B8(void) {
     u8 sp1f;

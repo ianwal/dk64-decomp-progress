@@ -112,6 +112,7 @@ u8 func_80723C98(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_80723CCC.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_80723F88.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_80724154.s")

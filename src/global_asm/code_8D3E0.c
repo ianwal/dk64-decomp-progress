@@ -423,10 +423,10 @@ void func_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, A
     func_80689250(arg0 - 0x10, arg1, arg2, arg3, arg4, arg5, arg7, 1, arg6, func_80688E08());
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80689250.s")
 
 /*
-// TODO: Close
 ActorSpawner *func_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, void *arg6, u8 arg7, Actor *arg8, s16 arg9) {
     ActorSpawner *sp2C;
     ActorSpawner *temp_v0;
@@ -492,6 +492,7 @@ ActorSpawner *func_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f3
 }
 */
 
+// close, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80689418.s")
 
 void func_8068A1B8(void);
@@ -510,7 +511,6 @@ typedef struct {
 } StackStructThing_80689418;
 
 /*
-// TODO: Extremely close
 void func_80689418(void) {
     ActorSpawner *currentSpawner;
     StackStructThing_80689418 tempStruct;

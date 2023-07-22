@@ -1610,8 +1610,6 @@ void func_8071BC80(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk348 += var_v0->unk8;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071BE04.s")
-
 extern f64 D_8075E9A8;
 extern f64 D_8075E9B0;
 
@@ -1633,23 +1631,19 @@ typedef struct {
     Struct80717D84_unk35C_unk14 *unk14;
 } Struct80717D84_unk35C;
 
-/*
-// TODO: Stack is too big, only difference
 void func_8071BE04(Struct80717D84 *arg0, s32 arg1) {
-    f32 var_f12;
-    f32 temp_f0;
     f32 sp70[4][4];
     f32 sp30[4][4];
-    s32 pad;
+    f32 var_f12;
     Struct80717D84_unk35C *sp28;
     Struct80717D84_unk35C_unk14 *sp24;
     f32 sp20;
 
     sp28 = arg0->unk35C;
     sp24 = sp28->unk14;
-    temp_f0 = func_80612794(sp28->unk10);
-    arg0->unk36D = sp24->unk0 * temp_f0;
-    sp20 = (1.0f - temp_f0);
+    sp20 = func_80612794(sp28->unk10);
+    arg0->unk36D = sp24->unk0 * sp20;
+    sp20 = (1.0f - sp20);
     var_f12 = arg0->unk364;
     if (sp24->unk4 != 0) {
         var_f12 = arg0->unk364 * ((func_80612794(sp24->unk2) * D_8075E9A8) + D_8075E9B0);
@@ -1662,7 +1656,6 @@ void func_8071BE04(Struct80717D84 *arg0, s32 arg1) {
     guMtxF2L(&sp70[0], arg0->unk128[D_807444FC]);
     arg0->unk32C = 3;
 }
-*/
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071C004.s")

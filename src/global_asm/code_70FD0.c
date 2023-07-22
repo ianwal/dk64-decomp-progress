@@ -177,6 +177,7 @@ s32 func_8066D250(Struct8066D250 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066D4DC.s")
 
+// close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_8066DB40.s")
 
 typedef struct {
@@ -211,7 +212,6 @@ typedef struct {
 } Struct8066DB40_stack4C;
 
 /*
-// TODO: Very close
 s32 func_8066DB40(Struct8066DB40_arg0 *arg0, Struct8066DB40_arg1 *arg1) {
     s32 pad;
     Struct8066DB40_stack4C sp4C;    
@@ -231,15 +231,11 @@ s32 func_8066DB40(Struct8066DB40_arg0 *arg0, Struct8066DB40_arg1 *arg1) {
     sp4C.sp4C[6] = arg0->unk0[6];
     sp4C.sp4C[7] = arg0->unk0[7];
     sp4C.sp4C[8] = arg0->unk0[8];
-    sp4C.sp4C[0] *= 8;
-    sp4C.sp4C[1] *= 8;
-    sp4C.sp4C[2] *= 8;
+    sp4C.sp4C[0] *= 8;sp4C.sp4C[1] *= 8;sp4C.sp4C[2] *= 8;
     sp4C.sp4C[3] *= 8;
     sp4C.sp4C[4] *= 8;
     sp4C.sp4C[5] *= 8;
-    sp4C.sp4C[6] *= 8;
-    sp4C.sp4C[7] *= 8;
-    sp4C.sp4C[8] *= 8;
+    sp4C.sp4C[6] *= 8;sp4C.sp4C[7] *= 8;sp4C.sp4C[8] *= 8;
 
     sp4C.sp70 = arg0->unk12;
     sp4C.sp74 = arg0->unk14;
@@ -1198,12 +1194,12 @@ loop_7:
 // Object model 2 loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80671F54.s")
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_80672134.s")
 
 extern f64 D_80759150;
 
 /*
-// TODO: Extremely close
 s16 func_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s16 var_a3;
     s16 temp_v0_2;

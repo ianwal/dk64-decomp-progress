@@ -516,8 +516,6 @@ void func_80641C98(s16 arg0, s16 arg1, s16 arg2) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_80641DA0.s")
-
 typedef struct {
     u8 pad0[0x94 - 0x0];
     Actor *unk94;
@@ -527,8 +525,6 @@ s32 func_80678014(s32);
 extern s16 D_807F693C;
 extern u8 D_807F693F;
 
-/*
-// TODO: Pretty close, datatytpe issues?
 void func_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 phi_v1;
 
@@ -560,7 +556,6 @@ void func_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 arg3) {
         }
     }
 }
-*/
 
 void func_80641F68(void) {
 
@@ -2020,7 +2015,56 @@ void func_8064911C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806491F4.s")
+
+extern s8 D_80748170[];
+extern s8 D_80748178;
+extern s16 D_807505AE[];
+
+extern u8 D_807446F0[];
+
+/*
+void func_806491F4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+    s32 pad;
+    s32 sp28;
+    s32 levelIndex;
+    s32 var_v0;
+    s8 temp;
+
+    if (arg2 == 0) {
+        levelIndex = getLevelIndex(D_8076A0AB, 0);
+        if (levelIndex >= 8) {
+            levelIndex = 0;
+        }
+        sp28 = D_807446F0[levelIndex];
+        if (isFlagSet(D_80744710[levelIndex], 0)) {
+            func_80635018(arg1, 1, 0xB, 0);
+            func_80635018(arg1, 2, 0xB, 0);
+        } else if (func_805FF0C8()) {
+            func_80635018(arg1, 1, D_80748170[sp28], 0);
+            func_80635018(arg1, 2, D_80748170[sp28], 0);
+        } else {
+            func_80635018(arg1, 1, 0xA, 0);
+            func_80635018(arg1, 2, 0xA, 0);
+        }
+    } else {
+        temp = D_80748178 + 1;
+        if (temp >= 0x15) {
+            temp = 0;
+        }
+        D_80748178 = temp;
+        var_v0 = D_80748170[temp >> 2];
+        if (temp >> 2 > 0 && !isFlagSet(D_807505AE[temp >> 2], 0)) {
+            pad = 5;
+        } else {
+            pad = 0;
+        }
+        func_80635018(arg1, 1, var_v0 + pad, 0);
+        func_80635018(arg1, 2, var_v0 + pad, 0);
+    }
+}
+*/
 
 extern s32 D_80721298; // TODO: Datatype
 
@@ -3147,8 +3191,6 @@ s32 func_8064EB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     }
     return 0;
 }
-
-extern u8 D_807446F0[];
 
 u8 func_8064EB9C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 levelIndex = getLevelIndex(D_8076A0AB, FALSE);

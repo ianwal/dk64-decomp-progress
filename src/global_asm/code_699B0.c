@@ -358,35 +358,29 @@ f32 func_80665AE4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return sp1C * D_80758E88;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_80665C18.s")
-
 s32 func_80611E60(s32);
 extern f64 D_80758E90;
 extern f64 D_80758E98;
 extern f64 D_80758EA0;
 extern f64 D_80758EA8;
 
-/*
 s16 func_80665C18(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s16 sp36;
-    f32 var_f24;
 
-    var_f24 = arg4;
-    if (var_f24 < 1.0) {
-        var_f24 = 1.0f;
+    if (arg4 < 1.0) {
+        arg4 = 1.0f;
     }
     if ((arg2 <= arg0) && (arg3 <= arg1)) {
-        sp36 = func_80611E60(((arg0 - arg2) * D_80758E90) / var_f24) >> 4;
+        sp36 = func_80611E60(((arg0 - arg2) * D_80758E90) / arg4) >> 4;
     } else if ((arg2 <= arg0) && (arg1 < arg3)) {
-        sp36 = (func_80611E60(((arg3 - arg1) * D_80758E98) / var_f24) >> 4) + 0x400;
+        sp36 = (func_80611E60(((arg3 - arg1) * D_80758E98) / arg4) >> 4) + 0x400;
     } else if ((arg0 < arg2) && (arg1 < arg3)) {
-        sp36 = (func_80611E60(((arg2 - arg0) * D_80758EA0) / var_f24) >> 4) + 0x800;
+        sp36 = (func_80611E60(((arg2 - arg0) * D_80758EA0) / arg4) >> 4) + 0x800;
     } else if ((arg0 < arg2) && (arg3 <= arg1)) {
-        sp36 = (func_80611E60(((arg1 - arg3) * D_80758EA8) / var_f24) >> 4) + 0xC00;
+        sp36 = (func_80611E60(((arg1 - arg3) * D_80758EA8) / arg4) >> 4) + 0xC00;
     }
     return sp36;
 }
-*/
 
 //forward decl necessary
 //looks like its taking the linear distance between 2 points (2D)

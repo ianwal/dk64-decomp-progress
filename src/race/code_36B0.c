@@ -167,8 +167,57 @@ void func_80027C60(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_80027CE8.s")
 
-// Huh, actor184 stuff...?
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_800280E8.s")
+
+extern f32 D_8002FE7C;
+
+typedef struct {
+    u8 unk0;
+} A180_800280E8;
+
+typedef struct {
+    u8 unk0[0x14 - 0x0];
+    f32 unk14;
+} A184_800280E8;
+
+typedef struct {
+    u8 unk0[0x30 - 0x0];
+    Actor *unk30;
+} Struct800280E8;
+
+/*
+void func_800280E8(Struct800280E8 *arg0) {
+    Actor *temp_v1;
+    void *sp34;
+    A180_800280E8 *a180;
+    A184_800280E8 *a184;
+    f32 var_f0;
+
+    temp_v1 = arg0->unk30;
+    a180 = current_actor_pointer->unk180;
+    a184 = current_actor_pointer->unk184;
+    if (temp_v1->unkB8 < current_actor_pointer->unkB8) {
+        var_f0 = current_actor_pointer->unkB8 - temp_v1->unkB8;
+    } else {
+        var_f0 = -(current_actor_pointer->unkB8 - temp_v1->unkB8);
+    }
+    if (a180->unk0 == 0) {
+        var_f0 = MIN(10.0, var_f0 * 1.5);
+        a180->unk0 = 3;
+        sp34 = temp_v1;
+        func_8060E7EC(0, (255.0f * var_f0 * D_8002FE7C), a180->unk0);
+        playSound(0x18A, 0x7FFF, 64.0f, 1.0f, 0xA, 0);
+        if (a184->unk14 < 0.0f) {
+            temp_v1->unkB8 -= var_f0;
+            current_actor_pointer->unkB8 += var_f0;
+        } else {
+            temp_v1->unkB8 += var_f0;
+            current_actor_pointer->unkB8 -= var_f0;
+        }
+    }
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_800282D8.s")
