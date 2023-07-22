@@ -711,6 +711,7 @@ s32 func_80713EA8(s32 arg0) {
     return arg0;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713EB0.s")
 
 typedef struct {
@@ -728,7 +729,6 @@ extern s16 D_807FC82A;
 extern s16 D_807FC82C;
 
 /*
-// TODO: Very close
 void func_80713EB0(enum map_e arg0, s32 arg1, s32 arg2) {
     s32 temp_v1;
     Struct80713EB0 *t;

@@ -48,10 +48,68 @@ void func_80601CF0(s32 arg0) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80601D24.s")
+
+extern u32 D_807452C0;
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8[1];
+} Struct8076D4D0;
+extern Struct8076D4D0 D_8076D4D0;
+extern OSMesgQueue D_8076D698;
+extern OSMesgQueue D_8076D6D0;
+extern N_ALGlobals D_8076D708;
+extern s32 D_8076D4C0;
+
+void func_80602104(s32 arg0);
+void func_8060A500(void);
+s32 func_80601EE4(void *arg0, void *arg1);
+void func_8060ED6C(void *arg0, void *arg1, s32 arg2, s32 arg3, s32 arg4);
+
+/*
+void func_80601D24(s32 arg0) {
+    s32 temp_v0;
+    s32 sp58;
+    s32 var_s0;
+    s32 found;
+    s32 var_s6;
+
+    found = 0;
+    var_s0 = 0;
+    var_s6 = 1;
+    func_8060ED6C(&D_80767A40, &D_8076D4C0, &D_8076D698, 2, 2);
+    osSendMesg(&D_8076D698, 5, 0);
+    while (!found) {
+        osRecvMesg(&D_8076D698, &sp58, 1);
+        switch (sp58) {
+            case 5:
+                if (D_80767A40.unk264) {
+                    osSendMesg(&D_80767A40, 0x29E, 1);
+                }
+                func_80601EE4(D_8076D4D0.unk8[D_807452C0 % 3], var_s0);
+                temp_v0 = var_s6 != 0;
+                var_s6 = 0;
+                var_s0 = D_8076D4D0.unk8[(D_807452C0 + 1) % 3];
+                if (!temp_v0) {
+                    osRecvMesg(&D_8076D6D0, &sp58, 1);
+                    func_80602104(var_s0);
+                }
+                func_8060A500();
+                break;
+            case 10:
+                found = TRUE;
+                break;
+        }
+    }
+    n_alClose(&D_8076D708);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80601EE4.s")
 
+// rodata?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602104.s")
 
 extern s32 D_807454E8;
@@ -66,19 +124,29 @@ void func_80602104(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602144.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_806022DC.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+} Struct80770188;
 
-/*
-void *func_806022DC(void *arg0) {
+int func_80602144();
+
+extern Struct80770188 D_80770188;
+extern s32 D_8076FE68;
+
+void *func_806022DC(s32 *arg0) {
     if (D_80770188.unk0 == 0) {
         D_80770188.unk4 = 0;
         D_80770188.unk8 = &D_8076FE68;
-        D_80770188.unk0 = (u8)1U;
+        D_80770188.unk0 = 1;
     }
     *arg0 = &D_80770188;
     return &func_80602144;
 }
-*/
 
 // Libultra stuff osRecvMesg, alUnlink, alLink
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_80602314.s")

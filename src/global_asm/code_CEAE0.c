@@ -6914,13 +6914,13 @@ s32 func_806E527C(void) {
     return var_v1;
 }
 
+// stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_806E52D0.s")
 
 s32 func_806E5488(Actor *arg0);
 u32 func_806E560C(Actor *arg0);
 
 /*
-// TODO: Stack issue...
 void func_806E52D0(void) {
     u32 temp_v1;
 
@@ -8328,35 +8328,21 @@ extern f64 D_8075D378;
 /*
 // TODO: Pretty close, float and stack nonsense
 void func_806EA628(void) {
-    void *sp2C;
-    s16 *sp18;
-    f32 *temp_v0;
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
-    s16 *temp_v1;
-    s16 temp_a1;
     PlayerAdditionalActorData *temp_a0;
+    f32 *temp_v0;
+    s16 *temp_v1;
 
     if (!(extra_player_info_pointer->unk1F0 & 0x8000)) {
         temp_a0 = extra_player_info_pointer->unk104->additional_actor_data;
-        sp2C = temp_a0;
         temp_v1 = &temp_a0->unkB2;
         *temp_v1 = (D_807FD610[cc_player_index].unk2E * D_8075D368 * func_806EA2D8() * 4096.0) / D_8075D370;
-        sp18 = temp_v1;
         temp_v0 = &temp_a0->unkB8;
         *temp_v0 = D_807FD610[cc_player_index].unk2F * D_8075D378 * func_806EA2D8();
         *temp_v1 &= 0xFFF;
-        temp_a1 = temp_a0->unkBC;
-        temp_f2 = *temp_v0;
-        temp_f12 = temp_a1 + 0x32;
-        if (temp_f12 < temp_f2) {
-            *temp_v0 = temp_f12;
-        } else {
-            temp_f0 = temp_a1 - 0x50;
-            if (temp_f2 < temp_f0) {
-                *temp_v0 = temp_f0;
-            }
+        if (temp_a0->unkBC + 0x32 < *temp_v0) {
+            *temp_v0 = temp_a0->unkBC + 0x32;
+        } else if (*temp_v0 < temp_a0->unkBC - 0x50) {
+            *temp_v0 = temp_a0->unkBC - 0x50;
         }
         extra_player_info_pointer->unk104->distance_from_floor = *temp_v0;
         current_actor_pointer->y_rotation = (temp_a0->unkB2 + 0x800) & 0xFFF;

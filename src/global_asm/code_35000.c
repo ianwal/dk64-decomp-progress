@@ -143,6 +143,8 @@ Chunk14 *func_806303C4(Chunk14 *arg0, u8 arg1, Model2Model *arg2, f32 arg3, f32 
     return phi_a1;
 }
 
+void func_8061130C(void *);
+
 Chunk14 *func_80630588(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 *arg3) {
     u8 phi_v0;
     Chunk14 *phi_t0;
@@ -395,44 +397,40 @@ Chunk14 *func_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, Chunk14 **ar
 // Similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_806317D4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_806319C4.s")
-
-/*
 s32 func_8063162C(Actor *, s16 *);
 s32 func_806317D4(Actor *, s16 *, f32, f32, f32);
 
-// TODO: Pretty close :)
 void func_806319C4(Actor *arg0, u8 arg1) {
     f32 sp78[4][4];
+    f32 sppad[4][4];
     s16 phi_a0;
     s16 temp_f2;
-    s16 sp32;
+    s16 temp;
     s16 temp_t7;
     s16 temp_yrot;
 
     if ((arg0->object_properties_bitfield & 1)) {
-        f32 sppad[4][4]; // TODO: How to incorperate this into the code? It was clearly there originally because the stack lines up
         phi_a0 = (arg0->y_rotation - arg0->unkDC) & 0xFFF;
         if (phi_a0 >= 0x801) {
             phi_a0 = phi_a0 - 0x1000;
         }
         temp_f2 = (0x400 - arg0->unkDE) & 0xFFF;
-        sp32 = (s16)(arg0->z_rotation + (func_80612790(phi_a0) * temp_f2)) & 0xFFF;
+        temp = func_80612790(phi_a0) * temp_f2;
+        temp = (temp + arg0->z_rotation) & 0xFFF;
         temp_t7 = ((s16)(func_80612794(phi_a0) * temp_f2) + arg0->x_rotation) & 0xFFF;
         temp_yrot = arg0->y_rotation;
         if (arg1 != 0) {
-            func_806317D4(arg0, &sp78, temp_t7, sp32, temp_yrot);
+            func_806317D4(arg0, &sp78, temp_t7, temp, temp_yrot);
             guMtxCatF(&arg0->unkC, &sp78, &arg0->unkC);
-            return;
+        } else {
+            func_806317D4(arg0, &arg0->unkC, temp_t7, temp, temp_yrot);
         }
-        func_806317D4(arg0, &arg0->unkC, temp_t7, sp32, temp_yrot);
-        return;
+    } else {
+        if (arg1 != 0) {
+            func_8063162C(arg0, &sp78);
+            guMtxCatF(&arg0->unkC, &sp78, &arg0->unkC);
+        } else {
+            func_8063162C(arg0, &arg0->unkC);
+        }
     }
-    if (arg1 != 0) {
-        func_8063162C(arg0, &sp78);
-        guMtxCatF(&arg0->unkC, &sp78, &arg0->unkC);
-        return;
-    }
-    func_8063162C(arg0, &arg0->unkC);
 }
-*/

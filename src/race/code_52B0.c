@@ -3,12 +3,86 @@
 
 
 s32 func_8002CAC8(s32 arg0, Actor *arg1, RaceAdditionalActorData *arg2);
+void func_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
+void func_8002BBD0(Actor *arg0, s32 arg1);
+void func_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3);
+
+typedef struct {
+    u8 unk0[0x27 - 0x0];
+    u8 unk27;
+    u8 unk28;
+    u8 unk29[0x30 - 0x29];
+    s32 unk30;
+    u8 unk34[0x36 - 0x34];
+    u8 unk36;
+} AAD_Car_Castle_Player;
+
+typedef struct {
+    u8 unk0[0x25 - 0x0];
+    u8 unk25;
+    u8 unk26;
+} AAD_initializeCastleCarRace_arg0;
+
+typedef struct {
+    u8 unk0[0x27 - 0x0];
+    u8 unk27;
+} A178_initializeCastleCarRace;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} A17C_initializeCastleCarRace;
 
 void func_800292B0(s32 arg0, Actor *arg1) {
     func_8002CAC8(arg0, arg1, arg1->additional_actor_data);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_800292D0.s")
+void func_800292D0(Actor *arg0) {
+    AAD_initializeCastleCarRace_arg0 *aaD;
+    AAD_Car_Castle_Player *sp58;
+    Actor *sp54;
+    A17C_initializeCastleCarRace *temp_a2;
+    s32 var_s1;
+    s32 playerIndex;
+    s32 var_s5;
+
+    var_s5 = cc_number_of_players;
+    var_s1 = 0;
+    aaD = arg0->additional_actor_data;
+    if (var_s5 == 1) {
+        var_s5++;
+    }
+    func_8002BBD0(arg0, var_s5);
+    for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+        func_80677FA8(ACTOR_UNKNOWN_307, 0x9F);
+        sp54 = D_807FBB44;
+        sp58 = sp54->additional_actor_data;
+        sp58->unk27 = 0;
+        func_8002BC2C(arg0, var_s1, sp54, sp58);
+        sp58->unk28 = playerIndex;
+        var_s1++;
+    }
+    if (cc_number_of_players == 1) {
+        sp54 = func_807271F4(1, 0, 0, 0, 0, 0, 0);
+        sp58 = sp54->unk178;
+        sp58->unk27 = 1;
+        func_8002BC2C(arg0, var_s1, sp54, sp58);
+        temp_a2 = sp54->unk180;
+        func_8002BCB0(arg0, 0, temp_a2, &temp_a2->unk4);
+        aaD->unk25 = 1;
+    } else {
+        aaD->unk25 = 0;
+    }
+    for (playerIndex = 0; playerIndex < var_s5; playerIndex++) {
+        func_8002BCB0(arg0, playerIndex, &sp54, &sp58);
+        sp58->unk36 = playerIndex;
+        sp58->unk30 = arg0;
+        if (sp58->unk27 == 0) {
+        func_806903BC(sp54, sp58);
+        }
+    }
+    aaD->unk26 = 0;
+}
 
 // need this forward declaration
 void initializeSealRace();
@@ -70,37 +144,6 @@ s32 func_8002A080(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_8002A0AC.s")
-
-void func_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
-
-typedef struct {
-    u8 unk0[0x27 - 0x0];
-    u8 unk27;
-    u8 unk28;
-    u8 unk29[0x30 - 0x29];
-    s32 unk30;
-    u8 unk34[0x36 - 0x34];
-    u8 unk36;
-} AAD_Car_Castle_Player;
-
-typedef struct {
-    u8 unk0[0x25 - 0x0];
-    u8 unk25;
-    u8 unk26;
-} AAD_initializeCastleCarRace_arg0;
-
-typedef struct {
-    u8 unk0[0x27 - 0x0];
-    u8 unk27;
-} A178_initializeCastleCarRace;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-} A17C_initializeCastleCarRace;
-
-void func_8002BBD0(Actor *arg0, s32 arg1);
-void func_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3);
 
 void initializeCastleCarRace(Actor *arg0) {
     AAD_initializeCastleCarRace_arg0 *aaD;

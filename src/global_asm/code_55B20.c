@@ -849,7 +849,7 @@ void func_80653F68(s16 index) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80653FA4.s")
 
-void func_80654418(f32, f32);
+void func_80654418(f32, f32, f32);
 void func_80654A2C(f32, f32, f32);
 void func_80655258(f32, f32, f32, s32);
 extern s32 D_807F70AC;
@@ -857,7 +857,7 @@ extern s32 D_807F70AC;
 void func_80654380(f32 arg0, f32 arg1, f32 arg2) {
     s32 i;
 
-    func_80654418(arg0, arg1);
+    func_80654418(arg0, arg1, arg2);
     for (i = 0; i < D_807F70AC; i++) {
         D_807F70B0[i].unk18 = 0;
     }
@@ -865,8 +865,31 @@ void func_80654380(f32 arg0, f32 arg1, f32 arg2) {
     func_80654A2C(arg0, arg1, arg2);
 }
 
-// Matrix & memcpy
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80654418.s")
+s32 func_806545D4(s32, s32, s32, s32, f32, f32, f32, s32, f32 (*)[4], u8 *, void *); // extern
+extern s32 D_807482F4;
+extern f32 D_807F5FB4;
+extern s32 D_807F7148;
+extern f32 D_807F5FAC;
+extern s32 D_807F70AC;
+
+void func_80654418(f32 arg0, f32 arg1, f32 arg2) {
+    f32 spF8[4][4];
+    f32 spB8[4][4];
+    s32 i;
+    s32 sp84[12];
+
+    func_8062A944(D_807F5FB4, D_807F5FB0, D_807F5FAC);
+    guMtxL2F(&spF8[0], &character_change_array[cc_player_index].unk8[D_807444FC]);
+    func_8062FF10(&spB8[0], &spF8[0]);
+    for (i = 0; i < D_807F6C28; i++) {
+        if (chunk_array_pointer[i].loaded == 1) {
+            func_806545D4(chunk_array_pointer[i].deload1, chunk_array_pointer[i].deload2, chunk_array_pointer[i].deload3, chunk_array_pointer[i].deload4, arg0, arg1, arg2, cc_player_index, &spB8[0], &chunk_array_pointer[i].pad2, &sp84);
+            if (i == D_807482F4) {
+                memcpy(&D_807F7148, &chunk_array_pointer[i].pad2, 0x140);
+            }
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_806545D4.s")
 
@@ -960,8 +983,6 @@ s32 func_80654E84(Struct80654E84 *arg0, f32 arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_80655258.s")
 
 s32 func_8062DBDC(s16, s16, s16, s16, s32, s32, f32, f32, f32, f32, u8 *);
-extern f32 D_807F5FAC;
-extern s32 D_807F70AC;
 
 /*
 void func_80655258(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {

@@ -990,6 +990,7 @@ void func_80636014(s32 arg0, u8 arg1, u8 arg2) {
 }
 
 void func_80636380(s32 arg0, Struct80635548 *arg1);
+void func_806365D0(ObjectModel2 *arg0, OM2_unk24 *arg1, Model2Model *arg2);
 
 void func_80636074(ObjectModel2 *arg0) {
     Model2Model50_B8 *var_s0;
@@ -1210,6 +1211,51 @@ void func_806364C4(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_806365D0.s")
+
+/*
+// TODO: I think temp_v1 and temp_t0 is a count of the different between pointers to struct arrays
+void func_806365D0(ObjectModel2 *arg0, OM2_unk24 *arg1, Model2Model *arg2) {
+    u8 sp33;
+    s32 var_v0;
+    u32 temp_t0;
+    u32 temp_v1;
+
+    temp_v1 = (arg2->unkA0[2] - arg2->unkA0[0]);
+    temp_t0 = (arg2->unkB0 - arg2->unkA0[2]);
+    if (arg2->unkB8 == NULL) {
+        var_v0 = arg0->unk8C & 0x20;
+        if (var_v0 != 0) {
+            sp33 = 0;
+        } else {
+            goto block_3;
+        }
+    } else {
+block_3:
+        sp33 = 1;
+        var_v0 = arg0->unk8C & 0x20;
+    }
+    if (var_v0 != 0) {
+        if (sp33) {
+            arg1->unk3C -= 1;
+            func_80636784(arg2->unkA0[0], arg2->unkA0[0] + (temp_v1), arg2->unkB8, 0, 0);
+            func_80636784(arg2->unkA0[2], arg2->unkA0[2] + (temp_t0), arg2->unkB8, 1, 0);
+        } else {
+            func_80636448(arg2->unkA0[0], arg2->unkA0[0] + (temp_v1), arg2->unkA0[2], arg2->unkA0[2] + (temp_t0), arg1);
+        }
+    }
+    if (arg2->unkB8 != NULL) {
+        func_80636784(arg2->unkA0[1], arg2->unkA0[1] + (temp_v1), arg2->unkB8, 0, 0);
+        func_80636784(arg2->unkA0[3], arg2->unkA0[3] + (temp_t0), arg2->unkB8, 1, 0);
+        func_8061134C(arg2->unkA0[1]);
+        func_8061134C(arg2->unkA0[3]);
+    }
+    if (sp33) {
+        func_8066B434(arg1, 0xAF7, 7);
+    }
+    func_8061134C(arg2);
+}
+*/
+
 
 // Appears to parse a displaylist looking for 0xFD command
 // Displaylist stuff

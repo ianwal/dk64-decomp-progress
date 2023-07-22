@@ -371,4 +371,108 @@ f32 func_8002F90C(RaceStruct6 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) {
     return temp / temp2;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_8002F950.s")
+
+/*
+void *func_8002E960(u8);
+void *func_8002E9AC(u8);
+extern f32 D_80030158;
+
+// TODO: Any struct overlap with existing structs?
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10[4];
+    s32 unk20;
+    u8 unk24;
+    u8 unk25;
+    u16 unk26;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s16 unk34;
+    s8 unk36;
+    s8 unk37;
+    s8 unk38;
+    s8 unk39;
+    u16 unk3A;
+    s32 unk3C;
+    f32 unk40;
+} Struct8002F950;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct8002F950_temp_v0_2;
+
+void func_8002F950(Struct8002F950 *arg0) {
+    Actor *temp_a0;
+    f32 temp_f0;
+    f32 temp_f10;
+    f32 temp_f12;
+    f32 temp_f22;
+    f32 temp_f2;
+    f32 temp_f8;
+    s32 playerIndex;
+    s32 var_s0;
+    s32 var_s2;
+    s32 var_s5;
+    s32 var_s6;
+    s32 var_t3;
+    void *temp_v0;
+    Struct8002F950_temp_v0_2 *temp_v0_2;
+    void *var_s1;
+
+    temp_v0 = func_8002E960(arg0->unk26);
+    if (temp_v0 != NULL) {
+        var_s5 = 0;
+        var_s6 = 0;
+        if (temp_v0->unk0 > 0) {
+            temp_f22 = D_80030158;
+            do {
+                temp_v0_2 = func_8002E9AC((temp_v0->unk4 + var_s6)->unk1);
+                if (temp_v0_2->unk10 != 0) {
+                    var_s2 = 0;
+                    for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+                        do {
+                            temp_f10 = character_change_array[playerIndex].look_at_eye_z;
+                            temp_f2 = character_change_array[playerIndex].look_at_eye_x - temp_v0_2->unk0;
+                            temp_f12 = character_change_array[playerIndex].look_at_eye_y - temp_v0_2->unk2;
+                            temp_f8 = temp_f2 * temp_f2;
+                            temp_f0 = temp_f10 - temp_v0_2->unk4;
+                            var_t3 = 0;
+                            if (temp_f22 < ((temp_f0 * temp_f0) + (temp_f8 + (temp_f12 * temp_f12)))) {
+                                var_t3 = 1;
+                            }
+                            var_s2 |= var_t3;
+                    }
+                    var_s0 = 0;
+                    var_s1 = temp_v0_2;
+                    if (var_s2 != temp_v0_2->unk24) {
+                        do {
+                            temp_a0 = var_s1->unk1C;
+                            if (temp_a0 != NULL) {
+                                if (var_s2 != 0) {
+                                    func_80678458(temp_a0);
+                                } else {
+                                    func_80678428(temp_a0);
+                                }
+                            }
+                            var_s0 += 4;
+                            var_s1 += 4;
+                        } while (var_s0 != 8);
+                        temp_v0_2->unk24 = var_s2;
+                    }
+                }
+                var_s5 += 1;
+                var_s6 += 2;
+            } while (var_s5 < temp_v0->unk0);
+        }
+    }
+}
+*/

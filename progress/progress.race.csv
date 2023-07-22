@@ -57,7 +57,7 @@ us,.code,func_80026004,76,yes
 us,.code,func_80029054,600,yes
 us,.code,func_8002978C,2044,no
 us,.code,func_8002CFF0,116,yes
-us,.code,func_800292D0,440,no
+us,.code,func_800292D0,440,yes
 us,.code,func_80025FDC,40,yes
 us,.code,setupRaceOnMapLoad,204,yes
 us,.code,func_800280E8,496,no

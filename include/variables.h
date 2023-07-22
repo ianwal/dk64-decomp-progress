@@ -131,7 +131,9 @@ extern Struct807F0470 D_807F0470[];
 
 typedef struct {
     s32 unk0;
-    u8 unk4[0x280 - 0x4];
+    u8 unk4[0x260 - 0x4];
+    s32 unk260;
+    u8 unk264[0x280 - 0x264];
     s32 unk280;
     s32 frame_count;
 } Struct80767A40;

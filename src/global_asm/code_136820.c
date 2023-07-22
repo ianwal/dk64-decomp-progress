@@ -164,12 +164,14 @@ void func_80731E68(Struct80731E68 *arg0) {
 }
 */
 
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_8073202C.s")
 
 /*
-s32 func_8073202C(s32 arg0, s32 *arg1, s32 *arg2) {
+s32 func_8073202C(s32 arg0, u8 *arg1, s32 *arg2) {
     if ((arg0 & 0xFFFF0000) == 0x8FBF0000) {
-        *arg2 = arg1[(s16)arg0];
+        arg0 = (s16)arg0;
+        *arg2 = *(s32*)(&arg1[arg0]);
         return TRUE;
     }
     return FALSE;

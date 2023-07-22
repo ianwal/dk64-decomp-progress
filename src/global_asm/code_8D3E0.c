@@ -178,8 +178,6 @@ typedef struct {
 extern GlobalASMStruct79 *D_807FC5C4;
 extern u8 D_807FC5C8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_80688A6C.s")
-
 // TODO: What struct is this?
 typedef struct {
     s32 unk0;
@@ -200,8 +198,6 @@ typedef struct {
     s16 unk36;
 } Struct80688A6C;
 
-/*
-// TODO: Very close, have another look at m2c output for the branches
 void func_80688A6C(void) {
     Struct80688A6C *var_s0;
     Struct80688A6C *var_s5;
@@ -226,31 +222,29 @@ void func_80688A6C(void) {
     }
     for (i = 0; i < var_s6; i++) {
         if (func_80688C84((var_s5[i].unk32 + 0x10)) != 0) {
-            D_807FC5C8 += 1;
+            D_807FC5C8++;
         }
     }
-    if (D_807FC5C8 == 0) {
-        D_807FC5C4 = NULL;
+    if (D_807FC5C8) {
+        D_807FC5C4 = malloc(D_807FC5C8 * 4);
     } else {
-        if (D_807FC5C8 != 0) {
-            D_807FC5C4 = malloc(D_807FC5C8 * 4);
-            D_807FC5C8 = 0;
-            var_s2 = 0;
-            for (i = 0; i < var_s6; i++) {
-                temp_v0_2 = func_80688C84((var_s5[i].unk32 + 0x10));
-                if (temp_v0_2 != 0) {
-                    D_807FC5C4[D_807FC5C8].unk0 = var_s5[i].unk34;
-                    D_807FC5C4[D_807FC5C8].unk2 = D_807FC408[current_map] + var_s2 + 0x26B;
-                    var_s2 += temp_v0_2;
-                    D_807FC5C8 += 1;
-                }
-            }
-            func_8066B424();
-            func_8066B434(temp_v0, 0x1AA, 0x34);
+        D_807FC5C4 = NULL;
+        return;
+    }
+    D_807FC5C8 = 0;
+    var_s2 = 0;
+    for (i = 0; i < var_s6; i++) {
+        temp_v0_2 = func_80688C84((var_s5[i].unk32 + 0x10));
+        if (temp_v0_2) {
+            D_807FC5C4[D_807FC5C8].unk0 = var_s5[i].unk34;
+            D_807FC5C4[D_807FC5C8].unk2 = D_807FC408[current_map] + var_s2 + 0x26B;
+            var_s2 += temp_v0_2;
+            D_807FC5C8++;
         }
     }
+    func_8066B424();
+    func_8066B434(temp_v0, 0x1AA, 0x34);
 }
-*/
 
 s16 func_80688C30(u16 arg0) {
     s32 i;

@@ -357,7 +357,51 @@ void func_80704130(Struct80704130 *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, u8 
     }
 }
 
+// close, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80704298.s")
+
+extern u8 D_807FD896;
+extern u8 D_807FD897;
+extern u8 D_807FD898;
+extern u8 D_807FD899;
+
+/*
+void func_80704298(s32 arg0, u8 arg1, u8 arg2) {
+    s32 temp2;
+    s32 sp34;
+    s16 var_t0;
+    s16 var_t1;
+    s16 temp = D_807FD892;
+
+    if (temp >= 0x4000) {
+        var_t0 = temp;
+        temp2 = temp - 0x4200;
+        var_t0 = temp2 + (arg1 * 0x14);
+        var_t1 = var_t0 + 0xA;
+    } else {
+        var_t0 = temp - (arg1 * 0x14);
+        var_t1 = var_t0 - 0xA;
+    }
+    if (var_t0 < 0) {
+        var_t0 = 0;
+    }
+    if (var_t0 >= 0x100) {
+        var_t0 = 0xFF;
+    }
+    if (var_t1 < 0) {
+        var_t1 = 0;
+    }
+    if (var_t1 >= 0x100) {
+        var_t1 = 0xFF;
+    }
+    func_80704130(arg0, D_807FD894, D_807FD895, D_807FD896, var_t0, arg2);
+    arg0 += 0x10;
+    func_80704130(arg0, D_807FD894, D_807FD895, D_807FD896, var_t1, arg2);
+    arg0 += 0x10;
+    func_80704130(arg0, D_807FD897, D_807FD898, D_807FD899, var_t1, (arg2 | 0x40));
+    func_80704130(arg0, D_807FD897, D_807FD898, D_807FD899, var_t0, (arg2 | 0x40));
+}
+*/
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80704444.s")
