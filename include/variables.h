@@ -108,7 +108,7 @@ typedef struct Struct807FDCA0 {
     s16 unk12;
     Struct807FDCA0_unk14 *unk14;
     s8 unk18;
-    s8 unk19; // Used
+    u8 unk19; // Used
     s16 unk1A;
     Actor *unk1C;
     u8 unk20; // Used

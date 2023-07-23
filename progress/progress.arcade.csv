@@ -84,7 +84,7 @@ us,.code,arcade_50m_setup,2168,yes
 us,.code,func_8003159C,940,yes
 us,.code,func_8002CD64,2456,no
 us,.code,func_8002AA24,560,yes
-us,.code,func_8002FE28,540,no
+us,.code,func_8002FE28,540,yes
 us,.code,arcade_add_points_to_score,84,yes
 us,.code,arcade_hammer_update,892,yes
 us,.code,func_8002A474,704,yes

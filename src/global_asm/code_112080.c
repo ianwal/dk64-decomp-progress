@@ -408,11 +408,50 @@ void func_8070DD44(void) {
 }
 */
 
+typedef struct Struct8070E548 Struct8070E548;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC; // f32?
+} Struct8070E548_unk4;
+
+struct Struct8070E548 {
+    s32 unk0;
+    Struct8070E548_unk4 *unk4;
+    s32 unk8;
+    s32 unkC;
+    u16 unk10; // f32?
+    s16 unk12;
+    s32 unk14;
+    s32 unk18;
+    Struct8070E548 *unk1C; // Next
+};
+
+typedef struct {
+    u8 unk0;
+    s32 unk4;
+    u16 unk8;
+    Struct8070E548 *unkC;
+} AAD_8070E548;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    Struct8070E548_unk4 *unk4;
+} Struct8070DDDC_unk4;
+
 typedef struct {
     u16 unk0;
     u8 unk2;
     u8 unk3;
-    s32 unk4;
+    Struct8070DDDC_unk4 *unk4;
     u8 unk8;
     u8 unk9;
     u8 unkA;
@@ -503,7 +542,54 @@ void func_8070E2AC(s32 arg0, Struct8070E2AC_arg1 *arg1, Struct8070E2AC_arg2 *arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E34C.s")
 
+// very close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E548.s")
+
+void func_8070E34C(void *arg0, void *arg1, s32 arg2);
+
+/*
+void func_8070E548(Actor *arg0, u16 arg1, u8 arg2) {
+    Struct8070DDDC *temp_s2;
+    s32 i;
+    Struct8070E548 **nextPtr;
+    AAD_8070E548 *aaD;
+    Struct8070E548_unk4 *var_s1;
+    Struct8070E548 *current;
+
+    aaD = arg0->additional_actor_data;
+    if (arg0->object_properties_bitfield & 0x10) {
+        func_8070D970(aaD->unk8);
+    }
+    temp_s2 = func_8070DDDC(arg1, 0);
+    aaD->unk8 = arg1;
+    var_s1 = temp_s2->unk4[arg2].unk4;
+    nextPtr = &aaD->unkC;
+    for (i = 0; i < temp_s2->unk4[arg2].unk0; i++) {
+        current = *nextPtr;
+        while (current != NULL) {
+            nextPtr = &current->unk1C;
+            current = *nextPtr;
+        }
+        if (var_s1->unk0 & 1) {
+            func_8070E2AC(aaD, var_s1, temp_s2);
+            current = *nextPtr;
+        } else if (var_s1->unk0 & 2) {
+            func_8070E34C(aaD, var_s1, temp_s2);
+            current = *nextPtr;
+        }
+        if (current != NULL) {
+            current->unk8 = var_s1->unk4;
+            current = *nextPtr;
+        }
+        while (current != NULL && *nextPtr != NULL) {
+            nextPtr = &current->unk1C;
+            current = *nextPtr;
+        }
+        current->unk10 = var_s1->unkC * 30.0f;
+        var_s1++;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_8070E750.s")
 

@@ -47,7 +47,10 @@ typedef struct arcade_struct_1 {
     f32 y_position; // y position at 0x4
     f32 x_velocity; // x velocity at 0x8
     f32 y_velocity; // y velocity at 0xC
-    f32 unk10; // lifetime?
+    union {
+        f32 unk10; // lifetime?
+        s32 unk10_s32;
+    };
     s32 *unk14; // imageDataPointer
     u8 unk18; // object_type
     u8 unk19; // state?

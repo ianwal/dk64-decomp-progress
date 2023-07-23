@@ -230,6 +230,7 @@ void func_80026290(MenuStruct1 *arg0, u32 *arg1) {
     arg0->unkB = -1;
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_800262A8.s")
 
 extern MenuStruct1 D_800334EC;
@@ -242,7 +243,6 @@ extern u8 D_807FCC4C;
 extern u8 D_800334DD[];
 
 /*
-// TODO: Doable, good progress made
 void func_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
     MenuStruct1 *sp44;
     u16 sp42;

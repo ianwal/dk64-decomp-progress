@@ -2920,32 +2920,30 @@ void func_8002EEB8(s32 arg0) {
 // big
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002F82C.s")
 
-#ifndef NONMATCHING
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_8002FE28.s")
-#else
 void func_8002FE28(s32 arg0) {
+    s32 temp;
     if (arcade_game_state == 0) {
         D_8004BCD0[arg0].unk10 += 1.0f;
-        if (((s8) D_8004BCD0[arg0].unk10 & 0xFF) < 0xA0) {
+        if (((u8)(s8)D_8004BCD0[arg0].unk10) < 0xA0) {
             D_8004BCD0[arg0].unk14 = &D_80040540;
         } else {
-            if (((s32) D_8004BCD0[arg0].unk10 & 0x1F) == 0) {
+            if (!((s32)D_8004BCD0[arg0].unk10 & 0x1F)) {
                 func_80737638(D_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFF, 0x3F, 1.0f, 0, 0);
             }
             D_8004BCD0[arg0].unk14 = &D_800424D0;
-            D_8004BCD0[arg0].unk1A = ((((s32)D_8004BCD0[arg0].unk10 & 0x20) / 0x20) == 0);
+            temp = ((s32)D_8004BCD0[arg0].unk10 & 0x20);
+            temp /= 0x20;
+            D_8004BCD0[arg0].unk1A = temp == 0;
         }
         if (((s32) D_8004BCD0[arg0].unk10 % (0x72 - ((s32) func_800246C8(D_8004A76C, 4.0f) * 0xC))) == 0) {
             D_8004C71E--;
             arg0 = func_800246EC();
             D_8004BCD0[arg0] = arcade_spring_obj_template;
-            D_8004BCD0[arg0].unk0 = ((func_80024644() & 0xF) - 0x1C);
+            D_8004BCD0[arg0].x_position = ((func_80024644() & 0xF) - 0x1C);
             D_8004BCD0[arg0].unk19 = 2;
         }
     }
 }
-#endif
 
 void arcade_dk_50m_update(s32 arg0) {
     switch(D_8004BCD0[arg0].unk19) {

@@ -105,7 +105,6 @@ void func_806A495C(void *arg0, void *arg1, void *arg2) {
     f32 sp38;
     f32 sp34;
     f32 sp30;
-    void *sp2C;
     f32 temp_f2;
     s32 temp_v0;
     void *temp_v1;
@@ -122,15 +121,14 @@ void func_806A495C(void *arg0, void *arg1, void *arg2) {
         func_8071495C();
         func_80714998(2);
         func_80714A68(arg2->unk44, arg2->unk48, arg2->unk4C, arg2->unk50);
-        temp_v1 = arg0 + 0x10;
-        sp2C = temp_v1;
-        temp_v0 = func_80714CC0(((temp_v1->unk0 * 4) + 0x80750000)->unk5390, 1.0f, arg2->unk44, arg2->unk48, 1.0f);
+        temp_v1 = &arg0->unk10;
+        temp_v0 = func_80714CC0(D_80755390[temp_v1->unk0], 1.0f, arg2->unk44, arg2->unk48, 1.0f);
         temp_v1->unk4 = temp_v0;
         if (temp_v1->unk2 != 0) {
             temp_v0->unk360 = temp_v0->unk360 * -1.0f;
         }
     }
-    temp_v1_2 = arg0 + 0x10;
+    temp_v1_2 = &arg0->unk10;
     temp_v1_2->unk4->unk340 = (arg2->unk44 + (sp34 + sp38)) * 4.0;
     temp_v1_2->unk4->unk344 = (arg2->unk48 + (sp30 + (arg1->unk18 * 0.5f))) * 4.0;
     temp_v1_2->unk4->unk36D = arg0->unk3;

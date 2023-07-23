@@ -930,7 +930,7 @@ typedef struct {
 } Struct800317E8;
 
 s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7);
-s32 func_806FC530(s32, s16, s16, s16, void *, s32);
+Gfx *func_806FC530(Gfx*, s16, s16, s16, void *, s32);
 extern s32 D_800339C4; // TODO: Datatype
 extern f32 D_80033F44;
 
@@ -948,17 +948,17 @@ typedef struct {
 
 /*
 // TODO: Progress made, kinda fiddly
-s32 func_8002F980(s32 arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3, s32 *arg4, s16 arg5, f32 *arg6, s32 arg7, s16 arg8) {
+s32 func_8002F980(Gfx *arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3, s32 *arg4, s16 arg5, f32 *arg6, f32 arg7, s16 arg8) {
+    s32 temp[2];
+    s32 var_v1;
     f32 var_f0;
-    s32 var_v0;
     f32 sp3C;
     f32 sp38;
-    s32 var_v1;
 
     var_v1 = arg1->unk17;
     if (arg1->unk4 != 0.0f) {
         if (arg1->unk4 > 0.5f) {
-            var_v1 += 1;
+            var_v1++;
         }
         if (var_v1 >= arg3) {
             var_v1 = 0;
@@ -972,15 +972,16 @@ s32 func_8002F980(s32 arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3, s32 
     if (D_80033F44 < 0.0f) {
         var_f0 = -var_f0;
     }
-    func_800317E8(0.0f, 0.5f, arg1, var_f0 + 160.0, arg7, &sp3C, &sp38, 2, 0, 2.0f);
+    // func_800317E8(0.0f, 0.5f, arg1, var_f0 + 160.0, arg7, &sp3C, &sp38, 2, 0, 2.0f);
+    func_800317E8(arg1, var_f0 + 160.0, arg7, &sp3C, &sp38, 2, 0, 2.0f);
     if (arg8 & (1 << var_v1)) {
-        var_v0 = func_806FC530(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, arg2[var_v1], 0x81);
+        arg0 = func_806FC530(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, arg2[var_v1], 0x81);
     } else {
-        var_v0 = func_806FC530(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, &D_800339C4, 0x81);
+        arg0 = func_806FC530(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, &D_800339C4, 0x81);
     }
     *arg6 = var_f0;
     *arg4 = var_v1;
-    return var_v0;
+    return arg0;
 }
 */
 

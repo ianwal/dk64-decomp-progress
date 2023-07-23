@@ -296,6 +296,8 @@ typedef struct GlobalASMStruct91 {
     s16 unkE; // Used, Z?
 } GlobalASMStruct91;
 
+void func_806B3F90(GlobalASMStruct91 *arg0, u8 arg1);
+
 /*
 // TODO: Very doable, float regalloc, I might have got the MIN/MAX macros mixed up?
 void func_806B3F90(GlobalASMStruct91 *arg0, u8 arg1) {
@@ -308,7 +310,7 @@ void func_806B3F90(GlobalASMStruct91 *arg0, u8 arg1) {
     dz = arg0->unkE - current_actor_pointer->z_position;
     dx = arg0->unkA - current_actor_pointer->x_position;
     temp_f16 = sqrtf((dz * dz) + (dx * dx));
-    if ((temp_f16 / MAX(current_actor_pointer->unkB8, D_8075B5E0)) < D_8075B5E0) {
+    if ((temp_f16 / MAX(D_8075B5E0, current_actor_pointer->unkB8)) < D_8075B5E0) {
         var_f18 = D_8075B5E0;
     } else {
         var_f18 = temp_f16 / MIN(current_actor_pointer->unkB8, D_8075B5E0);
@@ -390,8 +392,6 @@ void func_806B4958() {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_806B49B0.s")
 
 extern f32 D_807502EC;
-
-void func_806B3F90(void *arg0, u8 arg1);
 
 /*
 // TODO: Doable, good progress made

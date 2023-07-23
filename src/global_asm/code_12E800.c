@@ -108,6 +108,8 @@ extern f64 D_8075FD20;
 
 void func_8065D254(Actor *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, u8 arg6, s16 arg7, u8 arg8, s16 arg9, f32 argA);
 
+void func_8072A450(void);
+
 /*
 // TODO: Float nonsense
 void func_8072A450(void) {
@@ -207,7 +209,10 @@ extern f64 D_8075FD40;
 
 void func_80729EB0(s32, f32, f32, u16);
 void func_806653C0(Actor*, f32, f32);
-s32 func_80725BA4(f32, f32, Struct807FDCA0*);
+s32 func_80725BA4(s16, s16, Struct807FDCA0*);
+void func_8072B438(u16 arg0);
+
+s32 func_807264B0(Actor *arg0, f32 arg1, f32 arg2, void *arg3);
 
 /*
 // TODO: Seems doable, progress made...
@@ -299,14 +304,15 @@ u8 func_8072AB74(u8 arg0, f32 x, f32 z, u16 arg3, f32 arg4) {
                 var_v1_2 = 1;
             }
             current_actor_pointer->unkB8 = var_v1_2 * 0x1E;
-            return 0;
+        } else {
+            D_807FDC90->unk1A |= 0x4000;
         }
-        D_807FDC90->unk1A |= 0x4000;
         return 0;
     }
     if (func_80725BA4(current_actor_pointer->x_position, current_actor_pointer->z_position, D_807FDCA0) != 0) {
         D_807FDC90->unk1A |= 0x4000;
-        if (func_807264B0(current_actor_pointer, current_actor_pointer->unk88, current_actor_pointer->unk90, D_807FDCA0, &sp52) == 0) {
+        // if (func_807264B0(current_actor_pointer, current_actor_pointer->unk88, current_actor_pointer->unk90, D_807FDCA0, &sp52) == 0) {
+        if (func_807264B0(current_actor_pointer, current_actor_pointer->unk88, current_actor_pointer->unk90, D_807FDCA0) == 0) {
             sp34 = func_80612794(current_actor_pointer->unkEE);
             if (func_80725BA4((sp34 * current_actor_pointer->unkB8) + current_actor_pointer->x_position, (func_80612790(current_actor_pointer->unkEE) * current_actor_pointer->unkB8) + current_actor_pointer->z_position, D_807FDCA0) == 0) {
                 if (D_807FDC90->unk22-- == 0) {
@@ -823,38 +829,18 @@ void func_8072E2B0(Actor *arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_8072E320.s")
-
 extern f64 D_8075FF40;
 extern f64 D_8075FF48;
 
-/*
-// TODO: Quite close...
 void func_8072E320(f32 arg0) {
-    f32 var_f0;
     f32 var_f2;
 
     current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
     current_actor_pointer->y_rotation = func_806CC190(current_actor_pointer->y_rotation, func_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, current_actor_pointer->unk88, current_actor_pointer->unk90), 3.3f);
-    if ((func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE) * arg0) > -900.0f) {
-        var_f0 = func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE) * arg0;
-    } else {
-        var_f0 = -900.0f;
-    }
-    if (var_f0 < 900.0f) {
-        if ((func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE) * arg0) > -900.0f) {
-            var_f2 = func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE) * arg0;
-        } else {
-            var_f2 = -900.0f;
-        }
-    } else {
-        var_f2 = 900.0f;
-    }
+    var_f2 = MIN(MAX(arg0 * func_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEE), -900.0f), 900.0f);
     current_actor_pointer->x_rotation = ((var_f2 - current_actor_pointer->x_rotation) * D_8075FF40) + current_actor_pointer->x_rotation;
-    func_80665E94(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, current_actor_pointer->unk88, current_actor_pointer->unk8C, current_actor_pointer->unk90, 0x1E);
-    current_actor_pointer->z_rotation = func_806CC190(current_actor_pointer->z_rotation, (var_f0 * 2048.0) / D_8075FF48, 3.3f);
+    current_actor_pointer->z_rotation = func_806CC190(current_actor_pointer->z_rotation, (func_80665E94(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, current_actor_pointer->unk88, current_actor_pointer->unk8C, current_actor_pointer->unk90, 0x1E) * 2048.0) / D_8075FF48, 3.3f);
 }
-*/
 
 u8 func_8072E54C(void) {
     s32 var_v1;

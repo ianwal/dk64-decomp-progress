@@ -1996,6 +1996,7 @@ void func_8071D784(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_8071D94C.s")
 
 extern f32 D_8075EA10;
@@ -2006,7 +2007,6 @@ extern f32 D_8075EA24;
 void func_8071D94C(Actor *arg0, Struct80717D84 *arg1, s8 *arg2);
 
 /*
-// TODO: Close
 void func_8071D94C(Actor *arg0, Struct80717D84 *arg1, s8 *arg2) {
     s16 temp;
     s16 sp34;

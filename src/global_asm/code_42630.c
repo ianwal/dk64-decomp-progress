@@ -1985,7 +1985,56 @@ void func_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806485A0.s")
+
+extern s32 D_8071FF18;
+extern f32 D_80758A30;
+extern f32 D_807F621C;
+
+/*
+void func_806485A0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
+    f32 sp80;
+    f32 sp70;
+    f32 sp6C;
+    f32 temp_f0;
+    f32 temp_f20;
+    f32 temp_f22;
+    f32 temp_f26;
+    f32 temp_f28;
+    f32 temp_f2;
+    f32 temp_f30;
+    s32 temp_v1;
+    s32 i;
+
+    temp_v1 = arg3 & 0xFF;
+    switch (arg2 >> 8) {
+        case 0:
+            sp80 = 1.0f;
+            break;
+        case 1:
+            sp80 = 4.0f;
+            break;
+    }
+        temp_f30 = arg2 & 0xFF;
+        sp70 = arg3 >> 8;
+        temp_f28 = D_80758A30;
+    for (i = 0; i != temp_v1; i++) {
+        sp6C = sp80 * 1.5;
+            func_8071496C(func_806119FC() * sp70);
+loop_8:
+            temp_f22 = (2.0f * func_806119FC()) - 1.0f;
+            temp_f20 = (2.0f * func_806119FC()) - 1.0f;
+            temp_f26 = (2.0f * func_806119FC()) - 1.0f;
+            temp_f0 = sqrtf((temp_f22 * temp_f22) + (temp_f20 * temp_f20) + (temp_f26 * temp_f26));
+            if (temp_f0 < temp_f28) {
+                goto loop_8;
+            }
+            temp_f2 = temp_f30 / temp_f0;
+            func_80714CC0(&D_8071FF18, sp6C, D_807F621C + (temp_f22 * temp_f2), D_807F6220 + ((temp_f20 * temp_f2) + temp_f30), D_807F6224 + (temp_f26 * temp_f2));
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_806487C4.s")
 

@@ -180,12 +180,12 @@ void func_806AD9F4(void) {
     func_806319C4(current_actor_pointer, 0);
 }
 
+// close, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B1F60/func_806ADDD8.s")
 
 void func_8072B7CC(s32);
 
 /*
-// TODO: Bleh, everything matches except for stack size
 void func_806ADDD8(void) {
     s32 temp = 0x31A;
     // Might not need this
