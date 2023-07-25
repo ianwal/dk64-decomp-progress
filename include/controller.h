@@ -1,6 +1,6 @@
 #ifndef _CONTROLLER_H
 #define _CONTROLLER_H
-#include <os_internal.h>
+#include <ultra64.h>
 #include <rcp.h>
 
 //should go somewhere else but

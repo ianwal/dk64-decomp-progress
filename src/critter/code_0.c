@@ -144,7 +144,6 @@ extern s32 D_807F6C28;
 
 void func_80024000(Critter*, s32, f32);
 void func_80024578(Critter *);
-s32 func_800257D4(s32);
 s32 func_80025AD0(s32, s32);
 void func_80025DB8(CritterStruct6*, CritterStruct6*, u8, s16, u8);
 void func_800262C0(Critter*, CritterController*);
@@ -382,13 +381,12 @@ void func_80025500(Critter *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800255C4.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_800257D4.s")
+extern Gfx D_01000118;
+extern f32 D_02000180[];
+extern f32 D_02000200[];
 
-/*
-// TODO: Displaylist stuff
 Gfx *func_800257D4(Gfx *arg0) {
-  gSPDisplayList(arg0++, 0x01000118);
+  gSPDisplayList(arg0++, &D_01000118);
   gDPPipeSync(arg0++);
   gDPSetCycleType(arg0++, G_CYC_1CYCLE);
   gSPClearGeometryMode(arg0++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | 
@@ -396,13 +394,12 @@ Gfx *func_800257D4(Gfx *arg0) {
                                   G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | 
                                   G_CLIPPING | 0x0040F9FA);
   gSPMatrix(arg0++, 
-            (&character_change_array[cc_player_index] + (D_807444FC << 6) + 0x88), 
+            (&character_change_array[cc_player_index].unk88[D_807444FC]), 
             G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-  gSPMatrix(arg0++, 0x20002000, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-  gSPMatrix(arg0++, 0x20001800, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+  gSPMatrix(arg0++, &D_02000200, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+  gSPMatrix(arg0++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
   return arg0;
 }
-*/
 
 void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     s32 temp;

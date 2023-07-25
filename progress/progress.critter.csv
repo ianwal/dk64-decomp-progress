@@ -46,7 +46,7 @@ us,.code,func_80025D1C,156,yes
 us,.code,func_800262C0,120,yes
 us,.code,func_8002646C,196,yes
 us,.code,func_80026FD0,100,yes
-us,.code,func_800257D4,220,no
+us,.code,func_800257D4,220,yes
 us,.code,func_80027448,2424,no
 us,.code,func_8002448C,140,yes
 us,.code,func_80027034,88,yes

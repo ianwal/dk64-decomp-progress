@@ -191,10 +191,10 @@ endef
 ### Flags ###
 
 # Build tool flags
-CFLAGS         := -c -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -signed $(OPT_FLAGS) $(MIPSBIT) -D_FINALROM -DF3DEX2_GBI
+CFLAGS         := -c -Wab,-r4300_mul -non_shared -G 0 -Xcpluscomm -signed $(OPT_FLAGS) $(MIPSBIT) -D_FINALROM -DF3DEX_GBI_2 -DTARGET_N64
 CFLAGS         += -woff 649,838,807
 CPPFLAGS       := -D_FINALROM -DN_MICRO -DF3DEX_GBI_2x
-INCLUDE_CFLAGS := -I . -I include -I include/2.0L -I include/2.0L/PR
+INCLUDE_CFLAGS := -I . -I include -I include/2.0L -I include/2.0L/PR -I include/libc
 OPT_FLAGS      := -O2 
 MIPSBIT        := -mips2
 ASFLAGS        := -EB -mtune=vr4300 -march=vr4300 -mabi=32 -I include

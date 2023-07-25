@@ -1975,7 +1975,7 @@ us,.code,func_8060B7D0,28,yes
 us,.code,func_8063DB0C,48,yes
 us,.code,func_80604C80,60,yes
 us,.code,func_805FF1B0,324,yes
-us,.code,func_806FB3D0,72,no
+us,.code,func_806FB3D0,72,yes
 us,.code,func_806E0178,284,yes
 us,.code,func_806D239C,268,yes
 us,.code,func_8065E138,1276,no

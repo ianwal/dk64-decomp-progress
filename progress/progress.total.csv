@@ -1975,7 +1975,7 @@ us,.code,func_8060B7D0,28,yes
 us,.code,func_8063DB0C,48,yes
 us,.code,func_80604C80,60,yes
 us,.code,func_805FF1B0,324,yes
-us,.code,func_806FB3D0,72,no
+us,.code,func_806FB3D0,72,yes
 us,.code,func_806E0178,284,yes
 us,.code,func_806D239C,268,yes
 us,.code,func_8065E138,1276,no
@@ -3667,7 +3667,7 @@ us,.code,func_80025D1C,156,yes
 us,.code,func_800262C0,120,yes
 us,.code,func_8002646C,196,yes
 us,.code,func_80026FD0,100,yes
-us,.code,func_800257D4,220,no
+us,.code,func_800257D4,220,yes
 us,.code,func_80027448,2424,no
 us,.code,func_8002448C,140,yes
 us,.code,func_80027034,88,yes
@@ -3987,7 +3987,7 @@ us,boot,guTranslate,84,yes
 us,boot,func_80000D8C,188,yes
 us,boot,__osAiDeviceBusy,48,yes
 us,boot,osEepromLongRead,140,yes
-us,boot,func_80001700,1012,no
+us,boot,func_80001700,1012,yes
 us,boot,func_80002790,152,no
 us,boot,func_800022D4,288,yes
 us,boot,func_80002724,44,yes

@@ -1,4 +1,4 @@
-#include <os_internal.h>
+#include <ultra64.h>
 #include "osint.h"
 
 void osSetTime(OSTime time) {

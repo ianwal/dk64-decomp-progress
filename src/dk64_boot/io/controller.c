@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include <os_internal.h>
+#include <ultra64.h>
 #include <rcp.h>
 #include "controller.h"
 #include "siint.h"

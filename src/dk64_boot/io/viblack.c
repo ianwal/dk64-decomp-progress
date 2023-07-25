@@ -1,4 +1,4 @@
-#include <os_internal.h>
+#include <ultra64.h>
 #include "viint.h"
 
 void osViBlack(u8 active)

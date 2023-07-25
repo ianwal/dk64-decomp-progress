@@ -1,4 +1,4 @@
-#include <os_internal.h>
+#include <ultra64.h>
 #include <sptask.h>
 #include <bstring.h>
 #include <rcp.h>

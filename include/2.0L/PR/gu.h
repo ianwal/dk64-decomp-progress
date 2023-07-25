@@ -1,49 +1,14 @@
-#ifndef _GU_H_
-#define _GU_H_
-
-/**************************************************************************
- *									  *
- *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
- *									  *
- *  These coded instructions, statements, and computer programs  contain  *
- *  unpublished  proprietary  information of Silicon Graphics, Inc., and  *
- *  are protected by Federal copyright law.  They  may  not be disclosed  *
- *  to  third  parties  or copied or duplicated in any form, in whole or  *
- *  in part, without the prior written consent of Silicon Graphics, Inc.  *
- *									  *
- **************************************************************************/
-
-/**************************************************************************
- *
- *  $Revision: 1.46 $
- *  $Date: 1997/11/26 00:30:53 $
- *  $Source: /disk6/Master/cvsmdev2/PR/include/gu.h,v $
- *
- **************************************************************************/
+#ifndef _ULTRA64_GU_H_
+#define _ULTRA64_GU_H_
 
 #include <PR/mbi.h>
 #include <PR/ultratypes.h>
-#include <PR/sptask.h>
-
-#ifndef MAX
-#define MAX(a,b) (((a)>(b))?(a):(b))
-#endif
-#ifndef MIN
-#define MIN(a,b) (((a)<(b))?(a):(b))
-#endif
-
-#define M_PI		3.14159265358979323846
-#define M_DTOR		(3.14159265358979323846/180.0)
 
 #define	FTOFIX32(x)	(long)((x) * (float)0x00010000)
 #define	FIX32TOF(x)	((float)(x) * (1.0f / (float)0x00010000))
 #define	FTOFRAC8(x)	((int) MIN(((x) * (128.0f)), 127.0f) & 0xff)
 
-#define  FILTER_WRAP 0
-#define  FILTER_CLAMP 1
-
-#define RAND(x) (guRandom()%x)	/* random number between 0 to x */
-
+#define GU_PI 3.1415926
 /*
  * Data Structures
  */
@@ -69,21 +34,21 @@ typedef struct {
  * Function Prototypes
  */
 
-extern int guLoadTextureBlockMipMap(Gfx **glist, unsigned char *tbuf, Image *im, 
-		unsigned char startTile, unsigned char pal, unsigned char cms, 
-		unsigned char cmt, unsigned char masks, unsigned char maskt, 
-		unsigned char shifts, unsigned char shiftt, unsigned char cfs, 
-		unsigned char cft);
+// extern int guLoadTextureBlockMipMap(Gfx **glist, unsigned char *tbuf, Image *im, 
+// 		unsigned char startTile, unsigned char pal, unsigned char cms, 
+// 		unsigned char cmt, unsigned char masks, unsigned char maskt, 
+// 		unsigned char shifts, unsigned char shiftt, unsigned char cfs, 
+// 		unsigned char cft);
 
-extern int 	guGetDPLoadTextureTileSz (int ult, int lrt);
-extern void 	guDPLoadTextureTile (Gfx *glistp, void *timg,
-			int texl_fmt, int texl_size,
-			int img_width, int img_height,
-			int uls, int ult, int lrs, int lrt,
-			int palette,
-			int cms, int cmt,
-			int masks, int maskt,
-			int shifts, int shiftt);
+// extern int 	guGetDPLoadTextureTileSz (int ult, int lrt);
+// extern void 	guDPLoadTextureTile (Gfx *glistp, void *timg,
+// 			int texl_fmt, int texl_size,
+// 			int img_width, int img_height,
+// 			int uls, int ult, int lrs, int lrt,
+// 			int palette,
+// 			int cms, int cmt,
+// 			int masks, int maskt,
+// 			int shifts, int shiftt);
 
 
 /* 
@@ -236,7 +201,7 @@ guBlinkRdpDL(u64 *rdp_dl_in, u64 nbytes_in,
 #define GU_PARSEGBI_NOTEXTURES		128
 */
 extern void guParseGbiDL(u64 *gbi_dl, u32 nbytes, u8 flags);
-extern void guDumpGbiDL(OSTask *tp,u8 flags);
+// extern void guDumpGbiDL(OSTask *tp,u8 flags);
 
 #define  GU_PARSE_GBI_TYPE    1
 #define  GU_PARSE_RDP_TYPE    2
@@ -263,4 +228,8 @@ void guSprite2DInit(uSprite *SpritePointer,
 		    int SourceImageOffsetS,
 		    int SourceImageOffsetT);
 
-#endif /* !_GU_H_ */
+/* Used only in Fast3DEX2 */
+void guLookAtReflect (Mtx *m, LookAt *l, float xEye, float yEye, float zEye,
+                    float xAt,  float yAt,  float zAt,
+                    float xUp,  float yUp,  float zUp);
+#endif

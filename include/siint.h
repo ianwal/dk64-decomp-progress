@@ -1,6 +1,6 @@
 #ifndef _SIINT_H
 #define _SIINT_H
-#include <os_internal.h>
+#include <ultra64.h>
 #include <rcp.h>
 
 void __osSiGetAccess(void);

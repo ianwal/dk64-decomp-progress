@@ -1,4 +1,4 @@
-#include <os_internal.h>
+#include <ultra64.h>
 #include "piint.h"
 
 s32 osPiRawStartDma(s32 direction, u32 devAddr, void *dramAddr, u32 size)

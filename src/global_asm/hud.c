@@ -616,14 +616,11 @@ void func_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FB3D0.s")
-
-/*
-// TODO: Same deal as above
+// TODO: Could use some cleanup
+// Might need a middle struct with an array of 4x15 HUDDisplays
 u8 func_806FB3D0(u8 HUDItemIndex, u8 playerIndex) {
-    return D_80754280[playerIndex].hud_item[HUDItemIndex].unk_2c;
+    return ((HUDDisplay*)&D_80754280[0].hud_item[(playerIndex * 0xF) + HUDItemIndex])->unk_2c;
 }
-*/
 
 s32 func_806FB418(void) {
     s32 kongIndex;

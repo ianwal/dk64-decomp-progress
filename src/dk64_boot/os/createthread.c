@@ -1,4 +1,4 @@
-#include <os_internal.h>
+#include <ultra64.h>
 #include <R4300.h>
 
 void __osCleanupThread(void);

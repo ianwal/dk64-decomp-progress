@@ -1424,7 +1424,8 @@ typedef struct {
     u8     unk3;
     Actor*  player_pointer;    // 0x04
     CharacterChange8Array unk8[2]; // TODO: How many elements are there here?
-    u8      pad_unknown[0x208 - 0x80];
+    f32 unk88[3][4][4]; // TODO: How many?
+    u8      pad_unknownB8[0x210 - 0x148];
     f32     look_at_eye_x; // 0x210 maybe an array?
     f32     look_at_eye_y; // 0x214
     f32     look_at_eye_z; // 0x218

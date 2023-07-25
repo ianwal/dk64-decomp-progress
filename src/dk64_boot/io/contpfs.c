@@ -1,4 +1,4 @@
-#include <os_internal.h>
+#include <ultra64.h>
 #include "controller.h"
 
 u16 __osSumcalc(u8 *ptr, int length)

@@ -1,11 +1,53 @@
 #include <ultra64.h>
 #include "functions.h"
 
-#include <os_internal.h>
+#include <ultra64.h>
 #include <rcp.h>
 #include "piint.h"
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_CA20/osEPiRawStartDma.s")
+
+/*
+#define OS_RAMROM_STACKSIZE 1024
+
+#ifndef WAIT_ON_IOBUSY
+#define WAIT_ON_IOBUSY(stat)                                \
+    stat = IO_READ(PI_STATUS_REG);                          \
+    while (stat & (PI_STATUS_IO_BUSY | PI_STATUS_DMA_BUSY)) \
+        stat = IO_READ(PI_STATUS_REG);
+#endif
+
+#define UPDATE_REG(reg, var)           \
+    if (cHandle->var != pihandle->var) \
+        IO_WRITE(reg, pihandle->var);
+
+#define EPI_SYNC(pihandle, stat, domain)                  \
+                                                          \
+    WAIT_ON_IOBUSY(stat)                                  \
+                                                          \
+    domain = pihandle->domain;                            \
+    if (__osCurrentHandle[domain] != pihandle)            \
+    {                                                     \
+        OSPiHandle *cHandle = __osCurrentHandle[domain];  \
+        if (domain == PI_DOMAIN1)                         \
+        {                                                 \
+            UPDATE_REG(PI_BSD_DOM1_LAT_REG, latency);     \
+            UPDATE_REG(PI_BSD_DOM1_PGS_REG, pageSize);    \
+            UPDATE_REG(PI_BSD_DOM1_RLS_REG, relDuration); \
+            UPDATE_REG(PI_BSD_DOM1_PWD_REG, pulse);       \
+            UPDATE_REG(PI_BSD_DOM1_PGS_REG, domain);       \
+        }                                                 \
+        else                                              \
+        {                                                 \
+            UPDATE_REG(PI_BSD_DOM2_LAT_REG, latency);     \
+            UPDATE_REG(PI_BSD_DOM2_PGS_REG, pageSize);    \
+            UPDATE_REG(PI_BSD_DOM2_RLS_REG, relDuration); \
+            UPDATE_REG(PI_BSD_DOM2_PWD_REG, pulse);       \
+            UPDATE_REG(PI_BSD_DOM2_PGS_REG, domain);       \
+        }                                                 \
+        __osCurrentHandle[domain] = pihandle;             \
+    }
+*/
 
 /*
 // TODO: I think we need the 2.0I version of EPI_SYNC

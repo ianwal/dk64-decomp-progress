@@ -21,7 +21,7 @@ us,boot,guTranslate,84,yes
 us,boot,func_80000D8C,188,yes
 us,boot,__osAiDeviceBusy,48,yes
 us,boot,osEepromLongRead,140,yes
-us,boot,func_80001700,1012,no
+us,boot,func_80001700,1012,yes
 us,boot,func_80002790,152,no
 us,boot,func_800022D4,288,yes
 us,boot,func_80002724,44,yes

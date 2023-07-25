@@ -1,5 +1,5 @@
 
-#include <os_internal.h>
+#include <ultra64.h>
 #include "osint.h"
 
 void osStopThread(OSThread *t)

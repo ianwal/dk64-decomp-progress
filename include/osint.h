@@ -1,6 +1,6 @@
 #ifndef _OSINT_H
 #define _OSINT_H
-#include <os_internal.h>
+#include <ultra64.h>
 typedef struct __OSEventState
 {
     OSMesgQueue *messageQueue;

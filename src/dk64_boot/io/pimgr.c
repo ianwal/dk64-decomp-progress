@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-#include <os_internal.h>
+#include <ultra64.h>
 #include "piint.h"
 
 // OSDevMgr __osPiDevMgr = {0};

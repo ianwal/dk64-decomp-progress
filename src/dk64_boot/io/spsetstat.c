@@ -1,4 +1,4 @@
-#include <os_internal.h>
+#include <ultra64.h>
 #include <rcp.h>
 
 void __osSpSetStatus(u32 data) {

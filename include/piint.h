@@ -1,6 +1,6 @@
 #ifndef _PIINT_H
 #define _PIINT_H
-#include <os_internal.h>
+#include <ultra64.h>
 #include <rcp.h>
 
 //https://github.com/LuigiBlood/64dd/wiki/Memory-Map

@@ -200,12 +200,6 @@ int *m;                 /* maximum lookup bits, returns actual */
    return y != 0 && g != 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/inflate/func_80001700.s")
-
-#if FALSE
-
-// TODO: Hmmmm....
-//^inflate_codes
 /* static */ int func_80001700(struct huft *tl, struct huft *td, s32 bl, s32 bd) // int inflate_codes(struct huft *tl, struct huft *td, s32 bl, s32 bd)
 {
   register unsigned e;  /* table entry flag/number of extra bits */
@@ -215,7 +209,6 @@ int *m;                 /* maximum lookup bits, returns actual */
   unsigned ml, md;      /* masks for bl and bd bits */
   register u32 b;       /* bit buffer */
   register unsigned k;  /* number of bits in bit buffer */
-  register u8 tmp;
 
   /* make local copies of globals */
   b = D_80013AB4; // b = bb; /* initialize bit buffer */
@@ -239,10 +232,7 @@ int *m;                 /* maximum lookup bits, returns actual */
     if (e == 16)                /* then it's a literal */
     {
 
-      tmp = (u8)t->v.n;
-      D_80013AC4[w++] = tmp;
-      // crc1 += tmp;  
-      // crc2 ^= tmp << (crc1 & 0x17);
+      D_80013AC4[w++] =  t->v.n;
     }
     else                        /* it's an EOB or a length */
     {//L80000EAC
@@ -271,11 +261,12 @@ int *m;                 /* maximum lookup bits, returns actual */
       
        /* do the copy */
       do{
-        tmp =  D_80013AC4[d++];
-        D_80013AC4[w++] = tmp;
-        // crc1 += tmp;
-        // crc2 ^= tmp << (crc1 & 0x17);
-      }while(--n);
+        e = n;
+        n = 0;
+        do{
+          D_80013AC4[w++] =  D_80013AC4[d++];
+        }while(--e);
+      }while(n != 0);
     }
   }
 
@@ -287,8 +278,6 @@ int *m;                 /* maximum lookup bits, returns actual */
   /* done */
   return 0;
 }
-
-#endif
 
 /* static */ int func_80001AF4(void) // int inflate_stored(void)
 /* "decompress" an inflated type 0 (stored) block. */
