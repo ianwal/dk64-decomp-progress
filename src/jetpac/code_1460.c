@@ -61,23 +61,23 @@ void func_80025460(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_800254B8.s")
 
 void func_800255D4(Gfx **arg0) {
-    Gfx *sp1C;
+    Gfx *dl;
 
-    sp1C = *arg0;
-    gDPPipeSync(sp1C++);
-    gDPSetScissor(sp1C++, G_SC_NON_INTERLACE, 32, 24, 288, 216);
-    gSPClearGeometryMode(sp1C++, -1);
-    gSPSetGeometryMode(sp1C++, G_SHADE | 0x00200000);
-    gDPSetRenderMode(sp1C++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-    gDPSetCombineMode(sp1C++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
-    gDPSetTextureFilter(sp1C++, G_TF_POINT);
-    gDPSetTexturePersp(sp1C++, G_TP_NONE);
-    gDPSetTextureConvert(sp1C++, G_TC_FILT);
-    gDPSetCycleType(sp1C++, G_CYC_1CYCLE);
-    gDPSetEnvColor(sp1C++, 0x00, 0x00, 0x00, 0x00);
+    dl = *arg0;
+    gDPPipeSync(dl++);
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, 32, 24, 288, 216);
+    gSPClearGeometryMode(dl++, -1);
+    gSPSetGeometryMode(dl++, G_SHADE | 0x00200000);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
+    gDPSetTextureFilter(dl++, G_TF_POINT);
+    gDPSetTexturePersp(dl++, G_TP_NONE);
+    gDPSetTextureConvert(dl++, G_TC_FILT);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gDPSetEnvColor(dl++, 0x00, 0x00, 0x00, 0x00);
     D_80045BD0 = 0;
     func_80025460();
-    *arg0 = sp1C;
+    *arg0 = dl;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025700.s")

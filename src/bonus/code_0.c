@@ -15,8 +15,15 @@ void func_800240F0() {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_80024158.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_80024D3C.s")
+extern Gfx D_01000118;
+
+Gfx *func_80024D3C(Gfx *arg0, s32 arg1) {
+    gSPDisplayList(arg0++, &D_01000118);
+    // TODO: Get rid of magic constants
+    gDPSetCombine(arg0++, 0x119623, 0xFF2FFFFF);
+    gDPSetPrimColor(arg0++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    return arg0;
+}
 
 extern void (*D_8002DB2C[])();
 

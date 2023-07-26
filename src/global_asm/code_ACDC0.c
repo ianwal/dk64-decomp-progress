@@ -68,8 +68,19 @@ void func_806A9124(void) {
 }
 */
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A921C.s")
+extern Gfx D_01000118;
+extern Mtx D_02000180;
+extern Mtx D_020000C0;
+
+Gfx *func_806A921C(Gfx *dl) {
+    gSPDisplayList(dl++, &D_01000118);
+    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806A92B4.s")

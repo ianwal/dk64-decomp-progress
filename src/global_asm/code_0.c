@@ -572,8 +572,13 @@ void *func_805FD030(Gfx *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE398.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE4D4.s")
+extern s32 D_80744470[];
+extern s16 D_80744490;
+
+Gfx *func_805FE4D4(Gfx *arg0) {
+    gDPSetColorImage(arg0++, 0, 2, D_80744490, osVirtualToPhysical(D_80744470[D_807444FC]));
+    return arg0;
+}
 
 void func_805FE544(u8 arg0) {
     if (D_807FBB64 & 1) {
@@ -595,6 +600,20 @@ void func_805FE544(u8 arg0) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE7B4.s")
+
+/*
+void func_805FE7B4(Gfx *arg0, s32 arg1, s32 *arg2, u8 arg3) {
+    void *var_v0;
+
+    var_v0 = arg0;
+    if (arg3) {
+        gSPSetGeometryMode(arg0++, 0);
+    }
+    gSPEndDisplayList(arg0++);
+    // TODO: What is this doing?
+    *arg2 = (((var_v0 + 8) - arg1) - 0xDB0) >> 3;
+}
+*/
 
 void func_805FE7FC(void) {
     s32 *mapGeometry;

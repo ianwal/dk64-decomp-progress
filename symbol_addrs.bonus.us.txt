@@ -24,3 +24,5 @@ extra_player_info_pointer = 0x807FD580;
 D_8002DDA8 = 0x8002DDA8;
 
 D_8071FFD4 = 0x8071FFD4;
+
+D_01000118 = 0x1000118;

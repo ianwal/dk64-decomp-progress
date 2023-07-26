@@ -723,8 +723,16 @@ void func_8002AD8C(void) {
     }
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AE00.s")
+void func_8002AE00(Gfx **arg0) {
+    Gfx *dl = *arg0;
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_SHADE | G_SHADING_SMOOTH);
+    gDPSetCombineMode(dl++, G_CC_BLENDPEDECALA, G_CC_BLENDPEDECALA)
+    gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2)
+    *arg0 = dl;
+}
 
 void func_8002AE94(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
     D_80045BE0 = arg0;

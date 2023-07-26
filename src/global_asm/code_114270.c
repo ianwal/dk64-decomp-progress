@@ -617,33 +617,25 @@ void func_80713270(void) {
     }
 }
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807132DC.s")
 
-s32 *func_805FD030(s32 *arg0);
-s32 *func_807132DC(s32 *arg0); // get displaylist?
+extern Gfx D_01000118;
+extern Mtx D_020000C0;
+extern Mtx D_02000180;
 
 /*
-// TODO: DL macros
-s32 *func_807132DC(s32 *arg0) {
-    s32 *temp_v0;
+Gfx *func_807132DC(Gfx *arg0) {
+    Gfx *dl;
 
-    temp_v0 = func_805FD030(arg0); // displayList.start()
-    temp_v0[0] = 0x01000118;
-    temp_v0[1] = 0xDA380007;
-    temp_v0[2] = 0xDE000000;
-    temp_v0[3] = 0x020000C0;
-    temp_v0[4] = 0xDA380003;
-    temp_v0[5] = 0x02000180;
-    temp_v0[6] = 0xE7000000;
-    temp_v0[7] = 0x00000000;
-    temp_v0[8] = 0xFFFFF7FB;
-    temp_v0[9] = 0xFC11FE23;
-    temp_v0[0xA] = 0xFA000000;
-    temp_v0[0xB] = 0xFFFFFFFF;
-    temp_v0[0xC] = 0x004D4394;
-    temp_v0[0xD] = 0xED028028;
-    return &temp_v0[0xE];
+    dl = func_805FD030(arg0);
+    gSPDisplayList(dl++, &D_01000118);
+    gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    gDPSetColorImage(dl++, 7, G_IM_SIZ_32b, 2044, 0xFC11FE23);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, 10, 10, 309, 229);
 }
 */
 
@@ -671,8 +663,18 @@ void func_807138A4(s32 *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807138CC.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713AA8.s")
+extern Gfx D_01000118;
+extern Mtx D_020000C0;
+
+Gfx *func_80713AA8(Gfx *dl) {
+    gDPPipeSync(dl++);
+    gSPDisplayList(dl++, &D_01000118);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713B40.s")

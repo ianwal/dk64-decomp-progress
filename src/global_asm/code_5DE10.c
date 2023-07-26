@@ -32,5 +32,15 @@ u8 func_80659190(void) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5DE10/func_8065919C.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5DE10/func_806592B4.s")
+void *func_8065919C(void *);
+extern u8 D_807F7360;
+
+void *func_806592B4(Gfx *arg0) {
+    if (D_807F7360 != 0) {
+        gSPSetGeometryMode(arg0++, 0x10000);
+        arg0 = func_8065919C(arg0);
+    } else {
+        gSPGeometryMode(arg0++, 0x10000, 0);
+    }
+    return arg0;
+}

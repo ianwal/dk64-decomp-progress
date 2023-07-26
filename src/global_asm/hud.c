@@ -98,16 +98,17 @@ void func_806F8170(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
         func_806F8004(1.5 - (D_80754280->hud_item[arg0].hud_count * 7), 26.0f, arg1, arg2, arg3);
         return;
     }
-    *arg1 = D_80754280[0].hud_item[arg0].unk_10;
-    *arg2 = D_80754280[0].hud_item[arg0].unk_14;
-    *arg3 = D_80754280[0].hud_item[arg0].unk_18;
+    *arg1 = D_80754280->hud_item[arg0].unk_10;
+    *arg2 = D_80754280->hud_item[arg0].unk_14;
+    *arg3 = D_80754280->hud_item[arg0].unk_18;
 }
 
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F8278.s")
 
+void func_806F8278(u8 playerIndex);
+
 /*
-// TODO: Not sure why this doesn't match
-// Similar mismatch to func_806FB370, and func_806FB3D0
 void func_806F8278(u8 playerIndex) {
     s32 levelIndex;
     s32 totalGBs;
@@ -119,7 +120,7 @@ void func_806F8278(u8 playerIndex) {
             totalGBs += D_807FC950[playerIndex].character_progress[kong].golden_bananas[levelIndex];
         }
     }
-    D_80754280[playerIndex].hud_item[9].hud_count = totalGBs;
+    D_80754280->hud_item[playerIndex * 0xF + 9].hud_count = totalGBs;
 }
 */
 
@@ -173,15 +174,15 @@ void func_806F8BC4(s32 arg0, u8 arg1, s32 arg2) {
     if ((cc_number_of_players < 2) && (!gameIsInDKTVMode())) {
         // TODO: Can this syntax be simplified
         if ((arg0 != 8) || (func_806F8BC4(9, arg1, arg2 + 0xA), (current_map != MAP_SNIDES_HQ))) {
-            D_80754280[0].hud_item[arg0].unk_24 = arg1;
-            if (D_80754280[0].hud_item[arg0].hud_state == 0) {
-                D_80754280[0].hud_item[arg0].counter_timer = arg2;
+            D_80754280->hud_item[arg0].unk_24 = arg1;
+            if (D_80754280->hud_item[arg0].hud_state == 0) {
+                D_80754280->hud_item[arg0].counter_timer = arg2;
             } else {
-                D_80754280[0].hud_item[arg0].counter_timer = 0;
+                D_80754280->hud_item[arg0].counter_timer = 0;
             }
-            D_80754280[0].hud_item[arg0].hud_state = 1;
-            if (D_80754280[0].hud_item[arg0].freeze_timer == 0) {
-                D_80754280[0].hud_item[arg0].freeze_timer = arg1 != 0;
+            D_80754280->hud_item[arg0].hud_state = 1;
+            if (D_80754280->hud_item[arg0].freeze_timer == 0) {
+                D_80754280->hud_item[arg0].freeze_timer = arg1 != 0;
             }
         }
     }
@@ -193,7 +194,7 @@ void func_806F8CB0(s32 arg0) {
 
     // GB Count (Character)?
     if (arg0 == 8) {
-        phi_v0 = D_80754280[0].hud_item[arg0].counter_pointer;
+        phi_v0 = D_80754280->hud_item[arg0].counter_pointer;
         phi_v1 = 0;
         while (phi_v0) {
             phi_v0->unkC = phi_v1;
@@ -204,8 +205,8 @@ void func_806F8CB0(s32 arg0) {
 }
 
 void func_806F8CFC(s32 arg0, s32 arg1) {
-    D_80754280[0].hud_item[arg0].counter_timer = 0;
-    D_80754280[0].hud_item[arg0].freeze_timer = 0;
+    D_80754280->hud_item[arg0].counter_timer = 0;
+    D_80754280->hud_item[arg0].freeze_timer = 0;
     if (arg0 == 8) {
         func_806F8D58(9, 0);
     }
@@ -265,33 +266,32 @@ s32 func_806F8EB4() {
 // Jumptable, getMaxItemCapacity(HUDItemIndex, playerIndex)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F8EDC.s")
 
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806F91B4.s")
 
 /*
-// TODO: Very close :eyes:
 void func_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
-    s32 flagIndex;
-    CharacterProgress *sp48;
     HUDDisplay *HUDItem;
-    PlayerHUD *playerHUD;
-    s32 amountBefore;
+    CharacterProgress *sp48;
     s32 maxItemCapacity;
-    u8 levelIndex;
-    u16 *temp_v1;
+    s32 levelIndex;
+    s32 flagIndex;
+    s32 amountBefore; // 38
+    s32 pad;
+    s32 pad2;
 
     sp48 = &D_807FC950[playerIndex].character_progress[func_806C8DE0(playerIndex)];
-    playerHUD = func_806F7FD0(playerIndex);
-    HUDItem = &playerHUD->hud_item[HUDItemIndex];
-    if ((HUDItem->unk_2d == 0 || amount >= 0) && HUDItem->unk_2c == 0) {
+    HUDItem = func_806F7FD0(playerIndex);
+    if ((HUDItem[HUDItemIndex].unk_2d == 0 || amount >= 0) && HUDItem[HUDItemIndex].unk_2c == 0) {
         if ((HUDItemIndex != 0xA) && (HUDItemIndex != 0xC)) {
-            if ((*HUDItem->actual_count_pointer + amount) < 0) {
-                *HUDItem->actual_count_pointer = 0;
+            if ((*HUDItem[HUDItemIndex].actual_count_pointer + amount) < 0) {
+                *HUDItem[HUDItemIndex].actual_count_pointer = 0;
             } else {
-                *HUDItem->actual_count_pointer += amount;
+                *HUDItem[HUDItemIndex].actual_count_pointer += amount;
                 // getMaxItemCapacity(HUDItemIndex, playerIndex)
                 maxItemCapacity = func_806F8EDC(HUDItemIndex, playerIndex);
-                if (maxItemCapacity < *HUDItem->actual_count_pointer) {
-                    *HUDItem->actual_count_pointer = maxItemCapacity;
+                if (maxItemCapacity < *HUDItem[HUDItemIndex].actual_count_pointer) {
+                    *HUDItem[HUDItemIndex].actual_count_pointer = maxItemCapacity;
                 }
                 if (HUDItemIndex == 8 && (func_805FEF10(&flagIndex) != 0)) {
                     setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
@@ -375,8 +375,8 @@ void func_806F9518(s32 arg0) {
     GlobalASMStruct71 *phi_s1;
     GlobalASMStruct72 **next;
 
-    D_80754280[0].hud_item[arg0].hud_state = 0;
-    phi_s1 = D_80754280[0].hud_item[arg0].counter_pointer;
+    D_80754280->hud_item[arg0].hud_state = 0;
+    phi_s1 = D_80754280->hud_item[arg0].counter_pointer;
     while (phi_s1) {
         next = &phi_s1->unk18;
         if (phi_s1->unk0 == 1) {
@@ -507,11 +507,11 @@ void func_806F9CD0(s32 arg0) {
     GlobalASMStruct71 **temp_s0;
     GlobalASMStruct71 *sp30;
 
-    temp_s0 = &D_80754280[0].hud_item[arg0].counter_pointer;
+    temp_s0 = &D_80754280->hud_item[arg0].counter_pointer;
     func_806F9608(temp_s0);
     sp30 = (*temp_s0)->unk14;
     func_806F96CC(*temp_s0, arg0);
-    func_806F9744(*temp_s0, arg0, D_80754280[0].hud_item[arg0].screen_x, D_80754280[0].hud_item[arg0].screen_y, 0);
+    func_806F9744(*temp_s0, arg0, D_80754280->hud_item[arg0].screen_x, D_80754280->hud_item[arg0].screen_y, 0);
     func_806F8DC4(sp30, 0, arg0);
     (*temp_s0)->unk10 = 0;
 }
@@ -571,8 +571,8 @@ s32 func_806FA7A4(s32 arg0) {
 extern s32 D_80754288;
 
 void func_806FAC64(u8 arg0) {
-    D_80754280[0].hud_item[0xD].actual_count_pointer = &D_807FC950[0].character_progress[arg0].coloured_bananas_fed_to_tns[getLevelIndex(D_8076A0AB, 0)];
-    D_80754280[0].hud_item[0xD].hud_count = *D_80754280[0].hud_item[0xD].actual_count_pointer;
+    D_80754280->hud_item[0xD].actual_count_pointer = &D_807FC950[0].character_progress[arg0].coloured_bananas_fed_to_tns[getLevelIndex(D_8076A0AB, 0)];
+    D_80754280->hud_item[0xD].hud_count = *D_80754280->hud_item[0xD].actual_count_pointer;
     D_80754288 = arg0;
 }
 
@@ -586,7 +586,7 @@ void func_806FB218(void) {
 
     func_806FAFE4();
     for (i = 0; i < 0xF; i++) {
-        if (D_80754280[0].hud_item[i].freeze_timer != 0) {
+        if (D_80754280->hud_item[i].freeze_timer != 0) {
             func_806F8CFC(i, 0);
         }
     }
@@ -601,25 +601,17 @@ void func_806FB290() {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FB2B8.s")
 
 // setHudItemAsInfinite(hudItemIndex, playerIndex, unknownValue)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_806FB370.s")
-
-/*
-// TODO: Something up with datatypes or struct sizes?
-// Similar mismatch to func_806F8278, and func_806FB3D0
 void func_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2) {
     HUDDisplay *temp_v0;
 
-    temp_v0 = &D_80754280[playerIndex].hud_item[HUDItemIndex];
+    temp_v0 = &D_80754280->hud_item[playerIndex * 0xF + HUDItemIndex];
     if (temp_v0->unk_2d == 0) {
         temp_v0->unk_2c = arg2;
     }
 }
-*/
 
-// TODO: Could use some cleanup
-// Might need a middle struct with an array of 4x15 HUDDisplays
 u8 func_806FB3D0(u8 HUDItemIndex, u8 playerIndex) {
-    return ((HUDDisplay*)&D_80754280[0].hud_item[(playerIndex * 0xF) + HUDItemIndex])->unk_2c;
+    return D_80754280->hud_item[playerIndex * 0xF + HUDItemIndex].unk_2c;
 }
 
 s32 func_806FB418(void) {

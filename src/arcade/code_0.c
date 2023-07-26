@@ -13,7 +13,6 @@ extern Gfx *func_806FD490(Gfx *, s32, s32, s32, s32 *);
 extern void func_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 extern void func_8070E8F0(Gfx**, Sprite*);
 
-
 void func_8002419C(void *arg0, Gfx **arg1);
 void func_80024940(Gfx **gpp);
 void func_80024CF8(Gfx **arg0);
@@ -27,7 +26,7 @@ void func_800311E0(void);
 
 /* .code */
 void func_80024000(void) {
-    Gfx *sp2C;
+    Gfx *dl;
     s32 sp28;
 
     func_8060A9BC();
@@ -37,35 +36,35 @@ void func_80024000(void) {
     D_8076A048 = D_807444FC * 0x11B0 + &D_80767CE8;
     func_8060AC7C();
     if (((D_8076A0B1 & 1) != 0) && (D_807FD888 == 31.0f)) {
-        sp2C = D_8076A050[D_807444FC];
+        dl = D_8076A050[D_807444FC];
     } else {
-        func_8002419C(D_8076A048, &sp2C);
+        func_8002419C(D_8076A048, &dl);
     }
-    sp2C = func_80704484(sp2C, 0);
+    dl = func_80704484(dl, 0);
     if (is_cutscene_active != 3) {
         sp28 = D_8076A048 + 0xDB0;
-        func_805FE71C(sp2C, D_807444FC, &D_8076A088, 0);
+        func_805FE71C(dl, D_807444FC, &D_8076A088, 0);
         func_805FE7B4(sp28, D_8076A048, &D_8076A08C, 1);
         return;
     }
-    func_805FE71C(sp2C, D_807444FC, &D_8076A088, 1);
+    func_805FE71C(dl, D_807444FC, &D_8076A088, 1);
 }
 
 void func_8002419C(void *arg0, Gfx **arg1) {
-    Gfx *sp44 = (Gfx *)D_8076A050[D_807444FC];
-    gSPSegment(sp44++, 0x00, NULL);
-    gSPSegment(sp44++, 0x02, osVirtualToPhysical(arg0));
-    gSPSegment(sp44++, 0x01, osVirtualToPhysical(D_8076A080));
-    gSPDisplayList(sp44++, &D_1000090);
-    gSPDisplayList(sp44++, &D_1000040);
-    gDPPipeSync(sp44++);
-    sp44 = func_805FE4D4(sp44);
-    gDPSetColorDither(sp44++,G_CD_MAGICSQ);
-    gDPSetAlphaDither(sp44++,G_AD_PATTERN);
-    gDPSetFillColor(sp44++, 0x00050005);
-    gDPFillRectangle(sp44++, 0, 0, 319, 239);
-    func_80024940(&sp44);
-    *arg1 = sp44;
+    Gfx *dl = (Gfx *)D_8076A050[D_807444FC];
+    gSPSegment(dl++, 0x00, NULL);
+    gSPSegment(dl++, 0x02, osVirtualToPhysical(arg0));
+    gSPSegment(dl++, 0x01, osVirtualToPhysical(D_8076A080));
+    gSPDisplayList(dl++, &D_1000090);
+    gSPDisplayList(dl++, &D_1000040);
+    gDPPipeSync(dl++);
+    dl = func_805FE4D4(dl);
+    gDPSetColorDither(dl++,G_CD_MAGICSQ);
+    gDPSetAlphaDither(dl++,G_AD_PATTERN);
+    gDPSetFillColor(dl++, 0x00050005);
+    gDPFillRectangle(dl++, 0, 0, 319, 239);
+    func_80024940(&dl);
+    *arg1 = dl;
 }
 
 void func_80024320(void) {
@@ -614,23 +613,23 @@ void func_80025960(Gfx **arg0) {
 }
 
 void func_800259D0(Gfx **arg0) {
-    Gfx *sp4C = *arg0;
-    gDPSetAlphaCompare(sp4C++, G_AC_NONE);
-    gDPSetTexturePersp(sp4C++, G_TP_NONE);
-    gDPSetTextureFilter(sp4C++, G_TF_BILERP);
-    gDPSetTextureConvert(sp4C++, G_TC_FILT);
-    gDPSetTextureDetail(sp4C++, G_TD_CLAMP);
-    gDPSetTextureLOD(sp4C++, G_TL_TILE);
-    gDPSetTextureLUT(sp4C++, G_TT_NONE);
-    gDPSetPrimColor(sp4C++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    gDPSetRenderMode(sp4C++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-    gDPSetCombineMode(sp4C++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
-    gDPSetScissor(sp4C++, G_SC_NON_INTERLACE, 48, 36, 272, 232);
+    Gfx *dl = *arg0;
+    gDPSetAlphaCompare(dl++, G_AC_NONE);
+    gDPSetTexturePersp(dl++, G_TP_NONE);
+    gDPSetTextureFilter(dl++, G_TF_BILERP);
+    gDPSetTextureConvert(dl++, G_TC_FILT);
+    gDPSetTextureDetail(dl++, G_TD_CLAMP);
+    gDPSetTextureLOD(dl++, G_TL_TILE);
+    gDPSetTextureLUT(dl++, G_TT_NONE);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, 48, 36, 272, 232);
 
     switch(D_8004C724) {
         case 0://L80025B68
             if (D_8004C6DC & 0x200) {
-                func_80026680(&sp4C);
+                func_80026680(&dl);
             }
             break;
         case 1:
@@ -638,26 +637,26 @@ void func_800259D0(Gfx **arg0) {
         case 5://L80025B88
             switch(arcade_background_visual) {
                 case 1:
-                    func_800268AC(&sp4C);
+                    func_800268AC(&dl);
                     break;
                 case 2:
-                    func_80026EF4(&sp4C);
+                    func_80026EF4(&dl);
                     break;
                 case 3:
-                    func_800275E8(&sp4C);
+                    func_800275E8(&dl);
                     break;
                 default:
-                    func_80027A38(&sp4C);
+                    func_80027A38(&dl);
                     break;
             }
             break;
     }
-    *arg0 = sp4C;
+    *arg0 = dl;
 }
 
 void func_80025C08(Gfx **arg0, s32 arg1, s32 arg2, s32 arg3) {
     int i;
-    Gfx *sp60;
+    Gfx *dl;
 
     D_8004C719 = 8;
     D_8004C71A = 4;
@@ -689,40 +688,40 @@ void func_80025C08(Gfx **arg0, s32 arg1, s32 arg2, s32 arg3) {
         D_8004C719, D_8004C719, 3, G_IM_FMT_RGBA, 
         G_IM_SIZ_16b, 0, 0
     );
-    sp60 = *arg0;
-    func_8070E8F0(&sp60, D_8004BB30 + D_807444FC);
+    dl = *arg0;
+    func_8070E8F0(&dl, D_8004BB30 + D_807444FC);
     func_8070F2C8(0x400, D_8004C6D6, 0, 0);
 
     for (i = 0; i < arg3 / 4; i++) {
-        func_8070F2FC(&sp60, 4 * arg1, 4.0 * (f64)(arg2 + 4 * i + 8));
+        func_8070F2FC(&dl, 4 * arg1, 4.0 * (f64)(arg2 + 4 * i + 8));
     }//L80025ED8
     D_8004C71A = arg3 % 4;
     if (D_8004C71A) {
         switch(D_8004C71A) {
             case 1:
-                func_8070E8F0(&sp60, D_8004BB60 + D_807444FC);
+                func_8070E8F0(&dl, D_8004BB60 + D_807444FC);
                 break;
             case 2:
-                func_8070E8F0(&sp60, D_8004BB90 + D_807444FC);
+                func_8070E8F0(&dl, D_8004BB90 + D_807444FC);
                 break;
             case 3:
-                func_8070E8F0(&sp60, D_8004BBC0 + D_807444FC);
+                func_8070E8F0(&dl, D_8004BBC0 + D_807444FC);
                 break;
         }
         func_8070F2C8(0x400, D_8004C6D6, 0, 0);
-        func_8070F2FC(&sp60, 4 * arg1, 4.0 * (f64)(arg2 + 4 * i + 8));
+        func_8070F2FC(&dl, 4 * arg1, 4.0 * (f64)(arg2 + 4 * i + 8));
     }
-    *arg0 = sp60;
+    *arg0 = dl;
 }
 
 void func_80026050(Gfx **arg0) {
-    Gfx *sp2C;
+    Gfx *dl;
     s32 sp28;
     
-    sp2C = *arg0;
-    func_80025C08(&sp2C, 0x70, 0x1C, 0x2E);
-    func_80025C08(&sp2C, 0x80, 0x1C, 0x2E);
-    func_80025C08(&sp2C, 0xB0, 0x38, 0x12);
+    dl = *arg0;
+    func_80025C08(&dl, 0x70, 0x1C, 0x2E);
+    func_80025C08(&dl, 0x80, 0x1C, 0x2E);
+    func_80025C08(&dl, 0xB0, 0x38, 0x12);
     if (D_8004C724 == 1) {
         if (D_8004C6DC < 0x190) {
             sp28 = 0x82 - ((D_8004C6DC-0x3C)/0x14)*8;
@@ -731,30 +730,30 @@ void func_80026050(Gfx **arg0) {
             }
             if (sp28 < 0x22)
                 sp28 = 0x22;
-            func_80025C08(&sp2C, 0xA0, 0x51, sp28);
-            func_80025C08(&sp2C, 0xb0, 0x51, sp28);
+            func_80025C08(&dl, 0xA0, 0x51, sp28);
+            func_80025C08(&dl, 0xb0, 0x51, sp28);
         }
     }//L80026134
     else {
-        func_80025C08(&sp2C, 0x88, 0x50, 0x4);
-        func_80025C08(&sp2C, 0x88, 0x5b, 0xc);
-        func_80025C08(&sp2C, 0xe8, 0x53, 0xe);
-        func_80025C08(&sp2C, 0x50, 0x70, 0xe);
-        func_80025C08(&sp2C, 0x78, 0x6e, 0x12);
-        func_80025C08(&sp2C, 0xd8, 0x69, 0x8);
-        func_80025C08(&sp2C, 0xd8, 0x7d, 0x8);
-        func_80025C08(&sp2C, 0x70, 0x87, 0x5);
-        func_80025C08(&sp2C, 0x70, 0x99, 0x8);
-        func_80025C08(&sp2C, 0xA8, 0x89, 0x16);
-        func_80025C08(&sp2C, 0xE8, 0x8D, 0xE);
-        func_80025C08(&sp2C, 0x50, 0xAA, 0xE);
-        func_80025C08(&sp2C, 0x90, 0xA6, 0x15);
-        func_80025C08(&sp2C, 0x80, 0xC1, 0x4);
-        func_80025C08(&sp2C, 0x80, 0xD1, 0x8);
-        func_80025C08(&sp2C, 0xE8, 0xC7, 0xE);
+        func_80025C08(&dl, 0x88, 0x50, 0x4);
+        func_80025C08(&dl, 0x88, 0x5b, 0xc);
+        func_80025C08(&dl, 0xe8, 0x53, 0xe);
+        func_80025C08(&dl, 0x50, 0x70, 0xe);
+        func_80025C08(&dl, 0x78, 0x6e, 0x12);
+        func_80025C08(&dl, 0xd8, 0x69, 0x8);
+        func_80025C08(&dl, 0xd8, 0x7d, 0x8);
+        func_80025C08(&dl, 0x70, 0x87, 0x5);
+        func_80025C08(&dl, 0x70, 0x99, 0x8);
+        func_80025C08(&dl, 0xA8, 0x89, 0x16);
+        func_80025C08(&dl, 0xE8, 0x8D, 0xE);
+        func_80025C08(&dl, 0x50, 0xAA, 0xE);
+        func_80025C08(&dl, 0x90, 0xA6, 0x15);
+        func_80025C08(&dl, 0x80, 0xC1, 0x4);
+        func_80025C08(&dl, 0x80, 0xD1, 0x8);
+        func_80025C08(&dl, 0xE8, 0xC7, 0xE);
     }
     //L8002626C
-    *arg0 = sp2C;
+    *arg0 = dl;
 }
 
 void func_8002628C(Gfx **arg0) {
@@ -780,52 +779,52 @@ void func_8002628C(Gfx **arg0) {
 }
 
 void func_800263EC(Gfx **arg0) {
-    Gfx *sp24;
-    sp24 = *arg0;
-    func_80025C08(&sp24, 0x70, 0x1C, 0x31);
-    func_80025C08(&sp24, 0x80, 0x1C, 0x31);
-    func_80025C08(&sp24, 0xB0, 0x38, 0x15);
-    func_80025C08(&sp24, 0xD0, 0x54, 0x15);
-    func_80025C08(&sp24, 0x100, 0x62, 0x1C);
-    func_80025C08(&sp24, 0xB8, 0x77, 0x15);
-    func_80025C08(&sp24, 0x40, 0x7E, 0x2A);
-    func_80025C08(&sp24, 0x70, 0x7E, 0x38);
-    func_80025C08(&sp24, 0x80, 0x7E, 0x38);
-    func_80025C08(&sp24, 0xE8, 0x85, 0x15);
-    func_80025C08(&sp24, 0x100, 0xA8, 0xE);
-    func_80025C08(&sp24, 0x38, 0xAF, 0x1C);
-    *arg0 = sp24;
+    Gfx *dl;
+    dl = *arg0;
+    func_80025C08(&dl, 0x70, 0x1C, 0x31);
+    func_80025C08(&dl, 0x80, 0x1C, 0x31);
+    func_80025C08(&dl, 0xB0, 0x38, 0x15);
+    func_80025C08(&dl, 0xD0, 0x54, 0x15);
+    func_80025C08(&dl, 0x100, 0x62, 0x1C);
+    func_80025C08(&dl, 0xB8, 0x77, 0x15);
+    func_80025C08(&dl, 0x40, 0x7E, 0x2A);
+    func_80025C08(&dl, 0x70, 0x7E, 0x38);
+    func_80025C08(&dl, 0x80, 0x7E, 0x38);
+    func_80025C08(&dl, 0xE8, 0x85, 0x15);
+    func_80025C08(&dl, 0x100, 0xA8, 0xE);
+    func_80025C08(&dl, 0x38, 0xAF, 0x1C);
+    *arg0 = dl;
 }
 
 void func_80026518(Gfx **arg0) {
-    Gfx *sp24;
-    sp24 = *arg0;
-    func_80025C08(&sp24, 0x70, 0x1C, 0x31);
-    func_80025C08(&sp24, 0x80, 0x1C, 0x31);
-    func_80025C08(&sp24, 0xB0, 0x38, 0x15);
-    func_80025C08(&sp24, 0x48, 0xBD, 0x1C);
-    func_80025C08(&sp24, 0x80, 0xBD, 0x1C);
-    func_80025C08(&sp24, 0xB8, 0xBD, 0x1C);
-    func_80025C08(&sp24, 0xF0, 0xBD, 0x1C);
-    func_80025C08(&sp24, 0x70, 0x9A, 0x1C);
-    func_80025C08(&sp24, 0xC0, 0x9A, 0x1C);
-    func_80025C08(&sp24, 0x48, 0x77, 0x1C);
-    func_80025C08(&sp24, 0x80, 0x77, 0x1C);
-    func_80025C08(&sp24, 0xB8, 0x77, 0x1C);
-    func_80025C08(&sp24, 0xF0, 0x77, 0x1C);
-    func_80025C08(&sp24, 0x40, 0x62, 0xE);
-    func_80025C08(&sp24, 0xF8, 0x62, 0xE);
-    *arg0 = sp24;
+    Gfx *dl;
+    dl = *arg0;
+    func_80025C08(&dl, 0x70, 0x1C, 0x31);
+    func_80025C08(&dl, 0x80, 0x1C, 0x31);
+    func_80025C08(&dl, 0xB0, 0x38, 0x15);
+    func_80025C08(&dl, 0x48, 0xBD, 0x1C);
+    func_80025C08(&dl, 0x80, 0xBD, 0x1C);
+    func_80025C08(&dl, 0xB8, 0xBD, 0x1C);
+    func_80025C08(&dl, 0xF0, 0xBD, 0x1C);
+    func_80025C08(&dl, 0x70, 0x9A, 0x1C);
+    func_80025C08(&dl, 0xC0, 0x9A, 0x1C);
+    func_80025C08(&dl, 0x48, 0x77, 0x1C);
+    func_80025C08(&dl, 0x80, 0x77, 0x1C);
+    func_80025C08(&dl, 0xB8, 0x77, 0x1C);
+    func_80025C08(&dl, 0xF0, 0x77, 0x1C);
+    func_80025C08(&dl, 0x40, 0x62, 0xE);
+    func_80025C08(&dl, 0xF8, 0x62, 0xE);
+    *arg0 = dl;
 }
 
 void func_80026680(Gfx **gpp) {
     int i;
     int j;
-    Gfx *sp94;
+    Gfx *dl;
     s32 sp64[0xC] = D_8004A798;
     s32 word;
 
-    sp94 = *gpp;
+    dl = *gpp;
     D_8004C719 = 8;
     D_8004C71A = 8;
     D_8004C6D4 = 0x400;
@@ -835,17 +834,17 @@ void func_80026680(Gfx **gpp) {
     func_80005A90(&D_8004BB00[D_807444FC], D_8004C6D0, 0, 
         D_8004C719, D_8004C719, D_8004C71A, 0, 2, 0, 0
     );
-    func_8070E8F0(&sp94, &D_8004BB00[D_807444FC]);
+    func_8070E8F0(&dl, &D_8004BB00[D_807444FC]);
     func_8070F2C8(0x400, D_8004C6D4, 0, 0);
     for (i = 0; i < 0xC; i++) {//L80026800
         word = sp64[i];
         for (j = 0; j < 0x19; j++) {//L8002680C
             if ((1 << j) & word) {
-                func_8070F2FC(&sp94,  0x3E0 - j * 0x20, ((i * 8 + 0x3F) * 4.0));
+                func_8070F2FC(&dl,  0x3E0 - j * 0x20, ((i * 8 + 0x3F) * 4.0));
             }
         }
     }
-    *gpp = sp94;
+    *gpp = dl;
 }
 
 #ifndef NONMATCHING
@@ -1599,7 +1598,6 @@ s32 func_8002A408(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     return 0;
 }
 
-
 s32 func_8002A474(s32 arg0, s32 arg1) {
     if (func_8002A408(arg0, arg1, 0x84, 0xD4, 0xEB, 0xF7)) {
         return 1;
@@ -1794,7 +1792,7 @@ s32 func_8002AC54(s32 arg0, s32 arg1) {
     return 0;
 }
 
-s32  func_8002AF2C(s32 arg0, s32 arg1) {
+s32 func_8002AF2C(s32 arg0, s32 arg1) {
     if (arcade_background_visual == 1) {
         return func_8002A474(arg0, arg1);
     }

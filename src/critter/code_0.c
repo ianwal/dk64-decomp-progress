@@ -385,20 +385,20 @@ extern Gfx D_01000118;
 extern f32 D_02000180[];
 extern f32 D_02000200[];
 
-Gfx *func_800257D4(Gfx *arg0) {
-  gSPDisplayList(arg0++, &D_01000118);
-  gDPPipeSync(arg0++);
-  gDPSetCycleType(arg0++, G_CYC_1CYCLE);
-  gSPClearGeometryMode(arg0++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | 
+Gfx *func_800257D4(Gfx *dl) {
+  gSPDisplayList(dl++, &D_01000118);
+  gDPPipeSync(dl++);
+  gDPSetCycleType(dl++, G_CYC_1CYCLE);
+  gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | 
                                   G_FOG | G_LIGHTING | G_TEXTURE_GEN | 
                                   G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | 
                                   G_CLIPPING | 0x0040F9FA);
-  gSPMatrix(arg0++, 
+  gSPMatrix(dl++, 
             (&character_change_array[cc_player_index].unk88[D_807444FC]), 
             G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-  gSPMatrix(arg0++, &D_02000200, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-  gSPMatrix(arg0++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-  return arg0;
+  gSPMatrix(dl++, &D_02000200, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+  gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+  return dl;
 }
 
 void func_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {

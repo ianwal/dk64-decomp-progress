@@ -1073,10 +1073,6 @@ void func_80030250(void) {
 
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80030258.s")
-
-/*
 extern Gfx **D_1000118;
 extern Mtx D_20000C0;
 
@@ -1085,12 +1081,11 @@ void func_80030258(Gfx *dl, s32 arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-    gDPSetPrimColor(dl++, 0, 0, 0xBF, 0x80, 0x00, 0x00);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     func_80030340(arg1, 1, dl, 0);
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80030340.s")
