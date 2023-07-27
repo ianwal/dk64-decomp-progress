@@ -140,8 +140,18 @@ void func_806FDF54(f32 *arg0, f32 *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FEDB0.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FEF7C.s")
+s32 func_8068C5A8(Gfx *, s32, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32);
+extern f32 D_8075DE70;
+
+void func_806FEF7C(s32 arg0, Actor *arg1) {
+    Gfx *dl;
+
+    dl = func_806FEDB0(arg0, arg1->PaaD->unk1A4);
+    gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
+
+    func_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, D_8075DE70);
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF01C.s")
@@ -162,8 +172,18 @@ void func_806FF32C(s32 arg0, Actor *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF75C.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FFB2C.s")
+extern f64 D_8075DE78;
+
+void func_806FFB2C(s32 arg0, Actor *arg1) {
+    f32 sp3C;
+    Gfx *dl;
+
+    sp3C = arg1->control_state_progress * D_8075DE78;
+    dl = func_806FEDB0(arg0, arg1->PaaD->unk1A4, arg1);
+    gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
+    func_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, sp3C);
+}
 
 // Hmm, weird m2c errors
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FFC04.s")

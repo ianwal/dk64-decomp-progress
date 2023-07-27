@@ -617,27 +617,22 @@ void func_80713270(void) {
     }
 }
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_807132DC.s")
-
 extern Gfx D_01000118;
 extern Mtx D_020000C0;
 extern Mtx D_02000180;
 
-/*
 Gfx *func_807132DC(Gfx *arg0) {
     Gfx *dl;
-
     dl = func_805FD030(arg0);
     gSPDisplayList(dl++, &D_01000118);
     gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gDPPipeSync(dl++);
-    gDPSetColorImage(dl++, 7, G_IM_SIZ_32b, 2044, 0xFC11FE23);
+    gDPSetCombineMode(dl++, G_CC_MODULATEI_PRIM, G_CC_MODULATEI_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, 10, 10, 309, 229);
+    return dl;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_8071338C.s")

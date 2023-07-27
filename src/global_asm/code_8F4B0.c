@@ -294,7 +294,7 @@ typedef struct {
 extern u8 D_807501E0;
 extern TempCBig D_807FC630[];
 
-// Displaylist stuff
+// Displaylist stuff, uses TempCBig
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068C20C.s")
 
 void func_8068C2EC(void) {
@@ -335,11 +335,48 @@ void func_8068C350(void *arg0, Actor *arg1, u8 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068D9DC.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068DAF4.s")
+extern s32 D_80759F3C; // TODO: Type
+extern s32 D_80759F40; // TODO: Type
+extern Gfx D_01000118;
 
-// Displaylist stuff
+void func_8068DAF4(Gfx *dl, u8 *arg1) {
+    s32 pad;
+    s32 sp38; // TODO: Type
+
+    gSPDisplayList(dl++, &D_01000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
+
+    func_800031E0(&sp38, &D_80759F3C, *arg1);
+    func_806FC530(dl, 3, 0x104, 0x50, &sp38, 1);
+}
+
+// Displaylist stuff, regalloc, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068DBA4.s")
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 *unk14;
+} Struct8068DBA4_arg1;
+
+/*
+void func_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
+    s32 pad2;
+    s32 pad;
+    s32 sp34;
+
+    gSPDisplayList(dl++, &D_01000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
+
+    func_800031E0(&sp34, &D_80759F40, arg1->unk14);
+    func_806FC530(dl, 3, 0x370, 0x50, &sp34, 1);
+}
+*/
 
 // Displaylist stuff, huge
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068DC54.s")

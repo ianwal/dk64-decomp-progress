@@ -214,8 +214,20 @@ void func_8069D2AC(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8
     }
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069D358.s")
+Gfx *func_8069D358(Gfx *dl, Actor *arg1, s16 arg2, f32 arg3) {
+    f32 *spA4;
+    f32 sp64[4][4];
+    f32 sp24[4][4];
+
+    spA4 = malloc(0x40);
+    func_8061134C(spA4);
+    guScaleF(&sp64[0], arg3, arg3, 1.0f);
+    guTranslateF(&sp24[0], arg1->x_position + (2.0 * arg2), arg1->y_position, 0.0f);
+    guMtxCatF(&sp64[0], &sp24[0], &sp64[0]);
+    guMtxF2L(&sp64[0], spA4);
+    gSPMatrix(dl++, spA4, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069D424.s")

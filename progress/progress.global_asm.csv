@@ -572,7 +572,7 @@ us,.code,func_806E380C,32,yes
 us,.code,func_806AD260,748,no
 us,.code,func_806D28E4,32,yes
 us,.code,func_806DF494,268,no
-us,.code,func_805FE634,232,no
+us,.code,func_805FE634,232,yes
 us,.code,func_80652BC8,492,yes
 us,.code,func_806E2FE8,88,yes
 us,.code,func_8064BD2C,300,yes
@@ -1074,7 +1074,7 @@ us,.code,func_806E7568,240,yes
 us,.code,func_806B3420,608,yes
 us,.code,func_80641DA0,456,yes
 us,.code,func_8062E898,800,no
-us,.code,func_8068DAF4,176,no
+us,.code,func_8068DAF4,176,yes
 us,.code,func_8070CD8C,68,yes
 us,.code,func_8060A4D0,48,yes
 us,.code,func_806D205C,392,no
@@ -1496,7 +1496,7 @@ us,.code,func_8060B6CC,52,yes
 us,.code,func_806F006C,8,yes
 us,.code,func_80642BF0,136,yes
 us,.code,func_806EC708,248,yes
-us,.code,func_807132DC,176,no
+us,.code,func_807132DC,176,yes
 us,.code,func_8070DB9C,164,no
 us,.code,func_8067A1DC,1216,no
 us,.code,func_806A7EF0,384,yes
@@ -2682,7 +2682,7 @@ us,.code,func_80604CBC,180,no
 us,.code,func_80735AA0,596,no
 us,.code,func_806DBB04,1644,no
 us,.code,func_80601678,88,yes
-us,.code,func_806FEF7C,160,no
+us,.code,func_806FEF7C,160,yes
 us,.code,func_805FCFD8,88,yes
 us,.code,func_80689958,296,yes
 us,.code,func_80713B40,332,no
@@ -2981,7 +2981,7 @@ us,.code,func_8073A8BC,68,yes
 us,.code,func_8066E9EC,120,no
 us,.code,func_8062F050,712,no
 us,.code,func_80658624,700,no
-us,.code,func_8069D358,204,no
+us,.code,func_8069D358,204,yes
 us,.code,func_80737FD8,68,no
 us,.code,func_806CF878,160,yes
 us,.code,func_806ED050,172,yes
@@ -3160,7 +3160,7 @@ us,.code,func_806C1B50,380,no
 us,.code,func_8070FC40,140,yes
 us,.code,func_807197B4,600,no
 us,.code,func_8068A164,84,yes
-us,.code,func_806BCF98,252,no
+us,.code,func_806BCF98,252,yes
 us,.code,func_806FFF5C,44,yes
 us,.code,func_806A0330,676,yes
 us,.code,func_8069A7C8,940,no
@@ -3252,7 +3252,7 @@ us,.code,func_806D9820,260,yes
 us,.code,func_80731654,304,yes
 us,.code,func_8066461C,80,yes
 us,.code,func_8063CADC,100,yes
-us,.code,func_806FFB2C,216,no
+us,.code,func_806FFB2C,216,yes
 us,.code,func_806F1380,72,yes
 us,.code,func_80685020,176,yes
 us,.code,func_80716FB4,332,yes

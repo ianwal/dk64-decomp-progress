@@ -574,6 +574,8 @@ void *func_805FD030(Gfx *arg0) {
 
 extern s32 D_80744470[];
 extern s16 D_80744490;
+extern s16 D_80744494;
+Gfx *func_805FE634(Gfx *dl, u8 arg1);
 
 Gfx *func_805FE4D4(Gfx *arg0) {
     gDPSetColorImage(arg0++, 0, 2, D_80744490, osVirtualToPhysical(D_80744470[D_807444FC]));
@@ -592,8 +594,16 @@ void func_805FE544(u8 arg0) {
     func_805FE71C(func_805FE634(D_8076A050[1], 1), 1, &D_8076A088, 1);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE634.s")
+Gfx *func_805FE634(Gfx *dl, u8 arg1) {
+    gDPPipeSync(dl++);
+    gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetCycleType(dl++, G_CYC_FILL);
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, D_80744490, D_80744470[arg1]);
+    gDPSetFillColor(dl++, 0x00010001);
+    gDPPipeSync(dl++);
+    gDPFillRectangle(dl++, 0, 0, D_80744490 - 1, D_80744494 - 1);
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_805FE71C.s")
