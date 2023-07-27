@@ -232,11 +232,35 @@ Gfx *func_8069D358(Gfx *dl, Actor *arg1, s16 arg2, f32 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069D424.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_8069D930.s")
+s32 func_806FE078(void *, u8, s32, f32, f32, f32, f32); // extern
+
+extern Gfx D_01000118;
+extern Mtx D_02000180;
+
+typedef struct {
+    u8 unk0[0xA - 0x0];
+    u8 unkA;
+} AAD_8069D930;
+
+s32 func_8069D930(Gfx *dl, Actor *arg1) {
+    AAD_8069D930 *aaD;
+
+    aaD = arg1->additional_actor_data;
+    gSPDisplayList(dl++, &D_01000118);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
+    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    if (arg1->unk168++ < 0x64) {
+        dl = func_806FE078(dl, aaD->unkA, 2, 160.0f, arg1->y_position, 0.0f, 1.0f);
+    } else {
+        dl = func_806FE078(dl, aaD->unkA, 1, 160.0f, arg1->y_position, 0.0f, 1.0f);
+    }
+    return dl;
+}
 
 extern void func_8069D424(); // TODO: Proper signature
-extern void func_8069D930(); // TODO: Proper signature
 
 typedef struct {
     s32 unk0;

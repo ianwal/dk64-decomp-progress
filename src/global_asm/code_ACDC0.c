@@ -577,8 +577,23 @@ void func_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s32 arg5,
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806ABA6C.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806ABB98.s")
+Gfx *func_806ABB98(Gfx *dl, s16 arg1, s16 arg2, f32 arg3, void *arg4) {
+    f32 sp70[4][4];
+    f32 sp30[4][4];
+    f32 *mtx;
+
+    mtx = malloc(0x40);
+    mtx = mtx;
+    func_8061134C(mtx);
+    guScaleF(&sp70[0], arg3, arg3, 1.0f);
+    guTranslateF(&sp30[0], arg1, arg2, 0.0f);
+    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guMtxF2L(&sp70[0], mtx);
+    gSPMatrix(dl++, mtx, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    dl = func_806FC530(dl, 1, 0, 0, arg4, 0x80);
+    gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+    return dl;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806ABC94.s")
 

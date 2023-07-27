@@ -1666,8 +1666,21 @@ void func_8063D494(void) {
     D_807F6198 = 0.0f;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063D4A4.s")
+extern f32 D_807F6198;
+
+Gfx *func_8063D4A4(Gfx *dl) {
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_2CYCLE);
+    gDPSetTextureLOD(dl++, G_TL_LOD);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gDPSetRenderMode(dl++, G_RM_PASS, G_RM_ZB_XLU_SURF2);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA2);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, (s32)D_807F6198, 0x00FC, 0x00FC);
+    return dl;
+}
 
 void func_8063D5AC(void) {
     D_807F6198 -= D_80758550;

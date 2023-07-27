@@ -142,6 +142,7 @@ void func_806FDF54(f32 *arg0, f32 *arg1) {
 
 s32 func_8068C5A8(Gfx *, s32, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32);
 extern f32 D_8075DE70;
+Gfx *func_806FEDB0(s32, u8);
 
 void func_806FEF7C(s32 arg0, Actor *arg1) {
     Gfx *dl;
@@ -153,8 +154,36 @@ void func_806FEF7C(s32 arg0, Actor *arg1) {
     func_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, D_8075DE70);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF01C.s")
+s32 func_80690F30(s32, s32 *, Actor*, s32, s32, s32, s32 *, s32 *, s32 *);
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+} Struct807FD568;
+
+extern Struct807FD568 *D_807FD568; // TODO: Unknown struct
+
+void func_806FF01C(s32 arg0, Actor *arg1) {
+    u8 playerIndex;
+    s32 sp58;
+    s32 sp54;
+    s32 sp50;
+    s32 sp4C;
+    Gfx *dl;
+
+    playerIndex = arg1->PaaD->unk1A4;
+    dl = func_806FEDB0(arg0, playerIndex);
+    if (D_807FD568->unk2 & 2 && func_806F8AD4(3, playerIndex) != 0 && func_80690F30(2, &sp58, arg1, 1, 0, 0, &sp54, &sp50, &sp4C) != 0) {
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0xC8, 0x00, 0xFF);
+    } else {
+        gDPSetPrimColor(dl++, 0, 0, 0xC8, 0x00, 0x00, 0xFF);
+    }
+    func_8068C5A8(dl, 0x38, 3, 1, 0x40, 0x40, 0xA0, 0x78, 0.5f, 0.5f, 0x2D, 0.0f);
+}
+
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF144.s")
@@ -179,7 +208,7 @@ void func_806FFB2C(s32 arg0, Actor *arg1) {
     Gfx *dl;
 
     sp3C = arg1->control_state_progress * D_8075DE78;
-    dl = func_806FEDB0(arg0, arg1->PaaD->unk1A4, arg1);
+    dl = func_806FEDB0(arg0, arg1->PaaD->unk1A4);
     gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
     func_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, sp3C);

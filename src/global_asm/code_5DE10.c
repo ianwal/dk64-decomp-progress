@@ -32,8 +32,26 @@ u8 func_80659190(void) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5DE10/func_8065919C.s")
 
+/*
+void *func_8065919C(void *arg0) {
+    s32 temp_a2;
+    void *temp_a0;
+    void *temp_a0_2;
+
+    arg0->unk0 = 0xDB080000;
+    temp_a2 = D_807F7368 - D_807F7366;
+    temp_a0_2 = arg0 + 8;
+    arg0->unk4 = ((0x1F400 / temp_a2) << 0x10) | ((((D_807F7366 * -0x100) + 0x1F400) / temp_a2) & 0xFFFF);
+    temp_a0_2->unk0 = 0xE7000000;
+    temp_a0 = temp_a0_2 + 8;
+    temp_a0_2->unk4 = 0;
+    temp_a0->unk0 = 0xF8000000;
+    temp_a0->unk4 = (D_807F7361 << 0x18) | (D_807F7362 << 0x10) | (D_807F7363 << 8) | D_807F7364;
+    return temp_a0 + 8;
+}
+*/
+
 void *func_8065919C(void *);
-extern u8 D_807F7360;
 
 void *func_806592B4(Gfx *arg0) {
     if (D_807F7360 != 0) {

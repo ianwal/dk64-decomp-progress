@@ -159,7 +159,7 @@ s32 (*func_80029110(s32 arg0))(s32 *, s32) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_80029118.s")
 
-void func_800296DC();
+Gfx *func_800296DC(Gfx *dl, Actor *arg1);
 
 s32 (*func_80029110(s32))(s32 *, s32);
 s32 func_8061CB08();
@@ -342,5 +342,28 @@ void func_80029118(void) {
 }
 */
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_800296DC.s")
+Gfx *func_806FE078(Gfx *, u8, s32, f32, f32, f32, f32); // extern
+
+extern Gfx D_01000118;
+extern Mtx D_02000180;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+} AAD_800296DC;
+
+Gfx *func_800296DC(Gfx *dl, Actor *arg1) {
+    AAD_800296DC* aaD = arg1->additional_actor_data;
+    gSPDisplayList(dl++, &D_01000118);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xC8, 0xC8, 0xC8, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
+    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    if (arg1->control_state == 0xFE) {
+        dl = func_806FE078(dl, aaD->unk2, 2, 160.0f, 100.0f, 0.0f, 1.5f);
+    }
+    return dl;
+}

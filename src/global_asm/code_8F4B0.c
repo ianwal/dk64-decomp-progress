@@ -329,15 +329,58 @@ void func_8068C350(void *arg0, Actor *arg1, u8 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068D264.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068D8C8.s")
+void func_8068C5A8(void *, u16, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32); // extern
 
-// Displaylist stuff
+extern Gfx D_01000118;
+extern Mtx D_02000080;
+
+void func_8068D8C8(Gfx *dl, s32 arg1) {
+    gSPDisplayList(dl++, &D_01000118);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xA0);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gSPMatrix(dl++, &D_02000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    // TODO: What does the object_timer expression do? Any better way to represent it?
+    func_8068C5A8(dl, ((((u32)object_timer >> 1) & 0xF) + 0x8F), 0, 2, 0x20, 0x20, 0x118, 0xD2, 1.0f, 1.0f, 0, 0.0f);
+}
+
+// Displaylist stuff, regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068D9DC.s")
 
+extern s32 D_80759F30;
+extern s32 D_80759F34;
+extern s32 D_80759F38;
 extern s32 D_80759F3C; // TODO: Type
 extern s32 D_80759F40; // TODO: Type
-extern Gfx D_01000118;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 *unk14;
+    s32 unk18;
+    u8 *unk1C;
+} Struct8068D9DC_arg1;
+
+/*
+void func_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
+    s32 pad2;
+    s32 pad;
+    s32 sp3C;
+    s32 sp38;
+
+    gSPDisplayList(dl++, &D_01000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
+
+    func_800031E0(&sp3C, &D_80759F30, arg1->unk14);
+    dl = func_806FC530(func_806FC530(dl, 3, 0x424, 0x50, &sp3C, 1), 1, 0x50, 0x50, &D_80759F34, 1);
+    func_800031E0(&sp38, &D_80759F38, arg1->unk1C);
+    func_806FC530(dl, 3, 0x50, 0xB0, &sp38, 1);
+}
+*/
 
 void func_8068DAF4(Gfx *dl, u8 *arg1) {
     s32 pad;
