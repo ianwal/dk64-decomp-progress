@@ -83,7 +83,7 @@ void func_800255D4(Gfx **arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025700.s")
 
 #ifndef NONMATCHING
-// Displaylist stuff
+// Displaylist stuff, regalloc, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_80025904.s")
 #else
 void func_80025904(Gfx **arg0) {

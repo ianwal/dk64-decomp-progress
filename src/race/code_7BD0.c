@@ -151,8 +151,6 @@ void func_8002BCD4(Actor *arg0) {
 // Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002BDDC.s")
 
-void func_8068C5A8(void *, s32, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32); // extern
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -188,15 +186,41 @@ void func_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002C2E8.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002C63C.s")
+void func_800085D4(f32*, f32, f32, f32);
+Gfx *func_805FD030(Gfx *);
+
+typedef struct {
+    u8 unk0[0x50 - 0x0];
+    f32 unk50[1][4][4];
+} Struct8002C63C_arg1;
+
+extern Gfx D_01000118;
+extern Mtx D_020000C0;
+extern Mtx D_02000180;
+
+Gfx *func_8002C63C(Gfx *dl, Struct8002C63C_arg1 *arg1) {
+    gDPPipeSync(dl++);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+
+    dl = func_805FD030(dl);
+
+    gSPDisplayList(dl++, &D_01000118);
+    gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+
+    func_800085D4(arg1->unk50[D_807444FC], 0.5f, 0.5f, 1.0f);
+    gSPMatrix(dl++, arg1->unk50[D_807444FC], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_8002C76C.s")
 
 s32 func_8002C14C(s32, void *);
 s32 func_8002C2E8(s32, void *);
-s32 func_8002C63C(s32, void *);
 s32 func_8002C76C(s32, void *);
 
 s32 func_8002CAC8(s32 arg0, Actor *arg1, RaceAdditionalActorData *arg2) {
@@ -224,7 +248,7 @@ s32 func_8002CAC8(s32 arg0, Actor *arg1, RaceAdditionalActorData *arg2) {
     if (sp24->unk0 & 6) {
         arg0 = func_8002C76C(arg0, arg2);
     }
-        
+
     return arg0;
 }
 

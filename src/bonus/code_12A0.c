@@ -7,8 +7,34 @@ void func_8061C464(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 extern f32 D_8002DCB8;
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_800252A0.s")
+void *func_8068DC54(s32, s32, s32, void *, s32, void *);
+s32 func_806FE078(void *, u8, s32, f32, f32, f32, f32); // extern
+
+extern Gfx D_01000118;
+extern Mtx D_02000080;
+extern Mtx D_02000180;
+
+typedef struct {
+    u8 unk0[0x14 - 0x0];
+    u8 unk14;
+    u8 unk15;
+    s16 unk16;
+    u8 unk18;
+    u8 unk19;
+} AAD_800252A0;
+
+void func_800252A0(Gfx *dl, Actor *arg1) {
+    AAD_800252A0 *aaD;
+    aaD = arg1->additional_actor_data;
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xC8, 0xC8, 0xC8, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gSPDisplayList(dl++, &D_01000118);
+    gSPMatrix(dl++, &D_02000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_8068DC54(func_806FE078(dl, aaD->unk19, 8, 30.0f, 36.0f, 0.0f, 1.5f), 0x26, 0x32, &aaD->unk14, aaD->unk16, &aaD->unk18);
+}
 
 Actor* func_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     BaaD2 *tmp;

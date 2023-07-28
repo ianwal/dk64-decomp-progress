@@ -329,8 +329,6 @@ void func_8068C350(void *arg0, Actor *arg1, u8 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_8068D264.s")
 
-void func_8068C5A8(void *, u16, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32); // extern
-
 extern Gfx D_01000118;
 extern Mtx D_02000080;
 

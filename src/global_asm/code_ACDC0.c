@@ -583,7 +583,6 @@ Gfx *func_806ABB98(Gfx *dl, s16 arg1, s16 arg2, f32 arg3, void *arg4) {
     f32 *mtx;
 
     mtx = malloc(0x40);
-    mtx = mtx;
     func_8061134C(mtx);
     guScaleF(&sp70[0], arg3, arg3, 1.0f);
     guTranslateF(&sp30[0], arg1, arg2, 0.0f);

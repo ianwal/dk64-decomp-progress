@@ -944,7 +944,8 @@ typedef struct player_additional_actor_data {
     f32 unk1E0; // Used
     s32 unk1E4;
     s32 unk1E8;
-    s16 unk1EC;
+    u8 unk1EC;
+    u8 unk1ED;
     s16 unk1EE; // Used
     s32 unk1F0; // Used, bitfield // TODO: Proper bitfield syntax
     s32 unk1F4;

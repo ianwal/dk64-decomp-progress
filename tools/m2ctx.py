@@ -15,11 +15,13 @@ CPP_FLAGS = [
     "-Iinclude",
     "-Iinclude/2.0L",
     "-Iinclude/2.0L/PR",
+    "-Iinclude/libc",
     "-Isrc",
     "-Iver/current/build/include",
     "-D_LANGUAGE_C",
     "-D_FINALROM",
     "-DF3DEX_GBI_2",
+    "-DTARGET_N64"
     "-D_MIPS_SZLONG=32",
     # "-DSCRIPT(...)={}",
     # "-D__attribute__(...)=",

@@ -647,8 +647,26 @@ s32 func_8071375C(s32 arg0) {
     return arg0;
 }
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_80713764.s")
+
+extern s16 D_80744490;
+extern s16 D_80744494;
+
+/*
+void func_80713764(Gfx *dl, u8 arg1, f32 arg2) {
+    f32 temp;
+    f32 temp2;
+    temp = D_80744490 * 0.5;
+    temp2 = (D_80744494 * 0.5) + -20.0 + arg2;
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    // TODO: Issue here
+    gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, arg1, 0x00);
+    gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
+    gDPSetTextureFilter(dl++, G_TF_POINT);
+    func_8068C5A8(dl, 0x2C, 0, 2, 0xE0, 0x80, temp, temp2, 1.0f, 1.0f, 0, 0.0f);
+}
+*/
 
 // TODO: This might return a displaylist
 void func_807138A4(s32 *arg0) {

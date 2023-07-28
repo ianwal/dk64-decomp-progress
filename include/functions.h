@@ -29,6 +29,8 @@ void func_806DF5A0(s16 *arg0, s16 arg1, s16 arg2, s16 arg3);
 Actor *func_807270C0(s16 spawn_trigger, u16 arg1);
 Actor *func_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
 
+Gfx *func_8068C5A8(Gfx *, u16, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32);
+
 // TODO: What do the params mean?
 void playCutscene(Actor*, s16, s32);
 void playSong(s32, f32);

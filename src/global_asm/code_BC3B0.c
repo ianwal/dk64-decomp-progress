@@ -1,9 +1,40 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    u8 unk0[0x2C - 0x0];
+    s16 unk2C;
+} AAD_806B76B0;
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_806B76B0.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} A178_806B76B0;
+
+extern Gfx D_01000118;
+extern Mtx D_02000080;
+
+void func_806B76B0(Gfx *dl, Actor *arg1) {
+    A178_806B76B0 *a178;
+    AAD_806B76B0 *aaD;
+
+    aaD = arg1->additional_actor_data;
+    a178 = arg1->unk178;
+    gDPPipeSync(dl++);
+    if (arg1->control_state == 0x11) {
+        gDPSetPrimColor(dl++, 0, 0, 0xC8, 0x00, 0x00, 0xFF);
+    } else if (aaD->unk2C != 0) {
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0xC8, 0x00, 0xFF);
+    } else {
+        gDPSetPrimColor(dl++, 0, 0, 0xDC, 0xB4, 0x00, 0xFF);
+    }
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gSPDisplayList(dl++, &D_01000118);
+    gSPMatrix(dl++, &D_02000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+
+    func_8068C5A8(dl, 0x38, 3, 1, 0x40, 0x40, a178->unk0, a178->unk4, 0.5f, 0.5f, 0x2D, 0.0f);
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_806B7830.s")
@@ -97,7 +128,6 @@ void func_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2) {
 
 extern f64 D_8075B898;
 extern s32 D_807FBB68;
-int func_806B76B0();
 int func_806B7830();
 
 typedef struct {

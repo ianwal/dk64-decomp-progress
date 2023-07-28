@@ -42,7 +42,7 @@ us,.code,func_80029E54,444,no
 us,.code,func_80026690,688,no
 us,.code,func_800254B0,396,no
 us,.code,func_8002D6F8,240,yes
-us,.code,func_800252A0,324,no
+us,.code,func_800252A0,324,yes
 us,.code,func_80027F14,1452,no
 us,.code,func_8002A010,904,no
 us,.code,func_80027548,688,no

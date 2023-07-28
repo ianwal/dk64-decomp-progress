@@ -352,8 +352,21 @@ void func_8069F020(void) {
 }
 */
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_8069F904.s")
+extern Gfx D_01000118;
+extern Mtx D_020000C0;
+
+void func_8069F904(Gfx *dl, Actor *arg1) {
+    f32 temp_f0;
+
+    temp_f0 = arg1->unkE0;
+    gSPDisplayList(dl++, &D_01000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->y_rotation);
+    func_8068C5A8(dl, (arg1->unk15F + 0x61), 0, 2, 0x28, 0x33, arg1->x_position, arg1->y_position, temp_f0, temp_f0, 0, 0.0f);
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_8069FA40.s")
@@ -362,7 +375,6 @@ void func_8069F020(void) {
 
 extern s32 D_80744478;
 extern u8 D_80750AD4;
-void func_8069F904(void);
 void func_8069FA40(void);
 
 /*

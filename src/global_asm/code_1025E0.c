@@ -140,7 +140,6 @@ void func_806FDF54(f32 *arg0, f32 *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FEDB0.s")
 
-s32 func_8068C5A8(Gfx *, s32, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32);
 extern f32 D_8075DE70;
 Gfx *func_806FEDB0(s32, u8);
 
@@ -195,8 +194,20 @@ void func_806FF32C(s32 arg0, Actor *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF358.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF628.s")
+Gfx *func_806FF628(Gfx *dl, s32 arg1) {
+    PlayerAdditionalActorData *PaaD;
+
+    PaaD = character_change_array->player_pointer->additional_actor_data;
+    dl = func_806FEDB0(dl, PaaD->unk1A4);
+    if (PaaD->unk1EC == 2) {
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0x00, 0x00, 0x64);
+        dl = func_8068C5A8(dl, 0x45, 3, 1, 0x40, 0x40, 0xA0, 0x78, 2.0f, 2.0f, 0, 0.0f);
+    } else if (PaaD->unk1EC == 1) {
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0xFF, 0x00, 0x64);
+        dl = func_8068C5A8(dl, 0x44, 3, 1, 0x40, 0x40, 0xA0, 0x78, 2.0f, 2.0f, 0, 0.0f);
+    }
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF75C.s")
