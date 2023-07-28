@@ -1566,8 +1566,31 @@ void func_8063C4A8(void) {
     D_807F6174 = 255.0f;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063C4C4.s")
+Gfx *func_8063C4C4(Gfx *dl) {
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_2CYCLE);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+    gDPSetTextureLOD(dl++, G_TL_TILE);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 3, 1, G_ON);
+    gDPSetRenderMode(dl++, G_RM_PASS, G_RM_RA_OPA_SURF2);
+    gDPSetCombineLERP(dl++, TEXEL0, 0, TEXEL1, 0, TEXEL0, 0, TEXEL1, 0, 1, 0, COMBINED, PRIMITIVE, 0, 0, 0, SHADE);
+    gDPSetEnvColor(dl++, 0x00, 0x40, 0x7F, 0xFF);
+    gDPSetPrimColor(dl++, 0, 0, 0x50, 0x50, 0xB4, 0x46);
+    gDPSetTileSize(dl++, 1, (s32)D_807F6170, 0, 0x007C, 0x007C);
+    gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_8b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_MIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+    gDPLoadSync(dl++);
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 512);
+    gDPTileSync(dl++);
+    gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_8b, 4, 0x0000, 1, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, 15);
+    gDPSetTileSize(dl++, 2, (s32)D_807F6174, 0, 0x007C, 0x007C);
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 0, 0x0100, G_TX_LOADTILE, 0, G_TX_MIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_MIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+    gDPLoadSync(dl++);
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 512);
+    gDPTileSync(dl++);
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 4, 0x0100, 2, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, 15);
+    return dl;
+}
 
 void func_8063C6D8(void) {
     D_807F6170 -= 1.0;
@@ -1693,7 +1716,7 @@ void func_8063D608(void) {
     D_807F619C = getPointerTableFile(0x19, 0x1765, 1, 0); // Texture
 }
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063D638.s")
 
 void func_8063D854(void) {

@@ -472,7 +472,7 @@ void func_80025A3C(Struct80025A3C *arg0) {
     func_8000A6C0(&sp30, arg0->unk60[D_807444FC]);
 }
 
-// Displaylist stuff
+// Displaylist stuff, jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_80025AD0.s")
 
 s32 func_80025D1C(s32 arg0, CritterController *arg1) {

@@ -7,6 +7,7 @@
 s32 func_806FBD5C(s16, void*);
 void *func_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5);
 extern s16 D_80744490;
+extern s16 D_80744494;
 
 /*
 void func_806FD8E0(void *arg0, s16 arg1, void *arg2, s16 arg3, u8 arg4) {
@@ -19,8 +20,6 @@ void func_806FD950(void *arg0, s16 arg1, void *arg2, s16 arg3) {
     func_806FC530(arg0, arg1, 0x60, arg3 * 4, arg2, 1);
 }
 
-extern s16 D_80744490;
-extern s16 D_80744494;
 
 typedef struct GlobalASMStruct2 GlobalASMStruct2;
 
@@ -183,9 +182,18 @@ void func_806FF01C(s32 arg0, Actor *arg1) {
     func_8068C5A8(dl, 0x38, 3, 1, 0x40, 0x40, 0xA0, 0x78, 0.5f, 0.5f, 0x2D, 0.0f);
 }
 
+extern Mtx D_02000080;
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_806FF144.s")
+void func_806FF144(Gfx *dl) {
+    gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gSPMatrix(dl++, &D_02000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    dl = func_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, 0x3E, 0x3E, 2.0f, 2.0f, 0, 0.0f);
+    dl = func_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, D_80744490 - 0x3E, 0x3E, 2.0f, 2.0f, 0x5A, 0.0f);
+    dl = func_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, D_80744490 - 0x3E, D_80744494 - 0x3E, 2.0f, 2.0f, 0xB4, 0.0f);
+    func_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, 0x3E, D_80744494 - 0x3E, 2.0f, 2.0f, 0x10E, 0.0f);
+}
 
 void func_806FF32C(s32 arg0, Actor *arg1) {
     func_806FF144(func_806FEDB0(arg0, arg1->PaaD->unk1A4));
@@ -336,8 +344,6 @@ void func_80702464(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807035C4.s")
 
-extern s16 D_80744490;
-extern s16 D_80744494;
 extern s16 D_80744498;
 extern s16 D_8074449C;
 extern s16 D_807444A0;

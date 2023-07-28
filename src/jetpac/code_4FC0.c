@@ -82,14 +82,14 @@ extern s32 D_8002E8D8;
 extern JetpacPlayerStruct D_8002EC30;
 extern s32 D_8002E8F0;
 extern s32 D_8002F3BC;
-extern s8 D_8002E9C0;
-extern s8 D_8002E9C4;
-extern s8 D_8002E9C8;
-extern s8 D_8002E9CC;
-extern s8 D_80045BE0;
-extern s8 D_80045BE1;
-extern s8 D_80045BE2;
-extern s8 D_80045BE3;
+extern u8 D_8002E9C0;
+extern u8 D_8002E9C4;
+extern u8 D_8002E9C8;
+extern u8 D_8002E9CC;
+extern u8 D_80045BE0;
+extern u8 D_80045BE1;
+extern u8 D_80045BE2;
+extern u8 D_80045BE3;
 
 void func_80025700(s32, s32, s32, s32, s32);
 void func_80025A60(s32);
@@ -748,5 +748,18 @@ void func_8002AEC8(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
     D_8002E9CC = arg3;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_8002AEFC.s")
+void *func_806FD490(Gfx *, s32, s16, s16, s32);
+
+void func_8002AEFC(Gfx **arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    Gfx *dl;
+
+    dl = *arg0;
+    if (arg4 != 0) {
+        gDPSetPrimColor(dl++, 0, 0, D_8002E9C0, D_8002E9C4, D_8002E9C8, D_8002E9CC);
+        gDPSetEnvColor(dl++, D_80045BE0, D_80045BE1, D_80045BE2, D_80045BE3);
+    } else {
+        gDPSetPrimColor(dl++, 0, 0, D_80045BE0, D_80045BE1, D_80045BE2, D_80045BE3);
+        gDPSetEnvColor(dl++, D_8002E9C0, D_8002E9C4, D_8002E9C8, D_8002E9CC);
+    }
+    *arg0 = func_806FD490(dl, 4, arg2, arg3, arg1);
+}

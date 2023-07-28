@@ -89,7 +89,7 @@ us,.code,func_80027210,64,yes
 us,.code,func_80029640,300,yes
 us,.code,func_80027250,224,yes
 us,.code,func_80024C90,184,yes
-us,.code,func_8002AEFC,404,no
+us,.code,func_8002AEFC,404,yes
 us,.code,func_80028950,156,yes
 us,.code,func_80024D48,296,yes
 us,.code,func_80025CB0,664,no
