@@ -21,6 +21,10 @@ u64 func_80005818(u64, u64);
 u64 func_80005918(u64, u64);
 u64 func_80007688(f32); 
 f32 func_8000773C(s64);
+void func_80005D80(f32*, f32, f32, f32);
+void func_80008580(f32*, f32, f32, f32);
+void func_800088B0(void*, void*, void*);
+void func_8000A6C0(s32 *, void *);
 
 f32 func_80611BB4(f32, f32);
 

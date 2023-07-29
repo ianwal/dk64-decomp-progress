@@ -17,8 +17,22 @@ void func_80699070(s16 *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5,
     *arg0 = (func_80611BB4(arg6 - arg3, sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2))) * 2048.0) / D_8075A2D0;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_80699128.s")
+extern Mtx D_02000180;
+
+typedef struct {
+    u8 unk0[0x128 - 0x0];
+    s16 unk128;
+} Struct80699128_arg1;
+
+void func_80699128(Gfx *dl, Struct80699128_arg1 *arg1) {
+    gSPMatrix(dl++, osVirtualToPhysical(&character_change_array[cc_player_index].unk88[D_807444FC]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, osVirtualToPhysical(&character_change_array[cc_player_index].unk8[D_807444FC]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    gSPClearGeometryMode(dl++, G_LIGHTING);
+    gDPSetPrimColor(dl++, 0, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF);
+    func_80614B34(func_8065D008(dl, arg1->unk128, 1), arg1);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_80699284.s")
 

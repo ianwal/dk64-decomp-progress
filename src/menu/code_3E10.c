@@ -105,8 +105,54 @@ void func_80027F40(Actor *arg0, s32 arg1) {
 // Large, doable, struct on the stack?
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80027FAC.s")
 
-// Displaylist stuff, text labels
+// Displaylist stuff, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_800286C8.s")
+
+s32 *label_string_pointer_array;
+extern f32 text_label_scale;
+extern f32 text_transition_speed;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    s32 unk8;
+    s16 unkC;
+    s16 unkE;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    s8 unk17;
+} Struct800317E8;
+
+s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7);
+Gfx *func_806FC530(Gfx*, s16, s16, s16, void *, s32);
+
+/*
+Gfx *func_800286C8(Actor *arg0, Gfx *dl) {
+    s32 pad2;
+    s32 spD0;
+    s32 pad;
+    void *aaD = arg0->additional_actor_data;
+    f32 spC4;
+    f32 spC0;
+    HeapHeader *sp38; // BC, needs to be 38
+    f32 sp7C[4][4];
+    f32 sp3C[4][4];
+
+    global_properties_bitfield |= 0x10;
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    spD0 = func_800317E8(aaD, 160.0f, 20.0f, &spC4, &spC0, 5, 1, text_transition_speed);
+    sp38 = malloc(0x40);
+    func_8061134C(sp38);
+    func_80008580(&sp7C, text_label_scale, text_label_scale, 1.0f);
+    func_80005D80(&sp3C, spC4 * 4.0, spC0 * 4.0, 0);
+    func_800088B0(&sp7C, &sp3C, &sp7C);
+    func_8000A6C0(&sp7C, sp38);
+    gSPMatrix(dl++, sp38, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return func_806FC530(dl, 1, 0, 0, label_string_pointer_array[spD0], 0x80);
+}
+*/
 
 s8 current_menu_selection;
 
@@ -199,10 +245,43 @@ void func_80028C20(Actor *arg0, s32 arg1) {
     func_8002FC1C(arg0, MaaD, 1);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80028D3C.s")
+extern char *D_80033B30;
+extern char *D_80033B34;
+extern char *D_80033B38;
+extern f32 D_80033C90;
+s32 func_800322D0(s32);
 
-s32 func_800322D0(s8);
+Gfx *func_806ABB98(Gfx*, s16, s16, f32, void*);
+
+Gfx *func_80028D3C(Actor *arg0, Gfx *dl) {
+    s32 pad;
+    s32 sp100;
+    f32 spFC;
+    f32 spF8;
+    f32 temp3[4][4];
+    f32 temp2[4][4];
+    f32 temp[4][4];
+    void *aaD = arg0->additional_actor_data;
+    s32 pad2;
+    s32 sp2C;
+
+    global_properties_bitfield &= ~0x10;
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    sp100 = func_800317E8(aaD, 160.0f, 15.0f, &spFC, &spF8, 4, 1, D_80033C90);
+    if (sp100 == 2) {
+        func_800031E0(&sp2C, &D_80033B30, label_string_pointer_array[5]);
+    } else {
+        if (sp100 == 3) {
+            sp100 = 2;
+        }
+        if (func_800322D0(sp100) != 0) {
+            func_800031E0(&sp2C, &D_80033B34, label_string_pointer_array[6]);
+        } else {
+            func_800031E0(&sp2C, &D_80033B38, label_string_pointer_array[7], sp100 + 1);
+        }
+    }
+    return func_806ABB98(dl, spFC * 4.0f, spF8 * 4.0f, 0.600000023842f, &sp2C);
+}
 
 void func_80028EA8(Actor *arg0, s32 arg1) {
     PlayerAdditionalActorData* PaaD;
@@ -306,8 +385,45 @@ void func_80029AAC(Actor *arg0, s32 arg1) {
     func_8002FC1C(arg0, MaaD, 1);
 }
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_80029BB4.s")
+
+extern s32 D_80033B64;
+extern s32 D_80033B68;
+extern f32 D_80033CB0;
+
+/*
+Gfx *func_80029BB4(Actor *arg0, Gfx *dl) {
+    s32 sp120;
+    s32 pad118;
+    s32 pad114;
+    f32 sp110;
+    f32 sp10C;
+    s32 pad108;
+    s32 pad104;
+    s32 pad100;
+    s16 spFE;
+    s16 temp_f4;
+    s32 padF8;
+    f32 temp3[4][4];
+    f32 temp2[4][4];
+    f32 temp[4][4];
+    s32 sp34;
+    void *aaD = arg0->additional_actor_data;
+
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    sp120 = func_800317E8(aaD, 160.0f, 25.0f, &sp110, &sp10C, 3, 1, D_80033CB0);
+    temp_f4 = sp10C * 4.0f;
+    spFE = sp110 * 4.0f;
+    if (func_800322D0(sp120) != 0) {
+        func_800031E0(&sp34, &D_80033B64, label_string_pointer_array[6]);
+    } else {
+        func_800031E0(&sp34, &D_80033B68, label_string_pointer_array[7], sp120 + 1);
+    }
+    dl = func_806ABB98(dl, spFE, temp_f4, 0.6f, &sp34);
+    return func_806ABB98(dl, sp110 * 4.0f, temp_f4 - 0x3C, 0.6f, label_string_pointer_array[8]);
+}
+*/
 
 // TODO: Might be a fake match since func_80030894 probably takes a void* as an arg instead of s32
 // We'll see when .rodata and .data shake out I guess...
@@ -916,21 +1032,6 @@ void func_8002F8EC() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_8002F980.s")
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    s32 unk8;
-    s16 unkC;
-    s16 unkE;
-    s32 unk10;
-    u8 unk14;
-    u8 unk15;
-    u8 unk16;
-    s8 unk17;
-} Struct800317E8;
-
-s32 func_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7);
-Gfx *func_806FC530(Gfx*, s16, s16, s16, void *, s32);
 extern s32 D_800339C4; // TODO: Datatype
 extern f32 D_80033F44;
 
@@ -1297,7 +1398,7 @@ void func_80032024(void) {
 }
 */
 
-s32 func_800322D0(s8 arg0) {
+s32 func_800322D0(s32 arg0) {
     return !func_8060C6B8(0xD, 0, 0, arg0);
 }
 
@@ -1336,8 +1437,6 @@ s32 func_80032304(void) {
     return var_f0;
 }
 */
-
-s32 *label_string_pointer_array;
 
 void func_800324CC(void) {
     s32 temp_v0;

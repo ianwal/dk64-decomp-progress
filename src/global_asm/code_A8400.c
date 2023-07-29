@@ -73,8 +73,20 @@ void func_806A3B78(s32 *arg0, AAD_806A4DDC *arg1, Struct806A57C0_2 *arg2, u8 arg
     *arg0 = sp44;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A3C6C.s")
+void *func_8068C12C(u16 textureIndex);
+
+Gfx *func_806A3C6C(Gfx *dl, s32 arg1, u8 arg2, s32 arg3) {
+    void *texture;
+
+    texture = func_8068C12C(arg3 + 0x52);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg2);
+    gSPMatrix(dl++, arg1, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_80702464(&dl, texture, 3, 0x60, 0x40, 0x20, 0x20, 0.0f, 0.0f, 96.0f, 64.0f, 0.0f, 0.0f, 1, 8);
+    gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    return dl;
+}
 
 // stack, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_806A3DA0.s")

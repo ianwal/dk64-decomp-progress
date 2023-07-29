@@ -126,8 +126,36 @@ void func_80028680() {
     func_806A2B08(current_actor_pointer->unk11C);
 }
 
-// Displaylist stuff
+// Displaylist stuff, stack, close
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_800286B8.s")
+
+extern s32 D_80035F90;
+extern f32 D_80036054;
+extern u8 D_80750AD4;
+extern Gfx D_01000118;
+
+/*
+void func_800286B8(Gfx *dl, s32 arg1) {
+    f32 sp90[4][4];
+    f32 sp50[4][4];
+    HeapHeader *sp4C;
+    s32 sp3C;
+
+    sp4C = malloc(0x40);
+    func_8061134C(sp4C);
+    func_80008580(&sp90, D_80036054, D_80036054, 1.0f);
+    func_80005D80(&sp50, 100.0f, (character_change_array->unk276 * 4) - 0x3C, 0);
+    func_800088B0(&sp90, &sp50, &sp90);
+    func_8000A6C0(&sp90, sp4C);
+    gSPMatrix(dl++, sp4C, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_800031E0(&sp3C, &D_80035F90, D_80750AD4);
+    gSPDisplayList(dl++, &D_01000118);
+    gDPPipeSync(dl++);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    func_806FC530(func_8070068C(dl), 1, 0, 0, &sp3C, 0);
+}
+*/
 
 void func_80028818() {
 

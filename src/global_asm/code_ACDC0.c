@@ -663,7 +663,7 @@ void func_806AC048(s32 arg0, s32 arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806AC07C.s")
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_806ACA88.s")
 
 void func_806ACC00(u8 arg0) {
