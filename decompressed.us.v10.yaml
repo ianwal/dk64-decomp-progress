@@ -11,6 +11,7 @@ options:
   undefined_funcs_auto_path: undefined_funcs_auto.us.txt
   undefined_syms_auto_path: undefined_syms_auto.us.txt
   symbol_addrs_path: symbol_addrs.us.txt
+  symbol_name_format: $SEG_$VRAM
   base_path: .
   target_path: baserom.us.decompressed.z64
   asset_path: bin
