@@ -46,8 +46,49 @@ void func_80024000(void) {
 }
 */
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_8002419C.s")
+extern s32 D_8076A050[];
+extern s32 D_8076A080;
+
+void func_80006DE4(void*, f32, f32, f32, f32, f32, f32, f32);
+
+extern Gfx D_01000090;
+extern Gfx D_01000040;
+extern Mtx D_02000080;
+
+typedef struct {
+    u8 unk0[0x80 - 0x0];
+    u8 unk80;
+} Struct8002419C_arg0;
+
+void func_80025168(void*);
+
+void func_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1) {
+    Gfx *sp6C;
+    void *sp68;
+    Gfx *dl;
+
+    dl = D_8076A050[D_807444FC];
+    gSPSegment(dl++, 0x00, 0x00000000);
+    gSPSegment(dl++, 0x02, func_80008FA0(arg0));
+    gSPSegment(dl++, 0x01, func_80008FA0(D_8076A080));
+    gSPDisplayList(dl++, &D_01000090);
+    gSPDisplayList(dl++, &D_01000040);
+    func_80006DE4(&arg0->unk80, 0, 320.0f, 0, 240.0f, 1.0f, 10.0f, 1.0f);
+    gDPPipeSync(dl++);
+    dl = func_805FE4D4(dl);
+    gDPSetColorDither(dl++, G_CD_MAGICSQ);
+    gDPSetAlphaDither(dl++, G_AD_PATTERN);
+    gDPSetFillColor(dl++, 0x00010001);
+    gDPFillRectangle(dl++, 0, 0, 319, 239);
+    gSPMatrix(dl++, &D_02000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    sp68 = malloc(0x5DC0);
+    func_8061134C(sp68);
+    sp6C = sp68;
+    func_80025168(&sp6C);
+    gSPEndDisplayList(sp6C++);
+    gSPDisplayList(dl++, sp68);
+    *arg1 = dl;
+}
 
 extern JetpacPlayerStruct D_8002EC30;
 

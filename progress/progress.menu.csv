@@ -4,7 +4,7 @@ us,.code,func_8002A36C,252,yes
 us,.code,func_8003264C,736,no
 us,.code,func_8002AB80,340,no
 us,.code,func_8003292C,1572,no
-us,.code,func_80025B64,432,no
+us,.code,func_80025B64,432,yes
 us,.code,func_80026250,64,yes
 us,.code,func_800270E0,1292,no
 us,.code,func_80031980,220,no

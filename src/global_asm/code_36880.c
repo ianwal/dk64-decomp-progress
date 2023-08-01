@@ -1675,8 +1675,30 @@ void func_8063D288(void) {
     }
 }
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_8063D2E4.s")
+
+/*
+Gfx *func_8063D2E4(Gfx *dl) {
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_2CYCLE);
+    gDPSetTextureLOD(dl++, G_TL_LOD);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gDPSetRenderMode(dl++, G_RM_PASS, G_RM_ZB_XLU_SURF2);
+    gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, D_80747E0C[D_807F6194].unk4);
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
+    gDPLoadSync(dl++);
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);
+    gDPPipeSync(dl++);
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x007C);
+    return dl;
+}
+*/
 
 void func_8063D468(void) {
     D_807F6194++;

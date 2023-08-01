@@ -476,8 +476,29 @@ void func_80661EC4(u8 arg0) {
     D_80748A9C[arg0].unk0 = getPointerTableFile(0x19, 0xF0, 1, 0);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_80661F0C.s")
+Gfx *func_80661F0C(Gfx *dl, s32 arg1, u8 arg2) {
+    gDPPipeSync(dl++);
+    gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_80748A9C[arg2].unk0);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMASK, G_TX_NOLOD);
+    gDPLoadSync(dl++);
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1359, 0);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0x0002, 0x0002, 0x007E, 0x007E);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 4, 0x0100, 1, 0, G_TX_NOMIRROR | G_TX_WRAP, 4, 1, G_TX_NOMIRROR | G_TX_WRAP, 4, 1);
+    gDPSetTileSize(dl++, 1, 0x0002, 0x0002, 0x003E, 0x003E);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 2, 0x0140, 2, 0, G_TX_NOMIRROR | G_TX_WRAP, 3, 2, G_TX_NOMIRROR | G_TX_WRAP, 3, 2);
+    gDPSetTileSize(dl++, 2, 0x0002, 0x0002, 0x001E, 0x001E);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, 0x0150, 3, 0, G_TX_NOMIRROR | G_TX_WRAP, 2, 3, G_TX_NOMIRROR | G_TX_WRAP, 2, 3);
+    gDPSetTileSize(dl++, 3, 0x0002, 0x0002, 0x000E, 0x000E);
+    gDPSetCombineMode(dl++, G_CC_TRILERP, G_CC_MODULATEIA2);
+    gDPSetCycleType(dl++, G_CYC_2CYCLE);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    gDPSetTextureLOD(dl++, G_TL_LOD);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 3, G_TX_RENDERTILE, G_ON);
+    gDPSetRenderMode(dl++, G_RM_PASS, G_RM_ZB_OPA_SURF2);
+    return dl;
+}
 
 void func_80662108(s32 arg0) {
 
@@ -487,8 +508,6 @@ void func_80662110(u8 arg0) {
     // Texture
     D_80748A9C[arg0].unk0 = getPointerTableFile(0x19, 0xAF4, 1, 0);
 }
-
-void func_80661F0C(s32, s32, u8);
 
 void func_80662158(s32 arg0, s32 arg1, u8 arg2) {
     func_80661F0C(arg0, arg1, arg2);

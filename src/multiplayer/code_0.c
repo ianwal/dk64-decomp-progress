@@ -1,8 +1,49 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_80024000.s")
+void *func_805FD030(Gfx*);                           // extern
+void func_8068E7B4(Gfx *, f32, f32, s32);         // extern
+extern f32 D_80027060;
+extern s16 D_80744490;
+extern s16 D_80744494;
+extern u8 D_80750AB8;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+} AAD_80024000;
+
+extern Gfx D_01000118;
+extern Mtx D_020000C0;
+
+void func_80024000(Gfx *dl, Actor *arg1) {
+    AAD_80024000 *sp44;
+    f32 var_f2;
+    f32 var_f12;
+
+    sp44 = arg1->additional_actor_data;
+    if (D_80750AB8 == 1) {
+        var_f2 = 278.0f;
+        var_f12 = 210.0f;
+    } else {
+        var_f2 = D_80744490 * 0.5;
+        var_f12 = D_80744494 * 0.5;
+    }
+    dl = func_805FD030(dl);
+    gSPDisplayList(dl++, &D_01000118);
+    gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gDPPipeSync(dl++);
+
+    if (D_80750AB8 == 1) {
+        gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0x78, 0xFF, 0x50);
+        dl = func_8068C5A8(dl, 0x60, 4, 0, 0x40, 0x40, var_f2 * 4.0f, var_f12 * 4.0f, D_80027060, 2.0f, 0xB4, 0.0f);
+    }
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    func_8068E7B4(dl, var_f2, var_f12, sp44->unk8);
+}
 
 typedef struct {
     u8 unk0[0x2FE - 0x0];
@@ -77,7 +118,6 @@ void func_800242FC(MultiplayerStruct4 *arg0) {
     D_8076A105 = phi_s2;
 }
 
-int func_80024000(); // TODO: Proper signature
 u64 func_800060B0();
 
 typedef struct {
@@ -137,7 +177,7 @@ void func_8002452C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_800245B0.s")
 
 /*
-void *func_800245B0(Gfx *arg0, s16 *arg1, s32 arg2, s32 arg3, s32 arg4) {
+void *func_800245B0(Gfx *dl, s16 *arg1, s32 arg2, s32 arg3, s32 arg4) {
     gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, arg3);
     gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 3, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 3, G_TX_NOLOD);
     gDPLoadSync(dl++);

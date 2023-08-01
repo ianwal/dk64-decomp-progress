@@ -1207,7 +1207,7 @@ us,.code,func_8062E1F8,444,no
 us,.code,func_8072B79C,48,yes
 us,.code,func_8068C350,80,yes
 us,.code,func_806C9E40,48,yes
-us,.code,func_80661F0C,508,no
+us,.code,func_80661F0C,508,yes
 us,.code,func_8062F3A0,128,no
 us,.code,func_8063CF3C,668,no
 us,.code,func_8067E2E4,100,yes

@@ -37,8 +37,54 @@ s32 func_80025AF0(MenuStruct1 *arg0, s32 characterIndex) {
     return phi_v1;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_80025B64.s")
+extern s32 D_80033A80;
+extern s32 D_80033A88;
+
+extern Gfx D_01000118;
+extern Mtx D_020000C0;
+
+typedef struct {
+    u8 unk0[0xD - 0x0];
+    u8 unkD;
+    u8 unkE;
+} A178_80025B64;
+
+Gfx *func_80025B64(Gfx *dl, Actor *arg1) {
+    s32 pad[8];
+    s32 temp_v0;
+    s32 var_a3;
+    s32 sp4C; // TODO: Type
+    A178_80025B64 *a178;
+
+    a178 = arg1->unk178;
+    if (a178->unkD == 1) {
+        gSPDisplayList(dl++, &D_01000118);
+        gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gDPPipeSync(dl++);
+        gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM)
+        switch (a178->unkE) {
+            case 1:
+                arg1->unk15F = 0;
+                a178->unkE = 5;
+                // fallthrough
+            case 5:
+                temp_v0 = 0xFF - arg1->unk15F;
+                if (temp_v0 >= 9) {
+                    var_a3 = 8;
+                } else {
+                    var_a3 = temp_v0;
+                }
+                arg1->unk15F += var_a3;
+                gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
+                func_800031E0(&sp4C, &D_80033A80, func_8070E750(0x24, 0x10, 1, var_a3));
+                dl = func_806FC530(dl, 1, 0x1F4, 0x190, &sp4C, 1);
+                func_800031E0(&sp4C, &D_80033A88, func_8070E750(0x24, 0x11, 1));
+                dl = func_806FC530(dl, 1, 0x1F4, 0x1F4, &sp4C, 1);
+                break;
+        }
+    }
+    return dl;
+}
 
 void func_80025D14(MenuStruct1 *arg0, s32 arg1) {
     D_807FC950[0].character_progress_as_bytes[arg1][arg0->unkB] = arg0->unk11;
