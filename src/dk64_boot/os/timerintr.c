@@ -2,104 +2,10 @@
 #include "functions.h"
 
 
-extern OSTime __osCurrentTime;
-extern u32 __osBaseCounter;
-extern u32 __osViIntrCount;
-extern u32 __osTimerCounter;
-extern OSTimer* __osTimerList;
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/timerintr/func_80009AE0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/timerintr/__osTimerServicesInit.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/timerintr/func_80009B6C.s")
 
-/*
-// TODO: Very close, just issues with the OSTime write
-void __osTimerServicesInit(void) {
-    __osCurrentTime = 0;
-    __osBaseCounter = 0;
-    __osViIntrCount = 0;
-    __osTimerList->prev = __osTimerList;
-    __osTimerList->next = __osTimerList->prev;
-    __osTimerList->value = 0;
-    __osTimerList->interval = __osTimerList->value;
-    __osTimerList->mq = NULL;
-    __osTimerList->msg = 0;
-}
-*/
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/timerintr/func_80009CE4.s")
 
-// TODO: Are these signatures correct?
-void __osSetCompare(u32 t);
-void __osSetTimerIntr(OSTime tim);
-OSTime __osInsertTimer(OSTimer* t);
-
-void __osTimerInterrupt(void) {
-    OSTimer* t;
-    u32 count;
-    u32 elapsed_cycles;
-    if (__osTimerList->next == __osTimerList) {
-        return;
-    }
-    while (1) {
-        t = __osTimerList->next;
-        if (t == __osTimerList) {
-            __osSetCompare(0);
-            __osTimerCounter = 0;
-            break;
-        }
-        count = osGetCount();
-        elapsed_cycles = count - __osTimerCounter;
-        __osTimerCounter = count;
-        if (elapsed_cycles < t->value) {
-            t->value -= elapsed_cycles;
-            __osSetTimerIntr(t->value);
-            return;
-        } else {
-            t->prev->next = t->next;
-            t->next->prev = t->prev;
-            t->next = NULL;
-            t->prev = NULL;
-            if (t->mq != NULL) {
-                osSendMesg(t->mq, t->msg, 0);
-            }
-            if (t->interval != 0) {
-                t->value = t->interval;
-                __osInsertTimer(t);
-            }
-        }
-    }
-}
-
-void __osSetTimerIntr(OSTime tim) {
-    OSTime NewTime;
-    u32 savedMask;
-
-    savedMask = __osDisableInt();
-
-    __osTimerCounter = osGetCount();
-    NewTime = __osTimerCounter + tim;
-    __osSetCompare(NewTime);
-    __osRestoreInt(savedMask);
-}
-
-OSTime __osInsertTimer(OSTimer* t) {
-    OSTimer* timep;
-    OSTime tim;
-    u32 savedMask;
-
-    savedMask = __osDisableInt();
-
-    for (timep = __osTimerList->next, tim = t->value; timep != __osTimerList && tim > timep->value;
-         tim -= timep->value, timep = timep->next) {
-        ;
-    }
-    t->value = tim;
-    if (timep != __osTimerList) {
-        timep->value -= tim;
-    }
-    t->next = timep;
-    t->prev = timep->prev;
-    timep->prev->next = t;
-    timep->prev = t;
-
-    __osRestoreInt(savedMask);
-
-    return tim;
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/timerintr/func_80009D58.s")

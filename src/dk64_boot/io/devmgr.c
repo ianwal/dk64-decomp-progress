@@ -1,5 +1,5 @@
 #include <ultra64.h>
-#include "piint.h"
+#include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/devmgr/__osDevMgrMain.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/devmgr/func_8000C000.s")

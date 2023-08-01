@@ -2,12 +2,4 @@
 #include "functions.h"
 
 
-void alSeqpSetSeq(ALSeqPlayer *seqp, ALSeq *seq)
-{
-    ALEvent evt;
-
-    evt.type = AL_SEQP_SEQ_EVT;
-    evt.msg.spseq.seq = seq;
-
-    alEvtqPostEvent(&seqp->evtq, &evt, 0);
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/seqpsetseq/func_80739F40.s")

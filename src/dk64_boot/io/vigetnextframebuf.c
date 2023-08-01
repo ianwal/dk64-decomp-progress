@@ -1,12 +1,5 @@
 #include <ultra64.h>
-#include "viint.h"
+#include "functions.h"
 
-void *osViGetNextFramebuffer(void)
-{
-    register u32 saveMask;
-    void *framep;
-    saveMask = __osDisableInt();
-    framep = __osViNext->framep;
-    __osRestoreInt(saveMask);
-    return framep;
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vigetnextframebuf/func_800081B0.s")

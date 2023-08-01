@@ -1,7 +1,5 @@
 #include <ultra64.h>
-#include "viint.h"
+#include "functions.h"
 
-__OSViContext *__osViGetCurrentContext(void)
-{
-    return __osViCurr;
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vigetcurrcontext/func_80009F00.s")

@@ -1,12 +1,5 @@
 #include <ultra64.h>
-#include "osint.h"
+#include "functions.h"
 
-void osCreateMesgQueue(OSMesgQueue *mq, OSMesg *msg, s32 msgCount)
-{
-    mq->mtqueue = (OSThread *)&__osThreadTail;
-    mq->fullqueue = (OSThread *)&__osThreadTail;
-    mq->validCount = 0;
-    mq->first = 0;
-    mq->msgCount = msgCount;
-    mq->msg = msg;
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/createmesgqueue/func_80004950.s")

@@ -1,23 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "controller.h"
 
-void __osSiGetAccess(void);
-void __osSiRelAccess(void);
 
-extern u8 D_80014E01;
-
-s32 func_80007360(u8 arg0) {
-    s32 sp1C;
-
-    sp1C = 0;
-    __osSiGetAccess();
-    if (arg0 >= 5) {
-        D_80014E01 = 4;
-    } else {
-        D_80014E01 = arg0;
-    }
-    __osContLastCmd = 0xFE;
-    __osSiRelAccess();
-    return sp1C;
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_7F60/func_80007360.s")

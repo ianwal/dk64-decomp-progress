@@ -1,20 +1,7 @@
-#include "guint.h"
+#include <ultra64.h>
+#include "functions.h"
 
-void guScaleF(float mf[4][4], float x, float y, float z)
-{
-	guMtxIdentF(mf);
 
-	mf[0][0] = x;
-	mf[1][1] = y;
-	mf[2][2] = z;
-	mf[3][3] = 1;
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/scale/func_80008580.s")
 
-void guScale(Mtx *m, float x, float y, float z)
-{
-	Matrix	mf;
-
-	guScaleF(mf, x, y, z);
-
-	guMtxF2L(mf, m);
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/scale/func_800085D4.s")

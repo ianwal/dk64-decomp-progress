@@ -1,9 +1,5 @@
 #include <ultra64.h>
+#include "functions.h"
 
-int __osSpDeviceBusy()
-{
-    register u32 stat = IO_READ(SP_STATUS_REG);
-    if (stat & (SP_STATUS_DMA_BUSY | SP_STATUS_DMA_FULL | SP_STATUS_IO_FULL))
-        return 1;
-    return 0;
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/sp/func_8000B9F0.s")

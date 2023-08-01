@@ -2,9 +2,4 @@
 #include "functions.h"
 
 
-void alSeqpStop(ALSeqPlayer *seqp) {
-    ALEvent     evt;
-
-    evt.type = AL_SEQP_STOPPING_EVT;                 
-    alEvtqPostEvent(&seqp->evtq, &evt, 0);
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/seqpstop/func_80739F00.s")

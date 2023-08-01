@@ -26,13 +26,18 @@ segments:
     subsegments:
     - [0x0040, asm, boot]
     - [0x0B70, bin, boot2]
+  - name:  entry
+    type:  code
+    start: 0x1000
+    vram:  0x80000400
+    subsegments:
+    - [0x1000, hasm, entry]
   - name: dk64_boot
     type: code
-    start: 0x1000
-    vram: 0x80000400
+    start: 0x1050
+    vram: 0x80000450
     dir: dk64_boot
     subsegments:
-      - [0x1000, hasm, entry]                 #DONE
       - [0x1050, c, dk64_boot_1050]
       - [0x1630, c, dk64_boot_1630]
       - [0x1CC0, c, inflate]
@@ -160,12 +165,6 @@ segments:
       - [0xDBC0, c, os/yieldthread]           #DONE
       - [0xDC10, c, io/contpfs]
       - [0xE790, c, dk64_boot_E790]
-  - name: dk64_boot_data
-    dir: dk64_boot
-    type: code
-    start: 0xE8B0
-    vram:  0x8000DCB0
-    subsegments:
       - [0xE8B0, bin, dk64_boot_data_E8B0]
       - [0xFB00, .data, io/vimgr]
       - [0xFB20, bin, dk64_boot_data_FB20]
@@ -190,6 +189,7 @@ segments:
     type: code
     start: 0x2000000
     vram: 0x805FB300
+    exclusive_ram_id: global_asm
     subsegments:
       - [0x2000000, c, code_0]
       - [0x2003C10, c, code_3C10]

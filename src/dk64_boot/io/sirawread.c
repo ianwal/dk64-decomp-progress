@@ -1,9 +1,5 @@
 #include <ultra64.h>
+#include "functions.h"
 
-s32 __osSiRawReadIo(u32 devAddr, u32 *data)
-{
-    if (__osSiDeviceBusy())
-        return -1;
-    *data = IO_READ(devAddr);
-    return 0;
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/sirawread/func_8000A3A0.s")

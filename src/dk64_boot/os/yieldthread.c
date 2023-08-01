@@ -1,9 +1,5 @@
 #include <ultra64.h>
-#include "osint.h"
+#include "functions.h"
 
-void osYieldThread(void) {
-    register u32 saveMask = __osDisableInt();
-    __osRunningThread->state = OS_STATE_RUNNABLE;
-    __osEnqueueAndYield(&__osRunQueue);
-    __osRestoreInt(saveMask);
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/yieldthread/func_8000CFC0.s")

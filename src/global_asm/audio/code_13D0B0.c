@@ -1,10 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
 
-s32 func_807383B0(ALSeqPlayer *arg0) {
-    if (!arg0->target) {
-        return 0;
-    }
-    // TODO: Oof, I think our audio headers may be the wrong version...
-    return arg0->uspt / ((f32*)arg0->target)[2];
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D0B0/func_807383B0.s")
+
+void func_807383EC(void) {
+}
+
+void func_807383F4(void) {
 }

@@ -2,20 +2,12 @@
 #include "functions.h"
 
 
-/* might want to make these macros */
-void alLink(ALLink *ln, ALLink *to)
-{					
-    ln->next = to->next;     
-    ln->prev = to;           
-    if (to->next)            
-        to->next->prev = ln; 
-    to->next = ln;           
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/link/func_807393E0.s")
+
+void func_8073940C(void) {
 }
 
-void alUnlink(ALLink *ln)			
-{					
-    if (ln->next)                   
-        ln->next->prev = ln->prev;  
-    if (ln->prev)                   
-        ln->prev->next = ln->next;  
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/link/func_80739414.s")
+
+void func_8073944C(void) {
 }

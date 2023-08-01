@@ -2,11 +2,4 @@
 #include "functions.h"
 
 
-extern OSThread *__osRunningThread;
-
-OSPri osGetThreadPri(OSThread *thread)
-{
-    if (thread == NULL)
-        thread = __osRunningThread;
-    return thread->priority;
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/getthreadpri/func_80009EE0.s")

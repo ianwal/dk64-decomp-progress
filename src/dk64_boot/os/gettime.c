@@ -1,16 +1,5 @@
 #include <ultra64.h>
-#include "osint.h"
+#include "functions.h"
 
-OSTime osGetTime()
-{
-    u32 tmptime;
-    u32 elapseCount;
-    OSTime currentCount;
-    register u32 saveMask;
-    saveMask = __osDisableInt();
-    tmptime = osGetCount();
-    elapseCount = tmptime - __osBaseCounter;
-    currentCount = __osCurrentTime;
-    __osRestoreInt(saveMask);
-    return currentCount + elapseCount;
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/gettime/func_800060B0.s")

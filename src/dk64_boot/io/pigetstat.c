@@ -1,7 +1,5 @@
 #include <ultra64.h>
-#include "piint.h"
+#include "functions.h"
 
-u32 osPiGetStatus()
-{
-    return IO_READ(PI_STATUS_REG);
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pigetstat/func_800046B0.s")

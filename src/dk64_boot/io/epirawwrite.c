@@ -1,4 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/epirawwrite/osEPiRawWriteIo.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/epirawwrite/func_8000CCB0.s")

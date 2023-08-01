@@ -1,7 +1,5 @@
 #include <ultra64.h>
-#include <rcp.h>
+#include "functions.h"
 
-void osDpSetStatus(u32 data)
-{
-    IO_WRITE(DPC_STATUS_REG, data);
-}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/dpsetstat/func_80005BA0.s")
