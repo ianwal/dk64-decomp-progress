@@ -338,19 +338,34 @@ void func_80702464(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807024E0.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_80703374.s")
-
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807035C4.s")
-
 extern s16 D_80744498;
 extern s16 D_8074449C;
 extern s16 D_807444A0;
 extern s16 D_807444A4;
+extern s16 D_807444A8;
 extern s16 D_807444AC;
 extern s16 D_807444B0;
 extern f64 D_8075DF48;
+
+Gfx *func_80703374(Gfx *dl, u8 r, u8 g, u8 b, u8 a) {
+    if (a != 0) {
+        gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+        gSPSetGeometryMode(dl++, G_SHADE | G_SHADING_SMOOTH);
+        gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_OFF);
+        gDPPipeSync(dl++);
+        gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+        gDPSetPrimColor(dl++, 0, 0, r, g, b, a);
+        gDPSetCycleType(dl++, G_CYC_1CYCLE);
+        gDPSetCombineMode(dl++, G_CC_PRIMITIVE, G_CC_PRIMITIVE);
+        gDPSetScissor(dl++, G_SC_NON_INTERLACE, (s32)(D_80744498), (s32)(D_8074449C), (s32)(D_807444A0), (s32)(D_807444A4));
+        gDPFillRectangle(dl++, (s32)(D_80744498), (s32)(D_8074449C), (s32)(D_807444A0), (s32)(D_807444A4));
+    }
+    gDPPipeSync(dl++);
+    return dl;
+}
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_807035C4.s")
 
 void func_80703850(u8 arg0) {
     f32 temp_f0;
