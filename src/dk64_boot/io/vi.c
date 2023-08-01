@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vi/func_800099A0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vi/__osViInit.s")

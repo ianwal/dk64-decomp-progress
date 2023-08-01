@@ -2,22 +2,22 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B430.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B430.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B49C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B49C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B4D4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B4D4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B55C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B55C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B5C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B5C0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B6CC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B6CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B700.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B700.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B750.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B750.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B7C4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B7C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_8060B7D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/done/dktv/func_global_asm_8060B7D0.s")

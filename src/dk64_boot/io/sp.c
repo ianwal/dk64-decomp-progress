@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/sp/func_8000B9F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/sp/__osSpDeviceBusy.s")

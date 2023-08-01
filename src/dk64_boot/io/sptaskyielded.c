@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/sptaskyielded/func_800081F0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/sptaskyielded/osSpTaskYielded.s")

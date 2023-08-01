@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/settime/func_80006140.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/settime/osSetTime.s")

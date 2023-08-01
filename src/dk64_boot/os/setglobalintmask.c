@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/setglobalintmask/func_8000CF70.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/setglobalintmask/__osSetGlobalIntMask.s")

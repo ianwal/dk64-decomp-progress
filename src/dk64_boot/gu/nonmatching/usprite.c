@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/usprite/func_80005A90.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/usprite/guSprite2DInit.s")

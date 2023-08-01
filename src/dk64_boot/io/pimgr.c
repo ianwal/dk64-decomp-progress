@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pimgr/func_8000A550.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pimgr/osCreatePiManager.s")

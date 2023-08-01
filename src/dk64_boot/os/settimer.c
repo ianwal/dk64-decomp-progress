@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/settimer/func_800077C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/settimer/osSetTimer.s")

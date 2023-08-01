@@ -2,8 +2,8 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/siacs/func_8000AED0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/siacs/__osSiCreateAccessQueue.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/siacs/func_8000AF20.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/siacs/__osSiGetAccess.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/siacs/func_8000AF64.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/siacs/__osSiRelAccess.s")

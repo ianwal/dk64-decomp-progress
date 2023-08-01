@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/sinf/func_8000AAA0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/sinf/sinf.s")

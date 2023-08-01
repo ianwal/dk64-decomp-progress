@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vigetnextframebuf/func_800081B0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vigetnextframebuf/osViGetNextFramebuffer.s")

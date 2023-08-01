@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/createmesgqueue/func_80004950.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/createmesgqueue/osCreateMesgQueue.s")

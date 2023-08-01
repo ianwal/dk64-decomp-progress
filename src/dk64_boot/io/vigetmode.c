@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vigetmode/func_80008D30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vigetmode/osViGetCurrentMode.s")

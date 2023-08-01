@@ -2,6 +2,6 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13C920/func_80737C20.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13C920/func_global_asm_80737C20.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13C920/func_80737CF4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13C920/func_global_asm_80737CF4.s")

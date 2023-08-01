@@ -2,10 +2,10 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/func_8000A6C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/guMtxF2L.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/func_8000A7C0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/guMtxIdentF.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/func_8000A848.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/guMtxIdent.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/func_8000A878.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/mtxutil/guMtxL2F.s")

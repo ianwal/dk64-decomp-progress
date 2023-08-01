@@ -2,6 +2,6 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/position/func_80008D80.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/position/guPositionF.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/position/func_80008F30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/position/guPosition.s")

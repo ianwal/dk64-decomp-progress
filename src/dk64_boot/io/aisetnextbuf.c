@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/aisetnextbuf/func_80006E50.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/aisetnextbuf/osAiSetNextBuffer.s")

@@ -2,4 +2,4 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/getthreadid/func_800078A0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/getthreadid/osGetThreadId.s")
