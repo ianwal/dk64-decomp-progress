@@ -20,6 +20,11 @@
     .end \label
 .endm
 
+.macro jlabel label
+    .global \label
+    \label:
+.endm
+
 .macro .word32 x
     .word \x
 .endm

@@ -6,6 +6,7 @@ options:
   platform: n64
   asm_end_label: "endlabel"
   asm_data_macro: dlabel
+  asm_jtbl_label_macro: jlabel
   generated_c_preamble: |
     #include <ultra64.h>
     #include "functions.h"
@@ -169,7 +170,7 @@ segments:
       - [0xDC10, c, io/contpfs]
       - [0xE790, c, dk64_boot_E790]
       - [0xE8B0, data, dk64_boot_data_E8B0]
-      - [0xFB00, .data, io/vimgr]
+      - [0xFB00, data, io/vimgr]
       - [0xFB20, data, dk64_boot_data_FB20]
       - [0x10CC0, .data, io/aisetnextbuf]
       - [0x10CD0, data, dk64_boot_data_10CD0]

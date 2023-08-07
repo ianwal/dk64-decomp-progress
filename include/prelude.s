@@ -11,5 +11,10 @@
     \label:
 .endm
 
+.macro jlabel label
+    .global \label
+    \label:
+.endm
+
 .macro endlabel label
 .endm
