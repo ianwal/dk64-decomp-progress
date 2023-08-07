@@ -258,6 +258,7 @@ $(BOOT_MIPS3_OBJS) : $(BUILD_DIR)/%.c.o : %.c | $(C_BUILD_DIRS)
 # Split baserom
 $(BUILD_DIR)/SPLAT_TIMESTAMP: decompressed.$(VERSION).yaml $(SYMBOL_ADDRS) $(DECOMPRESSED_BASEROM) | $(BUILD_DIR)
 	$(call print1,Splitting rom:,$<)
+	@$(RM) -rf $(ASM_ROOT)
 	@$(SPLAT) decompressed.$(VERSION).yaml
 	@touch $@
 	@touch $(LD_SCRIPT)
@@ -309,10 +310,7 @@ clean:
 	@$(RM) -rf $(DECOMPRESSED_BASEROM)
 	@$(RM) -rf $(BIN_ROOT)
 	@$(RM) -rf $(NONMATCHING_DIR)
-	@$(RM) -rf $(ASM_ROOT)/*.s
-	@$(RM) -rf $(addprefix $(ASM_ROOT)/,$(filter-out global_asm,$(OVERLAYS)))
-	@$(RM) -rf $(ASM_ROOT)/global_asm/*.s
-	@$(RM) -rf $(ASM_ROOT)/global_asm/os
+	@$(RM) -rf $(ASM_ROOT)
 	@$(RM) -f undefined_syms_auto* undefined_funcs_auto*
 	@$(RM) -f *.ld
 
