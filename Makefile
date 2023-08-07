@@ -96,7 +96,6 @@ ELF                  := $(FINAL_Z64:.z64=.elf)
 LD_SCRIPT            := $(BASENAME).ld
 ALL_OBJS             := $(C_OBJS) $(ASM_OBJS) $(BIN_OBJS)
 SYMBOL_ADDRS         := symbol_addrs.$(VERSION).txt
-SYMBOL_ADDR_FILES    := $(filter-out $(SYMBOL_ADDRS), $(wildcard symbol_addrs.*.$(VERSION).txt))
 MIPS3_OBJS           := $(BUILD_DIR)/$(SRC_ROOT)/global_asm/ll.c.o
 BOOT_MIPS3_OBJS      := $(BUILD_DIR)/$(SRC_ROOT)/done/ll.c.o
 BOOT_C_OBJS          := $(filter-out $(BOOT_MIPS3_OBJS),$(BOOT_C_OBJS))
@@ -279,7 +278,7 @@ $(DECOMPRESSED_BASEROM): $(BASEROM)
 # .o -> .elf (dummy symbols)
 $(PRELIM_ELF): $(ALL_OBJS) $(LD_SCRIPT)
 	$(call print1,Linking elf:,$@)
-	@$(LD) $(LDFLAGS) -T undefined_syms_auto.$(VERSION).txt -T undefined_syms.$(VERSION).txt -T rzip_dummy_addrs.txt -o $@
+	@$(LD) $(LDFLAGS) -T undefined_syms_auto.$(VERSION).txt -T undefined_syms.$(VERSION).txt -o $@
 
 # .elf -> .z64 (dummy symbols)
 $(PRELIM_Z64) : $(PRELIM_ELF)
@@ -293,7 +292,7 @@ $(PRELIM_Z64) : $(PRELIM_ELF)
 # .o -> .elf (game)
 $(ELF): $(ALL_OBJS) $(LD_SCRIPT)
 	$(call print1,Linking elf:,$@)
-	@$(LD) $(LDFLAGS) -T undefined_syms_auto.$(VERSION).txt -T undefined_syms.$(VERSION).txt -T symbol_addrs.$(VERSION).txt -o $@
+	@$(LD) $(LDFLAGS) -T undefined_syms_auto.$(VERSION).txt -T undefined_syms.$(VERSION).txt -o $@
 
 # .elf -> .z64 (uncompressed)
 $(UNCOMPRESSED_Z64) : $(ELF)
