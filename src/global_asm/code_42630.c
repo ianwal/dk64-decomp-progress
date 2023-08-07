@@ -62,9 +62,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_80641DA0.s")
 
-void func_global_asm_80641F68(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_80641F70.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8064216C.s")

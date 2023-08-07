@@ -10,9 +10,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_806998C8.s")
 
-void func_global_asm_806998E8(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_806998F0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_80699914.s")

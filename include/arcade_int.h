@@ -96,8 +96,8 @@ void arcade_pie_update(u8);
 void func_80030FEC(void);
 void func_800313B8(void);
 
-void func_8060DEA8(void);
-void func_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
+void func_global_asm_8060DEA8(void);
+void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
 /* rom */
 extern Gfx **D_1000040;

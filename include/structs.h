@@ -313,7 +313,7 @@ typedef struct actor_animation_state {
     s16 unk12;
     void *bone_array_1; // at 0x14, camera, update bone positions // TODO: Proper type
     void *bone_array_2; // at 0x18, camera, update bone positions // TODO: Proper type
-    AnimationStateUnk1C *unk1C; // TODO: Used in func_80724CA4 and func_8068FF40, pretty easy match, array of 0x8 structs? // malloc(0x100) in func_80683158
+    AnimationStateUnk1C *unk1C; // TODO: Used in func_global_asm_80724CA4 and func_global_asm_8068FF40, pretty easy match, array of 0x8 structs? // malloc(0x100) in func_global_asm_80683158
     AnimationStateUnk20 *unk20; // See boss func_8002FB7C
     AnimationStateUnk24 *unk24;
     s32 unk28;
@@ -615,7 +615,7 @@ typedef struct another_additional_actor_data {
     s32 unkC;
     s16 unk10;
     u8 unk12;
-    u8 unk13; // Used in func_806925AC
+    u8 unk13; // Used in func_global_asm_806925AC
 } AnotherAdditionalActorData;
 
 typedef struct {
@@ -744,7 +744,7 @@ typedef struct menu_additional_actor_data {
 
 typedef struct player_additional_actor_data {
     union {
-        s32 unk0; // TODO: May be s16 (see func_806CF580), but changing that causes some matching functions to break
+        s32 unk0; // TODO: May be s16 (see func_global_asm_806CF580), but changing that causes some matching functions to break
         s16 unk0_s16[2];
     };
     f32 unk4;
@@ -978,14 +978,14 @@ typedef struct player_additional_actor_data {
     u16 unk242; // Used
     s8 unk244;
     u8 unk245; // Used
-    s8 unk246; // Used func_806CA26C
-    s8 unk247; // Used func_806CA26C
+    s8 unk246; // Used func_global_asm_806CA26C
+    s8 unk247; // Used func_global_asm_806CA26C
     s8 unk248;
     s8 unk249;
     s8 unk24A;
     s8 unk24B; // Used
-    u16 unk24C; // Used // TODO: s16? func_806CA1B4 uses this as u16
-    u16 unk24E; // Used // TODO: s16? func_806CA1B4 uses this as u16
+    u16 unk24C; // Used // TODO: s16? func_global_asm_806CA1B4 uses this as u16
+    u16 unk24E; // Used // TODO: s16? func_global_asm_806CA1B4 uses this as u16
     s32 unk250;
     s32 unk254;
     f32 unk258; // Used
@@ -1120,7 +1120,7 @@ typedef struct global_asm_struct_60 GlobalASMStruct60;
 
 struct global_asm_struct_60 {
     s32 *unk0; // Used
-    GlobalASMStruct60 *unk4; // Used? Might be wrong datatype, see func_80688638
+    GlobalASMStruct60 *unk4; // Used? Might be wrong datatype, see func_global_asm_80688638
     s16 unk8;
     s16 unkA; // Used
     s16 unkC; // Used - Texture index?
@@ -1305,7 +1305,7 @@ struct actor {
     u8 unk145;
     union {
         u16 unk146; // used (0x147 hand state? 0x146 seems to be u16)
-        s16 unk146_s16; // used func_8068A764
+        s16 unk146_s16; // used func_global_asm_8068A764
     };
     u32 unk148; // Used
     u32 unk14C; // Used
@@ -1771,7 +1771,7 @@ typedef struct object_model2 {
     u8 unk6F;
     GlobalASMStruct83 *unk70;
     OM2_unk74 *unk74;
-    OM2_unk78 *unk78; // used in func_80650AD8, weird format
+    OM2_unk78 *unk78; // used in func_global_asm_80650AD8, weird format
     OM2_unk7C *unk7C; // labelled behavior_pointer in ScriptHawk
     s32 unk80;
     s16 object_type; // at 0x84
@@ -1895,7 +1895,7 @@ typedef struct {
     s32 unk28;
 } Struct8073BC74;
 
-// func_80712944, func_8060AC34
+// func_global_asm_80712944, func_global_asm_8060AC34
 typedef struct global_asm_struct_12 {
     u16 unk0;
     s8 unk2;

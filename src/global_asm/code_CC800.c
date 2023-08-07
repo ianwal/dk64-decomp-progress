@@ -48,7 +48,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C9434.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C95D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/loadExits.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C9658.s")
 

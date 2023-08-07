@@ -10,7 +10,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060B968.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060B9D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/getEEPROMSaveSlot.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060BA14.s")
 
@@ -70,7 +70,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060E1A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060E25C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/getFlagBlockAddress.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060E3B0.s")
 

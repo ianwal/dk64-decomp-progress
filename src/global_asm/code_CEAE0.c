@@ -190,9 +190,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806D1238.s")
 
-void func_global_asm_806D1270(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806D1278.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806D12CC.s")
@@ -553,9 +550,6 @@ void func_global_asm_806D1270(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E17F4.s")
 
-void func_global_asm_806E1864(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E186C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E1A50.s")
@@ -666,12 +660,6 @@ void func_global_asm_806E1864(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E5D60.s")
 
-void func_global_asm_806E5E58(void) {
-}
-
-void func_global_asm_806E5E60(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E5E68.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E5EA8.s")
@@ -728,7 +716,7 @@ void func_global_asm_806E5E60(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E7658.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E770C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/playerCanDive.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806E7780.s")
 
@@ -882,9 +870,6 @@ void func_global_asm_806E78F8(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806EAE60.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806EAF6C.s")
-
-void func_global_asm_806EAFEC(void) {
-}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806EAFF4.s")
 

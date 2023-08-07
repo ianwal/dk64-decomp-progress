@@ -145,7 +145,7 @@ OPT_FLAGS      := -O2
 MIPSBIT        := -mips2
 ASFLAGS        := -EB -mtune=vr4300 -march=vr4300 -mabi=32 -I include
 GCC_ASFLAGS    := -c -x assembler-with-cpp -mabi=32 -ffreestanding -mtune=vr4300 -march=vr4300 -mfix4300 -G 0 -O -mno-shared -fno-PIC -mno-abicalls
-LDFLAGS        := -T $(LD_SCRIPT) -Map $(ELF:.elf=.map) --no-check-sections --accept-unknown-input-arch -T undefined_syms.auto.txt -T undefined_funcs.auto.txt
+LDFLAGS        := -T $(LD_SCRIPT) -Map $(ELF:.elf=.map) --no-check-sections --accept-unknown-input-arch -T undefined_syms_auto.$(VERSION).txt -T undefined_funcs_auto.$(VERSION).txt
 BINOFLAGS      := -I binary -O elf32-tradbigmips
 
 ### Rules ###
@@ -278,7 +278,7 @@ $(DECOMPRESSED_BASEROM): $(BASEROM)
 # .o -> .elf (dummy symbols)
 $(PRELIM_ELF): $(ALL_OBJS) $(LD_SCRIPT)
 	$(call print1,Linking elf:,$@)
-	@$(LD) $(LDFLAGS) -T undefined_syms_auto.$(VERSION).txt -T undefined_syms.$(VERSION).txt -o $@
+	@$(LD) $(LDFLAGS) -o $@
 
 # .elf -> .z64 (dummy symbols)
 $(PRELIM_Z64) : $(PRELIM_ELF)
@@ -292,7 +292,7 @@ $(PRELIM_Z64) : $(PRELIM_ELF)
 # .o -> .elf (game)
 $(ELF): $(ALL_OBJS) $(LD_SCRIPT)
 	$(call print1,Linking elf:,$@)
-	@$(LD) $(LDFLAGS) -T undefined_syms_auto.$(VERSION).txt -T undefined_syms.$(VERSION).txt -o $@
+	@$(LD) $(LDFLAGS) -o $@
 
 # .elf -> .z64 (uncompressed)
 $(UNCOMPRESSED_Z64) : $(ELF)

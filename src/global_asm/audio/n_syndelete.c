@@ -2,7 +2,8 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/n_syndelete/func_global_asm_8073D140.s")
+extern N_ALSynth *n_syn;
 
-void func_global_asm_8073D154(void) {
+void n_alSynDelete(void) {
+    n_syn->head = NULL;
 }

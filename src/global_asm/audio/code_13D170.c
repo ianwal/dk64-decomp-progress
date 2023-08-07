@@ -2,18 +2,15 @@
 #include "functions.h"
 
 
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80738470.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_807385F0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_8073876C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80738BA0.s")
-
-void func_global_asm_80738BA8(void) {
-}
-
-void func_global_asm_80738BB0(void) {
+s32 func_global_asm_80738BA0(s32 *arg0) {
+    return arg0[3];
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80738BB8.s")
@@ -27,3 +24,4 @@ void func_global_asm_80738BB0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80739098.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_8073928C.s")
+

@@ -26,7 +26,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/setIntroStoryPlaying.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070B318.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/isIntroStoryPlaying.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070B324.s")
 

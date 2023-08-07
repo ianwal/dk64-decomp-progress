@@ -50,7 +50,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80712634.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80712658.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/gameIsInDKTheatreMode.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_8071268C.s")
 
@@ -128,13 +128,13 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80714360.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80714394.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/gameIsInQuitGameMode.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807143E8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/gameIsInSnidesBonusGameMode.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/gameIsInMysteryMenuMinigameMode.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80714450.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/gameIsInMainMenuMode.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80714464.s")
 

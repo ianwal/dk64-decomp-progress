@@ -4,9 +4,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B2790.s")
 
-void func_global_asm_806B2D5C(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B2D64.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3420.s")

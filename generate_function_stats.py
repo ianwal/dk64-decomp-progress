@@ -90,7 +90,7 @@ standardSearchColumns = {
     ],
     "rand": [
         "rand",
-        "func_806119A0",
+        "func_global_asm_806119A0",
     ],
     "malloc": [
         "malloc",
@@ -115,8 +115,8 @@ standardSearchColumns = {
     "D_807F5FD4": [
         "D_807F5FD4",
     ],
-    "func_8071498C": [
-        "func_8071498C",
+    "func_global_asm_8071498C": [
+        "func_global_asm_8071498C",
     ],
     "pointerTable": [
         "getPointerTableFile",

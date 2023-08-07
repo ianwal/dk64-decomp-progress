@@ -1,6 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
 
+#include "synthinternal.h"
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_141EF0/func_global_asm_8073D1F0.s")
 

@@ -138,7 +138,7 @@ typedef struct {
     s32 frame_count;
 } Struct80767A40;
 
-extern Struct80767A40 D_80767A40; // TODO: Might be an array, see func_805FBC5C
+extern Struct80767A40 D_80767A40; // TODO: Might be an array, see func_global_asm_805FBC5C
 
 typedef struct {
     Actor* unk0;
@@ -171,7 +171,7 @@ typedef struct {
 } GlobalASMStruct58_unk0;
 
 struct global_asm_struct_58 {
-    GlobalASMStruct58_unk0 *unk0; // used, at least 0x65 big (func_80661264, func_8065F5F0), not sure what datatype though
+    GlobalASMStruct58_unk0 *unk0; // used, at least 0x65 big (func_global_asm_80661264, func_global_asm_8065F5F0), not sure what datatype though
     f32 unk4; // used
     f32 unk8; // used
     f32 unkC; // used

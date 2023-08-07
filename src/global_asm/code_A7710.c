@@ -15,6 +15,3 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_global_asm_806A2B90.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_global_asm_806A2E30.s")
-
-void func_global_asm_806A36F4(void) {
-}

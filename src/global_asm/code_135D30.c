@@ -4,9 +4,9 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_global_asm_80731030.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_global_asm_8073106C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/clearPermanentFlags.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_global_asm_807310BC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/clearGlobalFlags.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/isFlagSet.s")
 

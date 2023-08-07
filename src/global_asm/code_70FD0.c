@@ -158,7 +158,4 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672CBC.s")
 
-void func_global_asm_80672E64(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672E6C.s")

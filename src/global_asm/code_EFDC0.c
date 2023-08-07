@@ -172,12 +172,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806EFF34.s")
 
-void func_global_asm_806F006C(void) {
-}
-
-void func_global_asm_806F0074(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806F007C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806F00BC.s")

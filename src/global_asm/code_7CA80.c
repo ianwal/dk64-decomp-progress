@@ -30,27 +30,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_806787CC.s")
 
-void func_global_asm_806787EC(void) {
-}
-
-void func_global_asm_806787F4(void) {
-}
-
-void func_global_asm_806787FC(void) {
-}
-
-void func_global_asm_80678804(void) {
-}
-
-void func_global_asm_8067880C(void) {
-}
-
-void func_global_asm_80678814(void) {
-}
-
-void func_global_asm_8067881C(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80678824.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_8067889C.s")
@@ -156,24 +135,6 @@ void func_global_asm_8067881C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_8067B1E0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_8067B238.s")
-
-void func_global_asm_8067B280(void) {
-}
-
-void func_global_asm_8067B288(void) {
-}
-
-void func_global_asm_8067B290(void) {
-}
-
-void func_global_asm_8067B298(void) {
-}
-
-void func_global_asm_8067B2A0(void) {
-}
-
-void func_global_asm_8067B2A8(void) {
-}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_8067B2B0.s")
 

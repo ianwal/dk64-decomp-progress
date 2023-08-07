@@ -5,9 +5,6 @@
 void func_global_asm_806FB480(void) {
 }
 
-void func_global_asm_806FB488(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FB490.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FB714.s")
