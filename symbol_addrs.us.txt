@@ -393,3 +393,13 @@ arcade_lives_internal = 0x8004C71B;
 arcade_lives_visual = 0x8004C71C;
 arcade_game_state = 0x8004C71D;
 arcade_background_visual = 0x8004C722;
+
+D_global_asm_807FF030 = 0x807FF030;
+D_global_asm_807FF034 = 0x807FF034;
+D_global_asm_807FF0E4 = 0x807FF0E4;
+D_global_asm_807FF0F0 = 0x807FF0F0;
+D_global_asm_807FF0F1 = 0x807FF0F1;
+D_global_asm_807FF0F2 = 0x807FF0F2;
+D_global_asm_807FF0F4 = 0x807FF0F4;
+D_global_asm_807FF0F6 = 0x807FF0F6;
+D_global_asm_807FF0F8 = 0x807FF0F8;
