@@ -188,9 +188,9 @@ segments:
       - { start: 0x11320, type: bss, vram: 0x80010720 }
   - name: assets
     type: bin
-    start: 0x113F0
+    start: 0x11320
     subsegments:
-      - [0x113F0, bin]
+      - [0x11320, bin]
   - name: global_asm
     dir: global_asm
     type: code

@@ -80,7 +80,7 @@ ALL_DIRS       := $(C_BUILD_DIRS) $(ASM_BUILD_DIRS) $(BIN_BUILD_DIRS) $(BUILD_DI
 
 # Build files
 BASEROM              := baserom.$(VERSION).z64
-DECOMPRESSED_BASEROM := $(BASEROM).decompressed.z64
+DECOMPRESSED_BASEROM := baserom.$(VERSION).decompressed.z64
 C_OBJS               := $(addprefix $(BUILD_DIR)/,$(C_SRCS:.c=.c.o))
 BOOT_C_OBJS          := $(addprefix $(BUILD_DIR)/,$(BOOT_C_SRCS:.c=.c.o))
 GLOBAL_ASM_C_OBJS    := $(addprefix $(BUILD_DIR)/,$(GLOBAL_ASM_C_SRCS:.c=.c.o))
