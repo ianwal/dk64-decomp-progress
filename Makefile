@@ -157,7 +157,7 @@ all: verify
 # Shows progress for all overlays, boot, and total
 progress: $(OVERLAY_PROG_CSVS) $(MAIN_PROG_CSV) $(TOTAL_PROG_CSV) 
 	@$(foreach overlay,$(OVERLAYS),$(PROGRESS_READ) progress/progress.$(overlay).csv $(VERSION) $(overlay) &&) \
-	$(PROGRESS_READ) $(MAIN_PROG_CSV) $(VERSION) bk_boot
+	$(PROGRESS_READ) $(MAIN_PROG_CSV) $(VERSION) dk64_boot
 	@$(PROGRESS_READ) $(TOTAL_PROG_CSV) $(VERSION) total
 
 # Shows progress for a single overlay (e.g. progress-SM)
