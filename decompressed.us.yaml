@@ -168,20 +168,20 @@ segments:
       - [0xDBC0, c, os/yieldthread]           #DONE
       - [0xDC10, c, io/contpfs]
       - [0xE790, c, dk64_boot_E790]
-      - [0xE8B0, bin, dk64_boot_data_E8B0]
+      - [0xE8B0, data, dk64_boot_data_E8B0]
       - [0xFB00, .data, io/vimgr]
-      - [0xFB20, bin, dk64_boot_data_FB20]
+      - [0xFB20, data, dk64_boot_data_FB20]
       - [0x10CC0, .data, io/aisetnextbuf]
-      - [0x10CD0, bin, dk64_boot_data_10CD0]
+      - [0x10CD0, data, dk64_boot_data_10CD0]
       - [0x10D30, .data, io/vi]
-      - [0x10DA0, bin, dk64_boot_data_10DA0]
+      - [0x10DA0, data, dk64_boot_data_10DA0]
       - [0x11120, .rodata, gu/perspective]
-      - [0x11130, bin, dk64_boot_data_11130] #- [0x11130, .rodata, gu/lookathil]
-      - [0x11140, bin, dk64_boot_data_11140]
+      - [0x11130, rodata, dk64_boot_data_11130] #- [0x11130, .rodata, gu/lookathil]
+      - [0x11140, rodata, dk64_boot_data_11140]
       #- [0x11150, .rodata, gu/rotate]
-      - [0x11160, bin, dk64_boot_data_11160]
+      - [0x11160, rodata, dk64_boot_data_11160]
       #- [0x11170, .rodata, gu/position]
-      - [0x11180, bin, dk64_boot_data_11180]
+      - [0x11180, rodata, dk64_boot_data_11180]
       - { start: 0x11320, type: bss, vram: 0x80010720 }
   - name: assets
     type: bin
@@ -334,9 +334,9 @@ segments:
       - [0x2144E00, c, audio/code_144E00]
       - [0x2145950, c, audio/code_145950]
       - [0x2145D70, bin, code_145D70] #mips3
-      - [0x2149160, bin, data_149160]
+      - [0x2149160, data, data_149160]
       - [0x2165190, .rodata, audio/synthesizer]
-      - [0x21651A0, bin, data_1651A0]
+      - [0x21651A0, rodata, data_1651A0]
   - name: menu
     dir: menu
     type: code
@@ -348,7 +348,7 @@ segments:
       - [0x2167840, c, code_1AF0]
       - [0x2169B60, c, code_3E10]
       - [0x21742A0, c, code_E550]
-      - [0x2174CA0, bin, data_EF50]
+      - [0x2174CA0, data, data_EF50]
   - name: multiplayer
     dir: multiplayer
     type: code
@@ -357,7 +357,7 @@ segments:
     exclusive_ram_id: overlay
     subsegments:
       - [0x2175C60, c, code_0]
-      - [0x2178BD0, bin, data_2F70]
+      - [0x2178BD0, data, data_2F70]
   - name: minecart
     dir: minecart
     type: code
@@ -367,7 +367,7 @@ segments:
     subsegments:
       - [0x2178D60, c, code_0]
       - [0x217B350, c, code_25F0]
-      - [0x217D8F0, bin, data_4B90]
+      - [0x217D8F0, data, data_4B90]
   - name: bonus
     dir: bonus
     type: code
@@ -379,7 +379,7 @@ segments:
       - [0x217EE10, c, code_12A0]
       - [0x2180200, c, code_2690]
       - [0x2186B80, c, code_9010]
-      - [0x21873D0, bin, data_9860]
+      - [0x21873D0, data, data_9860]
   - name: race
     dir: race
     type: code
@@ -392,7 +392,7 @@ segments:
       - [0x218CD10, c, code_52B0]
       - [0x218F630, c, code_7BD0]
       - [0x21923C0, c, code_A960]
-      - [0x2193570, bin, data_BB10]
+      - [0x2193570, data, data_BB10]
   - name: critter
     dir: critter
     type: code
@@ -402,7 +402,7 @@ segments:
     subsegments:
       - [0x2193BC0, c, code_0]
       - [0x2196F00, c, code_3340]
-      - [0x21993B0, bin, data_57F0]
+      - [0x21993B0, data, data_57F0]
   - name: boss
     dir: boss
     type: code
@@ -419,7 +419,7 @@ segments:
       - [0x21A39D0, c, code_9C60]
       - [0x21A6690, c, code_C920]
       - [0x21A8E40, c, code_F0D0]
-      - [0x21AB620, bin, data_118B0]
+      - [0x21AB620, data, data_118B0]
   - name: arcade
     dir: arcade
     type: code
@@ -428,7 +428,7 @@ segments:
     exclusive_ram_id: overlay
     subsegments:
       - [0x21ACB30, c, code_0]
-      - [0x21BAD50, bin, data_E220]
+      - [0x21BAD50, data, data_E220]
       # - [0x21BAD58, rgba16, img/arcade_80032228.rgba16, 16, 16]
       # - [0x21BAF58, bin, data_E428]
       # - [0x21BB7D8, rgba16, img/arcade_80032CA8.rgba16, 8, 10]
@@ -552,5 +552,5 @@ segments:
       - [0x21D6790, c, code_3060]
       - [0x21D6BB0, c, code_3480]
       - [0x21D86F0, c, code_4FC0]
-      - [0x21DA7C0, bin, data_7090]
+      - [0x21DA7C0, data, data_7090]
   - [0x21DE360] # end of ROM
