@@ -1,7 +1,19 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "guint.h"
 
+void guTranslateF(float mf[4][4], float x, float y, float z)
+{
+	guMtxIdentF(mf);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/translate/guTranslateF.s")
+	mf[3][0] = x;
+	mf[3][1] = y;
+	mf[3][2] = z;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/translate/guTranslate.s")
+void guTranslate(Mtx *m, float x, float y, float z)
+{
+	Matrix	mf;
+
+	guTranslateF(mf, x, y, z);
+
+	guMtxF2L(mf, m);
+}

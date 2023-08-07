@@ -1,5 +1,11 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "guint.h"
 
+void guNormalize(float *x, float *y, float *z)
+{
+	float	m;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/normalize/guNormalize.s")
+	m = 1/sqrtf((*x)*(*x) + (*y)*(*y) + (*z)*(*z));
+	*x *= m;
+	*y *= m;
+	*z *= m;
+}
