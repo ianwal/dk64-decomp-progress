@@ -28,25 +28,6 @@ To extract and build everything
 make
 ```
 
-Build a level or core code section separately (from base of repo): 
-
-
-```sh
-make <module_id>
-```
-
-where the following are supported values of `<module_id>`
-- `global_asm`
-- `menu`
-- `multiplayer`
-- `minecart`
-- `bonus`
-- `race`
-- `critter`
-- `boss`
-- `arcade`
-- `jetpac`
-
 ## Prerequisites
 
 Ubuntu 18.04 or higher.
@@ -70,12 +51,4 @@ python3 -m pip install \
     colorama ansiwrap watchdog python-Levenshtein cxxfilt \
     python-ranges \
     pypng anybadge
-```
-
-## Other versions
-
-Drop in `kiosk`, `jp`, or `pal` as `baserom.<version>.z64` e.g. `baserom.kiosk.z64`
-
-```sh
-make VERSION=kiosk
 ```
