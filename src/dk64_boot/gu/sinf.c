@@ -70,11 +70,11 @@
  * ====================================================================
  */
 
-extern f64 D_80010620[5]; // P
-extern f64 D_80010648; // rpi
-extern f64 D_80010650; // phhi
-extern f64 D_80010658; // phlo
-extern f32 D_80010660; // zero
+extern f64 D_dk64_boot_80010620[5]; // P
+extern f64 D_dk64_boot_80010648; // rpi
+extern f64 D_dk64_boot_80010650; // phhi
+extern f64 D_dk64_boot_80010658; // phlo
+extern f32 D_dk64_boot_80010660; // zero
 
 float
 fsin( float x )
@@ -106,7 +106,7 @@ int	ix, xpt;
 
 			xsq = dx*dx;
 
-			poly = ((D_80010620[4]*xsq + D_80010620[3])*xsq + D_80010620[2])*xsq + D_80010620[1];
+			poly = ((D_dk64_boot_80010620[4]*xsq + D_dk64_boot_80010620[3])*xsq + D_dk64_boot_80010620[2])*xsq + D_dk64_boot_80010620[1];
 
 			result = dx + (dx*xsq)*poly;
 
@@ -124,20 +124,20 @@ int	ix, xpt;
 
 		/*  reduce argument to +/- pi/2  */
 
-		dn = dx*D_80010648;
+		dn = dx*D_dk64_boot_80010648;
 
 		n = ROUND(dn);
 		dn = n;
 
-		dx = dx - dn*D_80010650;
-		dx = dx - dn*D_80010658;	/* dx = x - n*pi */
+		dx = dx - dn*D_dk64_boot_80010650;
+		dx = dx - dn*D_dk64_boot_80010658;	/* dx = x - n*pi */
 
 		/* compute sin(dx) as before, negating result if n is odd
 		*/
 
 		xsq = dx*dx;
 
-		poly = ((D_80010620[4]*xsq + D_80010620[3])*xsq + D_80010620[2])*xsq + D_80010620[1];
+		poly = ((D_dk64_boot_80010620[4]*xsq + D_dk64_boot_80010620[3])*xsq + D_dk64_boot_80010620[2])*xsq + D_dk64_boot_80010620[1];
 
 		result = dx + (dx*xsq)*poly;
 
@@ -162,5 +162,5 @@ int	ix, xpt;
 
 	/* just give up and return 0.0 */
 
-	return ( D_80010660 );
+	return ( D_dk64_boot_80010660 );
 }

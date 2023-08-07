@@ -2,14 +2,14 @@
 #define RAREZIP_H
 #include <ultra64.h>
 
-extern u8 *D_80013AC0; // extern u8 *inbuf;
-extern u8 *D_80013AC4; //slide
-extern u32 D_80013AEC; // extern u32 inptr;
-extern u32 D_80013AF0; // wp
-extern struct huft *D_80013AB0; //unk
-extern u32 D_80013AB4; // extern u32 bb;
-extern u32 D_80013AB8; // extern u32 bk; 
-extern s32 D_80013ABC; //hufts
+extern u8 *D_dk64_boot_80013AC0; // extern u8 *inbuf;
+extern u8 *D_dk64_boot_80013AC4; //slide
+extern u32 D_dk64_boot_80013AEC; // extern u32 inptr;
+extern u32 D_dk64_boot_80013AF0; // wp
+extern struct huft *D_dk64_boot_80013AB0; //unk
+extern u32 D_dk64_boot_80013AB4; // extern u32 bb;
+extern u32 D_dk64_boot_80013AB8; // extern u32 bk; 
+extern s32 D_dk64_boot_80013ABC; //hufts
 
 extern u8 D_8000EDE0[]; // border
 extern u16 D_8000EDF4[]; // cplens
@@ -26,7 +26,7 @@ extern u16 mask_bits[]; // mask_bits
 
 //#define get_byte()  (inptr < insize ? inbuf[inptr++] : fill_inbuf(0))
 // #define get_byte()  (inbuf[inptr++])
-#define get_byte()  (D_80013AC0[D_80013AEC++])
+#define get_byte()  (D_dk64_boot_80013AC0[D_dk64_boot_80013AEC++])
 
 #ifdef CRYPT
   uch cc;

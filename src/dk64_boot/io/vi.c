@@ -2,9 +2,9 @@
 #include "viint.h"
 
 extern s32 osTvType;
-extern OSViMode D_80010210;
-extern OSViMode D_80010260;
-extern OSViMode D_800102B0;
+extern OSViMode D_dk64_boot_80010210;
+extern OSViMode D_dk64_boot_80010260;
+extern OSViMode D_dk64_boot_800102B0;
 
 static __OSViContext vi[2] = {0};
 __OSViContext *__osViCurr = &vi[0];
@@ -20,15 +20,15 @@ void __osViInit(void)
 	__osViCurr->framep = (void*)K0BASE;
 	if (osTvType == OS_TV_TYPE_PAL)
 	{
-		__osViNext->modep = &D_80010210;
+		__osViNext->modep = &D_dk64_boot_80010210;
 	}
 	else if (osTvType == OS_TV_TYPE_MPAL)
 	{
-		__osViNext->modep = &D_80010260;
+		__osViNext->modep = &D_dk64_boot_80010260;
 	}
 	else
 	{
-		__osViNext->modep = &D_800102B0;
+		__osViNext->modep = &D_dk64_boot_800102B0;
 	}
 	__osViNext->state = VI_STATE_BLACK;
 	__osViNext->control = __osViNext->modep->comRegs.ctrl;

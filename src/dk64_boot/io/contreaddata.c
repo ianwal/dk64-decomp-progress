@@ -4,8 +4,8 @@
 
 // contreaddata.c
 
-extern OSPifRam D_80014DC0; // __osContPifRam
-extern u8 D_80014E01; // __osMaxControllers
+extern OSPifRam D_dk64_boot_80014DC0; // __osContPifRam
+extern u8 D_dk64_boot_80014E01; // __osMaxControllers
 
 void func_dk64_boot_800074E0(void);
 
@@ -15,10 +15,10 @@ s32 func_dk64_boot_800073D0(OSMesgQueue *arg0) {
     __osSiGetAccess();
     if (__osContLastCmd != CONT_CMD_READ_BUTTON) {
         func_dk64_boot_800074E0();
-        __osSiRawStartDma(OS_WRITE, &D_80014DC0);
+        __osSiRawStartDma(OS_WRITE, &D_dk64_boot_80014DC0);
         osRecvMesg(arg0, NULL, OS_MESG_BLOCK);
     }
-    temp_v0 = __osSiRawStartDma(OS_READ, &D_80014DC0);
+    temp_v0 = __osSiRawStartDma(OS_READ, &D_dk64_boot_80014DC0);
     __osContLastCmd = CONT_CMD_READ_BUTTON;
     __osSiRelAccess();
     return temp_v0;
@@ -29,8 +29,8 @@ void func_dk64_boot_80007454(OSContPad *data) //void osContGetReadData(OSContPad
     u8 *ptr;
     __OSContReadFormat readformat;
     int i;
-    ptr = (u8 *)&D_80014DC0.ramarray;
-    for (i = 0; i < D_80014E01; i++, ptr += sizeof(__OSContReadFormat), data++)
+    ptr = (u8 *)&D_dk64_boot_80014DC0.ramarray;
+    for (i = 0; i < D_dk64_boot_80014E01; i++, ptr += sizeof(__OSContReadFormat), data++)
     {
         readformat = *(__OSContReadFormat *)ptr;
         data->errno = CHNL_ERR(readformat);
@@ -49,12 +49,12 @@ void func_dk64_boot_800074E0(void) //static void __osPackReadData(void)
     __OSContReadFormat readformat;
     int i;
 
-    ptr = (u8*)&D_80014DC0.ramarray;
-    for (i = 0; i < ARRLEN(D_80014DC0.ramarray); i++)
+    ptr = (u8*)&D_dk64_boot_80014DC0.ramarray;
+    for (i = 0; i < ARRLEN(D_dk64_boot_80014DC0.ramarray); i++)
     {
-        D_80014DC0.ramarray[i] = 0;
+        D_dk64_boot_80014DC0.ramarray[i] = 0;
     }
-    D_80014DC0.pifstatus = CONT_CMD_EXE;
+    D_dk64_boot_80014DC0.pifstatus = CONT_CMD_EXE;
     readformat.dummy = CONT_CMD_NOP;
     readformat.txsize = CONT_CMD_READ_BUTTON_TX;
     readformat.rxsize = CONT_CMD_READ_BUTTON_RX;
@@ -62,7 +62,7 @@ void func_dk64_boot_800074E0(void) //static void __osPackReadData(void)
     readformat.button = -1;
     readformat.stick_x = -1;
     readformat.stick_y = -1;
-    for(i = 0; i < D_80014E01; i++){
+    for(i = 0; i < D_dk64_boot_80014E01; i++){
         *(__OSContReadFormat*)ptr = readformat;
         ptr += sizeof(__OSContReadFormat);
     }

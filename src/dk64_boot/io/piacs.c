@@ -2,12 +2,12 @@
 #include "functions.h"
 
 extern s32 __osPiAccessQueueEnabled;
-extern void *D_80016320;
+extern void *D_dk64_boot_80016320;
 extern OSMesgQueue __osPiAccessQueue;
 
 void __osPiCreateAccessQueue(void) {
     __osPiAccessQueueEnabled = TRUE;
-    osCreateMesgQueue(&__osPiAccessQueue, &D_80016320, 1);
+    osCreateMesgQueue(&__osPiAccessQueue, &D_dk64_boot_80016320, 1);
     osSendMesg(&__osPiAccessQueue, NULL, 0);
 }
 

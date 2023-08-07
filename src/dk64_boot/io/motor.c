@@ -3,7 +3,7 @@
 #include "siint.h"
 
 extern u8 __osContLastCmd;
-extern OSPifRam D_80014E50[];
+extern OSPifRam D_dk64_boot_80014E50[];
 
 #ifndef NONMATCHING
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/motor/osMotorStartStop.s")
@@ -16,21 +16,21 @@ s32 osMotorStartStop(OSPfs *pfs, int arg1)
     u8 *ptr;
     __OSContRamReadFormat *ramreadformat;
 
-    ramreadformat = (__OSContRamReadFormat *) D_80014E50[pfs->channel].ramarray;
+    ramreadformat = (__OSContRamReadFormat *) D_dk64_boot_80014E50[pfs->channel].ramarray;
 
     if (!(pfs->status & 0x8))
         return PFS_ERR_INVALID;
 
     __osSiGetAccess();
-    D_80014E50[pfs->channel].pifstatus = 1;
+    D_dk64_boot_80014E50[pfs->channel].pifstatus = 1;
 
     for (i = 0; i < 0x20; i++)
         ramreadformat->data[i] = arg1;
 
     __osContLastCmd = CONT_CMD_END;
-    __osSiRawStartDma(OS_WRITE, D_80014E50[pfs->channel].ramarray);
+    __osSiRawStartDma(OS_WRITE, D_dk64_boot_80014E50[pfs->channel].ramarray);
     osRecvMesg(pfs->queue, NULL, OS_MESG_BLOCK);
-    __osSiRawStartDma(OS_READ, D_80014E50[pfs->channel].ramarray);
+    __osSiRawStartDma(OS_READ, D_dk64_boot_80014E50[pfs->channel].ramarray);
     osRecvMesg(pfs->queue, NULL, OS_MESG_BLOCK);
     ret = ramreadformat->rxsize & CHNL_ERR_MASK;
     if (ret == 0) {
@@ -116,7 +116,7 @@ s32 osMotorInit(OSMesgQueue *mq, OSPfs *pfs, int channel)
         return PFS_ERR_DEVICE;
 
     if (!(pfs->status & 0x8)) {
-        _MakeMotorData(channel, &D_80014E50[channel]);
+        _MakeMotorData(channel, &D_dk64_boot_80014E50[channel]);
     }
     pfs->status = 0x8;
     return 0;

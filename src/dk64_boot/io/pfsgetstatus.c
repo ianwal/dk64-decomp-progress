@@ -7,8 +7,8 @@
 void __osPfsRequestOneChannel(int channel);
 void __osPfsGetOneChannelData(int channel, OSContStatus *data);
 
-extern OSPifRam D_800164F0; // __osPfsPifRam
-extern u8 D_80010304;
+extern OSPifRam D_dk64_boot_800164F0; // __osPfsPifRam
+extern u8 D_dk64_boot_80010304;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsGetStatus.s")
 
@@ -19,12 +19,12 @@ s32 __osPfsGetStatus(OSMesgQueue *queue, int channel)
     s32 ret;
     OSMesg dummy;
     OSContStatus data;
-    D_80010304 = 0xFA;
+    D_dk64_boot_80010304 = 0xFA;
     ret = 0;
     __osPfsRequestOneChannel(channel);
-    ret = __osSiRawStartDma(OS_WRITE, &D_800164F0);
+    ret = __osSiRawStartDma(OS_WRITE, &D_dk64_boot_800164F0);
     osRecvMesg(queue, &dummy, OS_MESG_BLOCK);
-    ret = __osSiRawStartDma(OS_READ, &D_800164F0);
+    ret = __osSiRawStartDma(OS_READ, &D_dk64_boot_800164F0);
     osRecvMesg(queue, &dummy, OS_MESG_BLOCK);
     __osPfsGetOneChannelData(channel, &data);
     if (((data.status & CONT_CARD_ON) != 0) && ((data.status & CONT_CARD_PULL) != 0))
@@ -47,8 +47,8 @@ void __osPfsRequestOneChannel(int channel)
     int i;
 
     __osContLastCmd = CONT_CMD_REQUEST_STATUS;
-    D_800164F0.pifstatus = CONT_CMD_EXE;
-    ptr = (u8 *)&D_800164F0;
+    D_dk64_boot_800164F0.pifstatus = CONT_CMD_EXE;
+    ptr = (u8 *)&D_dk64_boot_800164F0;
 
     requestformat.txsize = CONT_CMD_REQUEST_STATUS_TX;
     requestformat.rxsize = CONT_CMD_REQUEST_STATUS_RX;
@@ -70,7 +70,7 @@ void __osPfsGetOneChannelData(int channel, OSContStatus *data)
     u8 *ptr;
     __OSContRequesFormatShort requestformat;
     int i;
-    ptr = (u8*)&D_800164F0;
+    ptr = (u8*)&D_dk64_boot_800164F0;
     for (i = 0; i < channel; i++)
         ptr++;
     requestformat = *(__OSContRequesFormatShort *)ptr;

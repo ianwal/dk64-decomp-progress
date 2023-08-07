@@ -66,11 +66,11 @@
  * ====================================================================
  */
 
-extern f64 D_800105D0[5]; // P
-extern f64 D_800105F8; // rpi
-extern f64 D_80010600; // pihi
-extern f64 D_80010608; // pilo
-extern f32 D_80010610; // zero
+extern f64 D_dk64_boot_800105D0[5]; // P
+extern f64 D_dk64_boot_800105F8; // rpi
+extern f64 D_dk64_boot_80010600; // pihi
+extern f64 D_dk64_boot_80010608; // pilo
+extern f32 D_dk64_boot_80010610; // zero
 
 float
 fcos( float x )
@@ -102,18 +102,18 @@ int	ix, xpt;
 
 		dx = absx;
 
-		dn = dx*D_800105F8 + 0.5;
+		dn = dx*D_dk64_boot_800105F8 + 0.5;
 		n = ROUND(dn);
 		dn = n;
 
 		dn -= 0.5;
 
-		dx = dx - dn*D_80010600;
-		dx = dx - dn*D_80010608;	/* dx = x - (n - 0.5)*pi */
+		dx = dx - dn*D_dk64_boot_80010600;
+		dx = dx - dn*D_dk64_boot_80010608;	/* dx = x - (n - 0.5)*pi */
 
 		xsq = dx*dx;
 
-		poly = ((D_800105D0[4]*xsq + D_800105D0[3])*xsq + D_800105D0[2])*xsq + D_800105D0[1];
+		poly = ((D_dk64_boot_800105D0[4]*xsq + D_dk64_boot_800105D0[3])*xsq + D_dk64_boot_800105D0[2])*xsq + D_dk64_boot_800105D0[1];
 
 		result = dx + (dx*xsq)*poly;
 
@@ -139,5 +139,5 @@ int	ix, xpt;
 
 	/* just give up and return 0.0 */
 
-	return ( D_80010610 );
+	return ( D_dk64_boot_80010610 );
 }
