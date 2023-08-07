@@ -1,9 +1,25 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 __osPiAccessQueueEnabled;
+extern void *D_80016320;
+extern OSMesgQueue __osPiAccessQueue;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/piacs/__osPiCreateAccessQueue.s")
+void __osPiCreateAccessQueue(void) {
+    __osPiAccessQueueEnabled = TRUE;
+    osCreateMesgQueue(&__osPiAccessQueue, &D_80016320, 1);
+    osSendMesg(&__osPiAccessQueue, NULL, 0);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/piacs/__osPiGetAccess.s")
+void __osPiGetAccess(void) {
+    void *sp1C;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/piacs/__osPiRelAccess.s")
+    if (!__osPiAccessQueueEnabled) {
+        __osPiCreateAccessQueue();
+    }
+    osRecvMesg(&__osPiAccessQueue, &sp1C, 1);
+}
+
+void __osPiRelAccess(void) {
+    osSendMesg(&__osPiAccessQueue, NULL, 0);
+}

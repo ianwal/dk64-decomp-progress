@@ -1,5 +1,6 @@
 #include <ultra64.h>
-#include "functions.h"
+#include <rcp.h>
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/spsetstat/__osSpSetStatus.s")
+void __osSpSetStatus(u32 data) {
+    IO_WRITE(SP_STATUS_REG, data);
+}

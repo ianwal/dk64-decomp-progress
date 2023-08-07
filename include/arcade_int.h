@@ -346,17 +346,17 @@ extern D_8004C730;
 extern s16 D_8004C732;
 
 /* global_asm */
-extern u8  D_807444FC;
-extern Gfx *D_8076A050[];
-extern s32 D_8076A048;
-extern void *D_8076A080;
-extern s32 D_8076A088;
-extern s32 D_8076A08C;
-extern u8  D_8076A0B1;
-extern u8  D_80767CE8;
-extern f32 D_807FD888;
-extern u32 D_8076D1F8; // ??
-extern s32 D_80770DF8;
-extern GlobalASMStruct17 *D_807ECDE8;
-extern u8 *D_80746800;
+extern u8  D_global_asm_807444FC;
+extern Gfx *D_global_asm_8076A050[];
+extern s32 D_global_asm_8076A048;
+extern void *D_global_asm_8076A080;
+extern s32 D_global_asm_8076A088;
+extern s32 D_global_asm_8076A08C;
+extern u8  D_global_asm_8076A0B1;
+extern u8  D_global_asm_80767CE8;
+extern f32 D_global_asm_807FD888;
+extern u32 D_global_asm_8076D1F8; // ??
+extern s32 D_global_asm_80770DF8;
+extern GlobalASMStruct17 *D_global_asm_807ECDE8;
+extern u8 *D_global_asm_80746800;
 #endif /* ARCADE_INTERNAL_H */

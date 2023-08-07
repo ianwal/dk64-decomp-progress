@@ -1,5 +1,6 @@
-#include <ultra64.h>
-#include "functions.h"
+// #include <ultra64.h>
+#include <rcp.h>
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/dpgetstat/osDpGetStatus.s")
+u32 osDpGetStatus() {
+    return IO_READ(DPC_STATUS_REG);
+}

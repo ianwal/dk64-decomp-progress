@@ -2,4 +2,20 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/thread/__osDequeueThread.s")
+void __osDequeueThread(OSThread **queue, OSThread *t)
+{
+	register OSThread *pred;
+	register OSThread *succ;
+	pred = (OSThread *)queue; // This is actually legit..
+	succ = pred->next;
+
+	while (succ != NULL) {
+		if (succ == t) {
+			pred->next = t->next;
+			return;
+		}
+
+		pred = succ;
+		succ = pred->next;
+	}
+}

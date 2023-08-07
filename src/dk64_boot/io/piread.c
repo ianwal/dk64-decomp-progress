@@ -1,5 +1,11 @@
 #include <ultra64.h>
-#include "functions.h"
+#include "piint.h"
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/piread/osPiReadIo.s")
+s32 osPiReadIo(u32 devAddr, u32 *data)
+{
+    register s32 ret;
+    __osPiGetAccess();
+    ret = osPiRawReadIo(devAddr, data);
+    __osPiRelAccess();
+    return ret;
+}

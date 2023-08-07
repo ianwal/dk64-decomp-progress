@@ -1,5 +1,9 @@
 #include <ultra64.h>
-#include "functions.h"
+#include "viint.h"
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/viswapbuf/osViSwapBuffer.s")
+void osViSwapBuffer(void* frameBufPtr) {
+    u32 saveMask = __osDisableInt();
+    __osViNext->framep = frameBufPtr;
+    __osViNext->state |= VI_STATE_10;
+    __osRestoreInt(saveMask);
+}

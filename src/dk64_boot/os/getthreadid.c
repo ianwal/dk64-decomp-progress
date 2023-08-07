@@ -1,5 +1,9 @@
 #include <ultra64.h>
-#include "functions.h"
+#include "osint.h"
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/getthreadid/osGetThreadId.s")
+OSId osGetThreadId(OSThread *thread)
+{
+    if (thread == NULL)
+        thread = __osRunningThread;
+    return thread->id;
+}

@@ -1,5 +1,12 @@
 #include <ultra64.h>
-#include "functions.h"
+#include "viint.h"
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/viblack/osViBlack.s")
+void osViBlack(u8 active)
+{
+    register u32 saveMask = __osDisableInt();
+    if (active)
+        __osViNext->state |= VI_STATE_BLACK;
+    else
+        __osViNext->state &= ~VI_STATE_BLACK;
+    __osRestoreInt(saveMask);
+}

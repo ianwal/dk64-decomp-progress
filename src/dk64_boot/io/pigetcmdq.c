@@ -1,5 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern OSDevMgr __osPiDevMgr;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pigetcmdq/osPiGetCmdQueue.s")
+OSMesgQueue *osPiGetCmdQueue(void) {
+    if (!__osPiDevMgr.active)
+        return NULL;
+    return __osPiDevMgr.cmdQueue;
+}

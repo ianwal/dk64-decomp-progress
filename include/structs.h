@@ -50,7 +50,7 @@ typedef struct {
     Struct807F5FD4_unk0 *unk0[2];
     s32 unk8;
 } Struct807F5FD4;
-extern Struct807F5FD4 *D_807F5FD4;
+extern Struct807F5FD4 *D_global_asm_807F5FD4;
 
 typedef struct HeapHeader HeapHeader;
 
@@ -472,7 +472,7 @@ typedef struct {
 } Struct807FBB70_unk278;
 
 // TODO: What type is this actually?
-// D_807FBB70
+// D_global_asm_807FBB70
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -790,7 +790,7 @@ typedef struct player_additional_actor_data {
     s16 unk50; // Used
     s16 unk52;
     f32 unk54;
-    s32 unk58; // Used, related to D_80767CC0
+    s32 unk58; // Used, related to D_global_asm_80767CC0
     s32 unk5C;
     s32 unk60;
     s16 unk64; // Used
@@ -2103,7 +2103,7 @@ typedef struct {
     u8 unk17;
 } Struct8075EB80;
 
-extern Struct8075EB80 D_8075EB80[];
+extern Struct8075EB80 D_global_asm_8075EB80[];
 
 // TODO: Use that clever tuple thing from BKomp
 typedef struct {
@@ -2185,7 +2185,7 @@ typedef struct {
 
 typedef struct Struct807FDC90 Struct807FDC90;
 
-// Use this for D_807FDC90
+// Use this for D_global_asm_807FDC90
 struct Struct807FDC90 {
     Struct807FDC90 *unk0; // TODO: This type may not be correct
     Actor *unk4;

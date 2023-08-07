@@ -1,5 +1,6 @@
 #include <ultra64.h>
-#include "functions.h"
+#include "osint.h"
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/settime/osSetTime.s")
+void osSetTime(OSTime time) {
+    __osCurrentTime = time;
+}

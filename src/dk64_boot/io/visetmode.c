@@ -1,5 +1,14 @@
 #include <ultra64.h>
-#include "functions.h"
+#include <ultra64.h>
+#include "viint.h"
 
+void osViSetMode(OSViMode *modep)
+{
+    register u32 saveMask;
+    saveMask = __osDisableInt();
+    __osViNext->modep = modep;
+    __osViNext->state = VI_STATE_01;
+    __osViNext->control = __osViNext->modep->comRegs.ctrl;
+    __osRestoreInt(saveMask);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/visetmode/osViSetMode.s")

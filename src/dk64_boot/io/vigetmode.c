@@ -1,5 +1,12 @@
 #include <ultra64.h>
-#include "functions.h"
+#include "viint.h"
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/vigetmode/osViGetCurrentMode.s")
+u32 osViGetCurrentMode(void)
+{
+    register u32 savedMask;
+    register u32 modeType;
+    savedMask = __osDisableInt();
+    modeType = __osViCurr->modep->type;
+    __osRestoreInt(savedMask);
+    return modeType;
+}

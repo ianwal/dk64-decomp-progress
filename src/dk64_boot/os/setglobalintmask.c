@@ -1,5 +1,9 @@
 #include <ultra64.h>
-#include "functions.h"
+#include <R4300.h>
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/setglobalintmask/__osSetGlobalIntMask.s")
+void __osSetGlobalIntMask(OSHWIntr mask)
+{
+    register u32 saveMask = __osDisableInt();
+    __OSGlobalIntMask |= mask;
+    __osRestoreInt(saveMask);
+}

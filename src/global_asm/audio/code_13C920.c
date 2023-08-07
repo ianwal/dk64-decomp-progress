@@ -1,30 +1,30 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern u8 D_807FF0F0;
-extern u8 D_807FF0F1;
-extern s8 D_807FF0F2;
-extern u8 D_807FF0F4[];
-extern u8 D_807FF0F6[];
-extern u8 D_807FF0F8[];
+extern u8 D_global_asm_807FF0F0;
+extern u8 D_global_asm_807FF0F1;
+extern s8 D_global_asm_807FF0F2;
+extern u8 D_global_asm_807FF0F4[];
+extern u8 D_global_asm_807FF0F6[];
+extern u8 D_global_asm_807FF0F8[];
 
 void func_global_asm_80737CF4(s32 arg0, s32 arg1);
 
 void func_global_asm_80737C20(s32 arg0) {
     s32 sp24;
 
-    D_807FF0F0 = 0;
-    D_807FF0F1 = 0;
-    D_807FF0F2 = 0;
+    D_global_asm_807FF0F0 = 0;
+    D_global_asm_807FF0F1 = 0;
+    D_global_asm_807FF0F2 = 0;
     switch ((u8)arg0) {
         case 1:
-            D_807FF0F1 = 1;
+            D_global_asm_807FF0F1 = 1;
             break;
         case 3:
-            D_807FF0F2 = 1;
+            D_global_asm_807FF0F2 = 1;
             break;
         case 4:
-            D_807FF0F0 = 1;
+            D_global_asm_807FF0F0 = 1;
             break;
     }
     for (sp24 = 0; sp24 < 2; sp24++) {
@@ -34,32 +34,32 @@ void func_global_asm_80737C20(s32 arg0) {
 
 void func_global_asm_80737CF4(s32 arg0, s32 arg1) {
     if (arg1 == 0) {
-        arg1 = D_807FF0F8[arg0];
+        arg1 = D_global_asm_807FF0F8[arg0];
     }
-    D_807FF0F4[arg0] = 0;
-    D_807FF0F6[arg0] = 0;
+    D_global_asm_807FF0F4[arg0] = 0;
+    D_global_asm_807FF0F6[arg0] = 0;
     switch (arg1) {
         case 2:
-            if (D_807FF0F0 != 0) {
-                D_807FF0F6[arg0] = 1;
+            if (D_global_asm_807FF0F0 != 0) {
+                D_global_asm_807FF0F6[arg0] = 1;
             }
             break;
         case 3:
-            if (D_807FF0F0 != 0) {
-                D_807FF0F4[arg0] = 1;
+            if (D_global_asm_807FF0F0 != 0) {
+                D_global_asm_807FF0F4[arg0] = 1;
             }
             break;
         case 4:
-            if (D_807FF0F1 == 0) {
-                D_807FF0F4[arg0] = 1;
+            if (D_global_asm_807FF0F1 == 0) {
+                D_global_asm_807FF0F4[arg0] = 1;
             }
             break;
         case 5:
-            if (D_807FF0F1 == 0) {
-                D_807FF0F4[arg0] = 1;
-                D_807FF0F6[arg0] = 1;
+            if (D_global_asm_807FF0F1 == 0) {
+                D_global_asm_807FF0F4[arg0] = 1;
+                D_global_asm_807FF0F6[arg0] = 1;
             }
             break;
     }
-    D_807FF0F8[arg0] = arg1;
+    D_global_asm_807FF0F8[arg0] = arg1;
 }

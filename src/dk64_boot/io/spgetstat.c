@@ -1,5 +1,6 @@
 #include <ultra64.h>
-#include "functions.h"
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/spgetstat/__osSpGetStatus.s")
+u32 __osSpGetStatus()
+{
+    return IO_READ(SP_STATUS_REG);
+}

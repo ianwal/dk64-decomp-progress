@@ -1,5 +1,7 @@
-#include <ultra64.h>
-#include "functions.h"
 
+#include <rcp.h>
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/aigetlen/osAiGetLength.s")
+u32 osAiGetLength(void)
+{
+    return IO_READ(AI_LEN_REG);
+}

@@ -82,11 +82,11 @@ standardSearchColumns = {
     "actors": [
         "current_actor_pointer",
         "player_pointer",
-        "D_807FBB44",
-        "D_807FBB48",
-        "D_807FBB4C",
-        "D_807FBD6C",
-        "D_807FDC94",
+        "D_global_asm_807FBB44",
+        "D_global_asm_807FBB48",
+        "D_global_asm_807FBB4C",
+        "D_global_asm_807FBD6C",
+        "D_global_asm_807FDC94",
     ],
     "rand": [
         "rand",
@@ -109,11 +109,11 @@ standardSearchColumns = {
         "cc_number_of_players",
         "current_character_index",
     ],
-    "D_807FBB70": [
-        "D_807FBB70",
+    "D_global_asm_807FBB70": [
+        "D_global_asm_807FBB70",
     ],
-    "D_807F5FD4": [
-        "D_807F5FD4",
+    "D_global_asm_807F5FD4": [
+        "D_global_asm_807F5FD4",
     ],
     "func_global_asm_8071498C": [
         "func_global_asm_8071498C",

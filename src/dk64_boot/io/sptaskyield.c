@@ -1,5 +1,7 @@
 #include <ultra64.h>
-#include "functions.h"
+#include <rcp.h>
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/sptaskyield/osSpTaskYield.s")
+void osSpTaskYield(void)
+{
+    __osSpSetStatus(SP_SET_YIELD);
+}

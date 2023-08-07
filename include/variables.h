@@ -3,12 +3,12 @@ extern s8 story_skip;
 extern s8 widescreen_enabled;
 extern PlayerAdditionalActorData *extra_player_info_pointer;
 extern Actor *current_actor_pointer;
-extern Actor *D_807FBB44;
-extern Actor *D_807FBB48;
-extern GlobalASMStruct35 D_807FBB70;
-extern Actor *D_807FBD6C;
-extern Actor *D_807FDC94;
-extern EnemyInfo *D_807FDC98;
+extern Actor *D_global_asm_807FBB44;
+extern Actor *D_global_asm_807FBB48;
+extern GlobalASMStruct35 D_global_asm_807FBB70;
+extern Actor *D_global_asm_807FBD6C;
+extern Actor *D_global_asm_807FDC94;
+extern EnemyInfo *D_global_asm_807FDC98;
 extern u8 current_character_index[];
 extern CharacterChange *character_change_array;
 extern Actor *player_pointer;
@@ -24,25 +24,25 @@ extern u8 game_mode;
 extern u8 game_mode_copy;
 extern u16 newly_pressed_input;
 extern u16 newly_pressed_input_copy;
-extern Struct807FDC90 *D_807FDC90; // Array?
-extern CharacterSpawner *D_807FDC9C; // Character spawner array
+extern Struct807FDC90 *D_global_asm_807FDC90; // Array?
+extern CharacterSpawner *D_global_asm_807FDC9C; // Character spawner array
 extern s32 object_timer;
 extern u8 is_autowalking;
 extern ActorSpawner *actor_spawner_pointer;
-extern PlayerProgress D_807FC950[4];
+extern PlayerProgress D_global_asm_807FC950[4];
 extern u16 enemies_killed;
 extern Chunk *chunk_array_pointer;
 extern u8 current_file;
 
-extern u8 D_807444FC;
+extern u8 D_global_asm_807444FC;
 
-extern u16 D_807FBB34;
-extern s32 D_807FBB64; // shadow_display_bitfield, shockwave_bitfield, long_distance_actor_spawn
+extern u16 D_global_asm_807FBB34;
+extern s32 D_global_asm_807FBB64; // shadow_display_bitfield, shockwave_bitfield, long_distance_actor_spawn
 
-extern Actor *D_807F5D10;
+extern Actor *D_global_asm_807F5D10;
 
-extern u8 D_8076A0AB; // Map
-extern s16 D_807F6240[];
+extern u8 D_global_asm_8076A0AB; // Map
+extern s16 D_global_asm_807F6240[];
 
 typedef struct {
     s32 unk0; // Used
@@ -56,7 +56,7 @@ typedef struct {
     s32 unk20; // Used
 } Struct807552E4;
 
-extern Struct807552E4 D_807552E4;
+extern Struct807552E4 D_global_asm_807552E4;
 
 typedef struct {
     u16 unk0;
@@ -64,7 +64,7 @@ typedef struct {
     s8 unk3;
 } Struct807ECD58;
 
-extern Struct807ECD58 D_807ECD58;
+extern Struct807ECD58 D_global_asm_807ECD58;
 
 typedef struct Struct807FD610 {
     s32 unk0; // Timer that ticks up once per frame
@@ -83,10 +83,10 @@ typedef struct Struct807FD610 {
     s16 unk32;
 } Struct807FD610;
 
-extern Struct807FD610 D_807FD610[]; // Often indexed by cc_player_index
-extern OSPfs D_807F02D0[];
+extern Struct807FD610 D_global_asm_807FD610[]; // Often indexed by cc_player_index
+extern OSPfs D_global_asm_807F02D0[];
 
-extern ALSeqPlayer *D_8076BF20[];
+extern ALSeqPlayer *D_global_asm_8076BF20[];
 
 typedef struct {
     s16 unk0; // X Position
@@ -113,7 +113,7 @@ typedef struct Struct807FDCA0 {
     Actor *unk1C;
     u8 unk20; // Used
 } Struct807FDCA0;
-extern Struct807FDCA0 *D_807FDCA0; // TODO: What is this datatype?
+extern Struct807FDCA0 *D_global_asm_807FDCA0; // TODO: What is this datatype?
 
 typedef struct Struct807F0470 {
     s32 unk0;
@@ -127,7 +127,7 @@ typedef struct Struct807F0470 {
     u8 unk13;
 } Struct807F0470;
 
-extern Struct807F0470 D_807F0470[];
+extern Struct807F0470 D_global_asm_807F0470[];
 
 typedef struct {
     s32 unk0;
@@ -138,14 +138,14 @@ typedef struct {
     s32 frame_count;
 } Struct80767A40;
 
-extern Struct80767A40 D_80767A40; // TODO: Might be an array, see func_global_asm_805FBC5C
+extern Struct80767A40 D_global_asm_80767A40; // TODO: Might be an array, see func_global_asm_805FBC5C
 
 typedef struct {
     Actor* unk0;
     s32 unk4;
 } GlobalASMStruct53;
 
-extern GlobalASMStruct53 D_807FB930[];
+extern GlobalASMStruct53 D_global_asm_807FB930[];
 
 typedef struct global_asm_struct_58 GlobalASMStruct58;
 
@@ -200,7 +200,7 @@ struct global_asm_struct_58 {
     GlobalASMStruct58 *next; // used
 };
 
-extern GlobalASMStruct58 *D_807F93C0;
+extern GlobalASMStruct58 *D_global_asm_807F93C0;
 
 // Array of structs 0x10 big
 // TODO: What are these actually?
@@ -210,7 +210,7 @@ typedef struct Temp10Big {
     s32 unk8;
     s32 unkC;
 } Temp10Big;
-extern Temp10Big D_8075C410[];
+extern Temp10Big D_global_asm_8075C410[];
 
 typedef struct DKTVExtraData {
     f32 startingXPosition; // 0x00
@@ -224,11 +224,11 @@ typedef struct DKTVExtraData {
     CharacterProgress characterProgress; // 0x12
 } DKTVExtraData;
 
-extern DKTVExtraData D_807ECE20;
+extern DKTVExtraData D_global_asm_807ECE20;
 
-extern ObjectModel2 *D_807F6000;
+extern ObjectModel2 *D_global_asm_807F6000;
 
-extern u16 D_80744710[]; // = { // Permanent flag index lookup array
+extern u16 D_global_asm_80744710[]; // = { // Permanent flag index lookup array
 //     26, // Key 1 Collected
 //     74, // Key 2 Collected
 //     138, // Key 3 Collected
@@ -239,10 +239,10 @@ extern u16 D_80744710[]; // = { // Permanent flag index lookup array
 //     380, // Key 8 Collected
 // }; // Permanent flag index lookup array
 
-extern s32 D_80741F40;
-extern s32 D_807432D0;
-extern s32 D_80760840;
-extern s32 D_80760C60;
+extern s32 D_global_asm_80741F40;
+extern s32 D_global_asm_807432D0;
+extern s32 D_global_asm_80760840;
+extern s32 D_global_asm_80760C60;
 typedef struct gASMStruct1 {
     s32 *unk0;
     s32 *unk4;
@@ -259,5 +259,5 @@ typedef struct gASMStruct3 {
     u8 unk0[0x44];
     s16 unk44;
 }gASMStruct3;
-extern gASMStruct1 D_807F0570;
-extern gASMStruct2 D_807F0588;
+extern gASMStruct1 D_global_asm_807F0570;
+extern gASMStruct2 D_global_asm_807F0588;
