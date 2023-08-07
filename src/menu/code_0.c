@@ -26,5 +26,4 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_800252AC.s")
 
-void func_menu_80025AE0(void) {
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_80025AE0.s")

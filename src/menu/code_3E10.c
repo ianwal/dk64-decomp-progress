@@ -16,8 +16,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80028834.s")
 
-void func_menu_80028C18(void) {
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80028C18.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80028C20.s")
 
@@ -118,9 +117,6 @@ void func_menu_80028C18(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002FE08.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002FEBC.s")
-
-void func_menu_80030250(void) {
-}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80030258.s")
 

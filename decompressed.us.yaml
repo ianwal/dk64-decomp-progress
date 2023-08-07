@@ -4,6 +4,7 @@ options:
   find_file_boundaries: True
   compiler: "IDO"
   platform: n64
+  auto_decompile_empty_functions: False
   asm_end_label: "endlabel"
   asm_data_macro: dlabel
   asm_jtbl_label_macro: jlabel

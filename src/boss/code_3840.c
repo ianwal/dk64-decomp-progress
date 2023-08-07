@@ -20,9 +20,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_800286B8.s")
 
-void func_boss_80028818(void) {
-}
-
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_80028820.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_80028878.s")
