@@ -7,11 +7,11 @@
 
 #define HALF_A_SECOND OS_USEC_TO_CYCLES(500000)
 
-u32 D_dk64_boot_800100D0 = 0; // __osContinitialized
+extern u32 D_dk64_boot_800100D0; // __osContinitialized
 extern OSPifRam D_dk64_boot_80014DC0; // __osContPifRam
 extern u8 D_dk64_boot_80014E01; // __osMaxControllers
-OSMesgQueue D_dk64_boot_80014E28; // __osEepromTimerQ
-OSMesg D_dk64_boot_80014E40; // __osEepromTimerMsg
+extern OSMesgQueue D_dk64_boot_80014E28; // __osEepromTimerQ
+extern OSMesg D_dk64_boot_80014E40; // __osEepromTimerMsg
 
 s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *data)
 {

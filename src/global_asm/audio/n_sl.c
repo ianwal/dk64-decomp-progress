@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-extern N_ALGlobals *n_alGlobals=0;
+extern N_ALGlobals *n_alGlobals;
 extern N_ALSynth *n_syn;
 
 void n_alInit(N_ALGlobals *g, ALSynConfig *c)
