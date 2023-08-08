@@ -171,7 +171,7 @@ verify: $(DECOMPRESSED_BASEROM) $(UNCOMPRESSED_Z64)
 	@$(PRINT) "def apply(config, args):\n" > diff_settings.py
 	@$(PRINT) "\tconfig[\"baseimg\"] = \"$(DECOMPRESSED_BASEROM)\"\n" >> diff_settings.py
 	@$(PRINT) "\tconfig[\"myimg\"] = \"$(UNCOMPRESSED_Z64)\"\n" >> diff_settings.py
-	@$(PRINT) "\tconfig[\"mapfile\"] = \"$(Z64:.z64=.map)\"\n" >> diff_settings.py
+	@$(PRINT) "\tconfig[\"mapfile\"] = \"$(UNCOMPRESSED_Z64:.uncompressed.z64=.map)\"\n" >> diff_settings.py
 	@$(PRINT) "\tconfig[\"source_directories\"] = ['$(SRC_ROOT)', 'include']\n" >> diff_settings.py
 	@$(PRINT) "\tconfig[\"makeflags\"] = ['-s']\n" >> diff_settings.py
 

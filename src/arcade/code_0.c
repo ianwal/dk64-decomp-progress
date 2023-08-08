@@ -3448,53 +3448,43 @@ void func_arcade_8003159C(Gfx **arg0) {
     if (D_arcade_8004C724 == 3) {
         func_arcade_800244E4(0x00, 0xff, 0xff, 0xff);
         func_arcade_80024508(0x78, 0x3b);
-        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A840, &D_arcade_8004A774);
         func_dk64_boot_800031E0(sp50, "NAME %.3s", &D_arcade_8004A774);
         func_arcade_8002451C(&spA0, sp50);
         func_arcade_80024508(0xA0, 0x41);
-        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A84C);
         func_dk64_boot_800031E0(sp50, "---");
         func_arcade_8002451C(&spA0, sp50);
         if (D_arcade_8004C6DC < 1800) {
             func_arcade_80024508(0x60, 0x7b);
-            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A850, 30 - D_arcade_8004C6DC/60);
             func_dk64_boot_800031E0(sp50, "REGI TIME <%02d>", 30 - D_arcade_8004C6DC/60);
         } else {//L800316A0
             func_arcade_80024508(0x40, 0x7b);
-            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A864);
             func_dk64_boot_800031E0(sp50, "YOUR NAME WAS");
             func_arcade_8002451C(&spA0, sp50);
 
             func_arcade_80024508(0xb0, 0x7b);
-            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A874);
             func_dk64_boot_800031E0(sp50, "REGISTERED.");
 
         }//L800316E8
         func_arcade_8002451C(&spA0, sp50);
         func_arcade_800244E4(0xff, 0x00, 0x00, 0xff);
         func_arcade_80024508(0x58, 0x2b);
-        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A880);
         func_dk64_boot_800031E0(sp50, "NAME REGISTRATION");
         func_arcade_8002451C(&spA0, sp50);
 
         func_arcade_800244E4(0x00, 0xff, 0x00, 0xff);
         func_arcade_80024508(0x58, 0x4b);
-        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A894);
         func_dk64_boot_800031E0(sp50, "A B C D E F G H I J");
         func_arcade_8002451C(&spA0, sp50);
         
         func_arcade_80024508(0x58, 0x5b);
-        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8A8);
         func_dk64_boot_800031E0(sp50, "K L M N O P Q R S T");
         func_arcade_8002451C(&spA0, sp50);
         
         func_arcade_80024508(0x58, 0x6b);
-        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8BC);
         func_dk64_boot_800031E0(sp50, "U V W X Y Z . -");
         func_arcade_8002451C(&spA0, sp50);
 
         func_arcade_80024508(0xd4, 0x6b);
-        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8CC);
         func_dk64_boot_800031E0(sp50, "ba");
         func_arcade_8002451C(&spA0, sp50);
     }//L800317E0
@@ -3508,10 +3498,8 @@ void func_arcade_8003159C(Gfx **arg0) {
             && D_arcade_8004C6DC & 0x20
             && D_arcade_8004C724 == 3
         ) {
-            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8D0, &D_arcade_8004A82C[i]);
             func_dk64_boot_800031E0(sp50, "%.3s", &D_arcade_8004A82C[i]);
         } else {//L80031888
-            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8D8, D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
             func_dk64_boot_800031E0(sp50, "%.3s  %06d  %.3s", D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
         }//L800318B8
         func_arcade_8002451C(&spA0, sp50);
@@ -3519,7 +3507,6 @@ void func_arcade_8003159C(Gfx **arg0) {
 
     func_arcade_800244E4(0x00, 0xff, 0x00, 0xff);
     func_arcade_80024508(0xb8, 0xdb);
-    // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8EC);
     func_dk64_boot_800031E0(sp50, "CREDIT 00");
     func_arcade_8002451C(&spA0, sp50);
 
