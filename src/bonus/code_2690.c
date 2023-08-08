@@ -137,7 +137,6 @@ typedef struct {
 } AAD_bonus_80027548;
 
 void func_global_asm_80626F8C(f32, f32, f32, f32*, f32*, s32, f32, s32);
-f32 func_bonus_8000AC60(f32);
 
 /*
 // TODO: Extremely close, stack
@@ -154,7 +153,7 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
     aaD->unk1E = sp50;
     aaD->unk20 = sp4C;
     current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(arg0, arg2, current_actor_pointer->x_position, current_actor_pointer->z_position), 10.0f);
-    current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, ((func_global_asm_80611BB4(current_actor_pointer->y_position - arg1, func_bonus_8000AC60(((current_actor_pointer->x_position - arg0) * (current_actor_pointer->x_position - arg0)) + ((current_actor_pointer->z_position - arg2) * (current_actor_pointer->z_position - arg2)))) * 2048.0) / D_bonus_8002DD30) + D_bonus_8002DD38, 5.0f);
+    current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, ((func_global_asm_80611BB4(current_actor_pointer->y_position - arg1, sqrtf(((current_actor_pointer->x_position - arg0) * (current_actor_pointer->x_position - arg0)) + ((current_actor_pointer->z_position - arg2) * (current_actor_pointer->z_position - arg2)))) * 2048.0) / D_bonus_8002DD30) + D_bonus_8002DD38, 5.0f);
     if ((D_global_asm_807FD63C & 0xE000) && (current_actor_pointer->control_state == 0)) {
         sp40 = 1;
         if (aaD->unk22 != 0) {

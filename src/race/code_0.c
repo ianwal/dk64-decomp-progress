@@ -74,7 +74,6 @@ typedef struct {
 
 extern void func_race_8002CFF0();
 
-f32 func_dk64_boot_8000AC60(f32);
 f32 func_global_asm_80665E48(f32, f32, f32, f32);
 extern f64 D_race_8002FDD8;
 extern f64 D_race_8002FDE0;
@@ -131,7 +130,7 @@ void func_race_80024000(void) {
     }
     sp44 = current_actor_pointer->unkB8;
     sp40 = func_global_asm_80612794(current_actor_pointer->unkE0 * D_race_8002FD00) * 20.0f;
-    if (func_dk64_boot_8000AC60(((current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0) * (current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0)) + ((current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4) * (current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4))) < D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk7) {
+    if (sqrtf(((current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0) * (current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0)) + ((current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4) * (current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4))) < D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk7) {
         var_f12 = ABS(current_actor_pointer->y_position - (f32)D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk2);
         if (var_f12 < 80.0f) {
             if (D_global_asm_807FDC90->unk25 < (D_global_asm_807FDCA0->unk10 - 1)) {
@@ -169,7 +168,7 @@ void func_race_80024000(void) {
     }
     var_f20 += (func_global_asm_80612794(current_actor_pointer->unkEE) * var_f0) + (func_global_asm_80612790(current_actor_pointer->unkEE) * sp50);
     var_f22 += (func_global_asm_80612790(current_actor_pointer->unkEE) * var_f0) - (func_global_asm_80612794(current_actor_pointer->unkEE) * sp50);
-    sp44 = func_dk64_boot_8000AC60((var_f20 * var_f20) + (var_f22 * var_f22));
+    sp44 = sqrtf((var_f20 * var_f20) + (var_f22 * var_f22));
     temp_f0_2 = func_global_asm_80611BB4(var_f20, var_f22);
     if (current_actor_pointer->y_acceleration != -20.0f && current_actor_pointer->y_acceleration != -360.0f) {
         current_actor_pointer->unkB8 = D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk8 * 10.0;
@@ -352,7 +351,7 @@ void func_race_80026098(Struct80026098 *arg0, Struct80026098 *arg1) {
     f32 sp24;
 
     sp2E = (func_global_asm_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / D_race_8002FDD8;
-    sp24 = current_actor_pointer->unkB8 * D_race_8002FDE0 * func_dk64_boot_8000AC60(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
+    sp24 = current_actor_pointer->unkB8 * D_race_8002FDE0 * sqrtf(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
     current_actor_pointer->x_position = arg1->unk0 + (sp24 * func_global_asm_80612794(sp2E));
     current_actor_pointer->z_position = arg1->unk8 + (sp24 * func_global_asm_80612790(sp2E));
     current_actor_pointer->y_position = (D_race_8002FDE8 * (arg0->unk4 - current_actor_pointer->y_position)) + current_actor_pointer->y_position;

@@ -439,7 +439,6 @@ void func_critter_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg
     arg0[3][3] = 1.0f;
 }
 
-void func_critter_8000A6C0(s32 *, void *);
 void func_critter_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 extern f32 D_critter_8002A02C;
 
@@ -469,7 +468,7 @@ void func_critter_80025A3C(Struct80025A3C *arg0) {
     f32 sp30[4][4];
 
     func_critter_800258B0(&sp30, -arg0->unk2, arg0->unk0, 0, arg0->unk38 * D_critter_8002A02C, arg0->unk8, arg0->unkC + arg0->unk14, arg0->unk10);
-    func_critter_8000A6C0(&sp30, arg0->unk60[D_global_asm_807444FC]);
+    guMtxF2L(&sp30, arg0->unk60[D_global_asm_807444FC]);
 }
 
 // Displaylist stuff, jumptable
@@ -788,7 +787,7 @@ void func_critter_80026E0C(s32 arg0) {
     s32 var_s3;
 
     if (arg0 != 0) {
-        func_critter_80003000(D_critter_80029BA0, arg0, 1);
+        memcpy(D_critter_80029BA0, arg0, 1);
         var_s3 = arg0 + 1;
         for (i = 0; i < D_critter_80029BA0->unk0; i++) {
             j = 0;
@@ -799,7 +798,7 @@ void func_critter_80026E0C(s32 arg0) {
             } else {
                 var_s2++;
             }
-            func_critter_80003000(var_s2, var_s3, 3);
+            memcpy(var_s2, var_s3, 3);
             var_s3 += 3;
             while (j < var_s2->unk1) {
                 if (j == 0) {
@@ -809,7 +808,7 @@ void func_critter_80026E0C(s32 arg0) {
                 } else {
                     var_s0++;
                 }
-                func_critter_80003000(var_s0, var_s3, 0x20);
+                memcpy(var_s0, var_s3, 0x20);
                 if (D_global_asm_807F6C28 != 0) {
                     var_s0->unk28 = func_global_asm_806531B8(var_s0->unk0, var_s0->unk2, var_s0->unk4, 0);
                     var_s0->unk24 = 0xFF;

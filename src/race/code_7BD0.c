@@ -186,7 +186,6 @@ void func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 ar
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C2E8.s")
 
-void func_dk64_boot_800085D4(f32*, f32, f32, f32);
 Gfx *func_global_asm_805FD030(Gfx *);
 
 typedef struct {
@@ -209,7 +208,7 @@ Gfx *func_race_8002C63C(Gfx *dl, Struct8002C63C_arg1 *arg1) {
     gSPDisplayList(dl++, &D_01000118);
     gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    func_dk64_boot_800085D4(arg1->unk50[D_global_asm_807444FC], 0.5f, 0.5f, 1.0f);
+    guScale(arg1->unk50[D_global_asm_807444FC], 0.5f, 0.5f, 1.0f);
     gSPMatrix(dl++, arg1->unk50[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
@@ -822,8 +821,6 @@ typedef struct {
     f32 unk14; // Used
 } A17C_race_8002B964;
 
-f32 func_dk64_boot_8000AC60(f32, f32);
-
 void func_race_8002E644(A17C_race_8002B964 *arg0) {
     f32 sp5C;
     s32 pad58;
@@ -861,7 +858,7 @@ void func_race_8002E644(A17C_race_8002B964 *arg0) {
             sp50 = func_global_asm_80612790(sp48) * actor->unkB8;
             temp_f2_2 = func_global_asm_80612790(sp4A) * current_actor_pointer->unkB8;
             sp50 = ((temp_f2_2 - sp50) * sp40) + temp_f2_2;
-            actor->unkB8 = func_dk64_boot_8000AC60((sp54 * sp54) + (sp50 * sp50), sp50);
+            actor->unkB8 = sqrtf((sp54 * sp54) + (sp50 * sp50));
             
             actor->unkEE = (func_global_asm_80611BB4(sp54, sp50) * 4096.0) / D_race_80030148;
             actor->unkEE += sp46;

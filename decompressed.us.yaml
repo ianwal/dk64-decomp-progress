@@ -432,7 +432,7 @@ segments:
     exclusive_ram_id: overlay
     subsegments:
       - [0x21ACB30, c, code_0]
-      - [0x21BAD50, data, data_E220]
+      - [0x21BAD50, .data, code_0]
       # - [0x21BAD58, rgba16, img/arcade_80032228.rgba16, 16, 16]
       # - [0x21BAF58, bin, data_E428]
       # - [0x21BB7D8, rgba16, img/arcade_80032CA8.rgba16, 8, 10]

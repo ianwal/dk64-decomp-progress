@@ -350,10 +350,10 @@ Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
     spD0 = func_menu_800317E8(aaD, 160.0f, 20.0f, &spC4, &spC0, 5, 1, text_transition_speed);
     sp38 = malloc(0x40);
     func_global_asm_8061134C(sp38);
-    func_menu_80008580(&sp7C, text_label_scale, text_label_scale, 1.0f);
-    func_menu_80005D80(&sp3C, spC4 * 4.0, spC0 * 4.0, 0);
-    func_menu_800088B0(&sp7C, &sp3C, &sp7C);
-    func_menu_8000A6C0(&sp7C, sp38);
+    guScaleF(&sp7C, text_label_scale, text_label_scale, 1.0f);
+    guTranslateF(&sp3C, spC4 * 4.0, spC0 * 4.0, 0);
+    guMtxCatF(&sp7C, &sp3C, &sp7C);
+    guMtxF2L(&sp7C, sp38);
     gSPMatrix(dl++, sp38, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     return func_global_asm_806FC530(dl, 1, 0, 0, label_string_pointer_array[spD0], 0x80);
 }
@@ -1408,8 +1408,6 @@ typedef struct {
     f32 unkC;
 } Struct80030A90_malloc;
 
-extern func_menu_80008620(void*, f32, f32, f32, f32);
-
 void func_menu_80030A90(Struct80717D84 *arg0, s32 arg1) {
     s32 temp;
     s16 sp72;
@@ -1435,16 +1433,14 @@ void func_menu_80030A90(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk340 += var_v0->unk0;
     arg0->unk344 += var_v0->unk4;
     var_v0->unk8 += var_v0->unkC;
-    func_menu_80008620(&sp30, var_v0->unk8, 0, 0, 1.0f);
-    func_menu_8000A6C0(&sp30, &arg0->unk128[D_global_asm_807444FC]);
+    guRotateF(&sp30, var_v0->unk8, 0, 0, 1.0f);
+    guMtxF2L(&sp30, &arg0->unk128[D_global_asm_807444FC]);
 }
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80030C14.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8003155C.s")
-
-f32 func_menu_8000AC60(f32, f32);
 
 s32 func_menu_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7) {
     f32 var_f0;
@@ -1453,7 +1449,7 @@ s32 func_menu_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 
 
     arg1 -= 160.0f;
     arg2 -= 120.0f;
-    var_f18 = func_menu_8000AC60((arg1 * arg1) + (arg2 * arg2), arg1);
+    var_f18 = sqrtf((arg1 * arg1) + (arg2 * arg2));
     if (var_f18 < 20.0f) {
         var_f18 = 20.0f;
     }

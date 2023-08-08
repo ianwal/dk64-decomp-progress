@@ -158,11 +158,6 @@ typedef struct {
     s32 unk1C[1]; // TODO: How many?
 } Struct8002EDD4_arg0;
 
-void func_dk64_boot_80008620(f32*, f32, f32, f32, f32);
-void func_race_80008810(f32*, f32, f32, f32, f32*, f32*, f32*);
-void func_race_80005D80(f32*, f32, f32, f32);
-void func_race_800088B0(void*, void*, void*);
-
 void func_race_8002EDD4(Struct8002EDD4_arg0 *arg0) {
     f32 spD0[4][4];
     f32 sp90[4][4];
@@ -179,10 +174,10 @@ void func_race_8002EDD4(Struct8002EDD4_arg0 *arg0) {
                 if (i) {
                     var_f22 *= -1.0f;
                 }
-                func_dk64_boot_80008620(&spD0, D_global_asm_807FBB44->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
-                func_race_80005D80(&sp90, arg0->unk0, arg0->unk2, arg0->unk4);
-                func_race_800088B0(&spD0, &sp90, &spD0);
-                func_race_80008810(&spD0, var_f22, 0.0f, 0.0f, &D_global_asm_807FBB44->x_position, &D_global_asm_807FBB44->y_position, &D_global_asm_807FBB44->z_position);
+                guRotateF(&spD0, D_global_asm_807FBB44->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
+                guTranslateF(&sp90, arg0->unk0, arg0->unk2, arg0->unk4);
+                guMtxCatF(&spD0, &sp90, &spD0);
+                guMtxXFMF(&spD0, var_f22, 0.0f, 0.0f, &D_global_asm_807FBB44->x_position, &D_global_asm_807FBB44->y_position, &D_global_asm_807FBB44->z_position);
             }
         } else {
             func_race_8002ED04(arg0->unk14, arg0->unk10, (arg0->unk18 == 1));

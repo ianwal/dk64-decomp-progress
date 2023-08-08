@@ -95,7 +95,6 @@ void func_minecart_80027E04(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_80027EE8.s")
 
-f32 func_minecart_8000AC60(f32);
 u32 func_global_asm_806119A0();
 extern f64 D_minecart_80028DD8;
 typedef struct MinecartStruct1 {
@@ -113,7 +112,7 @@ void func_minecart_80027EE8(MinecartStruct1 *arg0) {
     f32 dy = (current_actor_pointer->y_position - D_global_asm_807FDC94->y_position);
     f32 dz = (current_actor_pointer->z_position - D_global_asm_807FDC94->z_position);
 
-    temp_f0_3 = func_minecart_8000AC60((dx * dx) + (dy * dy) + (dz * dz));
+    temp_f0_3 = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
     if (temp_f0_3 < 200.0f) {
         arg0->unk3A++;
         if (arg0->unk3A >= 9) {

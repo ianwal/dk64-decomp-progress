@@ -31,7 +31,6 @@ extern f32 D_global_asm_80770BC0[];
 
 extern void func_race_8002CFF0();
 
-f32 func_dk64_boot_8000AC60(f32);
 f32 func_global_asm_80665E48(f32, f32, f32, f32);
 extern f64 D_race_8002FDD8;
 extern f64 D_race_8002FDE0;
@@ -82,7 +81,7 @@ void func_race_80027880(s32 arg0, u16 arg1, u16 arg2) {
     dx = D_global_asm_807F5FD4->unk0[arg1][arg2].unk0 - D_global_asm_807F5FD4->unk0[arg1][temp].unk0;
     dy = D_global_asm_807F5FD4->unk0[arg1][arg2].unk4 - D_global_asm_807F5FD4->unk0[arg1][temp].unk4;
     dz = D_global_asm_807F5FD4->unk0[arg1][arg2].unk8 - D_global_asm_807F5FD4->unk0[arg1][temp].unk8;
-    func_dk64_boot_8000AC60((dx * dx) + (dy * dy) + (dz * dz));
+    sqrtf((dx * dx) + (dy * dy) + (dz * dz));
 }
 */
 

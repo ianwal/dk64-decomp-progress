@@ -831,7 +831,7 @@ void func_arcade_80026680(Gfx **gpp) {
     if (D_arcade_8004C6DC & 0x182)  D_arcade_8004C6D0 = &D_arcade_80032C20;
     else                    D_arcade_8004C6D0 = &D_arcade_80032DF8;
     
-    func_arcade_80005A90(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
         D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
     );
     func_global_asm_8070E8F0(&dl, &D_arcade_8004BB00[D_global_asm_807444FC]);
@@ -861,7 +861,7 @@ void func_arcade_800268AC(Gfx **gpp) {
     D_arcade_8004C6D4 = 0x492;
 
     D_arcade_8004C6D0 = &D_arcade_80034568;
-    func_arcade_80005A90(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
         D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
     );
     sp68 = *gpp;
@@ -975,7 +975,7 @@ void func_arcade_80027A38(Gfx **arg0) {
 
     //50m solid beam
     D_arcade_8004C6D0 = &D_arcade_80032D50;
-    func_arcade_80005A90(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
         D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
     );
     func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BB00[D_global_asm_807444FC]);
@@ -994,7 +994,7 @@ void func_arcade_80027A38(Gfx **arg0) {
 
     //50m conveyer belt
     D_arcade_8004C6D0 = &D_arcade_80032CA8;
-    func_arcade_80005A90(&D_arcade_8004BC20[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
+    guSprite2DInit(&D_arcade_8004BC20[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
         D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
     );
     func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BC20[D_global_asm_807444FC]);
@@ -1013,7 +1013,7 @@ void func_arcade_80027A38(Gfx **arg0) {
 
     //50m background grate
     D_arcade_8004C6D0 = &D_arcade_800342B8;
-    func_arcade_80005A90(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
+    guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
         D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
     );
     func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BC50[D_global_asm_807444FC]);

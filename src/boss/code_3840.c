@@ -34,8 +34,6 @@ void func_boss_800278F4(BossStruct2 *arg0, f32 arg1, s16 arg2, s16 arg3) {
     arg0->unk8 += ((arg3 - arg0->unk8) * arg1);
 }
 
-f32 func_dk64_boot_8000AC60(f32);
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -73,7 +71,7 @@ void func_boss_80027A30(Struct80027A30_arg0 *arg0, u8 *arg1) {
         dz = current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[temp_a0].unk4;
         dx = current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[temp_a0].unk0;
         dy = current_actor_pointer->y_position - D_global_asm_807FDCA0->unk14[temp_a0].unk2;
-        temp_f6 = func_dk64_boot_8000AC60((dz * dz) + ((dx * dx) + (dy * dy)));
+        temp_f6 = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
         if (var_s1 < temp_f6) {
             var_s1 = temp_f6;
             D_global_asm_807FDC90->unk25 = i;
@@ -143,10 +141,10 @@ void func_boss_800286B8(Gfx *dl, s32 arg1) {
 
     sp4C = malloc(0x40);
     func_global_asm_8061134C(sp4C);
-    func_boss_80008580(&sp90, D_boss_80036054, D_boss_80036054, 1.0f);
-    func_boss_80005D80(&sp50, 100.0f, (character_change_array->unk276 * 4) - 0x3C, 0);
-    func_boss_800088B0(&sp90, &sp50, &sp90);
-    func_boss_8000A6C0(&sp90, sp4C);
+    guScaleF(&sp90, D_boss_80036054, D_boss_80036054, 1.0f);
+    guTranslateF(&sp50, 100.0f, (character_change_array->unk276 * 4) - 0x3C, 0);
+    guMtxCatF(&sp90, &sp50, &sp90);
+    guMtxF2L(&sp90, sp4C);
     gSPMatrix(dl++, sp4C, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     func_boss_800031E0(&sp3C, &D_boss_80035F90, D_global_asm_80750AD4);
     gSPDisplayList(dl++, &D_01000118);

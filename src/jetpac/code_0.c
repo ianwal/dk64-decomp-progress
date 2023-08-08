@@ -49,8 +49,6 @@ void func_jetpac_80024000(void) {
 extern s32 D_global_asm_8076A050[];
 extern s32 D_global_asm_8076A080;
 
-void func_jetpac_80006DE4(void*, f32, f32, f32, f32, f32, f32, f32);
-
 extern Gfx D_01000090;
 extern Gfx D_01000040;
 extern Mtx D_02000080;
@@ -69,11 +67,11 @@ void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1) {
 
     dl = D_global_asm_8076A050[D_global_asm_807444FC];
     gSPSegment(dl++, 0x00, 0x00000000);
-    gSPSegment(dl++, 0x02, func_jetpac_80008FA0(arg0));
-    gSPSegment(dl++, 0x01, func_jetpac_80008FA0(D_global_asm_8076A080));
+    gSPSegment(dl++, 0x02, osVirtualToPhysical(arg0));
+    gSPSegment(dl++, 0x01, osVirtualToPhysical(D_global_asm_8076A080));
     gSPDisplayList(dl++, &D_01000090);
     gSPDisplayList(dl++, &D_01000040);
-    func_jetpac_80006DE4(&arg0->unk80, 0, 320.0f, 0, 240.0f, 1.0f, 10.0f, 1.0f);
+    guOrtho(&arg0->unk80, 0, 320.0f, 0, 240.0f, 1.0f, 10.0f, 1.0f);
     gDPPipeSync(dl++);
     dl = func_global_asm_805FE4D4(dl);
     gDPSetColorDither(dl++, G_CD_MAGICSQ);

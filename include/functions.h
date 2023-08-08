@@ -21,10 +21,6 @@ u64 func_dk64_boot_80005818(u64, u64);
 u64 func_dk64_boot_80005918(u64, u64);
 u64 func_dk64_boot_80007688(f32); 
 f32 func_dk64_boot_8000773C(s64);
-void func_dk64_boot_80005D80(f32*, f32, f32, f32);
-void func_dk64_boot_80008580(f32*, f32, f32, f32);
-void func_dk64_boot_800088B0(void*, void*, void*);
-void func_dk64_boot_8000A6C0(s32 *, void *);
 
 f32 func_global_asm_80611BB4(f32, f32);
 
