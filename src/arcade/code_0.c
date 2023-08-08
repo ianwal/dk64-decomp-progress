@@ -1812,7 +1812,8 @@ void func_arcade_8002AFA4(Gfx **arg0, s32 arg1) {
     if (D_arcade_8004A338[D_arcade_8004BCD0[arg1].unk18] & 1) {
         phi_f0 = 1024.0f;
     } else {
-        phi_f0 = D_arcade_8004AA18;
+        // phi_f0 = D_arcade_8004AA18;
+        phi_f0 = 1170.2857666f;
     }
     guSprite2DInit(
         &D_arcade_8004AC00[D_global_asm_807444FC].sprite[arg1], D_arcade_8004BCD0[arg1].unk14, 0, 
@@ -2648,7 +2649,8 @@ void func_arcade_8002E3D4(s32 arg0) {
                     D_arcade_8004BCD0[newFlameIndex].unk19 = 3;
                     D_arcade_8004BCD0[newFlameIndex].y_velocity = -1;
                     if (arcade_background_visual == 1) {
-                        D_arcade_8004BCD0[newFlameIndex].x_velocity = D_arcade_8004AB24;
+                        // D_arcade_8004BCD0[newFlameIndex].x_velocity = D_arcade_8004AB24;
+                        D_arcade_8004BCD0[newFlameIndex].x_velocity = 0.4f;
                     } else {
                         if (D_arcade_8004BCD0[D_arcade_8004C71F].x_position < 160) {
                             D_arcade_8004BCD0[newFlameIndex].x_velocity = -0.5f;
@@ -2810,8 +2812,8 @@ void arcade_dk_title_update(s32 arg0) {
     }
     if (phi_v1 >= 0x3C) {
         if (phi_v1 >= 0x169) {
-            D_arcade_8004BCD0[arg0].y_velocity += D_arcade_8004AB28;
-            //D_arcade_8004BCD0[arg0].unkC += 0.05;
+            // D_arcade_8004BCD0[arg0].y_velocity += D_arcade_8004AB28;
+            D_arcade_8004BCD0[arg0].y_velocity += 0.05;
             D_arcade_8004BCD0[arg0].y_position += D_arcade_8004BCD0[arg0].y_velocity;
             D_arcade_8004BCD0[arg0].x_position += D_arcade_8004BCD0[arg0].x_velocity;
             if ((D_arcade_8004BCD0[arg0].y_velocity > 0.0f) && (D_arcade_8004BCD0[arg0].y_position >= 38.0f)) {
@@ -2825,15 +2827,15 @@ void arcade_dk_title_update(s32 arg0) {
                 if ((phi_v1 == 0x2D0) || (phi_v1 < 0x26C)) {
                     D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80040540;
                 }
-                if (D_arcade_8004AB30 < D_arcade_8004BCD0[arg0].y_velocity) {
-                //if (0.06 < D_arcade_8004BCD0[arg0].unkC) {
+                // if (D_arcade_8004AB30 < D_arcade_8004BCD0[arg0].y_velocity) {
+                if (0.06 < D_arcade_8004BCD0[arg0].y_velocity) {
                     D_arcade_8004C708 = (s32) (D_arcade_8004C708 + 1);
                     func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFF, 0x3F, 1.0f, 0, 0);
                 }
                 if ((D_arcade_8004BCD0[arg0].x_position > 74.0f) && !(D_arcade_8004C6DC < 0x1A5)) {
                     D_arcade_8004BCD0[arg0].x_velocity = -0.5f;
-                    D_arcade_8004BCD0[arg0].y_velocity = D_arcade_8004AB38;
-                    //D_arcade_8004BCD0[arg0].unkC = -0.81f;
+                    // D_arcade_8004BCD0[arg0].y_velocity = D_arcade_8004AB38;
+                    D_arcade_8004BCD0[arg0].y_velocity = -0.81f;
                 }
                 else {
                     D_arcade_8004BCD0[arg0].x_velocity = 0.0f;
@@ -3446,54 +3448,54 @@ void func_arcade_8003159C(Gfx **arg0) {
     if (D_arcade_8004C724 == 3) {
         func_arcade_800244E4(0x00, 0xff, 0xff, 0xff);
         func_arcade_80024508(0x78, 0x3b);
-        func_dk64_boot_800031E0(sp50, &D_arcade_8004A840, &D_arcade_8004A774);
-        //func_dk64_boot_800031E0(sp50, "NAME %.3s", &D_arcade_8004A774);
+        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A840, &D_arcade_8004A774);
+        func_dk64_boot_800031E0(sp50, "NAME %.3s", &D_arcade_8004A774);
         func_arcade_8002451C(&spA0, sp50);
         func_arcade_80024508(0xA0, 0x41);
-        func_dk64_boot_800031E0(sp50, &D_arcade_8004A84C);
-        //func_dk64_boot_800031E0(sp50, "---");
+        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A84C);
+        func_dk64_boot_800031E0(sp50, "---");
         func_arcade_8002451C(&spA0, sp50);
         if (D_arcade_8004C6DC < 1800) {
             func_arcade_80024508(0x60, 0x7b);
-            func_dk64_boot_800031E0(sp50, &D_arcade_8004A850, 30 - D_arcade_8004C6DC/60);
-            //func_dk64_boot_800031E0(sp50, "REGI TIME <%02d>", 30 - D_arcade_8004C6DC/60);
+            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A850, 30 - D_arcade_8004C6DC/60);
+            func_dk64_boot_800031E0(sp50, "REGI TIME <%02d>", 30 - D_arcade_8004C6DC/60);
         } else {//L800316A0
             func_arcade_80024508(0x40, 0x7b);
-            func_dk64_boot_800031E0(sp50, &D_arcade_8004A864);
-            //func_dk64_boot_800031E0(sp50, "YOUR NAME WAS");
+            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A864);
+            func_dk64_boot_800031E0(sp50, "YOUR NAME WAS");
             func_arcade_8002451C(&spA0, sp50);
 
             func_arcade_80024508(0xb0, 0x7b);
-            func_dk64_boot_800031E0(sp50, &D_arcade_8004A874);
-            //func_dk64_boot_800031E0(sp50, "REGISTERED.");
+            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A874);
+            func_dk64_boot_800031E0(sp50, "REGISTERED.");
 
         }//L800316E8
         func_arcade_8002451C(&spA0, sp50);
         func_arcade_800244E4(0xff, 0x00, 0x00, 0xff);
         func_arcade_80024508(0x58, 0x2b);
-        func_dk64_boot_800031E0(sp50, &D_arcade_8004A880);
-        //func_dk64_boot_800031E0(sp50, "NAME REGISTRATION");
+        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A880);
+        func_dk64_boot_800031E0(sp50, "NAME REGISTRATION");
         func_arcade_8002451C(&spA0, sp50);
 
         func_arcade_800244E4(0x00, 0xff, 0x00, 0xff);
         func_arcade_80024508(0x58, 0x4b);
-        func_dk64_boot_800031E0(sp50, &D_arcade_8004A894);
-        //func_dk64_boot_800031E0(sp50, "A B C D E F G H I J");
+        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A894);
+        func_dk64_boot_800031E0(sp50, "A B C D E F G H I J");
         func_arcade_8002451C(&spA0, sp50);
         
         func_arcade_80024508(0x58, 0x5b);
-        func_dk64_boot_800031E0(sp50, &D_arcade_8004A8A8);
-        //func_dk64_boot_800031E0(sp50, "K L M N O P Q R S T");
+        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8A8);
+        func_dk64_boot_800031E0(sp50, "K L M N O P Q R S T");
         func_arcade_8002451C(&spA0, sp50);
         
         func_arcade_80024508(0x58, 0x6b);
-        func_dk64_boot_800031E0(sp50, &D_arcade_8004A8BC);
-        //func_dk64_boot_800031E0(sp50, "U V W X Y Z . -");
+        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8BC);
+        func_dk64_boot_800031E0(sp50, "U V W X Y Z . -");
         func_arcade_8002451C(&spA0, sp50);
 
         func_arcade_80024508(0xd4, 0x6b);
-        func_dk64_boot_800031E0(sp50, &D_arcade_8004A8CC);
-        //func_dk64_boot_800031E0(sp50, "ba");
+        // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8CC);
+        func_dk64_boot_800031E0(sp50, "ba");
         func_arcade_8002451C(&spA0, sp50);
     }//L800317E0
 
@@ -3506,16 +3508,19 @@ void func_arcade_8003159C(Gfx **arg0) {
             && D_arcade_8004C6DC & 0x20
             && D_arcade_8004C724 == 3
         ) {
-            func_dk64_boot_800031E0(sp50, &D_arcade_8004A8D0, &D_arcade_8004A82C[i]);
+            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8D0, &D_arcade_8004A82C[i]);
+            func_dk64_boot_800031E0(sp50, "%.3s", &D_arcade_8004A82C[i]);
         } else {//L80031888
-            func_dk64_boot_800031E0(sp50, &D_arcade_8004A8D8, D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
+            // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8D8, D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
+            func_dk64_boot_800031E0(sp50, "%.3s  %06d  %.3s", D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
         }//L800318B8
         func_arcade_8002451C(&spA0, sp50);
     }
 
     func_arcade_800244E4(0x00, 0xff, 0x00, 0xff);
     func_arcade_80024508(0xb8, 0xdb);
-    func_dk64_boot_800031E0(sp50, &D_arcade_8004A8EC);
+    // func_dk64_boot_800031E0(sp50, &D_arcade_8004A8EC);
+    func_dk64_boot_800031E0(sp50, "CREDIT 00");
     func_arcade_8002451C(&spA0, sp50);
 
     *arg0 = spA0;

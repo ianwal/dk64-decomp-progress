@@ -285,7 +285,7 @@ extern u8  D_arcade_8004A9D0;
 extern u8  D_arcade_8004A9DC;
 /*jmp_tbl D_arcade_8004A9EC[6]*/
 
-extern f32 D_arcade_8004AA18;
+extern f32 D_arcade_8004AA18; // 1170.2857666
 extern f64 D_arcade_8004AA98;
 extern f64 D_arcade_8004AAA0;
 extern f64 D_arcade_8004AAA8;

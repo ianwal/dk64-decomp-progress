@@ -188,7 +188,8 @@ segments:
       - [0x11180, rodata, os/exceptasm]
       - [0x111D0, rodata, gu/cosf]
       - [0x11220, rodata, gu/sinf]
-      - [0x11270, .rodata, io/devmgr]
+      - [0x11270, rodata]
+      - [0x112F0, .rodata, io/devmgr]
       - [0x11310, rodata]
       - { start: 0x11320, type: bss, vram: 0x80010720 }
   - name: assets
@@ -554,7 +555,7 @@ segments:
       # - [0x21CDEF0, bin, data_213C0]
       # - [0x21CDF58, rgba16, img/arcade_80045428.rgba16, 48, 41]
       # - [0x21CEEB8, bin, data_22338]
-      - [0x21D3370, rodata, code_0]
+      - [0x21D3370, .rodata, code_0]
       - { start: 0x21D3730, type: bss, vram: 0x8004AC00 }
   - name: jetpac
     dir: jetpac
