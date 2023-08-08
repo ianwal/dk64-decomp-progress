@@ -443,7 +443,7 @@ segments:
     exclusive_ram_id: overlay
     subsegments:
       - [0x21ACB30, c, code_0]
-      - [0x21BAD50, .data, code_0]
+      - [0x21BAD50, data, code_0]
       # - [0x21BAD58, rgba16, img/arcade_80032228.rgba16, 16, 16]
       # - [0x21BAF58, bin, data_E428]
       # - [0x21BB7D8, rgba16, img/arcade_80032CA8.rgba16, 8, 10]
@@ -554,7 +554,8 @@ segments:
       # - [0x21CDEF0, bin, data_213C0]
       # - [0x21CDF58, rgba16, img/arcade_80045428.rgba16, 48, 41]
       # - [0x21CEEB8, bin, data_22338]
-      - [0x21D36B0, .rodata, code_0]
+      - [0x21D36B0, rodata, code_0]
+      - { start: 0x21D3730, type: bss, vram: 0x8004AC00 }
   - name: jetpac
     dir: jetpac
     type: code

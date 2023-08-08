@@ -1332,7 +1332,6 @@ void func_arcade_80029968(void) {
     D_arcade_8004A308[1] = 0;
     D_arcade_8004A308[2] = 0;
     D_arcade_8004A308[3] = 0;
-
 }
 
 s32 func_arcade_80029ACC(s32 arg0, s32 arg1) {
@@ -2610,11 +2609,6 @@ void func_arcade_8002E158(s32 arg0) {
     }
 }
 #endif
-
-extern f32 D_arcade_8004AB24;
-extern u8 D_arcade_80032470; // imageData
-extern u8 D_arcade_800326B8; // imageData
-extern u8 D_arcade_80032900; // imageData
 
 void func_arcade_8002E3D4(s32 arg0) {
     s32 newFlameIndex;

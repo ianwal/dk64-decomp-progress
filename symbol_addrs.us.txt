@@ -1,7 +1,10 @@
 romAssetBin = 0x101C50;
+
 D_1000040 = 0x1000040;
 D_1000090 = 0x1000090;
 D_1000118 = 0x1000118;
+
+D_2000200 = 0x2000200;
 D_2000080 = 0x2000080;
 D_20000C0 = 0x20000C0;
 D_2000180 = 0x2000180;
@@ -401,6 +404,75 @@ arcade_lives_visual = 0x8004C71C; // segment:arcade
 arcade_game_state = 0x8004C71D; // segment:arcade
 arcade_background_visual = 0x8004C722; // segment:arcade
 
+D_arcade_8004C6DC = 0x8004C6DC; // segment:arcade
+D_arcade_8004BCD0 = 0x8004BCD0; // segment:arcade
+D_arcade_8004C724 = 0x8004C724; // segment:arcade
+D_arcade_8004C70C = 0x8004C70C; // segment:arcade
+D_arcade_8004C723 = 0x8004C723; // segment:arcade
+D_arcade_8004C71A = 0x8004C71A; // segment:arcade
+D_arcade_8004C719 = 0x8004C719; // segment:arcade
+D_arcade_8004C6D4 = 0x8004C6D4; // segment:arcade
+D_arcade_8004C6D0 = 0x8004C6D0; // segment:arcade
+D_arcade_8004BB30 = 0x8004BB30; // segment:arcade
+D_arcade_8004BB60 = 0x8004BB60; // segment:arcade
+D_arcade_8004BB90 = 0x8004BB90; // segment:arcade
+D_arcade_8004BBC0 = 0x8004BBC0; // segment:arcade
+D_arcade_8004C6D6 = 0x8004C6D6; // segment:arcade
+D_arcade_8004C708 = 0x8004C708; // segment:arcade
+D_arcade_8004BB00 = 0x8004BB00; // segment:arcade
+D_arcade_8004C71F = 0x8004C71F; // segment:arcade
+D_arcade_8004BC88 = 0x8004BC88; // segment:arcade
+D_arcade_8004C71E = 0x8004C71E; // segment:arcade
+D_arcade_8004C710 = 0x8004C710; // segment:arcade
+D_arcade_8004C718 = 0x8004C718; // segment:arcade
+D_arcade_8004C6F8 = 0x8004C6F8; // segment:arcade
+D_arcade_8004C721 = 0x8004C721; // segment:arcade
+D_arcade_8004C6F0 = 0x8004C6F0; // segment:arcade
+D_arcade_8004C6F4 = 0x8004C6F4; // segment:arcade
+D_arcade_8004C6E0 = 0x8004C6E0; // segment:arcade
+D_arcade_8004C6E4 = 0x8004C6E4; // segment:arcade
+D_arcade_8004C6E8 = 0x8004C6E8; // segment:arcade
+D_arcade_8004C6EC = 0x8004C6EC; // segment:arcade
+D_arcade_8004AC00 = 0x8004AC00; // segment:arcade
+
+D_jetpac_8002EC30 = 0x8002EC30; // segment:jetpac
+D_jetpac_8002EC48 = 0x8002EC48; // segment:jetpac
+D_jetpac_8002EF80 = 0x8002EF80; // segment:jetpac
+D_jetpac_8002F050 = 0x8002F050; // segment:jetpac
+D_jetpac_8002F054 = 0x8002F054; // segment:jetpac
+D_jetpac_8002F064 = 0x8002F064; // segment:jetpac
+D_jetpac_8002F078 = 0x8002F078; // segment:jetpac
+D_jetpac_8002F07C = 0x8002F07C; // segment:jetpac
+D_jetpac_8002F084 = 0x8002F084; // segment:jetpac
+D_jetpac_8002F088 = 0x8002F088; // segment:jetpac
+D_jetpac_8002F09C = 0x8002F09C; // segment:jetpac
+D_jetpac_8002F1DC = 0x8002F1DC; // segment:jetpac
+D_jetpac_8002F3BC = 0x8002F3BC; // segment:jetpac
+
+D_jetpac_80045BE0 = 0x80045BE0; // segment:jetpac
+D_jetpac_80045BE1 = 0x80045BE1; // segment:jetpac
+D_jetpac_80045BE2 = 0x80045BE2; // segment:jetpac
+D_jetpac_80045BE3 = 0x80045BE3; // segment:jetpac
+
+D_global_asm_80767CE8 = 0x80767CE8;
+
+D_global_asm_8076A048 = 0x8076A048;
+D_global_asm_8076A050 = 0x8076A050;
+D_global_asm_8076A080 = 0x8076A080;
+D_global_asm_8076A088 = 0x8076A088;
+D_global_asm_8076A08C = 0x8076A08C;
+D_global_asm_8076A0B1 = 0x8076A0B1;
+
+D_global_asm_8076D1F8 = 0x8076D1F8;
+
+D_global_asm_80770DF8 = 0x80770DF8;
+
+D_global_asm_807ECDE8 = 0x807ECDE8;
+
+D_global_asm_807FBB44 = 0x807FBB44;
+
+D_global_asm_807FD888 = 0x807FD888;
+
 D_global_asm_807FF030 = 0x807FF030;
 D_global_asm_807FF034 = 0x807FF034;
 D_global_asm_807FF0E4 = 0x807FF0E4;
@@ -410,3 +482,84 @@ D_global_asm_807FF0F2 = 0x807FF0F2;
 D_global_asm_807FF0F4 = 0x807FF0F4;
 D_global_asm_807FF0F6 = 0x807FF0F6;
 D_global_asm_807FF0F8 = 0x807FF0F8;
+
+
+
+
+
+
+
+
+
+
+D_arcade_8004C725 = 0x8004C725; // segment:arcade
+D_arcade_8004C726 = 0x8004C726; // segment:arcade
+D_arcade_8004C727 = 0x8004C727; // segment:arcade
+D_arcade_8004C728 = 0x8004C728; // segment:arcade
+D_arcade_8004C72C = 0x8004C72C; // segment:arcade
+D_arcade_8004C730 = 0x8004C730; // segment:arcade
+D_arcade_8004C72E = 0x8004C72E; // segment:arcade
+D_arcade_8004C732 = 0x8004C732; // segment:arcade
+
+
+
+
+D_dk64_boot_80010670 = 0x80010670; // segment:dk64_boot
+
+D_global_asm_8076A0AB = 0x8076A0AB;
+D_global_asm_807FC950 = 0x807FC950;
+D_global_asm_80745844 = 0x80745844;
+D_global_asm_807F5D10 = 0x807F5D10;
+D_global_asm_80721444 = 0x80721444;
+D_global_asm_80720CF0 = 0x80720CF0;
+D_global_asm_80720D14 = 0x80720D14;
+D_global_asm_80744538 = 0x80744538;
+D_global_asm_8076A104 = 0x8076A104;
+D_global_asm_8076A0E4 = 0x8076A0E4;
+D_global_asm_8076A100 = 0x8076A100;
+D_global_asm_8076A0E8 = 0x8076A0E8;
+D_global_asm_8074451C = 0x8074451C;
+D_global_asm_807211AC = 0x807211AC;
+D_global_asm_8076A105 = 0x8076A105;
+D_global_asm_807FDC94 = 0x807FDC94;
+D_global_asm_807FDC90 = 0x807FDC90;
+D_global_asm_807FDC9C = 0x807FDC9C;
+D_global_asm_807FBB70 = 0x807FBB70;
+D_global_asm_8071FFD4 = 0x8071FFD4;
+D_global_asm_807FBB85 = 0x807FBB85;
+D_global_asm_807FBB34 = 0x807FBB34;
+D_global_asm_807FB930 = 0x807FB930;
+D_global_asm_807F5FD4 = 0x807F5FD4;
+D_global_asm_80770628 = 0x80770628;
+D_global_asm_80770BC0 = 0x80770BC0;
+D_global_asm_80770B68 = 0x80770B68;
+D_global_asm_807FD610 = 0x807FD610;
+D_global_asm_807FBD70 = 0x807FBD70;
+D_global_asm_80770DC9 = 0x80770DC9;
+D_global_asm_807FDCA0 = 0x807FDCA0;
+D_global_asm_807FDC98 = 0x807FDC98;
+D_global_asm_807FBB48 = 0x807FBB48;
+D_global_asm_807F6C28 = 0x807F6C28;
+
+D_menu_800330A0 = 0x800330A0; // segment:menu
+D_menu_80033F38 = 0x80033F38; // segment:menu
+D_menu_80033F48 = 0x80033F48; // segment:menu
+D_menu_80033FAC = 0x80033FAC; // segment:menu
+D_menu_80033FAF = 0x80033FAF; // segment:menu
+D_menu_80033FAE = 0x80033FAE; // segment:menu
+D_menu_80033FAD = 0x80033FAD; // segment:menu
+D_menu_80033F60 = 0x80033F60; // segment:menu
+D_menu_80033F50 = 0x80033F50; // segment:menu
+D_menu_80033FB0 = 0x80033FB0; // segment:menu
+D_menu_80033FB1 = 0x80033FB1; // segment:menu
+D_menu_80033FB2 = 0x80033FB2; // segment:menu
+
+D_minecart_80028C30 = 0x80028C30; // segment:minecart
+
+D_bonus_8002DEF0 = 0x8002DEF0; // segment:bonus
+
+D_critter_8002A1C0 = 0x8002A1C0; // segment:critter
+D_critter_8002A1C8 = 0x8002A1C8; // segment:critter
+D_critter_8002A1C4 = 0x8002A1C4; // segment:critter
+D_critter_8002A1CE = 0x8002A1CE; // segment:critter
+D_critter_8002A1CC = 0x8002A1CC; // segment:critter

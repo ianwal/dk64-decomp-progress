@@ -104,8 +104,10 @@ extern Gfx **D_1000040;
 extern Gfx **D_1000090;
 
 /*.data */ //0x8032220 = 0xE220
-
 extern u8 D_arcade_80032228; // imageData
+extern u8 D_arcade_80032470; // imageData
+extern u8 D_arcade_800326B8; // imageData
+extern u8 D_arcade_80032900; // imageData
 // these are likely the same struct
 extern u8  D_arcade_80032B48;
 extern u8  D_arcade_80032B90;
@@ -180,93 +182,93 @@ extern u8  D_arcade_8004A358[];
 extern u8  D_arcade_8004A378[];
 
 extern s32 D_arcade_8004A318[8];
-extern ArcadeStruct1 arcade_jumpman_obj_template        = {  96.0f, 247.0f, 0.0f,  0.0f, 0.0f,        NULL, ARCADE_OBJ_0D_JUMPMAN, 0, 3, 0, 0, 0, 0x10, 0x12};
-extern ArcadeStruct1 arcade_barrel_obj_template         = {  64.0f,  79.0f, 1.0f,  0.0f, 0.0f, &D_arcade_80034610, ARCADE_OBJ_01_BARREL,  0, 0, 0, 0, 0, 0x10, 0x0F};
-extern ArcadeStruct1 arcade_flame_enemy_obj_template    = {  76.0f, 230.0f, 1.0f,  0.0f, 0.0f,        NULL, ARCADE_OBJ_02_FLAME_ENEMY, 2, 0, 0, 0, 0, 0x10, 0x11};
-extern ArcadeStruct1 arcade_oil_drum_flame_obj_template = {  64.0f, 216.0f, 1.0f,  0.0f, 0.0f, &D_arcade_80032228, ARCADE_OBJ_13_OIL_DRUM_FLAMES, 2, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_spring_obj_template         = { -24.0f,  81.0f, 2.0f, -3.5f, 0.0f,        NULL, ARCADE_OBJ_03_SPRING, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_bonus_osd_obj_template      = { 219.0f,  38.0f, 2.0f, -3.5f, 0.0f, &D_arcade_80032F68, ARCADE_OBJ_0E_BONUS_OSD, 0, 0, 0, 0, 0, 0x2B, 0x13};
-extern ArcadeStruct1 arcade_oil_drum_obj_template       = {  64.0f, 231.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037338, ARCADE_OBJ_10_OIL_DRUM, 0, 0, 0, 0, 0, 0x10, 0x11};
-extern ArcadeStruct1 arcade_elevator_obj_template       = {  80.0f,  88.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037580, ARCADE_OBJ_11_ELEVATOR_CRANK, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_pulley_obj_template         = {  48.0f,  84.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037B98, ARCADE_OBJ_12_PULLEY, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_pauline_top_obj_template    = { 136.0f,  26.0f, 0.0f,  0.0f, 0.0f,        NULL, ARCADE_OBJ_1B_PAULINE_TOP, 0, 0, 0, 0, 0, 0x10, 0x11};
-extern ArcadeStruct1 arcade_pauline_bottom_obj_template = { 136.0f,  42.0f, 0.0f,  0.0f, 0.0f,        NULL, ARCADE_OBJ_1A_PAULINE_BOTTOM, 0, 0, 0, 0, 0, 0x10, 0x11};
-extern ArcadeStruct1 arcade_nintendo_coin_obj_template  = { 136.0f,  42.0f, 0.0f,  0.0f, 0.0f,        NULL, ARCADE_OBJ_1E_NINTENDO_COIN, 0, 0, 0, 0, 0, 0x14, 0x14};
-extern ArcadeStruct1 arcade_help_text_obj_template      = { 152.0f,  33.0f, 0.0f,  0.0f, 0.0f,        NULL, ARCADE_OBJ_1D_HELP_TEXT, 0, 0, 0, 0, 0, 0x18, 0x0A};
-extern ArcadeStruct1 arcade_dk_title_obj_template       = { 148.0f, 200.0f, 0.0f,  0.0f, 0.0f,        NULL, ARCADE_OBJ_15_DK_TITLE, 0, 0, 0, 0, 0, 0x30, 0x29};
-extern ArcadeStruct1 arcade_dk_25m_obj_template         = {  68.0f,  38.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80040540, ARCADE_OBJ_16_DK_25M, 0xC, 0, 0, 1, 0, 0x30, 0x29};
-extern ArcadeStruct1 arcade_dk_100m_obj_template        = { 136.0f,  53.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80040540, ARCADE_OBJ_17_DK_100M, 2, 0, 0, 0, 0, 0x30, 0x29};
-extern ArcadeStruct1 arcade_dk_75m_obj_template         = {  68.0f,  42.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80040540, ARCADE_OBJ_18_DK_75M, 2, 0, 0, 0, 0, 0x30, 0x29};
-extern ArcadeStruct1 arcade_dk_50m_obj_template         = {  68.0f,  42.0f, 1.0f,  0.0f, 0.0f, &D_arcade_80040540, ARCADE_OBJ_19_DK_50M, 2, 0, 0, 0, 0, 0x30, 0x29};
-extern ArcadeStruct1 arcade_dk_how_high_obj_template    = { 138.0f, 198.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003F9B8, ARCADE_OBJ_08_DK_HOW_HIGH, 0, 0, 0, 0, 0, 0x2E, 0x20};
-extern ArcadeStruct1 arcade_points_text_obj_template    = {   0.0f,   0.0f, 0.0f,  0.0f, 0.0f, &D_arcade_800381B0, ARCADE_OBJ_14_POINTS_TEXT, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_bonus_item_obj_template     = { 180.0f, 247.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80038DE0, ARCADE_OBJ_05_BONUS_ITEM, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_hammer_obj_template         = { 220.0f, 200.0f, 0.0f,  0.0f, 0.0f, &D_arcade_800393F8, ARCADE_OBJ_06_HAMMER, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_rivet_obj_template          = { 108.0f, 208.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80032E80, ARCADE_OBJ_0B_RIVET, 0, 0, 0, 1, 0, 0x08, 0x09};
-extern ArcadeStruct1 arcade_moving_ladder_obj_template  = {  60.0f,  97.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003A638, ARCADE_OBJ_0C_MOVING_LADDER, 0, 0, 0, 0xF4, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_name_select_cursor_obj_template = {  60.0f,  97.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003A840, ARCADE_OBJ_09_NAME_SELECT_CURSOR, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 D_arcade_8004A6B8                         = {  60.0f,  97.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80034360, 0x1C, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_pie_obj_template            = {  60.0f, 207.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003AA48, ARCADE_OBJ_04_PIE, 0, 0, 0, 3, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_100m_complete_particle_obj_template = { 160.0f, 214.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003AC50, ARCADE_OBJ_0F_100M_COMPLETE_PARTICLE, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern ArcadeStruct1 arcade_barrel_stack_obj_template = {  58.0f,  83.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037130, ARCADE_OBJ_0A_BARREL_STACK, 0, 0, 0, 0, 0, 0x10, 0x10};
-extern u32 D_arcade_8004A738 = 1; // rng
-extern u8 D_arcade_8004A73C = 0;
-extern u8 D_arcade_8004A740 = 0; // arcade_is_in_nintendo_coin_mode
+extern ArcadeStruct1 arcade_jumpman_obj_template                ;//= {  96.0f, 247.0f, 0.0f,  0.0f, 0.0f,               NULL, ARCADE_OBJ_0D_JUMPMAN, 0, 3, 0, 0, 0, 0x10, 0x12};
+extern ArcadeStruct1 arcade_barrel_obj_template                 ;//= {  64.0f,  79.0f, 1.0f,  0.0f, 0.0f, &D_arcade_80034610, ARCADE_OBJ_01_BARREL,  0, 0, 0, 0, 0, 0x10, 0x0F};
+extern ArcadeStruct1 arcade_flame_enemy_obj_template            ;//= {  76.0f, 230.0f, 1.0f,  0.0f, 0.0f,               NULL, ARCADE_OBJ_02_FLAME_ENEMY, 2, 0, 0, 0, 0, 0x10, 0x11};
+extern ArcadeStruct1 arcade_oil_drum_flame_obj_template         ;//= {  64.0f, 216.0f, 1.0f,  0.0f, 0.0f, &D_arcade_80032228, ARCADE_OBJ_13_OIL_DRUM_FLAMES, 2, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_spring_obj_template                 ;//= { -24.0f,  81.0f, 2.0f, -3.5f, 0.0f,               NULL, ARCADE_OBJ_03_SPRING, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_bonus_osd_obj_template              ;//= { 219.0f,  38.0f, 2.0f, -3.5f, 0.0f, &D_arcade_80032F68, ARCADE_OBJ_0E_BONUS_OSD, 0, 0, 0, 0, 0, 0x2B, 0x13};
+extern ArcadeStruct1 arcade_oil_drum_obj_template               ;//= {  64.0f, 231.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037338, ARCADE_OBJ_10_OIL_DRUM, 0, 0, 0, 0, 0, 0x10, 0x11};
+extern ArcadeStruct1 arcade_elevator_obj_template               ;//= {  80.0f,  88.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037580, ARCADE_OBJ_11_ELEVATOR_CRANK, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_pulley_obj_template                 ;//= {  48.0f,  84.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037B98, ARCADE_OBJ_12_PULLEY, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_pauline_top_obj_template            ;//= { 136.0f,  26.0f, 0.0f,  0.0f, 0.0f,               NULL, ARCADE_OBJ_1B_PAULINE_TOP, 0, 0, 0, 0, 0, 0x10, 0x11};
+extern ArcadeStruct1 arcade_pauline_bottom_obj_template         ;//= { 136.0f,  42.0f, 0.0f,  0.0f, 0.0f,               NULL, ARCADE_OBJ_1A_PAULINE_BOTTOM, 0, 0, 0, 0, 0, 0x10, 0x11};
+extern ArcadeStruct1 arcade_nintendo_coin_obj_template          ;//= { 136.0f,  42.0f, 0.0f,  0.0f, 0.0f,               NULL, ARCADE_OBJ_1E_NINTENDO_COIN, 0, 0, 0, 0, 0, 0x14, 0x14};
+extern ArcadeStruct1 arcade_help_text_obj_template              ;//= { 152.0f,  33.0f, 0.0f,  0.0f, 0.0f,               NULL, ARCADE_OBJ_1D_HELP_TEXT, 0, 0, 0, 0, 0, 0x18, 0x0A};
+extern ArcadeStruct1 arcade_dk_title_obj_template               ;//= { 148.0f, 200.0f, 0.0f,  0.0f, 0.0f,               NULL, ARCADE_OBJ_15_DK_TITLE, 0, 0, 0, 0, 0, 0x30, 0x29};
+extern ArcadeStruct1 arcade_dk_25m_obj_template                 ;//= {  68.0f,  38.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80040540, ARCADE_OBJ_16_DK_25M, 0xC, 0, 0, 1, 0, 0x30, 0x29};
+extern ArcadeStruct1 arcade_dk_100m_obj_template                ;//= { 136.0f,  53.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80040540, ARCADE_OBJ_17_DK_100M, 2, 0, 0, 0, 0, 0x30, 0x29};
+extern ArcadeStruct1 arcade_dk_75m_obj_template                 ;//= {  68.0f,  42.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80040540, ARCADE_OBJ_18_DK_75M, 2, 0, 0, 0, 0, 0x30, 0x29};
+extern ArcadeStruct1 arcade_dk_50m_obj_template                 ;//= {  68.0f,  42.0f, 1.0f,  0.0f, 0.0f, &D_arcade_80040540, ARCADE_OBJ_19_DK_50M, 2, 0, 0, 0, 0, 0x30, 0x29};
+extern ArcadeStruct1 arcade_dk_how_high_obj_template            ;//= { 138.0f, 198.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003F9B8, ARCADE_OBJ_08_DK_HOW_HIGH, 0, 0, 0, 0, 0, 0x2E, 0x20};
+extern ArcadeStruct1 arcade_points_text_obj_template            ;//= {   0.0f,   0.0f, 0.0f,  0.0f, 0.0f, &D_arcade_800381B0, ARCADE_OBJ_14_POINTS_TEXT, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_bonus_item_obj_template             ;//= { 180.0f, 247.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80038DE0, ARCADE_OBJ_05_BONUS_ITEM, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_hammer_obj_template                 ;//= { 220.0f, 200.0f, 0.0f,  0.0f, 0.0f, &D_arcade_800393F8, ARCADE_OBJ_06_HAMMER, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_rivet_obj_template                  ;//= { 108.0f, 208.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80032E80, ARCADE_OBJ_0B_RIVET, 0, 0, 0, 1, 0, 0x08, 0x09};
+extern ArcadeStruct1 arcade_moving_ladder_obj_template          ;//= {  60.0f,  97.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003A638, ARCADE_OBJ_0C_MOVING_LADDER, 0, 0, 0, 0xF4, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_name_select_cursor_obj_template     ;//= {  60.0f,  97.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003A840, ARCADE_OBJ_09_NAME_SELECT_CURSOR, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 D_arcade_8004A6B8                          ;//= {  60.0f,  97.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80034360, 0x1C, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_pie_obj_template                    ;//= {  60.0f, 207.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003AA48, ARCADE_OBJ_04_PIE, 0, 0, 0, 3, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_100m_complete_particle_obj_template ;//= { 160.0f, 214.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003AC50, ARCADE_OBJ_0F_100M_COMPLETE_PARTICLE, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern ArcadeStruct1 arcade_barrel_stack_obj_template           ;//= {  58.0f,  83.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037130, ARCADE_OBJ_0A_BARREL_STACK, 0, 0, 0, 0, 0, 0x10, 0x10};
+extern u32 D_arcade_8004A738 ;//= 1; // rng
+extern u8 D_arcade_8004A73C ;//= 0;
+extern u8 D_arcade_8004A740 ;//= 0; // arcade_is_in_nintendo_coin_mode
 extern u8 D_arcade_8004A744;
-extern s32 arcade_current_score = 3700; //0x8004A748
-extern s32 arcade_saved_high_scores[5] = {
+extern s32 arcade_current_score ;//= 3700; //0x8004A748
+extern s32 arcade_saved_high_scores[5] ;/*= {
     7650, 6100, 5950, 5050, 4300
-}; //0x8004A74C
+}; //0x8004A74C*/
 
-extern s32 D_arcade_8004A760 = 7650;
-extern u8  D_arcade_8004A764 = 0;
-extern s8  D_arcade_8004A768 = 0;
-extern u8  D_arcade_8004A76C = 0;
-extern u8 D_arcade_8004A770 = 0;
-extern u8 D_arcade_8004A774[3] = {' ',' ',' '};
-extern u8 arcade_saved_high_score_initials[5][3] = {
+extern s32 D_arcade_8004A760 ;//= 7650;
+extern u8  D_arcade_8004A764 ;//= 0;
+extern s8  D_arcade_8004A768 ;//= 0;
+extern u8  D_arcade_8004A76C ;//= 0;
+extern u8 D_arcade_8004A770 ;//= 0;
+extern u8 D_arcade_8004A774[3] ;//= {' ',' ',' '};
+extern u8 arcade_saved_high_score_initials[5][3] ;/*= {
     {' ',' ',' '},
     {' ',' ',' '},
     {' ',' ',' '},
     {' ',' ',' '},
     {' ',' ',' '}
-}; //0x8004A778
+}; //0x8004A778*/
 extern u8 D_arcade_8004A788[4];
-extern s32 D_arcade_8004A78C = 1;
-extern s32 D_arcade_8004A790 = 0;
-extern u8 D_arcade_8004A794 = 0x20;
+extern s32 D_arcade_8004A78C ;//= 1;
+extern s32 D_arcade_8004A790 ;//= 0;
+extern u8 D_arcade_8004A794 ;//= 0x20;
 extern s32 D_arcade_8004A798[0xC];
 
 extern u8 D_arcade_8004A81C[8][2]; // 50m rivet positions
-extern u8 D_arcade_8004A82C[5][3] = {
+extern u8 D_arcade_8004A82C[5][3] ;/*= {
     {'1','S','T'},
     {'2','N','D'},
     {'3','R','D'},
     {'4','T','H'},
     {'5','T','H'},
-};
-extern s32 D_arcade_8004A83C = 0;
+};*/
+extern s32 D_arcade_8004A83C ;//= 0;
 
 /*.rodata 0x8004A840*/
-extern char D_arcade_8004A840[] = "NAME %.3s";
-extern char D_arcade_8004A84C[] = "---";
-extern char D_arcade_8004A850[] = "REGI TIME <%02d>";
-extern char D_arcade_8004A864[] = "YOUR NAME WAS";
-extern char D_arcade_8004A874[] = "REGISTERED";
-extern char D_arcade_8004A880[] = "NAME REGISTRATION";
-extern char D_arcade_8004A894[] = "A B C D E F G H I J";
-extern char D_arcade_8004A8A8[] = "K L M N O P Q R S T";
-extern char D_arcade_8004A8BC[] = "U V W X Y Z . -";
-extern char D_arcade_8004A8CC[] = "ba";
-extern char D_arcade_8004A8D0[] = "%.3s";
-extern char D_arcade_8004A8D8[] = "%.3s  %06d  %.3s";
-extern char D_arcade_8004A8EC[] = "CREDIT 00";
-extern char D_arcade_8004A8F8[] = "1UP";
-extern char D_arcade_8004A8FC[] = "HIGH SCORE";
-extern char D_arcade_8004A908[] = "L=%02d";
-extern char D_arcade_8004A910[] = "%06d    %06d";
-extern char D_arcade_8004A920[] = "GAME OVER";
-extern char D_arcade_8004A92C[] = "RETURN";
+extern char D_arcade_8004A840[] ;//= "NAME %.3s";
+extern char D_arcade_8004A84C[] ;//= "---";
+extern char D_arcade_8004A850[] ;//= "REGI TIME <%02d>";
+extern char D_arcade_8004A864[] ;//= "YOUR NAME WAS";
+extern char D_arcade_8004A874[] ;//= "REGISTERED";
+extern char D_arcade_8004A880[] ;//= "NAME REGISTRATION";
+extern char D_arcade_8004A894[] ;//= "A B C D E F G H I J";
+extern char D_arcade_8004A8A8[] ;//= "K L M N O P Q R S T";
+extern char D_arcade_8004A8BC[] ;//= "U V W X Y Z . -";
+extern char D_arcade_8004A8CC[] ;//= "ba";
+extern char D_arcade_8004A8D0[] ;//= "%.3s";
+extern char D_arcade_8004A8D8[] ;//= "%.3s  %06d  %.3s";
+extern char D_arcade_8004A8EC[] ;//= "CREDIT 00";
+extern char D_arcade_8004A8F8[] ;//= "1UP";
+extern char D_arcade_8004A8FC[] ;//= "HIGH SCORE";
+extern char D_arcade_8004A908[] ;//= "L=%02d";
+extern char D_arcade_8004A910[] ;//= "%06d    %06d";
+extern char D_arcade_8004A920[] ;//= "GAME OVER";
+extern char D_arcade_8004A92C[] ;//= "RETURN";
 extern u8  D_arcade_8004A934;
 extern u8  D_arcade_8004A944;
 extern u8  D_arcade_8004A954;
@@ -288,6 +290,7 @@ extern f64 D_arcade_8004AA98;
 extern f64 D_arcade_8004AAA0;
 extern f64 D_arcade_8004AAA8;
 extern f64 D_arcade_8004AAB0;
+extern f32 D_arcade_8004AB24;
 extern f64 D_arcade_8004AB28;
 extern f64 D_arcade_8004AB30;
 extern f32 D_arcade_8004AB38;

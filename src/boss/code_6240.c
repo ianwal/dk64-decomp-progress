@@ -2,7 +2,6 @@
 #include "functions.h"
 
 extern s32 D_global_asm_80720120;
-extern s32 D_global_asm_8071EDEC;
 extern s32 D_global_asm_8074E880[];
 
 s32 func_global_asm_80725BA4(s16, s16, s32);
@@ -88,7 +87,7 @@ void func_boss_8002A5CC(void) {
     sp68 += ((rand() >> 0xF) % 100) + 50;
     sp64 += ((rand() >> 0xF) % 80) - 40;
     func_global_asm_807149B8(1);
-    func_global_asm_8071498C(&D_global_asm_8071EDEC);
+    func_global_asm_8071498C(&func_global_asm_8071EDEC);
     func_global_asm_80714950(current_actor_pointer);
     func_global_asm_807149C8(0xFF, 0xD7, 0x58, 0xFF);
     func_global_asm_80714CC0(&D_global_asm_80720120, 1.5f, sp6C, sp68, sp64);

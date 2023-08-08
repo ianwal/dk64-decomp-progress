@@ -512,7 +512,7 @@ void func_menu_80028EA8(Actor *arg0, s32 arg1) {
 void func_menu_8002907C(void);
 
 extern u8 D_menu_80033818; // Current input index
-extern u16 D_menu_8003381C[] = {U_JPAD, L_JPAD, U_JPAD, D_JPAD, R_JPAD, D_JPAD, Z_TRIG}; // Required input sequence
+extern u16 D_menu_8003381C[] ;//= {U_JPAD, L_JPAD, U_JPAD, D_JPAD, R_JPAD, D_JPAD, Z_TRIG}; // Required input sequence
 extern s8 D_global_asm_807563B4; // Enable stack trace upon crash
 
 // Button code on controller to enable stack trace upon crash

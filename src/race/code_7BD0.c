@@ -281,7 +281,7 @@ void castleCarRaceSetup() {
     RaaD->unk24 = 2;
 }
 
-void func_race_8002D0B0() {
+void initializeSealRace() {
     RaceAdditionalActorData2 *RaaD;
 
     func_global_asm_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306

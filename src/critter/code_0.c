@@ -152,7 +152,6 @@ void func_critter_80026E0C(s32);
 
 void func_global_asm_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
 void func_global_asm_80611690(void*);
-s32 func_global_asm_8066B0F8(s32, s32, s32, s32);
 u32 func_global_asm_806119A0();
 void func_global_asm_80718BF4(void);
 
@@ -257,7 +256,7 @@ void func_critter_8002448C(Critter *arg0) {
     for (i = 0; i < 2; i++) {
         temp = arg0->unk1E4[i];
         if (temp && arg0->unk1E8[i] == 0) {
-            arg0->unk1E8[i] = func_global_asm_8066B0F8(0xE, temp, 0, 0);
+            arg0->unk1E8[i] = getPointerTableFile(0xE, temp, 0, 0);
         }
     }
 }
@@ -383,7 +382,7 @@ void func_critter_80025500(Critter *arg0) {
 
 extern Gfx D_1000118;
 extern f32 D_2000180[];
-extern f32 D_02000200[];
+extern f32 D_2000200[];
 
 Gfx *func_critter_800257D4(Gfx *dl) {
     gSPDisplayList(dl++, &D_1000118);
@@ -396,7 +395,7 @@ Gfx *func_critter_800257D4(Gfx *dl) {
     gSPMatrix(dl++, 
                 (&character_change_array[cc_player_index].unk88[D_global_asm_807444FC]), 
                 G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(dl++, &D_02000200, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_2000200, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
     gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     return dl;
 }

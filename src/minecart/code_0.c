@@ -118,7 +118,6 @@ extern f64 D_minecart_80028C98;
 extern s16 D_global_asm_807502D0;
 extern f32 D_global_asm_807502F8;
 extern s16 D_global_asm_80750338;
-extern s32 D_global_asm_8076A0A8;
 
 s32 func_minecart_8002430C(s32, s32 *, s16, s32);
 
@@ -146,7 +145,7 @@ void func_minecart_80024890(void) {
         temp_v1->unk24 = D_minecart_80028C80;
         temp_v1->unk28 = 5.0f;
     }
-    func_minecart_8002430C(1, D_global_asm_8076A0A8 == 6 ? &D_minecart_80028C34 : &D_minecart_80028C3C, 0x7FFF, 0x23);
+    func_minecart_8002430C(1, current_map == 6 ? &D_minecart_80028C34 : &D_minecart_80028C3C, 0x7FFF, 0x23);
     func_minecart_80024768();
 }
 
