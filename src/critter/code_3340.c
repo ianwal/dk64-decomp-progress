@@ -344,8 +344,8 @@ void func_critter_80029118(void) {
 
 Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32); // extern
 
-extern Gfx D_01000118;
-extern Mtx D_02000180;
+extern Gfx D_1000118;
+extern Mtx D_2000180;
 
 typedef struct {
     u8 unk0;
@@ -355,12 +355,12 @@ typedef struct {
 
 Gfx *func_critter_800296DC(Gfx *dl, Actor *arg1) {
     AAD_critter_800296DC* aaD = arg1->additional_actor_data;
-    gSPDisplayList(dl++, &D_01000118);
+    gSPDisplayList(dl++, &D_1000118);
     gDPPipeSync(dl++);
     gDPSetPrimColor(dl++, 0, 0, 0xC8, 0xC8, 0xC8, 0xFF);
     gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
     gDPSetRenderMode(dl++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
-    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     if (arg1->control_state == 0xFE) {
         dl = func_global_asm_806FE078(dl, aaD->unk2, 2, 160.0f, 100.0f, 0.0f, 1.5f);

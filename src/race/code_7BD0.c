@@ -193,9 +193,9 @@ typedef struct {
     f32 unk50[1][4][4];
 } Struct8002C63C_arg1;
 
-extern Gfx D_01000118;
-extern Mtx D_020000C0;
-extern Mtx D_02000180;
+extern Gfx D_1000118;
+extern Mtx D_20000C0;
+extern Mtx D_2000180;
 
 Gfx *func_race_8002C63C(Gfx *dl, Struct8002C63C_arg1 *arg1) {
     gDPPipeSync(dl++);
@@ -205,12 +205,12 @@ Gfx *func_race_8002C63C(Gfx *dl, Struct8002C63C_arg1 *arg1) {
 
     dl = func_global_asm_805FD030(dl);
 
-    gSPDisplayList(dl++, &D_01000118);
-    gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPDisplayList(dl++, &D_1000118);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
     guScale(arg1->unk50[D_global_asm_807444FC], 0.5f, 0.5f, 1.0f);
     gSPMatrix(dl++, arg1->unk50[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
-    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
     return dl;
 }

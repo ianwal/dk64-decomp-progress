@@ -40,8 +40,8 @@ s32 func_menu_80025AF0(MenuStruct1 *arg0, s32 characterIndex) {
 extern s32 D_menu_80033A80;
 extern s32 D_menu_80033A88;
 
-extern Gfx D_01000118;
-extern Mtx D_020000C0;
+extern Gfx D_1000118;
+extern Mtx D_20000C0;
 
 typedef struct {
     u8 unk0[0xD - 0x0];
@@ -58,8 +58,8 @@ Gfx *func_menu_80025B64(Gfx *dl, Actor *arg1) {
 
     a178 = arg1->unk178;
     if (a178->unkD == 1) {
-        gSPDisplayList(dl++, &D_01000118);
-        gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPDisplayList(dl++, &D_1000118);
+        gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gDPPipeSync(dl++);
         gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM)
         switch (a178->unkE) {

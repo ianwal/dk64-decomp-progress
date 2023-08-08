@@ -49,9 +49,9 @@ void func_jetpac_80024000(void) {
 extern s32 D_global_asm_8076A050[];
 extern s32 D_global_asm_8076A080;
 
-extern Gfx D_01000090;
-extern Gfx D_01000040;
-extern Mtx D_02000080;
+extern Gfx D_1000090;
+extern Gfx D_1000040;
+extern Mtx D_2000080;
 
 typedef struct {
     u8 unk0[0x80 - 0x0];
@@ -69,8 +69,8 @@ void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1) {
     gSPSegment(dl++, 0x00, 0x00000000);
     gSPSegment(dl++, 0x02, osVirtualToPhysical(arg0));
     gSPSegment(dl++, 0x01, osVirtualToPhysical(D_global_asm_8076A080));
-    gSPDisplayList(dl++, &D_01000090);
-    gSPDisplayList(dl++, &D_01000040);
+    gSPDisplayList(dl++, &D_1000090);
+    gSPDisplayList(dl++, &D_1000040);
     guOrtho(&arg0->unk80, 0, 320.0f, 0, 240.0f, 1.0f, 10.0f, 1.0f);
     gDPPipeSync(dl++);
     dl = func_global_asm_805FE4D4(dl);
@@ -78,7 +78,7 @@ void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1) {
     gDPSetAlphaDither(dl++, G_AD_PATTERN);
     gDPSetFillColor(dl++, 0x00010001);
     gDPFillRectangle(dl++, 0, 0, 319, 239);
-    gSPMatrix(dl++, &D_02000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_2000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     sp68 = malloc(0x5DC0);
     func_global_asm_8061134C(sp68);
     sp6C = sp68;

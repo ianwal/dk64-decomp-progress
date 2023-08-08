@@ -17,18 +17,18 @@ typedef struct {
     u8 unk9;
 } A178_80024000;
 
-extern Gfx D_01000118;
-extern Mtx D_02000180;
+extern Gfx D_1000118;
+extern Mtx D_2000180;
 
 Gfx *func_bonus_80024000(Gfx *dl, Actor *arg1) {
     A178_80024000 *a178;
     a178 = arg1->unk178;
     if (func_global_asm_805FCA64() != 0) {
-        gSPDisplayList(dl++, &D_01000118);
+        gSPDisplayList(dl++, &D_1000118);
         dl = func_global_asm_8070068C(dl);
         gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-        gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         dl = func_global_asm_8068DC54(func_global_asm_806FE078(dl, a178->unk9, 8, 30.0f, 36.0f, 0.0f, 1.5f), 0x26, 0x32, &a178->unk2, a178->unk4, &a178->unk8);
     }
     return dl;
@@ -46,7 +46,7 @@ void func_bonus_800240F0() {
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024158.s")
 
 Gfx *func_bonus_80024D3C(Gfx *arg0, s32 arg1) {
-    gSPDisplayList(arg0++, &D_01000118);
+    gSPDisplayList(arg0++, &D_1000118);
     // TODO: Get rid of magic constants
     gDPSetCombine(arg0++, 0x119623, 0xFF2FFFFF);
     gDPSetPrimColor(arg0++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);

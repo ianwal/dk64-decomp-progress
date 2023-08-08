@@ -14,8 +14,8 @@ typedef struct {
     s32 unk8;
 } AAD_multiplayer_80024000;
 
-extern Gfx D_01000118;
-extern Mtx D_020000C0;
+extern Gfx D_1000118;
+extern Mtx D_20000C0;
 
 void func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
     AAD_multiplayer_80024000 *sp44;
@@ -31,8 +31,8 @@ void func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
         var_f12 = D_global_asm_80744494 * 0.5;
     }
     dl = func_global_asm_805FD030(dl);
-    gSPDisplayList(dl++, &D_01000118);
-    gSPMatrix(dl++, &D_020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPDisplayList(dl++, &D_1000118);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gDPPipeSync(dl++);
 
     if (D_global_asm_80750AB8 == 1) {

@@ -10,9 +10,9 @@ extern f32 D_bonus_8002DCB8;
 void *func_global_asm_8068DC54(s32, s32, s32, void *, s32, void *);
 s32 func_global_asm_806FE078(void *, u8, s32, f32, f32, f32, f32); // extern
 
-extern Gfx D_01000118;
-extern Mtx D_02000080;
-extern Mtx D_02000180;
+extern Gfx D_1000118;
+extern Mtx D_2000080;
+extern Mtx D_2000180;
 
 typedef struct {
     u8 unk0[0x14 - 0x0];
@@ -30,9 +30,9 @@ void func_bonus_800252A0(Gfx *dl, Actor *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xC8, 0xC8, 0xC8, 0xFF);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-    gSPDisplayList(dl++, &D_01000118);
-    gSPMatrix(dl++, &D_02000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    gSPMatrix(dl++, &D_02000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPDisplayList(dl++, &D_1000118);
+    gSPMatrix(dl++, &D_2000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     func_global_asm_8068DC54(func_global_asm_806FE078(dl, aaD->unk19, 8, 30.0f, 36.0f, 0.0f, 1.5f), 0x26, 0x32, &aaD->unk14, aaD->unk16, &aaD->unk18);
 }
 
