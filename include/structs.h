@@ -1113,7 +1113,7 @@ typedef struct {
     f32 unk50;
     u8 unk54;
     u8 unk55; // Used
-} AAD_806A4DDC;
+} AAD_global_asm_806A4DDC;
 
 // TODO: This appears to be a "texture renderer" according to ScriptHawk, needs a better name though. Linked list at Actor->unk158
 typedef struct global_asm_struct_60 GlobalASMStruct60;
