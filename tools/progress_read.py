@@ -34,7 +34,6 @@ def RGB_to_hex(RGB):
 def main(csv_name, version, overlay):
     with open(csv_name, mode='r') as csv_file:
         csv_reader = csv.DictReader(csv_file)
-        line_count = 0
         total_func = 0
         incomplete_func = 0
         if overlay == 'total':
@@ -51,15 +50,16 @@ def main(csv_name, version, overlay):
         done_byte = total_byte - incomplete_byte
         done_func = total_func - incomplete_func
         percent = ((done_byte/total_byte) * 100)
-        print("%s: bytes: %3.4f%% (%d/%d), nonstatic funcs: %3.4f%% (%d/%d)" % (overlay, percent, done_byte, total_byte,((done_func/total_func) *100), done_func, total_func ))
-        green = min(255, round(min(1, (percent / 100) * 2) * 192))
-        red = min(255, round(min(1, ((100 - percent) / 100) * 2) * 192))
-        color = RGB_to_hex([red, green, 0])
-        if overlay == 'total':
-            badge = anybadge.Badge("Donkey Kong 64 (US)", "%3.4f%%" % (percent), default_color=color)
-        else:
-            badge = anybadge.Badge(overlay, "%3.4f%%" % (percent), default_color=color)
-        badge.write_badge('progress/progress_' + overlay + '.svg',overwrite=True)
+        if total_byte > 0 and total_func > 0:
+            print("%s: bytes: %3.4f%% (%d/%d), nonstatic funcs: %3.4f%% (%d/%d)" % (overlay, percent, done_byte, total_byte,((done_func/total_func) *100), done_func, total_func ))
+            green = min(255, round(min(1, (percent / 100) * 2) * 192))
+            red = min(255, round(min(1, ((100 - percent) / 100) * 2) * 192))
+            color = RGB_to_hex([red, green, 0])
+            if overlay == 'total':
+                badge = anybadge.Badge("Donkey Kong 64 (US)", "%3.4f%%" % (percent), default_color=color)
+            else:
+                badge = anybadge.Badge(overlay, "%3.4f%%" % (percent), default_color=color)
+            badge.write_badge('progress/progress_' + overlay + '.svg',overwrite=True)
 
 
 if __name__ == '__main__':

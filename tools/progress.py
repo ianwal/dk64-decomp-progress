@@ -52,11 +52,6 @@ def get_nonmatching_funcs(basedir, subcode):
             if grepexc.returncode != 1:
                 raise grepexc
             funcs = set()
-        try:
-            funcs = funcs.union(set(subprocess.check_output(['grep', '-ohPR', grepstr, basedir + '/src/done']).decode('ascii').split()))
-        except subprocess.CalledProcessError as grepexc:
-            if grepexc.returncode != 1:
-                raise grepexc
     return funcs
 
 
