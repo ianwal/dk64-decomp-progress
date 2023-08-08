@@ -554,7 +554,7 @@ segments:
       # - [0x21CDEF0, bin, data_213C0]
       # - [0x21CDF58, rgba16, img/arcade_80045428.rgba16, 48, 41]
       # - [0x21CEEB8, bin, data_22338]
-      - [0x21D36B0, rodata, code_0]
+      - [0x21D3370, rodata, code_0]
       - { start: 0x21D3730, type: bss, vram: 0x8004AC00 }
   - name: jetpac
     dir: jetpac
