@@ -155,10 +155,6 @@ void func_boss_800286B8(Gfx *dl, s32 arg1) {
 }
 */
 
-void func_boss_80028818() {
-
-}
-
 void func_boss_80028820() {
     // K. Rool Tiny Phase Toes Complete
     setFlag(0x51, FALSE, FLAG_TYPE_TEMPORARY);

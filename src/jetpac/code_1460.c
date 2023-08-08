@@ -40,8 +40,8 @@ typedef struct {
     u8  unk67;
 } JetpacStruct1;
 
-JetpacStruct1 D_jetpac_8002F3D0[0x18][0x20];
-s32 D_jetpac_80045BD0;
+extern JetpacStruct1 D_jetpac_8002F3D0[0x18][0x20];
+extern s32 D_jetpac_80045BD0;
 
 void func_jetpac_80025460(void) {
     int x, y;

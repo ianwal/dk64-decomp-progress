@@ -465,6 +465,9 @@ D_jetpac_80045BE1 = 0x80045BE1; // segment:jetpac
 D_jetpac_80045BE2 = 0x80045BE2; // segment:jetpac
 D_jetpac_80045BE3 = 0x80045BE3; // segment:jetpac
 
+D_jetpac_8002F3D0 = 0x8002F3D0; // segment:jetpac
+D_jetpac_80045BD0 = 0x80045BD0; // segment:jetpac
+
 D_global_asm_80767CE8 = 0x80767CE8;
 
 D_global_asm_8076A048 = 0x8076A048;
