@@ -468,6 +468,8 @@ D_jetpac_80045BE3 = 0x80045BE3; // segment:jetpac
 D_jetpac_8002F3D0 = 0x8002F3D0; // segment:jetpac
 D_jetpac_80045BD0 = 0x80045BD0; // segment:jetpac
 
+D_global_asm_807659E8 = 0x807659E8;
+
 D_global_asm_80767CE8 = 0x80767CE8;
 
 D_global_asm_8076A048 = 0x8076A048;
@@ -483,6 +485,12 @@ D_global_asm_80770DF8 = 0x80770DF8;
 
 D_global_asm_807ECDE8 = 0x807ECDE8;
 
+D_global_asm_807F0570 = 0x807F0570;
+D_global_asm_807F0588 = 0x807F0588;
+D_global_asm_807F059C = 0x807F059C;
+
+D_global_asm_807F5D30 = 0x807F5D30;
+
 D_global_asm_807FBB44 = 0x807FBB44;
 
 D_global_asm_807FD888 = 0x807FD888;
@@ -496,6 +504,24 @@ D_global_asm_807FF0F2 = 0x807FF0F2;
 D_global_asm_807FF0F4 = 0x807FF0F4;
 D_global_asm_807FF0F6 = 0x807FF0F6;
 D_global_asm_807FF0F8 = 0x807FF0F8;
+
+
+D_global_asm_807F5D30 = 0x807F5D30;
+D_global_asm_807F7360 = 0x807F7360;
+D_global_asm_807F7361 = 0x807F7361;
+D_global_asm_807F7362 = 0x807F7362;
+D_global_asm_807F7363 = 0x807F7363;
+D_global_asm_807F7364 = 0x807F7364;
+D_global_asm_807F7366 = 0x807F7366;
+D_global_asm_807F7368 = 0x807F7368;
+D_global_asm_807F9070 = 0x807F9070;
+D_global_asm_807FBB68 = 0x807FBB68;
+D_global_asm_807F6000 = 0x807F6000;
+D_global_asm_807F93F8 = 0x807F93F8;
+D_global_asm_807F93F0 = 0x807F93F0;
+D_global_asm_807F93F4 = 0x807F93F4;
+D_global_asm_807FC8C0 = 0x807FC8C0;
+
 
 
 

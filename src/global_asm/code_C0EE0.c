@@ -2,10 +2,49 @@
 #include "functions.h"
 
 
+// jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C0EE0/func_global_asm_806BC1E0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C0EE0/func_global_asm_806BCF98.s")
+extern s32 D_global_asm_8075BB30; // TODO: Type
+extern s32 D_global_asm_8075BB38; // TODO: Type
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C0EE0/func_global_asm_806BD094.s")
+extern Gfx D_1000118;
+extern Mtx D_2000180;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C0EE0/func_global_asm_806BD0CC.s")
+void func_global_asm_806BCF98(Gfx *dl, s32 arg1) {
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    func_global_asm_806FC530(func_global_asm_806FC530(dl, 1, 0x208, 0xC8, &D_global_asm_8075BB30, 1), 1, 0x208, 0x12C, &D_global_asm_8075BB38, 1);
+}
+
+// Caves Ice Tomato Board State
+extern s8 D_global_asm_807FC8C0[];
+
+// Set Caves Ice Tomato Board Square
+void func_global_asm_806BD094(s16 arg0, s8 arg1) {
+    if (arg0 >= 0 && arg0 < 0x10) {
+        D_global_asm_807FC8C0[arg0] = arg1;
+    }
+}
+
+// Reset Caves Ice Tomato Board
+void func_global_asm_806BD0CC(void) {
+    s32 i;
+
+    // Caves: Ice Tomato Board Active
+    setFlag(0x30, FALSE, FLAG_TYPE_TEMPORARY);
+
+    for (i = 0; i < 16; i++) {
+        D_global_asm_807FC8C0[i] = -1;
+        func_global_asm_8063DA40(i, 0);
+    }
+
+    D_global_asm_807FC8C0[5] = 0;
+    D_global_asm_807FC8C0[6] = 1;
+    D_global_asm_807FC8C0[9] = 1;
+    D_global_asm_807FC8C0[10] = 0;
+}
