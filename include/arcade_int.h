@@ -250,25 +250,6 @@ extern u8 D_arcade_8004A82C[5][3] ;/*= {
 extern s32 D_arcade_8004A83C ;//= 0;
 
 /*.rodata 0x8004A840*/
-extern char D_arcade_8004A840[] ;//= "NAME %.3s";
-extern char D_arcade_8004A84C[] ;//= "---";
-extern char D_arcade_8004A850[] ;//= "REGI TIME <%02d>";
-extern char D_arcade_8004A864[] ;//= "YOUR NAME WAS";
-extern char D_arcade_8004A874[] ;//= "REGISTERED";
-extern char D_arcade_8004A880[] ;//= "NAME REGISTRATION";
-extern char D_arcade_8004A894[] ;//= "A B C D E F G H I J";
-extern char D_arcade_8004A8A8[] ;//= "K L M N O P Q R S T";
-extern char D_arcade_8004A8BC[] ;//= "U V W X Y Z . -";
-extern char D_arcade_8004A8CC[] ;//= "ba";
-extern char D_arcade_8004A8D0[] ;//= "%.3s";
-extern char D_arcade_8004A8D8[] ;//= "%.3s  %06d  %.3s";
-extern char D_arcade_8004A8EC[] ;//= "CREDIT 00";
-extern char D_arcade_8004A8F8[] ;//= "1UP";
-extern char D_arcade_8004A8FC[] ;//= "HIGH SCORE";
-extern char D_arcade_8004A908[] ;//= "L=%02d";
-extern char D_arcade_8004A910[] ;//= "%06d    %06d";
-extern char D_arcade_8004A920[] ;//= "GAME OVER";
-extern char D_arcade_8004A92C[] ;//= "RETURN";
 extern u8  D_arcade_8004A934;
 extern u8  D_arcade_8004A944;
 extern u8  D_arcade_8004A954;

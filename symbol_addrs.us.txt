@@ -404,11 +404,6 @@ arcade_lives_visual = 0x8004C71C; // segment:arcade
 arcade_game_state = 0x8004C71D; // segment:arcade
 arcade_background_visual = 0x8004C722; // segment:arcade
 
-D_arcade_8004A840 = 0x8004A840; // segment:arcade
-D_arcade_8004A874 = 0x8004A874; // segment:arcade
-D_arcade_8004A880 = 0x8004A880; // segment:arcade
-D_arcade_8004A8A8 = 0x8004A8A8; // segment:arcade
-D_arcade_8004A8EC = 0x8004A8EC; // segment:arcade
 D_arcade_8004AA18 = 0x8004AA18; // segment:arcade
 D_arcade_8004AB24 = 0x8004AB24; // segment:arcade
 D_arcade_8004AB28 = 0x8004AB28; // segment:arcade
