@@ -1,8 +1,38 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern u8 D_global_asm_807444F4;
+extern f32 D_global_asm_807FD9C4;
+extern s8 D_global_asm_807FD9BC;
+extern u8 D_global_asm_807444F8;
+extern u8 D_global_asm_807FD9BD;
+extern s32 D_global_asm_8076D1F8;
+extern s32 D_global_asm_807FD9C8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_807094D0.s")
+void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
+
+void func_global_asm_807094D0(u8 arg0) { // init zipper
+    D_global_asm_807444F4 = is_cutscene_active;
+    switch (arg0) {
+        case 2:
+            D_global_asm_807FD9C4 = 1.0f;
+            D_global_asm_807FD9BC = 0;
+            D_global_asm_807444F8 = 1;
+            is_cutscene_active = 6;
+            break;
+        case 3:
+            D_global_asm_807FD9C4 = 0.5f;
+            D_global_asm_807FD9BC = 0;
+            D_global_asm_807444F8 = 2;
+            is_cutscene_active = 6;
+            D_global_asm_807FD9BD = 2;
+            if ((D_global_asm_807444F4 == 1) && (D_global_asm_807FBB64 & 1)) {
+                func_global_asm_80600BBC(0);
+            }
+            break;
+    }
+    func_global_asm_80737638(D_global_asm_8076D1F8, 0x1BC, 0x7FFF, 0x3F, 1.0f, 0, &D_global_asm_807FD9C8);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_807095E4.s")
 
@@ -10,24 +40,257 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_80709ACC.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_80709BC4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A220.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A848.s")
+
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
+
+typedef struct {
+    u32 unk0;
+    u32 unk4;
+    u32 unk8;
+    u32 unkC;
+    u32 unk10;
+    u32 unk14;
+    u32 unk18;
+    u32 unk1C;
+} Struct8070A848;
+
+/*
+void func_global_asm_8070A848(Struct8070A848 *arg0, Struct8070A848 *arg1) {
+    Struct8070A848 *temp = arg1;
+    s32 i = 0;
+
+    while (i < (D_global_asm_80744490 * D_global_asm_80744494) / 16) {
+        arg0[i].unk0 = temp[i].unk0 | 0x10001;
+        arg0[i].unk4 = temp[i].unk4 | 0x10001;
+        arg0[i].unk8 = temp[i].unk8 | 0x10001;
+        arg0[i].unkC = temp[i].unkC | 0x10001;
+        arg0[i].unk10 = temp[i].unk10 | 0x10001;
+        arg0[i].unk14 = temp[i].unk14 | 0x10001;
+        arg0[i].unk18 = temp[i].unk18 | 0x10001;
+        arg0[i].unk1C = temp[i].unk1C | 0x10001;
+        i++;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A934.s")
 
+/*
+s32 func_global_asm_805FE71C(s32, u8, s32 *, ?);
+s32 func_global_asm_805FE7B4(s32 *, s32 *, s32 *, ?);
+s32 func_global_asm_80610044(s32, s32, ?, ?, s32, s32);
+s32 func_global_asm_8061CBCC();
+s32 func_global_asm_8070AC74(s32, s32 *, u8 *);
+s32 func_global_asm_8070B7EC(s32 *, s32, s32);
+extern u8 D_global_asm_807444F4;
+extern void *D_global_asm_807FD9A8;
+extern s32 D_global_asm_807FD9B0;
+extern s32 D_global_asm_807FD9B4;
+extern s32 D_global_asm_807FD9B8;
+extern u8 D_global_asm_807FD9BC;
+extern u8 D_global_asm_807FD9BD;
+
+// TODO: Made decent progress, cleaning up mips_to_c output, still needs some TLC though
+// Those array/struct lookups, oof
+// Also idk what's going on with the first switch case
+void func_global_asm_8070A934(s32 nextMap, s32 nextExit) {
+    s32 sp34;
+    s32 *sp30;
+    s32 *temp_t7;
+    s32 temp_t5;
+    u8 temp_t1;
+    u8 temp_t1_2;
+    u8 temp_t5_2;
+
+    func_global_asm_80610044(((D_global_asm_807444FC * 4) + 0x80770000)->unk-5FB0, D_global_asm_8076A088, 3, 1, 0x4D2, 1);
+    temp_t1 = D_global_asm_807444FC ^ 1;
+    temp_t5 = (temp_t1 & 0xFF) * 0x11B0;
+    D_global_asm_807444FC = temp_t1;
+    object_timer++;
+    temp_t7 = temp_t5 + &D_global_asm_80767CE8;
+    D_global_asm_8076A048 = temp_t7;
+    sp30 = temp_t7 + 0xDB0;
+    switch (D_global_asm_807FD9BC) {
+        case 0:
+            D_global_asm_807FD9BC = 1;
+            // func_global_asm_8070AF24(&object_timer, &D_global_asm_807FD9BC);
+            func_global_asm_8070AF24();
+            break;
+        }
+        case 1:
+            if ((D_global_asm_8076A0B1 & 1) && (D_global_asm_807FD888 == 31.0f)) {
+                sp34 = ((D_global_asm_807444FC * 4) + 0x80770000)->unk-5FB0;
+                if (D_global_asm_8076A0B2 == 1) {
+                    is_cutscene_active = D_global_asm_807444F4;
+                }
+            } else {
+                func_global_asm_8070AC74(*0x8076A048, &sp34, &D_global_asm_8076A0B1);
+                if (func_global_asm_8070B7EC(&sp34, D_global_asm_807FD9B8, D_global_asm_807FD9B0)) {
+                    switch (D_global_asm_807444F8) {
+                        case 1:
+                            osViBlack(1);
+                            func_global_asm_805FF378(nextMap, nextExit);
+                            D_global_asm_807FD888 = 31.0f;
+                            D_global_asm_807444F8 = 2;
+                            break;
+                        case 2:
+                            func_global_asm_8061134C(D_global_asm_807FD9B0);
+                            func_global_asm_8061134C(D_global_asm_807FD9A8->unk8);
+                            func_global_asm_8061134C(D_global_asm_807FD9B4);
+                            func_global_asm_8061134C(D_global_asm_807FD9A8->unk10);
+                            func_global_asm_8061134C(D_global_asm_807FD9A8->unk14);
+                            func_global_asm_8066B434(D_global_asm_807FD9B8, 0x24B, 0x4A);
+                            is_cutscene_active = D_global_asm_807444F4;
+                            if ((is_cutscene_active == 1) && D_global_asm_807FBB64 & 1) {
+                                func_global_asm_8061CBCC();
+                            }
+                            D_global_asm_807444F8 = 3;
+                            D_global_asm_807FD888 = 0.0f;
+                            break;
+                    }
+                }
+            }
+            if (D_global_asm_807FD9BD != 0) {
+                temp_t5_2 = D_global_asm_807FD9BD - 1;
+                D_global_asm_807FD9BD = temp_t5_2;
+                if ((temp_t5_2 & 0xFF) == 0) {
+                    D_global_asm_8076A0B1 |= 2;
+                }
+            }
+            if (D_global_asm_8076A0A4 && (is_cutscene_active != 6)) {
+                func_global_asm_805FE71C(sp34, D_global_asm_807444FC, &D_global_asm_8076A088, 0);
+                func_global_asm_805FE7B4(sp30, D_global_asm_8076A048, &D_global_asm_8076A08C, 1);
+                return;
+            }
+            func_global_asm_805FE71C(sp34, D_global_asm_807444FC, &D_global_asm_8076A088, 1);
+}
+*/
+
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070AC74.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070AF24.s")
+extern s32 D_global_asm_80744470[];
+extern s16 D_global_asm_80744494;
+extern s32 D_global_asm_80755068;
+extern s32 D_global_asm_8075506C;
+extern void *D_global_asm_807FD9A4;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+} Struct807FD9A8;
+
+extern Struct807FD9A8 *D_global_asm_807FD9A8;
+extern void *D_global_asm_807FD9AC;
+extern void *D_global_asm_807FD9B0;
+extern void *D_global_asm_807FD9B8;
+
+void func_global_asm_8070AF24(void) {
+    switch (D_global_asm_807444F8) {
+        case 1:
+            D_global_asm_80755068 = 0;
+            D_global_asm_8075506C = 0;
+            break;
+        case 2:
+            D_global_asm_80755068 = 0x78;
+            break;
+    }
+    D_global_asm_807FD9B8 = getPointerTableFile(0x13, 1, 1, 1);
+    D_global_asm_807FD9B0 = malloc(D_global_asm_80744490 * D_global_asm_80744494 * 2);
+    func_global_asm_8070A848(D_global_asm_807FD9B0, D_global_asm_80744470[D_global_asm_807444FC]);
+    func_global_asm_80709890(D_global_asm_807FD9B8, &D_global_asm_807FD9A8, &D_global_asm_807FD9AC, 0);
+    func_global_asm_80709ACC(D_global_asm_807FD9A8);
+    D_global_asm_807FD9A4 = D_global_asm_807FD9A8->unk8;
+    D_global_asm_807FD9A8->unk8 = malloc(D_global_asm_807FD9A8->unk0 * 0xC);
+    func_global_asm_807095E4(D_global_asm_807FD9A8->unk24, D_global_asm_807FD9A8->unk28);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070B05C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/setIntroStoryPlaying.s")
+extern u8 D_global_asm_80755070; // intro_story_is_playing
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/isIntroStoryPlaying.s")
+void setIntroStoryPlaying(u8 arg0) {
+    D_global_asm_80755070 = arg0;
+}
+
+u8 isIntroStoryPlaying(void) {
+    return D_global_asm_80755070;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070B324.s")
 
+extern s8 D_global_asm_8074583C;
+extern u8 D_global_asm_8076A0B1;
+extern s32 D_global_asm_807550A4;
+extern f32 D_global_asm_8075E430;
+
+void func_global_asm_80737B58(s32, u16);
+void func_global_asm_8060A4D0(s32, f32);
+
+/*
+// TODO: Doable, progess made
+void func_global_asm_8070B324(f32 arg0, s32 arg1, s32 *arg2) {
+    s32 sp34;
+    s32 *var_s0;
+    u32 temp_s0;
+    u16 temp_t7;
+    s32 var_a0;
+
+    temp_t7 = (D_global_asm_8075E430 * arg0);
+    temp_s0 = ((temp_t7 * D_global_asm_8074583C) / 40.0);
+    sp34 = osGetThreadPri(NULL);
+    osSetThreadPri(NULL, 0x1A);
+    func_global_asm_80737B58(0, temp_s0);
+    if (arg1 != 0) {
+        D_global_asm_807550A4 = 1;
+        func_global_asm_80737B58(2, temp_s0);
+        if ((D_global_asm_80755070 == 0) && ((D_global_asm_8076A0B1 & 1) || !(D_global_asm_8076A0B1 & 0x40))) {
+            func_global_asm_8060A4D0(0, arg0);
+        }
+    } else {
+        func_global_asm_80737B58(3, ((temp_t7 * D_global_asm_8074583C) / 40.0));
+        if (D_global_asm_807550A4 != 0) {
+            D_global_asm_807550A4 = 0;
+            func_global_asm_80737B58(2, ((D_global_asm_8074583C * 25000) / 40.0));
+            func_global_asm_80737B58(1, ((D_global_asm_8074583C * 25000) / 40.0));
+        }
+    }
+    if (arg2 != NULL) {
+        var_s0 = arg2 + (0 * 4);
+        if (*arg2 != 0) {
+            var_a0 = *var_s0;
+loop_10:
+            func_global_asm_8060A4D0(var_a0, arg0);
+            var_s0 += 4;
+            if (arg2 != NULL) {
+                var_a0 = *var_s0;
+                if (var_a0 != 0) {
+                    goto loop_10;
+                }
+            }
+        }
+    }
+    osSetThreadPri(NULL, sp34);
+}
+*/
+
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070B7EC.s")

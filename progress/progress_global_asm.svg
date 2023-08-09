@@ -9,7 +9,7 @@
     </mask>
     <g mask="url(#anybadge_1)">
         <path fill="#555" d="M0 0h77v20H0z"/>
-        <path fill="#c00700" d="M77 0h60v20H77z"/>
+        <path fill="#c02300" d="M77 0h60v20H77z"/>
         <path fill="url(#b)" d="M0 0h137v20H0z"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
@@ -17,7 +17,7 @@
         <text x="38.5" y="14">global_asm</text>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="108.0" y="15" fill="#010101" fill-opacity=".3">1.8726%</text>
-        <text x="107.0" y="14">1.8726%</text>
+        <text x="108.0" y="15" fill="#010101" fill-opacity=".3">9.1822%</text>
+        <text x="107.0" y="14">9.1822%</text>
     </g>
 </svg>

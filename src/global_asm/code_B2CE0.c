@@ -2,28 +2,272 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806ADFE0.s")
+extern f32 D_global_asm_8075AE20;
+extern f64 D_global_asm_8075AE28;
+extern s32 D_global_asm_8071FBC8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AE2B0.s")
+void func_global_asm_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_global_asm_80612BC0(f32*, f32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AE394.s")
+void func_global_asm_806ADFE0(void) {
+    f32 sp88[4][4];
+    f32 sp48[4][4];
 
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unkB8 = ((rand() >> 0xF) % 50) + 0x46;
+        current_actor_pointer->y_velocity = current_actor_pointer->unkB8 * 2;
+        current_actor_pointer->y_acceleration = -30.0f;
+        current_actor_pointer->terminal_velocity = -220.0f;
+        current_actor_pointer->unk168 = ((rand() >> 0xF) % 400) + 0xC8;
+    }
+    current_actor_pointer->y_rotation += current_actor_pointer->unk168;
+    if (current_actor_pointer->unk168 > 0) {
+        current_actor_pointer->unk168 = current_actor_pointer->unk168 - 0xA;
+    }
+    func_global_asm_80666280(1);
+    func_global_asm_80729E6C();
+    func_global_asm_8067ACB4(current_actor_pointer);
+    func_global_asm_806651FC(current_actor_pointer);
+    func_global_asm_80665564(current_actor_pointer, 0.0f);
+    func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xA, 0xA, 1, 0xC8, 0x80, 0, 1.0f);
+    if (current_actor_pointer->unk15F != 0) {
+        func_global_asm_806319C4(current_actor_pointer, 0);
+    } else {
+        guTranslateF(&sp88[0], 0.0f, -30.0f, 0.0f);
+        func_global_asm_80612BC0(&sp48[0], 180.0f);
+        guMtxCatF(&sp88[0], &sp48[0], &sp88[0]);
+        guTranslateF(&sp48[0], 0.0f, 30.0f, 0.0f);
+        guMtxCatF(&sp88[0], &sp48[0], &current_actor_pointer->unkC);
+        func_global_asm_806319C4(current_actor_pointer, 1);
+    }
+    if (((current_actor_pointer->unk6A & 1) != 0) && !(current_actor_pointer->unk6C & 1)) {
+        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x56, 0xB4, 0x96, 1, 0x4B, D_global_asm_8075AE20, 0);
+        current_actor_pointer->unkB8 *= D_global_asm_8075AE28;
+        current_actor_pointer->y_velocity = current_actor_pointer->unkB8 * 3.0f;
+        return;
+    }
+    if (((current_actor_pointer->unk6A & 1) != 0) && (current_actor_pointer->unk6C & 1)) {
+        func_global_asm_80714CC0(&D_global_asm_8071FBC8, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+        func_global_asm_806782C0(current_actor_pointer);
+    }
+}
+
+void func_global_asm_807248B0(Actor*, f32);
+
+void func_global_asm_806AE2B0(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+    f32 sp2C;
+    f32 sp28;
+    f32 sp24;
+
+    if (func_global_asm_80677FA8(ACTOR_KROSSBONES_HEAD, arg0)) { // Spawn actor: Unknown 237
+        func_global_asm_80671C0C(current_actor_pointer, arg2, &sp2C, &sp28, &sp24);
+        D_global_asm_807FBB44->floor = current_actor_pointer->floor;
+        D_global_asm_807FBB44->y_rotation = current_actor_pointer->y_rotation + arg1;
+        D_global_asm_807FBB44->unkEE = D_global_asm_807FBB44->y_rotation;
+        D_global_asm_807FBB44->unk168 = arg3;
+        D_global_asm_807FBB44->x_position = sp2C;
+        D_global_asm_807FBB44->y_position = sp28;
+        D_global_asm_807FBB44->z_position = sp24;
+        func_global_asm_807248B0(D_global_asm_807FBB44, current_actor_pointer->animation_state->scale_y);
+    }
+}
+
+extern f32 D_global_asm_8075AE30;
+
+void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
+
+void func_global_asm_806AE394(f32 arg0, f32 arg1) {
+    f32 x1;
+    f32 y1;
+    f32 z1;
+    f32 x2;
+    f32 y2;
+    f32 z2;
+    s16 sp4E;
+
+    func_global_asm_80671C0C(current_actor_pointer, 1, &x1, &y1, &z1);
+    func_global_asm_80671C0C(current_actor_pointer, 2, &x2, &y2, &z2);
+    sp4E = func_global_asm_80665DE0(x2, z2, x1, z1);
+    func_global_asm_8070033C(x1, y1, z1, x2, y2, z2, D_global_asm_8075AE30, 0xFF, 0xFF, 0xFF);
+    x1 = (func_global_asm_80612794(sp4E) * arg0) + current_actor_pointer->x_position;
+    z1 = (func_global_asm_80612790(sp4E) * arg0) + current_actor_pointer->z_position;
+    func_global_asm_8065A708(x1, current_actor_pointer->y_position, z1, 0.0f, 0.0f, 0.0f, arg1, 0, 0xFF, 0xFF, 0xFF);
+    if (current_actor_pointer->control_state != 0) {
+        if ((((D_global_asm_807FDC94->x_position - x1) * (D_global_asm_807FDC94->x_position - x1)) + ((D_global_asm_807FDC94->y_position - current_actor_pointer->y_position) * (D_global_asm_807FDC94->y_position - current_actor_pointer->y_position)) + ((D_global_asm_807FDC94->z_position - z1) * (D_global_asm_807FDC94->z_position - z1))) < (arg1 * arg1)) {
+            current_actor_pointer->y_rotation = func_global_asm_80665DE0(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position);
+            func_global_asm_806EB0C0(0x43, current_actor_pointer, 0);
+            current_actor_pointer->control_state = 0;
+            current_actor_pointer->control_state_progress = 0;
+        }
+    }
+}
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AE588.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AEE08.s")
+void func_global_asm_806AEE08(void) {
+    if ((((rand() >> 0xF) % 1000) >= 981)
+        && func_global_asm_8072DE10(4000)
+        && !(D_global_asm_807FDC90->unk1A & 0x80)) {
+        current_actor_pointer->control_state = 0x25;
+        current_actor_pointer->control_state_progress = 0;
+    }
+}
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AEE84.s")
 
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AF688.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AFA60.s")
 
+/*
+extern f64 D_global_asm_8075B098;
+
+extern s32 D_global_asm_8072073C; // TODO: Proper datatype
+extern s32 D_global_asm_8071910C; // TODO: Proper datatype
+
+void func_global_asm_806AFA60(u8 arg0) {
+    f32 temp_f22;
+    f64 temp_f20;
+    s16 i;
+
+    temp_f20 = D_global_asm_8075B098;
+    for (i = 0; i < 7; i++) {
+        temp_f22 = current_actor_pointer->animation_state->scale_y / temp_f20;
+        func_global_asm_807149B8(1);
+        func_global_asm_807149FC(0xA);
+        func_global_asm_8071498C(&D_global_asm_8071910C);
+        func_global_asm_80714998(2);
+        func_global_asm_80714950(0);
+        func_global_asm_80714C08(&D_global_asm_8072073C, temp_f22 * temp_f20, current_actor_pointer, arg0, 0);
+    }
+}
+*/
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AFB58.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806B02EC.s")
+void func_global_asm_806B02EC(void) {
+    func_global_asm_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_global_asm_8072B79C(0, 0x31E, 0x31F);
+    }
+    func_global_asm_806AD260(800, 0, 0);
+    func_global_asm_806319C4(current_actor_pointer, 0);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806B0354.s")
+extern f32 D_global_asm_8075B1A8;
 
+s32 func_global_asm_80726164(Actor*, s16, s16, s16, void*);
+void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
+
+void func_global_asm_806B0354(void) {
+    func_global_asm_80729B00();
+    if (((D_global_asm_807FBB70.unk200 == 9) || (D_global_asm_807FBB70.unk15 != 0)) && (current_actor_pointer->control_state != 0x37)) {
+        func_global_asm_8072D714(D_global_asm_807FBB70.unk1FC, 0x37A);
+        current_actor_pointer->unk138 &= 0xFFFF7FFF;
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x4:
+            if (current_actor_pointer->animation_state->unk64 == 0x378) {
+                current_actor_pointer->control_state = 0x23;
+                current_actor_pointer->control_state_progress = 0;
+            } else if ((func_global_asm_8072E22C(0x64) != 0) && (func_global_asm_80726164(current_actor_pointer, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position, D_global_asm_807FDC94->z_position, D_global_asm_807FDCA0) != 0)) {
+                func_global_asm_80614EBC(current_actor_pointer, 0x37B);
+                current_actor_pointer->control_state = 0x23;
+                current_actor_pointer->control_state_progress = 0;
+                func_global_asm_806852C4(D_global_asm_8075B1A8, current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position);
+            }
+            break;
+        case 0x23:
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkD);
+                    current_actor_pointer->control_state_progress += 1;
+                    // Fallthrough
+                case 1:
+                    if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                        current_actor_pointer->control_state_progress += 1;
+                        func_global_asm_80614EBC(current_actor_pointer, 0x379);
+                        func_global_asm_8072B324(current_actor_pointer, 0);
+                    } else {
+                        if (current_actor_pointer->animation_state->unk64 == 0x378) {
+                            func_global_asm_8072AB74(0x23, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
+                        } else {
+                            func_global_asm_8072E1A4(0xA, D_global_asm_807FDC94);
+                        }
+                        if ((func_global_asm_8072E22C(0xC8) == 0) || (func_global_asm_80726164(current_actor_pointer, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position, D_global_asm_807FDC94->z_position, D_global_asm_807FDCA0) == 0)) {
+                            func_global_asm_80614EBC(current_actor_pointer, 0x37C);
+                            current_actor_pointer->control_state = 4;
+                            current_actor_pointer->control_state_progress = 0;
+                            func_global_asm_8072B324(current_actor_pointer, 0);
+                        }
+                    }
+                    break;
+                case 2:
+                    func_global_asm_8072AB74(0, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
+                    break;
+            }
+            break;
+        case 0x37:
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    func_global_asm_8072AB74(0, 0.0f, 0.0f, 0x200, 0.0f);
+                    break;
+                case 1:
+                    func_global_asm_806A5C60(current_actor_pointer);
+                    current_actor_pointer->control_state_progress += 1;
+                    // fallthrough
+                case 2:
+                    func_global_asm_8072DC7C(0xA);
+                    break;
+                case 3:
+                    current_actor_pointer->control_state = 0x40;
+                    break;
+            }
+            break;
+        default:
+            func_global_asm_8072B7CC(0x378);
+            break;
+    }
+    func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
+    func_global_asm_806319C4(current_actor_pointer, 0);
+}
+
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806B0770.s")
 
+extern f32 D_global_asm_8075B1AC;
+
+/*
+s32 func_global_asm_806B0770(void) {
+    f32 dx, dy, dz;
+    Actor *temp_a0;
+    s16 i;
+    s32 found;
+    f32 temp;
+
+    i = 0;found = FALSE;temp = D_global_asm_8075B1AC;
+
+    for (; !found && i < D_global_asm_807FBB34; i++) {
+        temp_a0 = D_global_asm_807FB930[i].unk0;
+        if (temp_a0->unk58 == ACTOR_PROJECTILE_ORANGE) {
+            dx = temp_a0->x_position - current_actor_pointer->x_position;
+            dy = temp_a0->y_position - current_actor_pointer->y_position;
+            dz = temp_a0->z_position - current_actor_pointer->z_position;
+            if (((dx * dx) + (dy * dy) + (dz * dz)) < temp) {
+                current_actor_pointer->control_state = 0x28;
+                current_actor_pointer->control_state_progress = 0;
+                found = TRUE;
+            }
+        }
+    }  
+    return found;
+}
+*/
+
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806B0848.s")
