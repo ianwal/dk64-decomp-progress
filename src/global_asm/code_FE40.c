@@ -65,18 +65,18 @@ void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u
     switch (arg5) {
         case 1:
             if (arg3 != 0) {
-                func_800024E0(&sp5C, &arg1, D_global_asm_807ECE18);
+                func_dk64_boot_800024E0(&sp5C, &arg1, D_global_asm_807ECE18);
             }
             if (arg4 != 0) {
-                func_800024E0(&sp5C, &arg1, D_global_asm_807ECE18);
+                func_dk64_boot_800024E0(&sp5C, &arg1, D_global_asm_807ECE18);
             }
             break;
         case 2:
             if (arg3 != 0) {
-                func_80002790(&sp5C, &arg1, D_global_asm_807ECE18, arg3);
+                func_dk64_boot_80002790(&sp5C, &arg1, D_global_asm_807ECE18, arg3);
             }
             if (arg4 != 0) {
-                func_80002790(&sp5C, &arg1, D_global_asm_807ECE18, arg4);
+                func_dk64_boot_80002790(&sp5C, &arg1, D_global_asm_807ECE18, arg4);
             }
             break;
     }

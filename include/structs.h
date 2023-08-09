@@ -293,7 +293,7 @@ typedef struct {
     f32 unkC;
 } AnimationStateUnk24;
 
-// See boss func_8002FB7C
+// See boss func_dk64_boot_8002FB7C
 typedef struct animation_state_unk20 {
     u8 unk0;
     u8 unk1;
@@ -314,7 +314,7 @@ typedef struct actor_animation_state {
     void *bone_array_1; // at 0x14, camera, update bone positions // TODO: Proper type
     void *bone_array_2; // at 0x18, camera, update bone positions // TODO: Proper type
     AnimationStateUnk1C *unk1C; // TODO: Used in func_global_asm_80724CA4 and func_global_asm_8068FF40, pretty easy match, array of 0x8 structs? // malloc(0x100) in func_global_asm_80683158
-    AnimationStateUnk20 *unk20; // See boss func_8002FB7C
+    AnimationStateUnk20 *unk20; // See boss func_dk64_boot_8002FB7C
     AnimationStateUnk24 *unk24;
     s32 unk28;
     s32 unk2C;
@@ -1001,7 +1001,7 @@ typedef struct {
     f32 unk8;
 } PaaD0;
 
-// Bonus func_800253E4
+// Bonus func_bonus_800253E4
 typedef struct {
     Actor* unk0;
 } BaaD2;

@@ -542,6 +542,21 @@ D_global_asm_807FD7F4 = 0x807FD7F4;
 
 
 
+D_global_asm_807F5D84 = 0x807F5D84;
+D_global_asm_807F5D94 = 0x807F5D94;
+D_global_asm_807F5D8C = 0x807F5D8C;
+D_global_asm_807F5D90 = 0x807F5D90;
+D_global_asm_807F5DD8 = 0x807F5DD8;
+D_global_asm_807F7370 = 0x807F7370;
+D_global_asm_807FB620 = 0x807FB620;
+D_global_asm_807FB624 = 0x807FB624;
+D_global_asm_807FB628 = 0x807FB628;
+D_global_asm_807FD9D0 = 0x807FD9D0;
+D_global_asm_807FD9D2 = 0x807FD9D2;
+D_global_asm_807FD9D4 = 0x807FD9D4;
+D_global_asm_807FD9D5 = 0x807FD9D5;
+D_global_asm_807FDB90 = 0x807FDB90;
+D_global_asm_807FDBF8 = 0x807FDBF8;
 
 
 
