@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="137" height="20">
+<svg xmlns="http://www.w3.org/2000/svg" width="144" height="20">
     <linearGradient id="b" x2="0" y2="100%">
         <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
         <stop offset="1" stop-opacity=".1"/>
     </linearGradient>
     <mask id="anybadge_1">
-        <rect width="137" height="20" rx="3" fill="#fff"/>
+        <rect width="144" height="20" rx="3" fill="#fff"/>
     </mask>
     <g mask="url(#anybadge_1)">
         <path fill="#555" d="M0 0h77v20H0z"/>
-        <path fill="#c02400" d="M77 0h60v20H77z"/>
-        <path fill="url(#b)" d="M0 0h137v20H0z"/>
+        <path fill="#c06600" d="M77 0h67v20H77z"/>
+        <path fill="url(#b)" d="M0 0h144v20H0z"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
         <text x="39.5" y="15" fill="#010101" fill-opacity=".3">global_asm</text>
         <text x="38.5" y="14">global_asm</text>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="108.0" y="15" fill="#010101" fill-opacity=".3">9.4798%</text>
-        <text x="107.0" y="14">9.4798%</text>
+        <text x="111.5" y="15" fill="#010101" fill-opacity=".3">26.4343%</text>
+        <text x="110.5" y="14">26.4343%</text>
     </g>
 </svg>

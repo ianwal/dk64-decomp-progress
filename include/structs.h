@@ -1615,7 +1615,7 @@ typedef struct {
     u8 unk4B[3];
     s8 unk4E;
     s8 unk4F;
-    s8 unk50;
+    u8 unk50;
     s8 unk51;
     u8 unk52;
     s8 unk53;
@@ -1647,8 +1647,8 @@ typedef struct {
     f32 unk7C;
     s16 unk80;
     s16 unk82;
-    u16 unk84;
-    u16 unk86;
+    s16 unk84;
+    s16 unk86;
     s16 unk88;
     u16 unk8A;
     f32 unk8C;
