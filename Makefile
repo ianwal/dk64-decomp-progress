@@ -166,7 +166,7 @@ $(addprefix progress-,$(OVERLAYS)) : progress-% : progress/progress.%.csv
 # Verify that the roms match, also sets up diff_settings
 verify: $(DECOMPRESSED_BASEROM) $(UNCOMPRESSED_Z64)
 	@$(DIFF) $(DECOMPRESSED_BASEROM) $(UNCOMPRESSED_Z64) > /dev/null && \
-	$(PRINT) "$(YELLOW) _\n//\\ \nV  \\ \n \\  \\_\n  \\,'.'-.\n   |\\ '. '.\n   ( \\  '. '-.                        _,.-:\\ \n    \\ \\   '.  '-._             __..--' ,-';/\n     \\ '.   '-.   '-..___..---'   _.--' ,'/\n      '. '.    '-._        __..--'    ,' /\n        '. '-_     ''--..''       _.-' ,'\n          '-_ '-.___        __,--'   ,'\n             '-.__  '----\"\"\"    __.-'\n                  '--..____..--'\n$(BLUE)$(UNCOMPRESSED_Z64).z64$(NO_COL): $(GREEN)OK$(NO_COL)\n" || \
+	$(PRINT) "$(YELLOW) _\n//\\ \nV  \\ \n \\  \\_\n  \\,'.'-.\n   |\\ '. '.\n   ( \\  '. '-.                        _,.-:\\ \n    \\ \\   '.  '-._             __..--' ,-';/\n     \\ '.   '-.   '-..___..---'   _.--' ,'/\n      '. '.    '-._        __..--'    ,' /\n        '. '-_     ''--..''       _.-' ,'\n          '-_ '-.___        __,--'   ,'\n             '-.__  '----\"\"\"    __.-'\n                  '--..____..--'\n$(BLUE)$(UNCOMPRESSED_Z64)$(NO_COL): $(GREEN)OK$(NO_COL)\n" || \
 	$(PRINT) "$(BLUE)$(DECOMPRESSED_BASEROM) $(RED)differs$(NO_COL)\n"
 	@$(PRINT) "def apply(config, args):\n" > diff_settings.py
 	@$(PRINT) "\tconfig[\"baseimg\"] = \"$(DECOMPRESSED_BASEROM)\"\n" >> diff_settings.py
