@@ -11,13 +11,13 @@ extern u32 D_dk64_boot_80013AB4; // extern u32 bb;
 extern u32 D_dk64_boot_80013AB8; // extern u32 bk; 
 extern s32 D_dk64_boot_80013ABC; //hufts
 
-extern u8 D_8000EDE0[]; // border
-extern u16 D_8000EDF4[]; // cplens
-extern u8 D_8000EE34[]; // cplext
-extern u16 D_8000EE54[]; // cpdist
-extern u8 D_8000EE90[]; // cpdext
-extern s32 D_8000EED4; // lbits
-extern s32 D_8000EED8; // dbits
+extern u8 D_dk64_boot_8000EDE0[]; // border
+extern u16 D_dk64_boot_8000EDF4[]; // cplens
+extern u8 D_dk64_boot_8000EE34[]; // cplext
+extern u16 D_dk64_boot_8000EE54[]; // cpdist
+extern u8 D_dk64_boot_8000EE90[]; // cpdext
+extern s32 D_dk64_boot_8000EED4; // lbits
+extern s32 D_dk64_boot_8000EED8; // dbits
 extern u16 mask_bits[]; // mask_bits
 
 #ifndef WSIZE

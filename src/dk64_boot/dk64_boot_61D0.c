@@ -1,5 +1,28 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern u8 D_dk64_boot_80015004;
+extern u8 D_dk64_boot_80015005;
+extern u8 D_dk64_boot_80015006;
+extern u8 D_dk64_boot_80015007;
+extern u8 D_dk64_boot_80015008;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_61D0/func_dk64_boot_800055D0.s")
+extern u8 D_dk64_boot_8001507C;
+extern u8 D_dk64_boot_8001507D;
+extern u8 D_dk64_boot_8001507E;
+extern u8 D_dk64_boot_8001507F;
+extern u8 D_dk64_boot_80015080;
+
+void func_dk64_boot_800055D0(void) {
+    D_dk64_boot_80015004 = 7;
+    D_dk64_boot_80015005 = IO_READ(PI_BSD_DOM1_LAT_REG);
+    D_dk64_boot_80015008 = IO_READ(PI_BSD_DOM1_PWD_REG);
+    D_dk64_boot_80015006 = IO_READ(PI_BSD_DOM1_PGS_REG);
+    D_dk64_boot_80015007 = IO_READ(PI_BSD_DOM1_RLS_REG);
+
+    D_dk64_boot_8001507C = 7;
+    D_dk64_boot_8001507D = IO_READ(PI_BSD_DOM2_LAT_REG);
+    D_dk64_boot_80015080 = IO_READ(PI_BSD_DOM2_PWD_REG);
+    D_dk64_boot_8001507E = IO_READ(PI_BSD_DOM2_PGS_REG);
+    D_dk64_boot_8001507F = IO_READ(PI_BSD_DOM2_RLS_REG);
+}

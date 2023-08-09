@@ -169,7 +169,7 @@ void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
 
 void func_global_asm_805FB7E4();
 void func_global_asm_80610350(u8, u8);
-extern OSViMode *D_8000EF20[];
+extern OSViMode *D_dk64_boot_8000EF20[];
 extern s16 D_global_asm_80744494;
 extern s16 D_global_asm_80744498;
 extern s16 D_global_asm_8074449C;
@@ -243,7 +243,7 @@ void func_global_asm_805FB944(u8 arg0) {
     }
     func_global_asm_80610350(arg0, var_a1);
     if (D_global_asm_807445A4 == 0) {
-        osViSetMode(&D_8000EF20[D_global_asm_80744584[osTvType][D_global_asm_8074450C]]);
+        osViSetMode(&D_dk64_boot_8000EF20[D_global_asm_80744584[osTvType][D_global_asm_8074450C]]);
         if (D_global_asm_807445A0 == 0) {
             osViBlack(1U);
         }

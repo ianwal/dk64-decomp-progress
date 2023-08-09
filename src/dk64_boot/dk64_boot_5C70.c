@@ -1,5 +1,22 @@
 #include <ultra64.h>
 #include "functions.h"
 
+#include <rcp.h>
+#include "osint.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_5C70/func_dk64_boot_80005070.s")
+s32 func_dk64_boot_80005070(u32 frequency) //s32 osAiSetFrequency(u32 frequency)
+{
+    register unsigned int dacRate;
+    register unsigned char bitRate;
+    register float f;
+    f = osViClock / (float)frequency + .5f;
+    dacRate = f;
+    if (dacRate < AI_MIN_DAC_RATE)
+        return -1;
+    bitRate = dacRate / 66;
+    if (bitRate > AI_MAX_BIT_RATE)
+        bitRate = AI_MAX_BIT_RATE;
+    IO_WRITE(AI_DACRATE_REG, dacRate - 1);
+    IO_WRITE(AI_BITRATE_REG, bitRate - 1);
+    return osViClock / (s32)dacRate;
+}
