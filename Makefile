@@ -153,13 +153,13 @@ BINOFLAGS      := -I binary -O elf32-tradbigmips
 # Default target, all
 all: verify
 
-# Shows progress for all overlays, boot, and total
+# Shows progress for all overlays, dk64_boot, and total
 progress: $(OVERLAY_PROG_CSVS) $(MAIN_PROG_CSV) $(TOTAL_PROG_CSV) 
 	@$(foreach overlay,$(OVERLAYS),$(PROGRESS_READ) progress/progress.$(overlay).csv $(VERSION) $(overlay) &&) \
 	$(PROGRESS_READ) $(MAIN_PROG_CSV) $(VERSION) dk64_boot
 	@$(PROGRESS_READ) $(TOTAL_PROG_CSV) $(VERSION) total
 
-# Shows progress for a single overlay (e.g. progress-SM)
+# Shows progress for a single overlay (e.g. progress-global_asm)
 $(addprefix progress-,$(OVERLAYS)) : progress-% : progress/progress.%.csv
 	@$(PROGRESS_READ) $< $(VERSION) $*
 
@@ -184,12 +184,12 @@ $(OVERLAY_PROG_CSVS) : progress/progress.%.csv: $(ELF)
 	@$(PROGRESS) . $(ELF) .$* --version $(VERSION) --subcode $* > $@
 
 $(MAIN_PROG_SVG): $(MAIN_PROG_CSV)
-	$(call print1,Creating progress svg for:,boot)
+	$(call print1,Creating progress svg for:,dk64_boot)
 	@$(PROGRESS_READ) $< $(VERSION) dk64_boot
 
 $(MAIN_PROG_CSV): $(ELF)
-	$(call print1,Calculating progress for:,boot)
-	@$(PROGRESS) . $< .boot_dk64_boot --version $(VERSION) > $@
+	$(call print1,Calculating progress for:,dk64_boot)
+	@$(PROGRESS) . $< .dk64_boot --version $(VERSION) --subcode dk64_boot > $@
 
 $(TOTAL_PROG_SVG): $(TOTAL_PROG_CSV)
 	$(call print0,Creating total progress svg)
