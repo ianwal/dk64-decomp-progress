@@ -9,7 +9,7 @@ typedef struct {
     s32 unk4;
     s32 unk8;
     s32 unkC;
-} AAD_806A2A10;
+} AAD_global_asm_806A2A10;
 
 // TODO: Quite close
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2) {
@@ -22,7 +22,7 @@ void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2) {
     }
     current_actor_pointer->unk11C = D_global_asm_807FBB44;
     extra_player_info_pointer->unk1A8 = D_global_asm_807FBB44;
-    ((AAD_806A2A10*)D_global_asm_807FBB44->additional_data_pointer)->unkC = arg2;
+    ((AAD_global_asm_806A2A10*)D_global_asm_807FBB44->additional_data_pointer)->unkC = arg2;
     D_global_asm_807FBB44->x_position = (s16) (arg0 & 0x7FFF);
     D_global_asm_807FBB44->y_position = arg1;
     D_global_asm_807FBB44->control_state = 1;
@@ -49,7 +49,7 @@ extern OSTime D_global_asm_807FC7D0;
 
 typedef struct {
     OSTime unk0;
-} AAD_806A2B38;
+} AAD_global_asm_806A2B38;
 
 /*
 // TODO: Close
@@ -57,7 +57,7 @@ void func_global_asm_806A2B38(Actor *arg0) {
     OSTime temp_ret;
 
     temp_ret = osGetTime();
-    D_global_asm_807FC7D0 = temp_ret - ((AAD_806A2B38*)arg0->additional_actor_data)->unk0;
+    D_global_asm_807FC7D0 = temp_ret - ((AAD_global_asm_806A2B38*)arg0->additional_actor_data)->unk0;
 }
 */
 
