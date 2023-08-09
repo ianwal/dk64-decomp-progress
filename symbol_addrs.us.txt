@@ -975,6 +975,11 @@ D_global_asm_807FDB3E = 0x807FDB3E;
 D_global_asm_807FDB40 = 0x807FDB40;
 D_global_asm_807FDB42 = 0x807FDB42;
 
+D_global_asm_807FD586 = 0x807FD586;
+D_global_asm_807FBC58 = 0x807FBC58;
+D_global_asm_80767A40 = 0x80767A40;
+D_global_asm_807FBB8C = 0x807FBB8C;
+D_global_asm_807FC8B9 = 0x807FC8B9;
 
 
 
