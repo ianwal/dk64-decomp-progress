@@ -193,10 +193,6 @@ typedef struct {
     f32 unk50[1][4][4];
 } Struct8002C63C_arg1;
 
-extern Gfx D_1000118;
-extern Mtx D_20000C0;
-extern Mtx D_2000180;
-
 Gfx *func_race_8002C63C(Gfx *dl, Struct8002C63C_arg1 *arg1) {
     gDPPipeSync(dl++);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);

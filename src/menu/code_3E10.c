@@ -1372,9 +1372,6 @@ void func_menu_8002FE08(MenuAdditionalActorData *MaaD, s32 arg1) {
 // Jumptable, 916 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002FEBC.s")
 
-extern Gfx **D_1000118;
-extern Mtx D_20000C0;
-
 void func_menu_80030258(Gfx *dl, s32 arg1) {
     gDPPipeSync(dl++);
     gSPDisplayList(dl++, &D_1000118);

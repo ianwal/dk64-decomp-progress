@@ -130,7 +130,6 @@ void func_boss_80028680() {
 extern s32 D_boss_80035F90;
 extern f32 D_boss_80036054;
 extern u8 D_global_asm_80750AD4;
-extern Gfx D_1000118;
 
 /*
 void func_boss_800286B8(Gfx *dl, s32 arg1) {

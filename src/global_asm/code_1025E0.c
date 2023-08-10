@@ -182,8 +182,6 @@ void func_global_asm_806FF01C(s32 arg0, Actor *arg1) {
     func_global_asm_8068C5A8(dl, 0x38, 3, 1, 0x40, 0x40, 0xA0, 0x78, 0.5f, 0.5f, 0x2D, 0.0f);
 }
 
-extern Mtx D_2000080;
-
 void func_global_asm_806FF144(Gfx *dl) {
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);

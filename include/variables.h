@@ -34,6 +34,17 @@ extern u16 enemies_killed;
 extern Chunk *chunk_array_pointer;
 extern u8 current_file;
 
+extern Gfx **D_1000020;
+extern Gfx **D_1000030;
+extern Gfx **D_1000068;
+extern Gfx **D_1000040;
+extern Gfx **D_1000090;
+extern Gfx **D_1000118;
+extern Mtx D_2000080;
+extern Mtx D_20000C0;
+extern Mtx D_2000180;
+extern Mtx D_2000200;
+
 extern u8 D_global_asm_807444FC;
 
 extern u16 D_global_asm_807FBB34;

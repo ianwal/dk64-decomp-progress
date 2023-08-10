@@ -82,10 +82,6 @@ void func_global_asm_806A9124(void) {
 }
 */
 
-extern Gfx D_1000118;
-extern Mtx D_2000180;
-extern Mtx D_20000C0;
-
 Gfx *func_global_asm_806A921C(Gfx *dl) {
     gSPDisplayList(dl++, &D_1000118);
     gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

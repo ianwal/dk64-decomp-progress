@@ -8,9 +8,6 @@
 extern s32 D_global_asm_8075BB30; // TODO: Type
 extern s32 D_global_asm_8075BB38; // TODO: Type
 
-extern Gfx D_1000118;
-extern Mtx D_2000180;
-
 void func_global_asm_806BCF98(Gfx *dl, s32 arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);

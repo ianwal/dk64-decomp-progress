@@ -362,9 +362,6 @@ Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 arg2, s16 arg3, s16 arg4) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068D264.s")
 
-extern Gfx D_1000118;
-extern Mtx D_2000080;
-
 void func_global_asm_8068D8C8(Gfx *dl, s32 arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xA0);

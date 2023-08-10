@@ -344,9 +344,6 @@ void func_critter_80029118(void) {
 
 Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32); // extern
 
-extern Gfx D_1000118;
-extern Mtx D_2000180;
-
 typedef struct {
     u8 unk0;
     u8 unk1;

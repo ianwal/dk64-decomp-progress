@@ -17,8 +17,6 @@ void func_global_asm_80699070(s16 *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4
     *arg0 = (func_global_asm_80611BB4(arg6 - arg3, sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2))) * 2048.0) / D_global_asm_8075A2D0;
 }
 
-extern Mtx D_2000180;
-
 typedef struct {
     u8 unk0[0x128 - 0x0];
     s16 unk128;
@@ -247,9 +245,6 @@ Gfx *func_global_asm_8069D358(Gfx *dl, Actor *arg1, s16 arg2, f32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069D424.s")
 
 s32 func_global_asm_806FE078(void *, u8, s32, f32, f32, f32, f32); // extern
-
-extern Gfx D_1000118;
-extern Mtx D_2000180;
 
 typedef struct {
     u8 unk0[0xA - 0x0];

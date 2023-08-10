@@ -14,9 +14,6 @@ typedef struct {
     s32 unk8;
 } AAD_multiplayer_80024000;
 
-extern Gfx D_1000118;
-extern Mtx D_20000C0;
-
 void func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
     AAD_multiplayer_80024000 *sp44;
     f32 var_f2;

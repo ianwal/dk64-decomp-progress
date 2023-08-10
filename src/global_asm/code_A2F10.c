@@ -352,9 +352,6 @@ void func_global_asm_8069F020(void) {
 }
 */
 
-extern Gfx D_1000118;
-extern Mtx D_20000C0;
-
 void func_global_asm_8069F904(Gfx *dl, Actor *arg1) {
     f32 temp_f0;
 

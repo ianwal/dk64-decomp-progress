@@ -11,9 +11,6 @@ typedef struct {
     f32 unk4;
 } A178_806B76B0;
 
-extern Gfx D_1000118;
-extern Mtx D_2000080;
-
 void func_global_asm_806B76B0(Gfx *dl, Actor *arg1) {
     A178_806B76B0 *a178;
     AAD_global_asm_806B76B0 *aaD;

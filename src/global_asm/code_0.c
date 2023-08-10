@@ -71,12 +71,6 @@ extern OSMesg D_global_asm_8076A108;
 extern OSMesg D_global_asm_8076A128;
 extern OSTimer D_global_asm_8076A130;
 
-/* rom */
-extern Gfx **D_1000020;
-extern Gfx **D_1000030;
-extern Gfx **D_1000068;
-extern Gfx **D_1000040;
-
 f32 func_global_asm_8062A850(void);
 void func_global_asm_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 void func_global_asm_8060AA04();
@@ -546,6 +540,7 @@ u8 func_global_asm_805FCA64(void) { // getCutsceneBarState()
     return !(D_global_asm_8076A0B1 & 0x10) && !D_global_asm_8076A0B3;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FCA94.s")
 
 void *func_global_asm_805FCFD8(Gfx *arg0) {

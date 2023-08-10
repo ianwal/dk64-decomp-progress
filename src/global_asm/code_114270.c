@@ -617,10 +617,6 @@ void func_global_asm_80713270(void) {
     }
 }
 
-extern Gfx D_1000118;
-extern Mtx D_20000C0;
-extern Mtx D_2000180;
-
 Gfx *func_global_asm_807132DC(Gfx *arg0) {
     Gfx *dl;
     dl = func_global_asm_805FD030(arg0);
@@ -694,9 +690,6 @@ void func_global_asm_807138A4(s32 *arg0) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807138CC.s")
-
-extern Gfx D_1000118;
-extern Mtx D_20000C0;
 
 Gfx *func_global_asm_80713AA8(Gfx *dl) {
     gDPPipeSync(dl++);

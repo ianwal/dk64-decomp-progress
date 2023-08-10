@@ -380,10 +380,6 @@ void func_critter_80025500(Critter *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_800255C4.s")
 
-extern Gfx D_1000118;
-extern f32 D_2000180[];
-extern f32 D_2000200[];
-
 Gfx *func_critter_800257D4(Gfx *dl) {
     gSPDisplayList(dl++, &D_1000118);
     gDPPipeSync(dl++);

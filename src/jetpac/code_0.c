@@ -49,10 +49,6 @@ void func_jetpac_80024000(void) {
 extern s32 D_global_asm_8076A050[];
 extern s32 D_global_asm_8076A080;
 
-extern Gfx D_1000090;
-extern Gfx D_1000040;
-extern Mtx D_2000080;
-
 typedef struct {
     u8 unk0[0x80 - 0x0];
     u8 unk80;

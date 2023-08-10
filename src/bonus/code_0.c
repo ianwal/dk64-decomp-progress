@@ -17,9 +17,6 @@ typedef struct {
     u8 unk9;
 } A178_80024000;
 
-extern Gfx D_1000118;
-extern Mtx D_2000180;
-
 Gfx *func_bonus_80024000(Gfx *dl, Actor *arg1) {
     A178_80024000 *a178;
     a178 = arg1->unk178;

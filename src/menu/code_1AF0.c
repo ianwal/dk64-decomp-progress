@@ -40,9 +40,6 @@ s32 func_menu_80025AF0(MenuStruct1 *arg0, s32 characterIndex) {
 extern s32 D_menu_80033A80;
 extern s32 D_menu_80033A88;
 
-extern Gfx D_1000118;
-extern Mtx D_20000C0;
-
 typedef struct {
     u8 unk0[0xD - 0x0];
     u8 unkD;

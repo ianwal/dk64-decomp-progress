@@ -10,10 +10,6 @@ extern f32 D_bonus_8002DCB8;
 void *func_global_asm_8068DC54(s32, s32, s32, void *, s32, void *);
 s32 func_global_asm_806FE078(void *, u8, s32, f32, f32, f32, f32); // extern
 
-extern Gfx D_1000118;
-extern Mtx D_2000080;
-extern Mtx D_2000180;
-
 typedef struct {
     u8 unk0[0x14 - 0x0];
     u8 unk14;

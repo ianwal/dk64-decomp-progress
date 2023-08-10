@@ -99,10 +99,6 @@ void func_arcade_800313B8(void);
 void func_global_asm_8060DEA8(void);
 void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
-/* rom */
-extern Gfx **D_1000040;
-extern Gfx **D_1000090;
-
 /*.data */ //0x8032220 = 0xE220
 extern u8 D_arcade_80032228; // imageData
 extern u8 D_arcade_80032470; // imageData
