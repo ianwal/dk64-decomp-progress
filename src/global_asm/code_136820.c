@@ -88,7 +88,7 @@ void func_global_asm_80731D20(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 */
 
-// regalloc, rodata?
+// regalloc, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80731E68.s")
 
 extern s32 D_global_asm_80756360[];

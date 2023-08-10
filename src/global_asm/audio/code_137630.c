@@ -1,29 +1,15 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137630/func_global_asm_80732930.s")
-
-extern f32 D_global_asm_80760190;
-
-/*
-// No idea why this doesn't match, something to do with the shift
-f32 func_global_asm_80732930(u8 arg0) {
-    f32 sp4;
-    f32 sp0;
-
-    sp4 = D_global_asm_80760190;
-    sp0 = 1.0f;
-    while (arg0) {
-        if (arg0 & 1) {
-            sp0 *= sp4;
-        }
-        sp4 *= sp4;
-        arg0 >>= 1;
-    }
-    return sp0;
-}
-*/
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct80732DEC;
 
 typedef struct {
     s32 unk0;
@@ -47,12 +33,32 @@ typedef struct {
     };
 } Struct80732B3C;
 
-f32 func_global_asm_80732930(u8);
 extern Struct80732B3C *D_global_asm_807FF030;
+extern Struct80732B3C *D_global_asm_807FF034;
 
+f32 func_global_asm_80732930(u8);
 f32 func_global_asm_80739FE0(s32);
-extern f32 D_global_asm_80760194;
-extern f32 D_global_asm_80760198;
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137630/func_global_asm_80732930.s")
+
+/*
+// No idea why this doesn't match, something to do with the shift
+f32 func_global_asm_80732930(u8 arg0) {
+    f32 sp4;
+    f32 sp0;
+
+    sp4 = 1.030992985f;
+    sp0 = 1.0f;
+    while (arg0) {
+        if (arg0 & 1) {
+            sp0 *= sp4;
+        }
+        sp4 *= sp4;
+        arg0 >>= 1;
+    }
+    return sp0;
+}
+*/
 
 s32 func_global_asm_807329AC(Struct80732B3C **arg0, f32 *arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5) {
     Struct80732B3C *sp2C;
@@ -103,7 +109,7 @@ s32 func_global_asm_80732B3C(Struct80732B3C *arg0, f32 *arg1) {
                 sp28->unk24 = 0;
             }
             sp2C = (f32)sp28->unk24 / sp28->unk22;
-            sp2C = func_global_asm_80612D1C(sp2C * D_global_asm_80760194);
+            sp2C = func_global_asm_80612D1C(sp2C * 6.283185482f);
             sp2C = sp2C * sp28->unk28[0];
             *arg1 = sp28->unk28[1] + sp2C;
             break;
@@ -113,7 +119,7 @@ s32 func_global_asm_80732B3C(Struct80732B3C *arg0, f32 *arg1) {
                 sp28->unk24 = 0;
             }
             sp2C = (f32)sp28->unk24 / sp28->unk22;
-            sp2C = func_global_asm_80612D1C(sp2C * D_global_asm_80760198) * sp28->unk28_f32;
+            sp2C = func_global_asm_80612D1C(sp2C * 6.283185482f) * sp28->unk28_f32;
             *arg1 = func_global_asm_80739FE0(sp2C);
             break;
         default:
@@ -130,23 +136,9 @@ void func_global_asm_80732D80(s32 *arg0) {
     D_global_asm_807FF030 = arg0;
 }
 
-extern f32 D_global_asm_8076019C;
-
 f32 func_global_asm_80732DAC(f32 arg0) {
-    return func_global_asm_80612D1C(arg0 / D_global_asm_8076019C);
+    return func_global_asm_80612D1C(arg0 / 10430.37988f);
 }
-
-extern Struct80732B3C *D_global_asm_807FF034;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-} Struct80732DEC;
 
 void func_global_asm_80732DEC(Struct80732DEC *arg0, s32 arg1) {
     Struct80732B3C *sp24;
