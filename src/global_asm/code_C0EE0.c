@@ -5,8 +5,9 @@
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C0EE0/func_global_asm_806BC1E0.s")
 
-extern s32 D_global_asm_8075BB30; // TODO: Type
-extern s32 D_global_asm_8075BB38; // TODO: Type
+// rodata
+extern char D_global_asm_8075BB30[];
+extern char D_global_asm_8075BB38[];
 
 void func_global_asm_806BCF98(Gfx *dl, s32 arg1) {
     gSPDisplayList(dl++, &D_1000118);

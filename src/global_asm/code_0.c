@@ -34,8 +34,6 @@ extern u8 D_global_asm_80746830;
 extern u8 D_global_asm_80750AC0; // number_of_players?
 extern u16 D_global_asm_80750AC4;
 
-extern f32 D_global_asm_807565D8;
-
 extern Mtx D_global_asm_80767E68;
 extern Mtx D_global_asm_80767CE8;
 extern Mtx D_global_asm_80768E98;
@@ -756,7 +754,7 @@ void func_global_asm_805FE7FC(void) {
             } else {
                 phi_f0 = 1.0f;
                 if (D_global_asm_80745BDC[current_map * 4] == 6 || D_global_asm_80745BDC[current_map * 4] == 0x1F) {
-                    phi_f0 = D_global_asm_807565D8;
+                    phi_f0 = 0.549333155155f;
                 }
                 playSong(D_global_asm_80745BDC[current_map * 4], phi_f0);
             }

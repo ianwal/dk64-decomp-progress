@@ -1,6 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// rodata
+extern f64 D_global_asm_80758D60; // 600.0
+extern f64 D_global_asm_80758D68; // 45.0
 
 extern f32 D_global_asm_807F5FDC;
 extern f32 D_global_asm_807F5FE0;
@@ -15,13 +18,11 @@ typedef struct {
     s32 unk8;
 } Struct807F8E90;
 
-
-extern f64 D_global_asm_80758D60;
-extern f64 D_global_asm_80758D68;
 extern s8 D_global_asm_807F8E88;
 extern u16 D_global_asm_807F8E8A;
 extern Struct807F8E90 D_global_asm_807F8E90[4];
 extern s32 D_global_asm_807F8EC0[]; // size 100
+
 extern s32 D_global_asm_807F9050;
 extern s32 D_global_asm_807F9054;
 extern u16 D_global_asm_807F9058;
@@ -77,6 +78,7 @@ void func_global_asm_8065CE4C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, 
 }
 */
 
+// rodata
 f32 func_global_asm_8065CFB8(s16 arg0, f32 arg1) {
     if (arg0 == 0xB2 || arg0 == 0x253) {
         arg1 += (D_global_asm_80758D60 - arg1) * D_global_asm_807F6940;

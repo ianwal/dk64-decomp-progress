@@ -1,26 +1,25 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-extern u8 D_global_asm_807F5D84;
 extern u8 D_global_asm_80747B20;
-
-extern f32 D_global_asm_807F5D94;
-extern f64 D_global_asm_80758150;
-extern f32 D_global_asm_807F5D8C;
-extern f32 D_global_asm_807F5D90;
-
-extern u8 D_global_asm_80747B40;
-extern void *D_global_asm_807F5DD8;
-
 extern s32 D_global_asm_80747B28;
 extern u8 *D_global_asm_80747B2C;
 extern s32 D_global_asm_80747B38;
 
+extern u8 D_global_asm_80747B40;
 extern f32 D_global_asm_80747B44;
 extern f32 D_global_asm_80747B48;
 extern f32 D_global_asm_80747B4C;
 extern f32 D_global_asm_80747B50;
+
+extern f64 D_global_asm_80758150;
+
+extern u8 D_global_asm_807F5D84;
+extern f32 D_global_asm_807F5D8C;
+extern f32 D_global_asm_807F5D90;
+extern f32 D_global_asm_807F5D94;
+
+extern void *D_global_asm_807F5DD8;
 
 f32 func_global_asm_80665AE4(s32, s32, s32,s32);
 void func_global_asm_80704130(s32, s32, s32, s32, s32, s32);
@@ -45,6 +44,7 @@ u8 func_global_asm_806291A8(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2DE90/func_global_asm_80629300.s")
 
+// rodata
 void func_global_asm_8062A130(s32 arg0, s32 arg1, s32 arg2) {
     f32 temp_f0;
     s32 phi_v0;

@@ -344,93 +344,40 @@ segments:
       - [0x2145950, c, audio/code_145950]
       - [0x2145D70, bin, code_145D70] #mips3
       - [0x2149160, data, data_149160]
-      - [0x215B290, rodata] # code_0
-      - [0x215B2E0, rodata]
-      - [0x215BD20, rodata]
-      - [0x215BE40, rodata]
-      - [0x215BF90, rodata]
+      - [0x215B290, .rodata, code_0]
+      - [0x215B2E0, rodata] # code_3C10
+      - [0x215B4B0, rodata] # code_6710
+      - [0x215BD20, rodata] # code_104F0
+      - [0x215BE40, rodata] # code_131B0
+      - [0x215BF90, rodata] # heap
       - [0x215BFD0, .rodata, done/code_16550]
-      - [0x215BFF0, rodata]
-      - [0x215CE60, rodata]
-      - [0x215CED0, rodata]
-      - [0x215D1F0, rodata]
-      - [0x215D260, rodata]
-      - [0x215D630, rodata]
-      - [0x215D960, rodata]
-      - [0x215DA50, rodata]
-      - [0x215DA60, rodata]
-      - [0x215DAC0, rodata]
-      - [0x215DAE0, rodata]
-      - [0x215DAF0, rodata]
-      - [0x215DB10, rodata]
-      - [0x215DB30, rodata]
-      - [0x215DBC0, rodata]
-      - [0x215DD50, rodata]
-      - [0x215DF50, rodata]
-      - [0x215DF60, rodata]
-      - [0x215DF80, rodata]
-      - [0x215E090, rodata]
-      - [0x215E790, rodata]
-      - [0x215EA00, rodata]
-      - [0x215EC30, rodata]
-      - [0x215EC60, rodata]
-      - [0x215EC70, rodata]
-      - [0x215EEF0, rodata]
-      - [0x215EF40, rodata]
-      - [0x215EFD0, rodata]
-      - [0x215F110, rodata]
-      - [0x215F130, rodata]
-      - [0x215F140, rodata]
-      - [0x215F250, rodata]
-      - [0x215F2B0, rodata]
-      - [0x215F2D0, rodata]
-      - [0x215F440, rodata]
-      - [0x215F6A0, rodata]
-      - [0x215F780, rodata]
-      - [0x215FA20, rodata]
-      - [0x215FB20, rodata]
-      - [0x215FFA0, rodata]
-      - [0x21600F0, rodata]
-      - [0x2160460, rodata]
-      - [0x21605D0, rodata]
-      - [0x2160830, rodata]
-      - [0x2160840, rodata]
-      - [0x21608C0, rodata]
-      - [0x21608E0, rodata]
-      - [0x21609C0, rodata]
-      - [0x2160F60, rodata]
-      - [0x2161110, rodata]
+      - [0x215BFF0, rodata] # ???
+      - [0x215CC70, rodata] # code_2C910
+      - [0x215CE00, rodata] # code_2DE90
+      - [0x215CE60, rodata] # code_2F550
+      - [0x215CED0, rodata] # code_35000
+      - [0x215CF00, rodata] # code_36880
+      - [0x215D260, rodata] # code_42630
+      - [0x215D8E0, rodata] # code_54150
+      - [0x215D960, rodata] # code_55B20
+      - [0x215D9A0, rodata] # code_5E2F0
+      - [0x215DA50, rodata] # code_61690
+      - [0x215DA60, rodata] # code_61AA0
+      - [0x215DAC0, rodata] # code_63810
+      - [0x215DAD0, rodata] # code_63EC0
+      - [0x215DAE0, rodata] # code_67890
+      - [0x215DAF0, .rodata, done/code_68960]
+      - [0x215DB10, rodata] # code_68EA0
+      - [0x215DB20, rodata] # code_699B0
+      - [0x215DD50, rodata] # code_70FD0
+      - [0x215DEA0, rodata] # code_79890
+      - [0x215DEC0, rodata] # code_7A510
+      - [0x215DEE0, rodata] # code_7AF60 # Done up to here
       - [0x21611B0, rodata] # code_CEAE0?
       - [0x2162080, rodata]
-      - [0x21622F0, rodata]
-      - [0x2162550, rodata]
-      - [0x2162560, rodata]
-      - [0x2162760, rodata]
-      - [0x2162920, rodata]
-      - [0x2162A40, rodata]
-      - [0x2162B70, rodata]
-      - [0x2163130, rodata]
-      - [0x2163190, rodata]
-      - [0x21631A0, rodata]
-      - [0x21632C0, rodata]
-      - [0x21633A0, rodata]
-      - [0x21633D0, rodata]
-      - [0x2163840, rodata]
-      - [0x2163870, rodata]
-      - [0x2163880, rodata]
-      - [0x2164880, rodata]
-      - [0x21649F0, rodata]
-      - [0x2164CF0, rodata]
-      - [0x2164E90, rodata]
       - [0x2165190, .rodata, audio/synthesizer]
       - [0x21651A0, rodata, data_1651A0]
       - [0x21651B0, rodata]
-      - [0x21651D0, rodata]
-      - [0x21651E0, rodata]
-      - [0x2165210, rodata]
-      - [0x2165260, rodata]
-      - [0x2165270, rodata]
-      - [0x2165290, rodata]
   - name: menu
     dir: menu
     type: code
