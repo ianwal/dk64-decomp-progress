@@ -2,14 +2,11 @@
 #include "functions.h"
 
 extern s32 D_global_asm_8071FFA0;
+
 extern s32 D_global_asm_8074E880[]; // TODO: Datatype
 
-extern f32 D_global_asm_8075B8B0;
-extern f32 D_global_asm_8075B8B4;
-extern f32 D_global_asm_8075B8B8;
 extern s16 D_global_asm_807F6248;
 extern s16 D_global_asm_807F624C;
-extern f64 D_global_asm_8075B8C0;
 
 int func_global_asm_8071C9E8(); // TODO: Signature
 
@@ -81,18 +78,18 @@ void func_global_asm_806B8C78(void) {
                     }
                     func_global_asm_8065F134(D_global_asm_807F6248, 0);
                     func_global_asm_8065F134(D_global_asm_807F624C, 0);
-                    func_global_asm_80659670(D_global_asm_8075B8B0, D_global_asm_8075B8B0, D_global_asm_8075B8B0, 0);
+                    func_global_asm_80659670(0.15f, 0.15f, 0.15f, 0);
                     return;
                 }
                 if (D_global_asm_807FDC90->unk2C >= 0x15) {
                     func_global_asm_8065F134(D_global_asm_807F6248, 9);
                     func_global_asm_8065F134(D_global_asm_807F624C, 9);
-                    func_global_asm_80659670(D_global_asm_8075B8B4, D_global_asm_8075B8B4, D_global_asm_8075B8B4, 0);
+                    func_global_asm_80659670(0.20f, 0.20f, 0.20f, 0);
                     return;
                 }
                 func_global_asm_8065F134(D_global_asm_807F6248, 8);
                 func_global_asm_8065F134(D_global_asm_807F624C, 8);
-                func_global_asm_80659670(D_global_asm_8075B8B8, D_global_asm_8075B8B8, D_global_asm_8075B8B8, 0);
+                func_global_asm_80659670(0.30f, 0.30f, 0.30f, 0);
             }
     }
 }
@@ -103,7 +100,7 @@ void func_global_asm_806B904C(void) {
 
     func_global_asm_80729B00();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        temp_f0 = (D_global_asm_807FDC9C->unkF / D_global_asm_8075B8C0) * 0.75;
+        temp_f0 = (D_global_asm_807FDC9C->unkF / 255.0) * 0.75;
         current_actor_pointer->animation_state->scale_x = temp_f0;
         current_actor_pointer->animation_state->scale_y = temp_f0;
         current_actor_pointer->animation_state->scale_z = temp_f0;

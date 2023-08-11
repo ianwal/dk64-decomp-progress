@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-// rodata
+// rodata, data
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/align/guAlignF.s")
 
 /*
