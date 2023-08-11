@@ -376,7 +376,7 @@ segments:
       - [0x215DF60, rodata] # code_7CA60
       - [0x215E090, rodata] # code_80150
       - [0x215E790, .rodata, code_89250]
-      - [0x215E8B0, rodata] # code_8D3E0
+      - [0x215E8B0, .rodata, code_8D3E0]
       - [0x215EA00, rodata] # code_8F4B0
       - [0x215EC70, rodata] # code_936B0
       - [0x215EEF0, .rodata, code_9BF30]

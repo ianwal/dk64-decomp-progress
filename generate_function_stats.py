@@ -182,54 +182,53 @@ for root, dirs, files in os.walk(searchPath):
                         continue
 
                     if "#pragma GLOBAL_ASM(" in line:
-                        if (not comments["jumptable"]):
-                            # Parse ASM and compute row for function
-                            ASMFile = line.replace("#pragma GLOBAL_ASM(\"", "").replace("\")\n", "")
-                            with open(ASMFile, "r") as fh_asm:
-                                # Reset function stats
-                                size = 0
-                                jals = 0
-                                labels = 0
-                                columns = {}
+                        # Parse ASM and compute row for function
+                        ASMFile = line.replace("#pragma GLOBAL_ASM(\"", "").replace("\")\n", "")
+                        with open(ASMFile, "r") as fh_asm:
+                            # Reset function stats
+                            size = 0
+                            jals = 0
+                            labels = 0
+                            columns = {}
+                            for column in standardSearchColumns:
+                                columns[column] = 0
+
+                            for line in fh_asm:
                                 for column in standardSearchColumns:
-                                    columns[column] = 0
+                                    columns[column] += sum(searchTerm in line for searchTerm in standardSearchColumns[column])
+                                if "jal" in line:
+                                    jals += 1
+                                if line.startswith("/* "):
+                                    size += 4
+                                if line.startswith(".L80"):
+                                    labels += 1
 
-                                for line in fh_asm:
-                                    for column in standardSearchColumns:
-                                        columns[column] += sum(searchTerm in line for searchTerm in standardSearchColumns[column])
-                                    if "jal" in line:
-                                        jals += 1
-                                    if line.startswith("/* "):
-                                        size += 4
-                                    if line.startswith(".L80"):
-                                        labels += 1
+                            ASMFilePath = ASMFile.split("/")
 
-                                ASMFilePath = ASMFile.split("/")
+                            print(
+                                ASMFile.replace(ASMFilePath[-1], ""),
+                                ASMFilePath[-1].replace(".s", ""),
+                                size,
+                                f"{str(round(size / totalCodeBytes * 100, precision)).ljust(precision + 2, '0')}%",
+                                end=" ")
 
-                                print(
-                                    ASMFile.replace(ASMFilePath[-1], ""),
-                                    ASMFilePath[-1].replace(".s", ""),
-                                    size,
-                                    f"{str(round(size / totalCodeBytes * 100, precision)).ljust(precision + 2, '0')}%",
-                                    end=" ")
+                            # For each column, print the value
+                            for column in columns:
+                                print(columns[column], end=" ")
 
-                                # For each column, print the value
-                                for column in columns:
-                                    print(columns[column], end=" ")
+                            print(
+                                round(jals / size, precision),
+                                round(labels / size, precision),
+                                round(columns["floats"] / size, precision),
+                                end=" "
+                            )
 
-                                print(
-                                    round(jals / size, precision),
-                                    round(labels / size, precision),
-                                    round(columns["floats"] / size, precision),
-                                    end=" "
-                                )
+                            # For each comment search, print the value
+                            for comment in comments:
+                                print(comment if comments[comment] else "-", end=" ")
 
-                                # For each comment search, print the value
-                                for comment in comments:
-                                    print(comment if comments[comment] else "-", end=" ")
-
-                                # Newline
-                                print()
+                            # Newline
+                            print()
                         continue
 
                     for comment in commentSearch:
