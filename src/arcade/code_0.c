@@ -1,3 +1,5 @@
+#include <ultra64.h>
+#include "functions.h"
 #include "arcade_int.h"
 
 extern u8 D_arcade_80032D50;
@@ -231,7 +233,7 @@ void func_arcade_80024940(Gfx **gpp) {
         func_arcade_80024D90();
         func_arcade_8002440C();
     }
-    switch(D_arcade_8004C724) {
+    switch (D_arcade_8004C724) {
         case 0:// 800249A8
             func_arcade_80024E84(&sp1C);
             break;
@@ -555,7 +557,7 @@ void func_arcade_800255F4(Gfx **arg0) {
     }
 
     if (newly_pressed_input & (CONT_A | CONT_B)) {
-        switch(D_arcade_8004A768) {
+        switch (D_arcade_8004A768) {
             case 0:
                 func_arcade_800255A8();
                 D_arcade_8004C724 = 5;
@@ -626,7 +628,7 @@ void func_arcade_800259D0(Gfx **arg0) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, 48, 36, 272, 232);
 
-    switch(D_arcade_8004C724) {
+    switch (D_arcade_8004C724) {
         case 0://L80025B68
             if (D_arcade_8004C6DC & 0x200) {
                 func_arcade_80026680(&dl);
@@ -635,7 +637,7 @@ void func_arcade_800259D0(Gfx **arg0) {
         case 1:
         case 4:
         case 5://L80025B88
-            switch(arcade_background_visual) {
+            switch (arcade_background_visual) {
                 case 1:
                     func_arcade_800268AC(&dl);
                     break;
@@ -697,7 +699,7 @@ void func_arcade_80025C08(Gfx **arg0, s32 arg1, s32 arg2, s32 arg3) {
     }//L80025ED8
     D_arcade_8004C71A = arg3 % 4;
     if (D_arcade_8004C71A) {
-        switch(D_arcade_8004C71A) {
+        switch (D_arcade_8004C71A) {
             case 1:
                 func_global_asm_8070E8F0(&dl, D_arcade_8004BB60 + D_global_asm_807444FC);
                 break;
@@ -1300,7 +1302,7 @@ void func_arcade_80029968(void) {
         D_arcade_8004BCD0[i].unk18 = 0;
     }
 
-    switch(arcade_background_visual) {
+    switch (arcade_background_visual) {
         case 1:
             arcade_25m_setup();
             break;
@@ -1812,7 +1814,6 @@ void func_arcade_8002AFA4(Gfx **arg0, s32 arg1) {
     if (D_arcade_8004A338[D_arcade_8004BCD0[arg1].unk18] & 1) {
         phi_f0 = 1024.0f;
     } else {
-        // phi_f0 = D_arcade_8004AA18;
         phi_f0 = 1170.2857666f;
     }
     guSprite2DInit(
@@ -2090,50 +2091,50 @@ void func_arcade_8002B89C(s32 arg0) {
 
     if (sp30->unk19 == 8 || arcade_game_state == 0) {
         if (sp30->unk19 == 2) {
-            func_arcade_8002A390(sp30->unk0, sp30->unk4);
-            if (sp30->unk8 < 0.0f) {
+            func_arcade_8002A390(sp30->x_position, sp30->y_position);
+            if (sp30->x_velocity < 0.0f) {
                 sp30->unk1A &= 1;
-            } else if (0.0f < sp30->unk8) {
+            } else if (0.0f < sp30->x_velocity) {
                 sp30->unk1A |= 2;
             }
             if (( D_global_asm_807ECDE8->unk0 & 0x200 || D_global_asm_807ECDE8->unk2 < -0x14 )
-                && D_arcade_8004C6F0 < sp30->unk0
+                && D_arcade_8004C6F0 < sp30->x_position
             ) {
                 D_arcade_8004BC80 += 3;
-                sp30->unk8 = D_arcade_8004AA1C;
+                sp30->x_velocity = D_arcade_8004AA1C;
                 sp30->unk10 += D_arcade_8004AA20;
             } else if ((D_global_asm_807ECDE8->unk0 & 0x100 || D_global_asm_807ECDE8->unk2 >= 0x15)
-                    && D_arcade_8004C6F4 < sp30->unk0
+                    && D_arcade_8004C6F4 < sp30->x_position
             ) {//L8002B9DC
                 D_arcade_8004BC80 += 3;
-                sp30->unk8 = D_arcade_8004AA28;
+                sp30->x_velocity = D_arcade_8004AA28;
                 sp30->unk10 += D_arcade_8004AA30;
             } else {
-                 sp30->unk8 = 0.0f;
+                 sp30->x_velocity = 0.0f;
             }//L8002BA5C
             if (newly_pressed_input & (A_BUTTON | B_BUTTON | Z_TRIG) && !D_arcade_8004C710) {
                 func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7fff, 0x3F, 1.0f, 0, 0);
                 sp30->unk10 = 0.0f;
-                sp30->unkC = D_arcade_8004AA38;
-                sp30->unk8 *= D_arcade_8004AA40;
-                sp30->unk1D = (s8) (u32) sp30->unk4;
+                sp30->y_velocity = D_arcade_8004AA38;
+                sp30->x_velocity *= D_arcade_8004AA40;
+                sp30->unk1D = (s8) (u32) sp30->y_position;
                 sp30->unk19 = 3;
             }
         }//L8002BB74
-        if (sp30->unk4 < func_arcade_8002A390( sp30->unk8 +  sp30->unk0,sp30->unk4) + 3) {
-            sp30->unk0 += sp30->unk8;
+        if (sp30->y_position < func_arcade_8002A390( sp30->x_velocity +  sp30->x_position,sp30->y_position) + 3) {
+            sp30->x_position += sp30->x_velocity;
         } else {
-            sp30->unk8 = 0.0f;
+            sp30->x_velocity = 0.0f;
         }
         if (sp30->unk19 != 8 
             && arcade_background_visual == 3
-            && ( (76.0f < sp30->unk0 && sp30->unk0 < 140.0f) || (140.0f < sp30->unk0 && sp30->unk0 < 164.0f))
-            && ( (sp30->unk4  < 116.0f && 239.0f < sp30->unk4) || (239.0f < sp30->unk4))
+            && ( (76.0f < sp30->x_position && sp30->x_position < 140.0f) || (140.0f < sp30->x_position && sp30->x_position < 164.0f))
+            && ( (sp30->y_position  < 116.0f && 239.0f < sp30->y_position) || (239.0f < sp30->y_position))
         ) {
             func_arcade_80027E8C();
         } else {////L8002BCC4
-            D_arcade_8004C700 = func_arcade_8002AF2C(sp30->unk0, sp30->unk4);
-            sp40 = func_arcade_8002A390(sp30->unk0, sp30->unk4);
+            D_arcade_8004C700 = func_arcade_8002AF2C(sp30->x_position, sp30->y_position);
+            sp40 = func_arcade_8002A390(sp30->x_position, sp30->y_position);
             D_arcade_8004C6FC = D_arcade_8004C6F8;
             switch (sp30->unk19) {
                 case 2:// 8002BD64
@@ -2146,46 +2147,46 @@ void func_arcade_8002B89C(s32 arg0) {
                     if (D_arcade_8004C6FC == 3)
                         D_arcade_8004BCD0[D_arcade_8004C71F].unk0 += D_arcade_8004A308[3];
                     
-                    if (sp30->unk0 <= D_arcade_8004C6F0 - 1)
-                        sp30->unk0 = D_arcade_8004C6F0;
-                    if (D_arcade_8004C6F4 + 1 <= sp30->unk0)
-                        sp30->unk0 = D_arcade_8004C6F4;
+                    if (sp30->x_position <= D_arcade_8004C6F0 - 1)
+                        sp30->x_position = D_arcade_8004C6F0;
+                    if (D_arcade_8004C6F4 + 1 <= sp30->x_position)
+                        sp30->x_position = D_arcade_8004C6F4;
                     
-                    if (D_arcade_8004C6EC < sp30->unk4
-                        && ((D_global_asm_807ECDE8->unk0 & 0x800) | ((D_global_asm_807ECDE8->unk3 < 0x15) ^ 1))
+                    if (D_arcade_8004C6EC < sp30->y_position
+                        && ((D_global_asm_807ECDE8->x_position & 0x800) | ((D_global_asm_807ECDE8->unk3 < 0x15) ^ 1))
                         && D_global_asm_807ECDE8->unk2 < 0x29 && D_global_asm_807ECDE8->unk2 >= -0x28
-                        && !(D_global_asm_807ECDE8->unk0 & 0x300)
+                        && !(D_global_asm_807ECDE8->x_position & 0x300)
                         && !D_arcade_8004C710
                     ) {
                         sp30->unk19 = 5;
-                        sp30->unk8 = 0.0f;
-                        sp30->unk4--; 
-                        sp30->unk0 = D_arcade_8004C6E0;
+                        sp30->x_velocity = 0.0f;
+                        sp30->y_position--; 
+                        sp30->x_position = D_arcade_8004C6E0;
                     } else if (
-                        sp30->unk4 < D_arcade_8004C6E8
-                        && D_arcade_8004C6EC <= sp30->unk4
-                        && !(D_global_asm_807ECDE8->unk0 & 0x300)
+                        sp30->y_position < D_arcade_8004C6E8
+                        && D_arcade_8004C6EC <= sp30->y_position
+                        && !(D_global_asm_807ECDE8->x_position & 0x300)
                         && D_global_asm_807ECDE8->unk2 < 0x29 && D_global_asm_807ECDE8->unk2 >= -0x28
-                        && ((D_global_asm_807ECDE8->unk0 & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14))
+                        && ((D_global_asm_807ECDE8->x_position & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14))
                         && !D_arcade_8004C710
                     ) {
                         sp30->unk19 = 5;
-                        sp30->unk8 = 0.0f;
-                        sp30->unk4++;
-                        sp30->unk0 = D_arcade_8004C6E0;
-                    } else if (sp40 - sp30->unk4 < 2.0f) {
-                        sp30->unk4 = sp40;
+                        sp30->x_velocity = 0.0f;
+                        sp30->y_position++;
+                        sp30->x_position = D_arcade_8004C6E0;
+                    } else if (sp40 - sp30->y_position < 2.0f) {
+                        sp30->y_position = sp40;
                     } else {
                         sp30->unk19 = 3;
-                        sp30->unk8 = 0.0f;
-                        sp30->unkC = 0.0f;
-                        sp30->unk1D = (s8) (u32) sp30->unk4;
+                        sp30->x_velocity = 0.0f;
+                        sp30->y_velocity = 0.0f;
+                        sp30->unk1D = (s8) (u32) sp30->y_position;
                     }
                     sp3C = 4;
                     break;
                 case 5:// 8002C0FC
-                    if (sp40 == sp30->unk4
-                        && ( ( (D_global_asm_807ECDE8->unk0 & 0x300) | (D_global_asm_807ECDE8->unk2 < 0x15)^1 | (D_global_asm_807ECDE8->unk2 < -0x14))
+                    if (sp40 == sp30->y_position
+                        && ( ( (D_global_asm_807ECDE8->x_position & 0x300) | (D_global_asm_807ECDE8->unk2 < 0x15)^1 | (D_global_asm_807ECDE8->unk2 < -0x14))
                              || (D_arcade_8004C6FC == 2 && D_arcade_8004A308[2])
                              || (D_arcade_8004C6FC == 1 && D_arcade_8004A308[1])
                              || (D_arcade_8004C6FC == 3 && D_arcade_8004A308[3])
@@ -2193,46 +2194,46 @@ void func_arcade_8002B89C(s32 arg0) {
                     ) {
                        sp30->unk19 = 2;
                     } else if (
-                        sp40 == sp30->unk4 
+                        sp40 == sp30->y_position 
                         && newly_pressed_input & (A_BUTTON | B_BUTTON | Z_TRIG)
                     ) {//L8002C198
                         func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7fff, 0x3f, 1.0f, 0, NULL);
                         sp30->unk10 = 0.0f;
-                        sp30->unkC = D_arcade_8004AA64;
-                        sp30->unk8 *= D_arcade_8004AA68; 
+                        sp30->y_velocity = D_arcade_8004AA64;
+                        sp30->x_velocity *= D_arcade_8004AA68; 
                         sp30->unk19 = 3;
-                        sp30->unk1D = (s8) (u32) sp30->unk4;
+                        sp30->unk1D = (s8) (u32) sp30->y_position;
                     } else {//L8002C2AC
                         //TODO: FINISH THIS
                     }
                     break;
                 case 3:// 8002C420
-                    if (D_arcade_8004C6F4 < sp30->unk0) {
-                        sp30->unk0 = D_arcade_8004C6F4;
-                        if (sp30->unkC < D_arcade_8004AA78) {
+                    if (D_arcade_8004C6F4 < sp30->x_position) {
+                        sp30->x_position = D_arcade_8004C6F4;
+                        if (sp30->y_velocity < D_arcade_8004AA78) {
                             sp30->unk1A &= 1;
-                            sp30->unk8 = -sp30->unk8;
-                            sp30->unkC = -sp30->unkC;
+                            sp30->x_velocity = -sp30->x_velocity;
+                            sp30->y_velocity = -sp30->y_velocity;
                         }
                     } else { //L8002C490
-                        if (sp30->unk0 < D_arcade_8004C6F0) {
-                            sp30->unk0 = D_arcade_8004C6F0;
-                            if (sp30->unkC < D_arcade_8004AA80) {
+                        if (sp30->x_position < D_arcade_8004C6F0) {
+                            sp30->x_position = D_arcade_8004C6F0;
+                            if (sp30->y_velocity < D_arcade_8004AA80) {
                                 sp30->unk1A |= 2;
-                                sp30->unk8 = -sp30->unk8;
-                                sp30->unkC = -sp30->unkC;
+                                sp30->x_velocity = -sp30->x_velocity;
+                                sp30->y_velocity = -sp30->y_velocity;
                             }
                         }
                     }//L8002C4F8
-                    sp30->unk4 += sp30->unkC;
-                    sp30->unkC += D_arcade_8004AA88;
-                    if (0.0f <= sp30->unkC && sp30->unkC < D_arcade_8004AA88) {
+                    sp30->y_position += sp30->y_velocity;
+                    sp30->y_velocity += D_arcade_8004AA88;
+                    if (0.0f <= sp30->y_velocity && sp30->y_velocity < D_arcade_8004AA88) {
                         sp38 = 0;
                         for (i = 0; i < 0x50; i++) {
                             if (D_arcade_8004BCD0[i].unk18 == 1 || D_arcade_8004BCD0[i].unk18 == 2) {
                                 if (__arcade_abs_w(D_arcade_8004BCD0[i].unk0) < 0xD
-                                    && D_arcade_8004BCD0[i].unk0 - sp30->unk0 < 24.0f
-                                    && sp30->unk0 < D_arcade_8004BCD0[i].unk0
+                                    && D_arcade_8004BCD0[i].unk0 - sp30->x_position < 24.0f
+                                    && sp30->x_position < D_arcade_8004BCD0[i].unk0
                                 ) {
                                     sp38++;
                                 }
@@ -2241,8 +2242,8 @@ void func_arcade_8002B89C(s32 arg0) {
                         if (sp38) {
                             pointIndx = func_arcade_800247F0();
                            D_arcade_8004BCD0[pointIndx] = arcade_points_text_obj_template;
-                           D_arcade_8004BCD0[pointIndx].unk0 = sp30->unk0;
-                           D_arcade_8004BCD0[pointIndx].unk4 = sp30->unk4;
+                           D_arcade_8004BCD0[pointIndx].unk0 = sp30->x_position;
+                           D_arcade_8004BCD0[pointIndx].unk4 = sp30->y_position;
                            if (sp38 == 1) {
                                arcade_add_points_to_score(100);
                            } else if (sp38 == 2) {
@@ -2254,21 +2255,21 @@ void func_arcade_8002B89C(s32 arg0) {
                            }
                         }
                     }//L8002C70C
-                    if (15.0f < sp30->unk4 - sp30->unk1D) {
+                    if (15.0f < sp30->y_position - sp30->unk1D) {
                         func_global_asm_80737638(D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7fff, 0x3f, 1.0f, 0, NULL);
                         sp30->unk1D = 0xff;
                     }
-                    if (2.5 < sp30->unkC) {
-                        sp30->unkC = 2.5f;
+                    if (2.5 < sp30->y_velocity) {
+                        sp30->y_velocity = 2.5f;
                     }
-                    if (sp40 < sp30->unk4 && sp30->unk4 - sp40 < 3.0f) {
-                        sp30->unk4 = sp40;
+                    if (sp40 < sp30->y_position && sp30->y_position - sp40 < 3.0f) {
+                        sp30->y_position = sp40;
                         if (sp30->unk1D  == 0xff) {
                             func_arcade_80027E8C();
                         } else {
                             sp30->unk19 = 4;
-                            sp30->unkC = 0.0f;
-                            sp30->unk8 = 0.0f;
+                            sp30->y_velocity = 0.0f;
+                            sp30->x_velocity = 0.0f;
                             sp30->unk10 = 4.0f;
                         }
                     }//L8002C850
@@ -2299,13 +2300,13 @@ void func_arcade_8002B89C(s32 arg0) {
                 func_global_asm_80737638(D_global_asm_8076D1F8, SFX_40_ARCADE_JUMPMAN_MOVING, 0x7fff, 0x3f, 1.0f, 0, &D_global_asm_80770DFC);
                 func_global_asm_80737AC4(D_global_asm_80770DFC, 0x10, sp44);
             }//L8002C9C0
-            sp40 = func_arcade_8002A390(sp30->unk0, sp30->unk4);
+            sp40 = func_arcade_8002A390(sp30->x_position, sp30->y_position);
             sp30->unk1C = D_arcade_8004C6F8;
-            D_arcade_8004C704 = sp30->unk4 - D_arcade_8004C6E4;
+            D_arcade_8004C704 = sp30->y_position - D_arcade_8004C6E4;
             if (D_arcade_8004C71E < 0 && sp30->unk19 != 8) {
                 func_arcade_80027E8C();
             }
-            if (D_arcade_8004C6F8 == 0 && sp40 == sp30->unk4) {
+            if (D_arcade_8004C6F8 == 0 && sp40 == sp30->y_position) {
                 func_global_asm_80737638(D_global_asm_8076D1F8, SFX_4C_ARCADE_PAULINE_SAVED_STAGE, 0x7fff, 0x3f, 1.0f, 0, NULL);
                 func_arcade_800252A4(0);
                 if (arcade_background_visual == 1) {
@@ -2344,7 +2345,7 @@ void func_arcade_8002CBD8(s32 arg0) {
         || v0->unk19 == 1
     ) { //on ladder
         if (v0->unk1D) { //blue barrel
-            switch(v1 & 1) {
+            switch (v1 & 1) {
                 case 0:
                     v0->unk14 = &D_arcade_80035AE0;
                     break;
@@ -2353,7 +2354,7 @@ void func_arcade_8002CBD8(s32 arg0) {
                     break;
             }
         } else { //red barrel
-            switch(v1 & 1) {
+            switch (v1 & 1) {
                 case 0:
                     v0->unk14 = &D_arcade_80035650;
                     break;
@@ -2364,7 +2365,7 @@ void func_arcade_8002CBD8(s32 arg0) {
         }
     } else {// normal rolling
         if (v0->unk1D) {
-            switch(v1 & 3) { //blue barrel
+            switch (v1 & 3) { //blue barrel
                 case 0:
                     v0->unk14 = &D_arcade_80035448;
                     break;
@@ -2379,7 +2380,7 @@ void func_arcade_8002CBD8(s32 arg0) {
                     break;
             }
         } else {
-            switch(v1 & 3) { //red barrel
+            switch (v1 & 3) { //red barrel
                 case 0:
                     v0->unk14 = &D_arcade_80034C28;
                     break;
@@ -2397,17 +2398,11 @@ void func_arcade_8002CBD8(s32 arg0) {
     }
 }
 
-#ifndef NONMATCHING
+
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002CD64.s")
-#else
 
-extern f64 D_arcade_8004AAB8;
-extern f64 D_arcade_8004AAC0;
-extern f64 D_arcade_8004AAC8;
-extern f64 D_arcade_8004AAD0;
-extern f64 D_arcade_8004AAD8;
-extern f32 D_arcade_8004AAE0;
-
+/*
 void func_arcade_8002CD64(s32 arg0) {
     s32 sp3C;
     s32 sp34;
@@ -2416,23 +2411,21 @@ void func_arcade_8002CD64(s32 arg0) {
     f32 tmp_f12;
     s32 flame_indx;
 
-
     if (arcade_game_state != 0)
         return;
 
     this = &D_arcade_8004BCD0[arg0];
     if (this->unk19 == 0 || this->unk19 == 1) {
         func_arcade_8002CBD8(arg0);
-    }
-    else {
-        this->unk0 += this->unk8;
-        sp3C = func_arcade_8002A390( this->unk0, this->unk4);
-        func_arcade_8002AF2C( this->unk0, this->unk4);
-        switch(this->unk19) {
+    } else {
+        this->x_position += this->x_velocity;
+        sp3C = func_arcade_8002A390(this->x_position, this->y_position);
+        func_arcade_8002AF2C(this->x_position, this->y_position);
+        switch (this->unk19) {
             case 2: //L8002CE70
-                this->unk8 = (f32)(1 - (this->unk1A << 1));
-                this->unk10 += D_arcade_8004AA98;
-                if ((this->unk4 < D_arcade_8004C6E8)
+                this->x_velocity = (f32)(1 - (this->unk1A << 1));
+                this->unk10 += 0.2;
+                if ((this->y_position < D_arcade_8004C6E8)
                     && ( D_arcade_8004C6F8 + 1 < D_arcade_8004C6FC
                         || (D_arcade_8004C6FC == this->unk1C && D_arcade_8004C704 < 0x12)
                         || (D_arcade_8004BCD0[0].unk19 != 5))
@@ -2441,74 +2434,71 @@ void func_arcade_8002CD64(s32 arg0) {
                         break;
 
                     this->unk1C &= 0xF;
-                    if (this->unk1C & 0xFF > 0) {
+                    if (this->unk1C > 0) {
                         this->unk1C--;
                         this->unk19 = 5;
-                        this->unk4  += 1.0f;
-                        this->unkC = 1.0f;
-                        this->unk8 = 0.0f;
-                        this->unk0 = D_arcade_8004C6E0;
+                        this->y_position += 1.0f;
+                        this->y_velocity = 1.0f;
+                        this->x_velocity = 0.0f;
+                        this->x_position = D_arcade_8004C6E0;
+                    } else {
+                        this->unk1C |= 0x80;
                     }
-                    else {
-                        this->unk1C |= 0x80; 
-                    }
-                }
-                else {//L8002CFDC
+                } else {//L8002CFDC
                     if (!(this->unk1C & 0x47)) {
                         this->unk1C = 0x40 | (4096.0f + func_arcade_800246C8((f32)D_arcade_8004A76C, 5.0f) * 1512.0f > (f32)func_arcade_80024644()) ? TRUE : FALSE;
                     }//L8002D074
-                    if ((f32)sp3C - this->unk4 < 3.0f) {
-                        this->unk4 = sp3C;
-                    }
-                    else {
+                    if ((f32)sp3C - this->y_position < 3.0f) {
+                        this->y_position = sp3C;
+                    } else {
                         this->unk19 = 3;
-                        this->unkC = 0.0f;
-                        this->unk8 = this->unk8/2;
+                        this->y_velocity = 0.0f;
+                        this->x_velocity /= 2;
                     }
                 }
                 break;
             case 3: //L8002D0FC
-                this->unk10 += D_arcade_8004AAA0;
-                this->unk4 += this->unkC;
-                this->unkC += D_arcade_8004AAA8;
-                if (sp3C < this->unk4
-                    && this->unk4 - sp3C < 3.0f
+                this->unk10 += 0.2;
+                this->y_position += this->y_velocity;
+                this->y_velocity += 0.06;
+                if (sp3C < this->y_position
+                    && this->y_position - sp3C < 3.0f
                 ) {
-                    this->unk4 = sp3C;
-                    this->unkC = -this->unkC/3.0f;
-                    if (D_arcade_8004AAB0 < this->unkC)
+                    this->y_position = sp3C;
+                    this->y_velocity = -this->y_velocity / 3.0f;
+                    if (-0.2 < this->y_velocity)
                         this->unk19 = 2;
                 }//L8002D1C8
                 break;
             case 5: //L8002D1E4
-                this->unk10 += D_arcade_8004AAB8;
-                this->unk4 += this->unkC;
-                if (D_arcade_8004C6E8 < this->unk4) {
+                this->unk10 += 0.3;
+                this->y_position += this->y_velocity;
+                if (D_arcade_8004C6E8 < this->y_position) {
                     this->unk1A = (1 - this->unk1A);
                     this->unk19 = 2;
-                    this->unk4 = sp3C;
-                    this->unk8 = 1 - 2*this->unk1A;
+                    this->y_position = sp3C;
+                    this->x_velocity = 1 - 2 * this->unk1A;
                 }//L8002D28C
                 break;
             case 7: //L8002D2A8
-                this->unk10 +=  D_arcade_8004AAC0;
-                this->unk4 += this->unkC;
-                this->unkC += D_arcade_8004AAC8;
-                tmp_f12 = func_arcade_8002A390(this->unk0, this->unk4);
-                if (tmp_f12 < this->unk4
-                    && this->unk4 - tmp_f12 < 8.0f
+                this->unk10 += 0.3;
+                this->y_position += this->y_velocity;
+                this->y_velocity += 0.06;
+                tmp_f12 = func_arcade_8002A390(this->x_position, this->y_position);
+                if (tmp_f12 < this->y_position
+                    && this->y_position - tmp_f12 < 8.0f
                     && this->unk1C < D_arcade_8004C6F8
                 ) {
-                    this->unkC = 0.0f;
+                    this->y_velocity = 0.0f;
                     if (this->unk1D == 2) {
                         sp34 = func_arcade_80024644();
-                        this->unk8 = (func_arcade_800246C8(3.0f, D_arcade_8004A76C)*(sp34 - 0.0f))/D_arcade_8004AAD0 + (-this->unk8)*D_arcade_8004AAD8;
+                        this->x_velocity = ((f64)func_arcade_800246C8(3.0f, D_arcade_8004A76C) * (sp34 - 0)) / 40000.0 + (-this->x_velocity) * 0.2;
                     }//L8002D414
-                    if (230.0f < this->unk4) {
+                    if (230.0f < this->y_position) {
                         this->unk19 = 3;
                         this->unk1A = 1;
-                        this->unk8 = -1.0f;
-                        this->unkC = D_arcade_8004AAE0;
+                        this->x_velocity = -1.0f;
+                        this->y_velocity = -0.7f;
                     }
                 }//L8002D454
                 break;
@@ -2516,25 +2506,25 @@ void func_arcade_8002CD64(s32 arg0) {
         if (!(D_arcade_8004BCD0[D_arcade_8004C71F].unk1C < D_arcade_8004C6F8)
             || this->unk1D
         ) {
-            if (270.0f < this->unk0) {
+            if (270.0f < this->x_position) {
                 this->unk1A = 1;
-                this->unk8 = (1 - ((s8)this->unk1A) << 1);
-            }
-            else if (this->unk0 < 50.0f) {
+                this->x_velocity = (1 - ((s8)this->unk1A) << 1);
+            } else if (this->x_position < 50.0f) {
                 this->unk1A = 0;
-                this->unk8 = (1 - ((s8)this->unk1A) << 1);
+                this->x_velocity = (1 - ((s8)this->unk1A) << 1);
             }
         }//L8002D504
-        if ((278.0f < this->unk0) || (this->unk0 < 2.0f)) {
+        if ((278.0f < this->x_position) || (this->x_position < 2.0f)) {
             this->unk18 = 0;
         }//L8002D548
-        if (( 242.0f < this->unk4) & ( this->unk0 < 74.0f)) {
+        if ((242.0f < this->y_position) & (this->x_position < 74.0f)) {
             if (this->unk1D) {
-                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7fff, 0x3f, D_arcade_8004BCD0[D_arcade_8004C71F].unk0, 0, NULL);
+                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7fff, 0x3f, D_arcade_8004BCD0[D_arcade_8004C71F].x_position, 0, NULL);
                 flame_indx = func_arcade_80024860(ARCADE_OBJ_13_OIL_DRUM_FLAMES);
-                if (flame_indx < 0)
+                if (flame_indx < 0) {
                     flame_indx = func_arcade_800246EC();
                     D_arcade_8004BCD0[flame_indx] = arcade_oil_drum_flame_obj_template;
+                }
                 D_arcade_8004BCD0[flame_indx].unk19 = 3;
                 this->unk18 = 0;
             }//L8002D668
@@ -2542,40 +2532,38 @@ void func_arcade_8002CD64(s32 arg0) {
                 this->unk18 = 0;
             }
         }//L8002D674
-        if (this->unk0 - D_arcade_8004BCD0[D_arcade_8004C71F].unk0 < 8.0f
-            && D_arcade_8004BCD0[D_arcade_8004C71F].unk0 - this->unk0 < 8.0f
-            && this->unk4 - D_arcade_8004BCD0[D_arcade_8004C71F].unk4 < 3.0f
-            && D_arcade_8004BCD0[D_arcade_8004C71F].unk4 - this->unk4 < 3.0f
+        if (this->x_position - D_arcade_8004BCD0[D_arcade_8004C71F].x_position < 8.0f
+            && D_arcade_8004BCD0[D_arcade_8004C71F].x_position - this->x_position < 8.0f
+            && this->y_position - D_arcade_8004BCD0[D_arcade_8004C71F].y_position < 3.0f
+            && D_arcade_8004BCD0[D_arcade_8004C71F].y_position - this->y_position < 3.0f
         ) {
             func_arcade_80027E8C();
         }
         func_arcade_8002CBD8(arg0);
     }
 }
-#endif
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002D6FC.s")
 
 extern u8 D_arcade_80037788[];
 extern u8 D_arcade_80037990[];
 
-extern f64 D_arcade_8004AB10;
-extern f64 D_arcade_8004AB18;
-extern f32 D_arcade_8004AB20;
-
-#ifndef NONMATCHING
-// rodata
+// TODO: Close
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002E158.s")
-#else
+
+/*
 void func_arcade_8002E158(s32 arg0) {
+    s32 temp;
     f32 dy;
 
     if (arcade_game_state != 0)
         return;
     
     D_arcade_8004BCD0[arg0].x_position += D_arcade_8004BCD0[arg0].x_velocity;
-    D_arcade_8004BCD0[arg0].unk10 += D_arcade_8004AB10;
-    switch((s32)D_arcade_8004BCD0[arg0].unk10 & 0x1) {
+    D_arcade_8004BCD0[arg0].unk10 += 0.1;
+    temp = D_arcade_8004BCD0[arg0].unk10;
+    switch (temp & 0x1) {
         case 0:
             D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80037788;
             break;
@@ -2585,7 +2573,7 @@ void func_arcade_8002E158(s32 arg0) {
     }
     D_arcade_8004BCD0[arg0].y_position += 5.0f;
     if (D_arcade_8004BCD0[arg0].y_velocity < 5.0f) {
-        D_arcade_8004BCD0[arg0].y_velocity += D_arcade_8004AB18;
+        D_arcade_8004BCD0[arg0].y_velocity += 0.3;
     }
     if (D_arcade_8004BCD0[arg0].y_position > 81.0f) {
         if (D_arcade_8004BCD0[arg0].x_position < 220.0f) {
@@ -2595,11 +2583,11 @@ void func_arcade_8002E158(s32 arg0) {
                 func_global_asm_80737638(D_global_asm_8076D1F8, SFX_43_ARCADE_SPRING_SPRINGING, 0x7fff, 0x3f, 1.0f, 0, NULL);
             }
         } else if (D_arcade_8004BCD0[arg0].x_velocity != 0.0f) {
-            D_arcade_8004BCD0[arg0].x_velocity = 0.0f;
+            D_arcade_8004BCD0[arg0].x_velocity = 0.0f
             func_global_asm_80737638(D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7fff, 0x3f, 1.0f, 0, NULL);
         }
     }
-    if (D_arcade_8004AB20 < D_arcade_8004BCD0[arg0].y_position) {
+    if (D_arcade_8004BCD0[arg0].y_position > 271.0f) {
         D_arcade_8004BCD0[arg0].unk18 = 0;
     }
     if (__arcade_abs_w(D_arcade_8004BCD0[arg0].x_position - D_arcade_8004BCD0[D_arcade_8004C71F].x_position) < 7) {
@@ -2609,7 +2597,7 @@ void func_arcade_8002E158(s32 arg0) {
         }
     }
 }
-#endif
+*/
 
 void func_arcade_8002E3D4(s32 arg0) {
     s32 newFlameIndex;
@@ -2649,7 +2637,6 @@ void func_arcade_8002E3D4(s32 arg0) {
                     D_arcade_8004BCD0[newFlameIndex].unk19 = 3;
                     D_arcade_8004BCD0[newFlameIndex].y_velocity = -1;
                     if (arcade_background_visual == 1) {
-                        // D_arcade_8004BCD0[newFlameIndex].x_velocity = D_arcade_8004AB24;
                         D_arcade_8004BCD0[newFlameIndex].x_velocity = 0.4f;
                     } else {
                         if (D_arcade_8004BCD0[D_arcade_8004C71F].x_position < 160) {
@@ -2812,7 +2799,6 @@ void arcade_dk_title_update(s32 arg0) {
     }
     if (phi_v1 >= 0x3C) {
         if (phi_v1 >= 0x169) {
-            // D_arcade_8004BCD0[arg0].y_velocity += D_arcade_8004AB28;
             D_arcade_8004BCD0[arg0].y_velocity += 0.05;
             D_arcade_8004BCD0[arg0].y_position += D_arcade_8004BCD0[arg0].y_velocity;
             D_arcade_8004BCD0[arg0].x_position += D_arcade_8004BCD0[arg0].x_velocity;
@@ -2827,14 +2813,12 @@ void arcade_dk_title_update(s32 arg0) {
                 if ((phi_v1 == 0x2D0) || (phi_v1 < 0x26C)) {
                     D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80040540;
                 }
-                // if (D_arcade_8004AB30 < D_arcade_8004BCD0[arg0].y_velocity) {
                 if (0.06 < D_arcade_8004BCD0[arg0].y_velocity) {
                     D_arcade_8004C708 = (s32) (D_arcade_8004C708 + 1);
                     func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFF, 0x3F, 1.0f, 0, 0);
                 }
                 if ((D_arcade_8004BCD0[arg0].x_position > 74.0f) && !(D_arcade_8004C6DC < 0x1A5)) {
                     D_arcade_8004BCD0[arg0].x_velocity = -0.5f;
-                    // D_arcade_8004BCD0[arg0].y_velocity = D_arcade_8004AB38;
                     D_arcade_8004BCD0[arg0].y_velocity = -0.81f;
                 }
                 else {
@@ -2865,7 +2849,7 @@ void func_arcade_8002EEB8(s32 arg0) {
 
     DK = &D_arcade_8004BCD0[arg0];
     if (arcade_game_state == 0 || DK->unk19 == 5) {
-        switch(DK->unk19) {
+        switch (DK->unk19) {
             case 12: //8002EF20
                 DK->unk1C--;
                 if (DK->unk1C == 0) {
@@ -2940,7 +2924,7 @@ void func_arcade_8002FE28(s32 arg0) {
 }
 
 void arcade_dk_50m_update(s32 arg0) {
-    switch(D_arcade_8004BCD0[arg0].unk19) {
+    switch (D_arcade_8004BCD0[arg0].unk19) {
         case 2://L8003007C
             if (arcade_game_state != 0)
                 return;
@@ -3030,7 +3014,7 @@ void arcade_hammer_update(u8 arg0) {
     if (arcade_game_state != 0)
         return;
     s2 = &D_arcade_8004BCD0[arg0];
-    switch(s2->unk19) {
+    switch (s2->unk19) {
         case 0: //L80030418
         {
             v1 = &D_arcade_8004BCD0[D_arcade_8004C71F];
@@ -3226,7 +3210,7 @@ void func_arcade_80030CEC(u8 arg0) {
         return;
     if ((D_global_asm_807ECDE8->unk0 & 0x200) || D_global_asm_807ECDE8->unk2 < -0x14) {
         D_arcade_8004C720--;
-        switch(D_arcade_8004C720) {
+        switch (D_arcade_8004C720) {
             case 0://L80030D74
                 D_arcade_8004C720 = 8;
             case 0xb://L80030D80
@@ -3238,7 +3222,7 @@ void func_arcade_80030CEC(u8 arg0) {
         }
     } else if ((D_global_asm_807ECDE8->unk0 & 0x100) || D_global_asm_807ECDE8->unk2 >= 0x15) {//L80030DB0
         D_arcade_8004C720--;
-        switch(D_arcade_8004C720) {
+        switch (D_arcade_8004C720) {
             case 0://L80030D74
                 D_arcade_8004C720 = 8;
             case 0xb://L80030D80
@@ -3282,7 +3266,7 @@ void arcade_barrel_stack_update(u8 arg0) {
 void func_arcade_80030FEC(void) {
     u8 i;
     for (i = 0; i < 0x50; i++) {
-        switch(D_arcade_8004BCD0[i].unk18) {
+        switch (D_arcade_8004BCD0[i].unk18) {
             case ARCADE_OBJ_01_BARREL: //80031030
                 func_arcade_8002CD64(i);
                 break;
@@ -3523,9 +3507,10 @@ void func_arcade_80031948(s8 arg0) {
     }
 }
 
-#ifndef NONMATCHING
+// close, probably needs .data migrated
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800319D4.s")
-#else
+
+/*
 void func_arcade_800319D4(Gfx **arg0) {
     int i;
     Gfx *sp90;
@@ -3546,7 +3531,7 @@ void func_arcade_800319D4(Gfx **arg0) {
     func_global_asm_8070E8F0(&sp90, &D_arcade_8004BBF0[D_global_asm_807444FC]);
     func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
     for (i = 0; i < arcade_lives_visual; i++) {
-        func_global_asm_8070F2FC(&sp90, (s16)(0x360 + i * 0x20), 0x4C, i);
+        func_global_asm_8070F2FC(&sp90, 0x360 + i * 0x20, 0x4C);
     }
     func_arcade_800244E4(0xff, 0, 00, 0xff);
     if ((D_arcade_8004C6D8 & 0x10) || !D_arcade_8004C724) {
@@ -3697,4 +3682,4 @@ void func_arcade_800319D4(Gfx **arg0) {
     *arg0 = sp90;
     D_arcade_8004A83C++;
 }
-#endif
+*/

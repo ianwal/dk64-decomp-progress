@@ -2109,7 +2109,7 @@ loop_8:
 
 int func_global_asm_80648C50() {
     s16 chunk = character_change_array[0].chunk;
-    switch(chunk) {
+    switch (chunk) {
         case 4:
         case 0xC:
             return 1;

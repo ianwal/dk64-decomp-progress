@@ -103,7 +103,7 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
 
 void func_global_asm_806C43A8() {
     s32 song = 0;
-    switch(current_map) {
+    switch (current_map) {
         case MAP_JAPES_MINECART:
             song = 3;
             break;
@@ -134,7 +134,7 @@ void func_global_asm_806C498C() {
 
 void func_global_asm_806C49D0() {
     func_global_asm_80729B00();
-    switch(current_map) {
+    switch (current_map) {
         case MAP_AZTEC:
             func_global_asm_806C3F10(2, 6, 0);
             break;

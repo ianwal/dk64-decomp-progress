@@ -55,7 +55,7 @@ void func_dk64_boot_800004F4(s32 arg0) {
     OSMesg sp24;
     void (*gaFunc)(OSMesgQueue *, s32);
     osRecvMesg(&D_dk64_boot_80011548, &sp24, OS_MESG_BLOCK);
-    switch((u32)sp24) {
+    switch ((u32)sp24) {
         case 0x29d://L80000538
             if (D_dk64_boot_8000DCB0) {
                 gaFunc = 0x805fb300;

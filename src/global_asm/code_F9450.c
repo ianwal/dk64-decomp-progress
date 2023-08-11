@@ -565,7 +565,7 @@ s32 func_global_asm_806F70A8(s16 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F70FC.s")
 
 extern f64 D_global_asm_8075D950;
-extern s32 D_global_asm_8071C48C; // TODO: Datatype
+int func_global_asm_8071C48C(); // TODO: Signature
 extern s32 D_global_asm_8071FC58; // TODO: Datatype
 extern s32 D_global_asm_8071C620; // TODO: Datatype
 
@@ -579,7 +579,7 @@ void func_global_asm_806F70FC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     f32 phi_f4_2;
 
     func_global_asm_80714950(0x1006E);
-    func_global_asm_8071498C(&D_global_asm_8071C48C);
+    func_global_asm_8071498C(&func_global_asm_8071C48C);
     func_global_asm_807149B8(1);
     func_global_asm_80714CC0(&D_global_asm_8071FC58, arg3, arg0, arg1, arg2);
     temp_f20 = D_global_asm_8075D950 / (arg4 + arg4);

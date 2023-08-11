@@ -18,7 +18,7 @@ void func_global_asm_8070E8F0(Gfx **arg0, uSprite *arg1) {
     D_global_asm_807FD9D2 = 0x400;
     D_global_asm_807FD9D4 = 0;
     D_global_asm_807FD9D5 = 0;
-    switch(D_global_asm_807550D0->s.SourceImageBitSize) {
+    switch (D_global_asm_807550D0->s.SourceImageBitSize) {
         case G_IM_SIZ_8b: //L8070E96C
             if ((D_global_asm_807550D0->s.Stride & 7) == 0) {
                 gDPLoadTextureBlock((*arg0)++,D_global_asm_807550D0->s.SourceImagePointer, D_global_asm_807550D0->s.SourceImageType, G_IM_SIZ_8b, 
