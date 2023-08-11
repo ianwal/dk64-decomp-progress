@@ -372,7 +372,37 @@ segments:
       - [0x215DD50, rodata] # code_70FD0
       - [0x215DEA0, rodata] # code_79890
       - [0x215DEC0, rodata] # code_7A510
-      - [0x215DEE0, rodata] # code_7AF60 # Done up to here
+      - [0x215DEE0, rodata] # code_7AF60
+      - [0x215DF60, rodata] # code_7CA60
+      - [0x215E090, rodata] # code_80150
+      - [0x215E790, rodata] # code_89250
+      - [0x215E8B0, rodata] # code_8D3E0
+      - [0x215EA00, rodata] # code_8F4B0
+      - [0x215EC70, rodata] # code_936B0
+      - [0x215EEF0, rodata] # code_9BF30
+      - [0x215EF40, rodata] # code_9CE20
+      - [0x215EFD0, rodata] # code_9DD70, codeA2F10??
+      - [0x215F250, rodata] # code_A6280
+      - [0x215F2B0, rodata] # code_A7710
+      - [0x215F440, rodata] # code_A8400
+      - [0x215F780, rodata] # code_ACDC0
+      - [0x215FA20, rodata] # code_B1F60
+      - [0x215FB20, rodata] # code_B2CE0
+      - [0x215FFA0, rodata] # code_B5EC0
+      - [0x21600C0, rodata] # code_B6C50
+      - [0x21600F0, rodata] # code_B7490
+      - [0x2160420, rodata] # code_BA790
+      - [0x2160460, rodata] # code_BB300
+      - [0x2160570, rodata] # code_BC3B0
+      - [0x21605B0, rodata] # code_BD820
+      - [0x21605D0, rodata] # code_BDEE0
+      - [0x2160830, rodata] # code_C0EE0
+      - [0x21608C0, rodata] # code_C1E70
+      - [0x21608E0, rodata] # code_C2A90
+      - [0x2160F60, rodata] # code_C8C10
+      - [0x2161080, rodata] # code_CB230
+      - [0x21610E0, rodata] # code_CBEA0
+      - [0x2161110, rodata] # code_CC800?
       - [0x21611B0, rodata] # code_CEAE0?
       - [0x2162080, rodata] # code_EFDC0?
       - [0x21622F0, rodata] # code_F56F0

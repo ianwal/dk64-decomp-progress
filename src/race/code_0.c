@@ -1,6 +1,16 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern f64 D_race_8002FD00;
+extern f64 D_race_8002FD08;
+extern f64 D_race_8002FD10;
+extern f64 D_race_8002FD18;
+extern f64 D_race_8002FD20;
+extern f64 D_race_8002FD28;
+extern f64 D_race_8002FDD8;
+extern f64 D_race_8002FDE0;
+extern f64 D_race_8002FDE8;
+
 extern u16 D_global_asm_80750AC4;
 
 s32 func_race_8002E8EC(s32, s32, s32);
@@ -75,9 +85,6 @@ typedef struct {
 extern void func_race_8002CFF0();
 
 f32 func_global_asm_80665E48(f32, f32, f32, f32);
-extern f64 D_race_8002FDD8;
-extern f64 D_race_8002FDE0;
-extern f64 D_race_8002FDE8;
 
 typedef struct {
     f32 unk0;
@@ -86,13 +93,6 @@ typedef struct {
 } Struct80026098;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80024000.s")
-
-extern f64 D_race_8002FD00;
-extern f64 D_race_8002FD08;
-extern f64 D_race_8002FD10;
-extern f64 D_race_8002FD18;
-extern f64 D_race_8002FD20;
-extern f64 D_race_8002FD28;
 
 typedef struct {
     s16 unk0;
