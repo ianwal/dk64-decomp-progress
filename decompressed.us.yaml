@@ -181,7 +181,7 @@ segments:
       - [0x10DA0, data, dk64_boot_data_10DA0]
       - [0x11120, .rodata, gu/perspective]
       - [0x11130, .rodata, gu/nonmatching/lookathil]
-      - [0x11140, rodata, dk64_boot_data_11140]
+      - [0x11140, rodata]
       - [0x11150, .rodata, gu/nonmatching/rotate]
       - [0x11160, .rodata, gu/nonmatching/align]
       - [0x11170, .rodata, gu/nonmatching/position]
@@ -363,12 +363,12 @@ segments:
       - [0x215D9A0, rodata] # code_5E2F0
       - [0x215DA50, rodata] # code_61690
       - [0x215DA60, rodata] # code_61AA0
-      - [0x215DAC0, rodata] # code_63810
-      - [0x215DAD0, rodata] # code_63EC0
+      - [0x215DAC0, .rodata, code_63810]
+      - [0x215DAD0, .rodata, code_63EC0]
       - [0x215DAE0, rodata] # code_67890
       - [0x215DAF0, .rodata, done/code_68960]
       - [0x215DB10, .rodata, code_68EA0]
-      - [0x215DB20, rodata] # code_699B0
+      - [0x215DB20, rodata] # code_699B0, TODO: might need another split around 758F70
       - [0x215DD50, rodata] # code_70FD0
       - [0x215DEA0, rodata] # code_79890
       - [0x215DEC0, rodata] # code_7A510
@@ -427,7 +427,7 @@ segments:
       - [0x2165190, .rodata, audio/synthesizer]
       - [0x21651A0, rodata] # audio/code_13ECE0
       - [0x21651B0, rodata] # audio/code_140600
-      - [0x21651D0, rodata] # audio/code_141520
+      - [0x21651D0, .rodata, audio/code_141520]
       - [0x21651E0, rodata] # audio/code_141EF0
       - [0x2165210, rodata] # audio/code_1435C0
       - [0x2165270, rodata] # audio/code_145950
@@ -443,6 +443,10 @@ segments:
       - [0x2169B60, c, code_3E10]
       - [0x21742A0, c, code_E550]
       - [0x2174CA0, data, code_0]
+      - [0x2175730, rodata] # code_0
+      - [0x21757A0, rodata] # code_1AF0
+      - [0x2175880, rodata] # code_3E10
+      - [0x2175C40, .rodata, code_E550]
   - name: multiplayer
     dir: multiplayer
     type: code

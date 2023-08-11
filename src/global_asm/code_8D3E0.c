@@ -810,8 +810,23 @@ u8 func_global_asm_80689EE4(ActorSpawner *spawner) {
     return func_global_asm_80689FEC(spawner);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_global_asm_80689F2C.s")
+s32 func_global_asm_80689F2C(void) {
+    switch (current_map) {
+        case MAP_TROFF_N_SCOFF:
+        case MAP_JAPES_LOBBY:
+        case MAP_HELM_LOBBY:
+        case MAP_AZTEC_LOBBY:
+        case MAP_GALLEON_LOBBY:
+        case MAP_FACTORY_LOBBY:
+        case MAP_FUNGI_LOBBY:
+        case MAP_CASTLE_LOBBY:
+        case MAP_CAVES_LOBBY:
+        case MAP_DK_ISLES_SNIDES_ROOM:
+            return 1;
+        default:
+            return 0;
+    }
+}
 
 u8 func_global_asm_80689F80(ActorSpawner *spawner) {
     return func_global_asm_80652E58(spawner->unk4A)

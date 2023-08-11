@@ -60,6 +60,7 @@ typedef struct menu_struct_0 {
 extern f32 D_menu_800339F8;
 extern f32 D_menu_800339FC;
 extern f32 D_menu_80033A00;
+
 extern s32 D_global_asm_80720268;
 extern s16 D_global_asm_80750AC8;
 

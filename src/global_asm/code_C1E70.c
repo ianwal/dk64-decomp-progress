@@ -3,6 +3,7 @@
 
 extern s8 D_global_asm_80750660;
 extern s8 D_global_asm_807506A4;
+
 extern s8 D_global_asm_807FC8D0;
 
 // TODO: Add to aaD union
@@ -77,10 +78,13 @@ void func_global_asm_806BD170(void) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_global_asm_806BD3E4.s")
 
-extern f32 D_global_asm_807FC8D4;
-extern s16 D_global_asm_8076A0A6;
+
+extern s16 D_global_asm_8076A0A6; // Probably static
+
 extern s8 D_global_asm_807506B4;
 extern s8 D_global_asm_807506A8[];
+
+extern f32 D_global_asm_807FC8D4;
 
 s32 areAllKeysTurnedIn(void);
 
@@ -96,7 +100,7 @@ void func_global_asm_806BD3E4(void) {
     u8 sp2B;
     u8 temp;
     u16 sp28;
-    s16 var_v1;
+    s16 var_v1; // Probably static
     s16 var_t0;
 
     var_v1 = D_global_asm_8076A0A6;

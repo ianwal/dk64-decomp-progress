@@ -1,8 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
+// needs ctx from this file for GlobalASMStruct51
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63810/func_global_asm_8065EB10.s")
+
+extern s16 D_global_asm_80748A84;
 
 typedef struct {
     s32 unk0;
@@ -19,11 +21,8 @@ typedef struct {
     s16 unk1A;
 } GlobalASMStruct51;
 
-extern s32 D_global_asm_807FBB68;
-extern s16 D_global_asm_80748A84;
 extern GlobalASMStruct51 D_global_asm_807F9070[];
 
-extern s16 D_global_asm_80748A84;
 extern s32 D_global_asm_807FBB68;
 
 // TODO: Get rid of goto
