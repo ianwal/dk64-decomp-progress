@@ -11,6 +11,34 @@ typedef struct {
     f32 unk4;
 } A178_806B76B0;
 
+/*
+// rodata
+D_global_asm_8075B870 .double 0.100000000000000006
+D_global_asm_8075B878 .float 285
+D_global_asm_8075B880 .double 0.599999999999999978
+D_global_asm_8075B888 .double 0.599999999999999978
+D_global_asm_8075B890 .double 0.599999999999999978
+D_global_asm_8075B898 .double 0.179999999999999993
+D_global_asm_8075B8A0 .double 0.00100000000000000002
+D_global_asm_8075B8A8 .double 0.00100000000000000002
+*/
+
+void func_global_asm_806907F0(f32, f32, f32);
+typedef struct GlobalASMStruct90 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} GlobalASMStruct90;
+
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
+extern s32 D_global_asm_807201D4; // TODO: Datatype
+
+void func_global_asm_8066EB40(Actor*, f32);
+void func_global_asm_8066E854(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4);
+void func_global_asm_806B88B8(void);
+
 void func_global_asm_806B76B0(Gfx *dl, Actor *arg1) {
     A178_806B76B0 *a178;
     AAD_global_asm_806B76B0 *aaD;
@@ -36,10 +64,6 @@ void func_global_asm_806B76B0(Gfx *dl, Actor *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_global_asm_806B7830.s")
 
-extern f32 D_global_asm_8075B878;
-
-void func_global_asm_806907F0(f32, f32, f32);
-
 void func_global_asm_806B7BB8(s32 arg0) {
     s32 phi_v1;
 
@@ -49,81 +73,52 @@ void func_global_asm_806B7BB8(s32 arg0) {
         phi_v1 = 99;
     }
     func_global_asm_806907F0(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + 100.0f, D_global_asm_807FDC94->z_position);
-    func_global_asm_80690A28(phi_v1, 1, 0.5f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position, D_global_asm_807FDC94->z_position, D_global_asm_8075B878, current_actor_pointer);
+    func_global_asm_80690A28(phi_v1, 1, 0.5f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position, D_global_asm_807FDC94->z_position, 285.0f, current_actor_pointer);
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_global_asm_806B7C74.s")
-
-extern f64 D_global_asm_8075B880;
-extern f64 D_global_asm_8075B888;
-extern f64 D_global_asm_8075B890;
-
-typedef struct GlobalASMStruct90 {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} GlobalASMStruct90;
-
-extern s16 D_global_asm_80744490;
-extern s16 D_global_asm_80744494;
-
-/*
-// TODO: Doable, annoying float stuff
 void func_global_asm_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2) {
     f32 var_f2;
-    f32 var_f2_2;
-    f32 var_f2_3;
-    f32 var_f2_4;
 
     if (arg1 < arg0->unk0) {
-        // Problem here
-        arg0->unk8 -= D_global_asm_8075B880;
+        arg0->unk8 -= 0.6;
         if (arg0->unk8 < -5.0f) {
             arg0->unk8 = -5.0f;
         }
     } else if (arg0->unk0 < arg1) {
-        // Problem here
-        arg0->unk8 += D_global_asm_8075B888;
+        arg0->unk8 += 0.6;
         if (arg0->unk8 > 5.0f) {
             arg0->unk8 = 5.0f;
         }
     }
     if (arg2 < arg0->unk4) {
-        // Problem here
-        arg0->unkC -= D_global_asm_8075B890;
+        arg0->unkC -= 0.6;
         if (arg0->unkC < -5.0f) {
             arg0->unkC = -5.0f;
         }
     } else if (arg0->unk4 < arg2) {
-        // Problem here
-        arg0->unkC += D_global_asm_8075B890;
+        arg0->unkC += 0.6;
         if (arg0->unkC > 5.0f) {
             arg0->unkC = 5.0f;
         }
     }
-    // Here down is all good I think
     var_f2 = MAX(arg0->unk0 + arg0->unk8, 0.0f);
     if (var_f2 < D_global_asm_80744490) {
-        var_f2_2 = MAX(arg0->unk0 + arg0->unk8, 0.0f);
-        arg0->unk0 = var_f2_2;
+        var_f2 = MAX(arg0->unk0 + arg0->unk8, 0.0f);
+        arg0->unk0 = var_f2;
     } else {
         arg0->unk0 = D_global_asm_80744490;
     }
-    var_f2_3 = MAX(arg0->unk4 + arg0->unkC, 0.0f);
-    if (var_f2_3 < D_global_asm_80744494) {
-        var_f2_4 = MAX(arg0->unk4 + arg0->unkC, 0.0f);
-        arg0->unk4 = var_f2_4;
+    var_f2 = MAX(arg0->unk4 + arg0->unkC, 0.0f);
+    if (var_f2 < D_global_asm_80744494) {
+        var_f2 = MAX(arg0->unk4 + arg0->unkC, 0.0f);
+        arg0->unk4 = var_f2;
     } else {
         arg0->unk4 = D_global_asm_80744494;
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_global_asm_806B7EA0.s")
 
-extern f64 D_global_asm_8075B898;
 extern s32 D_global_asm_807FBB68;
 int func_global_asm_806B7830();
 
@@ -191,7 +186,7 @@ void func_global_asm_806B7EA0(void) {
             playSound(0x15B, 0x7FFF, 63.0f, 1.0f, 0, 0x80);
             current_actor_pointer->unk6E[0] = 0;
             if (temp_s0->unk18 > 2.0f) {
-                temp_s0->unk18 -= D_global_asm_8075B898;
+                temp_s0->unk18 -= 0.18;
             }
         }
         switch (current_actor_pointer->control_state) {
@@ -226,12 +221,6 @@ void func_global_asm_806B7EA0(void) {
 }
 */
 
-extern f64 D_global_asm_8075B8A0;
-extern s32 D_global_asm_807201D4; // TODO: Datatype
-
-void func_global_asm_8066EB40(Actor*, f32);
-void func_global_asm_8066E854(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4);
-
 void func_global_asm_806B83E4(void) {
     u8 temp;
     func_global_asm_80729B00();
@@ -241,7 +230,7 @@ void func_global_asm_806B83E4(void) {
         func_global_asm_8066E8E4(current_actor_pointer, 0.0f, 0.0f, 0.0f, 280.0f, -1);
         func_global_asm_8066E854(current_actor_pointer, 0.0f, 0.0f, 0.0f, -1);
     }
-    if (D_global_asm_807FDC90->unk30 <= D_global_asm_8075B8A0) {
+    if (D_global_asm_807FDC90->unk30 <= 0.001) {
         D_global_asm_807FDC90->unk2C = D_global_asm_807FDC9C->unkA_u8[0];
         D_global_asm_807FDC90->unk30 = D_global_asm_807FDC9C->unkA_u8[1];
         func_global_asm_8066EA64(current_actor_pointer, 1);
@@ -285,8 +274,6 @@ void func_global_asm_806B86AC(void) {
     }
 }
 
-void func_global_asm_806B88B8(void);
-
 void func_global_asm_806B8878(void) {
     func_global_asm_806B88B8();
 }
@@ -295,7 +282,6 @@ void func_global_asm_806B8898(void) {
     func_global_asm_806B88B8();
 }
 
-extern f64 D_global_asm_8075B8A8;
 
 void func_global_asm_806B88B8(void) {
     Actor178 *temp_v1;
@@ -315,7 +301,7 @@ void func_global_asm_806B88B8(void) {
         temp_v1->unk0--;
         return;
     }
-    if (D_global_asm_807FDC90->unk30 <= D_global_asm_8075B8A8) {
+    if (D_global_asm_807FDC90->unk30 <= 0.001) {
         D_global_asm_807FDC90->unk2C = D_global_asm_807FDC9C->unkA_u8[0];
         D_global_asm_807FDC90->unk30 = D_global_asm_807FDC9C->unkA_u8[1];
         temp_s0->unk0_s16[0] = 0;

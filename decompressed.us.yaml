@@ -393,7 +393,7 @@ segments:
       - [0x21600F0, rodata] # code_B7490
       - [0x2160420, rodata] # code_BA790
       - [0x2160460, rodata] # code_BB300
-      - [0x2160570, rodata] # code_BC3B0
+      - [0x2160570, .rodata, code_BC3B0]
       - [0x21605B0, .rodata, done/code_BD820]
       - [0x21605D0, rodata] # code_BDEE0
       - [0x2160830, rodata] # code_C0EE0
