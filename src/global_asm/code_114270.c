@@ -479,7 +479,7 @@ void func_global_asm_80712830(Actor *arg0, s32 exit) {
     if (cc_number_of_players >= 2) {
         func_80026D40(arg0, exit);
     } else {
-    func_global_asm_805FF1B0(exit);
+        func_global_asm_805FF1B0(exit);
     }
 }
 

@@ -13,7 +13,6 @@ void func_global_asm_806907F0(f32, f32, f32);
 s32 func_global_asm_80726164(Actor*, s16, s16, s16, void*);
 void func_global_asm_806B3E7C();
 void func_global_asm_806653C0(Actor*, f32, f32);
-void func_global_asm_807248B0(Actor*, f32);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B2790.s")

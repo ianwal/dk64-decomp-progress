@@ -1,13 +1,23 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 D_global_asm_8071FBC8;
+extern s32 D_global_asm_8072073C; // TODO: Proper datatype
 
 extern f32 D_global_asm_8075AE20;
 extern f64 D_global_asm_8075AE28;
-extern s32 D_global_asm_8071FBC8;
+extern f32 D_global_asm_8075AE30;
+
+extern f64 D_global_asm_8075B098;
+extern f32 D_global_asm_8075B1A8;
+
+s32 func_global_asm_80726164(Actor*, s16, s16, s16, void*);
+void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
 void func_global_asm_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_80612BC0(f32*, f32);
+
+void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 
 void func_global_asm_806ADFE0(void) {
     f32 sp88[4][4];
@@ -52,8 +62,6 @@ void func_global_asm_806ADFE0(void) {
     }
 }
 
-void func_global_asm_807248B0(Actor*, f32);
-
 void func_global_asm_806AE2B0(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     f32 sp2C;
     f32 sp28;
@@ -71,10 +79,6 @@ void func_global_asm_806AE2B0(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
         func_global_asm_807248B0(D_global_asm_807FBB44, current_actor_pointer->animation_state->scale_y);
     }
 }
-
-extern f32 D_global_asm_8075AE30;
-
-void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 
 void func_global_asm_806AE394(f32 arg0, f32 arg1) {
     f32 x1;
@@ -124,11 +128,6 @@ void func_global_asm_806AEE08(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AFA60.s")
 
 /*
-extern f64 D_global_asm_8075B098;
-
-extern s32 D_global_asm_8072073C; // TODO: Proper datatype
-extern s32 D_global_asm_8071910C; // TODO: Proper datatype
-
 void func_global_asm_806AFA60(u8 arg0) {
     f32 temp_f22;
     f64 temp_f20;
@@ -139,7 +138,7 @@ void func_global_asm_806AFA60(u8 arg0) {
         temp_f22 = current_actor_pointer->animation_state->scale_y / temp_f20;
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(0xA);
-        func_global_asm_8071498C(&D_global_asm_8071910C);
+        func_global_asm_8071498C(&func_global_asm_8071910C);
         func_global_asm_80714998(2);
         func_global_asm_80714950(0);
         func_global_asm_80714C08(&D_global_asm_8072073C, temp_f22 * temp_f20, current_actor_pointer, arg0, 0);
@@ -158,11 +157,6 @@ void func_global_asm_806B02EC(void) {
     func_global_asm_806AD260(800, 0, 0);
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
-
-extern f32 D_global_asm_8075B1A8;
-
-s32 func_global_asm_80726164(Actor*, s16, s16, s16, void*);
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
 void func_global_asm_806B0354(void) {
     func_global_asm_80729B00();

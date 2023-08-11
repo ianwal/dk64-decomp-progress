@@ -182,7 +182,7 @@ for root, dirs, files in os.walk(searchPath):
                         continue
 
                     if "#pragma GLOBAL_ASM(" in line:
-                        if (not comments["jumptable"] and not comments["rodata"]):
+                        if (not comments["jumptable"]):
                             # Parse ASM and compute row for function
                             ASMFile = line.replace("#pragma GLOBAL_ASM(\"", "").replace("\")\n", "")
                             with open(ASMFile, "r") as fh_asm:

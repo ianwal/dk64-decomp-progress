@@ -2,32 +2,95 @@
 #include "functions.h"
 
 
-extern s32 D_global_asm_80720A10;
-extern s32 D_global_asm_807209EC;
-extern s32 D_global_asm_807207E0;
-extern s32 D_global_asm_80720A34;
-extern s32 D_global_asm_80720A58;
-
 extern s32 D_global_asm_807204BC;
 extern s32 D_global_asm_80720508;
 extern s32 D_global_asm_807205C4;
 extern s32 D_global_asm_807205E8;
-extern s32 D_global_asm_80720768;
-extern s32 *D_global_asm_807207BC;
-extern s32 D_global_asm_807211D0;
-extern s32 D_global_asm_80721378;
-extern f32 D_global_asm_8075A9B0;
-extern f32 D_global_asm_8075A9B4;
 
 extern s32 D_global_asm_80720710;
+extern s32 D_global_asm_80720768;
+extern s32 *D_global_asm_807207BC;
+extern s32 D_global_asm_807207E0;
+
+extern s32 D_global_asm_807209EC;
+extern s32 D_global_asm_80720A10;
+extern s32 D_global_asm_80720A34;
+extern s32 D_global_asm_80720A58;
+
+extern s32 D_global_asm_807211D0;
+extern s32 D_global_asm_80721378;
 
 extern s32 D_global_asm_80720FE0;
 extern s32 D_global_asm_80720F98;
 extern s32 D_global_asm_80720FBC;
+
 extern s32 D_global_asm_80721028;
 extern s32 D_global_asm_80721004;
+
+extern u8 D_global_asm_807503F0;
+
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    u8 unk4;
+    u8 unk5;
+} Struct80750400;
+
+extern Struct80750400 D_global_asm_80750400[];
+
+// rodata
+extern f32 D_global_asm_8075A760;
+extern f64 D_global_asm_8075A790;
+extern f64 D_global_asm_8075A798;
+extern f32 D_global_asm_8075A7A0;
+extern f32 D_global_asm_8075A7A4;
+extern f64 D_global_asm_8075A7A8;
+extern f64 D_global_asm_8075A978;
+extern f32 D_global_asm_8075A980;
+extern f64 D_global_asm_8075A988;
+extern f32 D_global_asm_8075A990;
+extern f32 D_global_asm_8075A9A0;
+extern f64 D_global_asm_8075A9A8;
+extern f32 D_global_asm_8075A9B0;
+extern f32 D_global_asm_8075A9B4;
 extern f32 D_global_asm_8075AA70;
 extern f32 D_global_asm_8075AA74;
+extern f32 D_global_asm_8075AA78;
+extern f32 D_global_asm_8075AA7C;
+extern f32 D_global_asm_807504C0;
+extern f32 D_global_asm_807504C4;
+extern u8 D_global_asm_807504C8;
+extern u8 D_global_asm_807504CC;
+extern u8 D_global_asm_807504D0;
+
+// TODO: Add to aaD union
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+} AAD_global_asm_806A5EAC;
+
+extern s32 D_global_asm_8076A068;
+
+extern s32 D_global_asm_807FBB68;
+extern u8 D_global_asm_807FBD70;
+
+typedef struct {
+    s32 unk0[7];
+} Struct807504A4;
+
+extern s32 D_global_asm_80721170;
+extern Struct807504A4 D_global_asm_807504A4;
+extern u8 D_global_asm_807FBD70;
+extern s32 D_global_asm_807FC954;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s8 unk2;
+    u8 unk3;
+    u16 unk4;
+    s16 unk6;
+} AAD_global_asm_806A7600;
 
 void func_global_asm_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806A6DB4(s32 arg0);
@@ -36,6 +99,24 @@ void func_global_asm_80686CF8(Actor *actor);
 
 void func_global_asm_806A664C(f32 arg0);
 void func_global_asm_80714A08(f32 arg0, f32 arg1);
+void *func_global_asm_8068C12C(u16 textureIndex);
+
+int func_global_asm_806A4284();
+
+void func_global_asm_806A5174(Actor*, void*, f32);
+void func_global_asm_8070DA74(Actor*);
+void func_global_asm_8070E808(Actor *arg0, Actor *arg1);
+void func_global_asm_806A4DDC(Actor *arg0);
+
+void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
+
+s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
+void func_global_asm_8066EB40(Actor*, f32);
+void func_global_asm_8066E854(Actor*, f32, f32, f32, s32);
+void func_global_asm_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
+void func_global_asm_80723484(s32, Actor*);
+void func_global_asm_807149FC(s32 arg0);
+u32 func_global_asm_806F8EDC(s32, s32);
 
 void func_global_asm_806A3700(s32 arg0, s32 arg1) {
 
@@ -44,13 +125,6 @@ void func_global_asm_806A3700(s32 arg0, s32 arg1) {
 // Displaylist stuff (matrix)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A370C.s")
 
-extern f32 D_global_asm_8075A760;
-extern f64 D_global_asm_8075A790;
-
-extern f64 D_global_asm_8075A798;
-extern f32 D_global_asm_8075A7A0;
-extern f32 D_global_asm_8075A7A4;
-extern f64 D_global_asm_8075A7A8;
 
 void func_global_asm_806A3B78(s32 *arg0, AAD_global_asm_806A4DDC *arg1, Struct806A57C0_2 *arg2, u8 arg3, u8 *arg4) {
     s32 sp44;
@@ -72,8 +146,6 @@ void func_global_asm_806A3B78(s32 *arg0, AAD_global_asm_806A4DDC *arg1, Struct80
     }
     *arg0 = sp44;
 }
-
-void *func_global_asm_8068C12C(u16 textureIndex);
 
 Gfx *func_global_asm_806A3C6C(Gfx *dl, s32 arg1, u8 arg2, s32 arg3) {
     void *texture;
@@ -303,8 +375,6 @@ void func_global_asm_806A4DDC(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5174.s")
 
-extern f64 D_global_asm_8075A978;
-
 void func_global_asm_806A57C0(AAD_global_asm_806A4DDC *arg0) {
     s32 var_v0;
     Struct806A57C0_2 *var_v1;
@@ -325,17 +395,6 @@ void func_global_asm_806A57C0(AAD_global_asm_806A4DDC *arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5868.s")
-
-extern f32 D_global_asm_8075A980;
-extern f64 D_global_asm_8075A988;
-extern f32 D_global_asm_8075A990;
-extern u8 D_global_asm_807503F0;
-int func_global_asm_806A4284();
-
-void func_global_asm_806A5174(Actor*, void*, f32);
-void func_global_asm_8070DA74(Actor*);
-void func_global_asm_8070E808(Actor *arg0, Actor *arg1);
-void func_global_asm_806A4DDC(Actor *arg0);
 
 /*
 // TODO: Extremely close, one statement left to fix
@@ -464,17 +523,6 @@ void func_global_asm_806A5868(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5C60.s")
 
-typedef struct {
-    u16 unk0;
-    u16 unk2;
-    u8 unk4;
-    u8 unk5;
-} Struct80750400;
-
-extern Struct80750400 D_global_asm_80750400[];
-
-void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
-
 /*
 // TODO: Progrss made, kinda fiddly, last loop is sus
 void func_global_asm_806A5C60(Actor *arg0) {
@@ -511,9 +559,6 @@ void func_global_asm_806A5C60(Actor *arg0) {
 // rodata, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5DF0.s")
 
-extern f32 D_global_asm_8075A9A0;
-extern s32 D_global_asm_807FBB68;
-
 /*
 void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7) {
     f32 var_f0;
@@ -529,17 +574,6 @@ void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, 
     func_global_asm_806891D8(arg0, arg1, arg2, arg3, 0, var_f0, arg7, &sp2C);
 }
 */
-
-// TODO: Add to aaD union
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-} AAD_global_asm_806A5EAC;
-
-extern s32 D_global_asm_807FBB68;
-extern f64 D_global_asm_8075A9A8;
-
-void func_global_asm_807149FC(s32 arg0);
 
 void func_global_asm_806A5EAC(AAD_global_asm_806A5EAC *arg0, void *arg1, f32 arg2) {
     if (D_global_asm_807FBB68 & 0x10) {
@@ -728,24 +762,6 @@ void func_global_asm_806A7518(void) {
     }
 }
 
-extern u8 D_global_asm_807FBD70;
-extern s32 D_global_asm_8076A068;
-
-s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
-void func_global_asm_8066EB40(Actor*, f32);
-void func_global_asm_8066E854(Actor*, f32, f32, f32, s32);
-void func_global_asm_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
-void func_global_asm_80723484(s32, Actor*);
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    s8 unk2;
-    u8 unk3;
-    u16 unk4;
-    s16 unk6;
-} AAD_global_asm_806A7600;
-
 void func_global_asm_806A7600(void *arg0) {
     AAD_global_asm_806A7600 *sp34;
     s16 permanentFlagIndex;
@@ -878,19 +894,6 @@ void func_global_asm_806A7BB8(void) {
     func_global_asm_806A7600(&D_global_asm_80721004);
 }
 
-typedef struct {
-    s32 unk0[7];
-} Struct807504A4;
-
-extern s32 D_global_asm_80721170;
-extern Struct807504A4 D_global_asm_807504A4;
-extern f32 D_global_asm_8075AA78;
-extern f32 D_global_asm_8075AA7C;
-extern u8 D_global_asm_807FBD70;
-extern s32 D_global_asm_807FC954;
-
-u32 func_global_asm_806F8EDC(s32, s32);
-
 void func_global_asm_806A7BDC(void) {
     s32 sp64;
     s32 sp60;
@@ -929,12 +932,6 @@ void func_global_asm_806A7BDC(void) {
         func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xE, 0xE, 1, 0x96, 0x78, 0, 1.0f);
     }
 }
-
-extern f32 D_global_asm_807504C4;
-extern u8 D_global_asm_807504D0;
-extern u8 D_global_asm_807504CC;
-extern f32 D_global_asm_807504C0;
-extern u8 D_global_asm_807504C8;
 
 typedef struct {
     f32 unk0;

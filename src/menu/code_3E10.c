@@ -26,14 +26,13 @@ extern f32 sound_barrel_scale;
 extern f32 sound_icon_scale;
 extern s16 menu_cutscene_timer;
 extern s16 D_menu_800336A4[];
-extern void *D_global_asm_807211D0;
-extern void *D_global_asm_80721444;
 extern void *D_global_asm_80721094;
 extern void *D_global_asm_807210EC;
 extern void *D_global_asm_80721170;
+extern void *D_global_asm_807211D0;
+extern void *D_global_asm_80721444;
 extern s32 D_global_asm_80720C34;
 extern s8 current_file_selection;
-extern u8 D_menu_80033F38;
 extern void *D_global_asm_8072052C;
 extern s32 D_global_asm_807204BC;
 extern s32 D_global_asm_80720CF0;
@@ -41,16 +40,21 @@ extern s32 D_global_asm_80720D14;
 extern s32 D_global_asm_80720D14;
 extern s32 D_global_asm_80720C34;
 extern s32 D_global_asm_80720D38;
-extern f32 D_menu_80033D50;
-extern f32 D_menu_80033D58;
-extern s8 D_menu_80033F50;
-extern f32 D_menu_80033D54;
 extern f32 menu_rotation_speed;
 extern f32 menu_rotation_speed_left;
 extern f32 menu_rotation_speed_right;
 extern s8 menu_selection_available;
 extern f32 menu_icon_transition_scale;
 extern f32 DK_barrel_scale;
+
+// rodata
+extern f32 D_menu_80033D50;
+extern f32 D_menu_80033D54;
+extern f32 D_menu_80033D58;
+extern f64 D_menu_80033ED8;
+extern f64 D_menu_80033EE0;
+extern u8 D_menu_80033F38;
+extern s8 D_menu_80033F50;
 
 void func_menu_80030894(MenuAdditionalActorData*,s32,u16,u16,f32,u8,u8); // Param 1 is ActorAdditionalData
 
@@ -1596,8 +1600,6 @@ s32 func_menu_800322D0(s32 arg0) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80032304.s")
 
-extern f64 D_menu_80033ED8;
-extern f64 D_menu_80033EE0;
 extern s16 D_global_asm_807FC828[];
 
 /*

@@ -107,8 +107,6 @@ extern f32 D_global_asm_8075A560;
 extern f64 D_global_asm_8075A568;
 extern s32 D_global_asm_8071FFA0;
 
-void func_global_asm_807248B0(Actor*, f32);
-
 /*
 // TODO: Very close, something iffy with the loop and our stack is too small
 void func_global_asm_806A1AC4(void) {

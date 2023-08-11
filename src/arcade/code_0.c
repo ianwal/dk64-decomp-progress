@@ -215,8 +215,8 @@ s32 arcade_get_object_type_count(enum ARCADE_OBJ_E arg0) {
     return count;
 }
 
-#ifndef NONMATCHING //needs .rodata and .data sections defined
-// rodata
+#ifndef NONMATCHING //needs .data section migrated
+// data
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024940.s")
 #else
 void func_arcade_80024940(Gfx **gpp) {

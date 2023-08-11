@@ -1,8 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 D_global_asm_80720A7C; // TODO: Datatype
+extern s32 D_global_asm_807213D0; // TODO: Datatype
+
 extern s32 D_global_asm_80747D70;
-extern s16 D_global_asm_807F9434;
 
 typedef struct {
     u16 unk0; // Object Model 2 Type
@@ -14,7 +16,11 @@ typedef struct {
 } Struct807F9430;
 
 extern Struct807F9430 *D_global_asm_807F9430;
+extern s16 D_global_asm_807F9434;
 
+s32 func_global_asm_8063C2A8(s16);
+void func_global_asm_80664A38(s16 arg0);
+void func_global_asm_80664834(s16 arg0);
 void func_global_asm_806643C4(s32 arg0, s32 arg1, f32 arg2);
 
 void func_global_asm_806641A0(void) {
@@ -99,33 +105,14 @@ s32 func_global_asm_8066461C(s16 arg0) {
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68EA0/func_global_asm_8066466C.s")
-
-s32 func_global_asm_8063C2A8(s16);
-extern f64 D_global_asm_80758E10;
-void func_global_asm_80664A38(s16 arg0);
-void func_global_asm_80664834(s16 arg0);
-
-/*
 void func_global_asm_8066466C(void) {
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f14;
-    f32 temp_f2;
-    f64 temp_f20;
-    s16 temp_a0;
     s32 i;
-    u16 temp_v0;
-    void *temp_v1;
+    f32 d;
 
     if (cc_number_of_players < 2) {
-        temp_f20 = D_global_asm_80758E10;
         for (i = 0; i < D_global_asm_807F9434; i++) {
-            temp_f0 = character_change_array->unk224 - D_global_asm_807F9430[i].unk6;
-            temp_f2 = character_change_array->unk21C - D_global_asm_807F9430[i].unk2;
-            temp_f12 = character_change_array->unk220 - D_global_asm_807F9430[i].unk4;
-            if ((temp_f0 * temp_f0) + ((temp_f2 * temp_f2) + (temp_f12 * temp_f12)) < temp_f20) {
+            d = ((character_change_array->unk21C - D_global_asm_807F9430[i].unk2) * (character_change_array->unk21C - D_global_asm_807F9430[i].unk2)) + ((character_change_array->unk220 - D_global_asm_807F9430[i].unk4) * (character_change_array->unk220 - D_global_asm_807F9430[i].unk4)) + ((character_change_array->unk224 - D_global_asm_807F9430[i].unk6) * (character_change_array->unk224 - D_global_asm_807F9430[i].unk6));
+            if (d < 90000.0) {
                 if (D_global_asm_807F9430[i].unkA != -1) {
                     if (func_global_asm_8063C2A8(D_global_asm_807F9430[i].unkA) != 0) {
                         switch (D_global_asm_807F9430[i].unk0) {
@@ -146,11 +133,6 @@ void func_global_asm_8066466C(void) {
         }
     }
 }
-*/
-
-extern s32 D_global_asm_807213D0; // TODO: Datatype
-extern f32 D_global_asm_80758E18;
-extern f32 D_global_asm_80758E1C;
 
 void func_global_asm_80664834(s16 arg0) {
     if (((rand() % 10000) % 12) == 0) {
@@ -159,7 +141,7 @@ void func_global_asm_80664834(s16 arg0) {
         func_global_asm_80714950(((rand() % 10000) % 50) - 0x78);
         func_global_asm_8071498C(&func_global_asm_80717DB4);
         func_global_asm_807149C8(0xFF, 0xC8, 0xC8, 0xC8);
-        func_global_asm_80714A08(D_global_asm_80758E18, D_global_asm_80758E1C);
+        func_global_asm_80714A08(0.2f, 0.1f);
         func_global_asm_80714A28(4);
         func_global_asm_80714CC0(
             &D_global_asm_807213D0,
@@ -170,8 +152,6 @@ void func_global_asm_80664834(s16 arg0) {
         );
     }
 }
-
-extern s32 D_global_asm_80720A7C; // TODO: Datatype
 
 void func_global_asm_80664A38(s16 arg0) {
     f32 sp34;

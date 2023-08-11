@@ -15,8 +15,15 @@ extern s32 D_global_asm_807210EC;
 extern s32 D_global_asm_80721158;
 extern s32 D_global_asm_8072139C;
 
+extern s32 D_global_asm_8071FC40;
+void func_global_asm_80718BF4(void);
+
+u32 func_global_asm_806119A0();
+
 extern s32 D_global_asm_8074E880[];
 extern u8 D_global_asm_80750AD0;
+
+// rodata
 extern f64 D_global_asm_80759AB8;
 extern f64 D_global_asm_80759AC0;
 extern f64 D_global_asm_80759AB0;
@@ -169,11 +176,6 @@ void func_global_asm_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
     );
 }
 
-extern s32 D_global_asm_8071FC40;
-void func_global_asm_80718BF4(void);
-
-u32 func_global_asm_806119A0();
-
 void func_global_asm_80684D98(u8 arg0) {
     f32 randomX;
     f32 randomZ;
@@ -220,12 +222,12 @@ void func_global_asm_80685020(u8 arg0, u8 arg1) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_806850D0.s")
 
-/*
+extern s32 D_global_asm_8072073C;
 extern s32 D_global_asm_8071FE08;
+
+/*
 extern f64 D_global_asm_80759AE8;
 extern f64 D_global_asm_80759AE0;
-extern s32 D_global_asm_8071910C;
-extern s32 D_global_asm_8072073C;
 
 void func_global_asm_806850D0(void) {
     f32 temp_f20;
@@ -243,7 +245,7 @@ void func_global_asm_806850D0(void) {
     for (temp_s0 = 0; temp_s0 < 7; temp_s0++) {
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(0xA);
-        func_global_asm_8071498C(&D_global_asm_8071910C);
+        func_global_asm_8071498C(&func_global_asm_8071910C);
         func_global_asm_80714998(2);
         func_global_asm_80714950(0);
         func_global_asm_80714CC0(&D_global_asm_8072073C,

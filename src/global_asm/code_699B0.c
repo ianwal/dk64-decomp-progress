@@ -6,6 +6,7 @@ extern u8 D_global_asm_80748E00;
 extern u8 D_global_asm_80748E04;
 extern void *D_global_asm_80748E14; // TODO: Datatype
 extern u8 D_global_asm_80748E18[];
+
 extern f64 D_global_asm_80758F08;
 
 extern u8 D_global_asm_807F951D;

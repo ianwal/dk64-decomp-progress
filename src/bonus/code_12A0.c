@@ -5,6 +5,8 @@ void func_global_asm_80627948(Actor*, s32, s32, s32);
 u8 func_global_asm_8070E750(u8, s32, s32);
 void func_global_asm_8061C464(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
+// rodata?
+extern f32 D_bonus_8002DCB4;
 extern f32 D_bonus_8002DCB8;
 
 void *func_global_asm_8068DC54(s32, s32, s32, void *, s32, void *);
@@ -53,7 +55,6 @@ u8 func_bonus_80025480(Actor **arg0, u8 arg1) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_bonus_800254B0.s")
 
-extern f32 D_bonus_8002DCB4;
 int func_global_asm_80717404(); // TODO: Signature
 extern void* D_global_asm_8074E880[];
 

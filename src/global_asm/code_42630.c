@@ -1132,7 +1132,7 @@ extern f32 D_global_asm_807F621C;
 extern f32 D_global_asm_807F6220;
 extern f32 D_global_asm_807F6224;
 
-int func_global_asm_8071910C();
+int func_global_asm_8071910C(); // TODO: Signature
 
 void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 pad;

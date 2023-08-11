@@ -2,13 +2,22 @@
 #include "functions.h"
 
 
+extern u8 D_global_asm_807FBD70;
+extern s32 D_global_asm_8071FB34;
 extern s32 D_global_asm_8074E880[];
 extern u8 D_global_asm_80750628[];
+
+// rodata
 extern f32 D_global_asm_8075B9E0;
+extern f64 D_global_asm_8075B9E8;
+extern f32 D_global_asm_8075BAEC;
+extern f32 D_global_asm_8075BAF0;
 
 void func_global_asm_80612BC0(Mtx*, f32);
 void func_global_asm_80612C30(Mtx*, f32);
 void func_global_asm_80611A70(f32, f32, f32*, f32*);
+void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
+void func_global_asm_806D0430(f32);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806B91E0.s")
@@ -89,10 +98,6 @@ void func_global_asm_806BA130(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BA240.s")
-
-extern f64 D_global_asm_8075B9E8;
-extern u8 D_global_asm_807FBD70;
-extern s32 D_global_asm_8071FB34;
 
 /*
 s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
@@ -233,12 +238,6 @@ void func_global_asm_806BB32C(void) {
 
 // doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BB400.s")
-
-extern f32 D_global_asm_8075BAEC;
-extern f32 D_global_asm_8075BAF0;
-void func_global_asm_807248B0(Actor*, f32);
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
-void func_global_asm_806D0430(f32);
 
 /*
 // TODO: Very close, 1 extra instruction related to default case in the second switch

@@ -194,7 +194,6 @@ s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
 void func_global_asm_806DF494(s16*, s16, s16);
 
 u32 func_global_asm_806119A0(void);
-void func_global_asm_807248B0(Actor*, f32);
 void func_global_asm_806DF390(Actor*, PlayerAdditionalActorData*, u8);
 void func_global_asm_806DF3D0(Actor*, PlayerAdditionalActorData*, u8);
 f32 func_global_asm_806E03C8(f32, f32);
