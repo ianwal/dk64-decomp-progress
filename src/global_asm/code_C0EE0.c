@@ -5,18 +5,15 @@
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C0EE0/func_global_asm_806BC1E0.s")
 
-// rodata
-extern char D_global_asm_8075BB30[];
-extern char D_global_asm_8075BB38[];
-
-void func_global_asm_806BCF98(Gfx *dl, s32 arg1) {
+Gfx *func_global_asm_806BCF98(Gfx *dl, s32 arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-    func_global_asm_806FC530(func_global_asm_806FC530(dl, 1, 0x208, 0xC8, &D_global_asm_8075BB30, 1), 1, 0x208, 0x12C, &D_global_asm_8075BB38, 1);
+    dl = func_global_asm_806FC530(dl, 1, 520, 200, "q YES", 1);
+    return func_global_asm_806FC530(dl, 1, 520, 300, "b NO", 1);
 }
 
 // Caves Ice Tomato Board State

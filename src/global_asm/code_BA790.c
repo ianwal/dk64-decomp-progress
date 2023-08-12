@@ -10,8 +10,6 @@ void func_global_asm_806B63E0() {
     func_global_asm_806B5A90(10000, 0);
 }
 
-extern f32 D_global_asm_8075B750;
-
 void func_global_asm_806B640C(void) {
     Actor178 *temp_s6;
     s16 i;
@@ -35,7 +33,7 @@ void func_global_asm_806B640C(void) {
         if (temp_s6->unk0 > 0) {
             temp_s6->unk0--;
             if (temp_s6->unk0 == 0xA) {
-                func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x150, 0xFF, 0x7F, 0x1E, 0x32, D_global_asm_8075B750, 0);
+                func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x150, 0xFF, 0x7F, 0x1E, 0x32, 0.3f, 0);
             }
             if (temp_s6->unk0 == 0) {
                 D_global_asm_807FBB70.unk200 = 9;

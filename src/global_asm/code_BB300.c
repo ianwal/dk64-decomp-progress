@@ -3,15 +3,13 @@
 
 extern f32 D_global_asm_807502E8;
 extern s16 D_global_asm_807502E0;
+
 extern u8 D_global_asm_807FBD70;
 
 void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
-// rodata
+// rodata, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_global_asm_806B6600.s")
-
-extern f64 D_global_asm_8075B760;
-extern f32 D_global_asm_8075B768; // TODO: f64?
 
 typedef struct {
     u8 unk0;
@@ -28,63 +26,46 @@ typedef struct {
 
 /*
 void func_global_asm_806B6600(u8 arg0) {
-    Actor178_806B6600 *temp_v0;
-    f32 temp_f0;
-    u8 temp_t5;
-    u8 temp_t9;
-    u8 var_v1;
+    Actor178_806B6600 *a178;
+    u32 temp_f0;
     AnimationState1C_806B6600 *temp_t0;
-    AnimationState1C_806B6600 *temp_t0_2;
 
-    temp_v0 = current_actor_pointer->unk178;
+    a178 = current_actor_pointer->unk178;
     temp_t0 = current_actor_pointer->animation_state->unk1C;
     if (!arg0) {
-        temp_v0->unk0 += (-temp_v0->unk0 * D_global_asm_8075B760);
-        temp_v0->unk1 = 0;
-        var_v1 = temp_v0->unk0;
+        a178->unk0 += (-a178->unk0 * 0.2);
+        a178->unk1 = 0;
     } else {
-        switch (temp_v0->unk1) {
-            default:
-                var_v1 = temp_v0->unk0;
-                break;
+        switch (a178->unk1) {
             case 0:
-                temp_v0->unk1 = 1;
-                var_v1 = temp_v0->unk0;
+                a178->unk1 = 1;
                 break;
             case 1:
-                temp_t5 = temp_v0->unk0 + 0x32;
-                var_v1 = temp_t5;
-                temp_v0->unk0 = temp_t5;
-                if (var_v1 >= 0xCE) {
-                    temp_v0->unk0 = 0xFF;
-                    temp_v0->unk1 = 2;
-                    var_v1 = 0xFF;
+                a178->unk0 += 0x32;
+                if (a178->unk0 >= 0xCE) {
+                    a178->unk0 = 0xFF;
+                    a178->unk1 = 2;
                 }
                 break;
             case 2:
-                temp_t9 = temp_v0->unk0 - 0x50;
-                var_v1 = temp_t9;
-                temp_v0->unk0 = temp_t9;
-                if ((var_v1 >= 0x64) && (var_v1 < 0xB4)) {
+                a178->unk0 -= 0x50;
+                if ((a178->unk0 >= 0x64) && (a178->unk0 < 0xB4)) {
                     func_global_asm_80608528(current_actor_pointer, 0x16C, 0xFF, 0xA0, 6);
-                    var_v1 = temp_v0->unk0;
                 }
-                if (var_v1 < 0x50) {
-                    temp_v0->unk0 = 0;
-                    temp_v0->unk1 = 0;
-                    var_v1 = 0;
+                if (a178->unk0 < 0x50) {
+                    a178->unk0 = 0;
+                    a178->unk1 = 0;
                 }
                 break;
         }
     }
-    temp_f0 = 8000.0f * (var_v1 / D_global_asm_8075B768);
+    temp_f0 = (8000.0f * (a178->unk0 / 255.0));
     temp_t0->unk2 = -temp_f0;
-    temp_t0_2 = &temp_t0[1];
-    temp_t0_2->unk1 = 3;
-    temp_t0_2->unk0 = 0x7F;
-    temp_t0_2->unk2 = temp_f0;
-    temp_t0_2->unk4 = 0;
-    temp_t0_2->unk6 = 0;
+    (++temp_t0)->unk1 = 3;
+    temp_t0->unk0 = 0x7F;
+    temp_t0->unk2 = temp_f0;
+    temp_t0->unk4 = 0;
+    temp_t0->unk6 = 0;
 }
 */
 

@@ -101,8 +101,191 @@ void func_global_asm_806AE394(f32 arg0, f32 arg1) {
     }
 }
 
-// Jumptable
+// Jumptable, very close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AE588.s")
+
+void func_global_asm_80724E48(u8);
+void func_global_asm_8072B7CC(s32);
+void func_global_asm_8072C918(s16, s16, s16);
+
+/*
+void func_global_asm_806AE588(void) {
+    s32 var_v1;
+    s32 var_v1_2;
+    u8 temp_v1;
+    u8 temp_v1_2;
+    u8 temp_v1_3;
+    u8 temp_v1_4;
+    u8 var_a0;
+    u8 var_a1;
+
+    func_global_asm_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_global_asm_8072B79C(0x1FD, 0x1FB, 0x1FC);
+        func_global_asm_80724CA4(3, 1);
+        func_global_asm_8066EA90(current_actor_pointer, 3);
+        if (current_map == MAP_KROOL_BARREL_DIDDY_KREMLING_GAME) {
+            current_actor_pointer->unk132 = 1;
+        }
+    }
+    func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
+    if (current_actor_pointer->control_state != 0x32 || D_global_asm_807FBB70.unk15 != 0) {
+        if (D_global_asm_807FBB70.unk200 != 9 && D_global_asm_807FBB70.unk15 == 0) {
+            if (current_actor_pointer->control_state != 0x37) {
+                if (current_actor_pointer->health < -1) {
+                    func_global_asm_8072D714(D_global_asm_807FBB70.unk1FC, 0x202);
+                    current_actor_pointer->y_velocity = 250.0f;
+                } else {
+                    func_global_asm_8072D714(D_global_asm_807FBB70.unk1FC, 0x201);
+                    current_actor_pointer->y_velocity = 200.0f;
+                }
+                D_global_asm_807FDC90->unk35 = 2;
+                current_actor_pointer->unk138 &= 0xFFFF7FFF;
+            } else if (D_global_asm_807FBB70.unk200 == 4) {
+                func_global_asm_8072DEA8(0x1FF, 0x31, D_global_asm_807FBB70.unk1FC);
+            } else if (D_global_asm_807FBB70.unk200 == 5) {
+                func_global_asm_8072DEA8(0x200, 0x32, D_global_asm_807FBB70.unk1FC);
+                current_actor_pointer->y_velocity = 220.0f;
+            }
+        }
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x31:
+            if (current_actor_pointer->control_state_progress != 0 || current_actor_pointer->animation_state->unk0->unk24 == 0.0f) {
+                func_global_asm_8072DE44(0x1FB);
+            }
+            func_global_asm_8072AB74(0, 0.0f, 0.0f, 0x4300, 0.0f);
+            break;
+        case 0x32:
+            current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 7.0f);
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    func_global_asm_8072AB74(0, 0.0f, 0.0f, 0x4300, 0.0f);
+                    break;
+                case 1:
+                    current_actor_pointer->y_velocity = 200.0f;
+                    current_actor_pointer->unkB8 = 120.0f;
+                    current_actor_pointer->control_state_progress++;
+                    // fallthrough
+                case 2:
+                    func_global_asm_8072AB74(0, 0.0f, 0.0f, 0x200, 0.0f);
+                    break;
+                case 3:
+                    func_global_asm_8072DE44(0x1FB);
+                    break;
+            }
+            break;
+        case 0x11:
+            func_global_asm_80724E48(5);
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    func_global_asm_8072B324(current_actor_pointer, 0);
+                    func_global_asm_80614EBC(current_actor_pointer, 0x1FD);
+                    current_actor_pointer->control_state_progress++;
+                    // fallthrough
+                case 1:
+                    func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
+                    current_actor_pointer = current_actor_pointer;
+                    if (current_actor_pointer->unkB8 < 1.0f) {
+                        current_actor_pointer->control_state_progress++;
+                    }
+                    break;
+                case 2:
+                    func_global_asm_8072A450(current_actor_pointer);
+                    if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                        func_global_asm_8072DE44(0x1FB);
+                    }
+                    break;
+            }
+            break;
+        case 0x27:
+            func_global_asm_8072AB74(0x23, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
+            switch (current_actor_pointer->control_state_progress) {                    // switch 3; irregular
+                case 0:                             // switch 3
+                    func_global_asm_8072B324(current_actor_pointer, 0);
+                    func_global_asm_80614EBC(current_actor_pointer, 0x1FE);
+                    current_actor_pointer->control_state_progress = 1;
+                    break;
+                case 2:                             // switch 3
+                    current_actor_pointer->unk132 = 2;
+                    break;
+                case 3:                             // switch 3
+                    current_actor_pointer->unk132 = 1;
+                    break;
+                case 4:                             // switch 3
+                    func_global_asm_8072DE44(0x1FB);
+                    break;
+            }
+            break;
+        case 0x1:
+            if (func_global_asm_8072E54C() != 0) {
+                current_actor_pointer->control_state = 0x11;
+                current_actor_pointer->control_state_progress = 0;
+            }
+            // fallthrough
+        case 0x23:
+            if (D_global_asm_807FBB70.unk200 == 2) {
+                if (func_global_asm_8072DE10(10000) != 0) {
+                    current_actor_pointer->control_state = 0x27;
+                    current_actor_pointer->control_state_progress = 0;
+                }
+            }
+            // fallthrough
+        case 0x10:
+            func_global_asm_80724E48(current_actor_pointer->control_state == 1 ? 2 : 0);
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
+            break;
+        case 0x2:
+        case 0x3:
+        case 0x7:
+        case 0x35:
+            func_global_asm_80724E48(current_actor_pointer->control_state == 0x35 ? 2 : 3);
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0, 0.0f);
+            break;
+        case 0x37:
+            current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 0x40E00000);
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x200, 0.0f);
+                    break;
+                case 1:
+                    if (current_map == MAP_KROOL_BARREL_DIDDY_KREMLING_GAME) {
+                        if (current_actor_pointer->unk15F != 0) {
+                            func_global_asm_8063DA40(0, 0xA);
+                        }
+                    }
+                    func_global_asm_806A5C60(current_actor_pointer);
+                    current_actor_pointer->control_state_progress += 1;
+                    // fallthrough
+                case 2:
+                    func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x200, 0.0f);
+                    func_global_asm_8072DC7C(8);
+                    break;
+                case 3:
+                    current_actor_pointer->control_state = 0x40;
+                    break;
+            }
+            break;
+        default:
+            func_global_asm_8072B7CC(0x1FB);
+            break;
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x31:
+        case 0x37:
+        case 0x40:
+            break;
+        case 0x2:
+        case 0x3:
+            func_global_asm_8072D13C(current_actor_pointer->control_state, 1);
+            // fallthrough
+        default:
+            func_global_asm_8072C918(0x6400, 0x1FB, 0x1FC);
+            break;
+    }
+    func_global_asm_806319C4(current_actor_pointer, 0);
+}
+*/
 
 void func_global_asm_806AEE08(void) {
     if ((((rand() >> 0xF) % 1000) >= 981)
@@ -246,5 +429,221 @@ s32 func_global_asm_806B0770(void) {
     return found;
 }
 
-// Jumptable
+// Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806B0848.s")
+
+/*
+void func_global_asm_806B0848(void) {
+    s32 var_a1;
+    Actor *temp_s0;
+    Actor *var_s0;
+    f64 temp_f0;
+    u8 temp_a0;
+    u8 temp_a1;
+    u8 temp_a1_2;
+    u8 temp_a1_3;
+    u8 temp_v1;
+    u8 var_a0;
+    u8 var_v0;
+
+    func_global_asm_80729B00();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        temp_f0 = (current_actor_pointer->animation_state->scale[1] / 0.15) * 100.0;
+        if (temp_f0 > 255.0) {
+            current_actor_pointer->unk130 = 255.0;
+        } else {
+            current_actor_pointer->unk130 = temp_f0;
+        }
+        temp_f0 = (current_actor_pointer->animation_state->scale[1] / 0.15) * 100.0;
+        if (temp_f0 > 255.0) {
+            current_actor_pointer->unk131 = 255.0;
+        } else {
+            current_actor_pointer->unk131 = temp_f0;
+        }
+        //func_global_asm_8072B79C(0.15, 0, 0x35E, 0x35F, 0x360);
+        func_global_asm_8072B79C(0x35E, 0x35F, 0x360);
+    }
+    if (D_global_asm_807FBB70.unk200 != 9) {
+        if (D_global_asm_807FBB70.unk15 != 0) {
+            goto block_10;
+        }
+        goto block_12;
+    }
+block_10:
+    if (current_actor_pointer->control_state != 0x37) {
+        func_global_asm_8072D714(D_global_asm_807FBB70.unk1FC, 0x367);
+        current_actor_pointer->unk138 &= 0xFFFF7FFF;
+    } else {
+block_12:
+        if (D_global_asm_807FBB70.unk200 == 4) {
+            func_global_asm_8072DEA8(0x365, 0x31, D_global_asm_807FBB70.unk1FC);
+        } else if (D_global_asm_807FBB70.unk200 == 5) {
+            func_global_asm_8072DEA8(0x366, 0x31, D_global_asm_807FBB70.unk1FC);
+        }
+    }
+    var_a0 = current_actor_pointer->control_state;
+    var_v0 = var_a0;
+    if (var_a0 == 4) {
+        current_actor_pointer->control_state = 1;
+        var_a0 = current_actor_pointer->control_state;
+        var_v0 = var_a0;
+    }
+    switch (var_v0) {
+        case 0x37:
+            current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 0x40E00000);
+            var_s0 = current_actor_pointer;
+            temp_a1 = var_s0->control_state_progress;
+            switch (temp_a1) {                      // switch 1; irregular
+                case 0:                             // switch 1
+                    func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x202, 0.0f);
+block_80:
+                    var_s0 = current_actor_pointer;
+                    break;
+                case 1:                             // switch 1
+                    func_global_asm_806A5C60(var_s0, temp_a1);
+                    current_actor_pointer->control_state_progress += 1;
+                    // fallthrough
+                case 2:                             // switch 1
+                    func_global_asm_8072DC7C(8);
+                    goto block_80;
+                case 3:                             // switch 1
+                    var_s0->control_state = 0x40;
+                    goto block_80;
+            }
+            break;
+        case 0x31:
+            if (current_actor_pointer->unk0 == 0) {
+                // if (current_actor_pointer->unk0->unk24 == 0.0f) {
+                    // goto block_31;
+                // }
+            } else {
+block_31:
+                func_global_asm_8072DE44(0x35F);
+            }
+            func_global_asm_8072AB74(0, 0.0f, 0.0f, 0x4200, 0.0f);
+            goto block_80;
+        case 0x27:
+            func_global_asm_8072AB74(var_a0, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
+            var_s0 = current_actor_pointer;
+            temp_a1_2 = var_s0->control_state_progress;
+            switch (temp_a1_2) {                    // switch 2; irregular
+                case 0:                             // switch 2
+                    func_global_asm_8072B324(var_s0, 0);
+                    var_a1 = 0x361;
+                    if (object_timer & 1) {
+                        var_a1 = 0x362;
+                    }
+                    func_global_asm_80614EBC(current_actor_pointer, var_a1);
+                    current_actor_pointer->control_state_progress = 1;
+                    goto block_80;
+                case 2:                             // switch 2
+                    if (var_s0->animation_state->unk64 != 0x362) {
+                        var_s0->unk132 = 2;
+                    } else {
+                        var_s0->unk132 = 4;
+                    }
+                    goto block_80;
+                case 3:                             // switch 2
+                    if (var_s0->animation_state->unk64 != 0x362) {
+                        var_s0->unk132 = 1;
+                    } else {
+                        var_s0->unk132 = 8;
+                    }
+                    goto block_80;
+                case 4:                             // switch 2
+                    var_s0->unk132 = 1;
+                    func_global_asm_8072DE44(0x35F);
+                    goto block_80;
+            }
+            break;
+        case 0x28:
+            func_global_asm_8072E1A4(0xA, D_global_asm_807FDC94);
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
+            var_s0 = current_actor_pointer;
+            temp_v1 = var_s0->control_state_progress;
+            switch (temp_v1) {                      // switch 3; irregular
+                case 0:                             // switch 3
+                    func_global_asm_8072B324(var_s0, 0);
+                    func_global_asm_80614EBC(current_actor_pointer, 0x363);
+                    current_actor_pointer->control_state_progress = 1;
+                    goto block_80;
+                case 2:                             // switch 3
+                    var_s0->control_state_progress = temp_v1 + 1;
+                    goto block_80;
+                case 4:                             // switch 3
+                    D_global_asm_807FDC90->unk4 = player_pointer;
+                    func_global_asm_8072DE44(0x35F);
+                    goto block_80;
+            }
+            break;
+        case 0x11:
+            if (func_global_asm_806B0770() == 0) {
+                temp_s0 = current_actor_pointer;
+                temp_a1_3 = temp_s0->control_state_progress;
+                switch (temp_a1_3) {                // switch 4; irregular
+                    case 0:                         // switch 4
+                        func_global_asm_8072B324(temp_s0, 0);
+                        func_global_asm_80614EBC(current_actor_pointer, 0x35E);
+                        current_actor_pointer->control_state_progress += 1;
+                        // fallthrough
+                    case 1:                         // switch 4
+                        func_global_asm_8072AB74(temp_s0->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
+                        if (current_actor_pointer->unkB8 < 1.0f) {
+                            current_actor_pointer->control_state_progress += 1;
+                        }
+                        break;
+                    case 2:                         // switch 4
+                        func_global_asm_8072A450(temp_s0, temp_a1_3);
+                        if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                            func_global_asm_8072DE44(0x35F);
+                        }
+                        break;
+                }
+            }
+            goto block_80;
+        case 0x1:
+            if (func_global_asm_8072E54C() != 0) {
+                current_actor_pointer->control_state = 0x11;
+                current_actor_pointer->control_state_progress = 0;
+            }
+            // fallthrough
+        case 0x23:
+            if (func_global_asm_8072E22C(0x50) != 0) {
+                if (func_global_asm_8072DE10(0x1770) != 0) {
+                    current_actor_pointer->control_state = 0x27;
+                    current_actor_pointer->control_state_progress = 0;
+                }
+            }
+            // fallthrough
+        case 0x10:
+            func_global_asm_806B0770();
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
+            goto block_80;
+        case 0x2:
+        case 0x3:
+        case 0x7:
+        case 0x35:
+            func_global_asm_8072AB74(var_a0, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0, 0.0f);
+            goto block_80;
+        default:
+            func_global_asm_8072B7CC(0x2D7);
+            goto block_80;
+    }
+    temp_a0 = var_s0->control_state;
+    switch (temp_a0) {                              // switch 5; irregular
+        case 0x31:                                  // switch 5
+        case 0x37:                                  // switch 5
+        case 0x40:                                  // switch 5
+            break;
+        case 0x2:                                   // switch 5
+        case 0x3:                                   // switch 5
+            func_global_asm_8072D13C(temp_a0, 1);
+            // fallthrough
+        default:                                    // switch 5
+            func_global_asm_8072C918(0x6400, 0x35F, 0x360);
+            var_s0 = current_actor_pointer;
+            break;
+    }
+    func_global_asm_806319C4(var_s0, 0);
+}
+*/
