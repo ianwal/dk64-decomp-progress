@@ -467,6 +467,7 @@ extern f64 D_race_8002FE40;
 extern f64 D_race_8002FE48;
 extern f64 D_race_8002FE50;
 extern f64 D_race_8002FE58;
+
 extern s16 D_global_asm_80770628[];
 extern f32 D_global_asm_80770B68[];
 extern f32 D_global_asm_80770BC0[];

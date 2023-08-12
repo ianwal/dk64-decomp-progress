@@ -38,14 +38,7 @@ extern u8 D_menu_800339D0;
 int func_menu_8003292C();
 
 void func_menu_8003264C(void) {
-    Actor *temp_s0;
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f2;
-    s32 temp_v0;
     s32 var_a0;
-    u8 var_v0;
-    u8 var_v0_2;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk15F = 0;

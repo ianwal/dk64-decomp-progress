@@ -1,18 +1,26 @@
 #include <ultra64.h>
 #include "functions.h"
 
+/*
+dlabel D_global_asm_8075A550 .float 50000
+dlabel D_global_asm_8075A558 .double 0.0100000000000000002
+dlabel D_global_asm_8075A560 .float 19600
+dlabel D_global_asm_8075A568 .double 0.0100000000000000002
+dlabel D_global_asm_8075A570 .double 0.0100000000000000002
+dlabel D_global_asm_8075A578 .double 150
+dlabel D_global_asm_8075A580 .float 0.6999999881
+dlabel D_global_asm_8075A588 .double 4095
+dlabel D_global_asm_8075A590 .double 360
+dlabel D_global_asm_8075A598 .double 4095
+dlabel D_global_asm_8075A5A0 .double 360
+*/
 
-void func_global_asm_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
-extern f64 D_global_asm_8075A588;
-extern f64 D_global_asm_8075A590;
-extern f64 D_global_asm_8075A598;
-extern f64 D_global_asm_8075A5A0;
-
-extern f32 D_global_asm_8075A550;
 extern u8 D_global_asm_807FBD70;
 extern u8 D_global_asm_807506C0[];
 
+void func_global_asm_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
 f32 func_global_asm_80665AE4(s32, s32, s32, s32);
+void func_global_asm_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 void func_global_asm_806A1580(void) {
     s16 sp36;
@@ -29,7 +37,7 @@ void func_global_asm_806A1580(void) {
         current_actor_pointer->unk64 |= 0x28;
         func_global_asm_8068848C(current_actor_pointer, 0, 1);
     }
-    if ((((player_pointer->x_position - current_actor_pointer->x_position) * (player_pointer->x_position - current_actor_pointer->x_position)) + ((player_pointer->z_position - current_actor_pointer->z_position) * (player_pointer->z_position - current_actor_pointer->z_position))) < D_global_asm_8075A550) {
+    if ((((player_pointer->x_position - current_actor_pointer->x_position) * (player_pointer->x_position - current_actor_pointer->x_position)) + ((player_pointer->z_position - current_actor_pointer->z_position) * (player_pointer->z_position - current_actor_pointer->z_position))) < 50000.0f) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
     } else {
         current_actor_pointer->object_properties_bitfield &= ~0x400;
@@ -63,10 +71,6 @@ void func_global_asm_806A1580(void) {
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
 
-extern f64 D_global_asm_8075A558;
-
-void func_global_asm_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-
 void func_global_asm_806A18A8(void) {
     A178_806A18A8 *sp44;
     Actor *sp40;
@@ -89,7 +93,7 @@ void func_global_asm_806A18A8(void) {
         } else if ((sp40->unkB8 <= 50.0f) && (current_actor_pointer->animation_state->unk64 != 0x232)) {
             func_global_asm_80614EBC(current_actor_pointer, 0x232);
         }
-        func_global_asm_80614D00(current_actor_pointer, sp40->unkB8 * D_global_asm_8075A558, 4.0f);
+        func_global_asm_80614D00(current_actor_pointer, sp40->unkB8 * 0.01, 4.0f);
     } else if (current_actor_pointer->animation_state->unk64 != 0x234) {
         func_global_asm_80614EBC(current_actor_pointer, 0x234);
     }
@@ -101,20 +105,10 @@ void func_global_asm_806A1ABC(void) {
 
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_global_asm_806A1AC4.s")
-
-extern f32 D_global_asm_8075A560;
-extern f64 D_global_asm_8075A568;
 extern s32 D_global_asm_8071FFA0;
 
-/*
-// TODO: Very close, something iffy with the loop and our stack is too small
 void func_global_asm_806A1AC4(void) {
-    s32 *sp40;
-    f32 dx;
     f32 temp_f20;
-    f32 dz;
-    f64 temp_f22;
     s16 i;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -136,23 +130,21 @@ void func_global_asm_806A1AC4(void) {
     }
     switch (current_actor_pointer->control_state) {
         case 0:
-            if ((D_global_asm_807FBB70.unk254 != 0) && (D_global_asm_807FBB70.unk258 == 1)) {
+            if ((D_global_asm_807FBB70.unk254 != 0) && (D_global_asm_807FBB70.unk258[0] == 1)) {
                 func_global_asm_8070DA74(current_actor_pointer);
                 func_global_asm_8070D8C0(current_actor_pointer, 0x1F, 1);
                 playCutscene(current_actor_pointer, 0x12, 1);
                 setFlag(0xFB, TRUE, FLAG_TYPE_PERMANENT);
                 current_actor_pointer->control_state = 1;
             } else if ((isFlagSet(0xFB, FLAG_TYPE_PERMANENT) == FALSE) && (isFlagSet(0x21, FLAG_TYPE_TEMPORARY) == FALSE)) {
-                dx = current_actor_pointer->x_position - player_pointer->x_position;
-                dz = current_actor_pointer->z_position - player_pointer->z_position;
-                if (((dx * dx) + (dz * dz)) < D_global_asm_8075A560) {
+                if ((((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position)) + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position))) < 19600.0f) {
                     func_global_asm_8070D8C0(player_pointer, 0x1F, 0);
                     setFlag(0x21, 1, 2);
                 }
             }
             break;
         case 1:
-            if ((D_global_asm_807FBB70.unk254 != 0) && (D_global_asm_807FBB70.unk258 == 1)) {
+            if ((D_global_asm_807FBB70.unk254 != 0) && (D_global_asm_807FBB70.unk258[0] == 1)) {
                 func_global_asm_80614EBC(current_actor_pointer, 0x328);
                 current_actor_pointer->control_state = 2;
                 current_actor_pointer->noclip_byte = 2;
@@ -162,20 +154,15 @@ void func_global_asm_806A1AC4(void) {
         case 2:
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
-                    // TODO: Issue is here, not sure what's going on
-                    i = 0;
                     if ((object_timer & 7) == 0) {
-                        temp_f22 = D_global_asm_8075A568;
-                        sp40 = &D_global_asm_8071FFA0;
-                        while (i < 0xC) {
-                            temp_f20 = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * temp_f22;
+                        for (i = 0; i < 0xC; i++) {
+                            temp_f20 = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * 0.01;
                             func_global_asm_8071498C(&func_global_asm_8071E864);
                             func_global_asm_80714950(i);
                             func_global_asm_807149B8(1);
                             func_global_asm_807149C8(0x8C, 0x8C, 0x8C, 0xFF);
                             func_global_asm_80714998(5);
-                            func_global_asm_80714CC0(sp40, temp_f20, current_actor_pointer->x_position, current_actor_pointer->y_position + 50.0f, current_actor_pointer->z_position);
-                            i++;
+                            func_global_asm_80714CC0(&D_global_asm_8071FFA0, temp_f20, current_actor_pointer->x_position, current_actor_pointer->y_position + 50.0f, current_actor_pointer->z_position);
                         }
                     }
                     break;
@@ -199,7 +186,6 @@ void func_global_asm_806A1AC4(void) {
     }
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806A1F28(void) {
     current_actor_pointer->object_properties_bitfield |= 0x400;
@@ -317,8 +303,8 @@ void func_global_asm_806A285C(void) {
     func_global_asm_80699070(&spBE, &spBC, character_change_array[0].look_at_eye_x, character_change_array[0].look_at_eye_y, character_change_array[0].look_at_eye_z, character_change_array[0].look_at_at_x, character_change_array[0].look_at_at_y, character_change_array[0].look_at_at_z);
     current_actor_pointer->y_rotation = spBC;
     current_actor_pointer->z_rotation = spBE;
-    guRotateF(&sp7C, (spBE / D_global_asm_8075A588) * D_global_asm_8075A590, 1.0f, 0.0f, 0.0f);
-    guRotateF(&sp3C, (spBC / D_global_asm_8075A598) * D_global_asm_8075A5A0, 0.0f, 1.0f, 0.0f);
+    guRotateF(&sp7C, (spBE / 4095.0) * 360.0, 1.0f, 0.0f, 0.0f);
+    guRotateF(&sp3C, (spBC / 4095.0) * 360.0, 0.0f, 1.0f, 0.0f);
     guMtxCatF(&sp7C, &sp3C, &sp7C);
     guTranslateF(&sp3C, character_change_array[0].look_at_eye_x, character_change_array[0].look_at_eye_y, character_change_array[0].look_at_eye_z);
     guMtxCatF(&sp7C, &sp3C, &sp7C);

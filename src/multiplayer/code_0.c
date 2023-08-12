@@ -476,6 +476,7 @@ void func_multiplayer_80026B0C(s32 arg0) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80026BD8.s")
 
 /*

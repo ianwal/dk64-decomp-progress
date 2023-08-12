@@ -39,6 +39,7 @@ extern GlobalASMStruct63 D_global_asm_80750B54[];
 extern f32 D_global_asm_80750FA8;
 extern f32 D_global_asm_80750FF8;
 extern f32 D_global_asm_80750FFC;
+
 extern f32 D_global_asm_80751000;
 
 extern f32 D_global_asm_8075305C[];
