@@ -101,10 +101,6 @@ void func_global_asm_80675380(Actor *arg0, Actor *arg1) {
 
 s32 func_global_asm_80611E60(s32);
 s32 func_global_asm_806742C0(s16, s16, s32, s32);
-extern f64 D_global_asm_807591A0;
-extern f64 D_global_asm_807591A8;
-extern f64 D_global_asm_807591B0;
-extern f64 D_global_asm_807591B8;
 
 void func_global_asm_806755A8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
     s32 var_v1;
@@ -123,22 +119,22 @@ void func_global_asm_806755A8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, 
             if (temp_f0 != 0.0) {
                 if (var_t0 >= 0) {
                     if (var_v1 >= 0) {
-                        sp32 = func_global_asm_80611E60((var_t0 * D_global_asm_807591A0) / temp_f0) >> 4;
+                        sp32 = func_global_asm_80611E60((var_t0 * 65535.9) / temp_f0) >> 4;
                     }
                 }
                 if (var_t0 >= 0) {
                     if (var_v1 < 0) {
-                        sp32 = (func_global_asm_80611E60(((arg1 - arg3) * D_global_asm_807591A8) / temp_f0) >> 4) + 0x400;
+                        sp32 = (func_global_asm_80611E60(((arg1 - arg3) * 65535.9) / temp_f0) >> 4) + 0x400;
                     }
                 }
                 if (var_t0 < 0) {
                     if (var_v1 < 0) {
-                        sp32 = (func_global_asm_80611E60(((arg0 - arg2) * D_global_asm_807591B0) / temp_f0) >> 4) + 0x800;
+                        sp32 = (func_global_asm_80611E60(((arg0 - arg2) * 65535.9) / temp_f0) >> 4) + 0x800;
                     }
                 }
                 if (var_t0 < 0) {
                     if (var_v1 >= 0) {
-                        sp32 = (func_global_asm_80611E60((var_v1 * D_global_asm_807591B8) / temp_f0) >> 4) + 0xC00;
+                        sp32 = (func_global_asm_80611E60((var_v1 * 65535.9) / temp_f0) >> 4) + 0xC00;
                     }
                 }
                 func_global_asm_806742C0(sp32 + 0x400, sp32 - 0x400, arg4, arg5);

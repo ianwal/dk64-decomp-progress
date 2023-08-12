@@ -45,35 +45,34 @@ typedef struct {
 } Struct807F93F4;
 
 extern Struct807F93F4 *D_global_asm_807F93F4;
-extern f32 D_global_asm_80758DE8;
 
 s32 func_global_asm_806634A4(s32 arg0) {
-    s32 var_v0;
+    s32 i;
     s32 var_s1;
-    s32 var_s0;
-    f32 var_f20;
+    s32 found;
+    f32 lowest;
     f32 var_f2;
 
-    var_f20 = D_global_asm_80758DE8;
+    lowest = 100000000.0f;
     do {
-        var_s0 = 0;
+        found = 0;
         var_f2 = 0.0f;
-        for (var_v0 = 0; var_v0 < D_global_asm_807F93F8; var_v0++) {
-            if (D_global_asm_807F93F4[var_v0].unk11 != 0) {
-                if (D_global_asm_807F93F4[var_v0].unk0 < var_f20) {
-                    if (var_f2 < D_global_asm_807F93F4[var_v0].unk0) {
-                        var_s1 = var_v0;
-                        var_f2 = D_global_asm_807F93F4[var_v0].unk0;
-                        var_s0 = 1;
+        for (i = 0; i < D_global_asm_807F93F8; i++) {
+            if (D_global_asm_807F93F4[i].unk11 != 0) {
+                if (D_global_asm_807F93F4[i].unk0 < lowest) {
+                    if (var_f2 < D_global_asm_807F93F4[i].unk0) {
+                        var_s1 = i;
+                        var_f2 = D_global_asm_807F93F4[i].unk0;
+                        found = 1;
                     }
                 }
             }
         }
-        var_f20 = var_f2;
-        if (var_s0 != 0) {
+        lowest = var_f2;
+        if (found) {
             arg0 = func_global_asm_80663594(arg0, var_s1);
         }
-    } while (var_s0 != 0);
+    } while (found);
     return arg0;
 }
 

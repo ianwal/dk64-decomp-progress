@@ -206,8 +206,6 @@ f32 func_race_8002F04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F0AC.s")
 
-extern f32 D_race_80030150;
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -218,7 +216,7 @@ typedef struct {
 u8 func_race_8002F280(Struct8002F280_arg0 *arg0) {
     f32 p1 = (current_actor_pointer->x_position - arg0->unk0);
     f32 p2 = (current_actor_pointer->z_position - arg0->unk4);
-    return func_global_asm_806CC14C((s16)(((s32)(func_global_asm_80611BB4(p1, p2) * D_race_80030150)) & 0xFFF), arg0->unk6) < 0x400;
+    return func_global_asm_806CC14C((s16)(((s32)(func_global_asm_80611BB4(p1, p2) * 651.8986f)) & 0xFFF), arg0->unk6) < 0x400;
 }
 
 f32 func_race_8002F04C(f32, f32, f32, f32, f32, f32, f32, f32);
@@ -232,19 +230,16 @@ typedef struct RaceStruct10 {
 } RaceStruct10;
 
 f32 func_race_8002F304(RaceStruct10 *arg0, f32 arg1, f32 arg2) {
-    f32 temp_f0;
-    f32 temp_f2;
-
-    temp_f0 = arg0->unkC;
-    temp_f2 = arg0->unk8;
-    return func_race_8002F04C(arg0->unk0, 
-                    arg0->unk4, 
-                    -temp_f0, 
-                    temp_f2, 
-                    arg1, 
-                    arg2, 
-                    temp_f2, 
-                    temp_f0);
+    return func_race_8002F04C(
+        arg0->unk0,
+        arg0->unk4,
+        -arg0->unkC,
+        arg0->unk8,
+        arg1,
+        arg2,
+        arg0->unk8,
+        arg0->unkC
+    );
 }
 
 // TODO: Is this the same as RaceStruct6?
@@ -372,7 +367,6 @@ f32 func_race_8002F90C(RaceStruct6 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) 
 /*
 void *func_race_8002E960(u8);
 void *func_race_8002E9AC(u8);
-extern f32 D_race_80030158;
 
 // TODO: Any struct overlap with existing structs?
 typedef struct {
@@ -428,7 +422,7 @@ void func_race_8002F950(Struct8002F950 *arg0) {
         var_s5 = 0;
         var_s6 = 0;
         if (temp_v0->unk0 > 0) {
-            temp_f22 = D_race_80030158;
+            temp_f22 = 302500.0f;
             do {
                 temp_v0_2 = func_race_8002E9AC((temp_v0->unk4 + var_s6)->unk1);
                 if (temp_v0_2->unk10 != 0) {

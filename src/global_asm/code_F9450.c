@@ -561,19 +561,16 @@ s32 func_global_asm_806F70A8(s16 arg0) {
     return FALSE;
 }
 
-// rodata
+// rodata, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F70FC.s")
 
-extern f64 D_global_asm_8075D950;
 int func_global_asm_8071C48C(); // TODO: Signature
 extern s32 D_global_asm_8071FC58; // TODO: Datatype
-extern s32 D_global_asm_8071C620; // TODO: Datatype
 
 /*
-// TODO: Kinda close, stack 2 big and datatype issues?
 void func_global_asm_806F70FC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
-    f64 temp_f20;
-    s32 phi_s1;
+    f32 temp_f20;
+    s32 i;
     f32 phi_f4;
     f32 phi_f6;
     f32 phi_f4_2;
@@ -582,13 +579,13 @@ void func_global_asm_806F70FC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     func_global_asm_8071498C(&func_global_asm_8071C48C);
     func_global_asm_807149B8(1);
     func_global_asm_80714CC0(&D_global_asm_8071FC58, arg3, arg0, arg1, arg2);
-    temp_f20 = D_global_asm_8075D950 / (arg4 + arg4);
-    for (phi_s1 = 0; phi_s1 < arg5; phi_s1++) {
+    temp_f20 = 1000.0 / (arg4 + arg4);
+    for (i = 0; i < arg5; i++) {
         phi_f4 = (func_global_asm_806119A0() / 10000U) % 1000;
         phi_f6 = (func_global_asm_806119A0() / 10000U) % 1000;
         phi_f4_2 = (func_global_asm_806119A0() / 10000U) % 1000;
-        func_global_asm_8071498C(&D_global_asm_8071C620);
-        func_global_asm_8071496C(phi_s1);
+        func_global_asm_8071498C(&func_global_asm_8071C620);
+        func_global_asm_8071496C(i);
         func_global_asm_807149B8(1);
         func_global_asm_80714CC0(
             &D_global_asm_8071FC58,
@@ -612,5 +609,100 @@ f32 func_global_asm_806F7378(s32 arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F73A0.s")
 
-// Jumptable
+// Jumptable, rodata problems, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F79E0.s")
+
+extern u8 D_global_asm_80745838;
+
+/*
+void func_global_asm_806F79E0(s16 arg0, s32 arg1) {
+    s32 var_v0;
+
+    switch (arg0) {
+        case 0x8E:
+            playSong(0x23, 1.0 - (D_global_asm_80745838 * 0.3));
+            break;
+        case 0x57:
+            playSong(0x21, 1.0 - (D_global_asm_80745838 * 0.3));
+            break;
+        case 0x56:
+            playSound(0x147, 0x7FFF, 63.0f, 1.0f, 5, 0);
+            break;
+        case 0x11:
+        case 0x8F:
+            playSound(0x157, 0x7FFF, 63.0f, 1.0f, 5, 0);
+            break;
+        case 0x98:
+            playSound(0x263, 0x7FFF, 63.0f, 1.0f, 5, 0);
+            break;;
+        case 0xDD:
+        case 0xDE:
+        case 0xDF:
+        case 0xE0:
+        case 0xE1:
+            playSong(0x45, 1.0f);
+            break;
+        case 0x90:
+            playSong(0x12, 1.0f);
+            func_global_asm_80687C48();
+            if ((player_pointer->y_position - player_pointer->floor) < 100.0f) {
+                if (player_pointer->control_state != 0x63) {
+                    if (!(player_pointer->unk6A & 4) || !((player_pointer->unkAC - player_pointer->y_position) > 20.0f)) {
+                        func_global_asm_806EB0C0(0x29, 0, extra_player_info_pointer->unk1A4);
+                    }
+                }
+            }
+            break;
+        case 0x74:
+        case 0x288:
+            playSong(0x12, 1.0f);
+            if ((player_pointer->y_position - player_pointer->floor) < 100.0f) {
+                if (player_pointer->control_state != 0x63) {
+                    if (!(player_pointer->unk6A & 4) || !((player_pointer->unkAC - player_pointer->y_position) > 20.0f)) {
+                        func_global_asm_806EB0C0(0x29, 0, extra_player_info_pointer->unk1A4);
+                    }
+                }
+            }
+            break;
+        case 0xA:
+        case 0xD:
+        case 0x16:
+        case 0x1E:
+        case 0x1F:
+        case 0x1CF:
+        case 0x1D0:
+            playSound(0x2A0, 0x7FFF, 63.0f, 1.0f, 5, 0);
+            break;
+        case 0x1C:
+        case 0x1D:
+        case 0x23:
+        case 0x24:
+        case 0x27:
+            playSong(0x17, 1.0 - (D_global_asm_80745838 * 0.3));
+            break;
+        case 0xB7:
+            playSong(0x91, 1.0 - (D_global_asm_80745838 * 0.3));
+            break;
+        case 0xEC:
+        case 0x1D2:
+            playSong(0x20, 1.0 - (D_global_asm_80745838 * 0.3));
+            break;
+        case 0x13C:
+            playSong(0x12, 1.0f);
+            var_v0 = 0x41;
+            if (current_map == MAP_HELM) {
+                var_v0 = 0x29;
+            }
+            func_global_asm_806EB0C0(var_v0, 0, extra_player_info_pointer->unk1A4);
+            break;
+        case 0x18D:
+            playSong(0x12, 1.0f);
+            func_global_asm_806EB0C0(0x42, 0, extra_player_info_pointer->unk1A4);
+            func_global_asm_80687CC8();
+            break;
+        case 0x1D1:
+            playSound(0xAE, 0x7FFF, 63.0f, 1.0f, 5, 0);
+            break;
+    }
+}
+*/

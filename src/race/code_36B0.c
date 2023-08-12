@@ -20,11 +20,10 @@ typedef struct {
     f32 unk14;
 } RaceStruct1;
 
-extern f32 D_race_8002FE68;
+extern f32 D_race_8002FF84;
 extern s32 D_global_asm_8071FFA0; // TODO: Datatype
 extern s32 D_global_asm_80720340; // TODO: Datatype
 extern s32 D_global_asm_80720120;
-extern f32 D_race_8002FF84;
 extern s16 D_global_asm_80770628[];
 extern f32 D_global_asm_80770B68[];
 extern f32 D_global_asm_80770BC0[];

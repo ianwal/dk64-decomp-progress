@@ -1,9 +1,18 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern f32 D_global_asm_8075C380;
-extern f64 D_global_asm_8075C388;
-extern f64 D_global_asm_8075C390;
+/*
+D_global_asm_8075C380 .float 40000.0f
+D_global_asm_8075C388 .double 35.0
+D_global_asm_8075C390 .double 220.0
+D_global_asm_8075C398 .float 3.3f
+D_global_asm_8075C39C .float 99999.0f
+D_global_asm_8075C3A0 .double 0.13
+D_global_asm_8075C3A8 .double 0.02
+D_global_asm_8075C3B0 .double 0.05
+D_global_asm_8075C3B8 .double 150.0
+D_global_asm_8075C3C0 .double 0.01
+*/
 
 typedef struct {
     s16 unk0;
@@ -52,7 +61,7 @@ void func_global_asm_806C6530(void) {
                 sp68 = current_actor_pointer->y_position;
                 sp6C = current_actor_pointer->z_position;
             }
-            if ((D_global_asm_8075C380 < (((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position))
+            if ((40000.0f < (((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position))
                 + ((current_actor_pointer->y_position - player_pointer->y_position) * (current_actor_pointer->y_position - player_pointer->y_position))
                 + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position)))) && (current_actor_pointer->object_properties_bitfield & 0x100)) {
                 func_global_asm_80671C0C(current_actor_pointer, 2, &sp70, &sp74, &sp78);
@@ -73,12 +82,9 @@ void func_global_asm_806C6530(void) {
             func_global_asm_8065A660(20.0f, 40.0f);
             break;
     }
-    sp8C->unk0 = (func_global_asm_80612794(object_timer * 0x82) * D_global_asm_8075C388) + D_global_asm_8075C390;
+    sp8C->unk0 = (func_global_asm_80612794(object_timer * 0x82) * 35.0) + 220.0;
     func_global_asm_8065A708(sp64, sp68, sp6C, sp70, sp74, sp78, 0.0f, 1, sp8C->unk0, sp8C->unk0, sp8C->unk0);
 }
-
-extern f32 D_global_asm_8075C398;
-extern f32 D_global_asm_8075C39C;
 
 void func_global_asm_806C6530(void);
 
@@ -118,14 +124,14 @@ void func_global_asm_806C6884(s16 arg0, s16 arg1, u16 arg2) {
         phi_t0 = phi_t0 - arg1;
     }
     func_global_asm_8072B324(current_actor_pointer, (2.0 * phi_t0));
-    func_global_asm_8072A920(0x23, arg0, D_global_asm_807FDC94->x_position, (D_global_asm_807FDC94->y_position + (arg0 * 3.0)), D_global_asm_807FDC94->z_position, 0x1E, D_global_asm_8075C398, 100.0f, arg2 | 0x2000);
+    func_global_asm_8072A920(0x23, arg0, D_global_asm_807FDC94->x_position, (D_global_asm_807FDC94->y_position + (arg0 * 3.0)), D_global_asm_807FDC94->z_position, 0x1E, 3.3f, 100.0f, arg2 | 0x2000);
     current_actor_pointer->y_position += 0.5 * func_global_asm_80612794(object_timer * 0x28);
     func_global_asm_806C6530();
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
 
 void func_global_asm_806C6B50(void) {
-    current_actor_pointer->unkAC = D_global_asm_8075C39C;
+    current_actor_pointer->unkAC = 99999.0f;
     func_global_asm_806C6884(0, 0xA, 0x44);
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
 }

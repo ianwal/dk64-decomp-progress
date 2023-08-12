@@ -38,6 +38,12 @@ typedef struct {
 
 extern Struct80750400 D_global_asm_80750400[];
 
+extern f32 D_global_asm_807504C0;
+extern f32 D_global_asm_807504C4;
+extern u8 D_global_asm_807504C8;
+extern u8 D_global_asm_807504CC;
+extern u8 D_global_asm_807504D0;
+
 // rodata
 extern f32 D_global_asm_8075A760;
 extern f64 D_global_asm_8075A790;
@@ -57,11 +63,6 @@ extern f32 D_global_asm_8075AA70;
 extern f32 D_global_asm_8075AA74;
 extern f32 D_global_asm_8075AA78;
 extern f32 D_global_asm_8075AA7C;
-extern f32 D_global_asm_807504C0;
-extern f32 D_global_asm_807504C4;
-extern u8 D_global_asm_807504C8;
-extern u8 D_global_asm_807504CC;
-extern u8 D_global_asm_807504D0;
 
 // TODO: Add to aaD union
 typedef struct {

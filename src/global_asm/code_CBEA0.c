@@ -127,6 +127,7 @@ extern Struct807506D0 D_global_asm_807506D0[];
 extern s8 D_global_asm_80750754;
 extern s16 D_global_asm_80750758;
 extern Struct8075075C D_global_asm_8075075C[];
+
 extern f32 D_global_asm_8075C3E0;
 extern s16 D_global_asm_807FC8E0;
 extern s16 D_global_asm_807FC8E2;

@@ -5,14 +5,80 @@
 void func_global_asm_80724E48(u8);
 void func_global_asm_806782C0(Actor *);
 s32 func_global_asm_8072881C(s32, s32);
-s32 func_global_asm_8072AB74(u8, f32, f32, s32, f32);
+s32 func_global_asm_8072AB74(u8, f32, f32, u16, f32);
 s32 func_global_asm_8072D714(s32, s32);
+void func_global_asm_8072B7CC(s32);
+void func_global_asm_806A5C60(Actor *arg0);
 
-extern f64 D_global_asm_8075AE10;
-extern f32 D_global_asm_8075AE18;
+// Not 100% on these signatures
+void func_global_asm_8072C918(s16, s16, s16);
+u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B1F60/func_global_asm_806AD260.s")
+void func_global_asm_806AD260(s16 arg0, u8 arg1, u16 arg2) {
+    if (arg0 != 0) {
+        if (D_global_asm_807FBB70.unk200 == 9 || D_global_asm_807FBB70.unk15 != 0) {
+            if (current_actor_pointer->control_state != 0x37) {
+                current_actor_pointer->y_velocity = 200.0f;
+                func_global_asm_8072D714(D_global_asm_807FBB70.unk1FC, arg0);
+            }
+        }
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x1:
+        case 0x10:
+        case 0x15:
+        case 0x23:
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, (current_actor_pointer->unk6A & 1) ? arg2 : arg2 | 2, 0);
+            break;
+        case 0x2:
+        case 0x3:
+        case 0x7:
+        case 0x35:
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, arg2, 0);
+            break;
+        case 0x37:
+            // TODO: Is there a better way to express case 2 in this switch?
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    func_global_asm_8072AB74(0x37, 0, 0, (arg2 | 0x4200), 0);
+                    break;
+                case 1:
+                    func_global_asm_806A5C60(current_actor_pointer);
+                    if (arg1 != 0) {
+                        current_actor_pointer->control_state_progress = 2;
+                        break;
+                    } else {
+                        current_actor_pointer->y_velocity = 100.0f;
+                        current_actor_pointer->control_state_progress++;
+                case 2:
+                        func_global_asm_8072AB74(0x37, 0, 0, (arg2 | 0x4200), 0);
+                    }
+                    break;
+                case 3:
+                    func_global_asm_8072DC7C(0xA);
+                    break;
+                case 4:
+                    current_actor_pointer->control_state = 0x40;
+                    break;
+            }
+            break;
+        default:
+            func_global_asm_8072B7CC((s16)D_global_asm_807FDC98->unk28);
+            break;
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x37:
+        case 0x40:
+            break;
+        case 0x2:
+        case 0x3:
+            func_global_asm_8072D13C(current_actor_pointer->control_state, 1);
+            // fallthrough
+        default:
+            func_global_asm_8072C918(19600, (s16)D_global_asm_807FDC98->unk28, (s16)D_global_asm_807FDC98->unk2A);
+            break;
+    }
+}
 
 void func_global_asm_806AD54C(void) {
     f32 dx, dz;
@@ -36,7 +102,7 @@ void func_global_asm_806AD54C(void) {
                     dz = klaptrap->z_position - current_actor_pointer->z_position;
                     if (((dx * dx) + (dz * dz)) < 1600.0f) {
                         angleSign = ((klaptrap->y_rotation - current_actor_pointer->y_rotation) & 0xFFF) >= 0x801 ? 1 : -1;
-                        current_actor_pointer->unkB8 = D_global_asm_807FDC9C->unkD * D_global_asm_8075AE10;
+                        current_actor_pointer->unkB8 = D_global_asm_807FDC9C->unkD * 1.8;
                         current_actor_pointer->y_rotation += angleSign * 400;
                         current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
                         D_global_asm_807FDC90->unk1A |= 0x8000;
@@ -70,7 +136,7 @@ void func_global_asm_806AD84C(void) {
     f32 temp_f0;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        temp_f0 = D_global_asm_8075AE18;
+        temp_f0 = 0.05f;
         current_actor_pointer->animation_state->scale_x = temp_f0;
         current_actor_pointer->animation_state->scale_z = temp_f0;
         current_actor_pointer->animation_state->scale_y = 2.0f;
@@ -182,8 +248,6 @@ void func_global_asm_806AD9F4(void) {
 
 // close, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B1F60/func_global_asm_806ADDD8.s")
-
-void func_global_asm_8072B7CC(s32);
 
 /*
 void func_global_asm_806ADDD8(void) {
