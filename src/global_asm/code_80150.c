@@ -979,6 +979,7 @@ void func_global_asm_8068408C(Actor *arg0) {
     }
 }
 
+// Tag barrel
 void func_global_asm_8068412C(void) {
     YetAnotherAdditionalActorData *YaaD;
 

@@ -3334,7 +3334,7 @@ us,.menu,func_menu_80028834,996,yes
 us,.menu,func_menu_8002F980,520,no
 us,.menu,func_menu_8002FB88,148,no
 us,.menu,func_menu_8002DFA8,1144,no
-us,.menu,func_menu_80024224,500,no
+us,.menu,func_menu_80024224,500,yes
 us,.menu,func_menu_8002D520,716,no
 us,.menu,func_menu_8002EE18,336,yes
 us,.menu,func_menu_8002AA98,144,yes
@@ -3383,7 +3383,7 @@ us,.menu,func_menu_80025B64,432,yes
 us,.menu,func_menu_800241E8,60,yes
 us,.menu,func_menu_8002E8B8,1072,no
 us,.menu,func_menu_80027028,184,yes
-us,.menu,func_menu_80024CB0,576,no
+us,.menu,func_menu_80024CB0,576,yes
 us,.menu,func_menu_80030258,232,yes
 us,.menu,func_menu_80026874,692,no
 us,.menu,func_menu_800322D0,52,yes
