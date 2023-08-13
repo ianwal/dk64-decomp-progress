@@ -1,19 +1,19 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern u8 D_global_asm_80767CE8[];
+extern s32 D_global_asm_8076A048;
+extern s32 D_global_asm_8076A088;
+extern u8 D_global_asm_8076A0B1;
+extern s32 D_global_asm_8076A08C;
+extern s32 D_global_asm_8076A050[];
+extern s32 D_global_asm_8076A080;
 
+extern f32 D_global_asm_807FD888;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_80024000.s")
 
 /*
-extern s32 D_global_asm_8076A048;
-extern f32 D_global_asm_807FD888;
-extern s32 D_global_asm_8076A088;
-extern u8 D_global_asm_80767CE8[];
-extern u8 D_global_asm_8076A0B1;
-extern s32 D_global_asm_8076A08C;
-extern s32 D_global_asm_8076A050[];
-
 // TODO: Pretty close
 void func_jetpac_80024000(void) {
     s32 sp2C;
@@ -45,9 +45,6 @@ void func_jetpac_80024000(void) {
     }
 }
 */
-
-extern s32 D_global_asm_8076A050[];
-extern s32 D_global_asm_8076A080;
 
 typedef struct {
     u8 unk0[0x80 - 0x0];

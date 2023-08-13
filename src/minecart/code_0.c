@@ -111,10 +111,12 @@ void func_minecart_80024768(void) {
 extern s32 D_minecart_80028C34; // TODO: Datatype
 extern s32 D_minecart_80028C3C; // TODO: Datatype
 extern s32 D_minecart_80028C40; // TODO: Datatype
+
 extern f32 D_minecart_80028C80;
 extern f64 D_minecart_80028C88;
 extern f64 D_minecart_80028C90;
 extern f64 D_minecart_80028C98;
+
 extern s16 D_global_asm_807502D0;
 extern f32 D_global_asm_807502F8;
 extern s16 D_global_asm_80750338;

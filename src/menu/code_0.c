@@ -1,6 +1,27 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct menu_struct_0 {
+    u8  unk0;
+    u8  unk1;
+    u8  pad2;
+    u8  pad3;
+    u8  pad4;
+    u8  pad5;
+    u8  unk6;
+    u8  unk7;
+    otherSpriteControl *unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    u8 unk18;
+    u8 unk19;
+    u8 unk1A;
+} MenuStruct0;
+
+extern s32 D_global_asm_80720268;
+extern s16 D_global_asm_80750AC8;
+
 typedef struct {
     s32 unk0[6]
 } Struct80032F48;
@@ -42,27 +63,6 @@ void func_menu_80024000(MenuStruct80024000 *arg0) {
     arg0->unk1++;
 }
 
-typedef struct menu_struct_0 {
-    u8  unk0;
-    u8  unk1;
-    u8  pad2;
-    u8  pad3;
-    u8  pad4;
-    u8  pad5;
-    u8  unk6;
-    u8  unk7;
-    otherSpriteControl *unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    u8 unk18;
-    u8 unk19;
-    u8 unk1A;
-} MenuStruct0;
-
-extern s32 D_global_asm_80720268;
-extern s16 D_global_asm_80750AC8;
-
 void func_menu_800240BC(MenuStruct0 *arg0) {
     arg0->unk10 = 11.35f;
     arg0->unkC = -6.55f;
@@ -95,8 +95,6 @@ void func_menu_800241E8(void) {
     func_global_asm_805FF898();
     playCutscene(NULL, 7, 1);
 }
-
-extern s16 D_global_asm_80750AC8;
 
 void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
     s32 var_v0;

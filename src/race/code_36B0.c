@@ -21,6 +21,7 @@ typedef struct {
 } RaceStruct1;
 
 extern f32 D_race_8002FF84;
+
 extern s32 D_global_asm_8071FFA0; // TODO: Datatype
 extern s32 D_global_asm_80720340; // TODO: Datatype
 extern s32 D_global_asm_80720120;
@@ -234,7 +235,7 @@ void func_race_800283D4(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80028AD0.s")
 
-// close, doable, unrolled loop
+// close, doable, unrolled loop, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80028E20.s")
 
 extern f32 D_race_8002FFA4;

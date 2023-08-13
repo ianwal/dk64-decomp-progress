@@ -444,7 +444,7 @@ segments:
       - [0x21742A0, c, code_E550]
       - [0x2174CA0, data, code_0]
       - [0x2175730, .rodata, code_0]
-      - [0x21757A0, rodata] # code_1AF0
+      - [0x21757A0, .rodata, code_1AF0]
       - [0x2175880, rodata] # code_3E10
       - [0x2175C40, .rodata, code_E550]
   - name: multiplayer

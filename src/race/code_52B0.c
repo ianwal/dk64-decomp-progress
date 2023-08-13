@@ -95,6 +95,7 @@ void sealRaceSetup() {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_race_8002978C.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_race_80029F88.s")
 
 extern f64 D_race_8002FFF0;

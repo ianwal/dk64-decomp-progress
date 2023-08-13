@@ -17,6 +17,36 @@ typedef struct menu_struct_1 {
     u8  unk12;
 } MenuStruct1;
 
+const u16 D_menu_80033A50[] = {
+    0x0000,
+    0x000B,
+    0x000F,
+    0x0014,
+    0x0000,
+    0x000C,
+    0x0010,
+    0x0015,
+    0x0000,
+    0x000E,
+    0x0013,
+    0x0016,
+    0x0000,
+    0x000D,
+    0x0011,
+    0x0017,
+    0x0000,
+    0x000D,
+    0x0012,
+    0x0018,
+};
+
+const u16 D_menu_80033A78[] = {
+    0x0000,
+    0x0019,
+    0x001A,
+    0x001B,
+};
+
 extern u8 D_menu_800334DC[];
 
 void func_global_asm_806F91B4(s32, s32, s16);
@@ -36,9 +66,6 @@ s32 func_menu_80025AF0(MenuStruct1 *arg0, s32 characterIndex) {
     }
     return phi_v1;
 }
-
-extern s32 D_menu_80033A80;
-extern s32 D_menu_80033A88;
 
 typedef struct {
     u8 unk0[0xD - 0x0];
@@ -73,9 +100,9 @@ Gfx *func_menu_80025B64(Gfx *dl, Actor *arg1) {
                 }
                 arg1->unk15F += var_a3;
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-                func_dk64_boot_800031E0(&sp4C, &D_menu_80033A80, func_global_asm_8070E750(0x24, 0x10, 1, var_a3));
+                func_dk64_boot_800031E0(&sp4C, "q %s", func_global_asm_8070E750(0x24, 0x10, 1, var_a3));
                 dl = func_global_asm_806FC530(dl, 1, 0x1F4, 0x190, &sp4C, 1);
-                func_dk64_boot_800031E0(&sp4C, &D_menu_80033A88, func_global_asm_8070E750(0x24, 0x11, 1));
+                func_dk64_boot_800031E0(&sp4C, "b %s", func_global_asm_8070E750(0x24, 0x11, 1));
                 dl = func_global_asm_806FC530(dl, 1, 0x1F4, 0x1F4, &sp4C, 1);
                 break;
         }
@@ -465,8 +492,84 @@ void func_menu_80026804(MenuStruct1 *arg0, s32 arg1) {
     func_global_asm_806EB0C0(0x1B, current_actor_pointer, 0);
 }
 
-// jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026874.s")
+void func_menu_80026874(MenuStruct1 *arg0, s32 arg1) {
+    s32 sp24;
+    s32 sp20;
+    Actor *player;
+
+    switch (arg0->unkE) {
+        case 0:
+            if (func_global_asm_80629148() != 0) {
+                func_global_asm_80629174();
+                arg0->unkE++;
+            }
+            break;
+        case 1:
+        case 5:
+            func_global_asm_8068C350(&func_menu_80025B64, current_actor_pointer, 3);
+            break;
+        case 10:
+            if (func_menu_80026250(arg0) == 0) {
+                func_global_asm_806F8D58(1, 0);
+                func_global_asm_806F8D58(0xE, 0);
+                func_menu_80025E04(arg0, arg1);
+                switch (arg0->unkB) {
+                    case 0:
+                    case 1:
+                        func_global_asm_806EB0C0(0x52, NULL, 0);
+                        global_properties_bitfield &= 0xFFFEFFCF;
+                        player = character_change_array->player_pointer;
+                        player->object_properties_bitfield |= 0x40000000;
+                        break;
+                    case 4:
+                        func_global_asm_80677FA8(ACTOR_PURCHASE_TEXT_OVERLAY, 0);
+                        func_global_asm_806EB0C0(0x53, NULL, 0);
+                        break;
+                    case 2:
+                    case 3:
+                        func_global_asm_80677FA8(ACTOR_PURCHASE_TEXT_OVERLAY, 0);
+                        func_global_asm_80614E78(character_change_array->player_pointer, 0x85);
+                        break;
+                }
+                playCutscene(character_change_array->player_pointer, 2, 1);
+                arg0->unkD = 2;
+                arg0->unkE = 0;
+            } else {
+                playCutscene(NULL, 0xA, 1);
+                setFlag(0x61, 1, 2);
+                arg0->unkE++;
+            }
+            break;
+        case 15:
+            sp24 = -1;
+            switch (current_actor_pointer->unk58) {
+                case ACTOR_CRANKY:
+                    sp24 = 8;
+                    if (func_menu_80026250(arg0) != 0) {
+                        arg0->unkA = 1;
+                        func_menu_80026804(arg0, arg1);
+                        return;
+                    }
+                    sp20 = 0xA;
+                    break;
+                case ACTOR_CANDY:
+                    sp24 = 9;
+                    sp20 = 0x11;
+                    break;
+                case ACTOR_FUNKY:
+                    sp24 = 7;
+                    sp20 = 0x10;
+                    break;
+            }
+            func_global_asm_806F8D58(1, 0);
+            func_global_asm_806F8D58(0xE, 0);
+            playCutscene(character_change_array->player_pointer, 3, 1);
+            arg0->unkD = 3;
+            arg0->unkE = 0;
+            func_global_asm_8070D8C0(current_actor_pointer, sp24, sp20);
+            break;
+    }
+}
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026B28.s")
