@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-void func_8002920C(void);
+void func_boss_8002920C(void);
 
 void func_global_asm_805FF168(void);
 
@@ -427,7 +427,7 @@ void func_global_asm_805FF378(Maps nextMap, s32 nextExit) {
             func_global_asm_807313BC();
             func_global_asm_805FF5A0(nextMap);
             if (D_global_asm_807FBB64 & 1) {
-                func_8002920C();
+                func_boss_8002920C();
             }
         }
     }

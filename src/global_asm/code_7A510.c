@@ -207,8 +207,54 @@ void func_global_asm_80675AFC(Actor *arg0, Actor *arg1) {
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_global_asm_80675C70.s")
+s32 func_global_asm_80675C70(s16 arg0, s16 arg1, s16 arg2) {
+    if (arg2 == arg0) {
+        return 1;
+    }
+    switch (arg2) {
+        case -1:
+            if (arg1 == 1) {
+                return 1;
+            }
+            break;
+        case -2:
+            if (arg1 == 2) {
+                return 1;
+            }
+            break;
+        case -8:
+            if (arg1 == 0x80) {
+                return 1;
+            }
+            break;
+        case -3:
+            if (arg1 == 4) {
+                return 1;
+            }
+            break;
+        case -4:
+            if (arg1 == 8) {
+                return 1;
+            }
+            break;
+        case -5:
+            if (arg1 == 0x10) {
+                return 1;
+            }
+            break;
+        case -6:
+            if (arg1 == 0x20) {
+                return 1;
+            }
+            break;
+        case -7:
+            if (arg1 == 0x40) {
+                return 1;
+            }
+            break;
+    }
+    return 0;
+}
 
 void func_global_asm_80675D70(Actor *arg0) {
     if (D_global_asm_807FBB70.unk200 < 2) {

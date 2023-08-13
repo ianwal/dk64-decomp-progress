@@ -189,7 +189,6 @@ extern f32 D_global_asm_807F7EE4;
 // TODO: I think I messed up the order of the writes
 // Either that or it's doing some weird struct copy in one line?
 // Or... We get rid of temp_v0 (shudder)
-// Or... We fix rodata
 // Or... float tuples in the struct?
 /*
 void func_global_asm_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA) {

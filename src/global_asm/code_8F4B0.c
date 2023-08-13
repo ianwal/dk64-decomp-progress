@@ -3,6 +3,19 @@
 
 
 extern u8 D_global_asm_807501E0;
+
+// .rodata
+extern const char D_global_asm_80759F30[]; // = "%d";
+extern const char D_global_asm_80759F34[]; // = "HIT";
+extern const char D_global_asm_80759F38[]; // = "%d";
+extern const char D_global_asm_80759F3C[]; // = "%d";
+extern const char D_global_asm_80759F40[]; // = "%d";
+extern const char D_global_asm_80759F44[]; // = "%d";
+extern const char D_global_asm_80759F48[]; // = "1";
+extern const char D_global_asm_80759F4C[]; // = ":"
+extern const char D_global_asm_80759F50[]; // = "%2d"
+extern const char D_global_asm_80759F54[]; // = "%02d"
+
 extern u8 D_global_asm_807FC620;
 extern u8 D_global_asm_807FC621;
 extern u8 D_global_asm_807FC622;
@@ -29,8 +42,82 @@ void func_global_asm_8068A830(void) {
 // Hmm, negative struct offsets
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068A858.s")
 
-// Jumptable, really interesting though, flag checks/sets and story skip
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068ABE0.s")
+
+extern u16 D_global_asm_80744734[];
+
+/*
+// TODO: Matched, but rodata offsets are wrong... Hmm...
+s32 func_global_asm_8068ABE0(s16 arg0) {
+    s16 cutsceneIndex;
+    s32 sp20;
+    s32 found;
+    s32 i;
+    enum map_e map;
+    s32 exit; // 20
+
+    cutsceneIndex = -1;
+    i = 0, found = 0;
+    while (!found && i < 8) {
+        if (current_map == D_global_asm_80744734[i]) {
+            found = 1;
+        } else {
+            i++;
+        }
+    }
+    if (found) {
+        if (!isFlagSet(0x1C5 + i, FLAG_TYPE_PERMANENT)) {
+            exit = 0;
+            switch (arg0) {
+                case 0x7:
+                    map = MAP_HELM_LEVEL_INTROS_GAME_OVER;
+                    cutsceneIndex = 0xF;
+                    break;
+                case 0x26:
+                    map = MAP_HELM_LEVEL_INTROS_GAME_OVER;
+                    cutsceneIndex = 0x10;
+                    break;
+                case 0x1A:
+                    map = MAP_HELM_LEVEL_INTROS_GAME_OVER;
+                    cutsceneIndex = 0x11;
+                    break;
+                case 0x1E:
+                    map = MAP_HELM_LEVEL_INTROS_GAME_OVER;
+                    cutsceneIndex = 0x12;
+                    break;
+                case 0x30:
+                    map = MAP_HELM_LEVEL_INTROS_GAME_OVER;
+                    cutsceneIndex = 0x13;
+                    break;
+                case 0x48:
+                    map = MAP_HELM_LEVEL_INTROS_GAME_OVER;
+                    cutsceneIndex = 0x14;
+                    break;
+                case 0x57:
+                    map = MAP_HELM_LEVEL_INTROS_GAME_OVER;
+                    cutsceneIndex = 0x15;
+                    exit = 0x15;
+                    break;
+                case 0x11:
+                    map = MAP_HELM_LEVEL_INTROS_GAME_OVER;
+                    cutsceneIndex = 0x16;
+                    break;
+            }
+            if (cutsceneIndex != -1) {
+                setFlag(0x1C5 + i, 1, 0);
+                if (story_skip) {
+                    func_global_asm_805FF378(arg0, exit);
+                    return 1;
+                } else {
+                    func_global_asm_80712524(map, cutsceneIndex);
+                    return 1;
+                }
+            }
+        }
+    }
+    return 0;
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068AD7C.s")
@@ -291,7 +378,6 @@ typedef struct {
     s8 unkB;
 } TempCBig;
 
-extern u8 D_global_asm_807501E0;
 extern TempCBig D_global_asm_807FC630[];
 
 // Displaylist stuff, uses TempCBig
@@ -375,12 +461,6 @@ void func_global_asm_8068D8C8(Gfx *dl, s32 arg1) {
 // Displaylist stuff, regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068D9DC.s")
 
-extern s32 D_global_asm_80759F30;
-extern s32 D_global_asm_80759F34;
-extern s32 D_global_asm_80759F38;
-extern s32 D_global_asm_80759F3C; // TODO: Type
-extern s32 D_global_asm_80759F40; // TODO: Type
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -456,10 +536,6 @@ void func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068E474.s")
-
-extern char D_global_asm_80759F4C[];
-extern char D_global_asm_80759F50[];
-extern char D_global_asm_80759F54[];
 
 s32 func_global_asm_806FBD5C(s16, void*);
 

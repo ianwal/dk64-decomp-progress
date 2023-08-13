@@ -2,10 +2,6 @@
 #include "functions.h"
 
 extern u8 D_global_asm_807F6902;
-extern f64 D_global_asm_807591E0;
-extern f32 D_global_asm_80759250;
-extern f32 D_global_asm_80759254;
-extern f32 D_global_asm_80759258;
 
 u8 func_global_asm_80676CB0(Struct80676CB0 *arg0, u8 arg1);
 u8 func_global_asm_80676AB8(Actor*, Actor*, Actor*);
@@ -47,7 +43,7 @@ u8 func_global_asm_8067641C(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
 }
 
 u8 func_global_asm_806764D8(Actor *arg0, Actor *arg1, Actor *arg2) {
-    return D_global_asm_807591E0 < func_global_asm_80665E94(arg0->x_position, arg0->y_position, arg0->z_position, arg1->x_position, arg1->y_position, arg1->z_position, 0);
+    return 0.7 < func_global_asm_80665E94(arg0->x_position, arg0->y_position, arg0->z_position, arg1->x_position, arg1->y_position, arg1->z_position, 0);
 }
 
 u8 func_global_asm_80676540(Actor *arg0, Actor *arg1, Actor *arg2) {
@@ -100,8 +96,81 @@ u8 func_global_asm_806767E0(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return func_global_asm_80676CB0(arg2, 2);
 }
 
+// TODO: Needs actor->unk0 shape
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_global_asm_8067680C.s")
+
+extern u8 D_807FBBA9;
+
+/*
+s32 func_global_asm_8067680C(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
+    s32 var_v0;
+    enum actors_e temp_v0;
+    f32 temp_f12;
+    f32 temp_f2;
+    f32 var_f0;
+    f32 var_f14;
+
+    if (arg1->interactable & 1) {
+        if (arg1->PaaD->unk1F0 & 0x01000000) {
+            return 1;
+        }
+        goto block_3;
+    }
+block_3:
+    if (func_global_asm_8067641C(arg0, arg1, arg2) == 0) {
+        return 0;
+    }
+    temp_f12 = arg1->y_position;
+    temp_f2 = arg0->y_position + (arg0->animation_state->scale[1] * arg0->unk0->unk1C);
+    if (temp_f12 < temp_f2) {
+        var_f14 = temp_f2 - temp_f12;
+    } else {
+        var_f14 = -(temp_f2 - temp_f12);
+    }
+    temp_v0 = arg0->unk58;
+    if (temp_v0 >= 0x56) {
+        switch (temp_v0);                           // switch 1; irregular
+    } else if (temp_v0 >= 0x1B) {
+        switch (temp_v0) {
+            case ACTOR_VASE_OVAL:
+            case ACTOR_VASE_DOTS:
+            case ACTOR_VASE_TRIANGLE:
+            case ACTOR_VASE_PLUS:
+            case ACTOR_CANNON_BALL:
+                var_f0 = 14.0f;
+                break;
+            case ACTOR_BOULDER:
+            case ACTOR_APPLE:                       // switch 1
+                var_f0 = 25.0f;
+                break;
+        }
+    } else if (temp_v0 != ACTOR_BARREL_DIDDY_5DI) {
+        if (temp_v0 == ACTOR_TNT_BARREL) {
+            goto block_18;
+        }
+    default:
+        var_f0 = 0.0f;
+    } else {
+    case ACTOR_STEEL_KEG:
+    case ACTOR_BARREL:                              // switch 1
+    case ACTOR_BARREL_BANANA:                       // switch 1
+block_18:
+        var_f0 = 8.0f;
+    }
+    if (var_f0 < var_f14) {
+        return 0;
+    }
+    if (D_807FBBA9 != 0) {
+        return 0;
+    }
+    var_v0 = 1;
+    if (!(arg0->unk68 & 1)) {
+        var_v0 = 0;
+    }
+    return var_v0;
+}
+*/
 
 int func_global_asm_806769A8(s32 arg0, Actor *arg1, s32 arg2) {
     if (arg1->unk58 == ACTOR_CHUNKY) {
@@ -200,16 +269,16 @@ void func_global_asm_80676D00(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3) {
                     if (player_pointer->unk58 == ACTOR_CHUNKY && character_change_array[temp_a2].unk2C0 == 2) {
                         if (player_pointer->control_state != 0x31) {
                             if (arg0->interactable & 0x80) {
-                                func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x64, 0x1E, 0, D_global_asm_80759250, 0);
+                                func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x64, 0x1E, 0, 0.3f, 0);
                             }
                         }
                         return;
                     }
                     if (arg0->unk58 == ACTOR_KLUMP) {
-                        func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x37, 0xFF, 0x7F, 0x1E, 0x5A, D_global_asm_80759254, 0);
+                        func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x37, 0xFF, 0x7F, 0x1E, 0x5A, 0.3f, 0);
                         return;
                     }
-                    func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x7F, 0x1E, 0x5A, D_global_asm_80759258, 0);
+                    func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x7F, 0x1E, 0x5A, 0.3f, 0);
                 }
             }
         }
