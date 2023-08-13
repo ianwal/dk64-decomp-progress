@@ -345,7 +345,7 @@ segments:
       - [0x2145D70, bin, code_145D70] #mips3
       - [0x2149160, data, data_149160]
       - [0x215B290, .rodata, code_0]
-      - [0x215B2E0, rodata] # code_3C10
+      - [0x215B2E0, .rodata, code_3C10]
       - [0x215B4B0, rodata] # code_6710
       - [0x215BD20, rodata] # code_104F0
       - [0x215BE40, rodata] # code_131B0

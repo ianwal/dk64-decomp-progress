@@ -10,6 +10,7 @@ void func_global_asm_807313BC(void);
 void func_global_asm_805FFFC8(void);
 
 extern u8 D_global_asm_807445E0[]; // level_index_mapping
+extern u16 D_global_asm_807446C0[];
 extern s32 D_global_asm_80744720[] ;/*= {
     0x181, // Kong Unlocked: DK
     0x6, // Kong Unlocked: Diddy
@@ -35,18 +36,184 @@ typedef struct {
     s32 unk4; // Permanent Flag Index
 } GlobalASMStruct41;
 extern GlobalASMStruct41 D_global_asm_80744800[];
+
 extern u8 D_global_asm_80744820;
 extern u8 D_global_asm_80744824;
 extern u8 D_global_asm_80744828;
 extern u8 D_global_asm_807444F8;
-extern u8 D_global_asm_807565E0[];
-extern u8 D_global_asm_80756630[];
-extern u16 D_global_asm_807446C0[];
-extern s16 D_global_asm_8076AEF2;
+
+// rodata
+const u8 D_global_asm_807565E0[] = {
+    0x01,
+    0x0F,
+    0x05,
+    0x19,
+    0x07,
+    0x1A,
+    0x1E,
+    0x30,
+    0x48,
+    0x57,
+    0x2A,
+    0x11,
+    0x26,
+    0x0A,
+    0x73,
+    0x74,
+    0x75,
+    0x12,
+    0x76,
+    0x77,
+    0x78,
+    0x20,
+    0x79,
+    0x7A,
+    0x7B,
+    0x42,
+    0x44,
+    0x45,
+    0x7C,
+    0x43,
+    0x4A,
+    0x4B,
+    0x7D,
+    0x7E,
+    0x7F,
+    0x80,
+    0x41,
+    0x4D,
+    0x81,
+    0x82,
+    0x4E,
+    0x4F,
+    0x83,
+    0x60,
+    0x84,
+    0x85,
+    0x63,
+    0x86,
+    0x87,
+    0x68,
+    0x88,
+    0x89,
+    0x67,
+    0x8A,
+    0x8B,
+    0x8C,
+    0x65,
+    0x8D,
+    0x8E,
+    0x8F,
+    0x90,
+    0x91,
+    0x92,
+    0x93,
+    0x66,
+    0x94,
+    0x95,
+    0x96,
+    0x35,
+    0x49,
+    0x9B,
+    0x9C,
+    0x9D,
+    0x9E,
+    0x9F,
+    0xA0,
+    0xA1,
+    0xA2,
+    0x00,
+    0x00,
+};
+
+const u8 D_global_asm_80756630[] = {
+    0x0A,
+    0x0B,
+    0x0C,
+    0x0D,
+    0x00,
+    0x02,
+    0x03,
+    0x04,
+    0x05,
+    0x06,
+    0x0E,
+    0x08,
+    0x01,
+    0x0F,
+    0x0F,
+    0x0F,
+    0x0F,
+    0x10,
+    0x10,
+    0x10,
+    0x10,
+    0x11,
+    0x11,
+    0x11,
+    0x11,
+    0x12,
+    0x12,
+    0x12,
+    0x12,
+    0x13,
+    0x13,
+    0x13,
+    0x13,
+    0x14,
+    0x14,
+    0x14,
+    0x14,
+    0x15,
+    0x15,
+    0x15,
+    0x16,
+    0x16,
+    0x16,
+    0x17,
+    0x17,
+    0x17,
+    0x18,
+    0x18,
+    0x18,
+    0x19,
+    0x19,
+    0x19,
+    0x1A,
+    0x1A,
+    0x1A,
+    0x1A,
+    0x1B,
+    0x1B,
+    0x1B,
+    0x1B,
+    0x1C,
+    0x1C,
+    0x1C,
+    0x1C,
+    0x1D,
+    0x1D,
+    0x1D,
+    0x1D,
+    0x1E,
+    0x1F,
+    0x20,
+    0x21,
+    0x27,
+    0x23,
+    0x24,
+    0x25,
+    0x22,
+    0x26,
+    0x00,
+    0x00,
+};
+
 extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_8076A0B2;
 extern u8 loading_zone_transition_type;
 extern f32 loading_zone_transition_speed;
+extern s16 D_global_asm_8076AEF2;
 extern u16 D_global_asm_8076AEF4;
 extern u8 D_global_asm_8076AEF6;
 
@@ -405,7 +572,6 @@ s32 func_global_asm_805FF938(s16 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_805FF9AC.s")
 
 extern u8 D_global_asm_80750ACC;
-extern f64 D_global_asm_80756680;
 extern s32 D_global_asm_807FD56C;
 extern s16 D_global_asm_807FD570;
 
@@ -478,7 +644,7 @@ block_17:
         var_s1->unk14 = arg2;
     }
     var_s0 = 0;
-    temp_f20 = D_global_asm_80756680;
+    temp_f20 = 255.0;
     var_v0_3 = &D_global_asm_8076A160[sp4C];
     for (var_s0 = 0; var_s0 < D_global_asm_807F6C28; var_s0++) {
         func_global_asm_80659620(&sp40, &sp3C, &sp38, var_s0);
@@ -673,8 +839,49 @@ s32 func_global_asm_80600530(void) { // getLobbyIndex()
     return i;
 }
 
-// jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600590.s")
+extern s32 D_80767CC4;
+
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    u16 unk4;
+    u16 unk6;
+} Struct8076AF00;
+extern Struct8076AF00 D_8076AF00[];
+
+extern s32 D_8076AF10;
+extern s8 D_8076AF14;
+
+void func_global_asm_80600590(s32 arg0) {
+    Struct8076AF00 *var_v1;
+    s32 i;
+
+    for (i = 0; i < 2; i++) {
+        D_8076AF00[i].unk2 = 2;
+        D_8076AF00[i].unk4 = 2;
+        D_8076AF00[i].unk6 = 2;
+        D_8076AF00[i].unk0 = 2;
+    }
+    D_8076AF10 = D_80767CC4;
+    switch (arg0) {
+        case 0x6:
+        case 0x1B:
+        case 0x27:
+        case 0x28:
+        case 0x37:
+        case 0x4C:
+        case 0x6A:
+        case 0x98:
+        case 0x99:
+        case 0xAC:
+        case 0xD0:
+            D_8076AF14 = 0;
+            return;
+        default:
+            D_8076AF14 = 1;
+            return;
+    }
+}
 
 // Delay slot problem
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600674.s")
