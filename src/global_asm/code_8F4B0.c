@@ -493,8 +493,7 @@ void func_global_asm_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
 */
 
 void func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
-    s32 pad;
-    s32 sp38; // TODO: Type
+    char sp38[8];
 
     gSPDisplayList(dl++, &D_1000118);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);

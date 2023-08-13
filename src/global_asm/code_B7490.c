@@ -3,6 +3,7 @@
 
 
 extern s16 D_global_asm_80750340;
+
 extern f32 D_global_asm_8075B5C0;
 extern f64 D_global_asm_8075B708;
 extern f64 D_global_asm_8075B710;

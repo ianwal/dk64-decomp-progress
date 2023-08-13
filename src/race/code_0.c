@@ -1,30 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern f64 D_race_8002FD00;
-extern f64 D_race_8002FD08;
-extern f64 D_race_8002FD10;
-extern f64 D_race_8002FD18;
-extern f64 D_race_8002FD20;
-extern f64 D_race_8002FD28;
-extern f64 D_race_8002FDD8;
-extern f64 D_race_8002FDE0;
-extern f64 D_race_8002FDE8;
-
-extern u16 D_global_asm_80750AC4;
-
-s32 func_race_8002E8EC(s32, s32, s32);
-s32 func_race_8002E8EC(s32 arg0, s32 arg1, s32 arg2);
-void func_race_80025E9C(Actor *);
-void func_race_80025FDC();
-void func_race_80029488();
-void func_race_8002E9F8(s32 *checkpointFile);
-void func_race_8002BCD4(Actor *);
-void func_race_8002D064();
-void func_race_8002D0FC();
-
-void func_global_asm_805FF544();
-
 typedef struct RaceStruct8 {
     u8 pad0[0x36];
     u8 unk36;
@@ -81,6 +57,41 @@ typedef struct {
     u8 pad0[0xC];
     Actor *unkC;
 } RaceStruct0;
+
+extern f64 D_race_8002FD00;
+extern f64 D_race_8002FD08;
+extern f64 D_race_8002FD10;
+extern f64 D_race_8002FD18;
+extern f64 D_race_8002FD20;
+extern f64 D_race_8002FD28;
+extern f64 D_race_8002FDD8;
+extern f64 D_race_8002FDE0;
+extern f64 D_race_8002FDE8;
+
+extern f64 D_race_8002FE40;
+extern f64 D_race_8002FE48;
+extern f64 D_race_8002FE50;
+extern f64 D_race_8002FE58;
+
+extern s16 D_global_asm_80770628[];
+extern f32 D_global_asm_80770B68[];
+extern f32 D_global_asm_80770BC0[];
+
+extern u16 D_global_asm_80750AC4;
+
+u32 func_global_asm_806119A0(void);
+void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1);
+s32 func_race_8002E8EC(s32, s32, s32);
+s32 func_race_8002E8EC(s32 arg0, s32 arg1, s32 arg2);
+void func_race_80025E9C(Actor *);
+void func_race_80025FDC();
+void func_race_80029488();
+void func_race_8002E9F8(s32 *checkpointFile);
+void func_race_8002BCD4(Actor *);
+void func_race_8002D064();
+void func_race_8002D0FC();
+
+void func_global_asm_805FF544();
 
 extern void func_race_8002CFF0();
 
@@ -463,17 +474,6 @@ void func_race_80026CA8(void) {
     func_global_asm_80604CBC(current_actor_pointer, 0x12E, 0, 1, 1, 0xFF, 1.0f, 0);
 }
 
-extern f64 D_race_8002FE40;
-extern f64 D_race_8002FE48;
-extern f64 D_race_8002FE50;
-extern f64 D_race_8002FE58;
-
-extern s16 D_global_asm_80770628[];
-extern f32 D_global_asm_80770B68[];
-extern f32 D_global_asm_80770BC0[];
-
-u32 func_global_asm_806119A0(void);
-
 void func_race_80026D2C(f32 arg0) {
     s16 temp;
     s32 pad;
@@ -502,8 +502,6 @@ void func_race_80026EE4(s32 arg0, Actor *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80026F04.s")
 
-void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1);
-
 void func_race_800274C0(void) {
     AAD_race_800274C0 *sp4C;
     Actor178 *sp48;
@@ -512,7 +510,6 @@ void func_race_800274C0(void) {
     u8 temp2[3];
     u8 var_v1;
 
-    if (temp_s1); // TODO: Gross
     var_v1 = 0;
     sp4C = current_actor_pointer->additional_actor_data;
     sp48 = current_actor_pointer->unk178;
@@ -523,16 +520,7 @@ void func_race_800274C0(void) {
         current_actor_pointer->noclip_byte = 0x3C;
         sp4C->unk4 = 5.0f;
     }
-    if (D_global_asm_807FBB70.unk200 != 9) {
-        if (D_global_asm_807FBB70.unk15 == 0) {
-            if (D_global_asm_807FBB70.unk200 == 5) {
-                goto block_5;
-            }
-        } else {
-            goto block_5;
-        }
-    } else {
-block_5:
+    if (D_global_asm_807FBB70.unk200 == 9 || D_global_asm_807FBB70.unk15 != 0 || D_global_asm_807FBB70.unk200 == 5) {
         func_global_asm_807149B8(1);
         func_global_asm_80714CC0(&D_global_asm_80720340, 3.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, D_race_8002FE68, 0);

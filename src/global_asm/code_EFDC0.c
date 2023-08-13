@@ -13,33 +13,35 @@ void func_global_asm_806F0D68(Actor*);
 void func_global_asm_80613AF8(Actor*, s32, f32, f32);
 void func_global_asm_806EEAF8(s16);
 
-extern s16 D_global_asm_807FD584;
-extern s16 D_global_asm_807539DC[];
-extern s16 D_global_asm_807539EC[];
+extern s16 D_global_asm_807530B0[];
 extern f32 D_global_asm_807531C4[];
-extern f32 D_global_asm_80753250[];
 extern f32 D_global_asm_807531FC[];
-extern f64 D_global_asm_8075D408;
-extern u32 D_global_asm_807FBB68;
-extern s16 D_global_asm_8075380C[];
-extern s16 D_global_asm_807530B0[];
-extern s16 D_global_asm_807530B0[];
-extern s16 D_global_asm_807FD6F2;
-extern f32 D_global_asm_8075D5D8;
-extern f32 D_global_asm_807535CC[];
-extern f64 D_global_asm_8075D5E0;
-extern s32 D_global_asm_80767CC0;
-extern f32 D_global_asm_80753924[];
-extern f32 D_global_asm_80753940[];
-extern f32 D_global_asm_80753908[];
-extern s16 D_global_asm_807537FC[];
-extern s16 D_global_asm_8075384C[];
-extern s16 D_global_asm_8075383C[];
+extern f32 D_global_asm_80753250[];
 extern f32 D_global_asm_807534E4[];
 extern f32 D_global_asm_80753500[];
 extern s16 D_global_asm_8075351C[];
+extern f32 D_global_asm_807535CC[];
+extern s16 D_global_asm_807537FC[];
+extern s16 D_global_asm_8075380C[];
+extern s16 D_global_asm_8075383C[];
+extern s16 D_global_asm_8075384C[];
+extern f32 D_global_asm_80753908[];
+extern f32 D_global_asm_80753924[];
+extern f32 D_global_asm_80753940[];
+extern s16 D_global_asm_807539DC[];
+extern s16 D_global_asm_807539EC[];
 extern f32 D_global_asm_80753D70[];
 extern f32 D_global_asm_80753D8C[];
+
+extern f64 D_global_asm_8075D408;
+extern f32 D_global_asm_8075D5D8;
+extern f64 D_global_asm_8075D5E0;
+
+extern s32 D_global_asm_80767CC0;
+
+extern u32 D_global_asm_807FBB68;
+extern s16 D_global_asm_807FD584;
+extern s16 D_global_asm_807FD6F2;
 
 u8 func_global_asm_806EB0C0(s16 arg0, Actor *actor, u8 playerIndex) {
     if (character_change_array[playerIndex].action_initiated < arg0) {

@@ -292,7 +292,73 @@ void func_global_asm_806A1FD8(void) {
     current_actor_pointer->y_position = aaD->unk8;
 }
 
+// TODO: Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_global_asm_806A2328.s")
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+} AAD_806A2328;
+
+/*
+void func_global_asm_806A2328(void) {
+    f32 dx;
+    f32 temp_f0_2;
+    Actor *temp_v0_3;
+    f32 dz;
+    f64 temp_f12;
+    AAD_806A2328 *aaD;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->object_properties_bitfield |= 0x1000;
+        func_global_asm_807248B0(current_actor_pointer, current_actor_pointer->unk124->unkC);
+        current_actor_pointer->unk168 = func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, player_pointer->x_position, player_pointer->z_position);
+        current_actor_pointer->unkF0 = ((player_pointer->y_position + player_pointer->unk15E) - current_actor_pointer->y_position) * 0.5;
+        dx = current_actor_pointer->x_position - player_pointer->x_position;
+        dz = current_actor_pointer->z_position - player_pointer->z_position;
+        current_actor_pointer->unkEC = sqrtf((dx * dx) + (dz * dz)) * 0.5;
+        aaD->unk0 = current_actor_pointer->x_position + ((player_pointer->x_position - current_actor_pointer->x_position) * 0.5);
+        aaD->unk2 = current_actor_pointer->y_position + ((player_pointer->y_position - current_actor_pointer->y_position) * 0.5);
+        aaD->unk4 = current_actor_pointer->z_position + ((player_pointer->z_position - current_actor_pointer->z_position) * 0.5);
+        current_actor_pointer->noclip_byte = 0x24;
+        current_actor_pointer->unkFA = 9000;
+        current_actor_pointer->unk160 = current_actor_pointer->unk124->unk4;
+        // TODO: Issue is here
+        temp_f12 = (current_actor_pointer->unk160) * (current_actor_pointer->unkEC * 0.01);
+        current_actor_pointer->unk160 = MIN((temp_f12 > 15.0) ? temp_f12 : 0.0, 150.0);
+        aaD->unk8 = current_actor_pointer->unk160;
+    }
+    func_global_asm_8067ACB4(current_actor_pointer);
+    temp_f0_2 = ((aaD->unk8 / current_actor_pointer->unk160) * -4096.0) + 4096.0;
+    aaD->unk6 = current_actor_pointer->unk168 + temp_f0_2;
+    current_actor_pointer->x_position = (func_global_asm_80612794(aaD->unk6) * current_actor_pointer->unkEC) + aaD->unk0;
+    current_actor_pointer->z_position = (func_global_asm_80612790(aaD->unk6) * current_actor_pointer->unkEC) + aaD->unk4;
+    current_actor_pointer->y_position = (func_global_asm_80612790(2048.0f + temp_f0_2) * current_actor_pointer->unkF0) + aaD->unk2;
+    func_global_asm_80665564(current_actor_pointer, 0.0f);
+    current_actor_pointer->y_rotation += 0x12C;
+    if ((current_actor_pointer->y_rotation & 0x7FF) < 0x12C) {
+        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x1DF, 0xFF, 0x7F, 0x14, 0x3C, 0.7f, 0);
+    }
+    if (aaD->unk8 != 0) {
+        aaD->unk8--;
+        if (aaD->unk8 == 0xB) {
+            temp_v0_3 = current_actor_pointer->unk11C;
+            if (temp_v0_3 != NULL) {
+                temp_v0_3->control_state_progress += 1;
+            }
+        }
+    } else {
+        func_global_asm_806782C0(current_actor_pointer);
+    }
+    func_global_asm_8065D244(1);
+    func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0x1E, 0x1E, 1, 0x12C, 0xB4, 0, 1.0f);
+    func_global_asm_806319C4(current_actor_pointer, 0);
+}
+*/
 
 void func_global_asm_806A285C(void) {
     s16 spBE;

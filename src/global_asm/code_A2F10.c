@@ -49,6 +49,7 @@ int func_global_asm_8069E660(Actor *arg0, f32 arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069E774.s")
 
 extern u8 D_global_asm_80750AB8;
+
 extern f64 D_global_asm_8075A498;
 extern f64 D_global_asm_8075A4A0;
 extern f64 D_global_asm_8075A4A8;
@@ -648,6 +649,7 @@ void func_global_asm_806A10BC(s32 *arg0) {
 
 extern u8 D_global_asm_807503D4;
 extern u8 D_global_asm_807503E0;
+
 extern f64 D_global_asm_8075A540;
 
 /*

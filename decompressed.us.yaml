@@ -380,7 +380,7 @@ segments:
       - [0x215EA00, rodata] # code_8F4B0, TODO: Offsets may be wrong???
       - [0x215EC70, rodata] # code_936B0
       - [0x215EEF0, .rodata, code_9BF30]
-      - [0x215EF40, rodata] # code_9CE20
+      - [0x215EF40, .rodata, code_9CE20]
       - [0x215EFD0, rodata] # code_9DD70, codeA2F10??
       - [0x215F250, .rodata, code_A6280]
       - [0x215F2B0, .rodata, code_A7710]
@@ -397,7 +397,7 @@ segments:
       - [0x21605B0, .rodata, done/code_BD820]
       - [0x21605D0, rodata] # code_BDEE0
       - [0x2160830, .rodata, code_C0EE0]
-      - [0x21608C0, rodata] # code_C1E70
+      - [0x21608C0, .rodata, code_C1E70]
       - [0x21608E0, rodata] # code_C2A90
       - [0x2160F60, rodata] # code_C8C10
       - [0x2161080, .rodata, code_CB230]
@@ -494,7 +494,7 @@ segments:
       - [0x2193760, rodata] # code_0
       - [0x21938D0, rodata] # code_36B0
       - [0x2193A10, rodata] # code_52B0
-      - [0x2193B20, rodata] # code_7BD0
+      - [0x2193B20, .rodata, code_7BD0]
       - [0x2193BB0, .rodata, code_A960]
   - name: critter
     dir: critter

@@ -5,29 +5,9 @@
 
 void func_global_asm_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, u8 arg8, s16 arg9, s16 argA, s16 argB, s16 argC);
 extern s32 D_global_asm_80744478;
+
 extern s16 D_global_asm_8075037C;
 extern s16 D_global_asm_80750380;
-extern f32 D_global_asm_8075A240;
-extern f64 D_global_asm_8075A248;
-extern f64 D_global_asm_8075A250;
-extern f64 D_global_asm_8075A258;
-extern f32 D_global_asm_8075A260;
-extern f32 D_global_asm_8075A264;
-extern f32 D_global_asm_8075A268;
-extern f32 D_global_asm_8075A26C;
-extern f32 D_global_asm_8075A270;
-extern f32 D_global_asm_8075A274;
-extern f64 D_global_asm_8075A278;
-extern f64 D_global_asm_8075A280;
-extern f32 D_global_asm_8075A288;
-extern f32 D_global_asm_8075A28C;
-extern f64 D_global_asm_8075A290;
-extern f64 D_global_asm_8075A298;
-extern f64 D_global_asm_8075A2A0;
-extern f64 D_global_asm_8075A2A8;
-extern f64 D_global_asm_8075A2B0;
-extern f64 D_global_asm_8075A2B8;
-extern f64 D_global_asm_8075A2C0;
 
 typedef struct {
     f32 unk0;
@@ -66,18 +46,18 @@ void func_global_asm_80698120(u8 arg0) {
     PaaD = character_change_array->player_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         aaD->unk0 = 0.0f;
-        aaD->unk4 = D_global_asm_8075A240;
+        aaD->unk4 = 0.104719758f;
         aaD->unkC = 0;
         aaD->unk8 = 0.75f;
         aaD->unk10 = 0.0f;
         aaD->unk1C = current_actor_pointer->y_position;
         aaD->unk20 = 0.0f;
-        aaD->unk24 = ((rand() >> 0xF) % 100) / D_global_asm_8075A248 + D_global_asm_8075A250;
+        aaD->unk24 = ((rand() >> 0xF) % 100) / 1000.0 + 0.1;
         aaD->unk18 = 0.0f;
         current_actor_pointer->animation_state->unk1C = malloc(0x80);
-        func_global_asm_8072EE7C(current_actor_pointer, 0, 0, 0, arg0 * D_global_asm_8075A258, D_global_asm_8075A260, 100.0f, 20.0f, 8.0f, 0, 0.0f, 0.0f, 0);
+        func_global_asm_8072EE7C(current_actor_pointer, 0, 0, 0, arg0 * 0.33333299999999999, 0.15f, 100.0f, 20.0f, 8.0f, 0, 0.0f, 0.0f, 0);
         for (var_v1 = 1; var_v1 < arg0; var_v1++) {
-            func_global_asm_8072EF7C(current_actor_pointer, 0, var_v1 + 1, var_v1 - 1, var_v1, D_global_asm_8075A264, 0.0f, 0.0f, 0, 0, 0, 0, 0);
+            func_global_asm_8072EF7C(current_actor_pointer, 0, var_v1 + 1, var_v1 - 1, var_v1, 0.3333329856f, 0.0f, 0.0f, 0, 0, 0, 0, 0);
         }
         current_actor_pointer->unk130 = 0x3C;
         current_actor_pointer->unk131 = 0xC8;
@@ -105,18 +85,18 @@ void func_global_asm_80698120(u8 arg0) {
     }
     var_t0_2 = current_actor_pointer->animation_state->unk1C;
     if (aaD->unk0 > 2.0f) {
-        if ((aaD->unkC < D_global_asm_8075A268) && (D_global_asm_8075A268 <= (aaD->unkC + aaD->unk4))) {
+        if ((aaD->unkC < 3.926990986f) && (3.926990986f <= (aaD->unkC + aaD->unk4))) {
             if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
-                // func_global_asm_80608528(D_global_asm_8075A268, temp_s0_2, 0x257, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
+                // func_global_asm_80608528(3.926990986f, temp_s0_2, 0x257, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
                 func_global_asm_80608528(current_actor_pointer, 0x257, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
                 var_v1_2 = 0;
             } else {
-                // func_global_asm_80608528(D_global_asm_8075A268, temp_s0_2, 0x1C, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
+                // func_global_asm_80608528(3.926990986f, temp_s0_2, 0x1C, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
                 func_global_asm_80608528(current_actor_pointer, 0x1C, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
                 var_v1_2 = 0;
             }
         }
-        if ((aaD->unkC < D_global_asm_8075A26C) && (D_global_asm_8075A26C <= (aaD->unkC + aaD->unk4))) {
+        if ((aaD->unkC < 0.7853981853f) && (0.7853981853f <= (aaD->unkC + aaD->unk4))) {
             if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
                 func_global_asm_80608528(current_actor_pointer, 0x258, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
             } else {
@@ -125,10 +105,10 @@ void func_global_asm_80698120(u8 arg0) {
         }
     }
     if ((current_actor_pointer->unk58 != ACTOR_CHAIN) && (aaD->unk0 > 10.0f)) {
-        if ((aaD->unkC < D_global_asm_8075A270) && (D_global_asm_8075A270 <= (aaD->unkC + aaD->unk4))) {
+        if ((aaD->unkC < 2.356194496f) && (2.356194496f <= (aaD->unkC + aaD->unk4))) {
             func_global_asm_80608528(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
         }
-        if ((aaD->unkC < D_global_asm_8075A274) && (D_global_asm_8075A274 <= (aaD->unkC + aaD->unk4))) {
+        if ((aaD->unkC < 5.497786999f) && (5.497786999f <= (aaD->unkC + aaD->unk4))) {
             func_global_asm_80608528(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
         }
     }
@@ -153,7 +133,7 @@ void func_global_asm_80698120(u8 arg0) {
         temp_v0_2->unk4 = 0;
         temp_v0_2->unk6 = 0;
         var_v1_2++;
-        temp_v0_2->unk2 = (aaD->unk10 / D_global_asm_8075A280) * D_global_asm_8075A278;
+        temp_v0_2->unk2 = (aaD->unk10 / 360.0) * 65535.0;
         aaD->unk10 = aaD->unk10 * aaD->unk8;
     } while (var_v1_2 < 0xE);
 
@@ -165,7 +145,7 @@ void func_global_asm_80698120(u8 arg0) {
         temp_v0_4->unk2 = 0;
         temp_v0_4->unk6 = 0;
         var_v1_2++;
-        temp_v0_4->unk4 = (aaD->unk18 / D_global_asm_8075A280) * D_global_asm_8075A278;
+        temp_v0_4->unk4 = (aaD->unk18 / 360.0) * 65535.0;
         aaD->unk18 += 20.0f;
         if (aaD->unk18 > 360.0f) {
             aaD->unk18 -= 360.0f;
@@ -184,32 +164,32 @@ void func_global_asm_80698120(u8 arg0) {
     if ((player_pointer->unk6A & 0x40) && (aaD->unk14 == 0) && (current_actor_pointer == PaaD->unk130)) {
         aaD->unk0 = 15.0f;
         if (func_global_asm_806CC14C(player_pointer->y_rotation, current_actor_pointer->y_rotation) < 0x400) {
-            aaD->unkC = D_global_asm_8075A288;
+            aaD->unkC = 3.141592741f;
         } else {
             aaD->unkC = 0.0f;
         }
     }
-    if (D_global_asm_8075A28C <= aaD->unkC) {
-        aaD->unkC -= D_global_asm_8075A28C;
+    if (6.283185482f <= aaD->unkC) {
+        aaD->unkC -= 6.283185482f;
     }
     if (aaD->unkC < 0.0f) {
-        aaD->unkC += D_global_asm_8075A28C;
+        aaD->unkC += 6.283185482f;
     }
     if ((player_pointer->unk6A & 0x40) && (current_actor_pointer == PaaD->unk130)) {
         aaD->unk14 = 1;
-        aaD->unk0 += D_global_asm_8075A290;
+        aaD->unk0 += 0.2;
         if (aaD->unk0 > 15.0f) {
             aaD->unk0 = 15.0f;
         }
     } else {
         aaD->unk14 = 0;
-        aaD->unk0 = aaD->unk0 + ((0.0 - aaD->unk0) * D_global_asm_8075A298);
+        aaD->unk0 = aaD->unk0 + ((0.0 - aaD->unk0) * 0.03);
         if (aaD->unk0 < 2.0) {
             aaD->unk0 = 0.0f;
         }
     }
     if ((player_pointer->unk6A & 0x40) && (current_actor_pointer == PaaD->unk130)) {
-        if ((PaaD->unk138 < 1.5) && ((((aaD->unkC > 4.0)) && (aaD->unkC < D_global_asm_8075A2A0)) || ((aaD->unkC < D_global_asm_8075A2A8) && (D_global_asm_8075A2B0 < aaD->unkC)))) {
+        if ((PaaD->unk138 < 1.5) && ((((aaD->unkC > 4.0)) && (aaD->unkC < 4.71238899230957031)) || ((aaD->unkC < 1.57079637050628662) && (0.9 < aaD->unkC)))) {
             PaaD->unk14C = D_global_asm_8075037C * (aaD->unk0 / 15.0f);
             PaaD->unk150 = D_global_asm_80750380 * (aaD->unk0 / 15.0f);
         } else {
@@ -217,7 +197,7 @@ void func_global_asm_80698120(u8 arg0) {
             PaaD->unk150 = 200.0f;
         }
         PaaD->unk154 = current_actor_pointer->y_rotation & 0xFFF;
-        if ((aaD->unkC < D_global_asm_8075A2B8) || (D_global_asm_8075A2C0 < aaD->unkC)) {
+        if ((aaD->unkC < 1.57079637050628662) || (4.71238911151885986 < aaD->unkC)) {
             PaaD->unk154 = (PaaD->unk154 + 0x800) & 0xFFF;
         }
     }

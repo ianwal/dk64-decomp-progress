@@ -10,24 +10,25 @@ void func_global_asm_806C9C80(s32, s32, s32);
 s32 func_global_asm_8066B06C(s32, s32);
 void func_global_asm_806C9658(s32);
 
-extern f32 D_global_asm_8075C788;
-extern f64 D_global_asm_8075C790;
-extern f64 D_global_asm_8075C798;
 extern u8 D_global_asm_80770DC9;
 extern u8 number_of_exits;
 
 extern ExitData *exit_array;
 extern ExitData D_global_asm_807FC908;
-extern ExitData D_global_asm_807FD574;
 extern ExitData D_global_asm_807FC918;
+extern ExitData D_global_asm_807FD574;
+
+extern f32 D_global_asm_8075C788;
+extern f64 D_global_asm_8075C790;
+extern f64 D_global_asm_8075C798;
+extern f64 D_global_asm_8075C7A0;
+extern f64 D_global_asm_8075C7A8; // angle?
 
 extern s16 D_global_asm_8076AEE2;
 extern f32 D_global_asm_8076AEE4; // x
 extern f32 D_global_asm_8076AEE8; // y
 extern f32 D_global_asm_8076AEEC; // z
-extern f64 D_global_asm_8075C7A8; // angle?
 extern s16 D_global_asm_8076AEF0;
-extern f64 D_global_asm_8075C7A0;
 
 extern u16 D_global_asm_807FD570; // Tranferred actor behaviour index (through loading zone)
 

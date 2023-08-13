@@ -1,10 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 D_global_asm_8072030C;
+extern s32 D_global_asm_80720340;
+
+void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
+
 // doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B6C50/func_global_asm_806B1F50.s")
-
-extern s32 D_global_asm_8072030C;
 
 /*
 void func_global_asm_806B1F50(void) {
@@ -100,10 +103,6 @@ void func_global_asm_806B1F50(void) {
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
 */
-
-extern s32 D_global_asm_80720340;
-
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
 void func_global_asm_806B24B8(void) {
     Actor *temp_v0;

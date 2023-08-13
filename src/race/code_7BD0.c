@@ -1,6 +1,15 @@
 #include <ultra64.h>
 #include "functions.h"
 
+/*
+rodata
+D_race_800300C0 = "%d"
+D_race_800300C4 = "%s %d %s %d"
+D_race_800300F0 .float 0.6f
+D_race_80030108 .float 0.3f
+D_race_80030110 .double 0.15
+*/
+
 void func_race_8002BBD0(Actor *arg0, s32 arg1) {
     RaceAdditionalActorData *sp1C;
     RaaD_unk20 *temp_v0;
@@ -88,12 +97,8 @@ void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3) {
     *arg3 = temp_t0[arg1].unk4;
 }
 
-// rodata
+// rodata, close
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002BCD4.s")
-
-extern f32 D_race_800300D0;
-extern f32 D_race_800300D4;
-extern f32 D_race_800300D8;
 
 typedef struct {
     f32 unk0;
@@ -119,10 +124,10 @@ void func_race_8002BCD4(Actor *arg0) {
     Struct80027880 *var_v1;
     AAD_race_8002BCD4 *aaD;
 
+    var_f0 = 9999.0f;
+    var_f2 = 9999.0f;
     var_f12 = -1.0f;
     var_f14 = -1.0f; 
-    var_f0 = D_race_800300D0;
-    var_f2 = D_race_800300D0;
     aaD = arg0->additional_actor_data;
     var_v1 = &D_global_asm_807F5FD4[0].unk0;
     temp_a2 = &D_global_asm_807F5FD4[1].unk0;
@@ -143,8 +148,8 @@ void func_race_8002BCD4(Actor *arg0) {
     }
     aaD->unkC = (((var_f12 - var_f0) * 0.5f) + var_f0) - 10.0f;
     aaD->unk10 = (((var_f14 - var_f2) * 0.5f) + var_f2) - 20.0f;
-    aaD->unk4 = D_race_800300D4 / (var_f12 - var_f0);
-    aaD->unk8 = D_race_800300D8 / (var_f14 - var_f2);
+    aaD->unk4 = 116.4800034f / (var_f12 - var_f0);
+    aaD->unk8 = 121.5999985f / (var_f14 - var_f2);
 }
 */
 
@@ -339,8 +344,6 @@ void func_race_8002D224(u8 arg0) {
     }
 }
 
-extern f32 D_race_800300E8;
-
 typedef struct RaceStruct12 {
     u8 pad0[0x26];
     u8 unk26;
@@ -352,7 +355,7 @@ f32 func_race_8002D2C0(RaceStruct12 *arg0) {
     if ((arg0->unk26 >= 0xB) && (arg0->unk26 < 0xF) && 
         (D_global_asm_807FD610[arg0->unk28].unk2A & 0x2000)) {
             f32 temp = (arg0->unk26 - 0xA);
-            return temp * D_race_800300E8;
+            return temp * 0.2f;
     }
     return 0.0f;
 }
@@ -369,9 +372,6 @@ void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1) {
     func_global_asm_806782C0(arg0);
 }
 
-extern f32 D_race_800300EC;
-extern f32 D_race_800300F0;
-
 // Appears to find the closest actor to whatever is passed in
 Actor *func_race_8002D360(Actor *arg0) {
     f32 distance;
@@ -384,7 +384,7 @@ Actor *func_race_8002D360(Actor *arg0) {
     Actor *temp;
     Actor *closestActor;
 
-    closestDistance = D_race_800300EC;
+    closestDistance = 1000000000.0f;
     RaaD = arg0->RaaD;
     temp = RaaD->unk30;
     RaaD2 = temp->RaaD;
@@ -441,7 +441,7 @@ void func_race_8002D4A0(void) {
     switch (current_map) {
         case MAP_AZTEC_BEETLE_RACE:
             song = 0x13;
-            phi_f0 = D_race_800300F0;
+            phi_f0 = 0.6f;
             break;
         case MAP_GALLEON_SEAL_RACE:
             song = 0x3D;
@@ -611,25 +611,61 @@ typedef struct {
 
 typedef struct {
     s32 unk0;
-    s32 unk4;
+    f32 unk4;
     f32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
     s32 unk18;
-    s32 unk1C;
+    f32 unk1C;
     f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
 } Struct8002E1C8_arg2;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct8002E1C8_arg3;
 
 f32 func_race_8002DDA0(f32 arg0, Struct8002E1C8_arg2 *arg1);
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002DE78.s")
+void func_race_8002DE78(Struct8002E1C8_arg0 *arg0, u8 arg1, Struct8002E1C8_arg2 *arg2, Struct8002E1C8_arg3 *arg3) {
+    switch (arg1) {
+        case 0:
+        case 1:
+            arg2->unk4 = arg3->unk0;
+            arg2->unkC = arg3->unk4;
+            arg2->unk14 = arg3->unk4;
+            arg2->unk1C = arg3->unk4;
+            arg2->unk24 = arg3->unk4;
+            arg2->unk2C = arg3->unk8;
+            break;
+        case 2:
+        case 3:
+            arg2->unk1C = arg3->unk8;
+            arg2->unk24 = arg3->unk8;
+            arg2->unk2C = arg3->unk8;
+            break;
+        case 5:
+            arg2->unk4 = arg3->unk0;
+            arg2->unkC = arg3->unk8;
+            arg2->unk14 = arg3->unk8;
+            arg2->unk1C = arg3->unk8;
+            arg2->unk24 = arg3->unk8;
+            arg2->unk2C = arg3->unk8;
+            break;
+    }
+    current_actor_pointer->control_state_progress = 0;
+    arg0->unkF = arg1;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002DF38.s")
 
-f32 func_race_8002E1C8(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2, s32 arg3) {
+f32 func_race_8002E1C8(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2, Struct8002E1C8_arg3 *arg3) {
     f32 var_f2;
 
     switch (arg0->unkF) {
@@ -798,7 +834,6 @@ void func_race_8002E484(void) {
     temp_s0->unk18 = temp_s0->unk14;
 }
 
-extern f64 D_race_80030148;
 extern u8 D_global_asm_807FBD70;
 
 // TODO: Merge back into original struct
@@ -856,7 +891,7 @@ void func_race_8002E644(A17C_race_8002B964 *arg0) {
             sp50 = ((temp_f2_2 - sp50) * sp40) + temp_f2_2;
             actor->unkB8 = sqrtf((sp54 * sp54) + (sp50 * sp50));
             
-            actor->unkEE = (func_global_asm_80611BB4(sp54, sp50) * 4096.0) / D_race_80030148;
+            actor->unkEE = (func_global_asm_80611BB4(sp54, sp50) * 4096.0) / 6.28318548202514648;
             actor->unkEE += sp46;
             actor->unkEE &= 0xFFF;
             
