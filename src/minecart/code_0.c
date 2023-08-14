@@ -1,8 +1,21 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 D_minecart_80028C30; // TODO: Proper datatype
+extern s32 D_minecart_80028C34; // TODO: Datatype
+extern s32 D_minecart_80028C3C; // TODO: Datatype
+extern s32 D_minecart_80028C40; // TODO: Datatype
+
+extern s32 D_global_asm_8072006C; // TODO: Proper datatype
+
+extern s16 D_global_asm_807502D0;
+extern f32 D_global_asm_807502F8;
+extern s16 D_global_asm_80750338;
 
 s32 func_global_asm_8070E750(s32, s32, s32);
+u8 func_global_asm_806119A0(void);
+void func_global_asm_8065A660(f32, f32);
+void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3);
 
 void func_minecart_80024000(u8 arg0, u8 arg1) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
@@ -27,11 +40,6 @@ void func_minecart_800240DC(u8 arg0, u8 arg1) {
         playCutscene(player_pointer, 5, 5);
     }
 }
-
-extern s32 D_minecart_80028C30; // TODO: Proper datatype
-extern s32 D_global_asm_8072006C; // TODO: Proper datatype
-
-u8 func_global_asm_806119A0(void);
 
 void func_minecart_800241A0(s16 *arg0, u8 arg1, u8 arg2) {
     // TODO: Get rid of this typecast if possible
@@ -83,10 +91,121 @@ void func_minecart_80024254(Struct80024254_arg0 *arg0) {
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_8002430C.s")
+void func_global_asm_8061C6A8(s32, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_global_asm_8072177C(Actor *, s16, s16, s16, s32, s32, s32, s32, s32); // extern
+void func_minecart_800253C0(void *, s16, u8);
+extern s16 D_global_asm_80750AC4;
 
-void func_global_asm_8065A660(f32, f32);
+typedef struct {
+    s32 unk0;
+    Actor *unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    u8 unk14[0x30 - 0x14];
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s16 unk3C;
+    s8 unk3E;
+} AAD_minecart_8002430C;
+
+void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
+    AAD_minecart_8002430C *aaD;
+    PlayerAdditionalActorData *PaaD;
+    s32 pad8;
+    s32 pad7;
+    s32 pad6;
+    s32 pad5;
+    s32 pad4;
+    s32 pad3;
+    s32 pad2;
+    s32 pad;
+    f32 dx;
+    f32 dz;
+    f32 dy;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    PaaD = character_change_array->player_pointer->PaaD;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->object_properties_bitfield |= 0x1400;
+        switch (current_map) {
+            case MAP_JAPES_MINECART:
+            case MAP_FUNGI_MINECART:
+            case MAP_CASTLE_MINECART:
+                func_global_asm_806F8BC4(0xB, 1, 0);
+                D_global_asm_80750AC4 = 0;
+                break;
+        }
+    }
+    if (aaD->unk4 == NULL) {
+        aaD->unk4 = character_change_array->player_pointer;
+        aaD->unk8 = 0;
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0:
+            dx = aaD->unk4->x_position - current_actor_pointer->x_position;
+            dy = aaD->unk4->y_position - current_actor_pointer->y_position;
+            dz = aaD->unk4->z_position - current_actor_pointer->z_position;
+            if (((dx * dx) + (dy * dy) + (dz * dz)) < 400.0f) {
+                aaD->unk34 = arg1;
+                aaD->unk10 = arg0;
+                aaD->unk30 = arg1;
+                func_global_asm_806EB0C0(0x45, current_actor_pointer, aaD->unk8);
+                current_actor_pointer->control_state++;
+            } else {
+                func_global_asm_806319C4(current_actor_pointer, 0);
+                break;
+            }
+            // fallthrough
+        case 1:
+            func_minecart_800253C0(aaD, arg2, arg3);
+            func_global_asm_8061C6A8(PaaD->unk104, current_actor_pointer, 4, 0x800, 0x28, 0, 5, 0x19, 0x14, 0, 0.15f);
+            current_actor_pointer->control_state++;
+            break;
+        case 2:
+            func_global_asm_80671C0C(current_actor_pointer, 9, &aaD->unk4->x_position, &aaD->unk4->y_position, &aaD->unk4->z_position);
+            current_actor_pointer->control_state++;
+            if (current_actor_pointer->unk168 == 0) {
+                if (current_map != MAP_JAPES_MINECART) {
+                    current_actor_pointer->unk168 = 2;
+                }
+            }
+            // fallthrough
+        case 3:
+        case 5:
+            if (current_actor_pointer->unk168 == 0) {
+                if (func_global_asm_8061CB50() != 0) {
+                    current_actor_pointer->unk168 = 1;
+                }
+            }
+            if (current_actor_pointer->unk168 == 1) {
+                if (current_actor_pointer->control_state_progress == 0) {
+                    if (func_global_asm_8061CB50() != 0) {
+                        PaaD->unk1F0 = PaaD->unk1F0 | 8;
+                    } else {
+                        func_global_asm_8061C6A8(PaaD->unk104, current_actor_pointer, 4, 0x800, 0x28, 0, 5, 0x19, 0x14, 0, 0.15f);
+                        PaaD->unk1F0 = PaaD->unk1F0 & ~8;
+                        aaD->unk3E = 0x3C;
+                        current_actor_pointer->control_state_progress++;
+                    }
+                }
+            }
+            func_global_asm_8068ECF4(6, 0xFF);
+            func_minecart_80024254(aaD);
+            func_minecart_800253C0(aaD, arg2, arg3);
+            func_global_asm_80671C0C(current_actor_pointer, 5, &sp58, &sp5C, &sp60);
+            func_global_asm_8072177C(current_actor_pointer, sp58, sp5C, sp60, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+            func_global_asm_8072177C(aaD->unk4, sp58, sp5C, sp60, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+    }
+}
 
 void func_minecart_80024768(void) {
     f32 sp4C;
@@ -107,21 +226,6 @@ void func_minecart_80024768(void) {
     func_global_asm_8065A660(20.0f, 40.0f);
     func_global_asm_8065A708(sp38, sp3C, sp40, sp44, sp48, sp4C, 0.0f, 1, 0xFF, 0xFF, 0xFF);
 }
-
-extern s32 D_minecart_80028C34; // TODO: Datatype
-extern s32 D_minecart_80028C3C; // TODO: Datatype
-extern s32 D_minecart_80028C40; // TODO: Datatype
-
-extern f32 D_minecart_80028C80;
-extern f64 D_minecart_80028C88;
-extern f64 D_minecart_80028C90;
-extern f64 D_minecart_80028C98;
-
-extern s16 D_global_asm_807502D0;
-extern f32 D_global_asm_807502F8;
-extern s16 D_global_asm_80750338;
-
-s32 func_minecart_8002430C(s32, s32 *, s16, s32);
 
 typedef struct {
     s16 unk0;
@@ -144,7 +248,7 @@ void func_minecart_80024890(void) {
 
     temp_v1 = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        temp_v1->unk24 = D_minecart_80028C80;
+        temp_v1->unk24 = 0.1f;
         temp_v1->unk28 = 5.0f;
     }
     func_minecart_8002430C(1, current_map == 6 ? &D_minecart_80028C34 : &D_minecart_80028C3C, 0x7FFF, 0x23);
@@ -158,7 +262,7 @@ void func_minecart_80024914(void) {
     Actor *temp_v0_2;
     AAD_minecart_80024890 *temp_s0;
 
-    temp = current_actor_pointer->animation_state->scale_y * D_minecart_80028C88;
+    temp = current_actor_pointer->animation_state->scale_y * 0.166666666749999998;
     temp_s0 = current_actor_pointer->additional_actor_data;
     temp_a1 = temp_s0->unk0;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -168,9 +272,9 @@ void func_minecart_80024914(void) {
     }
     if (temp_s0->unk10 == 0x90) {
         current_actor_pointer->unkB8 = 130.0f;
-        current_actor_pointer->y_acceleration = D_global_asm_807502F8 * D_minecart_80028C90;
+        current_actor_pointer->y_acceleration = D_global_asm_807502F8 * 0.6;
         if (temp_s0->unk0 == 0) {
-            current_actor_pointer->y_velocity = D_global_asm_80750338 * D_minecart_80028C98;
+            current_actor_pointer->y_velocity = D_global_asm_80750338 * 1.6;
         }
     } else {
         current_actor_pointer->y_acceleration = D_global_asm_807502F8;

@@ -466,6 +466,8 @@ segments:
       - [0x2178D60, c, code_0]
       - [0x217B350, c, code_25F0]
       - [0x217D8F0, data, code_0]
+      - [0x217D9C0, .rodata, code_0]
+      - [0x217DAA0, .rodata, code_25F0]
   - name: bonus
     dir: bonus
     type: code
