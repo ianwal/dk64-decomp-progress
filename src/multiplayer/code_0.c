@@ -260,8 +260,62 @@ s32 func_multiplayer_800253C8(void) {
     return (((rand() >> 0xF) % 32767) % 211) + 90;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025404.s")
+void func_global_asm_80715908(Struct80717D84 *);       // extern
+extern s32 D_global_asm_807207BC; // TODO: Type
+extern int func_global_asm_8071F3C0(); // TODO: Signature
+
+s32 func_multiplayer_80025404(void) {
+    s32 pad;
+    s32 sp50;
+    Struct80717D84 *temp_a0;
+    s32 i;
+    s32 chosenPlayer;
+    s32 var_s6;
+    s32 temp_s3;
+    u8 temp_t4;
+    PlayerAdditionalActorData *PaaD;
+
+    chosenPlayer = -1;
+    for (i = 0; i < cc_number_of_players; i++) {
+        PaaD = character_change_array[i].player_pointer->PaaD;
+        if (func_global_asm_806F8AD4(1, i) != 0) {
+            temp_s3 = D_global_asm_807FC950[i].health + D_global_asm_807FC950[i].unk2FD;
+            if (PaaD->unk260 == NULL) {
+                switch (current_character_index[i]) {
+                    case 0:
+                    case 3:
+                        var_s6 = 0xF;
+                        break;
+                    case 1:
+                    case 2:
+                    case 4:
+                    case 5:
+                        var_s6 = 0xD;
+                        break;
+                }
+                func_global_asm_807149B8(1);
+                func_global_asm_807149FC(-1);
+                func_global_asm_80714998(2);
+                func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x7F);
+                func_global_asm_8071498C(&func_global_asm_8071F3C0);
+                PaaD->unk260 = func_global_asm_80714C08(&D_global_asm_807207BC, 0.5f, character_change_array[i].player_pointer, var_s6, 2);
+                D_global_asm_807FC950[i].unk2FA = temp_s3;
+            }
+            if (D_global_asm_807FC950[i].unk2FA < temp_s3) {
+                D_global_asm_807FC950[i].unk2FA = temp_s3;
+            }
+            chosenPlayer = i;
+        } else {
+            temp_a0 = PaaD->unk260;
+            if (temp_a0 != NULL) {
+                func_global_asm_80715908(temp_a0);
+                PaaD->unk260 = NULL;
+                D_global_asm_807FC950[i].unk2FA = 0;
+            }
+        }
+    }
+    return chosenPlayer;
+}
 
 s32 func_global_asm_8063254C(s32, s32 *, f32 *, f32 *, f32 *, s16 *, s16*); /* extern */
 
@@ -373,8 +427,75 @@ void func_multiplayer_80025B48(Struct80025B48 *arg0) {
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025CE8.s")
+void func_global_asm_806F54E0(u8, s32, s32);
+
+void func_multiplayer_80025CE8(s32 arg0) {
+    Actor *temp_s3;
+    s32 temp_t4;
+    s32 temp_t5;
+    s32 playerIndex;
+    u32 temp_hi;
+    u32 temp_t9;
+    PlayerAdditionalActorData *PaaD;
+    PlayerAdditionalActorData *temp_s1;
+    Actor *player;
+
+    temp_s3 = character_change_array[arg0].player_pointer;
+    PaaD = temp_s3->PaaD;
+    switch (PaaD->unk264) {
+        case 0:
+            func_global_asm_806D0468(temp_s3, 2);
+            func_global_asm_806F54E0(arg0, 0x8E, 0);
+            break;
+        case 1:
+            for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+                player = character_change_array[playerIndex].player_pointer;
+                temp_s1 = player->PaaD;
+                if (playerIndex != arg0) {
+                    if (temp_s1->unkD4 == 0) {
+                        if (player->control_state != 0x84) {
+                            func_global_asm_806EB0C0(0x27, temp_s3, playerIndex);
+                            temp_s1->unk200 = 0x96;
+                        }
+                    }
+                }
+            }
+            break;
+        case 2:
+            PaaD->unk1F0 |= 0x20;
+            PaaD->unk1F0 &= 0xF7FFFFFF;
+            func_global_asm_806F54E0(arg0, 0x8E, 0);
+            break;
+        case 3:
+            func_global_asm_806846B4(temp_s3->x_position, temp_s3->y_position, temp_s3->z_position, 0.1f, 0.1f, temp_s3, 1);
+            break;
+        case 4:
+            temp_hi = (rand() >> 0xF) % 5;
+            switch (temp_hi) {
+                case 0:
+                    func_global_asm_806D0468(temp_s3, 0);
+                    func_global_asm_806F54E0(arg0, 0x8E, 0);
+                    break;
+                case 1:
+                    PaaD->unk200 = 0x96;
+                    PaaD->unk1F0 |= 0x80;
+                    break;
+                case 2:
+                    PaaD->unk1F0 |= 0x08000000;
+                    PaaD->unk1F0 &= ~0x20;
+                    PaaD->unk200 = 0x96;
+                    break;
+                case 3:
+                    func_global_asm_806C9974(arg0, 0x40);
+                    break;
+                case 4:
+                    func_global_asm_806846B4(temp_s3->x_position, temp_s3->y_position, temp_s3->z_position, 0.1f, 0.1f, temp_s3, 1);
+                    break;
+            }
+            break;
+    }
+    PaaD->unk264 = -1;
+}
 
 void func_multiplayer_80025F84(void) {
     s32 i;
@@ -385,8 +506,6 @@ void func_multiplayer_80025F84(void) {
         func_global_asm_8063DA40(temp_v0->unkC[i], 0);
     }
 }
-
-void func_global_asm_80715908(s32);
 
 typedef struct {
     u8 unk0[0x50 - 0x0];

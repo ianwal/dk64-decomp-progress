@@ -90,7 +90,7 @@ typedef struct PlayerProgress {
     u16 oranges; // 0x2F4
     u16 crystals; // 0x2F6 // Note: Multiplied by 150 compared to on screen counter
     u16 film; // 0x2F8
-    u8 unk2FA;
+    s8 unk2FA;
     s8 health; // 0x2FB
     u8 melons; // 0x2FC
     s8 unk2FD; // Something to do with health... hmm
