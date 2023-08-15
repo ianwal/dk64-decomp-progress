@@ -109,14 +109,7 @@ void func_jetpac_80024390(void) {
 extern s32 D_jetpac_8002EC48;
 extern s32 D_jetpac_8002BA6C;
 extern s32 D_jetpac_8002EF74;
-extern u8 D_jetpac_8002E9D0;
-extern u8 D_jetpac_8002E9D4;
-extern u8 D_jetpac_8002E9D8;
-extern u8 D_jetpac_8002E9DC;
-extern u8 D_jetpac_8002E9E0;
 extern s32 D_jetpac_8002EC50;
-extern u8 D_jetpac_8002E9E8;
-extern u8 D_jetpac_8002E9F0;
 extern s32 D_jetpac_8002EDE4;
 
 Gfx **func_jetpac_8002AE00(Gfx**);
@@ -136,23 +129,23 @@ void func_jetpac_80024408(Gfx **arg0) {
     temp_s0 = func_jetpac_80026FE0() & D_jetpac_8002BA6C;
     func_jetpac_8002AE00(arg0);
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002E9D0, 0x38, 0x18, temp_s0 != 0 && D_jetpac_8002EF74 == 0);
+    func_jetpac_8002AEFC(arg0, "1UP", 0x38, 0x18, temp_s0 != 0 && D_jetpac_8002EF74 == 0);
     for (playerIndex = 0; playerIndex < 2; playerIndex++) {
         player = &D_jetpac_8002EC30.player[playerIndex];
         if (D_jetpac_8002EC30.player[playerIndex].lives > 0) {
-            func_dk64_boot_800031E0(&sp60, &D_jetpac_8002E9D4, D_jetpac_8002EC30.player[playerIndex].lives);
+            func_dk64_boot_800031E0(&sp60, "%d!", D_jetpac_8002EC30.player[playerIndex].lives);
             func_jetpac_8002AEFC(arg0, &sp60, (playerIndex * 0x70) + 0x60, 0x18, 0);
         }
     }
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002E9D8, 0xF8, 0x18, temp_s0 != 0 && D_jetpac_8002EF74 == 1);
+    func_jetpac_8002AEFC(arg0, "2UP", 0xF8, 0x18, temp_s0 != 0 && D_jetpac_8002EF74 == 1);
     func_jetpac_8002AE94(0, 0xFF, 0xFF, 0xFF);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002E9DC, 0x98, 0x18, 0);
+    func_jetpac_8002AEFC(arg0, "HI", 0x98, 0x18, 0);
     func_jetpac_8002AE94(0xFF, 0xFF, 0, 0xFF);
-    func_dk64_boot_800031E0(&sp60, &D_jetpac_8002E9E0, D_jetpac_8002EC50);
+    func_dk64_boot_800031E0(&sp60, "%06d", D_jetpac_8002EC50);
     func_jetpac_8002AEFC(arg0, &sp60, 0x28, 0x20, 0);
-    func_dk64_boot_800031E0(&sp60, &D_jetpac_8002E9E8, D_jetpac_8002EC48);
+    func_dk64_boot_800031E0(&sp60, "%06d", D_jetpac_8002EC48);
     func_jetpac_8002AEFC(arg0, &sp60, 0x88, 0x20, 0);
-    func_dk64_boot_800031E0(&sp60, &D_jetpac_8002E9F0, D_jetpac_8002EDE4);
+    func_dk64_boot_800031E0(&sp60, "%06d", D_jetpac_8002EDE4);
     func_jetpac_8002AEFC(arg0, &sp60, 0xE8, 0x20, 0);
 }
 */
@@ -165,26 +158,18 @@ void func_jetpac_8002463C() {
     func_jetpac_800250A0();
 }
 
-extern s32 D_jetpac_8002E9F8;
-extern s32 D_jetpac_8002EA10;
-extern s32 D_jetpac_8002EA24;
-extern s32 D_jetpac_8002EA38;
-extern s32 D_jetpac_8002EA48;
-extern s32 D_jetpac_8002EA60;
-extern s32 D_jetpac_8002EA70;
-
 void func_jetpac_8002466C(Gfx **arg0) {
-    s32 sp28[10]; // TODO: Datatype
+    char sp28[40];
 
     func_jetpac_80024408();
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002E9F8, 0x50, 0x38, 0);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002EA10, 0x50, 0x50, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk348 == 1);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002EA24, 0x50, 0x60, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk348 == 2);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002EA38, 0x50, 0x70, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk34C == 0);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002EA48, 0x50, 0x80, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk34C != 0);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002EA60, 0x50, 0xB8, 0);
-    func_dk64_boot_800031E0(&sp28, &D_jetpac_8002EA70, 0x7F);
+    func_jetpac_8002AEFC(arg0, "JETPAC GAME SELECTION", 0x50, 0x38, 0);
+    func_jetpac_8002AEFC(arg0, "1@@@1@PLAYER@GAME", 0x50, 0x50, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk348 == 1);
+    func_jetpac_8002AEFC(arg0, "2@@@2@PLAYER@GAME", 0x50, 0x60, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk348 == 2);
+    func_jetpac_8002AEFC(arg0, "3@@@KEYBOARD", 0x50, 0x70, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk34C == 0);
+    func_jetpac_8002AEFC(arg0, "4@@@KEMPSTON@JOYSTICK", 0x50, 0x80, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk34C != 0);
+    func_jetpac_8002AEFC(arg0, "5   START GAME", 0x50, 0xB8, 0);
+    func_dk64_boot_800031E0(&sp28, "%c1983 A.C.G. ALL RIGHTS RESERVED", 0x7F);
     func_jetpac_8002AEFC(arg0, &sp28, 0x20, 0xD8, 0);
     if (D_jetpac_8002EC30.unk798 != 0) {
         if (!(D_jetpac_8002EC30.unk8 & 0x1000) && (D_jetpac_8002EC30.unk799 < 0x78)) {
@@ -262,18 +247,15 @@ void func_jetpac_80024A4C(void) {
 }
 
 extern s32 D_jetpac_8002BA6C;
-extern s32 D_jetpac_8002EA94; // TODO: Datatype
-extern s32 D_jetpac_8002EA9C; // TODO: Datatype
-extern s32 D_jetpac_8002EAAC; // TODO: Datatype
 
 void func_jetpac_80024A8C(Gfx **arg0) {
     enum map_e var_a0;
 
     func_jetpac_80024408();
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002EA94, 0x88, 0x70, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unkC == 1);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002EA9C, 0x68, 0x80, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unkC == 2);
-    func_jetpac_8002AEFC(arg0, &D_jetpac_8002EAAC, 0x70, 0x90, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unkC == 0);
+    func_jetpac_8002AEFC(arg0, "RETURN", 0x88, 0x70, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unkC == 1);
+    func_jetpac_8002AEFC(arg0, "DELETE@HISCORE", 0x68, 0x80, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unkC == 2);
+    func_jetpac_8002AEFC(arg0, "EXIT@@JETPAC", 0x70, 0x90, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unkC == 0);
     if (D_jetpac_8002EC30.unk8 & 0xE000) {
         switch (D_jetpac_8002EC30.unkC) {
             default:
@@ -328,8 +310,6 @@ void func_jetpac_80024C90(s32 arg0) {
     func_jetpac_80025904(arg0);
 }
 
-extern s32 D_jetpac_8002EABC;
-extern s32 D_jetpac_8002EAD4;
 void func_jetpac_80024F9C(u8);
 void func_jetpac_800275F4(Competitor *);
 void func_jetpac_80027D64(Competitor *);
@@ -343,10 +323,10 @@ void func_jetpac_80024D48(Gfx **arg0) {
     sp4C = 7;
     func_jetpac_80024408();
     if ((D_jetpac_8002EC30.unk798 != 0) && (isFlagSet(0x62, FLAG_TYPE_TEMPORARY) != 0)) {
-        func_dk64_boot_800031E0(&sp2C, &D_jetpac_8002EABC);
+        func_dk64_boot_800031E0(&sp2C, "RAREWARE COIN COLLECTED");
         sp4C = 5;
     } else {
-        func_dk64_boot_800031E0(&sp2C, &D_jetpac_8002EAD4, D_jetpac_8002EC30.player_index + 1);
+        func_dk64_boot_800031E0(&sp2C, "GAME OVER PLAYER %d", D_jetpac_8002EC30.player_index + 1);
     }
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
     func_jetpac_8002AEFC(arg0, &sp2C, (sp4C * 8) + 0x20, 0x88, 0);
@@ -362,7 +342,6 @@ void func_jetpac_80024D48(Gfx **arg0) {
     }
 }
 
-// rodata?
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_80024E70.s")
 
 extern s32 D_global_asm_80770DF8[];
