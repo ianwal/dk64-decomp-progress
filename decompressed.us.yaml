@@ -379,7 +379,7 @@ segments:
       - [0x215E790, .rodata, code_89250]
       - [0x215E8B0, .rodata, code_8D3E0]
       - [0x215EA00, rodata] # code_8F4B0, TODO: Offsets may be wrong???
-      - [0x215EC70, rodata] # code_936B0
+      - [0x215EC70, .rodata, code_936B0]
       - [0x215EEF0, .rodata, code_9BF30]
       - [0x215EF40, .rodata, code_9CE20]
       - [0x215EFD0, rodata] # code_9DD70, codeA2F10??
