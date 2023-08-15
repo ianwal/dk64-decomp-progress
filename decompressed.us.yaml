@@ -421,10 +421,10 @@ segments:
       - [0x2163880, rodata] # code_1295B0, code12E800?
       - [0x2164880, rodata] # code_12E800
       - [0x2164C50, rodata] # code_133A90
-      - [0x2164CF0, rodata] # code_136820
+      - [0x2164CF0, .rodata, code_136820]
       - [0x2164E90, .rodata, audio/code_137630]
-      - [0x2164EA0, rodata] # audio/code_137C10
-      - [0x2165150, rodata] # audio/code_13A7A0
+      - [0x2164EA0, .rodata, audio/code_137C10]
+      - [0x2165150, .rodata, audio/code_13A7A0]
       - [0x2165190, .rodata, audio/synthesizer]
       - [0x21651A0, .rodata, audio/code_13ECE0]
       - [0x21651B0, .rodata, audio/code_140600]

@@ -1,18 +1,64 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 D_global_asm_8071FFA0;
+extern s32 D_global_asm_80720020; // TODO: Type
+extern s32 D_global_asm_80720054; // TODO: Datatype
+extern s32 D_global_asm_807200EC; // TODO: Datatype
+extern s32 D_global_asm_80720120; // TODO: Datatype
+extern s32 D_global_asm_807201D4;
+extern s32 D_global_asm_807202D0; // TODO: Type
+extern s32 D_global_asm_80720BE8;
+
 extern u8 D_global_asm_80750270;
 extern s16 D_global_asm_807502D0;
 extern f32 D_global_asm_807502E4;
+extern f32 D_global_asm_80750300;
+extern s16 D_global_asm_80750344;
+extern u8 D_global_asm_80750AD0;
 
+// .rodata
+extern f32 D_global_asm_80759F70;
+extern f32 D_global_asm_80759F74;
+extern f32 D_global_asm_80759F78;
 extern f64 D_global_asm_8075A070;
+extern f64 D_global_asm_8075A078;
+extern f64 D_global_asm_8075A080;
+extern f64 D_global_asm_8075A088;
+extern f64 D_global_asm_8075A090;
+extern f64 D_global_asm_8075A098;
+extern f64 D_global_asm_8075A0A0;
+extern f64 D_global_asm_8075A0A8;
+extern f64 D_global_asm_8075A0B0;
 extern f32 D_global_asm_8075A0B8; // 16.0627460479736328125
+extern f32 D_global_asm_8075A0BC;
 extern f64 D_global_asm_8075A0C0;
 extern f64 D_global_asm_8075A0C8;
+extern f32 D_global_asm_8075A118;
+extern f32 D_global_asm_8075A11C;
+extern f32 D_global_asm_8075A120;
+extern f32 D_global_asm_8075A124;
+extern f32 D_global_asm_8075A14C;
+
+extern u32 D_global_asm_8076A068;
+
+extern s16 D_global_asm_80770628[];
+extern f32 D_global_asm_80770B68[];
+extern f32 D_global_asm_80770BC0[];
 
 extern f32 D_global_asm_807FC7B0;
 extern f32 D_global_asm_807FC7B4;
 extern f32 D_global_asm_807FC7B8;
+
+extern u8 D_global_asm_807FBB85;
+
+u32 func_global_asm_806119A0();
+s32 func_global_asm_8061C6A8(s32, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_global_asm_8061EF4C(Actor*, s32, s32, f32, f32, f32, f32, f32);
+void func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
+void func_global_asm_8065D254(Actor *, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+s32 func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
+int func_global_asm_8071ABDC();
 
 void func_global_asm_8068E9B0(Actor **arg0) {
     f32 sp2C;
@@ -55,8 +101,6 @@ void func_global_asm_8068EA38(Actor **arg0) {
     func_global_asm_806319C4(*arg0, 0);
 }
 
-void func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -87,12 +131,6 @@ s32 func_global_asm_8068EB3C(f32 arg0, f32 arg1, f32 arg2, Struct8068EB3C_arg4 *
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8068ECF4.s")
-
-extern f32 D_global_asm_80759F70;
-extern f32 D_global_asm_80759F74;
-extern f32 D_global_asm_80759F78;
-
-extern s32 D_global_asm_80720054; // TODO: Datatype
 
 /*
 // TODO: Very close
@@ -202,19 +240,6 @@ void func_global_asm_80690094(Actor *arg0, Actor *arg1) {
     func_global_asm_8067B238(arg0, arg1, 0.15f);
 }
 
-u32 func_global_asm_806119A0();
-extern f64 D_global_asm_8075A078;
-extern f64 D_global_asm_8075A080;
-extern f64 D_global_asm_8075A088;
-extern f64 D_global_asm_8075A090;
-extern f64 D_global_asm_8075A098;
-extern f64 D_global_asm_8075A0A0;
-extern f64 D_global_asm_8075A0A8;
-extern f64 D_global_asm_8075A0B0;
-extern s16 D_global_asm_80770628[];
-extern f32 D_global_asm_80770B68[];
-extern f32 D_global_asm_80770BC0[];
-
 typedef struct {
     f32 unk0;
     f32 unk4; // Used
@@ -275,11 +300,6 @@ void func_global_asm_80690470(Actor *arg0) {
     PaaD->vehicle_actor_pointer = sp18;
     sp18->object_properties_bitfield &= 0xFFFDFFFF;
 }
-
-s32 func_global_asm_8061C6A8(s32, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-s32 func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
-extern f32 D_global_asm_80750300;
-extern f32 D_global_asm_8075A0BC;
 
 typedef struct {
     u8 unk0[0x28 - 0x0];
@@ -429,9 +449,6 @@ void func_global_asm_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 arg
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80690F30.s")
 
-extern s32 D_global_asm_8071FFA0;
-extern u8 D_global_asm_80750AD0;
-
 void func_global_asm_806915B0(void) {
     f32 randomZ;
     f32 randomY;
@@ -509,13 +526,6 @@ void func_global_asm_80691930(u8 arg0, u8 arg1, f32 arg2, f32 arg3, u8 arg4, u8 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_806919E0.s")
 
-extern s32 D_global_asm_80720120;
-extern s32 D_global_asm_80720BE8;
-extern f32 D_global_asm_8075A118;
-extern f32 D_global_asm_8075A11C;
-extern u32 D_global_asm_8076A068;
-extern u8 D_global_asm_807FBB85;
-
 typedef struct {
     s32 unk0;
     u8 unk4[0x12 - 0x4];
@@ -577,9 +587,6 @@ void func_global_asm_80692520(void) {
     func_global_asm_806921DC(1);
 }
 
-// TODO: What datatype is this?
-extern s32 D_global_asm_807201D4;
-
 void func_global_asm_80692540(void) {
     func_global_asm_806919E0(&D_global_asm_807201D4);
 }
@@ -604,14 +611,6 @@ void func_global_asm_806925AC(void) {
         }
     }
 }
-
-void func_global_asm_8065D254(Actor *, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-extern s32 D_global_asm_80720020; // TODO: Type
-extern s32 D_global_asm_807202D0; // TODO: Type
-extern s16 D_global_asm_80750344;
-extern f32 D_global_asm_8075A120;
-extern f32 D_global_asm_8075A124;
-extern u32 D_global_asm_8076A068;
 
 typedef struct {
     s32 unk0;
@@ -666,14 +665,6 @@ void func_global_asm_80692640(void) {
 
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8069329C.s")
-
-void func_global_asm_8061EF4C(Actor*, s32, s32, f32, f32, f32, f32, f32);
-
-int func_global_asm_8071ABDC();
-extern s32 D_global_asm_807200EC; // TODO: Datatype
-extern s32 D_global_asm_80720120; // TODO: Datatype
-extern u8 D_global_asm_80750AD0;
-extern f32 D_global_asm_8075A14C;
 
 /*
 void func_global_asm_8069329C(void) {

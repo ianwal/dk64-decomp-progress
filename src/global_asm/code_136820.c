@@ -1,6 +1,34 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// .rodata
+const char D_global_asm_8075FFF0[] = "CLIP ARRAY OVERFLOW";
+const char D_global_asm_80760004[] = "MAIN STACK OVERFLOW";
+const char D_global_asm_80760018[] = "DFS OVERFLOW";
+const char D_global_asm_80760028[] = "OUT OF MEMORY";
+const char D_global_asm_80760038[] = "DATABASE ERROR";
+const char D_global_asm_80760048[] = "DMA ERROR";
+const char D_global_asm_80760054[] = "LOOKUP ERROR";
+const char D_global_asm_80760064[] = "TOO MANY OBJECTS";
+const char D_global_asm_80760078[] = "KILL SOUND ERROR";
+const char D_global_asm_8076008C[] = "STORED STATE ERROR";
+const char D_global_asm_807600A0[] = "MATRIX COPY ERROR";
+const char D_global_asm_807600B4[] = "DELAYED KILLS OVERFLOW";
+const char D_global_asm_807600CC[] = "LOCK STACK OVERFLOW";
+const char D_global_asm_807600E0[] = "POSTFUNCTIONS OVERFLOW";
+const char D_global_asm_807600F8[] = "SIGNALS OVERFLOW";
+const char D_global_asm_8076010C[] = "SORT LIST EARLY ERROR";
+const char D_global_asm_80760124[] = "SORT LIST LATE ERROR";
+const char D_global_asm_8076013C[] = "DISPLAY LIST ERROR";
+const char D_global_asm_80760150[] = "OBJECT EXIST OVERFLOW";
+
+/*
+const char D_global_asm_80760168[] = "DK 64\n";
+const char D_global_asm_80760170[] = "%X\n";
+const char D_global_asm_80760174[] = "%X\n";
+const char D_global_asm_80760178[] = "%X\n";
+const char D_global_asm_8076017C[] = "%s %x %x %x";
+*/
 
 extern s32 D_global_asm_80744470[];
 
@@ -88,17 +116,11 @@ void func_global_asm_80731D20(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 */
 
-// regalloc, rodata
+// regalloc, rodata, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80731E68.s")
 
 extern s32 D_global_asm_80756360[];
 extern s32 D_global_asm_807563B8;
-
-extern s32 D_global_asm_80760168; // TODO: Datatype
-extern s32 D_global_asm_80760170; // TODO: Datatype
-extern s32 D_global_asm_80760174; // TODO: Datatype
-extern s32 D_global_asm_80760178; // TODO: Datatype
-extern s32 D_global_asm_8076017C; // TODO: Datatype
 
 typedef struct {
     s32 unk0;
@@ -128,6 +150,8 @@ typedef struct {
     Struct80731E68_unk20 *unk20;
 } Struct80731E68;
 
+void func_global_asm_80731D20(char*, ...);
+
 /*
 void func_global_asm_80731E68(Struct80731E68 *arg0) {
     s32 *var_s1;
@@ -143,17 +167,17 @@ void func_global_asm_80731E68(Struct80731E68 *arg0) {
         D_global_asm_807FEF7C = i * 3;
         D_global_asm_807FEF70 = i * 3;
         D_global_asm_807FEF74 = i;
-        func_global_asm_80731D20(&D_global_asm_80760168);
-        func_global_asm_80731D20(&D_global_asm_80760170, temp_s6->unkFC);
-        func_global_asm_80731D20(&D_global_asm_80760174, temp_s6->unkE4);
+        func_global_asm_80731D20("DK 64\n");
+        func_global_asm_80731D20("%X\n", temp_s6->unkFC);
+        func_global_asm_80731D20("%X\n", temp_s6->unkE4);
         if (D_global_asm_807563B8 >= 4) {
             for (j = 0; j < D_global_asm_807FF018; j++) {
-                func_global_asm_80731D20(&D_global_asm_80760178, D_global_asm_807FEF88[j].unk0);
+                func_global_asm_80731D20("%X\n", D_global_asm_807FEF88[j].unk0);
             }
         }
     }
     if (D_global_asm_807FF01C != 0) {
-        func_global_asm_80731D20(&D_global_asm_8076017C, D_global_asm_80756360[D_global_asm_807FF01C], D_global_asm_807FF020, D_global_asm_807FF024, D_global_asm_807FF028);
+        func_global_asm_80731D20("%s %x %x %x", D_global_asm_80756360[D_global_asm_807FF01C], D_global_asm_807FF020, D_global_asm_807FF024, D_global_asm_807FF028);
     }
     if (D_global_asm_807563B8 < 4) {
         D_global_asm_807563B8++;

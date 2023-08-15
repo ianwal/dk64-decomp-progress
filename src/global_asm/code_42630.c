@@ -7,24 +7,6 @@ extern s32 D_global_asm_8071FFA0;
 extern s32 D_global_asm_80720A7C;
 extern s32 D_global_asm_80721530;
 
-extern u8 D_global_asm_80750AB4;
-extern s32 D_global_asm_807552E8;
-extern f64 D_global_asm_80758AA8; // Z position
-extern f64 D_global_asm_80758AB0; // X position
-extern f64 D_global_asm_80758AB8; // Radius for dx/dz
-extern f64 D_global_asm_80758BD8;
-
-extern f32 D_global_asm_807F621C; // X
-extern f32 D_global_asm_807F6220; // Y
-extern f32 D_global_asm_807F6224; // Z
-extern f32 D_global_asm_807F6228;
-extern f32 D_global_asm_807F622C; // Y Rotation
-extern f32 D_global_asm_807F6230;
-extern f32 D_global_asm_807F6234;
-extern f32 D_global_asm_807F6238;
-extern s8 D_global_asm_807F6950;
-extern s8 D_global_asm_807F6951;
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -39,25 +21,20 @@ typedef struct {
 
 extern u16 D_global_asm_807446C0[];
 
+extern u8 D_global_asm_80748214[];
+extern Struct80748280 D_global_asm_80748280;
+extern Struct8074828C D_global_asm_8074828C;
 extern s16 D_global_asm_807480D0;
 extern s16 D_global_asm_807480D4;
 extern s16 D_global_asm_807480D8;
 extern f32 D_global_asm_807480E0;
 extern f32 D_global_asm_807480E4;
-extern u8 D_global_asm_80748214[];
-extern Struct80748280 D_global_asm_80748280;
-extern Struct8074828C D_global_asm_8074828C;
 extern f32 D_global_asm_807482A4;
 
-extern f32 D_global_asm_807F621C;
-extern f32 D_global_asm_807F6220;
-extern f32 D_global_asm_807F6224;
-extern f32 D_global_asm_807F6228;
-extern f32 D_global_asm_807F622C;
-extern f32 D_global_asm_807F6230;
-extern f32 D_global_asm_807F6234;
-extern s32 D_global_asm_807F6C28;
-
+extern u8 D_global_asm_80750AB4;
+extern s32 D_global_asm_807552E8;
+extern f64 D_global_asm_80758AA8; // Z position
+extern f64 D_global_asm_80758AB0; // X position
 extern f32 D_global_asm_80758AA4;
 extern f64 D_global_asm_80758AF8;
 extern f64 D_global_asm_80758B00;
@@ -67,9 +44,32 @@ extern f32 D_global_asm_80758B28;
 extern f32 D_global_asm_80758B70;
 extern f32 D_global_asm_80758B74;
 
+extern f64 D_global_asm_80758AB8; // Radius for dx/dz
+extern f64 D_global_asm_80758BD8;
+
 extern f32 D_global_asm_80770B68[];
 extern f32 D_global_asm_80770BC0[];
 extern s16 D_global_asm_80770628[];
+
+extern f32 D_global_asm_807F621C; // X
+extern f32 D_global_asm_807F6220; // Y
+extern f32 D_global_asm_807F6224; // Z
+extern f32 D_global_asm_807F6228;
+extern f32 D_global_asm_807F622C; // Y Rotation
+extern f32 D_global_asm_807F6230;
+extern f32 D_global_asm_807F6234;
+extern f32 D_global_asm_807F6238;
+extern s8 D_global_asm_807F6950;
+extern s8 D_global_asm_807F6951;
+
+extern f32 D_global_asm_807F621C;
+extern f32 D_global_asm_807F6220;
+extern f32 D_global_asm_807F6224;
+extern f32 D_global_asm_807F6228;
+extern f32 D_global_asm_807F622C;
+extern f32 D_global_asm_807F6230;
+extern f32 D_global_asm_807F6234;
+extern s32 D_global_asm_807F6C28;
 
 extern u16 D_global_asm_807FC930[];
 

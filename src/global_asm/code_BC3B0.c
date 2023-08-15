@@ -142,22 +142,22 @@ void func_global_asm_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2);
 /*
 // TODO: Excruciatingly close, just an issue with some function calls
 void func_global_asm_806B7EA0(void) {
-    Actor178_806B7EA0 *temp_s0;
+    Actor178_806B7EA0 *a178;
     f32 sp40;
     f32 sp3C;
 
-    temp_s0 = current_actor_pointer->unk178;
+    a178 = current_actor_pointer->unk178;
     func_global_asm_80729B00();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC98->unk46 |= 0x60;
         D_global_asm_807FBB64 |= 2;
         func_global_asm_806A2A10(0xDC, 0x2A, D_global_asm_807FDC9C->unkA_s16 != 0 ? D_global_asm_807FDC9C->unkA_s16 : 0xA);
         D_global_asm_807FDC90->unk2E       = D_global_asm_807FDC9C->unkA_s16 != 0 ? 0xF : 0x78;
-        temp_s0->unk18          = D_global_asm_807FDC9C->unkA_s16 != 0 ? D_global_asm_807FDC9C->unkA_s16 : 10.0f;
+        a178->unk18          = D_global_asm_807FDC9C->unkA_s16 != 0 ? D_global_asm_807FDC9C->unkA_s16 : 10.0f;
     }
 
     if (D_global_asm_807FDC90->unk2E != 0) {
-        if (func_global_asm_8061CB50() == 0) {
+        if (!func_global_asm_8061CB50()) {
             D_global_asm_807FDC90->unk2E--;
         }
     }
@@ -176,28 +176,28 @@ void func_global_asm_806B7EA0(void) {
             playCutscene(NULL, 6, 5);
             current_actor_pointer->control_state = 0x11;
             current_actor_pointer->control_state_progress = 0;
-            temp_s0->unk10 = D_global_asm_807FDC94->x_position;
-            temp_s0->unk12 = D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E;
-            temp_s0->unk14 = D_global_asm_807FDC94->z_position;
+            a178->unk10 = D_global_asm_807FDC94->x_position;
+            a178->unk12 = D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E;
+            a178->unk14 = D_global_asm_807FDC94->z_position;
             D_global_asm_807FDC90->unk2C = 0x14;
         }
         current_actor_pointer->unk6E[0]++;
-        if (temp_s0->unk18 < current_actor_pointer->unk6E[0]) {
+        if (a178->unk18 < current_actor_pointer->unk6E[0]) {
             playSound(0x15B, 0x7FFF, 63.0f, 1.0f, 0, 0x80);
             current_actor_pointer->unk6E[0] = 0;
-            if (temp_s0->unk18 > 2.0f) {
-                temp_s0->unk18 -= 0.18;
+            if (a178->unk18 > 2.0f) {
+                a178->unk18 -= 0.18;
             }
         }
         switch (current_actor_pointer->control_state) {
             case 0x23:
-                if (func_global_asm_8061CC00() == 0) {
+                if (!func_global_asm_8061CC00()) {
                     func_global_asm_80626F8C(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position, &sp40, &sp3C, 0, 1.0f, 0);
-                    func_global_asm_806B7C74(temp_s0, sp40, sp3C);
+                    func_global_asm_806B7C74(a178, sp40, sp3C);
                 }
                 break;
             case 0x11:
-                if (func_global_asm_8061CC00() == 0) {
+                if (!func_global_asm_8061CC00()) {
                     func_global_asm_8068C350(&func_global_asm_806B7830, current_actor_pointer, 3);
                 }
                 if (D_global_asm_807FDC90->unk2C != 0) {
@@ -206,15 +206,15 @@ void func_global_asm_806B7EA0(void) {
                         playSound(0x175, 0x7FFF, 63.0f, 1.0f, 0, 0);
                     }
                 } else {
-                    func_global_asm_806B7BB8(temp_s0);
+                    func_global_asm_806B7BB8(a178);
                     D_global_asm_807FDC90->unk2E = 0x64;
-                    temp_s0->unk18 = D_global_asm_807FDC9C->unkA_s16 != 0 ? D_global_asm_807FDC9C->unkA_s16 : 10.0f;
+                    a178->unk18 = D_global_asm_807FDC9C->unkA_s16 != 0 ? D_global_asm_807FDC9C->unkA_s16 : 10.0f;
                 }
-                func_global_asm_80626F8C(temp_s0->unk10, temp_s0->unk12, temp_s0->unk14, temp_s0, &temp_s0->unk4, 0, 1.0f, 0);
+                func_global_asm_80626F8C(a178->unk10, a178->unk12, a178->unk14, a178, &a178->unk4, 0, 1.0f, 0);
                 break;
 
         }
-        if (func_global_asm_8061CC00() == 0) {
+        if (!func_global_asm_8061CC00()) {
             func_global_asm_8068C350(&func_global_asm_806B76B0, current_actor_pointer, 3);
         }
     }

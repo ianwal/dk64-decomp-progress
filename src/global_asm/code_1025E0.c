@@ -20,7 +20,6 @@ void func_global_asm_806FD950(void *arg0, s16 arg1, void *arg2, s16 arg3) {
     func_global_asm_806FC530(arg0, arg1, 0x60, arg3 * 4, arg2, 1);
 }
 
-
 typedef struct GlobalASMStruct2 GlobalASMStruct2;
 
 struct GlobalASMStruct2 {
