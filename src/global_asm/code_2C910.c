@@ -2,7 +2,47 @@
 #include "functions.h"
 
 
-extern u8 D_global_asm_80757F70[];
+const u8 D_global_asm_80757F70[] = {    
+    0xFF,
+    0xFF,
+    0xFF,
+    0xC8,
+    0x00,
+    0x32,
+    0xDC,
+    0xC8,
+    0x00,
+    0x32,
+    0xC8,
+    0x00,
+    0xCA,
+    0x5B,
+    0xFF,
+    0x00,
+    0x96,
+    0xFF,
+    0x32,
+    0x32,
+    0xFA,
+    0x00,
+    0x00,
+    0x00,
+};
+
+/*
+const char D_global_asm_80757F88[] = ":";
+const f64 D_global_asm_807580A8 = 0.01;
+const f64 D_global_asm_807580B0 = 127.5;
+const f64 D_global_asm_807580B8 = 255.0;
+const f64 D_global_asm_807580C0 = 32767.0;
+const f64 D_global_asm_807580C8 = 16383.5;
+const f64 D_global_asm_807580D0 = 127.0;
+const f64 D_global_asm_807580D8 = 255.0;
+const f64 D_global_asm_807580E0 = 32767.0;
+const f64 D_global_asm_807580E8 = 16383.5;
+const f64 D_global_asm_807580F0 = 127.0;
+const f64 D_global_asm_807580F8 = 255.0;
+*/
 
 void func_global_asm_80627C10(u8 arg0) {
     s32 index = arg0 * 3;
@@ -33,7 +73,7 @@ void func_global_asm_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
     temp_v0 = func_global_asm_8070E750(1, temp_a3, 1, temp_a3);
     var_s0 = temp_v0;
     if (func_dk64_boot_80002ECC(temp_v0, 0x3A) != 0) {
-        temp_a3_2 = func_dk64_boot_80002C74(var_s0, &D_global_asm_80757F88) + 1;
+        temp_a3_2 = func_dk64_boot_80002C74(var_s0, ":") + 1;
         sp42 = temp_a3_2;
         func_dk64_boot_80002A64(&sp44, var_s0, temp_a3_2, temp_a3_2);
         *(&sp44 + sp42) = 0;

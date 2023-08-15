@@ -26,13 +26,13 @@ void func_global_asm_80663C60(f32 *arg0, s16 arg1) {
             phi_f2 = 900.0f;
         }
         temp_f0 = *arg0;
-        *arg0 = ((phi_f2 - temp_f0) * 0.0299999999999999989) + temp_f0;
+        *arg0 = ((phi_f2 - temp_f0) * 0.03) + temp_f0;
     }
     for (phi_a0 = 0; phi_a0 < sp26; phi_a0++) {
         temp_v0 = &D_global_asm_80748B70[phi_a0];
         if (current_map == temp_v0->unk0 && (arg1 == temp_v0->unk2 || temp_v0->unk2 == -1)) {
             temp_f0_2 = *arg0;
-            *arg0 = ((temp_v0->unk4 - temp_f0_2) * 0.0299999999999999989) + temp_f0_2;
+            *arg0 = ((temp_v0->unk4 - temp_f0_2) * 0.03) + temp_f0_2;
             return;
         }
     }

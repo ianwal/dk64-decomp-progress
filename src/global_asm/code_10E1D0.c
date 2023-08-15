@@ -240,7 +240,6 @@ u8 isIntroStoryPlaying(void) {
 extern s8 D_global_asm_8074583C;
 extern u8 D_global_asm_8076A0B1;
 extern s32 D_global_asm_807550A4;
-extern f32 D_global_asm_8075E430;
 
 void func_global_asm_80737B58(s32, u16);
 void func_global_asm_8060A4D0(s32, f32);
@@ -254,7 +253,7 @@ void func_global_asm_8070B324(f32 arg0, s32 arg1, s32 *arg2) {
     u16 temp_t7;
     s32 var_a0;
 
-    temp_t7 = (D_global_asm_8075E430 * arg0);
+    temp_t7 = (25000.0f * arg0);
     temp_s0 = ((temp_t7 * D_global_asm_8074583C) / 40.0);
     sp34 = osGetThreadPri(NULL);
     osSetThreadPri(NULL, 0x1A);

@@ -3,7 +3,7 @@
 
 void *func_global_asm_805FD030(Gfx*);                           // extern
 void func_global_asm_8068E7B4(Gfx *, f32, f32, s32);         // extern
-extern f32 D_multiplayer_80027060;
+
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 extern u8 D_global_asm_80750AB8;
@@ -35,7 +35,7 @@ void func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
     if (D_global_asm_80750AB8 == 1) {
         gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
         gDPSetPrimColor(dl++, 0, 0, 0x00, 0x78, 0xFF, 0x50);
-        dl = func_global_asm_8068C5A8(dl, 0x60, 4, 0, 0x40, 0x40, var_f2 * 4.0f, var_f12 * 4.0f, D_multiplayer_80027060, 2.0f, 0xB4, 0.0f);
+        dl = func_global_asm_8068C5A8(dl, 0x60, 4, 0, 0x40, 0x40, var_f2 * 4.0f, var_f12 * 4.0f, 3.7f, 2.0f, 0xB4, 0.0f);
     }
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -47,7 +47,7 @@ typedef struct {
     u16 unk2FE[4]; // TODO: how many?
 } Struct800241F4;
 
-s32 func_multiplayer_800241F4(Struct800241F4 *arg0, s32 arg1) {
+s32 func_multiplayer_800241F4(PlayerProgress *arg0, s32 arg1) {
     s32 var_v1;
     s32 temp = arg1;
 
@@ -67,8 +67,28 @@ s32 func_multiplayer_800241F4(Struct800241F4 *arg0, s32 arg1) {
     return var_v1;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80024254.s")
+extern u32 D_global_asm_807552E8;
+
+s32 func_multiplayer_80024254(s32 arg0) {
+    s32 var_v0;
+
+    var_v0 = 0;
+    switch (D_global_asm_807552E8) {
+        case 2:
+        case 3:
+            var_v0 = func_global_asm_806F8AD4(1, arg0);
+            break;
+        case 4:
+        case 5:
+            var_v0 = func_global_asm_806F8AD4(7, arg0);
+            break;
+        case 0:
+        case 1:
+            var_v0 = func_multiplayer_800241F4(&D_global_asm_807FC950[arg0], arg0);
+            break;
+    }
+    return var_v0;
+}
 
 typedef struct MultiplayerStruct4 {
     u8 pad0[0x4C];
@@ -87,7 +107,6 @@ typedef struct MultiplayerStruct0 {
 } MultiplayerStruct0;
 
 void func_global_asm_806F91B4(s32, u8, s16);
-extern s32 D_global_asm_807552E8;
 s32 func_multiplayer_80026BD8(s32);
 void func_global_asm_806C9434(s32);
 void func_global_asm_806CFF9C(Actor*);
@@ -279,7 +298,6 @@ s32 func_multiplayer_80025404();
 s32 func_multiplayer_80025608(s32);
 s32 func_global_asm_806F5EB4(s32, s32, s16, s16, s32);
 void func_global_asm_806F5FE8(s32, s16, s16, s16, s32);
-extern s32 D_global_asm_807552E8;
 extern s32 D_global_asm_807552F0;
 
 // TODO: Pretty close, but dealing with fiddly logic and stack stuff is a pain
@@ -400,7 +418,6 @@ void func_multiplayer_800268C0(u8 arg0) {
 }
 
 void func_global_asm_806F0C18(Actor*);
-extern s32 D_global_asm_807552E8;
 
 void func_multiplayer_800268DC(Actor *arg0, PlayerAdditionalActorData *arg1, PlayerProgress *arg2) {
     arg2->crystals = 0;
@@ -428,7 +445,6 @@ void func_multiplayer_8002698C(MultiplayerStruct0 *arg0) {
 
 void func_multiplayer_80025F84();
 void func_global_asm_806A5DF0(u16, f32, f32, f32, s32, s32, s32, s32);
-extern s32 D_global_asm_807552E8;
 
 typedef struct {
     u8 unk0[0x4C];
@@ -476,59 +492,45 @@ void func_multiplayer_80026B0C(s32 arg0) {
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80026BD8.s")
-
-/*
 s32 func_multiplayer_80026BD8(s32 arg0) {
-    ExitData *temp_v0;
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f14;
-    f32 temp_f24;
-    f32 temp_f2;
-    f32 var_f20;
+    ExitData *exit;
+    f32 dx;
+    f32 dz;
+    f32 d;
+    f32 dy;
+    f32 closest;
     f32 var_f22;
-    s32 var_a1;
-    s32 var_s1;
-    s32 var_s4;
+    s32 playyerIndex;
+    s32 exitIndex;
+    s32 chosenExit;
     u8 temp_v1;
-    Actor *temp_v1_2;
+    Actor *player;
     CharacterChange *var_a0;
 
     var_f22 = 0.0f;
-    var_s4 = 0;
-    temp_f24 = *(f32 *)0x800270F4;
-    for (var_s1 = 0; var_s1 < 4; var_s1++) {
-        var_f20 = temp_f24;
-        temp_v0 = getExitData(var_s1);
-        temp_v1 = cc_number_of_players;
-        var_a1 = 0;
-        if ((s32) temp_v1 > 0) {
-            var_a0 = character_change_array;
-            do {
-                var_a1 += sizeof(CharacterChange);
-                temp_v1_2 = var_a0->player_pointer;
-                if ((var_a0->does_player_exist != 0) && (temp_v1_2->control_state != 0x84)) {
-                    temp_f0 = (f32) temp_v0->x_pos - temp_v1_2->x_position;
-                    temp_f2 = (f32) temp_v0->y_pos - temp_v1_2->y_position;
-                    temp_f12 = (f32) temp_v0->z_pos - temp_v1_2->z_position;
-                    temp_f14 = (temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f12 * temp_f12);
-                    if (temp_f14 < var_f20) {
-                        var_f20 = temp_f14;
-                    }
+    chosenExit = 0;
+    for (exitIndex = 0; exitIndex < 4; exitIndex++) {
+        closest = 9999999.0f;
+        exit = getExitData(exitIndex);
+        for (playyerIndex = 0; playyerIndex < cc_number_of_players; playyerIndex++) {
+            player = character_change_array[playyerIndex].player_pointer;
+            if ((character_change_array[playyerIndex].does_player_exist != 0) && (player->control_state != 0x84)) {
+                dx = exit->x_pos - player->x_position;
+                dy = exit->y_pos - player->y_position;
+                dz = exit->z_pos - player->z_position;
+                d = (dx * dx) + (dy * dy) + (dz * dz);
+                if (d < closest) {
+                    closest = d;
                 }
-                var_a0 += sizeof(CharacterChange);
-            } while (var_a1 < (temp_v1 * sizeof(CharacterChange)));
+            }
         }
-        if (var_f22 < var_f20) {
-            var_f22 = var_f20;
-            var_s4 = var_s1;
+        if (var_f22 < closest) {
+            var_f22 = closest;
+            chosenExit = exitIndex;
         }
-    };
-    return var_s4;
+    }
+    return chosenExit;
 }
-*/
 
 void func_multiplayer_80026D40(Actor *arg0, s32 arg1) {
     if ((D_global_asm_807552E8 == 4) && (func_multiplayer_80024254(arg1) == 0)) {
@@ -544,8 +546,6 @@ void func_multiplayer_80026D40(Actor *arg0, s32 arg1) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80026E20.s")
-
-extern s32 D_global_asm_807552E8;
 
 Actor *func_global_asm_806C9FD8(Actor *actor);
 

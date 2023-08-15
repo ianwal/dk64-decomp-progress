@@ -11,8 +11,6 @@ typedef struct JetpacStruct44 {
     s32 unk28;
 } JetpacStruct44;
 
-extern f32 D_jetpac_8002EB70;
-
 s32 func_jetpac_80027060(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     arg0 = MAX(arg0, arg4);
     arg1 = MAX(arg1, arg5);
@@ -60,7 +58,7 @@ void func_jetpac_80027108(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4, f
 }
 
 f32 func_jetpac_80027210(void) {
-    return ((rand() >> 0xF) % 60000) / D_jetpac_8002EB70;
+    return ((rand() >> 0xF) % 60000) / 60000.0f;
 }
 
 int func_jetpac_80027250(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {

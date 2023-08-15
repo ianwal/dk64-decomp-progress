@@ -1,9 +1,15 @@
 #include <ultra64.h>
 #include "functions.h"
 
+void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3);
+void func_multiplayer_80026B0C(s32);
+s32 func_global_asm_8070943C();
+s32 func_global_asm_806C8DE0(s16);
+s32 func_global_asm_807085D0(s32, PlayerProgress *, CharacterProgress *, void *);
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_global_asm_807085D0.s")
+extern s8 D_global_asm_80744504;
+
+s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2);
 
 typedef struct global_asm_struct_21 {
     f32 unk0;
@@ -13,6 +19,9 @@ typedef struct global_asm_struct_21 {
     u8 unk9;
     u8 unkA;
 } GlobalASMStruct21;
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_global_asm_807085D0.s")
 
 void func_global_asm_80708BB8(GlobalASMStruct21 *arg0) {
     if ((D_global_asm_807FBB64 & 0x800)) {
@@ -29,13 +38,8 @@ void func_global_asm_80708BB8(GlobalASMStruct21 *arg0) {
     arg0->unk0 = 4.0f;
 }
 
-void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3);
-
 // regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_global_asm_80708C24.s")
-
-void func_multiplayer_80026B0C(s32);
-s32 func_global_asm_8070943C();
 
 /*
 void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3) {
@@ -77,15 +81,6 @@ void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *a
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_global_asm_80708DA4.s")
-
-s32 func_global_asm_806C8DE0(s16);
-s32 func_global_asm_807085D0(s32, PlayerProgress *, CharacterProgress *, void *);
-extern f64 D_global_asm_8075E408;
-extern f64 D_global_asm_8075E410;
-extern f64 D_global_asm_8075E418;
-extern f64 D_global_asm_8075E420;
-
-s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2);
 
 /*
 s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2) {
@@ -140,7 +135,7 @@ s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2) {
     } else {
         switch (var_t0) {
             case 1:
-                arg2->unk2E0 = func_global_asm_80612D1C(((arg2->unk2E5 / 18.0) * D_global_asm_8075E408) + D_global_asm_8075E408) * D_global_asm_8075E410;
+                arg2->unk2E0 = func_global_asm_80612D1C(((arg2->unk2E5 / 18.0) * 1.57079637050628662) + 1.57079637050628662) * 65535.0;
                 if (arg2->unk2E5-- == 0) {
                     arg2->unk2E4 = 2;
                     arg2->unk2E5 = 0x32;
@@ -150,7 +145,7 @@ s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2) {
                 func_global_asm_80708C24(arg1, arg2, sp28, sp38);
                 break;
             case 3:
-                arg2->unk2E0 = func_global_asm_80612D1C((D_global_asm_8075E418 - ((arg2->unk2E5 / 18.0) * D_global_asm_8075E418)) + D_global_asm_8075E418) * D_global_asm_8075E420;
+                arg2->unk2E0 = func_global_asm_80612D1C((1.57079637050628662 - ((arg2->unk2E5 / 18.0) * 1.57079637050628662)) + 1.57079637050628662) * 65535.0;
                 if (arg2->unk2E5-- == 0) {
                     arg2->unk2E4 = 0;
                 }
@@ -165,8 +160,6 @@ s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2) {
     return arg0;
 }
 */
-
-extern s8 D_global_asm_80744504;
 
 s32 func_global_asm_80709344(s32 arg0) {
     s16 i;

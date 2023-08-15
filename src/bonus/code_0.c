@@ -5,6 +5,29 @@ void *func_global_asm_8068DC54(s32, s32, s32, void *, s32, void *);
 s32 func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
 void *func_global_asm_8070068C(void *);
 
+// rodata
+/*
+const u32 D_bonus_8002DC90[] = {
+    0x00010200,
+    0x03040000,
+};
+
+const u32 D_bonus_8002DC98[] = {
+    0x04020300,
+    0x01000000,
+};
+
+const u32 D_bonus_8002DCA0[] = {
+    0x02000104,
+    0x00030000,
+};
+
+const u32 D_bonus_8002DCA8[] = {
+    0x03010002,
+    0x00040000,
+};
+*/
+
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -50,12 +73,37 @@ Gfx *func_bonus_80024D3C(Gfx *arg0, s32 arg1) {
     return arg0;
 }
 
-extern void (*D_8002DB2C[])();
-
-// Jumptable ^
-// Very sus, returns with no labels on a switch case
-// Polymorphic code?
+// Jumptable, matched but has rodata issues
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024D8C.s")
+
+/*
+s32 func_bonus_80024D8C(void) {
+    switch (current_map) {
+        case MAP_BATTLE_ARENA_BEAVER_BRAWL:
+            return 0x261;
+        case MAP_BATTLE_ARENA_KRITTER_KARNAGE:
+            return 0x262;
+        case MAP_BATTLE_ARENA_ARENA_AMBUSH:
+            return 0x263;
+        case MAP_BATTLE_ARENA_MORE_KRITTER_KARNAGE:
+            return 0x264;
+        case MAP_BATTLE_ARENA_KAMIKAZE_KREMLINGS:
+            return 0x265;
+        case MAP_BATTLE_ARENA_FOREST_FRACAS:
+            return 0x266;
+        case MAP_BATTLE_ARENA_BISH_BASH_BRAWL:
+            return 0x267;
+        case MAP_BATTLE_ARENA_PLINTH_PANIC:
+            return 0x268;
+        case MAP_BATTLE_ARENA_PINNACLE_PALAVER:
+            return 0x269;
+        case MAP_BATTLE_ARENA_SHOCKWAVE_SHOWDOWN:
+            return 0x26A;
+        default:
+            return -1;
+    }
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024E38.s")

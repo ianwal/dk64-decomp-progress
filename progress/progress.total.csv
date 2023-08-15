@@ -3400,7 +3400,7 @@ us,.multiplayer,func_multiplayer_800241F4,96,yes
 us,.multiplayer,func_multiplayer_80025404,516,no
 us,.multiplayer,func_multiplayer_8002698C,60,yes
 us,.multiplayer,func_multiplayer_80025CE8,668,no
-us,.multiplayer,func_multiplayer_80024254,168,no
+us,.multiplayer,func_multiplayer_80024254,168,yes
 us,.multiplayer,func_multiplayer_80026E20,336,no
 us,.multiplayer,func_multiplayer_80026B0C,204,yes
 us,.multiplayer,func_multiplayer_80025B48,416,yes
@@ -3416,7 +3416,7 @@ us,.multiplayer,func_multiplayer_800249D8,716,no
 us,.multiplayer,func_multiplayer_8002452C,132,yes
 us,.multiplayer,func_multiplayer_80025FFC,152,yes
 us,.multiplayer,func_multiplayer_80025264,276,no
-us,.multiplayer,func_multiplayer_80026BD8,360,no
+us,.multiplayer,func_multiplayer_80026BD8,360,yes
 us,.multiplayer,func_multiplayer_800253C8,60,yes
 us,.multiplayer,func_multiplayer_80026094,2092,no
 us,.multiplayer,func_multiplayer_800246EC,748,no
@@ -3795,7 +3795,7 @@ us,.jetpac,func_jetpac_8002463C,48,yes
 us,.jetpac,func_jetpac_80027D64,348,no
 us,.jetpac,func_jetpac_80024A4C,64,yes
 us,.jetpac,func_jetpac_80025460,88,yes
-us,.jetpac,func_jetpac_80024F9C,260,no
+us,.jetpac,func_jetpac_80024F9C,260,yes
 us,.jetpac,func_jetpac_80027380,72,yes
 us,.jetpac,func_jetpac_80025A60,272,yes
 us,.jetpac,func_jetpac_80026A3C,116,yes

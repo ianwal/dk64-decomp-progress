@@ -4,6 +4,7 @@
 extern f64 D_boss_80035D50;
 extern f64 D_boss_80035D58;
 extern f64 D_boss_80035D60;
+
 extern void *D_global_asm_80720120;
 
 typedef struct {

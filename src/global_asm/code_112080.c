@@ -1,6 +1,15 @@
 #include <ultra64.h>
 #include "functions.h"
 
+/*
+// .rodata
+const char D_global_asm_8075E490[] = "%s";
+const char D_global_asm_8075E494[] = "%d";
+const char D_global_asm_8075E498[] = "%c";
+const f64 D_global_asm_8075E4A0 = 124.800003051757812;
+const f64 D_global_asm_8075E4A8 = 124.800003051757812;
+*/
+
 typedef struct {
     u8 unk0; // Used
     u8 unk1;

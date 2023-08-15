@@ -3,10 +3,16 @@
 
 extern s16 D_global_asm_80748300;
 
+// rodata
 extern f32 D_global_asm_80758CA0;
 extern f32 D_global_asm_80758CA4;
 extern f32 D_global_asm_80758CA8;
 extern f32 D_global_asm_80758CAC;
+
+extern f64 D_global_asm_80758D28;
+extern f32 D_global_asm_80758D30;
+extern f64 D_global_asm_80758D38;
+extern f32 D_global_asm_80758D40;
 
 extern f32 *D_global_asm_8076A0B4;
 extern f32 *D_global_asm_8076A0B8;
@@ -325,11 +331,6 @@ s32 func_global_asm_8065C240(Struct8065C240 *arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_global_asm_8065C334.s")
-
-extern f64 D_global_asm_80758D28;
-extern f32 D_global_asm_80758D30;
-extern f64 D_global_asm_80758D38;
-extern f32 D_global_asm_80758D40;
 
 /*
 // TODO: Decent progress made

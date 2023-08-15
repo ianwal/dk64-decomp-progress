@@ -52,7 +52,7 @@ segments:
       - [0x3390, c, dk64_boot_3390]
       - [0x3C00, c, dk64_boot_3C00]
       - [0x3D20, c, dk64_boot_3D20]
-      - [0x5120, hasm, os/invaldcache]         #DONE
+      - [0x5120, hasm, os/invaldcache]        #DONE
       - [0x51D0, c, io/pirawdma]              #DONE
       - [0x52B0, c, io/pigetstat]             #DONE
       - [0x52C0, c, os/recvmesg]              #DONE
@@ -66,16 +66,16 @@ segments:
       - [0x5BA0, c, io/visetmode]             #DONE
       - [0x5C10, bin, dk64_boot_5C10] #??? nops ???
       - [0x5C70, c, dk64_boot_5C70]
-      - [0x5DC0, hasm, libc/bzero]             #DONE
-      - [0x5E60, hasm, os/invalicache]         #DONE
-      - [0x5EE0, hasm, os/writebackdcacheall]  #DONE
+      - [0x5DC0, hasm, libc/bzero]            #DONE
+      - [0x5E60, hasm, os/invalicache]        #DONE
+      - [0x5EE0, hasm, os/writebackdcacheall] #DONE
       - [0x5F10, c, os/initialize]
-      - [0x61D0, c, dk64_boot_61D0] #DONE
-      - [0x6270, hasm, os/writebackdcache]     #DONE
+      - [0x61D0, c, dk64_boot_61D0]           #DONE
+      - [0x6270, hasm, os/writebackdcache]    #DONE
       - [0x62F0, c, dk64_boot_62F0]
       - [0x6360, c, io/viswapbuf]             #DONE
       - [0x63B0, c, dk64_boot_63B0]
-      - [0x6680, hasm, os/getfpccsr]           #DONE
+      - [0x6680, hasm, os/getfpccsr]          #DONE
       - [0x6690, c, gu/nonmatching/usprite]
       - [0x66E0, c, os/stopthread]            #DONE
       - [0x67A0, c, io/dpsetstat]             #DONE
@@ -125,17 +125,17 @@ segments:
       - [0xAB00, c, io/vigetcurrcontext]      #DONE
       - [0xAB10, c, io/viswapcontext]
       - [0xAE10, c, os/sendmesg]              #DONE
-      - [0xAF60, hasm, os/getcount]            #DONE
-      - [0xAF70, hasm, os/setsr]               #DONE
-      - [0xAF80, hasm, os/getsr]               #DONE
-      - [0xAF90, hasm, os/setfpccsr]           #DONE
+      - [0xAF60, hasm, os/getcount]           #DONE
+      - [0xAF70, hasm, os/setsr]              #DONE
+      - [0xAF80, hasm, os/getsr]              #DONE
+      - [0xAF90, hasm, os/setfpccsr]          #DONE
       - [0xAFA0, c, io/sirawread]             #DONE
       - [0xAFF0, c, io/sirawwrite]            #DONE
       - [0xB040, hasm, os/unmaptlball]        #DONE
       - [0xB090, hasm, os/maptlbrdb]          #DONE
       - [0xB0F0, c, io/pirawread]             #DONE
       - [0xB150, c, io/pimgr]
-      - [0xB2C0, c, gu/nonmatching/mtxutil]
+      - [0xB2C0, c, gu/mtxutil]               #DONE
       - [0xB530, c, gu/cosf]
       - [0xB6A0, c, gu/sinf]
       - [0xB860, hasm, gu/sqrt]               #DONE
@@ -172,16 +172,17 @@ segments:
       - [0xDBC0, c, os/yieldthread]           #DONE
       - [0xDC10, c, io/contpfs]
       - [0xE790, c, dk64_boot_E790]
-      - [0xE8B0, data, dk64_boot_data_E8B0]
+      - [0xE8B0, data]
       - [0xFB00, data, io/vimgr]
-      - [0xFB20, data, dk64_boot_data_FB20]
+      - [0xFB20, data]
       - [0x10CC0, .data, io/aisetnextbuf]
-      - [0x10CD0, data, dk64_boot_data_10CD0]
+      - [0x10CD0, data]
       - [0x10D30, .data, io/vi]
-      - [0x10DA0, data, dk64_boot_data_10DA0]
+      - [0x10DA0, data]
+      - [0x10F10, rodata] # dk64_boot_3D20
       - [0x11120, .rodata, gu/perspective]
       - [0x11130, .rodata, gu/nonmatching/lookathil]
-      - [0x11140, rodata]
+      - [0x11140, rodata] # llcvt
       - [0x11150, .rodata, gu/nonmatching/rotate]
       - [0x11160, .rodata, gu/nonmatching/align]
       - [0x11170, .rodata, gu/nonmatching/position]
@@ -233,7 +234,7 @@ segments:
       - [0x205DE10, c, code_5DE10]
       - [0x205E020, c, code_5E020]
       - [0x205E2F0, c, code_5E2F0]
-      - [0x2061690, c, code_61690]
+      - [0x2061690, c, code_61690] # TODO: Weird "handwritten instructions" in function, could it be mips3? Could it be hasm?
       - [0x2061AA0, c, code_61AA0]
       - [0x2063810, c, code_63810]
       - [0x2063EC0, c, code_63EC0]
@@ -244,7 +245,7 @@ segments:
       - [0x2068EA0, c, code_68EA0]
       - [0x20699B0, c, code_699B0]
       - [0x2070FD0, c, code_70FD0]
-      - [0x2077B90, c, code_77B90]
+      - [0x2077B90, c, code_77B90] # TODO: Weird "handwritten instructions" in functions, could it be mips3? Could it be hasm?
       - [0x2079890, c, code_79890]
       - [0x207A510, c, code_7A510]
       - [0x207AF60, c, code_7AF60]
@@ -352,16 +353,16 @@ segments:
       - [0x215BF90, rodata] # heap
       - [0x215BFD0, .rodata, done/code_16550]
       - [0x215BFF0, rodata] # ???
-      - [0x215CC70, rodata] # code_2C910, TODO: weird things going on with 80757F70, maybe an array literal?
-      - [0x215CE00, rodata] # code_2DE90
-      - [0x215CE60, rodata] # code_2F550
+      - [0x215CC70, .rodata, code_2C910]
+      - [0x215CE00, rodata] # code_2DE90, TODO: func_global_asm_8062A130 becomes a fake match when rodata is added, maybe we need to match the jumptable stuff before it first and add another file split?
+      - [0x215CE60, .rodata, code_2F550]
       - [0x215CED0, rodata] # code_35000
       - [0x215CF00, rodata] # code_36880
       - [0x215D260, rodata] # code_42630
       - [0x215D8E0, rodata] # code_54150
       - [0x215D960, rodata] # code_55B20
       - [0x215D9A0, rodata] # code_5E2F0
-      - [0x215DA50, rodata] # code_61690
+      - [0x215DA50, .rodata, code_61690]
       - [0x215DA60, rodata] # code_61AA0
       - [0x215DAC0, .rodata, code_63810]
       - [0x215DAD0, .rodata, code_63EC0]
@@ -410,10 +411,10 @@ segments:
       - [0x2162760, rodata] # hud
       - [0x2162920, rodata] # code_100180 // TODO: Offset may be wrong
       - [0x2162A40, rodata] # code_1025E0
-      - [0x21630F0, rodata] # code_10D2D0
-      - [0x2163130, rodata] # code_10E1D0
-      - [0x2163170, rodata] # code_110F00
-      - [0x2163190, rodata] # code_112080
+      - [0x21630F0, .rodata, code_10D2D0]
+      - [0x2163130, .rodata, code_10E1D0]
+      - [0x2163170, .rodata, code_110F00]
+      - [0x2163190, .rodata, code_112080]
       - [0x21631B0, rodata] # code_114270
       - [0x21633A0, rodata] # code_119370
       - [0x2163840, rodata] # code_127B00
@@ -456,6 +457,7 @@ segments:
     subsegments:
       - [0x2175C60, c, code_0]
       - [0x2178BD0, data, code_0]
+      - [0x2178CA0, .rodata, code_0]
   - name: minecart
     dir: minecart
     type: code
@@ -480,6 +482,10 @@ segments:
       - [0x2180200, c, code_2690]
       - [0x2186B80, c, code_9010]
       - [0x21873D0, data, code_0]
+      - [0x21874B0, rodata] # code_0
+      - [0x2187820, rodata] # code_12A0
+      - [0x2187890, rodata] # code_2690
+      - [0x2187A30, rodata] # code_9010
   - name: race
     dir: race
     type: code
@@ -551,7 +557,7 @@ segments:
       - [0x21DA7C0, data, code_0]
       - [0x21DE100, .rodata, code_0]
       - [0x21DE250, rodata] # code_1460
-      - [0x21DE2A0, rodata] # code_3060
+      - [0x21DE2A0, .rodata, code_3060]
       - [0x21DE2B0, rodata] # code_3480
       - [0x21DE2E0, rodata] # code_4FC0
   - [0x21DE360] # end of ROM

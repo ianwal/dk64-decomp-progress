@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 void func_global_asm_8070C89C(float (*mf)[4], f32, f32, f32);
 void func_global_asm_8070C8F4(float (*mf)[4], f32, f32, f32);
 void func_global_asm_8070C990(float (*mf)[4], f32, f32, f32);
@@ -12,10 +11,6 @@ void func_global_asm_8070CCC4(float (*mf)[4]);
 void func_global_asm_8070CD44(float (*mf)[4], f32, f32, f32);
 void func_global_asm_8070CDD0(f32 (*arg0)[4], f32 (*arg1)[4], f32 arg2, f32 arg3, f32 arg4);
 void func_global_asm_8070D07C(Mtx*, Mtx*, f32, f32, f32, f32, f32, f32);
-
-extern f64 D_global_asm_8075E470;
-extern f64 D_global_asm_8075E478;
-extern f64 D_global_asm_8075E480;
 
 // tiny, round float, can't auto decompile
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070C200.s")
@@ -169,12 +164,11 @@ void func_global_asm_8070CA70(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 void func_global_asm_8070CAB4(float (*mf)[4], f32 arg1) {
-    f32 pad; // TODO: Get rid of this if possible
+    f32 temp_f12;
     f32 temp_f0;
     f32 sp24;
-    f32 temp_f12;
 
-    temp_f12 = arg1 * D_global_asm_8075E470;
+    temp_f12 = arg1 * 0.017453292519943295;
     temp_f0 = func_global_asm_80612D1C(temp_f12);
     sp24 = func_global_asm_80612D10(temp_f12);
     func_global_asm_8070CCC4(mf);
@@ -185,12 +179,11 @@ void func_global_asm_8070CAB4(float (*mf)[4], f32 arg1) {
 }
 
 void func_global_asm_8070CB2C(float (*mf)[4], f32 arg1) {
-    f32 pad; // TODO: Get rid of this if possible
+    f32 temp_f12;
     f32 temp_f0;
     f32 sp24;
-    f32 temp_f12;
 
-    temp_f12 = arg1 * D_global_asm_8075E478;
+    temp_f12 = arg1 * 0.017453292519943295;
     temp_f0 = func_global_asm_80612D1C(temp_f12);
     sp24 = func_global_asm_80612D10(temp_f12);
     func_global_asm_8070CCC4(mf);
@@ -201,12 +194,11 @@ void func_global_asm_8070CB2C(float (*mf)[4], f32 arg1) {
 }
 
 void func_global_asm_8070CBA4(float (*mf)[4], f32 arg1) {
-    f32 pad; // TODO: Get rid of this if possible
+    f32 temp_f12;
     f32 temp_f0;
     f32 sp24;
-    f32 temp_f12;
 
-    temp_f12 = arg1 * D_global_asm_8075E480;
+    temp_f12 = arg1 * 0.017453292519943295;
     temp_f0 = func_global_asm_80612D1C(temp_f12);
     sp24 = func_global_asm_80612D10(temp_f12);
     func_global_asm_8070CCC4(mf);

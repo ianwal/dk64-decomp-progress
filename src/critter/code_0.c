@@ -128,6 +128,7 @@ typedef struct {
 
 extern unkStruct_critter_80029BA0* D_critter_80029BA0;
 extern s32 D_critter_80029BA8;
+
 extern f64 D_critter_80029FF0;
 extern f32 D_critter_80029FF8;
 extern f64 D_critter_8002A000;

@@ -31,13 +31,6 @@ void guMtxIdentF(f32 (*mf)[4]) {
     }
 }
 
-void guMtxIdent(Mtx *m) {
-    Mtx sp18;
-
-    guMtxIdentF(&sp18);
-    guMtxF2L(&sp18, m);
-}
-
 void guMtxL2F(float mf[4][4], Mtx *m)
 {
 	int		i, j;
@@ -58,4 +51,11 @@ void guMtxL2F(float mf[4][4], Mtx *m)
 		mf[i][j*2] = FIX32TOF(q1);
 		mf[i][j*2+1] = FIX32TOF(q2);
 	}
+}
+
+void guMtxIdent(Mtx *m) {
+    Mtx sp18;
+
+    guMtxIdentF(&sp18);
+    guMtxF2L(&sp18, m);
 }

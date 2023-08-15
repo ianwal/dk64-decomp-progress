@@ -22,20 +22,16 @@ D_global_asm_807581B0 = 1.00000000000000002e-08
 D_global_asm_807581B8 = -1.00000000000000002e-08
 D_global_asm_807581C0 = 1.00000000000000002e-08
 */
-extern f32 D_global_asm_80758160;
-extern f32 D_global_asm_80758164;
-extern f64 D_global_asm_80758168;
 
 extern void *D_global_asm_807F5DE4; // TODO: Actually a pointer to a struct (map model?)
 extern void *D_global_asm_807F5E60;
 extern s8 D_global_asm_807F5FEC;
 extern s32 D_global_asm_807F6C28;
 
-// rodata
+// rodata, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062A850.s")
 
 /*
-// TODO: Pretty close :)
 // getFieldOfView()
 f32 func_global_asm_8062A850(void) {
     s32 phi_v1;
@@ -45,23 +41,24 @@ f32 func_global_asm_8062A850(void) {
 
     phi_f0 = 1.0f;
     if (D_global_asm_807444F0 != 1 && is_cutscene_active == 1) {
-        phi_f2 = D_global_asm_80758160;
+        phi_f2 = 999.0f;
     } else {
-        phi_f2 = D_global_asm_80758164;
+        phi_f2 = 0.01999999955f;
     }
 
     phi_v1 = is_cutscene_active == 1 && current_map != MAP_MAIN_MENU;
     if (widescreen_enabled && !phi_v1) {
-        phi_f0 *= D_global_asm_80758168;
+        phi_f0 *= 1.19999999999999996;
     }
 
-    if (D_global_asm_80747CD0 < phi_f0) {
-        phi_f12 = D_global_asm_80747CD0 + phi_f2;
+    phi_f12 = D_global_asm_80747CD0;
+    if (phi_f12 < phi_f0) {
+        phi_f12 += phi_f2;
         if (phi_f0 < phi_f12) {
             phi_f12 = phi_f0;
         }
     } else {
-        phi_f12 = D_global_asm_80747CD0 - phi_f2;
+        phi_f12 -= phi_f2;
         if (phi_f12 < phi_f0) {
             phi_f12 = phi_f0;
         }
@@ -1292,7 +1289,6 @@ void func_global_asm_8065E040(s32);
 
 void func_global_asm_8062F328(s32 arg0);
 
-extern f32 D_global_asm_80758190;
 extern MapGeometryHeader *D_global_asm_807F5DE0;
 extern void *D_global_asm_807F5DE8;
 extern void *D_global_asm_807F5DEC;
@@ -1334,7 +1330,7 @@ void func_global_asm_8062F050(MapGeometryHeader *arg0) {
 
     D_global_asm_807F5DE0 = arg0;
     sp28 = 0;
-    D_global_asm_807F5FDC = func_global_asm_80612D10(D_global_asm_80758190);
+    D_global_asm_807F5FDC = func_global_asm_80612D10(0.7853981853);
     func_global_asm_80659110(arg0->unk8 & 1);
     func_global_asm_8065CDA0((arg0->unk8 >> 1) & 1);
     D_global_asm_807444C4 = arg0->unkA;

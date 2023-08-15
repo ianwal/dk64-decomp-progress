@@ -5,6 +5,7 @@
 extern f32 D_global_asm_80747E00;
 extern f32 D_global_asm_80747E04;
 
+// rodata
 extern f64 D_global_asm_807584F0;
 extern f64 D_global_asm_80758540;
 extern f64 D_global_asm_80758548;
@@ -1560,7 +1561,6 @@ void func_global_asm_8063B4A4(void) {
 // big, object model 2
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063BBB0.s")
 
-// big
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063BEC0.s")
 
 // object model 2 -> 0x48, 0x49, 0x4E, 0x7C -> 0x10, 0x12, 0x38, 0x94, 0x9A
