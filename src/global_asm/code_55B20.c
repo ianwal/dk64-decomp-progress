@@ -865,7 +865,7 @@ void func_global_asm_80654380(f32 arg0, f32 arg1, f32 arg2) {
     func_global_asm_80654A2C(arg0, arg1, arg2);
 }
 
-s32 func_global_asm_806545D4(s32, s32, s32, s32, f32, f32, f32, s32, f32 (*)[4], u8 *, void *); // extern
+s32 func_global_asm_806545D4(s32, s32, s32, s32, f32, f32, f32, s32, f32 (*)[4], u8 *, void *);
 extern s32 D_global_asm_807482F4;
 extern f32 D_global_asm_807F5FB4;
 extern s32 D_global_asm_807F7148;

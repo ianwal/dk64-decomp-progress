@@ -1,12 +1,15 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void *func_global_asm_805FD030(Gfx*);                           // extern
-void func_global_asm_8068E7B4(Gfx *, f32, f32, s32);         // extern
+void *func_global_asm_805FD030(Gfx*);
+void func_global_asm_8068E7B4(Gfx *, f32, f32, s32);
 
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 extern u8 D_global_asm_80750AB8;
+extern u32 D_global_asm_807552E8;
+extern s32 D_global_asm_807552EC;
+extern s8 D_global_asm_8076A105; // A player index
 
 typedef struct {
     s32 unk0;
@@ -67,8 +70,6 @@ s32 func_multiplayer_800241F4(PlayerProgress *arg0, s32 arg1) {
     return var_v1;
 }
 
-extern u32 D_global_asm_807552E8;
-
 s32 func_multiplayer_80024254(s32 arg0) {
     s32 var_v0;
 
@@ -95,9 +96,6 @@ typedef struct MultiplayerStruct4 {
     u8 unk4C;
 } MultiplayerStruct4;
 void func_multiplayer_800242FC(MultiplayerStruct4 *);
-
-extern s32 D_global_asm_807552EC;
-extern s8 D_global_asm_8076A105; // A player index
 
 extern u8 D_multiplayer_80026F70;
 // TODO: Is this a PaaD?
@@ -260,7 +258,7 @@ s32 func_multiplayer_800253C8(void) {
     return (((rand() >> 0xF) % 32767) % 211) + 90;
 }
 
-void func_global_asm_80715908(Struct80717D84 *);       // extern
+void func_global_asm_80715908(Struct80717D84 *);
 extern s32 D_global_asm_807207BC; // TODO: Type
 extern int func_global_asm_8071F3C0(); // TODO: Signature
 
@@ -317,7 +315,7 @@ s32 func_multiplayer_80025404(void) {
     return chosenPlayer;
 }
 
-s32 func_global_asm_8063254C(s32, s32 *, f32 *, f32 *, f32 *, s16 *, s16*); /* extern */
+s32 func_global_asm_8063254C(s32, s32 *, f32 *, f32 *, f32 *, s16 *, s16*);
 
 void func_multiplayer_80025608(s32 arg0) {
     s32 sp38;
@@ -437,7 +435,7 @@ void func_multiplayer_80025CE8(s32 arg0) {
     u32 temp_hi;
     u32 temp_t9;
     PlayerAdditionalActorData *PaaD;
-    PlayerAdditionalActorData *temp_s1;
+    PlayerAdditionalActorData *PaaD2;
     Actor *player;
 
     temp_s3 = character_change_array[arg0].player_pointer;
@@ -450,12 +448,12 @@ void func_multiplayer_80025CE8(s32 arg0) {
         case 1:
             for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
                 player = character_change_array[playerIndex].player_pointer;
-                temp_s1 = player->PaaD;
+                PaaD2 = player->PaaD;
                 if (playerIndex != arg0) {
-                    if (temp_s1->unkD4 == 0) {
+                    if (PaaD2->unkD4 == 0) {
                         if (player->control_state != 0x84) {
                             func_global_asm_806EB0C0(0x27, temp_s3, playerIndex);
-                            temp_s1->unk200 = 0x96;
+                            PaaD2->unk200 = 0x96;
                         }
                     }
                 }
@@ -580,7 +578,7 @@ void func_multiplayer_800269C8(u8 arg0, s8 arg1) {
     temp_s0 = character_change_array[arg0].player_pointer;
     temp_s1 = &D_global_asm_807FC950[arg0];
     temp_v1 = temp_s1->health + temp_s1->unk2FD + arg1;
-    sp30 = *(s8*)(&temp_s1->unk2FA) - temp_v1;
+    sp30 = temp_s1->unk2FA - temp_v1;
     if ((func_global_asm_806F8AD4(1U, arg0) != 0) && ((temp_v1 <= 0) || (sp30 >= 2))) {
         struct_unknown_mp_aad* aad = func_global_asm_8067ADB4(0x13E)->additional_actor_data;
         aad->unk4C = 1;
@@ -599,15 +597,16 @@ void func_multiplayer_80026B0C(s32 arg0) {
     switch (D_global_asm_807552E8) {
         case 2:
             func_global_asm_806F91B4(1, arg0, -3);
-            return;
+            break;
         case 5:
             func_global_asm_806F91B4(7, arg0, -0x40);
+            // fallthrough
         case 3:
             func_multiplayer_800269C8(arg0, 0);
-            return;
+            break;
         case 4:
             func_global_asm_806F91B4(7, arg0, -1);
-            return;
+            break;
     }
 }
 
@@ -619,21 +618,19 @@ s32 func_multiplayer_80026BD8(s32 arg0) {
     f32 dy;
     f32 closest;
     f32 var_f22;
-    s32 playyerIndex;
+    s32 playerIndex;
     s32 exitIndex;
     s32 chosenExit;
-    u8 temp_v1;
     Actor *player;
-    CharacterChange *var_a0;
 
     var_f22 = 0.0f;
     chosenExit = 0;
     for (exitIndex = 0; exitIndex < 4; exitIndex++) {
         closest = 9999999.0f;
         exit = getExitData(exitIndex);
-        for (playyerIndex = 0; playyerIndex < cc_number_of_players; playyerIndex++) {
-            player = character_change_array[playyerIndex].player_pointer;
-            if ((character_change_array[playyerIndex].does_player_exist != 0) && (player->control_state != 0x84)) {
+        for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+            player = character_change_array[playerIndex].player_pointer;
+            if ((character_change_array[playerIndex].does_player_exist != 0) && (player->control_state != 0x84)) {
                 dx = exit->x_pos - player->x_position;
                 dy = exit->y_pos - player->y_position;
                 dz = exit->z_pos - player->z_position;
@@ -664,24 +661,22 @@ void func_multiplayer_80026D40(Actor *arg0, s32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80026E20.s")
-
 Actor *func_global_asm_806C9FD8(Actor *actor);
 
-/*
-// TODO: Quite close, regalloc and something up with the start
 void func_multiplayer_80026E20(u8 arg0, s8 arg1) {
     Actor *temp_v0;
     PlayerAdditionalActorData *PaaD;
-    s32 temp[5];
+    s32 temp[3];
+    PlayerProgress *PP = &D_global_asm_807FC950[arg0];
+    CharacterChange *CC = &character_change_array[arg0];
 
-    if ((D_global_asm_807FC950[arg0].unk2FD + D_global_asm_807FC950[arg0].health) > 0) {
-        if (character_change_array[arg0].unk2A0 != NULL) {
-            temp_v0 = func_global_asm_806C9FD8(character_change_array[arg0].unk2A0);
+    if ((PP->health + PP->unk2FD) > 0) {
+        if (CC->unk2A0 != NULL) {
+            temp_v0 = func_global_asm_806C9FD8(CC->unk2A0);
             if (temp_v0 != NULL) {
                 if (temp_v0->interactable == 1) {
                     PaaD = temp_v0->PaaD;
-                    if ((D_global_asm_807FC950[arg0].unk2FD + D_global_asm_807FC950[arg0].health + arg1) <= 0) {
+                    if ((PP->health + PP->unk2FD + arg1) <= 0) {
                         D_global_asm_807FC950[PaaD->unk1A4].unk2FE[arg0]++;
                     }
                 }
@@ -692,4 +687,3 @@ void func_multiplayer_80026E20(u8 arg0, s8 arg1) {
         func_multiplayer_800269C8(arg0, arg1);
     }
 }
-*/

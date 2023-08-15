@@ -38,14 +38,14 @@ void func_global_asm_806B1348(void) {
 // Huge, jumptable, it compiles... doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B5EC0/func_global_asm_806B13B4.s")
 
-// ? func_global_asm_806A5C60(Actor *, Actor **);      // extern
-// ? func_global_asm_80724E48(s32, u8);                // extern
-// ? func_global_asm_8072A450(Actor *);                // extern
-// ? func_global_asm_8072AB74(u8, f32, f32, ?, f32);   // extern
-// ? func_global_asm_8072B7CC(?, u8);                  // extern
-// ? func_global_asm_8072C918(?, ?, ?);                // extern
-// ? func_global_asm_8072D13C(u8, ?);                  // extern
-// ? func_global_asm_8072D714(Actor *, ?);             // extern
+// ? func_global_asm_806A5C60(Actor *, Actor **);
+// ? func_global_asm_80724E48(s32, u8);
+// ? func_global_asm_8072A450(Actor *);
+// ? func_global_asm_8072AB74(u8, f32, f32, ?, f32);
+// ? func_global_asm_8072B7CC(?, u8);
+// ? func_global_asm_8072C918(?, ?, ?);
+// ? func_global_asm_8072D13C(u8, ?);
+// ? func_global_asm_8072D714(Actor *, ?);
 
 /*
 void func_global_asm_806B13B4(u8 arg0) {

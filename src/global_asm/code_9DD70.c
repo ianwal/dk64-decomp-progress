@@ -244,7 +244,7 @@ Gfx *func_global_asm_8069D358(Gfx *dl, Actor *arg1, s16 arg2, f32 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069D424.s")
 
-s32 func_global_asm_806FE078(void *, u8, s32, f32, f32, f32, f32); // extern
+s32 func_global_asm_806FE078(void *, u8, s32, f32, f32, f32, f32);
 
 typedef struct {
     u8 unk0[0xA - 0x0];
