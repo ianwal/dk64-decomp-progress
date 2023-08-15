@@ -7,9 +7,6 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073BA60.s")
 
-extern f32 D_global_asm_807604B0;
-extern f32 D_global_asm_807604B4;
-
 void func_global_asm_8073BB10(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4) {
     f32 sp3C;
     f32 sp38;
@@ -19,9 +16,9 @@ void func_global_asm_8073BB10(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4
     if (arg1 >= (arg0 - 200.0f)) {
         arg1 = arg0 - 200.0f;
     }
-    sp3C = func_global_asm_80611BB4(arg1 * D_global_asm_807604B0, arg0);
+    sp3C = func_global_asm_80611BB4(arg1 * 3.141592741f, arg0);
     sp38 = sp3C * sp3C;
-    sp34 = (sp3C * D_global_asm_807604B4) / arg2;
+    sp34 = (sp3C * 1.414213657f) / arg2;
     arg3[0] = sp38 / (1.0f + sp38 + sp34);
     arg3[1] = arg3[0] * 2.0f;
     arg3[2] = arg3[0];
@@ -58,9 +55,6 @@ void func_global_asm_8073BC74(Struct8073BC74 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073BDC4.s")
 
-extern f32 D_global_asm_807604B8;
-extern f32 D_global_asm_807604BC;
-
 /*
 // TODO: Something up with the shift
 f32 func_global_asm_8073BDC4(s32 arg0) {
@@ -70,9 +64,9 @@ f32 func_global_asm_8073BDC4(s32 arg0) {
     arg0 = arg0;
     sp0 = 1.0f;
     if (arg0 >= 0) {
-        sp4 = D_global_asm_807604B8;
+        sp4 = 1.059463143f;
     } else {
-        sp4 = D_global_asm_807604BC;
+        sp4 = 0.9438742995f;
         arg0 = -arg0;
     }
     while (arg0 != 0) {
@@ -85,9 +79,6 @@ f32 func_global_asm_8073BDC4(s32 arg0) {
     return sp0;
 }
 */
-
-extern f32 D_global_asm_807604C0;
-extern f32 D_global_asm_807604C4;
 
 void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
     s32 sp3C;
@@ -104,8 +95,8 @@ void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
     for (sp3C = 3; sp3C < 8; sp3C += 1) {
         arg0->unk8[sp3C] = 0;
     }
-    arg0->unk8[0] = sp30[0] * (D_global_asm_807604C0 - (arg0->unk2 * 128.0f));
-    arg0->unkA = sp30[1] * (D_global_asm_807604C4 - (arg0->unk2 * 128.0f));
+    arg0->unk8[0] = sp30[0] * (26768.0f - (arg0->unk2 * 128.0f));
+    arg0->unkA = sp30[1] * (26768.0f - (arg0->unk2 * 128.0f));
     arg0->unkC = 0;
     arg0->unk18 = sp24[1] * -16384.0f;
     arg0->unk1A = sp24[2] * -16384.0f;
@@ -118,7 +109,6 @@ void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
 
 s16 *func_global_asm_80732444(s32, s32, s32, u8, s32);
 extern s32 D_global_asm_80756458[];
-extern f32 D_global_asm_807604C8;
 
 typedef struct {
     s16 unk0;
@@ -242,7 +232,7 @@ void func_global_asm_8073C040(s16 **arg0, Struct8073C040_arg1 *arg1, s16 arg2, s
         sp28->unkC = sp2C[sp34++];
         if (sp2C[sp34] != 0) {
             sp28->unk10 = ((sp2C[sp34++] / 1000.0f) * 2.0f) / arg1->unk18;
-            sp28->unk1C = (sp2C[sp34++] / D_global_asm_807604C8) * (sp28->unk4 - sp28->unk0);
+            sp28->unk1C = (sp2C[sp34++] / 173123.4062f) * (sp28->unk4 - sp28->unk0);
             sp28->unk14 = 1.0f;
             sp28->unk18 = 0;
             sp28->unk24 = func_global_asm_80732444(0, 0, arg3, 1, 0x38);
