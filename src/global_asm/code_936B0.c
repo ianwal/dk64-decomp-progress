@@ -145,7 +145,7 @@ void func_global_asm_8068ECF4(s32 arg0, u8 arg1) {
         temp_t4 = (var_f2 * var_f6);
         if (temp_t4 != 0) {
             temp_v0 = current_actor_pointer->animation_state;
-            var_f0 = 3.299999952f;
+            var_f0 = 3.3f;
             if (temp_v0 != NULL) {
                 var_f0 *= temp_v0->scale_y;
             }
@@ -183,7 +183,7 @@ void func_global_asm_8068FF40(u8 arg0, Struct8068FF40_arg1 *arg1, Struct8068FF40
         var_f2 = 0.0f;
     } else {
         var_f0 = 0.0f;
-        var_f2 = arg1->unkC * (400.0 - (0.699999999999999956 * current_actor_pointer->unkB8));
+        var_f2 = arg1->unkC * (400.0 - (0.7 * current_actor_pointer->unkB8));
     }
     arg2->unk2 = func_global_asm_806CC190(arg2->unk2, var_f0, 5.0f);
     arg2->unk0 = func_global_asm_806CC190(arg2->unk0, (s32)var_f2 & 0xFFF, 3.0f);
@@ -229,7 +229,7 @@ void func_global_asm_80690190(Struct80690190 *arg0, s32 arg1) {
         D_global_asm_80770B68[temp_a1] = (current_actor_pointer->unkB8 / 300.0) + 1.0;
         D_global_asm_80770BC0[temp_a1] = 1.0f;
     } else {
-        D_global_asm_80770B68[temp_a1] = arg0->unk4 + 1.19999999999999996;
+        D_global_asm_80770B68[temp_a1] = arg0->unk4 + 1.2;
         D_global_asm_80770BC0[temp_a1] = 5.0f;
     }
     temp_a1 = D_global_asm_80770628[current_actor_pointer->unk70];
@@ -639,12 +639,7 @@ void func_global_asm_80692640(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80692E50.s")
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8069329C.s")
-
-/*
 void func_global_asm_8069329C(void) {
-    f32 temp_f20;
     s32 i;
 
     func_global_asm_807149B8(1);
@@ -656,17 +651,15 @@ void func_global_asm_8069329C(void) {
     }
     func_global_asm_806915B0();
     if (D_global_asm_80750AD0 == 0) {
-        temp_f20 = 0.349999994f;
         for (i = 0; i < 0xC; i++) {
             func_global_asm_807149B8(1);
             func_global_asm_80714950(i + 0x0B010000);
             func_global_asm_8071498C(&func_global_asm_8071ABDC);
-            func_global_asm_80714CC0(&D_global_asm_807200EC, temp_f20, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+            func_global_asm_80714CC0(&D_global_asm_807200EC, 0.35f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
     }
     func_global_asm_80608528(current_actor_pointer, 0xF6, 0xFF, 0x7F, 0x1E);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8069346C.s")
 
