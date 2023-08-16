@@ -277,16 +277,12 @@ void func_global_asm_806307CC(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 arg3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_80630890.s")
 
-extern f32 D_global_asm_807581D0;
-extern f32 D_global_asm_807581D4;
-extern f64 D_global_asm_807581D8;
-
 /*
 // TODO: Pretty close
 Chunk14 *func_global_asm_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, Chunk14 **arg4) {
     Chunk14 *phi_a1;
-    Chunk14 *phi_v0;
     Chunk14 *phi_v1;
+    Chunk14 *current; // 3C
     Chunk14 *temp_v0_4;
     f32 dz;
     f64 phi_f16;
@@ -299,18 +295,18 @@ Chunk14 *func_global_asm_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, C
     f32 dy;
     Chunk14 *phi_t0_2;
 
-    phi_v0 = arg0;
-    phi_f18 = 0.0f;
-    phi_f16 = 0.0;
+    current = arg0;
+    phi_f18 = 0;
+    phi_f16 = 0;
     *arg4 = NULL;
-    while (phi_v0) {
-        dx = phi_v0->unk4 - arg1;
-        dy = phi_v0->unk8 - arg2;
-        dz = phi_v0->unkC - arg3;
-        if (phi_f16 != phi_v0->unk10) {
-            phi_v0->unk10 = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+    while (current) {
+        dx = current->unk4 - arg1;
+        dy = current->unk8 - arg2;
+        dz = current->unkC - arg3;
+        if (phi_f16 != current->unk10) {
+            current->unk10 = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
         }
-        phi_v0 = phi_v0->next;
+        current = current->next;
     }
     phi_t0_2 = arg0;
     phi_a1 = arg0;
@@ -318,67 +314,65 @@ Chunk14 *func_global_asm_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, C
         if ((arg0->unk10 < arg0->unk1C) || (arg0->unk1C == -2)) {
             *arg4 = arg0;
             if (arg0->unk1C == -2) {
-                phi_f18 = D_global_asm_807581D0;
+                phi_f18 = 9999.0f;
             } else {
                 phi_f18 = arg0->unk10;
             }
         }
         phi_a1 = arg0->next;
-        if (phi_a1) {
-            temp_f12 = D_global_asm_807581D8;
-            do {
-                found = FALSE;
-                phi_a1 = phi_t0_2;
-                if (((phi_f18 < phi_a1->unk10) && (phi_a1->unk10 < phi_a1->unk1C)) || (phi_a1->unk1C == -2)) {
-                    *arg4 = phi_a1;
-                    if (phi_a1->unk1C == -2) {
-                        phi_f18 = D_global_asm_807581D4;
-                    } else {
-                        phi_f18 = phi_a1->unk10;
-                    }
-                }
-                if (phi_a1->unk1C < phi_a1->unk10) {
-                    phi_f14 = temp_f12;
+        temp_f12 = 9999.0f;
+        while (phi_a1) {
+            found = FALSE;
+            phi_a1 = phi_t0_2;
+            if (((phi_f18 < phi_a1->unk10) && (phi_a1->unk10 < phi_a1->unk1C)) || (phi_a1->unk1C == -2)) {
+                *arg4 = phi_a1;
+                if (phi_a1->unk1C == -2) {
+                    phi_f18 = 9999.0;
                 } else {
-                    phi_f14 = phi_a1->unk10;
+                    phi_f18 = phi_a1->unk10;
                 }
-                phi_v1 = phi_a1->next2;
-                while (phi_v1 && !found) {
-                    if (phi_v1->unk1C < phi_v1->unk10) {
-                        phi_f2 = temp_f12;
-                    } else {
-                        phi_f2 = phi_v1->unk10;
-                    }
-                    if ((phi_f14 <= phi_f2) || (phi_a1->unk1C == -2)) {
-                        found = TRUE;
-                        if (phi_v1 != phi_a1->next2) {
-                            phi_a1->next2->next = phi_a1->next;
-                            if (phi_a1->next) {
-                                phi_a1->next->next2 = phi_a1->next2;
-                            }
-                            temp_v0_4 = phi_v1->next;
-                            phi_v1->next = phi_a1;
-                            phi_a1->next = temp_v0_4;
-                            if (temp_v0_4) {
-                                temp_v0_4->next2 = phi_a1;
-                            }
-                            phi_a1->next2 = phi_v1;
+            }
+            if (phi_a1->unk1C < phi_a1->unk10) {
+                phi_f14 = temp_f12;
+            } else {
+                phi_f14 = phi_a1->unk10;
+            }
+            phi_v1 = phi_a1->next2;
+            while (phi_v1 && !found) {
+                if (phi_v1->unk1C < phi_v1->unk10) {
+                    phi_f2 = temp_f12;
+                } else {
+                    phi_f2 = phi_v1->unk10;
+                }
+                if ((phi_f14 <= phi_f2) || (phi_a1->unk1C == -2)) {
+                    found = TRUE;
+                    if (phi_v1 != phi_a1->next2) {
+                        phi_a1->next2->next = phi_a1->next;
+                        if (phi_a1->next) {
+                            phi_a1->next->next2 = phi_a1->next2;
                         }
+                        temp_v0_4 = phi_v1->next;
+                        phi_v1->next = phi_a1;
+                        phi_a1->next = temp_v0_4;
+                        if (temp_v0_4) {
+                            temp_v0_4->next2 = phi_a1;
+                        }
+                        phi_a1->next2 = phi_v1;
                     }
-                    phi_v1 = phi_v1->next2;
                 }
-                if (!found) {
-                    phi_a1->next2->next = phi_a1->next;
-                    if (phi_a1->next) {
-                        phi_a1->next->next2 = phi_a1->next2;
-                    }
-                    phi_a1->next2 = NULL;
-                    phi_a1->next = phi_t0_2;
-                    phi_t0_2->next2 = phi_a1;
+                phi_v1 = phi_v1->next2;
+            }
+            if (!found) {
+                phi_a1->next2->next = phi_a1->next;
+                if (phi_a1->next) {
+                    phi_a1->next->next2 = phi_a1->next2;
                 }
-                phi_a1 = phi_a1->next;
-                phi_t0_2 = phi_a1;
-            } while (phi_a1);
+                phi_a1->next2 = NULL;
+                phi_a1->next = phi_t0_2;
+                phi_t0_2->next2 = phi_a1;
+            }
+            phi_a1 = phi_a1->next;
+            phi_t0_2 = phi_a1;
         }
     }
     return phi_a1;

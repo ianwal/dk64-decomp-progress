@@ -5,12 +5,6 @@
 extern f32 D_global_asm_80747E00;
 extern f32 D_global_asm_80747E04;
 
-// rodata
-extern f64 D_global_asm_807584F0;
-extern f64 D_global_asm_80758540;
-extern f64 D_global_asm_80758548;
-extern f64 D_global_asm_80758550;
-
 extern u16 D_global_asm_807F6028;
 extern u16 D_global_asm_807F60A8;
 
@@ -149,8 +143,51 @@ s32 func_global_asm_80631D8C(u8 arg0) {
     return phi_s3;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80631EB8.s")
+s32 func_global_asm_80631EB8(u16 arg0) {
+    switch (arg0) {
+        case 11:
+        case 12:
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+        case 20:
+        case 21:
+        case 23:
+        case 24:
+        case 25:
+        case 26:
+        case 27:
+        case 32:
+        case 33:
+        case 34:
+        case 37:
+        case 38:
+        case 40:
+        case 41:
+        case 42:
+            break;
+        case 10:
+        case 13:
+        case 22:
+        case 28:
+        case 29:
+        case 30:
+        case 31:
+        case 35:
+        case 36:
+        case 39:
+        case 43:
+        case 517:
+        case 518:
+        case 519:
+        case 520:
+            return 1;
+    }
+    return 0;
+}
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80631F58.s")
@@ -174,8 +211,73 @@ void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2) {
 }
 */
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80631FAC.s")
+extern s16 D_global_asm_807F614A;
+
+s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
+    // TODO: Use Maps enum literals
+    switch (map) {
+        case 48:
+            D_global_asm_807F614A = 530;
+            break;
+        case 26:
+            D_global_asm_807F614A = 500;
+            break;
+        case 38:
+            D_global_asm_807F614A = 500;
+            break;
+        case 30:
+            D_global_asm_807F614A = 485;
+            break;
+        case 7:
+            D_global_asm_807F614A = 465;
+            break;
+        case 8:
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+        case 20:
+        case 21:
+        case 22:
+        case 23:
+        case 24:
+        case 25:
+        case 27:
+        case 28:
+        case 29:
+        case 31:
+        case 32:
+        case 33:
+        case 34:
+        case 35:
+        case 36:
+        case 37:
+        case 39:
+        case 40:
+        case 41:
+        case 42:
+        case 43:
+        case 44:
+        case 45:
+        case 46:
+        case 47:
+        default:
+            D_global_asm_807F614A = 450;
+        break;
+    }
+    if (arg1) {
+        D_global_asm_807F6000 = malloc(D_global_asm_807F614A * sizeof(ObjectModel2));
+        func_global_asm_80611690(D_global_asm_807F6000);
+    }
+    return D_global_asm_807F614A;
+}
 
 // Load Model 2 Setup?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80632084.s")
@@ -1673,7 +1775,7 @@ void func_global_asm_8063C6D8(void) {
     if (D_global_asm_807F6170 < 0.0) {
         D_global_asm_807F6170 = 255.0f;
     }
-    D_global_asm_807F6174 -= D_global_asm_807584F0;
+    D_global_asm_807F6174 -= 0.439;
     if (D_global_asm_807F6174 < 0.0) {
         D_global_asm_807F6174 = 255.0f;
     }
@@ -1705,11 +1807,11 @@ void func_global_asm_8063CADC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063CB40.s")
 
 void func_global_asm_8063CE64(void) {
-    D_global_asm_807F6180 -= D_global_asm_80758540;
+    D_global_asm_807F6180 -= 1.234;
     if (D_global_asm_807F6180 < 0.0) {
         D_global_asm_807F6180 = 255.0f;
     }
-    D_global_asm_807F6184 -= D_global_asm_80758548;
+    D_global_asm_807F6184 -= 0.45;
     if (D_global_asm_807F6184 < 0.0) {
         D_global_asm_807F6184 = 255.0f;
     }
@@ -1804,7 +1906,7 @@ Gfx *func_global_asm_8063D4A4(Gfx *dl) {
 }
 
 void func_global_asm_8063D5AC(void) {
-    D_global_asm_807F6198 -= D_global_asm_80758550;
+    D_global_asm_807F6198 -= 0.865;
     if (D_global_asm_807F6198 < 0.0) {
         D_global_asm_807F6198 = 255.0f;
     }
