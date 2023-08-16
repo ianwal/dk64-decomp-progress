@@ -4,10 +4,36 @@
 
 u8 func_global_asm_8060BBE0(u16, u8);
 void func_global_asm_8060C758(u8, s32);
-void func_global_asm_8060BCA0(s32, u8, u8, s16 *, s32);
-void func_global_asm_8060BEA8(s32, u8, s16 *, s32);
-void func_global_asm_8060BF84(s32, u8, s16 *, s32);
+void func_global_asm_8060BCA0(s32 arg0, u8 arg1, u8 arg2, u16 *arg3, u8 *arg4);
+void func_global_asm_8060BEA8(s32, u8, u16 *, u8*);
+void func_global_asm_8060BF84(s32, u8, u16 *, u8*);
 u32 func_global_asm_806F8EDC(s32, s32); // getMaxItemCapacity(HUDItemIndex, playerIndex)
+
+// .rodata
+const char D_global_asm_80757020[] = "7.2";
+
+const char D_global_asm_80757024[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.- ";
+
+typedef struct {
+    s16 score;
+    unsigned char initials[3];
+} Struct80757044;
+
+const Struct80757044 D_global_asm_80757044[] = {
+    {100, "AAA"},
+    { 90, "AAA"},
+    { 80, "AAA"},
+    { 70, "AAA"},
+    { 60, "AAA"},
+};
+
+const Struct80757044 D_global_asm_80757064[] = {
+    {100, "AAA"},
+    { 90, "AAA"},
+    { 80, "AAA"},
+    { 70, "AAA"},
+    { 60, "AAA"},
+};
 
 extern s32 D_global_asm_807EDEAC;
 extern OSMesgQueue D_global_asm_807ECCF0;
@@ -156,14 +182,229 @@ u8 func_global_asm_8060BB18(u32 arg0, u16 arg1, u8 arg2) {
 // Extremely fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060BBE0.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060BCA0.s")
+void func_global_asm_8060BCA0(s32 arg0, u8 arg1, u8 arg2, u16 *arg3, u8 *arg4) {
+    *arg3 = *arg3 + D_global_asm_807ECEA0 + ((arg1) * 0xA1) + 0x320;
+    *arg4 = 0;
+    switch (arg0) {
+        case 11:
+            if (*arg4 == 0) {
+                *arg4 = 1;
+            }
+            *arg3 += 3;
+            // fallthrough
+        case 10:
+            if (*arg4 == 0) {
+                *arg4 = 3;
+            }
+            *arg3 += 8;
+            // fallthrough
+        case 9:
+            if (*arg4 == 0) {
+                *arg4 = 8;
+            }
+            *arg3 += 4;
+            // fallthrough
+        case 8:
+            if (*arg4 == 0) {
+                *arg4 = 4;
+            }
+            *arg3 += 2;
+            // fallthrough
+        case 7:
+            if (*arg4 == 0) {
+                *arg4 = 2;
+            }
+            *arg3 += 3;
+            // fallthrough
+        case 6:
+            if (*arg4 == 0) {
+                *arg4 = 3;
+            }
+            *arg3 += 2;
+            // fallthrough
+        case 5:
+            if (*arg4 == 0) {
+                *arg4 = 2;
+            }
+            *arg3 += 2;
+            // fallthrough
+        case 4:
+            if (*arg4 == 0) {
+                *arg4 = 2;
+            }
+            *arg3 += 0x18;
+            // fallthrough
+        case 3:
+            if (*arg4 == 0) {
+                *arg4 = 3;
+                *arg3 += arg2 * 3;
+            }
+            *arg3 += 0x38;
+            // fallthrough
+        case 2:
+            if (*arg4 == 0) {
+                *arg4 = 7;
+                *arg3 += arg2 * 7;
+            }
+            *arg3 += 0x38;
+        case 1:
+            // fallthrough
+            if (*arg4 == 0) {
+                *arg4 = 7;
+                *arg3 += arg2 * 7;
+            }
+            break;
+    }
+}
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060BEA8.s")
+void func_global_asm_8060BEA8(s32 arg0, u8 arg1, u16 *arg2, u8 *arg3) {
+    *arg2 = *arg2 + D_global_asm_807ECEA0 + 0x645;
+    *arg3 = 0;
+    switch (arg0) {
+        case 15:
+            if (*arg3 == 0) {
+                *arg3 = 2;
+            }
+            *arg2 += 0x18;
+            // fallthrough
+        case 16:
+            if (*arg3 == 0) {
+                *arg3 = 0x18;
+            }
+            *arg2 += 0x16;
+            // fallthrough
+        case 14:
+            if (*arg3 == 0) {
+                *arg3 = 0x16;
+            }
+            *arg2 += 1;
+            // fallthrough
+        case 13:
+            if (*arg3 == 0) {
+                *arg3 = 1;
+            }
+            *arg2 += 2;
+            // fallthrough
+        case 12:
+            if (*arg3 == 0) {
+                *arg3 = 2;
+            }
+            break;
+    }
+}
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060BF84.s")
+void func_global_asm_8060BF84(s32 arg0, u8 arg1, u16 *arg2, u8 *arg3) {
+    *arg2 = (((((((D_global_asm_807ECEA0 + 0x6B7) & 0xFFC0) + 0x27) & 0xFFF8) * 4) + 0x3F) & 0xFFC0) + 0x40;
+    *arg3 = 0;
+    switch (arg0) {
+        case 32:
+            if (*arg3 == 0) {
+                *arg3 = 1;
+            }
+            *arg2 += 3;
+            // fallthrough
+        case 31:
+            if (*arg3 == 0) {
+                *arg3 = 3;
+            }
+            *arg2 += 2;
+            // fallthrough
+        case 30:
+            if (*arg3 == 0) {
+                *arg3 = 2;
+            }
+            *arg2 += 0x2D;
+            // fallthrough
+        case 29:
+            if (*arg3 == 0) {
+                *arg3 = 9;
+                *arg2 += arg1 * 9;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 28:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 27:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 26:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x2D;
+            // fallthrough
+        case 25:
+            if (*arg3 == 0) {
+                *arg3 = 9;
+                *arg2 += arg1 * 9;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 24:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 23:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 22:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x4B;
+            // fallthrough
+        case 21:
+            if (*arg3 == 0) {
+                *arg3 = 0xF;
+                *arg2 += arg1 * 0xF;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 20:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 19:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x19;
+            // fallthrough
+        case 18:
+            if (*arg3 == 0) {
+                *arg3 = 5;
+                *arg2 += arg1 * 5;
+            }
+            *arg2 += 0x11;
+        case 17:
+            // fallthrough
+            if (*arg3 == 0) {
+                *arg3 = 0x12;
+            }
+    }
+}
 
 void func_global_asm_8060C2C4(s32 arg0, s32 arg1, u8 arg2, u16 *arg3, s8 *arg4) {
     s32 i;
@@ -241,17 +482,8 @@ void func_global_asm_8060C830(u8 fileIndex, s32 arg1) {
     }
 }
 
-typedef struct {
-    s16 unk0;
-    u8 unk2;
-    u8 unk3;
-    u8 unk4;
-} Struct80757044;
-
 extern s32 D_global_asm_807467EC[];
 extern Struct80757044 D_global_asm_80744548[];
-extern Struct80757044 D_global_asm_80757044[];
-extern Struct80757044 D_global_asm_80757064[];
 extern Struct80757044 D_global_asm_80744568[];
 
 void func_global_asm_8060C8AC(u8 arg0) {
@@ -263,26 +495,26 @@ void func_global_asm_8060C8AC(u8 arg0) {
     if (arg0 & 2) {
         for (i = 0; i < 5; i++) {
             func_global_asm_8060C648(0x15, 0, i, 0, D_global_asm_807467EC[i]);
-            func_global_asm_8060C648(0x12, 0, i, 0, 0x20);
-            func_global_asm_8060C648(0x13, 0, i, 0, 0x20);
-            func_global_asm_8060C648(0x14, 0, i, 0, 0x20);
+            func_global_asm_8060C648(0x12, 0, i, 0, ' ');
+            func_global_asm_8060C648(0x13, 0, i, 0, ' ');
+            func_global_asm_8060C648(0x14, 0, i, 0, ' ');
         }
     }
     if (arg0 & 4) {
         for (i = 0; i < 5; i++) {
-            func_global_asm_8060C648(0x19, 0, i, 0, D_global_asm_80757044[i].unk0);
-            func_global_asm_8060C648(0x16, 0, i, 0, D_global_asm_80757044[i].unk2);
-            func_global_asm_8060C648(0x17, 0, i, 0, D_global_asm_80757044[i].unk3);
-            func_global_asm_8060C648(0x18, 0, i, 0, D_global_asm_80757044[i].unk4);
+            func_global_asm_8060C648(0x19, 0, i, 0, D_global_asm_80757044[i].score);
+            func_global_asm_8060C648(0x16, 0, i, 0, D_global_asm_80757044[i].initials[0]);
+            func_global_asm_8060C648(0x17, 0, i, 0, D_global_asm_80757044[i].initials[1]);
+            func_global_asm_8060C648(0x18, 0, i, 0, D_global_asm_80757044[i].initials[2]);
             D_global_asm_80744548[i] = D_global_asm_80757044[i];
         }
     }
     if (arg0 & 8) {
         for (i = 0; i < 5; i++) {
-            func_global_asm_8060C648(0x1D, 0, i, 0, D_global_asm_80757064[i].unk0);
-            func_global_asm_8060C648(0x1A, 0, i, 0, D_global_asm_80757064[i].unk2);
-            func_global_asm_8060C648(0x1B, 0, i, 0, D_global_asm_80757064[i].unk3);
-            func_global_asm_8060C648(0x1C, 0, i, 0, D_global_asm_80757064[i].unk4);
+            func_global_asm_8060C648(0x1D, 0, i, 0, D_global_asm_80757064[i].score);
+            func_global_asm_8060C648(0x1A, 0, i, 0, D_global_asm_80757064[i].initials[0]);
+            func_global_asm_8060C648(0x1B, 0, i, 0, D_global_asm_80757064[i].initials[1]);
+            func_global_asm_8060C648(0x1C, 0, i, 0, D_global_asm_80757064[i].initials[2]);
             D_global_asm_80744568[i] = D_global_asm_80757064[i];
         }
     }
@@ -509,11 +741,10 @@ void func_global_asm_8060E1A8(void) {
     func_global_asm_8060B8F8(0);
 }
 
+// TODO: Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/getFlagBlockAddress.s")
 
-// TODO: Close
 /*
-// ./diff.sh 0x12F5C
 u8 *getFlagBlockAddress(u8 flagType) {
     s32 temp_t6;
     u8 *phi_v1;
