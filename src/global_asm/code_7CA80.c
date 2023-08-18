@@ -1,8 +1,15 @@
 #include <ultra64.h>
 #include "functions.h"
 
+const char D_global_asm_80759260[] = "DONKEY";
+const char D_global_asm_80759268[] = "DIDDY";
+const char D_global_asm_80759270[] = "LANKY";
+const char D_global_asm_80759278[] = "TINY";
+const char D_global_asm_80759280[] = "CHUNKY";
+const char D_global_asm_80759288[] = "KRUSHA";
+const char D_global_asm_80759290[] = "RAMBI";
+const char D_global_asm_80759298[] = "ENGUARDE";
 
-extern f64 D_global_asm_80759380;
 extern u8 D_global_asm_807F94B4;
 
 extern u8 D_global_asm_807FBC55;
@@ -1456,7 +1463,7 @@ s32 func_global_asm_8067B2C0(s32 arg0) {
 s32 func_global_asm_8067B2DC(ActorSpawner *arg0) {
     if (func_global_asm_806134B4(D_global_asm_807FBB44, arg0->unk2, arg0)) {
         D_global_asm_807FBB44->ledge_info_pointer = func_global_asm_80665F24(D_global_asm_807FBB44);
-        D_global_asm_807FBB44->unk15E = D_global_asm_807FBB44->ledge_info_pointer->unkC * D_global_asm_80759380 * 0.5;
+        D_global_asm_807FBB44->unk15E = D_global_asm_807FBB44->ledge_info_pointer->unkC * 0.15 * 0.5;
         return TRUE;
     }
     return FALSE;

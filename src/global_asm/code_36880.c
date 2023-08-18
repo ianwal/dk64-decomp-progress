@@ -214,60 +214,59 @@ void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2) {
 extern s16 D_global_asm_807F614A;
 
 s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
-    // TODO: Use Maps enum literals
     switch (map) {
-        case 48:
+        case MAP_FUNGI:
             D_global_asm_807F614A = 530;
             break;
-        case 26:
+        case MAP_FACTORY:
             D_global_asm_807F614A = 500;
             break;
-        case 38:
+        case MAP_AZTEC:
             D_global_asm_807F614A = 500;
             break;
-        case 30:
+        case MAP_GALLEON:
             D_global_asm_807F614A = 485;
             break;
-        case 7:
+        case MAP_JAPES:
             D_global_asm_807F614A = 465;
             break;
-        case 8:
-        case 9:
-        case 10:
-        case 11:
-        case 12:
-        case 13:
-        case 14:
-        case 15:
-        case 16:
-        case 17:
-        case 18:
-        case 19:
-        case 20:
-        case 21:
-        case 22:
-        case 23:
-        case 24:
-        case 25:
-        case 27:
-        case 28:
-        case 29:
-        case 31:
-        case 32:
-        case 33:
-        case 34:
-        case 35:
-        case 36:
-        case 37:
-        case 39:
-        case 40:
-        case 41:
-        case 42:
-        case 43:
-        case 44:
-        case 45:
-        case 46:
-        case 47:
+        case MAP_JAPES_ARMY_DILLO:
+        case MAP_JETPAC:
+        case MAP_KREMLING_KOSH_VERY_EASY:
+        case MAP_STEALTHY_SNOOP_NORMAL_NO_LOGO:
+        case MAP_JAPES_SHELL:
+        case MAP_JAPES_LANKY_CAVE:
+        case MAP_AZTEC_BEETLE_RACE:
+        case MAP_SNIDES_HQ:
+        case MAP_AZTEC_TINY_TEMPLE:
+        case MAP_HELM:
+        case MAP_TEETERING_TURTLE_TROUBLE_VERY_EASY:
+        case MAP_AZTEC_FIVE_DOOR_TEMPLE_DK:
+        case MAP_AZTEC_LLAMA_TEMPLE:
+        case MAP_AZTEC_FIVE_DOOR_TEMPLE_DIDDY:
+        case MAP_AZTEC_FIVE_DOOR_TEMPLE_TINY:
+        case MAP_AZTEC_FIVE_DOOR_TEMPLE_LANKY:
+        case MAP_AZTEC_FIVE_DOOR_TEMPLE_CHUNKY:
+        case MAP_CANDYS_MUSIC_SHOP:
+        case MAP_FACTORY_CAR_RACE:
+        case MAP_HELM_LEVEL_INTROS_GAME_OVER:
+        case MAP_FACTORY_POWER_SHED:
+        case MAP_GALLEON_KROOLS_SHIP:
+        case MAP_BATTY_BARREL_BANDIT_EASY:
+        case MAP_JAPES_CHUNKY_CAVE:
+        case MAP_DK_ISLES_OVERWORLD:
+        case MAP_KROOL_BARREL_DK_TARGET_GAME:
+        case MAP_FACTORY_CRUSHER_ROOM:
+        case MAP_JAPES_BARREL_BLAST:
+        case MAP_GALLEON_SEAL_RACE:
+        case MAP_NINTENDO_LOGO:
+        case MAP_AZTEC_BARREL_BLAST:
+        case MAP_TROFF_N_SCOFF:
+        case MAP_GALLEON_SHIPWRECK_DIDDY_LANKY_CHUNKY:
+        case MAP_GALLEON_TREASURE_CHEST:
+        case MAP_GALLEON_MERMAID:
+        case MAP_GALLEON_SHIPWRECK_DK_TINY:
+        case MAP_GALLEON_SHIPWRECK_LANKY_TINY:
         default:
             D_global_asm_807F614A = 450;
         break;
@@ -376,8 +375,28 @@ void func_global_asm_80632E10(s16 arg0, u8 *arg1) {
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80632E74.s")
+s32 func_global_asm_80731654(s16, s16);
+
+void func_global_asm_80632E74(s16 arg0, s16 arg1, u8 *arg2) {
+    switch (func_global_asm_80731654(arg0, arg1)) {
+        case 2:
+            *arg2 |= 8;
+            break;
+        case 5:
+            *arg2 |= 4;
+            break;
+        case 6:
+            *arg2 |= 1;
+            break;
+        case 3:
+            *arg2 |= 2;
+            break;
+        case 4:
+            *arg2 |= 0x10;
+            break;
+    }
+    return;
+}
 
 typedef struct {
     u16 unk0; // Map
@@ -995,7 +1014,6 @@ void func_global_asm_80605380(s16);
 
 void func_global_asm_8063DE68(void*);
 void func_global_asm_806645B8(s16 arg0);
-
 
 void func_global_asm_8066C904(OM2_unk28 *arg0);
 
@@ -1803,7 +1821,7 @@ void func_global_asm_8063CADC(void) {
     D_global_asm_807F618C = getPointerTableFile(7, 0x3B8, 0, 0); // Texture
 }
 
-// jumptable :(
+// jumptable, Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063CB40.s")
 
 void func_global_asm_8063CE64(void) {
