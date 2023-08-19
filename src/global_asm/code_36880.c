@@ -145,30 +145,6 @@ s32 func_global_asm_80631D8C(u8 arg0) {
 
 s32 func_global_asm_80631EB8(u16 arg0) {
     switch (arg0) {
-        case 11:
-        case 12:
-        case 14:
-        case 15:
-        case 16:
-        case 17:
-        case 18:
-        case 19:
-        case 20:
-        case 21:
-        case 23:
-        case 24:
-        case 25:
-        case 26:
-        case 27:
-        case 32:
-        case 33:
-        case 34:
-        case 37:
-        case 38:
-        case 40:
-        case 41:
-        case 42:
-            break;
         case 10:
         case 13:
         case 22:
@@ -230,43 +206,6 @@ s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
         case MAP_JAPES:
             D_global_asm_807F614A = 465;
             break;
-        case MAP_JAPES_ARMY_DILLO:
-        case MAP_JETPAC:
-        case MAP_KREMLING_KOSH_VERY_EASY:
-        case MAP_STEALTHY_SNOOP_NORMAL_NO_LOGO:
-        case MAP_JAPES_SHELL:
-        case MAP_JAPES_LANKY_CAVE:
-        case MAP_AZTEC_BEETLE_RACE:
-        case MAP_SNIDES_HQ:
-        case MAP_AZTEC_TINY_TEMPLE:
-        case MAP_HELM:
-        case MAP_TEETERING_TURTLE_TROUBLE_VERY_EASY:
-        case MAP_AZTEC_FIVE_DOOR_TEMPLE_DK:
-        case MAP_AZTEC_LLAMA_TEMPLE:
-        case MAP_AZTEC_FIVE_DOOR_TEMPLE_DIDDY:
-        case MAP_AZTEC_FIVE_DOOR_TEMPLE_TINY:
-        case MAP_AZTEC_FIVE_DOOR_TEMPLE_LANKY:
-        case MAP_AZTEC_FIVE_DOOR_TEMPLE_CHUNKY:
-        case MAP_CANDYS_MUSIC_SHOP:
-        case MAP_FACTORY_CAR_RACE:
-        case MAP_HELM_LEVEL_INTROS_GAME_OVER:
-        case MAP_FACTORY_POWER_SHED:
-        case MAP_GALLEON_KROOLS_SHIP:
-        case MAP_BATTY_BARREL_BANDIT_EASY:
-        case MAP_JAPES_CHUNKY_CAVE:
-        case MAP_DK_ISLES_OVERWORLD:
-        case MAP_KROOL_BARREL_DK_TARGET_GAME:
-        case MAP_FACTORY_CRUSHER_ROOM:
-        case MAP_JAPES_BARREL_BLAST:
-        case MAP_GALLEON_SEAL_RACE:
-        case MAP_NINTENDO_LOGO:
-        case MAP_AZTEC_BARREL_BLAST:
-        case MAP_TROFF_N_SCOFF:
-        case MAP_GALLEON_SHIPWRECK_DIDDY_LANKY_CHUNKY:
-        case MAP_GALLEON_TREASURE_CHEST:
-        case MAP_GALLEON_MERMAID:
-        case MAP_GALLEON_SHIPWRECK_DK_TINY:
-        case MAP_GALLEON_SHIPWRECK_LANKY_TINY:
         default:
             D_global_asm_807F614A = 450;
         break;
