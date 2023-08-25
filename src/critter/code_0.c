@@ -129,21 +129,10 @@ typedef struct {
 extern unkStruct_critter_80029BA0* D_critter_80029BA0;
 extern s32 D_critter_80029BA8;
 
-extern f64 D_critter_80029FF0;
-extern f32 D_critter_80029FF8;
-extern f64 D_critter_8002A000;
-extern f64 D_critter_8002A008;
-extern f64 D_critter_8002A010;
-extern f32 D_critter_8002A018;
-extern f64 D_critter_8002A020;
-extern f32 D_critter_8002A028;
-extern f64 D_critter_8002A078;
-
 extern s32 D_global_asm_8071FC40;
 extern u8 D_global_asm_80770DC9;
 extern s32 D_global_asm_807F6C28;
 
-void func_critter_80024000(Critter*, s32, f32);
 void func_critter_80024578(Critter *);
 s32 func_critter_80025AD0(s32, s32);
 void func_critter_80025DB8(CritterStruct6*, CritterStruct6*, u8, s16, u8);
@@ -156,8 +145,23 @@ void func_global_asm_80611690(void*);
 u32 func_global_asm_806119A0();
 void func_global_asm_80718BF4(void);
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80024000.s")
+void func_critter_80024000(Critter *arg0, u8 *arg1, f32 arg2) {
+    switch (*arg1) {
+        case 0:
+        case 1:
+            arg0->unk34 = arg2 * 3.0;
+            break;
+        case 2:
+            arg0->unk34 = arg2 * 0.5;
+            break;
+        case 3:
+            arg0->unk34 = arg2 * 1.1;
+            break;
+        case 4:
+            arg0->unk34 = 2.0 * arg2;
+            break;
+    }
+}
 
 void func_critter_8002409C(CritterController *arg0) {
     Critter *phi_v0;
@@ -199,17 +203,12 @@ void func_critter_800240EC(CritterController *arg0) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_8002427C.s")
 
-extern f64 D_critter_80029FE0;
-extern f64 D_critter_80029FE8;
-
 extern f32 *D_critter_80029F74;
 
 /*
 void func_critter_8002427C(CritterController *arg0) {
     f32 sp68[4][4];
     Critter *var_s0;
-    f64 temp_f22;
-    f64 temp_f24;
     s32 i;
     u8 var_s2;
 
@@ -217,35 +216,33 @@ void func_critter_8002427C(CritterController *arg0) {
     sp68[0][0] = D_critter_80029F74[0];
     sp68[0][1] = D_critter_80029F74[1];
     var_s2 = 0;
-    temp_f24 = D_critter_80029FE0;
-    temp_f22 = D_critter_80029FE8;
     for (i = 0; i < arg0->unk2; i++) {
-            if (var_s2 == 0) {
-                if (!((arg0->unk2 * temp_f22) < i)) {
-                    goto block_6;
-                }
-                goto block_14;
+        if (var_s2 == 0) {
+            if (!((arg0->unk2 * 0.3) < i)) {
+                goto block_6;
             }
+            goto block_14;
+        }
 block_6:
-            if (var_s2 == 1) {
-                if (!(( arg0->unk2 * 0.5) < i)) {
-                    goto block_10;
-                }
-                goto block_14;
+        if (var_s2 == 1) {
+            if (!(( arg0->unk2 * 0.5) < i)) {
+                goto block_10;
             }
+            goto block_14;
+        }
 block_10:
-            if (var_s2 == 2) {
-                if ((arg0->unk2 * temp_f24) < i) {
+        if (var_s2 == 2) {
+            if ((arg0->unk2 * 0.7) < i) {
 block_14:
-                    var_s2++;
-                }
+                var_s2++;
             }
-            var_s0->unk24 = 20.0f;
-            var_s0->unk1E1 |= 4;
-            var_s0->unk1E8[0] = 0;
-            var_s0->unk1E4[0] = (&sp68[0])[var_s2];
-            func_critter_80024000(var_s0, arg0, var_s0->unk38 * 0.5);
-            var_s0++;
+        }
+        var_s0->unk24 = 20.0f;
+        var_s0->unk1E1 |= 4;
+        var_s0->unk1E8[0] = 0;
+        var_s0->unk1E4[0] = (&sp68[0])[var_s2];
+        func_critter_80024000(var_s0, arg0, var_s0->unk38 * 0.5);
+        var_s0++;
     }
 }
 */
@@ -291,9 +288,9 @@ void func_critter_800245B8(Critter *arg0) {
     
     if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1)) {
         rng_val = func_global_asm_806119A0();
-        sp3C = arg0->unk28 * D_critter_80029FF0;
+        sp3C = arg0->unk28 * 0.333333333333333315;
         if ((s16)(rng_val % 255U) < 6) {
-            func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_global_asm_806119A0() & 3) + 0x1A9), 0xFF, 0x7F, 0x1E, 0x5A, D_critter_80029FF8, 0);
+            func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_global_asm_806119A0() & 3) + 0x1A9), 0xFF, 0x7F, 0x1E, 0x5A, 0.7f, 0);
         }
         arg0->unk42 = arg0->unk42 + (1200.0f * sp3C);
         arg0->unk42 &= 0xFFF;
@@ -321,12 +318,12 @@ void func_critter_80024B78(Critter *arg0) {
     f32 temp_f2;
 
     if (arg0->unk1E1 & 1) {
-        temp_f2 = (arg0->unk28 * D_critter_8002A000);
-        arg0->unk42 = (arg0->unk42 + (D_critter_8002A008 * (0.5 + (10.0f * temp_f2))));
+        temp_f2 = (arg0->unk28 * 0.909090909090909061);
+        arg0->unk42 = (arg0->unk42 + (90.0 * (0.5 + (10.0f * temp_f2))));
         arg0->unk42 &= 0xFFF;
         temp_f0 = func_global_asm_80612794(arg0->unk42);
         arg0->unk48 = ((((-15.0f * temp_f2) + 45.0f) * temp_f0) + (temp_f2 * 30.0f));
-        arg0->unk14 = ((arg0->unk28 * temp_f0) * D_critter_8002A010);
+        arg0->unk14 = ((arg0->unk28 * temp_f0) * 0.4);
     }
     func_critter_80024578(arg0);
 }
@@ -355,7 +352,7 @@ void func_critter_80024F28(Critter *arg0) {
         }
         temp = ABS(sp3E);
         if (!(temp < 0x5B)) {
-            func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x16F, 0x46, 0xDC, 0x1E, 0x5A, D_critter_8002A018, 0);
+            func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x16F, 0x46, 0xDC, 0x1E, 0x5A, 0.7f, 0);
         }
         arg0->unk42 = (arg0->unk42 + (200.0 * (1.5 + (150.0f * arg0->unk30))));
         arg0->unk42 &= 0xFFF;
@@ -363,7 +360,7 @@ void func_critter_80024F28(Critter *arg0) {
         temp_f2 += (temp_f2 * (sp3E * 0.00024414062f));
         sp44 = temp_f2;
         arg0->unk4C = (func_global_asm_80612794(arg0->unk42 + 0xC8) * 2);
-        arg0->unk48 = (sp44 + (sp3E * D_critter_8002A020));
+        arg0->unk48 = (sp44 + (sp3E * 0.2));
     }
     func_critter_80024578(arg0);
 }
@@ -373,7 +370,7 @@ void func_critter_80024F28(Critter *arg0) {
 
 void func_critter_80025500(Critter *arg0) {
     if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1) && ((s16) (func_global_asm_806119A0() % 255U) < 6)) {
-        func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_global_asm_806119A0() & 3) + 0x1A9), 0xFF, 0x5A, 0x1E, 0x5A, D_critter_8002A028, 0);
+        func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_global_asm_806119A0() & 3) + 0x1A9), 0xFF, 0x5A, 0x1E, 0x5A, 0.7f, 0);
     }
     func_critter_80024578(arg0);
 }
@@ -436,7 +433,6 @@ void func_critter_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg
 }
 
 void func_critter_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
-extern f32 D_critter_8002A02C;
 
 typedef struct {
     s16 unk0;
@@ -463,7 +459,7 @@ typedef struct {
 void func_critter_80025A3C(Struct80025A3C *arg0) {
     f32 sp30[4][4];
 
-    func_critter_800258B0(&sp30, -arg0->unk2, arg0->unk0, 0, arg0->unk38 * D_critter_8002A02C, arg0->unk8, arg0->unkC + arg0->unk14, arg0->unk10);
+    func_critter_800258B0(&sp30, -arg0->unk2, arg0->unk0, 0, arg0->unk38 * 0.07f, arg0->unk8, arg0->unkC + arg0->unk14, arg0->unk10);
     guMtxF2L(&sp30, arg0->unk60[D_global_asm_807444FC]);
 }
 
@@ -533,8 +529,6 @@ void func_critter_80025F8C(CritterStruct7 *arg0, CritterStruct7 *arg1, u8 arg2) 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_8002601C.s")
 
-extern f32 D_critter_8002A044;
-
 extern CritterStruct5 *D_critter_80029BA4;
 
 /*
@@ -563,7 +557,7 @@ void func_critter_8002601C(Critter *arg0) {
             + ((arg0->unk58->z_position - character_change_array[cc_player_index].look_at_eye_z) * (arg0->unk58->z_position - character_change_array[cc_player_index].look_at_eye_z)));
         arg0->unk58->unk20 = temp_f12;
         if (temp_f12 < temp_f2) {
-            var_f0 = (temp_f2 - temp_f12) * D_critter_8002A044;
+            var_f0 = (temp_f2 - temp_f12) * 5.102040814e-05f;
             if (var_f0 > 1.0f) {
                 var_f0 = 1.0f;
             }
@@ -658,8 +652,21 @@ s32 func_critter_80026530(Critter *arg0, s32 arg1) {
 // Seems doable, lots of float bs though
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_8002658C.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80026874.s")
+void func_critter_80026874(Critter *arg0, CritterController *arg1) {
+    if (arg0->unk1E1 & 1) {
+        if (arg0->unk1E1 & 4) {
+            func_critter_8002658C(arg0, arg1, 0, &func_critter_80026530);
+        }
+    }
+    if (arg0->unk1E2 == 2) {
+        func_critter_8002646C(arg0, arg1->critter);
+        return;
+    }
+    if (arg0->unk58->unk25 != 0) {
+        func_critter_80026410(arg0);
+        func_critter_80026338(arg0, arg1);
+    }
+}
 
 void func_critter_80026904(Critter *arg0, CritterController *arg1) {
     if (arg0->unk1E2 == 2) {
@@ -712,7 +719,7 @@ s32 func_critter_80026A5C(Critter *arg0, s32 arg1) {
     } else {
         arg0->unk2 = 0;
         arg0->unk34 = 0.0f;
-        if (arg0->unk28 < D_critter_8002A078) {
+        if (arg0->unk28 < 0.05) {
             arg0->unk1E0 = 0;
             arg0->unk28 = 0;
             return TRUE;
@@ -721,8 +728,45 @@ s32 func_critter_80026A5C(Critter *arg0, s32 arg1) {
     return FALSE;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80026B78.s")
+void func_critter_80026B78(CritterController *arg0) {
+    void (*var_s3)(void *);
+    s32 i;
+    u8 temp_t6;
+    Critter *critter;
+
+    critter = arg0->critter;
+    switch (arg0->critter_count) {
+        case 0:
+        case 1:
+            var_s3 = func_critter_800245B8;
+            break;
+        case 2:
+            var_s3 = func_critter_80024F28;
+            break;
+        case 3:
+            var_s3 = func_critter_80024B78;
+            break;
+        case 4:
+            var_s3 = func_critter_80025500;
+            break;
+        default:
+            var_s3 = NULL;
+            break;
+    }
+    for (i = 0; i < arg0->unk2; i++) {
+        func_critter_8002601C(critter);
+        if (critter->unk1E0 == 0) {
+            func_critter_80026874(critter, arg0);
+        } else {
+            func_critter_8002658C(critter, arg0, &func_critter_80026904, &func_critter_80026A5C);
+        }
+        critter->unk44 = critter->unk42;
+        if (var_s3 != NULL) {
+            var_s3(critter);
+        }
+        critter++;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80026C9C.s")
 

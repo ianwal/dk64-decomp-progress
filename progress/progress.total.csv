@@ -3608,7 +3608,7 @@ us,.bonus,func_bonus_80027548,688,no
 us,.bonus,func_bonus_8002D010,736,no
 us,.bonus,func_bonus_80024D3C,80,yes
 us,.bonus,func_bonus_80026690,688,no
-us,.bonus,func_bonus_800254B0,396,no
+us,.bonus,func_bonus_800254B0,396,yes
 us,.bonus,func_bonus_800256C4,72,yes
 us,.bonus,func_bonus_8002BF98,2388,no
 us,.bonus,func_bonus_800252A0,324,yes
@@ -3618,13 +3618,13 @@ us,.bonus,func_bonus_800274A0,168,yes
 version,section,function,length,matching
 us,.critter,func_critter_80027118,552,no
 us,.critter,func_critter_800288A8,500,no
-us,.critter,func_critter_80026874,144,no
+us,.critter,func_critter_80026874,144,yes
 us,.critter,func_critter_80027034,88,yes
 us,.critter,func_critter_800240EC,104,yes
 us,.critter,func_critter_8002516C,916,no
 us,.critter,func_critter_800257D4,220,yes
 us,.critter,func_critter_80025500,196,yes
-us,.critter,func_critter_80024000,156,no
+us,.critter,func_critter_80024000,156,yes
 us,.critter,func_critter_80026530,92,yes
 us,.critter,func_critter_80025F8C,144,yes
 us,.critter,func_critter_80026338,216,yes
@@ -3634,7 +3634,7 @@ us,.critter,func_critter_8002409C,80,yes
 us,.critter,func_critter_80026904,344,yes
 us,.critter,func_critter_80026C9C,368,no
 us,.critter,func_critter_80024B78,272,yes
-us,.critter,func_critter_80026B78,292,no
+us,.critter,func_critter_80026B78,292,yes
 us,.critter,func_critter_80024578,64,yes
 us,.critter,func_critter_80026E0C,452,yes
 us,.critter,func_critter_80026A5C,284,yes

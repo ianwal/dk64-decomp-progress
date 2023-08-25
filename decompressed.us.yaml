@@ -483,9 +483,9 @@ segments:
       - [0x2186B80, c, code_9010]
       - [0x21873D0, data, code_0]
       - [0x21874B0, rodata] # code_0
-      - [0x2187820, rodata] # code_12A0
+      - [0x2187820, .rodata, code_12A0]
       - [0x2187890, rodata] # code_2690
-      - [0x2187A30, rodata] # code_9010
+      - [0x2187A30, .rodata, code_9010]
   - name: race
     dir: race
     type: code
@@ -514,6 +514,8 @@ segments:
       - [0x2193BC0, c, code_0]
       - [0x2196F00, c, code_3340]
       - [0x21993B0, data, code_0]
+      - [0x2199B70, .rodata, code_0] # code_0
+      - [0x2199C70, rodata] # code_3340
   - name: boss
     dir: boss
     type: code

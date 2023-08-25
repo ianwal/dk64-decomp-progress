@@ -1,6 +1,38 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern u8 D_global_asm_80750AB8;
+
+extern f64 D_global_asm_8075A498;
+extern f64 D_global_asm_8075A4A0;
+extern f64 D_global_asm_8075A4A8;
+extern f64 D_global_asm_8075A4B0;
+extern f64 D_global_asm_8075A4B8;
+extern f64 D_global_asm_8075A4C0;
+extern f64 D_global_asm_8075A4C8;
+extern s32 D_global_asm_807FBB68;
+extern f32 D_global_asm_80750394;
+extern f32 D_global_asm_80750398;
+extern f32 D_global_asm_8075A504;
+extern f32 D_global_asm_8075A508;
+extern u8 D_global_asm_807FBD70;
+extern s32 D_global_asm_80720BE8;
+extern f64 D_global_asm_8075A510;
+extern f64 D_global_asm_8075A518;
+extern f64 D_global_asm_8075A520;
+extern f64 D_global_asm_8075A528;
+extern f64 D_global_asm_8075A530;
+extern f64 D_global_asm_8075A538;
+extern u8 D_global_asm_807503D4;
+extern u8 D_global_asm_807503E0;
+
+extern f64 D_global_asm_8075A540;
+
+GlobalASMStruct60 *func_global_asm_80688584(Actor*, s32);
+extern s32 D_global_asm_80744478;
+extern u8 D_global_asm_80750AD4;
+void func_global_asm_8069FA40(void);
+
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069E210.s")
 
@@ -47,15 +79,6 @@ int func_global_asm_8069E660(Actor *arg0, f32 arg1, f32 arg2) {
 
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069E774.s")
-
-extern u8 D_global_asm_80750AB8;
-
-extern f64 D_global_asm_8075A498;
-extern f64 D_global_asm_8075A4A0;
-extern f64 D_global_asm_8075A4A8;
-extern f64 D_global_asm_8075A4B0;
-extern f64 D_global_asm_8075A4B8;
-extern f64 D_global_asm_8075A4C0;
 
 // TODO: Add to aaD union
 typedef struct {
@@ -223,11 +246,6 @@ s32 func_global_asm_8069EF50(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069F020.s")
 
-extern f64 D_global_asm_8075A4C8;
-extern s32 D_global_asm_807FBB68;
-
-GlobalASMStruct60 *func_global_asm_80688584(Actor*, s32);
-
 /*
 // TODO: Doable, good progress made
 // Something sus going on with the big function call
@@ -371,10 +389,6 @@ void func_global_asm_8069F904(Gfx *dl, Actor *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069FDA0.s")
 
-extern s32 D_global_asm_80744478;
-extern u8 D_global_asm_80750AD4;
-void func_global_asm_8069FA40(void);
-
 /*
 void func_global_asm_8069FDA0(void) {
     s16 sp22;
@@ -437,8 +451,6 @@ void func_global_asm_8069FDA0(void) {
 }
 */
 
-extern f32 D_global_asm_80750394;
-
 // TODO: Add to aaD union
 typedef struct {
     s32 unk0;
@@ -476,12 +488,6 @@ void func_global_asm_806A02F0(void) {
 void func_global_asm_806A0310(void) {
     func_global_asm_806A018C();
 }
-
-extern f32 D_global_asm_80750398;
-extern f32 D_global_asm_8075A504;
-extern f32 D_global_asm_8075A508;
-extern u8 D_global_asm_807FBD70;
-extern s32 D_global_asm_80720BE8;
 
 void func_global_asm_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
@@ -533,13 +539,6 @@ void func_global_asm_806A0330(void) {
 void func_global_asm_806A05D4(void) {
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
-
-extern f64 D_global_asm_8075A510;
-extern f64 D_global_asm_8075A518;
-extern f64 D_global_asm_8075A520;
-extern f64 D_global_asm_8075A528;
-extern f64 D_global_asm_8075A530;
-extern f64 D_global_asm_8075A538;
 
 typedef struct {
     s8 unk0[0x200 - 0x0];
@@ -646,11 +645,6 @@ void func_global_asm_806A10BC(s32 *arg0) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_806A112C.s")
-
-extern u8 D_global_asm_807503D4;
-extern u8 D_global_asm_807503E0;
-
-extern f64 D_global_asm_8075A540;
 
 /*
 // TODO: Pretty close, need some structs

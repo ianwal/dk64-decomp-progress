@@ -1,6 +1,12 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// .rodata
+// const char D_bonus_8002DEC0[] = "HIT %d";
+// const char D_bonus_8002DEC8[] = "COMBO x2";
+// const char D_bonus_8002DED4[] = "SCORE";
+// const char D_bonus_8002DEDC[] = "LAP BONUS";
+
 extern s8 D_bonus_8002D910[];
 extern s8 D_bonus_8002D91C[];
 extern s8 D_bonus_8002D920;
