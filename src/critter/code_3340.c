@@ -166,9 +166,11 @@ s32 func_global_asm_8061CB08();
 s32 func_global_asm_8061CB38();
 s32 func_global_asm_806A2A10(s32, s32, u8);
 u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
-extern s32 D_critter_80004520;
+
+// TODO: Probably code in dk64_boot... Hmm...
 extern s32 D_critter_800046C0;
 extern s32 D_critter_80006F10;
+
 extern s8 D_critter_80029FA0;
 extern u16 D_critter_80029FA4;
 extern s8 D_critter_80029FA8;
@@ -276,7 +278,7 @@ void func_critter_80029118(void) {
                 current_actor_pointer->control_state = 0xFF;
             }
             func_critter_80029110(~(u32)(&D_critter_800046C0))(NULL, 1);
-            func_critter_80029110(~(u32)(&D_critter_80004520))(var_s0, 0x10);
+            func_critter_80029110(~(u32)(&osInvalDCache))(var_s0, 0x10);
             temp_t3 = var_s0[0] + var_s0[1];
             var_s0[0] = temp_t3;
             // Anti tamper?

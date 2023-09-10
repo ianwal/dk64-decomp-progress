@@ -359,11 +359,11 @@ segments:
       - [0x215CED0, .rodata, code_35000]
       - [0x215CF00, .rodata, code_36880]
       - [0x215D260, rodata] # code_42630
-      - [0x215D8E0, rodata] # code_54150
+      - [0x215D8E0, .rodata, code_54150]
       - [0x215D960, rodata] # code_55B20
       - [0x215D9A0, rodata] # code_5E2F0
       - [0x215DA50, .rodata, code_61690]
-      - [0x215DA60, rodata] # code_61AA0
+      - [0x215DA60, .rodata, code_61AA0]
       - [0x215DAC0, .rodata, code_63810]
       - [0x215DAD0, .rodata, code_63EC0]
       - [0x215DAE0, .rodata, code_67890]
@@ -415,7 +415,7 @@ segments:
       - [0x2163130, .rodata, code_10E1D0]
       - [0x2163170, .rodata, code_110F00]
       - [0x2163190, .rodata, code_112080]
-      - [0x21631B0, rodata] # code_114270
+      - [0x21631B0, rodata] # code_114270 // TODO: Probably a file split lurking in here
       - [0x21633A0, rodata] # code_119370
       - [0x2163840, rodata] # code_127B00
       - [0x2163880, rodata] # code_1295B0, code12E800?

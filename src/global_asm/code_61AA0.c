@@ -1,10 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// rodata
-extern f64 D_global_asm_80758D60; // 600.0
-extern f64 D_global_asm_80758D68; // 45.0
-
 extern f32 D_global_asm_807F5FDC;
 extern f32 D_global_asm_807F5FE0;
 
@@ -78,10 +74,9 @@ void func_global_asm_8065CE4C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, 
 }
 */
 
-// rodata
 f32 func_global_asm_8065CFB8(s16 arg0, f32 arg1) {
     if (arg0 == 0xB2 || arg0 == 0x253) {
-        arg1 += (D_global_asm_80758D60 - arg1) * D_global_asm_807F6940;
+        arg1 += (600.0 - arg1) * D_global_asm_807F6940;
     }
     return arg1;
 }
@@ -90,7 +85,7 @@ f32 func_global_asm_8065CFB8(s16 arg0, f32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065D008.s")
 
 f32 func_global_asm_8065D0FC(f32 arg0) {
-    if (D_global_asm_80758D68 == character_change_array[cc_player_index].fov_y) {
+    if (45.0 == character_change_array[cc_player_index].fov_y) {
         return arg0;
     }
     return (arg0 / D_global_asm_807F5FDC) * D_global_asm_807F5FE0;

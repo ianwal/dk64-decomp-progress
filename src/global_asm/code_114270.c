@@ -1,8 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
 extern OSTime D_global_asm_807445B8;
 extern u32 D_global_asm_807445BC;
 
@@ -21,7 +21,6 @@ typedef struct {
 } Struct80755264;
 
 extern Struct80755264 D_global_asm_80755264[];
-extern f64 D_global_asm_8075E5B0;
 extern u8 D_global_asm_8077058C;
 extern s32 D_global_asm_807FD9F0[];
 extern u8 D_global_asm_807FDA1C;
@@ -51,7 +50,34 @@ extern u8 D_global_asm_80755350;
 extern s8 D_global_asm_8075536C; // Exit
 extern s32 D_global_asm_80755384[];
 
-extern u8 D_global_asm_8075E5C0[];
+// rodata
+extern char D_global_asm_8075E5D4[];
+extern f64 D_global_asm_8075E5B0;
+extern f64 D_global_asm_8075E4E0;
+extern f32 D_global_asm_8075E4D8;
+extern f32 D_global_asm_8075E4C0;
+extern f32 D_global_asm_8075E4C4;
+extern f32 D_global_asm_8075E4C8;
+extern f32 D_global_asm_8075E4CC;
+extern f64 D_global_asm_8075E4D0;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+} Struct8075E5C0;
+
+extern const Struct8075E5C0 D_global_asm_8075E5C0[];/* = {
+    {0x04, 0x00, 0x01E0},
+    {0x00, 0x00, 0x0294},
+    {0x01, 0x00, 0x01E0},
+    {0x03, 0x00, 0x0258},
+    {0x02, 0x00, 0x0258},
+};*/
+
+extern f32 D_global_asm_807FD9EC;
+extern u8 D_global_asm_807FDA1B;
+extern s16 D_global_asm_807FDA1E;
 
 extern s32 D_global_asm_807FBB68;
 
@@ -78,14 +104,6 @@ void func_global_asm_8070F570(void) {
 
 // Doable, needs some structs defined though
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_8070F5CC.s")
-
-extern f32 D_global_asm_8075E4C0;
-extern f32 D_global_asm_8075E4C4;
-extern f32 D_global_asm_8075E4C8;
-extern f32 D_global_asm_8075E4CC;
-extern f64 D_global_asm_8075E4D0;
-
-extern s16 D_global_asm_807FDA1E;
 
 typedef struct {
     f32 unk0;
@@ -114,12 +132,17 @@ void func_global_asm_8070FA58(Struct8070FA58 *arg0) {
     arg0->unk1C = character_change_array->look_at_eye_z;
     var_f12 = character_change_array->unk2C4 - arg0->unk14;
     if (D_global_asm_8075E4C0 < var_f12) {
+    // if (3.141592741f < var_f12) {
         var_f12 = D_global_asm_8075E4C4 - var_f12;
+        // var_f12 = 6.283185482f - var_f12;
     }
     if (var_f12 < D_global_asm_8075E4C8) {
+    // if (var_f12 < -3.141592741f) {
         var_f12 = D_global_asm_8075E4CC - var_f12;
+        // var_f12 = -6.283185482f - var_f12;
     }
     arg0->unk4 += ((var_f12 * 180.0f) - (D_global_asm_8075E4D0 * D_global_asm_807FDA1E));
+    // arg0->unk4 += ((var_f12 * 180.0f) - (0.3 * D_global_asm_807FDA1E));
     sp30 = temp_f2_2;
     arg0->unk4 += (4.0f * temp_f2_2 * func_global_asm_80612D1C(var_f12));
     sp26 = func_global_asm_80665DE0(character_change_array->look_at_eye_x, character_change_array->look_at_eye_z, character_change_array->unk21C, character_change_array->unk224);
@@ -130,8 +153,6 @@ void func_global_asm_8070FA58(Struct8070FA58 *arg0) {
     arg0->unk14 = character_change_array->unk2C4;
 }
 
-extern f32 D_global_asm_8075E4D8;
-
 typedef struct {
     s32 unk0;
     f32 unk4;
@@ -140,6 +161,7 @@ typedef struct {
 void func_global_asm_8070FC40(Struct8070FC40_arg0 *arg0) {
     f32 temp2 = arg0->unk4; // TODO: Hmm...
     f32 temp = D_global_asm_8075E4D8;
+    // f32 temp = 315.0f;
 
     if (arg0->unk4 > temp) {
         arg0->unk4 = (arg0->unk4 - temp) + 2.0f;
@@ -168,8 +190,6 @@ typedef struct {
     u8 unkB1;
 } Struct8071006C_arg0;
 
-extern f64 D_global_asm_8075E4E0;
-
 u8 func_global_asm_8071006C(Struct8071006C_arg0 *arg0) {
     f32 temp;
     func_global_asm_8070FA58(arg0);
@@ -182,6 +202,7 @@ u8 func_global_asm_8071006C(Struct8071006C_arg0 *arg0) {
     }
     temp = 1.0f / ((f64)arg0->unk10 * 4.0f) * 60.0f;
     arg0->unkC += (((30.0f - ((temp) - 30.0f)) + 30.0f) * D_global_asm_8075E4E0);
+    // arg0->unkC += (((30.0f - ((temp) - 30.0f)) + 30.0f) * 0.2);
     return (arg0->unkC > 240.0f || arg0->unkB1 < 0x50);
 }
 
@@ -208,10 +229,6 @@ u8 func_global_asm_80710174(Struct8071006C_arg0 *arg0) {
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807103E0.s")
 
-extern f64 D_global_asm_8075E4F0;
-extern f64 D_global_asm_8075E4F8;
-extern f32 D_global_asm_807FD9EC;
-
 typedef struct {
     s32 unk0;
     f32 unk4;
@@ -235,10 +252,10 @@ typedef struct {
 /*
 u8 func_global_asm_807103E0(Struct807103E0 *arg0) {
     func_global_asm_8070FA58(arg0); // TODO: Consolidate structs?
-    arg0->unk4 += func_global_asm_80612794(arg0->unk22 * 0.5) * (f32)(arg0->unk28 * D_global_asm_8075E4F0);
+    arg0->unk4 += func_global_asm_80612794(arg0->unk22 * 0.5) * (f32)(arg0->unk28 * 0.05);
     func_global_asm_8070FC40(arg0); // TODO: Consolidate structs?
     arg0->unk8 = arg0->unk4;
-    arg0->unkC += (1.0 + func_global_asm_80612794(arg0->unk22)) * (f32)(1.0 + (arg0->unk20 * D_global_asm_8075E4F8));
+    arg0->unkC += (1.0 + func_global_asm_80612794(arg0->unk22)) * (f32)(1.0 + (arg0->unk20 * 0.08));
     arg0->unk22 += 0x64;
     // Problem is here, end of the line
     arg0->unk24 = (func_global_asm_80612794(arg0->unk22 * 0.5) * 0.5 + 0.5) * ((arg0->unkB3 * 4) - (arg0->unkB3 * -4)) + (arg0->unkB3 * -4);
@@ -266,17 +283,12 @@ u8 func_global_asm_807103E0(Struct807103E0 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711F90.s")
 
-extern f64 D_global_asm_8075E5A8;
-extern s16 D_global_asm_807FDA1E;
-extern u8 D_global_asm_807FDA1B;
-
 void func_global_asm_8070F5CC(s32 arg0, s16 arg1, f32 arg2, s16 arg3, s16 arg4, u8 arg5);
 
 /*
 // TODO: Close
 void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) {
     f32 temp_f22;
-    f64 temp_f26;
     s32 i;
     s32 var_s4;
 
@@ -291,10 +303,9 @@ void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) 
         var_s4 = arg0;
     }
     D_global_asm_807FDA1B = 0xFF;
-    temp_f26 = D_global_asm_8075E5A8;
     for (i = 0; i < var_s4; i++) {
         temp_f22 = ((rand() >> 0xF) % 0x7FFF) % 320;
-        func_global_asm_8070F5CC(2, arg3, (((((rand() >> 0xF) % 0x7FFF) % 125) / 800.0) + temp_f26) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
+        func_global_asm_8070F5CC(2, arg3, (((((rand() >> 0xF) % 0x7FFF) % 125) / 800.0) + 0.1) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
     }
     if (D_global_asm_807550E0->unk0 != 0) {
         func_global_asm_8068C350(&func_global_asm_80710CA0, NULL, 1);
@@ -307,6 +318,7 @@ s32 func_global_asm_807122B4(void) {
 
     if (D_global_asm_807550E0->unk0 != 0) {
         D_global_asm_8077058C = D_global_asm_8077058C * D_global_asm_8075E5B0;
+        // D_global_asm_8077058C = D_global_asm_8077058C * 0.9;
         func_global_asm_8068C350(&func_global_asm_80710CA0, NULL, 1);
         return 0;
     }
@@ -483,7 +495,7 @@ void func_global_asm_80712830(Actor *arg0, s32 exit) {
     }
 }
 
-// rodata, regalloc
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80712944.s")
 
 /*
@@ -509,7 +521,7 @@ void func_global_asm_80712944(GlobalASMStruct12 *arg0) {
 
 void func_global_asm_80712B80(void) {
     if (game_mode == GAME_MODE_DK_TV) {
-        func_global_asm_8060B750(D_global_asm_8075E5C0[D_global_asm_80755328 * 4]);
+        func_global_asm_8060B750(D_global_asm_8075E5C0[D_global_asm_80755328].unk0);
         current_character_index[0] = func_global_asm_8060B7C4();
     }
 }
@@ -556,7 +568,7 @@ void func_global_asm_80712FC8(void) {
             func_global_asm_807124B8(MAP_NINTENDO_LOGO, 0, GAME_MODE_OPENING_CUTSCENE);
             return;
         }
-        func_global_asm_8060B750(D_global_asm_8075E5C0[D_global_asm_80755328 * 4]);
+        func_global_asm_8060B750(D_global_asm_8075E5C0[D_global_asm_80755328].unk0);
         func_global_asm_8060B7D0(&map, &exit);
         func_global_asm_805FF158(1);
         func_global_asm_805FF378(map, exit);
@@ -599,7 +611,7 @@ void func_global_asm_807131BC(void) {
     s32 exit;
 
     D_global_asm_8075532C = 0;
-    func_global_asm_8060B750(D_global_asm_8075E5C0[D_global_asm_80755328 * 4]);
+    func_global_asm_8060B750(D_global_asm_8075E5C0[D_global_asm_80755328].unk0);
     func_global_asm_8060B7D0(&map, &exit);
     func_global_asm_805FF158(1);
     func_global_asm_80712490(map, exit, GAME_MODE_DK_TV);
@@ -633,9 +645,6 @@ Gfx *func_global_asm_807132DC(Gfx *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_8071338C.s")
 
-extern s16 D_global_asm_80744490;
-extern char D_global_asm_8075E5D4[];
-
 void *func_global_asm_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5);
 s32 func_global_asm_806FBD5C(s16, void*);
 
@@ -654,6 +663,7 @@ void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     sp34 = malloc(size);
     func_global_asm_8061134C(sp34);
     func_dk64_boot_800031E0(sp34, &D_global_asm_8075E5D4, 0x63, sp30);
+    // func_dk64_boot_800031E0(sp34, "%c%s", 0x63, sp30);
     sp28 -= 0.5 * func_global_asm_806FBD5C(1, sp34);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, arg1);
@@ -667,9 +677,6 @@ void func_global_asm_80713438(Gfx *dl, u8 arg1) {
 s32 func_global_asm_8071375C(s32 arg0) {
     return arg0;
 }
-
-extern s16 D_global_asm_80744490;
-extern s16 D_global_asm_80744494;
 
 void func_global_asm_80713764(Gfx *dl, u8 arg1, f32 arg2) {
     f32 temp;
@@ -808,9 +815,6 @@ void func_global_asm_80713EB0(enum map_e arg0, s32 arg1, s32 arg2) {
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80714060.s")
-
-// extern s32 (*D_global_asm_8075E628[])(void);
-// extern s32 (*D_global_asm_8075E664[])(void);
 
 // TODO: Why can't these return s32?
 int gameIsInDKTVMode(void) {
