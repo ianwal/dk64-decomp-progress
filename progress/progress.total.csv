@@ -3505,7 +3505,7 @@ us,.race,func_race_8002D4A0,132,yes
 us,.race,func_race_80024000,1588,no
 us,.race,func_race_8002597C,1312,no
 us,.race,func_race_80029F88,248,no
-us,.race,func_race_800280E8,496,no
+us,.race,func_race_800280E8,496,yes
 us,.race,func_race_8002E960,76,no
 us,.race,func_race_80026CA8,132,yes
 us,.race,func_race_8002D148,220,yes
@@ -3524,7 +3524,7 @@ us,.race,func_race_8002F280,132,yes
 us,.race,func_race_8002BDDC,268,no
 us,.race,func_race_8002CAC8,292,yes
 us,.race,func_race_80024634,92,yes
-us,.race,func_race_8002B76C,504,no
+us,.race,func_race_8002B76C,504,yes
 us,.race,func_race_8002578C,24,yes
 us,.race,func_race_8002A7F8,1652,no
 us,.race,func_race_8002ED04,208,yes
@@ -3542,7 +3542,7 @@ us,.race,func_race_8002DF38,656,no
 us,.race,func_race_80027880,160,no
 us,.race,func_race_80027AF8,56,yes
 us,.race,func_race_8002B6C8,44,yes
-us,.race,func_race_800294A8,740,no
+us,.race,func_race_800294A8,740,yes
 us,.race,func_race_8002D224,156,yes
 us,.race,func_race_800274C0,488,yes
 us,.race,func_race_8002B180,920,no

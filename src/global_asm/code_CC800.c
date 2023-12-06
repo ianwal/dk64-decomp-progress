@@ -283,7 +283,7 @@ u8 func_global_asm_806C8D2C(s16 arg0) {
 // u8 func_global_asm_806C8D2C(s16, s32);
 
 /*
-// TODO: Missing something
+// TODO: Missing something, close, doable
 s32 func_global_asm_806C8DE0(s32 playerIndex) {
     s32 phi_v1;
     PlayerAdditionalActorData *PaaD;

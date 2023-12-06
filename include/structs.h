@@ -647,7 +647,7 @@ typedef struct race_additional_actor_data {
     RaaD_unk20 *unk20; // Array
     u8  unk24;
     u8  unk25;
-    s8  unk26;
+    u8  unk26; // Used
     s8  unk27;
     u8 unk28; // Used
     s8 unk29; // Used
