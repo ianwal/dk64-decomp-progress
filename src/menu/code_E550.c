@@ -4,6 +4,9 @@
 
 s32 func_global_asm_80629148(void);
 void func_global_asm_8068A858(s32 *, s32 *, s32 *);
+int func_menu_8003292C();
+
+extern u8 D_menu_800339D0;
 
 extern s32 D_menu_80033FB0;
 extern s32 D_menu_80033FB1;
@@ -33,9 +36,6 @@ void func_menu_80032550(void) {
     }
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
-
-extern u8 D_menu_800339D0;
-int func_menu_8003292C();
 
 void func_menu_8003264C(void) {
     s32 var_a0;

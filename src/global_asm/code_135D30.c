@@ -1,9 +1,64 @@
 #include <ultra64.h>
 #include "functions.h"
 
+void func_global_asm_807311C4(s16);
+u8* getFlagBlockAddress(u8 flagType); // TODO: Can we use the FlagTypes enum? Needs to be a u8 to match
+s16 func_global_asm_80731784(s16, s16, s32 *);
+
+typedef struct {
+    s16 unk0; // Start Permanent Flag Index
+    s16 unk2; // End Permanent Flag Index
+    s16 unk4; // Flag Count Required
+    s16 unk6; // Global Flag To Set
+} Struct80756024;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    s16 unk4; // Used, permanent flag index
+    u8 unk6;
+    u8 unk7;
+} Struct80755A20;
+
+typedef struct {
+    u8 unk0; // Used, likely map
+    u8 unk1;
+    s16 unk2; // Used
+    u16 unk4; // Used
+    u8 unk6; // Used
+    u8 unk7; // Used
+} Struct807FDCD0;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    s16 unk4; // Permanent Flag Index
+    u8 unk6;
+    u8 unk7;
+} Struct80755EA0;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+} Struct80755F4C;
+
+typedef struct {
+    s16 unk0;
+    u8 unk2;
+    u8 unk3;
+} Struct80755F50;
+
+extern Struct80755EA0 D_global_asm_80755EA0[];
+extern Struct80755F4C D_global_asm_80755F4C[];
+extern Struct80755F50 D_global_asm_80755F50[];
+extern Struct80755A20 D_global_asm_80755A20[];
+extern Struct80756024 D_global_asm_80756024[];
+
+extern Struct807FDCD0 D_global_asm_807FDCD0[];
 
 extern u8 temporary_flag_block[];
-u8* getFlagBlockAddress(u8 flagType); // TODO: Can we use the FlagTypes enum? Needs to be a u8 to match
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_global_asm_80731030.s")
 
@@ -50,16 +105,6 @@ u8 isFlagSet(s16 flagIndex, u8 flagType) { // TODO: Can we use the FlagTypes enu
     return flagBlock[flagByte] >> (s16)(flagIndex - flagByte * 8) & 1;
 }
 
-typedef struct {
-    s16 unk0; // Start Permanent Flag Index
-    s16 unk2; // End Permanent Flag Index
-    s16 unk4; // Flag Count Required
-    s16 unk6; // Global Flag To Set
-} Struct80756024;
-extern Struct80756024 D_global_asm_80756024[];
-
-void func_global_asm_807311C4(s16);
-
 void func_global_asm_807311C4(s16 flagIndex) {
     s32 i;
     s32 chosenFlag;
@@ -104,28 +149,6 @@ void setFlag(s16 flagIndex, u8 newValue, u8 flagType) {
         }
     }
 }
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    s16 unk2;
-    s16 unk4; // Used, permanent flag index
-    u8 unk6;
-    u8 unk7;
-} Struct80755A20;
-
-extern Struct80755A20 D_global_asm_80755A20[];
-
-typedef struct {
-    u8 unk0; // Used, likely map
-    u8 unk1;
-    s16 unk2; // Used
-    u16 unk4; // Used
-    u8 unk6; // Used
-    u8 unk7; // Used
-} Struct807FDCD0;
-
-extern Struct807FDCD0 D_global_asm_807FDCD0[];
 
 void func_global_asm_807313BC(void) {
     s32 i;
@@ -239,8 +262,6 @@ s16 func_global_asm_80731784(s16 map, s16 spawnerID, s32 *arg2) {
 }
 */
 
-s16 func_global_asm_80731784(s16, s16, s32 *);
-
 s32 func_global_asm_807317FC(s16 arg0, s16 arg1) {
     s32 flagIndex;
     s32 sp20;
@@ -259,17 +280,6 @@ s32 func_global_asm_807317FC(s16 arg0, s16 arg1) {
     }
     return 1;
 }
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    s16 unk2;
-    s16 unk4; // Permanent Flag Index
-    u8 unk6;
-    u8 unk7;
-} Struct80755EA0;
-
-extern Struct80755EA0 D_global_asm_80755EA0[];
 
 s32 func_global_asm_807318AC(s16 arg0, s16 arg1) {
     s32 i;
@@ -290,13 +300,6 @@ s32 func_global_asm_807318AC(s16 arg0, s16 arg1) {
     return 1;
 }
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-} Struct80755F4C;
-
-extern Struct80755F4C D_global_asm_80755F4C[];
-
 // TODO: This might not be right, the struct array is not used anywhere else
 s16 func_global_asm_8073195C(s16 arg0) {
     if (arg0 == 0) {
@@ -304,14 +307,6 @@ s16 func_global_asm_8073195C(s16 arg0) {
     }
     return D_global_asm_80755F4C[arg0].unk0;
 }
-
-typedef struct {
-    s16 unk0;
-    u8 unk2;
-    u8 unk3;
-} Struct80755F50;
-
-extern Struct80755F50 D_global_asm_80755F50[];
 
 u8 func_global_asm_8073198C(s16 arg0) {
     s32 i;

@@ -2,13 +2,16 @@
 #include "functions.h"
 
 
+void func_global_asm_80718BF4(void);
+
 extern s32 D_global_asm_8071FB08; // TODO: Proper datatype
 extern s32 D_global_asm_8071FBA0;
+extern s32 D_global_asm_8071FC40; // TODO: Proper datatype
 extern s32 D_global_asm_8071FF58; // TODO: Datatype
+extern s32 D_global_asm_8071FFA0;
 
 extern s32 D_global_asm_807200D4; // TODO: Proper datatype
 extern s32 D_global_asm_80720B58; // TODO: Datatype
-extern s32 D_global_asm_8071FFA0;
 extern s16 D_global_asm_80750AC8;
 
 extern u16 D_global_asm_807446C0[];
@@ -19,31 +22,12 @@ typedef struct {
 } Struct80747B00;
 extern Struct80747B00 D_global_asm_80747B00[];
 
+extern f32 D_global_asm_807502F4;
 extern u8 D_global_asm_807506C0[];
-
-extern s32 D_global_asm_8071FC40; // TODO: Proper datatype
-void func_global_asm_80718BF4(void);
 
 extern s16 D_global_asm_807F62B4;
 extern u8 D_global_asm_807FBDC4;
-extern f32 D_global_asm_807502F4;
 extern s32 D_global_asm_807FBDC8[];
-
-// .rodata
-extern f32 D_global_asm_8075BBE4;
-extern f32 D_global_asm_8075BBE8;
-extern f64 D_global_asm_8075BBF0;
-extern f64 D_global_asm_8075BBF8;
-extern f32 D_global_asm_8075BC00;
-extern f32 D_global_asm_8075BEA8;
-extern f64 D_global_asm_8075BEB0;
-extern f64 D_global_asm_8075BEB8;
-extern f64 D_global_asm_8075BEC0;
-extern f64 D_global_asm_8075BEC8;
-extern f64 D_global_asm_8075BED0;
-extern f64 D_global_asm_8075BED8;
-extern f64 D_global_asm_8075BEE0;
-
 extern u16 D_global_asm_807FC930[];
 
 void func_global_asm_80724E48(u8);
@@ -99,7 +83,7 @@ void func_global_asm_806BDEC8(void) {
             case 0:
                 current_actor_pointer->y_velocity = 150.0f;
                 func_global_asm_80614EBC(current_actor_pointer, 0x28E);
-                func_global_asm_8061C600(PaaD->unk104, current_actor_pointer, 4, 0xE77, 0xFA, 2, 0x32, 0x20, 0x3F, 0x4A, D_global_asm_8075BBE4);
+                func_global_asm_8061C600(PaaD->unk104, current_actor_pointer, 4, 0xE77, 0xFA, 2, 0x32, 0x20, 0x3F, 0x4A, 0.1599999964f);
                 D_global_asm_807FDC90->unk2C = 0x32;
                 current_actor_pointer->control_state_progress += 1;
                 break;
@@ -148,7 +132,7 @@ void func_global_asm_806BE09C(void) {
             current_actor_pointer->control_state_progress = 0;
             D_global_asm_807FDC90->unk2E = 0x32;
             func_global_asm_80614EBC(current_actor_pointer, 0x28A);
-            func_global_asm_8061C518(sp4C->unk104, player_pointer, 4, 0x990, 0x5A, -0x2E, 0x3C, 0xA, 0x20, 0, D_global_asm_8075BBE8);
+            func_global_asm_8061C518(sp4C->unk104, player_pointer, 4, 0x990, 0x5A, -0x2E, 0x3C, 0xA, 0x20, 0, 0.3000000119f);
             player_pointer->y_rotation = func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, player_pointer->x_position, player_pointer->z_position);
             player_pointer->unkEE = player_pointer->y_rotation;
         }
@@ -157,19 +141,19 @@ void func_global_asm_806BE09C(void) {
     if (sp44 > 1.0f) {
         sp44 = 1.0f;
     }
-    temp_f2 = D_global_asm_807FDC90->unk30 + ((D_global_asm_8075BBF0 - D_global_asm_807FDC90->unk30) * sp44);
+    temp_f2 = D_global_asm_807FDC90->unk30 + ((0.44 - D_global_asm_807FDC90->unk30) * sp44);
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_807248B0(current_actor_pointer, temp_f2);
     }
     switch (current_actor_pointer->control_state) {
         case 0x12:
-            func_global_asm_807248B0(current_actor_pointer, ((temp_f2 - current_actor_pointer->animation_state->scale_x) * D_global_asm_8075BBF8) + current_actor_pointer->animation_state->scale_x);
+            func_global_asm_807248B0(current_actor_pointer, ((temp_f2 - current_actor_pointer->animation_state->scale_x) * 0.1) + current_actor_pointer->animation_state->scale_x);
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     if (D_global_asm_807FDC90->unk2E != 0) {
                         D_global_asm_807FDC90->unk2E--;
                         if (D_global_asm_807FDC90->unk2E == 0) {
-                            func_global_asm_8061C518(sp4C->unk104, current_actor_pointer, 4, 0x305, 0x14A, 3, 0x32, 0x7F, 0x5A, 0, D_global_asm_8075BC00);
+                            func_global_asm_8061C518(sp4C->unk104, current_actor_pointer, 4, 0x305, 0x14A, 3, 0x32, 0x7F, 0x5A, 0, 0.02999999933f);
                         }
                     }
                     if (D_global_asm_807FDC90->unk2C != 0) {
@@ -240,6 +224,46 @@ void func_global_asm_806BE674(u8 arg0) {
 // Displaylist stuff, dl arg0, actor arg1?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BE6F0.s")
 
+Gfx *func_global_asm_806FC530(Gfx *dl, s32, s16, s32, void*, s32);
+
+/*
+Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
+    char sp4C[2];
+    s16 sfx;
+    u8 temp_t7;
+    s32 var_s0;
+
+    temp_t7 = (arg1->unk168 / 30);
+    if (temp_t7 != 0) {
+        if (temp_t7 >= 4) {
+            var_s0 = 3;
+        } else {
+            var_s0 = temp_t7;
+        }
+        func_dk64_boot_800031E0(&sp4C, "%d", var_s0);
+    } else {
+        func_dk64_boot_800031E0(&sp4C, func_global_asm_8070E750(0x26, 9, 1));
+    }
+    if ((arg1->unk168 % 30) == 0) {
+        if (temp_t7 != 0) {
+            playSound(temp_t7 >= 2 ? 0x75 : 0x74, 0x7FFF, 64.0f, 1.0f, 0, 0x80);
+        }
+    }
+
+    gSPDisplayList(dl++, &D_1000118);
+    gDPPipeSync(dl++);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetColorImage(dl++, 7, G_IM_SIZ_32b, 4096, 0xFA000000);
+
+    dl = func_global_asm_8070068C(dl);
+    dl = func_global_asm_806FC530(dl, 1, (0x140 - func_global_asm_806FBD5C(1, &sp4C)) * 2, 0xAA, &sp4C, 1);
+    if (arg1->unk168-- == 0) {
+        arg1->control_state_progress++;
+    }
+    return dl;
+}
+*/
+
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BE8BC.s")
 
@@ -249,7 +273,7 @@ void func_global_asm_806BE674(u8 arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BF920.s")
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BFA8C.s")
 
 void func_global_asm_806BFBB4() {
@@ -337,7 +361,7 @@ void func_global_asm_806C151C(u16 arg0, u8 arg1, s16 tempFlagIndex) {
     dy = player_pointer->y_position - current_actor_pointer->y_position;
     dz = player_pointer->z_position - current_actor_pointer->z_position;
     phi_a3 = FALSE;
-    if (((dx * dx) + (dy * dy) + (dz * dz)) < D_global_asm_8075BEA8) {
+    if (((dx * dx) + (dy * dy) + (dz * dz)) < 4900.0f) {
         phi_a3 = TRUE;
     }
     if ((phi_a3 & 0xFF) && !isFlagSet(tempFlagIndex, FLAG_TYPE_TEMPORARY)) {
@@ -360,7 +384,7 @@ void func_global_asm_806C1640(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_806C15E8();
         if (current_map == MAP_DK_RAP) {
-            temp_f0 = D_global_asm_8075BEB0;
+            temp_f0 = 0.8;
             current_actor_pointer->animation_state->scale_x *= temp_f0;
             current_actor_pointer->animation_state->scale_y *= temp_f0;
             current_actor_pointer->animation_state->scale_z *= temp_f0;
@@ -758,7 +782,7 @@ void func_global_asm_806C226C(void) {
 void func_global_asm_806C27DC(void) {
     f32 temp_f20;
 
-    temp_f20 = current_actor_pointer->animation_state->scale_y / D_global_asm_8075BEB8;
+    temp_f20 = current_actor_pointer->animation_state->scale_y / 0.15;
     func_global_asm_80604CBC(current_actor_pointer, 0x114, 0x50, 0, 0, 0xFF, 0.5f, 0);
     if (object_timer & 1) {
         func_global_asm_80684550(current_actor_pointer, 1, temp_f20);
@@ -777,11 +801,10 @@ void func_global_asm_806C27DC(void) {
 void func_global_asm_806C28B8(void) {
     f64 temp_f20;
     f32 sp78;
-    f64 temp_f22;
     f32 sp74;
     s32 sp70;
     f32 phi_f2;
-    s16 phi_s0;
+    s16 i;
     f64 phi_f0;
 
     phi_f2 = current_actor_pointer->animation_state->unk0->unk4;
@@ -791,11 +814,10 @@ void func_global_asm_806C28B8(void) {
     }
     if ((phi_f2 > 2.0f) && (phi_f2 < 90.0f)) {
         if ((object_timer % 6U) == 0) {
-            temp_f20 = MIN(1, phi_f2 / D_global_asm_8075BEC0) * D_global_asm_8075BEC8;
-            temp_f22 = D_global_asm_8075BED0;
-            for (phi_s0 = 1; phi_s0 < 5; phi_s0++) {
-                func_global_asm_80671C0C(current_actor_pointer, phi_s0, &sp78, &sp74, &sp70);
-                phi_f0 = MAX(temp_f22, temp_f20);
+            temp_f20 = MIN(1, phi_f2 / 70.0) * 0.3;
+            for (i = 1; i < 5; i++) {
+                func_global_asm_80671C0C(current_actor_pointer, i, &sp78, &sp74, &sp70);
+                phi_f0 = MAX(0.15, temp_f20);
                 func_global_asm_806852C4(phi_f0, sp78, sp74 + 3.0f, sp70);
             }
         }
@@ -810,7 +832,7 @@ void func_global_asm_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32
     func_global_asm_807149C8(arg0, arg1, arg2, 0xFF);
     func_global_asm_8071498C(&func_global_asm_80717D84);
     func_global_asm_80714950(2);
-    func_global_asm_80714CC0(arg6, arg7 * D_global_asm_8075BED8, arg3, arg4, arg5);
+    func_global_asm_80714CC0(arg6, arg7 * 0.2, arg3, arg4, arg5);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C2B2C.s")
@@ -828,7 +850,7 @@ void func_global_asm_806C2B2C(s32 arg0, s32 arg1, u8 arg2, s32 arg3) {
     s16 i;
     Struct80747B00 *temp_s0;
 
-    temp_f24 = (current_actor_pointer->animation_state->scale_y / D_global_asm_8075BEE0) / 1.5;
+    temp_f24 = (current_actor_pointer->animation_state->scale_y / 0.3f) / 1.5;
     while (arg1 >= arg0) {
         for (i = 0; i < 3.0; i++) {
             temp_s0 = &D_global_asm_80747B00[arg2];

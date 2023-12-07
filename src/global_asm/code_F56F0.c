@@ -1,6 +1,143 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// TODO: Is this just a float array? Matrix? idk
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} GlobalASMStruct74;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct806F2EDC;
+
+typedef struct {
+    u8 unk0[0x8E - 0x0];
+    u8 unk8E;
+    u8 unk8F;
+    u8 unk90;
+    u8 unk91;
+} Struct806F2FC0;
+
+typedef struct {
+    s16 unk0; // X
+    s16 unk2; // Y
+    s16 unk4; // Z
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s16 unk14;
+    s16 unk16;
+} Struct806F37BC;
+
+typedef struct {
+    s16 unk0; // Used, X Position
+    s16 unk2; // Used, Y Position
+    s16 unk4; // Used, Z Position
+    s16 unk6;
+    u8 unk8;
+    u8 unk9; // Used
+    u8 unkA;
+    u8 unkB;
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+    u8 unkF;
+    u8 unk10;
+    u8 unk11;
+} Struct80753E90_unk4;
+
+typedef struct {
+    s16 unk0;
+    Struct80753E90_unk4 *unk4;
+} Struct80753E90_2;
+
+// TODO: Same as GlobalASMStruct75?
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    Struct80753E90_2 *unk4;
+} Struct80753E90;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s32 unk4;
+} GlobalASMStruct75;
+
+typedef struct {
+    s16 unk0;
+    s8 unk2;
+    s8 unk3;
+    s16 unk4;
+} Struct80753EA0;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 unk14; // Used
+    u8 unk15;
+    u8 unk16;
+    u8 unk17;
+    s32 unk18; // Used
+} Struct806F1B58;
+
+extern Struct80753E90 *D_global_asm_80753E90;
+extern u8 D_global_asm_8076A0B1;
+extern s32 D_global_asm_807FD70C;
+extern Struct80753E90_2 *D_global_asm_807FD708;
+extern Actor *D_global_asm_807FD710;
+extern s16 D_global_asm_807FD714;
+extern s16 D_global_asm_807FD718;
+extern Actor *D_global_asm_807FD71C;
+
+extern u8 D_global_asm_807FD716; // bitfield, idk what it's for
+
+// rodata
+extern f64 D_global_asm_8075D6D0;
+extern f32 D_global_asm_8075D6D8;
+extern f32 D_global_asm_8075D6DC;
+extern f32 D_global_asm_8075D6E0;
+extern f32 D_global_asm_8075D6E4;
+extern f32 D_global_asm_8075D6E8;
+extern f32 D_global_asm_8075D6EC;
+extern f32 D_global_asm_8075D78C;
+extern f64 D_global_asm_8075D790;
+extern f32 D_global_asm_8075D798;
+extern f64 D_global_asm_8075D7A0;
+extern f64 D_global_asm_8075D7A8;
+extern f64 D_global_asm_8075D7B0;
+extern f64 D_global_asm_8075D810;
+extern f64 D_global_asm_8075D818;
+extern f64 D_global_asm_8075D820;
+extern f64 D_global_asm_8075D828;
+extern f32 D_global_asm_8075D850;
+
+extern s32 D_global_asm_807FBB68;
+
+extern s16 D_global_asm_807FD584;
+
+extern Struct80753EA0 D_global_asm_80753EA0[];
+
+void func_global_asm_806F386C(u8, Actor*, Actor*, s16, u8);
+f32 func_global_asm_80612794(s16);
+void func_global_asm_8068581C(s32, s16, f32, f32, f32, f32, s32);
+s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F09F0.s")
@@ -89,8 +226,6 @@ void func_global_asm_806F1048(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F10E8.s")
 
-extern s32 D_global_asm_807FBB68;
-
 void func_global_asm_806F1250(Actor *arg0) {
     PlayerAdditionalActorData *PaaD = arg0->PaaD;
     if (arg0->unk58 == ACTOR_CHUNKY) {
@@ -127,10 +262,6 @@ void func_global_asm_806F1380(Actor *arg0) {
     func_global_asm_80614FD8(&sp1C);
     arg0->animation_state->unk88 = arg0->unkB8 - sp1C;
 }
-
-extern s16 D_global_asm_807FD584;
-
-s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 
 void func_global_asm_806F13C8(Actor *arg0) {
     u8 sp27;
@@ -311,22 +442,6 @@ void func_global_asm_806F1990(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     *arg2 += 1;
 }
 
-extern f64 D_global_asm_8075D6D0;
-extern f32 D_global_asm_8075D6D8;
-extern f32 D_global_asm_8075D6DC;
-extern f32 D_global_asm_8075D6E0;
-extern f32 D_global_asm_8075D6E4;
-extern f32 D_global_asm_8075D6E8;
-extern f32 D_global_asm_8075D6EC;
-
-// TODO: Is this just a float array? Matrix? idk
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} GlobalASMStruct74;
-
 void func_global_asm_806F1A18(f32 arg0, f32 arg1, GlobalASMStruct74 *arg2, f32 *arg3) {
     s32 temp;
     f32 sp20;
@@ -348,19 +463,6 @@ f32 func_global_asm_806F1AE0(Actor *arg0, GlobalASMStruct74 *arg1, f32 arg2) {
     arg1->unkC = temp_f2;
     return (temp_f12 + temp_f2) * arg2;
 }
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    u8 unk14; // Used
-    u8 unk15;
-    u8 unk16;
-    u8 unk17;
-    s32 unk18; // Used
-} Struct806F1B58;
 
 int func_global_asm_806F1B58(Actor *arg0, Struct806F1B58 *arg1, s32 arg2) {
     return (arg0->object_properties_bitfield & 0x100)
@@ -430,23 +532,6 @@ void func_global_asm_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
     *arg2 += 1;
 }
 */
-
-extern f32 D_global_asm_8075D78C;
-extern f64 D_global_asm_8075D790;
-extern f32 D_global_asm_8075D798;
-extern f64 D_global_asm_8075D7A0;
-extern f64 D_global_asm_8075D7A8;
-extern f64 D_global_asm_8075D7B0;
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Struct806F2EDC;
 
 void func_global_asm_806F2A40(Actor *arg0, Struct806F2EDC *arg1, s32 *arg2) {
     f32 var_f0;
@@ -571,16 +656,6 @@ void func_global_asm_806F2EDC(s32 arg0, Struct806F2EDC *arg1, s32 *arg2, u8 arg3
     *arg2 += 1;
 }
 
-typedef struct {
-    u8 unk0[0x8E - 0x0];
-    u8 unk8E;
-    u8 unk8F;
-    u8 unk90;
-    u8 unk91;
-} Struct806F2FC0;
-
-void func_global_asm_8068581C(s32, s16, f32, f32, f32, f32, s32);
-
 void func_global_asm_806F2FC0(s32 arg0, Struct806F2FC0 *arg1, u16 arg2) {
     s32 var_v0;
     s32 var_v1;
@@ -646,21 +721,6 @@ void func_global_asm_806F3760(s16 map) {
     }
 }
 
-typedef struct {
-    s16 unk0; // X
-    s16 unk2; // Y
-    s16 unk4; // Z
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s16 unk10;
-    s16 unk12;
-    s16 unk14;
-    s16 unk16;
-} Struct806F37BC;
-
 void func_global_asm_806F37BC(Actor *arg0, Struct806F37BC *arg1) {
     s16 temp_v0;
 
@@ -672,46 +732,6 @@ void func_global_asm_806F37BC(Actor *arg0, Struct806F37BC *arg1) {
     arg0->unkEE = temp_v0;
     arg0->y_rotation = temp_v0;
 }
-
-void func_global_asm_806F386C(u8, Actor*, Actor*, s16, u8);
-
-typedef struct {
-    s16 unk0; // Used, X Position
-    s16 unk2; // Used, Y Position
-    s16 unk4; // Used, Z Position
-    s16 unk6;
-    u8 unk8;
-    u8 unk9; // Used
-    u8 unkA;
-    u8 unkB;
-    u8 unkC;
-    u8 unkD;
-    u8 unkE;
-    u8 unkF;
-    u8 unk10;
-    u8 unk11;
-} Struct80753E90_unk4;
-
-typedef struct {
-    s16 unk0;
-    Struct80753E90_unk4 *unk4;
-} Struct80753E90_2;
-
-// TODO: Same as GlobalASMStruct75?
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    Struct80753E90_2 *unk4;
-} Struct80753E90;
-
-extern Struct80753E90 *D_global_asm_80753E90;
-extern u8 D_global_asm_8076A0B1;
-extern s32 D_global_asm_807FD70C;
-extern Struct80753E90_2 *D_global_asm_807FD708;
-extern Actor *D_global_asm_807FD710;
-extern s16 D_global_asm_807FD714;
-extern s16 D_global_asm_807FD718;
-extern Actor *D_global_asm_807FD71C;
 
 void func_global_asm_806F386C(u8 arg0, Actor *arg1, Actor *arg2, s16 arg3, u8 arg4) {
     PlayerAdditionalActorData *temp_v0;
@@ -733,18 +753,10 @@ void func_global_asm_806F386C(u8 arg0, Actor *arg1, Actor *arg2, s16 arg3, u8 ar
     }
 }
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s32 unk4;
-} GlobalASMStruct75;
-
 void func_global_asm_806F3950(GlobalASMStruct75 *arg0) {
     func_global_asm_8061134C(arg0->unk4);
     arg0->unk0 = 0;
 }
-
-extern u8 D_global_asm_807FD716; // bitfield, idk what it's for
 
 void func_global_asm_806F397C(Actor *arg0, Actor *arg1, s16 arg2, s16 arg3) {
     s32 phi_v0;
@@ -758,11 +770,6 @@ void func_global_asm_806F397C(Actor *arg0, Actor *arg1, s16 arg2, s16 arg3) {
     func_global_asm_806F386C(arg2, arg0, arg1, arg3, phi_v0);
     D_global_asm_807FD716 = 0;
 }
-
-extern f64 D_global_asm_8075D810;
-extern f64 D_global_asm_8075D818;
-extern f64 D_global_asm_8075D820;
-extern f64 D_global_asm_8075D828;
 
 void func_global_asm_806F39E8(Actor *arg0, ExitData *arg1, u8 arg2) {
     Struct80753E90_unk4 *temp_v0_2;
@@ -787,8 +794,6 @@ void func_global_asm_806F39E8(Actor *arg0, ExitData *arg1, u8 arg2) {
     D_global_asm_807FD716 = 0;
     global_properties_bitfield |= 0x400;
 }
-
-f32 func_global_asm_80612794(s16);
 
 void func_global_asm_806F3BEC(Actor *arg0, s16 arg1, s16 arg2, u8 arg3) {
     Struct80753E90_unk4 *temp_v0_2;
@@ -839,16 +844,6 @@ void func_global_asm_806F3DC8(u16 *arg0, s16 *arg1, u8 *arg2, u16 arg3) {
 
 // Autowalk file arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F4528.s")
-
-typedef struct {
-    s16 unk0;
-    s8 unk2;
-    s8 unk3;
-    s16 unk4;
-} Struct80753EA0;
-
-extern Struct80753EA0 D_global_asm_80753EA0[];
-extern f32 D_global_asm_8075D850;
 
 f32 func_global_asm_806F46B0(s16 arg0) {
     s16 i;

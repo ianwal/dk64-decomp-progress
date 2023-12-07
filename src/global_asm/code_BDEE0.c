@@ -7,12 +7,6 @@ extern s32 D_global_asm_8071FB34;
 extern s32 D_global_asm_8074E880[];
 extern u8 D_global_asm_80750628[];
 
-// rodata
-extern f32 D_global_asm_8075B9E0;
-extern f64 D_global_asm_8075B9E8;
-extern f32 D_global_asm_8075BAEC;
-extern f32 D_global_asm_8075BAF0;
-
 void func_global_asm_80612BC0(Mtx*, f32);
 void func_global_asm_80612C30(Mtx*, f32);
 void func_global_asm_80611A70(f32, f32, f32*, f32*);
@@ -65,7 +59,7 @@ s32 func_global_asm_806B9EB4(u8 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
         guMtxCatF(&sp80, &sp40, &sp80);
         func_global_asm_80612BC0(&sp40, -90.0f);
         guMtxCatF(&sp80, &sp40, &sp80);
-        guAlignF(&sp40, (sp2C * D_global_asm_8075B9E0) + 180.0f, sp3C - arg2, sp38 - arg3, sp34 - arg4);
+        guAlignF(&sp40, (sp2C * 57.29577637f) + 180.0f, sp3C - arg2, sp38 - arg3, sp34 - arg4);
         guMtxCatF(&sp80, &sp40, &sp80);
         guTranslateF(&sp40, 0.0f, arg1, 0.0f);
         guMtxCatF(&sp80, &sp40, &sp80);
@@ -178,7 +172,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
             if (arg1 != 0) {
                 func_global_asm_80613C48(current_actor_pointer, arg1, 0.0f, 4.0f);
             }
-            temp_f0 = D_global_asm_8075B9E8;
+            temp_f0 = 0.1;
             sp54->unk0 += (-sp54->unk0 * temp_f0);
             sp54->unk2 += (-sp54->unk2 * temp_f0);
             if (temp_t5 < 0xB) {
@@ -196,7 +190,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
 }
 */
 
-// Jumptable
+// Jumptable, doable, use new context for function signatures
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BA76C.s")
 
 void func_global_asm_806BA8C8(void) {
@@ -244,7 +238,7 @@ void func_global_asm_806BB32C(void) {
 void func_global_asm_806BB400(void) {
     func_global_asm_80729B00();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        func_global_asm_806D0430(D_global_asm_8075BAEC);
+        func_global_asm_806D0430(0.5249999762f);
         player_pointer->object_properties_bitfield |= 0x400;
         player_pointer->draw_distance = 0x7D0;
         current_actor_pointer->object_properties_bitfield &= -5;
@@ -279,7 +273,7 @@ void func_global_asm_806BB400(void) {
             }
             break;
         case 0x37:
-            func_global_asm_806D0430(D_global_asm_8075BAF0);
+            func_global_asm_806D0430(0.3000000119f);
             current_actor_pointer->control_state = 0x40;
             break;
     }

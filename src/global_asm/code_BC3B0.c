@@ -11,18 +11,6 @@ typedef struct {
     f32 unk4;
 } A178_806B76B0;
 
-/*
-// rodata
-D_global_asm_8075B870 .double 0.100000000000000006
-D_global_asm_8075B878 .float 285
-D_global_asm_8075B880 .double 0.599999999999999978
-D_global_asm_8075B888 .double 0.599999999999999978
-D_global_asm_8075B890 .double 0.599999999999999978
-D_global_asm_8075B898 .double 0.179999999999999993
-D_global_asm_8075B8A0 .double 0.00100000000000000002
-D_global_asm_8075B8A8 .double 0.00100000000000000002
-*/
-
 void func_global_asm_806907F0(f32, f32, f32);
 typedef struct GlobalASMStruct90 {
     f32 unk0;

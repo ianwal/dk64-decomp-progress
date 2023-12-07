@@ -246,6 +246,20 @@ extern s32 D_global_asm_807F6010;
 extern s32 D_global_asm_807FBB68;
 extern u16 D_global_asm_807FC930[];
 
+typedef struct {
+    u16 void_map;
+    u16 dest_map;
+    u8 dest_exit;
+    u8 unk5;
+} struct_void_location;
+
+extern struct_void_location D_global_asm_8074475C[];
+extern u8 D_global_asm_80744828;
+extern u16 D_global_asm_8076AEF4;
+extern u8 D_global_asm_8076AEF6;
+
+extern u16 D_global_asm_80744748[];
+
 s32 func_global_asm_805FEF10(s32 *arg0) {
     s32 found;
     s32 i;
@@ -333,20 +347,6 @@ void func_global_asm_805FF188(s16 arg0, u8 arg1) {
     D_global_asm_8076AEF4 = arg0;
     D_global_asm_8076AEF6 = arg1;
 }
-
-typedef struct {
-    u16 void_map;
-    u16 dest_map;
-    u8 dest_exit;
-    u8 unk5;
-} struct_void_location;
-
-extern struct_void_location D_global_asm_8074475C[];
-extern u8 D_global_asm_80744828;
-extern u16 D_global_asm_8076AEF4;
-extern u8 D_global_asm_8076AEF6;
-
-extern u16 D_global_asm_80744748[];
 
 void func_global_asm_805FF1B0(s32 player_index) {
     u16 pad;

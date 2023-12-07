@@ -2,6 +2,8 @@
 #include "functions.h"
 
 
+extern u8 D_global_asm_80747D78;
+
 extern f32 D_global_asm_80747E00;
 extern f32 D_global_asm_80747E04;
 
@@ -69,7 +71,6 @@ typedef struct {
 } GlobalASMStruct88;
 
 s32 func_global_asm_80631EB8(u16);
-extern u8 D_global_asm_80747D78;
 
 void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2);
 
@@ -208,7 +209,7 @@ s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
             break;
         default:
             D_global_asm_807F614A = 450;
-        break;
+            break;
     }
     if (arg1) {
         D_global_asm_807F6000 = malloc(D_global_asm_807F614A * sizeof(ObjectModel2));

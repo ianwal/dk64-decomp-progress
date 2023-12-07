@@ -78,11 +78,10 @@ void func_global_asm_806BD170(void) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_global_asm_806BD3E4.s")
 
-
-extern s16 D_global_asm_8076A0A6; // Probably static
-
 extern s8 D_global_asm_807506B4;
 extern s8 D_global_asm_807506A8[];
+
+extern s16 D_global_asm_8076A0A6; // Probably static
 
 extern f32 D_global_asm_807FC8D4;
 

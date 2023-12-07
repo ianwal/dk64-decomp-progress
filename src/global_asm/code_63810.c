@@ -25,40 +25,36 @@ extern GlobalASMStruct51 D_global_asm_807F9070[];
 
 extern s32 D_global_asm_807FBB68;
 
-// TODO: Get rid of goto
 void func_global_asm_8065EFF0(void) {
     s32 i;
 
-    if (current_map != MAP_FUNGI || player_pointer->PaaD->unk1F0 & 0x100000) {
-        goto block_3;
-    } else {
+    if (!(current_map != MAP_FUNGI || player_pointer->PaaD->unk1F0 & 0x100000)) {
         D_global_asm_80748A84 = 0;
-        return;
-    }
-block_3:
-    if (!(global_properties_bitfield & 2)) {
-        for (i = 0; i < D_global_asm_80748A84; i++) {
-            if (!(D_global_asm_807FBB68 & 4)) {
-                func_global_asm_806595F0(2);
+    } else {
+        if (!(global_properties_bitfield & 2)) {
+            for (i = 0; i < D_global_asm_80748A84; i++) {
+                if (!(D_global_asm_807FBB68 & 4)) {
+                    func_global_asm_806595F0(2);
+                }
+                func_global_asm_80659600(D_global_asm_807F9070[i].unk12);
+                func_global_asm_80659610(D_global_asm_807F9070[i].unk14);
+                func_global_asm_8065A708(
+                    D_global_asm_807F9070[i].unk4,
+                    D_global_asm_807F9070[i].unk8,
+                    D_global_asm_807F9070[i].unkC,
+                    0.0f,
+                    0.0f,
+                    0.0f,
+                    D_global_asm_807F9070[i].unk10,
+                    0,
+                    D_global_asm_807F9070[i].unk16,
+                    D_global_asm_807F9070[i].unk17,
+                    D_global_asm_807F9070[i].unk18
+                );
             }
-            func_global_asm_80659600(D_global_asm_807F9070[i].unk12);
-            func_global_asm_80659610(D_global_asm_807F9070[i].unk14);
-            func_global_asm_8065A708(
-                D_global_asm_807F9070[i].unk4,
-                D_global_asm_807F9070[i].unk8,
-                D_global_asm_807F9070[i].unkC,
-                0.0f,
-                0.0f,
-                0.0f,
-                D_global_asm_807F9070[i].unk10,
-                0,
-                D_global_asm_807F9070[i].unk16,
-                D_global_asm_807F9070[i].unk17,
-                D_global_asm_807F9070[i].unk18
-            );
         }
+        D_global_asm_80748A84 = 0;
     }
-    D_global_asm_80748A84 = 0;
 }
 
 void func_global_asm_8065F134(s32 arg0, u8 arg1) {

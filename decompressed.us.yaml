@@ -242,7 +242,7 @@ segments:
       - [0x20684C0, c, code_684C0]
       - [0x2068960, c, done/code_68960]
       - [0x2068AA0, c, code_68AA0]
-      - [0x2068EA0, c, code_68EA0]
+      - [0x2068EA0, c, done/code_68EA0]
       - [0x20699B0, c, code_699B0]
       - [0x2070FD0, c, code_70FD0]
       - [0x2077B90, c, code_77B90] # TODO: Weird "handwritten instructions" in functions, could it be mips3? Could it be hasm?
@@ -368,7 +368,7 @@ segments:
       - [0x215DAD0, .rodata, code_63EC0]
       - [0x215DAE0, .rodata, code_67890]
       - [0x215DAF0, .rodata, done/code_68960]
-      - [0x215DB10, .rodata, code_68EA0]
+      - [0x215DB10, .rodata, done/code_68EA0]
       - [0x215DB20, rodata] # code_699B0, TODO: might need another split around 758F70
       - [0x215DD50, rodata] # code_70FD0
       - [0x215DEA0, .rodata, code_79890]
@@ -396,10 +396,10 @@ segments:
       - [0x2160460, .rodata, code_BB300]
       - [0x2160570, .rodata, code_BC3B0]
       - [0x21605B0, .rodata, done/code_BD820]
-      - [0x21605D0, rodata] # code_BDEE0
+      - [0x21605D0, .rodata, code_BDEE0]
       - [0x2160830, .rodata, code_C0EE0]
       - [0x21608C0, .rodata, code_C1E70]
-      - [0x21608E0, rodata] # code_C2A90
+      - [0x21608E0, .rodata, code_C2A90]
       - [0x2160F60, rodata] # code_C8C10
       - [0x2161080, .rodata, code_CB230]
       - [0x21610E0, rodata] # code_CBEA0
@@ -500,7 +500,7 @@ segments:
       - [0x21923C0, c, code_A960]
       - [0x2193570, data, code_0]
       - [0x2193760, rodata] # code_0
-      - [0x21938D0, rodata] # code_36B0
+      - [0x21938D0, .rodata, code_36B0]
       - [0x2193A10, .rodata, code_52B0]
       - [0x2193B20, .rodata, code_7BD0]
       - [0x2193BB0, .rodata, code_A960]

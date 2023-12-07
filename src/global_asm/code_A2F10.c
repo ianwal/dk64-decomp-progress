@@ -1,6 +1,14 @@
 #include <ultra64.h>
 #include "functions.h"
 
+
+extern s32 D_global_asm_80720BE8;
+
+extern f32 D_global_asm_80750394;
+extern f32 D_global_asm_80750398;
+extern u8 D_global_asm_807503D4;
+extern u8 D_global_asm_807503E0;
+
 extern u8 D_global_asm_80750AB8;
 
 extern f64 D_global_asm_8075A498;
@@ -10,23 +18,18 @@ extern f64 D_global_asm_8075A4B0;
 extern f64 D_global_asm_8075A4B8;
 extern f64 D_global_asm_8075A4C0;
 extern f64 D_global_asm_8075A4C8;
-extern s32 D_global_asm_807FBB68;
-extern f32 D_global_asm_80750394;
-extern f32 D_global_asm_80750398;
 extern f32 D_global_asm_8075A504;
 extern f32 D_global_asm_8075A508;
-extern u8 D_global_asm_807FBD70;
-extern s32 D_global_asm_80720BE8;
 extern f64 D_global_asm_8075A510;
 extern f64 D_global_asm_8075A518;
 extern f64 D_global_asm_8075A520;
 extern f64 D_global_asm_8075A528;
 extern f64 D_global_asm_8075A530;
 extern f64 D_global_asm_8075A538;
-extern u8 D_global_asm_807503D4;
-extern u8 D_global_asm_807503E0;
-
 extern f64 D_global_asm_8075A540;
+
+extern s32 D_global_asm_807FBB68;
+extern u8 D_global_asm_807FBD70;
 
 GlobalASMStruct60 *func_global_asm_80688584(Actor*, s32);
 extern s32 D_global_asm_80744478;
