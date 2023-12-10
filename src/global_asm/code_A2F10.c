@@ -96,7 +96,6 @@ typedef struct {
 } AAD_global_asm_8069E774;
 
 f32 func_global_asm_8066E9EC(Actor *arg0, s32 arg1, f32 arg2);
-void func_global_asm_8066EB40(Actor *arg0, f32 arg1);
 
 /*
 // TODO: Doable, great progress made
@@ -491,8 +490,6 @@ void func_global_asm_806A02F0(void) {
 void func_global_asm_806A0310(void) {
     func_global_asm_806A018C();
 }
-
-void func_global_asm_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 void func_global_asm_806A0330(void) {
     s32 pad[8];

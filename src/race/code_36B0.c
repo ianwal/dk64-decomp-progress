@@ -10,7 +10,6 @@ void func_race_8002D064();
 void func_race_8002D0FC();
 extern void func_race_8002CFF0();
 
-void func_global_asm_805FF544();
 s32 func_global_asm_806119A0(void);
 f32 func_global_asm_80665E48(f32, f32, f32, f32);
 s32 func_global_asm_8072177C(void *, s16, s16, s16, s32, s32, s32, s32, s32);

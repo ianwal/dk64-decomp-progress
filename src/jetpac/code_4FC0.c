@@ -750,7 +750,7 @@ void func_jetpac_8002AEC8(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
 
 void *func_global_asm_806FD490(Gfx *, s32, s16, s16, s32);
 
-void func_jetpac_8002AEFC(Gfx **arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_jetpac_8002AEFC(Gfx **arg0, char *arg1, s32 arg2, s32 arg3, s32 arg4) {
     Gfx *dl;
 
     dl = *arg0;

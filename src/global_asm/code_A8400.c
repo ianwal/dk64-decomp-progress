@@ -95,12 +95,9 @@ typedef struct {
 
 void func_global_asm_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806A6DB4(s32 arg0);
-void func_global_asm_8065D254(Actor *actor, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
 void func_global_asm_80686CF8(Actor *actor);
 
 void func_global_asm_806A664C(f32 arg0);
-void func_global_asm_80714A08(f32 arg0, f32 arg1);
-void *func_global_asm_8068C12C(u16 textureIndex);
 
 int func_global_asm_806A4284();
 
@@ -112,8 +109,6 @@ void func_global_asm_806A4DDC(Actor *arg0);
 void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
 
 s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
-void func_global_asm_8066EB40(Actor*, f32);
-void func_global_asm_8066E854(Actor*, f32, f32, f32, s32);
 void func_global_asm_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
 void func_global_asm_80723484(s32, Actor*);
 void func_global_asm_807149FC(s32 arg0);

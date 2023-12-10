@@ -11,7 +11,6 @@ typedef struct {
     f32 unk4;
 } A178_806B76B0;
 
-void func_global_asm_806907F0(f32, f32, f32);
 typedef struct GlobalASMStruct90 {
     f32 unk0;
     f32 unk4;
@@ -23,8 +22,6 @@ extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 extern s32 D_global_asm_807201D4; // TODO: Datatype
 
-void func_global_asm_8066EB40(Actor*, f32);
-void func_global_asm_8066E854(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4);
 void func_global_asm_806B88B8(void);
 
 void func_global_asm_806B76B0(Gfx *dl, Actor *arg1) {
@@ -124,7 +121,6 @@ typedef struct {
 
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 void func_global_asm_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
-void func_global_asm_806A2B08(Actor *arg0);
 void func_global_asm_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2);
 
 /*

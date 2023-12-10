@@ -210,27 +210,7 @@ void func_global_asm_8060EC54(s32 arg0) {
 // osCreateThread, osStartThread, function pointer, neat
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060EC80.s")
 
-typedef struct GlobalASMStruct6 GlobalASMStruct6;
-
-struct GlobalASMStruct6 {
-    GlobalASMStruct6 *next;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-};
-
-typedef struct {
-    u8  pad0[0x260 - 0x0];
-    GlobalASMStruct6 *unk260;
-    s32 unk264;
-    s32 unk268;
-    GlobalASMStruct6 *unk26C;
-    GlobalASMStruct6 *unk270;
-    s32 unk274;
-} GlobalASMStruct87;
-
-void func_global_asm_8060ED6C(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_global_asm_8060ED6C(Struct131B0_2 *arg0, Struct131B0_1 *arg1, s32 arg2, s32 arg3, s32 arg4) {
     OSIntMask oldInterruptMask = osSetIntMask(OS_IM_NONE);
     arg1->unk4 = arg2;
     arg1->next = arg0->unk260;
@@ -240,9 +220,9 @@ void func_global_asm_8060ED6C(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1, s
     osSetIntMask(oldInterruptMask);
 }
 
-void func_global_asm_8060EDD0(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
-    GlobalASMStruct6 *current;
-    GlobalASMStruct6 *var_a2;
+void func_global_asm_8060EDD0(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {
+    Struct131B0_1 *current;
+    Struct131B0_1 *var_a2;
     OSIntMask oldInterruptMask;
 
     current = arg0->unk260;
@@ -272,9 +252,7 @@ s32 func_global_asm_8060EE58(s32 arg0) {
 // Jumptable, appears to be the main function of a thread
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060EE60.s")
 
-void func_global_asm_8060F928(GlobalASMStruct87*, GlobalASMStruct6*);
-
-void func_global_asm_8060F1D0(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
+void func_global_asm_8060F1D0(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {
     func_global_asm_8060F928(arg0, arg1);
     if (arg0->unk274 == 0) {
         func_global_asm_8060F960(arg0, 1);
@@ -286,7 +264,7 @@ void func_global_asm_8060F1D0(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
 extern OSTime D_global_asm_807F04D0;
 
 /*
-void func_global_asm_8060F208(GlobalASMStruct87 *arg0) {
+void func_global_asm_8060F208(Struct131B0_2 *arg0) {
     if (arg0->unk274 != 0) {
         func_global_asm_8060FA5C();
     } else {
@@ -303,10 +281,10 @@ void func_global_asm_8060F208(GlobalASMStruct87 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F730.s")
 
-// GlobalASMStruct87* arg0
+// Struct131B0_2* arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F854.s")
 
-void func_global_asm_8060F928(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
+void func_global_asm_8060F928(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {
     s32 temp_v0;
 
     temp_v0 = arg1->unk10;
@@ -328,17 +306,9 @@ void func_global_asm_8060F928(GlobalASMStruct87 *arg0, GlobalASMStruct6 *arg1) {
 /*
 extern OSTime D_global_asm_807F04C0;
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-} GlobalASMStruct87_unk274;
-
 // TODO: Something up with the OSTime write
-void func_global_asm_8060FA5C(GlobalASMStruct87 *arg0) {
-    GlobalASMStruct87_unk274 *temp_v0;
+void func_global_asm_8060FA5C(Struct131B0_2 *arg0) {
+    Struct131B0_2_unk274 *temp_v0;
 
     temp_v0 = arg0->unk274;
     if (temp_v0->unk10 == 1) {

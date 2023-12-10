@@ -106,8 +106,6 @@ void func_global_asm_80729E6C(void) {
 
 extern f64 D_global_asm_8075FD20;
 
-void func_global_asm_8065D254(Actor *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, u8 arg6, s16 arg7, u8 arg8, s16 arg9, f32 argA);
-
 void func_global_asm_8072A450(void);
 
 /*
@@ -696,7 +694,6 @@ void func_global_asm_8072DC7C(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072DCF4.s")
 
 /*
-f32 func_global_asm_80665AE4(s32, s32, s32, s32);
 extern f64 D_global_asm_8075FF28;
 extern f64 D_global_asm_8075FF30;
 

@@ -646,7 +646,6 @@ Gfx *func_global_asm_807132DC(Gfx *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_8071338C.s")
 
 void *func_global_asm_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5);
-s32 func_global_asm_806FBD5C(s16, void*);
 
 void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     void *sp34;

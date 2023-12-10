@@ -28,7 +28,7 @@ void func_global_asm_8060B430(Actor *arg0, DKTVExtraData *arg1) {
     memcpy(&D_global_asm_807FC950->character_progress[arg1->characterIndex], &arg1->characterProgress, sizeof(CharacterProgress));
 }
 
-s16 func_global_asm_8060B49C(s32 arg0, s32 arg1) {
+s16 func_global_asm_8060B49C(Actor *arg0, s32 arg1) {
     is_autowalking = 2;
     func_global_asm_8060B430(arg0, &D_global_asm_807ECE20);
     return D_global_asm_807463B0;

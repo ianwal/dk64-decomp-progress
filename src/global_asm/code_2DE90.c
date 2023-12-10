@@ -21,9 +21,7 @@ extern f32 D_global_asm_807F5D94;
 
 extern void *D_global_asm_807F5DD8;
 
-f32 func_global_asm_80665AE4(s32, s32, s32,s32);
 void func_global_asm_80704130(s32, s32, s32, s32, s32, s32);
-void func_global_asm_8062A274(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 void func_dk64_boot_80002E98(void *arg0, s32 arg1, s32 arg2);
 
 void func_global_asm_80629190(void) {

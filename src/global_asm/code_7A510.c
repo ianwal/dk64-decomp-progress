@@ -56,10 +56,6 @@ typedef struct {
     s32 unk18;
 } Struct80675810_arg1;
 
-void func_global_asm_80675D70(Actor *arg0);
-void func_global_asm_80675DD0(Actor *arg0, Actor *arg1);
-void func_global_asm_80675AFC(Actor *arg0, Actor *arg1);
-
 void func_global_asm_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
     Actor *temp_s2;
     Struct80675810 *var_s1;
@@ -67,7 +63,7 @@ void func_global_asm_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
     u8 var_v1;
     s32 i;
     s32 temp;
-    s32 temp_2;
+    void *temp_2; // TODO: Possibly actor
     s32 temp_3;
     s32 temp_4;
     PlayerAdditionalActorData* paad;
@@ -77,7 +73,7 @@ void func_global_asm_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
     var_s4 = FALSE;
     if ((func_global_asm_8067AF44(temp_s2) != 0) && (temp_s2->unk54 == arg1->unk10->unk18)) {
         temp_2 = D_global_asm_8074C604[arg0->unk58].unk0;
-        if (temp_2 == 0) {
+        if (temp_2 == NULL) {
             if (temp_s2->object_properties_bitfield & 0x20000) {
                 func_global_asm_80675D70(temp_s2);
             }
@@ -161,8 +157,6 @@ typedef struct {
 } Struct8074ABCC;
 
 extern Struct8074ABCC D_global_asm_8074ABCC[];
-
-s32 func_global_asm_80675C70(s16, s16, s16);
 
 void func_global_asm_80675AFC(Actor *arg0, Actor *arg1) {
     s32 found2;

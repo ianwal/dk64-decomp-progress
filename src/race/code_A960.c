@@ -89,7 +89,7 @@ void *func_race_8002E9AC(u8 arg0) {
 // arg0 is checkpoint file pointer
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E9F8.s")
 
-void setupRaceOnMapLoad(s32 map) {
+void setupRaceOnMapLoad(Maps map) {
     s32 *checkpointFile = getPointerTableFile(0x18, map, 1, 1);
     D_race_8002FCF0 = malloc(0x10);
     func_global_asm_80611690(D_race_8002FCF0);

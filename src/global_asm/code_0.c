@@ -126,8 +126,8 @@ void func_global_asm_806F4778();
 void func_global_asm_8070E8C8();
 void func_global_asm_8060098C(s32 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 
-void func_80026FD0(s32 arg0);
-void func_8002EC08(s32 arg0);
+void func_critter_80026FD0(s32 arg0);
+void setupRaceOnMapLoad(Maps map);
 
 void func_global_asm_8066BDE0(void);
 
@@ -274,8 +274,6 @@ typedef struct {
 extern dk64_boot_struct_0 D_dk64_boot_8000DCC4[];
 
 void func_global_asm_8060EC80(OSMesgQueue *arg0, void *arg1, s32 arg2, s32 arg3, u8 arg4);
-
-void func_global_asm_8060ED6C(void *arg0, void *arg1, s32 arg2, s32 arg3, s32 arg4);
 
 /*
 // TODO: Pretty close
@@ -738,13 +736,13 @@ void func_global_asm_805FE7FC(void) {
         func_global_asm_8060098C(&func_global_asm_806025AC, 2, 0, 0, 0);
         if (D_global_asm_807FBB64 & 0x1000) {
             sp28 = getPointerTableFile(0x16, current_map, 1, 1);
-            func_80026FD0(sp28);
+            func_critter_80026FD0(sp28);
             if (sp28) {
                 func_global_asm_8066B434(sp28, 0x8ED, 2);
             }
         }
         if (D_global_asm_807FBB64 & 0x2000) {
-            func_8002EC08(current_map);
+            setupRaceOnMapLoad(current_map);
         }
         func_global_asm_8066BDE0();
         D_global_asm_807F6008 = 0;

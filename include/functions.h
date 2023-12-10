@@ -181,11 +181,11 @@ void func_global_asm_806EB4B4(void);
 void func_global_asm_806EB4F8(void);
 void func_global_asm_806EB544(void);
 void func_global_asm_806EB6D8(void);
-// TODO: Signatures deduplicated up to here
 void func_global_asm_806EB744(void);
 void func_global_asm_806EB8CC(void);
 void func_global_asm_806EB964(void);
 void func_global_asm_806EBA04(void);
+// TODO: Signatures deduplicated up to here
 void func_global_asm_806EBA74(void);
 void func_global_asm_806EBAF4(void);
 void func_global_asm_806EBB44(void);
@@ -445,7 +445,7 @@ void func_global_asm_8064F308(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 u8 func_global_asm_8064F404(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 void func_global_asm_8064F954(s32 arg0);
 void func_global_asm_8065051C(void);
-s16 func_global_asm_8060B49C(s32 arg0, s32 arg1);
+s16 func_global_asm_8060B49C(Actor *arg0, s32 arg1);
 void func_global_asm_8060B4D4(OSContPad *arg0);
 void func_global_asm_8060B55C(u16 *arg0);
 void func_global_asm_8060B5C0(u8 *file);
@@ -486,7 +486,7 @@ void func_global_asm_806A7BB8(void);
 void func_global_asm_806A7BDC(void);
 void func_global_asm_806A7EF0(void);
 void func_global_asm_806A8070(void);
-s32 func_global_asm_8070943C();
+s32 func_global_asm_8070943C(void);
 s32 func_global_asm_80709344(s32 arg0);
 void func_global_asm_80709464(u8 playerIndex);
 void func_global_asm_80698FEC(void);
@@ -1188,7 +1188,7 @@ u8 func_global_asm_80665558(void);
 u8 func_global_asm_80665AAC(Actor *arg0);
 Chunk14 *func_global_asm_806303C4(Chunk14 *arg0, u8 arg1, Model2Model *arg2, f32 arg3, f32 arg4, f32 arg5, s16 arg6, s16 arg7, u8 arg8, s16 arg9, u8 argA);
 void func_global_asm_80666280(u8 arg0);
-void func_global_asm_80666290(Actor *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 arg5);
+void func_global_asm_80666290(Actor *arg0, void *arg1, void *arg2, void *arg3, void *arg4, u8 arg5);
 void func_global_asm_806663F8(void);
 u8 func_global_asm_8066641C(void);
 u8 func_global_asm_80666A88(void);
@@ -1205,7 +1205,7 @@ u8 func_global_asm_80667174(void);
 s32 func_global_asm_80668520(f32 *arg0, f32 arg1, f32 arg2, f32 *arg3);
 void func_global_asm_8066ADA0(void);
 void func_global_asm_8066AEE4(s32 arg0, s32 arg1);
-void func_global_asm_8066B4AC(s32,s32,s32);
+void func_global_asm_8066B4AC(s32, s32, s32);
 s32 func_global_asm_8066B9F4(void*);
 s32 func_global_asm_8066B5C8(s32, s32);
 void func_global_asm_8066AF40(void);
@@ -1331,7 +1331,7 @@ void func_global_asm_8069D078(void);
 void func_global_asm_8069D098(void);
 void func_global_asm_8069D0B8(void);
 void func_global_asm_8069D0D8(void);
-void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7);
+void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, void *arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7);
 void func_global_asm_8069D2AC(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7);
 void func_global_asm_8069DD40(void);
 void func_global_asm_8069DF58(void);
@@ -1388,7 +1388,7 @@ u8 func_global_asm_80676730(s32 arg0, s32 arg1, Struct80676CB0 *arg2);
 u8 func_global_asm_8067675C(s32 arg0, s32 arg1, Struct80676CB0 *arg2);
 u8 func_global_asm_80676788(s32 arg0, s32 arg1, Struct80676CB0 *arg2);
 u8 func_global_asm_806767B4(s32 arg0, s32 arg1, Struct80676CB0 *arg2);
-u8 func_global_asm_80676A70(s32 arg0, s32 arg1, s32 arg2);
+u8 func_global_asm_80676A70(s32 arg0, Actor *arg1, s32 arg2);
 u8 func_global_asm_80676B38(Actor *arg0, Actor *arg1, Actor *arg2);
 u8 func_global_asm_80676B70(Actor *arg0, Actor *arg1, Actor *arg2);
 u8 func_global_asm_80676C64(s32 arg0, Actor *arg1, Struct80676CB0 *arg2);
@@ -1400,7 +1400,7 @@ void func_global_asm_8060E664(u8);
 void func_global_asm_8060E574(u8 arg0);
 s32 func_global_asm_8060E79C(u8 arg0);
 void func_global_asm_8060E8EC(u8 arg0);
-void func_global_asm_8060E930();
+void func_global_asm_8060E930(void);
 void func_global_asm_8060E958();
 int func_global_asm_8060E980(void);
 void func_global_asm_8060EA28(void);
@@ -1563,7 +1563,7 @@ void func_global_asm_8062C22C(void);
 void func_global_asm_8062CA0C(s32 arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_8062D094(Model2Model *arg0, u8 arg1);
 void func_global_asm_8062D1A8();
-void func_global_asm_8062D2AC(s32 arg0, s32 arg1, u8 arg2);
+void func_global_asm_8062D2AC(void *arg0, void *arg1, u8 arg2);
 void func_global_asm_8062E608(void *arg0, s32 *arg1, s32 arg2);
 void func_global_asm_8062F318(void);
 s32 func_global_asm_8062F388(s32 *arg0);
@@ -2150,6 +2150,49 @@ void func_global_asm_807023E8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, 
 void func_global_asm_80702464(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, u8 argD, u8 argE);
 void func_global_asm_80703850(u8 arg0);
 s32 func_global_asm_805FEF10(s32 *arg0);
+
+Actor *func_global_asm_806C9FD8(Actor *actor);
+f32 func_global_asm_80665AE4(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
+void func_global_asm_8065D254(Actor *actor, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
+void *func_global_asm_8068C12C(u16 textureIndex);
+void func_global_asm_80613794(Actor*, u8);
+u16 func_global_asm_80688C84(u16);
+f32 func_global_asm_80689DD4(f32 x, f32 y, f32 z);
+s32 func_global_asm_80675C70(s16, s16, s16);
+s32 func_global_asm_806FBD5C(s16, void*);
+void func_global_asm_8061C464(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+Gfx *func_global_asm_805FE4D4(Gfx *arg0);
+
+typedef struct Struct131B0_1 Struct131B0_1;
+
+struct Struct131B0_1 {
+    Struct131B0_1 *next;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+};
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct131B0_2_unk274;
+
+typedef struct {
+    u8  pad0[0x260 - 0x0];
+    Struct131B0_1 *unk260;
+    s32 unk264;
+    s32 unk268;
+    Struct131B0_1 *unk26C;
+    Struct131B0_1 *unk270;
+    Struct131B0_2_unk274 *unk274;
+} Struct131B0_2;
+
+void func_global_asm_8060ED6C(Struct131B0_2 *arg0, Struct131B0_1 *arg1, s32 arg2, s32 arg3, s32 arg4);
+void func_global_asm_8060F928(Struct131B0_2*, Struct131B0_1*);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))

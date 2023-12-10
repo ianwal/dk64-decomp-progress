@@ -536,8 +536,6 @@ void func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068E474.s")
 
-s32 func_global_asm_806FBD5C(s16, void*);
-
 void func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
     f32 sp54;
     f32 sp50;

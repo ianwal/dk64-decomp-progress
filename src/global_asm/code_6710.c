@@ -30,11 +30,6 @@ typedef struct {
 
 extern Struct8074593C D_global_asm_8074593C[];
 
-u8 func_global_asm_80602430(s16 arg0);
-u8 func_global_asm_8060245C(s16 arg0);
-void func_global_asm_80602B60(s32 arg0, u8 arg1);
-void func_global_asm_8060A60C(s32 arg0, f32 arg1);
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80601A10.s")
 
 void func_global_asm_80601CC0(void) {
@@ -66,7 +61,6 @@ extern s32 D_global_asm_8076D4C0;
 void func_global_asm_80602104(s32 arg0);
 void func_global_asm_8060A500(void);
 s32 func_global_asm_80601EE4(void *arg0, void *arg1);
-void func_global_asm_8060ED6C(void *arg0, void *arg1, s32 arg2, s32 arg3, s32 arg4);
 
 /*
 void func_global_asm_80601D24(s32 arg0) {

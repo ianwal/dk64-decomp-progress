@@ -6,7 +6,6 @@ extern Struct807500B4 D_global_asm_807500D4; // TODO: D_global_asm_807500D4[1]?
 
 void func_global_asm_80631F58(void*, void*, void**);
 void func_global_asm_8066B424(void);
-u16 func_global_asm_80688C84(u16);
 
 typedef struct {
     f32 unk0;
@@ -34,11 +33,6 @@ typedef struct {
 } GlobalASMStruct_8074E8B0;
 
 extern GlobalASMStruct_8074E8B0 D_global_asm_8074E8B0[];
-
-void func_global_asm_80689710(ActorSpawner *arg0, u8 arg1);
-f32 func_global_asm_80689DD4(f32, f32, f32);
-u8 func_global_asm_80689F80(ActorSpawner*);
-u8 func_global_asm_80689FEC(ActorSpawner *spawner);
 
 extern u8 D_global_asm_807500B0;
 extern u16 D_global_asm_807FC408[];
@@ -489,9 +483,6 @@ ActorSpawner *func_global_asm_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s
     return sp2C;
 }
 */
-
-void func_global_asm_8068A1B8(void);
-void func_global_asm_80613794(Actor*, u8);
 
 typedef struct {
     s32 sp5C;

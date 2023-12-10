@@ -19,8 +19,6 @@ extern u8 D_global_asm_807FBD70;
 extern u8 D_global_asm_807506C0[];
 
 void func_global_asm_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
-f32 func_global_asm_80665AE4(s32, s32, s32, s32);
-void func_global_asm_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 void func_global_asm_806A1580(void) {
     s16 sp36;

@@ -192,7 +192,7 @@ int func_global_asm_80676A0C(s32 arg0, Actor *arg1, s32 arg2) {
     return FALSE;
 }
 
-u8 func_global_asm_80676A70(s32 arg0, s32 arg1, s32 arg2) {
+u8 func_global_asm_80676A70(s32 arg0, Actor *arg1, s32 arg2) {
     return func_global_asm_806769A8(arg0, arg1, arg2) && func_global_asm_8067680C(arg0, arg1, arg2);
 }
 

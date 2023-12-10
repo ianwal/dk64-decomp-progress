@@ -1,23 +1,36 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    s16 score;
+    unsigned char initials[3];
+} Struct80757044;
 
+void func_global_asm_8060B84C(f32);
 u8 func_global_asm_8060BBE0(u16, u8);
-void func_global_asm_8060C758(u8, s32);
 void func_global_asm_8060BCA0(s32 arg0, u8 arg1, u8 arg2, u16 *arg3, u8 *arg4);
 void func_global_asm_8060BEA8(s32, u8, u16 *, u8*);
 void func_global_asm_8060BF84(s32, u8, u16 *, u8*);
+void func_global_asm_8060C758(u8, s32);
 u32 func_global_asm_806F8EDC(s32, s32); // getMaxItemCapacity(HUDItemIndex, playerIndex)
+
+extern s8 D_global_asm_80744460;
+
+extern s32 D_global_asm_807463C0[];
+extern Struct80757044 D_global_asm_80744548[];
+extern Struct80757044 D_global_asm_80744568[];
+extern s32 D_global_asm_807467C0;
+extern s8 D_global_asm_807467C4;
+extern s8 D_global_asm_807467CC;
+extern s8 D_global_asm_80746834;
+extern void (*D_global_asm_807467D0[])();
+extern u8 D_global_asm_807467E0;
+extern s32 D_global_asm_807467EC[];
 
 // .rodata
 const char D_global_asm_80757020[] = "7.2";
 
 const char D_global_asm_80757024[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.- ";
-
-typedef struct {
-    s16 score;
-    unsigned char initials[3];
-} Struct80757044;
 
 const Struct80757044 D_global_asm_80757044[] = {
     {100, "AAA"},
@@ -35,29 +48,21 @@ const Struct80757044 D_global_asm_80757064[] = {
     { 60, "AAA"},
 };
 
-extern s32 D_global_asm_807EDEAC;
 extern OSMesgQueue D_global_asm_807ECCF0;
-extern u8 D_global_asm_807467E0;
+extern s16 D_global_asm_807ECEA0;
+extern u8 D_global_asm_807ECEA8[];
+extern u8 D_global_asm_807EDEA8[4]; // EEPROM file mapping
+extern s32 D_global_asm_807EDEAC;
+extern u8 D_global_asm_807EDEB0[];
 extern OSMesg D_global_asm_807EE0B0;
 extern OSMesgQueue D_global_asm_807EE0D0;
 extern s32 D_global_asm_807EE0E8;
-extern s32 D_global_asm_807F0298;
 
-extern s8 D_global_asm_80744460;
-extern void (*D_global_asm_807467D0[])();
-extern s16 D_global_asm_807ECEA0;
-extern u8 D_global_asm_807EDEA8[4]; // EEPROM file mapping
-extern u8 D_global_asm_807EDEB0[];
-extern u8 D_global_asm_807ECEA8[];
+extern s32 D_global_asm_807F0298;
 extern OSMesgQueue D_global_asm_807F02B8;
 extern u8 D_global_asm_807FC952;
 
-extern s32 D_global_asm_807467C0;
-extern s8 D_global_asm_807467C4;
-extern s8 D_global_asm_807467CC;
 extern u8 D_global_asm_807ED6A8[];
-
-void func_global_asm_8060B84C(f32);
 
 #define	FILE_SIZE (((D_global_asm_807ECEA0 + 0x6B7 & -64) + 0x27) & -8)
 #define	FILE_SIZE_BYTES FILE_SIZE / 8
@@ -70,9 +75,6 @@ void func_global_asm_8060B7F0(void) {
         D_global_asm_807ECEA0 += func_global_asm_80631C20(i);
     }
 }
-
-extern s8 D_global_asm_80746834;
-extern OSMesgQueue D_global_asm_807EE0D0;
 
 void func_global_asm_8060B84C(f32 arg0) {
     OSTimer sp48;
@@ -96,8 +98,6 @@ void func_global_asm_8060B8F8(s32 arg0) {
         osSendMesg(&D_global_asm_807F02B8, arg0, 0);
     }
 }
-
-extern s32 D_global_asm_807463C0[];
 
 s32 func_global_asm_8060B968(u8 *arg0, u16 arg1) {
     u32 var_v1 = -1;
@@ -481,10 +481,6 @@ void func_global_asm_8060C830(u8 fileIndex, s32 arg1) {
         func_global_asm_8060B8F8(1);
     }
 }
-
-extern s32 D_global_asm_807467EC[];
-extern Struct80757044 D_global_asm_80744548[];
-extern Struct80757044 D_global_asm_80744568[];
 
 void func_global_asm_8060C8AC(u8 arg0) {
     s32 i;

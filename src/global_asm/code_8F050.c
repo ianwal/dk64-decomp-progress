@@ -1,11 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 // TODO: What are the actual datatypes?
 s32 func_global_asm_8068A3A0(s32, u32 *);
-void func_global_asm_8068A404(Actor*, s32, s32);
-void func_global_asm_80613794(Actor*, u8);
 s32 func_global_asm_80612E90(Actor*, s16, s32);
 
 void func_global_asm_8068A350(Actor *arg0, s32 arg1, s32 arg2) {

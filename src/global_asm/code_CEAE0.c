@@ -1,26 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-void func_global_asm_8062217C(Actor*, u8);
-s32 func_global_asm_80629148(void);
-
-void func_global_asm_806CBE90(void);
-void func_global_asm_806CFE7C(void);
-void func_global_asm_806D3FA0(void);
-s32 func_global_asm_806E4580(void);
-void func_global_asm_806E9964(PlayerAdditionalActorData*);
-void func_global_asm_806F0B34(Actor*);
-void func_global_asm_806F91B4(s32, s32, s16);
-
-void func_global_asm_806D0408(void);
-void func_global_asm_806D06A0(void);
-
-int func_global_asm_806FF358(); // TODO: Signature
-void func_global_asm_806FF32C(s32 arg0, Actor *arg1);
-int func_global_asm_806FF75C(); // TODO: Signature
-int func_global_asm_806FF01C(); // TODO: Signature
-
 extern s32 D_global_asm_8071FB08; // TODO: Proper datatype
 extern s32 D_global_asm_8071FFA0;
 extern s32 D_global_asm_8071FF18;
@@ -154,6 +134,25 @@ extern u8 D_global_asm_807FD586;
 extern u8 D_global_asm_807FC8B9;
 extern f32 D_global_asm_807FD888;
 
+void func_global_asm_8062217C(Actor*, u8);
+s32 func_global_asm_80629148(void);
+
+void func_global_asm_806CBE90(void);
+void func_global_asm_806CFE7C(void);
+void func_global_asm_806D3FA0(void);
+s32 func_global_asm_806E4580(void);
+void func_global_asm_806E9964(PlayerAdditionalActorData*);
+void func_global_asm_806F0B34(Actor*);
+void func_global_asm_806F91B4(s32, s32, s16);
+
+void func_global_asm_806D0408(void);
+void func_global_asm_806D06A0(void);
+
+int func_global_asm_806FF358(); // TODO: Signature
+void func_global_asm_806FF32C(s32 arg0, Actor *arg1);
+int func_global_asm_806FF75C(); // TODO: Signature
+int func_global_asm_806FF01C(); // TODO: Signature
+
 void func_global_asm_806CC970(void);
 void func_global_asm_806CCB0C(void);
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
@@ -161,7 +160,6 @@ void func_global_asm_806CEE64(f32);
 void func_global_asm_806CEED8(void);
 void func_global_asm_806CFD68(void);
 u8 func_global_asm_806CE928(Actor*, f32, f32, s32);
-void func_global_asm_8061C464(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 f32 func_global_asm_806DFFA0(f32, s16, s16);
 void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 void func_global_asm_806CFF9C(Actor *arg0);

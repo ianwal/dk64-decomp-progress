@@ -1,9 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// needs ctx from this file for GlobalASMStruct51
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63810/func_global_asm_8065EB10.s")
-
 extern s16 D_global_asm_80748A84;
 
 typedef struct {
@@ -24,6 +21,9 @@ typedef struct {
 extern GlobalASMStruct51 D_global_asm_807F9070[];
 
 extern s32 D_global_asm_807FBB68;
+
+// needs ctx from this file for GlobalASMStruct51
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63810/func_global_asm_8065EB10.s")
 
 void func_global_asm_8065EFF0(void) {
     s32 i;

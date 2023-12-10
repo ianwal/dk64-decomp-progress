@@ -50,7 +50,7 @@ const u16 D_menu_80033A78[] = {
 extern u8 D_menu_800334DC[];
 
 void func_global_asm_806F91B4(s32, s32, s16);
-void func_menu_80025FB4(MenuStruct1*, s32, s32);
+void func_menu_80025FB4(MenuStruct1*, CharacterProgress*, s32);
 
 void func_global_asm_806F397C(Actor*, Actor*, s16, s16);
 
@@ -129,7 +129,7 @@ void func_menu_80025D8C(MenuStruct1 *arg0, u8 arg1) {
     }
 }
 
-void func_menu_80025E04(MenuStruct1 *arg0, s32 arg1) {
+void func_menu_80025E04(MenuStruct1 *arg0, CharacterProgress *arg1) {
     s16 sp1E;
     u8 sp1D;
 
@@ -189,7 +189,7 @@ void func_menu_80025E04(MenuStruct1 *arg0, s32 arg1) {
 extern u8 D_global_asm_807FCC4C;
 
 /*
-void func_menu_80025FB4(MenuStruct1 *arg0, s32 arg1, ? arg2) {
+void func_menu_80025FB4(MenuStruct1 *arg0, CharacterProgress *arg1, ? arg2) {
     ? *var_v1;
     s16 temp_a0;
     s16 temp_v0;
@@ -443,7 +443,7 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
 }
 */
 
-void func_menu_80026684(MenuStruct1 *arg0, s32 arg1, s32 arg2) {
+void func_menu_80026684(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
     switch (arg0->unkE) {
         case 0:
             func_menu_800262A8(arg0, arg1, arg2);
@@ -459,7 +459,7 @@ void func_menu_80026684(MenuStruct1 *arg0, s32 arg1, s32 arg2) {
     }
 }
 
-s32 func_menu_800266F0(MenuStruct1 *arg0, s32 arg1, s32 flagIndex) {
+s32 func_menu_800266F0(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex) {
     s32 temp_a2 = !isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
     func_menu_80025FB4(arg0, arg1, temp_a2);
     arg0->unkD = 0;
@@ -492,7 +492,7 @@ void func_menu_80026804(MenuStruct1 *arg0, s32 arg1) {
     func_global_asm_806EB0C0(0x1B, current_actor_pointer, 0);
 }
 
-void func_menu_80026874(MenuStruct1 *arg0, s32 arg1) {
+void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
     s32 sp24;
     s32 sp20;
     Actor *player;
@@ -580,7 +580,7 @@ void func_menu_80026874(MenuStruct1 *arg0, s32 arg1) {
 void func_menu_80026B28(MenuStruct1*, s32, s32);
 void func_menu_80026DAC(MenuStruct1*, s32, s32);
 
-void func_menu_80027028(MenuStruct1 *arg0, s32 arg1, s32 flagIndex) {
+void func_menu_80027028(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex) {
     s32 flagIsNotSet = !isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
     switch (arg0->unkD) {
         case 0:

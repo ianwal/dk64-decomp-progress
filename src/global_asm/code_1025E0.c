@@ -1,25 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FD8E0.s")
-
-s32 func_global_asm_806FBD5C(s16, void*);
-void *func_global_asm_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5);
-extern s16 D_global_asm_80744490;
-extern s16 D_global_asm_80744494;
-
-/*
-void func_global_asm_806FD8E0(void *arg0, s16 arg1, void *arg2, s16 arg3, u8 arg4) {
-    func_global_asm_806FC530(arg0, arg1, (D_global_asm_80744490 - func_global_asm_806FBD5C(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
-}
-*/
-
-// TODO: Does this return the void* from func_global_asm_806FC530?
-void func_global_asm_806FD950(void *arg0, s16 arg1, void *arg2, s16 arg3) {
-    func_global_asm_806FC530(arg0, arg1, 0x60, arg3 * 4, arg2, 1);
-}
-
 typedef struct GlobalASMStruct2 GlobalASMStruct2;
 
 struct GlobalASMStruct2 {
@@ -31,11 +12,10 @@ struct GlobalASMStruct2 {
     s16 unk1C;
 };
 
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
 extern GlobalASMStruct2 *D_global_asm_80754AD0;
 extern u16 D_global_asm_80754AD4;
-
-extern f32 D_global_asm_8075DFB0;
-extern f32 D_global_asm_8075DFB4;
 
 extern u8 D_global_asm_807FD890;
 extern u16 D_global_asm_807FD892;
@@ -49,6 +29,25 @@ extern s32 D_global_asm_807FD8A0;
 extern Mtx D_global_asm_807FD928;
 extern f32 D_global_asm_807FD968;
 extern s32 D_global_asm_807FD978;
+
+extern f32 D_global_asm_8075DFB0;
+extern f32 D_global_asm_8075DFB4;
+
+void *func_global_asm_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5);
+
+// regalloc
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FD8E0.s")
+
+/*
+void func_global_asm_806FD8E0(void *arg0, s16 arg1, void *arg2, s16 arg3, u8 arg4) {
+    func_global_asm_806FC530(arg0, arg1, (D_global_asm_80744490 - func_global_asm_806FBD5C(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
+}
+*/
+
+// TODO: Does this return the void* from func_global_asm_806FC530?
+void func_global_asm_806FD950(void *arg0, s16 arg1, void *arg2, s16 arg3) {
+    func_global_asm_806FC530(arg0, arg1, 0x60, arg3 * 4, arg2, 1);
+}
 
 void func_global_asm_806FD9A0(void) {
     D_global_asm_80754AD0 = NULL;

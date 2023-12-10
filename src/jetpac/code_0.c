@@ -116,7 +116,7 @@ Gfx **func_jetpac_8002AE00(Gfx**);
 void func_jetpac_8002AE94(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 
 // TODO: Arg2 might be s16... Causes a mismatch in func_jetpac_80024D48.
-void func_jetpac_8002AEFC(Gfx **arg0, s32 arg1, s32 arg2, s16 arg3, s32 arg4);
+void func_jetpac_8002AEFC(Gfx **arg0, char *arg1, s32 arg2, s16 arg3, s32 arg4);
 
 /*
 // TODO: Annoyingly close, just weird offset nonsense on the lives read

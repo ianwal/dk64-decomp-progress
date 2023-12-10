@@ -45,15 +45,26 @@ typedef struct {
     s32 unk1C;
 } Struct80755690;
 
-extern Struct80755690 *D_global_asm_80755690;
-
 typedef struct {
     s16 count;
     s16 unk2;
     EnemySpawner *firstSpawner;
 } EnemySpawnerLocator;
 
+typedef struct global_asm_struct_8 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+} GlobalASMStruct8;
+
+u8 func_global_asm_80726DEC(u8, u8);
+void func_global_asm_80678428(Actor*);
+
+extern Struct80755690 *D_global_asm_80755690;
 extern EnemySpawnerLocator *D_global_asm_80755694;
+extern u8 D_global_asm_80755698[];
 
 void func_global_asm_807248B0(Actor *arg0, f32 arg1) {
     LedgeInfo *temp_v0;
@@ -212,14 +223,6 @@ u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s1
 // arg0 Actor, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_807264B0.s")
 
-typedef struct global_asm_struct_8 {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-} GlobalASMStruct8;
-
 void func_global_asm_807266E8(Actor *arg0, GlobalASMStruct8 *arg1) {
     arg0->x_position = arg1->unk4;
     arg0->y_position = arg1->unk6;
@@ -230,8 +233,6 @@ void func_global_asm_807266E8(Actor *arg0, GlobalASMStruct8 *arg1) {
 
 // Jumptable, references the cutscene model mapping table at D_global_asm_8075570C
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80726744.s")
-
-u8 func_global_asm_80726DEC(u8, u8);
 
 u8 func_global_asm_80726D7C(u8 arg0) {
     return func_global_asm_80726DEC(arg0, 5) || func_global_asm_80726DEC(arg0, 6);
@@ -302,8 +303,6 @@ void func_global_asm_80726EE0(u8 arg0) {
         var_s0++;
     }
 }
-
-void func_global_asm_80678428(Actor*);
 
 void func_global_asm_8072707C(s16 arg0, u8 arg1, u16 arg2) {
     Actor *actor = func_global_asm_807270C0(arg0, arg2);
@@ -384,8 +383,6 @@ Actor *func_global_asm_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
     return NULL;
 }
 
-f32 func_global_asm_80665AE4(s32, s32, s16, s16);
-
 void func_global_asm_807273A8(s16 arg0, u8 arg1) {
     u8 temp_t0;
     s16 sp34;
@@ -414,8 +411,6 @@ void func_global_asm_8072752C(s16 arg0, s16 x1, s16 y1, s16 z1, s16 x2, s16 y2, 
 // Current map access as struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80727678.s")
 
-extern u8 D_global_asm_80755698[];
-
 void func_global_asm_807278C0(EnemyInfo *arg0) {
     u8 temp_v0;
 
@@ -437,8 +432,6 @@ void func_global_asm_807278C0(EnemyInfo *arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80727958.s")
-
-u8 func_global_asm_80652F24(s16, s16);
 
 u8 func_global_asm_80727F20(EnemyInfo *arg0, s32 arg1) {
     return (((character_change_array[0].look_at_eye_x - arg0->x_position) * (character_change_array[0].look_at_eye_x - arg0->x_position))

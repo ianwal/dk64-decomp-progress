@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_8065D254(Actor*, s32, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_80683AD8();
 
 extern f64 D_global_asm_80759560;

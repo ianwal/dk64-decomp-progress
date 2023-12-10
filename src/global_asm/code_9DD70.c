@@ -182,12 +182,9 @@ typedef struct {
     u8 unkA;
 } GlobalASMStruct_8069D0F8;
 
-void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7);
-
 u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
-s32 func_global_asm_806FBD5C(s16, s32);
 
-void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
+void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, void *arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
     GlobalASMStruct_8069D0F8 *temp_s0;
 
     if (func_global_asm_80677FA8(ACTOR_TEXT_OVERLAY, 0) != 0) {
@@ -244,7 +241,7 @@ Gfx *func_global_asm_8069D358(Gfx *dl, Actor *arg1, s16 arg2, f32 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069D424.s")
 
-s32 func_global_asm_806FE078(void *, u8, s32, f32, f32, f32, f32);
+Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
 
 typedef struct {
     u8 unk0[0xA - 0x0];

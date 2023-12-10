@@ -8,7 +8,6 @@ extern f32 D_global_asm_8075C264;
 extern f32 D_global_asm_8075C268;
 
 void func_global_asm_8061C518(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-void func_global_asm_8061C464(s32, Actor *, s32, s16, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_806B49B0(u8 arg0, s16 arg1, s16 arg2);
 
 /*

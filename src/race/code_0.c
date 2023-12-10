@@ -91,8 +91,6 @@ void func_race_8002BCD4(Actor *);
 void func_race_8002D064();
 void func_race_8002D0FC();
 
-void func_global_asm_805FF544();
-
 extern void func_race_8002CFF0();
 
 f32 func_global_asm_80665E48(f32, f32, f32, f32);

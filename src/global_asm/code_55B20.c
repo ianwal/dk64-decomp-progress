@@ -18,7 +18,6 @@ extern u16 D_global_asm_807F735A;
 extern u16 D_global_asm_807F735C;
 extern u16 D_global_asm_807F735E;
 
-void func_global_asm_80636210(Model2Model *arg0, u8 arg1);
 void func_global_asm_8063B4C0(Chunk14*, u8);
 s32 func_global_asm_8063A38C(Chunk14*, Chunk14*, f32, f32, f32);
 

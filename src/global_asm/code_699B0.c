@@ -490,9 +490,9 @@ void func_global_asm_80666280(u8 arg0) {
     D_global_asm_807F94B4 = arg0;
 }
 
-void func_global_asm_80666428(Actor*, f32, f32, f32, s32, s32, s32, s32, u8);
+void func_global_asm_80666428(Actor*, f32, f32, f32, void*, void*, void*, void*, u8);
 
-void func_global_asm_80666290(Actor *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 arg5) {
+void func_global_asm_80666290(Actor *arg0, void *arg1, void *arg2, void *arg3, void *arg4, u8 arg5) {
     f32 sp3C;
     f32 sp38;
     f32 sp34;
@@ -522,7 +522,7 @@ u8 func_global_asm_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4
         D_global_asm_807F94B3 = 0;
     }
     D_global_asm_807F94BC = 1;
-    func_global_asm_80666428(0, arg1, arg2, arg3, &sp3F, &sp38, &sp3E, &sp34, 0);
+    func_global_asm_80666428(NULL, arg1, arg2, arg3, &sp3F, &sp38, &sp3E, &sp34, 0);
     *arg4 = D_global_asm_807F948C;
 }
 
