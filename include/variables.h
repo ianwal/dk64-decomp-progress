@@ -173,7 +173,11 @@ typedef struct {
     s16 unk4C;
     s16 unk4E; // Used
     s16 unk50[2]; // TODO: How many?
-    u8 unk54[0x64 - 0x54];
+    u8 unk54[0x60 - 0x54];
+    u8 unk60;
+    u8 unk61; // Used
+    u8 unk62; // Used
+    u8 unk63; // Used
     u8 unk64;
     u8 unk65;
     u8 unk66;

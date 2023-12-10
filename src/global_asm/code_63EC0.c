@@ -234,6 +234,42 @@ void func_global_asm_8065FB64(f32 arg0, f32 arg1, s32 arg2) {
 // doable, Related to GlobalASMStruct58
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_80660830.s")
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s8 unkC; // Used
+    s8 unkD; // Used
+    s8 unkE; // Used
+    s8 unkF;
+} Struct80660830_arg0;
+
+/*
+void func_global_asm_80660830(Struct80660830_arg0 *arg0, GlobalASMStruct58 *arg1) {
+    u32 count;
+    u32 i;
+    s32 temp61;
+    s32 temp62;
+    s32 temp63;
+    s32 temp1;
+    s32 temp2;
+
+    temp61 = arg1->unk0->unk61;
+    temp62 = arg1->unk0->unk62;
+    temp63 = arg1->unk0->unk63;
+    temp1 = (((arg1->unk0->unk4A - arg1->unk0->unk46) / arg1->unk2C) + 2);
+    temp2 = (((arg1->unk0->unk4C - arg1->unk0->unk48) / arg1->unk2C) + 2);
+    count = temp1 * temp2;
+    for (i = count - 1; i > 0;) {
+        arg0->unkC = temp61;
+        arg0->unkD = temp62;
+        arg0->unkE = temp63;
+        arg0++;
+        i--;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_806608FC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_80660D38.s")
