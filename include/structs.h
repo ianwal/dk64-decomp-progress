@@ -1915,10 +1915,10 @@ typedef struct global_asm_struct_12 {
 } GlobalASMStruct12;
 
 typedef struct {
-    u8 pad0[0x6 - 0x0];
+    u8 pad0[0x4 - 0x0];
+    s16 unk4;
     s16 unk6;
-    u8 unk8;
-    u8 unk9;
+    s16 unk8;
     union {
         u8 unkA_u8[2];
         u16 unkA_u16;

@@ -536,7 +536,7 @@ segments:
       - [0x21ABD00, rodata] # code_3840
       - [0x21ABF20, .rodata, code_52B0]
       - [0x21AC060, rodata] # code_6240
-      - [0x21AC350, rodata] # code_8520
+      - [0x21AC350, .rodata, code_8520]
       - [0x21AC3D0, .rodata, code_9230]
       - [0x21AC4C0, rodata] # code_9C60
       - [0x21AC800, rodata] # code_C920
