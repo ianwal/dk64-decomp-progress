@@ -1,9 +1,86 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern f64 D_boss_80035D50;
-extern f64 D_boss_80035D58;
-extern f64 D_boss_80035D60;
+// rodata
+const s32 D_boss_80035C00[] = {
+    0x54410057,
+    0x27434F46,
+    0x031448DC,
+    0x444B0003,
+    0x11500000,
+};
+
+const s32 D_boss_80035C14[] = {
+    0x44238C4C,
+    0x0003114F,
+    0x46041448,
+    0xB4444B00,
+    0x03115000,
+};
+
+const s32 D_boss_80035C28[] = {
+    0x4423AA4C,
+    0x0003114F,
+    0x46051448,
+    0x8C444B00,
+    0x03115000,
+};
+
+const s32 D_boss_80035C3C[] = {
+    0x5F05285F,
+    0x071E0000,
+};
+
+const s32 D_boss_80035C44[] = {
+    0x1F544100,
+    0x57483C54,
+    0x434F4603,
+    0x1448DC44,
+    0x4B000311,
+    0x50000000,
+};
+
+const s32 D_boss_80035C5C[] = {
+    0x44238C4C,
+    0x00032A5F,
+    0x022B2913,
+    0x2C2D4F4B,
+    0x00031146,
+    0x041448B4,
+    0x44500000,
+};
+
+const s32 D_boss_80035C78[] = {
+    0x4423AA4C,
+    0x00032A2B,
+    0x291B132C,
+    0x2D4F4B00,
+    0x03114605,
+    0x14488C44,
+    0x50000000,
+};
+
+const s32 D_boss_80035C94[] = {
+    0x5F052844,
+    0x23AA4C00,
+    0x032A291A,
+    0x13134B00,
+    0x032A575F,
+    0x072E542F,
+    0x4F300647,
+    0x48B42F26,
+    0x2F500000,
+};
+
+const s32 D_boss_80035CB8[] = {
+    0x05080B09,
+    0x0A0C0000,
+};
+
+const s32 D_boss_80035CC0[] = {
+    0x04000102,
+    0x03000000,
+};
 
 extern void *D_global_asm_80720120;
 
@@ -118,8 +195,65 @@ void func_boss_8002413C(void) {
 }
 */
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_boss_80024300.s")
+void func_boss_80024300(void) {
+    AnimationStateUnk24 *var_a0;
+    s16 var_a3;
+    s16 i;
+    s32 var_v1;
+
+    var_a0 = current_actor_pointer->animation_state->unk24;
+    var_a3 = 0;
+    var_v1 = 0xFF;
+    switch (D_global_asm_807FDC90->unk2C) {
+        case 19:
+            var_a3 = 0x22;
+            break;
+        case 17:
+            var_a3 = 0xF6;
+            break;
+        case 15:
+            var_a3 = 0x17;
+            break;
+        case 13:
+            var_a3 = 0xED;
+            break;
+        case 11:
+            var_a3 = 0x18;
+            break;
+        case 9:
+            var_a3 = 0x22;
+            var_v1 = 0xC8;
+            break;
+        case 7:
+            var_a3 = 0xED;
+            var_v1 = 0x82;
+            break;
+        case 5:
+            var_a3 = 0x18;
+            var_v1 = 0x46;
+            break;
+        case 3:
+            var_a3 = 0x3C;
+            break;
+    }
+    if (var_a3 != 0) {
+        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, var_a3, var_v1, 0x7F, 1, 0x1E, 0.3f, 0);
+    }
+    current_actor_pointer->animation_state->unk24[5].unk4 = 99999.0f;
+    for (i = 0; i < 0xD; i++) {
+        if (var_a0->unk8 >= 1800.0f) {
+            var_a0->unk4 = 99999.0f;
+            var_a0->unk8 = 99999.0f;
+            var_a0->unkC = 99999.0f;
+            var_a0++;
+        } else {
+            var_a0->unk4 += 200.0f * func_global_asm_80612794(i * 0x190);
+            var_a0->unkC += 200.0f * func_global_asm_80612790(i * 0x190);
+            var_a0->unk8 += 100.0f;
+            var_a0++;
+        }
+    }
+}
 
 void func_boss_8002450C(Struct8002450C *arg0, u8 arg1, u8 arg2) {    
     arg0->unk6[arg1] = arg2;
@@ -139,18 +273,18 @@ void func_boss_80024524(u8 arg0, s16 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_boss_80024568.s")
 
 void func_boss_80024EAC(void) {
-    s32 temp_v0_2;
+    s32 temp_v0;
     u16 sp2A;
 
     sp2A = current_actor_pointer->animation_state->unk64;
     func_global_asm_806CC10C(D_global_asm_807FDC90->unk8, current_actor_pointer->y_rotation);
     func_global_asm_8072AB74(0x45, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x16, 0.0f);
-    temp_v0_2 = func_global_asm_806CC10C(D_global_asm_807FDC90->unk8, current_actor_pointer->y_rotation);
-    if (temp_v0_2 > 0) {
+    temp_v0 = func_global_asm_806CC10C(D_global_asm_807FDC90->unk8, current_actor_pointer->y_rotation);
+    if (temp_v0 > 0) {
         if (sp2A != 0x260) {
             func_global_asm_80614EBC(current_actor_pointer, 0x260);
         }
-    } else if (temp_v0_2 < 0) {
+    } else if (temp_v0 < 0) {
         if (sp2A != 0x25F) {
             func_global_asm_80614EBC(current_actor_pointer, 0x25F);
         }
@@ -162,7 +296,7 @@ void func_boss_80024EAC(void) {
 
 void func_boss_80024FA8(s32 arg0, Struct8002450C *arg1, s32 arg2, u8 *arg3) {
     u8 i = 0;
-    u8 phi_v0_2 = 0;
+    u8 phi_v0 = 0;
 
     switch (current_actor_pointer->control_state_progress) {
         case 2:
@@ -174,12 +308,12 @@ void func_boss_80024FA8(s32 arg0, Struct8002450C *arg1, s32 arg2, u8 *arg3) {
         case 3:
             while (arg3[i] != 0xFF) {
                 if ((current_actor_pointer->control_state == 0x27) || (current_actor_pointer->control_state == 0x2E)) {
-                    phi_v0_2 = func_boss_80024568(arg1, arg3[i++], 50.0f, 70.0f, 90.0f);
+                    phi_v0 = func_boss_80024568(arg1, arg3[i++], 50.0f, 70.0f, 90.0f);
                 } else {
-                    phi_v0_2 = func_boss_80024568(arg1, arg3[i++], 10.0f, 15.0f, 50.0f);
+                    phi_v0 = func_boss_80024568(arg1, arg3[i++], 10.0f, 15.0f, 50.0f);
                 }
             }
-            if (phi_v0_2 != 0) {
+            if (phi_v0 != 0) {
                 current_actor_pointer->control_state_progress = 4;
                 func_global_asm_8068842C(current_actor_pointer, 1, 1);
             }
@@ -223,21 +357,16 @@ void func_boss_80025364(void) {
 }
 
 void func_boss_800253AC(void) {
-    s32 pad2;
-    f64 phi_f2;
-    s32 pad;
-    void *temp = &func_global_asm_8071AF30;
     f32 temp2;
 
-    phi_f2 = MAX(current_actor_pointer->y_velocity, 0.0);
+    temp2 = ((f32)((f32)(((MAX(current_actor_pointer->y_velocity, 0.0) / 150.0)) * 0.12) + 0.3) * 4.0f);
     func_global_asm_807149B8(1);
-    func_global_asm_8071498C(temp);
+    func_global_asm_8071498C(&func_global_asm_8071AF30);
     func_global_asm_807149A8(1000);
     func_global_asm_80714950(current_actor_pointer);
-    temp2 = ((f32)((f32)(((phi_f2 / D_boss_80035D50)) * D_boss_80035D58) + D_boss_80035D60) * 4.0f);
     func_global_asm_80714C08(&D_global_asm_80720120, temp2, current_actor_pointer, 3, 0);
     func_global_asm_807149B8(1);
-    func_global_asm_8071498C(temp);
+    func_global_asm_8071498C(&func_global_asm_8071AF30);
     func_global_asm_807149A8(1000);
     func_global_asm_80714950(current_actor_pointer);
     func_global_asm_80714C08(&D_global_asm_80720120, temp2, current_actor_pointer, 4, 0);

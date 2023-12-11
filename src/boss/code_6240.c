@@ -1,6 +1,78 @@
 #include <ultra64.h>
 #include "functions.h"
 
+const s32 D_boss_800362F0[] = {
+    0x09000102,
+    0x03040506,
+    0x07080000,
+};
+
+const s32 D_boss_800362FC[] = {
+    0x274F4B00,
+    0x0346042A,
+    0x48964350,
+};
+
+const s32 D_boss_80036308[] = {
+    0x41024F46,
+    0x044B0003,
+    0x46042A48,
+    0x78434B00,
+    0x03500000,
+};
+
+const s32 D_boss_8003631C[] = {
+    0x41024F46,
+    0x044B0003,
+    0x46044B00,
+    0x0346042A,
+    0x4864434B,
+    0x00035000,
+};
+
+const s32 D_boss_80036334[] = {
+    0x274F4B00,
+    0x0346042A,
+    0x48964350,
+};
+
+const s32 D_boss_80036340[] = {
+    0x41024F46,
+    0x044B0003,
+    0x46042A29,
+    0x4878434B,
+    0x00035000,
+};
+
+const s32 D_boss_80036354[] = {
+    0x41024604,
+    0x4B000346,
+    0x044B0003,
+    0x46044B00,
+    0x035F0411,
+    0x4F282A48,
+    0xBE295500,
+    0x50294864,
+    0x434B0003,
+    0x46044B00,
+    0x0346044B,
+    0x00034604,
+    0x4B000350,
+};
+
+const s32 D_boss_80036388[] = {
+    0x41022C11,
+    0x2B114850,
+    0x114F434B,
+    0x00034604,
+    0x2A485050,
+};
+
+const s32 D_boss_8003639C[] = {
+    0x43410155,
+    0xFFFF0000,
+};
+
 extern s32 D_global_asm_80720120;
 extern s32 D_global_asm_8074E880[];
 
@@ -79,8 +151,7 @@ void func_boss_8002A5CC(void) {
     f32 sp6C;
     f32 sp68;
     f32 sp64;
-    s16 phi_s0;
-    s32 tmp_s2;
+    s16 i;
 
     func_global_asm_80671C0C(current_actor_pointer, 1, &sp6C, &sp68, &sp64);
     sp6C += ((rand() >> 0xF) % 80) - 40;
@@ -91,16 +162,17 @@ void func_boss_8002A5CC(void) {
     func_global_asm_80714950(current_actor_pointer);
     func_global_asm_807149C8(0xFF, 0xD7, 0x58, 0xFF);
     func_global_asm_80714CC0(&D_global_asm_80720120, 1.5f, sp6C, sp68, sp64);
-    tmp_s2 = &func_global_asm_8071720C;
-    for (phi_s0 = 0; phi_s0 < 4; phi_s0++) {
+    for (i = 0; i < 4; i++) {
         func_global_asm_80714998(2);
-        func_global_asm_8071498C(tmp_s2);
+        func_global_asm_8071498C(&func_global_asm_8071720C);
         func_global_asm_807149B8(1);
-        func_global_asm_80714C08(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
-                      1.5f,
-                      current_actor_pointer,
-                      (((rand() >> 0xF) % 32767) % 22) + 2,
-                      0);
+        func_global_asm_80714C08(
+            D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+            1.5f,
+            current_actor_pointer,
+            (((rand() >> 0xF) % 32767) % 22) + 2,
+            0
+        );
     }
 }
 

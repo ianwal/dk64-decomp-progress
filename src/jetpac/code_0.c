@@ -446,9 +446,6 @@ void func_jetpac_800250A0(void) {
     func_jetpac_80024F9C(1);
 }
 
-// Jumptable, very close
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_80025168.s")
-
 typedef struct {
     u16 unk0;
     s8 unk2;
@@ -458,16 +455,16 @@ typedef struct {
 extern Struct807ECDE8 *D_global_asm_807ECDE8;
 extern u8 D_jetpac_8002BA70;
 
-/*
 void func_jetpac_80025168(void *arg0) {
-    if (D_jetpac_8002BA70) {
+    u8 *temp = &D_jetpac_8002BA70;
+    if (*temp) {
         D_jetpac_8002EC30.unk78C = 0;
         D_jetpac_8002EC30.unk790 = 0;
         D_jetpac_8002EC30.unk794 = 3;
         D_jetpac_8002EC30.unk348 = 1;
         D_jetpac_8002EC30.unk34C = 0;
+        *temp = 0;
         D_jetpac_8002EC30.unk18 = func_global_asm_8060C6B8(0x11, 0, 0, 0);
-        D_jetpac_8002BA70 = 0;
         D_jetpac_8002EC30.unk798 = isFlagSet(0x61, FLAG_TYPE_TEMPORARY);
         if (D_jetpac_8002EC30.unk798) {
             D_jetpac_8002EC30.unk799 = 0;
@@ -517,7 +514,6 @@ void func_jetpac_80025168(void *arg0) {
     }
     D_jetpac_8002EC30.unk790++;
 }
-*/
 
 void func_jetpac_80025368(Competitor *arg0) {
     s32 temp_t6;

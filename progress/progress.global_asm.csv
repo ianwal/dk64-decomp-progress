@@ -2303,7 +2303,7 @@ us,asm,func_global_asm_806BA240,1324,no
 us,asm,func_global_asm_80658DAC,172,yes
 us,asm,func_global_asm_806898F8,96,yes
 us,asm,func_global_asm_806CFC90,216,yes
-us,asm,func_global_asm_80708C24,384,no
+us,asm,func_global_asm_80708C24,384,yes
 us,asm,func_global_asm_8065D008,244,no
 us,asm,func_global_asm_80692540,36,yes
 us,asm,func_global_asm_806F0074,8,yes

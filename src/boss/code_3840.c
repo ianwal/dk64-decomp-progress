@@ -1,6 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 D_global_asm_8074E880[];
+extern void func_global_asm_8071CDE0();
+
+void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
+
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_80027840.s")
 
 /*
@@ -45,7 +50,6 @@ typedef struct {
 } Struct80027A30_arg0;
 
 void func_boss_80027950(Struct80027A30_arg0 *arg0, u8 *arg1) {
-    u8 temp_a0;
     u8 temp_s3;
     u8 temp_v1;
 
@@ -87,70 +91,57 @@ void func_boss_80028458() {
     func_global_asm_805FF8F8();
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_80028478.s")
-
-extern f32 D_boss_80036050;
-extern s32 D_global_asm_8074E880[];
-extern void func_global_asm_8071CDE0();
-
-void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
-
-/*
-// TODO: Very close, might need .rodata defined for D_boss_80036050
 void func_boss_80028478(u16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg5) {
     s16 i;
-    f32 scale;
     
     playSong(0x36, 1.0f);
     if (isFlagSet(arg0, FLAG_TYPE_PERMANENT)) {
         func_boss_80028458();
         return;
     }
-    scale = D_boss_80036050;
     for (i = 0; i < 6; i++) {
         func_global_asm_8071498C(&func_global_asm_8071CDE0);
         func_global_asm_807149FC(-1);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(D_global_asm_807FDC94);
-        func_global_asm_80714CC0(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], scale, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position);
+        func_global_asm_80714CC0(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position);
     }
     func_global_asm_806A5DF0(0x48, arg1, arg2, arg3, arg4, arg5, arg0, 0);
 }
-*/
 
 void func_boss_80028680() {
     func_global_asm_806A2A10(-0x7F83, 0xD2, 0xB4);
     func_global_asm_806A2B08(current_actor_pointer->unk11C);
 }
 
-// Displaylist stuff, stack, close
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_800286B8.s")
 
-extern s32 D_boss_80035F90;
-extern f32 D_boss_80036054;
 extern u8 D_global_asm_80750AD4;
 
+Gfx *func_global_asm_8070068C(Gfx*);
+
 /*
-void func_boss_800286B8(Gfx *dl, s32 arg1) {
+Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     f32 sp90[4][4];
     f32 sp50[4][4];
-    HeapHeader *sp4C;
-    s32 sp3C;
+    Mtx *sp4C;
+    char sp3C[13];
 
-    sp4C = malloc(0x40);
+    sp4C = malloc(sizeof(Mtx));
     func_global_asm_8061134C(sp4C);
-    guScaleF(&sp90, D_boss_80036054, D_boss_80036054, 1.0f);
+    guScaleF(&sp90, 0.6f, 0.6f, 1.0f);
     guTranslateF(&sp50, 100.0f, (character_change_array->unk276 * 4) - 0x3C, 0);
     guMtxCatF(&sp90, &sp50, &sp90);
     guMtxF2L(&sp90, sp4C);
     gSPMatrix(dl++, sp4C, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    func_dk64_boot_800031E0(&sp3C, &D_boss_80035F90, D_global_asm_80750AD4);
+    func_dk64_boot_800031E0(&sp3C, "ROUND %d", D_global_asm_80750AD4);
     gSPDisplayList(dl++, &D_1000118);
     gDPPipeSync(dl++);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    func_global_asm_806FC530(func_global_asm_8070068C(dl), 1, 0, 0, &sp3C, 0);
+    dl = func_global_asm_8070068C(dl);
+    return func_global_asm_806FC530(dl, 1, 0, 0, &sp3C, 0);
 }
 */
 

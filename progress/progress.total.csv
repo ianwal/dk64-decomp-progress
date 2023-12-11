@@ -2303,7 +2303,7 @@ us,asm,func_global_asm_806BA240,1324,no
 us,asm,func_global_asm_80658DAC,172,yes
 us,asm,func_global_asm_806898F8,96,yes
 us,asm,func_global_asm_806CFC90,216,yes
-us,asm,func_global_asm_80708C24,384,no
+us,asm,func_global_asm_80708C24,384,yes
 us,asm,func_global_asm_8065D008,244,no
 us,asm,func_global_asm_80692540,36,yes
 us,asm,func_global_asm_806F0074,8,yes
@@ -3771,7 +3771,7 @@ us,.arcade,func_arcade_8002FE28,540,yes
 us,.arcade,arcade_add_points_to_score,84,yes
 us,.arcade,func_arcade_80026518,360,yes
 version,section,function,length,matching
-us,.jetpac,func_jetpac_80025168,512,no
+us,.jetpac,func_jetpac_80025168,512,yes
 us,.jetpac,func_jetpac_80029450,156,no
 us,.jetpac,func_jetpac_8002976C,280,yes
 us,.jetpac,func_jetpac_80025368,240,yes
@@ -3908,7 +3908,7 @@ us,.boss,func_boss_80027A30,376,yes
 us,.boss,func_boss_8002FB7C,204,yes
 us,.boss,func_boss_800251A0,380,yes
 us,.boss,func_boss_8002C5F4,340,yes
-us,.boss,func_boss_80028478,520,no
+us,.boss,func_boss_80028478,520,yes
 us,.boss,func_boss_80027840,180,no
 us,.boss,func_boss_8002DE04,2460,no
 us,.boss,func_boss_80033784,424,no
@@ -3933,7 +3933,7 @@ us,.boss,func_boss_8002DD7C,136,yes
 us,.boss,func_boss_80027BA8,2224,no
 us,.boss,func_boss_8002E82C,396,yes
 us,.boss,func_boss_8002A92C,7156,no
-us,.boss,func_boss_80024300,524,no
+us,.boss,func_boss_80024300,524,yes
 us,.boss,func_boss_8002C520,212,yes
 us,.boss,func_boss_80024568,2372,no
 us,.boss,func_boss_80024FA8,504,yes

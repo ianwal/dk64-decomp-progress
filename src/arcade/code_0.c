@@ -492,7 +492,7 @@ void func_arcade_800252D8(Gfx **arg0) {
         if (arcade_background_visual == 4) {
             func_arcade_800311E0(); //50m_pie_spawn_check
         }
-        if ((newly_pressed_input & START_BUTTON) != 0) {
+        if (newly_pressed_input & START_BUTTON) {
             func_arcade_8002549C();
             D_arcade_8004C724 = 4;
         }

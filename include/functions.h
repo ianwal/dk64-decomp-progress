@@ -2147,7 +2147,7 @@ void func_global_asm_80684D98(u8 arg0);
 void func_global_asm_806871DC(u8 arg0);
 void func_global_asm_80663BE8(Actor *arg0);
 void func_global_asm_807023E8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC);
-void func_global_asm_80702464(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, u8 argD, u8 argE);
+void func_global_asm_80702464(Gfx *arg0, void *texture, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, u8 argD, u8 argE);
 void func_global_asm_80703850(u8 arg0);
 s32 func_global_asm_805FEF10(s32 *arg0);
 
@@ -2201,6 +2201,7 @@ int func_global_asm_8071ABDC(); // TODO: Datatype
 void func_global_asm_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
 void func_race_8002BCD4(Actor *);
 void func_global_asm_80731D20(char*, ...);
+void func_global_asm_806651FC(Actor*);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))

@@ -27,7 +27,7 @@ us,.boss,func_boss_80027A30,376,yes
 us,.boss,func_boss_8002FB7C,204,yes
 us,.boss,func_boss_800251A0,380,yes
 us,.boss,func_boss_8002C5F4,340,yes
-us,.boss,func_boss_80028478,520,no
+us,.boss,func_boss_80028478,520,yes
 us,.boss,func_boss_80027840,180,no
 us,.boss,func_boss_8002DE04,2460,no
 us,.boss,func_boss_80033784,424,no
@@ -52,7 +52,7 @@ us,.boss,func_boss_8002DD7C,136,yes
 us,.boss,func_boss_80027BA8,2224,no
 us,.boss,func_boss_8002E82C,396,yes
 us,.boss,func_boss_8002A92C,7156,no
-us,.boss,func_boss_80024300,524,no
+us,.boss,func_boss_80024300,524,yes
 us,.boss,func_boss_8002C520,212,yes
 us,.boss,func_boss_80024568,2372,no
 us,.boss,func_boss_80024FA8,504,yes

@@ -1141,7 +1141,6 @@ void func_global_asm_8062E3B4(Struct8062E67C *arg0, f32 *arg1, s32 arg2, s32 *ar
 }
 */
 
-
 s32 func_global_asm_8062E548(s16 *arg0, u8 arg1, f64 arg3, u8 arg4) {
     f64 phi_f0;
 

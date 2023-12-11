@@ -1,10 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 extern s8 D_global_asm_80745844;
-void func_menu_80030340(Actor*, s32, s32, s32);
-void func_global_asm_8061D4E4(Actor*);
 extern s8 opening_cutscene_transition;
 extern s8 D_global_asm_80745844;
 extern s8 inputs_enabled_timer;
@@ -67,6 +64,8 @@ extern f64 D_menu_80033EE0;
 extern u8 D_menu_80033F38;
 extern s8 D_menu_80033F50;
 
+void func_menu_80030340(Actor*, s32, Gfx*, s32);
+void func_global_asm_8061D4E4(Actor*);
 void func_menu_80030894(MenuAdditionalActorData*,s32,u16,u16,f32,u8,u8); // Param 1 is ActorAdditionalData
 
 void func_menu_80027E10(void) {
@@ -96,7 +95,7 @@ void func_menu_80027E60(Actor *arg0, s32 arg1) {
         MaaD->unk12 = 1;
         MaaD->unk16 = -1;
         MaaD->unk0 = 1.0f;
-        func_menu_80030340(arg0, 0, 0, 0);
+        func_menu_80030340(arg0, 0, NULL, 0);
         func_global_asm_8061D4E4(D_global_asm_807F5D10);
         playSound(0x2C9, 0x7FFF, 63.0f, 1.25f, 0, 0);
         opening_cutscene_transition = 0;
@@ -1318,7 +1317,7 @@ void func_menu_8002FC1C(Actor *arg0, MenuAdditionalActorData *MaaD, s32 arg2) {
             MaaD->unk0 = 1.0f;
             MaaD->unk12 = MaaD->unk13;
             MaaD->unk16 = -1;
-            func_menu_80030340(arg0, 0, 0, 0);
+            func_menu_80030340(arg0, 0, NULL, 0);
             playSound(0x2C9, 0x7FFF, 63.0f, 1.25f, 0, 0);
         }
     } else {
@@ -1375,7 +1374,7 @@ void func_menu_8002FE08(MenuAdditionalActorData *MaaD, s32 arg1) {
 // Jumptable, 916 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002FEBC.s")
 
-void func_menu_80030258(Gfx *dl, s32 arg1) {
+void func_menu_80030258(Gfx *dl, Actor *arg1) {
     gDPPipeSync(dl++);
     gSPDisplayList(dl++, &D_1000118);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);

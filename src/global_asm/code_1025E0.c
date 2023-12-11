@@ -325,8 +325,8 @@ void func_global_asm_807023E8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, 
 }
 
 // TODO: Is this signature correct?
-void func_global_asm_80702464(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, u8 argD, u8 argE) {
-    func_global_asm_807024E0(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, 0, 0);
+void func_global_asm_80702464(Gfx *arg0, void *texture, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, u8 argD, u8 argE) {
+    func_global_asm_807024E0(arg0, texture, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, argD, argE, 0, 0);
 }
 
 // Displaylist stuff
