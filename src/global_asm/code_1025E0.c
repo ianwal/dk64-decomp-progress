@@ -33,8 +33,6 @@ extern s32 D_global_asm_807FD978;
 extern f32 D_global_asm_8075DFB0;
 extern f32 D_global_asm_8075DFB4;
 
-void *func_global_asm_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5);
-
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FD8E0.s")
 

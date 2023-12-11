@@ -1457,7 +1457,7 @@ void func_global_asm_806398E4(s32 arg0, u8 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639C04.s")
 
-s32 func_global_asm_80639F1C(void *, s32 *, s32 *);
+s32 func_global_asm_80639F1C(Model2Model50_B8 *, s32 *, s32 *);
 
 typedef struct {
     u8 unk0[0x30 - 0x0];

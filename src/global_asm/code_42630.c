@@ -443,13 +443,16 @@ void func_global_asm_8063E72C(OM2_unk7C *arg0) {
 
 /*
 void func_global_asm_806417BC(s16 arg0, s16 arg1) {
-    s16 sp44;
+    Actor *actor;
     s32 i;
+    s16 temp;
+    s16 sp44;
 
     sp44 = 0;
     for (i = 0; i < D_global_asm_807FBB34; i++) {
-        if (arg0 == D_global_asm_807FB930[i].unk0->unk58) {
-            func_global_asm_8067AB20(NULL, D_global_asm_807FB930[i].unk0, 0x01000000, 1, &sp44, 0);
+        actor = D_global_asm_807FB930[i].unk0;
+        if (actor->unk58 == (u32)arg0) {
+            func_global_asm_8067AB20(NULL, actor, 0x01000000, 1, &sp44, 0);
         }
     }
 }
@@ -629,8 +632,6 @@ void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 a
 void func_global_asm_80641F68(void) {
 
 }
-
-void func_global_asm_80626F8C(f32, f32, f32, f32*, f32*, s32, f32, s32);
 
 u8 func_global_asm_80641F70(s16 arg0) {
     f32 sp8C;

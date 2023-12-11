@@ -145,7 +145,7 @@ void func_boss_800286B8(Gfx *dl, s32 arg1) {
     guMtxCatF(&sp90, &sp50, &sp90);
     guMtxF2L(&sp90, sp4C);
     gSPMatrix(dl++, sp4C, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    func_boss_800031E0(&sp3C, &D_boss_80035F90, D_global_asm_80750AD4);
+    func_dk64_boot_800031E0(&sp3C, &D_boss_80035F90, D_global_asm_80750AD4);
     gSPDisplayList(dl++, &D_1000118);
     gDPPipeSync(dl++);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);

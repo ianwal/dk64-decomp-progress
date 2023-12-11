@@ -472,10 +472,8 @@ typedef struct {
     u8 *unk1C;
 } Struct8068D9DC_arg1;
 
-void *func_global_asm_806FC530(void *arg0, s16 arg1, s16 arg2, s16 arg3, u8 *arg4, u8 arg5);
-
 /*
-void func_global_asm_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
+Gfx *func_global_asm_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
     s32 pad2;
     s32 pad;
     s32 sp3C;
@@ -486,13 +484,14 @@ void func_global_asm_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
     func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F30, arg1->unk14);
-    dl = func_global_asm_806FC530(func_global_asm_806FC530(dl, 3, 0x424, 0x50, &sp3C, 1), 1, 0x50, 0x50, &D_global_asm_80759F34, 1);
+    dl = func_global_asm_806FC530(dl, 3, 0x424, 0x50, &sp3C, 1);
+    dl = func_global_asm_806FC530(dl, 1, 0x50, 0x50, &D_global_asm_80759F34, 1);
     func_dk64_boot_800031E0(&sp38, &D_global_asm_80759F38, arg1->unk1C);
-    func_global_asm_806FC530(dl, 3, 0x50, 0xB0, &sp38, 1);
+    return func_global_asm_806FC530(dl, 3, 0x50, 0xB0, &sp38, 1);
 }
 */
 
-void func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
+Gfx *func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
     char sp38[8];
 
     gSPDisplayList(dl++, &D_1000118);
@@ -500,7 +499,7 @@ void func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
     func_dk64_boot_800031E0(&sp38, &D_global_asm_80759F3C, *arg1);
-    func_global_asm_806FC530(dl, 3, 0x104, 0x50, &sp38, 1);
+    return func_global_asm_806FC530(dl, 3, 0x104, 0x50, &sp38, 1);
 }
 
 // Displaylist stuff, regalloc, close, doable
@@ -516,7 +515,7 @@ typedef struct {
 } Struct8068DBA4_arg1;
 
 /*
-void func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
+Gfx *func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
     s32 pad2;
     s32 pad;
     s32 sp34;
@@ -526,7 +525,7 @@ void func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
     func_dk64_boot_800031E0(&sp34, &D_global_asm_80759F40, arg1->unk14);
-    func_global_asm_806FC530(dl, 3, 0x370, 0x50, &sp34, 1);
+    return func_global_asm_806FC530(dl, 3, 0x370, 0x50, &sp34, 1);
 }
 */
 

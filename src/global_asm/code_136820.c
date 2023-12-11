@@ -84,34 +84,35 @@ extern s32 D_global_asm_807FEF78;
 extern s32 D_global_asm_807FEF7C;
 
 /*
-void func_global_asm_80731D20(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    u8 sp4D;
-    u8 sp4C;
-    u8 *var_s1;
+void func_global_asm_80731D20(char *arg0, ...) {
+    unsigned char sp4D[0x81];
+    unsigned char *var_s1;
+    unsigned char character;
 
-    func_dk64_boot_8000320C(&sp4C, arg0, &arg1);
+    func_dk64_boot_8000320C(&sp4D);
     var_s1 = &sp4D;
-    while (sp4C != 0) {
-        switch (sp4C) {
-            case 0x20:
+    character = *var_s1;
+    while (character != '\0') {
+        switch (character) {
+            case ' ':
                 D_global_asm_807FEF70 += D_global_asm_807FEF78;
                 break;
-            case 9:
-                D_global_asm_807FEF70 = D_global_asm_807FEF70 / 8;
+            case '\t':
+                D_global_asm_807FEF70 /= 8;
                 D_global_asm_807FEF70++;
                 D_global_asm_807FEF70 *= 8;
                 break;
-            case 0xA:
+            case '\n':
                 D_global_asm_807FEF74 += D_global_asm_807FEF78;
                 D_global_asm_807FEF70 = D_global_asm_807FEF7C;
                 break;
             default:
-                func_global_asm_80731B88(sp4C);
+                func_global_asm_80731B88(character);
                 D_global_asm_807FEF70 += D_global_asm_807FEF78;
                 break;
         }
-        sp4C = *var_s1;
-        var_s1 += 1;
+        character = *var_s1;
+        var_s1++;
     }
 }
 */
@@ -149,8 +150,6 @@ typedef struct {
     s32 unk1C;
     Struct80731E68_unk20 *unk20;
 } Struct80731E68;
-
-void func_global_asm_80731D20(char*, ...);
 
 /*
 void func_global_asm_80731E68(Struct80731E68 *arg0) {

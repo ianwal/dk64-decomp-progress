@@ -34,7 +34,6 @@ s32 func_global_asm_8061C6A8(s32, Actor *, s32, s32, s32, s32, s32, s32, s32, s3
 void func_global_asm_8061EF4C(Actor*, s32, s32, f32, f32, f32, f32, f32);
 void func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
 s32 func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
-int func_global_asm_8071ABDC();
 
 void func_global_asm_8068E9B0(Actor **arg0) {
     f32 sp2C;

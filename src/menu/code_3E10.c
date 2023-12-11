@@ -335,7 +335,6 @@ typedef struct {
 } Struct800317E8;
 
 s32 func_menu_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7);
-Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32);
 
 /*
 Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
@@ -1532,8 +1531,6 @@ typedef struct {
 } Struct8003378C;
 
 extern Struct8003378C D_menu_8003378C;
-
-void func_global_asm_80626F8C(f32, f32, f32, f32*, f32*, s32, f32, s32);
 
 /*
 // TODO: Pretty close

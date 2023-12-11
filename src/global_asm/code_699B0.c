@@ -996,8 +996,6 @@ void func_global_asm_806686F4(s32 arg0) {
     D_global_asm_807F9514[arg0].unk8 = object_timer;
 }
 
-void func_global_asm_806688B8(s32 arg0);
-
 void func_global_asm_806687E0(void) {
     s32 i;
 
@@ -1397,64 +1395,42 @@ int func_global_asm_80669C6C(GlobalASMStruct80 *arg0, f32 arg1) {
 
 s32 func_global_asm_80669CB4(GlobalASMStruct80 *arg0, f32 arg1, f32 arg2) {
     f32 temp_f0;
-    f32 temp_f0_2;
     f32 temp_f12;
-    f32 temp_f12_2;
     f32 temp_f2;
-    f32 temp_f2_2;
     f32 var_f14;
-    f32 var_f14_2;
-    f32 var_f14_3;
-    f32 var_f14_4;
 
     temp_f0 = arg0->unk0;
     temp_f2 = arg0->unk4;
     temp_f12 = arg0->unk8;
-    if (temp_f0 < temp_f2) {
-        var_f14 = temp_f0;
-    } else {
-        var_f14 = temp_f2;
-    }
+    var_f14 = MIN(temp_f0, temp_f2);
     if (!(var_f14 < temp_f12)) {
         var_f14 = temp_f12;
     }
     if (arg1 < var_f14) {
         return 0;
     }
-    if (temp_f2 < temp_f0) {
-        var_f14_2 = temp_f0;
-    } else {
-        var_f14_2 = temp_f2;
+    var_f14 = MAX(temp_f0, temp_f2);
+    if (!(temp_f12 < var_f14)) {
+        var_f14 = temp_f12;
     }
-    if (!(temp_f12 < var_f14_2)) {
-        var_f14_2 = temp_f12;
-    }
-    if (var_f14_2 < arg1) {
+    if (var_f14 < arg1) {
         return 0;
     }
-    temp_f0_2 = arg0->unk18;
-    temp_f2_2 = arg0->unk1C;
-    temp_f12_2 = arg0->unk20;
-    if (temp_f0_2 < temp_f2_2) {
-        var_f14_3 = temp_f0_2;
-    } else {
-        var_f14_3 = temp_f2_2;
+    temp_f0 = arg0->unk18;
+    temp_f2 = arg0->unk1C;
+    temp_f12 = arg0->unk20;
+    var_f14 = MIN(temp_f0, temp_f2);
+    if (!(var_f14 < temp_f12)) {
+        var_f14 = temp_f12;
     }
-    if (!(var_f14_3 < temp_f12_2)) {
-        var_f14_3 = temp_f12_2;
-    }
-    if (arg2 < var_f14_3) {
+    if (arg2 < var_f14) {
         return 0;
     }
-    if (temp_f2_2 < temp_f0_2) {
-        var_f14_4 = temp_f0_2;
-    } else {
-        var_f14_4 = temp_f2_2;
+    var_f14 = MAX(temp_f0, temp_f2);
+    if (!(temp_f12 < var_f14)) {
+        var_f14 = temp_f12;
     }
-    if (!(temp_f12_2 < var_f14_4)) {
-        var_f14_4 = temp_f12_2;
-    }
-    if (var_f14_4 < arg2) {
+    if (var_f14 < arg2) {
         return 0;
     }
     return 1;

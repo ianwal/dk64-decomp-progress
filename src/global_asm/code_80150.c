@@ -389,7 +389,6 @@ void func_global_asm_8067DCC0(void) {
     }
 }
 
-int func_global_asm_8071ABDC();
 extern s32 D_global_asm_80720120;
 extern s32 D_global_asm_80720340;
 extern s32 D_global_asm_8072038C;

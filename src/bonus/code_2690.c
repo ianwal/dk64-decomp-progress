@@ -135,8 +135,6 @@ typedef struct {
     s32 unk2C;
 } AAD_bonus_80027548;
 
-void func_global_asm_80626F8C(f32, f32, f32, f32*, f32*, s32, f32, s32);
-
 /*
 // TODO: Extremely close, stack
 u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {

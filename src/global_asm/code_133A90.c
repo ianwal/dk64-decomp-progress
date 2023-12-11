@@ -440,7 +440,7 @@ void func_global_asm_80730AEC(u8 arg0, f32 arg1, GlobalASMStruct82 *arg2, f32 *a
     *arg5 = func_global_asm_80627A00(arg1, sp4C[0][2], sp4C[1][2], sp4C[2][2], sp4C[3][2]);
 }
 
-void func_global_asm_80730D60(s32 arg0, u8 arg1, u8 arg2, u8 arg3, s32 *arg4, s32 *arg5) {
+void func_global_asm_80730D60(s32 arg0, u8 arg1, u8 arg2, u8 arg3, void **arg4, void **arg5) {
     switch (arg1) {
         case 0:
             *arg4 = func_global_asm_80671D64(arg0, arg2);

@@ -224,8 +224,6 @@ void func_global_asm_806BE674(u8 arg0) {
 // Displaylist stuff, dl arg0, actor arg1?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BE6F0.s")
 
-Gfx *func_global_asm_806FC530(Gfx *dl, s32, s16, s32, void*, s32);
-
 /*
 Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     char sp4C[2];

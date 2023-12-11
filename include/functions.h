@@ -1226,7 +1226,7 @@ s32 func_global_asm_806FBB9C(s16 textureIndex);
 void func_global_asm_80663C60(f32 *arg0, s16 arg1);
 void func_global_asm_8072ED90(void);
 u8 func_global_asm_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4);
-void func_global_asm_80730D60(s32 arg0, u8 arg1, u8 arg2, u8 arg3, s32 *arg4, s32 *arg5);
+void func_global_asm_80730D60(s32 arg0, u8 arg1, u8 arg2, u8 arg3, void **arg4, void **arg5);
 s32 func_global_asm_8067B2C0(s32);
 void func_global_asm_80678F64(Actor*);
 s16 func_global_asm_8067AF74(Actor*);
@@ -2193,6 +2193,14 @@ typedef struct {
 
 void func_global_asm_8060ED6C(Struct131B0_2 *arg0, Struct131B0_1 *arg1, s32 arg2, s32 arg3, s32 arg4);
 void func_global_asm_8060F928(Struct131B0_2*, Struct131B0_1*);
+
+void func_dk64_boot_800031E0(char *str, char *format, ...);
+Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32);
+
+int func_global_asm_8071ABDC(); // TODO: Datatype
+void func_global_asm_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
+void func_race_8002BCD4(Actor *);
+void func_global_asm_80731D20(char*, ...);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))

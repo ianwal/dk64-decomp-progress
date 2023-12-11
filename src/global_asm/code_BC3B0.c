@@ -120,7 +120,6 @@ typedef struct {
 } Actor178_806B7EA0;
 
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
-void func_global_asm_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
 void func_global_asm_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2);
 
 /*

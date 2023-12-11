@@ -1,11 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_race_80025E9C(Actor *);
 void func_race_80025FDC();
 void func_race_80029488();
 void func_race_8002E9F8(s32 *checkpointFile);
-void func_race_8002BCD4(Actor *);
 void func_race_8002D064();
 void func_race_8002D0FC();
 extern void func_race_8002CFF0();

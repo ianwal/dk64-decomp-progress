@@ -95,7 +95,6 @@ void func_global_asm_80697988(void) {
 */
 
 void func_global_asm_806651FC(Actor *);
-int func_global_asm_8071ABDC(); // TODO: Datatype
 extern s32 D_global_asm_8071FBA0; // TODO: Datatype
 
 extern s32 D_global_asm_8076A068;
