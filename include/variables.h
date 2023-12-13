@@ -34,6 +34,29 @@ extern u16 enemies_killed;
 extern Chunk *chunk_array_pointer;
 extern u8 current_file;
 
+extern u16 D_global_asm_807446C0[];
+
+extern u8 D_global_asm_807445E0[]; // level_index_mapping
+extern s32 D_global_asm_80744720[] ;/*= {
+    0x181, // Kong Unlocked: DK
+    0x6, // Kong Unlocked: Diddy
+    0x46, // Kong Unlocked: Lanky
+    0x42, // Kong Unlocked: Tiny
+    0x75, // Kong Unlocked: Chunky
+}; // kong_unlocked_flag_mapping*/
+
+extern u16 D_global_asm_80744734[] ;/*= { // lobby_array
+   MAP_JAPES_LOBBY,
+   MAP_AZTEC_LOBBY,
+   MAP_FACTORY_LOBBY,
+   MAP_GALLEON_LOBBY,
+   MAP_FUNGI_LOBBY,
+   MAP_CAVES_LOBBY,
+   MAP_CASTLE_LOBBY,
+   MAP_HELM_LOBBY,
+   MAP_HELM_LOBBY, // TODO: Why is this here twice?
+}; // lobby_array*/
+
 extern Gfx **D_1000020;
 extern Gfx **D_1000030;
 extern Gfx **D_1000068;

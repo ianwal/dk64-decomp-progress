@@ -1,8 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-void func_global_asm_806306D0(Chunk14 *current);
+void func_global_asm_8061130C(void *);
+s32 func_global_asm_8063162C(Actor *, s16 *);
+s32 func_global_asm_806317D4(Actor *, s16 *, f32, f32, f32);
 
 extern Chunk14 *D_global_asm_807F5FF0;
 extern Chunk14 *D_global_asm_807F5FF4;
@@ -16,32 +17,7 @@ void func_global_asm_80630300(void) {
     D_global_asm_807F5FFC = NULL;
 }
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s16 unk4C;
-    u8 unk4E; // Used
-    u8 unk4F;
-} GlobalASMStruct59;
-
-s32 func_global_asm_80630324(u8 arg0, GlobalASMStruct59 *arg1) {
+s32 func_global_asm_80630324(u8 arg0, Struct80652374_arg0_unk0 *arg1) {
     if (arg0 == 2) {
         arg0 = arg1->unk4E;
         if (arg0 & 2) {
@@ -142,8 +118,6 @@ Chunk14 *func_global_asm_806303C4(Chunk14 *arg0, u8 arg1, Model2Model *arg2, f32
     }
     return phi_a1;
 }
-
-void func_global_asm_8061130C(void *);
 
 Chunk14 *func_global_asm_80630588(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 *arg3) {
     u8 phi_v0;
@@ -390,9 +364,6 @@ Chunk14 *func_global_asm_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, C
 
 // Similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_806317D4.s")
-
-s32 func_global_asm_8063162C(Actor *, s16 *);
-s32 func_global_asm_806317D4(Actor *, s16 *, f32, f32, f32);
 
 void func_global_asm_806319C4(Actor *arg0, u8 arg1) {
     f32 sp78[4][4];

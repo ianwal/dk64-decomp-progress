@@ -19,8 +19,6 @@ typedef struct {
     f32 unk8;
 } Struct8074828C;
 
-extern u16 D_global_asm_807446C0[];
-
 extern u8 D_global_asm_80748214[];
 extern Struct80748280 D_global_asm_80748280;
 extern Struct8074828C D_global_asm_8074828C;

@@ -8,7 +8,6 @@ extern u8 D_global_asm_80750AC0;
 
 void func_global_asm_806C9C80(s32, s32, s32);
 s32 func_global_asm_8066B06C(s32, s32);
-void func_global_asm_806C9658(s32);
 
 extern u8 D_global_asm_80770DC9;
 extern u8 number_of_exits;
@@ -479,7 +478,7 @@ void func_global_asm_806C9434(s32 arg0) {
     D_global_asm_807FBB48->x_rotation = 0;
 }
 
-void loadExits(s32 map) {
+void loadExits(Maps map) {
     exit_array = getPointerTableFile(0x17, map, 1, 1);
     number_of_exits = func_global_asm_8066B06C(0x17, map) / sizeof(ExitData);
     func_global_asm_806C9658(map); // Check galleon water level
@@ -489,7 +488,7 @@ void loadExits(s32 map) {
     D_global_asm_807FC908.angle = 0;
 }
 
-void func_global_asm_806C9658(s32 map) {
+void func_global_asm_806C9658(Maps map) {
     if (map == MAP_GALLEON) {
         // Galleon: Water Level Raised
         if (isFlagSet(0xA0, FLAG_TYPE_PERMANENT)) {
@@ -583,8 +582,6 @@ s32 func_global_asm_806C9974(u8 arg0, s8 arg1) {
 extern u8 D_global_asm_80750AC0;
 extern s8 D_global_asm_80750ACC;
 extern s32 D_global_asm_807FD56C;
-
-void func_global_asm_806C7B00(void);
 
 void func_global_asm_806C9AE0(void) {
     PlayerProgress *PP;

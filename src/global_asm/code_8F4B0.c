@@ -44,8 +44,6 @@ void func_global_asm_8068A830(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068ABE0.s")
 
-extern u16 D_global_asm_80744734[];
-
 /*
 // TODO: Matched, but rodata offsets are wrong... Hmm...
 s32 func_global_asm_8068ABE0(s16 arg0) {

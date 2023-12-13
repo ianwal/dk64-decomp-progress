@@ -49,7 +49,7 @@ void func_global_asm_806B1F50(void) {
         case 0x27:
             break;
         case 0x0:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_806A2A10(0xDC, 0x2A, 0x1E);
                 func_global_asm_806A2B08(current_actor_pointer->unk11C);
                 current_actor_pointer->control_state = 7;

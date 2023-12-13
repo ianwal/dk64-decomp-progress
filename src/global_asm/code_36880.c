@@ -251,7 +251,6 @@ s32 func_global_asm_8063254C(s32 arg0, s32 *arg1, f32 *arg2, f32 *arg3, f32 *arg
     return found;
 }
 
-void func_global_asm_806306D0(void *);
 s16 func_global_asm_80632860(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, u8 argA, u8 argB, Chunk14 **argC);
 extern s32 D_global_asm_80747D70;
 extern u8 D_global_asm_807F6008;
@@ -314,8 +313,6 @@ void func_global_asm_80632E10(s16 arg0, u8 *arg1) {
         }
     }
 }
-
-s32 func_global_asm_80731654(s16, s16);
 
 void func_global_asm_80632E74(s16 arg0, s16 arg1, u8 *arg2) {
     switch (func_global_asm_80731654(arg0, arg1)) {

@@ -1,9 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-void func_global_asm_80718BF4(void);
-
 extern s32 D_global_asm_8071FB08; // TODO: Proper datatype
 extern s32 D_global_asm_8071FBA0;
 extern s32 D_global_asm_8071FC40; // TODO: Proper datatype
@@ -14,7 +11,6 @@ extern s32 D_global_asm_807200D4; // TODO: Proper datatype
 extern s32 D_global_asm_80720B58; // TODO: Datatype
 extern s16 D_global_asm_80750AC8;
 
-extern u16 D_global_asm_807446C0[];
 typedef struct {
     s8 unk0;
     s8 unk1;
@@ -30,18 +26,18 @@ extern u8 D_global_asm_807FBDC4;
 extern s32 D_global_asm_807FBDC8[];
 extern u16 D_global_asm_807FC930[];
 
-void func_global_asm_80724E48(u8);
-void func_global_asm_806F09F0(Actor*, u16);
-void func_global_asm_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_8061C518(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-void func_global_asm_806F91B4(s32, u8, s32);
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
-void func_global_asm_806F0C18(Actor*);
-int func_global_asm_807035C4(); // TODO: Signature
-int func_global_asm_807197B4(); // TODO: Signature
-void func_global_asm_806BFBF4(void);
+void func_global_asm_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_806BF920(void);
+void func_global_asm_806BFBF4(void);
+void func_global_asm_806F09F0(Actor*, u16);
+void func_global_asm_806F0C18(Actor*);
+void func_global_asm_806F91B4(s32, u8, s32);
+int func_global_asm_807035C4(); // TODO: Signature
+void func_global_asm_80718BF4(void);
+int func_global_asm_807197B4(); // TODO: Signature
 int func_global_asm_8071C818(); // TODO: Signature
+void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
 u8 func_global_asm_806BDD90(void) {
     s16 i;
@@ -725,7 +721,7 @@ void func_global_asm_806C226C(void) {
                 }
             }
             func_global_asm_8072D13C(2, 0);
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 current_actor_pointer->control_state = 0x40;
             }
             break;

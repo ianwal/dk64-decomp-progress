@@ -447,6 +447,7 @@ D_global_asm_80721444 = 0x80721444;
 
 D_global_asm_8074451C = 0x8074451C;
 D_global_asm_80744538 = 0x80744538;
+D_global_asm_807446E0 = 0x807446E0;
 D_global_asm_80745844 = 0x80745844;
 D_global_asm_807505AE = 0x807505AE;
 
@@ -847,6 +848,7 @@ D_global_asm_807FC918 = 0x807FC918;
 D_global_asm_807FC930 = 0x807FC930;
 D_global_asm_807FC950 = 0x807FC950;
 D_global_asm_807FC952 = 0x807FC952;
+D_global_asm_807FCC44 = 0x807FCC44;
 D_global_asm_807FD568 = 0x807FD568;
 D_global_asm_807FD56C = 0x807FD56C;
 D_global_asm_807FD570 = 0x807FD570;
@@ -997,6 +999,8 @@ D_minecart_80028C30 = 0x80028C30; // segment:minecart
 
 D_bonus_8002DEF0 = 0x8002DEF0; // segment:bonus
 
+D_critter_80029FA0 = 0x80029FA0; // segment:critter
+D_critter_8002A1B0 = 0x8002A1B0; // segment:critter
 D_critter_8002A1C0 = 0x8002A1C0; // segment:critter
 D_critter_8002A1C8 = 0x8002A1C8; // segment:critter
 D_critter_8002A1C4 = 0x8002A1C4; // segment:critter

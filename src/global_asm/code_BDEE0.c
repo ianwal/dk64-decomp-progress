@@ -11,7 +11,6 @@ void func_global_asm_80612BC0(Mtx*, f32);
 void func_global_asm_80612C30(Mtx*, f32);
 void func_global_asm_80611A70(f32, f32, f32*, f32*);
 void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
-void func_global_asm_806D0430(f32);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806B91E0.s")

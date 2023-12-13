@@ -923,7 +923,6 @@ void func_global_asm_8062D3E4(void *arg0) {
 }
 
 s32 func_global_asm_8062E898(void *, void *, f32, f32, f32);
-void func_global_asm_806306D0(Chunk14 *);
 void func_global_asm_80652374(Chunk14 *);
 
 // Arg0 might be map model

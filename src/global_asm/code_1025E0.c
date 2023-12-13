@@ -136,16 +136,13 @@ void func_global_asm_806FDF54(f32 *arg0, f32 *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FEDB0.s")
 
 extern f32 D_global_asm_8075DE70;
-Gfx *func_global_asm_806FEDB0(s32, u8);
 
-void func_global_asm_806FEF7C(s32 arg0, Actor *arg1) {
-    Gfx *dl;
-
-    dl = func_global_asm_806FEDB0(arg0, arg1->PaaD->unk1A4);
+Gfx *func_global_asm_806FEF7C(Gfx *dl, Actor *arg1) {
+    dl = func_global_asm_806FEDB0(dl, arg1->PaaD->unk1A4);
     gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
 
-    func_global_asm_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, D_global_asm_8075DE70);
+    return func_global_asm_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, D_global_asm_8075DE70);
 }
 
 s32 func_global_asm_80690F30(s32, s32 *, Actor*, s32, s32, s32, s32 *, s32 *, s32 *);
@@ -160,22 +157,21 @@ typedef struct {
 
 extern Struct807FD568 *D_global_asm_807FD568; // TODO: Unknown struct
 
-void func_global_asm_806FF01C(s32 arg0, Actor *arg1) {
+Gfx *func_global_asm_806FF01C(Gfx *dl, Actor *arg1) {
     u8 playerIndex;
     s32 sp58;
     s32 sp54;
     s32 sp50;
     s32 sp4C;
-    Gfx *dl;
 
     playerIndex = arg1->PaaD->unk1A4;
-    dl = func_global_asm_806FEDB0(arg0, playerIndex);
+    dl = func_global_asm_806FEDB0(dl, playerIndex);
     if (D_global_asm_807FD568->unk2 & 2 && func_global_asm_806F8AD4(3, playerIndex) != 0 && func_global_asm_80690F30(2, &sp58, arg1, 1, 0, 0, &sp54, &sp50, &sp4C) != 0) {
         gDPSetPrimColor(dl++, 0, 0, 0x00, 0xC8, 0x00, 0xFF);
     } else {
         gDPSetPrimColor(dl++, 0, 0, 0xC8, 0x00, 0x00, 0xFF);
     }
-    func_global_asm_8068C5A8(dl, 0x38, 3, 1, 0x40, 0x40, 0xA0, 0x78, 0.5f, 0.5f, 0x2D, 0.0f);
+    return func_global_asm_8068C5A8(dl, 0x38, 3, 1, 0x40, 0x40, 0xA0, 0x78, 0.5f, 0.5f, 0x2D, 0.0f);
 }
 
 void func_global_asm_806FF144(Gfx *dl) {

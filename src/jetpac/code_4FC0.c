@@ -35,11 +35,6 @@ typedef struct JetpacStruct9 {
     u8 pad0[0x18];
 } JetpacStruct9;
 
-typedef struct JetpacStruct8 {
-    u8 pad0[0xC];
-    f32 unkC;
-} JetpacStruct8;
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -100,7 +95,7 @@ extern void func_jetpac_800298C8(JetpacStruct *arg0);
 void func_jetpac_8002976C(JetpacStruct*);
 extern void (func_jetpac_8002998C)();
 f32 func_jetpac_80027210();
-void func_jetpac_80029B90();
+void func_jetpac_80029B90(JetpacStruct *);
 f32 func_jetpac_80027380(s32 *);
 f32 func_jetpac_800273C8(JetpacStruct *);
 f32 func_jetpac_8002A2DC(f32, f32);
@@ -115,6 +110,7 @@ f32 func_jetpac_80027210();
 extern void (func_jetpac_80029C1C)();
 s32 func_jetpac_80028CF8(f32, f32, f32, f32, s32);
 void func_jetpac_800294EC(void *, s32);
+void *func_global_asm_806FD490(Gfx *, s32, s16, s16, s32);
 
 void *func_jetpac_80028FC0(void) {
     s32 i;
@@ -349,7 +345,7 @@ void func_jetpac_80029AF8(JetpacStruct *arg0) {
     arg0->unk2C = (func_jetpac_80027210() * 60.0f) + 10.0f;
 }
 
-void func_jetpac_80029B90(JetpacStruct8 *arg0) {
+void func_jetpac_80029B90(JetpacStruct *arg0) {
     if (arg0->unkC == 0.0) {
         if (func_jetpac_80027210() < 0.5) {
             arg0->unkC = (f32) D_jetpac_8002EBC4;
@@ -747,8 +743,6 @@ void func_jetpac_8002AEC8(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
     D_jetpac_8002E9C8 = arg2;
     D_jetpac_8002E9CC = arg3;
 }
-
-void *func_global_asm_806FD490(Gfx *, s32, s16, s16, s32);
 
 void func_jetpac_8002AEFC(Gfx **arg0, char *arg1, s32 arg2, s32 arg3, s32 arg4) {
     Gfx *dl;

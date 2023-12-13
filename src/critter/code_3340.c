@@ -1,11 +1,52 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    u8 unk0[0x810 - 0x0];
+    u8 unk810[1]; // TODO: How many elements?
+} AAD_critter_8002904C;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+} AAD_critter_800296DC;
+
+typedef struct {
+    s16 unk0;
+    s8 unk2;
+    s8 unk3;
+    s16 unk4;
+} AAD_critter_80029118;
+
+// rodata
+// const char D_critter_8002A190[] = "WELL DONE!";
+// const char D_critter_8002A19C[] = "TIME OUT!";
+
+extern s8 D_critter_80029FA0;
+extern u16 D_critter_80029FA4;
+extern s8 D_critter_80029FA8;
+
 extern u32 D_critter_8002A1C0;
 extern u32 D_critter_8002A1C4;
 extern void* D_critter_8002A1C8[];
 extern u16 D_critter_8002A1CE;
 extern u16 D_critter_8002A1CC;
+
+extern u16 D_critter_8002A1CC;
+extern u16 D_critter_8002A1CE;
+extern s32 D_global_asm_807655F0;
+extern s32 D_global_asm_807ECE00;
+extern u16 D_global_asm_807FCC44;
+
+extern void *func_critter_80028DE8(Gfx *arg0, Actor *arg1);
+Gfx *func_critter_800296DC(Gfx *dl, Actor *arg1);
+s32 (*func_critter_80029110(s32))(s32 *, s32);
+s32 func_global_asm_8061CB08();
+s32 func_global_asm_8061CB38();
+s32 func_global_asm_806A2A10(s32, s32, u8);
+u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
+Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
 
 void func_critter_80027340(s32 arg0) {
     s32 phi_s0;
@@ -24,6 +65,226 @@ void func_critter_80027340(s32 arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80027448.s")
 
+typedef struct {
+    s16 unk0;
+} AAD_critter_80027448;
+
+typedef struct {
+    s8 unk0;
+    s8 unk1; // Character Index
+} Struct807446E0;
+
+extern s16 D_global_asm_807446D0[];
+extern Struct807446E0 D_global_asm_807446E0[];
+extern u16 D_global_asm_807FC930[];
+extern f32 D_critter_8002A1B0;
+extern s8 D_critter_80029F80[];
+extern s8 D_critter_80029F84[];
+extern u16 D_critter_80029F90[];
+extern s32 D_global_asm_8071FE08; // TODO: Datatype
+extern s32 D_global_asm_80720A7C; // TODO: Datatype
+
+/*
+void func_critter_80027448(void) {
+    s32 levelIndex; // sp6C
+    s32 pad; // sp68
+    s32 sp64; // sp64
+    AAD_critter_80027448 *aaD; // sp60
+    f32 dx; // sp5C
+    s32 pad2; // sp58
+    f32 dz; // sp54
+    f32 d; // sp50
+    s32 pad3;
+    s32 pad4;
+    s8 sp47;
+    s8 sp46;
+    f32 dy;
+    s16 var_v0;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    sp46 = 0;
+    sp47 = 0;
+    levelIndex = getLevelIndex(D_global_asm_8076A0AB, 0);
+    if (levelIndex >= 8) {
+        levelIndex = 7;
+    }
+    if (current_map == MAP_TROFF_N_SCOFF) {
+        sp64 = D_global_asm_807446C0[levelIndex];
+    } else {
+        sp64 = D_global_asm_807446D0[levelIndex];
+    }
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unk64 |= 0x20;
+        if (current_map == MAP_TROFF_N_SCOFF) {
+            func_global_asm_80614EBC(current_actor_pointer, 0x39F);
+            current_actor_pointer->control_state_progress = 4;
+            if (D_global_asm_807FC930[levelIndex] < sp64) {
+                func_global_asm_806F8BC4(0, 1, 0);
+            }
+        } else {
+            func_global_asm_806F8BC4(9, 1, 0);
+            if (isFlagSet(levelIndex + 0x1CD, FLAG_TYPE_PERMANENT)) {
+                current_actor_pointer->control_state_progress = 4;
+            }
+            func_global_asm_80614EBC(current_actor_pointer, 0x39E);
+            func_critter_80027340(sp64);
+        }
+        aaD->unk0 = 0;
+        D_critter_8002A1B0 = 0.0f;
+        D_critter_80029F84[0] = 0;
+        D_critter_80029F80[0] = 0;
+    } else if (D_critter_80029F84[0] != 0) {
+        if (current_character_index[0] == D_global_asm_807446E0[levelIndex].unk1) {
+            if ((func_global_asm_806FB418() < sp64) && (levelIndex != 7)) {
+                sp64 = D_global_asm_807446E0[levelIndex].unk0;
+                sp47 = 1;
+            }
+            if (levelIndex == 7) {
+                if (D_critter_80029F84[0] == 1) {
+                    sp46 = 1;
+                } else {
+                    sp47 = 1;
+                    sp64 = D_global_asm_807446E0[7].unk0;
+                }
+            }
+        }
+    }
+    current_actor_pointer->unk15E = 0x23;
+    if (current_map != MAP_TROFF_N_SCOFF) {
+        dx = player_pointer->x_position - current_actor_pointer->x_position;
+        dy = 2.0 * (player_pointer->y_position - current_actor_pointer->y_position);
+        dz = player_pointer->z_position - current_actor_pointer->z_position;
+        d = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+        if ((d < 300.0) && !isFlagSet(0x17E, FLAG_TYPE_PERMANENT)) {
+            func_global_asm_8070E8DC(1);
+            func_global_asm_8070D8C0(current_actor_pointer, 0x1D, 0);
+            playCutscene(current_actor_pointer, 1, 1);
+            setFlag(0x17E, TRUE, FLAG_TYPE_PERMANENT);
+        } else if ((sp46 != 0) && (d < 200.0) && (func_global_asm_8061CB50() == 0) && (player_pointer->control_state == 0x24) && (player_pointer->control_state_progress == 2) && (dz > -35.0)) {
+            if ((dx > -27.0) && (dx < 27.0) && ((((player_pointer->y_rotation < 0x200) != 0)) || (player_pointer->y_rotation >= 0xE01))) {
+                D_critter_80029F84[0] = 2;
+                playSound(0x145, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
+                func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xA, 0xA);
+                current_actor_pointer->control_state_progress = 0xA;
+                aaD->unk0 = 0;
+                func_global_asm_80614EBC(current_actor_pointer, 0x3A1);
+            }
+        }
+        switch (current_actor_pointer->control_state_progress) {
+            case 10:
+                aaD->unk0++;
+                if (aaD->unk0 == 0xA) {
+                    func_critter_80027340(sp64);
+                    playSound(0xE, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
+                }
+                if (aaD->unk0 >= 0x2E) {
+                    current_actor_pointer->control_state_progress = 0;
+                    if (func_global_asm_806FB418() < sp64) {
+
+                    }
+                }
+                break;
+            case 0:
+                if ((current_map == MAP_HELM_LOBBY) && (*current_character_index != 4)) {
+                    D_critter_8002A1B0 = 0.0f;
+                }
+                if ((d < 70.0) && (D_critter_8002A1B0 >= 70.0)) {
+                    func_global_asm_8070E8DC(1);
+                    playCutscene(current_actor_pointer, 0x1B, 5);
+                    if (func_global_asm_806FB418() < sp64) {
+                        func_global_asm_8070D8C0(current_actor_pointer, 0x1D, 1);
+                        func_global_asm_80614EBC(current_actor_pointer, 0x3A1);
+                        current_actor_pointer->control_state_progress = 1;
+                    } else {
+                        setFlag(levelIndex + 0x1CD, TRUE, FLAG_TYPE_PERMANENT);
+                        var_v0 = (sp47) ? levelIndex + 2 : 2;
+                        func_global_asm_8070D8C0(current_actor_pointer, 0x1D, var_v0);
+                        func_global_asm_80614EBC(current_actor_pointer, 0x3A0);
+                        current_actor_pointer->control_state_progress = 2;
+                        aaD->unk0 = 0;
+                    }
+                }
+                break;
+            case 1:
+                if (d > 110.0) {
+                    current_actor_pointer->control_state_progress = 0;
+                }
+                break;
+            case 2:
+                if (!func_global_asm_8061CB38() && (aaD->unk0 >= 0x14)) {
+                    if (aaD->unk0 == 0x32) {
+                        func_global_asm_80614EBC(current_actor_pointer, 0x3A2);
+                    }
+                    if (aaD->unk0 >= 0x3D) {
+                        func_global_asm_807149B8(0);
+                        func_global_asm_807149FC(1);
+                        func_global_asm_80714CC0(
+                            &D_global_asm_80720A7C,
+                            0.5f,
+                            ((func_global_asm_806119FC() * 35.0) + current_actor_pointer->x_position) - 15.0,
+                            (func_global_asm_806119FC() * 35.0) + current_actor_pointer->y_position,
+                            ((func_global_asm_806119FC() * 35.0) + current_actor_pointer->z_position) - 15.0
+                        );
+                    }
+                    if (aaD->unk0 >= 0x51) {
+                        current_actor_pointer->animation_state->scale[0] *= 0.9;
+                        current_actor_pointer->animation_state->scale[1] = current_actor_pointer->animation_state->scale[0];
+                        current_actor_pointer->animation_state->scale[2] = current_actor_pointer->animation_state->scale[0];
+                    }
+                    aaD->unk0++;
+                } else {
+                    if (aaD->unk0 < 0x14) {
+                        aaD->unk0++;
+                    }
+                }
+                break;
+            case 3:
+                current_actor_pointer->animation_state->scale[0] = 0.0f;
+                current_actor_pointer->animation_state->scale[1] = 0.0f;
+                current_actor_pointer->animation_state->scale[2] = 0.0f;
+                func_global_asm_80605314(current_actor_pointer, 0);
+                current_actor_pointer->control_state_progress = 4;
+                func_global_asm_807149B8(0);
+                func_global_asm_807149FC(1);
+                func_global_asm_80714CC0(
+                    &D_global_asm_8071FE08,
+                    0.5f,
+                    current_actor_pointer->x_position,
+                    current_actor_pointer->y_position + 7.0f,
+                    current_actor_pointer->z_position
+                );
+                break;
+            case 4:
+                current_actor_pointer->animation_state->scale[0] = 0.0f;
+                current_actor_pointer->animation_state->scale[1] = 0.0f;
+                current_actor_pointer->animation_state->scale[2] = 0.0f;
+                break;
+        }
+        D_critter_8002A1B0 = d;
+        if (newly_pressed_input != 0) {
+            if (D_critter_80029F90[D_critter_80029F80[0]] & newly_pressed_input) {
+                D_critter_80029F80[0]++;
+                if (D_critter_80029F80[0] == 4) {
+                    D_critter_80029F80[0] = 0;
+                    playSound(0x1EE, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
+                    D_critter_80029F84[0] = 1;
+                }
+            } else {
+                D_critter_80029F80[0] = 0;
+            }
+        }
+    }
+    func_global_asm_806319C4(current_actor_pointer, 0);
+    if (current_actor_pointer->control_state_progress != 4) {
+        current_actor_pointer->object_properties_bitfield |= 4;
+    } else {
+        current_actor_pointer->object_properties_bitfield &= ~4;
+        current_actor_pointer->noclip_byte = 1;
+    }
+}
+*/
+
+// rodata
 extern f32 D_critter_8002A110;
 extern f32 D_critter_8002A114;
 
@@ -54,6 +315,7 @@ void func_critter_80027DC0(void) {
     switch (current_actor_pointer->control_state) {
         case 1:
             if ((((dx * dx) + (dz * dz)) < D_critter_8002A110) != 0) {
+            // if ((((dx * dx) + (dz * dz)) < 10000.0f) != 0) {
                 // Unlock the camera
                 setFlag(0x179, TRUE, FLAG_TYPE_PERMANENT);
                 playCutscene(player_pointer, 0, 1);
@@ -90,6 +352,7 @@ void func_critter_80027DC0(void) {
             break;
         case 3:
             if ((((dx * dx) + (dz * dz)) < D_critter_8002A114) != 0) {
+            // if ((((dx * dx) + (dz * dz)) < 10000.0f) != 0) {
                 playCutscene(current_actor_pointer, 1, 1);
                 func_global_asm_80629174();
                 current_actor_pointer->control_state = 4;
@@ -125,15 +388,6 @@ void func_critter_80028840() {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_8002904C.s")
 
-extern u16 D_critter_8002A1CC;
-extern u16 D_critter_8002A1CE;
-extern void *func_critter_80028DE8(Gfx *arg0, Actor *arg1);
-
-typedef struct {
-    u8 unk0[0x810 - 0x0];
-    u8 unk810[1]; // TODO: How many elements?
-} AAD_critter_8002904C;
-
 /*
 void func_critter_8002904C(void) {
     AAD_critter_8002904C *aaD;
@@ -158,34 +412,6 @@ s32 (*func_critter_80029110(s32 arg0))(s32 *, s32) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80029118.s")
-
-Gfx *func_critter_800296DC(Gfx *dl, Actor *arg1);
-
-s32 (*func_critter_80029110(s32))(s32 *, s32);
-s32 func_global_asm_8061CB08();
-s32 func_global_asm_8061CB38();
-s32 func_global_asm_806A2A10(s32, s32, u8);
-u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
-
-// TODO: Probably code in dk64_boot... Hmm...
-extern s32 D_critter_800046C0;
-extern s32 D_critter_80006F10;
-
-extern s8 D_critter_80029FA0;
-extern u16 D_critter_80029FA4;
-extern s8 D_critter_80029FA8;
-extern s32 D_critter_8002A190;
-extern s32 D_critter_8002A19C;
-extern s32 D_global_asm_807655F0;
-extern s32 D_global_asm_807ECE00;
-extern u16 D_global_asm_807FCC44;
-
-typedef struct {
-    s16 unk0;
-    s8 unk2;
-    s8 unk3;
-    s16 unk4;
-} AAD_critter_80029118;
 
 /*
 // TODO: Pretty close considering size
@@ -273,11 +499,11 @@ void func_critter_80029118(void) {
             }
             temp_v1(var_s0, 0x10);
             sp50 = func_critter_80029110(-0xDC1);
-            func_critter_80029110(~(u32)(&D_critter_80006F10))(var_s0, 0x10);
+            func_critter_80029110(~(u32)(&osPiStartDma))(var_s0, 0x10);
             if (current_actor_pointer->unk11C->control_state == 5) {
                 current_actor_pointer->control_state = 0xFF;
             }
-            func_critter_80029110(~(u32)(&D_critter_800046C0))(NULL, 1);
+            func_critter_80029110(~(u32)(&osRecvMesg))(NULL, 1);
             func_critter_80029110(~(u32)(&osInvalDCache))(var_s0, 0x10);
             temp_t3 = var_s0[0] + var_s0[1];
             var_s0[0] = temp_t3;
@@ -293,7 +519,7 @@ void func_critter_80029118(void) {
             break;
         case 0x3:
             current_actor_pointer->unk11C->control_state = 1;
-            aaD->unk2 = func_global_asm_806FDB8C(1, &D_critter_8002A190, 2, 160.0f, 100.0f, 0.0f);
+            aaD->unk2 = func_global_asm_806FDB8C(1, "WELL DONE!", 2, 160.0f, 100.0f, 0.0f);
             playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
             aaD->unk0 = 0x78;
             current_actor_pointer->control_state = 0xFE;
@@ -335,7 +561,7 @@ void func_critter_80029118(void) {
             break;
         case 0xFF:
             D_critter_80029FA8 = 0;
-            aaD->unk2 = func_global_asm_806FDB8C(1, &D_critter_8002A19C, 2, 160.0f, 100.0f, 0.0f);
+            aaD->unk2 = func_global_asm_806FDB8C(1, "TIME OUT!", 2, 160.0f, 100.0f, 0.0f);
             aaD->unk0 = 0x78;
             current_actor_pointer->control_state = 0xFE;
             break;
@@ -343,14 +569,6 @@ void func_critter_80029118(void) {
     func_global_asm_8068C350(&func_critter_800296DC, current_actor_pointer, 3);
 }
 */
-
-Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-} AAD_critter_800296DC;
 
 Gfx *func_critter_800296DC(Gfx *dl, Actor *arg1) {
     AAD_critter_800296DC* aaD = arg1->additional_actor_data;

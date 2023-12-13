@@ -347,7 +347,6 @@ void func_global_asm_8067C6FC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067C71C.s")
 
 int func_global_asm_8071910C(); // TODO: Signature
-extern s32 D_global_asm_8071FE08; // TODO: Datatype
 extern s32 D_global_asm_8071FE64; // TODO: Datatype
 extern s32 D_global_asm_8071FE88; // TODO: Datatype
 extern s32 D_global_asm_8071FEAC; // TODO: Datatype

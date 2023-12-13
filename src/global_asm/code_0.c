@@ -71,74 +71,26 @@ extern OSTimer D_global_asm_8076A130;
 
 f32 func_global_asm_8062A850(void);
 void func_global_asm_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
-void func_global_asm_8060AA04();
-void func_global_asm_80631B80();
-void func_global_asm_806C9AE0();
-void func_global_asm_80731030(); // clearTemporaryFlags()
-void func_global_asm_805FF118();
-void func_global_asm_8063DB0C();
 
 void func_global_asm_80712A40(void);
 void func_global_asm_80605510(void);
-void func_global_asm_8068C080(void);
-void func_global_asm_8070F570(void);
-void func_global_asm_80600950(void);
 
-void func_global_asm_8060A4D0(s32 arg0, f32 arg1);
-
-void func_global_asm_8066ADA0(void);
-void func_global_asm_806FBB58(void);
-void func_global_asm_806FD9A0(void);
-
-void func_global_asm_80705B30();
 void func_global_asm_807215EC();
-void func_global_asm_8072ED90();
-void func_global_asm_80658BD0();
 
-void func_global_asm_80630300();
 void func_global_asm_80650E20(s32* arg0);
 void func_global_asm_8062F050(s32* arg0);
-void func_global_asm_8065D170();
-void func_global_asm_806588E0(s32 arg0);
-void func_global_asm_80688940();
-void func_global_asm_80631C3C();
-void func_global_asm_8063643C();
 
-void func_global_asm_806C7C10(void);
-void func_global_asm_806D0430(f32 arg0);
-void func_global_asm_805FE544(u8 arg0);
-
-void func_global_asm_80631FAC(Maps arg0, s32 arg1);
 void func_global_asm_806886E0(s32* arg0, s32 arg1, s32 arg2);
-void func_global_asm_80663DA0();
-void func_global_asm_8065A570();
 void func_global_asm_80677D80();
-void func_global_asm_8068A7B0();
 
 void func_global_asm_80626264(void*);
-void func_global_asm_80712B80();
 void func_global_asm_806C7D40(s32 arg0);
-void func_global_asm_80714670();
 
-void func_global_asm_80724C78(void* arg0);
 void func_global_asm_8061EA78();
 void func_global_asm_806F4778();
-void func_global_asm_8070E8C8();
 void func_global_asm_8060098C(s32 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 
-void func_critter_80026FD0(s32 arg0);
-void setupRaceOnMapLoad(Maps map);
-
-void func_global_asm_8066BDE0(void);
-
-void func_global_asm_80701C90(void);
-void func_global_asm_80629190(void);
-void func_global_asm_80600590(s32 arg0);
-
-void func_global_asm_806641A0();
-
 void func_global_asm_80712BD4();
-void func_global_asm_805FF670();
 void func_global_asm_805FB944(s32);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FB300.s")
@@ -418,11 +370,10 @@ void func_global_asm_805FBFF4(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FC2B0.s")
 
 extern s32 *D_global_asm_8076A048;
-extern void* D_global_asm_8076A050[];
+extern Gfx* D_global_asm_8076A050[];
 extern s32 D_global_asm_8076A150;
 extern s32 D_global_asm_8076A088;
 extern s32 D_global_asm_8076A08C;
-void func_global_asm_8068C2EC();
 
 /*
 void func_global_asm_805FC2B0(void) {
@@ -510,8 +461,6 @@ void func_global_asm_805FC2B0(void) {
 // regalloc, rodata?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FC98C.s")
 
-u64 func_dk64_boot_80005818(u64, u64);
-u64 func_dk64_boot_80005918(OSTime, u64);
 extern OSTime D_global_asm_807445B8;
 extern OSTime D_global_asm_807445C0;
 extern u32 D_global_asm_80750AB0;
@@ -566,7 +515,6 @@ void *func_global_asm_805FD030(Gfx *arg0) {
 extern s32 D_global_asm_80744470[];
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
-Gfx *func_global_asm_805FE634(Gfx *dl, u8 arg1);
 
 Gfx *func_global_asm_805FE4D4(Gfx *arg0) {
     gDPSetColorImage(arg0++, 0, 2, D_global_asm_80744490, osVirtualToPhysical(D_global_asm_80744470[D_global_asm_807444FC]));

@@ -330,7 +330,7 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
     u16 var_t1;
     u16 var_v1;
 
-    if (func_global_asm_80629148() != 0) {
+    if (func_global_asm_80629148()) {
         sp44 = NULL;
         sp3C = func_menu_800261C0(arg0, arg2);
         func_global_asm_80629174();
@@ -499,7 +499,7 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
 
     switch (arg0->unkE) {
         case 0:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 arg0->unkE++;
             }

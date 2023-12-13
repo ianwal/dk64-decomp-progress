@@ -254,7 +254,7 @@ void func_global_asm_80732354(u8 arg0, s32 arg1, s32 arg2, s32 arg3) {
     D_global_asm_807FF020 = arg1;
     D_global_asm_807FF024 = arg2;
     D_global_asm_807FF028 = arg3;
-    func_global_asm_8061D4E4(0);
+    func_global_asm_8061D4E4(NULL);
 }
 
 void func_global_asm_8073239C(void) {

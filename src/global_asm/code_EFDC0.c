@@ -9,7 +9,6 @@ extern void (*action_initiation_function_list[])(void);
 
 void func_global_asm_8062217C(Actor*, s32);
 void func_global_asm_80627878(Actor*);
-void func_global_asm_806F0D68(Actor*);
 void func_global_asm_80613AF8(Actor*, s32, f32, f32);
 void func_global_asm_806EEAF8(s16);
 

@@ -353,7 +353,7 @@ void func_race_8002B518(Struct8002B610_arg0 *arg0) {
             }
             break;
         case 2:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 arg0->unk35++;
             }
@@ -413,7 +413,7 @@ void func_race_8002B76C(RaceAdditionalActorData *arg0, void *arg1) {
             arg0->unk35++;
             break;
         case 1:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 func_global_asm_8070D8C0(current_actor_pointer, 0x22, func_race_8002B6C8(arg0, arg1));
                 arg0->unk35++;
@@ -426,7 +426,7 @@ void func_race_8002B76C(RaceAdditionalActorData *arg0, void *arg1) {
             }
             break;
         case 3:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 temp_s0 = func_race_8002B6C8(arg0, arg1);
                 func_global_asm_80629174();
                 if (temp_s0 == 0) {
@@ -440,7 +440,7 @@ void func_race_8002B76C(RaceAdditionalActorData *arg0, void *arg1) {
             }
             break;
         case 4:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 func_global_asm_805FF544();
                 arg0->unk35++;

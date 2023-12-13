@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-s32 func_global_asm_80629148(void);
 void func_global_asm_8068A858(s32 *, s32 *, s32 *);
 int func_menu_8003292C();
 
@@ -48,7 +46,7 @@ void func_menu_8003264C(void) {
     func_global_asm_80729B00();
     switch (current_actor_pointer->control_state) {
         case 0:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 func_global_asm_80614EBC(current_actor_pointer, 0x2D6);
                 current_actor_pointer->control_state++;
@@ -79,7 +77,7 @@ void func_menu_8003264C(void) {
                 current_actor_pointer->unk15F,
                 current_actor_pointer->unk15F
             );
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 current_actor_pointer->object_properties_bitfield |= 0x800000;
                 current_actor_pointer->control_state = 2;
@@ -101,7 +99,7 @@ void func_menu_8003264C(void) {
             if (D_menu_800339D0 < 0xFF) {
                 D_menu_800339D0 += 1;
             }
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 current_actor_pointer->control_state = 4;
             }

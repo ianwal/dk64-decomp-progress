@@ -1,36 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-void func_boss_8002920C(void);
-
-void func_global_asm_805FF168(void);
-
-void func_global_asm_807313BC(void);
-void func_global_asm_805FFFC8(void);
-
-extern u8 D_global_asm_807445E0[]; // level_index_mapping
-extern u16 D_global_asm_807446C0[];
-extern s32 D_global_asm_80744720[] ;/*= {
-    0x181, // Kong Unlocked: DK
-    0x6, // Kong Unlocked: Diddy
-    0x46, // Kong Unlocked: Lanky
-    0x42, // Kong Unlocked: Tiny
-    0x75, // Kong Unlocked: Chunky
-}; // kong_unlocked_flag_mapping*/
-
-extern u16 D_global_asm_80744734[] ;/*= { // lobby_array
-   MAP_JAPES_LOBBY,
-   MAP_AZTEC_LOBBY,
-   MAP_FACTORY_LOBBY,
-   MAP_GALLEON_LOBBY,
-   MAP_FUNGI_LOBBY,
-   MAP_CAVES_LOBBY,
-   MAP_CASTLE_LOBBY,
-   MAP_HELM_LOBBY,
-   MAP_HELM_LOBBY, // TODO: Why is this here twice?
-}; // lobby_array*/
-
 typedef struct {
     s32 unk0;
     s32 unk4; // Permanent Flag Index
@@ -852,7 +822,7 @@ extern Struct8076AF00 D_8076AF00[];
 extern s32 D_8076AF10;
 extern s8 D_8076AF14;
 
-void func_global_asm_80600590(s32 arg0) {
+void func_global_asm_80600590(Maps map) {
     Struct8076AF00 *var_v1;
     s32 i;
 
@@ -863,18 +833,18 @@ void func_global_asm_80600590(s32 arg0) {
         D_8076AF00[i].unk0 = 2;
     }
     D_8076AF10 = D_80767CC4;
-    switch (arg0) {
-        case 0x6:
-        case 0x1B:
-        case 0x27:
-        case 0x28:
-        case 0x37:
-        case 0x4C:
-        case 0x6A:
-        case 0x98:
-        case 0x99:
-        case 0xAC:
-        case 0xD0:
+    switch (map) {
+        case MAP_JAPES_MINECART:
+        case MAP_FACTORY_CAR_RACE:
+        case MAP_GALLEON_SEAL_RACE:
+        case MAP_NINTENDO_LOGO:
+        case MAP_FUNGI_MINECART:
+        case MAP_DK_RAP:
+        case MAP_CASTLE_MINECART:
+        case MAP_HELM_INTRO_STORY:
+        case MAP_DK_ISLES_DK_THEATRE:
+        case MAP_ROCK_INTRO_STORY:
+        case MAP_BLOOPERS_ENDING:
             D_8076AF14 = 0;
             return;
         default:

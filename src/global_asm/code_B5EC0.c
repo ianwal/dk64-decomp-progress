@@ -39,11 +39,10 @@ void func_global_asm_806B1348(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B5EC0/func_global_asm_806B13B4.s")
 
 // ? func_global_asm_806A5C60(Actor *, Actor **);
-// ? func_global_asm_80724E48(s32, u8);
 // ? func_global_asm_8072A450(Actor *);
 // ? func_global_asm_8072AB74(u8, f32, f32, ?, f32);
 // ? func_global_asm_8072B7CC(?, u8);
-// ? func_global_asm_8072C918(?, ?, ?);
+// void func_global_asm_8072C918(s16, s16, s16);
 // ? func_global_asm_8072D13C(u8, ?);
 // ? func_global_asm_8072D714(Actor *, ?);
 
@@ -272,7 +271,7 @@ block_74:
             if (current_actor_pointer->control_state == 1) {
                 var_v1 = 2;
             }
-            func_global_asm_80724E48(var_v1 & 0xFF);
+            func_global_asm_80724E48(var_v1);
             func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
             var_a0 = current_actor_pointer->control_state;
             goto block_100;
@@ -284,7 +283,7 @@ block_74:
             if (var_a1 == 0x35) {
                 var_v1_2 = 2;
             }
-            func_global_asm_80724E48(var_v1_2 & 0xFF, var_a1);
+            func_global_asm_80724E48(var_v1_2);
             func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0, 0.0f);
             var_a0 = current_actor_pointer->control_state;
             goto block_100;

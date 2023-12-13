@@ -139,13 +139,13 @@ void func_boss_8002C964(void) {
                         D_global_asm_807FDC90->unk2C = 0;
                     }
                     current_actor_pointer->y_rotation += D_global_asm_807FDC90->unk2C;
-                    if (func_global_asm_80629148() != 0) {
+                    if (func_global_asm_80629148()) {
                         current_actor_pointer->control_state_progress = 3;
                         current_actor_pointer->object_properties_bitfield &= ~4;
                     }
                     break;
                 case 3:
-                    if (func_global_asm_80629148() != 0) {
+                    if (func_global_asm_80629148()) {
                         current_actor_pointer->unk15E = 0xA;
                         D_global_asm_807FDC90->unk28 |= 0x8000;
                         current_actor_pointer->unk132 = 1;
@@ -160,7 +160,7 @@ void func_boss_8002C964(void) {
         case 0x1E:
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
-                    if (func_global_asm_80629148() != 0) {
+                    if (func_global_asm_80629148()) {
                         D_global_asm_807FDC90->unk28 |= 0x8000;
                         current_actor_pointer->control_state_progress = 1;
                     }
@@ -174,7 +174,7 @@ void func_boss_8002C964(void) {
                     }
                     break;
                 case 3:
-                    if (func_global_asm_80629148() != 0) {
+                    if (func_global_asm_80629148()) {
                         current_actor_pointer->control_state = 0x27;
                         current_actor_pointer->control_state_progress = 0;
                         func_global_asm_80626110(D_global_asm_807F5D10, 0, 0);

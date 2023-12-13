@@ -146,7 +146,7 @@ void func_global_asm_806BD3E4(void) {
             playCutscene(player_pointer, 2, 1);
             break;
         case 2:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 playSong(0x7D, 1.0f);
                 func_global_asm_80614EBC(current_actor_pointer, 0x2F1);
                 current_actor_pointer->control_state = 3;

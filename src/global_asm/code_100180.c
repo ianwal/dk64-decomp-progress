@@ -1,6 +1,27 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct {
+    u8 unk0[0x17C - 0x0];
+    s16 unk17C;
+    u8 unk17E;
+} Struct80754A18;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+    u8 unk5;
+} Struct80754A34;
+
+extern s32 *D_global_asm_807FD7F0; // Array of 43 texture pointers
+extern u8 *D_global_asm_807FD7F4; // Array of 43 u8's
+extern Struct80754A18 *D_global_asm_80754A18;
+extern Struct80754A34 D_global_asm_80754A34[];
+
+s32 func_global_asm_806FB490(u8, s32, s32, s16, s32, s8 *, s32);
 
 void func_global_asm_806FB480(void) {
 
@@ -13,18 +34,6 @@ void func_global_asm_806FB488(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FB490.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FB714.s")
-
-s32 func_global_asm_806FB490(u8, s32, s32, s16, s32, s8 *, s32);
-
-typedef struct {
-    u8 unk0[0x17C - 0x0];
-    s16 unk17C;
-    u8 unk17E;
-} Struct80754A18;
-
-extern s32 *D_global_asm_807FD7F0; // Array of 43 texture pointers
-extern u8 *D_global_asm_807FD7F4; // Array of 43 u8's
-extern Struct80754A18 *D_global_asm_80754A18;
 
 void func_global_asm_806FB8B0(s32 arg0) {
     s8 sp2F;
@@ -52,17 +61,6 @@ s32 func_global_asm_806FBB9C(s16 textureIndex) {
     }
     return D_global_asm_807FD7F0[textureIndex];
 }
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    u8 unk4;
-    u8 unk5;
-} Struct80754A34;
-
-extern Struct80754A34 D_global_asm_80754A34[];
 
 void func_global_asm_806FBC34(void) {
     s16 i;

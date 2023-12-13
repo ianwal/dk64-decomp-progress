@@ -2,7 +2,6 @@
 #include "functions.h"
 
 void func_global_asm_807311C4(s16);
-u8* getFlagBlockAddress(u8 flagType); // TODO: Can we use the FlagTypes enum? Needs to be a u8 to match
 s16 func_global_asm_80731784(s16, s16, s32 *);
 
 typedef struct {

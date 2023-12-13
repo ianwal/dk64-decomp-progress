@@ -203,44 +203,29 @@ void func_critter_800240EC(CritterController *arg0) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_8002427C.s")
 
-extern f32 *D_critter_80029F74;
+extern s32 *D_critter_80029F74;
 
 /*
 void func_critter_8002427C(CritterController *arg0) {
-    f32 sp68[4][4];
+    s16 sp68[2];
     Critter *var_s0;
     s32 i;
     u8 var_s2;
 
     var_s0 = arg0->critter;
-    sp68[0][0] = D_critter_80029F74[0];
-    sp68[0][1] = D_critter_80029F74[1];
     var_s2 = 0;
+    sp68[0] = D_critter_80029F74[0];
+    sp68[1] = D_critter_80029F74[1];
     for (i = 0; i < arg0->unk2; i++) {
-        if (var_s2 == 0) {
-            if (!((arg0->unk2 * 0.3) < i)) {
-                goto block_6;
-            }
-            goto block_14;
-        }
-block_6:
-        if (var_s2 == 1) {
-            if (!(( arg0->unk2 * 0.5) < i)) {
-                goto block_10;
-            }
-            goto block_14;
-        }
-block_10:
-        if (var_s2 == 2) {
-            if ((arg0->unk2 * 0.7) < i) {
-block_14:
-                var_s2++;
-            }
+        if ((var_s2 == 0 && ((arg0->unk2 * 0.3) < i))
+            ||(var_s2 == 1 && ((arg0->unk2 * 0.5) < i))
+            ||(var_s2 == 2 && ((arg0->unk2 * 0.7) < i))) {
+            var_s2++;
         }
         var_s0->unk24 = 20.0f;
-        var_s0->unk1E1 |= 4;
+        var_s0->unk1E4[0] = sp68[var_s2];
         var_s0->unk1E8[0] = 0;
-        var_s0->unk1E4[0] = (&sp68[0])[var_s2];
+        var_s0->unk1E1 |= 4;
         func_critter_80024000(var_s0, arg0, var_s0->unk38 * 0.5);
         var_s0++;
     }

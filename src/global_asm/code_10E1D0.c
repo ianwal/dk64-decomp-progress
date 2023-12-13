@@ -242,7 +242,6 @@ extern u8 D_global_asm_8076A0B1;
 extern s32 D_global_asm_807550A4;
 
 void func_global_asm_80737B58(s32, u16);
-void func_global_asm_8060A4D0(s32, f32);
 
 /*
 // TODO: Doable, progess made

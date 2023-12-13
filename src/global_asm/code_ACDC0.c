@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern s16 D_global_asm_80744720[];
-
 extern s8 D_global_asm_80750560[];
 extern s8 D_global_asm_80750530[];
 extern s16 D_global_asm_807505AE[];

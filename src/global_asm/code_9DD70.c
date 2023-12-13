@@ -367,7 +367,6 @@ void *func_global_asm_8069DC80(u8 arg0, void *arg1, u8 arg2, u8 arg3, u8 arg4) {
     return arg1;
 }
 
-extern u16 D_global_asm_807446C0[];
 extern s16 D_global_asm_807FC930[];
 
 // TODO: Add to aaD union

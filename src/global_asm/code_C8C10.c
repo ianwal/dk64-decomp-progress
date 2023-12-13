@@ -239,11 +239,6 @@ void func_global_asm_806C5FEC(void) {
 void func_global_asm_806C61C8(void) {
     f32 sp24;
     f32 sp20;
-    f32 temp_f0;
-    f32 var_f18;
-    s16 temp_v0;
-    s16 var_v0;
-    u8 temp_t2;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unkEC = 0x3C;

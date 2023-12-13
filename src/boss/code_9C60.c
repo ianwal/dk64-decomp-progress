@@ -4,8 +4,118 @@
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
 void func_boss_8002FB7C(u8);
 
+/*
+//rodata
+const s32 D_boss_80036750[] = {
+    0x00546C51,
+    0x03E44100,
+    0x0027280A,
+    0x46281E46,
+    0x5F004F28,
+    0x32785000,
+};
+
+const s32 D_boss_80036768[] = {
+    0x4101292C,
+    0x4F281464,
+    0x50000000,
+};
+
+const s32 D_boss_80036774[] = {
+    0x4102292C,
+    0x4F280A5A,
+    0x50000000,
+};
+
+const s32 D_boss_80036780[] = {
+    0x4103292C,
+    0x4F280A5A,
+    0x50000000,
+    0x00000000,
+};
+
+// possible file split
+const s32 D_boss_80036840[] = {
+    0x546C0041,
+    0x0141025F,
+    0x014F4B00,
+    0x07500000,
+};
+
+const s32 D_boss_80036850[] = {
+    0x4F4B0007,
+    0x50000000,
+};
+
+// possible file split
+const s32 D_boss_800368C0[] = {
+    0x00546C51,
+    0x03E44101,
+    0x273C4102,
+    0x27002801,
+    0x005103E4,
+    0x4F4B0104,
+    0x271E4B01,
+    0x04271E28,
+    0x0C500000,
+};
+
+const s32 D_boss_800368E4[] = {
+    0x6C4F4B01,
+    0x0427144B,
+    0x01042714,
+    0x4B010427,
+    0x00280A50,
+};
+
+const s32 D_boss_800368F8[] = {
+    0x6C4F4101,
+    0x270F4103,
+    0x270F4102,
+    0x270F4104,
+    0x2700280A,
+    0x50000000,
+};
+
+const s32 D_boss_80036910[] = {
+    0x6C4F4B01,
+    0x04270A27,
+    0x0A670104,
+    0x270A270A,
+    0x67010427,
+    0x00280A50,
+    0x4F270150,
+    0x0A27FF50,
+    0x0A27FF50,
+    0x0A27FF50,
+    0x0A285050,
+    0x4F27FF5A,
+    0x0A27FF5A,
+    0x0A27055A,
+    0x0A270A5A,
+    0x0A284650,
+};
+
+const s32 D_boss_80036950[] = {
+    0x4F270578,
+    0x0A270A78,
+    0x0A27FF78,
+    0x0A270978,
+    0x0A270678,
+    0x0A283C50,
+};
+
+const s32 D_boss_80036968[] = {
+    0x4F270C78,
+    0x0A270378,
+    0x0A270A78,
+    0x0A27FF78,
+    0x0A270578,
+    0x0A283250,
+};
+*/
+
 extern u8 D_global_asm_807FBD70;
-extern f64 D_boss_80036A18;
 
 void func_boss_8002DC60(void) {
     BossActor178 *sp1C = current_actor_pointer->unk178;
@@ -117,6 +227,9 @@ void func_boss_8002EA14() {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_boss_8002F100.s")
 
+// rodata
+extern f64 D_boss_80036A18; // = 0.4
+
 void func_boss_8002FB7C(u8 arg0) {
     AnimationStateUnk20 *temp_v0;
 
@@ -124,12 +237,13 @@ void func_boss_8002FB7C(u8 arg0) {
     temp_v0->unk0 = 2;
     temp_v0->unk1 = 4;
     temp_v0->unk4 = 1;
+    // temp_v0->unk4 += arg0 * (0.4 + 0.4 * func_global_asm_80612794(object_timer << 7));
     temp_v0->unk4 += arg0 * (D_boss_80036A18 + D_boss_80036A18 * func_global_asm_80612794(object_timer << 7));
     temp_v0->unk8 = temp_v0->unk4;
     temp_v0->unkC = 1;
 }
 
-void func_boss_8002FC48(s32 arg0, u8 arg1) {
+void func_boss_8002FC48(Actor *arg0, u8 arg1) {
     func_global_asm_8068842C(arg0, 0, 1);
     func_global_asm_80688460(arg0, 0, 1);
     func_global_asm_806883F4(arg0, 0, arg1, 0);
@@ -138,15 +252,13 @@ void func_boss_8002FC48(s32 arg0, u8 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_boss_8002FC98.s")
 
 /*
-extern f64 D_boss_80036A20;
-
 void func_boss_8002FC98(Actor *arg0, u8 arg1, s32 arg2, u8 arg3) {
     Actor17C *temp_s4;
     f64 temp_f20;
     s16 i;
 
     temp_s4 = arg0->unk17C;
-    temp_f20 = D_boss_80036A20;
+    temp_f20 = 0.01;
     for (i = 0; i < 4; i++) {
         if (arg1 & (1 << i)) {
             if (i != 0) {

@@ -135,23 +135,11 @@ extern u8 D_global_asm_807FC8B9;
 extern f32 D_global_asm_807FD888;
 
 void func_global_asm_8062217C(Actor*, u8);
-s32 func_global_asm_80629148(void);
 
-void func_global_asm_806CBE90(void);
-void func_global_asm_806CFE7C(void);
-void func_global_asm_806D3FA0(void);
-s32 func_global_asm_806E4580(void);
-void func_global_asm_806E9964(PlayerAdditionalActorData*);
-void func_global_asm_806F0B34(Actor*);
 void func_global_asm_806F91B4(s32, s32, s16);
 
-void func_global_asm_806D0408(void);
-void func_global_asm_806D06A0(void);
-
 int func_global_asm_806FF358(); // TODO: Signature
-void func_global_asm_806FF32C(s32 arg0, Actor *arg1);
 int func_global_asm_806FF75C(); // TODO: Signature
-int func_global_asm_806FF01C(); // TODO: Signature
 
 void func_global_asm_806CC970(void);
 void func_global_asm_806CCB0C(void);

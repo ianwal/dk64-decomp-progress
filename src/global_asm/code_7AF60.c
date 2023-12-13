@@ -3,8 +3,6 @@
 
 extern u8 D_global_asm_807F6902;
 
-u8 func_global_asm_80676CB0(Struct80676CB0 *arg0, u8 arg1);
-u8 func_global_asm_80676AB8(Actor*, Actor*, Actor*);
 s32 func_global_asm_806EB400(Actor *);
 
 void func_global_asm_80676260(Actor *arg0, Actor *arg1, s32 arg2) {

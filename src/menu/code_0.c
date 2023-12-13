@@ -23,7 +23,7 @@ extern s32 D_global_asm_80720268;
 extern s16 D_global_asm_80750AC8;
 
 typedef struct {
-    s32 unk0[6]
+    s32 unk0[6];
 } Struct80032F48;
 
 extern Struct80032F48 D_menu_80032F48[];
@@ -102,7 +102,7 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
 
     switch (arg0->unk1) {
         case 0:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 if (arg1 != 0) {
                     func_global_asm_80629174();
                     func_global_asm_8070D8C0(current_actor_pointer, 0xB, 0);
@@ -135,7 +135,7 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
             }
             break;
         case 2:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 if (arg0->unk1A != 0) {
                     playCutscene(NULL, 5, 1);
@@ -154,7 +154,7 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
         case 8:
             if (arg0->unk6 != 0) {
                 if (arg0->unk6 == 1) {
-                    if (func_global_asm_80629148() != 0) {
+                    if (func_global_asm_80629148()) {
                         func_global_asm_80629174();
                         arg0->unk6 = 2;
                     }
@@ -162,7 +162,7 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
                     func_menu_80024154(arg0);
                 }
             }
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 func_menu_80024000(arg0);
             }
