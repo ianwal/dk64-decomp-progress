@@ -2,8 +2,6 @@
 #include "functions.h"
 
 // .rodata
-// const char D_bonus_8002DEC0[] = "HIT %d";
-// const char D_bonus_8002DEC8[] = "COMBO x2";
 // const char D_bonus_8002DED4[] = "SCORE";
 // const char D_bonus_8002DEDC[] = "LAP BONUS";
 
@@ -16,8 +14,71 @@ extern s8 D_bonus_8002D92C;
 extern s8 D_bonus_8002D930;
 extern s8 D_bonus_8002DEF0[];
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_9010/func_bonus_8002D010.s")
+typedef struct {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+    s8 unk3;
+    s8 unk4;
+    s8 unk5;
+    u8 unk6;
+    s8 unk7;
+    s8 unk8;
+    s8 unk9;
+    s16 unkA;
+    u8 unkC;
+    u8 unkD;
+} AAD_8002D010;
+
+Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
+
+Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
+    s16 pad;
+    s16 i;
+    s16 y;
+    AAD_8002D010 *aaD;
+    unsigned char sp70[17];
+
+    aaD = arg1->additional_actor_data;
+
+    gSPDisplayList(dl++, &D_1000118);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xC8, 0xC8, 0xC8, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    dl = func_global_asm_806FE078(dl, aaD->unk3, 8, 30.0f, 36.0f, 0.0f, 1.0f);
+    dl = func_global_asm_8068DC54(dl, 0x26, 0x2D, &aaD->unk8, aaD->unkA, &aaD->unk6);
+
+    if (aaD->unk6 > 0) {
+        aaD->unk6 -= 2;
+    }
+    if (current_map != MAP_ENGUARDE_ARENA) {
+        if ((current_map == MAP_RAMBI_ARENA) && (arg1->control_state == 2)) {
+            y = 480 - (u16)(D_bonus_8002D92C * 48);
+            for (i = -1; i < D_bonus_8002D92C; i++) {
+                if (i >= 0) {
+                    func_dk64_boot_800031E0(&sp70, "HIT %d", D_bonus_8002DEF0[i]);
+                } else if (D_bonus_8002D92C >= 2) {
+                    func_dk64_boot_800031E0(&sp70, "COMBO x2");
+                } else {
+                    sp70[0] = '\0';
+                }
+                dl = func_global_asm_806FC530(dl, 6, 640 - (func_global_asm_806FBD5C(6, &sp70) * 2), y, &sp70, 1);
+                y += 48;
+            }
+        }
+    } else {
+        if (aaD->unkC != 0) {
+            aaD->unkC--;
+            if ((aaD->unkC & 0x1F) < 0x14) {
+                dl = func_global_asm_806FE078(dl, aaD->unkD, 8, 100.0f, 100.0f, 0.0f, 1.0f);
+            }
+        }
+    }
+    return dl;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_9010/func_bonus_8002D2F0.s")
 

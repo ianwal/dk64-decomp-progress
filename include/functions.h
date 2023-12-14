@@ -2324,6 +2324,8 @@ void func_multiplayer_80026D40(Actor *arg0, s32 arg1);
 void func_multiplayer_800268C0(u8);
 s32 func_global_asm_80631EB8(u16);
 Gfx *func_global_asm_8070068C(Gfx *);
+void func_bonus_800264E0(u8 arg0, u8 arg1);
+void func_bonus_800265C0(u8 arg0, u8 arg1);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))

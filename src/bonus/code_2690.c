@@ -253,8 +253,6 @@ typedef struct {
 
 u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2);
 u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
-void func_bonus_800264E0(u8 arg0, u8 arg1);
-void func_bonus_800265C0(u8 arg0, u8 arg1);
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
 /*
