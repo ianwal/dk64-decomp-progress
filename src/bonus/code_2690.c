@@ -1,8 +1,39 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80026690.s")
+// TODO: Is there a file split somewhere in here? Rodata messes up around D_bonus_8002DDD4
+//rodata
+extern const f32 D_bonus_8002DD20; // = 3.2f;
+extern const f32 D_bonus_8002DD28; // = 385.0f;
+extern const f32 D_bonus_8002DDEC; // = 0.8f;
+
+typedef struct {
+    u8 unk0[0x1E - 0];
+    s16 unk1E;
+    s16 unk20;
+} AAD_80026690;
+
+Gfx *func_bonus_80026690(Gfx *dl, Actor *arg1) {
+    f32 temp_f20;
+    s16 sp6A;
+    s16 sp68;
+    AAD_80026690 *aaD;
+
+    aaD = arg1->additional_actor_data;
+    sp6A = aaD->unk1E;
+    sp68 = aaD->unk20;
+    gDPPipeSync(dl++);
+    gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gSPDisplayList(dl++, &D_1000118);
+    temp_f20 = D_bonus_8002DD20;
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+
+    dl =   func_global_asm_8068C5A8(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A - 0x34), (s16)(sp68 - 0x34), temp_f20, temp_f20, 0xE1, 0.0f);
+    dl =   func_global_asm_8068C5A8(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A + 0x34), (s16)(sp68 - 0x34), temp_f20, temp_f20, 0x13B, 0.0f);
+    dl =   func_global_asm_8068C5A8(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A + 0x34), (s16)(sp68 + 0x34), temp_f20, temp_f20, 0x2D, 0.0f);
+    return func_global_asm_8068C5A8(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A - 0x34), (s16)(sp68 + 0x34), temp_f20, temp_f20, 0x87, 0.0f);
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80026940.s")
@@ -62,8 +93,6 @@ void func_bonus_80027308(BonusStruct0 *arg0, s32 *arg1) {
     func_global_asm_806782C0(current_actor_pointer);
 }
 
-void func_global_asm_8071A038();
-
 extern s32 D_global_asm_8071FFD4;
 
 typedef struct {
@@ -97,8 +126,6 @@ void func_bonus_8002733C(Struct8002733C *arg0) {
     }
     playSound(0x3E4, 0x7FFF, 63.0f, 1.0f, 5, 0);
 }
-
-extern f32 D_bonus_8002DD28;
 
 void func_bonus_800274A0(f32 arg0, f32 arg1, f32 arg2) {
     playSound(0x59, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
@@ -719,8 +746,6 @@ void func_bonus_8002AAA4(void) {
     }
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
-
-extern f32 D_bonus_8002DDEC;
 
 typedef struct {
     Actor *unk0;
