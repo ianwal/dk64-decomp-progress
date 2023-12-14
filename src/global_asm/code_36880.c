@@ -70,8 +70,6 @@ typedef struct {
     s32 unk2C;
 } GlobalASMStruct88;
 
-s32 func_global_asm_80631EB8(u16);
-
 void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2);
 
 void func_global_asm_80631C3C(void) {

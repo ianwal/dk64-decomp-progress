@@ -158,8 +158,6 @@ f32 func_global_asm_806E0454(f32, f32);
 void func_global_asm_8072FE60(f32);
 void func_global_asm_806E1630(void);
 
-extern void func_global_asm_8068E9B0(); // Needed for function pointer
-
 void func_global_asm_806CC948();
 void func_global_asm_806CFD68();
 void func_global_asm_806CFECC(void);
@@ -167,14 +165,8 @@ void func_global_asm_806D2378();
 
 void func_global_asm_806CC948();
 
-void func_global_asm_8068EA38(); // Needed for function pointer
-
-void func_global_asm_806FFB2C(void); // Needed for function pointer
-
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 u8 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
-
-void func_global_asm_806D3608(void);
 
 s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
 
@@ -183,11 +175,7 @@ void func_global_asm_806DF494(s16*, s16, s16);
 u32 func_global_asm_806119A0(void);
 void func_global_asm_806DF390(Actor*, PlayerAdditionalActorData*, u8);
 void func_global_asm_806DF3D0(Actor*, PlayerAdditionalActorData*, u8);
-f32 func_global_asm_806E03C8(f32, f32);
-s32 func_global_asm_806E9D1C(s16 arg0, u8 arg1, u8 arg2);
-void func_global_asm_806EA568(void);
 s16 func_global_asm_8062773C(s32);
-s32 func_global_asm_806FA7A4(s32); // TODO: Might return s16
 
 void func_global_asm_806C9DE0(void) {
     func_global_asm_806CA5F8(0);

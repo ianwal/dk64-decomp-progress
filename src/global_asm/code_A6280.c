@@ -18,8 +18,6 @@ dlabel D_global_asm_8075A5A0 .double 360
 extern u8 D_global_asm_807FBD70;
 extern u8 D_global_asm_807506C0[];
 
-void func_global_asm_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
-
 void func_global_asm_806A1580(void) {
     s16 sp36;
     Actor *sp30;

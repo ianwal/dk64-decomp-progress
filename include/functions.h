@@ -2013,8 +2013,9 @@ void func_global_asm_8070C590(f32 (*arg0)[4], f32 (*arg1)[4], f32 (*arg2)[4]);
 void func_global_asm_80685B44(void *arg0, u8 arg1, f32 arg2, u8 arg3, u8 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8);
 void func_global_asm_80726EE0(u8 arg0);
 void func_global_asm_807311C4(s16);
-void func_global_asm_8068E9B0();
-void func_global_asm_8068EA38();
+void func_global_asm_806FFB2C(Gfx *dl, Actor *arg1);
+void func_global_asm_8068E9B0(Actor **arg0);
+void func_global_asm_8068EA38(Actor **arg0);
 u8 func_global_asm_806D0DE4(Actor *arg0, Actor *arg1);
 void func_global_asm_806D2DC4(void);
 void func_global_asm_806D3224(void);
@@ -2316,6 +2317,13 @@ void setupRaceOnMapLoad(Maps map);
 void func_global_asm_80600590(Maps map);
 void func_boss_8002920C(void);
 Gfx *func_global_asm_805FE634(Gfx *dl, u8 arg1);
+void func_multiplayer_80026E20(u8, s8);
+void func_bonus_8002D6F8(s16);
+void func_multiplayer_800268DC(Actor *arg0, PlayerAdditionalActorData *arg1, PlayerProgress *arg2);
+void func_multiplayer_80026D40(Actor *arg0, s32 arg1);
+void func_multiplayer_800268C0(u8);
+s32 func_global_asm_80631EB8(u16);
+Gfx *func_global_asm_8070068C(Gfx *);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))

@@ -3,30 +3,6 @@
 
 void *func_global_asm_8068DC54(s32, s32, s32, void *, s32, void *);
 s32 func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
-void *func_global_asm_8070068C(void *);
-
-// rodata
-/*
-const u32 D_bonus_8002DC90[] = {
-    0x00010200,
-    0x03040000,
-};
-
-const u32 D_bonus_8002DC98[] = {
-    0x04020300,
-    0x01000000,
-};
-
-const u32 D_bonus_8002DCA0[] = {
-    0x02000104,
-    0x00030000,
-};
-
-const u32 D_bonus_8002DCA8[] = {
-    0x03010002,
-    0x00040000,
-};
-*/
 
 typedef struct {
     u8 unk0;
@@ -73,10 +49,6 @@ Gfx *func_bonus_80024D3C(Gfx *arg0, s32 arg1) {
     return arg0;
 }
 
-// Jumptable, matched but has rodata issues
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024D8C.s")
-
-/*
 s32 func_bonus_80024D8C(void) {
     switch (current_map) {
         case MAP_BATTLE_ARENA_BEAVER_BRAWL:
@@ -103,7 +75,6 @@ s32 func_bonus_80024D8C(void) {
             return -1;
     }
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024E38.s")

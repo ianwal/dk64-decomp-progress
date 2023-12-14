@@ -462,7 +462,7 @@ void func_global_asm_806C9434(s32 arg0) {
     temp_s2->unk200 = 0;
     temp_s2->unk4 = 0.0f;
     if (cc_number_of_players >= 2) {
-        func_800268DC(D_global_asm_807FBB48, temp_s2, sp2C);
+        func_multiplayer_800268DC(D_global_asm_807FBB48, temp_s2, sp2C);
     }
     func_global_asm_806C9304(D_global_asm_807FBB48, temp_s2);
     if (!func_global_asm_8061CB50()) {
@@ -518,8 +518,6 @@ ExitData *getExitData(s32 exitIndex) {
     return &exit_array[exitIndex];
 }
 
-void func_800268C0(s8);
-
 // TODO: Any cleanup possible? Fiddly regalloc
 s8 func_global_asm_806C9830(s8 arg0, Actor *arg1) {
     s8 phi_a2 = arg0;
@@ -531,29 +529,27 @@ s8 func_global_asm_806C9830(s8 arg0, Actor *arg1) {
             if (actor->interactable & 1) {
                 phi_a2 = -1;
                 if (D_global_asm_807FBB64 & 0x04000000) {
-                    func_800268C0(1);
+                    func_multiplayer_800268C0(1);
                 }
             } else if (actor->interactable & 4) {
                 if ((actor->unk58 == ACTOR_PROJECTILE_ORANGE) || (actor->unk58 == ACTOR_PROJECTILE_ORANGE_KRUSHA)) {
                     phi_a2 = -3;
                     if (D_global_asm_807FBB64 & 0x04000000) {
-                        func_800268C0(2);
+                        func_multiplayer_800268C0(2);
                     }
                 } else {
                     phi_a2 = -2;
                     if (D_global_asm_807FBB64 & 0x04000000) {
-                        func_800268C0(1);
+                        func_multiplayer_800268C0(1);
                     }
                 }
             } else if (D_global_asm_807FBB64 & 0x04000000) {
-                func_800268C0(1);
+                func_multiplayer_800268C0(1);
             }
         }
     }
     return phi_a2;
 }
-
-void func_80026E20(u8, s8);
 
 extern s32 D_global_asm_807552EC;
 
@@ -563,7 +559,7 @@ s32 func_global_asm_806C9974(u8 arg0, s8 arg1) {
 
     temp2->unk2E2 |= 0x11;
     if ((cc_number_of_players >= 2) && (arg1 < 0) && (D_global_asm_807552EC == 1)) {
-        func_80026E20(arg0, arg1); // In the multiplayer overlay
+        func_multiplayer_80026E20(arg0, arg1);
     }
     if (arg1 < 0) {
         func_global_asm_8060E7EC(arg0, 0xFF, 5);

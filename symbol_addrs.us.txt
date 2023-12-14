@@ -451,6 +451,9 @@ D_global_asm_807446E0 = 0x807446E0;
 D_global_asm_80745844 = 0x80745844;
 D_global_asm_807505AE = 0x807505AE;
 
+D_global_asm_80761680 = 0x80761680;
+
+D_global_asm_807655E0 = 0x807655E0;
 D_global_asm_807655F0 = 0x807655F0;
 D_global_asm_807656D0 = 0x807656D0;
 D_global_asm_807659E8 = 0x807659E8;
@@ -465,6 +468,7 @@ D_global_asm_8076A050 = 0x8076A050;
 D_global_asm_8076A058 = 0x8076A058;
 D_global_asm_8076A068 = 0x8076A068;
 D_global_asm_8076A06C = 0x8076A06C;
+D_global_asm_8076A070 = 0x8076A070;
 D_global_asm_8076A080 = 0x8076A080;
 D_global_asm_8076A084 = 0x8076A084;
 D_global_asm_8076A088 = 0x8076A088;
@@ -491,6 +495,7 @@ D_global_asm_8076A0E8 = 0x8076A0E8;
 D_global_asm_8076A100 = 0x8076A100;
 D_global_asm_8076A104 = 0x8076A104;
 D_global_asm_8076A105 = 0x8076A105;
+D_global_asm_8076A110 = 0x8076A110;
 D_global_asm_8076A160 = 0x8076A160;
 D_global_asm_8076AEE2 = 0x8076AEE2;
 D_global_asm_8076AEE4 = 0x8076AEE4;

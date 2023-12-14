@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_8061130C(void *);
 s32 func_global_asm_8063162C(Actor *, s16 *);
 s32 func_global_asm_806317D4(Actor *, s16 *, f32, f32, f32);
 

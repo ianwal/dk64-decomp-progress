@@ -5,7 +5,6 @@ extern Struct807500B4 D_global_asm_807500B4; // TODO: Array?
 extern Struct807500B4 D_global_asm_807500D4; // TODO: D_global_asm_807500D4[1]?
 
 void func_global_asm_80631F58(void*, void*, void**);
-void func_global_asm_8066B424(void);
 
 typedef struct {
     f32 unk0;

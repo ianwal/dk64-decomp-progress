@@ -73,7 +73,6 @@ void func_global_asm_80664CB0(s16 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80664D20.s")
 
-void func_global_asm_80665ACC(Actor *arg0);
 u16 func_global_asm_80672134(s16, s16, s16, s16);
 
 void func_global_asm_80665160(Actor *arg0, s16 arg1, s16 arg2) {
@@ -92,7 +91,6 @@ void func_global_asm_80665160(Actor *arg0, s16 arg1, s16 arg2) {
 // doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_806651FC.s")
 
-f32 func_global_asm_80612794(s16);
 extern s32 D_global_asm_80744478;
 extern f32 D_global_asm_80758E30;
 extern f64 D_global_asm_80758E38;
@@ -139,7 +137,6 @@ void func_global_asm_806651FC(Actor *arg0) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_806653C0.s")
 
-f32 func_global_asm_80612794(s16);
 extern s32 D_global_asm_80744478;
 extern f32 D_global_asm_80758E40;
 extern f64 D_global_asm_80758E48;

@@ -423,14 +423,13 @@ void func_global_asm_807158C0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715908.s")
 
 /*
-? func_global_asm_8062D26C(void *, void *, ?);
 ? func_global_asm_80630588(?, void *, ?, ? *);
 extern s32 D_80000310;
 extern void *D_global_asm_807FDB04;
 extern void *D_global_asm_807FDB08;
 OSTime func_global_asm_806119A0(void);
 
-void func_global_asm_80715908(void *arg0) {
+void func_global_asm_80715908(Actor *arg0) {
     ? sp3F;
     s32 var_s1;
     void *temp_a0;
@@ -442,7 +441,7 @@ void func_global_asm_80715908(void *arg0) {
         if (arg0->unk38C & 4) {
             func_global_asm_80630588(0, arg0, 4, &sp3F);
         } else {
-            func_global_asm_8062D26C(arg0, arg0, 4);
+            func_global_asm_8062D26C(arg0);
         }
     } else {
         func_global_asm_80630588(0, arg0, 3, &sp3F);

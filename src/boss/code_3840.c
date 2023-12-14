@@ -119,8 +119,6 @@ void func_boss_80028680() {
 
 extern u8 D_global_asm_80750AD4;
 
-Gfx *func_global_asm_8070068C(Gfx*);
-
 /*
 Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     f32 sp90[4][4];

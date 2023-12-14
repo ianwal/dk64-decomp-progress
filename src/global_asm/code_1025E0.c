@@ -212,12 +212,10 @@ Gfx *func_global_asm_806FF628(Gfx *dl, s32 arg1) {
 
 extern f64 D_global_asm_8075DE78;
 
-void func_global_asm_806FFB2C(s32 arg0, Actor *arg1) {
+void func_global_asm_806FFB2C(Gfx *dl, Actor *arg1) {
     f32 sp3C;
-    Gfx *dl;
-
     sp3C = arg1->control_state_progress * D_global_asm_8075DE78;
-    dl = func_global_asm_806FEDB0(arg0, arg1->PaaD->unk1A4);
+    dl = func_global_asm_806FEDB0(dl, arg1->PaaD->unk1A4);
     gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
     func_global_asm_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, sp3C);

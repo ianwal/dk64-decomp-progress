@@ -59,9 +59,6 @@ typedef struct global_asm_struct_8 {
     s16 unk8;
 } GlobalASMStruct8;
 
-u8 func_global_asm_80726DEC(u8, u8);
-void func_global_asm_80678428(Actor*);
-
 extern Struct80755690 *D_global_asm_80755690;
 extern EnemySpawnerLocator *D_global_asm_80755694;
 extern u8 D_global_asm_80755698[];

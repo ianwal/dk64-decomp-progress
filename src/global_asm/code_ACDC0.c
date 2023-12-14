@@ -104,7 +104,6 @@ f32 func_global_asm_80612E40(f32);
 ? func_global_asm_806AB808(void *, ?, ?, ?, s32, s32, s32, s32);
 s32 func_global_asm_806C8DE0(?);
 s32 func_global_asm_806F6E58(u8);
-s32 func_global_asm_806FA7A4(?);
 s16 func_global_asm_807319D8(?, s32, u8);
 extern ? D_global_asm_80720C34;
 extern ? D_global_asm_80720D38;

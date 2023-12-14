@@ -310,8 +310,6 @@ typedef struct {
 
 extern Struct80748FE8 D_global_asm_80748FE8[];
 
-void func_global_asm_8067605C(Actor *arg0, u8 arg1);
-
 void func_global_asm_80675EE0(Actor *arg0) {
     AnimationStateUnk0 *temp_v0;
     s32 i;
@@ -386,8 +384,6 @@ typedef struct {
 
 extern s8 D_global_asm_80748E50[];
 extern Struct80748F58 D_global_asm_80748F58[];
-
-void func_global_asm_8067618C(Actor *arg0, u8 *arg1);
 
 void func_global_asm_8067605C(Actor *arg0, u8 arg1) {
     s16 i;

@@ -482,8 +482,8 @@ segments:
       - [0x2180200, c, code_2690]
       - [0x2186B80, c, code_9010]
       - [0x21873D0, data, code_0]
-      - [0x21874B0, rodata] # code_0
-      - [0x2187820, .rodata, code_12A0]
+      - [0x21874B0, .rodata, code_0]
+      - [0x2187800, .rodata, code_12A0]
       - [0x2187890, rodata] # code_2690
       - [0x2187A30, .rodata, code_9010]
   - name: race

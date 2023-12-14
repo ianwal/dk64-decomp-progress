@@ -19,6 +19,28 @@ typedef struct {
     u8 unk19;
 } AAD_bonus_800252A0;
 
+
+// rodata
+const u32 D_bonus_8002DC90[] = {
+    0x00010200,
+    0x03040000,
+};
+
+const u32 D_bonus_8002DC98[] = {
+    0x04020300,
+    0x01000000,
+};
+
+const u32 D_bonus_8002DCA0[] = {
+    0x02000104,
+    0x00030000,
+};
+
+const u32 D_bonus_8002DCA8[] = {
+    0x03010002,
+    0x00040000,
+};
+
 // rodata
 // const char D_bonus_8002DCB0[] = "HIT";
 /*

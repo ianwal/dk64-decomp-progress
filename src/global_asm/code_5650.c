@@ -26,8 +26,6 @@ s32 func_global_asm_8060095C(s32 arg0, s32 *arg1, s32 *arg2) {
 // malloc, small struct?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5650/func_global_asm_8060098C.s")
 
-void func_global_asm_8061130C(void *);
-
 void func_global_asm_80600B10(void) {
     s32 var_s1;
     Struct807452A0 *var_s0;

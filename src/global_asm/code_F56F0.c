@@ -135,8 +135,6 @@ extern s16 D_global_asm_807FD584;
 extern Struct80753EA0 D_global_asm_80753EA0[];
 
 void func_global_asm_806F386C(u8, Actor*, Actor*, s16, u8);
-f32 func_global_asm_80612794(s16);
-void func_global_asm_8068581C(s32, s16, f32, f32, f32, f32, s32);
 s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 
 // Jumptable

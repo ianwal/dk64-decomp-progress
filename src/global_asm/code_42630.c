@@ -2325,10 +2325,8 @@ s32 func_global_asm_8064AB1C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8064AC28.s")
 
-void func_8002D6F8(s16);
-
 void func_global_asm_8064B118(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
-    func_8002D6F8(arg1);
+    func_bonus_8002D6F8(arg1);
 }
 
 typedef struct {

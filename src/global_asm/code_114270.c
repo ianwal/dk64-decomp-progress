@@ -87,7 +87,6 @@ extern u8 D_global_asm_807FDA1C;
 extern u8 D_global_asm_807FDA28;
 extern s8 D_global_asm_807FDA30[];
 
-void func_80026D40(Actor *arg0, s32 arg1);
 void func_global_asm_8060AC34(GlobalASMStruct12*);
 
 void func_global_asm_8070F570(void) {
@@ -489,7 +488,7 @@ void func_global_asm_80712830(Actor *arg0, s32 exit) {
         return;
     }
     if (cc_number_of_players >= 2) {
-        func_80026D40(arg0, exit);
+        func_multiplayer_80026D40(arg0, exit);
     } else {
         func_global_asm_805FF1B0(exit);
     }

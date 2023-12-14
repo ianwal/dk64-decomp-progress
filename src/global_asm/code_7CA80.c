@@ -29,16 +29,10 @@ void func_global_asm_8067B100(Actor *player);
 s16 func_global_asm_8067AF74(Actor*);
 s32 func_global_asm_806782E8(Actor *arg0);
 
-void func_global_asm_806785D4(Actor*);
-void func_global_asm_8062D26C(Actor*);
 void func_global_asm_806783BC();
 void func_global_asm_806136B4();
-void func_global_asm_8066E21C(LedgeInfo*);
 // Note: The pointer can be to any one of the above 10 structs, maybe more
-void func_global_asm_8067AEFC(Actor*);
 void func_global_asm_8070DA74(Actor*);
-void func_global_asm_8071586C(Actor*);
-void func_global_asm_807233B4(Actor*);
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80677D80.s")

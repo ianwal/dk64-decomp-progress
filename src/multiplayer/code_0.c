@@ -47,6 +47,7 @@ typedef struct {
 } struct_unknown_mp_aad;
 
 void func_multiplayer_800242FC(MultiplayerStruct4 *);
+s32 func_multiplayer_80025404(void);
 void func_multiplayer_80025F84();
 s32 func_multiplayer_80026BD8(s32);
 
@@ -360,7 +361,6 @@ typedef struct MultiplayerStruct3 {
     s16 unk2;
     s16 unk4;
 } MultiplayerStruct3;
-s32 func_multiplayer_80025404();
 s32 func_multiplayer_80025608(s32);
 void func_global_asm_806F5FE8(s32, s16, s16, s16, s32);
 extern s32 D_global_asm_807552F0;
