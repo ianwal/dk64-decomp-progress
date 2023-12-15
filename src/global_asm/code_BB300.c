@@ -125,12 +125,12 @@ void func_global_asm_806B6C88(s16 arg0, s16 arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_global_asm_806B6DB0.s")
 
-void func_global_asm_806B75F4() {
+void func_global_asm_806B75F4(void) {
     func_global_asm_80729B00();
     func_global_asm_806B6DB0(10000);
 }
 
-void func_global_asm_806B761C() {
+void func_global_asm_806B761C(void) {
     func_global_asm_80729B00();
     if (D_global_asm_807FBD70 == 4) {
         func_global_asm_80724C2C(-100);
@@ -138,7 +138,7 @@ void func_global_asm_806B761C() {
     func_global_asm_806B6DB0(10000);
 }
 
-void func_global_asm_806B7660() {
+void func_global_asm_806B7660(void) {
     func_global_asm_80729B00();
     if (D_global_asm_807FBD70 == 4) {
         func_global_asm_80724C2C(-100);

@@ -90,14 +90,15 @@ void func_global_asm_8067BDB8(void) {
     current_actor_pointer->y_position = current_actor_pointer->floor;
 }
 
-void func_global_asm_8067BDF8() {
-    s8 sp1F;
-    s32 temp_a1;
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+} AAD_8067BDF8;
 
-    sp1F = 0;
-    // TODO: Which aaD type are they actually expecting here?
-    temp_a1 = current_actor_pointer->PaaD;
-    func_global_asm_8067BF84(0x13, temp_a1, temp_a1 + 1, &sp1F);
+void func_global_asm_8067BDF8(void) {
+    s8 sp1F = 0;
+    AAD_8067BDF8 *temp_a1 = current_actor_pointer->additional_actor_data;
+    func_global_asm_8067BF84(0x13, temp_a1, &temp_a1->unk1, &sp1F);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067BE30.s")
@@ -146,12 +147,17 @@ void func_global_asm_8067BE30(void) {
 }
 */
 
-void func_global_asm_8067BF4C() {
-    s32 temp_v0;
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u8 unk4;
+} AAD_8067BF4C;
 
-    // TODO: Which aaD type are they actually expecting here?
-    temp_v0 = current_actor_pointer->PaaD;
-    func_global_asm_8067BF84(0x1A, temp_v0 + 2, temp_v0 + 3, temp_v0 + 4);
+void func_global_asm_8067BF4C(void) {
+    AAD_8067BF4C *temp_v0 = current_actor_pointer->additional_actor_data;
+    func_global_asm_8067BF84(0x1A, &temp_v0->unk2, &temp_v0->unk3, &temp_v0->unk4);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067BF84.s")
@@ -516,24 +522,24 @@ void func_global_asm_8067E510(void) {
     func_global_asm_8067E784();
 }
 
-void func_global_asm_8067E69C() {
+void func_global_asm_8067E69C(void) {
     func_global_asm_8067E784();
     func_global_asm_8067E43C();
 }
 
-void func_global_asm_8067E6C4() {
+void func_global_asm_8067E6C4(void) {
     func_global_asm_8067E784();
 }
 
-void func_global_asm_8067E6E4() {
+void func_global_asm_8067E6E4(void) {
     func_global_asm_8067E784();
 }
 
-void func_global_asm_8067E704() {
+void func_global_asm_8067E704(void) {
     func_global_asm_8067E784();
 }
 
-void func_global_asm_8067E724() {
+void func_global_asm_8067E724(void) {
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         current_actor_pointer->draw_distance = 800;
     }
@@ -1061,14 +1067,14 @@ void func_global_asm_8068412C(void) {
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
 
-void func_global_asm_806844EC() {
+void func_global_asm_806844EC(void) {
     func_global_asm_8068412C();
 }
 
-void func_global_asm_8068450C() {
+void func_global_asm_8068450C(void) {
     func_global_asm_8068412C();
 }
 
-void func_global_asm_8068452C() {
+void func_global_asm_8068452C(void) {
     func_global_asm_8068412C();
 }

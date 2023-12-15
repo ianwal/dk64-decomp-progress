@@ -81,16 +81,8 @@ extern u16 D_global_asm_80750AC4;
 
 u32 func_global_asm_806119A0(void);
 void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1);
-s32 func_race_8002E8EC(s32, s32, s32);
-s32 func_race_8002E8EC(s32 arg0, s32 arg1, s32 arg2);
-void func_race_80025E9C(Actor *);
-void func_race_80025FDC();
-void func_race_80029488();
-void func_race_8002E9F8(s32 *checkpointFile);
-void func_race_8002D064();
-void func_race_8002D0FC();
 
-extern void func_race_8002CFF0();
+extern void func_race_8002CFF0(void);
 
 f32 func_global_asm_80665E48(f32, f32, f32, f32);
 

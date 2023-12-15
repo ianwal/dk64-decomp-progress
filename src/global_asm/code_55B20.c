@@ -920,9 +920,10 @@ void func_global_asm_80655AD0(void) {
     }
     for (i = 0; i < D_global_asm_807F6C28; i++) {
         if (chunk_array_pointer[i].unk3 && chunk_array_pointer[i].visible != 2 && !chunk_array_pointer[i].unk4) {
-            if (chunk_array_pointer[i].unk60[D_global_asm_807444FC]) {
-                func_global_asm_8061130C(chunk_array_pointer[i].unk60[D_global_asm_807444FC]);
-                chunk_array_pointer[i].unk60[D_global_asm_807444FC] = 0;
+            void *temp = chunk_array_pointer[i].unk60[D_global_asm_807444FC];
+            if (temp != NULL) {
+                func_global_asm_8061130C(temp);
+                chunk_array_pointer[i].unk60[D_global_asm_807444FC] = NULL;
             }
         }
     }

@@ -22,7 +22,6 @@ void func_global_asm_806978FC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_global_asm_80697988.s")
 
 void func_global_asm_80697230(void);
-void func_global_asm_8061130C(void *);
 
 typedef struct {
     s16 unk0;

@@ -325,7 +325,7 @@ void func_global_asm_8069DA54(void) {
                     }
                     break;
                 case 3:
-                    func_global_asm_8061130C(temp_a3->unk0, current_actor_pointer);
+                    func_global_asm_8061130C(temp_a3->unk0);
                     func_global_asm_806782C0(current_actor_pointer);
                     break;
             }

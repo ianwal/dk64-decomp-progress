@@ -1,7 +1,46 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern u16 D_global_asm_80750AC4;
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    u16 unk6;
+    s32 unk8;
+    s32 unkC;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    f32 unk14;
+    u8 unk18;
+    u8 unk19;
+    u16 unk1A;
+    s32 unk1C[1]; // TODO: How many?
+} Struct8002EDD4_arg0;
+
+// TODO: Is this the same as RaceStruct6?
+typedef struct RaceStruct13 {
+    u16 unk0;
+    u16 unk2;
+    u16 *unk4;
+    u16 unk8;
+    u16 unkA;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s16 unk38;
+    u16 unk3A;
+    u16 unk3C;
+} RaceStruct13;
 
 // TODO: Any struct overlap with existing structs?
 typedef struct {
@@ -60,7 +99,35 @@ typedef struct RaceStruct2 {
     s16 unkA;
     RaceStruct2_unkC *unkC;
 } RaceStruct2;
+
 extern RaceStruct2 *D_race_8002FCF0;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+} Struct8002F280_arg0;
+
+typedef struct RaceStruct10 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    f32 unk8;
+    f32 unkC;
+} RaceStruct10;
+
+extern u16 D_global_asm_80750AC4;
+
+void func_race_80025FDC();
+void func_race_8002D0FC();
+void func_race_8002DCF0(void*, s32);
+void *func_race_8002E960(u8);
+void *func_race_8002E9AC(u8);
+f32 func_race_8002F04C(f32, f32, f32, f32, f32, f32, f32, f32);
+void func_race_8002F36C(RaceStruct13*, RaceStruct13*);
+void func_race_8002E9F8(s32 *checkpointFile);
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E960.s")
@@ -140,24 +207,6 @@ void func_race_8002ED04(f32 arg0, s32 arg1, u8 arg2) {
     sp1C->unk0 = arg1;
 }
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    u16 unk6;
-    s32 unk8;
-    s32 unkC;
-    u8 unk10;
-    u8 unk11;
-    u8 unk12;
-    u8 unk13;
-    f32 unk14;
-    u8 unk18;
-    u8 unk19;
-    u16 unk1A;
-    s32 unk1C[1]; // TODO: How many?
-} Struct8002EDD4_arg0;
-
 void func_race_8002EDD4(Struct8002EDD4_arg0 *arg0) {
     f32 spD0[4][4];
     f32 sp90[4][4];
@@ -206,28 +255,11 @@ f32 func_race_8002F04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F0AC.s")
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-} Struct8002F280_arg0;
-
 u8 func_race_8002F280(Struct8002F280_arg0 *arg0) {
     f32 p1 = (current_actor_pointer->x_position - arg0->unk0);
     f32 p2 = (current_actor_pointer->z_position - arg0->unk4);
     return func_global_asm_806CC14C((s16)(((s32)(func_global_asm_80611BB4(p1, p2) * 651.8986f)) & 0xFFF), arg0->unk6) < 0x400;
 }
-
-f32 func_race_8002F04C(f32, f32, f32, f32, f32, f32, f32, f32);
-typedef struct RaceStruct10 {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    f32 unk8;
-    f32 unkC;
-} RaceStruct10;
 
 f32 func_race_8002F304(RaceStruct10 *arg0, f32 arg1, f32 arg2) {
     return func_race_8002F04C(
@@ -241,33 +273,6 @@ f32 func_race_8002F304(RaceStruct10 *arg0, f32 arg1, f32 arg2) {
         arg0->unkC
     );
 }
-
-// TODO: Is this the same as RaceStruct6?
-typedef struct RaceStruct13 {
-    u16 unk0;
-    u16 unk2;
-    u16 *unk4;
-    u16 unk8;
-    u16 unkA;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s16 unk38;
-    u16 unk3A;
-    u16 unk3C;
-} RaceStruct13;
-
-void func_race_8002DCF0(void*, s32);
-void func_race_8002F36C(RaceStruct13*, RaceStruct13*);
-void *func_race_8002E9AC(u8);
 
 void func_race_8002F36C(RaceStruct13 *arg0, RaceStruct13 *arg1) {
     RaceStruct2_unkC *temp_v0;
@@ -364,10 +369,6 @@ f32 func_race_8002F90C(RaceStruct6 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) 
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F950.s")
 
-/*
-void *func_race_8002E960(u8);
-void *func_race_8002E9AC(u8);
-
 // TODO: Any struct overlap with existing structs?
 typedef struct {
     u16 unk0;
@@ -399,6 +400,7 @@ typedef struct {
     s16 unk4;
 } Struct8002F950_temp_v0_2;
 
+/*
 void func_race_8002F950(Struct8002F950 *arg0) {
     Actor *temp_a0;
     f32 temp_f0;

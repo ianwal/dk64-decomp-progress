@@ -1,15 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern s8 D_bonus_8002D910[];
-extern s8 D_bonus_8002D91C[];
-extern s8 D_bonus_8002D920;
-extern s8 D_bonus_8002D924;
-extern s8 D_bonus_8002D928;
-extern s8 D_bonus_8002D92C;
-extern s8 D_bonus_8002D930;
-extern s8 D_bonus_8002DEF0[];
-
 typedef struct {
     s8 unk0;
     s8 unk1;
@@ -26,7 +17,35 @@ typedef struct {
     u8 unkD;
 } AAD_8002D010;
 
+typedef struct {
+    s16 unk0;
+    u8 unk2;
+    u8 unk3;
+    s16 unk4;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+    s16 unkA;
+    u8 unkC;
+    u8 unkD;
+} AAD_8002D2F0;
+
+extern s8 D_bonus_8002D910[];
+extern s8 D_bonus_8002D91C[];
+extern s8 D_bonus_8002D920;
+extern s8 D_bonus_8002D924;
+extern s8 D_bonus_8002D928;
+extern s8 D_bonus_8002D92C;
+extern s8 D_bonus_8002D930;
+extern s8 D_bonus_8002DEF0[];
+extern s16 D_80744518;
+extern u16 D_807ECD60;
+
 Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
+s8 func_global_asm_806FDB8C(s32, void*, s32, f32, f32, f32);
+s32 func_global_asm_806A2A10(s32, s32, u8);
+void func_global_asm_8061CB08(void);
 
 Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
     s16 pad;
@@ -75,28 +94,6 @@ Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
     }
     return dl;
 }
-
-extern s16 D_80744518;
-extern u16 D_807ECD60;
-
-typedef struct {
-    s16 unk0;
-    u8 unk2;
-    u8 unk3;
-    s16 unk4;
-    u8 unk6;
-    u8 unk7;
-    u8 unk8;
-    u8 unk9;
-    s16 unkA;
-    u8 unkC;
-    u8 unkD;
-} AAD_8002D2F0;
-
-s8 func_global_asm_806FDB8C(s32, void*, s32, f32, f32, f32);
-s32 func_global_asm_806A2A10(s32, s32, u8);
-
-void func_global_asm_8061CB08(void);
 
 void func_bonus_8002D2F0(void) {
     s32 var_a0;
@@ -153,7 +150,7 @@ void func_bonus_8002D2F0(void) {
                 current_actor_pointer->control_state = 3;
                 aaD->unk0 = 0x78;
             }
-            switch (current_map) { // irregular
+            switch (current_map) {
                 case MAP_RAMBI_ARENA:
                     D_bonus_8002D930--;
                     if (D_bonus_8002D930 <= 0) {

@@ -120,8 +120,6 @@ void func_global_asm_80663A0C(Actor *arg0, GlobalASMStruct84 *arg1) {
     arg0->unk156++;
 }
 
-void func_global_asm_8061130C(GlobalASMStruct83 *);
-
 void func_global_asm_80663A80(void) {
     Actor *temp_v1;
     GlobalASMStruct83 **var_s1;

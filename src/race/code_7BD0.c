@@ -10,6 +10,11 @@ D_race_80030108 .float 0.3f
 D_race_80030110 .double 0.15
 */
 
+void func_race_8002E2C8(Actor *arg0);
+void func_race_80025E9C(Actor *);
+
+Gfx *func_global_asm_805FD030(Gfx *);
+
 void func_race_8002BBD0(Actor *arg0, s32 arg1) {
     RaceAdditionalActorData *sp1C;
     RaaD_unk20 *temp_v0;
@@ -191,8 +196,6 @@ void func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 ar
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C2E8.s")
 
-Gfx *func_global_asm_805FD030(Gfx *);
-
 typedef struct {
     u8 unk0[0x50 - 0x0];
     f32 unk50[1][4][4];
@@ -272,7 +275,7 @@ void func_race_8002CFF0(void) {
     temp_v0->unk24 = 2;
 }
 
-void castleCarRaceSetup() {
+void castleCarRaceSetup(void) {
     RaceAdditionalActorData2 *RaaD;
 
     func_global_asm_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
@@ -282,7 +285,7 @@ void castleCarRaceSetup() {
     RaaD->unk24 = 2;
 }
 
-void initializeSealRace() {
+void initializeSealRace(void) {
     RaceAdditionalActorData2 *RaaD;
 
     func_global_asm_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
@@ -291,8 +294,6 @@ void initializeSealRace() {
     RaaD->unk0 = 0xE;
     RaaD->unk24 = 2;
 }
-
-void func_race_8002E2C8(Actor *arg0);
 
 void func_race_8002D0FC(void) {
     RaceAdditionalActorData2 *RaaD;
@@ -764,8 +765,6 @@ void func_race_8002E464(s32 arg0, Actor *arg1) {
     func_race_8002CAC8(arg0, arg1, arg1->PaaD);
 }
 
-extern void func_race_8002E464(); // TODO: Signature
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -930,16 +929,14 @@ s32 func_race_8002E8EC(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1, s32
 
     if (arg1->unk45 != 0) {
         var_v1 = 0;
-    } else {
-        if (arg0->unk36 != 0) {
-            if (func_global_asm_806F8AD4(0xB, 0) >= arg2) {
-                var_v1 = 1;
-            } else {
-                var_v1 = 3;
-            }
+    } else if (arg0->unk36 != 0) {
+        if (func_global_asm_806F8AD4(0xB, 0) >= arg2) {
+            var_v1 = 1;
         } else {
-            var_v1 = 2;
+            var_v1 = 3;
         }
+    } else {
+        var_v1 = 2;
     }
     return var_v1;
 }

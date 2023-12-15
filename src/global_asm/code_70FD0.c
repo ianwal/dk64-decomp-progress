@@ -82,9 +82,10 @@ void func_global_asm_8066C8B0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 }
 
 void func_global_asm_8066C904(OM2_unk28 *arg0) {
-    if (arg0->unk18 != 0) {
+    void *temp = arg0->unk18;
+    if (temp != NULL) {
         if (arg0->unk15 & 1) {
-            func_global_asm_8061130C(arg0->unk18, arg0);
+            func_global_asm_8061130C(temp);
         }
     }
     arg0->unk15 &= 0xFFFE;

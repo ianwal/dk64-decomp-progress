@@ -658,11 +658,11 @@ s32 func_global_asm_80634768(Struct80634768 *arg0, Struct80634768_arg1 *arg1, f3
 void func_global_asm_806348B4(OM2_unk48 *arg0);
 
 void func_global_asm_806348B4(OM2_unk48 *arg0) {
-    s32 temp_a2;
+    void *temp_a2 = arg0->unk0;
 
-    if (arg0->unk0 != 0) {
+    if (temp_a2 != NULL) {
         if (arg0->unk24 & 1) {
-            func_global_asm_8061130C(arg0->unk0, arg0);
+            func_global_asm_8061130C(temp_a2);
         }
     }
     arg0->unk24 &= 0xFFFE;

@@ -154,8 +154,9 @@ void func_race_800292D0(Actor *arg0) {
 }
 
 // need this forward declaration
-void initializeSealRace();
-void sealRaceSetup() {
+void initializeSealRace(void);
+
+void sealRaceSetup(void) {
     initializeSealRace();
 }
 
@@ -274,6 +275,8 @@ void func_race_80029F88(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     }
 }
 */
+
+s32 func_race_8002E8EC(void *arg0, void *arg1, s32 arg2);
 
 s32 func_race_8002A080(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1) {
     return D_race_8002FC5C[func_race_8002E8EC(arg0, arg1, 0xA)];

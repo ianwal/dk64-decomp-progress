@@ -1,15 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_80627948(Actor*, s32, s32, s32);
-u8 func_global_asm_8070E750(u8, s32, s32);
-
-void *func_global_asm_8068DC54(s32, s32, s32, void *, s32, void *);
-s32 func_global_asm_806FE078(void *, u8, s32, f32, f32, f32, f32);
-extern u8* D_bonus_8002D8B0[];
-int func_global_asm_80717404(); // TODO: Signature
-extern void* D_global_asm_8074E880[];
-
 typedef struct {
     u8 unk0[0x14 - 0x0];
     u8 unk14;
@@ -19,6 +10,7 @@ typedef struct {
     u8 unk19;
 } AAD_bonus_800252A0;
 
+extern u8* D_bonus_8002D8B0[];
 
 // rodata
 const u32 D_bonus_8002DC90[] = {
@@ -52,7 +44,15 @@ const f64 D_bonus_8002DD08 = 90.0;
 const f64 D_bonus_8002DD10 = 0.3;
 */
 
-void func_bonus_800252A0(Gfx *dl, Actor *arg1) {
+extern void* D_global_asm_8074E880[];
+
+void func_global_asm_80627948(Actor*, s32, s32, s32);
+u8 func_global_asm_8070E750(u8, s32, s32);
+Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *);
+Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
+int func_global_asm_80717404(); // TODO: Signature
+
+Gfx *func_bonus_800252A0(Gfx *dl, Actor *arg1) {
     AAD_bonus_800252A0 *aaD;
     aaD = arg1->additional_actor_data;
     gDPPipeSync(dl++);
@@ -62,7 +62,8 @@ void func_bonus_800252A0(Gfx *dl, Actor *arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gSPMatrix(dl++, &D_2000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    func_global_asm_8068DC54(func_global_asm_806FE078(dl, aaD->unk19, 8, 30.0f, 36.0f, 0.0f, 1.5f), 0x26, 0x32, &aaD->unk14, aaD->unk16, &aaD->unk18);
+    dl = func_global_asm_806FE078(dl, aaD->unk19, 8, 30.0f, 36.0f, 0.0f, 1.5f);
+    return func_global_asm_8068DC54(dl, 0x26, 0x32, &aaD->unk14, aaD->unk16, &aaD->unk18);
 }
 
 Actor* func_bonus_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
@@ -188,11 +189,8 @@ void func_bonus_800264E0(u8 arg0, u8 arg1) {
 }
 
 void func_bonus_800265C0(u8 arg0, u8 arg1) {
-    u8 temp;
-
     current_actor_pointer->unk11C->control_state = 0;
-    temp = (u8) arg1;
-    func_global_asm_8069D2AC(0x81, 0, 0x78, func_global_asm_8070E750(0x1A, temp, 1), 0, 0x28, 8, 8);
+    func_global_asm_8069D2AC(0x81, 0, 0x78, func_global_asm_8070E750(0x1A, arg1, 1), 0, 0x28, 8, 8);
     playSong(0x57, 1.0f);
     func_global_asm_806EB0C0(0x43, NULL, 0);
     current_actor_pointer->control_state++;
