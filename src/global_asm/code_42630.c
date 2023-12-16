@@ -3314,7 +3314,7 @@ void func_global_asm_8064EAB4(GlobalASMStruct7 *arg0, s32 arg1, s32 arg2, s32 ar
     s32 numberOfGunSwitchesPressed;
 
     // Fungi Mushroom Gun Switches Pressed
-    // Odd that they didn't use func_global_asm_80731AA8() countSetFlags() for this
+    // Odd that they didn't use countSetFlags() for this
     numberOfGunSwitchesPressed = isFlagSet(0xE6, FLAG_TYPE_PERMANENT);
     numberOfGunSwitchesPressed += isFlagSet(0xE8, FLAG_TYPE_PERMANENT);
     numberOfGunSwitchesPressed += isFlagSet(0xE9, FLAG_TYPE_PERMANENT);
@@ -3498,5 +3498,5 @@ u8 func_global_asm_8064F358(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 u8 func_global_asm_8064F404(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     // Has the player collected 4 or more Battle Crowns?
-    return func_global_asm_80731AA8(0x261, 10, FLAG_TYPE_PERMANENT) >= 4;
+    return countSetFlags(0x261, 10, FLAG_TYPE_PERMANENT) >= 4;
 }

@@ -1583,8 +1583,8 @@ void func_global_asm_8066ADA0(void) {
     D_global_asm_807FB221 = 0;
 }
 
-void func_global_asm_8066AEE4(s32 arg0, s32 arg1) {
-    s32 sp24;
+void func_global_asm_8066AEE4(void *arg0, s32 arg1) {
+    void *sp24;
     s32 sp20;
 
     sp24 = arg0;
@@ -1613,7 +1613,7 @@ typedef struct {
 } Struct807F9688;
 
 typedef struct {
-    s32 unk0;
+    void *unk0; // Used
     s32 unk4;
     u8 unk8; // Used
     u8 unk9;
@@ -1648,12 +1648,12 @@ void func_global_asm_8066AF40(void) {
 
 s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3);
 
-s32 func_global_asm_8066B020(s32 arg0, s32 arg1) {
+s32 func_global_asm_8066B020(s32 pointerTableIndex, s32 fileIndex) {
     s32 sp1C;
     s32 sp18;
 
-    func_global_asm_8066B5F4(arg0);
-    func_global_asm_8066B4D4(arg0, arg1, &sp1C, &sp18);
+    func_global_asm_8066B5F4(pointerTableIndex);
+    func_global_asm_8066B4D4(pointerTableIndex, fileIndex, &sp1C, &sp18);
     if (sp18 == 0) {
         return 0;
     }

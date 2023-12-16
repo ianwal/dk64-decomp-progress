@@ -1045,7 +1045,7 @@ void func_global_asm_80636014(s32 arg0, u8 arg1, u8 arg2) {
     func_global_asm_8062D094(D_global_asm_807F6000[arg0].model_pointer, arg2);
 }
 
-void func_global_asm_80636380(s32 arg0, Struct80635548 *arg1);
+void func_global_asm_80636380(OM2_unk24 *arg0, Struct80635548 *arg1);
 void func_global_asm_806365D0(ObjectModel2 *arg0, OM2_unk24 *arg1, Model2Model *arg2);
 
 void func_global_asm_80636074(ObjectModel2 *arg0) {
@@ -1166,14 +1166,14 @@ void func_global_asm_806362C4(s32 arg0, u8 arg1) {
     }
 }
 
-void func_global_asm_80636380(s32 arg0, Struct80635548 *arg1) {
+void func_global_asm_80636380(OM2_unk24 *arg0, Struct80635548 *arg1) {
     s32 i;
 
     for (i = 0; i < arg1->unk20; i++) {
-        if (arg1->unk24[i] != 0) {
+        if (arg1->unk24[i] != NULL) {
             func_global_asm_8066B434(arg1->unk24[i], 0xA69, 7);
         }
-        if (arg1->unk34[i] != 0) {
+        if (arg1->unk34[i] != NULL) {
             func_global_asm_8066B434(arg1->unk34[i], 0xA6A, 7);
         }
     }
@@ -1433,13 +1433,13 @@ void func_global_asm_80636C00(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806392BC.s")
 
-void func_global_asm_806398E4(s32 arg0, u8 arg1, u8 arg2) {
+void func_global_asm_806398E4(s32 objectModel2Index, u8 arg1, u8 arg2) {
     Model2Model *temp_v0;
 
     if (arg1 == 1) {
-        arg0 = func_global_asm_80659470(arg0);
+        objectModel2Index = func_global_asm_80659470(objectModel2Index);
     }
-    temp_v0 = D_global_asm_807F6000[arg0].model_pointer;
+    temp_v0 = D_global_asm_807F6000[objectModel2Index].model_pointer;
     if (arg2 != 0) {
         temp_v0->unk4E |= 1;
     } else {

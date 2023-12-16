@@ -1307,7 +1307,7 @@ struct actor {
         u16 unk146; // used (0x147 hand state? 0x146 seems to be u16)
         s16 unk146_s16; // used func_global_asm_8068A764
     };
-    u32 unk148; // Used
+    void *unk148; // Used
     u32 unk14C; // Used
     FloorTriangle *unk150;
     u8 control_state; // at 0x154

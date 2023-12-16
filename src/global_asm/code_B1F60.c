@@ -1,11 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_806782C0(Actor *);
 s32 func_global_asm_8072881C(s32, s32);
 s32 func_global_asm_8072AB74(u8, f32, f32, u16, f32);
-s32 func_global_asm_8072D714(Actor*, s32);
-void func_global_asm_8072B7CC(s32);
 void func_global_asm_806A5C60(Actor *arg0);
 
 // Not 100% on these signatures

@@ -240,29 +240,24 @@ GlobalASMStruct60 *func_global_asm_80688584(Actor *arg0, s32 arg1) {
     return current;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_global_asm_80688638.s")
-
-/*
 void func_global_asm_80688638(GlobalASMStruct60 **arg0) {
-    GlobalASMStruct60 *temp_s0;
+    GlobalASMStruct60 *next;
     GlobalASMStruct60 *temp_s2;
-    GlobalASMStruct60 *phi_s2;
-    s32 phi_s0;
+    GlobalASMStruct60 *current;
+    s32 i;
 
-    phi_s2 = *arg0;
-    while (phi_s2) {
-        temp_s2 = phi_s2->unk4;
-        for (phi_s0 = 0; phi_s0 < phi_s2->unkA; phi_s0++) {
-            func_global_asm_8066B434(temp_s2->unk0, 0x1E6, 0x2C);
-            temp_s2++;
+    current = *arg0;
+    while (current) {
+        temp_s2 = current->unk4;
+        for (i = 0; i < current->unkA; i++) {
+            // TODO: Kinda janky
+            func_global_asm_8066B434(((s32*)&temp_s2->unk0)[i], 0x1E6, 0x2C);
         }
-        free(phi_s2->unk0);
-        free(phi_s2->unk4);
-        temp_s0 = phi_s2->next;
-        free(phi_s2);
-        phi_s2 = temp_s0;
+        free(current->unk0);
+        free(current->unk4);
+        next = current->next;
+        free(current);
+        current = next;
     }
     *arg0 = NULL;
 }
-*/

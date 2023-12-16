@@ -1,21 +1,20 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_807311C4(s16);
 s16 func_global_asm_80731784(s16, s16, s32 *);
 
 typedef struct {
-    s16 unk0; // Start Permanent Flag Index
-    s16 unk2; // End Permanent Flag Index
-    s16 unk4; // Flag Count Required
-    s16 unk6; // Global Flag To Set
+    s16 startFlagIndex;
+    s16 endFlagIndex;
+    s16 flagCountRequired;
+    s16 globalFlagToSet;
 } Struct80756024;
 
 typedef struct {
     u8 unk0;
     u8 unk1;
     s16 unk2;
-    s16 unk4; // Used, permanent flag index
+    s16 flagIndex;
     u8 unk6;
     u8 unk7;
 } Struct80755A20;
@@ -33,7 +32,7 @@ typedef struct {
     u8 unk0;
     u8 unk1;
     s16 unk2;
-    s16 unk4; // Permanent Flag Index
+    s16 flagIndex;
     u8 unk6;
     u8 unk7;
 } Struct80755EA0;
@@ -110,9 +109,9 @@ void func_global_asm_807311C4(s16 flagIndex) {
 
     chosenFlag = -1;
     for (i = 0; i < 0x21U && chosenFlag == -1; i++) {
-        if (flagIndex >= D_global_asm_80756024[i].unk0 && D_global_asm_80756024[i].unk2 >= flagIndex) {
-            if (func_global_asm_80731AA8(D_global_asm_80756024[i].unk0, (D_global_asm_80756024[i].unk2 - D_global_asm_80756024[i].unk0) + 1, FLAG_TYPE_PERMANENT) == D_global_asm_80756024[i].unk4) {
-                chosenFlag = D_global_asm_80756024[i].unk6;
+        if (flagIndex >= D_global_asm_80756024[i].startFlagIndex && D_global_asm_80756024[i].endFlagIndex >= flagIndex) {
+            if (countSetFlags(D_global_asm_80756024[i].startFlagIndex, (D_global_asm_80756024[i].endFlagIndex - D_global_asm_80756024[i].startFlagIndex) + 1, FLAG_TYPE_PERMANENT) == D_global_asm_80756024[i].flagCountRequired) {
+                chosenFlag = D_global_asm_80756024[i].globalFlagToSet;
             }
         }
     }
@@ -180,7 +179,7 @@ void func_global_asm_807314F4(s16 arg0, s16 arg1) {
 
     for (i = 0; i < max; i++) {
         if ((arg0 == D_global_asm_80755A20[i].unk0) && (arg1 == D_global_asm_80755A20[i].unk2)) {
-            setFlag(D_global_asm_80755A20[i].unk4, TRUE, FLAG_TYPE_PERMANENT);
+            setFlag(D_global_asm_80755A20[i].flagIndex, TRUE, FLAG_TYPE_PERMANENT);
             return;
         }
     }
@@ -200,7 +199,7 @@ u8 func_global_asm_807315D4(s16 arg0, s16 arg1) {
 
     for (i = 0; i < max; i++) {
         if ((arg0 == D_global_asm_80755A20[i].unk0) && (arg1 == D_global_asm_80755A20[i].unk2)) {
-            return isFlagSet(D_global_asm_80755A20[i].unk4, FLAG_TYPE_PERMANENT);
+            return isFlagSet(D_global_asm_80755A20[i].flagIndex, FLAG_TYPE_PERMANENT);
         }
     }
     return FALSE;
@@ -287,11 +286,11 @@ s32 func_global_asm_807318AC(s16 arg0, s16 arg1) {
 
     for (i = 0; i < max; i++) {
         if (arg0 == D_global_asm_80755EA0[i].unk0 && arg1 == D_global_asm_80755EA0[i].unk2) {
-            if (isFlagSet(D_global_asm_80755EA0[i].unk4, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(D_global_asm_80755EA0[i].flagIndex, FLAG_TYPE_PERMANENT)) {
                 return 0;
             }
             if (D_global_asm_80755EA0[i].unk6) {
-                setFlag(D_global_asm_80755EA0[i].unk4, TRUE, FLAG_TYPE_PERMANENT);
+                setFlag(D_global_asm_80755EA0[i].flagIndex, TRUE, FLAG_TYPE_PERMANENT);
             }
             return 1;
         }
@@ -321,13 +320,13 @@ u8 func_global_asm_8073198C(s16 arg0) {
 
 // Returns a permanent flag index
 s32 func_global_asm_807319D8(s32 arg0, s32 arg1, s32 arg2) {
-    s32 tmp = -1;
+    s32 flagIndex = -1;
     if (arg1 < 8) {
         if (arg2 < 5) {
-            tmp = (arg1 * 5) + arg0 + arg2;
+            flagIndex = (arg1 * 5) + arg0 + arg2;
         }
     }
-    return tmp;
+    return flagIndex;
 }
 
 s32 func_global_asm_80731A04(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
@@ -349,8 +348,7 @@ s32 func_global_asm_80731A04(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return count;
 }
 
-// countSetFlags(startIndex, length, flagType);
-s32 func_global_asm_80731AA8(s32 startIndex, s32 length, u8 flagType) {
+s32 countSetFlags(s32 startIndex, s32 length, u8 flagType) {
     s32 flagIndex;
     s32 count = 0;
     for (flagIndex = startIndex; flagIndex < startIndex + length; flagIndex++) {

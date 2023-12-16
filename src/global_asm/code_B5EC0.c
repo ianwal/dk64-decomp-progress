@@ -41,7 +41,6 @@ void func_global_asm_806B1348(void) {
 // ? func_global_asm_806A5C60(Actor *, Actor **);
 // ? func_global_asm_8072A450(Actor *);
 // ? func_global_asm_8072AB74(u8, f32, f32, ?, f32);
-// ? func_global_asm_8072B7CC(?, u8);
 // void func_global_asm_8072C918(s16, s16, s16);
 // ? func_global_asm_8072D13C(u8, ?);
 // ? func_global_asm_8072D714(Actor *, ?);
@@ -313,7 +312,7 @@ block_97:
             var_a0 = current_actor_pointer->control_state;
             goto block_100;
         default:                                    // switch 1
-            func_global_asm_8072B7CC(0x203, var_a1);
+            func_global_asm_8072B7CC(0x203);
             var_a0 = current_actor_pointer->control_state;
             goto block_100;
     }

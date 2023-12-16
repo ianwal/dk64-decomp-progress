@@ -103,7 +103,6 @@ void func_global_asm_806AE394(f32 arg0, f32 arg1) {
 // Jumptable, very close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AE588.s")
 
-void func_global_asm_8072B7CC(s32);
 void func_global_asm_8072C918(s16, s16, s16);
 
 /*

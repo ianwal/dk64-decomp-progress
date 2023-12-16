@@ -88,7 +88,7 @@ void func_global_asm_80614EBC(Actor*, s32);
 u8 playerCanDive(void);
 u8 playerCanThrowOrange(void);
 
-void func_global_asm_806086CC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
+void func_global_asm_806086CC(f32 x, f32 y, f32 z, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
 
 u8 func_global_asm_805FCA64(void); // getCutsceneBarState()
 u8 getLevelIndex(u8 map, u8 arg1);
@@ -115,8 +115,7 @@ int gameIsInAdventureMode(void);
 int gameIsInDKTheatreMode(void);
 int gameIsInQuitGameMode(void);
 
-// countSetFlags(startIndex, length, flagType);
-s32 func_global_asm_80731AA8(s32 startIndex, s32 length, u8 flagType);
+s32 countSetFlags(s32 startIndex, s32 length, u8 flagType);
 
 // TODO: Not 100% on return type
 u8 func_global_asm_80671C0C(Actor*, s32, f32*, f32*, f32*);
@@ -687,7 +686,7 @@ void func_global_asm_8060B8F8(s32 arg0);
 u8 getEEPROMSaveSlot(s32 fileIndex);
 void func_global_asm_8060BA14(void);
 void func_global_asm_8060C2C4(s32 arg0, s32 arg1, u8 arg2, u16 *arg3, s8 *arg4);
-void func_global_asm_8060C340(s16 *arg0, s32 arg1, s32 arg2, u8 arg3, u8 arg4, u8 arg5);
+void func_global_asm_8060C340(u16 *arg0, u8 *arg1, s32 arg2, u8 arg3, u8 arg4, u8 arg5);
 void func_global_asm_8060C648(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex, s32 arg4);
 s32 func_global_asm_8060C724(u8 fileIndex);
 void func_global_asm_8060C830(u8 fileIndex, s32 arg1);
@@ -1204,12 +1203,12 @@ u8 func_global_asm_8066715C(f32 *arg0);
 u8 func_global_asm_80667174(void);
 s32 func_global_asm_80668520(f32 *arg0, f32 arg1, f32 arg2, f32 *arg3);
 void func_global_asm_8066ADA0(void);
-void func_global_asm_8066AEE4(s32 arg0, s32 arg1);
+void func_global_asm_8066AEE4(void *arg0, s32 arg1);
 void func_global_asm_8066B4AC(s32, s32, s32);
 s32 func_global_asm_8066B9F4(void*);
 s32 func_global_asm_8066B5C8(s32, s32);
 void func_global_asm_8066AF40(void);
-s32 func_global_asm_8066B020(s32 arg0, s32 arg1);
+s32 func_global_asm_8066B020(s32 pointerTableIndex, s32 fileIndex);
 void func_global_asm_8066B0DC(void);
 void func_global_asm_8066B0EC(s32 arg0);
 void func_global_asm_8066BC00(s32 arg0, s32 arg1, s32 arg2);
@@ -1601,13 +1600,13 @@ void func_global_asm_80604C80(u8 arg0, u8 arg1);
 void func_global_asm_8060866C(Actor *arg0, s16 arg1, u8 arg2, f32 arg3, u8 arg4, u8 arg5);
 void func_global_asm_8060A634(s32 arg0, f32 arg1);
 void func_global_asm_8060A670(s32 arg0, u8 arg1);
-void func_global_asm_806C43A8();
-void func_global_asm_806C4904();
-void func_global_asm_806C4948();
-void func_global_asm_806C498C();
-void func_global_asm_806C49D0();
+void func_global_asm_806C43A8(void);
+void func_global_asm_806C4904(void);
+void func_global_asm_806C4948(void);
+void func_global_asm_806C498C(void);
+void func_global_asm_806C49D0(void);
 void func_global_asm_806C4E8C(void);
-void func_global_asm_806C4EB4();
+void func_global_asm_806C4EB4(void);
 void func_global_asm_806C4EE0(u8 arg0, u8 arg1);
 void func_global_asm_806C55D8(void);
 s32 func_global_asm_806A80C0(s8 arg0);
@@ -2325,6 +2324,10 @@ s32 func_global_asm_80631EB8(u16);
 Gfx *func_global_asm_8070068C(Gfx *);
 void func_bonus_800264E0(u8 arg0, u8 arg1);
 void func_bonus_800265C0(u8 arg0, u8 arg1);
+s32 func_global_asm_8072D714(Actor*, s32);
+void func_global_asm_8072B7CC(s32);
+Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2);
+void func_global_asm_806BFBF4(void);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))

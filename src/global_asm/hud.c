@@ -260,7 +260,7 @@ void func_global_asm_806F8DC4(u8 *arg0, s32 arg1, s32 arg2) {
 
 s32 func_global_asm_806F8EB4() {
     // Count how many fairies have been photographed
-    return func_global_asm_80731AA8(0x24D, 20, FLAG_TYPE_PERMANENT);
+    return countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT);
 }
 
 // Jumptable, getMaxItemCapacity(HUDItemIndex, playerIndex)

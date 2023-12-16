@@ -1406,7 +1406,7 @@ typedef struct {
 void func_menu_80030A90(Struct80717D84 *arg0, s32 arg1) {
     s32 temp;
     s16 sp72;
-    f32 sp30[4][4];
+    float sp30[4][4];
     Struct80030A90_malloc *var_v0;
 
     if (arg0->unk384 == NULL) {

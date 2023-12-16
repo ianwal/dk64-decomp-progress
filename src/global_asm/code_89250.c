@@ -35,8 +35,6 @@ typedef struct {
 extern Struct8074E898 D_global_asm_8074E898;
 extern s32 D_global_asm_80720B24;
 
-void func_global_asm_806782C0(Actor*);
-
 void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_80685E78(Actor*);
 

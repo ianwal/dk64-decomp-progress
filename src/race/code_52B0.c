@@ -1,14 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-s32 func_race_8002CAC8(s32 arg0, Actor *arg1, RaceAdditionalActorData *arg2);
-void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
-void func_race_8002BBD0(Actor *arg0, s32 arg1);
-void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3);
-
-void func_race_8002DE78(void *, s32, void *, s32);
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -28,8 +20,6 @@ typedef struct {
     s8 unk10; // Used
 } A17C_race_8002B964;
 
-void func_race_800283D4(f32 arg0);
-
 typedef struct {
     u8 unk0[0x36 - 0];
     u8 unk36;
@@ -40,17 +30,12 @@ typedef struct {
     u8 unk45;
 } Struct8002E8EC_arg1;
 
-extern s32 D_race_8002FC5C[];
-
 typedef struct {
     u8 unk0[0x30 - 0x0];
     Actor *unk30;
     u8 unk34;
     u8 unk35;
 } Struct8002B610_arg0;
-
-void func_race_8002D72C(Actor *arg0);
-void func_race_8002D754(Actor *arg0);
 
 typedef struct {
     u8 unk0[0x28 - 0x0];
@@ -62,10 +47,6 @@ typedef struct {
     Struct8002B610_arg4 *unk4;
 } Struct8002B610_arg1;
 
-void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-
-extern s32 D_race_8002FCAC[];
-
 typedef struct RaceStruct7 {
     u8 pad0[0x35];
     u8 unk35;
@@ -76,7 +57,7 @@ typedef struct {
     u8 unk27;
     u8 unk28;
     u8 unk29[0x30 - 0x29];
-    s32 unk30;
+    Actor *unk30;
     u8 unk34[0x36 - 0x34];
     u8 unk36;
 } AAD_Car_Castle_Player;
@@ -97,13 +78,32 @@ typedef struct {
     s32 unk4;
 } A17C_initializeCastleCarRace;
 
+void func_race_800283D4(f32 arg0);
+void func_race_8002BBD0(Actor *arg0, s32 arg1);
+void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
+void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3);
+f32 func_race_8002D2C0(void *arg0);
+void func_race_8002D72C(Actor *arg0);
+void func_race_8002D754(Actor *arg0);
+void func_race_8002DE78(void *, s32, void *, s32);
+s32 func_race_8002E8EC(void *arg0, void *arg1, s32 arg2);
+void initializeSealRace(void);
+
+void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+
+void func_global_asm_80690190(void *arg0, s32 arg1);
+void func_global_asm_8068F72C(s32, s32, s32, s32);
+void func_global_asm_8068FF40(s32, s32, s32);
+
+extern s32 D_race_8002FC5C[];
 extern s32 D_race_8002FC70;
 extern s32 D_race_8002FCA0;
+extern s32 D_race_8002FCAC[];
 
 extern s16 D_global_asm_80750AC8;
 
-void func_race_800292B0(s32 arg0, Actor *arg1) {
-    func_race_8002CAC8(arg0, arg1, arg1->additional_actor_data);
+Gfx *func_race_800292B0(Gfx *dl, Actor *arg1) {
+    return func_race_8002CAC8(dl, arg1, arg1->RaaD);
 }
 
 void func_race_800292D0(Actor *arg0) {
@@ -153,17 +153,9 @@ void func_race_800292D0(Actor *arg0) {
     aaD->unk26 = 0;
 }
 
-// need this forward declaration
-void initializeSealRace(void);
-
 void sealRaceSetup(void) {
     initializeSealRace();
 }
-
-f32 func_race_8002D2C0(void *arg0);
-void func_global_asm_80690190(void *arg0, s32 arg1);
-void func_global_asm_8068F72C(s32, s32, s32, s32);
-void func_global_asm_8068FF40(s32, s32, s32);
 
 void func_race_800294A8(void) {
     s32 pad;
@@ -275,8 +267,6 @@ void func_race_80029F88(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     }
 }
 */
-
-s32 func_race_8002E8EC(void *arg0, void *arg1, s32 arg2);
 
 s32 func_race_8002A080(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1) {
     return D_race_8002FC5C[func_race_8002E8EC(arg0, arg1, 0xA)];

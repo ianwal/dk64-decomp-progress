@@ -484,9 +484,8 @@ void func_race_80026D2C(f32 arg0) {
     }
 }
 
-void func_race_80026EE4(s32 arg0, Actor *arg1) {
-    // TODO: Which aaD type are they actually expecting here?
-    func_race_8002CAC8(arg0, arg1, arg1->PaaD);
+Gfx *func_race_80026EE4(Gfx *dl, Actor *arg1) {
+    return func_race_8002CAC8(dl, arg1, arg1->RaaD);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80026F04.s")

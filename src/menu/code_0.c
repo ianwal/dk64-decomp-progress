@@ -373,7 +373,8 @@ void func_menu_80024CB0(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         sp20 = 1;
         sp28 = -1;
-        a180->unk2 = func_global_asm_80731AA8(0x1FD, 0x28, 0);
+        // Count blueprints turned
+        a180->unk2 = countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT);
         a180->unk1A = func_global_asm_80731A04(0x1D5, 0, 7, *current_character_index);
         a180->unk1A = a180->unk1A - func_global_asm_80731A04(0x1FD, 0, 7, *current_character_index);
         if (D_global_asm_8076AEF2 != 0x1C) {

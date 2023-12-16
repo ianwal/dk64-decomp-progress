@@ -365,16 +365,14 @@ void func_global_asm_80678530(Actor *arg0) {
 void func_global_asm_806785D4(Actor *arg0) {
     s16 i;
     Actor *temp_v0;
-    void *temp_a0_3;
-    void *temp_a0_4;
-    void *temp_a0_5;
+    void *temp_a0;
     void *temp_a0_6;
 
     if (arg0->unk0 != 0) {
         func_global_asm_806136B4();
     }
     temp_a0_6 = arg0->unk11C;
-    if (temp_a0_6 != 0) {
+    if (temp_a0_6 != NULL) {
         func_global_asm_80679200(temp_a0_6, arg0, 0x80000, 0, 0, 0);
     }
     for (i = 0; i < D_global_asm_807FBB34; i++) {
@@ -401,17 +399,17 @@ void func_global_asm_806785D4(Actor *arg0) {
     }
     func_global_asm_8066E21C(arg0->ledge_info_pointer);
     func_global_asm_8072F09C(arg0);
-    temp_a0_3 = arg0->unk118;
-    if (temp_a0_3 != NULL) {
-        free(temp_a0_3);
+    temp_a0 = arg0->unk118;
+    if (temp_a0 != NULL) {
+        free(temp_a0);
     }
-    temp_a0_4 = arg0->unk148;
-    if (temp_a0_4 != NULL) {
-        free(temp_a0_4);
+    temp_a0 = arg0->unk148;
+    if (temp_a0 != NULL) {
+        free(temp_a0);
     }
-    temp_a0_5 = arg0->unk14C;
-    if (temp_a0_5 != NULL) {
-        free(temp_a0_5);
+    temp_a0 = arg0->unk14C;
+    if (temp_a0 != NULL) {
+        free(temp_a0);
     }
     func_global_asm_8062D26C(arg0);
     if (arg0->unk58 != ACTOR_TEXT_BUBBLE) {

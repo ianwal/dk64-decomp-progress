@@ -415,21 +415,17 @@ void func_global_asm_8060C2C4(s32 arg0, s32 arg1, u8 arg2, u16 *arg3, s8 *arg4) 
     *arg4 = 1;
 }
 
-void func_global_asm_8060C340(s16 *arg0, s32 arg1, s32 arg2, u8 arg3, u8 arg4, u8 arg5) {
+void func_global_asm_8060C340(u16 *arg0, u8 *arg1, s32 arg2, u8 arg3, u8 arg4, u8 arg5) {
     *arg0 = arg5 * FILE_SIZE;
     if (arg2 >= 0x11) {
         func_global_asm_8060BF84(arg2, arg4, arg0, arg1);
-        return;
-    }
-    if (arg2 >= 0xC) {
+    } else if (arg2 >= 0xC) {
         func_global_asm_8060BEA8(arg2, arg4, arg0, arg1);
-        return;
-    }
-    if (arg2 > 0) {
+    } else if (arg2 > 0) {
         func_global_asm_8060BCA0(arg2, arg3, arg4, arg0, arg1);
-        return;
+    } else {
+        func_global_asm_8060C2C4(arg2, arg3, arg4, arg0, arg1);
     }
-    func_global_asm_8060C2C4(arg2, arg3, arg4, arg0, arg1);
 }
 
 // Jumptable

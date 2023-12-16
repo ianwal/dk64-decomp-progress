@@ -49,9 +49,11 @@ const u16 D_menu_80033A78[] = {
 
 extern u8 D_menu_800334DC[];
 
-void func_global_asm_806F91B4(s32, s32, s16);
 void func_menu_80025FB4(MenuStruct1*, CharacterProgress*, s32);
+void func_menu_80026B28(MenuStruct1*, CharacterProgress*, s32);
+void func_menu_80026DAC(MenuStruct1*, CharacterProgress*, s32);
 
+void func_global_asm_806F91B4(s32, s32, s16);
 void func_global_asm_806F397C(Actor*, Actor*, s16, s16);
 
 s32 func_menu_80025AF0(MenuStruct1 *arg0, s32 characterIndex) {
@@ -398,7 +400,7 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                             var_v1 = 0x21;
                         }
                     } else {
-                        sp28 = func_global_asm_80731AA8(0x225, 0x28, 0);
+                        sp28 = countSetFlags(0x225, 0x28, 0);
                         if (sp28 >= 0xF) {
                             func_menu_80026290(arg0, &sp3C);
                             if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT) != 0) {
@@ -443,6 +445,8 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
 }
 */
 
+void func_menu_800262A8(MenuStruct1*, CharacterProgress*, s32);
+
 void func_menu_80026684(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
     switch (arg0->unkE) {
         case 0:
@@ -453,7 +457,7 @@ void func_menu_80026684(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
             if ((s32)(current_actor_pointer->object_properties_bitfield << 6) >= 0) {
                 arg0->unkE = 0;
                 arg0->unkD = arg0->unkF;
-                func_global_asm_8061CB08(arg0, arg1, arg2);
+                func_global_asm_8061CB08();
             }
             return;
     }
@@ -482,7 +486,7 @@ s32 func_menu_800266F0(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex
     return temp_a2;
 }
 
-void func_menu_80026804(MenuStruct1 *arg0, s32 arg1) {
+void func_menu_80026804(MenuStruct1 *arg0, CharacterProgress *arg1) {
     arg0->unkA = 1;
     playCutscene(NULL, 0xF, 1);
     func_global_asm_80629174();
@@ -577,9 +581,6 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026DAC.s")
 
-void func_menu_80026B28(MenuStruct1*, s32, s32);
-void func_menu_80026DAC(MenuStruct1*, s32, s32);
-
 void func_menu_80027028(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex) {
     s32 flagIsNotSet = !isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
     switch (arg0->unkD) {
@@ -610,7 +611,7 @@ s32 func_menu_800275EC(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_800275FC.s")
 
 void func_menu_80027738(void) {
-    Actor178 *temp;
+    MenuStruct1 *temp;
     CharacterProgress *var1;
     func_global_asm_80729B00();
 

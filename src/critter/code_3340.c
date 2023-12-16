@@ -305,7 +305,7 @@ void func_critter_80027DC0(void) {
         } else if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
             func_global_asm_80614EBC(current_actor_pointer, 0x2B5);
         // Has the player photographed all 20 fairies?
-        } else if (func_global_asm_80731AA8(0x24D, 20, FLAG_TYPE_PERMANENT) == 20) {
+        } else if (countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT) == 20) {
             func_global_asm_80614EBC(current_actor_pointer, 0x2B5);
             current_actor_pointer->control_state = 3;
         }

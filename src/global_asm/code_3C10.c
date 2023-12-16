@@ -191,10 +191,10 @@ typedef struct global_asm_struct_1 {
     u8 unk0; // inSubmap?
     u8 unk1;
     s16 unk2;
-    f32 unk4; // X Position
-    f32 unk8; // Y Position
-    f32 unkC; // Z Position
-    s16 unk10; // Y Rotation
+    f32 xPosition; // X Position
+    f32 yPosition; // Y Position
+    f32 zPosition; // Z Position
+    s16 yRotation; // Y Rotation
     s16 unk12; // Map
     u8 unk14; // Used
     u8 unk15;
@@ -203,9 +203,9 @@ typedef struct global_asm_struct_1 {
     s32 unk1C;
     s32 unk20; // Used
     u8 pad24[0x9C];
-} GlobalASMStruct1; // Size 0xC0
+} Struct8076A160; // Size 0xC0
 
-extern GlobalASMStruct1 D_global_asm_8076A160[];
+extern Struct8076A160 D_global_asm_8076A160[];
 extern s16 D_global_asm_8076AEE2;
 extern f32 D_global_asm_8076AEE4; // X Position
 extern f32 D_global_asm_8076AEE8; // Y Position
@@ -336,10 +336,10 @@ void func_global_asm_805FF1B0(s32 player_index) {
     } else {
         found_special_void = FALSE;
         if (func_global_asm_805FEF74(current_map) != 0) {
-            new_map = (u16)current_map;
+            new_map = current_map;
         } else {
             s32 level_index;
-            found_special_void = 0;
+            found_special_void = FALSE;
             new_exit = 0;
             level_index = getLevelIndex((u8)current_map, 0U);
             new_map = D_global_asm_80744748[level_index];
@@ -414,12 +414,22 @@ void func_global_asm_805FF4D8(Maps map, s32 exit) {
 }
 
 typedef struct {
-    s32 unk0; // Map
-    s32 unk4; // Map
+    Maps unk0; // Map
+    Maps unk4; // Map
     s32 unk8; // Exit
 } GlobalASMStruct42;
 
-extern GlobalASMStruct42 D_global_asm_807447A0[];
+// TODO: Use map enums
+extern GlobalASMStruct42 D_global_asm_807447A0[]; // = {
+    //{ 0x06, 0x07, 0x0E },
+    //{ 0x0E, 0x26, 0x11 },
+    //{ 0x1B, 0x1A, 0x10 },
+    //{ 0x27, 0x1E, 0x13 },
+    //{ 0x37, 0x30, 0x10 },
+    //{ 0x52, 0x48, 0x06 },
+    //{ 0x6A, 0x70, 0x01 },
+    //{ 0xB9, 0x71, 0x01 },
+//};
 
 void func_global_asm_805FF544(void) {
     s32 i;
@@ -436,10 +446,10 @@ void func_global_asm_805FF5A0(Maps map) {
 
     if (index != -1) {
         D_global_asm_8076AEE2 = D_global_asm_8076A160[index].unk2;
-        D_global_asm_8076AEE4 = D_global_asm_8076A160[index].unk4; // X Position (exit)
-        D_global_asm_8076AEE8 = D_global_asm_8076A160[index].unk8; // Y Position (exit)
-        D_global_asm_8076AEEC = D_global_asm_8076A160[index].unkC; // Z Position (exit)
-        D_global_asm_8076AEF0 = D_global_asm_8076A160[index].unk10; // Angle? (exit)
+        D_global_asm_8076AEE4 = D_global_asm_8076A160[index].xPosition; // X Position (exit)
+        D_global_asm_8076AEE8 = D_global_asm_8076A160[index].yPosition; // Y Position (exit)
+        D_global_asm_8076AEEC = D_global_asm_8076A160[index].zPosition; // Z Position (exit)
+        D_global_asm_8076AEF0 = D_global_asm_8076A160[index].yRotation; // Angle? (exit)
     } else {
         D_global_asm_8076AEE2 = 0;
     }
@@ -555,8 +565,8 @@ void func_global_asm_805FF9AC(enum map_e arg0, s32 arg1, s32 arg2, s16 arg3) {
     f32 sp40;
     f32 sp3C;
     f32 sp38;
-    GlobalASMStruct1 *var_s1;
-    GlobalASMStruct1 *var_v0_3;
+    Struct8076A160 *var_s1;
+    Struct8076A160 *var_v0_3;
     f64 temp_f20;
     s16 var_s0;
     s32 var_v0;
@@ -604,10 +614,10 @@ block_17:
     }
     var_s1->unk2 = arg3;
     if (arg3 & 1) {
-        var_s1->unk4 = player_pointer->x_position;
-        var_s1->unk8 = player_pointer->y_position;
-        var_s1->unkC = player_pointer->z_position;
-        var_s1->unk10 = player_pointer->y_rotation;
+        var_s1->xPosition = player_pointer->x_position;
+        var_s1->yPosition = player_pointer->y_position;
+        var_s1->zPosition = player_pointer->z_position;
+        var_s1->yRotation = player_pointer->y_rotation;
     }
     var_s1->unk12 = current_map;
     if (arg3 & 2) {
@@ -716,16 +726,16 @@ void func_global_asm_80631F58(s32, s32, s32);
 s16 func_global_asm_80600174(f32*, f32*, f32*);
 
 /*
-s16 func_global_asm_80600174(f32 *arg0, f32 *arg1, f32 *arg2) {
+s16 func_global_asm_80600174(f32 *x, f32 *y, f32 *z) {
     s32 i;
-    GlobalASMStruct1* focused_parent;
+    Struct8076A160* focused_parent;
     for (i = 0; i < 18; i++) {
         if (D_global_asm_8076A160[i].unk0) {
             if ((D_global_asm_8076A160[i].unk2 & 1)) {
                 focused_parent = &D_global_asm_8076A160[i];
-                *arg0 = focused_parent->unk4;
-                *arg1 = focused_parent->unk8;
-                *arg2 = focused_parent->unkC;
+                *x = focused_parent->xPosition;
+                *y = focused_parent->yPosition;
+                *z = focused_parent->zPosition;
                 return i;
             }
         }
@@ -809,7 +819,7 @@ s32 func_global_asm_80600530(void) { // getLobbyIndex()
     return i;
 }
 
-extern s32 D_80767CC4;
+extern s32 D_global_asm_80767CC4;
 
 typedef struct {
     u16 unk0;
@@ -817,22 +827,21 @@ typedef struct {
     u16 unk4;
     u16 unk6;
 } Struct8076AF00;
-extern Struct8076AF00 D_8076AF00[];
+extern Struct8076AF00 D_global_asm_8076AF00[];
 
-extern s32 D_8076AF10;
-extern s8 D_8076AF14;
+extern s32 D_global_asm_8076AF10;
+extern s8 D_global_asm_8076AF14;
 
 void func_global_asm_80600590(Maps map) {
-    Struct8076AF00 *var_v1;
     s32 i;
 
     for (i = 0; i < 2; i++) {
-        D_8076AF00[i].unk2 = 2;
-        D_8076AF00[i].unk4 = 2;
-        D_8076AF00[i].unk6 = 2;
-        D_8076AF00[i].unk0 = 2;
+        D_global_asm_8076AF00[i].unk2 = 2;
+        D_global_asm_8076AF00[i].unk4 = 2;
+        D_global_asm_8076AF00[i].unk6 = 2;
+        D_global_asm_8076AF00[i].unk0 = 2;
     }
-    D_8076AF10 = D_80767CC4;
+    D_global_asm_8076AF10 = D_global_asm_80767CC4;
     switch (map) {
         case MAP_JAPES_MINECART:
         case MAP_FACTORY_CAR_RACE:
@@ -845,10 +854,10 @@ void func_global_asm_80600590(Maps map) {
         case MAP_DK_ISLES_DK_THEATRE:
         case MAP_ROCK_INTRO_STORY:
         case MAP_BLOOPERS_ENDING:
-            D_8076AF14 = 0;
+            D_global_asm_8076AF14 = 0;
             return;
         default:
-            D_8076AF14 = 1;
+            D_global_asm_8076AF14 = 1;
             return;
     }
 }
@@ -858,14 +867,10 @@ void func_global_asm_80600590(Maps map) {
 
 extern u32 D_global_asm_80744478;
 extern u8 D_global_asm_80745290;
-extern u32 D_global_asm_80767CC4;
-extern s16 D_global_asm_8076AF00[8];
-extern u32 D_global_asm_8076AF10;
-extern u8 D_global_asm_8076AF14;
 
 /*
-Lag calculation formula
-incredibly beefy
+// Lag calculation formula
+// incredibly beefy
 void func_global_asm_80600674(void) {
     s16 *lagboost_arrayaddr;
     s32 lagboost_currtest;

@@ -100,7 +100,7 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
 */
 
 
-void func_global_asm_806C43A8() {
+void func_global_asm_806C43A8(void) {
     s32 song = 0;
     switch (current_map) {
         case MAP_JAPES_MINECART:
@@ -119,19 +119,19 @@ void func_global_asm_806C43A8() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_global_asm_806C4414.s")
 
-void func_global_asm_806C4904() {
+void func_global_asm_806C4904(void) {
     func_global_asm_806C4414(0, 1, 2, 0xF, 0x10, 0x32, 0x18);
 }
 
-void func_global_asm_806C4948() {
+void func_global_asm_806C4948(void) {
     func_global_asm_806C4414(6, 7, 8, 0x10, 0xE, 0x32, 0xD7);
 }
 
-void func_global_asm_806C498C() {
+void func_global_asm_806C498C(void) {
     func_global_asm_806C4414(1, 2, 3, 4, 5, 0x19, 0x13E);
 }
 
-void func_global_asm_806C49D0() {
+void func_global_asm_806C49D0(void) {
     func_global_asm_80729B00();
     switch (current_map) {
         case MAP_AZTEC:
@@ -164,7 +164,7 @@ void func_global_asm_806C4E8C(void) {
     func_global_asm_806FB370(5, 0, 0);
 }
 
-void func_global_asm_806C4EB4() {
+void func_global_asm_806C4EB4(void) {
     func_global_asm_8063DA40(0x2C, 0xB);
     func_global_asm_806C4E8C();
 }

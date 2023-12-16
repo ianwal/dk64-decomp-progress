@@ -356,7 +356,7 @@ void func_global_asm_80712524(Maps newMap, s32 cutsceneIndex) {
 // getHelmTimerStartTime()
 s32 func_global_asm_80712548(void) {
     // Count blueprints turned + 10
-    return func_global_asm_80731AA8(0x1FD, 40, FLAG_TYPE_PERMANENT) + 10;
+    return countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT) + 10;
 }
 
 typedef struct {

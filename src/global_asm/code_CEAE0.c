@@ -2274,11 +2274,11 @@ typedef struct {
     s8  unk5;
     s16 unk6;
     Actor *unk8;
-} GlobalASMStruct1;
+} Struct806D2330;
 
 // TODO: Arg0 is a function pointer
 void func_global_asm_806D2330(void *arg0) {
-    GlobalASMStruct1 *temp_v0 = malloc(0x14);
+    Struct806D2330 *temp_v0 = malloc(0x14);
     temp_v0->unk0 = arg0;
     temp_v0->unk8 = D_global_asm_807FBB48; // player_pointer
     temp_v0->unk4 = 1;

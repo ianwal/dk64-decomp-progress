@@ -226,33 +226,33 @@ s32 func_race_8002C14C(s32, void *);
 s32 func_race_8002C2E8(s32, void *);
 s32 func_race_8002C76C(s32, void *);
 
-s32 func_race_8002CAC8(s32 arg0, Actor *arg1, RaceAdditionalActorData *arg2) {
+Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2) {
     RaceAdditionalActorData2 *sp24;
     PlayerAdditionalActorData *PaaD;
 
     sp24 = arg2->unk30->RaaD2;    
     if (arg2 == NULL || gameIsInDKTVMode()) {
-        return arg0;
+        return dl;
     }
     if (character_change_array[arg2->unk28].player_pointer == NULL) {
-        return arg0;
+        return dl;
     }
     PaaD = character_change_array[arg2->unk28].player_pointer->PaaD;
     if (arg1 != PaaD->vehicle_actor_pointer) {
-        return arg0;
+        return dl;
     }
 
-    arg0 = func_race_8002C63C(arg0, arg2);
+    dl = func_race_8002C63C(dl, arg2);
     if (sp24->unk0 & 8) {
-        arg0 = func_race_8002C2E8(arg0, arg2);
+        dl = func_race_8002C2E8(dl, arg2);
     } else if (sp24->unk0 & 0x10) {
-        arg0 = func_race_8002C14C(arg0, arg2);
+        dl = func_race_8002C14C(dl, arg2);
     }
     if (sp24->unk0 & 6) {
-        arg0 = func_race_8002C76C(arg0, arg2);
+        dl = func_race_8002C76C(dl, arg2);
     }
 
-    return arg0;
+    return dl;
 }
 
 // Displaylist stuff
@@ -705,7 +705,7 @@ typedef struct {
     u8 unk27;
     u8 unk28;
     u8 unk29[0x30 - 0x29];
-    s32 unk30;
+    Actor *unk30;
     u8 unk34[0x36 - 0x34];
     u8 unk36;
 } AAD_race_8002E2C8_Actor315;

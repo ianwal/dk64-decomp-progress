@@ -104,7 +104,6 @@ f32 func_global_asm_80612E40(f32);
 ? func_global_asm_806AB808(void *, ?, ?, ?, s32, s32, s32, s32);
 s32 func_global_asm_806C8DE0(?);
 s32 func_global_asm_806F6E58(u8);
-s16 func_global_asm_807319D8(?, s32, u8);
 extern ? D_global_asm_80720C34;
 extern ? D_global_asm_80720D38;
 extern ? D_global_asm_80720D5C;
@@ -629,8 +628,8 @@ void func_global_asm_806ABE3C(void) {
         }
     }
     D_global_asm_807FC82C = var_s0;
-    D_global_asm_807FC832 = func_global_asm_80731AA8(0x24D, 20, FLAG_TYPE_PERMANENT);
-    D_global_asm_807FC82E = func_global_asm_80731AA8(0x225, 40, FLAG_TYPE_PERMANENT);
+    D_global_asm_807FC832 = countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT);
+    D_global_asm_807FC82E = countSetFlags(0x225, 40, FLAG_TYPE_PERMANENT);
 
     // TODO: Get rid of this empty if statement, I don't like doing this...
     if (var_s0);
@@ -644,7 +643,7 @@ void func_global_asm_806ABE3C(void) {
     D_global_asm_807FC82A = var_s0;
     D_global_asm_807FC834 = isFlagSet(0x84, FLAG_TYPE_PERMANENT);
     D_global_asm_807FC830 = isFlagSet(0x17B, FLAG_TYPE_PERMANENT);
-    D_global_asm_807FC836 = func_global_asm_80731AA8(0x1FD, 40, FLAG_TYPE_PERMANENT);
+    D_global_asm_807FC836 = countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT);
     D_global_asm_80750530[0] = 1;
     for (i = 1; i < 5; i++) {
         // TODO: Problem here
