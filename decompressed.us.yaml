@@ -403,7 +403,7 @@ segments:
       - [0x2160F60, rodata] # code_C8C10
       - [0x2161080, .rodata, code_CB230]
       - [0x21610E0, .rodata, code_CBEA0]
-      - [0x2161110, rodata] # code_CC800
+      - [0x2161110, .rodata, code_CC800]
       - [0x21614B0, rodata] # code_CEAE0
       - [0x2162080, rodata] # code_EFDC0
       - [0x21622F0, rodata] # code_F56F0
