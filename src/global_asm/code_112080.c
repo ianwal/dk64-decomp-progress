@@ -269,7 +269,7 @@ void func_global_asm_8070D970(u16 arg0) {
 }
 
 void func_global_asm_8070D9AC(Struct806A57C0_2 *arg0) {
-    s32 temp_a0;
+    void *temp_a0;
     s32 temp_s2;
     Struct806A57C0_3 *temp_s0;
     Struct806A57C0_3 *var_s1;

@@ -13,8 +13,6 @@ D_race_80030110 .double 0.15
 void func_race_8002E2C8(Actor *arg0);
 void func_race_80025E9C(Actor *);
 
-Gfx *func_global_asm_805FD030(Gfx *);
-
 void func_race_8002BBD0(Actor *arg0, s32 arg1) {
     RaceAdditionalActorData *sp1C;
     RaaD_unk20 *temp_v0;

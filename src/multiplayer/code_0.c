@@ -4,7 +4,7 @@
 typedef struct {
     s32 unk0;
     s32 unk4;
-    s32 unk8;
+    s32 unk8; // Seconds
 } AAD_multiplayer_80024000;
 
 typedef struct {
@@ -37,7 +37,7 @@ typedef struct {
 
 typedef struct {
     u8 unk0[0x50 - 0x0];
-    s32 unk50[8];
+    void *unk50[8];
     u8 unk70;
 } Struct80025FFC;
 
@@ -46,21 +46,15 @@ typedef struct {
     u8 unk4C;
 } struct_unknown_mp_aad;
 
-void func_multiplayer_800242FC(MultiplayerStruct4 *);
+void func_multiplayer_800242FC(void *);
 s32 func_multiplayer_80025404(void);
+s32 func_multiplayer_80025608(s32 objectType);
 void func_multiplayer_80025F84();
 s32 func_multiplayer_80026BD8(s32);
 
-void *func_global_asm_805FD030(Gfx*);
-s32 func_global_asm_8063254C(s32, s32 *, f32 *, f32 *, f32 *, s16 *, s16*);
-void func_global_asm_8068E7B4(Gfx *, f32, f32, s32);
 void func_global_asm_806A5DF0(u16, f32, f32, f32, s32, s32, s32, s32);
-void func_global_asm_806C9434(s32);
-void func_global_asm_806CFF9C(Actor*);
-void func_global_asm_806F0C18(Actor*);
 void func_global_asm_806F91B4(s32, u8, s16);
 void func_global_asm_806F54E0(u8, s32, s32);
-void func_global_asm_80715908(Struct80717D84 *);
 extern int func_global_asm_8071F3C0(); // TODO: Signature
 
 extern u8 D_multiplayer_80026F70;
@@ -73,12 +67,12 @@ extern u32 D_global_asm_807552E8;
 extern s32 D_global_asm_807552EC;
 extern s8 D_global_asm_8076A105; // A player index
 
-void func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
-    AAD_multiplayer_80024000 *sp44;
+Gfx *func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
+    AAD_multiplayer_80024000 *aaD;
     f32 var_f2;
     f32 var_f12;
 
-    sp44 = arg1->additional_actor_data;
+    aaD = arg1->additional_actor_data;
     if (D_global_asm_80750AB8 == 1) {
         var_f2 = 278.0f;
         var_f12 = 210.0f;
@@ -98,7 +92,7 @@ void func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
     }
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    func_global_asm_8068E7B4(dl, var_f2, var_f12, sp44->unk8);
+    return func_global_asm_8068E7B4(dl, var_f2, var_f12, aaD->unk8);
 }
 
 s32 func_multiplayer_800241F4(PlayerProgress *arg0, s32 arg1) {
@@ -121,65 +115,66 @@ s32 func_multiplayer_800241F4(PlayerProgress *arg0, s32 arg1) {
     return var_v1;
 }
 
-s32 func_multiplayer_80024254(s32 arg0) {
+s32 func_multiplayer_80024254(s32 playerIndex) {
     s32 var_v0;
 
     var_v0 = 0;
     switch (D_global_asm_807552E8) {
         case 2:
         case 3:
-            var_v0 = func_global_asm_806F8AD4(1, arg0);
+            var_v0 = func_global_asm_806F8AD4(1, playerIndex);
             break;
         case 4:
         case 5:
-            var_v0 = func_global_asm_806F8AD4(7, arg0);
+            var_v0 = func_global_asm_806F8AD4(7, playerIndex);
             break;
         case 0:
         case 1:
-            var_v0 = func_multiplayer_800241F4(&D_global_asm_807FC950[arg0], arg0);
+            var_v0 = func_multiplayer_800241F4(&D_global_asm_807FC950[playerIndex], playerIndex);
             break;
     }
     return var_v0;
 }
 
-void func_multiplayer_800242FC(MultiplayerStruct4 *arg0) {
-    s32 temp_v0;
+// TODO: which aaD are they expecting? It's not PaaD
+void func_multiplayer_800242FC(void *arg0) {
+    s32 check;
     s32 playerIndex;
-    s32 phi_s1;
-    s32 phi_s2;
+    s32 highest;
+    s32 chosenPlayerIndex;
 
     D_global_asm_807552EC = 2;
-    phi_s2 = 0;
-    phi_s1 = -99999;
+    chosenPlayerIndex = 0;
+    highest = -99999;
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
-        temp_v0 = func_multiplayer_80024254(playerIndex);
-        if (phi_s1 < temp_v0) {
-            phi_s1 = temp_v0;
-            phi_s2 = playerIndex;
-        } else if (temp_v0 == phi_s1) {
-            phi_s2 = -1;
+        check = func_multiplayer_80024254(playerIndex);
+        if (highest < check) {
+            highest = check;
+            chosenPlayerIndex = playerIndex;
+        } else if (check == highest) {
+            chosenPlayerIndex = -1;
         }
     }   
     global_properties_bitfield |= 0x40001;
     func_global_asm_80714638();
-    D_global_asm_8076A105 = phi_s2;
+    D_global_asm_8076A105 = chosenPlayerIndex;
 }
 
 void func_multiplayer_800243C8(void) {
     s32 pad;
     u64 temp_ret_3;
     u64 temp;
-    AAD_multiplayer_800243C8 *temp_s0;
+    AAD_multiplayer_800243C8 *aaD;
 
-    temp_s0 = current_actor_pointer->additional_actor_data;
-    temp = func_dk64_boot_80005918(osGetTime() - temp_s0->unk0, 0x40);
-    temp_ret_3 = func_dk64_boot_80005818(temp, 0xBB8);
+    aaD = current_actor_pointer->additional_actor_data;
+    temp = func_dk64_boot_80005918(osGetTime() - aaD->unk0, 0x40);
+    temp_ret_3 = func_dk64_boot_80005818(temp, 3000);
     if (!(global_properties_bitfield & 2)) {
-        temp_s0->unk8 = temp_s0->unkC - func_dk64_boot_80005818(temp_ret_3, 1000000);
+        aaD->unk8 = aaD->unkC - func_dk64_boot_80005818(temp_ret_3, 1000000);
     }
-    if (!(temp_s0->unk8 > 0)) {
-        temp_s0->unk8 = 0;
-        func_multiplayer_800242FC(temp_s0);
+    if (!(aaD->unk8 > 0)) {
+        aaD->unk8 = 0;
+        func_multiplayer_800242FC(aaD);
     }
     func_global_asm_8068C350(&func_multiplayer_80024000, current_actor_pointer, 7);
 }
@@ -207,8 +202,7 @@ void func_multiplayer_8002452C(void) {
         }
     }
     if (a < 2) {
-        // TODO: Which aaD type are they actually expecting here?
-        func_multiplayer_800242FC(current_actor_pointer->PaaD);
+        func_multiplayer_800242FC(current_actor_pointer->additional_actor_data);
     }
 }
 
@@ -254,7 +248,7 @@ void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, s32 arg3, s32 arg4
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025378.s")
 
 typedef struct {
-    s32 map; // TODO: ?
+    Maps map;
     s32 unk4;
     s32 unk8;
     s32 unkC[4];
@@ -338,7 +332,7 @@ s32 func_multiplayer_80025404(void) {
     return chosenPlayer;
 }
 
-s32 func_multiplayer_80025608(s32 arg0) {
+s32 func_multiplayer_80025608(s32 objectType) {
     s32 sp38;
     f32 sp34;
     f32 sp30;
@@ -349,7 +343,7 @@ s32 func_multiplayer_80025608(s32 arg0) {
     sp38 = 0;
     sp2E = 0;
     sp2C = 0;
-    return func_global_asm_8063254C(arg0, &sp38, &sp34, &sp30, &sp_1, &sp2E, &sp2C);
+    return func_global_asm_8063254C(objectType, &sp38, &sp34, &sp30, &sp_1, &sp2E, &sp2C);
 }
 
 // close, issue is with call to func_global_asm_806F5EB4, extra param on the stack doesn't match global_asm signature
@@ -361,7 +355,6 @@ typedef struct MultiplayerStruct3 {
     s16 unk2;
     s16 unk4;
 } MultiplayerStruct3;
-s32 func_multiplayer_80025608(s32);
 void func_global_asm_806F5FE8(s32, s16, s16, s16, s32);
 extern s32 D_global_asm_807552F0;
 
@@ -511,7 +504,7 @@ void func_multiplayer_80025F84(void) {
 }
 
 void func_multiplayer_80025FFC(Struct80025FFC *arg0) {
-    s32 temp_a0;
+    void *temp_a0;
     s32 i;
 
     if (arg0->unk70 != 0) {
@@ -637,15 +630,15 @@ s32 func_multiplayer_80026BD8(s32 arg0) {
     return chosenExit;
 }
 
-void func_multiplayer_80026D40(Actor *arg0, s32 arg1) {
-    if ((D_global_asm_807552E8 == 4) && (func_multiplayer_80024254(arg1) == 0)) {
-        D_global_asm_807FC950[arg1].health = 0;
+void func_multiplayer_80026D40(Actor *arg0, s32 playerIndex) {
+    if ((D_global_asm_807552E8 == 4) && (func_multiplayer_80024254(playerIndex) == 0)) {
+        D_global_asm_807FC950[playerIndex].health = 0;
         arg0->control_state_progress++;
-        func_global_asm_806EB0C0(0x5B, NULL, arg1);
+        func_global_asm_806EB0C0(0x5B, NULL, playerIndex);
         arg0->noclip_byte = 1;
     } else {
-        func_global_asm_806C9434(func_multiplayer_80026BD8(arg1));
-        character_change_array[arg1].unk2E2 |= 1;
+        func_global_asm_806C9434(func_multiplayer_80026BD8(playerIndex));
+        character_change_array[playerIndex].unk2E2 |= 1;
         func_global_asm_806CFF9C(arg0);
     }
 }

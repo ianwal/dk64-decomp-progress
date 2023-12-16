@@ -617,7 +617,6 @@ void func_bonus_80028E3C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80029E54.s")
 
 /*
-? func_global_asm_806F0C18(Actor *, s16 *);
 extern s16 D_bonus_8002D8C8[];
 extern ? D_bonus_8002D8D4;
 extern f32 D_bonus_8002DDB8;
@@ -657,7 +656,7 @@ void func_bonus_80029E54(Actor *arg0) {
             temp_v0_2->object_properties_bitfield |= 0x1000;
             D_global_asm_807FBB44->y_rotation = 0x800;
             if (var_s1 != 6) {
-                func_global_asm_806F0C18(D_global_asm_807FBB44, a17C);
+                func_global_asm_806F0C18(D_global_asm_807FBB44);
                 func_global_asm_80614EBC(D_global_asm_807FBB44, D_bonus_8002D8D4[var_s1]);
             }
             if (var_s1 != 6) {

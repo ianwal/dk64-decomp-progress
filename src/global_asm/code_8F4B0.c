@@ -533,7 +533,7 @@ Gfx *func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068E474.s")
 
-void func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
+Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
     f32 sp54;
     f32 sp50;
     f32 sp4C;
@@ -554,5 +554,5 @@ void func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
     sp54 -= func_global_asm_806FBD5C(0x86, &sp3C);
     dl = func_global_asm_806FC530(dl, 0x86, sp54 * 4.0f, sp2C, &sp3C, 1);
     func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F54, seconds - (minutes * 60));
-    func_global_asm_806FC530(dl, 0x86, (arg1 + sp4C) * 4.0f, sp2C, &sp3C, 1);
+    return func_global_asm_806FC530(dl, 0x86, (arg1 + sp4C) * 4.0f, sp2C, &sp3C, 1);
 }

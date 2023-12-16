@@ -6,6 +6,13 @@
 typedef struct {
     s32 unk0;
     s32 unk4;
+    s32 unk8;
+    s32 unkC;
+} Struct8075C410;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
     u8 unk8;
     u8 unk9;
     s16 unkA;
@@ -685,8 +692,8 @@ typedef struct yaad5 {
     f32 unk0; // Used
     f32 unk4; // Used
     f32 unk8; // Used
-    u32 unkC;
-    Actor* unk10; // Used
+    Actor *unkC; // Used
+    Actor *unk10; // Used
     s16 unk14; // Used
     s16 unk16; // Used
     u16 unk18;
@@ -990,7 +997,7 @@ typedef struct player_additional_actor_data {
     s32 unk254;
     f32 unk258; // Used
     f32 unk25C; // Used
-    s32 unk260;
+    void *unk260; // Used (multiplayer)
     s32 unk264; // Used
 } PlayerAdditionalActorData;
 
@@ -1028,7 +1035,7 @@ struct struct806A57C0_3 {
     f32 unk8; // Used
     s32 unkC;
     s32 unk10;
-    s32 unk14;
+    void *unk14; // Used
     s32 unk18;
     s32 unk1C;
     s32 unk20;
@@ -1458,7 +1465,7 @@ typedef struct {
     s16     chunk; // 0x290
     s16     unk292;
     CharacterChange294 *unk294; // Used
-    s32     new_controller_inputs; // bitfield 0x298
+    u16     *new_controller_inputs; // bitfield 0x298
     s16     action_initiated; // 0x29C
     s16     unk29E;
     Actor*  unk2A0;

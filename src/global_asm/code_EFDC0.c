@@ -420,6 +420,7 @@ void func_global_asm_806EC3BC(void) {
     func_global_asm_80614D00(current_actor_pointer, 0.5f, 0);
 }
 
+// doable, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806EC4AC.s")
 
 extern s16 D_global_asm_807538D8[];

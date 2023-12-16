@@ -605,7 +605,7 @@ s32 func_global_asm_80677CAC(s16 arg0, s16 arg1);
 s32 func_global_asm_80677D58(Actor *arg0);
 void func_global_asm_80659110(u8 arg0);
 u8 func_global_asm_80659190(void);
-void func_global_asm_806C9C80(s32, s32, s32);
+void func_global_asm_806C9C80(s32 playerIndex, s32 arg1, s32 arg2);
 s32 func_global_asm_8066B06C(s32 pointerTableIndex, s32 fileIndex);
 void func_global_asm_806C9658(Maps);
 void func_global_asm_806C7B00(void);
@@ -1307,7 +1307,7 @@ void func_global_asm_8071321C(void);
 void func_global_asm_80713270(void);
 s32 func_global_asm_8071375C(s32 arg0);
 void func_global_asm_807138A4(s32 *arg0);
-s32 func_global_asm_80713DFC(s32 arg0);
+Gfx *func_global_asm_80713DFC(Gfx *dl);
 s32 func_global_asm_80713EA8(s32 arg0);
 int func_global_asm_80714360(void);
 int gameIsInSnidesBonusGameMode(void);
@@ -1885,7 +1885,7 @@ void func_global_asm_80658CCC(void);
 u8 func_global_asm_80658DAC(s32 arg0);
 void func_global_asm_80631C3C(void);
 s32 func_global_asm_80631D8C(u8 arg0);
-s32 func_global_asm_8063254C(s32 arg0, s32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, s16 *arg5, s16 *arg6);
+s32 func_global_asm_8063254C(s32 objectType, s32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, s16 *arg5, s16 *arg6);
 void func_global_asm_80632E10(s16 arg0, u8 *arg1);
 u8 func_global_asm_80632F74(f32 arg0, f32 arg1, f32 arg2);
 void func_global_asm_80633570(GlobalASMStruct83 *arg0);
@@ -2328,6 +2328,11 @@ s32 func_global_asm_8072D714(Actor*, s32);
 void func_global_asm_8072B7CC(s32);
 Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2);
 void func_global_asm_806BFBF4(void);
+void func_global_asm_80715908(void *);
+Gfx *func_global_asm_805FCFD8(Gfx *dl);
+Gfx *func_global_asm_805FD030(Gfx *dl);
+Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds);
+void func_global_asm_806F0C18(Actor*);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))

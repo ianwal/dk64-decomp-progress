@@ -26,12 +26,13 @@ typedef struct{
     s32 unk4;
 } dk64_boot_struct_1_s;
 
+// close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1630/func_dk64_boot_80000A30.s")
 
 /*
 void func_dk64_boot_80000A30(void) {
     D_dk64_boot_80013A70[0] = &D_dk64_boot_80133E80;
-    osCreateThread(&D_dk64_boot_800138C0, 2, func_dk64_boot_80000AA0, NULL, &D_dk64_boot_80133E80, 0xA);
+    osCreateThread(&D_dk64_boot_800138C0, 2, func_dk64_boot_80000AA0, NULL, D_dk64_boot_80013A70[0], 0xA);
     osStartThread(&D_dk64_boot_800138C0);
     while (TRUE) {};
 }
@@ -40,7 +41,7 @@ void func_dk64_boot_80000A30(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1630/func_dk64_boot_80000AA0.s")
 
 void func_dk64_boot_80000CD4(void) {
-    s16 *tmp_v0 = 0x80100000;
+    s16 *tmp_v0 = (void*)0x80100000;
     int i;
     s32 pad0;
     void * sp38;
@@ -55,14 +56,14 @@ void func_dk64_boot_80000CD4(void) {
             tmp_v0[i++] = 0;
         } while(i < 0x12C00);
     } else {
-        tmp_s0 = 0x80280000;
+        tmp_s0 = (void*)0x80280000;
         func_dk64_boot_8000102C(0x38, 0x10, tmp_s0);
         func_dk64_boot_8000102C(tmp_s0->unk0 + 0x4C, 0x10, tmp_s0);
         func_dk64_boot_8000102C(tmp_s0->unk0, tmp_s0->unk4 - tmp_s0->unk0, tmp_s0);
         sp38 = tmp_s0;
         sp34 = 0x80380000;
         func_dk64_boot_800024E0(&sp38, &sp34, 0x803C0000);
-        func_dk64_boot_80000D8C(0x80100000);
+        func_dk64_boot_80000D8C((void*)0x80100000);
     }
 }
 
@@ -101,7 +102,7 @@ void func_dk64_boot_8000102C(s32 offset, s32 size, void *dramAddr) {
         size++;
     }
     osWritebackDCache(dramAddr, size);
-    osPiRawStartDma(OS_READ, D_dk64_boot_8000DDCC + offset, dramAddr, size);
+    osPiRawStartDma(OS_READ, &D_dk64_boot_8000DDCC[offset], dramAddr, size);
     do{}while(osPiGetStatus() & PI_STATUS_DMA_BUSY);
     osInvalDCache(dramAddr, size);
 }

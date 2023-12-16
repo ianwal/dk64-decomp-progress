@@ -1,26 +1,49 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// TODO: Add this to the aaD union
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s8 unk8;
+} AppleAAD;
 
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+} Struct80750948;
+
+extern Struct80750948 D_global_asm_80750948[];
 extern u8 D_global_asm_80750AB4;
 extern u8 D_global_asm_80750AB8;
+extern u8 D_global_asm_80750ABC;
 extern u8 D_global_asm_80750AC0;
+extern s8 D_global_asm_80750ACC;
+extern s32 D_global_asm_80750B34[];
 
-void func_global_asm_806C9C80(s32, s32, s32);
+extern s32 D_global_asm_807552EC;
 
 extern u8 D_global_asm_80770DC9;
 extern u8 number_of_exits;
 
-extern ExitData *exit_array;
-extern ExitData D_global_asm_807FC908;
-extern ExitData D_global_asm_807FC918;
-extern ExitData D_global_asm_807FD574;
-
-extern f32 D_global_asm_8075C788;
-extern f64 D_global_asm_8075C790;
-extern f64 D_global_asm_8075C798;
-extern f64 D_global_asm_8075C7A0;
-extern f64 D_global_asm_8075C7A8; // angle?
+// rodata
+const Struct8075C410 D_global_asm_8075C410[];/* = {
+    {0x00000002, 0x00000000, 0x00000004, 0x00001000},
+    {0x00000003, 0x00000001, 0x00000001, 0x00001000},
+    {0x00000004, 0x00000002, 0x00000006, 0x00001000},
+    {0x00000005, 0x00000003, 0x00000009, 0x00001000},
+    {0x00000006, 0x00000004, 0x0000000C, 0x00001000},
+    {0x00000007, 0x00000005, 0x000000DB, 0x00001000},
+    {0x00000008, 0x00000006, 0x00000014, 0x00001000},
+    {0x00000009, 0x00000000, 0x00000018, 0x00001000},
+    {0x00000002, 0x00000000, 0x0000001D, 0x00000000},
+    {0x00000002, 0x00000000, 0x0000001D, 0x00000000},
+};
+*/
 
 extern s16 D_global_asm_8076AEE2;
 extern f32 D_global_asm_8076AEE4; // x
@@ -28,9 +51,16 @@ extern f32 D_global_asm_8076AEE8; // y
 extern f32 D_global_asm_8076AEEC; // z
 extern s16 D_global_asm_8076AEF0;
 
+extern s32 D_global_asm_807FD56C;
 extern u16 D_global_asm_807FD570; // Tranferred actor behaviour index (through loading zone)
 
+extern ExitData *exit_array;
+extern ExitData D_global_asm_807FD574;
+extern ExitData D_global_asm_807FC908;
+extern ExitData D_global_asm_807FC918;
 extern s16 D_global_asm_807FC930[];
+
+void func_global_asm_806F91B4(s32, u8, s32);
 
 void func_global_asm_806C7B00(void) {
     s16 i;
@@ -42,13 +72,6 @@ void func_global_asm_806C7B00(void) {
 s32 func_global_asm_806C7B34(void) {
     return D_global_asm_8075C410[current_character_index[0]].unk0;
 }
-
-// TODO: Add this to the aaD union
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s8 unk8;
-} AppleAAD;
 
 void func_global_asm_806C7B50(u32 arg0, u8 arg1, Actor *arg2) {
     AppleAAD *temp_v0;
@@ -89,19 +112,6 @@ void func_global_asm_806C7C10(void) {
         D_global_asm_80750AB8 = 0;
     }
 }
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-    s32 unk8;
-} Struct80750948;
-
-extern Struct80750948 D_global_asm_80750948[];
-extern u8 D_global_asm_80750AB8;
-extern u8 D_global_asm_80750ABC;
 
 Struct80750948 *func_global_asm_806C7C94(u8 arg0) {
     u8 i;
@@ -158,7 +168,6 @@ void func_global_asm_806C81DC(s16 arg0, s16 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C850C.s")
 
-extern f32 D_global_asm_8075C4B0;
 extern s16 D_global_asm_807FD584;
 
 extern f32 D_global_asm_80753578[];
@@ -169,10 +178,9 @@ void func_global_asm_806F09F0(Actor*, u16);
 /*
 // TODO: Very close!!!
 void func_global_asm_806C850C(s32 arg0, u8 arg1) {
-    Temp10Big *sp2C;
-    f32 temp;
-    f32 temp3;
+    Struct8075C410 *sp2C;
     s32 i;
+    s8 temp;
 
     if (cc_number_of_players >= 2) {
         current_character_index[arg1] = current_character_index[func_global_asm_8060AB38(arg1)];
@@ -199,9 +207,10 @@ void func_global_asm_806C850C(s32 arg0, u8 arg1) {
     D_global_asm_807FBB44->animation_state->unk24->unk0 = 0xFF;
     D_global_asm_807FBB48 = D_global_asm_807FBB44;
     extra_player_info_pointer = D_global_asm_807FBB44->PaaD;
-    extra_player_info_pointer->unk247 = -1;
+    temp = -1;
+    extra_player_info_pointer->unk247 = temp;
     extra_player_info_pointer->unk1A4 = arg1;
-    extra_player_info_pointer->unk11E = -1;
+    extra_player_info_pointer->unk11E = temp;
     extra_player_info_pointer->unk244 = 0;
     extra_player_info_pointer->unk120 = -0x64;
     D_global_asm_807FD584 = sp2C->unk4;
@@ -214,7 +223,6 @@ void func_global_asm_806C850C(s32 arg0, u8 arg1) {
     }
     D_global_asm_807FBB44->object_properties_bitfield |= 0x100000;
     func_global_asm_806C8D20(D_global_asm_807FBB48);
-    temp = D_global_asm_8075C4B0;
     extra_player_info_pointer->unk26 = 0x64;
     D_global_asm_807FBB48->y_acceleration = D_global_asm_80753578[D_global_asm_807FD584];
     D_global_asm_807FBB48->terminal_velocity = D_global_asm_807535E8[D_global_asm_807FD584];
@@ -226,18 +234,18 @@ void func_global_asm_806C850C(s32 arg0, u8 arg1) {
     extra_player_info_pointer->unk16 = 0;
     extra_player_info_pointer->unk10C = 0;
     extra_player_info_pointer->unk1A0 = 0;
-    extra_player_info_pointer->unk1C0 = temp;
-    extra_player_info_pointer->unk1C4 = temp;
-    extra_player_info_pointer->unk1C8 = temp;
-    extra_player_info_pointer->unk1CC = temp;
-    extra_player_info_pointer->unk1D0 = temp;
-    extra_player_info_pointer->unk1D4 = temp;
+    extra_player_info_pointer->unk1C0 = 0.15f;
+    extra_player_info_pointer->unk1C4 = 0.15f;
+    extra_player_info_pointer->unk1C8 = 0.15f;
+    extra_player_info_pointer->unk1CC = 0.15f;
+    extra_player_info_pointer->unk1D0 = 0.15f;
+    extra_player_info_pointer->unk1D4 = 0.15f;
     extra_player_info_pointer->unk245 = 0;
     extra_player_info_pointer->unk21E = 0x1E;
-    extra_player_info_pointer->unkC8 = -1;
+    extra_player_info_pointer->unkC8 = temp;
     extra_player_info_pointer->unkCA = 0;
-    extra_player_info_pointer->unkC8 = -1;
-    extra_player_info_pointer->unk264 = -1;
+    extra_player_info_pointer->unkC8 = temp;
+    extra_player_info_pointer->unk264 = temp;
     extra_player_info_pointer->unk258 = 1.0f;
     extra_player_info_pointer->unk25C = 1.0f;
     if (isFlagSet(0xCE, FLAG_TYPE_PERMANENT)) {
@@ -362,6 +370,10 @@ void func_global_asm_806C8F8C(Struct806C8F8C_arg0 *arg0) {
     func_global_asm_806F833C(0);
 }
 
+extern f32 D_global_asm_8075C788;
+extern f64 D_global_asm_8075C790;
+extern f64 D_global_asm_8075C798;
+
 void func_global_asm_806C90C4(s32 exitIndex) {
     PlayerAdditionalActorData *PaaD;
     ExitData *exit;
@@ -382,10 +394,12 @@ void func_global_asm_806C90C4(s32 exitIndex) {
             // Fallthrough
         case 0:
             D_global_asm_807FBB48->unkAC = D_global_asm_8075C788;
+            // D_global_asm_807FBB48->unkAC = -10000.0f;
             D_global_asm_807FBB48->x_position = exit->x_pos;
             D_global_asm_807FBB48->y_position = D_global_asm_807FBB48->unkA0 = exit->y_pos;
             D_global_asm_807FBB48->z_position = exit->z_pos;
             D_global_asm_807FBB48->y_rotation = (exit->angle / D_global_asm_8075C790) * D_global_asm_8075C798;
+            // D_global_asm_807FBB48->y_rotation = (exit->angle / 255.0) * 4095.0;
             D_global_asm_807FBB48->unkEE = D_global_asm_807FBB48->y_rotation;
             break;
         case 1:
@@ -397,8 +411,6 @@ void func_global_asm_806C90C4(s32 exitIndex) {
         D_global_asm_80770DC9 = 1;
     }
 }
-
-void func_global_asm_806C9434(s32 arg0);
 
 void func_global_asm_806C92C4(s32 arg0) {
     func_global_asm_80672C30(D_global_asm_807FBB48);
@@ -500,12 +512,16 @@ void func_global_asm_806C9658(Maps map) {
     }
 }
 
+extern f64 D_global_asm_8075C7A0;
+extern f64 D_global_asm_8075C7A8;
+
 ExitData *getExitData(s32 exitIndex) {
     if (D_global_asm_8076AEE2 & 1) {
         D_global_asm_807FC918.x_pos = D_global_asm_8076AEE4;
         D_global_asm_807FC918.y_pos = D_global_asm_8076AEE8;
         D_global_asm_807FC918.z_pos = D_global_asm_8076AEEC;
         D_global_asm_807FC918.angle = D_global_asm_8075C7A8 * (D_global_asm_8076AEF0 / D_global_asm_8075C7A0);
+        // D_global_asm_807FC918.angle = 360.0 * (D_global_asm_8076AEF0 / 4095.0);
         return &D_global_asm_807FC918;
     }
     if (number_of_exits == 0) {
@@ -550,8 +566,6 @@ s8 func_global_asm_806C9830(s8 arg0, Actor *arg1) {
     return phi_a2;
 }
 
-extern s32 D_global_asm_807552EC;
-
 s32 func_global_asm_806C9974(u8 arg0, s8 arg1) {
     CharacterChange *temp2 = &character_change_array[arg0];
     PlayerProgress *temp = &D_global_asm_807FC950[arg0];
@@ -573,10 +587,6 @@ s32 func_global_asm_806C9974(u8 arg0, s8 arg1) {
         return FALSE;
     }
 }
-
-extern u8 D_global_asm_80750AC0;
-extern s8 D_global_asm_80750ACC;
-extern s32 D_global_asm_807FD56C;
 
 void func_global_asm_806C9AE0(void) {
     PlayerProgress *PP;
@@ -605,10 +615,6 @@ void func_global_asm_806C9AE0(void) {
     D_global_asm_80750ACC = 0;
     D_global_asm_807FD56C = 0;
 }
-
-extern s32 D_global_asm_80750B34[];
-
-void func_global_asm_806F91B4(s32, u8, s32);
 
 void func_global_asm_806C9C1C(s32 arg0) {
     s32 i;

@@ -45,7 +45,7 @@ extern s8 D_global_asm_80755330; // prevent_transition
 extern s32 D_global_asm_80755334;
 extern s32 D_global_asm_80755338; // cutscene_will_play_next_map
 extern s32 D_global_asm_8075533C; // cutscene_to_play_next_map
-extern f32 D_global_asm_80755348; // helm_timer
+extern s32 D_global_asm_80755348; // helm_timer
 extern u8 D_global_asm_80755350;
 extern s8 D_global_asm_8075536C; // Exit
 extern s32 D_global_asm_80755384[];
@@ -710,10 +710,7 @@ Gfx *func_global_asm_80713AA8(Gfx *dl) {
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80713C8C.s")
 
-s32 func_global_asm_8068E7B4(Gfx* arg0, f32, f32, f32);
-
-// TODO: Gfx* passed in?
-s32 func_global_asm_80713DFC(s32 arg0) { // displayHelmTimer()
+Gfx *func_global_asm_80713DFC(Gfx *dl) { // displayHelmTimer()
     s32 stackPad0;
     s32 stackPad1;
     s32 stackPad2;
@@ -723,18 +720,17 @@ s32 func_global_asm_80713DFC(s32 arg0) { // displayHelmTimer()
     s32 stackPad6;
     s32 stackPad7;
     f32 sp1C;
-    Gfx* dl;
 
     if (func_global_asm_80712628()) {
         if (!(global_properties_bitfield & 3)) {
             sp1C = D_global_asm_80744490 * 0.5f;
-            dl = func_global_asm_807132DC(arg0);
+            dl = func_global_asm_807132DC(dl);
             gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
             gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-            arg0 = func_global_asm_8068E7B4(dl++, sp1C, 214.0f, D_global_asm_80755348); // drawHelmTimer()
+            dl = func_global_asm_8068E7B4(dl++, sp1C, 214.0f, D_global_asm_80755348); // drawHelmTimer()
         }
     }
-    return arg0;
+    return dl;
 }
 
 s32 func_global_asm_80713EA8(s32 arg0) {

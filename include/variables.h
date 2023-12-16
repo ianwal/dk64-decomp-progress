@@ -242,13 +242,13 @@ extern GlobalASMStruct58 *D_global_asm_807F93C0;
 
 // Array of structs 0x10 big
 // TODO: What are these actually?
-typedef struct Temp10Big {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-} Temp10Big;
-extern Temp10Big D_global_asm_8075C410[];
+// typedef struct Temp10Big {
+//     s32 unk0;
+//     s32 unk4;
+//     s32 unk8;
+//     s32 unkC;
+// } Temp10Big;
+// extern Temp10Big D_global_asm_8075C410[];
 
 typedef struct DKTVExtraData {
     f32 startingXPosition; // 0x00

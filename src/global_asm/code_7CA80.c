@@ -1371,26 +1371,25 @@ void func_global_asm_8067B01C(void) {
 }
 */
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_8067B100.s")
-
 extern s32 D_global_asm_807ECDEC;
 extern u16 D_global_asm_807ECDF0;
 extern CharacterProgress *D_global_asm_807FD568;
 extern s16 D_global_asm_807FD584;
 
-/*
+extern const Struct8075C410 D_global_asm_8075C410[];
+
 void func_global_asm_8067B100(Actor *player) {
+    u8 character;
     extra_player_info_pointer = player->PaaD;
     cc_player_index = extra_player_info_pointer->unk1A4;
+    character = current_character_index[cc_player_index];
     D_global_asm_807FBB48 = character_change_array[cc_player_index].player_pointer;
-    D_global_asm_807FD568 = &D_global_asm_807FC950[cc_player_index].character_progress[current_character_index[cc_player_index]];
+    D_global_asm_807FD568 = &D_global_asm_807FC950[cc_player_index].character_progress[character];
     D_global_asm_807ECDEC = character_change_array[cc_player_index].unk294;
-    D_global_asm_807ECDF0 = character_change_array[cc_player_index].new_controller_inputs;
-    D_global_asm_807FD584 = D_global_asm_8075C410[current_character_index[cc_player_index]].unk4;
+    D_global_asm_807ECDF0 = *character_change_array[cc_player_index].new_controller_inputs;
+    D_global_asm_807FD584 = D_global_asm_8075C410[character].unk4;
     character_change_array[cc_player_index].unk2C1 = 0;
 }
-*/
 
 u8 func_global_asm_8067B1E0(Actor *arg0) {
     s32 i;

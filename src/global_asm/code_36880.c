@@ -228,14 +228,14 @@ s32 func_global_asm_8063253C(s32 arg0, s32 arg1) {
 
 extern s32 D_global_asm_80747D70;
 
-s32 func_global_asm_8063254C(s32 arg0, s32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, s16 *arg5, s16 *arg6) {
+s32 func_global_asm_8063254C(s32 objectType, s32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, s16 *arg5, s16 *arg6) {
     s32 found;
     s32 i;
     found = FALSE;
     i = *arg1;
 
     while (!found && i < D_global_asm_80747D70) {
-        if (arg0 == D_global_asm_807F6000[i].object_type) {
+        if (objectType == D_global_asm_807F6000[i].object_type) {
             found = TRUE;
             *arg5 = D_global_asm_807F6000[i].unk88;
             *arg6 = D_global_asm_807F6000[i].unk8A;

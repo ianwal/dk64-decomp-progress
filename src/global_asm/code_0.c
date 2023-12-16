@@ -488,22 +488,22 @@ u8 func_global_asm_805FCA64(void) { // getCutsceneBarState()
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FCA94.s")
 
-void *func_global_asm_805FCFD8(Gfx *arg0) {
+Gfx *func_global_asm_805FCFD8(Gfx *dl) {
     if (D_global_asm_8074450C == 2) {
-        gSPDisplayList(arg0++, &D_1000068);
+        gSPDisplayList(dl++, &D_1000068);
     } else {
-        gSPDisplayList(arg0++, &D_1000040);
+        gSPDisplayList(dl++, &D_1000040);
     }
-    return arg0++;
+    return dl++;
 }
 
-void *func_global_asm_805FD030(Gfx *arg0) {
+Gfx *func_global_asm_805FD030(Gfx *dl) {
     if (D_global_asm_8074450C == 2) {
-        gSPDisplayList(arg0++, &D_1000030);
+        gSPDisplayList(dl++, &D_1000030);
     } else {
-        gSPDisplayList(arg0++, &D_1000020);
+        gSPDisplayList(dl++, &D_1000020);
     }
-    return arg0++;
+    return dl++;
 }
 
 // Displaylist stuff

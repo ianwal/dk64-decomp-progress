@@ -26,11 +26,10 @@ extern u8 D_global_asm_807FBDC4;
 extern s32 D_global_asm_807FBDC8[];
 extern u16 D_global_asm_807FC930[];
 
-void func_global_asm_8061C518(s32, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_806BF920(void);
 void func_global_asm_806F09F0(Actor*, u16);
-void func_global_asm_806F0C18(Actor*);
 void func_global_asm_806F91B4(s32, u8, s32);
 int func_global_asm_807035C4(); // TODO: Signature
 void func_global_asm_80718BF4(void);
@@ -561,7 +560,7 @@ void func_global_asm_806C1CCC(void) {
         func_global_asm_806BFBF4();
         if (current_actor_pointer->object_properties_bitfield & 4) {
             if ((current_actor_pointer->animation_state->unk0->unk10 == 0x2C4) && (current_actor_pointer->animation_state->unk0->unk4 > 25.0f)) {
-                func_global_asm_8068C350(&func_global_asm_807035C4, 0, 3);
+                func_global_asm_8068C350(&func_global_asm_807035C4, NULL, 3);
             }
         }
         func_global_asm_80724E48(D_global_asm_807FDC94 == player_pointer ? 5 : 7);
