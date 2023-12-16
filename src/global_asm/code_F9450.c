@@ -219,7 +219,7 @@ void func_global_asm_806F5378(void) {
         next = current->next;
         func_global_asm_806F54E0(0, current->unk2, current->unk1A);
         func_global_asm_806355DC(current->unk0, 1);
-        func_global_asm_8061130C(current);
+        free(current);
         current = next;
     }
     D_global_asm_807FD730 = NULL;

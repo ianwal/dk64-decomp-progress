@@ -98,9 +98,9 @@ void func_global_asm_806FDAEC(s16 arg0) {
     } else {
         D_global_asm_80754AD0 = var_a1->next;
     }
-    func_global_asm_8061130C(var_a1->unk4);
-    func_global_asm_8061130C(var_a1->unk8);
-    func_global_asm_8061130C(var_a1);
+    free(var_a1->unk4);
+    free(var_a1->unk8);
+    free(var_a1);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FDB8C.s")

@@ -74,7 +74,7 @@ typedef struct {
 typedef struct {
     s16 unk0;
     s16 unk2;
-    s32 unk4;
+    void *unk4;
 } GlobalASMStruct75;
 
 typedef struct {
@@ -99,7 +99,7 @@ typedef struct {
 
 extern Struct80753E90 *D_global_asm_80753E90;
 extern u8 D_global_asm_8076A0B1;
-extern s32 D_global_asm_807FD70C;
+extern void *D_global_asm_807FD70C;
 extern Struct80753E90_2 *D_global_asm_807FD708;
 extern Actor *D_global_asm_807FD710;
 extern s16 D_global_asm_807FD714;
@@ -654,7 +654,7 @@ void func_global_asm_806F2EDC(s32 arg0, Struct806F2EDC *arg1, s32 *arg2, u8 arg3
     *arg2 += 1;
 }
 
-void func_global_asm_806F2FC0(s32 arg0, Struct806F2FC0 *arg1, u16 arg2) {
+void func_global_asm_806F2FC0(Actor *arg0, Struct806F2FC0 *arg1, u16 arg2) {
     s32 var_v0;
     s32 var_v1;
 

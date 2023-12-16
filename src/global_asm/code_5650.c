@@ -35,7 +35,7 @@ void func_global_asm_80600B10(void) {
     while (var_s0 != NULL && !var_s1) {
         if (D_global_asm_8076A068 >= (var_s0->unk8 & 0x7FFFFFFF)) {
             var_s0->unk4(var_s0->unkC, var_s0->unk10, var_s0->unk14);
-            func_global_asm_8061130C(var_s0);
+            free(var_s0);
             var_s0 = var_s0->unk0;
         } else {
             var_s1 = 1;
@@ -52,7 +52,7 @@ void func_global_asm_80600BBC(void *arg0) {
     var_s1 = NULL;
     while (var_s0 != NULL) {
         if (arg0 == var_s0->unk4 || (arg0 == 0 && var_s0->unk8 & 0x80000000)) {
-            func_global_asm_8061130C(var_s0);
+            free(var_s0);
             var_s0 = var_s0->unk0;
             if (var_s1 != NULL) {
                 var_s1->unk0 = var_s0;
@@ -82,7 +82,7 @@ void func_global_asm_80600C68(void) {
                 } else {
                     D_global_asm_807452A0 = var_s0->unk0;
                 }
-                func_global_asm_8061130C(var_s0);
+                free(var_s0);
             } else {
                 var_s1 = var_s0;
             }

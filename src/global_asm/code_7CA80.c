@@ -403,15 +403,15 @@ void func_global_asm_806785D4(Actor *arg0) {
     func_global_asm_8072F09C(arg0);
     temp_a0_3 = arg0->unk118;
     if (temp_a0_3 != NULL) {
-        func_global_asm_8061130C(temp_a0_3);
+        free(temp_a0_3);
     }
     temp_a0_4 = arg0->unk148;
     if (temp_a0_4 != NULL) {
-        func_global_asm_8061130C(temp_a0_4);
+        free(temp_a0_4);
     }
     temp_a0_5 = arg0->unk14C;
     if (temp_a0_5 != NULL) {
-        func_global_asm_8061130C(temp_a0_5);
+        free(temp_a0_5);
     }
     func_global_asm_8062D26C(arg0);
     if (arg0->unk58 != ACTOR_TEXT_BUBBLE) {
@@ -419,7 +419,7 @@ void func_global_asm_806785D4(Actor *arg0) {
     }
     func_global_asm_8068C2F8(arg0);
     func_global_asm_8067AEFC(arg0);
-    func_global_asm_8061130C(arg0);
+    free(arg0);
 }
 
 void func_global_asm_806787CC(void) {
@@ -617,7 +617,7 @@ void func_global_asm_80678E6C(Actor *arg0) {
 void func_global_asm_80678F64(Actor *arg0) {
     Actor114* temp = arg0->unk114;
     if (temp) {
-        func_global_asm_8061130C(temp);
+        free(temp);
         arg0->unk114 = NULL;
     }
 }
@@ -682,7 +682,7 @@ void func_global_asm_806790F4(u8 arg0) {
         temp_v0 = D_global_asm_807FBFE0[i];
         if ((temp_v0 != NULL) && (arg0 == temp_v0->unk4[0])) {
             temp_v0->unk0(&temp_v0->unk8);
-            func_global_asm_8061130C(D_global_asm_807FBFE0[i]);
+            free(D_global_asm_807FBFE0[i]);
             D_global_asm_807FBFE0[i] = NULL;
         }
     }
@@ -704,9 +704,9 @@ void func_global_asm_80679178(Actor *arg0) {
         nextCollision = currentCollision->next;
         temp = currentCollision->unk10;
         if (temp) {
-            func_global_asm_8061130C(temp);
+            free(temp);
         }
-        func_global_asm_8061130C(currentCollision);
+        free(currentCollision);
         currentCollision = nextCollision;
     }
 }
@@ -796,9 +796,9 @@ void func_global_asm_80679334(void) {
             } else {
                 temp_s2 = D_global_asm_807FBF18[i].unk0;
                 if (temp_s2->unk10 != NULL) {
-                    func_global_asm_8061130C(temp_s2->unk10);
+                    free(temp_s2->unk10);
                 }
-                func_global_asm_8061130C(temp_s2);
+                free(temp_s2);
             }
         }
     }

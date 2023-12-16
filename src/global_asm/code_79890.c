@@ -90,7 +90,7 @@ void func_global_asm_80675380(Actor *arg0, Actor *arg1) {
         var_s1[i].unk14 = var_s0->unk14;
         var_s1[i].unk18 = var_s0->unk18;
         temp_s3 = var_s0->next;
-        func_global_asm_8061130C(var_s0);
+        free(var_s0);
         var_s0 = temp_s3;
     }
     func_global_asm_80679200(arg1, arg0, 0x8000, 0, D_global_asm_807FB628, var_s1);

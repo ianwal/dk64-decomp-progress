@@ -165,7 +165,7 @@ void func_global_asm_8072F09C(Actor *arg0) {
         if (arg0 == current->unk0) {
             *var_s2 = current->next;
             next = current->next;
-            func_global_asm_8061130C(current);
+            free(current);
             current = next;
         } else {
             var_s2 = &current->next;

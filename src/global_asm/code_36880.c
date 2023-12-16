@@ -418,7 +418,7 @@ void func_global_asm_80633570(GlobalASMStruct83 *arg0) {
 
     while (arg0 != NULL) {
         next = arg0->next;
-        func_global_asm_8061130C(arg0);
+        free(arg0);
         arg0 = next;
     }
 }
@@ -460,7 +460,7 @@ void func_global_asm_806338B4(OM2_unk74 *current) {
     if (current != NULL) {
         do {
             next = current->next;
-            func_global_asm_8061130C(current);
+            free(current);
             current = next;
         } while (next != NULL);
     }
@@ -662,7 +662,7 @@ void func_global_asm_806348B4(OM2_unk48 *arg0) {
 
     if (temp_a2 != NULL) {
         if (arg0->unk24 & 1) {
-            func_global_asm_8061130C(temp_a2);
+            free(temp_a2);
         }
     }
     arg0->unk24 &= 0xFFFE;
@@ -1077,11 +1077,11 @@ void func_global_asm_80636074(ObjectModel2 *arg0) {
         }
         temp_a0_3 = var_s0;
         var_s0 = var_s0->next;
-        func_global_asm_8061130C(temp_a0_3);
+        free(temp_a0_3);
     }
     if (sp24 != NULL) {
         func_global_asm_8066B434(sp24->unk0, 0x9E5, 7);
-        func_global_asm_8061130C(sp24);
+        free(sp24);
     }
 }
 
@@ -1160,7 +1160,7 @@ void func_global_asm_806362C4(s32 arg0, u8 arg1) {
         temp_a3 = *sp18;
         if (temp_a3 != NULL) {
             func_global_asm_8066B434(temp_a3->unk0, 0xA56, 7);
-            func_global_asm_8061130C(temp_a3);
+            free(temp_a3);
             *sp18 = NULL;
         }
     }
@@ -1258,7 +1258,7 @@ void func_global_asm_806364C4(void) {
             } else {
                 var_s1->unk18 = current->unk18;
             }
-            func_global_asm_8061130C(current);
+            free(current);
         } else {
             var_s1 = current;
         }

@@ -62,7 +62,7 @@ void func_global_asm_80697988(void) {
                 aaD->unk10 = 0;
             }
             if (aaD->unk10 >= 0x10) {
-                func_global_asm_8061130C(aaD->unk4);
+                free(aaD->unk4);
                 func_global_asm_806782C0(current_actor_pointer);
             }
             break;
@@ -83,7 +83,7 @@ void func_global_asm_80697988(void) {
                         aaD->unk10 = 0;
                     }
                 } else {
-                    func_global_asm_8061130C(aaD->unk4);
+                    free(aaD->unk4);
                     func_global_asm_806782C0(current_actor_pointer);
                 }
             }

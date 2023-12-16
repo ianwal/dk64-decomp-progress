@@ -64,7 +64,7 @@ void func_global_asm_806A9124(void) {
     if (!(player_pointer->PaaD->unk1F0 & 0x20000000)) {
         global_properties_bitfield |= 0x10030;
     }
-    func_global_asm_8061130C(D_global_asm_807FC7F0.unk0);
+    free(D_global_asm_807FC7F0.unk0);
     D_global_asm_807FC7F0.unk0 = 0;
     D_global_asm_807FC7F0.unk4 = 0;
     D_global_asm_807FC7F8.unk0 = 0;

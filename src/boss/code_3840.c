@@ -15,7 +15,7 @@ void func_boss_80027840(Struct80027840 *arg0) {
     Struct80027840 *var_v1;
 
     if (D_global_asm_807FDC98->unk20 != 0) {
-        func_global_asm_8061130C(D_global_asm_807FDC98->unk20);
+        free(D_global_asm_807FDC98->unk20);
     }
     D_global_asm_807FDC9C->unk11 = arg0->unk0;
     D_global_asm_807FDC98->unk20 = malloc(arg0->unk0 * sizeof(Struct80027840));

@@ -257,10 +257,10 @@ void func_global_asm_80688638(GlobalASMStruct60 **arg0) {
             func_global_asm_8066B434(temp_s2->unk0, 0x1E6, 0x2C);
             temp_s2++;
         }
-        func_global_asm_8061130C(phi_s2->unk0);
-        func_global_asm_8061130C(phi_s2->unk4);
+        free(phi_s2->unk0);
+        free(phi_s2->unk4);
         temp_s0 = phi_s2->next;
-        func_global_asm_8061130C(phi_s2);
+        free(phi_s2);
         phi_s2 = temp_s0;
     }
     *arg0 = NULL;

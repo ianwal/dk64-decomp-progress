@@ -1001,7 +1001,7 @@ void func_global_asm_806687E0(void) {
             if (D_global_asm_807F9514[i].unk0 != 0) {
                 if ((object_timer - D_global_asm_807F9514[i].unk8) >= 0x15U) {
                     func_global_asm_806688B8(i);
-                    func_global_asm_8061130C(D_global_asm_807F9514[i].unk0);
+                    free(D_global_asm_807F9514[i].unk0);
                     D_global_asm_807F9514[i].unk0 = NULL;
                     D_global_asm_807F9514[i].unk4 = NULL;
                 }
@@ -1593,14 +1593,13 @@ void func_global_asm_8066AEE4(s32 arg0, s32 arg1) {
         D_global_asm_80748E14 = malloc(0x2400);
     }
     func_dk64_boot_800024E0(&sp24, &sp20, D_global_asm_80748E14);
-    func_global_asm_8061130C(arg0);
+    free(arg0);
 }
 
 //forward decl needed
 void func_global_asm_8066B4AC(s32,s32,s32);
 s32  func_global_asm_8066B9F4(void*);
 
-s32 func_global_asm_8066B5C8(s32, s32);
 extern OSMesgQueue D_global_asm_807656D0;
 extern s32 D_global_asm_807F9680;
 
@@ -1641,7 +1640,7 @@ void func_global_asm_8066AF40(void) {
         }
     }
     if (D_global_asm_80748E14 != NULL) {
-        func_global_asm_8061130C(D_global_asm_80748E14);
+        free(D_global_asm_80748E14);
         D_global_asm_80748E14 = NULL;
     }
     D_global_asm_807F9680 = 0;
@@ -1662,17 +1661,17 @@ s32 func_global_asm_8066B020(s32 arg0, s32 arg1) {
 }
 
 // getUncompressedFileSize()?
-s32 func_global_asm_8066B06C(s32 arg0, s32 arg1) {
+s32 func_global_asm_8066B06C(s32 pointerTableIndex, s32 fileIndex) {
     s32 sp1C;
-    s32 sp18;
+    s32 uncompressedSize;
 
-    if (D_global_asm_80748E18[arg0] != 0) {
-        sp18 = *(D_global_asm_807FB1A0[arg0] + arg1);
+    if (D_global_asm_80748E18[pointerTableIndex] != 0) {
+        uncompressedSize = D_global_asm_807FB1A0[pointerTableIndex][fileIndex];
     } else {
-        func_global_asm_8066B5F4(arg0);
-        func_global_asm_8066B4D4(arg0, arg1, &sp1C, &sp18);
+        func_global_asm_8066B5F4(pointerTableIndex);
+        func_global_asm_8066B4D4(pointerTableIndex, fileIndex, &sp1C, &uncompressedSize);
     }
-    return sp18;
+    return uncompressedSize;
 }
 
 void func_global_asm_8066B0DC(void) {
@@ -1700,7 +1699,7 @@ void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3
             return fileIndex;
         }
         var_v0 = func_global_asm_8066B5C8(pointerTableIndex, fileIndex);
-        if (var_v0 != 0) {
+        if (var_v0 != NULL) {
             func_global_asm_8066B8C8(var_v0, pointerTableIndex, fileIndex);
             D_global_asm_807F967C = 0;
             D_global_asm_807F9678 = 0;
@@ -1771,7 +1770,7 @@ void func_global_asm_8066B434(void *arg0, s32 arg1, s32 arg2) {
         if (D_global_asm_807F967D == 0) {
             func_global_asm_8061134C(arg0);
         } else {
-            func_global_asm_8061130C(arg0);
+            free(arg0);
         }
     }
     D_global_asm_807F967D = 0;
@@ -2045,17 +2044,17 @@ GlobalASMStruct40 *func_global_asm_8066BC5C(GlobalASMStruct40 *arg0, u32 arg1, s
             *arg2 = arg0->unk4;
             *arg3 = arg0->unk8;
             if (!arg0->unk14 && !arg0->unk18) {
-                func_global_asm_8061130C(arg0);
+                free(arg0);
                 arg0 = NULL;
             } else {
                 if (!arg0->unk14) {
                     phi_s0 = arg0;
                     arg0 = arg0->unk18;
-                    func_global_asm_8061130C(phi_s0);
+                    free(phi_s0);
                 } else if (!arg0->unk18) {
                     phi_s0 = arg0;
                     arg0 = arg0->unk14;
-                    func_global_asm_8061130C(phi_s0);
+                    free(phi_s0);
                 } else {
                     arg0->unk18 = func_global_asm_8066BD54(arg0->unk18, arg0, &arg0->unk4, &arg0->unk8, &arg0->unkC, &arg0->unk10);
                 }
@@ -2080,7 +2079,7 @@ GlobalASMStruct40 *func_global_asm_8066BD54(GlobalASMStruct40 *arg0, s32 *arg1, 
         *arg5 = arg0->unk10;
         pad = arg0;
         arg0 = arg0->unk18;
-        func_global_asm_8061130C(pad);
+        free(pad);
     } else {
         arg0->unk14 = func_global_asm_8066BD54(arg0->unk14, arg1, arg2, arg3, arg4, arg5);
     }
@@ -2109,7 +2108,7 @@ void func_global_asm_8066BE20(s32 arg0) {
         sp2C = func_global_asm_8066BF0C(sp30, 0, temp_v0 - 1);
         func_global_asm_8066BECC(D_global_asm_807F9628[arg0]);
         D_global_asm_807F9628[arg0] = sp2C;
-        func_global_asm_8061130C(sp30);
+        free(sp30);
     }
 }
 
@@ -2118,7 +2117,7 @@ void func_global_asm_8066BECC(GlobalASMStruct40 *arg0) {
     if (arg0) {
         func_global_asm_8066BECC(arg0->unk14);
         func_global_asm_8066BECC(arg0->unk18);
-        func_global_asm_8061130C(arg0);
+        free(arg0);
     }
 }
 

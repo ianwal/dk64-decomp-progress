@@ -91,7 +91,7 @@ void func_minecart_80024254(Struct80024254_arg0 *arg0) {
     }
 }
 
-void func_global_asm_8061C6A8(s32, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_8072177C(Actor *, s16, s16, s16, s32, s32, s32, s32, s32);
 void func_minecart_800253C0(void *, s16, u8);
 extern s16 D_global_asm_80750AC4;

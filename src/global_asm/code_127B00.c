@@ -94,7 +94,7 @@ void func_global_asm_807233B4(Actor *arg0) {
 
 void func_global_asm_80723428(s32 arg0) {
     if (arg0 == -1 || D_global_asm_807FDBF8[arg0]) {
-        func_global_asm_8061130C(D_global_asm_807FDBF8[arg0]);
+        free(D_global_asm_807FDBF8[arg0]);
         D_global_asm_807FDBF8[arg0] = NULL;
     }
 }
@@ -127,7 +127,7 @@ s16 func_global_asm_807245D8(s32 arg0) {
 
 void func_global_asm_80724874(Actor *arg0) {
     if (arg0->unk118 != NULL) {
-        func_global_asm_8061130C(arg0->unk118);
+        free(arg0->unk118);
         arg0->unk118 = NULL;
     }
 }

@@ -81,12 +81,12 @@ void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u
             break;
     }
     if ((arg6 == NULL) && ((arg5 == 1) || (arg5 == 2))) {
-        func_global_asm_8061130C(D_global_asm_807ECE18);
+        free(D_global_asm_807ECE18);
     }
     if ((arg3 != 0) || (arg4 != 0)) {
         *arg2 = arg1 - sp58;
         if (arg6 == NULL) {
-            func_global_asm_8061130C(sp50);
+            free(sp50);
         }
     }
 }

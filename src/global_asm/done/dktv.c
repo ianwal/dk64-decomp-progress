@@ -110,10 +110,10 @@ void func_global_asm_8060B6CC(void) {
 
 void func_global_asm_8060B700(void) {
     if (D_global_asm_807463A8) {
-        func_global_asm_8061130C(D_global_asm_807463A8);
+        free(D_global_asm_807463A8);
     }
     if (D_global_asm_807ECE90) {
-        func_global_asm_8061130C(D_global_asm_807ECE90);
+        free(D_global_asm_807ECE90);
     }
     func_global_asm_8060B6CC();
 }

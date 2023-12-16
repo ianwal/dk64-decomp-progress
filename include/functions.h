@@ -66,7 +66,7 @@ void func_global_asm_8067DF44(f32, f32, f32, f32, u8, u8);
 void func_global_asm_807149C8(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 f32 func_global_asm_80665E94(f32, f32, f32, f32, f32, f32, s16);
 
-void func_global_asm_8061130C(void *);
+void free(void *);
 
 // TODO: Signatures are suspect
  // Returns index into object model2 array
@@ -607,7 +607,7 @@ s32 func_global_asm_80677D58(Actor *arg0);
 void func_global_asm_80659110(u8 arg0);
 u8 func_global_asm_80659190(void);
 void func_global_asm_806C9C80(s32, s32, s32);
-s32 func_global_asm_8066B06C(s32, s32);
+s32 func_global_asm_8066B06C(s32 pointerTableIndex, s32 fileIndex);
 void func_global_asm_806C9658(Maps);
 void func_global_asm_806C7B00(void);
 s32 func_global_asm_806C7B34(void);
@@ -1172,7 +1172,7 @@ void func_global_asm_806F13C8(Actor *arg0);
 void func_global_asm_806F149C(Actor *arg0);
 s32 func_global_asm_806F1668(f32, f32, f32, f32);
 f32 func_global_asm_806F1B90(f32 *arg0, f32 arg1);
-void func_global_asm_8068581C(s32, s16, f32, f32, f32, f32, s32);
+void func_global_asm_8068581C(Actor *, s16, f32, f32, f32, f32, s32);
 void func_global_asm_806F3760(s16 map);
 void func_global_asm_806F397C(Actor *arg0, Actor *arg1, s16 arg2, s16 arg3);
 void func_global_asm_806F3DB0(void);

@@ -375,7 +375,7 @@ void func_global_asm_80685708(Actor *arg0, u8 arg1) {
     }
 }
 
-void func_global_asm_8068581C(s32 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
+void func_global_asm_8068581C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
     func_global_asm_80714998(2);
     func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
     func_global_asm_8068588C(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
@@ -617,7 +617,6 @@ void func_global_asm_80686F90(u8 arg0, s16 arg1, s16 arg2) {
 }
 
 void func_global_asm_80687080(void) {
-    f64 scaleMult;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->object_properties_bitfield &= ~0x8000;
         current_actor_pointer->object_properties_bitfield |= 0x800000;
@@ -632,10 +631,9 @@ void func_global_asm_80687080(void) {
             func_global_asm_806782C0(current_actor_pointer);
         }
     } else {
-        scaleMult = 1.1;
         current_actor_pointer->animation_state->scale_y *= 1.8;
-        current_actor_pointer->animation_state->scale_x *= scaleMult;
-        current_actor_pointer->animation_state->scale_z *= scaleMult;
+        current_actor_pointer->animation_state->scale_x *= 1.1;
+        current_actor_pointer->animation_state->scale_z *= 1.1;
     }
     func_global_asm_806319C4(current_actor_pointer, 0);
 }
@@ -645,7 +643,7 @@ void func_global_asm_806871DC(u8 arg0) {
     u8 var_v0;
     u8 var_s2;
 
-    var_s2 = (((object_timer & 3) * 4) + 3);
+    var_s2 = ((object_timer & 3) * 4) + 3;
     for (var_s4 = 0; var_s4 < 4; var_s4++) {
         if (var_s2 == 0x10) {
             var_v0 = 0x14;
@@ -671,7 +669,7 @@ void func_global_asm_806871DC(u8 arg0) {
             case 0:
                 func_global_asm_807149B8(1);
                 func_global_asm_8071498C(func_global_asm_80717D4C);
-                func_global_asm_80714950(-0x3E8);
+                func_global_asm_80714950(-1000);
                 func_global_asm_807149C8(0xFF, 0xD7, 0x58, 0xFF);
                 func_global_asm_80714C08(&D_global_asm_80720120, (((rand() >> 0xF) % 100) / 30.0) + 1.0, current_actor_pointer, var_v0, 0);
                 break;

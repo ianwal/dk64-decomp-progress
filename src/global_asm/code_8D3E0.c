@@ -596,7 +596,7 @@ void func_global_asm_80689710(ActorSpawner *arg0, u8 arg1) {
             if (phi_s0->next_spawner) {
                 phi_s0->next_spawner->previous_spawner = phi_s1;
             }
-            func_global_asm_8061130C(phi_s0);
+            free(phi_s0);
         } else {
             phi_s1 = phi_s0;
             phi_s0 = phi_s0->next_spawner;
@@ -620,7 +620,7 @@ void func_global_asm_806897F0(Actor *arg0) {
             if (phi_s0->next_spawner) {
                 phi_s0->next_spawner->previous_spawner = phi_s1;
             }
-            func_global_asm_8061130C(phi_s0);
+            free(phi_s0);
         } else {
             phi_s1 = phi_s0;
             phi_s0 = phi_s0->next_spawner;
@@ -634,7 +634,7 @@ void func_global_asm_806898A8(void) {
 
     while (spawner) {
         next = spawner->next_spawner;
-        func_global_asm_8061130C(spawner);
+        free(spawner);
         spawner = next;
     }
     actor_spawner_pointer = NULL;

@@ -155,7 +155,7 @@ Chunk14 *func_global_asm_80630588(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 
         if (arg0->next) {
             arg0->next->next2 = phi_t0;
         }
-        func_global_asm_8061130C(arg0);
+        free(arg0);
     }
     *arg3 = phi_v0;
     if (arg2 == 1) {
@@ -180,7 +180,7 @@ Chunk14 *func_global_asm_80630588(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 
 // TODO: Very close, adding a temp variable for next doesn't work
 void func_global_asm_806306D0(Chunk14 *current) {
     while (current) {
-        func_global_asm_8061130C(current);
+        free(current);
         current = current->next;
     }
 }
@@ -201,7 +201,7 @@ Chunk14 *func_global_asm_8063070C(Chunk14 *arg0) {
             if (arg0->next) {
                 arg0->next->next2 = arg0->next2;
             }
-            func_global_asm_8061130C(arg0);
+            free(arg0);
         }
         arg0 = arg0->next;
     }

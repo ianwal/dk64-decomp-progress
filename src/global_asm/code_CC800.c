@@ -7,7 +7,6 @@ extern u8 D_global_asm_80750AB8;
 extern u8 D_global_asm_80750AC0;
 
 void func_global_asm_806C9C80(s32, s32, s32);
-s32 func_global_asm_8066B06C(s32, s32);
 
 extern u8 D_global_asm_80770DC9;
 extern u8 number_of_exits;

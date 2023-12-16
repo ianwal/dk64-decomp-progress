@@ -168,9 +168,7 @@ void *func_global_asm_806111F8(s32 arg0, u32 arg1) {
 }
 */
 
-// free()?
-void func_global_asm_8061130C(void *arg0) {
-    // TODO: Oof, I don't like the second condition there but it does match...
+void free(void *arg0) {
     if (((HeapHeader*)arg0 != D_global_asm_807F5A64) && ((HeapHeader*)arg0 -= 1)->unkB == 0) {
         func_global_asm_80611408(arg0);
     }

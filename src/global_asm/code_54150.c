@@ -47,7 +47,7 @@ void func_global_asm_8064F804(OM2_unk78 *arg0) {
         func_global_asm_8061134C(*((s32*)&arg0->unk0));
         func_global_asm_8061134C(*((s32*)&arg0->unk4));
         func_global_asm_80650684(arg0);
-        func_global_asm_8061130C(arg0);
+        free(arg0);
     }
 }
 

@@ -382,8 +382,8 @@ void func_global_asm_806F9518(s32 arg0) {
         if (phi_s1->unk0 == 1) {
             func_global_asm_80715908(phi_s1->unk14->unk8);
         }
-        func_global_asm_8061130C(phi_s1->unk14);
-        func_global_asm_8061130C(phi_s1);
+        free(phi_s1->unk14);
+        free(phi_s1);
         phi_s1->unk0 = NULL;
         phi_s1 = *next;
     }

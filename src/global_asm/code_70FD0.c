@@ -85,7 +85,7 @@ void func_global_asm_8066C904(OM2_unk28 *arg0) {
     void *temp = arg0->unk18;
     if (temp != NULL) {
         if (arg0->unk15 & 1) {
-            func_global_asm_8061130C(temp);
+            free(temp);
         }
     }
     arg0->unk15 &= 0xFFFE;
@@ -275,22 +275,22 @@ void func_global_asm_8066E21C(LedgeInfo *ledgeInfo) {
         current = ledgeInfo->unk8C;
         while (current) {
             next = current->next;
-            func_global_asm_8061130C(current);
+            free(current);
             current = next;
         }
         current2 = ledgeInfo->unk90;
         while (current2) {
             next2 = current2->next;
-            func_global_asm_8061130C(current2);
+            free(current2);
             current2 = next2;
         }
         if (ledgeInfo->unkA0) {
-            func_global_asm_8061130C(ledgeInfo->unkA0);
+            free(ledgeInfo->unkA0);
         }
         if (ledgeInfo->unk98) {
-            func_global_asm_8061130C(ledgeInfo->unk98);
+            free(ledgeInfo->unk98);
         }
-        func_global_asm_8061130C(ledgeInfo);
+        free(ledgeInfo);
     }
 }
 
@@ -453,7 +453,7 @@ void func_global_asm_8066E990(Actor *arg0) {
             sp24 = var_v0;
             do {
                 temp_s1 = var_s0->next;
-                func_global_asm_8061130C(var_s0);
+                free(var_s0);
                 var_s0 = temp_s1;
             } while (temp_s1 != NULL);
             var_v0 = sp24;

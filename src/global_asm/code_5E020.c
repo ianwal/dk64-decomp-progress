@@ -27,7 +27,7 @@ void func_global_asm_80659350(void) {
         temp = D_global_asm_807F7370[i];
         while (temp) {
             temp_1 = temp->unk8;
-            func_global_asm_8061130C(temp);
+            free(temp);
             temp = temp_1;
         }
     }
@@ -89,7 +89,7 @@ void func_global_asm_806594C8(s32 arg0) {
     }
     if (phi_a0) {
         *phi_v1 = phi_a0->unk8;
-        func_global_asm_8061130C(phi_a0);
+        free(phi_a0);
     }
 }
 

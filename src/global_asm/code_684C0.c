@@ -146,7 +146,7 @@ void func_global_asm_80663A80(void) {
                 temp_a0 = current83;
                 *var_s1 = current83->next;
                 current83 = current83->next;
-                func_global_asm_8061130C(temp_a0);
+                free(temp_a0);
             } else {
                 var_s1 = &current83->next;
                 current83 = current83->next;
@@ -169,7 +169,7 @@ void func_global_asm_80663BE8(Actor *arg0) {
             Actor *temp = current83->unk8;
             if (arg0 == temp) {
                 *var_v1 = current83->next;
-                func_global_asm_8061130C(current83);
+                free(current83);
                 return;
             }
             var_v1 = &current83->next;

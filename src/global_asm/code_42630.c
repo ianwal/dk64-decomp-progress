@@ -201,15 +201,15 @@ void func_global_asm_8063DE68(Struct8063DE68_arg0 *arg0) {
 
     temp_a1 = arg0->unk0;
     if (temp_a1 != NULL) {
-        func_global_asm_8061130C(temp_a1); // Heap Something
+        free(temp_a1);
     }
     current = arg0->unkA0;
     while (current != NULL) {
         next = current->next;
-        func_global_asm_8061130C(current); // Heap Something
+        free(current);
         current = next;
     }
-    func_global_asm_8061130C(arg0); // Heap Something
+    free(arg0);
 }
 
 void func_global_asm_8063DED0(OM2_unk7C *arg0) {
