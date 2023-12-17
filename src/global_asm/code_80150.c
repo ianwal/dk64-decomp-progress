@@ -142,7 +142,7 @@ void func_global_asm_8067BE30(void) {
         if (D_global_asm_807FBB70.unk38 != 0) {
             temp_t0->unk4 = 1;
         }
-        func_global_asm_806319C4(current_actor_pointer, 0);
+        renderActor(current_actor_pointer, 0);
     }
 }
 */
@@ -232,7 +232,7 @@ u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
         func_global_asm_806651FC(current_actor_pointer);
         func_global_asm_80665564(current_actor_pointer, 0);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
     return sp47;
 }
 */
@@ -326,7 +326,7 @@ void func_global_asm_8067C2B8(void) {
         }
         current_actor_pointer->y_position = current_actor_pointer->floor;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_8067C67C(void) {
@@ -837,7 +837,7 @@ void func_global_asm_8068304C(void) {
     current_actor_pointer->unk16D = current_actor_pointer->unk15F;
     current_actor_pointer->y_rotation += 0x32;
     current_actor_pointer->y_rotation &= 0xFFF;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Function pointer in a local variable, needs some PaaD untangling
@@ -1064,7 +1064,7 @@ void func_global_asm_8068412C(void) {
         YaaD->unk28 += 0x32;
         YaaD->unk28 &= 0xFFF;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806844EC(void) {

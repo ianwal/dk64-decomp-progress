@@ -964,12 +964,12 @@ void func_global_asm_806A7EF0(void) {
     temp_v0_2->unk8 = aaD->unk0;
     temp_v0_2->unkC = aaD->unk0;
     temp_v0_2[1].unk0 = 0xFF;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A8070(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->object_properties_bitfield |= 0x40000000;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

@@ -231,7 +231,7 @@ void func_race_800294A8(void) {
         }
     }
     func_global_asm_8068FF40(sp52, temp_s4, sp68);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Jumptable
@@ -491,5 +491,5 @@ void func_race_8002B964(void) {
     } else {
         current_actor_pointer->unkB8 = 0.0f;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

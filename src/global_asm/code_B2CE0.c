@@ -35,14 +35,14 @@ void func_global_asm_806ADFE0(void) {
     func_global_asm_80665564(current_actor_pointer, 0.0f);
     func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xA, 0xA, 1, 0xC8, 0x80, 0, 1.0f);
     if (current_actor_pointer->unk15F != 0) {
-        func_global_asm_806319C4(current_actor_pointer, 0);
+        renderActor(current_actor_pointer, 0);
     } else {
         guTranslateF(&sp88[0], 0.0f, -30.0f, 0.0f);
         func_global_asm_80612BC0(&sp48[0], 180.0f);
         guMtxCatF(&sp88[0], &sp48[0], &sp88[0]);
         guTranslateF(&sp48[0], 0.0f, 30.0f, 0.0f);
         guMtxCatF(&sp88[0], &sp48[0], &current_actor_pointer->unkC);
-        func_global_asm_806319C4(current_actor_pointer, 1);
+        renderActor(current_actor_pointer, 1);
     }
     if (((current_actor_pointer->unk6A & 1) != 0) && !(current_actor_pointer->unk6C & 1)) {
         func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x56, 0xB4, 0x96, 1, 0x4B, 0.3f, 0);
@@ -280,7 +280,7 @@ void func_global_asm_806AE588(void) {
             func_global_asm_8072C918(0x6400, 0x1FB, 0x1FC);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -326,7 +326,7 @@ void func_global_asm_806B02EC(void) {
         func_global_asm_8072B79C(0, 0x31E, 0x31F);
     }
     func_global_asm_806AD260(800, 0, 0);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806B0354(void) {
@@ -399,7 +399,7 @@ void func_global_asm_806B0354(void) {
             break;
     }
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 s32 func_global_asm_806B0770(void) {
@@ -641,6 +641,6 @@ block_31:
             var_s0 = current_actor_pointer;
             break;
     }
-    func_global_asm_806319C4(var_s0, 0);
+    renderActor(var_s0, 0);
 }
 */

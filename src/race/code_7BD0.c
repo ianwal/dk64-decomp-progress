@@ -547,7 +547,7 @@ void func_race_8002DC24(void) {
             func_race_8002DA68(RaaD);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 typedef struct RaceStruct14 {

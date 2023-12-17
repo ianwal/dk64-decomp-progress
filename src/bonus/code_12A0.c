@@ -172,7 +172,7 @@ void func_bonus_800261B8(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 

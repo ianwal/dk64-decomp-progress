@@ -409,7 +409,7 @@ void func_global_asm_8069DD40(void) {
             func_global_asm_8063DA40(0xC, 0xA);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // TODO: Add to aaD union
@@ -426,18 +426,18 @@ void func_global_asm_8069DF58(void) {
         temp_v1->unk0 = func_global_asm_8069DC80(0x14, temp_v1->unk0, 0, (current_actor_pointer->control_state_progress / 10), 0x10);
         temp_v1->unk4 = func_global_asm_8069DC80(0x14, temp_v1->unk4, 1, (current_actor_pointer->control_state_progress % 10), 0x10);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_8069E018(void) {
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_8069E040() {
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         func_global_asm_80614EBC(current_actor_pointer, 0x299);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_8069E088(void) {
@@ -467,5 +467,5 @@ void func_global_asm_8069E088(void) {
     current_actor_pointer->animation_state->scale_x = 0.0f;
     current_actor_pointer->animation_state->scale_y = 0.0f;
     current_actor_pointer->animation_state->scale_z = 0.0f;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

@@ -161,7 +161,7 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
                 func_global_asm_806EB0C0(0x45, current_actor_pointer, aaD->unk8);
                 current_actor_pointer->control_state++;
             } else {
-                func_global_asm_806319C4(current_actor_pointer, 0);
+                renderActor(current_actor_pointer, 0);
                 break;
             }
             // fallthrough

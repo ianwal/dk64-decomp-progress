@@ -127,7 +127,7 @@ void func_global_asm_806C6884(s16 arg0, s16 arg1, u16 arg2) {
     func_global_asm_8072A920(0x23, arg0, D_global_asm_807FDC94->x_position, (D_global_asm_807FDC94->y_position + (arg0 * 3.0)), D_global_asm_807FDC94->z_position, 0x1E, 3.3f, 100.0f, arg2 | 0x2000);
     current_actor_pointer->y_position += 0.5 * func_global_asm_80612794(object_timer * 0x28);
     func_global_asm_806C6530();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806C6B50(void) {
@@ -249,6 +249,6 @@ void func_global_asm_806C6BC8(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */

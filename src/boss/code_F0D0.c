@@ -131,5 +131,5 @@ void func_boss_8003575C(void) {
             break;
     }
     func_global_asm_8061EF4C(D_global_asm_807F5D10, 5, 0x14, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 200.0f, 400.0f);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

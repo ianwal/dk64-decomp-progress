@@ -81,7 +81,7 @@ void func_minecart_800265F0(void) {
             current_actor_pointer->y_position = (func_global_asm_80612794(object_timer * 0x32) * 10.0f) + (extra_player_info_pointer->vehicle_actor_pointer->floor + 30.0f);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -245,7 +245,7 @@ void func_minecart_800280BC(void) {
             } else {
                 func_global_asm_80724E48(1);
                 func_minecart_80027CF4();
-                func_global_asm_806319C4(current_actor_pointer, 0);
+                renderActor(current_actor_pointer, 0);
                 break;
             }
         case 1:
@@ -261,10 +261,10 @@ void func_minecart_800280BC(void) {
             break;
         case 2:
             current_actor_pointer->control_state = 0x40;
-            func_global_asm_806319C4(current_actor_pointer, 0);
+            renderActor(current_actor_pointer, 0);
             break;
         default:
-            func_global_asm_806319C4(current_actor_pointer, 0);
+            renderActor(current_actor_pointer, 0);
             break;
     }
 }

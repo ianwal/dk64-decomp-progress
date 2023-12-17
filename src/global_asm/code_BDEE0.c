@@ -17,7 +17,7 @@ void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
 void func_global_asm_806B9CB0() {
     func_global_asm_80729B00();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806B9CE0(u8 arg0, s8 arg1) {
@@ -277,7 +277,7 @@ void func_global_asm_806BB400(void) {
             break;
     }
     D_global_asm_807FDCA0->unk20 = 0;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -355,7 +355,7 @@ void func_global_asm_806BC080() {
     func_global_asm_806BB32C();
     if ((D_global_asm_807FDC9C->unkA_u8[0] == 0) || (func_global_asm_806BA240(0, 0x446) == 0)) {
         func_global_asm_806AD260(0x2ED, 1, 0);
-        func_global_asm_806319C4(current_actor_pointer, 0);
+        renderActor(current_actor_pointer, 0);
     }
 }
 
@@ -363,7 +363,7 @@ void func_global_asm_806BC0E4() {
     func_global_asm_806BB32C();
     if ((D_global_asm_807FDC9C->unkA_u8[0] == 0) || (func_global_asm_806BA240(0x32, 0x44E) == 0)) {
         func_global_asm_806AD260(0x2EC, 1, 0);
-        func_global_asm_806319C4(current_actor_pointer, 0);
+        renderActor(current_actor_pointer, 0);
     }
 }
 
@@ -371,7 +371,7 @@ void func_global_asm_806BC148() {
     func_global_asm_806BB32C();
     if ((D_global_asm_807FDC9C->unkA_u8[0] == 0) || (func_global_asm_806BA240(0x14, 0x44A) == 0)) {
         func_global_asm_806AD260(0x2EE, 1, 0);
-        func_global_asm_806319C4(current_actor_pointer, 0);
+        renderActor(current_actor_pointer, 0);
     }
 }
 

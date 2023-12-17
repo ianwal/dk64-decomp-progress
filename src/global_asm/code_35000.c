@@ -364,7 +364,7 @@ Chunk14 *func_global_asm_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, C
 // Similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_806317D4.s")
 
-void func_global_asm_806319C4(Actor *arg0, u8 arg1) {
+void renderActor(Actor *arg0, u8 arg1) {
     f32 sp78[4][4];
     f32 sppad[4][4];
     s16 phi_a0;

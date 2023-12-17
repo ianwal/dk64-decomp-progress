@@ -100,7 +100,7 @@ void func_global_asm_806BDEC8(void) {
         }
     }
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806BE09C(void) {
@@ -200,7 +200,7 @@ void func_global_asm_806BE09C(void) {
             break;
     }
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806BE674(u8 arg0) {
@@ -269,7 +269,7 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
 
 void func_global_asm_806BFBB4() {
     func_global_asm_8061421C(current_actor_pointer);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
     func_global_asm_80614A64(current_actor_pointer);
 }
 
@@ -338,7 +338,7 @@ void func_global_asm_806C1300(void) {
             deleteActor(current_actor_pointer);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Jumptable
@@ -386,7 +386,7 @@ void func_global_asm_806C1640(void) {
     if (!(((s32)current_actor_pointer->object_properties_bitfield << 3) >= 0)) {
         func_global_asm_806BFBF4();
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806C1734(void) {
@@ -446,7 +446,7 @@ void func_global_asm_806C1734(void) {
             func_global_asm_806C151C(3, 3, 0);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806C19F4(void) {
@@ -473,7 +473,7 @@ void func_global_asm_806C19F4(void) {
         func_global_asm_80724E48(0);
         func_global_asm_806C151C(6, 1, 6); // Aztec: Caged Lanky Text Cleared
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C1B50.s")
@@ -539,7 +539,7 @@ void func_global_asm_806C1B50(void) {
         func_global_asm_806C10A0(2, 4, 0x3DB);
         func_global_asm_806C151C(4, 1, 8);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -569,7 +569,7 @@ void func_global_asm_806C1CCC(void) {
         func_global_asm_80724E48(0);
         func_global_asm_806C151C(5, 1, 0xF); // Factory: Caged Chunky Text Cleared
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806C1E44(void) {
@@ -668,7 +668,7 @@ void func_global_asm_806C1E44(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806C226C(void) {
@@ -767,7 +767,7 @@ void func_global_asm_806C226C(void) {
             break;
     }
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806C27DC(void) {
@@ -969,5 +969,5 @@ void func_global_asm_806C3A8C(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

@@ -434,7 +434,7 @@ void func_menu_80024CB0(void) {
     }
     func_global_asm_80729B00();
     func_global_asm_806BFBF4();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Checks if all blueprints turned in, malloc, current_actor_pointer, playSFX

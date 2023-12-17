@@ -113,7 +113,7 @@ void func_global_asm_806AD54C(void) {
     }
     func_global_asm_806AD260(0x1FA, 0, 0);
     func_global_asm_80724E48(current_actor_pointer->control_state == 0x23 ? 0 : 2);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806AD7AC(void) {
@@ -124,7 +124,7 @@ void func_global_asm_806AD7AC(void) {
     }
     func_global_asm_806AD260(0x1FA, 0, 0);
     func_global_asm_80724E48(current_actor_pointer->control_state == 0x23 ? 0 : 2);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806AD84C(void) {
@@ -156,7 +156,7 @@ void func_global_asm_806AD84C(void) {
             break;
     }
     current_actor_pointer->y_rotation = character_change_array[0].unk2C8 & 0xFFF;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806AD9AC(void) {
@@ -238,7 +238,7 @@ void func_global_asm_806AD9F4(void) {
             break;
     }
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // close, stack
@@ -294,6 +294,6 @@ void func_global_asm_806ADDD8(void) {
             func_global_asm_8072B7CC(temp);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */

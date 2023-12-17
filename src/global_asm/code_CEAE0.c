@@ -1892,7 +1892,7 @@ void func_global_asm_806D0A84(void) {
             current_actor_pointer->y_position += sp2C * current_actor_pointer->y_velocity;
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 u8 func_global_asm_806D0DE4(Actor *arg0, Actor *arg1) {
@@ -1976,7 +1976,7 @@ void func_global_asm_806D1110(void) {
     } else {
         current_actor_pointer->noclip_byte = 1;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D11FC(void) {
@@ -1988,7 +1988,7 @@ void func_global_asm_806D11FC(void) {
 void func_global_asm_806D1238(void) {
     func_global_asm_806DF6D4(0x66);
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1270(void) {
@@ -2001,7 +2001,7 @@ void func_global_asm_806D1278(void) {
     if ((extra_player_info_pointer->unk1F0 << 0xF) >= 0) {
         func_global_asm_806CFF9C(current_actor_pointer);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D12CC(void) {
@@ -2025,7 +2025,7 @@ void func_global_asm_806D12CC(void) {
             break;
     }
     func_global_asm_806D11FC();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1420(void) {
@@ -2046,7 +2046,7 @@ void func_global_asm_806D1420(void) {
         current_actor_pointer->control_state_progress = 0;
         extra_player_info_pointer->unk1C = 2;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1568(void) {
@@ -2125,7 +2125,7 @@ void func_global_asm_806D1568(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D19A8(void) {
@@ -2162,7 +2162,7 @@ void func_global_asm_806D19A8(void) {
             break;
     }
     func_global_asm_806D11FC();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1B60(void) {
@@ -2205,14 +2205,14 @@ void func_global_asm_806D1B60(void) {
             break;
     }
     func_global_asm_806D11FC();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1D3C() {
     extra_player_info_pointer->unk4 = 0.0f;
     func_global_asm_806DF6D4(0x65);
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1D84(void) {
@@ -2220,7 +2220,7 @@ void func_global_asm_806D1D84(void) {
     extra_player_info_pointer->unk30 = 20.0f;
     func_global_asm_806EB0C0(0x3C, NULL, cc_player_index);
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1DEC(void) {
@@ -2233,7 +2233,7 @@ void func_global_asm_806D1DEC(void) {
     ) {
         func_global_asm_805FF8F8();
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1E90(void) {
@@ -2245,7 +2245,7 @@ void func_global_asm_806D1E90(void) {
         func_global_asm_805FF898();
         current_actor_pointer->control_state_progress++;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D1F28(void) {
@@ -2266,7 +2266,7 @@ void func_global_asm_806D1F28(void) {
         func_global_asm_806ACC00(0);
         current_actor_pointer->control_state_progress++;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // doable, stack
@@ -2309,7 +2309,7 @@ void func_global_asm_806D205C(void) {
         func_global_asm_805FF898();
         current_actor_pointer->control_state_progress += 1;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -2318,7 +2318,7 @@ void func_global_asm_806D21E4(void) {
     if (!(global_properties_bitfield & 0x4000) && !(global_properties_bitfield & 0x8000)) {
         func_global_asm_806CFF9C(current_actor_pointer);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D2238(void) {
@@ -2519,7 +2519,7 @@ void func_global_asm_806D28E4(void) {
 }
 
 void func_global_asm_806D2904(void) {
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
     if (current_actor_pointer->control_state_progress++ > 200) {
         func_global_asm_806CFF9C(current_actor_pointer);
     }
@@ -2570,7 +2570,7 @@ void func_global_asm_806D2AA0(s16 arg0) {
         last_spawned_actor->PaaD->unk0 = extra_player_info_pointer;
         extra_player_info_pointer->unk1F0 |= 0x8000;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D2B90(void) {
@@ -2584,7 +2584,7 @@ void func_global_asm_806D2BB0(void) {
 void func_global_asm_806D2BD0(void) {
     func_global_asm_806D2954(0xC);
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
     if (func_global_asm_8061CB50()) {
         if (current_actor_pointer->unk6E[0] != -1) {
             func_global_asm_80605314(current_actor_pointer, 0);
@@ -2598,7 +2598,7 @@ void func_global_asm_806D2BD0(void) {
 void func_global_asm_806D2C54(void) {
     func_global_asm_806D2A14(0x10);
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
     if (is_autowalking == 3) {
         func_global_asm_806C9F74(current_actor_pointer);
     }
@@ -2611,7 +2611,7 @@ void func_global_asm_806D2CAC(void) {
     if (func_global_asm_806D850C()) {
         func_global_asm_806EAB44(current_actor_pointer, 1);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D2D38(void) {
@@ -2621,7 +2621,7 @@ void func_global_asm_806D2D38(void) {
     if (func_global_asm_806D850C()) {
         func_global_asm_806EAB44(current_actor_pointer, 1);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D2DC4(void) {
@@ -2643,7 +2643,7 @@ void func_global_asm_806D2DC4(void) {
         }
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D2E9C(void) {
@@ -2715,7 +2715,7 @@ void func_global_asm_806D2E9C(void) {
             func_global_asm_806F91B4(5, cc_player_index, -1);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D3224(void) {
@@ -2730,7 +2730,7 @@ void func_global_asm_806D3224(void) {
         }
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D32C0(void) {
@@ -2742,7 +2742,7 @@ void func_global_asm_806D32C0(void) {
         func_global_asm_806DF6D4(0x1E);
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D332C(void) {
@@ -2774,7 +2774,7 @@ void func_global_asm_806D332C(void) {
     }
     extra_player_info_pointer->unkC = extra_player_info_pointer->unkE;
     extra_player_info_pointer->unkE = extra_player_info_pointer->unkA;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D34B4(void) {
@@ -2787,7 +2787,7 @@ void func_global_asm_806D34B4(void) {
         }
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D3530(void) {
@@ -2828,7 +2828,7 @@ void func_global_asm_806D36CC(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D374C(void) {
@@ -2843,7 +2843,7 @@ void func_global_asm_806D374C(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D37CC(void) {
@@ -2864,7 +2864,7 @@ void func_global_asm_806D37CC(void) {
         current_actor_pointer->unkB8 = 0.0f;
         func_global_asm_806CC8B8();
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D38AC(s32 arg0) {
@@ -2895,7 +2895,7 @@ void func_global_asm_806D38AC(s32 arg0) {
         func_global_asm_80605314(current_actor_pointer, 0);
         func_global_asm_806224CC(extra_player_info_pointer->unk104, current_actor_pointer);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D3A38(void) {
@@ -2930,7 +2930,7 @@ void func_global_asm_806D3B48(void) {
         RaceAdditionalActorData *RaaD = extra_player_info_pointer->vehicle_actor_pointer->RaaD;
         RaaD->unk45 = 1;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D3BC8(void) {
@@ -2958,7 +2958,7 @@ void func_global_asm_806D3BC8(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D3CD4(void) {
@@ -2970,7 +2970,7 @@ void func_global_asm_806D3CD4(void) {
             func_global_asm_806CFF9C(current_actor_pointer);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D3D5C(void) {
@@ -2982,7 +2982,7 @@ void func_global_asm_806D3D5C(void) {
             func_global_asm_806CFF9C(current_actor_pointer);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D3DE4(void) {
@@ -3015,7 +3015,7 @@ void func_global_asm_806D3DE4(void) {
             func_global_asm_806CC8B8();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D3FA0(void) {
@@ -3067,14 +3067,14 @@ void func_global_asm_806D4010(void) {
             func_global_asm_806CC8B8();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D423C(void) {
     current_actor_pointer->y_velocity = extra_player_info_pointer->unk54;
     func_global_asm_806DF6D4(5);
     func_global_asm_806CC8F0();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D428C(void) {
@@ -3138,7 +3138,7 @@ void func_global_asm_806D428C(void) {
             func_global_asm_806DF6D4(0x30);
             func_global_asm_806CC8B8();
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D45A4(void) {
@@ -3177,7 +3177,7 @@ void func_global_asm_806D45A4(void) {
             func_global_asm_806CC8B8();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // regalloc, rodata
@@ -3220,7 +3220,7 @@ void func_global_asm_806D4758(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -3253,7 +3253,7 @@ void func_global_asm_806D491C(void) {
             func_global_asm_806CC8B8();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // regalloc
@@ -3300,7 +3300,7 @@ void func_global_asm_806D4A70(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -3324,7 +3324,7 @@ void func_global_asm_806D5218(void) {
             func_global_asm_806DF494(&current_actor_pointer->unkEE, current_actor_pointer->y_rotation, extra_player_info_pointer->unk48 * 1.25);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D5300(void) {
@@ -3384,14 +3384,14 @@ void func_global_asm_806D5300(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D57F0(void) {
     func_global_asm_806DF6D4(1);
     extra_player_info_pointer->unk4 = 0.0f;
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // rodata, regalloc
@@ -3432,7 +3432,7 @@ void func_global_asm_806D5834(void) {
             break;
     }
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -3458,7 +3458,7 @@ void func_global_asm_806D59E4(void) {
             break;
     }
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D5B44(void) {
@@ -3481,7 +3481,7 @@ void func_global_asm_806D5B44(void) {
             break;
     }
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D5CCC(void) {
@@ -3592,7 +3592,7 @@ void func_global_asm_806D5CCC(void) {
                 }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Jumptable
@@ -3701,14 +3701,14 @@ void func_global_asm_806D6B00(void) {
             func_global_asm_806CC948();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D6F0C(void) {
     func_global_asm_806DF494(&current_actor_pointer->y_rotation, current_actor_pointer->unkEE, extra_player_info_pointer->unk48);
     func_global_asm_806DF6D4(8); // controlStateControl()
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D6F64(void) {
@@ -3731,7 +3731,7 @@ void func_global_asm_806D6F64(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7098(void) {
@@ -3748,7 +3748,7 @@ void func_global_asm_806D7098(void) {
             func_global_asm_806CFF9C(current_actor_pointer);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7170(void) {
@@ -3767,7 +3767,7 @@ void func_global_asm_806D7170(void) {
             func_global_asm_806845B8(1, 8);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7238(void) {
@@ -3780,7 +3780,7 @@ void func_global_asm_806D7238(void) {
     if (extra_player_info_pointer->unk21E == 0) {
         func_global_asm_80712830(current_actor_pointer, cc_player_index);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D72D4(void) {
@@ -3821,7 +3821,7 @@ void func_global_asm_806D72D4(void) {
             func_global_asm_806CFF9C(current_actor_pointer);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7510(void) {
@@ -3857,7 +3857,7 @@ void func_global_asm_806D7510(void) {
     extra_player_info_pointer->unk4 = 0.0f;
     extra_player_info_pointer->unk30 = 2.0f;
     func_global_asm_806CC8F0();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7704(void) {
@@ -3887,7 +3887,7 @@ void func_global_asm_806D7704(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7878(void) {
@@ -3915,13 +3915,13 @@ void func_global_asm_806D7878(void) {
             current_actor_pointer->control_state_progress++;
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D79E4(void) {
     func_global_asm_806EB0C0(0x3C, NULL, cc_player_index);
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7A28(void) {
@@ -3986,7 +3986,7 @@ void func_global_asm_806D7A28(void) {
             extra_player_info_pointer->unk1F0 &= -0x1001;
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7DF8(void) {
@@ -4001,7 +4001,7 @@ void func_global_asm_806D7DF8(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7E88(void) {
@@ -4023,7 +4023,7 @@ void func_global_asm_806D7E88(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7F48(void) {
@@ -4045,7 +4045,7 @@ void func_global_asm_806D7F48(void) {
         }
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D7FE8(void) {
@@ -4060,13 +4060,13 @@ void func_global_asm_806D7FE8(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D8070(void) {
     func_global_asm_806DF6D4(1);
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D80A8(void) {
@@ -4108,7 +4108,7 @@ void func_global_asm_806D80A8(void) {
             func_global_asm_806CC8B8();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Jumptable
@@ -4209,7 +4209,7 @@ void func_global_asm_806D87FC(void) {
     }
     func_global_asm_806D850C();
     current_actor_pointer->object_properties_bitfield &= -2;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -4227,7 +4227,7 @@ void func_global_asm_806D8A64(void) {
             func_global_asm_806CFF9C(current_actor_pointer);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Jumptable
@@ -4267,7 +4267,7 @@ void func_global_asm_806D8FCC(void) {
             func_global_asm_806CFE7C();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D9134(void) {
@@ -4275,7 +4275,7 @@ void func_global_asm_806D9134(void) {
     current_actor_pointer->unkB8 = 0.0f;
     current_actor_pointer->y_velocity = 0.0f;
     func_global_asm_806CC970();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D9184(void) {
@@ -4312,7 +4312,7 @@ void func_global_asm_806D91A4(void) {
     }
     func_global_asm_806DF6D4(1);
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Jumptable
@@ -4327,7 +4327,7 @@ void func_global_asm_806D97A4(void) {
                   extra_player_info_pointer->unk6C,
                   extra_player_info_pointer->unk38);
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D9820(void) {
@@ -4351,7 +4351,7 @@ void func_global_asm_806D9820(void) {
             func_global_asm_806CC8B8();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806D9924(Actor *actor) {
@@ -4404,7 +4404,7 @@ void func_global_asm_806D9940(void) {
             current_actor_pointer->control_state_progress++;
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // close, doable, regalloc
@@ -4460,7 +4460,7 @@ void func_global_asm_806D9AD4(void) {
             current_actor_pointer->control_state_progress++;
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -4506,7 +4506,7 @@ void func_global_asm_806D9D58(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -4527,7 +4527,7 @@ void func_global_asm_806DA320(void) {
         func_global_asm_806CFF9C(current_actor_pointer);
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // regalloc, rodata
@@ -4547,7 +4547,7 @@ void func_global_asm_806DA3E4(void) {
     current_actor_pointer->z_position = ((extra_player_info_pointer->unk234 - current_actor_pointer->z_position) * temp_f16) + current_actor_pointer->z_position;
     func_global_asm_806DF494(&current_actor_pointer->y_rotation, func_global_asm_80665DE0(extra_player_info_pointer->unk220, extra_player_info_pointer->unk228, current_actor_pointer->x_position, current_actor_pointer->z_position), 0x32);
     func_global_asm_806CC970();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -4562,7 +4562,7 @@ void func_global_asm_806DA7EC(void) {
     func_global_asm_806DF494(&current_actor_pointer->y_rotation, extra_player_info_pointer->unkA, extra_player_info_pointer->unk48);
     extra_player_info_pointer->unk4 = 0.0f;
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DA89C(void) {
@@ -4573,7 +4573,7 @@ void func_global_asm_806DA89C(void) {
     func_global_asm_806DF494(&current_actor_pointer->y_rotation, extra_player_info_pointer->unkA, extra_player_info_pointer->unk48);
     extra_player_info_pointer->unk4 = 0.0f;
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DA94C(void) {
@@ -4591,7 +4591,7 @@ void func_global_asm_806DA94C(void) {
         func_global_asm_806D3608();
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DAA14(void) {
@@ -4609,7 +4609,7 @@ void func_global_asm_806DAA14(void) {
         func_global_asm_806D3608();
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DAADC(void) {
@@ -4631,7 +4631,7 @@ void func_global_asm_806DAADC(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DABE4(void) {
@@ -4661,7 +4661,7 @@ void func_global_asm_806DABE4(void) {
             break;
     }
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DADA0(void) {
@@ -4691,7 +4691,7 @@ void func_global_asm_806DADA0(void) {
             break;
     }
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DAF5C(void) {
@@ -4722,13 +4722,13 @@ void func_global_asm_806DAF5C(void) {
             break;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DB08C(void) {
     func_global_asm_806DF6D4(0x12);
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806DB0C4.s")
@@ -4773,7 +4773,7 @@ void func_global_asm_806DB0C4(void) {
     func_global_asm_806CDD24(current_actor_pointer, extra_player_info_pointer->unk94, extra_player_info_pointer->unk94, 0);
     func_global_asm_806DF494(&current_actor_pointer->y_rotation, extra_player_info_pointer->unk98, D_global_asm_8075326C[D_global_asm_807FD584] / 2);
     current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -4907,7 +4907,7 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
             extra_player_info_pointer->unk30 = 10.0f;
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -5020,7 +5020,7 @@ void func_global_asm_806DD874(void) {
             func_global_asm_806CC8B8();
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806DDAB0.s")
@@ -5170,7 +5170,7 @@ void func_global_asm_806DDAB0(void) {
     func_global_asm_806651FC(current_actor_pointer);
     func_global_asm_80665548();
     func_global_asm_80665564(current_actor_pointer, 0);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -5188,7 +5188,7 @@ void func_global_asm_806DE930(void) {
         extra_player_info_pointer->unk30 = D_global_asm_80753250[D_global_asm_807FD584] * 5.0;
     }
     func_global_asm_806CC8B8();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DE9F4(void) {
@@ -5209,7 +5209,7 @@ void func_global_asm_806DECD4(void) {
         current_actor_pointer->control_state_progress++;
         func_global_asm_806CFF9C(current_actor_pointer);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DED44(void) {
@@ -5282,7 +5282,7 @@ void func_global_asm_806DED44(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DF050(void) {
@@ -5302,7 +5302,7 @@ void func_global_asm_806DF050(void) {
         current_actor_pointer->object_properties_bitfield &= -5;
     }
     func_global_asm_806CC948();
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DF1A0(void) {
@@ -5314,7 +5314,7 @@ void func_global_asm_806DF1A0(void) {
     current_actor_pointer->y_position += ((PaaD->unk230 - current_actor_pointer->y_position) * 0.125f);
     current_actor_pointer->z_position += ((PaaD->unk234 - current_actor_pointer->z_position) * 0.125f);
     current_actor_pointer->x_rotation += 0xFF;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DF280(void) {
@@ -5333,7 +5333,7 @@ void func_global_asm_806DF280(void) {
     current_actor_pointer->z_position += PaaD->unk228;
     current_actor_pointer->x_rotation += 0xFF;
     current_actor_pointer->x_rotation &= 0xFFF;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806DF390(Actor *arg0, PlayerAdditionalActorData *arg1, u8 arg2) {

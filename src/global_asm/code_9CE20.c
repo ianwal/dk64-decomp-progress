@@ -206,7 +206,7 @@ void func_global_asm_80698120(u8 arg0) {
         current_actor_pointer->y_position = (func_global_asm_80612D1C(aaD->unk20) * 5.0) + aaD->unk1C;
         aaD->unk20 += aaD->unk24;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 

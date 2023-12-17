@@ -216,6 +216,7 @@ playCutscene = 0x8061CC40; // segment:global_asm
 getPointerTableFile = 0x8066B0F8; // segment:global_asm
 spawnActor = 0x80677FA8; // segment:global_asm
 deleteActor = 0x806782C0; // segment:global_asm
+renderActor = 0x806319C4; // segment:global_asm
 areAllKeysTurnedIn = 0x806BDD2C; // segment:global_asm
 getFlagBlockAddress = 0x8060E25C; // segment:global_asm
 getExitData = 0x806C96C4; // segment:global_asm

@@ -527,5 +527,5 @@ void func_race_800274C0(void) {
     if (var_v1 != 0) {
         func_race_8002D338(current_actor_pointer, temp_s1);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

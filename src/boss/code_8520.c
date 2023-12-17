@@ -247,5 +247,5 @@ void func_boss_8002C964(void) {
     if (D_global_asm_807FDC90->unk28 & 0x8000) {
         func_boss_8002C7CC();
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

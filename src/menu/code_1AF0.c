@@ -627,7 +627,7 @@ void func_menu_80027738(void) {
         func_global_asm_80729B00();
         func_global_asm_806BFBF4();
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Displaylist stuff

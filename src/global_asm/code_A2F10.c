@@ -230,7 +230,7 @@ void func_global_asm_8069E774(void) {
             func_global_asm_8066E5F8(sp78, func_global_asm_8069E724(sp78->unk58), 3);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -369,7 +369,7 @@ void func_global_asm_8069F020(void) {
             func_global_asm_806EB0C0(0x2E, current_actor_pointer, 0);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -480,7 +480,7 @@ void func_global_asm_806A018C(void) {
     if ((current_actor_pointer->unkFC != 0) || ((current_actor_pointer->unk6A & 1) && !(current_actor_pointer->unk6C & 1))) {
         deleteActor(current_actor_pointer);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A02F0(void) {
@@ -533,11 +533,11 @@ void func_global_asm_806A0330(void) {
         }
         deleteActor(current_actor_pointer);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A05D4(void) {
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 typedef struct {
@@ -592,7 +592,7 @@ void func_global_asm_806A05FC(void) {
         deleteActor(current_actor_pointer);
         return;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A081C(Actor *arg0) {
@@ -727,6 +727,6 @@ void func_global_asm_806A112C(void) {
             func_global_asm_806A10BC(temp_s5);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */

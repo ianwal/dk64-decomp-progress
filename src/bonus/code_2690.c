@@ -373,7 +373,7 @@ void func_bonus_800277F8(void) {
     if (aaD->unk0 >= -1) {
         func_global_asm_8068C350(&func_bonus_80026940, current_actor_pointer, 3);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -437,7 +437,7 @@ void func_bonus_800284C0(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // doable close regalloc
@@ -604,7 +604,7 @@ void func_bonus_80028E3C(void) {
         var_f2 = MIN(2.5f, temp_f2);
     }
     func_global_asm_80614D00(current_actor_pointer, var_f2, 0.0f);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -741,7 +741,7 @@ void func_bonus_8002AAA4(void) {
             func_global_asm_80614EBC(current_actor_pointer, 0x238);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 typedef struct {
@@ -794,7 +794,7 @@ void func_bonus_8002AD10(void) {
             deleteActor(current_actor_pointer);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Jumptable
@@ -922,7 +922,7 @@ void func_bonus_8002B920(void) {
             }
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -983,7 +983,7 @@ void func_bonus_8002BE44() {
         }
         func_global_asm_80614644(current_actor_pointer, sp24, temp_t8->unk4);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -1080,7 +1080,7 @@ void func_bonus_8002C8EC(void) {
             deleteActor(current_actor_pointer);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Displaylist stuff

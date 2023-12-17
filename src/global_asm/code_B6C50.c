@@ -100,7 +100,7 @@ void func_global_asm_806B1F50(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -147,5 +147,5 @@ void func_global_asm_806B24B8(void) {
     } else {
         func_global_asm_8072B7CC(0x1F8);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

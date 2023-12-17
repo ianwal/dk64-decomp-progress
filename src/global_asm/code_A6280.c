@@ -64,7 +64,7 @@ void func_global_asm_806A1580(void) {
             current_actor_pointer->unk132 = 1;
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A18A8(void) {
@@ -94,7 +94,7 @@ void func_global_asm_806A18A8(void) {
         func_global_asm_80614EBC(current_actor_pointer, 0x234);
     }
     func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xA, 0xA, 1, 0x12C, 0xC8, 0, 1.0f);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A1ABC(void) {
@@ -180,12 +180,12 @@ void func_global_asm_806A1AC4(void) {
             func_global_asm_8072881C(0, &current_actor_pointer->unkEC);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A1F28(void) {
     current_actor_pointer->object_properties_bitfield |= 0x400;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A1F64(void) {
@@ -194,7 +194,7 @@ void func_global_asm_806A1F64(void) {
     } else {
         func_global_asm_80613C48(current_actor_pointer, 0x63F, 0, 8.0f);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806A1FD0(void) {
@@ -284,7 +284,7 @@ void func_global_asm_806A1FD8(void) {
         }
     }
     current_actor_pointer->y_position -= aaD->unk4;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
     current_actor_pointer->y_position = aaD->unk8;
 }
 
@@ -352,7 +352,7 @@ void func_global_asm_806A2328(void) {
     }
     func_global_asm_8065D244(1);
     func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0x1E, 0x1E, 1, 0x12C, 0xB4, 0, 1.0f);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -372,5 +372,5 @@ void func_global_asm_806A285C(void) {
     guMtxCatF(&sp7C, &sp3C, &sp7C);
     guMtxXFMF(&sp7C, 0.0f, 0.0f, -11.0f, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
     guTranslateF(&current_actor_pointer->unkC, 0.0f, -20.0f, 0.0f);
-    func_global_asm_806319C4(current_actor_pointer, 1);
+    renderActor(current_actor_pointer, 1);
 }

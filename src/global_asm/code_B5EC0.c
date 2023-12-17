@@ -329,7 +329,7 @@ block_97:
             func_global_asm_8072C918(0x6400, 0x203, 0x204);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 

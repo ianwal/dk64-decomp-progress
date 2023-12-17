@@ -1949,7 +1949,7 @@ void func_global_asm_8071A440(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071EB70(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071F2F8(Struct80717D84 *arg0, s32 arg1);
 
-void func_global_asm_806319C4(Actor*, u8);
+void renderActor(Actor*, u8);
 
 // Round 3
 void func_global_asm_806A1FD8(void);

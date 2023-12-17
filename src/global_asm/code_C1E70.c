@@ -179,7 +179,7 @@ void func_global_asm_806BD3E4(void) {
         }
     }
     D_global_asm_8076A0A6 = 0;
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 

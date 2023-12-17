@@ -171,6 +171,6 @@ void func_boss_80032B08(void) {
             current_actor_pointer->object_properties_bitfield |= 4;
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */

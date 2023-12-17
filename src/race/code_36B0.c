@@ -332,5 +332,5 @@ void func_race_80029054(void) {
         current_actor_pointer->control_state = 0x40;
         a178->unk34++;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

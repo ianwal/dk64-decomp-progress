@@ -154,7 +154,7 @@ void func_global_asm_806C49D0(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Actor->180???
@@ -233,7 +233,7 @@ void func_global_asm_806C5FEC(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806C61C8(void) {
@@ -288,5 +288,5 @@ void func_global_asm_806C61C8(void) {
             current_actor_pointer->unkEC--;
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

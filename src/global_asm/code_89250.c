@@ -322,7 +322,7 @@ void func_global_asm_80685390(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -633,7 +633,7 @@ void func_global_asm_80687080(void) {
         current_actor_pointer->animation_state->scale_x *= 1.1;
         current_actor_pointer->animation_state->scale_z *= 1.1;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806871DC(u8 arg0) {

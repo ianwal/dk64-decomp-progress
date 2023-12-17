@@ -274,7 +274,7 @@ void func_critter_80027448(void) {
             }
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
     if (current_actor_pointer->control_state_progress != 4) {
         current_actor_pointer->object_properties_bitfield |= 4;
     } else {
@@ -361,7 +361,7 @@ void func_critter_80027DC0(void) {
         case 4:
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Jumptable

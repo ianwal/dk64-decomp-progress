@@ -44,7 +44,7 @@ void func_global_asm_8068E9B0(Actor **arg0) {
         (*arg0)->y_position = sp2C;
     }
     (*arg0)->y_rotation = PaaD->vehicle_actor_pointer->y_rotation;
-    func_global_asm_806319C4(*arg0, 0);
+    renderActor(*arg0, 0);
 }
 
 void func_global_asm_8068EA38(Actor **arg0) {
@@ -73,7 +73,7 @@ void func_global_asm_8068EA38(Actor **arg0) {
             (*arg0)->unkB8 = 0.0f;
         }
     }
-    func_global_asm_806319C4(*arg0, 0);
+    renderActor(*arg0, 0);
 }
 
 typedef struct {
@@ -337,11 +337,11 @@ void func_global_asm_80690500(void) {
             }
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806907B8(void) {
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806907E0(void) {
@@ -688,7 +688,7 @@ void func_global_asm_80695B50() {
     AnotherAdditionalActorData *sp1C = current_actor_pointer->AaaD;
     func_global_asm_80695724(0, 1);
     func_global_asm_80612BC0(&current_actor_pointer->unkC, sp1C->unk8);
-    func_global_asm_806319C4(current_actor_pointer, 1);
+    renderActor(current_actor_pointer, 1);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80695BAC.s")

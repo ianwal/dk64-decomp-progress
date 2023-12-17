@@ -32,7 +32,7 @@ void func_menu_80032550(void) {
         // TODO: Get rid of this somehow, surprisingly getting rid of it causes it to not match
         phi_a0_2 = current_actor_pointer;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_menu_8003264C(void) {
@@ -112,7 +112,7 @@ void func_menu_8003264C(void) {
     if (current_actor_pointer->control_state >= 3) {
         func_global_asm_8068C350(&func_menu_8003292C, current_actor_pointer, 3);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 // Displaylist stuff

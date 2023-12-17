@@ -81,7 +81,7 @@ void func_global_asm_806B3420(void) {
             }
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3680.s")
@@ -203,7 +203,7 @@ void func_global_asm_806B3680(void) {
     if ((current_actor_pointer->control_state == 2) || (current_actor_pointer->control_state == 3)) {
         func_global_asm_8072D13C(current_actor_pointer->control_state, 1);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 */
 
@@ -517,13 +517,13 @@ void func_global_asm_806B4DCC(void) {
     }
     func_global_asm_806B49B0(current_actor_pointer->control_state, 0x247, 0x246);
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806B50F4() {
     func_global_asm_80729B00();
     func_global_asm_806B49B0(current_actor_pointer->control_state, 0x23D, 0x23E);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_global_asm_806B513C(void) {
@@ -597,7 +597,7 @@ void func_global_asm_806B52DC(void) {
             break;
     }
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 extern f64 D_global_asm_8075B718;
@@ -710,5 +710,5 @@ void func_global_asm_806B54BC(void) {
             func_global_asm_8072B7CC(0x32F);
             break;
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

@@ -134,7 +134,7 @@ void func_boss_8002DCE0(void) {
             deleteActor(current_actor_pointer);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_boss_8002DD7C(void) {
@@ -204,7 +204,7 @@ void func_boss_8002E82C(void) {
             deleteActor(current_actor_pointer);
         }
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }
 
 void func_boss_8002E9B8(s32 arg0, s16 arg1) {
@@ -333,5 +333,5 @@ void func_boss_80030888(void) {
         phi_v0_2 = 0U;
     }
     func_boss_8002FDF8(temp, phi_v0_2);
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
 }

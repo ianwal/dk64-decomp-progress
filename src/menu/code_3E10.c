@@ -1580,7 +1580,7 @@ void func_menu_80032024(void) {
         current_actor_pointer->y_position = MaaD->unk4 - (menu_icon_transition_scale * 19.0f);
         current_actor_pointer->z_position = MaaD->unk8 - (menu_icon_transition_scale * 50.0f);
     }
-    func_global_asm_806319C4(current_actor_pointer, 0);
+    renderActor(current_actor_pointer, 0);
     if (barrel_visibility_timer != 0) {
         current_actor_pointer->object_properties_bitfield &= ~4;
     } else {
