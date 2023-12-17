@@ -32,16 +32,16 @@ extern u8 number_of_exits;
 
 // rodata
 const Struct8075C410 D_global_asm_8075C410[] = {
-    {0x00000002, 0x00000000, 0x00000004, 0x00001000},
-    {0x00000003, 0x00000001, 0x00000001, 0x00001000},
-    {0x00000004, 0x00000002, 0x00000006, 0x00001000},
-    {0x00000005, 0x00000003, 0x00000009, 0x00001000},
-    {0x00000006, 0x00000004, 0x0000000C, 0x00001000},
-    {0x00000007, 0x00000005, 0x000000DB, 0x00001000},
-    {0x00000008, 0x00000006, 0x00000014, 0x00001000},
-    {0x00000009, 0x00000000, 0x00000018, 0x00001000},
-    {0x00000002, 0x00000000, 0x0000001D, 0x00000000},
-    {0x00000002, 0x00000000, 0x0000001D, 0x00000000},
+    {2, 0, 0x04, 0x1000},
+    {3, 1, 0x01, 0x1000},
+    {4, 2, 0x06, 0x1000},
+    {5, 3, 0x09, 0x1000},
+    {6, 4, 0x0C, 0x1000},
+    {7, 5, 0xDB, 0x1000},
+    {8, 6, 0x14, 0x1000},
+    {9, 0, 0x18, 0x1000},
+    {2, 0, 0x1D, 0x0000},
+    {2, 0, 0x1D, 0x0000},
 };
 
 extern s16 D_global_asm_8076AEE2;
@@ -171,6 +171,7 @@ extern f32 D_global_asm_80753578[];
 extern f32 D_global_asm_807535E8[];
 
 void func_global_asm_806F09F0(Actor*, u16);
+void func_global_asm_806C8984(void);
 
 void func_global_asm_806C850C(s32 arg0, u8 arg1) {
     Struct8075C410 *sp2C;
@@ -259,8 +260,112 @@ void func_global_asm_806C850C(s32 arg0, u8 arg1) {
     func_global_asm_806C8984();
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C8984.s")
+extern s16 D_global_asm_807FD584;
+extern s16 D_global_asm_80753354[];
+
+void func_global_asm_806C8984(void) {
+    f32 var_f0;
+
+    var_f0 = -1.0f;
+    switch (current_map) {
+        case MAP_MAIN_MENU:
+            func_global_asm_80677FA8(ACTOR_MAIN_MENU_CONTROLLER, 0);
+            return;
+        case MAP_SNIDES_HQ:
+            func_global_asm_80677FA8(ACTOR_MENU_SNIDE, 0);
+            return;
+        case MAP_DIVE_BARREL:
+        case MAP_ORANGE_BARREL:
+        case MAP_BARREL_BARREL:
+        case MAP_VINE_BARREL:
+            func_global_asm_80677FA8(ACTOR_TRAINING_BARREL_CONTROLLER, 0);
+            return;
+        case MAP_ENGUARDE_ARENA:
+        case MAP_RAMBI_ARENA:
+            func_global_asm_80677FA8(ACTOR_ARENA_CONTROLLER, 0);
+            return;
+        case MAP_GALLEON_SEAL_RACE:
+            if (var_f0 < 0.0f) {
+                var_f0 = 0.8f;
+            }
+            // fallthrough
+        case MAP_CRANKYS_LAB:
+            if (var_f0 < 0.0f) {
+                var_f0 = 1.8f;
+            }
+            // fallthrough
+        case MAP_FUNKYS_STORE:
+            if (var_f0 < 0.0f) {
+                var_f0 = 1.6f;
+            }
+            D_global_asm_807FBB48->animation_state->scale[0] *= var_f0;
+            D_global_asm_807FBB48->animation_state->scale[1] *= var_f0;
+            D_global_asm_807FBB48->animation_state->scale[2] *= var_f0;
+            return;
+        case MAP_BEAVER_BOTHER_EASY:
+        case MAP_BEAVER_BOTHER_NORMAL:
+        case MAP_BEAVER_BOTHER_HARD:
+            func_global_asm_806CFE7C();
+            func_global_asm_80614EBC(D_global_asm_807FBB48, 0);
+            func_global_asm_80613C48(D_global_asm_807FBB48, 0, 0.0f, 0.0f);
+            D_global_asm_807FBB48->control_state = 0x7D;
+            D_global_asm_807FBB48->control_state_progress = 0;
+            D_global_asm_807FBB48->object_properties_bitfield &= 0xFFFF7FFF;
+            D_global_asm_807FBB48->shadow_opacity = 0;
+            func_global_asm_80677FA8(ACTOR_MINIGAME_BOTHER_KLAPTRAP, 0x21);
+            func_global_asm_80614EBC(D_global_asm_807FBB44, 0x232);
+            D_global_asm_807FBB44->unk11C = D_global_asm_807FBB48;
+            extra_player_info_pointer->vehicle_actor_pointer = D_global_asm_807FBB44;
+            return;
+        case MAP_JAPES_MINECART:
+            func_global_asm_806C7B50(0x1D, 0, D_global_asm_807FBB48);
+            return;
+        case MAP_BATTY_BARREL_BANDIT_EASY:
+        case MAP_BATTY_BARREL_BANDIT_EASY_2:
+        case MAP_BATTY_BARREL_BANDIT_NORMAL:
+        case MAP_BATTY_BARREL_BANDIT_HARD:
+            func_global_asm_80677FA8(ACTOR_BANDIT_HANDLE, 0x94);
+            extra_player_info_pointer->vehicle_actor_pointer = D_global_asm_807FBB44;
+            return;
+        case MAP_DK_RAP:
+            func_global_asm_807215D0(0, 0);
+            func_global_asm_807215AC(0x6B, 0x30, 0x50);
+            func_global_asm_80721560(0x320, 0x82, 0, 0xFF, 0xFF, 0xFF);
+            func_critter_80028840();
+            // fallthrough
+        case MAP_NINTENDO_LOGO:
+        case MAP_TITLE_SCREEN_NOT_FOR_RESALE_VERSION:
+            D_global_asm_807FBB48->control_state = 0x77;
+            D_global_asm_807FBB48->control_state_progress = 0;
+            return;
+        case MAP_BUSY_BARREL_BARRAGE_EASY:
+        case MAP_BUSY_BARREL_BARRAGE_NORMAL:
+        case MAP_BUSY_BARREL_BARRAGE_HARD:
+            func_global_asm_806F0D68(D_global_asm_807FBB48);
+            extra_player_info_pointer->unk48 = D_global_asm_80753354[D_global_asm_807FD584];
+            D_global_asm_807FBB48->control_state = 0x62;
+            D_global_asm_807FBB48->control_state_progress = 0;
+            func_global_asm_80614E78(D_global_asm_807FBB48, 0x52);
+            return;
+        case MAP_KROOL_BARREL_CHUNKY_SHOOTING_GAME:
+            D_global_asm_807FBB48->control_state = 0x5F;
+            D_global_asm_807FBB48->control_state_progress = 0;
+            func_global_asm_80614E78(D_global_asm_807FBB48, 0x4B);
+            return;
+        case MAP_FUNGI_DOGADON:
+        case MAP_DK_ISLES_DK_THEATRE:
+        case MAP_AZTEC_DOGADON:
+        case MAP_BLOOPERS_ENDING:
+        case MAP_KLUMSY_ENDING:
+            D_global_asm_807FBB48->control_state = 0x77;
+            D_global_asm_807FBB48->control_state_progress = 0;
+            return;
+        case MAP_GALLEON_PUFFTOSS:
+            func_global_asm_80690470(D_global_asm_807FBB48);
+            // fallthrough
+            return;
+    }
+}
 
 void func_global_asm_806C8D20(Actor *arg0) {
     arg0->noclip_byte = 0x3C; // Normal collision
