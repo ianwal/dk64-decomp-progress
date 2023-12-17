@@ -331,7 +331,7 @@ void func_global_asm_8063E5B4(OM2_unk7C *arg0) {
         temp_v1->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
         if (global_properties_bitfield & 0x1000) {
             global_properties_bitfield &= ~0x1000;
-            func_global_asm_806782C0(arg0->unk94);
+            deleteActor(arg0->unk94);
             arg0->unk94 = NULL;
         }
     }
@@ -599,14 +599,14 @@ void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 a
     s32 phi_v1;
 
     if ((arg0->unk94 == 0) && ((func_global_asm_80678014(0x14)))) {
-        arg0->unk94 = D_global_asm_807FBB44;
-        D_global_asm_807FBB44->noclip_byte = 1;
-        D_global_asm_807FBB44->x_position = D_global_asm_807F621C;
-        D_global_asm_807FBB44->y_position = D_global_asm_807F6220;
-        D_global_asm_807FBB44->z_position = D_global_asm_807F6224;
-        D_global_asm_807FBB44->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
+        arg0->unk94 = last_spawned_actor;
+        last_spawned_actor->noclip_byte = 1;
+        last_spawned_actor->x_position = D_global_asm_807F621C;
+        last_spawned_actor->y_position = D_global_asm_807F6220;
+        last_spawned_actor->z_position = D_global_asm_807F6224;
+        last_spawned_actor->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
         if (D_global_asm_807F693F != 0) {
-            D_global_asm_807FBB44->unk15E = arg3;
+            last_spawned_actor->unk15E = arg3;
         }
         if (D_global_asm_807F693F != 0) {
             phi_v1 = 4;
@@ -2550,7 +2550,7 @@ void func_global_asm_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
         if (arg2 != 1) {
             if (arg2 == 2) {
                 func_global_asm_807271F4(8, 0, 0, 0, 0, 0, 0);
-                D_global_asm_807FBB44->object_properties_bitfield &= -5;
+                last_spawned_actor->object_properties_bitfield &= -5;
             }
         } else {
             temp_v0 = func_global_asm_807270C0(8, 0);
@@ -3426,16 +3426,16 @@ void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     func_global_asm_807149B8(1);
     func_global_asm_80714998(2);
     func_global_asm_80714CC0(&D_global_asm_80721530, 0, D_global_asm_807F621C, D_global_asm_807F6220 + D_global_asm_80758BD8, D_global_asm_807F6224);
-    func_global_asm_80677FA8(ACTOR_WRINKLY, 0x53); // Spawn actor: Wrinkly
-    D_global_asm_807FBB44->x_position = D_global_asm_807F621C;
-    D_global_asm_807FBB44->y_position = D_global_asm_807F6220;
-    D_global_asm_807FBB44->z_position = D_global_asm_807F6224;
-    D_global_asm_807FBB44->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
+    spawnActor(ACTOR_WRINKLY, 0x53); // Spawn actor: Wrinkly
+    last_spawned_actor->x_position = D_global_asm_807F621C;
+    last_spawned_actor->y_position = D_global_asm_807F6220;
+    last_spawned_actor->z_position = D_global_asm_807F6224;
+    last_spawned_actor->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
     if ((current_map == MAP_FUNGI_LOBBY) || ((current_map == MAP_AZTEC_LOBBY) && (arg2 == 4))) {
         // BUG(?): This angle addition does not truncate to 4096
-        D_global_asm_807FBB44->y_rotation += 0x800;
+        last_spawned_actor->y_rotation += 0x800;
     }
-    playCutscene(D_global_asm_807FBB44, 0x22, 5);
+    playCutscene(last_spawned_actor, 0x22, 5);
     playSong(0xAB, 1.0f);
     playSound(0x2EA, 0x7FFF, 63.0f, 1.0f, 0, 0);
     D_global_asm_807F6951 = arg2;

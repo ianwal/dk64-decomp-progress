@@ -19,20 +19,20 @@ void func_global_asm_806B1F50(void) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
         current_actor_pointer->control_state = 0;
         current_actor_pointer->control_state_progress = 0;
-        func_global_asm_80677FA8(ACTOR_KLUMSY_CAGE, 0x7D);
-        D_global_asm_807FDC90->unk4 = D_global_asm_807FBB44;
-        func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, 0.3f);
-        D_global_asm_807FBB44->x_position = (func_global_asm_80612794(current_actor_pointer->y_rotation) * 14.0f) + current_actor_pointer->x_position;
-        D_global_asm_807FBB44->z_position = (func_global_asm_80612790(current_actor_pointer->y_rotation) * 14.0f) + current_actor_pointer->z_position;
-        func_global_asm_8066EA90(D_global_asm_807FBB44, 3);
-        func_global_asm_8066EA90(D_global_asm_807FBB44, 1);
-        func_global_asm_80665564(D_global_asm_807FBB44, 14.0f);
+        spawnActor(ACTOR_KLUMSY_CAGE, 0x7D);
+        D_global_asm_807FDC90->unk4 = last_spawned_actor;
+        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.3f);
+        last_spawned_actor->x_position = (func_global_asm_80612794(current_actor_pointer->y_rotation) * 14.0f) + current_actor_pointer->x_position;
+        last_spawned_actor->z_position = (func_global_asm_80612790(current_actor_pointer->y_rotation) * 14.0f) + current_actor_pointer->z_position;
+        func_global_asm_8066EA90(last_spawned_actor, 3);
+        func_global_asm_8066EA90(last_spawned_actor, 1);
+        func_global_asm_80665564(last_spawned_actor, 14.0f);
         current_actor_pointer->unk68 &= 0xFFBF;
-        D_global_asm_807FBB44->object_properties_bitfield |= 0x1000;
+        last_spawned_actor->object_properties_bitfield |= 0x1000;
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(-1);
-        func_global_asm_807149A8(D_global_asm_807FBB44->draw_distance * 0.75);
-        func_global_asm_80714C08(&D_global_asm_8072030C, 0.28f, D_global_asm_807FBB44, 1, 2);
+        func_global_asm_807149A8(last_spawned_actor->draw_distance * 0.75);
+        func_global_asm_80714C08(&D_global_asm_8072030C, 0.28f, last_spawned_actor, 1, 2);
         func_global_asm_80614EBC(current_actor_pointer, 0x300);
         func_global_asm_80604CBC(current_actor_pointer, 0x135, 0x64, 0, 0, 0x78, 1.0f, 0);
     }
@@ -63,11 +63,11 @@ void func_global_asm_806B1F50(void) {
                     current_actor_pointer->unk68 &= 0xFFBF;
                     func_global_asm_80608528(current_actor_pointer, 0xED, 0xFF, 0x7F, 0x14);
                     func_global_asm_8067DF44(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, (current_actor_pointer->animation_state->scale_y * 2) / 0.15, 0, 1);
-                    func_global_asm_806782C0(D_global_asm_807FDC94);
+                    deleteActor(D_global_asm_807FDC94);
                     current_actor_pointer->control_state_progress++;
                     break;
                 case 0x64:
-                    func_global_asm_806782C0(current_actor_pointer->unk11C);
+                    deleteActor(current_actor_pointer->unk11C);
                     current_actor_pointer->control_state = 0x40;
                     playSong(0x2A, 1.0f);
                     // Fallthrough
@@ -83,7 +83,7 @@ void func_global_asm_806B1F50(void) {
                     func_global_asm_80605314(current_actor_pointer, 0);
                     func_global_asm_80726EE0(0);
                     func_global_asm_8071586C(D_global_asm_807FDC94);
-                    func_global_asm_806782C0(current_actor_pointer->unk11C);
+                    deleteActor(current_actor_pointer->unk11C);
                     current_actor_pointer->control_state = 0x27;
                     current_actor_pointer->control_state_progress = 0;
                     playCutscene(current_actor_pointer, 3, 1);

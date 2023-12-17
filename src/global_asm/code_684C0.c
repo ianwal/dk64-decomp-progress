@@ -81,7 +81,7 @@ void func_global_asm_80663844(Actor *arg0) {
             *phi_s0 = temp_v0_4;
             temp_v0_4->unk0 = arg0;
             temp_v0_4->unk4 = arg0->unk54;
-            temp_v0_4->unk8 = D_global_asm_807FBB44;
+            temp_v0_4->unk8 = last_spawned_actor;
             temp_v0_4->next = NULL;
         }
         current = current->next;
@@ -111,9 +111,9 @@ typedef struct {
 void func_global_asm_80663A0C(Actor *arg0, GlobalASMStruct84 *arg1) {
     KongMirrorAAD *temp_v1;
 
-    func_global_asm_80677FA8(ACTOR_REFLECTION_MUSEUM, func_global_asm_80613448(arg0)); // Spawn actor: Kong Mirror (Creepy Castle Museum)
-    D_global_asm_807FBB44->unk11C = arg0;
-    temp_v1 = D_global_asm_807FBB44->additional_actor_data;
+    spawnActor(ACTOR_REFLECTION_MUSEUM, func_global_asm_80613448(arg0)); // Spawn actor: Kong Mirror (Creepy Castle Museum)
+    last_spawned_actor->unk11C = arg0;
+    temp_v1 = last_spawned_actor->additional_actor_data;
     temp_v1->unkE = arg1->unkE;
     temp_v1->unkC = arg1->unkC;
     temp_v1->unkF = arg1->unkF;
@@ -142,7 +142,7 @@ void func_global_asm_80663A80(void) {
                 || (boundingBox->max_y < temp_v1->y_position)
                 || (boundingBox->max_z < temp_v1->z_position)) {
                 temp_v1->unk156--;
-                func_global_asm_806782C0(current83->unk8);
+                deleteActor(current83->unk8);
                 temp_a0 = current83;
                 *var_s1 = current83->next;
                 current83 = current83->next;

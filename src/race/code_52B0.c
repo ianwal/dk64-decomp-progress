@@ -123,8 +123,8 @@ void func_race_800292D0(Actor *arg0) {
     }
     func_race_8002BBD0(arg0, var_s5);
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
-        func_global_asm_80677FA8(ACTOR_UNKNOWN_307, 0x9F);
-        sp54 = D_global_asm_807FBB44;
+        spawnActor(ACTOR_UNKNOWN_307, 0x9F);
+        sp54 = last_spawned_actor;
         sp58 = sp54->additional_actor_data;
         sp58->unk27 = 0;
         func_race_8002BC2C(arg0, var_s1, sp54, sp58);
@@ -292,8 +292,8 @@ void initializeCastleCarRace(Actor *arg0) {
     }
     func_race_8002BBD0(arg0, var_s5);
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
-        func_global_asm_80677FA8(ACTOR_CAR_CASTLE_PLAYER, 0x95);
-        sp54 = D_global_asm_807FBB44;
+        spawnActor(ACTOR_CAR_CASTLE_PLAYER, 0x95);
+        sp54 = last_spawned_actor;
         sp58 = sp54->additional_actor_data;
         sp58->unk27 = 0;
         func_race_8002BC2C(arg0, var_s1, sp54, sp58);

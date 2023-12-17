@@ -310,11 +310,11 @@ void func_global_asm_806C10A0(u8 arg0, u16 arg1, s16 arg2) {
                     // TODO: Proper bitfield syntax
                     if (((s32)(current_actor_pointer->object_properties_bitfield << 6) >= 0)) {
                         func_global_asm_80613C48(current_actor_pointer, 0xE4, 0.0f, 2.0f);
-                        func_global_asm_80677FA8(ACTOR_UNKNOWN_225, 0x98);
-                        func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, 0.21f);
-                        func_global_asm_80671C0C(current_actor_pointer, 1, &D_global_asm_807FBB44->x_position, &sp34, &D_global_asm_807FBB44->z_position);
-                        func_global_asm_80614EBC(D_global_asm_807FBB44, 0x298);
-                        D_global_asm_807FBB44->unk11C = current_actor_pointer;
+                        spawnActor(ACTOR_UNKNOWN_225, 0x98);
+                        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.21f);
+                        func_global_asm_80671C0C(current_actor_pointer, 1, &last_spawned_actor->x_position, &sp34, &last_spawned_actor->z_position);
+                        func_global_asm_80614EBC(last_spawned_actor, 0x298);
+                        last_spawned_actor->unk11C = current_actor_pointer;
                         current_actor_pointer->control_state_progress++;
                     }
                     break;
@@ -335,7 +335,7 @@ void func_global_asm_806C1300(void) {
         case 3:
             func_global_asm_8061D4E4(D_global_asm_807F5D10);
             current_actor_pointer->unk11C->control_state = 0x40;
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
             break;
     }
     func_global_asm_806319C4(current_actor_pointer, 0);

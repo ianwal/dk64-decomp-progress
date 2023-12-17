@@ -151,7 +151,7 @@ void func_global_asm_806AD84C(void) {
             if (current_actor_pointer->shadow_opacity >= 0xB) {
                 current_actor_pointer->shadow_opacity -= 0xA;
             } else {
-                func_global_asm_806782C0(current_actor_pointer);
+                deleteActor(current_actor_pointer);
             }
             break;
     }
@@ -160,9 +160,9 @@ void func_global_asm_806AD84C(void) {
 }
 
 void func_global_asm_806AD9AC(void) {
-    func_global_asm_80677FA8(ACTOR_SILK, 0xC0); // Spawn actor: Spider Silk String (miniboss)
-    D_global_asm_807FBB44->unk11C = current_actor_pointer;
-    D_global_asm_807FBB44->draw_distance = 2000;
+    spawnActor(ACTOR_SILK, 0xC0); // Spawn actor: Spider Silk String (miniboss)
+    last_spawned_actor->unk11C = current_actor_pointer;
+    last_spawned_actor->draw_distance = 2000;
 }
 
 void func_global_asm_806AD9F4(void) {

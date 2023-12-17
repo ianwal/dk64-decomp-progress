@@ -68,14 +68,14 @@ Gfx *func_bonus_800252A0(Gfx *dl, Actor *arg1) {
 
 Actor* func_bonus_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     BaaD2 *tmp;
-    if (func_global_asm_80677FA8(ACTOR_BANDIT_SLOT, arg0)) { // Spawn actor 219 (slot, BBB I guess?)
-        tmp = D_global_asm_807FBB44->BaaD2;
-        D_global_asm_807FBB44->x_position = arg1;
-        D_global_asm_807FBB44->y_position = arg2;
-        D_global_asm_807FBB44->z_position = arg3;
+    if (spawnActor(ACTOR_BANDIT_SLOT, arg0)) { // Spawn actor 219 (slot, BBB I guess?)
+        tmp = last_spawned_actor->BaaD2;
+        last_spawned_actor->x_position = arg1;
+        last_spawned_actor->y_position = arg2;
+        last_spawned_actor->z_position = arg3;
         tmp->unk0 = current_actor_pointer;
     }
-    return D_global_asm_807FBB44;
+    return last_spawned_actor;
 }
 
 u8 func_bonus_80025480(Actor **arg0, u8 arg1) {

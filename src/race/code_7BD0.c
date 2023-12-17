@@ -260,8 +260,8 @@ void func_race_8002CFF0(void) {
     TempAAD *temp_v0;
     Actor *temp_a0;
 
-    func_global_asm_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
-    temp_a0 = D_global_asm_807FBB44;
+    spawnActor(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
+    temp_a0 = last_spawned_actor;
     func_race_80025E9C(temp_a0);
     func_race_8002BCD4(temp_a0);
     temp_v0 = temp_a0->TaaD;
@@ -276,9 +276,9 @@ void func_race_8002CFF0(void) {
 void castleCarRaceSetup(void) {
     RaceAdditionalActorData2 *RaaD;
 
-    func_global_asm_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
-    RaaD = D_global_asm_807FBB44->RaaD2;
-    initializeCastleCarRace(D_global_asm_807FBB44);
+    spawnActor(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
+    RaaD = last_spawned_actor->RaaD2;
+    initializeCastleCarRace(last_spawned_actor);
     RaaD->unk0 = 0xE;
     RaaD->unk24 = 2;
 }
@@ -286,9 +286,9 @@ void castleCarRaceSetup(void) {
 void initializeSealRace(void) {
     RaceAdditionalActorData2 *RaaD;
 
-    func_global_asm_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
-    RaaD = D_global_asm_807FBB44->RaaD2;
-    func_race_800292D0(D_global_asm_807FBB44);
+    spawnActor(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
+    RaaD = last_spawned_actor->RaaD2;
+    func_race_800292D0(last_spawned_actor);
     RaaD->unk0 = 0xE;
     RaaD->unk24 = 2;
 }
@@ -296,9 +296,9 @@ void initializeSealRace(void) {
 void func_race_8002D0FC(void) {
     RaceAdditionalActorData2 *RaaD;
 
-    func_global_asm_80677FA8(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
-    RaaD = D_global_asm_807FBB44->RaaD2;
-    func_race_8002E2C8(D_global_asm_807FBB44);
+    spawnActor(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
+    RaaD = last_spawned_actor->RaaD2;
+    func_race_8002E2C8(last_spawned_actor);
     RaaD->unk0 = 2;
     RaaD->unk24 = 1;
 }
@@ -368,7 +368,7 @@ void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1) {
     Actor *temp = arg1->unkC;
     RaceAdditionalActorData *RaaD = temp->RaaD;
     RaaD->unk2C = 0;
-    func_global_asm_806782C0(arg0);
+    deleteActor(arg0);
 }
 
 // Appears to find the closest actor to whatever is passed in
@@ -742,8 +742,8 @@ void func_race_8002E2C8(Actor *arg0) {
         sp5C->unk25 = 0;
     }
     for (i = 0; i < cc_number_of_players; i++) {
-        func_global_asm_80677FA8(ACTOR_UNKNOWN_315, 0);
-        sp54 = D_global_asm_807FBB44;
+        spawnActor(ACTOR_UNKNOWN_315, 0);
+        sp54 = last_spawned_actor;
         sp58 = sp54->additional_actor_data;
         sp58->unk27 = 0;
         func_race_8002BC2C(arg0, var_s1, sp54, sp58);

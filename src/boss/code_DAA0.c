@@ -124,7 +124,7 @@ void func_boss_80032B08(void) {
             }
             if (current_actor_pointer->y_position < 0.0) {
                 playSound(0x384, 0x7D00, 63.0f, 1.0f, 0, 0);
-                func_global_asm_806782C0(current_actor_pointer);
+                deleteActor(current_actor_pointer);
             }
         }
     }

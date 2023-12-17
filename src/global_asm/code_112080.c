@@ -153,10 +153,10 @@ Struct8070D754_temp_v0 *func_global_asm_8070D754(Actor *arg0) {
         *nextPointer = malloc(sizeof(Struct8070D754_temp_v0));
         func_global_asm_80611690(*nextPointer);
         (*nextPointer)->unk0 = arg0;
-        func_global_asm_80677FA8(ACTOR_TEXT_BUBBLE, 0);
-        D_global_asm_807FBB44->control_state = 0;
-        (*nextPointer)->unk4 = D_global_asm_807FBB44;
-        textAAD = D_global_asm_807FBB44->additional_actor_data;
+        spawnActor(ACTOR_TEXT_BUBBLE, 0);
+        last_spawned_actor->control_state = 0;
+        (*nextPointer)->unk4 = last_spawned_actor;
+        textAAD = last_spawned_actor->additional_actor_data;
         textAAD->unk4 = arg0;
     }
     return *nextPointer;

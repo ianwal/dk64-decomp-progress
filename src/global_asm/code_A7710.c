@@ -13,20 +13,20 @@ typedef struct {
 } AAD_global_asm_806A2A10;
 
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2) {
-    func_global_asm_80677FA8(ACTOR_TIMER_CONTROLLER, 0); // spawnActorWrapper(ACTOR_TIMER_CONTROLLER)
+    spawnActor(ACTOR_TIMER_CONTROLLER, 0); // spawnActorWrapper(ACTOR_TIMER_CONTROLLER)
     if ((arg0 & 0x8000) != 0) {
-        D_global_asm_807FBB44->unk15F = 0xB;
+        last_spawned_actor->unk15F = 0xB;
         arg2--;
     } else {
-        D_global_asm_807FBB44->unk15F = 6;
+        last_spawned_actor->unk15F = 6;
     }
-    current_actor_pointer->unk11C = D_global_asm_807FBB44;
-    extra_player_info_pointer->unk1A8 = D_global_asm_807FBB44;
-    ((AAD_global_asm_806A2A10*)D_global_asm_807FBB44->additional_data_pointer)->unkC = arg2;
-    D_global_asm_807FBB44->x_position = (s16) (arg0 & 0x7FFF);
-    D_global_asm_807FBB44->y_position = arg1;
-    D_global_asm_807FBB44->control_state = 1;
-    D_global_asm_807FBB44->shadow_opacity = 0;
+    current_actor_pointer->unk11C = last_spawned_actor;
+    extra_player_info_pointer->unk1A8 = last_spawned_actor;
+    ((AAD_global_asm_806A2A10*)last_spawned_actor->additional_data_pointer)->unkC = arg2;
+    last_spawned_actor->x_position = (s16) (arg0 & 0x7FFF);
+    last_spawned_actor->y_position = arg1;
+    last_spawned_actor->control_state = 1;
+    last_spawned_actor->shadow_opacity = 0;
 }
 */
 

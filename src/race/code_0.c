@@ -147,7 +147,7 @@ void func_race_80024000(void) {
             }
         }
     }
-    var_f0 = (current_actor_pointer->y_position - D_global_asm_807FBB48->y_position);
+    var_f0 = (current_actor_pointer->y_position - current_player->y_position);
     var_f0 *= 0.25f;
     var_f0 = MIN(6.0f, var_f0);
     var_f0 = MAX(-6.0f, var_f0);
@@ -279,8 +279,8 @@ void func_race_80025E9C(Actor *arg0) {
 
     aaD = arg0->additional_actor_data;
     func_race_8002BBD0(arg0, 2);
-    func_global_asm_80677FA8(ACTOR_CAR_FACTORY_PLAYER, 0x95);
-    playerCar = D_global_asm_807FBB44;
+    spawnActor(ACTOR_CAR_FACTORY_PLAYER, 0x95);
+    playerCar = last_spawned_actor;
     aaD_2 = playerCar->additional_actor_data;
     func_race_8002BC2C(arg0, 1, playerCar, aaD_2);
     aaD_2->unk37 = 0;
@@ -294,8 +294,8 @@ void func_race_80025E9C(Actor *arg0) {
     a184 = sp40->unk184;
     a184->unk4 = aaD_2;
     a184->unk0 = playerCar;
-    func_global_asm_80677FA8(ACTOR_CAMERA_CARRACE, 0);
-    raceCamera = D_global_asm_807FBB44;
+    spawnActor(ACTOR_CAMERA_CARRACE, 0);
+    raceCamera = last_spawned_actor;
     a178->unk34 = raceCamera;
     pad = 1;
     a178_2 = sp40->unk178;
@@ -438,18 +438,18 @@ void func_race_80026B20(Struct80026B20 *arg0) {
     if (arg0->unk2C == NULL && arg0->unk2A != 0) {
         a178 = current_actor_pointer->unk178;
         arg0->unk2A--;
-        func_global_asm_80677FA8(ACTOR_MISSILE_CAR, 0x96);
-        a178_2 = D_global_asm_807FBB44->unk178;
-        a17C = D_global_asm_807FBB44->unk17C;
+        spawnActor(ACTOR_MISSILE_CAR, 0x96);
+        a178_2 = last_spawned_actor->unk178;
+        a17C = last_spawned_actor->unk17C;
         a17C->unkC = current_actor_pointer;
         a17C->unk8 = func_race_8002D360(current_actor_pointer);
-        arg0->unk2C = D_global_asm_807FBB44;
-        D_global_asm_807FBB44->x_position = current_actor_pointer->x_position;
-        D_global_asm_807FBB44->y_position = current_actor_pointer->y_position;
-        D_global_asm_807FBB44->z_position = current_actor_pointer->z_position;
-        D_global_asm_807FBB44->unkEE = current_actor_pointer->unkEE;
-        D_global_asm_807FBB44->y_rotation = current_actor_pointer->y_rotation;
-        D_global_asm_807FBB44->unkB8 = current_actor_pointer->unkB8;
+        arg0->unk2C = last_spawned_actor;
+        last_spawned_actor->x_position = current_actor_pointer->x_position;
+        last_spawned_actor->y_position = current_actor_pointer->y_position;
+        last_spawned_actor->z_position = current_actor_pointer->z_position;
+        last_spawned_actor->unkEE = current_actor_pointer->unkEE;
+        last_spawned_actor->y_rotation = current_actor_pointer->y_rotation;
+        last_spawned_actor->unkB8 = current_actor_pointer->unkB8;
         *a178_2 = *a178;
         playSound(0x18B, 0x7FFF, 64.0f, 1.0f, 0, 0);
     } else {

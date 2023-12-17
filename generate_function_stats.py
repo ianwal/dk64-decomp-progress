@@ -82,8 +82,8 @@ standardSearchColumns = {
     "actors": [
         "current_actor_pointer",
         "player_pointer",
-        "D_global_asm_807FBB44",
-        "D_global_asm_807FBB48",
+        "last_spawned_actor",
+        "current_player",
         "D_global_asm_807FBB4C",
         "D_global_asm_807FBD6C",
         "D_global_asm_807FDC94",

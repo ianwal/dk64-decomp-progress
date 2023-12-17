@@ -17,18 +17,18 @@ void func_minecart_800265F0(void) {
     func_global_asm_80729B00();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_80614EBC(current_actor_pointer, 0x310);
-        func_global_asm_80677FA8(ACTOR_UNKNOWN_284, 0x4C);
-        func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
-        D_global_asm_807FBB44->unk11C = current_actor_pointer;
-        D_global_asm_807FBB44->unk168 = -1;
-        D_global_asm_807FBB44->animation_state->scale[0] *= -1.0f;
-        D_global_asm_807FBB44->unkEC = 0x2BC;
-        func_global_asm_806131D4(D_global_asm_807FBB44, func_global_asm_80613448(D_global_asm_807FBB44));
-        func_global_asm_80677FA8(ACTOR_UNKNOWN_284, 0x4C);
-        func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
-        D_global_asm_807FBB44->unk11C = current_actor_pointer;
-        D_global_asm_807FBB44->unk168 = 1;
-        D_global_asm_807FBB44->unkEC = 0x2BC;
+        spawnActor(ACTOR_UNKNOWN_284, 0x4C);
+        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
+        last_spawned_actor->unk11C = current_actor_pointer;
+        last_spawned_actor->unk168 = -1;
+        last_spawned_actor->animation_state->scale[0] *= -1.0f;
+        last_spawned_actor->unkEC = 0x2BC;
+        func_global_asm_806131D4(last_spawned_actor, func_global_asm_80613448(last_spawned_actor));
+        spawnActor(ACTOR_UNKNOWN_284, 0x4C);
+        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
+        last_spawned_actor->unk11C = current_actor_pointer;
+        last_spawned_actor->unk168 = 1;
+        last_spawned_actor->unkEC = 0x2BC;
         func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x301, 0xFF, 0x7F, 0, 0, 0.0f, 0);
         current_actor_pointer->control_state = 1;
         current_actor_pointer->z_rotation = 0x12C;
@@ -58,9 +58,9 @@ void func_minecart_800265F0(void) {
                 var_t6 = current_actor_pointer->unk0;
             } else {
                 func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x182, 0xFF, 0x7F, 0, 0, 0.3f, 0);
-                func_global_asm_80677FA8(ACTOR_UNKNOWN_287, 0x50);
-                D_global_asm_807FBB44->unk11C = current_actor_pointer;
-                func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, 0.06f);
+                spawnActor(ACTOR_UNKNOWN_287, 0x50);
+                last_spawned_actor->unk11C = current_actor_pointer;
+                func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.06f);
                 current_actor_pointer->unk15F++;
         case 2:
         case 3:

@@ -68,18 +68,18 @@ void func_bonus_800271B4(s16 arg0, s16 arg1, s16 arg2, u8 arg3, Struct800271B4 *
     AAD_bonus_800271B4 *temp_v1;
 
     var_a3 = arg4->unk28 < ((rand() >> 0xF) % 100) ? 1 : 0;
-    if (func_global_asm_80677FA8(ACTOR_MINIGAME_KREMLING, var_a3 ? 0x32 : 0x33) != 0) {
-        temp_v1 = D_global_asm_807FBB44->additional_actor_data;
-        func_global_asm_80614EBC(D_global_asm_807FBB44, var_a3 ? 0x211 : 0x20F);
-        func_global_asm_80614D00(D_global_asm_807FBB44, arg4->unk2C, 0);
-        D_global_asm_807FBB44->x_position = arg0;
-        D_global_asm_807FBB44->y_position = arg1 - 0x19;
-        D_global_asm_807FBB44->z_position = arg2;
-        D_global_asm_807FBB44->y_rotation = 0xC00;
+    if (spawnActor(ACTOR_MINIGAME_KREMLING, var_a3 ? 0x32 : 0x33) != 0) {
+        temp_v1 = last_spawned_actor->additional_actor_data;
+        func_global_asm_80614EBC(last_spawned_actor, var_a3 ? 0x211 : 0x20F);
+        func_global_asm_80614D00(last_spawned_actor, arg4->unk2C, 0);
+        last_spawned_actor->x_position = arg0;
+        last_spawned_actor->y_position = arg1 - 0x19;
+        last_spawned_actor->z_position = arg2;
+        last_spawned_actor->y_rotation = 0xC00;
         temp_v1->unk9 = arg3;
         temp_v1->unk8 = var_a3;
         temp_v1->unk0 = arg4;
-        arg4->unk0[arg3] = D_global_asm_807FBB44;
+        arg4->unk0[arg3] = last_spawned_actor;
     }
 }
 
@@ -90,7 +90,7 @@ typedef struct bonus_struct_0 {
 
 void func_bonus_80027308(BonusStruct0 *arg0, s32 *arg1) {
     *(arg1 + (arg0->unk9)) = 0;
-    func_global_asm_806782C0(current_actor_pointer);
+    deleteActor(current_actor_pointer);
 }
 
 extern s32 D_global_asm_8071FFD4;
@@ -476,23 +476,23 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
     Struct807F5FD4_unk0 *temp;
 
     for (i = 1; i < 7; i++) {
-        if (func_global_asm_80677FA8(ACTOR_SNAKE, 0x15) != 0) {
-            snakeAAD = D_global_asm_807FBB44->additional_actor_data;
+        if (spawnActor(ACTOR_SNAKE, 0x15) != 0) {
+            snakeAAD = last_spawned_actor->additional_actor_data;
             snakeAAD->unk0 = current_actor_pointer;
             snakeAAD->unk11 = (((rand() >> 0xF) % 32767) % ((arg0->unk1C - arg0->unk1B) + 1)) + arg0->unk1B;
             temp = &D_global_asm_807F5FD4->unk0[0][i];
-            func_global_asm_80614EBC(D_global_asm_807FBB44, 0x1F5);
-            D_global_asm_807FBB44->x_position = temp->unk0;
-            D_global_asm_807FBB44->y_position = temp->unk4;
-            D_global_asm_807FBB44->z_position = temp->unk8;
-            D_global_asm_807FBB44->object_properties_bitfield |= 0x1000;
-            D_global_asm_807FBB44->y_rotation = 0x800;
-            arg0->unk0[i - 1] = D_global_asm_807FBB44;
-            if (func_global_asm_80677FA8(ACTOR_TURTLE, 0x16) != 0) {
-                turtleAAD = D_global_asm_807FBB44->additional_actor_data;
-                turtleAAD->unk0 = D_global_asm_807FBB44;
+            func_global_asm_80614EBC(last_spawned_actor, 0x1F5);
+            last_spawned_actor->x_position = temp->unk0;
+            last_spawned_actor->y_position = temp->unk4;
+            last_spawned_actor->z_position = temp->unk8;
+            last_spawned_actor->object_properties_bitfield |= 0x1000;
+            last_spawned_actor->y_rotation = 0x800;
+            arg0->unk0[i - 1] = last_spawned_actor;
+            if (spawnActor(ACTOR_TURTLE, 0x16) != 0) {
+                turtleAAD = last_spawned_actor->additional_actor_data;
+                turtleAAD->unk0 = last_spawned_actor;
                 turtleAAD->unk6 = i - 1;
-                snakeAAD->unk4 = D_global_asm_807FBB44;
+                snakeAAD->unk4 = last_spawned_actor;
                 turtleAAD->unk8 = -1;
             }
         }
@@ -640,7 +640,7 @@ void func_bonus_80029E54(Actor *arg0) {
     var_s2 = &D_bonus_8002D8C8;
     var_s1 = 1;
     do {
-        if (func_global_asm_80677FA8(ACTOR_MINIGAME_KRAZYKONGKLAMOUR_KONG, var_s2[var_s1]) != 0) {
+        if (spawnActor(ACTOR_MINIGAME_KRAZYKONGKLAMOUR_KONG, var_s2[var_s1]) != 0) {
             temp_t7 = var_s1 - 1;
             aaD = current_actor_pointer->additional_actor_data;
             a17C = current_actor_pointer->unk17C;
@@ -652,21 +652,21 @@ void func_bonus_80029E54(Actor *arg0) {
             current_actor_pointer->y_position = temp_a0->unk4;
             current_actor_pointer->z_position = temp_a0->unk8;
             current_actor_pointer->control_state = 0;
-            temp_v0_2 = D_global_asm_807FBB44;
+            temp_v0_2 = last_spawned_actor;
             temp_v0_2->object_properties_bitfield |= 0x1000;
-            D_global_asm_807FBB44->y_rotation = 0x800;
+            last_spawned_actor->y_rotation = 0x800;
             if (var_s1 != 6) {
-                func_global_asm_806F0C18(D_global_asm_807FBB44);
-                func_global_asm_80614EBC(D_global_asm_807FBB44, D_bonus_8002D8D4[var_s1]);
+                func_global_asm_806F0C18(last_spawned_actor);
+                func_global_asm_80614EBC(last_spawned_actor, D_bonus_8002D8D4[var_s1]);
             }
             if (var_s1 != 6) {
                 var_f0 = 0.25f;
             } else {
                 var_f0 = temp_f22;
             }
-            D_global_asm_807FBB44->animation_state->scale[0] = var_f0;
-            D_global_asm_807FBB44->animation_state->scale[1] = var_f0;
-            D_global_asm_807FBB44->animation_state->scale[2] = var_f0;
+            last_spawned_actor->animation_state->scale[0] = var_f0;
+            last_spawned_actor->animation_state->scale[1] = var_f0;
+            last_spawned_actor->animation_state->scale[2] = var_f0;
         }
         var_s1 += 1;
     } while (var_s1 != 7);
@@ -776,7 +776,7 @@ void func_bonus_8002AD10(void) {
         if (temp_a2->unkA > 0) {
             temp_a2->unkA--;
         }
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
     if (var_t0->unk4 != 0) {
         var_t0->unk4--;
@@ -791,7 +791,7 @@ void func_bonus_8002AD10(void) {
             current_actor_pointer->animation_state->scale_z *= temp;
         }
         if (var_t0->unk4 == 0) {
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     }
     func_global_asm_806319C4(current_actor_pointer, 0);
@@ -888,7 +888,7 @@ void func_bonus_8002B920(void) {
         current_actor_pointer->shadow_opacity -= 4;
         if (current_actor_pointer->shadow_opacity < 5) {
             current_actor_pointer->shadow_opacity = 0;
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     }
     if (temp_t6->control_state == 2) {
@@ -1077,7 +1077,7 @@ void func_bonus_8002C8EC(void) {
         current_actor_pointer->shadow_opacity -= 4;
         if (current_actor_pointer->shadow_opacity < 5) {
             current_actor_pointer->shadow_opacity = 0;
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     }
     func_global_asm_806319C4(current_actor_pointer, 0);

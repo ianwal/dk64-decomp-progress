@@ -928,12 +928,12 @@ void func_menu_8002C0C8(Actor *arg0, s32 arg1) {
     temp_s6->unk17 = D_global_asm_8074451C;
     for (i = 0; i < 4; i++) {
         Actor17C *temp;
-        func_global_asm_80677FA8(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_menu_8003386C[D_global_asm_8076A0E4[i] & 0x7F]);
-        temp = D_global_asm_807FBB44->unk17C;
+        spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_menu_8003386C[D_global_asm_8076A0E4[i] & 0x7F]);
+        temp = last_spawned_actor->unk17C;
         temp->unk0_s16[0] = D_menu_8003386C[D_global_asm_8076A0E4[i] & 0x7F];
-        D_global_asm_807FBB44->control_state = i;
-        D_global_asm_807FBB44->control_state_progress = D_global_asm_8076A0E4[i] & 0x7F;
-        temp_v1 = D_global_asm_807FBB44->additional_actor_data;
+        last_spawned_actor->control_state = i;
+        last_spawned_actor->control_state_progress = D_global_asm_8076A0E4[i] & 0x7F;
+        temp_v1 = last_spawned_actor->additional_actor_data;
         temp_v1->unk0 = arg0;
         temp_v1->unk8 = 0;
     }
@@ -1550,13 +1550,13 @@ void func_menu_80032024(void) {
     MaaD = current_actor_pointer->MaaD;
     if (player_pointer->control_state_progress < 6) {
         if (D_menu_80033738 == 0x14) {
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
             D_menu_80033738++;
-            func_global_asm_80677FA8(ACTOR_BARREL_MAIN_MENU, 0xD7);
+            spawnActor(ACTOR_BARREL_MAIN_MENU, 0xD7);
             temp_f0 = DK_barrel_scale;
-            D_global_asm_807FBB44->animation_state->scale_x = temp_f0;
-            D_global_asm_807FBB44->animation_state->scale_y = temp_f0;
-            D_global_asm_807FBB44->animation_state->scale_z = temp_f0;
+            last_spawned_actor->animation_state->scale_x = temp_f0;
+            last_spawned_actor->animation_state->scale_y = temp_f0;
+            last_spawned_actor->animation_state->scale_z = temp_f0;
         } else if (D_menu_80033738 == 0x15) {
             func_global_asm_80671C0C(player_pointer, 2, &sp6C, &sp64, &sp5C);
             func_global_asm_80671C0C(player_pointer, 3, &sp70, &sp68, &sp60);

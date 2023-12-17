@@ -75,9 +75,9 @@ s32 func_global_asm_806C7B34(void) {
 void func_global_asm_806C7B50(u32 arg0, u8 arg1, Actor *arg2) {
     AppleAAD *temp_v0;
 
-    func_global_asm_80677FA8(arg0, 0x82); // Spawn actor: Apple (Fungi)
-    func_global_asm_8067B238(D_global_asm_807FBB44, arg2, 0.15f);
-    temp_v0 = D_global_asm_807FBB44->PaaD;
+    spawnActor(arg0, 0x82); // Spawn actor: Apple (Fungi)
+    func_global_asm_8067B238(last_spawned_actor, arg2, 0.15f);
+    temp_v0 = last_spawned_actor->PaaD;
     temp_v0->unk4 = arg2;
     temp_v0->unk8 = arg1;
 }
@@ -87,9 +87,9 @@ void func_global_asm_806C7BAC(s32 arg0, s32 arg1) {
     // Maybe run it through a debugger or something
     OtherAdditionalActorData *temp_v0;
 
-    func_global_asm_80677FA8(ACTOR_ROCKETBARREL_ON_KONG, 0x8C);
-    func_global_asm_8067B238(D_global_asm_807FBB44, D_global_asm_807FBB48, 0.15f);
-    temp_v0 = D_global_asm_807FBB44->additional_actor_data;
+    spawnActor(ACTOR_ROCKETBARREL_ON_KONG, 0x8C);
+    func_global_asm_8067B238(last_spawned_actor, current_player, 0.15f);
+    temp_v0 = last_spawned_actor->additional_actor_data;
     temp_v0->unk0 = arg0;
     temp_v0->unk4 = arg1;
 }
@@ -101,10 +101,10 @@ void func_global_asm_806C7C10(void) {
         switch (D_global_asm_80750AB8) {
             case 0:
                 D_global_asm_80750AB4 = cc_number_of_players;
-                return;
+                break;
             case 1:
                 D_global_asm_80750AB4 = 1;
-                return;
+                break;
         }
     } else {
         D_global_asm_80750AB4 = 1;
@@ -184,42 +184,42 @@ void func_global_asm_806C850C(s32 arg0, u8 arg1) {
         current_character_index[0] = 0;
     }
     sp2C = &D_global_asm_8075C410[current_character_index[arg1]];
-    func_global_asm_80677FA8(sp2C->unk0, sp2C->unk8);
-    D_global_asm_807FBB44->object_properties_bitfield &= ~0x1000;
-    D_global_asm_807FBB44->object_properties_bitfield |= sp2C->unkC;
-    D_global_asm_807FBB44->unk16E = 0x42;
-    D_global_asm_807FBB44->unk16F = 0x42;
-    D_global_asm_807FBB44->object_properties_bitfield |= 0x01000000;
+    spawnActor(sp2C->unk0, sp2C->unk8);
+    last_spawned_actor->object_properties_bitfield &= ~0x1000;
+    last_spawned_actor->object_properties_bitfield |= sp2C->unkC;
+    last_spawned_actor->unk16E = 0x42;
+    last_spawned_actor->unk16F = 0x42;
+    last_spawned_actor->object_properties_bitfield |= 0x01000000;
     if (cc_number_of_players >= 2) {
-        D_global_asm_807FBB44->unk64 |= 0x200;
+        last_spawned_actor->unk64 |= 0x200;
     }
-    D_global_asm_807FBB44->unk68 |= 0xC0;
-    D_global_asm_807FBB44->animation_state->unk1C = malloc(0x100);
-    D_global_asm_807FBB44->animation_state->unk1C->unk0 = 0;
-    D_global_asm_807FBB44->animation_state->unk20 = malloc(0x200);
-    D_global_asm_807FBB44->animation_state->unk20->unk0 = 0xFF;
-    D_global_asm_807FBB44->animation_state->unk24 = malloc(0x200);
-    D_global_asm_807FBB44->animation_state->unk24->unk0 = 0xFF;
-    D_global_asm_807FBB48 = D_global_asm_807FBB44;
-    extra_player_info_pointer = D_global_asm_807FBB48->PaaD;
+    last_spawned_actor->unk68 |= 0xC0;
+    last_spawned_actor->animation_state->unk1C = malloc(0x100);
+    last_spawned_actor->animation_state->unk1C->unk0 = 0;
+    last_spawned_actor->animation_state->unk20 = malloc(0x200);
+    last_spawned_actor->animation_state->unk20->unk0 = 0xFF;
+    last_spawned_actor->animation_state->unk24 = malloc(0x200);
+    last_spawned_actor->animation_state->unk24->unk0 = 0xFF;
+    current_player = last_spawned_actor;
+    extra_player_info_pointer = current_player->PaaD;
     extra_player_info_pointer->unk247 = -1;
     extra_player_info_pointer->unk1A4 = arg1;
     extra_player_info_pointer->unk11E = -1;
     extra_player_info_pointer->unk244 = 0;
     extra_player_info_pointer->unk120 = -0x64;
     D_global_asm_807FD584 = sp2C->unk4;
-    extra_player_info_pointer->unk1EE = D_global_asm_807FBB44->unk58;
-    func_global_asm_806E2C74(D_global_asm_807FBB48);
-    func_global_asm_80677FA8(ACTOR_CAMERA, 0);
-    extra_player_info_pointer->unk104 = D_global_asm_807FBB44;
+    extra_player_info_pointer->unk1EE = last_spawned_actor->unk58;
+    func_global_asm_806E2C74(current_player);
+    spawnActor(ACTOR_CAMERA, 0);
+    extra_player_info_pointer->unk104 = last_spawned_actor;
     if (!arg1) {
-        D_global_asm_807F5D10 = D_global_asm_807FBB44;
+        D_global_asm_807F5D10 = last_spawned_actor;
     }
-    D_global_asm_807FBB44->object_properties_bitfield |= 0x100000;
-    func_global_asm_806C8D20(D_global_asm_807FBB48);
+    last_spawned_actor->object_properties_bitfield |= 0x100000;
+    func_global_asm_806C8D20(current_player);
     extra_player_info_pointer->unk26 = 0x64;
-    D_global_asm_807FBB48->y_acceleration = D_global_asm_80753578[D_global_asm_807FD584];
-    D_global_asm_807FBB48->terminal_velocity = D_global_asm_807535E8[D_global_asm_807FD584];
+    current_player->y_acceleration = D_global_asm_80753578[D_global_asm_807FD584];
+    current_player->terminal_velocity = D_global_asm_807535E8[D_global_asm_807FD584];
     extra_player_info_pointer->unk250 = 0x78;
     extra_player_info_pointer->unkD4 = 0;
     extra_player_info_pointer->unkD8 = 0;
@@ -245,17 +245,17 @@ void func_global_asm_806C850C(s32 arg0, u8 arg1) {
     if (isFlagSet(0xCE, FLAG_TYPE_PERMANENT)) {
         extra_player_info_pointer->unk1F0 |= 0x100000;
     }
-    func_global_asm_806C8220(1, D_global_asm_807FBB48->unk178, D_global_asm_807FBB48->unk58);
-    D_global_asm_807FBB48->unk146 = 0;
-    func_global_asm_806F09F0(D_global_asm_807FBB48, D_global_asm_807FBB48->unk58);
-    D_global_asm_807FBB48->unkDE = 0x400;
+    func_global_asm_806C8220(1, current_player->unk178, current_player->unk58);
+    current_player->unk146 = 0;
+    func_global_asm_806F09F0(current_player, current_player->unk58);
+    current_player->unkDE = 0x400;
     extra_player_info_pointer->unk1B0 = 0;
     extra_player_info_pointer->unk1AC = NULL;
     for (i = 0; i < 4; i++) {
         D_global_asm_807FD610[arg1].unk20[i] = D_global_asm_807FD610[arg1].unk28;
         D_global_asm_807FD610[arg1].unk10[i] = D_global_asm_807FD610[arg1].unk4;
     }
-    func_global_asm_806CFF9C(D_global_asm_807FBB48);
+    func_global_asm_806CFF9C(current_player);
     func_global_asm_806C90C4(arg0);
     func_global_asm_806C8984();
 }
@@ -264,69 +264,67 @@ extern s16 D_global_asm_807FD584;
 extern s16 D_global_asm_80753354[];
 
 void func_global_asm_806C8984(void) {
-    f32 var_f0;
-
-    var_f0 = -1.0f;
+    f32 playerScale = -1.0f;
     switch (current_map) {
         case MAP_MAIN_MENU:
-            func_global_asm_80677FA8(ACTOR_MAIN_MENU_CONTROLLER, 0);
-            return;
+            spawnActor(ACTOR_MAIN_MENU_CONTROLLER, 0);
+            break;
         case MAP_SNIDES_HQ:
-            func_global_asm_80677FA8(ACTOR_MENU_SNIDE, 0);
-            return;
+            spawnActor(ACTOR_MENU_SNIDE, 0);
+            break;
         case MAP_DIVE_BARREL:
         case MAP_ORANGE_BARREL:
         case MAP_BARREL_BARREL:
         case MAP_VINE_BARREL:
-            func_global_asm_80677FA8(ACTOR_TRAINING_BARREL_CONTROLLER, 0);
-            return;
+            spawnActor(ACTOR_TRAINING_BARREL_CONTROLLER, 0);
+            break;
         case MAP_ENGUARDE_ARENA:
         case MAP_RAMBI_ARENA:
-            func_global_asm_80677FA8(ACTOR_ARENA_CONTROLLER, 0);
-            return;
+            spawnActor(ACTOR_ARENA_CONTROLLER, 0);
+            break;
         case MAP_GALLEON_SEAL_RACE:
-            if (var_f0 < 0.0f) {
-                var_f0 = 0.8f;
+            if (playerScale < 0.0f) {
+                playerScale = 0.8f;
             }
             // fallthrough
         case MAP_CRANKYS_LAB:
-            if (var_f0 < 0.0f) {
-                var_f0 = 1.8f;
+            if (playerScale < 0.0f) {
+                playerScale = 1.8f;
             }
             // fallthrough
         case MAP_FUNKYS_STORE:
-            if (var_f0 < 0.0f) {
-                var_f0 = 1.6f;
+            if (playerScale < 0.0f) {
+                playerScale = 1.6f;
             }
-            D_global_asm_807FBB48->animation_state->scale[0] *= var_f0;
-            D_global_asm_807FBB48->animation_state->scale[1] *= var_f0;
-            D_global_asm_807FBB48->animation_state->scale[2] *= var_f0;
-            return;
+            current_player->animation_state->scale[0] *= playerScale;
+            current_player->animation_state->scale[1] *= playerScale;
+            current_player->animation_state->scale[2] *= playerScale;
+            break;
         case MAP_BEAVER_BOTHER_EASY:
         case MAP_BEAVER_BOTHER_NORMAL:
         case MAP_BEAVER_BOTHER_HARD:
             func_global_asm_806CFE7C();
-            func_global_asm_80614EBC(D_global_asm_807FBB48, 0);
-            func_global_asm_80613C48(D_global_asm_807FBB48, 0, 0.0f, 0.0f);
-            D_global_asm_807FBB48->control_state = 0x7D;
-            D_global_asm_807FBB48->control_state_progress = 0;
-            D_global_asm_807FBB48->object_properties_bitfield &= 0xFFFF7FFF;
-            D_global_asm_807FBB48->shadow_opacity = 0;
-            func_global_asm_80677FA8(ACTOR_MINIGAME_BOTHER_KLAPTRAP, 0x21);
-            func_global_asm_80614EBC(D_global_asm_807FBB44, 0x232);
-            D_global_asm_807FBB44->unk11C = D_global_asm_807FBB48;
-            extra_player_info_pointer->vehicle_actor_pointer = D_global_asm_807FBB44;
-            return;
+            func_global_asm_80614EBC(current_player, 0);
+            func_global_asm_80613C48(current_player, 0, 0.0f, 0.0f);
+            current_player->control_state = 0x7D;
+            current_player->control_state_progress = 0;
+            current_player->object_properties_bitfield &= 0xFFFF7FFF;
+            current_player->shadow_opacity = 0;
+            spawnActor(ACTOR_MINIGAME_BOTHER_KLAPTRAP, 0x21);
+            func_global_asm_80614EBC(last_spawned_actor, 0x232);
+            last_spawned_actor->unk11C = current_player;
+            extra_player_info_pointer->vehicle_actor_pointer = last_spawned_actor;
+            break;
         case MAP_JAPES_MINECART:
-            func_global_asm_806C7B50(0x1D, 0, D_global_asm_807FBB48);
-            return;
+            func_global_asm_806C7B50(0x1D, 0, current_player);
+            break;
         case MAP_BATTY_BARREL_BANDIT_EASY:
         case MAP_BATTY_BARREL_BANDIT_EASY_2:
         case MAP_BATTY_BARREL_BANDIT_NORMAL:
         case MAP_BATTY_BARREL_BANDIT_HARD:
-            func_global_asm_80677FA8(ACTOR_BANDIT_HANDLE, 0x94);
-            extra_player_info_pointer->vehicle_actor_pointer = D_global_asm_807FBB44;
-            return;
+            spawnActor(ACTOR_BANDIT_HANDLE, 0x94);
+            extra_player_info_pointer->vehicle_actor_pointer = last_spawned_actor;
+            break;
         case MAP_DK_RAP:
             func_global_asm_807215D0(0, 0);
             func_global_asm_807215AC(0x6B, 0x30, 0x50);
@@ -335,35 +333,35 @@ void func_global_asm_806C8984(void) {
             // fallthrough
         case MAP_NINTENDO_LOGO:
         case MAP_TITLE_SCREEN_NOT_FOR_RESALE_VERSION:
-            D_global_asm_807FBB48->control_state = 0x77;
-            D_global_asm_807FBB48->control_state_progress = 0;
-            return;
+            current_player->control_state = 0x77;
+            current_player->control_state_progress = 0;
+            break;
         case MAP_BUSY_BARREL_BARRAGE_EASY:
         case MAP_BUSY_BARREL_BARRAGE_NORMAL:
         case MAP_BUSY_BARREL_BARRAGE_HARD:
-            func_global_asm_806F0D68(D_global_asm_807FBB48);
+            func_global_asm_806F0D68(current_player);
             extra_player_info_pointer->unk48 = D_global_asm_80753354[D_global_asm_807FD584];
-            D_global_asm_807FBB48->control_state = 0x62;
-            D_global_asm_807FBB48->control_state_progress = 0;
-            func_global_asm_80614E78(D_global_asm_807FBB48, 0x52);
-            return;
+            current_player->control_state = 0x62;
+            current_player->control_state_progress = 0;
+            func_global_asm_80614E78(current_player, 0x52);
+            break;
         case MAP_KROOL_BARREL_CHUNKY_SHOOTING_GAME:
-            D_global_asm_807FBB48->control_state = 0x5F;
-            D_global_asm_807FBB48->control_state_progress = 0;
-            func_global_asm_80614E78(D_global_asm_807FBB48, 0x4B);
-            return;
+            current_player->control_state = 0x5F;
+            current_player->control_state_progress = 0;
+            func_global_asm_80614E78(current_player, 0x4B);
+            break;
         case MAP_FUNGI_DOGADON:
         case MAP_DK_ISLES_DK_THEATRE:
         case MAP_AZTEC_DOGADON:
         case MAP_BLOOPERS_ENDING:
         case MAP_KLUMSY_ENDING:
-            D_global_asm_807FBB48->control_state = 0x77;
-            D_global_asm_807FBB48->control_state_progress = 0;
-            return;
+            current_player->control_state = 0x77;
+            current_player->control_state_progress = 0;
+            break;
         case MAP_GALLEON_PUFFTOSS:
-            func_global_asm_80690470(D_global_asm_807FBB48);
+            func_global_asm_80690470(current_player);
             // fallthrough
-            return;
+            break;
     }
 }
 
@@ -449,21 +447,21 @@ void func_global_asm_806C8EE8(void) {
 }
 
 void func_global_asm_806C8F8C(Struct806C8F8C_arg0 *arg0) {
-    D_global_asm_807FBB48->unk58 = arg0->unk0;
+    current_player->unk58 = arg0->unk0;
     D_global_asm_807FD584 = arg0->unk4;
-    func_global_asm_806136B4(D_global_asm_807FBB48);
-    func_global_asm_8066E21C(D_global_asm_807FBB48->ledge_info_pointer);
-    func_global_asm_806134B4(D_global_asm_807FBB48, arg0->unkA);
-    D_global_asm_807FBB48->ledge_info_pointer = func_global_asm_80665F24(D_global_asm_807FBB48);
-    D_global_asm_807FBB48->object_properties_bitfield &= -0x1001;
-    D_global_asm_807FBB48->object_properties_bitfield |= arg0->unkC;
-    D_global_asm_807FBB48->animation_state->unk1C = malloc(0x100);
-    D_global_asm_807FBB48->animation_state->unk1C->unk0 = 0;
-    D_global_asm_807FBB48->animation_state->unk20 = malloc(0x100);
-    D_global_asm_807FBB48->animation_state->unk20->unk0 = 0xFF;
-    D_global_asm_807FBB48->animation_state->unk24 = malloc(0x100);
-    D_global_asm_807FBB48->animation_state->unk24->unk0 = 0xFF;
-    func_global_asm_806C8220(1, D_global_asm_807FBB48->unk178, D_global_asm_807FBB48->unk58);
+    func_global_asm_806136B4(current_player);
+    func_global_asm_8066E21C(current_player->ledge_info_pointer);
+    func_global_asm_806134B4(current_player, arg0->unkA);
+    current_player->ledge_info_pointer = func_global_asm_80665F24(current_player);
+    current_player->object_properties_bitfield &= -0x1001;
+    current_player->object_properties_bitfield |= arg0->unkC;
+    current_player->animation_state->unk1C = malloc(0x100);
+    current_player->animation_state->unk1C->unk0 = 0;
+    current_player->animation_state->unk20 = malloc(0x100);
+    current_player->animation_state->unk20->unk0 = 0xFF;
+    current_player->animation_state->unk24 = malloc(0x100);
+    current_player->animation_state->unk24->unk0 = 0xFF;
+    func_global_asm_806C8220(1, current_player->unk178, current_player->unk58);
     func_global_asm_806F833C(0);
 }
 
@@ -471,32 +469,32 @@ void func_global_asm_806C90C4(s32 exitIndex) {
     PlayerAdditionalActorData *PaaD;
     ExitData *exit;
 
-    PaaD = D_global_asm_807FBB48->PaaD;
+    PaaD = current_player->PaaD;
     exit = getExitData(exitIndex);
     D_global_asm_8076AEE2 = 0;
     global_properties_bitfield &= -0x401;
     switch (exit->has_autowalk) {
         case 2:
-            D_global_asm_807FBB48->control_state = 0x4F;
-            D_global_asm_807FBB48->control_state_progress = 3;
-            func_global_asm_80614D00(D_global_asm_807FBB48, 0.5f, 0);
+            current_player->control_state = 0x4F;
+            current_player->control_state_progress = 3;
+            func_global_asm_80614D00(current_player, 0.5f, 0);
             PaaD->unk50 = 1;
-            D_global_asm_807FBB48->unk6A |= 4;
-            func_global_asm_8067ACB4(D_global_asm_807FBB48);
-            func_global_asm_80614E78(D_global_asm_807FBB48, 0x34);
+            current_player->unk6A |= 4;
+            func_global_asm_8067ACB4(current_player);
+            func_global_asm_80614E78(current_player, 0x34);
             // Fallthrough
         case 0:
-            D_global_asm_807FBB48->unkAC = -10000.0f;
-            D_global_asm_807FBB48->x_position = exit->x_pos;
-            D_global_asm_807FBB48->y_position = D_global_asm_807FBB48->unkA0 = exit->y_pos;
-            D_global_asm_807FBB48->z_position = exit->z_pos;
-            D_global_asm_807FBB48->y_rotation = (exit->angle / 255.0) * 4095.0;
-            D_global_asm_807FBB48->unkEE = D_global_asm_807FBB48->y_rotation;
+            current_player->unkAC = -10000.0f;
+            current_player->x_position = exit->x_pos;
+            current_player->y_position = current_player->unkA0 = exit->y_pos;
+            current_player->z_position = exit->z_pos;
+            current_player->y_rotation = (exit->angle / 255.0) * 4095.0;
+            current_player->unkEE = current_player->y_rotation;
             break;
         case 1:
-            func_global_asm_806F39E8(D_global_asm_807FBB48, exit, 0x32);
+            func_global_asm_806F39E8(current_player, exit, 0x32);
     }
-    D_global_asm_807FBB48->unk6A &= ~0x200;
+    current_player->unk6A &= ~0x200;
     PaaD->unk104->unk15F = exit->unk7 <= 0 ? 1 : exit->unk7;
     if (exit->size & 1) {
         D_global_asm_80770DC9 = 1;
@@ -504,9 +502,9 @@ void func_global_asm_806C90C4(s32 exitIndex) {
 }
 
 void func_global_asm_806C92C4(s32 arg0) {
-    func_global_asm_80672C30(D_global_asm_807FBB48);
+    func_global_asm_80672C30(current_player);
     func_global_asm_806C9434(arg0);
-    D_global_asm_807FBB48->unk9C = D_global_asm_807FBB48->y_position;
+    current_player->unk9C = current_player->y_position;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C9304.s")
@@ -518,7 +516,7 @@ void func_global_asm_806C9304(Actor *arg0, PlayerAdditionalActorData *arg1) {
     s32 var_v0;
 
     if (character_change_array[arg1->unk1A4].unk2C0 != 1) {
-        func_global_asm_806D0468(D_global_asm_807FBB48, 1, arg0, arg1);
+        func_global_asm_806D0468(current_player, 1, arg0, arg1);
     }
     if (arg0->animation_state->scale_x != arg1->unk1C0) {
         var_v0 = 0;
@@ -548,36 +546,36 @@ void func_global_asm_806C9434(s32 arg0) {
     PlayerAdditionalActorData *temp_s2;
     u8 phi_s0;
 
-    temp_s2 = D_global_asm_807FBB48->additional_actor_data;
-    sp34 = D_global_asm_807FBB48->unk178;
+    temp_s2 = current_player->additional_actor_data;
+    sp34 = current_player->unk178;
     func_global_asm_806C8DE0(temp_s2->unk1A4);
     sp2C = &D_global_asm_807FC950[temp_s2->unk1A4];
     temp_s2->unk250 = 0x78;
     for (phi_s0 = 0; phi_s0 < 2; phi_s0++) {
-        func_global_asm_80605314(D_global_asm_807FBB48, phi_s0);
+        func_global_asm_80605314(current_player, phi_s0);
     }
     func_global_asm_806C90C4(arg0);
-    func_global_asm_806C8220(0, sp34, D_global_asm_807FBB48->unk58);
+    func_global_asm_806C8220(0, sp34, current_player->unk58);
     func_global_asm_80709464(temp_s2->unk1A4);
-    D_global_asm_807FBB48->unkB8 = 0.0f;
+    current_player->unkB8 = 0.0f;
     temp_s2->unk1F0 &= 0xF7FFFF5F;
     temp_s2->unk200 = 0;
     temp_s2->unk4 = 0.0f;
     if (cc_number_of_players >= 2) {
-        func_multiplayer_800268DC(D_global_asm_807FBB48, temp_s2, sp2C);
+        func_multiplayer_800268DC(current_player, temp_s2, sp2C);
     }
-    func_global_asm_806C9304(D_global_asm_807FBB48, temp_s2);
+    func_global_asm_806C9304(current_player, temp_s2);
     if (!func_global_asm_8061CB50()) {
         if (cc_number_of_players >= 2 && D_global_asm_80750AB8 == 1) {
             func_global_asm_8061EA78();
         } else {
-            func_global_asm_8061EB04(D_global_asm_807FBB48, temp_s2->unk1A4);
+            func_global_asm_8061EB04(current_player, temp_s2->unk1A4);
         }
     }
-    func_global_asm_806C8D20(D_global_asm_807FBB48);
-    func_global_asm_806CFF9C(D_global_asm_807FBB48);
-    D_global_asm_807FBB48->z_rotation = 0;
-    D_global_asm_807FBB48->x_rotation = 0;
+    func_global_asm_806C8D20(current_player);
+    func_global_asm_806CFF9C(current_player);
+    current_player->z_rotation = 0;
+    current_player->x_rotation = 0;
 }
 
 void loadExits(Maps map) {

@@ -11,8 +11,8 @@ void func_boss_8002C520(s16 arg0, s16 arg1, s16 arg2) {
                   0,
                   0,
                   0);
-    D_global_asm_807FBB44->terminal_velocity *= 2;
-    D_global_asm_807FBB44->draw_distance = 2000;
+    last_spawned_actor->terminal_velocity *= 2;
+    last_spawned_actor->draw_distance = 2000;
 }
 
 void func_boss_8002C5F4(void) {
@@ -21,7 +21,7 @@ void func_boss_8002C5F4(void) {
     func_boss_8002C520(4, ((rand() >> 0xF) % 100) + 300, (rand() >> 0xF) % 4096);
     if (!(D_global_asm_807FDC90->unk1A & 0x8000)) {
         D_global_asm_807FDC90->unk1A |= 0x8000;
-        playCutscene(D_global_asm_807FBB44, 2, 1);
+        playCutscene(last_spawned_actor, 2, 1);
     }
 }
 

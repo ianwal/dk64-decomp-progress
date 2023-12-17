@@ -187,24 +187,24 @@ u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
 void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, void *arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
     GlobalASMStruct_8069D0F8 *temp_s0;
 
-    if (func_global_asm_80677FA8(ACTOR_TEXT_OVERLAY, 0) != 0) {
-        temp_s0 = D_global_asm_807FBB44->additional_actor_data;
+    if (spawnActor(ACTOR_TEXT_OVERLAY, 0) != 0) {
+        temp_s0 = last_spawned_actor->additional_actor_data;
         if (arg0 & 0x80) {
             temp_s0->unkA = func_global_asm_806FDB8C(arg0 & 0xff7f, arg3, 2, 160.0f, arg2, 0.0f);
-            D_global_asm_807FBB44->unkEE = 1;
-            D_global_asm_807FBB44->y_position = arg2;
+            last_spawned_actor->unkEE = 1;
+            last_spawned_actor->y_position = arg2;
             return;
         }
         if (arg1 == 0) {
-            D_global_asm_807FBB44->x_position = (D_global_asm_80744490 - func_global_asm_806FBD5C(arg0, arg3)) * 2;
+            last_spawned_actor->x_position = (D_global_asm_80744490 - func_global_asm_806FBD5C(arg0, arg3)) * 2;
         } else {
-            D_global_asm_807FBB44->x_position = arg1 * 4;
+            last_spawned_actor->x_position = arg1 * 4;
         }
-        D_global_asm_807FBB44->y_position = arg2 * 4;
-        D_global_asm_807FBB44->z_position = arg0;
-        D_global_asm_807FBB44->unk16A = 0xFF;
-        D_global_asm_807FBB44->unk16B = 0xFF;
-        D_global_asm_807FBB44->unk16C = 0xFF;
+        last_spawned_actor->y_position = arg2 * 4;
+        last_spawned_actor->z_position = arg0;
+        last_spawned_actor->unk16A = 0xFF;
+        last_spawned_actor->unk16B = 0xFF;
+        last_spawned_actor->unk16C = 0xFF;
         temp_s0->unk0 = malloc(func_dk64_boot_80002F18(arg3) + 1);
         func_dk64_boot_80002A30(temp_s0->unk0, arg3);
         temp_s0->unk4 = arg4;
@@ -326,7 +326,7 @@ void func_global_asm_8069DA54(void) {
                     break;
                 case 3:
                     free(temp_a3->unk0);
-                    func_global_asm_806782C0(current_actor_pointer);
+                    deleteActor(current_actor_pointer);
                     break;
             }
             break;
@@ -462,7 +462,7 @@ void func_global_asm_8069E088(void) {
         func_global_asm_8070D8C0(current_actor_pointer, 0x29, phi_s0_2);
     }
     if (D_global_asm_807F6950 != 0) {
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
     current_actor_pointer->animation_state->scale_x = 0.0f;
     current_actor_pointer->animation_state->scale_y = 0.0f;

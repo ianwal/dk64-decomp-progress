@@ -39,10 +39,10 @@ const s32 D_boss_8003619C[] = {
 void func_boss_800292B0(f32 arg0) {
     func_global_asm_80691830(0x6A, 1.2f, 0, 0x96, 0xFF, 0xB, 1.015f, 0.0f, 0.0f, 0.0f);
     func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x221, 0x80, 0x7F, 1, 0, 0.3f, 0);
-    D_global_asm_807FBB44->y_position = current_actor_pointer->y_position;
-    D_global_asm_807FBB44->animation_state->scale_y *= arg0;
-    func_global_asm_80613C48(D_global_asm_807FBB44, 0x4F9, 0.0f, 0.0f);
-    func_global_asm_80614D00(D_global_asm_807FBB44, 1.5f, 0.0f);
+    last_spawned_actor->y_position = current_actor_pointer->y_position;
+    last_spawned_actor->animation_state->scale_y *= arg0;
+    func_global_asm_80613C48(last_spawned_actor, 0x4F9, 0.0f, 0.0f);
+    func_global_asm_80614D00(last_spawned_actor, 1.5f, 0.0f);
 }
 
 void func_boss_800293C0(void) {

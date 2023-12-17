@@ -119,11 +119,11 @@ extern u8 D_global_asm_807FBD70;
 
 void func_boss_8002DC60(void) {
     BossActor178 *sp1C = current_actor_pointer->unk178;
-    func_global_asm_80677FA8(ACTOR_BOSS_KROOL_LIGHT, 0xE3); // Spawn actor 221 "light piece" (lanky phase)
-    D_global_asm_807FBB44->object_properties_bitfield |= 0x400;
-    D_global_asm_807FBB44->unk11C = current_actor_pointer;
-    sp1C->unk0 = D_global_asm_807FBB44;
-    func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
+    spawnActor(ACTOR_BOSS_KROOL_LIGHT, 0xE3); // Spawn actor 221 "light piece" (lanky phase)
+    last_spawned_actor->object_properties_bitfield |= 0x400;
+    last_spawned_actor->unk11C = current_actor_pointer;
+    sp1C->unk0 = last_spawned_actor;
+    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
 }
 
 void func_boss_8002DCE0(void) {
@@ -131,7 +131,7 @@ void func_boss_8002DCE0(void) {
     current_actor_pointer->animation_state->unk48 = current_actor_pointer->unk11C->animation_state->unk48;
     if (current_actor_pointer->animation_state->unk0->unk10 == 0x675) {
         if (current_actor_pointer->animation_state->unk0->unk24 == 0.0f) {
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     }
     func_global_asm_806319C4(current_actor_pointer, 0);
@@ -144,7 +144,7 @@ void func_boss_8002DD7C(void) {
     for (i = 0; i < D_global_asm_807FBB34; i++) {
         temp_a0 = D_global_asm_807FB930[i].unk0;
         if (temp_a0->unk58 == ACTOR_BOSS_KROOL_GLOVE) {
-            func_global_asm_806782C0(temp_a0);
+            deleteActor(temp_a0);
         }
     }
 }
@@ -201,7 +201,7 @@ void func_boss_8002E82C(void) {
         current_actor_pointer->noclip_byte = 1;
         current_actor_pointer->shadow_opacity -= 0xA;
         if (current_actor_pointer->shadow_opacity < 0) {
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     }
     func_global_asm_806319C4(current_actor_pointer, 0);
@@ -304,13 +304,13 @@ void func_boss_8002FDF8(Actor* arg0, u8 arg1) {
 }
 
 void func_boss_8002FEC0(Actor* arg0[], u8 arg1, s32 arg2) {
-    func_global_asm_80677FA8(ACTOR_BOSS_KROOL_TOE, arg2); // Spawn actor 229 (K. Rool's toe)
-    func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
-    D_global_asm_807FBB44->object_properties_bitfield |= 0x1400;
-    D_global_asm_807FBB44->unk11C = current_actor_pointer;
-    D_global_asm_807FBB44->noclip_byte = current_actor_pointer->noclip_byte;
-    D_global_asm_807FBB44->object_properties_bitfield = current_actor_pointer->object_properties_bitfield;
-    arg0[arg1] = D_global_asm_807FBB44;
+    spawnActor(ACTOR_BOSS_KROOL_TOE, arg2); // Spawn actor 229 (K. Rool's toe)
+    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
+    last_spawned_actor->object_properties_bitfield |= 0x1400;
+    last_spawned_actor->unk11C = current_actor_pointer;
+    last_spawned_actor->noclip_byte = current_actor_pointer->noclip_byte;
+    last_spawned_actor->object_properties_bitfield = current_actor_pointer->object_properties_bitfield;
+    arg0[arg1] = last_spawned_actor;
 }
 
 // Jumptable

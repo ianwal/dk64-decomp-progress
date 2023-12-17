@@ -227,8 +227,8 @@ void func_global_asm_806C5FEC(void) {
                 global_properties_bitfield |= 0x10030;
                 func_global_asm_80659670(temp_v1->unk0, temp_v1->unk4, temp_v1->unk8, temp_v1->unk1A);
                 func_global_asm_80602B60(0x3B, 0);
-                func_global_asm_806782C0(temp_v1->unkC);
-                func_global_asm_806782C0(current_actor_pointer);
+                deleteActor(temp_v1->unkC);
+                deleteActor(current_actor_pointer);
                 return;
             }
             break;
@@ -277,7 +277,7 @@ void func_global_asm_806C61C8(void) {
             if (current_actor_pointer->unkF0 != 0) {
                 func_global_asm_8069E5B8();
             }
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
             func_global_asm_8061CB08();
             if (player_pointer->control_state == 0xC) {
                 func_global_asm_80614E78(player_pointer, 9);

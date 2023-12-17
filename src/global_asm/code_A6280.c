@@ -231,7 +231,7 @@ void func_global_asm_806A1FD8(void) {
         current_actor_pointer->unk130 = 0x46;
         current_actor_pointer->unk131 = 0x14;
         if (isFlagSet(func_global_asm_80688C30(func_global_asm_80688E68(current_actor_pointer)), FLAG_TYPE_PERMANENT) != 0) {
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     }
     if ((player_pointer->control_state == 0x2D) && (player_pointer->control_state_progress != 0)) {
@@ -280,7 +280,7 @@ void func_global_asm_806A1FD8(void) {
         aaD->unk4 = aaD->unk4 + 1.0;
         if (aaD->unk4 > 20.0) {
             playSong(0x90, 1.0f);
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     }
     current_actor_pointer->y_position -= aaD->unk4;
@@ -348,7 +348,7 @@ void func_global_asm_806A2328(void) {
             }
         }
     } else {
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
     func_global_asm_8065D244(1);
     func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0x1E, 0x1E, 1, 0x12C, 0xB4, 0, 1.0f);

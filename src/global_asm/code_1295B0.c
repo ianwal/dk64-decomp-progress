@@ -283,7 +283,7 @@ void func_global_asm_80726EE0(u8 arg0) {
                 var_s0->spawn_state = 7;
                 var_s0->respawn_time = var_s0->respawn_timer_init * 0x1E;
                 func_global_asm_8061CFCC(var_s0->tied_actor);
-                func_global_asm_806782C0(var_s0->tied_actor);
+                deleteActor(var_s0->tied_actor);
             }
             switch (arg0) {
                 case 0:
@@ -358,20 +358,20 @@ Actor *func_global_asm_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
         if (arg0 == var_s0->spawn_trigger) {
             if (var_s0->spawn_state != 5) {
                 temp_v0 = &D_global_asm_8075EB80[var_s0->alternative_enemy_spawn];
-                if (func_global_asm_80677FA8(temp_v0->unk0, temp_v0->unk2) != 0) {
+                if (spawnActor(temp_v0->unk0, temp_v0->unk2) != 0) {
                     var_s0->properties_bitfield |= 4;
-                    func_global_asm_80726744(D_global_asm_807FBB44, var_s0);
+                    func_global_asm_80726744(last_spawned_actor, var_s0);
                     if (arg1 != 0) {
-                        D_global_asm_807FBB44->x_position = arg1;
-                        D_global_asm_807FBB44->y_position = arg2;
-                        D_global_asm_807FBB44->z_position = arg3;
-                        D_global_asm_807FBB44->unkEE = arg4;
-                        D_global_asm_807FBB44->y_rotation = arg4;
+                        last_spawned_actor->x_position = arg1;
+                        last_spawned_actor->y_position = arg2;
+                        last_spawned_actor->z_position = arg3;
+                        last_spawned_actor->unkEE = arg4;
+                        last_spawned_actor->y_rotation = arg4;
                     }
-                    D_global_asm_807FBB44->unkB8 = arg5;
-                    D_global_asm_807FBB44->y_velocity = arg6;
-                    D_global_asm_807FBB44->unk6A = 0;
-                    return D_global_asm_807FBB44;
+                    last_spawned_actor->unkB8 = arg5;
+                    last_spawned_actor->y_velocity = arg6;
+                    last_spawned_actor->unk6A = 0;
+                    return last_spawned_actor;
                 }
             }
         }
@@ -387,8 +387,8 @@ void func_global_asm_807273A8(s16 arg0, u8 arg1) {
     temp_t0 = D_global_asm_807FDC98->unk20[arg1].unk0;
     sp34 = (func_global_asm_80665AE4(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, D_global_asm_807FDCA0->unk14[temp_t0].unk0, D_global_asm_807FDCA0->unk14[temp_t0].unk4) * 4096.0f) / 360.0f;
     if (func_global_asm_807271F4(arg0, D_global_asm_807FDCA0->unk14[temp_t0].unk0, D_global_asm_807FDCA0->unk14[temp_t0].unk2, D_global_asm_807FDCA0->unk14[temp_t0].unk4, sp34, ((rand() >> 0xF) % 100) + 0x64, ((rand() >> 0xF) % 100) + 0xC8) != 0) {
-        D_global_asm_807FBB44->control_state = 0x17;
-        D_global_asm_807FBB44->control_state_progress = 0;
+        last_spawned_actor->control_state = 0x17;
+        last_spawned_actor->control_state_progress = 0;
     }
 }
 
@@ -400,8 +400,8 @@ void func_global_asm_8072752C(s16 arg0, s16 x1, s16 y1, s16 z1, s16 x2, s16 y2, 
     sp46 = func_global_asm_80665DE0(x2, z2, x1, z1);
     sp40 = sqrtf(((x2 - x1) * (x2 - x1)) + ((y2 - y1) * (y2 - y1)) + ((z2 - z1) * (z2 - z1)));
     if (func_global_asm_807271F4(arg0, x1, y1, z1, sp46, sqrtf(((x2 - x1) * (x2 - x1)) + ((z2 - z1) * (z2 - z1))) / (sp40 / arg7), arg8)) {
-        D_global_asm_807FBB44->control_state = 0x17;
-        D_global_asm_807FBB44->control_state_progress = 0;
+        last_spawned_actor->control_state = 0x17;
+        last_spawned_actor->control_state_progress = 0;
     }
 }
 

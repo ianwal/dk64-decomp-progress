@@ -544,13 +544,13 @@ void func_global_asm_80689418(void) {
                 tempStruct.sp76 = 0;
                 tempStruct.sp78 = &currentSpawner->pad24[0];
                 if (func_global_asm_80677ED0(&tempStruct) != 0) {
-                    currentSpawner->tied_actor = D_global_asm_807FBB44;
+                    currentSpawner->tied_actor = last_spawned_actor;
                     currentSpawner->unk48 = 1;
-                    D_global_asm_807FBB44->unk11C = currentSpawner->unk50;
-                    if (D_global_asm_807FBB44->animation_state != NULL) {
-                        D_global_asm_807FBB44->animation_state->scale_x = currentSpawner->unk20 * scaleFactor;
-                        D_global_asm_807FBB44->animation_state->scale_y = currentSpawner->unk20 * scaleFactor;
-                        D_global_asm_807FBB44->animation_state->scale_z = currentSpawner->unk20 * scaleFactor;
+                    last_spawned_actor->unk11C = currentSpawner->unk50;
+                    if (last_spawned_actor->animation_state != NULL) {
+                        last_spawned_actor->animation_state->scale_x = currentSpawner->unk20 * scaleFactor;
+                        last_spawned_actor->animation_state->scale_y = currentSpawner->unk20 * scaleFactor;
+                        last_spawned_actor->animation_state->scale_z = currentSpawner->unk20 * scaleFactor;
                     }
                 }
             } else if (currentSpawner->unk48 == 0) {
@@ -585,7 +585,7 @@ void func_global_asm_80689710(ActorSpawner *arg0, u8 arg1) {
             found = TRUE;
             if (arg1 != 0) {
                 if (phi_s0->tied_actor) {
-                    func_global_asm_806782C0(phi_s0->tied_actor);
+                    deleteActor(phi_s0->tied_actor);
                 }
             }
             if (phi_s1) {

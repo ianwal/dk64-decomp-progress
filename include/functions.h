@@ -62,7 +62,7 @@ void func_global_asm_80665564(Actor *arg0, f32 arg1);
 s16 func_global_asm_80665DE0(f32, f32, f32, f32);
 
 void func_global_asm_8067DF44(f32, f32, f32, f32, u8, u8);
-// s32 func_global_asm_80677FA8(Actors, s32); // spawnActorWrapper()
+// s32 spawnActor(Actors, s32); // spawnActorWrapper()
 void func_global_asm_807149C8(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 f32 func_global_asm_80665E94(f32, f32, f32, f32, f32, f32, s16);
 
@@ -100,7 +100,7 @@ void func_global_asm_805FFEF8(Maps map);
 void func_global_asm_806F5378(void);
 s32 func_global_asm_80600080(Maps map);
 f32 func_global_asm_80612790(s16);
-void func_global_asm_806782C0(Actor *arg0);
+void deleteActor(Actor *arg0);
 
 u8 func_global_asm_806E770C(void);
 
@@ -1840,7 +1840,7 @@ void func_global_asm_8072F09C(Actor *arg0);
 void func_global_asm_8072F120(void);
 void func_global_asm_8062D26C(Actor*);
 void func_global_asm_807233B4(Actor*);
-s32 func_global_asm_80677FA8(Actors arg0, s32 arg1);
+s32 spawnActor(Actors arg0, s32 arg1);
 void func_global_asm_806790F4(u8);
 void func_global_asm_80678CC8(Actor *arg0);
 s32 func_global_asm_80679010(Actor *arg0, Actor *arg1);

@@ -63,7 +63,7 @@ void func_global_asm_80697988(void) {
             }
             if (aaD->unk10 >= 0x10) {
                 free(aaD->unk4);
-                func_global_asm_806782C0(current_actor_pointer);
+                deleteActor(current_actor_pointer);
             }
             break;
         case 0:
@@ -84,7 +84,7 @@ void func_global_asm_80697988(void) {
                     }
                 } else {
                     free(aaD->unk4);
-                    func_global_asm_806782C0(current_actor_pointer);
+                    deleteActor(current_actor_pointer);
                 }
             }
             break;
@@ -167,6 +167,6 @@ void func_global_asm_80697CEC(void) {
                 func_global_asm_80714CC0(&D_global_asm_8071FBA0, (((rand() >> 0xF) % 10) * 0.05) + 0.2, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
             }
         }
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
 }

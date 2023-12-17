@@ -90,7 +90,7 @@ void func_global_asm_80677D80(void) {
     D_global_asm_807FBB38 = 0;
     D_global_asm_807FBE09 = 0;
     D_global_asm_807FBFD8 = 0;
-    D_global_asm_807FBB48 = NULL;
+    current_player = NULL;
 }
 */
 
@@ -136,14 +136,14 @@ s32 func_global_asm_80677ED0(Struct80677ED0 *arg0) {
     if (func_global_asm_80678050(arg0->unk0)) {
         master_type = D_global_asm_8074D8D4[arg0->unk0];
         if(D_global_asm_8074DA30[master_type](&arg0->unk4)) {
-            D_global_asm_807FBB44->x_position = arg0->unkC;
-            D_global_asm_807FBB44->y_position = arg0->unk10;
-            D_global_asm_807FBB44->z_position = arg0->unk14;
-            D_global_asm_807FBB44->unk124 = arg0->unk1C;
-            D_global_asm_807FBB44->y_rotation = arg0->unk18;
-            D_global_asm_807FBB44->unk15C = arg0->unk1A;
+            last_spawned_actor->x_position = arg0->unkC;
+            last_spawned_actor->y_position = arg0->unk10;
+            last_spawned_actor->z_position = arg0->unk14;
+            last_spawned_actor->unk124 = arg0->unk1C;
+            last_spawned_actor->y_rotation = arg0->unk18;
+            last_spawned_actor->unk15C = arg0->unk1A;
             if (arg0->unk8 != 0) {
-                func_global_asm_80614EBC(D_global_asm_807FBB44, arg0->unk8);
+                func_global_asm_80614EBC(last_spawned_actor, arg0->unk8);
             }
             return TRUE;
         }
@@ -151,7 +151,7 @@ s32 func_global_asm_80677ED0(Struct80677ED0 *arg0) {
     return FALSE;
 }
 
-s32 func_global_asm_80677FA8(Actors arg0, s32 arg1) {
+s32 spawnActor(Actors arg0, s32 arg1) {
     s32 master_type;
 
     if (func_global_asm_80678050(arg0)) {
@@ -268,14 +268,14 @@ s32 func_global_asm_80678050(u16 arg0) {
         D_global_asm_807FB930[D_global_asm_807FBB34].unk4 = 0;
         D_global_asm_807FBB3E = D_global_asm_807FBB34;
         D_global_asm_807FBB34++;
-        D_global_asm_807FBB44 = newActor;
+        last_spawned_actor = newActor;
         return TRUE;
     }
     return FALSE;
 }
 */
 
-void func_global_asm_806782C0(Actor *arg0) {
+void deleteActor(Actor *arg0) {
     func_global_asm_806897F0(arg0);
     func_global_asm_806782E8(arg0);
 }
@@ -354,7 +354,7 @@ void func_global_asm_80678530(Actor *arg0) {
     for (i = 0; i < D_global_asm_807FBB34; i++) {
         actor = D_global_asm_807FB930[i].unk0;
         if (arg0 == actor->unk11C) {
-            func_global_asm_806782C0(actor);
+            deleteActor(actor);
             actor->unk11C = NULL;
         }
     }
@@ -508,13 +508,13 @@ void func_global_asm_80678BBC(Actor *arg0) {
         arg0->ledge_info_pointer->unk68 = 0;
     }
     func_global_asm_80678F64(arg0);
-    if (arg0 == D_global_asm_807FBB48) {
+    if (arg0 == current_player) {
         func_global_asm_80675EE0(arg0);
     } else {
         func_global_asm_806761EC(arg0);
     }
     func_global_asm_806794EC(arg0);
-    if (arg0 == D_global_asm_807FBB48) {
+    if (arg0 == current_player) {
         func_global_asm_806EB194();
     }
     if (arg0->noclip_byte & 4) {
@@ -594,7 +594,7 @@ void func_global_asm_80678E6C(Actor *arg0) {
         if (sp27 != 0) {
             if (!(arg0->unk6A & 0x10)) {
                 arg0->unk6A |= 0x10;
-                if (arg0 == D_global_asm_807FBB48) {
+                if (arg0 == current_player) {
                     func_global_asm_806EB0C0(4, NULL, cc_player_index);
                 }
             }
@@ -844,7 +844,7 @@ void func_global_asm_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
 
     var_a2 = arg2;
     D_global_asm_807FBB85 = 1;
-    if ((arg0 == D_global_asm_807FBB48)) {
+    if ((arg0 == current_player)) {
         if ((((character_change_array[extra_player_info_pointer->unk1A4].unk2C0 != 2)) || (arg1 == NULL) || !(arg1->interactable & 2))) {
             sp3C = 0x2E;
             var_a2 = TRUE;
@@ -1383,7 +1383,7 @@ void func_global_asm_8067B100(Actor *player) {
     extra_player_info_pointer = player->PaaD;
     cc_player_index = extra_player_info_pointer->unk1A4;
     character = current_character_index[cc_player_index];
-    D_global_asm_807FBB48 = character_change_array[cc_player_index].player_pointer;
+    current_player = character_change_array[cc_player_index].player_pointer;
     D_global_asm_807FD568 = &D_global_asm_807FC950[cc_player_index].character_progress[character];
     D_global_asm_807ECDEC = character_change_array[cc_player_index].unk294;
     D_global_asm_807ECDF0 = *character_change_array[cc_player_index].new_controller_inputs;
@@ -1446,26 +1446,26 @@ void func_global_asm_8067B2B8(s32 arg0) {
 }
 
 s32 func_global_asm_8067B2C0(s32 arg0) {
-    D_global_asm_807FBB44->noclip_byte = 1;
+    last_spawned_actor->noclip_byte = 1;
     return 1;
 }
 
 // TODO: arg0 is probably not an actor spawner, it just so happened to have a u16 at unk2 for the match
 s32 func_global_asm_8067B2DC(ActorSpawner *arg0) {
-    if (func_global_asm_806134B4(D_global_asm_807FBB44, arg0->unk2, arg0)) {
-        D_global_asm_807FBB44->ledge_info_pointer = func_global_asm_80665F24(D_global_asm_807FBB44);
-        D_global_asm_807FBB44->unk15E = D_global_asm_807FBB44->ledge_info_pointer->unkC * 0.15 * 0.5;
+    if (func_global_asm_806134B4(last_spawned_actor, arg0->unk2, arg0)) {
+        last_spawned_actor->ledge_info_pointer = func_global_asm_80665F24(last_spawned_actor);
+        last_spawned_actor->unk15E = last_spawned_actor->ledge_info_pointer->unkC * 0.15 * 0.5;
         return TRUE;
     }
     return FALSE;
 }
 
 s32 func_global_asm_8067B3F4(s32 arg0) {
-    D_global_asm_807FBB44->ledge_info_pointer = func_global_asm_80665F24(D_global_asm_807FBB44);
+    last_spawned_actor->ledge_info_pointer = func_global_asm_80665F24(last_spawned_actor);
     return 1;
 }
 
 s32 func_global_asm_8067B42C(s32 arg0) {
-    D_global_asm_807FBB44->object_properties_bitfield |= 0x2000;
+    last_spawned_actor->object_properties_bitfield |= 0x2000;
     return 1;
 }

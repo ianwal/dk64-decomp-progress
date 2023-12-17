@@ -526,12 +526,12 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
                         player->object_properties_bitfield |= 0x40000000;
                         break;
                     case 4:
-                        func_global_asm_80677FA8(ACTOR_PURCHASE_TEXT_OVERLAY, 0);
+                        spawnActor(ACTOR_PURCHASE_TEXT_OVERLAY, 0);
                         func_global_asm_806EB0C0(0x53, NULL, 0);
                         break;
                     case 2:
                     case 3:
-                        func_global_asm_80677FA8(ACTOR_PURCHASE_TEXT_OVERLAY, 0);
+                        spawnActor(ACTOR_PURCHASE_TEXT_OVERLAY, 0);
                         func_global_asm_80614E78(character_change_array->player_pointer, 0x85);
                         break;
                 }

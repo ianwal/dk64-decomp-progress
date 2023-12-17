@@ -263,8 +263,8 @@ void func_global_asm_80690470(Actor *arg0) {
     Actor *sp18;
 
     PaaD = arg0->PaaD;
-    func_global_asm_80677FA8(ACTOR_PROPELLER, 0xDA);
-    sp18 = D_global_asm_807FBB44;
+    spawnActor(ACTOR_PROPELLER, 0xDA);
+    sp18 = last_spawned_actor;
     RaaD = sp18->RaaD;
     RaaD->unk28 = PaaD->unk1A4;
     func_global_asm_80690094(sp18, arg0);
@@ -457,15 +457,15 @@ void func_global_asm_806915B0(void) {
 void func_global_asm_80661520(f32, f32, f32, f32, f32, f32);
 
 void func_global_asm_80691830(s16 arg0, f32 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {
-    func_global_asm_80677FA8(ACTOR_BOSS_SHOCKWAVE, arg0); // Spawn actor: Shockwave (boss)
-    func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, arg1);
-    D_global_asm_807FBB44->unkF0 = arg0;
-    D_global_asm_807FBB44->unk16A = arg2;
-    D_global_asm_807FBB44->unk16B = arg3;
-    D_global_asm_807FBB44->unk16C = arg4;
-    D_global_asm_807FBB44->unk15F = arg5;
-    D_global_asm_807FBB44->unk168 = 1;
-    D_global_asm_807FBB44->unk160 = arg6;
+    spawnActor(ACTOR_BOSS_SHOCKWAVE, arg0); // Spawn actor: Shockwave (boss)
+    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, arg1);
+    last_spawned_actor->unkF0 = arg0;
+    last_spawned_actor->unk16A = arg2;
+    last_spawned_actor->unk16B = arg3;
+    last_spawned_actor->unk16C = arg4;
+    last_spawned_actor->unk15F = arg5;
+    last_spawned_actor->unk168 = 1;
+    last_spawned_actor->unk160 = arg6;
     if (arg7 != 0.0f) {
         func_global_asm_80661520(current_actor_pointer->x_position, current_actor_pointer->z_position, arg7, 2.0f, arg8, arg9);
     }
@@ -486,16 +486,16 @@ typedef struct {
 void func_global_asm_80691930(u8 arg0, u8 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5) {
     TempAAD2 *temp_v0;
 
-    func_global_asm_80677FA8(ACTOR_BOSS_DOGADON_SHOCKWAVE, 0);
-    func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, 0.15f);
-    temp_v0 = D_global_asm_807FBB44->additional_actor_data;
+    spawnActor(ACTOR_BOSS_DOGADON_SHOCKWAVE, 0);
+    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.15f);
+    temp_v0 = last_spawned_actor->additional_actor_data;
     temp_v0->unk11 = arg0;
     temp_v0->unk8 = arg2;
     temp_v0->unkC = arg3;
     temp_v0->unk0 = arg1;
-    D_global_asm_807FBB44->y_position = current_actor_pointer->unkA8;
-    D_global_asm_807FBB44->unk15F = arg4;
-    D_global_asm_807FBB44->unk168 = arg5;
+    last_spawned_actor->y_position = current_actor_pointer->unkA8;
+    last_spawned_actor->unk15F = arg4;
+    last_spawned_actor->unk168 = arg5;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_806919E0.s")
@@ -549,7 +549,7 @@ void func_global_asm_806921DC(u8 arg0) {
         || (current_actor_pointer->unkFC != 0)
         || (D_global_asm_807FBB85 != 0)
         || (sp2C->unk0 + 0x18) < D_global_asm_8076A068) {
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
 }
 
@@ -626,10 +626,10 @@ void func_global_asm_80692640(void) {
             func_global_asm_80714CC0(&D_global_asm_807202D0, 0.75f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
         func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x61, 0xFF, 0x7F, 0x1E, 0, 0.0f, 0);
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
     if ((aaD->unk0 + D_global_asm_80750344) < D_global_asm_8076A068) {
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
 }
 

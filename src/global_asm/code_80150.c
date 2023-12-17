@@ -515,7 +515,7 @@ void func_global_asm_8067E510(void) {
                 func_global_asm_807149B8(0);
                 func_global_asm_807149FC(1);
                 func_global_asm_80714CC0(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
-                func_global_asm_806782C0(current_actor_pointer);
+                deleteActor(current_actor_pointer);
             }
         }
     }
@@ -559,7 +559,7 @@ void func_global_asm_8067FAC8(void) {
     for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
         if ((D_global_asm_807FBB70.unk258[i] == 1) && (D_global_asm_807FBB70.unk278[i]->unk0 == 1)) {
             func_global_asm_8067DCC0();
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     }
 }
@@ -642,7 +642,7 @@ void func_global_asm_80681B14(void) {
     temp_v1 = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (isFlagSet(0x302, 0) != 0) {
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
             return;
         }
     }
@@ -650,7 +650,7 @@ void func_global_asm_80681B14(void) {
     if ((current_actor_pointer->control_state == 0xC) && (temp_v1->unkD < 3)) {
         setFlag(D_global_asm_8074E7E0[temp_v1->unkA], 1, 2);
         func_global_asm_8067DCC0();
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
 }
 
@@ -724,7 +724,7 @@ void func_global_asm_80681BD8(void) {
     }
     if ((current_actor_pointer->control_state == 0xC) && (sp2C->unkD < 3)) {
         func_global_asm_8067DCC0();
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
     }
 }
 
@@ -777,11 +777,11 @@ void func_global_asm_80682E38(Struct80682E38_arg0 *arg0) {
     s32 i;
     AAD_global_asm_80682E38 *temp_s0;
 
-    func_global_asm_80677FA8(ACTOR_SPOTLIGHT, 0xA8);
-    arg0->unk1C = D_global_asm_807FBB44;
-    D_global_asm_807FBB44->x_position = (func_global_asm_80612794(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->x_position;
-    D_global_asm_807FBB44->y_position = (current_actor_pointer->y_position - 10.0f) - 2.0f;
-    D_global_asm_807FBB44->z_position = (func_global_asm_80612790(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->z_position;
+    spawnActor(ACTOR_SPOTLIGHT, 0xA8);
+    arg0->unk1C = last_spawned_actor;
+    last_spawned_actor->x_position = (func_global_asm_80612794(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->x_position;
+    last_spawned_actor->y_position = (current_actor_pointer->y_position - 10.0f) - 2.0f;
+    last_spawned_actor->z_position = (func_global_asm_80612790(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->z_position;
     for (i = 0; i < 5; i++) {
         if (isFlagSet(func_global_asm_805FF018(current_actor_pointer->unk58, i), FLAG_TYPE_PERMANENT) != FALSE) {
             var_s0 = ACTOR_TAGBARREL_KONG;
@@ -790,22 +790,22 @@ void func_global_asm_80682E38(Struct80682E38_arg0 *arg0) {
             var_s0 = ACTOR_TAGBARREL_LOCKED;
             var_a1 = 0xD2;
         }
-        func_global_asm_80677FA8(var_s0, var_a1);
-        arg0->unk8[i] = D_global_asm_807FBB44;
-        D_global_asm_807FBB44->y_rotation = current_actor_pointer->y_rotation;
-        D_global_asm_807FBB44->object_properties_bitfield |= 0x40000000;
+        spawnActor(var_s0, var_a1);
+        arg0->unk8[i] = last_spawned_actor;
+        last_spawned_actor->y_rotation = current_actor_pointer->y_rotation;
+        last_spawned_actor->object_properties_bitfield |= 0x40000000;
         if (var_s0 == 0x13C) {
-            temp_s0 = D_global_asm_807FBB44->additional_actor_data;
+            temp_s0 = last_spawned_actor->additional_actor_data;
             temp_s0->unk0 = D_global_asm_8074E814[i].unk2;
-            func_global_asm_806F09F0(D_global_asm_807FBB44, temp_s0->unk0);
+            func_global_asm_806F09F0(last_spawned_actor, temp_s0->unk0);
             if (i == arg0->unk6) {
                 var_a2 = 0x8B;
             } else {
                 var_a2 = 0x8A;
             }
-            func_global_asm_80682DF4(D_global_asm_807FBB44, temp_s0, var_a2);
+            func_global_asm_80682DF4(last_spawned_actor, temp_s0, var_a2);
         } else {
-            RaceAdditionalActorData2 *RaaD2 = D_global_asm_807FBB44->RaaD2;
+            RaceAdditionalActorData2 *RaaD2 = last_spawned_actor->RaaD2;
             RaaD2->unk0 = i;
         }
     }

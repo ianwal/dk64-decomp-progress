@@ -94,27 +94,27 @@ void func_global_asm_806846B4(f32 xPosition, f32 yPosition, f32 zPosition, f32 x
                 break;
         }
     }
-    func_global_asm_80677FA8(ACTOR_SHOCKWAVE, phi_a1); // Spawn actor: Shockwave
-    D_global_asm_807FBB44->unk11C = arg5;
-    D_global_asm_807FBB44->animation_state->scale_x = xzScale;
-    D_global_asm_807FBB44->animation_state->scale_z = xzScale;
-    D_global_asm_807FBB44->animation_state->scale_y = yScale;
-    D_global_asm_807FBB44->x_position = xPosition;
-    D_global_asm_807FBB44->y_position = yPosition;
-    D_global_asm_807FBB44->z_position = zPosition;
+    spawnActor(ACTOR_SHOCKWAVE, phi_a1); // Spawn actor: Shockwave
+    last_spawned_actor->unk11C = arg5;
+    last_spawned_actor->animation_state->scale_x = xzScale;
+    last_spawned_actor->animation_state->scale_z = xzScale;
+    last_spawned_actor->animation_state->scale_y = yScale;
+    last_spawned_actor->x_position = xPosition;
+    last_spawned_actor->y_position = yPosition;
+    last_spawned_actor->z_position = zPosition;
     if (arg5 && (arg5->interactable & 1)) {
         if (arg6) {
-            D_global_asm_807FBB44->unk168 = 0xF;
-            D_global_asm_807FBB44->unk160 = 1.11;
-            D_global_asm_807FBB44->unk15F = 1;
+            last_spawned_actor->unk168 = 0xF;
+            last_spawned_actor->unk160 = 1.11;
+            last_spawned_actor->unk15F = 1;
         } else {
-            D_global_asm_807FBB44->unk168 = 0x19;
-            D_global_asm_807FBB44->unk160 = 1.09;
+            last_spawned_actor->unk168 = 0x19;
+            last_spawned_actor->unk160 = 1.09;
         }
     } else {
-        D_global_asm_807FBB44->unk168 = 0x20;
-        D_global_asm_807FBB44->unk160 = 1.07;
-        D_global_asm_807FBB44->unk15F = 0;
+        last_spawned_actor->unk168 = 0x20;
+        last_spawned_actor->unk160 = 1.07;
+        last_spawned_actor->unk15F = 0;
     }
 }
 
@@ -318,7 +318,7 @@ void func_global_asm_80685390(void) {
             break;
         case 1:
             if (func_global_asm_80688540(current_actor_pointer, 0) == 0) {
-                func_global_asm_806782C0(current_actor_pointer);
+                deleteActor(current_actor_pointer);
             }
             break;
     }
@@ -366,9 +366,9 @@ void func_global_asm_80685708(Actor *arg0, u8 arg1) {
     sp34 = D_global_asm_8074E898;
     if (arg1) {
         func_global_asm_80685520(p1 * 0.36, arg1, arg0->x_position, arg0->y_position + 4.0f, arg0->z_position);
-        func_global_asm_80677FA8(ACTOR_SHOCKWAVE_SLAM, sp34.unk0[arg1]);
-        func_global_asm_8067B238(D_global_asm_807FBB44, arg0, arg0->animation_state->scale_y * 0.5f);
-        aaD = D_global_asm_807FBB44->additional_actor_data;
+        spawnActor(ACTOR_SHOCKWAVE_SLAM, sp34.unk0[arg1]);
+        func_global_asm_8067B238(last_spawned_actor, arg0, arg0->animation_state->scale_y * 0.5f);
+        aaD = last_spawned_actor->additional_actor_data;
         aaD->unk6 = arg1 - 1;
     }
 }
@@ -528,7 +528,7 @@ void func_global_asm_8068613C(Actor *arg0) {
     if (arg0->unk58 == ACTOR_BOSS_PROJECTILE_FIREBALL) {
         var_f20 *= 2;
         func_global_asm_8068588C(arg0, 0, 4.0f, arg0->x_position, arg0->y_position, arg0->z_position, -0x96);
-        func_global_asm_806782C0(arg0);
+        deleteActor(arg0);
     }
     func_global_asm_80608528(arg0, 0xC, 0xFF, 0x7F, 1);
     func_global_asm_807149B8(1);
@@ -601,17 +601,17 @@ void func_global_asm_80686E40(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
 }
 
 void func_global_asm_80686F90(u8 arg0, s16 arg1, s16 arg2) {
-    func_global_asm_80677FA8(ACTOR_BOSS_DOGADON_LIGHTBEAM, 0xC0); // Spawn actor: Light beam (boss fights)
+    spawnActor(ACTOR_BOSS_DOGADON_LIGHTBEAM, 0xC0); // Spawn actor: Light beam (boss fights)
     if (arg0) {
-        func_global_asm_80671C0C(current_actor_pointer, arg0, &D_global_asm_807FBB44->x_position, &D_global_asm_807FBB44->y_position, &D_global_asm_807FBB44->z_position);
+        func_global_asm_80671C0C(current_actor_pointer, arg0, &last_spawned_actor->x_position, &last_spawned_actor->y_position, &last_spawned_actor->z_position);
     } else {
-        D_global_asm_807FBB44->x_position = current_actor_pointer->x_position;
-        D_global_asm_807FBB44->y_position = current_actor_pointer->y_position;
-        D_global_asm_807FBB44->z_position = current_actor_pointer->z_position;
+        last_spawned_actor->x_position = current_actor_pointer->x_position;
+        last_spawned_actor->y_position = current_actor_pointer->y_position;
+        last_spawned_actor->z_position = current_actor_pointer->z_position;
     }
-    D_global_asm_807FBB44->y_rotation = arg1;
-    D_global_asm_807FBB44->z_rotation = arg2;
-    D_global_asm_807FBB44->animation_state->scale_y *= 0.01;
+    last_spawned_actor->y_rotation = arg1;
+    last_spawned_actor->z_rotation = arg2;
+    last_spawned_actor->animation_state->scale_y *= 0.01;
 }
 
 void func_global_asm_80687080(void) {
@@ -626,7 +626,7 @@ void func_global_asm_80687080(void) {
     if (current_actor_pointer->animation_state->scale_y > 1.0) {
         current_actor_pointer->shadow_opacity -= 0x28;
         if (current_actor_pointer->shadow_opacity < 0) {
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
         }
     } else {
         current_actor_pointer->animation_state->scale_y *= 1.8;
@@ -685,10 +685,10 @@ void func_global_asm_80687400(void) {
 }
 
 void func_global_asm_80687474(Actor *arg0, f32 arg1) {
-    func_global_asm_80677FA8(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D); // Spawn actor: Shockwave (Mad Jack)
-    D_global_asm_807FBB44->object_properties_bitfield |= 0x400;
-    func_global_asm_80614EBC(D_global_asm_807FBB44, 0x334);
-    func_global_asm_8067B238(D_global_asm_807FBB44, arg0, arg0->animation_state->scale_y * arg1);
+    spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D); // Spawn actor: Shockwave (Mad Jack)
+    last_spawned_actor->object_properties_bitfield |= 0x400;
+    func_global_asm_80614EBC(last_spawned_actor, 0x334);
+    func_global_asm_8067B238(last_spawned_actor, arg0, arg0->animation_state->scale_y * arg1);
 }
 
 // Jumptable

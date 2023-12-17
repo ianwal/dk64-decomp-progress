@@ -29,30 +29,30 @@ void func_global_asm_806BD170(void) {
             PadlockAAD *temp_v0;
             s16 temp2 = 260 + (keyIndex * 512);
             // Spawn Padlock
-            func_global_asm_80677FA8(ACTOR_PADLOCK_KLUMSY, 0xCD);
-            D_global_asm_807FBB44->draw_distance = 2000;
-            D_global_asm_807FBB44->object_properties_bitfield |= 0x800400;
-            D_global_asm_807FBB44->object_properties_bitfield &= ~0x8000;
+            spawnActor(ACTOR_PADLOCK_KLUMSY, 0xCD);
+            last_spawned_actor->draw_distance = 2000;
+            last_spawned_actor->object_properties_bitfield |= 0x800400;
+            last_spawned_actor->object_properties_bitfield &= ~0x8000;
             
-            D_global_asm_807FBB44->unk16A = 0xFF;
-            D_global_asm_807FBB44->unk16B = 0xFF;
-            D_global_asm_807FBB44->unk16C = 0xFF;
-            D_global_asm_807FBB44->shadow_opacity = 0xFF;
+            last_spawned_actor->unk16A = 0xFF;
+            last_spawned_actor->unk16B = 0xFF;
+            last_spawned_actor->unk16C = 0xFF;
+            last_spawned_actor->shadow_opacity = 0xFF;
 
-            D_global_asm_807FBB44->x_position = (func_global_asm_80612794(temp2) * 270.0f) + current_actor_pointer->x_position;
-            D_global_asm_807FBB44->z_position = (func_global_asm_80612790(temp2) * 270.0f) + current_actor_pointer->z_position;
-            D_global_asm_807FBB44->y_position = 100.0f;
-            D_global_asm_807FBB44->y_rotation = temp2;
-            D_global_asm_807FBB44->unk146 = 0;
-            D_global_asm_807FBB44->control_state = 0;
-            temp_v0 = D_global_asm_807FBB44->additional_actor_data;
+            last_spawned_actor->x_position = (func_global_asm_80612794(temp2) * 270.0f) + current_actor_pointer->x_position;
+            last_spawned_actor->z_position = (func_global_asm_80612790(temp2) * 270.0f) + current_actor_pointer->z_position;
+            last_spawned_actor->y_position = 100.0f;
+            last_spawned_actor->y_rotation = temp2;
+            last_spawned_actor->unk146 = 0;
+            last_spawned_actor->control_state = 0;
+            temp_v0 = last_spawned_actor->additional_actor_data;
             temp_v0->unk0 = 0;
             temp_v0->unk4 = current_actor_pointer;
             temp_v0->unk2 = keyIndex;
             // Key Collected Flag
             if (isFlagSet(D_global_asm_80744710[keyIndex], FLAG_TYPE_PERMANENT)) {
                 sp50 = keyIndex;
-                highest_priority_padlock = D_global_asm_807FBB44;
+                highest_priority_padlock = last_spawned_actor;
                 highest_priority_padlock->control_state = 5;
                 keysCollected++;
             }
@@ -113,12 +113,12 @@ void func_global_asm_806BD3E4(void) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
         var_v1 = 0;
         D_global_asm_807506B4 = 0;
-        func_global_asm_80677FA8(ACTOR_KLUMSY_CAGE, 0xC4);
-        func_global_asm_8067B238(D_global_asm_807FBB44, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
-        D_global_asm_807FBB44->unk64 |= 0x20;
-        D_global_asm_807FBB44->object_properties_bitfield |= 0x400;
-        D_global_asm_807FBB44->draw_distance = 0x7D0;
-        sp34->unk0 = D_global_asm_807FBB44;
+        spawnActor(ACTOR_KLUMSY_CAGE, 0xC4);
+        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
+        last_spawned_actor->unk64 |= 0x20;
+        last_spawned_actor->object_properties_bitfield |= 0x400;
+        last_spawned_actor->draw_distance = 0x7D0;
+        sp34->unk0 = last_spawned_actor;
         D_global_asm_807FC8D4 = 1000.0f;
         func_global_asm_806BD170();
         current_actor_pointer->control_state = 0;

@@ -772,7 +772,7 @@ void func_global_asm_806A7600(void *arg0) {
             sp34->unk6 = func_global_asm_80688C30(func_global_asm_80688E68(current_actor_pointer));
         }
         if ((sp34->unk6 != -1) && (isFlagSet(sp34->unk6, FLAG_TYPE_PERMANENT) != FALSE)) {
-            func_global_asm_806782C0(current_actor_pointer);
+            deleteActor(current_actor_pointer);
             return;
         }
         func_global_asm_8066E854(current_actor_pointer, 0, 0, 0, -1);
@@ -853,7 +853,7 @@ void func_global_asm_806A7600(void *arg0) {
     if (D_global_asm_807FBD70 == 4) {
         func_global_asm_80686CF8(current_actor_pointer);
         func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x2BF, 0xFF, 0x7F, 0x1E, 0, 0.0f, 0);
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
         if (current_actor_pointer->unk58 == ACTOR_BALLOON_KROOL) {
             func_global_asm_80724994(3, 1, 0x27, 0, 0);
             return;
@@ -953,7 +953,7 @@ void func_global_asm_806A7EF0(void) {
     }
     aaD->unk4++;
     if (D_global_asm_807504C4 < aaD->unk4) {
-        func_global_asm_806782C0(current_actor_pointer);
+        deleteActor(current_actor_pointer);
         return;
     }
     aaD->unk0 *= D_global_asm_807504C0;

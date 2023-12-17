@@ -22,12 +22,12 @@ extern u8 D_global_asm_807FC622;
 
 // spawnPersistantActors
 void func_global_asm_8068A7B0(void) {
-    func_global_asm_80677FA8(ACTOR_UNKNOWN_10, 0);
-    func_global_asm_80677FA8(ACTOR_UNKNOWN_11, 0);
-    func_global_asm_80677FA8(ACTOR_LOADING_ZONE_CONTROLLER, 0);
-    func_global_asm_80677FA8(ACTOR_OBJECT_MODEL_2_CONTROLLER, 0);
-    func_global_asm_80677FA8(ACTOR_UNKNOWN_14, 0);
-    func_global_asm_80677FA8(ACTOR_UNKNOWN_15, 0);
+    spawnActor(ACTOR_UNKNOWN_10, 0);
+    spawnActor(ACTOR_UNKNOWN_11, 0);
+    spawnActor(ACTOR_LOADING_ZONE_CONTROLLER, 0);
+    spawnActor(ACTOR_OBJECT_MODEL_2_CONTROLLER, 0);
+    spawnActor(ACTOR_UNKNOWN_14, 0);
+    spawnActor(ACTOR_UNKNOWN_15, 0);
 }
 
 void func_global_asm_8068A810(void) {
@@ -277,7 +277,7 @@ void func_global_asm_8068BA2C(void) {
     s32 var_v0;
     PlayerAdditionalActorData *temp_s1;
 
-    temp_s1 = D_global_asm_807FBB48->additional_actor_data;
+    temp_s1 = current_player->PaaD;
     var_s3 = 0;
     sp58 = temp_s1->unk104->additional_actor_data;
     for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {

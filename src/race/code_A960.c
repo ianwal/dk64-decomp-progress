@@ -191,19 +191,19 @@ void func_race_8002ED04(f32 arg0, s32 arg1, u8 arg2) {
     switch (arg1) {
         case 1:
             if (arg2) {
-                func_global_asm_80677FA8(ACTOR_RACE_CHECKPOINT_0, 0xB0); // Spawn checkpoint (actor 311)
-                func_global_asm_80614EBC(D_global_asm_807FBB44, 0x2A9);
+                spawnActor(ACTOR_RACE_CHECKPOINT_0, 0xB0); // Spawn checkpoint (actor 311)
+                func_global_asm_80614EBC(last_spawned_actor, 0x2A9);
             } else {
-                func_global_asm_80677FA8(ACTOR_RACE_CHECKPOINT_0, 0xB1); // Spawn checkpoint (actor 311)
-                func_global_asm_80614EBC(D_global_asm_807FBB44, 0x2AA);
+                spawnActor(ACTOR_RACE_CHECKPOINT_0, 0xB1); // Spawn checkpoint (actor 311)
+                func_global_asm_80614EBC(last_spawned_actor, 0x2AA);
             }
             break;
         case 2:
-            func_global_asm_80677FA8(ACTOR_RACE_CHECKPOINT_0, arg2 ? 0xD8 : 0xD9); // Spawn checkpoint (actor 311)
+            spawnActor(ACTOR_RACE_CHECKPOINT_0, arg2 ? 0xD8 : 0xD9); // Spawn checkpoint (actor 311)
             break;
     }
-    sp1C = D_global_asm_807FBB44->RaaD2;
-    func_race_8002ECD4(D_global_asm_807FBB44, arg0);
+    sp1C = last_spawned_actor->RaaD2;
+    func_race_8002ECD4(last_spawned_actor, arg0);
     sp1C->unk0 = arg1;
 }
 
@@ -218,23 +218,23 @@ void func_race_8002EDD4(Struct8002EDD4_arg0 *arg0) {
             var_f22 = arg0->unk1A * 0.5f;
             for (i = 0; i < 2; i++) {
                 func_race_8002ED04(arg0->unk14, arg0->unk10, i ^ 1);
-                arg0->unk1C[i] = D_global_asm_807FBB44;
-                D_global_asm_807FBB44->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
+                arg0->unk1C[i] = last_spawned_actor;
+                last_spawned_actor->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
                 if (i) {
                     var_f22 *= -1.0f;
                 }
-                guRotateF(&spD0, D_global_asm_807FBB44->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
+                guRotateF(&spD0, last_spawned_actor->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
                 guTranslateF(&sp90, arg0->unk0, arg0->unk2, arg0->unk4);
                 guMtxCatF(&spD0, &sp90, &spD0);
-                guMtxXFMF(&spD0, var_f22, 0.0f, 0.0f, &D_global_asm_807FBB44->x_position, &D_global_asm_807FBB44->y_position, &D_global_asm_807FBB44->z_position);
+                guMtxXFMF(&spD0, var_f22, 0.0f, 0.0f, &last_spawned_actor->x_position, &last_spawned_actor->y_position, &last_spawned_actor->z_position);
             }
         } else {
             func_race_8002ED04(arg0->unk14, arg0->unk10, (arg0->unk18 == 1));
-            arg0->unk1C[0] = D_global_asm_807FBB44;
-            D_global_asm_807FBB44->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
-            D_global_asm_807FBB44->x_position = arg0->unk0;
-            D_global_asm_807FBB44->y_position = arg0->unk2;
-            D_global_asm_807FBB44->z_position = arg0->unk4;
+            arg0->unk1C[0] = last_spawned_actor;
+            last_spawned_actor->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
+            last_spawned_actor->x_position = arg0->unk0;
+            last_spawned_actor->y_position = arg0->unk2;
+            last_spawned_actor->z_position = arg0->unk4;
         }
     }
 }

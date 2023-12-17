@@ -46,9 +46,9 @@ const f64 D_global_asm_807580F8 = 255.0;
 
 void func_global_asm_80627C10(u8 arg0) {
     s32 index = arg0 * 3;
-    D_global_asm_807FBB44->unk16A = D_global_asm_80757F70[index + 0];
-    D_global_asm_807FBB44->unk16B = D_global_asm_80757F70[index + 1];
-    D_global_asm_807FBB44->unk16C = D_global_asm_80757F70[index + 2];
+    last_spawned_actor->unk16A = D_global_asm_80757F70[index + 0];
+    last_spawned_actor->unk16B = D_global_asm_80757F70[index + 1];
+    last_spawned_actor->unk16C = D_global_asm_80757F70[index + 2];
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2C910/func_global_asm_80627C5C.s")
