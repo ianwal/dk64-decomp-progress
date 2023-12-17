@@ -261,7 +261,6 @@ typedef struct {
     Actor *unk34;
 } Actor17C_race_80025E9C;
 
-void func_race_8002BBD0(Actor *arg0, s32 numRacers);
 void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
 
 /*
@@ -498,7 +497,7 @@ void func_race_800274C0(void) {
     u8 temp2[3];
     u8 var_v1;
 
-    var_v1 = 0;
+    var_v1 = FALSE;
     sp4C = current_actor_pointer->additional_actor_data;
     sp48 = current_actor_pointer->unk178;
     temp_s1 = current_actor_pointer->unk17C;
@@ -512,7 +511,7 @@ void func_race_800274C0(void) {
         func_global_asm_807149B8(1);
         func_global_asm_80714CC0(&D_global_asm_80720340, 3.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, D_race_8002FE68, 0);
-        var_v1 = 1;
+        var_v1 = TRUE;
     }
     func_race_80026354(sp48, sp4C, 0);
     current_actor_pointer->y_position += 5.0f;
@@ -521,10 +520,10 @@ void func_race_800274C0(void) {
         func_global_asm_80714CC0(&D_global_asm_8071FFA0, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position);
         temp_s1->unk0_u16[0]--;
         if (!(temp_s1->unk0_u16[0])) {
-            var_v1 = 1;
+            var_v1 = TRUE;
         }
     }
-    if (var_v1 != 0) {
+    if (var_v1) {
         func_race_8002D338(current_actor_pointer, temp_s1);
     }
     renderActor(current_actor_pointer, 0);

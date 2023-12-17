@@ -459,7 +459,7 @@ void func_multiplayer_80025CE8(s32 arg0) {
             break;
         case 2:
             PaaD->unk1F0 |= 0x20;
-            PaaD->unk1F0 &= 0xF7FFFFFF;
+            PaaD->unk1F0 &= ~0x8000000;
             func_global_asm_806F54E0(arg0, 0x8E, 0);
             break;
         case 3:

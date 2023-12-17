@@ -79,7 +79,6 @@ typedef struct {
 } A17C_initializeCastleCarRace;
 
 void func_race_800283D4(f32 arg0);
-void func_race_8002BBD0(Actor *arg0, s32 numRacers);
 void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
 void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3);
 f32 func_race_8002D2C0(void *arg0);
