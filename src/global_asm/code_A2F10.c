@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 extern s32 D_global_asm_80720BE8;
 
 extern f32 D_global_asm_80750394;
@@ -31,15 +30,15 @@ extern f64 D_global_asm_8075A540;
 extern s32 D_global_asm_807FBB68;
 extern u8 D_global_asm_807FBD70;
 
-GlobalASMStruct60 *func_global_asm_80688584(Actor*, s32);
 extern s32 D_global_asm_80744478;
 extern u8 D_global_asm_80750AD4;
+
+GlobalASMStruct60 *func_global_asm_80688584(Actor*, s32);
 void func_global_asm_8069FA40(void);
+void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069E210.s")
-
-void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
 
 void func_global_asm_8069E490(u16 arg0, s16 arg1) {
     func_global_asm_806A5DF0(arg0, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 0, arg1, current_actor_pointer);
@@ -315,7 +314,7 @@ void func_global_asm_8069F020(void) {
             if (current_actor_pointer->animation_state->unk0->unk4 > 9.0f) {
     block_34:
                 current_actor_pointer->control_state = 2;
-                if ((current_actor_pointer->unk15F != 0) && (spawnActor(ACTOR_BOSS_SHOCKWAVE, current_actor_pointer->unkF0) != 0)) {
+                if ((current_actor_pointer->unk15F != 0) && (spawnActor(ACTOR_BOSS_SHOCKWAVE, current_actor_pointer->unkF0))) {
                     if (current_actor_pointer->animation_state->unk0->unk4 > 9.0f) {
                         func_global_asm_80613C48(last_spawned_actor, 0x4F9, 0.0f, 0.0f);
                         func_global_asm_80614D00(last_spawned_actor, current_actor_pointer->animation_state->unk48, 0);

@@ -102,22 +102,23 @@ void func_global_asm_806B6958(void) {
 }
 
 void func_global_asm_806B6C88(s16 arg0, s16 arg1) {
-    if (spawnActor(ACTOR_KLAPTRAP_SKELETON, 0x24)) { // Spawn actor: Klaptrap (Skeleton)
+    if (spawnActor(ACTOR_KLAPTRAP_SKELETON, 0x24)) {
         last_spawned_actor->control_state = 0x23;
         func_global_asm_80614EBC(last_spawned_actor, 0x237);
         last_spawned_actor->y_rotation = arg1;
         last_spawned_actor->unkEE = last_spawned_actor->y_rotation;
-        func_global_asm_8067B238(last_spawned_actor, 
-                      current_actor_pointer, 
-                      current_actor_pointer->animation_state->scale_y);
+        func_global_asm_8067B238(
+            last_spawned_actor, 
+            current_actor_pointer, 
+            current_actor_pointer->animation_state->scale_y
+        );
         last_spawned_actor->floor = current_actor_pointer->floor;
         last_spawned_actor->y_acceleration = D_global_asm_807502E8;
         last_spawned_actor->terminal_velocity = D_global_asm_807502E0;
         last_spawned_actor->unkB8 = 0.0f;
         func_global_asm_8072B324(current_actor_pointer, arg0 * 1.25);
-        // TODO: Which aaD type are they actually expecting here?
-        memcpy(last_spawned_actor->PaaD, 
-               current_actor_pointer->PaaD, 
+        memcpy(last_spawned_actor->additional_actor_data,
+               current_actor_pointer->additional_actor_data,
                0x3C);
     }
 }

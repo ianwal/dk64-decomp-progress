@@ -187,7 +187,7 @@ u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
 void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, void *arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
     GlobalASMStruct_8069D0F8 *temp_s0;
 
-    if (spawnActor(ACTOR_TEXT_OVERLAY, 0) != 0) {
+    if (spawnActor(ACTOR_TEXT_OVERLAY, 0)) {
         temp_s0 = last_spawned_actor->additional_actor_data;
         if (arg0 & 0x80) {
             temp_s0->unkA = func_global_asm_806FDB8C(arg0 & 0xff7f, arg3, 2, 160.0f, arg2, 0.0f);

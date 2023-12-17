@@ -191,10 +191,10 @@ void func_race_8002ED04(f32 arg0, s32 arg1, u8 arg2) {
     switch (arg1) {
         case 1:
             if (arg2) {
-                spawnActor(ACTOR_RACE_CHECKPOINT_0, 0xB0); // Spawn checkpoint (actor 311)
+                spawnActor(ACTOR_RACE_CHECKPOINT_0, 0xB0);
                 func_global_asm_80614EBC(last_spawned_actor, 0x2A9);
             } else {
-                spawnActor(ACTOR_RACE_CHECKPOINT_0, 0xB1); // Spawn checkpoint (actor 311)
+                spawnActor(ACTOR_RACE_CHECKPOINT_0, 0xB1);
                 func_global_asm_80614EBC(last_spawned_actor, 0x2AA);
             }
             break;

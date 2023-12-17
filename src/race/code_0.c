@@ -261,7 +261,7 @@ typedef struct {
     Actor *unk34;
 } Actor17C_race_80025E9C;
 
-void func_race_8002BBD0(Actor *arg0, s32 arg1);
+void func_race_8002BBD0(Actor *arg0, s32 numRacers);
 void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
 
 /*

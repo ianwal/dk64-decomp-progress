@@ -68,7 +68,7 @@ void func_bonus_800271B4(s16 arg0, s16 arg1, s16 arg2, u8 arg3, Struct800271B4 *
     AAD_bonus_800271B4 *temp_v1;
 
     var_a3 = arg4->unk28 < ((rand() >> 0xF) % 100) ? 1 : 0;
-    if (spawnActor(ACTOR_MINIGAME_KREMLING, var_a3 ? 0x32 : 0x33) != 0) {
+    if (spawnActor(ACTOR_MINIGAME_KREMLING, var_a3 ? 0x32 : 0x33)) {
         temp_v1 = last_spawned_actor->additional_actor_data;
         func_global_asm_80614EBC(last_spawned_actor, var_a3 ? 0x211 : 0x20F);
         func_global_asm_80614D00(last_spawned_actor, arg4->unk2C, 0);
@@ -476,7 +476,7 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
     Struct807F5FD4_unk0 *temp;
 
     for (i = 1; i < 7; i++) {
-        if (spawnActor(ACTOR_SNAKE, 0x15) != 0) {
+        if (spawnActor(ACTOR_SNAKE, 0x15)) {
             snakeAAD = last_spawned_actor->additional_actor_data;
             snakeAAD->unk0 = current_actor_pointer;
             snakeAAD->unk11 = (((rand() >> 0xF) % 32767) % ((arg0->unk1C - arg0->unk1B) + 1)) + arg0->unk1B;
@@ -488,7 +488,7 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
             last_spawned_actor->object_properties_bitfield |= 0x1000;
             last_spawned_actor->y_rotation = 0x800;
             arg0->unk0[i - 1] = last_spawned_actor;
-            if (spawnActor(ACTOR_TURTLE, 0x16) != 0) {
+            if (spawnActor(ACTOR_TURTLE, 0x16)) {
                 turtleAAD = last_spawned_actor->additional_actor_data;
                 turtleAAD->unk0 = last_spawned_actor;
                 turtleAAD->unk6 = i - 1;
@@ -640,7 +640,7 @@ void func_bonus_80029E54(Actor *arg0) {
     var_s2 = &D_bonus_8002D8C8;
     var_s1 = 1;
     do {
-        if (spawnActor(ACTOR_MINIGAME_KRAZYKONGKLAMOUR_KONG, var_s2[var_s1]) != 0) {
+        if (spawnActor(ACTOR_MINIGAME_KRAZYKONGKLAMOUR_KONG, var_s2[var_s1])) {
             temp_t7 = var_s1 - 1;
             aaD = current_actor_pointer->additional_actor_data;
             a17C = current_actor_pointer->unk17C;

@@ -79,7 +79,7 @@ typedef struct {
 } A17C_initializeCastleCarRace;
 
 void func_race_800283D4(f32 arg0);
-void func_race_8002BBD0(Actor *arg0, s32 arg1);
+void func_race_8002BBD0(Actor *arg0, s32 numRacers);
 void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
 void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3);
 f32 func_race_8002D2C0(void *arg0);
@@ -88,8 +88,6 @@ void func_race_8002D754(Actor *arg0);
 void func_race_8002DE78(void *, s32, void *, s32);
 s32 func_race_8002E8EC(void *arg0, void *arg1, s32 arg2);
 void initializeSealRace(void);
-
-void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 void func_global_asm_80690190(void *arg0, s32 arg1);
 void func_global_asm_8068F72C(s32, s32, s32, s32);
@@ -113,15 +111,15 @@ void func_race_800292D0(Actor *arg0) {
     A17C_initializeCastleCarRace *temp_a2;
     s32 var_s1;
     s32 playerIndex;
-    s32 var_s5;
+    s32 numRacers;
 
-    var_s5 = cc_number_of_players;
+    numRacers = cc_number_of_players;
     var_s1 = 0;
     aaD = arg0->additional_actor_data;
-    if (var_s5 == 1) {
-        var_s5++;
+    if (numRacers == 1) {
+        numRacers++;
     }
-    func_race_8002BBD0(arg0, var_s5);
+    func_race_8002BBD0(arg0, numRacers);
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
         spawnActor(ACTOR_UNKNOWN_307, 0x9F);
         sp54 = last_spawned_actor;
@@ -142,7 +140,7 @@ void func_race_800292D0(Actor *arg0) {
     } else {
         aaD->unk25 = 0;
     }
-    for (playerIndex = 0; playerIndex < var_s5; playerIndex++) {
+    for (playerIndex = 0; playerIndex < numRacers; playerIndex++) {
         func_race_8002BCB0(arg0, playerIndex, &sp54, &sp58);
         sp58->unk36 = playerIndex;
         sp58->unk30 = arg0;
@@ -282,15 +280,15 @@ void initializeCastleCarRace(Actor *arg0) {
     A17C_initializeCastleCarRace *temp_a2;
     s32 var_s1;
     s32 playerIndex;
-    s32 var_s5;
+    s32 numRacers;
 
-    var_s5 = cc_number_of_players;
+    numRacers = cc_number_of_players;
     var_s1 = 0;
     aaD = arg0->additional_actor_data;
-    if (var_s5 == 1) {
-        var_s5++;
+    if (numRacers == 1) {
+        numRacers++;
     }
-    func_race_8002BBD0(arg0, var_s5);
+    func_race_8002BBD0(arg0, numRacers);
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
         spawnActor(ACTOR_CAR_CASTLE_PLAYER, 0x95);
         sp54 = last_spawned_actor;
@@ -311,7 +309,7 @@ void initializeCastleCarRace(Actor *arg0) {
     } else {
         aaD->unk25 = 0;
     }
-    for (playerIndex = 0; playerIndex < var_s5; playerIndex++) {
+    for (playerIndex = 0; playerIndex < numRacers; playerIndex++) {
         func_race_8002BCB0(arg0, playerIndex, &sp54, &sp58);
         sp58->unk36 = playerIndex;
         sp58->unk30 = arg0;

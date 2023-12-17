@@ -72,13 +72,13 @@ s32 func_global_asm_806C7B34(void) {
     return D_global_asm_8075C410[current_character_index[0]].unk0;
 }
 
-void func_global_asm_806C7B50(u32 arg0, u8 arg1, Actor *arg2) {
+void func_global_asm_806C7B50(Actors actorIndex, u8 arg1, Actor *player) {
     AppleAAD *temp_v0;
 
-    spawnActor(arg0, 0x82); // Spawn actor: Apple (Fungi)
-    func_global_asm_8067B238(last_spawned_actor, arg2, 0.15f);
+    spawnActor(actorIndex, 0x82);
+    func_global_asm_8067B238(last_spawned_actor, player, 0.15f);
     temp_v0 = last_spawned_actor->PaaD;
-    temp_v0->unk4 = arg2;
+    temp_v0->unk4 = player;
     temp_v0->unk8 = arg1;
 }
 
@@ -316,7 +316,7 @@ void func_global_asm_806C8984(void) {
             extra_player_info_pointer->vehicle_actor_pointer = last_spawned_actor;
             break;
         case MAP_JAPES_MINECART:
-            func_global_asm_806C7B50(0x1D, 0, current_player);
+            func_global_asm_806C7B50(ACTOR_MINECART, 0, current_player);
             break;
         case MAP_BATTY_BARREL_BANDIT_EASY:
         case MAP_BATTY_BARREL_BANDIT_EASY_2:
@@ -360,7 +360,6 @@ void func_global_asm_806C8984(void) {
             break;
         case MAP_GALLEON_PUFFTOSS:
             func_global_asm_80690470(current_player);
-            // fallthrough
             break;
     }
 }

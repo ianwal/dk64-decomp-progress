@@ -119,7 +119,7 @@ extern u8 D_global_asm_807FBD70;
 
 void func_boss_8002DC60(void) {
     BossActor178 *sp1C = current_actor_pointer->unk178;
-    spawnActor(ACTOR_BOSS_KROOL_LIGHT, 0xE3); // Spawn actor 221 "light piece" (lanky phase)
+    spawnActor(ACTOR_BOSS_KROOL_LIGHT, 0xE3);
     last_spawned_actor->object_properties_bitfield |= 0x400;
     last_spawned_actor->unk11C = current_actor_pointer;
     sp1C->unk0 = last_spawned_actor;
@@ -303,14 +303,14 @@ void func_boss_8002FDF8(Actor* arg0, u8 arg1) {
     }
 }
 
-void func_boss_8002FEC0(Actor* arg0[], u8 arg1, s32 arg2) {
-    spawnActor(ACTOR_BOSS_KROOL_TOE, arg2); // Spawn actor 229 (K. Rool's toe)
+void func_boss_8002FEC0(Actor* toes[], u8 toeIndex, s32 modelIndex) {
+    spawnActor(ACTOR_BOSS_KROOL_TOE, modelIndex);
     func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
     last_spawned_actor->object_properties_bitfield |= 0x1400;
     last_spawned_actor->unk11C = current_actor_pointer;
     last_spawned_actor->noclip_byte = current_actor_pointer->noclip_byte;
     last_spawned_actor->object_properties_bitfield = current_actor_pointer->object_properties_bitfield;
-    arg0[arg1] = last_spawned_actor;
+    toes[toeIndex] = last_spawned_actor;
 }
 
 // Jumptable

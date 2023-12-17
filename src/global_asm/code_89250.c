@@ -71,30 +71,30 @@ void func_global_asm_806845B8(u8 arg0, u8 arg1) {
 
 // spawnShockwave(xPosition, yPosition, zPosition, xzScale, yScale, parentActor, arg6)
 void func_global_asm_806846B4(f32 xPosition, f32 yPosition, f32 zPosition, f32 xzScale, f32 yScale, Actor *arg5, u8 arg6) {
-    s32 phi_a1;
+    s32 modelIndex;
 
-    phi_a1 = 0xAD;
+    modelIndex = 0xAD;
     if (arg5) {
         switch (arg5->unk58) {
             case ACTOR_TINY:
             case ACTOR_KASPLAT_TINY:
-                phi_a1 = 0xD1;
+                modelIndex = 0xD1;
                 break;
             case ACTOR_LANKY:
             case ACTOR_KASPLAT_LANKY:
-                phi_a1 = 0xD0;
+                modelIndex = 0xD0;
                 break;
             case ACTOR_CHUNKY:
             case ACTOR_KASPLAT_CHUNKY:
-                phi_a1 = 0xCF;
+                modelIndex = 0xCF;
                 break;
             case ACTOR_DIDDY:
             case ACTOR_KASPLAT_DIDDY:
-                phi_a1 = 0xAE;
+                modelIndex = 0xAE;
                 break;
         }
     }
-    spawnActor(ACTOR_SHOCKWAVE, phi_a1); // Spawn actor: Shockwave
+    spawnActor(ACTOR_SHOCKWAVE, modelIndex);
     last_spawned_actor->unk11C = arg5;
     last_spawned_actor->animation_state->scale_x = xzScale;
     last_spawned_actor->animation_state->scale_z = xzScale;
@@ -601,7 +601,7 @@ void func_global_asm_80686E40(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
 }
 
 void func_global_asm_80686F90(u8 arg0, s16 arg1, s16 arg2) {
-    spawnActor(ACTOR_BOSS_DOGADON_LIGHTBEAM, 0xC0); // Spawn actor: Light beam (boss fights)
+    spawnActor(ACTOR_BOSS_DOGADON_LIGHTBEAM, 0xC0);
     if (arg0) {
         func_global_asm_80671C0C(current_actor_pointer, arg0, &last_spawned_actor->x_position, &last_spawned_actor->y_position, &last_spawned_actor->z_position);
     } else {
@@ -685,7 +685,7 @@ void func_global_asm_80687400(void) {
 }
 
 void func_global_asm_80687474(Actor *arg0, f32 arg1) {
-    spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D); // Spawn actor: Shockwave (Mad Jack)
+    spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D);
     last_spawned_actor->object_properties_bitfield |= 0x400;
     func_global_asm_80614EBC(last_spawned_actor, 0x334);
     func_global_asm_8067B238(last_spawned_actor, arg0, arg0->animation_state->scale_y * arg1);

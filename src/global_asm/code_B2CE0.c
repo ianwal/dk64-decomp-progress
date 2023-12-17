@@ -56,12 +56,12 @@ void func_global_asm_806ADFE0(void) {
     }
 }
 
-void func_global_asm_806AE2B0(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_806AE2B0(s32 modelIndex, s16 arg1, s16 arg2, s16 arg3) {
     f32 sp2C;
     f32 sp28;
     f32 sp24;
 
-    if (spawnActor(ACTOR_KROSSBONES_HEAD, arg0)) { // Spawn actor: Unknown 237
+    if (spawnActor(ACTOR_KROSSBONES_HEAD, modelIndex)) {
         func_global_asm_80671C0C(current_actor_pointer, arg2, &sp2C, &sp28, &sp24);
         last_spawned_actor->floor = current_actor_pointer->floor;
         last_spawned_actor->y_rotation = current_actor_pointer->y_rotation + arg1;

@@ -30,7 +30,6 @@ extern f32 D_global_asm_807FC7B8;
 extern u8 D_global_asm_807FBB85;
 
 u32 func_global_asm_806119A0();
-s32 func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_8061EF4C(Actor*, s32, s32, f32, f32, f32, f32, f32);
 void func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
 s32 func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
@@ -198,9 +197,9 @@ void func_global_asm_80690058(Actor *arg0, s32 arg1) {
     func_global_asm_80611690(arg0->animation_state->unk1C);
 }
 
-void func_global_asm_80690094(Actor *arg0, Actor *arg1) {
+void func_global_asm_80690094(Actor *arg0, Actor *player) {
     u8 sp37 = 0;
-    PlayerAdditionalActorData *PaaD = arg1->PaaD;
+    PlayerAdditionalActorData *PaaD = player->PaaD;
 
     func_global_asm_806EB0C0(0x4C, arg0, PaaD->unk1A4);
     if (current_map == MAP_GALLEON_PUFFTOSS) {
@@ -211,7 +210,7 @@ void func_global_asm_80690094(Actor *arg0, Actor *arg1) {
     func_global_asm_80688370(arg0, 0, 1.0f);
     func_global_asm_8068842C(arg0, 0, -1);
     func_global_asm_80690058(arg0, 2);
-    func_global_asm_8067B238(arg0, arg1, 0.15f);
+    func_global_asm_8067B238(arg0, player, 0.15f);
 }
 
 typedef struct {
@@ -233,7 +232,7 @@ void func_global_asm_80690190(Struct80690190 *arg0, s32 arg1) {
     temp_a1 = D_global_asm_80770628[current_actor_pointer->unk70];
     if (current_actor_pointer->y_position < (current_actor_pointer->unkAC + 4.0f)) {
         if (D_global_asm_80770BC0[temp_a1] == 0.0f) {
-            D_global_asm_80770B68[temp_a1] = (((func_global_asm_806119A0() / 4294967295.0) * 0.05) + 0.974999999999999978) * (0.2 + (current_actor_pointer->unkB8 / 300.0));
+            D_global_asm_80770B68[temp_a1] = (((func_global_asm_806119A0() / 4294967295.0) * 0.05) + 0.975) * (0.2 + (current_actor_pointer->unkB8 / 300.0));
             D_global_asm_80770BC0[temp_a1] = 1.0f;
         }
     } else {
@@ -260,19 +259,19 @@ void func_global_asm_80690470(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
     RaceAdditionalActorData *RaaD;
     s32 pad;
-    Actor *sp18;
+    Actor *propeller;
 
     PaaD = arg0->PaaD;
     spawnActor(ACTOR_PROPELLER, 0xDA);
-    sp18 = last_spawned_actor;
-    RaaD = sp18->RaaD;
+    propeller = last_spawned_actor;
+    RaaD = propeller->RaaD;
     RaaD->unk28 = PaaD->unk1A4;
-    func_global_asm_80690094(sp18, arg0);
+    func_global_asm_80690094(propeller, arg0);
     RaaD->unk35 = 0;
     RaaD->unk27 = 0;
     RaaD->unk0 = arg0->y_rotation;
-    PaaD->vehicle_actor_pointer = sp18;
-    sp18->object_properties_bitfield &= 0xFFFDFFFF;
+    PaaD->vehicle_actor_pointer = propeller;
+    propeller->object_properties_bitfield &= 0xFFFDFFFF;
 }
 
 typedef struct {
@@ -325,7 +324,7 @@ void func_global_asm_80690500(void) {
     if (func_global_asm_8061CB50() == 0 || (func_global_asm_8061CB50() != 0 && player_pointer->unk6A & 0x100)) {
         func_global_asm_80671C0C(current_actor_pointer, 1, &sp44, &sp40, &sp3C);
         func_global_asm_8065A708(sp44, sp40, sp3C, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xFF, 0xFF, 0xFF);
-        if (isFlagSet(0x6B, 2) == 0) {
+        if (isFlagSet(0x6B, FLAG_TYPE_TEMPORARY) == 0) {
             if (func_global_asm_8061CB50() != 0) {
                 if (player_pointer->unk6A & 0x100) {
                     func_global_asm_80671C0C(current_actor_pointer, 2, &sp44, &sp40, &sp3C);
@@ -363,7 +362,7 @@ void func_global_asm_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, 
     s32 temp2;
     f32 sp28[6];
 
-    sp28[0] = (arg3 / 4095.0) * 6.28318548202514648;
+    sp28[0] = (arg3 / 4095.0) * TWO_PI;
     sp28[1] = arg4;
     sp28[2] = arg5;
     sp28[3] = arg2;
@@ -456,10 +455,10 @@ void func_global_asm_806915B0(void) {
 
 void func_global_asm_80661520(f32, f32, f32, f32, f32, f32);
 
-void func_global_asm_80691830(s16 arg0, f32 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {
-    spawnActor(ACTOR_BOSS_SHOCKWAVE, arg0); // Spawn actor: Shockwave (boss)
+void func_global_asm_80691830(s16 modelIndex, f32 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {
+    spawnActor(ACTOR_BOSS_SHOCKWAVE, modelIndex);
     func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, arg1);
-    last_spawned_actor->unkF0 = arg0;
+    last_spawned_actor->unkF0 = modelIndex;
     last_spawned_actor->unk16A = arg2;
     last_spawned_actor->unk16B = arg3;
     last_spawned_actor->unk16C = arg4;

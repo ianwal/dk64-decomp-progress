@@ -3426,7 +3426,7 @@ void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     func_global_asm_807149B8(1);
     func_global_asm_80714998(2);
     func_global_asm_80714CC0(&D_global_asm_80721530, 0, D_global_asm_807F621C, D_global_asm_807F6220 + D_global_asm_80758BD8, D_global_asm_807F6224);
-    spawnActor(ACTOR_WRINKLY, 0x53); // Spawn actor: Wrinkly
+    spawnActor(ACTOR_WRINKLY, 0x53);
     last_spawned_actor->x_position = D_global_asm_807F621C;
     last_spawned_actor->y_position = D_global_asm_807F6220;
     last_spawned_actor->z_position = D_global_asm_807F6224;

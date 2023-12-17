@@ -13,7 +13,7 @@ typedef struct {
 } AAD_global_asm_806A2A10;
 
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2) {
-    spawnActor(ACTOR_TIMER_CONTROLLER, 0); // spawnActorWrapper(ACTOR_TIMER_CONTROLLER)
+    spawnActor(ACTOR_TIMER_CONTROLLER, 0);
     if ((arg0 & 0x8000) != 0) {
         last_spawned_actor->unk15F = 0xB;
         arg2--;

@@ -281,7 +281,6 @@ extern f32 D_global_asm_807FD888;
 
 extern void func_global_asm_8068E474(void);
 void func_global_asm_8061C2F0(Actor *, f32, f32, f32, f32, f32, f32, s32);
-void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 void func_global_asm_8062217C(Actor*, u8);
 
@@ -2565,7 +2564,7 @@ void func_global_asm_806D2AA0(s16 arg0) {
         current_actor_pointer->control_state_progress = 0;
     }
     if (current_actor_pointer->control_state_progress == 2) {
-        spawnActor(ACTOR_PICTURE, 0x8D); // Spawn fairy picture actor (202)
+        spawnActor(ACTOR_PICTURE, 0x8D);
         extra_player_info_pointer->vehicle_actor_pointer = last_spawned_actor;
         last_spawned_actor->PaaD->unk0 = extra_player_info_pointer;
         extra_player_info_pointer->unk1F0 |= 0x8000;
@@ -5213,7 +5212,7 @@ void func_global_asm_806DECD4(void) {
 }
 
 void func_global_asm_806DED44(void) {
-    BoulderAAD *temp_s0_3;
+    BoulderAAD *aaD;
     s8 phi_a1;
     s32 i;
 
@@ -5232,7 +5231,7 @@ void func_global_asm_806DED44(void) {
             break;
         case 1:
             global_properties_bitfield &= 0xFFFEFFCF;
-            spawnActor(ACTOR_FAIRY_REFILL, 0x3D); // Spawn fairy (refill) actor 321
+            spawnActor(ACTOR_FAIRY_REFILL, 0x3D);
             func_global_asm_8067B238(last_spawned_actor,
                           current_actor_pointer,
                           current_actor_pointer->animation_state->scale_y * 2);
@@ -5241,23 +5240,23 @@ void func_global_asm_806DED44(void) {
             last_spawned_actor->y_rotation &= 0xFFF;
             last_spawned_actor->unk11C = current_actor_pointer;
             func_global_asm_80614EBC(last_spawned_actor, 0x2B7);
-            temp_s0_3 = last_spawned_actor->additional_data_pointer;
-            temp_s0_3->unk10 = current_actor_pointer;
-            temp_s0_3->unk18 = current_actor_pointer->unk12C;
-            if (temp_s0_3->unk18 == -1) {
-                temp_s0_3->unk18 = 0;
+            aaD = last_spawned_actor->additional_data_pointer;
+            aaD->unk10 = current_actor_pointer;
+            aaD->unk18 = current_actor_pointer->unk12C;
+            if (aaD->unk18 == -1) {
+                aaD->unk18 = 0;
             }
-            temp_s0_3->unk16 = current_actor_pointer->z_rotation;
-            temp_s0_3->unk14 = current_actor_pointer->x_rotation;
-            func_global_asm_80659620(temp_s0_3, &temp_s0_3->unk4, &temp_s0_3->unk8, temp_s0_3->unk18);
-            func_global_asm_80659670(1.0f, 1.0f, 1.0f, temp_s0_3->unk18);
-            spawnActor(ACTOR_SPOTLIGHT, 0xA8); // Spawn spotlight actor 310
+            aaD->unk16 = current_actor_pointer->z_rotation;
+            aaD->unk14 = current_actor_pointer->x_rotation;
+            func_global_asm_80659620(aaD, &aaD->unk4, &aaD->unk8, aaD->unk18);
+            func_global_asm_80659670(1.0f, 1.0f, 1.0f, aaD->unk18);
+            spawnActor(ACTOR_SPOTLIGHT, 0xA8);
             func_global_asm_8067B238(last_spawned_actor,
                           current_actor_pointer,
                           current_actor_pointer->animation_state->scale_x);
             last_spawned_actor->object_properties_bitfield |= 0x40000000;
-            temp_s0_3->unkC = last_spawned_actor;
-            temp_s0_3->unk1E = func_global_asm_806F8EB4() == 20; // Have all fairies been photographed?
+            aaD->unkC = last_spawned_actor;
+            aaD->unk1E = func_global_asm_806F8EB4() == 20; // Have all fairies been photographed?
             current_actor_pointer->control_state_progress = 2;
             break;
         case 2:

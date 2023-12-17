@@ -13,15 +13,15 @@ D_race_80030110 .double 0.15
 void func_race_8002E2C8(Actor *arg0);
 void func_race_80025E9C(Actor *);
 
-void func_race_8002BBD0(Actor *arg0, s32 arg1) {
+void func_race_8002BBD0(Actor *arg0, s32 numRacers) {
     RaceAdditionalActorData *sp1C;
     RaaD_unk20 *temp_v0;
 
     sp1C = arg0->RaaD;
-    temp_v0 = malloc(arg1 * sizeof(RaaD_unk20));
+    temp_v0 = malloc(numRacers * sizeof(RaaD_unk20));
     sp1C->unk20 = temp_v0;
     func_global_asm_80611690(temp_v0);
-    sp1C->unk1E = arg1;
+    sp1C->unk1E = numRacers;
     sp1C->unk1C = -1;
     arg0->control_state = 0;
 }
@@ -260,7 +260,7 @@ void func_race_8002CFF0(void) {
     TempAAD *temp_v0;
     Actor *temp_a0;
 
-    spawnActor(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
+    spawnActor(ACTOR_UNKNOWN_306, 0);
     temp_a0 = last_spawned_actor;
     func_race_80025E9C(temp_a0);
     func_race_8002BCD4(temp_a0);
@@ -276,7 +276,7 @@ void func_race_8002CFF0(void) {
 void castleCarRaceSetup(void) {
     RaceAdditionalActorData2 *RaaD;
 
-    spawnActor(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
+    spawnActor(ACTOR_UNKNOWN_306, 0);
     RaaD = last_spawned_actor->RaaD2;
     initializeCastleCarRace(last_spawned_actor);
     RaaD->unk0 = 0xE;
@@ -286,7 +286,7 @@ void castleCarRaceSetup(void) {
 void initializeSealRace(void) {
     RaceAdditionalActorData2 *RaaD;
 
-    spawnActor(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
+    spawnActor(ACTOR_UNKNOWN_306, 0);
     RaaD = last_spawned_actor->RaaD2;
     func_race_800292D0(last_spawned_actor);
     RaaD->unk0 = 0xE;
@@ -296,7 +296,7 @@ void initializeSealRace(void) {
 void func_race_8002D0FC(void) {
     RaceAdditionalActorData2 *RaaD;
 
-    spawnActor(ACTOR_UNKNOWN_306, 0); // Spawn actor 306
+    spawnActor(ACTOR_UNKNOWN_306, 0);
     RaaD = last_spawned_actor->RaaD2;
     func_race_8002E2C8(last_spawned_actor);
     RaaD->unk0 = 2;
@@ -720,15 +720,15 @@ void func_race_8002E2C8(Actor *arg0) {
     Actor17C *temp_a2;
     s32 var_s1;
     s32 i;
-    s32 var_s4;
+    s32 numRacers;
 
-    var_s4 = cc_number_of_players;
+    numRacers = cc_number_of_players;
     var_s1 = 0;
     sp5C = arg0->additional_actor_data;
-    if (var_s4 == 1) {
-        var_s4++;
+    if (numRacers == 1) {
+        numRacers++;
     }
-    func_race_8002BBD0(arg0, var_s4);
+    func_race_8002BBD0(arg0, numRacers);
     if (cc_number_of_players == 1) {
         sp54 = func_global_asm_807271F4(1, 0, 0, 0, 0, 0, 0);
         sp58 = sp54->unk178;
@@ -750,7 +750,7 @@ void func_race_8002E2C8(Actor *arg0) {
         var_s1 += 1;
         sp58->unk28 = i;
     }
-    for (i = 0; i < var_s4; i++) {
+    for (i = 0; i < numRacers; i++) {
         func_race_8002BCB0(arg0, i, &sp54, &sp58);
         sp58->unk36 = i;
         sp58->unk30 = arg0;
@@ -888,7 +888,7 @@ void func_race_8002E644(A17C_race_8002B964 *arg0) {
             sp50 = ((temp_f2_2 - sp50) * sp40) + temp_f2_2;
             actor->unkB8 = sqrtf((sp54 * sp54) + (sp50 * sp50));
             
-            actor->unkEE = (func_global_asm_80611BB4(sp54, sp50) * 4096.0) / 6.28318548202514648;
+            actor->unkEE = (func_global_asm_80611BB4(sp54, sp50) * 4096.0) / TWO_PI;
             actor->unkEE += sp46;
             actor->unkEE &= 0xFFF;
             

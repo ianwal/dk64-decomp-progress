@@ -664,7 +664,7 @@ void func_global_asm_806AC048(s32 arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ACA88.s")
 
 void func_global_asm_806ACC00(u8 arg0) {
-    spawnActor(ACTOR_TRY_AGAIN_DIALOG, 0); // Spawn actor: Try Again Dialog
+    spawnActor(ACTOR_TRY_AGAIN_DIALOG, 0);
     last_spawned_actor->unk15F = arg0;
     last_spawned_actor->unk64 |= 2;
     global_properties_bitfield |= 0x40001;

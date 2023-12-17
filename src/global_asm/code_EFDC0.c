@@ -1109,9 +1109,9 @@ void func_global_asm_806EFA3C(void) {
 
     sp24 = D_global_asm_8075D380;
     scale = current_player->animation_state->scale_x;
-    spawnActor(ACTOR_POTION, 0xB9); // Spawn potion actor 320
+    spawnActor(ACTOR_POTION, 0xB9);
     if (current_player->unk58 == ACTOR_DK) {
-        scale = scale * 1.25;
+        scale *= 1.25;
     }
     func_global_asm_8067B238(last_spawned_actor, current_player, scale);
     func_global_asm_80614EBC(last_spawned_actor, sp24.unk0[current_character_index[extra_player_info_pointer->unk1A4]]);
@@ -1132,10 +1132,12 @@ void func_global_asm_806EFB4C(void) {
     if (current_player->unkFC) {
         current_player->y_rotation = func_global_asm_80672A70(current_player->unkF4, current_player->unkF6);
     } else {
-        current_player->y_rotation = func_global_asm_80665DE0(character_change_array[cc_player_index].look_at_eye_x,
-                                               character_change_array[cc_player_index].look_at_eye_z,
-                                               current_player->x_position,
-                                               current_player->z_position);
+        current_player->y_rotation = func_global_asm_80665DE0(
+            character_change_array[cc_player_index].look_at_eye_x,
+            character_change_array[cc_player_index].look_at_eye_z,
+            current_player->x_position,
+            current_player->z_position
+        );
     }
     func_global_asm_80627948(current_player, 0x15, 0x1F, 5);
 }
@@ -1149,10 +1151,12 @@ void func_global_asm_806EFC38(void) {
         current_player->control_state = 0x71;
         current_player->control_state_progress = 0;
     }
-    current_player->y_rotation = func_global_asm_80665DE0(character_change_array[cc_player_index].look_at_eye_x,
-                                           character_change_array[cc_player_index].look_at_eye_z,
-                                           current_player->x_position,
-                                           current_player->z_position);
+    current_player->y_rotation = func_global_asm_80665DE0(
+        character_change_array[cc_player_index].look_at_eye_x,
+        character_change_array[cc_player_index].look_at_eye_z,
+        current_player->x_position,
+        current_player->z_position
+    );
     if (current_map == MAP_JAPES_ARMY_DILLO) {
         playCutscene(current_player, 2, 1);
         current_player->control_state_progress = 0xFF;
@@ -1169,10 +1173,12 @@ void func_global_asm_806EFD50(void) {
     func_global_asm_80614E78(current_player, 0x5B);
     current_player->control_state = 0x72;
     current_player->control_state_progress = 0;
-    current_player->y_rotation = func_global_asm_80665DE0(character_change_array[cc_player_index].look_at_eye_x,
-                                        character_change_array[cc_player_index].look_at_eye_z,
-                                        current_player->x_position,
-                                        current_player->z_position);
+    current_player->y_rotation = func_global_asm_80665DE0(
+        character_change_array[cc_player_index].look_at_eye_x,
+        character_change_array[cc_player_index].look_at_eye_z,
+        current_player->x_position,
+        current_player->z_position
+    );
     playCutscene(current_player, 0x15, 5);
 }
 
@@ -1194,10 +1200,12 @@ void func_global_asm_806EFDFC(void) {
     current_player->control_state_progress = 0;
     vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     if (!vehicle || vehicle->unk58 != ACTOR_MINECART_BONUS) {
-        current_player->y_rotation = func_global_asm_80665DE0(character_change_array[cc_player_index].look_at_eye_x,
-                                               character_change_array[cc_player_index].look_at_eye_z,
-                                               current_player->x_position,
-                                               current_player->z_position);
+        current_player->y_rotation = func_global_asm_80665DE0(
+            character_change_array[cc_player_index].look_at_eye_x,
+            character_change_array[cc_player_index].look_at_eye_z,
+            current_player->x_position,
+            current_player->z_position
+        );
     }
     current_player->y_velocity = 0.0f;
     extra_player_info_pointer->unk23C = 0x5A;
@@ -1222,10 +1230,12 @@ void func_global_asm_806EFF34(void) {
     current_player->control_state_progress = 0;
     vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     if (!vehicle || vehicle->unk58 != ACTOR_MINECART_BONUS) {
-        current_player->y_rotation = func_global_asm_80665DE0(character_change_array[cc_player_index].look_at_eye_x,
-                                               character_change_array[cc_player_index].look_at_eye_z,
-                                               current_player->x_position,
-                                               current_player->z_position);
+        current_player->y_rotation = func_global_asm_80665DE0(
+            character_change_array[cc_player_index].look_at_eye_x,
+            character_change_array[cc_player_index].look_at_eye_z,
+            current_player->x_position,
+            current_player->z_position
+        );
     }
     current_player->y_velocity = 0.0f;
     extra_player_info_pointer->unk23C = 0x5A;
@@ -1289,7 +1299,7 @@ void func_global_asm_806F027C(void) {
         current_player->control_state = 0x7C;
         current_player->control_state_progress = 0;
         func_global_asm_80614EBC(current_player, 0x13);
-        spawnActor(ACTOR_TRAP_BUBBLE, 0xC5); // Spawn trap bubble (spider miniboss) actor 279
+        spawnActor(ACTOR_TRAP_BUBBLE, 0xC5);
         last_spawned_actor->unk11C = current_player;
         func_global_asm_806C8D20(current_player);
     }
@@ -1300,7 +1310,7 @@ void func_global_asm_806F0344(void) {
     current_player->control_state = 0x7D;
     current_player->control_state_progress = 0;
     current_player->object_properties_bitfield &= ~4;
-    spawnActor(ACTOR_MINIGAME_BOTHER_KLAPTRAP, 0x21); // Spawn actor (beaver bother?)
+    spawnActor(ACTOR_MINIGAME_BOTHER_KLAPTRAP, 0x21);
     func_global_asm_80614EBC(last_spawned_actor, 0x232);
     last_spawned_actor->unk11C = current_player;
 }

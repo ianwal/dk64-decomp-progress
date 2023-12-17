@@ -39,7 +39,7 @@ const u32 D_bonus_8002DCA8[] = {
 const f32 D_bonus_8002DCB4 = 0.3f;
 const f32 D_bonus_8002DCB8 = 0.09f;
 const f32 D_bonus_8002DCE4 = 0.09f;
-const f64 D_bonus_8002DD00 = 6.28318548202514648;
+const f64 D_bonus_8002DD00 = 6.28318548202514648; // TWO_PI
 const f64 D_bonus_8002DD08 = 90.0;
 const f64 D_bonus_8002DD10 = 0.3;
 */
@@ -68,7 +68,7 @@ Gfx *func_bonus_800252A0(Gfx *dl, Actor *arg1) {
 
 Actor* func_bonus_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     BaaD2 *tmp;
-    if (spawnActor(ACTOR_BANDIT_SLOT, arg0)) { // Spawn actor 219 (slot, BBB I guess?)
+    if (spawnActor(ACTOR_BANDIT_SLOT, arg0)) {
         tmp = last_spawned_actor->BaaD2;
         last_spawned_actor->x_position = arg1;
         last_spawned_actor->y_position = arg2;

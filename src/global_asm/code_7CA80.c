@@ -28,6 +28,12 @@ void func_global_asm_8067B01C(void);
 void func_global_asm_8067B100(Actor *player);
 s16 func_global_asm_8067AF74(Actor*);
 s32 func_global_asm_806782E8(Actor *arg0);
+s32 func_global_asm_8067B3F4(s32 arg0);
+void func_global_asm_80679178(Actor *arg0);
+void func_global_asm_80678E6C(Actor *arg0);
+void func_global_asm_80678E14(Actor *arg0);
+void func_global_asm_806790F4(u8);
+void func_global_asm_8067A1DC(Actor *arg0);
 
 void func_global_asm_806783BC();
 void func_global_asm_806136B4();
@@ -135,7 +141,7 @@ s32 func_global_asm_80677ED0(Struct80677ED0 *arg0) {
 
     if (func_global_asm_80678050(arg0->unk0)) {
         master_type = D_global_asm_8074D8D4[arg0->unk0];
-        if(D_global_asm_8074DA30[master_type](&arg0->unk4)) {
+        if (D_global_asm_8074DA30[master_type](&arg0->unk4)) {
             last_spawned_actor->x_position = arg0->unkC;
             last_spawned_actor->y_position = arg0->unk10;
             last_spawned_actor->z_position = arg0->unk14;
@@ -151,12 +157,12 @@ s32 func_global_asm_80677ED0(Struct80677ED0 *arg0) {
     return FALSE;
 }
 
-s32 spawnActor(Actors arg0, s32 arg1) {
+s32 spawnActor(Actors actorIndex, s32 modelIndex) {
     s32 master_type;
 
-    if (func_global_asm_80678050(arg0)) {
-        master_type = D_global_asm_8074D8D4[arg0];
-        if (D_global_asm_8074DA30[master_type](&arg1)) {
+    if (func_global_asm_80678050(actorIndex)) {
+        master_type = D_global_asm_8074D8D4[actorIndex];
+        if (D_global_asm_8074DA30[master_type](&modelIndex)) {
             return TRUE;
         }
     }
@@ -528,12 +534,6 @@ void func_global_asm_80678BBC(Actor *arg0) {
         func_global_asm_80669A6C(arg0);
     }
 }
-
-s32 func_global_asm_8067B3F4(s32 arg0);
-void func_global_asm_80679178(Actor *arg0);
-void func_global_asm_80678E6C(Actor *arg0);
-void func_global_asm_80678E14(Actor *arg0);
-void func_global_asm_806790F4(u8);
 
 void func_global_asm_80678CC8(Actor *arg0) {
     u32 temp_v0;

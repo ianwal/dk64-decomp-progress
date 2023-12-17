@@ -772,10 +772,10 @@ typedef struct {
 
 void func_global_asm_80682E38(Struct80682E38_arg0 *arg0) {
     s32 var_a2;
-    s16 var_a1;
-    Actors var_s0;
+    s16 modelIndex;
+    Actors actorIndex;
     s32 i;
-    AAD_global_asm_80682E38 *temp_s0;
+    AAD_global_asm_80682E38 *aaD;
 
     spawnActor(ACTOR_SPOTLIGHT, 0xA8);
     arg0->unk1C = last_spawned_actor;
@@ -784,26 +784,26 @@ void func_global_asm_80682E38(Struct80682E38_arg0 *arg0) {
     last_spawned_actor->z_position = (func_global_asm_80612790(current_actor_pointer->y_rotation) * 35.0f) + current_actor_pointer->z_position;
     for (i = 0; i < 5; i++) {
         if (isFlagSet(func_global_asm_805FF018(current_actor_pointer->unk58, i), FLAG_TYPE_PERMANENT) != FALSE) {
-            var_s0 = ACTOR_TAGBARREL_KONG;
-            var_a1 = D_global_asm_8074E814[i].unk0;
+            actorIndex = ACTOR_TAGBARREL_KONG;
+            modelIndex = D_global_asm_8074E814[i].unk0;
         } else {
-            var_s0 = ACTOR_TAGBARREL_LOCKED;
-            var_a1 = 0xD2;
+            actorIndex = ACTOR_TAGBARREL_LOCKED;
+            modelIndex = 0xD2;
         }
-        spawnActor(var_s0, var_a1);
+        spawnActor(actorIndex, modelIndex);
         arg0->unk8[i] = last_spawned_actor;
         last_spawned_actor->y_rotation = current_actor_pointer->y_rotation;
         last_spawned_actor->object_properties_bitfield |= 0x40000000;
-        if (var_s0 == 0x13C) {
-            temp_s0 = last_spawned_actor->additional_actor_data;
-            temp_s0->unk0 = D_global_asm_8074E814[i].unk2;
-            func_global_asm_806F09F0(last_spawned_actor, temp_s0->unk0);
+        if (actorIndex == ACTOR_TAGBARREL_KONG) {
+            aaD = last_spawned_actor->additional_actor_data;
+            aaD->unk0 = D_global_asm_8074E814[i].unk2;
+            func_global_asm_806F09F0(last_spawned_actor, aaD->unk0);
             if (i == arg0->unk6) {
                 var_a2 = 0x8B;
             } else {
                 var_a2 = 0x8A;
             }
-            func_global_asm_80682DF4(last_spawned_actor, temp_s0, var_a2);
+            func_global_asm_80682DF4(last_spawned_actor, aaD, var_a2);
         } else {
             RaceAdditionalActorData2 *RaaD2 = last_spawned_actor->RaaD2;
             RaaD2->unk0 = i;

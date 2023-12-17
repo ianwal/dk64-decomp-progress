@@ -62,7 +62,6 @@ void func_global_asm_80665564(Actor *arg0, f32 arg1);
 s16 func_global_asm_80665DE0(f32, f32, f32, f32);
 
 void func_global_asm_8067DF44(f32, f32, f32, f32, u8, u8);
-// s32 spawnActor(Actors, s32); // spawnActorWrapper()
 void func_global_asm_807149C8(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 f32 func_global_asm_80665E94(f32, f32, f32, f32, f32, f32, s16);
 
@@ -1840,7 +1839,7 @@ void func_global_asm_8072F09C(Actor *arg0);
 void func_global_asm_8072F120(void);
 void func_global_asm_8062D26C(Actor*);
 void func_global_asm_807233B4(Actor*);
-s32 spawnActor(Actors arg0, s32 arg1);
+s32 spawnActor(Actors actorIndex, s32 modelIndex);
 void func_global_asm_806790F4(u8);
 void func_global_asm_80678CC8(Actor *arg0);
 s32 func_global_asm_80679010(Actor *arg0, Actor *arg1);
@@ -2333,8 +2332,10 @@ Gfx *func_global_asm_805FCFD8(Gfx *dl);
 Gfx *func_global_asm_805FD030(Gfx *dl);
 Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds);
 void func_global_asm_806F0C18(Actor*);
+void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))
+#define TWO_PI 6.28318548202514648
 
 #endif
