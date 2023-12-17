@@ -807,9 +807,10 @@ typedef struct player_additional_actor_data {
     s16 unk70; // Used, y rotation?
     s16 unk72;
     s32 unk74;
-    s32 unk78;
-    s32 unk7C;
-    s32 unk80;
+    f32 unk78; // used
+    f32 unk7C; // used
+    s16 unk80; // used
+    s16 unk82;
     s32 unk84;
     Actor* vehicle_actor_pointer; // Used
     u8  unk8C; // Used
@@ -938,7 +939,8 @@ typedef struct player_additional_actor_data {
     Actor *unk1AC; // TODO: Is this correct?
     Actor *unk1B0; // Used
     s32 unk1B4;
-    s32 unk1B8;
+    u16 unk1B8; // Used
+    s16 unk1BA;
     f32 unk1BC; // Used
     f32 unk1C0; // Used
     f32 unk1C4; // Used

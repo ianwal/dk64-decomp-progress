@@ -813,8 +813,19 @@ void func_global_asm_806CCB94(void) {
     }
 }
 
-// jumptable :(
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CCC10.s")
+s32 func_global_asm_806CCC10(void) {
+    switch (current_player->control_state) {
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19:
+        case 20:
+            return TRUE;
+        default:
+            return FALSE;
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CCC54.s")
@@ -822,7 +833,7 @@ void func_global_asm_806CCB94(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CD424.s")
 
 /*
-TODO: Progress made, tricky but doable
+// TODO: Progress made, tricky but doable
 void func_global_asm_806CD424(s16 arg0, f32 arg1, f32 arg2) {
     f32 sp3C;
     f32 sp38;
@@ -983,8 +994,49 @@ s32 func_global_asm_806CEB44(f32 arg0, f32 arg1) {
     return phi_v1;
 }
 
-// Jumptable
+// Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CEC04.s")
+
+extern s16 D_global_asm_807532A8[];
+
+/*
+void func_global_asm_806CEC04(Actor *arg0) {
+    f32 sp84;
+    s16 temp_f0;
+    f32 sp40[4][4];
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 var_f2;
+
+    switch ((u32)arg0->unk58) {
+        case 0x3D:
+        case 0x3F:
+        case 0x40:
+        case 0x41:
+        case 0x42:
+        case 0x43:
+        case 0x55:
+        case 0x82:
+            sp84 = 30.0f;
+            break;
+        default:
+            sp84 = D_global_asm_807532A8[D_global_asm_807FD584];
+            break;
+    }
+    if (extra_player_info_pointer->unk1F0 & 0x01000000) {
+        var_f2 = (current_actor_pointer->y_rotation * 0x168) / 4096;
+    } else {
+        var_f2 = 360.0 - func_global_asm_80665AE4((s16)arg0->x_position, (s16)arg0->z_position, (s16)current_actor_pointer->x_position, (s16)current_actor_pointer->z_position);
+    }
+    extra_player_info_pointer->unk80 = (var_f2 * 4095.0) / 360.0;
+    guRotateF(&sp40, var_f2, 0.0f, 1.0f, 0.0f);
+    guMtxXFMF(&sp40, 0, 0, sp84, &sp3C, &sp38, &sp34);
+    temp_f0 = 0xF;
+    extra_player_info_pointer->unk78 = (((arg0->x_position - sp3C) - current_actor_pointer->x_position) / temp_f0);
+    extra_player_info_pointer->unk7C = (((arg0->z_position - sp34) - current_actor_pointer->z_position) / temp_f0);
+}
+*/
 
 void func_global_asm_806CEE64(f32 arg0) {
     GlobalASMStruct61 *temp_v0;
@@ -1105,8 +1157,36 @@ void func_global_asm_806CF138(Struct806CF138 *arg0) {
 }
 */
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CF2EC.s")
+void func_global_asm_806CF2EC(s32 *arg0, s32 *arg1) {
+    s32 var_v0;
+    u16 temp_v1;
+
+    var_v0 = 0;
+    if (current_actor_pointer->unk58 == ACTOR_CHUNKY) {
+        switch (extra_player_info_pointer->unk1B8) {
+            case 0x82:
+                *arg0 = 0x13;
+                *arg1 = 0x14;
+                var_v0 = 1;
+                break;
+            case 0x3D:
+            case 0x3F:
+            case 0x40:
+            case 0x41:
+            case 0x42:
+            case 0x43:
+            case 0x55:
+                *arg0 = 0x12;
+                *arg1 = 0x11;
+                var_v0 = 1;
+                break;
+        }
+    }
+    if (var_v0 == 0) {
+        *arg0 = 2;
+        *arg1 = 3;
+    }
+}
 
 void func_global_asm_806CF398(Actor *arg0) {
     PlayerAdditionalActorData *PaaD;
@@ -1211,26 +1291,19 @@ void func_global_asm_806CF878(void) {
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CF918.s")
-
 void func_global_asm_807195D4(void);
 extern s32 D_global_asm_8071FF40;
 
-/*
 void func_global_asm_806CF918(void) {
     s32 i;
-    f32 uvar = D_global_asm_8075CC68;
-
     for (i = 0; i < 5; i++) {
         func_global_asm_8071498C(&func_global_asm_807195D4);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(i * 0x28);
         func_global_asm_807149FC(0x45);
-        func_global_asm_80714C08(&D_global_asm_8071FF40, uvar, current_actor_pointer, 6, 2);
+        func_global_asm_80714C08(&D_global_asm_8071FF40, 0.05f, current_actor_pointer, 6, 2);
     }
 }
-*/
 
 // Something to do with ledge grabs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CF9CC.s")
