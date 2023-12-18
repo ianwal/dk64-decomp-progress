@@ -230,32 +230,27 @@ void func_global_asm_806DF44C(Actor* arg0, PlayerAdditionalActorData *arg1, u8 a
     func_global_asm_806DF3D0(arg0, arg1, arg2);
 }
 
-// Close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806DF494.s")
-
-/*
 void func_global_asm_806DF494(s16 *arg0, s16 arg1, s16 arg2) {
-    s16 phi_v0;
-    s16 temp2;
+    s16 var_v0;
+    s16 var_a2;
 
     arg1 &= 0xFFF;
-    phi_v0 = (arg1 - *arg0);
-    if (phi_v0) {
-        arg2 = ABS(phi_v0);
-        phi_v0 /= arg2;
-        if (arg2 >= 0x801) {
-            arg2 = 0x1000 - arg2;
-            phi_v0 *= -1;
+    var_v0 = (arg1 - *arg0);
+    if (var_v0) {
+        var_a2 = ABS(var_v0);
+        var_v0 /= var_a2;
+        if (var_a2 >= 0x801) {
+            var_a2 = 0x1000 - var_a2;
+            var_v0 *= -1;
         }
-        if (arg2 < (ABS(arg2))) {
+        if (var_a2 < ABS(arg2)) {
             *arg0 = arg1;
         } else {
-            *arg0 += (phi_v0 * arg2);
+            *arg0 += (var_v0 * arg2);
             *arg0 &= 0xFFF;
         }
     }
 }
-*/
 
 void func_global_asm_806DF5A0(s16 *arg0, s16 arg1, s16 arg2, s16 arg3) {
     s16 var_v0;
@@ -295,9 +290,6 @@ void func_global_asm_806DF670(s16 *arg0, s16 arg1, s16 arg2) {
 // doable, stack regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806DF6D4.s")
 
-extern s32 D_global_asm_80750FF0;
-
-/*
 u16 func_global_asm_806DFF34(u16, s32 *);
 
 typedef struct {
@@ -331,6 +323,7 @@ extern ControlStateInputHandler D_global_asm_80751004[]; // TODO: rodata?
 
 extern u16 D_global_asm_807ECDF0;
 
+/*
 s32 func_global_asm_806DF6D4(s32 controlState) {
     ControlStateInputHandler *inputHandler;
     f32 temp_f18;
@@ -405,7 +398,7 @@ s32 func_global_asm_806DF6D4(s32 controlState) {
         var_f2 = temp_f12;
     }
     if (var_f2 != 0.0f) {
-        var_f16 *= (f32)(1.0 - ((var_f14 / var_f2) * D_global_asm_8075D0E0));
+        var_f16 *= (f32)(1.0 - ((var_f14 / var_f2) * 0.15));
     }
     if (var_f16 > 70.0f) {
         var_f16 = 70.0f;
@@ -421,7 +414,7 @@ s32 func_global_asm_806DF6D4(s32 controlState) {
         D_global_asm_807FD610[cc_player_index].unk8 = 0.0f;
     }
     if (var_f16 != 0.0f) {
-        var_t0 = (func_global_asm_80611BB4(D_global_asm_807FD610[cc_player_index].unk2E, -D_global_asm_807FD610[cc_player_index].unk2F) * 4096.0f) / D_global_asm_8075D0E8;
+        var_t0 = (func_global_asm_80611BB4(D_global_asm_807FD610[cc_player_index].unk2E, -D_global_asm_807FD610[cc_player_index].unk2F) * 4096.0f) / 6.283185482f;
         D_global_asm_807FD610[cc_player_index].unk28 = (character_change_array[cc_player_index].unk2C8 + var_t0);
         D_global_asm_807FD610[cc_player_index].unk28 &= 0xFFF;
     } else {
@@ -838,8 +831,8 @@ void func_global_asm_806E0FAC(void) {
         if (current_actor_pointer->unkB8 == 0.0f) {
             temp_f2 = D_global_asm_807FD610[cc_player_index].unk8;
             var_f2 = temp_f2 * temp_f2;
-            if (var_f2 < D_global_asm_8075D148) {
-                var_f2 = D_global_asm_8075D150;
+            if (var_f2 < 0.2) {
+                var_f2 = 0.2f;
             }
             var_f0 = current_actor_pointer->y_rotation - extra_player_info_pointer->unkA;
             if (var_f0 >= 2048.0f) {
@@ -1155,8 +1148,23 @@ u8 func_global_asm_806E2B20(Actor *arg0) {
 }
 */
 
-// Jumptable lol
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E2C74.s")
+void func_global_asm_806E2C74(Actor *arg0) {
+    PlayerAdditionalActorData *PaaD;
+
+    PaaD = arg0->PaaD;
+    switch (arg0->unk58) {
+        case ACTOR_DK:
+        case ACTOR_LANKY:
+        case ACTOR_TINY:
+        case ACTOR_CHUNKY:
+        case ACTOR_KRUSHA:
+            PaaD->unk90 = 1;
+            return;
+        default:
+            PaaD->unk90 = 1 - PaaD->unk90;
+            return;
+    }
+}
 
 u8 playerCanThrowOrange(void) {
     return !func_global_asm_80714608(0)
@@ -1218,7 +1226,7 @@ void func_global_asm_806E2FE8(void) {
     }
 }
 
-// regalloc
+// regalloc v1 a2
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E3040.s")
 
 extern f32 D_global_asm_8075371C[];
@@ -1229,22 +1237,25 @@ void func_global_asm_806E3040(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
-    if (((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU) && (current_character_index[cc_player_index] != 6) && ((((current_actor_pointer->unk6A & 1) == 0)) || (current_actor_pointer->unkE0 == 0.0f))) {
-        PlayerAdditionalActorData *PaaD = extra_player_info_pointer;
-        if (PaaD->unk20 > 70.0f) {
-            current_actor_pointer->control_state = 0x1D;
-            current_actor_pointer->control_state_progress = 0;
-            extra_player_info_pointer->unk54 = D_global_asm_8075378C[D_global_asm_807FD584];
-            extra_player_info_pointer->unk50 = 0;
-            func_global_asm_80614E78(current_actor_pointer, 0x1A);
-            extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
-        } else {
-            current_actor_pointer->control_state = 0x3E;
-            current_actor_pointer->control_state_progress = 0;
-            extra_player_info_pointer->unk54 = D_global_asm_8075371C[D_global_asm_807FD584];
-            extra_player_info_pointer->unk50 = 0;
-            func_global_asm_80614E78(current_actor_pointer, 0xE);
-            extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
+    if (((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU)) {
+        if (current_character_index[cc_player_index] != 6) {
+            if (!(current_actor_pointer->unk6A & 1) || (current_actor_pointer->unkE0 == 0.0f)) {
+                if (extra_player_info_pointer->unk20 > 70.0f) {
+                    current_actor_pointer->control_state = 0x1D;
+                    current_actor_pointer->control_state_progress = 0;
+                    extra_player_info_pointer->unk54 = D_global_asm_8075378C[D_global_asm_807FD584];
+                    extra_player_info_pointer->unk50 = 0;
+                    func_global_asm_80614E78(current_actor_pointer, 0x1A);
+                    extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
+                } else {
+                    current_actor_pointer->control_state = 0x3E;
+                    current_actor_pointer->control_state_progress = 0;
+                    extra_player_info_pointer->unk54 = D_global_asm_8075371C[D_global_asm_807FD584];
+                    extra_player_info_pointer->unk50 = 0;
+                    func_global_asm_80614E78(current_actor_pointer, 0xE);
+                    extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
+                }
+            }
         }
     }
 }
@@ -1684,14 +1695,13 @@ void func_global_asm_806E4AD8(void) {
             current_actor_pointer->control_state = 0x4A;
             current_actor_pointer->control_state_progress = 0;
             switch ((u32)extra_player_info_pointer->unk1AC->unk58) {
-                // TODO: Use Actors enum
-                case 0x3D:
-                case 0x3F:
-                case 0x40:
-                case 0x41:
-                case 0x42:
-                case 0x55:
-                case 0x82:
+                case ACTOR_BOULDER:
+                case ACTOR_VASE_OVAL:
+                case ACTOR_VASE_DOTS:
+                case ACTOR_VASE_TRIANGLE:
+                case ACTOR_VASE_PLUS:
+                case ACTOR_STEEL_KEG:
+                case ACTOR_APPLE:
                     func_global_asm_80614EBC(current_actor_pointer, 0x1CD);
                     return;
                 default:
@@ -1723,8 +1733,7 @@ void func_global_asm_806E4C6C(void) {
 
 void func_global_asm_806E4D14(void) {
     u32 actorBehaviourIndex = extra_player_info_pointer->unk1AC->unk58;
-    // Steel Keg & Apple
-    if ((actorBehaviourIndex != 0x55) && (actorBehaviourIndex != 0x82)) {
+    if ((actorBehaviourIndex != ACTOR_STEEL_KEG) && (actorBehaviourIndex != ACTOR_APPLE)) {
         current_actor_pointer->y_velocity = 200.0f;
         current_actor_pointer->control_state = 0x4D;
         current_actor_pointer->control_state_progress = 0;
@@ -1851,23 +1860,17 @@ void func_global_asm_806E52D0(void) {
 */
 
 s32 func_global_asm_806E5488(Actor *arg0) {
-    f32 temp_f0;
-    f32 dx;
-    f32 dz;
-    f32 temp_f2;
-    f32 dy;
-
     if (arg0->locked_to_pad == 1) {
-        temp_f0 = arg0->unk94 - arg0->unk88;
-        temp_f2 = arg0->unk98 - arg0->unk90;
-        if (sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2)) > 1.0) {
+        f32 dx = arg0->unk94 - arg0->unk88;
+        f32 dz = arg0->unk98 - arg0->unk90;
+        if (sqrtf((dx * dx) + (dz * dz)) > 1.0) {
             return TRUE;
         }
     }
-    if ((arg0->unk6A & 8) != 0) {
-        dx = arg0->x_position - arg0->unk88;
-        dy = arg0->y_position - arg0->unk8C;
-        dz = arg0->z_position - arg0->unk90;
+    if (arg0->unk6A & 8) {
+        f32 dx = arg0->x_position - arg0->unk88;
+        f32 dy = arg0->y_position - arg0->unk8C;
+        f32 dz = arg0->z_position - arg0->unk90;
         if (sqrtf((dx * dx) + (dy * dy) + (dz * dz)) > 1.0) {
             return TRUE;
         }
@@ -2057,7 +2060,7 @@ void func_global_asm_806E61D0(void) {
     AAD_global_asm_806E61D0 *temp_v0;
 
     if (((D_global_asm_807FBB64 & 1) == 0) && ((cc_number_of_players < 2) || (D_global_asm_80750AB8 != 0))) {
-        temp_v0 = extra_player_info_pointer->unk104->RaaD;
+        temp_v0 = extra_player_info_pointer->unk104->additional_actor_data;
         temp_v0->unk4 = 0;
         temp_v0->unkAC &= ~4;
     }
