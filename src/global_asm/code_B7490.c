@@ -88,14 +88,14 @@ void func_global_asm_806B3420(void) {
 
 s32 func_global_asm_8072AB74(u8, f32, f32, s32, f32);
 
+extern s32 D_global_asm_8072073C;
+extern s32 D_global_asm_8071ABDC;
+
 extern f32 D_global_asm_8075B5C4;
 extern f32 D_global_asm_8075B5C8;
 extern f32 D_global_asm_8075B5CC;
 extern f32 D_global_asm_8075B5D0;
 extern f32 D_global_asm_8075B5D8;
-extern s32 D_global_asm_8072073C;
-extern s32 D_global_asm_8071ABDC;
-
 extern s32 D_global_asm_8075B5DC;
 
 void func_global_asm_8066E9EC(Actor*, s32, f32);

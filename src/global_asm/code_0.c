@@ -91,7 +91,7 @@ void func_global_asm_806F4778();
 void func_global_asm_8060098C(s32 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 
 void func_global_asm_80712BD4();
-void func_global_asm_805FB944(s32);
+void func_global_asm_805FB944(u8);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FB300.s")
 
@@ -112,8 +112,8 @@ void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FB944.s")
 
 void func_global_asm_805FB7E4();
-void func_global_asm_80610350(u8, u8);
-extern OSViMode *D_dk64_boot_8000EF20[];
+void func_global_asm_80610350(u8, u8, s32);
+extern OSViMode D_dk64_boot_8000EF20[];
 extern s16 D_global_asm_80744494;
 extern s16 D_global_asm_80744498;
 extern s16 D_global_asm_8074449C;
@@ -132,62 +132,56 @@ extern s16 D_global_asm_80744490;
 
 /*
 void func_global_asm_805FB944(u8 arg0) {
-    s32 sp18;
-    s16 temp_v1;
-    s32 temp_v0;
-    s32 temp_a0;
-    s32 var_a2;
     u8 var_a1 = 1;
+    s32 var_a2;
 
-    sp18 = 0;
+    var_a2 = 0;
     func_global_asm_806003EC(D_global_asm_8076A0AA);
-    var_a2 = sp18;
     if (current_map == MAP_NINTENDO_LOGO) {
         D_global_asm_8074450C = 2;
     } else {
         D_global_asm_8074450C = 1;
     }
     switch (is_cutscene_active) {
-    case 3:
-        var_a1 = 9;
-    case 4:
-        if (var_a1 == 1) {
-            var_a1 = 0xA;
-        }
-        D_global_asm_80744498 = 0;
-        D_global_asm_8074449C = 0;
-        D_global_asm_807444A0 = (D_global_asm_8074450C * 0x140) - 1;
-        D_global_asm_807444A4 = (D_global_asm_8074450C * 0xF0) - 1;
-        break;
-    default:
-        var_a2 = func_global_asm_8060042C(current_map);
-        var_a1 = 1;
-        if (D_global_asm_807FBB64 & 1) {
-            var_a1 = 7;
-        } else if (D_global_asm_807FBB64 & 0x1000) {
-            var_a1 = 6;
-        } else if (D_global_asm_807FBB64 & 0x104000) {
-            var_a1 = 8;
-        } else if (D_global_asm_807FBB64 & 0x80000) {
-            var_a1 = 4;
-        } else if (D_global_asm_807FBB64 & 0x2000) {
-            var_a1 = 5;
-        } else if (D_global_asm_807FBB64 & 0x04000000) {
-            var_a1 = 3;
-        } else if (D_global_asm_807FBB64 & 0x40000000) {
-            var_a1 = 2;
-        }
-        temp_v0 = D_global_asm_8074450C;
-        temp_v1 = temp_v0 * 0xA;
-        D_global_asm_80744498 = temp_v1;
-        D_global_asm_8074449C = temp_v1;
-        D_global_asm_807444A0 = (temp_v0 * 0x136) - 1;
-        D_global_asm_807444A4 = (temp_v0 * 0xE6) - 1;
-        break;
+        case 3:
+            var_a1 = 9;
+        case 4:
+            if (var_a1 == 1) {
+                var_a1 = 0xA;
+            }
+            D_global_asm_80744498 = 0;
+            D_global_asm_8074449C = 0;
+            D_global_asm_807444A0 = (D_global_asm_8074450C * 0x140) - 1;
+            D_global_asm_807444A4 = (D_global_asm_8074450C * 0xF0) - 1;
+            break;
+        default:
+            var_a2 = func_global_asm_8060042C(current_map);
+            var_a1 = 1;
+            if (D_global_asm_807FBB64 & 1) {
+                var_a1 = 7;
+            } else if (D_global_asm_807FBB64 & 0x1000) {
+                var_a1 = 6;
+            } else if (D_global_asm_807FBB64 & 0x104000) {
+                var_a1 = 8;
+            } else if (D_global_asm_807FBB64 & 0x80000) {
+                var_a1 = 4;
+            } else if (D_global_asm_807FBB64 & 0x2000) {
+                var_a1 = 5;
+            } else if (D_global_asm_807FBB64 & 0x04000000) {
+                var_a1 = 3;
+            } else if (D_global_asm_807FBB64 & 0x40000000) {
+                var_a1 = 2;
+            }
+            D_global_asm_80744498 = D_global_asm_8074450C * 0xA;
+            D_global_asm_8074449C = D_global_asm_8074450C * 0xA;
+            D_global_asm_807444A0 = (D_global_asm_8074450C * 0x136) - 1;
+            D_global_asm_807444A4 = (D_global_asm_8074450C * 0xE6) - 1;
+            break;
     }
-    func_global_asm_80610350(arg0, var_a1);
+    func_global_asm_80610350(arg0, var_a1, var_a2);
     if (D_global_asm_807445A4 == 0) {
-        osViSetMode(&D_dk64_boot_8000EF20[D_global_asm_80744584[osTvType][D_global_asm_8074450C]]);
+        s32 index = D_global_asm_80744584[osTvType][D_global_asm_8074450C];
+        osViSetMode(&D_dk64_boot_8000EF20[index]);
         if (D_global_asm_807445A0 == 0) {
             osViBlack(1U);
         }
@@ -202,9 +196,8 @@ void func_global_asm_805FB944(u8 arg0) {
     osViSetSpecialFeatures(0x42U);
     D_global_asm_80744490 = D_global_asm_8074450C * 0x140;
     D_global_asm_80744494 = D_global_asm_8074450C * 0xF0;
-    temp_a0 = D_global_asm_8074450C * 0x1E;
-    D_global_asm_807444AC = D_global_asm_8074449C + temp_a0;
-    D_global_asm_807444B0 = D_global_asm_807444A4 - temp_a0;
+    D_global_asm_807444AC = D_global_asm_8074449C + (D_global_asm_8074450C * 0x1E);
+    D_global_asm_807444B0 = D_global_asm_807444A4 - (D_global_asm_8074450C * 0x1E);
     D_global_asm_807444A8 = D_global_asm_8074449C;
     D_global_asm_807444B4 = D_global_asm_807444A4;
 }
@@ -458,15 +451,11 @@ void func_global_asm_805FC2B0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FC668.s")
 
-// regalloc, rodata?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FC98C.s")
-
 extern OSTime D_global_asm_807445B8;
 extern OSTime D_global_asm_807445C0;
 extern u32 D_global_asm_80750AB0;
 
-/*
-s32 func_global_asm_805FC98C(void) {
+u32 func_global_asm_805FC98C(void) {
     OSTime sp18;
     OSTime temp_t8;
     u32 temp_t7;
@@ -477,9 +466,8 @@ s32 func_global_asm_805FC98C(void) {
     if (global_properties_bitfield & 2) {
         temp_t8 = temp_t8 - currentTime + D_global_asm_807445C0;
     }
-    return func_dk64_boot_80005818(func_dk64_boot_80005818(func_dk64_boot_80005918(temp_t8, 0x40), 3000), 1000000) + D_global_asm_80750AB0;
+    return D_global_asm_80750AB0 + (u32)func_dk64_boot_80005818(func_dk64_boot_80005818(func_dk64_boot_80005918(temp_t8, 0x40), 3000), 1000000);
 }
-*/
 
 u8 func_global_asm_805FCA64(void) { // getCutsceneBarState()
     return !(D_global_asm_8076A0B1 & 0x10) && !D_global_asm_8076A0B3;
@@ -509,7 +497,7 @@ Gfx *func_global_asm_805FD030(Gfx *dl) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FD088.s")
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FE398.s")
 
 extern s32 D_global_asm_80744470[];

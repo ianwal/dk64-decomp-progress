@@ -750,10 +750,8 @@ typedef struct menu_additional_actor_data {
 } MenuAdditionalActorData;
 
 typedef struct player_additional_actor_data {
-    union {
-        s32 unk0; // TODO: May be s16 (see func_global_asm_806CF580), but changing that causes some matching functions to break
-        s16 unk0_s16[2];
-    };
+    s16 unk0; // Used
+    s16 unk2;
     f32 unk4;
     s16 unk8; // Used
     s16 unkA; // Used, Actor->y_rotation copied here

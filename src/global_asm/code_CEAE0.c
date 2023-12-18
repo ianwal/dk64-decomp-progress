@@ -141,7 +141,6 @@ extern f32 D_global_asm_8075CCE0;// = 6.283185482f;
 */
 // end rodata
 
-
 extern s32 D_global_asm_807FBB68;
 extern Struct807FD568 *D_global_asm_807FD568; // TODO: Unknown struct
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
@@ -168,7 +167,7 @@ void func_global_asm_806CFECC(void);
 void func_global_asm_806D2378();
 void func_global_asm_806CC948();
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
-u8 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
+s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
 void func_global_asm_806DF494(s16*, s16, s16);
 u32 func_global_asm_806119A0(void);
@@ -954,8 +953,105 @@ s16 func_global_asm_806CD988(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CDD24.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CE174.s")
+void func_global_asm_80613AF8(Actor*, s32, f32, f32);
+s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
+void func_global_asm_80613A50(Actor*, s32);
+
+s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s16 sp36;
+    s32 unk30;
+    s16 sp2E;
+    s16 sp2C;
+    f32 var_f0;
+
+    sp36 = arg0->control_state;
+    sp2E = extra_player_info_pointer->unk4C;
+    sp2C = func_global_asm_806CD9A0(arg0, arg1, arg2, extra_player_info_pointer->unk4C, D_global_asm_807FD584);
+    arg0->y_velocity = 0.0f;
+    if (sp2E < 0) {
+        func_global_asm_806D03BC();
+    }
+    if (sp2E != sp2C) {
+        switch (sp2C) {
+            case 0:
+                func_global_asm_80614E78(arg0, 0x51);
+                func_global_asm_80614D00(arg0, 1.0f, 0.0f);
+                sp36 = 0x5D;
+                break;
+            case 1:
+                func_global_asm_80614EBC(arg0, 0x23);
+                func_global_asm_80614D00(arg0, 1.0f, 0.0f);
+                sp36 = 0x5D;
+                break;
+            case 3:
+                func_global_asm_80614E78(arg0, 0x57);
+                func_global_asm_80613AF8(arg0, 0x5C, 0, 6.0f);
+                if (sp2E == 4 || sp2E == 5) {
+                    func_global_asm_80613A50(arg0, 2);
+                }
+                sp36 = 0x5E;
+                break;
+            case 4:
+                func_global_asm_80614E78(arg0, 0x56);
+                func_global_asm_80613AF8(arg0, 0x58, 0, 6.0f);
+                if (sp2E == 3) {
+                    switch (current_character_index[cc_player_index]) {
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                            func_global_asm_80613A50(arg0, 4);
+                            break;
+                    }
+                }
+                if (sp2E == 5) {
+                    func_global_asm_80613A50(arg0, 0xA);
+                }
+                sp36 = 0x5E;
+                break;
+            case 5:
+                func_global_asm_80614E78(arg0, 0x55);
+                func_global_asm_80613AF8(arg0, 0x60, 0, 6.0f);
+                switch (current_character_index[cc_player_index]) {
+                    case 4:
+                    case 5:
+                        if (sp2E == 3) {
+                            func_global_asm_80613A50(arg0, 8);
+                        }
+                        break;
+                    default:
+                        if ((sp2E == 3) || (sp2E == 4)) {
+                            func_global_asm_80613A50(arg0, 0);
+                        }
+                        break;
+
+                }
+                sp36 = 0x5E;
+                break;
+            case 6:
+                func_global_asm_80614E78(arg0, 0x58);
+                func_global_asm_80614D90(arg0);
+                sp36 = 0x1F;
+                current_actor_pointer->unk9C = current_actor_pointer->y_position;
+                break;
+        }
+        extra_player_info_pointer->unk4C = sp2C;
+    }
+    if (extra_player_info_pointer->unk4C >= 3) {
+        var_f0 = arg0->unkB8;
+        var_f0 *= 0.025;
+        if (extra_player_info_pointer->unk4C == 5) {
+            var_f0 *= 0.6;
+        }
+        if (var_f0 > 1.25f) {
+            var_f0 -= ((var_f0 - 1.25f) * 0.4);
+        }
+        if (arg0->animation_state->unk0->unk24 != 0.0f) {
+            func_global_asm_80614D00(arg0, var_f0, 2.0f);
+        }
+    }
+    return sp36;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CE4E4.s")
@@ -1239,7 +1335,7 @@ void func_global_asm_806CF580(void) {
         extra_player_info_pointer->unkD0 = object_timer;
     }
     if (current_character_index[cc_player_index] == 1) {
-        if ((current_actor_pointer->control_state == 0x36) && (extra_player_info_pointer->unk0_s16[0] != 0x36)) {
+        if ((current_actor_pointer->control_state == 0x36) && (extra_player_info_pointer->unk0 != 0x36)) {
             func_global_asm_806883F4(current_actor_pointer, 1, 0, 6.0f);
         }
         if (current_actor_pointer->control_state == 0x36) {
@@ -1257,7 +1353,7 @@ void func_global_asm_806CF580(void) {
             func_global_asm_8068842C(current_actor_pointer, 1, 2);
         }
         if (current_actor_pointer->control_state != 0x36) {
-            if (extra_player_info_pointer->unk0_s16[0] == 0x36) {
+            if (extra_player_info_pointer->unk0 == 0x36) {
                 extra_player_info_pointer->unk84 = 0;
             }
         }
@@ -2429,6 +2525,10 @@ void func_global_asm_806D2A14(s16 arg0) {
     }
 }
 
+typedef struct {
+    PlayerAdditionalActorData *unk0;
+} AAD_806D2AA0;
+
 void func_global_asm_806D2AA0(s16 arg0) {
     func_global_asm_806DF6D4(1);
     if (current_actor_pointer->control_state_progress < 6) {
@@ -2441,7 +2541,7 @@ void func_global_asm_806D2AA0(s16 arg0) {
     if (current_actor_pointer->control_state_progress == 2) {
         spawnActor(ACTOR_PICTURE, 0x8D);
         extra_player_info_pointer->vehicle_actor_pointer = last_spawned_actor;
-        last_spawned_actor->PaaD->unk0 = extra_player_info_pointer;
+        ((AAD_806D2AA0*)last_spawned_actor->additional_actor_data)->unk0 = extra_player_info_pointer;
         extra_player_info_pointer->unk1F0 |= 0x8000;
     }
     renderActor(current_actor_pointer, 0);
