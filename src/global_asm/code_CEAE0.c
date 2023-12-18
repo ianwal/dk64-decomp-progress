@@ -1323,12 +1323,8 @@ void func_global_asm_806CEE64(f32 arg0) {
     }
 }
 
-// stack, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CEED8.s")
-
 void func_global_asm_806CF2EC(s32*, s32*);
 
-/*
 void func_global_asm_806CEED8(void) {
     f32 sp44; // 44
     f32 sp40; // 40
@@ -1336,17 +1332,18 @@ void func_global_asm_806CEED8(void) {
     f32 sp38; // 38
     f32 sp34; // 34
     f32 sp30; // 30
-    s32 sp20; // 2C // TODO: Needs to move to sp20
+    f32 d; // 2C
     f32 sp28; // 28
     s32 sp24; // 24
+    s32 sp20; // 20
 
     func_global_asm_806CF2EC(&sp24, &sp20);
     func_global_asm_80671C0C(current_actor_pointer, sp24, &sp40, &sp38, &sp30);
     func_global_asm_80671C0C(current_actor_pointer, sp20, &sp44, &sp3C, &sp34);
     sp28 = sp3C - sp38;
-    extra_player_info_pointer->unk1BC = ((0.0 - (func_global_asm_80611BB4(sp28, sqrtf(((sp34 - sp30) * (sp34 - sp30)) + ((sp44 - sp40) * (sp44 - sp40)))) * D_global_asm_8075CBE0)) + D_global_asm_8075CBE8);
+    d = sqrtf(((sp34 - sp30) * (sp34 - sp30)) + ((sp44 - sp40) * (sp44 - sp40)));
+    extra_player_info_pointer->unk1BC = ((0.0 - (func_global_asm_80611BB4(sp28, d) * 57.29577637f)) + 270.0);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CEFBC.s")
 
