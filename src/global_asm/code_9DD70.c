@@ -1,11 +1,43 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// rodata
+// const f64 D_global_asm_8075A2D0 = 3.14159274101257324;
+// const f64 D_global_asm_8075A2D8 = 4095.0;
+// const f64 D_global_asm_8075A2E0 = 360.0;
+// const f64 D_global_asm_8075A2E8 = 4095.0;
+// const f64 D_global_asm_8075A2F0 = 360.0;
+// const f64 D_global_asm_8075A2F8 = 843.0;
+// const f64 D_global_asm_8075A300 = 843.0;
+// const f64 D_global_asm_8075A308 = 0.1;
+// const f32 D_global_asm_8075A310 = 1347.0f;
+// const f32 D_global_asm_8075A314 = 1347.0f;
+// const f64 D_global_asm_8075A318 = 0.05;
+// const f64 D_global_asm_8075A320 = 0.3;
+// const f32 D_global_asm_8075A328 = 0.6f;
+// const f32 D_global_asm_8075A340 = 99999.0f;
+// const f64 D_global_asm_8075A348 = 0.15;
+// const f64 D_global_asm_8075A350 = 3242.0;
+// const f64 D_global_asm_8075A358 = 252.0;
+// const f64 D_global_asm_8075A360 = 3842.0;
+// const f64 D_global_asm_8075A368 = 852.0;
+// const f64 D_global_asm_8075A3A0 = 4095.0;
+// const f64 D_global_asm_8075A3A8 = 360.0;
+// const f64 D_global_asm_8075A3B0 = 0.2;
+// const f64 D_global_asm_8075A3B8 = 250.0;
+// const f32 D_global_asm_8075A3C0 = 2500.0f;
+// const f64 D_global_asm_8075A3C8 = 4095.0;
+// const f64 D_global_asm_8075A3D0 = 360.0;
+// const f64 D_global_asm_8075A3D8 = 360.0;
+// const f64 D_global_asm_8075A3E0 = 360.0;
+// const f64 D_global_asm_8075A3E8 = 90.0;
+// const f64 D_global_asm_8075A3F0 = 360.0;
+// const f64 D_global_asm_8075A3F8 = 0.15;
+// const f64 D_global_asm_8075A400 = 18000.0;
+// const f64 D_global_asm_8075A408 = 0.9;
 
 extern s8 D_global_asm_807F6951;
 extern s8 D_global_asm_807F6950;
-
-extern f64 D_global_asm_8075A2D0;
 
 void func_global_asm_80699070(s16 *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 temp_f0;
@@ -14,7 +46,7 @@ void func_global_asm_80699070(s16 *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4
     *arg1 = func_global_asm_80665DE0(arg2, arg4, arg5, arg7);
     temp_f0 = arg5 - arg2;
     temp_f2 = arg7 - arg4;
-    *arg0 = (func_global_asm_80611BB4(arg6 - arg3, sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2))) * 2048.0) / D_global_asm_8075A2D0;
+    *arg0 = (func_global_asm_80611BB4(arg6 - arg3, sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2))) * 2048.0) / 3.14159274101257324;
 }
 
 typedef struct {
@@ -98,38 +130,32 @@ s32 func_global_asm_8069B85C(void) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069B908.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069CD9C.s")
-
 void func_global_asm_8069B908();
-extern f64 D_global_asm_8075A3F8;
-extern f64 D_global_asm_8075A400;
 
-/*
-// TODO: Just some float nonsense to sort out
 void func_global_asm_8069CD9C(void) {
-    f32 dx, dy, dz;
+    f32 dz, dx, dy;
     f32 phi_f0;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        phi_f0 = (current_actor_pointer->animation_state->scale_x / D_global_asm_8075A3F8) - 1.0;
+        phi_f0 = (current_actor_pointer->animation_state->scale_x / 0.15);
+        phi_f0 -= 1.0;
         if (phi_f0 < 0.0) {
             phi_f0 = 0.0f;
         }
-        current_actor_pointer->unk130 = phi_f0 * 80;
-        current_actor_pointer->unk131 = phi_f0 * 80;
+        current_actor_pointer->unk130 = 80 * phi_f0;
+        current_actor_pointer->unk131 = 80 * phi_f0;
         current_actor_pointer->draw_distance = 700;
     }
     dz = current_actor_pointer->z_position - character_change_array->look_at_eye_z;
     dx = current_actor_pointer->x_position - character_change_array->look_at_eye_x;
     dy = current_actor_pointer->y_position - character_change_array->look_at_eye_y;
-    if (((dx * dx) + (dy * dy) + (dz * dz)) < D_global_asm_8075A400) {
+    if (((dz * dz) + ((dx * dx) + (dy * dy))) < 18000.0) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
     } else {
         current_actor_pointer->object_properties_bitfield &= ~0x400;
     }
     func_global_asm_8069B908();
 }
-*/
 
 void func_global_asm_8069CF54(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
