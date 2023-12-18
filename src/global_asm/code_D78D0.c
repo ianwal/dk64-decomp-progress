@@ -934,8 +934,47 @@ void func_global_asm_806D4A70(void) {
 }
 */
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D4C7C.s")
+extern f32 D_global_asm_80753620[];
+extern f32 D_global_asm_8075363C[];
+extern s16 D_global_asm_807FD584;
+
+void func_global_asm_806D4C7C(void) {
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
+            func_global_asm_806DF6D4(0x2C);
+            func_global_asm_806CC8B8();
+            break;
+        case 1:
+            current_actor_pointer->y_velocity = extra_player_info_pointer->unk54;
+            current_actor_pointer->y_acceleration = D_global_asm_8075363C[D_global_asm_807FD584];
+            current_actor_pointer->control_state_progress += 1;
+            func_global_asm_806D3FA0();
+            func_global_asm_806DF6D4(0x2B);
+            extra_player_info_pointer->unk38 = D_global_asm_80753620[D_global_asm_807FD584];
+            func_global_asm_806CC8B8();
+            break;
+        case 2:
+            func_global_asm_806CC8B8();
+            func_global_asm_806DF6D4(0x2B);
+            func_global_asm_806CFDEC();
+            func_global_asm_806D3608();
+            break;
+        case 3:
+            func_global_asm_806DF6D4(0x2B);
+            func_global_asm_806CFE7C();
+            func_global_asm_806CC8B8();
+            break;
+        case 4:
+            func_global_asm_806DF6D4(0x30);
+            func_global_asm_806CFE7C();
+            func_global_asm_806CC8B8();
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+}
+
+
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D4DE4.s")

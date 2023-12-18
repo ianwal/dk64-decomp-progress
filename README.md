@@ -44,11 +44,13 @@ sudo apt-get update && \
     python3-pip \
     unzip \
     wget \
-    libssl-dev
+    libssl-dev \
+    vbindiff
 
-python3 -m pip install \
+sudo python3 -m pip install \
     capstone pyyaml pylibyaml pycparser \
     colorama ansiwrap watchdog python-Levenshtein cxxfilt \
     python-ranges \
-    pypng anybadge
+    pypng anybadge \
+    tqdm intervaltree n64img spimdisasm
 ```
