@@ -1,14 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    u8 unk4;
-} Struct807FD568;
-
 extern u8 D_global_asm_80750AB8;
 extern s32 D_global_asm_80750FF0;
 
@@ -188,7 +180,6 @@ extern s32 D_global_asm_80767CC0;
 extern s32 D_global_asm_807FBB68;
 extern u8 D_global_asm_807FBB8C;
 extern u8 D_global_asm_807FC8B9;
-extern Struct807FD568 *D_global_asm_807FD568; // TODO: Unknown struct
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern f32 D_global_asm_807FD888;
 
@@ -1189,7 +1180,7 @@ void func_global_asm_806E2DE8(void) {
 }
 
 void func_global_asm_806E2E6C() {
-    if (D_global_asm_807FD568->unk2 & 1) {
+    if (D_global_asm_807FD568->weapon & 1) {
         func_global_asm_806E225C(0, 0);
     }
 }
@@ -1767,7 +1758,7 @@ void func_global_asm_806E4E88(void) {
             }
             extra_player_info_pointer->unk8C = 0;
             func_global_asm_806EAB44(current_actor_pointer, 0);
-        } else if (!func_global_asm_80714608(0) && !(D_global_asm_807FBB64 & 0x80000200) && (D_global_asm_807FD568->unk2 & 1)) {
+        } else if (!func_global_asm_80714608(0) && !(D_global_asm_807FBB64 & 0x80000200) && (D_global_asm_807FD568->weapon & 1)) {
             if (((extra_player_info_pointer->unk1F0 & 0x30) == 0) && (character_change_array[cc_player_index].unk2C0 == 1)) {
                 func_global_asm_806DF44C(current_actor_pointer, extra_player_info_pointer, 1);
             }
@@ -1788,7 +1779,7 @@ void func_global_asm_806E5044(void) {
             }
             extra_player_info_pointer->unk8C = 0;
             func_global_asm_806EAB44(current_actor_pointer, 0);
-        } else if (!func_global_asm_80714608(0) && !(D_global_asm_807FBB64 & 0x200) && (D_global_asm_807FD568->unk2 & 1) && (character_change_array[cc_player_index].unk2C0 == 1)) {
+        } else if (!func_global_asm_80714608(0) && !(D_global_asm_807FBB64 & 0x200) && (D_global_asm_807FD568->weapon & 1) && (character_change_array[cc_player_index].unk2C0 == 1)) {
             func_global_asm_806DF44C(current_actor_pointer, extra_player_info_pointer, 1);
             character_change_array[cc_player_index].fov_y = 45.0f;
         }
@@ -1833,7 +1824,7 @@ void func_global_asm_806E52D0(void) {
 
     if ((D_global_asm_807FD610[cc_player_index].unk2C & U_CBUTTONS)
         && (object_timer >= 3U)
-        && (D_global_asm_807FD568->unk4 & 1)
+        && (D_global_asm_807FD568->instrument & 1)
         && !(D_global_asm_807FBB64 & 0x4000)
         && !(D_global_asm_807FBB68 & 1)
         && (character_change_array[cc_player_index].unk2C0 != 2)
@@ -1957,12 +1948,12 @@ int func_global_asm_806E5C74(void) {
     return D_global_asm_807FD610[cc_player_index].unk2C & Z_TRIG
         && extra_player_info_pointer->unk1CC * 66.0 < phi_f0
         && current_character_index[cc_player_index] != 6
-        && D_global_asm_807FD568->unk1 != 0;
+        && D_global_asm_807FD568->simian_slam != 0;
 }
 
 void func_global_asm_806E5D60(void) {
     if (func_global_asm_806E5C74()) {
-        switch (D_global_asm_807FD568->unk1) {
+        switch (D_global_asm_807FD568->simian_slam) {
             case 2:
                 func_global_asm_80614E78(current_actor_pointer, 0x17);
                 func_global_asm_80613AF8(current_actor_pointer, 0x18, 0, 3.0f);
@@ -2002,7 +1993,7 @@ void func_global_asm_806E5EA8() {
 
 void func_global_asm_806E5ED4(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & L_CBUTTONS)
-        && (D_global_asm_807FD568->unk2 & 1)
+        && (D_global_asm_807FD568->weapon & 1)
         && (character_change_array[cc_player_index].unk2C0 == 1)
         && !(extra_player_info_pointer->unk1F0 & 0x30)
         && !func_global_asm_80714608(0)) {
@@ -2012,7 +2003,7 @@ void func_global_asm_806E5ED4(void) {
 
 void func_global_asm_806E5FA0(void) {
     if (((D_global_asm_807FD610[cc_player_index].unk2C & L_CBUTTONS))
-        && (D_global_asm_807FD568->unk2 & 1)
+        && (D_global_asm_807FD568->weapon & 1)
         && !(D_global_asm_807FBB64 & 0x200)
         && (character_change_array[cc_player_index].unk2C0 == 1)
         && !(extra_player_info_pointer->unk1F0 & 0x30)

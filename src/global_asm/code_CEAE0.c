@@ -38,14 +38,6 @@ typedef struct {
     s32 unk4;
 } GlobalASMStruct63;
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    u8 unk4;
-} Struct807FD568;
-
 // TODO: Add to aaD union
 typedef struct {
     u16 unk0;
@@ -142,7 +134,6 @@ extern f32 D_global_asm_8075CCE0;// = 6.283185482f;
 // end rodata
 
 extern s32 D_global_asm_807FBB68;
-extern Struct807FD568 *D_global_asm_807FD568; // TODO: Unknown struct
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern u8 D_global_asm_807FD586;
 
@@ -2669,7 +2660,7 @@ void func_global_asm_806D2904(void) {
 
 void func_global_asm_806D2954(s16 arg0) {
     if ((extra_player_info_pointer->unk8C != 0) && func_global_asm_805FCA64()) {
-        if (D_global_asm_807FD568->unk2 == 7) {
+        if (D_global_asm_807FD568->weapon == 7) {
             arg0 = 0xF;
             func_global_asm_8068C350(&func_global_asm_806FF75C, current_actor_pointer, 5);
         } else {

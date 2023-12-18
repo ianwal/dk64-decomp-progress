@@ -147,16 +147,6 @@ Gfx *func_global_asm_806FEF7C(Gfx *dl, Actor *arg1) {
 
 s32 func_global_asm_80690F30(s32, s32 *, Actor*, s32, s32, s32, s32 *, s32 *, s32 *);
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    u8 unk4;
-} Struct807FD568;
-
-extern Struct807FD568 *D_global_asm_807FD568; // TODO: Unknown struct
-
 Gfx *func_global_asm_806FF01C(Gfx *dl, Actor *arg1) {
     u8 playerIndex;
     s32 sp58;
@@ -166,7 +156,7 @@ Gfx *func_global_asm_806FF01C(Gfx *dl, Actor *arg1) {
 
     playerIndex = arg1->PaaD->unk1A4;
     dl = func_global_asm_806FEDB0(dl, playerIndex);
-    if (D_global_asm_807FD568->unk2 & 2 && func_global_asm_806F8AD4(3, playerIndex) != 0 && func_global_asm_80690F30(2, &sp58, arg1, 1, 0, 0, &sp54, &sp50, &sp4C) != 0) {
+    if (D_global_asm_807FD568->weapon & 2 && func_global_asm_806F8AD4(3, playerIndex) != 0 && func_global_asm_80690F30(2, &sp58, arg1, 1, 0, 0, &sp54, &sp50, &sp4C) != 0) {
         gDPSetPrimColor(dl++, 0, 0, 0x00, 0xC8, 0x00, 0xFF);
     } else {
         gDPSetPrimColor(dl++, 0, 0, 0xC8, 0x00, 0x00, 0xFF);

@@ -1373,7 +1373,6 @@ void func_global_asm_8067B01C(void) {
 
 extern s32 D_global_asm_807ECDEC;
 extern u16 D_global_asm_807ECDF0;
-extern CharacterProgress *D_global_asm_807FD568;
 extern s16 D_global_asm_807FD584;
 
 extern const Struct8075C410 D_global_asm_8075C410[];

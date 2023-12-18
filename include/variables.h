@@ -30,6 +30,7 @@ extern s32 object_timer;
 extern u8 is_autowalking;
 extern ActorSpawner *actor_spawner_pointer;
 extern PlayerProgress D_global_asm_807FC950[4];
+extern CharacterProgress *D_global_asm_807FD568;
 extern u16 enemies_killed;
 extern Chunk *chunk_array_pointer;
 extern u8 current_file;

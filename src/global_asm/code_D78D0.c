@@ -440,7 +440,7 @@ void func_global_asm_806D3530(void) {
 }
 
 void func_global_asm_806D3608(void) {
-    f32 temp_f0 = current_actor_pointer->animation_state->scale_y / 0.149999999999999994;
+    f32 temp_f0 = current_actor_pointer->animation_state->scale_y / 0.15;
     if ((D_global_asm_807FBB64 << 0xD) >= 0) {
         if (!func_global_asm_8061CB50()) {
             if (current_map == MAP_AZTEC_BEETLE_RACE) {
@@ -1027,8 +1027,54 @@ void func_global_asm_806D4DE4(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D5008.s")
+void func_global_asm_806D5008(void) {
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            current_actor_pointer->unkB8 = 0.0f;
+            current_actor_pointer->y_velocity = 0.0f;
+            func_global_asm_806DF6D4(0x2E);
+            func_global_asm_806CC970();
+            break;
+        case 1:
+            func_global_asm_806DF6D4(0x2E);
+            current_actor_pointer->y_acceleration = -30.0f;
+            current_actor_pointer->unkB8 = 0.0f;
+            current_actor_pointer->y_velocity = -100.0f;
+            current_actor_pointer->control_state_progress += 1;
+            func_global_asm_806CC948();
+            break;
+        case 2:
+            func_global_asm_806DF6D4(0x2E);
+            func_global_asm_806D3608();
+            func_global_asm_806CC948();
+            break;
+        case 3:
+            func_global_asm_806DF6D4(0x2E);
+            if (!(current_actor_pointer->unk6A & 4)) {
+                func_global_asm_80608528(current_actor_pointer, 0x96, 0xFF, 0x7F, 0x19);
+                func_global_asm_80685708(current_actor_pointer, D_global_asm_807FD568->simian_slam);
+                func_global_asm_8061F0B0(extra_player_info_pointer->unk104, 0x14, (D_global_asm_807FD568->simian_slam * 5) & 0xFFFF);
+            }
+            func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
+            current_actor_pointer->control_state_progress += 1;
+            func_global_asm_806CC948();
+            break;
+        case 4:
+            func_global_asm_806DF6D4(0x2E);
+            func_global_asm_806CC948();
+            break;
+        case 5:
+            func_global_asm_806DF6D4(0x2F);
+            current_actor_pointer->control_state_progress += 1;
+            func_global_asm_806CC8B8();
+            break;
+        case 6:
+            func_global_asm_806DF6D4(0x2F);
+            func_global_asm_806CC8B8();
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 void func_global_asm_806D5218(void) {
     switch (current_actor_pointer->control_state_progress) {
@@ -1054,7 +1100,7 @@ void func_global_asm_806D5300(void) {
     s32 phi_s1;
 
     if ((current_actor_pointer->control_state_progress < 2) || (D_global_asm_80750FD8 < current_actor_pointer->unkB8)) {
-        temp_f20 = current_actor_pointer->animation_state->scale_y / 0.149999999999999994;
+        temp_f20 = current_actor_pointer->animation_state->scale_y / 0.15;
         func_global_asm_80671C0C(current_actor_pointer, 7, &sp90, &sp8C, &sp88);
         for (phi_s1 = 0; phi_s1 < D_global_asm_80750FD4; phi_s1++) {
             temp_f24 = (((rand() >> 0xF) % 10000) % D_global_asm_80750FC8) - (D_global_asm_80750FC8 / 2);
@@ -1540,10 +1586,6 @@ void func_global_asm_806D72D4(void) {
 }
 
 void func_global_asm_806D7510(void) {
-    f32 temp_f0;
-    f32 temp_f2;
-    u8 temp_v1;
-
     current_actor_pointer->unk64 |= 0x200;
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -1588,9 +1630,11 @@ void func_global_asm_806D7704(void) {
                 extra_player_info_pointer->unk1A3 = 0;
             }
             extra_player_info_pointer->unkA = current_actor_pointer->unkEE;
-            func_global_asm_806DF494(&current_actor_pointer->y_rotation,
-                          (current_actor_pointer->unkEE + 0x800) & 0xFFF,
-                          (extra_player_info_pointer->unk48 << 0x1));
+            func_global_asm_806DF494(
+                &current_actor_pointer->y_rotation,
+                (current_actor_pointer->unkEE + 0x800) & 0xFFF,
+                extra_player_info_pointer->unk48 << 0x1
+            );
             break;
         case 1:
             func_global_asm_806DF6D4(3);
@@ -1746,10 +1790,12 @@ void func_global_asm_806D7F48(void) {
 
     func_global_asm_806CBE90();
     if (!func_global_asm_806DF6D4(0x46)) {
-        temp_v0 = func_global_asm_806CE4E4(current_actor_pointer,
-                                current_actor_pointer->unkB8,
-                                extra_player_info_pointer->unk4,
-                                1);
+        temp_v0 = func_global_asm_806CE4E4(
+            current_actor_pointer,
+            current_actor_pointer->unkB8,
+            extra_player_info_pointer->unk4,
+            1
+        );
 
         if (temp_v0 != 0x40) {
             current_actor_pointer->control_state = temp_v0;
@@ -1865,6 +1911,7 @@ int func_global_asm_806D850C(void) {
     return FALSE;
 }
 
+// close, float
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D87FC.s")
 
 extern f32 D_global_asm_807539A4[];
@@ -2768,6 +2815,7 @@ void func_global_asm_806DD874(void) {
     renderActor(current_actor_pointer, 0);
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DDAB0.s")
 
 extern f32 D_global_asm_80753D70[];
@@ -2777,7 +2825,6 @@ extern s16 D_global_asm_80753DA8[];
 extern s16 D_global_asm_80753DB8[];
 
 /*
-// TODO: Very doable, made good progress
 void func_global_asm_806DDAB0(void) {
     f32 sp64;
     u8 sp62;
@@ -2974,9 +3021,11 @@ void func_global_asm_806DED44(void) {
         case 1:
             global_properties_bitfield &= 0xFFFEFFCF;
             spawnActor(ACTOR_FAIRY_REFILL, 0x3D);
-            func_global_asm_8067B238(last_spawned_actor,
-                          current_actor_pointer,
-                          current_actor_pointer->animation_state->scale_y * 2);
+            func_global_asm_8067B238(
+                last_spawned_actor,
+                current_actor_pointer,
+                current_actor_pointer->animation_state->scale_y * 2
+            );
             last_spawned_actor->object_properties_bitfield |= 0x40000000;
             last_spawned_actor->y_rotation += 0x800;
             last_spawned_actor->y_rotation &= 0xFFF;
