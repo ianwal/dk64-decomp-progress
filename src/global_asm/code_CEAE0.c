@@ -183,6 +183,10 @@ void func_global_asm_807149FC(s32);
 s16 func_global_asm_806CC190(s16, s16, f32);
 void func_global_asm_806CEFBC(Struct806CEFBC*); // TODO: Proper signature, just for function pointer
 void func_global_asm_806CF138(Struct806CF138 *arg0);
+void func_global_asm_80613AF8(Actor*, s32, f32, f32);
+s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
+void func_global_asm_80613A50(Actor*, s32);
+s32 func_global_asm_806CE7A0(Actor*, f32, f32, s16, s16);
 
 void func_global_asm_806C9DE0(void) {
     func_global_asm_806CA5F8(0);
@@ -953,13 +957,9 @@ s16 func_global_asm_806CD988(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CDD24.s")
 
-void func_global_asm_80613AF8(Actor*, s32, f32, f32);
-s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
-void func_global_asm_80613A50(Actor*, s32);
-
 s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     s16 sp36;
-    s32 unk30;
+    s32 pad30;
     s16 sp2E;
     s16 sp2C;
     f32 var_f0;
@@ -1052,16 +1052,12 @@ s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     return sp36;
 }
 
-s32 func_global_asm_806CE7A0(Actor*, f32, f32, s32, s16);
-
 s16 func_global_asm_806CE4E4(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     s16 sp36;
     s32 pad30;
     s16 sp2E;
     s16 sp2C;
     f32 var_f0;
-    s16 temp_a3_2;
-    s16 temp_v1;
 
     sp36 = arg0->control_state;
     sp2E = extra_player_info_pointer->unk4C;
@@ -1131,8 +1127,54 @@ s16 func_global_asm_806CE4E4(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     return sp36;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CE7A0.s")
+extern f32 D_global_asm_80753170[];
+extern f32 D_global_asm_807531C4[];
+extern f32 D_global_asm_807531E0[];
+
+s32 func_global_asm_806CE7A0(Actor *arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4) {
+    f32 var_f0;
+
+    var_f0 = MAX(arg1, arg2);
+    if ((arg0->unk6A | arg0->unk6C) & 1) {
+        switch (arg3) {
+            case 0:
+            case 1:
+            case 2:
+                if (arg2 != 0.0f) {
+                    if (arg2 < D_global_asm_807531C4[arg4]) {
+                        arg3 = 4;
+                    } else {
+                        arg3 = 5;
+                    }
+                }
+                break;
+            case 4:
+                if (arg2 < D_global_asm_80753170[arg4]) {
+                    arg3 = 0;
+                } else if (D_global_asm_807531C4[arg4] < arg2) {
+                    arg3 = 5;
+                }
+                break;
+            case 5:
+                if (var_f0 < D_global_asm_807531E0[arg4]) {
+                    arg3 = 4;
+                }
+                break;
+            default:
+                if (arg1 < D_global_asm_80753170[arg4]) {
+                    arg3 = 0;
+                } else if (arg1 < D_global_asm_807531E0[arg4]) {
+                    arg3 = 4;
+                } else {
+                    arg3 = 5;
+                }
+                break;
+        }
+    } else {
+        arg3 = 6;
+    }
+    return arg3;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CE928.s")
