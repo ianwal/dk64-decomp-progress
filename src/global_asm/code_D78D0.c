@@ -974,10 +974,61 @@ void func_global_asm_806D4C7C(void) {
     renderActor(current_actor_pointer, 0);
 }
 
+extern f32 D_global_asm_80753674[];
+extern f32 D_global_asm_80753690[];
+extern f32 D_global_asm_807536C8[];
 
-
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D4DE4.s")
+void func_global_asm_806D4DE4(void) {
+    func_global_asm_806CF878();
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
+            func_global_asm_806DF6D4(0x2C);
+            func_global_asm_806CC8B8();
+            break;
+        case 1:
+            current_actor_pointer->y_velocity = D_global_asm_80753674[D_global_asm_807FD584];
+            current_actor_pointer->y_acceleration = D_global_asm_80753690[D_global_asm_807FD584];
+            func_global_asm_806D3FA0();
+            current_actor_pointer->control_state_progress += 1;
+            func_global_asm_806DF6D4(0x2B);
+            func_global_asm_806CC8B8();
+            break;
+        case 2:
+            func_global_asm_806CC8B8();
+            func_global_asm_806DF6D4(0x2D);
+            func_global_asm_806D3608();
+            break;
+        case 3:
+            func_global_asm_806DF6D4(0x36);
+            func_global_asm_806CC8B8();
+            break;
+        case 4:
+            func_global_asm_806DF6D4(0x36);
+            func_global_asm_806CC8B8();
+            break;
+        case 5:
+            current_actor_pointer->y_velocity = extra_player_info_pointer->unk54;
+            current_actor_pointer->y_acceleration = D_global_asm_807536E4[D_global_asm_807FD584];
+            current_actor_pointer->control_state_progress++;
+            func_global_asm_806DF6D4(0x2B);
+            extra_player_info_pointer->unk38 = D_global_asm_807536C8[D_global_asm_807FD584];
+            func_global_asm_806CC8B8();
+            break;
+        case 6:
+            func_global_asm_806CC8B8();
+            func_global_asm_806DF6D4(0x2C);
+            func_global_asm_806CFDA8();
+            func_global_asm_806D3608();
+            break;
+        case 7:
+            func_global_asm_806DF6D4(0x30);
+            func_global_asm_806CFE7C();
+            func_global_asm_806CC8B8();
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D5008.s")

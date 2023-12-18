@@ -794,7 +794,7 @@ typedef struct player_additional_actor_data {
     s16 unk4E;
     s16 unk50; // Used
     s16 unk52;
-    f32 unk54;
+    f32 unk54; // Used, y velocity?
     s32 unk58; // Used, related to D_global_asm_80767CC0
     s32 unk5C;
     s32 unk60;
