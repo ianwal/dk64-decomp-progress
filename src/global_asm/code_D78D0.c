@@ -5,7 +5,7 @@ typedef struct BoulderAAD {
     u32 unk0;
     u32 unk4;
     u32 unk8;
-    u32 unkC;
+    Actor *unkC;
     Actor *unk10;
     u16 unk14;
     u16 unk16;
@@ -56,6 +56,11 @@ extern s16 D_global_asm_807534A8[];
 extern f32 D_global_asm_8075352C[];
 extern s16 D_global_asm_80753548[];
 extern f32 D_global_asm_80753604[];
+extern f32 D_global_asm_80753620[];
+extern f32 D_global_asm_8075363C[];
+extern f32 D_global_asm_80753674[];
+extern f32 D_global_asm_80753690[];
+extern f32 D_global_asm_807536C8[];
 extern f32 D_global_asm_807536E4[];
 extern f32 D_global_asm_80753738[];
 extern s16 D_global_asm_8075387C[];
@@ -934,10 +939,6 @@ void func_global_asm_806D4A70(void) {
 }
 */
 
-extern f32 D_global_asm_80753620[];
-extern f32 D_global_asm_8075363C[];
-extern s16 D_global_asm_807FD584;
-
 void func_global_asm_806D4C7C(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -973,10 +974,6 @@ void func_global_asm_806D4C7C(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-
-extern f32 D_global_asm_80753674[];
-extern f32 D_global_asm_80753690[];
-extern f32 D_global_asm_807536C8[];
 
 void func_global_asm_806D4DE4(void) {
     func_global_asm_806CF878();
@@ -2255,8 +2252,63 @@ void func_global_asm_806DA3E4(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DA4D8.s")
+void func_global_asm_806DA4D8(void) {
+    if ((func_global_asm_8067AF44(extra_player_info_pointer->unk1B0) == 0) || ((extra_player_info_pointer->unk1B0->unk54 != extra_player_info_pointer->unk1B4))) {
+        extra_player_info_pointer->unk1AC = NULL;
+        extra_player_info_pointer->unk1B0 = NULL;
+        func_global_asm_806CFF9C(current_actor_pointer);
+        func_global_asm_806CC8B8();
+        renderActor(current_actor_pointer, 0);
+        return;
+    }
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            current_actor_pointer->unkB8 = 0.0f;
+            extra_player_info_pointer->unk4 = 0.0f;
+            func_global_asm_806CEC04(extra_player_info_pointer->unk1B0);
+            current_actor_pointer->x_position += extra_player_info_pointer->unk78;
+            current_actor_pointer->z_position += extra_player_info_pointer->unk7C;
+            current_actor_pointer->y_rotation = extra_player_info_pointer->unk80;
+            current_actor_pointer->control_state_progress += 1;
+            break;
+        case 1:
+            current_actor_pointer->x_position += extra_player_info_pointer->unk78;
+            current_actor_pointer->z_position += extra_player_info_pointer->unk7C;
+            current_actor_pointer->y_rotation = extra_player_info_pointer->unk80;
+            break;
+        case 2:
+            extra_player_info_pointer->unk1AC = extra_player_info_pointer->unk1B0;
+            extra_player_info_pointer->unk1B8 = extra_player_info_pointer->unk1AC->unk58;
+            func_global_asm_80679200(extra_player_info_pointer->unk1AC, current_actor_pointer, 0x2000, 1, 0, NULL);
+            func_global_asm_806CEE64(0.4f);
+            func_global_asm_806CEED8();
+            current_actor_pointer->control_state_progress += 1;
+            break;
+        case 3:
+            func_global_asm_806DF6D4(5);
+            func_global_asm_806CEE64(0.4f);
+            func_global_asm_806CEED8();
+            break;
+        case 4:
+            func_global_asm_806DF6D4(5);
+            func_global_asm_8067A784(current_actor_pointer, extra_player_info_pointer->unk1AC, current_player->y_rotation, ((D_global_asm_807533B8[D_global_asm_807FD584] * 3.0) * current_actor_pointer->animation_state->scale[0]) / 0.15, 0);
+            current_actor_pointer->control_state_progress += 1;
+            break;
+        case 5:
+            func_global_asm_806DF6D4(5);
+            break;
+        case 6:
+            extra_player_info_pointer->unk1AC = extra_player_info_pointer->unk1B0;
+            extra_player_info_pointer->unk1B8 = extra_player_info_pointer->unk1AC->unk58;
+            func_global_asm_80679200(extra_player_info_pointer->unk1AC, current_actor_pointer, 0x2000, 1, 0, NULL);
+            func_global_asm_806CEE64(0.4f);
+            func_global_asm_806CEED8();
+            current_actor_pointer->control_state_progress = 3;
+            break;
+    }
+    func_global_asm_806CC8B8();
+    renderActor(current_actor_pointer, 0);
+}
 
 void func_global_asm_806DA7EC(void) {
     func_global_asm_806DF6D4(6);
@@ -2903,7 +2955,7 @@ void func_global_asm_806DECD4(void) {
 
 void func_global_asm_806DED44(void) {
     BoulderAAD *aaD;
-    s8 phi_a1;
+    s8 cutsceneIndex;
     s32 i;
 
     func_global_asm_806DF6D4(1);
@@ -2912,11 +2964,11 @@ void func_global_asm_806DED44(void) {
         case 0:
             // Have all fairies been photographed?
             if (func_global_asm_806F8EB4() == 20) {
-                phi_a1 = 0x1A;
+                cutsceneIndex = 0x1A;
             } else {
-                phi_a1 = 0x11;
+                cutsceneIndex = 0x11;
             }
-            playCutscene(current_actor_pointer, phi_a1, 5);
+            playCutscene(current_actor_pointer, cutsceneIndex, 5);
             current_actor_pointer->control_state_progress = 1;
             break;
         case 1:
@@ -2985,8 +3037,7 @@ void func_global_asm_806DF050(void) {
     current_actor_pointer->shadow_opacity -= current_actor_pointer->shadow_opacity < 4 ? current_actor_pointer->shadow_opacity : 4;
     if (current_actor_pointer->shadow_opacity == 0) {
         if (D_global_asm_80750AB8 == 0) {
-            // TODO: This is not ideal, conflicts with does_player_exist datatype
-            *(u8*)(&character_change_array[PaaD->unk1A4]) = 0;
+            character_change_array[PaaD->unk1A4].does_player_exist = 0;
         }
         current_actor_pointer->object_properties_bitfield &= -5;
     }
