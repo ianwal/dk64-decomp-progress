@@ -158,7 +158,7 @@ f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount
 void func_global_asm_806CEE64(f32);
 void func_global_asm_806CEED8(void);
 void func_global_asm_806CFD68(void);
-u8 func_global_asm_806CE928(Actor*, f32, f32, s32);
+s16 func_global_asm_806CE928(Actor*, f32, f32, s32);
 f32 func_global_asm_806DFFA0(f32, s16, s16);
 void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 func_global_asm_806DF6D4(s32 arg0);
@@ -959,10 +959,9 @@ s16 func_global_asm_806CD988(Actor *arg0) {
 
 s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     s16 sp36;
-    s32 pad30;
+    f32 var_f0;
     s16 sp2E;
     s16 sp2C;
-    f32 var_f0;
 
     sp36 = arg0->control_state;
     sp2E = extra_player_info_pointer->unk4C;
@@ -1054,10 +1053,9 @@ s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
 
 s16 func_global_asm_806CE4E4(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     s16 sp36;
-    s32 pad30;
+    f32 var_f0;
     s16 sp2E;
     s16 sp2C;
-    f32 var_f0;
 
     sp36 = arg0->control_state;
     sp2E = extra_player_info_pointer->unk4C;
@@ -1176,8 +1174,68 @@ s32 func_global_asm_806CE7A0(Actor *arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4
     return arg3;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CE928.s")
+s16 func_global_asm_806CE928(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s16 sp26;
+    f32 temp;
+    s16 sp1E;
+    s16 sp1C;
+
+    sp26 = arg0->control_state;
+    sp1E = extra_player_info_pointer->unk4C;
+    sp1C = func_global_asm_806CEB44(arg1, arg2);
+    if (sp1E < 0) {
+        func_global_asm_806D03BC();
+    }
+    if (sp1E != sp1C) {
+        switch (sp1C) {
+            case 0:
+                switch ((u32)extra_player_info_pointer->unk1AC->unk58) {
+                    case 0x3D:
+                    case 0x3F:
+                    case 0x40:
+                    case 0x41:
+                    case 0x42:
+                    case 0x55:
+                    case 0x82:
+                        func_global_asm_80614EBC(current_player, 0x1C9);
+                        break;
+                    default:
+                        func_global_asm_80614E78(arg0, 0x2E);
+                        break;
+                }
+                extra_player_info_pointer->unk4C = 0;
+                sp26 = 0x48;
+                break;
+            case 1:
+                switch ((u32)extra_player_info_pointer->unk1AC->unk58) {
+                    case 0x3D:
+                    case 0x3F:
+                    case 0x40:
+                    case 0x41:
+                    case 0x42:
+                    case 0x43:
+                    case 0x55:
+                    case 0x82:
+                        func_global_asm_80614EBC(current_player, 0x1CA);
+                        break;
+                    default:
+                        func_global_asm_80614E78(arg0, 0x2F);
+                        break;
+                }
+                extra_player_info_pointer->unk4C = 1;
+                sp26 = 0x49;
+                break;
+        }
+    }
+    if (extra_player_info_pointer->unk4C > 0) {
+        temp = arg0->unkB8 * 0.025;
+        temp = 0.25 + (temp * 0.75);
+        if (arg0->animation_state->unk0->unk24 != 0) {
+            func_global_asm_80614D00(arg0, temp, 2.0f);
+        }
+    }
+    return sp26;
+}
 
 s32 func_global_asm_806CEB44(f32 arg0, f32 arg1) {
     s32 phi_v1;

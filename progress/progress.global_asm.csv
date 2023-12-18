@@ -2163,7 +2163,7 @@ us,asm,func_global_asm_80737924,108,yes
 us,asm,gameIsInMainMenuMode,20,yes
 us,asm,func_global_asm_8065D254,1808,no
 us,asm,func_global_asm_80643B24,232,yes
-us,asm,func_global_asm_806CE928,540,no
+us,asm,func_global_asm_806CE928,540,yes
 us,asm,func_global_asm_80730D60,184,yes
 us,asm,func_global_asm_806C6BA0,40,yes
 us,asm,func_global_asm_806DFFDC,116,yes
