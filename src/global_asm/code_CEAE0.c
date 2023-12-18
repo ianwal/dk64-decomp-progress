@@ -1024,7 +1024,6 @@ s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
                             func_global_asm_80613A50(arg0, 0);
                         }
                         break;
-
                 }
                 sp36 = 0x5E;
                 break;
@@ -1053,8 +1052,84 @@ s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     return sp36;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CE4E4.s")
+s32 func_global_asm_806CE7A0(Actor*, f32, f32, s32, s16);
+
+s16 func_global_asm_806CE4E4(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s16 sp36;
+    s32 pad30;
+    s16 sp2E;
+    s16 sp2C;
+    f32 var_f0;
+    s16 temp_a3_2;
+    s16 temp_v1;
+
+    sp36 = arg0->control_state;
+    sp2E = extra_player_info_pointer->unk4C;
+    sp2C = func_global_asm_806CE7A0(arg0, arg1, arg2, extra_player_info_pointer->unk4C, D_global_asm_807FD584);
+    arg0->y_velocity = 0.0f;
+    if (sp2E < 0) {
+        func_global_asm_806D0408();
+    }
+    if (sp2E != sp2C) {
+        switch (sp2C) {
+            case 0:
+            case 1:
+            case 2:
+                func_global_asm_80614EBC(arg0, 0x150);
+                func_global_asm_80614D00(arg0, 1.0f, 0.0f);
+                sp36 = 0x3F;
+                break;
+            case 4:
+                func_global_asm_80614EBC(arg0, 0x151);
+                func_global_asm_80613C48(arg0, 0x163, 0.0f, 6.0f);
+                if (sp2E == 5) {
+                    func_global_asm_80613A50(arg0, 4);
+                }
+                sp36 = 0x40;
+                break;
+            case 5:
+                func_global_asm_80614EBC(arg0, 0x152);
+                func_global_asm_80613C48(arg0, 0x162, 0.0f, 6.0f);
+                if (sp2E == 4) {
+                    func_global_asm_80613A50(arg0, 0xC);
+                }
+                sp36 = 0x40;
+                break;
+            case 6:
+                func_global_asm_80614E78(arg0, 0x1B);
+                func_global_asm_80614D90(arg0);
+                sp36 = 0x1E;
+                current_actor_pointer->unk9C = current_actor_pointer->y_position;
+                break;
+        }
+        extra_player_info_pointer->unk4C = sp2C;
+    }
+    if (extra_player_info_pointer->unk4C >= 3) {
+        if (extra_player_info_pointer->unk26 == 0x64) {
+            var_f0 = arg0->unkB8;
+        } else {
+            var_f0 = extra_player_info_pointer->unk4;
+        }
+        var_f0 *= 0.025;
+        if (extra_player_info_pointer->unk4C == 5) {
+            var_f0 *= 0.6;
+        }
+        if (var_f0 > 1.25f) {
+            var_f0 -= ((var_f0 - 1.25f) * 0.4);
+        }
+        if (arg0->animation_state->unk0->unk24 != 0.0f) {
+            if (extra_player_info_pointer->unk26 == 0x64) {
+                func_global_asm_80614D00(arg0, var_f0, 2.0f);
+            } else {
+                if (var_f0 < 0.5) {
+                    var_f0 = 0.5f;
+                }
+                func_global_asm_80614D00(arg0, var_f0, 10.0f);
+            }
+        }
+    }
+    return sp36;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CE7A0.s")
