@@ -33,7 +33,7 @@ Actor *func_global_asm_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
 Gfx *func_global_asm_8068C5A8(Gfx *, u16, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32);
 
 // TODO: What do the params mean?
-void playCutscene(Actor*, s16, s32);
+s32 playCutscene(Actor*, s16, s32);
 void playSong(s32, f32);
 void playSound(s16, s16, f32, f32, s32, s32);
 
