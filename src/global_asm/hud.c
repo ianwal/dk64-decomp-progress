@@ -440,6 +440,8 @@ void func_global_asm_806F966C(Struct806F9744_arg0 **arg0) {
 
 int func_global_asm_8071BE04(); // TODO: Signature
 
+void *func_global_asm_806FACE8(u32 arg0);
+
 void func_global_asm_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     s32 temp[2]; // TODO: Hmm
     s32 sp2C;
@@ -619,8 +621,214 @@ void func_global_asm_806FAC64(u8 arg0) {
     D_global_asm_80754288 = arg0;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FACE8.s")
+extern s32 D_global_asm_807200A0; // TODO: Type
+extern s32 D_global_asm_807201A0; // TODO: Type
+extern s32 D_global_asm_80720268; // TODO: Type
+extern s32 D_global_asm_8072029C; // TODO: Type
+extern s32 D_global_asm_807203B0; // TODO: Type
+extern s32 D_global_asm_807203D4; // TODO: Type
+extern s32 D_global_asm_807203F8; // TODO: Type
+extern s32 D_global_asm_8072041C; // TODO: Type
+extern s32 D_global_asm_80720440; // TODO: Type
+extern s32 D_global_asm_80720488; // TODO: Type
+extern s32 D_global_asm_807204BC; // TODO: Type
+extern s32 D_global_asm_80720508; // TODO: Type
+extern s32 D_global_asm_8072052C; // TODO: Type
+extern s32 D_global_asm_80720558; // TODO: Type
+extern s32 D_global_asm_8072057C; // TODO: Type
+extern s32 D_global_asm_807205A0; // TODO: Type
+extern s32 D_global_asm_807205C4; // TODO: Type
+extern s32 D_global_asm_807205E8; // TODO: Type
+extern s32 D_global_asm_8072060C; // TODO: Type
+extern s32 D_global_asm_807206A8; // TODO: Type
+extern s32 D_global_asm_807207BC; // TODO: Type
+extern s32 D_global_asm_807207E0; // TODO: Type
+extern s32 D_global_asm_80720854; // TODO: Type
+extern s32 D_global_asm_80720878; // TODO: Type
+extern s32 D_global_asm_80720890; // TODO: Type
+extern s32 D_global_asm_807208A8; // TODO: Type
+extern s32 D_global_asm_807208C0; // TODO: Type
+extern s32 D_global_asm_807208D8; // TODO: Type
+extern s32 D_global_asm_807209EC; // TODO: Type
+extern s32 D_global_asm_80720A10; // TODO: Type
+extern s32 D_global_asm_80720A34; // TODO: Type
+extern s32 D_global_asm_80720A58; // TODO: Type
+extern s32 D_global_asm_80721200; // TODO: Type
+extern s32 D_global_asm_8072121C; // TODO: Type
+extern s32 D_global_asm_80721250; // TODO: Type
+extern s32 D_global_asm_8072145C; // TODO: Type
+extern s32 D_global_asm_807214A0; // TODO: Type
+extern s32 D_global_asm_807214B8; // TODO: Type
+extern s32 D_global_asm_807214D0; // TODO: Type
+extern s32 D_global_asm_807214E8; // TODO: Type
+extern s32 D_global_asm_80721500; // TODO: Type
+
+void *func_global_asm_806FACE8(u32 arg0) {
+    void *var_v1;
+    u32 var_a0;
+
+    var_v1 = NULL;
+    var_a0 = func_global_asm_806C8DE0(0);
+    if (arg0 == 0xD) {
+        var_a0 = D_global_asm_80754288;
+    }
+    switch (arg0) {
+        case 0:
+        case 13:
+            switch (var_a0) {
+                case 1:
+                    var_v1 = &D_global_asm_8072057C;
+                    break;
+                case 0:
+                    var_v1 = &D_global_asm_807205E8;
+                    break;
+                case 3:
+                    var_v1 = &D_global_asm_8072060C;
+                    break;
+                case 2:
+                    var_v1 = &D_global_asm_807205C4;
+                    break;
+                case 4:
+                case 5:
+                    var_v1 = &D_global_asm_807205A0;
+                    break;
+            }
+            break;
+        case 6:
+            var_v1 = &D_global_asm_80720488;
+            break;
+        case 4:
+            var_v1 = &D_global_asm_807204BC;
+            break;
+        case 2:
+        case 3:
+            switch (var_a0) {
+                case 1:
+                    var_v1 = &D_global_asm_807200A0;
+                    break;
+                case 0:
+                    var_v1 = &D_global_asm_807206A8;
+                    break;
+                case 3:
+                    var_v1 = &D_global_asm_80720854;
+                    break;
+                case 2:
+                    var_v1 = &D_global_asm_8072029C;
+                    break;
+                case 4:
+                    var_v1 = &D_global_asm_807201A0;
+                    break;
+                case 5:
+                    var_v1 = &D_global_asm_80720268;
+                    break;
+            }
+            break;
+        case 1:
+        case 14:
+            switch (var_a0) {
+                case 1:
+                    var_v1 = &D_global_asm_807203B0;
+                    break;
+                case 0:
+                    var_v1 = &D_global_asm_8072041C;
+                    break;
+                case 3:
+                    var_v1 = &D_global_asm_80720440;
+                    break;
+                case 2:
+                    var_v1 = &D_global_asm_807203F8;
+                    break;
+                case 4:
+                case 5:
+                    var_v1 = &D_global_asm_807203D4;
+                    break;
+            }
+            break;
+        case 11:
+            var_v1 = &D_global_asm_807207BC;
+            break;
+        case 7:
+            switch (var_a0) {
+                case 1:
+                    var_v1 = &D_global_asm_80720878;
+                    break;
+                case 0:
+                    var_v1 = &D_global_asm_80720890;
+                    break;
+                case 3:
+                    var_v1 = &D_global_asm_807208A8;
+                    break;
+                case 2:
+                    var_v1 = &D_global_asm_807208D8;
+                    break;
+                case 4:
+                case 5:
+                    var_v1 = &D_global_asm_807208C0;
+                    break;
+            }
+            break;
+        case 5:
+            var_v1 = &D_global_asm_80720508;
+            break;
+        case 8:
+            var_v1 = &D_global_asm_8072052C;
+            break;
+        case 9:
+            var_v1 = &D_global_asm_8072052C;
+            break;
+        case 10:
+            var_v1 = &D_global_asm_80720558;
+            break;
+        case 12:
+            switch (var_a0) {
+                case 1:
+                    var_v1 = &D_global_asm_807209EC;
+                    break;
+                case 0:
+                    var_v1 = &D_global_asm_80720A34;
+                    break;
+                case 3:
+                    var_v1 = &D_global_asm_80720A58;
+                    break;
+                case 2:
+                    var_v1 = &D_global_asm_807207E0;
+                    break;
+                case 4:
+                case 5:
+                    var_v1 = &D_global_asm_80720A10;
+                    break;
+            }
+            break;
+        case 16:
+            var_v1 = &D_global_asm_8072145C;
+            break;
+        case 17:
+            var_v1 = &D_global_asm_80721250;
+            break;
+        case 18:
+            var_v1 = &D_global_asm_80721200;
+            break;
+        case 19:
+            var_v1 = &D_global_asm_8072121C;
+            break;
+        case 20:
+            var_v1 = &D_global_asm_807214A0;
+            break;
+        case 21:
+            var_v1 = &D_global_asm_807214B8;
+            break;
+        case 22:
+            var_v1 = &D_global_asm_807214D0;
+            break;
+        case 23:
+            var_v1 = &D_global_asm_807214E8;
+            break;
+        case 24:
+            var_v1 = &D_global_asm_80721500;
+            break;
+    }
+    return var_v1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FAFE4.s")
 
