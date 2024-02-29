@@ -2044,7 +2044,7 @@ us,asm,func_global_asm_8069DC80,192,yes
 us,asm,func_global_asm_806A18A8,532,yes
 us,asm,func_global_asm_806FB3D0,72,yes
 us,asm,func_global_asm_8066BDE0,64,yes
-us,asm,func_global_asm_806FA9C0,352,no
+us,asm,func_global_asm_806FA9C0,352,yes
 us,asm,func_global_asm_80731B60,40,yes
 us,asm,func_global_asm_8063D854,208,yes
 us,asm,playerCanDive,116,yes

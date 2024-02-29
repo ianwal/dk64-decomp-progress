@@ -415,7 +415,7 @@ segments:
       - [0x2162080, rodata] # code_EFDC0
       - [0x21622F0, rodata] # code_F56F0
       - [0x2162560, .rodata, code_F9450]
-      - [0x2162760, rodata] # hud
+      - [0x2162760, .rodata, hud]
       - [0x2162920, rodata] # code_100180 // TODO: Offset may be wrong
       - [0x2162A40, rodata] # code_1025E0
       - [0x21630F0, .rodata, code_10D2D0]

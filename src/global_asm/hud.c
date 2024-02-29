@@ -18,7 +18,7 @@ typedef struct HUDDisplay {
 	/* 0x000 */ u16* actual_count_pointer;
 	/* 0x004 */	u16 hud_count;
 	/* 0x006 */	u8 freeze_timer;
-	/* 0x007 */	s8 counter_timer;
+	/* 0x007 */	u8 counter_timer;
 	/* 0x008 */	s32 screen_x;
 	/* 0x00C */	s32 screen_y;
 	/* 0x010 */ f32 unk_10;
@@ -59,6 +59,11 @@ typedef struct {
 } PlayerHUD;
 
 extern PlayerHUD *D_global_asm_80754280; // HUD
+
+// rodata
+// static const char D_global_asm_8075DA60[] = "o";
+// static const char D_global_asm_8075DA64[] = "NA";
+// static const char D_global_asm_8075DA68[] = "%d";
 
 PlayerHUD* func_global_asm_806F7FD0(u8 playerIndex) {
     return &D_global_asm_80754280[playerIndex];
@@ -330,8 +335,6 @@ u8 func_global_asm_806F9470(u16 arg0, Maps map) {
     return (1 << getLevelIndex(map, 1)) & arg0;
 }
 
-extern f64 D_global_asm_8075DAD0;
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -361,7 +364,7 @@ void func_global_asm_806F94AC(Struct806F94AC_arg0 *arg0, s32 arg1) {
     temp = (arg0->unk330->unk9 * arg0->unk330->unkE);
     var_f2 = 32.0f / temp;
     if (arg1 == 9) {
-        var_f2 = 32.0f / temp * D_global_asm_8075DAD0;
+        var_f2 = 32.0f / temp * 1.2;
     }
     arg0->unk360 *= var_f2;
     arg0->unk364 *= var_f2;
@@ -562,8 +565,48 @@ s32 func_global_asm_806FA7A4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FA7BC.s")
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FA9C0.s")
+s32 func_global_asm_806FA9C0(s32 arg0, s32 arg1) {
+    s32 var_a0;
+    s32 var_s1;
+    s32 var_v1;
+    GlobalASMStruct71 *counter;
+
+    counter = D_global_asm_80754280->hud_item[arg0].counter_pointer;
+    var_s1 = 0;
+    while (counter != NULL) {
+        arg1 = func_global_asm_806FA504(arg0, counter, var_s1, arg1);
+        if (counter->unk0 == 1) {
+            var_s1++;
+        }
+        counter = counter->unk18;
+    }
+    if (D_global_asm_80754280->hud_item[arg0].counter_timer != 0) {
+        D_global_asm_80754280->hud_item[arg0].counter_timer--;
+    } else {
+        counter = D_global_asm_80754280->hud_item[arg0].counter_pointer;
+        var_v1 = 0;
+        var_a0 = 0;
+        while (counter != NULL) {
+            var_a0++;
+            if (counter->unkC != 0) {
+                counter->unkC--;
+            } else {
+                if (counter->unk10 > 0) {
+                    counter->unk10 -= 102.4f;
+                }
+                if (counter->unk10 < 0) {
+                    counter->unk10 = 0;
+                    var_v1++;
+                }
+            }
+            counter = counter->unk18;
+        }
+        if (var_a0 == var_v1) {
+            D_global_asm_80754280->hud_item[arg0].hud_state = 0;
+        }
+    }
+    return arg1;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FAB20.s")
@@ -599,6 +642,30 @@ void func_global_asm_806FB290() {
 
 // Quite fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FB2B8.s")
+
+/*
+void func_global_asm_806FB2B8(void) {
+    GlobalASMStruct71 **var_s1;
+    GlobalASMStruct71 *current;
+    s32 i;
+
+    var_s1 = &D_global_asm_80754284;
+    current = D_global_asm_80754284;
+    if (D_global_asm_80754284) {
+        while (current->unk4) {
+            var_s1 = &current->unk4;
+            current = current->unk4;
+        }
+        for (i = 0; i != 0xF; i++) {
+            if ((*var_s1)->unk0 & (1 << i)) {
+                func_global_asm_806F8BC4(i, 1, 0);
+            }
+        }
+        free(*var_s1);
+        *var_s1 = NULL;
+    }
+}
+*/
 
 // setHudItemAsInfinite(hudItemIndex, playerIndex, unknownValue)
 void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2) {
