@@ -268,8 +268,74 @@ s32 func_global_asm_806F8EB4() {
     return countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT);
 }
 
-// Jumptable, getMaxItemCapacity(HUDItemIndex, playerIndex)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F8EDC.s")
+s32 func_global_asm_806C8DE0(s32);
+
+u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
+    s32 kong;
+    u16 var_a0;
+    s32 var_v1;
+    s32 temp_a0;
+    s32 var_v0;
+
+    kong = func_global_asm_806C8DE0(playerIndex);
+    var_a0 = 100;
+    switch (HUDItemIndex) {
+        case 1:
+            var_a0 = 999;
+            break;
+        case 2:
+            var_a0 = ((1 << D_global_asm_807FC950[playerIndex].character_progress[kong].ammo_belt) * 50);
+            break;
+        case 3:
+            if (cc_number_of_players >= 2) {
+                var_a0 = 10;
+            } else {
+                var_a0 = ((1 << D_global_asm_807FC950[playerIndex].character_progress[kong].ammo_belt) * 50);
+            }
+            break;
+        case 4:
+            var_a0 = ((D_global_asm_807FC950[playerIndex].character_progress[kong].ammo_belt * 5) + 20);
+            break;
+        case 5:
+            if (cc_number_of_players >= 2) {
+                var_a0 = 3000;
+            } else if (func_global_asm_806F6EDC() != 0) {
+                var_a0 = ((func_global_asm_806F8EB4() * 150) + 3000);
+            } else {
+                var_a0 = 0;
+            }
+            break;
+        case 7:
+            if (cc_number_of_players >= 2) {
+                var_a0 = 20;
+            } else {
+                temp_a0 = D_global_asm_807FC950[playerIndex].character_progress[kong].instrument;
+                var_v1 = 1;
+                if (temp_a0 & 1) {
+                    var_v0 = temp_a0;
+                    while (var_v0) {
+                        var_v1++;
+                        var_v0 >>= 1;
+                    }
+                    var_a0 = (var_v1 * 5);
+                } else {
+                    var_a0 = 0;
+                }
+            }
+            break;
+        case 6:
+            if (isFlagSet(0x179, FLAG_TYPE_PERMANENT)) {
+                var_a0 = (func_global_asm_806F8EB4() + 10);
+            } else {
+                var_a0 = 0;
+            }
+            break;
+        case 9:
+            var_a0 = 200;
+            break;
+    }
+    return var_a0;
+}
 
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F91B4.s")
@@ -621,61 +687,63 @@ void func_global_asm_806FAC64(u8 arg0) {
     D_global_asm_80754288 = arg0;
 }
 
-extern s32 D_global_asm_807200A0; // TODO: Type
-extern s32 D_global_asm_807201A0; // TODO: Type
-extern s32 D_global_asm_80720268; // TODO: Type
-extern s32 D_global_asm_8072029C; // TODO: Type
-extern s32 D_global_asm_807203B0; // TODO: Type
-extern s32 D_global_asm_807203D4; // TODO: Type
-extern s32 D_global_asm_807203F8; // TODO: Type
-extern s32 D_global_asm_8072041C; // TODO: Type
-extern s32 D_global_asm_80720440; // TODO: Type
-extern s32 D_global_asm_80720488; // TODO: Type
-extern s32 D_global_asm_807204BC; // TODO: Type
-extern s32 D_global_asm_80720508; // TODO: Type
-extern s32 D_global_asm_8072052C; // TODO: Type
-extern s32 D_global_asm_80720558; // TODO: Type
-extern s32 D_global_asm_8072057C; // TODO: Type
-extern s32 D_global_asm_807205A0; // TODO: Type
-extern s32 D_global_asm_807205C4; // TODO: Type
-extern s32 D_global_asm_807205E8; // TODO: Type
-extern s32 D_global_asm_8072060C; // TODO: Type
-extern s32 D_global_asm_807206A8; // TODO: Type
-extern s32 D_global_asm_807207BC; // TODO: Type
-extern s32 D_global_asm_807207E0; // TODO: Type
-extern s32 D_global_asm_80720854; // TODO: Type
-extern s32 D_global_asm_80720878; // TODO: Type
-extern s32 D_global_asm_80720890; // TODO: Type
-extern s32 D_global_asm_807208A8; // TODO: Type
-extern s32 D_global_asm_807208C0; // TODO: Type
-extern s32 D_global_asm_807208D8; // TODO: Type
-extern s32 D_global_asm_807209EC; // TODO: Type
-extern s32 D_global_asm_80720A10; // TODO: Type
-extern s32 D_global_asm_80720A34; // TODO: Type
-extern s32 D_global_asm_80720A58; // TODO: Type
-extern s32 D_global_asm_80721200; // TODO: Type
-extern s32 D_global_asm_8072121C; // TODO: Type
-extern s32 D_global_asm_80721250; // TODO: Type
-extern s32 D_global_asm_8072145C; // TODO: Type
-extern s32 D_global_asm_807214A0; // TODO: Type
-extern s32 D_global_asm_807214B8; // TODO: Type
-extern s32 D_global_asm_807214D0; // TODO: Type
-extern s32 D_global_asm_807214E8; // TODO: Type
-extern s32 D_global_asm_80721500; // TODO: Type
+// These are sprite textures
+// TODO: Label them appropriately
+extern s32 D_global_asm_807200A0;
+extern s32 D_global_asm_807201A0;
+extern s32 D_global_asm_80720268;
+extern s32 D_global_asm_8072029C;
+extern s32 D_global_asm_807203B0;
+extern s32 D_global_asm_807203D4;
+extern s32 D_global_asm_807203F8;
+extern s32 D_global_asm_8072041C;
+extern s32 D_global_asm_80720440;
+extern s32 D_global_asm_80720488;
+extern s32 D_global_asm_807204BC;
+extern s32 D_global_asm_80720508;
+extern s32 D_global_asm_8072052C;
+extern s32 D_global_asm_80720558;
+extern s32 D_global_asm_8072057C;
+extern s32 D_global_asm_807205A0;
+extern s32 D_global_asm_807205C4;
+extern s32 D_global_asm_807205E8;
+extern s32 D_global_asm_8072060C;
+extern s32 D_global_asm_807206A8;
+extern s32 D_global_asm_807207BC;
+extern s32 D_global_asm_807207E0;
+extern s32 D_global_asm_80720854;
+extern s32 D_global_asm_80720878;
+extern s32 D_global_asm_80720890;
+extern s32 D_global_asm_807208A8;
+extern s32 D_global_asm_807208C0;
+extern s32 D_global_asm_807208D8;
+extern s32 D_global_asm_807209EC;
+extern s32 D_global_asm_80720A10;
+extern s32 D_global_asm_80720A34;
+extern s32 D_global_asm_80720A58;
+extern s32 D_global_asm_80721200;
+extern s32 D_global_asm_8072121C;
+extern s32 D_global_asm_80721250;
+extern s32 D_global_asm_8072145C;
+extern s32 D_global_asm_807214A0;
+extern s32 D_global_asm_807214B8;
+extern s32 D_global_asm_807214D0;
+extern s32 D_global_asm_807214E8;
+extern s32 D_global_asm_80721500;
 
 void *func_global_asm_806FACE8(u32 arg0) {
     void *var_v1;
-    u32 var_a0;
+    u32 kong;
 
     var_v1 = NULL;
-    var_a0 = func_global_asm_806C8DE0(0);
+    kong = func_global_asm_806C8DE0(0);
     if (arg0 == 0xD) {
-        var_a0 = D_global_asm_80754288;
+        kong = D_global_asm_80754288;
     }
     switch (arg0) {
         case 0:
         case 13:
-            switch (var_a0) {
+            switch (kong) {
                 case 1:
                     var_v1 = &D_global_asm_8072057C;
                     break;
@@ -702,7 +770,7 @@ void *func_global_asm_806FACE8(u32 arg0) {
             break;
         case 2:
         case 3:
-            switch (var_a0) {
+            switch (kong) {
                 case 1:
                     var_v1 = &D_global_asm_807200A0;
                     break;
@@ -725,7 +793,7 @@ void *func_global_asm_806FACE8(u32 arg0) {
             break;
         case 1:
         case 14:
-            switch (var_a0) {
+            switch (kong) {
                 case 1:
                     var_v1 = &D_global_asm_807203B0;
                     break;
@@ -748,7 +816,7 @@ void *func_global_asm_806FACE8(u32 arg0) {
             var_v1 = &D_global_asm_807207BC;
             break;
         case 7:
-            switch (var_a0) {
+            switch (kong) {
                 case 1:
                     var_v1 = &D_global_asm_80720878;
                     break;
@@ -780,7 +848,7 @@ void *func_global_asm_806FACE8(u32 arg0) {
             var_v1 = &D_global_asm_80720558;
             break;
         case 12:
-            switch (var_a0) {
+            switch (kong) {
                 case 1:
                     var_v1 = &D_global_asm_807209EC;
                     break;
