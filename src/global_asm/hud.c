@@ -129,8 +129,166 @@ void func_global_asm_806F8278(u8 playerIndex) {
 }
 */
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F833C.s")
+extern GlobalASMStruct71 *D_global_asm_80754284;
+
+s32 func_global_asm_806C8DE0(s32);
+u16 func_global_asm_806F8EDC(s32, s32);
+extern s16 D_global_asm_80744544;
+extern u16 D_global_asm_80750AC4;
+extern u16 D_global_asm_80750AC8;
+void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2);
+
+void func_global_asm_806F833C(s32 arg0) {
+    u32 HUDItemIndex;
+    s32 playerIndex;
+    s16 sp96;
+    PlayerProgress *pad88;
+    u8 levelIndex;
+    u8 var_s7;
+    HUDDisplay *playerHUD;
+    CharacterProgress *sp84;
+
+    sp96 = D_global_asm_80744544;
+    levelIndex = getLevelIndex(D_global_asm_8076A0AB, 1);
+    if (cc_number_of_players > 1) {
+        sp96 = 0;
+    }
+    if (arg0 != 0) {
+        D_global_asm_80754280 = malloc(cc_number_of_players * sizeof(PlayerHUD));
+        func_global_asm_80611690(D_global_asm_80754280);
+        D_global_asm_80754284 = NULL;
+    }
+    for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+        pad88 = &D_global_asm_807FC950[playerIndex];
+        sp84 = &pad88->character_progress[func_global_asm_806C8DE0(playerIndex)];
+        playerHUD = func_global_asm_806F7FD0(playerIndex);
+        for (HUDItemIndex = 0; HUDItemIndex < 0xF; HUDItemIndex++) {
+            var_s7 = 0;
+            if (arg0 != 0) {
+                playerHUD[HUDItemIndex].hud_state = 0;
+                playerHUD[HUDItemIndex].counter_timer = 0;
+                playerHUD[HUDItemIndex].unk_24 = 0;
+                playerHUD[HUDItemIndex].freeze_timer = 0;
+                playerHUD[HUDItemIndex].counter_pointer = NULL;
+                playerHUD[HUDItemIndex].unk_2c = 0;
+            }
+            if (gameIsInDKTVMode()) {
+                playerHUD[HUDItemIndex].unk_2c = 1;
+            }
+            switch (HUDItemIndex) {
+                case 0:
+                    playerHUD[HUDItemIndex].actual_count_pointer = &sp84->coloured_bananas[levelIndex];
+                    playerHUD[HUDItemIndex].screen_x = 30;playerHUD[HUDItemIndex].screen_y = 38;
+                    func_global_asm_806F8004(15.5f, 26.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 13:
+                    playerHUD[HUDItemIndex].actual_count_pointer = NULL;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 38;
+                    func_global_asm_806F8004(-5.5f, -26.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 8:
+                    playerHUD[HUDItemIndex].actual_count_pointer = &sp84->golden_bananas[levelIndex];
+                    playerHUD[HUDItemIndex].screen_x = 30;playerHUD[HUDItemIndex].screen_y = 72;
+                    func_global_asm_806F8004(1.5f, 26.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 12:
+                    playerHUD[HUDItemIndex].actual_count_pointer = NULL;
+                    playerHUD[HUDItemIndex].screen_x = 194;playerHUD[HUDItemIndex].screen_y = 208;
+                    func_global_asm_806F8004(-26.5f, 26.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 10:
+                    playerHUD[HUDItemIndex].actual_count_pointer = NULL;
+                    playerHUD[HUDItemIndex].screen_x = 82;playerHUD[HUDItemIndex].screen_y = 208;
+                    func_global_asm_806F8004(-26.5f, 26.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 9:
+                    playerHUD[HUDItemIndex].actual_count_pointer = NULL;
+                    playerHUD[HUDItemIndex].screen_x = 122;playerHUD[HUDItemIndex].screen_y = 208;
+                    break;
+                case 5:
+                    if (sp96 & 0x20) {
+                        pad88->crystals = func_global_asm_806F8EDC(5, playerIndex);
+                        var_s7 = 1;
+                    }
+                    playerHUD[HUDItemIndex].actual_count_pointer = &pad88->crystals;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 140;
+                    func_global_asm_806F8004(-5.5f, -19.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 2:
+                    playerHUD[HUDItemIndex].actual_count_pointer = &pad88->standardAmmo;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 72;
+                    func_global_asm_806F8004(8.5f, -19.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 3:
+                    if (sp96 & 4) {
+                        pad88->homingAmmo = func_global_asm_806F8EDC(3, playerIndex);
+                        var_s7 = 1;
+                    }
+                    playerHUD[HUDItemIndex].actual_count_pointer = &pad88->homingAmmo;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 72;
+                    func_global_asm_806F8004(8.5f, -19.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 4:
+                    if (sp96 & 8) {
+                        pad88->oranges = func_global_asm_806F8EDC(4, playerIndex);
+                        var_s7 = 1;
+                    }
+                    playerHUD[HUDItemIndex].actual_count_pointer = &pad88->oranges;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 106;
+                    func_global_asm_806F8004(1.5f, -19.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 6:
+                    if (sp96 & 0x10) {
+                        pad88->film = func_global_asm_806F8EDC(6, playerIndex);
+                        var_s7 = 1;
+                    }
+                    playerHUD[HUDItemIndex].actual_count_pointer = &pad88->film;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 208;
+                    func_global_asm_806F8004(-19.5f, -19.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 11:
+                    playerHUD[HUDItemIndex].actual_count_pointer = &D_global_asm_80750AC4;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 38;
+                    func_global_asm_806F8004(16.5f, -19.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 1:
+                    if (sp96 & 2) {
+                        sp84->coins = func_global_asm_806F8EDC(1, playerIndex);
+                        var_s7 = 1;
+                    }
+                    playerHUD[HUDItemIndex].actual_count_pointer = &sp84->coins;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 38;
+                    func_global_asm_806F8004(16.5f, -19.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 7:
+                    if (sp96 & 0x40) {
+                        sp84->instrument_ammo = func_global_asm_806F8EDC(7, playerIndex);
+                        var_s7 = 1;
+                    }
+                    playerHUD[HUDItemIndex].actual_count_pointer = &sp84->instrument_ammo;
+                    playerHUD[HUDItemIndex].screen_x = 290;playerHUD[HUDItemIndex].screen_y = 174;
+                    func_global_asm_806F8004(-12.5f, -19.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+                case 14:
+                    playerHUD[HUDItemIndex].actual_count_pointer = &D_global_asm_80750AC8;
+                    playerHUD[HUDItemIndex].screen_x = 30;playerHUD[HUDItemIndex].screen_y = 38;
+                    func_global_asm_806F8004(15.5f, 26.0f, &playerHUD[HUDItemIndex].unk_10, &playerHUD[HUDItemIndex].unk_14, &playerHUD[HUDItemIndex].unk_18);
+                    break;
+            }
+            playerHUD[HUDItemIndex].unk_2d = var_s7;
+            if (var_s7 & 0xFF) {
+                playerHUD[HUDItemIndex].unk_2c = 1;
+            }
+            if (playerHUD[HUDItemIndex].actual_count_pointer != NULL) {
+                playerHUD[HUDItemIndex].hud_count = *playerHUD[HUDItemIndex].actual_count_pointer;
+            }
+        }
+        func_global_asm_806F8278(playerIndex);
+    }
+    if (current_map == MAP_HELM || current_map == MAP_CAVES_BEETLE_RACE) {
+        func_global_asm_806FB370(5, 0, 1);
+    }
+}
 
 void func_global_asm_806F8A8C(u8 arg0, u8 playerIndex, s32 arg2) {
     PlayerHUD* temp = func_global_asm_806F7FD0(playerIndex);
@@ -223,8 +381,6 @@ struct global_asm_struct_72 {
     s32 unk0;
     GlobalASMStruct72 *unk4; // Next?
 };
-
-extern GlobalASMStruct71 *D_global_asm_80754284;
 
 void func_global_asm_806F8D58(s32 arg0, s32 arg1) {
     GlobalASMStruct71 *phi_v0 = D_global_asm_80754284;
