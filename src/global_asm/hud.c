@@ -69,12 +69,133 @@ typedef struct {
     HUDDisplay hud_item[15];
 } PlayerHUD;
 
+typedef struct global_asm_struct_72 GlobalASMStruct72;
+
+struct global_asm_struct_72 {
+    s32 unk0;
+    GlobalASMStruct72 *unk4; // Next?
+};
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    u8 unkC;
+    u8 unkD;
+    s16 unkE;
+} Struct806F94AC_arg0_unk330;
+
+typedef struct {
+    u8 unk0[0x330 - 0x0];
+    Struct806F94AC_arg0_unk330 *unk330;
+    u8 unk334[0x360 - 0x334];
+    f32 unk360;
+    f32 unk364;
+} Struct806F94AC_arg0;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s8 unk4;
+    s8 unk5;
+    s8 unk6;
+    s8 unk7;
+    s32 unk8;
+} Struct806F9744_arg0_unk14;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    Struct806F9744_arg0_unk14 *unk14;
+} Struct806F9744_arg0;
+
+typedef struct {
+    u8 unk0[0x340 - 0x0];
+    f32 unk340;
+    f32 unk344;
+    u8 unk348[0x35E - 0x348];
+    s16 unk35E;
+    f32 unk360;
+    f32 unk364;
+} Struct806F9AF0_arg0;
+
+extern f32 D_global_asm_807FD7A0[];
+extern f32 D_global_asm_807FD7B8[];
+extern f32 D_global_asm_807FD7D0[];
+
+extern s32 D_global_asm_80754288;
+
+// These are sprite textures
+// TODO: Label them appropriately
+extern s32 D_global_asm_807200A0;
+extern s32 D_global_asm_807201A0;
+extern s32 D_global_asm_80720268;
+extern s32 D_global_asm_8072029C;
+extern s32 D_global_asm_807203B0;
+extern s32 D_global_asm_807203D4;
+extern s32 D_global_asm_807203F8;
+extern s32 D_global_asm_8072041C;
+extern s32 D_global_asm_80720440;
+extern s32 D_global_asm_80720488;
+extern s32 D_global_asm_807204BC;
+extern s32 D_global_asm_80720508;
+extern s32 D_global_asm_8072052C;
+extern s32 D_global_asm_80720558;
+extern s32 D_global_asm_8072057C;
+extern s32 D_global_asm_807205A0;
+extern s32 D_global_asm_807205C4;
+extern s32 D_global_asm_807205E8;
+extern s32 D_global_asm_8072060C;
+extern s32 D_global_asm_807206A8;
+extern s32 D_global_asm_807207BC;
+extern s32 D_global_asm_807207E0;
+extern s32 D_global_asm_80720854;
+extern s32 D_global_asm_80720878;
+extern s32 D_global_asm_80720890;
+extern s32 D_global_asm_807208A8;
+extern s32 D_global_asm_807208C0;
+extern s32 D_global_asm_807208D8;
+extern s32 D_global_asm_807209EC;
+extern s32 D_global_asm_80720A10;
+extern s32 D_global_asm_80720A34;
+extern s32 D_global_asm_80720A58;
+extern s32 D_global_asm_80721200;
+extern s32 D_global_asm_8072121C;
+extern s32 D_global_asm_80721250;
+extern s32 D_global_asm_8072145C;
+extern s32 D_global_asm_807214A0;
+extern s32 D_global_asm_807214B8;
+extern s32 D_global_asm_807214D0;
+extern s32 D_global_asm_807214E8;
+extern s32 D_global_asm_80721500;
+
 extern PlayerHUD *D_global_asm_80754280; // HUD
+
+extern GlobalASMStruct71 *D_global_asm_80754284;
+
+extern s16 D_global_asm_80744544;
+extern u16 D_global_asm_80750AC4;
+extern u16 D_global_asm_80750AC8;
 
 // rodata
 // static const char D_global_asm_8075DA60[] = "o";
 // static const char D_global_asm_8075DA64[] = "NA";
 // static const char D_global_asm_8075DA68[] = "%d";
+
+s32 func_global_asm_806F9518(s32);
+Gfx *func_global_asm_806FA5A4(s32, Gfx *);
+Gfx *func_global_asm_806FA7BC(s32, Gfx *);
+Gfx *func_global_asm_806FA9C0(s32, Gfx *);
+s32 func_global_asm_806C8DE0(s32);
+u16 func_global_asm_806F8EDC(s32, s32);
+int func_global_asm_8071BE04(); // TODO: Signature
+void *func_global_asm_806FACE8(u32 arg0);
 
 PlayerHUD* func_global_asm_806F7FD0(u8 playerIndex) {
     return &D_global_asm_80754280[playerIndex];
@@ -139,15 +260,6 @@ void func_global_asm_806F8278(u8 playerIndex) {
     D_global_asm_80754280->hud_item[playerIndex * 0xF + 9].hud_count = totalGBs;
 }
 */
-
-extern GlobalASMStruct71 *D_global_asm_80754284;
-
-s32 func_global_asm_806C8DE0(s32);
-u16 func_global_asm_806F8EDC(s32, s32);
-extern s16 D_global_asm_80744544;
-extern u16 D_global_asm_80750AC4;
-extern u16 D_global_asm_80750AC8;
-void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2);
 
 void func_global_asm_806F833C(s32 arg0) {
     u32 HUDItemIndex;
@@ -386,13 +498,6 @@ void func_global_asm_806F8CFC(s32 arg0, s32 arg1) {
     }
 }
 
-typedef struct global_asm_struct_72 GlobalASMStruct72;
-
-struct global_asm_struct_72 {
-    s32 unk0;
-    GlobalASMStruct72 *unk4; // Next?
-};
-
 void func_global_asm_806F8D58(s32 arg0, s32 arg1) {
     GlobalASMStruct71 *phi_v0 = D_global_asm_80754284;
 
@@ -434,8 +539,6 @@ s32 func_global_asm_806F8EB4() {
     // Count how many fairies have been photographed
     return countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT);
 }
-
-s32 func_global_asm_806C8DE0(s32);
 
 u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
     s32 kong;
@@ -568,26 +671,6 @@ u8 func_global_asm_806F9470(u16 arg0, Maps map) {
     return (1 << getLevelIndex(map, 1)) & arg0;
 }
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    u8 unk8;
-    u8 unk9;
-    u8 unkA;
-    u8 unkB;
-    u8 unkC;
-    u8 unkD;
-    s16 unkE;
-} Struct806F94AC_arg0_unk330;
-
-typedef struct {
-    u8 unk0[0x330 - 0x0];
-    Struct806F94AC_arg0_unk330 *unk330;
-    u8 unk334[0x360 - 0x334];
-    f32 unk360;
-    f32 unk364;
-} Struct806F94AC_arg0;
-
 void func_global_asm_806F94AC(Struct806F94AC_arg0 *arg0, s32 arg1) {
     f32 temp_f12;
     f32 var_f2;
@@ -633,25 +716,6 @@ void func_global_asm_806F95C8(void) {
     }
 }
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s8 unk4;
-    s8 unk5;
-    s8 unk6;
-    s8 unk7;
-    s32 unk8;
-} Struct806F9744_arg0_unk14;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    Struct806F9744_arg0_unk14 *unk14;
-} Struct806F9744_arg0;
-
 void func_global_asm_806F9608(Struct806F9744_arg0 **arg0) {
     *arg0 = malloc(0x1C);
     func_global_asm_80611690(*arg0);
@@ -694,10 +758,6 @@ void func_global_asm_806F96CC(GS71_F32 *arg0, u32 arg1) {
     arg0->unk8 = var_v1 * 0x30;
 }
 
-int func_global_asm_8071BE04(); // TODO: Signature
-
-void *func_global_asm_806FACE8(u32 arg0);
-
 void func_global_asm_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     s32 temp[2]; // TODO: Hmm
     s32 sp2C;
@@ -730,20 +790,6 @@ void func_global_asm_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F9848.s")
-
-extern f32 D_global_asm_807FD7A0[];
-extern f32 D_global_asm_807FD7B8[];
-extern f32 D_global_asm_807FD7D0[];
-
-typedef struct {
-    u8 unk0[0x340 - 0x0];
-    f32 unk340;
-    f32 unk344;
-    u8 unk348[0x35E - 0x348];
-    s16 unk35E;
-    f32 unk360;
-    f32 unk364;
-} Struct806F9AF0_arg0;
 
 void func_global_asm_806F9AF0(Struct806F9AF0_arg0 *arg0, s8 *arg1) {
     s32 temp = arg0->unk35E;
@@ -895,11 +941,6 @@ Gfx *func_global_asm_806FA9C0(s32 arg0, Gfx *arg1) {
     return arg1;
 }
 
-s32 func_global_asm_806F9518(s32);
-Gfx *func_global_asm_806FA5A4(s32, Gfx *);
-Gfx *func_global_asm_806FA7BC(s32, Gfx *);
-Gfx *func_global_asm_806FA9C0(s32, Gfx *);
-
 Gfx *func_global_asm_806FAB20(Gfx *dl) {
     s32 HUDItemIndex;
 
@@ -928,57 +969,11 @@ Gfx *func_global_asm_806FAB20(Gfx *dl) {
     return dl;
 }
 
-extern s32 D_global_asm_80754288;
-
 void func_global_asm_806FAC64(u8 arg0) {
     D_global_asm_80754280->hud_item[0xD].actual_count_pointer = &D_global_asm_807FC950[0].character_progress[arg0].coloured_bananas_fed_to_tns[getLevelIndex(D_global_asm_8076A0AB, 0)];
     D_global_asm_80754280->hud_item[0xD].hud_count = *D_global_asm_80754280->hud_item[0xD].actual_count_pointer;
     D_global_asm_80754288 = arg0;
 }
-
-// These are sprite textures
-// TODO: Label them appropriately
-extern s32 D_global_asm_807200A0;
-extern s32 D_global_asm_807201A0;
-extern s32 D_global_asm_80720268;
-extern s32 D_global_asm_8072029C;
-extern s32 D_global_asm_807203B0;
-extern s32 D_global_asm_807203D4;
-extern s32 D_global_asm_807203F8;
-extern s32 D_global_asm_8072041C;
-extern s32 D_global_asm_80720440;
-extern s32 D_global_asm_80720488;
-extern s32 D_global_asm_807204BC;
-extern s32 D_global_asm_80720508;
-extern s32 D_global_asm_8072052C;
-extern s32 D_global_asm_80720558;
-extern s32 D_global_asm_8072057C;
-extern s32 D_global_asm_807205A0;
-extern s32 D_global_asm_807205C4;
-extern s32 D_global_asm_807205E8;
-extern s32 D_global_asm_8072060C;
-extern s32 D_global_asm_807206A8;
-extern s32 D_global_asm_807207BC;
-extern s32 D_global_asm_807207E0;
-extern s32 D_global_asm_80720854;
-extern s32 D_global_asm_80720878;
-extern s32 D_global_asm_80720890;
-extern s32 D_global_asm_807208A8;
-extern s32 D_global_asm_807208C0;
-extern s32 D_global_asm_807208D8;
-extern s32 D_global_asm_807209EC;
-extern s32 D_global_asm_80720A10;
-extern s32 D_global_asm_80720A34;
-extern s32 D_global_asm_80720A58;
-extern s32 D_global_asm_80721200;
-extern s32 D_global_asm_8072121C;
-extern s32 D_global_asm_80721250;
-extern s32 D_global_asm_8072145C;
-extern s32 D_global_asm_807214A0;
-extern s32 D_global_asm_807214B8;
-extern s32 D_global_asm_807214D0;
-extern s32 D_global_asm_807214E8;
-extern s32 D_global_asm_80721500;
 
 void *func_global_asm_806FACE8(u32 arg0) {
     void *var_v1;

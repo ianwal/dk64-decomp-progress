@@ -2,6 +2,7 @@
 #include "functions.h"
 
 
+// Doable, datatype and stack issues
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FE40/func_global_asm_8060B140.s")
 
 extern s8 D_global_asm_80746834;
@@ -10,7 +11,6 @@ extern OSIoMesg D_global_asm_807ECE00;
 extern void *D_global_asm_807ECE18;
 
 /*
-// Doable, datatype and stack issues
 void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u8 arg5, u8 *arg6) {
     u8 *sp5C;
     u8 *sp58;

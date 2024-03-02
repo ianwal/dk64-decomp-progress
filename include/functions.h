@@ -2335,6 +2335,8 @@ void func_global_asm_806F0C18(Actor*);
 void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_race_8002BBD0(Actor *arg0, s32 numRacers);
 
+void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2);
+
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))
 #define TWO_PI 6.28318548202514648

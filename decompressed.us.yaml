@@ -412,7 +412,7 @@ segments:
       - [0x21619E0, .rodata, code_D78D0]
       - [0x2161DE0, .rodata, code_E4090]
       - [0x2162030, rodata] # code_EBBE0
-      - [0x2162080, rodata] # code_EFDC0
+      - [0x2162080, .rodata, code_EFDC0]
       - [0x21622F0, rodata] # code_F56F0
       - [0x2162560, .rodata, code_F9450]
       - [0x2162760, .rodata, hud]

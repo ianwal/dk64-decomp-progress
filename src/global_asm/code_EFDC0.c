@@ -1,15 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
 
+void func_race_80026004(Actor178*, s32, f32);
 
+void func_global_asm_80613AF8(Actor*, s32, f32, f32);
 void func_global_asm_80614D48(Actor*, f32, f32);
-extern s32 D_global_asm_807FD6F0[];
-void func_global_asm_806CD424(s16, f32, f32);
-extern void (*action_initiation_function_list[])(void);
-
 void func_global_asm_8062217C(Actor*, s32);
 void func_global_asm_80627878(Actor*);
-void func_global_asm_80613AF8(Actor*, s32, f32, f32);
+void func_global_asm_806CD424(s16, f32, f32);
 void func_global_asm_806EEAF8(s16);
 
 extern s16 D_global_asm_807530B0[];
@@ -32,15 +30,14 @@ extern s16 D_global_asm_807539EC[];
 extern f32 D_global_asm_80753D70[];
 extern f32 D_global_asm_80753D8C[];
 
-extern f64 D_global_asm_8075D408;
-extern f32 D_global_asm_8075D5D8;
-extern f64 D_global_asm_8075D5E0;
-
 extern s32 D_global_asm_80767CC0;
 
 extern u32 D_global_asm_807FBB68;
 extern s16 D_global_asm_807FD584;
+extern s32 D_global_asm_807FD6F0[];
 extern s16 D_global_asm_807FD6F2;
+
+extern void (*action_initiation_function_list[])(void);
 
 u8 func_global_asm_806EB0C0(s16 arg0, Actor *actor, u8 playerIndex) {
     if (character_change_array[playerIndex].action_initiated < arg0) {
@@ -307,8 +304,6 @@ void func_global_asm_806EBDC4(void) {
     extra_player_info_pointer->vehicle_actor_pointer = character_change_array[cc_player_index].unk2A0;
 }
 
-void func_race_80026004(Actor178*, s32, f32);
-
 void func_global_asm_806EBE8C(void) {
     Actor *vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     Actor178 *temp = vehicle->unk178;
@@ -567,7 +562,7 @@ void func_global_asm_806ECCDC(void) {
     current_actor_pointer->control_state = 0x17;
     current_actor_pointer->control_state_progress = 0;
     if ((D_global_asm_807FBB68 & 2) != 0) {
-        extra_player_info_pointer->unk54 = D_global_asm_807535CC[D_global_asm_807FD584] * D_global_asm_8075D408;
+        extra_player_info_pointer->unk54 = D_global_asm_807535CC[D_global_asm_807FD584] * 1.3;
     } else {
         extra_player_info_pointer->unk54 = D_global_asm_807535CC[D_global_asm_807FD584];
     }
@@ -1100,7 +1095,15 @@ typedef struct {
     u16 unk0[5];
 } Struct8075D380;
 
-extern Struct8075D380 D_global_asm_8075D380;
+const Struct8075D380 D_global_asm_8075D380 = {
+    {
+        0x000A,
+        0x000B,
+        0x000C,
+        0x000D,
+        0x000E,
+    }
+};
 
 void func_global_asm_806EFA3C(void) {
     Struct8075D380 sp24;
@@ -1341,7 +1344,7 @@ void func_global_asm_806F0700(void) {
     current_player->control_state = 0x88;
     current_player->control_state_progress = 0;
     func_global_asm_80614EBC(current_player, 0);
-    temp_f0 = D_global_asm_8075D5D8;
+    temp_f0 = 0.009999999776;
     current_player->x_position = extra_player_info_pointer->unk22C;
     current_player->y_position = extra_player_info_pointer->unk230;
     current_player->z_position = extra_player_info_pointer->unk234;
@@ -1357,7 +1360,7 @@ void func_global_asm_806F07CC(void) {
     func_global_asm_80608528(current_player, 0xF3, 0xFF, 0x7F, 0x19);
     current_player->control_state = 0x19;
     current_player->control_state_progress = 0;
-    extra_player_info_pointer->unk54 = D_global_asm_807535CC[D_global_asm_807FD584] * D_global_asm_8075D5E0;
+    extra_player_info_pointer->unk54 = D_global_asm_807535CC[D_global_asm_807FD584] * 2.6;
     extra_player_info_pointer->unk50 = 0xC;
     func_global_asm_80614E78(current_player, 0x10);
 }
