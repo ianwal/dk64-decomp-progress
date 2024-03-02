@@ -1360,8 +1360,56 @@ void func_global_asm_806F0344(void) {
     last_spawned_actor->unk11C = current_player;
 }
 
-// Character Change, Jumptable :(
+// Stupidly close https://decomp.me/scratch/EphMR
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806F03C4.s")
+
+/*
+void func_global_asm_806F03C4(void) {
+    s32 sp1C;
+
+    switch (current_player->unk58) {
+        case ACTOR_DK:
+            sp1C = 7;
+            break;
+        case ACTOR_DIDDY:
+            sp1C = 0;
+            break;
+        case ACTOR_LANKY:
+            extra_player_info_pointer->unk1F0 |= 0x100;
+            sp1C = 4;
+            break;
+        case ACTOR_TINY:
+            if (character_change_array[cc_player_index].unk2C0 == 1) {
+                sp1C = 8;
+            } else {
+                sp1C = 0x1F;
+            }
+            break;
+        case ACTOR_CHUNKY:
+            sp1C = 9;
+            break;
+        default:
+            break;
+    }
+    current_player->y_rotation = func_global_asm_80665DE0(
+        character_change_array[cc_player_index].look_at_eye_x, 
+        character_change_array[cc_player_index].look_at_eye_z,
+        current_player->x_position,
+        current_player->z_position
+    );
+    if (D_global_asm_807FBB68 & 2) {
+        extra_player_info_pointer->unk1F0 &= ~0x100;
+        func_global_asm_80614EBC(current_player, 0x165);
+    } else {
+        if (current_player->control_state != 0x56) {
+            playCutscene(current_player, sp1C, 5);
+        }
+        func_global_asm_80614E78(current_player, 0x5A);
+    }
+    current_player->control_state = 0x67;
+    current_player->control_state_progress = 0;
+}
+*/
 
 void func_global_asm_806F0624(void) {
     extra_player_info_pointer->unk1F4 |= 0x10;

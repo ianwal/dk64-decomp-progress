@@ -166,17 +166,6 @@ extern f64 D_global_asm_8075D310;// = 66.0;
 extern f64 D_global_asm_8075D318;// = 1.33;
 extern f64 D_global_asm_8075D320;// = 0.45;
 extern f64 D_global_asm_8075D328;// = 0.8;
-
-extern f32 D_global_asm_8075D334;// = 0.0125f;
-
-extern f32 D_global_asm_8075D344;// = 1.1f;
-extern f64 D_global_asm_8075D348;// = 1.1;
-extern f32 D_global_asm_8075D350;// = 0.15f;
-extern f64 D_global_asm_8075D358;// = 0.2;
-extern f64 D_global_asm_8075D360;// = 45.0;
-extern f64 D_global_asm_8075D368;// = 0.08;
-extern f64 D_global_asm_8075D370;// = 360.0;
-extern f64 D_global_asm_8075D378;// = 0.04;
 */
 // end rodata
 

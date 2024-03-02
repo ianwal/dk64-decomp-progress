@@ -46,21 +46,12 @@ extern f32 D_global_asm_80753AC4[];
 extern f32 D_global_asm_80753B18[];
 
 // .rodata
-/*
-// const f32 D_global_asm_8075D330 = 0.2f;
-extern f32 D_global_asm_8075D334;// = 0.0125f;
-
-extern f32 D_global_asm_8075D344;// = 1.1f;
-extern f64 D_global_asm_8075D348;// = 1.1;
-extern f32 D_global_asm_8075D350;// = 0.15f;
-extern f64 D_global_asm_8075D358;// = 0.2;
-extern f64 D_global_asm_8075D360;// = 45.0;
-extern f64 D_global_asm_8075D368;// = 0.08;
-extern f64 D_global_asm_8075D370;// = 360.0;
-extern f64 D_global_asm_8075D378;// = 0.04;
-*/
+// const static volatile f32 D_global_asm_8075D330 = 0.2f;
+// const static s32 D_global_asm_8075D330 = 0x3E4CCCCD;
+const static u8 D_global_asm_8075D330[] = {0x3E,0x4C,0xCC,0xCD};
 
 extern s32 D_global_asm_80767CC0;
+
 extern s32 D_global_asm_807FBB68;
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern f32 D_global_asm_807FD888;
@@ -428,10 +419,6 @@ void func_global_asm_806E84F8(void) {
 // ActorAnimationState->unk0, possible datatype conflicts, not sure what is passed into arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E854C.s")
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E8724.s")
-
-/*
 void func_global_asm_806E8724(Actor *arg0, RaceAdditionalActorData *arg1) {
     f32 temp_f0;
     s32 temp_t1;
@@ -440,7 +427,7 @@ void func_global_asm_806E8724(Actor *arg0, RaceAdditionalActorData *arg1) {
     if ((arg1->unk45 == 0) && (arg1->unk34 == 2)) {
         temp_t1 = D_global_asm_807FD610[cc_player_index].unk2F < -0x14;
         phi_a0 = D_global_asm_807FD610[cc_player_index].unk2E >= 0 ? 1 : -1;
-        arg1->unkC = (MIN(80.0f, D_global_asm_807FD610[cc_player_index].unk30) * phi_a0) * 0.0125f;
+        arg1->unkC = 0.0125f * (MIN(80.0f, D_global_asm_807FD610[cc_player_index].unk30) * phi_a0);
         arg1->unkC *= D_global_asm_80750FFC;
         if (arg1->unk20 == 0) {
             arg1->unk20 = (arg0->unkB8 < D_global_asm_80750FF8) & temp_t1;
@@ -453,7 +440,6 @@ void func_global_asm_806E8724(Actor *arg0, RaceAdditionalActorData *arg1) {
     arg1->unk20 = 0;
     arg1->unkC = 0.0f;
 }
-*/
 
 void func_global_asm_806E884C(void) {
     Actor *vehicle = extra_player_info_pointer->vehicle_actor_pointer;
@@ -481,10 +467,6 @@ void func_global_asm_806E88AC() {
 // Actor->animation_state->unk0->stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E88D8.s")
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E8A8C.s")
-
-/*
 void func_global_asm_806E8A8C(void) {
     Actor *vehicle;
     RaceAdditionalActorData *RaaD;
@@ -493,15 +475,14 @@ void func_global_asm_806E8A8C(void) {
     if (vehicle) {
         RaaD = vehicle->RaaD;
         if ((RaaD->unk45 == 0) && (RaaD->unk34 == 2)) {
-            if (RaaD->unk25 == 0) {
+            if (!RaaD->unk25) {
                 RaaD->unk4 = 1.1f;
             }
         } else {
-            RaaD->unk4 = 0.0f;
+            RaaD->unk4 = 0;
         }
     }
 }
-*/
 
 void func_global_asm_806E8AF0(void) {
     Actor *vehicle;
@@ -559,10 +540,6 @@ void func_global_asm_806E8BFC() {
 // TODO: Pointer to something at aaD->unk30, size at least 0x154
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E8C2C.s")
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E8D54.s")
-
-/*
 void func_global_asm_806E8D54(void) {
     Actor *vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     if (vehicle) {
@@ -572,7 +549,6 @@ void func_global_asm_806E8D54(void) {
         }
     }
 }
-*/
 
 void func_global_asm_806E8DB4(void) {
     Actor *vehicle = extra_player_info_pointer->vehicle_actor_pointer;
@@ -650,10 +626,6 @@ void func_global_asm_806E9070(void) {
 }
 */
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E918C.s")
-
-/*
 void func_global_asm_806E918C(void) {
     f32 sp54;
     f32 sp50;
@@ -683,7 +655,6 @@ void func_global_asm_806E918C(void) {
         current_actor_pointer->object_properties_bitfield &= ~0x400;
     }
 }
-*/
 
 void func_global_asm_806E9388(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
@@ -973,14 +944,9 @@ void func_global_asm_806EA26C(void) {
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806EA2D8.s")
-
-/*
 f32 func_global_asm_806EA2D8(void) {
     return D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG ? 0.2 : 1;
 }
-*/
 
 void func_global_asm_806EA334(void) {
     f32 temp_f2;
@@ -999,10 +965,6 @@ void func_global_asm_806EA334(void) {
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806EA460.s")
-
-/*
 void func_global_asm_806EA460(void) {
     f32 temp_f0;
     if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && !(D_global_asm_807FD610[cc_player_index].unk2A & R_CBUTTONS) && current_actor_pointer->control_state == 2) {
@@ -1016,7 +978,6 @@ void func_global_asm_806EA460(void) {
         }
     }
 }
-*/
 
 void func_global_asm_806EA568(void) {
     u16 temp = D_global_asm_807FD610[cc_player_index].unk2A & (L_CBUTTONS | R_CBUTTONS);
@@ -1050,9 +1011,9 @@ void func_global_asm_806EA628(void) {
     if (!(extra_player_info_pointer->unk1F0 & 0x8000)) {
         temp_a0 = extra_player_info_pointer->unk104->additional_actor_data;
         temp_v1 = &temp_a0->unkB2;
-        *temp_v1 = (D_global_asm_807FD610[cc_player_index].unk2E * D_global_asm_8075D368 * func_global_asm_806EA2D8() * 4096.0) / D_global_asm_8075D370;
+        *temp_v1 = (D_global_asm_807FD610[cc_player_index].unk2E * 0.08 * func_global_asm_806EA2D8() * 4096.0) / 360.0;
         temp_v0 = &temp_a0->unkB8;
-        *temp_v0 = D_global_asm_807FD610[cc_player_index].unk2F * D_global_asm_8075D378 * func_global_asm_806EA2D8();
+        *temp_v0 = D_global_asm_807FD610[cc_player_index].unk2F * 0.04 * func_global_asm_806EA2D8();
         *temp_v1 &= 0xFFF;
         if (temp_a0->unkBC + 0x32 < *temp_v0) {
             *temp_v0 = temp_a0->unkBC + 0x32;
