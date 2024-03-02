@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C0EE0/func_global_asm_806BC1E0.s")
 
 Gfx *func_global_asm_806BCF98(Gfx *dl, s32 arg1) {

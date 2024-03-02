@@ -736,17 +736,16 @@ void func_global_asm_806ACCE8(void) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ACF10.s")
 
-// TODO: Good target, doable, as long as NOPs don't screw us at end of function
+// TODO: Very close, something wrong with the do while loops?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ACFFC.s")
 
-/*
 extern s8 D_global_asm_8076A105;
 extern s8 D_global_asm_807FC80E;
 extern s8 D_global_asm_807FC8B9;
 
 void func_global_asm_806ACF10(void);
 
-// TODO: Very close, something wrong with the do while loops?
+/*
 void func_global_asm_806ACFFC(void) {
     s32 var_s1;
     s8 temp_v0_2;

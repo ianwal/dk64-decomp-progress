@@ -113,7 +113,7 @@ s32 func_global_asm_80735CF4(struct_80735CF4 *arg0) {
     return sp2C->unk4C;
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_80735DBC.s")
 
 void func_global_asm_80736FB8(struct_80736FB8 *arg0) {

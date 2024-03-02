@@ -1077,7 +1077,7 @@ void func_global_asm_806EEA5C(void) {
     }
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806EEAF8.s")
 
 void func_global_asm_806EF830(void) {

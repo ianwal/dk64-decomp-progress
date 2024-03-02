@@ -127,7 +127,7 @@ s32 func_global_asm_8069B85C(void) {
     return FALSE;
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069B908.s")
 
 void func_global_asm_8069B908();

@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 extern s32 D_global_asm_807204BC;
 extern s32 D_global_asm_80720508;
 extern s32 D_global_asm_807205C4;
@@ -17,6 +16,7 @@ extern s32 D_global_asm_80720A10;
 extern s32 D_global_asm_80720A34;
 extern s32 D_global_asm_80720A58;
 
+extern s32 D_global_asm_80721170;
 extern s32 D_global_asm_807211D0;
 extern s32 D_global_asm_80721378;
 
@@ -37,6 +37,12 @@ typedef struct {
 } Struct80750400;
 
 extern Struct80750400 D_global_asm_80750400[];
+
+typedef struct {
+    s32 unk0[7];
+} Struct807504A4;
+
+extern Struct807504A4 D_global_asm_807504A4;
 
 extern f32 D_global_asm_807504C0;
 extern f32 D_global_asm_807504C4;
@@ -73,14 +79,6 @@ typedef struct {
 extern s32 D_global_asm_8076A068;
 
 extern s32 D_global_asm_807FBB68;
-extern u8 D_global_asm_807FBD70;
-
-typedef struct {
-    s32 unk0[7];
-} Struct807504A4;
-
-extern s32 D_global_asm_80721170;
-extern Struct807504A4 D_global_asm_807504A4;
 extern u8 D_global_asm_807FBD70;
 extern s32 D_global_asm_807FC954;
 
@@ -120,7 +118,6 @@ void func_global_asm_806A3700(s32 arg0, s32 arg1) {
 
 // Displaylist stuff (matrix)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A370C.s")
-
 
 void func_global_asm_806A3B78(s32 *arg0, AAD_global_asm_806A4DDC *arg1, Struct806A57C0_2 *arg2, u8 arg3, u8 *arg4) {
     s32 sp44;
@@ -517,10 +514,10 @@ void func_global_asm_806A5868(void) {
 }
 */
 
+// TODO: Progress made, kinda fiddly, last loop is sus
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5C60.s")
 
 /*
-// TODO: Progrss made, kinda fiddly, last loop is sus
 void func_global_asm_806A5C60(Actor *arg0) {
     s32 var_a1;
     s32 j;
@@ -706,16 +703,16 @@ void func_global_asm_806A6408(void) {
     }
 }
 
-// jumptable :(
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A6468.s")
 
-// jumptable :(
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A6574.s")
 
-// jumptable :(
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A664C.s")
 
-// jumptable :(
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A6DB4.s")
 
 void func_global_asm_806A734C(void) {

@@ -140,7 +140,7 @@ void func_global_asm_806C6BA0(void) {
     func_global_asm_806C6884(0xA, 0x14, 0x240);
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CB230/func_global_asm_806C6BC8.s")
 
 extern u8 D_global_asm_807FBD70;

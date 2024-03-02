@@ -258,7 +258,7 @@ void func_global_asm_80602DC4(s32 arg0, f32 arg1) {
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80603340.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80603450.s")
 
 extern u8 D_global_asm_80745838;

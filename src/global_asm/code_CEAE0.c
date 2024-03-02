@@ -391,7 +391,7 @@ void func_global_asm_806CA540(void) {
     }
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CA5F8.s")
 
 void func_global_asm_806CB53C(void) {
@@ -2013,8 +2013,8 @@ void func_global_asm_806D0A84(void) {
         case 3:
             current_actor_pointer->unk168 += 0x28;
             current_actor_pointer->unk168 &= 0xFFF;
-            if (current_actor_pointer->unkB8 < 1.19999999999999996) {
-                current_actor_pointer->unkB8 = current_actor_pointer->unkB8 + 0.149999999999999994;
+            if (current_actor_pointer->unkB8 < 1.2) {
+                current_actor_pointer->unkB8 = current_actor_pointer->unkB8 + 0.15;
             }
             temp_f10 = current_actor_pointer->unkB8 * sp2C;
             current_actor_pointer->x_position += temp_f10 * func_global_asm_80612794(current_actor_pointer->unk168);

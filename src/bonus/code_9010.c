@@ -47,12 +47,14 @@ s8 func_global_asm_806FDB8C(s32, void*, s32, f32, f32, f32);
 s32 func_global_asm_806A2A10(s32, s32, u8);
 void func_global_asm_8061CB08(void);
 
+Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void*, s16, void*);
+
 Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
     s16 pad;
     s16 i;
     s16 y;
     AAD_8002D010 *aaD;
-    unsigned char sp70[17];
+    char sp70[17];
 
     aaD = arg1->additional_actor_data;
 
@@ -74,9 +76,9 @@ Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
             y = 480 - (u16)(D_bonus_8002D92C * 48);
             for (i = -1; i < D_bonus_8002D92C; i++) {
                 if (i >= 0) {
-                    func_dk64_boot_800031E0(&sp70, "HIT %d", D_bonus_8002DEF0[i]);
+                    func_dk64_boot_800031E0(sp70, "HIT %d", D_bonus_8002DEF0[i]);
                 } else if (D_bonus_8002D92C >= 2) {
-                    func_dk64_boot_800031E0(&sp70, "COMBO x2");
+                    func_dk64_boot_800031E0(sp70, "COMBO x2");
                 } else {
                     sp70[0] = '\0';
                 }

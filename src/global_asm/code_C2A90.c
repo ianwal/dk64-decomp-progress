@@ -865,7 +865,7 @@ void func_global_asm_806C2D7C() {
     func_global_asm_806C2B2C(0x17, 0x1F, 2, &D_global_asm_8071FFA0);
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C2DF4.s")
 
 void func_global_asm_806C3A8C(void) {

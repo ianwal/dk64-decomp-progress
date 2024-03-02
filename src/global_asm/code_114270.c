@@ -805,7 +805,7 @@ void func_global_asm_80713EB0(enum map_e arg0, s32 arg1, s32 arg2) {
 }
 */
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80714060.s")
 
 // TODO: Why can't these return s32?

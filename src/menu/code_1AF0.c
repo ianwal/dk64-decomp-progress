@@ -576,10 +576,10 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
     }
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026B28.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026DAC.s")
 
 void func_menu_80027028(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex) {
@@ -600,7 +600,7 @@ void func_menu_80027028(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagInde
     }
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_800270E0.s")
 
 s32 func_menu_800275EC(s32 arg0) {

@@ -199,9 +199,9 @@ typedef struct global_asm_struct_1 {
     u8 unk14; // Used
     u8 unk15;
     s16 unk16;
-    s32 unk18;
+    void *unk18;
     s32 unk1C;
-    s32 unk20; // Used
+    void *unk20; // Used
     u8 pad24[0x9C];
 } Struct8076A160; // Size 0xC0
 
@@ -722,7 +722,7 @@ s32 func_global_asm_80600080(Maps map) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600174.s")
 
 int func_global_asm_80689C20(s32, s32, s32, s32, f32, f32);
-void func_global_asm_80631F58(s32, s32, s32);
+void func_global_asm_80631F58(void*, void*, void*);
 s16 func_global_asm_80600174(f32*, f32*, f32*);
 
 /*

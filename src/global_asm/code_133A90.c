@@ -1,9 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 s32 func_global_asm_8063367C(s32, u8, s32);
 s32 func_global_asm_80671D64(s32, s32);
+void func_global_asm_8072F230(Actor*, u8, u8);
+s32 func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
+f32 func_global_asm_80627A00(f64, f32, f32, f32, f32);
 
 typedef struct {
     u8 unk0;
@@ -174,8 +176,6 @@ void func_global_asm_8072F09C(Actor *arg0) {
     }
 }
 
-void func_global_asm_8072F230(Actor*, u8, u8);
-
 void func_global_asm_8072F120(void) {
     u8 i;
     s32 var_v1;
@@ -317,15 +317,6 @@ s32 func_global_asm_8072F8D4(GlobalASMStruct82 *arg0, s32 arg1, s16 arg2) {
     return FALSE;
 }
 
-s32 func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
-extern f64 D_global_asm_8075FF60;
-extern f32 D_global_asm_8075FF68;
-extern f64 D_global_asm_8075FF70;
-extern f32 D_global_asm_8075FF78;
-extern f32 D_global_asm_8075FF7C;
-extern f64 D_global_asm_8075FF80;
-extern f64 D_global_asm_8075FF88;
-
 f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, GlobalASMStruct82 *arg2, u8 arg3) {
     u8 temp_t0;
     u8 temp_t1;
@@ -361,15 +352,15 @@ f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, Globa
     var_f2 = (sp64 - sp70) / (sp7C - sp70);
     if (arg2->unk18 == 2 || arg2->unk18 == 3) {
         if (arg3 == 0) {
-            if (var_f2 < D_global_asm_8075FF60) {
-                var_f2 = D_global_asm_8075FF68;
+            if (var_f2 < 0.05) {
+                var_f2 = 0.05f;
             }
         }
     }
     if (arg2->unk18 == 1 || arg2->unk18 == 3) {
         if ((arg3 + 1) == arg2->unk7) {
-            if (D_global_asm_8075FF70 < var_f2) {
-                var_f2 = D_global_asm_8075FF78;
+            if (0.95 < var_f2) {
+                var_f2 = 0.95f;
             }
         }
     }
@@ -378,7 +369,7 @@ f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, Globa
     arg1->unk144 = arg0->z_position;
     arg1->unk148 = 0.0f;
     memcpy(&arg1->unk15C, &arg0->unkC, 0x40);
-    arg0->y_rotation = ((func_global_asm_80665E48(sp68, sp60, arg0->x_position, arg0->z_position) * D_global_asm_8075FF7C) / D_global_asm_8075FF80) * D_global_asm_8075FF88;
+    arg0->y_rotation = ((func_global_asm_80665E48(sp68, sp60, arg0->x_position, arg0->z_position) * 57.29577637f) / 360.0) * 4095.0;
     return var_f2;
 }
 
@@ -395,7 +386,7 @@ void func_global_asm_8072FDD4(GlobalASMStruct82 *arg0, f32 arg1, s8 *arg2, f32 *
         arg1 = var_f0;
         var_f0 -= arg0->unk34[i].unk4;
         i++;
-        if (!(0.0 < var_f0) || i >= arg0->unk7) {
+        if (!(var_f0 > 0.0) || i >= arg0->unk7) {
             i--;
             break;
         }
@@ -409,8 +400,6 @@ void func_global_asm_8072FDD4(GlobalASMStruct82 *arg0, f32 arg1, s8 *arg2, f32 *
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_807300BC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_80730408.s")
-
-f32 func_global_asm_80627A00(f64, f32, f32, f32, f32);
 
 void func_global_asm_80730AEC(u8 arg0, f32 arg1, GlobalASMStruct82 *arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
     u8 sp7C[4];

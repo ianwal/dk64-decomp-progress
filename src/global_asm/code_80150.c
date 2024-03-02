@@ -349,7 +349,7 @@ void func_global_asm_8067C6FC(void) {
     func_global_asm_8067C71C();
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067C71C.s")
 
 int func_global_asm_8071910C(); // TODO: Signature
@@ -622,7 +622,7 @@ u8 func_global_asm_80680908(void) {
     return phi_v1;
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_806809F0.s")
 
 typedef struct {

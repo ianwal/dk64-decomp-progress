@@ -27,7 +27,7 @@ extern s8 D_critter_80029FA0;
 extern u16 D_critter_80029FA4;
 extern s8 D_critter_80029FA8;
 
-extern u32 D_critter_8002A1C0;
+extern void *D_critter_8002A1C0;
 extern u32 D_critter_8002A1C4;
 extern void* D_critter_8002A1C8[];
 extern u16 D_critter_8002A1CE;

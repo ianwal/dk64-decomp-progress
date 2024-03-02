@@ -12,7 +12,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80733C34.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80733D8C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80735624.s")

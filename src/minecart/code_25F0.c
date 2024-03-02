@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-// jumptable, close
+// Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_800265F0.s")
 
 s32 func_global_asm_806131D4(Actor *, s16);
@@ -114,10 +114,10 @@ void func_minecart_80026C54(void) {
         ((rand() >> 0xF) % 20) + (current_actor_pointer->z_position - 10.0f));
 }
 
-// huge, jumptable
+// Jumptable, huge
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_80026DA8.s")
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_80027778.s")
 
 void func_minecart_80027CF4(void) {

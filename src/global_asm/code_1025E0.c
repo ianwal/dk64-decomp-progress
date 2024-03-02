@@ -5,8 +5,8 @@ typedef struct GlobalASMStruct2 GlobalASMStruct2;
 
 struct GlobalASMStruct2 {
     GlobalASMStruct2 *next;
-    s32 unk4;
-    s32 unk8;
+    void *unk4;
+    void *unk8;
     u8 padC[0x18 - 0x0C];
     f32 unk18;
     s16 unk1C;
@@ -175,8 +175,8 @@ void func_global_asm_806FF144(Gfx *dl) {
     func_global_asm_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, 0x3E, D_global_asm_80744494 - 0x3E, 2.0f, 2.0f, 0x10E, 0.0f);
 }
 
-void func_global_asm_806FF32C(s32 arg0, Actor *arg1) {
-    func_global_asm_806FF144(func_global_asm_806FEDB0(arg0, arg1->PaaD->unk1A4));
+void func_global_asm_806FF32C(Gfx *dl, Actor *arg1) {
+    func_global_asm_806FF144(func_global_asm_806FEDB0(dl, arg1->PaaD->unk1A4));
 }
 
 // Displaylist stuff
@@ -301,10 +301,10 @@ void func_global_asm_80701C90(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_80701CA0.s")
 
 // TODO: Is this signature correct?
-void func_global_asm_807024E0(s32, s32, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
+void func_global_asm_807024E0(Gfx*, void*, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
 // TODO: Is this signature correct?
-void func_global_asm_807023E8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC) {
+void func_global_asm_807023E8(Gfx *arg0, void *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC) {
     func_global_asm_807024E0(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, 1, 0x10, 0, 0);
 }
 

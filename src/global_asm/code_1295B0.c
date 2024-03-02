@@ -529,7 +529,7 @@ void func_global_asm_807289B0(u8 arg0, u8 arg1) {
     func_global_asm_806883F4(current_actor_pointer, arg0, arg1, 0);
 }
 
-// jumptable
+// Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_807289E8.s")
 
 void func_global_asm_80729AA4(u8 arg0) {

@@ -1756,7 +1756,7 @@ void func_global_asm_8063CADC(void) {
     D_global_asm_807F618C = getPointerTableFile(7, 0x3B8, 0, 0); // Texture
 }
 
-// jumptable, Displaylist stuff
+// Jumptable, Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063CB40.s")
 
 void func_global_asm_8063CE64(void) {

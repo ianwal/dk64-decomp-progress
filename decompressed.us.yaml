@@ -427,7 +427,7 @@ segments:
       - [0x2163840, rodata] # code_127B00
       - [0x2163880, rodata] # code_1295B0, code12E800?
       - [0x2164880, rodata] # code_12E800
-      - [0x2164C50, rodata] # code_133A90
+      - [0x2164C50, .rodata, code_133A90]
       - [0x2164CF0, .rodata, code_136820]
       - [0x2164E90, .rodata, audio/code_137630]
       - [0x2164EA0, .rodata, audio/code_137C10]
