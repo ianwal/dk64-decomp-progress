@@ -789,7 +789,7 @@ s32 func_global_asm_806FA7A4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FA7BC.s")
 
-s32 func_global_asm_806FA9C0(s32 arg0, s32 arg1) {
+Gfx *func_global_asm_806FA9C0(s32 arg0, Gfx *arg1) {
     s32 var_a0;
     s32 var_s1;
     s32 var_v1;
@@ -832,8 +832,38 @@ s32 func_global_asm_806FA9C0(s32 arg0, s32 arg1) {
     return arg1;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FAB20.s")
+s32 func_global_asm_806F9518(s32);
+Gfx *func_global_asm_806FA5A4(s32, Gfx *);
+Gfx *func_global_asm_806FA7BC(s32, Gfx *);
+Gfx *func_global_asm_806FA9C0(s32, Gfx *);
+
+Gfx *func_global_asm_806FAB20(Gfx *dl) {
+    s32 HUDItemIndex;
+
+    if (cc_number_of_players >= 2) {
+        return dl;
+    }
+    gDPPipeSync(dl++);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+
+    for (HUDItemIndex = 0; HUDItemIndex < 0xF; HUDItemIndex++) {
+        switch (D_global_asm_80754280->hud_item[HUDItemIndex].hud_state) {
+            case 0:
+                func_global_asm_806F9518(HUDItemIndex);
+                break;
+            case 1:
+                dl = func_global_asm_806FA5A4(HUDItemIndex, dl);
+                break;
+            case 2:
+                dl = func_global_asm_806FA7BC(HUDItemIndex, dl);
+                break;
+            case 3:
+                dl = func_global_asm_806FA9C0(HUDItemIndex, dl);
+                break;
+        }
+    }
+    return dl;
+}
 
 extern s32 D_global_asm_80754288;
 
