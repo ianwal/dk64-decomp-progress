@@ -352,7 +352,7 @@ segments:
       - [0x215B2E0, .rodata, code_3C10]
       - [0x215B4B0, rodata] # code_6710 // TODO: Problem with 80756F08, might be an array of doubles?
       - [0x215BD20, .rodata, code_104F0]
-      - [0x215BE40, rodata] # code_131B0
+      - [0x215BE40, rodata] # code_131B0 // TODO: Problem with some pointer table in .data pointing to this (D_global_asm_80746A0C)
       - [0x215BF90, rodata] # heap
       - [0x215BFD0, .rodata, done/code_16550]
       - [0x215BFF0, rodata] # ???
@@ -413,7 +413,7 @@ segments:
       - [0x2161DE0, .rodata, code_E4090]
       - [0x2162030, .rodata, code_EBBE0]
       - [0x2162080, .rodata, code_EFDC0]
-      - [0x21622F0, rodata] # code_F56F0
+      - [0x21622F0, .rodata, code_F56F0]
       - [0x2162560, .rodata, code_F9450]
       - [0x2162760, .rodata, hud]
       - [0x2162920, rodata] # code_100180 // TODO: Offset may be wrong

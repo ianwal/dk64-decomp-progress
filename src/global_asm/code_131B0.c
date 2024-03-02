@@ -17,6 +17,10 @@ extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_807ECD09;
 extern OSMesgQueue D_global_asm_807ECCF0;
 
+// rodata
+// const static u8 D_global_asm_80757184[] = {0,0,0,0};
+// const static char D_global_asm_80757188[] = "WARNING!!";
+
 void func_global_asm_8060E4B0(Struct807F0470 *arg0) {
     bzero(arg0, sizeof(Struct807F0470));
 }

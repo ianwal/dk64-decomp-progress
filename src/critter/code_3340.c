@@ -411,10 +411,10 @@ s32 (*func_critter_80029110(s32 arg0))(s32 *, s32) {
     return ~arg0;
 }
 
+// TODO: Pretty close considering size
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80029118.s")
 
 /*
-// TODO: Pretty close considering size
 void func_critter_80029118(void) {
     s32 sp74;
     s32 sp70;
