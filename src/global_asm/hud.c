@@ -14,6 +14,17 @@ struct global_asm_struct_71 {
     GlobalASMStruct71 *unk18; // Next?
 };
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8; // Used
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    GlobalASMStruct71 *unk14; // Used, prev?
+    GlobalASMStruct71 *unk18; // Next?
+} GS71_F32;
+
 typedef struct HUDDisplay {
 	/* 0x000 */ u16* actual_count_pointer;
 	/* 0x004 */	u16 hud_count;
@@ -657,8 +668,31 @@ void func_global_asm_806F966C(Struct806F9744_arg0 **arg0) {
     func_global_asm_80611690((*arg0)->unk14);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F96CC.s")
+void func_global_asm_806F96CC(GS71_F32 *arg0, u32 arg1) {
+    s32 var_v0;
+    s32 var_v1;
+
+    var_v0 = 0;
+    var_v1 = 0;
+    arg0->unkC = 0;
+    switch (arg1) {
+        case 0:
+        case 13:
+        case 14:
+            var_v0 = -1;
+            break;
+        case 9:
+        case 10:
+        case 12:
+            var_v1 = 1;
+            break;
+        default:
+            var_v0 = 1;
+            break;
+    }
+    arg0->unk4 = var_v0 * 0x30;
+    arg0->unk8 = var_v1 * 0x30;
+}
 
 int func_global_asm_8071BE04(); // TODO: Signature
 
@@ -724,12 +758,41 @@ void func_global_asm_806F9AF0(Struct806F9AF0_arg0 *arg0, s8 *arg1) {
     D_global_asm_807FD7A0[temp] = -200.0f;
 }
 
+// TODO: Very close, registers the wrong way round in an addu
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F9B64.s")
 
+extern void *D_global_asm_80750518;
+
+/*
+void func_global_asm_806F9B64(s32 arg0) {
+    GlobalASMStruct71 **counter;
+    GlobalASMStruct71 *previousCounter;
+    s32 i;
+    void **var_s2;
+
+    counter = &D_global_asm_80754280->hud_item[arg0].counter_pointer;
+    func_global_asm_806F966C(counter);
+    func_global_asm_806F96CC(*counter, 0);
+    (*counter)->unk10 = 0;
+    previousCounter = (*counter)->unk14;
+    previousCounter->unk0 = D_global_asm_80754280->hud_item[arg0].screen_x + 20;
+    previousCounter->unk4 = D_global_asm_80754280->hud_item[arg0].screen_y - 20;
+    var_s2 = &D_global_asm_80750518;
+    for (i = 0; i < 5; i++) {
+        func_global_asm_8071495C();
+        func_global_asm_807149FC(-1);
+        func_global_asm_8071498C(&func_global_asm_806F9AF0);
+        func_global_asm_80714950(i);
+        D_global_asm_807FD7A0[i] = -100.0f;
+        func_global_asm_80714CC0(var_s2[i], 1.0f, -200.0f, 0.0f, -10.0f);
+    }
+}
+*/
+
+// TODO: Very close, registers the wrong way round in an addu
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F9CD0.s")
 
 /*
-// TODO: Very close, registers the wrong way round in an addu
 void func_global_asm_806F9CD0(s32 arg0) {
     GlobalASMStruct71 **temp_s0;
     GlobalASMStruct71 *sp30;
