@@ -1710,7 +1710,7 @@ us,asm,func_global_asm_807238D4,964,no
 us,asm,func_global_asm_8060B968,104,yes
 us,asm,func_global_asm_807138CC,476,no
 us,asm,func_global_asm_806F5FA0,72,yes
-us,asm,func_global_asm_806EC8C4,208,no
+us,asm,func_global_asm_806EC8C4,208,yes
 us,asm,func_global_asm_806A1580,808,yes
 us,asm,func_global_asm_806D79E4,68,yes
 us,asm,func_global_asm_806323C0,380,no
