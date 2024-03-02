@@ -153,8 +153,30 @@ void func_global_asm_806EB544(void) {
     func_global_asm_80614E78(current_actor_pointer, 0x4B);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806EB5C8.s")
+void func_global_asm_806EB5C8(void) {
+    switch (current_character_index[cc_player_index]) {
+        case 0:
+        case 1:
+        case 2:
+            current_actor_pointer->y_velocity = 50.0f;
+            current_actor_pointer->y_acceleration = -2.5f;
+            break;
+        case 3:
+            current_actor_pointer->y_velocity = 140.0f;
+            current_actor_pointer->y_acceleration = -20.0f;
+            break;
+        case 4:
+        case 5:
+            current_actor_pointer->y_velocity = 40.0f;
+            current_actor_pointer->y_acceleration = -7.0f;
+            break;
+    }
+    current_actor_pointer->control_state = 0x2A;
+    current_actor_pointer->control_state_progress = 0;
+    func_global_asm_80614E78(current_actor_pointer, 0x43);
+    extra_player_info_pointer->unk64 = 0;
+    extra_player_info_pointer->unkC8 = 0x32;
+}
 
 void func_global_asm_806EB6D8(void) {
     extra_player_info_pointer->unk4C = -1;
