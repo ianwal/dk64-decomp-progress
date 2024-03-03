@@ -274,7 +274,7 @@ extern u8 D_menu_800330C0[];
 
 /*
 // TODO: Doable, good progress made
-void func_menu_80024788(Struct80024788 *arg0) {
+void func_menu_80024788(SnideAaD180 *arg0) {
     s32 temp_v0;
     s32 sp40;
     CharacterProgress *sp3C;
@@ -286,7 +286,7 @@ void func_menu_80024788(Struct80024788 *arg0) {
 
     sp40 = 0;
     D_menu_800330D8 = 0;
-    switch (arg0->unk1) {
+    switch (arg0->screen) {
         case 0x2:
         case 0x37:
             break;
@@ -310,19 +310,19 @@ void func_menu_80024788(Struct80024788 *arg0) {
                 func_global_asm_8060DEC8();
             }
             if (func_global_asm_8061CB50() == 0) {
-                arg0->unk1++;
+                arg0->screen++;
                 func_global_asm_806EB0C0(0x55, NULL, 0);
             }
             break;
         case 0x1:
             if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
                 current_actor_pointer->unk15F = 0;
-                arg0->unk1 = 3;
+                arg0->screen = 3;
             } else {
-                arg0->unk19 = 1;
+                arg0->minigame_menu_unlocked = 1;
                 for (var_s0_3 = 0x1FD; var_s0_3 < 0x225; var_s0_3++) {
                     if (isFlagSet(var_s0_3, FLAG_TYPE_PERMANENT) == FALSE) {
-                        arg0->unk19 = 0;
+                        arg0->minigame_menu_unlocked = 0;
                         var_s0_3 = 0x224;
                     }
                 }
@@ -335,42 +335,42 @@ void func_menu_80024788(Struct80024788 *arg0) {
                 func_global_asm_8068C350(&func_menu_800244EC, current_actor_pointer, 3);
                 if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
                     func_menu_800241E8();
-                    arg0->unk1 = 2;
-                } else if ((arg0->unk19 != 0) && (D_global_asm_807FD610[cc_player_index].unk2C & U_CBUTTONS)) {
-                    arg0->unk1 = 4;
+                    arg0->screen = 2;
+                } else if ((arg0->minigame_menu_unlocked != 0) && (D_global_asm_807FD610[cc_player_index].unk2C & U_CBUTTONS)) {
+                    arg0->screen = 4;
                 }
             }
             break;
         case 0x3:
             D_menu_800330D8 = 1;
             if (D_global_asm_807FD610[cc_player_index].unk2C & (A_BUTTON | B_BUTTON)) {
-                arg0->unk1 = 1;
+                arg0->screen = 1;
             }
             break;
         default:
             if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
                 var_t5 = 1;
             } else {
-                if ((D_global_asm_807ECDEC->unk3 >= 0x29) && (arg0->unk18 < 0x29)) {
-                    arg0->unk1--;
+                if ((D_global_asm_807ECDEC->unk3 >= 0x29) && (arg0->previous_y < 0x29)) {
+                    arg0->screen--;
                     playSound(0x2A0, 0x7FFF, 64.0f, 1.0f, 0, 0);
                 }
-                if ((D_global_asm_807ECDEC->unk3 < -0x28) && (arg0->unk18 >= -0x28)) {
-                    arg0->unk1++;
+                if ((D_global_asm_807ECDEC->unk3 < -0x28) && (arg0->previous_y >= -0x28)) {
+                    arg0->screen++;
                     playSound(0x2A0, 0x7FFF, 64.0f, 1.0f, 0, 0);
                 }
-                var_t5 = ((arg0->unk1 - 4) & 7) + 4;
+                var_t5 = ((arg0->screen - 4) & 7) + 4;
             }
-            arg0->unk1 = var_t5;
+            arg0->screen = var_t5;
             if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
                 func_global_asm_80712774(D_menu_800330C0[var_t5]);
                 D_menu_80032F50 = 1;
-                arg0->unk1 = 0x37;
+                arg0->screen = 0x37;
             }
             func_global_asm_8068C350(&func_menu_800244EC, current_actor_pointer, 3);
             break;
     }
-    arg0->unk18 = D_global_asm_807ECDEC->unk3;
+    arg0->previous_y = D_global_asm_807ECDEC->unk3;
 }
 */
 
@@ -485,6 +485,151 @@ void func_menu_80024CB0(void) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_800252AC.s")
+
+typedef struct model_vertex {
+    s16 x;
+    s16 y;
+    s16 z;
+    s16 u;
+    s16 v;
+    s16 w;
+    u8 red;
+    u8 green;
+    u8 blue;
+    u8 alpha;
+} model_vertex;
+
+typedef struct struct_menu_80033F10 {
+    model_vertex vertices[4];
+} struct_menu_80033F10;
+
+typedef struct snide_menu_aad_174 {
+    f32 unk0;
+} snide_menu_aad_174;
+
+extern struct_menu_80033F10 *D_80033F10;
+extern Mtx D_menu_800330D0[2];
+extern void *D_menu_800330D4;
+extern s8 D_menu_80033258;
+
+/*
+Good start, but lots wrong
+Gfx *func_menu_800252AC(Gfx *dl, Actor *arg1) {
+    void *sp188;
+    f32 sp12C[4];
+    s32 temp_a1;
+    s32 temp_a3;
+    s32 temp_s2;
+    s32 temp_t6;
+    s32 temp_t7;
+    s32 var_v0;
+    s32 var_fp;
+    s32 var_s1;
+    s32 var_s4;
+    s32 var_v1;
+    void *temp_v0_2;
+    void *var_s0;
+    void *var_s0_2;
+    s8 *var_s5;
+    snide_menu_aad_174* aad = (snide_menu_aad_174*)arg1->AaaD;
+    s8 sp12B;
+
+    gDPPipeSync(dl++);
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetCycleType(dl++, G_CYC_2CYCLE);
+    gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_OPA_SURF2);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA_PRIM2);
+    gSPMatrix(dl++, 0x020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    guTranslateF((f32 (*)[4]) &sp12C[0], 8.0f, aad->unk0, 0.0f);
+    guMtxF2L((f32 (*)[4]) &sp12C[0], &D_menu_800330D0[D_global_asm_807444FC]);
+    gSPMatrix(dl++, &D_menu_800330D0[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPSetTextureFilter(dl++, G_TF_POINT);
+    sp188 = func_global_asm_8068C12C(0xA3U);
+    var_s5 = (s8*)D_80033F10;
+    sp12B = 1;
+    var_v1 = 0;
+    for (var_fp = 0; var_fp < 5; var_fp++, var_v1 += 0x1E) {
+        temp_a3 = var_v1 + 0x1E;
+        temp_t6 = (var_v1 * 4) & 0xFFF;
+        temp_t7 = (temp_a3 * 4) & 0xFFF;
+        var_s1 = 0;
+        for (var_s4 = 0; var_s4 < 8; var_s4++, var_s5 += 0x80) {
+            gDPPipeSync(dl++);
+            if (isFlagSet(func_global_asm_807319D8(0x1FD, var_s4, var_fp), 0U) != 0) {
+                gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            } else {
+                sp12B = 0;
+                gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0x00);
+            }
+            temp_a1 = (((s32) (((s32) ((var_s1 - var_s1) + 0x1F) >> 1) + 7) >> 3) & 0x1FF);
+            gDPSetTextureImage(dl++, G_IM_FMT_I, G_IM_SIZ_8b, 120, sp188);
+            gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_8b, temp_a1, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
+            temp_s2 = var_s1 + 0x1E;
+            gDPLoadSync(dl++);
+            gDPLoadTile(dl++, 2, (var_s1 * 2) & 0xFFF, temp_t6, (temp_s2 * 2) & 0xFFF, temp_t7);
+            gDPPipeSync(dl++);
+            gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_4b, temp_a1, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
+            gDPSetTileSize(dl++, 2, (var_s1 * 4) & 0xFFF, (var_v1 * 4) & 0xFFF, (temp_s2 * 4) & 0xFFF, temp_t7);
+            gSPVertex(dl++, osVirtualToPhysical(var_s5), 8, 0);
+            gSP2Triangles(dl++, 0, 1, 2, 0, 1, 3, 2, 0);
+            gSP2Triangles(dl++, 2, 3, 4, 0, 3, 5, 4, 0);
+            gSP2Triangles(dl++, 4, 5, 6, 0, 5, 7, 6, 0);
+        }
+    }
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetTextureFilter(dl++, G_TF_BILERP);
+    gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, func_global_asm_8068C12C(0xA2U));
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+    gDPLoadSync(dl++);
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);
+    gDPPipeSync(dl++);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
+    gSPVertex(dl++, osVirtualToPhysical(D_menu_800330D4), 20, 0);
+    gSP2Triangles(dl++, 0, 1, 2, 0, 0, 2, 3, 0);
+    gSP2Triangles(dl++, 4, 5, 6, 0, 4, 6, 7, 0);
+    gSP2Triangles(dl++, 8, 9, 10, 0, 8, 10, 11, 0);
+    gSP2Triangles(dl++, 12, 13, 14, 0, 12, 14, 15, 0);
+    gDPPipeSync(dl++);
+    if ((sp12B != 0) && ((u32) (object_timer & 0x1F) < 0x14U)) {
+        temp_v0_2 = func_global_asm_8068C12C(0x44U);
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0xFF, 0x00, 0xFF)
+        gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+        gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, temp_v0_2);
+        gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
+        gDPLoadSync(dl++);
+        gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 2047, 256);
+        gDPPipeSync(dl++);
+        gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
+        gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x00FC);
+        gSP2Triangles(dl++, 16, 17, 18, 0, 16, 18, 19, 0);
+        var_v0 = 0;
+        if (D_menu_80033258 == 0) {
+            for (; var_v0 < 0x50; var_v0++) {
+                D_80033F10->vertices[(4 * var_v0) + 0].red = 0;
+                D_80033F10->vertices[(4 * var_v0) + 0].green = 0xFF;
+                D_80033F10->vertices[(4 * var_v0) + 0].blue = 0xFF;
+                D_80033F10->vertices[(4 * var_v0) + 1].red = 0;
+                D_80033F10->vertices[(4 * var_v0) + 1].green = 0xFF;
+                D_80033F10->vertices[(4 * var_v0) + 1].blue = 0xFF;
+                D_80033F10->vertices[(4 * var_v0) + 2].red = 0;
+                D_80033F10->vertices[(4 * var_v0) + 2].green = 0xFF;
+                D_80033F10->vertices[(4 * var_v0) + 2].blue = 0xFF;
+                D_80033F10->vertices[(4 * var_v0) + 3].red = 0;
+                D_80033F10->vertices[(4 * var_v0) + 3].green = 0xFF;
+                D_80033F10->vertices[(4 * var_v0) + 3].blue = 0xFF;
+            }
+            D_menu_80033258 = 1;
+        }
+    }
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return dl;
+}
+*/
 
 void func_menu_80025AE0(void) {
 
