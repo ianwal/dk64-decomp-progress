@@ -410,17 +410,13 @@ void func_global_asm_806F149C(Actor *arg0) {
     func_global_asm_806D0150(arg0);
 }
 
-// regalloc stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F14BC.s")
-
-/*
 void func_global_asm_806F14BC(Actor *arg0) {
-    s32 temp_v0;
-    f32 var_f0;
     f32 sp54;
     u8 sp53;
+    f32 var_f0;
     f32 var_f12;
     f32 temp_f16;
+    s32 temp_v0;
 
     func_global_asm_80614FD8(&sp54);
     func_global_asm_80614F28(&sp53);
@@ -449,7 +445,6 @@ void func_global_asm_806F14BC(Actor *arg0) {
     }
     func_global_asm_80614D00(arg0, var_f12, 0.0f);
 }
-*/
 
 s32 func_global_asm_806F1668(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f0, temp_f2, phi_f12;
