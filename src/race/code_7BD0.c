@@ -600,8 +600,6 @@ f32 func_race_8002DD70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return ((arg4 - arg2) * ((arg0 - arg1) / (arg3 - arg1))) + arg2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002DDA0.s")
-
 typedef struct {
     u8 unk0[0xF - 0x0];
     u8 unkF;
@@ -609,18 +607,7 @@ typedef struct {
 } Struct8002E1C8_arg0;
 
 typedef struct {
-    s32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    s32 unk18;
-    f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-    f32 unk2C;
+    f32 unk0[6][2];
 } Struct8002E1C8_arg2;
 
 typedef struct {
@@ -631,30 +618,54 @@ typedef struct {
 
 f32 func_race_8002DDA0(f32 arg0, Struct8002E1C8_arg2 *arg1);
 
+f32 func_race_8002DDA0(f32 arg0, Struct8002E1C8_arg2 *arg1) {
+    s32 found;
+    f32 var_f2;
+    u8 i;
+
+    found = FALSE;
+    i = 1;
+    if (arg0 < arg1->unk0[0][0]) {
+        found = TRUE;
+        var_f2 = arg1->unk0[0][1];
+    }
+    while (i < 6 && !found) {
+        if (arg0 < arg1->unk0[i][0]) {
+            var_f2 = func_race_8002DD70(arg0, arg1->unk0[i - 1][0], arg1->unk0[i - 1][1], arg1->unk0[i][0], arg1->unk0[i][1]);
+            found = TRUE;
+        }
+        i++;
+    }
+    if (!found) {
+        var_f2 = arg1->unk0[5][1];
+    }
+    return var_f2;
+}
+
 void func_race_8002DE78(Struct8002E1C8_arg0 *arg0, u8 arg1, Struct8002E1C8_arg2 *arg2, Struct8002E1C8_arg3 *arg3) {
     switch (arg1) {
         case 0:
         case 1:
-            arg2->unk4 = arg3->unk0;
-            arg2->unkC = arg3->unk4;
-            arg2->unk14 = arg3->unk4;
-            arg2->unk1C = arg3->unk4;
-            arg2->unk24 = arg3->unk4;
-            arg2->unk2C = arg3->unk8;
+            arg2->unk0[0][1] = arg3->unk0;
+            arg2->unk0[1][1] = arg3->unk4;
+            arg2->unk0[2][1] = arg3->unk4;
+            arg2->unk0[3][1] = arg3->unk4;
+            arg2->unk0[4][1] = arg3->unk4;
+            arg2->unk0[5][1] = arg3->unk8;
             break;
         case 2:
         case 3:
-            arg2->unk1C = arg3->unk8;
-            arg2->unk24 = arg3->unk8;
-            arg2->unk2C = arg3->unk8;
+            arg2->unk0[3][1] = arg3->unk8;
+            arg2->unk0[4][1] = arg3->unk8;
+            arg2->unk0[5][1] = arg3->unk8;
             break;
         case 5:
-            arg2->unk4 = arg3->unk0;
-            arg2->unkC = arg3->unk8;
-            arg2->unk14 = arg3->unk8;
-            arg2->unk1C = arg3->unk8;
-            arg2->unk24 = arg3->unk8;
-            arg2->unk2C = arg3->unk8;
+            arg2->unk0[0][1] = arg3->unk0;
+            arg2->unk0[1][1] = arg3->unk8;
+            arg2->unk0[2][1] = arg3->unk8;
+            arg2->unk0[3][1] = arg3->unk8;
+            arg2->unk0[4][1] = arg3->unk8;
+            arg2->unk0[5][1] = arg3->unk8;
             break;
     }
     current_actor_pointer->control_state_progress = 0;
@@ -677,14 +688,14 @@ f32 func_race_8002E1C8(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 
         case 1:
             var_f2 = func_race_8002DDA0(arg1, arg2);
             if (arg0->unk10 != 0) {
-                if (arg2->unk20 < arg1) {
+                if (arg2->unk0[4][0] < arg1) {
                     func_race_8002DE78(arg0, 5, arg2, arg3);
                 }
             }
             break;
         case 5:
             var_f2 = func_race_8002DDA0(arg1, arg2);
-            if (arg1 < arg2->unk8) {
+            if (arg1 < arg2->unk0[1][0]) {
                 func_race_8002DE78(arg0, 1, arg2, arg3);
             }
             break;
