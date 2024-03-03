@@ -3374,7 +3374,7 @@ us,.menu,func_menu_8002DFA8,1144,no
 us,.menu,func_menu_80027E60,212,yes
 us,.menu,func_menu_80024418,212,yes
 us,.menu,func_menu_8002D8AC,816,no
-us,.menu,func_menu_800244EC,668,no
+us,.menu,func_menu_800244EC,668,yes
 us,.menu,func_menu_8002A088,740,no
 us,.menu,func_menu_8002B708,2496,no
 us,.menu,func_menu_80025E04,432,yes

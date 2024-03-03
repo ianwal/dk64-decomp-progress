@@ -195,8 +195,6 @@ void func_menu_80024418(MenuStruct0 *arg0, s32 arg1) {
     }
 }
 
-// Displaylist stuff
-// #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_800244EC.s")
 void func_dk64_boot_800031E0(char *, char *, ...);           /* extern */
 Gfx *func_global_asm_806ABB98(Gfx *, s16 , s16 , f32 , void *); /* extern */
 Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32); /* extern */
