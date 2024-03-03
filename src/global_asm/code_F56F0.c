@@ -119,6 +119,7 @@ s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 void func_global_asm_80614FD8(void*);
 void func_global_asm_80614F28(void*);
 s32 func_global_asm_80613448();
+s32 func_global_asm_806C8DE0(u8);
 
 void func_global_asm_806F09F0(Actor *arg0, u16 arg1) {
     switch (arg1) {
@@ -226,9 +227,6 @@ void func_global_asm_806F0C18(Actor *arg0) {
     }
 }
 
-s32 func_global_asm_80613448();
-s32 func_global_asm_806C8DE0(u8);
-
 void func_global_asm_806F0D68(Actor *arg0) {
     s32 temp_v0;
     PlayerAdditionalActorData *PaaD;
@@ -320,8 +318,39 @@ void func_global_asm_806F1048(Actor *arg0) {
     func_global_asm_806C8D20(current_actor_pointer);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F10E8.s")
+void func_global_asm_806F10E8(Actor *arg0) {
+    switch ((u32)arg0->unk58) {
+        case 0x2:
+        case 0xC4:
+            func_global_asm_806F0C18(arg0);
+            spawnActor(ACTOR_BONGOS, 0xA6);
+            func_global_asm_8067B238(last_spawned_actor, arg0, arg0->animation_state->scale[1] * 1.25);
+            last_spawned_actor->x_rotation = arg0->x_rotation;
+            last_spawned_actor->z_rotation = arg0->z_rotation;
+            last_spawned_actor->object_properties_bitfield |= 0x40000000;
+            return;
+        case 0x3:
+        case 0xC5:
+            func_global_asm_806F0C18(arg0);
+            func_global_asm_80613194(arg0, 2);
+            return;
+        case 0x4:
+        case 0xC6:
+            func_global_asm_806F0C18(arg0);
+            func_global_asm_80613194(arg0, 7);
+            return;
+        case 0x5:
+        case 0xC7:
+            func_global_asm_806F0C18(arg0);
+            func_global_asm_80613194(arg0, 0xA);
+            return;
+        case 0x6:
+        case 0xC8:
+            func_global_asm_806F0C18(arg0);
+            func_global_asm_80613194(arg0, 0xD);
+            return;
+    }
+}
 
 void func_global_asm_806F1250(Actor *arg0) {
     PlayerAdditionalActorData *PaaD = arg0->PaaD;
