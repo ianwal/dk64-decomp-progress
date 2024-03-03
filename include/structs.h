@@ -749,6 +749,23 @@ typedef struct menu_additional_actor_data {
     s8 unk17;
 } MenuAdditionalActorData;
 
+typedef struct SnideAaD180 {
+    u8 control_byte;
+    u8 screen;
+    u8 turned_in_count;
+    u8 pad[0x3];
+    u8 unk6;
+    u8 unk7;
+    s32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    s8 previous_y;
+    s8 minigame_menu_unlocked;
+    u8 unturned_count;
+    u8 pad2[0x5];
+} SnideAaD180;
+
 typedef struct player_additional_actor_data {
     s16 unk0; // Used
     s16 unk2;
@@ -1362,7 +1379,10 @@ struct actor {
     union {
         Actor17C *unk17C;
     };
-    s32 unk180;
+    union {
+        s32 unk180;
+        SnideAaD180* snide_aad_180;
+    };
     void* unk184;
 };
 

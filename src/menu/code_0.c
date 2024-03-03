@@ -196,7 +196,52 @@ void func_menu_80024418(MenuStruct0 *arg0, s32 arg1) {
 }
 
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_800244EC.s")
+// #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_800244EC.s")
+void func_dk64_boot_800031E0(char *, char *, ...);           /* extern */
+Gfx *func_global_asm_806ABB98(Gfx *, s16 , s16 , f32 , void *); /* extern */
+Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32); /* extern */
+s32 func_global_asm_8070E750(s32, s32, s32);    /* extern */
+
+Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
+    // DrawSnidesMenu
+    s32 var_s2;
+    s32 var_s0;
+    SnideAaD180 *snide_aad;
+    void *var_s1;
+    char sp70[0x20];
+    const f32 menu_scale = 0.6f;
+
+    snide_aad = arg1->snide_aad_180;
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    if ((s32) snide_aad->screen >= 4) {
+        gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gDPPipeSync(dl++);
+        var_s2 = 0xF0;
+        for (var_s0 = 0; var_s0 < 8; var_s0++) {
+            if ((var_s0 + 4) == snide_aad->screen) {
+                gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+            } else {
+                gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x80);
+            }
+            dl = func_global_asm_806ABB98(dl, 0x280, var_s2, menu_scale, func_global_asm_8070E750(0x2A, var_s0 + 3, 1));
+            var_s2 += 0x3C;
+        }
+    } else {
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
+        func_dk64_boot_800031E0(&sp70, "q %s", func_global_asm_8070E750(0x2A, 0, 1));
+        dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x190, &sp70, 1);
+        func_dk64_boot_800031E0(&sp70, "b %s", func_global_asm_8070E750(0x2A, 1, 1));
+        dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x1F4, &sp70, 1);
+        if (snide_aad->minigame_menu_unlocked) {
+            func_dk64_boot_800031E0(&sp70, "n %s", func_global_asm_8070E750(0x2A, 2, 1));
+            dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x258, &sp70, 1);
+        }
+    }
+    return dl;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_80024788.s")
 
@@ -227,7 +272,7 @@ typedef struct {
 extern Struct807ECDEC *D_global_asm_807ECDEC;
 extern u8 D_menu_800330C0[];
 
-void func_menu_800244EC();
+//void func_menu_800244EC();
 
 /*
 // TODO: Doable, good progress made
