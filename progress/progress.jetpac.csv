@@ -29,7 +29,7 @@ us,.jetpac,func_jetpac_800283EC,344,no
 us,.jetpac,func_jetpac_800250A0,200,yes
 us,.jetpac,func_jetpac_80028B54,124,yes
 us,.jetpac,func_jetpac_8002463C,48,yes
-us,.jetpac,func_jetpac_80024F24,64,no
+us,.jetpac,func_jetpac_80024F24,64,yes
 us,.jetpac,func_jetpac_80025A60,272,yes
 us,.jetpac,func_jetpac_8002AE00,148,yes
 us,.jetpac,func_jetpac_8002A974,352,yes
