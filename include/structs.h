@@ -2023,6 +2023,13 @@ typedef struct Competitor {
     //u8 unk_190[4];
 } Competitor;
 
+typedef struct JetpacPlayerSub36C {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    u8 pad[0x34-0xC];
+} JetpacPlayerSub36C;
+
 typedef struct JetpacPlayerStruct {
     s32 unk0;
     s32 unk4;
@@ -2045,10 +2052,8 @@ typedef struct JetpacPlayerStruct {
     s32 unk360;
     s32 unk364;
     s32 unk368;
-    s32 unk36C; // Used
-    s32 unk370;
-    s32 unk374; // Used
-    u8 pad378[0x420 - 0x378];
+    JetpacPlayerSub36C unk36C[3]; // Used - Unsure of how many items in there are
+    u8 pad408[0x420 - 0x408];
     f32 unk420;
     f32 unk424;
     f32 unk428;

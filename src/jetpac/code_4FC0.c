@@ -185,21 +185,31 @@ void func_jetpac_80029204(JetpacStruct *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029450.s")
 
 /*
+need to insert a += 0x1C which does nothing in the middle
 Competitor *func_jetpac_800292C4(void);
-extern void* D_jetpac_80029884[8];
+extern void* D_jetpac_8002E8F4[8];
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
 void func_jetpac_80029450(void) {
     void (*sp1C)(void *);
-    Competitor* sp18;
-    Competitor* temp_v0;
+    Competitor *sp18;
+    Competitor *temp_v0;
+    u32 lvl;
+    s32* read;
 
-    sp1C = D_jetpac_80029884[D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index * 0x194].level % 8];
+    lvl = D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].level & 7;
+    read = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].level;
+    if (D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].level < 0) {
+        if (lvl) {
+            lvl -= 8;
+        }
+    }
+    sp1C = D_jetpac_8002E8F4[lvl];
     temp_v0 = func_jetpac_800292C4();
     if (temp_v0 != NULL) {
         sp18 = temp_v0;
         sp1C(temp_v0);
-        *(u32*)(&sp18->unk14[0].unk0) = 3;
+        *(s32*)(&sp18->unk14[0].unk0) = 3;
     }
 }
 */
@@ -451,22 +461,21 @@ void func_jetpac_8002A2AC(JetpacStruct *arg0) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_8002A2DC.s")
 
+/*
 extern f64 D_jetpac_8002EBF0;
 extern f64 D_jetpac_8002EBF8;
-extern f64 D_jetpac_8002EC00;
-extern f64 D_jetpac_8002EC08;
+extern f64 D_jetpac_8002EC00[2];
 
-/*
 f32 func_jetpac_8002A2DC(f32 arg0, f32 arg1) {
     if (arg0 < 0.0f) {
         arg1 -= D_jetpac_8002EBF0;
     } else {
         arg1 += D_jetpac_8002EBF8;
     }
-    if (arg1 < D_jetpac_8002EC00) {
-        return D_jetpac_8002EC00;
+    if (arg1 < D_jetpac_8002EC00[0]) {
+        return D_jetpac_8002EC00[0];
     }
-    return MIN(D_jetpac_8002EC08, arg1);
+    return MIN(D_jetpac_8002EC00[1], arg1);
 }
 */
 

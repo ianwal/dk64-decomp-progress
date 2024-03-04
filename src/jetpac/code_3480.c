@@ -66,6 +66,46 @@ s32 func_jetpac_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027D64.s")
 
+/*
+typedef struct JetpacItemData {
+    void* image;
+    u8 pad[0x14];
+} JetpacItemData;
+
+f32 func_jetpac_80027210();                        
+s32 func_jetpac_80027480();                        
+s32 func_jetpac_800274C0();                        
+extern u8 D_8002F3C8;
+extern JetpacItemData D_jetpac_8002D968[7];
+extern f32 D_jetpac_8002DCEC;
+
+void func_jetpac_80027D64(Competitor *arg0) {
+    s32 sp64;
+    s32 *sp24;
+    void *sp18;
+    s32 *temp_v1;
+    s32 i;
+
+    for (i = 0; i < 0x13; i++) {
+        *(s32*)(&sp24 + i) = *(s32*)(&D_jetpac_8002DCEC + i);
+    }
+    if ((D_8002F3C8 != 0) && (arg0->current_score >= 0x1388) && (isFlagSet(0x17B, 0U) == 0) && (isFlagSet(0x62, 2U) == 0)) {
+        sp64 = 6;
+    } else {
+        sp64 = (s32) (func_jetpac_80027210() * (f32) 5) + 1;
+    }
+    temp_v1 = &arg0->next_item_pointer;
+    sp24 = (sp64 * 0x18) + &D_jetpac_8002D968;
+    for (i = 0; i < 0x12; i++) {
+        *(s32*)(temp_v1 + i) = *(s32*)(&sp24 + i);
+    }
+    *(temp_v1 + 0x12) = *(&sp24 + 0x12);
+    sp18 = temp_v1;
+    *(f32 *)(temp_v1 + 2) = (f32) func_jetpac_800274C0();
+    arg0->unk_144 = func_jetpac_80027480();
+}
+*/
+
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027EC0.s")
 
@@ -269,22 +309,18 @@ s32 func_jetpac_80028CF8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     return -1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80028E04.s")
-
-/*
-// TODO: Hmm, is D_jetpac_8002EC30 an array?
 s32 func_jetpac_80028E04(s32 arg0, s32 arg1, s32 arg2) {
     s32 temp_v1;
-    JetpacPlayerStruct *temp_v0;
+    JetpacPlayerSub36C *temp_v0;
 
-    temp_v0 = &D_jetpac_8002EC30[arg0];
-    if (arg1 < temp_v0->unk36C) {
-        if (arg2 < temp_v0->unk36C) {
+    temp_v0 = &D_jetpac_8002EC30.unk36C[arg0];
+    if (arg1 < temp_v0->unk0) {
+        if (arg2 < temp_v0->unk0) {
             return -2;
         }
         return -1;
     }
-    temp_v1 = temp_v0->unk374;
+    temp_v1 = temp_v0->unk8;
     if (temp_v1 < arg2) {
         if (temp_v1 < arg1) {
             return 2;
@@ -293,6 +329,5 @@ s32 func_jetpac_80028E04(s32 arg0, s32 arg1, s32 arg2) {
     }
     return 0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80028E88.s")
