@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3);
 void func_multiplayer_80026B0C(s32);
 s32 func_global_asm_806C8DE0(s16);
 s32 func_global_asm_807085D0(s32, PlayerProgress *, CharacterProgress *, void *);

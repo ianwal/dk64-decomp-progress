@@ -170,9 +170,6 @@ extern s16 D_global_asm_807FD584;
 extern f32 D_global_asm_80753578[];
 extern f32 D_global_asm_807535E8[];
 
-void func_global_asm_806F09F0(Actor*, u16);
-void func_global_asm_806C8984(void);
-
 void func_global_asm_806C850C(s32 arg0, u8 arg1) {
     Struct8075C410 *sp2C;
     s32 i;

@@ -143,11 +143,9 @@ int func_global_asm_806FF358(); // TODO: Signature
 int func_global_asm_806FF75C(); // TODO: Signature
 void func_global_asm_80665160(Actor *, s16, s16);
 void func_global_asm_806653C0(Actor *, f32, f32);
-void func_global_asm_806CC970(void);
 void func_global_asm_806CCB0C(void);
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
 void func_global_asm_806CEE64(f32);
-void func_global_asm_806CEED8(void);
 void func_global_asm_806CFD68(void);
 
 f32 func_global_asm_806DFFA0(f32, s16, s16);
@@ -158,8 +156,6 @@ void func_global_asm_806CFECC(void);
 void func_global_asm_806D2378();
 void func_global_asm_806CC948();
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
-s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
-void func_global_asm_806DF494(s16*, s16, s16);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 void func_global_asm_806CD8EC(void);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
@@ -175,7 +171,6 @@ void func_global_asm_806CF138(Struct806CF138 *arg0);
 void func_global_asm_80613AF8(Actor*, s32, f32, f32);
 s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 void func_global_asm_80613A50(Actor*, s32);
-s32 func_global_asm_806CE7A0(Actor*, f32, f32, s16, s16);
 
 void func_global_asm_806C9DE0(void) {
     func_global_asm_806CA5F8(0);
@@ -1311,8 +1306,6 @@ void func_global_asm_806CEE64(f32 arg0) {
         func_global_asm_80679064(temp_v0);
     }
 }
-
-void func_global_asm_806CF2EC(s32*, s32*);
 
 void func_global_asm_806CEED8(void) {
     f32 sp44; // 44

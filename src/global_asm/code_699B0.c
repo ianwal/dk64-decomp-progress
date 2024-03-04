@@ -382,7 +382,6 @@ s16 func_global_asm_80665C18(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 
 //forward decl necessary
 //looks like its taking the linear distance between 2 points (2D)
-s16 func_global_asm_80665C18(f32,f32,f32,f32,f32);
 s16 func_global_asm_80665DE0(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f0;
     f32 temp_f2;
@@ -1163,8 +1162,6 @@ u8 func_global_asm_80668C30(Struct8066893C *arg0, f32 arg1, f32 arg2) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80668E9C.s")
-
-s32 func_global_asm_80669930(f32[4][4]);
 
 typedef struct {
     f32 unk0;

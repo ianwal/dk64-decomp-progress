@@ -752,7 +752,6 @@ typedef struct {
 
 extern GlobalASMStruct45 D_global_asm_8074E814[];
 void func_global_asm_80682AB4(void *);
-void func_global_asm_806F09F0(Actor *, u16);
 
 typedef struct {
     s32 unk0;

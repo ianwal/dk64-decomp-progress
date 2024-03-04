@@ -208,7 +208,6 @@ extern f64 D_global_asm_8075FD40;
 void func_global_asm_80729EB0(s32, f32, f32, u16);
 void func_global_asm_806653C0(Actor*, f32, f32);
 s32 func_global_asm_80725BA4(s16, s16, Struct807FDCA0*);
-void func_global_asm_8072B438(u16 arg0);
 
 s32 func_global_asm_807264B0(Actor *arg0, f32 arg1, f32 arg2, void *arg3);
 

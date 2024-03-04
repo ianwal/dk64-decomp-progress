@@ -1314,8 +1314,6 @@ void func_global_asm_8062F318(void);
 void func_global_asm_80659110(u8);
 void func_global_asm_8065CDA0(u8);
 
-void func_global_asm_8065996C(s16);
-
 /*
 void func_global_asm_8062F050(MapGeometryHeader *arg0) {
     s32 *temp_a0;

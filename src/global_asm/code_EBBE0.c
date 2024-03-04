@@ -223,7 +223,7 @@ void func_global_asm_806E7780(void) {
     }
 }
 
-void func_global_asm_806E78B8() {
+void func_global_asm_806E78B8(void) {
     extra_player_info_pointer->unk30 = D_global_asm_80753B18[D_global_asm_807FD584];
 }
 
@@ -448,7 +448,7 @@ void func_global_asm_806E884C(void) {
     }
 }
 
-void func_global_asm_806E8880() {
+void func_global_asm_806E8880(void) {
     Actor *vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     if (vehicle) {
         PaaD0 *paad = vehicle->PaaD0;
@@ -456,7 +456,7 @@ void func_global_asm_806E8880() {
     }
 }
 
-void func_global_asm_806E88AC() {
+void func_global_asm_806E88AC(void) {
     Actor *vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     if (vehicle) {
         PaaD0 *paad = vehicle->PaaD0;
@@ -528,7 +528,7 @@ void func_global_asm_806E8BA4(void) {
     }
 }
 
-void func_global_asm_806E8BFC() {
+void func_global_asm_806E8BFC(void) {
     Actor *vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     if (vehicle) {
         RaceAdditionalActorData* RaaD = vehicle->RaaD;
@@ -1116,14 +1116,14 @@ void func_global_asm_806EAB44(Actor *arg0, u8 arg1) {
     arg0->y_rotation = func_global_asm_8062773C(PaaD->unk104);
 }
 
-void func_global_asm_806EAC8C() {
+void func_global_asm_806EAC8C(void) {
     Actor178 *temp_v0 = extra_player_info_pointer->vehicle_actor_pointer->unk178;
     if (temp_v0->unkE == 5) {
         temp_v0->unkE = 0xA;
     }
 }
 
-void func_global_asm_806EACBC() {
+void func_global_asm_806EACBC(void) {
     Actor178 *temp_v0 = extra_player_info_pointer->vehicle_actor_pointer->unk178;
     if (temp_v0->unkE == 5) {
         temp_v0->unkE = 0xF;

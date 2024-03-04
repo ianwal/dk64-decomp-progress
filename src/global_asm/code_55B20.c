@@ -741,7 +741,6 @@ void func_global_asm_80653F68(s16 index) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80653FA4.s")
 
-void func_global_asm_80654418(f32, f32, f32);
 void func_global_asm_80654A2C(f32, f32, f32);
 void func_global_asm_80655258(f32, f32, f32, s32);
 extern s32 D_global_asm_807F70AC;

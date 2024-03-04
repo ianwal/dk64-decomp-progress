@@ -46,7 +46,7 @@ void func_global_asm_806FB8B0(s32 arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FB914.s")
 
-void func_global_asm_806FBB58() {
+void func_global_asm_806FBB58(void) {
     D_global_asm_807FD7F0 = malloc(sizeof(s32) * 43);
     func_global_asm_80611690(D_global_asm_807FD7F4 = malloc(sizeof(u8) * 43));
 }

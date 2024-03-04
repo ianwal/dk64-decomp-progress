@@ -179,7 +179,6 @@ s32 func_global_asm_806DF6D4(s32 arg0);
 f32 func_global_asm_806E0454(f32, f32);
 void func_global_asm_8072FE60(f32);
 void func_global_asm_806E1630(void);
-void func_global_asm_806DF494(s16*, s16, s16);
 void func_global_asm_806DF390(Actor*, PlayerAdditionalActorData*, u8);
 void func_global_asm_806DF3D0(Actor*, PlayerAdditionalActorData*, u8);
 void func_global_asm_806CD8EC(void);
@@ -1814,7 +1813,6 @@ s32 func_global_asm_806E527C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E52D0.s")
 
 s32 func_global_asm_806E5488(Actor *arg0);
-u8 func_global_asm_806E560C(Actor *arg0);
 
 /*
 void func_global_asm_806E52D0(void) {

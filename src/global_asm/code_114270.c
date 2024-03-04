@@ -628,9 +628,8 @@ void func_global_asm_80713270(void) {
     }
 }
 
-Gfx *func_global_asm_807132DC(Gfx *arg0) {
-    Gfx *dl;
-    dl = func_global_asm_805FD030(arg0);
+Gfx *func_global_asm_807132DC(Gfx *dl) {
+    dl = func_global_asm_805FD030(dl);
     gSPDisplayList(dl++, &D_1000118);
     gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
