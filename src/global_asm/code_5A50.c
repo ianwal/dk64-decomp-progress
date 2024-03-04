@@ -21,7 +21,7 @@ extern struct_8076C328 D_global_asm_8076C328[];
 
 void func_global_asm_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 void func_global_asm_80737E50(ALSeqPlayer*);
-void func_global_asm_80737F0C(s32, s32, u8);
+void func_global_asm_80737F0C(void*, s32, u8);
 void func_global_asm_80738080(s32, u8, u8);
 void func_global_asm_807380CC(ALSeqPlayer*, s32, u8);
 void func_global_asm_80738118(s32, s32, u8);

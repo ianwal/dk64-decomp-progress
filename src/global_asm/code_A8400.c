@@ -110,7 +110,6 @@ s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4
 void func_global_asm_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
 void func_global_asm_80723484(s32, Actor*);
 void func_global_asm_807149FC(s32 arg0);
-u32 func_global_asm_806F8EDC(s32, s32);
 
 void func_global_asm_806A3700(s32 arg0, s32 arg1) {
 

@@ -23,6 +23,15 @@ u64 func_dk64_boot_80005918(u64, u64);
 u64 func_dk64_boot_80007688(f32); 
 f32 func_dk64_boot_8000773C(s64);
 
+u16 func_global_asm_806F8EDC(s32, s32); // getMaxItemCapacity(HUDItemIndex, playerIndex)
+void func_global_asm_8060BF84(s32, u8, u16 *, u8*);
+void func_global_asm_8060BEA8(s32, u8, u16 *, u8*);
+void func_global_asm_8060BCA0(s32 arg0, u8 arg1, u8 arg2, u16 *arg3, u8 *arg4);
+
+void func_global_asm_806A1AC4(void);
+void func_global_asm_8068696C(Actor *arg0);
+void func_global_asm_8067B100(Actor *player);
+
 u32 func_global_asm_806119A0(void);
 f32 func_global_asm_80611BB4(f32, f32);
 
@@ -2337,6 +2346,87 @@ void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s3
 void func_race_8002BBD0(Actor *arg0, s32 numRacers);
 
 void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2);
+
+// Round 5
+void func_global_asm_806EB5C8(void);
+void func_global_asm_806EC8C4(void);
+void func_global_asm_806B76B0(Gfx *dl, Actor *arg1);
+void func_global_asm_806F09F0(Actor *, u16);
+void func_global_asm_8071BE04(Struct80717D84 *arg0, s32 arg1);
+void func_global_asm_80688638(GlobalASMStruct60 **arg0);
+void func_global_asm_8063E72C(OM2_unk7C *arg0);
+void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3);
+void func_global_asm_806C8984(void);
+void func_global_asm_806C850C(s32 arg0, u8 arg1);
+void func_global_asm_806AFA60(u8 arg0);
+s32 func_global_asm_806B0770(void);
+void func_global_asm_8068A7B0(void);
+void func_global_asm_8068D8C8(Gfx *dl, s32 arg1);
+void func_global_asm_80611594(HeapHeader *arg0);
+void func_global_asm_8061159C(HeapHeader *arg0);
+s32 func_global_asm_80611688(HeapHeader *arg0);
+void func_global_asm_806116E0(HeapHeader *arg0, s32 arg1);
+void func_global_asm_806F833C(s32 arg0);
+u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex);
+u8 func_global_asm_806FB3D0(u8 HUDItemIndex, u8 playerIndex);
+void func_global_asm_806CC970(void);
+void func_global_asm_806CEED8(void);
+s16 func_global_asm_806CE928(Actor*, f32, f32, s32);
+u32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
+s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
+void func_global_asm_806DF494(s16*, s16, s16);
+void func_global_asm_806D2E9C(void);
+void func_global_asm_806D4C7C(void);
+void func_global_asm_806D4DE4(void);
+void func_global_asm_806D5008(void);
+void func_global_asm_806DA3E4(void);
+void func_global_asm_806DA4D8(void);
+void func_global_asm_806E2C74(Actor *arg0);
+void func_global_asm_806E4AD8(void);
+void func_global_asm_806E4C6C(void);
+u8 func_global_asm_806E560C(Actor *arg0);
+void func_global_asm_806E6B98(void);
+void func_global_asm_80688A6C(void);
+void func_global_asm_80689418(void);
+s32 func_global_asm_80689F2C(void);
+s32 func_global_asm_806CE7A0(Actor*, f32, f32, s16, s16);
+s32 func_global_asm_806CCC10(void);
+void func_global_asm_806CF2EC(s32*, s32*);
+void func_global_asm_806CF918(void);
+void func_global_asm_806AD260(s16 arg0, u8 arg1, u16 arg2);
+void func_global_asm_806F10E8(Actor *arg0);
+void func_global_asm_806F14BC(Actor *arg0);
+s16 func_global_asm_80665C18(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+void func_global_asm_80665FB4(Actor *arg0);
+s32 func_global_asm_80669930(f32[4][4]);
+void func_global_asm_80697CEC(void);
+void func_global_asm_80713438(Gfx *dl, u8 arg1);
+void func_global_asm_80713764(Gfx *dl, u8 arg1, f32 arg2);
+void func_global_asm_8069CD9C(void);
+s32 func_global_asm_8069D930(Gfx *dl, Actor *arg1);
+void func_global_asm_8065996C(s16 arg0);
+s32 func_global_asm_8069E724(s32 arg0);
+void func_global_asm_8069F904(Gfx *dl, Actor *arg1);
+void func_global_asm_806F50C8(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8 arg5);
+s32 func_global_asm_806F6644(s16 arg0, s32 arg1, u16 arg2);
+void func_global_asm_8060EDD0(Struct131B0_2 *arg0, Struct131B0_1 *arg1);
+void func_global_asm_8060F1D0(Struct131B0_2 *arg0, Struct131B0_1 *arg1);
+void func_global_asm_80654418(f32, f32, f32);
+void func_global_asm_80654BC0(s32 arg0, u8 arg1);
+void func_global_asm_80632E74(s16 arg0, s16 arg1, u8 *arg2);
+s32 func_global_asm_80635EF0(f32 x1, f32 y1, f32 z1, s16 x2, s16 y2, s16 z2, u16 arg6);
+void func_global_asm_8068ECF4(s32 arg0, u8 arg1);
+void func_global_asm_80692640(void);
+void func_global_asm_8069329C(void);
+u32 func_global_asm_805FC98C(void);
+void func_global_asm_8072B438(u16 arg0);
+void func_global_asm_8072E320(f32 arg0);
+void func_global_asm_806850D0(void);
+void func_global_asm_80687080(void);
+void func_global_asm_806FF144(Gfx *dl);
+void func_global_asm_80705C00(s16 arg0, s16 arg1, u8 arg2);
+void func_global_asm_8066466C(void);
+
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))

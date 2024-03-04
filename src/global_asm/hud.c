@@ -193,8 +193,6 @@ Gfx *func_global_asm_806FA5A4(s32, Gfx *);
 Gfx *func_global_asm_806FA7BC(s32, Gfx *);
 Gfx *func_global_asm_806FA9C0(s32, Gfx *);
 s32 func_global_asm_806C8DE0(s32);
-u16 func_global_asm_806F8EDC(s32, s32);
-int func_global_asm_8071BE04(); // TODO: Signature
 void *func_global_asm_806FACE8(u32 arg0);
 
 PlayerHUD* func_global_asm_806F7FD0(u8 playerIndex) {

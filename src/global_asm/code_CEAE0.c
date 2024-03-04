@@ -149,7 +149,7 @@ f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount
 void func_global_asm_806CEE64(f32);
 void func_global_asm_806CEED8(void);
 void func_global_asm_806CFD68(void);
-s16 func_global_asm_806CE928(Actor*, f32, f32, s32);
+
 f32 func_global_asm_806DFFA0(f32, s16, s16);
 void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 func_global_asm_806DF6D4(s32 arg0);
@@ -158,7 +158,6 @@ void func_global_asm_806CFECC(void);
 void func_global_asm_806D2378();
 void func_global_asm_806CC948();
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
-s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
 void func_global_asm_806DF494(s16*, s16, s16);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
@@ -947,7 +946,7 @@ s16 func_global_asm_806CD988(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CDD24.s")
 
-s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
+u32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     s16 sp36;
     f32 var_f0;
     s16 sp2E;

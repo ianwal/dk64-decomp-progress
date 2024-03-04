@@ -55,7 +55,6 @@ void func_menu_80026B28(MenuStruct1*, CharacterProgress*, s32);
 void func_menu_80026DAC(MenuStruct1*, CharacterProgress*, s32);
 
 void func_global_asm_806F91B4(s32, s32, s16);
-void func_global_asm_806F397C(Actor*, Actor*, s16, s16);
 
 s32 func_menu_80025AF0(MenuStruct1 *arg0, s32 characterIndex) {
     s32 phi_v1;

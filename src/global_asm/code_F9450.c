@@ -7,7 +7,6 @@ extern u8 D_global_asm_807FD798;
 extern s16 D_global_asm_807FD722;
 extern s16 D_global_asm_807FD724;
 extern u8 D_global_asm_80754238[];
-u8 func_global_asm_806F6E58(s16);
 
 typedef struct {
     f32 unk0;

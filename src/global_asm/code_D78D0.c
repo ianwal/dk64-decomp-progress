@@ -181,13 +181,11 @@ f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount
 void func_global_asm_806CEE64(f32);
 void func_global_asm_806CEED8(void);
 void func_global_asm_806CFD68(void);
-u8 func_global_asm_806CE928(Actor*, f32, f32, s32);
 void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 func_global_asm_806DF6D4(s32 arg0);
 void func_global_asm_806CC948();
 void func_global_asm_806CFECC(void);
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
-u8 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
 void func_global_asm_806DF494(s16*, s16, s16);
 void func_global_asm_806CD8EC(void);
@@ -345,13 +343,13 @@ void func_global_asm_806D2E9C(void) {
 }
 
 void func_global_asm_806D3224(void) {
-    u8 newControlState;
+    u32 newControlState;
 
     current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
     if (func_global_asm_806DF6D4(0x1D) == 0) {
         newControlState = func_global_asm_806CE174(current_actor_pointer, current_actor_pointer->unkB8, extra_player_info_pointer->unk4, 1);
         if (newControlState != 0x5D) {
-            current_actor_pointer->control_state = newControlState & 0xFF;
+            current_actor_pointer->control_state = (u8)newControlState & 0xFF;
             current_actor_pointer->control_state_progress = 0;
         }
     }
@@ -372,7 +370,7 @@ void func_global_asm_806D32C0(void) {
 }
 
 void func_global_asm_806D332C(void) {
-    u8 newControlState;
+    u32 newControlState;
 
     if (current_actor_pointer->control_state_progress == 0) {
         current_actor_pointer->control_state_progress++;
@@ -382,7 +380,7 @@ void func_global_asm_806D332C(void) {
     if (func_global_asm_806DF6D4(0x13) == 0) {
         newControlState = func_global_asm_806CDD24(current_actor_pointer, current_actor_pointer->unkB8, extra_player_info_pointer->unk4, 1);
         if (newControlState != 0xD) {
-            current_actor_pointer->control_state = newControlState & 0xFF;
+            current_actor_pointer->control_state = (u8)newControlState & 0xFF;
             current_actor_pointer->control_state_progress = 0;
         }
     }
@@ -404,11 +402,11 @@ void func_global_asm_806D332C(void) {
 }
 
 void func_global_asm_806D34B4(void) {
-    u8 newControlState;
+    u32 newControlState;
     if (func_global_asm_806DF6D4(0x1C) == 0) {
         newControlState = func_global_asm_806CE174(current_actor_pointer, current_actor_pointer->unkB8, extra_player_info_pointer->unk4, 1);
         if (newControlState != 0x5E) {
-            current_actor_pointer->control_state = newControlState & 0xFF;
+            current_actor_pointer->control_state = (u8)newControlState & 0xFF;
             current_actor_pointer->control_state_progress = 0;
         }
     }

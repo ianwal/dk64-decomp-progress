@@ -6,13 +6,8 @@ typedef struct {
     unsigned char initials[3];
 } Struct80757044;
 
-void func_global_asm_8060B84C(f32);
 u8 func_global_asm_8060BBE0(u16, u8);
-void func_global_asm_8060BCA0(s32 arg0, u8 arg1, u8 arg2, u16 *arg3, u8 *arg4);
-void func_global_asm_8060BEA8(s32, u8, u16 *, u8*);
-void func_global_asm_8060BF84(s32, u8, u16 *, u8*);
 void func_global_asm_8060C758(u8, s32);
-u32 func_global_asm_806F8EDC(s32, s32); // getMaxItemCapacity(HUDItemIndex, playerIndex)
 
 extern s8 D_global_asm_80744460;
 

@@ -25,7 +25,6 @@ s16 actor_count;
 s32 func_global_asm_8067B2C0(s32);
 void func_global_asm_80678F64(Actor*);
 void func_global_asm_8067B01C(void);
-void func_global_asm_8067B100(Actor *player);
 s16 func_global_asm_8067AF74(Actor*);
 s32 func_global_asm_806782E8(Actor *arg0);
 s32 func_global_asm_8067B3F4(s32 arg0);
@@ -184,7 +183,6 @@ extern u16 *D_global_asm_8074E218[];
 extern u16 D_global_asm_8074DA58[];
 
 void func_global_asm_8067AE90(Actor *arg0);
-void func_global_asm_80611690(void*);
 void func_global_asm_806761D0(Actor *arg0);
 
 /*
