@@ -23,8 +23,6 @@ extern s32 D_global_asm_8072139C;
 
 void func_global_asm_80718BF4(void);
 
-u32 func_global_asm_806119A0();
-
 extern s32 D_global_asm_8074E880[];
 extern u8 D_global_asm_80750AD0;
 
@@ -188,12 +186,12 @@ void func_global_asm_80684D98(u8 arg0) {
     f32 randomY;
     s32 i;
 
-    if (((func_global_asm_806119A0() / 10000) % arg0) == 0) {
+    if (((func_global_asm_806119A0() / 10000U) % arg0) == 0) {
         if (D_global_asm_80750AD0 == 0) {
             for (i = 0; i < 4; i++) {
-                randomX = (f32)((func_global_asm_806119A0() / 10000) % 200) / 10.0 - 5.0;
-                randomY = (f32)((func_global_asm_806119A0() / 10000) % 200) / 10.0 - 5.0;
-                randomZ = (f32)((func_global_asm_806119A0() / 10000) % 200) / 10.0 - 5.0;
+                randomX = (f32)((func_global_asm_806119A0() / 10000U) % 200) / 10.0 - 5.0;
+                randomY = (f32)((func_global_asm_806119A0() / 10000U) % 200) / 10.0 - 5.0;
+                randomZ = (f32)((func_global_asm_806119A0() / 10000U) % 200) / 10.0 - 5.0;
                 func_global_asm_807149B8(1);
                 func_global_asm_80714950(1);
                 func_global_asm_807149FC(-1);

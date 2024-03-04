@@ -8,7 +8,7 @@
 /*
 void guAlignF(float mf[4][4], float a, float x, float y, float z)
 {
-	static float dtor = 3.1415926f / 180.0f; // TODO: Need .rodata, .data, .bss defined? I don't really understand
+	static float dtor = 3.1415926f / 180.0f; // TODO: Need .data defined
 	float s, c, h, hinv;
 
 	guNormalize(&x, &y, &z);

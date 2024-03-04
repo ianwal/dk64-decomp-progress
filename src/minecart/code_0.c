@@ -13,7 +13,6 @@ extern f32 D_global_asm_807502F8;
 extern s16 D_global_asm_80750338;
 
 s32 func_global_asm_8070E750(s32, s32, s32);
-u8 func_global_asm_806119A0(void);
 void func_global_asm_8065A660(f32, f32);
 void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3);
 

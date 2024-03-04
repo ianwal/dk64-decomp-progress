@@ -190,7 +190,6 @@ u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 u8 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
 void func_global_asm_806DF494(s16*, s16, s16);
-u32 func_global_asm_806119A0(void);
 void func_global_asm_806CD8EC(void);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
 void func_global_asm_806CC638(f32 arg0);
@@ -1407,25 +1406,25 @@ void func_global_asm_806D6B00(void) {
                 func_global_asm_806CC948();
                 extra_player_info_pointer->unk30 = D_global_asm_80753548[D_global_asm_807FD584];
                 if (current_actor_pointer->unkB8 > 20.0f) {
-                    if ((func_global_asm_806119A0() % 3) == 0) { // RNG
+                    if ((func_global_asm_806119A0() % 3U) == 0) { // RNG
                         func_global_asm_8071498C(&func_global_asm_8071B2EC);
                         func_global_asm_80714998(2);
                         func_global_asm_807149B8(1);
                         func_global_asm_80714C08(&D_global_asm_8071FF18, 0.2f, current_actor_pointer, 2, 0);
                     }
-                    if ((func_global_asm_806119A0() % 3) == 0) { // RNG
+                    if ((func_global_asm_806119A0() % 3U) == 0) { // RNG
                         func_global_asm_8071498C(&func_global_asm_8071B2EC);
                         func_global_asm_80714998(2);
                         func_global_asm_807149B8(1);
                         func_global_asm_80714C08(&D_global_asm_8071FF18, 0.2f, current_actor_pointer, 3, 0);
                     }
-                    if ((func_global_asm_806119A0() % 3) == 0) { // RNG
+                    if ((func_global_asm_806119A0() % 3U) == 0) { // RNG
                         func_global_asm_8071498C(&func_global_asm_8071B2EC);
                         func_global_asm_80714998(2);
                         func_global_asm_807149B8(1);
                         func_global_asm_80714C08(&D_global_asm_8071FF18, 0.2f, current_actor_pointer, 9, 0);
                     }
-                    if ((func_global_asm_806119A0() % 3) == 0) { // RNG
+                    if ((func_global_asm_806119A0() % 3U) == 0) { // RNG
                         func_global_asm_8071498C(&func_global_asm_8071B2EC);
                         func_global_asm_80714998(2);
                         func_global_asm_807149B8(1);

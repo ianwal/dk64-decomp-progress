@@ -358,9 +358,6 @@ extern s32 D_global_asm_8071FE88; // TODO: Datatype
 extern s32 D_global_asm_8071FEAC; // TODO: Datatype
 extern f64 D_global_asm_80759550;
 
-u32 func_global_asm_806119A0(void);
-
-// TODO: Pretty close
 void func_global_asm_8067DCC0(void) {
     f32 temp_f20;
     s32 temp_s0;
@@ -374,7 +371,7 @@ void func_global_asm_8067DCC0(void) {
     func_global_asm_80714CC0(&D_global_asm_8071FE08, temp_f20 * 0.75, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
     func_global_asm_80608528(current_actor_pointer, 0x23, 0xFF, 0x7F, 1);
     for (i = 0; i < 7; i++) {
-        temp_s0 = (s32)(func_global_asm_806119A0() / 10000) % 3;
+        temp_s0 = (s32)(func_global_asm_806119A0() / 10000U) % 3;
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(0xA);
         func_global_asm_8071498C(&func_global_asm_8071910C);

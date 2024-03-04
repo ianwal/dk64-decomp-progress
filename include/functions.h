@@ -23,6 +23,7 @@ u64 func_dk64_boot_80005918(u64, u64);
 u64 func_dk64_boot_80007688(f32); 
 f32 func_dk64_boot_8000773C(s64);
 
+u32 func_global_asm_806119A0(void);
 f32 func_global_asm_80611BB4(f32, f32);
 
 void func_global_asm_806DF5A0(s16 *arg0, s16 arg1, s16 arg2, s16 arg3);

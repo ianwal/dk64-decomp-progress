@@ -29,7 +29,6 @@ extern f32 D_global_asm_807FC7B8;
 
 extern u8 D_global_asm_807FBB85;
 
-u32 func_global_asm_806119A0();
 void func_global_asm_8061EF4C(Actor*, s32, s32, f32, f32, f32, f32, f32);
 void func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
 s32 func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
@@ -232,7 +231,7 @@ void func_global_asm_80690190(Struct80690190 *arg0, s32 arg1) {
     temp_a1 = D_global_asm_80770628[current_actor_pointer->unk70];
     if (current_actor_pointer->y_position < (current_actor_pointer->unkAC + 4.0f)) {
         if (D_global_asm_80770BC0[temp_a1] == 0.0f) {
-            D_global_asm_80770B68[temp_a1] = (((func_global_asm_806119A0() / 4294967295.0) * 0.05) + 0.975) * (0.2 + (current_actor_pointer->unkB8 / 300.0));
+            D_global_asm_80770B68[temp_a1] = ((((u32)func_global_asm_806119A0() / 4294967295.0) * 0.05) + 0.975) * (0.2 + (current_actor_pointer->unkB8 / 300.0));
             D_global_asm_80770BC0[temp_a1] = 1.0f;
         }
     } else {
@@ -435,9 +434,9 @@ void func_global_asm_806915B0(void) {
         max = 6;
     }
     for (i = 0; i < max; i++) {
-        randomX = ((((func_global_asm_806119A0()) / 10000) % 200) / 5.0) - 20.0;
-        randomY = ((((func_global_asm_806119A0()) / 10000) % 200) / 5.0) - 20.0;
-        randomZ = ((((func_global_asm_806119A0()) / 10000) % 200) / 5.0) - 20.0;
+        randomX = ((((func_global_asm_806119A0()) / 10000U) % 200) / 5.0) - 20.0;
+        randomY = ((((func_global_asm_806119A0()) / 10000U) % 200) / 5.0) - 20.0;
+        randomZ = ((((func_global_asm_806119A0()) / 10000U) % 200) / 5.0) - 20.0;
         func_global_asm_807149B8(1);
         func_global_asm_807149C8(0x8C, 0x8C, 0x8C, 0x64);
         func_global_asm_80714950(i * -0x14);

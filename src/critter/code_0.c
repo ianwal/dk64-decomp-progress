@@ -37,7 +37,7 @@ typedef struct Critter {
     u8 unk2C[0x30-0x2C];
     f32 unk30;
     f32 unk34; // Used
-    f32 unk38; // Used
+    volatile f32 unk38; // Used
     f32 unk3C; // Used
     u8 unk40; // Used
     u8 unk41;
@@ -63,7 +63,7 @@ typedef struct CritterController {
     u8 unk1;
     u8 unk2; // Also a count?
     u8 unk3;
-    s32 unk4;
+    void *unk4;
     Critter *critter;
 } CritterController;
 
@@ -142,7 +142,6 @@ void func_critter_80026E0C(s32);
 
 void func_global_asm_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
 void func_global_asm_80611690(void*);
-u32 func_global_asm_806119A0();
 void func_global_asm_80718BF4(void);
 
 void func_critter_80024000(Critter *arg0, u8 *arg1, f32 arg2) {
@@ -507,9 +506,9 @@ void func_critter_80025DB8(CritterStruct6 *arg0, CritterStruct6 *arg1, u8 arg2, 
         sp2C = arg0->unk14;
         var_f0 += arg0->unk10;
     } else {
-        sp2C = (func_global_asm_806119A0() & 0xFFF) * 0.00024414062f * arg0->unk8;
+        sp2C = ((u32)func_global_asm_806119A0() & 0xFFF) * 0.00024414062f * arg0->unk8;
     }
-    temp_f2 = ((func_global_asm_806119A0(arg0, arg1) & 0xFFF) * 0.00024414062f * var_f0) - (0.5 * var_f0);
+    temp_f2 = (((u32)func_global_asm_806119A0() & 0xFFF) * 0.00024414062f * var_f0) - (0.5 * var_f0);
     if (arg4 != 0) {
         var_v0 = &arg1->unk18;
         var_v1 = &arg1->unk1C;
@@ -588,7 +587,7 @@ CritterStruct0 *func_critter_80026298(CritterStruct1 *arg0, u8 arg1) {
 void func_critter_800262C0(Critter *arg0, CritterController *arg1) {
     u8 var_a1;
 
-    var_a1 = (func_global_asm_806119A0() % (arg1->unk1 - 1));
+    var_a1 = ((u32)func_global_asm_806119A0() % (arg1->unk1 - 1));
     if (var_a1 >= arg0->unk50[0]) {
         var_a1++;
     }
@@ -915,10 +914,10 @@ void func_critter_8002708C(CritterController *arg0) {
 void func_critter_80027118(CritterController *arg0) {
     s32 pad[3];
     void (*sp50)(CritterController *);
-    u32 temp_hi;
+    void *temp_hi;
     s32 i;
     s32 var_s3;
-    u8 arraySize;
+    s32 arraySize;
     Critter *critter;
 
     arraySize = arg0->unk2;
@@ -950,19 +949,19 @@ void func_critter_80027118(CritterController *arg0) {
         var_s3 = 1;
     }
     for (i = 0; i < arg0->unk2; i++) {
-        func_critter_80025F8C(arg0->unk4, critter, 1);
+        func_critter_80025F8C(arg0->unk4, &critter[0], 1);
         if (!gameIsInDKTVMode()) {
-            func_critter_80025F3C(arg0->unk4, critter, 1, 1);
+            func_critter_80025F3C(arg0->unk4, &critter[0], 1, 1);
         }
         temp_hi = arg0->unk4;
-        critter->unk58 = temp_hi;
-        critter->unk1E2 = var_s3;
-        critter->unk54 = temp_hi;
-        critter->unk40 = 0xFF;
-        critter->unk0 = func_global_asm_806119A0() & 0xFFF;
-        critter->unk42 = func_global_asm_806119A0() & 0xFFF;
-        critter->unk38 = 2 * (1.0f - ((func_global_asm_806119A0() % 1000U) / 4000.0f));
-        critter++;
+        critter[i].unk58 = temp_hi;
+        critter[i].unk54 = temp_hi;
+        critter[i].unk1E2 = var_s3;
+        critter[i].unk40 = 0xFF;
+        critter[i].unk0 = func_global_asm_806119A0() & 0xFFF;
+        critter[i].unk42 = func_global_asm_806119A0() & 0xFFF;
+        critter[i].unk38 = (1 - ((func_global_asm_806119A0() % 1000U) / 4000.0f));
+        critter[i - 1].unk38 = 2 * critter[0].unk38;
         if (var_s3 == 1) {
             var_s3 = 2;
         }

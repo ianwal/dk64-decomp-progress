@@ -173,7 +173,6 @@ void func_minecart_80027E04(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_80027EE8.s")
 
-u32 func_global_asm_806119A0();
 typedef struct MinecartStruct1 {
     u8 pad0[0x3A];
     u8 unk3A;

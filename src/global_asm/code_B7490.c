@@ -602,8 +602,6 @@ void func_global_asm_806B52DC(void) {
 
 extern f64 D_global_asm_8075B718;
 
-s16 func_global_asm_806119A0(void);
-
 typedef struct {
     f32 unk0;
     f32 unk4;

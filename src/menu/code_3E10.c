@@ -1391,7 +1391,6 @@ void func_menu_80030258(Gfx *dl, Actor *arg1) {
 // Jumptable, 508 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80030894.s")
 
-s32 func_global_asm_806119A0();
 extern f32 D_menu_80033E0C;
 extern f32 D_menu_80033E10;
 extern f32 D_menu_80033E14;

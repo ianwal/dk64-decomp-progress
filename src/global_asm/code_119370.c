@@ -104,7 +104,6 @@ extern s16 D_global_asm_807FDB3E;
 extern s16 D_global_asm_807FDB40;
 extern s16 D_global_asm_807FDB42;
 
-u32 func_global_asm_806119A0();
 Struct80717D84 *func_global_asm_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, u8);
 void func_global_asm_80714A9C(void);
 void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
@@ -427,7 +426,6 @@ void func_global_asm_807158C0(void) {
 extern s32 D_80000310;
 extern void *D_global_asm_807FDB04;
 extern void *D_global_asm_807FDB08;
-OSTime func_global_asm_806119A0(void);
 
 void func_global_asm_80715908(void *arg0) {
     ? sp3F;
@@ -521,8 +519,8 @@ void func_global_asm_80716FB4(Struct80717D84 *arg0, s32 arg1) {
 
     if (arg0->unk384 == NULL) {
         arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80716FB4));
-        arg0->unk384->unk0 = (func_global_asm_806119A0() % 36000) / 100;
-        arg0->unk384->unk4 = (func_global_asm_806119A0() % 400) / 100;
+        arg0->unk384->unk0 = (func_global_asm_806119A0() % 36000U) / 100;
+        arg0->unk384->unk4 = (func_global_asm_806119A0() % 400U) / 100;
     }
     var_v1 = arg0->unk384;
     var_v1->unk0 += var_v1->unk4;
@@ -879,7 +877,7 @@ void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1) {
 
     if (arg0->unk384 == NULL) {
         arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80718380));
-        *((f32*)arg0->unk384) = (func_global_asm_806119A0() % 36000) / 100;
+        *((f32*)arg0->unk384) = (func_global_asm_806119A0() % 36000U) / 100;
     }
     guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
     guRotateF(&sp30[0], 90.0f, 1.0f, 0.0f, 0.0f);
@@ -919,7 +917,7 @@ void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1) {
     if (arg0->unk384 == NULL) {
         arg0->unk384 = malloc(8);
         arg0->unk384_f32->unk0 = 0.0f;
-        arg0->unk384_f32->unk4 = (func_global_asm_806119A0() % 400) / 100;
+        arg0->unk384_f32->unk4 = (func_global_asm_806119A0() % 400U) / 100;
     }
     guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
     guRotateF(&sp30[0], arg0->unk384->unk0, 0.0f, 0.0f, 1.0f);
@@ -1236,8 +1234,8 @@ void func_global_asm_8071A1E4(Struct80717D84 *arg0, s32 arg1) {
 
     var_v0 = arg0->unk384;
     if (var_v0 == NULL) {
-        sp48 = -(func_global_asm_806119A0() / 10000) % 30;
-        sp46 = (func_global_asm_806119A0() / 10000) % 180;
+        sp48 = -(func_global_asm_806119A0() / 10000U) % 30;
+        sp46 = (func_global_asm_806119A0() / 10000U) % 180;
         guRotateF(&sp8C[0], sp48, 0.0f, 1.0f, 0.0f);
         // TODO: Regalloc here, arg0->unk35C is using v0 instead of t5
         sp4B = arg0->unk35C >> 0x10;
@@ -1369,7 +1367,7 @@ void func_global_asm_8071AF30(Struct80717D84 *arg0, s8 *arg1) {
     if (temp_s1->object_properties_bitfield & 4) {
         if (arg0->unk384 == NULL) {
             arg0->unk384 = malloc(0x40);
-            sp34 = (func_global_asm_806119A0() % 36000) / 100;
+            sp34 = (func_global_asm_806119A0() % 36000U) / 100;
             guScaleF(&sp78[0], arg0->unk360, arg0->unk364, 0.0f);
             guRotateF(&sp38[0], sp34, 0.0f, 0.0f, 1.0f);
             guMtxCatF(&sp78[0], &sp38[0], &sp78[0]);
@@ -1566,8 +1564,8 @@ void func_global_asm_8071BB14(Struct80717D84 *arg0, s32 arg1) {
     var_v1 = arg0->unk384;
     if (var_v1 == NULL) {
         arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_8071BB14));
-        arg0->unk384->unk0 = ((func_global_asm_806119A0() % 36000) / 100);
-        arg0->unk384->unk4 = (func_global_asm_806119A0() % 10000) / D_global_asm_8075E9A0;
+        arg0->unk384->unk0 = ((func_global_asm_806119A0() % 36000U) / 100);
+        arg0->unk384->unk4 = (func_global_asm_806119A0() % 10000U) / D_global_asm_8075E9A0;
         var_v1 = arg0->unk384;
     }
     arg0->unk344 = arg0->unk344 + (var_v1->unk4 + 1.0);
@@ -1595,7 +1593,7 @@ void func_global_asm_8071BC80(Struct80717D84 *arg0, s32 arg1) {
     var_v0 = arg0->unk384;
     if (var_v0 == NULL) {
         arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_8071BC80));
-        guRotateF(&sp90[0], -(f32)((func_global_asm_806119A0() % 36000) / 1000), 1.0f, 0.0f, 0.0f);
+        guRotateF(&sp90[0], -(f32)((func_global_asm_806119A0() % 36000U) / 1000), 1.0f, 0.0f, 0.0f);
         guRotateF(&sp50[0], (arg0->unk35C * 0x168) / 4096, 0.0f, 1.0f, 0.0f);
         guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);
         guMtxXFMF(&sp90[0], 0.0f, 0.0f, 10.0f, &sp48, &sp44, &sp40);
@@ -1760,10 +1758,10 @@ void func_global_asm_8071C620(Struct80717D84 *arg0, s32 arg1) {
     var_v0 = arg0->unk384;
     if (var_v0 == NULL) {
         arg0->unk384 = malloc(0xC);
-        guRotateF(&sp90[0], (func_global_asm_806119A0() % 36000) / 100, 1.0f, 0.0f, 0.0f);
-        guRotateF(&sp50[0], (func_global_asm_806119A0() % 36000) / 100, 0.0f, 0.0f, 1.0f);
+        guRotateF(&sp90[0], (func_global_asm_806119A0() % 36000U) / 100, 1.0f, 0.0f, 0.0f);
+        guRotateF(&sp50[0], (func_global_asm_806119A0() % 36000U) / 100, 0.0f, 0.0f, 1.0f);
         guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);
-        guRotateF(&sp90[0], (func_global_asm_806119A0() % 36000) / 100, 0.0f, 1.0f, 0.0f);
+        guRotateF(&sp90[0], (func_global_asm_806119A0() % 36000U) / 100, 0.0f, 1.0f, 0.0f);
         guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);
         guMtxXFMF(&sp90[0], 0.0f, 0.0f, 0.5f, &sp4C, &sp48, &sp44);
         arg0->unk384_f32->unk0 = sp4C;
@@ -1978,7 +1976,7 @@ void func_global_asm_8071D784(Struct80717D84 *arg0, s8 *arg1) {
 
     if (arg0->unk384 == NULL) {
         arg0->unk384 = malloc(0xC);
-        guRotateF(&sp90[0], -(f32)((func_global_asm_806119A0() % 36000) / 1000), 1.0f, 0.0f, 0.0f);
+        guRotateF(&sp90[0], -(f32)((func_global_asm_806119A0() % 36000U) / 1000), 1.0f, 0.0f, 0.0f);
         guRotateF(&sp50[0], (arg0->unk35C * 0x168) / 4096, 0.0f, 1.0f, 0.0f);
         guMtxCatF(&sp90[0], &sp50[0], &sp90[0]);
         guMtxXFMF(&sp90[0], 0.0f, 0.0f, D_global_asm_80755678, &sp48, &sp44, &sp40);

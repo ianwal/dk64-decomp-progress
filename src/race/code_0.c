@@ -79,7 +79,6 @@ extern f32 D_global_asm_80770BC0[];
 
 extern u16 D_global_asm_80750AC4;
 
-u32 func_global_asm_806119A0(void);
 void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1);
 
 extern void func_race_8002CFF0(void);
@@ -478,7 +477,7 @@ void func_race_80026D2C(f32 arg0) {
     }
 
     if (D_global_asm_80770BC0[temp] == 0.0f) {
-        D_global_asm_80770B68[temp] = (((func_global_asm_806119A0() / D_race_8002FE40) * D_race_8002FE48) + D_race_8002FE50) * (D_race_8002FE58 + (arg0 / 15.0));
+        D_global_asm_80770B68[temp] = ((((u32)func_global_asm_806119A0() / D_race_8002FE40) * D_race_8002FE48) + D_race_8002FE50) * (D_race_8002FE58 + (arg0 / 15.0));
         D_global_asm_80770BC0[temp] = 3.0f;
     }
 }

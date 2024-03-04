@@ -161,7 +161,6 @@ u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 s32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 s16 func_global_asm_806CE4E4(Actor*, f32, f32, s32);
 void func_global_asm_806DF494(s16*, s16, s16);
-u32 func_global_asm_806119A0(void);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 void func_global_asm_806CD8EC(void);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
@@ -1530,7 +1529,7 @@ void func_global_asm_806CF580(void) {
     if (((current_actor_pointer->control_state == 0x4F) || (current_actor_pointer->control_state == 0x7F))
         && (D_global_asm_80750AD0 == 0)
         && ((extra_player_info_pointer->unkD0 + 9) < (u32)object_timer)
-        && (((func_global_asm_806119A0() % 2500) / 200) == 0)) {
+        && (((func_global_asm_806119A0() % 2500U) / 200) == 0)) {
         func_global_asm_8071498C(&func_global_asm_80718BF4);
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(-1);

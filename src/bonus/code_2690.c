@@ -677,7 +677,6 @@ void func_bonus_80029E54(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002A398.s")
 
-s32 func_global_asm_806119A0();
 extern s16 D_bonus_8002D900;
 
 typedef struct {
