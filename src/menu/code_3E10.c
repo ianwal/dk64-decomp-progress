@@ -221,13 +221,12 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
     s16 i;
     s16 max;
     s32 var_v0_2;
-    s8 temp;
 
     MaaD = arg0->additional_actor_data;
     sp54 = D_menu_800337FC;
     sp4F = 0;
     if (inputs_enabled_timer > 0) {
-        inputs_enabled_timer -= 1;
+        inputs_enabled_timer--;
     } else {
         inputs_enabled_timer = 0;
     }
@@ -237,8 +236,7 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
             if (inputs_enabled_timer == 0) {
                 if (MaaD->unk4 == 0.0f) {
                     menu_selection_available = 1;
-                    temp = MaaD->unk17;
-                    switch (temp) {
+                    switch (MaaD->unk17) {
                         case 2:
                             if (!isFlagSet(0x1C, FLAG_TYPE_GLOBAL)) {
                                 menu_selection_available = -1;
@@ -261,9 +259,8 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
         menu_icon_transition_scale += menu_selection_speed;
         if (menu_icon_transition_scale > 1) {
             menu_icon_transition_scale = 1;
-            temp = MaaD->unk17;
             MaaD->unk16 = 0;
-            switch (temp) {
+            switch (MaaD->unk17) {
                 default:
                     MaaD->unk13 = 2;
                     break;
@@ -653,41 +650,37 @@ void func_menu_80029AAC(Actor *arg0, s32 arg1) {
     func_menu_8002FC1C(arg0, MaaD, 1);
 }
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80029BB4.s")
-
-/*
 Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
+    s32 pad124;
     s32 sp120;
+    s32 pad11C;
     s32 pad118;
     s32 pad114;
     f32 sp110;
     f32 sp10C;
-    s32 pad108;
-    s32 pad104;
-    s32 pad100;
-    s16 spFE;
-    s16 temp_f4;
+    s16 sp100;
+    s32 padFC;
     s32 padF8;
+    s16 spFE;
     f32 temp3[4][4];
     f32 temp2[4][4];
     f32 temp[4][4];
-    s32 sp34;
     void *aaD = arg0->additional_actor_data;
+    char sp34[4];
 
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     sp120 = func_menu_800317E8(aaD, 160.0f, 25.0f, &sp110, &sp10C, 3, 1, 0.45f);
-    temp_f4 = sp10C * 4.0f;
     spFE = sp110 * 4.0f;
-    if (func_menu_800322D0(sp120) != 0) {
+    sp100 = sp10C * 4.0f;
+    if (func_menu_800322D0(sp120)) {
         func_dk64_boot_800031E0(&sp34, "%s", label_string_pointer_array[6]);
     } else {
         func_dk64_boot_800031E0(&sp34, "%s %d", label_string_pointer_array[7], sp120 + 1);
     }
-    dl = func_global_asm_806ABB98(dl, spFE, temp_f4, 0.6f, &sp34);
-    return func_global_asm_806ABB98(dl, sp110 * 4.0f, temp_f4 - 0x3C, 0.6f, label_string_pointer_array[8]);
+    dl = func_global_asm_806ABB98(dl, spFE, sp100, 0.6f, &sp34);
+    sp100 -= 0x3C;
+    return func_global_asm_806ABB98(dl, sp110 * 4.0f, sp100, 0.6f, label_string_pointer_array[8]);
 }
-*/
 
 // TODO: Might be a fake match since func_menu_80030894 probably takes a void* as an arg instead of s32
 // We'll see when .rodata and .data shake out I guess...
@@ -1160,6 +1153,7 @@ void func_menu_8002CFA4(Actor *arg0, s32 arg1) {
 }
 */
 
+// displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002D520.s")
 
 void func_menu_8002D7EC(Actor *arg0, s32 arg1) {
