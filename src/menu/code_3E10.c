@@ -136,12 +136,8 @@ extern u8 D_menu_80033F38;
 extern s8 D_menu_80033F50;
 extern f32 day_night_transition;
 extern f32 menu_rotation_speed;
-
-// rodata
-/*
 extern f32 menu_icon_transition_scale;
 extern f32 menu_selection_speed;
-*/
 
 s32 func_menu_800322D0(s32);
 void func_menu_80030340(Actor*, s32, Gfx*, s32);
@@ -393,9 +389,6 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
 }
 */
 
-// Displaylist stuff, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_800286C8.s")
-
 s32 *label_string_pointer_array;
 
 typedef struct {
@@ -413,7 +406,6 @@ typedef struct {
 
 s32 func_menu_800317E8(Struct800317E8 *arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, s8 arg6, f32 arg7);
 
-/*
 Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
     s32 pad2;
     s32 spD0;
@@ -421,9 +413,10 @@ Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
     void *aaD = arg0->additional_actor_data;
     f32 spC4;
     f32 spC0;
-    HeapHeader *sp38; // BC, needs to be 38
+    s32 pad3;
     f32 sp7C[4][4];
     f32 sp3C[4][4];
+    HeapHeader *sp38;
 
     global_properties_bitfield |= 0x10;
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -437,7 +430,6 @@ Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
     gSPMatrix(dl++, sp38, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     return func_global_asm_806FC530(dl, 1, 0, 0, label_string_pointer_array[spD0], 0x80);
 }
-*/
 
 s8 current_menu_selection;
 
@@ -858,7 +850,7 @@ void func_menu_8002AB28(s32 arg0) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002AB80.s")
 
-extern s8 D_global_asm_8076A0D6;
+extern s8 D_8076A0D6;
 
 /*
 void func_menu_8002AB80(Actor *arg0, s32 arg1) {
@@ -868,7 +860,7 @@ void func_menu_8002AB80(Actor *arg0, s32 arg1) {
     s32 i;
 
     temp_s0 = arg0->additional_actor_data;
-    temp_s0->unk17 = D_global_asm_8076A0D6;
+    temp_s0->unk17 = D_8076A0D6;
     func_menu_80030894(temp_s0, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
     func_menu_80030894(temp_s0, &D_global_asm_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
     func_menu_80030894(temp_s0, &D_global_asm_80720C34, 0xA0, 0x78, 0.75f, 2, 4);
@@ -878,12 +870,12 @@ void func_menu_8002AB80(Actor *arg0, s32 arg1) {
             D_global_asm_8076A0E8[i].unk0[var_s0] = -1;
         }
     }
-    for (var_s0 = 0; var_s0 < 4; var_s0++) {
-        if (var_s0 == 0) {
-            func_menu_8002AA98(var_s0, var_s0);
+    for (i = 0; i < 4; i++) {
+        if (i == 0) {
+            func_menu_8002AA98(i, i);
         } else {
-            D_global_asm_8076A0E4[var_s0] = -0x80;
-            func_menu_8002AB28(var_s0);
+            D_global_asm_8076A0E4[i] = -0x80;
+            func_menu_8002AB28(i);
         }
     }
 }
@@ -1360,19 +1352,18 @@ s32 func_menu_8002F980(Gfx *arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002FB88.s")
 
-extern f32 D_menu_80033F68[];
-extern f32 D_menu_80033F80[];
-extern f32 D_menu_80033F98[];
+// TODO: Also used in arcade?
+extern f32 D_80033F68[];
+extern f32 D_80033F80[];
+extern f32 D_80033F98[];
 
 /*
 // TODO: Not sure...
 s32 func_menu_8002FB88(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    s32 temp_v1;
-
-    temp_v1 = (arg1 & 0x7F);
-    D_menu_80033F68[temp_v1] = (arg2 * 4.0f) - 32.0;
-    D_menu_80033F80[temp_v1] = (arg3 * 4.0f) - 100.0;
-    D_menu_80033F98[temp_v1] = arg4 * 1.333;
+    arg1 = (arg1 & 0x7F);
+    D_80033F68[arg1] = (arg2 * 4.0f) - 32.0;
+    D_80033F80[arg1] = (arg3 * 4.0f) - 100.0;
+    D_80033F98[arg1] = arg4 * 1.333;
     return arg0;
 }
 */
@@ -1558,8 +1549,28 @@ f32 func_menu_80031980(Struct80031980 *arg0, f32 arg1, f32 *arg2) {
 }
 */
 
-// Jumptable, 172 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80031A5C.s")
+void func_menu_80031A5C(void) {
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            func_global_asm_80614EBC(current_actor_pointer, 0x345);
+            current_actor_pointer->y_rotation = 0;
+            current_actor_pointer->control_state_progress = 1;
+            playCutscene(current_actor_pointer, 0x13, 5);
+            return;
+        case 2:
+            current_actor_pointer->control_state_progress++;
+            return;
+        case 4:
+            if (opening_cutscene_transition == 0) {
+                opening_cutscene_transition = 1;
+            }
+            // fallthrough
+        default:
+        case 1:
+        case 3:
+            return;
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80031B08.s")
