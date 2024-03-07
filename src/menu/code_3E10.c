@@ -1171,10 +1171,101 @@ void func_menu_8002D7EC(Actor *arg0, s32 arg1) {
     func_menu_80030894(MaaD, &D_global_asm_80720D38, 0xA0, 0xC8, 1.0f, 2, 0xC);
 }
 
-// Jumptable, 816 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002D8AC.s")
+extern u8 D_global_asm_80744530;
+extern s16 D_global_asm_80744544;
+extern u8 D_global_asm_807550C8;
+extern s16 D_menu_80033670;
+extern s8 D_menu_800338FC;
 
-// Jumptable, 780 bytes of code
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    u8 unk8[0x13 - 0x8];
+    u8 unk13;
+    u8 unk14; // Unused?
+    u8 unk15; // Unused?
+    u8 unk16;
+    u8 unk17;
+} AAD_8002D8AC;
+
+void func_menu_800324CC(void);
+
+void func_menu_8002D8AC(Actor *arg0, s32 arg1) {
+    AAD_8002D8AC *aaD;
+    s8 optionChanged;
+    s32 i;
+
+    aaD = arg0->additional_actor_data;
+    optionChanged = FALSE;
+    if (aaD->unk0 == 0.0f) {
+        if (aaD->unk4 == 0.0f) {
+            switch (aaD->unk17) {
+                case 0:
+                    if ((arg1 & 0x30) && !(D_menu_80033670 & 0x30)) {
+                        widescreen_enabled = 1 - widescreen_enabled;
+                        optionChanged = TRUE;
+                    }
+                    break;
+                case 1:
+                    if ((arg1 & 0x30) && !(D_menu_80033670 & 0x30)) {
+                        story_skip = 1 - story_skip;
+                        optionChanged = TRUE;
+                    }
+                    break;
+                case 2:
+                    if (arg1 & 0x100) {
+                        func_global_asm_8060C8AC(0xFF);
+                        playSound(0x23C, 0x7FFF, 63.0f, 1.0f, 0, 0);
+                    }
+                    break;
+                case 3:
+                    if ((arg1 & 0x30) && !(D_menu_80033670 & 0x30)) {
+                        D_global_asm_80744530 = 1 - D_global_asm_80744530;
+                        optionChanged = TRUE;
+                    }
+                    break;
+                case 4:
+                    if ((arg1 & 0x10) && !(D_menu_80033670 & 0x10)) {
+                        D_global_asm_807550C8++;
+                        optionChanged = TRUE;
+                    }
+                    if ((arg1 & 0x20) && !(D_menu_80033670 & 0x20)) {
+                        D_global_asm_807550C8--;
+                        optionChanged = TRUE;
+                    }
+                    D_global_asm_807550C8 &= 3;
+                    if (optionChanged) {
+                        for (i = 0; i < 101; i++) {
+                            func_global_asm_8061134C((label_string_pointer_array[i]));
+                        }
+                        func_global_asm_8061134C(label_string_pointer_array);
+                        func_menu_800324CC();
+                    }
+                    break;
+            }
+            if (arg1 & 2) {
+                func_global_asm_8060C648(0x1F, 0, 0, 0, D_global_asm_807550C8);
+                func_global_asm_8060C648(0x20, 0, 0, 0, D_global_asm_80744530);
+                func_global_asm_8060DEA8();
+                playSound(0x2C9, 0x7FFF, 63.0f, 1.0f, 0, 0);
+                aaD->unk16 = 0;
+                aaD->unk13 = 1;
+            } else {
+                func_menu_8002FD38(aaD, D_menu_800338FC, arg1);
+            }
+        }
+        func_menu_8002FE08(aaD, D_menu_800338FC);
+    }
+    func_menu_8002FC1C(arg0, aaD, 1);
+    if (newly_pressed_input_copy & 0xC) {
+        D_global_asm_80744544 ^= 0x100;
+    }
+    if (optionChanged) {
+        playSound(0x74, 0x7FFF, 63.0f, 1.0f, 0, 0);
+    }
+}
+
+// Jumptable, 780 bytes of code, displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002DBDC.s")
 
 void func_menu_8002DEE8(Actor *arg0, s32 arg1) {
@@ -1188,7 +1279,7 @@ void func_menu_8002DEE8(Actor *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002DFA8.s")
 
-// Jumptable
+// Jumptable, displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002E420.s")
 
 // rodata
