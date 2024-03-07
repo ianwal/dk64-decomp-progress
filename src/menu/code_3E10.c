@@ -1655,39 +1655,33 @@ s32 func_menu_800322D0(s32 arg0) {
     return !func_global_asm_8060C6B8(0xD, 0, 0, arg0);
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80032304.s")
-
 extern s16 D_global_asm_807FC828[];
 
-/*
-// TODO: Typecast nonsense
-// Calculating game percentage?
+// Calculate game percentage
 s32 func_menu_80032304(void) {
-    f32 var_f0;
+    f32 completionPercentage;
 
     func_global_asm_806ABE3C();
-    var_f0 = 0.0f;
-    var_f0 += (D_global_asm_807FC828[5] * 0.2);
-    var_f0 += (D_global_asm_807FC828[2] * 0.25);
-    var_f0 += (D_global_asm_807FC828[3] * 0.2);
-    var_f0 += (D_global_asm_807FC828[1] * 0.5);
-    var_f0 += (D_global_asm_807FC828[4] * 0.5);
-    var_f0 += (D_global_asm_807FC828[6] * 0.5);
-    var_f0 += (D_global_asm_807FC828[0] * 0.4);
+    completionPercentage = 0.0f;
+    completionPercentage += ((f32)D_global_asm_807FC828[0] * 0.4);
+    completionPercentage += ((f32)D_global_asm_807FC828[2] * 0.25);
+    completionPercentage += ((f32)D_global_asm_807FC828[5] * 0.2);
+    completionPercentage += ((f32)D_global_asm_807FC828[3] * 0.2);
+    completionPercentage += ((f32)D_global_asm_807FC828[1] * 0.5);
+    completionPercentage += ((f32)D_global_asm_807FC828[4] * 0.5);
+    completionPercentage += ((f32)D_global_asm_807FC828[6] * 0.5);
     if (D_global_asm_807FC828[0] == 201) {
-        var_f0 -= 0.4;
+        completionPercentage -= 0.4;
     }
-    if (var_f0 == 100.0) {
-        if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT) != 0) {
-            if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT) != 0) {
-                var_f0 += 1.0;
+    if (completionPercentage == 100.0) {
+        if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT)) {
+                completionPercentage += 1.0;
             }
         }
     }
-    return var_f0;
+    return completionPercentage;
 }
-*/
 
 void func_menu_800324CC(void) {
     s32 temp_v0;
