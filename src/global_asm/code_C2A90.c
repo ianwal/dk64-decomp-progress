@@ -340,8 +340,37 @@ void func_global_asm_806C1300(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C13AC.s")
+s16 func_global_asm_806CD9A0(Actor *, f32, f32, u8, s32);
+
+void func_global_asm_806C13AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
+    s16 temp_v0;
+
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unk6A |= 1;
+        func_global_asm_8067ACB4(current_actor_pointer);
+        current_actor_pointer->unkCC = 1;
+    }
+    temp_v0 = func_global_asm_806CD9A0(current_actor_pointer, current_actor_pointer->unkB8, D_global_asm_807FDC90->unk26, D_global_asm_807FDC90->unk34, arg0);
+    if (temp_v0 != D_global_asm_807FDC90->unk34) {
+        switch (temp_v0) {
+            case 0:
+            case 1:
+            case 2:
+                func_global_asm_80613C48(current_actor_pointer, arg1, 0.0f, 6.0f);
+                break;
+            case 3:
+                func_global_asm_80613C48(current_actor_pointer, arg2, 0.0f, 6.0f);
+                break;
+            case 4:
+                func_global_asm_80613C48(current_actor_pointer, arg3, 0.0f, 6.0f);
+                break;
+            case 5:
+                func_global_asm_80613C48(current_actor_pointer, arg4, 0.0f, 6.0f);
+                break;
+        }
+        D_global_asm_807FDC90->unk34 = temp_v0;
+    }
+}
 
 void func_global_asm_806C151C(u16 arg0, u8 arg1, s16 tempFlagIndex) {
     f32 dx, dy, dz;

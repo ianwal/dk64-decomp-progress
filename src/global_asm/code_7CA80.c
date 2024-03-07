@@ -482,8 +482,36 @@ void func_global_asm_80678824(void) {
 // Jumptable, can auto decompile for some reason...
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_8067889C.s")
 
-// Jumptable, can auto decompile for some reason...
+// Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_806789E4.s")
+
+/*
+void (*D_global_asm_8074C0A0[])();
+
+extern u32 D_807FBFE4;
+extern u32 D_807FBFE8;
+extern u16 D_807FBB3C;
+
+void func_global_asm_806789E4(void) {
+    D_807FBFE4 = 0;
+    D_807FBFE8 = 0;
+    D_807FBB3C = 0;
+    while (D_807FBB3C < D_global_asm_807FBB34) {
+        current_actor_pointer = D_global_asm_807FB930[D_807FBB3C].unk0;
+        if (current_actor_pointer->unk64 & 2) {
+            func_global_asm_80678BBC(current_actor_pointer);
+            D_global_asm_8074C0A0[current_actor_pointer->unk58]();
+            func_global_asm_80678CC8(current_actor_pointer);
+        }
+        if (current_actor_pointer->animation_state != NULL) {
+            func_global_asm_80614A64(current_actor_pointer);
+        }
+        D_807FBB3C++;
+    }
+    func_global_asm_806790F4(1);
+    func_global_asm_80678B04();
+}
+*/
 
 void func_global_asm_80678B04(void) {
     Actor *temp_s0;
