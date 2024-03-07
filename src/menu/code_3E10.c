@@ -15,10 +15,10 @@ extern void *D_global_asm_80721094;
 extern void *D_global_asm_807210EC;
 extern void *D_global_asm_80721170;
 extern void *D_global_asm_807211D0;
-extern void *D_global_asm_80721444;
+extern void D_global_asm_80721444(); // TODO: Is this actually a function?
 extern s32 D_global_asm_80720C34;
 extern s8 current_file_selection;
-extern void *D_global_asm_8072052C;
+extern void D_global_asm_8072052C(); // TODO: Is this actually a function?
 extern s32 D_global_asm_807204BC;
 extern s32 D_global_asm_80720CF0;
 extern s32 D_global_asm_80720D14;
@@ -132,7 +132,7 @@ extern s8 menu_selection_available;
 // const f64 D_menu_80033EE0 = 0.4;
 
 extern f32 foreground_shading_intensity;
-extern u8 D_menu_80033F38;
+extern s8 D_menu_80033F38;
 extern s8 D_menu_80033F50;
 extern f32 day_night_transition;
 extern f32 menu_rotation_speed;
@@ -142,7 +142,7 @@ extern f32 menu_selection_speed;
 s32 func_menu_800322D0(s32);
 void func_menu_80030340(Actor*, s32, Gfx*, s32);
 void func_global_asm_8061D4E4(Actor*);
-void func_menu_80030894(MenuAdditionalActorData*,s32,u16,u16,f32,u8,u8); // Param 1 is ActorAdditionalData
+void func_menu_80030894(MenuAdditionalActorData*,void*,s32,s32,f32,u8,s32); // Param 1 is ActorAdditionalData
 
 void func_menu_80027E10(void) {
     s32 phi_a0 = 1;
@@ -430,8 +430,6 @@ Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
 
 s8 current_menu_selection;
 
-// TODO: Might be a fake match since func_menu_80030894 probably takes a void* as an arg instead of s32
-// We'll see when .rodata and .data shake out I guess...
 void func_menu_80028834(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD;
 
@@ -443,14 +441,14 @@ void func_menu_80028834(Actor *arg0, s32 arg1) {
     D_global_asm_80745844 = func_global_asm_8060C6B8(0x1E, 0, 0, 0);
     func_menu_80027E10();
     MaaD->unk17 = current_menu_selection;
-    func_menu_80030894(MaaD, &D_global_asm_80720C34, 0xA0, 0xD2, 0.75f, 2, 0);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 0, 0, 1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 1, 0, 1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 2, 0, 1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 3, 0, 1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 4, 0, 1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_8072052C, 0, 0, 0.6f, 2, 6);
-    func_menu_80030894(MaaD, &D_global_asm_807211D0, 1, 0, 0.8f, 2, 6);
+    func_menu_80030894(MaaD, &D_global_asm_80720C34, 160, 210, 0.75f, 2, 0);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 0,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 1,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 2,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 3,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 4,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_8072052C, 0,   0,   0.6f, 2, 6);
+    func_menu_80030894(MaaD, &D_global_asm_807211D0, 1,   0,   0.8f, 2, 6);
     // Is the mystery menu not unlocked?
     if (!isFlagSet(0, FLAG_TYPE_GLOBAL)) {
         D_menu_80033F38 = 0;
@@ -549,27 +547,26 @@ Gfx *func_menu_80028D3C(Actor *arg0, Gfx *dl) {
 }
 
 void func_menu_80028EA8(Actor *arg0, s32 arg1) {
-    PlayerAdditionalActorData* PaaD;
+    MenuAdditionalActorData* MaaD;
 
-    PaaD = arg0->PaaD; // TODO: Probably MaaD
-    PaaD->unk17 = current_file_selection;
-    func_menu_80030894(PaaD, &D_global_asm_80720C34, 0xA0, 0x78, 0.75f, 2, 4);
-    arg1 = &D_global_asm_8072052C;
+    MaaD = arg0->MaaD;
+    MaaD->unk17 = current_file_selection;
+    func_menu_80030894(MaaD, &D_global_asm_80720C34, 0xA0, 0x78, 0.75f, 2, 4);
     if (func_menu_800322D0(0)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(PaaD, arg1, 0, 0, 1.0f, 2, 2);
+    func_menu_80030894(MaaD, &D_global_asm_8072052C, 0, 0, 1.0f, 2, 2);
     if (func_menu_800322D0(1)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(PaaD, arg1, 1, 0, 1.0f, 2, 2);
+    func_menu_80030894(MaaD, &D_global_asm_8072052C, 1, 0, 1.0f, 2, 2);
     if (func_menu_800322D0(2)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(PaaD, arg1, 3, 0, 1.0f, 2, 2);
-    func_menu_80030894(PaaD, &D_global_asm_807204BC, 2, 0, 1.0f, 2, 2);
-    func_menu_80030894(PaaD, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
-    func_menu_80030894(PaaD, &D_global_asm_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
+    func_menu_80030894(MaaD, &D_global_asm_8072052C, 3, 0, 1.0f, 2, 2);
+    func_menu_80030894(MaaD, &D_global_asm_807204BC, 2, 0, 1.0f, 2, 2);
+    func_menu_80030894(MaaD, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
+    func_menu_80030894(MaaD, &D_global_asm_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
 }
 
 void func_menu_8002907C(void);
@@ -682,8 +679,6 @@ Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     return func_global_asm_806ABB98(dl, sp110 * 4.0f, sp100, 0.6f, label_string_pointer_array[8]);
 }
 
-// TODO: Might be a fake match since func_menu_80030894 probably takes a void* as an arg instead of s32
-// We'll see when .rodata and .data shake out I guess...
 void func_menu_80029D30(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
     s32 temp;
@@ -950,7 +945,7 @@ typedef struct {
 void func_menu_8002F8EC();
 
 void func_menu_8002C0C8(Actor *arg0, s32 arg1) {
-    s32 var_s1;
+    s32 globalFlagIndex;
     s32 i;
     AAD_menu_8002C0C8 *temp_s6;
     AAD_MultiplayerMenuKong *temp_v1;
@@ -958,12 +953,12 @@ void func_menu_8002C0C8(Actor *arg0, s32 arg1) {
     temp_s6 = arg0->additional_actor_data;
     func_menu_8002F8EC();
     D_menu_80033FAF = 1;
-    var_s1 = 0x1D;
+    globalFlagIndex = 0x1D;
     for (i = 1; i < 5; i++) {
-        if (isFlagSet(var_s1, 1) != 0) {
+        if (isFlagSet(globalFlagIndex, FLAG_TYPE_GLOBAL)) {
             D_menu_80033FAF |= 1 << i;
         }
-        var_s1 += 1;
+        globalFlagIndex++;
     }
     if (D_global_asm_80744544 & 1) {
         D_menu_80033FAF |= 0x20;
@@ -1382,7 +1377,6 @@ void func_menu_8002F8EC() {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002F980.s")
 
 extern s32 D_menu_800339C4; // TODO: Datatype
-extern f32 D_menu_80033F44;
 
 typedef struct {
     s32 unk0;
@@ -1399,7 +1393,6 @@ typedef struct {
 /*
 // TODO: Progress made, kinda fiddly
 s32 func_menu_8002F980(Gfx *arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3, s32 *arg4, s16 arg5, f32 *arg6, f32 arg7, s16 arg8) {
-    s32 temp[2];
     s32 var_v1;
     f32 var_f0;
     f32 sp3C;
@@ -1419,7 +1412,7 @@ s32 func_menu_8002F980(Gfx *arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3
         var_f0 = -var_f0;
     }
     var_f0 = (0.5f - var_f0) * 800.0f;
-    if (D_menu_80033F44 < 0.0f) {
+    if (menu_rotation_speed < 0.0f) {
         var_f0 = -var_f0;
     }
     // func_menu_800317E8(0.0f, 0.5f, arg1, var_f0 + 160.0, arg7, &sp3C, &sp38, 2, 0, 2.0f);
@@ -1531,8 +1524,84 @@ void func_menu_80030258(Gfx *dl, Actor *arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80030340.s")
 
-// Jumptable, 508 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80030894.s")
+extern int func_menu_80030C14(); // TODO: Signature
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+} Struct80717D84_80030894;
+
+void func_menu_80030894(MenuAdditionalActorData *arg0, void *arg1, s32 arg2, s32 arg3, f32 arg4, u8 arg5, s32 arg6) {
+    Struct80717D84 *sp3C;
+    Struct80717D84_80030894 *temp_v0;
+    f32 dX;
+    f32 dY;
+    f32 d;
+    f32 temp_f2;
+
+    func_global_asm_80714998(arg5);
+    func_global_asm_8071495C();
+    func_global_asm_807149FC(-1);
+    func_global_asm_80714950(arg0);
+    func_global_asm_8071498C(&func_menu_80030C14);
+    func_global_asm_80714A28(1);
+    sp3C = func_global_asm_80714CC0(arg1, arg4, arg2, arg3, -10.0f);
+    temp_v0 = malloc(sizeof(Struct80717D84_80030894));
+    sp3C->unk384 = temp_v0;
+    temp_v0->unk0 = arg6;
+    temp_v0->unk4 = arg0->unk15;
+    temp_v0->unk8 = sp3C->unk340;
+    temp_v0->unkC = sp3C->unk344;
+    switch (arg6) {
+        case 14:
+            sp3C->unk360 = -sp3C->unk360;
+            // fallthrough
+        case 0:
+        case 1:
+        case 11:
+        case 12:
+        case 13:
+        case 16:
+        case 17:
+        case 19:
+            dX = 640.0f - temp_v0->unk8;
+            dY = 480.0f - temp_v0->unkC;
+            d = sqrtf((dX * dX) + (dY * dY));
+            temp_f2 = 1040.0f - d;
+            temp_v0->unk10 = -(dX / d) * temp_f2;
+            temp_v0->unk14 = -(dY / d) * temp_f2;
+            temp_v0->unk18 = sp3C->unk360;
+            break;
+        case 2:
+        case 3:
+        case 10:
+            temp_v0->unk8 = arg2;
+            temp_v0->unk10 = arg4;
+            temp_v0->unk14 = 0.0f;
+            break;
+        case 15:
+            temp_v0->unk8 = arg2;
+            break;
+        default:
+            temp_v0->unk10 = arg4;
+            temp_v0->unk14 = 0.0f;
+            break;
+    }
+    if (D_menu_80033F38 == 0) {
+        sp3C->unk36A = 0x80;
+        sp3C->unk36B = 0x80;
+        sp3C->unk36C = 0x80;
+    }
+    D_menu_80033F38 = 1;
+}
 
 typedef struct {
     f32 unk0;
@@ -1660,6 +1729,7 @@ void func_menu_80031A5C(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80031B08.s")
 
+// TODO: float & stack nonsense, close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80032024.s")
 
 extern s8 D_menu_80033738;
@@ -1690,7 +1760,6 @@ typedef struct {
 extern Struct8003378C D_menu_8003378C;
 
 /*
-// TODO: Pretty close
 void func_menu_80032024(void) {
     MenuAdditionalActorData *MaaD;
     f32 sp70;
@@ -1699,10 +1768,13 @@ void func_menu_80032024(void) {
     f32 sp64;
     f32 sp60;
     f32 sp5C;
+    s32 pad4;
     f32 sp54;
     f32 sp50;
-    f32 temp_f0;
-    f32 temp_f0_2;
+    f32 newX;
+    f32 newZ;
+    s32 pad3;
+    s32 pad2;
     s32 pad;
 
     MaaD = current_actor_pointer->MaaD;
@@ -1711,26 +1783,27 @@ void func_menu_80032024(void) {
             deleteActor(current_actor_pointer);
             D_menu_80033738++;
             spawnActor(ACTOR_BARREL_MAIN_MENU, 0xD7);
-            temp_f0 = 0.14f;
-            last_spawned_actor->animation_state->scale_x = temp_f0;
-            last_spawned_actor->animation_state->scale_y = temp_f0;
-            last_spawned_actor->animation_state->scale_z = temp_f0;
+            last_spawned_actor->animation_state->scale_x = 0.14f;
+            last_spawned_actor->animation_state->scale_y = 0.14f;
+            last_spawned_actor->animation_state->scale_z = 0.14f;
         } else if (D_menu_80033738 == 0x15) {
             func_global_asm_80671C0C(player_pointer, 2, &sp6C, &sp64, &sp5C);
             func_global_asm_80671C0C(player_pointer, 3, &sp70, &sp68, &sp60);
-            current_actor_pointer->x_position = (sp70 + sp6C) * 0.5f;
+            newX = (sp70 + sp6C);
+            newZ = (sp60 + sp5C);
+            current_actor_pointer->x_position = newX * 0.5f;
             current_actor_pointer->y_position = sp64;
-            current_actor_pointer->z_position = (sp60 + sp5C) * 0.5f;
+            current_actor_pointer->z_position = newZ * 0.5f;
             MaaD->unk0 = current_actor_pointer->x_position;
             MaaD->unk4 = current_actor_pointer->y_position;
             MaaD->unk8 = current_actor_pointer->z_position;
             current_actor_pointer->y_rotation = 0;
             current_actor_pointer->z_rotation = 0x400;
             func_global_asm_80626F8C(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, &sp54, &sp50, 0, 1.0f, 0);
-            temp_f0_2 = sp50 - 120.0f;
-            if (temp_f0_2 < -35.0f && temp_f0_2 > -75.0f) {
-                D_menu_8003378C.unk0 = temp_f0_2;
-                D_menu_8003378C.unk44 = temp_f0_2;
+            sp50 -= 120.0f;
+            if (sp50 < -35.0f && sp50 > -75.0f) {
+                D_menu_8003378C.unk0 = sp50;
+                D_menu_8003378C.unk44 = sp50;
             }
         }
     } else {

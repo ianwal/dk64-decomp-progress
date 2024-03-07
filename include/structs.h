@@ -744,7 +744,8 @@ typedef struct menu_additional_actor_data {
     s16 unk10;
     s8  unk12;
     s8  unk13;
-    s16 unk14;
+    s8 unk14;
+    s8 unk15;
     s8  unk16;
     s8 unk17;
 } MenuAdditionalActorData;

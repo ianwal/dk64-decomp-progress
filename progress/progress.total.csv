@@ -3355,7 +3355,7 @@ us,.menu,func_menu_80029114,184,yes
 us,.menu,func_menu_80025AE0,8,yes
 us,.menu,func_menu_80028C20,284,yes
 us,.menu,func_menu_80025B64,432,yes
-us,.menu,func_menu_80030894,508,no
+us,.menu,func_menu_80030894,508,yes
 us,.menu,func_menu_8002F284,1092,no
 us,.menu,func_menu_80031A5C,172,yes
 us,.menu,func_menu_80026874,692,yes
