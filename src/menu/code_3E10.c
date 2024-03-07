@@ -27,43 +27,123 @@ extern s32 D_global_asm_80720C34;
 extern s32 D_global_asm_80720D38;
 extern s8 menu_selection_available;
 
-// rodata
-extern f32 adventure_barrel_scale;
-extern f32 adventure_icon_scale;
-extern f32 battle_barrel_scale;
-extern f32 battle_icon_scale;
-extern f32 day_night_transition;
+// Rodata
+// const char D_menu_80033B30[] = "%s";
+// const char D_menu_80033B34[] = "%s";
+// const char D_menu_80033B38[] = "%s %d";
+// const char D_menu_80033B40[] = "%d%%"; // Not yet matched
+// const char D_menu_80033B48[] = "%03d"; // Not yet matched
+// const char D_menu_80033B50[] = "%03d:%02d"; // Not yet matched
+// const char D_menu_80033B5C[] = "%s %d"; // Not yet matched
+// const char D_menu_80033B64[] = "%s";
+// const char D_menu_80033B68[] = "%s %d";
+// const char D_menu_80033B70[] = "%s"; // Not yet matched
+// const char D_menu_80033B74[] = "%s %d"; // Not yet matched
+// const char D_menu_80033B7C[] = "%s %d"; // Not yet matched
+// const char D_menu_80033B84[] = "%d %s"; // Not yet matched
+// const char D_menu_80033B8C[] = "%d %s"; // Not yet matched
+// const char D_menu_80033B94[] = "%d %s"; // Not yet matched
+// const char D_menu_80033B9C[] = "%d %s"; // Not yet matched
+// const char D_menu_80033BA4[] = "%d %s"; // Not yet matched
+// const char D_menu_80033BAC[] = "%d %s"; // Not yet matched
+// const char D_menu_80033BB4[] = "%d"; // Not yet matched
+// const char D_menu_80033BB8[] = "P %d"; // Not yet matched
+// const char D_menu_80033BC0[] = "%d"; // Not yet matched
+// const char D_menu_80033BC4[] = "%d"; // Not yet matched
+// const char D_menu_80033BC8[] = "%d"; // Not yet matched
+// const char D_menu_80033BCC[] = "%s:%s"; // Not yet matched
+// const char D_menu_80033BD4[] = "%s:%s"; // Not yet matched
+// const char D_menu_80033BDC[] = "???"; // Not yet matched
+// const char D_menu_80033BF0[] = "%s"; // Not yet matched
+// const char D_menu_80033BF4[] = "%s %d."; // Not yet matched
+// const char D_menu_80033BFC[] = "%d."; // Not yet matched
+// const char D_menu_80033C00[] = "%c %c %c"; // Not yet matched
+// const char D_menu_80033C0C[] = "%d"; // Not yet matched
+// const f64 D_menu_80033C10 = 0.005;
+// const f64 D_menu_80033C18 = 0.005;
+// const f32 D_menu_80033C20 = 0.45f;
+// const f64 D_menu_80033C28 = 0.01;
+// const f64 D_menu_80033C30 = 0.83;
+// const f64 D_menu_80033C38 = 0.17;
+// const f64 D_menu_80033C40 = 0.8;
+// const f64 D_menu_80033C48 = 0.2;
+// const f64 D_menu_80033C50 = 0.6;
+// const f64 D_menu_80033C58 = 0.4;
+// const f32 text_transition_speed = 0.3f;
+// const f32 text_label_scale = 0.7f;
+// const f32 adventure_barrel_scale = 1.2f;
+// const f32 options_barrel_scale = 1.2f;
+// const f32 mystery_barrel_scale = 1.2f;
+// const f32 battle_barrel_scale = 1.2f;
+// const f32 sound_barrel_scale = 1.2f;
+// const f32 adventure_icon_scale = 0.6f;
+// const f32 options_icon_scale = 0.8f;
+// const f32 mystery_icon_scale = 0.8f;
+// const f32 battle_icon_scale = 0.6f;
+// const f32 sound_icon_scale = 0.6f;
+// const f32 D_menu_80033C90 = 0.3f;
+// const f64 D_menu_80033C98 = 0.85;
+// const f32 D_menu_80033CA0 = 0.1f;
+// const f32 D_menu_80033CA4 = 0.3f;
+// const f32 D_menu_80033CA8 = 0.6f;
+// const f32 D_menu_80033CAC = 0.8f;
+// const f32 D_menu_80033CB0 = 0.45f;
+// const f32 D_menu_80033CB4 = 0.45f;
+// const f32 D_menu_80033CB8 = 0.7f;
+// const f64 D_menu_80033CC0 = -239.0;
+// const f32 D_menu_80033CC8 = 1.8f;
+// const f32 D_menu_80033CCC = 1.8f;
+// const f32 D_menu_80033CD0 = 1.8f;
+// const f32 D_menu_80033CD4 = 0.6f;
+// const f32 D_menu_80033CD8 = -479.0f;
+// const f32 D_menu_80033CDC = 0.8f;
+// const f32 D_menu_80033CE0 = 0.8f;
+// const f32 D_menu_80033CE4 = 0.8f;
+// const f32 D_menu_80033CE8 = 1.8f;
+// const f32 D_menu_80033CEC = 1.8f;
+// const f32 D_menu_80033CF0 = 0.6f;
+// const f32 D_menu_80033CF4 = 0.6f;
+// const f32 D_menu_80033CF8 = 1.8f;
+// const f32 D_menu_80033CFC = 1.8f;
+// const f64 D_menu_80033D00 = 0.78;
+// const f32 D_menu_80033D44 = 13.1f;
+// const f64 D_menu_80033D48 = 1.333;
+// const f32 D_menu_80033D50 = 0.13f;
+// const f32 D_menu_80033D54 = 1.3f;
+// const f32 D_menu_80033D58 = 0.2f;
+// const f32 menu_rotation_speed_left = -0.1f;
+// const f32 menu_rotation_speed_right = 0.1f;
+// const f64 D_menu_80033D80 = 0.8;
+// const f32 D_menu_80033E0C = 3.141f;
+// const f32 D_menu_80033E10 = 0.3f;
+// const f32 D_menu_80033E14 = -0.3f;
+// const f64 D_menu_80033E68 = 360.0;
+// const f64 D_menu_80033E70 = 0.9;
+// const f32 D_menu_80033E78 = 1365.0f;
+// const f32 D_menu_80033E7C = 1.1f;
+// const f32 D_menu_80033E80 = 0.825f;
+// const f32 D_menu_80033E84 = 6.2f;
+// const f32 D_menu_80033EC0 = 0.1f;
+// const f32 D_menu_80033EC4 = 13.1f;
+// const f64 D_menu_80033EC8 = 0.1;
+// const f32 D_menu_80033ED0 = 10020.0f;
+// const f32 DK_barrel_scale = 0.14f;
+// const f64 D_menu_80033ED8 = 0.2;
+// const f64 D_menu_80033EE0 = 0.4;
+
 extern f32 foreground_shading_intensity;
-extern f32 mystery_barrel_scale;
-extern f32 mystery_icon_scale;
-extern f32 options_barrel_scale;
-extern f32 options_icon_scale;
-extern f32 sound_barrel_scale;
-extern f32 sound_icon_scale;
-extern f32 menu_rotation_speed;
-extern f32 menu_rotation_speed_left;
-extern f32 menu_rotation_speed_right;
-extern f32 menu_icon_transition_scale;
-extern f32 DK_barrel_scale;
-extern f64 D_menu_80033C10;
-extern f64 D_menu_80033C18;
-extern f32 D_menu_80033C20;
-extern f64 D_menu_80033C28;
-extern f64 D_menu_80033C30;
-extern f64 D_menu_80033C38;
-extern f64 D_menu_80033C40;
-extern f64 D_menu_80033C48;
-extern f64 D_menu_80033C50;
-extern f64 D_menu_80033C58;
-extern f32 menu_selection_speed;
-extern f32 D_menu_80033D50;
-extern f32 D_menu_80033D54;
-extern f32 D_menu_80033D58;
-extern f64 D_menu_80033ED8;
-extern f64 D_menu_80033EE0;
 extern u8 D_menu_80033F38;
 extern s8 D_menu_80033F50;
+extern f32 day_night_transition;
+extern f32 menu_rotation_speed;
 
+// rodata
+/*
+extern f32 menu_icon_transition_scale;
+extern f32 menu_selection_speed;
+*/
+
+s32 func_menu_800322D0(s32);
 void func_menu_80030340(Actor*, s32, Gfx*, s32);
 void func_global_asm_8061D4E4(Actor*);
 void func_menu_80030894(MenuAdditionalActorData*,s32,u16,u16,f32,u8,u8); // Param 1 is ActorAdditionalData
@@ -295,20 +375,20 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
     }
     if (is_night) {
         var_f16 = 0.0f;
-        day_night_transition = day_night_transition + D_menu_80033C10;
+        day_night_transition = day_night_transition + 0.005;
         if (day_night_transition > 1.0) {
             day_night_transition = 1.0f;
         }
     } else {
         var_f16 = 1.0f;
         if (day_night_transition > 0.0) {
-            day_night_transition -= D_menu_80033C18;
+            day_night_transition -= 0.005;
         } else if (is_raining) {
-            var_f16 = D_menu_80033C20;
+            var_f16 = 0.45f;
         }
     }
-    foreground_shading_intensity += ((var_f16 - foreground_shading_intensity) * D_menu_80033C28);
-    func_global_asm_80659670((foreground_shading_intensity * D_menu_80033C30) + D_menu_80033C38, (foreground_shading_intensity * D_menu_80033C40) + D_menu_80033C48, (foreground_shading_intensity * D_menu_80033C50) + D_menu_80033C58, -1);
+    foreground_shading_intensity += ((var_f16 - foreground_shading_intensity) * 0.01);
+    func_global_asm_80659670((foreground_shading_intensity * 0.83) + 0.17, (foreground_shading_intensity * 0.8) + 0.2, (foreground_shading_intensity * 0.6) + 0.4, -1);
     func_global_asm_80708574(day_night_transition);
 }
 */
@@ -317,8 +397,6 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_800286C8.s")
 
 s32 *label_string_pointer_array;
-extern f32 text_label_scale;
-extern f32 text_transition_speed;
 
 typedef struct {
     f32 unk0;
@@ -349,10 +427,10 @@ Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
 
     global_properties_bitfield |= 0x10;
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    spD0 = func_menu_800317E8(aaD, 160.0f, 20.0f, &spC4, &spC0, 5, 1, text_transition_speed);
+    spD0 = func_menu_800317E8(aaD, 160.0f, 20.0f, &spC4, &spC0, 5, 1, 0.3f);
     sp38 = malloc(0x40);
     func_global_asm_8061134C(sp38);
-    guScaleF(&sp7C, text_label_scale, text_label_scale, 1.0f);
+    guScaleF(&sp7C, 0.7f, 0.7f, 1.0f);
     guTranslateF(&sp3C, spC4 * 4.0, spC0 * 4.0, 0);
     guMtxCatF(&sp7C, &sp3C, &sp7C);
     guMtxF2L(&sp7C, sp38);
@@ -377,24 +455,24 @@ void func_menu_80028834(Actor *arg0, s32 arg1) {
     func_menu_80027E10();
     MaaD->unk17 = current_menu_selection;
     func_menu_80030894(MaaD, &D_global_asm_80720C34, 0xA0, 0xD2, 0.75f, 2, 0);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 0, 0, adventure_barrel_scale, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 1, 0, options_barrel_scale, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 2, 0, mystery_barrel_scale, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 3, 0, battle_barrel_scale, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 4, 0, sound_barrel_scale, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_8072052C, 0, 0, adventure_icon_scale, 2, 6);
-    func_menu_80030894(MaaD, &D_global_asm_807211D0, 1, 0, options_icon_scale, 2, 6);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 0, 0, 1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 1, 0, 1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 2, 0, 1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 3, 0, 1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_80721444, 4, 0, 1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, &D_global_asm_8072052C, 0, 0, 0.6f, 2, 6);
+    func_menu_80030894(MaaD, &D_global_asm_807211D0, 1, 0, 0.8f, 2, 6);
     // Is the mystery menu not unlocked?
     if (!isFlagSet(0, FLAG_TYPE_GLOBAL)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(MaaD, &D_global_asm_80721094, 2, 0, mystery_icon_scale, 2, 7);
+    func_menu_80030894(MaaD, &D_global_asm_80721094, 2, 0, 0.8f, 2, 7);
     // Is the multiplayer menu not unlocked?
     if (!isFlagSet(0x1C, FLAG_TYPE_GLOBAL)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(MaaD, &D_global_asm_807210EC, 3, 0, battle_icon_scale, 2, 6);
-    func_menu_80030894(MaaD, &D_global_asm_80721170, 4, 0, sound_icon_scale, 2, 6);
+    func_menu_80030894(MaaD, &D_global_asm_807210EC, 3, 0, 0.6f, 2, 6);
+    func_menu_80030894(MaaD, &D_global_asm_80721170, 4, 0, 0.6f, 2, 6);
     func_menu_80030894(MaaD, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
     player_pointer->x_position = 700.0f;
     player_pointer->y_position = 100.0f;
@@ -449,12 +527,6 @@ void func_menu_80028C20(Actor *arg0, s32 arg1) {
     func_menu_8002FC1C(arg0, MaaD, 1);
 }
 
-extern char *D_menu_80033B30;
-extern char *D_menu_80033B34;
-extern char *D_menu_80033B38;
-extern f32 D_menu_80033C90;
-s32 func_menu_800322D0(s32);
-
 Gfx *func_global_asm_806ABB98(Gfx*, s16, s16, f32, void*);
 
 Gfx *func_menu_80028D3C(Actor *arg0, Gfx *dl) {
@@ -471,20 +543,20 @@ Gfx *func_menu_80028D3C(Actor *arg0, Gfx *dl) {
 
     global_properties_bitfield &= ~0x10;
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    sp100 = func_menu_800317E8(aaD, 160.0f, 15.0f, &spFC, &spF8, 4, 1, D_menu_80033C90);
+    sp100 = func_menu_800317E8(aaD, 160.0f, 15.0f, &spFC, &spF8, 4, 1, 0.3f);
     if (sp100 == 2) {
-        func_dk64_boot_800031E0(&sp2C, &D_menu_80033B30, label_string_pointer_array[5]);
+        func_dk64_boot_800031E0(&sp2C, "%s", label_string_pointer_array[5]);
     } else {
         if (sp100 == 3) {
             sp100 = 2;
         }
         if (func_menu_800322D0(sp100) != 0) {
-            func_dk64_boot_800031E0(&sp2C, &D_menu_80033B34, label_string_pointer_array[6]);
+            func_dk64_boot_800031E0(&sp2C, "%s", label_string_pointer_array[6]);
         } else {
-            func_dk64_boot_800031E0(&sp2C, &D_menu_80033B38, label_string_pointer_array[7], sp100 + 1);
+            func_dk64_boot_800031E0(&sp2C, "%s %d", label_string_pointer_array[7], sp100 + 1);
         }
     }
-    return func_global_asm_806ABB98(dl, spFC * 4.0f, spF8 * 4.0f, 0.600000023842f, &sp2C);
+    return func_global_asm_806ABB98(dl, spFC * 4.0f, spF8 * 4.0f, 0.6f, &sp2C);
 }
 
 void func_menu_80028EA8(Actor *arg0, s32 arg1) {
@@ -592,10 +664,6 @@ void func_menu_80029AAC(Actor *arg0, s32 arg1) {
 // Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80029BB4.s")
 
-extern s32 D_menu_80033B64;
-extern s32 D_menu_80033B68;
-extern f32 D_menu_80033CB0;
-
 /*
 Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     s32 sp120;
@@ -616,13 +684,13 @@ Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     void *aaD = arg0->additional_actor_data;
 
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    sp120 = func_menu_800317E8(aaD, 160.0f, 25.0f, &sp110, &sp10C, 3, 1, D_menu_80033CB0);
+    sp120 = func_menu_800317E8(aaD, 160.0f, 25.0f, &sp110, &sp10C, 3, 1, 0.45f);
     temp_f4 = sp10C * 4.0f;
     spFE = sp110 * 4.0f;
     if (func_menu_800322D0(sp120) != 0) {
-        func_dk64_boot_800031E0(&sp34, &D_menu_80033B64, label_string_pointer_array[6]);
+        func_dk64_boot_800031E0(&sp34, "%s", label_string_pointer_array[6]);
     } else {
-        func_dk64_boot_800031E0(&sp34, &D_menu_80033B68, label_string_pointer_array[7], sp120 + 1);
+        func_dk64_boot_800031E0(&sp34, "%s %d", label_string_pointer_array[7], sp120 + 1);
     }
     dl = func_global_asm_806ABB98(dl, spFE, temp_f4, 0.6f, &sp34);
     return func_global_asm_806ABB98(dl, sp110 * 4.0f, temp_f4 - 0x3C, 0.6f, label_string_pointer_array[8]);
@@ -874,9 +942,6 @@ s32 func_menu_8002AD50(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002B708.s")
 
 extern s16 D_menu_8003386C[];
-extern f32 D_menu_80033CDC;
-extern f32 D_menu_80033CE0;
-extern f32 D_menu_80033CE4;
 extern s8 D_menu_80033FAD;
 extern s8 D_menu_80033FAE;
 extern s8 D_menu_80033FAF;
@@ -942,9 +1007,9 @@ void func_menu_8002C0C8(Actor *arg0, s32 arg1) {
     func_menu_80030894(temp_s6, &D_global_asm_80720C34, 0xA0, 0x7D, 0.75f, 2, 4);
     func_menu_80030894(temp_s6, &D_global_asm_80720D80, 0xA0, 0x10, 0.5f, 2, 0);
     func_menu_80030894(temp_s6, &D_global_asm_807211AC, 0xA0, 0xDC, 0.75f, 2, 0);
-    func_menu_80030894(temp_s6, &D_global_asm_807211D0, 1, 1, D_menu_80033CDC, 2, 0xF);
-    func_menu_80030894(temp_s6, &D_global_asm_807211D0, 2, 2, D_menu_80033CE0, 2, 0xF);
-    func_menu_80030894(temp_s6, &D_global_asm_807211D0, 3, 3, D_menu_80033CE4, 2, 0xF);
+    func_menu_80030894(temp_s6, &D_global_asm_807211D0, 1, 1, 0.8f, 2, 0xF);
+    func_menu_80030894(temp_s6, &D_global_asm_807211D0, 2, 2, 0.8f, 2, 0xF);
+    func_menu_80030894(temp_s6, &D_global_asm_807211D0, 3, 3, 0.8f, 2, 0xF);
     func_menu_80030894(temp_s6, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0xB);
     func_menu_80030894(temp_s6, &D_global_asm_80720D14, 0x23, 0xD2, 0.75f, 2, 0xB);
     func_menu_80030894(temp_s6, &D_global_asm_80720C34, 0xA0, 0x16D, 0.75f, 2, 4);
@@ -1134,6 +1199,11 @@ void func_menu_8002DEE8(Actor *arg0, s32 arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002E420.s")
 
+// rodata
+const char D_menu_80033BE0[] = "-"; // Not yet matched
+const char D_menu_80033BE4[] = "  -"; // Not yet matched
+const char D_menu_80033BE8[] = "    -"; // Not yet matched
+
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002E8B8.s")
 
 void func_menu_8002ECE8(void) {
@@ -1223,11 +1293,9 @@ void func_menu_8002F75C(void) {
 }
 */
 
-extern f32 D_menu_80033D44;
-
 void func_menu_8002F8EC() {
     character_change_array->look_at_eye_x = player_pointer->x_position;
-    character_change_array->look_at_eye_y = player_pointer->y_position + D_menu_80033D44;
+    character_change_array->look_at_eye_y = player_pointer->y_position + 13.1f;
     character_change_array->look_at_eye_z = player_pointer->z_position - 50.0f;
     character_change_array->look_at_at_x = player_pointer->x_position;
     character_change_array->look_at_at_y = character_change_array->look_at_eye_y;
@@ -1292,7 +1360,6 @@ s32 func_menu_8002F980(Gfx *arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002FB88.s")
 
-extern f64 D_menu_80033D48;
 extern f32 D_menu_80033F68[];
 extern f32 D_menu_80033F80[];
 extern f32 D_menu_80033F98[];
@@ -1305,15 +1372,15 @@ s32 func_menu_8002FB88(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     temp_v1 = (arg1 & 0x7F);
     D_menu_80033F68[temp_v1] = (arg2 * 4.0f) - 32.0;
     D_menu_80033F80[temp_v1] = (arg3 * 4.0f) - 100.0;
-    D_menu_80033F98[temp_v1] = arg4 * D_menu_80033D48;
+    D_menu_80033F98[temp_v1] = arg4 * 1.333;
     return arg0;
 }
 */
 
 void func_menu_8002FC1C(Actor *arg0, MenuAdditionalActorData *MaaD, s32 arg2) {
     if (MaaD->unk16 == 0) {
-        MaaD->unk0 += D_menu_80033D50;
-        if (D_menu_80033D54 < MaaD->unk0) {
+        MaaD->unk0 += 0.13f;
+        if (1.3f < MaaD->unk0) {
             MaaD->unk0 = 1.0f;
             MaaD->unk12 = MaaD->unk13;
             MaaD->unk16 = -1;
@@ -1322,7 +1389,7 @@ void func_menu_8002FC1C(Actor *arg0, MenuAdditionalActorData *MaaD, s32 arg2) {
         }
     } else {
         if (MaaD->unk0 > 0.0f) {
-            MaaD->unk0 -= D_menu_80033D58;
+            MaaD->unk0 -= 0.2f;
             if (MaaD->unk0 < 0.0f) {
                 MaaD->unk0 = 0.0f;
                 if (arg2 != 0) {
@@ -1337,7 +1404,7 @@ void func_menu_8002FC1C(Actor *arg0, MenuAdditionalActorData *MaaD, s32 arg2) {
 void func_menu_8002FD38(MenuAdditionalActorData *MaaD, s32 arg1, s32 arg2) {
     if (arg2 & 4) {
         playSound(0x2C9, 0x7FFF, 63.0f, 1.25f, 0, 0);
-        menu_rotation_speed = menu_rotation_speed_left;
+        menu_rotation_speed = -0.1f;
         MaaD->unk17--;
         MaaD->unk4 = 1.0f;
         if (MaaD->unk17 < 0) {
@@ -1346,7 +1413,7 @@ void func_menu_8002FD38(MenuAdditionalActorData *MaaD, s32 arg1, s32 arg2) {
         menu_selection_available = 0;
     } else if (arg2 & 8) {
         playSound(0x2C9, 0x7FFF, 63.0f, 1.25f, 0, 0);
-        menu_rotation_speed = menu_rotation_speed_right;
+        menu_rotation_speed = 0.1f;
         menu_selection_available = 0;
     }
 }
@@ -1391,10 +1458,6 @@ void func_menu_80030258(Gfx *dl, Actor *arg1) {
 // Jumptable, 508 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80030894.s")
 
-extern f32 D_menu_80033E0C;
-extern f32 D_menu_80033E10;
-extern f32 D_menu_80033E14;
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -1414,13 +1477,13 @@ void func_menu_80030A90(Struct80717D84 *arg0, s32 arg1) {
         sp72 = func_global_asm_806119A0() * 0x10;
         var_v0->unk0 = func_global_asm_80612794(sp72) * 60.0f;
         var_v0->unk4 = func_global_asm_80612790(sp72) * 60.0f;
-        var_v0->unk8 = func_global_asm_806119FC() * D_menu_80033E0C;
+        var_v0->unk8 = func_global_asm_806119FC() * 3.141f;
         arg0->unk340 += (var_v0->unk0 * 3.0f);
         arg0->unk344 += (var_v0->unk4 * 3.0f);
         if (var_v0->unk0 > 0.0f) {
-            var_v0->unkC = D_menu_80033E10;
+            var_v0->unkC = 0.3f;
         } else {
-            var_v0->unkC = D_menu_80033E14;
+            var_v0->unkC = -0.3f;
         }
     }
     var_v0 = arg0->unk384;
@@ -1552,7 +1615,7 @@ void func_menu_80032024(void) {
             deleteActor(current_actor_pointer);
             D_menu_80033738++;
             spawnActor(ACTOR_BARREL_MAIN_MENU, 0xD7);
-            temp_f0 = DK_barrel_scale;
+            temp_f0 = 0.14f;
             last_spawned_actor->animation_state->scale_x = temp_f0;
             last_spawned_actor->animation_state->scale_y = temp_f0;
             last_spawned_actor->animation_state->scale_z = temp_f0;
@@ -1605,15 +1668,15 @@ s32 func_menu_80032304(void) {
 
     func_global_asm_806ABE3C();
     var_f0 = 0.0f;
-    var_f0 += (D_global_asm_807FC828[5] * D_menu_80033ED8);
+    var_f0 += (D_global_asm_807FC828[5] * 0.2);
     var_f0 += (D_global_asm_807FC828[2] * 0.25);
-    var_f0 += (D_global_asm_807FC828[3] * D_menu_80033ED8);
+    var_f0 += (D_global_asm_807FC828[3] * 0.2);
     var_f0 += (D_global_asm_807FC828[1] * 0.5);
     var_f0 += (D_global_asm_807FC828[4] * 0.5);
     var_f0 += (D_global_asm_807FC828[6] * 0.5);
-    var_f0 += (D_global_asm_807FC828[0] * D_menu_80033EE0);
+    var_f0 += (D_global_asm_807FC828[0] * 0.4);
     if (D_global_asm_807FC828[0] == 201) {
-        var_f0 -= D_menu_80033EE0;
+        var_f0 -= 0.4;
     }
     if (var_f0 == 100.0) {
         if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT) != 0) {
