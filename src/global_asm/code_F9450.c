@@ -208,6 +208,8 @@ struct globalASMStruct36 {
 extern GlobalASMStruct36 *D_global_asm_807FD730;
 extern u8 D_global_asm_807FD738;
 
+void func_global_asm_806F54E0(s32, s32, s32);
+
 void func_global_asm_806F5378(void) {
     GlobalASMStruct36 *next;
     GlobalASMStruct36 *current;
@@ -278,8 +280,56 @@ void func_global_asm_806F5498(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F54E0.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F58A0.s")
+void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2) {
+    s32 var_s0;
+    s32 i;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    s16 var_s2;
+
+    if (cc_number_of_players == 1) {
+        func_global_asm_806357F8(arg1, &sp7C, &sp78, &sp74, &sp70, &sp6C, &sp68, &sp64, &sp60, 1);
+    }
+    
+    switch (arg2->unk58) {
+        case 3:
+            var_s2 = 0xA;
+            break;
+        case 5:
+            var_s2 = 0x16;
+            break;
+        case 4:
+        case 9:
+            var_s2 = 0x1E;
+            break;
+        case 6:
+        case 7:
+            var_s2 = 0x1F;
+            break;
+        case 2:
+        case 8:
+            var_s2 = 0xD;
+            break;
+        default:
+            var_s2 = 0xD;
+            break;
+    }
+    var_s0 = 0;
+    for (i = 0; i != 5; i++) {
+        if (cc_number_of_players == 1) {
+            func_global_asm_806F50C8(func_global_asm_80632630(var_s2, sp7C, sp78, sp74, 0.0f, 0), var_s2, var_s0, 1, 0, 1);
+        } else {
+            func_global_asm_806F54E0(arg0 & 0xFF, var_s2, 0);
+        }
+        var_s0 += 3;
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F5A48.s")
