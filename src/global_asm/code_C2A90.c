@@ -213,30 +213,24 @@ void func_global_asm_806BE674(u8 arg0) {
     }
 }
 
-// Displaylist stuff, dl arg0, actor arg1?
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BE6F0.s")
 
 /*
 Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
-    char sp4C[2];
-    s16 sfx;
     u8 temp_t7;
-    s32 var_s0;
-
+    char sp4C[2];
+    u16 temp;
+    
     temp_t7 = (arg1->unk168 / 30);
-    if (temp_t7 != 0) {
-        if (temp_t7 >= 4) {
-            var_s0 = 3;
-        } else {
-            var_s0 = temp_t7;
-        }
-        func_dk64_boot_800031E0(&sp4C, "%d", var_s0);
+    if (temp_t7) {
+        func_dk64_boot_800031E0(&sp4C, "%d", MIN(3, temp_t7));
     } else {
         func_dk64_boot_800031E0(&sp4C, func_global_asm_8070E750(0x26, 9, 1));
     }
     if ((arg1->unk168 % 30) == 0) {
-        if (temp_t7 != 0) {
-            playSound(temp_t7 >= 2 ? 0x75 : 0x74, 0x7FFF, 64.0f, 1.0f, 0, 0x80);
+        if (temp_t7) {
+            playSound(temp_t7 > 1 ? 0x75 : 0x74, 0x7FFF, 64.0f, 1.0f, 0, 0x80);
         }
     }
 
@@ -246,7 +240,8 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     gDPSetColorImage(dl++, 7, G_IM_SIZ_32b, 4096, 0xFA000000);
 
     dl = func_global_asm_8070068C(dl);
-    dl = func_global_asm_806FC530(dl, 1, (0x140 - func_global_asm_806FBD5C(1, &sp4C)) * 2, 0xAA, &sp4C, 1);
+    temp = 0x140 - func_global_asm_806FBD5C(1, &sp4C);
+    dl = func_global_asm_806FC530(dl, 1, 2 * temp, 0xAA, &sp4C, 1);
     if (arg1->unk168-- == 0) {
         arg1->control_state_progress++;
     }
@@ -260,8 +255,56 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BF218.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BF920.s")
+void func_global_asm_806BF920(void) {
+    Actor17C *a17C;
+    s32 sp20;
+    s32 var_a2;
+
+    a17C = current_actor_pointer->unk17C;
+    sp20 = 0;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        var_a2 = 0;
+        switch (a17C->unk0_u16[0]) {
+            case 1:
+            case 2:
+            case 3:
+                var_a2 = 3;
+                break;
+            case 9:
+            case 10:
+            case 11:
+                var_a2 = 5;
+                break;
+            case 4:
+            case 5:
+                var_a2 = 2;
+                break;
+        }
+        if (var_a2 != 0) {
+            current_actor_pointer->animation_state->unk1C = malloc(0x100);
+            func_global_asm_806C8220(0, current_actor_pointer->unk178, var_a2);
+        }
+    }
+    switch (a17C->unk0_u16[0]) {
+        case 1:
+        case 2:
+        case 3:
+            func_global_asm_806F22A8(current_actor_pointer, current_actor_pointer->animation_state->unk1C, &sp20);
+            break;
+        case 9:
+        case 10:
+        case 11:
+            func_global_asm_806F1EB0(current_actor_pointer, current_actor_pointer->animation_state->unk1C, &sp20);
+            break;
+        case 4:
+        case 5:
+            func_global_asm_806F1C04(current_actor_pointer, current_actor_pointer->animation_state->unk1C, &sp20);
+            break;
+    }
+    if (sp20 != 0) {
+        current_actor_pointer->animation_state->unk1C[sp20].unk0 = 0;
+    }
+}
 
 void func_global_asm_80613CA8(Actor*, s32, f32, f32);
 
