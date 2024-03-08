@@ -133,9 +133,6 @@ void func_bonus_800274A0(f32 arg0, f32 arg1, f32 arg2) {
     func_global_asm_80690A28(0x23, 1, 0.6f, arg0, arg1, arg2, D_bonus_8002DD28, current_actor_pointer);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80027548.s")
-
-
 extern f64 D_bonus_8002DD30;
 extern f64 D_bonus_8002DD38;
 extern Struct807FD610 D_global_asm_807FD610[];
@@ -163,30 +160,27 @@ typedef struct {
     s32 unk2C;
 } AAD_bonus_80027548;
 
-/*
-// TODO: Extremely close, stack
 u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
     AAD_bonus_80027548 *aaD;
-    f32 sp50;
-    f32 sp4C;
-    s32 pad_0;
-    u8 pad_1;
-    u8 pad_2;
-    u8 pad_3;
-    u8 sp40; // TODO: Need to move this from 0x44 to 0x40 without growing the stack
+    f32 sp4C[3];
+    f32 d;
+    s16 i;
+    u8 unk;
+    u8 sp40;
 
     aaD = current_actor_pointer->additional_actor_data;
     sp40 = 0;
     aaD->unk26 = 1;
-    func_global_asm_80626F8C(arg0, arg1, arg2, &sp50, &sp4C, 0, 4.0f, 0);
-    aaD->unk1E = sp50;
-    aaD->unk20 = sp4C;
+    func_global_asm_80626F8C(arg0, arg1, arg2, &sp4C[2], &sp4C[1], 0, 4.0f, 0);
+    aaD->unk1E = sp4C[2];
+    aaD->unk20 = sp4C[1];
     current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(arg0, arg2, current_actor_pointer->x_position, current_actor_pointer->z_position), 10.0f);
-    current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, ((func_global_asm_80611BB4(current_actor_pointer->y_position - arg1, sqrtf(((current_actor_pointer->x_position - arg0) * (current_actor_pointer->x_position - arg0)) + ((current_actor_pointer->z_position - arg2) * (current_actor_pointer->z_position - arg2)))) * 2048.0) / D_bonus_8002DD30) + D_bonus_8002DD38, 5.0f);
+    d = sqrtf(((current_actor_pointer->x_position - arg0) * (current_actor_pointer->x_position - arg0)) + ((current_actor_pointer->z_position - arg2) * (current_actor_pointer->z_position - arg2)));
+    current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, ((func_global_asm_80611BB4(current_actor_pointer->y_position - arg1, d) * 2048.0) / D_bonus_8002DD30) + D_bonus_8002DD38, 5.0f);
     if ((D_global_asm_807FD610[0].unk2C & 0xE000) && (current_actor_pointer->control_state == 0)) {
         sp40 = 1;
-        if (aaD->unk22 != 0) {
-            if ((aaD->unk23 != 0) && (aaD->unk18[0] == 0)) {
+        if (aaD->unk22) {
+            if ((aaD->unk23) && (!aaD->unk18[0])) {
                 s16 i;
                 func_bonus_800274A0(arg0, arg1, arg2);
                 aaD->unk23--;
@@ -196,7 +190,7 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
                 for (i = 0; i < aaD->unk23; i++) {
                     aaD->unk18[i] = 0xA;
                 }
-            } else if ((aaD->unk23 == 0) && (current_actor_pointer->control_state_progress == 0)) {
+            } else if ((!aaD->unk23) && (current_actor_pointer->control_state_progress == 0)) {
                 sp40 = 2;
                 current_actor_pointer->control_state_progress = 1;
             }
@@ -208,7 +202,6 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
     }
     return sp40;
 }
-*/
 
 // close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_800277F8.s")

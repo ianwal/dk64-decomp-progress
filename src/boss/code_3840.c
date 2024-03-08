@@ -113,7 +113,6 @@ void func_boss_80028680() {
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_800286B8.s")
 
 extern u8 D_global_asm_80750AD4;
-
 /*
 Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     f32 sp90[4][4];
@@ -131,9 +130,9 @@ Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     func_dk64_boot_800031E0(&sp3C, "ROUND %d", D_global_asm_80750AD4);
     gSPDisplayList(dl++, &D_1000118);
     gDPPipeSync(dl++);
-    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetCombineMode(dl++ , G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    dl = func_global_asm_8070068C(dl);
+    dl = func_global_asm_8070068C(dl++);
     return func_global_asm_806FC530(dl, 1, 0, 0, &sp3C, 0);
 }
 */
