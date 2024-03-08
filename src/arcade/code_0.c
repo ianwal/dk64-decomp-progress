@@ -3160,7 +3160,6 @@ void func_arcade_80030A04(u8 index) {
     if (phi_f0 < 0.0f) {
         D_arcade_8004BCD0[index].unk10 = (func_arcade_80024644() & 0x7F) + 0x1C2;
     }
-    // Ternary works here but doesn't change regalloc
     if (D_arcade_8004BCD0[index].unk10 < 200.0f) {
         phi_f0 = 0.2f;
     } else {

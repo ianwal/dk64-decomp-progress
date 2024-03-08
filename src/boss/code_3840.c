@@ -6,26 +6,21 @@ extern void func_global_asm_8071CDE0();
 
 void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_80027840.s")
-
-/*
-// TODO: Doable, something to do with the first write in the loop and arg0
-void func_boss_80027840(Struct80027840 *arg0) {
+void func_boss_80027840(u8 *arg0) {
     s16 i;
     Struct80027840 *var_v1;
 
     if (D_global_asm_807FDC98->unk20 != NULL) {
         free(D_global_asm_807FDC98->unk20);
     }
-    D_global_asm_807FDC9C->unk11 = arg0->unk0;
-    D_global_asm_807FDC98->unk20 = malloc(arg0->unk0 * sizeof(Struct80027840));
+    D_global_asm_807FDC9C->unk11 = *arg0;
+    D_global_asm_807FDC98->unk20 = malloc(*arg0 * sizeof(Struct80027840));
     var_v1 = D_global_asm_807FDC98->unk20;
-    for (i = 0; i < arg0->unk0; i++, var_v1++) {
-        var_v1->unk0 = arg0[i].unk1;
+    for (i = 0; i < *arg0; i++, var_v1++) {
+        var_v1->unk0 = arg0[i + 1];
         var_v1->unk1 = 0;
     }
 }
-*/
 
 typedef struct BossStruct2 {
     f32 unk0;

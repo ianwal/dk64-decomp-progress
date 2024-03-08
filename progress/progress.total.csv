@@ -3909,7 +3909,7 @@ us,.boss,func_boss_8002FB7C,204,yes
 us,.boss,func_boss_800251A0,380,yes
 us,.boss,func_boss_8002C5F4,340,yes
 us,.boss,func_boss_80028478,520,yes
-us,.boss,func_boss_80027840,180,no
+us,.boss,func_boss_80027840,180,yes
 us,.boss,func_boss_8002DE04,2460,no
 us,.boss,func_boss_80033784,424,no
 us,.boss,func_boss_80030C30,288,yes
