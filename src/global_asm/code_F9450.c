@@ -208,7 +208,7 @@ struct globalASMStruct36 {
 extern GlobalASMStruct36 *D_global_asm_807FD730;
 extern u8 D_global_asm_807FD738;
 
-void func_global_asm_806F54E0(s32, s32, s32);
+void func_global_asm_806F54E0(u8, s32, u8);
 
 void func_global_asm_806F5378(void) {
     GlobalASMStruct36 *next;
@@ -325,14 +325,59 @@ void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2) {
         if (cc_number_of_players == 1) {
             func_global_asm_806F50C8(func_global_asm_80632630(var_s2, sp7C, sp78, sp74, 0.0f, 0), var_s2, var_s0, 1, 0, 1);
         } else {
-            func_global_asm_806F54E0(arg0 & 0xFF, var_s2, 0);
+            func_global_asm_806F54E0(arg0, var_s2, 0);
         }
         var_s0 += 3;
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F5A48.s")
+void func_global_asm_806F5A48(u8 arg0, s16 arg1, Actor *arg2, u16 arg3) {
+    s32 i;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    f32 sp7C;
+    f32 sp78;
+    f32 sp74;
+    s32 var_s0;
+    s16 var_s2;
+
+    if (cc_number_of_players == 1) {
+        func_global_asm_806357F8(arg1, &sp90, &sp8C, &sp88, &sp84, &sp80, &sp7C, &sp78, &sp74, 1);
+    }
+    switch (arg2->unk58) {
+        case 3:
+            var_s2 = 0x91;
+            break;
+        case 5:
+            var_s2 = 0x15D;
+            break;
+        case 4:
+            var_s2 = 0x15E;
+            break;
+        case 6:
+        case 7:
+            var_s2 = 0x15F;
+            break;
+        case 2:
+            var_s2 = 0x160;
+            break;
+        default:
+            var_s2 = 0x91;
+            break;
+    }
+    var_s0 = 0;
+    for (i = 0; i != 5; i++) {
+        if (cc_number_of_players == 1) {
+            func_global_asm_806F50C8(func_global_asm_80632630(var_s2, sp90, sp8C, sp88, 0.0f, 0), var_s2, var_s0, 1, (u8)(arg3 == 0x11 ? 1 : 0), 1);
+        } else {
+            func_global_asm_806F54E0(arg0, var_s2, (u8)(arg3 == 0x11 ? 1 : 0));
+        }
+        var_s0 += 3;
+    }
+}
 
 extern s32 D_global_asm_80754248[];
 extern s32 D_global_asm_80754264[];
