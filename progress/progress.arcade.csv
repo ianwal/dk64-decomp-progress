@@ -6,7 +6,7 @@ us,.arcade,func_arcade_80024320,236,yes
 us,.arcade,func_arcade_8002419C,388,yes
 us,.arcade,func_arcade_8002F82C,1532,no
 us,.arcade,func_arcade_80024508,20,yes
-us,.arcade,func_arcade_80030A04,260,no
+us,.arcade,func_arcade_80030A04,260,yes
 us,.arcade,arcade_help_text_update,356,yes
 us,.arcade,func_arcade_800311E0,472,no
 us,.arcade,func_arcade_800247F0,56,yes

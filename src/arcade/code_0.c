@@ -962,9 +962,10 @@ void func_arcade_800274E0(s32 *arg0, u8 arg1, u8 arg2, s16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800275E8.s")
 
-#ifndef NONMATCHING
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80027A38.s")
-#else
+
+/*
+// compilation attempt issues with 8004BC20/8004BC50, "undefined reference"
 //arcade_50m_draw
 void func_arcade_80027A38(Gfx **arg0) {
     int i, j;
@@ -1028,7 +1029,7 @@ void func_arcade_80027A38(Gfx **arg0) {
     func_arcade_80026518(&sp6C);
     *arg0 = sp6C;
 }
-#endif
+*/
 
 // death()?
 void func_arcade_80027E8C(void) {
@@ -3149,32 +3150,30 @@ void arcade_rivet_update(u8 arg0) {
     }
 }
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80030A04.s")
-#else
 void func_arcade_80030A04(u8 index) {
     f32 phi_f0;
-    if (arcade_game_state == 0) {
-        D_arcade_8004BCD0[index].unk10--;
-        if (D_arcade_8004BCD0[index].unk10 < 0.0f) {
-            D_arcade_8004BCD0[index].unk10 = (func_arcade_80024644() & 0x7F) + 0x1C2;
-        }
-        // Ternary works here but doesn't change regalloc
-        if (D_arcade_8004BCD0[index].unk10 < 200.0f) {
-            phi_f0 = 0.2f;
-        } else {
-            phi_f0 = -0.2f;
-        }
-        D_arcade_8004BCD0[index].y_position += phi_f0;
-        if (D_arcade_8004BCD0[index].y_position < 97.0f) {
-            D_arcade_8004BCD0[index].y_position = 97.0f;
-        }
-        if (D_arcade_8004BCD0[index].y_position < 110.0f) {
-            D_arcade_8004BCD0[index].y_position = 110.0f;
-        }
+    
+    if (arcade_game_state) {
+        return;
+    }
+    phi_f0 = --D_arcade_8004BCD0[index].unk10;
+    if (phi_f0 < 0.0f) {
+        D_arcade_8004BCD0[index].unk10 = (func_arcade_80024644() & 0x7F) + 0x1C2;
+    }
+    // Ternary works here but doesn't change regalloc
+    if (D_arcade_8004BCD0[index].unk10 < 200.0f) {
+        phi_f0 = 0.2f;
+    } else {
+        phi_f0 = -0.2f;
+    }
+    D_arcade_8004BCD0[index].y_position += phi_f0;
+    if (D_arcade_8004BCD0[index].y_position < 97.0f) {
+        D_arcade_8004BCD0[index].y_position = 97.0f;
+    }
+    if (D_arcade_8004BCD0[index].y_position > 110.0f) {
+        D_arcade_8004BCD0[index].y_position = 110.0f;
     }
 }
-#endif
 
 void arcade_pie_update(u8 arg0) {
     if (arcade_game_state == 0) {

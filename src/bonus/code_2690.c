@@ -135,9 +135,10 @@ void func_bonus_800274A0(f32 arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80027548.s")
 
+
 extern f64 D_bonus_8002DD30;
 extern f64 D_bonus_8002DD38;
-extern u16 D_global_asm_807FD63C;
+extern Struct807FD610 D_global_asm_807FD610[];
 
 typedef struct {
     s32 unk0;
@@ -168,7 +169,11 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
     AAD_bonus_80027548 *aaD;
     f32 sp50;
     f32 sp4C;
-    u8 sp40; // TODO: Need to move this from 0x4B to 0x40 without growing the stack
+    s32 pad_0;
+    u8 pad_1;
+    u8 pad_2;
+    u8 pad_3;
+    u8 sp40; // TODO: Need to move this from 0x44 to 0x40 without growing the stack
 
     aaD = current_actor_pointer->additional_actor_data;
     sp40 = 0;
@@ -178,7 +183,7 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
     aaD->unk20 = sp4C;
     current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(arg0, arg2, current_actor_pointer->x_position, current_actor_pointer->z_position), 10.0f);
     current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, ((func_global_asm_80611BB4(current_actor_pointer->y_position - arg1, sqrtf(((current_actor_pointer->x_position - arg0) * (current_actor_pointer->x_position - arg0)) + ((current_actor_pointer->z_position - arg2) * (current_actor_pointer->z_position - arg2)))) * 2048.0) / D_bonus_8002DD30) + D_bonus_8002DD38, 5.0f);
-    if ((D_global_asm_807FD63C & 0xE000) && (current_actor_pointer->control_state == 0)) {
+    if ((D_global_asm_807FD610[0].unk2C & 0xE000) && (current_actor_pointer->control_state == 0)) {
         sp40 = 1;
         if (aaD->unk22 != 0) {
             if ((aaD->unk23 != 0) && (aaD->unk18[0] == 0)) {
