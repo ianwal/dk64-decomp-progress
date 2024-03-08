@@ -263,8 +263,42 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BF920.s")
 
-// Jumptable, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BFA8C.s")
+void func_global_asm_80613CA8(Actor*, s32, f32, f32);
+
+void func_global_asm_806BFA8C(u16 arg0) {
+    switch (arg0) {
+        case 0xEA:
+        case 0x23E:
+        case 0x23F:
+        case 0x240:
+        case 0x4C7:
+            current_actor_pointer->control_state_progress = 1;
+            break;
+        case 0x112:
+            func_global_asm_806F0D68(current_actor_pointer);
+            // fallthrough
+        case 0x113:
+        case 0x128:
+        case 0x129:
+        case 0x12A:
+        case 0x12B:
+        case 0x12C:
+        case 0x12D:
+        case 0x12E:
+        case 0x12F:
+        case 0x130:
+            func_global_asm_806C7BAC(current_actor_pointer, 0);
+            break;
+        case 0x114:
+            func_global_asm_806F0C18(current_actor_pointer);
+            func_global_asm_806F10E8(current_actor_pointer);
+            break;
+        case 0x2CF:
+            func_global_asm_80613214(current_actor_pointer);
+            func_global_asm_80613CA8(current_actor_pointer, 0x2CF, 0, 0);
+            break;
+    }
+}
 
 void func_global_asm_806BFBB4() {
     func_global_asm_8061421C(current_actor_pointer);
