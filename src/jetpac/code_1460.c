@@ -1,6 +1,21 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// rodata
+// const static f64 D_jetpac_8002EB20 = 0.97;
+// const static f32 D_jetpac_8002EB30 = 0.01f;
+// const static f32 D_jetpac_8002EB34 = 0.2f;
+// const static f64 D_jetpac_8002EB38 = 0.2;
+// const static f32 D_jetpac_8002EB40 = 0.3333333433f;
+// const static f32 D_jetpac_8002EB44 = 0.3333333433f;
+// const static f32 D_jetpac_8002EB48 = 0.1666666716f;
+// const static f32 D_jetpac_8002EB4C = 0.1666666716f;
+// const static f64 D_jetpac_8002EB50 = 0.1;
+// const static f64 D_jetpac_8002EB58 = -0.1;
+// const static f64 D_jetpac_8002EB60 = -0.1;
+// const static f32 D_jetpac_8002EB68 = -0.4f;
+// const static f32 D_jetpac_8002EB6C = 0.15f;
+
 typedef struct jetpac_struct_0 {
     u8  pad0[0x14];
     u32 unk14;
@@ -127,7 +142,6 @@ extern Struct8002C4D0 D_jetpac_8002C348[];
 extern Struct8002C4D0 D_jetpac_8002C3A8[];
 extern JetpacStruct D_jetpac_8002C518;
 
-extern f32 D_jetpac_8002EB30;
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
 extern Struct80025C40_ret D_jetpac_8002F050[4];
@@ -433,7 +447,7 @@ void func_jetpac_800260DC(Struct800260DC *arg0) {
 
     temp_v0 = func_jetpac_80025C40(arg0);
     if (temp_v0 == NULL) {
-        if ((ABS(arg0->unkC)) < D_jetpac_8002EB30) {
+        if ((ABS(arg0->unkC)) < 0.01f) {
             if (arg0->unk4 < 152.0f) {
                 func_jetpac_80024E70(6);
             }

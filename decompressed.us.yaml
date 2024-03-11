@@ -576,8 +576,8 @@ segments:
       - [0x21D86F0, c, code_4FC0]
       - [0x21DA7C0, data, code_0]
       - [0x21DE100, .rodata, code_0]
-      - [0x21DE250, rodata] # code_1460
+      - [0x21DE250, .rodata, code_1460]
       - [0x21DE2A0, .rodata, code_3060]
-      - [0x21DE2B0, rodata] # code_3480
+      - [0x21DE2B0, .rodata, code_3480]
       - [0x21DE2E0, .rodata, code_4FC0]
   - [0x21DE360] # end of ROM

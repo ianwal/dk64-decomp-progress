@@ -1,6 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// rodata
+// const static f32 D_jetpac_8002EB80 = 0.8f;
+// const static f32 D_jetpac_8002EB84 = 0.8f;
+// const static f32 D_jetpac_8002EBA0 = 0.059466f;
+// const static f32 D_jetpac_8002EBA4 = 0.4f;
+// const static f32 D_jetpac_8002EBA8 = 0.059466f;
+// const static f32 D_jetpac_8002EBAC = -0.4f;
 
 f32 func_jetpac_80027210();
 
@@ -125,7 +132,7 @@ void func_jetpac_80028340(Competitor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_800283EC.s")
 
 /*
-Weird struct stuff surrounding Jetpac Player Struct
+// Weird struct stuff surrounding Jetpac Player Struct
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
 s32 func_jetpac_800283EC(f32 arg0, f32 arg1, s32 arg2, f32 arg3) {

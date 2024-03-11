@@ -72,31 +72,6 @@ extern u8 D_jetpac_8002E9C4;
 extern u8 D_jetpac_8002E9C8;
 extern u8 D_jetpac_8002E9CC;
 
-// rodata
-// const static f32 D_jetpac_8002EBB0 = -1.2f;
-// const static f32 D_jetpac_8002EBB4 = 1.2f;
-// const static f32 D_jetpac_8002EBB8 = -0.8f;
-// const static f32 D_jetpac_8002EBBC = -1.2f;
-// const static f32 D_jetpac_8002EBC0 = 1.2f;
-// const static f32 D_jetpac_8002EBC4 = -0.6f;
-// const static f32 D_jetpac_8002EBC8 = 0.6f;
-// const static f32 D_jetpac_8002EBCC = -0.8f;
-// const static f32 D_jetpac_8002EBD0 = 0.8f;
-// const static f32 D_jetpac_8002EBD4 = -0.8f;
-// const static f32 D_jetpac_8002EBD8 = 0.8f;
-// const static f32 D_jetpac_8002EBDC = -1.6f;
-// const static f32 D_jetpac_8002EBE0 = 1.6f;
-// const static f32 D_jetpac_8002EBE4 = 0.8f;
-// const static f32 D_jetpac_8002EBE8 = -0.8f;
-// const static f64 D_jetpac_8002EBF0 = 0.08;
-// const static f64 D_jetpac_8002EBF8 = 0.08;
-
-// const static f64 D_jetpac_8002EC10 = -1.2;
-// const static f32 D_jetpac_8002EC18 = -1.2f;
-// const static f32 D_jetpac_8002EC1C = 1.2f;
-
-// END RODATA
-
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 extern s32 D_jetpac_8002E8F0;
 extern s32 D_jetpac_8002F050; // TODO: Datatype
@@ -205,20 +180,21 @@ void func_jetpac_80029204(JetpacStruct *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_800292C4.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029450.s")
 
 /*
-need to insert a += 0x1C which does nothing in the middle
+// need to insert a += 0x1C which does nothing in the middle
 Competitor *func_jetpac_800292C4(void);
 extern void* D_jetpac_8002E8F4[8];
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
 void func_jetpac_80029450(void) {
-    void (*sp1C)(void *);
-    Competitor *sp18;
-    Competitor *temp_v0;
     u32 lvl;
     s32* read;
+    void (*sp1C)(void *);
+    Competitor *temp_v0;
+    Competitor *sp18;
 
     lvl = D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].level & 7;
     read = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].level;
@@ -462,6 +438,7 @@ void func_jetpac_80029E0C(struct_jetpac_80029640 *arg0) {
     arg0->unk4C = &D_jetpac_8002E878;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029F7C.s")
 
 /*
@@ -656,10 +633,10 @@ void func_jetpac_8002A6C0(JetpacStruct *arg0) {
     arg0->unk4C = &D_jetpac_8002E8A8;
 }
 
+// TODO: Close...ish
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_8002A758.s")
 
 /*
-// TODO: Close...ish
 void func_jetpac_8002A758(JetpacStruct *arg0) {
     s32 temp_v0_2;
 
