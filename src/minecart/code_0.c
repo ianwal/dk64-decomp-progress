@@ -301,7 +301,7 @@ void func_minecart_80024914(void) {
 // struct, loop
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024E78.s")
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024FD0.s")
 
 typedef struct minecart_struct_0 {

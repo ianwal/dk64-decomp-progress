@@ -173,18 +173,14 @@ Chunk14 *func_global_asm_80630588(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 
     return phi_a2;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_806306D0.s")
-
-/*
-// TODO: Very close, adding a temp variable for next doesn't work
 void func_global_asm_806306D0(Chunk14 *current) {
+    Chunk14 *old;
     while (current) {
-        free(current);
+        old = current;
         current = current->next;
+        free(old);
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_8063070C.s")
 
