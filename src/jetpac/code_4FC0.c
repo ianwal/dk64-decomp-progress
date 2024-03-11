@@ -40,7 +40,10 @@ typedef struct {
     f32 unk4;
     f32 unk8;
     f32 unkC;
-    f32 unk10;
+    union {
+        f32 unk10;
+        u8 unk10_u8[4];
+    };
     s32 unk14;
     s32 unk18;
     s32 unk1C;
@@ -48,39 +51,62 @@ typedef struct {
     s32 unk24;
     s32 unk28;
     s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
 } struct_jetpac_8002998C;
 
-extern JetpacStruct9 D_jetpac_8002E800[];
-extern JetpacStruct D_jetpac_8002F1DC[6];
-extern f32 D_jetpac_8002EBB0;
-extern f32 D_jetpac_8002EBB4;
-extern f32 D_jetpac_8002EBB8;
-extern s32 D_jetpac_8002E830;
-extern f32 D_jetpac_8002EBBC;
-extern f32 D_jetpac_8002EBC0;
-extern f32 D_jetpac_8002EBC4;
-extern f32 D_jetpac_8002EBC8;
-extern void* D_jetpac_8002E878;
-extern f32 D_jetpac_8002EBCC;
 extern s32 D_jetpac_8002BA6C;
-extern f32 D_jetpac_8002EBD0;
+extern JetpacStruct9 D_jetpac_8002E800[];
+extern s32 D_jetpac_8002E830;
+extern void* D_jetpac_8002E878;
 extern s32 D_jetpac_8002E890;
-extern s32 D_jetpac_8002F050; // TODO: Datatype
-extern f32 D_jetpac_8002F054;
-extern s32 D_jetpac_8002F078;
-extern f64 D_jetpac_8002EC10;
 extern s32 D_jetpac_8002E8A8;
-extern f32 D_jetpac_8002EC18;
-extern f32 D_jetpac_8002EC1C;
 extern s32 D_jetpac_8002E8C0;
 extern s32 D_jetpac_8002E8D8;
-extern JetpacPlayerStruct D_jetpac_8002EC30;
-extern s32 D_jetpac_8002E8F0;
-extern s32 D_jetpac_8002F3BC;
 extern u8 D_jetpac_8002E9C0;
 extern u8 D_jetpac_8002E9C4;
 extern u8 D_jetpac_8002E9C8;
 extern u8 D_jetpac_8002E9CC;
+
+// rodata
+// const static f32 D_jetpac_8002EBB0 = -1.2f;
+// const static f32 D_jetpac_8002EBB4 = 1.2f;
+// const static f32 D_jetpac_8002EBB8 = -0.8f;
+// const static f32 D_jetpac_8002EBBC = -1.2f;
+// const static f32 D_jetpac_8002EBC0 = 1.2f;
+// const static f32 D_jetpac_8002EBC4 = -0.6f;
+// const static f32 D_jetpac_8002EBC8 = 0.6f;
+// const static f32 D_jetpac_8002EBCC = -0.8f;
+// const static f32 D_jetpac_8002EBD0 = 0.8f;
+// const static f32 D_jetpac_8002EBD4 = -0.8f;
+// const static f32 D_jetpac_8002EBD8 = 0.8f;
+// const static f32 D_jetpac_8002EBDC = -1.6f;
+// const static f32 D_jetpac_8002EBE0 = 1.6f;
+// const static f32 D_jetpac_8002EBE4 = 0.8f;
+// const static f32 D_jetpac_8002EBE8 = -0.8f;
+// const static f64 D_jetpac_8002EBF0 = 0.08;
+// const static f64 D_jetpac_8002EBF8 = 0.08;
+
+// const static f64 D_jetpac_8002EC10 = -1.2;
+// const static f32 D_jetpac_8002EC18 = -1.2f;
+// const static f32 D_jetpac_8002EC1C = 1.2f;
+
+// END RODATA
+
+extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern s32 D_jetpac_8002E8F0;
+extern s32 D_jetpac_8002F050; // TODO: Datatype
+extern f32 D_jetpac_8002F054;
+extern s32 D_jetpac_8002F064;
+extern s32 D_jetpac_8002F07C;
+extern s32 D_jetpac_8002F078;
+extern JetpacStruct D_jetpac_8002F1DC[6];
+extern s32 D_jetpac_8002F3BC;
+
 extern u8 D_jetpac_80045BE0;
 extern u8 D_jetpac_80045BE1;
 extern u8 D_jetpac_80045BE2;
@@ -105,7 +131,7 @@ s32 func_jetpac_80027250(f32, f32, f32, f32, f32, f32, f32, f32);
 extern void (func_jetpac_8002A758)();
 void func_jetpac_8002A374(JetpacStruct*);
 void func_jetpac_8002A530(JetpacStruct *arg0);
-extern void func_jetpac_80029F7C(struct_jetpac_8002998C*, s32);
+extern void func_jetpac_80029F7C(struct_jetpac_8002998C*);
 f32 func_jetpac_80027210();
 extern void (func_jetpac_80029C1C)();
 s32 func_jetpac_80028CF8(f32, f32, f32, f32, s32);
@@ -125,9 +151,6 @@ void *func_jetpac_80028FC0(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029064.s")
-
-extern s32 D_jetpac_8002F064;
-extern s32 D_jetpac_8002F07C;
 
 void func_jetpac_800291AC(JetpacStruct5 *arg0);
 
@@ -302,11 +325,11 @@ void func_jetpac_8002992C(JetpacStruct *arg0) {
     arg0->unk48 = &func_jetpac_8002998C;
     arg0->unk44 = 0x50;
     if (arg0->unk4 < 88.0f) {
-        arg0->unk8 = D_jetpac_8002EBB0;
+        arg0->unk8 = -1.2f;
     } else {
-        arg0->unk8 = D_jetpac_8002EBB4;
+        arg0->unk8 = 1.2f;
     }
-    arg0->unkC = D_jetpac_8002EBB8;
+    arg0->unkC = -0.8f;
     arg0->unk4C = &D_jetpac_8002E830;
 }
 
@@ -347,9 +370,9 @@ void func_jetpac_80029AF8(JetpacStruct *arg0) {
     arg0->unk48 = &func_jetpac_80029C1C;
     arg0->unk44 = 0x28;
     if (arg0->unk4 < 88.0f) {
-        arg0->unk8 = D_jetpac_8002EBBC;
+        arg0->unk8 = -1.2f;
     } else {
-        arg0->unk8 = D_jetpac_8002EBC0;
+        arg0->unk8 = 1.2f;
     }
     func_jetpac_80029B90(arg0);
     arg0->unk2C = (func_jetpac_80027210() * 60.0f) + 10.0f;
@@ -358,10 +381,10 @@ void func_jetpac_80029AF8(JetpacStruct *arg0) {
 void func_jetpac_80029B90(JetpacStruct *arg0) {
     if (arg0->unkC == 0.0) {
         if (func_jetpac_80027210() < 0.5) {
-            arg0->unkC = (f32) D_jetpac_8002EBC4;
+            arg0->unkC = -0.6f;
             return;
         }
-        arg0->unkC = D_jetpac_8002EBC8;
+        arg0->unkC = 0.6f;
         return;
     }
     arg0->unkC = 0.0f;
@@ -432,14 +455,83 @@ void func_jetpac_80029E0C(struct_jetpac_80029640 *arg0) {
     }
     arg0->unk8 = 0.0f;
     if (D_jetpac_8002BA6C) {
-        arg0->unkC = D_jetpac_8002EBCC;
+        arg0->unkC = -0.8f;
     } else {
-        arg0->unkC = D_jetpac_8002EBD0;
+        arg0->unkC = 0.8f;
     }
     arg0->unk4C = &D_jetpac_8002E878;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029F7C.s")
+
+/*
+void func_jetpac_80029F7C(struct_jetpac_8002998C *arg0) {
+    Competitor *temp_v0;
+
+    switch (arg0->unk14) {
+        case 3:
+            if (arg0->unk2C == 0) {
+                if (func_jetpac_80028CF8(
+                    arg0->unk1C + arg0->unk0 + arg0->unk8,
+                    arg0->unk20 + arg0->unk4 + arg0->unkC,
+                    arg0->unk24 + arg0->unk0 + arg0->unk8,
+                    arg0->unk28 + arg0->unk4 + arg0->unkC, 1) >= 0) {
+                    func_jetpac_800291AC(arg0);
+                } else {
+                    arg0->unk40--;
+                }
+                if (arg0->unk40 == 0) {
+                    func_jetpac_800291AC(arg0);
+                }
+            }
+            if ((D_jetpac_8002BA6C) && (arg0->unk4 < 32.0f)) {
+                func_jetpac_800291AC(arg0);
+            }
+            if (arg0->unk14 == 3) {
+                func_jetpac_80029064(arg0);
+            }
+            if (arg0->unk14 == 4) {
+                temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+                temp_v0->current_score += arg0->unk44;
+                break;
+            }
+            if (arg0->unk2C) {
+                arg0->unk2C--;
+                if (D_jetpac_8002BA6C) {
+                    arg0->unkC = -0.8f;
+                } else {
+                    arg0->unkC = 0.8f;
+                }
+                if (arg0->unk2C == 0) {
+                    if (arg0->unk18 != 0) {
+                        arg0->unk8 = -1.6f;
+                    } else {
+                        arg0->unk8 = 1.6f;
+                    }
+                    arg0->unk10_u8[0] = 0xFF;
+                    arg0->unk10_u8[1] = 0xFF;
+                    arg0->unk10_u8[2] = 0xFF;
+                }
+            }
+            if ((arg0->unk2C == 0) && (D_jetpac_8002EC30.unk790 & 2)) {
+                if (func_jetpac_800273C8(arg0) < (D_jetpac_8002F054 + D_jetpac_8002F078)) {
+                    arg0->unkC = 0.8f;
+                } else {
+                    arg0->unkC = -0.8f;
+                }
+            }
+            arg0->unk0 += arg0->unk8;
+            arg0->unk4 += arg0->unkC;
+            break;
+        case 4:
+            arg0->unk2C++;
+            if (arg0->unk2C >= 0xF) {
+                arg0->unk14 = 0;
+            }
+            break;
+    }
+}
+*/
 
 void func_jetpac_8002A254(JetpacStruct *arg0) {
     arg0->unk48 = &func_jetpac_8002A530;
@@ -458,26 +550,18 @@ void func_jetpac_8002A2AC(JetpacStruct *arg0) {
     func_jetpac_8002A254(arg0);
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_8002A2DC.s")
-
-/*
-extern f64 D_jetpac_8002EBF0;
-extern f64 D_jetpac_8002EBF8;
-extern f64 D_jetpac_8002EC00[2];
-
 f32 func_jetpac_8002A2DC(f32 arg0, f32 arg1) {
+    f64 temp;
     if (arg0 < 0.0f) {
-        arg1 -= D_jetpac_8002EBF0;
+        arg1 -= 0.08;
     } else {
-        arg1 += D_jetpac_8002EBF8;
+        arg1 += 0.08;
     }
-    if (arg1 < D_jetpac_8002EC00[0]) {
-        return D_jetpac_8002EC00[0];
-    }
-    return MIN(D_jetpac_8002EC00[1], arg1);
+
+    temp = -1.2;
+
+    return (arg1 < temp) ? temp: MIN(1.2, arg1);
 }
-*/
 
 void func_jetpac_8002A374(JetpacStruct *arg0) {
     f32 temp_f0;
@@ -555,7 +639,7 @@ void func_jetpac_8002A67C(JetpacStruct *arg0) {
     s32 temp_f6;
 
     temp_f6 = (arg0->unk2C % 4) + 1;
-    arg0->unkC = ((f64)D_jetpac_8002EC10 / (f64)temp_f6);
+    arg0->unkC = (-1.2 / (f64)temp_f6);
     arg0->unk2C++;
 }
 
@@ -564,17 +648,15 @@ void func_jetpac_8002A6C0(JetpacStruct *arg0) {
     arg0->unk44 = 0x3C;
     arg0->unk2C = (s32) (func_jetpac_80027210() * 16.0f);
     if (arg0->unk4 < 88.0f) {
-        arg0->unk8 = D_jetpac_8002EC18;
+        arg0->unk8 = -1.2f;
     } else {
-        arg0->unk8 = D_jetpac_8002EC1C;
+        arg0->unk8 = 1.2f;
     }
     func_jetpac_8002A67C(arg0);
     arg0->unk4C = &D_jetpac_8002E8A8;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_8002A758.s")
-
-extern f64 D_jetpac_8002EC20;
 
 /*
 // TODO: Close...ish
@@ -583,12 +665,12 @@ void func_jetpac_8002A758(JetpacStruct *arg0) {
 
     switch (arg0->unk14) {
         case 3:
-            arg0->unkC = arg0->unkC + D_jetpac_8002EC20;
+            arg0->unkC += 0.005;
             temp_v0_2 = func_jetpac_80028CF8(
-                        arg0->unk1C + arg0->unk0 + arg0->unk8,
-                        arg0->unk20 + arg0->unk4 + arg0->unkC,
-                        arg0->unk24 + arg0->unk0 + arg0->unk8,
-                        arg0->unk28 + arg0->unk4 + arg0->unkC, 1);
+                        arg0->unk1C + (arg0->unk0 + arg0->unk8),
+                        arg0->unk20 + (arg0->unk4 + arg0->unkC),
+                        arg0->unk24 + (arg0->unk0 + arg0->unk8),
+                        arg0->unk28 + (arg0->unk4 + arg0->unkC), 1);
             if (temp_v0_2 >= 0) {
                 func_jetpac_800294EC(arg0, temp_v0_2);
                 if (arg0->unkC > 0.0f && arg0->unkC < 0.0f) {
@@ -599,8 +681,8 @@ void func_jetpac_8002A758(JetpacStruct *arg0) {
                 if ((arg0->unk4 + arg0->unkC) < 24.0f) {
                     arg0->unkC = -arg0->unkC;
                 }
-                arg0->unk4 = arg0->unk4 + arg0->unkC;
-                arg0->unk0 = arg0->unk0 + arg0->unk8;
+                arg0->unk4 += arg0->unkC;
+                arg0->unk0 += arg0->unk8;
             }
             break;
         case 4:

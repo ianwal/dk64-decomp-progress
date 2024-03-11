@@ -50,7 +50,7 @@ us,.jetpac,func_jetpac_80024D48,296,yes
 us,.jetpac,func_jetpac_80028C3C,188,yes
 us,.jetpac,func_jetpac_800255D4,300,yes
 us,.jetpac,func_jetpac_80028CF8,268,yes
-us,.jetpac,func_jetpac_8002A2DC,152,no
+us,.jetpac,func_jetpac_8002A2DC,152,yes
 us,.jetpac,func_jetpac_8002A6C0,152,yes
 us,.jetpac,func_jetpac_80026FE0,48,yes
 us,.jetpac,func_jetpac_800289EC,360,no

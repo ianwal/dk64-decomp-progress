@@ -1998,7 +1998,8 @@ typedef struct JetpacItem {
 } JetpacItem;
 
 typedef struct CompetitorSub14 {
-    u8 unk0[0x8];
+    s32 *unk0;
+    u8 unk4[0x4];
     f32 unk8;
     f32 unkC;
     u8 unk10[0x1C-0x10];

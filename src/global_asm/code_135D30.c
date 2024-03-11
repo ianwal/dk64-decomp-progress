@@ -240,7 +240,7 @@ typedef struct {
     s8 unk7;
 } Struct80755DA8;
 
-extern Struct80755DA8 D_global_asm_80755DA8[]; // 0x1F
+extern Struct80755DA8 D_global_asm_80755DA8[0x1F];
 
 /*
 s16 func_global_asm_80731784(s16 map, s16 spawnerID, s32 *arg2) {
