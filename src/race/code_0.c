@@ -174,7 +174,7 @@ int func_race_80024634(RaceStruct8 *arg0, RaceStruct9 *arg1) {
            arg1->unk1C <= D_global_asm_80750AC4;
 }
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80024690.s")
 
 s32 func_race_80025770(s32 arg0, s32 arg1) {
@@ -323,22 +323,18 @@ void func_race_80026050(RaceStruct6 *arg0, RaceStruct6 *arg1, s32 arg2) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80026098.s")
-
-/*
 void func_race_80026098(Struct80026098 *arg0, Struct80026098 *arg1) {
     s16 sp2E;
-    s16 pad[2];
+    f32 temp;
     f32 sp24;
 
     sp2E = (func_global_asm_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / 3.14159274101257324;
-    sp24 = current_actor_pointer->unkB8 * 0.03 * sqrtf(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
+    temp = sqrtf(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
+    sp24 = current_actor_pointer->unkB8 * 0.03 * temp;
     current_actor_pointer->x_position = arg1->unk0 + (sp24 * func_global_asm_80612794(sp2E));
     current_actor_pointer->z_position = arg1->unk8 + (sp24 * func_global_asm_80612790(sp2E));
     current_actor_pointer->y_position = (0.8 * (arg0->unk4 - current_actor_pointer->y_position)) + current_actor_pointer->y_position;
 }
-*/
 
 typedef struct {
     s32 unk0;
