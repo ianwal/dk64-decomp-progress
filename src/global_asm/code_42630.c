@@ -416,11 +416,25 @@ void func_global_asm_8063E72C(OM2_unk7C *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8063EA14.s")
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8063FA48.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_80641724.s")
+void func_global_asm_80641724(s16 arg0) {
+    PlayerAdditionalActorData *PaaD = character_change_array->player_pointer->PaaD;
+    switch (arg0) {
+        case 0x33:
+        case 0xBC:
+        case 0x125:
+        case 0x126:
+        case 0x127:
+        case 0x128:
+        case 0x129:
+        case 0x229:
+        case 0x22A:
+        case 0x22B:
+            PaaD->unk245 = 0x3C;
+    }
+}
 
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_806417BC.s")
@@ -1215,26 +1229,18 @@ void func_global_asm_80643C0C(Struct80643C0C *arg0, s32 arg1, s16 arg2, s32 arg3
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_80643F38.s")
-
 extern s32 D_global_asm_8074E880[];
 
-/*
 void func_global_asm_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    f32 temp_f20;
     s16 i;
-
-    temp_f20 = 1.4f;
     for (i = 0; i < 0x1E; i++) {
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(1);
         func_global_asm_8071498C(&func_global_asm_8071EA24);
         func_global_asm_8071496C(i / 7);
-        func_global_asm_80714CC0(D_global_asm_8074E880[i % 3], temp_f20, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+        func_global_asm_80714CC0(D_global_asm_8074E880[i % 3], 1.4f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
     }
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8064409C.s")
