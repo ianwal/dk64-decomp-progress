@@ -1592,7 +1592,8 @@ typedef struct {
     s32 unk3C;
     s32 unk40;
     s32 unk44;
-    s32 unk48;
+    s16 unk48;
+    s16 unk4A;
     s16 unk4C;
     u8 unk4E; // Used
     u8 unk4F; // Used

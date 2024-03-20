@@ -1480,8 +1480,66 @@ void func_global_asm_80672C70(s32 arg0) {
     }
 }
 
-// Jumptable
+// Jumptable, very close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672CBC.s")
+
+extern s32 D_global_asm_807FB53C;
+extern s8 D_global_asm_807FB548;
+
+/*
+s32 func_global_asm_80672CBC(s8 arg0) {
+    PlayerAdditionalActorData *PaaD;
+
+    switch (arg0) {
+        case 0:
+            if (D_global_asm_807FB53C == 0xBC) {
+                return 1;
+            }
+            break;
+        case 1:
+            if (D_global_asm_807FB53C != 0xBC) {
+                return 1;
+            }
+            break;
+        case 2:
+            if ((D_global_asm_807FB53C != 5) || (character_change_array->unk2C0 == 1)) {
+                return 1;
+            }
+            break;
+        case 3:
+            if ((D_global_asm_807FB53C == 5) && (character_change_array->unk2C0 != 1)) {
+                return 1;
+            }
+            break;
+        case 4:
+            if (D_global_asm_807FB53C == 8) {
+                return 1;
+            }
+            break;
+        case 5:
+            D_global_asm_807FB548 = 1;
+            return 1;
+        case 6:
+            PaaD = player_pointer->PaaD;
+            if ((D_global_asm_807FB53C == 3) && (PaaD->unk1A3 != 0)) {
+                return 1;
+            }
+            break;
+        case 7:
+            PaaD = player_pointer->PaaD;
+            if ((D_global_asm_807FB53C == 6) && ((character_change_array->unk2C0 != 1) || (PaaD->unk1CC != PaaD->unk1C0))) {
+                return 1;
+            }
+            break;
+        case 8:
+            if (D_global_asm_807FB53C == 9) {
+                return 1;
+            }
+            break;
+    }
+    return 0;
+}
+*/
 
 void func_global_asm_80672E6C() {
     func_global_asm_806119A0();

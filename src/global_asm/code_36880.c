@@ -219,8 +219,49 @@ s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
 // Load Model 2 Setup?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80632084.s")
 
-// Jumptable, chunk14* arg0
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806323C0.s")
+void func_global_asm_806323C0(Chunk14 *arg0) {
+    s16 flagIndex;
+    Model2Model *temp_s0;
+
+    while (arg0 != NULL) {
+        if (arg0->unk24 == 2) {
+            temp_s0 = arg0->unk0;
+            switch (temp_s0->unk4A) {
+                case 0xA:
+                case 0x24:
+                case 0x208:
+                    flagIndex = 6;
+                    break;
+                case 0x1F:
+                case 0x27:
+                case 0x206:
+                    flagIndex = 0x75;
+                    break;
+                case 0x16:
+                case 0x1C:
+                case 0x207:
+                    flagIndex = 0x42;
+                    break;
+                case 0x1E:
+                case 0x23:
+                case 0x205:
+                    flagIndex = 0x46;
+                    break;
+                default:
+                    flagIndex = -1;
+                    break;
+            }
+            if (flagIndex != -1) {
+                if (!isFlagSet(flagIndex, FLAG_TYPE_PERMANENT)) {
+                    temp_s0->unk4E |= 0x10;
+                } else {
+                    temp_s0->unk4E &= ~0x10;
+                }
+            }
+        }
+        arg0 = arg0->next;
+    }
+}
 
 s32 func_global_asm_8063253C(s32 arg0, s32 arg1) {
     return 1;

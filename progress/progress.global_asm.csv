@@ -1713,7 +1713,7 @@ us,asm,func_global_asm_806F5FA0,72,yes
 us,asm,func_global_asm_806EC8C4,208,yes
 us,asm,func_global_asm_806A1580,808,yes
 us,asm,func_global_asm_806D79E4,68,yes
-us,asm,func_global_asm_806323C0,380,no
+us,asm,func_global_asm_806323C0,380,yes
 us,asm,func_global_asm_80636448,124,yes
 us,asm,func_global_asm_80669650,80,yes
 us,asm,func_global_asm_806608FC,1084,no
