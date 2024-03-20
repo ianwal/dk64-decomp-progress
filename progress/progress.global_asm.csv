@@ -304,8 +304,8 @@ us,asm,func_global_asm_805FF8F8,64,yes
 us,asm,func_global_asm_80732DEC,288,yes
 us,asm,func_global_asm_806D2238,104,yes
 us,asm,func_global_asm_8065BE74,164,no
-us,asm,func_global_asm_806E35D8,220,yes
 us,asm,func_global_asm_806CEE64,116,yes
+us,asm,func_global_asm_806E35D8,220,yes
 us,asm,func_global_asm_806BE6F0,460,no
 us,asm,func_global_asm_8062AD28,1132,no
 us,asm,func_global_asm_8070FC40,140,yes
@@ -1456,8 +1456,8 @@ us,asm,func_global_asm_806C92C4,64,yes
 us,asm,func_global_asm_80688514,44,yes
 us,asm,func_global_asm_80646058,1816,no
 us,asm,func_global_asm_807359A0,148,yes
-us,asm,func_global_asm_806E03C8,140,yes
 us,asm,func_global_asm_8065FEB8,440,no
+us,asm,func_global_asm_806E03C8,140,yes
 us,asm,n_alClose,76,yes
 us,asm,func_global_asm_806C7248,8,yes
 us,asm,func_global_asm_806D0378,68,yes
@@ -1474,8 +1474,8 @@ us,asm,func_global_asm_8060F730,292,no
 us,asm,func_global_asm_806FE078,3384,no
 us,asm,func_global_asm_8060B430,108,yes
 us,asm,func_global_asm_80671880,492,no
-us,asm,func_global_asm_806DF390,64,yes
 us,asm,func_global_asm_8065CDA0,16,yes
+us,asm,func_global_asm_806DF390,64,yes
 us,asm,func_global_asm_806D5008,528,yes
 us,asm,func_global_asm_8064D978,544,yes
 us,asm,func_global_asm_806D2B90,32,yes
@@ -1728,7 +1728,7 @@ us,asm,func_global_asm_807023E8,124,yes
 us,asm,func_global_asm_8073749C,324,no
 us,asm,func_global_asm_80687EE0,156,no
 us,asm,func_global_asm_8066104C,8,yes
-us,asm,func_global_asm_80681E18,1252,no
+us,asm,func_global_asm_80681E18,1252,yes
 us,asm,func_global_asm_8068B8A4,88,yes
 us,asm,func_global_asm_806EAE04,92,yes
 us,asm,func_global_asm_806A05FC,544,yes
@@ -1891,8 +1891,8 @@ us,asm,func_global_asm_806C7238,8,yes
 us,asm,func_global_asm_80602104,64,no
 us,asm,func_global_asm_8068BA2C,460,yes
 us,asm,func_global_asm_806639CC,64,yes
-us,asm,func_global_asm_806E14DC,340,yes
 us,asm,func_global_asm_80701C90,16,yes
+us,asm,func_global_asm_806E14DC,340,yes
 us,asm,func_global_asm_80730AEC,628,yes
 us,asm,func_global_asm_806010A0,128,yes
 us,asm,func_global_asm_806A4DDC,920,no
