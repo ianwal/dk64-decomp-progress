@@ -1,6 +1,77 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// rodata
+/*
+const f32 D_global_asm_807593E8 = 0.3000000119f;
+const f64 D_global_asm_80759448 = 8.30000000000000071;
+const f32 D_global_asm_80759450 = 99999.0f;
+const f64 D_global_asm_80759458 = 8.30000000000000071;
+const f64 D_global_asm_80759460 = 1.10000000000000009;
+const f64 D_global_asm_80759468 = 0.800000000000000044;
+const f64 D_global_asm_80759470 = 0.800000000000000044;
+const f32 D_global_asm_80759478 = 99999.0f;
+const f64 D_global_asm_807594A8 = 360.0;
+const f64 D_global_asm_807594B0 = 4095.0;
+const f64 D_global_asm_807594B8 = 360.0;
+const f64 D_global_asm_807594C0 = 360.0;
+const f64 D_global_asm_807594C8 = 270.0;
+const f64 D_global_asm_807594D0 = 12.5999999999999996;
+const f64 D_global_asm_807594D8 = 9.33999999999999986;
+const f64 D_global_asm_807594E0 = 9.33999999999999986;
+const f32 D_global_asm_807594E8 = 0.1000000015f;
+const f64 D_global_asm_807594F0 = 360.0;
+const f64 D_global_asm_807594F8 = 0.149999999999999994;
+const f64 D_global_asm_80759500 = 130.0;
+const f64 D_global_asm_80759508 = 4095.0;
+const f64 D_global_asm_80759510 = 360.0;
+const f64 D_global_asm_80759518 = 4095.0;
+const f64 D_global_asm_80759520 = 360.0;
+const f64 D_global_asm_80759528 = 4095.0;
+const f64 D_global_asm_80759530 = 360.0;
+const f64 D_global_asm_80759538 = 90.0;
+const f64 D_global_asm_80759540 = 4095.0;
+const f64 D_global_asm_80759548 = 360.0;
+const f64 D_global_asm_80759550 = 0.149999999999999994;
+const f32 D_global_asm_80759558 = 0.3000000119f;
+const f64 D_global_asm_80759560 = 0.149999999999999994;
+const f64 D_global_asm_807595C0 = 0.00400000000000000008;
+const f64 D_global_asm_807595C8 = 0.00800000000000000017;
+const f64 D_global_asm_807595D0 = 0.599999999999999978;
+const f64 D_global_asm_807595D8 = 0.00100000000000000002;
+const f64 D_global_asm_807595E0 = 0.599999999999999978;
+const f64 D_global_asm_807595E8 = 0.00600000000000000012;
+const f64 D_global_asm_807595F0 = 0.110000000000000001;
+const f64 D_global_asm_807595F8 = 0.100000000000000006;
+const f64 D_global_asm_80759600 = 0.235199999999999992;
+const f64 D_global_asm_80759608 = 0.100000000000000006;
+const f64 D_global_asm_80759610 = 0.17599999999999999;
+const f64 D_global_asm_80759618 = 0.100000000000000006;
+const f64 D_global_asm_80759800 = 4.71238899230957031;
+const f32 D_global_asm_80759808 = 99999.0f;
+const f32 D_global_asm_80759878 = 0.3000000119f;
+const f64 D_global_asm_80759880 = 4.71238899230957031;
+const f64 D_global_asm_80759888 = 0.149999999999999994;
+const f32 D_global_asm_80759890 = 0.01999999955f;
+const f32 D_global_asm_80759894 = 40000.0f;
+const f64 D_global_asm_80759898 = 0.149999999999999994;
+const f64 D_global_asm_80759920 = 0.0050000000000000001;
+const f64 D_global_asm_80759928 = 0.0200000000000000004;
+const f64 D_global_asm_80759930 = 0.0050000000000000001;
+const f64 D_global_asm_80759938 = 0.149999999999999994;
+const f64 D_global_asm_80759940 = 0.149999999999999994;
+const f64 D_global_asm_80759948 = 0.130000000000000004;
+const f32 D_global_asm_80759950 = 99999.0f;
+const f64 D_global_asm_807599B0 = 0.0800000000000000017;
+const f64 D_global_asm_807599B8 = 360.0;
+const f64 D_global_asm_807599C0 = 0.0400000000000000008;
+const f64 D_global_asm_807599C8 = 819.200000000000045;
+const f64 D_global_asm_807599D0 = 0.599999999999999978;
+const f32 D_global_asm_80759A80 = 0.05000000075f;
+const f32 D_global_asm_80759A84 = 1.200000048f;
+*/
+// end rodata
+
 void func_global_asm_80683AD8();
 
 extern f64 D_global_asm_80759560;
