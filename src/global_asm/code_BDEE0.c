@@ -10,7 +10,7 @@ extern u8 D_global_asm_80750628[];
 void func_global_asm_80612BC0(Mtx*, f32);
 void func_global_asm_80612C30(Mtx*, f32);
 void func_global_asm_80611A70(f32, f32, f32*, f32*);
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
+s32 func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806B91E0.s")
@@ -189,8 +189,48 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
 }
 */
 
-// Jumptable, doable, use new context for function signatures
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BA76C.s")
+void func_global_asm_806BA76C(f32 arg0) {
+    Actor178 *a178;
+    f32 var_f0;
+    f32 var_f2;
+
+    a178 = current_actor_pointer->unk178;
+    var_f0 = D_global_asm_807FDC90->unkA;
+    var_f2 = D_global_asm_807FDC90->unkE;
+    switch (current_actor_pointer->control_state) {
+        case 0x1:
+        case 0x10:
+        case 0x15:
+        case 0x23:
+            var_f0 = D_global_asm_807FDC94->x_position;
+            var_f2 = D_global_asm_807FDC94->z_position;
+            // fallthrough
+        case 0x2:
+        case 0x3:
+        case 0x7:
+        case 0x35:
+            if (!(func_global_asm_8072AB74(current_actor_pointer->control_state, var_f0, var_f2, (current_actor_pointer->unkFC ? 0x10 : 0x810) & 0xFFFF, 0.0f) & 1) && (current_actor_pointer->unkFC == 0)) {
+                a178->unk0 += arg0;
+            }
+            break;
+        case 0x37:
+            switch (current_actor_pointer->control_state_progress) {
+                case 2:
+                    func_global_asm_8072DC7C(0xA);
+                    break;
+                case 3:
+                    current_actor_pointer->control_state = 0x40;
+                    break;
+            }
+            break;
+        case 0x4:
+            func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x12, 0.0f);
+            break;
+        default:
+            func_global_asm_8072B7CC(0);
+            break;
+    }
+}
 
 void func_global_asm_806BA8C8(void) {
     switch (current_actor_pointer->control_state) {
