@@ -299,6 +299,7 @@ void func_race_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F490.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F784.s")
 
 typedef struct {
@@ -314,7 +315,6 @@ typedef struct {
 } Struct8002E9AC;
 
 /*
-// TODO: Quite close
 f32 func_race_8002F784(Struct8002F784 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) {
     s32 sp54;
     f32 temp;

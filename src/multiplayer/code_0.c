@@ -245,6 +245,7 @@ void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, s32 arg3, s32 arg4
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025264.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025378.s")
 
 typedef struct {
@@ -260,7 +261,6 @@ Struct80025F84 *func_multiplayer_80025378();
 extern Struct80025F84 D_multiplayer_80026FA4[];
 
 /*
-// TODO: Close
 Struct80025F84 *func_multiplayer_80025378(void) {
     Struct80025F84 *var_v1;
     u32 i;

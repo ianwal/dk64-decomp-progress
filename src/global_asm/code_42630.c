@@ -1,6 +1,113 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// rodata
+/*
+const f64 D_global_asm_80758560 = 0.01;
+const f64 D_global_asm_807588C0 = 1000;
+const f64 D_global_asm_807588C8 = 127;
+const f64 D_global_asm_807588D0 = 127;
+const f32 D_global_asm_807588D8 = 0.3f;
+const f32 D_global_asm_807588DC = 0.3f;
+const f64 D_global_asm_807588E0 = 127;
+const f64 D_global_asm_807588E8 = 255;
+const f64 D_global_asm_807588F0 = 255;
+const f64 D_global_asm_807588F8 = 1000;
+const f64 D_global_asm_80758918 = 0.05;
+const f64 D_global_asm_80758920 = 0.1;
+
+// TODO: Possible file split here
+const f64 D_global_asm_80758930 = 0.699999999999999956;
+const f64 D_global_asm_80758938 = 500;
+const f64 D_global_asm_80758940 = 0.140000000000000013;
+const f64 D_global_asm_80758948 = -0.640000000000000013;
+const f64 D_global_asm_80758950 = 0.699999999999999956;
+const f64 D_global_asm_80758958 = 0.599999999999999978;
+const f64 D_global_asm_80758960 = 0.100000000000000006;
+const f32 D_global_asm_80758968 = 1.399999976f;
+const f32 D_global_asm_80758980 = 0.3000000119f;
+const f32 D_global_asm_80758984 = 0.3000000119f;
+const f32 D_global_asm_80758988 = 0.3000000119f;
+const f32 D_global_asm_8075898C = 1714.0f;
+const f32 D_global_asm_80758990 = 3410.0f;
+const f64 D_global_asm_80758998 = 0.0500000000000000028;
+const f32 D_global_asm_807589A0 = 2.900000095f;
+const f32 D_global_asm_807589A4 = 2200.0f;
+const f32 D_global_asm_807589A8 = 32767.0f;
+const f64 D_global_asm_807589B0 = 600;
+const f64 D_global_asm_807589B8 = 1000;
+const f64 D_global_asm_807589C0 = 0.200000000000000011;
+const f64 D_global_asm_807589C8 = 0.400000000000000022;
+const f64 D_global_asm_807589D0 = 0.299999999999999989;
+const f64 D_global_asm_807589D8 = 0.299999999999999989;
+const f64 D_global_asm_807589E0 = 75;
+const f64 D_global_asm_807589E8 = 0.0500000000000000028;
+const f64 D_global_asm_807589F0 = 1.10000000000000009;
+const f32 D_global_asm_807589F8 = 1820.0f;
+const f32 D_global_asm_807589FC = 3614.0f;
+const f32 D_global_asm_80758A00 = 0.3000000119f;
+const f32 D_global_asm_80758A04 = 0.200000003f;
+const f32 D_global_asm_80758A08 = 682.0f;
+const f64 D_global_asm_80758A10 = 150;
+const f64 D_global_asm_80758A18 = -75;
+const f64 D_global_asm_80758A20 = 0.100000000000000006;
+const f64 D_global_asm_80758A28 = 0.100000000000000006;
+const f32 D_global_asm_80758A30 = 0.05000000075f;
+const f64 D_global_asm_80758A38 = 0.200000000000000011;
+const f64 D_global_asm_80758A40 = 0.0100000000000000002;
+const f64 D_global_asm_80758A48 = 0.0100000000000000002;
+const f32 D_global_asm_80758A50 = 995.0f;
+const f64 D_global_asm_80758A58 = 35;
+const f32 D_global_asm_80758A60 = 0.03333333507f;
+const f32 D_global_asm_80758A64 = 0.09090909362f;
+const f32 D_global_asm_80758A68 = 1.799999952f;
+const f64 D_global_asm_80758A70 = 0.100000000000000006;
+const f32 D_global_asm_80758A78 = 0.6999999881f;
+const f64 D_global_asm_80758A80 = 0.100000000000000006;
+const f32 D_global_asm_80758A88 = 0.6999999881f;
+const f32 D_global_asm_80758A8C = 100000.0f;
+const f32 D_global_asm_80758AA4 = 11.37777805f;
+const f64 D_global_asm_80758AA8 = 1274;
+const f64 D_global_asm_80758AB0 = 3081;
+const f64 D_global_asm_80758AB8 = 10000;
+const f64 D_global_asm_80758AC0 = 0.100000000000000006;
+const f64 D_global_asm_80758AC8 = 0.100000000000000006;
+const f64 D_global_asm_80758AD0 = 1.19999999999999996;
+const f64 D_global_asm_80758AD8 = -1.19999999999999996;
+const f64 D_global_asm_80758AE0 = 0.100000000000000006;
+const f64 D_global_asm_80758AE8 = 0.100000000000000006;
+const f64 D_global_asm_80758AF0 = 0.800000000000000044;
+const f64 D_global_asm_80758AF8 = 0.299999999999999989;
+const f64 D_global_asm_80758B00 = 1.30000000000000004;
+const f64 D_global_asm_80758B08 = 0.299999999999999989;
+const f32 D_global_asm_80758B10 = 0.3000000119f;
+const f32 D_global_asm_80758B14 = 0.3000000119f;
+const f32 D_global_asm_80758B18 = 0.3000000119f;
+const f32 D_global_asm_80758B1C = 0.3000000119f;
+const f32 D_global_asm_80758B20 = 0.3000000119f;
+const f32 D_global_asm_80758B24 = 0.3000000119f;
+const f32 D_global_asm_80758B28 = 0.3000000119f;
+const f64 D_global_asm_80758B30 = 360;
+const f32 D_global_asm_80758B38 = 57.29577637f;
+const f64 D_global_asm_80758B40 = 270;
+const f32 D_global_asm_80758B48 = 0.3000000119f;
+const f32 D_global_asm_80758B4C = 0.3000000119f;
+const f64 D_global_asm_80758B50 = 0.100000000000000006;
+const f64 D_global_asm_80758B58 = 0.100000000000000006;
+const f64 D_global_asm_80758B60 = 0.998999999999999999;
+const f64 D_global_asm_80758B68 = 0.00100000000000000002;
+const f32 D_global_asm_80758B70 = 0.3000000119f;
+const f32 D_global_asm_80758B74 = 0.3000000119f;
+const f32 D_global_asm_80758B78 = 99999.0;
+const f64 D_global_asm_80758BB0 = 3.20000000000000018;
+const f64 D_global_asm_80758BB8 = 0.27;
+const f64 D_global_asm_80758BC0 = 0.63;
+const f64 D_global_asm_80758BC8 = 0.015;
+const f64 D_global_asm_80758BD0 = 0.015;
+const f64 D_global_asm_80758BD8 = 17.5;
+*/
+// end rodata
+
 extern s32 D_global_asm_8071FBC8;
 extern s32 D_global_asm_8071FF18;
 extern s32 D_global_asm_8071FFA0;
