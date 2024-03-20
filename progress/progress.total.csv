@@ -439,7 +439,7 @@ us,asm,func_global_asm_80657974,828,no
 us,asm,func_global_asm_8066B06C,112,yes
 us,asm,func_global_asm_8070CD8C,68,yes
 us,asm,func_global_asm_80632F20,84,yes
-us,asm,func_global_asm_806DEAA4,560,no
+us,asm,func_global_asm_806DEAA4,560,yes
 us,asm,func_global_asm_806CC10C,64,yes
 us,asm,func_global_asm_806A0310,32,yes
 us,asm,func_global_asm_805FF0C8,80,yes

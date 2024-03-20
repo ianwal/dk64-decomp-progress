@@ -2921,8 +2921,34 @@ void func_global_asm_806DE9F4(void) {
     extra_player_info_pointer->unk30 = D_global_asm_80750FDC;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DEAA4.s")
+s32 func_global_asm_8061EB04(Actor *, s32);
+
+void func_global_asm_806DEAA4(void) {
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            func_global_asm_8061C6A8(extra_player_info_pointer->unk104, current_actor_pointer, 4, 0, 0x19, 0, 5, -3, 0xA, 0, 0.15f);
+            func_global_asm_80614E78(current_actor_pointer, 0x85);
+            current_actor_pointer->control_state_progress++;
+            // fallthrough
+        case 2:
+            func_global_asm_8061C6A8(extra_player_info_pointer->unk104, current_actor_pointer, 4, 0x396, 0x19, 0, 5, 0xB, 0xB, 0, 0.15f);
+            current_actor_pointer->control_state_progress++;
+            break;
+        case 4:
+            func_global_asm_8061C6A8(extra_player_info_pointer->unk104, current_actor_pointer, 4, 0xE74, 0x14, 0, 5, 0x13, 0xA, 0, 0.15f);
+            current_actor_pointer->control_state_progress++;
+            break;
+        case 6:
+            func_global_asm_8061C6A8(extra_player_info_pointer->unk104, current_actor_pointer, 4, 0x800, 0x11, 0, 5, 0x29, 0xA, 0, 0.15f);
+            current_actor_pointer->control_state_progress++;
+            break;
+        case 8:
+            func_global_asm_8061EB04(current_actor_pointer, 0);
+            extra_player_info_pointer->unk1F0 |= 4;
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 void func_global_asm_806DECD4(void) {
     if (current_actor_pointer->control_state_progress == 1) {
