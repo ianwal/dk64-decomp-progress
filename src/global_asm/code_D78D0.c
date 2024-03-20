@@ -2512,8 +2512,59 @@ void func_global_asm_806DB0C4(void) {
 }
 */
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DB3AC.s")
+void func_global_asm_806DB3AC(void) {
+    current_actor_pointer->unkB8 = 0.0f;
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            current_actor_pointer->noclip_byte = 1;
+            current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+            current_actor_pointer->shadow_opacity = 0xFF;
+            func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xE6, 0xFF, 0x7F, 0, 0, 0.3f, 0);
+            current_actor_pointer->control_state_progress++;
+            break;
+        case 1:
+            current_actor_pointer->shadow_opacity -= 0xF;
+            if (current_actor_pointer->shadow_opacity < 0x10) {
+                func_global_asm_8065EACC();
+                current_actor_pointer->control_state_progress++;
+            }
+            break;
+        case 2:
+            func_global_asm_80672C30(current_actor_pointer);
+            current_actor_pointer->x_position = extra_player_info_pointer->unk204;
+            current_actor_pointer->y_position = extra_player_info_pointer->unk208 + 10.0;
+            current_actor_pointer->unk8C = current_actor_pointer->y_position;
+            current_actor_pointer->z_position = extra_player_info_pointer->unk20C;
+            func_global_asm_806C8220(0, current_actor_pointer->unk178, current_actor_pointer->unk58);
+            func_global_asm_8061EB04(current_actor_pointer, extra_player_info_pointer->unk1A4);
+            func_global_asm_806291B4(6);
+            extra_player_info_pointer->unk23C = 0x14;
+            func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xE6, 0xFF, 0x7F, 0, 0, 0.3f, 0);
+            current_actor_pointer->control_state_progress++;
+            break;
+        case 3:
+            extra_player_info_pointer->unk23C -= 1;
+            if (extra_player_info_pointer->unk23C == 0) {
+                current_actor_pointer->control_state_progress++;
+            }
+            break;
+        case 4:
+            current_actor_pointer->shadow_opacity += 0xF;
+            if (current_actor_pointer->shadow_opacity >= 0xF1) {
+                current_actor_pointer->object_properties_bitfield |= 0x8000;
+                current_actor_pointer->control_state_progress++;
+            }
+            break;
+        case 5:
+            func_global_asm_806C8D20(current_actor_pointer);
+            func_global_asm_8065EAF4();
+            func_global_asm_806CFF9C(current_actor_pointer);
+            func_global_asm_806DF6D4(0x30);
+            break;
+    }
+    func_global_asm_806CC970();
+    renderActor(current_actor_pointer, 0);
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DB670.s")

@@ -980,9 +980,9 @@ typedef struct player_additional_actor_data {
     u16 unk1FE; // Used
     s16 unk200; // Used
     s16 unk202;
-    s32 unk204;
-    s32 unk208;
-    s32 unk20C;
+    f32 unk204;
+    f32 unk208;
+    f32 unk20C;
     s32 unk210;
     s32 unk214;
     s32 unk218;

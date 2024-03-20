@@ -578,8 +578,94 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026B28.s")
 
-// Jumptable
+// Jumptable, very close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026DAC.s")
+
+/*
+void func_menu_80026DAC(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex) {
+    s32 var_a0;
+    s32 cutsceneIndex;
+    s32 sp2C;
+    s32 sp28;
+    s32 sp24;
+    s32 var_v0;
+    s32 temp;
+    s32 temp2;
+
+    switch (arg0->unkE) {
+        case 0:
+            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+                func_global_asm_8061CB08();
+                arg0->unkE++;
+                setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
+            }
+            break;
+        case 2:
+            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+                var_a0 = -1;
+                func_global_asm_8061CB08();
+                arg0->unkE = 4;
+                switch (current_actor_pointer->unk58) {
+                case ACTOR_FUNKY:
+                    var_a0 = 2;
+                    // fallthrough
+                case ACTOR_CANDY:
+                    if (var_a0 < 0) {
+                        var_a0 = 7;
+                    }
+                    func_global_asm_806F8BC4(var_a0, 0, 0);
+                }
+            }
+            break;
+        case 1:
+            if (func_global_asm_80629148() != 0) {
+                cutsceneIndex = 1;
+                sp24 = -1;
+                var_v0 = -1;
+                func_global_asm_80629174();
+                func_global_asm_806CFF9C(player_pointer);
+                switch (current_actor_pointer->unk58) {
+                    case ACTOR_FUNKY:
+                        sp2C = 7;
+                        sp28 = 0x11;
+                        sp24 = 2;
+                        var_v0 = 2;
+                        // fallthrough
+                    case ACTOR_CANDY:
+                        if (sp24 < 0) {
+                            sp2C = 9;
+                            sp28 = 0x10;
+                            sp24 = 7;
+                            var_v0 = 4;
+                        }
+                        if ((var_v0 >= 0) && ((u8*)arg1)[var_v0] & 1) {
+                            // Problem is here
+                            temp = func_global_asm_806F8AD4(sp24, 0);
+                            temp2 = func_global_asm_806F8EDC(sp24, 0);
+                            if (temp < temp2) {
+                                func_global_asm_8070D8C0(current_actor_pointer, sp2C, sp28);
+                                func_global_asm_806F91B4(sp24, 0, 999);
+                                arg0->unkE = 0;
+                                cutsceneIndex = 5;
+                            }
+                        }
+                        break;
+                }
+                arg0->unkE += 2;
+                playCutscene(NULL, cutsceneIndex, 1);
+            }
+            break;
+        case 3:
+        case 4:
+            if (func_global_asm_80629148() != 0) {
+                func_global_asm_80629174();
+                func_global_asm_805FF898();
+                arg0->unkE = 0xA;
+            }
+            break;
+    }
+}
+*/
 
 void func_menu_80027028(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex) {
     s32 flagIsNotSet = !isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
