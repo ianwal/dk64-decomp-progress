@@ -2953,7 +2953,7 @@ us,asm,func_global_asm_806C7200,8,yes
 us,asm,func_global_asm_8064431C,200,yes
 us,asm,func_global_asm_806595B0,60,yes
 us,asm,func_global_asm_80697CEC,1072,yes
-us,asm,func_global_asm_806832F4,232,no
+us,asm,func_global_asm_806832F4,232,yes
 us,asm,func_global_asm_806A7B28,36,yes
 us,asm,func_global_asm_8073209C,188,no
 us,asm,func_global_asm_806C4EE0,124,yes

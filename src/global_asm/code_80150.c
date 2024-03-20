@@ -999,8 +999,35 @@ void func_global_asm_8068304C(void) {
 // Function pointer in a local variable, needs some PaaD untangling
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_80683158.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_806832F4.s")
+s32 func_global_asm_806832F4(s32 arg0, s32 arg1) {
+    s32 pad;
+    s32 sp28;
+    s32 flagIsSet;
+    s32 flagIndex;
+
+    flagIsSet = 0;
+    switch (current_map) {
+    default:
+        return 0;
+    case MAP_JAPES:
+    case MAP_FACTORY:
+    case MAP_GALLEON:
+    case MAP_AZTEC:
+    case MAP_TROFF_N_SCOFF:
+    case MAP_FUNGI:
+        sp28 = func_global_asm_805FEF10(&flagIndex);
+        if (sp28 != 0) {
+            flagIsSet = isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
+            if ((arg1 != 0) && (!flagIsSet)) {
+                setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
+                playCutscene(player_pointer, 0x19, 4);
+                current_actor_pointer->noclip_byte = 1;
+                current_actor_pointer->control_state_progress = 0xB;
+            }
+        }
+        return sp28 != 0 && !flagIsSet;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_806833DC.s")
 
