@@ -1,14 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// rodata
-// const static f32 D_jetpac_8002EB80 = 0.8f;
-// const static f32 D_jetpac_8002EB84 = 0.8f;
-// const static f32 D_jetpac_8002EBA0 = 0.059466f;
-// const static f32 D_jetpac_8002EBA4 = 0.4f;
-// const static f32 D_jetpac_8002EBA8 = 0.059466f;
-// const static f32 D_jetpac_8002EBAC = -0.4f;
-
 f32 func_jetpac_80027210();
 
 s32 func_jetpac_80027480(void) {

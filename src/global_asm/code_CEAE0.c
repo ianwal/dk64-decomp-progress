@@ -91,48 +91,6 @@ extern f32 D_global_asm_80753A5C[];
 extern s16 D_global_asm_80753A78[];
 extern f32 D_global_asm_80753AFC[];
 
-// rodata
-/*
-extern f32 D_global_asm_8075C91C;// = 0.15f;
-extern f32 D_global_asm_8075C920;// = 0.15f;
-extern f32 D_global_asm_8075C924;// = 0.3f;
-extern f64 D_global_asm_8075C928;// = -0.1;
-extern f32 D_global_asm_8075C930;// = -0.1f;
-extern f64 D_global_asm_8075C938;// = 0.149999999999999994;
-
-extern f64 D_global_asm_8075C9A0;// = 63.0;
-extern f64 D_global_asm_8075C9A8;// = 63.0;
-extern f64 D_global_asm_8075C9B0;// = 6.28318548202514648; //TWO_PI;
-
-extern f32 D_global_asm_8075CBE0;// = 57.29577637f;
-extern f64 D_global_asm_8075CBE8;// = 270.0;
-extern f32 D_global_asm_8075CBF0;// = 57.29577637f;
-extern f64 D_global_asm_8075CBF8;// = 90.0;
-extern f32 D_global_asm_8075CC00;// = 57.29577637f;
-
-extern f32 D_global_asm_8075CC68;// = 0.05f;
-extern f32 D_global_asm_8075CC6C;// = 0.3f;
-extern f32 D_global_asm_8075CC70;// = 0.4f;
-extern f32 D_global_asm_8075CC74;// = 0.004f;
-extern f32 D_global_asm_8075CC78;// = 0.05f;
-extern f32 D_global_asm_8075CC7C;// = 0.15f;
-extern f32 D_global_asm_8075CC80;// = 0.05f;
-extern f32 D_global_asm_8075CC84;// = 0.001f;
-extern f32 D_global_asm_8075CC88;// = 99999.0f;
-extern f64 D_global_asm_8075CC90;// = 0.11;
-extern f64 D_global_asm_8075CC98;// = 0.235199999999999992;
-extern f64 D_global_asm_8075CCA0;// = 0.17599999999999999;
-extern f32 D_global_asm_8075CCA8;// = 0.15f;
-extern f64 D_global_asm_8075CCB0;// = 6.66666666999999968;
-extern f64 D_global_asm_8075CCB8;// = 0.2;
-extern f64 D_global_asm_8075CCC0;// = 0.2;
-extern f64 D_global_asm_8075CCC8;// = 1.19999999999999996;
-extern f64 D_global_asm_8075CCD0;// = 0.149999999999999994;
-extern f64 D_global_asm_8075CCD8;// = 0.2;
-extern f32 D_global_asm_8075CCE0;// = 6.283185482f;
-*/
-// end rodata
-
 extern s32 D_global_asm_807FBB68;
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern u8 D_global_asm_807FD586;
@@ -712,8 +670,8 @@ void func_global_asm_806CC638(f32 arg0) {
             }
         }
     }
-    if ((current_actor_pointer->distance_from_floor == 0.0f) && (current_actor_pointer->y_velocity < D_global_asm_8075C928)) {
-        current_actor_pointer->y_velocity = D_global_asm_8075C930;
+    if ((current_actor_pointer->distance_from_floor == 0.0f) && (current_actor_pointer->y_velocity < -0.1)) {
+        current_actor_pointer->y_velocity = -0.1f;
     }
     current_actor_pointer->y_velocity = func_global_asm_806CD898(current_actor_pointer->y_velocity, phi_f14 + phi_f16, 2.0 * phi_f2);
     current_actor_pointer->unkB8 = func_global_asm_806CD898(current_actor_pointer->unkB8, sp34, phi_f2);
@@ -869,7 +827,7 @@ void func_global_asm_806CD424(s16 arg0, f32 arg1, f32 arg2) {
         } else {
             var_f0 = -(temp_f2 - sp34);
         }
-        var_f2 = (((var_f0 * (((extra_player_info_pointer->unk26 * D_global_asm_8075C9A0) + 100.0) / 6400.0)) - var_f16_2) * sp1C) + var_f16_2;
+        var_f2 = (((var_f0 * (((extra_player_info_pointer->unk26 * 63.0) + 100.0) / 6400.0)) - var_f16_2) * sp1C) + var_f16_2;
     } else {
         var_f2_2 = ABS(func_global_asm_80612794(arg0) * var_f16_2);
         sp24 = var_f2_2;
@@ -890,7 +848,7 @@ void func_global_asm_806CD424(s16 arg0, f32 arg1, f32 arg2) {
         } else {
             var_f0_2 = -(sp30 - sp34);
         }
-        sp20 = (((var_f0_2 * (((extra_player_info_pointer->unk26 * D_global_asm_8075C9A8) + 100.0) / 6400.0)) - var_f16_2) * sp1C) + var_f16_2;
+        sp20 = (((var_f0_2 * (((extra_player_info_pointer->unk26 * 63.0) + 100.0) / 6400.0)) - var_f16_2) * sp1C) + var_f16_2;
     }
     sp38 = func_global_asm_806CD898(sp34, sp30, sp20);
     current_actor_pointer->unkB8 = sqrtf((sp3C * sp3C) + (sp38 * sp38));
@@ -898,7 +856,7 @@ void func_global_asm_806CD424(s16 arg0, f32 arg1, f32 arg2) {
         current_actor_pointer->unkB8 = arg2;
     }
     if (current_actor_pointer->unkB8 != 0.0) {
-        current_actor_pointer->unkEE = (func_global_asm_80611BB4(sp3C, sp38) * 4096.0) / D_global_asm_8075C9B0;
+        current_actor_pointer->unkEE = (func_global_asm_80611BB4(sp3C, sp38) * 4096.0) / 6.28318548202514648;
     }
 }
 */
@@ -1396,14 +1354,14 @@ void func_global_asm_806CF138(Struct806CF138 *arg0) {
     func_global_asm_80671C0C(arg0->unk0, sp2C, &sp74, &sp6C, &sp64);
     sp5C = (sp6C - sp68);
     temp_f14 = (sp74 - sp70);
-    sp54 = func_global_asm_806118FC(sp5C / sqrtf(((sp64 - sp60) * (sp64 - sp60)) + ((temp_f14 * temp_f14) + (sp5C * sp5C)))) * D_global_asm_8075CBF0;
+    sp54 = func_global_asm_806118FC(sp5C / sqrtf(((sp64 - sp60) * (sp64 - sp60)) + ((temp_f14 * temp_f14) + (sp5C * sp5C)))) * 57.29577637f;
     sp48 = func_global_asm_80612794(arg0->unk0->y_rotation) * 50.0f;
     sp4C = func_global_asm_80612790(arg0->unk0->y_rotation) * 50.0f;
     sp40 = (sp74 - sp70);
     sp44 = (sp64 - sp60);
     sp3C = (sp44 * sp4C) + (sp48 * sp40);
     sp38 = sqrtf((sp4C * sp4C) + (sp48 * sp48));
-    func_global_asm_8067AA58(arg0->unk0, arg0->unk4, sp54, D_global_asm_8075CBF8 - (func_global_asm_80611850(sp3C / (sp38 * sqrtf((sp44 * sp44) + (sp40 * sp40)))) * D_global_asm_8075CC00));
+    func_global_asm_8067AA58(arg0->unk0, arg0->unk4, sp54, 90.0 - (func_global_asm_80611850(sp3C / (sp38 * sqrtf((sp44 * sp44) + (sp40 * sp40)))) * 57.29577637f));
 }
 */
 
@@ -1827,11 +1785,11 @@ void func_global_asm_806D0468(Actor *arg0, u8 arg1) {
     PlayerAdditionalActorData *var_v1;
 
     PaaD = arg0->PaaD;
-    PaaD->unk1DC = D_global_asm_8075CC70;
-    PaaD->unk1D8 = D_global_asm_8075CC74;
+    PaaD->unk1DC = 0.4f;
+    PaaD->unk1D8 = 0.004f;
     switch (arg1) {
         case 0:
-            temp_f0 = D_global_asm_8075CC78;
+            temp_f0 = 0.05f;
             PaaD->unk1C0 = temp_f0;
             PaaD->unk1C4 = temp_f0;
             PaaD->unk1C8 = temp_f0;
@@ -1842,12 +1800,12 @@ void func_global_asm_806D0468(Actor *arg0, u8 arg1) {
             PaaD->unk1C8 = D_global_asm_80750FA8;
             break;
         default:
-            PaaD->unk1C0 = D_global_asm_8075CC7C;
-            PaaD->unk1C4 = D_global_asm_8075CC7C;
-            PaaD->unk1C8 = D_global_asm_8075CC7C;
+            PaaD->unk1C0 = 0.15f;
+            PaaD->unk1C4 = 0.15f;
+            PaaD->unk1C8 = 0.15f;
             if (character_change_array[PaaD->unk1A4].unk2C0 == 0) {
-                PaaD->unk1DC = D_global_asm_8075CC80;
-                PaaD->unk1D8 = D_global_asm_8075CC84;
+                PaaD->unk1DC = 0.05f;
+                PaaD->unk1D8 = 0.001f;
             }
             break;
     }
@@ -1884,7 +1842,7 @@ void func_global_asm_806D0468(Actor *arg0, u8 arg1) {
         if (temp_f0_3 != 0.0f) {
             PaaD->unk1E0 = PaaD->unk1DC / temp_f0_3;
         } else {
-            PaaD->unk1E0 = D_global_asm_8075CC88;
+            PaaD->unk1E0 = 99999.0f;
         }
     }
     func_global_asm_8062217C(PaaD->unk104, 2);

@@ -506,7 +506,7 @@ segments:
       - [0x218F630, c, code_7BD0]
       - [0x21923C0, c, code_A960]
       - [0x2193570, data, code_0]
-      - [0x2193760, rodata] # code_0
+      - [0x2193760, .rodata, code_0]
       - [0x21938D0, .rodata, code_36B0]
       - [0x2193A10, .rodata, code_52B0]
       - [0x2193B20, .rodata, code_7BD0]

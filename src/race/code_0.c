@@ -44,7 +44,6 @@ typedef struct {
     u16 unk3A;
 } RaceStruct6;
 
-extern f32 D_race_8002FE68;
 extern s32 D_global_asm_8071FFA0; // TODO: Datatype
 extern s32 D_global_asm_80720340; // TODO: Datatype
 
@@ -57,21 +56,6 @@ typedef struct {
     u8 pad0[0xC];
     Actor *unkC;
 } RaceStruct0;
-
-extern f64 D_race_8002FD00;
-extern f64 D_race_8002FD08;
-extern f64 D_race_8002FD10;
-extern f64 D_race_8002FD18;
-extern f64 D_race_8002FD20;
-extern f64 D_race_8002FD28;
-extern f64 D_race_8002FDD8;
-extern f64 D_race_8002FDE0;
-extern f64 D_race_8002FDE8;
-
-extern f64 D_race_8002FE40;
-extern f64 D_race_8002FE48;
-extern f64 D_race_8002FE50;
-extern f64 D_race_8002FE58;
 
 extern s16 D_global_asm_80770628[];
 extern f32 D_global_asm_80770B68[];
@@ -128,7 +112,7 @@ void func_race_80024000(void) {
         var_t0 = &D_race_8002FB70;
     }
     sp44 = current_actor_pointer->unkB8;
-    sp40 = func_global_asm_80612794(current_actor_pointer->unkE0 * D_race_8002FD00) * 20.0f;
+    sp40 = func_global_asm_80612794(current_actor_pointer->unkE0 * 11.4) * 20.0f;
     if (sqrtf(((current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0) * (current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0)) + ((current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4) * (current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4))) < D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk7) {
         var_f12 = ABS(current_actor_pointer->y_position - (f32)D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk2);
         if (var_f12 < 80.0f) {
@@ -150,15 +134,15 @@ void func_race_80024000(void) {
     var_f0 *= 0.25f;
     var_f0 = MIN(6.0f, var_f0);
     var_f0 = MAX(-6.0f, var_f0);
-    var_f0 += ((D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk8 - (current_actor_pointer->unkB8 / 10.0f)) * D_race_8002FD08);
-    var_v1 = (s16)((func_global_asm_80611BB4(-(current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0), -(current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4)) * 4096.0) / D_race_8002FD10) - current_actor_pointer->unkEE;
+    var_f0 += ((D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk8 - (current_actor_pointer->unkB8 / 10.0f)) * 0.8);
+    var_v1 = (s16)((func_global_asm_80611BB4(-(current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0), -(current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4)) * 4096.0) / 6.28318548202514648) - current_actor_pointer->unkEE;
     if (var_v1 >= 0x800) {
         var_v1 -= 4096.0;
     }
     if (var_v1 < -0x800) {
         var_v1 += 4096.0;
     }
-    sp50 = (current_actor_pointer->unkB8 * var_v1) / D_race_8002FD18;
+    sp50 = (current_actor_pointer->unkB8 * var_v1) / 10000.0;
     var_f20 = func_global_asm_80612794(current_actor_pointer->unkEE) * sp44;
     var_f22 = func_global_asm_80612790(current_actor_pointer->unkEE) * sp44;
     if (current_actor_pointer->unk6A & 1) {
@@ -174,9 +158,9 @@ void func_race_80024000(void) {
     } else {
         current_actor_pointer->unkB8 = sp44;
     }
-    current_actor_pointer->unkEE = (temp_f0_2 * 4096.0) / D_race_8002FD20;
+    current_actor_pointer->unkEE = (temp_f0_2 * 4096.0) / 6.28318548202514648;
     if (current_actor_pointer->unk6A & 1) {
-        current_actor_pointer->unkB8 -= (f32)((current_actor_pointer->unkB8 * current_actor_pointer->unkB8) / D_race_8002FD28);
+        current_actor_pointer->unkB8 -= (f32)((current_actor_pointer->unkB8 * current_actor_pointer->unkB8) / 15000.0);
         if (current_actor_pointer->unkB8 < 0.0f) {
             current_actor_pointer->unkB8 = 0.0f;
         }
@@ -348,11 +332,11 @@ void func_race_80026098(Struct80026098 *arg0, Struct80026098 *arg1) {
     s16 pad[2];
     f32 sp24;
 
-    sp2E = (func_global_asm_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / D_race_8002FDD8;
-    sp24 = current_actor_pointer->unkB8 * D_race_8002FDE0 * sqrtf(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
+    sp2E = (func_global_asm_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / 3.14159274101257324;
+    sp24 = current_actor_pointer->unkB8 * 0.03 * sqrtf(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
     current_actor_pointer->x_position = arg1->unk0 + (sp24 * func_global_asm_80612794(sp2E));
     current_actor_pointer->z_position = arg1->unk8 + (sp24 * func_global_asm_80612790(sp2E));
-    current_actor_pointer->y_position = (D_race_8002FDE8 * (arg0->unk4 - current_actor_pointer->y_position)) + current_actor_pointer->y_position;
+    current_actor_pointer->y_position = (0.8 * (arg0->unk4 - current_actor_pointer->y_position)) + current_actor_pointer->y_position;
 }
 */
 
@@ -477,7 +461,7 @@ void func_race_80026D2C(f32 arg0) {
     }
 
     if (D_global_asm_80770BC0[temp] == 0.0f) {
-        D_global_asm_80770B68[temp] = ((((u32)func_global_asm_806119A0() / D_race_8002FE40) * D_race_8002FE48) + D_race_8002FE50) * (D_race_8002FE58 + (arg0 / 15.0));
+        D_global_asm_80770B68[temp] = ((((u32)func_global_asm_806119A0() / 4294967295.0) * 0.05) + 0.975) * (0.2 + (arg0 / 15.0));
         D_global_asm_80770BC0[temp] = 3.0f;
     }
 }
@@ -509,7 +493,7 @@ void func_race_800274C0(void) {
     if (D_global_asm_807FBB70.unk200 == 9 || D_global_asm_807FBB70.unk15 != 0 || D_global_asm_807FBB70.unk200 == 5) {
         func_global_asm_807149B8(1);
         func_global_asm_80714CC0(&D_global_asm_80720340, 3.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, D_race_8002FE68, 0);
+        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, 0.3f, 0);
         var_v1 = TRUE;
     }
     func_race_80026354(sp48, sp4C, 0);

@@ -73,102 +73,6 @@ extern f32 D_global_asm_80753A5C[];
 extern f32 D_global_asm_80753AFC[];
 extern f32 D_global_asm_80753CB4[];
 
-// rodata
-/*
-extern f32 D_global_asm_8075CCF0;// = 590.0f;
-extern f32 D_global_asm_8075CCF4;// = 987.0f;
-extern f32 D_global_asm_8075CCF8;// = 571.0f;
-extern f32 D_global_asm_8075CCFC;// = 965.0f;
-extern f64 D_global_asm_8075CD00;// = 0.699999999999999956;
-extern f64 D_global_asm_8075CD08;// = 0.149999999999999994;
-extern f32 D_global_asm_8075CD10;// = 0.2f;
-extern f64 D_global_asm_8075CD18;// = 0.63;
-extern f64 D_global_asm_8075CD20;// = 0.63;
-
-extern f64 D_global_asm_8075CD78;// = 1.8;
-extern f64 D_global_asm_8075CD80;// = 0.149999999999999994;
-extern f64 D_global_asm_8075CD88;// = 1.8;
-extern f64 D_global_asm_8075CD90;// = 1.8;
-extern f64 D_global_asm_8075CD98;// = 1.8;
-extern f32 D_global_asm_8075CDA0;// = 0.2f;
-
-extern f64 D_global_asm_8075CDE0;// = 0.001;
-extern f64 D_global_asm_8075CDE8;// = 0.01;
-
-extern f64 D_global_asm_8075CE08;// = -0.1;
-extern f32 D_global_asm_8075CE10;// = -0.1f;
-
-extern f64 D_global_asm_8075CE68;// = 0.025;
-extern f32 D_global_asm_8075CE70;// = 0.8199999928f;
-extern f64 D_global_asm_8075CE78;// = 255.0;
-extern f64 D_global_asm_8075CE80;// = 150.0;
-extern f32 D_global_asm_8075CE88;// = -0.009999999776f;
-
-extern f64 D_global_asm_8075CEB8;// = 0.2;
-
-extern f64 D_global_asm_8075CEF8;// = 0.8;
-extern f32 D_global_asm_8075CF00;// = 6.283185482f;
-extern f64 D_global_asm_8075CF08;// = 0.02;
-extern f32 D_global_asm_8075CF10;// = 6.283185482f;
-
-extern f64 D_global_asm_8075CFD8;// = 0.1;
-extern f64 D_global_asm_8075CFE0;// = 0.166666666749999998;
-extern f64 D_global_asm_8075CFE8;// = 0.166666666749999998;
-extern f32 D_global_asm_8075CFF0;// = -0.001f;
-extern f32 D_global_asm_8075CFF4;// = 57.29577637f;
-extern f64 D_global_asm_8075CFF8;// = 4095.0;
-extern f64 D_global_asm_8075D000;// = 360.0;
-extern f64 D_global_asm_8075D008;// = 360.0;
-extern f64 D_global_asm_8075D010;// = 4095.0;
-extern f32 D_global_asm_8075D018;// = 57.29577637f;
-
-extern f64 D_global_asm_8075D048;// = 0.1;
-extern f64 D_global_asm_8075D050;// = 0.025;
-extern f64 D_global_asm_8075D058;// = 0.1;
-extern f64 D_global_asm_8075D060;// = 0.025;
-
-extern f32 D_global_asm_8075D080;// = 0.2f;
-
-extern f64 D_global_asm_8075D0B8;// = 0.92;
-extern f64 D_global_asm_8075D0C0;// = 1.08;
-extern f64 D_global_asm_8075D0C8;// = 0.149999999999999994;
-extern f32 D_global_asm_8075D0D0;// = 0.15f;
-
-extern f64 D_global_asm_8075D0E0;// = 0.149999999999999994;
-extern f32 D_global_asm_8075D0E8;// = 6.283185482f;
-extern f64 D_global_asm_8075D0F0;// = 0.299999999999999989;
-extern f32 D_global_asm_8075D0F8;// = 0.3f;
-extern f64 D_global_asm_8075D100;// = 0.2;
-extern f64 D_global_asm_8075D108;// = 0.299999999999999989;
-extern f32 D_global_asm_8075D110;// = 0.3f;
-extern f64 D_global_asm_8075D118;// = 0.699999999999999956;
-extern f64 D_global_asm_8075D120;// = 0.299999999999999989;
-extern f64 D_global_asm_8075D128;// = 0.2;
-extern f32 D_global_asm_8075D130;// = 0.2f;
-extern f64 D_global_asm_8075D138;// = 0.599999999999999978;
-extern f64 D_global_asm_8075D140;// = 63000.0;
-extern f64 D_global_asm_8075D148;// = 0.2;
-extern f32 D_global_asm_8075D150;// = 0.2f;
-
-extern f64 D_global_asm_8075D190;// = 0.2;
-
-extern f32 D_global_asm_8075D214;// = 10000.0f;
-extern f32 D_global_asm_8075D218;// = 10000.0f;
-extern f32 D_global_asm_8075D21C;// = 10000.0f;
-extern f32 D_global_asm_8075D220;// = 3000.0f;
-extern f32 D_global_asm_8075D224;// = 3000.0f;
-extern f32 D_global_asm_8075D228;// = 1.570796371f;
-extern f64 D_global_asm_8075D230;// = 1.57079637050628662.0;
-extern f64 D_global_asm_8075D238;// = 63000.0;
-extern f32 D_global_asm_8075D240;// = 63000.0f;
-
-extern f64 D_global_asm_8075D310;// = 66.0;
-extern f64 D_global_asm_8075D318;// = 1.33;
-extern f64 D_global_asm_8075D320;// = 0.45;
-extern f64 D_global_asm_8075D328;// = 0.8;
-*/
-// end rodata
-
 extern s32 D_global_asm_80767CC0;
 extern s32 D_global_asm_807FBB68;
 extern f32 D_global_asm_807FBC58;
@@ -2170,7 +2074,7 @@ void func_global_asm_806D9AD4(void) {
         sp28 = current_actor_pointer->y_position + ((rand() >> 0xF) % 30);
         rand();
         func_global_asm_807149B8(1);
-        func_global_asm_80714950((extra_player_info_pointer->unk23C << 0x10) + (s32)(15.0 * (current_actor_pointer->shadow_opacity / D_global_asm_8075CE78)));
+        func_global_asm_80714950((extra_player_info_pointer->unk23C << 0x10) + (s32)(15.0 * (current_actor_pointer->shadow_opacity / 255.0)));
         func_global_asm_8071498C(&func_global_asm_80717100);
         func_global_asm_80714CC0(&D_global_asm_8071FC8C, 0.5f, current_actor_pointer->x_position, sp28, current_actor_pointer->z_position);
     }
@@ -2611,7 +2515,7 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
 
     current_actor_pointer->object_properties_bitfield &= 0xFFBFFFFF;
     current_actor_pointer->unk6A &= 0xFFBF;
-    current_actor_pointer->z_rotation += (-current_actor_pointer->z_rotation * D_global_asm_8075CFD8);
+    current_actor_pointer->z_rotation += (-current_actor_pointer->z_rotation * 0.1);
     switch (current_actor_pointer->control_state_progress) {
         case 0:
             func_global_asm_806DCF60();
@@ -2663,15 +2567,15 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
                     func_global_asm_80671C0C(extra_player_info_pointer->unk158, 1, &sp44, &sp40, &sp3C);
                     dx = sp44 - current_player->x_position;
                     dz = sp3C - current_player->z_position;
-                    sp4C = (sp40 - current_player->y_position) / (current_player->animation_state->scale_y * D_global_asm_8075CFE0);
-                    sp50 = ((sqrtf((dx * dx) + (dz * dz)) / (current_player->animation_state->scale_y * D_global_asm_8075CFE8)) / current_player->unkB8) - 1.0f;
+                    sp4C = (sp40 - current_player->y_position) / (current_player->animation_state->scale_y * 0.166666666749999998);
+                    sp50 = ((sqrtf((dx * dx) + (dz * dz)) / (current_player->animation_state->scale_y * 0.166666666749999998)) / current_player->unkB8) - 1.0f;
                     if (sp50 < 1.0f) {
                         sp50 = 1.0f;
                     }
                 }
                 if ((extra_player_info_pointer->unk158 != 0) && (sp50 < 30.0f)) {
                     current_player->y_velocity = (((0.0 - (D_global_asm_80753CD0[D_global_asm_807FD584]) * 0.5 * (sp50 * sp50)) - sp4C)) / sp50;
-                    current_player->y_acceleration = D_global_asm_8075CFF0;
+                    current_player->y_acceleration = -0.001f;
                 } else {
                     extra_player_info_pointer->unk158 = 0;
                     func_global_asm_806CFE7C();
@@ -2720,7 +2624,7 @@ void func_global_asm_806DCF60(void) {
             for (i = 0; i < i < D_global_asm_807FBB34; i++) {
                 temp_s0 = D_global_asm_807FB930[i].unk0;
                 if (!(temp_s0->object_properties_bitfield & 0x2000) && (temp_s0->object_properties_bitfield & 0x04000000) && (temp_s0 != extra_player_info_pointer->unk130) && (temp_s0 != current_player)) {
-                    temp_f16 = ((func_global_asm_80665E48(temp_s0->x_position, temp_s0->z_position, current_player->x_position, current_player->z_position) * D_global_asm_8075CFF4) / D_global_asm_8075D000) * D_global_asm_8075CFF8;
+                    temp_f16 = ((func_global_asm_80665E48(temp_s0->x_position, temp_s0->z_position, current_player->x_position, current_player->z_position) * 57.29577637f) / 360.0) * 4095.0;
                     dx = temp_s0->x_position - current_player->x_position;
                     temp_s1 = func_global_asm_806CC14C(temp_f16, extra_player_info_pointer->unk154);
                     dz = temp_s0->z_position - current_player->z_position;
@@ -2739,7 +2643,7 @@ void func_global_asm_806DCF60(void) {
                 }
             }
         } else {
-            temp_f16_2 = ((func_global_asm_80665E48(temp_v0->x_position, temp_v0->z_position, current_player->x_position, current_player->z_position) * D_global_asm_8075D018) / D_global_asm_8075D008) * D_global_asm_8075D010;
+            temp_f16_2 = ((func_global_asm_80665E48(temp_v0->x_position, temp_v0->z_position, current_player->x_position, current_player->z_position) * 57.29577637f) / 360.0) * 4095.0;
             if (func_global_asm_806CC14C(temp_f16_2, extra_player_info_pointer->unk154) < 0x258) {
                 extra_player_info_pointer->unk154 = temp_f16_2;
             }
@@ -2846,9 +2750,9 @@ void func_global_asm_806DDAB0(void) {
                 switch (extra_player_info_pointer->unk8) {
                     case -1:
                         if (current_actor_pointer->control_state_progress == 1) {
-                            var_f2 = MAX(current_actor_pointer->unkB8 * D_global_asm_8075D050, D_global_asm_8075D048);
+                            var_f2 = MAX(current_actor_pointer->unkB8 * 0.025, 0.1);
                             func_global_asm_80614D00(current_actor_pointer, var_f2, 1.0f);
-                            // func_global_asm_80614D00(current_actor_pointer, D_global_asm_8075D048, var_f2, 1.0f);
+                            // func_global_asm_80614D00(current_actor_pointer, 0.1, var_f2, 1.0f);
                         } else {
                             func_global_asm_80614E78(current_player, 0x77);
                             current_actor_pointer->control_state_progress = 1;
@@ -2862,8 +2766,8 @@ void func_global_asm_806DDAB0(void) {
                         break;
                     case 1:
                         if (current_actor_pointer->control_state_progress == 3) {
-                            var_f2 = MAX(current_actor_pointer->unkB8 * D_global_asm_8075D060, D_global_asm_8075D058);
-                            // func_global_asm_80614D00(D_global_asm_8075D058, current_actor_pointer, var_f2_2, 0, current_actor_pointer);
+                            var_f2 = MAX(current_actor_pointer->unkB8 * 0.025, 0.1);
+                            // func_global_asm_80614D00(0.1, current_actor_pointer, var_f2_2, 0, current_actor_pointer);
                             func_global_asm_80614D00(current_actor_pointer, var_f2, 0);
                         } else {
                             func_global_asm_80614E78(current_player, 0x78);

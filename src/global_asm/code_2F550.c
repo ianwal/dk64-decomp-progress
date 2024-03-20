@@ -4,25 +4,6 @@
 extern u8 D_global_asm_807444F0;
 extern f32 D_global_asm_80747CD0;
 
-// rodata
-/*
-D_global_asm_80758160 = 999.0f
-D_global_asm_80758164 = 0.01999999955f
-D_global_asm_80758168 = 1.19999999999999996
-
-D_global_asm_80758170 = 0.01745329238
-D_global_asm_80758178 = 300
-D_global_asm_80758180 = -0.0100000000000000002
-D_global_asm_80758188 = 0.0100000000000000002
-D_global_asm_80758190 = 0.7853981853
-D_global_asm_80758198 = 1.00000000000000002e-08
-D_global_asm_807581A0 = -1.00000000000000002e-08
-D_global_asm_807581A8 = -1.00000000000000002e-08
-D_global_asm_807581B0 = 1.00000000000000002e-08
-D_global_asm_807581B8 = -1.00000000000000002e-08
-D_global_asm_807581C0 = 1.00000000000000002e-08
-*/
-
 extern void *D_global_asm_807F5DE4; // TODO: Actually a pointer to a struct (map model?)
 extern void *D_global_asm_807F5E60;
 extern s8 D_global_asm_807F5FEC;

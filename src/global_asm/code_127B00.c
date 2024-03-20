@@ -1,17 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// rodata
-/*
-static const f64 D_global_asm_8075EB40 = 300.0;
-static const f32 D_global_asm_8075EB48 = 999999.0f;
-static const f64 D_global_asm_8075EB50 = 0.0050000000000000001;
-static const f32 D_global_asm_8075EB58 = 999999.0f;
-static const f64 D_global_asm_8075EB60 = 0.0500000000000000028;
-static const f64 D_global_asm_8075EB70 = 0.400000000000000022;
-static const f64 D_global_asm_8075EB78 = 3.14159274101257324;
-*/
-
 void func_global_asm_80722E00(s32 map) {
     void *paths;
 

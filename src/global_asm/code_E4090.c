@@ -31,139 +31,6 @@ extern f32 D_global_asm_80753DC8[];
 extern f32 D_global_asm_80753DE4[];
 extern s16 D_global_asm_80753E64[];
 
-// rodata
-/*
-extern f32 D_global_asm_8075C91C;// = 0.15f;
-extern f32 D_global_asm_8075C920;// = 0.15f;
-extern f32 D_global_asm_8075C924;// = 0.3f;
-extern f64 D_global_asm_8075C928;// = -0.1;
-extern f32 D_global_asm_8075C930;// = -0.1f;
-extern f64 D_global_asm_8075C938;// = 0.149999999999999994;
-
-extern f64 D_global_asm_8075C9A0;// = 63.0;
-extern f64 D_global_asm_8075C9A8;// = 63.0;
-extern f64 D_global_asm_8075C9B0;// = 6.28318548202514648; //TWO_PI;
-
-extern f32 D_global_asm_8075CBE0;// = 57.29577637f;
-extern f64 D_global_asm_8075CBE8;// = 270.0;
-extern f32 D_global_asm_8075CBF0;// = 57.29577637f;
-extern f64 D_global_asm_8075CBF8;// = 90.0;
-extern f32 D_global_asm_8075CC00;// = 57.29577637f;
-
-extern f32 D_global_asm_8075CC68;// = 0.05f;
-extern f32 D_global_asm_8075CC6C;// = 0.3f;
-extern f32 D_global_asm_8075CC70;// = 0.4f;
-extern f32 D_global_asm_8075CC74;// = 0.004f;
-extern f32 D_global_asm_8075CC78;// = 0.05f;
-extern f32 D_global_asm_8075CC7C;// = 0.15f;
-extern f32 D_global_asm_8075CC80;// = 0.05f;
-extern f32 D_global_asm_8075CC84;// = 0.001f;
-extern f32 D_global_asm_8075CC88;// = 99999.0f;
-extern f64 D_global_asm_8075CC90;// = 0.11;
-extern f64 D_global_asm_8075CC98;// = 0.235199999999999992;
-extern f64 D_global_asm_8075CCA0;// = 0.17599999999999999;
-extern f32 D_global_asm_8075CCA8;// = 0.15f;
-extern f64 D_global_asm_8075CCB0;// = 6.66666666999999968;
-extern f64 D_global_asm_8075CCB8;// = 0.2;
-extern f64 D_global_asm_8075CCC0;// = 0.2;
-extern f64 D_global_asm_8075CCC8;// = 1.19999999999999996;
-extern f64 D_global_asm_8075CCD0;// = 0.149999999999999994;
-extern f64 D_global_asm_8075CCD8;// = 0.2;
-extern f32 D_global_asm_8075CCE0;// = 6.283185482f;
-
-extern f32 D_global_asm_8075CCF0;// = 590.0f;
-extern f32 D_global_asm_8075CCF4;// = 987.0f;
-extern f32 D_global_asm_8075CCF8;// = 571.0f;
-extern f32 D_global_asm_8075CCFC;// = 965.0f;
-extern f64 D_global_asm_8075CD00;// = 0.699999999999999956;
-extern f64 D_global_asm_8075CD08;// = 0.149999999999999994;
-extern f32 D_global_asm_8075CD10;// = 0.2f;
-extern f64 D_global_asm_8075CD18;// = 0.63;
-extern f64 D_global_asm_8075CD20;// = 0.63;
-
-extern f64 D_global_asm_8075CD78;// = 1.8;
-extern f64 D_global_asm_8075CD80;// = 0.149999999999999994;
-extern f64 D_global_asm_8075CD88;// = 1.8;
-extern f64 D_global_asm_8075CD90;// = 1.8;
-extern f64 D_global_asm_8075CD98;// = 1.8;
-extern f32 D_global_asm_8075CDA0;// = 0.2f;
-
-extern f64 D_global_asm_8075CDE0;// = 0.001;
-extern f64 D_global_asm_8075CDE8;// = 0.01;
-
-extern f64 D_global_asm_8075CE08;// = -0.1;
-extern f32 D_global_asm_8075CE10;// = -0.1f;
-
-extern f64 D_global_asm_8075CE68;// = 0.025;
-extern f32 D_global_asm_8075CE70;// = 0.8199999928f;
-extern f64 D_global_asm_8075CE78;// = 255.0;
-extern f64 D_global_asm_8075CE80;// = 150.0;
-extern f32 D_global_asm_8075CE88;// = -0.009999999776f;
-
-extern f64 D_global_asm_8075CEB8;// = 0.2;
-
-extern f64 D_global_asm_8075CEF8;// = 0.8;
-extern f32 D_global_asm_8075CF00;// = 6.283185482f;
-extern f64 D_global_asm_8075CF08;// = 0.02;
-extern f32 D_global_asm_8075CF10;// = 6.283185482f;
-
-extern f64 D_global_asm_8075CFD8;// = 0.1;
-extern f64 D_global_asm_8075CFE0;// = 0.166666666749999998;
-extern f64 D_global_asm_8075CFE8;// = 0.166666666749999998;
-extern f32 D_global_asm_8075CFF0;// = -0.001f;
-extern f32 D_global_asm_8075CFF4;// = 57.29577637f;
-extern f64 D_global_asm_8075CFF8;// = 4095.0;
-extern f64 D_global_asm_8075D000;// = 360.0;
-extern f64 D_global_asm_8075D008;// = 360.0;
-extern f64 D_global_asm_8075D010;// = 4095.0;
-extern f32 D_global_asm_8075D018;// = 57.29577637f;
-
-extern f64 D_global_asm_8075D048;// = 0.1;
-extern f64 D_global_asm_8075D050;// = 0.025;
-extern f64 D_global_asm_8075D058;// = 0.1;
-extern f64 D_global_asm_8075D060;// = 0.025;
-
-extern f32 D_global_asm_8075D080;// = 0.2f;
-
-extern f64 D_global_asm_8075D0B8;// = 0.92;
-extern f64 D_global_asm_8075D0C0;// = 1.08;
-extern f64 D_global_asm_8075D0C8;// = 0.149999999999999994;
-extern f32 D_global_asm_8075D0D0;// = 0.15f;
-
-extern f64 D_global_asm_8075D0E0;// = 0.149999999999999994;
-extern f32 D_global_asm_8075D0E8;// = 6.283185482f;
-extern f64 D_global_asm_8075D0F0;// = 0.299999999999999989;
-extern f32 D_global_asm_8075D0F8;// = 0.3f;
-extern f64 D_global_asm_8075D100;// = 0.2;
-extern f64 D_global_asm_8075D108;// = 0.299999999999999989;
-extern f32 D_global_asm_8075D110;// = 0.3f;
-extern f64 D_global_asm_8075D118;// = 0.699999999999999956;
-extern f64 D_global_asm_8075D120;// = 0.299999999999999989;
-extern f64 D_global_asm_8075D128;// = 0.2;
-extern f32 D_global_asm_8075D130;// = 0.2f;
-extern f64 D_global_asm_8075D138;// = 0.599999999999999978;
-extern f64 D_global_asm_8075D140;// = 63000.0;
-extern f64 D_global_asm_8075D148;// = 0.2;
-extern f32 D_global_asm_8075D150;// = 0.2f;
-
-extern f64 D_global_asm_8075D190;// = 0.2;
-
-extern f32 D_global_asm_8075D214;// = 10000.0f;
-extern f32 D_global_asm_8075D218;// = 10000.0f;
-extern f32 D_global_asm_8075D21C;// = 10000.0f;
-extern f32 D_global_asm_8075D220;// = 3000.0f;
-extern f32 D_global_asm_8075D224;// = 3000.0f;
-extern f32 D_global_asm_8075D228;// = 1.570796371f;
-extern f64 D_global_asm_8075D230;// = 1.57079637050628662;
-extern f64 D_global_asm_8075D238;// = 63000.0;
-extern f32 D_global_asm_8075D240;// = 63000.0f;
-
-extern f64 D_global_asm_8075D310;// = 66.0;
-extern f64 D_global_asm_8075D318;// = 1.33;
-extern f64 D_global_asm_8075D320;// = 0.45;
-*/
-// end rodata
-
 extern f64 D_global_asm_8075D328;// = 0.8;
 extern s32 D_global_asm_80767CC0;
 extern s32 D_global_asm_807FBB68;
@@ -776,7 +643,7 @@ void func_global_asm_806E0D40(void) {
         }
     }
     if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG)) {
-        extra_player_info_pointer->unk1A0 = ((D_global_asm_807FD610[cc_player_index].unk2F * 0xCC) * D_global_asm_8075D138) + D_global_asm_8075D140;
+        extra_player_info_pointer->unk1A0 = ((D_global_asm_807FD610[cc_player_index].unk2F * 0xCC) * 0.599999999999999978) + 63000.0;
     }
 }
 */

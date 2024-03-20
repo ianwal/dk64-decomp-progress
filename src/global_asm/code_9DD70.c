@@ -1,41 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// rodata
-// const f64 D_global_asm_8075A2D0 = 3.14159274101257324;
-// const f64 D_global_asm_8075A2D8 = 4095.0;
-// const f64 D_global_asm_8075A2E0 = 360.0;
-// const f64 D_global_asm_8075A2E8 = 4095.0;
-// const f64 D_global_asm_8075A2F0 = 360.0;
-// const f64 D_global_asm_8075A2F8 = 843.0;
-// const f64 D_global_asm_8075A300 = 843.0;
-// const f64 D_global_asm_8075A308 = 0.1;
-// const f32 D_global_asm_8075A310 = 1347.0f;
-// const f32 D_global_asm_8075A314 = 1347.0f;
-// const f64 D_global_asm_8075A318 = 0.05;
-// const f64 D_global_asm_8075A320 = 0.3;
-// const f32 D_global_asm_8075A328 = 0.6f;
-// const f32 D_global_asm_8075A340 = 99999.0f;
-// const f64 D_global_asm_8075A348 = 0.15;
-// const f64 D_global_asm_8075A350 = 3242.0;
-// const f64 D_global_asm_8075A358 = 252.0;
-// const f64 D_global_asm_8075A360 = 3842.0;
-// const f64 D_global_asm_8075A368 = 852.0;
-// const f64 D_global_asm_8075A3A0 = 4095.0;
-// const f64 D_global_asm_8075A3A8 = 360.0;
-// const f64 D_global_asm_8075A3B0 = 0.2;
-// const f64 D_global_asm_8075A3B8 = 250.0;
-// const f32 D_global_asm_8075A3C0 = 2500.0f;
-// const f64 D_global_asm_8075A3C8 = 4095.0;
-// const f64 D_global_asm_8075A3D0 = 360.0;
-// const f64 D_global_asm_8075A3D8 = 360.0;
-// const f64 D_global_asm_8075A3E0 = 360.0;
-// const f64 D_global_asm_8075A3E8 = 90.0;
-// const f64 D_global_asm_8075A3F0 = 360.0;
-// const f64 D_global_asm_8075A3F8 = 0.15;
-// const f64 D_global_asm_8075A400 = 18000.0;
-// const f64 D_global_asm_8075A408 = 0.9;
-
 extern s8 D_global_asm_807F6951;
 extern s8 D_global_asm_807F6950;
 
