@@ -1758,8 +1758,55 @@ void func_global_asm_806D80A8(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D8308.s")
+extern f32 D_global_asm_80753770[];
+extern f32 D_global_asm_807537A8[];
+extern f32 D_global_asm_807537C4[];
+
+void func_global_asm_806D8308(void) {
+    Actor *var_a3;
+    PlayerAdditionalActorData *temp_v0;
+
+    switch (current_actor_pointer->control_state_progress) {
+    case 0:
+        current_actor_pointer->unkEA = current_actor_pointer->unkEE;
+        func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
+        func_global_asm_806DF6D4(0x48);
+        func_global_asm_806CC948();
+        break;
+    case 1:
+        current_actor_pointer->y_velocity = extra_player_info_pointer->unk54;
+        current_actor_pointer->y_acceleration = D_global_asm_807537A8[D_global_asm_807FD584];
+        current_actor_pointer->unkB8 = D_global_asm_80753770[D_global_asm_807FD584];
+        current_actor_pointer->unkEA = current_actor_pointer->unkEE;
+        current_actor_pointer->control_state_progress += 1;
+        func_global_asm_806DF6D4(0x48);
+        func_global_asm_806CFE30();
+        func_global_asm_806CC948();
+        break;
+    case 2:
+        func_global_asm_806CFE30();
+        func_global_asm_806D3608();
+        func_global_asm_806CC948();
+        func_global_asm_806DF6D4(0x48);
+        break;
+    case 3:
+        extra_player_info_pointer->unk30 = D_global_asm_807537C4[D_global_asm_807FD584];
+        func_global_asm_806DF6D4(0x33);
+        func_global_asm_806CFE7C();
+        func_global_asm_806CC8B8();
+        break;
+    case 4:
+        if (extra_player_info_pointer->unk4 > 10.0f) {
+            func_global_asm_806CFF9C(current_actor_pointer);
+        }
+        extra_player_info_pointer->unk30 = D_global_asm_807537C4[D_global_asm_807FD584];
+        func_global_asm_806DF6D4(0x33);
+        func_global_asm_806CFE7C();
+        func_global_asm_806CC8B8();
+        break;
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 int func_global_asm_806D850C(void) {
     f32 sp2C;
