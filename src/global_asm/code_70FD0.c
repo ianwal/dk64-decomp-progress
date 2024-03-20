@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 void func_global_asm_8066EC6C(LedgeInfo *);
 void func_global_asm_8066F06C(LedgeInfo *);
 void func_global_asm_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5, s32 arg6);
@@ -794,8 +793,27 @@ void func_global_asm_8066F400(Actor *arg0) {
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066FC0C.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066FD6C.s")
+s32 func_global_asm_8066FD6C(Actor *arg0) {
+    PlayerAdditionalActorData *PaaD;
+    switch (arg0->unk58) {
+        case 5:
+            PaaD = arg0->PaaD;
+            if (character_change_array[PaaD->unk1A4].unk2C0 == 1) {
+                return 0x32;
+            }
+            return 0x14;
+        case 3:
+            return 0x32;
+        case 2:
+            return 0x32;
+        case 4:
+            return 0x32;
+        case 21:
+            return 0x12C;
+        default:
+            return 0x32;
+    }
+}
 
 // Scales and rotates a matrix on the stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066FE08.s")
@@ -1198,8 +1216,6 @@ loop_7:
 // close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672134.s")
 
-extern f64 D_global_asm_80759150;
-
 /*
 s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s16 var_a3;
@@ -1234,7 +1250,7 @@ s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
         if (var_f2 > 1.0) {
             var_f2 = 1.0f;
         }
-        if (var_f2 < D_global_asm_80759150) {
+        if (var_f2 < 0.2) {
             var_f2 = 0.0f;
         }
         return arg3 * var_f2;
@@ -1243,11 +1259,6 @@ s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672328.s")
-
-extern f64 D_global_asm_80759158;
-extern f64 D_global_asm_80759160;
-extern f64 D_global_asm_80759168;
-extern f64 D_global_asm_80759170;
 
 s32 func_global_asm_806725A0(Actor *arg0, s16 arg1);
 s32 func_global_asm_80611E60(s32, s32);
@@ -1277,16 +1288,16 @@ s32 func_global_asm_80672328(Actor *arg0, f32 arg1, f32 arg2) {
         return TRUE;
     }
     if ((temp_v1 >= 0) && (temp_a1 >= 0)) {
-        phi_a2 = func_global_asm_80611E60((temp_v1 * D_global_asm_80759158) / temp_f0, temp_a1) >> 4;
+        phi_a2 = func_global_asm_80611E60((temp_v1 * 65535.9) / temp_f0, temp_a1) >> 4;
     }
     if (((temp_f6 - temp_f8) >= 0) && ((temp_f16 - temp_f18) < 0)) {
-        phi_a2 = (func_global_asm_80611E60(((temp_f18 - temp_f16) * D_global_asm_80759160) / temp_f0, temp_f16 - temp_f18) >> 4) + 0x400;
+        phi_a2 = (func_global_asm_80611E60(((temp_f18 - temp_f16) * 65535.9) / temp_f0, temp_f16 - temp_f18) >> 4) + 0x400;
     }
     if (((temp_f6 - temp_f8) < 0) && ((temp_f16 - temp_f18) < 0)) {
-        phi_a2 = (func_global_asm_80611E60(((temp_f8 - temp_f6) * D_global_asm_80759168) / temp_f0, temp_f16 - temp_f18) >> 4) + 0x800;
+        phi_a2 = (func_global_asm_80611E60(((temp_f8 - temp_f6) * 65535.9) / temp_f0, temp_f16 - temp_f18) >> 4) + 0x800;
     }
     if (((temp_f6 - temp_f8) < 0) && ((temp_f16 - temp_f18) >= 0)) {
-        phi_a2 = (func_global_asm_80611E60(((temp_f16 - temp_f18) * D_global_asm_80759170) / temp_f0, temp_f16 - temp_f18) >> 4) + 0xC00;
+        phi_a2 = (func_global_asm_80611E60(((temp_f16 - temp_f18) * 65535.9) / temp_f0, temp_f16 - temp_f18) >> 4) + 0xC00;
     }
     return func_global_asm_806725A0(arg0, phi_a2) ? TRUE : FALSE;
 }
