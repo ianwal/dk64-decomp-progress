@@ -211,7 +211,7 @@ us,asm,areAllKeysTurnedIn,92,yes
 us,asm,func_global_asm_8064AAC4,88,yes
 us,asm,func_global_asm_80724A20,124,yes
 us,asm,func_global_asm_80723484,1104,no
-us,asm,func_global_asm_8065CDB0,156,no
+us,asm,func_global_asm_8065CDB0,156,yes
 us,asm,func_global_asm_8073BE54,492,yes
 us,asm,func_global_asm_8072827C,132,yes
 us,asm,func_global_asm_806CA1B4,184,yes

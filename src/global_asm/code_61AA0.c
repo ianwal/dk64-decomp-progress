@@ -35,8 +35,35 @@ void func_global_asm_8065CDA0(u8 arg0) {
     D_global_asm_807F7F00 = arg0;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065CDB0.s")
+typedef struct {
+    Gfx dl;
+    s32 unk8;
+    s32 unkC;
+} Struct80748310;
+
+extern Struct80748310 D_global_asm_80748310[];
+
+void func_global_asm_8065CDB0(Gfx *dl, Gfx *endDL) {
+    s32 found;
+    s32 i;
+
+    while (dl != endDL) {
+        found = FALSE;
+        i = 0;
+        while (i < 6 && !found) {
+            if ((dl->words.w0 == D_global_asm_80748310[i].dl.words.w0) && (dl->words.w1 == D_global_asm_80748310[i].dl.words.w1)) {
+                found = TRUE;
+            } else {
+                i++;
+            }
+        }
+        if (found) {
+            gSPDisplayList(dl++, 0x06000000 + (i * 0x10));
+        } else {
+            dl++;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065CE4C.s")
 
