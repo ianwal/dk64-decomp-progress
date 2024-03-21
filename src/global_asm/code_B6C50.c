@@ -6,10 +6,8 @@ extern s32 D_global_asm_80720340;
 
 void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
-// doable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B6C50/func_global_asm_806B1F50.s")
+void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
-/*
 void func_global_asm_806B1F50(void) {
     u8 sp37;
 
@@ -93,16 +91,14 @@ void func_global_asm_806B1F50(void) {
                 }
             }
             if ((current_actor_pointer->control_state_progress != 0) && (func_global_asm_8067AF44(D_global_asm_807FDC94) != 0) && ((object_timer % 7U) == 0)) {
-                sp37 = (current_actor_pointer->control_state_progress * -30) + 180;
+                sp37 = 180 + (30 * -current_actor_pointer->control_state_progress);
                 func_global_asm_80714998(3);
                 func_global_asm_807149C8(sp37, sp37, sp37, current_actor_pointer->shadow_opacity);
                 func_global_asm_8068588C(D_global_asm_807FDC94, 1, 1.0f, 0.0f, 0.0f, 0.0f, -0x96);
             }
-            break;
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806B24B8(void) {
     Actor *temp_v0;

@@ -3176,7 +3176,6 @@ void func_global_asm_806DF1A0(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// GOOD RODATA
 void func_global_asm_806DF280(void) {
     PlayerAdditionalActorData *PaaD = current_actor_pointer->PaaD;
 

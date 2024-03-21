@@ -1364,8 +1364,73 @@ void func_global_asm_806450C0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-// doable, rodata
+// doable, rodata, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_80645238.s")
+
+extern s32 D_global_asm_8071FFA0;
+extern s32 D_global_asm_80720E44;
+extern s32 D_global_asm_80720E5C;
+extern s32 D_global_asm_80720E74;
+extern s32 D_global_asm_80720E8C;
+
+extern f32 D_global_asm_807F621C;
+extern f32 D_global_asm_807F6220;
+extern f32 D_global_asm_807F6224;
+int func_global_asm_8071910C(); // TODO: Signature
+
+/*
+void func_global_asm_80645238(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+    void *var_s1;
+    f32 var_f6;
+    f32 var_f8;
+    f64 var_f4;
+    s32 temp_s0;
+    s32 i;
+    u32 temp_hi;
+    u32 temp_hi_2;
+    u32 temp_hi_3;
+
+    for (i = 0; i < 0x14; i++) {
+        temp_s0 = (func_global_asm_806119A0() / 10000) % 4;
+        func_global_asm_807149B8(1);
+        func_global_asm_807149FC(0x3C);
+        func_global_asm_8071498C(&func_global_asm_8071910C);
+        func_global_asm_80714998(2);
+        func_global_asm_80714950(2);
+        switch (temp_s0) { // irregular
+        case 0:
+            var_s1 = &D_global_asm_80720E44;
+            break;
+        case 1:
+            var_s1 = &D_global_asm_80720E5C;
+            break;
+        case 2:
+            var_s1 = &D_global_asm_80720E74;
+            break;
+        case 3:
+            var_s1 = &D_global_asm_80720E8C;
+            break;
+        }
+        func_global_asm_80714CC0(var_s1, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+    }
+    for (i = 0; i < 6; i++) {
+        var_f8 = (func_global_asm_806119A0() / 1000) % 150;
+        var_f6 = (func_global_asm_806119A0() / 1000) % 150;
+        var_f4 = (func_global_asm_806119A0() / 1000) % 50;
+        if (i == 0) {
+            func_global_asm_80714950(0x100FA);
+            func_global_asm_8071498C(func_global_asm_8071A8B0);
+        } else {
+            func_global_asm_80714950(-0xAA);
+            func_global_asm_8071498C(func_global_asm_80717D4C);
+        }
+        func_global_asm_807149B8(1);
+        func_global_asm_80714998(3);
+        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x64);
+        func_global_asm_80714CC0(&D_global_asm_8071FFA0, (f32)((var_f4 - 25.0) / 50.0) + 3.5, D_global_asm_807F621C + (f32)(var_f8 - 75.0), D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + (f32)(var_f6 - 75.0));
+    }
+}
+*/
 
 void func_global_asm_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     u32 sp24;
@@ -1479,7 +1544,7 @@ void func_global_asm_80645D14(s32 **arg0, s32 arg1, s16 arg2, s32 arg3) {
     s32 *var_v1;
     s32 pad;
     s32 pad2;
-    AAD_global_asm_80645D14 *temp_a2;
+    AAD_global_asm_80645D14 *aaD;
     u8 sp1F;
     PlayerAdditionalActorData *PaaD;
     Actor *temp;
@@ -1493,9 +1558,9 @@ void func_global_asm_80645D14(s32 **arg0, s32 arg1, s16 arg2, s32 arg3) {
     var_v1 = *arg0;
     PaaD = character_change_array->player_pointer->PaaD;
     temp = PaaD->unk104;
-    temp_a2 = temp->additional_actor_data;
-    if (temp_a2->unkFA != 0) {
-        if (character_change_array->look_at_eye_y < (temp_a2->unk90 + 3.0f)) {
+    aaD = temp->additional_actor_data;
+    if (aaD->unkFA != 0) {
+        if (character_change_array->look_at_eye_y < (aaD->unk90 + 3.0f)) {
             sp1F = TRUE;
         }
     }

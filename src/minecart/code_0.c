@@ -301,8 +301,115 @@ void func_minecart_80024914(void) {
 // struct, loop
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024E78.s")
 
-// Jumptable, doable
+// Jumptable, doable, close, float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024FD0.s")
+
+typedef struct {
+    s32 unk0; // Unused
+    Actor *unk4;
+    u8 unk8[0x24 - 0x8]; // Unused
+    f32 unk24;
+    f32 unk28;
+    s32 unk2C; // Unused
+    u8 *unk30;
+    s32 unk34;
+    s32 unk38; // Unused
+    s16 unk3C; // Unused
+    u8 unk3E;
+} AAD_minecart_80024FD0;
+
+extern s32 D_minecart_80028C20;
+
+void func_global_asm_8061C2F0(Actor*, f32, f32, f32, f32, f32, f32, s32);
+void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
+void func_minecart_80024E78(void*, void*, s32, s32);
+
+/*
+void func_minecart_80024FD0(void) {
+    AAD_minecart_80024FD0 *aaD;
+    PlayerAdditionalActorData *PaaD;
+    s32 var_v0;
+    s32 var_v1;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    PaaD = player_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        aaD->unk30 = malloc(3);
+        aaD->unk30[0] = 0x10;
+        aaD->unk30[1] = 0xFF;
+        aaD->unk24 = 3.0f;
+        aaD->unk28 = 12.0f;
+        current_actor_pointer->unk168 = 3;
+        PaaD->unk1F0 = PaaD->unk1F0 | 8;
+        playCutscene(current_actor_pointer, 0, 1);
+        func_global_asm_80614EBC(current_actor_pointer, 0);
+    }
+    if ((current_actor_pointer->control_state != 5) && (current_actor_pointer->control_state != 6)) {
+        f32 dy = (character_change_array->look_at_eye_y - current_actor_pointer->y_position) - 100.0f;
+        f64 temp_f2;
+        temp_f2 = dy / 650.0;
+        temp_f2 *= 0.15;
+        // temp_f2 += 0.15;
+        func_global_asm_807248B0(current_actor_pointer, temp_f2);
+        func_global_asm_807248B0(player_pointer, temp_f2);
+    }
+    if (PaaD->unk1F0 & 8) {
+        aaD->unk3E = 3;
+    }
+    if (current_actor_pointer->control_state < 5) {
+        func_minecart_8002430C(0x16, aaD->unk30, 0, 0x19);
+    }
+    if (func_global_asm_8061CB50() == 0) {
+        func_global_asm_8061C2F0(PaaD->unk104, 322.0f, 900.0f, 268.0f, 325.0f, -9000.0f, 500.0f, 0);
+    }
+    switch (current_actor_pointer->control_state) {
+        case 1:
+        case 2:
+        case 3:
+            if (current_actor_pointer->animation_state->unk64 == 0x292) {
+                func_minecart_800240DC(1, 0x14);
+                current_actor_pointer->control_state = 5;
+            } else if ((current_actor_pointer->unk11C != NULL) && (current_actor_pointer->unk11C->control_state == 5)) {
+                func_global_asm_80726EE0(0);
+                func_minecart_80024000(1, 0xE);
+                current_actor_pointer->control_state = 5;
+                break;
+            }
+            func_minecart_80024E78(aaD, &D_minecart_80028C20, 0x10, 0x13);
+            func_global_asm_80671C0C(current_actor_pointer, 9, &aaD->unk4->x_position, &aaD->unk4->y_position, &aaD->unk4->z_position);
+            break;
+        case 4:
+            current_actor_pointer->control_state = 3;
+            aaD->unk34--;
+            break;
+        case 5:
+            func_global_asm_807248B0(current_actor_pointer, 0.15f);
+            func_global_asm_807248B0(player_pointer, 0.225f);
+            current_actor_pointer->x_rotation = 0;
+            current_actor_pointer->control_state += 1;
+            break;
+        case 10:
+            playSong(0x5A, 1.0f);
+            if (current_map == MAP_MINECART_MAYHEM_EASY) {
+                var_v0 = 0x1E;
+            } else {
+                if (current_map == MAP_MINECART_MAYHEM_NORMAL) {
+                    var_v1 = 0x2D;
+                } else {
+                    var_v1 = 0x3C;
+                }
+                var_v0 = var_v1;
+            }
+            func_global_asm_806A2A10(0x78, 0x78, var_v0);
+            func_global_asm_806A2B08(current_actor_pointer->unk11C);
+            PaaD->unk1F0 = PaaD->unk1F0 & ~8;
+            current_actor_pointer->control_state = 3;
+            break;
+        default:
+            break;
+    }
+}
+*/
 
 typedef struct minecart_struct_0 {
     u8 pad0[0x20];
