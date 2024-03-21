@@ -2963,7 +2963,7 @@ us,asm,func_global_asm_806F1A18,200,yes
 us,asm,func_global_asm_80653A70,256,yes
 us,asm,func_global_asm_8071006C,264,yes
 us,asm,func_global_asm_806785D4,504,yes
-us,asm,func_global_asm_806D9FD0,848,no
+us,asm,func_global_asm_806D9FD0,848,yes
 us,asm,func_global_asm_80685D84,244,yes
 us,asm,func_global_asm_8070C200,16,no
 us,asm,func_global_asm_8063254C,228,yes
