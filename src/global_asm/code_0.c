@@ -275,6 +275,7 @@ void func_global_asm_805FBE04(void) {
     guPerspective(&D_global_asm_80768E98, &D_global_asm_8076A09C, D_global_asm_807444B8, D_global_asm_807444BC * FOV, D_global_asm_807444C8, D_global_asm_807444C4, 1.0f);
 }
 
+// close, just missing some nops
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FBFF4.s")
 
 extern s32 D_global_asm_8076A070;
@@ -289,7 +290,6 @@ extern u8 D_global_asm_807444F0;
 extern s32 D_global_asm_80767CC0;
 
 /*
-// TODO: Remarkably close, just missing some NOPs
 void func_global_asm_805FBFF4(s32 arg0) {
     s32 phi_s4;
     OSMesg* sp38;
@@ -497,12 +497,24 @@ Gfx *func_global_asm_805FD030(Gfx *dl) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FD088.s")
 
-// Displaylist stuff, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FE398.s")
-
-extern s32 D_global_asm_80744470[];
+extern void *D_8076A060;
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
+
+Gfx *func_global_asm_805FE398(Gfx *dl) {
+    gDPPipeSync(dl++);
+    gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetCycleType(dl++, G_CYC_FILL);
+    gSPClearGeometryMode(dl++, G_ZBUFFER);
+    gDPSetDepthImage(dl++, osVirtualToPhysical(D_8076A060));
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, D_global_asm_80744490, osVirtualToPhysical(D_8076A060));
+    gDPSetFillColor(dl++, 0xFFFCFFFC);
+    gDPFillRectangle(dl++, 0, 0, D_global_asm_80744490 - 1, D_global_asm_80744494 - 1);
+    gDPPipeSync(dl++);
+    return dl;
+}
+
+extern s32 D_global_asm_80744470[];
 
 Gfx *func_global_asm_805FE4D4(Gfx *arg0) {
     gDPSetColorImage(arg0++, 0, 2, D_global_asm_80744490, osVirtualToPhysical(D_global_asm_80744470[D_global_asm_807444FC]));

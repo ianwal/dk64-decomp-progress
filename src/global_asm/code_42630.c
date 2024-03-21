@@ -3318,11 +3318,10 @@ u8 func_global_asm_8064EC04(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return ((s16)func_global_asm_806FB418() >= D_global_asm_807446D0[sp1E]);
 }
 
-// Doable
+// Doable, pretty close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8064EC60.s")
 
 /*
-// TODO: Pretty close
 u8 func_global_asm_8064EC60(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     u8 sp1B;
     s32 temp_v0;
