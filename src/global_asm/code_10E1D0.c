@@ -38,7 +38,70 @@ void func_global_asm_807094D0(u8 arg0) { // init zipper
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_80709890.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_80709ACC.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+} Struct807FD9A8_unkC;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    Struct807FD9A8_unkC *unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 *unk18;
+    s32 *unk1C;
+    s32 *unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+} Struct807FD9A8;
+
+s32 func_global_asm_80709ACC(Struct807FD9A8 *arg0) {
+    s32 *temp_a1;
+    s32 temp_a2;
+    s32 temp_a2_2;
+    s32 temp_a2_3;
+    s32 var_a3;
+    s32 i;
+    s32 var_t1;
+    s32 var_v0;
+    s32 var_v1;
+
+    var_v1 = 0;
+    var_t1 = 0;
+    while (arg0->unk18[var_t1] != 0) {
+        var_v0 = arg0->unkC[var_v1].unk0;
+        var_a3 = arg0->unkC[var_v1].unk0;
+        for (i = 0; i < arg0->unk18[var_t1]; i++, var_v1++) {
+            if (var_a3 < arg0->unkC[var_v1].unk0) {
+                var_a3 = arg0->unkC[var_v1].unk0;
+            } else if (arg0->unkC[var_v1].unk0 < var_v0) {
+                var_v0 = arg0->unkC[var_v1].unk0;
+            }
+            if (var_a3 < arg0->unkC[var_v1].unk4) {
+                var_a3 = arg0->unkC[var_v1].unk4;
+            } else if (arg0->unkC[var_v1].unk4 < var_v0) {
+                var_v0 = arg0->unkC[var_v1].unk4;
+            }
+            if (var_a3 < arg0->unkC[var_v1].unk8) {
+                var_a3 = arg0->unkC[var_v1].unk8;
+            } else if (arg0->unkC[var_v1].unk8 < var_v0) {
+                var_v0 = arg0->unkC[var_v1].unk8;
+            }
+        }
+        arg0->unk20[var_t1] = var_v0;
+        arg0->unk1C[var_t1] = var_a3;
+        var_t1++;
+    }
+    return 1;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_80709BC4.s")
@@ -182,21 +245,6 @@ extern s16 D_global_asm_80744494;
 extern s32 D_global_asm_80755068;
 extern s32 D_global_asm_8075506C;
 extern void *D_global_asm_807FD9A4;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-} Struct807FD9A8;
 
 extern Struct807FD9A8 *D_global_asm_807FD9A8;
 extern void *D_global_asm_807FD9AC;

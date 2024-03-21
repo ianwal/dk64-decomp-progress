@@ -200,7 +200,7 @@ for root, dirs, files in os.walk(searchPath):
                                     jals += 1
                                 if line.startswith("/* "):
                                     size += 4
-                                if line.startswith(".L80"):
+                                if line.startswith(".L"):
                                     labels += 1
 
                             ASMFilePath = ASMFile.split("/")
