@@ -1146,7 +1146,8 @@ typedef struct global_asm_struct_60 GlobalASMStruct60;
 struct global_asm_struct_60 {
     s32 *unk0; // Used
     GlobalASMStruct60 *unk4; // Used? Might be wrong datatype, see func_global_asm_80688638
-    s16 unk8;
+    u8 unk8; // Used
+    u8 unk9;
     s16 unkA; // Used
     s16 unkC; // Used - Texture index?
     s16 unkE;

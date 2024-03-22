@@ -12,8 +12,19 @@ void func_global_asm_80687FC8(GlobalASMStruct60 *arg0);
 // malloc and initialization for GlobalASMStruct60
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_global_asm_80687D50.s")
 
-// Displaylist stuff? Actor arg1
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_global_asm_80687EE0.s")
+Gfx *func_global_asm_80687EE0(Gfx *dl, Actor *arg1) {
+    GlobalASMStruct60 *current;
+
+    current = arg1->unk158;
+    while (current != NULL) {
+        if (current->unk23 != 0) {
+            void* temp2 = current->unk0[current->unkC];
+            gSPSegment(dl++, current->unk8, osVirtualToPhysical(temp2));
+        }
+        current = current->next;
+    }
+    return dl;
+}
 
 void func_global_asm_80687F7C(Actor *arg0) {
     GlobalASMStruct60 *phi_s0;
