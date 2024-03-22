@@ -640,8 +640,20 @@ Gfx *func_global_asm_807132DC(Gfx *dl) {
     return dl;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_8071338C.s")
+extern Mtx D_807FDAC0; // TODO: Correct datatype?
+
+void func_global_asm_8071338C(Gfx *dl) {
+    void *temp_v0;
+    f32 temp;
+
+    temp_v0 = func_global_asm_8070E750(0xC, 0, 1);
+    gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+    gSPMatrix(dl++, &D_807FDAC0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    temp = 20.0f;
+    temp *= 2.0f;
+    temp *= 4.0f;
+    func_global_asm_806FC530(dl, 1, 0x118, temp, temp_v0, 4);
+}
 
 void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     void *sp34;

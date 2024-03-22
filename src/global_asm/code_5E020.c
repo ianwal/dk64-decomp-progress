@@ -34,10 +34,10 @@ void func_global_asm_80659350(void) {
     func_global_asm_80659320();
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E020/func_global_asm_806593C8.s")
 
 /*
-// TODO: Quite close
 void func_global_asm_806593C8(s32 arg0, s32 arg1) {
     global_asm_struct_78 *temp_v0;
     global_asm_struct_78 *temp_v1;
