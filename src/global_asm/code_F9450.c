@@ -33,10 +33,10 @@ void func_global_asm_806F4D70(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     D_global_asm_807FD780[arg0] = NULL;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F4DC0.s")
 
 /*
-// Close, nonsense at the top
 void func_global_asm_806F4DC0(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     Struct807FD740 **var_v1;
     void *temp_v0_2;

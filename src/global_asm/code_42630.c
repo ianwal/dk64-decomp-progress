@@ -436,17 +436,13 @@ void func_global_asm_80641724(s16 arg0) {
     }
 }
 
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_806417BC.s")
-
-/*
 void func_global_asm_806417BC(s16 arg0, s16 arg1) {
     Actor *actor;
     s32 i;
-    s16 temp;
-    s16 sp44;
+    s16 sp44[2];
 
-    sp44 = 0;
+    sp44[0] = 0;
+    sp44[1] = arg1;
     for (i = 0; i < D_global_asm_807FBB34; i++) {
         actor = D_global_asm_807FB930[i].unk0;
         if (actor->unk58 == (u32)arg0) {
@@ -454,7 +450,6 @@ void func_global_asm_806417BC(s16 arg0, s16 arg1) {
         }
     }
 }
-*/
 
 void func_global_asm_80641874(s16 arg0, s16 arg1) {
     s16 *temp_v0;

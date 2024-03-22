@@ -1282,7 +1282,7 @@ us,asm,func_global_asm_8060C830,124,yes
 us,asm,func_global_asm_80737B2C,44,yes
 us,asm,func_global_asm_80735A34,24,yes
 us,asm,func_global_asm_80731410,228,yes
-us,asm,func_global_asm_806417BC,184,no
+us,asm,func_global_asm_806417BC,184,yes
 us,asm,func_global_asm_8060E7EC,224,yes
 us,asm,func_global_asm_8068450C,32,yes
 us,asm,func_global_asm_8067B290,8,yes

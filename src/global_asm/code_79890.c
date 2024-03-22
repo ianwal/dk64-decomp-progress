@@ -9,6 +9,23 @@
 // Matrix nonsense
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_global_asm_80675180.s")
 
+/*
+void func_global_asm_80675180(void *arg0, f32 arg1, f32 arg2, f32 arg3, void *arg4, f32 *arg5, f32 *arg6, f32 *arg7) {
+    f32 sp70[4][4];
+    f32 sp30[4][4];
+    u32 temp_v0;
+
+    temp_v0 = arg4->unk20;
+    if (temp_v0 == -1) {
+        memcpy(&sp70[0], arg0->unk70, 0x40);
+    } else {
+        guMtxL2F(&sp70[0], ((temp_v0 >> 6) << 6) + (arg0 + (D_global_asm_807444FC * 4))->unk74);
+    }
+    func_global_asm_8062FF10(sp30, sp70);
+    guMtxXFMF(sp30, arg1, arg2, arg3, arg5, arg6, arg7);
+}
+*/
+
 f32 func_global_asm_80675234(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
     f32 temp_f0;
     f32 temp_f14;
