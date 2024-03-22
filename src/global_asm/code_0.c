@@ -521,6 +521,8 @@ Gfx *func_global_asm_805FE4D4(Gfx *arg0) {
     return arg0;
 }
 
+void func_global_asm_805FE71C(Gfx *dl, u8 arg1, s32 *arg2, u8 arg3);
+
 void func_global_asm_805FE544(u8 arg0) {
     if (D_global_asm_807FBB64 & 1) {
         D_global_asm_8076A058 = 6000;
@@ -544,25 +546,30 @@ Gfx *func_global_asm_805FE634(Gfx *dl, u8 arg1) {
     return dl;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FE71C.s")
+extern s32 D_global_asm_8076A058;
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FE7B4.s")
-
-/*
-void func_global_asm_805FE7B4(Gfx *arg0, s32 arg1, s32 *arg2, u8 arg3) {
-    void *var_v0;
-
-    var_v0 = arg0;
+void func_global_asm_805FE71C(Gfx *dl, u8 arg1, s32 *arg2, u8 arg3) {
+    Gfx *dl2 = dl;
     if (arg3) {
-        gSPSetGeometryMode(arg0++, 0);
+        gDPFullSync(dl2++);
     }
-    gSPEndDisplayList(arg0++);
-    // TODO: What is this doing?
-    *arg2 = (((var_v0 + 8) - arg1) - 0xDB0) >> 3;
+    gSPEndDisplayList(dl2++);
+    *arg2 = (dl2 - D_global_asm_8076A050[arg1]);
+    if (*arg2 >= D_global_asm_8076A058) {
+        func_global_asm_80732354(0x12, 0, 0, 0);
+    }
 }
-*/
+
+void func_global_asm_805FE7B4(Gfx *dl, Gfx *arg1, s32 *arg2, u8 arg3) {
+    Gfx *dl2;
+
+    dl2 = dl;
+    if (arg3) {
+        gDPFullSync(dl2++);
+    }
+    gSPEndDisplayList(dl2++);
+    *arg2 = (((dl2 - 0x1B6) - arg1));
+}
 
 void func_global_asm_805FE7FC(void) {
     s32 *mapGeometry;

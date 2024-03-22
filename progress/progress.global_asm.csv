@@ -459,7 +459,7 @@ us,asm,func_global_asm_80703374,592,yes
 us,asm,func_global_asm_80714D08,916,yes
 us,asm,func_global_asm_806398E4,132,yes
 us,asm,func_global_asm_80663FCC,120,yes
-us,asm,func_global_asm_805FE7B4,72,no
+us,asm,func_global_asm_805FE7B4,72,yes
 us,asm,func_global_asm_806E6DE8,148,yes
 us,asm,func_global_asm_8067A784,104,yes
 us,asm,func_global_asm_80732DAC,64,yes
@@ -2251,7 +2251,7 @@ us,asm,func_global_asm_806E4D84,260,yes
 us,asm,func_global_asm_8069B3FC,1120,no
 us,asm,func_global_asm_80676308,48,yes
 us,asm,gameIsInMysteryMenuMinigameMode,52,yes
-us,asm,func_global_asm_805FE71C,152,no
+us,asm,func_global_asm_805FE71C,152,yes
 us,asm,func_global_asm_8071495C,16,yes
 us,asm,func_global_asm_80655AD0,288,yes
 us,asm,func_global_asm_80679334,348,no

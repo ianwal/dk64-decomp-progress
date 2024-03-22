@@ -64,6 +64,7 @@ extern u8 temporary_flag_block[];
 // TODO: Not sure why this doesn't match, maybe turn it into a while loop?
 void func_global_asm_80731030(void) { // clearTemporaryFlags()
     s32 flagIndex;
+    
     for (flagIndex = 0; flagIndex != 0xE; flagIndex++) {
         temporary_flag_block[flagIndex] = 0;
     }

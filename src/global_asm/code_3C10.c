@@ -888,13 +888,13 @@ void func_global_asm_80600674(void) {
 
     lagboost_min = 1;
     lagboost_max = 0x14;
-    if (D_global_asm_8076AF14 != 0) {
+    if ((u8)D_global_asm_8076AF14 != 0) {
         lagboost_new = D_global_asm_80767A40.frame_count - D_global_asm_8076AF10;
         if (lagboost_new <= 0) {
             lagboost_new = 1;
         }
         counter = 0;
-        D_global_asm_8076AF00[D_global_asm_80745290] = lagboost_new;
+        D_global_asm_8076AF00[D_global_asm_80745290].unk0 = lagboost_new;
         lagboost_initialslot = D_global_asm_80745290 + 1;
         D_global_asm_80745290 = lagboost_initialslot;
         if (lagboost_initialslot == 8) {
@@ -918,7 +918,7 @@ void func_global_asm_80600674(void) {
                     if (var_t3 < 0) {
                         var_t3 = 7;
                     }
-                    lagboost_currtest = D_global_asm_8076AF00[var_t3];
+                    lagboost_currtest = D_global_asm_8076AF00[var_t3].unk0;
                     counter += 1;
                     if (lagboost_currtest >= lagboost_min) {
                         lagboost_min = lagboost_currtest;

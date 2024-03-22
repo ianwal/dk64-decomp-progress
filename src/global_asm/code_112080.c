@@ -188,10 +188,10 @@ typedef struct {
 
 void func_global_asm_8070D82C(Struct8070D8C0*, u16, u8);
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070D82C.s")
 
 /*
-// TODO: Close...
 void func_global_asm_8070D82C(Struct8070D8C0 *arg0, u16 arg1, u8 arg2) {
     Struct8070D82C_v1 *var_v1;
     Struct8070D82C_v0 *var_v0;
