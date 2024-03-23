@@ -36,10 +36,10 @@ s32 func_global_asm_806A80C0(s8 arg0) {
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806A9124.s")
 
-extern s32 *D_global_asm_807FC7E8;
+extern s32 *D_807FC7E8;
 
 typedef struct TempStruct807FC7F0 {
-    s32 unk0;
+    void *unk0;
     s32 unk4;
 } TempStruct807FC7F0;
 
@@ -51,8 +51,8 @@ typedef struct TempStruct807FC7F8 {
     s8 unk4;
 } TempStruct807FC7F8;
 
-extern TempStruct807FC7F0 D_global_asm_807FC7F0;
-extern TempStruct807FC7F8 D_global_asm_807FC7F8;
+extern TempStruct807FC7F0 D_807FC7F0;
+extern TempStruct807FC7F8 D_807FC7F8;
 
 /*
 void func_global_asm_806A9124(void) {
@@ -60,23 +60,23 @@ void func_global_asm_806A9124(void) {
     s32 i;
 
     temp_t8 = global_properties_bitfield | 0x40;
-    global_properties_bitfield = temp_t8;
+    global_properties_bitfield |= temp_t8;
     if (!(player_pointer->PaaD->unk1F0 & 0x20000000)) {
         global_properties_bitfield |= 0x10030;
     }
-    free(D_global_asm_807FC7F0.unk0);
-    D_global_asm_807FC7F0.unk0 = 0;
-    D_global_asm_807FC7F0.unk4 = 0;
-    D_global_asm_807FC7F8.unk0 = 0;
-    D_global_asm_807FC7F8.unk1 = 0;
+    free(D_807FC7F0.unk0);
+    D_807FC7F0.unk0 = NULL;
+    D_807FC7F0.unk4 = 0;
+    D_807FC7F8.unk0 = 0;
+    D_807FC7F8.unk1 = 0;
     for (i = 0; i < 27; i++) {
         func_global_asm_8061134C(D_global_asm_807FC7E0[i]);
     }
     func_global_asm_8061134C(D_global_asm_807FC7E0);
     for (i = 0; i < 9; i++) {
-        func_global_asm_8061134C(D_global_asm_807FC7E8[i]);
+        func_global_asm_8061134C(D_807FC7E8[i]);
     }
-    func_global_asm_8061134C(D_global_asm_807FC7E8);
+    func_global_asm_8061134C(D_807FC7E8);
 }
 */
 

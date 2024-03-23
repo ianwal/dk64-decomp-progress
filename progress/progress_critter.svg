@@ -9,7 +9,7 @@
     </mask>
     <g mask="url(#anybadge_1)">
         <path fill="#555" d="M0 0h50v20H0z"/>
-        <path fill="#c09f00" d="M50 0h67v20H50z"/>
+        <path fill="#c0a300" d="M50 0h67v20H50z"/>
         <path fill="url(#b)" d="M0 0h117v20H0z"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
@@ -17,7 +17,7 @@
         <text x="25.0" y="14">critter</text>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="84.5" y="15" fill="#010101" fill-opacity=".3">41.4001%</text>
-        <text x="83.5" y="14">41.4001%</text>
+        <text x="84.5" y="15" fill="#010101" fill-opacity=".3">42.5373%</text>
+        <text x="83.5" y="14">42.5373%</text>
     </g>
 </svg>

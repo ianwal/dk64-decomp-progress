@@ -142,7 +142,6 @@ void func_global_asm_8065D170(void) {
 }
 
 void func_global_asm_8065D1AC(void) {
-    s32 temp_v0;
     s32 i;
 
     D_global_asm_807F8E88 = 0;

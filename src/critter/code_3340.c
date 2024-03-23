@@ -380,8 +380,31 @@ void func_critter_80028840() {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028A9C.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028DE8.s")
+extern s32 D_critter_8002A178; // TODO: Datatype
+extern s32 D_critter_8002A17C; // TODO: Datatype
+
+Gfx *func_critter_80028A9C(Gfx *dl, void *arg1, void *arg2, u8 arg3);
+
+void *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
+    s32 var_a2;
+    u8 var_s0;
+    AAD_critter_8002904C *aaD;
+    s32 sp38[7]; // TODO: Datatype
+
+    aaD = arg1->additional_actor_data;
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+
+    func_dk64_boot_80002A30(&sp38, &aaD->unk810[0x10]);
+    var_s0 = 0;
+    dl = func_critter_80028A9C(dl, aaD, func_dk64_boot_80002DE4(&sp38, &D_critter_8002A178), var_s0++);
+    var_a2 = func_dk64_boot_80002DE4(NULL, &D_critter_8002A17C);
+    while (var_a2 != 0) {
+        dl = func_critter_80028A9C(dl, aaD, var_a2, var_s0++);
+        var_a2 = func_dk64_boot_80002DE4(NULL, &D_critter_8002A17C);
+    }
+    return dl;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028EE8.s")
 
