@@ -70,6 +70,7 @@ void func_global_asm_8070D3CC(Struct8070D3CC_arg0 *arg0, Struct8070D3CC_arg1 *ar
     }
 }
 
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070D464.s")
 
 void func_global_asm_8070D568(Struct8070D654 *arg0, void *arg1) {

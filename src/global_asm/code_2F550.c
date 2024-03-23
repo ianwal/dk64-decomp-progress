@@ -24,12 +24,12 @@ f32 func_global_asm_8062A850(void) {
     if (D_global_asm_807444F0 != 1 && is_cutscene_active == 1) {
         phi_f2 = 999.0f;
     } else {
-        phi_f2 = 0.01999999955f;
+        phi_f2 = 0.02f;
     }
 
     phi_v1 = is_cutscene_active == 1 && current_map != MAP_MAIN_MENU;
     if (widescreen_enabled && !phi_v1) {
-        phi_f0 *= 1.19999999999999996;
+        phi_f0 *= 1.2;
     }
 
     phi_f12 = D_global_asm_80747CD0;

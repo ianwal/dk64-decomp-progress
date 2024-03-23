@@ -255,8 +255,34 @@ void func_global_asm_80602DC4(s32 arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80602E6C.s")
 
-// 64 bit stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80603340.s")
+f32 func_global_asm_80602E6C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, f32 arg5);
+extern f32 D_80770DDC;
+extern f32 D_80770DE0;
+extern f32 D_80770DE8;
+extern f32 D_80770DEC;
+extern f32 D_80770DF0;
+extern f32 D_80770DF4;
+extern f64 D_global_asm_80756820;
+
+f32 func_global_asm_80603340(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, f32 arg5) {
+    f32 temp_f0;
+    f32 temp_f2;
+
+    temp_f0 = func_global_asm_80602E6C(arg0, arg1, arg2, arg3, arg4, arg5);
+    if (temp_f0 < 10.0f) {
+        return 0.0f;
+    }
+    temp_f2 = D_80770DDC * D_global_asm_80756820;
+    D_80770DE8 += temp_f0 * temp_f2;
+    D_80770DEC += temp_f0 * (1.0f - temp_f2);
+    if (D_80770DE0 > 0.0f) {
+        D_80770DF0 += temp_f0 * D_80770DE0;
+    }
+    if (D_80770DE0 < 0.0f) {
+        D_80770DF4 -= temp_f0 * D_80770DE0;
+    }
+    return temp_f0;
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80603450.s")
