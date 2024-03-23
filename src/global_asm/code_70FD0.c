@@ -130,12 +130,43 @@ void func_global_asm_8066CCD8(void) {
 }
 */
 
+void func_global_asm_8066CDF8(void);
+
 void func_global_asm_8066CDD0() {
     func_global_asm_8066CDF8();
     func_global_asm_806687E0();
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066CDF8.s")
+typedef struct {
+    void *unk0;
+    void *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+} Struct807FB534;
+
+extern Struct807FB534 *D_807FB534;
+extern s32 D_807FB538; // Count for ^
+extern u8 D_807FB549;
+
+void func_global_asm_8066CDF8(void) {
+    s32 i;
+    void *var_a0;
+
+    for (i = 0; i < D_807FB538; i++) {
+        var_a0 = D_807FB534[i].unk0;
+        if ((var_a0 != NULL) && ((object_timer - D_807FB534[i].unk8) >= 0x15U)) {
+            if (D_807FB549 == 0) {
+                free(D_807FB534[i].unk4);
+                D_807FB534[i].unk4 = 0;
+                var_a0 = D_807FB534[i].unk0;
+            }
+            free(var_a0);
+            D_807FB534[i].unk0 = 0;
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066CEE4.s")
 
