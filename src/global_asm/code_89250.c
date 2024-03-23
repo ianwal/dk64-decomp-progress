@@ -567,8 +567,23 @@ void func_global_asm_8068696C(Actor *arg0) {
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80686A5C.s")
+void func_global_asm_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s32 i;
+    for (i = 0; i < 3; i++) {
+        func_global_asm_807149B8(1);
+        func_global_asm_807149FC(-1);
+        func_global_asm_80714950(arg0);
+        func_global_asm_8071498C(func_global_asm_8071E1C8);
+        func_global_asm_8071E110(func_global_asm_80714CC0(D_global_asm_8074E880[i], 0.7f, arg0->x_position, arg0->y_position, arg0->z_position), 1, (i * 1365.3334f), arg1, arg2, arg3);
+    }
+    for (i = 0; i < 3; i++) {
+        func_global_asm_807149B8(1);
+        func_global_asm_807149FC(-1);
+        func_global_asm_80714950(arg0);
+        func_global_asm_8071498C(func_global_asm_8071E1C8);
+        func_global_asm_8071E110(func_global_asm_80714CC0(D_global_asm_8074E880[i], 0.7f, arg0->x_position, arg0->y_position, arg0->z_position), 0, (i * 1365.3334f), arg1, arg2, arg3);
+    }
+}
 
 extern s32 D_global_asm_8074E880[];
 
