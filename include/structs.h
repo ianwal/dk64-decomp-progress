@@ -1448,6 +1448,13 @@ typedef struct {
 } CharacterChange8Array;
 
 typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+} CharacterChange250;
+
+typedef struct {
     u8     does_player_exist; // bitfield? 0x00
     u8     unk1;
     u8     unk2;
@@ -1472,7 +1479,7 @@ typedef struct {
     f32     look_at_up_y; // 0x244
     f32     look_at_up_z; // 0x248;
     s32     unk24C;
-    u8      pad_unknown2[0x270 - 0x250];
+    CharacterChange250 unk250[2];
     s16     unk270; // Used, related to map chunk "deload" value
     s16     unk272; // Used, related to map chunk "deload" value
     s16     unk274; // Used, related to map chunk "deload" value

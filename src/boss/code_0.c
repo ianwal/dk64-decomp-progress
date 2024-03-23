@@ -92,6 +92,7 @@ typedef struct {
 void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 s32 func_boss_80024568(Struct8002450C*, u8, f32, f32, f32);
 
+// TODO: Close, just gotta figure out sp48 and D_boss_8003598C
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_boss_80024000.s")
 
 /*
@@ -102,7 +103,6 @@ typedef struct {
 extern s32 D_global_asm_8071FFA0;
 extern Struct80024000 D_boss_8003598C[];
 
-// TODO: Close, just gotta figure out sp48 and D_boss_8003598C
 void func_boss_80024000(void) {
     Struct80024000 sp48[6];
     s16 i;

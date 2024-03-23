@@ -66,6 +66,7 @@ extern Gfx **D_1000090;
 extern Gfx **D_1000118;
 extern Mtx D_2000080;
 extern Mtx D_20000C0;
+extern Mtx D_2000100;
 extern Mtx D_2000180;
 extern Mtx D_2000200;
 

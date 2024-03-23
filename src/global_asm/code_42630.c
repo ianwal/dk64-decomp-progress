@@ -1787,7 +1787,44 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80714CC0(&D_global_asm_8071FFA0, 1.5f, sp30, sp2C - 70, sp28);
 }
 
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_80647610.s")
+
+extern s32 D_global_asm_80720DE0; // TODO: Datatype
+
+/*
+void func_global_asm_80647610(s32 **arg0, s32 arg1, s16 arg2, s16 arg3) {
+    s32 sp2C;
+    s32 sp28;
+    s32 sp24;
+    Struct807F5FD4_unk0 *temp_v0_2;
+    s32 *temp_v0;
+    s32 *var_v1;
+    s32 var_a1;
+
+    var_v1 = *arg0;
+    if (var_v1 == NULL) {
+        temp_v0 = malloc(4);
+        *arg0 = temp_v0;
+        *temp_v0 = 0;
+        var_v1 = *arg0;
+    }
+    var_a1 = *var_v1 + 1;
+    *var_v1 = var_a1;
+    if (arg3 == var_a1) {
+        *var_v1 = 0;
+        var_a1 = 0;
+    }
+    temp_v0_2 = &D_global_asm_807F5FD4->unk0[arg2][var_a1];
+    sp2C = temp_v0_2->unk0;
+    sp28 = temp_v0_2->unk4;
+    sp24 = temp_v0_2->unk8;
+    func_global_asm_80714998(2);
+    func_global_asm_807149B8(1);
+    func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
+    func_global_asm_80714CC0(&D_global_asm_80720DE0, 1.0f, sp2C, sp28 + 0xA, sp24);
+}
+*/
 
 extern f32 D_global_asm_8074816C;
 

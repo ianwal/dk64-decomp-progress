@@ -801,7 +801,7 @@ void func_global_asm_806E9B3C(void) {
     }
 }
 
-// regalloc
+// close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E9BA8.s")
 
 /*

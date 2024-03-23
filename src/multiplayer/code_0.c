@@ -245,6 +245,33 @@ void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, s32 arg3, s32 arg4
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025264.s")
 
+Gfx *func_multiplayer_800249D8(Gfx *); // extern
+Gfx *func_multiplayer_80024CA4(Gfx *); // extern
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
+
+/*
+Gfx *func_multiplayer_80025264(Gfx *dl) {
+    s32 temp_t0;
+
+    temp_t0 = (D_global_asm_807552E4.unk8 >= 2);
+
+    gDPPipeSync(dl++);
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, 0, 0, D_global_asm_80744490, D_global_asm_80744494);
+
+    if (!(global_properties_bitfield & 3)) {
+        if (D_global_asm_807552E4.unk0 == 0) {
+            if ((D_global_asm_807552E4.unk8 == 1) || (temp_t0)) {
+                dl = func_multiplayer_800249D8(dl);
+            }
+        } else if ((D_global_asm_807552E4.unk8 == 1) || (temp_t0)) {
+            dl = func_multiplayer_80024CA4(dl);
+        }
+    }
+    return dl;
+}
+*/
+
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025378.s")
 

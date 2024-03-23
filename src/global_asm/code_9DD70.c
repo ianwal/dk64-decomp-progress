@@ -53,6 +53,7 @@ void func_global_asm_80699914(void) {
 // Huge, lots of ActorAnimationState stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_80699958.s")
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A614.s")
 
 // TODO: Needs some more shape on D_global_asm_807FBB70.unk0

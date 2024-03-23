@@ -39,7 +39,7 @@ void func_global_asm_806136B4();
 // Note: The pointer can be to any one of the above 10 structs, maybe more
 void func_global_asm_8070DA74(Actor*);
 
-// regalloc
+// regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80677D80.s")
 
 typedef struct {
@@ -55,15 +55,15 @@ typedef struct {
     s32 unk8;
 } Struct807FB7B0;
 
-extern Struct807FB630 D_global_asm_807FB630[];
-extern Struct807FB7B0 D_global_asm_807FB7B0[];
-extern s16 D_global_asm_807FBB30;
-extern s16 D_global_asm_807FBB32;
-extern s32 D_global_asm_807FBB38;
-extern s32 *D_global_asm_807FBB50;
-extern void *D_global_asm_807FBB54;
-extern void *D_global_asm_807FBB58;
-extern void *D_global_asm_807FBB5C;
+extern Struct807FB630 D_807FB630[];
+extern Struct807FB7B0 D_807FB7B0[];
+extern s16 D_807FBB30;
+extern s16 D_807FBB32;
+extern s32 D_807FBB38;
+extern s32 *D_807FBB50;
+extern void *D_807FBB54;
+extern void *D_807FBB58;
+extern void *D_807FBB5C;
 extern s16 D_global_asm_807FBFD8;
 
 /*
@@ -71,28 +71,28 @@ void func_global_asm_80677D80(void) {
     u16 i;
 
     for (i = 0; i < 0x20; i++) {
-        D_global_asm_807FB630[i].unk0 = 0;
-        D_global_asm_807FB630[i].unk2 = 0;
-        D_global_asm_807FB630[i].unk4 = 0;
+        D_807FB630[i].unk0 = 0;
+        D_807FB630[i].unk2 = 0;
+        D_807FB630[i].unk4 = 0;
     }
-    D_global_asm_807FBB30 = 0;
+    D_807FBB30 = 0;
     for (i = 0; i < 0x20; i++) {
-        D_global_asm_807FB7B0[i].unk0 = 0xFFFF;
-        D_global_asm_807FB7B0[i].unk4 = 0;
-        D_global_asm_807FB7B0[i].unk8 = 0;
+        D_807FB7B0[i].unk0 = 0xFFFF;
+        D_807FB7B0[i].unk4 = 0;
+        D_807FB7B0[i].unk8 = 0;
     }
-    D_global_asm_807FBB32 = 0;
-    D_global_asm_807FBB50 = getPointerTableFile(0xD, 0, 1, 1);
-    D_global_asm_807FBB54 = (u8*)D_global_asm_807FBB50 + D_global_asm_807FBB50[3];
-    D_global_asm_807FBB58 = (u8*)D_global_asm_807FBB50 + D_global_asm_807FBB50[2];
-    D_global_asm_807FBB5C = (u8*)D_global_asm_807FBB50 + D_global_asm_807FBB50[1];
+    D_807FBB32 = 0;
+    D_807FBB50 = getPointerTableFile(0xD, 0, 1, 1);
+    D_807FBB54 = (u8*)D_807FBB50 + D_807FBB50[3];
+    D_807FBB58 = (u8*)D_807FBB50 + D_807FBB50[2];
+    D_807FBB5C = (u8*)D_807FBB50 + D_807FBB50[1];
     for (i = 0; i < 0x40; i++) {
         D_global_asm_807FB930[i].unk0 = NULL;
         D_global_asm_807FB930[i].unk4 = 0;
     }
     D_global_asm_807FBB34 = 0;
     func_global_asm_8067AE58();
-    D_global_asm_807FBB38 = 0;
+    D_807FBB38 = 0;
     D_global_asm_807FBE09 = 0;
     D_global_asm_807FBFD8 = 0;
     current_player = NULL;

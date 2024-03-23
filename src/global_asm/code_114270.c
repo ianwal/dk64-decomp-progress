@@ -222,8 +222,41 @@ u8 func_global_asm_80710174(Struct8071006C_arg0 *arg0) {
     return (arg0->unkC > 240.0f || arg0->unkB1 < 0xA);
 }
 
-// Need arg0 struct
+// TODO: close, float thing needs to be broken up I think
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807102AC.s")
+
+extern f64 D_global_asm_8075E4E8;
+extern f32 D_global_asm_807FD9EC;
+
+/*
+u8 func_global_asm_807102AC(Struct8071006C_arg0 *arg0) {
+    s32 var_v1;
+    u8 temp_v0;
+    f64 temp;
+
+    func_global_asm_8070FA58(arg0);
+    arg0->unk4 += (func_global_asm_80612794(arg0->unk20) * arg0->unk28);
+    func_global_asm_8070FC40(arg0);
+    arg0->unk8 = arg0->unk4;
+    temp_v0 = arg0->unkB0;
+    arg0->unk20 += 0x32;
+    arg0->unkB0 = temp_v0 + 1;
+    arg0->unkC += (((10.0f - (((1.0 / (arg0->unk10 * 3.0)) * 8.0) - 10.0f)) + 10.0f) * D_global_asm_8075E4E8);
+    if (temp_v0 >= 0x6F) {
+        if (arg0->unkB1 >= 0xA) {
+            arg0->unkB1 -= 0xA;
+        }
+    }
+    var_v1 = 0;
+    if (D_global_asm_807FD9EC < arg0->unkC) {
+        var_v1 = 1;
+    }
+    if (var_v1 == 0) {
+        var_v1 = arg0->unkB1 < 0xA;
+    }
+    return var_v1;
+}
+*/
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807103E0.s")

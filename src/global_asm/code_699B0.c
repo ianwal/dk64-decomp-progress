@@ -935,10 +935,12 @@ typedef struct {
     s16 unkC;
     s16 unkE;
     s16 unk10;
+    s16 unk12;
+    s16 unk14;
 } Struct8066893C;
 
 s32 func_global_asm_8066893C(Struct8066893C*);
-void func_global_asm_806689F0(s32, void*, s32);
+void func_global_asm_806689F0(s32, Struct8066893C*, s32);
 
 void func_global_asm_806685E0(Struct806685E0_arg0 *arg0, f32 arg1) {
     Struct807F94C0 *var_v0;
@@ -1040,7 +1042,58 @@ s32 func_global_asm_8066893C(Struct8066893C *arg0) {
     }
 }
 
+// Matrix?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_806689F0.s")
+
+void func_global_asm_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
+
+/*
+void func_global_asm_806689F0(s32 arg0, Struct8066893C *arg1, s32 arg2) {
+    f32 sp5C;
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp34;
+    f32 sp30;
+    f32 temp_f10;
+    f32 temp_f16;
+    f32 temp_f16_2;
+    f32 temp_f18;
+    f32 temp_f4;
+    f32 temp_f4_2;
+    f32 temp_f6;
+    f32 temp_f8;
+    f32 temp_f8_2;
+
+    temp_f16 = arg1->unk4 - arg1->unk0;
+    sp54 = temp_f16;
+    temp_f6 = arg1->unkA - arg1->unk6;
+    sp58 = temp_f6;
+    temp_f8 = arg1->unk10 - arg1->unkC;
+    sp5C = temp_f8;
+    temp_f4 = arg1->unk2 - arg1->unk0;
+    sp48 = temp_f4;
+    temp_f10 = arg1->unk8 - arg1->unk6;
+    sp4C = temp_f10;
+    sp30 = temp_f16;
+    sp34 = temp_f4;
+    temp_f18 = arg1->unkE - arg1->unkC;
+    sp50 = temp_f18;
+    temp_f16_2 = (temp_f6 * temp_f18) - (temp_f10 * temp_f8);
+    sp34 = temp_f6;
+    sp3C = temp_f16_2;
+    temp_f8_2 = (temp_f8 * temp_f4) - (temp_f18 * sp30);
+    sp40 = temp_f8_2;
+    temp_f4_2 = (sp30 * temp_f10) - (temp_f4 * temp_f6);
+    sp44 = temp_f4_2;
+    func_global_asm_80666AF8(arg0, temp_f16_2, temp_f8_2, temp_f4_2, arg1->unk14, arg2, 0);
+}
+*/
 
 // TODO: Any more cleanup possible?
 s32 func_global_asm_80668B28(Struct8066893C *arg0, s32 arg1, s32 arg2) {
@@ -1249,8 +1302,6 @@ void func_global_asm_806696A0(Actor *arg0, s16 arg1, Struct806696A0 *arg2) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80669830.s")
 
-void func_global_asm_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
-
 /*
 void func_global_asm_80669830(s32 arg0, Struct80669830 *arg1, u8 arg2) {
     f32 sp30[4][4];
@@ -1451,6 +1502,7 @@ void func_global_asm_8066A584(s32 arg0, f32 arg1) {
     }
 }
 
+// Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_8066A64C.s")
 
 // Matrix stuff

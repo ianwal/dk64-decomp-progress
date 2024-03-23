@@ -145,6 +145,51 @@ void *func_global_asm_806022DC(s32 *arg0) {
 // Libultra stuff osRecvMesg, alUnlink, alLink
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80602314.s")
 
+/*
+extern OSMesgQueue D_807704A8;
+extern u32 D_global_asm_807452C0;
+extern u32 D_global_asm_807452C4;
+extern ? D_global_asm_80770188;
+
+void func_global_asm_80602314(void) {
+    void *sp40;
+    ALLink *temp_v0;
+    ALLink *var_s0_2;
+    u32 var_s0;
+
+    sp40 = NULL;
+    var_s0 = 0;
+    if (D_global_asm_807452C4 != 0) {
+        do {
+            osRecvMesg(&D_807704A8, &sp40, 0);
+            var_s0 += 1;
+        } while (var_s0 < D_global_asm_807452C4);
+    }
+    var_s0_2 = D_global_asm_80770188.unk4;
+    if (var_s0_2 != NULL) {
+        do {
+            temp_v0 = var_s0_2->next;
+            if ((var_s0_2->unkC + 1) < D_global_asm_807452C0) {
+                if (var_s0_2 == D_global_asm_80770188.unk4) {
+                    D_global_asm_80770188.unk4 = temp_v0;
+                }
+                alUnlink(var_s0_2);
+                if (D_global_asm_80770188.unk8 != NULL) {
+                    alLink(var_s0_2, D_global_asm_80770188.unk8);
+                } else {
+                    D_global_asm_80770188.unk8 = var_s0_2;
+                    var_s0_2->next = NULL;
+                    var_s0_2->prev = NULL;
+                }
+            }
+            var_s0_2 = temp_v0;
+        } while (temp_v0 != NULL);
+    }
+    D_global_asm_807452C4 = 0;
+    D_global_asm_807452C0 += 1;
+}
+*/
+
 u8 func_global_asm_80602430(s16 arg0) {
     return ((D_global_asm_80745658[arg0] & 6) >> 1);
 }
