@@ -300,3 +300,16 @@ typedef struct gASMStruct3 {
 }gASMStruct3;
 extern gASMStruct1 D_global_asm_807F0570;
 extern gASMStruct2 D_global_asm_807F0588;
+
+typedef struct {
+    void *unk0;
+    void *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+} Struct807FB534;
+
+extern Struct807FB534 *D_807FB534;
+extern s32 D_807FB538; // Count for ^
+extern u8 D_807FB549;

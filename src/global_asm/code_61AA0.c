@@ -108,8 +108,23 @@ f32 func_global_asm_8065CFB8(s16 arg0, f32 arg1) {
     return arg1;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065D008.s")
+extern s32 D_global_asm_80748370; // TODO: Datatype
+extern s32 D_global_asm_807483D0; // TODO: Datatype
+extern u8 D_global_asm_807F7F00;
+
+Gfx *func_global_asm_8065D008(Gfx *dl, s16 arg1, u8 arg2) {
+    if (arg1 == 0xFF) {
+        if ((D_global_asm_807F7F00 != 0) || (arg2)) {
+            gSPSegment(dl++, 0x06, osVirtualToPhysical(&D_global_asm_80748310))
+        } else {
+            gSPSegment(dl++, 0x06, osVirtualToPhysical(&D_global_asm_80748370))
+        }
+    } else {
+        gDPSetFogColor(dl++, 0x00, 0x00, 0x00, arg1);
+        gSPSegment(dl++, 0x06, osVirtualToPhysical(&D_global_asm_807483D0))
+    }
+    return dl;
+}
 
 f32 func_global_asm_8065D0FC(f32 arg0) {
     if (45.0 == character_change_array[cc_player_index].fov_y) {
