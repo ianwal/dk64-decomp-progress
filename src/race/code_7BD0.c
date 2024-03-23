@@ -220,9 +220,9 @@ Gfx *func_race_8002C63C(Gfx *dl, Struct8002C63C_arg1 *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C76C.s")
 
-s32 func_race_8002C14C(s32, void *);
-s32 func_race_8002C2E8(s32, void *);
-s32 func_race_8002C76C(s32, void *);
+Gfx *func_race_8002C14C(Gfx*, void *);
+Gfx *func_race_8002C2E8(Gfx*, void *);
+Gfx *func_race_8002C76C(Gfx*, void *);
 
 Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2) {
     RaceAdditionalActorData2 *sp24;

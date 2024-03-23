@@ -732,8 +732,24 @@ void func_global_asm_806ACCE8(void) {
     func_global_asm_8068C350(&func_global_asm_806ACA88, current_actor_pointer, 5);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ACF10.s")
+Gfx *func_global_asm_806A921C();
+extern u8 D_global_asm_807505F8[2]; // at least 2
+
+// TODO: Might return DL from last function call
+void func_global_asm_806ACF10(Gfx* dl, Actor *arg1) {
+    u8 controlStateProgressIsZero;
+    u8 shade;
+
+    dl = func_global_asm_806A921C(dl);
+    controlStateProgressIsZero = arg1->control_state_progress == 0;
+    shade = D_global_asm_807505F8[controlStateProgressIsZero];
+    gDPSetPrimColor(dl++, 0, 0, shade, shade, shade, 0xFF);
+
+    dl = func_global_asm_806ABB98(dl, 0x280, 0x1B8, 0.7f, D_global_asm_807FC7E0[0]);
+    shade = D_global_asm_807505F8[1 - controlStateProgressIsZero];
+    gDPSetPrimColor(dl++, 0, 0, shade, shade, shade, 0xFF);
+    func_global_asm_806ABB98(dl, 0x280, 0x208, 0.7f, D_global_asm_807FC7E0[3]);
+}
 
 // TODO: Very close, something wrong with the do while loops?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ACFFC.s")
@@ -741,8 +757,6 @@ void func_global_asm_806ACCE8(void) {
 extern s8 D_global_asm_8076A105;
 extern s8 D_global_asm_807FC80E;
 extern s8 D_global_asm_807FC8B9;
-
-void func_global_asm_806ACF10(void);
 
 /*
 void func_global_asm_806ACFFC(void) {
