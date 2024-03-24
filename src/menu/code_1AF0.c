@@ -733,7 +733,7 @@ typedef struct {
     f32 unk10[2][4][4];
 } AAD_80027808;
 
-void *func_menu_80027808(Gfx *dl, Actor *arg1) {
+Gfx *func_menu_80027808(Gfx *dl, Actor *arg1) {
     s32 i;
     AAD_80027808 *aaD = arg1->additional_actor_data;
 

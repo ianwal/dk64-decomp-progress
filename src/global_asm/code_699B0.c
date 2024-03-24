@@ -1250,9 +1250,6 @@ s32 func_global_asm_80669650(u8 arg0, u8 *arg1) {
     return 1;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_806696A0.s")
-
 typedef struct {
     u8 unk0[0x100 - 0x0];
     f32 unk100;
@@ -1272,14 +1269,20 @@ typedef struct {
     void *next;
 } Struct806696A0;
 
-/*
 void func_global_asm_806696A0(Actor *arg0, s16 arg1, Struct806696A0 *arg2) {
     u8 var_s2;
 
     var_s2 = 0;
     while (arg2 != NULL) {
-        if (sqrtf(((arg2->unk0 - arg0->x_position) * (arg2->unk0 - arg0->x_position)) + ((arg2->unk8 - arg0->z_position) * (arg2->unk8 - arg0->z_position))) < 5.0) {
-            f32 dy = (arg2->unk4 - arg0->y_position);
+        f64 d;
+        f32 dx = (arg2->unk0 - arg0->x_position);
+        f32 dy;
+        f32 dz = (arg2->unk8 - arg0->z_position);
+        dx *= dx;
+        dz *= dz;
+        d = sqrtf(dx + dz);
+        dy = (arg2->unk4 - arg0->y_position);
+        if (d < 5.0) {
             if (dy > 0.0f && dy < 25.0) {
                 func_global_asm_806699C4(arg0, arg1, -1, 0, arg2->unk0, arg2->unk4, arg2->unk8);
                 arg0->locked_to_pad = 3;
@@ -1292,7 +1295,6 @@ void func_global_asm_806696A0(Actor *arg0, s16 arg1, Struct806696A0 *arg2) {
         var_s2++;
     }
 }
-*/
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80669830.s")
