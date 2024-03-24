@@ -101,25 +101,35 @@ void *func_jetpac_80028FC0(void) {
     return NULL;
 }
 
+// Close, float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029064.s")
 
 void func_jetpac_800291AC(JetpacStruct5 *arg0);
 
 /*
 s32 func_jetpac_80029064(JetpacStruct *arg0) {
-    s32 var_v1;
+    f32 temp3 = arg0->unk0 + arg0->unk24;
+    f32 temp4 = arg0->unk4 + arg0->unk28;
+    f32 temp7 = D_jetpac_8002EC30.unk420 + D_jetpac_8002EC30.unk444;
+    f32 temp8 = (D_jetpac_8002EC30.unk424 - 2) + D_jetpac_8002EC30.unk448;
+    
+    f32 temp = arg0->unk0 + arg0->unk1C;
+    f32 temp2 = arg0->unk4 + arg0->unk20;
+    f32 temp5 = (D_jetpac_8002EC30.unk43C + 2) + D_jetpac_8002EC30.unk420;
+    f32 temp6 = (D_jetpac_8002EC30.unk440 + 4) + D_jetpac_8002EC30.unk424;
+    
+    s32 var_v1 = 0;
 
-    var_v1 = 0;
     if (D_jetpac_8002EC30.unk434 == 3) {
         var_v1 = func_jetpac_80027250(
-            arg0->unk0 + arg0->unk1C,
-            arg0->unk4 + arg0->unk20,
-            arg0->unk24 + arg0->unk0,
-            arg0->unk28 + arg0->unk4,
-            D_jetpac_8002EC30.unk420 + (D_jetpac_8002EC30.unk43C + 2),
-            D_jetpac_8002EC30.unk424 + (D_jetpac_8002EC30.unk440 + 4),
-            D_jetpac_8002EC30.unk444 + (D_jetpac_8002EC30.unk420 - 2),
-            D_jetpac_8002EC30.unk448 + D_jetpac_8002EC30.unk424
+            temp,
+            temp2,
+            temp3,
+            temp4,
+            temp5,
+            temp6,
+            temp7,
+            temp8
         );
     }
     if (var_v1 != 0) {
