@@ -628,21 +628,17 @@ void func_global_asm_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u
 }
 */
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80666D88.s")
-
 extern f32 D_global_asm_80752F7C[];
 extern f32 D_global_asm_80752F98[];
 extern f32 D_global_asm_80752FB4[];
 extern f32 D_global_asm_80752FD0[];
 extern f32 D_global_asm_80752FEC[];
 extern f32 D_global_asm_80753008[];
-extern f32 D_global_asm_807F9460;
-extern s8 D_global_asm_807F9464;
+extern f32 D_807F9460;
+extern s8 D_807F9464;
 
 extern s16 D_global_asm_807FD584;
 
-/*
 void func_global_asm_80666D88(f32 arg0, f32 arg1, u8 arg2, Actor *arg3, u8 arg4) {
     f32 *var_v0;
     f32 *var_v1;
@@ -686,16 +682,15 @@ void func_global_asm_80666D88(f32 arg0, f32 arg1, u8 arg2, Actor *arg3, u8 arg4)
             s32 temp = 1;
             var_f12 = arg2 == 1 ? var_f2 * 6.0f : var_f2;
             if (arg1 - arg0 < var_f12) {
-                D_global_asm_807F9464 = temp;
-                D_global_asm_807F9460 = arg1 - var_f12;
-                if (arg2 != 0) {
-                    D_global_asm_807F9460 /= 6.0f;
+                D_807F9464 = temp;
+                D_807F9460 = arg1 - var_f12;
+                if (arg2) {
+                    D_807F9460 /= 6.0f;
                 }
             }
         }
     }
 }
-*/
 
 s32 func_global_asm_80666F04(f32 arg0, f32 arg1, u8 arg2, u8 arg3) {
     f32 phi_f0;
@@ -1873,7 +1868,6 @@ s32 func_global_asm_8066B5C8(s32 arg0, s32 arg1) {
     }
     return phi_v1;
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_8066B5F4.s")
 

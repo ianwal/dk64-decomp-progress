@@ -220,7 +220,41 @@ void func_jetpac_80028950(void) {
     }
 }
 
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_800289EC.s")
+
+void func_jetpac_80025700(void*, s32, s32, void*, s32);
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+} Struct8002DC38;
+
+extern Struct8002DC38 D_jetpac_8002DC38[2];
+extern s32 D_jetpac_8002DD88;
+
+/*
+void func_jetpac_800289EC(void) {
+    s32 sp44;
+    CompetitorSub14 *var_s1;
+    s32 i;
+    s32 var_v1;
+
+    var_s1 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].unk14;
+    sp44 = D_jetpac_8002DD88;
+    if (var_s1->unkC < 116.0f) {
+        var_v1 = ABS(((s32)var_s1->unkC / 3) % 2);
+        func_jetpac_80025700(&D_jetpac_8002DC38[var_v1], var_s1->unk8, var_s1->unkC + 48.0f + 4.0f, &sp44, 0);
+    }
+    for (i = 0; i < 3; i++) {
+        var_s1[i].code(var_s1, i);
+    }
+}
+*/
 
 extern s32 D_jetpac_8002D190[];
 

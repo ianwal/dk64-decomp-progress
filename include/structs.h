@@ -2015,7 +2015,7 @@ typedef struct CompetitorSub14 {
     u8 unk10[0x1C-0x10];
     s32 unk1C;
     u8 unk20[0x48-0x20];
-    void* code;
+    void (*code)(void*, s32);
 } CompetitorSub14;
 
 typedef struct Competitor {

@@ -249,6 +249,7 @@ void func_boss_8002FC48(Actor *arg0, u8 arg1) {
     func_global_asm_806883F4(arg0, 0, arg1, 0);
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9C60/func_boss_8002FC98.s")
 
 /*

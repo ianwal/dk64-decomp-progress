@@ -2,7 +2,11 @@
 #include "functions.h"
 
 typedef struct {
-    u8 unk0[0x810 - 0x0];
+    s16 unk0;
+    s16 unk2;
+    void *unk4;
+    void *unk8;
+    u8 unkC[0x810 - 0xC];
     u8 unk810[1]; // TODO: How many elements?
 } AAD_critter_8002904C;
 
@@ -27,8 +31,20 @@ extern s8 D_critter_80029FA0;
 extern u16 D_critter_80029FA4;
 extern s8 D_critter_80029FA8;
 
-extern void *D_critter_8002A1C0;
-extern u32 D_critter_8002A1C4;
+// PTR TABLE 0x13
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+} Struct8002A1C0;
+
+extern Struct8002A1C0 *D_critter_8002A1C0;
+extern Actor *D_critter_8002A1C4;
 extern void* D_critter_8002A1C8[];
 extern u16 D_critter_8002A1CE;
 extern u16 D_critter_8002A1CC;
@@ -370,7 +386,7 @@ void func_critter_80027DC0(void) {
 void func_critter_80028840() {
     D_critter_8002A1C0 = getPointerTableFile(0x13, 4, 1, 1);
     D_critter_8002A1C8[0] = getPointerTableFile(0x13, 5, 1, 1);
-    D_critter_8002A1C4 = 0;
+    D_critter_8002A1C4 = NULL;
     D_critter_8002A1CE = 0;
     D_critter_8002A1CC = 1;
 }
@@ -406,7 +422,41 @@ void *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
     return dl;
 }
 
+// TODO: Very close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028EE8.s")
+
+s32 func_critter_800288A8(void *, s32, s16); // extern
+s32 func_dk64_boot_80002A30(void *, s32); // extern
+extern s16 D_global_asm_80744490;
+
+/*
+void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5) {
+    AAD_critter_8002904C *aaD;
+    s16 sp2A;
+    s16 i;
+
+    sp2A = (D_global_asm_80744490 - func_global_asm_806FBD5C(arg0, &D_critter_8002A1C0[arg3])) * 2;
+    if (D_critter_8002A1C4 != NULL) {
+        aaD = D_critter_8002A1C4->additional_actor_data;
+        free(aaD->unk8);
+        free(aaD->unk4);
+    } else {
+        spawnActor(ACTOR_DK_RAP_CONTROLLER, 0);
+        aaD = last_spawned_actor->additional_actor_data;
+        aaD->unk0 = arg2 * 4;
+        D_critter_8002A1C4 = last_spawned_actor;
+        D_critter_8002A1C4->unkEC = 0;
+    }
+    D_critter_8002A1C4->x_position = func_critter_800288A8(aaD, &D_critter_8002A1C0[arg3], sp2A);
+    D_critter_8002A1C4->unkEE = 0;
+    D_critter_8002A1C4->unk168 = arg5 + 0xE;
+    func_dk64_boot_80002A30(&aaD->unk810[0x10], &D_critter_8002A1C0[arg3]);
+    for (i = 1; i < 0x10; i++) {
+        aaD->unk810[i] = 0;
+    }
+    aaD->unk810[0] = 0xC;
+}
+*/
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_8002904C.s")

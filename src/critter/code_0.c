@@ -929,6 +929,7 @@ void func_critter_80026B78(CritterController *arg0) {
     }
 }
 
+// TODO: Pretty close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80026C9C.s")
 
 typedef struct {
@@ -948,7 +949,6 @@ typedef struct {
 extern Struct80029BAC D_critter_80029BAC[];
 
 /*
-// TODO: Pretty close
 void func_critter_80026C9C(CritterController *arg0) {
     CritterStruct5 *temp_t5;
     Struct80029BAC_inner *temp_v0;
