@@ -2378,9 +2378,6 @@ void func_global_asm_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80635018(arg1, 4, temp_f0, temp_f2);
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064DE04.s")
-
 extern f32 D_global_asm_807F621C;
 extern f32 D_global_asm_807F6220;
 extern f32 D_global_asm_807F6224;
@@ -2414,47 +2411,47 @@ typedef struct {
     u16 unk5E;
 } Struct8064DE04_arg0;
 
-/*
-// TODO: Very close, just something up with the loop
+// TODO: Any cleanup possible? Stack seems a bit whack
 void func_global_asm_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
-    Actor *var_s0;
+    Actor *temp;
+    Actor *closestActor;
     f32 dx;
-    f32 dz;
-    f32 temp_f14;
     f32 dy;
-    f32 var_f16;
+    f32 dz;
+    f32 closestDistance;
     PlayerAdditionalActorData *PaaD;
     s32 i;
+    u16 actorType;
 
-    var_s0 = NULL;
-    var_f16 = 99999.0f;
+    closestActor = NULL;
+    closestDistance = 99999.0f;
     PaaD = player_pointer->additional_actor_data;
     if (arg0->unk5C != 0) {
+        actorType = arg0->unk5E;
         for (i = 0; i < D_global_asm_807FBB34; i++) {
-            if (arg0->unk5E == D_global_asm_807FB930[i].unk0->unk58) {
-                dx = D_global_asm_807FB930[i].unk0->x_position - D_global_asm_807F621C;
-                dy = D_global_asm_807FB930[i].unk0->y_position - D_global_asm_807F6220;
-                dz = D_global_asm_807FB930[i].unk0->z_position - D_global_asm_807F6224;
-                temp_f14 = (dx * dx) + (dy * dy) + (dz * dz);
-                if (temp_f14 < var_f16) {
-                    var_f16 = temp_f14;
-                    var_s0 = D_global_asm_807FB930[i].unk0;
+            temp = D_global_asm_807FB930[i].unk0;
+            if (temp->unk58 == actorType) {
+                dx = temp->x_position - D_global_asm_807F621C;
+                dy = temp->y_position - D_global_asm_807F6220;
+                dz = temp->z_position - D_global_asm_807F6224;
+                if ((dx * dx) + (dy * dy) + (dz * dz) < closestDistance) {
+                    closestDistance = (dx * dx) + (dy * dy) + (dz * dz);
+                    closestActor = temp;
                 }
             }
         }
-        if (var_s0 != NULL) {
-            func_global_asm_80679200(var_s0, NULL, 8, 0, 0, 0);
+        if (closestActor != NULL) {
+            func_global_asm_80679200(closestActor, NULL, 8, 0, 0, 0);
         }
         if (arg2 == 0) {
-            if (var_s0 != NULL) {
-                if (var_s0->unk58 == ACTOR_STEEL_KEG) {
+            if (closestActor != NULL) {
+                if (closestActor->unk58 == ACTOR_STEEL_KEG) {
                     PaaD->unk1F0 &= 0xFFDFFFFF;
                 }
             }
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064DF5C.s")
 
