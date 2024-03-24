@@ -35,30 +35,6 @@ typedef struct JetpacStruct9 {
     u8 pad0[0x18];
 } JetpacStruct9;
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    union {
-        f32 unk10;
-        u8 unk10_u8[4];
-    };
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-} struct_jetpac_8002998C;
-
 extern s32 D_jetpac_8002BA6C;
 extern JetpacStruct9 D_jetpac_8002E800[];
 extern s32 D_jetpac_8002E830;
@@ -106,11 +82,11 @@ s32 func_jetpac_80027250(f32, f32, f32, f32, f32, f32, f32, f32);
 extern void (func_jetpac_8002A758)();
 void func_jetpac_8002A374(JetpacStruct*);
 void func_jetpac_8002A530(JetpacStruct *arg0);
-extern void func_jetpac_80029F7C(struct_jetpac_8002998C*);
+extern void func_jetpac_80029F7C(JetpacStruct*);
 f32 func_jetpac_80027210();
 extern void (func_jetpac_80029C1C)();
 s32 func_jetpac_80028CF8(f32, f32, f32, f32, s32);
-void func_jetpac_800294EC(void *, s32);
+void func_jetpac_800294EC(JetpacStruct *, s32);
 void *func_global_asm_806FD490(Gfx *, s32, s16, s16, s32);
 
 void *func_jetpac_80028FC0(void) {
@@ -213,7 +189,26 @@ void func_jetpac_80029450(void) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_800294EC.s")
+void func_jetpac_800294EC(JetpacStruct *arg0, s32 arg1) {
+    f32 temp = (arg0->unk0 + arg0->unk1C);
+    f32 temp2 = (arg0->unk0 + arg0->unk24);
+    f32 temp_0 = D_jetpac_8002EC30.unk36C[arg1].unk0;
+    f32 temp_8 = D_jetpac_8002EC30.unk36C[arg1].unk8;
+
+    s32 pad;
+
+    f32 temp3 = (arg0->unk4 + arg0->unk20);
+    f32 temp4 = (arg0->unk4 + arg0->unk28);
+    f32 temp_4 = D_jetpac_8002EC30.unk36C[arg1].unk4;
+    f32 temp_C = D_jetpac_8002EC30.unk36C[arg1].unkC;
+
+    if (((temp_8 <= temp) && (temp_8 <= temp2)) || ((temp2 <= temp_0) && (temp <= temp_0))) {
+        arg0->unk8 = -arg0->unk8;
+    }
+    if (((temp_C <= temp3) && (temp_C <= temp4)) || ((temp4 <= temp_4) && (temp3 <= temp_4))) {
+        arg0->unkC = -arg0->unkC;
+    }
+}
 
 void func_jetpac_80029640(struct_jetpac_80029640 *arg0, f32 arg1, f32 arg2) {
     JetpacStruct *var_v0;
@@ -309,7 +304,7 @@ void func_jetpac_8002992C(JetpacStruct *arg0) {
     arg0->unk4C = &D_jetpac_8002E830;
 }
 
-void func_jetpac_8002998C(struct_jetpac_8002998C *arg0) {
+void func_jetpac_8002998C(JetpacStruct *arg0) {
     s32 temp_v0_2;
 
     switch (arg0->unk14) {                              

@@ -610,13 +610,13 @@ void func_global_asm_8060D7A8(void) {
     current_character_index[0] = 0; // DK
 }
 
+// very close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060DC3C.s")
 
 extern s8 D_global_asm_80750AC0;
 extern s32 D_global_asm_80750AB0;
 
 /*
-// TODO: Very close
 // loadTheGame()
 void func_global_asm_8060DC3C(u8 fileIndex, s32 arg1) {
     CharacterProgress *phi_fp;

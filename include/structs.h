@@ -1618,7 +1618,8 @@ typedef struct {
     s32 unk90[4];
     s32 unkA0[4];
     s32 unkB0;
-    s32 unkB4;
+    s16 unkB4;
+    s16 unkB6;
     Model2Model50_B8 *unkB8; // Used, pointer
     Model2Model54_BC *unkBC; // Used
     u8 unkC0;
@@ -2038,7 +2039,8 @@ typedef struct JetpacPlayerSub36C {
     s32 unk0;
     s32 unk4;
     s32 unk8;
-    u8 pad[0x34-0xC];
+    s32 unkC;
+    u8 pad[0x34-0x10];
 } JetpacPlayerSub36C;
 
 typedef struct JetpacPlayerStruct {

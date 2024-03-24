@@ -1508,6 +1508,7 @@ void func_global_asm_8066A584(s32 arg0, f32 arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_8066A75C.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_8066A834.s")
 
 // TODO: Hmmm, matrix?
@@ -1533,7 +1534,6 @@ typedef struct {
 } Struct8066AC10;
 
 /*
-// TODO: Pretty close...
 s32 func_global_asm_8066A834(Struct8066AC10 *arg0, f32 arg1, f32 arg2) {
     f32 sp1C;
     f32 sp20;
