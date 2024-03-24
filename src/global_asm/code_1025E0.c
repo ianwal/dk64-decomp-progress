@@ -432,7 +432,7 @@ void func_global_asm_80704130(Struct80704130 *arg0, u8 arg1, u8 arg2, u8 arg3, u
     }
 }
 
-// close, stack
+// close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_80704298.s")
 
 extern u8 D_global_asm_807FD896;
@@ -442,16 +442,13 @@ extern u8 D_global_asm_807FD899;
 
 /*
 void func_global_asm_80704298(s32 arg0, u8 arg1, u8 arg2) {
-    s32 temp2;
-    s32 sp34;
     s16 var_t0;
     s16 var_t1;
-    s16 temp = D_global_asm_807FD892;
+    s32 temp = (s16)D_global_asm_807FD892;
 
     if (temp >= 0x4000) {
-        var_t0 = temp;
-        temp2 = temp - 0x4200;
-        var_t0 = temp2 + (arg1 * 0x14);
+        temp -= 0x4200;
+        var_t0 = temp + (arg1 * 0x14);
         var_t1 = var_t0 + 0xA;
     } else {
         var_t0 = temp - (arg1 * 0x14);
@@ -502,8 +499,60 @@ void func_global_asm_80704444(GlobalASMStruct3 *arg0, s16 arg1, s16 arg2, s16 ar
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_80704484.s")
 
-// Displaylist stuff
+// Displaylist stuff, regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_80704960.s")
+
+extern u8 D_global_asm_8074450C;
+
+typedef struct {
+    s8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+} Struct80750840;
+
+extern Struct80750840 D_global_asm_80750840[];
+extern u8 D_global_asm_80750AB8;
+extern u8 D_global_asm_80750ABC;
+
+/*
+Gfx *func_global_asm_80704960(Gfx *dl) {
+    s32 i;
+
+    gDPPipeSync(dl++);
+    gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetCycleType(dl++, G_CYC_FILL);
+    gDPSetFillColor(dl++, 0x00010001);
+
+    for (i = 0; D_global_asm_80750840[i].unk0 != -1; i++) {
+        if ((
+                (D_global_asm_80750840[i].unk0 == 2)
+                && (cc_number_of_players > 1)
+                && (D_global_asm_80750840[i].unk2 & D_global_asm_80750ABC)
+            ) || (
+                (cc_number_of_players == D_global_asm_80750840[i].unk0)
+                && (D_global_asm_80750AB8 == D_global_asm_80750840[i].unk1)
+                && (D_global_asm_80750840[i].unk2 & D_global_asm_80750ABC)
+            )) {
+            gDPFillRectangle(
+                dl++,
+                D_global_asm_80750840[i].unk4 * D_global_asm_8074450C,
+                D_global_asm_80750840[i].unk6 * D_global_asm_8074450C,
+                ((D_global_asm_80750840[i].unk8 + 1) * D_global_asm_8074450C) - 1,
+                ((D_global_asm_80750840[i].unkA + 1) * D_global_asm_8074450C) - 1
+            );
+        }
+    }
+
+    gDPPipeSync(dl++);
+
+    return dl;
+}
+*/
 
 extern f32 D_global_asm_807FD968;
 extern f32 D_global_asm_807FD96C;

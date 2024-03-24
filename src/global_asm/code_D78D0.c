@@ -1043,14 +1043,11 @@ void func_global_asm_806D57F0(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// rodata, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D5834.s")
-
-extern s32 D_global_asm_80767CC0;
 extern s32 D_global_asm_80767CC0;
 
-/*
 void func_global_asm_806D5834(void) {
+    if (current_actor_pointer); // TODO: Yikes, fakematch? fake match?
+
     switch (current_actor_pointer->control_state_progress) {
         case 0:
             extra_player_info_pointer->unk30 /= 1.8;
@@ -1081,7 +1078,6 @@ void func_global_asm_806D5834(void) {
     func_global_asm_806CC948();
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806D59E4(void) {
     switch (current_actor_pointer->control_state_progress) {

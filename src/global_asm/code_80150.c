@@ -1021,7 +1021,7 @@ void func_global_asm_80683158(void) {
         current_actor_pointer->animation_state->unk1C = malloc(0x100);
         func_global_asm_80611690(current_actor_pointer->animation_state->unk1C);
         func_global_asm_806C8220(0, current_actor_pointer->unk178, aaD->unk0);
-        switch (aaD->unk0) { // irregular
+        switch (aaD->unk0) {
             case 2:
                 aaD->unk4 = func_global_asm_806F1C04;
                 break;

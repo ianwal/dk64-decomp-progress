@@ -631,7 +631,7 @@ void func_global_asm_806625D0(u8 arg0) {
     D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3D2, 1, 0);
 }
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_80662618.s")
 
 void func_global_asm_806627CC(u8 arg0) {

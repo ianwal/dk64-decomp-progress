@@ -711,7 +711,7 @@ void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     func_global_asm_806FC530(dl, 1, sp28 * 4.0f, temp_f16 * 4.0f, sp34, 4);
 }
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807135B4.s")
 
 s32 func_global_asm_8071375C(s32 arg0) {
@@ -840,7 +840,7 @@ void func_global_asm_80713EB0(enum map_e arg0, s32 arg1, s32 arg2) {
             return;
         }
     }
-    if (game_mode_copy == 0xE) {
+    if (game_mode_copy == GAME_MODE_END_SEQUENCE_DK_THEATRE) {
         setIntroStoryPlaying(0);
         func_global_asm_80712490(MAP_MAIN_MENU, 0, GAME_MODE_MAIN_MENU);
     } else {

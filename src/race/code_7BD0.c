@@ -188,7 +188,7 @@ void func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 ar
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002BEE8.s")
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C14C.s")
 
 // Displaylist stuff
@@ -220,9 +220,9 @@ Gfx *func_race_8002C63C(Gfx *dl, Struct8002C63C_arg1 *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C76C.s")
 
-Gfx *func_race_8002C14C(Gfx*, void *);
-Gfx *func_race_8002C2E8(Gfx*, void *);
-Gfx *func_race_8002C76C(Gfx*, void *);
+Gfx *func_race_8002C14C(Gfx*, RaceAdditionalActorData *);
+Gfx *func_race_8002C2E8(Gfx*, RaceAdditionalActorData *);
+Gfx *func_race_8002C76C(Gfx*, RaceAdditionalActorData *);
 
 Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2) {
     RaceAdditionalActorData2 *sp24;
