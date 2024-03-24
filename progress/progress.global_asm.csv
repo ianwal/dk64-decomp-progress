@@ -1823,7 +1823,7 @@ us,asm,func_global_asm_806F0700,204,yes
 us,asm,func_global_asm_80631C20,28,yes
 us,asm,func_global_asm_806F2A40,520,yes
 us,asm,func_global_asm_8063D468,44,yes
-us,asm,func_global_asm_80683158,412,no
+us,asm,func_global_asm_80683158,412,yes
 us,asm,func_global_asm_806D423C,80,yes
 us,asm,func_global_asm_8069E210,640,no
 us,asm,func_global_asm_8063D4A4,264,yes

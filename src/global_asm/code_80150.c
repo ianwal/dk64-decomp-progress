@@ -996,8 +996,56 @@ void func_global_asm_8068304C(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Function pointer in a local variable, needs some PaaD untangling
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_80683158.s")
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    void *unk4; // TODO: Function pointer
+    s32 unk8;
+} AAD_80683158;
+
+void func_global_asm_806F1C04(void);
+void func_global_asm_806F22A8(void);
+void func_global_asm_806F1EB0(void);
+
+void func_global_asm_806C8220(s32, s32, s32);
+
+void func_global_asm_80683158(void) {
+    s32 sp3C;
+    AAD_80683158 *aaD;
+    s32 (*temp_v0_3)(Actor *, AnimationStateUnk1C *, s32 *);
+
+    sp3C = 0;
+    aaD = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->object_properties_bitfield |= 0x1000;
+        current_actor_pointer->animation_state->unk1C = malloc(0x100);
+        func_global_asm_80611690(current_actor_pointer->animation_state->unk1C);
+        func_global_asm_806C8220(0, current_actor_pointer->unk178, aaD->unk0);
+        switch (aaD->unk0) { // irregular
+            case 2:
+                aaD->unk4 = func_global_asm_806F1C04;
+                break;
+            case 3:
+                aaD->unk4 = func_global_asm_806F22A8;
+                break;
+            case 5:
+                aaD->unk4 = func_global_asm_806F1EB0;
+                break;
+        }
+    } else {
+        temp_v0_3 = aaD->unk4;
+        if (temp_v0_3 != NULL) {
+            temp_v0_3(current_actor_pointer, current_actor_pointer->animation_state->unk1C, &sp3C);
+        }
+    }
+    current_actor_pointer->animation_state->unk1C[sp3C].unk0 = 0;
+    current_actor_pointer->unk16D = current_actor_pointer->unk15F;
+    current_actor_pointer->y_rotation = func_global_asm_80665DE0(character_change_array->look_at_eye_x, character_change_array->look_at_eye_z, current_actor_pointer->x_position, current_actor_pointer->z_position);
+    if ((func_global_asm_8072881C(0, &aaD->unk8) != 0) && (((aaD->unk0 == 3)) || (aaD->unk0 == 5))) {
+        func_global_asm_8072881C(0x81, &aaD->unk8);
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 s32 func_global_asm_806832F4(s32 arg0, s32 arg1) {
     s32 pad;
