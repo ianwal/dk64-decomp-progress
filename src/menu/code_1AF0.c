@@ -716,8 +716,43 @@ void func_menu_80027738(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80027808.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+} Struct8003353C;
+
+extern Struct8003353C D_menu_8003353C[];
+
+typedef struct {
+    s32 unk0[2];
+    u8 unk8; // Used
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    s32 unkC;
+    f32 unk10[2][4][4];
+} AAD_80027808;
+
+void *func_menu_80027808(Gfx *dl, Actor *arg1) {
+    s32 i;
+    AAD_80027808 *aaD = arg1->additional_actor_data;
+
+    gSPDisplayList(dl++, &D_1000118);    
+    gSPMatrix(dl++, &D_2000180, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, aaD->unk8);
+
+    for (i = 0; i < 2; i++) {
+        if (aaD->unk0[i] != NULL) {
+            gSPMatrix(dl++, &aaD->unk10[i], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            dl = func_global_asm_806FC530(dl, D_menu_8003353C[i].unk2, 0, 0, aaD->unk0[i], 0x80);
+            gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+        }
+    }
+
+    return dl;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80027988.s")
 

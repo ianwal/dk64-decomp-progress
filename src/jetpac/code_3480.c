@@ -61,7 +61,51 @@ s32 func_jetpac_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027728.s")
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027BE8.s")
+
+/*
+f32 func_jetpac_80027410(f32); // extern
+extern s32 D_8002F3C0;
+extern s32 D_jetpac_8002DCE8;
+
+void func_jetpac_80027BE8(s32 *arg0, s32 arg1) {
+    s32 sp58;
+    Competitor *temp_s7;
+    s32 *var_s1;
+    s32 temp_a0;
+    s32 temp_s6;
+    s32 temp_v0;
+    s32 var_s0;
+    s32 var_s2;
+
+    sp58 = D_jetpac_8002DCE8;
+    temp_s7 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    if (arg0->unk1C >= 2) {
+        temp_s6 = arg0->unk8;
+        var_s0 = 0;
+        var_s2 = func_jetpac_80027410(arg0->unkC);
+        if (arg1 < 3) {
+            var_s1 = arg0;
+            do {
+                temp_v0 = temp_s7->lives_consumed;
+                if (((temp_v0 < 8) && ((temp_v0 + (arg1 * 2) + var_s0) >= 8)) || ((temp_v0 == 8) && (D_8002F3C0 & 0x10))) {
+                    sp58 = 0;
+                }
+                temp_a0 = *var_s1;
+                if (temp_a0 != 0) {
+                    func_jetpac_80025700(temp_a0, temp_s6, var_s2, &sp58, arg0->unk20);
+                }
+                var_s0 += 1;
+                var_s1 += 4;
+                var_s2 += 8;
+            } while (var_s0 != 2);
+            return;
+        }
+        func_jetpac_80025700(arg0->unk0, temp_s6, var_s2, arg0 + 0x18, arg0->unk20);
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027D64.s")
 
