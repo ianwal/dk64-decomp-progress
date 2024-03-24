@@ -391,10 +391,6 @@ void func_global_asm_8072B59C(u8 arg0, s16 arg1, s32 arg2) {
     func_global_asm_8072B324(current_actor_pointer, arg1);
 }
 
-// TODO: Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072B608.s")
-
-/*
 void func_global_asm_8072B608(void) {
     f32 var_f2;
 
@@ -403,8 +399,8 @@ void func_global_asm_8072B608(void) {
     if (((object_timer * 4) % 150U) >= 76) {
         var_f2 = ((object_timer * 4) % 150U) - 75 + 100.0f;
     } else {
-        f64 temp = 50;
-        var_f2 = (100.0f + temp) - ((object_timer * 4) % 150U);
+        f32 temp = 100.0f;
+        var_f2 = (50.0 + temp) - ((object_timer * 4) % 150U);
     }
     func_global_asm_8065A708(
         current_actor_pointer->x_position,
@@ -420,7 +416,6 @@ void func_global_asm_8072B608(void) {
         0xFF
     );
 }
-*/
 
 void func_global_asm_8072B79C(s16 arg0, s16 arg1, s16 arg2) {
     D_global_asm_807FDC98->unk26 = arg0;

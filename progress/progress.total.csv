@@ -2595,7 +2595,7 @@ us,asm,func_global_asm_806A3C6C,308,yes
 us,asm,func_global_asm_80685F60,476,no
 us,asm,func_global_asm_806D2904,80,yes
 us,asm,func_global_asm_8072707C,68,yes
-us,asm,func_global_asm_8072B608,404,no
+us,asm,func_global_asm_8072B608,404,yes
 us,asm,func_global_asm_80666AE0,12,yes
 us,asm,func_global_asm_80723320,44,yes
 us,asm,isFlagSet,184,yes
