@@ -132,8 +132,23 @@ void func_global_asm_806FDF54(f32 *arg0, f32 *arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FE078.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FEDB0.s")
+Gfx *func_global_asm_806FEDB0(Gfx *dl, u8 arg1) {
+    gDPPipeSync(dl++);
+    gSPViewport(dl++, osVirtualToPhysical(&character_change_array[arg1].unk250[D_global_asm_807444FC]));
+    gDPSetScissor(
+        dl++,
+        G_SC_NON_INTERLACE,
+        character_change_array[arg1].unk270,
+        character_change_array[arg1].unk272,
+        character_change_array[arg1].unk274,
+        character_change_array[arg1].unk276
+    );
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
+    gSPMatrix(dl++, &D_2000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    return dl;
+}
 
 extern f32 D_global_asm_8075DE70;
 
