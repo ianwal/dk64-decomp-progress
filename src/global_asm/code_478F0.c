@@ -81,7 +81,7 @@ void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     f32 sp68;
     f32 sp64;
 
-    switch (D_global_asm_807F6000[(s16)func_global_asm_80659470(arg1)].unk78[2].unk5) {
+    switch ((u8)D_global_asm_807F6000[(s16)func_global_asm_80659470(arg1)].unk78[2].unk5) {
         case 0xD:
         case 0x15:
         case 0x19:
@@ -1498,6 +1498,7 @@ void func_global_asm_80649F64(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_806418E8(0x5F, D_global_asm_807F6000[func_global_asm_80659470(arg1)].unk8A, 1);
 }
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80649FC0.s")
 
 void func_global_asm_8064A180(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {

@@ -464,8 +464,55 @@ void func_global_asm_806E88AC(void) {
     }
 }
 
-// Actor->animation_state->unk0->stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E88D8.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+} AAD_806E88D8;
+
+void func_global_asm_806E88D8(void) {
+    Actor *vehicle;
+    AAD_806E88D8 *aaD;
+    s32 sp24;
+    s32 var_a2;
+    s32 sp1C;
+    ActorAnimationState *playerAnimationState;
+
+    vehicle = extra_player_info_pointer->vehicle_actor_pointer;
+    if (vehicle != NULL) {
+        if (current_actor_pointer->unk58 == ACTOR_LANKY) {
+            sp24 = 0x1C7;
+            var_a2 = 0x1C5;
+            sp1C = 0x1C6;
+        } else {
+            sp24 = 0x53;
+            var_a2 = 0x54;  
+            sp1C = 0x55;
+        }
+        aaD = vehicle->additional_actor_data;
+        func_global_asm_806E8724(vehicle, aaD);
+        if ((func_global_asm_8061CB50() == 0) && (playerAnimationState = current_player->animation_state, (playerAnimationState->unk64 != 0x3B5))) {
+            if ((aaD->unkC < 0.2f) && (aaD->unkC > -0.2f) && ((sp24 != playerAnimationState->unk0->unk10))) {
+                if ((playerAnimationState->unk0->unk24 >= 0.0f) && (playerAnimationState->unk0->unk4 > 0.0f)) {
+                    func_global_asm_80614D48(current_player, 0xBF800000, 0x40A00000, aaD);
+                    return;
+                }
+                if (current_actor_pointer->animation_state->unk0->unk4 == 0.0f) {
+                    func_global_asm_80613C48(current_player, sp24, 0.0f, 5.0f);
+                }
+            } else {
+                if (aaD->unkC < -0.2f) {
+                    func_global_asm_806E854C(aaD, sp24, var_a2);
+                    return;
+                }
+                if (aaD->unkC > 0.2f) {
+                    func_global_asm_806E854C(aaD, sp24, sp1C);
+                }
+            }
+        }
+    }
+}
 
 void func_global_asm_806E8A8C(void) {
     Actor *vehicle;
