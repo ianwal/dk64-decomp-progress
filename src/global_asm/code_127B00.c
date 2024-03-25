@@ -115,11 +115,8 @@ u8 func_global_asm_80723C98(s32 arg0) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_global_asm_80723F88.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_global_asm_80724154.s")
-
 f32 func_global_asm_80724308(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, f32 arg5);
 
-/*
 void func_global_asm_80724154(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 *arg4, f32 *arg5) {
     f32 test;
     f32 var_f22;
@@ -139,7 +136,7 @@ void func_global_asm_80724154(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 *arg4,
             var_f22 = 0.0f;
         }
     }
-    while (i-- != 0) {
+    while (i--) {
         test = func_global_asm_80724308(arg0, arg1, arg2, arg3, var_s0, var_f22);
         if (test < highest) {
             *arg4 = var_s0;
@@ -155,20 +152,9 @@ void func_global_asm_80724154(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 *arg4,
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_global_asm_80724308.s")
 
 s16 func_global_asm_807245D8(s32 arg0) {
     return D_global_asm_807FDB90[arg0]->unk4;
-}
-
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_global_asm_807245F0.s")
-
-void func_global_asm_80724874(Actor *arg0) {
-    if (arg0->unk118 != NULL) {
-        free(arg0->unk118);
-        arg0->unk118 = NULL;
-    }
 }

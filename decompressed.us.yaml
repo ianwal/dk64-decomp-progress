@@ -303,6 +303,7 @@ segments:
       - [0x2119370, c, code_119370]
       - [0x2124780, bin, code_124780] #mips3
       - [0x2127B00, c, code_127B00]
+      - [0x21292F0, c, code_1292F0]
       - [0x21295B0, c, code_1295B0]
       - [0x212E800, c, code_12E800]
       - [0x21332B0, c, code_1332B0]
@@ -427,6 +428,7 @@ segments:
       - [0x21631B0, rodata] # code_114270 // TODO: Probably a file split lurking in here
       - [0x21633A0, rodata] # code_119370
       - [0x2163840, .rodata, code_127B00]
+      - [0x2163870, .rodata, code_1292F0]
       - [0x2163880, rodata] # code_1295B0, code12E800?
       - [0x2164880, rodata] # code_12E800
       - [0x2164C50, .rodata, code_133A90]
