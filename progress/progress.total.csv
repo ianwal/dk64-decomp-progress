@@ -1856,7 +1856,7 @@ us,asm,func_global_asm_8072B330,264,yes
 us,asm,func_global_asm_806D9D58,632,no
 us,asm,func_global_asm_80705F5C,1116,no
 us,asm,getEEPROMSaveSlot,68,yes
-us,asm,func_global_asm_8066241C,436,no
+us,asm,func_global_asm_8066241C,436,yes
 us,asm,func_global_asm_80686A5C,668,yes
 us,asm,func_global_asm_8062B630,48,yes
 us,asm,func_global_asm_806ED420,232,yes

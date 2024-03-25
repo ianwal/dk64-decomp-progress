@@ -640,9 +640,6 @@ void func_global_asm_806623D4(u8 arg0) {
     D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3B9, 1, 0);
 }
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8066241C.s")
-
 typedef struct {
     u8 unk0[0x3C - 0];
     f32 unk3C;
@@ -652,15 +649,14 @@ typedef struct {
     Struct8066241C_arg1_unk0 *unk0;
 } Struct8066241C_arg1;
 
-/*
 Gfx *func_global_asm_8066241C(Gfx *dl, Struct8066241C_arg1 *arg1, u8 arg2) {
     gDPPipeSync(dl++);
     gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_global_asm_80748A9C[arg2].unk0);
     gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
-    gDPLoadSync(dl++);
-    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);
-    gDPPipeSync(dl++);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+    gDPLoadSync(dl++);\
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);\
+    gDPPipeSync(dl++);\
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);\
     gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
@@ -673,7 +669,6 @@ Gfx *func_global_asm_8066241C(Gfx *dl, Struct8066241C_arg1 *arg1, u8 arg2) {
     gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, 1, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, 14, G_TX_NOMIRROR | G_TX_WRAP, 5, 14);
     return dl;
 }
-*/
 
 void func_global_asm_806625D0(u8 arg0) {
     // Texture (Uncompressed)
