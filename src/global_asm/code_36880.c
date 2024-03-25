@@ -1805,6 +1805,7 @@ void func_global_asm_8063C3C0(s16 arg0) {
     }
 }
 
+// TODO: May return arg0 (Gfx*), see func_global_asm_8062CEA8
 void func_global_asm_8063C418(s32 arg0, s16 arg1) {
     D_global_asm_80747D80[arg1].unk4(arg0);
 }

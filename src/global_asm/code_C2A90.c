@@ -237,11 +237,10 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gDPPipeSync(dl++);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
-    gDPSetColorImage(dl++, 7, G_IM_SIZ_32b, 4096, 0xFA000000);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
 
     dl = func_global_asm_8070068C(dl);
-    temp = 0x140 - func_global_asm_806FBD5C(1, &sp4C);
-    dl = func_global_asm_806FC530(dl, 1, 2 * temp, 0xAA, &sp4C, 1);
+    dl = func_global_asm_806FC530(dl, 1, (s16)(320 - func_global_asm_806FBD5C(1, &sp4C)) * 2, 0xAA, &sp4C, 1);
     if (arg1->unk168-- == 0) {
         arg1->control_state_progress++;
     }

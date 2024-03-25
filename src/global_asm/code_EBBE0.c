@@ -1044,12 +1044,12 @@ void func_global_asm_806EA600(void) {
     func_global_asm_806EA5CC();
 }
 
+// close, float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806EA628.s")
 
 f32 func_global_asm_806EA2D8(void);
 
 /*
-// TODO: Pretty close, float and stack nonsense
 void func_global_asm_806EA628(void) {
     PlayerAdditionalActorData *temp_a0;
     f32 *temp_v0;

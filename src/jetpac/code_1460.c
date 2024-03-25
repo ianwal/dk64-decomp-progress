@@ -500,7 +500,7 @@ void func_jetpac_80026AB0(void) {
             var_a1 = 0;
         }
         temp_v0 = func_jetpac_80025B70(&D_jetpac_8002F050);
-        var_f0 = D_jetpac_8002F050;
+        var_f0 = D_jetpac_8002F050[0].unk0;
         temp_f2 = D_jetpac_8002F054;
         if (var_a1 != 0) {
             if (D_jetpac_8002F080 == 0) {

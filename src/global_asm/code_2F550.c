@@ -1188,6 +1188,69 @@ void func_global_asm_8062E67C(Struct8062E67C *arg0, Struct8062E67C *arg1, u8 arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062EBB8.s")
 
+typedef struct {
+    u8 unk0[0x4C - 0x00];
+    f32 unk4C;
+    f32 unk50;
+    f32 unk54;
+    f32 unk58;
+} Struct8062EBB8_arg0;
+
+/*
+s32 func_global_asm_8062EBB8(Struct8062EBB8_arg0 *arg0, f32 arg1, f32 arg2, f32 arg3) {
+    s32 i;
+    f64 temp_f0_2;
+    f64 temp_f2_3;
+    f32 temp_f30;
+    f64 var_f12;
+    f32 temp00;
+    f32 temp01;
+    f32 temp02;
+    f64 temp;
+    f64 temp2;
+    f64 temp3;
+
+    i = 0;
+
+    temp_f30 = arg0->unk58;
+    temp_f30 += arg0->unk4C * arg1;
+    temp_f30 += arg0->unk50 * arg2;
+    temp_f30 += arg0->unk54 * arg3;
+
+    // temp_f30 = temp_f30 + temp00 + temp01 + temp02;
+    var_f12 = (f64)temp_f30 / sqrtf((arg0->unk4C * arg0->unk4C) + (arg0->unk50 * arg0->unk50) + (arg0->unk54 * arg0->unk54));
+    if (var_f12 < 0.0) {
+        var_f12 = 0.0 - var_f12;
+    }
+    if (var_f12 > 300.0) {
+        return 2;
+    }
+    while (i < 4) {
+        temp = arg0->unk4C;
+        temp2 = arg0->unk50;
+        temp3 = arg0->unk54;
+
+        temp *= (D_global_asm_807F5E20[i][0] - arg1);
+        temp2 *= (D_global_asm_807F5E20[i][1] - arg2);
+        temp3 *= (D_global_asm_807F5E20[i][2] - arg3);
+
+        temp_f0_2 = 
+            temp +
+            temp2 +
+            temp3;
+
+        if ((temp_f0_2 > 0.01) || (temp_f0_2 < -0.01)) {
+            temp_f2_3 = temp_f30 / temp_f0_2;
+            if ((temp_f2_3 <= 0.0) && ((0.0 - temp_f2_3) <= 1.0)) {
+                return 0;
+            }
+        }
+        i++;
+    }
+    return 1;
+}
+*/
+
 // Hmm, DisplayList stuff?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062EDA8.s")
 

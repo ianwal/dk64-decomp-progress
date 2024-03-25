@@ -124,6 +124,7 @@ void func_race_80027880(s32 arg0, u16 arg1, u16 arg2) {
 }
 */
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80027920.s")
 
 void func_race_80027AF8(RaceStruct3 *arg0, s8 arg1) {

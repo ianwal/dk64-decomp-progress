@@ -190,6 +190,58 @@ s32 func_global_asm_8066D250(Struct8066D250 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066D2F4.s")
 
+/*
+s32 func_global_asm_8066D2F4(Struct8066D250 *arg0) {
+    // TODO: Convert the stack stuff into an array/struct
+    f32 sp28;
+    f32 temp_f0;
+    f32 temp_f10;
+    f32 temp_f16;
+    f32 temp_f18;
+    f32 temp_f4;
+    f32 temp_f6;
+    f32 temp_f6_2;
+    f32 temp_f8;
+    f32 temp_f8_2;
+    f32 var_f12;
+    f32 var_f2;
+    f64 temp_f0_2;
+    f64 temp_f2;
+    s32 var_v0;
+
+    temp_f8 = arg0->unkC - arg0->unk0;
+    temp_f18 = arg0->unk6 - arg0->unk0;
+    temp_f16 = arg0->unkE - arg0->unk2;
+    temp_f4 = arg0->unk10 - arg0->unk4;
+    temp_f6 = arg0->unk8 - arg0->unk2;
+    temp_f10 = arg0->unkA - arg0->unk4;
+    temp_f8_2 = (temp_f16 * temp_f10) - (temp_f6 * temp_f4);
+    sp28 = (temp_f4 * temp_f18) - (temp_f10 * temp_f8);
+    temp_f6_2 = (temp_f8 * temp_f6) - (temp_f18 * temp_f16);
+    temp_f0 = sqrtf((temp_f6_2 * temp_f6_2) + (temp_f8_2 * temp_f8_2));
+    temp_f2 = temp_f0;
+    if ((temp_f2 < 0.01) && (temp_f2 > -0.01)) {
+        var_f2 = 1.57f;
+    } else {
+        if (sp28 > 0.0f) {
+            var_f12 = sp28;
+        } else {
+            var_f12 = -sp28;
+        }
+        var_f2 = func_global_asm_80611BB4(var_f12, temp_f0);
+    }
+    temp_f0_2 = var_f2 * 57.29577791868205;
+    if (temp_f0_2 < 10.0) {
+        return 1;
+    }
+    if (temp_f0_2 < 45.0) {
+        return 2;
+    } else {
+        return 0;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066D4DC.s")
 
 // close, regalloc

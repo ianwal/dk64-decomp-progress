@@ -782,6 +782,7 @@ void func_global_asm_80654418(f32 arg0, f32 arg1, f32 arg2) {
     }
 }
 
+// cc, matrix, loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_806545D4.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_806547A8.s")
