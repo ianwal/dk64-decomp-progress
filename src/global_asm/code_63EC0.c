@@ -223,8 +223,57 @@ void func_global_asm_8065FB64(f32 arg0, f32 arg1, s32 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8065FD88.s")
 
-// Displaylist stuff (chunk)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8065FEB8.s")
+typedef struct {
+    u8 unk0[0x50 - 0x0];
+    s16 unk50; // Used
+    s16 unk52;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    u8 unk64;
+    u8 unk65;
+    u8 unk66;
+    u8 unk67; // Used
+} Struct8065FEB8_arg1_unk0;
+
+typedef struct {
+    Struct8065FEB8_arg1_unk0 *unk0; // Used
+    u8 unk4[0x40 - 0x4];
+    s16 unk40; // Used
+    s16 unk42; // Used
+    s16 unk44; // Used
+    s16 unk46; // Used
+} Struct8065FEB8_arg1;
+
+Gfx *func_global_asm_8065FEB8(Gfx *dl, Struct8065FEB8_arg1 *arg1) {
+    s16 temp_v0;
+    Struct8065FEB8_arg1_unk0 *temp_v1;
+
+    gDPPipeSync(dl++);
+    temp_v1 = arg1->unk0;
+    if (temp_v1->unk67 == 1) {
+        temp_v0 = temp_v1->unk50;
+        gDPSetScissor(
+            dl++,
+            G_SC_NON_INTERLACE,
+            chunk_array_pointer[temp_v0].deload1,
+            chunk_array_pointer[temp_v0].deload2,
+            chunk_array_pointer[temp_v0].deload3,
+            chunk_array_pointer[temp_v0].deload4
+        );
+    } else {
+        gDPSetScissor(
+            dl++,
+            G_SC_NON_INTERLACE,
+            arg1->unk40,
+            arg1->unk42,
+            arg1->unk44,
+            arg1->unk46
+        );
+    }
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_80660070.s")

@@ -447,7 +447,7 @@ typedef struct {
 } Struct807F70B4;
 
 extern s32 D_global_asm_807F70AC;
-extern Struct807F70B4 *D_global_asm_807F70B4;
+extern Struct807F70B4 *D_807F70B4;
 
 /*
 // TODO: Fiddly, progress made
@@ -459,7 +459,7 @@ void func_global_asm_80652FDC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, 
     for (i = 0; i < D_global_asm_807F70AC; i++) {
         if ((arg3 == D_global_asm_807F70B0[i].unk0) && (arg4 == D_global_asm_807F70B0[i].unk4)) {
             temp_v1 = D_global_asm_807F70B0[i].unk2;
-            temp_v0_2 = &D_global_asm_807F70B4[temp_v1];
+            temp_v0_2 = &D_807F70B4[temp_v1];
             if ((temp_v0_2->unk0 <= arg0) && (arg0 <= temp_v0_2->unk6) && (temp_v0_2->unk2 <= arg1) && (arg1 <= temp_v0_2->unk8) && (temp_v0_2->unk4 <= arg2) && (arg2 <= temp_v0_2->unkA)) {
                 *arg5 = temp_v1;
                 func_global_asm_80652FDC(arg0, arg1, arg2, arg3, temp_v1, arg5);
@@ -883,12 +883,12 @@ void func_global_asm_80655258(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
         if (arg3 == D_global_asm_807F70B0[i].unk4) {
             if (chunk_array_pointer[D_global_asm_807F70B0[i].unk0].loaded == 1) {
                 if (func_global_asm_8062DBDC(
-                    D_global_asm_807F70B4[D_global_asm_807F70B0[i].unk2].unk0,
-                    D_global_asm_807F70B4[D_global_asm_807F70B0[i].unk2].unk2,
-                    D_global_asm_807F70B4[D_global_asm_807F70B0[i].unk2].unk4,
-                    D_global_asm_807F70B4[D_global_asm_807F70B0[i].unk2].unk6,
-                    D_global_asm_807F70B4[D_global_asm_807F70B0[i].unk2].unk8,
-                    D_global_asm_807F70B4[D_global_asm_807F70B0[i].unk2].unkA,
+                    D_807F70B4[D_global_asm_807F70B0[i].unk2].unk0,
+                    D_807F70B4[D_global_asm_807F70B0[i].unk2].unk2,
+                    D_807F70B4[D_global_asm_807F70B0[i].unk2].unk4,
+                    D_807F70B4[D_global_asm_807F70B0[i].unk2].unk6,
+                    D_807F70B4[D_global_asm_807F70B0[i].unk2].unk8,
+                    D_807F70B4[D_global_asm_807F70B0[i].unk2].unkA,
                     arg0,
                     arg1,
                     arg2,
