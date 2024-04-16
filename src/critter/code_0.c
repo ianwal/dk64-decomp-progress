@@ -342,7 +342,7 @@ void func_critter_800245B8(Critter *arg0) {
         rng_val = func_global_asm_806119A0();
         sp3C = arg0->unk28 * 0.333333333333333315;
         if ((s16)(rng_val % 255U) < 6) {
-            func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_global_asm_806119A0() & 3) + 0x1A9), 0xFF, 0x7F, 0x1E, 0x5A, 0.7f, 0);
+            playSoundAtPosition(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_global_asm_806119A0() & 3) + 0x1A9), 0xFF, 0x7F, 0x1E, 0x5A, 0.7f, 0);
         }
         arg0->unk42 = arg0->unk42 + (1200.0f * sp3C);
         arg0->unk42 &= 0xFFF;
@@ -365,8 +365,8 @@ void func_critter_800245B8(Critter *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_800247F4.s")
 
-void func_critter_80025A3C(Struct800247F4 *); /* extern */
-void func_global_asm_80612CA0(f32 (*)[4], f32); /* extern */
+void func_critter_80025A3C(Struct800247F4 *);
+void func_global_asm_80612CA0(f32 (*)[4], f32);
 extern s8 D_critter_80029870;
 extern s8 D_critter_800298D0;
 extern s8 D_critter_800298E0;
@@ -455,7 +455,7 @@ void func_critter_80024F28(Critter *arg0) {
         }
         temp = ABS(sp3E);
         if (!(temp < 0x5B)) {
-            func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x16F, 0x46, 0xDC, 0x1E, 0x5A, 0.7f, 0);
+            playSoundAtPosition(arg0->x_pos, arg0->y_pos, arg0->z_pos, 0x16F, 0x46, 0xDC, 0x1E, 0x5A, 0.7f, 0);
         }
         arg0->unk42 = (arg0->unk42 + (200.0 * (1.5 + (150.0f * arg0->unk30))));
         arg0->unk42 &= 0xFFF;
@@ -473,7 +473,7 @@ void func_critter_80024F28(Critter *arg0) {
 
 void func_critter_80025500(Critter *arg0) {
     if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1) && ((s16) (func_global_asm_806119A0() % 255U) < 6)) {
-        func_global_asm_806086CC(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_global_asm_806119A0() & 3) + 0x1A9), 0xFF, 0x5A, 0x1E, 0x5A, 0.7f, 0);
+        playSoundAtPosition(arg0->x_pos, arg0->y_pos, arg0->z_pos, ((func_global_asm_806119A0() & 3) + 0x1A9), 0xFF, 0x5A, 0x1E, 0x5A, 0.7f, 0);
     }
     func_critter_80024578(arg0);
 }

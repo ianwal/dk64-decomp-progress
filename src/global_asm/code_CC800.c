@@ -300,15 +300,15 @@ void func_global_asm_806C8984(void) {
         case MAP_BEAVER_BOTHER_EASY:
         case MAP_BEAVER_BOTHER_NORMAL:
         case MAP_BEAVER_BOTHER_HARD:
-            func_global_asm_806CFE7C();
-            func_global_asm_80614EBC(current_player, 0);
+            setYAccelerationFrom80753578();
+            playActorAnimation(current_player, 0);
             func_global_asm_80613C48(current_player, 0, 0.0f, 0.0f);
             current_player->control_state = 0x7D;
             current_player->control_state_progress = 0;
             current_player->object_properties_bitfield &= 0xFFFF7FFF;
             current_player->shadow_opacity = 0;
             spawnActor(ACTOR_MINIGAME_BOTHER_KLAPTRAP, 0x21);
-            func_global_asm_80614EBC(last_spawned_actor, 0x232);
+            playActorAnimation(last_spawned_actor, 0x232);
             last_spawned_actor->unk11C = current_player;
             extra_player_info_pointer->vehicle_actor_pointer = last_spawned_actor;
             break;
@@ -340,12 +340,12 @@ void func_global_asm_806C8984(void) {
             extra_player_info_pointer->unk48 = D_global_asm_80753354[D_global_asm_807FD584];
             current_player->control_state = 0x62;
             current_player->control_state_progress = 0;
-            func_global_asm_80614E78(current_player, 0x52);
+            playAnimation(current_player, 0x52);
             break;
         case MAP_KROOL_BARREL_CHUNKY_SHOOTING_GAME:
             current_player->control_state = 0x5F;
             current_player->control_state_progress = 0;
-            func_global_asm_80614E78(current_player, 0x4B);
+            playAnimation(current_player, 0x4B);
             break;
         case MAP_FUNGI_DOGADON:
         case MAP_DK_ISLES_DK_THEATRE:
@@ -477,7 +477,7 @@ void func_global_asm_806C90C4(s32 exitIndex) {
             PaaD->unk50 = 1;
             current_player->unk6A |= 4;
             func_global_asm_8067ACB4(current_player);
-            func_global_asm_80614E78(current_player, 0x34);
+            playAnimation(current_player, 0x34);
             // Fallthrough
         case 0:
             current_player->unkAC = -10000.0f;

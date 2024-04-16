@@ -11,7 +11,7 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800029EC.s")
 
 // Should be doable, surprisingly hard
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002A30.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/strcpy.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002A64.s")
 
@@ -31,8 +31,8 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002E98.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002ECC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/strchr.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002F18.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/strlen.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002F54.s")

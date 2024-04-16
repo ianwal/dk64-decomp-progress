@@ -24,6 +24,7 @@ us,boot,func_dk64_boot_80005854,44,no
 us,boot,guPosition,112,no
 us,boot,guMtxF2L,256,yes
 us,boot,__osSpGetStatus,12,yes
+us,boot,strchr,76,no
 us,boot,__osSetFpcCsr,16,yes
 us,boot,func_dk64_boot_8000773C,24,no
 us,boot,func_dk64_boot_80005070,324,yes
@@ -74,7 +75,6 @@ us,boot,func_dk64_boot_80007724,24,no
 us,boot,guScaleF,84,yes
 us,boot,osSendMesg,332,yes
 us,boot,osSetEventMesg,104,yes
-us,boot,func_dk64_boot_80002ECC,76,no
 us,boot,osPiGetStatus,12,yes
 us,boot,func_dk64_boot_80002790,152,no
 us,boot,guMtxCatL,88,yes
@@ -125,6 +125,7 @@ us,boot,func_dk64_boot_80002BB8,188,no
 us,boot,guPerspectiveF,560,yes
 us,boot,__osSetGlobalIntMask,76,yes
 us,boot,func_dk64_boot_80007788,56,no
+us,boot,strcpy,52,no
 us,boot,guMtxL2F,180,yes
 us,boot,__osSetTimerIntr,116,yes
 us,boot,__osIdCheckSum,252,no
@@ -158,7 +159,6 @@ us,boot,func_dk64_boot_80003120,192,no
 us,boot,osViSetSpecialFeatures,440,yes
 us,boot,guAlignF,448,no
 us,boot,__osDequeueThread,64,yes
-us,boot,func_dk64_boot_80002A30,52,no
 us,boot,send_mesg,232,yes
 us,boot,__osDispatchThread,380,yes
 us,boot,__osViSwapContext,768,no
@@ -182,7 +182,6 @@ us,boot,osAiSetNextBuffer,164,yes
 us,boot,osGetThreadPri,24,yes
 us,boot,osStopThread,192,yes
 us,boot,func_dk64_boot_800004F4,180,yes
-us,boot,func_dk64_boot_80002F18,60,no
 us,boot,__osTimerInterrupt,376,yes
 us,boot,__osGetId,428,no
 us,boot,func_dk64_boot_800022D4,288,yes
@@ -214,6 +213,7 @@ us,boot,func_dk64_boot_80000A30,112,no
 us,boot,guMtxCatF,360,yes
 us,boot,osYieldThread,76,yes
 us,boot,guRotate,92,no
+us,boot,strlen,60,no
 us,boot,osViGetNextFramebuffer,64,yes
 us,boot,osEepromProbe,112,yes
 us,boot,guMtxIdentF,136,yes

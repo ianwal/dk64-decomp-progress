@@ -16,7 +16,7 @@ void func_minecart_800265F0(void) {
     sp47 = 0x96;
     func_global_asm_80729B00();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        func_global_asm_80614EBC(current_actor_pointer, 0x310);
+        playActorAnimation(current_actor_pointer, 0x310);
         spawnActor(ACTOR_UNKNOWN_284, 0x4C);
         func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
         last_spawned_actor->unk11C = current_actor_pointer;
@@ -29,7 +29,7 @@ void func_minecart_800265F0(void) {
         last_spawned_actor->unk11C = current_actor_pointer;
         last_spawned_actor->unk168 = 1;
         last_spawned_actor->unkEC = 0x2BC;
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x301, 0xFF, 0x7F, 0, 0, 0.0f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x301, 0xFF, 0x7F, 0, 0, 0.0f, 0);
         current_actor_pointer->control_state = 1;
         current_actor_pointer->z_rotation = 0x12C;
         current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
@@ -57,7 +57,7 @@ void func_minecart_800265F0(void) {
             if (((u32)object_timer % D_global_asm_807FDC9C->unkA_u8[0]) != 0) {
                 var_t6 = current_actor_pointer->unk0;
             } else {
-                func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x182, 0xFF, 0x7F, 0, 0, 0.3f, 0);
+                playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x182, 0xFF, 0x7F, 0, 0, 0.3f, 0);
                 spawnActor(ACTOR_UNKNOWN_287, 0x50);
                 last_spawned_actor->unk11C = current_actor_pointer;
                 func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.06f);
@@ -69,7 +69,7 @@ void func_minecart_800265F0(void) {
                 var_t6 = current_actor_pointer->control_state_progress;
             }
             if (var_t6 == 0xFF) {
-                func_global_asm_80614EBC(current_actor_pointer, 0x311);
+                playActorAnimation(current_actor_pointer, 0x311);
                 current_actor_pointer->control_state = 1;
             }
         case 1:
@@ -125,7 +125,7 @@ void func_minecart_80027CF4(void) {
         if (func_global_asm_8072DE10(10000) != 0 || (((D_global_asm_807FDC94->x_position - current_actor_pointer->x_position) * (D_global_asm_807FDC94->x_position - current_actor_pointer->x_position))
                 + ((D_global_asm_807FDC94->y_position - current_actor_pointer->y_position) * (D_global_asm_807FDC94->y_position - current_actor_pointer->y_position))
                 + ((D_global_asm_807FDC94->z_position - current_actor_pointer->z_position) * (D_global_asm_807FDC94->z_position - current_actor_pointer->z_position))) < 2500.0f) {
-            func_global_asm_80614EBC(current_actor_pointer, 0x280);
+            playActorAnimation(current_actor_pointer, 0x280);
         }
     }
 }

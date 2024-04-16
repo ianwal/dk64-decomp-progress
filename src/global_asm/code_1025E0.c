@@ -38,7 +38,7 @@ extern f32 D_global_asm_8075DFB4;
 
 /*
 void func_global_asm_806FD8E0(void *arg0, s16 arg1, void *arg2, s16 arg3, u8 arg4) {
-    func_global_asm_806FC530(arg0, arg1, (D_global_asm_80744490 - func_global_asm_806FBD5C(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
+    func_global_asm_806FC530(arg0, arg1, (D_global_asm_80744490 - getCenterOfString(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
 }
 */
 
@@ -106,7 +106,7 @@ void func_global_asm_806FDAEC(s16 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FDB8C.s")
 
 void func_global_asm_806FDF1C(s16 arg0, s32 arg1) {
-    func_dk64_boot_80002A30(func_global_asm_806FD9B4(arg0)->unk4, arg1);
+    strcpy(func_global_asm_806FD9B4(arg0)->unk4, arg1);
 }
 
 // rodata

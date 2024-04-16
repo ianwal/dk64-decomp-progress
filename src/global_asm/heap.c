@@ -211,7 +211,7 @@ void func_global_asm_806115A8(HeapHeader **arg0, HeapHeader *arg1) {
     arg1->unkB = 2;
     D_global_asm_807F5A70[D_global_asm_807F5A68++] = arg1;
     if (D_global_asm_807F5A68 == 0x20) {
-        func_global_asm_80732354(0xD, 0, 0, 0);
+        raiseException(0xD, 0, 0, 0);
     }
 }
 */

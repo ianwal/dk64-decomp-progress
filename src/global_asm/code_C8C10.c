@@ -224,9 +224,9 @@ void func_global_asm_806C61C8(void) {
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unkEC = 0x3C;
-        func_global_asm_80614EBC(current_actor_pointer, 0x23D);
+        playActorAnimation(current_actor_pointer, 0x23D);
         if (player_pointer->control_state == 0xC) {
-            func_global_asm_80614E78(player_pointer, 0x87);
+            playAnimation(player_pointer, 0x87);
         }
     }
     sp24 = (func_global_asm_80612794(player_pointer->y_rotation) * 50.0f) + player_pointer->x_position;
@@ -262,7 +262,7 @@ void func_global_asm_806C61C8(void) {
             deleteActor(current_actor_pointer);
             func_global_asm_8061CB08();
             if (player_pointer->control_state == 0xC) {
-                func_global_asm_80614E78(player_pointer, 9);
+                playAnimation(player_pointer, 9);
             }
         }
     } else {

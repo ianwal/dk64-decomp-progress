@@ -912,7 +912,7 @@ void func_race_8002E644(A17C_race_8002B964 *arg0) {
                         sp3C = 0x18A;
                         break;
                 }
-                func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, sp3C, 0xFF, 0x7F, 0, 0, 0.0f, 0);
+                playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, sp3C, 0xFF, 0x7F, 0, 0, 0.0f, 0);
                 arg0->unkE = 0x14;
             }
         }

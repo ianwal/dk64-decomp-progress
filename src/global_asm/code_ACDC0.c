@@ -531,16 +531,16 @@ void func_global_asm_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
             break;
         case 2:
             func_dk64_boot_800031E0(&sp2C, &D_global_asm_8075AB0C, arg5);
-            arg3 -= func_global_asm_806FBD5C(1, &sp2C) >> 1;
+            arg3 -= getCenterOfString(1, &sp2C) >> 1;
             break;
         default:
             func_dk64_boot_800031E0(&sp2C, &D_global_asm_8075AB10, arg5);
             break;
     }
     if (sp37 != 0) {
-        arg3 -= func_global_asm_806FBD5C(1, &sp2C);
+        arg3 -= getCenterOfString(1, &sp2C);
     }
-    D_global_asm_807FC810 = func_global_asm_806FBD5C(1, &sp2C);
+    D_global_asm_807FC810 = getCenterOfString(1, &sp2C);
     temp_f14 = 640.0f - (arg1 * 4);
     temp_v1 = arg0->unk15;
     temp_f16 = 480.0f - (arg2 * 4);
@@ -582,19 +582,19 @@ void func_global_asm_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ABA6C.s")
 
-Gfx *func_global_asm_806ABB98(Gfx *dl, s16 arg1, s16 arg2, f32 arg3, void *arg4) {
+Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, void *string) {
     f32 sp70[4][4];
     f32 sp30[4][4];
     f32 *mtx;
 
     mtx = malloc(0x40);
     func_global_asm_8061134C(mtx);
-    guScaleF(&sp70[0], arg3, arg3, 1.0f);
-    guTranslateF(&sp30[0], arg1, arg2, 0.0f);
+    guScaleF(&sp70[0], scale, scale, 1.0f);
+    guTranslateF(&sp30[0], x, y, 0.0f);
     guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
     guMtxF2L(&sp70[0], mtx);
     gSPMatrix(dl++, mtx, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    dl = func_global_asm_806FC530(dl, 1, 0, 0, arg4, 0x80);
+    dl = func_global_asm_806FC530(dl, 1, 0, 0, string, 0x80);
     gSPPopMatrix(dl++, G_MTX_MODELVIEW);
     return dl;
 }
@@ -735,8 +735,7 @@ void func_global_asm_806ACCE8(void) {
 Gfx *func_global_asm_806A921C();
 extern u8 D_global_asm_807505F8[2]; // at least 2
 
-// TODO: Might return DL from last function call
-void func_global_asm_806ACF10(Gfx* dl, Actor *arg1) {
+Gfx *func_global_asm_806ACF10(Gfx* dl, Actor *arg1) {
     u8 controlStateProgressIsZero;
     u8 shade;
 
@@ -745,10 +744,10 @@ void func_global_asm_806ACF10(Gfx* dl, Actor *arg1) {
     shade = D_global_asm_807505F8[controlStateProgressIsZero];
     gDPSetPrimColor(dl++, 0, 0, shade, shade, shade, 0xFF);
 
-    dl = func_global_asm_806ABB98(dl, 0x280, 0x1B8, 0.7f, D_global_asm_807FC7E0[0]);
+    dl = printText(dl, 640, 440, 0.7f, D_global_asm_807FC7E0[0]);
     shade = D_global_asm_807505F8[1 - controlStateProgressIsZero];
     gDPSetPrimColor(dl++, 0, 0, shade, shade, shade, 0xFF);
-    func_global_asm_806ABB98(dl, 0x280, 0x208, 0.7f, D_global_asm_807FC7E0[3]);
+    return printText(dl, 640, 520, 0.7f, D_global_asm_807FC7E0[3]);
 }
 
 // TODO: Very close, something wrong with the do while loops?

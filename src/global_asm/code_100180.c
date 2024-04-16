@@ -80,7 +80,7 @@ void func_global_asm_806FBC34(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FBD5C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/getCenterOfString.s")
 
 s16 func_global_asm_806FBEAC(u8 *arg0) {
     s16 count;

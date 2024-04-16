@@ -1155,7 +1155,7 @@ void func_global_asm_8062E608(void *arg0, s32 *arg1, s32 arg2) {
     memcpy((*arg1 * 6) + arg2, arg0, 6);
     *arg1 += 1;
     if (*arg1 >= 0xD) {
-        func_global_asm_80732354(1, 0, 0, 0);
+        raiseException(1, 0, 0, 0);
     }
 }
 

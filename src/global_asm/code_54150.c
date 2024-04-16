@@ -104,7 +104,7 @@ void func_global_asm_8065054C(OM2_unk78 *arg0, void *arg1, void *arg2) {
         D_global_asm_807F6960[i].unk8 = arg2;
         D_global_asm_807F6960[i].unkC = D_global_asm_807444FC ^ 1;
     } else {
-        func_global_asm_80732354(0xB, 0, 0, 0);
+        raiseException(0xB, 0, 0, 0);
     }
 }
 

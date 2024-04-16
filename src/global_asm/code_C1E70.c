@@ -141,14 +141,14 @@ void func_global_asm_806BD3E4(void) {
     sp28 = 0;
     switch (current_actor_pointer->control_state) {
         case 1:
-            func_global_asm_80614EBC(current_actor_pointer, 0x2EF);
+            playActorAnimation(current_actor_pointer, 0x2EF);
             current_actor_pointer->control_state = 2;
             playCutscene(player_pointer, 2, 1);
             break;
         case 2:
             if (func_global_asm_80629148()) {
                 playSong(0x7D, 1.0f);
-                func_global_asm_80614EBC(current_actor_pointer, 0x2F1);
+                playActorAnimation(current_actor_pointer, 0x2F1);
                 current_actor_pointer->control_state = 3;
                 current_actor_pointer->control_state_progress = 0;
             }
@@ -161,7 +161,7 @@ void func_global_asm_806BD3E4(void) {
             break;
     }
     if ((func_global_asm_8061CB50() == 0) && (current_actor_pointer->animation_state->unk64 != 0x2F0)) {
-        func_global_asm_80614EBC(current_actor_pointer, 0x2F0);
+        playActorAnimation(current_actor_pointer, 0x2F0);
     }
     if (sp28) {
         func_global_asm_8061F0B0(D_global_asm_807F5D10, sp2B, sp28);

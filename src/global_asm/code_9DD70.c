@@ -188,7 +188,7 @@ void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, void *arg3, u16 arg4,
             return;
         }
         if (arg1 == 0) {
-            last_spawned_actor->x_position = (D_global_asm_80744490 - func_global_asm_806FBD5C(arg0, arg3)) * 2;
+            last_spawned_actor->x_position = (D_global_asm_80744490 - getCenterOfString(arg0, arg3)) * 2;
         } else {
             last_spawned_actor->x_position = arg1 * 4;
         }
@@ -197,8 +197,8 @@ void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, void *arg3, u16 arg4,
         last_spawned_actor->unk16A = 0xFF;
         last_spawned_actor->unk16B = 0xFF;
         last_spawned_actor->unk16C = 0xFF;
-        temp_s0->unk0 = malloc(func_dk64_boot_80002F18(arg3) + 1);
-        func_dk64_boot_80002A30(temp_s0->unk0, arg3);
+        temp_s0->unk0 = malloc(strlen(arg3) + 1);
+        strcpy(temp_s0->unk0, arg3);
         temp_s0->unk4 = arg4;
         temp_s0->unk6 = arg5;
         temp_s0->unk8 = arg6;
@@ -427,7 +427,7 @@ void func_global_asm_8069E018(void) {
 
 void func_global_asm_8069E040() {
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        func_global_asm_80614EBC(current_actor_pointer, 0x299);
+        playActorAnimation(current_actor_pointer, 0x299);
     }
     renderActor(current_actor_pointer, 0);
 }

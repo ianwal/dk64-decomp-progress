@@ -195,10 +195,9 @@ void func_menu_80024418(MenuStruct0 *arg0, s32 arg1) {
     }
 }
 
-void func_dk64_boot_800031E0(char *, char *, ...);           /* extern */
-Gfx *func_global_asm_806ABB98(Gfx *, s16 , s16 , f32 , void *); /* extern */
-Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32); /* extern */
-s32 func_global_asm_8070E750(s32, s32, s32);    /* extern */
+void func_dk64_boot_800031E0(char *, char *, ...);
+Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32);
+s32 func_global_asm_8070E750(s32, s32, s32);
 
 Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
     // DrawSnidesMenu
@@ -223,7 +222,7 @@ Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
             } else {
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x80);
             }
-            dl = func_global_asm_806ABB98(dl, 0x280, var_s2, menu_scale, func_global_asm_8070E750(0x2A, var_s0 + 3, 1));
+            dl = printText(dl, 0x280, var_s2, menu_scale, func_global_asm_8070E750(0x2A, var_s0 + 3, 1));
             var_s2 += 0x3C;
         }
     } else {

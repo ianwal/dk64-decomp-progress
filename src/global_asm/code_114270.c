@@ -697,14 +697,14 @@ void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     s32 size;
 
     sp30 = func_global_asm_8070E750(0xC, 1, 1);
-    size = func_dk64_boot_80002F18(sp30) + 2;
+    size = strlen(sp30) + 2;
     sp28 = D_global_asm_80744490 * 0.5 * 2;
     temp_f16 = 418.0f;
     sp34 = malloc(size);
     func_global_asm_8061134C(sp34);
     func_dk64_boot_800031E0(sp34, &D_global_asm_8075E5D4, 0x63, sp30);
     // func_dk64_boot_800031E0(sp34, "%c%s", 0x63, sp30);
-    sp28 -= 0.5 * func_global_asm_806FBD5C(1, sp34);
+    sp28 -= 0.5 * getCenterOfString(1, sp34);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, arg1);
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);

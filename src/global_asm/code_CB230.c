@@ -204,7 +204,7 @@ void func_global_asm_806C6BC8(void) {
             break;
         case 2:
             if (D_global_asm_807FBD70 == 4) {
-                func_global_asm_80614EBC(current_actor_pointer, 0);
+                playActorAnimation(current_actor_pointer, 0);
                 func_global_asm_80614D00(current_actor_pointer, 0.0f, 0.0f);
                 current_actor_pointer->control_state = 0;
                 current_actor_pointer->control_state_progress = 0;
@@ -220,7 +220,7 @@ void func_global_asm_806C6BC8(void) {
                         break;
                     case 3:
                         func_global_asm_8072B324(current_actor_pointer, 0);
-                        func_global_asm_80614EBC(current_actor_pointer, 0x2BB);
+                        playActorAnimation(current_actor_pointer, 0x2BB);
                         current_actor_pointer->control_state_progress = 4;
                         // fallthrough
                     case 0:
@@ -230,7 +230,7 @@ void func_global_asm_806C6BC8(void) {
                             current_actor_pointer->control_state_progress = 3;
                         }
                         if ((current_actor_pointer->unk11C->control_state == 5) || (player_pointer->unk58 != ACTOR_DIDDY)) {
-                            func_global_asm_80614EBC(current_actor_pointer, 0x2BA);
+                            playActorAnimation(current_actor_pointer, 0x2BA);
                             func_global_asm_80614D00(current_actor_pointer, 0.0f, 0.0f);
                             func_global_asm_8063DA40(0x33, 0);
                             deleteActor(current_actor_pointer->unk11C);

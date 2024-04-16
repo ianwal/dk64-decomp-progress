@@ -1778,7 +1778,7 @@ void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3
         }
     } else {
         if (D_global_asm_807F9680 == 0xC0) {
-            func_global_asm_80732354(6, 0, 0, 0);
+            raiseException(6, 0, 0, 0);
         }
         D_global_asm_807FA8A0[D_global_asm_807F9680].unk8 = D_global_asm_80748E18[pointerTableIndex];
         if (D_global_asm_80748E18[pointerTableIndex] != 0) {
@@ -1934,7 +1934,7 @@ void func_global_asm_8066B7F4(GlobalASMStruct40 *arg0, u32 arg1, s32 *arg2, s32 
         sp2C = 0;
         sp28 = 0;
         func_global_asm_8066BA2C(arg1, &sp2F, &sp2C, &sp28);
-        func_global_asm_80732354(7, sp2F, sp2C, object_timer - sp28);
+        raiseException(7, sp2F, sp2C, object_timer - sp28);
     }
     if (arg1 == arg0->unk0) {
         *arg2 = arg0->unk4;

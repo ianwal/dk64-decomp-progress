@@ -209,7 +209,7 @@ void func_boss_8002E82C(void) {
 
 void func_boss_8002E9B8(s32 arg0, s16 arg1) {
     BossActor178 *sp1C = current_actor_pointer->boss178;
-    func_global_asm_80614EBC(current_actor_pointer, arg0);
+    playActorAnimation(current_actor_pointer, arg0);
     func_global_asm_80614D90(current_actor_pointer);
     func_global_asm_80613CA8(sp1C->unk0, arg1, 0.0f, 6.0f);
 }
@@ -269,7 +269,7 @@ void func_boss_8002FC98(Actor *arg0, u8 arg1, s32 arg2, u8 arg3) {
                 if ((arg2 == 1) || (arg2 == 2)) {
                     arg0->unk132 = arg2;
                 } else {
-                    func_global_asm_80614EBC(arg0, arg2);
+                    playActorAnimation(arg0, arg2);
                     if (arg3 != 0) {
                         func_global_asm_80614D00(arg0, arg3 * temp_f20, 0);
                     }
@@ -297,7 +297,7 @@ void func_boss_8002FDF8(Actor* arg0, u8 arg1) {
         // Note: This temporary variable appears to be required for this function to match
         temp = current_actor_pointer;
         func_boss_8002FC48(temp, 0xA - temp->health);
-        func_global_asm_80614EBC(current_actor_pointer, 0x415);
+        playActorAnimation(current_actor_pointer, 0x415);
     }
     if ((D_global_asm_807FBD70 == 5) || (D_global_asm_807FBD70 == 4)) {
         func_global_asm_8072DA60();

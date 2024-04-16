@@ -33,7 +33,7 @@ void func_global_asm_806B8C78(void) {
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     current_actor_pointer->y_velocity = 0.0f;
-                    func_global_asm_80614EBC(current_actor_pointer, 0x290);
+                    playActorAnimation(current_actor_pointer, 0x290);
                     current_actor_pointer->control_state_progress++;
                     break;
                 case 2:

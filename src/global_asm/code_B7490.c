@@ -47,7 +47,7 @@ void func_global_asm_806B3420(void) {
             if (D_global_asm_807FDC90->unk2C) {
                 D_global_asm_807FDC90->unk2C--;
             } else {
-                func_global_asm_80614EBC(current_actor_pointer, 0x35D);
+                playActorAnimation(current_actor_pointer, 0x35D);
                 func_global_asm_80614D00(current_actor_pointer, 0.5f, 0.0f);
                 current_actor_pointer->control_state = 1;
                 current_actor_pointer->control_state_progress = 0;
@@ -177,7 +177,7 @@ void func_global_asm_806B3680(void) {
                                 func_global_asm_80714CC0(&D_global_asm_8072073C, 2.0 * current_actor_pointer->animation_state->scale_y, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                             }
                             func_global_asm_80608528(current_actor_pointer, 0x3D, 0xFF, 0x7F, 0);
-                            func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x35C, 0xFF, 0x7F, 0, 0x32, D_global_asm_8075B5D8, 0);
+                            playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x35C, 0xFF, 0x7F, 0, 0x32, D_global_asm_8075B5D8, 0);
                             func_global_asm_8067E278(0, 1);
                             func_global_asm_8066E9EC(current_actor_pointer, 1, current_actor_pointer->ledge_info_pointer->unkC * sp54);
                             func_global_asm_8066EB40(current_actor_pointer, current_actor_pointer->ledge_info_pointer->unkC * sp54);
@@ -221,7 +221,7 @@ void func_global_asm_806B3D18(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
             if (func_global_asm_8072E0A8(0x96, 0x96)) {
-                func_global_asm_80614EBC(current_actor_pointer, 0x253);
+                playActorAnimation(current_actor_pointer, 0x253);
                 current_actor_pointer->control_state_progress = 1;
             }
             break;
@@ -410,7 +410,7 @@ void func_global_asm_806B49B0(u8 arg0, s16 arg1, s16 arg2) {
         case 0x2:
         case 0x3:
             if (current_actor_pointer->control_state_progress == 0) {
-                func_global_asm_80614EBC(current_actor_pointer, arg1);
+                playActorAnimation(current_actor_pointer, arg1);
                 current_actor_pointer->control_state_progress++;
             }
             func_global_asm_8072AB74(arg0, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0xE1, 0.0f);
@@ -428,7 +428,7 @@ void func_global_asm_806B49B0(u8 arg0, s16 arg1, s16 arg2) {
                 case 0:
                 case 1:
                 case 2:
-                    func_global_asm_80614EBC(current_actor_pointer, arg2);
+                    playActorAnimation(current_actor_pointer, arg2);
                     current_actor_pointer->control_state_progress = 3;
                     // Fallthrough
                 case 3:
@@ -475,14 +475,14 @@ void func_global_asm_806B4DCC(void) {
         current_actor_pointer->unk16B = 0xFA;
         current_actor_pointer->unk16C = 0xFA;
         func_global_asm_8069E490(0x2D, 0x44);
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x2C1, 0xFF, 0x7F, 0, 0x14, 0.0f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x2C1, 0xFF, 0x7F, 0, 0x14, 0.0f, 0);
     }
     sp3C->unk0 = MAX(0, D_global_asm_807FDC90->unkC - D_global_asm_807FDC9C->unk6);
     if (D_global_asm_807FBD70 == 9) {
         if (current_actor_pointer->control_state != 0x37) {
             current_actor_pointer->control_state = 0x37;
             current_actor_pointer->control_state_progress = 0;
-            func_global_asm_80614EBC(current_actor_pointer, 0x248);
+            playActorAnimation(current_actor_pointer, 0x248);
             func_global_asm_8069E5B8();
             playSong(0x14, 1.0f);
             func_global_asm_8063DA40(0x7F, 0xA);
@@ -509,9 +509,9 @@ void func_global_asm_806B4DCC(void) {
             func_global_asm_8072D9D4();
             playCutscene(current_actor_pointer, 3, 5);
             if ((current_actor_pointer->health & 1) != 0) {
-                func_global_asm_80614EBC(current_actor_pointer, 0x24A);
+                playActorAnimation(current_actor_pointer, 0x24A);
             } else {
-                func_global_asm_80614EBC(current_actor_pointer, 0x249);
+                playActorAnimation(current_actor_pointer, 0x249);
             }
         }
     }
@@ -625,7 +625,7 @@ void func_global_asm_806B54BC(void) {
     func_global_asm_80729B00();
     if ((current_actor_pointer->control_state != 0x40) && (current_actor_pointer->control_state != 0x37) && ((D_global_asm_807FBB70.unk200 == 9) || (D_global_asm_807FBB70.unk15 != 0))) {
         func_global_asm_80605314(current_actor_pointer, 0);
-        func_global_asm_80614EBC(current_actor_pointer, 0x331);
+        playActorAnimation(current_actor_pointer, 0x331);
         current_actor_pointer->control_state = 0x37;
         current_actor_pointer->control_state_progress = 0;
         func_global_asm_80608528(player_pointer, 0x16, 0xFF, 0x7F, 0x1E);

@@ -104,7 +104,7 @@ void func_global_asm_806B6958(void) {
 void func_global_asm_806B6C88(s16 arg0, s16 arg1) {
     if (spawnActor(ACTOR_KLAPTRAP_SKELETON, 0x24)) {
         last_spawned_actor->control_state = 0x23;
-        func_global_asm_80614EBC(last_spawned_actor, 0x237);
+        playActorAnimation(last_spawned_actor, 0x237);
         last_spawned_actor->y_rotation = arg1;
         last_spawned_actor->unkEE = last_spawned_actor->y_rotation;
         func_global_asm_8067B238(

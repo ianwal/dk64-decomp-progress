@@ -315,7 +315,7 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
             default:
                 if (temp_a1 < -5) {
                     if (inputs_enabled_timer == 0) {
-                        func_global_asm_80614EBC(player_pointer, D_menu_80033724[-6 - temp_a1]);
+                        playActorAnimation(player_pointer, D_menu_80033724[-6 - temp_a1]);
                     }
                     menu_cutscene_index += 2;
                     menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index];
@@ -514,8 +514,6 @@ void func_menu_80028C20(Actor *arg0, s32 arg1) {
     func_menu_8002FC1C(arg0, MaaD, 1);
 }
 
-Gfx *func_global_asm_806ABB98(Gfx*, s16, s16, f32, void*);
-
 Gfx *func_menu_80028D3C(Actor *arg0, Gfx *dl) {
     s32 pad;
     s32 sp100;
@@ -543,7 +541,7 @@ Gfx *func_menu_80028D3C(Actor *arg0, Gfx *dl) {
             func_dk64_boot_800031E0(&sp2C, "%s %d", label_string_pointer_array[7], sp100 + 1);
         }
     }
-    return func_global_asm_806ABB98(dl, spFC * 4.0f, spF8 * 4.0f, 0.6f, &sp2C);
+    return printText(dl, spFC * 4.0f, spF8 * 4.0f, 0.6f, &sp2C);
 }
 
 void func_menu_80028EA8(Actor *arg0, s32 arg1) {
@@ -674,9 +672,9 @@ Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     } else {
         func_dk64_boot_800031E0(&sp34, "%s %d", label_string_pointer_array[7], sp120 + 1);
     }
-    dl = func_global_asm_806ABB98(dl, spFE, sp100, 0.6f, &sp34);
+    dl = printText(dl, spFE, sp100, 0.6f, &sp34);
     sp100 -= 0x3C;
-    return func_global_asm_806ABB98(dl, sp110 * 4.0f, sp100, 0.6f, label_string_pointer_array[8]);
+    return printText(dl, sp110 * 4.0f, sp100, 0.6f, label_string_pointer_array[8]);
 }
 
 void func_menu_80029D30(Actor *arg0, s32 arg1) {
@@ -1706,7 +1704,7 @@ f32 func_menu_80031980(Struct80031980 *arg0, f32 arg1, f32 *arg2) {
 void func_menu_80031A5C(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
-            func_global_asm_80614EBC(current_actor_pointer, 0x345);
+            playActorAnimation(current_actor_pointer, 0x345);
             current_actor_pointer->y_rotation = 0;
             current_actor_pointer->control_state_progress = 1;
             playCutscene(current_actor_pointer, 0x13, 5);

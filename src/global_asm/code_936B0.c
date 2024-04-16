@@ -623,7 +623,7 @@ void func_global_asm_80692640(void) {
             func_global_asm_80714950(0xC);
             func_global_asm_80714CC0(&D_global_asm_807202D0, 0.75f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x61, 0xFF, 0x7F, 0x1E, 0, 0.0f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x61, 0xFF, 0x7F, 0x1E, 0, 0.0f, 0);
         deleteActor(current_actor_pointer);
     }
     if ((aaD->unk0 + D_global_asm_80750344) < D_global_asm_8076A068) {

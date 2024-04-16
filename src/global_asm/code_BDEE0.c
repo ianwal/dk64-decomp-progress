@@ -84,7 +84,7 @@ void func_global_asm_806BA130(void) {
     current_actor_pointer->health = 1;
     current_actor_pointer->unk132 = 1;
     D_global_asm_807FDC90->unk4 = player_pointer;
-    func_global_asm_80614EBC(current_actor_pointer, D_global_asm_807FDC98->unk2A);
+    playActorAnimation(current_actor_pointer, D_global_asm_807FDC98->unk2A);
     current_actor_pointer->y_rotation = (((rand() >> 0xF) % 1024) + player_pointer->y_rotation) - 0x200;
     current_actor_pointer->unkB8 = ((rand() >> 0xF) % 100) + 50;
     current_actor_pointer->y_velocity = ((rand() >> 0xF) % 150) + 100;
@@ -109,7 +109,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
             current_actor_pointer->interactable = 0x80;
             current_actor_pointer->control_state = 0x15;
             current_actor_pointer->control_state_progress = 0;
-            func_global_asm_80614EBC(current_actor_pointer, 0);
+            playActorAnimation(current_actor_pointer, 0);
             current_actor_pointer->unk132 = 2;
             sp54->unk6 = current_actor_pointer->x_position;
             sp54->unk8 = current_actor_pointer->z_position;
@@ -138,7 +138,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
                 if (character_change_array->unk2C0 == 1) {
                     func_global_asm_806EB0C0(0x32, current_actor_pointer, 0);
                 } else {
-                    func_global_asm_80614EBC(temp_s0, (((rand() >> 0xF) % 1000) >= 0x1F5) ? 0x21F : 0x21E);
+                    playActorAnimation(temp_s0, (((rand() >> 0xF) % 1000) >= 0x1F5) ? 0x21F : 0x21E);
                     temp_s0->control_state_progress = 2;
                 }
             } else if (D_global_asm_807FBD70 == 4) {
@@ -148,7 +148,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
                     current_actor_pointer->unkF0 = 0x28;
                     func_global_asm_80714CC0(&D_global_asm_8071FB34, 2.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                     playSound(0x1CA, 0x7FFF, 63.0f, 1.0f, 0, 0);
-                    func_global_asm_80614EBC(temp_s0, 0x220);
+                    playActorAnimation(temp_s0, 0x220);
                     temp_s0->control_state_progress = 2;
                     temp_s0->health--;
                     if (temp_s0->health == 0) {
@@ -284,7 +284,7 @@ void func_global_asm_806BB400(void) {
         func_global_asm_807248B0(current_actor_pointer, 1.0f);
         current_actor_pointer->unk15F = 0;
         current_actor_pointer->y_rotation = func_global_asm_80665DE0(player_pointer->x_position, player_pointer->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position);
-        func_global_asm_80614EBC(current_actor_pointer, 0x21B);
+        playActorAnimation(current_actor_pointer, 0x21B);
         D_global_asm_807FDC98->unk46 |= 8;
         D_global_asm_807FDC98->unk28 = 0x21C;
     }
@@ -303,7 +303,7 @@ void func_global_asm_806BB400(void) {
                     // break;
                 case 1:
                     if (current_actor_pointer->animation_state->unk64 != 0x21C) {
-                        func_global_asm_80614EBC(current_actor_pointer, 0x21C);
+                        playActorAnimation(current_actor_pointer, 0x21C);
                     }
                     func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
                     break;

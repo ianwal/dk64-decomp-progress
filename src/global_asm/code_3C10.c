@@ -600,7 +600,7 @@ void func_global_asm_805FF9AC(enum map_e arg0, s32 arg1, s32 arg2, s16 arg3) {
     var_s1 = &D_global_asm_8076A160[i];
     if (!var_v0) {
         sp4C = i;
-        func_global_asm_80732354(0xA, 0, 0, 0);
+        raiseException(0xA, 0, 0, 0);
 block_17:
         i = sp4C;
     }

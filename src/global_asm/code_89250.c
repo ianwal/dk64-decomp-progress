@@ -711,7 +711,7 @@ void func_global_asm_80687400(void) {
 void func_global_asm_80687474(Actor *arg0, f32 arg1) {
     spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D);
     last_spawned_actor->object_properties_bitfield |= 0x400;
-    func_global_asm_80614EBC(last_spawned_actor, 0x334);
+    playActorAnimation(last_spawned_actor, 0x334);
     func_global_asm_8067B238(last_spawned_actor, arg0, arg0->animation_state->scale_y * arg1);
 }
 
@@ -764,7 +764,7 @@ void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
         s16 temp;
         func_global_asm_806877C8(((((rand() >> 0xF) % 32767) % 10) + 0xD));
         temp = ((rand() >> 0xF) % 1000) >= 0x1F5 ? 0x8A : 0xA1;
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, temp, 0xFF, 0x7F, 0x28, 0, 0.3f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, temp, 0xFF, 0x7F, 0x28, 0, 0.3f, 0);
     }
 }
 

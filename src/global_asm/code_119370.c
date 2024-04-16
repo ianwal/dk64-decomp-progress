@@ -1529,7 +1529,7 @@ void func_global_asm_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
         }
     }
     if ((arg0->unk34E == 3) || (arg0->unk34E == 0x11) || (arg0->unk34E == 0x15)) {
-        func_global_asm_806086CC(arg0->unk340, arg0->unk344, arg0->unk348, 0x14F, 0xFF, 0x7F, 0x1E, 0x4B, D_global_asm_8075E998, 0);
+        playSoundAtPosition(arg0->unk340, arg0->unk344, arg0->unk348, 0x14F, 0xFF, 0x7F, 0x1E, 0x4B, D_global_asm_8075E998, 0);
     }
     if ((arg0->unk354 - arg0->unk358) < 3) {
         if (arg0->unk36D >= 0xB) {
@@ -1676,7 +1676,7 @@ void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1) {
     switch (arg0->unk35C) {
         case 0:
             if ((arg0->unk34E == 0xA) && (arg0->unk351 == 0)) {
-                func_global_asm_806086CC(arg0->unk340, arg0->unk344, arg0->unk348, 0xE4, 0xFF, 0x7F, 0x1E, 0x46, 9.0f, 0);
+                playSoundAtPosition(arg0->unk340, arg0->unk344, arg0->unk348, 0xE4, 0xFF, 0x7F, 0x1E, 0x46, 9.0f, 0);
                 func_global_asm_807149FC(-1);
                 func_global_asm_807149B8(1);
                 func_global_asm_8071498C(&func_global_asm_8071C24C);
@@ -1727,7 +1727,7 @@ void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
         }
     }
     if (*arg1 != 0) {
-        func_global_asm_806086CC(arg0->unk340, arg0->unk344, arg0->unk348, 0xEA, 0xFF, 0x7F, 0x1E, 0x46, 9.0f, 0);
+        playSoundAtPosition(arg0->unk340, arg0->unk344, arg0->unk348, 0xEA, 0xFF, 0x7F, 0x1E, 0x46, 9.0f, 0);
         func_global_asm_80714998(2);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(1);

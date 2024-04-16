@@ -82,7 +82,7 @@ Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
                 } else {
                     sp70[0] = '\0';
                 }
-                dl = func_global_asm_806FC530(dl, 6, 640 - (func_global_asm_806FBD5C(6, &sp70) * 2), y, &sp70, 1);
+                dl = func_global_asm_806FC530(dl, 6, 640 - (getCenterOfString(6, &sp70) * 2), y, &sp70, 1);
                 y += 48;
             }
         }

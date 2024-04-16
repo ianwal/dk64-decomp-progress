@@ -148,7 +148,7 @@ s32 func_global_asm_80677ED0(Struct80677ED0 *arg0) {
             last_spawned_actor->y_rotation = arg0->unk18;
             last_spawned_actor->unk15C = arg0->unk1A;
             if (arg0->unk8 != 0) {
-                func_global_asm_80614EBC(last_spawned_actor, arg0->unk8);
+                playActorAnimation(last_spawned_actor, arg0->unk8);
             }
             return TRUE;
         }
@@ -289,7 +289,7 @@ s32 func_global_asm_806782E8(Actor *arg0) {
 
     if (D_global_asm_807FBE09 != 0) {
         if (D_global_asm_807FBF10 == 0x40) {
-            func_global_asm_80732354(0xC, 0, 0, 0);
+            raiseException(0xC, 0, 0, 0);
         }
         if (arg0 == current_actor_pointer) {
             D_global_asm_807FBE08 = 1;
@@ -686,7 +686,7 @@ void func_global_asm_80679064(void *arg0) {
         }
     }
     if (!found) {
-        func_global_asm_80732354(0xE, 0, 0, 0);
+        raiseException(0xE, 0, 0, 0);
     } else {
         D_global_asm_807FBFE0[i] = arg0;
     }
@@ -780,7 +780,7 @@ extern s16 D_global_asm_807FBFD8;
 
 void func_global_asm_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5, s32 arg6) {
     if (D_global_asm_807FBFD8 == 0x10) {
-        func_global_asm_80732354(0xF, 0, 0, 0);
+        raiseException(0xF, 0, 0, 0);
     }
     D_global_asm_807FBF18[D_global_asm_807FBFD8].unk0 = func_global_asm_80679490(arg1, arg2, arg3, arg4, arg5);
     D_global_asm_807FBF18[D_global_asm_807FBFD8].unk4 = arg0;
@@ -1308,7 +1308,7 @@ void func_global_asm_8067AE90(Actor *arg0) { // addActorToList()
         actor_list[actor_count] = arg0;
         actor_count++;
     } else {
-        func_global_asm_80732354(0x13, arg0->unk58, 0, 0);
+        raiseException(0x13, arg0->unk58, 0, 0);
     }
     func_global_asm_8067B01C();
 }

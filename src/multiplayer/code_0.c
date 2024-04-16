@@ -206,11 +206,11 @@ void func_multiplayer_8002452C(void) {
     }
 }
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800245B0.s")
 
 /*
-void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, s32 arg3, s32 arg4) {
+void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, void *arg3, s32 arg4) {
     gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, arg3);
     gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 3, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 3, G_TX_NOLOD);
     gDPLoadSync(dl++);
@@ -218,16 +218,19 @@ void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, s32 arg3, s32 arg4
     gDPPipeSync(dl++);
     gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 2, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 3, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 3, G_TX_NOLOD);
     gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x001C, 0x001C);
-
-    // TODO: wut?
-    dl->unk0 = 0xE4000000 | ((((*arg1 + arg4 * 8) * 4) & 0xFFF) << 0xC) | (((arg2 + 8) * 4) & 0xFFF);
-    dl->unk4 = (((*arg1 * 4) & 0xFFF) << 0xC) | ((arg2 * 4) & 0xFFF);
-
-    // TODO: wut?
-    gsDPHalf1(dl++, 0x00000000);
-    gsDPHalf2(dl++, 0x04000400);
-
-
+    // TODO: Issue is here
+    gSPTextureRectangle(
+        dl++,
+        *arg1,
+        arg2 * 4,
+        *arg1 + (arg4 * 8),
+        arg2 + 8,
+        G_TX_RENDERTILE,
+        0,
+        0,
+        0x0400,
+        0x0400
+    );
     *arg1 += arg4 * 8;
     return dl;
 }

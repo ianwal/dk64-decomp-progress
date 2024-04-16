@@ -173,7 +173,7 @@ void func_global_asm_806AD9F4(void) {
         func_global_asm_8072B79C(0x2F4, 0x2F4, 0x2F4);
         if (current_actor_pointer->y_position != current_actor_pointer->floor) {
             current_actor_pointer->control_state = 0x1E;
-            func_global_asm_80614EBC(current_actor_pointer, 0x2F8);
+            playActorAnimation(current_actor_pointer, 0x2F8);
             func_global_asm_806AD9AC();
         }
     }
@@ -213,7 +213,7 @@ void func_global_asm_806AD9F4(void) {
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072B324(current_actor_pointer, 0);
-                    func_global_asm_80614EBC(current_actor_pointer, 0x2F5);
+                    playActorAnimation(current_actor_pointer, 0x2F5);
                     current_actor_pointer->control_state_progress++;
                 case 1:
                     func_global_asm_8072AB74(0, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x4200, 0.0f);
@@ -259,7 +259,7 @@ void func_global_asm_806ADDD8(void) {
         case 0:
         case 1:
             if (func_global_asm_8072E22C(300)) {
-                func_global_asm_80614EBC(current_actor_pointer, 0x31A);
+                playActorAnimation(current_actor_pointer, 0x31A);
                 current_actor_pointer->control_state = 0x23;
                 current_actor_pointer->control_state_progress = 0;
             }
@@ -269,7 +269,7 @@ void func_global_asm_806ADDD8(void) {
                 current_actor_pointer->control_state = 0x23;
                 current_actor_pointer->control_state_progress = 0;
             } else if (func_global_asm_8072E22C(100)) {
-                func_global_asm_80614EBC(current_actor_pointer, 0x31B);
+                playActorAnimation(current_actor_pointer, 0x31B);
                 current_actor_pointer->control_state = 0x1E;
                 current_actor_pointer->control_state_progress = 0;
             }
@@ -285,7 +285,7 @@ void func_global_asm_806ADDD8(void) {
                 func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
             }
             if (!func_global_asm_8072E22C(300)) {
-                func_global_asm_80614EBC(current_actor_pointer, 0x31C);
+                playActorAnimation(current_actor_pointer, 0x31C);
                 current_actor_pointer->control_state = 0;
                 current_actor_pointer->control_state_progress = 0;
             }

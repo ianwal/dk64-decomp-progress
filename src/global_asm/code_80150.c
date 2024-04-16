@@ -459,7 +459,7 @@ void func_global_asm_8067DF44(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u
     s32 i;
 
     if (arg5 != 0) {
-        func_global_asm_806086CC(arg0, arg1, arg2, 0xF6, 0xFF, 0x7F, 0x19, 0x1E, 0.3f, 0);
+        playSoundAtPosition(arg0, arg1, arg2, 0xF6, 0xFF, 0x7F, 0x19, 0x1E, 0.3f, 0);
     }
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(&func_global_asm_8071B89C);
@@ -899,7 +899,7 @@ void func_global_asm_80682DF4(Actor *, u16 *, s32);
 /*
 extern u16 D_global_asm_807FBB54[];
 void func_global_asm_80682DF4(Actor *arg0, u16 *arg1, s32 arg2) {
-    func_global_asm_80614EBC(arg0, D_global_asm_807FBB54[(((arg2 * 7) + *arg1) - 2)]);
+    playActorAnimation(arg0, D_global_asm_807FBB54[(((arg2 * 7) + *arg1) - 2)]);
 }
 */
 
@@ -988,7 +988,7 @@ void func_global_asm_8068304C(void) {
         func_global_asm_8068842C(current_actor_pointer, 0, 1);
         func_global_asm_80688460(current_actor_pointer, 0, 1);
         func_global_asm_806883F4(current_actor_pointer, 0, sp2C.unk0[sp28->unk0], 0);
-        func_global_asm_80614EBC(current_actor_pointer, 0x329);
+        playActorAnimation(current_actor_pointer, 0x329);
     }
     current_actor_pointer->unk16D = current_actor_pointer->unk15F;
     current_actor_pointer->y_rotation += 0x32;

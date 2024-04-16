@@ -45,7 +45,11 @@ Gfx *func_global_asm_8068C5A8(Gfx *, u16, s32, s32, s32, s32, s32, s32, f32, f32
 // TODO: What do the params mean?
 s32 playCutscene(Actor*, s16, s32);
 void playSong(s32, f32);
+void playSoundAtObjectModel2(s16 arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6);
+void playSoundAtPosition(f32 x, f32 y, f32 z, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
 void playSound(s16, s16, f32, f32, s32, s32);
+
+Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, void *string);
 
 void func_global_asm_80613C48(Actor*, s16, f32, f32);
 
@@ -62,7 +66,8 @@ void func_global_asm_8071E864(Struct80717D84 *arg0, s8 *arg1);
 void func_global_asm_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA);
 void func_global_asm_80684900(u8);
 f32 func_global_asm_80612794(s16);
-void func_global_asm_80614E78(Actor*, s32);
+void playAnimation(Actor*, s32);
+void playActorAnimation(Actor*, s32);
 void func_global_asm_80629174(void);
 
 void func_global_asm_80729B00(void);
@@ -92,12 +97,8 @@ void func_global_asm_80604CBC(Actor* arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, 
 
 void func_global_asm_80614D90(Actor*);
 
-void func_global_asm_80614EBC(Actor*, s32);
-
 u8 playerCanDive(void);
 u8 playerCanThrowOrange(void);
-
-void func_global_asm_806086CC(f32 x, f32 y, f32 z, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
 
 u8 func_global_asm_805FCA64(void); // getCutsceneBarState()
 u8 getLevelIndex(u8 map, u8 arg1);
@@ -749,7 +750,7 @@ void func_global_asm_80672E64(void);
 void func_global_asm_80672E6C();
 void func_global_asm_80731B20(s32 arg0, s32 arg1, s32 arg2);
 void func_global_asm_80731B60(s32 arg0);
-void func_global_asm_80732354(u8 arg0, s32 arg1, s32 arg2, s32 arg3);
+void raiseException(u8 arg0, s32 arg1, s32 arg2, s32 arg3);
 void func_global_asm_8073239C(void);
 void func_global_asm_8073243C(void);
 void func_global_asm_806B24B8(void);
@@ -807,7 +808,7 @@ u8 func_global_asm_80663FCC(s16 model2ArrayIndex);
 s32 func_global_asm_80629148(void);
 void func_global_asm_806CBE90(void);
 s16 func_global_asm_806CC14C(s16 arg0, s16 arg1);
-void func_global_asm_806CFE7C(void);
+void setYAccelerationFrom80753578(void);
 void func_global_asm_806D3FA0(void);
 s32 func_global_asm_806E4580(void);
 void func_global_asm_806E9964(PlayerAdditionalActorData*);
@@ -1706,7 +1707,6 @@ void func_global_asm_8063DFEC(s32 arg0, void *arg1);
 void func_global_asm_80641B00(s16 arg0, s16 arg1, s16 arg2);
 u8 func_global_asm_80641F70(s16 arg0);
 s32 func_global_asm_806423A8(s16 arg0, s16 arg1, s16 arg2);
-void func_global_asm_806085DC(s16 arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6);
 void func_global_asm_80647170(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
 void func_global_asm_80649E00(GlobalASMStruct49 *arg0, s32 arg1, s32 arg2, s32 arg3);
 void func_global_asm_8064AAC4(s32 arg0, s16 arg1, s8 arg2, s32 arg3);
@@ -2168,7 +2168,7 @@ void func_global_asm_80613794(Actor*, u8);
 u16 func_global_asm_80688C84(u16);
 f32 func_global_asm_80689DD4(f32 x, f32 y, f32 z);
 s32 func_global_asm_80675C70(s16, s16, s16);
-s32 func_global_asm_806FBD5C(s16, void*);
+s32 getCenterOfString(s16, void*);
 void func_global_asm_8061C464(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 Gfx *func_global_asm_805FE4D4(Gfx *arg0);
 

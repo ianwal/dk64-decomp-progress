@@ -66,7 +66,7 @@ void func_global_asm_80729B00(void) {
                 current_actor_pointer->noclip_byte = 1;
                 current_actor_pointer->control_state = 0x39;
                 current_actor_pointer->control_state_progress = 0;
-                func_global_asm_80614EBC(current_actor_pointer, D_global_asm_807FDC98->unk2A);
+                playActorAnimation(current_actor_pointer, D_global_asm_807FDC98->unk2A);
                 func_global_asm_80608528(current_actor_pointer, 0x16, 0xFF, 0x7F, 0x14);
                 current_actor_pointer->y_velocity = -220.0f;
             }
@@ -386,7 +386,7 @@ void func_global_asm_8072B59C(u8 arg0, s16 arg1, s32 arg2) {
     current_actor_pointer->control_state = arg0;
     current_actor_pointer->control_state_progress = 0;
     if (arg2 != current_actor_pointer->animation_state->unk64) {
-        func_global_asm_80614EBC(current_actor_pointer, arg2);
+        playActorAnimation(current_actor_pointer, arg2);
     }
     func_global_asm_8072B324(current_actor_pointer, arg1);
 }
@@ -717,7 +717,7 @@ s32 func_global_asm_8072DE10(u16 arg0) {
 void func_global_asm_8072DE44(s32 arg0) {
     current_actor_pointer->control_state = D_global_asm_807FDC9C->unk10;
     current_actor_pointer->control_state_progress = 0;
-    func_global_asm_80614EBC(current_actor_pointer, arg0);
+    playActorAnimation(current_actor_pointer, arg0);
     func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkC);
 }
 

@@ -24,7 +24,7 @@ void func_global_asm_806B640C(void) {
         for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
             if (D_global_asm_807FBB70.unk258[i] == 3) {
                 current_actor_pointer->noclip_byte = 0x24;
-                func_global_asm_80614EBC(current_actor_pointer, 0x24F);
+                playActorAnimation(current_actor_pointer, 0x24F);
             }
         }
         func_global_asm_8068A858(&current_actor_pointer->unk16A, &current_actor_pointer->unk16B, &current_actor_pointer->unk16C);
@@ -33,7 +33,7 @@ void func_global_asm_806B640C(void) {
         if (temp_s6->unk0 > 0) {
             temp_s6->unk0--;
             if (temp_s6->unk0 == 0xA) {
-                func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x150, 0xFF, 0x7F, 0x1E, 0x32, 0.3f, 0);
+                playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x150, 0xFF, 0x7F, 0x1E, 0x32, 0.3f, 0);
             }
             if (temp_s6->unk0 == 0) {
                 D_global_asm_807FBB70.unk200 = 9;

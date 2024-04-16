@@ -249,7 +249,7 @@ void func_global_asm_80732280(void* arg0) {
 }
 */
 
-void func_global_asm_80732354(u8 arg0, s32 arg1, s32 arg2, s32 arg3) {
+void raiseException(u8 arg0, s32 arg1, s32 arg2, s32 arg3) {
     D_global_asm_807FF01C = arg0;
     D_global_asm_807FF020 = arg1;
     D_global_asm_807FF024 = arg2;

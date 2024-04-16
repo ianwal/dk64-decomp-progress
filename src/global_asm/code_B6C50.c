@@ -31,7 +31,7 @@ void func_global_asm_806B1F50(void) {
         func_global_asm_807149FC(-1);
         func_global_asm_807149A8(last_spawned_actor->draw_distance * 0.75);
         func_global_asm_80714C08(&D_global_asm_8072030C, 0.28f, last_spawned_actor, 1, 2);
-        func_global_asm_80614EBC(current_actor_pointer, 0x300);
+        playActorAnimation(current_actor_pointer, 0x300);
         func_global_asm_80604CBC(current_actor_pointer, 0x135, 0x64, 0, 0, 0x78, 1.0f, 0);
     }
     if ((D_global_asm_807FBB70.unk15 != 0) || (D_global_asm_807FBB70.unk200 == 9)) {
@@ -85,7 +85,7 @@ void func_global_asm_806B1F50(void) {
                     current_actor_pointer->control_state = 0x27;
                     current_actor_pointer->control_state_progress = 0;
                     playCutscene(current_actor_pointer, 3, 1);
-                    func_global_asm_80614EBC(current_actor_pointer, 0x307);
+                    playActorAnimation(current_actor_pointer, 0x307);
                     current_actor_pointer->y_rotation += 0x800;
                     current_actor_pointer->z_position += 5.0f;
                 }

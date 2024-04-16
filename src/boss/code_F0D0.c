@@ -27,12 +27,12 @@ typedef struct BossStruct2 {
 
 void func_boss_8003340C(BossStruct0 *arg0) {
     if ((current_actor_pointer->animation_state->unk64 != 0x223) && (arg0->unk1 == arg0->unk3)) {
-        func_global_asm_80614EBC(current_actor_pointer, 0x223);
+        playActorAnimation(current_actor_pointer, 0x223);
         func_global_asm_80614D90(current_actor_pointer);
         return;
     }
     if ((current_actor_pointer->animation_state->unk64 != 0x224) && (arg0->unk1 != arg0->unk3)) {
-        func_global_asm_80614EBC(current_actor_pointer, 0x224);
+        playActorAnimation(current_actor_pointer, 0x224);
         func_global_asm_80614D90(current_actor_pointer);
     }
 }
@@ -87,7 +87,7 @@ u8 func_boss_800339D8(BossStruct2 *arg0, u8 *arg1) {
             arg0->unk15 = arg0->unk16;
             current_actor_pointer->control_state = arg1[arg0->unk15++];
             current_actor_pointer->control_state_progress = 0;
-            func_global_asm_80614EBC(current_actor_pointer, 0);
+            playActorAnimation(current_actor_pointer, 0);
             return TRUE;
         }
     }

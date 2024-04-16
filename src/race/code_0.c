@@ -120,7 +120,7 @@ void func_race_80024000(void) {
                 if (D_global_asm_807FDC90->unk25 == var_t0[sp37].unk0) {
                     current_actor_pointer->y_acceleration = var_t0[sp37].unk4;
                     if (var_t0[sp37].unk8 == 1) {
-                        func_global_asm_80614EBC(current_actor_pointer, 0x286);
+                        playActorAnimation(current_actor_pointer, 0x286);
                         current_actor_pointer->y_velocity = 200.0f;
                         current_actor_pointer->control_state++;
                     }
@@ -489,7 +489,7 @@ void func_race_800274C0(void) {
     if (D_global_asm_807FBB70.unk200 == 9 || D_global_asm_807FBB70.unk15 != 0 || D_global_asm_807FBB70.unk200 == 5) {
         func_global_asm_807149B8(1);
         func_global_asm_80714CC0(&D_global_asm_80720340, 3.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, 0.3f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, 0.3f, 0);
         var_v1 = TRUE;
     }
     func_race_80026354(sp48, sp4C, 0);

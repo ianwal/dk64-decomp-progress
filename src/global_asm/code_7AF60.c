@@ -267,16 +267,16 @@ void func_global_asm_80676D00(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3) {
                     if (player_pointer->unk58 == ACTOR_CHUNKY && character_change_array[temp_a2].unk2C0 == 2) {
                         if (player_pointer->control_state != 0x31) {
                             if (arg0->interactable & 0x80) {
-                                func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x64, 0x1E, 0, 0.3f, 0);
+                                playSoundAtPosition(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x64, 0x1E, 0, 0.3f, 0);
                             }
                         }
                         return;
                     }
                     if (arg0->unk58 == ACTOR_KLUMP) {
-                        func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x37, 0xFF, 0x7F, 0x1E, 0x5A, 0.3f, 0);
+                        playSoundAtPosition(arg1->x_position, arg1->y_position, arg1->z_position, 0x37, 0xFF, 0x7F, 0x1E, 0x5A, 0.3f, 0);
                         return;
                     }
-                    func_global_asm_806086CC(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x7F, 0x1E, 0x5A, 0.3f, 0);
+                    playSoundAtPosition(arg1->x_position, arg1->y_position, arg1->z_position, 0x1E0, 0xFF, 0x7F, 0x1E, 0x5A, 0.3f, 0);
                 }
             }
         }

@@ -236,7 +236,7 @@ void func_race_800282D8(void) {
         case 0x47:
         case 0x4E:
         case 0x54:
-            func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x187, 0xFF, ((RaaD->unk1C - 0x1D) * 0.5) + 157.0, 0, 0, 0.3f, 0);
+            playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x187, 0xFF, ((RaaD->unk1C - 0x1D) * 0.5) + 157.0, 0, 0, 0.3f, 0);
             break;
     }
 }

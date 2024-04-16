@@ -346,7 +346,7 @@ void func_global_asm_805FBFF4(s32 arg0) {
         }
         func_global_asm_80611730();
         if (D_global_asm_80761680 != 0x12345678) {
-            func_global_asm_80732354(2, 0, 0, 0);
+            raiseException(2, 0, 0, 0);
         }
         if (phi_s4) {
             osSendMesg(D_global_asm_807655E0, 0x309, 1);
@@ -556,7 +556,7 @@ void func_global_asm_805FE71C(Gfx *dl, u8 arg1, s32 *arg2, u8 arg3) {
     gSPEndDisplayList(dl2++);
     *arg2 = (dl2 - D_global_asm_8076A050[arg1]);
     if (*arg2 >= D_global_asm_8076A058) {
-        func_global_asm_80732354(0x12, 0, 0, 0);
+        raiseException(0x12, 0, 0, 0);
     }
 }
 

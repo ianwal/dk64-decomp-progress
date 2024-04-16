@@ -302,7 +302,7 @@ s16 func_global_asm_80632630(s32 arg0, f32 x, f32 y, f32 z, f32 arg4, u8 arg5) {
 
     sp5C = NULL;
     if (D_global_asm_80747D70 >= D_global_asm_807F614A) {
-        func_global_asm_80732354(8, 0, 0, 0);
+        raiseException(8, 0, 0, 0);
     }
     if (arg5 == 0 && D_global_asm_807F6008 != 0) {
         return -1;

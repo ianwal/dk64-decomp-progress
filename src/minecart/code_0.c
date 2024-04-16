@@ -342,7 +342,7 @@ void func_minecart_80024FD0(void) {
         current_actor_pointer->unk168 = 3;
         PaaD->unk1F0 = PaaD->unk1F0 | 8;
         playCutscene(current_actor_pointer, 0, 1);
-        func_global_asm_80614EBC(current_actor_pointer, 0);
+        playActorAnimation(current_actor_pointer, 0);
     }
     if ((current_actor_pointer->control_state != 5) && (current_actor_pointer->control_state != 6)) {
         f32 dy = (character_change_array->look_at_eye_y - current_actor_pointer->y_position) - 100.0f;

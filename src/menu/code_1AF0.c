@@ -532,7 +532,7 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
                     case 2:
                     case 3:
                         spawnActor(ACTOR_PURCHASE_TEXT_OVERLAY, 0);
-                        func_global_asm_80614E78(character_change_array->player_pointer, 0x85);
+                        playAnimation(character_change_array->player_pointer, 0x85);
                         break;
                 }
                 playCutscene(character_change_array->player_pointer, 2, 1);

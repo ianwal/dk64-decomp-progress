@@ -727,10 +727,10 @@ void func_global_asm_806A736C(void) {
     }
     // TODO: Get rid of typecasts
     if ((u16)PaaD->unk8 == 1) {
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x73, 0xFF, 0x7F, 1, 0, 0.0f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x73, 0xFF, 0x7F, 1, 0, 0.0f, 0);
         playSong(0x3B, 0.7f);
     } else if ((u16)PaaD->unk8 == 0xA) {
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x19C, 0xB4, 0x7F, 1, 0, 0.0f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x19C, 0xB4, 0x7F, 1, 0, 0.0f, 0);
     }
     func_global_asm_806A6DB4(0);
     if (current_actor_pointer->y_position < current_actor_pointer->unkAC) {
@@ -848,7 +848,7 @@ void func_global_asm_806A7600(void *arg0) {
     }
     if (D_global_asm_807FBD70 == 4) {
         func_global_asm_80686CF8(current_actor_pointer);
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x2BF, 0xFF, 0x7F, 0x1E, 0, 0.0f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x2BF, 0xFF, 0x7F, 0x1E, 0, 0.0f, 0);
         deleteActor(current_actor_pointer);
         if (current_actor_pointer->unk58 == ACTOR_BALLOON_KROOL) {
             func_global_asm_80724994(3, 1, 0x27, 0, 0);

@@ -38,7 +38,7 @@ void func_boss_80030920(s32 arg0) {
     player_pointer->y_rotation = func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, player_pointer->x_position, player_pointer->z_position);
     current_actor_pointer->unkEE = \
     current_actor_pointer->y_rotation = player_pointer->y_rotation + 0x800;
-    func_global_asm_80614EBC(current_actor_pointer, 0x3F9);
+    playActorAnimation(current_actor_pointer, 0x3F9);
     if (func_global_asm_8061CB50()) {
         func_global_asm_8061D4E4(D_global_asm_807F5D10);
     }
@@ -82,7 +82,7 @@ void func_boss_80030D50(void) {
 
 void func_boss_80030E58() {
     D_global_asm_807FDC90->unk1A |= 1;
-    func_global_asm_806086CC(
+    playSoundAtPosition(
         current_actor_pointer->x_position, 
         current_actor_pointer->y_position, 
         current_actor_pointer->z_position, 

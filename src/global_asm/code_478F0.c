@@ -682,7 +682,7 @@ void func_global_asm_80645A64(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 void func_global_asm_80645B9C(gASMStruct3 *arg0, s16 arg1, s32 arg2, s32 arg3) {
     if (((s32) (0x243 - arg0->unk44) % 60) == 0) {
-        func_global_asm_806085DC(arg1, 0x38, 0xFF, 0x7F, 0, 0x3C, 0.0f);
+        playSoundAtObjectModel2(arg1, 0x38, 0xFF, 0x7F, 0, 0x3C, 0.0f);
     }
 }
 
@@ -1791,7 +1791,7 @@ void func_global_asm_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
             temp_v0 = func_global_asm_807270C0(8, 0);
             if (temp_v0) {
                 temp_v0->object_properties_bitfield |= 4;
-                func_global_asm_80614EBC(temp_v0, 0x35C);
+                playActorAnimation(temp_v0, 0x35C);
                 func_global_asm_80614D00(temp_v0, 0.9f, 0);
             }
         }
@@ -2105,11 +2105,11 @@ void func_global_asm_8064C708(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     if (*var_v1 == 0xB) {
         if (sp3E == 3) {
             *var_v1 = 3;
-            func_global_asm_806085DC(arg1, 0x257, 0x78, 0x7F, 0xA, 0x50, 0.3f);
+            playSoundAtObjectModel2(arg1, 0x257, 0x78, 0x7F, 0xA, 0x50, 0.3f);
         }
     } else if (sp3E == 0xB) {
         *var_v1 = 0xB;
-        func_global_asm_806085DC(arg1, 0x258, 0x78, 0x7F, 0xA, 0x50, 0.3f);
+        playSoundAtObjectModel2(arg1, 0x258, 0x78, 0x7F, 0xA, 0x50, 0.3f);
     }
 }
 
@@ -2140,7 +2140,7 @@ void func_global_asm_8064C814(void **arg0, s16 arg1, s32 arg2, s32 arg3) {
         if (sp42 != var_v1->unk0) {
             var_v1->unk0 = sp42;
             func_global_asm_806335B0(arg1, 1, 3, &sp4C, &sp48, &sp44);
-            func_global_asm_806086CC(sp4C, sp48, sp44, 0x32, 0xFF, 0x7F, 0xA, 0x50, 0.3f, 0);
+            playSoundAtPosition(sp4C, sp48, sp44, 0x32, 0xFF, 0x7F, 0xA, 0x50, 0.3f, 0);
         }
     }
     func_global_asm_80650D8C(arg1, 3, &sp42, &sp3C, &sp3B);
@@ -2148,7 +2148,7 @@ void func_global_asm_8064C814(void **arg0, s16 arg1, s32 arg2, s32 arg3) {
         if (sp42 != var_v1->unk4) {
             var_v1->unk4 = sp42;
             func_global_asm_806335B0(arg1, 1, 2, &sp4C, &sp48, &sp44);
-            func_global_asm_806086CC(sp4C, sp48, sp44, 0x332, 0xFF, 0x7F, 0, 0x50, 0.3f, 0);
+            playSoundAtPosition(sp4C, sp48, sp44, 0x332, 0xFF, 0x7F, 0, 0x50, 0.3f, 0);
         }
     }
 }
@@ -2178,7 +2178,7 @@ void func_global_asm_8064C9F8(Struct8064C9F8_arg0 *arg0, s16 arg1, s32 arg2, s32
         if (sp42 != *var_v1) {
             *var_v1 = sp42;
             func_global_asm_806335B0(arg1, 1, 2, &sp4C, &sp48, &sp44);
-            func_global_asm_806086CC(sp4C, sp48, sp44, (sp42 == 0xA) + 0x257, 0xFF, 0x7F, 0xA, 0x50, 0.3f, 0);
+            playSoundAtPosition(sp4C, sp48, sp44, (sp42 == 0xA) + 0x257, 0xFF, 0x7F, 0xA, 0x50, 0.3f, 0);
         }
     }
 }
@@ -2205,7 +2205,7 @@ void func_global_asm_8064CB3C(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
         if (sp4A == 0 || sp4A == 0xC || sp4A == 0x18 || sp4A == 0x24) {
             *var_v1 = sp4A;
             func_global_asm_806335B0(arg1, 1, 2, &sp54, &sp50, &sp4C);
-            func_global_asm_806086CC(sp54, sp50, sp4C, 0x3A, 0x50, 0x7F, 0, 0x50, 0.3f, 0);
+            playSoundAtPosition(sp54, sp50, sp4C, 0x3A, 0x50, 0x7F, 0, 0x50, 0.3f, 0);
         }
     }
 }
@@ -2225,7 +2225,7 @@ void func_global_asm_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80650D8C(arg1, 1, &sp3E, &sp38, &sp37);
     if (sp3E != *var_v1) {
         *var_v1 = sp3E;
-        func_global_asm_806085DC(arg1, 0x129, 0xFF, 0x7F, 3, 0x50, 0.3f);
+        playSoundAtObjectModel2(arg1, 0x129, 0xFF, 0x7F, 3, 0x50, 0.3f);
     }
 }
 
@@ -2363,10 +2363,10 @@ void func_global_asm_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     if (sp5E != *var_v1) {
         switch (sp5E) {
             case 0xF:
-                func_global_asm_806086CC(D_global_asm_807F6000[arg1].x_position, D_global_asm_807F6000[arg1].y_position + 300.0f, D_global_asm_807F6000[arg1].z_position, 0x8E, 0xFF, 0x50, 0, 0x50, 0.3f, 0);
+                playSoundAtPosition(D_global_asm_807F6000[arg1].x_position, D_global_asm_807F6000[arg1].y_position + 300.0f, D_global_asm_807F6000[arg1].z_position, 0x8E, 0xFF, 0x50, 0, 0x50, 0.3f, 0);
                 break;
             case 0:
-                func_global_asm_806086CC(D_global_asm_807F6000[arg1].x_position, D_global_asm_807F6000[arg1].y_position + 300.0f, D_global_asm_807F6000[arg1].z_position, 0x8F, 0xFF, 0x64, 0, 0x50, 0.3f, 0);
+                playSoundAtPosition(D_global_asm_807F6000[arg1].x_position, D_global_asm_807F6000[arg1].y_position + 300.0f, D_global_asm_807F6000[arg1].z_position, 0x8F, 0xFF, 0x64, 0, 0x50, 0.3f, 0);
                 break;
         }
         *var_v1 = sp5E;

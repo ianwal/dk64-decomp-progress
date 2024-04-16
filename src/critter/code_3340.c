@@ -132,7 +132,7 @@ void func_critter_80027448(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk64 |= 0x20;
         if (current_map == MAP_TROFF_N_SCOFF) {
-            func_global_asm_80614EBC(current_actor_pointer, 0x39F);
+            playActorAnimation(current_actor_pointer, 0x39F);
             current_actor_pointer->control_state_progress = 4;
             if (D_global_asm_807FC930[levelIndex] < sp64) {
                 func_global_asm_806F8BC4(0, 1, 0);
@@ -142,7 +142,7 @@ void func_critter_80027448(void) {
             if (isFlagSet(levelIndex + 0x1CD, FLAG_TYPE_PERMANENT)) {
                 current_actor_pointer->control_state_progress = 4;
             }
-            func_global_asm_80614EBC(current_actor_pointer, 0x39E);
+            playActorAnimation(current_actor_pointer, 0x39E);
             func_critter_80027340(sp64);
         }
         aaD->unk0 = 0;
@@ -183,7 +183,7 @@ void func_critter_80027448(void) {
                 func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xA, 0xA);
                 current_actor_pointer->control_state_progress = 0xA;
                 aaD->unk0 = 0;
-                func_global_asm_80614EBC(current_actor_pointer, 0x3A1);
+                playActorAnimation(current_actor_pointer, 0x3A1);
             }
         }
         switch (current_actor_pointer->control_state_progress) {
@@ -209,13 +209,13 @@ void func_critter_80027448(void) {
                     playCutscene(current_actor_pointer, 0x1B, 5);
                     if (func_global_asm_806FB418() < sp64) {
                         func_global_asm_8070D8C0(current_actor_pointer, 0x1D, 1);
-                        func_global_asm_80614EBC(current_actor_pointer, 0x3A1);
+                        playActorAnimation(current_actor_pointer, 0x3A1);
                         current_actor_pointer->control_state_progress = 1;
                     } else {
                         setFlag(levelIndex + 0x1CD, TRUE, FLAG_TYPE_PERMANENT);
                         var_v0 = (sp47) ? levelIndex + 2 : 2;
                         func_global_asm_8070D8C0(current_actor_pointer, 0x1D, var_v0);
-                        func_global_asm_80614EBC(current_actor_pointer, 0x3A0);
+                        playActorAnimation(current_actor_pointer, 0x3A0);
                         current_actor_pointer->control_state_progress = 2;
                         aaD->unk0 = 0;
                     }
@@ -229,7 +229,7 @@ void func_critter_80027448(void) {
             case 2:
                 if (!func_global_asm_8061CB38() && (aaD->unk0 >= 0x14)) {
                     if (aaD->unk0 == 0x32) {
-                        func_global_asm_80614EBC(current_actor_pointer, 0x3A2);
+                        playActorAnimation(current_actor_pointer, 0x3A2);
                     }
                     if (aaD->unk0 >= 0x3D) {
                         func_global_asm_807149B8(0);
@@ -319,10 +319,10 @@ void func_critter_80027DC0(void) {
             current_actor_pointer->control_state = 1;
         // Is the Rareware GB room open?
         } else if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
-            func_global_asm_80614EBC(current_actor_pointer, 0x2B5);
+            playActorAnimation(current_actor_pointer, 0x2B5);
         // Has the player photographed all 20 fairies?
         } else if (countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT) == 20) {
-            func_global_asm_80614EBC(current_actor_pointer, 0x2B5);
+            playActorAnimation(current_actor_pointer, 0x2B5);
             current_actor_pointer->control_state = 3;
         }
     }
@@ -353,7 +353,7 @@ void func_critter_80027DC0(void) {
                     current_actor_pointer = player_pointer;
                     player_pointer->control_state = 0x2D;
                     player_pointer->control_state_progress = 0;
-                    func_global_asm_80614E78(player_pointer, 0x42);
+                    playAnimation(player_pointer, 0x42);
                     func_global_asm_80608528(player_pointer, 0xF2, 0xFF, 0x7F, 0);
                     current_actor_pointer = sp34;
                     current_actor_pointer->control_state_progress = 0;
@@ -411,7 +411,7 @@ void *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
 
-    func_dk64_boot_80002A30(&sp38, &aaD->unk810[0x10]);
+    strcpy(&sp38, &aaD->unk810[0x10]);
     var_s0 = 0;
     dl = func_critter_80028A9C(dl, aaD, func_dk64_boot_80002DE4(&sp38, &D_critter_8002A178), var_s0++);
     var_a2 = func_dk64_boot_80002DE4(NULL, &D_critter_8002A17C);
@@ -426,7 +426,7 @@ void *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028EE8.s")
 
 s32 func_critter_800288A8(void *, s32, s16); // extern
-s32 func_dk64_boot_80002A30(void *, s32); // extern
+s32 strcpy(void *, s32); // extern
 extern s16 D_global_asm_80744490;
 
 /*
@@ -435,7 +435,7 @@ void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5) {
     s16 sp2A;
     s16 i;
 
-    sp2A = (D_global_asm_80744490 - func_global_asm_806FBD5C(arg0, &D_critter_8002A1C0[arg3])) * 2;
+    sp2A = (D_global_asm_80744490 - getCenterOfString(arg0, &D_critter_8002A1C0[arg3])) * 2;
     if (D_critter_8002A1C4 != NULL) {
         aaD = D_critter_8002A1C4->additional_actor_data;
         free(aaD->unk8);
@@ -450,7 +450,7 @@ void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5) {
     D_critter_8002A1C4->x_position = func_critter_800288A8(aaD, &D_critter_8002A1C0[arg3], sp2A);
     D_critter_8002A1C4->unkEE = 0;
     D_critter_8002A1C4->unk168 = arg5 + 0xE;
-    func_dk64_boot_80002A30(&aaD->unk810[0x10], &D_critter_8002A1C0[arg3]);
+    strcpy(&aaD->unk810[0x10], &D_critter_8002A1C0[arg3]);
     for (i = 1; i < 0x10; i++) {
         aaD->unk810[i] = 0;
     }

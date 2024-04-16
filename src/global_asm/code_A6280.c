@@ -85,13 +85,13 @@ void func_global_asm_806A18A8(void) {
     }
     if (sp40->unkB8 != 0.0f) {
         if ((sp40->unkB8 > 50.0f) && (current_actor_pointer->animation_state->unk64 != 0x233)) {
-            func_global_asm_80614EBC(current_actor_pointer, 0x233);
+            playActorAnimation(current_actor_pointer, 0x233);
         } else if ((sp40->unkB8 <= 50.0f) && (current_actor_pointer->animation_state->unk64 != 0x232)) {
-            func_global_asm_80614EBC(current_actor_pointer, 0x232);
+            playActorAnimation(current_actor_pointer, 0x232);
         }
         func_global_asm_80614D00(current_actor_pointer, sp40->unkB8 * 0.01, 4.0f);
     } else if (current_actor_pointer->animation_state->unk64 != 0x234) {
-        func_global_asm_80614EBC(current_actor_pointer, 0x234);
+        playActorAnimation(current_actor_pointer, 0x234);
     }
     func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xA, 0xA, 1, 0x12C, 0xC8, 0, 1.0f);
     renderActor(current_actor_pointer, 0);
@@ -141,7 +141,7 @@ void func_global_asm_806A1AC4(void) {
             break;
         case 1:
             if ((D_global_asm_807FBB70.unk254 != 0) && (D_global_asm_807FBB70.unk258[0] == 1)) {
-                func_global_asm_80614EBC(current_actor_pointer, 0x328);
+                playActorAnimation(current_actor_pointer, 0x328);
                 current_actor_pointer->control_state = 2;
                 current_actor_pointer->noclip_byte = 2;
                 current_actor_pointer->object_properties_bitfield |= 4;
@@ -337,7 +337,7 @@ void func_global_asm_806A2328(void) {
     func_global_asm_80665564(current_actor_pointer, 0.0f);
     current_actor_pointer->y_rotation += 0x12C;
     if ((current_actor_pointer->y_rotation & 0x7FF) < 0x12C) {
-        func_global_asm_806086CC(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x1DF, 0xFF, 0x7F, 0x14, 0x3C, 0.7f, 0);
+        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x1DF, 0xFF, 0x7F, 0x14, 0x3C, 0.7f, 0);
     }
     if (aaD->unk8 != 0) {
         aaD->unk8--;

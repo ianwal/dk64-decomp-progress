@@ -67,7 +67,7 @@ void func_global_asm_806E9804(s16 arg0);
 
 void func_global_asm_806E6EE0(void) {
     if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
-        func_global_asm_80614E78(current_actor_pointer, 0x37);
+        playAnimation(current_actor_pointer, 0x37);
         current_actor_pointer->control_state_progress = 4;
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
@@ -75,7 +75,7 @@ void func_global_asm_806E6EE0(void) {
 
 void func_global_asm_806E6F74(void) {
     if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG)) {
-        func_global_asm_80614E78(current_actor_pointer, 0x37);
+        playAnimation(current_actor_pointer, 0x37);
         current_actor_pointer->control_state_progress = 4;
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
@@ -84,12 +84,12 @@ void func_global_asm_806E6F74(void) {
 void func_global_asm_806E6FF0(void) {
     extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     func_global_asm_80614D00(current_actor_pointer, 2.0f, 0);
-    func_global_asm_80614E78(current_actor_pointer, 0x38);
+    playAnimation(current_actor_pointer, 0x38);
     current_actor_pointer->control_state_progress = 7;
 }
 
 void func_global_asm_806E7050(void) {
-    func_global_asm_80614E78(current_actor_pointer, 0x39);
+    playAnimation(current_actor_pointer, 0x39);
     current_actor_pointer->control_state_progress = 7;
 }
 
@@ -104,7 +104,7 @@ void func_global_asm_806E709C(void) {
             extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
             if (extra_player_info_pointer->unk10 == 0) {
                 extra_player_info_pointer->unk38 = D_global_asm_80753AC4[D_global_asm_807FD584];
-                func_global_asm_80614E78(current_actor_pointer, 0x36);
+                playAnimation(current_actor_pointer, 0x36);
             } else {
                 extra_player_info_pointer->unk38 = D_global_asm_80753AA8[D_global_asm_807FD584];
             }
@@ -127,7 +127,7 @@ void func_global_asm_806E7230(void) {
         extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
         if (extra_player_info_pointer->unk10 == 0) {
             extra_player_info_pointer->unk38 = D_global_asm_80753AC4[D_global_asm_807FD584];
-            func_global_asm_80614E78(current_actor_pointer, 0x36);
+            playAnimation(current_actor_pointer, 0x36);
         } else {
             extra_player_info_pointer->unk38 = D_global_asm_80753AA8[D_global_asm_807FD584];
         }
@@ -143,7 +143,7 @@ void func_global_asm_806E7338(void) {
         extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
         if (extra_player_info_pointer->unk10 == 0) {
             extra_player_info_pointer->unk38 = 300.0f;
-            func_global_asm_80614EBC(current_actor_pointer, 0x318);
+            playActorAnimation(current_actor_pointer, 0x318);
         } else {
             extra_player_info_pointer->unk38 = 250.0f;
         }
@@ -166,7 +166,7 @@ void func_global_asm_806E7484(void) {
         extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
         if (extra_player_info_pointer->unk10 == 0) {
             extra_player_info_pointer->unk38 = 300.0f;
-            func_global_asm_80614EBC(current_actor_pointer, 0x318);
+            playActorAnimation(current_actor_pointer, 0x318);
         } else {
             extra_player_info_pointer->unk38 = 250.0f;
         }
@@ -180,7 +180,7 @@ void func_global_asm_806E7568(void) {
         extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
         extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
         extra_player_info_pointer->unk38 = D_global_asm_80753AC4[D_global_asm_807FD584];
-        func_global_asm_80614E78(current_actor_pointer, 0x36);
+        playAnimation(current_actor_pointer, 0x36);
         current_actor_pointer->control_state_progress = 3;
         extra_player_info_pointer->unk10 = D_global_asm_80753A98[D_global_asm_807FD584];
         extra_player_info_pointer->unk5C = D_global_asm_80767CC0;
@@ -242,12 +242,12 @@ void func_global_asm_806E7900(void) {
     if (current_actor_pointer->control_state == 7) {
         if (!(D_global_asm_807FD610[cc_player_index].unk2A & R_TRIG)) {
             if ((D_global_asm_807FD610[cc_player_index].unk2E < -0x1E) && (current_actor_pointer->animation_state->unk0->unk10 != 0xFB)) {
-                func_global_asm_80614E78(current_actor_pointer, 0x81);
+                playAnimation(current_actor_pointer, 0x81);
                 current_actor_pointer->control_state = 0xA; // Minecart (Left)
                 current_actor_pointer->control_state_progress = 0;
                 PaaD->unk42 = 1;
             } else if ((D_global_asm_807FD610[cc_player_index].unk2E >= 0x1F) && (current_actor_pointer->animation_state->unk0->unk10 != 0xFF)) {
-                func_global_asm_80614E78(current_actor_pointer, 0x7D);
+                playAnimation(current_actor_pointer, 0x7D);
                 current_actor_pointer->control_state = 0xB; // Minecart (Right)
                 current_actor_pointer->control_state_progress = 0;
                 PaaD->unk42 = 2;
@@ -259,18 +259,18 @@ void func_global_asm_806E7900(void) {
         switch (current_actor_pointer->control_state) {
             case 0xB:
                 if (current_actor_pointer->control_state_progress == 1) {
-                    func_global_asm_80614E78(current_actor_pointer, 0x7E);
+                    playAnimation(current_actor_pointer, 0x7E);
                 } else {
-                    func_global_asm_80614E78(current_actor_pointer, 0x80);
+                    playAnimation(current_actor_pointer, 0x80);
                 }
                 current_actor_pointer->control_state = 7; // Minecart (Idle)
                 current_actor_pointer->control_state_progress = 0;
                 break;
             case 0xA:
                 if (current_actor_pointer->control_state_progress == 1) {
-                    func_global_asm_80614E78(current_actor_pointer, 0x82);
+                    playAnimation(current_actor_pointer, 0x82);
                 } else {
-                    func_global_asm_80614E78(current_actor_pointer, 0x80);
+                    playAnimation(current_actor_pointer, 0x80);
                 }
                 current_actor_pointer->control_state = 7; // Minecart (Idle)
                 current_actor_pointer->control_state_progress = 0;
@@ -335,8 +335,8 @@ void func_global_asm_806E7DF4(void) {
                     if (var_a2->unk3F == 1) {
                         var_a2->unk3F = 0;
                     }
-                    func_global_asm_80614E78(current_actor_pointer, var_a3 ? 0x81 : 0x7D);
-                    func_global_asm_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, var_a3 ? 0x295 : 0x296);
+                    playAnimation(current_actor_pointer, var_a3 ? 0x81 : 0x7D);
+                    playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, var_a3 ? 0x295 : 0x296);
                 } else {
                     var_a2->unk3F++;
                     if (var_a2->unk3F == 1) {
@@ -344,8 +344,8 @@ void func_global_asm_806E7DF4(void) {
                             var_a2->unk3F = 2;
                         }
                     }
-                    func_global_asm_80614E78(current_actor_pointer, var_a3 ? 0x7D : 0x81);
-                    func_global_asm_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, var_a3 ? 0x296 : 0x295);
+                    playAnimation(current_actor_pointer, var_a3 ? 0x7D : 0x81);
+                    playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, var_a3 ? 0x296 : 0x295);
                 }
             }
         }
@@ -622,7 +622,7 @@ void func_global_asm_806E8E00(void) {
 
 void func_global_asm_806E8E78(void) {
     if (current_actor_pointer->control_state == 7 && !(D_global_asm_807FD610[cc_player_index].unk2A & R_TRIG)) {
-        func_global_asm_80614E78(current_actor_pointer, 0x7F);
+        playAnimation(current_actor_pointer, 0x7F);
         current_actor_pointer->control_state = 8;
         current_actor_pointer->control_state_progress = 0;
     }
@@ -630,9 +630,9 @@ void func_global_asm_806E8E78(void) {
 
 void func_global_asm_806E8F04(void) {
     if (current_actor_pointer->control_state_progress == 1) {
-        func_global_asm_80614E78(current_actor_pointer, 0x7B);
+        playAnimation(current_actor_pointer, 0x7B);
     } else {
-        func_global_asm_80614E78(current_actor_pointer, 0x80);
+        playAnimation(current_actor_pointer, 0x80);
     }
     current_actor_pointer->control_state = 7;
     current_actor_pointer->control_state_progress = 0;
@@ -647,7 +647,7 @@ void func_global_asm_806E8F68(void) {
         current_actor_pointer->control_state_progress = 0;
         extra_player_info_pointer->unk54 = D_global_asm_807537E0[D_global_asm_807FD584];
         extra_player_info_pointer->unk50 = 0;
-        func_global_asm_80614E78(current_actor_pointer, 0x7C);
+        playAnimation(current_actor_pointer, 0x7C);
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
     }
 }
@@ -663,11 +663,11 @@ void func_global_asm_806E9070(void) {
     if (((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU) && extra_player_info_pointer->vehicle_actor_pointer->RaaD->unk0 == 0) {
         extra_player_info_pointer->vehicle_actor_pointer->y_velocity = D_global_asm_80750338;
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
-        func_global_asm_80614E78(current_actor_pointer, 0x7C);
+        playAnimation(current_actor_pointer, 0x7C);
         if (current_actor_pointer->unk58 == ACTOR_DK) {
-            func_global_asm_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, 0x294);
+            playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x294);
         } else {
-            func_global_asm_80614EBC(extra_player_info_pointer->vehicle_actor_pointer, 0x293);
+            playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x293);
         }
     }
 }
@@ -696,7 +696,7 @@ void func_global_asm_806E918C(void) {
             extra_player_info_pointer->unk1F0 &= ~2;
             func_global_asm_8061C6A8(extra_player_info_pointer->unk104, extra_player_info_pointer->vehicle_actor_pointer, 4, 0x800, 0x28, 0, 5, 0x19, 0x14, 0, 0.15f);
             if (current_actor_pointer->control_state == 7) {
-                func_global_asm_80614E78(current_actor_pointer, 0x84);
+                playAnimation(current_actor_pointer, 0x84);
             }
         }
         current_actor_pointer->object_properties_bitfield &= ~0x400;
@@ -707,7 +707,7 @@ void func_global_asm_806E9388(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
         current_actor_pointer->control_state = 0x80; // Enguarde Attacking (surface)
         current_actor_pointer->control_state_progress = 0;
-        func_global_asm_80614EBC(current_actor_pointer, 0x316);
+        playActorAnimation(current_actor_pointer, 0x316);
     }
 }
 
@@ -715,7 +715,7 @@ void func_global_asm_806E93F8(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
         current_actor_pointer->control_state = 0x81; // Enguarde Attacking
         current_actor_pointer->control_state_progress = 0;
-        func_global_asm_80614EBC(current_actor_pointer, 0x316);
+        playActorAnimation(current_actor_pointer, 0x316);
     }
 }
 
@@ -730,7 +730,7 @@ void func_global_asm_806E9468(void) {
         if (current_actor_pointer->y_velocity > 0.0f) {
             current_actor_pointer->y_velocity = 0.0f;
         }
-        func_global_asm_80614EBC(current_actor_pointer, 0x318);
+        playActorAnimation(current_actor_pointer, 0x318);
         func_global_asm_80608528(current_actor_pointer, 0x10, 0xFF, 0x7F, 1);
     }
 }
@@ -779,7 +779,7 @@ u8 func_global_asm_806E9580(void) {
                     }
                     if (var_f0 < (current_actor_pointer->distance_from_floor + temp_f2)) {
                         func_global_asm_806EB0C0(0x3D, NULL, cc_player_index);
-                        func_global_asm_80614EBC(current_actor_pointer, 0);
+                        playActorAnimation(current_actor_pointer, 0);
                         if (extra_player_info_pointer->unkC4 != 0) {
                             func_global_asm_80737924(extra_player_info_pointer->unkC4);
                         }

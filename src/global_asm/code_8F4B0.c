@@ -545,13 +545,13 @@ Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
 
     sp50 = arg2 - (func_global_asm_806FD894(0x86) * 0.5f);
     func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F4C);
-    sp4C = func_global_asm_806FBD5C(6, &sp3C) * 0.5f;
+    sp4C = getCenterOfString(6, &sp3C) * 0.5f;
     sp54 = arg1 - sp4C;
     sp2C = sp50 * 4.0f;
     minutes = seconds / 60;
     dl = func_global_asm_806FC530(dl, 6, sp54 * 4.0f, sp2C, &sp3C, 1);
     func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F50, minutes);
-    sp54 -= func_global_asm_806FBD5C(0x86, &sp3C);
+    sp54 -= getCenterOfString(0x86, &sp3C);
     dl = func_global_asm_806FC530(dl, 0x86, sp54 * 4.0f, sp2C, &sp3C, 1);
     func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F54, seconds - (minutes * 60));
     return func_global_asm_806FC530(dl, 0x86, (arg1 + sp4C) * 4.0f, sp2C, &sp3C, 1);

@@ -26,7 +26,7 @@ void func_menu_80032550(void) {
     if ((current_actor_pointer->control_state == 0) && (current_actor_pointer->control_state_progress == 0)) {
         if (func_global_asm_80629148()) {
             func_global_asm_80629174();
-            func_global_asm_80614EBC(current_actor_pointer, 0x2A7);
+            playActorAnimation(current_actor_pointer, 0x2A7);
             current_actor_pointer->control_state_progress++;
         }
         // TODO: Get rid of this somehow, surprisingly getting rid of it causes it to not match
@@ -48,7 +48,7 @@ void func_menu_8003264C(void) {
         case 0:
             if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
-                func_global_asm_80614EBC(current_actor_pointer, 0x2D6);
+                playActorAnimation(current_actor_pointer, 0x2D6);
                 current_actor_pointer->control_state++;
                 current_actor_pointer->control_state_progress = 0;
                 global_properties_bitfield &= ~0x30;
@@ -123,7 +123,6 @@ extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 extern u8 D_global_asm_8074450C;
 extern u8 D_menu_800339D0;
-extern Gfx *func_global_asm_806ABB98(Gfx *, s16 , s16 , f32 , void *);
 
 Gfx* func_menu_8003292C(Gfx *dl) {
     s32 spD4;
@@ -209,7 +208,7 @@ loop_4:
     } while (var_a0 != 0x52);
     gDPSetTextureFilter(dl++, G_TF_BILERP);
     gDPSetTexturePersp(dl++, G_TP_PERSP);
-    temp_f6 = (D_global_asm_80744490 - func_global_asm_806FBD5C(1, (void *) spCC)) * 0.5f;
+    temp_f6 = (D_global_asm_80744490 - getCenterOfString(1, (void *) spCC)) * 0.5f;
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, sp60);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0)
@@ -217,8 +216,8 @@ loop_4:
     temp_a2_2 = D_global_asm_8074450C * 0xC8;
     spD4 = temp_a2_2;
     temp_s0_19 = (D_global_asm_80744490 * 0.5f) * 4;
-    dl = func_global_asm_806ABB98(dl, temp_s0_19, (temp_a2_2 * 4), 0.5f, (void *) spC8);
-    dl = func_global_asm_806ABB98(dl, temp_s0_19, ((temp_a2_2 + ((f64) spC0 * 0.5)) * 4), 0.5f, (void *) spC4);
+    dl = printText(dl, temp_s0_19, (temp_a2_2 * 4), 0.5f, (void *) spC8);
+    dl = printText(dl, temp_s0_19, ((temp_a2_2 + ((f64) spC0 * 0.5)) * 4), 0.5f, (void *) spC4);
     return dl;
 }
 */
