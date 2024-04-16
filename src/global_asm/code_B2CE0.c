@@ -93,7 +93,7 @@ void func_global_asm_806AE394(f32 arg0, f32 arg1) {
     if (current_actor_pointer->control_state != 0) {
         if ((((D_global_asm_807FDC94->x_position - x1) * (D_global_asm_807FDC94->x_position - x1)) + ((D_global_asm_807FDC94->y_position - current_actor_pointer->y_position) * (D_global_asm_807FDC94->y_position - current_actor_pointer->y_position)) + ((D_global_asm_807FDC94->z_position - z1) * (D_global_asm_807FDC94->z_position - z1))) < (arg1 * arg1)) {
             current_actor_pointer->y_rotation = func_global_asm_80665DE0(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position);
-            func_global_asm_806EB0C0(0x43, current_actor_pointer, 0);
+            setAction(0x43, current_actor_pointer, 0);
             current_actor_pointer->control_state = 0;
             current_actor_pointer->control_state_progress = 0;
         }
@@ -116,7 +116,7 @@ void func_global_asm_806AE588(void) {
     u8 var_a0;
     u8 var_a1;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_8072B79C(0x1FD, 0x1FB, 0x1FC);
         func_global_asm_80724CA4(3, 1);
@@ -321,7 +321,7 @@ void func_global_asm_806AFA60(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AFB58.s")
 
 void func_global_asm_806B02EC(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_8072B79C(0, 0x31E, 0x31F);
     }
@@ -330,7 +330,7 @@ void func_global_asm_806B02EC(void) {
 }
 
 void func_global_asm_806B0354(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (((D_global_asm_807FBB70.unk200 == 9) || (D_global_asm_807FBB70.unk15 != 0)) && (current_actor_pointer->control_state != 0x37)) {
         func_global_asm_8072D714(D_global_asm_807FBB70.unk1FC, 0x37A);
         current_actor_pointer->unk138 &= 0xFFFF7FFF;
@@ -443,7 +443,7 @@ void func_global_asm_806B0848(void) {
     u8 var_a0;
     u8 var_v0;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         temp_f0 = (current_actor_pointer->animation_state->scale[1] / 0.15) * 100.0;
         if (temp_f0 > 255.0) {

@@ -120,7 +120,7 @@ void func_boss_8003575C(void) {
                 dz = player_pointer->z_position - current_actor_pointer->z_position;
                 if (((dx * dx) + (dz * dz)) < D_boss_80036DB4) {
                     if (player_pointer->control_state != 0x31) {
-                        func_global_asm_806EB0C0(0x2E, current_actor_pointer, 0);
+                        setAction(0x2E, current_actor_pointer, 0);
                     }
                     current_actor_pointer->control_state++;
                 }

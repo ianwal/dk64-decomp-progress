@@ -255,10 +255,10 @@ void func_global_asm_8072F230(Actor *arg0, u8 arg1, u8 arg2) {
         arg0->unkB8 = 0.0f;
         switch (found->unk6) {
             case 0:
-                func_global_asm_806EB0C0(0xC, NULL, arg1);
+                setAction(0xC, NULL, arg1);
                 break;
             case 1:
-                func_global_asm_806EB0C0(0xB, NULL, arg1);
+                setAction(0xB, NULL, arg1);
                 break;
         }
     }

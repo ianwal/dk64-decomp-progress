@@ -38,13 +38,12 @@ extern f32 D_global_asm_8075DFB4;
 
 /*
 void func_global_asm_806FD8E0(void *arg0, s16 arg1, void *arg2, s16 arg3, u8 arg4) {
-    func_global_asm_806FC530(arg0, arg1, (D_global_asm_80744490 - getCenterOfString(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
+    printStyledText(arg0, arg1, (D_global_asm_80744490 - getCenterOfString(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
 }
 */
 
-// TODO: Does this return the void* from func_global_asm_806FC530?
-void func_global_asm_806FD950(void *arg0, s16 arg1, void *arg2, s16 arg3) {
-    func_global_asm_806FC530(arg0, arg1, 0x60, arg3 * 4, arg2, 1);
+Gfx *func_global_asm_806FD950(Gfx *dl, s16 style, void *string, s16 y) {
+    return printStyledText(dl, style, 96, y * 4, string, 1);
 }
 
 void func_global_asm_806FD9A0(void) {

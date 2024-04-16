@@ -82,7 +82,7 @@ Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
                 } else {
                     sp70[0] = '\0';
                 }
-                dl = func_global_asm_806FC530(dl, 6, 640 - (getCenterOfString(6, &sp70) * 2), y, &sp70, 1);
+                dl = printStyledText(dl, 6, 640 - (getCenterOfString(6, &sp70) * 2), y, &sp70, 1);
                 y += 48;
             }
         }
@@ -99,7 +99,7 @@ Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
 
 void func_bonus_8002D2F0(void) {
     s32 var_a0;
-    u32 sp28;
+    u32 textIndex;
     AAD_8002D2F0 *aaD;
 
     aaD = current_actor_pointer->additional_actor_data;
@@ -122,13 +122,13 @@ void func_bonus_8002D2F0(void) {
                 if (func_global_asm_8061CB38() != 0) {
                     switch (current_map) {
                         case MAP_RAMBI_ARENA:
-                            sp28 = 0x1F;
+                            textIndex = 0x1F;
                             break;
                         case MAP_ENGUARDE_ARENA:
-                            sp28 = 0x20;
+                            textIndex = 0x20;
                             break;
                     }
-                    func_global_asm_8070D8C0(current_actor_pointer, 0, sp28);
+                    loadText(current_actor_pointer, 0, textIndex);
                     current_actor_pointer->control_state = 1;
                     func_global_asm_806A2A10(0xDC, 0x2A, aaD->unk4);
                 } else if ((D_global_asm_807ECD58.unk0 & 0x8000) && !(D_807ECD60 & 0x8000)) {
@@ -190,7 +190,7 @@ void func_bonus_8002D2F0(void) {
             break;
     }
     D_80744518 = aaD->unkA;
-    func_global_asm_8068C350(func_bonus_8002D010, current_actor_pointer, 3);
+    addActorToTextOverlayRenderArray(func_bonus_8002D010, current_actor_pointer, 3);
 }
 
 void func_bonus_8002D6F8(s16 arg0) {

@@ -222,7 +222,7 @@ typedef struct {
 
 extern u8 D_global_asm_807550CC;
 
-void func_global_asm_8070D8C0(Actor *arg0, u16 arg1, u8 arg2) {
+void loadText(Actor *arg0, u16 fileIndex, u8 textIndex) {
     Struct8070D8C0 *temp_a0;
     AAD_global_asm_8070D8C0 *aaD;
 
@@ -230,7 +230,7 @@ void func_global_asm_8070D8C0(Actor *arg0, u16 arg1, u8 arg2) {
     aaD = ((AAD_global_asm_8070D8C0*)temp_a0->unk4->additional_actor_data);
     aaD->unk54 = D_global_asm_807550CC;
     D_global_asm_807550CC = 0;
-    func_global_asm_8070D82C(temp_a0, arg1, arg2);
+    func_global_asm_8070D82C(temp_a0, fileIndex, textIndex);
     arg0->object_properties_bitfield |= 0x02000000;
 }
 

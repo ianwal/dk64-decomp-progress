@@ -594,7 +594,7 @@ Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, void *string) {
     guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
     guMtxF2L(&sp70[0], mtx);
     gSPMatrix(dl++, mtx, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    dl = func_global_asm_806FC530(dl, 1, 0, 0, string, 0x80);
+    dl = printStyledText(dl, 1, 0, 0, string, 0x80);
     gSPPopMatrix(dl++, G_MTX_MODELVIEW);
     return dl;
 }
@@ -729,7 +729,7 @@ void func_global_asm_806ACCE8(void) {
             current_actor_pointer->control_state = 1;
         }
     }
-    func_global_asm_8068C350(&func_global_asm_806ACA88, current_actor_pointer, 5);
+    addActorToTextOverlayRenderArray(&func_global_asm_806ACA88, current_actor_pointer, 5);
 }
 
 Gfx *func_global_asm_806A921C();
@@ -799,7 +799,7 @@ void func_global_asm_806ACFFC(void) {
             current_actor_pointer->control_state_progress = 2;
         }
     }
-    func_global_asm_8068C350(&func_global_asm_806AC048, current_actor_pointer, 1);
-    func_global_asm_8068C350(&func_global_asm_806ACF10, current_actor_pointer, 5);
+    addActorToTextOverlayRenderArray(&func_global_asm_806AC048, current_actor_pointer, 1);
+    addActorToTextOverlayRenderArray(&func_global_asm_806ACF10, current_actor_pointer, 5);
 }
 */

@@ -395,7 +395,7 @@ void func_global_asm_8068C2F8(Actor *arg0) {
 }
 
 // TODO: Arg0 is a function pointer
-void func_global_asm_8068C350(void *arg0, Actor *arg1, u8 arg2) {
+void addActorToTextOverlayRenderArray(void *arg0, Actor *arg1, u8 arg2) {
     if (D_global_asm_807501E0 < 8) {
         D_global_asm_807FC630[D_global_asm_807501E0].unk0 = arg0;
         D_global_asm_807FC630[D_global_asm_807501E0].unk4 = arg1;
@@ -482,10 +482,10 @@ Gfx *func_global_asm_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
     sprintf(&sp3C, &D_global_asm_80759F30, arg1->unk14);
-    dl = func_global_asm_806FC530(dl, 3, 0x424, 0x50, &sp3C, 1);
-    dl = func_global_asm_806FC530(dl, 1, 0x50, 0x50, &D_global_asm_80759F34, 1);
+    dl = printStyledText(dl, 3, 0x424, 0x50, &sp3C, 1);
+    dl = printStyledText(dl, 1, 0x50, 0x50, &D_global_asm_80759F34, 1);
     sprintf(&sp38, &D_global_asm_80759F38, arg1->unk1C);
-    return func_global_asm_806FC530(dl, 3, 0x50, 0xB0, &sp38, 1);
+    return printStyledText(dl, 3, 0x50, 0xB0, &sp38, 1);
 }
 */
 
@@ -497,7 +497,7 @@ Gfx *func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
     sprintf(&sp38, &D_global_asm_80759F3C, *arg1);
-    return func_global_asm_806FC530(dl, 3, 0x104, 0x50, &sp38, 1);
+    return printStyledText(dl, 3, 260, 80, &sp38, 1);
 }
 
 // Displaylist stuff, regalloc, close, doable
@@ -523,7 +523,7 @@ Gfx *func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
     sprintf(&sp34, &D_global_asm_80759F40, arg1->unk14);
-    return func_global_asm_806FC530(dl, 3, 0x370, 0x50, &sp34, 1);
+    return printStyledText(dl, 3, 0x370, 0x50, &sp34, 1);
 }
 */
 
@@ -541,18 +541,18 @@ Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
     s32 pad44;
     s32 minutes;
     s32 sp3C;
-    s32 sp2C;
+    s32 y;
 
     sp50 = arg2 - (func_global_asm_806FD894(0x86) * 0.5f);
     sprintf(&sp3C, &D_global_asm_80759F4C);
     sp4C = getCenterOfString(6, &sp3C) * 0.5f;
     sp54 = arg1 - sp4C;
-    sp2C = sp50 * 4.0f;
+    y = sp50 * 4.0f;
     minutes = seconds / 60;
-    dl = func_global_asm_806FC530(dl, 6, sp54 * 4.0f, sp2C, &sp3C, 1);
+    dl = printStyledText(dl, 6, sp54 * 4.0f, y, &sp3C, 1);
     sprintf(&sp3C, &D_global_asm_80759F50, minutes);
     sp54 -= getCenterOfString(0x86, &sp3C);
-    dl = func_global_asm_806FC530(dl, 0x86, sp54 * 4.0f, sp2C, &sp3C, 1);
+    dl = printStyledText(dl, 0x86, sp54 * 4.0f, y, &sp3C, 1);
     sprintf(&sp3C, &D_global_asm_80759F54, seconds - (minutes * 60));
-    return func_global_asm_806FC530(dl, 0x86, (arg1 + sp4C) * 4.0f, sp2C, &sp3C, 1);
+    return printStyledText(dl, 0x86, (arg1 + sp4C) * 4.0f, y, &sp3C, 1);
 }

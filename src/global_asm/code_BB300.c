@@ -50,7 +50,7 @@ void func_global_asm_806B6600(u8 arg0) {
             case 2:
                 a178->unk0 -= 0x50;
                 if ((a178->unk0 >= 0x64) && (a178->unk0 < 0xB4)) {
-                    func_global_asm_80608528(current_actor_pointer, 0x16C, 0xFF, 0xA0, 6);
+                    playSoundAtActorPosition(current_actor_pointer, 0x16C, 0xFF, 0xA0, 6);
                 }
                 if (a178->unk0 < 0x50) {
                     a178->unk0 = 0;
@@ -70,7 +70,7 @@ void func_global_asm_806B6600(u8 arg0) {
 */
 
 void func_global_asm_806B6958(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC90->unk35 *= 2;
         D_global_asm_807FDC90->unk2C = 210;
@@ -88,8 +88,8 @@ void func_global_asm_806B6958(void) {
         func_global_asm_80724C2C(-150);
     }
     if ((D_global_asm_807FDC90->unk2C == 0) || (D_global_asm_807FBB70.unk200 == 9) || (D_global_asm_807FBB70.unk15 != 0)) {
-        func_global_asm_80608528(current_actor_pointer, 0x3B2, 0xFF, 0x7F, 0x1E);
-        func_global_asm_80608528(current_actor_pointer, 0x3B7, 0xFF, 0x7F, 0x1E);
+        playSoundAtActorPosition(current_actor_pointer, 0x3B2, 0xFF, 0x7F, 0x1E);
+        playSoundAtActorPosition(current_actor_pointer, 0x3B7, 0xFF, 0x7F, 0x1E);
         func_global_asm_806850D0();
         deleteActor(current_actor_pointer);
     }
@@ -127,12 +127,12 @@ void func_global_asm_806B6C88(s16 arg0, s16 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_global_asm_806B6DB0.s")
 
 void func_global_asm_806B75F4(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     func_global_asm_806B6DB0(10000);
 }
 
 void func_global_asm_806B761C(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (D_global_asm_807FBD70 == 4) {
         func_global_asm_80724C2C(-100);
     }
@@ -140,7 +140,7 @@ void func_global_asm_806B761C(void) {
 }
 
 void func_global_asm_806B7660(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (D_global_asm_807FBD70 == 4) {
         func_global_asm_80724C2C(-100);
     }

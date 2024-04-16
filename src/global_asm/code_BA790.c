@@ -6,7 +6,7 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BA790/func_global_asm_806B5A90.s")
 
 void func_global_asm_806B63E0() {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     func_global_asm_806B5A90(10000, 0);
 }
 
@@ -15,7 +15,7 @@ void func_global_asm_806B640C(void) {
     s16 i;
 
     temp_s6 = current_actor_pointer->unk178;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_8066EA90(current_actor_pointer, 3);
         temp_s6->unk0 = -D_global_asm_807FDC9C->unkA_s16;

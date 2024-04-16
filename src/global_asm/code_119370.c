@@ -1936,7 +1936,7 @@ void func_global_asm_8071D5BC(Struct80717D84 *arg0, s8 *arg1) {
     if (player_pointer->y_position <= arg0->unk344) {
         if (arg0->unk344 < (player_pointer->y_position + player_pointer->unk15E)) {
             if ((((player_pointer->x_position - arg0->unk340) * (player_pointer->x_position - arg0->unk340)) + ((player_pointer->z_position - arg0->unk348) * (player_pointer->z_position - arg0->unk348))) < (temp_f8 * temp_f8)) {
-                func_global_asm_806EB0C0(0x2E, NULL, 0);
+                setAction(0x2E, NULL, 0);
             }
         }
     }

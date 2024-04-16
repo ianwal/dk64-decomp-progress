@@ -13,7 +13,7 @@ extern s32 D_menu_80033FB2;
 void func_menu_80032550(void) {
     Actor *phi_a0_2;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->control_state = 0;
         current_actor_pointer->control_state_progress = 0;
@@ -43,7 +43,7 @@ void func_menu_8003264C(void) {
         func_global_asm_80629174();
         current_actor_pointer->control_state = 0;
     }
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     switch (current_actor_pointer->control_state) {
         case 0:
             if (func_global_asm_80629148()) {
@@ -110,7 +110,7 @@ void func_menu_8003264C(void) {
             break;
     }
     if (current_actor_pointer->control_state >= 3) {
-        func_global_asm_8068C350(&func_menu_8003292C, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(&func_menu_8003292C, current_actor_pointer, 3);
     }
     renderActor(current_actor_pointer, 0);
 }
@@ -212,7 +212,7 @@ loop_4:
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, sp60);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0)
-    dl = func_global_asm_806FC530(dl, 1, (temp_f6 * 4), (((((f32) D_global_asm_80744494 - 82.0f) * 0.5f) - (f32) spC0) * 4), (void *) spCC, 0);
+    dl = printStyledText(dl, 1, (temp_f6 * 4), (((((f32) D_global_asm_80744494 - 82.0f) * 0.5f) - (f32) spC0) * 4), (void *) spCC, 0);
     temp_a2_2 = D_global_asm_8074450C * 0xC8;
     spD4 = temp_a2_2;
     temp_s0_19 = (D_global_asm_80744490 * 0.5f) * 4;

@@ -98,7 +98,7 @@ s16 func_global_asm_806FBEAC(u8 *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FBEF0.s")
 
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FC530.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/printStyledText.s")
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FCC88.s")

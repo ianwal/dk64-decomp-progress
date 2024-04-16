@@ -28,15 +28,15 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
         case 39:
             if ((D_global_asm_807FDC90->unk1A & 4) && (arg0 == (D_global_asm_807FDC90->unk25 & 0x7F))) {
                 if (!character_change_array->unk2C0) {
-                    func_global_asm_8070D8C0(current_actor_pointer, 0x10, 1);
+                    loadText(current_actor_pointer, 0x10, 1);
                     current_actor_pointer->control_state = 0x29;
                     current_actor_pointer->control_state_progress = 0;
                     D_global_asm_807FDC9C->unk10 = 0x29;
                     extra_player_info_pointer->unk1F0 |= 0x10000;
-                    func_global_asm_806EB0C0(0x54, NULL, 0);
+                    setAction(0x54, NULL, 0);
                     D_global_asm_807FDC90->unk1A |= 0x8000;
                 } else {
-                    func_global_asm_8070D8C0(current_actor_pointer, 0x10, 0);
+                    loadText(current_actor_pointer, 0x10, 0);
                     current_actor_pointer->control_state = 0x28;
                     current_actor_pointer->control_state_progress = 0;
                     D_global_asm_807FDC9C->unk10 = 0x28;
@@ -114,7 +114,7 @@ void func_global_asm_806C498C(void) {
 }
 
 void func_global_asm_806C49D0(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     switch (current_map) {
         case MAP_AZTEC:
             func_global_asm_806C3F10(2, 6, 0);
@@ -151,10 +151,10 @@ void func_global_asm_806C4EB4(void) {
     func_global_asm_806C4E8C();
 }
 
-void func_global_asm_806C4EE0(u8 arg0, u8 arg1) {
+void func_global_asm_806C4EE0(u8 textIndex, u8 arg1) {
     D_global_asm_807FDC90->unk2E = 0;
     func_global_asm_8070E8DC(1);
-    func_global_asm_8070D8C0(current_actor_pointer, 0xF, arg0);
+    loadText(current_actor_pointer, 0xF, textIndex);
     current_actor_pointer->control_state = 0x29;
     current_actor_pointer->control_state_progress = 0;
     current_actor_pointer->unk168 = arg1;
@@ -186,7 +186,7 @@ void func_global_asm_806C5FEC(void) {
     switch (temp_v1->unk1E) {
         case 1:
             if (player_pointer->control_state_progress == 3) {
-                func_global_asm_8070D8C0(current_actor_pointer, 0x1E, 3);
+                loadText(current_actor_pointer, 0x1E, 3);
                 temp_v1->unk1E = 2;
             } else if (temp_v1->unk10->control_state != 0x83) {
                 temp_v1->unk1E = 3;

@@ -808,13 +808,13 @@ void func_race_8002E484(void) {
     temp_s0 = current_actor_pointer->additional_actor_data;
     var_a3 = character_change_array[temp_s0->unk28].player_pointer;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        func_global_asm_806EB0C0(0x4E, current_actor_pointer, temp_s0->unk28);
+        setAction(0x4E, current_actor_pointer, temp_s0->unk28);
         current_actor_pointer->control_state = 0;
         current_actor_pointer->control_state_progress = 0;
     }
     if (temp_s0->unk34 == 2) {
         if (current_actor_pointer->control_state == 0) {
-            func_global_asm_806EB0C0(0x57, NULL, temp_s0->unk28);
+            setAction(0x57, NULL, temp_s0->unk28);
             current_actor_pointer->control_state += 1;
         }
     }
@@ -826,7 +826,7 @@ void func_race_8002E484(void) {
     }
     if (temp_s0->unk34 > 0) {
         if (temp_s0->unk34 < 5) {
-            func_global_asm_8068C350(&func_race_8002E464, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(&func_race_8002E464, current_actor_pointer, 3);
         }
     }
     if (temp_s0->unk40 < temp_s0->unk1C) {

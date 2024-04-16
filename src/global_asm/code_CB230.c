@@ -100,7 +100,7 @@ void func_global_asm_806C6884(s16 arg0, s16 arg1, u16 arg2) {
     A178_806C6884 *temp;
     f32 temp2;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
     dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
     phi_t0 = sqrtf((dx * dx) + (dz * dz));
@@ -153,7 +153,7 @@ void func_global_asm_806C6BC8(void) {
     f32 sp4C;
     f32 sp48;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->draw_distance = 0x7D0;
         current_actor_pointer->unk130 = 0xFF;

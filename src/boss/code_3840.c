@@ -133,7 +133,7 @@ Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     gDPSetCombineMode(dl++ , G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     dl = func_global_asm_8070068C(dl++);
-    return func_global_asm_806FC530(dl, 1, 0, 0, &sp3C, 0);
+    return printStyledText(dl, 1, 0, 0, &sp3C, 0);
 }
 */
 

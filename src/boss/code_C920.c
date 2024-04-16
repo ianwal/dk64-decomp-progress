@@ -29,7 +29,7 @@ void func_boss_80030920(s32 arg0) {
     extra_player_info_pointer->unk1FE = 1;
     func_boss_800290D4(1);
     current_actor_pointer->noclip_byte = 0x24;
-    func_global_asm_806EB0C0(0x19, current_actor_pointer, 0);
+    setAction(0x19, current_actor_pointer, 0);
     func_global_asm_80724B5C(1, 8, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
     D_global_asm_807FDC90->unkA = current_actor_pointer->x_position;
     D_global_asm_807FDC90->unkC = current_actor_pointer->y_position;

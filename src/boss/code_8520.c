@@ -88,7 +88,7 @@ void func_boss_8002C964(void) {
     f64 yScale;
 
     a178 = current_actor_pointer->unk178;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_boss_8002C748(0);
         func_boss_8002C748(1);

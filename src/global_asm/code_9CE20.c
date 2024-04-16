@@ -87,29 +87,29 @@ void func_global_asm_80698120(u8 arg0) {
     if (aaD->unk0 > 2.0f) {
         if ((aaD->unkC < 3.926990986f) && (3.926990986f <= (aaD->unkC + aaD->unk4))) {
             if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
-                // func_global_asm_80608528(3.926990986f, temp_s0_2, 0x257, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
-                func_global_asm_80608528(current_actor_pointer, 0x257, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
+                // playSoundAtActorPosition(3.926990986f, temp_s0_2, 0x257, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
+                playSoundAtActorPosition(current_actor_pointer, 0x257, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
                 var_v1_2 = 0;
             } else {
-                // func_global_asm_80608528(3.926990986f, temp_s0_2, 0x1C, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
-                func_global_asm_80608528(current_actor_pointer, 0x1C, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
+                // playSoundAtActorPosition(3.926990986f, temp_s0_2, 0x1C, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
+                playSoundAtActorPosition(current_actor_pointer, 0x1C, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
                 var_v1_2 = 0;
             }
         }
         if ((aaD->unkC < 0.7853981853f) && (0.7853981853f <= (aaD->unkC + aaD->unk4))) {
             if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
-                func_global_asm_80608528(current_actor_pointer, 0x258, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
+                playSoundAtActorPosition(current_actor_pointer, 0x258, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
             } else {
-                func_global_asm_80608528(current_actor_pointer, 0x1D, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
+                playSoundAtActorPosition(current_actor_pointer, 0x1D, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
             }
         }
     }
     if ((current_actor_pointer->unk58 != ACTOR_CHAIN) && (aaD->unk0 > 10.0f)) {
         if ((aaD->unkC < 2.356194496f) && (2.356194496f <= (aaD->unkC + aaD->unk4))) {
-            func_global_asm_80608528(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
+            playSoundAtActorPosition(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
         }
         if ((aaD->unkC < 5.497786999f) && (5.497786999f <= (aaD->unkC + aaD->unk4))) {
-            func_global_asm_80608528(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
+            playSoundAtActorPosition(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
         }
     }
 

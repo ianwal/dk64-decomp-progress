@@ -742,7 +742,7 @@ void func_global_asm_806F79E0(s16 arg0, s32 arg1) {
             if ((player_pointer->y_position - player_pointer->floor) < 100.0f) {
                 if (player_pointer->control_state != 0x63) {
                     if (!(player_pointer->unk6A & 4) || !((player_pointer->unkAC - player_pointer->y_position) > 20.0f)) {
-                        func_global_asm_806EB0C0(0x29, 0, extra_player_info_pointer->unk1A4);
+                        setAction(0x29, 0, extra_player_info_pointer->unk1A4);
                     }
                 }
             }
@@ -753,7 +753,7 @@ void func_global_asm_806F79E0(s16 arg0, s32 arg1) {
             if ((player_pointer->y_position - player_pointer->floor) < 100.0f) {
                 if (player_pointer->control_state != 0x63) {
                     if (!(player_pointer->unk6A & 4) || !((player_pointer->unkAC - player_pointer->y_position) > 20.0f)) {
-                        func_global_asm_806EB0C0(0x29, 0, extra_player_info_pointer->unk1A4);
+                        setAction(0x29, 0, extra_player_info_pointer->unk1A4);
                     }
                 }
             }
@@ -787,11 +787,11 @@ void func_global_asm_806F79E0(s16 arg0, s32 arg1) {
             if (current_map == MAP_HELM) {
                 var_v0 = 0x29;
             }
-            func_global_asm_806EB0C0(var_v0, 0, extra_player_info_pointer->unk1A4);
+            setAction(var_v0, 0, extra_player_info_pointer->unk1A4);
             break;
         case 0x18D:
             playSong(0x12, 1.0f);
-            func_global_asm_806EB0C0(0x42, 0, extra_player_info_pointer->unk1A4);
+            setAction(0x42, 0, extra_player_info_pointer->unk1A4);
             func_global_asm_80687CC8();
             break;
         case 0x1D1:

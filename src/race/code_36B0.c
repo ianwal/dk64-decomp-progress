@@ -307,7 +307,7 @@ void func_race_80029054(void) {
 
     a178 = current_actor_pointer->unk178;
     a17C = current_actor_pointer->unk17C;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_race_80028E20(a17C);
         current_actor_pointer->noclip_byte = 0x3C;

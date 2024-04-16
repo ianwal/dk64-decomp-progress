@@ -128,13 +128,13 @@ void func_global_asm_806A1AC4(void) {
         case 0:
             if ((D_global_asm_807FBB70.unk254 != 0) && (D_global_asm_807FBB70.unk258[0] == 1)) {
                 func_global_asm_8070DA74(current_actor_pointer);
-                func_global_asm_8070D8C0(current_actor_pointer, 0x1F, 1);
+                loadText(current_actor_pointer, 0x1F, 1);
                 playCutscene(current_actor_pointer, 0x12, 1);
                 setFlag(0xFB, TRUE, FLAG_TYPE_PERMANENT);
                 current_actor_pointer->control_state = 1;
             } else if ((isFlagSet(0xFB, FLAG_TYPE_PERMANENT) == FALSE) && (isFlagSet(0x21, FLAG_TYPE_TEMPORARY) == FALSE)) {
                 if ((((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position)) + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position))) < 19600.0f) {
-                    func_global_asm_8070D8C0(player_pointer, 0x1F, 0);
+                    loadText(player_pointer, 0x1F, 0);
                     setFlag(0x21, 1, 2);
                 }
             }
@@ -259,7 +259,7 @@ void func_global_asm_806A1FD8(void) {
                 drawSpriteAtPosition(&D_global_asm_8071FF18, 2.0f, sp54, sp50 + 10.0, sp4C);
             }
             aaD->unk0 = 0xF;
-            func_global_asm_80608528(current_actor_pointer, 0x1C1, 0xFF, 0x7F, 1);
+            playSoundAtActorPosition(current_actor_pointer, 0x1C1, 0xFF, 0x7F, 1);
         }
     }
     if (aaD->unk0 >= 2) {

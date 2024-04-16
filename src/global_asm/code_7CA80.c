@@ -621,7 +621,7 @@ void func_global_asm_80678E6C(Actor *arg0) {
             if (!(arg0->unk6A & 0x10)) {
                 arg0->unk6A |= 0x10;
                 if (arg0 == current_player) {
-                    func_global_asm_806EB0C0(4, NULL, cc_player_index);
+                    setAction(4, NULL, cc_player_index);
                 }
             }
         }
@@ -924,7 +924,7 @@ void func_global_asm_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
                 }
             }
             if (var_a2 != 0) {
-                func_global_asm_806EB0C0(sp3C, arg1, cc_player_index);
+                setAction(sp3C, arg1, cc_player_index);
             }
         }
     }

@@ -98,7 +98,7 @@ void func_global_asm_806B904C(void) {
     f32 temp_f0;
     s16 i;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         temp_f0 = (D_global_asm_807FDC9C->unkF / 255.0) * 0.75;
         current_actor_pointer->animation_state->scale_x = temp_f0;

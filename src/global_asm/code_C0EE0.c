@@ -12,8 +12,8 @@ Gfx *func_global_asm_806BCF98(Gfx *dl, s32 arg1) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
 
-    dl = func_global_asm_806FC530(dl, 1, 520, 200, "q YES", 1);
-    return func_global_asm_806FC530(dl, 1, 520, 300, "b NO", 1);
+    dl = printStyledText(dl, 1, 520, 200, "q YES", 1);
+    return printStyledText(dl, 1, 520, 300, "b NO", 1);
 }
 
 // Caves Ice Tomato Board State

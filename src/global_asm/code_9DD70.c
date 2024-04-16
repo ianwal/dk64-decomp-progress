@@ -273,7 +273,7 @@ void func_global_asm_8069DA54(void) {
 
     temp_a3 = current_actor_pointer->additional_actor_data;
     if (current_actor_pointer->unkEE != 0) {
-        func_global_asm_8068C350(&func_global_asm_8069D930, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(&func_global_asm_8069D930, current_actor_pointer, 3);
         return;
     }
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -289,7 +289,7 @@ void func_global_asm_8069DA54(void) {
             break;
         case 1:
             if (current_actor_pointer->control_state_progress != 3) {
-                func_global_asm_8068C350(&func_global_asm_8069D424, current_actor_pointer, 3);
+                addActorToTextOverlayRenderArray(&func_global_asm_8069D424, current_actor_pointer, 3);
             }
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
@@ -433,7 +433,7 @@ void func_global_asm_8069E040() {
 }
 
 void func_global_asm_8069E088(void) {
-    s16 phi_s0_2;
+    s16 textIndex;
 
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         func_global_asm_80613C48(current_actor_pointer, 0x5ED, 0, 0);
@@ -443,15 +443,15 @@ void func_global_asm_8069E088(void) {
         current_actor_pointer->control_state++;
     }
     if (current_actor_pointer->control_state == 0x1E) {
-        phi_s0_2 = 0;
+        textIndex = 0;
         current_actor_pointer->control_state = 0x64;
         func_global_asm_8070E8DC(1);
         if (!isFlagSet(0x178, FLAG_TYPE_PERMANENT)) { // Wrinkly FTT
             setFlag(0x178, TRUE, FLAG_TYPE_PERMANENT);
         } else {
-            phi_s0_2 = (func_global_asm_80600530() * 5) + D_global_asm_807F6951 + 1;
+            textIndex = (func_global_asm_80600530() * 5) + D_global_asm_807F6951 + 1;
         }
-        func_global_asm_8070D8C0(current_actor_pointer, 0x29, phi_s0_2);
+        loadText(current_actor_pointer, 0x29, textIndex);
     }
     if (D_global_asm_807F6950 != 0) {
         deleteActor(current_actor_pointer);

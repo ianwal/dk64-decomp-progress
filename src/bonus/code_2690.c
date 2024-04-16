@@ -270,7 +270,7 @@ void func_bonus_800277F8(void) {
         aaD->unk23 = 5;
         aaD->unk0 = -2;
         aaD->unk22 = 0;
-        func_global_asm_806EB0C0(0x48, NULL, 0);
+        setAction(0x48, NULL, 0);
         func_global_asm_8061C464(extra_player_info_pointer->unk104, current_actor_pointer, 4, 0x800, -7, 0, 0x16, 0x2C, 4, 0, D_bonus_8002DD40);
         playCutscene(NULL, 0, 1);
         current_actor_pointer->z_rotation = 0x310;
@@ -366,10 +366,10 @@ void func_bonus_800277F8(void) {
     } else if (is_cutscene_active != 1) {
         aaD->unk0++;
         func_global_asm_806A2A10(0xDC, 0x2A, a178->unk29);
-        func_global_asm_8070D8C0(current_actor_pointer, 0, 1);
+        loadText(current_actor_pointer, 0, 1);
     }
     if (aaD->unk0 >= -1) {
-        func_global_asm_8068C350(&func_bonus_80026940, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(&func_bonus_80026940, current_actor_pointer, 3);
     }
     renderActor(current_actor_pointer, 0);
 }
@@ -564,7 +564,7 @@ void func_bonus_80028E3C(void) {
                 if (aaD2->unkC < 40.0f) {
                     aaD->unk4 = 1;
                     playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x1ED, 0xFF, 0x7F, 0, 0, 0.0f, 0);
-                    func_global_asm_80608528(current_actor_pointer, 0x76, 0xFF, 0x7F, 0x1E);
+                    playSoundAtActorPosition(current_actor_pointer, 0x76, 0xFF, 0x7F, 0x1E);
                     current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
                     current_actor_pointer->unkB8 = 10.0f;
                     playActorAnimation(aaD->unk0, 0x1F7);
@@ -579,7 +579,7 @@ void func_bonus_80028E3C(void) {
             if (!(current_actor_pointer->unk6C & 1)) {
                 f64 temp = D_bonus_8002DD98;
                 current_actor_pointer->y_velocity = aaD->unkC * D_bonus_8002DDA0;
-                func_global_asm_80608528(current_actor_pointer, 0xFF, (u32)MAX(temp, -aaD->unkC * 1.5), 0x7F, 0xA);
+                playSoundAtActorPosition(current_actor_pointer, 0xFF, (u32)MAX(temp, -aaD->unkC * 1.5), 0x7F, 0xA);
             }
         }
         current_actor_pointer->y_velocity += current_actor_pointer->y_acceleration;

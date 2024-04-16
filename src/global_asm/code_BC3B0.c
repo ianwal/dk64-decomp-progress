@@ -130,7 +130,7 @@ void func_global_asm_806B7EA0(void) {
     f32 sp3C;
 
     a178 = current_actor_pointer->unk178;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC98->unk46 |= 0x60;
         D_global_asm_807FBB64 |= 2;
@@ -181,7 +181,7 @@ void func_global_asm_806B7EA0(void) {
                 break;
             case 0x11:
                 if (!func_global_asm_8061CC00()) {
-                    func_global_asm_8068C350(&func_global_asm_806B7830, current_actor_pointer, 3);
+                    addActorToTextOverlayRenderArray(&func_global_asm_806B7830, current_actor_pointer, 3);
                 }
                 if (D_global_asm_807FDC90->unk2C != 0) {
                     D_global_asm_807FDC90->unk2C--;
@@ -198,7 +198,7 @@ void func_global_asm_806B7EA0(void) {
 
         }
         if (!func_global_asm_8061CC00()) {
-            func_global_asm_8068C350(&func_global_asm_806B76B0, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(&func_global_asm_806B76B0, current_actor_pointer, 3);
         }
     }
 }
@@ -206,7 +206,7 @@ void func_global_asm_806B7EA0(void) {
 
 void func_global_asm_806B83E4(void) {
     u8 temp;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC90->unk30 = D_global_asm_807FDC9C->unkA_u8[1];
         func_global_asm_8066EB40(current_actor_pointer, 300.0f);
@@ -217,7 +217,7 @@ void func_global_asm_806B83E4(void) {
         D_global_asm_807FDC90->unk2C = D_global_asm_807FDC9C->unkA_u8[0];
         D_global_asm_807FDC90->unk30 = D_global_asm_807FDC9C->unkA_u8[1];
         func_global_asm_8066EA64(current_actor_pointer, 1);
-        func_global_asm_80608528(current_actor_pointer, 0x182, 0xFF, 0x7F, 0x1E);
+        playSoundAtActorPosition(current_actor_pointer, 0x182, 0xFF, 0x7F, 0x1E);
     }
     D_global_asm_807FDC90->unk30 -= 1.0;
     if ((D_global_asm_807FDC90->unk2C != 0) && ((object_timer % 5U) == 0)) {
@@ -237,14 +237,14 @@ void func_global_asm_806B83E4(void) {
 }
 
 void func_global_asm_806B86AC(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC90->unk2E = D_global_asm_807FDC98->unkB;
     }
     if (D_global_asm_807FDC90->unk2E == 0) {
         D_global_asm_807FDC90->unk2C = D_global_asm_807FDC98->cutscene_model_index;
         D_global_asm_807FDC90->unk2E = D_global_asm_807FDC98->unkB;
-        func_global_asm_80608528(current_actor_pointer, 0x182, 0xFF, 0x7F, 0x1E);
+        playSoundAtActorPosition(current_actor_pointer, 0x182, 0xFF, 0x7F, 0x1E);
     }
     D_global_asm_807FDC90->unk2E--;
     if ((D_global_asm_807FDC90->unk2C != 0) && ((object_timer % 5U) == 0)) {
@@ -275,7 +275,7 @@ void func_global_asm_806B88B8(void) {
     temp_v1 = current_actor_pointer->unk178;
     temp_s0 = current_actor_pointer->unk17C;
     sp3C = temp_v1;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC90->unk30 = D_global_asm_807FDC9C->unkA_u8[1];
         temp_v1->unk0 = D_global_asm_807FDC9C->unkD;
@@ -288,7 +288,7 @@ void func_global_asm_806B88B8(void) {
         D_global_asm_807FDC90->unk2C = D_global_asm_807FDC9C->unkA_u8[0];
         D_global_asm_807FDC90->unk30 = D_global_asm_807FDC9C->unkA_u8[1];
         temp_s0->unk0_s16[0] = 0;
-        func_global_asm_80608528(current_actor_pointer, 0x17, 0xFF, 0x7F, 0x19);
+        playSoundAtActorPosition(current_actor_pointer, 0x17, 0xFF, 0x7F, 0x19);
     }
     D_global_asm_807FDC90->unk30 -= 1.0;
     if ((D_global_asm_807FDC90->unk2C != 0) && (temp_s0->unk0_s16[0] == 0)) {

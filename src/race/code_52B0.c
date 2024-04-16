@@ -212,7 +212,7 @@ void func_race_800294A8(void) {
         }
         func_global_asm_8068F72C(temp_s4, sp68, 1, 1);
         if (!gameIsInDKTVMode()) {
-            func_global_asm_8068C350(&func_race_800292B0, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(&func_race_800292B0, current_actor_pointer, 3);
         }
     } else if (temp_s4->unk34 == 5) {
         if (temp_s4->unk35 == 0) {
@@ -391,7 +391,7 @@ void func_race_8002B76C(RaceAdditionalActorData *arg0, void *arg1) {
     switch (arg0->unk35) {
         case 0:
             if (!isFlagSet(0x145, FLAG_TYPE_PERMANENT)) {
-                func_global_asm_806EB0C0(0x55, NULL, 0);
+                setAction(0x55, NULL, 0);
                 current_actor_pointer->x_rotation = 0;
                 current_actor_pointer->z_rotation = 0;
                 for (i = 0; i < 2; i++) {
@@ -405,7 +405,7 @@ void func_race_8002B76C(RaceAdditionalActorData *arg0, void *arg1) {
         case 1:
             if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
-                func_global_asm_8070D8C0(current_actor_pointer, 0x22, func_race_8002B6C8(arg0, arg1));
+                loadText(current_actor_pointer, 0x22, func_race_8002B6C8(arg0, arg1));
                 arg0->unk35++;
             }
             break;
@@ -446,7 +446,7 @@ void func_race_8002B964(void) {
 
     a178 = current_actor_pointer->unk178;
     a17C = current_actor_pointer->unk17C;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         a17C->unk10 = 1;
         func_race_8002DE78(a17C, 5, &D_race_8002FC70, &D_race_8002FCA0);

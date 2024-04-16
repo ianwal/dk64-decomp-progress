@@ -155,7 +155,7 @@ void func_bonus_800261B8(void) {
                 current_actor_pointer->unk160 = func_global_asm_806118FC((aaD->unk4 - temp_t0) * 0.015625);
                 current_actor_pointer->unk168 = (current_actor_pointer->z_rotation + temp_t0) & 0xFFF;
                 current_actor_pointer->unk15F = current_actor_pointer->unk168 / 683;
-                func_global_asm_80608528(current_actor_pointer, 0x17A, 0xFF, 0x7F, 1);
+                playSoundAtActorPosition(current_actor_pointer, 0x17A, 0xFF, 0x7F, 1);
             }
             // fallthrough
         case 3:
@@ -181,7 +181,7 @@ void func_bonus_800264E0(u8 arg0, u8 arg1) {
     func_global_asm_8069D2AC(0x81, 0, 0x78, func_global_asm_8070E750(0x1A, arg1, 1), 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
     playSong(0x28, 1.0f);
-    func_global_asm_806EB0C0(0x44, NULL, 0);
+    setAction(0x44, NULL, 0);
     current_actor_pointer->control_state++;
     if (arg0 != 0) {
         func_global_asm_80627948(player_pointer, 5, 0x21, 5);
@@ -192,7 +192,7 @@ void func_bonus_800265C0(u8 arg0, u8 arg1) {
     current_actor_pointer->unk11C->control_state = 0;
     func_global_asm_8069D2AC(0x81, 0, 0x78, func_global_asm_8070E750(0x1A, arg1, 1), 0, 0x28, 8, 8);
     playSong(0x57, 1.0f);
-    func_global_asm_806EB0C0(0x43, NULL, 0);
+    setAction(0x43, NULL, 0);
     current_actor_pointer->control_state++;
     if (arg0 != 0) {
         func_global_asm_80627948(player_pointer, 5, 0x21, 5);

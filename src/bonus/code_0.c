@@ -104,7 +104,7 @@ void func_bonus_80024E38(void) {
     s32 temp_v0_5;
 
     a178 = current_actor_pointer->unk178;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         a178->unk0 = 0x12C;
         a178->unkA = 0;

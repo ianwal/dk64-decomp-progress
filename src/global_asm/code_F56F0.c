@@ -159,19 +159,19 @@ void func_global_asm_806F09F0(Actor *arg0, u16 arg1) {
 void func_global_asm_806F0B34(Actor *arg0) {
     switch (current_character_index[cc_player_index]) {
         case 0:
-            func_global_asm_80608528(arg0, 0x17C, 0xFF, 0x7F, 0x19);
+            playSoundAtActorPosition(arg0, 0x17C, 0xFF, 0x7F, 0x19);
             return;
         case 1:
-            func_global_asm_80608528(arg0, 0x17C, 0xC8, 0xA0, 5);
+            playSoundAtActorPosition(arg0, 0x17C, 0xC8, 0xA0, 5);
             return;
         case 2:
-            func_global_asm_80608528(arg0, 0x17C, 0xFF, 0x7F, 5);
+            playSoundAtActorPosition(arg0, 0x17C, 0xFF, 0x7F, 5);
             return;
         case 3:
-            func_global_asm_80608528(arg0, 0x185, 0xFF, 0x7F, 0x19);
+            playSoundAtActorPosition(arg0, 0x185, 0xFF, 0x7F, 0x19);
             return;
         default:
-            func_global_asm_80608528(arg0, 0x18F, 0xFF, 0x7F, 0x19);
+            playSoundAtActorPosition(arg0, 0x18F, 0xFF, 0x7F, 0x19);
             return;
     }
 }
@@ -270,21 +270,21 @@ void func_global_asm_806F0D68(Actor *arg0) {
         if (PaaD->unk8C == 0) {
             switch (current_character_index[cc_player_index]) {
                 case 0:
-                    func_global_asm_80608528(arg0, 0x186, 0xFF, 0x64, 0x19);
-                    func_global_asm_80608528(arg0, 0x17C, 0xFF, 0x64, 0x19);
+                    playSoundAtActorPosition(arg0, 0x186, 0xFF, 0x64, 0x19);
+                    playSoundAtActorPosition(arg0, 0x17C, 0xFF, 0x64, 0x19);
                     break;
                 case 1:
-                    func_global_asm_80608528(arg0, 0x17C, 0xC8, 0xBE, 5);
+                    playSoundAtActorPosition(arg0, 0x17C, 0xC8, 0xBE, 5);
                     break;
                 case 2:
-                    func_global_asm_80608528(arg0, 0x186, 0xFF, 0x7F, 0x19);
-                    func_global_asm_80608528(arg0, 0x17C, 0xFF, 0xA0, 5);
+                    playSoundAtActorPosition(arg0, 0x186, 0xFF, 0x7F, 0x19);
+                    playSoundAtActorPosition(arg0, 0x17C, 0xFF, 0xA0, 5);
                     break;
                 case 3:
-                    func_global_asm_80608528(arg0, 0x185, 0xFF, 0x7F, 0x19);
+                    playSoundAtActorPosition(arg0, 0x185, 0xFF, 0x7F, 0x19);
                     break;
                 default:
-                    func_global_asm_80608528(arg0, 0x18E, 0xFF, 0x7F, 0x19);
+                    playSoundAtActorPosition(arg0, 0x18E, 0xFF, 0x7F, 0x19);
                     break;
             }
             PaaD->unk8C = 1;

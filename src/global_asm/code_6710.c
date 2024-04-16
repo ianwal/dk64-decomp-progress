@@ -475,7 +475,7 @@ extern f32 D_global_asm_80756DFC;
 extern f64 D_global_asm_80756FF0;
 extern f64 D_global_asm_80756FF8;
 
-void func_global_asm_80608528(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4) {
+void playSoundAtActorPosition(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4) {
     s32 var_v0;
 
     if (((arg0->y_position + 20.0f) < arg0->unkAC) && ((arg1 < 0x355) || (arg1 >= 0x35E))) {

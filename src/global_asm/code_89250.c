@@ -528,7 +528,7 @@ void func_global_asm_8068613C(Actor *arg0) {
         func_global_asm_8068588C(arg0, 0, 4.0f, arg0->x_position, arg0->y_position, arg0->z_position, -0x96);
         deleteActor(arg0);
     }
-    func_global_asm_80608528(arg0, 0xC, 0xFF, 0x7F, 1);
+    playSoundAtActorPosition(arg0, 0xC, 0xFF, 0x7F, 1);
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(1);
     func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);

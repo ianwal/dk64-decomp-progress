@@ -176,7 +176,7 @@ void func_multiplayer_800243C8(void) {
         aaD->unk8 = 0;
         func_multiplayer_800242FC(aaD);
     }
-    func_global_asm_8068C350(&func_multiplayer_80024000, current_actor_pointer, 7);
+    addActorToTextOverlayRenderArray(&func_multiplayer_80024000, current_actor_pointer, 7);
 }
 
 void func_multiplayer_8002449C(void) {
@@ -480,7 +480,7 @@ void func_multiplayer_80025CE8(s32 arg0) {
                 if (playerIndex != arg0) {
                     if (PaaD2->unkD4 == 0) {
                         if (player->control_state != 0x84) {
-                            func_global_asm_806EB0C0(0x27, temp_s3, playerIndex);
+                            setAction(0x27, temp_s3, playerIndex);
                             PaaD2->unk200 = 0x96;
                         }
                     }
@@ -664,7 +664,7 @@ void func_multiplayer_80026D40(Actor *arg0, s32 playerIndex) {
     if ((D_global_asm_807552E8 == 4) && (func_multiplayer_80024254(playerIndex) == 0)) {
         D_global_asm_807FC950[playerIndex].health = 0;
         arg0->control_state_progress++;
-        func_global_asm_806EB0C0(0x5B, NULL, playerIndex);
+        setAction(0x5B, NULL, playerIndex);
         arg0->noclip_byte = 1;
     } else {
         func_global_asm_806C9434(func_multiplayer_80026BD8(playerIndex));

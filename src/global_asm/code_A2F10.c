@@ -291,7 +291,7 @@ void func_global_asm_8069E774(void) {
                 player = character_change_array[playerIndex].player_pointer;
                 if ((!sp7F) || ((playerIndex != PaaD->unk1A4) && (player->control_state != 0x84))) {
                     if (func_global_asm_8069E660(player, player->unk15E, sp88)) {
-                        func_global_asm_806EB0C0(sp60, current_actor_pointer, playerIndex);
+                        setAction(sp60, current_actor_pointer, playerIndex);
                     }
                 }
             }
@@ -442,7 +442,7 @@ void func_global_asm_8069F020(void) {
     if ((current_actor_pointer->unk168 == 0) || (current_actor_pointer->control_state != 3)) {
         if ((func_global_asm_8069EF50(current_actor_pointer->x_position, current_actor_pointer->y_position - 20.0f, current_actor_pointer->z_position, sp67, current_actor_pointer->animation_state->scale_x * sp64) != 0)
          && (func_global_asm_8069EF50(current_actor_pointer->x_position, current_actor_pointer->y_position - 20.0f, current_actor_pointer->z_position, sp67, current_actor_pointer->animation_state->scale_x * (sp64 - 0x14)) == 0)) {
-            func_global_asm_806EB0C0(0x2E, current_actor_pointer, 0);
+            setAction(0x2E, current_actor_pointer, 0);
         }
     }
     renderActor(current_actor_pointer, 0);
@@ -484,9 +484,9 @@ void func_global_asm_8069FDA0(void) {
         current_actor_pointer->unkE0 = (temp_f12 * -8.0) + 12.0;
         current_actor_pointer->y_rotation = 255.0f * temp_f12;
         if ((current_actor_pointer->unk15F >= 0x14) && (current_actor_pointer->unk15F < 0x1E)) {
-            func_global_asm_8068C350(&func_global_asm_8069F904, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(&func_global_asm_8069F904, current_actor_pointer, 3);
         } else {
-            func_global_asm_8068C350(&func_global_asm_8069FA40, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(&func_global_asm_8069FA40, current_actor_pointer, 3);
         }
         if ((current_actor_pointer->unk15F == 0) && (current_actor_pointer->unk160 == 3)) {
             spawnActor(ACTOR_TEXT_OVERLAY, 0);
@@ -598,7 +598,7 @@ void func_global_asm_806A0330(void) {
     }
     if ((D_global_asm_807FBD70 == 4) || (current_actor_pointer->unkFC != 0) || ((current_actor_pointer->unk6A & 1) && !(current_actor_pointer->unk6C & 1))) {
         func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xF, 0xF);
-        func_global_asm_80608528(current_actor_pointer, 0x162, 0xE1, 0x3C, 1);
+        playSoundAtActorPosition(current_actor_pointer, 0x162, 0xE1, 0x3C, 1);
         for (i = 1; i < 7; i++) {
             func_global_asm_80671C0C(current_actor_pointer, i, &sp68, &sp64, &sp60);
             func_global_asm_8071496C(i);

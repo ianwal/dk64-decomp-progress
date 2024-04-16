@@ -11,7 +11,7 @@ void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 void func_global_asm_806B1F50(void) {
     u8 sp37;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC98->unk46 |= 0xA0;
         current_actor_pointer->object_properties_bitfield |= 0x400;
@@ -59,7 +59,7 @@ void func_global_asm_806B1F50(void) {
                 case 0x3C:
                     current_actor_pointer->object_properties_bitfield &= ~4;
                     current_actor_pointer->unk68 &= 0xFFBF;
-                    func_global_asm_80608528(current_actor_pointer, 0xED, 0xFF, 0x7F, 0x14);
+                    playSoundAtActorPosition(current_actor_pointer, 0xED, 0xFF, 0x7F, 0x14);
                     func_global_asm_8067DF44(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, (current_actor_pointer->animation_state->scale_y * 2) / 0.15, 0, 1);
                     deleteActor(D_global_asm_807FDC94);
                     current_actor_pointer->control_state_progress++;
@@ -105,7 +105,7 @@ void func_global_asm_806B24B8(void) {
     f32 dx;
     f32 dz;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         temp_v0 = func_global_asm_8067ADB4(0x110);
         if (temp_v0 != NULL) {
@@ -135,7 +135,7 @@ void func_global_asm_806B24B8(void) {
             dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
             dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
             if (sqrtf((dx * dx) + (dz * dz)) < 30.0f) {
-                func_global_asm_80608528(current_actor_pointer, 0x2CA, 0xFF, 0x7F, 0x14);
+                playSoundAtActorPosition(current_actor_pointer, 0x2CA, 0xFF, 0x7F, 0x14);
                 current_actor_pointer->unkF0 = 1;
             }
         }

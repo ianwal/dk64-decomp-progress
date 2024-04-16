@@ -59,7 +59,7 @@ void func_global_asm_806B13B4(u8 arg0) {
     u8 var_a0_2;
     u8 var_a1;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (current_map == MAP_STASH_SNATCH_NORMAL) {
             D_global_asm_807FDC9C->unkD = 0x82;
@@ -163,8 +163,8 @@ block_34:
                 case 2:                             // switch 4
                     func_global_asm_806B11C0(1);
                     func_global_asm_806B11C0(2);
-                    func_global_asm_80608528(current_actor_pointer, 0x1D5, 0xFF, 0x7F, 1);
-                    func_global_asm_80608528(current_actor_pointer, 0x25A, 0xFF, 0x7F, 1);
+                    playSoundAtActorPosition(current_actor_pointer, 0x1D5, 0xFF, 0x7F, 1);
+                    playSoundAtActorPosition(current_actor_pointer, 0x25A, 0xFF, 0x7F, 1);
                     current_actor_pointer->control_state_progress = 3;
                     var_a0 = current_actor_pointer->control_state;
                     goto block_100;

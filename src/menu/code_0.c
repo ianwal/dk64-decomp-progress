@@ -97,7 +97,7 @@ void func_menu_800241E8(void) {
 }
 
 void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
-    s32 var_v0;
+    s32 textIndex;
     s32 temp;
 
     switch (arg0->unk1) {
@@ -105,25 +105,25 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
             if (func_global_asm_80629148()) {
                 if (arg1 != 0) {
                     func_global_asm_80629174();
-                    func_global_asm_8070D8C0(current_actor_pointer, 0xB, 0);
+                    loadText(current_actor_pointer, 0xB, 0);
                     temp = arg0->unk1A;
                     if (temp == 1) {
-                        var_v0 = 1;
+                        textIndex = 1;
                     } else if (temp > 1) {
-                        var_v0 = 2;
+                        textIndex = 2;
                     } else {
-                        var_v0 = 3;
+                        textIndex = 3;
                     }
                     D_global_asm_80750AC8 = arg0->unk1A;
-                    func_global_asm_8070D8C0(current_actor_pointer, 0xB, var_v0);
+                    loadText(current_actor_pointer, 0xB, textIndex);
                 } else {
                     if (arg0->unk1A == 1) {
-                        var_v0 = 5;
+                        textIndex = 5;
                     } else {
-                        var_v0 = 6;
+                        textIndex = 6;
                     }
                     D_global_asm_80750AC8 = arg0->unk1A;
-                    func_global_asm_8070D8C0(current_actor_pointer, 0xB, var_v0);
+                    loadText(current_actor_pointer, 0xB, textIndex);
                 }
                 arg0->unk1++;
             }
@@ -139,7 +139,7 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
                 func_global_asm_80629174();
                 if (arg0->unk1A != 0) {
                     playCutscene(NULL, 5, 1);
-                    arg0->unk1 = arg0->unk1 + 1;
+                    arg0->unk1++;
                 } else {
                     arg0->unk0 = 4;
                     arg0->unk1 = 0;
@@ -170,11 +170,11 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
     }
 }
 
-void func_menu_80024418(MenuStruct0 *arg0, s32 arg1) {
+void func_menu_80024418(MenuStruct0 *arg0, s32 textIndex) {
     switch (arg0->unk1) {
         case 0:
             if (func_global_asm_80629148()) {
-                func_global_asm_8070D8C0(current_actor_pointer, 0xB, arg1);
+                loadText(current_actor_pointer, 0xB, textIndex);
                 arg0->unk1++;
             }
             break;
@@ -195,7 +195,7 @@ void func_menu_80024418(MenuStruct0 *arg0, s32 arg1) {
     }
 }
 
-Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32);
+Gfx *printStyledText(Gfx*, s16, s16, s16, void *, s32);
 s32 func_global_asm_8070E750(s32, s32, s32);
 
 Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
@@ -227,12 +227,12 @@ Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
     } else {
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
         sprintf(&sp70, "q %s", func_global_asm_8070E750(0x2A, 0, 1));
-        dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x190, &sp70, 1);
+        dl = printStyledText(dl, 1, 350, 400, &sp70, 1);
         sprintf(&sp70, "b %s", func_global_asm_8070E750(0x2A, 1, 1));
-        dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x1F4, &sp70, 1);
+        dl = printStyledText(dl, 1, 350, 500, &sp70, 1);
         if (snide_aad->minigame_menu_unlocked) {
             sprintf(&sp70, "n %s", func_global_asm_8070E750(0x2A, 2, 1));
-            dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x258, &sp70, 1);
+            dl = printStyledText(dl, 1, 350, 600, &sp70, 1);
         }
     }
     return dl;
@@ -309,7 +309,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
             }
             if (func_global_asm_8061CB50() == 0) {
                 arg0->screen++;
-                func_global_asm_806EB0C0(0x55, NULL, 0);
+                setAction(0x55, NULL, 0);
             }
             break;
         case 0x1:
@@ -330,7 +330,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
                     var_v0 = 0xFF - current_actor_pointer->unk15F;
                 }
                 current_actor_pointer->unk15F += var_v0;
-                func_global_asm_8068C350(&func_menu_800244EC, current_actor_pointer, 3);
+                addActorToTextOverlayRenderArray(&func_menu_800244EC, current_actor_pointer, 3);
                 if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
                     func_menu_800241E8();
                     arg0->screen = 2;
@@ -365,7 +365,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
                 D_menu_80032F50 = 1;
                 arg0->screen = 0x37;
             }
-            func_global_asm_8068C350(&func_menu_800244EC, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(&func_menu_800244EC, current_actor_pointer, 3);
             break;
     }
     arg0->previous_y = D_global_asm_807ECDEC->unk3;
@@ -379,7 +379,7 @@ void func_menu_80024BFC(MenuStruct0 *arg0) {
                 func_global_asm_80629174();
                 arg0->unk1++;
                 D_global_asm_80750AC8 = func_global_asm_80712548();
-                func_global_asm_8070D8C0(current_actor_pointer, 0xB, 8);
+                loadText(current_actor_pointer, 0xB, 8);
             }
             break;
         case 1:
@@ -473,7 +473,7 @@ void func_menu_80024CB0(void) {
             func_menu_80024BFC(a180);
             break;
     }
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     func_global_asm_806BFBF4();
     renderActor(current_actor_pointer, 0);
 }

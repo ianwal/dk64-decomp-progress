@@ -200,7 +200,7 @@ void func_global_asm_80690094(Actor *arg0, Actor *player) {
     u8 sp37 = 0;
     PlayerAdditionalActorData *PaaD = player->PaaD;
 
-    func_global_asm_806EB0C0(0x4C, arg0, PaaD->unk1A4);
+    setAction(0x4C, arg0, PaaD->unk1A4);
     if (current_map == MAP_GALLEON_PUFFTOSS) {
         sp37 = 0x3C;
     }
@@ -318,7 +318,7 @@ void func_global_asm_80690500(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->y_acceleration = D_global_asm_80750300;
         current_actor_pointer->noclip_byte = 0x3C;
-        func_global_asm_806EB0C0(0x4C, current_actor_pointer, PaaD->unk1A4);
+        setAction(0x4C, current_actor_pointer, PaaD->unk1A4);
     }
     if (func_global_asm_8061CB50() == 0 || (func_global_asm_8061CB50() != 0 && player_pointer->unk6A & 0x100)) {
         func_global_asm_80671C0C(current_actor_pointer, 1, &sp44, &sp40, &sp3C);
@@ -654,7 +654,7 @@ void func_global_asm_8069329C(void) {
             drawSpriteAtPosition(&D_global_asm_807200EC, 0.35f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
     }
-    func_global_asm_80608528(current_actor_pointer, 0xF6, 0xFF, 0x7F, 0x1E);
+    playSoundAtActorPosition(current_actor_pointer, 0xF6, 0xFF, 0x7F, 0x1E);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8069346C.s")
@@ -707,7 +707,7 @@ void func_global_asm_806970CC(void) {
     }
     func_global_asm_80696A6C();
     if ((current_actor_pointer->unkFC != 0) && (func_global_asm_806725A0(current_actor_pointer, current_actor_pointer->unkEE) == 0)) {
-        func_global_asm_80608528(current_actor_pointer, 0xF5, 0xFF, 0x7F, 0x1E);
+        playSoundAtActorPosition(current_actor_pointer, 0xF5, 0xFF, 0x7F, 0x1E);
         temp_v0 = func_global_asm_80672A70(current_actor_pointer->unkF4, current_actor_pointer->unkF6);
         temp = ((current_actor_pointer->unkEE) + 0x800) & 0xFFF;
         temp2 = (temp_v0 - temp);

@@ -89,7 +89,7 @@ void func_global_asm_80697988(void) {
             }
             break;
     }
-    func_global_asm_8068C350(&func_global_asm_80697230, current_actor_pointer, 1);
+    addActorToTextOverlayRenderArray(&func_global_asm_80697230, current_actor_pointer, 1);
 }
 */
 
@@ -156,7 +156,7 @@ void func_global_asm_80697CEC(void) {
     func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0x14, 0x14, 1, 0x96, 0x78, 0, 1.0f);
     if ((current_actor_pointer->unk6A & 1) || (current_actor_pointer->unkFC != 0) || (D_global_asm_807FBB85 != 0)) {
         if (aaD->unk13 == 3) {
-            func_global_asm_80608528(current_actor_pointer, 0x16, 0xFF, 0x7F, 0x14);
+            playSoundAtActorPosition(current_actor_pointer, 0x16, 0xFF, 0x7F, 0x14);
         }
         if (D_global_asm_807FBB85 == 0) {
             s16 i;

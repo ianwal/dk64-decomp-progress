@@ -11,7 +11,7 @@ s16 func_global_asm_806CC190(s16, s16, f32);
 
 extern f64 D_global_asm_8075FF38;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_80729B00.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/initializeCharacterSpawnerActor.s")
 
 extern s8 D_global_asm_807FBB85;
 
@@ -29,7 +29,7 @@ void func_global_asm_806663F8(void);
 
 /*
 // TODO: Doable, very close!!!
-void func_global_asm_80729B00(void) {
+void initializeCharacterSpawnerActor(void) {
     EnemyInfo *temp_t9;
     AAD_global_asm_80729B00 *temp_t7;
 
@@ -67,7 +67,7 @@ void func_global_asm_80729B00(void) {
                 current_actor_pointer->control_state = 0x39;
                 current_actor_pointer->control_state_progress = 0;
                 playActorAnimation(current_actor_pointer, D_global_asm_807FDC98->unk2A);
-                func_global_asm_80608528(current_actor_pointer, 0x16, 0xFF, 0x7F, 0x14);
+                playSoundAtActorPosition(current_actor_pointer, 0x16, 0xFF, 0x7F, 0x14);
                 current_actor_pointer->y_velocity = -220.0f;
             }
         }
@@ -728,7 +728,7 @@ void func_global_asm_8072DEA8(s32 arg0, u8 arg1, Actor *arg2) {
     f32 var_f2_2;
 
     func_global_asm_8072D9D4();
-    func_global_asm_80608528(current_actor_pointer, 0x1CA, 0xFF, 0x7F, 0x14);
+    playSoundAtActorPosition(current_actor_pointer, 0x1CA, 0xFF, 0x7F, 0x14);
     if (arg2 != NULL) {
         if (arg2->interactable & 4) {
             current_actor_pointer->unkEE = (arg2->unkEE + 0x800) & 0xFFF;

@@ -80,7 +80,7 @@ void func_global_asm_806AD54C(void) {
     Actor *klaptrap;
     s32 angleSign;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_80724CA4(2, 1);
         func_global_asm_8072B79C(0x1F8, 0x1F8, 0x1F9);
@@ -117,7 +117,7 @@ void func_global_asm_806AD54C(void) {
 }
 
 void func_global_asm_806AD7AC(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_80724CA4(2, 1);
         func_global_asm_8072B79C(0x1F8, 0x1F8, 0x1F9);
@@ -167,7 +167,7 @@ void func_global_asm_806AD9AC(void) {
 
 void func_global_asm_806AD9F4(void) {
     s32 tmp_t0;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC98->unk46 |= 0x200;
         func_global_asm_8072B79C(0x2F4, 0x2F4, 0x2F4);
@@ -250,7 +250,7 @@ void func_global_asm_806ADDD8(void) {
     // Might not need this
     u8 pad = current_actor_pointer->control_state;
 
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC98->unk46 |= 0x40;
         D_global_asm_807FDC98->unk28 = temp;

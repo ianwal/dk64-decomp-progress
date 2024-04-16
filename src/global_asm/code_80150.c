@@ -75,7 +75,7 @@ void func_global_asm_8067BA7C(s16 arg0) {
         case 19:
             break;
         case 10:
-            func_global_asm_80608528(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
+            playSoundAtActorPosition(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
             func_global_asm_807149B8(0);
             func_global_asm_807149FC(1);
             drawSpriteAtPosition(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
@@ -281,7 +281,7 @@ u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
     if (sp47 != 0) {
         func_global_asm_80689114(arg0, current_actor_pointer->x_position, current_actor_pointer->y_position + 8.3, current_actor_pointer->z_position, 0, 1.0f, current_actor_pointer);
         if (current_actor_pointer->object_properties_bitfield & 0x10) {
-            func_global_asm_80608528(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
+            playSoundAtActorPosition(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
             func_global_asm_807149B8(0);
             func_global_asm_807149FC(1);
             drawSpriteAtPosition(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
@@ -424,7 +424,7 @@ void func_global_asm_8067DCC0(void) {
     func_global_asm_807149B8(0);
     func_global_asm_807149FC(1);
     drawSpriteAtPosition(&D_global_asm_8071FE08, temp_f20 * 0.75, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
-    func_global_asm_80608528(current_actor_pointer, 0x23, 0xFF, 0x7F, 1);
+    playSoundAtActorPosition(current_actor_pointer, 0x23, 0xFF, 0x7F, 1);
     for (i = 0; i < 7; i++) {
         temp_s0 = (s32)(func_global_asm_806119A0() / 10000U) % 3;
         func_global_asm_807149B8(1);
@@ -845,7 +845,7 @@ void func_global_asm_80681E18(void) {
         case 1:
             aaD->unk0--;
             if (aaD->unk0 == 0) {
-                func_global_asm_80608528(current_actor_pointer, 0x1C6, 0xFF, 0x7F, 0);
+                playSoundAtActorPosition(current_actor_pointer, 0x1C6, 0xFF, 0x7F, 0);
                 current_actor_pointer->control_state = 2;
                 func_global_asm_806F8BC4(5, D_global_asm_807FBB68 & 2 ? 0 : 1, 0);
             }
@@ -1269,7 +1269,7 @@ void func_global_asm_8068412C(void) {
             break;
         case 1:
             func_global_asm_806836D0(YaaD);
-            func_global_asm_8068C350(&func_global_asm_80683AD8, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(&func_global_asm_80683AD8, current_actor_pointer, 3);
             break;
         case 2:
             if (YaaD->unk4) {

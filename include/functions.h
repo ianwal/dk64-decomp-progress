@@ -55,8 +55,7 @@ void func_global_asm_80613C48(Actor*, s16, f32, f32);
 
 s16 func_global_asm_806531B8(f32, f32, f32, s16);
 
-// TODO: arg0 might be actionIndex
-u8 func_global_asm_806EB0C0(s16 arg0, Actor *actor, u8 playerIndex);
+u8 setAction(s16 actionIndex, Actor *actor, u8 playerIndex);
 void func_global_asm_8067B238(Actor *destination, Actor *source, f32 scale);
 
 void func_global_asm_80717D4C(Struct80717D84 *arg0, s32 arg1);
@@ -70,7 +69,7 @@ void playAnimation(Actor*, s32);
 void playActorAnimation(Actor*, s32);
 void func_global_asm_80629174(void);
 
-void func_global_asm_80729B00(void);
+void initializeCharacterSpawnerActor(void);
 
 void func_global_asm_80665564(Actor *arg0, f32 arg1);
 
@@ -688,7 +687,7 @@ void func_global_asm_8068C080(void);
 void func_global_asm_8068C0B4(void);
 void func_global_asm_8068C2EC(void);
 void func_global_asm_8068C2F8(Actor *arg0);
-void func_global_asm_8068C350(void *arg0, Actor *arg1, u8 arg2);
+void addActorToTextOverlayRenderArray(void *arg0, Actor *arg1, u8 arg2);
 s32 func_global_asm_8060C6B8(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex);
 s16 func_global_asm_80631C20(u8);
 void func_global_asm_8060B7F0(void);
@@ -1683,7 +1682,7 @@ void func_global_asm_80605314(Actor*, u8);
 void func_global_asm_806EBE8C(void);
 void func_global_asm_806EFA3C(void);
 void func_global_asm_8066E8E4(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5);
-void func_global_asm_80608528(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4);
+void playSoundAtActorPosition(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4);
 void func_global_asm_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, Actor *arg6);
 void func_global_asm_8067C2B8(void);
 void func_global_asm_8067E43C(void);
@@ -1796,7 +1795,7 @@ void func_global_asm_80737C20(s32 arg0);
 void func_global_asm_80659350(void);
 void func_global_asm_80659574(void);
 void func_global_asm_806595B0(void);
-void func_global_asm_8070D8C0(Actor *arg0, u16 arg1, u8 arg2);
+void loadText(Actor *arg0, u16 fileIndex, u8 textIndex);
 void func_global_asm_8070D970(u16 arg0);
 s32 func_global_asm_8070DDDC(u16 arg0, s32 arg1);
 s16 func_global_asm_80658B08(s8, u8*, s16);
@@ -1940,7 +1939,7 @@ void func_global_asm_80663A80(void);
 void func_global_asm_80600B10(void);
 void func_global_asm_80600BBC(void *arg0);
 void func_global_asm_80600C68(void);
-void func_global_asm_806FD950(void *arg0, s16 arg1, void *arg2, s16 arg3);
+Gfx *func_global_asm_806FD950(Gfx *dl, s16 style, void *string, s16 y);
 void func_global_asm_806FDAEC(s16 arg0);
 void func_global_asm_807002AC(u16 *arg0, s16 **arg1, f32 arg2);
 void func_global_asm_805FF1B0(s32 player_index);
@@ -2204,7 +2203,7 @@ void func_global_asm_8060ED6C(Struct131B0_2 *arg0, Struct131B0_1 *arg1, s32 arg2
 void func_global_asm_8060F928(Struct131B0_2*, Struct131B0_1*);
 
 int sprintf(char *str, const char *format, ...);
-Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32);
+Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, void *string, s32 extraBitfield);
 
 int func_global_asm_8071ABDC(); // TODO: Datatype
 void func_global_asm_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);

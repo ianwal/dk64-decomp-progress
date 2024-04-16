@@ -21,7 +21,7 @@ void func_minecart_80024000(u8 arg0, u8 arg1) {
     func_global_asm_8069D2AC(0x81, 0, 0x78, func_global_asm_8070E750(0x1A, arg1, 1), 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
     playSong(0x28, 1.0f);
-    func_global_asm_806EB0C0(0x44, NULL, 0);
+    setAction(0x44, NULL, 0);
     current_actor_pointer->control_state++;
     if (arg0 != 0) {
         playCutscene(player_pointer, 5, 5);
@@ -33,7 +33,7 @@ void func_minecart_800240DC(u8 arg0, u8 arg1) {
     func_global_asm_8069D2AC(0x81, 0, 0x78, temp, 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
     playSong(0x2A, 1.0f);
-    func_global_asm_806EB0C0(0x43, NULL, 0);
+    setAction(0x43, NULL, 0);
     current_actor_pointer->control_state++;
     if (arg0 != 0) {
         playCutscene(player_pointer, 5, 5);
@@ -43,7 +43,7 @@ void func_minecart_800240DC(u8 arg0, u8 arg1) {
 void func_minecart_800241A0(s16 *arg0, u8 arg1, u8 arg2) {
     // TODO: Get rid of this typecast if possible
     if (((func_global_asm_806119A0() & 0xFF) >= (u32)arg2) && (*arg0 == 0)) {
-        func_global_asm_80608528(current_actor_pointer, 0x8A, 0x96, 0x7F, 0x32);
+        playSoundAtActorPosition(current_actor_pointer, 0x8A, 0x96, 0x7F, 0x32);
         func_global_asm_80714950(current_actor_pointer);
         func_global_asm_8071498C(&func_global_asm_8071A440);
         D_minecart_80028C30 = func_global_asm_80714C08(&D_global_asm_8072006C, 0.4f, current_actor_pointer, arg1 + 7, 2);
@@ -156,7 +156,7 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
                 aaD->unk34 = arg1;
                 aaD->unk10 = arg0;
                 aaD->unk30 = arg1;
-                func_global_asm_806EB0C0(0x45, current_actor_pointer, aaD->unk8);
+                setAction(0x45, current_actor_pointer, aaD->unk8);
                 current_actor_pointer->control_state++;
             } else {
                 renderActor(current_actor_pointer, 0);
@@ -282,7 +282,7 @@ void func_minecart_80024914(void) {
     if (temp_s0->unk0 < 0) {
         temp_s0->unk0 = 0;
         if (temp_a1 != 0) {
-            func_global_asm_80608528(current_actor_pointer, 0x8B, 0xFF, 0x7F, 0x1E);
+            playSoundAtActorPosition(current_actor_pointer, 0x8B, 0xFF, 0x7F, 0x1E);
         }
     }
     func_minecart_8002430C(3, &D_minecart_80028C40, temp_s0->unk2, 0x19);

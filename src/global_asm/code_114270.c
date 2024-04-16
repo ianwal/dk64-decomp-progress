@@ -340,7 +340,7 @@ void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) 
         func_global_asm_8070F5CC(2, arg3, (((((rand() >> 0xF) % 0x7FFF) % 125) / 800.0) + 0.1) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
     }
     if (D_global_asm_807550E0->unk0 != 0) {
-        func_global_asm_8068C350(&func_global_asm_80710CA0, NULL, 1);
+        addActorToTextOverlayRenderArray(&func_global_asm_80710CA0, NULL, 1);
     }
 }
 */
@@ -351,7 +351,7 @@ s32 func_global_asm_807122B4(void) {
     if (D_global_asm_807550E0->unk0 != 0) {
         D_global_asm_8077058C = D_global_asm_8077058C * D_global_asm_8075E5B0;
         // D_global_asm_8077058C = D_global_asm_8077058C * 0.9;
-        func_global_asm_8068C350(&func_global_asm_80710CA0, NULL, 1);
+        addActorToTextOverlayRenderArray(&func_global_asm_80710CA0, NULL, 1);
         return 0;
     }
     if (D_global_asm_807FDA1C != 6) {
@@ -685,7 +685,7 @@ void func_global_asm_8071338C(Gfx *dl) {
     temp = 20.0f;
     temp *= 2.0f;
     temp *= 4.0f;
-    func_global_asm_806FC530(dl, 1, 0x118, temp, temp_v0, 4);
+    printStyledText(dl, 1, 0x118, temp, temp_v0, 4);
 }
 
 void func_global_asm_80713438(Gfx *dl, u8 arg1) {
@@ -708,7 +708,7 @@ void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, arg1);
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
-    func_global_asm_806FC530(dl, 1, sp28 * 4.0f, temp_f16 * 4.0f, sp34, 4);
+    printStyledText(dl, 1, sp28 * 4.0f, temp_f16 * 4.0f, sp34, 4);
 }
 
 // Displaylist stuff, doable

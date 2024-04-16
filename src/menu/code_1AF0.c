@@ -103,9 +103,9 @@ Gfx *func_menu_80025B64(Gfx *dl, Actor *arg1) {
                 arg1->unk15F += var_a3;
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
                 sprintf(&sp4C, "q %s", func_global_asm_8070E750(0x24, 0x10, 1, var_a3));
-                dl = func_global_asm_806FC530(dl, 1, 0x1F4, 0x190, &sp4C, 1);
+                dl = printStyledText(dl, 1, 500, 400, &sp4C, 1);
                 sprintf(&sp4C, "b %s", func_global_asm_8070E750(0x24, 0x11, 1));
-                dl = func_global_asm_806FC530(dl, 1, 0x1F4, 0x1F4, &sp4C, 1);
+                dl = printStyledText(dl, 1, 500, 500, &sp4C, 1);
                 break;
         }
     }
@@ -433,9 +433,9 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                 break;
         }
         if (arg2 != 0) {
-            func_global_asm_8070D8C0(current_actor_pointer, sp42, sp44[0].unk11);
+            loadText(current_actor_pointer, sp42, sp44[0].unk11);
         }
-        func_global_asm_8070D8C0(current_actor_pointer, sp42, sp44[sp3C].unk11);
+        loadText(current_actor_pointer, sp42, sp44[sp3C].unk11);
         if ((sp3C == 2) || (sp3C == 3) || (sp3C == 6) || (sp3C == 7)) {
             func_global_asm_806F833C(0);
             func_global_asm_806F8BC4(1, 1, 0);
@@ -475,10 +475,10 @@ s32 func_menu_800266F0(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex
             playCutscene(NULL, 0, 1);
         } else {
             playCutscene(NULL, 4, 1);
-            func_global_asm_806EB0C0(0x1B, current_actor_pointer, 0);
+            setAction(0x1B, current_actor_pointer, 0);
         }
     } else {
-        func_global_asm_806EB0C0(0x1B, current_actor_pointer, 0);
+        setAction(0x1B, current_actor_pointer, 0);
         playCutscene(NULL, 0xB, 1);
     }
     func_global_asm_80629174();
@@ -493,7 +493,7 @@ void func_menu_80026804(MenuStruct1 *arg0, CharacterProgress *arg1) {
     func_menu_80025FB4(arg0, arg1, 0);
     arg0->unkD = 0;
     arg0->unkE = 0;
-    func_global_asm_806EB0C0(0x1B, current_actor_pointer, 0);
+    setAction(0x1B, current_actor_pointer, 0);
 }
 
 void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
@@ -510,7 +510,7 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
             break;
         case 1:
         case 5:
-            func_global_asm_8068C350(&func_menu_80025B64, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(&func_menu_80025B64, current_actor_pointer, 3);
             break;
         case 10:
             if (func_menu_80026250(arg0) == 0) {
@@ -520,14 +520,14 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
                 switch (arg0->unkB) {
                     case 0:
                     case 1:
-                        func_global_asm_806EB0C0(0x52, NULL, 0);
+                        setAction(0x52, NULL, 0);
                         global_properties_bitfield &= 0xFFFEFFCF;
                         player = character_change_array->player_pointer;
                         player->object_properties_bitfield |= 0x40000000;
                         break;
                     case 4:
                         spawnActor(ACTOR_PURCHASE_TEXT_OVERLAY, 0);
-                        func_global_asm_806EB0C0(0x53, NULL, 0);
+                        setAction(0x53, NULL, 0);
                         break;
                     case 2:
                     case 3:
@@ -570,7 +570,7 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
             playCutscene(character_change_array->player_pointer, 3, 1);
             arg0->unkD = 3;
             arg0->unkE = 0;
-            func_global_asm_8070D8C0(current_actor_pointer, sp24, sp20);
+            loadText(current_actor_pointer, sp24, sp20);
             break;
     }
 }
@@ -618,7 +618,7 @@ void func_menu_80026DAC(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagInde
             }
             break;
         case 1:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 cutsceneIndex = 1;
                 sp24 = -1;
                 var_v0 = -1;
@@ -643,7 +643,7 @@ void func_menu_80026DAC(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagInde
                             temp = func_global_asm_806F8AD4(sp24, 0);
                             temp2 = func_global_asm_806F8EDC(sp24, 0);
                             if (temp < temp2) {
-                                func_global_asm_8070D8C0(current_actor_pointer, sp2C, sp28);
+                                loadText(current_actor_pointer, sp2C, sp28);
                                 func_global_asm_806F91B4(sp24, 0, 999);
                                 arg0->unkE = 0;
                                 cutsceneIndex = 5;
@@ -657,7 +657,7 @@ void func_menu_80026DAC(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagInde
             break;
         case 3:
         case 4:
-            if (func_global_asm_80629148() != 0) {
+            if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 func_global_asm_805FF898();
                 arg0->unkE = 0xA;
@@ -699,7 +699,7 @@ s32 func_menu_800275EC(s32 arg0) {
 void func_menu_80027738(void) {
     MenuStruct1 *temp;
     CharacterProgress *var1;
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
 
     if (current_map == MAP_FUNKYS_STORE) {
         temp = current_actor_pointer->unk178;
@@ -710,7 +710,7 @@ void func_menu_80027738(void) {
         func_menu_80027028(temp, var1, 0x176);
     }
     if ((current_actor_pointer->object_properties_bitfield & (0x80000000 >> 3))) {
-        func_global_asm_80729B00();
+        initializeCharacterSpawnerActor();
         func_global_asm_806BFBF4();
     }
     renderActor(current_actor_pointer, 0);
@@ -718,7 +718,7 @@ void func_menu_80027738(void) {
 
 typedef struct {
     s16 unk0;
-    s16 unk2;
+    s16 unk2; // Text style
 } Struct8003353C;
 
 extern Struct8003353C D_menu_8003353C[];
@@ -746,7 +746,7 @@ Gfx *func_menu_80027808(Gfx *dl, Actor *arg1) {
     for (i = 0; i < 2; i++) {
         if (aaD->unk0[i] != NULL) {
             gSPMatrix(dl++, &aaD->unk10[i], G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-            dl = func_global_asm_806FC530(dl, D_menu_8003353C[i].unk2, 0, 0, aaD->unk0[i], 0x80);
+            dl = printStyledText(dl, D_menu_8003353C[i].unk2, 0, 0, aaD->unk0[i], 0x80);
             gSPPopMatrix(dl++, G_MTX_MODELVIEW);
         }
     }

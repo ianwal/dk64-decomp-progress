@@ -39,9 +39,9 @@ extern s16 D_global_asm_807FD6F2;
 
 extern void (*action_initiation_function_list[])(void);
 
-u8 func_global_asm_806EB0C0(s16 arg0, Actor *actor, u8 playerIndex) {
-    if (character_change_array[playerIndex].action_initiated < arg0) {
-        character_change_array[playerIndex].action_initiated = arg0;
+u8 setAction(s16 actionIndex, Actor *actor, u8 playerIndex) {
+    if (character_change_array[playerIndex].action_initiated < actionIndex) {
+        character_change_array[playerIndex].action_initiated = actionIndex;
         character_change_array[playerIndex].unk2A0 = actor;
         character_change_array[playerIndex].unk2A8 = D_global_asm_807FD6F0[0];
         character_change_array[playerIndex].unk2AC = D_global_asm_807FD6F0[1];
@@ -762,10 +762,10 @@ void func_global_asm_806ED420(void) {
         func_global_asm_8072DB68(3);
         switch (current_character_index[cc_player_index]) {
             case 3:
-                func_global_asm_80608528(current_player, 0xB9, 0xFF, 0x7F, 0x14);
+                playSoundAtActorPosition(current_player, 0xB9, 0xFF, 0x7F, 0x14);
                 break;
             case 2:
-                func_global_asm_80608528(current_player, 0xD2, 0xFF, 0x7F, 0x14);
+                playSoundAtActorPosition(current_player, 0xD2, 0xFF, 0x7F, 0x14);
                 break;
         }
         extra_player_info_pointer->unkD4 = D_global_asm_807530B0[D_global_asm_807FD584];
@@ -925,7 +925,7 @@ void func_global_asm_806EE2B8(void) {
             current_player->control_state = 0x36;
             current_player->control_state_progress = 0;
         } else {
-            func_global_asm_80608528(current_actor_pointer, 0x16, 0xFF, 0x7F, 0);
+            playSoundAtActorPosition(current_actor_pointer, 0x16, 0xFF, 0x7F, 0);
             playAnimation(current_actor_pointer, 0x1E);
             current_actor_pointer->control_state = 0x20;
             current_actor_pointer->control_state_progress = 1;
@@ -954,7 +954,7 @@ void func_global_asm_806EE454(void) {
         current_player->control_state = 0x36;
         current_player->control_state_progress = 0;
     } else {
-        func_global_asm_80608528(current_actor_pointer, 0x16, 0xFF, 0x7F, 0);
+        playSoundAtActorPosition(current_actor_pointer, 0x16, 0xFF, 0x7F, 0);
         playAnimation(current_actor_pointer, 0x1E);
         current_actor_pointer->control_state = 0x20;
         current_actor_pointer->control_state_progress = 1;
@@ -1447,7 +1447,7 @@ void func_global_asm_806F0700(void) {
 }
 
 void func_global_asm_806F07CC(void) {
-    func_global_asm_80608528(current_player, 0xF3, 0xFF, 0x7F, 0x19);
+    playSoundAtActorPosition(current_player, 0xF3, 0xFF, 0x7F, 0x19);
     current_player->control_state = 0x19;
     current_player->control_state_progress = 0;
     extra_player_info_pointer->unk54 = D_global_asm_807535CC[D_global_asm_807FD584] * 2.6;
@@ -1457,7 +1457,7 @@ void func_global_asm_806F07CC(void) {
 
 void func_global_asm_806F0878(void) {
     if (current_player->unk78 == 0xC) {
-        func_global_asm_80608528(current_player, 0x76, 0x64, 0x7F, 0);
+        playSoundAtActorPosition(current_player, 0x76, 0x64, 0x7F, 0);
     }
     extra_player_info_pointer->unk38 = D_global_asm_807531FC[D_global_asm_807FD584];
     func_global_asm_806CF398(current_player);
@@ -1470,7 +1470,7 @@ void func_global_asm_806F0878(void) {
 
 void func_global_asm_806F0930(void) {
     if (current_player->unk78 == 0xC) {
-        func_global_asm_80608528(current_player, 0x76, 0xFF, 0x7F, 0);
+        playSoundAtActorPosition(current_player, 0x76, 0xFF, 0x7F, 0);
     }
     extra_player_info_pointer->unk38 = D_global_asm_807531FC[D_global_asm_807FD584];
     func_global_asm_806CF398(current_player);

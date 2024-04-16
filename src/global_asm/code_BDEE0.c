@@ -16,7 +16,7 @@ s32 func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806B91E0.s")
 
 void func_global_asm_806B9CB0() {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     renderActor(current_actor_pointer, 0);
 }
 
@@ -136,7 +136,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
         if (temp_s0->control_state_progress != 0) {
             if ((temp_s0->control_state_progress == 1) && (D_global_asm_807FBD70 == 2) && (func_global_asm_8072DCF4(temp_s0, player_pointer, 8000) != 0)) {
                 if (character_change_array->unk2C0 == 1) {
-                    func_global_asm_806EB0C0(0x32, current_actor_pointer, 0);
+                    setAction(0x32, current_actor_pointer, 0);
                 } else {
                     playActorAnimation(temp_s0, (((rand() >> 0xF) % 1000) >= 0x1F5) ? 0x21F : 0x21E);
                     temp_s0->control_state_progress = 2;
@@ -251,7 +251,7 @@ void func_global_asm_806BA8C8(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BA93C.s")
 
 void func_global_asm_806BB32C(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk16A = 0xFA;
         current_actor_pointer->unk16B = 0xFA;
@@ -275,7 +275,7 @@ void func_global_asm_806BB32C(void) {
 /*
 // TODO: Very close, 1 extra instruction related to default case in the second switch
 void func_global_asm_806BB400(void) {
-    func_global_asm_80729B00();
+    initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_806D0430(0.5249999762f);
         player_pointer->object_properties_bitfield |= 0x400;

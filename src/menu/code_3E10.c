@@ -425,7 +425,7 @@ Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
     guMtxCatF(&sp7C, &sp3C, &sp7C);
     guMtxF2L(&sp7C, sp38);
     gSPMatrix(dl++, sp38, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    return func_global_asm_806FC530(dl, 1, 0, 0, label_string_pointer_array[spD0], 0x80);
+    return printStyledText(dl, 1, 0, 0, label_string_pointer_array[spD0], 0x80);
 }
 
 s8 current_menu_selection;
@@ -1416,9 +1416,9 @@ s32 func_menu_8002F980(Gfx *arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3
     // func_menu_800317E8(0.0f, 0.5f, arg1, var_f0 + 160.0, arg7, &sp3C, &sp38, 2, 0, 2.0f);
     func_menu_800317E8(arg1, var_f0 + 160.0, arg7, &sp3C, &sp38, 2, 0, 2.0f);
     if (arg8 & (1 << var_v1)) {
-        arg0 = func_global_asm_806FC530(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, arg2[var_v1], 0x81);
+        arg0 = printStyledText(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, arg2[var_v1], 0x81);
     } else {
-        arg0 = func_global_asm_806FC530(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, &D_menu_800339C4, 0x81);
+        arg0 = printStyledText(arg0, arg5, sp3C * 4.0f, sp38 * 4.0f, &D_menu_800339C4, 0x81);
     }
     *arg6 = var_f0;
     *arg4 = var_v1;
