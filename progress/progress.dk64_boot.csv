@@ -56,7 +56,6 @@ us,boot,osPfsIsPlug,416,yes
 us,boot,__osCleanupThread,16,yes
 us,boot,func_dk64_boot_800057DC,60,no
 us,boot,func_dk64_boot_80000CD4,184,yes
-us,boot,func_dk64_boot_800031E0,44,no
 us,boot,func_dk64_boot_80000D8C,188,yes
 us,boot,func_dk64_boot_800074E0,200,yes
 us,boot,func_dk64_boot_800057B0,44,no
@@ -209,6 +208,7 @@ us,boot,viMgrMain,400,no
 us,boot,func_dk64_boot_80000980,80,yes
 us,boot,osCreateViManager,384,no
 us,boot,guRotateF,404,no
+us,boot,sprintf,44,no
 us,boot,func_dk64_boot_80000A30,112,no
 us,boot,guMtxCatF,360,yes
 us,boot,osYieldThread,76,yes

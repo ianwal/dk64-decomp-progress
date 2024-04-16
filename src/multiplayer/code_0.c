@@ -443,7 +443,7 @@ void func_multiplayer_80025B48(Struct80025B48 *arg0) {
             if (var_a2 == 3) {
                 var_a2 += (((rand() >> 0xF) % 32767) % 5);
             }
-            arg0->unk18 = func_global_asm_807270C0(var_a2, 0);
+            arg0->unk18 = getSpawnerTiedActor(var_a2, 0);
             if (arg0->unk18 == NULL) {
                 arg0->unk18 = func_global_asm_807271F4(var_a2, 0, 0, 0, 0, 0, 0);
             }

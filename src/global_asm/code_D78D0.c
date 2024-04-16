@@ -995,7 +995,7 @@ void func_global_asm_806D5300(void) {
             func_global_asm_80714950(D_global_asm_80750FC4);
             func_global_asm_8071498C(&func_global_asm_80717D4C);
             func_global_asm_807149B8(1);
-            func_global_asm_80714CC0(D_global_asm_8074E880[((rand() % 10000) % 3)],
+            drawSpriteAtPosition(D_global_asm_8074E880[((rand() % 10000) % 3)],
                 D_global_asm_80750FC0 * temp_f20,
                 (temp_f24 * temp_f20) + sp90,
                 (temp_f26 * temp_f20) + sp8C,
@@ -2119,7 +2119,7 @@ void func_global_asm_806D9AD4(void) {
         func_global_asm_807149B8(1);
         func_global_asm_80714950((extra_player_info_pointer->unk23C << 0x10) + (s32)(15.0 * (current_actor_pointer->shadow_opacity / 255.0)));
         func_global_asm_8071498C(&func_global_asm_80717100);
-        func_global_asm_80714CC0(&D_global_asm_8071FC8C, 0.5f, current_actor_pointer->x_position, sp28, current_actor_pointer->z_position);
+        drawSpriteAtPosition(&D_global_asm_8071FC8C, 0.5f, current_actor_pointer->x_position, sp28, current_actor_pointer->z_position);
     }
     switch (current_actor_pointer->control_state_progress) {
         case 0:

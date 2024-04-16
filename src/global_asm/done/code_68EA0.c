@@ -143,7 +143,7 @@ void func_global_asm_80664834(s16 arg0) {
         func_global_asm_807149C8(0xFF, 0xC8, 0xC8, 0xC8);
         func_global_asm_80714A08(0.2f, 0.1f);
         func_global_asm_80714A28(4);
-        func_global_asm_80714CC0(
+        drawSpriteAtPosition(
             &D_global_asm_807213D0,
             0.0f,
             (D_global_asm_807F9430[arg0].unk2 + (((rand() % 10000) % 100) / 20.0)) - 2.5,
@@ -161,7 +161,7 @@ void func_global_asm_80664A38(s16 arg0) {
         func_global_asm_807149B8(1);
         func_global_asm_80714998(2);
         func_global_asm_80714A28(4);
-        func_global_asm_80714CC0(
+        drawSpriteAtPosition(
             &D_global_asm_80720A7C,
             0.4f,
             D_global_asm_807F9430[arg0].unk2 + (((((rand() % 10000) % 300) / 20.0) - 7.5) * sp34),

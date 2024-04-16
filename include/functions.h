@@ -37,7 +37,7 @@ f32 func_global_asm_80611BB4(f32, f32);
 
 void func_global_asm_806DF5A0(s16 *arg0, s16 arg1, s16 arg2, s16 arg3);
 
-Actor *func_global_asm_807270C0(s16 spawn_trigger, u16 arg1);
+Actor *getSpawnerTiedActor(s16 spawn_trigger, u16 arg1);
 Actor *func_global_asm_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
 
 Gfx *func_global_asm_8068C5A8(Gfx *, u16, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32);
@@ -348,7 +348,7 @@ void func_global_asm_80714A68(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
 
 Struct80717D84 *func_global_asm_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4);
 Struct80717D84 *func_global_asm_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4);
-Struct80717D84 *func_global_asm_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+Struct80717D84 *drawSpriteAtPosition(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 
 void func_global_asm_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5);
 void func_global_asm_807180F4(s32 arg0, s32 arg1);
@@ -2203,7 +2203,7 @@ typedef struct {
 void func_global_asm_8060ED6C(Struct131B0_2 *arg0, Struct131B0_1 *arg1, s32 arg2, s32 arg3, s32 arg4);
 void func_global_asm_8060F928(Struct131B0_2*, Struct131B0_1*);
 
-void func_dk64_boot_800031E0(char *str, char *format, ...);
+int sprintf(char *str, const char *format, ...);
 Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32);
 
 int func_global_asm_8071ABDC(); // TODO: Datatype

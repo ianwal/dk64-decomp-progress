@@ -102,9 +102,9 @@ Gfx *func_menu_80025B64(Gfx *dl, Actor *arg1) {
                 }
                 arg1->unk15F += var_a3;
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-                func_dk64_boot_800031E0(&sp4C, "q %s", func_global_asm_8070E750(0x24, 0x10, 1, var_a3));
+                sprintf(&sp4C, "q %s", func_global_asm_8070E750(0x24, 0x10, 1, var_a3));
                 dl = func_global_asm_806FC530(dl, 1, 0x1F4, 0x190, &sp4C, 1);
-                func_dk64_boot_800031E0(&sp4C, "b %s", func_global_asm_8070E750(0x24, 0x11, 1));
+                sprintf(&sp4C, "b %s", func_global_asm_8070E750(0x24, 0x11, 1));
                 dl = func_global_asm_806FC530(dl, 1, 0x1F4, 0x1F4, &sp4C, 1);
                 break;
         }

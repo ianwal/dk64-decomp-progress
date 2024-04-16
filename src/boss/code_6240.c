@@ -161,7 +161,7 @@ void func_boss_8002A5CC(void) {
     func_global_asm_8071498C(&func_global_asm_8071EDEC);
     func_global_asm_80714950(current_actor_pointer);
     func_global_asm_807149C8(0xFF, 0xD7, 0x58, 0xFF);
-    func_global_asm_80714CC0(&D_global_asm_80720120, 1.5f, sp6C, sp68, sp64);
+    drawSpriteAtPosition(&D_global_asm_80720120, 1.5f, sp6C, sp68, sp64);
     for (i = 0; i < 4; i++) {
         func_global_asm_80714998(2);
         func_global_asm_8071498C(&func_global_asm_8071720C);

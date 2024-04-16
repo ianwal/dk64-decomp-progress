@@ -3430,44 +3430,44 @@ void func_arcade_8003159C(Gfx **arg0) {
     if (D_arcade_8004C724 == 3) {
         func_arcade_800244E4(0x00, 0xff, 0xff, 0xff);
         func_arcade_80024508(0x78, 0x3b);
-        func_dk64_boot_800031E0(sp50, "NAME %.3s", &D_arcade_8004A774);
+        sprintf(sp50, "NAME %.3s", &D_arcade_8004A774);
         func_arcade_8002451C(&spA0, sp50);
         func_arcade_80024508(0xA0, 0x41);
-        func_dk64_boot_800031E0(sp50, "---");
+        sprintf(sp50, "---");
         func_arcade_8002451C(&spA0, sp50);
         if (D_arcade_8004C6DC < 1800) {
             func_arcade_80024508(0x60, 0x7b);
-            func_dk64_boot_800031E0(sp50, "REGI TIME <%02d>", 30 - D_arcade_8004C6DC/60);
+            sprintf(sp50, "REGI TIME <%02d>", 30 - D_arcade_8004C6DC/60);
         } else {//L800316A0
             func_arcade_80024508(0x40, 0x7b);
-            func_dk64_boot_800031E0(sp50, "YOUR NAME WAS");
+            sprintf(sp50, "YOUR NAME WAS");
             func_arcade_8002451C(&spA0, sp50);
 
             func_arcade_80024508(0xb0, 0x7b);
-            func_dk64_boot_800031E0(sp50, "REGISTERED.");
+            sprintf(sp50, "REGISTERED.");
 
         }//L800316E8
         func_arcade_8002451C(&spA0, sp50);
         func_arcade_800244E4(0xff, 0x00, 0x00, 0xff);
         func_arcade_80024508(0x58, 0x2b);
-        func_dk64_boot_800031E0(sp50, "NAME REGISTRATION");
+        sprintf(sp50, "NAME REGISTRATION");
         func_arcade_8002451C(&spA0, sp50);
 
         func_arcade_800244E4(0x00, 0xff, 0x00, 0xff);
         func_arcade_80024508(0x58, 0x4b);
-        func_dk64_boot_800031E0(sp50, "A B C D E F G H I J");
+        sprintf(sp50, "A B C D E F G H I J");
         func_arcade_8002451C(&spA0, sp50);
         
         func_arcade_80024508(0x58, 0x5b);
-        func_dk64_boot_800031E0(sp50, "K L M N O P Q R S T");
+        sprintf(sp50, "K L M N O P Q R S T");
         func_arcade_8002451C(&spA0, sp50);
         
         func_arcade_80024508(0x58, 0x6b);
-        func_dk64_boot_800031E0(sp50, "U V W X Y Z . -");
+        sprintf(sp50, "U V W X Y Z . -");
         func_arcade_8002451C(&spA0, sp50);
 
         func_arcade_80024508(0xd4, 0x6b);
-        func_dk64_boot_800031E0(sp50, "ba");
+        sprintf(sp50, "ba");
         func_arcade_8002451C(&spA0, sp50);
     }//L800317E0
 
@@ -3480,16 +3480,16 @@ void func_arcade_8003159C(Gfx **arg0) {
             && D_arcade_8004C6DC & 0x20
             && D_arcade_8004C724 == 3
         ) {
-            func_dk64_boot_800031E0(sp50, "%.3s", &D_arcade_8004A82C[i]);
+            sprintf(sp50, "%.3s", &D_arcade_8004A82C[i]);
         } else {//L80031888
-            func_dk64_boot_800031E0(sp50, "%.3s  %06d  %.3s", D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
+            sprintf(sp50, "%.3s  %06d  %.3s", D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
         }//L800318B8
         func_arcade_8002451C(&spA0, sp50);
     }
 
     func_arcade_800244E4(0x00, 0xff, 0x00, 0xff);
     func_arcade_80024508(0xb8, 0xdb);
-    func_dk64_boot_800031E0(sp50, "CREDIT 00");
+    sprintf(sp50, "CREDIT 00");
     func_arcade_8002451C(&spA0, sp50);
 
     *arg0 = spA0;
@@ -3534,22 +3534,22 @@ void func_arcade_800319D4(Gfx **arg0) {
     func_arcade_800244E4(0xff, 0, 00, 0xff);
     if ((D_arcade_8004C6D8 & 0x10) || !D_arcade_8004C724) {
         func_arcade_80024508(0x48, 0x13);
-        func_dk64_boot_800031E0(sp40, "1UP");
+        sprintf(sp40, "1UP");
         func_arcade_8002451C(&sp90, sp40);
     }//L80031B78
 
     func_arcade_80024508(0x78, 0x13);
-    func_dk64_boot_800031E0(sp40, "HIGH SCORE");
+    sprintf(sp40, "HIGH SCORE");
     func_arcade_8002451C(&sp90, sp40);
 
     func_arcade_800244E4(0, 0, 0xff, 0xff);
     func_arcade_80024508(0xd8, 0x1b);
-    func_dk64_boot_800031E0(sp40, "L=%02d", D_arcade_8004A76C);
+    sprintf(sp40, "L=%02d", D_arcade_8004A76C);
     func_arcade_8002451C(&sp90, sp40);
 
     func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
     func_arcade_80024508(0x38, 0x1b);
-    func_dk64_boot_800031E0(sp40, "%06d    %06d", arcade_current_score, D_arcade_8004A760);
+    sprintf(sp40, "%06d    %06d", arcade_current_score, D_arcade_8004A760);
     func_arcade_8002451C(&sp90, sp40);
 
     if (D_arcade_8004C724 == 5 || D_arcade_8004C724 == 4) {//L80031C50
@@ -3562,7 +3562,7 @@ void func_arcade_800319D4(Gfx **arg0) {
                 func_arcade_800244E4(0, 0xff, 0xff, 0xff);
             } //L80031CC4
             func_arcade_80024508(0x78, 0xa3);
-            func_dk64_boot_800031E0(sp40, "GAME OVER");
+            sprintf(sp40, "GAME OVER");
             func_arcade_8002451C(&sp90, sp40);
         }//L80031CF4
         if (D_arcade_8004C724 == 4) {
@@ -3575,17 +3575,17 @@ void func_arcade_800319D4(Gfx **arg0) {
             }//L80031D64
             func_arcade_80031948(0);
             func_arcade_80024508(0x88, 0x8b);
-            func_dk64_boot_800031E0(sp40, "RETURN");
+            sprintf(sp40, "RETURN");
             func_arcade_8002451C(&sp90, sp40);
 
             func_arcade_80031948(1);
             func_arcade_80024508(0x68, 0x9b);
-            func_dk64_boot_800031E0(sp40, "DELETE HISCORE");
+            sprintf(sp40, "DELETE HISCORE");
             func_arcade_8002451C(&sp90, sp40);
 
             func_arcade_80031948(2);
             func_arcade_80024508(0x68, 0xab);
-            func_dk64_boot_800031E0(sp40, "EXIT DK ARCADE");
+            sprintf(sp40, "EXIT DK ARCADE");
             func_arcade_8002451C(&sp90, sp40);
         }//L80031DF8
         if (arcade_background_visual == 2) {
@@ -3609,7 +3609,7 @@ void func_arcade_800319D4(Gfx **arg0) {
         }//L80031EE4
         func_arcade_80024508(0xe0, 0x30);
         score = MAX(D_arcade_8004C71E, 0);
-        func_dk64_boot_800031E0(sp40, "%02d00", score, score);
+        sprintf(sp40, "%02d00", score, score);
         func_arcade_8002451C(&sp90, sp40);
         
     }//L80031F30
@@ -3617,25 +3617,25 @@ void func_arcade_800319D4(Gfx **arg0) {
         sp3B = (D_arcade_8004C723 & 3) + 1;
         func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
         func_arcade_80024508(0x48, 0xd7);
-        func_dk64_boot_800031E0(sp40, "HOW HIGH CAN YOU GET ?");
+        sprintf(sp40, "HOW HIGH CAN YOU GET ?");
         func_arcade_8002451C(&sp90, sp40);
         func_arcade_80024508(0x58, 0xc9);
-        func_dk64_boot_800031E0(sp40, "@%%m");
+        sprintf(sp40, "@%%m");
         func_arcade_8002451C(&sp90, sp40);
         //sp34 = sp3B;
         if (sp3B >= 2) {
             func_arcade_80024508(0x58, 0xad);
-            func_dk64_boot_800031E0(sp40, "%%)m");
+            sprintf(sp40, "%%)m");
             func_arcade_8002451C(&sp90, sp40);
         }
         if (sp3B >= 3) {
             func_arcade_80024508(0x58, 0x91);
-            func_dk64_boot_800031E0(sp40, "&%%m");
+            sprintf(sp40, "&%%m");
             func_arcade_8002451C(&sp90, sp40);
         }
         if (sp3B >= 4) {
             func_arcade_80024508(0x50, 0x75);
-            func_dk64_boot_800031E0(sp40, "!))m");
+            sprintf(sp40, "!))m");
             func_arcade_8002451C(&sp90, sp40);
         }
     }//L80032054
@@ -3646,25 +3646,25 @@ void func_arcade_800319D4(Gfx **arg0) {
         if (!(D_arcade_8004C6DC & 0x200)) {
             func_arcade_800244E4(0, 0xff, 0xff, 0xff);
             func_arcade_80024508(0x70, 0x33);
-            func_dk64_boot_800031E0(sp40, "INSERT COIN");
+            sprintf(sp40, "INSERT COIN");
             func_arcade_8002451C(&sp90, sp40);
 
             func_arcade_80024508(0x68, 0x43);
-            func_dk64_boot_800031E0(sp40, "PLAYER    COIN");
+            sprintf(sp40, "PLAYER    COIN");
             func_arcade_8002451C(&sp90, sp40);
 
             func_arcade_80024508(0x78, 0x53);
-            func_dk64_boot_800031E0(sp40, "1        1");
+            sprintf(sp40, "1        1");
             func_arcade_8002451C(&sp90, sp40);
 
             func_arcade_80024508(0x38, 0x7b);
-            func_dk64_boot_800031E0(sp40, "RANK  SCORE  NAME");
+            sprintf(sp40, "RANK  SCORE  NAME");
             func_arcade_8002451C(&sp90, sp40);
             func_arcade_8003159C(&sp90);
             func_arcade_800244E4(0xff, 0, 0, 0xff);
 
             func_arcade_80024508(0x78, 0x63);
-            func_dk64_boot_800031E0(sp40, "2        2");
+            sprintf(sp40, "2        2");
             func_arcade_8002451C(&sp90, sp40);
         } else {//L80032190
             if (D_arcade_8004C6DC & 0x182) {
@@ -3673,7 +3673,7 @@ void func_arcade_800319D4(Gfx **arg0) {
                 func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
             }
             func_arcade_80024508(0x68, 0xd7);
-            func_dk64_boot_800031E0(sp40, "c NINTENDO 1981");
+            sprintf(sp40, "c NINTENDO 1981");
             func_arcade_8002451C(&sp90, sp40);
         }
     }//L800321EC

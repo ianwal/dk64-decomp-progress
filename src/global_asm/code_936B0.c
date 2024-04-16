@@ -442,7 +442,7 @@ void func_global_asm_806915B0(void) {
         func_global_asm_80714950(i * -0x14);
         func_global_asm_80714998(3);
         func_global_asm_8071498C(func_global_asm_80717D4C);
-        func_global_asm_80714CC0(
+        drawSpriteAtPosition(
             &D_global_asm_8071FFA0,
             2.0f,
             current_actor_pointer->x_position +         randomX,
@@ -621,7 +621,7 @@ void func_global_asm_80692640(void) {
             func_global_asm_807149FC(1);
             func_global_asm_8071498C(&func_global_asm_8071D260);
             func_global_asm_80714950(0xC);
-            func_global_asm_80714CC0(&D_global_asm_807202D0, 0.75f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+            drawSpriteAtPosition(&D_global_asm_807202D0, 0.75f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
         playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x61, 0xFF, 0x7F, 0x1E, 0, 0.0f, 0);
         deleteActor(current_actor_pointer);
@@ -641,7 +641,7 @@ void func_global_asm_8069329C(void) {
     func_global_asm_807149B8(1);
     func_global_asm_80714950(0x1006E);
     func_global_asm_8071498C(&func_global_asm_8071A8B0);
-    func_global_asm_80714CC0(&D_global_asm_80720120, 2.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 22.0f, current_actor_pointer->z_position);
+    drawSpriteAtPosition(&D_global_asm_80720120, 2.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 22.0f, current_actor_pointer->z_position);
     for (i = 0; i < cc_number_of_players; i++) {
         func_global_asm_8061EF4C(character_change_array[i].player_pointer->PaaD->unk104, 7, 0x16, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 200.0f, 400.0f);
     }
@@ -651,7 +651,7 @@ void func_global_asm_8069329C(void) {
             func_global_asm_807149B8(1);
             func_global_asm_80714950(i + 0x0B010000);
             func_global_asm_8071498C(&func_global_asm_8071ABDC);
-            func_global_asm_80714CC0(&D_global_asm_807200EC, 0.35f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+            drawSpriteAtPosition(&D_global_asm_807200EC, 0.35f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
     }
     func_global_asm_80608528(current_actor_pointer, 0xF6, 0xFF, 0x7F, 0x1E);

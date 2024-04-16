@@ -117,7 +117,7 @@ void func_boss_80024000(void) {
         func_global_asm_807149B8(1);
         func_global_asm_807149C8(0x8C, 0x8C, 0x8C, 0xFF);
         func_global_asm_80714998(3);
-        func_global_asm_80714CC0(&D_global_asm_8071FFA0, 2.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 40.0f, current_actor_pointer->z_position);
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, 2.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 40.0f, current_actor_pointer->z_position);
     }
 }
 */

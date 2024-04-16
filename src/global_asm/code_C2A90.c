@@ -224,9 +224,9 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     
     temp_t7 = (arg1->unk168 / 30);
     if (temp_t7) {
-        func_dk64_boot_800031E0(&sp4C, "%d", MIN(3, temp_t7));
+        sprintf(&sp4C, "%d", MIN(3, temp_t7));
     } else {
-        func_dk64_boot_800031E0(&sp4C, func_global_asm_8070E750(0x26, 9, 1));
+        sprintf(&sp4C, func_global_asm_8070E750(0x26, 9, 1));
     }
     if ((arg1->unk168 % 30) == 0) {
         if (temp_t7) {
@@ -811,7 +811,7 @@ void func_global_asm_806C226C(void) {
                     func_global_asm_8071498C(&func_global_asm_80718BF4);
                     func_global_asm_807149B8(1);
                     func_global_asm_807149FC(-1);
-                    func_global_asm_80714CC0(&D_global_asm_8071FC40, 0.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                    drawSpriteAtPosition(&D_global_asm_8071FC40, 0.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                 }
             } else {
                 if ((current_actor_pointer->unk6A ^ current_actor_pointer->unk6C) & 1) {
@@ -927,7 +927,7 @@ void func_global_asm_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32
     func_global_asm_807149C8(arg0, arg1, arg2, 0xFF);
     func_global_asm_8071498C(&func_global_asm_80717D84);
     func_global_asm_80714950(2);
-    func_global_asm_80714CC0(arg6, arg7 * 0.2, arg3, arg4, arg5);
+    drawSpriteAtPosition(arg6, arg7 * 0.2, arg3, arg4, arg5);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C2B2C.s")

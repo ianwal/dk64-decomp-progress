@@ -78,7 +78,7 @@ void func_global_asm_8067BA7C(s16 arg0) {
             func_global_asm_80608528(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
             func_global_asm_807149B8(0);
             func_global_asm_807149FC(1);
-            func_global_asm_80714CC0(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
+            drawSpriteAtPosition(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
             func_global_asm_80689114(arg0, current_actor_pointer->x_position, current_actor_pointer->y_position + 8.3, current_actor_pointer->z_position, 0, 1.0f, current_actor_pointer);
             current_actor_pointer->control_state++;
             break;
@@ -284,7 +284,7 @@ u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
             func_global_asm_80608528(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
             func_global_asm_807149B8(0);
             func_global_asm_807149FC(1);
-            func_global_asm_80714CC0(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
+            drawSpriteAtPosition(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
         }
     }
     if (*arg2 != 0) {
@@ -423,7 +423,7 @@ void func_global_asm_8067DCC0(void) {
     func_global_asm_8060E7EC(0, 0xB4, 0xA);
     func_global_asm_807149B8(0);
     func_global_asm_807149FC(1);
-    func_global_asm_80714CC0(&D_global_asm_8071FE08, temp_f20 * 0.75, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+    drawSpriteAtPosition(&D_global_asm_8071FE08, temp_f20 * 0.75, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
     func_global_asm_80608528(current_actor_pointer, 0x23, 0xFF, 0x7F, 1);
     for (i = 0; i < 7; i++) {
         temp_s0 = (s32)(func_global_asm_806119A0() / 10000U) % 3;
@@ -434,13 +434,13 @@ void func_global_asm_8067DCC0(void) {
         func_global_asm_80714950(2);
         switch (temp_s0) {
             case 0:
-                func_global_asm_80714CC0(&D_global_asm_8071FE64, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                drawSpriteAtPosition(&D_global_asm_8071FE64, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                 break;
             case 1:
-                func_global_asm_80714CC0(&D_global_asm_8071FE88, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                drawSpriteAtPosition(&D_global_asm_8071FE88, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                 break;
             case 2:
-                func_global_asm_80714CC0(&D_global_asm_8071FEAC, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                drawSpriteAtPosition(&D_global_asm_8071FEAC, temp_f20 * 0.25, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                 break;
         }
     }
@@ -463,7 +463,7 @@ void func_global_asm_8067DF44(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u
     }
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(&func_global_asm_8071B89C);
-    func_global_asm_80714CC0(&D_global_asm_80720120, 0.0f, arg0, arg1 + 5.0f, arg2);
+    drawSpriteAtPosition(&D_global_asm_80720120, 0.0f, arg0, arg1 + 5.0f, arg2);
     sp80 = arg3;
     sp7C = arg3 * 1.5;
     for (i = 0; i < 5; i++) {
@@ -474,13 +474,13 @@ void func_global_asm_8067DF44(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(1);
         func_global_asm_8071498C(&func_global_asm_8071BB14);
-        func_global_asm_80714CC0(&D_global_asm_80720340, sp7C, arg0 + temp_f22, arg1 + temp_f24, arg2 + temp_f20);
+        drawSpriteAtPosition(&D_global_asm_80720340, sp7C, arg0 + temp_f22, arg1 + temp_f24, arg2 + temp_f20);
     }
     func_global_asm_8071496C(4);
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(1);
     func_global_asm_8071498C(&func_global_asm_8071BB14);
-    func_global_asm_80714CC0(&D_global_asm_80720340, sp7C, arg0, arg1, arg2);
+    drawSpriteAtPosition(&D_global_asm_80720340, sp7C, arg0, arg1, arg2);
     if (arg4 != 0) {
         for (i = 0; i < 0xC; i++) {
             func_global_asm_807149B8(1);
@@ -488,7 +488,7 @@ void func_global_asm_8067DF44(f32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u
             func_global_asm_80714950(i + 0x0B020000);
             func_global_asm_8071498C(&func_global_asm_8071ABDC);
             func_global_asm_80714998(1);
-            func_global_asm_80714CC0(&D_global_asm_8072038C, sp80 * 0.5, arg0, arg1, arg2);
+            drawSpriteAtPosition(&D_global_asm_8072038C, sp80 * 0.5, arg0, arg1, arg2);
         }
     }
 }
@@ -565,7 +565,7 @@ void func_global_asm_8067E510(void) {
             if (D_global_asm_807FBB70.unk258[i] == 1) {
                 func_global_asm_807149B8(0);
                 func_global_asm_807149FC(1);
-                func_global_asm_80714CC0(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
+                drawSpriteAtPosition(&D_global_asm_8071FE08, 0.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0f, current_actor_pointer->z_position);
                 deleteActor(current_actor_pointer);
             }
         }
@@ -1228,7 +1228,7 @@ void func_global_asm_8068412C(void) {
         func_global_asm_807149B8(1);
         func_global_asm_807149A8(1000);
         func_global_asm_80714A28(4);
-        func_global_asm_80714CC0(&D_global_asm_8071FC8C,
+        drawSpriteAtPosition(&D_global_asm_8071FC8C,
                       1.3f,
                       current_actor_pointer->x_position,
                       current_actor_pointer->y_position + 13.0,

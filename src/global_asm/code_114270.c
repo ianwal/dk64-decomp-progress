@@ -702,8 +702,8 @@ void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     temp_f16 = 418.0f;
     sp34 = malloc(size);
     func_global_asm_8061134C(sp34);
-    func_dk64_boot_800031E0(sp34, &D_global_asm_8075E5D4, 0x63, sp30);
-    // func_dk64_boot_800031E0(sp34, "%c%s", 0x63, sp30);
+    sprintf(sp34, &D_global_asm_8075E5D4, 0x63, sp30);
+    // sprintf(sp34, "%c%s", 0x63, sp30);
     sp28 -= 0.5 * getCenterOfString(1, sp34);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, arg1);

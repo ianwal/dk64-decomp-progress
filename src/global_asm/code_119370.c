@@ -259,20 +259,20 @@ Struct80717D84 *func_global_asm_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg
     return func_global_asm_80714D08(arg0, arg1, sp3C, sp38, sp34, 0, arg2, arg3, arg4);
 }
 
-Struct80717D84 *func_global_asm_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4) {
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
+Struct80717D84 *func_global_asm_80714C08(void *sprite, f32 scale, Actor *arg2, s32 arg3, u8 arg4) {
+    f32 x;
+    f32 y;
+    f32 z;
 
-    func_global_asm_80671C0C(arg2, arg3, &sp3C, &sp38, &sp34);
+    func_global_asm_80671C0C(arg2, arg3, &x, &y, &z);
     if (!(arg2->object_properties_bitfield & 0x200) && (arg2->animation_state != NULL) && (D_global_asm_807FDB36 & 0x80)) {
         func_global_asm_80714A38(0x40);
     }
-    return func_global_asm_80714D08(arg0, arg1, sp3C, sp38, sp34, arg2, 0, arg3, arg4);
+    return func_global_asm_80714D08(sprite, scale, x, y, z, arg2, 0, arg3, arg4);
 }
 
-Struct80717D84 *func_global_asm_80714CC0(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    return func_global_asm_80714D08(arg0, arg1, arg2, arg3, arg4, 0, 0, 0, 0);
+Struct80717D84 *drawSpriteAtPosition(void* sprite, f32 scale, f32 x, f32 y, f32 z) {
+    return func_global_asm_80714D08(sprite, scale, x, y, z, 0, 0, 0, 0);
 }
 
 extern u8 D_global_asm_80750AB4;
@@ -281,7 +281,6 @@ extern u8 D_global_asm_807FDB0C;
 extern u8 D_global_asm_807FDB0D;
 extern u8 D_global_asm_807FDB0E;
 extern u8 D_global_asm_807FDB0F;
-extern u8 D_global_asm_807FDB18;
 extern u8 D_global_asm_807FDB1D;
 extern f32 D_global_asm_807FDB20;
 extern f32 D_global_asm_807FDB24;
@@ -639,7 +638,7 @@ void func_global_asm_80717760(Struct80717D84 *arg0, s8 *arg1) {
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(&func_global_asm_80717404);
         func_global_asm_80714950(0xA);
-        func_global_asm_80714CC0(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
+        drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
         return;
     }
     *arg1 = 1;
@@ -821,7 +820,7 @@ void func_global_asm_80718124(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     func_global_asm_807149B8(1);
     func_global_asm_80714998(3);
     func_global_asm_8071498C(&func_global_asm_80718380);
-    func_global_asm_80714CC0(&D_global_asm_8071FEF4, arg0, arg1, arg2, arg3);
+    drawSpriteAtPosition(&D_global_asm_8071FEF4, arg0, arg1, arg2, arg3);
 }
 
 void func_global_asm_80718188(Struct80717D84 *arg0, s8 *arg1) {
@@ -1545,7 +1544,7 @@ void func_global_asm_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
         func_global_asm_80714950(-0xA);
         func_global_asm_807149B8(1);
         func_global_asm_807149C8(0x9B, 0x9B, 0x9B, 0x96);
-        func_global_asm_80714CC0(&D_global_asm_8071FFA0, 0.8f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk340, arg0->unk344 + 10.0f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk348);
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, 0.8f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk340, arg0->unk344 + 10.0f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk348);
     }
 }
 
@@ -1680,7 +1679,7 @@ void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1) {
                 func_global_asm_807149FC(-1);
                 func_global_asm_807149B8(1);
                 func_global_asm_8071498C(&func_global_asm_8071C24C);
-                func_global_asm_80714CC0(&D_global_asm_807201D4, 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
+                drawSpriteAtPosition(&D_global_asm_807201D4, 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
             } else {
                 temp_f0 = arg0->unk330->unk16 * 2;
                 temp = 200.0f * (f32)(1.0 - ((temp_f0 - ((arg0->unk34E * 2) + arg0->unk351)) / temp_f0));
@@ -1733,7 +1732,7 @@ void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
         func_global_asm_80714950(1);
         func_global_asm_8071498C(&func_global_asm_8071C004);
         func_global_asm_80714944(7);
-        func_global_asm_80714CC0(&D_global_asm_8071FB54, 0.667f, arg0->unk340, sp50 + 10.0f, arg0->unk348);
+        drawSpriteAtPosition(&D_global_asm_8071FB54, 0.667f, arg0->unk340, sp50 + 10.0f, arg0->unk348);
     }
     func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 200.0f, 0, sp48[0], sp48[1], sp48[2]);
 }
@@ -1922,7 +1921,7 @@ void func_global_asm_8071D28C(Struct80717D84 *arg0, s8 *arg1) {
         func_global_asm_80714950(0x2A);
         func_global_asm_8071498C(&func_global_asm_8071D260);
         func_global_asm_80714A28(0x20);
-        func_global_asm_80714CC0(arg0->unk330->unk0, arg0->unk360, arg0->unk340, arg0->unk344, arg0->unk348);
+        drawSpriteAtPosition(arg0->unk330->unk0, arg0->unk360, arg0->unk340, arg0->unk344, arg0->unk348);
     }
 }
 
@@ -2632,7 +2631,7 @@ void func_global_asm_8071F8E4(Struct80717D84 *arg0, u8 *arg1) {
         if (!(object_timer & 3)) {
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_8071C818);
-            func_global_asm_80714CC0(&D_global_asm_8071FB08, 1.6f, arg0->unk340, arg0->unk344, arg0->unk348);
+            drawSpriteAtPosition(&D_global_asm_8071FB08, 1.6f, arg0->unk340, arg0->unk344, arg0->unk348);
         }
         temp_v0->unk4 += temp_v0->unk0;
         guScaleF(&sp78[0], arg0->unk360, arg0->unk364, 0.0f);

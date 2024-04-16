@@ -605,7 +605,7 @@ void func_global_asm_806A0330(void) {
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_8071BB14);
             func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x96);
-            func_global_asm_80714CC0(&D_global_asm_80720BE8, 1.5f, sp68, sp64, sp60);
+            drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, sp68, sp64, sp60);
         }
         deleteActor(current_actor_pointer);
     }

@@ -527,14 +527,14 @@ void func_global_asm_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
     }
     switch (arg7) {
         case 1:
-            func_dk64_boot_800031E0(&sp2C, &D_global_asm_8075AB04, arg5);
+            sprintf(&sp2C, &D_global_asm_8075AB04, arg5);
             break;
         case 2:
-            func_dk64_boot_800031E0(&sp2C, &D_global_asm_8075AB0C, arg5);
+            sprintf(&sp2C, &D_global_asm_8075AB0C, arg5);
             arg3 -= getCenterOfString(1, &sp2C) >> 1;
             break;
         default:
-            func_dk64_boot_800031E0(&sp2C, &D_global_asm_8075AB10, arg5);
+            sprintf(&sp2C, &D_global_asm_8075AB10, arg5);
             break;
     }
     if (sp37 != 0) {

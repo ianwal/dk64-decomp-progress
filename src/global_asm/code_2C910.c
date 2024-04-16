@@ -110,7 +110,7 @@ Actor *func_global_asm_80627EA8(s16 arg0) {
     Actor *actor;
 
     if (arg0) {
-        actor = func_global_asm_807270C0(arg0, 0); // getSpawnerTiedActor()
+        actor = getSpawnerTiedActor(arg0, 0);
     }
     if (!arg0 || !actor) {
         actor = player_pointer;

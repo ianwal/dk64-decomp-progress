@@ -225,7 +225,7 @@ void func_global_asm_806B83E4(void) {
         func_global_asm_807149B8(1);
         func_global_asm_80714950(-0x1C2);
         func_global_asm_8071498C(&func_global_asm_80717D4C);
-        func_global_asm_80714CC0(&D_global_asm_807201D4, 1.2f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0, current_actor_pointer->z_position);
+        drawSpriteAtPosition(&D_global_asm_807201D4, 1.2f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0, current_actor_pointer->z_position);
     }
     if (D_global_asm_807FDC90->unk2C != 0) {
         func_global_asm_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 200.0f, 0, 0xFF, 0xC8, 0);

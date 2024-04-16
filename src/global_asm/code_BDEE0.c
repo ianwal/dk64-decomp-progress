@@ -31,7 +31,7 @@ void func_global_asm_806B9CE0(u8 arg0, s8 arg1) {
             break;
     }
     func_global_asm_807149B8(1);
-    func_global_asm_80714CC0(
+    drawSpriteAtPosition(
         D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
         (((rand() >> 0xF) % 256) * 0.001953125) + 0.5,
         ((rand() >> 0xF) % 6) + (current_actor_pointer->x_position - 3.0f),
@@ -146,7 +146,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
                 current_actor_pointer->object_properties_bitfield |= 0x20000000;
                 if (current_actor_pointer->unkF0 == 0) {
                     current_actor_pointer->unkF0 = 0x28;
-                    func_global_asm_80714CC0(&D_global_asm_8071FB34, 2.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                    drawSpriteAtPosition(&D_global_asm_8071FB34, 2.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                     playSound(0x1CA, 0x7FFF, 63.0f, 1.0f, 0, 0);
                     playActorAnimation(temp_s0, 0x220);
                     temp_s0->control_state_progress = 2;

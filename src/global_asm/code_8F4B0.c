@@ -481,10 +481,10 @@ Gfx *func_global_asm_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
-    func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F30, arg1->unk14);
+    sprintf(&sp3C, &D_global_asm_80759F30, arg1->unk14);
     dl = func_global_asm_806FC530(dl, 3, 0x424, 0x50, &sp3C, 1);
     dl = func_global_asm_806FC530(dl, 1, 0x50, 0x50, &D_global_asm_80759F34, 1);
-    func_dk64_boot_800031E0(&sp38, &D_global_asm_80759F38, arg1->unk1C);
+    sprintf(&sp38, &D_global_asm_80759F38, arg1->unk1C);
     return func_global_asm_806FC530(dl, 3, 0x50, 0xB0, &sp38, 1);
 }
 */
@@ -496,7 +496,7 @@ Gfx *func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
-    func_dk64_boot_800031E0(&sp38, &D_global_asm_80759F3C, *arg1);
+    sprintf(&sp38, &D_global_asm_80759F3C, *arg1);
     return func_global_asm_806FC530(dl, 3, 0x104, 0x50, &sp38, 1);
 }
 
@@ -522,7 +522,7 @@ Gfx *func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
-    func_dk64_boot_800031E0(&sp34, &D_global_asm_80759F40, arg1->unk14);
+    sprintf(&sp34, &D_global_asm_80759F40, arg1->unk14);
     return func_global_asm_806FC530(dl, 3, 0x370, 0x50, &sp34, 1);
 }
 */
@@ -544,15 +544,15 @@ Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
     s32 sp2C;
 
     sp50 = arg2 - (func_global_asm_806FD894(0x86) * 0.5f);
-    func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F4C);
+    sprintf(&sp3C, &D_global_asm_80759F4C);
     sp4C = getCenterOfString(6, &sp3C) * 0.5f;
     sp54 = arg1 - sp4C;
     sp2C = sp50 * 4.0f;
     minutes = seconds / 60;
     dl = func_global_asm_806FC530(dl, 6, sp54 * 4.0f, sp2C, &sp3C, 1);
-    func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F50, minutes);
+    sprintf(&sp3C, &D_global_asm_80759F50, minutes);
     sp54 -= getCenterOfString(0x86, &sp3C);
     dl = func_global_asm_806FC530(dl, 0x86, sp54 * 4.0f, sp2C, &sp3C, 1);
-    func_dk64_boot_800031E0(&sp3C, &D_global_asm_80759F54, seconds - (minutes * 60));
+    sprintf(&sp3C, &D_global_asm_80759F54, seconds - (minutes * 60));
     return func_global_asm_806FC530(dl, 0x86, (arg1 + sp4C) * 4.0f, sp2C, &sp3C, 1);
 }

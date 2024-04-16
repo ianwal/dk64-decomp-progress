@@ -302,15 +302,14 @@ void func_global_asm_80726EE0(u8 arg0) {
 }
 
 void func_global_asm_8072707C(s16 arg0, u8 arg1, u16 arg2) {
-    Actor *actor = func_global_asm_807270C0(arg0, arg2);
+    Actor *actor = getSpawnerTiedActor(arg0, arg2);
     if (actor) {
         actor->control_state = arg1;
         actor->control_state_progress = 0;
     }
 }
 
-// getSpawnerTiedActor()
-Actor *func_global_asm_807270C0(s16 spawn_trigger, u16 arg1) {
+Actor *getSpawnerTiedActor(s16 spawn_trigger, u16 arg1) {
     s16 i;
     EnemySpawner *var_v1;
 
@@ -533,7 +532,7 @@ void func_global_asm_807289B0(u8 arg0, u8 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_807289E8.s")
 
 void func_global_asm_80729AA4(u8 arg0) {
-    Actor *actor = func_global_asm_807270C0(arg0, 0); // getSpawnerTiedActor()
+    Actor *actor = getSpawnerTiedActor(arg0, 0);
     if (!actor) {
         actor = player_pointer;
     }

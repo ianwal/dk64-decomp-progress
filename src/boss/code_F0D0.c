@@ -59,7 +59,7 @@ void func_boss_800336C0(void) {
     func_global_asm_8071498C(&func_global_asm_8071720C);
     func_global_asm_807149B8(1);
     func_global_asm_80714950(1);
-    func_global_asm_80714CC0(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
         (f64)sp24,
         current_actor_pointer->x_position,
         current_actor_pointer->y_position,

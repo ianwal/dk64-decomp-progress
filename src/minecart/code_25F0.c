@@ -107,7 +107,7 @@ void func_minecart_80026C54(void) {
     func_global_asm_8071498C(&func_global_asm_80717D4C);
     func_global_asm_807149B8(1);
     func_global_asm_80714A28(4);
-    func_global_asm_80714CC0(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
         0.5f,
         ((rand() >> 0xF) % 20) + (current_actor_pointer->x_position - 10.0f),
         current_actor_pointer->y_position,

@@ -557,7 +557,7 @@ void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 a
                 playCutscene(NULL, arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
                 return;
             case 2:
-                playCutscene(func_global_asm_807270C0(arg3, 0x400), arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
+                playCutscene(getSpawnerTiedActor(arg3, 0x400), arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
                 break;
         }
     }
@@ -647,7 +647,7 @@ s32 func_global_asm_806423A8(s16 arg0, s16 arg1, s16 arg2) {
     var_s0 = arg1;
     while (arg2 >= var_s0) {
         if (func_global_asm_80726D7C(var_s0) != 0) {
-            temp_v0 = func_global_asm_807270C0(var_s0, 0);
+            temp_v0 = getSpawnerTiedActor(var_s0, 0);
             if (temp_v0 != NULL) {
                 if (func_global_asm_8064216C(arg0, temp_v0->x_position, temp_v0->y_position, temp_v0->z_position) != 0) {
                     return TRUE;
@@ -851,7 +851,7 @@ void func_global_asm_80642940(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         func_global_asm_807149FC(2);
         func_global_asm_80714950(0x64);
         func_global_asm_8071498C(func_global_asm_80717D4C);
-        func_global_asm_80714CC0(
+        drawSpriteAtPosition(
             &D_global_asm_8071FC58,
             0.5f,
             D_global_asm_807F621C + var_f6,

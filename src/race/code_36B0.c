@@ -313,7 +313,7 @@ void func_race_80029054(void) {
         current_actor_pointer->noclip_byte = 0x3C;
         a178->unk4 = 0.5f;
         func_global_asm_8066EA90(current_actor_pointer, 1);
-        a17C->unk30 = func_global_asm_807270C0(1, 0);
+        a17C->unk30 = getSpawnerTiedActor(1, 0);
         current_actor_pointer->object_properties_bitfield &= ~1;
     }
     temp = a17C->unk30;

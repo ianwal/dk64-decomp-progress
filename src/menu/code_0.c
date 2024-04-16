@@ -72,7 +72,7 @@ void func_menu_800240BC(MenuStruct0 *arg0) {
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(-1);
     func_global_asm_80714998(0);
-    arg0->unk8 = func_global_asm_80714CC0(&D_global_asm_80720268, 0.3f, 181.0f, 3.0f, 82.0f);
+    arg0->unk8 = drawSpriteAtPosition(&D_global_asm_80720268, 0.3f, 181.0f, 3.0f, 82.0f);
 }
 
 void func_menu_80024154(MenuStruct0 *arg0) {
@@ -195,7 +195,6 @@ void func_menu_80024418(MenuStruct0 *arg0, s32 arg1) {
     }
 }
 
-void func_dk64_boot_800031E0(char *, char *, ...);
 Gfx *func_global_asm_806FC530(Gfx*, s16, s16, s16, void *, s32);
 s32 func_global_asm_8070E750(s32, s32, s32);
 
@@ -227,12 +226,12 @@ Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
         }
     } else {
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-        func_dk64_boot_800031E0(&sp70, "q %s", func_global_asm_8070E750(0x2A, 0, 1));
+        sprintf(&sp70, "q %s", func_global_asm_8070E750(0x2A, 0, 1));
         dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x190, &sp70, 1);
-        func_dk64_boot_800031E0(&sp70, "b %s", func_global_asm_8070E750(0x2A, 1, 1));
+        sprintf(&sp70, "b %s", func_global_asm_8070E750(0x2A, 1, 1));
         dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x1F4, &sp70, 1);
         if (snide_aad->minigame_menu_unlocked) {
-            func_dk64_boot_800031E0(&sp70, "n %s", func_global_asm_8070E750(0x2A, 2, 1));
+            sprintf(&sp70, "n %s", func_global_asm_8070E750(0x2A, 2, 1));
             dl = func_global_asm_806FC530(dl, 1, 0x15E, 0x258, &sp70, 1);
         }
     }

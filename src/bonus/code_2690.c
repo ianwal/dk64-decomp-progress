@@ -121,7 +121,7 @@ void func_bonus_8002733C(Struct8002733C *arg0) {
         func_global_asm_80714944(i * 3);
         func_global_asm_8071498C(&func_global_asm_8071A038);
         func_global_asm_80714950(&arg0->unk18[i]);
-        arg0->unk4[i] = func_global_asm_80714CC0(&D_global_asm_8071FFD4, 1.0f, var_s2, 210.0f, -10.0f);
+        arg0->unk4[i] = drawSpriteAtPosition(&D_global_asm_8071FFD4, 1.0f, var_s2, 210.0f, -10.0f);
         var_s2 -= 0x1E;
     }
     playSound(0x3E4, 0x7FFF, 63.0f, 1.0f, 5, 0);

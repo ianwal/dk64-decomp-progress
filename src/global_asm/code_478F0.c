@@ -92,7 +92,7 @@ void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
                 func_global_asm_80714950(-0x14 - ((func_global_asm_806119A0() / 10000U) % 50));
                 func_global_asm_807149C8(0xE1, 0x87, 0x38, 0xFF);
                 func_global_asm_8071498C(&func_global_asm_80717D4C);
-                func_global_asm_80714CC0(&D_global_asm_8071FF18, 0.5f, sp6C, sp68 + 2.0f, sp64);
+                drawSpriteAtPosition(&D_global_asm_8071FF18, 0.5f, sp6C, sp68 + 2.0f, sp64);
             }
             break;
     }
@@ -193,7 +193,7 @@ void func_global_asm_80643354(s32 arg0, u32 arg1, u32 arg2) {
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
         temp_v0 = &D_global_asm_807F5FD4->unk0[0][sp24];
-        func_global_asm_80714CC0(&D_global_asm_8071FFA0, 1.5f, temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.5f, temp_v0->unk0, temp_v0->unk4, temp_v0->unk8);
     }
 }
 
@@ -273,7 +273,7 @@ void func_global_asm_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32
         func_global_asm_807149B8(1);
         func_global_asm_80714950(0);
         func_global_asm_8071498C(&func_global_asm_8071C004);
-        func_global_asm_80714CC0(&D_global_asm_8071FB54, 0.667f, sp34, sp30 + 0xA, sp2C);
+        drawSpriteAtPosition(&D_global_asm_8071FB54, 0.667f, sp34, sp30 + 0xA, sp2C);
         var_v1->unk0 = 0x19;
     }
     var_v1->unk0--;
@@ -314,7 +314,7 @@ void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     func_global_asm_807149FC(1);
     func_global_asm_80714950(0x100C8);
     func_global_asm_8071498C(&func_global_asm_8071A8B0);
-    func_global_asm_80714CC0(&D_global_asm_8071FE08, 1.5f, sp60, sp5C, sp58);
+    drawSpriteAtPosition(&D_global_asm_8071FE08, 1.5f, sp60, sp5C, sp58);
     for (i = 0; i < 7; i++) {
         temp_s0 = (s32)(func_global_asm_806119A0() / 10000U) % 3;
         func_global_asm_807149B8(1);
@@ -324,13 +324,13 @@ void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
         func_global_asm_80714950(7);
         switch (temp_s0) {
             case 0:
-                func_global_asm_80714CC0(&D_global_asm_8071FE64, 0.5f, sp60, sp5C, sp58);
+                drawSpriteAtPosition(&D_global_asm_8071FE64, 0.5f, sp60, sp5C, sp58);
                 break;
             case 1:
-                func_global_asm_80714CC0(&D_global_asm_8071FE88, 0.5f, sp60, sp5C, sp58);
+                drawSpriteAtPosition(&D_global_asm_8071FE88, 0.5f, sp60, sp5C, sp58);
                 break;
             case 2:
-                func_global_asm_80714CC0(&D_global_asm_8071FEAC, 0.5f, sp60, sp5C, sp58);
+                drawSpriteAtPosition(&D_global_asm_8071FEAC, 0.5f, sp60, sp5C, sp58);
                 break;
         }
     }
@@ -390,7 +390,7 @@ void func_global_asm_80643C0C(Struct80643C0C *arg0, s32 arg1, s16 arg2, s32 arg3
             func_global_asm_80714950(-0x190);
             func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 1);
             func_global_asm_8071498C(&func_global_asm_80717CE8);
-            func_global_asm_80714CC0(&D_global_asm_807201D4, 1.2f, D_global_asm_807F621C, D_global_asm_807F6220 + 30.0, D_global_asm_807F6224);
+            drawSpriteAtPosition(&D_global_asm_807201D4, 1.2f, D_global_asm_807F621C, D_global_asm_807F6220 + 30.0, D_global_asm_807F6224);
         }
     }
     if (temp_f20 < 0.1) {
@@ -407,7 +407,7 @@ void func_global_asm_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         func_global_asm_807149FC(1);
         func_global_asm_8071498C(&func_global_asm_8071EA24);
         func_global_asm_8071496C(i / 7);
-        func_global_asm_80714CC0(D_global_asm_8074E880[i % 3], 1.4f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+        drawSpriteAtPosition(D_global_asm_8074E880[i % 3], 1.4f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
     }
 }
 
@@ -478,7 +478,7 @@ void func_global_asm_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_global_asm_807149FC(-1);
     func_global_asm_8071498C(&func_global_asm_80717760);
     func_global_asm_80714950(0x50);
-    func_global_asm_80714CC0(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
 }
 
 int func_global_asm_8071E3EC(); // TODO: Signature
@@ -498,7 +498,7 @@ void func_global_asm_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_global_asm_80714950(0x10064);
         func_global_asm_8071498C(&func_global_asm_8071AADC);
         func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
-        func_global_asm_80714CC0(&D_global_asm_80720A7C, 1.2f, D_global_asm_807F5FD4->unk0[0][sp2C].unk0, D_global_asm_807F5FD4->unk0[0][sp2C].unk4, D_global_asm_807F5FD4->unk0[0][sp2C].unk8);
+        drawSpriteAtPosition(&D_global_asm_80720A7C, 1.2f, D_global_asm_807F5FD4->unk0[0][sp2C].unk0, D_global_asm_807F5FD4->unk0[0][sp2C].unk4, D_global_asm_807F5FD4->unk0[0][sp2C].unk8);
     }
     if (((func_global_asm_806119A0() / 10000U) % arg2) == 0) {
         sp2C = (func_global_asm_806119A0() / 10000U) % arg3;
@@ -506,7 +506,7 @@ void func_global_asm_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_global_asm_80714950(0x10064);
         func_global_asm_8071498C(&func_global_asm_8071AADC);
         func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
-        func_global_asm_80714CC0(&D_global_asm_80720A7C, 1.2f, D_global_asm_807F5FD4->unk0[1][sp2C].unk0, D_global_asm_807F5FD4->unk0[1][sp2C].unk4, D_global_asm_807F5FD4->unk0[1][sp2C].unk8);
+        drawSpriteAtPosition(&D_global_asm_80720A7C, 1.2f, D_global_asm_807F5FD4->unk0[1][sp2C].unk0, D_global_asm_807F5FD4->unk0[1][sp2C].unk4, D_global_asm_807F5FD4->unk0[1][sp2C].unk8);
     }
 }
 
@@ -528,7 +528,7 @@ void func_global_asm_806450C0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
             func_global_asm_807149FC(-1);
             func_global_asm_807149B8(1);
             func_global_asm_807149C8(0xFF, 0xFF, 0xFF, D_global_asm_807480EF);
-            func_global_asm_80714CC0(&D_global_asm_80720CD8, D_global_asm_807480E8, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk0, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk4, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk8);
+            drawSpriteAtPosition(&D_global_asm_80720CD8, D_global_asm_807480E8, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk0, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk4, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk8);
         }
     }
 }
@@ -580,7 +580,7 @@ void func_global_asm_80645238(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
             var_s1 = &D_global_asm_80720E8C;
             break;
         }
-        func_global_asm_80714CC0(var_s1, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+        drawSpriteAtPosition(var_s1, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
     }
     for (i = 0; i < 6; i++) {
         var_f8 = (func_global_asm_806119A0() / 1000) % 150;
@@ -596,7 +596,7 @@ void func_global_asm_80645238(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
         func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x64);
-        func_global_asm_80714CC0(&D_global_asm_8071FFA0, (f32)((var_f4 - 25.0) / 50.0) + 3.5, D_global_asm_807F621C + (f32)(var_f8 - 75.0), D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + (f32)(var_f6 - 75.0));
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, (f32)((var_f4 - 25.0) / 50.0) + 3.5, D_global_asm_807F621C + (f32)(var_f8 - 75.0), D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + (f32)(var_f6 - 75.0));
     }
 }
 */
@@ -635,7 +635,7 @@ void func_global_asm_80645700(Struct80645700_sp20 **arg0, s32 arg1, s16 arg2, s1
     func_global_asm_80714950(3);
     func_global_asm_8071498C(&func_global_asm_8071E3EC);
     func_global_asm_807149A8(0x7D0);
-    func_global_asm_80714CC0(&D_global_asm_80720BC4, 2.5f, D_global_asm_807F5FD4->unk0[0][sp24].unk0, D_global_asm_807F5FD4->unk0[0][sp24].unk4, D_global_asm_807F5FD4->unk0[0][sp24].unk8);
+    drawSpriteAtPosition(&D_global_asm_80720BC4, 2.5f, D_global_asm_807F5FD4->unk0[0][sp24].unk0, D_global_asm_807F5FD4->unk0[0][sp24].unk4, D_global_asm_807F5FD4->unk0[0][sp24].unk8);
     if (arg3) {
         if (player_pointer->control_state == 0x42) {
             var_v1->unk0 = player_pointer->y_position;
@@ -664,7 +664,7 @@ void func_global_asm_806458C8(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
         func_global_asm_8071498C(func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(2);
-        func_global_asm_80714CC0(&D_global_asm_8071FFA0, 1.0f, (func_global_asm_80612794(sp2E) * sp2C) + D_global_asm_807F621C, D_global_asm_807F6220 + 50.0f, (func_global_asm_80612790(sp2E) * sp2C) + D_global_asm_807F6224);
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.0f, (func_global_asm_80612794(sp2E) * sp2C) + D_global_asm_807F621C, D_global_asm_807F6220 + 50.0f, (func_global_asm_80612790(sp2E) * sp2C) + D_global_asm_807F6224);
     }
 }
 
@@ -837,7 +837,7 @@ void func_global_asm_80646770(s32 **arg0, s32 arg1, s32 arg2, s32 arg3) {
             func_global_asm_8071498C(&func_global_asm_8071E3EC);
             func_global_asm_807149A8(0x320);
             temp_v1_2 = &D_global_asm_807F5FD4->unk0[0][*var_v1];
-            func_global_asm_80714CC0(&D_global_asm_80720BC4, 2.5f, temp_v1_2->unk0, temp_v1_2->unk4, temp_v1_2->unk8);
+            drawSpriteAtPosition(&D_global_asm_80720BC4, 2.5f, temp_v1_2->unk0, temp_v1_2->unk4, temp_v1_2->unk8);
         } else {
             (*var_v1)++;
             if (count == *var_v1) {
@@ -873,7 +873,7 @@ void func_global_asm_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_8071BB14);
             func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x96);
-            func_global_asm_80714CC0(&D_global_asm_80720BE8, 1.5f, spB8, spB4, spB0);
+            drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, spB8, spB4, spB0);
         }
         return;
     }
@@ -942,7 +942,7 @@ void func_global_asm_80647218(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
         func_global_asm_8071496C(i << 1);
-        func_global_asm_80714CC0(&D_global_asm_8071FFA0, (rand4) + 1.5, D_global_asm_807F621C + (rand1), D_global_asm_807F6220 + (rand2), D_global_asm_807F6224 + (rand3));
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, (rand4) + 1.5, D_global_asm_807F621C + (rand1), D_global_asm_807F6220 + (rand2), D_global_asm_807F6224 + (rand3));
     }
 }
 
@@ -958,7 +958,7 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x64);
     func_global_asm_80714944(5);
     func_global_asm_806335B0(arg1, 1, sp34, &sp30, &sp2C, &sp28);
-    func_global_asm_80714CC0(&D_global_asm_8071FFA0, 1.5f, sp30, sp2C - 70, sp28);
+    drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.5f, sp30, sp2C - 70, sp28);
 }
 
 // Close
@@ -996,7 +996,7 @@ void func_global_asm_80647610(s32 **arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_global_asm_80714998(2);
     func_global_asm_807149B8(1);
     func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
-    func_global_asm_80714CC0(&D_global_asm_80720DE0, 1.0f, sp2C, sp28 + 0xA, sp24);
+    drawSpriteAtPosition(&D_global_asm_80720DE0, 1.0f, sp2C, sp28 + 0xA, sp24);
 }
 */
 
@@ -1038,7 +1038,7 @@ void func_global_asm_80647834(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
         func_global_asm_80714998(2);
         func_global_asm_80714950(4);
         temp = ((func_global_asm_806119A0() / 1000U) % 80);
-        func_global_asm_80714CC0(&D_global_asm_80720EA4, 1.0f, D_global_asm_807F621C, D_global_asm_807F6220 + temp, D_global_asm_807F6224);
+        drawSpriteAtPosition(&D_global_asm_80720EA4, 1.0f, D_global_asm_807F621C, D_global_asm_807F6220 + temp, D_global_asm_807F6224);
     }
     for (i = 1; i != 6; i++) {
         func_global_asm_80714950(-0x78);
@@ -1067,9 +1067,9 @@ void func_global_asm_80647A14(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         func_global_asm_8071498C(&func_global_asm_8071F1D0);
         func_global_asm_80714998(1);
         func_global_asm_80714950(var_f20);
-        func_global_asm_80714CC0(&D_global_asm_8071FC8C, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+        drawSpriteAtPosition(&D_global_asm_8071FC8C, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
         func_global_asm_80714950(var_f20 + 2048.0f);
-        func_global_asm_80714CC0(&D_global_asm_8071FC8C, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+        drawSpriteAtPosition(&D_global_asm_8071FC8C, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
         var_f20 += temp_f26;
     }
 }
@@ -1127,7 +1127,7 @@ void func_global_asm_80647B74(Struct80647B74_arg0 *arg0, s16 arg1, s32 arg2, s32
 void func_global_asm_80647CF4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714998(2);
     if (arg2 != 0) {
-        func_global_asm_80714CC0(&D_global_asm_8071FBC8, 3.0, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+        drawSpriteAtPosition(&D_global_asm_8071FBC8, 3.0, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
         return;
     }
     func_global_asm_80714B84(&D_global_asm_8071FBC8, 3.0, arg1, 1, 0);
@@ -1156,7 +1156,7 @@ void func_global_asm_80647D7C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
             func_global_asm_80714950(1);
             func_global_asm_807149FC(-1);
             func_global_asm_8071498C(func_global_asm_80718BF4);
-            func_global_asm_80714CC0(
+            drawSpriteAtPosition(
                 &D_global_asm_8071FC40,
                 0.0f,
                 D_global_asm_807F621C + randomX,
@@ -1203,7 +1203,7 @@ void func_global_asm_80648000(OM2_unk7C *arg0, s16 arg1, s32 arg2, s32 arg3) {
             func_global_asm_80714950(2);
             func_global_asm_807149FC(-1);
             func_global_asm_8071498C(&func_global_asm_80718BF4);
-            func_global_asm_80714CC0(&D_global_asm_8071FC40, 0.0f, sp40, temp_s0[4][0], sp38);
+            drawSpriteAtPosition(&D_global_asm_8071FC40, 0.0f, sp40, temp_s0[4][0], sp38);
         }
     }
 }
@@ -1276,7 +1276,7 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
     func_global_asm_80714A08(sp38 + 1.0, (f32)(temp_f0 * 0.1) + 1.0);
     func_global_asm_807149A8(1400);
     func_global_asm_80714A28(4);
-    func_global_asm_80714CC0(sp3C, 0.0f, D_global_asm_807F621C + sp2C, (func_global_asm_80612794(temp_v0->unk8) * 10.0) + (D_global_asm_807F6220 + 80.0), D_global_asm_807F6224 + sp28);
+    drawSpriteAtPosition(sp3C, 0.0f, D_global_asm_807F621C + sp2C, (func_global_asm_80612794(temp_v0->unk8) * 10.0) + (D_global_asm_807F6220 + 80.0), D_global_asm_807F6224 + sp28);
     temp_v0->unk8 += 0x64;
     if ((D_global_asm_8076A068 % 12) == 0) {
         func_global_asm_807149B8(1);
@@ -1284,7 +1284,7 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
         func_global_asm_8071498C(&func_global_asm_80716F10);
         func_global_asm_807149A8(1400);
         func_global_asm_80714A28(4);
-        func_global_asm_80714CC0(&D_global_asm_8072126C, 2.0f, D_global_asm_807F621C + sp2C, D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + sp28);
+        drawSpriteAtPosition(&D_global_asm_8072126C, 2.0f, D_global_asm_807F621C + sp2C, D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + sp28);
     }
 }
 
@@ -1333,7 +1333,7 @@ loop_8:
                 goto loop_8;
             }
             temp_f2 = temp_f30 / temp_f0;
-            func_global_asm_80714CC0(&D_global_asm_8071FF18, sp6C, D_global_asm_807F621C + (temp_f22 * temp_f2), D_global_asm_807F6220 + ((temp_f20 * temp_f2) + temp_f30), D_global_asm_807F6224 + (temp_f26 * temp_f2));
+            drawSpriteAtPosition(&D_global_asm_8071FF18, sp6C, D_global_asm_807F621C + (temp_f22 * temp_f2), D_global_asm_807F6220 + ((temp_f20 * temp_f2) + temp_f30), D_global_asm_807F6224 + (temp_f26 * temp_f2));
     }
 }
 */
@@ -1431,7 +1431,7 @@ void func_global_asm_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_global_asm_807149A8(0x7D0);
         func_global_asm_8071498C(func_global_asm_8071F660);
         func_global_asm_807149FC(8);
-        func_global_asm_80714CC0(&D_global_asm_80721298, 1.0f, D_global_asm_807F5FD4->unk0[0][temp_s1].unk0, D_global_asm_807F5FD4->unk0[0][temp_s1].unk4, D_global_asm_807F5FD4->unk0[0][temp_s1].unk8);
+        drawSpriteAtPosition(&D_global_asm_80721298, 1.0f, D_global_asm_807F5FD4->unk0[0][temp_s1].unk0, D_global_asm_807F5FD4->unk0[0][temp_s1].unk4, D_global_asm_807F5FD4->unk0[0][temp_s1].unk8);
     }
 }
 
@@ -1779,7 +1779,6 @@ void func_global_asm_8064B868(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 void func_global_asm_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     Actor *temp_v0;
-    Actor *temp_v0_2;
 
     if (arg2 != 0) {
         if (arg2 != 1) {
@@ -1788,7 +1787,7 @@ void func_global_asm_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
                 last_spawned_actor->object_properties_bitfield &= -5;
             }
         } else {
-            temp_v0 = func_global_asm_807270C0(8, 0);
+            temp_v0 = getSpawnerTiedActor(8, 0);
             if (temp_v0) {
                 temp_v0->object_properties_bitfield |= 4;
                 playActorAnimation(temp_v0, 0x35C);
@@ -1796,9 +1795,9 @@ void func_global_asm_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
             }
         }
     } else {
-        temp_v0_2 = func_global_asm_807270C0(8, 0);
-        if (temp_v0_2) {
-            temp_v0_2->control_state = 0x3C;
+        temp_v0 = getSpawnerTiedActor(8, 0);
+        if (temp_v0) {
+            temp_v0->control_state = 0x3C;
         }
     }
 }
@@ -1996,7 +1995,7 @@ void func_global_asm_8064C250(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_global_asm_806A5DF0(0x2F, D_global_asm_807F621C, D_global_asm_807F6220 + 15.0f, D_global_asm_807F6224, 0x800, 1, -1, 0);
     func_global_asm_806A5DF0(0x2F, D_global_asm_807F621C, D_global_asm_807F6220 + 15.0f, D_global_asm_807F6224, 0xC00, 1, -1, 0);
     func_global_asm_807149B8(1);
-    func_global_asm_80714CC0(&D_global_asm_8071FFA0, 2.5f, D_global_asm_807F621C, D_global_asm_807F6220 + 30.0f, D_global_asm_807F6224);
+    drawSpriteAtPosition(&D_global_asm_8071FFA0, 2.5f, D_global_asm_807F621C, D_global_asm_807F6220 + 30.0f, D_global_asm_807F6224);
 }
 
 void func_global_asm_8061EF4C(s32, s32, s32, f32, f32, f32, f32, f32);
@@ -2657,7 +2656,7 @@ void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     func_global_asm_807149FC(-1);
     func_global_asm_807149B8(1);
     func_global_asm_80714998(2);
-    func_global_asm_80714CC0(&D_global_asm_80721530, 0, D_global_asm_807F621C, D_global_asm_807F6220 + 17.5, D_global_asm_807F6224);
+    drawSpriteAtPosition(&D_global_asm_80721530, 0, D_global_asm_807F621C, D_global_asm_807F6220 + 17.5, D_global_asm_807F6224);
     spawnActor(ACTOR_WRINKLY, 0x53);
     last_spawned_actor->x_position = D_global_asm_807F621C;
     last_spawned_actor->y_position = D_global_asm_807F6220;

@@ -268,7 +268,7 @@ s32 func_global_asm_806CA1B4(s32 arg0) {
     if (extra_player_info_pointer->unk247 >= 0) {
         phi_v1 = character_change_array[extra_player_info_pointer->unk247].player_pointer;
     } else if (extra_player_info_pointer->unk246 > 0) {
-        phi_v1 = func_global_asm_807270C0(extra_player_info_pointer->unk246, 0);
+        phi_v1 = getSpawnerTiedActor(extra_player_info_pointer->unk246, 0);
     }
 
     if (phi_v1) {
@@ -459,7 +459,7 @@ void func_global_asm_806CB53C(void) {
                 func_global_asm_8071498C(&func_global_asm_80716FB4);
                 func_global_asm_807149B8(1);
                 func_global_asm_807149FC(3);
-                func_global_asm_80714CC0(&D_global_asm_8071FB08, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                drawSpriteAtPosition(&D_global_asm_8071FB08, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
             }
             if (extra_player_info_pointer->unk1FE == 0) {
                 func_global_asm_80602B60(0x6C, 0);
@@ -1494,7 +1494,7 @@ void func_global_asm_806CF878(void) {
             func_global_asm_80714998(2);
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_80716FB4);
-            func_global_asm_80714CC0(&D_global_asm_8071FB08, 0.8f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+            drawSpriteAtPosition(&D_global_asm_8071FB08, 0.8f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
     }
 }

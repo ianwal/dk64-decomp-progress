@@ -8,6 +8,7 @@ D_2000080 = 0x2000080;
 D_20000C0 = 0x20000C0;
 D_2000180 = 0x2000180;
 
+sprintf = 0x800031E0; // segment:dk64_boot
 strchr = 0x80002ECC; // segment:dk64_boot
 strcpy = 0x80002A30; // segment:dk64_boot
 strlen = 0x80002F18; // segment:dk64_boot
@@ -209,6 +210,8 @@ __osViIntrCount = 0x80014FEC; // segment:dk64_boot
 __osTimerCounter = 0x80014FF0; // segment:dk64_boot
 __osEepPifRam = 0x800162E0; // segment:dk64_boot
 
+drawSpriteAtPosition = 0x80714CC0; // segment:global_asm
+getSpawnerTiedActor = 0x807270C0; // segment:global_asm
 getCenterOfString = 0x806FBD5C; // segment:global_asm
 handleInputsForControlState = 0x806DF6D4; // segment:global_asm
 setYAccelerationFrom80753578 = 0x806CFE7C; // segment:global_asm

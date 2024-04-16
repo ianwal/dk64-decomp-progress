@@ -451,7 +451,7 @@ void func_critter_80024F28(Critter *arg0) {
             func_global_asm_80714950(1);
             func_global_asm_807149FC(-1);
             func_global_asm_8071498C(&func_global_asm_80718BF4);
-            func_global_asm_80714CC0(&D_global_asm_8071FC40, 0.0f, arg0->x_pos, arg0->y_pos, arg0->z_pos);
+            drawSpriteAtPosition(&D_global_asm_8071FC40, 0.0f, arg0->x_pos, arg0->y_pos, arg0->z_pos);
         }
         temp = ABS(sp3E);
         if (!(temp < 0x5B)) {

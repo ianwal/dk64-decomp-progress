@@ -530,15 +530,15 @@ Gfx *func_menu_80028D3C(Actor *arg0, Gfx *dl) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     sp100 = func_menu_800317E8(aaD, 160.0f, 15.0f, &spFC, &spF8, 4, 1, 0.3f);
     if (sp100 == 2) {
-        func_dk64_boot_800031E0(&sp2C, "%s", label_string_pointer_array[5]);
+        sprintf(&sp2C, "%s", label_string_pointer_array[5]);
     } else {
         if (sp100 == 3) {
             sp100 = 2;
         }
         if (func_menu_800322D0(sp100) != 0) {
-            func_dk64_boot_800031E0(&sp2C, "%s", label_string_pointer_array[6]);
+            sprintf(&sp2C, "%s", label_string_pointer_array[6]);
         } else {
-            func_dk64_boot_800031E0(&sp2C, "%s %d", label_string_pointer_array[7], sp100 + 1);
+            sprintf(&sp2C, "%s %d", label_string_pointer_array[7], sp100 + 1);
         }
     }
     return printText(dl, spFC * 4.0f, spF8 * 4.0f, 0.6f, &sp2C);
@@ -668,9 +668,9 @@ Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     spFE = sp110 * 4.0f;
     sp100 = sp10C * 4.0f;
     if (func_menu_800322D0(sp120)) {
-        func_dk64_boot_800031E0(&sp34, "%s", label_string_pointer_array[6]);
+        sprintf(&sp34, "%s", label_string_pointer_array[6]);
     } else {
-        func_dk64_boot_800031E0(&sp34, "%s %d", label_string_pointer_array[7], sp120 + 1);
+        sprintf(&sp34, "%s %d", label_string_pointer_array[7], sp120 + 1);
     }
     dl = printText(dl, spFE, sp100, 0.6f, &sp34);
     sp100 -= 0x3C;
@@ -712,9 +712,9 @@ void func_menu_80029EF8(Actor *arg0, s32 arg1) {
         if (arg1 & 1) {
             if ((arg1 & 8) && (D_menu_80033FAC != 0)) {
                 func_global_asm_8071495C();
-                func_global_asm_80714CC0(&D_global_asm_8071FBC8, 10.3f, 240.0f, 120.0f, -10.0f);
+                drawSpriteAtPosition(&D_global_asm_8071FBC8, 10.3f, 240.0f, 120.0f, -10.0f);
                 func_global_asm_8071495C();
-                func_global_asm_80714CC0(&D_global_asm_8071FE08, 10.3f, 240.0f, 120.0f, -10.0f);
+                drawSpriteAtPosition(&D_global_asm_8071FE08, 10.3f, 240.0f, 120.0f, -10.0f);
                 playSound(0xF6, 0x7FFF, 63.0f, 1.0f, 0, 0);
                 func_global_asm_8060C830(D_menu_80033F48, 1);
                 MaaD->unk16 = 0;
@@ -1551,7 +1551,7 @@ void func_menu_80030894(MenuAdditionalActorData *arg0, void *arg1, s32 arg2, s32
     func_global_asm_80714950(arg0);
     func_global_asm_8071498C(&func_menu_80030C14);
     func_global_asm_80714A28(1);
-    sp3C = func_global_asm_80714CC0(arg1, arg4, arg2, arg3, -10.0f);
+    sp3C = drawSpriteAtPosition(arg1, arg4, arg2, arg3, -10.0f);
     temp_v0 = malloc(sizeof(Struct80717D84_80030894));
     sp3C->unk384 = temp_v0;
     temp_v0->unk0 = arg6;

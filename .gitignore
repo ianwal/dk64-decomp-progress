@@ -64,4 +64,5 @@ diff_settings.py
 ctx.c
 !tools/build
 test.csv
+refcount.csv
 *.csv#

@@ -99,7 +99,7 @@ void func_boss_80028478(u16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg
         func_global_asm_807149FC(-1);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(D_global_asm_807FDC94);
-        func_global_asm_80714CC0(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position);
+        drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position);
     }
     func_global_asm_806A5DF0(0x48, arg1, arg2, arg3, arg4, arg5, arg0, 0);
 }
@@ -127,7 +127,7 @@ Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     guMtxCatF(&sp90, &sp50, &sp90);
     guMtxF2L(&sp90, sp4C);
     gSPMatrix(dl++, sp4C, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    func_dk64_boot_800031E0(&sp3C, "ROUND %d", D_global_asm_80750AD4);
+    sprintf(&sp3C, "ROUND %d", D_global_asm_80750AD4);
     gSPDisplayList(dl++, &D_1000118);
     gDPPipeSync(dl++);
     gDPSetCombineMode(dl++ , G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);

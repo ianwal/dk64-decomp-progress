@@ -776,7 +776,7 @@ void func_global_asm_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32
     if (arg1 == 3) {
         func_global_asm_807149C8(0xFF, 0, 0, 0xFF);
     }
-    temp_s0->unk8 = func_global_asm_80714CC0(func_global_asm_806FACE8(arg1), 1.0f, arg2, arg3, -10.0f);
+    temp_s0->unk8 = drawSpriteAtPosition(func_global_asm_806FACE8(arg1), 1.0f, arg2, arg3, -10.0f);
     temp_s0->unk2 = 0;
     if (arg1 == 7) {
         temp_s0->unk4 = 1;
@@ -828,7 +828,7 @@ void func_global_asm_806F9B64(s32 arg0) {
         func_global_asm_8071498C(&func_global_asm_806F9AF0);
         func_global_asm_80714950(i);
         D_global_asm_807FD7A0[i] = -100.0f;
-        func_global_asm_80714CC0(var_s2[i], 1.0f, -200.0f, 0.0f, -10.0f);
+        drawSpriteAtPosition(var_s2[i], 1.0f, -200.0f, 0.0f, -10.0f);
     }
 }
 */

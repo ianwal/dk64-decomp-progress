@@ -51,7 +51,7 @@ void func_global_asm_806ADFE0(void) {
         return;
     }
     if (((current_actor_pointer->unk6A & 1) != 0) && (current_actor_pointer->unk6C & 1)) {
-        func_global_asm_80714CC0(&D_global_asm_8071FBC8, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+        drawSpriteAtPosition(&D_global_asm_8071FBC8, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         deleteActor(current_actor_pointer);
     }
 }

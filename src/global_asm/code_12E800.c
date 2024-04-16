@@ -134,7 +134,7 @@ extern s32 D_global_asm_80720120; // TODO: Datatype
 void func_global_asm_8072A714(void) {
     if ((current_actor_pointer->interactable & 2) && (func_global_asm_80666A94() || func_global_asm_80666AA0())) {
         if (func_global_asm_80666AA0()) {
-            func_global_asm_80714CC0(
+            drawSpriteAtPosition(
                 &D_global_asm_80720120,
                 current_actor_pointer->animation_state->scale_y * D_global_asm_8075FD28,
                 current_actor_pointer->x_position,
@@ -636,11 +636,11 @@ void func_global_asm_8072D99C(void) {
 }
 
 void func_global_asm_8072D9D4(void) {
-    func_global_asm_80714CC0(&D_global_asm_8071FB34, 0.55f, current_actor_pointer->x_position, current_actor_pointer->y_position + (current_actor_pointer->unk15E * 0.5), current_actor_pointer->z_position);
+    drawSpriteAtPosition(&D_global_asm_8071FB34, 0.55f, current_actor_pointer->x_position, current_actor_pointer->y_position + (current_actor_pointer->unk15E * 0.5), current_actor_pointer->z_position);
 }
 
 void func_global_asm_8072DA60(void) {
-    func_global_asm_80714CC0(&D_global_asm_8071FB34,
+    drawSpriteAtPosition(&D_global_asm_8071FB34,
                   0.55f,
                   D_global_asm_807FBD6C->x_position,
                   D_global_asm_807FBD6C->y_position,
@@ -652,7 +652,7 @@ void func_global_asm_8072DAA4(void) {
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(&func_global_asm_80717D4C);
     func_global_asm_80714950(-0x28 - ((rand() >> 0xF) % 15));
-    func_global_asm_80714CC0(&D_global_asm_8071FF18,
+    drawSpriteAtPosition(&D_global_asm_8071FF18,
                   (((rand() >> 0xF) % 1000) / D_global_asm_8075FF20) + 0.5,
                   current_actor_pointer->x_position,
                   current_actor_pointer->y_position,

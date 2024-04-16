@@ -234,7 +234,7 @@ void func_critter_80027448(void) {
                     if (aaD->unk0 >= 0x3D) {
                         func_global_asm_807149B8(0);
                         func_global_asm_807149FC(1);
-                        func_global_asm_80714CC0(
+                        drawSpriteAtPosition(
                             &D_global_asm_80720A7C,
                             0.5f,
                             ((func_global_asm_806119FC() * 35.0) + current_actor_pointer->x_position) - 15.0,
@@ -262,7 +262,7 @@ void func_critter_80027448(void) {
                 current_actor_pointer->control_state_progress = 4;
                 func_global_asm_807149B8(0);
                 func_global_asm_807149FC(1);
-                func_global_asm_80714CC0(
+                drawSpriteAtPosition(
                     &D_global_asm_8071FE08,
                     0.5f,
                     current_actor_pointer->x_position,

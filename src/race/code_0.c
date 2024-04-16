@@ -488,7 +488,7 @@ void func_race_800274C0(void) {
     }
     if (D_global_asm_807FBB70.unk200 == 9 || D_global_asm_807FBB70.unk15 != 0 || D_global_asm_807FBB70.unk200 == 5) {
         func_global_asm_807149B8(1);
-        func_global_asm_80714CC0(&D_global_asm_80720340, 3.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+        drawSpriteAtPosition(&D_global_asm_80720340, 3.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, 0.3f, 0);
         var_v1 = TRUE;
     }
@@ -496,7 +496,7 @@ void func_race_800274C0(void) {
     current_actor_pointer->y_position += 5.0f;
     if (temp_s1->unk0_u16[0] != 0) {
         func_global_asm_807149B8(1);
-        func_global_asm_80714CC0(&D_global_asm_8071FFA0, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position);
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position);
         temp_s1->unk0_u16[0]--;
         if (!(temp_s1->unk0_u16[0])) {
             var_v1 = TRUE;

@@ -76,9 +76,9 @@ Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
             y = 480 - (u16)(D_bonus_8002D92C * 48);
             for (i = -1; i < D_bonus_8002D92C; i++) {
                 if (i >= 0) {
-                    func_dk64_boot_800031E0(sp70, "HIT %d", D_bonus_8002DEF0[i]);
+                    sprintf(sp70, "HIT %d", D_bonus_8002DEF0[i]);
                 } else if (D_bonus_8002D92C >= 2) {
-                    func_dk64_boot_800031E0(sp70, "COMBO x2");
+                    sprintf(sp70, "COMBO x2");
                 } else {
                     sp70[0] = '\0';
                 }

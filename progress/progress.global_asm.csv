@@ -970,6 +970,7 @@ us,asm,func_global_asm_806505F0,148,yes
 us,asm,func_global_asm_806582F8,532,no
 us,asm,func_global_asm_80713EB0,432,no
 us,asm,func_global_asm_80690094,252,yes
+us,asm,drawSpriteAtPosition,72,yes
 us,asm,func_global_asm_8066FE08,1856,no
 us,asm,func_global_asm_806F1B58,56,yes
 us,asm,func_global_asm_806EE74C,108,yes
@@ -1225,6 +1226,7 @@ us,asm,func_global_asm_8073CF00,176,no
 us,asm,func_global_asm_8071321C,84,yes
 us,asm,func_global_asm_806348B4,84,yes
 us,asm,func_global_asm_80714708,112,yes
+us,asm,getSpawnerTiedActor,212,yes
 us,asm,func_global_asm_8070CA2C,68,yes
 us,asm,func_global_asm_806871DC,548,yes
 us,asm,func_global_asm_806D37CC,224,yes
@@ -1912,7 +1914,6 @@ us,asm,func_global_asm_8066A64C,272,no
 us,asm,func_global_asm_80636AE8,104,no
 us,asm,func_global_asm_80662AB4,208,yes
 us,asm,func_global_asm_806D3530,216,yes
-us,asm,func_global_asm_80714CC0,72,yes
 us,asm,func_global_asm_806886E0,608,no
 us,asm,func_global_asm_806D59E4,352,yes
 us,asm,func_global_asm_806CFECC,40,yes
@@ -2493,7 +2494,6 @@ us,asm,func_global_asm_8064EC04,92,yes
 us,asm,func_global_asm_80673B78,188,no
 us,asm,func_global_asm_80733D8C,6296,no
 us,asm,func_global_asm_807149C8,52,yes
-us,asm,func_global_asm_807270C0,212,yes
 us,asm,func_global_asm_806EA200,108,yes
 us,asm,func_global_asm_806D45A4,436,yes
 us,asm,func_global_asm_8073B560,112,yes

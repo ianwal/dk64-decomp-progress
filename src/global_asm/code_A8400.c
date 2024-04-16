@@ -198,7 +198,7 @@ void func_global_asm_806A495C(void *arg0, void *arg1, void *arg2) {
         func_global_asm_80714998(2);
         func_global_asm_80714A68(arg2->unk44, arg2->unk48, arg2->unk4C, arg2->unk50);
         temp_v1 = &arg0->unk10;
-        temp_v0 = func_global_asm_80714CC0(D_global_asm_80755390[temp_v1->unk0], 1.0f, arg2->unk44, arg2->unk48, 1.0f);
+        temp_v0 = drawSpriteAtPosition(D_global_asm_80755390[temp_v1->unk0], 1.0f, arg2->unk44, arg2->unk48, 1.0f);
         temp_v1->unk4 = temp_v0;
         if (temp_v1->unk2 != 0) {
             temp_v0->unk360 = temp_v0->unk360 * -1.0f;

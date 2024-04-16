@@ -15,7 +15,7 @@ void func_global_asm_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     func_global_asm_807149FC(-1);
     func_global_asm_807149B8(1);
     func_global_asm_8071496C(arg3);
-    func_global_asm_80714CC0(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, arg0, arg1, arg2);
+    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, arg0, arg1, arg2);
 }
 
 void func_global_asm_806B8BDC(s16 arg0, s16 arg1, s16 arg2) {
@@ -24,7 +24,7 @@ void func_global_asm_806B8BDC(s16 arg0, s16 arg1, s16 arg2) {
     func_global_asm_80714950(-0x28);
     func_global_asm_807149B8(1);
     func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
-    func_global_asm_80714CC0(&D_global_asm_8071FFA0, 2.0f, arg0, arg1, arg2);
+    drawSpriteAtPosition(&D_global_asm_8071FFA0, 2.0f, arg0, arg1, arg2);
 }
 
 void func_global_asm_806B8C78(void) {

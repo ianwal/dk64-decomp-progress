@@ -174,7 +174,7 @@ void func_global_asm_806B3680(void) {
                                 func_global_asm_80714950(i + 0x0B020000);
                                 func_global_asm_8071498C(sp44);
                                 func_global_asm_80714998(1);
-                                func_global_asm_80714CC0(&D_global_asm_8072073C, 2.0 * current_actor_pointer->animation_state->scale_y, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                                drawSpriteAtPosition(&D_global_asm_8072073C, 2.0 * current_actor_pointer->animation_state->scale_y, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                             }
                             func_global_asm_80608528(current_actor_pointer, 0x3D, 0xFF, 0x7F, 0);
                             playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x35C, 0xFF, 0x7F, 0, 0x32, D_global_asm_8075B5D8, 0);
