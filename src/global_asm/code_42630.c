@@ -859,5 +859,5 @@ void func_global_asm_80642940(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
             D_global_asm_807F6224 + var_f18
         );
     }
-    func_global_asm_8065A708(D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xA6, 0x30, 0xFF);
+    createLight(D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xA6, 0x30, 0xFF);
 }

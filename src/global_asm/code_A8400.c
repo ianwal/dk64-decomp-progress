@@ -601,7 +601,7 @@ void func_global_asm_806A6004(void *arg0, s32 arg1) {
     func_global_asm_806A664C(4.5f);
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (arg1 != player_pointer->unk58) {
-            func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x64);
+            changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
         }
         func_global_asm_806A5EAC(sp1C, arg0, 1.0f);
     }
@@ -670,7 +670,7 @@ void func_global_asm_806A62D4(void) {
     void *sp1C = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        func_global_asm_807149C8(0xFF, 0xFF, 0, 0xFF);
+        changeActorColor(0xFF, 0xFF, 0, 0xFF);
         func_global_asm_806A5EAC(sp1C, &D_global_asm_807211D0, 1.5f);
     }
 }
@@ -833,7 +833,7 @@ void func_global_asm_806A7600(void *arg0) {
                 var_a0_2 = FALSE;
             }
             if (var_a0_2 != 0) {
-                func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x96);
+                changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
             } else {
                 func_global_asm_8071498C(&func_global_asm_8071EB70);
                 func_global_asm_80714950(0x226);
@@ -917,7 +917,7 @@ void func_global_asm_806A7BDC(void) {
         func_global_asm_8071498C(&func_global_asm_8071EB70);
         func_global_asm_80714950(0x226);
         func_global_asm_80714998(2);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, sp64 != 0 ? 0xFF : 0x7F);
+        changeActorColor(0xFF, 0xFF, 0xFF, sp64 != 0 ? 0xFF : 0x7F);
         func_global_asm_80714C08(&D_global_asm_80721170, 0.4f, current_actor_pointer, 1, 2);
     }
     if (D_global_asm_8075AA7C != current_actor_pointer->floor) {

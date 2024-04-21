@@ -1857,6 +1857,6 @@ void func_menu_800324CC(void) {
     label_string_pointer_array = malloc(101 * sizeof(s32));
     i = 0;
     while (i != 101) {
-        label_string_pointer_array[i++] = func_global_asm_8070E750(0x25, i, 0);
+        label_string_pointer_array[i++] = getTextString(0x25, i, 0);
     }
 }

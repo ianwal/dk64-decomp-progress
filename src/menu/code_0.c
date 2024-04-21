@@ -195,13 +195,10 @@ void func_menu_80024418(MenuStruct0 *arg0, s32 textIndex) {
     }
 }
 
-Gfx *printStyledText(Gfx*, s16, s16, s16, void *, s32);
-s32 func_global_asm_8070E750(s32, s32, s32);
-
 Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
     // DrawSnidesMenu
-    s32 var_s2;
-    s32 var_s0;
+    s32 y;
+    s32 i;
     SnideAaD180 *snide_aad;
     void *var_s1;
     char sp70[0x20];
@@ -214,24 +211,24 @@ Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
         gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
         gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
         gDPPipeSync(dl++);
-        var_s2 = 0xF0;
-        for (var_s0 = 0; var_s0 < 8; var_s0++) {
-            if ((var_s0 + 4) == snide_aad->screen) {
+        y = 240;
+        for (i = 0; i < 8; i++) {
+            if ((i + 4) == snide_aad->screen) {
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
             } else {
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x80);
             }
-            dl = printText(dl, 0x280, var_s2, menu_scale, func_global_asm_8070E750(0x2A, var_s0 + 3, 1));
-            var_s2 += 0x3C;
+            dl = printText(dl, 640, y, menu_scale, getTextString(0x2A, i + 3, 1));
+            y += 60;
         }
     } else {
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-        sprintf(&sp70, "q %s", func_global_asm_8070E750(0x2A, 0, 1));
+        sprintf(&sp70, "q %s", getTextString(0x2A, 0, 1));
         dl = printStyledText(dl, 1, 350, 400, &sp70, 1);
-        sprintf(&sp70, "b %s", func_global_asm_8070E750(0x2A, 1, 1));
+        sprintf(&sp70, "b %s", getTextString(0x2A, 1, 1));
         dl = printStyledText(dl, 1, 350, 500, &sp70, 1);
         if (snide_aad->minigame_menu_unlocked) {
-            sprintf(&sp70, "n %s", func_global_asm_8070E750(0x2A, 2, 1));
+            sprintf(&sp70, "n %s", getTextString(0x2A, 2, 1));
             dl = printStyledText(dl, 1, 350, 600, &sp70, 1);
         }
     }

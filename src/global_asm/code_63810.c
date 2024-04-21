@@ -38,7 +38,7 @@ void func_global_asm_8065EFF0(void) {
                 }
                 func_global_asm_80659600(D_global_asm_807F9070[i].unk12);
                 func_global_asm_80659610(D_global_asm_807F9070[i].unk14);
-                func_global_asm_8065A708(
+                createLight(
                     D_global_asm_807F9070[i].unk4,
                     D_global_asm_807F9070[i].unk8,
                     D_global_asm_807F9070[i].unkC,

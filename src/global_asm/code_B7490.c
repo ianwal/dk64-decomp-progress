@@ -348,7 +348,7 @@ void func_global_asm_806B4194(void) {
     }
     if (phi_v0 && ((object_timer % phi_v0) == 0)) {
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(sp2E, sp2E, sp2E, current_actor_pointer->shadow_opacity);
+        changeActorColor(sp2E, sp2E, sp2E, current_actor_pointer->shadow_opacity);
         func_global_asm_8068588C(current_actor_pointer, 1, sp28, 0.0f, 0.0f, 0.0f, -0x50);
     }
 }

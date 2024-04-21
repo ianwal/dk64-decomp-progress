@@ -89,7 +89,7 @@ void func_global_asm_806AE394(f32 arg0, f32 arg1) {
     func_global_asm_8070033C(x1, y1, z1, x2, y2, z2, 0.6f, 0xFF, 0xFF, 0xFF);
     x1 = (func_global_asm_80612794(sp4E) * arg0) + current_actor_pointer->x_position;
     z1 = (func_global_asm_80612790(sp4E) * arg0) + current_actor_pointer->z_position;
-    func_global_asm_8065A708(x1, current_actor_pointer->y_position, z1, 0.0f, 0.0f, 0.0f, arg1, 0, 0xFF, 0xFF, 0xFF);
+    createLight(x1, current_actor_pointer->y_position, z1, 0.0f, 0.0f, 0.0f, arg1, 0, 0xFF, 0xFF, 0xFF);
     if (current_actor_pointer->control_state != 0) {
         if ((((D_global_asm_807FDC94->x_position - x1) * (D_global_asm_807FDC94->x_position - x1)) + ((D_global_asm_807FDC94->y_position - current_actor_pointer->y_position) * (D_global_asm_807FDC94->y_position - current_actor_pointer->y_position)) + ((D_global_asm_807FDC94->z_position - z1) * (D_global_asm_807FDC94->z_position - z1))) < (arg1 * arg1)) {
             current_actor_pointer->y_rotation = func_global_asm_80665DE0(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position);

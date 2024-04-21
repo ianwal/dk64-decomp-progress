@@ -159,7 +159,7 @@ void func_global_asm_8065A6F8(u16 arg0) {
     D_global_asm_807F7EFE = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_global_asm_8065A708.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/createLight.s")
 
 typedef struct {
     f32 unk0;
@@ -197,7 +197,7 @@ extern f32 D_global_asm_807F7EE4;
 // Or... We get rid of temp_v0 (shudder)
 // Or... float tuples in the struct?
 /*
-void func_global_asm_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA) {
+void createLight(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA) {
     Struct807F7500 *temp_v0;
     s32 slot;
 

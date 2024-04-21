@@ -140,7 +140,7 @@ void func_global_asm_80664834(s16 arg0) {
         func_global_asm_80714998(7);
         func_global_asm_80714950(((rand() % 10000) % 50) - 0x78);
         func_global_asm_8071498C(&func_global_asm_80717DB4);
-        func_global_asm_807149C8(0xFF, 0xC8, 0xC8, 0xC8);
+        changeActorColor(0xFF, 0xC8, 0xC8, 0xC8);
         func_global_asm_80714A08(0.2f, 0.1f);
         func_global_asm_80714A28(4);
         drawSpriteAtPosition(

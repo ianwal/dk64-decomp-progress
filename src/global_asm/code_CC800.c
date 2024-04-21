@@ -76,7 +76,7 @@ void func_global_asm_806C7B50(Actors actorIndex, u8 arg1, Actor *player) {
     AppleAAD *temp_v0;
 
     spawnActor(actorIndex, 0x82);
-    func_global_asm_8067B238(last_spawned_actor, player, 0.15f);
+    moveAndScaleActorToAnother(last_spawned_actor, player, 0.15f);
     temp_v0 = last_spawned_actor->PaaD;
     temp_v0->unk4 = player;
     temp_v0->unk8 = arg1;
@@ -88,7 +88,7 @@ void func_global_asm_806C7BAC(s32 arg0, s32 arg1) {
     OtherAdditionalActorData *temp_v0;
 
     spawnActor(ACTOR_ROCKETBARREL_ON_KONG, 0x8C);
-    func_global_asm_8067B238(last_spawned_actor, current_player, 0.15f);
+    moveAndScaleActorToAnother(last_spawned_actor, current_player, 0.15f);
     temp_v0 = last_spawned_actor->additional_actor_data;
     temp_v0->unk0 = arg0;
     temp_v0->unk4 = arg1;

@@ -226,7 +226,7 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     if (temp_t7) {
         sprintf(&sp4C, "%d", MIN(3, temp_t7));
     } else {
-        sprintf(&sp4C, func_global_asm_8070E750(0x26, 9, 1));
+        sprintf(&sp4C, getTextString(0x26, 9, 1));
     }
     if ((arg1->unk168 % 30) == 0) {
         if (temp_t7) {
@@ -386,7 +386,7 @@ void func_global_asm_806C10A0(u8 textIndex, u16 fileIndex, s16 animationIndex) {
                     if (((s32)(current_actor_pointer->object_properties_bitfield << 6) >= 0)) {
                         func_global_asm_80613C48(current_actor_pointer, 0xE4, 0.0f, 2.0f);
                         spawnActor(ACTOR_UNKNOWN_225, 0x98);
-                        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.21f);
+                        moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, 0.21f);
                         func_global_asm_80671C0C(current_actor_pointer, 1, &last_spawned_actor->x_position, &sp34, &last_spawned_actor->z_position);
                         playActorAnimation(last_spawned_actor, 0x298);
                         last_spawned_actor->unk11C = current_actor_pointer;
@@ -568,7 +568,7 @@ void func_global_asm_806C19F4(void) {
         func_global_asm_806BFBF4();
         if (current_actor_pointer->animation_state->unk0->unk10 == 0x1A4) {
             func_global_asm_807149B8(1);
-            func_global_asm_807149C8(0x96, 0xFF, 0xFF, 0xFF);
+            changeActorColor(0x96, 0xFF, 0xFF, 0xFF);
             func_global_asm_80714C08(&D_global_asm_8071FBA0, 0.7f, current_actor_pointer, 5, 0);
         }
         func_global_asm_80724E48(D_global_asm_807FDC94 == player_pointer ? 5 : 7);
@@ -924,7 +924,7 @@ void func_global_asm_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32
     func_global_asm_807149A8(1000);
     func_global_asm_80714998(0xFF);
     func_global_asm_80714944(((rand() >> 0xF) % 32767) % 11);
-    func_global_asm_807149C8(arg0, arg1, arg2, 0xFF);
+    changeActorColor(arg0, arg1, arg2, 0xFF);
     func_global_asm_8071498C(&func_global_asm_80717D84);
     func_global_asm_80714950(2);
     drawSpriteAtPosition(arg6, arg7 * 0.2, arg3, arg4, arg5);

@@ -64,7 +64,7 @@ void func_menu_8003264C(void) {
                 }
                 current_actor_pointer->unk15F += var_a0;
             }
-            func_global_asm_8065A708(
+            createLight(
                 current_actor_pointer->x_position,
                 current_actor_pointer->y_position + 20.0f,
                 current_actor_pointer->z_position,
@@ -156,9 +156,9 @@ Gfx* func_menu_8003292C(Gfx *dl) {
     void *temp_v0;
     void *var_s0;
 
-    spCC = func_global_asm_8070E750(0xD, 0, 1);
-    spC8 = func_global_asm_8070E750(0xD, 1, 1);
-    spC4 = func_global_asm_8070E750(0xD, 2, 1);
+    spCC = getTextString(0xD, 0, 1);
+    spC8 = getTextString(0xD, 1, 1);
+    spC4 = getTextString(0xD, 2, 1);
     spC0 = func_global_asm_806FD894(1);
     gDPPipeSync(dl++);
     gSPDisplayList(dl++, &D_1000118);

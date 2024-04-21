@@ -181,7 +181,7 @@ void func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 ar
     temp_f12 *= 0.5f;
     temp_f14 *= 0.5f;
     gDPSetPrimColor(dl++, 0, 0, arg4, arg5, arg6, 0xC8);
-    func_global_asm_8068C5A8(dl, 0x4A, 3, 1, 0x10, 0x10, ((temp_f12) + 50.0f) * 4.0f, ((temp_f14) + 60.0f) * 4.0f, 1.0f, 1.0f, 0, 0.0f);
+    displayImage(dl, 0x4A, 3, 1, 0x10, 0x10, ((temp_f12) + 50.0f) * 4.0f, ((temp_f14) + 60.0f) * 4.0f, 1.0f, 1.0f, 0, 0.0f);
 }
 */
 
@@ -304,7 +304,6 @@ void func_race_8002D0FC(void) {
 }
 
 s8 func_global_asm_806FDB8C(s32, s32, s32, f32, f32, f32);
-s32 func_global_asm_8070E750(s32, s32, s32);
 
 extern s32 D_race_8002FCD4[];
 
@@ -322,7 +321,7 @@ void func_race_8002D148(Struct8002D148 *arg0, u8 arg1) {
                 var_a3 = 3;
             }
             if (arg0->unk4->unk27 == 0) {
-                arg0->unk4->unk46 = func_global_asm_806FDB8C(1, func_global_asm_8070E750(0x26, D_race_8002FCD4[var_a3], 1), 2, 160.0f, 100.0f, 0.0f);
+                arg0->unk4->unk46 = func_global_asm_806FDB8C(1, getTextString(0x26, D_race_8002FCD4[var_a3], 1), 2, 160.0f, 100.0f, 0.0f);
             }
         }
     }

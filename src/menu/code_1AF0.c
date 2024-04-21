@@ -76,11 +76,10 @@ typedef struct {
 } A178_menu_80025B64;
 
 Gfx *func_menu_80025B64(Gfx *dl, Actor *arg1) {
+    s32 pad2;
     s32 pad[8];
-    s32 temp_v0;
-    s32 var_a3;
-    s32 sp4C; // TODO: Type
     A178_menu_80025B64 *a178;
+    char sp4C[4]; // TODO: Proper size
 
     a178 = arg1->unk178;
     if (a178->unkD == 1) {
@@ -94,17 +93,11 @@ Gfx *func_menu_80025B64(Gfx *dl, Actor *arg1) {
                 a178->unkE = 5;
                 // fallthrough
             case 5:
-                temp_v0 = 0xFF - arg1->unk15F;
-                if (temp_v0 >= 9) {
-                    var_a3 = 8;
-                } else {
-                    var_a3 = temp_v0;
-                }
-                arg1->unk15F += var_a3;
+                arg1->unk15F += MIN(8, 0xFF - arg1->unk15F);
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-                sprintf(&sp4C, "q %s", func_global_asm_8070E750(0x24, 0x10, 1, var_a3));
+                sprintf(&sp4C, "q %s", getTextString(0x24, 0x10, 1));
                 dl = printStyledText(dl, 1, 500, 400, &sp4C, 1);
-                sprintf(&sp4C, "b %s", func_global_asm_8070E750(0x24, 0x11, 1));
+                sprintf(&sp4C, "b %s", getTextString(0x24, 0x11, 1));
                 dl = printStyledText(dl, 1, 500, 500, &sp4C, 1);
                 break;
         }

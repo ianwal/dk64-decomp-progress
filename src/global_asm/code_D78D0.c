@@ -1613,7 +1613,7 @@ void func_global_asm_806D7A28(void) {
                 }
             }
             if (((extra_player_info_pointer->unk1F0 & 0x1000) != 0) && ((object_timer & 3) == 0)) {
-                func_global_asm_807149C8(0x64, 0x64, 0x64, 0xC8);
+                changeActorColor(0x64, 0x64, 0x64, 0xC8);
                 func_global_asm_80714998(2);
                 func_global_asm_8068588C(current_actor_pointer, (((rand() >> 0xF) % 32767) % 8) + 1, 0.4f, 0.0f, 0.0f, 0.0f, -0x50);
             }
@@ -3087,7 +3087,7 @@ void func_global_asm_806DED44(void) {
         case 1:
             global_properties_bitfield &= 0xFFFEFFCF;
             spawnActor(ACTOR_FAIRY_REFILL, 0x3D);
-            func_global_asm_8067B238(
+            moveAndScaleActorToAnother(
                 last_spawned_actor,
                 current_actor_pointer,
                 current_actor_pointer->animation_state->scale_y * 2
@@ -3108,7 +3108,7 @@ void func_global_asm_806DED44(void) {
             func_global_asm_80659620(aaD, &aaD->unk4, &aaD->unk8, aaD->unk18);
             func_global_asm_80659670(1.0f, 1.0f, 1.0f, aaD->unk18);
             spawnActor(ACTOR_SPOTLIGHT, 0xA8);
-            func_global_asm_8067B238(last_spawned_actor,
+            moveAndScaleActorToAnother(last_spawned_actor,
                           current_actor_pointer,
                           current_actor_pointer->animation_state->scale_x);
             last_spawned_actor->object_properties_bitfield |= 0x40000000;

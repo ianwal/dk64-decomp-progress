@@ -29,10 +29,10 @@ Gfx *func_bonus_80026690(Gfx *dl, Actor *arg1) {
     temp_f20 = D_bonus_8002DD20;
     gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    dl =   func_global_asm_8068C5A8(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A - 0x34), (s16)(sp68 - 0x34), temp_f20, temp_f20, 0xE1, 0.0f);
-    dl =   func_global_asm_8068C5A8(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A + 0x34), (s16)(sp68 - 0x34), temp_f20, temp_f20, 0x13B, 0.0f);
-    dl =   func_global_asm_8068C5A8(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A + 0x34), (s16)(sp68 + 0x34), temp_f20, temp_f20, 0x2D, 0.0f);
-    return func_global_asm_8068C5A8(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A - 0x34), (s16)(sp68 + 0x34), temp_f20, temp_f20, 0x87, 0.0f);
+    dl =   displayImage(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A - 0x34), (s16)(sp68 - 0x34), temp_f20, temp_f20, 0xE1, 0.0f);
+    dl =   displayImage(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A + 0x34), (s16)(sp68 - 0x34), temp_f20, temp_f20, 0x13B, 0.0f);
+    dl =   displayImage(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A + 0x34), (s16)(sp68 + 0x34), temp_f20, temp_f20, 0x2D, 0.0f);
+    return displayImage(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A - 0x34), (s16)(sp68 + 0x34), temp_f20, temp_f20, 0x87, 0.0f);
 }
 
 // Displaylist stuff
@@ -265,7 +265,7 @@ void func_bonus_800277F8(void) {
     aaD = current_actor_pointer->additional_actor_data;
     a178 = ((A178_800277F8*)current_actor_pointer->unk178);
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        a178->unk25 = func_global_asm_806FDB8C(1, func_global_asm_8070E750(0x1A, 2, 1), 8, 0.0f, 0.0f, 0.0f);
+        a178->unk25 = func_global_asm_806FDB8C(1, getTextString(0x1A, 2, 1), 8, 0.0f, 0.0f, 0.0f);
         func_global_asm_806FDAB8(a178->unk25, 0.0f);
         aaD->unk23 = 5;
         aaD->unk0 = -2;

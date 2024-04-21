@@ -858,7 +858,7 @@ void func_global_asm_806E9BA8(s32 arg0) {
         current_actor_pointer->control_state = arg0;
         current_actor_pointer->control_state_progress = 0;
         func_global_asm_806F91B4(6, cc_player_index, -1);
-        func_global_asm_8065A708(
+        createLight(
             character_change_array[cc_player_index].look_at_eye_x,
             character_change_array[cc_player_index].look_at_eye_y,
             character_change_array[cc_player_index].look_at_eye_z,

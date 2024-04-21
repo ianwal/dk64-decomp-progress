@@ -306,7 +306,7 @@ void func_global_asm_8068BA2C(void) {
         temp_s1->unk1F0 &= 0xFBFFFFFF;
     }
     if (sp58->unkAC & 1) {
-        func_global_asm_8065A708(character_change_array->look_at_eye_x, character_change_array->look_at_eye_y, character_change_array->look_at_eye_z, character_change_array->look_at_at_x, character_change_array->look_at_at_y, character_change_array->look_at_at_z, 0.0f, 1, 0xFF, 0xFF, 0xFF);
+        createLight(character_change_array->look_at_eye_x, character_change_array->look_at_eye_y, character_change_array->look_at_eye_z, character_change_array->look_at_at_x, character_change_array->look_at_at_y, character_change_array->look_at_at_z, 0.0f, 1, 0xFF, 0xFF, 0xFF);
     }
 }
 
@@ -441,7 +441,7 @@ Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 arg2, s16 arg3, s16 arg4) {
 */
 
 // Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068C5A8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/displayImage.s")
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068D264.s")
@@ -453,7 +453,7 @@ void func_global_asm_8068D8C8(Gfx *dl, s32 arg1) {
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gSPMatrix(dl++, &D_2000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     // TODO: What does the object_timer expression do? Any better way to represent it?
-    func_global_asm_8068C5A8(dl, ((((u32)object_timer >> 1) & 0xF) + 0x8F), 0, 2, 0x20, 0x20, 0x118, 0xD2, 1.0f, 1.0f, 0, 0.0f);
+    displayImage(dl, ((((u32)object_timer >> 1) & 0xF) + 0x8F), 0, 2, 0x20, 0x20, 0x118, 0xD2, 1.0f, 1.0f, 0, 0.0f);
 }
 
 // Displaylist stuff, regalloc, close

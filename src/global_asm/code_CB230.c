@@ -83,7 +83,7 @@ void func_global_asm_806C6530(void) {
             break;
     }
     sp8C->unk0 = (func_global_asm_80612794(object_timer * 0x82) * 35.0) + 220.0;
-    func_global_asm_8065A708(sp64, sp68, sp6C, sp70, sp74, sp78, 0.0f, 1, sp8C->unk0, sp8C->unk0, sp8C->unk0);
+    createLight(sp64, sp68, sp6C, sp70, sp74, sp78, 0.0f, 1, sp8C->unk0, sp8C->unk0, sp8C->unk0);
 }
 
 void func_global_asm_806C6530(void);

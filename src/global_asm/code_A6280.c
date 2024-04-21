@@ -76,7 +76,7 @@ void func_global_asm_806A18A8(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_80724CA4(2, 2);
     }
-    func_global_asm_8067B238(current_actor_pointer, sp40, 0.15f);
+    moveAndScaleActorToAnother(current_actor_pointer, sp40, 0.15f);
     if (current_actor_pointer->control_state != 0) {
         func_global_asm_806B6600(1);
         if (sp44->unk1 == 0) {
@@ -156,7 +156,7 @@ void func_global_asm_806A1AC4(void) {
                             func_global_asm_8071498C(&func_global_asm_8071E864);
                             func_global_asm_80714950(i);
                             func_global_asm_807149B8(1);
-                            func_global_asm_807149C8(0x8C, 0x8C, 0x8C, 0xFF);
+                            changeActorColor(0x8C, 0x8C, 0x8C, 0xFF);
                             func_global_asm_80714998(5);
                             drawSpriteAtPosition(&D_global_asm_8071FFA0, temp_f20, current_actor_pointer->x_position, current_actor_pointer->y_position + 50.0f, current_actor_pointer->z_position);
                         }
@@ -254,7 +254,7 @@ void func_global_asm_806A1FD8(void) {
                 func_global_asm_807149B8(1);
                 func_global_asm_8071498C(&func_global_asm_80717D4C);
                 func_global_asm_80714950(-0x64);
-                func_global_asm_807149C8(0x64, 0x46, 0x1E, 0xFF);
+                changeActorColor(0x64, 0x46, 0x1E, 0xFF);
                 func_global_asm_80671C0C(current_actor_pointer, i, &sp54, &sp50, &sp4C);
                 drawSpriteAtPosition(&D_global_asm_8071FF18, 2.0f, sp54, sp50 + 10.0, sp4C);
             }

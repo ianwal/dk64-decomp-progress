@@ -40,7 +40,7 @@ void func_global_asm_806DF5A0(s16 *arg0, s16 arg1, s16 arg2, s16 arg3);
 Actor *getSpawnerTiedActor(s16 spawn_trigger, u16 arg1);
 Actor *func_global_asm_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
 
-Gfx *func_global_asm_8068C5A8(Gfx *, u16, s32, s32, s32, s32, s32, s32, f32, f32, s32, f32);
+Gfx *displayImage(Gfx *dl, u16 textureIndex, s32 arg3, s32 codec, s32 width, s32 height, s32 x, s32 y, f32 xScale, f32 yScale, s32 arg11, f32 arg12);
 
 // TODO: What do the params mean?
 s32 playCutscene(Actor*, s16, s32);
@@ -56,13 +56,12 @@ void func_global_asm_80613C48(Actor*, s16, f32, f32);
 s16 func_global_asm_806531B8(f32, f32, f32, s16);
 
 u8 setAction(s16 actionIndex, Actor *actor, u8 playerIndex);
-void func_global_asm_8067B238(Actor *destination, Actor *source, f32 scale);
+void moveAndScaleActorToAnother(Actor *destination, Actor *source, f32 scale);
 
 void func_global_asm_80717D4C(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071E864(Struct80717D84 *arg0, s8 *arg1);
 
-
-void func_global_asm_8065A708(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA);
+void createLight(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA);
 void func_global_asm_80684900(u8);
 f32 func_global_asm_80612794(s16);
 void playAnimation(Actor*, s32);
@@ -76,7 +75,7 @@ void func_global_asm_80665564(Actor *arg0, f32 arg1);
 s16 func_global_asm_80665DE0(f32, f32, f32, f32);
 
 void func_global_asm_8067DF44(f32, f32, f32, f32, u8, u8);
-void func_global_asm_807149C8(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
+void changeActorColor(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 f32 func_global_asm_80665E94(f32, f32, f32, f32, f32, f32, s16);
 
 void free(void *);
@@ -98,6 +97,8 @@ void func_global_asm_80614D90(Actor*);
 
 u8 playerCanDive(void);
 u8 playerCanThrowOrange(void);
+
+char *getTextString(u8 fileIndex, s32 stringIndex, s32 arg2);
 
 u8 func_global_asm_805FCA64(void); // getCutsceneBarState()
 u8 getLevelIndex(u8 map, u8 arg1);
@@ -347,7 +348,7 @@ void func_global_asm_80714A68(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
 
 Struct80717D84 *func_global_asm_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4);
 Struct80717D84 *func_global_asm_80714C08(void *arg0, f32 arg1, Actor *arg2, s32 arg3, u8 arg4);
-Struct80717D84 *drawSpriteAtPosition(void* arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+Struct80717D84 *drawSpriteAtPosition(void* sprite, f32 scale, f32 x, f32 y, f32 z);
 
 void func_global_asm_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5);
 void func_global_asm_807180F4(s32 arg0, s32 arg1);

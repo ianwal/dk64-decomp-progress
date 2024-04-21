@@ -115,7 +115,7 @@ void func_boss_80024000(void) {
         func_global_asm_8071498C(&func_global_asm_8071E864);
         func_global_asm_80714950(i);
         func_global_asm_807149B8(1);
-        func_global_asm_807149C8(0x8C, 0x8C, 0x8C, 0xFF);
+        changeActorColor(0x8C, 0x8C, 0x8C, 0xFF);
         func_global_asm_80714998(3);
         drawSpriteAtPosition(&D_global_asm_8071FFA0, 2.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 40.0f, current_actor_pointer->z_position);
     }
@@ -385,7 +385,7 @@ void func_boss_80027770(void) {
             var_v1 = ((((rand() >> 0xF) % 32767) % 7) + 0x1D);
         }
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(0x50, 0x50, 0x50, 0xC8);
+        changeActorColor(0x50, 0x50, 0x50, 0xC8);
         func_global_asm_8068588C(current_actor_pointer, var_v1, 2.0f, 0.0f, 0.0f, 0.0f, -0x78);
     }
 }

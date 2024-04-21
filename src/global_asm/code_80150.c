@@ -1194,7 +1194,7 @@ s32 func_global_asm_80683A80(Struct80683A80_arg0 *arg0, s32 arg1) {
 
     var_a2 = 0;
     if ((arg0[arg1 + 2].unk8->unk58 ^ 0x13C) == 0) {
-        var_a2 = func_global_asm_8070E750(2, D_global_asm_8074E87C[arg1 - 8], 1);
+        var_a2 = getTextString(2, D_global_asm_8074E87C[arg1 - 8], 1);
     }
     return var_a2;
 }

@@ -156,7 +156,7 @@ Gfx *func_global_asm_806FEF7C(Gfx *dl, Actor *arg1) {
     gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
 
-    return func_global_asm_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, D_global_asm_8075DE70);
+    return displayImage(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, D_global_asm_8075DE70);
 }
 
 s32 func_global_asm_80690F30(s32, s32 *, Actor*, s32, s32, s32, s32 *, s32 *, s32 *);
@@ -175,7 +175,7 @@ Gfx *func_global_asm_806FF01C(Gfx *dl, Actor *arg1) {
     } else {
         gDPSetPrimColor(dl++, 0, 0, 0xC8, 0x00, 0x00, 0xFF);
     }
-    return func_global_asm_8068C5A8(dl, 0x38, 3, 1, 0x40, 0x40, 0xA0, 0x78, 0.5f, 0.5f, 0x2D, 0.0f);
+    return displayImage(dl, 0x38, 3, 1, 0x40, 0x40, 0xA0, 0x78, 0.5f, 0.5f, 0x2D, 0.0f);
 }
 
 void func_global_asm_806FF144(Gfx *dl) {
@@ -183,10 +183,10 @@ void func_global_asm_806FF144(Gfx *dl) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gSPMatrix(dl++, &D_2000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    dl = func_global_asm_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, 0x3E, 0x3E, 2.0f, 2.0f, 0, 0.0f);
-    dl = func_global_asm_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, D_global_asm_80744490 - 0x3E, 0x3E, 2.0f, 2.0f, 0x5A, 0.0f);
-    dl = func_global_asm_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, D_global_asm_80744490 - 0x3E, D_global_asm_80744494 - 0x3E, 2.0f, 2.0f, 0xB4, 0.0f);
-    func_global_asm_8068C5A8(dl, 0x3A, 3, 1, 0x40, 0x40, 0x3E, D_global_asm_80744494 - 0x3E, 2.0f, 2.0f, 0x10E, 0.0f);
+    dl = displayImage(dl, 0x3A, 3, 1, 0x40, 0x40, 0x3E, 0x3E, 2.0f, 2.0f, 0, 0.0f);
+    dl = displayImage(dl, 0x3A, 3, 1, 0x40, 0x40, D_global_asm_80744490 - 0x3E, 0x3E, 2.0f, 2.0f, 0x5A, 0.0f);
+    dl = displayImage(dl, 0x3A, 3, 1, 0x40, 0x40, D_global_asm_80744490 - 0x3E, D_global_asm_80744494 - 0x3E, 2.0f, 2.0f, 0xB4, 0.0f);
+    displayImage(dl, 0x3A, 3, 1, 0x40, 0x40, 0x3E, D_global_asm_80744494 - 0x3E, 2.0f, 2.0f, 0x10E, 0.0f);
 }
 
 void func_global_asm_806FF32C(Gfx *dl, Actor *arg1) {
@@ -203,10 +203,10 @@ Gfx *func_global_asm_806FF628(Gfx *dl, s32 arg1) {
     dl = func_global_asm_806FEDB0(dl, PaaD->unk1A4);
     if (PaaD->unk1EC == 2) {
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0x00, 0x00, 0x64);
-        dl = func_global_asm_8068C5A8(dl, 0x45, 3, 1, 0x40, 0x40, 0xA0, 0x78, 2.0f, 2.0f, 0, 0.0f);
+        dl = displayImage(dl, 0x45, 3, 1, 0x40, 0x40, 0xA0, 0x78, 2.0f, 2.0f, 0, 0.0f);
     } else if (PaaD->unk1EC == 1) {
         gDPSetPrimColor(dl++, 0, 0, 0x00, 0xFF, 0x00, 0x64);
-        dl = func_global_asm_8068C5A8(dl, 0x44, 3, 1, 0x40, 0x40, 0xA0, 0x78, 2.0f, 2.0f, 0, 0.0f);
+        dl = displayImage(dl, 0x44, 3, 1, 0x40, 0x40, 0xA0, 0x78, 2.0f, 2.0f, 0, 0.0f);
     }
     return dl;
 }
@@ -222,7 +222,7 @@ void func_global_asm_806FFB2C(Gfx *dl, Actor *arg1) {
     dl = func_global_asm_806FEDB0(dl, arg1->PaaD->unk1A4);
     gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
-    func_global_asm_8068C5A8(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, sp3C);
+    displayImage(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, sp3C);
 }
 
 // Hmm, weird m2c errors

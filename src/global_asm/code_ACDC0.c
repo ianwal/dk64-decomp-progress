@@ -689,7 +689,7 @@ void func_global_asm_806ACCE8(void) {
         current_actor_pointer->object_properties_bitfield &= ~0x8000;
         D_global_asm_807FC7E0 = malloc(0xC);
         for (i = 0; i < 3; i++) {
-            D_global_asm_807FC7E0[i] = func_global_asm_8070E750(0x24, i + 0xF, 0);
+            D_global_asm_807FC7E0[i] = getTextString(0x24, i + 0xF, 0);
         }
     }
     if (current_actor_pointer->unk168 != 0) {
@@ -766,7 +766,7 @@ void func_global_asm_806ACFFC(void) {
         D_global_asm_807FC7E0 = malloc(0x10);
         var_s1 = 0;
         do {
-            D_global_asm_807FC7E0[var_s1] = func_global_asm_8070E750(0x24, var_s1, 0);
+            D_global_asm_807FC7E0[var_s1] = getTextString(0x24, var_s1, 0);
             var_s1++;
         } while (var_s1 != 4);
         global_properties_bitfield &= 0xFFFEFFCF;

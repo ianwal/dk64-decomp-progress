@@ -62,7 +62,7 @@ void func_global_asm_806845B8(u8 arg0, u8 arg1) {
         sp2C = current_actor_pointer->animation_state->scale_y / 0.15;
         sp2B = (((rand() >> 0xF) % 0x7FFF) % ((arg1 - arg0) + 1)) + arg0;
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(0xE6, 0xE6, 0xE6, 0xE6);
+        changeActorColor(0xE6, 0xE6, 0xE6, 0xE6);
         func_global_asm_8068588C(current_actor_pointer, sp2B, sp2C, 0.0f, 0.0f, 0.0f, -0x78);
     }
 }
@@ -271,7 +271,7 @@ void func_global_asm_806852C4(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
         func_global_asm_8071498C(&func_global_asm_80719A0C);
         func_global_asm_80714950(i);
         func_global_asm_807149B8(1);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0xC8);
         drawSpriteAtPosition(&D_global_asm_8071FFA0, arg0, arg1, arg2, arg3);
     }
 }
@@ -338,7 +338,7 @@ void func_global_asm_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
                 func_global_asm_80714950(i);
                 func_global_asm_807149B8(1);
                 func_global_asm_807149FC(-1);
-                func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+                changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
                 drawSpriteAtPosition(&D_global_asm_8071FF40, arg0 * 0.5, arg2, arg3, arg4);
             }
         }
@@ -348,7 +348,7 @@ void func_global_asm_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
                 func_global_asm_80714950(i);
                 func_global_asm_807149B8(1);
                 func_global_asm_807149FC(-1);
-                func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+                changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
                 drawSpriteAtPosition(D_global_asm_8074E880[i % 3], arg0, arg2, arg3, arg4);
             }
         }
@@ -365,7 +365,7 @@ void func_global_asm_80685708(Actor *arg0, u8 arg1) {
     if (arg1) {
         func_global_asm_80685520(p1 * 0.36, arg1, arg0->x_position, arg0->y_position + 4.0f, arg0->z_position);
         spawnActor(ACTOR_SHOCKWAVE_SLAM, sp34.unk0[arg1]);
-        func_global_asm_8067B238(last_spawned_actor, arg0, arg0->animation_state->scale_y * 0.5f);
+        moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale_y * 0.5f);
         aaD = last_spawned_actor->additional_actor_data;
         aaD->unk6 = arg1 - 1;
     }
@@ -373,7 +373,7 @@ void func_global_asm_80685708(Actor *arg0, u8 arg1) {
 
 void func_global_asm_8068581C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
     func_global_asm_80714998(2);
-    func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
+    changeActorColor(0xFF, 0xFF, 0xFF, 0xC8);
     func_global_asm_8068588C(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 }
 
@@ -400,7 +400,7 @@ void func_global_asm_80685984(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
         func_global_asm_80714998(2);
         func_global_asm_80714950((rand() >> 0xF) % 360);
         func_global_asm_807149B8(1);
-        func_global_asm_807149C8(0x9B, 0x9B, 0x9B, 0xC8);
+        changeActorColor(0x9B, 0x9B, 0x9B, 0xC8);
         func_global_asm_8071498C(&func_global_asm_80719EF4);
         drawSpriteAtPosition(&D_global_asm_8071FFA0, arg0, (((rand() >> 0xF) % 100000) % 10) + (arg1 - 5.0f), arg2, (((rand() >> 0xF) % 100000) % 10) + (arg3 - 5.0f));
     }
@@ -461,7 +461,7 @@ void func_global_asm_80685E78(Actor *arg0) {
     func_global_asm_807149FC(1);
     func_global_asm_8071498C(&func_global_asm_807184F4);
     func_global_asm_80714A28(4);
-    func_global_asm_807149C8(0xC8, 0xFF, 0xFF, 0xC8);
+    changeActorColor(0xC8, 0xFF, 0xFF, 0xC8);
     drawSpriteAtPosition(&D_global_asm_8071FED0, sp28 * 0.6, arg0->x_position, arg0->unkAC, arg0->z_position)->unk338 = arg0;
 }
 */
@@ -531,7 +531,7 @@ void func_global_asm_8068613C(Actor *arg0) {
     playSoundAtActorPosition(arg0, 0xC, 0xFF, 0x7F, 1);
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(1);
-    func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+    changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
     drawSpriteAtPosition(&D_global_asm_8071FC0C, var_f20 * 0.65, arg0->x_position, arg0->unkAC + 15.0f, arg0->z_position);
     if (D_global_asm_80750AD0 == 0) {
         temp_v1 = (func_global_asm_806119A0() & 3) + 4;
@@ -550,7 +550,7 @@ void func_global_asm_80686340(void) {
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(0x14);
     func_global_asm_8071498C(&func_global_asm_8071827C);
-    func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
+    changeActorColor(0xFF, 0xFF, 0xFF, 0xC8);
     func_global_asm_80714A28(4);
 }
 
@@ -681,7 +681,7 @@ void func_global_asm_806871DC(u8 arg0) {
                 }
             case 1:
                 func_global_asm_80714998(1);
-                func_global_asm_807149C8(0xB4, 0xB4, 0xB4, 0xC8);
+                changeActorColor(0xB4, 0xB4, 0xB4, 0xC8);
                 func_global_asm_8068588C(current_actor_pointer, var_v0, 2.0f, 0.0f, 0.0f, 0.0f, -0x78);
                 break;
             case 2:
@@ -692,7 +692,7 @@ void func_global_asm_806871DC(u8 arg0) {
                 func_global_asm_807149B8(1);
                 func_global_asm_8071498C(func_global_asm_80717D4C);
                 func_global_asm_80714950(-1000);
-                func_global_asm_807149C8(0xFF, 0xD7, 0x58, 0xFF);
+                changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
                 func_global_asm_80714C08(&D_global_asm_80720120, (((rand() >> 0xF) % 100) / 30.0) + 1.0, current_actor_pointer, var_v0, 0);
                 break;
         }
@@ -712,7 +712,7 @@ void func_global_asm_80687474(Actor *arg0, f32 arg1) {
     spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D);
     last_spawned_actor->object_properties_bitfield |= 0x400;
     playActorAnimation(last_spawned_actor, 0x334);
-    func_global_asm_8067B238(last_spawned_actor, arg0, arg0->animation_state->scale_y * arg1);
+    moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale_y * arg1);
 }
 
 // Jumptable
@@ -758,7 +758,7 @@ void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     drawSpriteAtPosition(&D_global_asm_80720B24, sp48 * 0.008, (sp74 + sp68) * 0.5, (sp70 + sp64) * 0.5, (sp6C + sp60) * 0.5);
     if (((rand() >> 0xF) % 1000) & 1) {
         func_global_asm_806595F0(1);
-        func_global_asm_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 150.0f, 0, 0x96, 0x64, 0xFF);
+        createLight(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 150.0f, 0, 0x96, 0x64, 0xFF);
     }
     if ((current_actor_pointer->unk58 == ACTOR_BOSS_ARMY_DILLO) && (((rand() >> 0xF) % 1000) >= 0x385)) {
         s16 temp;

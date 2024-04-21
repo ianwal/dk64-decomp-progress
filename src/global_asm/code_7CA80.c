@@ -1426,7 +1426,7 @@ u8 func_global_asm_8067B1E0(Actor *arg0) {
     return 0;
 }
 
-void func_global_asm_8067B238(Actor *destination, Actor *source, f32 scale) {
+void moveAndScaleActorToAnother(Actor *destination, Actor *source, f32 scale) {
     destination->x_position = source->x_position;
     destination->y_position = source->y_position;
     destination->z_position = source->z_position;

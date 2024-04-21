@@ -774,7 +774,7 @@ void func_global_asm_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32
     func_global_asm_8071498C(&func_global_asm_8071BE04);
     func_global_asm_80714A28(0x21);
     if (arg1 == 3) {
-        func_global_asm_807149C8(0xFF, 0, 0, 0xFF);
+        changeActorColor(0xFF, 0, 0, 0xFF);
     }
     temp_s0->unk8 = drawSpriteAtPosition(func_global_asm_806FACE8(arg1), 1.0f, arg2, arg3, -10.0f);
     temp_s0->unk2 = 0;

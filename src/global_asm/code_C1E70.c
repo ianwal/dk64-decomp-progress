@@ -114,7 +114,7 @@ void func_global_asm_806BD3E4(void) {
         var_v1 = 0;
         D_global_asm_807506B4 = 0;
         spawnActor(ACTOR_KLUMSY_CAGE, 0xC4);
-        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
+        moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
         last_spawned_actor->unk64 |= 0x20;
         last_spawned_actor->object_properties_bitfield |= 0x400;
         last_spawned_actor->draw_distance = 0x7D0;

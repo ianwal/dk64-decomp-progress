@@ -123,11 +123,11 @@ void func_boss_8002DC60(void) {
     last_spawned_actor->object_properties_bitfield |= 0x400;
     last_spawned_actor->unk11C = current_actor_pointer;
     sp1C->unk0 = last_spawned_actor;
-    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
+    moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
 }
 
 void func_boss_8002DCE0(void) {
-    func_global_asm_8067B238(current_actor_pointer, current_actor_pointer->unk11C, current_actor_pointer->animation_state->scale_y);
+    moveAndScaleActorToAnother(current_actor_pointer, current_actor_pointer->unk11C, current_actor_pointer->animation_state->scale_y);
     current_actor_pointer->animation_state->unk48 = current_actor_pointer->unk11C->animation_state->unk48;
     if (current_actor_pointer->animation_state->unk0->unk10 == 0x675) {
         if (current_actor_pointer->animation_state->unk0->unk24 == 0.0f) {
@@ -306,7 +306,7 @@ void func_boss_8002FDF8(Actor* arg0, u8 arg1) {
 
 void func_boss_8002FEC0(Actor* toes[], u8 toeIndex, s32 modelIndex) {
     spawnActor(ACTOR_BOSS_KROOL_TOE, modelIndex);
-    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
+    moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
     last_spawned_actor->object_properties_bitfield |= 0x1400;
     last_spawned_actor->unk11C = current_actor_pointer;
     last_spawned_actor->noclip_byte = current_actor_pointer->noclip_byte;

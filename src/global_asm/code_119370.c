@@ -194,7 +194,7 @@ void func_global_asm_807149B8(u8 arg0) {
     D_global_asm_807FDB18 = arg0;
 }
 
-void func_global_asm_807149C8(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
+void changeActorColor(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     D_global_asm_807FDB0C = arg0;
     D_global_asm_807FDB0D = arg1;
     D_global_asm_807FDB0E = arg2;
@@ -573,7 +573,7 @@ void func_global_asm_8071720C(Struct80717D84 *arg0, s32 arg1) {
     var_v1->unk4 += var_v1->unk2;
     if (arg0->unk35C != 0) {
         func_global_asm_806595F0(1);
-        func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 40.0f, 0, 0xFF, 0xFF, (rand() >> 0xF) % 255);
+        createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 40.0f, 0, 0xFF, 0xFF, (rand() >> 0xF) % 255);
     }
 }
 
@@ -1277,7 +1277,7 @@ void func_global_asm_8071A440(Struct80717D84 *arg0, s32 arg1) {
     if (extra_player_info_pointer->vehicle_actor_pointer == arg0->unk35C_actor) {
         if (arg0 == D_minecart_80028C30) {
             func_global_asm_806595F0(1);
-            func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f0 * 50.0, 0, 0xFF, (-80.0f * var_f0) + 255.0f, (-205.0f * var_f0) + 255.0f);
+            createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f0 * 50.0, 0, 0xFF, (-80.0f * var_f0) + 255.0f, (-205.0f * var_f0) + 255.0f);
         }
     }
 }
@@ -1302,7 +1302,7 @@ void func_global_asm_8071A674(Struct80717D84 *arg0, s32 arg1) {
         var_v0++;
         if (*var_v0 == arg0) {
             func_global_asm_806595F0(1);
-            func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f0 * 50.0, 0, 0xFF, (-80.0f * var_f0) + 255.0f, (-205.0f * var_f0) + 255.0f);
+            createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f0 * 50.0, 0, 0xFF, (-80.0f * var_f0) + 255.0f, (-205.0f * var_f0) + 255.0f);
             return;
         }
     }
@@ -1329,7 +1329,7 @@ void func_global_asm_8071A8B0(Struct80717D84 *arg0, s32 arg1) {
         var_f16 = arg0->unk35C & 0xFFFF;
     }
     func_global_asm_806595F0(1);
-    func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f16, 0, 0xFF, (-80.0f * var_f0) + 255.0f, (-205.0f * var_f0) + 255.0f);
+    createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f16, 0, 0xFF, (-80.0f * var_f0) + 255.0f, (-205.0f * var_f0) + 255.0f);
 }
 
 void func_global_asm_8071AADC(Struct80717D84 *arg0, s32 arg1) {
@@ -1346,7 +1346,7 @@ void func_global_asm_8071AADC(Struct80717D84 *arg0, s32 arg1) {
         var_f2 = arg0->unk35C & 0xFFFF;
     }
     func_global_asm_806595F0(1);
-    func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f2, 0, 0xFF, 0xFF, 0xFF);
+    createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f2, 0, 0xFF, 0xFF, 0xFF);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_8071ABDC.s")
@@ -1503,7 +1503,7 @@ void func_global_asm_8071B758(Struct80717D84 *arg0, s32 arg1) {
         var_f0 = 1.0f;
     }
     temp_t0 = ((-155.0f * var_f0) + 255.0f);
-    func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 50.0f, 0, temp_t0, temp_t0, temp_t0);
+    createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 50.0f, 0, temp_t0, temp_t0, temp_t0);
 }
 
 void func_global_asm_8071B89C(Struct80717D84 *arg0, s32 arg1) {
@@ -1543,7 +1543,7 @@ void func_global_asm_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
         func_global_asm_8071498C(&func_global_asm_80717D4C);
         func_global_asm_80714950(-0xA);
         func_global_asm_807149B8(1);
-        func_global_asm_807149C8(0x9B, 0x9B, 0x9B, 0x96);
+        changeActorColor(0x9B, 0x9B, 0x9B, 0x96);
         drawSpriteAtPosition(&D_global_asm_8071FFA0, 0.8f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk340, arg0->unk344 + 10.0f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk348);
     }
 }
@@ -1683,13 +1683,13 @@ void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1) {
             } else {
                 temp_f0 = arg0->unk330->unk16 * 2;
                 temp = 200.0f * (f32)(1.0 - ((temp_f0 - ((arg0->unk34E * 2) + arg0->unk351)) / temp_f0));
-                func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, temp, 0, 0xFF, sp44[1], sp44[2]);
+                createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, temp, 0, 0xFF, sp44[1], sp44[2]);
             }
             break;
         case 1:
             temp_f0 = arg0->unk330->unk16 * 2;
             temp = 200.0f * ((temp_f0 - ((arg0->unk34E * 2) + arg0->unk351)) / temp_f0);
-            func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, temp, 0, 0xFF, sp44[1], sp44[2]);
+            createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, temp, 0, 0xFF, sp44[1], sp44[2]);
             break;
     }
 }
@@ -1734,7 +1734,7 @@ void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
         func_global_asm_80714944(7);
         drawSpriteAtPosition(&D_global_asm_8071FB54, 0.667f, arg0->unk340, sp50 + 10.0f, arg0->unk348);
     }
-    func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 200.0f, 0, sp48[0], sp48[1], sp48[2]);
+    createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 200.0f, 0, sp48[0], sp48[1], sp48[2]);
 }
 
 // Weird m2c errors
@@ -2273,7 +2273,7 @@ void func_global_asm_8071E3EC(Struct80717D84 *arg0, s8 *arg1) {
             break;
     }
     temp_f0 = 255.0f * sp4C;
-    func_global_asm_8065A708(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_v1[0], 0, temp_f0 * sp48, temp_f0 * sp44, temp_f0 * sp40);
+    createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_v1[0], 0, temp_f0 * sp48, temp_f0 * sp44, temp_f0 * sp40);
 }
 */
 

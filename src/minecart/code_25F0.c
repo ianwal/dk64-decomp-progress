@@ -18,14 +18,14 @@ void func_minecart_800265F0(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         playActorAnimation(current_actor_pointer, 0x310);
         spawnActor(ACTOR_UNKNOWN_284, 0x4C);
-        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
+        moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
         last_spawned_actor->unk11C = current_actor_pointer;
         last_spawned_actor->unk168 = -1;
         last_spawned_actor->animation_state->scale[0] *= -1.0f;
         last_spawned_actor->unkEC = 0x2BC;
         func_global_asm_806131D4(last_spawned_actor, func_global_asm_80613448(last_spawned_actor));
         spawnActor(ACTOR_UNKNOWN_284, 0x4C);
-        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
+        moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale[1] * 1.5);
         last_spawned_actor->unk11C = current_actor_pointer;
         last_spawned_actor->unk168 = 1;
         last_spawned_actor->unkEC = 0x2BC;
@@ -60,7 +60,7 @@ void func_minecart_800265F0(void) {
                 playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x182, 0xFF, 0x7F, 0, 0, 0.3f, 0);
                 spawnActor(ACTOR_UNKNOWN_287, 0x50);
                 last_spawned_actor->unk11C = current_actor_pointer;
-                func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.06f);
+                moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, 0.06f);
                 current_actor_pointer->unk15F++;
         case 2:
         case 3:

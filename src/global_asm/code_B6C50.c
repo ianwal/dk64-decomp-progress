@@ -19,7 +19,7 @@ void func_global_asm_806B1F50(void) {
         current_actor_pointer->control_state_progress = 0;
         spawnActor(ACTOR_KLUMSY_CAGE, 0x7D);
         D_global_asm_807FDC90->unk4 = last_spawned_actor;
-        func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.3f);
+        moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, 0.3f);
         last_spawned_actor->x_position = (func_global_asm_80612794(current_actor_pointer->y_rotation) * 14.0f) + current_actor_pointer->x_position;
         last_spawned_actor->z_position = (func_global_asm_80612790(current_actor_pointer->y_rotation) * 14.0f) + current_actor_pointer->z_position;
         func_global_asm_8066EA90(last_spawned_actor, 3);
@@ -93,7 +93,7 @@ void func_global_asm_806B1F50(void) {
             if ((current_actor_pointer->control_state_progress != 0) && (func_global_asm_8067AF44(D_global_asm_807FDC94) != 0) && ((object_timer % 7U) == 0)) {
                 sp37 = 180 + (30 * -current_actor_pointer->control_state_progress);
                 func_global_asm_80714998(3);
-                func_global_asm_807149C8(sp37, sp37, sp37, current_actor_pointer->shadow_opacity);
+                changeActorColor(sp37, sp37, sp37, current_actor_pointer->shadow_opacity);
                 func_global_asm_8068588C(D_global_asm_807FDC94, 1, 1.0f, 0.0f, 0.0f, 0.0f, -0x96);
             }
     }

@@ -43,7 +43,7 @@ void func_global_asm_806B76B0(Gfx *dl, Actor *arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gSPMatrix(dl++, &D_2000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
 
-    func_global_asm_8068C5A8(dl, 0x38, 3, 1, 0x40, 0x40, a178->unk0, a178->unk4, 0.5f, 0.5f, 0x2D, 0.0f);
+    displayImage(dl, 0x38, 3, 1, 0x40, 0x40, a178->unk0, a178->unk4, 0.5f, 0.5f, 0x2D, 0.0f);
 }
 
 // Displaylist stuff
@@ -228,7 +228,7 @@ void func_global_asm_806B83E4(void) {
         drawSpriteAtPosition(&D_global_asm_807201D4, 1.2f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0, current_actor_pointer->z_position);
     }
     if (D_global_asm_807FDC90->unk2C != 0) {
-        func_global_asm_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 200.0f, 0, 0xFF, 0xC8, 0);
+        createLight(current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 200.0f, 0, 0xFF, 0xC8, 0);
         D_global_asm_807FDC90->unk2C -= 1;
         if (D_global_asm_807FDC90->unk2C == 0) {
             func_global_asm_8066EA90(current_actor_pointer, 1);
@@ -252,7 +252,7 @@ void func_global_asm_806B86AC(void) {
         func_global_asm_80690A28(0x51, 1, 0.3f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position, D_global_asm_807FDC94->z_position, 80.0f, current_actor_pointer);
     }
     if (D_global_asm_807FDC90->unk2C != 0) {
-        func_global_asm_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 200.0f, 0, 0xFF, 0xC8, 0);
+        createLight(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 200.0f, 0, 0xFF, 0xC8, 0);
         D_global_asm_807FDC90->unk2C -= 1;
     }
 }

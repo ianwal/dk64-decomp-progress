@@ -90,7 +90,7 @@ void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
                 func_global_asm_807149B8(1);
                 func_global_asm_80714998(2);
                 func_global_asm_80714950(-0x14 - ((func_global_asm_806119A0() / 10000U) % 50));
-                func_global_asm_807149C8(0xE1, 0x87, 0x38, 0xFF);
+                changeActorColor(0xE1, 0x87, 0x38, 0xFF);
                 func_global_asm_8071498C(&func_global_asm_80717D4C);
                 drawSpriteAtPosition(&D_global_asm_8071FF18, 0.5f, sp6C, sp68 + 2.0f, sp64);
             }
@@ -118,7 +118,7 @@ void func_global_asm_80642E34(s32 **arg0, s16 arg1, s16 arg2, s32 arg3) {
     }
     func_global_asm_806335B0(arg1, 1, 1, &sp5C, &sp58, &sp54);
     sp48 = ((func_global_asm_806119A0() / 10000U) % 200) + 0x37;
-    func_global_asm_8065A708(sp5C, sp58, sp54, 0.0f, 0.0f, 0.0f, var_f0 * 200.0, 0, 0, sp48, ((func_global_asm_806119A0() / 10000U) % 80) + 0xAF);
+    createLight(sp5C, sp58, sp54, 0.0f, 0.0f, 0.0f, var_f0 * 200.0, 0, 0, sp48, ((func_global_asm_806119A0() / 10000U) % 80) + 0xAF);
     if (++(*var_v1) == 0x14) {
         *var_v1 = 0;
     }
@@ -172,7 +172,7 @@ void func_global_asm_80643274(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
     if ((object_timer % (u32)arg3) == 0) {
         sp24 = ((func_global_asm_806119A0() / 10000U) % arg2) + 1;
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x64);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
         func_global_asm_80714950(-0x78);
         func_global_asm_8071498C(&func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
@@ -187,7 +187,7 @@ void func_global_asm_80643354(s32 arg0, u32 arg1, u32 arg2) {
 
     if ((object_timer % arg2) == 0) {
         sp24 = (func_global_asm_806119A0() / 10000U) % arg1;
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x64);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
         func_global_asm_80714950(-0x78);
         func_global_asm_8071498C(&func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
@@ -217,13 +217,13 @@ void func_global_asm_80643440(Struct80643440_arg0 *arg0, s32 arg1, s32 arg2, s32
     var_v1 = arg0->unk0;
     temp_f24 = D_global_asm_807F5FD4->unk0[1][0].unk4 + ((D_global_asm_807F5FD4->unk0[1][1].unk4 - D_global_asm_807F5FD4->unk0[1][0].unk4) * ((func_global_asm_80612794(var_v1->unk0) * 0.5) + 0.5));
     func_global_asm_80659610(1500);
-    func_global_asm_8065A708(D_global_asm_807F5FD4->unk0[1][0].unk0, temp_f24, D_global_asm_807F5FD4->unk0[1][0].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
+    createLight(D_global_asm_807F5FD4->unk0[1][0].unk0, temp_f24, D_global_asm_807F5FD4->unk0[1][0].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
     temp_f24 = D_global_asm_807F5FD4->unk0[1][2].unk4 + ((D_global_asm_807F5FD4->unk0[1][3].unk4 - D_global_asm_807F5FD4->unk0[1][2].unk4) * ((func_global_asm_80612794(var_v1->unk0 + 1300) * 0.5) + 0.5));
     func_global_asm_80659610(1500);
-    func_global_asm_8065A708(D_global_asm_807F5FD4->unk0[1][2].unk0, temp_f24, D_global_asm_807F5FD4->unk0[1][2].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
+    createLight(D_global_asm_807F5FD4->unk0[1][2].unk0, temp_f24, D_global_asm_807F5FD4->unk0[1][2].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
     temp_f24 = D_global_asm_807F5FD4->unk0[1][4].unk4 + ((D_global_asm_807F5FD4->unk0[1][5].unk4 - D_global_asm_807F5FD4->unk0[1][4].unk4) * ((func_global_asm_80612794(var_v1->unk0 + 2600) * 0.5) + 0.5));
     func_global_asm_80659610(1500);
-    func_global_asm_8065A708(D_global_asm_807F5FD4->unk0[1][4].unk0, temp_f24, D_global_asm_807F5FD4->unk0[1][4].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
+    createLight(D_global_asm_807F5FD4->unk0[1][4].unk0, temp_f24, D_global_asm_807F5FD4->unk0[1][4].unk8, 0.0f, 0.0f, 0.0f, 500.0f, 0, 0xFF, 0xFF, 0xFF);
     var_v1->unk0 += 0x32;
 }
 
@@ -342,13 +342,13 @@ void func_global_asm_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
         func_global_asm_8071498C(&func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x96);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
         func_global_asm_80714B84(&D_global_asm_8071FFA0, 1.0f, arg1, 1, 0);
         func_global_asm_80714950(-0x78);
         func_global_asm_8071498C(&func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x96);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
         func_global_asm_80714B84(&D_global_asm_8071FFA0, 1.0f, arg1, 2, 0);
     }
 }
@@ -382,13 +382,13 @@ void func_global_asm_80643C0C(Struct80643C0C *arg0, s32 arg1, s16 arg2, s32 arg3
     } else {
         var_f2 = 2.0 * temp_f20;
     }
-    func_global_asm_8065A708(D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224, 0.0f, 0.0f, 0.0f, 200.0f * var_f2, 0, 0xFF, (-80.0f * var_f2) + 255.0f, (-205.0f * var_f2) + 255.0f);
+    createLight(D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224, 0.0f, 0.0f, 0.0f, 200.0f * var_f2, 0, 0xFF, (-80.0f * var_f2) + 255.0f, (-205.0f * var_f2) + 255.0f);
     if (0.6 < temp_f20) {
         if ((object_timer % 6U) == 0) {
             func_global_asm_807149FC(2);
             func_global_asm_807149B8(1);
             func_global_asm_80714950(-0x190);
-            func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 1);
+            changeActorColor(0xFF, 0xFF, 0xFF, 1);
             func_global_asm_8071498C(&func_global_asm_80717CE8);
             drawSpriteAtPosition(&D_global_asm_807201D4, 1.2f, D_global_asm_807F621C, D_global_asm_807F6220 + 30.0, D_global_asm_807F6224);
         }
@@ -424,7 +424,7 @@ void func_global_asm_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
     func_global_asm_806335B0(arg1, 1, 1, &sp48, &sp40, &sp38);
     func_global_asm_806335B0(arg1, 1, 2, &sp4C, &sp44, &sp3C);
-    func_global_asm_8065A708(sp48, sp40, sp38, sp4C, sp44, sp3C, 0.0f, 1, D_global_asm_807480D0, D_global_asm_807480D4, D_global_asm_807480D8);
+    createLight(sp48, sp40, sp38, sp4C, sp44, sp3C, 0.0f, 1, D_global_asm_807480D0, D_global_asm_807480D4, D_global_asm_807480D8);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_806443E4.s")
@@ -471,7 +471,7 @@ void func_global_asm_80644D50(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_806335B0(arg1, 1, 1, &sp48, &sp40, &sp38);
     func_global_asm_806335B0(arg1, 1, 2, &sp4C, &sp44, &sp3C);
     func_global_asm_8065A660(D_global_asm_807480E0, D_global_asm_807480E4);
-    func_global_asm_8065A708(sp48, sp40, sp38, sp4C, sp44, sp3C, 0.0f, 1, D_global_asm_807480D0, D_global_asm_807480D4, D_global_asm_807480D8);
+    createLight(sp48, sp40, sp38, sp4C, sp44, sp3C, 0.0f, 1, D_global_asm_807480D0, D_global_asm_807480D4, D_global_asm_807480D8);
 }
 
 void func_global_asm_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
@@ -497,7 +497,7 @@ void func_global_asm_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_global_asm_80714998(2);
         func_global_asm_80714950(0x10064);
         func_global_asm_8071498C(&func_global_asm_8071AADC);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
         drawSpriteAtPosition(&D_global_asm_80720A7C, 1.2f, D_global_asm_807F5FD4->unk0[0][sp2C].unk0, D_global_asm_807F5FD4->unk0[0][sp2C].unk4, D_global_asm_807F5FD4->unk0[0][sp2C].unk8);
     }
     if (((func_global_asm_806119A0() / 10000U) % arg2) == 0) {
@@ -505,7 +505,7 @@ void func_global_asm_80644EC8(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
         func_global_asm_80714998(2);
         func_global_asm_80714950(0x10064);
         func_global_asm_8071498C(&func_global_asm_8071AADC);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
         drawSpriteAtPosition(&D_global_asm_80720A7C, 1.2f, D_global_asm_807F5FD4->unk0[1][sp2C].unk0, D_global_asm_807F5FD4->unk0[1][sp2C].unk4, D_global_asm_807F5FD4->unk0[1][sp2C].unk8);
     }
 }
@@ -527,7 +527,7 @@ void func_global_asm_806450C0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
             func_global_asm_8071498C(&func_global_asm_80718188);
             func_global_asm_807149FC(-1);
             func_global_asm_807149B8(1);
-            func_global_asm_807149C8(0xFF, 0xFF, 0xFF, D_global_asm_807480EF);
+            changeActorColor(0xFF, 0xFF, 0xFF, D_global_asm_807480EF);
             drawSpriteAtPosition(&D_global_asm_80720CD8, D_global_asm_807480E8, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk0, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk4, D_global_asm_807F5FD4->unk0[arg2][temp_hi].unk8);
         }
     }
@@ -595,7 +595,7 @@ void func_global_asm_80645238(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         }
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x64);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
         drawSpriteAtPosition(&D_global_asm_8071FFA0, (f32)((var_f4 - 25.0) / 50.0) + 3.5, D_global_asm_807F621C + (f32)(var_f8 - 75.0), D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + (f32)(var_f6 - 75.0));
     }
 }
@@ -609,7 +609,7 @@ void func_global_asm_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
         func_global_asm_80714998(2);
         func_global_asm_80714950(0x10064);
         func_global_asm_8071498C(&func_global_asm_8071AADC);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
         func_global_asm_807149B8(1);
         func_global_asm_80714B84(&D_global_asm_80720A7C, 0.5f, arg1, sp24 + 1, 0);
     }
@@ -695,11 +695,11 @@ void func_global_asm_80645C04(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80659610(2500);
     func_global_asm_80659600(9);
     func_global_asm_806595F0(2);
-    func_global_asm_8065A708(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 600.0f, 0, 0xFF, 0xFF, 0xFF);
+    createLight(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 600.0f, 0, 0xFF, 0xFF, 0xFF);
     func_global_asm_80659610(2500);
     func_global_asm_80659600(0xA);
     func_global_asm_806595F0(2);
-    func_global_asm_8065A708(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 600.0f, 0, 0xFF, 0xFF, 0xFF);
+    createLight(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 600.0f, 0, 0xFF, 0xFF, 0xFF);
 }
 
 typedef struct {
@@ -872,7 +872,7 @@ void func_global_asm_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
             func_global_asm_8071496C(i);
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_8071BB14);
-            func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x96);
+            changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
             drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, spB8, spB4, spB0);
         }
         return;
@@ -922,7 +922,7 @@ void func_global_asm_80647170(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
         var_v0 = 0xFF;
         var_v1 = 0xC8;
     }
-    func_global_asm_8065A708(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 80.0f, 0, 0xFF, var_v0, var_v1);
+    createLight(sp4C, sp48, sp44, 0.0f, 0.0f, 0.0f, 80.0f, 0, 0xFF, var_v0, var_v1);
 }
 
 void func_global_asm_80647218(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
@@ -955,7 +955,7 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_8071498C(&func_global_asm_80717D4C);
     func_global_asm_807149B8(1);
     func_global_asm_80714998(9);
-    func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x64);
+    changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
     func_global_asm_80714944(5);
     func_global_asm_806335B0(arg1, 1, sp34, &sp30, &sp2C, &sp28);
     drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.5f, sp30, sp2C - 70, sp28);
@@ -995,7 +995,7 @@ void func_global_asm_80647610(s32 **arg0, s32 arg1, s16 arg2, s16 arg3) {
     sp24 = temp_v0_2->unk8;
     func_global_asm_80714998(2);
     func_global_asm_807149B8(1);
-    func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xC8);
+    changeActorColor(0xFF, 0xFF, 0xFF, 0xC8);
     drawSpriteAtPosition(&D_global_asm_80720DE0, 1.0f, sp2C, sp28 + 0xA, sp24);
 }
 */
@@ -1019,7 +1019,7 @@ void func_global_asm_8064774C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
         func_global_asm_8071498C(&func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, D_global_asm_80748168.unk3);
+        changeActorColor(0xFF, 0xFF, 0xFF, D_global_asm_80748168.unk3);
         func_global_asm_80714B84(&D_global_asm_8071FFA0, D_global_asm_8074816C, arg1, i, 0);
     }
 }
@@ -1045,7 +1045,7 @@ void func_global_asm_80647834(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
         func_global_asm_8071498C(func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x78);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0x78);
         func_global_asm_80714B84(&D_global_asm_8071FFA0, 3.0f, arg1, i, 0);
     }
 }
@@ -1361,7 +1361,7 @@ void func_global_asm_8064911C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
         func_global_asm_8071498C(&func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
-        func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x96);
+        changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
         func_global_asm_80714B84(&D_global_asm_8071FFA0, 3.5f, arg1, i, 0);
     }
 }
@@ -2651,7 +2651,7 @@ s32 func_global_asm_8064ED68(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064EE08.s")
 
 void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
-    func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x80);
+    changeActorColor(0xFF, 0xFF, 0xFF, 0x80);
     func_global_asm_8071498C(&func_global_asm_8064EE08);
     func_global_asm_807149FC(-1);
     func_global_asm_807149B8(1);

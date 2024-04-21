@@ -324,7 +324,7 @@ void func_global_asm_806F10E8(Actor *arg0) {
         case 0xC4:
             func_global_asm_806F0C18(arg0);
             spawnActor(ACTOR_BONGOS, 0xA6);
-            func_global_asm_8067B238(last_spawned_actor, arg0, arg0->animation_state->scale[1] * 1.25);
+            moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[1] * 1.25);
             last_spawned_actor->x_rotation = arg0->x_rotation;
             last_spawned_actor->z_rotation = arg0->z_rotation;
             last_spawned_actor->object_properties_bitfield |= 0x40000000;

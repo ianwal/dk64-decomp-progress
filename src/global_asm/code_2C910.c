@@ -70,7 +70,7 @@ void func_global_asm_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
     s32 temp_a3;
 
     temp_a3 = arg0 & 0xFF;
-    temp_v0 = func_global_asm_8070E750(1, temp_a3, 1, temp_a3);
+    temp_v0 = getTextString(1, temp_a3, 1, temp_a3);
     var_s0 = temp_v0;
     if (strchr(temp_v0, ':') != 0) {
         temp_a3_2 = func_dk64_boot_80002C74(var_s0, ":") + 1;

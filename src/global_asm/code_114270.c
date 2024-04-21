@@ -679,7 +679,7 @@ void func_global_asm_8071338C(Gfx *dl) {
     void *temp_v0;
     f32 temp;
 
-    temp_v0 = func_global_asm_8070E750(0xC, 0, 1);
+    temp_v0 = getTextString(0xC, 0, 1);
     gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
     gSPMatrix(dl++, &D_807FDAC0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     temp = 20.0f;
@@ -696,7 +696,7 @@ void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     f32 temp_f16;
     s32 size;
 
-    sp30 = func_global_asm_8070E750(0xC, 1, 1);
+    sp30 = getTextString(0xC, 1, 1);
     size = strlen(sp30) + 2;
     sp28 = D_global_asm_80744490 * 0.5 * 2;
     temp_f16 = 418.0f;
@@ -727,7 +727,7 @@ void func_global_asm_80713764(Gfx *dl, u8 arg1, f32 arg2) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1);
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
     gDPSetTextureFilter(dl++, G_TF_POINT);
-    func_global_asm_8068C5A8(dl, 0x2C, 0, 2, 0xE0, 0x80, temp, temp2, 1.0f, 1.0f, 0, 0.0f);
+    displayImage(dl, 0x2C, 0, 2, 0xE0, 0x80, temp, temp2, 1.0f, 1.0f, 0, 0.0f);
 }
 
 // TODO: This might return a displaylist

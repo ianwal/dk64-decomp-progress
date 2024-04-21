@@ -88,7 +88,7 @@ Gfx *func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
     if (D_global_asm_80750AB8 == 1) {
         gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
         gDPSetPrimColor(dl++, 0, 0, 0x00, 0x78, 0xFF, 0x50);
-        dl = func_global_asm_8068C5A8(dl, 0x60, 4, 0, 0x40, 0x40, var_f2 * 4.0f, var_f12 * 4.0f, 3.7f, 2.0f, 0xB4, 0.0f);
+        dl = displayImage(dl, 0x60, 4, 0, 0x40, 0x40, var_f2 * 4.0f, var_f12 * 4.0f, 3.7f, 2.0f, 0xB4, 0.0f);
     }
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
@@ -341,7 +341,7 @@ s32 func_multiplayer_80025404(void) {
                 func_global_asm_807149B8(1);
                 func_global_asm_807149FC(-1);
                 func_global_asm_80714998(2);
-                func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x7F);
+                changeActorColor(0xFF, 0xFF, 0xFF, 0x7F);
                 func_global_asm_8071498C(&func_global_asm_8071F3C0);
                 PaaD->unk260 = func_global_asm_80714C08(&D_global_asm_807207BC, 0.5f, character_change_array[i].player_pointer, var_s6, 2);
                 D_global_asm_807FC950[i].unk2FA = temp_s3;

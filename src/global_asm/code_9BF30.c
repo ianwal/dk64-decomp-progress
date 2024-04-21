@@ -137,9 +137,9 @@ void func_global_asm_80697CEC(void) {
         func_global_asm_807149B8(1);
         func_global_asm_807149A8(0x7D0);
         if (aaD->unk13 == 1) {
-            func_global_asm_807149C8(0, 0xFF, 0, 0xC8);
+            changeActorColor(0, 0xFF, 0, 0xC8);
         } else {
-            func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0xFF);
+            changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
         }
         if (aaD->unk13 == 3) {
             func_global_asm_8071498C(&func_global_asm_8071F758);

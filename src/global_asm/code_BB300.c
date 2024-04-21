@@ -107,7 +107,7 @@ void func_global_asm_806B6C88(s16 arg0, s16 arg1) {
         playActorAnimation(last_spawned_actor, 0x237);
         last_spawned_actor->y_rotation = arg1;
         last_spawned_actor->unkEE = last_spawned_actor->y_rotation;
-        func_global_asm_8067B238(
+        moveAndScaleActorToAnother(
             last_spawned_actor, 
             current_actor_pointer, 
             current_actor_pointer->animation_state->scale_y

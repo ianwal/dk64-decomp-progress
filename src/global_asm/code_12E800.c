@@ -402,7 +402,7 @@ void func_global_asm_8072B608(void) {
         f32 temp = 100.0f;
         var_f2 = (50.0 + temp) - ((object_timer * 4) % 150U);
     }
-    func_global_asm_8065A708(
+    createLight(
         current_actor_pointer->x_position,
         current_actor_pointer->y_position + 10.0f,
         current_actor_pointer->z_position,

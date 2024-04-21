@@ -47,7 +47,6 @@ const f64 D_bonus_8002DD10 = 0.3;
 extern void* D_global_asm_8074E880[];
 
 void func_global_asm_80627948(Actor*, s32, s32, s32);
-u8 func_global_asm_8070E750(u8, s32, s32);
 Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *);
 Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
 int func_global_asm_80717404(); // TODO: Signature
@@ -178,7 +177,7 @@ void func_bonus_800261B8(void) {
 
 void func_bonus_800264E0(u8 arg0, u8 arg1) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
-    func_global_asm_8069D2AC(0x81, 0, 0x78, func_global_asm_8070E750(0x1A, arg1, 1), 0, 0x28, 8, 8);
+    func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, arg1, 1), 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
     playSong(0x28, 1.0f);
     setAction(0x44, NULL, 0);
@@ -190,7 +189,7 @@ void func_bonus_800264E0(u8 arg0, u8 arg1) {
 
 void func_bonus_800265C0(u8 arg0, u8 arg1) {
     current_actor_pointer->unk11C->control_state = 0;
-    func_global_asm_8069D2AC(0x81, 0, 0x78, func_global_asm_8070E750(0x1A, arg1, 1), 0, 0x28, 8, 8);
+    func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, arg1, 1), 0, 0x28, 8, 8);
     playSong(0x57, 1.0f);
     setAction(0x43, NULL, 0);
     current_actor_pointer->control_state++;

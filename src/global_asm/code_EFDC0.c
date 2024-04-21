@@ -418,7 +418,7 @@ void func_global_asm_806EC2CC(void) {
     current_player->object_properties_bitfield &= -2;
     extra_player_info_pointer->vehicle_actor_pointer = character_change_array[cc_player_index].unk2A0;
     vehicle = extra_player_info_pointer->vehicle_actor_pointer;
-    func_global_asm_8067B238(current_player, vehicle, vehicle->animation_state->scale_x);
+    moveAndScaleActorToAnother(current_player, vehicle, vehicle->animation_state->scale_x);
     current_player->noclip_byte = 1;
     func_global_asm_80613C48(current_player, 0x22A, 0, 0);
 }
@@ -1158,7 +1158,7 @@ void func_global_asm_806EFA3C(void) {
     if (current_player->unk58 == ACTOR_DK) {
         scale *= 1.25;
     }
-    func_global_asm_8067B238(last_spawned_actor, current_player, scale);
+    moveAndScaleActorToAnother(last_spawned_actor, current_player, scale);
     playActorAnimation(last_spawned_actor, sp24.unk0[current_character_index[extra_player_info_pointer->unk1A4]]);
     last_spawned_actor->object_properties_bitfield |= 0x40000000;
     playAnimation(current_player, 0x88);

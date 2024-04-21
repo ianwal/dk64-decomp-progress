@@ -210,6 +210,11 @@ __osViIntrCount = 0x80014FEC; // segment:dk64_boot
 __osTimerCounter = 0x80014FF0; // segment:dk64_boot
 __osEepPifRam = 0x800162E0; // segment:dk64_boot
 
+moveAndScaleActorToAnother = 0x8067B238; // segment:global_asm
+getTextString = 0x8070E750; // segment:global_asm
+createLight = 0x8065A708; // segment:global_asm
+displayImage = 0x8068C5A8; // segment:global_asm
+changeActorColor = 0x807149C8; // segment:global_asm
 loadText = 0x8070D8C0; // segment:global_asm
 addActorToTextOverlayRenderArray = 0x8068C350; // segment:global_asm
 initializeCharacterSpawnerActor = 0x80729B00; // segment:global_asm

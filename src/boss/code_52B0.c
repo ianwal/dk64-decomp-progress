@@ -49,7 +49,7 @@ void func_boss_800293C0(void) {
     rand();
     func_global_asm_807149B8(1);
     func_global_asm_80714998(3);
-    func_global_asm_807149C8(0x78, 0x78, 0x78, 0xC8);
+    changeActorColor(0x78, 0x78, 0x78, 0xC8);
     func_global_asm_8068588C(current_actor_pointer, (((rand() >> 0xF) % 32767) % 16) + 3, 2.0f, 0.0f, 0.0f, 0.0f, -0x96);
 }
 

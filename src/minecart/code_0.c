@@ -12,13 +12,12 @@ extern s16 D_global_asm_807502D0;
 extern f32 D_global_asm_807502F8;
 extern s16 D_global_asm_80750338;
 
-s32 func_global_asm_8070E750(s32, s32, s32);
 void func_global_asm_8065A660(f32, f32);
 void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3);
 
 void func_minecart_80024000(u8 arg0, u8 arg1) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
-    func_global_asm_8069D2AC(0x81, 0, 0x78, func_global_asm_8070E750(0x1A, arg1, 1), 0, 0x28, 8, 8);
+    func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, arg1, 1), 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
     playSong(0x28, 1.0f);
     setAction(0x44, NULL, 0);
@@ -29,7 +28,7 @@ void func_minecart_80024000(u8 arg0, u8 arg1) {
 }
 
 void func_minecart_800240DC(u8 arg0, u8 arg1) {
-    s32 temp = func_global_asm_8070E750(0x1A, arg1, 1);
+    char *temp = getTextString(0x1A, arg1, 1);
     func_global_asm_8069D2AC(0x81, 0, 0x78, temp, 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
     playSong(0x2A, 1.0f);
@@ -222,7 +221,7 @@ void func_minecart_80024768(void) {
     }
     func_global_asm_8065A6F8(0xC8);
     func_global_asm_8065A660(20.0f, 40.0f);
-    func_global_asm_8065A708(sp38, sp3C, sp40, sp44, sp48, sp4C, 0.0f, 1, 0xFF, 0xFF, 0xFF);
+    createLight(sp38, sp3C, sp40, sp44, sp48, sp4C, 0.0f, 1, 0xFF, 0xFF, 0xFF);
 }
 
 typedef struct {

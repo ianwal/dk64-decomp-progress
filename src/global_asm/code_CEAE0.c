@@ -1950,7 +1950,7 @@ void func_global_asm_806D0A84(void) {
             if (sp30->animation_state->unk64 != temp_a3->unkC) {
                 playActorAnimation(current_actor_pointer, temp_a3->unk2);
             } else {
-                func_global_asm_8067B238(current_actor_pointer, sp30, current_actor_pointer->animation_state->scale_x);
+                moveAndScaleActorToAnother(current_actor_pointer, sp30, current_actor_pointer->animation_state->scale_x);
                 current_actor_pointer->y_position += temp_a3->unk10;
             }
             break;

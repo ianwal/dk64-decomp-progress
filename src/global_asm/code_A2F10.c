@@ -276,7 +276,7 @@ void func_global_asm_8069E774(void) {
         }
     }
     func_global_asm_806595F0(1);
-    func_global_asm_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 0, 0, current_actor_pointer->animation_state->scale_x * sp8E * var_t0->unk0, 0, var_t0->unk10, var_t0->unk11, var_t0->unk12);
+    createLight(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 0, 0, current_actor_pointer->animation_state->scale_x * sp8E * var_t0->unk0, 0, var_t0->unk10, var_t0->unk11, var_t0->unk12);
     if (current_map != MAP_DK_RAP) {
         if ((!sp7F) || (current_actor_pointer->unk15F != 0)) {
             s32 max;
@@ -365,7 +365,7 @@ void func_global_asm_8069F020(void) {
             // TODO: Hmm
         }
         // TODO: Missing args here
-        func_global_asm_8065A708(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 0, 0, 300.0f, 0, 0, 0, current_actor_pointer->unk16C * var_f0);
+        createLight(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 0, 0, 300.0f, 0, 0, 0, current_actor_pointer->unk16C * var_f0);
         current_actor_pointer->animation_state->scale_x *= current_actor_pointer->unk160;
         current_actor_pointer->animation_state->scale_z *= current_actor_pointer->unk160;
     }
@@ -396,7 +396,7 @@ void func_global_asm_8069F020(void) {
                         func_global_asm_80613C48(last_spawned_actor, 0x4F9, 0.0f, 0.0f);
                         func_global_asm_80614D00(last_spawned_actor, current_actor_pointer->animation_state->unk48, 0);
                     }
-                    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
+                    moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, current_actor_pointer->animation_state->scale_y);
                     last_spawned_actor->unkF0 = current_actor_pointer->unkF0;
                     last_spawned_actor->animation_state->scale_x = current_actor_pointer->animation_state->scale_x + D_global_asm_8075A4C8;
                     last_spawned_actor->animation_state->scale_z = current_actor_pointer->animation_state->scale_z + D_global_asm_8075A4C8;
@@ -459,7 +459,7 @@ void func_global_asm_8069F904(Gfx *dl, Actor *arg1) {
     gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gDPPipeSync(dl++);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->y_rotation);
-    func_global_asm_8068C5A8(dl, (arg1->unk15F + 0x61), 0, 2, 0x28, 0x33, arg1->x_position, arg1->y_position, temp_f0, temp_f0, 0, 0.0f);
+    displayImage(dl, (arg1->unk15F + 0x61), 0, 2, 0x28, 0x33, arg1->x_position, arg1->y_position, temp_f0, temp_f0, 0, 0.0f);
 }
 
 // Jumptable, displaylist stuff, doable
@@ -604,7 +604,7 @@ void func_global_asm_806A0330(void) {
             func_global_asm_8071496C(i);
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_8071BB14);
-            func_global_asm_807149C8(0xFF, 0xFF, 0xFF, 0x96);
+            changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
             drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, sp68, sp64, sp60);
         }
         deleteActor(current_actor_pointer);

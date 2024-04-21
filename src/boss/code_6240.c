@@ -142,7 +142,7 @@ void func_boss_8002A41C(u8 arg0) {
 void func_boss_8002A55C(u8 arg0, f32 arg1) {
     if (!(arg0 & object_timer)) {
         func_global_asm_807149B8(1);
-        func_global_asm_807149C8(0xFF, 0xD7, 0x58, 0xFF);
+        changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
         func_global_asm_80714C08(&D_global_asm_80720120, arg1, current_actor_pointer, 1, 0);
     }
 }
@@ -160,7 +160,7 @@ void func_boss_8002A5CC(void) {
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(&func_global_asm_8071EDEC);
     func_global_asm_80714950(current_actor_pointer);
-    func_global_asm_807149C8(0xFF, 0xD7, 0x58, 0xFF);
+    changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
     drawSpriteAtPosition(&D_global_asm_80720120, 1.5f, sp6C, sp68, sp64);
     for (i = 0; i < 4; i++) {
         func_global_asm_80714998(2);

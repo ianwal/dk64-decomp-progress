@@ -145,7 +145,7 @@ void func_global_asm_8068ECF4(s32 arg0, u8 arg1) {
             if (temp_v0 != NULL) {
                 var_f0 *= temp_v0->scale_y;
             }
-            func_global_asm_807149C8(0xFF, 0xFF, 0xFF, temp_t4);
+            changeActorColor(0xFF, 0xFF, 0xFF, temp_t4);
             func_global_asm_80714C08(&D_global_asm_80720054, var_f0, current_actor_pointer, arg0, 2);
         }
     }
@@ -209,7 +209,7 @@ void func_global_asm_80690094(Actor *arg0, Actor *player) {
     func_global_asm_80688370(arg0, 0, 1.0f);
     func_global_asm_8068842C(arg0, 0, -1);
     func_global_asm_80690058(arg0, 2);
-    func_global_asm_8067B238(arg0, player, 0.15f);
+    moveAndScaleActorToAnother(arg0, player, 0.15f);
 }
 
 typedef struct {
@@ -322,7 +322,7 @@ void func_global_asm_80690500(void) {
     }
     if (func_global_asm_8061CB50() == 0 || (func_global_asm_8061CB50() != 0 && player_pointer->unk6A & 0x100)) {
         func_global_asm_80671C0C(current_actor_pointer, 1, &sp44, &sp40, &sp3C);
-        func_global_asm_8065A708(sp44, sp40, sp3C, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xFF, 0xFF, 0xFF);
+        createLight(sp44, sp40, sp3C, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xFF, 0xFF, 0xFF);
         if (isFlagSet(0x6B, FLAG_TYPE_TEMPORARY) == 0) {
             if (func_global_asm_8061CB50() != 0) {
                 if (player_pointer->unk6A & 0x100) {
@@ -438,7 +438,7 @@ void func_global_asm_806915B0(void) {
         randomY = ((((func_global_asm_806119A0()) / 10000U) % 200) / 5.0) - 20.0;
         randomZ = ((((func_global_asm_806119A0()) / 10000U) % 200) / 5.0) - 20.0;
         func_global_asm_807149B8(1);
-        func_global_asm_807149C8(0x8C, 0x8C, 0x8C, 0x64);
+        changeActorColor(0x8C, 0x8C, 0x8C, 0x64);
         func_global_asm_80714950(i * -0x14);
         func_global_asm_80714998(3);
         func_global_asm_8071498C(func_global_asm_80717D4C);
@@ -456,7 +456,7 @@ void func_global_asm_80661520(f32, f32, f32, f32, f32, f32);
 
 void func_global_asm_80691830(s16 modelIndex, f32 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {
     spawnActor(ACTOR_BOSS_SHOCKWAVE, modelIndex);
-    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, arg1);
+    moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, arg1);
     last_spawned_actor->unkF0 = modelIndex;
     last_spawned_actor->unk16A = arg2;
     last_spawned_actor->unk16B = arg3;
@@ -485,7 +485,7 @@ void func_global_asm_80691930(u8 arg0, u8 arg1, f32 arg2, f32 arg3, u8 arg4, u8 
     TempAAD2 *temp_v0;
 
     spawnActor(ACTOR_BOSS_DOGADON_SHOCKWAVE, 0);
-    func_global_asm_8067B238(last_spawned_actor, current_actor_pointer, 0.15f);
+    moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, 0.15f);
     temp_v0 = last_spawned_actor->additional_actor_data;
     temp_v0->unk11 = arg0;
     temp_v0->unk8 = arg2;
@@ -527,11 +527,11 @@ void func_global_asm_806921DC(u8 arg0) {
         func_global_asm_807149A8(2000);
         switch (arg0) {
             case 0:
-                func_global_asm_807149C8(0xFF, 0xD7, 0x58, 0xFF);
+                changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
                 func_global_asm_80714C08(&D_global_asm_80720120, current_actor_pointer->unk124->unkC, current_actor_pointer, 1, 2);
                 break;
             case 1:
-                func_global_asm_807149C8(0xC8, 0xC8, 0xFA, 0x9B);
+                changeActorColor(0xC8, 0xC8, 0xFA, 0x9B);
                 func_global_asm_80714C08(&D_global_asm_80720BE8, current_actor_pointer->unk124->unkC, current_actor_pointer, 1, 2);
                 break;
         }
