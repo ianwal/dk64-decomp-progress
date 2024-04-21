@@ -812,7 +812,7 @@ u8 func_global_asm_8072E22C(u16 arg0) {
 
 void func_global_asm_8072E2B0(Actor *arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
     if (arg0->unkCC) {
-        func_global_asm_80671C0C(arg0, arg0->unkCC, arg1, arg2, arg3);
+        getBonePosition(arg0, arg0->unkCC, arg1, arg2, arg3);
     } else {
         *arg1 = arg0->x_position;
         *arg2 = arg0->y_position;

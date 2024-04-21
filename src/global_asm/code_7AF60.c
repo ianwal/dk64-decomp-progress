@@ -56,7 +56,7 @@ u8 func_global_asm_806765E8(Actor *arg0, Actor *arg1, s32 arg2) {
     f32 position[3];
 
     if (arg0->unkCC) {
-        func_global_asm_80671C0C(arg0, arg0->unkCC, &position[2], &position[1], &position[0]);
+        getBonePosition(arg0, arg0->unkCC, &position[2], &position[1], &position[0]);
     } else {
         position[2] = arg0->x_position;
         position[1] = arg0->y_position;

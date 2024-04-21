@@ -338,8 +338,8 @@ f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, Globa
     temp_t1 = arg2->unk34[arg3].unk1;
     switch (arg2->unk4) {
         case 0:
-            func_global_asm_80671C0C(arg2->unk0, temp_t0, &sp6C, &sp70, &sp74);
-            func_global_asm_80671C0C(arg2->unk0, temp_t1, &sp78, &sp7C, &sp80);
+            getBonePosition(arg2->unk0, temp_t0, &sp6C, &sp70, &sp74);
+            getBonePosition(arg2->unk0, temp_t1, &sp78, &sp7C, &sp80);
             break;
         case 1:
         case 2:
@@ -347,7 +347,7 @@ f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, Globa
             func_global_asm_806335B0(arg2->unk0, 1, temp_t1, &sp78, &sp7C, &sp80);
             break;
     }
-    func_global_asm_80671C0C(arg0, 1, &sp58, &sp54, &sp50);
+    getBonePosition(arg0, 1, &sp58, &sp54, &sp50);
     func_global_asm_8061F2B8(sp58, sp54, sp50, sp6C, sp70, sp74, sp78, sp7C, sp80, &sp68, &sp64, &sp60);
     var_f2 = (sp64 - sp70) / (sp7C - sp70);
     if (arg2->unk18 == 2 || arg2->unk18 == 3) {
@@ -418,10 +418,10 @@ void func_global_asm_80730AEC(u8 arg0, f32 arg1, GlobalASMStruct82 *arg2, f32 *a
             func_global_asm_806335B0(arg2->unk0, 1, sp7C[3], &sp4C[3][0], &sp4C[3][1], &sp4C[3][2]);
             break;
         case 0:
-            func_global_asm_80671C0C(arg2->unk0, sp7C[0], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
-            func_global_asm_80671C0C(arg2->unk0, sp7C[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
-            func_global_asm_80671C0C(arg2->unk0, sp7C[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
-            func_global_asm_80671C0C(arg2->unk0, sp7C[2], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            getBonePosition(arg2->unk0, sp7C[0], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            getBonePosition(arg2->unk0, sp7C[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            getBonePosition(arg2->unk0, sp7C[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            getBonePosition(arg2->unk0, sp7C[2], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
             break;
     }
     *arg3 = func_global_asm_80627A00(arg1, sp4C[0][0], sp4C[1][0], sp4C[2][0], sp4C[3][0]);

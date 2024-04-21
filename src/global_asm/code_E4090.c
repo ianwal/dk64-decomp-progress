@@ -984,8 +984,8 @@ u8 func_global_asm_806E2B20(Actor *arg0) {
 
     phi_v1 = 0;
     phi_f20 = 0;
-    func_global_asm_80671C0C(arg0, 4, &sp78, &sp70, &sp68);
-    func_global_asm_80671C0C(arg0, 10, &sp7C, &sp74, &sp6C);
+    getBonePosition(arg0, 4, &sp78, &sp70, &sp68);
+    getBonePosition(arg0, 10, &sp7C, &sp74, &sp6C);
     while (phi_f20 <= 1.0 && !phi_v1) {
         phi_v1 = func_global_asm_80671E00(
             sp78 + ((sp7C - sp78) * phi_f20),

@@ -153,7 +153,7 @@ void func_boss_8002A5CC(void) {
     f32 sp64;
     s16 i;
 
-    func_global_asm_80671C0C(current_actor_pointer, 1, &sp6C, &sp68, &sp64);
+    getBonePosition(current_actor_pointer, 1, &sp6C, &sp68, &sp64);
     sp6C += ((rand() >> 0xF) % 80) - 40;
     sp68 += ((rand() >> 0xF) % 100) + 50;
     sp64 += ((rand() >> 0xF) % 80) - 40;

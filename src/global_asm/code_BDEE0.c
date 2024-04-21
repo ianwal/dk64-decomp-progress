@@ -50,7 +50,7 @@ s32 func_global_asm_806B9EB4(u8 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
     f32 sp2C;
 
     if (D_global_asm_80750628[arg0]) {
-        func_global_asm_80671C0C(D_global_asm_807FDCA0->unk1C, D_global_asm_80750628[arg0], &sp3C, &sp38, &sp34);
+        getBonePosition(D_global_asm_807FDCA0->unk1C, D_global_asm_80750628[arg0], &sp3C, &sp38, &sp34);
         func_global_asm_80611A70(arg2, arg4, &sp3C, &sp34);
         sp2C = func_global_asm_80611BB4(sp3C - arg2, sp34 - arg4);
         guTranslateF(&sp80, 0.0f, -arg1, 0.0f);
@@ -159,7 +159,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
             }
         }
         D_global_asm_807FDCA0->unk20++;
-        func_global_asm_80671C0C(temp_s0, temp_t5, &sp4C, &sp48, &sp44);
+        getBonePosition(temp_s0, temp_t5, &sp4C, &sp48, &sp44);
         if (D_global_asm_807FDC90->unk1A & 0x80) {
             if (!(D_global_asm_807FDC90->unk1C & 0x80)) {
                 current_actor_pointer->y_velocity = 300.0f;

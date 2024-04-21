@@ -11,7 +11,7 @@ extern s32 D_global_asm_8071FFA0;
 void func_global_asm_806B11C0(u8 arg0) {
     f32 sp3C, sp38, sp34;
 
-    func_global_asm_80671C0C(current_actor_pointer, arg0, &sp3C, &sp38, &sp34);
+    getBonePosition(current_actor_pointer, arg0, &sp3C, &sp38, &sp34);
     func_global_asm_80685B44(&D_global_asm_8071FFA0, 0, 1.0f, 3, 5, 0x28, sp3C, current_actor_pointer->floor, sp34);
     // spawnShockwave
     func_global_asm_806846B4(sp3C, current_actor_pointer->floor, sp34, 0.05f, 0.04, current_actor_pointer, 0);

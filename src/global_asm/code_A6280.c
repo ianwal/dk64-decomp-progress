@@ -255,7 +255,7 @@ void func_global_asm_806A1FD8(void) {
                 func_global_asm_8071498C(&func_global_asm_80717D4C);
                 func_global_asm_80714950(-0x64);
                 changeActorColor(0x64, 0x46, 0x1E, 0xFF);
-                func_global_asm_80671C0C(current_actor_pointer, i, &sp54, &sp50, &sp4C);
+                getBonePosition(current_actor_pointer, i, &sp54, &sp50, &sp4C);
                 drawSpriteAtPosition(&D_global_asm_8071FF18, 2.0f, sp54, sp50 + 10.0, sp4C);
             }
             aaD->unk0 = 0xF;

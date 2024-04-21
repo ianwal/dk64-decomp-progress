@@ -128,7 +128,7 @@ int gameIsInQuitGameMode(void);
 s32 countSetFlags(s32 startIndex, s32 length, u8 flagType);
 
 // TODO: Not 100% on return type
-u8 func_global_asm_80671C0C(Actor*, s32, f32*, f32*, f32*);
+u8 getBonePosition(Actor *actor, s32 boneIndex, f32 *x, f32 *y, f32 *z);
 
 // TODO: Why can't this signature live here, causes some problems for arcade when uncommented
 // void func_global_asm_8060C648(u8 arg0, u32 arg1, u8 arg2, u32 arg3, s32 arg4);

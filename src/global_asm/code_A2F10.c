@@ -425,7 +425,7 @@ void func_global_asm_8069F020(void) {
     if ((current_actor_pointer->unkF0 != 0x6A) && !(D_global_asm_807FBB68 & 2)) {
         if ((current_actor_pointer->object_properties_bitfield & 4) && (current_actor_pointer->object_properties_bitfield & 0x10)) {
             sp50 = current_actor_pointer->y_position;
-            func_global_asm_80671C0C(current_actor_pointer, 1, &sp5C, &sp58, &sp54);
+            getBonePosition(current_actor_pointer, 1, &sp5C, &sp58, &sp54);
             sp58 += 50.0f;
             if (func_global_asm_80667110(sp5C, sp54, &sp58) != 0) {
                 if (sp58 < sp50) {
@@ -600,7 +600,7 @@ void func_global_asm_806A0330(void) {
         func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xF, 0xF);
         playSoundAtActorPosition(current_actor_pointer, 0x162, 0xE1, 0x3C, 1);
         for (i = 1; i < 7; i++) {
-            func_global_asm_80671C0C(current_actor_pointer, i, &sp68, &sp64, &sp60);
+            getBonePosition(current_actor_pointer, i, &sp68, &sp64, &sp60);
             func_global_asm_8071496C(i);
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_8071BB14);

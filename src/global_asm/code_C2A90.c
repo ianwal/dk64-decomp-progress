@@ -387,7 +387,7 @@ void func_global_asm_806C10A0(u8 textIndex, u16 fileIndex, s16 animationIndex) {
                         func_global_asm_80613C48(current_actor_pointer, 0xE4, 0.0f, 2.0f);
                         spawnActor(ACTOR_UNKNOWN_225, 0x98);
                         moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, 0.21f);
-                        func_global_asm_80671C0C(current_actor_pointer, 1, &last_spawned_actor->x_position, &sp34, &last_spawned_actor->z_position);
+                        getBonePosition(current_actor_pointer, 1, &last_spawned_actor->x_position, &sp34, &last_spawned_actor->z_position);
                         playActorAnimation(last_spawned_actor, 0x298);
                         last_spawned_actor->unk11C = current_actor_pointer;
                         current_actor_pointer->control_state_progress++;
@@ -911,7 +911,7 @@ void func_global_asm_806C28B8(void) {
         if ((object_timer % 6U) == 0) {
             temp_f20 = MIN(1, phi_f2 / 70.0) * 0.3;
             for (i = 1; i < 5; i++) {
-                func_global_asm_80671C0C(current_actor_pointer, i, &sp78, &sp74, &sp70);
+                getBonePosition(current_actor_pointer, i, &sp78, &sp74, &sp70);
                 phi_f0 = MAX(0.15, temp_f20);
                 func_global_asm_806852C4(phi_f0, sp78, sp74 + 3.0f, sp70);
             }
@@ -950,11 +950,11 @@ void func_global_asm_806C2B2C(s32 arg0, s32 arg1, u8 arg2, s32 arg3) {
         for (i = 0; i < 3.0; i++) {
             temp_s0 = &D_global_asm_80747B00[arg2];
             temp_f20 = i / 3.0;
-            func_global_asm_80671C0C(current_actor_pointer, arg0, &spA8, &spA4, &spA0);
+            getBonePosition(current_actor_pointer, arg0, &spA8, &spA4, &spA0);
             if (arg0 < arg1) {
-                func_global_asm_80671C0C(current_actor_pointer, arg0 + 1, &sp9C, &sp98, &sp94);
+                getBonePosition(current_actor_pointer, arg0 + 1, &sp9C, &sp98, &sp94);
             } else {
-                func_global_asm_80671C0C(current_actor_pointer, arg0, &sp9C, &sp98, &sp94);
+                getBonePosition(current_actor_pointer, arg0, &sp9C, &sp98, &sp94);
             }
             func_global_asm_806C2A64(spA0, temp_s0->unk0, temp_s0->unk1, temp_s0->unk2, ((sp9C - spA8) * temp_f20) + spA8, ((sp98 - spA4) * temp_f20) + spA4, ((sp94 - spA0) * temp_f20) + spA0, arg3);
         }

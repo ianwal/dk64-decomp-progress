@@ -168,7 +168,7 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
             current_actor_pointer->control_state++;
             break;
         case 2:
-            func_global_asm_80671C0C(current_actor_pointer, 9, &aaD->unk4->x_position, &aaD->unk4->y_position, &aaD->unk4->z_position);
+            getBonePosition(current_actor_pointer, 9, &aaD->unk4->x_position, &aaD->unk4->y_position, &aaD->unk4->z_position);
             current_actor_pointer->control_state++;
             if (current_actor_pointer->unk168 == 0) {
                 if (current_map != MAP_JAPES_MINECART) {
@@ -198,7 +198,7 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
             func_global_asm_8068ECF4(6, 0xFF);
             func_minecart_80024254(aaD);
             func_minecart_800253C0(aaD, arg2, arg3);
-            func_global_asm_80671C0C(current_actor_pointer, 5, &sp58, &sp5C, &sp60);
+            getBonePosition(current_actor_pointer, 5, &sp58, &sp5C, &sp60);
             func_global_asm_8072177C(current_actor_pointer, sp58, sp5C, sp60, 0xFF, 0xFF, 0xFF, 0xFF, 0);
             func_global_asm_8072177C(aaD->unk4, sp58, sp5C, sp60, 0xFF, 0xFF, 0xFF, 0xFF, 0);
     }
@@ -213,11 +213,11 @@ void func_minecart_80024768(void) {
     f32 sp38;
 
     if (extra_player_info_pointer->unk1F0 & 0x10000002) {
-        func_global_asm_80671C0C(current_actor_pointer, 2, &sp38, &sp3C, &sp40);
-        func_global_asm_80671C0C(current_actor_pointer, 1, &sp44, &sp48, &sp4C);
+        getBonePosition(current_actor_pointer, 2, &sp38, &sp3C, &sp40);
+        getBonePosition(current_actor_pointer, 1, &sp44, &sp48, &sp4C);
     } else {
-        func_global_asm_80671C0C(current_actor_pointer, 1, &sp38, &sp3C, &sp40);
-        func_global_asm_80671C0C(current_actor_pointer, 2, &sp44, &sp48, &sp4C);
+        getBonePosition(current_actor_pointer, 1, &sp38, &sp3C, &sp40);
+        getBonePosition(current_actor_pointer, 2, &sp44, &sp48, &sp4C);
     }
     func_global_asm_8065A6F8(0xC8);
     func_global_asm_8065A660(20.0f, 40.0f);
@@ -290,7 +290,7 @@ void func_minecart_80024914(void) {
     }
     if (current_actor_pointer->control_state != 0) {
         temp_v0_2 = temp_s0->unk4;
-        func_global_asm_80671C0C(current_actor_pointer, 9, &temp_v0_2->x_position, &temp_v0_2->y_position, &temp_v0_2->z_position);
+        getBonePosition(current_actor_pointer, 9, &temp_v0_2->x_position, &temp_v0_2->y_position, &temp_v0_2->z_position);
     }
 }
 
@@ -375,7 +375,7 @@ void func_minecart_80024FD0(void) {
                 break;
             }
             func_minecart_80024E78(aaD, &D_minecart_80028C20, 0x10, 0x13);
-            func_global_asm_80671C0C(current_actor_pointer, 9, &aaD->unk4->x_position, &aaD->unk4->y_position, &aaD->unk4->z_position);
+            getBonePosition(current_actor_pointer, 9, &aaD->unk4->x_position, &aaD->unk4->y_position, &aaD->unk4->z_position);
             break;
         case 4:
             current_actor_pointer->control_state = 3;

@@ -1182,34 +1182,34 @@ void func_global_asm_80671A6C(Struct80671A6C *arg0, u8 arg1) {
 }
 */
 
-u8 func_global_asm_80671C0C(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
+u8 getBonePosition(Actor *actor, s32 boneIndex, f32 *x, f32 *y, f32 *z) {
     s32 var_v0_2;
     LedgeInfo90 *current;
     u8 var_v0;
     LedgeInfo *temp_t7;
     f32 temp = 8.f;
 
-    temp_t7 = arg0->ledge_info_pointer;
+    temp_t7 = actor->ledge_info_pointer;
     var_v0 = 0;
     if (temp_t7 != NULL) {
         func_global_asm_80671A6C(temp_t7, 1);
-        current = arg0->ledge_info_pointer->unk90;
-        var_v0_2 = arg1 - 1;
+        current = actor->ledge_info_pointer->unk90;
+        var_v0_2 = boneIndex - 1;
         while ((current != NULL) && (var_v0_2 != 0)) {
             current = current->next;
             var_v0_2 -= 1;
         }
         if (current == NULL) {
-            *arg4 = 0.0f;
-            *arg3 = 0.0f;
-            *arg2 = 0.0f;
+            *z = 0.0f;
+            *y = 0.0f;
+            *x = 0.0f;
             return 0;
         }
         var_v0 = 1;
         
-        *arg2 = current->unkC / temp;
-        *arg3 = current->unk10 / temp;
-        *arg4 = current->unk14 / temp;
+        *x = current->unkC / temp;
+        *y = current->unk10 / temp;
+        *z = current->unk14 / temp;
         return var_v0;
     }
     return var_v0;

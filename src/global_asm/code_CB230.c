@@ -55,7 +55,7 @@ void func_global_asm_806C6530(void) {
     switch (current_actor_pointer->unk58) {
         case ACTOR_SPOTLIGHT_FISH:
             if (current_actor_pointer->object_properties_bitfield & 0x100) {
-                func_global_asm_80671C0C(current_actor_pointer, 1, &sp64, &sp68, &sp6C);
+                getBonePosition(current_actor_pointer, 1, &sp64, &sp68, &sp6C);
             } else {
                 sp64 = current_actor_pointer->x_position;
                 sp68 = current_actor_pointer->y_position;
@@ -64,7 +64,7 @@ void func_global_asm_806C6530(void) {
             if ((40000.0f < (((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position))
                 + ((current_actor_pointer->y_position - player_pointer->y_position) * (current_actor_pointer->y_position - player_pointer->y_position))
                 + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position)))) && (current_actor_pointer->object_properties_bitfield & 0x100)) {
-                func_global_asm_80671C0C(current_actor_pointer, 2, &sp70, &sp74, &sp78);
+                getBonePosition(current_actor_pointer, 2, &sp70, &sp74, &sp78);
             } else {
                 sp70 = player_pointer->x_position;
                 sp74 = player_pointer->y_position;
@@ -178,7 +178,7 @@ void func_global_asm_806C6BC8(void) {
         case 0:
             if (D_global_asm_807FDC90->unk2C != 0) {
                 sp54 = ((f32)D_global_asm_807FDC90->unk2C / D_global_asm_807FDC90->unk2E);
-                func_global_asm_80671C0C(current_actor_pointer, 2, &sp50, &sp4C, &sp48);
+                getBonePosition(current_actor_pointer, 2, &sp50, &sp4C, &sp48);
                 func_global_asm_807248B0(player_pointer, (sp54 * 0.13) + 0.02);
                 player_pointer->x_position += ((sp50 - player_pointer->x_position) * 0.05);
                 player_pointer->y_position += ((sp4C - player_pointer->y_position) * 0.05);

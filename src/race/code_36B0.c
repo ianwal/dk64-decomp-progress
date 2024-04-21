@@ -322,9 +322,9 @@ void func_race_80029054(void) {
         func_global_asm_8067E278(0, 1);
         current_actor_pointer->control_state = 0x40;
     }
-    func_global_asm_80671C0C(current_actor_pointer, 6, &sp3C, &sp40, &sp44);
+    getBonePosition(current_actor_pointer, 6, &sp3C, &sp40, &sp44);
     func_global_asm_8072177C(current_actor_pointer, sp3C, sp40, sp44, 0xFF, 0xFF, 0xFF, 0xFF, 0);
-    func_global_asm_80671C0C(current_actor_pointer, 0xB, &sp3C, &sp40, &sp44);
+    getBonePosition(current_actor_pointer, 0xB, &sp3C, &sp40, &sp44);
     func_global_asm_8072177C(current_actor_pointer, sp3C, sp40, sp44, 0xFF, 0xFF, 0xFF, 0xFF, 0);
     func_race_80026354(a17C, a178, 1);
     if (a178->unk34 == 0 && sp48->unk34 == 5) {

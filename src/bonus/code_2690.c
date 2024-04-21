@@ -573,7 +573,7 @@ void func_bonus_80028E3C(void) {
         }
     }
     if (aaD->unk4 == 0) {
-        func_global_asm_80671C0C(aaD->unk0, 1, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+        getBonePosition(aaD->unk0, 1, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
     } else {
         if (current_actor_pointer->unk6A & 1) {
             if (!(current_actor_pointer->unk6C & 1)) {

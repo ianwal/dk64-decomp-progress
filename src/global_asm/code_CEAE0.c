@@ -1278,8 +1278,8 @@ void func_global_asm_806CEED8(void) {
     s32 sp20; // 20
 
     func_global_asm_806CF2EC(&sp24, &sp20);
-    func_global_asm_80671C0C(current_actor_pointer, sp24, &sp40, &sp38, &sp30);
-    func_global_asm_80671C0C(current_actor_pointer, sp20, &sp44, &sp3C, &sp34);
+    getBonePosition(current_actor_pointer, sp24, &sp40, &sp38, &sp30);
+    getBonePosition(current_actor_pointer, sp20, &sp44, &sp3C, &sp34);
     sp28 = sp3C - sp38;
     d = sqrtf(((sp34 - sp30) * (sp34 - sp30)) + ((sp44 - sp40) * (sp44 - sp40)));
     extra_player_info_pointer->unk1BC = ((0.0 - (func_global_asm_80611BB4(sp28, d) * 57.29577637f)) + 270.0);
@@ -1302,8 +1302,8 @@ void func_global_asm_806CEFBC(Struct806CEFBC *arg0) {
     f32 temp_f8;
 
     func_global_asm_806CF2EC(&sp34, &sp30);
-    func_global_asm_80671C0C(arg0->unk4, sp34, &sp60, &sp58, &sp50);
-    func_global_asm_80671C0C(arg0->unk4, sp30, &sp64, &sp5C, &sp54);
+    getBonePosition(arg0->unk4, sp34, &sp60, &sp58, &sp50);
+    getBonePosition(arg0->unk4, sp30, &sp64, &sp5C, &sp54);
     temp_f10 = ((((sp64 + sp60) / 2.0f) - arg0->unk8->x_position) * arg0->unk0) + arg0->unk8->x_position;
     temp_f6 = ((((sp5C + sp58) / 2.0f) - arg0->unk8->y_position) * arg0->unk0) + arg0->unk8->y_position;
     temp_f8 = ((((sp54 + sp50) / 2.0f) - arg0->unk8->z_position) * arg0->unk0) + arg0->unk8->z_position;
@@ -1350,8 +1350,8 @@ void func_global_asm_806CF138(Struct806CF138 *arg0) {
     s32 sp2C;
 
     func_global_asm_806CF2EC(&sp30, &sp2C);
-    func_global_asm_80671C0C(arg0->unk0, sp30, &sp70, &sp68, &sp60);
-    func_global_asm_80671C0C(arg0->unk0, sp2C, &sp74, &sp6C, &sp64);
+    getBonePosition(arg0->unk0, sp30, &sp70, &sp68, &sp60);
+    getBonePosition(arg0->unk0, sp2C, &sp74, &sp6C, &sp64);
     sp5C = (sp6C - sp68);
     temp_f14 = (sp74 - sp70);
     sp54 = func_global_asm_806118FC(sp5C / sqrtf(((sp64 - sp60) * (sp64 - sp60)) + ((temp_f14 * temp_f14) + (sp5C * sp5C)))) * 57.29577637f;
@@ -2545,7 +2545,7 @@ void func_global_asm_806D266C(void) {
 
     func_global_asm_806D2378();
     func_global_asm_806D25CC();
-    func_global_asm_80671C0C(current_actor_pointer, 3, &sp2C, &sp28, &sp24);
+    getBonePosition(current_actor_pointer, 3, &sp2C, &sp28, &sp24);
     func_global_asm_806F4D70(cc_player_index, sp2C, sp28, sp24, 25.0f);
 }
 
@@ -2554,7 +2554,7 @@ void func_global_asm_806D26D8(void) {
 
     func_global_asm_806D2378();
     func_global_asm_806D25CC();
-    func_global_asm_80671C0C(current_actor_pointer, 2, &sp2C, &sp28, &sp24);
+    getBonePosition(current_actor_pointer, 2, &sp2C, &sp28, &sp24);
     func_global_asm_806F4D70(cc_player_index, sp2C, sp28, sp24, 25.0f);
 }
 

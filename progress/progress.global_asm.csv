@@ -1348,7 +1348,6 @@ us,asm,func_global_asm_80661AB4,208,yes
 us,asm,func_global_asm_806ACA88,376,no
 us,asm,func_global_asm_80729EB0,1440,no
 us,asm,func_global_asm_806D9820,260,yes
-us,asm,func_global_asm_80671C0C,260,yes
 us,asm,func_global_asm_8066C8B0,84,yes
 us,asm,func_global_asm_807245F0,644,no
 us,asm,func_global_asm_80635098,124,yes
@@ -1654,6 +1653,7 @@ us,asm,func_global_asm_8064B868,152,yes
 us,asm,func_global_asm_806ACC00,100,yes
 us,asm,func_global_asm_8064C3E8,348,yes
 us,asm,func_global_asm_80641F70,508,yes
+us,asm,getBonePosition,260,yes
 us,asm,func_global_asm_805FFFC8,124,yes
 us,asm,func_global_asm_80632E74,172,yes
 us,asm,func_global_asm_8060B140,752,no

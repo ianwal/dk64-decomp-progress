@@ -505,7 +505,7 @@ void func_global_asm_8067E278(u8 arg0, u8 arg1) {
 void func_global_asm_8067E2E4(Actor *arg0, u8 arg1, f32 arg2) {
     f32 sp2C, sp28, sp24;
 
-    func_global_asm_80671C0C(current_actor_pointer, arg1, &sp2C, &sp28, &sp24);
+    getBonePosition(current_actor_pointer, arg1, &sp2C, &sp28, &sp24);
     func_global_asm_8067DF44(sp2C, sp28, sp24, arg2, 0, 1);
 }
 

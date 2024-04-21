@@ -143,7 +143,7 @@ void func_global_asm_806AD84C(void) {
                 current_actor_pointer->control_state = 1;
                 current_actor_pointer->object_properties_bitfield &= ~0x8000;
             } else {
-                func_global_asm_80671C0C(current_actor_pointer->unk11C, 2, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+                getBonePosition(current_actor_pointer->unk11C, 2, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
                 current_actor_pointer->z_rotation = current_actor_pointer->unk11C->z_rotation;
             }
             break;

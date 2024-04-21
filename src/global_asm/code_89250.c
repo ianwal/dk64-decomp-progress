@@ -147,7 +147,7 @@ void func_global_asm_80684A00(s16 arg0, s8 arg1) {
     f32 sp3C, sp38, sp34, sp30;
 
     sp30 = current_actor_pointer->animation_state->scale_y / 0.15;
-    func_global_asm_80671C0C(current_actor_pointer, arg0, &sp3C, &sp38, &sp34);
+    getBonePosition(current_actor_pointer, arg0, &sp3C, &sp38, &sp34);
     func_global_asm_80714950((((rand() >> 0xF) % 100) + 400) * arg1);
     func_global_asm_8071498C(&func_global_asm_80717D4C);
     func_global_asm_807149B8(1);
@@ -166,7 +166,7 @@ void func_global_asm_80684BB0(s16 arg0, s16 arg1, s16 arg2) {
     f32 sp48;
 
     sp48 = current_actor_pointer->animation_state->scale_y / 0.15;
-    func_global_asm_80671C0C(current_actor_pointer, arg0, &sp54, &sp50, &sp4C);
+    getBonePosition(current_actor_pointer, arg0, &sp54, &sp50, &sp4C);
     func_global_asm_80714950(arg1 + (arg2 << 0x10));
     func_global_asm_8071498C(&func_global_asm_8071F2F8);
     func_global_asm_807149B8(1);
@@ -385,7 +385,7 @@ void func_global_asm_8068588C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg
 void func_global_asm_806858E8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
     if (arg0 != NULL) {
         if (arg1 != 0) {
-            func_global_asm_80671C0C(arg0, arg1, &arg3, &arg4, &arg5);
+            getBonePosition(arg0, arg1, &arg3, &arg4, &arg5);
         }
     }
     func_global_asm_8071498C(&func_global_asm_80718080);
@@ -627,7 +627,7 @@ void func_global_asm_80686E40(f32 arg0, f32 arg1, f32 arg2, s32 arg3) {
 void func_global_asm_80686F90(u8 arg0, s16 arg1, s16 arg2) {
     spawnActor(ACTOR_BOSS_DOGADON_LIGHTBEAM, 0xC0);
     if (arg0) {
-        func_global_asm_80671C0C(current_actor_pointer, arg0, &last_spawned_actor->x_position, &last_spawned_actor->y_position, &last_spawned_actor->z_position);
+        getBonePosition(current_actor_pointer, arg0, &last_spawned_actor->x_position, &last_spawned_actor->y_position, &last_spawned_actor->z_position);
     } else {
         last_spawned_actor->x_position = current_actor_pointer->x_position;
         last_spawned_actor->y_position = current_actor_pointer->y_position;
@@ -742,8 +742,8 @@ void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
 
     sp45 = (((rand() >> 0xF) % 32767) % ((arg1 - arg0) + 1)) + arg0;
     sp44 = (((rand() >> 0xF) % 32767) % ((arg3 - arg2) + 1)) + arg2;
-    func_global_asm_80671C0C(current_actor_pointer, sp45, &sp74, &sp70, &sp6C);
-    func_global_asm_80671C0C(current_actor_pointer, sp44, &sp68, &sp64, &sp60);
+    getBonePosition(current_actor_pointer, sp45, &sp74, &sp70, &sp6C);
+    getBonePosition(current_actor_pointer, sp44, &sp68, &sp64, &sp60);
     func_global_asm_80626F8C(sp74, sp70, sp6C, &sp58, &sp54, 0, 1.0f, 0);
     func_global_asm_80626F8C(sp68, sp64, sp60, &sp50, &sp4C, 0, 1.0f, 0);
     sp5C = ((func_global_asm_80665DE0(sp50, sp4C, sp58, sp54) * 0x168) / 4096) + 0x5A;

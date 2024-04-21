@@ -1785,8 +1785,8 @@ void func_menu_80032024(void) {
             last_spawned_actor->animation_state->scale_y = 0.14f;
             last_spawned_actor->animation_state->scale_z = 0.14f;
         } else if (D_menu_80033738 == 0x15) {
-            func_global_asm_80671C0C(player_pointer, 2, &sp6C, &sp64, &sp5C);
-            func_global_asm_80671C0C(player_pointer, 3, &sp70, &sp68, &sp60);
+            getBonePosition(player_pointer, 2, &sp6C, &sp64, &sp5C);
+            getBonePosition(player_pointer, 3, &sp70, &sp68, &sp60);
             newX = (sp70 + sp6C);
             newZ = (sp60 + sp5C);
             current_actor_pointer->x_position = newX * 0.5f;

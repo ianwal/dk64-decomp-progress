@@ -684,8 +684,8 @@ void func_global_asm_806E918C(void) {
     if (!(extra_player_info_pointer->unk1F0 & 0x10000000)) {
         if (D_global_asm_807FD610[cc_player_index].unk2A & 0x10) {
             if (current_actor_pointer->control_state == 7) {
-                func_global_asm_80671C0C(extra_player_info_pointer->vehicle_actor_pointer, 3, &sp54, &sp50, &sp4C);
-                func_global_asm_80671C0C(extra_player_info_pointer->vehicle_actor_pointer, 4, &sp48, &sp44, &sp40);
+                getBonePosition(extra_player_info_pointer->vehicle_actor_pointer, 3, &sp54, &sp50, &sp4C);
+                getBonePosition(extra_player_info_pointer->vehicle_actor_pointer, 4, &sp48, &sp44, &sp40);
                 func_global_asm_8061C2F0(extra_player_info_pointer->unk104, sp48, sp44 + 8.0f, sp40, (sp48 - sp54) + sp48, (sp44 - sp50) + sp44 + 5.0f, (sp40 - sp4C) + sp40, 1);
                 extra_player_info_pointer->unk1F0 |= 2;
                 current_actor_pointer->object_properties_bitfield |= 0x400;

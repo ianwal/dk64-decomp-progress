@@ -496,7 +496,7 @@ void func_global_asm_80666290(Actor *arg0, void *arg1, void *arg2, void *arg3, v
     D_global_asm_807F94BC = 0;
     D_global_asm_807F94B3 = 0;
     if (arg0->unkCC && !arg0->locked_to_pad && arg0->object_properties_bitfield & 0x10) {
-        func_global_asm_80671C0C(arg0, arg0->unkCC, &sp3C, &sp38, &sp34);
+        getBonePosition(arg0, arg0->unkCC, &sp3C, &sp38, &sp34);
     } else {
         sp3C = arg0->x_position;
         sp38 = arg0->unk8C;

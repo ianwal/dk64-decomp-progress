@@ -264,7 +264,7 @@ Struct80717D84 *func_global_asm_80714C08(void *sprite, f32 scale, Actor *arg2, s
     f32 y;
     f32 z;
 
-    func_global_asm_80671C0C(arg2, arg3, &x, &y, &z);
+    getBonePosition(arg2, arg3, &x, &y, &z);
     if (!(arg2->object_properties_bitfield & 0x200) && (arg2->animation_state != NULL) && (D_global_asm_807FDB36 & 0x80)) {
         func_global_asm_80714A38(0x40);
     }
@@ -1841,7 +1841,7 @@ void func_global_asm_8071D0F0(Struct80717D84 *arg0, s8 *arg1) {
         var_t0->unk0 = 30.0f;
     }
     var_t0 = arg0->unk384;
-    func_global_asm_80671C0C(sp2C, 1, &var_t0->unk4, &var_t0->unk8, &var_t0->unkC);
+    getBonePosition(sp2C, 1, &var_t0->unk4, &var_t0->unk8, &var_t0->unkC);
     temp_f0 = var_t0->unk0 / 30.0;
     arg0->unk340 = ((player_pointer->x_position - var_t0->unk4) * temp_f0) + var_t0->unk4;
     arg0->unk344 = ((player_pointer->y_position - var_t0->unk8) * temp_f0) + var_t0->unk8;
@@ -2364,7 +2364,7 @@ void func_global_asm_8071EDEC(Struct80717D84 *arg0, s32 arg1) {
     f32 sp30;
     f32 sp2C;
 
-    func_global_asm_80671C0C(arg0->unk35C, 1, &sp34, &sp30, &sp2C);
+    getBonePosition(arg0->unk35C, 1, &sp34, &sp30, &sp2C);
     temp = D_global_asm_8075EAA0;
     arg0->unk340 += (sp34 - arg0->unk340) * temp;
     arg0->unk344 += (sp30 - arg0->unk344) * temp;

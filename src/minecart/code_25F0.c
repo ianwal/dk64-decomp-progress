@@ -254,7 +254,7 @@ void func_minecart_800280BC(void) {
             func_global_asm_8068ECF4(6, 0xFF);
             func_global_asm_8072B438(0x200);
             func_minecart_800253C0(sp54, 0x7FFF, 0x23);
-            func_global_asm_80671C0C(current_actor_pointer, 5, &sp44, &sp48, &sp4C);
+            getBonePosition(current_actor_pointer, 5, &sp44, &sp48, &sp4C);
             func_global_asm_8072177C(current_actor_pointer, sp44, sp48, sp4C, 0xFF, 0xFF, 0xFF, 0xFF, 0);
             func_minecart_80027EE8(sp54);
             break;

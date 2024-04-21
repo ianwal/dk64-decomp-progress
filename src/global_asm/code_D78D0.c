@@ -987,7 +987,7 @@ void func_global_asm_806D5300(void) {
 
     if ((current_actor_pointer->control_state_progress < 2) || (D_global_asm_80750FD8 < current_actor_pointer->unkB8)) {
         temp_f20 = current_actor_pointer->animation_state->scale_y / 0.15;
-        func_global_asm_80671C0C(current_actor_pointer, 7, &sp90, &sp8C, &sp88);
+        getBonePosition(current_actor_pointer, 7, &sp90, &sp8C, &sp88);
         for (phi_s1 = 0; phi_s1 < D_global_asm_80750FD4; phi_s1++) {
             temp_f24 = (((rand() >> 0xF) % 10000) % D_global_asm_80750FC8) - (D_global_asm_80750FC8 / 2);
             temp_f26 = (((rand() >> 0xF) % 10000) % D_global_asm_80750FCC) - (D_global_asm_80750FCC / 2);
@@ -2718,7 +2718,7 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
                 extra_player_info_pointer->unk4 = 150.0f;
                 extra_player_info_pointer->unk38 = 150.0f;
                 if (extra_player_info_pointer->unk158 != 0) {
-                    func_global_asm_80671C0C(extra_player_info_pointer->unk158, 1, &sp44, &sp40, &sp3C);
+                    getBonePosition(extra_player_info_pointer->unk158, 1, &sp44, &sp40, &sp3C);
                     dx = sp44 - current_player->x_position;
                     dz = sp3C - current_player->z_position;
                     sp4C = (sp40 - current_player->y_position) / (current_player->animation_state->scale_y * 0.166666666749999998);
