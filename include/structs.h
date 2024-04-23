@@ -1269,7 +1269,7 @@ struct actor {
     f32 y_velocity; // at 0xC0
     f32 y_acceleration; // at 0xC4
     f32 terminal_velocity; // at 0xC8
-    u8 unkCC; // Used
+    u8 unkCC; // Used, bone index?
     u8 unkCD;
     u8 unkCE;
     u8 unkCF;

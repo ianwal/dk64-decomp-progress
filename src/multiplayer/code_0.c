@@ -53,7 +53,6 @@ void func_multiplayer_80025F84();
 s32 func_multiplayer_80026BD8(s32);
 
 void func_global_asm_806A5DF0(u16, f32, f32, f32, s32, s32, s32, s32);
-void func_global_asm_806F91B4(s32, u8, s16);
 void func_global_asm_806F54E0(u8, s32, s32);
 extern int func_global_asm_8071F3C0(); // TODO: Signature
 
@@ -570,31 +569,31 @@ void func_multiplayer_800268DC(Actor *arg0, PlayerAdditionalActorData *arg1, Pla
         extra_player_info_pointer->unk21E = 0;
     }
     if ((D_global_asm_807552E8 == 3) || (D_global_asm_807552E8 == 5)) {
-        func_global_asm_806F91B4(1, arg1->unk1A4, -10);
+        changeCollectableCount(1, arg1->unk1A4, -10);
     }
 }
 
 void func_multiplayer_8002698C(MultiplayerStruct0 *arg0) {
     if (D_global_asm_807552E8 == 2) {
-        func_global_asm_806F91B4(1, arg0->unk1A4, -3);
+        changeCollectableCount(1, arg0->unk1A4, -3);
     }
 }
 
-void func_multiplayer_800269C8(u8 arg0, s8 arg1) {
+void func_multiplayer_800269C8(u8 playerIndex, s8 arg1) {
     Actor *temp_s0;
     struct_unknown_mp_aad* phi_v1;
     s32 temp_v1;
     s32 sp30;
     PlayerProgress *temp_s1;
 
-    temp_s0 = character_change_array[arg0].player_pointer;
-    temp_s1 = &D_global_asm_807FC950[arg0];
+    temp_s0 = character_change_array[playerIndex].player_pointer;
+    temp_s1 = &D_global_asm_807FC950[playerIndex];
     temp_v1 = temp_s1->health + temp_s1->unk2FD + arg1;
     sp30 = temp_s1->unk2FA - temp_v1;
-    if ((func_global_asm_806F8AD4(1U, arg0) != 0) && ((temp_v1 <= 0) || (sp30 >= 2))) {
+    if ((func_global_asm_806F8AD4(1U, playerIndex) != 0) && ((temp_v1 <= 0) || (sp30 >= 2))) {
         struct_unknown_mp_aad* aad = func_global_asm_8067ADB4(0x13E)->additional_actor_data;
         aad->unk4C = 1;
-        func_global_asm_806F91B4(1, arg0, -0xA);
+        changeCollectableCount(1, playerIndex, -10);
         if (D_global_asm_807552E8 == 5) {
             func_multiplayer_80025F84();
         }
@@ -603,21 +602,21 @@ void func_multiplayer_800269C8(u8 arg0, s8 arg1) {
     }
 }
 
-void func_multiplayer_80026B0C(s32 arg0) {
-    Actor *player = character_change_array[arg0].player_pointer;
+void func_multiplayer_80026B0C(s32 playerIndex) {
+    Actor *player = character_change_array[playerIndex].player_pointer;
     player->noclip_byte = 0xC;
     switch (D_global_asm_807552E8) {
         case 2:
-            func_global_asm_806F91B4(1, arg0, -3);
+            changeCollectableCount(1, playerIndex, -3);
             break;
         case 5:
-            func_global_asm_806F91B4(7, arg0, -0x40);
+            changeCollectableCount(7, playerIndex, -64);
             // fallthrough
         case 3:
-            func_multiplayer_800269C8(arg0, 0);
+            func_multiplayer_800269C8(playerIndex, 0);
             break;
         case 4:
-            func_global_asm_806F91B4(7, arg0, -1);
+            changeCollectableCount(7, playerIndex, -1);
             break;
     }
 }

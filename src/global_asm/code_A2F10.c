@@ -570,9 +570,9 @@ void func_global_asm_806A0310(void) {
 void func_global_asm_806A0330(void) {
     s32 pad[8];
     s32 i;
-    f32 sp68;
-    f32 sp64;
-    f32 sp60;
+    f32 x;
+    f32 y;
+    f32 z;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->noclip_byte = 0x1C;
@@ -600,12 +600,12 @@ void func_global_asm_806A0330(void) {
         func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xF, 0xF);
         playSoundAtActorPosition(current_actor_pointer, 0x162, 0xE1, 0x3C, 1);
         for (i = 1; i < 7; i++) {
-            getBonePosition(current_actor_pointer, i, &sp68, &sp64, &sp60);
+            getBonePosition(current_actor_pointer, i, &x, &y, &z);
             func_global_asm_8071496C(i);
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_8071BB14);
             changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
-            drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, sp68, sp64, sp60);
+            drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, x, y, z);
         }
         deleteActor(current_actor_pointer);
     }

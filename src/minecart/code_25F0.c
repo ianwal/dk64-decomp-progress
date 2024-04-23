@@ -107,11 +107,13 @@ void func_minecart_80026C54(void) {
     func_global_asm_8071498C(&func_global_asm_80717D4C);
     func_global_asm_807149B8(1);
     func_global_asm_80714A28(4);
-    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+    drawSpriteAtPosition(
+        D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
         0.5f,
         ((rand() >> 0xF) % 20) + (current_actor_pointer->x_position - 10.0f),
         current_actor_pointer->y_position,
-        ((rand() >> 0xF) % 20) + (current_actor_pointer->z_position - 10.0f));
+        ((rand() >> 0xF) % 20) + (current_actor_pointer->z_position - 10.0f)
+    );
 }
 
 // Jumptable, huge
@@ -200,8 +202,6 @@ void func_minecart_80027EE8(MinecartStruct1 *arg0) {
 }
 */
 
-s32 func_global_asm_8072177C(void *, s16, s16, s16, s32, s32, s32, s32, s32);
-
 typedef struct {
     u8 unk0[0x10 - 0x0];
     s16 unk10;
@@ -212,9 +212,9 @@ typedef struct {
 void func_minecart_800280BC(void) {
     A178_minecart_800280BC *sp54;
     Struct807FBB70_unk278 *temp_v1;
-    f32 sp4C;
-    f32 sp48;
-    f32 sp44;
+    f32 z;
+    f32 y;
+    f32 x;
     u8 *temp_v0_2;
 
     sp54 = current_actor_pointer->unk178;
@@ -254,8 +254,8 @@ void func_minecart_800280BC(void) {
             func_global_asm_8068ECF4(6, 0xFF);
             func_global_asm_8072B438(0x200);
             func_minecart_800253C0(sp54, 0x7FFF, 0x23);
-            getBonePosition(current_actor_pointer, 5, &sp44, &sp48, &sp4C);
-            func_global_asm_8072177C(current_actor_pointer, sp44, sp48, sp4C, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+            getBonePosition(current_actor_pointer, 5, &x, &y, &z);
+            addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
             func_minecart_80027EE8(sp54);
             break;
         case 2:

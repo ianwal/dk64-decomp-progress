@@ -247,9 +247,9 @@ typedef struct {
 void func_global_asm_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
     Struct807F5FD4_unk0 *temp_v0_2;
     Struct806436E0_malloc *var_v1;
-    s32 sp34;
-    s32 sp30;
-    s32 sp2C;
+    s32 x;
+    s32 y;
+    s32 z;
     s32 count;
 
     if (arg0->unk0 == NULL) {
@@ -266,14 +266,14 @@ void func_global_asm_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32
             var_v1->unk4 = 0;
         }
         temp_v0_2 = &D_global_asm_807F5FD4->unk0[0][var_v1->unk4];
-        sp34 = temp_v0_2->unk0;
-        sp30 = temp_v0_2->unk4;
-        sp2C = temp_v0_2->unk8;
+        x = temp_v0_2->unk0;
+        y = temp_v0_2->unk4;
+        z = temp_v0_2->unk8;
         func_global_asm_80714998(2);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(0);
         func_global_asm_8071498C(&func_global_asm_8071C004);
-        drawSpriteAtPosition(&D_global_asm_8071FB54, 0.667f, sp34, sp30 + 0xA, sp2C);
+        drawSpriteAtPosition(&D_global_asm_8071FB54, 0.667f, x, y + 10, z);
         var_v1->unk0 = 0x19;
     }
     var_v1->unk0--;
@@ -289,9 +289,9 @@ extern s32 D_global_asm_8071FE08; // TODO: Datatype
 extern s32 D_global_asm_8071FE64;
 extern s32 D_global_asm_8071FE88;
 extern s32 D_global_asm_8071FEAC;
-extern f32 D_global_asm_807F621C;
-extern f32 D_global_asm_807F6220;
-extern f32 D_global_asm_807F6224;
+extern f32 D_global_asm_807F621C; // x
+extern f32 D_global_asm_807F6220; // y
+extern f32 D_global_asm_807F6224; // z
 
 int func_global_asm_8071910C(); // TODO: Signature
 
@@ -299,22 +299,22 @@ void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 pad;
     s32 temp_s0;
     s32 i;
-    f32 sp60;
-    f32 sp5C;
-    f32 sp58;
+    f32 x;
+    f32 y;
+    f32 z;
 
     if (arg2 == 1) {
-        func_global_asm_806335B0(arg1, 1, arg3, &sp60, &sp5C, &sp58);
+        func_global_asm_806335B0(arg1, 1, arg3, &x, &y, &z);
     } else {
-        sp60 = D_global_asm_807F621C;
-        sp5C = D_global_asm_807F6220;
-        sp58 = D_global_asm_807F6224;
+        x = D_global_asm_807F621C;
+        y = D_global_asm_807F6220;
+        z = D_global_asm_807F6224;
     }
     func_global_asm_807149B8(0);
     func_global_asm_807149FC(1);
     func_global_asm_80714950(0x100C8);
     func_global_asm_8071498C(&func_global_asm_8071A8B0);
-    drawSpriteAtPosition(&D_global_asm_8071FE08, 1.5f, sp60, sp5C, sp58);
+    drawSpriteAtPosition(&D_global_asm_8071FE08, 1.5f, x, y, z);
     for (i = 0; i < 7; i++) {
         temp_s0 = (s32)(func_global_asm_806119A0() / 10000U) % 3;
         func_global_asm_807149B8(1);
@@ -324,13 +324,13 @@ void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
         func_global_asm_80714950(7);
         switch (temp_s0) {
             case 0:
-                drawSpriteAtPosition(&D_global_asm_8071FE64, 0.5f, sp60, sp5C, sp58);
+                drawSpriteAtPosition(&D_global_asm_8071FE64, 0.5f, x, y, z);
                 break;
             case 1:
-                drawSpriteAtPosition(&D_global_asm_8071FE88, 0.5f, sp60, sp5C, sp58);
+                drawSpriteAtPosition(&D_global_asm_8071FE88, 0.5f, x, y, z);
                 break;
             case 2:
-                drawSpriteAtPosition(&D_global_asm_8071FEAC, 0.5f, sp60, sp5C, sp58);
+                drawSpriteAtPosition(&D_global_asm_8071FEAC, 0.5f, x, y, z);
                 break;
         }
     }
@@ -353,9 +353,9 @@ void func_global_asm_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-extern f32 D_global_asm_807F621C;
-extern f32 D_global_asm_807F6220;
-extern f32 D_global_asm_807F6224;
+extern f32 D_global_asm_807F621C; // x
+extern f32 D_global_asm_807F6220; // y
+extern f32 D_global_asm_807F6224; // z
 extern s32 D_global_asm_807201D4;
 
 typedef struct {
@@ -857,9 +857,9 @@ extern f32 D_global_asm_807F6224;
 
 void func_global_asm_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 pad2;
-    f32 spB8;
-    f32 spB4;
-    f32 spB0;
+    f32 x;
+    f32 y;
+    f32 z;
     s32 pad[6];
     f32 var_f28;
     s32 i;
@@ -868,12 +868,12 @@ void func_global_asm_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
     if (arg2 != 0) {
         for (i = 1; i < 7; i++) {
-            func_global_asm_806335B0(arg1, 1, i, &spB8, &spB4, &spB0);
+            func_global_asm_806335B0(arg1, 1, i, &x, &y, &z);
             func_global_asm_8071496C(i);
             func_global_asm_807149B8(1);
             func_global_asm_8071498C(&func_global_asm_8071BB14);
             changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
-            drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, spB8, spB4, spB0);
+            drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, x, y, z);
         }
         return;
     }
@@ -888,14 +888,14 @@ void func_global_asm_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
         sp84[1] = i * 0x2A8;
         sp84[2] = (rand() % 500) + 150;
         if (arg3 == 0) {
-            func_global_asm_806335B0(arg1, 1, i, &spB8, &spB4, &spB0);
-            spB4 += 10.0;
+            func_global_asm_806335B0(arg1, 1, i, &x, &y, &z);
+            y += 10.0;
         } else {
-            spB8 = ((func_global_asm_806119FC() * 30.0) + D_global_asm_807F621C) - 15.0;
-            spB4 = (func_global_asm_806119FC() * 40.0) + D_global_asm_807F6220;
-            spB0 = ((func_global_asm_806119FC() * 30.0) + D_global_asm_807F6224) - 15.0;
+            x = ((func_global_asm_806119FC() * 30.0) + D_global_asm_807F621C) - 15.0;
+            y = (func_global_asm_806119FC() * 40.0) + D_global_asm_807F6220;
+            z = ((func_global_asm_806119FC() * 30.0) + D_global_asm_807F6224) - 15.0;
         }
-        func_global_asm_806891D8(0x5A, spB8, spB4, spB0, 0, var_f28, NULL, &sp84[0]);
+        func_global_asm_806891D8(0x5A, x, y, z, 0, var_f28, NULL, &sp84[0]);
     }
 }
 
@@ -927,28 +927,28 @@ void func_global_asm_80647170(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 void func_global_asm_80647218(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s32 i;
-    f32 rand1;
-    f32 rand2;
-    f32 rand3;
-    f32 rand4;
+    f32 randomXOffset;
+    f32 randomYOffset;
+    f32 randomZOffset;
+    f32 randomScaleOffset;
 
     for (i = 0; i < 6; i++) {
-        rand1 = (f32)((func_global_asm_806119A0() / 1000U) % 20) - 10.0;
-        rand2 = (f32)((func_global_asm_806119A0() / 1000U) % 20) - 10.0;
-        rand3 = (f32)((func_global_asm_806119A0() / 1000U) % 20) - 10.0;
-        rand4 = (f32)((f32)(((func_global_asm_806119A0() / 1000U) % 50) - 25.0) / 50.0);
+        randomXOffset = (f32)((func_global_asm_806119A0() / 1000U) % 20) - 10.0;
+        randomYOffset = (f32)((func_global_asm_806119A0() / 1000U) % 20) - 10.0;
+        randomZOffset = (f32)((func_global_asm_806119A0() / 1000U) % 20) - 10.0;
+        randomScaleOffset = (f32)((f32)(((func_global_asm_806119A0() / 1000U) % 50) - 25.0) / 50.0);
         func_global_asm_80714950(-0xAA);
         func_global_asm_8071498C(func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
         func_global_asm_8071496C(i << 1);
-        drawSpriteAtPosition(&D_global_asm_8071FFA0, (rand4) + 1.5, D_global_asm_807F621C + (rand1), D_global_asm_807F6220 + (rand2), D_global_asm_807F6224 + (rand3));
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, (randomScaleOffset) + 1.5, D_global_asm_807F621C + (randomXOffset), D_global_asm_807F6220 + (randomYOffset), D_global_asm_807F6224 + (randomZOffset));
     }
 }
 
 void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 sp34;
-    f32 sp30, sp2C, sp28;
+    f32 x, y, z;
 
     sp34 = ((func_global_asm_806119A0() / 1000U) % 10) + 1;
     func_global_asm_80714950(-0x28A - ((func_global_asm_806119A0() / 1000U) % 200));
@@ -957,8 +957,8 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80714998(9);
     changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
     func_global_asm_80714944(5);
-    func_global_asm_806335B0(arg1, 1, sp34, &sp30, &sp2C, &sp28);
-    drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.5f, sp30, sp2C - 70, sp28);
+    func_global_asm_806335B0(arg1, 1, sp34, &x, &y, &z);
+    drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.5f, x, y - 70, z);
 }
 
 // Close
@@ -1029,7 +1029,7 @@ int func_global_asm_8071910C(); // TODO: Signature
 
 void func_global_asm_80647834(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
-    f32 temp;
+    f32 randomYOffset;
 
     for (i = 0; i < 0xC; i++) {
         func_global_asm_807149B8(1);
@@ -1037,8 +1037,8 @@ void func_global_asm_80647834(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
         func_global_asm_8071498C(func_global_asm_8071910C);
         func_global_asm_80714998(2);
         func_global_asm_80714950(4);
-        temp = ((func_global_asm_806119A0() / 1000U) % 80);
-        drawSpriteAtPosition(&D_global_asm_80720EA4, 1.0f, D_global_asm_807F621C, D_global_asm_807F6220 + temp, D_global_asm_807F6224);
+        randomYOffset = ((func_global_asm_806119A0() / 1000U) % 80);
+        drawSpriteAtPosition(&D_global_asm_80720EA4, 1.0f, D_global_asm_807F621C, D_global_asm_807F6220 + randomYOffset, D_global_asm_807F6224);
     }
     for (i = 1; i != 6; i++) {
         func_global_asm_80714950(-0x78);
@@ -1235,17 +1235,17 @@ typedef struct {
 } Struct8064826C_arg0;
 
 void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
-    s32 *sp3C;
+    void *sprite;
     f32 sp38;
     s32 pad2;
     s32 pad;
-    f32 sp2C;
-    f32 sp28;
+    f32 xOffset;
+    f32 zOffset;
     f32 temp_f0;
     Struct8064826C_malloc *temp_v0;
 
-    sp2C = func_global_asm_80612794(((D_global_asm_807F622C + 90.0f) * 4096.0f) / 360.0f) * 15.0f;
-    sp28 = func_global_asm_80612790(((D_global_asm_807F622C + 90.0f) * 4096.0f) / 360.0f) * 15.0f;
+    xOffset = func_global_asm_80612794(((D_global_asm_807F622C + 90.0f) * 4096.0f) / 360.0f) * 15.0f;
+    zOffset = func_global_asm_80612790(((D_global_asm_807F622C + 90.0f) * 4096.0f) / 360.0f) * 15.0f;
     if (arg0->unk0 == NULL) {
         arg0->unk0 = malloc(sizeof(Struct8064826C_malloc));
         temp_v0 = arg0->unk0;
@@ -1257,16 +1257,16 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
     func_global_asm_807149B8(1);
     switch (arg2) {
         case 0:
-            sp3C = &D_global_asm_80721200;
+            sprite = &D_global_asm_80721200;
             break;
         case 1:
-            sp3C = &D_global_asm_8072121C;
+            sprite = &D_global_asm_8072121C;
             break;
         case 2:
-            sp3C = &D_global_asm_80721250;
+            sprite = &D_global_asm_80721250;
             break;
         case 3:
-            sp3C = &D_global_asm_80721238;
+            sprite = &D_global_asm_80721238;
             break;
     }
     sp38 = func_global_asm_80612794(temp_v0->unk0) * 0.1;
@@ -1276,7 +1276,7 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
     func_global_asm_80714A08(sp38 + 1.0, (f32)(temp_f0 * 0.1) + 1.0);
     func_global_asm_807149A8(1400);
     func_global_asm_80714A28(4);
-    drawSpriteAtPosition(sp3C, 0.0f, D_global_asm_807F621C + sp2C, (func_global_asm_80612794(temp_v0->unk8) * 10.0) + (D_global_asm_807F6220 + 80.0), D_global_asm_807F6224 + sp28);
+    drawSpriteAtPosition(sprite, 0.0f, D_global_asm_807F621C + xOffset, (func_global_asm_80612794(temp_v0->unk8) * 10.0) + (D_global_asm_807F6220 + 80.0), D_global_asm_807F6224 + zOffset);
     temp_v0->unk8 += 0x64;
     if ((D_global_asm_8076A068 % 12) == 0) {
         func_global_asm_807149B8(1);
@@ -1284,7 +1284,7 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
         func_global_asm_8071498C(&func_global_asm_80716F10);
         func_global_asm_807149A8(1400);
         func_global_asm_80714A28(4);
-        drawSpriteAtPosition(&D_global_asm_8072126C, 2.0f, D_global_asm_807F621C + sp2C, D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + sp28);
+        drawSpriteAtPosition(&D_global_asm_8072126C, 2.0f, D_global_asm_807F621C + xOffset, D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + zOffset);
     }
 }
 
@@ -1904,8 +1904,6 @@ u8 func_global_asm_8064BE58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 /*
 extern s32 D_global_asm_807552F0;
 
-void func_global_asm_806F91B4(s32, u8, s32);
-
 s32 func_global_asm_8064BE80(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     s32 playerIndex;
     f32 temp;
@@ -1915,7 +1913,7 @@ s32 func_global_asm_8064BE80(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
         return 0;
     }
     if (func_global_asm_806F8AD4(1, playerIndex) != 0) {
-        func_global_asm_806F91B4(7, playerIndex, 1);
+        changeCollectableCount(7, playerIndex, 1);
         temp = func_global_asm_806F8AD4(7, playerIndex);
         temp /= D_global_asm_807552F0;
         // temp *= 0.5f;
@@ -2531,7 +2529,7 @@ void func_global_asm_8064E5C0(Struct8064E5C0_arg0 *arg0, s32 arg1, s32 arg2, s32
 void func_global_asm_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (func_global_asm_806F8AD4(1, 0) >= 2) {
         func_global_asm_806F8BC4(1, 0, 0);
-        func_global_asm_806F91B4(1, 0, -2);
+        changeCollectableCount(1, 0, -2);
         // DK Arcade Level 3?
         setFlag(0x83, TRUE, FLAG_TYPE_PERMANENT);
     }

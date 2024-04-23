@@ -59,8 +59,6 @@ extern ExitData D_global_asm_807FC908;
 extern ExitData D_global_asm_807FC918;
 extern s16 D_global_asm_807FC930[];
 
-void func_global_asm_806F91B4(s32, u8, s32);
-
 void func_global_asm_806C7B00(void) {
     s16 i;
     for (i = 0; i < 0xE; i++) {
@@ -697,11 +695,11 @@ void func_global_asm_806C9AE0(void) {
     D_global_asm_807FD56C = 0;
 }
 
-void func_global_asm_806C9C1C(s32 arg0) {
+void func_global_asm_806C9C1C(s32 playerIndex) {
     s32 i;
 
     for (i = 0; i < 5; i++) {
-        func_global_asm_806F91B4(D_global_asm_80750B34[i], arg0, 9999);
+        changeCollectableCount(D_global_asm_80750B34[i], playerIndex, 9999);
     }
     func_global_asm_806F833C(0);
 }

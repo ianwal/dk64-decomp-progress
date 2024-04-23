@@ -104,7 +104,6 @@ extern s16 D_global_asm_807FDB3E;
 extern s16 D_global_asm_807FDB40;
 extern s16 D_global_asm_807FDB42;
 
-Struct80717D84 *func_global_asm_80714D08(void*, f32, f32, f32, f32, s32, s32, s32, u8);
 void func_global_asm_80714A9C(void);
 void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
 int func_global_asm_80717404(); // TODO: Signature
@@ -250,29 +249,29 @@ void func_global_asm_80714A9C(void) {
     D_global_asm_807FDB3A = 0x258;
 }
 
-Struct80717D84 *func_global_asm_80714B84(void *arg0, f32 arg1, s32 arg2, s32 arg3, u8 arg4) {
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
-
-    func_global_asm_806335B0(arg2, 1, arg3, &sp3C, &sp38, &sp34);
-    return func_global_asm_80714D08(arg0, arg1, sp3C, sp38, sp34, 0, arg2, arg3, arg4);
-}
-
-Struct80717D84 *func_global_asm_80714C08(void *sprite, f32 scale, Actor *arg2, s32 arg3, u8 arg4) {
+Struct80717D84 *func_global_asm_80714B84(void *sprite, f32 scale, s32 arg2, s32 boneIndex, u8 arg4) {
     f32 x;
     f32 y;
     f32 z;
 
-    getBonePosition(arg2, arg3, &x, &y, &z);
-    if (!(arg2->object_properties_bitfield & 0x200) && (arg2->animation_state != NULL) && (D_global_asm_807FDB36 & 0x80)) {
+    func_global_asm_806335B0(arg2, 1, boneIndex, &x, &y, &z);
+    return func_global_asm_80714D08(sprite, scale, x, y, z, NULL, arg2, boneIndex, arg4);
+}
+
+Struct80717D84 *func_global_asm_80714C08(void *sprite, f32 scale, Actor *actor, s32 boneIndex, u8 arg4) {
+    f32 x;
+    f32 y;
+    f32 z;
+
+    getBonePosition(actor, boneIndex, &x, &y, &z);
+    if (!(actor->object_properties_bitfield & 0x200) && (actor->animation_state != NULL) && (D_global_asm_807FDB36 & 0x80)) {
         func_global_asm_80714A38(0x40);
     }
-    return func_global_asm_80714D08(sprite, scale, x, y, z, arg2, 0, arg3, arg4);
+    return func_global_asm_80714D08(sprite, scale, x, y, z, actor, 0, boneIndex, arg4);
 }
 
 Struct80717D84 *drawSpriteAtPosition(void* sprite, f32 scale, f32 x, f32 y, f32 z) {
-    return func_global_asm_80714D08(sprite, scale, x, y, z, 0, 0, 0, 0);
+    return func_global_asm_80714D08(sprite, scale, x, y, z, NULL, 0, 0, 0);
 }
 
 extern u8 D_global_asm_80750AB4;
@@ -290,17 +289,17 @@ extern s16 D_global_asm_807FDB3C;
 
 void func_global_asm_80714778(f32);
 
-Struct80717D84 *func_global_asm_80714D08(void *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, s32 arg6, s32 arg7, u8 arg8) {
+Struct80717D84 *func_global_asm_80714D08(void *sprite, f32 scale, f32 x, f32 y, f32 z, Actor *actor, s32 arg6, s32 boneIndex, u8 arg8) {
     Struct80717D84 *sp2C;
     s32 i;
     s32 var_v0;
     Struct807FDB00 *var_s0;
 
-    func_global_asm_80714778(arg1);
+    func_global_asm_80714778(scale);
     var_s0 = D_global_asm_807FDB00;
     var_v0 = 0;
     while (!var_v0 && var_s0 != NULL) {
-        if (arg0 == var_s0->unk0) {
+        if (sprite == var_s0->unk0) {
             var_v0 = 1;
         } else {
             var_s0 = var_s0->next;
@@ -320,22 +319,22 @@ Struct80717D84 *func_global_asm_80714D08(void *arg0, f32 arg1, f32 arg2, f32 arg
     }
     D_global_asm_807FDB08 = sp2C;
     if (D_global_asm_807FDB1D != 0) {
-        arg2 *= 4.0f;
-        arg3 *= 4.0f;
-        arg4 *= 4.0f;
-        arg1 *= 4.0f;
+        x *= 4.0f;
+        y *= 4.0f;
+        z *= 4.0f;
+        scale *= 4.0f;
         D_global_asm_807FDB20 *= 4.0f;
         D_global_asm_807FDB24 *= 4.0f;
     }
-    sp2C->unk340 = arg2;
-    sp2C->unk344 = arg3;
-    sp2C->unk348 = arg4;
+    sp2C->unk340 = x;
+    sp2C->unk344 = y;
+    sp2C->unk348 = z;
     if (D_global_asm_807FDB28 != 0) {
         sp2C->unk360 = D_global_asm_807FDB20;
         sp2C->unk364 = D_global_asm_807FDB24;
     } else {
-        sp2C->unk360 = arg1;
-        sp2C->unk364 = arg1;
+        sp2C->unk360 = scale;
+        sp2C->unk364 = scale;
     }
     if (D_global_asm_807FDB0F != 0) {
         sp2C->unk36A = D_global_asm_807FDB0C;
@@ -353,9 +352,9 @@ Struct80717D84 *func_global_asm_80714D08(void *arg0, f32 arg1, f32 arg2, f32 arg
     sp2C->unk368 = D_global_asm_807FDB1A;
     sp2C->unk380 = var_s0->unk8 * var_s0->unk9;
     sp2C->unk334 = arg8;
-    sp2C->unk338 = arg5;
+    sp2C->unk338 = actor;
     sp2C->unk33C = arg6;
-    sp2C->unk33E = arg7;
+    sp2C->unk33E = boneIndex;
     sp2C->unk34E = D_global_asm_807FDB30;
     sp2C->unk350 = D_global_asm_807FDB1C;
     sp2C->unk351 = 0;
@@ -421,7 +420,6 @@ void func_global_asm_807158C0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715908.s")
 
 /*
-? func_global_asm_80630588(?, void *, ?, ? *);
 extern s32 D_80000310;
 extern void *D_global_asm_807FDB04;
 extern void *D_global_asm_807FDB08;
@@ -816,11 +814,11 @@ void func_global_asm_807180F4(s32 arg0, s32 arg1) {
     func_global_asm_80716FB4(arg0, arg1);
 }
 
-void func_global_asm_80718124(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+void func_global_asm_80718124(f32 scale, f32 x, f32 y, f32 z) {
     func_global_asm_807149B8(1);
     func_global_asm_80714998(3);
     func_global_asm_8071498C(&func_global_asm_80718380);
-    drawSpriteAtPosition(&D_global_asm_8071FEF4, arg0, arg1, arg2, arg3);
+    drawSpriteAtPosition(&D_global_asm_8071FEF4, scale, x, y, z);
 }
 
 void func_global_asm_80718188(Struct80717D84 *arg0, s8 *arg1) {
@@ -1702,7 +1700,7 @@ extern s32 D_global_asm_8071FB54;
 
 void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
     s32 pad;
-    f32 sp50;
+    f32 y;
     s16 sp48[3];
 
     if (arg0->unk384 == NULL) {
@@ -1717,10 +1715,10 @@ void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
     arg0->unk340 += 1.0f;
     arg0->unk344 += arg0->unk384_f32->unk0;
     arg0->unk384_f32->unk0 -= D_global_asm_8075E9B8;
-    sp50 = arg0->unk344;
-    if (func_global_asm_80667110(arg0->unk340, arg0->unk348, &sp50) == 0) {
+    y = arg0->unk344;
+    if (func_global_asm_80667110(arg0->unk340, arg0->unk348, &y) == 0) {
         *arg1 = 1;
-    } else if (arg0->unk344 < sp50) {
+    } else if (arg0->unk344 < y) {
         if (arg0->unk384_f32->unk0 < 0.0) {
             *arg1 = 1;
         }
@@ -1732,7 +1730,7 @@ void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
         func_global_asm_80714950(1);
         func_global_asm_8071498C(&func_global_asm_8071C004);
         func_global_asm_80714944(7);
-        drawSpriteAtPosition(&D_global_asm_8071FB54, 0.667f, arg0->unk340, sp50 + 10.0f, arg0->unk348);
+        drawSpriteAtPosition(&D_global_asm_8071FB54, 0.667f, arg0->unk340, y + 10.0f, arg0->unk348);
     }
     createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 200.0f, 0, sp48[0], sp48[1], sp48[2]);
 }
@@ -2329,11 +2327,11 @@ void func_global_asm_8071EA24(Struct80717D84 *arg0, s32 arg1) {
 
 void func_global_asm_8071EB70(Struct80717D84 *arg0, s32 arg1) {
     f32 *var_v1;
-    f32 temp_f0_2;
+    f32 d;
     f32 temp_f16;
-    f32 temp_f14;
-    f32 temp_f0;
-    f32 temp_f2;
+    f32 dz;
+    f32 dx;
+    f32 dy;
     s32 var_f12; // Amazingly this is correct
 
     temp_f16 = (arg0->unk35C * 3) / 4;
@@ -2343,15 +2341,15 @@ void func_global_asm_8071EB70(Struct80717D84 *arg0, s32 arg1) {
         *var_v1 = arg0->unk36D;
     }
     var_v1 = arg0->unk384;
-    temp_f0 = character_change_array->unk224 - arg0->unk348;
-    temp_f2 = character_change_array->unk21C - arg0->unk340;
-    temp_f14 = character_change_array->unk220 - arg0->unk344;
-    temp_f0_2 = sqrtf((temp_f0 * temp_f0) + ((temp_f2 * temp_f2) + (temp_f14 * temp_f14)));
-    if (temp_f0_2 < temp_f16) {
+    dx = character_change_array->unk224 - arg0->unk348;
+    dy = character_change_array->unk21C - arg0->unk340;
+    dz = character_change_array->unk220 - arg0->unk344;
+    d = sqrtf((dx * dx) + ((dy * dy) + (dz * dz)));
+    if (d < temp_f16) {
         arg0->unk36D = *var_v1;
         return;
     }
-    var_f12 = (*var_v1 * ((temp_f0_2 - temp_f16) / (arg0->unk35C - temp_f16)));
+    var_f12 = (*var_v1 * ((d - temp_f16) / (arg0->unk35C - temp_f16)));
     if (*var_v1 < var_f12) {
         var_f12 = *var_v1;
     }
@@ -2360,15 +2358,15 @@ void func_global_asm_8071EB70(Struct80717D84 *arg0, s32 arg1) {
 
 void func_global_asm_8071EDEC(Struct80717D84 *arg0, s32 arg1) {
     f64 temp;
-    f32 sp34;
-    f32 sp30;
-    f32 sp2C;
+    f32 x;
+    f32 y;
+    f32 z;
 
-    getBonePosition(arg0->unk35C, 1, &sp34, &sp30, &sp2C);
+    getBonePosition(arg0->unk35C, 1, &x, &y, &z);
     temp = D_global_asm_8075EAA0;
-    arg0->unk340 += (sp34 - arg0->unk340) * temp;
-    arg0->unk344 += (sp30 - arg0->unk344) * temp;
-    arg0->unk348 += (sp2C - arg0->unk348) * temp;
+    arg0->unk340 += (x - arg0->unk340) * temp;
+    arg0->unk344 += (y - arg0->unk344) * temp;
+    arg0->unk348 += (z - arg0->unk348) * temp;
 }
 
 void func_global_asm_8071EEA4(Struct80717D84 *arg0, s32 arg1) {

@@ -488,21 +488,21 @@ void func_global_asm_80666280(u8 arg0) {
 
 void func_global_asm_80666428(Actor*, f32, f32, f32, void*, void*, void*, void*, u8);
 
-void func_global_asm_80666290(Actor *arg0, void *arg1, void *arg2, void *arg3, void *arg4, u8 arg5) {
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
+void func_global_asm_80666290(Actor *actor, void *arg1, void *arg2, void *arg3, void *arg4, u8 arg5) {
+    f32 x;
+    f32 y;
+    f32 z;
 
     D_global_asm_807F94BC = 0;
     D_global_asm_807F94B3 = 0;
-    if (arg0->unkCC && !arg0->locked_to_pad && arg0->object_properties_bitfield & 0x10) {
-        getBonePosition(arg0, arg0->unkCC, &sp3C, &sp38, &sp34);
+    if (actor->unkCC && !actor->locked_to_pad && actor->object_properties_bitfield & 0x10) {
+        getBonePosition(actor, actor->unkCC, &x, &y, &z);
     } else {
-        sp3C = arg0->x_position;
-        sp38 = arg0->unk8C;
-        sp34 = arg0->z_position;
+        x = actor->x_position;
+        y = actor->unk8C;
+        z = actor->z_position;
     }
-    func_global_asm_80666428(arg0, sp3C, sp38, sp34, arg1, arg2, arg3, arg4, arg5);
+    func_global_asm_80666428(actor, x, y, z, arg1, arg2, arg3, arg4, arg5);
 }
 
 // BUG: Missing return?

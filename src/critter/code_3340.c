@@ -363,7 +363,7 @@ void func_critter_80027DC0(void) {
                 current_actor_pointer->control_state_progress = 1;
                 func_global_asm_80604CBC(player_pointer, 0x104, 0x3C, 1, 1, 0xFF, 1.0f, 0);
                 func_global_asm_806F8BC4(6, 0, 0);
-                func_global_asm_806F91B4(6, extra_player_info_pointer->unk1A4, 999);
+                changeCollectableCount(6, extra_player_info_pointer->unk1A4, 999);
             }
             break;
         case 3:

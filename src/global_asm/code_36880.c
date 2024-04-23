@@ -994,8 +994,6 @@ void func_global_asm_806645B8(s16 arg0);
 
 void func_global_asm_8066C904(OM2_unk28 *arg0);
 
-Chunk14 *func_global_asm_80630588(Chunk14 *arg0, s32 arg1, u8 arg2, u8 *arg3);
-
 void func_global_asm_806593C8(s32 arg0, s32 arg1);
 void func_global_asm_80636074(ObjectModel2 *arg0);
 

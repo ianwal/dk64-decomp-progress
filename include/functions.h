@@ -127,6 +127,13 @@ int gameIsInQuitGameMode(void);
 
 s32 countSetFlags(s32 startIndex, s32 length, u8 flagType);
 
+void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount);
+
+Chunk14 *func_global_asm_80630588(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 *arg3);
+
+void addActorRecolor(Actor *actor, s16 x, s16 y, s16 z, s32 alpha, s32 red, s32 green, s32 blue, s32);
+Struct80717D84 *func_global_asm_80714D08(void *sprite, f32 scale, f32 x, f32 y, f32 z, Actor *actor, s32 arg6, s32 boneIndex, u8 arg8);
+
 // TODO: Not 100% on return type
 u8 getBonePosition(Actor *actor, s32 boneIndex, f32 *x, f32 *y, f32 *z);
 
@@ -194,7 +201,6 @@ void func_global_asm_806EB744(void);
 void func_global_asm_806EB8CC(void);
 void func_global_asm_806EB964(void);
 void func_global_asm_806EBA04(void);
-// TODO: Signatures deduplicated up to here
 void func_global_asm_806EBA74(void);
 void func_global_asm_806EBAF4(void);
 void func_global_asm_806EBB44(void);
@@ -209,6 +215,7 @@ void func_global_asm_806EBF74(void);
 void func_global_asm_806EBFD0(void);
 void func_global_asm_806EC014(void);
 void func_global_asm_806EC044(void);
+// TODO: Signatures deduplicated up to here
 void func_global_asm_806EC1A8(void);
 void func_global_asm_806EC2CC(void);
 void func_global_asm_806EC3BC(void);
@@ -828,7 +835,7 @@ void func_global_asm_806E1630(void);
 void func_global_asm_806CC948();
 void func_global_asm_806CFECC(void);
 void func_global_asm_806D2378();
-void func_global_asm_806F4D70(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
+void func_global_asm_806F4D70(u8 playerIndex, f32 x, f32 y, f32 z, f32 arg4);
 void func_global_asm_806D3608(void);
 void func_global_asm_80685210(f32 arg0, s16 arg1, s16 arg2);
 void func_global_asm_806F142C(Actor*);
@@ -1235,7 +1242,7 @@ s32 func_global_asm_806FBB9C(s16 textureIndex);
 void func_global_asm_80663C60(f32 *arg0, s16 arg1);
 void func_global_asm_8072ED90(void);
 u8 func_global_asm_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4);
-void func_global_asm_80730D60(s32 arg0, u8 arg1, u8 arg2, u8 arg3, void **arg4, void **arg5);
+void func_global_asm_80730D60(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, void **arg4, void **arg5);
 s32 func_global_asm_8067B2C0(s32);
 void func_global_asm_80678F64(Actor*);
 s16 func_global_asm_8067AF74(Actor*);

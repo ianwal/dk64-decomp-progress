@@ -20,7 +20,7 @@ void func_global_asm_806B9CB0() {
     renderActor(current_actor_pointer, 0);
 }
 
-void func_global_asm_806B9CE0(u8 arg0, s8 arg1) {
+void func_global_asm_806B9CE0(u8 arg0, s8 yOffset) {
     switch (arg0) {
         case 0:
             func_global_asm_8071498C(&func_global_asm_8071720C);
@@ -35,7 +35,7 @@ void func_global_asm_806B9CE0(u8 arg0, s8 arg1) {
         D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
         (((rand() >> 0xF) % 256) * 0.001953125) + 0.5,
         ((rand() >> 0xF) % 6) + (current_actor_pointer->x_position - 3.0f),
-        current_actor_pointer->y_position + arg1,
+        current_actor_pointer->y_position + yOffset,
         ((rand() >> 0xF) % 6) + (current_actor_pointer->z_position - 3.0f)
     );
 }

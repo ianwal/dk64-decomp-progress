@@ -81,14 +81,14 @@ u8 func_bonus_80025480(Actor **arg0, u8 arg1) {
     return D_bonus_8002D8B0[arg1][arg0[arg1]->unk15F];
 }
 
-void func_bonus_800254B0(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_bonus_800254B0(s16 x, s16 y, s16 z, s16 count) {
     s16 i;
 
-    for (i = 0; i < arg3; i++) {
+    for (i = 0; i < count; i++) {
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(&func_global_asm_80717404);
         func_global_asm_80714950(1);
-        drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.3f, arg0, arg1, arg2);
+        drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.3f, x, y, z);
     }
 }
 

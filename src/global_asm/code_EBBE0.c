@@ -59,7 +59,6 @@ extern f32 D_global_asm_807FD888;
 extern void func_global_asm_8068E474(void);
 void func_global_asm_8061C2F0(Actor *, f32, f32, f32, f32, f32, f32, s32);
 void func_global_asm_8062217C(Actor*, u8);
-void func_global_asm_806F91B4(s32, s32, s16);
 void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 void func_global_asm_806CFECC(void);
 s16 func_global_asm_8062773C(s32);
@@ -857,7 +856,7 @@ void func_global_asm_806E9BA8(s32 arg0) {
         playSound(0x263, 0x7FFF, 63.0f, 1.0f, 0xA, 0);
         current_actor_pointer->control_state = arg0;
         current_actor_pointer->control_state_progress = 0;
-        func_global_asm_806F91B4(6, cc_player_index, -1);
+        changeCollectableCount(6, cc_player_index, -1);
         createLight(
             character_change_array[cc_player_index].look_at_eye_x,
             character_change_array[cc_player_index].look_at_eye_y,

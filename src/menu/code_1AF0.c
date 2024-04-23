@@ -54,8 +54,6 @@ void func_menu_80025FB4(MenuStruct1*, CharacterProgress*, s32);
 void func_menu_80026B28(MenuStruct1*, CharacterProgress*, s32);
 void func_menu_80026DAC(MenuStruct1*, CharacterProgress*, s32);
 
-void func_global_asm_806F91B4(s32, s32, s16);
-
 s32 func_menu_80025AF0(MenuStruct1 *arg0, s32 characterIndex) {
     s32 phi_v1;
     s32 phi_v0;
@@ -170,9 +168,9 @@ void func_menu_80025E04(MenuStruct1 *arg0, CharacterProgress *arg1) {
             }
             break;
     }
-    func_global_asm_806F91B4(1, 0, -arg0->unk4);
+    changeCollectableCount(1, 0, -arg0->unk4);
     if (sp1E >= 0) {
-        func_global_asm_806F91B4(sp1E, 0, 9999);
+        changeCollectableCount(sp1E, 0, 9999);
     }
     func_global_asm_8060DEC8(); // saveTheGame()
 }
@@ -637,7 +635,7 @@ void func_menu_80026DAC(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagInde
                             temp2 = func_global_asm_806F8EDC(sp24, 0);
                             if (temp < temp2) {
                                 loadText(current_actor_pointer, sp2C, sp28);
-                                func_global_asm_806F91B4(sp24, 0, 999);
+                                changeCollectableCount(sp24, 0, 999);
                                 arg0->unkE = 0;
                                 cutsceneIndex = 5;
                             }

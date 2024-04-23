@@ -838,15 +838,15 @@ void func_global_asm_80642844(s16 arg0, s16 arg1, Struct80642844 *arg2, s32 arg3
 extern s32 D_global_asm_8071FC58;
 
 void func_global_asm_80642940(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    f32 var_f18;
-    f32 var_f4;
-    f32 var_f6;
+    f32 randomZOffset;
+    f32 randomYOffset;
+    f32 randomXOffset;
     s32 i;
 
     for (i = 0; i < 1; i++) {
-        var_f6 = (((func_global_asm_806119A0() / 10000U) % 200) / 10.0) - 10.0;
-        var_f4 = (((func_global_asm_806119A0() / 10000U) % 200) / 10.0) - 7.0;
-        var_f18 = (((func_global_asm_806119A0() / 10000U) % 200) / 10.0) - 10.0;
+        randomXOffset = (((func_global_asm_806119A0() / 10000U) % 200) / 10.0) - 10.0;
+        randomYOffset = (((func_global_asm_806119A0() / 10000U) % 200) / 10.0) - 7.0;
+        randomZOffset = (((func_global_asm_806119A0() / 10000U) % 200) / 10.0) - 10.0;
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(2);
         func_global_asm_80714950(0x64);
@@ -854,9 +854,9 @@ void func_global_asm_80642940(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         drawSpriteAtPosition(
             &D_global_asm_8071FC58,
             0.5f,
-            D_global_asm_807F621C + var_f6,
-            D_global_asm_807F6220 + var_f4,
-            D_global_asm_807F6224 + var_f18
+            D_global_asm_807F621C + randomXOffset,
+            D_global_asm_807F6220 + randomYOffset,
+            D_global_asm_807F6224 + randomZOffset
         );
     }
     createLight(D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xA6, 0x30, 0xFF);

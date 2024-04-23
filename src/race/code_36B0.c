@@ -2,7 +2,6 @@
 #include "functions.h"
 
 f32 func_global_asm_80665E48(f32, f32, f32, f32);
-s32 func_global_asm_8072177C(void *, s16, s16, s16, s32, s32, s32, s32, s32);
 
 typedef struct {
     u8 pad0[0x10 - 0x0];
@@ -301,9 +300,9 @@ void func_race_80029054(void) {
     A17C_race_80029054 *a17C;
     Actor *temp;
     A178_race_80029054 *sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
+    f32 z;
+    f32 y;
+    f32 x;
 
     a178 = current_actor_pointer->unk178;
     a17C = current_actor_pointer->unk17C;
@@ -322,10 +321,10 @@ void func_race_80029054(void) {
         func_global_asm_8067E278(0, 1);
         current_actor_pointer->control_state = 0x40;
     }
-    getBonePosition(current_actor_pointer, 6, &sp3C, &sp40, &sp44);
-    func_global_asm_8072177C(current_actor_pointer, sp3C, sp40, sp44, 0xFF, 0xFF, 0xFF, 0xFF, 0);
-    getBonePosition(current_actor_pointer, 0xB, &sp3C, &sp40, &sp44);
-    func_global_asm_8072177C(current_actor_pointer, sp3C, sp40, sp44, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+    getBonePosition(current_actor_pointer, 6, &x, &y, &z);
+    addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+    getBonePosition(current_actor_pointer, 0xB, &x, &y, &z);
+    addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
     func_race_80026354(a17C, a178, 1);
     if (a178->unk34 == 0 && sp48->unk34 == 5) {
         D_global_asm_807FDC9C[1].pad0[0] = 0;

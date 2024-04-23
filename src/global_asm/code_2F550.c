@@ -844,6 +844,7 @@ void func_global_asm_8062D1E0(Struct8062D1E0_arg0 *arg0, Struct8062D1E0_arg1 *ar
 }
 */
 
+// TODO: Any cleanup possible for this?
 void func_global_asm_8062D26C(Actor *arg0) {
     s32 sp1C;
 

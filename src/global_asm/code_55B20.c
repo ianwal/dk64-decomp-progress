@@ -249,8 +249,6 @@ void func_global_asm_806524A0(s32 arg0, u8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80652594.s")
 
-Chunk14 *func_global_asm_80630588(Chunk14*, s32, s32, u8*);
-
 /*
 // TODO: Quite close
 // Something to do with arg2? Loop condition? Break?

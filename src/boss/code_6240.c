@@ -148,20 +148,20 @@ void func_boss_8002A55C(u8 arg0, f32 arg1) {
 }
 
 void func_boss_8002A5CC(void) {
-    f32 sp6C;
-    f32 sp68;
-    f32 sp64;
+    f32 x;
+    f32 y;
+    f32 z;
     s16 i;
 
-    getBonePosition(current_actor_pointer, 1, &sp6C, &sp68, &sp64);
-    sp6C += ((rand() >> 0xF) % 80) - 40;
-    sp68 += ((rand() >> 0xF) % 100) + 50;
-    sp64 += ((rand() >> 0xF) % 80) - 40;
+    getBonePosition(current_actor_pointer, 1, &x, &y, &z);
+    x += ((rand() >> 0xF) % 80) - 40;
+    y += ((rand() >> 0xF) % 100) + 50;
+    z += ((rand() >> 0xF) % 80) - 40;
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(&func_global_asm_8071EDEC);
     func_global_asm_80714950(current_actor_pointer);
     changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
-    drawSpriteAtPosition(&D_global_asm_80720120, 1.5f, sp6C, sp68, sp64);
+    drawSpriteAtPosition(&D_global_asm_80720120, 1.5f, x, y, z);
     for (i = 0; i < 4; i++) {
         func_global_asm_80714998(2);
         func_global_asm_8071498C(&func_global_asm_8071720C);

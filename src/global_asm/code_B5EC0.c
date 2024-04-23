@@ -8,13 +8,13 @@ extern s32 D_global_asm_80750600[];
 // TODO: Are these correct?
 extern s32 D_global_asm_8071FFA0;
 
-void func_global_asm_806B11C0(u8 arg0) {
-    f32 sp3C, sp38, sp34;
+void func_global_asm_806B11C0(u8 boneIndex) {
+    f32 x, y, z;
 
-    getBonePosition(current_actor_pointer, arg0, &sp3C, &sp38, &sp34);
-    func_global_asm_80685B44(&D_global_asm_8071FFA0, 0, 1.0f, 3, 5, 0x28, sp3C, current_actor_pointer->floor, sp34);
+    getBonePosition(current_actor_pointer, boneIndex, &x, &y, &z);
+    func_global_asm_80685B44(&D_global_asm_8071FFA0, 0, 1.0f, 3, 5, 0x28, x, current_actor_pointer->floor, z);
     // spawnShockwave
-    func_global_asm_806846B4(sp3C, current_actor_pointer->floor, sp34, 0.05f, 0.04, current_actor_pointer, 0);
+    func_global_asm_806846B4(x, current_actor_pointer->floor, z, 0.05f, 0.04, current_actor_pointer, 0);
 }
 
 void func_global_asm_806B1290(void) {

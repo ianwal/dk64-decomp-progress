@@ -9,9 +9,9 @@ extern s16 D_global_asm_807FD724;
 extern u8 D_global_asm_80754238[];
 
 typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
+    f32 unk0; // x
+    f32 unk4; // y
+    f32 unk8; // z
     f32 unkC;
 } Struct807FD740;
 
@@ -25,12 +25,12 @@ void func_global_asm_806F4750() {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F4778.s")
 
-void func_global_asm_806F4D70(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    D_global_asm_807FD740[arg0].unk0 = arg1;
-    D_global_asm_807FD740[arg0].unk4 = arg2;
-    D_global_asm_807FD740[arg0].unk8 = arg3;
-    D_global_asm_807FD740[arg0].unkC = arg4;
-    D_global_asm_807FD780[arg0] = NULL;
+void func_global_asm_806F4D70(u8 playerIndex, f32 x, f32 y, f32 z, f32 arg4) {
+    D_global_asm_807FD740[playerIndex].unk0 = x;
+    D_global_asm_807FD740[playerIndex].unk4 = y;
+    D_global_asm_807FD740[playerIndex].unk8 = z;
+    D_global_asm_807FD740[playerIndex].unkC = arg4;
+    D_global_asm_807FD780[playerIndex] = NULL;
 }
 
 // close

@@ -2,7 +2,7 @@
 #include "functions.h"
 
 s32 func_global_asm_8063367C(s32, u8, s32);
-s32 func_global_asm_80671D64(s32, s32);
+s32 func_global_asm_80671D64(Actor*, s32);
 void func_global_asm_8072F230(Actor*, u8, u8);
 s32 func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
 f32 func_global_asm_80627A00(f64, f32, f32, f32, f32);
@@ -318,38 +318,38 @@ s32 func_global_asm_8072F8D4(GlobalASMStruct82 *arg0, s32 arg1, s16 arg2) {
 }
 
 f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, GlobalASMStruct82 *arg2, u8 arg3) {
-    u8 temp_t0;
-    u8 temp_t1;
-    f32 sp80;
-    f32 sp7C;
-    f32 sp78;
-    f32 sp74;
-    f32 sp70;
-    f32 sp6C;
+    u8 boneIndex1;
+    u8 boneIndex2;
+    f32 z2;
+    f32 y2;
+    f32 x2;
+    f32 z1;
+    f32 y1;
+    f32 x1;
     f32 sp68;
     f32 sp64;
     f32 sp60;
     f32 var_f2;
-    f32 sp58;
-    f32 sp54;
-    f32 sp50;
+    f32 x3;
+    f32 y3;
+    f32 z3;
 
-    temp_t0 = arg2->unk34[arg3].unk0;
-    temp_t1 = arg2->unk34[arg3].unk1;
+    boneIndex1 = arg2->unk34[arg3].unk0;
+    boneIndex2 = arg2->unk34[arg3].unk1;
     switch (arg2->unk4) {
         case 0:
-            getBonePosition(arg2->unk0, temp_t0, &sp6C, &sp70, &sp74);
-            getBonePosition(arg2->unk0, temp_t1, &sp78, &sp7C, &sp80);
+            getBonePosition(arg2->unk0, boneIndex1, &x1, &y1, &z1);
+            getBonePosition(arg2->unk0, boneIndex2, &x2, &y2, &z2);
             break;
         case 1:
         case 2:
-            func_global_asm_806335B0(arg2->unk0, 1, temp_t0, &sp6C, &sp70, &sp74);
-            func_global_asm_806335B0(arg2->unk0, 1, temp_t1, &sp78, &sp7C, &sp80);
+            func_global_asm_806335B0(arg2->unk0, 1, boneIndex1, &x1, &y1, &z1);
+            func_global_asm_806335B0(arg2->unk0, 1, boneIndex2, &x2, &y2, &z2);
             break;
     }
-    getBonePosition(arg0, 1, &sp58, &sp54, &sp50);
-    func_global_asm_8061F2B8(sp58, sp54, sp50, sp6C, sp70, sp74, sp78, sp7C, sp80, &sp68, &sp64, &sp60);
-    var_f2 = (sp64 - sp70) / (sp7C - sp70);
+    getBonePosition(arg0, 1, &x3, &y3, &z3);
+    func_global_asm_8061F2B8(x3, y3, z3, x1, y1, z1, x2, y2, z2, &sp68, &sp64, &sp60);
+    var_f2 = (sp64 - y1) / (y2 - y1);
     if (arg2->unk18 == 2 || arg2->unk18 == 3) {
         if (arg3 == 0) {
             if (var_f2 < 0.05) {
@@ -402,26 +402,26 @@ void func_global_asm_8072FDD4(GlobalASMStruct82 *arg0, f32 arg1, s8 *arg2, f32 *
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_80730408.s")
 
 void func_global_asm_80730AEC(u8 arg0, f32 arg1, GlobalASMStruct82 *arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
-    u8 sp7C[4];
+    u8 bones[4];
     f32 sp4C[4][3];
 
-    sp7C[0] = arg2->unk34[MAX(arg0 - 1, 0)].unk0;
-    sp7C[1] = arg2->unk34[arg0].unk0;
-    sp7C[2] = arg2->unk34[arg0].unk1;
-    sp7C[3] = arg2->unk34[MIN((arg0 + 1), (arg2->unk7 - 1))].unk1;
+    bones[0] = arg2->unk34[MAX(arg0 - 1, 0)].unk0;
+    bones[1] = arg2->unk34[arg0].unk0;
+    bones[2] = arg2->unk34[arg0].unk1;
+    bones[3] = arg2->unk34[MIN((arg0 + 1), (arg2->unk7 - 1))].unk1;
     switch (arg2->unk4) {
         case 1:
         case 2:
-            func_global_asm_806335B0(arg2->unk0, 1, sp7C[0], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
-            func_global_asm_806335B0(arg2->unk0, 1, sp7C[1], &sp4C[1][0], &sp4C[1][1], &sp4C[1][2]);
-            func_global_asm_806335B0(arg2->unk0, 1, sp7C[2], &sp4C[2][0], &sp4C[2][1], &sp4C[2][2]);
-            func_global_asm_806335B0(arg2->unk0, 1, sp7C[3], &sp4C[3][0], &sp4C[3][1], &sp4C[3][2]);
+            func_global_asm_806335B0(arg2->unk0, 1, bones[0], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            func_global_asm_806335B0(arg2->unk0, 1, bones[1], &sp4C[1][0], &sp4C[1][1], &sp4C[1][2]);
+            func_global_asm_806335B0(arg2->unk0, 1, bones[2], &sp4C[2][0], &sp4C[2][1], &sp4C[2][2]);
+            func_global_asm_806335B0(arg2->unk0, 1, bones[3], &sp4C[3][0], &sp4C[3][1], &sp4C[3][2]);
             break;
         case 0:
-            getBonePosition(arg2->unk0, sp7C[0], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
-            getBonePosition(arg2->unk0, sp7C[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
-            getBonePosition(arg2->unk0, sp7C[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
-            getBonePosition(arg2->unk0, sp7C[2], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            getBonePosition(arg2->unk0, bones[0], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            getBonePosition(arg2->unk0, bones[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            getBonePosition(arg2->unk0, bones[1], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
+            getBonePosition(arg2->unk0, bones[2], &sp4C[0][0], &sp4C[0][1], &sp4C[0][2]);
             break;
     }
     *arg3 = func_global_asm_80627A00(arg1, sp4C[0][0], sp4C[1][0], sp4C[2][0], sp4C[3][0]);
@@ -429,7 +429,7 @@ void func_global_asm_80730AEC(u8 arg0, f32 arg1, GlobalASMStruct82 *arg2, f32 *a
     *arg5 = func_global_asm_80627A00(arg1, sp4C[0][2], sp4C[1][2], sp4C[2][2], sp4C[3][2]);
 }
 
-void func_global_asm_80730D60(s32 arg0, u8 arg1, u8 arg2, u8 arg3, void **arg4, void **arg5) {
+void func_global_asm_80730D60(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, void **arg4, void **arg5) {
     switch (arg1) {
         case 0:
             *arg4 = func_global_asm_80671D64(arg0, arg2);

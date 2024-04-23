@@ -210,6 +210,8 @@ __osViIntrCount = 0x80014FEC; // segment:dk64_boot
 __osTimerCounter = 0x80014FF0; // segment:dk64_boot
 __osEepPifRam = 0x800162E0; // segment:dk64_boot
 
+addActorRecolor = 0x8072177C; // segment:global_asm
+changeCollectableCount = 0x806F91B4; // segment:global_asm
 getBonePosition = 0x80671C0C; // segment:global_asm
 moveAndScaleActorToAnother = 0x8067B238; // segment:global_asm
 getTextString = 0x8070E750; // segment:global_asm

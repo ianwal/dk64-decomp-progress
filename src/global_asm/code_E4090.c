@@ -39,7 +39,6 @@ extern u8 D_global_asm_807FC8B9;
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern f32 D_global_asm_807FD888;
 
-void func_global_asm_806F91B4(s32, s32, s16);
 f32 func_global_asm_806DFFA0(f32, s16, s16);
 void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 handleInputsForControlState(s32 arg0);
@@ -1702,7 +1701,7 @@ void func_global_asm_806E52D0(void) {
                     current_actor_pointer->noclip_byte = 1;
                 }
                 if (!temp_v1) {
-                    func_global_asm_806F91B4(7, cc_player_index, -1);
+                    changeCollectableCount(7, cc_player_index, -1);
                 }
             }
             if (!temp_v1) {

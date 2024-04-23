@@ -5,12 +5,12 @@ extern s32 D_global_asm_8071FB34;
 extern s32 D_global_asm_8071FF18;
 extern f64 D_global_asm_8075FF20;
 void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
-void func_global_asm_806F91B4(u8, u8, s16);
 s16 func_global_asm_806CC190(s16, s16, f32);
 s16 func_global_asm_806CC190(s16, s16, f32);
 
 extern f64 D_global_asm_8075FF38;
 
+// doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/initializeCharacterSpawnerActor.s")
 
 extern s8 D_global_asm_807FBB85;
@@ -28,7 +28,6 @@ typedef struct {
 void func_global_asm_806663F8(void);
 
 /*
-// TODO: Doable, very close!!!
 void initializeCharacterSpawnerActor(void) {
     EnemyInfo *temp_t9;
     AAD_global_asm_80729B00 *temp_t7;
@@ -660,19 +659,19 @@ void func_global_asm_8072DAA4(void) {
 }
 
 void func_global_asm_8072DB68(s32 arg0) {
-    u8 phi_v1;
-    s16 phi_s0;
+    u8 amount;
+    s16 i;
 
     if (func_global_asm_806F8AD4(0xB, cc_player_index) >= 4) {
-        phi_v1 = 3;
+        amount = 3;
     } else {
-        phi_v1 = func_global_asm_806F8AD4(0xB, cc_player_index);
+        amount = func_global_asm_806F8AD4(0xB, cc_player_index);
     }
-    func_global_asm_806F91B4(0xB, cc_player_index, -phi_v1);
+    changeCollectableCount(0xB, cc_player_index, -amount);
     func_global_asm_806F8BC4(0xB, 0, 0);
     playSong(0x41, 1.0f);
-    for (phi_s0 = 0; phi_s0 < phi_v1; phi_s0++) {
-        func_global_asm_806A5DF0(0x36, player_pointer->x_position, player_pointer->y_position, player_pointer->z_position, (player_pointer->y_rotation + (phi_s0 * 0xC8)) - 0xC8, 1, -1, 0);
+    for (i = 0; i < amount; i++) {
+        func_global_asm_806A5DF0(0x36, player_pointer->x_position, player_pointer->y_position, player_pointer->z_position, (player_pointer->y_rotation + (i * 200)) - 200, 1, -1, 0);
     }
 }
 
@@ -810,13 +809,13 @@ u8 func_global_asm_8072E22C(u16 arg0) {
     return ((dx * dx) + (dy * dy) + (dz * dz)) < (arg0 * arg0);
 }
 
-void func_global_asm_8072E2B0(Actor *arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
+void func_global_asm_8072E2B0(Actor *arg0, f32 *x, f32 *y, f32 *z) {
     if (arg0->unkCC) {
-        getBonePosition(arg0, arg0->unkCC, arg1, arg2, arg3);
+        getBonePosition(arg0, arg0->unkCC, x, y, z);
     } else {
-        *arg1 = arg0->x_position;
-        *arg2 = arg0->y_position;
-        *arg3 = arg0->z_position;
+        *x = arg0->x_position;
+        *y = arg0->y_position;
+        *z = arg0->z_position;
     }
 }
 

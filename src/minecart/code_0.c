@@ -89,7 +89,6 @@ void func_minecart_80024254(Struct80024254_arg0 *arg0) {
     }
 }
 
-void func_global_asm_8072177C(Actor *, s16, s16, s16, s32, s32, s32, s32, s32);
 void func_minecart_800253C0(void *, s16, u8);
 extern s16 D_global_asm_80750AC4;
 
@@ -125,9 +124,9 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
     f32 dx;
     f32 dz;
     f32 dy;
-    f32 sp60;
-    f32 sp5C;
-    f32 sp58;
+    f32 z;
+    f32 y;
+    f32 x;
 
     aaD = current_actor_pointer->additional_actor_data;
     PaaD = character_change_array->player_pointer->PaaD;
@@ -198,30 +197,30 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
             func_global_asm_8068ECF4(6, 0xFF);
             func_minecart_80024254(aaD);
             func_minecart_800253C0(aaD, arg2, arg3);
-            getBonePosition(current_actor_pointer, 5, &sp58, &sp5C, &sp60);
-            func_global_asm_8072177C(current_actor_pointer, sp58, sp5C, sp60, 0xFF, 0xFF, 0xFF, 0xFF, 0);
-            func_global_asm_8072177C(aaD->unk4, sp58, sp5C, sp60, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+            getBonePosition(current_actor_pointer, 5, &x, &y, &z);
+            addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+            addActorRecolor(aaD->unk4, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
     }
 }
 
 void func_minecart_80024768(void) {
-    f32 sp4C;
-    f32 sp48;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
-    f32 sp38;
+    f32 z2;
+    f32 y2;
+    f32 x2;
+    f32 z1;
+    f32 y1;
+    f32 x1;
 
     if (extra_player_info_pointer->unk1F0 & 0x10000002) {
-        getBonePosition(current_actor_pointer, 2, &sp38, &sp3C, &sp40);
-        getBonePosition(current_actor_pointer, 1, &sp44, &sp48, &sp4C);
+        getBonePosition(current_actor_pointer, 2, &x1, &y1, &z1);
+        getBonePosition(current_actor_pointer, 1, &x2, &y2, &z2);
     } else {
-        getBonePosition(current_actor_pointer, 1, &sp38, &sp3C, &sp40);
-        getBonePosition(current_actor_pointer, 2, &sp44, &sp48, &sp4C);
+        getBonePosition(current_actor_pointer, 1, &x1, &y1, &z1);
+        getBonePosition(current_actor_pointer, 2, &x2, &y2, &z2);
     }
     func_global_asm_8065A6F8(0xC8);
     func_global_asm_8065A660(20.0f, 40.0f);
-    createLight(sp38, sp3C, sp40, sp44, sp48, sp4C, 0.0f, 1, 0xFF, 0xFF, 0xFF);
+    createLight(x1, y1, z1, x2, y2, z2, 0.0f, 1, 0xFF, 0xFF, 0xFF);
 }
 
 typedef struct {

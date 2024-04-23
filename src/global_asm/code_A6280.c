@@ -104,7 +104,7 @@ void func_global_asm_806A1ABC(void) {
 extern s32 D_global_asm_8071FFA0;
 
 void func_global_asm_806A1AC4(void) {
-    f32 temp_f20;
+    f32 randomScale;
     s16 i;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -152,13 +152,13 @@ void func_global_asm_806A1AC4(void) {
                 case 0:
                     if ((object_timer & 7) == 0) {
                         for (i = 0; i < 0xC; i++) {
-                            temp_f20 = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * 0.01;
+                            randomScale = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * 0.01;
                             func_global_asm_8071498C(&func_global_asm_8071E864);
                             func_global_asm_80714950(i);
                             func_global_asm_807149B8(1);
                             changeActorColor(0x8C, 0x8C, 0x8C, 0xFF);
                             func_global_asm_80714998(5);
-                            drawSpriteAtPosition(&D_global_asm_8071FFA0, temp_f20, current_actor_pointer->x_position, current_actor_pointer->y_position + 50.0f, current_actor_pointer->z_position);
+                            drawSpriteAtPosition(&D_global_asm_8071FFA0, randomScale, current_actor_pointer->x_position, current_actor_pointer->y_position + 50.0f, current_actor_pointer->z_position);
                         }
                     }
                     break;
@@ -217,9 +217,9 @@ void func_global_asm_806A1FD8(void) {
     AAD_global_asm_806A1FD8 *aaD;
     s32 i;
     u8 var_a1;
-    f32 sp54;
-    f32 sp50;
-    f32 sp4C;
+    f32 x;
+    f32 y;
+    f32 z;
     Actor *temp_s0;
 
     aaD = current_actor_pointer->additional_actor_data;
@@ -230,7 +230,7 @@ void func_global_asm_806A1FD8(void) {
         aaD->unk8 = current_actor_pointer->y_position;
         current_actor_pointer->unk130 = 0x46;
         current_actor_pointer->unk131 = 0x14;
-        if (isFlagSet(func_global_asm_80688C30(func_global_asm_80688E68(current_actor_pointer)), FLAG_TYPE_PERMANENT) != 0) {
+        if (isFlagSet(func_global_asm_80688C30(func_global_asm_80688E68(current_actor_pointer)), FLAG_TYPE_PERMANENT)) {
             deleteActor(current_actor_pointer);
         }
     }
@@ -255,8 +255,8 @@ void func_global_asm_806A1FD8(void) {
                 func_global_asm_8071498C(&func_global_asm_80717D4C);
                 func_global_asm_80714950(-0x64);
                 changeActorColor(0x64, 0x46, 0x1E, 0xFF);
-                getBonePosition(current_actor_pointer, i, &sp54, &sp50, &sp4C);
-                drawSpriteAtPosition(&D_global_asm_8071FF18, 2.0f, sp54, sp50 + 10.0, sp4C);
+                getBonePosition(current_actor_pointer, i, &x, &y, &z);
+                drawSpriteAtPosition(&D_global_asm_8071FF18, 2.0f, x, y + 10.0, z);
             }
             aaD->unk0 = 0xF;
             playSoundAtActorPosition(current_actor_pointer, 0x1C1, 0xFF, 0x7F, 1);

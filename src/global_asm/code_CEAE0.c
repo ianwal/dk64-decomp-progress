@@ -96,7 +96,6 @@ extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern u8 D_global_asm_807FD586;
 
 void func_global_asm_8062217C(Actor*, u8);
-void func_global_asm_806F91B4(s32, s32, s16);
 int func_global_asm_806FF358(); // TODO: Signature
 int func_global_asm_806FF75C(); // TODO: Signature
 void func_global_asm_80665160(Actor *, s16, s16);
@@ -316,7 +315,7 @@ void func_global_asm_806CA2E4(void) {
                     current_actor_pointer->control_state = 0x2D;
                     current_actor_pointer->control_state_progress = 0;
                     func_global_asm_806F8BC4(5, 0, 0);
-                    func_global_asm_806F91B4(5, extra_player_info_pointer->unk1A4, -1 * func_global_asm_806FA7A4(5));
+                    changeCollectableCount(5, extra_player_info_pointer->unk1A4, -1 * func_global_asm_806FA7A4(5));
                     playAnimation(current_actor_pointer, 0x42);
                     playSoundAtActorPosition(current_actor_pointer, 0xF2, 0xFF, 0x7F, 0);
                     current_actor_pointer->unkB8 = 0.0f;
@@ -388,7 +387,7 @@ void func_global_asm_806CB53C(void) {
         }
         if (!(D_global_asm_80750B54[current_actor_pointer->control_state].unk0 & 0x300) && !(extra_player_info_pointer->unk1F0 & 0x14000) && !func_global_asm_8061CB50()) {
             if ((extra_player_info_pointer->unk1F4 & 0x10) == 0) {
-                func_global_asm_806F91B4(5, extra_player_info_pointer->unk1A4, -1);
+                changeCollectableCount(5, extra_player_info_pointer->unk1A4, -1);
             }
         }
     } else {
@@ -1266,23 +1265,23 @@ void func_global_asm_806CEE64(f32 arg0) {
 }
 
 void func_global_asm_806CEED8(void) {
-    f32 sp44; // 44
-    f32 sp40; // 40
-    f32 sp3C; // 3C
-    f32 sp38; // 38
-    f32 sp34; // 34
-    f32 sp30; // 30
-    f32 d; // 2C
-    f32 sp28; // 28
-    s32 sp24; // 24
-    s32 sp20; // 20
+    f32 x2;
+    f32 x1;
+    f32 y2;
+    f32 y1;
+    f32 z2;
+    f32 z1;
+    f32 dxz;
+    f32 dy;
+    s32 boneIndex1;
+    s32 boneIndex2;
 
-    func_global_asm_806CF2EC(&sp24, &sp20);
-    getBonePosition(current_actor_pointer, sp24, &sp40, &sp38, &sp30);
-    getBonePosition(current_actor_pointer, sp20, &sp44, &sp3C, &sp34);
-    sp28 = sp3C - sp38;
-    d = sqrtf(((sp34 - sp30) * (sp34 - sp30)) + ((sp44 - sp40) * (sp44 - sp40)));
-    extra_player_info_pointer->unk1BC = ((0.0 - (func_global_asm_80611BB4(sp28, d) * 57.29577637f)) + 270.0);
+    func_global_asm_806CF2EC(&boneIndex1, &boneIndex2);
+    getBonePosition(current_actor_pointer, boneIndex1, &x1, &y1, &z1);
+    getBonePosition(current_actor_pointer, boneIndex2, &x2, &y2, &z2);
+    dy = y2 - y1;
+    dxz = sqrtf(((z2 - z1) * (z2 - z1)) + ((x2 - x1) * (x2 - x1)));
+    extra_player_info_pointer->unk1BC = ((0.0 - (func_global_asm_80611BB4(dy, dxz) * 57.29577637f)) + 270.0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CEFBC.s")
@@ -2541,21 +2540,21 @@ void func_global_asm_806D25CC(void) {
 }
 
 void func_global_asm_806D266C(void) {
-    f32 sp2C, sp28, sp24;
+    f32 x, y, z;
 
     func_global_asm_806D2378();
     func_global_asm_806D25CC();
-    getBonePosition(current_actor_pointer, 3, &sp2C, &sp28, &sp24);
-    func_global_asm_806F4D70(cc_player_index, sp2C, sp28, sp24, 25.0f);
+    getBonePosition(current_actor_pointer, 3, &x, &y, &z);
+    func_global_asm_806F4D70(cc_player_index, x, y, z, 25.0f);
 }
 
 void func_global_asm_806D26D8(void) {
-    f32 sp2C, sp28, sp24;
+    f32 x, y, z;
 
     func_global_asm_806D2378();
     func_global_asm_806D25CC();
-    getBonePosition(current_actor_pointer, 2, &sp2C, &sp28, &sp24);
-    func_global_asm_806F4D70(cc_player_index, sp2C, sp28, sp24, 25.0f);
+    getBonePosition(current_actor_pointer, 2, &x, &y, &z);
+    func_global_asm_806F4D70(cc_player_index, x, y, z, 25.0f);
 }
 
 void func_global_asm_806D2744(s32 arg0) {

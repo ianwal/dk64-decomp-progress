@@ -56,20 +56,20 @@ void func_global_asm_806ADFE0(void) {
     }
 }
 
-void func_global_asm_806AE2B0(s32 modelIndex, s16 arg1, s16 arg2, s16 arg3) {
-    f32 sp2C;
-    f32 sp28;
-    f32 sp24;
+void func_global_asm_806AE2B0(s32 modelIndex, s16 arg1, s16 boneIndex, s16 arg3) {
+    f32 x;
+    f32 y;
+    f32 z;
 
     if (spawnActor(ACTOR_KROSSBONES_HEAD, modelIndex)) {
-        getBonePosition(current_actor_pointer, arg2, &sp2C, &sp28, &sp24);
+        getBonePosition(current_actor_pointer, boneIndex, &x, &y, &z);
         last_spawned_actor->floor = current_actor_pointer->floor;
         last_spawned_actor->y_rotation = current_actor_pointer->y_rotation + arg1;
         last_spawned_actor->unkEE = last_spawned_actor->y_rotation;
         last_spawned_actor->unk168 = arg3;
-        last_spawned_actor->x_position = sp2C;
-        last_spawned_actor->y_position = sp28;
-        last_spawned_actor->z_position = sp24;
+        last_spawned_actor->x_position = x;
+        last_spawned_actor->y_position = y;
+        last_spawned_actor->z_position = z;
         func_global_asm_807248B0(last_spawned_actor, current_actor_pointer->animation_state->scale_y);
     }
 }

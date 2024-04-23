@@ -606,10 +606,10 @@ u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
 }
 
 // Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F91B4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/changeCollectableCount.s")
 
 /*
-void func_global_asm_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
+void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
     HUDDisplay *HUDItem;
     CharacterProgress *sp48;
     s32 maxItemCapacity;

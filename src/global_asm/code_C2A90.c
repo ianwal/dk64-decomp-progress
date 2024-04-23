@@ -29,7 +29,6 @@ extern u16 D_global_asm_807FC930[];
 void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_806BF920(void);
-void func_global_asm_806F91B4(s32, u8, s32);
 int func_global_asm_807035C4(); // TODO: Signature
 void func_global_asm_80718BF4(void);
 int func_global_asm_807197B4(); // TODO: Signature
@@ -152,7 +151,7 @@ void func_global_asm_806BE09C(void) {
                         if (!(object_timer & 3)) {
                             sp3C = &D_global_asm_807FC950->character_progress[*current_character_index];
                             D_global_asm_807FDC90->unk2C--;
-                            func_global_asm_806F91B4(0, 0, -1);
+                            changeCollectableCount(0, 0, -1);
                             sp3C->coloured_bananas_fed_to_tns[levelIndex]++;
                             for (i = 0; i < 5; i++) { count += D_global_asm_807FC950[0].character_progress[i].coloured_bananas_fed_to_tns[levelIndex]; }
                             if (count >= D_global_asm_807446C0[levelIndex]) {
@@ -920,14 +919,14 @@ void func_global_asm_806C28B8(void) {
 }
 */
 
-void func_global_asm_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 arg3, f32 arg4, f32 arg5, void *arg6, f32 arg7) {
+void func_global_asm_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 x, f32 y, f32 z, void *sprite, f32 scale) {
     func_global_asm_807149A8(1000);
     func_global_asm_80714998(0xFF);
     func_global_asm_80714944(((rand() >> 0xF) % 32767) % 11);
     changeActorColor(arg0, arg1, arg2, 0xFF);
     func_global_asm_8071498C(&func_global_asm_80717D84);
     func_global_asm_80714950(2);
-    drawSpriteAtPosition(arg6, arg7 * 0.2, arg3, arg4, arg5);
+    drawSpriteAtPosition(sprite, scale * 0.2, x, y, z);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C2B2C.s")

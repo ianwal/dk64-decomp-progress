@@ -107,7 +107,6 @@ void func_global_asm_806A4DDC(Actor *arg0);
 void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
 
 s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
-void func_global_asm_806F91B4(s32 HUDItemIndex, u8 playerIndex, s16 amount);
 void func_global_asm_80723484(s32, Actor*);
 void func_global_asm_807149FC(s32 arg0);
 
@@ -858,7 +857,7 @@ void func_global_asm_806A7600(void *arg0) {
             setFlag(sp34->unk6, TRUE, FLAG_TYPE_PERMANENT);
         }
         func_global_asm_806F8BC4(0, 0, 0);
-        func_global_asm_806F91B4(0, 0, 0xA);
+        changeCollectableCount(0, 0, 10);
     }
 }
 
@@ -910,7 +909,7 @@ void func_global_asm_806A7BDC(void) {
         func_global_asm_80714C08(sp44.unk0[sp60], 0.2f, current_actor_pointer, 1, 0);
         playSong(0x7F, 1.0f);
         func_global_asm_806F8BC4(7, 0, 0);
-        func_global_asm_806F91B4(7, 0, func_global_asm_806F8EDC(7, 0));
+        changeCollectableCount(7, 0, func_global_asm_806F8EDC(7, 0));
     }
     if (!(object_timer & 0xF)) {
         func_global_asm_807149B8(1);

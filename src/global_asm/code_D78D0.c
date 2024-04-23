@@ -78,7 +78,6 @@ extern s32 D_global_asm_807FBB68;
 extern f32 D_global_asm_807FBC58;
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 
-void func_global_asm_806F91B4(s32, s32, s16);
 void func_global_asm_80665160(Actor *, s16, s16);
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
 void func_global_asm_806CEE64(f32);
@@ -236,7 +235,7 @@ void func_global_asm_806D2E9C(void) {
     if (func_global_asm_8061CB50() == 0) {
         func_global_asm_806CC948();
         if ((func_global_asm_806F8AD4(5, cc_player_index) != 0) && !(extra_player_info_pointer->unk1F0 & 0x10000)) {
-            func_global_asm_806F91B4(5, cc_player_index, -1);
+            changeCollectableCount(5, cc_player_index, -1);
         }
     }
     renderActor(current_actor_pointer, 0);
@@ -3132,7 +3131,7 @@ void func_global_asm_806DED44(void) {
                 func_global_asm_80709464(PaaD->unk1A4);
                 
                 for (i = 0; i < 4; i++) {
-                    func_global_asm_806F91B4(D_global_asm_80750FE0[i], 0, 9999);
+                    changeCollectableCount(D_global_asm_80750FE0[i], 0, 9999);
                     func_global_asm_806F8BC4(D_global_asm_80750FE0[i], 0, 0);
                 }
             }
