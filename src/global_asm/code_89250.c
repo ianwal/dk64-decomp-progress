@@ -46,24 +46,24 @@ void func_global_asm_806858E8(Actor*, s16, f32, f32, f32, f32, s32);
 void func_global_asm_80686390(Actor*, f32, f32, f32, f32);
 void func_global_asm_80685F60(Actor *actor);
 
-void func_global_asm_80684550(Actor *arg0, u8 arg1, f32 arg2) {
+void func_global_asm_80684550(Actor *actor, u8 boneIndex, f32 scale) {
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(&func_global_asm_8071AF30);
-    func_global_asm_80714950(arg0);
+    func_global_asm_80714950(actor);
     func_global_asm_80714A28(4);
-    func_global_asm_80714C08(&D_global_asm_80720120, arg2, current_actor_pointer, arg1, 0);
+    func_global_asm_80714C08(&D_global_asm_80720120, scale, current_actor_pointer, boneIndex, 0);
 }
 
 void func_global_asm_806845B8(u8 arg0, u8 arg1) {
-    f32 sp2C;
+    f32 scale;
     u8 sp2B;
 
     if ((object_timer & 3) == 0) {
-        sp2C = current_actor_pointer->animation_state->scale_y / 0.15;
+        scale = current_actor_pointer->animation_state->scale_y / 0.15;
         sp2B = (((rand() >> 0xF) % 0x7FFF) % ((arg1 - arg0) + 1)) + arg0;
         func_global_asm_80714998(3);
         changeActorColor(0xE6, 0xE6, 0xE6, 0xE6);
-        func_global_asm_8068588C(current_actor_pointer, sp2B, sp2C, 0.0f, 0.0f, 0.0f, -0x78);
+        func_global_asm_8068588C(current_actor_pointer, sp2B, scale, 0.0f, 0.0f, 0.0f, -0x78);
     }
 }
 
@@ -377,9 +377,9 @@ void func_global_asm_8068581C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg
     func_global_asm_8068588C(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
 }
 
-void func_global_asm_8068588C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
+void func_global_asm_8068588C(Actor *actor, s16 arg1, f32 scale, f32 x, f32 y, f32 z, s32 arg6) {
     func_global_asm_807149B8(1);
-    func_global_asm_806858E8(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+    func_global_asm_806858E8(actor, arg1, scale, x, y, z, arg6);
 }
 
 void func_global_asm_806858E8(Actor *arg0, s16 arg1, f32 scale, f32 x, f32 y, f32 z, s32 arg6) {

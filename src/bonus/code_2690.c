@@ -211,7 +211,7 @@ extern f32 D_bonus_8002DD44;
 extern f32 D_bonus_8002DD48;
 extern f32 D_bonus_8002DD4C;
 extern f32 D_bonus_8002DD50;
-void func_bonus_80026940();
+void func_bonus_80026940(void* arg0, Actor* arg1);
 
 typedef struct {
     s16 unk0;

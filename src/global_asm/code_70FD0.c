@@ -132,7 +132,7 @@ void func_global_asm_8066CCD8(void) {
 
 void func_global_asm_8066CDF8(void);
 
-void func_global_asm_8066CDD0() {
+void func_global_asm_8066CDD0(void) {
     func_global_asm_8066CDF8();
     func_global_asm_806687E0();
 }
@@ -1608,6 +1608,6 @@ s32 func_global_asm_80672CBC(s8 arg0) {
 }
 */
 
-void func_global_asm_80672E6C() {
+void func_global_asm_80672E6C(void) {
     func_global_asm_806119A0();
 }

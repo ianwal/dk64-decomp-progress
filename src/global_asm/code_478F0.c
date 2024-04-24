@@ -1340,7 +1340,7 @@ loop_8:
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_806487C4.s")
 
-int func_global_asm_80648C50() {
+int func_global_asm_80648C50(void) {
     s16 chunk = character_change_array[0].chunk;
     switch (chunk) {
         case 4:

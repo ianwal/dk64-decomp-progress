@@ -2,7 +2,7 @@
 #include "functions.h"
 
 extern s32 D_global_asm_8074E880[];
-extern void func_global_asm_8071CDE0();
+extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
 
 void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
 
@@ -82,7 +82,7 @@ void func_boss_80027A30(Struct80027A30_arg0 *arg0, u8 *arg1) {
 // Jumptable, 2224 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_80027BA8.s")
 
-void func_boss_80028458() {
+void func_boss_80028458(void) {
     func_global_asm_805FF8F8();
 }
 

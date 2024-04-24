@@ -425,7 +425,7 @@ void func_global_asm_8069E018(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-void func_global_asm_8069E040() {
+void func_global_asm_8069E040(void) {
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         playActorAnimation(current_actor_pointer, 0x299);
     }

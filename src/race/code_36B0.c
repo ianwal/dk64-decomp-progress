@@ -136,7 +136,6 @@ void func_race_80027AF8(RaceStruct3 *arg0, s8 arg1) {
 }
 
 void func_race_80027B30(RaceStruct3 *arg0) {
-
     switch (arg0->unk0) {
         case 0:
             arg0->unk1++;

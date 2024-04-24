@@ -5,7 +5,7 @@
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BA790/func_global_asm_806B5A90.s")
 
-void func_global_asm_806B63E0() {
+void func_global_asm_806B63E0(void) {
     initializeCharacterSpawnerActor();
     func_global_asm_806B5A90(10000, 0);
 }

@@ -400,18 +400,18 @@ void func_global_asm_80688FC0(ActorSpawnerFromFile *arg0) {
 }
 */
 
-void func_global_asm_80689064(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5) {
+void func_global_asm_80689064(s16 arg0, f32 x, f32 y, f32 z, s16 arg4, f32 arg5) {
     Struct807500B4 sp38 = D_global_asm_807500B4;
-    func_global_asm_80689250(arg0, arg1, arg2, arg3, arg4, arg5, &sp38, 0, NULL, func_global_asm_80688E08());
+    func_global_asm_80689250(arg0, x, y, z, arg4, arg5, &sp38, 0, NULL, func_global_asm_80688E08());
 }
 
-void func_global_asm_80689114(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, Actor *arg6) {
+void func_global_asm_80689114(s16 arg0, f32 x, f32 y, f32 z, s16 arg4, f32 arg5, Actor *arg6) {
     Struct807500B4 sp38 = D_global_asm_807500D4;
-    func_global_asm_80689250(arg0 - 0x10, arg1, arg2, arg3, arg4, arg5, &sp38, 1, arg6, func_global_asm_80688E08());
+    func_global_asm_80689250(arg0 - 0x10, x, y, z, arg4, arg5, &sp38, 1, arg6, func_global_asm_80688E08());
 }
 
-void func_global_asm_806891D8(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, Actor *arg6, Struct807500B4 *arg7) {
-    func_global_asm_80689250(arg0 - 0x10, arg1, arg2, arg3, arg4, arg5, arg7, 1, arg6, func_global_asm_80688E08());
+void func_global_asm_806891D8(s16 arg0, f32 x, f32 y, f32 z, s16 arg4, f32 arg5, Actor *arg6, Struct807500B4 *arg7) {
+    func_global_asm_80689250(arg0 - 0x10, x, y, z, arg4, arg5, arg7, 1, arg6, func_global_asm_80688E08());
 }
 
 // close

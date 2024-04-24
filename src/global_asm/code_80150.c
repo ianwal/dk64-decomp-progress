@@ -32,7 +32,7 @@ u8 func_global_asm_8067B450(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067B4C8.s")
 
-void func_global_asm_8067BA3C() {
+void func_global_asm_8067BA3C(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->draw_distance = 2000;
     }
@@ -544,7 +544,7 @@ void func_global_asm_8067E43C(void) {
     }
 }
 
-void func_global_asm_8067E4D4() {
+void func_global_asm_8067E4D4(void) {
     func_global_asm_8067E784();
     if (current_actor_pointer->control_state == 0) {
         func_global_asm_8067E43C();
@@ -632,7 +632,7 @@ void func_global_asm_80680774(void) {
     }
 }
 
-void func_global_asm_8068086C() {
+void func_global_asm_8068086C(void) {
     if (current_character_index[0] >= 5) {
         current_actor_pointer->unk132 = 4;
         current_actor_pointer->object_properties_bitfield &= ~0x8000;

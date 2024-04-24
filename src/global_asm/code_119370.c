@@ -10,6 +10,7 @@ extern s32 D_global_asm_8074E880[]; // TODO: Datatype
 
 extern u8 D_global_asm_8074450C;
 
+extern u8 D_global_asm_80750AB4;
 extern s16 D_global_asm_807502D0;
 
 extern f32 D_global_asm_8075E728;
@@ -80,10 +81,10 @@ extern f32 D_global_asm_8075EA50;
 extern Struct807FDB00 *D_global_asm_807FDB00;
 extern Struct807FDB04 *D_global_asm_807FDB04;
 extern Struct80717D84 *D_global_asm_807FDB08;
-extern u8 D_global_asm_807FDB0C;
-extern u8 D_global_asm_807FDB0D;
-extern u8 D_global_asm_807FDB0E;
-extern u8 D_global_asm_807FDB0F;
+extern u8 D_global_asm_807FDB0C; // red
+extern u8 D_global_asm_807FDB0D; // green
+extern u8 D_global_asm_807FDB0E; // blue
+extern u8 D_global_asm_807FDB0F; // alpha
 extern s32 D_global_asm_807FDB10;
 extern void *D_global_asm_807FDB14; // TODO: Function pointer
 extern u8 D_global_asm_807FDB18;
@@ -104,9 +105,10 @@ extern s16 D_global_asm_807FDB3E;
 extern s16 D_global_asm_807FDB40;
 extern s16 D_global_asm_807FDB42;
 
+void func_global_asm_80714778(f32);
 void func_global_asm_80714A9C(void);
-void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
 int func_global_asm_80717404(); // TODO: Signature
+void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
 
 void func_global_asm_80714670(void) {
     D_global_asm_807FDB00 = NULL;
@@ -193,11 +195,11 @@ void func_global_asm_807149B8(u8 arg0) {
     D_global_asm_807FDB18 = arg0;
 }
 
-void changeActorColor(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
-    D_global_asm_807FDB0C = arg0;
-    D_global_asm_807FDB0D = arg1;
-    D_global_asm_807FDB0E = arg2;
-    D_global_asm_807FDB0F = arg3;
+void changeActorColor(u8 red, u8 green, u8 blue, u8 alpha) {
+    D_global_asm_807FDB0C = red;
+    D_global_asm_807FDB0D = green;
+    D_global_asm_807FDB0E = blue;
+    D_global_asm_807FDB0F = alpha;
 }
 
 void func_global_asm_807149FC(s32 arg0) {
@@ -274,21 +276,6 @@ Struct80717D84 *drawSpriteAtPosition(void* sprite, f32 scale, f32 x, f32 y, f32 
     return func_global_asm_80714D08(sprite, scale, x, y, z, NULL, 0, 0, 0);
 }
 
-extern u8 D_global_asm_80750AB4;
-extern Struct807FDB00 *D_global_asm_807FDB00;
-extern u8 D_global_asm_807FDB0C;
-extern u8 D_global_asm_807FDB0D;
-extern u8 D_global_asm_807FDB0E;
-extern u8 D_global_asm_807FDB0F;
-extern u8 D_global_asm_807FDB1D;
-extern f32 D_global_asm_807FDB20;
-extern f32 D_global_asm_807FDB24;
-extern u8 D_global_asm_807FDB28;
-extern u16 D_global_asm_807FDB36;
-extern s16 D_global_asm_807FDB3C;
-
-void func_global_asm_80714778(f32);
-
 Struct80717D84 *func_global_asm_80714D08(void *sprite, f32 scale, f32 x, f32 y, f32 z, Actor *actor, s32 arg6, s32 boneIndex, u8 arg8) {
     Struct80717D84 *sp2C;
     s32 i;
@@ -337,15 +324,15 @@ Struct80717D84 *func_global_asm_80714D08(void *sprite, f32 scale, f32 x, f32 y, 
         sp2C->unk364 = scale;
     }
     if (D_global_asm_807FDB0F != 0) {
-        sp2C->unk36A = D_global_asm_807FDB0C;
-        sp2C->unk36B = D_global_asm_807FDB0D;
-        sp2C->unk36C = D_global_asm_807FDB0E;
-        sp2C->unk36D = D_global_asm_807FDB0F;
+        sp2C->unk36A = D_global_asm_807FDB0C; // red
+        sp2C->unk36B = D_global_asm_807FDB0D; // green
+        sp2C->unk36C = D_global_asm_807FDB0E; // blue
+        sp2C->unk36D = D_global_asm_807FDB0F; // alpha
     } else {
-        sp2C->unk36A = var_s0->unk10;
-        sp2C->unk36B = var_s0->unk11;
-        sp2C->unk36C = var_s0->unk12;
-        sp2C->unk36D = var_s0->unk13;
+        sp2C->unk36A = var_s0->unk10; // red
+        sp2C->unk36B = var_s0->unk11; // green
+        sp2C->unk36C = var_s0->unk12; // blue
+        sp2C->unk36D = var_s0->unk13; // alpha
     }
     sp2C->unk36E = D_global_asm_807FDB18;
     sp2C->unk36F = D_global_asm_807FDB1D;
@@ -1701,16 +1688,16 @@ extern s32 D_global_asm_8071FB54;
 void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
     s32 pad;
     f32 y;
-    s16 sp48[3];
+    s16 lightColor[3];
 
     if (arg0->unk384 == NULL) {
         arg0->unk384 = malloc(0xC);
         arg0->unk384_f32->unk0 = 6.0f;
     }
     if (current_map == MAP_HELM_LOBBY) {
-        sp48[0] = 0xFF;sp48[1] = 0x46;sp48[2] = 0;
+        lightColor[0] = 0xFF;lightColor[1] = 0x46;lightColor[2] = 0;
     } else {
-        sp48[0] = 0xFF;sp48[1] = 0xFF;sp48[2] = 0xFF;
+        lightColor[0] = 0xFF;lightColor[1] = 0xFF;lightColor[2] = 0xFF;
     }
     arg0->unk340 += 1.0f;
     arg0->unk344 += arg0->unk384_f32->unk0;
@@ -1732,7 +1719,7 @@ void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
         func_global_asm_80714944(7);
         drawSpriteAtPosition(&D_global_asm_8071FB54, 0.667f, arg0->unk340, y + 10.0f, arg0->unk348);
     }
-    createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 200.0f, 0, sp48[0], sp48[1], sp48[2]);
+    createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 200.0f, 0, lightColor[0], lightColor[1], lightColor[2]);
 }
 
 // Weird m2c errors

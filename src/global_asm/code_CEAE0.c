@@ -100,24 +100,17 @@ int func_global_asm_806FF358(); // TODO: Signature
 int func_global_asm_806FF75C(); // TODO: Signature
 void func_global_asm_80665160(Actor *, s16, s16);
 void func_global_asm_806653C0(Actor *, f32, f32);
-void func_global_asm_806CCB0C(void);
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
 void func_global_asm_806CEE64(f32);
-void func_global_asm_806CFD68(void);
 
 f32 func_global_asm_806DFFA0(f32, s16, s16);
 void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 handleInputsForControlState(s32 arg0);
-void func_global_asm_806CC948();
-void func_global_asm_806CFECC(void);
-void func_global_asm_806D2378();
-void func_global_asm_806CC948();
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 void func_global_asm_806CD8EC(void);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
 void func_global_asm_80718BF4(void);
-u8 func_global_asm_80666AE0();
 void func_global_asm_806D0150(Actor *arg0);
 void func_global_asm_806C8D20(Actor*);
 void func_global_asm_806CC638(f32 arg0);
@@ -687,7 +680,7 @@ void func_global_asm_806CC8A8(void) {
 }
 
 void func_global_asm_806CC8B8(void) {
-    func_global_asm_806CCB0C();
+    applyActorYAcceleration();
     func_global_asm_806CBE90();
     func_global_asm_806CCC54(1);
     func_global_asm_806CC970();
@@ -705,7 +698,7 @@ void func_global_asm_806CC920(void) {
 }
 
 void func_global_asm_806CC948(void) {
-    func_global_asm_806CCB0C();
+    applyActorYAcceleration();
     func_global_asm_806CC970();
 }
 
@@ -733,7 +726,7 @@ void func_global_asm_806CC970(void) {
     extra_player_info_pointer->unk20 = (((sqrtf((dx * dx) + (dz * dz)) / D_global_asm_80744478) * 80.0) * 0.149999999999999994) / current_actor_pointer->animation_state->scale_x;
 }
 
-void func_global_asm_806CCB0C(void) { // applyActorYAccel()
+void applyActorYAcceleration(void) {
     if (extra_player_info_pointer->unk50 != 0) {
         extra_player_info_pointer->unk50--;
         return;
@@ -1594,46 +1587,46 @@ u8 func_global_asm_806CFC90(Actor *arg0, s32 arg1, u8 arg2, f32 arg3) {
     return temp_v0;
 }
 
-void func_global_asm_806CFD68() {
+void func_global_asm_806CFD68(void) {
     if (current_actor_pointer->y_velocity < 0.0f) {
         setYAccelerationFrom80753578();
     }
 }
 
-void func_global_asm_806CFDA8() {
+void func_global_asm_806CFDA8(void) {
     if (current_actor_pointer->y_velocity < 0.0f) {
         current_actor_pointer->y_acceleration = D_global_asm_80753700[D_global_asm_807FD584];
     }
 }
 
-void func_global_asm_806CFDEC() {
+void func_global_asm_806CFDEC(void) {
     if (current_actor_pointer->y_velocity < 0.0f) {
         current_actor_pointer->y_acceleration = D_global_asm_80753658[D_global_asm_807FD584];
     }
 }
 
-void func_global_asm_806CFE30() {
+void func_global_asm_806CFE30(void) {
     if (current_actor_pointer->y_velocity < 0.0f) {
         current_player->y_acceleration = D_global_asm_80753754[D_global_asm_807FD584];
     }
 }
 
-void setYAccelerationFrom80753578() {
+void setYAccelerationFrom80753578(void) {
     current_player->y_acceleration = D_global_asm_80753578[D_global_asm_807FD584];
 }
 
 // TODO: rename to setYAccelerationFrom80753594
-void func_global_asm_806CFEA4() {
+void func_global_asm_806CFEA4(void) {
     current_player->y_acceleration = D_global_asm_80753594[D_global_asm_807FD584];
 }
 
 // TODO: rename to setYAccelerationFrom807535B0
-void func_global_asm_806CFECC() {
+void func_global_asm_806CFECC(void) {
     current_player->y_acceleration = D_global_asm_807535B0[D_global_asm_807FD584];
 }
 
 // TODO: rename to setYAccelerationFrom807536E4
-void func_global_asm_806CFEF4() {
+void func_global_asm_806CFEF4(void) {
     current_player->y_acceleration = D_global_asm_807536E4[D_global_asm_807FD584];
 }
 
@@ -2292,7 +2285,7 @@ void func_global_asm_806D1B60(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-void func_global_asm_806D1D3C() {
+void func_global_asm_806D1D3C(void) {
     extra_player_info_pointer->unk4 = 0.0f;
     handleInputsForControlState(0x65);
     func_global_asm_806CC8B8();
@@ -2414,7 +2407,7 @@ void func_global_asm_806D2238(void) {
     }
 }
 
-void func_global_asm_806D22A0() {
+void func_global_asm_806D22A0(void) {
     handleInputsForControlState(1);
 }
 
@@ -2563,7 +2556,7 @@ void func_global_asm_806D2744(s32 arg0) {
     current_actor_pointer->unk6C = current_actor_pointer->unk6A;
 }
 
-void func_global_asm_806D2784() {
+void func_global_asm_806D2784(void) {
     func_global_asm_806D2744(0x61);
 }
 

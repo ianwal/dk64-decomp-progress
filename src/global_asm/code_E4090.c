@@ -846,7 +846,7 @@ void func_global_asm_806E186C(void) {
     }
 }
 
-void func_global_asm_806E1A50() {
+void func_global_asm_806E1A50(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
@@ -1041,13 +1041,13 @@ void func_global_asm_806E2DE8(void) {
     }
 }
 
-void func_global_asm_806E2E6C() {
+void func_global_asm_806E2E6C(void) {
     if (D_global_asm_807FD568->weapon & 1) {
         func_global_asm_806E225C(0, 0);
     }
 }
 
-void func_global_asm_806E2EA8() {
+void func_global_asm_806E2EA8(void) {
     func_global_asm_806E225C(1, 0);
 }
 
@@ -1387,7 +1387,7 @@ void func_global_asm_806E3E40(void) {
 }
 */
 
-void func_global_asm_806E41B4() {
+void func_global_asm_806E41B4(void) {
     playAnimation(current_actor_pointer, 0x15);
     current_actor_pointer->control_state_progress = 7;
 }
@@ -1843,7 +1843,7 @@ void func_global_asm_806E5E68(void) {
     }
 }
 
-void func_global_asm_806E5EA8() {
+void func_global_asm_806E5EA8(void) {
     setAction(0x24, NULL, cc_player_index);
 }
 

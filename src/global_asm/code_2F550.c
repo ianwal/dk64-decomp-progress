@@ -808,7 +808,7 @@ struct Struct8062D1E0_arg1 {
 
 void func_global_asm_8062D1E0(Struct8062D1E0_arg0 *arg0, Struct8062D1E0_arg1 *arg1);
 
-void func_global_asm_8062D1A8() {
+void func_global_asm_8062D1A8(void) {
     if (!gameIsInDKTVMode()) {
         func_global_asm_8062D1E0(D_global_asm_807F5DE4, D_global_asm_807F5E60);
     }

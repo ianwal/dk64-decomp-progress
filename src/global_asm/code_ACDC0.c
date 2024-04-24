@@ -669,7 +669,7 @@ void func_global_asm_806ACC00(u8 arg0) {
     global_properties_bitfield |= 0x40001;
 }
 
-void func_global_asm_806ACC64() {
+void func_global_asm_806ACC64(void) {
     s16 i;
 
     global_properties_bitfield |= 0x40;

@@ -10,8 +10,6 @@ extern f64 D_global_asm_8075B710;
 
 extern u8 D_global_asm_807FBD70;
 
-s32 func_global_asm_80726164(Actor*, s16, s16, s16, void*);
-void func_global_asm_806B3E7C();
 void func_global_asm_806653C0(Actor*, f32, f32);
 
 // Jumptable
@@ -323,24 +321,24 @@ void func_global_asm_806B3F90(GlobalASMStruct91 *arg0, u8 arg1) {
 
 void func_global_asm_806B4194(void) {
     u8 temp;
-    u8 sp2E;
-    f32 sp28;
+    u8 shade;
+    f32 scale;
     u32 phi_v0;
 
     switch (current_actor_pointer->health) {
         case 2:
-            sp2E = 200;
-            sp28 = 0.5f;
-            phi_v0 = 0x20;
+            shade = 200;
+            scale = 0.5f;
+            phi_v0 = 32;
             break;
         case 1:
-            sp2E = 100;
-            sp28 = 1.0f;
-            phi_v0 = 0x18;
+            shade = 100;
+            scale = 1.0f;
+            phi_v0 = 24;
             break;
         case 0:
-            sp2E = 50;
-            sp28 = 1.5f;
+            shade = 50;
+            scale = 1.5f;
             phi_v0 = 8;
             break;
         default:
@@ -348,34 +346,34 @@ void func_global_asm_806B4194(void) {
     }
     if (phi_v0 && ((object_timer % phi_v0) == 0)) {
         func_global_asm_80714998(3);
-        changeActorColor(sp2E, sp2E, sp2E, current_actor_pointer->shadow_opacity);
-        func_global_asm_8068588C(current_actor_pointer, 1, sp28, 0.0f, 0.0f, 0.0f, -0x50);
+        changeActorColor(shade, shade, shade, current_actor_pointer->shadow_opacity);
+        func_global_asm_8068588C(current_actor_pointer, 1, scale, 0.0f, 0.0f, 0.0f, -0x50);
     }
 }
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B42A8.s")
 
-void func_global_asm_806B486C() {
+void func_global_asm_806B486C(void) {
     initializeCharacterSpawnerActor();
     func_global_asm_806B42A8(&func_global_asm_806B3E7C, 0x251, 0x250, 0x10E);
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
 }
 
-void func_global_asm_806B48B8() {
+void func_global_asm_806B48B8(void) {
     initializeCharacterSpawnerActor();
     func_global_asm_806B42A8(&func_global_asm_806B3DA4, 0x251, 0x250, 0x10E);
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
 }
 
-void func_global_asm_806B4904() {
+void func_global_asm_806B4904(void) {
     initializeCharacterSpawnerActor();
     func_global_asm_806B42A8(&func_global_asm_806B3D18, 0x254, 0x252, 0x108);
     func_global_asm_806B4194();
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
 }
 
-void func_global_asm_806B4958() {
+void func_global_asm_806B4958(void) {
     initializeCharacterSpawnerActor();
     func_global_asm_806B42A8(&func_global_asm_806B3E7C, 0x251, 0x250, 0x10E);
     if (current_actor_pointer->control_state != 0x37) {
@@ -520,7 +518,7 @@ void func_global_asm_806B4DCC(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-void func_global_asm_806B50F4() {
+void func_global_asm_806B50F4(void) {
     initializeCharacterSpawnerActor();
     func_global_asm_806B49B0(current_actor_pointer->control_state, 0x23D, 0x23E);
     renderActor(current_actor_pointer, 0);

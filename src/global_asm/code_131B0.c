@@ -119,12 +119,12 @@ void func_global_asm_8060E8EC(u8 arg0) {
     func_global_asm_8060E8CC(&D_global_asm_807F0470[func_global_asm_8060AB38(arg0)]);
 }
 
-void func_global_asm_8060E930() {
+void func_global_asm_8060E930(void) {
     func_global_asm_8060E6E8(1);
     func_global_asm_8060EC54(1);
 }
 
-void func_global_asm_8060E958() {
+void func_global_asm_8060E958(void) {
     func_global_asm_8060E6E8(0);
     func_global_asm_8060EC54(1);
 }

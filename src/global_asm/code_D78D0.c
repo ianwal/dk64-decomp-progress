@@ -81,11 +81,8 @@ extern s16 D_global_asm_807FD584; // index into a ton of arrays
 void func_global_asm_80665160(Actor *, s16, s16);
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
 void func_global_asm_806CEE64(f32);
-void func_global_asm_806CFD68(void);
 void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 handleInputsForControlState(s32 arg0);
-void func_global_asm_806CC948();
-void func_global_asm_806CFECC(void);
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806CD8EC(void);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
@@ -429,19 +426,19 @@ void func_global_asm_806D3A38(void) {
     func_global_asm_806D38AC(0x3D);
 }
 
-void func_global_asm_806D3AC8() {
+void func_global_asm_806D3AC8(void) {
     func_global_asm_806D38AC(0x3D);
 }
 
-void func_global_asm_806D3AE8() {
+void func_global_asm_806D3AE8(void) {
     func_global_asm_806D38AC(0x3D);
 }
 
-void func_global_asm_806D3B08() {
+void func_global_asm_806D3B08(void) {
     func_global_asm_806D38AC(0x3D);
 }
 
-void func_global_asm_806D3B28() {
+void func_global_asm_806D3B28(void) {
     func_global_asm_806D38AC(0x3D);
 }
 

@@ -513,12 +513,12 @@ void func_global_asm_8060C8AC(u8 arg0) {
     }
 }
 
-void func_global_asm_8060CB74() {
+void func_global_asm_8060CB74(void) {
     clearGlobalFlags();
     func_global_asm_8060C8AC(0xFF);
 }
 
-void func_global_asm_8060CB9C() {
+void func_global_asm_8060CB9C(void) {
     func_global_asm_8060B8F8(3);
 }
 
@@ -576,11 +576,11 @@ void func_global_asm_8060D14C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060D2C8.s")
 
-void func_global_asm_8060D768() {
+void func_global_asm_8060D768(void) {
     func_global_asm_8060D2C8(0);
 }
 
-void func_global_asm_8060D788() {
+void func_global_asm_8060D788(void) {
     func_global_asm_8060D2C8(1);
 }
 

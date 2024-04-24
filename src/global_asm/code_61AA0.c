@@ -234,13 +234,13 @@ s32 func_global_asm_8065EA98(s32 arg0, s16 arg1, u8 arg2) {
     return ((arg1 * 0x10) + (arg0 * 4) + arg2) % 100;
 }
 
-void func_global_asm_8065EACC() {
+void func_global_asm_8065EACC(void) {
     if (D_global_asm_807F9064 != 40000) {
         D_global_asm_807F9068 = D_global_asm_807F9064;
     }
     D_global_asm_807F9064 = 40000;
 }
 
-void func_global_asm_8065EAF4() {
+void func_global_asm_8065EAF4(void) {
     D_global_asm_807F9064 = D_global_asm_807F9068;
 }

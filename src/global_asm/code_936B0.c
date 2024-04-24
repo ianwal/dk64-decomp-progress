@@ -682,7 +682,8 @@ s32 func_global_asm_806951B0(Actor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80695724.s")
 
 void func_global_asm_80695724(f32, s32);
-void func_global_asm_80695B50() {
+
+void func_global_asm_80695B50(void) {
     AnotherAdditionalActorData *sp1C = current_actor_pointer->AaaD;
     func_global_asm_80695724(0, 1);
     func_global_asm_80612BC0(&current_actor_pointer->unkC, sp1C->unk8);

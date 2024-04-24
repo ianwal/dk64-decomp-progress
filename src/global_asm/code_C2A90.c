@@ -341,7 +341,7 @@ void func_global_asm_806BFA8C(u16 arg0) {
     }
 }
 
-void func_global_asm_806BFBB4() {
+void func_global_asm_806BFBB4(void) {
     func_global_asm_8061421C(current_actor_pointer);
     renderActor(current_actor_pointer, 0);
     func_global_asm_80614A64(current_actor_pointer);
@@ -464,7 +464,7 @@ void func_global_asm_806C151C(u16 fileIndex, u8 textIndex, s16 tempFlagIndex) {
     }
 }
 
-void func_global_asm_806C15E8() {
+void func_global_asm_806C15E8(void) {
     D_global_asm_807FDC98->unk46 |= 0x1000;
     current_actor_pointer->unk146 = 0;
     func_global_asm_8072B324(current_actor_pointer, 0);
@@ -874,16 +874,16 @@ void func_global_asm_806C226C(void) {
 }
 
 void func_global_asm_806C27DC(void) {
-    f32 temp_f20;
+    f32 scale;
 
-    temp_f20 = current_actor_pointer->animation_state->scale_y / 0.15;
+    scale = current_actor_pointer->animation_state->scale_y / 0.15;
     func_global_asm_80604CBC(current_actor_pointer, 0x114, 0x50, 0, 0, 0xFF, 0.5f, 0);
     if (object_timer & 1) {
-        func_global_asm_80684550(current_actor_pointer, 1, temp_f20);
-        func_global_asm_80684550(current_actor_pointer, 3, temp_f20);
+        func_global_asm_80684550(current_actor_pointer, 1, scale);
+        func_global_asm_80684550(current_actor_pointer, 3, scale);
     } else {
-        func_global_asm_80684550(current_actor_pointer, 2, temp_f20);
-        func_global_asm_80684550(current_actor_pointer, 4, temp_f20);
+        func_global_asm_80684550(current_actor_pointer, 2, scale);
+        func_global_asm_80684550(current_actor_pointer, 4, scale);
     }
 }
 
@@ -961,7 +961,7 @@ void func_global_asm_806C2B2C(s32 arg0, s32 arg1, u8 arg2, s32 arg3) {
 }
 */
 
-void func_global_asm_806C2D7C() {
+void func_global_asm_806C2D7C(void) {
     func_global_asm_806C2B2C(1, 0xB, 6, &D_global_asm_8071FFA0);
     func_global_asm_806C2B2C(0x20, 0x30, 6, &D_global_asm_8071FFA0);
     func_global_asm_806C2B2C(0xC, 0x16, 2, &D_global_asm_8071FFA0);

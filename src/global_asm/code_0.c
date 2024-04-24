@@ -81,13 +81,12 @@ void func_global_asm_80650E20(s32* arg0);
 void func_global_asm_8062F050(s32* arg0);
 
 void func_global_asm_806886E0(s32* arg0, s32 arg1, s32 arg2);
-void func_global_asm_80677D80();
+void func_global_asm_80677D80(void);
 
 void func_global_asm_80626264(void*);
 void func_global_asm_806C7D40(s32 arg0);
 
 void func_global_asm_8061EA78();
-void func_global_asm_806F4778();
 void func_global_asm_8060098C(s32 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 
 void func_global_asm_80712BD4();
@@ -111,7 +110,7 @@ void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FB944.s")
 
-void func_global_asm_805FB7E4();
+void func_global_asm_805FB7E4(void);
 void func_global_asm_80610350(u8, u8, s32);
 extern OSViMode D_dk64_boot_8000EF20[];
 extern s16 D_global_asm_80744494;

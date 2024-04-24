@@ -18,7 +18,9 @@ typedef struct {
 extern Struct807FD740 D_global_asm_807FD740[];
 extern s32 D_global_asm_807FD780[];
 
-void func_global_asm_806F4750() {
+void func_global_asm_806F5270(void);
+
+void func_global_asm_806F4750(void) {
     func_global_asm_806F5270();
     func_global_asm_806F4778();
 }
