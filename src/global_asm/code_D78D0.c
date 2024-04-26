@@ -78,22 +78,11 @@ extern s32 D_global_asm_807FBB68;
 extern f32 D_global_asm_807FBC58;
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 
-void func_global_asm_80665160(Actor *, s16, s16);
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
-void func_global_asm_806CEE64(f32);
-void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 handleInputsForControlState(s32 arg0);
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
-void func_global_asm_806CD8EC(void);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
-void func_global_asm_806CC638(f32 arg0);
-f32 func_global_asm_806F46B0(s16 arg0);
-void func_global_asm_807149FC(s32);
 void func_global_asm_806224CC(s32, Actor*);
-s16 func_global_asm_806CC190(s16, s16, f32);
-void func_global_asm_80613AF8(Actor*, s32, f32, f32);
-void func_global_asm_806D9924(Actor*);
-void func_global_asm_80659620(f32 *arg0, f32 *arg1, f32 *arg2, s16 arg3);
 
 void func_global_asm_806D2BD0(void) {
     func_global_asm_806D2954(0xC);
@@ -974,28 +963,28 @@ void func_global_asm_806D5218(void) {
 
 void func_global_asm_806D5300(void) {
     s32 pad;
-    f32 sp90, sp8C, sp88;
-    f32 temp_f20;
-    f32 temp_f22;
-    f32 temp_f24;
-    f32 temp_f26;
+    f32 x, y, z;
+    f32 scale;
+    f32 randomZOffset;
+    f32 randomXOffset;
+    f32 randomYOffset;
     s32 phi_s1;
 
     if ((current_actor_pointer->control_state_progress < 2) || (D_global_asm_80750FD8 < current_actor_pointer->unkB8)) {
-        temp_f20 = current_actor_pointer->animation_state->scale_y / 0.15;
-        getBonePosition(current_actor_pointer, 7, &sp90, &sp8C, &sp88);
+        scale = current_actor_pointer->animation_state->scale_y / 0.15;
+        getBonePosition(current_actor_pointer, 7, &x, &y, &z);
         for (phi_s1 = 0; phi_s1 < D_global_asm_80750FD4; phi_s1++) {
-            temp_f24 = (((rand() >> 0xF) % 10000) % D_global_asm_80750FC8) - (D_global_asm_80750FC8 / 2);
-            temp_f26 = (((rand() >> 0xF) % 10000) % D_global_asm_80750FCC) - (D_global_asm_80750FCC / 2);
-            temp_f22 = (((rand() >> 0xF) % 10000) % D_global_asm_80750FD0) - (D_global_asm_80750FD0 / 2);
+            randomXOffset = (((rand() >> 0xF) % 10000) % D_global_asm_80750FC8) - (D_global_asm_80750FC8 / 2);
+            randomYOffset = (((rand() >> 0xF) % 10000) % D_global_asm_80750FCC) - (D_global_asm_80750FCC / 2);
+            randomZOffset = (((rand() >> 0xF) % 10000) % D_global_asm_80750FD0) - (D_global_asm_80750FD0 / 2);
             func_global_asm_80714950(D_global_asm_80750FC4);
             func_global_asm_8071498C(&func_global_asm_80717D4C);
             func_global_asm_807149B8(1);
             drawSpriteAtPosition(D_global_asm_8074E880[((rand() % 10000) % 3)],
-                D_global_asm_80750FC0 * temp_f20,
-                (temp_f24 * temp_f20) + sp90,
-                (temp_f26 * temp_f20) + sp8C,
-                (temp_f22 * temp_f20) + sp88
+                D_global_asm_80750FC0 * scale,
+                (randomXOffset * scale) + x,
+                (randomYOffset * scale) + y,
+                (randomZOffset * scale) + z
             );
         }
     }
@@ -1338,7 +1327,7 @@ void func_global_asm_806D6B00(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
             extra_player_info_pointer->unk28 = 0;
-            handleInputsForControlState(0x1A); // controlStateControl()
+            handleInputsForControlState(0x1A);
             if (extra_player_info_pointer->unk68 < current_actor_pointer->unkB8) {
                 extra_player_info_pointer->unk68 = current_actor_pointer->unkB8;
             }
@@ -1358,7 +1347,7 @@ void func_global_asm_806D6B00(void) {
                 break;
             }
         case 1:
-            handleInputsForControlState(0x1A); // controlStateControl()
+            handleInputsForControlState(0x1A);
             if (func_global_asm_806D69A4()) {
                 break;
             } else {
@@ -1398,14 +1387,14 @@ void func_global_asm_806D6B00(void) {
                 break;
             }
         case 2:
-            handleInputsForControlState(5); // controlStateControl()
+            handleInputsForControlState(5);
             current_actor_pointer->unkEE = (current_actor_pointer->y_rotation + 0x800) % 4096;
             func_global_asm_806CC8A8();
             func_global_asm_806CBE90();
             func_global_asm_806CC948();
             break;
         case 3:
-            handleInputsForControlState(5); // controlStateControl()
+            handleInputsForControlState(5);
             current_actor_pointer->unkEE = (current_actor_pointer->y_rotation + 0x800) % 4096;
             extra_player_info_pointer->unk30 = 5.0f;
             func_global_asm_806CD8EC();
@@ -1419,7 +1408,7 @@ void func_global_asm_806D6B00(void) {
 
 void func_global_asm_806D6F0C(void) {
     func_global_asm_806DF494(&current_actor_pointer->y_rotation, current_actor_pointer->unkEE, extra_player_info_pointer->unk48);
-    handleInputsForControlState(8); // controlStateControl()
+    handleInputsForControlState(8);
     func_global_asm_806CC8B8();
     renderActor(current_actor_pointer, 0);
 }

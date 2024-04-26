@@ -5,8 +5,6 @@ extern s32 D_global_asm_8071FB34;
 extern s32 D_global_asm_8071FF18;
 extern f64 D_global_asm_8075FF20;
 void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
-s16 func_global_asm_806CC190(s16, s16, f32);
-s16 func_global_asm_806CC190(s16, s16, f32);
 
 extern f64 D_global_asm_8075FF38;
 
@@ -205,7 +203,6 @@ void func_global_asm_8072AA80(void) {
 extern f64 D_global_asm_8075FD40;
 
 void func_global_asm_80729EB0(s32, f32, f32, u16);
-void func_global_asm_806653C0(Actor*, f32, f32);
 s32 func_global_asm_80725BA4(s16, s16, Struct807FDCA0*);
 
 s32 func_global_asm_807264B0(Actor *arg0, f32 arg1, f32 arg2, void *arg3);

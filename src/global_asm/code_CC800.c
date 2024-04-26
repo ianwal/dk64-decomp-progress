@@ -501,28 +501,19 @@ void func_global_asm_806C92C4(s32 arg0) {
     current_player->unk9C = current_player->y_position;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C9304.s")
-
-/*
-// TODO: Hmm. Pretty close. Loop is sus
 void func_global_asm_806C9304(Actor *arg0, PlayerAdditionalActorData *arg1) {
-    f32 var_f18;
-    s32 var_v0;
+    s32 i;
 
     if (character_change_array[arg1->unk1A4].unk2C0 != 1) {
-        func_global_asm_806D0468(current_player, 1, arg0, arg1);
+        func_global_asm_806D0468(current_player, 1);
     }
-    if (arg0->animation_state->scale_x != arg1->unk1C0) {
-        var_v0 = 0;
-        while (var_v0 < 2) {
-            var_f18 = arg1[var_v0].unk1C0;
-            arg1[var_v0].unk1CC = var_f18;
-            arg0[var_v0].animation_state->scale_x = var_f18;
-            var_v0++;
+    if (arg1->unk1C0 != arg0->animation_state->scale_x) {
+        for (i = 0; i < 3; i++) {
+            arg1->scale1CC[i] = arg1->scale1C0[i];
+            arg0->animation_state->scale[i] = arg1->scale1C0[i];
         }
     }
 }
-*/
 
 void func_global_asm_806C93E4(Actor *arg0, PlayerAdditionalActorData *arg1) {
     func_global_asm_806F12FC(arg0);

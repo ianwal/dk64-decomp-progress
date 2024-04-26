@@ -98,27 +98,15 @@ extern u8 D_global_asm_807FD586;
 void func_global_asm_8062217C(Actor*, u8);
 int func_global_asm_806FF358(); // TODO: Signature
 int func_global_asm_806FF75C(); // TODO: Signature
-void func_global_asm_80665160(Actor *, s16, s16);
-void func_global_asm_806653C0(Actor *, f32, f32);
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
-void func_global_asm_806CEE64(f32);
 
-f32 func_global_asm_806DFFA0(f32, s16, s16);
-void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 handleInputsForControlState(s32 arg0);
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
-void func_global_asm_806CD8EC(void);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
 void func_global_asm_80718BF4(void);
-void func_global_asm_806D0150(Actor *arg0);
-void func_global_asm_806C8D20(Actor*);
-void func_global_asm_806CC638(f32 arg0);
-void func_global_asm_807149FC(s32);
-s16 func_global_asm_806CC190(s16, s16, f32);
 void func_global_asm_806CEFBC(Struct806CEFBC*); // TODO: Proper signature, just for function pointer
 void func_global_asm_806CF138(Struct806CF138 *arg0);
-void func_global_asm_80613AF8(Actor*, s32, f32, f32);
 s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 void func_global_asm_80613A50(Actor*, s32);
 
@@ -891,78 +879,78 @@ s16 func_global_asm_806CD988(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CDD24.s")
 
-u32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
+u32 func_global_asm_806CE174(Actor *actor, f32 arg1, f32 arg2, s32 arg3) {
     s16 sp36;
     f32 var_f0;
     s16 sp2E;
     s16 sp2C;
 
-    sp36 = arg0->control_state;
+    sp36 = actor->control_state;
     sp2E = extra_player_info_pointer->unk4C;
-    sp2C = func_global_asm_806CD9A0(arg0, arg1, arg2, extra_player_info_pointer->unk4C, D_global_asm_807FD584);
-    arg0->y_velocity = 0.0f;
+    sp2C = func_global_asm_806CD9A0(actor, arg1, arg2, extra_player_info_pointer->unk4C, D_global_asm_807FD584);
+    actor->y_velocity = 0.0f;
     if (sp2E < 0) {
         func_global_asm_806D03BC();
     }
     if (sp2E != sp2C) {
         switch (sp2C) {
             case 0:
-                playAnimation(arg0, 0x51);
-                func_global_asm_80614D00(arg0, 1.0f, 0.0f);
+                playAnimation(actor, 0x51);
+                func_global_asm_80614D00(actor, 1.0f, 0.0f);
                 sp36 = 0x5D;
                 break;
             case 1:
-                playActorAnimation(arg0, 0x23);
-                func_global_asm_80614D00(arg0, 1.0f, 0.0f);
+                playActorAnimation(actor, 0x23);
+                func_global_asm_80614D00(actor, 1.0f, 0.0f);
                 sp36 = 0x5D;
                 break;
             case 3:
-                playAnimation(arg0, 0x57);
-                func_global_asm_80613AF8(arg0, 0x5C, 0, 6.0f);
+                playAnimation(actor, 0x57);
+                func_global_asm_80613AF8(actor, 0x5C, 0, 6.0f);
                 if (sp2E == 4 || sp2E == 5) {
-                    func_global_asm_80613A50(arg0, 2);
+                    func_global_asm_80613A50(actor, 2);
                 }
                 sp36 = 0x5E;
                 break;
             case 4:
-                playAnimation(arg0, 0x56);
-                func_global_asm_80613AF8(arg0, 0x58, 0, 6.0f);
+                playAnimation(actor, 0x56);
+                func_global_asm_80613AF8(actor, 0x58, 0, 6.0f);
                 if (sp2E == 3) {
                     switch (current_character_index[cc_player_index]) {
                         case 0:
                         case 1:
                         case 2:
                         case 3:
-                            func_global_asm_80613A50(arg0, 4);
+                            func_global_asm_80613A50(actor, 4);
                             break;
                     }
                 }
                 if (sp2E == 5) {
-                    func_global_asm_80613A50(arg0, 0xA);
+                    func_global_asm_80613A50(actor, 0xA);
                 }
                 sp36 = 0x5E;
                 break;
             case 5:
-                playAnimation(arg0, 0x55);
-                func_global_asm_80613AF8(arg0, 0x60, 0, 6.0f);
+                playAnimation(actor, 0x55);
+                func_global_asm_80613AF8(actor, 0x60, 0, 6.0f);
                 switch (current_character_index[cc_player_index]) {
                     case 4:
                     case 5:
                         if (sp2E == 3) {
-                            func_global_asm_80613A50(arg0, 8);
+                            func_global_asm_80613A50(actor, 8);
                         }
                         break;
                     default:
                         if ((sp2E == 3) || (sp2E == 4)) {
-                            func_global_asm_80613A50(arg0, 0);
+                            func_global_asm_80613A50(actor, 0);
                         }
                         break;
                 }
                 sp36 = 0x5E;
                 break;
             case 6:
-                playAnimation(arg0, 0x58);
-                func_global_asm_80614D90(arg0);
+                playAnimation(actor, 0x58);
+                func_global_asm_80614D90(actor);
                 sp36 = 0x1F;
                 current_actor_pointer->unk9C = current_actor_pointer->y_position;
                 break;
@@ -970,7 +958,7 @@ u32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
         extra_player_info_pointer->unk4C = sp2C;
     }
     if (extra_player_info_pointer->unk4C >= 3) {
-        var_f0 = arg0->unkB8;
+        var_f0 = actor->unkB8;
         var_f0 *= 0.025;
         if (extra_player_info_pointer->unk4C == 5) {
             var_f0 *= 0.6;
@@ -978,8 +966,8 @@ u32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
         if (var_f0 > 1.25f) {
             var_f0 -= ((var_f0 - 1.25f) * 0.4);
         }
-        if (arg0->animation_state->unk0->unk24 != 0.0f) {
-            func_global_asm_80614D00(arg0, var_f0, 2.0f);
+        if (actor->animation_state->unk0->unk24 != 0.0f) {
+            func_global_asm_80614D00(actor, var_f0, 2.0f);
         }
     }
     return sp36;

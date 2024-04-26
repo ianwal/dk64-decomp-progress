@@ -3234,7 +3234,7 @@ us,asm,func_global_asm_8070D020,92,yes
 us,asm,func_global_asm_80642C78,444,no
 us,asm,func_global_asm_806A1008,180,yes
 us,asm,func_global_asm_806E382C,32,yes
-us,asm,func_global_asm_806C9304,224,no
+us,asm,func_global_asm_806C9304,224,yes
 us,asm,malloc,364,no
 us,asm,func_global_asm_80737CF4,312,yes
 us,asm,func_global_asm_80602CE0,108,yes

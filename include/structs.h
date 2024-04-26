@@ -958,12 +958,22 @@ typedef struct player_additional_actor_data {
     u16 unk1B8; // Used
     s16 unk1BA;
     f32 unk1BC; // Used
-    f32 unk1C0; // Used
-    f32 unk1C4; // Used
-    f32 unk1C8; // Used
-    f32 unk1CC; // Used
-    f32 unk1D0; // Used, y scale
-    f32 unk1D4; // Used, z scale
+    union {
+        struct {
+            f32 unk1C0; // Used, x scale
+            f32 unk1C4; // Used, y scale
+            f32 unk1C8; // Used, z scale
+        };
+        f32 scale1C0[3];
+    };
+    union {
+        struct {
+            f32 unk1CC; // Used, x scale
+            f32 unk1D0; // Used, y scale
+            f32 unk1D4; // Used, z scale
+        };
+        f32 scale1CC[3];
+    };
     f32 unk1D8; // Used
     f32 unk1DC; // Used
     f32 unk1E0; // Used

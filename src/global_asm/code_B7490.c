@@ -10,8 +10,6 @@ extern f64 D_global_asm_8075B710;
 
 extern u8 D_global_asm_807FBD70;
 
-void func_global_asm_806653C0(Actor*, f32, f32);
-
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B2790.s")
 
@@ -273,7 +271,6 @@ void func_global_asm_806B3F3C(void) {
 // doable regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3F90.s")
 
-s16 func_global_asm_806CC190(s16, s16, f32);
 extern f64 D_global_asm_8075B5E0;
 extern f64 D_global_asm_8075B5E8;
 

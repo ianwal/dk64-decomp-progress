@@ -42,7 +42,6 @@ typedef struct {
     s8 unk6;
 } AAD_global_asm_80685708;
 
-void func_global_asm_806858E8(Actor*, s16, f32, f32, f32, f32, s32);
 void func_global_asm_80686390(Actor*, f32, f32, f32, f32);
 void func_global_asm_80685F60(Actor *actor);
 
@@ -371,26 +370,26 @@ void func_global_asm_80685708(Actor *arg0, u8 arg1) {
     }
 }
 
-void func_global_asm_8068581C(Actor *arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
+void func_global_asm_8068581C(Actor *actor, s16 boneIndex, f32 scale, f32 x, f32 y, f32 z, s32 arg6) {
     func_global_asm_80714998(2);
     changeActorColor(0xFF, 0xFF, 0xFF, 0xC8);
-    func_global_asm_8068588C(arg0, arg1, arg2, arg3, arg4, arg5, arg6);
+    func_global_asm_8068588C(actor, boneIndex, scale, x, y, z, arg6);
 }
 
-void func_global_asm_8068588C(Actor *actor, s16 arg1, f32 scale, f32 x, f32 y, f32 z, s32 arg6) {
+void func_global_asm_8068588C(Actor *actor, s16 boneIndex, f32 scale, f32 x, f32 y, f32 z, s32 arg6) {
     func_global_asm_807149B8(1);
-    func_global_asm_806858E8(actor, arg1, scale, x, y, z, arg6);
+    func_global_asm_806858E8(actor, boneIndex, scale, x, y, z, arg6);
 }
 
-void func_global_asm_806858E8(Actor *arg0, s16 arg1, f32 scale, f32 x, f32 y, f32 z, s32 arg6) {
-    if (arg0 != NULL) {
-        if (arg1 != 0) {
-            getBonePosition(arg0, arg1, &x, &y, &z);
+void func_global_asm_806858E8(Actor *actor, s16 boneIndex, f32 scale, f32 x, f32 y, f32 z, s32 arg6) {
+    if (actor != NULL) {
+        if (boneIndex != 0) {
+            getBonePosition(actor, boneIndex, &x, &y, &z);
         }
     }
     func_global_asm_8071498C(&func_global_asm_80718080);
     func_global_asm_80714950(arg6);
-    drawSpriteAtPosition(&D_global_asm_8071FFA0, scale, x, y + 5.0f, z)->unk338 = arg0;
+    drawSpriteAtPosition(&D_global_asm_8071FFA0, scale, x, y + 5.0f, z)->unk338 = actor;
 }
 
 void func_global_asm_80685984(f32 scale, f32 x, f32 y, f32 z) {
@@ -425,20 +424,20 @@ void func_global_asm_80685B44(void *sprite, u8 arg1, f32 scale, u8 arg3, u8 arg4
     }
 }
 
-void func_global_asm_80685D84(Actor *arg0) {
-    if (!(arg0->unk64 & 4)) {
-        if ((arg0->object_properties_bitfield & 0x10) && ((arg0->unk6A ^ arg0->unk6C) & 4)) {
-            func_global_asm_80686390(arg0, 0, arg0->x_position, arg0->unkAC, arg0->z_position);
+void func_global_asm_80685D84(Actor *actor) {
+    if (!(actor->unk64 & 4)) {
+        if ((actor->object_properties_bitfield & 0x10) && ((actor->unk6A ^ actor->unk6C) & 4)) {
+            func_global_asm_80686390(actor, 0, actor->x_position, actor->unkAC, actor->z_position);
         }
-        if (arg0->unk6A & 4) {
-            func_global_asm_80685F60(arg0);
+        if (actor->unk6A & 4) {
+            func_global_asm_80685F60(actor);
         }
     }
-    if ((arg0->unk68 & 0x40) && func_global_asm_80665AAC(arg0) && (!(arg0->unk6A & 0x800)) && arg0->floor <= arg0->y_position) {
-        func_global_asm_806A081C(arg0);
+    if ((actor->unk68 & 0x40) && func_global_asm_80665AAC(actor) && (!(actor->unk6A & 0x800)) && actor->floor <= actor->y_position) {
+        func_global_asm_806A081C(actor);
     }
-    if (arg0->unk68 & 0x80) {
-        func_global_asm_80663844(arg0);
+    if (actor->unk68 & 0x80) {
+        func_global_asm_80663844(actor);
     }
 }
 
@@ -556,38 +555,38 @@ void func_global_asm_80686340(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80686390.s")
 
-void func_global_asm_8068696C(Actor *arg0) {
+void func_global_asm_8068696C(Actor *actor) {
     s32 i;
     for (i = 0; i < 0x10; i++) {
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(-1);
-        func_global_asm_80714950(arg0);
+        func_global_asm_80714950(actor);
         func_global_asm_8071498C(&func_global_asm_8071DC90);
-        drawSpriteAtPosition(D_global_asm_8074E880[i % 3], 0.7f, arg0->x_position, arg0->y_position, arg0->z_position);
+        drawSpriteAtPosition(D_global_asm_8074E880[i % 3], 0.7f, actor->x_position, actor->y_position, actor->z_position);
     }
 }
 
-void func_global_asm_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
+void func_global_asm_80686A5C(Actor *actor, f32 arg1, f32 arg2, s32 arg3) {
     s32 i;
     for (i = 0; i < 3; i++) {
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(-1);
-        func_global_asm_80714950(arg0);
+        func_global_asm_80714950(actor);
         func_global_asm_8071498C(func_global_asm_8071E1C8);
-        func_global_asm_8071E110(drawSpriteAtPosition(D_global_asm_8074E880[i], 0.7f, arg0->x_position, arg0->y_position, arg0->z_position), 1, (i * 1365.3334f), arg1, arg2, arg3);
+        func_global_asm_8071E110(drawSpriteAtPosition(D_global_asm_8074E880[i], 0.7f, actor->x_position, actor->y_position, actor->z_position), 1, (i * 1365.3334f), arg1, arg2, arg3);
     }
     for (i = 0; i < 3; i++) {
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(-1);
-        func_global_asm_80714950(arg0);
+        func_global_asm_80714950(actor);
         func_global_asm_8071498C(func_global_asm_8071E1C8);
-        func_global_asm_8071E110(drawSpriteAtPosition(D_global_asm_8074E880[i], 0.7f, arg0->x_position, arg0->y_position, arg0->z_position), 0, (i * 1365.3334f), arg1, arg2, arg3);
+        func_global_asm_8071E110(drawSpriteAtPosition(D_global_asm_8074E880[i], 0.7f, actor->x_position, actor->y_position, actor->z_position), 0, (i * 1365.3334f), arg1, arg2, arg3);
     }
 }
 
 extern s32 D_global_asm_8074E880[];
 
-void func_global_asm_80686CF8(Actor *arg0) {
+void func_global_asm_80686CF8(Actor *actor) {
     s32 i;
 
     for (i = 0; i < 0x1E; i++) {
@@ -595,7 +594,7 @@ void func_global_asm_80686CF8(Actor *arg0) {
         func_global_asm_807149FC(1);
         func_global_asm_8071498C(func_global_asm_8071EA24);
         func_global_asm_8071496C(i / 7);
-        drawSpriteAtPosition(D_global_asm_8074E880[i % 3], 1.4f, arg0->x_position, arg0->y_position + 10.0f, arg0->z_position);
+        drawSpriteAtPosition(D_global_asm_8074E880[i % 3], 1.4f, actor->x_position, actor->y_position + 10.0f, actor->z_position);
     }
 }
 

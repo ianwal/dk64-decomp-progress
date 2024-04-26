@@ -23,6 +23,11 @@ u64 func_dk64_boot_80005918(u64, u64);
 u64 func_dk64_boot_80007688(f32); 
 f32 func_dk64_boot_8000773C(s64);
 
+void func_global_asm_80613AF8(Actor*, s32, f32, f32);
+void func_global_asm_806653C0(Actor *, f32, f32);
+void func_global_asm_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
+void func_global_asm_806CC638(f32 arg0);
+
 u16 func_global_asm_806F8EDC(s32, s32); // getMaxItemCapacity(HUDItemIndex, playerIndex)
 void func_global_asm_8060BF84(s32, u8, u16 *, u8*);
 void func_global_asm_8060BEA8(s32, u8, u16 *, u8*);
@@ -1941,7 +1946,7 @@ void func_global_asm_806C5FEC(void);
 void func_global_asm_806C61C8(void);
 void func_global_asm_806ABE3C(void);
 void func_global_asm_806ACC00(u8 arg0);
-void func_global_asm_806858E8(Actor*, s16, f32, f32, f32, f32, s32);
+void func_global_asm_806858E8(Actor *actor, s16 boneIndex, f32 scale, f32 x, f32 y, f32 z, s32 arg6);
 void func_global_asm_80684BB0(s16 arg0, s16 arg1, s16 arg2);
 void func_global_asm_80685984(f32 arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3);

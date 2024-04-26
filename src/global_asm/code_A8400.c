@@ -91,7 +91,6 @@ typedef struct {
     s16 unk6;
 } AAD_global_asm_806A7600;
 
-void func_global_asm_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806A6DB4(s32 arg0);
 void func_global_asm_80686CF8(Actor *actor);
 
@@ -108,13 +107,12 @@ void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, 
 
 s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
 void func_global_asm_80723484(s32, Actor*);
-void func_global_asm_807149FC(s32 arg0);
 
 void func_global_asm_806A3700(s32 arg0, s32 arg1) {
 
 }
 
-// Displaylist stuff (matrix)
+// Displaylist stuff (matrix), doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A370C.s")
 
 void func_global_asm_806A3B78(s32 *arg0, AAD_global_asm_806A4DDC *arg1, Struct806A57C0_2 *arg2, u8 arg3, u8 *arg4) {

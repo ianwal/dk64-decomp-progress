@@ -39,17 +39,13 @@ extern u8 D_global_asm_807FC8B9;
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern f32 D_global_asm_807FD888;
 
-f32 func_global_asm_806DFFA0(f32, s16, s16);
-void func_global_asm_806EAB44(Actor *arg0, u8 arg1);
 s32 handleInputsForControlState(s32 arg0);
 f32 func_global_asm_806E0454(f32, f32);
 void func_global_asm_8072FE60(f32);
 void func_global_asm_806E1630(void);
 void func_global_asm_806DF390(Actor*, PlayerAdditionalActorData*, u8);
 void func_global_asm_806DF3D0(Actor*, PlayerAdditionalActorData*, u8);
-void func_global_asm_806CD8EC(void);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
-void func_global_asm_80613AF8(Actor*, s32, f32, f32);
 
 void func_global_asm_806DF390(Actor *arg0, PlayerAdditionalActorData *arg1, u8 arg2) {
     s32 phi_a3;
