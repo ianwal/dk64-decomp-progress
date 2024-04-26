@@ -707,7 +707,7 @@ void func_global_asm_80692E50(void) {
                 func_global_asm_80714998(1);
                 func_global_asm_8071498C(func_global_asm_8071ABDC);
                 drawSpriteAtPosition(&D_global_asm_80720BA0, 0.35f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
-            };
+            }
         }
         playSoundAtActorPosition(current_actor_pointer, 0x91, 0xFF, 0x7F, 0x1E);
         deleteActor(current_actor_pointer);
