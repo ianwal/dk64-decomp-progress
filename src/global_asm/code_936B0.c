@@ -679,9 +679,95 @@ s32 func_global_asm_806951B0(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_806951E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80695724.s")
+void func_global_asm_80695724(f32, u8);
 
-void func_global_asm_80695724(f32, s32);
+extern s32 D_global_asm_8072006C; // Sprite
+extern s16 D_global_asm_80750344;
+extern u32 D_global_asm_8076A068;
+extern u8 D_global_asm_807FBB85;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    f32 unk8;
+    s32 unkC;
+    s8 unk10;
+    s8 unk11;
+    u8 unk12;
+} AAD_80695724;
+
+void func_global_asm_80695724(f32 arg0, u8 arg1) {
+    s32 pad2;
+    s32 pad3;
+    u8 red;
+    u8 green;
+    u8 blue;
+    ActorAnimationState *temp_v0;
+    s32 pad[14];
+    AAD_80695724 *aaD;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        if (arg1 == 1) {
+            playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x306, 0xFF, 0x7F, 0, 0, 0.3f, 0);
+        }
+        current_actor_pointer->unk6A &= 0xFFFE;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->y_rotation = current_actor_pointer->unkEE;
+        current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
+        current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
+        current_actor_pointer->unk132 = (u8)current_actor_pointer->unk124->unk10;
+        temp_v0 = current_actor_pointer->animation_state;
+        temp_v0->scale[0] = 2.0 * temp_v0->scale[0];
+        temp_v0 = current_actor_pointer->animation_state;
+        temp_v0->scale[1] = 2.0 * temp_v0->scale[1];
+        temp_v0 = current_actor_pointer->animation_state;
+        temp_v0->scale[2] = 2.0 * temp_v0->scale[2];
+        aaD->unk8 = -(func_global_asm_80611BB4(current_actor_pointer->y_velocity, current_actor_pointer->unkB8) * 57.295776f);
+        current_actor_pointer->noclip_byte = 0x3C;
+        aaD->unk0 = D_global_asm_8076A068;
+        aaD->unk12 = 0;
+        current_actor_pointer->object_properties_bitfield |= 0x80000;
+        aaD->unk10 = 0;
+    }
+    func_global_asm_8067ACB4(current_actor_pointer);
+    func_global_asm_806651FC(current_actor_pointer);
+    func_global_asm_80665564(current_actor_pointer, arg0);
+    switch (arg1) {
+        case 1:
+            red = 0xFF;
+            green = 0;
+            blue = 0;
+            break;
+        case 0:
+            red = 0xFF;
+            green = 0xFF;
+            blue = 0xFF;
+            break;
+    }
+    func_global_asm_806595F0(1);
+    createLight(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 80.0f, 0, red, green, blue);
+    if (arg1 == 1) {
+        if ((aaD->unk12 == 0) && ((current_actor_pointer->unk6A & 1) || (current_actor_pointer->unkFD != 0) || (D_global_asm_807FBB85 != 0))) {
+            func_global_asm_80714950(0x1006E);
+            func_global_asm_8071498C(func_global_asm_8071A8B0);
+            drawSpriteAtPosition(&D_global_asm_8072006C, 1.2f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+            func_global_asm_8068581C(NULL, 0, 0.8f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, -0x50);
+            playSoundAtActorPosition(current_actor_pointer, 0xF6, 0xFF, 0x3F, 0x14);
+            aaD->unk12 = 2;
+        } else {
+            if (aaD->unk12) {
+                aaD->unk12--;
+                if (!(aaD->unk12)) {
+                    deleteActor(current_actor_pointer);
+                }
+            }
+        }
+        if ((aaD->unk0 + D_global_asm_80750344) < D_global_asm_8076A068) {
+            deleteActor(current_actor_pointer);
+        }
+    }
+}
 
 void func_global_asm_80695B50(void) {
     AnotherAdditionalActorData *sp1C = current_actor_pointer->AaaD;

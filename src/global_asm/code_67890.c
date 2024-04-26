@@ -29,6 +29,7 @@ s32 func_global_asm_80663040(s32 arg0) {
     return FALSE;
 }
 
+// Doable, mid sized struct loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_67890/func_global_asm_8066308C.s")
 
 s32 func_global_asm_80663594(s32, s32);
