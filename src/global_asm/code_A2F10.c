@@ -680,7 +680,7 @@ void func_global_asm_806A081C(Actor *arg0) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_806A0864.s")
 
-// Matrix stuff
+// Matrix stuff, doable, needs actor unk0 shape
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_806A0B74.s")
 
 void func_global_asm_806A0F78(Actor *arg0, u8 arg1, u8 arg2) {

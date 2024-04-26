@@ -314,7 +314,7 @@ s32 func_multiplayer_80025404(void) {
     Struct80717D84 *temp_a0;
     s32 i;
     s32 chosenPlayer;
-    s32 var_s6;
+    s32 boneIndex;
     s32 temp_s3;
     u8 temp_t4;
     PlayerAdditionalActorData *PaaD;
@@ -328,13 +328,13 @@ s32 func_multiplayer_80025404(void) {
                 switch (current_character_index[i]) {
                     case 0:
                     case 3:
-                        var_s6 = 0xF;
+                        boneIndex = 0xF;
                         break;
                     case 1:
                     case 2:
                     case 4:
                     case 5:
-                        var_s6 = 0xD;
+                        boneIndex = 0xD;
                         break;
                 }
                 func_global_asm_807149B8(1);
@@ -342,7 +342,7 @@ s32 func_multiplayer_80025404(void) {
                 func_global_asm_80714998(2);
                 changeActorColor(0xFF, 0xFF, 0xFF, 0x7F);
                 func_global_asm_8071498C(&func_global_asm_8071F3C0);
-                PaaD->unk260 = func_global_asm_80714C08(&D_global_asm_807207BC, 0.5f, character_change_array[i].player_pointer, var_s6, 2);
+                PaaD->unk260 = func_global_asm_80714C08(&D_global_asm_807207BC, 0.5f, character_change_array[i].player_pointer, boneIndex, 2);
                 D_global_asm_807FC950[i].unk2FA = temp_s3;
             }
             if (D_global_asm_807FC950[i].unk2FA < temp_s3) {

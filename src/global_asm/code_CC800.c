@@ -373,12 +373,12 @@ u8 func_global_asm_806C8D2C(s16 arg0) {
     return 0;
 }
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C8DE0.s")
 
 // u8 func_global_asm_806C8D2C(s16, s32);
 
 /*
-// TODO: Missing something, close, doable
 s32 func_global_asm_806C8DE0(s32 playerIndex) {
     s32 phi_v1;
     PlayerAdditionalActorData *PaaD;

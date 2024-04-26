@@ -2190,10 +2190,10 @@ GlobalASMStruct40 *func_global_asm_8066BF0C(GlobalASMStruct65 *arg0, s32 arg1, s
     return temp_v0;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_8066BFF0.s")
 
 /*
-// TODO: Close, not sure what's wrong
 void func_global_asm_8066BFF0(GlobalASMStruct40 *arg0, GlobalASMStruct40 *arg1, s32 *arg2) {
     while (arg0) {
         arg1[*arg2].unk0 = arg0->unk0;

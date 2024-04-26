@@ -1950,7 +1950,7 @@ void func_global_asm_80663A80(void);
 void func_global_asm_80600B10(void);
 void func_global_asm_80600BBC(void *arg0);
 void func_global_asm_80600C68(void);
-Gfx *func_global_asm_806FD950(Gfx *dl, s16 style, void *string, s16 y);
+Gfx *func_global_asm_806FD950(Gfx *dl, s16 style, char *string, s16 y);
 void func_global_asm_806FDAEC(s16 arg0);
 void func_global_asm_807002AC(u16 *arg0, s16 **arg1, f32 arg2);
 void func_global_asm_805FF1B0(s32 player_index);

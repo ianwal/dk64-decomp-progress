@@ -33,16 +33,12 @@ extern s32 D_global_asm_807FD978;
 extern f32 D_global_asm_8075DFB0;
 extern f32 D_global_asm_8075DFB4;
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FD8E0.s")
-
-/*
-void func_global_asm_806FD8E0(void *arg0, s16 arg1, void *arg2, s16 arg3, u8 arg4) {
-    printStyledText(arg0, arg1, (D_global_asm_80744490 - getCenterOfString(arg1, arg2)) * 2, arg3 * 4, arg2, arg4);
+Gfx *func_global_asm_806FD8E0(Gfx *dl, s16 style, char *string, s16 y, u8 extraBitfield) {
+    s16 x = (D_global_asm_80744490 - getCenterOfString(style, string)) * 2;
+    return printStyledText(dl, style, x, y * 4, string, extraBitfield);
 }
-*/
 
-Gfx *func_global_asm_806FD950(Gfx *dl, s16 style, void *string, s16 y) {
+Gfx *func_global_asm_806FD950(Gfx *dl, s16 style, char *string, s16 y) {
     return printStyledText(dl, style, 96, y * 4, string, 1);
 }
 
@@ -228,8 +224,19 @@ void func_global_asm_806FFB2C(Gfx *dl, Actor *arg1) {
 // Hmm, weird m2c errors
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FFC04.s")
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FFEAC.s")
+s16 func_global_asm_806FFC04(u16);
+
+s16 *func_global_asm_806FFEAC(s16 *arg0, s16 *arg1) {
+    s16 i, j;
+
+    for (i = 0; i < 0x40; i++) {
+        for (j = 0; j < 0x20; j++) {
+            *arg0 = func_global_asm_806FFC04(arg1[j + (i * D_global_asm_80744490)]);
+            arg0++;
+        }
+    }
+    return arg0;
+}
 
 void func_global_asm_806FFF5C(void) {
     // Texture, maybe pulling it into cache?

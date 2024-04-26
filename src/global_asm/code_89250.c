@@ -442,7 +442,7 @@ void func_global_asm_80685D84(Actor *arg0) {
     }
 }
 
-// rodata
+// rodata, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80685E78.s")
 
 /*

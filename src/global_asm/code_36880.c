@@ -68,19 +68,19 @@ typedef struct {
     u16 unk28; // Used
     u16 unk2A;
     s32 unk2C;
-} GlobalASMStruct88;
+} ObjectModel2Setup;
 
 void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2);
 
 void func_global_asm_80631C3C(void) {
-    void *temp_v0;
-    GlobalASMStruct88 *var_s0;
-    s32 temp_s2;
+    void *setupFile;
+    ObjectModel2Setup *var_s0;
+    s32 objectModel2Count;
     s32 *sp58;
     s32 sp54;
     s32 i;
-    u8 temp_s3;
-    s32 var_s1;
+    u8 levelIndex;
+    s32 j;
 
     if (D_global_asm_80747D78 == 0) {
         D_global_asm_80747D78 = 1;
@@ -88,58 +88,59 @@ void func_global_asm_80631C3C(void) {
             D_global_asm_807F6150[i] = 0;
         }
         for (i = 0; i < 0xDD; i++) {
-            temp_v0 = getPointerTableFile(9, i, 1, 1);
-            if (temp_v0 != NULL) {
-                temp_s3 = getLevelIndex(i, 1);
-                func_global_asm_80631F58(temp_v0, &sp58, &sp54);
-                temp_s2 = *sp58;
+            // Load setup for map
+            setupFile = getPointerTableFile(9, i, 1, 1);
+            if (setupFile != NULL) {
+                levelIndex = getLevelIndex(i, 1);
+                func_global_asm_80631F58(setupFile, &sp58, &sp54);
+                objectModel2Count = *sp58;
                 var_s0 = sp58 + 1;
-                for (var_s1 = 0; var_s1 < temp_s2; var_s1++) {
-                    if (func_global_asm_80631EB8(var_s0->unk28) != 0) {
-                        D_global_asm_807F6150[temp_s3]++;
+                for (j = 0; j < objectModel2Count; j++) {
+                    if (func_global_asm_80631EB8(var_s0->unk28)) {
+                        D_global_asm_807F6150[levelIndex]++;
                     }
                     var_s0++;
                 }
                 func_global_asm_8066B424();
-                func_global_asm_8066B434(temp_v0, 0x10C, 7);
+                func_global_asm_8066B434(setupFile, 0x10C, 7);
             }
         }
     }
 }
 
-s32 func_global_asm_80631D8C(u8 arg0) {
+s32 func_global_asm_80631D8C(u8 map) {
     s32 temp;
     s32 j;
-    s32 temp_s2;
+    s32 objectModel2Count;
     s32 i;
     s32 *sp5C;
     s32 sp58;
-    u8 temp_s6;
-    u16 phi_s3;
-    GlobalASMStruct88 *phi_s0;
+    u8 levelIndex;
+    u16 singleCoinOrBunchCount;
+    ObjectModel2Setup *phi_s0;
 
-    temp_s6 = getLevelIndex(arg0, 1);
-    phi_s3 = 0;
-    for (i = 0; i < arg0; i++) {
-        if (temp_s6 == getLevelIndex(i, 1)) {
+    levelIndex = getLevelIndex(map, 1);
+    singleCoinOrBunchCount = 0;
+    for (i = 0; i < map; i++) {
+        if (levelIndex == getLevelIndex(i, 1)) {
             // Load setup for map
-            void *temp_v0 = getPointerTableFile(9, i, 1, 1);
-            if (temp_v0) {
-                func_global_asm_80631F58(temp_v0, &sp5C, &sp58);
-                temp_s2 = *sp5C;
+            void *setupFile = getPointerTableFile(9, i, 1, 1);
+            if (setupFile) {
+                func_global_asm_80631F58(setupFile, &sp5C, &sp58);
+                objectModel2Count = *sp5C;
                 phi_s0 = sp5C + 1;
-                for (j = 0; j < temp_s2; j++) {
-                    if (func_global_asm_80631EB8(phi_s0->unk28) != 0) {
-                        phi_s3++;
+                for (j = 0; j < objectModel2Count; j++) {
+                    if (func_global_asm_80631EB8(phi_s0->unk28)) {
+                        singleCoinOrBunchCount++;
                     }
                     phi_s0++;
                 }
                 func_global_asm_8066B424();
-                func_global_asm_8066B434(temp_v0, 0x13A, 7);
+                func_global_asm_8066B434(setupFile, 0x13A, 7);
             }
         }
     }
-    return phi_s3;
+    return singleCoinOrBunchCount;
 }
 
 s32 func_global_asm_80631EB8(u16 arg0) {
@@ -188,6 +189,7 @@ void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2) {
 
 extern s16 D_global_asm_807F614A;
 
+// TODO: Rename to allocateObjectModel2Array
 s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
     switch (map) {
         case MAP_FUNGI:

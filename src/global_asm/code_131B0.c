@@ -303,6 +303,7 @@ void func_global_asm_8060F928(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {
     arg1->unk4 = 2;
 }
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F960.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060FA5C.s")

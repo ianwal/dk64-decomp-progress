@@ -500,6 +500,7 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002881C.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80028E3C.s")
 
 extern s16 D_bonus_8002D8C0[];
@@ -528,7 +529,6 @@ typedef struct {
 } AAD_bonus_80028E3C_2;
 
 /*
-// TODO: Very close
 void func_bonus_80028E3C(void) {
     AAD_bonus_80028E3C *aaD;
     AAD_bonus_80028E3C_2 *aaD2;
@@ -1080,5 +1080,5 @@ void func_bonus_8002C8EC(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Displaylist stuff
+// Displaylist stuff, actor arg1, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002CC08.s")

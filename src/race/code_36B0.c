@@ -179,6 +179,7 @@ void func_race_80027C60(void) {
     }
 }
 
+// a178, a17c
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80027CE8.s")
 
 void func_race_800280E8(Struct800280E8 *arg0) {

@@ -253,7 +253,7 @@ Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2) {
     return dl;
 }
 
-// Displaylist stuff
+// Displaylist stuff, actor arg1, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002CBEC.s")
 
 void func_race_8002CFF0(void) {

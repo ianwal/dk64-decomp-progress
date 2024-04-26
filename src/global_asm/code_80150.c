@@ -24,7 +24,7 @@ u8 func_global_asm_8067B450(void) {
         if ((current_map == D_global_asm_8074E7A0[i].unk0) && (func_global_asm_80688E68(4) == D_global_asm_8074E7A0[i].unk2)) {
             return isFlagSet(D_global_asm_8074E7A0[i].unk4, FLAG_TYPE_PERMANENT);
         }
-    }  
+    }
     return 0;
 }
 */
