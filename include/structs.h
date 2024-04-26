@@ -379,7 +379,7 @@ typedef struct {
     };
     f32 unkC; // Used
     f32 unk10; // Used
-    s32 unk14;
+    f32 unk14; // Used
     s32 unk18;
     s32 unk1C;
     s32 unk20;

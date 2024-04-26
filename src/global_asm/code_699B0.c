@@ -71,6 +71,7 @@ void func_global_asm_80664CB0(s16 arg0) {
     }
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80664D20.s")
 
 u16 func_global_asm_80672134(s16, s16, s16, s16);

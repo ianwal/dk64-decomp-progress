@@ -644,8 +644,55 @@ void func_global_asm_80705C00(s16 arg0, s16 arg1, u8 arg2) {
     }
 }
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_80705F5C.s")
+
+extern f32 D_global_asm_80754CE8;
+extern f64 D_global_asm_8075DFC8;
+extern f64 D_global_asm_8075DFD0;
+extern f64 D_global_asm_8075DFD8;
+extern f64 D_global_asm_8075DFE0;
+extern f64 D_global_asm_8075DFE8;
+
+/*
+Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
+    s16 sp76;
+    f32 x;
+    f32 y;
+    f32 var_f2;
+    f32 var_f0;
+    u8 alpha;
+    f32 sp58[3];
+
+    alpha = 0xFF;
+    if (arg3 == 1) {
+        func_global_asm_80659620(&sp58[2], &sp58[1], &sp58[0], player_pointer->unk12C);
+        var_f2 = MIN(1.0, (1.0 - sp58[1]) / D_global_asm_8075DFC8);
+        alpha = (u8)(var_f2 * D_global_asm_8075DFD0);
+    } else if (arg3 == 2) {
+        var_f0 = D_global_asm_80754CE8 - 0.5;
+        if (var_f0 < 0.0) {
+            var_f0 = 0.0f;
+        }
+        var_f2 = var_f0 * 512.0;
+        if (D_global_asm_8075DFD8 < var_f2) {
+            var_f2 = 255.0f;
+        }
+        alpha = (u8)var_f2;
+    }
+    sp58[2] = var_f2;
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+    sp76 = func_global_asm_80612794(arg1) * D_global_asm_8075DFE0;
+    func_global_asm_80626F8C(sp76, arg2 - (f32)(8.0 * character_change_array->unk2CA), func_global_asm_80612790(arg1) * D_global_asm_8075DFE8, &x, &y, 0, 4.0f, 0);
+    if ((x > -320.0f) && (x < 1600.0f) && (y > -240.0f) && (y < 1200.0f)) {
+        dl = func_global_asm_806FEDB0(dl, 0);
+        gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+        gSPMatrix(dl++, &D_2000100, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        dl = displayImage(dl, 0x35, 3, 1, 0x40, 0x40, x, y, 4.0f, 4.0f, 0, 0.0f);
+    }
+    return dl;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_807063B8.s")
 
