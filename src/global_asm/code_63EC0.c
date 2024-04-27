@@ -2,8 +2,8 @@
 #include "functions.h"
 
 extern u8 D_global_asm_807F93C4;
-extern f32 D_global_asm_807F93C8[2];
-extern f32 D_global_asm_807F93D0;
+extern f32 D_global_asm_807F93C8[2]; // x, y (TODO: probably z too)
+extern f32 D_global_asm_807F93D0; // z
 extern f32 D_global_asm_807F93D4;
 extern f32 D_global_asm_807F93D8;
 extern f32 D_global_asm_807F93DC;
@@ -438,12 +438,12 @@ f32 func_global_asm_806614D0(s32 arg0) {
     return 0.0f;
 }
 
-void func_global_asm_80661520(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
+void func_global_asm_80661520(f32 x, f32 y, f32 z, f32 arg3, f32 arg4, f32 arg5) {
     if (D_global_asm_807F93C4 == 0) {
-        D_global_asm_807F93C8[0] = arg0;
-        D_global_asm_807F93C8[1] = arg1;
+        D_global_asm_807F93C8[0] = x;
+        D_global_asm_807F93C8[1] = y;
         D_global_asm_807F93D4 = 0.0f;
-        D_global_asm_807F93D0 = arg2;
+        D_global_asm_807F93D0 = z;
         D_global_asm_807F93D8 = arg3;
         D_global_asm_807F93DC = 0.0f;
         D_global_asm_807F93E0 = arg4;
@@ -594,8 +594,8 @@ void func_global_asm_80662110(u8 arg0) {
     D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(0x19, 0xAF4, 1, 0);
 }
 
-void func_global_asm_80662158(s32 arg0, s32 arg1, u8 arg2) {
-    func_global_asm_80661F0C(arg0, arg1, arg2);
+void func_global_asm_80662158(Gfx *dl, s32 arg1, u8 arg2) {
+    func_global_asm_80661F0C(dl, arg1, arg2);
 }
 
 void func_global_asm_80662180(s32 arg0) {

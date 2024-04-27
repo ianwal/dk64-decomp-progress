@@ -1024,6 +1024,111 @@ void func_menu_8002C584(Actor *arg0, s32 arg1) {
 // TODO: Huge, very doable, need energy
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CB18.s")
 
+/*
+? func_global_asm_806BF920(); // extern
+extern u8 D_80033F24[];
+extern u8 D_menu_80033878;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Menu80033894;
+
+extern Menu80033894 D_menu_80033894[];
+extern ? D_menu_800338B4;
+
+void func_menu_8002CB18(void) {
+    Struct800317E8 *aad2;
+    f32 sp54;
+    f32 sp50;
+    s8 sp4F;
+    s16 sp4C;
+    s16 *sp38;
+    Actor *temp_a0;
+    ActorAnimationState *temp_v0;
+    ActorAnimationState *temp_v0_2;
+    ActorAnimationState *temp_v0_3;
+    f32 temp_f10;
+    f32 temp_f4;
+    s16 *temp_a2_2;
+    s16 temp_t7;
+    s32 temp_s1_2;
+    s8 temp_a2;
+    u8 var_t0;
+    void *aaD1;
+    Menu80033894 *temp_v0_4;
+
+    aaD1 = current_actor_pointer->additional_actor_data;
+    sp4F = 0;
+    aad2 = aaD1->unk0->unk174;
+    func_global_asm_806BF920();
+    temp_a0 = current_actor_pointer;
+    if (!(temp_a0->object_properties_bitfield & 0x10)) {
+        temp_v0 = temp_a0->animation_state;
+        temp_v0->scale[0] *= 2.0f;
+        temp_v0_2 = current_actor_pointer->animation_state;
+        temp_v0_2->scale[1] *= 2.0f;
+        temp_v0_3 = current_actor_pointer->animation_state;
+        temp_v0_3->scale[2] *= 2.0f;
+        playActorAnimation(current_actor_pointer, *(&D_menu_800338B4 + (((aaD1->unk8 * 6) * 4) + ((current_actor_pointer->control_state_progress & 0xF) * 4))));
+        func_global_asm_806F0C18(current_actor_pointer);
+        current_actor_pointer->object_properties_bitfield |= 0x1000;
+        aaD1->unk4 = D_global_asm_8076A100[current_actor_pointer->control_state & 0xF];
+        func_global_asm_8068A4C8(current_actor_pointer, current_actor_pointer->control_state_progress + 2, D_global_asm_8076A100[current_actor_pointer->control_state & 0xF]);
+    }
+    var_t0 = temp_a0->control_state;
+    if (!(var_t0 & 0x80)) {
+        temp_a2 = D_global_asm_8076A100[var_t0];
+        if (aaD1->unk4 != temp_a2) {
+            func_global_asm_8068A4C8(temp_a0, temp_a0->control_state_progress + 2, temp_a2);
+            aaD1->unk4 = D_global_asm_8076A100[current_actor_pointer->control_state];
+            var_t0 = current_actor_pointer->control_state;
+        }
+        temp_t7 = D_global_asm_8076A0E4[var_t0] & 0x7F;
+        if (temp_t7 != temp_a0->control_state_progress) {
+            temp_a2_2 = &D_menu_8003386C[temp_t7];
+            sp38 = temp_a2_2;
+            sp4C = temp_t7;
+            spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, *temp_a2_2);
+            last_spawned_actor->unk17C->unk0_s16[0] = *temp_a2_2;
+            last_spawned_actor->control_state = current_actor_pointer->control_state;
+            last_spawned_actor->control_state_progress = sp4C;
+            last_spawned_actor->additional_actor_data->unk0 = aaD1->unk0;
+            sp4F = 1;
+            var_t0 = current_actor_pointer->control_state;
+        }
+        temp_v0_4 = &D_menu_80033894[var_t0];
+        func_menu_800317E8(aad2, temp_v0_4->unk0, temp_v0_4->unk4, &sp54, &sp50, 2, 0, 1.8f);
+        current_actor_pointer->x_position = player_pointer->x_position + (sp54 - 160.0f);
+        current_actor_pointer->y_position = (player_pointer->y_position - (sp50 - 120.0f)) - 20.0f;
+        current_actor_pointer->z_position = player_pointer->z_position - 300.0f;
+        if (D_global_asm_8076A0E4[current_actor_pointer->control_state] & 0x80) {
+            current_actor_pointer->object_properties_bitfield &= ~4;
+        } else {
+            current_actor_pointer->object_properties_bitfield |= 4;
+        }
+    } else {
+        temp_s1_2 = 0x140 / D_menu_80033878;
+        sp4C = D_80033F24[var_t0 & 0xF];
+        func_menu_800317E8(aad2, 160.0f, 150.0f, &sp54, &sp50, 2, 0, 1.8f);
+        temp_f10 = ((sp4C * temp_s1_2) + (temp_s1_2 >> 1)) - 0xA0;
+        sp54 = temp_f10;
+        temp_f4 = temp_f10 * 0.78;
+        sp54 = temp_f4;
+        current_actor_pointer->x_position = player_pointer->x_position + temp_f4;
+        current_actor_pointer->y_position = (player_pointer->y_position - (sp50 - 120.0f)) + 16.0f;
+        current_actor_pointer->z_position = player_pointer->z_position - 300.0f;
+    }
+    if (aad2->unk0 > 1.0f) {
+        sp4F = 1;
+    }
+    if (sp4F != 0) {
+        deleteActor(current_actor_pointer);
+    }
+    renderActor(current_actor_pointer, 0);
+}
+*/
+
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CFA4.s")
 
