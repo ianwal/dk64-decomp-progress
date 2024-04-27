@@ -146,6 +146,7 @@ void func_global_asm_80651BE0(s16 arg0, u8 arg1, u8 arg2) {
     D_global_asm_807F6C1C[arg0 * 2 + arg1].unk9 = arg2;
 }
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80651C2C.s")
 
 typedef struct {
