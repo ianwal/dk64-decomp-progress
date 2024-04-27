@@ -101,13 +101,13 @@ int func_global_asm_806FF75C(); // TODO: Signature
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
 
 s32 handleInputsForControlState(s32 arg0);
-u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
+s32 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
 void func_global_asm_80718BF4(void);
 void func_global_asm_806CEFBC(Struct806CEFBC*); // TODO: Proper signature, just for function pointer
 void func_global_asm_806CF138(Struct806CF138 *arg0);
-s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
+s16 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 void func_global_asm_80613A50(Actor*, s32);
 
 void func_global_asm_806C9DE0(void) {
@@ -876,8 +876,124 @@ s16 func_global_asm_806CD988(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CD9A0.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CDD24.s")
+s32 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
+    s16 var_v1;
+    u8 pad[4];
+    s16 sp2E;
+    s16 sp2C;
+    f32 var_f0;
+
+    var_v1 = arg0->control_state;
+    sp2E = extra_player_info_pointer->unk4C;
+    sp2C = func_global_asm_806CD9A0(arg0, arg1, arg2, extra_player_info_pointer->unk4C, D_global_asm_807FD584);
+    if (sp2C != 6) {
+        arg0->y_velocity = 0.0f;
+    }
+    if (sp2E < 0) {
+        func_global_asm_806D03BC();
+    }
+    if (sp2E != sp2C) {
+        switch (sp2C) {
+            case 0:
+                if (extra_player_info_pointer->unk1F0 & 0x100) {
+                    playActorAnimation(arg0, 0x1AD);
+                } else {
+                    playAnimation(arg0, 9);
+                }
+                func_global_asm_80614D00(arg0, 1.0f, 0.0f);
+                var_v1 = 0xC;
+                break;
+            case 1:
+                if (extra_player_info_pointer->unk1F0 & 0x100) {
+                    playActorAnimation(arg0, 0x1AD);
+                } else {
+                    playActorAnimation(arg0, 0x13);
+                }
+                func_global_asm_80614D00(arg0, 1.0f, 0.0f);
+                var_v1 = 0xC;
+                break;
+            case 2:
+                playAnimation(arg0, 0x87);
+                func_global_asm_80614D00(arg0, 1.0f, 0.0f);
+                var_v1 = 0xC;
+                break;
+            case 3:
+                if (extra_player_info_pointer->unk1F0 & 0x100) {
+                    playActorAnimation(arg0, 0x76);
+                    func_global_asm_80613C48(arg0, 0x2AC, 0.0f, 6.0f);
+                } else {
+                    func_global_asm_80613AF8(arg0, 2, 0.0f, 6.0f);
+                    playAnimation(arg0, 1);
+                }
+                switch (sp2E) {
+                    case 4:
+                    case 5:
+                        func_global_asm_80613A50(arg0, 2);
+                        break;
+                }
+                var_v1 = 0xD;
+                break;
+            case 4:
+                playAnimation(arg0, 2);
+                func_global_asm_80613AF8(arg0, 3, 0.0f, 6.0f);
+                if (sp2E == 3) {
+                    switch (current_character_index[cc_player_index]) {
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                            func_global_asm_80613A50(arg0, 4);
+                            break;
+                    }
+                }
+                if (sp2E == 5) {
+                    func_global_asm_80613A50(arg0, 2);
+                }
+                var_v1 = 0xD;
+                break;
+            case 5:
+                playAnimation(arg0, 3);
+                func_global_asm_80613AF8(arg0, 4, 0.0f, 6.0f);
+                if ((sp2E == 3) || (sp2E == 4)) {
+                    func_global_asm_80613A50(arg0, 4);
+                }
+                var_v1 = 0xD;
+                break;
+            case 6:
+                playAnimation(arg0, 0x1B);
+                func_global_asm_80614D90(arg0);
+                var_v1 = 0x1E;
+                current_actor_pointer->unk9C = current_actor_pointer->y_position;
+                break;
+        }
+        extra_player_info_pointer->unk4C = sp2C;
+    }
+    if (extra_player_info_pointer->unk4C >= 3) {
+        if (extra_player_info_pointer->unk26 == 0x64) {
+            var_f0 = arg0->unkB8;
+        } else {
+            var_f0 = extra_player_info_pointer->unk4;
+        }
+        var_f0 *= 0.025;
+        if (extra_player_info_pointer->unk4C == 5) {
+            var_f0 *= 0.6;
+        }
+        if (var_f0 > 1.25f) {
+            var_f0 = var_f0 - ((var_f0 - 1.25f) * 0.4);
+        }
+        if (arg0->animation_state->unk0->unk24 != 0.0f) {
+            if (extra_player_info_pointer->unk26 == 0x64) {
+                func_global_asm_80614D00(arg0, var_f0, 2.0f);
+            } else {
+                if (var_f0 < 0.5) {
+                    var_f0 = 0.5f;
+                }
+                func_global_asm_80614D00(arg0, var_f0, 10.0f);
+            }
+        }
+    }
+    return var_v1;
+}
 
 u32 func_global_asm_806CE174(Actor *actor, f32 arg1, f32 arg2, s32 arg3) {
     s16 sp36;

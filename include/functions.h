@@ -2150,7 +2150,7 @@ u8 func_global_asm_806FD894(s16 arg0);
 void func_global_asm_80712574(void);
 void func_global_asm_806A0330(void);
 s16 func_global_asm_80632630(s32 arg0, f32 x, f32 y, f32 z, f32 arg4, u8 arg5);
-void func_global_asm_80686E40(f32, f32, f32, s32);
+void func_global_asm_80686E40(f32 x, f32 y, f32 z, s32 arg3);
 void func_global_asm_80651BE0(s16 arg0, u8 arg1, u8 arg2);
 void func_global_asm_8062AC68(void *);
 void func_global_asm_80657CB0(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4, f32 *arg5, f32 *arg6);

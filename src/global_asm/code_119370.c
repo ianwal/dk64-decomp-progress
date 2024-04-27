@@ -2201,14 +2201,14 @@ void func_global_asm_8071E3EC(Struct80717D84 *arg0, s8 *arg1) {
     if (arg0->unk384 == NULL) {
         arg0->unk384 = malloc(0xC);
         var_v1 = arg0->unk384;
-        var_v1[0] = 0.0f;
-        var_v1[1] = 0.0f;
+        var_v1[0] = 0;
+        var_v1[1] = 0;
         var_v1[2] = func_global_asm_806531B8(arg0->unk340, arg0->unk344, arg0->unk348, 0);
     }
     var_v1 = arg0->unk384;
     if (var_v1[1] == 0.0) {
         temp = D_global_asm_8075EA58;
-        var_v1[0] = var_v1[0] + 30.0;
+        var_v1[0] += 30.0;
         if (temp < var_v1[0]) {
             var_v1[0] = 300.0f;
             var_v1[1] = 1.0f;
