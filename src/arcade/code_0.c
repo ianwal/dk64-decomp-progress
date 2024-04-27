@@ -262,14 +262,13 @@ void func_arcade_80024940(Gfx **gpp) {
 #endif
 
 // struct, score, big offset, loops, aaa
-#ifndef NONMATCHING
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024A50.s")
-#else
+/*
 void func_arcade_80024A50(s32 arg0) {
-    /* adds score to high scores */
-    u8 pad[0x10];
+    // adds score to high scores
     volatile u8 spC = D_arcade_8004A794; //static???
-    int i, j;
+    u8 pad[0x10];
+    s32 i, j;
 
     
     for (i = 4; arg0 < i; i--) {
@@ -283,34 +282,30 @@ void func_arcade_80024A50(s32 arg0) {
         arcade_saved_high_score_initials[arg0][j] = spC;
     }
 }
-#endif
+*/
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024B04.s")
-#else
 void func_arcade_80024B04(void) {
-    u8 i;
-    s32 max;
+    u8 i, j;
+
     for (i = 0; i < 5; i++) {
         if (arcade_saved_high_scores[i] < arcade_current_score) {
             func_arcade_80024A50(i);
             break;
         }
     }
-    for (i = 0; i < 3; i++) {
-        D_arcade_8004A774[i] = ' ';
+    for (j = 0; j < 3; j++) {
+        D_arcade_8004A774[j] = ' ';
     }
     D_arcade_8004C724 = 3;
     arcade_background_visual = 0;
     D_arcade_8004C6DC = 0;
-    D_arcade_8004C720 = 0;
-    max = 0x50;
-    for (i = 0; i < max; i++) {
-        D_arcade_8004BCD0[i].unk18 = 0;
-        D_arcade_8004BCD0[0] = D_arcade_8004BCD0[i];
+    D_arcade_8004C720 = 0; \
+    for (j = 0; j < 0x50; j++) {
+        D_arcade_8004BCD0[j].unk18 = 0;
+        D_arcade_8004BCD0[0] = arcade_name_select_cursor_obj_template;
+        D_arcade_8004BCD0[0].unk1C = i;
     }
 }
-#endif
 
 void func_arcade_80024C34(void) {
     if (D_arcade_8004A73C == 0) {

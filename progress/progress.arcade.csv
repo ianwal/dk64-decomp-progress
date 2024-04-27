@@ -36,7 +36,7 @@ us,.arcade,func_arcade_800263EC,300,yes
 us,.arcade,func_arcade_8002A474,704,yes
 us,.arcade,arcade_pauline_top_update,180,yes
 us,.arcade,func_arcade_80029ACC,516,yes
-us,.arcade,func_arcade_80024B04,304,no
+us,.arcade,func_arcade_80024B04,304,yes
 us,.arcade,func_arcade_8002CBD8,396,yes
 us,.arcade,func_arcade_8002A264,300,yes
 us,.arcade,arcade_dk_title_update,692,yes
