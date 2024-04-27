@@ -1025,11 +1025,89 @@ void func_global_asm_80695B50(void) {
     renderActor(current_actor_pointer, 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80695BAC.s")
-
+extern s32 D_global_asm_8071FBC8; // Sprite
+extern s32 D_global_asm_8071FC40; // Sprite
+extern s16 D_global_asm_80750344;
+extern u32 D_global_asm_8076A068;
+extern u8 D_global_asm_807FBB85;
 extern s32 D_global_asm_80720340; // Sprite
 extern s32 D_global_asm_80720804; // TODO: Type
 extern f32 D_global_asm_80750274;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+} AAD_80695BAC;
+
+void func_global_asm_80695BAC(void) {
+    AAD_80695BAC *aaD;
+    s32 i;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unkFA = 0x270F;
+        current_actor_pointer->unk6E[0] = -2;
+        current_actor_pointer->unk6A &= ~1;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
+        current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
+        aaD->unk13 = current_actor_pointer->unk124->unk10;
+        current_actor_pointer->noclip_byte = 0x3C;
+        func_global_asm_8066EB40(current_actor_pointer, 110.0f);
+        func_global_asm_8066E8E4(current_actor_pointer, 0.0f, 0.0f, 0.0f, 100.0f, -1);
+        func_global_asm_8066E854(current_actor_pointer, 0.0f, 0.0f, 0.0f, -1);
+        func_global_asm_807149FC(-1);
+        func_global_asm_807149B8(1);
+        func_global_asm_80714C08(&D_global_asm_80720804, current_actor_pointer->unk124->unkC, current_actor_pointer, 1, 2);
+        aaD->unk0 = D_global_asm_8076A068;
+        current_actor_pointer->object_properties_bitfield |= 0x80000;
+        if (aaD->unk13 != 0xA) {
+            func_global_asm_80714998(2);
+            func_global_asm_807149B8(1);
+            drawSpriteAtPosition(&D_global_asm_8071FBC8, 1.5f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+        }
+    }
+    func_global_asm_8067ACB4(current_actor_pointer);
+    func_global_asm_806651FC(current_actor_pointer);
+    func_global_asm_80665564(current_actor_pointer, 4.0f);
+    func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xE, 0xE, 1, 0x96, 0x78, 0, 1.0f);
+    if (current_actor_pointer->unk6A & 4) {
+        func_global_asm_807149B8(1);
+        func_global_asm_807149FC(-1);
+        func_global_asm_8071498C(func_global_asm_807189BC);
+        func_global_asm_80714950(current_actor_pointer);
+        drawSpriteAtPosition(&D_global_asm_8071FC40, 0.3f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+    }
+    if (((current_actor_pointer->unkFC != 0) && ((D_global_asm_8076A068 - aaD->unk0) >= 6)) || (D_global_asm_807FBB85 != 0)) {
+        if ((D_global_asm_807FBB85 != 0) && (aaD->unk13 != 0xA)) {
+            func_global_asm_807149B8(1);
+            func_global_asm_80714950(0x100D2);
+            func_global_asm_8071498C(func_global_asm_8071A8B0);
+            drawSpriteAtPosition(&D_global_asm_80720120, 2.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position);
+            func_global_asm_8061EF4C(player_pointer->PaaD->unk104, 7, 0x16, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 200.0f, 400.0f);
+            func_global_asm_806915B0();
+            for (i = 0; i != 0xC; i += 2) {
+                func_global_asm_807149B8(1);
+                func_global_asm_80714950(i + 0x0B000000);
+                func_global_asm_8071498C(func_global_asm_8071ABDC);
+                drawSpriteAtPosition(&D_global_asm_807206DC, 0.35f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+            }
+        }
+        if (aaD->unk13 != 0xA) {
+            playSoundAtActorPosition(current_actor_pointer, 0x3C, 0xFF, 0x7F, 0x1E);
+        }
+        deleteActor(current_actor_pointer);
+    }
+    if ((aaD->unk0 + D_global_asm_80750344) < D_global_asm_8076A068) {
+        deleteActor(current_actor_pointer);
+    }
+}
 
 typedef struct {
     s32 unk0;
@@ -1093,7 +1171,101 @@ void func_global_asm_806960A4(void) {
     }
 }
 
+// extremely close, float regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80696574.s")
+
+extern s16 D_global_asm_807502D0;
+extern f32 D_global_asm_807502F8;
+
+typedef struct {
+    u8 unk0[0x88 - 0x0];
+    Actor *unk88; // Used
+    u8 unk8C[0x104 - 0x8C];
+    s32 unk104; // Used
+} AAD_807FBB70_1FC;
+
+typedef struct {
+    s32 unk0; // Used
+} AAD_80696574;
+
+/*
+void func_global_asm_80696574(void) {
+    AAD_807FBB70_1FC *aaD1FC;
+    s16 i;
+    u8 sp79;
+    u8 sp78;
+    u8 sp77;
+    u8 unk76;
+    u8 unk75;
+    u8 unk74;
+    u8 unk73;
+    u8 unk72;
+    u8 unk71;
+    u8 sp70;
+    u8 unk6F;
+    u8 unk6E;
+    u8 unk6D;
+    u8 sp6C;
+    s32 bitmask;
+    AAD_80696574 *aaD;
+
+    aaD = ((AAD_80696574*)current_actor_pointer->additional_actor_data);
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        bitmask = 0x80000;
+        current_actor_pointer->unkA0 = \
+        current_actor_pointer->unk9C = current_actor_pointer->y_position;
+        if (D_global_asm_807FBB64 & bitmask) {
+            current_actor_pointer->noclip_byte = 0x3C;
+        } else {
+            current_actor_pointer->noclip_byte = 0x1C;
+        }
+        aaD->unk0 = D_global_asm_8076A068;
+        current_actor_pointer->object_properties_bitfield |= bitmask;
+        func_global_asm_80666290(current_actor_pointer, &sp79, &sp70, &sp78, &sp6C, sp77);
+        current_actor_pointer->y_acceleration = D_global_asm_807502F8 - (((rand() >> 0xF) % 32767) % 10);
+        current_actor_pointer->unk6A &= 0xFFFE;
+    }
+    if (D_global_asm_807FBB70.unk200 == 5) {
+        aaD1FC = D_global_asm_807FBB70.unk1FC->additional_actor_data;
+        if ((aaD1FC->unk88 != NULL) && (((aaD1FC->unk88->unk58 == 0x1D)) || (aaD1FC->unk88->unk58 == 0x50))) {
+            func_global_asm_8061F0B0(aaD1FC->unk104, 0xA, 0x14);
+            setAction(0x34, current_actor_pointer, 0);
+            func_global_asm_80685B44(&D_global_asm_8071FFA0, 0, 1.0f, 4, 0x14, 0x96, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+            deleteActor(current_actor_pointer);
+        }
+    } else {
+        for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
+            if (D_global_asm_807FBB70.unk258[i] == 1) {
+                current_actor_pointer->control_state = 1;
+            }
+        }
+        if (current_actor_pointer->control_state == 1) {
+            func_global_asm_80666280(1);
+            func_global_asm_8067ACB4(current_actor_pointer);
+            func_global_asm_806651FC(current_actor_pointer);
+            func_global_asm_80665564(current_actor_pointer, ((func_global_asm_80612790(current_actor_pointer->z_rotation + 0x800) * 0.5) + 0.5) * 15.0);
+            if ((current_actor_pointer->unk6A & 1) && !(current_actor_pointer->unk6C & 1)) {
+                if (current_actor_pointer->control_state_progress < 2) {
+                    current_actor_pointer->control_state_progress++;
+                    current_actor_pointer->y_velocity = (current_actor_pointer->unkA0 - current_actor_pointer->y_position) * 1.5;
+                    func_global_asm_8061F0B0(extra_player_info_pointer->unk104, 0xA, 0x14);
+                    playSoundAtActorPosition(current_actor_pointer, 0x1C1, 0xFF, 0x7F, 0x1E);
+                    func_global_asm_80685B44(&D_global_asm_8071FFA0, 0, 1.0f, 4, 0x14, 0x96, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                }
+            }
+            if (!(current_actor_pointer->unk6A & 1)) {
+                current_actor_pointer->z_rotation -= ABS(current_actor_pointer->y_velocity * 0.5);
+            }
+            current_actor_pointer->y_velocity += current_actor_pointer->y_acceleration;
+            if (current_actor_pointer->y_velocity < D_global_asm_807502D0) {
+                current_actor_pointer->y_velocity = D_global_asm_807502D0;
+            }
+        }
+        func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, (s16)(current_actor_pointer->animation_state->scale[1] * 300.0f), (s16)(current_actor_pointer->animation_state->scale[1] * 300.0f), 1, 0x96, 0x96, 0, 1.0f);
+    }
+    renderActor(current_actor_pointer, 0);
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80696A6C.s")
 

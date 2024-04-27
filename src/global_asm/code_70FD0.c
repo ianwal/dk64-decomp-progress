@@ -329,6 +329,7 @@ s32 func_global_asm_8066DB40(Struct8066DB40_arg0 *arg0, Struct8066DB40_arg1 *arg
 }
 */
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066DD34.s")
 
 void func_global_asm_8066E21C(LedgeInfo *ledgeInfo) {
