@@ -61,7 +61,76 @@ void func_global_asm_80699914(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A7C8.s")
 
+// Very close, type issues on RGB
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069AB74.s")
+
+extern s16 D_global_asm_807503A0;
+extern u8 D_global_asm_807FBD70;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    f32 unk4;
+} AAD_8069AB74;
+
+/*
+void func_global_asm_8069AB74(void) {
+    f32 z;
+    f32 y;
+    f32 x;
+    u16 red;
+    u16 green;
+    u16 blue;
+    s32 pad;
+    s32 pad2;
+    s32 pad3;
+    AAD_8069AB74 *aaD;
+    s32 pad4;
+    Actor124 *temp_v0;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_global_asm_80613C48(current_actor_pointer, 0x402, 0.0f, 1.0f);
+        if (current_map == MAP_JAPES_MINECART) {
+            playActorAnimation(current_actor_pointer, 0x297);
+        }
+        current_actor_pointer->object_properties_bitfield |= 0x400;
+        aaD->unk0 = 0;
+        aaD->unk4 = 1.0f;
+    }
+    func_global_asm_80614D00(current_actor_pointer, current_actor_pointer->unk124->unk0, 1.0f);
+    if (D_global_asm_807FBD70 == 4) {
+        aaD->unk0 = D_global_asm_807503A0;
+        aaD->unk4 = 0.0f;
+    }
+    if (aaD->unk0 == 0) {
+        temp_v0 = current_actor_pointer->unk124;
+        red = temp_v0->unk4;
+        green = temp_v0->unk8;
+        blue = temp_v0->unkC;
+        red *= aaD->unk4;
+        green *= aaD->unk4;
+        blue *= aaD->unk4;
+        aaD->unk4 += 0.05;
+        if (aaD->unk4 > 1.0) {
+            aaD->unk4 = 1.0f;
+        }
+        if (current_actor_pointer->object_properties_bitfield & 0x10) {
+            temp_v0 = current_actor_pointer->unk124;
+            if ((temp_v0->unk10 != 0.0) || (temp_v0->unk14 != 0.0)) {
+                func_global_asm_8065A660(temp_v0->unk10, temp_v0->unk14);
+            }
+            func_global_asm_806595F0(2);
+            func_global_asm_80659600(current_actor_pointer->unk12C);
+            getBonePosition(current_actor_pointer, 2, &x, &y, &z);
+            createLight(current_actor_pointer->x_position + 0.3, current_actor_pointer->y_position, current_actor_pointer->z_position, x, y, z, 0.0f, 1, red, green, blue);
+        }
+    } else {
+        aaD->unk0--;
+    }
+    renderActor(current_actor_pointer, 0);
+}
+*/
 
 void func_global_asm_8069AFF0(void) {
     func_global_asm_8069AB74();
