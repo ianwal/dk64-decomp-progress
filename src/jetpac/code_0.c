@@ -342,18 +342,19 @@ void func_jetpac_80024D48(Gfx **arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_80024E70.s")
+typedef struct StructJetpac8002BA52 {
+    s16 unk0;
+    s16 unk2;
+} StructJetpac8002BA52;
 
 extern s32 D_global_asm_80770DF8[];
 extern void *D_global_asm_8076D1F8;
-extern s16 D_jetpac_8002BA52[];
+extern StructJetpac8002BA52 D_jetpac_8002BA52[]; // likely 8002ba50 s32, but read as a s16
 
 void func_global_asm_80737924(s32);
 
 void func_global_asm_80737638(void *arg0, enum sfx_e arg1, u32 arg2, u32 arg3, f32 arg4, u32 arg5, void *arg6);
 
-/*
-// TODO: Pretty close...
 void func_jetpac_80024E70(s32 arg0) {
     s32 i;
     s16 sfx;
@@ -363,9 +364,8 @@ void func_jetpac_80024E70(s32 arg0) {
             func_global_asm_80737924(D_global_asm_80770DF8[i]);
         }
     }
-    func_global_asm_80737638(D_global_asm_8076D1F8, D_jetpac_8002BA52[arg0], 0x7FFF, 0x3F, 1.0f, 0, &D_global_asm_80770DF8[arg0]);
+    func_global_asm_80737638(D_global_asm_8076D1F8, D_jetpac_8002BA52[arg0].unk0, 0x7FFF, 0x3F, 1.0f, 0, &D_global_asm_80770DF8[arg0]);
 }
-*/
 
 void func_jetpac_80024F24(s32 arg0, s32 arg1) {
     if (D_global_asm_80770DF8[arg0]) {
