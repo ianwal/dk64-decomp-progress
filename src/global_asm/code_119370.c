@@ -967,7 +967,7 @@ void func_global_asm_807189BC(Struct80717D84 *arg0, s8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80718BF4.s")
 
-// Matrix stuff
+// Matrix stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_8071910C.s")
 
 // rodata

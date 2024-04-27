@@ -1027,7 +1027,71 @@ void func_global_asm_80695B50(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80695BAC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_806960A4.s")
+extern s32 D_global_asm_80720340; // Sprite
+extern s32 D_global_asm_80720804; // TODO: Type
+extern f32 D_global_asm_80750274;
+
+typedef struct {
+    s32 unk0;
+} AAD_806960A4;
+
+void func_global_asm_806960A4(void) {
+    AAD_806960A4 *sp74;
+    f32 randomXOffset;
+    f32 randomYOffset;
+    f32 randomZOffset;
+    s32 i;
+
+    sp74 = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unkFA = 0x270F;
+        current_actor_pointer->unk6E[0] = -2;
+        current_actor_pointer->unk6A &= ~1;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
+        current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
+        current_actor_pointer->noclip_byte = 0x1C;
+        func_global_asm_8066EB40(current_actor_pointer, 110.0f);
+        func_global_asm_8066E8E4(current_actor_pointer, 0.0f, 0.0f, 0.0f, 100.0f, -1);
+        func_global_asm_8066E854(current_actor_pointer, 0.0f, 0.0f, 0.0f, -1);
+        func_global_asm_807149FC(-1);
+        func_global_asm_807149B8(1);
+        func_global_asm_80714C08(&D_global_asm_80720804, current_actor_pointer->unk124->unkC, current_actor_pointer, 1, 2);
+        sp74->unk0 = D_global_asm_8076A068;
+        current_actor_pointer->object_properties_bitfield |= 0x80000;
+    }
+    func_global_asm_8067ACB4(current_actor_pointer);
+    func_global_asm_806651FC(current_actor_pointer);
+    func_global_asm_80665564(current_actor_pointer, 4.0f);
+    current_actor_pointer->y_velocity += D_global_asm_80750274;
+    if (current_actor_pointer->y_velocity < D_global_asm_807502D0) {
+        current_actor_pointer->y_velocity = D_global_asm_807502D0;
+    }
+    func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xE, 0xE, 1, 0x96, 0x78, 0, 1.0f);
+    if ((current_actor_pointer->unk6A & 1) || ((current_actor_pointer->unkFC != 0) && ((D_global_asm_8076A068 - sp74->unk0) >= 6)) || (D_global_asm_807FBB85 != 0)) {
+        for (i = 0; i != 0x10; i += 2) {
+            randomXOffset = (((rand() >> 0xF) % 8191) / 200.0) - 20.0;
+            randomYOffset = (((rand() >> 0xF) % 8191) / 200.0) - 20.0;
+            randomZOffset = (((rand() >> 0xF) % 8191) / 200.0) - 20.0;
+            func_global_asm_8071496C(i);
+            func_global_asm_807149B8(1);
+            if (i == 0) {
+                func_global_asm_80714950(0x1006E);
+                func_global_asm_8071498C(func_global_asm_8071A8B0);
+            } else {
+                func_global_asm_8071498C(func_global_asm_80717D4C);
+                func_global_asm_80714950(-0x96 - ((rand() >> 0xF) % 50));
+            }
+            drawSpriteAtPosition(&D_global_asm_80720340, 1.6f, current_actor_pointer->x_position + randomXOffset, current_actor_pointer->y_position + randomYOffset, current_actor_pointer->z_position + randomZOffset);
+        }
+        func_global_asm_8061F0B0(D_global_asm_807F5D10, 0x14, 0xF);
+        playSoundAtActorPosition(current_actor_pointer, 0x3C, 0xFF, 0x7F, 0x1E);
+        deleteActor(current_actor_pointer);
+    }
+    if ((sp74->unk0 + D_global_asm_80750344) < D_global_asm_8076A068) {
+        deleteActor(current_actor_pointer);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80696574.s")
 

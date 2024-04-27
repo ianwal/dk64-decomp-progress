@@ -300,7 +300,99 @@ void func_global_asm_80602DC4(s32 arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80602E6C.s")
 
+extern f32 D_80770DDC;
+extern f32 D_80770DE0;
+extern f32 D_80770DE4;
+extern f64 D_global_asm_807567B8;
+extern f64 D_global_asm_807567C0;
+extern f32 D_global_asm_807567C8;
+extern f32 D_global_asm_807567CC;
+extern f64 D_global_asm_807567D0;
+extern f64 D_global_asm_807567D8;
+extern f32 D_global_asm_807567E0;
+extern f32 D_global_asm_807567E4;
+extern f64 D_global_asm_807567E8;
+extern f64 D_global_asm_807567F0;
+extern f64 D_global_asm_807567F8;
+extern f64 D_global_asm_80756800;
+extern f64 D_global_asm_80756808;
+extern f64 D_global_asm_80756810;
+extern f32 D_global_asm_80756818;
+
 f32 func_global_asm_80602E6C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, f32 arg5);
+
+/*
+f32 func_global_asm_80602E6C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, f32 arg5) {
+    f32 dx;
+    f32 dy;
+    f32 dz;
+    f32 sp18;
+    f32 temp_f16_3;
+    f32 temp_f2_4;
+    f64 temp_f0;
+    f64 temp_f8;
+    f64 var_f0;
+
+    sp18 = 0.0f;
+    dx = character_change_array->look_at_eye_x - arg0;
+    dy = character_change_array->look_at_eye_y - arg1;
+    dz = character_change_array->look_at_eye_z - arg2;
+    if (D_global_asm_807567B8 < arg5) {
+        var_f0 = arg5 - D_global_asm_807567B8;
+    } else {
+        var_f0 = -(arg5 - D_global_asm_807567B8);
+    }
+    if ((var_f0 < D_global_asm_807567C0) && (dy < 0.0f)) {
+        dy *= 20.0f;
+    }
+    D_80770DE4 = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+    if (D_global_asm_807567B8 <= arg5) {
+        dz = character_change_array->look_at_at_z - character_change_array->look_at_eye_z;
+        dx = character_change_array->look_at_at_x - character_change_array->look_at_eye_x;
+        sp18 = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, character_change_array->look_at_at_y, sqrtf((dz * dz) + (dx * dx)));
+        dz = arg2 - character_change_array->look_at_eye_z;
+        dx = arg0 - character_change_array->look_at_eye_x;
+        D_80770DDC = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, arg1, sqrtf((dz * dz) + (dx * dx))) - sp18;
+        if (D_80770DDC < 0.0f) {
+            D_80770DDC += D_global_asm_807567C8;
+        }
+        if (D_global_asm_807567CC < D_80770DDC) {
+            temp_f0 = D_80770DDC;
+            if (temp_f0 < D_global_asm_807567D0) {
+                D_80770DE4 *= 1.0f - (func_global_asm_80612D1C(((temp_f0 * 4.0) / 7.0) + D_global_asm_807567D8) * 4.0f);
+            }
+        }
+    }
+    D_80770DDC = func_global_asm_80665E48(character_change_array->look_at_eye_x, character_change_array->look_at_eye_z, arg0, arg2) - character_change_array->unk2C4;
+    if (D_80770DDC < 0.0f) {
+        D_80770DDC += D_global_asm_807567E0;
+    }
+    if (D_global_asm_807567E4 < D_80770DDC) {
+        if ((D_80770DDC < D_global_asm_807567E8) && (sp18 < 4.0)) {
+            D_80770DE4 *= 1.0f - (func_global_asm_80612D1C(((2.0 * D_80770DDC) / 3.0) + D_global_asm_807567F0) * arg5);
+        }
+    }
+    if (D_80770DE4 < 1.0f) {
+        D_80770DE4 = 1.0f;
+    }
+    temp_f2_4 = arg4 * 4000;
+    temp_f8 = (temp_f2_4 / sqrtf(D_80770DE4)) - ((temp_f2_4 * D_global_asm_807567F8) - D_global_asm_80756800);
+    temp_f16_3 = temp_f8 * arg3 * D_global_asm_80756808;
+    if (temp_f16_3 < 10.0f) {
+        return 0.0f;
+    }
+    D_80770DE0 = func_global_asm_80612D10(D_80770DDC);
+    D_80770DDC = (1.0f - func_global_asm_80612D1C(D_80770DDC)) * D_global_asm_80756810;
+    if (temp_f16_3 < 10.0f) {
+        return 0.0f;
+    }
+    if (D_global_asm_80756818 < temp_f16_3) {
+        temp_f16_3 = D_global_asm_80756818;
+    }
+    return temp_f16_3;
+}
+*/
+
 extern f32 D_80770DDC;
 extern f32 D_80770DE0;
 extern f32 D_80770DE8;

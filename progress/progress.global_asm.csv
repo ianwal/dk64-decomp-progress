@@ -1998,7 +1998,7 @@ us,asm,func_global_asm_80669930,148,yes
 us,asm,func_global_asm_8073C040,1476,no
 us,asm,func_global_asm_8064216C,152,yes
 us,asm,func_global_asm_8067BC88,32,yes
-us,asm,func_global_asm_806960A4,1232,no
+us,asm,func_global_asm_806960A4,1232,yes
 us,asm,func_global_asm_80670F04,160,yes
 us,asm,func_global_asm_806A8158,4044,no
 us,asm,func_global_asm_806A7B04,36,yes

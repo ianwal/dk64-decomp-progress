@@ -849,7 +849,7 @@ typedef struct player_additional_actor_data {
     }; // TODO: Deconflict
     s16 unkB0;
     s16 unkB2; // Used
-    s32 unkB4;
+    f32 unkB4; // Used
     f32 unkB8; // Used
     s16 unkBC; // Used
     s16 unkBE;
@@ -993,9 +993,9 @@ typedef struct player_additional_actor_data {
     f32 unk204;
     f32 unk208;
     f32 unk20C;
-    s32 unk210;
-    s32 unk214;
-    s32 unk218;
+    f32 unk210; // Used, x
+    f32 unk214; // Used, y
+    f32 unk218; // Used, z
     s16 unk21C;
     u16 unk21E; // Used
     f32 unk220; // Used, x

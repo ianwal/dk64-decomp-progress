@@ -671,6 +671,7 @@ s32 func_global_asm_806F6644(s16 arg0, s32 arg1, u16 arg2) {
     return 1;
 }
 
+// matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F69A8.s")
 
 // TODO: Odd syntax, cleanup possible?

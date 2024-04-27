@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
+void func_global_asm_8061F0B0(s32, s32, s32);
 
 // Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_800265F0.s")
@@ -271,5 +272,109 @@ void func_minecart_800280BC(void) {
 // big, structs, floats
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_8002835C.s")
 
-// big, structs, floats
+// very close, switch case woes
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_800286EC.s")
+
+extern s32 D_global_asm_8072030C; // TODO: Type
+extern u8 D_global_asm_807FBD70;
+extern u8 D_global_asm_807FBDC4;
+extern s32 D_minecart_80028C34; // TODO: Type
+extern s32 D_minecart_80028C40; // TODO: Type
+extern s32 D_minecart_80028C48; // TODO: Type
+
+typedef struct {
+    u8 unk0[0x88 - 0x0];
+    Actor *unk88;
+} AAD_800286EC;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10; // Used
+    s16 unk12;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    void *unk34; // Used
+} A178_800286EC;
+
+/*
+void func_minecart_800286EC(void) {
+    A178_800286EC *a178;
+    f32 dx;
+    f32 z;
+    f32 y;
+    f32 x;
+    AAD_800286EC *aaD;
+    f32 dz;
+
+    a178 = current_actor_pointer->unk178;
+    initializeCharacterSpawnerActor();
+    aaD = D_global_asm_807FDC94->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->noclip_byte = 0x3C;
+        D_global_asm_807FDC90->unk35 = 2;
+        func_global_asm_807149B8(1);
+        func_global_asm_807149FC(-1);
+        func_global_asm_80714C08(&D_global_asm_8072030C, 0.14f, current_actor_pointer, 0xB, 2);
+    }
+    if (D_global_asm_807FBD70 == 4) {
+        playSoundAtActorPosition(current_actor_pointer, 0xF6, 0xFF, 0x7F, 0x1E);
+        func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xA, 0x14);
+        current_actor_pointer->unkB8 = -ABS(current_actor_pointer->unkB8 * 1.2);
+        setAction(0x34, current_actor_pointer, 0);
+    }
+    func_global_asm_80724A20();
+    switch (current_actor_pointer->control_state) {
+        case 0:
+            if (D_global_asm_807FBDC4) {
+                switch (current_map) {
+                    case MAP_FUNGI_MINECART:
+                        a178->unk34 = &D_minecart_80028C40;
+                        break;
+                    case MAP_CASTLE_MINECART:
+                        a178->unk34 = &D_minecart_80028C48;
+                        break;
+                    default:
+                        a178->unk34 = &D_minecart_80028C34;
+                }
+                a178->unk10 = 1;
+                current_actor_pointer->unkB8 = 0.0f;
+                current_actor_pointer->control_state++;
+            }
+            renderActor(current_actor_pointer, 0);
+            return;
+        case 1:
+            if (D_global_asm_807FBDC4) {
+                if ((func_global_asm_806CC14C(func_global_asm_80665DE0(player_pointer->x_position, player_pointer->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position), current_actor_pointer->y_rotation) >= 0x201) && (dx = current_actor_pointer->x_position - player_pointer->x_position, dz = current_actor_pointer->z_position - player_pointer->z_position, (((dx * dx) + (dz * dz)) < 22500.0f))) {
+                    D_global_asm_807FDC90->unk26 = 0;
+                } else {
+                    D_global_asm_807FDC90->unk26 = MAX(MIN(90.0, aaD->unk88->unkB8 * 1.4), 45.0);
+                }
+                func_global_asm_8072B438(0x200);
+                func_global_asm_8068ECF4(6, 0xFF);
+                func_minecart_800253C0(a178, 0x7FFF, 0x23);
+                getBonePosition(current_actor_pointer, 5, &x, &y, &z);
+                addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+                if ((player_pointer->control_state == 0x70) || (a178->unk10 == 0x90)) {
+                    current_actor_pointer->control_state++;
+                }
+                return;
+            }
+            break;
+        case 2:
+            func_global_asm_8067E278(0, 1);
+            current_actor_pointer->control_state = 0x40;
+            renderActor(current_actor_pointer, 0);
+            return;
+    }
+    renderActor(current_actor_pointer, 0);
+}
+*/

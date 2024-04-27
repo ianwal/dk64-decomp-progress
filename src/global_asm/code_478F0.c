@@ -1351,6 +1351,7 @@ int func_global_asm_80648C50(void) {
     }
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80648C84.s")
 
 void func_global_asm_8064911C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
