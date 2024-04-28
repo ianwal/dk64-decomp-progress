@@ -488,7 +488,8 @@ typedef struct {
     f32 unk4; // X Position (updated when touching warp pad)
     f32 unk8; // Y Position (updated when touching warp pad)
     f32 unkC; // Z Position (updated when touching warp pad)
-    s32 unk10;
+    s16 unk10;
+    s16 unk12;
     u8 unk14;
     u8 unk15;
     u8 unk16;
@@ -1029,6 +1030,7 @@ typedef struct player_additional_actor_data {
     f32 unk25C; // Used
     void *unk260; // Used (multiplayer)
     s32 unk264; // Used
+    u8 unk268; // Used
 } PlayerAdditionalActorData;
 
 //f32 at unk8 doesn't match with what's in structs.h (s16) 

@@ -204,5 +204,5 @@ void func_global_asm_806C7270(void) {
 }
 */
 
-// Displaylist stuff
+// Displaylist stuff, matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CBEA0/func_global_asm_806C75A4.s")

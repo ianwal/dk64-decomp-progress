@@ -472,7 +472,7 @@ u8 func_global_asm_805FCA64(void) { // getCutsceneBarState()
     return !(D_global_asm_8076A0B1 & 0x10) && !D_global_asm_8076A0B3;
 }
 
-// rodata
+// rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FCA94.s")
 
 Gfx *func_global_asm_805FCFD8(Gfx *dl) {
