@@ -825,9 +825,49 @@ s32 func_menu_800275EC(s32 arg0) {
     return arg0 + 0x21F44F;
 }
 
-// Appears to CRC some code and compare to a fixed value
-// Perhaps a tamper protection mechanism
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_800275FC.s")
+extern void func_global_asm_8063FA48(void*, void*, s32, s32); // Unsure of this, it's just using this addr for a checksum
+extern void func_global_asm_8060AC7C(void);
+extern void func_global_asm_8060B110(Struct807ECD58 *arg0);
+
+void func_menu_800275FC(void) {
+    // Candy Code
+    Actor178 *sp34;
+    CharacterProgress *sp30;
+    u8 pad[0xC];
+    s32* lim;
+    s32 *sp1C;
+    Actor *temp_a0;
+    s32 var_v1;
+    s32* var_v0;
+
+    initializeCharacterSpawnerActor();
+    if (current_map == MAP_CANDYS_MUSIC_SHOP) {
+        sp34 = current_actor_pointer->unk178;
+        sp30 = &D_global_asm_807FC950->character_progress[*current_character_index];
+        if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+            // Anti-tamper
+            var_v1 = 0;
+            var_v0 = (s32*)&func_global_asm_8060AC7C;
+            lim = (s32*)&func_global_asm_8060B110;
+            for (; var_v0 < lim; var_v0++) {
+                var_v1 += *var_v0;
+            }
+            if (var_v1 != 0xA1C0EB24) {
+                sp1C = func_menu_800275EC((s32)(&func_global_asm_8063FA48) + 0xFFDE0BB1);
+                *sp1C = func_menu_800275EC(0x03BE0BB9);
+            }
+            func_menu_800266F0(sp34, sp30, 0x175);
+        }
+        func_menu_80027028(sp34, sp30, 0x175);
+    }
+    if (current_actor_pointer->object_properties_bitfield & 0x10000000) {
+        initializeCharacterSpawnerActor();
+        func_global_asm_806BFBF4();
+    }
+    renderActor(current_actor_pointer, 0U);
+}
+
+
 
 void func_menu_80027738(void) {
     MenuStruct1 *temp;
