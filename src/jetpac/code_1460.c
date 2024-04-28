@@ -20,8 +20,7 @@ typedef struct jetpac_struct_0 {
 typedef struct {
     s32 unk0;
     s32 unk4;
-    u8 pad8[0x3];
-    u8 unkB;
+    s32 unk8;
     Sprite *unkC;
 } JetpacStruct2;
 
@@ -174,6 +173,47 @@ void func_jetpac_80025460(void) {
 // TODO: Needs shape on D_jetpac_8002F3D0->unk60
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_800254B8.s")
 
+typedef struct StructJetpac800254B8 {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+} StructJetpac800254B8;
+
+/*
+void func_jetpac_800254B8(s32 arg0, s32 arg1, s32 arg2, StructJetpac800254B8 *arg3, s32 arg4) {
+    s32 temp_v1;
+    u8 temp_v1_2;
+    JetpacStruct1 *temp_a0;
+    JetpacStruct2 *var_v0;
+
+    var_v0 = NULL;
+    if ((arg1 >= 0) && (arg2 >= 0) && (arg1 < 0x101) && (arg2 < 0xC1)) {
+        temp_a0 = &D_jetpac_8002F3D0[arg1 >> 3][arg2 / 8];
+        temp_v1 = temp_a0->unk60;
+        if (temp_v1 < 6) {
+            temp_a0->unk60 = temp_v1 + 1;
+            var_v0 = &temp_a0->unk0[temp_v1];
+        }
+        if (var_v0) {
+            var_v0->unk0 = arg1;
+            var_v0->unk4 = arg2;
+            var_v0->unk8 = arg4;
+            var_v0->unkC = arg0;
+            if ((!temp_a0->unk67) || ((temp_a0->unk67 < 0xFF) && ((func_jetpac_80027210() > 0.97)))) {
+                temp_a0->unk64 = arg3->unk0;
+                temp_a0->unk65 = arg3->unk1;
+                temp_a0->unk66 = arg3->unk2;
+                temp_a0->unk67 = arg3->unk3;
+            }
+        }
+    }
+}
+*/
+
 void func_jetpac_800255D4(Gfx **arg0) {
     Gfx *dl;
 
@@ -196,10 +236,9 @@ void func_jetpac_800255D4(Gfx **arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025700.s")
 
-#ifndef NONMATCHING
 // Displaylist stuff, regalloc, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025904.s")
-#else
+/*
 void func_jetpac_80025904(Gfx **arg0) {
     JetpacStruct1 *s3;
     s32 s4;
@@ -229,7 +268,7 @@ void func_jetpac_80025904(Gfx **arg0) {
     }
     *arg0 = sp50;
 }
-#endif
+*/
 
 void func_jetpac_80025A60(Struct80025A60 *arg0) {
     s32 sp2C;

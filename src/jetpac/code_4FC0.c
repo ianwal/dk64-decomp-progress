@@ -202,15 +202,15 @@ void func_jetpac_80029450(void) {
 void func_jetpac_800294EC(JetpacStruct *arg0, s32 arg1) {
     f32 temp = (arg0->unk0 + arg0->unk1C);
     f32 temp2 = (arg0->unk0 + arg0->unk24);
-    f32 temp_0 = D_jetpac_8002EC30.unk36C[arg1].unk0;
-    f32 temp_8 = D_jetpac_8002EC30.unk36C[arg1].unk8;
+    f32 temp_0 = D_jetpac_8002EC30.unk350[arg1].unk1C;
+    f32 temp_8 = D_jetpac_8002EC30.unk350[arg1].unk24;
 
     s32 pad;
 
     f32 temp3 = (arg0->unk4 + arg0->unk20);
     f32 temp4 = (arg0->unk4 + arg0->unk28);
-    f32 temp_4 = D_jetpac_8002EC30.unk36C[arg1].unk4;
-    f32 temp_C = D_jetpac_8002EC30.unk36C[arg1].unkC;
+    f32 temp_4 = D_jetpac_8002EC30.unk350[arg1].unk20;
+    f32 temp_C = D_jetpac_8002EC30.unk350[arg1].unk28;
 
     if (((temp_8 <= temp) && (temp_8 <= temp2)) || ((temp2 <= temp_0) && (temp <= temp_0))) {
         arg0->unk8 = -arg0->unk8;

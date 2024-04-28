@@ -675,6 +675,8 @@ typedef struct race_additional_actor_data {
     u8 unk43;
     u8 unk44;
     u8 unk45; // Used
+    u8 pad46[2];
+    s16* unk48;
 } RaceAdditionalActorData;
 
 typedef struct race_additional_actor_data2 {
@@ -2024,7 +2026,8 @@ typedef struct CompetitorSub14 {
     f32 unkC;
     u8 unk10[0x1C-0x10];
     s32 unk1C;
-    u8 unk20[0x48-0x20];
+    u8 unk20[0x44-0x20];
+    void (*unk44)(void*);
     void (*code)(void*, s32);
 } CompetitorSub14;
 
@@ -2050,7 +2053,15 @@ typedef struct JetpacPlayerSub36C {
     s32 unk4;
     s32 unk8;
     s32 unkC;
-    u8 pad[0x34-0x10];
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
 } JetpacPlayerSub36C;
 
 typedef struct JetpacPlayerStruct {
@@ -2068,15 +2079,7 @@ typedef struct JetpacPlayerStruct {
     s32 player_index;
     s32 unk348;
     s32 unk34C;
-    s32 unk350;
-    s32 unk354;
-    s32 unk358;
-    s32 unk35C;
-    s32 unk360;
-    s32 unk364;
-    s32 unk368;
-    JetpacPlayerSub36C unk36C[3]; // Used - Unsure of how many items in there are
-    u8 pad408[0x420 - 0x408];
+    JetpacPlayerSub36C unk350[4];
     f32 unk420;
     f32 unk424;
     f32 unk428;

@@ -205,11 +205,9 @@ void func_jetpac_800248A0(Gfx **arg0) {
 /*
 // TODO: Doable
 void func_jetpac_800248E8(s32 arg0) {
-    void *sp1C;
-    int score;
-    void *temp_a0;
     Competitor *player;
-    void *temp_v0_2;
+    CompetitorSub14 *player_sub;
+    s32 score;
 
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     score = player->current_score;
@@ -220,8 +218,8 @@ void func_jetpac_800248E8(s32 arg0) {
     func_jetpac_80026D48();
     func_jetpac_80026CEC();
     player->fun_ptr(&player->next_item_pointer);
-    temp_a0 = player + (player->unk10 * 0x4C);
-    temp_a0->unk58(&temp_a0->unk14);
+    player_sub = &player->unk14[player->unk10];
+    player_sub->unk44(player_sub);
     func_jetpac_8002ABDC();
     func_jetpac_800255D4(arg0);
     func_jetpac_80028E88();

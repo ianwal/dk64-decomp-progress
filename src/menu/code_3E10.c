@@ -1541,10 +1541,12 @@ extern f32 D_80033F98[];
 /*
 // TODO: Not sure...
 s32 func_menu_8002FB88(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    arg1 = (arg1 & 0x7F);
-    D_80033F68[arg1] = (arg2 * 4.0f) - 32.0;
-    D_80033F80[arg1] = (arg3 * 4.0f) - 100.0;
-    D_80033F98[arg1] = arg4 * 1.333;
+    s32 i;
+
+    i = arg1 & 0x7F;
+    D_80033F68[i] = (arg2 * 4.0f) - 32.0;
+    D_80033F80[i] = (arg3 * 4.0f) - 100.0;
+    D_80033F98[i] = arg4 * 1.333;
     return arg0;
 }
 */

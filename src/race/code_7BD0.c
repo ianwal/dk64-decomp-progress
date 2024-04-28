@@ -191,6 +191,42 @@ void func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 ar
 // Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C14C.s")
 
+/*
+Gfx *func_race_8002C14C(Gfx *dl, RaceAdditionalActorData *arg1) {
+    // Draw Missiles (Factory Car Race)
+    Gfx *temp_v0_2;
+    f32 temp_f22;
+    s16 temp_s4;
+    s32 temp_f16;
+    s32 temp_t0;
+    s32 var_s1;
+    u8 var_v1;
+    s16 *temp_v0;
+    s32 i;
+
+    temp_v0 = arg1->unk48;
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xC8, 0x00, 0xB4);
+    var_v1 = *(u8*)&arg1->unk2A;
+    temp_f16 = (temp_v0[2] + 8) + 4.0;
+    temp_t0 = temp_v0[5] - 0x22;
+    //
+    var_s1 = 0;
+    temp_f22 = temp_f16 + (f32) temp_f16;
+    temp_s4 = (temp_t0 + (f32) temp_t0) * 4.0f;
+    for (i = 0; i < var_v1; i++) {
+        dl = displayImage(dl, 0x4AU, 3, 1, 0x10, 0x10, (temp_f22 + var_s1) * 4.0f, temp_s4, 4.0f, 4.0f, 0, 0.0f);
+        var_v1 = *(u8*)&arg1->unk2A;
+        var_s1 += 0x10;
+    }
+    if (var_v1 != 0) {
+        gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    }
+    return dl;
+}
+*/
+
+
+
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C2E8.s")
 
