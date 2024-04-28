@@ -306,19 +306,66 @@ u8 func_global_asm_807103E0(Struct807103E0 *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80710CA0.s")
 
+// rodata, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711410.s")
+
+void func_global_asm_8070F5CC(s32 arg0, s16 arg1, f32 arg2, s16 arg3, s16 arg4, u8 arg5);
+
+extern f64 D_global_asm_8075E550;
+extern f64 D_global_asm_8075E558;
+extern f64 D_global_asm_8075E560;
+extern f64 D_global_asm_8075E568;
+extern f32 *D_global_asm_8076A0B4;
+
+/*
+void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4) {
+    f32 temp_f22;
+    f64 temp_f12;
+    f64 temp_f26;
+    f64 var_f0;
+    s32 i;
+    s32 var_s5;
+
+    if (global_properties_bitfield & 0x10) {
+        D_global_asm_807FDA1E = func_global_asm_80612D10(character_change_array->unk2C4) * arg1;
+        temp_f12 = (arg0 * D_global_asm_8075E558) / D_global_asm_8075E560;
+        if (D_global_asm_8075E550 < temp_f12) {
+            var_f0 = D_global_asm_8075E550;
+        } else {
+            var_f0 = temp_f12;
+        }
+        D_global_asm_8077058C = var_f0 * arg2;
+        if (arg0 < 1.0) {
+            if ((((rand() >> 0xF) % 32767) % 100) < (arg0 * 100.0f)) {
+                var_s5 = 1;
+            } else {
+                var_s5 = 0;
+            }
+        } else {
+            var_s5 = arg0;
+        }
+        D_global_asm_807FDA1B = (*D_global_asm_8076A0B4 * 100.0f) + 100.0f;
+        temp_f26 = D_global_asm_8075E568;
+        for (i = 0; i != var_s5; i++) {
+            temp_f22 = ((rand() >> 0xF) % 32767) % 320;
+            func_global_asm_8070F5CC(0, arg3, (((((rand() >> 0xF) % 32767) % 125) / 800.0) + temp_f26) * 2.5 * arg4, temp_f22, -0xA, (90.0f * arg4));
+        }
+        if (D_global_asm_807550E0->unk0 != 0) {
+            addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1);
+        }
+    }
+}
+*/
 
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711950.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711BD0.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711F90.s")
 
-void func_global_asm_8070F5CC(s32 arg0, s16 arg1, f32 arg2, s16 arg3, s16 arg4, u8 arg5);
-
 /*
-// TODO: Close
 void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) {
     f32 temp_f22;
     s32 i;

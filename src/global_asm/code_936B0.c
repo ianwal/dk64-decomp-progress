@@ -1017,6 +1017,7 @@ s32 func_global_asm_806951B0(Actor *arg0) {
     return FALSE;
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_806951E8.s")
 
 void func_global_asm_80695724(f32, u8);

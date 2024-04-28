@@ -102,6 +102,7 @@ void func_global_asm_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_global_asm_806B7EA0.s")
 
 extern s32 D_global_asm_807FBB68;
@@ -123,7 +124,6 @@ void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 void func_global_asm_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2);
 
 /*
-// TODO: Excruciatingly close, just an issue with some function calls
 void func_global_asm_806B7EA0(void) {
     Actor178_806B7EA0 *a178;
     f32 sp40;
@@ -195,7 +195,6 @@ void func_global_asm_806B7EA0(void) {
                 }
                 func_global_asm_80626F8C(a178->unk10, a178->unk12, a178->unk14, a178, &a178->unk4, 0, 1.0f, 0);
                 break;
-
         }
         if (!func_global_asm_8061CC00()) {
             addActorToTextOverlayRenderArray(&func_global_asm_806B76B0, current_actor_pointer, 3);

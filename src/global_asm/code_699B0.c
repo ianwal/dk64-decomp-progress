@@ -183,6 +183,7 @@ u8 func_global_asm_80665558(void) {
     return D_global_asm_80748E04;
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80665564.s")
 
 extern f32 D_global_asm_80758E50;
@@ -205,7 +206,6 @@ typedef struct {
 extern Struct80748D40 D_global_asm_80748D40[];
 
 /*
-// TODO: Doable, good progress made
 void func_global_asm_80665564(Actor *arg0, f32 arg1) {
     f32 sp5C;
     u8 sp5B;

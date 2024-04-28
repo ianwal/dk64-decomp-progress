@@ -1831,13 +1831,114 @@ void func_menu_80031A5C(void) {
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80031B08.s")
+void func_global_asm_8061B650(Actor *);
+extern s32 D_global_asm_8071FE64; // TODO: Type
+extern s16 D_global_asm_80754CE0;
+extern f32 D_menu_80033678[];
+extern f32 dk_screen_transition_height;
+extern s8 D_menu_80033738;
+
+typedef struct {
+    u8 unk0[0x23C - 0x0];
+    u16 unk23C;
+} AAD_80031B08;
+
+void func_menu_80031B08(void) {
+    AAD_80031B08 *aaD;
+    s32 i;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    dk_screen_transition_height += 4.5f;
+    if (dk_screen_transition_height > 0.0f) {
+        dk_screen_transition_height = 0.0f;
+    }
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            current_actor_pointer->y_rotation = 0x800;
+            current_actor_pointer->control_state_progress = 1;
+            playActorAnimation(current_actor_pointer, 0x346);
+            func_global_asm_8061B650(D_global_asm_807F5D10);
+            dk_screen_transition_height = -35.0f;
+            break;
+        case 1:
+            if (dk_screen_transition_height == 0.0f) {
+                playActorAnimation(current_actor_pointer, 0x347);
+                current_actor_pointer->control_state_progress = 2;
+                aaD->unk23C = 0;
+            }
+            break;
+        case 2:
+            aaD->unk23C++;
+            if (aaD->unk23C == 3) {
+                playSound(0x3C, 0x61A8, 63.0f, 1.0f, 0, 0);
+                D_menu_80033F50 = 3;
+            }
+            break;
+        case 3:
+            if (*character_change_array->new_controller_inputs & 0x8000) {
+                if (menu_selection_available == 1) {
+                    playActorAnimation(current_actor_pointer, 0x348);
+                    current_actor_pointer->control_state_progress = 4;
+                    inputs_enabled_timer = 0x3C;
+                } else if (menu_selection_available == -1) {
+                    playSound(0x98, 0x61A8, 63.0f, 1.0f, 0, 0);
+                }
+            }
+            break;
+        case 5:
+            menu_selection_speed = 0.1f;
+            menu_icon_transition_scale = menu_selection_speed;
+            inputs_enabled_timer = 0;
+            aaD->unk23C = 0;
+            current_actor_pointer->control_state_progress = 6;
+            break;
+        case 6:
+        case 7:
+        case 8:
+            aaD->unk23C++;
+            if (aaD->unk23C >= 0x3E9) {
+                aaD->unk23C = 0x3E8;
+            }
+            if (aaD->unk23C == 8) {
+                func_global_asm_8071495C();
+                drawSpriteAtPosition(&D_global_asm_8071FE08, 8.3f, 160.0f, 120.0f, -10.0f);
+                playSound(0x23, 0x7FFF, 63.0f, 1.0f, 0, 0);
+                playSound(0x17, 0x7FFF, 63.0f, 1.0f, 0, 0);
+                for (i = 0; i != 5; i++) {
+                    func_global_asm_8071498C(func_menu_80030A90);
+                    func_global_asm_8071495C();
+                    drawSpriteAtPosition(&D_global_asm_8071FE64, 1.8f, 160.0f, 120.0f, -10.0f);
+                }
+            }
+            if (aaD->unk23C >= 0xC) {
+                global_properties_bitfield &= 0xFFFEFFFF;
+            }
+            break;
+    }
+    if (barrel_visibility_timer != 0) {
+        barrel_visibility_timer -= 1;
+    }
+    if (current_actor_pointer->control_state_progress < 6) {
+        if (dk_screen_transition_height > -30.0) {
+            global_properties_bitfield |= 0x10000;
+        } else {
+            barrel_visibility_timer = 3;
+        }
+    }
+    D_menu_80033738 = 0x14;
+    current_actor_pointer->y_position = -dk_screen_transition_height;
+    character_change_array->look_at_eye_x = current_actor_pointer->x_position;
+    character_change_array->look_at_eye_y = ((D_menu_80033678[D_menu_80033F50] * 50.0) + (current_actor_pointer->y_position + 13.1f + dk_screen_transition_height)) - 0.1;
+    character_change_array->look_at_eye_z = current_actor_pointer->z_position - 50.0f;
+    character_change_array->look_at_at_x = current_actor_pointer->x_position;
+    character_change_array->look_at_at_y = character_change_array->look_at_eye_y;
+    character_change_array->look_at_at_z = 10020.0f;
+    D_global_asm_80754CE0 = D_menu_80033678[D_menu_80033F50] * 400.0f;
+    renderActor(current_actor_pointer, 0);
+}
 
 // TODO: float & stack nonsense, close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80032024.s")
-
-extern s8 D_menu_80033738;
 
 typedef struct {
     f32 unk0;

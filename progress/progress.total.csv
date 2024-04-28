@@ -3289,7 +3289,7 @@ us,.menu,func_menu_80025AF0,116,yes
 us,.menu,func_menu_80030A90,388,yes
 us,.menu,func_menu_80028EA8,468,yes
 us,.menu,func_menu_8002D520,716,no
-us,.menu,func_menu_80031B08,1308,no
+us,.menu,func_menu_80031B08,1308,yes
 us,.menu,func_menu_8003292C,1572,no
 us,.menu,func_menu_800317E8,408,yes
 us,.menu,func_menu_8002FC1C,284,yes
