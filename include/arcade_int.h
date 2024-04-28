@@ -52,7 +52,7 @@ typedef struct arcade_struct_1 {
         s32 unk10_s32;
     };
     s32 *unk14; // imageDataPointer
-    u8 unk18; // object_type
+    u8 object_type; // object_type
     u8 unk19; // state?
     u8 unk1A;
     u8 unk1B;
@@ -170,14 +170,12 @@ extern u8 D_arcade_8004C721;
 extern u8  arcade_background_visual; //0x8004C722
 extern u8  D_arcade_8004C723;
 extern u8  D_arcade_8004C724;
-extern u8 D_arcade_8004C725;
-extern u8 D_arcade_8004C726;
-extern u8 D_arcade_8004C727;
-extern u8 D_arcade_8004C728;
-extern D_arcade_8004C72C;
-extern s16 D_arcade_8004C72E;
-extern D_arcade_8004C730;
-extern s16 D_arcade_8004C732;
+extern u8 arcade_text_red;
+extern u8 arcade_text_green;
+extern u8 arcade_text_blue;
+extern u8 arcade_text_alpha;
+extern s32 arcade_text_x;
+extern s32 arcade_text_y;
 
 /* global_asm */
 extern u8  D_global_asm_807444FC;

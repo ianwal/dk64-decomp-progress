@@ -25002,7 +25002,7 @@ ArcadeStruct1 D_arcade_8004A6B8                          = {  60.0f,  97.0f, 0.0
 ArcadeStruct1 arcade_pie_obj_template                    = {  60.0f, 207.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003AA48, ARCADE_OBJ_04_PIE, 0, 0, 0, 3, 0, 0x10, 0x10};
 ArcadeStruct1 arcade_100m_complete_particle_obj_template = { 160.0f, 214.0f, 0.0f,  0.0f, 0.0f, &D_arcade_8003AC50, ARCADE_OBJ_0F_100M_COMPLETE_PARTICLE, 0, 0, 0, 0, 0, 0x10, 0x10};
 ArcadeStruct1 arcade_barrel_stack_obj_template           = {  58.0f,  83.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037130, ARCADE_OBJ_0A_BARREL_STACK, 0, 0, 0, 0, 0, 0x10, 0x10};
-u32 D_arcade_8004A738 = 1;
+u32 arcade_rng_seed = 1;
 u8 D_arcade_8004A73C = 0x00;
 u8 D_arcade_8004A740 = 0;
 u8 D_arcade_8004A744 = 0;
@@ -25181,34 +25181,34 @@ void func_arcade_8002440C(void) {
     D_arcade_8004A760 = arcade_saved_high_scores[0];
 }
 
-void func_arcade_800244E4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    D_arcade_8004C725 = arg0;
-    D_arcade_8004C726 = arg1;
-    D_arcade_8004C727 = arg2;
-    D_arcade_8004C728 = arg3;
+void arcade_set_text_rgba(s32 red, s32 green, s32 blue, s32 alpha) {
+    arcade_text_red = red;
+    arcade_text_green = green;
+    arcade_text_blue = blue;
+    arcade_text_alpha = alpha;
 }
 
-void func_arcade_80024508(s32 arg0, s32 arg1) {
-    D_arcade_8004C72C = arg0;
-    D_arcade_8004C730 = arg1;
+void arcade_set_text_position(s32 x, s32 y) {
+    arcade_text_x = x;
+    arcade_text_y = y;
 }
 
-void func_arcade_8002451C(Gfx **gpp, s32 *arg1) {
+void arcade_draw_text(Gfx **gpp, s32 *arg1) {
     Gfx *gp = *gpp; 
     gDPPipeSync(gp++);
     gDPSetCycleType(gp++, G_CYC_1CYCLE);
     gSPClearGeometryMode(gp++, -1);
     gSPSetGeometryMode(gp++, G_SHADE | 0x200000);
-    gDPSetPrimColor(gp++, 0, 0, D_arcade_8004C725, D_arcade_8004C726, D_arcade_8004C727, D_arcade_8004C728);
+    gDPSetPrimColor(gp++, 0, 0, arcade_text_red, arcade_text_green, arcade_text_blue, arcade_text_alpha);
     gDPSetCombineMode(gp++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetRenderMode(gp++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-    *gpp = func_global_asm_806FD490(gp, 2, D_arcade_8004C72E, D_arcade_8004C732, arg1);
+    *gpp = func_global_asm_806FD490(gp, 2, (s16)arcade_text_x, (s16)arcade_text_y, arg1);
 }
 
 // cycle_rng
-s32 func_arcade_80024644(void) {
-    D_arcade_8004A738 = (D_arcade_8004A738 * 0x41C64E6D) + 12345;
-    return D_arcade_8004A738 >> 0x10 & 0x7FFF;
+s32 arcade_cycle_rng(void) {
+    arcade_rng_seed = (arcade_rng_seed * 0x41C64E6D) + 12345;
+    return arcade_rng_seed >> 0x10 & 0x7FFF;
 }
 
 void arcade_add_points_to_score(s32 round_points) {
@@ -25231,10 +25231,10 @@ f32 func_arcade_800246C8(f32 arg0, f32 arg1) {
 }
 
 //get_first_empty_obj_slot
-s32 func_arcade_800246EC(void) {
+s32 arcade_get_first_empty_slot(void) {
     s32 i;
     for (i = 0; i <= 0x4F; i++) {
-        if (D_arcade_8004BCD0[i].unk18 == 0) {
+        if (D_arcade_8004BCD0[i].object_type == 0) {
             return i;
         }
     }
@@ -25245,7 +25245,7 @@ s32 func_arcade_800246EC(void) {
 s32 func_arcade_80024764(void) {
     s32 i;
     for (i = D_arcade_8004C71F + 1; i < 0x50; i++) {
-        if (D_arcade_8004BCD0[i].unk18 == 0) {
+        if (D_arcade_8004BCD0[i].object_type == 0) {
             return i;
         }
     }
@@ -25256,7 +25256,7 @@ s32 func_arcade_80024764(void) {
 s32 func_arcade_800247B8(void) {
     s32 i;
     for (i = 0x4F; i >= 0; i--) {
-        if (D_arcade_8004BCD0[i].unk18 == 0) {
+        if (D_arcade_8004BCD0[i].object_type == 0) {
             return i;
         }
     }
@@ -25266,7 +25266,7 @@ s32 func_arcade_800247B8(void) {
 s32 func_arcade_800247F0(void) {
     s32 i;
     for (i = 0x27; i >= 0; i--) {
-        if (D_arcade_8004BCD0[i].unk18 == 0) {
+        if (D_arcade_8004BCD0[i].object_type == 0) {
             return i;
         }
     }
@@ -25276,17 +25276,17 @@ s32 func_arcade_800247F0(void) {
 s32 func_arcade_80024828(void) {
     s32 i;
     for (i = 0x24; i >= 0; i--) {
-        if (D_arcade_8004BCD0[i].unk18 == 0) {
+        if (D_arcade_8004BCD0[i].object_type == 0) {
             return i;
         }
     }
     return 0;
 }
 
-s32 func_arcade_80024860(enum ARCADE_OBJ_E arg0) {
+s32 arcade_get_first_object_of_type(enum ARCADE_OBJ_E arg0) {
     s32 i;
     for (i = 0; i < 0x50; i++) {
-        if (arg0 == D_arcade_8004BCD0[i].unk18) {
+        if (arg0 == D_arcade_8004BCD0[i].object_type) {
             return i;
         }
     }
@@ -25297,7 +25297,7 @@ s32 arcade_get_object_type_count(enum ARCADE_OBJ_E arg0) {
     s32 i;
     s32 count = 0;
     for (i = 0; i < 0x50; i++) {
-        if (arg0 == D_arcade_8004BCD0[i].unk18) {
+        if (arg0 == D_arcade_8004BCD0[i].object_type) {
             count++;
         }
     }
@@ -25384,7 +25384,7 @@ void func_arcade_80024B04(void) {
     D_arcade_8004C6DC = 0;
     D_arcade_8004C720 = 0; \
     for (j = 0; j < 0x50; j++) {
-        D_arcade_8004BCD0[j].unk18 = 0;
+        D_arcade_8004BCD0[j].object_type = 0;
         D_arcade_8004BCD0[0] = arcade_name_select_cursor_obj_template;
         D_arcade_8004BCD0[0].unk1C = i;
     }
@@ -25439,10 +25439,10 @@ void func_arcade_80024D90(void) {
     arcade_game_state = 1;
 
     for (iPtr = D_arcade_8004BCD0; iPtr < &D_arcade_8004BCD0[0x50]; iPtr++) {
-        iPtr->unk18 = 0;
+        iPtr->object_type = 0;
     }
 
-    temp_v1 = func_arcade_800246EC();
+    temp_v1 = arcade_get_first_empty_slot();
 
     D_arcade_8004BCD0[temp_v1] = arcade_dk_title_obj_template;
     D_arcade_8004BCD0[temp_v1].x_position = 138.0f;
@@ -25486,13 +25486,13 @@ void func_arcade_80024E84(Gfx **arg0) {
         arcade_game_state = 1;
         D_arcade_8004C721 = 0;
         for (i = 0; i < 80; i++) {
-            D_arcade_8004BCD0[i].unk18 = 0;
+            D_arcade_8004BCD0[i].object_type = 0;
         }
-        D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_bottom_obj_template;
-        D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_top_obj_template;
-        D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_dk_title_obj_template;
+        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_title_obj_template;
         if (D_arcade_8004A76C == 2 && D_arcade_8004A740) {
-            D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_nintendo_coin_obj_template;
+            D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
         }
         D_arcade_8004C708 = 0;
     }//L800251BC
@@ -25528,7 +25528,7 @@ void func_arcade_80025240(void) { // queue_arcade_sfx()
     arcade_next_sfx = -1;
 }
 
-void func_arcade_800252A4(SFX_E arg0) {
+void arcade_play_sfx(SFX_E arg0) {
     arcade_next_sfx = arg0;
     if (D_global_asm_80770DF8 != 0) {
         func_global_asm_80737924(D_global_asm_80770DF8);
@@ -25546,7 +25546,7 @@ void func_arcade_800252D8(Gfx **arg0) {
             || (arcade_next_sfx == SFX_4E_ARCADE_100M) 
             || (arcade_next_sfx == SFX_4F_ARCADE_50M) 
             || (arcade_next_sfx == -1)) {
-            func_arcade_800252A4(SFX_48_ARCADE_RUNNING_OUT_OF_TIME); // playSFX(runningOutOfTimeJingle)
+            arcade_play_sfx(SFX_48_ARCADE_RUNNING_OUT_OF_TIME); // playSFX(runningOutOfTimeJingle)
         }
     }
     if (D_global_asm_80770DF8 == 0 && arcade_next_sfx > 0) {
@@ -25559,7 +25559,7 @@ void func_arcade_800252D8(Gfx **arg0) {
     if (D_arcade_8004C6DC++ == 0x3C) {
         arcade_lives_visual = arcade_lives_internal;
         arcade_game_state = 0;
-        D_arcade_8004BCD0[func_arcade_80024860(0xD)].unk19 = 2;
+        D_arcade_8004BCD0[arcade_get_first_object_of_type(0xD)].unk19 = 2;
     }
     func_arcade_80030FEC(); //update objects
     func_arcade_8002B2C0(&sp34);
@@ -25597,9 +25597,9 @@ void func_arcade_8002549C(void) {
 void func_arcade_800255A8(void) {
     s32 temp_v0;
     do {
-        temp_v0 = func_arcade_80024860(0x1C);
+        temp_v0 = arcade_get_first_object_of_type(0x1C);
         if (temp_v0 >= 0) {
-            D_arcade_8004BCD0[temp_v0].unk18 = 0;
+            D_arcade_8004BCD0[temp_v0].object_type = 0;
         }
     } while (temp_v0 >= 0);
 }
@@ -25662,10 +25662,10 @@ void func_arcade_800257D8(void) {
     int i;
     ArcadeStruct1 *tmp_v1;
     for (i = 0; i < 80; i++) {
-        D_arcade_8004BCD0[i].unk18 = 0;
+        D_arcade_8004BCD0[i].object_type = 0;
     }
     for (i = 0; i < (D_arcade_8004C723 & 3) + 1; i++) {
-        tmp_v1 = &D_arcade_8004BCD0[func_arcade_800246EC()];
+        tmp_v1 = &D_arcade_8004BCD0[arcade_get_first_empty_slot()];
         *tmp_v1 = arcade_dk_how_high_obj_template;
         tmp_v1->y_position -= i * 0x20;
     }//L800258C0
@@ -26110,7 +26110,7 @@ void func_arcade_80027A38(Gfx **arg0) {
 
 // death()?
 void func_arcade_80027E8C(void) {
-    func_arcade_800252A4(SFX_0_SILENCE);
+    arcade_play_sfx(SFX_0_SILENCE);
     func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFF, 0x3F, 1.0f, 0, 0);
     D_arcade_8004BCD0[D_arcade_8004C71F].unk19 = 8;
     D_arcade_8004BCD0[D_arcade_8004C71F].x_velocity = 0.0f;
@@ -26120,14 +26120,14 @@ void func_arcade_80027E8C(void) {
 
 void arcade_25m_setup(void) {
     int v1 = 0x25;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_bottom_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_top_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_help_text_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_dk_25m_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_25m_obj_template;
     if (D_arcade_8004A76C == 2 && D_arcade_8004A740)
-        D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_nintendo_coin_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_bonus_osd_obj_template;
-    D_arcade_8004C71F = func_arcade_800246EC();
+        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_bonus_osd_obj_template;
+    D_arcade_8004C71F = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[D_arcade_8004C71F] = arcade_jumpman_obj_template;
     D_arcade_8004BCD0[v1] = arcade_oil_drum_obj_template;
     v1--;
@@ -26166,15 +26166,15 @@ void arcade_100m_setup(void) {
     u8 sp3C[8][2] = D_arcade_8004A81C;
     u32 s1 = 1;
 
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_bottom_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_top_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_help_text_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_dk_100m_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_100m_obj_template;
     if (D_arcade_8004A76C == 2 && D_arcade_8004A740)
-        D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_nintendo_coin_obj_template;
+        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
 
     for (i = 0; i < 8; i++) {
-        indx = func_arcade_800246EC();
+        indx = arcade_get_first_empty_slot();
         D_arcade_8004BCD0[indx] = arcade_rivet_obj_template;
         D_arcade_8004BCD0[indx].x_position = (f32)sp3C[i][0];
         D_arcade_8004BCD0[indx].y_position = (f32)sp3C[i][1];
@@ -26182,11 +26182,11 @@ void arcade_100m_setup(void) {
         s1 <<= 1;
     }
 
-    indx = func_arcade_800246EC();
+    indx = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[indx] = arcade_bonus_osd_obj_template;
     D_arcade_8004BCD0[indx].unk14 = &D_arcade_800335D8;
 
-    D_arcade_8004C71F = func_arcade_800246EC();
+    D_arcade_8004C71F = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[D_arcade_8004C71F] = arcade_jumpman_obj_template;
 
     D_arcade_8004BCD0[0x25] = arcade_bonus_item_obj_template;
@@ -26215,14 +26215,14 @@ void arcade_75m_setup(void) {
     s32 tmp;
     f32 tmp_f2;
 
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_bottom_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_top_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_help_text_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_dk_75m_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_75m_obj_template;
     if (D_arcade_8004A76C == 2 && D_arcade_8004A740)
-        D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_nintendo_coin_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_bonus_osd_obj_template;
-    D_arcade_8004C71F = func_arcade_800246EC();
+        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_bonus_osd_obj_template;
+    D_arcade_8004C71F = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[D_arcade_8004C71F] = arcade_jumpman_obj_template;
     D_arcade_8004BCD0[D_arcade_8004C71F].x_position = 56.0;
     D_arcade_8004BCD0[D_arcade_8004C71F].y_position = 231.0;
@@ -26251,14 +26251,14 @@ void arcade_75m_setup(void) {
     D_arcade_8004BCD0[a0].y_position = 135.0f;
     D_arcade_8004BCD0[a0--].unk14 = &D_arcade_800391F0;
 
-    tmp = func_arcade_800246EC();
+    tmp = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[tmp] = arcade_flame_enemy_obj_template;
     D_arcade_8004BCD0[tmp].x_velocity = 0.5;
     D_arcade_8004BCD0[tmp].unk1A = 1;
     D_arcade_8004BCD0[tmp].x_position = 114.0f;
     D_arcade_8004BCD0[tmp].y_position = 135.0f;
 
-    tmp = func_arcade_800246EC();
+    tmp = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[tmp] = arcade_flame_enemy_obj_template;
     D_arcade_8004BCD0[tmp].x_velocity = 0.5;
     D_arcade_8004BCD0[tmp].unk1A = 1;
@@ -26289,22 +26289,22 @@ void arcade_75m_setup(void) {
 void arcade_50m_setup(void) {
     s32 i;
     int v1 = 0x25;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_moving_ladder_obj_template;
-    i = func_arcade_800246EC();
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_moving_ladder_obj_template;
+    i = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[i] = arcade_moving_ladder_obj_template;
     D_arcade_8004BCD0[i].x_position = 244.0f;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_bottom_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_pauline_top_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_help_text_obj_template;
-    D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_dk_50m_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
+    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_50m_obj_template;
     if (D_arcade_8004A76C == 2 && D_arcade_8004A740)
-        D_arcade_8004BCD0[func_arcade_800246EC()] = arcade_nintendo_coin_obj_template;
+        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
 
-    i = func_arcade_800246EC();
+    i = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[i] = arcade_bonus_osd_obj_template;
     D_arcade_8004BCD0[i].unk14 = &D_arcade_80033C48;
 
-    D_arcade_8004C71F = func_arcade_800246EC();
+    D_arcade_8004C71F = arcade_get_first_empty_slot();
     D_arcade_8004BCD0[D_arcade_8004C71F] = arcade_jumpman_obj_template;
 
     D_arcade_8004BCD0[0x25] = arcade_oil_drum_obj_template;
@@ -26377,7 +26377,7 @@ void func_arcade_80029968(void) {
     D_arcade_8004C708 = 0;
     arcade_background_visual = D_arcade_8004A788[D_arcade_8004C723 & 3];
     for (i = 0; i < 0x50; i++) { //clear arcade_obj_array
-        D_arcade_8004BCD0[i].unk18 = 0;
+        D_arcade_8004BCD0[i].object_type = 0;
     }
 
     switch (arcade_background_visual) {
@@ -26889,7 +26889,7 @@ void func_arcade_8002AFA4(Gfx **arg0, s32 arg1) {
     s32 tmp_v0;
     f32 phi_f0;
 
-    if (D_arcade_8004A338[D_arcade_8004BCD0[arg1].unk18] & 1) {
+    if (D_arcade_8004A338[D_arcade_8004BCD0[arg1].object_type] & 1) {
         phi_f0 = 1024.0f;
     } else {
         phi_f0 = 1170.2857666f;
@@ -26903,12 +26903,12 @@ void func_arcade_8002AFA4(Gfx **arg0, s32 arg1) {
     func_global_asm_8070E8F0(&sp4C, &D_arcade_8004AC00[D_global_asm_807444FC].sprite[arg1]);
     func_global_asm_8070F2C8(0x400, phi_f0, D_arcade_8004BCD0[arg1].unk1A & 1, D_arcade_8004BCD0[arg1].unk1B);
 
-    if (D_arcade_8004A338[D_arcade_8004BCD0[arg1].unk18] & 2) {
+    if (D_arcade_8004A338[D_arcade_8004BCD0[arg1].object_type] & 2) {
         func_global_asm_8070F2FC(&sp4C, 
-            (s32)(D_arcade_8004BCD0[arg1].x_position - (f32)D_arcade_8004A358[D_arcade_8004BCD0[arg1].unk18])*4, 
-            (s32)((D_arcade_8004BCD0[arg1].y_position - (f32)D_arcade_8004A378[D_arcade_8004BCD0[arg1].unk18])*0.875 + 8)*4);
+            (s32)(D_arcade_8004BCD0[arg1].x_position - (f32)D_arcade_8004A358[D_arcade_8004BCD0[arg1].object_type])*4, 
+            (s32)((D_arcade_8004BCD0[arg1].y_position - (f32)D_arcade_8004A378[D_arcade_8004BCD0[arg1].object_type])*0.875 + 8)*4);
     } else {//L8002B1AC
-        if (D_arcade_8004BCD0[arg1].unk18 == 2) {
+        if (D_arcade_8004BCD0[arg1].object_type == 2) {
             tmp_v0 = (s32)D_arcade_8004BCD0[arg1].unk10;
             if (tmp_v0 > 2) {
                 tmp_v0 = 5 - tmp_v0;
@@ -26917,8 +26917,8 @@ void func_arcade_8002AFA4(Gfx **arg0, s32 arg1) {
             tmp_v0 = 0;
         }
         func_global_asm_8070F2FC(&sp4C, 
-            (s32)(D_arcade_8004BCD0[arg1].x_position - D_arcade_8004A358[D_arcade_8004BCD0[arg1].unk18])*4, 
-            (s32)(4*((D_arcade_8004BCD0[arg1].y_position - tmp_v0 - D_arcade_8004A378[D_arcade_8004BCD0[arg1].unk18])*0.875 + 8.0)));
+            (s32)(D_arcade_8004BCD0[arg1].x_position - D_arcade_8004A358[D_arcade_8004BCD0[arg1].object_type])*4, 
+            (s32)(4*((D_arcade_8004BCD0[arg1].y_position - tmp_v0 - D_arcade_8004A378[D_arcade_8004BCD0[arg1].object_type])*0.875 + 8.0)));
     }//L8002B2A4
     *arg0 = sp4C;
 }
@@ -26929,8 +26929,8 @@ void func_arcade_8002B2C0(Gfx **arg0) {
 
     sp38 = *arg0;
     for (i = 0; i < 0x50; i++) {
-        if ((D_arcade_8004BCD0[i].unk18 != 0) && (D_arcade_8004BCD0[i].unk14 != 0)) {
-            if ((D_arcade_8004BCD0[i].unk18 >= 8) || (arcade_game_state < 2)) {
+        if ((D_arcade_8004BCD0[i].object_type != 0) && (D_arcade_8004BCD0[i].unk14 != 0)) {
+            if ((D_arcade_8004BCD0[i].object_type >= 8) || (arcade_game_state < 2)) {
                 func_arcade_8002AFA4(&sp38, i);
             }
         }
@@ -27660,7 +27660,7 @@ void func_arcade_8002E3D4(s32 arg0) {
     if (arcade_game_state == 0) {
         D_arcade_8004BCD0[arg0].unk1C--;
         if (D_arcade_8004BCD0[arg0].unk1C >= 0x15) {
-            D_arcade_8004BCD0[arg0].unk1C = func_arcade_80024644() & 0xF;
+            D_arcade_8004BCD0[arg0].unk1C = arcade_cycle_rng() & 0xF;
             D_arcade_8004BCD0[arg0].unk1D = !(D_arcade_8004BCD0[arg0].unk1D);
         }
         switch (D_arcade_8004BCD0[arg0].unk19) {
@@ -27767,8 +27767,8 @@ void arcade_pauline_bottom_update(s32 arg0) {
 void arcade_nintendo_coin_update(s32 arg0) {
     D_arcade_8004BCD0[arg0].unk14 = &D_arcade_8003AE58;
     if (D_arcade_8004C721) {
-        D_arcade_8004BCD0[arg0].y_position = D_arcade_8004BCD0[func_arcade_80024860(ARCADE_OBJ_1A_PAULINE_BOTTOM)].y_position - 8.0f;
-        D_arcade_8004BCD0[arg0].x_position = D_arcade_8004BCD0[func_arcade_80024860(ARCADE_OBJ_1A_PAULINE_BOTTOM)].x_position;
+        D_arcade_8004BCD0[arg0].y_position = D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].y_position - 8.0f;
+        D_arcade_8004BCD0[arg0].x_position = D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].x_position;
     }//L8002E924
     else {
         if (D_arcade_8004BCD0[arg0 - 1].unk14 == NULL) {
@@ -27777,12 +27777,12 @@ void arcade_nintendo_coin_update(s32 arg0) {
         D_arcade_8004BCD0[arg0].y_position = D_arcade_8004BCD0[arg0 - 1].y_position + 20.0f;
         D_arcade_8004BCD0[arg0].x_position = D_arcade_8004BCD0[arg0 - 1].x_position + 30.0f;
     }
-    D_arcade_8004BCD0[func_arcade_80024860(ARCADE_OBJ_1A_PAULINE_BOTTOM)].unk14 = NULL;
-    D_arcade_8004BCD0[func_arcade_80024860(ARCADE_OBJ_1B_PAULINE_TOP)].unk14 = NULL;
-    if (func_arcade_80024860(ARCADE_OBJ_1D_HELP_TEXT) >= 0) {
-        if ((u32) D_arcade_8004BCD0[func_arcade_80024860(ARCADE_OBJ_1D_HELP_TEXT)].unk14 != (u32)&D_arcade_800389D0)
+    D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].unk14 = NULL;
+    D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1B_PAULINE_TOP)].unk14 = NULL;
+    if (arcade_get_first_object_of_type(ARCADE_OBJ_1D_HELP_TEXT) >= 0) {
+        if ((u32) D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1D_HELP_TEXT)].unk14 != (u32)&D_arcade_800389D0)
         {
-            D_arcade_8004BCD0[func_arcade_80024860(ARCADE_OBJ_1D_HELP_TEXT)].unk14 = NULL;
+            D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1D_HELP_TEXT)].unk14 = NULL;
         }
     }
 }
@@ -28130,9 +28130,9 @@ void func_arcade_8002FE28(s32 arg0) {
         }
         if (((s32) D_arcade_8004BCD0[arg0].unk10 % (0x72 - ((s32) func_arcade_800246C8(D_arcade_8004A76C, 4.0f) * 0xC))) == 0) {
             D_arcade_8004C71E--;
-            arg0 = func_arcade_800246EC();
+            arg0 = arcade_get_first_empty_slot();
             D_arcade_8004BCD0[arg0] = arcade_spring_obj_template;
-            D_arcade_8004BCD0[arg0].x_position = ((func_arcade_80024644() & 0xF) - 0x1C);
+            D_arcade_8004BCD0[arg0].x_position = ((arcade_cycle_rng() & 0xF) - 0x1C);
             D_arcade_8004BCD0[arg0].unk19 = 2;
         }
     }
@@ -28174,7 +28174,7 @@ void arcade_dk_50m_update(s32 arg0) {
             }
             else {
                 D_arcade_8004BCD0[arg0].x_velocity = 0.0f;
-                D_arcade_8004BCD0[arg0].unk18 = 0x16;
+                D_arcade_8004BCD0[arg0].object_type = 0x16;
                 D_arcade_8004BCD0[arg0].unk10 = 41.0f;
             }
             break;
@@ -28197,7 +28197,7 @@ void arcade_points_text_update(s32 arg0) {
     }
     D_arcade_8004BCD0[arg0].unk10++;
     if (phi_v1) {
-        D_arcade_8004BCD0[arg0].unk18 = 0;
+        D_arcade_8004BCD0[arg0].object_type = 0;
     }
 }
 
@@ -28205,7 +28205,7 @@ void arcade_bonus_item_update(s32 arg0) {
     if ((D_arcade_8004BCD0[arg0].x_position == (s32) D_arcade_8004BCD0[D_arcade_8004C71F].x_position) 
          && (D_arcade_8004BCD0[arg0].y_position == (s32) D_arcade_8004BCD0[D_arcade_8004C71F].y_position)
     ) {
-        D_arcade_8004BCD0[arg0].unk18 = ARCADE_OBJ_14_POINTS_TEXT;
+        D_arcade_8004BCD0[arg0].object_type = ARCADE_OBJ_14_POINTS_TEXT;
         if (D_arcade_8004A76C == 1) {
             D_arcade_8004BCD0[arg0].unk14 = &D_arcade_800383B8;
             arcade_add_points_to_score(300);
@@ -28235,7 +28235,7 @@ void arcade_hammer_update(u8 arg0) {
             v1 = &D_arcade_8004BCD0[D_arcade_8004C71F];
             if (s2->x_position - v1->x_position < 8.0f && -8.0f < s2->x_position - v1->x_position ) {
                 if (s2->y_position - v1->y_position < 8.0f && -8.0f < s2->y_position - v1->y_position ) {
-                    func_arcade_800252A4(SFX_49_ARCADE_HAMMER_MUSIC);
+                    arcade_play_sfx(SFX_49_ARCADE_HAMMER_MUSIC);
                     D_arcade_8004C710 = 0x258;
                     s2->unk19 = 2;
                 }
@@ -28274,9 +28274,9 @@ void arcade_hammer_update(u8 arg0) {
 
                 iPtr = &D_arcade_8004BCD0[(u8)i];
                 
-                if ((iPtr->unk18 == ARCADE_OBJ_01_BARREL) 
-                    || (iPtr->unk18 == ARCADE_OBJ_04_PIE) 
-                    || (iPtr->unk18 == ARCADE_OBJ_02_FLAME_ENEMY) 
+                if ((iPtr->object_type == ARCADE_OBJ_01_BARREL) 
+                    || (iPtr->object_type == ARCADE_OBJ_04_PIE) 
+                    || (iPtr->object_type == ARCADE_OBJ_02_FLAME_ENEMY) 
                 ) {
                     if (__arcade_abs_w((s32)(iPtr->x_position - s2->x_position)) < 0xD
                         && __arcade_abs_w((s32)(iPtr->y_position - s2->y_position)) < 0x8
@@ -28284,18 +28284,18 @@ void arcade_hammer_update(u8 arg0) {
                         func_global_asm_80737638(D_global_asm_8076D1F8, SFX_4B_ARCADE_HAMMER_ATTACK, 0x7fff, 0x3f, 1.0f, 0, 0);
                         v1 = &D_arcade_8004BCD0[(u8)func_arcade_800247F0()];
                         *v1 = arcade_bonus_item_obj_template;
-                        v1->unk18 = ARCADE_OBJ_07_HAMMER_PARTICLES;
-                        v1->unk1D = iPtr->unk18;
+                        v1->object_type = ARCADE_OBJ_07_HAMMER_PARTICLES;
+                        v1->unk1D = iPtr->object_type;
                         v1->x_position = s2->x_position;
                         v1->y_position = s2->y_position;
-                        iPtr->unk18 = 0;
+                        iPtr->object_type = 0;
                         arcade_game_state = 1;
                     }
                 }
             }
             if (D_arcade_8004C710-- == 1) {
-                s2->unk18 = 0; //destroy hammer
-                func_arcade_800252A4(SFX_0_SILENCE); //play_sfx
+                s2->object_type = 0; //destroy hammer
+                arcade_play_sfx(SFX_0_SILENCE); //play_sfx
                 func_arcade_80025240(); //queue_background_music
             }
             break;
@@ -28322,8 +28322,8 @@ void func_arcade_80030734(u8 arg0) {
     }
 
     if (temp_s0->unk1C++ == 0x42) {
-        temp_s0->unk18 = ARCADE_OBJ_14_POINTS_TEXT;
-        temp_v0 = func_arcade_80024644() & 3;
+        temp_s0->object_type = ARCADE_OBJ_14_POINTS_TEXT;
+        temp_v0 = arcade_cycle_rng() & 3;
     
         if ((temp_s0->unk1D == 2) && (temp_v0 == 0)) {
             temp_s0->unk14 = &D_arcade_800387C8;
@@ -28350,7 +28350,7 @@ void arcade_rivet_update(u8 arg0) {
         D_arcade_8004BCD0[arg0].unk1D = 1;
     }
     else if (D_arcade_8004BCD0[arg0].unk1D) {
-        D_arcade_8004BCD0[arg0].unk18 = 0;
+        D_arcade_8004BCD0[arg0].object_type = 0;
         D_arcade_8004C718 = D_arcade_8004C718 ^ D_arcade_8004BCD0[arg0].unk1C;
         if (D_arcade_8004C718) {
             temp_t6 = func_arcade_800247F0();
@@ -28372,7 +28372,7 @@ void func_arcade_80030A04(u8 index) {
     }
     phi_f0 = --D_arcade_8004BCD0[index].unk10;
     if (phi_f0 < 0.0f) {
-        D_arcade_8004BCD0[index].unk10 = (func_arcade_80024644() & 0x7F) + 0x1C2;
+        D_arcade_8004BCD0[index].unk10 = (arcade_cycle_rng() & 0x7F) + 0x1C2;
     }
     if (D_arcade_8004BCD0[index].unk10 < 200.0f) {
         phi_f0 = 0.2f;
@@ -28395,7 +28395,7 @@ void arcade_pie_update(u8 arg0) {
             || (D_arcade_8004BCD0[arg0].x_position < 32.0f)
             || ((D_arcade_8004BCD0[arg0].x_position == 160.0f) && (D_arcade_8004BCD0[arg0].y_position == 127.0f)) 
         ) {
-            D_arcade_8004BCD0[arg0].unk18 = 0;
+            D_arcade_8004BCD0[arg0].object_type = 0;
         }
         if ((__arcade_abs_w(D_arcade_8004BCD0[arg0].x_position - D_arcade_8004BCD0[D_arcade_8004C71F].x_position) < 0xC)
             && (D_arcade_8004BCD0[arg0].y_position - D_arcade_8004BCD0[D_arcade_8004C71F].y_position < 4.0f) 
@@ -28408,7 +28408,7 @@ void arcade_pie_update(u8 arg0) {
 
 
 void func_arcade_80030C70(u8 arg0) {
-    if (!(D_arcade_8004BCD0[func_arcade_80024860(0x17)].unk10 > 460.0f)) {
+    if (!(D_arcade_8004BCD0[arcade_get_first_object_of_type(0x17)].unk10 > 460.0f)) {
         D_arcade_8004BCD0[arg0].unk1A = (D_arcade_8004BCD0[arg0].unk1C++ / 8) & 1;
     }
 }
@@ -28471,14 +28471,14 @@ void func_arcade_80030CEC(u8 arg0) {
 
 void arcade_barrel_stack_update(u8 arg0) {
     if (D_arcade_8004BCD0[arg0].unk1C >= D_arcade_8004C71E)
-        D_arcade_8004BCD0[arg0].unk18 = 0;
+        D_arcade_8004BCD0[arg0].object_type = 0;
 }
 
 //arcade update objects
 void func_arcade_80030FEC(void) {
     u8 i;
     for (i = 0; i < 0x50; i++) {
-        switch (D_arcade_8004BCD0[i].unk18) {
+        switch (D_arcade_8004BCD0[i].object_type) {
             case ARCADE_OBJ_01_BARREL: //80031030
                 func_arcade_8002CD64(i);
                 break;
@@ -28613,7 +28613,7 @@ void func_arcade_800313B8(void) {
         D_arcade_8004BCD0[sp1f].unk1A = 0;
         D_arcade_8004BCD0[sp1f].x_velocity = -0.5f;
         D_arcade_8004BCD0[sp1f].x_position = 244.0f;
-        temp_v1 = func_arcade_80024644() & 0x7;
+        temp_v1 = arcade_cycle_rng() & 0x7;
         if (temp_v1 >= 4) {
             temp_v1 = 1;
         }
@@ -28626,11 +28626,11 @@ void func_arcade_800313B8(void) {
         }
     }//L80031534
     if (!D_arcade_8004C718) {
-        func_arcade_800252A4(SFX_0_SILENCE);
+        arcade_play_sfx(SFX_0_SILENCE);
         D_arcade_8004C718 = 1;
         D_arcade_8004C708 = t3;
         arcade_game_state = 2;
-        D_arcade_8004BCD0[func_arcade_80024860(ARCADE_OBJ_17_DK_100M)].unk19 = 8;
+        D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_17_DK_100M)].unk19 = 8;
     }
 }
 
@@ -28642,54 +28642,54 @@ void func_arcade_8003159C(Gfx **arg0) {
 
     spA0 = *arg0;
     if (D_arcade_8004C724 == 3) {
-        func_arcade_800244E4(0x00, 0xff, 0xff, 0xff);
-        func_arcade_80024508(0x78, 0x3b);
+        arcade_set_text_rgba(0x00, 0xff, 0xff, 0xff);
+        arcade_set_text_position(0x78, 0x3b);
         sprintf(sp50, "NAME %.3s", &D_arcade_8004A774);
-        func_arcade_8002451C(&spA0, sp50);
-        func_arcade_80024508(0xA0, 0x41);
+        arcade_draw_text(&spA0, sp50);
+        arcade_set_text_position(0xA0, 0x41);
         sprintf(sp50, "---");
-        func_arcade_8002451C(&spA0, sp50);
+        arcade_draw_text(&spA0, sp50);
         if (D_arcade_8004C6DC < 1800) {
-            func_arcade_80024508(0x60, 0x7b);
+            arcade_set_text_position(0x60, 0x7b);
             sprintf(sp50, "REGI TIME <%02d>", 30 - D_arcade_8004C6DC/60);
         } else {//L800316A0
-            func_arcade_80024508(0x40, 0x7b);
+            arcade_set_text_position(0x40, 0x7b);
             sprintf(sp50, "YOUR NAME WAS");
-            func_arcade_8002451C(&spA0, sp50);
+            arcade_draw_text(&spA0, sp50);
 
-            func_arcade_80024508(0xb0, 0x7b);
+            arcade_set_text_position(0xb0, 0x7b);
             sprintf(sp50, "REGISTERED.");
 
         }//L800316E8
-        func_arcade_8002451C(&spA0, sp50);
-        func_arcade_800244E4(0xff, 0x00, 0x00, 0xff);
-        func_arcade_80024508(0x58, 0x2b);
+        arcade_draw_text(&spA0, sp50);
+        arcade_set_text_rgba(0xff, 0x00, 0x00, 0xff);
+        arcade_set_text_position(0x58, 0x2b);
         sprintf(sp50, "NAME REGISTRATION");
-        func_arcade_8002451C(&spA0, sp50);
+        arcade_draw_text(&spA0, sp50);
 
-        func_arcade_800244E4(0x00, 0xff, 0x00, 0xff);
-        func_arcade_80024508(0x58, 0x4b);
+        arcade_set_text_rgba(0x00, 0xff, 0x00, 0xff);
+        arcade_set_text_position(0x58, 0x4b);
         sprintf(sp50, "A B C D E F G H I J");
-        func_arcade_8002451C(&spA0, sp50);
+        arcade_draw_text(&spA0, sp50);
         
-        func_arcade_80024508(0x58, 0x5b);
+        arcade_set_text_position(0x58, 0x5b);
         sprintf(sp50, "K L M N O P Q R S T");
-        func_arcade_8002451C(&spA0, sp50);
+        arcade_draw_text(&spA0, sp50);
         
-        func_arcade_80024508(0x58, 0x6b);
+        arcade_set_text_position(0x58, 0x6b);
         sprintf(sp50, "U V W X Y Z . -");
-        func_arcade_8002451C(&spA0, sp50);
+        arcade_draw_text(&spA0, sp50);
 
-        func_arcade_80024508(0xd4, 0x6b);
+        arcade_set_text_position(0xd4, 0x6b);
         sprintf(sp50, "ba");
-        func_arcade_8002451C(&spA0, sp50);
+        arcade_draw_text(&spA0, sp50);
     }//L800317E0
 
-    func_arcade_800244E4(0xFF, 0x00, 0x00, 0xff);
+    arcade_set_text_rgba(0xFF, 0x00, 0x00, 0xff);
     for (i = 0; i < 5; i++) {
         if (i == 3)
-            func_arcade_800244E4(0xFF, 0xFF, 0x00, 0xff);
-        func_arcade_80024508(0x38, 0x8b + i*0x10);
+            arcade_set_text_rgba(0xFF, 0xFF, 0x00, 0xff);
+        arcade_set_text_position(0x38, 0x8b + i*0x10);
         if (i == D_arcade_8004BCD0[0].unk1C
             && D_arcade_8004C6DC & 0x20
             && D_arcade_8004C724 == 3
@@ -28698,24 +28698,24 @@ void func_arcade_8003159C(Gfx **arg0) {
         } else {//L80031888
             sprintf(sp50, "%.3s  %06d  %.3s", D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
         }//L800318B8
-        func_arcade_8002451C(&spA0, sp50);
+        arcade_draw_text(&spA0, sp50);
     }
 
-    func_arcade_800244E4(0x00, 0xff, 0x00, 0xff);
-    func_arcade_80024508(0xb8, 0xdb);
+    arcade_set_text_rgba(0x00, 0xff, 0x00, 0xff);
+    arcade_set_text_position(0xb8, 0xdb);
     sprintf(sp50, "CREDIT 00");
-    func_arcade_8002451C(&spA0, sp50);
+    arcade_draw_text(&spA0, sp50);
 
     *arg0 = spA0;
 }
 
 void func_arcade_80031948(s8 arg0) {
     if (arg0 == D_arcade_8004A768) {
-        func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
+        arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
     } else if (arcade_background_visual == 2) {
-        func_arcade_800244E4(0xff, 0xa0, 0x10, 0xff);
+        arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
     } else {
-        func_arcade_800244E4(0, 0xff, 0xff, 0xff);
+        arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
     }
 }
 
@@ -28745,112 +28745,112 @@ void func_arcade_800319D4(Gfx **arg0) {
     for (i = 0; i < arcade_lives_visual; i++) {
         func_global_asm_8070F2FC(&sp90, 0x360 + i * 0x20, 0x4C);
     }
-    func_arcade_800244E4(0xff, 0, 00, 0xff);
+    arcade_set_text_rgba(0xff, 0, 00, 0xff);
     if ((D_arcade_8004C6D8 & 0x10) || !D_arcade_8004C724) {
-        func_arcade_80024508(0x48, 0x13);
+        arcade_set_text_position(0x48, 0x13);
         sprintf(sp40, "1UP");
-        func_arcade_8002451C(&sp90, sp40);
+        arcade_draw_text(&sp90, sp40);
     }//L80031B78
 
-    func_arcade_80024508(0x78, 0x13);
+    arcade_set_text_position(0x78, 0x13);
     sprintf(sp40, "HIGH SCORE");
-    func_arcade_8002451C(&sp90, sp40);
+    arcade_draw_text(&sp90, sp40);
 
-    func_arcade_800244E4(0, 0, 0xff, 0xff);
-    func_arcade_80024508(0xd8, 0x1b);
+    arcade_set_text_rgba(0, 0, 0xff, 0xff);
+    arcade_set_text_position(0xd8, 0x1b);
     sprintf(sp40, "L=%02d", D_arcade_8004A76C);
-    func_arcade_8002451C(&sp90, sp40);
+    arcade_draw_text(&sp90, sp40);
 
-    func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
-    func_arcade_80024508(0x38, 0x1b);
+    arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+    arcade_set_text_position(0x38, 0x1b);
     sprintf(sp40, "%06d    %06d", arcade_current_score, D_arcade_8004A760);
-    func_arcade_8002451C(&sp90, sp40);
+    arcade_draw_text(&sp90, sp40);
 
     if (D_arcade_8004C724 == 5 || D_arcade_8004C724 == 4) {//L80031C50
         if (D_arcade_8004A764) {
             if (arcade_background_visual == 2) {
-                func_arcade_800244E4(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
             } else if (arcade_background_visual == 4) {//L80031C8C
-                func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
             } else {
-                func_arcade_800244E4(0, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
             } //L80031CC4
-            func_arcade_80024508(0x78, 0xa3);
+            arcade_set_text_position(0x78, 0xa3);
             sprintf(sp40, "GAME OVER");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
         }//L80031CF4
         if (D_arcade_8004C724 == 4) {
             if (!D_arcade_8004A768 || arcade_background_visual == 4) {
-                func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
             } else if (arcade_background_visual == 2) {
-                func_arcade_800244E4(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
             } else {
-                func_arcade_800244E4(0, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
             }//L80031D64
             func_arcade_80031948(0);
-            func_arcade_80024508(0x88, 0x8b);
+            arcade_set_text_position(0x88, 0x8b);
             sprintf(sp40, "RETURN");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
 
             func_arcade_80031948(1);
-            func_arcade_80024508(0x68, 0x9b);
+            arcade_set_text_position(0x68, 0x9b);
             sprintf(sp40, "DELETE HISCORE");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
 
             func_arcade_80031948(2);
-            func_arcade_80024508(0x68, 0xab);
+            arcade_set_text_position(0x68, 0xab);
             sprintf(sp40, "EXIT DK ARCADE");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
         }//L80031DF8
         if (arcade_background_visual == 2) {
             if (D_arcade_8004C71E < 0xA) {
-                func_arcade_800244E4(0, 0, 0xff, 0xff);
+                arcade_set_text_rgba(0, 0, 0xff, 0xff);
             } else {
-                func_arcade_800244E4(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
             }
         } else if (arcade_background_visual == 4) {//L80031E54
             if (D_arcade_8004C71E < 0xA) {
-                func_arcade_800244E4(0xf0, 0x30, 0, 0xff);
+                arcade_set_text_rgba(0xf0, 0x30, 0, 0xff);
             } else {
-                func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
             }
         } else {
             if (D_arcade_8004C71E < 0xA) {
-                func_arcade_800244E4(0xff, 0, 0, 0xff);
+                arcade_set_text_rgba(0xff, 0, 0, 0xff);
             } else {
-                func_arcade_800244E4(0x60, 0xe0, 0xff, 0xff);
+                arcade_set_text_rgba(0x60, 0xe0, 0xff, 0xff);
             }
         }//L80031EE4
-        func_arcade_80024508(0xe0, 0x30);
+        arcade_set_text_position(0xe0, 0x30);
         score = MAX(D_arcade_8004C71E, 0);
         sprintf(sp40, "%02d00", score, score);
-        func_arcade_8002451C(&sp90, sp40);
+        arcade_draw_text(&sp90, sp40);
         
     }//L80031F30
     if (D_arcade_8004C724 == 2) {
         sp3B = (D_arcade_8004C723 & 3) + 1;
-        func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
-        func_arcade_80024508(0x48, 0xd7);
+        arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+        arcade_set_text_position(0x48, 0xd7);
         sprintf(sp40, "HOW HIGH CAN YOU GET ?");
-        func_arcade_8002451C(&sp90, sp40);
-        func_arcade_80024508(0x58, 0xc9);
+        arcade_draw_text(&sp90, sp40);
+        arcade_set_text_position(0x58, 0xc9);
         sprintf(sp40, "@%%m");
-        func_arcade_8002451C(&sp90, sp40);
+        arcade_draw_text(&sp90, sp40);
         //sp34 = sp3B;
         if (sp3B >= 2) {
-            func_arcade_80024508(0x58, 0xad);
+            arcade_set_text_position(0x58, 0xad);
             sprintf(sp40, "%%)m");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
         }
         if (sp3B >= 3) {
-            func_arcade_80024508(0x58, 0x91);
+            arcade_set_text_position(0x58, 0x91);
             sprintf(sp40, "&%%m");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
         }
         if (sp3B >= 4) {
-            func_arcade_80024508(0x50, 0x75);
+            arcade_set_text_position(0x50, 0x75);
             sprintf(sp40, "!))m");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
         }
     }//L80032054
     if (D_arcade_8004C724 == 3) {
@@ -28858,37 +28858,37 @@ void func_arcade_800319D4(Gfx **arg0) {
     }//L80032078
     if (D_arcade_8004C724 == 0) {
         if (!(D_arcade_8004C6DC & 0x200)) {
-            func_arcade_800244E4(0, 0xff, 0xff, 0xff);
-            func_arcade_80024508(0x70, 0x33);
+            arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
+            arcade_set_text_position(0x70, 0x33);
             sprintf(sp40, "INSERT COIN");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
 
-            func_arcade_80024508(0x68, 0x43);
+            arcade_set_text_position(0x68, 0x43);
             sprintf(sp40, "PLAYER    COIN");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
 
-            func_arcade_80024508(0x78, 0x53);
+            arcade_set_text_position(0x78, 0x53);
             sprintf(sp40, "1        1");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
 
-            func_arcade_80024508(0x38, 0x7b);
+            arcade_set_text_position(0x38, 0x7b);
             sprintf(sp40, "RANK  SCORE  NAME");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
             func_arcade_8003159C(&sp90);
-            func_arcade_800244E4(0xff, 0, 0, 0xff);
+            arcade_set_text_rgba(0xff, 0, 0, 0xff);
 
-            func_arcade_80024508(0x78, 0x63);
+            arcade_set_text_position(0x78, 0x63);
             sprintf(sp40, "2        2");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
         } else {//L80032190
             if (D_arcade_8004C6DC & 0x182) {
-                func_arcade_800244E4(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
             } else {
-                func_arcade_800244E4(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
             }
-            func_arcade_80024508(0x68, 0xd7);
+            arcade_set_text_position(0x68, 0xd7);
             sprintf(sp40, "c NINTENDO 1981");
-            func_arcade_8002451C(&sp90, sp40);
+            arcade_draw_text(&sp90, sp40);
         }
     }//L800321EC
     *arg0 = sp90;
