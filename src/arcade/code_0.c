@@ -25010,7 +25010,7 @@ s32 arcade_current_score = 3700;
 s32 arcade_saved_high_scores[5] = {
     7650, 6100, 5950, 5050, 4300
 };
-s32 D_arcade_8004A760 = 7650;
+s32 arcade_high_score = 7650;
 u8 D_arcade_8004A764 = 0;
 s8 D_arcade_8004A768 = 0;
 u8 D_arcade_8004A76C = 0;
@@ -25165,7 +25165,7 @@ void func_arcade_80024320(void) {
         func_global_asm_8060C648(0x13, 0, i, 0, arcade_saved_high_score_initials[i][1]);
         func_global_asm_8060C648(0x14, 0, i, 0, arcade_saved_high_score_initials[i][2]);
     }
-    D_arcade_8004A760 = arcade_saved_high_scores[0];
+    arcade_high_score = arcade_saved_high_scores[0];
     func_global_asm_8060DEA8();
 }
 
@@ -25178,7 +25178,7 @@ void func_arcade_8002440C(void) {
         arcade_saved_high_score_initials[i][1] = func_global_asm_8060C6B8(0x13, 0, i, 0);
         arcade_saved_high_score_initials[i][2] = func_global_asm_8060C6B8(0x14, 0, i, 0);
     }
-    D_arcade_8004A760 = arcade_saved_high_scores[0];
+    arcade_high_score = arcade_saved_high_scores[0];
 }
 
 void arcade_set_text_rgba(s32 red, s32 green, s32 blue, s32 alpha) {
@@ -25234,7 +25234,7 @@ f32 func_arcade_800246C8(f32 arg0, f32 arg1) {
 s32 arcade_get_first_empty_slot(void) {
     s32 i;
     for (i = 0; i <= 0x4F; i++) {
-        if (D_arcade_8004BCD0[i].object_type == 0) {
+        if (arcade_objects[i].object_type == 0) {
             return i;
         }
     }
@@ -25244,8 +25244,8 @@ s32 arcade_get_first_empty_slot(void) {
 //get_first_empty_obj_slot_after_player
 s32 func_arcade_80024764(void) {
     s32 i;
-    for (i = D_arcade_8004C71F + 1; i < 0x50; i++) {
-        if (D_arcade_8004BCD0[i].object_type == 0) {
+    for (i = arcade_jumpman_slot + 1; i < 0x50; i++) {
+        if (arcade_objects[i].object_type == 0) {
             return i;
         }
     }
@@ -25256,7 +25256,7 @@ s32 func_arcade_80024764(void) {
 s32 func_arcade_800247B8(void) {
     s32 i;
     for (i = 0x4F; i >= 0; i--) {
-        if (D_arcade_8004BCD0[i].object_type == 0) {
+        if (arcade_objects[i].object_type == 0) {
             return i;
         }
     }
@@ -25266,7 +25266,7 @@ s32 func_arcade_800247B8(void) {
 s32 func_arcade_800247F0(void) {
     s32 i;
     for (i = 0x27; i >= 0; i--) {
-        if (D_arcade_8004BCD0[i].object_type == 0) {
+        if (arcade_objects[i].object_type == 0) {
             return i;
         }
     }
@@ -25276,7 +25276,7 @@ s32 func_arcade_800247F0(void) {
 s32 func_arcade_80024828(void) {
     s32 i;
     for (i = 0x24; i >= 0; i--) {
-        if (D_arcade_8004BCD0[i].object_type == 0) {
+        if (arcade_objects[i].object_type == 0) {
             return i;
         }
     }
@@ -25286,7 +25286,7 @@ s32 func_arcade_80024828(void) {
 s32 arcade_get_first_object_of_type(enum ARCADE_OBJ_E arg0) {
     s32 i;
     for (i = 0; i < 0x50; i++) {
-        if (arg0 == D_arcade_8004BCD0[i].object_type) {
+        if (arg0 == arcade_objects[i].object_type) {
             return i;
         }
     }
@@ -25297,7 +25297,7 @@ s32 arcade_get_object_type_count(enum ARCADE_OBJ_E arg0) {
     s32 i;
     s32 count = 0;
     for (i = 0; i < 0x50; i++) {
-        if (arg0 == D_arcade_8004BCD0[i].object_type) {
+        if (arg0 == arcade_objects[i].object_type) {
             count++;
         }
     }
@@ -25384,9 +25384,9 @@ void func_arcade_80024B04(void) {
     D_arcade_8004C6DC = 0;
     D_arcade_8004C720 = 0; \
     for (j = 0; j < 0x50; j++) {
-        D_arcade_8004BCD0[j].object_type = 0;
-        D_arcade_8004BCD0[0] = arcade_name_select_cursor_obj_template;
-        D_arcade_8004BCD0[0].unk1C = i;
+        arcade_objects[j].object_type = 0;
+        arcade_objects[0] = arcade_name_select_cursor_obj_template;
+        arcade_objects[0].unk1C = i;
     }
 }
 
@@ -25438,16 +25438,16 @@ void func_arcade_80024D90(void) {
     D_arcade_8004C6DC = 0x200; // arcade_internal_timer
     arcade_game_state = 1;
 
-    for (iPtr = D_arcade_8004BCD0; iPtr < &D_arcade_8004BCD0[0x50]; iPtr++) {
+    for (iPtr = arcade_objects; iPtr < &arcade_objects[0x50]; iPtr++) {
         iPtr->object_type = 0;
     }
 
     temp_v1 = arcade_get_first_empty_slot();
 
-    D_arcade_8004BCD0[temp_v1] = arcade_dk_title_obj_template;
-    D_arcade_8004BCD0[temp_v1].x_position = 138.0f;
-    D_arcade_8004BCD0[temp_v1].y_position = 180.0f;
-    D_arcade_8004BCD0[temp_v1].unk14 = &D_arcade_800424D0;
+    arcade_objects[temp_v1] = arcade_dk_title_obj_template;
+    arcade_objects[temp_v1].x_position = 138.0f;
+    arcade_objects[temp_v1].y_position = 180.0f;
+    arcade_objects[temp_v1].sprite = &D_arcade_800424D0;
 }
 
 void func_arcade_80024E84(Gfx **arg0) {
@@ -25486,13 +25486,13 @@ void func_arcade_80024E84(Gfx **arg0) {
         arcade_game_state = 1;
         D_arcade_8004C721 = 0;
         for (i = 0; i < 80; i++) {
-            D_arcade_8004BCD0[i].object_type = 0;
+            arcade_objects[i].object_type = 0;
         }
-        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
-        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
-        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_title_obj_template;
+        arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+        arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+        arcade_objects[arcade_get_first_empty_slot()] = arcade_dk_title_obj_template;
         if (D_arcade_8004A76C == 2 && D_arcade_8004A740) {
-            D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
+            arcade_objects[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
         }
         D_arcade_8004C708 = 0;
     }//L800251BC
@@ -25541,7 +25541,7 @@ void func_arcade_800252D8(Gfx **arg0) {
 
     sp34 = *arg0;
     func_arcade_800259D0(&sp34);
-    if (D_arcade_8004C71E < 0xA) { // arcade_bonus_timer
+    if (arcade_bonus_timer < 0xA) { // arcade_bonus_timer
         if ((arcade_next_sfx == SFX_4D_ARCADE_25M) 
             || (arcade_next_sfx == SFX_4E_ARCADE_100M) 
             || (arcade_next_sfx == SFX_4F_ARCADE_50M) 
@@ -25553,13 +25553,13 @@ void func_arcade_800252D8(Gfx **arg0) {
         temp = (s16) arcade_next_sfx;
         func_global_asm_80737638(D_global_asm_8076D1F8, temp, 0x7FFF, 0x3F, 1.0f, 0, &D_global_asm_80770DF8);
     }
-    if (D_arcade_8004A760 < arcade_current_score) {
-        D_arcade_8004A760 = arcade_current_score;
+    if (arcade_high_score < arcade_current_score) {
+        arcade_high_score = arcade_current_score;
     }
     if (D_arcade_8004C6DC++ == 0x3C) {
         arcade_lives_visual = arcade_lives_internal;
         arcade_game_state = 0;
-        D_arcade_8004BCD0[arcade_get_first_object_of_type(0xD)].unk19 = 2;
+        arcade_objects[arcade_get_first_object_of_type(0xD)].unk19 = 2;
     }
     func_arcade_80030FEC(); //update objects
     func_arcade_8002B2C0(&sp34);
@@ -25584,9 +25584,9 @@ void func_arcade_8002549C(void) {
     for (x = 0x60; x < 0xe0; x += 0x10) {
         for (y = 0x8C; y < 0xCC; y += 0x10) {
             index = func_arcade_800247B8();
-            D_arcade_8004BCD0[index] = D_arcade_8004A6B8;
-            D_arcade_8004BCD0[index].x_position = x;
-            D_arcade_8004BCD0[index].y_position = y;
+            arcade_objects[index] = D_arcade_8004A6B8;
+            arcade_objects[index].x_position = x;
+            arcade_objects[index].y_position = y;
         }
     }
     D_arcade_8004A768 = 0;
@@ -25599,7 +25599,7 @@ void func_arcade_800255A8(void) {
     do {
         temp_v0 = arcade_get_first_object_of_type(0x1C);
         if (temp_v0 >= 0) {
-            D_arcade_8004BCD0[temp_v0].object_type = 0;
+            arcade_objects[temp_v0].object_type = 0;
         }
     } while (temp_v0 >= 0);
 }
@@ -25645,8 +25645,8 @@ void func_arcade_800255F4(Gfx **arg0) {
                     func_global_asm_8060C8AC(2);
                     func_arcade_8002440C();
                     func_arcade_80024320();
-                    if (D_arcade_8004A760 < arcade_current_score)
-                        D_arcade_8004A760 = arcade_current_score;
+                    if (arcade_high_score < arcade_current_score)
+                        arcade_high_score = arcade_current_score;
                     D_arcade_8004A744 = 1;
                 }
                 break;
@@ -25662,10 +25662,10 @@ void func_arcade_800257D8(void) {
     int i;
     ArcadeStruct1 *tmp_v1;
     for (i = 0; i < 80; i++) {
-        D_arcade_8004BCD0[i].object_type = 0;
+        arcade_objects[i].object_type = 0;
     }
     for (i = 0; i < (D_arcade_8004C723 & 3) + 1; i++) {
-        tmp_v1 = &D_arcade_8004BCD0[arcade_get_first_empty_slot()];
+        tmp_v1 = &arcade_objects[arcade_get_first_empty_slot()];
         *tmp_v1 = arcade_dk_how_high_obj_template;
         tmp_v1->y_position -= i * 0x20;
     }//L800258C0
@@ -26112,48 +26112,48 @@ void func_arcade_80027A38(Gfx **arg0) {
 void func_arcade_80027E8C(void) {
     arcade_play_sfx(SFX_0_SILENCE);
     func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFF, 0x3F, 1.0f, 0, 0);
-    D_arcade_8004BCD0[D_arcade_8004C71F].unk19 = 8;
-    D_arcade_8004BCD0[D_arcade_8004C71F].x_velocity = 0.0f;
-    D_arcade_8004BCD0[D_arcade_8004C71F].unk10 = 0.0f;
+    arcade_objects[arcade_jumpman_slot].unk19 = 8;
+    arcade_objects[arcade_jumpman_slot].x_velocity = 0.0f;
+    arcade_objects[arcade_jumpman_slot].unk10 = 0.0f;
     arcade_game_state = 1;
 }
 
 void arcade_25m_setup(void) {
     int v1 = 0x25;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_25m_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_dk_25m_obj_template;
     if (D_arcade_8004A76C == 2 && D_arcade_8004A740)
-        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_bonus_osd_obj_template;
-    D_arcade_8004C71F = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[D_arcade_8004C71F] = arcade_jumpman_obj_template;
-    D_arcade_8004BCD0[v1] = arcade_oil_drum_obj_template;
+        arcade_objects[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_bonus_osd_obj_template;
+    arcade_jumpman_slot = arcade_get_first_empty_slot();
+    arcade_objects[arcade_jumpman_slot] = arcade_jumpman_obj_template;
+    arcade_objects[v1] = arcade_oil_drum_obj_template;
     v1--;
 
-    D_arcade_8004BCD0[v1] = arcade_hammer_obj_template;
+    arcade_objects[v1] = arcade_hammer_obj_template;
     v1--;
 
-    D_arcade_8004BCD0[v1] = arcade_hammer_obj_template;
-    D_arcade_8004BCD0[v1].x_position = 68.0f;
-    D_arcade_8004BCD0[v1].y_position = 110.0f;
+    arcade_objects[v1] = arcade_hammer_obj_template;
+    arcade_objects[v1].x_position = 68.0f;
+    arcade_objects[v1].y_position = 110.0f;
     v1--;
 
-    D_arcade_8004BCD0[v1--] = arcade_barrel_stack_obj_template;
+    arcade_objects[v1--] = arcade_barrel_stack_obj_template;
 
-    D_arcade_8004BCD0[v1] = arcade_barrel_stack_obj_template;
-    D_arcade_8004BCD0[v1].x_position = 48.0f;
-    D_arcade_8004BCD0[v1--].unk1C = 1;
+    arcade_objects[v1] = arcade_barrel_stack_obj_template;
+    arcade_objects[v1].x_position = 48.0f;
+    arcade_objects[v1--].unk1C = 1;
     
-    D_arcade_8004BCD0[v1] = arcade_barrel_stack_obj_template;
-    D_arcade_8004BCD0[v1].y_position = 65.0f;
-    D_arcade_8004BCD0[v1--].unk1C = 2;
+    arcade_objects[v1] = arcade_barrel_stack_obj_template;
+    arcade_objects[v1].y_position = 65.0f;
+    arcade_objects[v1--].unk1C = 2;
 
-    D_arcade_8004BCD0[v1] = arcade_barrel_stack_obj_template;
-    D_arcade_8004BCD0[v1].x_position = 48.0f;
-    D_arcade_8004BCD0[v1].y_position = 65.0f;
-    D_arcade_8004BCD0[v1].unk1C = 3;
+    arcade_objects[v1] = arcade_barrel_stack_obj_template;
+    arcade_objects[v1].x_position = 48.0f;
+    arcade_objects[v1].y_position = 65.0f;
+    arcade_objects[v1].unk1C = 3;
 
     D_arcade_8004C708 = 7;
 }
@@ -26166,48 +26166,48 @@ void arcade_100m_setup(void) {
     u8 sp3C[8][2] = D_arcade_8004A81C;
     u32 s1 = 1;
 
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_100m_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_dk_100m_obj_template;
     if (D_arcade_8004A76C == 2 && D_arcade_8004A740)
-        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
+        arcade_objects[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
 
     for (i = 0; i < 8; i++) {
         indx = arcade_get_first_empty_slot();
-        D_arcade_8004BCD0[indx] = arcade_rivet_obj_template;
-        D_arcade_8004BCD0[indx].x_position = (f32)sp3C[i][0];
-        D_arcade_8004BCD0[indx].y_position = (f32)sp3C[i][1];
-        D_arcade_8004BCD0[indx].unk1C = s1;
+        arcade_objects[indx] = arcade_rivet_obj_template;
+        arcade_objects[indx].x_position = (f32)sp3C[i][0];
+        arcade_objects[indx].y_position = (f32)sp3C[i][1];
+        arcade_objects[indx].unk1C = s1;
         s1 <<= 1;
     }
 
     indx = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[indx] = arcade_bonus_osd_obj_template;
-    D_arcade_8004BCD0[indx].unk14 = &D_arcade_800335D8;
+    arcade_objects[indx] = arcade_bonus_osd_obj_template;
+    arcade_objects[indx].sprite = &D_arcade_800335D8;
 
-    D_arcade_8004C71F = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[D_arcade_8004C71F] = arcade_jumpman_obj_template;
+    arcade_jumpman_slot = arcade_get_first_empty_slot();
+    arcade_objects[arcade_jumpman_slot] = arcade_jumpman_obj_template;
 
-    D_arcade_8004BCD0[0x25] = arcade_bonus_item_obj_template;
-    D_arcade_8004BCD0[0x25].unk14 = &D_arcade_80038FE8;
+    arcade_objects[0x25] = arcade_bonus_item_obj_template;
+    arcade_objects[0x25].sprite = &D_arcade_80038FE8;
 
-    D_arcade_8004BCD0[0x24] = arcade_bonus_item_obj_template;
-    D_arcade_8004BCD0[0x24].x_position = 252.0f;
-    D_arcade_8004BCD0[0x24].y_position = 208.0f;
+    arcade_objects[0x24] = arcade_bonus_item_obj_template;
+    arcade_objects[0x24].x_position = 252.0f;
+    arcade_objects[0x24].y_position = 208.0f;
 
-    D_arcade_8004BCD0[0x23] = arcade_bonus_item_obj_template;
-    D_arcade_8004BCD0[0x23].unk14 = &D_arcade_800391F0;
-    D_arcade_8004BCD0[0x23].x_position = 84.0f;
-    D_arcade_8004BCD0[0x23].y_position = 93.0f;
+    arcade_objects[0x23] = arcade_bonus_item_obj_template;
+    arcade_objects[0x23].sprite = &D_arcade_800391F0;
+    arcade_objects[0x23].x_position = 84.0f;
+    arcade_objects[0x23].y_position = 93.0f;
 
-    D_arcade_8004BCD0[0x22] = arcade_hammer_obj_template;
-    D_arcade_8004BCD0[0x22].x_position = 60.0f;
-    D_arcade_8004BCD0[0x22].y_position = 152.0f;
+    arcade_objects[0x22] = arcade_hammer_obj_template;
+    arcade_objects[0x22].x_position = 60.0f;
+    arcade_objects[0x22].y_position = 152.0f;
 
-    D_arcade_8004BCD0[0x21] = arcade_hammer_obj_template;
-    D_arcade_8004BCD0[0x21].x_position = 156.0f;
-    D_arcade_8004BCD0[0x21].y_position = 114.0f;
+    arcade_objects[0x21] = arcade_hammer_obj_template;
+    arcade_objects[0x21].x_position = 156.0f;
+    arcade_objects[0x21].y_position = 114.0f;
 }
 
 void arcade_75m_setup(void) {
@@ -26215,55 +26215,55 @@ void arcade_75m_setup(void) {
     s32 tmp;
     f32 tmp_f2;
 
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_75m_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_dk_75m_obj_template;
     if (D_arcade_8004A76C == 2 && D_arcade_8004A740)
-        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_bonus_osd_obj_template;
-    D_arcade_8004C71F = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[D_arcade_8004C71F] = arcade_jumpman_obj_template;
-    D_arcade_8004BCD0[D_arcade_8004C71F].x_position = 56.0;
-    D_arcade_8004BCD0[D_arcade_8004C71F].y_position = 231.0;
+        arcade_objects[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_bonus_osd_obj_template;
+    arcade_jumpman_slot = arcade_get_first_empty_slot();
+    arcade_objects[arcade_jumpman_slot] = arcade_jumpman_obj_template;
+    arcade_objects[arcade_jumpman_slot].x_position = 56.0;
+    arcade_objects[arcade_jumpman_slot].y_position = 231.0;
 
-    D_arcade_8004BCD0[a0--] = arcade_elevator_obj_template;
+    arcade_objects[a0--] = arcade_elevator_obj_template;
 
-    D_arcade_8004BCD0[a0] = arcade_elevator_obj_template;
-    D_arcade_8004BCD0[a0--].x_position = 144.0f;
+    arcade_objects[a0] = arcade_elevator_obj_template;
+    arcade_objects[a0--].x_position = 144.0f;
 
-    D_arcade_8004BCD0[a0] = arcade_elevator_obj_template;
-    D_arcade_8004BCD0[a0].y_position = 238.0f;
-    D_arcade_8004BCD0[a0--].unk1B = 1;
+    arcade_objects[a0] = arcade_elevator_obj_template;
+    arcade_objects[a0].y_position = 238.0f;
+    arcade_objects[a0--].unk1B = 1;
 
-    D_arcade_8004BCD0[a0] = arcade_elevator_obj_template;
-    D_arcade_8004BCD0[a0].x_position = 144.0f;
-    D_arcade_8004BCD0[a0].y_position = 238.0f;
-    D_arcade_8004BCD0[a0--].unk1B = 1;
+    arcade_objects[a0] = arcade_elevator_obj_template;
+    arcade_objects[a0].x_position = 144.0f;
+    arcade_objects[a0].y_position = 238.0f;
+    arcade_objects[a0--].unk1B = 1;
 
-    D_arcade_8004BCD0[a0] = arcade_bonus_item_obj_template;
-    D_arcade_8004BCD0[a0].x_position = 260.0f;
-    D_arcade_8004BCD0[a0].y_position = 103.0f;
-    D_arcade_8004BCD0[a0--].unk14 = &D_arcade_80038FE8;
+    arcade_objects[a0] = arcade_bonus_item_obj_template;
+    arcade_objects[a0].x_position = 260.0f;
+    arcade_objects[a0].y_position = 103.0f;
+    arcade_objects[a0--].sprite = &D_arcade_80038FE8;
 
-    D_arcade_8004BCD0[a0] = arcade_bonus_item_obj_template;
-    D_arcade_8004BCD0[a0].x_position = 60.0f;
-    D_arcade_8004BCD0[a0].y_position = 135.0f;
-    D_arcade_8004BCD0[a0--].unk14 = &D_arcade_800391F0;
-
-    tmp = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[tmp] = arcade_flame_enemy_obj_template;
-    D_arcade_8004BCD0[tmp].x_velocity = 0.5;
-    D_arcade_8004BCD0[tmp].unk1A = 1;
-    D_arcade_8004BCD0[tmp].x_position = 114.0f;
-    D_arcade_8004BCD0[tmp].y_position = 135.0f;
+    arcade_objects[a0] = arcade_bonus_item_obj_template;
+    arcade_objects[a0].x_position = 60.0f;
+    arcade_objects[a0].y_position = 135.0f;
+    arcade_objects[a0--].sprite = &D_arcade_800391F0;
 
     tmp = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[tmp] = arcade_flame_enemy_obj_template;
-    D_arcade_8004BCD0[tmp].x_velocity = 0.5;
-    D_arcade_8004BCD0[tmp].unk1A = 1;
-    D_arcade_8004BCD0[tmp].x_position = 260.0f;
-    D_arcade_8004BCD0[tmp].y_position = 103.0f;
+    arcade_objects[tmp] = arcade_flame_enemy_obj_template;
+    arcade_objects[tmp].x_velocity = 0.5;
+    arcade_objects[tmp].unk1A = 1;
+    arcade_objects[tmp].x_position = 114.0f;
+    arcade_objects[tmp].y_position = 135.0f;
+
+    tmp = arcade_get_first_empty_slot();
+    arcade_objects[tmp] = arcade_flame_enemy_obj_template;
+    arcade_objects[tmp].x_velocity = 0.5;
+    arcade_objects[tmp].unk1A = 1;
+    arcade_objects[tmp].x_position = 260.0f;
+    arcade_objects[tmp].y_position = 103.0f;
 
     D_arcade_8004BC88[0][0] = 40.0f;
     D_arcade_8004BC88[1][0] = 40.0f;
@@ -26289,85 +26289,85 @@ void arcade_75m_setup(void) {
 void arcade_50m_setup(void) {
     s32 i;
     int v1 = 0x25;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_moving_ladder_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_moving_ladder_obj_template;
     i = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[i] = arcade_moving_ladder_obj_template;
-    D_arcade_8004BCD0[i].x_position = 244.0f;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
-    D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_dk_50m_obj_template;
+    arcade_objects[i] = arcade_moving_ladder_obj_template;
+    arcade_objects[i].x_position = 244.0f;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_bottom_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_pauline_top_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_help_text_obj_template;
+    arcade_objects[arcade_get_first_empty_slot()] = arcade_dk_50m_obj_template;
     if (D_arcade_8004A76C == 2 && D_arcade_8004A740)
-        D_arcade_8004BCD0[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
+        arcade_objects[arcade_get_first_empty_slot()] = arcade_nintendo_coin_obj_template;
 
     i = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[i] = arcade_bonus_osd_obj_template;
-    D_arcade_8004BCD0[i].unk14 = &D_arcade_80033C48;
+    arcade_objects[i] = arcade_bonus_osd_obj_template;
+    arcade_objects[i].sprite = &D_arcade_80033C48;
 
-    D_arcade_8004C71F = arcade_get_first_empty_slot();
-    D_arcade_8004BCD0[D_arcade_8004C71F] = arcade_jumpman_obj_template;
+    arcade_jumpman_slot = arcade_get_first_empty_slot();
+    arcade_objects[arcade_jumpman_slot] = arcade_jumpman_obj_template;
 
-    D_arcade_8004BCD0[0x25] = arcade_oil_drum_obj_template;
-    D_arcade_8004BCD0[0x25].x_position = 152.0f;
-    D_arcade_8004BCD0[0x25].y_position = 127.0f;
+    arcade_objects[0x25] = arcade_oil_drum_obj_template;
+    arcade_objects[0x25].x_position = 152.0f;
+    arcade_objects[0x25].y_position = 127.0f;
 
-    D_arcade_8004BCD0[0x24] = arcade_oil_drum_flame_obj_template;
-    D_arcade_8004BCD0[0x24].x_position = 152.0f;
-    D_arcade_8004BCD0[0x24].y_position = 113.0f;
+    arcade_objects[0x24] = arcade_oil_drum_flame_obj_template;
+    arcade_objects[0x24].x_position = 152.0f;
+    arcade_objects[0x24].y_position = 113.0f;
 
-    D_arcade_8004BCD0[0x23] = arcade_bonus_item_obj_template;
-    D_arcade_8004BCD0[0x23].unk14 = &D_arcade_80038FE8;
-    D_arcade_8004BCD0[0x23].x_position = 172.0f;
+    arcade_objects[0x23] = arcade_bonus_item_obj_template;
+    arcade_objects[0x23].sprite = &D_arcade_80038FE8;
+    arcade_objects[0x23].x_position = 172.0f;
 
-    D_arcade_8004BCD0[0x22] = arcade_bonus_item_obj_template;
-    D_arcade_8004BCD0[0x22].y_position = 167.0f;
-    D_arcade_8004BCD0[0x22].x_position = 116.0f;
+    arcade_objects[0x22] = arcade_bonus_item_obj_template;
+    arcade_objects[0x22].y_position = 167.0f;
+    arcade_objects[0x22].x_position = 116.0f;
 
-    D_arcade_8004BCD0[0x21] = arcade_bonus_item_obj_template;
-    D_arcade_8004BCD0[0x21].unk14 = &D_arcade_800391F0;
-    D_arcade_8004BCD0[0x21].y_position = 167.0f;
-    D_arcade_8004BCD0[0x21].x_position = 252.0f;
+    arcade_objects[0x21] = arcade_bonus_item_obj_template;
+    arcade_objects[0x21].sprite = &D_arcade_800391F0;
+    arcade_objects[0x21].y_position = 167.0f;
+    arcade_objects[0x21].x_position = 252.0f;
 
-    D_arcade_8004BCD0[0x20] = arcade_hammer_obj_template;
-    D_arcade_8004BCD0[0x20].x_position = 68.0f;
-    D_arcade_8004BCD0[0x20].y_position = 148.0f;
+    arcade_objects[0x20] = arcade_hammer_obj_template;
+    arcade_objects[0x20].x_position = 68.0f;
+    arcade_objects[0x20].y_position = 148.0f;
 
-    D_arcade_8004BCD0[0x1F] = arcade_hammer_obj_template;
-    D_arcade_8004BCD0[0x1F].x_position = 156.0f;
-    D_arcade_8004BCD0[0x1F].y_position = 188.0f;
+    arcade_objects[0x1F] = arcade_hammer_obj_template;
+    arcade_objects[0x1F].x_position = 156.0f;
+    arcade_objects[0x1F].y_position = 188.0f;
 
-    D_arcade_8004BCD0[0x1E] = arcade_pulley_obj_template;
+    arcade_objects[0x1E] = arcade_pulley_obj_template;
 
-    D_arcade_8004BCD0[0x1D] = arcade_pulley_obj_template;
-    D_arcade_8004BCD0[0x1D].unk1A = 1;
-    D_arcade_8004BCD0[0x1D].unk1B = 1;
-    D_arcade_8004BCD0[0x1D].unk1C = 0;
-    D_arcade_8004BCD0[0x1D].x_position = 256.0f;
-    D_arcade_8004BCD0[0x1D].y_position = 84.0f;
+    arcade_objects[0x1D] = arcade_pulley_obj_template;
+    arcade_objects[0x1D].unk1A = 1;
+    arcade_objects[0x1D].unk1B = 1;
+    arcade_objects[0x1D].unk1C = 0;
+    arcade_objects[0x1D].x_position = 256.0f;
+    arcade_objects[0x1D].y_position = 84.0f;
 
-    D_arcade_8004BCD0[0x1C] = arcade_pulley_obj_template;
-    D_arcade_8004BCD0[0x1C].unk1A = 1;
-    D_arcade_8004BCD0[0x1C].unk1B = 1;
-    D_arcade_8004BCD0[0x1C].unk1C = 1;
-    D_arcade_8004BCD0[0x1C].y_position = 124.0f;
-    D_arcade_8004BCD0[0x1C].x_position = 139.0f;
+    arcade_objects[0x1C] = arcade_pulley_obj_template;
+    arcade_objects[0x1C].unk1A = 1;
+    arcade_objects[0x1C].unk1B = 1;
+    arcade_objects[0x1C].unk1C = 1;
+    arcade_objects[0x1C].y_position = 124.0f;
+    arcade_objects[0x1C].x_position = 139.0f;
 
-    D_arcade_8004BCD0[0x1B] = arcade_pulley_obj_template;
-    D_arcade_8004BCD0[0x1B].y_position = 124.0f;
-    D_arcade_8004BCD0[0x1B].unk1C = 2;
-    D_arcade_8004BCD0[0x1B].x_position = 165.0f;
+    arcade_objects[0x1B] = arcade_pulley_obj_template;
+    arcade_objects[0x1B].y_position = 124.0f;
+    arcade_objects[0x1B].unk1C = 2;
+    arcade_objects[0x1B].x_position = 165.0f;
 
-    D_arcade_8004BCD0[0x1A] = arcade_pulley_obj_template;
-    D_arcade_8004BCD0[0x1A].y_position = 204.0f;
-    D_arcade_8004BCD0[0x1A].unk1C = 3;
-    D_arcade_8004BCD0[0x1A].x_position = 48.0f;
+    arcade_objects[0x1A] = arcade_pulley_obj_template;
+    arcade_objects[0x1A].y_position = 204.0f;
+    arcade_objects[0x1A].unk1C = 3;
+    arcade_objects[0x1A].x_position = 48.0f;
 
-    D_arcade_8004BCD0[0x19] = arcade_pulley_obj_template;
-    D_arcade_8004BCD0[0x19].unk1A = 1;
-    D_arcade_8004BCD0[0x19].unk1B = 1;
-    D_arcade_8004BCD0[0x19].x_position = 256.0f;
-    D_arcade_8004BCD0[0x19].y_position = 204.0f;
-    D_arcade_8004BCD0[0x19].unk1C = 3;
+    arcade_objects[0x19] = arcade_pulley_obj_template;
+    arcade_objects[0x19].unk1A = 1;
+    arcade_objects[0x19].unk1B = 1;
+    arcade_objects[0x19].x_position = 256.0f;
+    arcade_objects[0x19].y_position = 204.0f;
+    arcade_objects[0x19].unk1C = 3;
 }
 
 void func_arcade_80029968(void) {
@@ -26377,7 +26377,7 @@ void func_arcade_80029968(void) {
     D_arcade_8004C708 = 0;
     arcade_background_visual = D_arcade_8004A788[D_arcade_8004C723 & 3];
     for (i = 0; i < 0x50; i++) { //clear arcade_obj_array
-        D_arcade_8004BCD0[i].object_type = 0;
+        arcade_objects[i].object_type = 0;
     }
 
     switch (arcade_background_visual) {
@@ -26397,12 +26397,12 @@ void func_arcade_80029968(void) {
     func_arcade_80025240(); //queue stage music
     tmp_v0 = D_arcade_8004A76C * 0xA + 0x28;
     if (tmp_v0 >= 0x5B) {
-        D_arcade_8004C71E = 0x5A;
+        arcade_bonus_timer = 0x5A;
     } else {
-        D_arcade_8004C71E = tmp_v0;
+        arcade_bonus_timer = tmp_v0;
     }
-    D_arcade_8004C710 = 0;
-    D_arcade_8004C718 = 0xFF;
+    arcade_hammer_timer = 0;
+    arcade_rivet_bitfield = 0xFF;
     D_arcade_8004A764 = 0;
     D_arcade_8004C6DC = 0;
     arcade_game_state = 1;
@@ -26484,28 +26484,28 @@ s32 func_arcade_80029CD0(s32 arg0, s32 arg1) {
     D_arcade_8004C6F4 = 0x10A;
     if (arg1 < 0x6E) {
         D_arcade_8004C6F8 = 1;
-        if ((arg0 >= 0x4D) && (arg0 < 0xF4) && ((arg0 < 0x6C) || (arg0 >= 0x6D) || (D_arcade_8004C718 & 0x40)) && ((arg0 < 0xD4) || (arg0 >= 0xD5) || (D_arcade_8004C718 & 0x80))) {
+        if ((arg0 >= 0x4D) && (arg0 < 0xF4) && ((arg0 < 0x6C) || (arg0 >= 0x6D) || (arcade_rivet_bitfield & 0x40)) && ((arg0 < 0xD4) || (arg0 >= 0xD5) || (arcade_rivet_bitfield & 0x80))) {
             var_v1 = 0x5D;
         } else {
             var_v1 = 0xF7;
         }
     } else if (arg1 < 0x8C) {
         D_arcade_8004C6F8 = 2;
-        if ((arg0 >= 0x45) && (arg0 < 0xFC) && ((arg0 < 0x6C) || (arg0 >= 0x6D) || (D_arcade_8004C718 & 0x10)) && ((arg0 < 0xD4) || (arg0 >= 0xD5) || (D_arcade_8004C718 & 0x20))) {
+        if ((arg0 >= 0x45) && (arg0 < 0xFC) && ((arg0 < 0x6C) || (arg0 >= 0x6D) || (arcade_rivet_bitfield & 0x10)) && ((arg0 < 0xD4) || (arg0 >= 0xD5) || (arcade_rivet_bitfield & 0x20))) {
             var_v1 = 0x84;
         } else {
             var_v1 = 0xF7;
         }
     } else if (arg1 < 0xBE) {
         D_arcade_8004C6F8 = 3;
-        if ((arg0 >= 0x3D) && (arg0 < 0x104) && ((arg0 < 0x6C) || (arg0 >= 0x6D) || (D_arcade_8004C718 & 4)) && ((arg0 < 0xD4) || (arg0 >= 0xD5) || (D_arcade_8004C718 & 8))) {
+        if ((arg0 >= 0x3D) && (arg0 < 0x104) && ((arg0 < 0x6C) || (arg0 >= 0x6D) || (arcade_rivet_bitfield & 4)) && ((arg0 < 0xD4) || (arg0 >= 0xD5) || (arcade_rivet_bitfield & 8))) {
             var_v1 = 0xAA;
         } else {
             var_v1 = 0xF7;
         }
     } else if (arg1 < 0xDC) {
         D_arcade_8004C6F8 = 4;
-        if (((arg0 < 0x6C) || (arg0 >= 0x6D) || (D_arcade_8004C718 & 1)) && ((arg0 < 0xD4) || (arg0 >= 0xD5) || (D_arcade_8004C718 & 2))) {
+        if (((arg0 < 0x6C) || (arg0 >= 0x6D) || (arcade_rivet_bitfield & 1)) && ((arg0 < 0xD4) || (arg0 >= 0xD5) || (arcade_rivet_bitfield & 2))) {
             var_v1 = 0xD0;
         } else {
             var_v1 = 0xF7;
@@ -26845,7 +26845,7 @@ s32 func_arcade_8002AC54(s32 arg0, s32 arg1) {
     if (func_arcade_8002A408(arg0, arg1, 0xF4, 0x7F, 0x7F, 0xA7)) {
         return 1;
     }
-    phi_v0 = D_arcade_8004BCD0[0].y_position;
+    phi_v0 = arcade_objects[0].y_position;
     if (phi_v0 == 0x61) {
         phi_v0 = 0x57;
     } else {
@@ -26855,7 +26855,7 @@ s32 func_arcade_8002AC54(s32 arg0, s32 arg1) {
         return 1;
     }
 
-    phi_v0 = D_arcade_8004BCD0[1].y_position;
+    phi_v0 = arcade_objects[1].y_position;
     if (phi_v0 == 0x61) {
         phi_v0 = 0x57;
     } else {
@@ -26889,27 +26889,27 @@ void func_arcade_8002AFA4(Gfx **arg0, s32 arg1) {
     s32 tmp_v0;
     f32 phi_f0;
 
-    if (D_arcade_8004A338[D_arcade_8004BCD0[arg1].object_type] & 1) {
+    if (D_arcade_8004A338[arcade_objects[arg1].object_type] & 1) {
         phi_f0 = 1024.0f;
     } else {
         phi_f0 = 1170.2857666f;
     }
     guSprite2DInit(
-        &D_arcade_8004AC00[D_global_asm_807444FC].sprite[arg1], D_arcade_8004BCD0[arg1].unk14, 0, 
-        D_arcade_8004BCD0[arg1].unk1E, D_arcade_8004BCD0[arg1].unk1E, D_arcade_8004BCD0[arg1].unk1F, G_IM_FMT_RGBA, 
+        &D_arcade_8004AC00[D_global_asm_807444FC].sprite[arg1], arcade_objects[arg1].sprite, 0, 
+        arcade_objects[arg1].unk1E, arcade_objects[arg1].unk1E, arcade_objects[arg1].unk1F, G_IM_FMT_RGBA, 
         G_IM_SIZ_16b, 0, 0
     );
     sp4C = *arg0;
     func_global_asm_8070E8F0(&sp4C, &D_arcade_8004AC00[D_global_asm_807444FC].sprite[arg1]);
-    func_global_asm_8070F2C8(0x400, phi_f0, D_arcade_8004BCD0[arg1].unk1A & 1, D_arcade_8004BCD0[arg1].unk1B);
+    func_global_asm_8070F2C8(0x400, phi_f0, arcade_objects[arg1].unk1A & 1, arcade_objects[arg1].unk1B);
 
-    if (D_arcade_8004A338[D_arcade_8004BCD0[arg1].object_type] & 2) {
+    if (D_arcade_8004A338[arcade_objects[arg1].object_type] & 2) {
         func_global_asm_8070F2FC(&sp4C, 
-            (s32)(D_arcade_8004BCD0[arg1].x_position - (f32)D_arcade_8004A358[D_arcade_8004BCD0[arg1].object_type])*4, 
-            (s32)((D_arcade_8004BCD0[arg1].y_position - (f32)D_arcade_8004A378[D_arcade_8004BCD0[arg1].object_type])*0.875 + 8)*4);
+            (s32)(arcade_objects[arg1].x_position - (f32)D_arcade_8004A358[arcade_objects[arg1].object_type])*4, 
+            (s32)((arcade_objects[arg1].y_position - (f32)D_arcade_8004A378[arcade_objects[arg1].object_type])*0.875 + 8)*4);
     } else {//L8002B1AC
-        if (D_arcade_8004BCD0[arg1].object_type == 2) {
-            tmp_v0 = (s32)D_arcade_8004BCD0[arg1].unk10;
+        if (arcade_objects[arg1].object_type == 2) {
+            tmp_v0 = (s32)arcade_objects[arg1].unk10;
             if (tmp_v0 > 2) {
                 tmp_v0 = 5 - tmp_v0;
             }
@@ -26917,8 +26917,8 @@ void func_arcade_8002AFA4(Gfx **arg0, s32 arg1) {
             tmp_v0 = 0;
         }
         func_global_asm_8070F2FC(&sp4C, 
-            (s32)(D_arcade_8004BCD0[arg1].x_position - D_arcade_8004A358[D_arcade_8004BCD0[arg1].object_type])*4, 
-            (s32)(4*((D_arcade_8004BCD0[arg1].y_position - tmp_v0 - D_arcade_8004A378[D_arcade_8004BCD0[arg1].object_type])*0.875 + 8.0)));
+            (s32)(arcade_objects[arg1].x_position - D_arcade_8004A358[arcade_objects[arg1].object_type])*4, 
+            (s32)(4*((arcade_objects[arg1].y_position - tmp_v0 - D_arcade_8004A378[arcade_objects[arg1].object_type])*0.875 + 8.0)));
     }//L8002B2A4
     *arg0 = sp4C;
 }
@@ -26929,8 +26929,8 @@ void func_arcade_8002B2C0(Gfx **arg0) {
 
     sp38 = *arg0;
     for (i = 0; i < 0x50; i++) {
-        if ((D_arcade_8004BCD0[i].object_type != 0) && (D_arcade_8004BCD0[i].unk14 != 0)) {
-            if ((D_arcade_8004BCD0[i].object_type >= 8) || (arcade_game_state < 2)) {
+        if ((arcade_objects[i].object_type != 0) && (arcade_objects[i].sprite != 0)) {
+            if ((arcade_objects[i].object_type >= 8) || (arcade_game_state < 2)) {
                 func_arcade_8002AFA4(&sp38, i);
             }
         }
@@ -27395,7 +27395,7 @@ void func_arcade_8002B89C(s32 arg0) {
 
 //arcade_barrel_update_sprite
 void func_arcade_8002CBD8(s32 arg0) {
-    ArcadeStruct1 *v0 = D_arcade_8004BCD0 + arg0;
+    ArcadeStruct1 *v0 = arcade_objects + arg0;
     s32 v1 = v0->unk10;
 
     if (v0->unk19 == 5 
@@ -27405,19 +27405,19 @@ void func_arcade_8002CBD8(s32 arg0) {
         if (v0->unk1D) { //blue barrel
             switch (v1 & 1) {
                 case 0:
-                    v0->unk14 = &D_arcade_80035AE0;
+                    v0->sprite = &D_arcade_80035AE0;
                     break;
                 case 1:
-                    v0->unk14 = &D_arcade_80035CE8;
+                    v0->sprite = &D_arcade_80035CE8;
                     break;
             }
         } else { //red barrel
             switch (v1 & 1) {
                 case 0:
-                    v0->unk14 = &D_arcade_80035650;
+                    v0->sprite = &D_arcade_80035650;
                     break;
                 case 1:
-                    v0->unk14 = &D_arcade_80035898;
+                    v0->sprite = &D_arcade_80035898;
                     break;
             }
         }
@@ -27425,31 +27425,31 @@ void func_arcade_8002CBD8(s32 arg0) {
         if (v0->unk1D) {
             switch (v1 & 3) { //blue barrel
                 case 0:
-                    v0->unk14 = &D_arcade_80035448;
+                    v0->sprite = &D_arcade_80035448;
                     break;
                 case 1:
-                    v0->unk14 = &D_arcade_80035240;
+                    v0->sprite = &D_arcade_80035240;
                     break;
                 case 2:
-                    v0->unk14 = &D_arcade_80035038;
+                    v0->sprite = &D_arcade_80035038;
                     break;
                 case 3:
-                    v0->unk14 = &D_arcade_80034E30;
+                    v0->sprite = &D_arcade_80034E30;
                     break;
             }
         } else {
             switch (v1 & 3) { //red barrel
                 case 0:
-                    v0->unk14 = &D_arcade_80034C28;
+                    v0->sprite = &D_arcade_80034C28;
                     break;
                 case 1:
-                    v0->unk14 = &D_arcade_80034A20;
+                    v0->sprite = &D_arcade_80034A20;
                     break;
                 case 2:
-                    v0->unk14 = &D_arcade_80034818;
+                    v0->sprite = &D_arcade_80034818;
                     break;
                 case 3:
-                    v0->unk14 = &D_arcade_80034610;
+                    v0->sprite = &D_arcade_80034610;
                     break;
             }
         }
@@ -27658,58 +27658,58 @@ void func_arcade_8002E3D4(s32 arg0) {
     s32 newFlameIndex;
 
     if (arcade_game_state == 0) {
-        D_arcade_8004BCD0[arg0].unk1C--;
-        if (D_arcade_8004BCD0[arg0].unk1C >= 0x15) {
-            D_arcade_8004BCD0[arg0].unk1C = arcade_cycle_rng() & 0xF;
-            D_arcade_8004BCD0[arg0].unk1D = !(D_arcade_8004BCD0[arg0].unk1D);
+        arcade_objects[arg0].unk1C--;
+        if (arcade_objects[arg0].unk1C >= 0x15) {
+            arcade_objects[arg0].unk1C = arcade_cycle_rng() & 0xF;
+            arcade_objects[arg0].unk1D = !(arcade_objects[arg0].unk1D);
         }
-        switch (D_arcade_8004BCD0[arg0].unk19) {
+        switch (arcade_objects[arg0].unk19) {
             case 2:
-                switch (D_arcade_8004BCD0[arg0].unk1D) {
+                switch (arcade_objects[arg0].unk1D) {
                     case 0:
-                        D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80032228;
+                        arcade_objects[arg0].sprite = &D_arcade_80032228;
                         break;
                     case 1:
-                        D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80032470;
+                        arcade_objects[arg0].sprite = &D_arcade_80032470;
                         break;
                 }
                 newFlameIndex = func_arcade_800246C8(D_arcade_8004A76C, 5.0f);
                 if (arcade_background_visual == 4) {
-                    if (D_arcade_8004BCD0[arg0].unk10++ == (0x64 - (newFlameIndex * 0x14))) {
+                    if (arcade_objects[arg0].unk10++ == (0x64 - (newFlameIndex * 0x14))) {
                         if (arcade_get_object_type_count(2) < newFlameIndex) {
-                            D_arcade_8004BCD0[arg0].unk19 = 3;
-                            D_arcade_8004BCD0[arg0].unk10 = 0.0f;
+                            arcade_objects[arg0].unk19 = 3;
+                            arcade_objects[arg0].unk10 = 0.0f;
                         }
                     }
                 }
                 break;
             case 3:
-                if (D_arcade_8004BCD0[arg0].unk10++ > 40.0f) {
-                    D_arcade_8004BCD0[arg0].unk19 = 2;
-                    D_arcade_8004BCD0[arg0].unk10 = 0;
+                if (arcade_objects[arg0].unk10++ > 40.0f) {
+                    arcade_objects[arg0].unk19 = 2;
+                    arcade_objects[arg0].unk10 = 0;
                     newFlameIndex = func_arcade_80024828();
-                    D_arcade_8004BCD0[newFlameIndex] = arcade_flame_enemy_obj_template;
-                    D_arcade_8004BCD0[newFlameIndex].unk19 = 3;
-                    D_arcade_8004BCD0[newFlameIndex].y_velocity = -1;
+                    arcade_objects[newFlameIndex] = arcade_flame_enemy_obj_template;
+                    arcade_objects[newFlameIndex].unk19 = 3;
+                    arcade_objects[newFlameIndex].y_velocity = -1;
                     if (arcade_background_visual == 1) {
-                        D_arcade_8004BCD0[newFlameIndex].x_velocity = 0.4f;
+                        arcade_objects[newFlameIndex].x_velocity = 0.4f;
                     } else {
-                        if (D_arcade_8004BCD0[D_arcade_8004C71F].x_position < 160) {
-                            D_arcade_8004BCD0[newFlameIndex].x_velocity = -0.5f;
+                        if (arcade_objects[arcade_jumpman_slot].x_position < 160) {
+                            arcade_objects[newFlameIndex].x_velocity = -0.5f;
                         } else {
-                            D_arcade_8004BCD0[newFlameIndex].x_velocity = 0.5f;
+                            arcade_objects[newFlameIndex].x_velocity = 0.5f;
                         }
-                        D_arcade_8004BCD0[newFlameIndex].unk1A = 0;
-                        D_arcade_8004BCD0[newFlameIndex].x_position = 160;
-                        D_arcade_8004BCD0[newFlameIndex].y_position = 135;
+                        arcade_objects[newFlameIndex].unk1A = 0;
+                        arcade_objects[newFlameIndex].x_position = 160;
+                        arcade_objects[newFlameIndex].y_position = 135;
                     }
                 }
-                switch (D_arcade_8004BCD0[arg0].unk1D) {
+                switch (arcade_objects[arg0].unk1D) {
                     case 0:
-                        D_arcade_8004BCD0[arg0].unk14 = &D_arcade_800326B8;
+                        arcade_objects[arg0].sprite = &D_arcade_800326B8;
                         break;
                     case 1:
-                        D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80032900;
+                        arcade_objects[arg0].sprite = &D_arcade_80032900;
                         break;
                 }
                 break;
@@ -27718,10 +27718,10 @@ void func_arcade_8002E3D4(s32 arg0) {
 }
 
 void arcade_pauline_top_update(s32 arg0) {
-    ArcadeStruct1 *pauline = & D_arcade_8004BCD0[arg0];
+    ArcadeStruct1 *pauline = & arcade_objects[arg0];
     s32 tmp_v1 = 2;
     if (arcade_background_visual == tmp_v1) {
-        pauline->unk1A = (D_arcade_8004BCD0[D_arcade_8004C71F].x_position < 160.0f);
+        pauline->unk1A = (arcade_objects[arcade_jumpman_slot].x_position < 160.0f);
         pauline->x_position = 152.0f;
         if (D_arcade_8004C708 == tmp_v1) {
             pauline->unk1A = 0;
@@ -27729,17 +27729,17 @@ void arcade_pauline_top_update(s32 arg0) {
         }
     }//L8002E764
     if (!D_arcade_8004C721) {
-        pauline->unk14 = NULL;
+        pauline->sprite = NULL;
         return;
     }
-    pauline->unk14 = &D_arcade_8003E438;
+    pauline->sprite = &D_arcade_8003E438;
 }
 
 void arcade_pauline_bottom_update(s32 arg0) {
-    ArcadeStruct1 *pauline = & D_arcade_8004BCD0[arg0];
+    ArcadeStruct1 *pauline = & arcade_objects[arg0];
     s32 tmp_v1 = 2;
     if (arcade_background_visual == tmp_v1) {
-        pauline->unk1A = (D_arcade_8004BCD0[D_arcade_8004C71F].x_position < 160.0f);
+        pauline->unk1A = (arcade_objects[arcade_jumpman_slot].x_position < 160.0f);
         pauline->x_position = 152.0f;
         if (D_arcade_8004C708 == tmp_v1) {
             pauline->unk1A = 0;
@@ -27747,42 +27747,42 @@ void arcade_pauline_bottom_update(s32 arg0) {
         }
     }//L8002E818
     if (!D_arcade_8004C721) {
-        pauline->unk14 = NULL;
+        pauline->sprite = NULL;
         return;
     }
-    if (pauline->unk14 == NULL)
-        pauline->unk14 = &D_arcade_8003DB18;
+    if (pauline->sprite == NULL)
+        pauline->sprite = &D_arcade_8003DB18;
 
     if (arcade_game_state == 0) {
         tmp_v1 = pauline->unk1C++ & 0xC8;
         if (tmp_v1 || D_arcade_8004C724 == 1) {
-            pauline->unk14 = &D_arcade_8003DB18;
+            pauline->sprite = &D_arcade_8003DB18;
         }
         else {
-            pauline->unk14 = &D_arcade_8003DD60;
+            pauline->sprite = &D_arcade_8003DD60;
         }
     }
 }
 
 void arcade_nintendo_coin_update(s32 arg0) {
-    D_arcade_8004BCD0[arg0].unk14 = &D_arcade_8003AE58;
+    arcade_objects[arg0].sprite = &D_arcade_8003AE58;
     if (D_arcade_8004C721) {
-        D_arcade_8004BCD0[arg0].y_position = D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].y_position - 8.0f;
-        D_arcade_8004BCD0[arg0].x_position = D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].x_position;
+        arcade_objects[arg0].y_position = arcade_objects[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].y_position - 8.0f;
+        arcade_objects[arg0].x_position = arcade_objects[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].x_position;
     }//L8002E924
     else {
-        if (D_arcade_8004BCD0[arg0 - 1].unk14 == NULL) {
-            D_arcade_8004BCD0[arg0].unk14 = NULL;
+        if (arcade_objects[arg0 - 1].sprite == NULL) {
+            arcade_objects[arg0].sprite = NULL;
         }
-        D_arcade_8004BCD0[arg0].y_position = D_arcade_8004BCD0[arg0 - 1].y_position + 20.0f;
-        D_arcade_8004BCD0[arg0].x_position = D_arcade_8004BCD0[arg0 - 1].x_position + 30.0f;
+        arcade_objects[arg0].y_position = arcade_objects[arg0 - 1].y_position + 20.0f;
+        arcade_objects[arg0].x_position = arcade_objects[arg0 - 1].x_position + 30.0f;
     }
-    D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].unk14 = NULL;
-    D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1B_PAULINE_TOP)].unk14 = NULL;
+    arcade_objects[arcade_get_first_object_of_type(ARCADE_OBJ_1A_PAULINE_BOTTOM)].sprite = NULL;
+    arcade_objects[arcade_get_first_object_of_type(ARCADE_OBJ_1B_PAULINE_TOP)].sprite = NULL;
     if (arcade_get_first_object_of_type(ARCADE_OBJ_1D_HELP_TEXT) >= 0) {
-        if ((u32) D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1D_HELP_TEXT)].unk14 != (u32)&D_arcade_800389D0)
+        if ((u32) arcade_objects[arcade_get_first_object_of_type(ARCADE_OBJ_1D_HELP_TEXT)].sprite != (u32)&D_arcade_800389D0)
         {
-            D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_1D_HELP_TEXT)].unk14 = NULL;
+            arcade_objects[arcade_get_first_object_of_type(ARCADE_OBJ_1D_HELP_TEXT)].sprite = NULL;
         }
     }
 }
@@ -27792,51 +27792,51 @@ void arcade_help_text_update(s32 arg0) {
     s32 tmp_v0 = 0x10;
 
     if (arcade_background_visual == tmp_a3) {
-        D_arcade_8004BCD0[arg0].x_position = 0x80 + 0x28 * (160.0f <= D_arcade_8004BCD0[D_arcade_8004C71F].x_position);
+        arcade_objects[arg0].x_position = 0x80 + 0x28 * (160.0f <= arcade_objects[arcade_jumpman_slot].x_position);
         if (D_arcade_8004C708 == tmp_a3) {
-            D_arcade_8004BCD0[arg0].y_position = 63.0f;
-            D_arcade_8004BCD0[arg0].unk1A = 0;
+            arcade_objects[arg0].y_position = 63.0f;
+            arcade_objects[arg0].unk1A = 0;
         }
     }//L8002EA68
 
     if (arcade_game_state == 3) {
         if (D_arcade_8004C721 == 0)
-            D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80038BD8;
+            arcade_objects[arg0].sprite = &D_arcade_80038BD8;
         else
-            D_arcade_8004BCD0[arg0].unk14 = &D_arcade_800389D0;
-        D_arcade_8004BCD0[arg0].unk1F = D_arcade_8004BCD0[arg0].unk1E = tmp_v0;
+            arcade_objects[arg0].sprite = &D_arcade_800389D0;
+        arcade_objects[arg0].unk1F = arcade_objects[arg0].unk1E = tmp_v0;
     }//L8002EAC8
     else if (!D_arcade_8004C721) {
-        D_arcade_8004BCD0[arg0].unk14 = NULL;
+        arcade_objects[arg0].sprite = NULL;
     }
     else if (arcade_game_state == 0) {
-        if (!(D_arcade_8004BCD0[arg0].unk1C++ & 0xC0)) {
+        if (!(arcade_objects[arg0].unk1C++ & 0xC0)) {
             if (arcade_background_visual == tmp_a3 || arcade_background_visual == 4)
-                D_arcade_8004BCD0[arg0].unk14 = &D_arcade_8003E868;
+                arcade_objects[arg0].sprite = &D_arcade_8003E868;
             else
-                D_arcade_8004BCD0[arg0].unk14 = &D_arcade_8003E680;
+                arcade_objects[arg0].sprite = &D_arcade_8003E680;
         }
         else {
-                D_arcade_8004BCD0[arg0].unk14 = NULL;
+                arcade_objects[arg0].sprite = NULL;
         }
     }//L8002EB38
 }
 
 void arcade_pulley_update(s32 arg0) {
     if (arcade_game_state == 0) {
-        D_arcade_8004BCD0[arg0].unk1D += D_arcade_8004A308[D_arcade_8004BCD0[arg0].unk1C];
-        if (D_arcade_8004BCD0[arg0].unk1D < 0) {
-            D_arcade_8004BCD0[arg0].unk1D += 0x2EE00;
+        arcade_objects[arg0].unk1D += D_arcade_8004A308[arcade_objects[arg0].unk1C];
+        if (arcade_objects[arg0].unk1D < 0) {
+            arcade_objects[arg0].unk1D += 0x2EE00;
         }
-        switch ((D_arcade_8004BCD0[arg0].unk1D / 8) % 3) {
+        switch ((arcade_objects[arg0].unk1D / 8) % 3) {
             case 0:
-                D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80037B98;
+                arcade_objects[arg0].sprite = &D_arcade_80037B98;
                 break;
             case 1:
-                D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80037DA0;
+                arcade_objects[arg0].sprite = &D_arcade_80037DA0;
                 break;
             case 2:
-                D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80037FA8;
+                arcade_objects[arg0].sprite = &D_arcade_80037FA8;
                 break;
             default:
                 break;
@@ -27854,42 +27854,42 @@ void arcade_dk_title_update(s32 arg0) {
     }
     if (phi_v1 >= 0x3C) {
         if (phi_v1 >= 0x169) {
-            D_arcade_8004BCD0[arg0].y_velocity += 0.05;
-            D_arcade_8004BCD0[arg0].y_position += D_arcade_8004BCD0[arg0].y_velocity;
-            D_arcade_8004BCD0[arg0].x_position += D_arcade_8004BCD0[arg0].x_velocity;
-            if ((D_arcade_8004BCD0[arg0].y_velocity > 0.0f) && (D_arcade_8004BCD0[arg0].y_position >= 38.0f)) {
+            arcade_objects[arg0].y_velocity += 0.05;
+            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+            arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+            if ((arcade_objects[arg0].y_velocity > 0.0f) && (arcade_objects[arg0].y_position >= 38.0f)) {
                 D_arcade_8004C721 = 1;
-                D_arcade_8004BCD0[arg0].y_position = 38.0f;
+                arcade_objects[arg0].y_position = 38.0f;
                 if (phi_v1 == 0x26C) {
                     func_global_asm_80737638(D_global_asm_8076D1F8, SFX_53_ARCADE_DK_GRUNT, 0x7FFF, 0x3F, 1.0f, 0, 0);
-                    D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80041508;
+                    arcade_objects[arg0].sprite = &D_arcade_80041508;
                     phi_v1 = D_arcade_8004C6DC;
                 }
                 if ((phi_v1 == 0x2D0) || (phi_v1 < 0x26C)) {
-                    D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80040540;
+                    arcade_objects[arg0].sprite = &D_arcade_80040540;
                 }
-                if (0.06 < D_arcade_8004BCD0[arg0].y_velocity) {
+                if (0.06 < arcade_objects[arg0].y_velocity) {
                     D_arcade_8004C708 = (s32) (D_arcade_8004C708 + 1);
                     func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFF, 0x3F, 1.0f, 0, 0);
                 }
-                if ((D_arcade_8004BCD0[arg0].x_position > 74.0f) && !(D_arcade_8004C6DC < 0x1A5)) {
-                    D_arcade_8004BCD0[arg0].x_velocity = -0.5f;
-                    D_arcade_8004BCD0[arg0].y_velocity = -0.81f;
+                if ((arcade_objects[arg0].x_position > 74.0f) && !(D_arcade_8004C6DC < 0x1A5)) {
+                    arcade_objects[arg0].x_velocity = -0.5f;
+                    arcade_objects[arg0].y_velocity = -0.81f;
                 }
                 else {
-                    D_arcade_8004BCD0[arg0].x_velocity = 0.0f;
-                    D_arcade_8004BCD0[arg0].y_velocity = 0.0f;
+                    arcade_objects[arg0].x_velocity = 0.0f;
+                    arcade_objects[arg0].y_velocity = 0.0f;
                 }
             }
         } else {
-            if (D_arcade_8004BCD0[arg0].y_position > 74.0f) {
-                D_arcade_8004BCD0[arg0].y_velocity = -2.0f;
-                D_arcade_8004BCD0[arg0].x_velocity = 0.0f;
-                D_arcade_8004BCD0[arg0].y_position = (f32) (0xC5 - ((s32) (phi_v1 - 0x3C) / 2));
+            if (arcade_objects[arg0].y_position > 74.0f) {
+                arcade_objects[arg0].y_velocity = -2.0f;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_position = (f32) (0xC5 - ((s32) (phi_v1 - 0x3C) / 2));
                 if ((phi_v1 & 8)) 
-                    D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80044460;
+                    arcade_objects[arg0].sprite = &D_arcade_80044460;
                 else
-                    D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80045428;
+                    arcade_objects[arg0].sprite = &D_arcade_80045428;
             }
         }
     }
@@ -28116,107 +28116,107 @@ void func_arcade_8002EEB8(s32 arg0) {
 void func_arcade_8002FE28(s32 arg0) {
     s32 temp;
     if (arcade_game_state == 0) {
-        D_arcade_8004BCD0[arg0].unk10 += 1.0f;
-        if (((u8)(s8)D_arcade_8004BCD0[arg0].unk10) < 0xA0) {
-            D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80040540;
+        arcade_objects[arg0].unk10 += 1.0f;
+        if (((u8)(s8)arcade_objects[arg0].unk10) < 0xA0) {
+            arcade_objects[arg0].sprite = &D_arcade_80040540;
         } else {
-            if (!((s32)D_arcade_8004BCD0[arg0].unk10 & 0x1F)) {
+            if (!((s32)arcade_objects[arg0].unk10 & 0x1F)) {
                 func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFF, 0x3F, 1.0f, 0, 0);
             }
-            D_arcade_8004BCD0[arg0].unk14 = &D_arcade_800424D0;
-            temp = ((s32)D_arcade_8004BCD0[arg0].unk10 & 0x20);
+            arcade_objects[arg0].sprite = &D_arcade_800424D0;
+            temp = ((s32)arcade_objects[arg0].unk10 & 0x20);
             temp /= 0x20;
-            D_arcade_8004BCD0[arg0].unk1A = temp == 0;
+            arcade_objects[arg0].unk1A = temp == 0;
         }
-        if (((s32) D_arcade_8004BCD0[arg0].unk10 % (0x72 - ((s32) func_arcade_800246C8(D_arcade_8004A76C, 4.0f) * 0xC))) == 0) {
-            D_arcade_8004C71E--;
+        if (((s32) arcade_objects[arg0].unk10 % (0x72 - ((s32) func_arcade_800246C8(D_arcade_8004A76C, 4.0f) * 0xC))) == 0) {
+            arcade_bonus_timer--;
             arg0 = arcade_get_first_empty_slot();
-            D_arcade_8004BCD0[arg0] = arcade_spring_obj_template;
-            D_arcade_8004BCD0[arg0].x_position = ((arcade_cycle_rng() & 0xF) - 0x1C);
-            D_arcade_8004BCD0[arg0].unk19 = 2;
+            arcade_objects[arg0] = arcade_spring_obj_template;
+            arcade_objects[arg0].x_position = ((arcade_cycle_rng() & 0xF) - 0x1C);
+            arcade_objects[arg0].unk19 = 2;
         }
     }
 }
 
 void arcade_dk_50m_update(s32 arg0) {
-    switch (D_arcade_8004BCD0[arg0].unk19) {
+    switch (arcade_objects[arg0].unk19) {
         case 2://L8003007C
             if (arcade_game_state != 0)
                 return;
 
             if ((D_arcade_8004C6DC % 0x78) == 0) {
-                D_arcade_8004C71E--;
+                arcade_bonus_timer--;
             }
 
-            if (204.0f < D_arcade_8004BCD0[arg0].x_position) {
-                D_arcade_8004BCD0[arg0].x_velocity = -1.0;
+            if (204.0f < arcade_objects[arg0].x_position) {
+                arcade_objects[arg0].x_velocity = -1.0;
             }
 
-            if (D_arcade_8004BCD0[arg0].x_position < 68.0f) {
-                D_arcade_8004BCD0[arg0].x_velocity = 1.0f;
+            if (arcade_objects[arg0].x_position < 68.0f) {
+                arcade_objects[arg0].x_velocity = 1.0f;
             }
 
-            D_arcade_8004BCD0[arg0].unk10++;
-            if (((s32)D_arcade_8004BCD0[arg0].unk10 & 0xff) < 0xA0) {
-                D_arcade_8004BCD0[arg0].unk14 = &D_arcade_80040540;
+            arcade_objects[arg0].unk10++;
+            if (((s32)arcade_objects[arg0].unk10 & 0xff) < 0xA0) {
+                arcade_objects[arg0].sprite = &D_arcade_80040540;
             }
             else {
-                D_arcade_8004BCD0[arg0].unk14 = &D_arcade_800424D0;
-                D_arcade_8004BCD0[arg0].unk1A = !(((s32)D_arcade_8004BCD0[arg0].unk10 & 0x20)/0x20);
+                arcade_objects[arg0].sprite = &D_arcade_800424D0;
+                arcade_objects[arg0].unk1A = !(((s32)arcade_objects[arg0].unk10 & 0x20)/0x20);
             }
             break;
         case 5://L80030170
-            if (100.0f < D_arcade_8004BCD0[arg0].x_position) {
-                D_arcade_8004BCD0[arg0].x_velocity = -1.0f;
+            if (100.0f < arcade_objects[arg0].x_position) {
+                arcade_objects[arg0].x_velocity = -1.0f;
             }
-            else if (D_arcade_8004BCD0[arg0].x_position < 100.0f) {
-                D_arcade_8004BCD0[arg0].x_velocity = 1.0f;
+            else if (arcade_objects[arg0].x_position < 100.0f) {
+                arcade_objects[arg0].x_velocity = 1.0f;
             }
             else {
-                D_arcade_8004BCD0[arg0].x_velocity = 0.0f;
-                D_arcade_8004BCD0[arg0].object_type = 0x16;
-                D_arcade_8004BCD0[arg0].unk10 = 41.0f;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].object_type = 0x16;
+                arcade_objects[arg0].unk10 = 41.0f;
             }
             break;
     }
     if ((D_arcade_8004C6DC & 1) == 0) {
-        D_arcade_8004A308[0] = D_arcade_8004BCD0[arg0].x_velocity;
-        D_arcade_8004BCD0[arg0].x_position += D_arcade_8004BCD0[arg0].x_velocity;
+        D_arcade_8004A308[0] = arcade_objects[arg0].x_velocity;
+        arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
     }
 }
 
 void arcade_points_text_update(s32 arg0) {
     s32 phi_v1;
 
-    if (D_arcade_8004BCD0[arg0].unk10 == 0.0f) {
+    if (arcade_objects[arg0].unk10 == 0.0f) {
         func_global_asm_80737638(D_global_asm_8076D1F8, SFX_45_ARCADE_POINTS, 0x7FFF, 0x3F, 1.0f, 0, 0);
     }
     phi_v1 = 0;
-    if (D_arcade_8004BCD0[arg0].unk10 > 40.0f) {
+    if (arcade_objects[arg0].unk10 > 40.0f) {
         phi_v1 = 1;
     }
-    D_arcade_8004BCD0[arg0].unk10++;
+    arcade_objects[arg0].unk10++;
     if (phi_v1) {
-        D_arcade_8004BCD0[arg0].object_type = 0;
+        arcade_objects[arg0].object_type = 0;
     }
 }
 
 void arcade_bonus_item_update(s32 arg0) {
-    if ((D_arcade_8004BCD0[arg0].x_position == (s32) D_arcade_8004BCD0[D_arcade_8004C71F].x_position) 
-         && (D_arcade_8004BCD0[arg0].y_position == (s32) D_arcade_8004BCD0[D_arcade_8004C71F].y_position)
+    if ((arcade_objects[arg0].x_position == (s32) arcade_objects[arcade_jumpman_slot].x_position) 
+         && (arcade_objects[arg0].y_position == (s32) arcade_objects[arcade_jumpman_slot].y_position)
     ) {
-        D_arcade_8004BCD0[arg0].object_type = ARCADE_OBJ_14_POINTS_TEXT;
+        arcade_objects[arg0].object_type = ARCADE_OBJ_14_POINTS_TEXT;
         if (D_arcade_8004A76C == 1) {
-            D_arcade_8004BCD0[arg0].unk14 = &D_arcade_800383B8;
+            arcade_objects[arg0].sprite = &D_arcade_800383B8;
             arcade_add_points_to_score(300);
             return;
         }
         if (D_arcade_8004A76C == 2) {
-            D_arcade_8004BCD0[arg0].unk14 = &D_arcade_800385C0;
+            arcade_objects[arg0].sprite = &D_arcade_800385C0;
             arcade_add_points_to_score(500);
             return;
         }
-        D_arcade_8004BCD0[arg0].unk14 = &D_arcade_800387C8;
+        arcade_objects[arg0].sprite = &D_arcade_800387C8;
         arcade_add_points_to_score(800);
     }
 }
@@ -28228,15 +28228,15 @@ void arcade_hammer_update(u8 arg0) {
     
     if (arcade_game_state != 0)
         return;
-    s2 = &D_arcade_8004BCD0[arg0];
+    s2 = &arcade_objects[arg0];
     switch (s2->unk19) {
         case 0: //L80030418
         {
-            v1 = &D_arcade_8004BCD0[D_arcade_8004C71F];
+            v1 = &arcade_objects[arcade_jumpman_slot];
             if (s2->x_position - v1->x_position < 8.0f && -8.0f < s2->x_position - v1->x_position ) {
                 if (s2->y_position - v1->y_position < 8.0f && -8.0f < s2->y_position - v1->y_position ) {
                     arcade_play_sfx(SFX_49_ARCADE_HAMMER_MUSIC);
-                    D_arcade_8004C710 = 0x258;
+                    arcade_hammer_timer = 0x258;
                     s2->unk19 = 2;
                 }
             }
@@ -28244,22 +28244,22 @@ void arcade_hammer_update(u8 arg0) {
         }
         case 2: //L800304B0
         {
-            v1 = &D_arcade_8004BCD0[D_arcade_8004C71F];
+            v1 = &arcade_objects[arcade_jumpman_slot];
             s2->unk1A = v1->unk1A;
-            if ((D_arcade_8004C710 & 8) || v1->unk19 != 2) {
-                if (!(D_arcade_8004C710 < 0xf1) || D_arcade_8004C710 & 0x4)
-                    s2->unk14 = &D_arcade_800393F8;
+            if ((arcade_hammer_timer & 8) || v1->unk19 != 2) {
+                if (!(arcade_hammer_timer < 0xf1) || arcade_hammer_timer & 0x4)
+                    s2->sprite = &D_arcade_800393F8;
                 else
-                    s2->unk14 = &D_arcade_80039888;
+                    s2->sprite = &D_arcade_80039888;
                 
                 s2->x_position = v1->x_position;
                 s2->y_position = v1->y_position - 16.0f;
             }
             else {//L80030538
-                if (!(D_arcade_8004C710 < 0xf1) || D_arcade_8004C710 & 0x4)
-                    s2->unk14 = &D_arcade_80039640;
+                if (!(arcade_hammer_timer < 0xf1) || arcade_hammer_timer & 0x4)
+                    s2->sprite = &D_arcade_80039640;
                 else
-                    s2->unk14 = &D_arcade_80039AD0;
+                    s2->sprite = &D_arcade_80039AD0;
                 
                 if (s2->unk1A)
                     s2->x_position = v1->x_position + 15.0f;
@@ -28272,7 +28272,7 @@ void arcade_hammer_update(u8 arg0) {
                 ArcadeStruct1 *iPtr;
                 ArcadeStruct1 *v1;
 
-                iPtr = &D_arcade_8004BCD0[(u8)i];
+                iPtr = &arcade_objects[(u8)i];
                 
                 if ((iPtr->object_type == ARCADE_OBJ_01_BARREL) 
                     || (iPtr->object_type == ARCADE_OBJ_04_PIE) 
@@ -28282,7 +28282,7 @@ void arcade_hammer_update(u8 arg0) {
                         && __arcade_abs_w((s32)(iPtr->y_position - s2->y_position)) < 0x8
                     ) {
                         func_global_asm_80737638(D_global_asm_8076D1F8, SFX_4B_ARCADE_HAMMER_ATTACK, 0x7fff, 0x3f, 1.0f, 0, 0);
-                        v1 = &D_arcade_8004BCD0[(u8)func_arcade_800247F0()];
+                        v1 = &arcade_objects[(u8)func_arcade_800247F0()];
                         *v1 = arcade_bonus_item_obj_template;
                         v1->object_type = ARCADE_OBJ_07_HAMMER_PARTICLES;
                         v1->unk1D = iPtr->object_type;
@@ -28293,7 +28293,7 @@ void arcade_hammer_update(u8 arg0) {
                     }
                 }
             }
-            if (D_arcade_8004C710-- == 1) {
+            if (arcade_hammer_timer-- == 1) {
                 s2->object_type = 0; //destroy hammer
                 arcade_play_sfx(SFX_0_SILENCE); //play_sfx
                 func_arcade_80025240(); //queue_background_music
@@ -28306,18 +28306,18 @@ void arcade_hammer_update(u8 arg0) {
 void func_arcade_80030734(u8 arg0) {
     u8 temp_a0;
     u8 temp_v0;
-    ArcadeStruct1 *temp_s0 = &D_arcade_8004BCD0[arg0];
+    ArcadeStruct1 *temp_s0 = &arcade_objects[arg0];
 
     if (temp_s0->unk1C >= 0x37) {
-        temp_s0->unk14 = &D_arcade_8003A3F0;
+        temp_s0->sprite = &D_arcade_8003A3F0;
     } else {
         temp_a0 = temp_s0->unk1C / 6 % 3;
         if (temp_a0 == 0) {
-            temp_s0->unk14 = &D_arcade_80039D18;
+            temp_s0->sprite = &D_arcade_80039D18;
         } else if (temp_a0 == 1) {
-            temp_s0->unk14 = &D_arcade_80039F60;
+            temp_s0->sprite = &D_arcade_80039F60;
         } else {
-            temp_s0->unk14 = &D_arcade_8003A1A8;
+            temp_s0->sprite = &D_arcade_8003A1A8;
         }
     }
 
@@ -28326,13 +28326,13 @@ void func_arcade_80030734(u8 arg0) {
         temp_v0 = arcade_cycle_rng() & 3;
     
         if ((temp_s0->unk1D == 2) && (temp_v0 == 0)) {
-            temp_s0->unk14 = &D_arcade_800387C8;
+            temp_s0->sprite = &D_arcade_800387C8;
             arcade_add_points_to_score(800);
         } else if ((temp_s0->unk1D == 2) && (temp_v0 == 1)) {
-            temp_s0->unk14 = &D_arcade_800385C0;
+            temp_s0->sprite = &D_arcade_800385C0;
             arcade_add_points_to_score(500);
         } else {
-            temp_s0->unk14 = &D_arcade_800383B8;
+            temp_s0->sprite = &D_arcade_800383B8;
             arcade_add_points_to_score(300);
         }
         temp_s0->unk10 = 0.0f;
@@ -28343,21 +28343,21 @@ void func_arcade_80030734(u8 arg0) {
 void arcade_rivet_update(u8 arg0) {
     u8 temp_t6;
 
-    if (D_arcade_8004BCD0[arg0].x_position == (s32) D_arcade_8004BCD0[D_arcade_8004C71F].x_position
-        && (D_arcade_8004BCD0[arg0].y_position - D_arcade_8004BCD0[D_arcade_8004C71F].y_position < 20.0f) 
-        && (D_arcade_8004BCD0[arg0].y_position - D_arcade_8004BCD0[D_arcade_8004C71F].y_position > -2.0f)
+    if (arcade_objects[arg0].x_position == (s32) arcade_objects[arcade_jumpman_slot].x_position
+        && (arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position < 20.0f) 
+        && (arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position > -2.0f)
     ) {
-        D_arcade_8004BCD0[arg0].unk1D = 1;
+        arcade_objects[arg0].unk1D = 1;
     }
-    else if (D_arcade_8004BCD0[arg0].unk1D) {
-        D_arcade_8004BCD0[arg0].object_type = 0;
-        D_arcade_8004C718 = D_arcade_8004C718 ^ D_arcade_8004BCD0[arg0].unk1C;
-        if (D_arcade_8004C718) {
+    else if (arcade_objects[arg0].unk1D) {
+        arcade_objects[arg0].object_type = 0;
+        arcade_rivet_bitfield = arcade_rivet_bitfield ^ arcade_objects[arg0].unk1C;
+        if (arcade_rivet_bitfield) {
             temp_t6 = func_arcade_800247F0();
-            D_arcade_8004BCD0[temp_t6] = arcade_points_text_obj_template;
-            D_arcade_8004BCD0[temp_t6].x_position = D_arcade_8004BCD0[D_arcade_8004C71F].x_position;
-            D_arcade_8004BCD0[temp_t6].y_position = D_arcade_8004BCD0[D_arcade_8004C71F].y_position + 14.0f;
-            D_arcade_8004BCD0[temp_t6].unk10 = 0.0f;
+            arcade_objects[temp_t6] = arcade_points_text_obj_template;
+            arcade_objects[temp_t6].x_position = arcade_objects[arcade_jumpman_slot].x_position;
+            arcade_objects[temp_t6].y_position = arcade_objects[arcade_jumpman_slot].y_position + 14.0f;
+            arcade_objects[temp_t6].unk10 = 0.0f;
             
             arcade_add_points_to_score(100);
         }
@@ -28370,36 +28370,36 @@ void func_arcade_80030A04(u8 index) {
     if (arcade_game_state) {
         return;
     }
-    phi_f0 = --D_arcade_8004BCD0[index].unk10;
+    phi_f0 = --arcade_objects[index].unk10;
     if (phi_f0 < 0.0f) {
-        D_arcade_8004BCD0[index].unk10 = (arcade_cycle_rng() & 0x7F) + 0x1C2;
+        arcade_objects[index].unk10 = (arcade_cycle_rng() & 0x7F) + 0x1C2;
     }
-    if (D_arcade_8004BCD0[index].unk10 < 200.0f) {
+    if (arcade_objects[index].unk10 < 200.0f) {
         phi_f0 = 0.2f;
     } else {
         phi_f0 = -0.2f;
     }
-    D_arcade_8004BCD0[index].y_position += phi_f0;
-    if (D_arcade_8004BCD0[index].y_position < 97.0f) {
-        D_arcade_8004BCD0[index].y_position = 97.0f;
+    arcade_objects[index].y_position += phi_f0;
+    if (arcade_objects[index].y_position < 97.0f) {
+        arcade_objects[index].y_position = 97.0f;
     }
-    if (D_arcade_8004BCD0[index].y_position > 110.0f) {
-        D_arcade_8004BCD0[index].y_position = 110.0f;
+    if (arcade_objects[index].y_position > 110.0f) {
+        arcade_objects[index].y_position = 110.0f;
     }
 }
 
 void arcade_pie_update(u8 arg0) {
     if (arcade_game_state == 0) {
-        D_arcade_8004BCD0[arg0].x_position += D_arcade_8004A308[D_arcade_8004BCD0[arg0].unk1C];
-        if ((D_arcade_8004BCD0[arg0].x_position > 288.0f) 
-            || (D_arcade_8004BCD0[arg0].x_position < 32.0f)
-            || ((D_arcade_8004BCD0[arg0].x_position == 160.0f) && (D_arcade_8004BCD0[arg0].y_position == 127.0f)) 
+        arcade_objects[arg0].x_position += D_arcade_8004A308[arcade_objects[arg0].unk1C];
+        if ((arcade_objects[arg0].x_position > 288.0f) 
+            || (arcade_objects[arg0].x_position < 32.0f)
+            || ((arcade_objects[arg0].x_position == 160.0f) && (arcade_objects[arg0].y_position == 127.0f)) 
         ) {
-            D_arcade_8004BCD0[arg0].object_type = 0;
+            arcade_objects[arg0].object_type = 0;
         }
-        if ((__arcade_abs_w(D_arcade_8004BCD0[arg0].x_position - D_arcade_8004BCD0[D_arcade_8004C71F].x_position) < 0xC)
-            && (D_arcade_8004BCD0[arg0].y_position - D_arcade_8004BCD0[D_arcade_8004C71F].y_position < 4.0f) 
-            && (D_arcade_8004BCD0[arg0].y_position - D_arcade_8004BCD0[D_arcade_8004C71F].y_position > -8.0f)
+        if ((__arcade_abs_w(arcade_objects[arg0].x_position - arcade_objects[arcade_jumpman_slot].x_position) < 0xC)
+            && (arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position < 4.0f) 
+            && (arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position > -8.0f)
         ) {
             func_arcade_80027E8C();
         }
@@ -28408,8 +28408,8 @@ void arcade_pie_update(u8 arg0) {
 
 
 void func_arcade_80030C70(u8 arg0) {
-    if (!(D_arcade_8004BCD0[arcade_get_first_object_of_type(0x17)].unk10 > 460.0f)) {
-        D_arcade_8004BCD0[arg0].unk1A = (D_arcade_8004BCD0[arg0].unk1C++ / 8) & 1;
+    if (!(arcade_objects[arcade_get_first_object_of_type(0x17)].unk10 > 460.0f)) {
+        arcade_objects[arg0].unk1A = (arcade_objects[arg0].unk1C++ / 8) & 1;
     }
 }
 
@@ -28470,15 +28470,15 @@ void func_arcade_80030CEC(u8 arg0) {
 #endif
 
 void arcade_barrel_stack_update(u8 arg0) {
-    if (D_arcade_8004BCD0[arg0].unk1C >= D_arcade_8004C71E)
-        D_arcade_8004BCD0[arg0].object_type = 0;
+    if (arcade_objects[arg0].unk1C >= arcade_bonus_timer)
+        arcade_objects[arg0].object_type = 0;
 }
 
 //arcade update objects
 void func_arcade_80030FEC(void) {
     u8 i;
     for (i = 0; i < 0x50; i++) {
-        switch (D_arcade_8004BCD0[i].object_type) {
+        switch (arcade_objects[i].object_type) {
             case ARCADE_OBJ_01_BARREL: //80031030
                 func_arcade_8002CD64(i);
                 break;
@@ -28609,28 +28609,28 @@ void func_arcade_800313B8(void) {
         && arcade_get_object_type_count(ARCADE_OBJ_02_FLAME_ENEMY) < 5
     ) {
         sp1f = func_arcade_80024764();
-        D_arcade_8004BCD0[sp1f] = arcade_flame_enemy_obj_template;
-        D_arcade_8004BCD0[sp1f].unk1A = 0;
-        D_arcade_8004BCD0[sp1f].x_velocity = -0.5f;
-        D_arcade_8004BCD0[sp1f].x_position = 244.0f;
+        arcade_objects[sp1f] = arcade_flame_enemy_obj_template;
+        arcade_objects[sp1f].unk1A = 0;
+        arcade_objects[sp1f].x_velocity = -0.5f;
+        arcade_objects[sp1f].x_position = 244.0f;
         temp_v1 = arcade_cycle_rng() & 0x7;
         if (temp_v1 >= 4) {
             temp_v1 = 1;
         }
-        D_arcade_8004BCD0[sp1f].x_position = D_arcade_8004A318[2*temp_v1];
-        D_arcade_8004BCD0[sp1f].y_position = D_arcade_8004A318[2*temp_v1 + 1];
-        if (160.0f < D_arcade_8004BCD0[D_arcade_8004C71F].x_position) {
-            D_arcade_8004BCD0[sp1f].unk1A = 1 -  D_arcade_8004BCD0[sp1f].unk1A;
-            D_arcade_8004BCD0[sp1f].x_velocity = -D_arcade_8004BCD0[sp1f].x_velocity;
-            D_arcade_8004BCD0[sp1f].x_position = 320.0f - D_arcade_8004BCD0[sp1f].x_position;
+        arcade_objects[sp1f].x_position = D_arcade_8004A318[2*temp_v1];
+        arcade_objects[sp1f].y_position = D_arcade_8004A318[2*temp_v1 + 1];
+        if (160.0f < arcade_objects[arcade_jumpman_slot].x_position) {
+            arcade_objects[sp1f].unk1A = 1 -  arcade_objects[sp1f].unk1A;
+            arcade_objects[sp1f].x_velocity = -arcade_objects[sp1f].x_velocity;
+            arcade_objects[sp1f].x_position = 320.0f - arcade_objects[sp1f].x_position;
         }
     }//L80031534
-    if (!D_arcade_8004C718) {
+    if (!arcade_rivet_bitfield) {
         arcade_play_sfx(SFX_0_SILENCE);
-        D_arcade_8004C718 = 1;
+        arcade_rivet_bitfield = 1;
         D_arcade_8004C708 = t3;
         arcade_game_state = 2;
-        D_arcade_8004BCD0[arcade_get_first_object_of_type(ARCADE_OBJ_17_DK_100M)].unk19 = 8;
+        arcade_objects[arcade_get_first_object_of_type(ARCADE_OBJ_17_DK_100M)].unk19 = 8;
     }
 }
 
@@ -28690,7 +28690,7 @@ void func_arcade_8003159C(Gfx **arg0) {
         if (i == 3)
             arcade_set_text_rgba(0xFF, 0xFF, 0x00, 0xff);
         arcade_set_text_position(0x38, 0x8b + i*0x10);
-        if (i == D_arcade_8004BCD0[0].unk1C
+        if (i == arcade_objects[0].unk1C
             && D_arcade_8004C6DC & 0x20
             && D_arcade_8004C724 == 3
         ) {

@@ -51,7 +51,7 @@ typedef struct arcade_struct_1 {
         f32 unk10; // lifetime?
         s32 unk10_s32;
     };
-    s32 *unk14; // imageDataPointer
+    s32 *sprite; // imageDataPointer
     u8 object_type; // object_type
     u8 unk19; // state?
     u8 unk1A;
@@ -138,7 +138,7 @@ extern uSprite D_arcade_8004BB90[2];
 extern uSprite D_arcade_8004BBC0[2];
 extern uSprite D_arcade_8004BBF0[];
 extern f32 D_arcade_8004BC88[6][3];
-extern ArcadeStruct1 D_arcade_8004BCD0[0x50];
+extern ArcadeStruct1 arcade_objects[0x50];
 extern void *D_arcade_8004C6D0;
 extern s32 D_arcade_8004C6D4;
 extern s16 D_arcade_8004C6D6;
@@ -155,16 +155,16 @@ extern s32 D_arcade_8004C6FC;
 extern s32 D_arcade_8004C704;
 extern u32 D_arcade_8004C708;
 extern s32 D_arcade_8004C70C;
-extern s32 D_arcade_8004C710;
+extern s32 arcade_hammer_timer;
 extern s32 arcade_next_sfx; //0x8004C714
-extern u8  D_arcade_8004C718;
+extern u8  arcade_rivet_bitfield;
 extern u8  D_arcade_8004C719;
 extern u8  D_arcade_8004C71A;
 extern u8  arcade_lives_internal; //0x8004C71B
 extern u8  arcade_lives_visual;   //0x8004C71C
 extern u8  arcade_game_state; //0x8004C71D
-extern s8  D_arcade_8004C71E;
-extern u8  D_arcade_8004C71F; // Index into D_arcade_8004BCD0[], arcade_jumpman_slot?
+extern s8  arcade_bonus_timer;
+extern u8  arcade_jumpman_slot; // Index into D_arcade_8004BCD0[], arcade_jumpman_slot?
 extern u8  D_arcade_8004C720;
 extern u8 D_arcade_8004C721;
 extern u8  arcade_background_visual; //0x8004C722
