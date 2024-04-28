@@ -676,8 +676,150 @@ void func_menu_80027028(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagInde
     }
 }
 
-// Jumptable
+// Jumptable, very close, stack, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_800270E0.s")
+
+typedef struct {
+    s32 unk0;
+    s16 unk4; // Used
+    s16 unk6;
+    u8 unk8[0xB - 0x8];
+    s8 unkB; // Used
+    s8 unkC; // Used
+    s8 unkD;
+    s8 unkE;
+    s8 unkF;
+    s8 unk10;
+    s8 unk11; // Used
+} A178_800270E0;
+
+/*
+void func_menu_800270E0(void) {
+    s32 cutsceneIndex;
+    s32 count;
+    A178_800270E0 *a178;
+    s32 i;
+    CharacterProgress *characterProgress;
+    s32 sp1C;
+    s32 var_a3;
+
+    initializeCharacterSpawnerActor();
+    if (current_map == MAP_CRANKYS_LAB) {
+        a178 = current_actor_pointer->unk178;
+        characterProgress = &D_global_asm_807FC950->character_progress[current_character_index[0]];
+        if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+            if (isFlagSet(0x180, FLAG_TYPE_PERMANENT)) {
+                current_actor_pointer->control_state_progress = 0;
+            } else {
+                current_actor_pointer->control_state_progress = 0xFF;
+            }
+        }
+        if (current_actor_pointer->control_state_progress != 0xFF) {
+            sp1C = 0x17F;
+            if (getLevelIndex(D_global_asm_8076A0AB, 0) != 7) {
+                sp1C = 0x177;
+            }
+            if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+                var_a3 = 0x26E;
+                if (func_menu_800266F0(a178, characterProgress, sp1C)) {
+                    var_a3 = 0x26F;
+                }
+                playActorAnimation(current_actor_pointer, var_a3);
+            }
+            func_menu_80027028(a178, characterProgress, sp1C);
+        } else {
+            if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+                a178->unkC = 7;
+                if (!isFlagSet(0x17F, FLAG_TYPE_PERMANENT)) {
+                    playActorAnimation(current_actor_pointer, 0x26E);
+                    playCutscene(NULL, 5, 1);
+                    current_actor_pointer->control_state = 0;
+                    setFlag(0x64, TRUE, FLAG_TYPE_TEMPORARY);
+                } else {
+                    count = 0;
+                    for (i = 0; i != 4; i++) {
+                        count += isFlagSet(i + 0x182, FLAG_TYPE_PERMANENT) != 0;
+                    }
+                    if (count != 4) {
+                        cutsceneIndex = 0;
+                        current_actor_pointer->control_state = 3;
+                    } else {
+                        cutsceneIndex = 6;
+                        current_actor_pointer->control_state = 4;
+                        a178->unkB = 1;
+                        a178->unk4 = 0;
+                        a178->unk11 = 1;
+                        func_menu_80025E04(a178, characterProgress);
+                        setFlag(0x180, TRUE, FLAG_TYPE_PERMANENT);
+                    }
+                    func_global_asm_806F397C(player_pointer, current_actor_pointer, 0, 0x1B);
+                    playCutscene(NULL, cutsceneIndex, 1);
+                    func_global_asm_80629174();
+                    playActorAnimation(current_actor_pointer, 0x26E);
+                }
+            }
+            switch (current_actor_pointer->control_state) {
+                case 0:
+                    if (func_global_asm_80629148()) {
+                        loadText(current_actor_pointer, 8, 0x1C);
+                        current_actor_pointer->control_state = 1;
+                    }
+                    break;
+                case 1:
+                    if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+                        func_global_asm_806CFF9C(player_pointer);
+                        func_global_asm_80629174();
+                        playCutscene(NULL, 1, 1);
+                        func_global_asm_805FF898();
+                        current_actor_pointer->control_state = 2;
+                    }
+                    break;
+                case 3:
+                    if (func_global_asm_80629148()) {
+                        loadText(current_actor_pointer, 8, 0x1D);
+                        current_actor_pointer->control_state = 1;
+                    }
+                    break;
+                case 4:
+                    if (func_global_asm_80629148()) {
+                        loadText(current_actor_pointer, 8, 0x1E);
+                        current_actor_pointer->control_state = 5;
+                    }
+                    break;
+                case 5:
+                    if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+                        func_global_asm_8061CB08(current_actor_pointer);
+                        current_actor_pointer->control_state = 6;
+                    }
+                    break;
+                case 6:
+                    if (func_global_asm_80629148()) {
+                        setAction(0x52, NULL, 0);
+                        global_properties_bitfield &= 0xFFFEFFCF;
+                        character_change_array->player_pointer->object_properties_bitfield |= 0x40000000;
+                        current_actor_pointer->control_state = 7;
+                        func_global_asm_80629174();
+                        playCutscene(character_change_array->player_pointer, 2, 1);
+                    }
+                    break;
+                case 7:
+                    if (func_global_asm_80629148()) {
+                        global_properties_bitfield |= 0x10030;
+                        D_global_asm_80750AC8 = 0xF;
+                        loadText(current_actor_pointer, 8, 0x1F);
+                        current_actor_pointer->control_state = 1;
+                    }
+                    break;
+            }
+        }
+    }
+    if (current_actor_pointer->object_properties_bitfield & 0x10000000) {
+        initializeCharacterSpawnerActor();
+        func_global_asm_806BFBF4();
+    }
+    renderActor(current_actor_pointer, 0);
+}
+*/
 
 s32 func_menu_800275EC(s32 arg0) {
     return arg0 + 0x21F44F;

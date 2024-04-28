@@ -2,8 +2,11 @@
 #include "functions.h"
 #include "arcade_int.h"
 
-/*
-Data section - causes issues with 4A30C/4A310/4A314
+extern s32 D_arcade_8004A30C;
+extern s32 D_arcade_8004A310;
+extern s32 D_arcade_8004A314;
+
+// Data section - causes issues with 4A30C/4A310/4A314
 u32 D_arcade_80032220[] = {
 	0xDF000000,
 	0x00000000,
@@ -25001,62 +25004,24 @@ ArcadeStruct1 arcade_100m_complete_particle_obj_template = { 160.0f, 214.0f, 0.0
 ArcadeStruct1 arcade_barrel_stack_obj_template           = {  58.0f,  83.0f, 0.0f,  0.0f, 0.0f, &D_arcade_80037130, ARCADE_OBJ_0A_BARREL_STACK, 0, 0, 0, 0, 0, 0x10, 0x10};
 u32 D_arcade_8004A738 = 1;
 u8 D_arcade_8004A73C = 0x00;
-u8 D_arcade_8004A73D[] = {0, 0, 0};
 u8 D_arcade_8004A740 = 0;
-u8 D_arcade_8004A741[] = {
-	0x00,
-	0x00,
-	0x00,
-};
 u8 D_arcade_8004A744 = 0;
-u8 D_arcade_8004A745[] = {
-	0x00,
-	0x00,
-	0x00,
-};
 s32 arcade_current_score = 3700;
 s32 arcade_saved_high_scores[5] = {
     7650, 6100, 5950, 5050, 4300
 };
-s32 D_arcade_8004A75C = 4300;
 s32 D_arcade_8004A760 = 7650;
 u8 D_arcade_8004A764 = 0;
-u8 D_arcade_8004A765[] = {
-	0x00,
-	0x00,
-	0x00,
-};
 s8 D_arcade_8004A768 = 0;
-s8 D_arcade_8004A769[] = {
-	0x00,
-	0x00,
-	0x00,
-};
 u8 D_arcade_8004A76C = 0;
-u8 D_arcade_8004A76D[] = {
-	0x00,
-	0x00,
-	0x00,
-};
 u8 D_arcade_8004A770 = 0;
-u8 D_arcade_8004A771[] = {
-	0x00,
-	0x00,
-	0x00,
-};
-u8 D_arcade_8004A774[] = {' ',' ',' ', 0};
+u8 D_arcade_8004A774[] = {' ',' ',' '};
 u8 arcade_saved_high_score_initials[5][3] = {
     {' ',' ',' '},
     {' ',' ',' '},
     {' ',' ',' '},
     {' ',' ',' '},
     {' ',' ',' '}
-};
-u8 D_arcade_8004A784[] = {
-	0x20,
-	0x20,
-	0x20,
-	0x00,
 };
 u8 D_arcade_8004A788[] = {
 	0x01,
@@ -25067,11 +25032,6 @@ u8 D_arcade_8004A788[] = {
 s32 D_arcade_8004A78C = 1;
 s32 D_arcade_8004A790 = 0;
 u8 D_arcade_8004A794 = ' ';
-u8 D_arcade_8004A795[] = {
-	0x00,
-	0x00,
-	0x00,
-};
 s32 D_arcade_8004A798[] = {
 	0x019D2975,
 	0x0155AA45,
@@ -25128,11 +25088,7 @@ u8 D_arcade_8004A82C[5][3] = {
     {'5','T','H'},
 };
 s32 D_arcade_8004A83C = 0;
-*/
 
-extern u8 D_arcade_80032D50;
-extern u8 D_arcade_80032CA8;
-extern u8 D_arcade_800342B8;
 extern uSprite D_arcade_8004BC20[2];
 extern uSprite D_arcade_8004BC50[2];
 
@@ -26991,26 +26947,6 @@ s32 __arcade_abs_w(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002B390.s")
 
-extern u8 D_arcade_8003B3C8[];
-extern u8 D_arcade_8003B610[];
-extern u8 D_arcade_8003B858[];
-extern u8 D_arcade_8003BAA0[];
-extern u8 D_arcade_8003BCE8[];
-extern u8 D_arcade_8003BF30[];
-extern u8 D_arcade_8003C178[];
-extern u8 D_arcade_8003C3C0[];
-extern u8 D_arcade_8003C608[];
-extern u8 D_arcade_8003C850[];
-extern u8 D_arcade_8003CA98[];
-extern u8 D_arcade_8003CCE0[];
-extern u8 D_arcade_8003CF28[];
-extern u8 D_arcade_8003D170[];
-extern u8 D_arcade_8003D3B8[];
-extern u8 D_arcade_8003D600[];
-extern u8 D_arcade_8003D848[];
-
-extern s32 D_arcade_8004A75C;
-
 /*
 // TODO: Doable, it compiles
 void func_arcade_8002B390(s32 arg0) {
@@ -27667,9 +27603,6 @@ void func_arcade_8002CD64(s32 arg0) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002D6FC.s")
-
-extern u8 D_arcade_80037788[];
-extern u8 D_arcade_80037990[];
 
 // TODO: Close
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002E158.s")

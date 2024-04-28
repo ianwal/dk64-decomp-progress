@@ -389,6 +389,9 @@ arcade_lives_visual = 0x8004C71C; // segment:arcade
 arcade_game_state = 0x8004C71D; // segment:arcade
 arcade_background_visual = 0x8004C722; // segment:arcade
 
+D_arcade_8004A30C = 0x8004A30C; // segment:arcade
+D_arcade_8004A310 = 0x8004A310; // segment:arcade
+D_arcade_8004A314 = 0x8004A314; // segment:arcade
 D_arcade_8004AA18 = 0x8004AA18; // segment:arcade
 D_arcade_8004AB24 = 0x8004AB24; // segment:arcade
 D_arcade_8004AB28 = 0x8004AB28; // segment:arcade
