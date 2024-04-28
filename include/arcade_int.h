@@ -164,7 +164,7 @@ extern u8  arcade_lives_internal; //0x8004C71B
 extern u8  arcade_lives_visual;   //0x8004C71C
 extern u8  arcade_game_state; //0x8004C71D
 extern s8  arcade_bonus_timer;
-extern u8  arcade_jumpman_slot; // Index into D_arcade_8004BCD0[], arcade_jumpman_slot?
+extern u8  arcade_jumpman_slot; // Index into arcade_objects[], arcade_jumpman_slot?
 extern u8  D_arcade_8004C720;
 extern u8 D_arcade_8004C721;
 extern u8  arcade_background_visual; //0x8004C722
