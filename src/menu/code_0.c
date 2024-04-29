@@ -258,7 +258,7 @@ typedef struct {
 typedef struct {
     u8 unk0;
     u8 unk1;
-    u8 unk2;
+    u8 unk2; // Used
     s8 unk3; // Used
 } Struct807ECDEC;
 

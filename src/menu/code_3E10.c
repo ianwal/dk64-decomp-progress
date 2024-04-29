@@ -140,7 +140,7 @@ extern f32 menu_icon_transition_scale;
 extern f32 menu_selection_speed;
 
 s32 func_menu_800322D0(s32);
-void func_menu_80030340(Actor*, s32, Gfx*, s32);
+s32 func_menu_80030340(Actor*, s32, Gfx*, s32);
 void func_global_asm_8061D4E4(Actor*);
 void func_menu_80030894(MenuAdditionalActorData*,void*,s32,s32,f32,u8,s32); // Param 1 is ActorAdditionalData
 
@@ -1626,8 +1626,226 @@ void func_menu_80030258(Gfx *dl, Actor *arg1) {
     func_menu_80030340(arg1, 1, dl, 0);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80030340.s")
+extern s8 D_8076A0D0[];
+extern s8 *D_global_asm_807ECDEC;
+
+typedef struct {
+    u8 unk0[0xC - 0x0];
+    s16 unkC; // Used
+    s16 unkE; // Used
+    u8 unk10;
+    u8 unk11;
+    s8 unk12; // Used
+    u8 unk13;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    s8 unk17; // Used
+} AAD_80030340;
+
+s32 func_menu_80030340(Actor *actor, s32 arg1, Gfx *dl, s32 arg3) {
+    AAD_80030340 *aaD;
+    u32 sp18;
+    u16 temp_v0;
+
+    aaD = actor->additional_actor_data;
+    sp18 = 0;
+    if (*character_change_array->new_controller_inputs & A_BUTTON) {
+        sp18 = 1;
+    }
+    if (*character_change_array->new_controller_inputs & B_BUTTON) {
+        sp18 |= 2;
+    }
+    if (*character_change_array->new_controller_inputs & U_CBUTTONS) {
+        sp18 |= 0x40;
+    }
+    if (*character_change_array->new_controller_inputs & D_CBUTTONS) {
+        sp18 |= 0x80;
+    }
+    if (*character_change_array->new_controller_inputs & Z_TRIG) {
+        sp18 |= 0x100;
+    }
+    if (D_global_asm_807ECDEC[2] < -40) {
+        sp18 |= 4;
+    } else if (D_global_asm_807ECDEC[2] >= 41) {
+        sp18 |= 8;
+    }
+    if (D_global_asm_807ECDEC[3] < -40) {
+        sp18 |= 0x20;
+    } else if (D_global_asm_807ECDEC[3] >= 41) {
+        sp18 |= 0x10;
+    }
+    switch (arg1) {
+        case 0:
+            D_menu_80033F38 = 1;
+            menu_rotation_speed = 0.0f;
+            menu_selection_speed = 0.0f;
+            menu_icon_transition_scale = 0.0f;
+            global_properties_bitfield &= 0xFFFEFFFF;
+            aaD->unkC = 0;
+            aaD->unkE = 0;
+            is_in_submenu = 1;
+            break;
+        case 1:
+            break;
+        case 2:
+            D_8076A0D0[aaD->unk12] = aaD->unk17;
+            func_global_asm_80659670(1.0f, 1.0f, 1.0f, 0);
+            break;
+    }
+    switch (aaD->unk12) {
+        case 0:
+            if (arg1 == 1) {
+                func_menu_80027F34(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_80027E60(actor, sp18);
+            } else {
+                func_menu_80027F40(actor, arg3);
+            }
+            break;
+        case 1:
+            if (arg1 == 1) {
+                func_menu_800286C8(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_80027FAC(actor, sp18);
+            } else {
+                func_menu_80028834(actor, arg3);
+            }
+            break;
+        case 2:
+            if (arg1 == 1) {
+                func_menu_80028D3C(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_80028C20(actor, sp18);
+            } else {
+                func_menu_80028EA8(actor, arg3);
+            }
+            break;
+        case 3:
+            if (arg1 == 1) {
+                func_menu_800291CC(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_80029114(actor, sp18);
+            } else {
+                func_menu_800297B8(actor, arg3);
+            }
+            break;
+        case 4:
+            if (arg1 == 1) {
+                func_menu_80029BB4(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_80029AAC(actor, sp18);
+            } else {
+                func_menu_80029D30(actor, arg3);
+            }
+            break;
+        case 5:
+            if (arg1 == 1) {
+                func_menu_8002A088(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_80029EF8(actor, sp18);
+            } else {
+                func_menu_8002A36C(actor, arg3);
+            }
+            break;
+        case 6:
+            if (arg1 == 1) {
+                func_menu_8002A638(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_8002A468(actor, sp18);
+            } else {
+                func_menu_8002AB80(actor, arg3);
+            }
+            break;
+        case 7:
+            if (arg1 == 1) {
+                func_menu_8002B708(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_8002ADC8(actor, sp18);
+            } else {
+                func_menu_8002C0C8(actor, arg3);
+            }
+            break;
+        case 11:
+            if (arg1 == 1) {
+                func_menu_8002C634(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_8002C584(actor, sp18);
+            } else {
+                func_menu_8002C91C(actor, arg3);
+            }
+            break;
+        case 8:
+            if (arg1 == 1) {
+                func_menu_8002D520(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_8002CFA4(actor, sp18);
+            } else {
+                func_menu_8002D7EC(actor, arg3);
+            }
+            break;
+        case 9:
+            if (arg1 == 1) {
+                func_menu_8002DBDC(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_8002D8AC(actor, sp18);
+            } else {
+                func_menu_8002DEE8(actor, arg3);
+            }
+            break;
+        case 10:
+            if (arg1 == 1) {
+                func_menu_8002E420(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_8002DFA8(actor, sp18);
+            } else {
+                func_menu_8002E8B8(actor, arg3);
+            }
+            break;
+        case 12:
+            if (arg1 == 1) {
+                func_menu_8002F284(actor, dl);
+                return;
+            }
+            if (arg1 == 2) {
+                func_menu_8002EF68(actor, sp18);
+            } else {
+                func_menu_8002F6C8(actor, arg3);
+            }
+            break;
+        default:
+            break;
+    }
+    if (D_menu_80033F50 > 0) {
+        D_menu_80033F50--;
+    }
+    D_menu_80033670 = sp18;
+    return dl;
+}
 
 extern int func_menu_80030C14(); // TODO: Signature
 
