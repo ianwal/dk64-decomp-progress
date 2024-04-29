@@ -3445,7 +3445,7 @@ us,.minecart,func_minecart_80026C54,340,yes
 us,.minecart,func_minecart_800280BC,672,yes
 us,.minecart,func_minecart_80026DA8,2512,no
 us,.minecart,func_minecart_80024B00,888,no
-us,.minecart,func_minecart_800265F0,1404,no
+us,.minecart,func_minecart_800265F0,1404,yes
 us,.minecart,func_minecart_80024890,132,yes
 us,.minecart,func_minecart_80024768,296,yes
 us,.minecart,func_minecart_80027778,1404,no

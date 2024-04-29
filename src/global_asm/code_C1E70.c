@@ -183,7 +183,7 @@ void func_global_asm_806BD3E4(void) {
 }
 */
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_global_asm_806BD7B0.s")
 
 s32 areAllKeysTurnedIn(void) {

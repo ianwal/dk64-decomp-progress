@@ -3,16 +3,11 @@
 
 void func_global_asm_8061F0B0(s32, s32, s32);
 
-// Jumptable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_800265F0.s")
-
 s32 func_global_asm_806131D4(Actor *, s16);
 s16 func_global_asm_80613448(Actor *);
 
-/*
 void func_minecart_800265F0(void) {
     u8 sp47;
-    u8 var_t6;
 
     sp47 = 0x96;
     initializeCharacterSpawnerActor();
@@ -48,28 +43,24 @@ void func_minecart_800265F0(void) {
     switch (current_actor_pointer->control_state) {
         case 0:
             current_actor_pointer->y_position += 5.0f;
-            current_actor_pointer->control_state_progress++;
-            if (current_actor_pointer->control_state_progress >= 0x10) {
+            if (current_actor_pointer->control_state_progress++ >= 0x10) {
                 current_actor_pointer->control_state = 0x3B;
             }
             break;
         case 6:
             sp47 = 0xFA;
-            if (((u32)object_timer % D_global_asm_807FDC9C->unkA_u8[0]) != 0) {
-                var_t6 = current_actor_pointer->unk0;
-            } else {
+            if (((u32)object_timer % D_global_asm_807FDC9C->unkA_u8[0]) == 0) {
                 playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x182, 0xFF, 0x7F, 0, 0, 0.3f, 0);
                 spawnActor(ACTOR_UNKNOWN_287, 0x50);
                 last_spawned_actor->unk11C = current_actor_pointer;
                 moveAndScaleActorToAnother(last_spawned_actor, current_actor_pointer, 0.06f);
                 current_actor_pointer->unk15F++;
+            }
         case 2:
         case 3:
         case 4:
         case 5:
-                var_t6 = current_actor_pointer->control_state_progress;
-            }
-            if (var_t6 == 0xFF) {
+            if (current_actor_pointer->control_state_progress == 0xFF) {
                 playActorAnimation(current_actor_pointer, 0x311);
                 current_actor_pointer->control_state = 1;
             }
@@ -84,7 +75,6 @@ void func_minecart_800265F0(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 typedef struct MinecartStruct0 {
     s32 unk0;
