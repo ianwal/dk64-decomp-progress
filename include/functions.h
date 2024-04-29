@@ -52,7 +52,7 @@ s32 playCutscene(Actor*, s16, s32);
 void playSong(s32, f32);
 void playSoundAtObjectModel2(s16 arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6);
 void playSoundAtPosition(f32 x, f32 y, f32 z, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
-void playSound(s16, s16, f32, f32, s32, s32);
+void playSound(s16, u32, f32, f32, s32, s32);
 
 Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, void *string);
 

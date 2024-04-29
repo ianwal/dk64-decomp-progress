@@ -76,9 +76,6 @@ s32 func_bonus_80024D8C(void) {
     }
 }
 
-// Jumptable, close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024E38.s")
-
 extern void *D_global_asm_8076D1F8;
 
 typedef struct {
@@ -98,7 +95,6 @@ void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3,
 
 void func_global_asm_806A2A10(s32, s32, s32);
 
-/*
 void func_bonus_80024E38(void) {
     A178_80024E38 *a178;
     s32 temp_v0_5;
@@ -170,12 +166,10 @@ void func_bonus_80024E38(void) {
         case 0x28:
         case 0x3C:
         case 0x50:
-            temp_v0_5 = 0x7FFF - (a178->unk0 * 150);
-            playSound(0x1E9, temp_v0_5, 64.0f, 1.0f, 0xA, 0x80);
+            playSound(0x1E9, 0x7FFFU - ((u32)a178->unk0 * 150U), 64.0f, 1.0f, 0xA, 0x80);
             if (a178->unk0 == 0) {
                 a178->unk0 = 0xC8;
             }
             break;
     }
 }
-*/
