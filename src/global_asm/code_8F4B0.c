@@ -443,7 +443,7 @@ Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 arg2, s16 arg3, s16 arg4) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/displayImage.s")
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068D264.s")
 
 void func_global_asm_8068D8C8(Gfx *dl, s32 arg1) {

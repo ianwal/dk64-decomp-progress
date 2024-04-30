@@ -29,6 +29,7 @@ void func_global_asm_80699128(Gfx *dl, Struct80699128_arg1 *arg1) {
     func_global_asm_80614B34(func_global_asm_8065D008(dl, arg1->unk128, 1), arg1);
 }
 
+// doable, matrix nonsense
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_80699284.s")
 
 void func_global_asm_806998C8(void) {

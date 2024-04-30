@@ -2987,8 +2987,88 @@ void func_global_asm_806DB670(void) {
 }
 */
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DBB04.s")
+extern s32 D_global_asm_8071FC58; // TODO: Sprite
+extern s32 D_global_asm_8071FCC0; // TODO: Sprite
+
+void func_global_asm_806DBB04(void) {
+    f32 x2;
+    f32 y2;
+    f32 z2;
+    u8 sp63;
+    f32 x;
+    f32 y;
+    f32 z;
+
+    handleInputsForControlState(1);
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            extra_player_info_pointer->unk108 = 50.0f;
+            current_actor_pointer->control_state_progress += 1;
+            break;
+        case 1:
+            if (extra_player_info_pointer->unk108 != 0.0f) {
+                extra_player_info_pointer->unk108 -= 1.0f;
+            } else {
+                if ((current_actor_pointer->y_position - current_actor_pointer->floor) < 60.0f) {
+                    current_actor_pointer->y_position += 1.0f;
+                } else {
+                    extra_player_info_pointer->unk108 = 150.0f;
+                    current_actor_pointer->control_state_progress += 1;
+                    func_global_asm_8061C6A8(extra_player_info_pointer->unk104, current_actor_pointer, 6, 0, 0x1E, 0, 5, 0x2D, 0x14, 0xC8, 0.15f);
+                }
+            }
+            break;
+        case 2:
+            extra_player_info_pointer->unk108 -= 1.0f;
+            if (extra_player_info_pointer->unk108 == 0.0f) {
+                extra_player_info_pointer->unk108 = 150.0f;
+                current_actor_pointer->control_state_progress += 1;
+            }
+            current_actor_pointer->y_rotation += (120.0 * (0.5 + ABS(func_global_asm_80612794(extra_player_info_pointer->unkCC))));
+            break;
+        case 3:
+            extra_player_info_pointer->unk108 -= 1.0f;
+            if (extra_player_info_pointer->unk108 == 0.0f) {
+                extra_player_info_pointer->unk108 = 500.0f;
+                current_actor_pointer->control_state_progress += 1;
+            }
+            current_actor_pointer->y_rotation += (120.0 * (0.5 + ABS(func_global_asm_80612794(extra_player_info_pointer->unkCC))));
+            current_actor_pointer->x_rotation += (60.0f * func_global_asm_80612794(extra_player_info_pointer->unkCC + 0x400));
+            break;
+        case 4:
+            setAction(0x1B, NULL, 0);
+            extra_player_info_pointer->unk1F0 |= 4;
+            current_actor_pointer->x_rotation = 0;
+            current_actor_pointer->y_rotation = 0;
+            break;
+    }
+    extra_player_info_pointer->unkCC = extra_player_info_pointer->unkCC + 6;
+    extra_player_info_pointer->unkCC = extra_player_info_pointer->unkCC & 0xFFF;
+    if (!(object_timer & 1)) {
+        sp63 = ((rand() >> 0xF) % 65535) % 3;
+        getBonePosition(current_actor_pointer, 5, &x, &y, &z);
+        x += (((rand() >> 0xF) % 65535) % 16) - 8;
+        y += (((rand() >> 0xF) % 65535) % 16) - 8;
+        z += (((rand() >> 0xF) % 65535) % 16) - 8;
+        func_global_asm_80714998(2);
+        func_global_asm_807149B8(1);
+        func_global_asm_8071498C(func_global_asm_8071720C);
+        func_global_asm_80714950(((rand() >> 0xF) % 100) + 0x64);
+        if (sp63 == 2) {
+            drawSpriteAtPosition(&D_global_asm_8071FCC0, 0.5f, x, y, z);
+        } else if (sp63 == 1) {
+            drawSpriteAtPosition(&D_global_asm_8071FC8C, 0.5f, x, y, z);
+        } else {
+            drawSpriteAtPosition(&D_global_asm_8071FC58, 0.5f, x, y, z);
+        }
+    }
+    current_actor_pointer->y_velocity = 0.0f;
+    current_actor_pointer->unkB8 = 0.0f;
+    func_global_asm_806CC970();
+    getBonePosition(current_actor_pointer, 0xC, &x2, &y2, &z2);
+    createLight(x2, y2, z2, 0.0f, 0.0f, 0.0f, 80.0f, 0, 0xFF, 0xFF, 0);
+    renderActor(current_actor_pointer, 0);
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DC170.s")

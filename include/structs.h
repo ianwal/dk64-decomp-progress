@@ -874,7 +874,8 @@ typedef struct player_additional_actor_data {
     s16 unkC8;
     u8  unkCA; // Used
     s8  unkCB;
-    s32 unkCC;
+    s16 unkCC; // Used
+    s16 unkCE;
     s32 unkD0;
     s16 unkD4; // Used
     s16 unkD6;
