@@ -1532,6 +1532,7 @@ void func_global_asm_8064A194(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_806418E8(*var_v0_2, 0xA, 0);
 }
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064A258.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064A804.s")

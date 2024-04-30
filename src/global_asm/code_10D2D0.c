@@ -7,7 +7,7 @@ s32 func_global_asm_807085D0(s32, PlayerProgress *, CharacterProgress *, void *)
 
 extern s8 D_global_asm_80744504;
 
-s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2);
+Gfx *func_global_asm_80708DA4(Gfx *dl, s16 arg1, CharacterChange* arg2);
 
 typedef struct global_asm_struct_21 {
     f32 unk0;
@@ -75,7 +75,7 @@ void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *a
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_global_asm_80708DA4.s")
 
 /*
-s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2) {
+Gfx *func_global_asm_80708DA4(Gfx *dl, s16 arg1, CharacterChange* arg2) {
     CharacterProgress *sp38;
     PlayerProgress *sp28;
     s32 temp_a0;
@@ -87,10 +87,10 @@ s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2) {
     temp_a0 = cc_number_of_players == 1;
     var_t0 = arg2->unk2E4;
     temp = arg2->unk2E2;
-    if (temp_a0 == 0) {
+    if (!temp_a0) {
         var_t0 = 0;
     }
-    if (temp_a0 == 0) {
+    if (!temp_a0) {
         func_global_asm_80708C24(arg1, arg2, sp28, sp38);
         arg2->unk2E2 &= 0xFFEA;
     }
@@ -146,14 +146,14 @@ s16 func_global_asm_80708DA4(s32 arg0, s16 arg1, CharacterChange* arg2) {
     }
     if (func_global_asm_805FCA64() || (arg2->unk2E2 & 0x80)) {
         if (arg2->unk2E4 != 0 || arg2->unk2E2 != 0) {
-            arg0 = func_global_asm_807085D0(arg0, sp28, sp38, arg2);
+            dl = func_global_asm_807085D0(dl, sp28, sp38, arg2);
         }
     }
-    return arg0;
+    return dl;
 }
 */
 
-s32 func_global_asm_80709344(s32 arg0) {
+Gfx *func_global_asm_80709344(Gfx *dl) {
     s16 i;
     for (i = 0; i < cc_number_of_players; i++) {
         if (character_change_array[i].does_player_exist) {
@@ -162,11 +162,11 @@ s32 func_global_asm_80709344(s32 arg0) {
                 || character_change_array[i].unk2E2)
                 && (D_global_asm_80744504 == 0))
                 || (character_change_array[i].unk2E2 & 0x10))) {
-                arg0 = func_global_asm_80708DA4(arg0, i, &character_change_array[i]);
+                dl = func_global_asm_80708DA4(dl, i, &character_change_array[i]);
             }
         }
     }
-    return arg0;
+    return dl;
 }
 
 // Segments per melon

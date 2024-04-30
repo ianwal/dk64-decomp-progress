@@ -29,8 +29,133 @@ u8 func_global_asm_8067B450(void) {
 }
 */
 
-// Jumptable
+// Jumptable, close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067B4C8.s")
+
+void func_global_asm_80613CA8(Actor*, s32, f32, f32);
+extern s32 D_global_asm_8071FBC8; // TODO: Type
+extern u8 D_global_asm_807FBDC4;
+
+typedef struct {
+    Actor *unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    u8 unk14;
+    u8 unk15;
+} AAD_8067B4C8;
+
+typedef struct {
+    u8 unk0[0xB0 - 0x0];
+    f32 unkB0;
+    f32 unkB4;
+    f32 unkB8;
+} AAD_8067B4C8_2;
+
+/*
+void func_global_asm_8067B4C8(void) {
+    s32 i;
+    AAD_8067B4C8 *aaD;
+    AAD_8067B4C8_2 *aaD2;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->animation_state->unk1C = malloc(2 * sizeof(AnimationStateUnk1C));
+
+        // 1
+        current_actor_pointer->animation_state->unk1C[0].unk0 = 0x7F;
+        current_actor_pointer->animation_state->unk1C[0].unk1 = 2;
+        current_actor_pointer->animation_state->unk1C[0].unk2 = (u32)((current_actor_pointer->unk124->unk0 * 65536.0f) / 360.0f);
+        current_actor_pointer->animation_state->unk1C[0].unk4 = 0;
+        current_actor_pointer->animation_state->unk1C[0].unk6 = 0;
+
+        // 2
+        current_actor_pointer->animation_state->unk1C[1].unk0 = 0;
+
+        aaD->unk4 = current_actor_pointer->unk124->unk4;
+        aaD->unk8 = current_actor_pointer->unk124->unk8;
+        aaD->unkC = current_actor_pointer->unk124->unkC;
+        aaD->unk10 = current_actor_pointer->unk124->unk10;
+        aaD->unk15 = current_actor_pointer->unk124->unk14_s32;
+        if ((current_actor_pointer->unk124->unk18 == 1) && (func_global_asm_8067B450(current_actor_pointer) == 0)) {
+            current_actor_pointer->control_state = 0x14;
+            current_actor_pointer->noclip_byte = 1;
+            current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+            current_actor_pointer->shadow_opacity = 0;
+        }
+        if (current_map == MAP_DK_ISLES_OVERWORLD) {
+            current_actor_pointer->object_properties_bitfield |= 0x400;
+        }
+        if (current_map == MAP_CASTLE_KING_KUT_OUT) {
+            current_actor_pointer->draw_distance = 0x226;
+        }
+    }
+    if (D_global_asm_807FBB70.unk200 == 4) {
+        aaD->unk0 = D_global_asm_807FBB70.unk1FC;
+        current_actor_pointer->control_state = 1;
+        aaD->unk14 = 0xA;
+        current_actor_pointer->noclip_byte = 1;
+        aaD->unk0->y_rotation = current_actor_pointer->y_rotation;
+        playCutscene(NULL, aaD->unk15, 1);
+    }
+    switch (current_actor_pointer->control_state) {
+        case 1:
+            aaD->unk14--;
+            if (aaD->unk14 == 6) {
+                func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
+                func_global_asm_80613CA8(current_actor_pointer, 0x346, 0, 0);
+            }
+            if (aaD->unk14 == 0) {
+                current_actor_pointer->control_state = 2;
+            }
+            break;
+        case 2:
+            func_global_asm_80679200(aaD->unk0, current_actor_pointer, 0x40, 1, 0, NULL);
+            aaD2 = aaD->unk0->additional_actor_data;
+            aaD2->unkB0 = aaD->unk8;
+            aaD2->unkB4 = aaD->unkC;
+            aaD2->unkB8 = aaD->unk10;
+            func_global_asm_8067AAB8(current_actor_pointer, aaD->unk0, current_actor_pointer->y_rotation, 0.0f, aaD->unk4);
+            func_global_asm_80679290(current_actor_pointer, current_actor_pointer, 0x800, 2, 0, 0, 0xA);
+            func_global_asm_80714998(2);
+            func_global_asm_807149B8(1);
+            func_global_asm_80714C08(&D_global_asm_8071FBC8, 2.0f, current_actor_pointer, 1, 2);
+            playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x17, 0xFF, 0x7F, 0x19, 0x1E, 0.3f, 0);
+            current_actor_pointer->control_state++;
+            aaD->unk14 = 4;
+            break;
+        case 3:
+            aaD->unk14--;
+            if (aaD->unk14 == 0) {
+                current_actor_pointer->control_state = 0;
+            }
+            break;
+        case 20:
+            for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
+                if (D_global_asm_807FBB70.unk258[i] == 1) {
+                    current_actor_pointer->unk0 = 2;
+                    current_actor_pointer->control_state = 0x15;
+                }
+            }
+            if (func_global_asm_8067B450(current_actor_pointer) != 0) {
+                current_actor_pointer->shadow_opacity = 0xFF;
+                current_actor_pointer->object_properties_bitfield |= 0x8000;
+                current_actor_pointer->control_state = 0;
+            }
+            break;
+        case 21:
+            // TODO: Hmm
+            current_actor_pointer->unk0 = current_actor_pointer->unk0 + 0xA;
+            if (current_actor_pointer->shadow_opacity >= 0xF1) {
+                current_actor_pointer->object_properties_bitfield |= 0x8000;
+                current_actor_pointer->control_state = 0;
+            }
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+}
+*/
 
 void func_global_asm_8067BA3C(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {

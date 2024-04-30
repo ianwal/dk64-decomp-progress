@@ -510,7 +510,7 @@ void func_global_asm_806A7BDC(void);
 void func_global_asm_806A7EF0(void);
 void func_global_asm_806A8070(void);
 s32 func_global_asm_8070943C(void);
-s32 func_global_asm_80709344(s32 arg0);
+Gfx *func_global_asm_80709344(Gfx *dl);
 void func_global_asm_80709464(u8 playerIndex);
 void func_global_asm_80698FEC(void);
 void func_global_asm_8069900C(void);

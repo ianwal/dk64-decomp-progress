@@ -140,18 +140,13 @@ void func_global_asm_806C6BA0(void) {
     func_global_asm_806C6884(0xA, 0x14, 0x240);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CB230/func_global_asm_806C6BC8.s")
-
 extern u8 D_global_asm_807FBD70;
 
-/*
 void func_global_asm_806C6BC8(void) {
-    u32 *temp;
     f32 sp54;
-    f32 sp50;
-    f32 sp4C;
-    f32 sp48;
+    f32 x;
+    f32 y;
+    f32 z;
 
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -173,32 +168,31 @@ void func_global_asm_806C6BC8(void) {
         current_actor_pointer->object_properties_bitfield &= ~0x400;
     }
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-    temp = current_actor_pointer->unk0;
     switch (current_actor_pointer->control_state) {
         case 0:
             if (D_global_asm_807FDC90->unk2C != 0) {
                 sp54 = ((f32)D_global_asm_807FDC90->unk2C / D_global_asm_807FDC90->unk2E);
-                getBonePosition(current_actor_pointer, 2, &sp50, &sp4C, &sp48);
+                getBonePosition(current_actor_pointer, 2, &x, &y, &z);
                 func_global_asm_807248B0(player_pointer, (sp54 * 0.13) + 0.02);
-                player_pointer->x_position += ((sp50 - player_pointer->x_position) * 0.05);
-                player_pointer->y_position += ((sp4C - player_pointer->y_position) * 0.05);
-                player_pointer->z_position += ((sp48 - player_pointer->z_position) * 0.05);
+                player_pointer->x_position += (x - player_pointer->x_position) * 0.05;
+                player_pointer->y_position += (y - player_pointer->y_position) * 0.05;
+                player_pointer->z_position += (z - player_pointer->z_position) * 0.05;
                 D_global_asm_807FDC90->unk2C--;
                 if (D_global_asm_807FDC90->unk2C == 0) {
-                    func_global_asm_805FF9AC(player_pointer->x_position, player_pointer->z_position, 0x33, 0, 0, 1);
+                    func_global_asm_805FF9AC(0x33, 0, 0, 1);
                 }
             }
             break;
         case 39:
             if (D_global_asm_807FDC90->unk2E != 0) {
-                *temp += 2;
+                current_actor_pointer->y_position += 2.0f;
                 D_global_asm_807FDC90->unk2E--;
                 func_global_asm_807248B0(
                     current_actor_pointer,
                     D_global_asm_807FDC90->unk30 + ((0.01 - D_global_asm_807FDC90->unk30) * ((f64)D_global_asm_807FDC90->unk2E / 150.0))
                 );
             } else {
-                *temp = 2;
+                current_actor_pointer->control_state = 2;
                 current_actor_pointer->control_state_progress = 0;
             }
             break;
@@ -208,12 +202,12 @@ void func_global_asm_806C6BC8(void) {
                 func_global_asm_80614D00(current_actor_pointer, 0.0f, 0.0f);
                 current_actor_pointer->control_state = 0;
                 current_actor_pointer->control_state_progress = 0;
-                playCutscene(current_actor_pointer, 0x18, 1);
-                D_global_asm_807FDC90->unk2C = func_global_asm_8061CC30() - 0x1E;
+                func_global_asm_8061CC30();
+                D_global_asm_807FDC90->unk2C = playCutscene(current_actor_pointer, 0x18, 1) - 0x1E;
                 D_global_asm_807FDC90->unk2E = D_global_asm_807FDC90->unk2C;
                 current_actor_pointer->noclip_byte = 1;
             } else {
-                switch (*temp) {
+                switch (current_actor_pointer->control_state_progress) {
                     case 5:
                         func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkC);
                         current_actor_pointer->control_state_progress = 0;
@@ -243,7 +237,7 @@ void func_global_asm_806C6BC8(void) {
                         func_global_asm_8072DC7C(5);
                         break;
                     case 2:
-                        *temp = 0x3B;
+                        current_actor_pointer->control_state = 0x3B;
                         break;
                 }
             }
@@ -251,4 +245,3 @@ void func_global_asm_806C6BC8(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-*/

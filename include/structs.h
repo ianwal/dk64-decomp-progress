@@ -48,8 +48,16 @@ typedef struct {
 
 // Finally!!!
 typedef struct {
-    f32 unk0;
-    f32 unk4;
+    union {
+        f32 unk0;
+        s32 unk0_s32;
+        s32 *unk0_s32_ptr;
+    };
+    union {
+        f32 unk4;
+        s32 unk4_s32;
+        s32 *unk4_s32_ptr;
+    };
     f32 unk8;
 } Struct807F5FD4_unk0;
 
@@ -287,6 +295,7 @@ typedef struct {
     s16 unk2;
     s16 unk4;
     s16 unk6;
+    // Note: This is correctly sized, if you get references to unk8, use unk1C[1].unk0 instead
 } AnimationStateUnk1C;
 
 // TODO: Fill this in properly
@@ -379,7 +388,10 @@ typedef struct {
     };
     f32 unkC; // Used
     f32 unk10; // Used
-    f32 unk14; // Used
+    union {
+        f32 unk14; // Used
+        s32 unk14_s32; // Used // TODO: We might have another aaD situation here...
+    };
     s32 unk18;
     s32 unk1C;
     s32 unk20;
