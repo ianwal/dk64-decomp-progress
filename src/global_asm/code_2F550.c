@@ -853,12 +853,11 @@ void func_global_asm_8062D26C(Actor *arg0) {
 }
 
 u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, s32 arg3, u8 arg4);
-
-void func_global_asm_8062D2AC(void *arg0, void *arg1, u8 arg2) {
-    func_global_asm_8062D2F0(D_global_asm_807F5DE4, D_global_asm_807F5E60, arg0, arg1, arg2);
-}
-
 u8 func_global_asm_80652594(Model2Model *arg0, s16 *arg1, u8 arg2);
+
+u8 func_global_asm_8062D2AC(void *arg0, void *arg1, u8 arg2) {
+    return func_global_asm_8062D2F0(D_global_asm_807F5DE4, D_global_asm_807F5E60, arg0, arg1, arg2);
+}
 
 u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, s32 arg3, u8 arg4) {
     u8 sp27;

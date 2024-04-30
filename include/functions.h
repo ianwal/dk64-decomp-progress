@@ -1587,7 +1587,7 @@ void func_global_asm_8062C22C(void);
 void func_global_asm_8062CA0C(s32 arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_8062D094(Model2Model *arg0, u8 arg1);
 void func_global_asm_8062D1A8(void);
-void func_global_asm_8062D2AC(void *arg0, void *arg1, u8 arg2);
+u8 func_global_asm_8062D2AC(void *arg0, void *arg1, u8 arg2);
 void func_global_asm_8062E608(void *arg0, s32 *arg1, s32 arg2);
 void func_global_asm_8062F318(void);
 s32 func_global_asm_8062F388(s32 *arg0);
