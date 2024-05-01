@@ -18,6 +18,7 @@ u8 isFlagSet(s16 flagIndex, u8 flagType);
 void func_global_asm_80731030(void); // clearTemporaryFlags()
 ExitData *getExitData(s32 exitIndex);
 
+void func_global_asm_80614D48(Actor*, f32, f32);
 u64 func_dk64_boot_80005818(u64, u64);
 u64 func_dk64_boot_80005918(u64, u64);
 u64 func_dk64_boot_80007688(f32); 

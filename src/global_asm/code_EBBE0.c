@@ -408,8 +408,43 @@ void func_global_asm_806E84F8(void) {
     }
 }
 
-// ActorAnimationState->unk0, possible datatype conflicts, not sure what is passed into arg0
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E854C.s")
+typedef struct {
+    u8 unk0[0xC - 0x0];
+    f32 unkC;
+    f32 unk10;
+} Struct806E854C_arg0;
+
+void func_global_asm_806E854C(Struct806E854C_arg0 *arg0, s32 arg1, s32 arg2) {
+    s32 var_v0_2;
+    f32 temp_f2;
+    f32 var_f2;
+
+    if (arg2 != current_player->animation_state->unk0->unk10) {
+        if (arg1 == current_player->animation_state->unk0->unk10) {
+            func_global_asm_80613C48(current_player, arg2, 0, 5.0f);
+        } else {    
+            if ((current_actor_pointer->animation_state->unk0->unk24 >= 0) && (current_player->animation_state->unk0->unk4 > 0)) {
+                func_global_asm_80614D48(current_player, -1.0f, 0);
+            }
+            if (current_actor_pointer->animation_state->unk0->unk4 == 0) {
+                func_global_asm_80613C48(current_player, arg2, 0, 5.0f);
+            }
+        }
+    } else {
+        var_f2 = ABS(arg0->unkC) - 0.2f;
+        temp_f2 = (arg0->unk10 > 1.0 ? 8 : 5) * var_f2 * 1.25f;
+        if (((temp_f2 - 1) <= current_player->animation_state->unk0->unk4) && (current_player->animation_state->unk0->unk4 <= (temp_f2 + 1))) {
+            var_v0_2 = 0;
+        } else {
+            if (temp_f2 <= current_player->animation_state->unk0->unk4) {
+                var_v0_2 = -1;
+            } else {
+                var_v0_2 = 1;
+            }
+        }
+        func_global_asm_80614D48(current_player, var_v0_2, 5.0f);
+    }
+}
 
 void func_global_asm_806E8724(Actor *arg0, RaceAdditionalActorData *arg1) {
     f32 temp_f0;
@@ -487,7 +522,7 @@ void func_global_asm_806E88D8(void) {
         if ((func_global_asm_8061CB50() == 0) && (playerAnimationState = current_player->animation_state, (playerAnimationState->unk64 != 0x3B5))) {
             if ((aaD->unkC < 0.2f) && (aaD->unkC > -0.2f) && ((sp24 != playerAnimationState->unk0->unk10))) {
                 if ((playerAnimationState->unk0->unk24 >= 0.0f) && (playerAnimationState->unk0->unk4 > 0.0f)) {
-                    func_global_asm_80614D48(current_player, 0xBF800000, 0x40A00000, aaD);
+                    func_global_asm_80614D48(current_player, -1.0f, 5.0f);
                     return;
                 }
                 if (current_actor_pointer->animation_state->unk0->unk4 == 0.0f) {
