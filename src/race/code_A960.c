@@ -123,23 +123,19 @@ extern u16 D_global_asm_80750AC4;
 void func_race_80025FDC();
 void func_race_8002D0FC();
 void func_race_8002DCF0(void*, s32);
-void *func_race_8002E960(u8);
+void *func_race_8002E960(u8, RaceStruct2*);
 void *func_race_8002E9AC(u8);
 f32 func_race_8002F04C(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_race_8002F36C(RaceStruct13*, RaceStruct13*);
 void func_race_8002E9F8(s32 *checkpointFile);
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E960.s")
-
-/*
-void *func_race_8002E960(u8 arg0) {
-    if (D_race_8002FCF0 == NULL || arg0 >= D_race_8002FCF0->unk0) {
+void *func_race_8002E960(u8 arg0, RaceStruct2* arg1) {
+    arg1 = D_race_8002FCF0;
+    if (arg1 == NULL || arg0 >= arg1->unk0) {
         return NULL;
     }
-    return &D_race_8002FCF0->unk4[arg0];
+    return &arg1->unk4[arg0];
 }
-*/
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E9AC.s")
