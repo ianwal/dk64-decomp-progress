@@ -3,11 +3,15 @@
 
 typedef struct {
     s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
+    f32 unk4; // Used
+    f32 unk8; // Used
+    f32 unkC; // Used
     f32 unk10; // Used
-    u8 unk14[0x34 - 0x14];
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20; // Used
+    u8 unk24[0x34 - 0x24];
     u8 unk34; // Used
     u8 unk35; // Used
 } A178_race_8002B964;
@@ -317,7 +321,118 @@ void initializeCastleCarRace(Actor *arg0) {
     aaD->unk26 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_race_8002A7F8.s")
+void func_global_asm_80665564(Actor*, f32);
+
+void func_race_8002A7F8(A178_race_8002B964 *arg0) {
+    f32 sp5C;
+    f32 sp58;
+    f32 var_f14;
+    u8 sp53;
+    s16 sp50;
+    s16 sp4E;
+    s16 sp4C;
+    f32 var_f0;
+    f32 sp44;
+    f32 var_f12;
+    s16 var_a0;
+    s32 pad;
+    s16 sp36;
+    s16 sp34;
+    s16 sp32;
+    s16 sp30;
+    s16 pad2;
+
+    sp53 = current_actor_pointer->unk6A & 1;
+    sp50 = current_actor_pointer->y_rotation;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->noclip_byte = 0x3C;
+        current_actor_pointer->object_properties_bitfield |= 0x10400;
+        current_actor_pointer->control_state = 0;
+        current_actor_pointer->control_state_progress = 0;
+        current_actor_pointer->unkB8 = 0;
+        current_actor_pointer->y_acceleration = -20.0f;
+        current_actor_pointer->terminal_velocity = -900.0f;
+        current_actor_pointer->unkF8 = 0x12C;
+    }
+    sp5C = func_global_asm_80612794(current_actor_pointer->unkEE) * current_actor_pointer->unkB8;
+    sp58 = func_global_asm_80612790(current_actor_pointer->unkEE) * current_actor_pointer->unkB8;
+    if (arg0->unk20 != 0) {
+        sp50 += 0x800;
+        sp50 &= 0xFFF;
+        arg0->unk4 *= 0.85;
+    }
+    if (sp53) {
+        var_f0 = (arg0->unk8 * current_actor_pointer->unkB8) * 0.2;
+        if (!(var_f0 > 1)) {
+            var_f0 = 1;
+        }
+        var_f14 = (arg0->unk4 * 35.0f) + (current_actor_pointer->unkB8 * 0.13);
+        sp44 = (current_actor_pointer->unkB8 * current_actor_pointer->unkB8 * 0.00025f) + (27.0 + var_f0);
+    } else {
+        var_f14 = arg0->unk4 * 2;
+        sp44 = (current_actor_pointer->unkB8 * current_actor_pointer->unkB8 * 0.00002f) + 2;
+    }
+    sp5C += func_global_asm_80612794(sp50) * var_f14;
+    sp58 += func_global_asm_80612790(sp50) * var_f14;
+    current_actor_pointer->unkB8 = sqrtf((sp5C * sp5C) + (sp58 * sp58));
+    current_actor_pointer->unkEE = func_global_asm_80611BB4(sp5C, sp58) * 651.8986f;
+    if (sp53) {
+        sp34 = 0x400 - current_actor_pointer->unkDE;
+        sp36 = func_global_asm_806CC10C(current_actor_pointer->unkDC, current_actor_pointer->y_rotation);
+        sp4E = func_global_asm_80612790(sp36) * sp34;
+        sp4C = func_global_asm_80612794(sp36) * sp34;
+        sp4E = sp4E & 0xFFF;
+        sp4C = sp4C & 0xFFF;
+    } else {
+        sp30 = func_global_asm_806D1080(current_actor_pointer->unkB8, current_actor_pointer->y_velocity);
+        var_a0 = current_actor_pointer->unkEE;
+        if (sp30 >= 0x800) {
+            sp30 = 0xFFF - sp30;
+            var_a0 += 0x800;
+            var_a0 &= 0xFFF;
+        }
+        sp32 = func_global_asm_806CC10C(var_a0, current_actor_pointer->y_rotation);
+        sp4E = func_global_asm_80612790(sp32) * sp30;
+        sp4C = func_global_asm_80612794(sp32) * sp30;
+        sp4E = sp4E & 0xFFF;
+        sp4C = sp4C & 0xFFF;
+    }
+    var_f12 = arg0->unk10 * arg0->unkC;
+    if (arg0->unk8 > 0.0f) {
+        if (ABS(var_f12) > 0.1f) {
+            var_f12 += 2.0f * (var_f12 >= 0 ? 1 : -1) * arg0->unk8;
+        }
+    }
+    current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, sp4E, 4.0f);
+    current_actor_pointer->x_rotation = func_global_asm_806CC190(current_actor_pointer->x_rotation, sp4C, 4.0f);
+    current_actor_pointer->unkB8 -= sp44;
+    if (current_actor_pointer->unkB8 < 0) {
+        current_actor_pointer->unkB8 = 0;
+    }
+    if (arg0->unk20 != 0) {
+        if (current_actor_pointer->unkB8 < 100.0f) {
+            current_actor_pointer->unkB8 = current_actor_pointer->unkB8;
+        } else {
+            current_actor_pointer->unkB8 = 100.0f;
+        }
+    }
+    var_f0 = current_actor_pointer->unkB8 - current_actor_pointer->unkBC;
+    if (var_f0 < 0) {
+        var_f0 = 0;
+    }
+    current_actor_pointer->y_rotation += ((var_f12 * -40.0f) * (1.0 + (var_f0 * 0.05)));
+    current_actor_pointer->y_rotation &= 0xFFF;
+    current_actor_pointer->y_velocity += current_actor_pointer->y_acceleration;
+    if (current_actor_pointer->y_velocity < current_actor_pointer->terminal_velocity) {
+        current_actor_pointer->y_velocity = current_actor_pointer->terminal_velocity;
+    }
+    func_global_asm_80665160(current_actor_pointer, current_actor_pointer->unkEE, current_actor_pointer->unkEE);
+    func_global_asm_806651FC(current_actor_pointer);
+    func_global_asm_80665564(current_actor_pointer, 0);
+    if (D_global_asm_807FBB64 & 0x2000) {
+        func_race_8002F490(arg0);
+    }
+}
 
 void func_race_8002AE6C(s32 arg0, Actor *arg1) {
     // TODO: Which aaD type are they actually expecting here?
