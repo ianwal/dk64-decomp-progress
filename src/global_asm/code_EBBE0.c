@@ -45,11 +45,6 @@ extern f32 D_global_asm_80753AA8[];
 extern f32 D_global_asm_80753AC4[];
 extern f32 D_global_asm_80753B18[];
 
-// .rodata
-// const static volatile f32 D_global_asm_8075D330 = 0.2f;
-// const static s32 D_global_asm_8075D330 = 0x3E4CCCCD;
-const static u8 D_global_asm_8075D330[] = {0x3E,0x4C,0xCC,0xCD};
-
 extern s32 D_global_asm_80767CC0;
 
 extern s32 D_global_asm_807FBB68;
