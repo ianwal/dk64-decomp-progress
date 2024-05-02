@@ -112,15 +112,11 @@ void func_bonus_800256C4(Actor **arg0, u8 arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_bonus_8002570C.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_bonus_800261B8.s")
-
 typedef struct {
     Actor *unk0;
     s16 unk4;
 } AAD_800261B8;
 
-/*
 void func_bonus_800261B8(void) {
     AAD_800261B8 *aaD;
     s16 temp_t0;
@@ -139,17 +135,17 @@ void func_bonus_800261B8(void) {
                 current_actor_pointer->z_rotation += aaD->unk4;
                 aaD->unk4 += 2;
             } else {
-                aaD->unk4 = current_actor_pointer->unkF0;
                 current_actor_pointer->control_state++;
+                aaD->unk4 = current_actor_pointer->unkF0;
             }
             break;
         case 4:
-            temp_t0 = 0x2AB - ((u32)current_actor_pointer->unk0 % 683);
+            temp_t0 = 683 - (current_actor_pointer->z_rotation % 683);
             if (temp_t0 < aaD->unk4) {
-                current_actor_pointer->unk0 = current_actor_pointer->control_state + 1;
+                current_actor_pointer->control_state++;
                 if (aaD->unk0->control_state < 8) {
-                    aaD->unk0->control_state_progress = 0;
                     aaD->unk0->control_state = 5;
+                    aaD->unk0->control_state_progress = 0;
                 }
                 current_actor_pointer->unk160 = func_global_asm_806118FC((aaD->unk4 - temp_t0) * 0.015625);
                 current_actor_pointer->unk168 = (current_actor_pointer->z_rotation + temp_t0) & 0xFFF;
@@ -173,7 +169,6 @@ void func_bonus_800261B8(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_bonus_800264E0(u8 arg0, u8 arg1) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);

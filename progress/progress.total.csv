@@ -3568,7 +3568,7 @@ us,.race,func_race_800280E8,496,yes
 us,.race,func_race_80026098,328,yes
 us,.race,func_race_8002CBEC,1028,no
 version,section,function,length,matching
-us,.bonus,func_bonus_800261B8,808,no
+us,.bonus,func_bonus_800261B8,808,yes
 us,.bonus,func_bonus_80024E38,1116,yes
 us,.bonus,func_bonus_80029B9C,696,no
 us,.bonus,func_bonus_800240F0,104,yes
