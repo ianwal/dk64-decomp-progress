@@ -3435,9 +3435,9 @@ us,.minecart,func_minecart_80024254,184,yes
 us,.minecart,func_minecart_800253C0,4656,no
 us,.minecart,func_minecart_80024E78,344,no
 us,.minecart,func_minecart_80027CF4,172,yes
-us,.minecart,func_minecart_80024FD0,956,no
+us,.minecart,func_minecart_80024FD0,956,yes
 us,.minecart,func_minecart_80026B6C,232,yes
-us,.minecart,func_minecart_80027EE8,468,no
+us,.minecart,func_minecart_80027EE8,468,yes
 us,.minecart,func_minecart_800240DC,196,yes
 us,.minecart,func_minecart_80027DA0,100,yes
 us,.minecart,func_minecart_8002430C,1116,yes
@@ -3448,10 +3448,10 @@ us,.minecart,func_minecart_80024B00,888,no
 us,.minecart,func_minecart_800265F0,1404,yes
 us,.minecart,func_minecart_80024890,132,yes
 us,.minecart,func_minecart_80024768,296,yes
-us,.minecart,func_minecart_80027778,1404,no
+us,.minecart,func_minecart_80027778,1404,yes
 us,.minecart,func_minecart_8002538C,52,yes
 us,.minecart,func_minecart_80027E04,228,yes
-us,.minecart,func_minecart_8002835C,912,no
+us,.minecart,func_minecart_8002835C,912,yes
 us,.minecart,func_minecart_800286EC,1188,yes
 version,section,function,length,matching
 us,.race,func_race_8002597C,1312,no
