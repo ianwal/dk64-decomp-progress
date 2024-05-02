@@ -1,6 +1,40 @@
 #include <ultra64.h>
 #include "functions.h"
 
+//rodata
+const s32 D_boss_80036C10[] = {
+    0x4F230825,
+    0x06325000
+};
+const s32 D_boss_80036C18[] = {
+    0x4F230A25,
+    0x052D5000
+};
+const s32 D_boss_80036C20[] = {
+    0x4F230B25,
+    0x04285000
+};
+const s32 D_boss_80036C28[] = {
+    0x4F230C28,
+    0x04055000
+};
+const s32 D_boss_80036C30[] = {
+    0x5F0A5429,
+    0xFB544F23,
+    0x0E280401,
+    0x50000000
+};
+
+//rodata - should be floats?
+const f32 D_boss_80036C40[] = {
+    /* 21AC9B0 80036C40 3F4CCCCD */ 0.8, //0x3F4CCCCD,
+    /* 21AC9B4 80036C44 3F666666 */ 0.9, //0x3F666666,
+    /* 21AC9B8 80036C48 3F800000 */ 1.0, //0x3F800000,
+    /* 21AC9BC 80036C4C 3F8CCCCD */ 1.1, //0x3F8CCCCD,
+    /* 21AC9C0 80036C50 3F99999A */ 1.2, //0x3F99999A,
+    /* 21AC9C4 80036C54 00000000 */ 0.0 //0x00000000
+};
+
 // Quite big but pretty doable, needs some struct/array definitions
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_boss_800330D0.s")
 
@@ -54,7 +88,7 @@ void func_boss_800334A4(Struct800334A4_arg0 *arg0, f32 arg1) {
 void func_boss_800336C0(void) {
     f32 sp24;
 
-    sp24 = current_actor_pointer->animation_state->scale_y / D_boss_80036C58;
+    sp24 = current_actor_pointer->animation_state->scale_y / 0.149999999999999994; //rodata .double 0.149999999999999994
     func_global_asm_80714998(2);
     func_global_asm_8071498C(&func_global_asm_8071720C);
     func_global_asm_807149B8(1);
@@ -118,7 +152,7 @@ void func_boss_8003575C(void) {
             if (current_actor_pointer->control_state == 0) {
                 dx = player_pointer->x_position - current_actor_pointer->x_position;
                 dz = player_pointer->z_position - current_actor_pointer->z_position;
-                if (((dx * dx) + (dz * dz)) < D_boss_80036DB4) {
+                if (((dx * dx) + (dz * dz)) < 4225.0f) { //rodata .float 4225
                     if (player_pointer->control_state != 0x31) {
                         setAction(0x2E, current_actor_pointer, 0);
                     }

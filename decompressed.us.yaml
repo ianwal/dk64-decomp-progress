@@ -554,7 +554,7 @@ segments:
       - [0x21AC4C0, rodata] # code_9C60
       - [0x21AC800, .rodata, code_C920]
       - [0x21AC8F0, rodata] # code_DAA0
-      - [0x21AC980, rodata] # code_F0D0
+      - [0x21AC980, .rodata, code_F0D0]
   - name: arcade
     dir: arcade
     type: code
