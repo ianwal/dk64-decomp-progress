@@ -374,9 +374,6 @@ void func_minecart_800280BC(void) {
 // big, structs, floats
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_8002835C.s")
 
-// very close, switch case woes
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_800286EC.s")
-
 extern s32 D_global_asm_8072030C; // TODO: Type
 extern u8 D_global_asm_807FBD70;
 extern u8 D_global_asm_807FBDC4;
@@ -407,7 +404,6 @@ typedef struct {
     void *unk34; // Used
 } A178_800286EC;
 
-/*
 void func_minecart_800286EC(void) {
     A178_800286EC *a178;
     f32 dx;
@@ -450,27 +446,27 @@ void func_minecart_800286EC(void) {
                 a178->unk10 = 1;
                 current_actor_pointer->unkB8 = 0.0f;
                 current_actor_pointer->control_state++;
-            }
-            renderActor(current_actor_pointer, 0);
-            return;
-        case 1:
-            if (D_global_asm_807FBDC4) {
-                if ((func_global_asm_806CC14C(func_global_asm_80665DE0(player_pointer->x_position, player_pointer->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position), current_actor_pointer->y_rotation) >= 0x201) && (dx = current_actor_pointer->x_position - player_pointer->x_position, dz = current_actor_pointer->z_position - player_pointer->z_position, (((dx * dx) + (dz * dz)) < 22500.0f))) {
-                    D_global_asm_807FDC90->unk26 = 0;
-                } else {
-                    D_global_asm_807FDC90->unk26 = MAX(MIN(90.0, aaD->unk88->unkB8 * 1.4), 45.0);
-                }
-                func_global_asm_8072B438(0x200);
-                func_global_asm_8068ECF4(6, 0xFF);
-                func_minecart_800253C0(a178, 0x7FFF, 0x23);
-                getBonePosition(current_actor_pointer, 5, &x, &y, &z);
-                addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
-                if ((player_pointer->control_state == 0x70) || (a178->unk10 == 0x90)) {
-                    current_actor_pointer->control_state++;
-                }
+                /* fallthrough */
+            } else {
+                renderActor(current_actor_pointer, 0);
                 return;
             }
-            break;
+        case 1:
+            if (D_global_asm_807FBDC4) {}
+            if ((func_global_asm_806CC14C(func_global_asm_80665DE0(player_pointer->x_position, player_pointer->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position), current_actor_pointer->y_rotation) >= 0x201) && (dx = current_actor_pointer->x_position - player_pointer->x_position, dz = current_actor_pointer->z_position - player_pointer->z_position, (((dx * dx) + (dz * dz)) < 22500.0f))) {
+                D_global_asm_807FDC90->unk26 = 0;
+            } else {
+                D_global_asm_807FDC90->unk26 = MIN(MAX(aaD->unk88->unkB8 * 1.4, 45.0), 90.0);
+            }
+            func_global_asm_8072B438(0x200);
+            func_global_asm_8068ECF4(6, 0xFF);
+            func_minecart_800253C0(a178, 0x7FFF, 0x23);
+            getBonePosition(current_actor_pointer, 5, &x, &y, &z);
+            addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+            if ((player_pointer->control_state == 0x70) || (a178->unk10 == 0x90)) {
+                current_actor_pointer->control_state++;
+            }
+            return;
         case 2:
             func_global_asm_8067E278(0, 1);
             current_actor_pointer->control_state = 0x40;
@@ -479,4 +475,3 @@ void func_minecart_800286EC(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-*/

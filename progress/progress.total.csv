@@ -3452,7 +3452,7 @@ us,.minecart,func_minecart_80027778,1404,no
 us,.minecart,func_minecart_8002538C,52,yes
 us,.minecart,func_minecart_80027E04,228,yes
 us,.minecart,func_minecart_8002835C,912,no
-us,.minecart,func_minecart_800286EC,1188,no
+us,.minecart,func_minecart_800286EC,1188,yes
 version,section,function,length,matching
 us,.race,func_race_8002597C,1312,no
 us,.race,func_race_80028E20,564,no
