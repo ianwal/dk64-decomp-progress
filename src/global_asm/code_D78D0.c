@@ -3068,8 +3068,57 @@ void func_global_asm_806DBB04(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DC170.s")
+void func_global_asm_806DC170(void) {
+    f32 var_f4;
+    s32 i;
+
+    handleInputsForControlState(1);
+    current_actor_pointer->unkB8 = 0.0f;
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            current_actor_pointer->noclip_byte = 1;
+            extra_player_info_pointer->unk23C = 0xA;
+            current_actor_pointer->control_state_progress += 1;
+            playSoundAtActorPosition(current_actor_pointer, 0x2EB, 0xFF, 0x7F, 2);
+            break;
+        case 1:
+            if (extra_player_info_pointer->unk23C >= 2) {
+                extra_player_info_pointer->unk23C--;
+            } else {
+                current_actor_pointer->control_state_progress++;
+            }
+            break;
+        case 2:
+            func_global_asm_80672C30(current_actor_pointer);
+            current_actor_pointer->x_position = extra_player_info_pointer->unk204;
+            current_actor_pointer->y_position = extra_player_info_pointer->unk208;
+            current_actor_pointer->unk8C = current_actor_pointer->y_position;
+            current_actor_pointer->z_position = extra_player_info_pointer->unk20C;
+            current_actor_pointer->y_rotation = \
+            current_actor_pointer->unkEE = extra_player_info_pointer->unk21C;
+            func_global_asm_8061EB04(current_actor_pointer, extra_player_info_pointer->unk1A4);
+            func_global_asm_806C8220(0, current_actor_pointer->unk178, current_actor_pointer->unk58);
+            current_actor_pointer->control_state_progress++;
+            break;
+        case 3:
+            if (extra_player_info_pointer->unk23C < 0xA) {
+                extra_player_info_pointer->unk23C++;
+            } else {
+                current_actor_pointer->control_state_progress++;
+            }
+            break;
+        case 4:
+            extra_player_info_pointer->unk268 = 0x3C;
+            func_global_asm_806CFF9C(current_actor_pointer);
+            break;
+    }
+    var_f4 = (f32)extra_player_info_pointer->unk23C * 0.015;
+    for (i = 0; i != 3; i++) {
+        current_actor_pointer->animation_state->scale[i] = var_f4;
+    }
+    func_global_asm_806CC970();
+    renderActor(current_actor_pointer, 0);
+}
 
 void func_global_asm_806DC3A4(f32 arg0) {
     f32 temp_f2;

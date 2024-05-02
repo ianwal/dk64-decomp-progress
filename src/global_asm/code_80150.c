@@ -169,10 +169,10 @@ void func_global_asm_8067BA3C(void) {
 
 extern u8 D_global_asm_807FBBA8;
 
-extern s32 D_global_asm_8071FE08; // TODO: Datatype
+extern s32 D_global_asm_8071FE08; // TODO: Sprite
 
 /*
-void func_global_asm_8067BA7C(s16 arg0) {
+void func_global_asm_8067BA7C(s32 arg0) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10) && (arg0 == 0x13)) {
         func_global_asm_80688370(current_actor_pointer, 0, 0.5f);
         func_global_asm_806883C8(current_actor_pointer, 0, 0);
@@ -190,14 +190,6 @@ void func_global_asm_8067BA7C(s16 arg0) {
         case 7:
         case 8:
         case 9:
-        case 12:
-        case 13:
-        case 14:
-        case 15:
-        case 16:
-        case 17:
-        case 18:
-        case 19:
             break;
         case 10:
             playSoundAtActorPosition(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
@@ -211,6 +203,15 @@ void func_global_asm_8067BA7C(s16 arg0) {
             if (D_global_asm_807FBBA8 != 0) {
                 current_actor_pointer->control_state = 0x14;
             }
+            break;
+        case 12:
+        case 13:
+        case 14:
+        case 15:
+        case 16:
+        case 17:
+        case 18:
+        case 19:
             break;
         case 20:
             if (arg0 == 0x95) {
