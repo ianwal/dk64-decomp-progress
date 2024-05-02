@@ -689,31 +689,29 @@ void func_global_asm_806D45A4(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// regalloc, rodata, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D4758.s")
-
-/*
 void func_global_asm_806D4758(void) {
+    if (current_actor_pointer->control_state_progress) {
+        // Probably some ifdef'd out code
+    }
     switch (current_actor_pointer->control_state_progress) {
         case 0:
             if (extra_player_info_pointer->unk3E != 0) {
-                func_global_asm_806CC14C(current_actor_pointer->unkEE, extra_player_info_pointer->unk40);
+                if (func_global_asm_806CC14C(current_actor_pointer->unkEE, extra_player_info_pointer->unk40)) {
+                    // Probably some ifdef'd out code
+                }
                 func_global_asm_806CD424(extra_player_info_pointer->unk40, 50.0f, extra_player_info_pointer->unk38);
                 extra_player_info_pointer->unk3E--;
             }
             handleInputsForControlState(0x23);
-            switch (current_character_index[cc_player_index]) {
-                case 2:
-                    extra_player_info_pointer->unk4 *= 0.63;
+            if (current_character_index[cc_player_index] == 2) {
+                extra_player_info_pointer->unk4 *= 0.63;
             }
             func_global_asm_806CC8B8();
             break;
         case 1:
             handleInputsForControlState(0x23);
-            switch (current_character_index[cc_player_index]) {
-                case 0:
-                case 2:
-                    extra_player_info_pointer->unk4 *= 0.63;
+            if (current_character_index[cc_player_index] == 0 || current_character_index[cc_player_index] == 2) {
+                extra_player_info_pointer->unk4 *= 0.63;
             }
             setYAccelerationFrom80753578();
             func_global_asm_806D3608();
@@ -721,14 +719,15 @@ void func_global_asm_806D4758(void) {
             break;
         case 2:
             func_global_asm_806CC8B8();
-            if (!handleInputsForControlState(0x31) && current_actor_pointer->unkB8 < extra_player_info_pointer->unk4) {
-                func_global_asm_806CFF9C(current_actor_pointer);
+            if (!handleInputsForControlState(0x31)) {
+                if (current_actor_pointer->unkB8 < extra_player_info_pointer->unk4) {
+                    func_global_asm_806CFF9C(current_actor_pointer);
+                }
             }
             break;
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806D491C(void) {
     switch (current_actor_pointer->control_state_progress) {
@@ -762,15 +761,13 @@ void func_global_asm_806D491C(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D4A70.s")
-
-/*
 void func_global_asm_806D4A70(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:
             if (extra_player_info_pointer->unk3E) {
-                func_global_asm_806CC14C(current_actor_pointer->unkEE, extra_player_info_pointer->unk40);
+                if (func_global_asm_806CC14C(current_actor_pointer->unkEE, extra_player_info_pointer->unk40)) {
+                    // Probably some ifdef'd out code
+                }
                 func_global_asm_806CD424(extra_player_info_pointer->unk40, 50.0f, extra_player_info_pointer->unk38);
                 extra_player_info_pointer->unk3E--;
             }
@@ -787,7 +784,9 @@ void func_global_asm_806D4A70(void) {
         case 1:
             handleInputsForControlState(0x24);
             if (extra_player_info_pointer->unk3E) {
-                func_global_asm_806CC14C(current_actor_pointer->unkEE, extra_player_info_pointer->unk40);
+                if (func_global_asm_806CC14C(current_actor_pointer->unkEE, extra_player_info_pointer->unk40)) {
+                    // Probably some ifdef'd out code
+                }
                 func_global_asm_806CD424(extra_player_info_pointer->unk40, 30.0f, extra_player_info_pointer->unk38);
                 extra_player_info_pointer->unk3E--;
             }
@@ -808,7 +807,6 @@ void func_global_asm_806D4A70(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806D4C7C(void) {
     switch (current_actor_pointer->control_state_progress) {

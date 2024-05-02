@@ -277,7 +277,6 @@ void func_global_asm_806852C4(f32 scale, f32 x, f32 y, f32 z) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80685390.s")
 
-/*
 typedef struct {
     f32 *unk0;
     s32 unk4;
@@ -292,23 +291,24 @@ typedef struct {
     u8 unk6;
 } AAD_global_asm_80685390;
 
+/*
 // TODO: Eh doable, kinda fiddly
 void func_global_asm_80685390(void) {
-    AAD_global_asm_80685390 *temp_v0;
+    AAD_global_asm_80685390 *aaD;
     Struct8074E88C sp20;
 
-    temp_v0 = current_actor_pointer->additional_actor_data;
+    aaD = current_actor_pointer->additional_actor_data;
     sp20 = D_global_asm_8074E88C;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        temp_v0->unk0 = current_actor_pointer->animation_state->scale_y;
+        aaD->unk0 = current_actor_pointer->animation_state->scale_y;
     }
-    temp_v0->unk4++;
+    aaD->unk4++;
     switch (current_actor_pointer->control_state) {
         case 0:
-            current_actor_pointer->animation_state->scale_y = sp20.unk0[temp_v0->unk6] * (temp_v0->unk4 * temp_v0->unk0 * 0.3333333433f);
-            if (temp_v0->unk4 > 3.0f) {
+            current_actor_pointer->animation_state->scale_y = sp20.unk0[aaD->unk6] * (aaD->unk4 * aaD->unk0 * 0.3333333433f);
+            if (aaD->unk4 > 3.0f) {
                 current_actor_pointer->control_state = 1;
-                temp_v0->unk4 = 0;
+                aaD->unk4 = 0;
                 func_global_asm_8068842C(current_actor_pointer, 0, 1);
                 func_global_asm_80688370(current_actor_pointer, 0, 0.5f);
             }

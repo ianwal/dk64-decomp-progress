@@ -290,6 +290,7 @@ void func_global_asm_8067BDF8(void) {
     func_global_asm_8067BF84(0x13, temp_a1, &temp_a1->unk1, &sp1F);
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067BE30.s")
 
 typedef struct {
@@ -300,36 +301,35 @@ typedef struct {
 } AAD_global_asm_8067BE30;
 
 /*
-// TODO: Good progress made, not sure what the last steps are...
 void func_global_asm_8067BE30(void) {
-    AAD_global_asm_8067BE30 *temp_t0;
+    AAD_global_asm_8067BE30 *aaD;
     s16 i;
 
-    temp_t0 = current_actor_pointer->additional_actor_data;
+    aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->draw_distance = 2000;
-        temp_t0->unk0 = 0x1A;
+        aaD->unk0 = 0x1A;
     }
     for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
         switch (D_global_asm_807FBB70.unk258[i]) {
             case 1:
-                temp_t0->unk0 = 0x60;
+                aaD->unk0 = 0x60;
                 break;
             case 2:
-                temp_t0->unk0 = 0;
+                aaD->unk0 = 0;
                 break;
             case 3:
-                temp_t0->unk0 = 0x1A;
+                aaD->unk0 = 0x1A;
                 break;
         }
     }
-    if (temp_t0->unk0 != 0) {
-        if (func_global_asm_8067BF84(temp_t0->unk0, &temp_t0->unk2, &temp_t0->unk3, &temp_t0->unk4) != 0) {
-            temp_t0->unk0 = 0x1A;
+    if (aaD->unk0 != 0) {
+        if (func_global_asm_8067BF84(aaD->unk0, &aaD->unk2, &aaD->unk3, &aaD->unk4) != 0) {
+            aaD->unk0 = 0x1A;
         }
     } else {
         if (D_global_asm_807FBB70.unk38 != 0) {
-            temp_t0->unk4 = 1;
+            aaD->unk4 = 1;
         }
         renderActor(current_actor_pointer, 0);
     }

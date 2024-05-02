@@ -79,7 +79,7 @@ standardSearchColumns = {
         "guMtxXFMF",
         "guMtxXFML",
     ],
-    "actors": [
+    "actor": [
         "current_actor_pointer",
         "player_pointer",
         "last_spawned_actor",
@@ -95,11 +95,11 @@ standardSearchColumns = {
     "malloc": [
         "malloc",
     ],
-    "flags": [
+    "flag": [
         "setFlag",
         "isFlagSet",
     ],
-    "cutscene": [
+    "CS": [
         "playCutscene",
         "is_cutscene_active",
     ],
@@ -109,14 +109,8 @@ standardSearchColumns = {
         "cc_number_of_players",
         "current_character_index",
     ],
-    "D_global_asm_807FBB70": [
-        "D_global_asm_807FBB70",
-    ],
-    "D_global_asm_807F5FD4": [
-        "D_global_asm_807F5FD4",
-    ],
-    "func_global_asm_8071498C": [
-        "func_global_asm_8071498C",
+    "renderActor": [
+        "renderActor",
     ],
     "pointerTable": [
         "getPointerTableFile",
