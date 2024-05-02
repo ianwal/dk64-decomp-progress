@@ -1,10 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
-
-void func_global_asm_8061F0B0(s32, s32, s32);
-
-s32 func_global_asm_806131D4(Actor *, s16);
-s16 func_global_asm_80613448(Actor *);
+#include "minecart.h"
 
 void func_minecart_800265F0(void) {
     u8 sp47;
@@ -28,7 +22,7 @@ void func_minecart_800265F0(void) {
         playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x301, 0xFF, 0x7F, 0, 0, 0.0f, 0);
         current_actor_pointer->control_state = 1;
         current_actor_pointer->z_rotation = 0x12C;
-        current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+        current_actor_pointer->object_properties_bitfield &= ~0x00008000;
         current_actor_pointer->shadow_opacity = 0x96;
     }
     if (func_global_asm_80724A20() != 0) {
@@ -235,13 +229,6 @@ void func_minecart_80027CF4(void) {
     }
 }
 
-typedef struct {
-    u8 unk0[0x34 - 0x0];
-    u8 *unk34;
-    u8 unk38[0x42 - 0x38];
-    u8 unk42;
-} AAD_minecart_80027DA0;
-
 // TODO: Any cleanup possible?
 void func_minecart_80027DA0(AAD_minecart_80027DA0 *arg0) {
     u8 temp_a2;
@@ -371,8 +358,79 @@ void func_minecart_800280BC(void) {
     }
 }
 
-// big, structs, floats
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_8002835C.s")
+void func_minecart_8002835C(void) {
+    AAD_minecart_80027DA0* sp74;
+    Struct807FBB70_unk278* temp_v1;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    f32 sp60;
+    f32 sp5C;
+    f32 sp58;
+    u8* temp_v0_2;
+    char pad[12];
+    
+    sp74 = current_actor_pointer->unk178;
+    initializeCharacterSpawnerActor();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        if ((current_map == MAP_MINECART_MAYHEM_EASY) || (current_map == MAP_MINECART_MAYHEM_NORMAL) || (current_map == MAP_MINECART_MAYHEM_HARD)) {
+            func_global_asm_8066E9EC(current_actor_pointer, 1, 50.0f);
+        }
+        func_global_asm_807149B8(1);
+        func_global_asm_807149FC(-1);
+        func_global_asm_80714C08(&D_global_asm_8072030C, 0.14f, current_actor_pointer, 0xB, 2);
+        current_actor_pointer->control_state = 0;
+    }
+    if ((D_global_asm_807FBB70.unk200 == 9) || (D_global_asm_807FBB70.unk15 != 0)) {
+        func_global_asm_8067E278(0, 1);
+        current_actor_pointer->control_state = 0x40;
+        func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xA, 0x14);
+    }
+    switch (current_actor_pointer->control_state) {                              /* irregular */
+    case 0:
+        if (D_global_asm_807FBB70.unk254 != 0) {
+            temp_v1 = D_global_asm_807FBB70.unk278[0];
+            temp_v0_2 = (u8*)malloc(4);
+            temp_v0_2[0] = temp_v1->unk2;
+            temp_v0_2[1] = 0xFF;
+            sp74->unk30 = temp_v0_2;
+            sp74->unk34 = temp_v0_2;
+            sp74->unk10 = 1;
+            D_global_asm_807FDC90->unk26 = temp_v1->unk4;
+            current_actor_pointer->unkB8 = 0.0f;
+            current_actor_pointer->control_state += 1;
+            /* fallthrough */
+        } else {
+            renderActor(current_actor_pointer, 0);
+            return;
+        }
+        case 1:
+            if ((current_map == MAP_MINECART_MAYHEM_EASY) || (current_map == MAP_MINECART_MAYHEM_NORMAL) || (current_map == MAP_MINECART_MAYHEM_HARD)) {
+                func_minecart_80027DA0(sp74);
+                func_minecart_80024E78(sp74, &D_minecart_80028BD0, 0, 3);
+                getBonePosition(current_actor_pointer, 1, &sp58, &sp5C, &sp60);
+                getBonePosition(current_actor_pointer, 2, &sp64, &sp68, &sp6C);
+            }
+            func_global_asm_8072B438(0x200);
+            func_minecart_800253C0(sp74, 0x7FFF, 0x23);
+            if ((current_actor_pointer->control_state == 2) && ((current_map == MAP_MINECART_MAYHEM_EASY) || (current_map == MAP_MINECART_MAYHEM_NORMAL) || (current_map == MAP_MINECART_MAYHEM_HARD))) {
+                current_actor_pointer->control_state = 1;
+                sp74->unk34--;
+            }
+            getBonePosition(current_actor_pointer, 5, &sp58, &sp5C, &sp60);
+            addActorRecolor(current_actor_pointer, sp58, sp5C, sp60, 255, 255, 255, 255, 0);
+            func_minecart_80027EE8(sp74);
+            return;
+
+    case 2:
+        current_actor_pointer->control_state = 0x40;
+        renderActor(current_actor_pointer, 0);
+        return;
+    default:
+        renderActor(current_actor_pointer, 0);
+        return;
+    }
+}
 
 extern s32 D_global_asm_8072030C; // TODO: Type
 extern u8 D_global_asm_807FBD70;

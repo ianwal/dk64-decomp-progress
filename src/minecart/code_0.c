@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "minecart.h"
 
 extern s32 D_minecart_80028C30; // TODO: Proper datatype
 extern s32 D_minecart_80028C34; // TODO: Datatype
@@ -89,7 +88,6 @@ void func_minecart_80024254(Struct80024254_arg0 *arg0) {
     }
 }
 
-void func_minecart_800253C0(void *, s16, u8);
 extern s16 D_global_asm_80750AC4;
 
 typedef struct {
@@ -320,7 +318,6 @@ extern s32 D_minecart_80028C20;
 
 void func_global_asm_8061C2F0(Actor*, f32, f32, f32, f32, f32, f32, s32);
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
-void func_minecart_80024E78(void*, void*, s32, s32);
 
 /*
 void func_minecart_80024FD0(void) {
