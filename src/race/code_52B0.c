@@ -613,7 +613,7 @@ void func_race_8002B76C(RaceAdditionalActorData *arg0, void *arg1) {
                 func_global_asm_80629174();
                 if (temp_s0 == 0) {
                     func_global_asm_8063DA40(1, 0xA);
-                    setFlag(0x145, 1, 0);
+                    setFlag(0x145, TRUE, FLAG_TYPE_PERMANENT);
                 } else {
                     func_global_asm_806ACC00(1);
                     arg0->unk35++;
@@ -643,15 +643,15 @@ void func_race_8002B964(void) {
         a17C->unk10 = 1;
         func_race_8002DE78(a17C, 5, &D_race_8002FC70, &D_race_8002FCA0);
         current_actor_pointer->noclip_byte = 0x3C;
-        current_actor_pointer->object_properties_bitfield &= 0xFFFDFFFE;
+        current_actor_pointer->object_properties_bitfield &= ~0x20001;
         a178->unk10 = 1.0f;
         for (i = 0; i < 3; i++) {
             current_actor_pointer->animation_state->scale[i] *= 0.3;
         }
-        if (isFlagSet(0x38, 2) == 0 && isFlagSet(0x145, 0) == 0) {
+        if (!isFlagSet(0x38, FLAG_TYPE_TEMPORARY) && !isFlagSet(0x145, FLAG_TYPE_PERMANENT)) {
             playCutscene(current_actor_pointer, 0, 1);
             func_global_asm_80629174();
-            setFlag(0x38, 1, 2);
+            setFlag(0x38, TRUE, FLAG_TYPE_TEMPORARY);
         } else {
             a178->unk35 = 3;
         }

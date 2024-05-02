@@ -350,14 +350,10 @@ void func_global_asm_8067BF4C(void) {
     func_global_asm_8067BF84(0x1A, &temp_v0->unk2, &temp_v0->unk3, &temp_v0->unk4);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067BF84.s")
-
-/*
-// TODO: Good progress made
 u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
+    u8 sp47;
     f32 temp_f0_2;
     f32 var_f20;
-    u8 sp47;
     u8 playerIndex;
     f32 dz;
     f32 dx;
@@ -404,7 +400,7 @@ u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
             *arg2 = 0;
         }
     }
-    if (sp47 != 0) {
+    if (sp47) {
         func_global_asm_80689114(arg0, current_actor_pointer->x_position, current_actor_pointer->y_position + 8.3, current_actor_pointer->z_position, 0, 1.0f, current_actor_pointer);
         if (current_actor_pointer->object_properties_bitfield & 0x10) {
             playSoundAtActorPosition(current_actor_pointer, 0x31, 0xFF, 0x7F, 1);
@@ -421,7 +417,6 @@ u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
     renderActor(current_actor_pointer, 0);
     return sp47;
 }
-*/
 
 typedef struct {
     u8 unk0;
@@ -620,12 +615,14 @@ void func_global_asm_8067DF44(f32 x, f32 y, f32 z, f32 arg3, u8 arg4, u8 arg5) {
 }
 
 void func_global_asm_8067E278(u8 arg0, u8 arg1) {
-    func_global_asm_8067DF44(current_actor_pointer->x_position,
-                  current_actor_pointer->y_position,
-                  current_actor_pointer->z_position,
-                  current_actor_pointer->animation_state->scale_y / 0.15,
-                  arg0,
-                  arg1);
+    func_global_asm_8067DF44(
+        current_actor_pointer->x_position,
+        current_actor_pointer->y_position,
+        current_actor_pointer->z_position,
+        current_actor_pointer->animation_state->scale_y / 0.15,
+        arg0,
+        arg1
+    );
 }
 
 void func_global_asm_8067E2E4(Actor *actor, u8 boneIndex, f32 arg2) {
@@ -745,11 +742,11 @@ void func_global_asm_8067FAC8(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067FB6C.s")
 
 void func_global_asm_80680774(void) {
-    if ((character_change_array->unk2C0 != 1) || (((extra_player_info_pointer->unk1F4 & 0x40) != 0)) || (((current_character_index[0] >= 5)))) {
+    if ((character_change_array->unk2C0 != 1) || (((extra_player_info_pointer->unk1F4 & 0x40))) || (((current_character_index[0] >= 5)))) {
         current_actor_pointer->unk132 = 4;
         current_actor_pointer->object_properties_bitfield &= ~0x8000;
         current_actor_pointer->shadow_opacity = 0x7F;
-    } else if ((character_change_array->unk2C0 == 1) && ((extra_player_info_pointer->unk1F0 & 0x40) == 0) && (current_character_index[0] < 5)) {
+    } else if ((character_change_array->unk2C0 == 1) && (!(extra_player_info_pointer->unk1F0 & 0x40)) && (current_character_index[0] < 5)) {
         current_actor_pointer->object_properties_bitfield |= 0x8000;
         current_actor_pointer->unk132 = 1;
     }
@@ -818,14 +815,14 @@ void func_global_asm_80681B14(void) {
 
     temp_v1 = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        if (isFlagSet(0x302, 0) != 0) {
+        if (isFlagSet(0x302, FLAG_TYPE_PERMANENT)) {
             deleteActor(current_actor_pointer);
             return;
         }
     }
     func_global_asm_806809F0();
     if ((current_actor_pointer->control_state == 0xC) && (temp_v1->unkD < 3)) {
-        setFlag(D_global_asm_8074E7E0[temp_v1->unkA], 1, 2);
+        setFlag(D_global_asm_8074E7E0[temp_v1->unkA], TRUE, FLAG_TYPE_TEMPORARY);
         func_global_asm_8067DCC0();
         deleteActor(current_actor_pointer);
     }

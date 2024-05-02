@@ -347,7 +347,7 @@ void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) 
                 changeCollectableCount(sp28, playerIndex, 1);
                 break;
             case 0x56:
-                setFlag(0x173, 1, 0);
+                setFlag(0x173, TRUE, FLAG_TYPE_PERMANENT);
                 changeCollectableCount(sp28, playerIndex, 1);
                 break;
             case 0xB7:

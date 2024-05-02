@@ -421,7 +421,7 @@ void func_menu_80024CB0(void) {
                 a180->unk1 = 0;
                 sp20 = 0;
                 func_global_asm_806F397C(player_pointer, 0, 0, 0);
-                setFlag(0x174, 1, 0);
+                setFlag(0x174, TRUE, FLAG_TYPE_PERMANENT);
             } else {
                 if (a180->unk2 == 0x28) {
                     a180->unk0 = 2;

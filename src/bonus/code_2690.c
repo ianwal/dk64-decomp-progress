@@ -912,7 +912,7 @@ void func_bonus_8002B920(void) {
                 current_actor_pointer->control_state = 1;
                 func_global_asm_8060866C(current_actor_pointer, 0x16, 0xFF, 1.0f, 0x14, 0);
                 current_actor_pointer->shadow_opacity = 0xFF;
-                current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+                current_actor_pointer->object_properties_bitfield &= ~0x8000;
             } else if (((dx * dx) + (dz * dz)) < 900.0f) {
                 aaD1->unkC = 0x3C;
                 aaD1->unkE = 1;
@@ -1054,7 +1054,7 @@ void func_bonus_8002C8EC(void) {
         }
         if (D_global_asm_807FBB85 == 1) {
             current_actor_pointer->shadow_opacity = 0xFF;
-            current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+            current_actor_pointer->object_properties_bitfield &= ~0x8000;
             playActorAnimation(current_actor_pointer, 0x332);
             current_actor_pointer->control_state = 1;
             playSound(0x16, 0x7FFF, 63.0f, 1.0f, 0, 0);

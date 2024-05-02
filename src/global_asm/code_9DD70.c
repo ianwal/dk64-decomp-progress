@@ -129,7 +129,7 @@ void func_global_asm_80699284(void) {
     if (aaD->unk10 != 0) {
         aaD->unk10--;
     } else {
-        current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+        current_actor_pointer->object_properties_bitfield &= ~0x8000;
         current_actor_pointer->shadow_opacity -= 0xA;
         if (current_actor_pointer->shadow_opacity <= 0) {
             sp5F = 1;
@@ -140,7 +140,7 @@ void func_global_asm_80699284(void) {
             setAction(0x58, NULL, 0);
         }
         func_global_asm_80605314(current_actor_pointer, 0);
-        aaD->unk0->unk1F0 &= 0xFFFF7FFF;
+        aaD->unk0->unk1F0 &= ~0x8000;
         aaD->unk0->unk1EC = 0xFF;
         if (current_actor_pointer->unk58 == ACTOR_UNKNOWN_217) {
             func_global_asm_8066B434(aaD->unk4, 0xF6, 0x45);
@@ -583,9 +583,9 @@ void func_global_asm_8069DD40(void) {
         current_actor_pointer->unk16B = 0xFF;
         current_actor_pointer->unk16C = 0xFF;
         current_actor_pointer->object_properties_bitfield |= 0x800000;
-        extra_player_info_pointer->unk1F0 &= 0xFFFDFFFF;
+        extra_player_info_pointer->unk1F0 &= ~0x20000;
         if (temp_s0 >= D_global_asm_807446C0[levelIndex]) {
-            current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+            current_actor_pointer->object_properties_bitfield &= ~0x8000;
             current_actor_pointer->shadow_opacity = 0;
             current_actor_pointer->noclip_byte = 1;
             func_global_asm_8063DA40(8, 2);
@@ -606,12 +606,12 @@ typedef struct {
 } AAD_global_asm_8069DF58;
 
 void func_global_asm_8069DF58(void) {
-    AAD_global_asm_8069DF58 *temp_v1;
+    AAD_global_asm_8069DF58 *aaD;
 
-    temp_v1 = current_actor_pointer->additional_actor_data;
+    aaD = current_actor_pointer->additional_actor_data;
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        temp_v1->unk0 = func_global_asm_8069DC80(0x14, temp_v1->unk0, 0, (current_actor_pointer->control_state_progress / 10), 0x10);
-        temp_v1->unk4 = func_global_asm_8069DC80(0x14, temp_v1->unk4, 1, (current_actor_pointer->control_state_progress % 10), 0x10);
+        aaD->unk0 = func_global_asm_8069DC80(0x14, aaD->unk0, 0, (current_actor_pointer->control_state_progress / 10), 0x10);
+        aaD->unk4 = func_global_asm_8069DC80(0x14, aaD->unk4, 1, (current_actor_pointer->control_state_progress % 10), 0x10);
     }
     renderActor(current_actor_pointer, 0);
 }

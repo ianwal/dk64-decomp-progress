@@ -379,13 +379,13 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                 sp42 = 8;
                 sp44 = &D_menu_800334EC;
                 if (arg0->unkA == 0) {
-                    if (isFlagSet(0x61, 2) != 0) {
-                        setFlag(0x61, 0, 2);
+                    if (isFlagSet(0x61, 2)) {
+                        setFlag(0x61, FALSE, FLAG_TYPE_TEMPORARY);
                         func_menu_80026290(arg0, &sp3C);
                         if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT) != 0) {
                             var_v1 = 0x20;
-                        } else if (isFlagSet(0x62, 2) != 0) {
-                            setFlag(0x62, 0, 2);
+                        } else if (isFlagSet(0x62, FLAG_TYPE_TEMPORARY)) {
+                            setFlag(0x62, FALSE, FLAG_TYPE_TEMPORARY);
                             var_v1 = 0x22;
                         } else {
                             var_v1 = 0x21;
@@ -394,7 +394,7 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                         sp28 = countSetFlags(0x225, 0x28, 0);
                         if (sp28 >= 0xF) {
                             func_menu_80026290(arg0, &sp3C);
-                            if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT) != 0) {
+                            if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT)) {
                                 var_v1 = 0x20;
                             } else {
                                 var_v1 = 2;
@@ -488,8 +488,8 @@ void func_menu_80026804(MenuStruct1 *arg0, CharacterProgress *arg1) {
 }
 
 void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
-    s32 sp24;
-    s32 sp20;
+    s32 textFileIndex;
+    s32 textIndex;
     Actor *player;
 
     switch (arg0->unkE) {
@@ -531,29 +531,29 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
                 arg0->unkE = 0;
             } else {
                 playCutscene(NULL, 0xA, 1);
-                setFlag(0x61, 1, 2);
+                setFlag(0x61, TRUE, FLAG_TYPE_TEMPORARY);
                 arg0->unkE++;
             }
             break;
         case 15:
-            sp24 = -1;
+            textFileIndex = -1;
             switch (current_actor_pointer->unk58) {
                 case ACTOR_CRANKY:
-                    sp24 = 8;
+                    textFileIndex = 8;
                     if (func_menu_80026250(arg0) != 0) {
                         arg0->unkA = 1;
                         func_menu_80026804(arg0, arg1);
                         return;
                     }
-                    sp20 = 0xA;
+                    textIndex = 0xA;
                     break;
                 case ACTOR_CANDY:
-                    sp24 = 9;
-                    sp20 = 0x11;
+                    textFileIndex = 9;
+                    textIndex = 0x11;
                     break;
                 case ACTOR_FUNKY:
-                    sp24 = 7;
-                    sp20 = 0x10;
+                    textFileIndex = 7;
+                    textIndex = 0x10;
                     break;
             }
             func_global_asm_806F8D58(1, 0);
@@ -561,7 +561,7 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
             playCutscene(character_change_array->player_pointer, 3, 1);
             arg0->unkD = 3;
             arg0->unkE = 0;
-            loadText(current_actor_pointer, sp24, sp20);
+            loadText(current_actor_pointer, textFileIndex, textIndex);
             break;
     }
 }
