@@ -3519,7 +3519,7 @@ us,.race,func_race_8002DC24,204,yes
 us,.race,initializeCastleCarRace,424,yes
 us,.race,func_race_8002E484,448,yes
 us,.race,func_race_8002F420,112,yes
-us,.race,func_race_8002AE9C,740,no
+us,.race,func_race_8002AE9C,740,yes
 us,.race,func_race_800294A8,740,yes
 us,.race,func_race_80027710,368,no
 us,.race,func_race_80028440,1680,no

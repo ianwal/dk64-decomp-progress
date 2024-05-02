@@ -1026,7 +1026,7 @@ typedef struct player_additional_actor_data {
     u8 unk23F; // Used
     u8 unk240; // Used
     u8 unk241;
-    u16 unk242; // Used
+    u16 unk242; // Used, map?
     s8 unk244;
     u8 unk245; // Used
     s8 unk246; // Used func_global_asm_806CA26C

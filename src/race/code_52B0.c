@@ -439,8 +439,85 @@ void func_race_8002AE6C(s32 arg0, Actor *arg1) {
     func_global_asm_8068E474(func_race_8002CAC8(arg0, arg1, arg1->PaaD), arg1);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_race_8002AE9C.s")
+s32 func_race_80026CA8();
+s32 func_race_80026D2C(f32);
+
+typedef struct {
+    s32 unk0;
+    f32 unk4; // Used
+    f32 unk8; // Used
+    u8 unkC[0x28 - 0xC];
+    u8 unk28; // Player index
+    u8 unk29[0x34 - 0x29];
+    u8 unk34; // Used
+    u8 unk35; // Used
+    u8 unk36[0x44 - 0x36];
+    s8 unk44; // Used
+} AAD_8002AE9C;
+
+void func_race_8002AE9C(void) {
+    s32 i;
+    s32 var_v0;
+    AAD_8002AE9C *aaD;
+    u8 sp43;
+    u8 playerIndex;
+    s32 sp34;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    playerIndex = aaD->unk28;
+    sp43 = 0xB4;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        setAction(0x4D, current_actor_pointer, playerIndex);
+        current_actor_pointer->noclip_byte = 0x3C;
+        current_actor_pointer->object_properties_bitfield &= 0xFFFDFFFF;
+        for (i = 0; i != 3; i++) {
+            current_actor_pointer->animation_state->scale[i] *= 0.3;
+        }
+        aaD->unk44 = 5;
+        func_global_asm_8066E5F8(current_actor_pointer, 2, 8);
+        func_race_80026CA8();
+    }
+    switch (aaD->unk34) {
+        case 1:
+            if (aaD->unk35 == 0) {
+                aaD->unk35++;
+                func_global_asm_806F8BC4(0xB, 1, 0);
+            }
+            // fallthrough
+        case 0:
+        case 2:
+        case 3:
+        case 4:
+            func_race_80026D2C(current_actor_pointer->unkB8 * 0.03076923f);
+            func_race_8002A7F8(aaD);
+            break;
+        case 5:
+            if (aaD->unk35 == 0) {
+                aaD->unk35++;
+                func_global_asm_806F8D58(0xB, 0);
+                current_actor_pointer->object_properties_bitfield &= ~4;
+                current_actor_pointer->unkB8 = 0;
+                for (i = 0; i != 2; i++) {
+                    if (current_actor_pointer->unk6E[i] != -1) {
+                        func_global_asm_80605314(current_actor_pointer, i);
+                    }
+                }
+            }
+            break;
+    }
+    if ((aaD->unk4 <= 0.0f) || (aaD->unk8 > 0.0f)) {
+        sp43 = 0xF0;
+    }
+    if (current_actor_pointer->object_properties_bitfield & 4) {
+        func_global_asm_8068ECF4(1, sp43);
+        func_global_asm_8068ECF4(2, sp43);
+    }
+    if ((aaD->unk34 > 0) && (aaD->unk34 < 5)) {
+        func_global_asm_806F4D70(aaD->unk28, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, (current_actor_pointer->animation_state->scale[1] / 0.15) * 40.0);
+        addActorToTextOverlayRenderArray(func_race_8002AE6C, current_actor_pointer, 3);
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_race_8002B180.s")
 

@@ -247,7 +247,7 @@ void func_jetpac_80024A4C(void) {
 extern s32 D_jetpac_8002BA6C;
 
 void func_jetpac_80024A8C(Gfx **arg0) {
-    enum map_e var_a0;
+    enum map_e nextMap;
 
     func_jetpac_80024408(arg0);
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
@@ -259,11 +259,11 @@ void func_jetpac_80024A8C(Gfx **arg0) {
             default:
             case 0:
                 if (D_jetpac_8002EC30.unk798 != 0) {
-                    var_a0 = MAP_CRANKYS_LAB;
+                    nextMap = MAP_CRANKYS_LAB;
                 } else {
-                    var_a0 = MAP_MAIN_MENU;
+                    nextMap = MAP_MAIN_MENU;
                 }
-                func_global_asm_805FF378(var_a0, 0);
+                func_global_asm_805FF378(nextMap, 0);
                 break;
             case 1:
                 D_jetpac_8002EC30.unk78C = 2;
