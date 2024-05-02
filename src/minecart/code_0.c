@@ -1,4 +1,14 @@
-#include "minecart.h"
+#include <ultra64.h>
+#include "functions.h"
+typedef struct {
+    u8 unk0[0x10 - 0x0];
+    u16 unk10;
+    char unk12[0x1E];
+    u8 *unk30;
+    u8 *unk34;
+    u8 unk38[0x42 - 0x38];
+    u8 unk42;
+} AAD_minecart_80027DA0;
 
 extern s32 D_minecart_80028C30; // TODO: Proper datatype
 extern s32 D_minecart_80028C34; // TODO: Datatype
@@ -13,6 +23,8 @@ extern s16 D_global_asm_80750338;
 
 void func_global_asm_8065A660(f32, f32);
 void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3);
+void func_minecart_80024E78(AAD_minecart_80027DA0*, void*, s32, s32);
+void func_minecart_800253C0(AAD_minecart_80027DA0*, s16, u8);
 
 void func_minecart_80024000(u8 arg0, u8 arg1) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
@@ -297,9 +309,6 @@ void func_minecart_80024914(void) {
 // struct, loop
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024E78.s")
 
-// Jumptable, doable, close, float, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024FD0.s")
-
 typedef struct {
     s32 unk0; // Unused
     Actor *unk4;
@@ -319,10 +328,9 @@ extern s32 D_minecart_80028C20;
 void func_global_asm_8061C2F0(Actor*, f32, f32, f32, f32, f32, f32, s32);
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
-/*
 void func_minecart_80024FD0(void) {
     AAD_minecart_80024FD0 *aaD;
-    PlayerAdditionalActorData *PaaD;
+    PlayerAdditionalActorData* PaaD;
     s32 var_v0;
     s32 var_v1;
 
@@ -341,12 +349,9 @@ void func_minecart_80024FD0(void) {
     }
     if ((current_actor_pointer->control_state != 5) && (current_actor_pointer->control_state != 6)) {
         f32 dy = (character_change_array->look_at_eye_y - current_actor_pointer->y_position) - 100.0f;
-        f64 temp_f2;
-        temp_f2 = dy / 650.0;
-        temp_f2 *= 0.15;
-        // temp_f2 += 0.15;
-        func_global_asm_807248B0(current_actor_pointer, temp_f2);
-        func_global_asm_807248B0(player_pointer, temp_f2);
+        f32 temp = (dy / 650.0 * (3.0/20.0)) + 0.15;
+        func_global_asm_807248B0(current_actor_pointer, temp);
+        func_global_asm_807248B0(player_pointer, temp);
     }
     if (PaaD->unk1F0 & 8) {
         aaD->unk3E = 3;
@@ -404,7 +409,6 @@ void func_minecart_80024FD0(void) {
             break;
     }
 }
-*/
 
 typedef struct minecart_struct_0 {
     u8 pad0[0x20];
