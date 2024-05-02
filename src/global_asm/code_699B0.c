@@ -507,7 +507,7 @@ void func_global_asm_80666290(Actor *actor, void *arg1, void *arg2, void *arg3, 
 }
 
 // BUG: Missing return?
-u8 func_global_asm_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4) {
+u8 func_global_asm_8066635C(Actor *arg0, f32 x, f32 y, f32 z, f32 *arg4) {
     u8 sp3F;
     u8 sp3E;
     s32 sp38;
@@ -519,7 +519,7 @@ u8 func_global_asm_8066635C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4
         D_global_asm_807F94B3 = 0;
     }
     D_global_asm_807F94BC = 1;
-    func_global_asm_80666428(NULL, arg1, arg2, arg3, &sp3F, &sp38, &sp3E, &sp34, 0);
+    func_global_asm_80666428(NULL, x, y, z, &sp3F, &sp38, &sp3E, &sp34, 0);
     *arg4 = D_global_asm_807F948C;
 }
 
