@@ -374,9 +374,6 @@ void func_minecart_800280BC(void) {
 // big, structs, floats
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_8002835C.s")
 
-// very close, switch case woes
-//#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_800286EC.s")
-
 extern s32 D_global_asm_8072030C; // TODO: Type
 extern u8 D_global_asm_807FBD70;
 extern u8 D_global_asm_807FBDC4;
