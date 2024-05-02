@@ -8,13 +8,80 @@ typedef struct {
     char unk12[0x1E];
     u8 *unk30;
     u8 *unk34;
-    u8 unk38[0x42 - 0x38];
+    u8 unk38[2];
+    u8 unk3A;
+    u8 unk3B;
+    s16 unk3C;
+    char unk3E[4];
     u8 unk42;
 } AAD_minecart_80027DA0;
+
+typedef struct MinecartStruct0 {
+    s32 unk0;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+} MinecartStruct0;
+
+typedef struct MinecartStruct1 {
+    u8 pad0[0x3A];
+    u8 unk3A;
+    u8 unk3B;
+    s16 unk3C;
+} MinecartStruct1;
+
+typedef struct {
+    u8 unk0[0x10 - 0x0];
+    s16 unk10; // Used
+    s16 unk12;
+    u8 unk14[0x34 - 0x14];
+    u8 *unk34; // Used
+} AAD_80027778;
+
+typedef struct {
+    u8 unk0[0x10 - 0x0];
+    s16 unk10;
+    u8 unk12[0x34 - 0x12];
+    s32 unk34;
+} A178_minecart_800280BC;
+
+typedef struct {
+    u8 unk0[0x88 - 0x0];
+    Actor *unk88;
+} AAD_800286EC;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10; // Used
+    s16 unk12;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    void *unk34; // Used
+} A178_800286EC;
 
 /* variables */
 extern s32 D_minecart_80028BD0;
 extern s32 D_global_asm_8072030C;
+extern s32 D_global_asm_8074E880[];
+extern s32 D_global_asm_80720120; // sprite
+extern u8 D_global_asm_807FBB85;
+extern s32 D_global_asm_8072030C; // TODO: Type
+extern u8 D_global_asm_807FBD70;
+extern u8 D_global_asm_807FBDC4;
+extern s32 D_minecart_80028C34; // TODO: Type
+extern s32 D_minecart_80028C40; // TODO: Type
+extern s32 D_minecart_80028C48; // TODO: Type
 
 /* function signatures */
 void func_global_asm_8066E9EC(Actor*, s32, f32);
@@ -95,22 +162,11 @@ void func_minecart_800265F0(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-typedef struct MinecartStruct0 {
-    s32 unk0;
-    s32 unk4;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-} MinecartStruct0;
-
 void func_minecart_80026B6C(MinecartStruct0 *arg0, f32 arg1) {
     arg0->unkA = func_global_asm_80612794(player_pointer->y_rotation) * (extra_player_info_pointer->vehicle_actor_pointer->unkB8 * arg1) + player_pointer->x_position;
     arg0->unkC = extra_player_info_pointer->vehicle_actor_pointer->floor;
     arg0->unkE = func_global_asm_80612790(player_pointer->y_rotation) * (extra_player_info_pointer->vehicle_actor_pointer->unkB8 * arg1) + player_pointer->z_position;
 }
-
-extern s32 D_global_asm_8074E880[];
 
 void func_minecart_80026C54(void) {
     func_global_asm_80714950(((rand() >> 0xF) % 100) + 300);
@@ -129,28 +185,11 @@ void func_minecart_80026C54(void) {
 // Jumptable, huge
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_80026DA8.s")
 
-// Jumptable, close, float regalloc, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_80027778.s")
-
-extern s32 D_global_asm_80720120; // sprite
-extern u8 D_global_asm_807FBB85;
-
-typedef struct {
-    u8 unk0[0x10 - 0x0];
-    s16 unk10; // Used
-    s16 unk12;
-    u8 unk14[0x34 - 0x14];
-    u8 *unk34; // Used
-} AAD_80027778;
-
-/*
 void func_minecart_80027778(void) {
+    f32 temp;
     f32 dx;
-    f32 dz;
-    f32 d;
-    f32 temp_f12;
     AAD_80027778 *aaD;
-    f32 temp_f14;
+    f32 dy;
     s16 sp5E;
     s16 sp5C;
 
@@ -199,16 +238,17 @@ void func_minecart_80027778(void) {
         func_global_asm_807149B8(1);
         drawSpriteAtPosition(&D_global_asm_80720120, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position);
     }
-    temp_f12 = sp5E;
-    temp_f14 = sp5C;
-    current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(temp_f12, temp_f14, current_actor_pointer->x_position, current_actor_pointer->z_position), 6.0f);
+    dx = sp5E;
+    dy = sp5C;
+    current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(dx, dy, current_actor_pointer->x_position, current_actor_pointer->z_position), 6.0f);
     current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
     func_global_asm_80729E6C();
     func_global_asm_806651FC(current_actor_pointer);
     func_global_asm_80665564(current_actor_pointer, (2.0 * func_global_asm_80612794(object_timer * 0x64)) + 10.0);
-    dx = temp_f12 - current_actor_pointer->x_position;
-    dz = temp_f14 - current_actor_pointer->z_position;
-    if (((dx * dx) + (dz * dz)) < 1600.0f) {
+    //dy and dx loads are flipped
+    dy = sp5E - current_actor_pointer->x_position;
+    dx = sp5C - current_actor_pointer->z_position;
+    if (((dy * dy) + (dx * dx)) < 1600.0f) {
         current_actor_pointer->unk168++;
     }
     if ((D_global_asm_807FBB85 != 0) || (current_actor_pointer->unkF0 -= 1, (current_actor_pointer->unkF0 == 0))) {
@@ -217,32 +257,35 @@ void func_minecart_80027778(void) {
         }
         if ((current_actor_pointer->unk11C == NULL) || (current_actor_pointer->unk11C->unk15F == 0)) {
             if (extra_player_info_pointer->unk1F0 & 0x10000000) {
-                extra_player_info_pointer->unk1F0 &= 0xEFFFFFFF;
+                extra_player_info_pointer->unk1F0 &= ~0x10000000;
                 func_global_asm_8061C6A8(extra_player_info_pointer->unk104, extra_player_info_pointer->vehicle_actor_pointer, 4, 0x800, 0x28, 0, 5, 0x19, 0x14, 0, 0.15f);
             }
         }
         func_global_asm_8067E278(0, 1);
         deleteActor(current_actor_pointer);
     }
-    d = (current_actor_pointer->x_position - character_change_array->look_at_eye_x) * (current_actor_pointer->x_position - character_change_array->look_at_eye_x) +
-    (current_actor_pointer->y_position - character_change_array->look_at_eye_y) * (current_actor_pointer->y_position - character_change_array->look_at_eye_y) +
-    (current_actor_pointer->z_position - character_change_array->look_at_eye_z) * (current_actor_pointer->z_position - character_change_array->look_at_eye_z);
+    
+    dx = (current_actor_pointer->x_position - character_change_array->look_at_eye_x);
+    dx = dx * dx;
+    dy = (current_actor_pointer->y_position - character_change_array->look_at_eye_y);
+    dx = dy * dy + dx;
+    dy = (current_actor_pointer->z_position - character_change_array->look_at_eye_z);
+    dx = dy * dy + dx;
     switch (current_actor_pointer->unkEC) {
         case 0:
         case 2:
-            if (d < 6400.0f) {
+            if (dx < 6400.0f) {
                 playSoundAtActorPosition(current_actor_pointer, 0x128, 0xFF, 0x7F, 0);
                 current_actor_pointer->unkEC++;
             }
             break;
         case 1:
-            if (d > 10000.0f) {
+            if (dx > 10000.0f) {
                 current_actor_pointer->unkEC++;
             }
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_minecart_80027CF4(void) {
     if (current_actor_pointer->control_state_progress == 0) {
@@ -288,41 +331,26 @@ void func_minecart_80027E04(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_80027EE8.s")
+void func_minecart_80027EE8(AAD_minecart_80027DA0 *arg0) {
+    f32 dx, dy;
+    
+    dx = (current_actor_pointer->x_position - D_global_asm_807FDC94->x_position);
+    dx = dx * dx;
+    dy = (current_actor_pointer->y_position - D_global_asm_807FDC94->y_position);
+    dx = dy * dy + dx;
+    dy = (current_actor_pointer->z_position - D_global_asm_807FDC94->z_position);
+    dx = dy * dy + dx;
 
-typedef struct MinecartStruct1 {
-    u8 pad0[0x3A];
-    u8 unk3A;
-    u8 unk3B;
-    s16 unk3C;
-} MinecartStruct1;
-
-/*
-// TODO: Good progress made
-void func_minecart_80027EE8(MinecartStruct1 *arg0) {
-    f32 d;
-    f32 dx = (current_actor_pointer->x_position - D_global_asm_807FDC94->x_position);
-    f32 dy = (current_actor_pointer->y_position - D_global_asm_807FDC94->y_position);
-    f32 dz = (current_actor_pointer->z_position - D_global_asm_807FDC94->z_position);
-
-    d = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
-    if (d < 200.0f) {
+    dx = sqrtf(dx);
+    if (dx < 200.0f) {
         arg0->unk3A++;
         if (arg0->unk3A >= 9) {
-            playSoundAtActorPosition(current_actor_pointer, 0x1F, 0xFF, 127.0f - (d - arg0->unk3C), 0);
-            arg0->unk3A = ((func_global_asm_806119A0() / 4294967295.0) * 3.0);
+            playSoundAtActorPosition(current_actor_pointer, 0x1F, 0xFF, 127.0f - (dx - arg0->unk3C), 0);
+            arg0->unk3A = ( (func_global_asm_806119A0() / 4294967295.0) * 3.0);
         }
     }
-    arg0->unk3C = d;
+    arg0->unk3C = dx;
 }
-*/
-
-typedef struct {
-    u8 unk0[0x10 - 0x0];
-    s16 unk10;
-    u8 unk12[0x34 - 0x12];
-    s32 unk34;
-} A178_minecart_800280BC;
 
 void func_minecart_800280BC(void) {
     A178_minecart_800280BC *sp54;
@@ -456,36 +484,6 @@ void func_minecart_8002835C(void) {
         return;
     }
 }
-
-extern s32 D_global_asm_8072030C; // TODO: Type
-extern u8 D_global_asm_807FBD70;
-extern u8 D_global_asm_807FBDC4;
-extern s32 D_minecart_80028C34; // TODO: Type
-extern s32 D_minecart_80028C40; // TODO: Type
-extern s32 D_minecart_80028C48; // TODO: Type
-
-typedef struct {
-    u8 unk0[0x88 - 0x0];
-    Actor *unk88;
-} AAD_800286EC;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s16 unk10; // Used
-    s16 unk12;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    void *unk34; // Used
-} A178_800286EC;
 
 void func_minecart_800286EC(void) {
     A178_800286EC *a178;
