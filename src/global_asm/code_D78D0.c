@@ -1221,8 +1221,75 @@ void func_global_asm_806D5CCC(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D61B8.s")
+extern s16 D_global_asm_80753558[];
+extern s16 D_global_asm_80753568[];
+
+void func_global_asm_806D61B8(void) {
+    func_global_asm_806DF494(&current_actor_pointer->y_rotation, current_actor_pointer->unkEE, extra_player_info_pointer->unk48);
+    func_global_asm_806D3608();
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            extra_player_info_pointer->unk30 = 0.2f;
+            extra_player_info_pointer->unk2C = 10.0f;
+            extra_player_info_pointer->unk48 = 0x32;
+            extra_player_info_pointer->unk68 = D_global_asm_80753568[D_global_asm_807FD584];
+            handleInputsForControlState(0x18);
+            if (current_actor_pointer->unkE0 != 0.0f) {
+                extra_player_info_pointer->unk30 = 20.0f;
+                func_global_asm_806CD8EC();
+            } else {
+                func_global_asm_806CD424(current_actor_pointer->y_rotation, extra_player_info_pointer->unk68, extra_player_info_pointer->unk68);
+            }
+            func_global_asm_806CBE90();
+            func_global_asm_806CC948();
+            func_global_asm_806DF494(&current_actor_pointer->unkEE, current_actor_pointer->y_rotation, extra_player_info_pointer->unk48);
+            if (current_actor_pointer->unkFC != 0) {
+                current_actor_pointer->unkB8 = current_actor_pointer->unkB8 * 0.9;
+            }
+            break;
+        case 1:
+            handleInputsForControlState(0x18);
+            func_global_asm_806CC948();
+            current_actor_pointer->y_velocity = 150.0f;
+            current_actor_pointer->control_state_progress += 1;
+            break;
+        case 2:
+            handleInputsForControlState(0x18);
+            func_global_asm_806CD424(current_actor_pointer->y_rotation, extra_player_info_pointer->unk68, extra_player_info_pointer->unk68);
+            func_global_asm_806CC948();
+            func_global_asm_806DF494(&current_actor_pointer->unkEE, current_actor_pointer->y_rotation, extra_player_info_pointer->unk48);
+            break;
+        case 3:
+            extra_player_info_pointer->unk30 = D_global_asm_80753558[D_global_asm_807FD584];
+            if (current_character_index[cc_player_index] == 0) {
+                handleInputsForControlState(0x19);
+            } else {
+                handleInputsForControlState(0x19);
+            }
+            func_global_asm_806CC8B8();
+            break;
+        case 4:
+            extra_player_info_pointer->unk30 = D_global_asm_80753558[D_global_asm_807FD584];
+            if (current_character_index[cc_player_index] == 0) {
+                handleInputsForControlState(0x19);
+            } else {
+                handleInputsForControlState(0x19);
+            }
+            func_global_asm_806CC8B8();
+            if (extra_player_info_pointer->unk4 != 0.0f) {
+                func_global_asm_806CFF9C(current_actor_pointer);
+            }
+            break;
+        case 5:
+            handleInputsForControlState(5);
+            current_actor_pointer->unkEE = (current_actor_pointer->y_rotation + 0x800) % 4096;
+            func_global_asm_806CC8A8();
+            func_global_asm_806CBE90();
+            func_global_asm_806CC948();
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 extern f32 D_global_asm_8075352C[];
 extern s16 D_global_asm_807FD584;
