@@ -1,30 +1,123 @@
 #include <ultra64.h>
 #include "functions.h"
+
+/* structs */
 typedef struct {
     u8 unk0[0x10 - 0x0];
-    u16 unk10;
+    s16 unk10;
     char unk12[0x1E];
     u8 *unk30;
     u8 *unk34;
-    u8 unk38[0x42 - 0x38];
+    u8 unk38[2];
+    u8 unk3A;
+    u8 unk3B;
+    s16 unk3C;
+    char unk3E[4];
     u8 unk42;
 } AAD_minecart_80027DA0;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s16 unk3C;
+    u8 unk3E;
+    u8 unk3F;
+} Struct80024254_arg0;
+
+typedef struct minecart_struct_0 {
+    u8 pad0[0x20];
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+} MinecartStruct0;
+
+typedef struct {
+    s32 unk0;
+    Actor *unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    u8 unk14[0x30 - 0x14];
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s16 unk3C;
+    s8 unk3E;
+} AAD_minecart_8002430C;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    Actor *unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    f32 unk24;
+    f32 unk28;
+} AAD_minecart_80024890;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+} TEMP3;
+
+typedef struct {
+    s32 unk0; // Unused
+    Actor *unk4;
+    u8 unk8[0x24 - 0x8]; // Unused
+    f32 unk24;
+    f32 unk28;
+    s32 unk2C; // Unused
+    u8 *unk30;
+    s32 unk34;
+    s32 unk38; // Unused
+    s16 unk3C; // Unused
+    u8 unk3E;
+} AAD_minecart_80024FD0;
+
+/* variables */
 extern s32 D_minecart_80028C30; // TODO: Proper datatype
 extern s32 D_minecart_80028C34; // TODO: Datatype
 extern s32 D_minecart_80028C3C; // TODO: Datatype
 extern s32 D_minecart_80028C40; // TODO: Datatype
-
 extern s32 D_global_asm_8072006C; // TODO: Proper datatype
-
 extern s16 D_global_asm_807502D0;
 extern f32 D_global_asm_807502F8;
 extern s16 D_global_asm_80750338;
+extern s16 D_global_asm_80750AC4;
+extern s32 D_minecart_80028C20;
 
+/* function signatures */
 void func_global_asm_8065A660(f32, f32);
 void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3);
-void func_minecart_80024E78(AAD_minecart_80027DA0*, void*, s32, s32);
+void func_minecart_80024E78(AAD_minecart_80027DA0* arg0, s32* arg1[], u8 arg2, u8 arg3);
 void func_minecart_800253C0(AAD_minecart_80027DA0*, s16, u8);
+void func_global_asm_8061C2F0(Actor*, f32, f32, f32, f32, f32, f32, s32);
+void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
 void func_minecart_80024000(u8 arg0, u8 arg1) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
@@ -60,27 +153,6 @@ void func_minecart_800241A0(s16 *arg0, u8 arg1, u8 arg2) {
     }
 }
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s16 unk3C;
-    u8 unk3E;
-    u8 unk3F;
-} Struct80024254_arg0;
-
 void func_minecart_80024254(Struct80024254_arg0 *arg0) {
     u8 temp = arg0->unk3E;
     if (current_actor_pointer->unkB8 != temp) {
@@ -99,26 +171,6 @@ void func_minecart_80024254(Struct80024254_arg0 *arg0) {
         }
     }
 }
-
-extern s16 D_global_asm_80750AC4;
-
-typedef struct {
-    s32 unk0;
-    Actor *unk4;
-    u8 unk8;
-    u8 unk9;
-    u8 unkA;
-    u8 unkB;
-    s32 unkC;
-    s16 unk10;
-    s16 unk12;
-    u8 unk14[0x30 - 0x14];
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s16 unk3C;
-    s8 unk3E;
-} AAD_minecart_8002430C;
 
 void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
     AAD_minecart_8002430C *aaD;
@@ -233,22 +285,6 @@ void func_minecart_80024768(void) {
     createLight(x1, y1, z1, x2, y2, z2, 0.0f, 1, 0xFF, 0xFF, 0xFF);
 }
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    Actor *unk4;
-    s32 unk8;
-    s32 unkC;
-    s16 unk10;
-    s16 unk12;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    f32 unk24;
-    f32 unk28;
-} AAD_minecart_80024890;
-
 void func_minecart_80024890(void) {
     AAD_minecart_80024890 *temp_v1;
 
@@ -306,27 +342,31 @@ void func_minecart_80024914(void) {
 // long, structs
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024B00.s")
 
-// struct, loop
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024E78.s")
+void func_minecart_80024E78(AAD_minecart_80027DA0* arg0, s32* arg1[], u8 arg2, u8 arg3) {
+    s32 var_s3;
+    u8 temp_s5;
+    TEMP3 *temp_v0_2;
+    TEMP3 *temp_s1;
+    u8 i;
 
-typedef struct {
-    s32 unk0; // Unused
-    Actor *unk4;
-    u8 unk8[0x24 - 0x8]; // Unused
-    f32 unk24;
-    f32 unk28;
-    s32 unk2C; // Unused
-    u8 *unk30;
-    s32 unk34;
-    s32 unk38; // Unused
-    s16 unk3C; // Unused
-    u8 unk3E;
-} AAD_minecart_80024FD0;
-
-extern s32 D_minecart_80028C20;
-
-void func_global_asm_8061C2F0(Actor*, f32, f32, f32, f32, f32, f32, s32);
-void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
+    temp_s5 = *arg0->unk34;
+    for (i = 0, var_s3 = FALSE; i < 4 && !var_s3; i++) {
+        if (((arg0->unk42 == 1) && (i < 2)) || ((arg0->unk42 == 2) && (i >= 2))) {
+            temp_s1 = arg1[temp_s5 - arg2] + i;
+            if ((temp_s5 >= arg2) && (arg3 >= temp_s5) && (arg0->unk10 == temp_s1->unk0)) {
+                free(arg0->unk30);
+                var_s3 = TRUE;
+                temp_v0_2 = malloc(3);
+                arg0->unk34 = arg0->unk30 = temp_v0_2;
+                arg0->unk34[0] = temp_s1->unk3;
+                arg0->unk34[1] = temp_s1->unk1;
+                arg0->unk34[2] = 0xFF;
+                arg0->unk3E[3] = temp_s1->unk2;
+                arg0->unk10 = 1;
+            }
+        }
+    }
+}
 
 void func_minecart_80024FD0(void) {
     AAD_minecart_80024FD0 *aaD;
@@ -409,13 +449,6 @@ void func_minecart_80024FD0(void) {
             break;
     }
 }
-
-typedef struct minecart_struct_0 {
-    u8 pad0[0x20];
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-} MinecartStruct0;
 
 void func_minecart_8002538C(MinecartStruct0 *arg0) {
     arg0->unk20 = arg0->unk20 + arg0->unk24;
