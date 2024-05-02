@@ -23,6 +23,8 @@ typedef struct MinecartStruct0 {
     s16 unkA;
     s16 unkC;
     s16 unkE;
+    char unk10[0x1C];
+    s16 unk2C;
 } MinecartStruct0;
 
 typedef struct MinecartStruct1 {
@@ -182,8 +184,166 @@ void func_minecart_80026C54(void) {
     );
 }
 
-// Jumptable, huge
-#pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_25F0/func_minecart_80026DA8.s")
+void func_minecart_80026DA8(void) {
+    char pad[4];
+    MinecartStruct0* sp68;
+    s16 sp66;
+    char pad1[4];
+    char pad2[4];
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    char pad3[4];
+    Actor* temp_s0;
+    Actor* temp_s0_3;
+    Actor* temp_s2;
+    f32 temp_f0_2;
+    f32 temp_f12;
+    f32 temp_f12_3;
+    f32 temp_f14;
+    f32 temp_f14_2;
+    f32 temp_f16;
+    f32 temp_f16_2;
+    f32 temp_f18;
+    f32 temp_f2;
+    f32 temp_f2_2;
+    f32 temp_f2_3;
+    f32 var_f2;
+
+
+    u8 temp_v1;
+    s16* temp_s0_2; //unknown type
+
+    //temp_s0 = current_actor_pointer;
+    temp_s2 = current_actor_pointer->unk11C;
+    sp68 = temp_s2->additional_actor_data;
+    sp66 = current_actor_pointer->unk168 * current_actor_pointer->unkEC;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_global_asm_80613C48(current_actor_pointer, 0x59C, 0.0f, 0.0f);
+        current_actor_pointer->object_properties_bitfield |= 0x800000;
+        current_actor_pointer->unk16A = 0xFF;
+        current_actor_pointer->unk16B = 0xFF;
+        current_actor_pointer->unk16C = 0xFF;
+        current_actor_pointer->object_properties_bitfield &= ~0x00008000;
+        current_actor_pointer->shadow_opacity = 0x96;
+    }
+    current_actor_pointer->y_rotation = temp_s2->y_rotation;
+    current_actor_pointer->x_position = ((func_global_asm_80612794(temp_s2->y_rotation + sp66) * 47.0f + temp_s2->x_position) - current_actor_pointer->x_position) * 0.3 + current_actor_pointer->x_position;
+    current_actor_pointer->z_position =  ((func_global_asm_80612790(temp_s2->y_rotation + sp66) * 47.0f + temp_s2->z_position) - current_actor_pointer->z_position) * 0.3 + current_actor_pointer->z_position;
+    current_actor_pointer->y_position =  current_actor_pointer->y_position + (temp_s2->y_position - 10.0f - current_actor_pointer->y_position) * 0.3;
+    switch (temp_s2->control_state) {                        /* irregular */
+    case 0x2:
+    case 0x3:
+        if (((current_actor_pointer->unk168 == 1) && (temp_s2->control_state == 2)) || ((current_actor_pointer->unk168 == -1) && (temp_s2->control_state == 3))) {
+            temp_s0_2 = extra_player_info_pointer->vehicle_actor_pointer->additional_actor_data;
+            func_minecart_80026C54();
+            switch (temp_s2->control_state_progress) {                    /* switch 1; irregular */
+            case 0:                                 /* switch 1 */
+                if (*temp_s0_2 == NULL) {
+                    current_actor_pointer->control_state_progress = 0;
+                    playActorAnimation(current_actor_pointer, 0x312);
+                    temp_s2->control_state_progress = 1;
+                    func_minecart_80026B6C(sp68, 2.2f);
+                }
+                break;
+            case 1:     
+                /* switch 1 */
+                var_f2 = (current_actor_pointer->animation_state->unk0->unk4 / 17.0 > 1.0) ? 1.0 : current_actor_pointer->animation_state->unk0->unk4 / 17.0;
+                temp_f16 = func_global_asm_80612790(var_f2 * 2048.0f + 2048.0f) * 0.5 + 0.5;
+                current_actor_pointer->x_position = ((sp68->unkA - current_actor_pointer->x_position) * temp_f16) + current_actor_pointer->x_position;
+                current_actor_pointer->y_position = 10.0f + current_actor_pointer->y_position + ((extra_player_info_pointer->vehicle_actor_pointer->floor - (10.0f + current_actor_pointer->y_position)) * temp_f16);
+                current_actor_pointer->z_position = ((sp68->unkE - current_actor_pointer->z_position) * temp_f16) + current_actor_pointer->z_position;
+                if ((player_pointer->animation_state->unk64 == 0x294) || (( (current_actor_pointer->animation_state->unk0->unk4 > 16.0f)) && (current_actor_pointer->animation_state->unk0->unk4 < 18.0f))) {
+                    current_actor_pointer->unk132 = 1;
+                } else {
+                    current_actor_pointer->unk132 = 0;
+                }
+                if (current_actor_pointer->control_state_progress != 0) {
+                    temp_s2->control_state_progress = 0xFF;
+                }
+                break;
+            }
+        }
+        break;
+    case 0x4:
+    case 0x5:
+        if (((current_actor_pointer->unk168 == 1) && (temp_s2->control_state == 4)) || ((current_actor_pointer->unk168 == -1) && (temp_s2->control_state == 5))) {
+            func_minecart_80026C54();
+            switch (temp_s2->control_state_progress) {                    /* switch 2; irregular */
+            case 0:                                 /* switch 2 */
+                sp68->unk2C = 0x46;
+                temp_s2->control_state_progress = 1;
+                current_actor_pointer->unk132 = 1;
+                playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x301, 0xFFU, 0x7F, 0U, 0U, 0.0f, 0U);
+                /* fallthrough */
+            case 1:                                 /* switch 2 */
+                func_minecart_80026B6C(sp68, 0.3f);
+                if (sp68->unk2C--) {
+                    sp58 = func_global_asm_80612790(sp68->unk2C / 70.0 * 2048.0 + 2048.0) * 0.5 + 0.5;
+                    sp54 = func_global_asm_80612794((2048.0f * sp58));
+                    sp50 = func_global_asm_80612794(sp58 * 1536.0f + 1024.0f) * (current_actor_pointer->unk168 * -0x6E);
+                    sp4C = (func_global_asm_80612790(sp58 * 4096.0f) * 0.5 + 0.5) * 50.0 + -30.0;
+                    current_actor_pointer->x_position = ((((func_global_asm_80612794((player_pointer->y_rotation - 0x400)) * sp50) + sp68->unkA) - current_actor_pointer->x_position) * sp54) + current_actor_pointer->x_position;
+                    current_actor_pointer->y_position = current_actor_pointer->y_position + (((extra_player_info_pointer->vehicle_actor_pointer->floor + sp4C) - current_actor_pointer->y_position) * sp54);
+                    current_actor_pointer->z_position = ((((func_global_asm_80612790((s16) (player_pointer->y_rotation - 0x400)) * sp50) + sp68->unkE) - current_actor_pointer->z_position) * sp54) + current_actor_pointer->z_position;
+                    if (sp68->unk2C < 0x10) {
+                        current_actor_pointer->unk132 = 0;
+                    }
+                } else {
+                    temp_s2->control_state_progress = 0xFF;
+                }
+                break;
+            }
+            if (current_actor_pointer->unk168 == 1) {
+                current_actor_pointer->x_rotation = func_global_asm_806CC190(current_actor_pointer->x_rotation, 0xC00, 7.0f);
+            } else {
+                current_actor_pointer->x_rotation = func_global_asm_806CC190(current_actor_pointer->x_rotation, 0x400, 7.0f);
+            }
+        }
+        break;
+    case 0x6:
+        if (temp_s2->control_state_progress == 0) {
+            sp68->unk2C = D_global_asm_807FDC9C->unkA_u8[1];
+            temp_s2->control_state_progress = 1;
+        }
+        if (current_actor_pointer->unk168 == 1) {
+            current_actor_pointer->x_rotation = func_global_asm_806CC190(current_actor_pointer->x_rotation, 0xC00, 16.0f);
+        } else {
+            current_actor_pointer->x_rotation = func_global_asm_806CC190(current_actor_pointer->x_rotation, 0x400, 16.0f);
+        }
+        if (sp68->unk2C != 0) {
+            sp68->unk2C--;
+        } else {
+            temp_s2->control_state_progress = 0xFF;
+        }
+        if ((current_actor_pointer->control_state_progress == 0) && (temp_s2->unk15F == 4)) {
+            extra_player_info_pointer->unk1F0 |= 0x10000000;
+            current_actor_pointer->unk15F = 0xB4;
+            current_actor_pointer->control_state_progress += 1;
+        }
+        current_actor_pointer->unkEC = func_global_asm_806CC190(current_actor_pointer->unkEC, 0x64, 10.0f);
+        break;
+    case 0x3B:
+        deleteActor(current_actor_pointer);
+        break;
+    case 1:
+        break;
+    }
+    if (temp_s2->control_state == 6) {
+        if (current_actor_pointer->unk15F != 0) {
+            current_actor_pointer->unk15F = current_actor_pointer->unk15F - 0xC;
+            func_global_asm_8061C464(extra_player_info_pointer->unk104, extra_player_info_pointer->vehicle_actor_pointer, 4, (s32) (s16) ((s32) (current_actor_pointer->unk15F << 0xC) / 360), 0x64, 0, 5, 0x23, 0x14, 0, 0.2f);
+        }
+    }
+    if (temp_s2->control_state != 6) {
+        if (current_actor_pointer->x_rotation != 0) {
+            current_actor_pointer->x_rotation = func_global_asm_806CC190(current_actor_pointer->x_rotation, 0, 8.0f);
+            current_actor_pointer->unkEC = func_global_asm_806CC190(current_actor_pointer->unkEC, 0x2BC, 10.0f);
+        }
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 void func_minecart_80027778(void) {
     f32 temp;
