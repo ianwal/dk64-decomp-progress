@@ -81,9 +81,9 @@ void func_global_asm_806BD170(void) {
 extern s8 D_global_asm_807506B4;
 extern s8 D_global_asm_807506A8[];
 
-extern s16 D_global_asm_8076A0A6; // Probably static
+extern s16 D_8076A0A6; // Probably static
 
-extern f32 D_global_asm_807FC8D4;
+extern f32 D_807FC8D4;
 
 s32 areAllKeysTurnedIn(void);
 
@@ -93,17 +93,17 @@ typedef struct {
 
 /*
 void func_global_asm_806BD3E4(void) {
-    Actor178_806BD3E4 *sp34;
+    Actor178_806BD3E4 *a178;
     s32 sp30;
     s32 sp2C;
     u8 sp2B;
     u8 temp;
     u16 sp28;
-    s16 var_v1; // Probably static
+    s16 var_v1; // Probably static/volatile
     s16 var_t0;
 
-    var_v1 = D_global_asm_8076A0A6;
-    sp34 = current_actor_pointer->unk178;
+    var_v1 = D_8076A0A6;
+    a178 = current_actor_pointer->unk178;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (areAllKeysTurnedIn()) {
             current_actor_pointer->control_state = 0x40;
@@ -118,8 +118,8 @@ void func_global_asm_806BD3E4(void) {
         last_spawned_actor->unk64 |= 0x20;
         last_spawned_actor->object_properties_bitfield |= 0x400;
         last_spawned_actor->draw_distance = 0x7D0;
-        sp34->unk0 = last_spawned_actor;
-        D_global_asm_807FC8D4 = 1000.0f;
+        a178->unk0 = last_spawned_actor;
+        D_807FC8D4 = 1000.0f;
         func_global_asm_806BD170();
         current_actor_pointer->control_state = 0;
         if (D_global_asm_80750660 != 0) {
@@ -137,7 +137,7 @@ void func_global_asm_806BD3E4(void) {
             var_t0++;
         }
     }
-    D_global_asm_807FC8D4 = ((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position)) + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position));
+    D_807FC8D4 = ((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position)) + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position));
     sp28 = 0;
     switch (current_actor_pointer->control_state) {
         case 1:
@@ -178,7 +178,7 @@ void func_global_asm_806BD3E4(void) {
             D_global_asm_807506B4 = 0;
         }
     }
-    D_global_asm_8076A0A6 = 0;
+    D_8076A0A6 = 0;
     renderActor(current_actor_pointer, 0);
 }
 */

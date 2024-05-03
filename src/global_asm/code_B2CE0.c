@@ -104,6 +104,8 @@ void func_global_asm_806AE394(f32 arg0, f32 arg1) {
 
 void func_global_asm_8072C918(s16, s16, s16);
 
+void func_global_asm_8072A450(void); // extern
+
 /*
 void func_global_asm_806AE588(void) {
     s32 var_v1;
@@ -187,7 +189,7 @@ void func_global_asm_806AE588(void) {
                     }
                     break;
                 case 2:
-                    func_global_asm_8072A450(current_actor_pointer);
+                    func_global_asm_8072A450();
                     if (((rand() >> 0xF) % 1000) >= 0x3E4) {
                         func_global_asm_8072DE44(0x1FB);
                     }
@@ -295,8 +297,90 @@ void func_global_asm_806AEE08(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AEE84.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AF688.s")
+u8 func_global_asm_8072D13C(u8, s32); // extern
+
+void func_global_asm_806AF688(void) {
+    s32 var_v0;
+
+    initializeCharacterSpawnerActor();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_global_asm_8072B79C(0x2C0, 0x2C1, 0x2C1);
+        func_global_asm_80724CA4(0xE, 1);
+        D_global_asm_807FDC90->unk1A |= 0x800;
+        current_actor_pointer->object_properties_bitfield |= 0x400;
+    }
+    func_global_asm_806AE394(40.0f, 70.0f);
+    if ((D_global_asm_807FBB70.unk200 == 9) || (D_global_asm_807FBB70.unk15 != 0)) {
+        current_actor_pointer->control_state = 0x3A;
+        current_actor_pointer->control_state_progress = 0;
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x11:
+            func_global_asm_80724E48(2);
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    func_global_asm_8072B324(current_actor_pointer, 0);
+                    playActorAnimation(current_actor_pointer, 0x2C0);
+                    current_actor_pointer->control_state_progress += 1;
+                    // fallthrough
+                case 1:
+                    func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
+                    if (current_actor_pointer->unkB8 < 1.0f) {
+                        current_actor_pointer->control_state_progress += 1;
+                    }
+                    break;
+                case 2:
+                    func_global_asm_8072A450();
+                    if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                        func_global_asm_8072DE44(0x1FB);
+                    }
+                    break;
+            }
+            break;
+        case 0x1:
+            if (func_global_asm_8072E54C() != 0) {
+                current_actor_pointer->control_state = 0x11;
+                current_actor_pointer->control_state_progress = 0;
+            }
+            if (current_actor_pointer->control_state == 1) {
+                var_v0 = 2;
+            } else {
+                var_v0 = 0;
+            }
+            func_global_asm_80724E48(var_v0);
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
+            break;
+        case 0x2:
+        case 0x3:
+        case 0x7:
+        case 0x35:
+            if (current_actor_pointer->control_state == 0x35) {
+                var_v0 = 2;
+            } else {
+                var_v0 = 3;
+            }
+            func_global_asm_80724E48(var_v0);
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0, 0.0f);
+            break;
+        case 0x37:
+            current_actor_pointer->control_state = 0x40;
+            break;
+        default:
+            func_global_asm_8072B7CC(0x2C0);
+            break;
+    }
+    switch (current_actor_pointer->control_state) {
+        case 0x31:
+        case 0x37:
+        case 0x40:
+            break;
+        case 0x2:
+        case 0x3:
+            func_global_asm_8072D13C(current_actor_pointer->control_state, 1);
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+}
 
 int func_global_asm_8071910C(); // TODO: Signature
 
@@ -562,7 +646,7 @@ block_31:
                         }
                         break;
                     case 2:
-                        func_global_asm_8072A450(current_actor_pointer, current_actor_pointer->control_state_progress);
+                        func_global_asm_8072A450();
                         if (((rand() >> 0xF) % 1000) >= 0x3E4) {
                             func_global_asm_8072DE44(0x35F);
                         }
