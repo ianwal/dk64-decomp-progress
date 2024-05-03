@@ -2232,7 +2232,7 @@ void func_global_asm_806D91A4(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable, close, doable, PaaD type issue?
+// Jumptable, close, float
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D9320.s")
 
 extern f32 D_global_asm_80753CD0[];
@@ -2240,18 +2240,15 @@ extern s16 D_global_asm_807FD584;
 
 /*
 void func_global_asm_806D9320(void) {
-    f32 sp28;
     f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f14;
-    f32 temp_f16;
+    f32 dz;
+    f32 dy;
+    f32 d;
     f32 temp_f2;
-    f32 temp_f2_2;
+    f32 dx;
     f32 var_f0;
     f32 var_f12;
     s32 var_a1;
-    s32 var_v0;
-    u16 temp_a0;
 
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -2269,7 +2266,7 @@ void func_global_asm_806D9320(void) {
             } else {
                 var_a1 = 1;
             }
-            if ((current_actor_pointer->unk6C == 0) & current_actor_pointer->unk6A & 1) {
+            if ((!current_actor_pointer->unk6C) & current_actor_pointer->unk6A & 1) {
                 current_actor_pointer->unkB8 *= 0.25;
             }
             if (current_actor_pointer->unkB8 < var_a1) {
@@ -2278,31 +2275,29 @@ void func_global_asm_806D9320(void) {
                 current_actor_pointer->unkB8 -= var_a1;
             }
             current_actor_pointer->z_rotation = (func_global_asm_80611BB4(current_actor_pointer->unkB8, current_actor_pointer->y_velocity) * 4096.0f) / 6.2831855f;
-            current_actor_pointer->y_rotation = (func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, extra_player_info_pointer->unkB0, extra_player_info_pointer->unkB8) + 0x800) % 4095;
-            current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
-            temp_f0_2 = extra_player_info_pointer->unkB8 - player_pointer->z_position;
-            temp_f14 = (extra_player_info_pointer->unkB4 - player_pointer->y_position) / (player_pointer->animation_state->scale[1] * 0.16666666675);
-            temp_f2_2 = extra_player_info_pointer->unkB0 - player_pointer->x_position;
-            sp28 = temp_f14;
+            current_actor_pointer->unkEE = current_actor_pointer->y_rotation = (func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, extra_player_info_pointer->unkB0_f32, extra_player_info_pointer->unkB8) + 0x800) % 4095;
+            dz = extra_player_info_pointer->unkB8 - player_pointer->z_position;
+            dy = (extra_player_info_pointer->unkB4 - player_pointer->y_position) / (player_pointer->animation_state->scale[1] * 0.16666666675);
+            dx = extra_player_info_pointer->unkB0_f32 - player_pointer->x_position;
             var_f12 = player_pointer->unkB8;
-            temp_f16 = sqrtf((temp_f0_2 * temp_f0_2) + (temp_f2_2 * temp_f2_2)) / (player_pointer->animation_state->scale[1] * 0.16666666675);
+            d = sqrtf((dz * dz) + (dx * dx)) / (player_pointer->animation_state->scale[1] * 0.16666666675);
             if (var_f12 == 0.0) {
                 var_f12 = 1.0f;
             }
-            var_f0 = (temp_f16 / var_f12) - 1.0f;
+            var_f0 = (d / var_f12) - 1.0f;
             if (var_f0 < 1.0f) {
                 var_f0 = 1.0f;
             }
-            player_pointer->y_velocity = ((0.0 - D_global_asm_80753CD0[D_global_asm_807FD584] * 0.5 * (var_f0 * var_f0)) - temp_f14) / var_f0;
+            player_pointer->y_velocity = ((0.0 - D_global_asm_80753CD0[D_global_asm_807FD584] * 0.5 * (var_f0 * var_f0)) - dy) / var_f0;
             player_pointer->y_acceleration = -0.001f;
             if ((var_f0 < 2.0f) || (var_f12 < 2.0)) {
                 setYAccelerationFrom80753578();
-                current_actor_pointer->control_state_progress += 1;
+                current_actor_pointer->control_state_progress++;
             }
             if (current_actor_pointer->unkFC != 0) {
                 current_actor_pointer->unkB8 = 0.0f;
                 setYAccelerationFrom80753578();
-                current_actor_pointer->control_state_progress += 1;
+                current_actor_pointer->control_state_progress++;
             }
             handleInputsForControlState(1);
             break;
@@ -2311,7 +2306,7 @@ void func_global_asm_806D9320(void) {
             playAnimation(current_actor_pointer, 0x23);
             current_actor_pointer->z_rotation = 0;
             setYAccelerationFrom80753578();
-            current_actor_pointer->control_state_progress += 1;
+            current_actor_pointer->control_state_progress++;
             break;
         case 2:
             handleInputsForControlState(0x20);
@@ -2319,7 +2314,7 @@ void func_global_asm_806D9320(void) {
         case 3:
             func_global_asm_80617770(current_actor_pointer, 0x10, 0);
             extra_player_info_pointer->unk30 = D_global_asm_80753250[D_global_asm_807FD584];
-            current_actor_pointer->control_state_progress += 1;
+            current_actor_pointer->control_state_progress++;
             // fallthrough
         case 4:
             func_global_asm_806CD8EC();
@@ -2945,10 +2940,6 @@ void func_global_asm_806DB3AC(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable, doable, float regalloc, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DB670.s")
-
-/*
 void func_global_asm_806DB670(void) {
     current_actor_pointer->unkB8 = 0;
     switch (current_actor_pointer->control_state_progress) {
@@ -2964,9 +2955,9 @@ void func_global_asm_806DB670(void) {
             extra_player_info_pointer->unk23C = 4;
             break;
         case 2:
-            current_actor_pointer->x_position += ((extra_player_info_pointer->unk210 - current_actor_pointer->x_position) * 0.5);
-            current_actor_pointer->y_position += ((extra_player_info_pointer->unk214 - current_actor_pointer->y_position) * 0.5);
-            current_actor_pointer->z_position += ((extra_player_info_pointer->unk218 - current_actor_pointer->z_position) * 0.5);
+            current_actor_pointer->x_position = ((extra_player_info_pointer->unk210 - current_actor_pointer->x_position) * 0.5) + current_actor_pointer->x_position;
+            current_actor_pointer->y_position = ((extra_player_info_pointer->unk214 - current_actor_pointer->y_position) * 0.5) + current_actor_pointer->y_position;
+            current_actor_pointer->z_position = ((extra_player_info_pointer->unk218 - current_actor_pointer->z_position) * 0.5) + current_actor_pointer->z_position;
             if (extra_player_info_pointer->unk23C != 0) {
                 extra_player_info_pointer->unk23C--;
                 if (extra_player_info_pointer->unk23C == 0) {
@@ -3050,7 +3041,6 @@ void func_global_asm_806DB670(void) {
     func_global_asm_806CC970();
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 extern s32 D_global_asm_8071FC58; // TODO: Sprite
 extern s32 D_global_asm_8071FCC0; // TODO: Sprite

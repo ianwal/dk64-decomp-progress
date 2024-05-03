@@ -862,8 +862,13 @@ typedef struct player_additional_actor_data {
         s32 unkAC; // Used
         f32 unkAC_f32; // Used
     }; // TODO: Deconflict
-    s16 unkB0;
-    s16 unkB2; // Used
+    union {
+        struct {
+            s16 unkB0;
+            s16 unkB2; // Used
+        };
+        f32 unkB0_f32;
+    }; // TODO: Deconflict
     f32 unkB4; // Used
     f32 unkB8; // Used
     s16 unkBC; // Used
