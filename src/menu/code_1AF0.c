@@ -927,6 +927,7 @@ Gfx *func_menu_80027808(Gfx *dl, Actor *arg1) {
     return dl;
 }
 
+// matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80027988.s")
 
 void func_menu_80027DEC() {

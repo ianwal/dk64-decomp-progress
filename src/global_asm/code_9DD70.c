@@ -264,8 +264,99 @@ void func_global_asm_8069AFF0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069B010.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069B3FC.s")
+extern s32 D_global_asm_8071FC58; // TODO: Sprite
+extern s32 D_global_asm_8071FC8C; // TODO: Sprite
+extern s32 D_global_asm_8071FCC0; // TODO: Sprite
+
+typedef struct {
+    s16 unk0; // y rotation
+} AAD_8069B3FC;
+
+void func_global_asm_8069B3FC(void) {
+    AAD_8069B3FC *aaD;
+    s32 j;
+    s32 i;
+    f32 x;
+    f32 y;
+    f32 z;
+    PlayerAdditionalActorData *PaaD;
+    void *sprite;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    PaaD = player_pointer->PaaD;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->noclip_byte = 1;
+        current_actor_pointer->object_properties_bitfield |= 0x400;
+        playActorAnimation(current_actor_pointer, 0x298);
+        aaD->unk0 = 0;
+        playSong(0x3B, 1.0f);
+    } else {
+        getBonePosition(current_actor_pointer, 1, &x, &y, &z);
+        PaaD->unk210 = x;
+        PaaD->unk214 = y;
+        PaaD->unk218 = z;
+        if (current_actor_pointer->control_state_progress < 4) {
+            for (i = 2; i < 3; i++) {
+                for (j = 0; j < 2; j++) {
+                    func_global_asm_8071498C(func_global_asm_80717D4C);
+                    func_global_asm_807149B8(1);
+                    func_global_asm_80714950((((rand() >> 0xF) % 10000) % 120) + 0x50);
+                    switch (((rand() >> 0xF) % 10000) % 3) {
+                        case 0:
+                            sprite = &D_global_asm_8071FC58;
+                            break;
+                        case 1:
+                            sprite = &D_global_asm_8071FC8C;
+                            break;
+                        case 2:
+                            sprite = &D_global_asm_8071FCC0;
+                            break;
+                    }
+                    func_global_asm_80714C08(sprite, 0.6f, current_actor_pointer, i, 0);
+                }
+            }
+        }
+        switch (current_actor_pointer->control_state_progress) {
+            case 0:
+                aaD->unk0 += 0x1E;
+                break;
+            case 1:
+                player_pointer->control_state_progress++;
+                current_actor_pointer->control_state_progress++;
+                break;
+            case 2:
+                aaD->unk0 -= 0x2A;
+                if (aaD->unk0 < 0) {
+                    aaD->unk0 = 0;
+                }
+                break;
+            case 3:
+                aaD->unk0 -= 0x2A;
+                if (aaD->unk0 < 0) {
+                    aaD->unk0 = 0;
+                }
+                player_pointer->control_state_progress++;
+                current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
+                current_actor_pointer->shadow_opacity = 0xFF;
+                current_actor_pointer->control_state_progress++;
+                break;
+            case 4:
+                aaD->unk0 -= 0x2A;
+                if (aaD->unk0 < 0) {
+                    aaD->unk0 = 0;
+                }
+                current_actor_pointer->shadow_opacity -= 0x28;
+                if (current_actor_pointer->shadow_opacity < 0x28) {
+                    player_pointer->control_state_progress++;
+                    func_global_asm_80602B60(0x3B, 0);
+                    deleteActor(current_actor_pointer);
+                }
+                break;
+        }
+    }
+    current_actor_pointer->y_rotation += aaD->unk0;
+    renderActor(current_actor_pointer, 0);
+}
 
 extern s32 D_global_asm_8076A068;
 

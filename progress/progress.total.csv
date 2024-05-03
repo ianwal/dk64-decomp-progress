@@ -2254,7 +2254,7 @@ us,asm,func_global_asm_806E98F8,108,yes
 us,asm,func_global_asm_806883C8,44,yes
 us,asm,func_global_asm_806717FC,132,yes
 us,asm,func_global_asm_806E4D84,260,yes
-us,asm,func_global_asm_8069B3FC,1120,no
+us,asm,func_global_asm_8069B3FC,1120,yes
 us,asm,func_global_asm_80676308,48,yes
 us,asm,gameIsInMysteryMenuMinigameMode,52,yes
 us,asm,func_global_asm_805FE71C,152,yes
