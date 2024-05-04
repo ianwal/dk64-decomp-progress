@@ -2099,7 +2099,7 @@ u8 func_global_asm_806D0DE4(Actor *arg0, Actor *arg1) {
     return var_v0 < var_v1 && var_a2;
 }
 
-void func_global_asm_806D0EBC(s32 arg0) {
+void func_global_asm_806D0EBC(Actor *arg0) {
     f32 phi_f12;
     f32 phi_f0;
 

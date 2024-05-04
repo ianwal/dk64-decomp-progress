@@ -899,7 +899,7 @@ s32 func_global_asm_806D0964(s32 arg0, u8 playerIndex);
 void func_global_asm_806D09E8(Actor *arg0);
 void func_global_asm_806D0A54(Actor *arg0, s32 arg1, s32 arg2);
 void func_global_asm_806D0A84(void);
-void func_global_asm_806D0EBC(s32 arg0);
+void func_global_asm_806D0EBC(Actor *arg0);
 s16 func_global_asm_806D1080(f32 arg0, f32 arg1);
 s32 func_global_asm_806D10D0(Actor *arg0);
 void func_global_asm_806D1110(void);
@@ -2349,7 +2349,7 @@ s32 func_global_asm_80631EB8(u16);
 Gfx *func_global_asm_8070068C(Gfx *);
 void func_bonus_800264E0(u8 arg0, u8 arg1);
 void func_bonus_800265C0(u8 arg0, u8 arg1);
-s32 func_global_asm_8072D714(Actor*, s32);
+void func_global_asm_8072D714(Actor*, s32);
 void func_global_asm_8072B7CC(s32);
 Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2);
 void func_global_asm_806BFBF4(void);
@@ -2444,6 +2444,7 @@ void func_global_asm_8066466C(void);
 
 // TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define	ABS(d)		(((d) > 0) ? (d) : -(d))
+#define ABS_DIFF(a, b) (((b) < (a)) ? ((a) - (b)) : (-((a) - (b))))
 #define TWO_PI 6.28318548202514648
 
 #endif

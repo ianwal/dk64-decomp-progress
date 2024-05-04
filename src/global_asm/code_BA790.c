@@ -2,7 +2,7 @@
 #include "functions.h"
 
 
-// Jumptable
+// Jumptable, doable, switch case is not detected by mips2c
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BA790/func_global_asm_806B5A90.s")
 
 void func_global_asm_806B63E0(void) {

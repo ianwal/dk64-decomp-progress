@@ -151,7 +151,7 @@ void func_global_asm_8068ECF4(s32 arg0, u8 arg1) {
     }
 }
 
-// Jumptable
+// Jumptable, matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8068EF54.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8068F72C.s")
@@ -1121,7 +1121,7 @@ s32 func_global_asm_806951B0(Actor *arg0) {
     return FALSE;
 }
 
-// doable
+// doable, matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_806951E8.s")
 
 void func_global_asm_80695724(f32, u8);

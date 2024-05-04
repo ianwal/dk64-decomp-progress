@@ -788,7 +788,7 @@ void func_menu_800270E0(void) {
                     break;
                 case 5:
                     if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
-                        func_global_asm_8061CB08(current_actor_pointer);
+                        func_global_asm_8061CB08();
                         current_actor_pointer->control_state = 6;
                     }
                     break;

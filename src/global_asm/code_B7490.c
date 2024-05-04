@@ -80,7 +80,7 @@ void func_global_asm_806B3420(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// close
+// close, switch case woes
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3680.s")
 
 s32 func_global_asm_8072AB74(u8, f32, f32, s32, f32);
@@ -91,9 +91,9 @@ extern s32 D_global_asm_8071ABDC;
 extern f32 D_global_asm_8075B5C4;
 extern f32 D_global_asm_8075B5C8;
 extern f32 D_global_asm_8075B5CC;
-extern f32 D_global_asm_8075B5D0;
+extern f64 D_global_asm_8075B5D0;
 extern f32 D_global_asm_8075B5D8;
-extern s32 D_global_asm_8075B5DC;
+extern f32 D_global_asm_8075B5DC;
 
 void func_global_asm_8066E9EC(Actor*, s32, f32);
 u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);
@@ -151,49 +151,46 @@ void func_global_asm_806B3680(void) {
             func_global_asm_8072E1A4(0xA, D_global_asm_807FDC94);
             break;
         default:
-            if (current_actor_pointer->control_state != 0x27) {
-                func_global_asm_8072B7CC(0x32E);
-            } else {
-                switch (current_actor_pointer->control_state) {
-                    case 0:
-                        playSoundAtActorPosition(current_actor_pointer, 0x1C2, 0xFF, 0x7F, 0);
-                        D_global_asm_807FDC90->unk30 = 2.0 * current_actor_pointer->animation_state->scale_y;
-                        current_actor_pointer->control_state_progress++;
-                        // fallthrough
-                    case 1:
-                        // i = 0;
-                        if (current_actor_pointer->animation_state->scale_y < D_global_asm_807FDC90->unk30) {
-                            func_global_asm_807248B0(current_actor_pointer, current_actor_pointer->animation_state->scale_y * D_global_asm_8075B5D0);
-                        } else {
-                            for (i = 0; i != 0xC; i++) {
-                                func_global_asm_807149B8(1);
-                                func_global_asm_807149FC(2);
-                                func_global_asm_80714950(i + 0x0B020000);
-                                func_global_asm_8071498C(func_global_asm_8071ABDC);
-                                func_global_asm_80714998(1);
-                                drawSpriteAtPosition(&D_global_asm_8072073C, 2.0 * current_actor_pointer->animation_state->scale_y, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
-                            }
-                            playSoundAtActorPosition(current_actor_pointer, 0x3D, 0xFF, 0x7F, 0);
-                            playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x35C, 0xFF, 0x7F, 0, 0x32, D_global_asm_8075B5D8, 0);
-                            func_global_asm_8067E278(0, 1);
-                            func_global_asm_8066E9EC(current_actor_pointer, 1, current_actor_pointer->ledge_info_pointer->unkC * sp54);
-                            func_global_asm_8066EB40(current_actor_pointer, current_actor_pointer->ledge_info_pointer->unkC * sp54);
-                            current_actor_pointer->object_properties_bitfield &= ~4;
-                            current_actor_pointer->control_state_progress++;
+            switch (current_actor_pointer->control_state) {
+                case 0:
+                    playSoundAtActorPosition(current_actor_pointer, 0x1C2, 0xFF, 0x7F, 0);
+                    D_global_asm_807FDC90->unk30 = 2.0 * current_actor_pointer->animation_state->scale_y;
+                default:
+                    current_actor_pointer->control_state_progress++;
+                    break;
+                case 1:
+                    if (current_actor_pointer->animation_state->scale_y < D_global_asm_807FDC90->unk30) {
+                        func_global_asm_807248B0(current_actor_pointer, current_actor_pointer->animation_state->scale_y * D_global_asm_8075B5D0);
+                    } else {
+                        for (i = 0; i < 0xC; i++) {
+                            func_global_asm_807149B8(1);
+                            func_global_asm_807149FC(2);
+                            func_global_asm_80714950(i + 0x0B020000);
+                            func_global_asm_8071498C(func_global_asm_8071ABDC);
+                            func_global_asm_80714998(1);
+                            drawSpriteAtPosition(&D_global_asm_8072073C, 2.0 * current_actor_pointer->animation_state->scale_y, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                         }
-                        break;
-                    case 5:
-                        current_actor_pointer->control_state = 0x40;
-                        break;
-                    default:
+                        playSoundAtActorPosition(current_actor_pointer, 0x3D, 0xFF, 0x7F, 0);
+                        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x35C, 0xFF, 0x7F, 0, 0x32, D_global_asm_8075B5D8, 0);
+                        func_global_asm_8067E278(0, 1);
+                        func_global_asm_8066E9EC(current_actor_pointer, 1, current_actor_pointer->ledge_info_pointer->unkC * sp54);
+                        func_global_asm_8066EB40(current_actor_pointer, current_actor_pointer->ledge_info_pointer->unkC * sp54);
+                        current_actor_pointer->object_properties_bitfield &= ~4;
                         current_actor_pointer->control_state_progress++;
-                }
+                    }
+                    break;
+                case 5:
+                    current_actor_pointer->control_state = 0x40;
+                    break;
             }
             break;
         case 2:
         case 3:
             var_f12 = MIN(D_global_asm_807FDC90->unkC, current_actor_pointer->unkAC - current_actor_pointer->unk15E);
             func_global_asm_8072A920(current_actor_pointer->control_state, 0, D_global_asm_807FDC90->unkA, var_f12, D_global_asm_807FDC90->unkE, 0x1E, D_global_asm_8075B5DC, 100.0f, 0x2040);
+            break;
+        case 0x27:
+            func_global_asm_8072B7CC(0x32E);
             break;
     }
     switch (current_actor_pointer->control_state) {

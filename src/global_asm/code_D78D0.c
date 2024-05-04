@@ -2053,11 +2053,10 @@ extern f32 D_global_asm_80753AE0[];
 
 /*
 void func_global_asm_806D8B08(void) {
-    f32 temp_f0;
     f32 temp_f14;
-    f32 temp_f2;
+    f32 temp_f0;
 
-    extra_player_info_pointer->unk24 += 1;
+    extra_player_info_pointer->unk24++;
     extra_player_info_pointer->unk2C = D_global_asm_80753AFC[D_global_asm_807FD584];
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -2065,7 +2064,7 @@ void func_global_asm_806D8B08(void) {
             temp_f14 = D_global_asm_80753A5C[D_global_asm_807FD584];
             current_actor_pointer->y_velocity = func_global_asm_806CD898(current_actor_pointer->y_velocity, temp_f14, extra_player_info_pointer->unk1C);
             if (temp_f14 <= current_actor_pointer->y_velocity) {
-                if ((current_actor_pointer->unkB8 != 0.0f) || (extra_player_info_pointer->unk10 != 0)) {
+                if ((current_actor_pointer->unkB8 != 0) || (extra_player_info_pointer->unk10 != 0)) {
                     current_actor_pointer->control_state_progress = 3;
                 } else {
                     current_actor_pointer->control_state_progress = 2;
@@ -2077,27 +2076,25 @@ void func_global_asm_806D8B08(void) {
             break;
         case 1:
             handleInputsForControlState(0x4F);
-            func_global_asm_806CC638(0.0f);
+            func_global_asm_806CC638(0);
             if (extra_player_info_pointer->unk10 == 0) {
                 current_actor_pointer->control_state_progress = 3;
             }
-            temp_f14 = (extra_player_info_pointer->unk10 / 7.5) + 1.0;
+            temp_f14 = (extra_player_info_pointer->unk10 / 7.5) + 1;
             if (current_actor_pointer->animation_state->unk48 < temp_f14) {
-                func_global_asm_80614D00(current_actor_pointer, temp_f14, 0.0f);
+                func_global_asm_80614D00(current_actor_pointer, temp_f14, 0);
             } else {
                 func_global_asm_80614D00(current_actor_pointer, temp_f14, 15.0f);
             }
             func_global_asm_80684D98(2);
-            temp_f0 = current_actor_pointer->unkAC;
-            temp_f2 = D_global_asm_807538C8[D_global_asm_807FD584];
-            if (temp_f0 < (temp_f2 + current_actor_pointer->y_position)) {
-                current_actor_pointer->y_position = temp_f0 - temp_f2;
+            if (current_actor_pointer->unkAC < (D_global_asm_807538C8[D_global_asm_807FD584] + current_actor_pointer->y_position)) {
+                current_actor_pointer->y_position = current_actor_pointer->unkAC - D_global_asm_807538C8[D_global_asm_807FD584];
             }
             break;
         default:
             handleInputsForControlState(0x54);
             func_global_asm_806CC638(D_global_asm_80753A5C[D_global_asm_807FD584]);
-            if (current_actor_pointer->unkB8 != 0.0f) {
+            if (current_actor_pointer->unkB8 != 0) {
                 extra_player_info_pointer->unk18 = 0;
                 current_actor_pointer->control_state_progress = 3;
             } else {
@@ -2112,7 +2109,7 @@ void func_global_asm_806D8B08(void) {
             break;
         case 3:
             handleInputsForControlState(0x50);
-            func_global_asm_806CC638(0.0f);
+            func_global_asm_806CC638(0);
             break;
         case 4:
             handleInputsForControlState(0x51);
@@ -2120,27 +2117,27 @@ void func_global_asm_806D8B08(void) {
             extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
             extra_player_info_pointer->unk38 = D_global_asm_80753AE0[D_global_asm_807FD584];
             extra_player_info_pointer->unk10 = D_global_asm_80753A88[D_global_asm_807FD584];
-            func_global_asm_806CC638(0.0f);
-            current_actor_pointer->control_state_progress += 1;
+            func_global_asm_806CC638(0);
+            current_actor_pointer->control_state_progress++;
             break;
         case 5:
             handleInputsForControlState(0x51);
-            func_global_asm_806CC638(0.0f);
+            func_global_asm_806CC638(0);
             break;
         case 6:
             handleInputsForControlState(0x52);
-            func_global_asm_806CC638(0.0f);
+            func_global_asm_806CC638(0);
             break;
         case 7:
             handleInputsForControlState(0x51);
-            func_global_asm_806CC638(0.0f);
+            func_global_asm_806CC638(0);
             break;
         case 8:
             handleInputsForControlState(0x53);
-            func_global_asm_806CC638(0.0f);
+            func_global_asm_806CC638(0);
             break;
     }
-    if ((current_actor_pointer->unkB8 == 0.0f) || (extra_player_info_pointer->unk18 != 0)) {
+    if ((current_actor_pointer->unkB8 == 0) || (extra_player_info_pointer->unk18 != 0)) {
         extra_player_info_pointer->unk50 = D_global_asm_80753A78[D_global_asm_807FD584];
         func_global_asm_80614D00(current_actor_pointer, 0.5f, extra_player_info_pointer->unk50);
         current_actor_pointer->control_state_progress = 2;
@@ -3325,23 +3322,23 @@ void func_global_asm_806DC410(void) {
     func_global_asm_806CC970();
 }
 
+// doable, switch case woes, float
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DCA7C.s")
 
 /*
-// TODO: Doable, made good progress, not sure what's going on with case 1
 void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
-    f32 sp50;
-    f32 sp4C;
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
+    f32 d;
+    f32 dy;
+    f32 x;
+    f32 y;
+    f32 z;
     f32 dx;
     f32 dz;
     s32 var_v0;
     s32 var_v1;
 
-    current_actor_pointer->object_properties_bitfield &= 0xFFBFFFFF;
-    current_actor_pointer->unk6A &= 0xFFBF;
+    current_actor_pointer->object_properties_bitfield &= ~0x400000;
+    current_actor_pointer->unk6A &= ~0x40;
     current_actor_pointer->z_rotation += (-current_actor_pointer->z_rotation * 0.1);
     switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -3367,7 +3364,7 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
             }
             func_global_asm_806DF5A0(&current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 0x78, 0x600);
             current_actor_pointer->y_velocity = extra_player_info_pointer->unk150;
-            current_actor_pointer->control_state_progress += 1;
+            current_actor_pointer->control_state_progress++;
             handleInputsForControlState(0x27);
             extra_player_info_pointer->unk30 /= 2;
             func_global_asm_806CC948();
@@ -3391,17 +3388,17 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
                 extra_player_info_pointer->unk4 = 150.0f;
                 extra_player_info_pointer->unk38 = 150.0f;
                 if (extra_player_info_pointer->unk158 != 0) {
-                    getBonePosition(extra_player_info_pointer->unk158, 1, &sp44, &sp40, &sp3C);
-                    dx = sp44 - current_player->x_position;
-                    dz = sp3C - current_player->z_position;
-                    sp4C = (sp40 - current_player->y_position) / (current_player->animation_state->scale_y * 0.166666666749999998);
-                    sp50 = ((sqrtf((dx * dx) + (dz * dz)) / (current_player->animation_state->scale_y * 0.166666666749999998)) / current_player->unkB8) - 1.0f;
-                    if (sp50 < 1.0f) {
-                        sp50 = 1.0f;
+                    getBonePosition(extra_player_info_pointer->unk158, 1, &x, &y, &z);
+                    dx = x - current_player->x_position;
+                    dz = z - current_player->z_position;
+                    dy = (y - current_player->y_position) / (current_player->animation_state->scale_y * 0.166666666749999998);
+                    d = ((sqrtf((dx * dx) + (dz * dz)) / (current_player->animation_state->scale_y * 0.166666666749999998)) / current_player->unkB8) - 1.0f;
+                    if (d < 1.0f) {
+                        d = 1.0f;
                     }
                 }
-                if ((extra_player_info_pointer->unk158 != 0) && (sp50 < 30.0f)) {
-                    current_player->y_velocity = (((0.0 - (D_global_asm_80753CD0[D_global_asm_807FD584]) * 0.5 * (sp50 * sp50)) - sp4C)) / sp50;
+                if ((extra_player_info_pointer->unk158 != 0) && (d < 30.0f)) {
+                    current_player->y_velocity = (((0.0 - (D_global_asm_80753CD0[D_global_asm_807FD584]) * 0.5 * (d * d)) - dy)) / d;
                     current_player->y_acceleration = -0.001f;
                 } else {
                     extra_player_info_pointer->unk158 = 0;
@@ -3794,6 +3791,129 @@ void func_global_asm_806DDAB0(void) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DE264.s")
+
+/*
+void func_global_asm_80614A64(Actor *); // extern
+
+void func_global_asm_806DE264(void) {
+    f32 z;
+    f32 y;
+    f32 x;
+    f32 var_f2;
+    f32 sp3C;
+
+    current_actor_pointer->y_velocity = 0.0f;
+    current_actor_pointer->unkB8 = 0.0f;
+    handleInputsForControlState(1);
+    if (func_global_asm_806CFC90(current_actor_pointer, &sp3C, 1, 15.0f)) {
+        extra_player_info_pointer->unkF0_f32 = sp3C;
+    }
+    if (ABS_DIFF(extra_player_info_pointer->unkF4_f32, extra_player_info_pointer->unkF0_f32) > 20.0) {
+        func_global_asm_806CFF1C(current_actor_pointer);
+        renderActor(current_actor_pointer, 0);
+        return;
+    }
+    extra_player_info_pointer->unkF4_f32 = extra_player_info_pointer->unkF0_f32;
+    current_actor_pointer->object_properties_bitfield |= 0x08000000;
+    renderActor(current_actor_pointer, 0);
+    func_global_asm_80678DD8(current_actor_pointer);
+    switch (current_actor_pointer->control_state_progress) {
+        case 0:
+            switch (current_actor_pointer->unk58) {
+                case ACTOR_LANKY:
+                    if (current_actor_pointer->animation_state->unk0->unk4 < 25.0f) {
+                        getBonePosition(current_actor_pointer, 7, &x, &y, &z);
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32 - (y - current_actor_pointer->y_position);
+                    }
+                    if (current_actor_pointer->animation_state->unk0->unk4 < 25.0f) {
+                        current_actor_pointer->x_position = extra_player_info_pointer->unkE0;
+                        current_actor_pointer->z_position = extra_player_info_pointer->unkE4;
+                    } else if (current_actor_pointer->animation_state->unk0->unk4 < 31.0f) {
+                        current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
+                        current_actor_pointer->unkB8 = 70.0f;
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32;
+                    } else {
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32;
+                    }
+                    break;
+                case ACTOR_TINY:
+                    if (current_actor_pointer->animation_state->unk0->unk4 < 17.0f) {
+                        getBonePosition(current_actor_pointer, 7, &x, &y, &z);
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32 - (y - current_actor_pointer->y_position);
+                    }
+                    if (current_actor_pointer->animation_state->unk0->unk4 < 19.0f) {
+                        current_actor_pointer->x_position = extra_player_info_pointer->unkE0;
+                        current_actor_pointer->z_position = extra_player_info_pointer->unkE4;
+                    } else if (current_actor_pointer->animation_state->unk0->unk4 < 29.0f) {
+                        current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
+                        current_actor_pointer->unkB8 = 40.0f;
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32;
+                    } else {
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32;
+                    }
+                    break;
+                case ACTOR_DK:
+                    getBonePosition(current_actor_pointer, 7, &x, &y, &z);
+                    current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32 - (y - current_actor_pointer->y_position);
+                    if (current_actor_pointer->animation_state->unk0->unk4 > 16.0f) {
+                        current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32;
+                        current_actor_pointer->unkB8 = 30.0f;
+                    } else {
+                        current_actor_pointer->x_position = extra_player_info_pointer->unkE0;
+                        current_actor_pointer->z_position = extra_player_info_pointer->unkE4;
+                    }
+                    break;
+                case ACTOR_CHUNKY:
+                case ACTOR_KRUSHA:
+                    if (current_actor_pointer->animation_state->unk0->unk4 < 18.0f) {
+                        getBonePosition(current_actor_pointer, 7, &x, &y, &z);
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32 - (y - current_actor_pointer->y_position);
+                        current_actor_pointer->x_position = extra_player_info_pointer->unkE0;
+                        current_actor_pointer->z_position = extra_player_info_pointer->unkE4;
+                    } else if (current_actor_pointer->animation_state->unk0->unk4 < 26.0f) {
+                        current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
+                        current_actor_pointer->unkB8 = 50.0f;
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32;
+                    } else {
+                        if (ABS_DIFF(current_actor_pointer->floor, extra_player_info_pointer->unkF0_f32) >= 20.0) {
+                            func_global_asm_806CFF1C(current_actor_pointer);
+                        } else {
+                            current_actor_pointer->y_position = current_actor_pointer->floor;
+                        }
+                    }
+                    break;
+                default:
+                    getBonePosition(current_actor_pointer, 7, &x, &y, &z);
+                    current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32 - (y - current_actor_pointer->y_position);
+                    if (current_actor_pointer->animation_state->unk0->unk4 > 14.0f) {
+                        current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
+                        current_actor_pointer->unkB8 = 10.0f;
+                        current_actor_pointer->y_position = extra_player_info_pointer->unkF0_f32;
+                    } else {
+                        current_actor_pointer->x_position = extra_player_info_pointer->unkE0;
+                        current_actor_pointer->z_position = extra_player_info_pointer->unkE4;
+                    }
+                    break;
+            }
+            func_global_asm_806CC970();
+            break;
+        case 1: // switch 1
+            func_global_asm_806CC970();
+            if (ABS_DIFF(current_actor_pointer->floor, extra_player_info_pointer->unkF0_f32) < 20.0) {
+                current_actor_pointer->y_position = current_actor_pointer->floor;
+                current_actor_pointer->unk6A |= 1;
+                current_actor_pointer->y_velocity = -50.0f;
+                func_global_asm_806CFF9C(current_actor_pointer);
+            } else {
+                func_global_asm_806CFF1C(current_actor_pointer);
+            }
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+    func_global_asm_80614A64(current_actor_pointer);
+}
+*/
 
 void func_global_asm_806DE930(void) {
     extra_player_info_pointer->unk4 = 0.0f;
