@@ -509,20 +509,18 @@ typedef struct {
     s32 unk8;
     s32 unkC;
     s32 unk10;
-    u8 *unk14;
+    s32 unk14;
 } Struct8068DBA4_arg1;
 
 /*
 Gfx *func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
-    s32 pad2;
-    s32 pad;
-    s32 sp34;
+    char sp34[12];
 
     gSPDisplayList(dl++, &D_1000118);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
-    sprintf(&sp34, &D_global_asm_80759F40, arg1->unk14);
+    sprintf(sp34, D_global_asm_80759F40, arg1->unk14);
     return printStyledText(dl, 3, 0x370, 0x50, &sp34, 1);
 }
 */

@@ -70,8 +70,33 @@ void func_global_asm_8070D3CC(Struct8070D3CC_arg0 *arg0, Struct8070D3CC_arg1 *ar
     }
 }
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070D464.s")
+void func_global_asm_8070D464(Struct8070D568 *arg0, Struct8070D3CC_arg1 *arg1) {
+    Struct8070D3CC_arg0 *temp_v0_3;
+    Struct8070D3CC_arg0 *var_s0;
+    s32 *temp_v0_4;
+    s32 *var_s0_2;
+    s32 i;
+    s32 j;
+
+    if (arg0->unk0 & 1) {
+        var_s0 = malloc(sizeof(Struct8070D3CC_arg0));
+        arg0->unk8 = var_s0;
+        for (i = 0; i != 1; i++) {
+            func_global_asm_8070D3CC(var_s0, arg1);
+            var_s0++;
+        }
+    } else if (arg0->unk0 & 2) {
+        temp_v0_3 = malloc(sizeof(Struct8070D3CC_arg0));
+        arg0->unk8 = temp_v0_3;
+        func_global_asm_8070D380(1, temp_v0_3, arg1);
+        temp_v0_4 = malloc(temp_v0_3->unk0 * sizeof(s32));
+        temp_v0_3->unk4 = temp_v0_4;
+        var_s0_2 = temp_v0_4;
+        for (j = 0; j < temp_v0_3->unk0; j++, var_s0_2++) {
+            func_global_asm_8070D380(4, var_s0_2, arg1);
+        }
+    }
+}
 
 void func_global_asm_8070D568(Struct8070D654 *arg0, void *arg1) {
     s32 i;

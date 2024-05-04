@@ -676,7 +676,6 @@ void func_global_asm_806B0848(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk130 = MIN(255, (current_actor_pointer->animation_state->scale[1] / 0.15) * 100.0);
         current_actor_pointer->unk131 = MIN(255, (current_actor_pointer->animation_state->scale[1] / 0.15) * 100.0);
-        //func_global_asm_8072B79C(0.15, 0, 0x35E, 0x35F, 0x360);
         func_global_asm_8072B79C(0x35E, 0x35F, 0x360);
     }
     if (D_global_asm_807FBB70.unk200 != 9) {
@@ -708,7 +707,7 @@ block_12:
                     func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x202, 0.0f);
                     break;
                 case 1:
-                    func_global_asm_806A5C60(current_actor_pointer, current_actor_pointer->control_state_progress);
+                    func_global_asm_806A5C60(current_actor_pointer);
                     current_actor_pointer->control_state_progress++;
                     // fallthrough
                 case 2:
@@ -735,11 +734,7 @@ block_31:
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072B324(current_actor_pointer, 0);
-                    var_a1 = 0x361;
-                    if (object_timer & 1) {
-                        var_a1 = 0x362;
-                    }
-                    playActorAnimation(current_actor_pointer, var_a1);
+                    playActorAnimation(current_actor_pointer, (object_timer & 1) ? 0x362 : 0x361);
                     current_actor_pointer->control_state_progress = 1;
                     break;
                 case 2:
