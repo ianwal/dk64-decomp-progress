@@ -675,8 +675,20 @@ void func_global_asm_806625D0(u8 arg0) {
     D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3D2, 1, 0);
 }
 
-// Displaylist stuff, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_80662618.s")
+Gfx *func_global_asm_80662618(Gfx *dl, Struct80661AB4_1 *arg1, u8 arg2) {
+    gDPPipeSync(dl++);
+    gDPLoadTextureBlock(dl++, D_global_asm_80748A9C[arg2].unk0, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    gDPSetTextureLOD(dl++, G_TL_LOD);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gDPSetRenderMode(dl++, G_RM_ZB_OPA_SURF, G_RM_ZB_OPA_SURF2);
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, (s32)arg1->unk0->unk3C, 0x007C, 0x007C);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, 1, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, 14, G_TX_NOMIRROR | G_TX_WRAP, 5, 14);
+    return dl;
+}
 
 void func_global_asm_806627CC(u8 arg0) {
     // Texture (Uncompressed)
@@ -688,10 +700,6 @@ void func_global_asm_806627CC(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_80662838.s")
 
 void func_global_asm_80662AB4(Struct80661AB4_1 *arg0) {
-    Struct80661AB4_2 *temp_v0;
-    Struct80661AB4_2 *temp_v0_2;
-    Struct80661AB4_2 *temp_v0_3;
-
     arg0->unk0->unk3C -= arg0->unk0->unk34;
     if (arg0->unk0->unk3C < 0.0) {
         arg0->unk0->unk3C = 255.0f;
