@@ -2,10 +2,9 @@
 #include "functions.h"
 
 extern s32 D_global_asm_8072030C;
-extern s32 D_global_asm_80720340;
+extern s32 D_global_asm_80720340; // Sprite
 
 void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
-
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
 void func_global_asm_806B1F50(void) {
@@ -101,15 +100,15 @@ void func_global_asm_806B1F50(void) {
 }
 
 void func_global_asm_806B24B8(void) {
-    Actor *temp_v0;
+    Actor *rabbit;
     f32 dx;
     f32 dz;
 
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        temp_v0 = func_global_asm_8067ADB4(0x110);
-        if (temp_v0 != NULL) {
-            D_global_asm_807FDC90->unk4 = temp_v0;
+        rabbit = func_global_asm_8067ADB4(ACTOR_RABBIT_CAVES);
+        if (rabbit != NULL) {
+            D_global_asm_807FDC90->unk4 = rabbit;
         }
         D_global_asm_807FDC9C->unk10 = 0x23;
         func_global_asm_80613C48(current_actor_pointer, 0x599, 0, 0);

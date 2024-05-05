@@ -80,7 +80,7 @@ void func_global_asm_80665564(Actor *arg0, f32 arg1);
 
 s16 func_global_asm_80665DE0(f32, f32, f32, f32);
 
-void func_global_asm_8067DF44(f32, f32, f32, f32, u8, u8);
+void func_global_asm_8067DF44(f32 x, f32 y, f32 z, f32 arg3, u8 arg4, u8 arg5);
 void changeActorColor(u8 red, u8 green, u8 blue, u8 alpha);
 f32 func_global_asm_80665E94(f32, f32, f32, f32, f32, f32, s16);
 
