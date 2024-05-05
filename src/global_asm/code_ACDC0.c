@@ -6,7 +6,7 @@ extern s8 D_global_asm_80750530[];
 extern s16 D_global_asm_807505AE[];
 extern s16 D_global_asm_807505B8[];
 
-extern s32 *D_global_asm_807FC7E0;
+extern char **D_global_asm_807FC7E0;
 extern s16 D_global_asm_807FC828[];
 extern s16 D_global_asm_807FC82A;
 extern s16 D_global_asm_807FC82C;
@@ -241,11 +241,11 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
             if (temp_v0_3 >= 9) {
                 sp7C = 7;
             }
-            if ((sp7C != 7) && (isFlagSet(0x18B, FLAG_TYPE_PERMANENT) != 0)) {
+            if ((sp7C != 7) && isFlagSet(0x18B, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x1E, 0x1E, 0xC, -0xA, temp_s0[sp7C].unkA, 1, 0);
                 func_global_asm_806AB4EC(arg0, NULL, 0x1E, 0x1E, 0.75f, 2, 1);
             }
-            if (isFlagSet(0x184, FLAG_TYPE_PERMANENT) != 0) {
+            if (isFlagSet(0x184, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x1E, 0x5A, 0xC, -0xA, D_global_asm_807FCC44, 1, 1);
                 func_global_asm_806AB4EC(arg0, 4, 0x1E, 0x5A, 0.75f, 2, 1);
             }
@@ -259,7 +259,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                 func_global_asm_806AB808(arg0, 0x1E, 0xA0, 0xC, -0xA, func_global_asm_80612E40(var_f16 / temp_f6), 1, 1);
                 func_global_asm_806AB4EC(arg0, 5, 0x1E, 0xA0, D_global_asm_8075AC3C, 2, 1);
             }
-            if (isFlagSet(0x18C, FLAG_TYPE_PERMANENT) != 0) {
+            if (isFlagSet(0x18C, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x122, 0x5A, -0xF, -0xA, temp_s0->unk6, 1, 0x80);
                 func_global_asm_806AB4EC(arg0, 1, 0x122, 0x5A, 0.75f, 2, 1);
             }
@@ -267,7 +267,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                 func_global_asm_806AB808(arg0, 0x122, 0x7D, -0xC, -0xA, sp84->instrument_ammo, 2, 0x81);
                 func_global_asm_806AB4EC(arg0, 7, 0x122, 0x7D, 0.75f, 2, 7);
             }
-            if (isFlagSet(0x179, FLAG_TYPE_PERMANENT) != 0) {
+            if (isFlagSet(0x179, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x122, 0xA0, -0xC, -0xA, D_global_asm_807FCC48, 1, 0x81);
                 func_global_asm_806AB4EC(arg0, 6, 0x122, 0xA0, D_global_asm_8075AC40, 2, 1);
             }
@@ -750,48 +750,52 @@ Gfx *func_global_asm_806ACF10(Gfx* dl, Actor *arg1) {
     return printText(dl, 640, 520, 0.7f, D_global_asm_807FC7E0[3]);
 }
 
-// TODO: Very close, something wrong with the do while loops?
+// close, something up with the last loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ACFFC.s")
 
 extern s8 D_global_asm_8076A105;
-extern s8 D_global_asm_807FC80E;
+extern s8 D_807FC80E;
 extern s8 D_global_asm_807FC8B9;
+
+void func_global_asm_806291B4();
 
 /*
 void func_global_asm_806ACFFC(void) {
-    s32 var_s1;
-    s8 temp_v0_2;
+    s32 i;
+    s8 joystickY;
+    s32 playerIndex;
+    u16 inputs;
+    char *string;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        D_global_asm_807FC7E0 = malloc(0x10);
-        var_s1 = 0;
-        do {
-            D_global_asm_807FC7E0[var_s1] = getTextString(0x24, var_s1, 0);
-            var_s1++;
-        } while (var_s1 != 4);
-        global_properties_bitfield &= 0xFFFEFFCF;
+        D_global_asm_807FC7E0 = malloc(4 * sizeof(char*));
+        for (i = 0; i != 4;) {
+            D_global_asm_807FC7E0[i] = getTextString(0x24, i, 0);
+            i++;
+        }
+        global_properties_bitfield &= ~0x10030;
         func_global_asm_806291B4(7);
-        D_global_asm_807FC80E = 0;
+        D_807FC80E = 0;
         current_actor_pointer->control_state_progress = 0;
     }
-    temp_v0_2 = character_change_array[D_global_asm_807FC8B9].unk294->unk3;
-    if ((temp_v0_2 >= 0x33) || (temp_v0_2 < -0x32)) {
-        if (!(D_global_asm_807FC80E & 1)) {
+    playerIndex = D_global_asm_807FC8B9;
+    joystickY = character_change_array[playerIndex].unk294->stick_y;
+    if ((joystickY > 0x32) || (joystickY < -0x32)) {
+        if (!(D_807FC80E & 1)) {
             current_actor_pointer->control_state_progress = 1 - current_actor_pointer->control_state_progress;
-            D_global_asm_807FC80E |= 1;
+            D_807FC80E |= 1;
             playSound(0x2A0, 0x7FFF, 63.0f, 1.0f, 0, 0);
         }
     } else {
-        D_global_asm_807FC80E &= 0xFFFE;
+        D_807FC80E &= ~0x1;
     }
-    if (character_change_array[D_global_asm_807FC8B9].new_controller_inputs & A_BUTTON) {
+    inputs = character_change_array[playerIndex].new_controller_inputs->button;
+    if (inputs & A_BUTTON) {
         if (current_actor_pointer->control_state_progress == 0) {
             global_properties_bitfield |= 0x10070;
-            var_s1 = 0;
-            do {
-                func_global_asm_8061134C(D_global_asm_807FC7E0[var_s1]);
-                var_s1++;
-            } while (var_s1 != 0x10);
+            for (i = 0; i != 4; i++){
+                func_global_asm_8061134C(D_global_asm_807FC7E0[i]);
+            }
             func_global_asm_8061134C(D_global_asm_807FC7E0);
         } else if (current_actor_pointer->control_state_progress == 1) {
             D_global_asm_8076A105 = -1;

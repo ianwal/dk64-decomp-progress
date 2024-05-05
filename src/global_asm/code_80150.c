@@ -811,9 +811,9 @@ typedef struct {
 extern s16 D_global_asm_8074E7E0[];
 
 void func_global_asm_80681B14(void) {
-    AAD_global_asm_80681B14 *temp_v1;
+    AAD_global_asm_80681B14 *aaD;
 
-    temp_v1 = current_actor_pointer->additional_actor_data;
+    aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (isFlagSet(0x302, FLAG_TYPE_PERMANENT)) {
             deleteActor(current_actor_pointer);
@@ -821,8 +821,8 @@ void func_global_asm_80681B14(void) {
         }
     }
     func_global_asm_806809F0();
-    if ((current_actor_pointer->control_state == 0xC) && (temp_v1->unkD < 3)) {
-        setFlag(D_global_asm_8074E7E0[temp_v1->unkA], TRUE, FLAG_TYPE_TEMPORARY);
+    if ((current_actor_pointer->control_state == 0xC) && (aaD->unkD < 3)) {
+        setFlag(D_global_asm_8074E7E0[aaD->unkA], TRUE, FLAG_TYPE_TEMPORARY);
         func_global_asm_8067DCC0();
         deleteActor(current_actor_pointer);
     }
@@ -839,20 +839,20 @@ typedef struct {
 } AAD_global_asm_80681BD8;
 
 void func_global_asm_80681BD8(void) {
-    AAD_global_asm_80681BD8 *sp2C;
+    AAD_global_asm_80681BD8 *aaD;
     s32 sp28;
     s32 i;
     s32 var_s1;
 
-    sp2C = current_actor_pointer->additional_actor_data;
+    aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806809F0();
-    if (isFlagSet(0x17F, FLAG_TYPE_PERMANENT) == FALSE) {
+    if (!isFlagSet(0x17F, FLAG_TYPE_PERMANENT)) {
         current_actor_pointer->control_state = 0x14;
         current_actor_pointer->noclip_byte = 1;
         current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
         current_actor_pointer->shadow_opacity = 0;
     } else {
-        if (isFlagSet(0x187, FLAG_TYPE_PERMANENT) == FALSE) {
+        if (!isFlagSet(0x187, FLAG_TYPE_PERMANENT)) {
             if (current_actor_pointer->control_state == 0xB) {
                 var_s1 = 0;
                 i = 0;
@@ -866,7 +866,7 @@ void func_global_asm_80681BD8(void) {
                 }
             }
         }
-        switch (sp2C->unk6) {
+        switch (aaD->unk6) {
             case 0xB1:
                 sp28 = 0x182;
                 break;
@@ -881,8 +881,8 @@ void func_global_asm_80681BD8(void) {
                 break;
         }
         if (isFlagSet(sp28, FLAG_TYPE_PERMANENT) != FALSE) {
-            sp2C->unkC = 1;
-            sp2C->unkA = 0;
+            aaD->unkC = 1;
+            aaD->unkA = 0;
             if (current_actor_pointer->control_state == 0) {
                 current_actor_pointer->control_state = 0x14;
                 current_actor_pointer->noclip_byte = 1;
@@ -896,7 +896,7 @@ void func_global_asm_80681BD8(void) {
             }
         }
     }
-    if ((current_actor_pointer->control_state == 0xC) && (sp2C->unkD < 3)) {
+    if ((current_actor_pointer->control_state == 0xC) && (aaD->unkD < 3)) {
         func_global_asm_8067DCC0();
         deleteActor(current_actor_pointer);
     }

@@ -1053,7 +1053,7 @@ void func_global_asm_806C226C(void) {
                     if (func_global_asm_8072E22C(0xC8) != 0) {
                         current_actor_pointer->control_state_progress += 1;
                         if (isFlagSet(0xC1, FLAG_TYPE_PERMANENT) != 0) {
-                            if ((current_character_index[0] == 0) && (isFlagSet(0xA5, FLAG_TYPE_PERMANENT) == 0)) {
+                            if ((current_character_index[0] == 0) && !isFlagSet(0xA5, FLAG_TYPE_PERMANENT)) {
                                 loadText(current_actor_pointer, 0x1C, 2);
                             } else if (current_character_index[0] != 0) {
                                 loadText(current_actor_pointer, 0x1C, 0);
@@ -1069,7 +1069,7 @@ void func_global_asm_806C226C(void) {
                     }
                     break;
                 case 0x2:
-                    if ((isFlagSet(0xC1, FLAG_TYPE_PERMANENT) == FALSE) && (func_global_asm_8072E22C(0x12C) == 0)) {
+                    if (!isFlagSet(0xC1, FLAG_TYPE_PERMANENT) && (func_global_asm_8072E22C(0x12C) == 0)) {
                         current_actor_pointer->control_state_progress = 1;
                     }
                     break;
@@ -1187,19 +1187,19 @@ void func_global_asm_806C2D7C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C2DF4.s")
 
 void func_global_asm_806C3A8C(void) {
-    s32 sp2C;
+    s32 d;
     u8 pad;
 
-    sp2C = (((player_pointer->x_position - current_actor_pointer->x_position) * (player_pointer->x_position - current_actor_pointer->x_position)) + ((player_pointer->y_position - current_actor_pointer->y_position) * (player_pointer->y_position - current_actor_pointer->y_position)) + ((player_pointer->z_position - current_actor_pointer->z_position) * (player_pointer->z_position - current_actor_pointer->z_position)));
+    d = (((player_pointer->x_position - current_actor_pointer->x_position) * (player_pointer->x_position - current_actor_pointer->x_position)) + ((player_pointer->y_position - current_actor_pointer->y_position) * (player_pointer->y_position - current_actor_pointer->y_position)) + ((player_pointer->z_position - current_actor_pointer->z_position) * (player_pointer->z_position - current_actor_pointer->z_position)));
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk15E = 0x19;
         func_global_asm_8067ACB4(current_actor_pointer);
-        if (isFlagSet(0x1E, FLAG_TYPE_TEMPORARY) == FALSE) {
+        if (!isFlagSet(0x1E, FLAG_TYPE_TEMPORARY)) {
             playCutscene(current_actor_pointer, 0x14, 1);
             setFlag(0x1E, TRUE, FLAG_TYPE_TEMPORARY);
         }
-        if (isFlagSet(0xBF, FLAG_TYPE_PERMANENT) == FALSE) {
+        if (!isFlagSet(0xBF, FLAG_TYPE_PERMANENT)) {
             if (isFlagSet(0xBA, FLAG_TYPE_PERMANENT)
                 && isFlagSet(0xBB, FLAG_TYPE_PERMANENT)
                 && isFlagSet(0xBC, FLAG_TYPE_PERMANENT)
@@ -1230,12 +1230,12 @@ void func_global_asm_806C3A8C(void) {
         case 30:
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
-                    if ((u8)(sp2C < 62500)) {
+                    if ((u8)(d < 62500)) {
                         current_actor_pointer->control_state_progress++;
                     }
                     break;
                 case 1:
-                    if ((u8)(sp2C < 10000)) {
+                    if ((u8)(d < 10000)) {
                         playActorAnimation(current_actor_pointer, 0x3A4);
                         loadText(current_actor_pointer, 0x17, 0);
                         current_actor_pointer->control_state_progress++;
@@ -1244,7 +1244,7 @@ void func_global_asm_806C3A8C(void) {
             }
             break;
         case 31:
-            if ((u8)(sp2C < 10000)) {
+            if ((u8)(d < 10000)) {
                 if (current_actor_pointer->control_state_progress == 0) {
                     D_global_asm_80750AC8 = isFlagSet(0xBA, FLAG_TYPE_PERMANENT)
                         + isFlagSet(0xBB, FLAG_TYPE_PERMANENT)
@@ -1257,7 +1257,7 @@ void func_global_asm_806C3A8C(void) {
             }
             break;
         case 32:
-            if ((u8)(sp2C < 10000)) {
+            if ((u8)(d < 10000)) {
                 if (current_actor_pointer->control_state_progress == 0) {
                     if (func_global_asm_8061CB50() == 0) {
                         playCutscene(current_actor_pointer, 0x18, 1);

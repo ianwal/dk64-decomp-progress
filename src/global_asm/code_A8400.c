@@ -404,15 +404,15 @@ void func_global_asm_806A5868(void) {
         if (!(var_a3->unk55 & 1)) {
             if ((current_actor_pointer->control_state != 4) && (current_actor_pointer->control_state != 5)) {
                 if (var_a3->unk0 > 15.0) {
-                    if (newly_pressed_input_copy & 0x4000) {
+                    if (newly_pressed_input_copy & B_BUTTON) {
                         var_a3->unk55 |= 1;
                     }
-                    if (D_global_asm_807ECD58.unk0 & 0x2000) {
+                    if (D_global_asm_807ECD58.unk0 & Z_TRIG) {
                         var_a3->unk55 |=  2;
                     } else {
                         var_a3->unk55 &= 0xFFFD;
                     }
-                    if (!(var_a3->unk55 & 2) && (D_global_asm_807ECD58.unk0 == 0x8000)) {
+                    if (!(var_a3->unk55 & 2) && (D_global_asm_807ECD58.unk0 == A_BUTTON)) {
                         var_a3->unk55 |= 4;
                     } else {
                         var_a3->unk55 &= 0xFFFB;
@@ -764,7 +764,7 @@ void func_global_asm_806A7600(void *arg0) {
         } else {
             sp34->unk6 = func_global_asm_80688C30(func_global_asm_80688E68(current_actor_pointer));
         }
-        if ((sp34->unk6 != -1) && (isFlagSet(sp34->unk6, FLAG_TYPE_PERMANENT) != FALSE)) {
+        if ((sp34->unk6 != -1) && (isFlagSet(sp34->unk6, FLAG_TYPE_PERMANENT))) {
             deleteActor(current_actor_pointer);
             return;
         }

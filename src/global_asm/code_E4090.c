@@ -143,14 +143,6 @@ void func_global_asm_806DF670(s16 *arg0, s16 arg1, s16 arg2) {
 u16 func_global_asm_806DFF34(u16, s32 *);
 
 typedef struct {
-    u16 unk0;
-    s8 unk2;
-    s8 unk3; // Used
-} Struct807ECDEC;
-
-extern Struct807ECDEC *D_global_asm_807ECDEC;
-
-typedef struct {
     void (*unk0)(void); // Start Button Pressed Handler
     void (*unk4)(void); // Always Called (before input handlers)
     void (*unk8)(void); // A Button Pressed Handler
@@ -189,7 +181,7 @@ s32 handleInputsForControlState(s32 controlState) {
     oldControlState = current_player->control_state;
 
     // Read button inputs
-    D_global_asm_807FD610[cc_player_index].unk2A = func_global_asm_806DFF34(D_global_asm_807ECDEC->unk0, &D_global_asm_80750FF0);
+    D_global_asm_807FD610[cc_player_index].unk2A = func_global_asm_806DFF34(D_global_asm_807ECDEC->buttons, &D_global_asm_80750FF0);
     D_global_asm_807FD610[cc_player_index].unk2C = func_global_asm_806DFF34(D_global_asm_807ECDF0, &D_global_asm_80750FF0);
 
     // Buttons disabled?
@@ -199,10 +191,10 @@ s32 handleInputsForControlState(s32 controlState) {
     }
 
     // Read joystick inputs and clamp between -80 and 80
-    D_global_asm_807ECDEC->unk2 = MIN(MAX(D_global_asm_807ECDEC->unk2, -80), 80);
-    D_global_asm_807ECDEC->unk3 = MIN(MAX(D_global_asm_807ECDEC->unk3, -80), 80);
-    D_global_asm_807FD610[cc_player_index].unk2E = D_global_asm_807ECDEC->unk2;
-    D_global_asm_807FD610[cc_player_index].unk2F = D_global_asm_807ECDEC->unk3;
+    D_global_asm_807ECDEC->unk2 = MIN(MAX(D_global_asm_807ECDEC->stick_x, -80), 80);
+    D_global_asm_807ECDEC->unk3 = MIN(MAX(D_global_asm_807ECDEC->stick_y, -80), 80);
+    D_global_asm_807FD610[cc_player_index].unk2E = D_global_asm_807ECDEC->stick_x;
+    D_global_asm_807FD610[cc_player_index].unk2F = D_global_asm_807ECDEC->stick_y;
 
     // Joystick disabled?
     if (extra_player_info_pointer->unk1F4 & 0x20) {

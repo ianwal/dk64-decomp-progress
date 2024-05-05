@@ -323,7 +323,7 @@ void func_global_asm_80690500(void) {
     if (func_global_asm_8061CB50() == 0 || (func_global_asm_8061CB50() != 0 && player_pointer->unk6A & 0x100)) {
         getBonePosition(current_actor_pointer, 1, &x, &y, &z);
         createLight(x, y, z, 0.0f, 0.0f, 0.0f, 300.0f, 0, 0xFF, 0xFF, 0xFF);
-        if (isFlagSet(0x6B, FLAG_TYPE_TEMPORARY) == 0) {
+        if (!isFlagSet(0x6B, FLAG_TYPE_TEMPORARY)) {
             if (func_global_asm_8061CB50() != 0) {
                 if (player_pointer->unk6A & 0x100) {
                     getBonePosition(current_actor_pointer, 2, &x, &y, &z);

@@ -320,7 +320,7 @@ void func_jetpac_80024D48(Gfx **arg0) {
 
     sp4C = 7;
     func_jetpac_80024408(arg0);
-    if ((D_jetpac_8002EC30.unk798 != 0) && (isFlagSet(0x62, FLAG_TYPE_TEMPORARY) != 0)) {
+    if ((D_jetpac_8002EC30.unk798 != 0) && isFlagSet(0x62, FLAG_TYPE_TEMPORARY)) {
         sprintf(&sp2C, "RAREWARE COIN COLLECTED");
         sp4C = 5;
     } else {

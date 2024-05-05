@@ -1454,13 +1454,6 @@ typedef struct enemy_info {
 } EnemyInfo;
 
 typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3; // Used
-} CharacterChange294;
-
-typedef struct {
     s32 unk0;
     s32 unk4;
     s32 unk8;
@@ -1525,8 +1518,8 @@ typedef struct {
     s32     unk28C;
     s16     chunk; // 0x290
     s16     unk292;
-    CharacterChange294 *unk294; // Used
-    u16     *new_controller_inputs; // bitfield 0x298
+    OSContPad *unk294; // Used
+    OSContPad *new_controller_inputs; // bitfield 0x298
     s16     action_initiated; // 0x29C
     s16     unk29E;
     Actor*  unk2A0;

@@ -104,7 +104,7 @@ extern s32 D_race_8002FCAC[];
 extern s16 D_global_asm_80750AC8;
 
 Gfx *func_race_800292B0(Gfx *dl, Actor *arg1) {
-    return func_race_8002CAC8(dl, arg1, arg1->RaaD);
+    return func_race_8002CAC8(dl, arg1, arg1->additional_actor_data);
 }
 
 void func_race_800292D0(Actor *arg0) {
@@ -160,7 +160,7 @@ void sealRaceSetup(void) {
 
 void func_race_800294A8(void) {
     s32 pad;
-    Actor178 *sp68;
+    Actor178 *a178;
     s32 pad2;
     s32 pad3;
     s32 pad4;
@@ -175,55 +175,55 @@ void func_race_800294A8(void) {
     s32 var_s1;
     RaceAdditionalActorData *temp_s0;
     PlayerAdditionalActorData *PaaD;
-    RaceAdditionalActorData *temp_s4;
+    RaceAdditionalActorData *aaD;
 
-    temp_s4 = current_actor_pointer->additional_actor_data;
-    sp68 = current_actor_pointer->unk178;
-    Player = character_change_array[temp_s4->unk28].player_pointer;
+    aaD = current_actor_pointer->additional_actor_data;
+    a178 = current_actor_pointer->unk178;
+    Player = character_change_array[aaD->unk28].player_pointer;
     PaaD = Player->additional_actor_data;
     sp52 = current_actor_pointer->unk6A & 1;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_80690094(current_actor_pointer, Player);
         current_actor_pointer->noclip_byte |= 0x10;
         current_actor_pointer->object_properties_bitfield &= 0xFFFDFFFF;
-        temp_s4->unk44 = 5;
+        aaD->unk44 = 5;
         func_global_asm_8066E5F8(current_actor_pointer, 2, 0xC);
     }
-    func_global_asm_80690190(temp_s4, sp68);
-    if (temp_s4->unk34 < 5) {
-        if (temp_s4->unk34 == 1) {
-            Actor *temp = temp_s4->unk30;
+    func_global_asm_80690190(aaD, a178);
+    if (aaD->unk34 < 5) {
+        if (aaD->unk34 == 1) {
+            Actor *temp = aaD->unk30;
             temp_s0 = temp->additional_actor_data;
-            if (temp_s4->unk35 == 0) {
+            if (aaD->unk35 == 0) {
                 func_global_asm_806F8BC4(0xB, 1, 0);
-                temp_s4->unk35++;
+                aaD->unk35++;
             }
             if (temp_s0->unk1C == 0x3C) {
                 func_global_asm_8061C6A8(PaaD->unk104, current_actor_pointer, 4, 0x800, 0x32, 0, 0x28, 0x1E, 0x14, 0, 0.4f);
             }
         }
-        if (temp_s4->unk34 == 2) {
-            if (temp_s4->unk26 != 0) {
-                temp_s4->unk4 = func_race_8002D2C0(temp_s4) * 2;
-                if (temp_s4->unk4 > 1.0) {
-                    temp_s4->unk25 = 0x14;
+        if (aaD->unk34 == 2) {
+            if (aaD->unk26 != 0) {
+                aaD->unk4 = func_race_8002D2C0(aaD) * 2;
+                if (aaD->unk4 > 1.0) {
+                    aaD->unk25 = 0x14;
                 }
-                temp_s4->unk26 = 0;
+                aaD->unk26 = 0;
             }
-            if (temp_s4->unk25 != 0) {
-                temp_s4->unk25--;
+            if (aaD->unk25 != 0) {
+                aaD->unk25--;
             }
         }
-        func_global_asm_8068F72C(temp_s4, sp68, 1, 1);
+        func_global_asm_8068F72C(aaD, a178, 1, 1);
         if (!gameIsInDKTVMode()) {
             addActorToTextOverlayRenderArray(&func_race_800292B0, current_actor_pointer, 3);
         }
-    } else if (temp_s4->unk34 == 5) {
-        if (temp_s4->unk35 == 0) {
+    } else if (aaD->unk34 == 5) {
+        if (aaD->unk35 == 0) {
             current_actor_pointer->object_properties_bitfield &= ~4;
             current_actor_pointer->unkB8 = 0.0f;
             func_global_asm_806F8D58(0xB, 0);
-            temp_s4->unk35++;
+            aaD->unk35++;
             for (i = 0; i < 2; i++) {
                 if (current_actor_pointer->unk6E[i] != -1) {
                     func_global_asm_80605314(current_actor_pointer, i);
@@ -231,7 +231,7 @@ void func_race_800294A8(void) {
             }
         }
     }
-    func_global_asm_8068FF40(sp52, temp_s4, sp68);
+    func_global_asm_8068FF40(sp52, aaD, a178);
     renderActor(current_actor_pointer, 0);
 }
 

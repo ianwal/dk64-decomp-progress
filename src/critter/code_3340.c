@@ -277,8 +277,8 @@ void func_critter_80027448(void) {
                 break;
         }
         D_critter_8002A1B0 = d;
-        if (newly_pressed_input != 0) {
-            if (D_critter_80029F90[D_critter_80029F80[0]] & newly_pressed_input) {
+        if (newly_pressed_input.button != 0) {
+            if (D_critter_80029F90[D_critter_80029F80[0]] & newly_pressed_input.button) {
                 D_critter_80029F80[0]++;
                 if (D_critter_80029F80[0] == 4) {
                     D_critter_80029F80[0] = 0;

@@ -255,14 +255,6 @@ typedef struct {
     s8 unk19; // Used
 } Struct80024788;
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2; // Used
-    s8 unk3; // Used
-} Struct807ECDEC;
-
-extern Struct807ECDEC *D_global_asm_807ECDEC;
 extern u8 D_menu_800330C0[];
 
 //void func_menu_800244EC();
@@ -346,11 +338,11 @@ void func_menu_80024788(SnideAaD180 *arg0) {
             if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
                 var_t5 = 1;
             } else {
-                if ((D_global_asm_807ECDEC->unk3 >= 0x29) && (arg0->previous_y < 0x29)) {
+                if ((D_global_asm_807ECDEC->stick_y >= 0x29) && (arg0->previous_y < 0x29)) {
                     arg0->screen--;
                     playSound(0x2A0, 0x7FFF, 64.0f, 1.0f, 0, 0);
                 }
-                if ((D_global_asm_807ECDEC->unk3 < -0x28) && (arg0->previous_y >= -0x28)) {
+                if ((D_global_asm_807ECDEC->stick_y < -0x28) && (arg0->previous_y >= -0x28)) {
                     arg0->screen++;
                     playSound(0x2A0, 0x7FFF, 64.0f, 1.0f, 0, 0);
                 }
@@ -365,7 +357,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
             addActorToTextOverlayRenderArray(&func_menu_800244EC, current_actor_pointer, 3);
             break;
     }
-    arg0->previous_y = D_global_asm_807ECDEC->unk3;
+    arg0->previous_y = D_global_asm_807ECDEC->stick_y;
 }
 */
 

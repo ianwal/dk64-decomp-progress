@@ -1397,8 +1397,7 @@ void func_global_asm_8067B01C(void) {
 }
 */
 
-extern s32 D_global_asm_807ECDEC;
-extern u16 D_global_asm_807ECDF0;
+extern u16 D_global_asm_807ECDF0; // Button input bitfield
 extern s16 D_global_asm_807FD584;
 
 extern const Struct8075C410 D_global_asm_8075C410[];
@@ -1411,7 +1410,7 @@ void func_global_asm_8067B100(Actor *player) {
     current_player = character_change_array[cc_player_index].player_pointer;
     D_global_asm_807FD568 = &D_global_asm_807FC950[cc_player_index].character_progress[character];
     D_global_asm_807ECDEC = character_change_array[cc_player_index].unk294;
-    D_global_asm_807ECDF0 = *character_change_array[cc_player_index].new_controller_inputs;
+    D_global_asm_807ECDF0 = character_change_array[cc_player_index].new_controller_inputs->button;
     D_global_asm_807FD584 = D_global_asm_8075C410[character].unk4;
     character_change_array[cc_player_index].unk2C1 = 0;
 }

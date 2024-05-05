@@ -102,7 +102,7 @@ void func_boss_8002C964(void) {
         func_global_asm_806AD9AC();
     }
     if (((D_global_asm_807FBD70 == 9) || (D_global_asm_807FBB85 != 0)) && (current_actor_pointer->control_state != 0x37)) {
-        if (isFlagSet(0xF7, FLAG_TYPE_PERMANENT) != 0) {
+        if (isFlagSet(0xF7, FLAG_TYPE_PERMANENT)) {
             func_global_asm_8067E278(0, 1);
             current_actor_pointer->control_state = 0x40;
         } else {

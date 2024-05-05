@@ -3464,7 +3464,7 @@ us,.race,func_race_8002CFF0,116,yes
 us,.race,initializeSealRace,76,yes
 us,.race,func_race_8002D148,220,yes
 us,.race,func_race_80029054,600,yes
-us,.race,func_race_8002C14C,412,no
+us,.race,func_race_8002C14C,412,yes
 us,.race,func_race_8002ED04,208,yes
 us,.race,func_race_80024000,1588,no
 us,.race,func_race_8002BBD0,92,yes

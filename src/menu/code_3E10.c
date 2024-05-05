@@ -576,8 +576,7 @@ extern s8 D_global_asm_807563B4; // Enable stack trace upon crash
 // Button code on controller to enable stack trace upon crash
 // Accessible from the sound menu
 void func_menu_8002907C(void) {
-    u8 progress = D_menu_80033818;
-    if (D_menu_8003381C[D_menu_80033818] == *(u16*)(&newly_pressed_input+0)) {
+    if (D_menu_8003381C[D_menu_80033818] == *(u16*)(&newly_pressed_input.button)) {
         D_menu_80033818 = D_menu_80033818 + 1;
         if (D_menu_80033818 > 6U) {
             D_global_asm_807563B4 = TRUE;
@@ -585,7 +584,7 @@ void func_menu_8002907C(void) {
             D_menu_80033818 = 0;
         }
     } else {
-        if (*(u16*)(&newly_pressed_input + 0) != 0) {
+        if (newly_pressed_input.button != 0) {
             D_menu_80033818 = 0;
         }
     }
@@ -1349,7 +1348,7 @@ void func_menu_8002D8AC(Actor *arg0, s32 arg1) {
         func_menu_8002FE08(aaD, D_menu_800338FC);
     }
     func_menu_8002FC1C(arg0, aaD, 1);
-    if (newly_pressed_input_copy & 0xC) {
+    if (newly_pressed_input_copy & (U_CBUTTONS | D_CBUTTONS)) {
         D_global_asm_80744544 ^= 0x100;
     }
     if (optionChanged) {
@@ -1627,7 +1626,6 @@ void func_menu_80030258(Gfx *dl, Actor *arg1) {
 }
 
 extern s8 D_8076A0D0[];
-extern s8 *D_global_asm_807ECDEC;
 
 typedef struct {
     u8 unk0[0xC - 0x0];
@@ -1650,29 +1648,29 @@ s32 func_menu_80030340(Actor *actor, s32 arg1, Gfx *dl, s32 arg3) {
 
     aaD = actor->additional_actor_data;
     sp18 = 0;
-    if (*character_change_array->new_controller_inputs & A_BUTTON) {
+    if (character_change_array->new_controller_inputs->button & A_BUTTON) {
         sp18 = 1;
     }
-    if (*character_change_array->new_controller_inputs & B_BUTTON) {
+    if (character_change_array->new_controller_inputs->button & B_BUTTON) {
         sp18 |= 2;
     }
-    if (*character_change_array->new_controller_inputs & U_CBUTTONS) {
+    if (character_change_array->new_controller_inputs->button & U_CBUTTONS) {
         sp18 |= 0x40;
     }
-    if (*character_change_array->new_controller_inputs & D_CBUTTONS) {
+    if (character_change_array->new_controller_inputs->button & D_CBUTTONS) {
         sp18 |= 0x80;
     }
-    if (*character_change_array->new_controller_inputs & Z_TRIG) {
+    if (character_change_array->new_controller_inputs->button & Z_TRIG) {
         sp18 |= 0x100;
     }
-    if (D_global_asm_807ECDEC[2] < -40) {
+    if (D_global_asm_807ECDEC->stick_x < -40) {
         sp18 |= 4;
-    } else if (D_global_asm_807ECDEC[2] >= 41) {
+    } else if (D_global_asm_807ECDEC->stick_x >= 41) {
         sp18 |= 8;
     }
-    if (D_global_asm_807ECDEC[3] < -40) {
+    if (D_global_asm_807ECDEC->stick_y < -40) {
         sp18 |= 0x20;
-    } else if (D_global_asm_807ECDEC[3] >= 41) {
+    } else if (D_global_asm_807ECDEC->stick_y >= 41) {
         sp18 |= 0x10;
     }
     switch (arg1) {
@@ -2093,7 +2091,7 @@ void func_menu_80031B08(void) {
             }
             break;
         case 3:
-            if (*character_change_array->new_controller_inputs & 0x8000) {
+            if (character_change_array->new_controller_inputs->button & 0x8000) {
                 if (menu_selection_available == 1) {
                     playActorAnimation(current_actor_pointer, 0x348);
                     current_actor_pointer->control_state_progress = 4;

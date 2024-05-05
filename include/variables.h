@@ -14,7 +14,7 @@ extern CharacterChange *character_change_array;
 extern Actor *player_pointer;
 extern u8 cc_player_index; // index into character_change_array, current_character_index[]
 extern u8 cc_number_of_players;
-extern s32 global_properties_bitfield;
+extern u32 global_properties_bitfield;
 extern Maps current_map;
 extern s32 current_exit;
 extern Maps next_map;
@@ -22,7 +22,7 @@ extern s32 next_exit;
 extern u8 is_cutscene_active;
 extern u8 game_mode;
 extern u8 game_mode_copy;
-extern u16 newly_pressed_input;
+extern OSContPad newly_pressed_input;
 extern u16 newly_pressed_input_copy;
 extern Struct807FDC90 *D_global_asm_807FDC90; // Array?
 extern CharacterSpawner *D_global_asm_807FDC9C; // Character spawner array
@@ -34,6 +34,7 @@ extern CharacterProgress *D_global_asm_807FD568;
 extern u16 enemies_killed;
 extern Chunk *chunk_array_pointer;
 extern u8 current_file;
+extern OSContPad *D_global_asm_807ECDEC;
 
 extern u16 D_global_asm_807446C0[];
 
