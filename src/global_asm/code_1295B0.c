@@ -124,7 +124,7 @@ void func_global_asm_80724A9C(u8 arg0, u8 arg1, u8 arg2) {
     }
 }
 
-void func_global_asm_80724B5C(u8 arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
+void func_global_asm_80724B5C(u8 arg0, u8 arg1, f32 *x, f32 *y, f32 *z) {
     Struct80755690_unk4 *var_v0;
     s16 i;
 
@@ -132,9 +132,9 @@ void func_global_asm_80724B5C(u8 arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4)
     for (i = 0; i < D_global_asm_80755690->unk0; i++) {
         if (var_v0->unk18 == arg0) {
             if (arg1 < var_v0->unk10) {
-                *arg2 = var_v0->unk14[arg1].unk0;
-                *arg3 = var_v0->unk14[arg1].unk2;
-                *arg4 = var_v0->unk14[arg1].unk4;
+                *x = var_v0->unk14[arg1].unk0;
+                *y = var_v0->unk14[arg1].unk2;
+                *z = var_v0->unk14[arg1].unk4;
             }
             break;
         }
