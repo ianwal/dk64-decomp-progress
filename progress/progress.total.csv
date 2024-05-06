@@ -1546,7 +1546,7 @@ us,asm,func_global_asm_8060EE60,880,no
 us,asm,func_global_asm_806EE5A4,144,yes
 us,asm,func_global_asm_806D2C54,88,yes
 us,asm,func_global_asm_80732D80,44,yes
-us,asm,func_global_asm_80661BF0,580,no
+us,asm,func_global_asm_80661BF0,580,yes
 us,asm,func_global_asm_80698FEC,32,yes
 us,asm,func_global_asm_80635548,64,yes
 us,asm,func_global_asm_806EC3BC,240,yes

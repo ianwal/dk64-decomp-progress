@@ -475,10 +475,10 @@ void func_global_asm_80661658(u8 arg0) {
     D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3C5, 1, 0);
 }
 
-// Displaylist stuff
+// Displaylist stuff, similar to below
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_806616A0.s")
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_806618A0.s")
 
 typedef struct {
@@ -499,6 +499,8 @@ typedef struct {
     f32 unk38;
     f32 unk3C;
     f32 unk40;
+    u8 unk44[0x64 - 0x44];
+    u8 unk64;
 } Struct80661AB4_2;
 
 typedef struct {
@@ -521,6 +523,26 @@ typedef struct {
     s32 unk40;
 } Struct80661AB4_1;
 
+/*
+Gfx *func_global_asm_806618A0(Gfx *dl, Struct80661AB4_1 *arg1, u8 arg2) {
+    gDPPipeSync(dl++);
+    gDPLoadTextureBlock(dl++, D_global_asm_80748A9C[arg2].unk0, G_IM_FMT_RGBA, G_IM_SIZ_32b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, 14, 14);
+    gDPSetCombineLERP(dl++, TEXEL1, 0, TEXEL0, 0, 0, 0, 0, TEXEL0, COMBINED, 0, SHADE, 0, COMBINED, 0, PRIMITIVE, 0);
+    gDPSetPrimColor(dl++, 0, 0, 0, 0, 0, arg1->unk0->unk64);
+    gDPSetCycleType(dl++, G_CYC_2CYCLE);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_FOG | G_SHADING_SMOOTH);
+    gDPSetTextureLOD(dl++, G_TL_TILE);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 1, 1, G_ON);
+    gDPSetRenderMode(dl++, G_RM_FOG_SHADE_A, G_RM_ZB_XLU_SURF2);
+    gDPSetTileSize(dl++, 1, 0, (s32)arg1->unk0->unk3C, 0x007C, 0x007C);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0x0000, 1, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, 14, G_TX_NOMIRROR | G_TX_WRAP, 5, 14);
+    gDPSetTileSize(dl++, 2, (s32)arg1->unk0->unk40, (s32)arg1->unk0->unk40, 0x007C, 0x007C);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0x0000, 2, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, 13, G_TX_NOMIRROR | G_TX_WRAP, 5, 13);
+    return dl;
+}
+*/
+
 void func_global_asm_80661AB4(Struct80661AB4_1 *arg0) {
     arg0->unk0->unk3C -= arg0->unk0->unk34;
     if (arg0->unk0->unk3C < 0.0) {
@@ -542,8 +564,24 @@ void func_global_asm_80661B84(u8 arg0) {
     D_global_asm_80748A90[arg0].unk10 = getPointerTableFile(0x19, 0x2EF, 1, 0);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_80661BF0.s")
+Gfx *func_global_asm_80661BF0(Gfx *dl, Struct80661AB4_1 *arg1, u8 arg2) {
+    GlobalASMStruct18 *temp_v0 = &D_global_asm_80748A90[arg2];
+
+    gDPPipeSync(dl++);
+    gDPLoadTextureBlock_4b(dl++, temp_v0->unkC, G_IM_FMT_CI, 64, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 6, 6, G_TX_NOLOD, G_TX_NOLOD);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    gDPSetTextureLOD(dl++, G_TL_LOD);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gDPSetRenderMode(dl++, G_RM_ZB_OPA_SURF, G_RM_ZB_OPA_SURF2);
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, (s32)arg1->unk0->unk3C, 0x00FC, 0x00FC);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_32b, 8, 0x0000, 1, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, 14, G_TX_NOMIRROR | G_TX_WRAP, 5, 14);
+    gDPLoadTLUT_pal16(dl++, 0, temp_v0->unk10);
+    gDPSetTextureLUT(dl++, G_TT_RGBA16);
+    return dl;
+}
 
 void func_global_asm_80661E34(Struct80661AB4_1 *arg0) {
     arg0->unk0->unk3C -= arg0->unk0->unk34;
