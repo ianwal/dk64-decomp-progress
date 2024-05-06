@@ -63,6 +63,7 @@ s16 func_global_asm_806531B8(f32, f32, f32, s16);
 
 u8 setAction(s16 actionIndex, Actor *actor, u8 playerIndex);
 void moveAndScaleActorToAnother(Actor *destination, Actor *source, f32 scale);
+void func_global_asm_80614A64(Actor *);
 
 void func_global_asm_80717D4C(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071E864(Struct80717D84 *arg0, s8 *arg1);

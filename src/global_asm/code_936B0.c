@@ -296,9 +296,7 @@ void func_global_asm_80690500(void) {
     A178_80690500 *a178;
     AAD_global_asm_80690500_unk104 *aaD_104;
     u8 sp4B;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     aaD = current_actor_pointer->additional_actor_data;
     a178 = current_actor_pointer->unk178;
@@ -408,9 +406,7 @@ void func_global_asm_80690AB0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4, 
 }
 
 void func_global_asm_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 boneIndex, f32 arg5, Actor *arg6) {
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     getBonePosition(arg3, boneIndex, &x, &y, &z);
     func_global_asm_80690A28(arg0, arg1, arg2, x, y, z, arg5, arg6);

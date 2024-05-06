@@ -531,7 +531,7 @@ s32 func_global_asm_80678014(s32);
 extern s16 D_global_asm_807F693C;
 extern u8 D_global_asm_807F693F;
 
-void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 spawn_trigger) {
     s32 phi_v1;
 
     if ((arg0->unk94 == 0) && ((func_global_asm_80678014(0x14)))) {
@@ -542,7 +542,7 @@ void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 a
         last_spawned_actor->z_position = D_global_asm_807F6224;
         last_spawned_actor->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
         if (D_global_asm_807F693F != 0) {
-            last_spawned_actor->unk15E = arg3;
+            last_spawned_actor->unk15E = spawn_trigger;
         }
         if (D_global_asm_807F693F != 0) {
             phi_v1 = 4;
@@ -557,7 +557,7 @@ void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 a
                 playCutscene(NULL, arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
                 return;
             case 2:
-                playCutscene(getSpawnerTiedActor(arg3, 0x400), arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
+                playCutscene(getSpawnerTiedActor(spawn_trigger, 0x400), arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
                 break;
         }
     }
@@ -640,21 +640,19 @@ s32 func_global_asm_806422D8(s16 arg0) {
     return FALSE;
 }
 
-s32 func_global_asm_806423A8(s16 arg0, s16 arg1, s16 arg2) {
-    s16 var_s0;
-    Actor *temp_v0;
+s32 func_global_asm_806423A8(s16 distance, s16 startSpawnTrigger, s16 endSpawnTrigger) {
+    s16 spawn_trigger;
+    Actor *actor;
 
-    var_s0 = arg1;
-    while (arg2 >= var_s0) {
-        if (func_global_asm_80726D7C(var_s0) != 0) {
-            temp_v0 = getSpawnerTiedActor(var_s0, 0);
-            if (temp_v0 != NULL) {
-                if (func_global_asm_8064216C(arg0, temp_v0->x_position, temp_v0->y_position, temp_v0->z_position) != 0) {
+    for (spawn_trigger = startSpawnTrigger; endSpawnTrigger >= spawn_trigger; spawn_trigger++) {
+        if (func_global_asm_80726D7C(spawn_trigger)) {
+            actor = getSpawnerTiedActor(spawn_trigger, 0);
+            if (actor != NULL) {
+                if (func_global_asm_8064216C(distance, actor->x_position, actor->y_position, actor->z_position)) {
                     return TRUE;
                 }
             }
         }
-        var_s0 += 1;
     }
     return FALSE;
 }

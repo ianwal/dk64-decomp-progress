@@ -299,9 +299,7 @@ void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 pad;
     s32 temp_s0;
     s32 i;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     if (arg2 == 1) {
         func_global_asm_806335B0(arg1, 1, arg3, &x, &y, &z);
@@ -533,59 +531,58 @@ void func_global_asm_806450C0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     }
 }
 
-// doable, rodata, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80645238.s")
-
 extern s32 D_global_asm_8071FFA0;
 extern s32 D_global_asm_80720E44;
 extern s32 D_global_asm_80720E5C;
 extern s32 D_global_asm_80720E74;
 extern s32 D_global_asm_80720E8C;
 
-extern f32 D_global_asm_807F621C;
-extern f32 D_global_asm_807F6220;
-extern f32 D_global_asm_807F6224;
+extern f32 D_global_asm_807F621C; // x position
+extern f32 D_global_asm_807F6220; // y position
+extern f32 D_global_asm_807F6224; // x position
+
 int func_global_asm_8071910C(); // TODO: Signature
 
-/*
 void func_global_asm_80645238(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    void *var_s1;
-    f32 var_f6;
-    f32 var_f8;
-    f64 var_f4;
-    s32 temp_s0;
+    f32 randomZOffset;
+    f32 randomXOffset;
+    f32 _randomScaleOffset;
+    void *sprite;
+    f64 randomScaleOffset;
+    s32 pad;
+    s32 randomSpriteIndex;
     s32 i;
-    u32 temp_hi;
-    u32 temp_hi_2;
-    u32 temp_hi_3;
 
     for (i = 0; i < 0x14; i++) {
-        temp_s0 = (func_global_asm_806119A0() / 10000) % 4;
+        randomSpriteIndex = (s32)(func_global_asm_806119A0() / 10000) % 4;
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(0x3C);
         func_global_asm_8071498C(&func_global_asm_8071910C);
         func_global_asm_80714998(2);
         func_global_asm_80714950(2);
-        switch (temp_s0) { // irregular
-        case 0:
-            var_s1 = &D_global_asm_80720E44;
-            break;
-        case 1:
-            var_s1 = &D_global_asm_80720E5C;
-            break;
-        case 2:
-            var_s1 = &D_global_asm_80720E74;
-            break;
-        case 3:
-            var_s1 = &D_global_asm_80720E8C;
-            break;
+        switch (randomSpriteIndex) {
+            case 0:
+                sprite = &D_global_asm_80720E44;
+                break;
+            case 1:
+                sprite = &D_global_asm_80720E5C;
+                break;
+            case 2:
+                sprite = &D_global_asm_80720E74;
+                break;
+            case 3:
+                sprite = &D_global_asm_80720E8C;
+                break;
         }
-        drawSpriteAtPosition(var_s1, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+        drawSpriteAtPosition(sprite, 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
     }
     for (i = 0; i < 6; i++) {
-        var_f8 = (func_global_asm_806119A0() / 1000) % 150;
-        var_f6 = (func_global_asm_806119A0() / 1000) % 150;
-        var_f4 = (func_global_asm_806119A0() / 1000) % 50;
+        randomXOffset = (func_global_asm_806119A0() / 1000) % 150;
+        randomXOffset -= 75.0;
+        randomZOffset = (func_global_asm_806119A0() / 1000) % 150;
+        randomZOffset -= 75.0;
+        randomScaleOffset = (func_global_asm_806119A0() / 1000) % 50;
+        _randomScaleOffset = ((f32)(randomScaleOffset - 25.0)) / 50.0;
         if (i == 0) {
             func_global_asm_80714950(0x100FA);
             func_global_asm_8071498C(func_global_asm_8071A8B0);
@@ -596,10 +593,15 @@ void func_global_asm_80645238(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         func_global_asm_807149B8(1);
         func_global_asm_80714998(3);
         changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
-        drawSpriteAtPosition(&D_global_asm_8071FFA0, (f32)((var_f4 - 25.0) / 50.0) + 3.5, D_global_asm_807F621C + (f32)(var_f8 - 75.0), D_global_asm_807F6220 + 30.0, D_global_asm_807F6224 + (f32)(var_f6 - 75.0));
+        drawSpriteAtPosition(
+            &D_global_asm_8071FFA0,
+            _randomScaleOffset + 3.5,
+            D_global_asm_807F621C + randomXOffset,
+            D_global_asm_807F6220 + 30.0,
+            D_global_asm_807F6224 + randomZOffset
+        );
     }
 }
-*/
 
 void func_global_asm_80645614(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     u32 sp24;
@@ -857,9 +859,7 @@ extern f32 D_global_asm_807F6224;
 
 void func_global_asm_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 pad2;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
     s32 pad[6];
     f32 var_f28;
     s32 i;

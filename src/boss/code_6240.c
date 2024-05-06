@@ -148,9 +148,7 @@ void func_boss_8002A55C(u8 arg0, f32 arg1) {
 }
 
 void func_boss_8002A5CC(void) {
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
     s16 i;
 
     getBonePosition(current_actor_pointer, 1, &x, &y, &z);

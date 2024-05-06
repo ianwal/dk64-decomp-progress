@@ -310,16 +310,16 @@ s32 func_global_asm_806782E8(Actor *arg0) {
 // TODO: Cleanup
 void func_global_asm_806783BC(void) {
     s32 *var_s1;
-    s32 var_s0;
+    s32 i;
 
-    var_s0 = 0;
+    i = 0;
     if (D_global_asm_807FBF10 > 0) {
         var_s1 = &D_global_asm_807FBE10;
         do {
             func_global_asm_806785D4(*var_s1);
-            var_s0++;
+            i++;
             var_s1++;
-        } while (var_s0 < D_global_asm_807FBF10);
+        } while (i < D_global_asm_807FBF10);
     }
     D_global_asm_807FBF10 = 0;
 }
@@ -369,15 +369,12 @@ void func_global_asm_80678530(Actor *arg0) {
 void func_global_asm_806785D4(Actor *arg0) {
     s16 i;
     Actor *temp_v0;
-    void *temp_a0;
-    void *temp_a0_6;
 
-    if (arg0->unk0 != 0) {
+    if (arg0->unk0) {
         func_global_asm_806136B4();
     }
-    temp_a0_6 = arg0->unk11C;
-    if (temp_a0_6 != NULL) {
-        func_global_asm_80679200(temp_a0_6, arg0, 0x80000, 0, 0, 0);
+    if (arg0->unk11C) {
+        func_global_asm_80679200(arg0->unk11C, arg0, 0x80000, 0, 0, 0);
     }
     for (i = 0; i < D_global_asm_807FBB34; i++) {
         temp_v0 = D_global_asm_807FB930[i].unk0;
@@ -403,17 +400,14 @@ void func_global_asm_806785D4(Actor *arg0) {
     }
     func_global_asm_8066E21C(arg0->ledge_info_pointer);
     func_global_asm_8072F09C(arg0);
-    temp_a0 = arg0->unk118;
-    if (temp_a0 != NULL) {
-        free(temp_a0);
+    if (arg0->unk118) {
+        free(arg0->unk118);
     }
-    temp_a0 = arg0->unk148;
-    if (temp_a0 != NULL) {
-        free(temp_a0);
+    if (arg0->unk148) {
+        free(arg0->unk148);
     }
-    temp_a0 = arg0->unk14C;
-    if (temp_a0 != NULL) {
-        free(temp_a0);
+    if (arg0->unk14C) {
+        free(arg0->unk14C);
     }
     func_global_asm_8062D26C(arg0);
     if (arg0->unk58 != ACTOR_TEXT_BUBBLE) {
@@ -745,27 +739,22 @@ void func_global_asm_806791EC(Actor *arg0, s32 arg1) {
 
 // TODO: Clean this up
 void func_global_asm_80679200(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, s32 arg4, void *arg5) {
-    ActorCollision **sp28;
+    s32 pad;
     ActorCollision **var_v1;
     ActorCollision *var_t0;
-    ActorCollision *temp_v0;
-    ActorCollision *var_v0;
+    ActorCollision *current;
 
     var_t0 = NULL;
-    if (func_global_asm_8067AF44(arg0) != 0) {
-        var_v0 = arg0->collision_queue_pointer;
+    if (func_global_asm_8067AF44(arg0)) {
+        current = arg0->collision_queue_pointer;
         var_v1 = &arg0->collision_queue_pointer;
-        if (var_v0 != NULL) {
-            do {
-                var_v1 = &var_v0->next;
-                var_t0 = var_v0;
-                var_v0 = var_v0->next;
-            } while (var_v0 != NULL);
+        while (current) {
+            var_v1 = &current->next;
+            var_t0 = current;
+            current = current->next;
         }
-        sp28 = var_v1;
-        temp_v0 = func_global_asm_80679490(arg1, arg2, arg3, arg4, arg5);
-        *var_v1 = temp_v0;
-        temp_v0->prev = var_t0;
+        *var_v1 = func_global_asm_80679490(arg1, arg2, arg3, arg4, arg5);
+        (*var_v1)->prev = var_t0;
     }
 }
 
@@ -806,7 +795,7 @@ void func_global_asm_80679334(void) {
         D_global_asm_807FBF18[i].unk8--;
         if (D_global_asm_807FBF18[i].unk8 == 0) {
             temp_s2 = D_global_asm_807FBF18[i].unk4;
-            if (func_global_asm_8067AF44(temp_s2) != 0) {
+            if (func_global_asm_8067AF44(temp_s2)) {
                 var_v0 = temp_s2->collision_queue_pointer;
                 var_a0 = &temp_s2->collision_queue_pointer;
                 var_a1 = NULL;
@@ -864,7 +853,7 @@ void func_global_asm_80686CF8(Actor *actor);
 void func_global_asm_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
     s32 sp3C;
     s32 var_a2;
-    u16 temp_v0_2;
+    u16 pad;
     s32 var_v0;
     s32 temp;
 
@@ -906,9 +895,9 @@ void func_global_asm_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
                         break;
                 }
                 extra_player_info_pointer->unk200 = 0xF0;
-            } else if ((arg1 != NULL) && ((((arg1->interactable & 1) != 0)) || (arg1->interactable & 4) || (arg1->interactable & 2))) {
-                if (func_global_asm_80714608(0) != 0) {
-                    if (func_global_asm_806D0DE4(arg0, arg1) != 0) {
+            } else if ((arg1 != NULL) && ((((arg1->interactable & 1))) || (arg1->interactable & 4) || (arg1->interactable & 2))) {
+                if (func_global_asm_80714608(0)) {
+                    if (func_global_asm_806D0DE4(arg0, arg1)) {
                         sp3C = 0x31;
                     } else {
                         var_v0 = 1;

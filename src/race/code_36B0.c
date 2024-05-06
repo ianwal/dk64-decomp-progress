@@ -299,9 +299,7 @@ void func_race_80029054(void) {
     A17C_race_80029054 *a17C;
     Actor *temp;
     A178_race_80029054 *sp48;
-    f32 z;
-    f32 y;
-    f32 x;
+    f32 z, y, x;
 
     a178 = current_actor_pointer->unk178;
     a17C = current_actor_pointer->unk17C;

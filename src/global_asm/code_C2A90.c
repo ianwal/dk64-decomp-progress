@@ -1104,9 +1104,7 @@ void func_global_asm_806C27DC(void) {
 
 void func_global_asm_806C28B8(void) {
     f32 temp_f20;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
     f32 phi_f2;
     s16 i;
     s32 pad;

@@ -23,26 +23,19 @@ typedef struct {
     u16 unk18; // used
 } AAD_global_asm_80729B00;
 
-void func_global_asm_806663F8(void);
-
 /*
 void initializeCharacterSpawnerActor(void) {
-    EnemyInfo *temp_t9;
-    AAD_global_asm_80729B00 *temp_t7;
-
-    temp_t7 = current_actor_pointer->additional_actor_data;
-    D_global_asm_807FDC90 = temp_t7;
-    D_global_asm_807FDC94 = temp_t7->unk4;
-    temp_t9 = temp_t7->unk0;
-    D_global_asm_807FDC98 = temp_t9;
-    D_global_asm_807FDC9C = temp_t9;
-    D_global_asm_807FDCA0 = temp_t9->unk1C;
-    temp_t7->unk18++;
+    D_global_asm_807FDC90 = current_actor_pointer->additional_actor_data;
+    D_global_asm_807FDC94 = D_global_asm_807FDC90->unk4;
+    D_global_asm_807FDC98 = D_global_asm_807FDC90->unk0;
+    D_global_asm_807FDC9C = D_global_asm_807FDC98;
+    D_global_asm_807FDCA0 = D_global_asm_807FDC90->unk1C_s32;
+    D_global_asm_807FDC90->unk18 = D_global_asm_807FDC90->unk18 + 1;
     if (current_actor_pointer->object_properties_bitfield & 0x20000000) {
-        if ((current_actor_pointer->control_state != 0x37)
-            && (current_actor_pointer->control_state != 0x36)
-            && (D_global_asm_807FDC90->unk16 != D_global_asm_807FDC94->animation_state->unk0->unk10)) {
-            current_actor_pointer->object_properties_bitfield &= 0xDFFFFFFF;
+        if ((current_actor_pointer->control_state != 0x37) && (current_actor_pointer->control_state != 0x36)) {
+            if (D_global_asm_807FDC90->unk16 != D_global_asm_807FDC94->animation_state->unk0->unk10) {
+                current_actor_pointer->object_properties_bitfield &= ~0x20000000;
+            }
         }
     }
     if (current_actor_pointer->interactable & 2) {
@@ -68,9 +61,11 @@ void initializeCharacterSpawnerActor(void) {
                 current_actor_pointer->y_velocity = -220.0f;
             }
         }
-        if ((D_global_asm_807FDC98->unk46 & 0x4000) && (current_actor_pointer->unk6A & 4)) {
-            if ((current_actor_pointer->y_position + current_actor_pointer->unk15E) < current_actor_pointer->unkAC) {
-                D_global_asm_807FBB70.unk15 = 1;
+        if ((D_global_asm_807FDC98->unk46 & 0x4000)) {
+            if ((current_actor_pointer->unk6A & 4)) {
+                if ((current_actor_pointer->y_position + current_actor_pointer->unk15E) < current_actor_pointer->unkAC) {
+                    D_global_asm_807FBB70.unk15 = 1;
+                }
             }
         }
         if ((current_map == MAP_FUNGI) && (D_global_asm_807FDC94->interactable & 1)) {
@@ -82,8 +77,10 @@ void initializeCharacterSpawnerActor(void) {
             }
         }
     }
-    if ((current_actor_pointer->unk58 != ACTOR_KABOOM) && (current_actor_pointer->control_state == 0x37) && (current_actor_pointer->unk138 != 0)) {
-        current_actor_pointer->unk138 = 0;
+    if ((current_actor_pointer->unk58 != ACTOR_KABOOM)) {
+        if ((current_actor_pointer->control_state == 0x37) && (current_actor_pointer->unk138 != 0)) {
+            current_actor_pointer->unk138 = 0;
+        }
     }
     func_global_asm_806663F8();
 }

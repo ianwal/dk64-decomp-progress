@@ -217,9 +217,7 @@ void func_global_asm_806A1FD8(void) {
     AAD_global_asm_806A1FD8 *aaD;
     s32 i;
     u8 var_a1;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
     Actor *temp_s0;
 
     aaD = current_actor_pointer->additional_actor_data;

@@ -574,9 +574,7 @@ void func_global_asm_806A0310(void) {
 void func_global_asm_806A0330(void) {
     s32 pad[8];
     s32 i;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->noclip_byte = 0x1C;

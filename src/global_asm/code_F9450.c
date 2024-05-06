@@ -379,9 +379,7 @@ void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) 
 void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2) {
     s32 var_s0;
     s32 i;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
     f32 sp70;
     f32 sp6C;
     f32 sp68;
@@ -429,9 +427,7 @@ void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2) {
 
 void func_global_asm_806F5A48(u8 arg0, s16 arg1, Actor *arg2, u16 arg3) {
     s32 i;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
     f32 sp84;
     f32 sp80;
     f32 sp7C;

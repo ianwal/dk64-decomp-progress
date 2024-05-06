@@ -1362,12 +1362,9 @@ void func_global_asm_806CEE64(f32 arg0) {
 }
 
 void func_global_asm_806CEED8(void) {
-    f32 x2;
-    f32 x1;
-    f32 y2;
-    f32 y1;
-    f32 z2;
-    f32 z1;
+    f32 x2, x1;
+    f32 y2, y1;
+    f32 z2, z1;
     f32 dxz;
     f32 dy;
     s32 boneIndex1;

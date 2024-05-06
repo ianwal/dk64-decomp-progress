@@ -183,12 +183,8 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
     s32 pad3;
     s32 pad2;
     s32 pad;
-    f32 dx;
-    f32 dz;
-    f32 dy;
-    f32 z;
-    f32 y;
-    f32 x;
+    f32 dx, dz, dy;
+    f32 z, y, x;
 
     aaD = current_actor_pointer->additional_actor_data;
     PaaD = character_change_array->player_pointer->PaaD;
@@ -266,12 +262,8 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
 }
 
 void func_minecart_80024768(void) {
-    f32 z2;
-    f32 y2;
-    f32 x2;
-    f32 z1;
-    f32 y1;
-    f32 x1;
+    f32 z2, y2, x2;
+    f32 z1, y1, x1;
 
     if (extra_player_info_pointer->unk1F0 & 0x10000002) {
         getBonePosition(current_actor_pointer, 2, &x1, &y1, &z1);

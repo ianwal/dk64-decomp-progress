@@ -301,8 +301,8 @@ void func_global_asm_80726EE0(u8 arg0) {
     }
 }
 
-void func_global_asm_8072707C(s16 arg0, u8 arg1, u16 arg2) {
-    Actor *actor = getSpawnerTiedActor(arg0, arg2);
+void func_global_asm_8072707C(s16 spawn_trigger, u8 arg1, u16 arg2) {
+    Actor *actor = getSpawnerTiedActor(spawn_trigger, arg2);
     if (actor) {
         actor->control_state = arg1;
         actor->control_state_progress = 0;
@@ -531,8 +531,8 @@ void func_global_asm_807289B0(u8 arg0, u8 arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_807289E8.s")
 
-void func_global_asm_80729AA4(u8 arg0) {
-    Actor *actor = getSpawnerTiedActor(arg0, 0);
+void func_global_asm_80729AA4(u8 spawn_trigger) {
+    Actor *actor = getSpawnerTiedActor(spawn_trigger, 0);
     if (!actor) {
         actor = player_pointer;
     }

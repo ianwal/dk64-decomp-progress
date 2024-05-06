@@ -252,18 +252,14 @@ void func_global_asm_80714A9C(void) {
 }
 
 Struct80717D84 *func_global_asm_80714B84(void *sprite, f32 scale, s32 arg2, s32 boneIndex, u8 arg4) {
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     func_global_asm_806335B0(arg2, 1, boneIndex, &x, &y, &z);
     return func_global_asm_80714D08(sprite, scale, x, y, z, NULL, arg2, boneIndex, arg4);
 }
 
 Struct80717D84 *func_global_asm_80714C08(void *sprite, f32 scale, Actor *actor, s32 boneIndex, u8 arg4) {
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     getBonePosition(actor, boneIndex, &x, &y, &z);
     if (!(actor->object_properties_bitfield & 0x200) && (actor->animation_state != NULL) && (D_global_asm_807FDB36 & 0x80)) {
@@ -2345,9 +2341,7 @@ void func_global_asm_8071EB70(Struct80717D84 *arg0, s32 arg1) {
 
 void func_global_asm_8071EDEC(Struct80717D84 *arg0, s32 arg1) {
     f64 temp;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     getBonePosition(arg0->unk35C, 1, &x, &y, &z);
     temp = D_global_asm_8075EAA0;

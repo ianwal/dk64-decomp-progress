@@ -3043,13 +3043,9 @@ extern s32 D_global_asm_8071FC58; // TODO: Sprite
 extern s32 D_global_asm_8071FCC0; // TODO: Sprite
 
 void func_global_asm_806DBB04(void) {
-    f32 x2;
-    f32 y2;
-    f32 z2;
+    f32 x2, y2, z2;
     u8 sp63;
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     handleInputsForControlState(1);
     switch (current_actor_pointer->control_state_progress) {
@@ -3793,8 +3789,6 @@ void func_global_asm_806DDAB0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DE264.s")
 
 /*
-void func_global_asm_80614A64(Actor *); // extern
-
 void func_global_asm_806DE264(void) {
     f32 z;
     f32 y;
@@ -3898,7 +3892,7 @@ void func_global_asm_806DE264(void) {
             }
             func_global_asm_806CC970();
             break;
-        case 1: // switch 1
+        case 1:
             func_global_asm_806CC970();
             if (ABS_DIFF(current_actor_pointer->floor, extra_player_info_pointer->unkF0_f32) < 20.0) {
                 current_actor_pointer->y_position = current_actor_pointer->floor;

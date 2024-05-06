@@ -59,6 +59,15 @@ extern u16 D_global_asm_80744734[] ;/*= { // lobby_array
    MAP_HELM_LOBBY, // TODO: Why is this here twice?
 }; // lobby_array*/
 
+typedef struct {
+    s16 unk0; // Used, actor model index
+    s16 unk2; // Used
+    u8 unk4; // Used
+    u8 unk5;
+} GlobalASMStruct45;
+
+extern GlobalASMStruct45 D_global_asm_8074E814[];
+
 extern Gfx **D_1000020;
 extern Gfx **D_1000030;
 extern Gfx **D_1000068;

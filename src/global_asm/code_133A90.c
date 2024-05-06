@@ -320,19 +320,13 @@ s32 func_global_asm_8072F8D4(GlobalASMStruct82 *arg0, s32 arg1, s16 arg2) {
 f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, GlobalASMStruct82 *arg2, u8 arg3) {
     u8 boneIndex1;
     u8 boneIndex2;
-    f32 z2;
-    f32 y2;
-    f32 x2;
-    f32 z1;
-    f32 y1;
-    f32 x1;
+    f32 z2, y2, x2;
+    f32 z1, y1, x1;
     f32 sp68;
     f32 sp64;
     f32 sp60;
     f32 var_f2;
-    f32 x3;
-    f32 y3;
-    f32 z3;
+    f32 x3, y3, z3;
 
     boneIndex1 = arg2->unk34[arg3].unk0;
     boneIndex2 = arg2->unk34[arg3].unk1;

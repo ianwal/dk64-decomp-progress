@@ -1366,7 +1366,7 @@ struct actor {
         s16 unk146_s16; // used func_global_asm_8068A764
     };
     void *unk148; // Used
-    u32 unk14C; // Used
+    void *unk14C; // Used
     FloorTriangle *unk150;
     u8 control_state; // at 0x154
     u8 control_state_progress; // at 0x155
@@ -2270,9 +2270,14 @@ struct Struct807FDC90 {
     s16 unk16;
     u16 unk18;
     u16 unk1A; // Used
-    u16 unk1C; // Used
-    u8 unk1E;
-    u8 unk1F;
+    union {
+        struct {
+            u16 unk1C; // Used
+            u8 unk1E;
+            u8 unk1F;
+        };
+        s32 unk1C_s32;
+    };
     u8 unk20;
     u8 unk21;
     u8 unk22;

@@ -490,9 +490,7 @@ void func_global_asm_80666280(u8 arg0) {
 void func_global_asm_80666428(Actor*, f32, f32, f32, void*, void*, void*, void*, u8);
 
 void func_global_asm_80666290(Actor *actor, void *arg1, void *arg2, void *arg3, void *arg4, u8 arg5) {
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     D_global_asm_807F94BC = 0;
     D_global_asm_807F94B3 = 0;

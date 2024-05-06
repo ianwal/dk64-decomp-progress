@@ -274,11 +274,8 @@ typedef struct {
 
 void func_global_asm_8069B3FC(void) {
     AAD_8069B3FC *aaD;
-    s32 j;
-    s32 i;
-    f32 x;
-    f32 y;
-    f32 z;
+    s32 j, i;
+    f32 x, y, z;
     PlayerAdditionalActorData *PaaD;
     void *sprite;
 

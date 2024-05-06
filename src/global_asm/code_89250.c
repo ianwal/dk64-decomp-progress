@@ -159,9 +159,7 @@ void func_global_asm_80684A00(s16 boneIndex, s8 arg1) {
 }
 
 void func_global_asm_80684BB0(s16 boneIndex, s16 arg1, s16 arg2) {
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
     f32 scale;
 
     scale = current_actor_pointer->animation_state->scale_y / 0.15;
@@ -801,12 +799,8 @@ void func_global_asm_806877C8(u8 arg0) {
 }
 
 void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
-    f32 x1;
-    f32 y1;
-    f32 z1;
-    f32 x2;
-    f32 y2;
-    f32 z2;
+    f32 x1, y1, z1;
+    f32 x2, y2, z2;
     f32 sp5C;
     f32 sp58;
     f32 sp54;

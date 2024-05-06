@@ -56,9 +56,7 @@ void func_global_asm_806ADFE0(void) {
 }
 
 void func_global_asm_806AE2B0(s32 modelIndex, s16 arg1, s16 boneIndex, s16 arg3) {
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
 
     if (spawnActor(ACTOR_KROSSBONES_HEAD, modelIndex)) {
         getBonePosition(current_actor_pointer, boneIndex, &x, &y, &z);
@@ -74,12 +72,8 @@ void func_global_asm_806AE2B0(s32 modelIndex, s16 arg1, s16 boneIndex, s16 arg3)
 }
 
 void func_global_asm_806AE394(f32 arg0, f32 arg1) {
-    f32 x1;
-    f32 y1;
-    f32 z1;
-    f32 x2;
-    f32 y2;
-    f32 z2;
+    f32 x1, y1, z1;
+    f32 x2, y2, z2;
     s16 sp4E;
 
     getBonePosition(current_actor_pointer, 1, &x1, &y1, &z1);

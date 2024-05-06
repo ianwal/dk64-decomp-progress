@@ -1025,15 +1025,6 @@ void func_global_asm_80682DF4(Actor *arg0, u16 *arg1, s32 arg2) {
     playActorAnimation(arg0, D_global_asm_807FBB54[(((arg2 * 7) + *arg1) - 2)]);
 }
 */
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    u8 unk4; // Used
-    u8 unk5;
-} GlobalASMStruct45;
-
-extern GlobalASMStruct45 D_global_asm_8074E814[];
 void func_global_asm_80682AB4(void *);
 
 typedef struct {
@@ -1258,10 +1249,10 @@ void func_global_asm_806833DC(YetAnotherAdditionalActorData *arg0) {
             temp_v0_4 = sp34->unk5A;
             global_properties_bitfield &= 0xFFFCFFCF;
             arg0->unk6 = 0;
-            if (temp_v0_4 != (&D_global_asm_8074E814 + (arg0->unk6 * 6))->unk2) {
+            if (temp_v0_4 != D_global_asm_8074E814[arg0->unk6].unk2) {
                 do {
                     arg0->unk6 = arg0->unk6 + 1;
-                } while (temp_v0_4 != (&D_global_asm_8074E814 + (arg0->unk6 * 6))->unk2);
+                } while (temp_v0_4 != D_global_asm_8074E814[arg0->unk6].unk2);
             }
             arg0->unk7 = arg0->unk6;
             phi_a1 = arg0->unk6;

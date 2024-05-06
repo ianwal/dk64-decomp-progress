@@ -106,13 +106,13 @@ void func_global_asm_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
 }
 */
 
-Actor *func_global_asm_80627EA8(s16 arg0) {
+Actor *func_global_asm_80627EA8(s16 spawn_trigger) {
     Actor *actor;
 
-    if (arg0) {
-        actor = getSpawnerTiedActor(arg0, 0);
+    if (spawn_trigger) {
+        actor = getSpawnerTiedActor(spawn_trigger, 0);
     }
-    if (!arg0 || !actor) {
+    if (!spawn_trigger || !actor) {
         actor = player_pointer;
     }
     return actor;
