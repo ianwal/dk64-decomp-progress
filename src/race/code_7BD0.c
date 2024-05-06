@@ -626,7 +626,14 @@ f32 func_race_8002DD70(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 }
 
 typedef struct {
-    u8 unk0[0xF - 0x0];
+    f32 unk0;
+    f32 unk4; // Used
+} Struct8002E1C8_arg0_unk4;
+
+typedef struct {
+    s32 unk0;
+    Struct8002E1C8_arg0_unk4 *unk4;
+    u8 unk8[0xF - 0x8];
     u8 unkF;
     u8 unk10;
 } Struct8002E1C8_arg0;
@@ -697,8 +704,58 @@ void func_race_8002DE78(Struct8002E1C8_arg0 *arg0, u8 arg1, Struct8002E1C8_arg2 
     arg0->unkF = arg1;
 }
 
-// Jumptable, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002DF38.s")
+f32 func_race_8002DF38(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2, Struct8002E1C8_arg3 *arg3) {
+    f32 sp1C;
+    f32 var_f0;
+    Struct8002E1C8_arg0_unk4 *temp;
+
+    switch (arg0->unkF) {
+        case 0:
+            sp1C = func_race_8002DDA0(arg1, arg2);
+            break;
+        case 1:
+            sp1C = func_race_8002DDA0(arg1, arg2);
+            if ((arg0->unk10 != 0) && (arg2->unk0[4][0] < arg1) && ((func_global_asm_806119A0() % 255) < 0xA)) {
+                func_race_8002DE78(arg0, 2, arg2, arg3);
+            }
+            break;
+        case 2:
+        case 3:
+        case 4:
+            if ((arg0->unkF == 3) || (arg0->unkF == 4) || (arg0->unk10 != 0)) {
+                temp = arg0->unk4;
+                var_f0 = temp->unk4;
+                arg2->unk0[0][1] = MIN(var_f0, arg3->unk0);
+                arg2->unk0[1][1] = MIN(var_f0, arg3->unk4);
+                if (arg0->unkF == 4) {
+                    arg2->unk0[2][1] = var_f0;
+                } else {
+                    arg2->unk0[2][1] = arg3->unk8;
+                }
+                sp1C = func_race_8002DDA0(arg1, arg2);
+                if ((arg0->unkF == 2) && (arg1 < arg2->unk0[3][0])) {
+                    func_race_8002DE78(arg0, 3, arg2, arg3);
+                }
+                if ((arg0->unkF == 3) && (arg1 < arg2->unk0[2][0])) {
+                    func_race_8002DE78(arg0, 4, arg2, arg3);
+                }
+            } else if (arg0->unkF == 2) {
+                sp1C = arg3->unk4;
+                func_race_8002DE78(arg0, 1, arg2, arg3);
+            }
+            break;
+        case 5:
+            sp1C = func_race_8002DDA0(arg1, arg2);
+            if (arg1 < arg2->unk0[1][0]) {
+                func_race_8002DE78(arg0, 1, arg2, arg3);
+            }
+            break;
+        default:
+            sp1C = 0.0f;
+            break;
+    }
+    return sp1C;
+}
 
 f32 func_race_8002E1C8(Struct8002E1C8_arg0 *arg0, f32 arg1, Struct8002E1C8_arg2 *arg2, Struct8002E1C8_arg3 *arg3) {
     f32 var_f2;

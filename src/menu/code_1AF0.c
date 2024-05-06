@@ -195,11 +195,11 @@ void func_menu_80025FB4(MenuStruct1 *arg0, CharacterProgress *arg1, ? arg2) {
 
     var_s1 = 0;
     var_s0 = 6;
-    if (isFlagSet(0x1CB, FLAG_TYPE_PERMANENT) == 0) {
+    if (!isFlagSet(0x1CB, FLAG_TYPE_PERMANENT)) {
 loop_1:
         var_s0 -= 1;
         if (var_s0 >= 0) {
-            if (isFlagSet(var_s0 + 0x1C5, FLAG_TYPE_PERMANENT) == 0) {
+            if (!isFlagSet(var_s0 + 0x1C5, FLAG_TYPE_PERMANENT)) {
                 goto loop_1;
             }
         }

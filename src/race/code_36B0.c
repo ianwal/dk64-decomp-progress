@@ -106,8 +106,8 @@ s32 func_race_800276B0(s32 arg0, RaceStruct15 *arg1, RaceStruct15 *arg2) {
 // close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80027880.s")
 
-// TODO: Probably returns the float
-/*f32 func_race_80027880(s32 arg0, u16 arg1, u16 arg2) {
+/*
+f32 func_race_80027880(s32 arg0, u16 arg1, u16 arg2) {
     f32 dx;
     f32 dz;
     f32 dy;
@@ -119,7 +119,8 @@ s32 func_race_800276B0(s32 arg0, RaceStruct15 *arg1, RaceStruct15 *arg2) {
     dy = D_global_asm_807F5FD4->unk0[arg1][arg2].unk4 - D_global_asm_807F5FD4->unk0[arg1][temp].unk4;
     dz = D_global_asm_807F5FD4->unk0[arg1][arg2].unk8 - D_global_asm_807F5FD4->unk0[arg1][temp].unk8;
     return sqrtf((dx * dx) + (dy * dy) + (dz * dz));
-}*/
+}
+*/
 
 // doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80027920.s")

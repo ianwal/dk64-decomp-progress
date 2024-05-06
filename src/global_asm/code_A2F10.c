@@ -61,41 +61,45 @@ s32 func_global_asm_80613CA8(Actor *, s32, f32, f32);
 /*
 void func_global_asm_8069E210(void) {
     s16 i;
+    Struct807FBB70_unk278 *temp;
+    s32 ya;
+
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->object_properties_bitfield &= ~4;
         func_global_asm_80613C48(current_actor_pointer, 0x407, 0.0f, 0.0f);
         func_global_asm_80614D00(current_actor_pointer, 0.0f, 0.0f);
     }
-    if (D_global_asm_807FBB70.unk254 > 0) {
-        for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
-            if (D_global_asm_807FBB70.unk278[i]->unk0 == 0) {
-                current_actor_pointer->object_properties_bitfield |= 4;
-                func_global_asm_80613CA8(current_actor_pointer, 0x407, 0.0f, 0.0f);
-                func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
-                switch (func_global_asm_80688E68(current_actor_pointer)) {
-                    case 5:
-                        playSound(0x1D7, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
-                        break;
-                    case 6:
-                        playSound(0x1D8, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
-                        break;
-                    case 7:
-                        playSound(0x1D9, 0x7FFF, 63.0f, 1.0f, 0, 0);
-                        break;
-                    case 8:
-                        playSound(0x1DA, 0x7FFF, 63.0f, 1.0f, 2, 0);
-                        break;
-                    case 9:
-                        playSound(0x1DB, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
-                        break;
-                    case 10:
-                        playSound(0x1DC, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
-                        break;
-                }
+
+    for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
+        temp = D_global_asm_807FBB70.unk278[i];
+        if (temp->unk0 == 0) {
+            ya = current_actor_pointer->object_properties_bitfield;
+            current_actor_pointer->object_properties_bitfield = ya | 4;
+            func_global_asm_80613CA8(current_actor_pointer, 0x407, 0.0f, 0.0f);
+            func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
+            switch (func_global_asm_80688E68(current_actor_pointer)) {
+                case 5:
+                    playSound(0x1D7, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
+                    break;
+                case 6:
+                    playSound(0x1D8, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
+                    break;
+                case 7:
+                    playSound(0x1D9, 0x7FFF, 63.0f, 1.0f, 0, 0);
+                    break;
+                case 8:
+                    playSound(0x1DA, 0x7FFF, 63.0f, 1.0f, 2, 0);
+                    break;
+                case 9:
+                    playSound(0x1DB, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
+                    break;
+                case 10:
+                    playSound(0x1DC, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
+                    break;
             }
         }
     }
-    if ((s16)current_actor_pointer->animation_state->unk24->unk0 == 0.0f) {
+    if (current_actor_pointer->animation_state->unk0->unk24 == 0.0f) {
         current_actor_pointer->object_properties_bitfield &= ~4;
     }
     renderActor(current_actor_pointer, 0);

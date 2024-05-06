@@ -1216,7 +1216,7 @@ struct actor {
     u32 unk18;
     u32 unk1C;
     u32 unk20;
-    u32 unk24;
+    f32 unk24;
     u32 unk28;
     f32 unk2C;
     u32 unk30;

@@ -295,19 +295,18 @@ void func_global_asm_806BB400(void) {
             // Fallthrough
         case 0x23:
             switch (current_actor_pointer->control_state_progress) {
+                case 2:
+                    break;
                 case 0:
                     func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x202, 0.0f);
                     break;
-                default:
+                default: 
                     current_actor_pointer->control_state_progress = 1;
-                    // break;
                 case 1:
                     if (current_actor_pointer->animation_state->unk64 != 0x21C) {
                         playActorAnimation(current_actor_pointer, 0x21C);
                     }
                     func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
-                    break;
-                case 2:
                     break;
             }
             break;
