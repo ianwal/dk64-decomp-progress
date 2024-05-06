@@ -1435,7 +1435,7 @@ void func_global_asm_8060FAA4(OSMesgQueue *arg0, OSMesg arg1, s32 arg2);
 s32 areAllKeysTurnedIn(void);
 u8 func_global_asm_80611154(void);
 void func_global_asm_80611160(void);
-void func_global_asm_8061116C(void);
+s32 func_global_asm_8061116C(void);
 s32 func_global_asm_806111BC(s32 arg0, s32 arg1);
 void func_global_asm_8061138C(void *arg0);
 void func_global_asm_80611724(s32 arg0, s32 arg1);

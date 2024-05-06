@@ -220,8 +220,8 @@ segments:
       - [0x2015010, c, code_15010]
       - [0x2015050, c, heap]
       - [0x2016550, c, done/code_16550]
-      - [0x20166A0, bin, code_166A0]
-      - [0x201E2D0, bin, code_1E2D0]
+      - [0x20166A0, bin, code_166A0] # -O3?
+      - [0x201E2D0, bin, code_1E2D0] # -O3?
       - [0x202C700, c, code_2C700]
       - [0x202C910, c, code_2C910]
       - [0x202DE90, c, code_2DE90]
@@ -355,11 +355,11 @@ segments:
       - [0x215B4B0, rodata] # code_6710 // TODO: Problem with 80756F08, might be an array of doubles?
       - [0x215BD20, .rodata, code_104F0]
       - [0x215BE40, rodata] # code_131B0 // TODO: Problem with some pointer table in .data pointing to this (D_global_asm_80746A0C)
-      - [0x215BF90, rodata] # heap
+      - [0x215BF90, .rodata, heap]
       - [0x215BFD0, .rodata, done/code_16550]
-      - [0x215BFF0, rodata] # ???
+      - [0x215BFF0, rodata] # code_166A0, code_1E2D0
       - [0x215CC70, .rodata, code_2C910]
-      - [0x215CE00, rodata] # code_2DE90, TODO: func_global_asm_8062A130 becomes a fake match when rodata is added, maybe we need to match the jumptable stuff before it first and add another file split?
+      - [0x215CE00, .rodata, code_2DE90] # , TODO: func_global_asm_8062A130 becomes a fake match when rodata is added, maybe we need to match the jumptable stuff before it first and add another file split?
       - [0x215CE60, .rodata, code_2F550]
       - [0x215CED0, .rodata, code_35000]
       - [0x215CF00, .rodata, code_36880]

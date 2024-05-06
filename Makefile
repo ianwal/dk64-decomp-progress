@@ -315,6 +315,9 @@ clean:
 	@$(RM) -f *.ld
 
 # Per-file flag definitions
+# build/us/src/global_asm/code_166A0.c.o: OPT_FLAGS = -O3
+# build/us/src/global_asm/code_1E2D0.c.o: OPT_FLAGS = -O3
+
 build/us/src/dk64_boot/dk64_boot_3390.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/dk64_boot_3D20.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/dk64_boot_3C00.c.o: OPT_FLAGS = -O1

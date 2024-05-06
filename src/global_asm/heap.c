@@ -59,8 +59,8 @@ void func_global_asm_80611160(void) {
     D_global_asm_80746A30 = 0;
 }
 
-void func_global_asm_8061116C(void) {
-    func_global_asm_8065EA44();
+s32 func_global_asm_8061116C(void) {
+    return func_global_asm_8065EA44();
 }
 
 s32 func_global_asm_8061118C(void) {

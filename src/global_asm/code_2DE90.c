@@ -1,6 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 D_global_asm_80744470[];
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
+
 extern u8 D_global_asm_80747B20;
 extern s32 D_global_asm_80747B28;
 extern u8 *D_global_asm_80747B2C;
@@ -12,9 +16,11 @@ extern f32 D_global_asm_80747B48;
 extern f32 D_global_asm_80747B4C;
 extern f32 D_global_asm_80747B50;
 
-extern f64 D_global_asm_80758150;
-
-extern u8 D_global_asm_807F5D84;
+extern void *D_807F5D80;
+extern s8 D_global_asm_807F5D84;
+extern s8 D_807F5D85;
+extern s16 D_807F5D86;
+extern s16 D_807F5D88;
 extern f32 D_global_asm_807F5D8C;
 extern f32 D_global_asm_807F5D90;
 extern f32 D_global_asm_807F5D94;
@@ -36,13 +42,46 @@ u8 func_global_asm_806291A8(void) {
     return D_global_asm_80747B20;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2DE90/func_global_asm_806291B4.s")
+void func_global_asm_806291B4(u8 arg0) {
+    if ((D_global_asm_807F5D84 == 0) || (arg0 == 7)) {
+        if (D_global_asm_807F5D84 == 0) {
+            D_807F5D80 = malloc(D_global_asm_80744490 * D_global_asm_80744494 * 2);
+        }
+        func_global_asm_8070A848(D_807F5D80, D_global_asm_80744470[D_global_asm_807444FC]);
+        D_global_asm_807F5D84 = 1;
+        D_global_asm_80747B20 = 5;
+        switch (arg0) {
+            case 1:
+                D_807F5D86 = 0xFF;
+                break;
+            case 2:
+                D_807F5D86 = 0;
+                break;
+            case 0:
+                D_807F5D86 = 0x136;
+                break;
+            case 3:
+                D_807F5D86 = 0xA0;
+                D_807F5D88 = 0xA0;
+                break;
+            case 4:
+            case 5:
+                D_global_asm_807F5D8C = -5.0f;
+                break;
+            case 6:
+                D_global_asm_807F5D94 = 0.0f;
+                break;
+            case 7:
+                func_global_asm_8062A348();
+                break;
+        }
+        D_807F5D85 = arg0;
+    }
+}
 
-// Jumptable
+// Jumptable, doable, displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2DE90/func_global_asm_80629300.s")
 
-// rodata
 void func_global_asm_8062A130(s32 arg0, s32 arg1, s32 arg2) {
     f32 temp_f0;
     s32 phi_v0;
@@ -55,7 +94,7 @@ void func_global_asm_8062A130(s32 arg0, s32 arg1, s32 arg2) {
     phi_v0 = 0;
     if (D_global_asm_807F5D94 < temp_f0) {
         if ((temp_f0 - D_global_asm_807F5D94) < 25.0) {
-            phi_v0 = (s16) (((temp_f0 - D_global_asm_807F5D94) / 25.0) * D_global_asm_80758150);
+            phi_v0 = (s16) (((temp_f0 - D_global_asm_807F5D94) / 25.0) * 255.0);
         } else {
             phi_v0 = 0xFF;
         }
