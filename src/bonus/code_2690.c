@@ -438,11 +438,8 @@ void func_bonus_800284C0(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// doable close regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80028648.s")
-
 typedef struct {
-    s32 unk0[6]; // Used
+    Actor *unk0[6]; // Used
     s16 unk18;
     u8 unk1A;
     u8 unk1B; // Used
@@ -466,12 +463,12 @@ typedef struct {
     s16 unk8; // Used
 } AAD_bonus_80028648_2;
 
-/*
 void func_bonus_80028648(ARG0_80028648 *arg0) {
     s32 i;
     AAD_bonus_80028648 *snakeAAD;
     AAD_bonus_80028648_2 *turtleAAD;
     Struct807F5FD4_unk0 *temp;
+    Actor *temp2;
 
     for (i = 1; i < 7; i++) {
         if (spawnActor(ACTOR_SNAKE, 0x15)) {
@@ -486,9 +483,10 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
             last_spawned_actor->object_properties_bitfield |= 0x1000;
             last_spawned_actor->y_rotation = 0x800;
             arg0->unk0[i - 1] = last_spawned_actor;
+            temp2 = last_spawned_actor;
             if (spawnActor(ACTOR_TURTLE, 0x16)) {
                 turtleAAD = last_spawned_actor->additional_actor_data;
-                turtleAAD->unk0 = last_spawned_actor;
+                turtleAAD->unk0 = temp2;
                 turtleAAD->unk6 = i - 1;
                 snakeAAD->unk4 = last_spawned_actor;
                 turtleAAD->unk8 = -1;
@@ -496,7 +494,6 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002881C.s")
 

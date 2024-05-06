@@ -8,7 +8,7 @@ void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
 void func_global_asm_806B1F50(void) {
-    u8 sp37;
+    u8 brightness;
 
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -90,9 +90,9 @@ void func_global_asm_806B1F50(void) {
                 }
             }
             if ((current_actor_pointer->control_state_progress != 0) && (func_global_asm_8067AF44(D_global_asm_807FDC94) != 0) && ((object_timer % 7U) == 0)) {
-                sp37 = 180 + (30 * -current_actor_pointer->control_state_progress);
+                brightness = 180 + (30 * -current_actor_pointer->control_state_progress);
                 func_global_asm_80714998(3);
-                changeActorColor(sp37, sp37, sp37, current_actor_pointer->shadow_opacity);
+                changeActorColor(brightness, brightness, brightness, current_actor_pointer->shadow_opacity);
                 func_global_asm_8068588C(D_global_asm_807FDC94, 1, 1.0f, 0.0f, 0.0f, 0.0f, -0x96);
             }
     }

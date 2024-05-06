@@ -1127,44 +1127,55 @@ void func_global_asm_806C28B8(void) {
     }
 }
 
-void func_global_asm_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 x, f32 y, f32 z, void *sprite, f32 scale) {
+void func_global_asm_806C2A64(u8 red, u8 green, u8 blue, f32 x, f32 y, f32 z, void *sprite, f32 scale) {
     func_global_asm_807149A8(1000);
     func_global_asm_80714998(0xFF);
     func_global_asm_80714944(((rand() >> 0xF) % 32767) % 11);
-    changeActorColor(arg0, arg1, arg2, 0xFF);
+    changeActorColor(red, green, blue, 0xFF);
     func_global_asm_8071498C(&func_global_asm_80717D84);
     func_global_asm_80714950(2);
     drawSpriteAtPosition(sprite, scale * 0.2, x, y, z);
 }
 
+// close, stack, float, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C2B2C.s")
 
+void func_global_asm_806C2B2C(u8 boneIndex, u8 arg1, u8 colorIndex, void *sprite);
+
 /*
-void func_global_asm_806C2B2C(s32 arg0, s32 arg1, u8 arg2, s32 arg3) {
-    f32 spA8;
-    f32 spA4;
-    f32 spA0;
-    f32 sp9C;
-    f32 sp98;
-    f32 sp94;
+void func_global_asm_806C2B2C(u8 boneIndex, u8 arg1, u8 colorIndex, void *sprite) {
     f32 temp_f20;
     f32 temp_f24;
     s16 i;
-    Struct80747B00 *temp_s0;
+    f32 x1;
+    f32 y1;
+    f32 z1;
+    f32 x2;
+    f32 y2;
+    f32 z2;
 
-    temp_f24 = (current_actor_pointer->animation_state->scale_y / 0.3f) / 1.5;
-    while (arg1 >= arg0) {
+    temp_f24 = (current_actor_pointer->animation_state->scale_y / 0.3) / 1.5;
+    while (arg1 >= boneIndex) {
         for (i = 0; i < 3.0; i++) {
-            temp_s0 = &D_global_asm_80747B00[arg2];
-            temp_f20 = i / 3.0;
-            getBonePosition(current_actor_pointer, arg0, &spA8, &spA4, &spA0);
-            if (arg0 < arg1) {
-                getBonePosition(current_actor_pointer, arg0 + 1, &sp9C, &sp98, &sp94);
+            temp_f20 = (i / 3.0);
+            getBonePosition(current_actor_pointer, boneIndex, &x1, &y1, &z1);
+            if (boneIndex < arg1) {
+                getBonePosition(current_actor_pointer, boneIndex + 1, &x2, &y2, &z2);
             } else {
-                getBonePosition(current_actor_pointer, arg0, &sp9C, &sp98, &sp94);
+                getBonePosition(current_actor_pointer, boneIndex, &x2, &y2, &z2);
             }
-            func_global_asm_806C2A64(spA0, temp_s0->unk0, temp_s0->unk1, temp_s0->unk2, ((sp9C - spA8) * temp_f20) + spA8, ((sp98 - spA4) * temp_f20) + spA4, ((sp94 - spA0) * temp_f20) + spA0, arg3);
+            func_global_asm_806C2A64(
+                D_global_asm_80747B00[colorIndex].unk0,
+                D_global_asm_80747B00[colorIndex].unk1,
+                D_global_asm_80747B00[colorIndex].unk2,
+                ((x2 - x1) * temp_f20) + x1,
+                ((y2 - y1) * temp_f20) + y1,
+                ((z2 - z1) * temp_f20) + z1,
+                sprite,
+                temp_f24
+            );
         }
+        boneIndex++;
     }
 }
 */

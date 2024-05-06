@@ -1420,44 +1420,42 @@ void func_global_asm_806CF0D0(void) {
     }
 }
 
-// progress made, doable
+// progress made, doable, float
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CF138.s")
 
 /*
 void func_global_asm_806CF138(Struct806CF138 *arg0) {
-    // TODO: This could be a matrix
-    f32 sp74;
-    f32 sp70;
-    f32 sp6C;
-    f32 sp68;
-    f32 sp64;
-    f32 sp60;
-    f32 sp5C;
-    s32 pad2;
+    f32 x2;
+    f32 x1;
+    f32 y2;
+    f32 y1;
+    f32 z2;
+    f32 z1;
+    f32 dy;
+    f32 dx;
     f32 sp54;
+    f32 pad;
     f32 sp4C;
     f32 sp48;
-    f32 sp44;
-    f32 sp40;
+    f32 dz;
     f32 sp3C;
     f32 sp38;
-    f32 temp_f14;
-    s32 sp30;
-    s32 sp2C;
+    s32 boneIndex1;
+    s32 boneIndex2;
 
-    func_global_asm_806CF2EC(&sp30, &sp2C);
-    getBonePosition(arg0->unk0, sp30, &sp70, &sp68, &sp60);
-    getBonePosition(arg0->unk0, sp2C, &sp74, &sp6C, &sp64);
-    sp5C = (sp6C - sp68);
-    temp_f14 = (sp74 - sp70);
-    sp54 = func_global_asm_806118FC(sp5C / sqrtf(((sp64 - sp60) * (sp64 - sp60)) + ((temp_f14 * temp_f14) + (sp5C * sp5C)))) * 57.29577637f;
+    func_global_asm_806CF2EC(&boneIndex1, &boneIndex2);
+    getBonePosition(arg0->unk0, boneIndex1, &x1, &y1, &z1);
+    getBonePosition(arg0->unk0, boneIndex2, &x2, &y2, &z2);
+    dx = (x2 - x1);
+    dy = (y2 - y1);
+    dz = (z2 - z1);
+    sp54 = func_global_asm_806118FC(dy / sqrtf((dx * dx) + (dy * dy) + (dz * dz))) * 57.29577637f;
     sp48 = func_global_asm_80612794(arg0->unk0->y_rotation) * 50.0f;
     sp4C = func_global_asm_80612790(arg0->unk0->y_rotation) * 50.0f;
-    sp40 = (sp74 - sp70);
-    sp44 = (sp64 - sp60);
-    sp3C = (sp44 * sp4C) + (sp48 * sp40);
+    dx = (x2 - x1);
+    sp3C = (dz * sp4C) + (sp48 * dx);
     sp38 = sqrtf((sp4C * sp4C) + (sp48 * sp48));
-    func_global_asm_8067AA58(arg0->unk0, arg0->unk4, sp54, 90.0 - (func_global_asm_80611850(sp3C / (sp38 * sqrtf((sp44 * sp44) + (sp40 * sp40)))) * 57.29577637f));
+    func_global_asm_8067AA58(arg0->unk0, arg0->unk4, sp54, 90.0 - (func_global_asm_80611850(sp3C / (sp38 * sqrtf((dz * dz) + (dx * dx)))) * 57.29577637f));
 }
 */
 
