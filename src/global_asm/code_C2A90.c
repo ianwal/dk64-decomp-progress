@@ -1102,19 +1102,14 @@ void func_global_asm_806C27DC(void) {
     }
 }
 
-// Doable, floaty loop, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C28B8.s")
-
-/*
-// TODO: Float and stack nonsense
 void func_global_asm_806C28B8(void) {
-    f64 temp_f20;
-    f32 sp78;
-    f32 sp74;
-    s32 sp70;
+    f32 temp_f20;
+    f32 x;
+    f32 y;
+    f32 z;
     f32 phi_f2;
     s16 i;
-    f64 phi_f0;
+    s32 pad;
 
     phi_f2 = current_actor_pointer->animation_state->unk0->unk4;
     if (phi_f2 > 83.0f) {
@@ -1123,16 +1118,14 @@ void func_global_asm_806C28B8(void) {
     }
     if ((phi_f2 > 2.0f) && (phi_f2 < 90.0f)) {
         if ((object_timer % 6U) == 0) {
-            temp_f20 = MIN(1, phi_f2 / 70.0) * 0.3;
+            temp_f20 = MIN(1, phi_f2 / 70.0);
             for (i = 1; i < 5; i++) {
-                getBonePosition(current_actor_pointer, i, &sp78, &sp74, &sp70);
-                phi_f0 = MAX(0.15, temp_f20);
-                func_global_asm_806852C4(phi_f0, sp78, sp74 + 3.0f, sp70);
+                getBonePosition(current_actor_pointer, i, &x, &y, &z);
+                func_global_asm_806852C4(MAX(0.15, temp_f20 * 0.3), x, y + 3.0f, z);
             }
         }
     }
 }
-*/
 
 void func_global_asm_806C2A64(u8 arg0, u8 arg1, u8 arg2, f32 x, f32 y, f32 z, void *sprite, f32 scale) {
     func_global_asm_807149A8(1000);

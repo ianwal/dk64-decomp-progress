@@ -760,25 +760,25 @@ s32 func_global_asm_80689BAC(s16 arg0) {
     return FALSE;
 }
 
-// Probably doable, looks like dxyz calculations in nested loops?
+// doable, looks like dxyz calculation in an unrolled loop, probably similar to below
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_global_asm_80689C20.s")
 
 f32 func_global_asm_80689DD4(f32 x, f32 y, f32 z) {
     f32 dx, dy, dz;
-    f32 phi_f2;
+    f32 closest;
     f32 d;
     s32 i;
 
-    phi_f2 = 100000000.0f;
+    closest = 100000000.0f;
     for (i = 0; i < cc_number_of_players; i++) {
         if (character_change_array[i].does_player_exist) {
             d = (x - character_change_array[i].look_at_eye_x) * (x - character_change_array[i].look_at_eye_x)
               + (y - character_change_array[i].look_at_eye_y) * (y - character_change_array[i].look_at_eye_y)
               + (z - character_change_array[i].look_at_eye_z) * (z - character_change_array[i].look_at_eye_z);
-            phi_f2 = MIN(d, phi_f2);
+            closest = MIN(d, closest);
         }
     }
-    return phi_f2;
+    return closest;
 }
 
 s32 func_global_asm_80689E98(s32 arg0) {

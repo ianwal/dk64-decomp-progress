@@ -90,50 +90,40 @@ void func_global_asm_8065F614(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8065F678.s")
 
-// close
+// close, stack, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8065F964.s")
 
-void func_global_asm_806545D4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4, f32 arg5, s32 arg6, u8 arg7, f32 (*arg8)[4], s32 arg9, f32 *argA);
+void func_global_asm_806545D4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, f32 (*arg8)[4], s32 arg9, f32 *argA);
 void func_global_asm_80657E24(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 *arg8, s32 *arg9, s32 *argA, s32 *argB);
 
 /*
-void func_global_asm_8065F964(GlobalASMStruct58 *arg0, f32 arg1, f32 arg2, s32 arg3, u8 arg4, f32 arg5[4][4], s32 arg6) {
-    s32 spB4;
-    s32 spB0;
-    s32 spAC;
-    s32 spA8;
-    f32 sp70;
+void func_global_asm_8065F964(GlobalASMStruct58 *arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, f32 arg5[4][4], s32 arg6) {
     Chunk *chunk;
     s32 i;
     s32 var_s2;
     s32 var_s3;
     s32 var_s4;
     s32 var_s5;
+    s32 spA8[4];
+    f32 sp70[4][4];
+    GlobalASMStruct58_unk0 *temp = arg0->unk0;
 
     var_s2 = 0;
     var_s3 = 0;
     var_s4 = 0;
     var_s5 = 0;
-    for (i = 0; i < arg0->unk0->unk67; i++) {
-        chunk = &chunk_array_pointer[arg0->unk0->unk50[i]];
-        if (chunk->loaded == 1) {
+    for (i = 0; i < temp->unk67; i++) {
+        chunk = &chunk_array_pointer[temp->unk50[i]];
+        if (chunk->loaded == TRUE) {
             func_global_asm_80657E24(
-                var_s2,
-                var_s3,
-                var_s4,
-                var_s5,
-                chunk->deload1,
-                chunk->deload2,
-                chunk->deload3,
-                chunk->deload4,
-                &spB4,
-                &spB0,
-                &spAC,
-                &spA8);
-            var_s2 = spB4;
-            var_s3 = spB0;
-            var_s4 = spAC;
-            var_s5 = spA8;
+                var_s2, var_s3, var_s4, var_s5,
+                chunk->deload1, chunk->deload2, chunk->deload3, chunk->deload4,
+                &spA8[3], &spA8[2], &spA8[1], &spA8[0]
+            );
+            var_s2 = spA8[3];
+            var_s3 = spA8[2];
+            var_s4 = spA8[1];
+            var_s5 = spA8[0];
         }
     }
     func_global_asm_806545D4(var_s2, var_s3, var_s4, var_s5, arg1, arg2, arg3, arg4, arg5, arg6, &sp70);
