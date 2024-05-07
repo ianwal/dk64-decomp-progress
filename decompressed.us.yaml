@@ -258,6 +258,7 @@ segments:
       - [0x208D3E0, c, code_8D3E0]
       - [0x208F050, c, code_8F050]
       - [0x208F4B0, c, code_8F4B0]
+      - [0x20910A0, c, code_910A0]
       - [0x20936B0, c, code_936B0]
       - [0x209BF30, c, code_9BF30]
       - [0x209CE20, c, code_9CE20]
@@ -384,7 +385,8 @@ segments:
       - [0x215E090, .rodata, code_80150]
       - [0x215E790, .rodata, code_89250]
       - [0x215E8B0, .rodata, code_8D3E0]
-      - [0x215EA00, rodata] # code_8F4B0, TODO: Offsets may be wrong???
+      - [0x215EA00, .rodata, code_8F4B0]
+      - [0x215EC30, .rodata, code_910A0]
       - [0x215EC70, .rodata, code_936B0]
       - [0x215EEF0, .rodata, code_9BF30]
       - [0x215EF40, .rodata, code_9CE20]

@@ -26,41 +26,6 @@ extern s16 D_global_asm_807F7EFA;
 extern s16 D_global_asm_807F7EFC;
 extern s16 D_global_asm_807F7EFE;
 
-// RODATA
-/*
-const f32 D_global_asm_80758CA0 = 0.4363323152f;
-const f32 D_global_asm_80758CA4 = 1.134464025f;
-const f32 D_global_asm_80758CA8 = 0.01745329238f;
-const f32 D_global_asm_80758CAC = 0.01745329238f;
-const f32 D_global_asm_80758CB0 = 0.1000000015f;
-const f32 D_global_asm_80758CB4 = 0.1000000015f;
-const f32 D_global_asm_80758CB8 = 0.001000000047f;
-const f32 D_global_asm_80758CBC = 0.1000000015f;
-const f32 D_global_asm_80758CC0 = 0.400000006f;
-const f32 D_global_asm_80758CC4 = 0.150000006f;
-const f32 D_global_asm_80758CC8 = 0.150000006f;
-const f64 D_global_asm_80758CD0 = 255.0;
-const f32 D_global_asm_80758CD8 = 0.1000000015f;
-const f32 D_global_asm_80758CDC = 1.299999952f;
-const f32 D_global_asm_80758CE0 = 0.1000000015f;
-const f32 D_global_asm_80758CE4 = 0.400000006f;
-const f32 D_global_asm_80758CE8 = 0.150000006f;
-const f32 D_global_asm_80758CEC = 0.150000006f;
-const f64 D_global_asm_80758CF0 = 255.0;
-const f64 D_global_asm_80758CF8 = 255.0;
-const f32 D_global_asm_80758D00 = 0.150000006f;
-const f64 D_global_asm_80758D08 = 255.0;
-const f32 D_global_asm_80758D10 = 0.1000000015f;
-const f64 D_global_asm_80758D18 = 255.0;
-const f32 D_global_asm_80758D20 = 1.299999952f;
-const f32 D_global_asm_80758D24 = 0.200000003f;
-const f64 D_global_asm_80758D28 = 300.0;
-const f32 D_global_asm_80758D30 = 0.1000000015f;
-const f64 D_global_asm_80758D38 = 1100.0;
-const f32 D_global_asm_80758D40 = 0.1000000015f;
-*/
-// RODATA END
-
 void func_global_asm_806595F0(u8 arg0) {
     D_global_asm_807F7EF8 = arg0;
 }
