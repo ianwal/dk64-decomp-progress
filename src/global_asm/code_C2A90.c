@@ -35,7 +35,7 @@ u8 func_global_asm_8072881C(u8 arg0, u32 *arg1);
 void func_global_asm_8072A450(void);
 u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);
 extern int func_global_asm_8068E474(); // TODO: Signature
-extern int func_global_asm_806BE6F0(); // TODO: Signature
+Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1);
 
 void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
@@ -223,10 +223,6 @@ void func_global_asm_806BE674(u8 arg0) {
     }
 }
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806BE6F0.s")
-
-/*
 Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     u8 temp_t7;
     char sp4C[2];
@@ -250,13 +246,12 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
 
     dl = func_global_asm_8070068C(dl);
-    dl = printStyledText(dl, 1, (s16)(320 - getCenterOfString(1, &sp4C)) * 2, 0xAA, &sp4C, 1);
+    dl = printStyledText(dl, 1, (320 - getCenterOfString(1, &sp4C)) << 1, 0xAA, &sp4C, 1);
     if (arg1->unk168-- == 0) {
         arg1->control_state_progress++;
     }
     return dl;
 }
-*/
 
 void func_global_asm_806BE8BC(void) {
     u8 sp37;
