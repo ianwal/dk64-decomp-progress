@@ -23,7 +23,7 @@ extern s32 D_global_asm_8072139C;
 
 void func_global_asm_80718BF4(void);
 
-extern s32 D_global_asm_8074E880[];
+extern void *D_global_asm_8074E880[];
 extern u8 D_global_asm_80750AD0;
 
 typedef struct {
@@ -660,8 +660,6 @@ void func_global_asm_80686A5C(Actor *actor, f32 arg1, f32 arg2, s32 arg3) {
     }
 }
 
-extern s32 D_global_asm_8074E880[];
-
 void func_global_asm_80686CF8(Actor *actor) {
     s32 i;
 
@@ -790,8 +788,46 @@ void func_global_asm_80687474(Actor *arg0, f32 arg1) {
     moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale_y * arg1);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_806874EC.s")
+void func_global_asm_806874EC(void) {
+    f32 temp_f20;
+    f32 x, y, z;
+    f32 temp_f22;
+    f32 temp_f28;
+    s16 var_s1;
+    s32 var_a1;
+    s32 i;
+
+    var_s1 = (rand() >> 0xF) % 4096;
+    temp_f28 = current_actor_pointer->animation_state->scale[1] * 6.666666666666667;
+    switch (current_actor_pointer->unk58) {
+        case ACTOR_DK:
+        case ACTOR_TINY:
+            var_a1 = 0xF;
+            break;
+        case ACTOR_DIDDY:
+        case ACTOR_LANKY:
+        case ACTOR_CHUNKY:
+            var_a1 = 0xD;
+            break;
+        default:
+            return;
+    }
+
+    getBonePosition(current_actor_pointer, var_a1, &x, &y, &z);
+    temp_f22 = temp_f28 * 18.0f;
+    for (i = 0; i != 0x40; i++) {
+        var_s1 += (((rand() >> 0xF) % 1024));
+        var_s1 &= 0xFFF;
+        func_global_asm_80714998(2);
+        func_global_asm_807149B8(1);
+        func_global_asm_8071498C(func_global_asm_80717D4C);
+        func_global_asm_80714950(((((rand() >> 0xF) % 32767) % 51) + 0x64) * temp_f28);
+        func_global_asm_8071496C(i * 0.33333334f);
+        func_global_asm_80714A28(0x20);
+        temp_f20 = (func_global_asm_80612794(var_s1) * temp_f22) + x;
+        drawSpriteAtPosition(D_global_asm_8074E880[((i % 3))], temp_f28 * 0.3f, temp_f20, y, (func_global_asm_80612790(var_s1) * temp_f22) + z);
+    }
+}
 
 void func_global_asm_806877C8(u8 arg0) {
     func_global_asm_807149B8(1);
