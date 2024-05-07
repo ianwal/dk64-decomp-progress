@@ -1548,13 +1548,9 @@ void func_global_asm_80672C70(s32 arg0) {
     }
 }
 
-// Jumptable, very close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672CBC.s")
-
 extern s32 D_global_asm_807FB53C;
 extern s8 D_global_asm_807FB548;
 
-/*
 s32 func_global_asm_80672CBC(s8 arg0) {
     PlayerAdditionalActorData *PaaD;
 
@@ -1607,7 +1603,10 @@ s32 func_global_asm_80672CBC(s8 arg0) {
     }
     return 0;
 }
-*/
+
+void func_global_asm_80672E64() {
+
+}
 
 void func_global_asm_80672E6C(void) {
     func_global_asm_806119A0();
