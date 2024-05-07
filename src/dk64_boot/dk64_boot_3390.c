@@ -29,6 +29,7 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002DE4.s")
 
+// memset?
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002E98.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/strchr.s")

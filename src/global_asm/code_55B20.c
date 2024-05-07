@@ -105,6 +105,7 @@ void func_global_asm_80650E20(Struct80650E20_arg0 *arg0) {
 }
 */
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80650ECC.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80651708.s")
@@ -809,6 +810,7 @@ void func_global_asm_80654BC0(s32 arg0, u8 arg1) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80654CCC.s")
 
 typedef struct {
@@ -969,7 +971,7 @@ s32 func_global_asm_80655CF8(s16 arg0, s32 arg1) {
 }
 */
 
-// Displaylist stuff
+// Displaylist stuff, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80655DD0.s")
 
 // Displaylist stuff, chunks

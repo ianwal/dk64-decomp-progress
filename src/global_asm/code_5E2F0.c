@@ -3,17 +3,6 @@
 
 extern s16 D_global_asm_80748300;
 
-// rodata
-extern f32 D_global_asm_80758CA0;
-extern f32 D_global_asm_80758CA4;
-extern f32 D_global_asm_80758CA8;
-extern f32 D_global_asm_80758CAC;
-
-extern f64 D_global_asm_80758D28;
-extern f32 D_global_asm_80758D30;
-extern f64 D_global_asm_80758D38;
-extern f32 D_global_asm_80758D40;
-
 extern f32 *D_global_asm_8076A0B4;
 extern f32 *D_global_asm_8076A0B8;
 extern f32 *D_global_asm_8076A0BC;
@@ -36,6 +25,41 @@ extern f32 D_global_asm_807F7EE8;
 extern s16 D_global_asm_807F7EFA;
 extern s16 D_global_asm_807F7EFC;
 extern s16 D_global_asm_807F7EFE;
+
+// RODATA
+/*
+const f32 D_global_asm_80758CA0 = 0.4363323152f;
+const f32 D_global_asm_80758CA4 = 1.134464025f;
+const f32 D_global_asm_80758CA8 = 0.01745329238f;
+const f32 D_global_asm_80758CAC = 0.01745329238f;
+const f32 D_global_asm_80758CB0 = 0.1000000015f;
+const f32 D_global_asm_80758CB4 = 0.1000000015f;
+const f32 D_global_asm_80758CB8 = 0.001000000047f;
+const f32 D_global_asm_80758CBC = 0.1000000015f;
+const f32 D_global_asm_80758CC0 = 0.400000006f;
+const f32 D_global_asm_80758CC4 = 0.150000006f;
+const f32 D_global_asm_80758CC8 = 0.150000006f;
+const f64 D_global_asm_80758CD0 = 255.0;
+const f32 D_global_asm_80758CD8 = 0.1000000015f;
+const f32 D_global_asm_80758CDC = 1.299999952f;
+const f32 D_global_asm_80758CE0 = 0.1000000015f;
+const f32 D_global_asm_80758CE4 = 0.400000006f;
+const f32 D_global_asm_80758CE8 = 0.150000006f;
+const f32 D_global_asm_80758CEC = 0.150000006f;
+const f64 D_global_asm_80758CF0 = 255.0;
+const f64 D_global_asm_80758CF8 = 255.0;
+const f32 D_global_asm_80758D00 = 0.150000006f;
+const f64 D_global_asm_80758D08 = 255.0;
+const f32 D_global_asm_80758D10 = 0.1000000015f;
+const f64 D_global_asm_80758D18 = 255.0;
+const f32 D_global_asm_80758D20 = 1.299999952f;
+const f32 D_global_asm_80758D24 = 0.200000003f;
+const f64 D_global_asm_80758D28 = 300.0;
+const f32 D_global_asm_80758D30 = 0.1000000015f;
+const f64 D_global_asm_80758D38 = 1100.0;
+const f32 D_global_asm_80758D40 = 0.1000000015f;
+*/
+// RODATA END
 
 void func_global_asm_806595F0(u8 arg0) {
     D_global_asm_807F7EF8 = arg0;
@@ -124,8 +148,8 @@ void func_global_asm_80659DB0(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_global_asm_80659F7C.s")
 
 void func_global_asm_8065A570(void) {
-    D_global_asm_807F7ECC = func_global_asm_80612D10(D_global_asm_80758CA0);
-    D_global_asm_807F7ED0 = func_global_asm_80612D10(D_global_asm_80758CA4);
+    D_global_asm_807F7ECC = func_global_asm_80612D10(0.4363323152f);
+    D_global_asm_807F7ED0 = func_global_asm_80612D10(1.134464025f);
     D_global_asm_807F7ED4 = 1.0f / (D_global_asm_807F7ECC - D_global_asm_807F7ED0);
     D_global_asm_807F7ED8 = D_global_asm_807F7ECC;
     D_global_asm_807F7EDC = D_global_asm_807F7ED0;
@@ -150,8 +174,8 @@ void func_global_asm_8065A654(void) {
 void func_global_asm_8065A660(f32 arg0, f32 arg1) {
     D_global_asm_807F7EE4 = arg0;
     D_global_asm_807F7EE8 = arg1;
-    D_global_asm_807F7ED8 = func_global_asm_80612D10(arg0 * D_global_asm_80758CA8);
-    D_global_asm_807F7EDC = func_global_asm_80612D10(arg1 * D_global_asm_80758CAC);
+    D_global_asm_807F7ED8 = func_global_asm_80612D10(arg0 * 0.01745329238f);
+    D_global_asm_807F7EDC = func_global_asm_80612D10(arg1 * 0.01745329238f);
     D_global_asm_807F7EE0 = 1.0f / (D_global_asm_807F7ED8 - D_global_asm_807F7EDC);
 }
 
@@ -380,7 +404,7 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
     var_f22 = D_global_asm_8076A0B4[arg7];
     var_f26 = D_global_asm_8076A0BC[arg7];
     if (temp_v1 > 0) {
-        temp_f30 = D_global_asm_80758D28;
+        temp_f30 = 300.0;
         for (i = 0; i < D_global_asm_807F7EC8; i++) {
             switch (D_global_asm_807F7BC8[i].unk3E) {
                 case 1:
@@ -391,7 +415,7 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
                     temp_f0 = sqrtf((temp_f16 * temp_f16) + ((temp_f2 * temp_f2) + (temp_f14 * temp_f14)));
                     var_f12 = temp_f0;
                     if (temp_f0 == 0.0f) {
-                        var_f12 = D_global_asm_80758D30;
+                        var_f12 = 0.1f;
                     }
                     temp_f18 = temp_f2 / var_f12;
                     sp5C = temp_f16 / var_f12;
@@ -407,7 +431,7 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
                             var_f0_2 = (var_f0 - D_global_asm_807F7BC8[i].unk0) * D_global_asm_807F7BC8[i].unk8;
                         }
                         if (temp_f30 < var_f12) {
-                            if (D_global_asm_80758D38 < var_f12) {
+                            if (1100.0 < var_f12) {
                                 var_f0_2 = 0.0f;
                             } else {
                                 var_f0_2 = var_f0_2 * (1.0 - ((var_f12 - temp_f30) / 800.0));
@@ -425,7 +449,7 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
                     temp_f0_3 = sqrtf((temp_f0_2 * temp_f0_2) + ((temp_f2_4 * temp_f2_4) + (temp_f14_2 * temp_f14_2)));
                     var_f2 = temp_f0_3 - arg3;
                     if (temp_f0_3 <= arg3) {
-                        var_f2 = D_global_asm_80758D40;
+                        var_f2 = 0.1f;
                     }
                     temp_f0_4 = D_global_asm_807F7BC8[i].unk28 / 3.0f;
                     if (var_f2 < temp_f0_4) {

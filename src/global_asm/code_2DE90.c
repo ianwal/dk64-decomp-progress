@@ -149,7 +149,7 @@ void func_global_asm_8062A348(void) {
 void func_global_asm_8062A774(void) {
     if (!D_global_asm_80747B40) {
         D_global_asm_807F5DD8 = malloc(0x25800);
-        func_dk64_boot_80002E98(D_global_asm_807F5DD8, 0, 0x25800);
+        func_dk64_boot_80002E98(D_global_asm_807F5DD8, 0, 0x25800); // memset?
         D_global_asm_80747B40 = 1;
     }
 }
