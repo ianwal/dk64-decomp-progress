@@ -24,8 +24,9 @@ typedef struct {
 } AAD_critter_80029118;
 
 // rodata
-// const char D_critter_8002A190[] = "WELL DONE!";
-// const char D_critter_8002A19C[] = "TIME OUT!";
+extern f32 D_critter_8002A110;
+extern f32 D_critter_8002A114;
+extern f32 D_critter_8002A1B0;
 
 extern s8 D_critter_80029FA0;
 extern u16 D_critter_80029FA4;
@@ -93,7 +94,6 @@ typedef struct {
 extern s16 D_global_asm_807446D0[];
 extern Struct807446E0 D_global_asm_807446E0[];
 extern u16 D_global_asm_807FC930[];
-extern f32 D_critter_8002A1B0;
 extern s8 D_critter_80029F80[];
 extern s8 D_critter_80029F84[];
 extern u16 D_critter_80029F90[];
@@ -300,10 +300,6 @@ void func_critter_80027448(void) {
 }
 */
 
-// rodata
-extern f32 D_critter_8002A110;
-extern f32 D_critter_8002A114;
-
 void func_critter_80027DC0(void) {
     s32 temp[2];
     Actor *sp34;
@@ -382,6 +378,12 @@ void func_critter_80027DC0(void) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028120.s")
+
+// TODO: File split here for rodata: 2199D30 8002A170
+
+// rodata
+// const char D_critter_8002A190[] = "WELL DONE!";
+// const char D_critter_8002A19C[] = "TIME OUT!";
 
 void func_critter_80028840() {
     D_critter_8002A1C0 = getPointerTableFile(0x13, 4, 1, 1);

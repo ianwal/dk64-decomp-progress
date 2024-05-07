@@ -559,7 +559,7 @@ segments:
       - [0x21AC5B0, .rodata, code_A7A0]
       - [0x21AC630, .rodata, code_B100]
       - [0x21AC800, .rodata, code_C920]
-      - [0x21AC8F0, rodata] # code_DAA0
+      - [0x21AC8F0, .rodata, code_DAA0]
       - [0x21AC980, .rodata, code_F0D0]
   - name: arcade
     dir: arcade

@@ -1,44 +1,52 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// rodata
+extern s16 D_boss_80035B00[];
+extern s16 D_boss_80035B08[];
+extern s16 D_boss_80035B10[];
+extern s16 D_boss_80035B18[];
+extern s16 D_boss_80035B20[];
+
+// .data
 /*
-const s16 D_boss_80035B00[] = {
+static s16 D_boss_80035B00[] = {
     0x0000,
     0x026C,
     0x0000,
     0xFD94,
 };
 
-const s16 D_boss_80035B08[] = {
+static s16 D_boss_80035B08[] = {
     0x026C,
     0x0000,
     0xFD94,
     0x0000,
 };
 
-const s16 D_boss_80035B10[] = {
+static s16 D_boss_80035B10[] = {
     0x0800,
     0x0C00,
     0x0000,
     0x0400,
 };
 
-const s16 D_boss_80035B18[] = {
+static s16 D_boss_80035B18[] = {
     0x0000,
     0xFFB5,
     0x0000,
     0x004B,
 };
 
-const s16 D_boss_80035B20[] = {
+static s16 D_boss_80035B20[] = {
     0xFFB5,
     0x0000,
     0x004B,
     0x0000,
 };
-// const s32 D_boss_80036B80 = 0x3dcccccd; // Unused?
 */
+
+// rodata
+const u8 D_boss_80036B80[] = {0x3D, 0xCC, 0xCC, 0xCD}; // TODO: Unused?
 
 // Jumptable, 4200 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_DAA0/func_boss_80031AA0.s")
@@ -52,7 +60,6 @@ extern s16 D_boss_80035B2C;
 extern f32 D_boss_80035B3C;
 
 extern s16 D_boss_80035B74;
-
 extern f32 D_boss_80036DC4;
 
 typedef struct {
