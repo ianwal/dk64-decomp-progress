@@ -109,11 +109,8 @@ void func_boss_80028680() {
     func_global_asm_806A2B08(current_actor_pointer->unk11C);
 }
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_800286B8.s")
-
 extern u8 D_global_asm_80750AD4;
-/*
+
 Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     f32 sp90[4][4];
     f32 sp50[4][4];
@@ -135,7 +132,10 @@ Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     dl = func_global_asm_8070068C(dl++);
     return printStyledText(dl, 1, 0, 0, &sp3C, 0);
 }
-*/
+
+void func_boss_80028818() {
+
+}
 
 void func_boss_80028820() {
     // K. Rool Tiny Phase Toes Complete

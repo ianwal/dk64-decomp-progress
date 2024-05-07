@@ -2221,7 +2221,7 @@ void func_global_asm_8060ED6C(Struct131B0_2 *arg0, Struct131B0_1 *arg1, s32 arg2
 void func_global_asm_8060F928(Struct131B0_2*, Struct131B0_1*);
 
 int sprintf(char *str, const char *format, ...);
-Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, void *string, s32 extraBitfield);
+Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, void *string, u32 extraBitfield);
 
 int func_global_asm_8071ABDC(); // TODO: Datatype
 void func_global_asm_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);

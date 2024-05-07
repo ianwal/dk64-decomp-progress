@@ -545,6 +545,8 @@ void func_global_asm_806A5C60(Actor *arg0) {
 }
 */
 
+// TODO: FILE SPLIT HERE FOR RODATA
+
 // rodata, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5DF0.s")
 
