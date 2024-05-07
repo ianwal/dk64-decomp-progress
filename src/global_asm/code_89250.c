@@ -794,7 +794,7 @@ void func_global_asm_806874EC(void) {
     f32 temp_f22;
     f32 temp_f28;
     s16 var_s1;
-    s32 var_a1;
+    s32 boneIndex;
     s32 i;
 
     var_s1 = (rand() >> 0xF) % 4096;
@@ -802,18 +802,18 @@ void func_global_asm_806874EC(void) {
     switch (current_actor_pointer->unk58) {
         case ACTOR_DK:
         case ACTOR_TINY:
-            var_a1 = 0xF;
+            boneIndex = 0xF;
             break;
         case ACTOR_DIDDY:
         case ACTOR_LANKY:
         case ACTOR_CHUNKY:
-            var_a1 = 0xD;
+            boneIndex = 0xD;
             break;
         default:
             return;
     }
 
-    getBonePosition(current_actor_pointer, var_a1, &x, &y, &z);
+    getBonePosition(current_actor_pointer, boneIndex, &x, &y, &z);
     temp_f22 = temp_f28 * 18.0f;
     for (i = 0; i != 0x40; i++) {
         var_s1 += (((rand() >> 0xF) % 1024));
