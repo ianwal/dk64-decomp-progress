@@ -89,7 +89,6 @@ typedef struct {
     u8 unk6[1]; // TODO: How many elements?
 } Struct8002450C;
 
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 s32 func_boss_80024568(Struct8002450C*, u8, f32, f32, f32);
 
 // TODO: Close, just gotta figure out sp48 and D_boss_8003598C
@@ -278,7 +277,7 @@ void func_boss_80024EAC(void) {
 
     sp2A = current_actor_pointer->animation_state->unk64;
     func_global_asm_806CC10C(D_global_asm_807FDC90->unk8, current_actor_pointer->y_rotation);
-    func_global_asm_8072AB74(0x45, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x16, 0.0f);
+    func_global_asm_8072AB74(0x45, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x16, 0);
     temp_v0 = func_global_asm_806CC10C(D_global_asm_807FDC90->unk8, current_actor_pointer->y_rotation);
     if (temp_v0 > 0) {
         if (sp2A != 0x260) {

@@ -44,7 +44,6 @@ int func_global_asm_807035C4(); // TODO: Signature
 void func_global_asm_80718BF4(void);
 int func_global_asm_807197B4(); // TODO: Signature
 int func_global_asm_8071C818(); // TODO: Signature
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
 u8 func_global_asm_806BDD90(void) {
     s16 i;
@@ -449,7 +448,7 @@ void func_global_asm_806BE8BC(void) {
                 }
             }
             func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
-            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0x10, 0.0f);
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0x10, 0);
             func_global_asm_8072D13C(current_actor_pointer->control_state, 0);
             break;
     }

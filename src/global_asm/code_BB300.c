@@ -6,8 +6,6 @@ extern s16 D_global_asm_807502E0;
 
 extern u8 D_global_asm_807FBD70;
 
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
-
 // rodata, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_global_asm_806B6600.s")
 
@@ -94,7 +92,7 @@ void func_global_asm_806B6958(void) {
         deleteActor(current_actor_pointer);
     }
     if (current_actor_pointer->control_state == 0x23) {
-        func_global_asm_8072AB74(0x23, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
+        func_global_asm_8072AB74(0x23, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0);
     } else {
         func_global_asm_8072B7CC(0x237);
     }

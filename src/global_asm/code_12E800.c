@@ -157,8 +157,6 @@ void func_global_asm_8072A7DC(void) {
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072A86C.s")
 
-u8 func_global_asm_8072AB74(u8 arg0, f32 arg1, f32 arg2, u16 arg3, f32 arg4);
-
 /*
 void func_global_asm_8072A86C(s16 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4) {
     current_actor_pointer->y_velocity = func_global_asm_80612794(current_actor_pointer->unkF0) * -arg3;
@@ -670,7 +668,7 @@ void func_global_asm_8072DB68(s32 arg0) {
 }
 
 void func_global_asm_8072DC7C(u8 arg0) {
-    func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x32, 0.0f);
+    func_global_asm_8072AB74(0x37, 0, 0, 0x32, 0);
     current_actor_pointer->shadow_opacity -= arg0;
     if (current_actor_pointer->shadow_opacity < 0) {
         current_actor_pointer->control_state_progress++;

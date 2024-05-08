@@ -81,8 +81,6 @@ typedef struct {
     s16 unk4;
 } A178_8002C964;
 
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
-
 void func_boss_8002C964(void) {
     A178_8002C964 *a178;
     f64 yScale;
@@ -229,7 +227,7 @@ void func_boss_8002C964(void) {
             }
             break;
         case 0x23:
-            func_global_asm_8072AB74(0x23, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
+            func_global_asm_8072AB74(0x23, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0);
             break;
         case 0x37:
             func_global_asm_806AD260(0x2F7, 1, 0);

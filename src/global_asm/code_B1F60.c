@@ -2,14 +2,13 @@
 #include "functions.h"
 
 s32 func_global_asm_8072881C(s32, s32);
-s32 func_global_asm_8072AB74(u8, f32, f32, u16, f32);
 void func_global_asm_806A5C60(Actor *arg0);
 
 // Not 100% on these signatures
 void func_global_asm_8072C918(s16, s16, s16);
 u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);
 
-void func_global_asm_806AD260(s16 arg0, u8 arg1, u16 arg2) {
+void func_global_asm_806AD260(s16 arg0, u8 arg1, s32 arg2) {
     if (arg0 != 0) {
         if (D_global_asm_807FBB70.unk200 == 9 || D_global_asm_807FBB70.unk15 != 0) {
             if (current_actor_pointer->control_state != 0x37) {
@@ -23,7 +22,7 @@ void func_global_asm_806AD260(s16 arg0, u8 arg1, u16 arg2) {
         case 0x10:
         case 0x15:
         case 0x23:
-            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, (current_actor_pointer->unk6A & 1) ? arg2 : arg2 | 2, 0);
+            func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, (current_actor_pointer->unk6A & 1) ? (u16)arg2 : (u16)arg2 | 2, 0);
             break;
         case 0x2:
         case 0x3:
@@ -35,7 +34,7 @@ void func_global_asm_806AD260(s16 arg0, u8 arg1, u16 arg2) {
             // TODO: Is there a better way to express case 2 in this switch?
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
-                    func_global_asm_8072AB74(0x37, 0, 0, (arg2 | 0x4200), 0);
+                    func_global_asm_8072AB74(0x37, 0, 0, ((u16)arg2 | 0x4200), 0);
                     break;
                 case 1:
                     func_global_asm_806A5C60(current_actor_pointer);
@@ -46,7 +45,7 @@ void func_global_asm_806AD260(s16 arg0, u8 arg1, u16 arg2) {
                         current_actor_pointer->y_velocity = 100.0f;
                         current_actor_pointer->control_state_progress++;
                 case 2:
-                        func_global_asm_8072AB74(0x37, 0, 0, (arg2 | 0x4200), 0);
+                        func_global_asm_8072AB74(0x37, 0, 0, ((u16)arg2 | 0x4200), 0);
                     }
                     break;
                 case 3:

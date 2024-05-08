@@ -139,7 +139,6 @@ void func_global_asm_806C49D0(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 extern int func_global_asm_8068E474(); // TODO: Signature
 
 typedef struct {
@@ -419,7 +418,7 @@ void func_global_asm_806C5C20(void) {
         current_actor_pointer->unkB8 = D_global_asm_807FDC9C->unkC * 4;
     }
     func_global_asm_80724E48(6);
-    func_global_asm_8072AB74(1, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x2C9, 0.0f);
+    func_global_asm_8072AB74(1, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x2C9, 0);
     if (!(object_timer & 3)) {
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(&func_global_asm_8071C818);

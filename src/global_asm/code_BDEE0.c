@@ -10,7 +10,6 @@ extern u8 D_global_asm_80750628[];
 void func_global_asm_80612BC0(Mtx*, f32);
 void func_global_asm_80612C30(Mtx*, f32);
 void func_global_asm_80611A70(f32, f32, f32*, f32*);
-s32 func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806B91E0.s")
@@ -209,7 +208,7 @@ void func_global_asm_806BA76C(f32 arg0) {
         case 0x3:
         case 0x7:
         case 0x35:
-            if (!(func_global_asm_8072AB74(current_actor_pointer->control_state, var_f0, var_f2, (current_actor_pointer->unkFC ? 0x10 : 0x810) & 0xFFFF, 0.0f) & 1) && (current_actor_pointer->unkFC == 0)) {
+            if (!(func_global_asm_8072AB74(current_actor_pointer->control_state, var_f0, var_f2, (current_actor_pointer->unkFC ? 0x10 : 0x810), 0) & 1) && (current_actor_pointer->unkFC == 0)) {
                 a178->unk0 += arg0;
             }
             break;
@@ -224,7 +223,7 @@ void func_global_asm_806BA76C(f32 arg0) {
             }
             break;
         case 0x4:
-            func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x12, 0.0f);
+            func_global_asm_8072AB74(0x37, 0, 0, 0x12, 0);
             break;
         default:
             func_global_asm_8072B7CC(0);

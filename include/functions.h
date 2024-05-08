@@ -35,6 +35,8 @@ void func_global_asm_8060BF84(s32, u8, u16 *, u8*);
 void func_global_asm_8060BEA8(s32, u8, u16 *, u8*);
 void func_global_asm_8060BCA0(s32 arg0, u8 arg1, u8 arg2, u16 *arg3, u8 *arg4);
 
+u8 func_global_asm_8072AB74(u8 arg0, f32 x, f32 z, u16 arg3, f32 arg4);
+
 void func_global_asm_806A1AC4(void);
 void func_global_asm_8068696C(Actor *arg0);
 void func_global_asm_8067B100(Actor *player);
@@ -1764,7 +1766,7 @@ void func_global_asm_8070E808(Actor *arg0, Actor *arg1);
 void func_global_asm_8070DA28(AAD_global_asm_806A4DDC *arg0);
 void func_global_asm_806891D8(s16 arg0, f32 x, f32 y, f32 z, s16 arg4, f32 arg5, Actor *arg6, Struct807500B4 *arg7);
 void func_global_asm_806A7600(void *arg0);
-void func_global_asm_8072EE7C(s32 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, u8 argB, f32 argC, f32 argD, u8 argE);
+void func_global_asm_8072EE7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, u8 argB, f32 argC, f32 argD, u8 argE);
 void func_global_asm_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, u8 arg8, s16 arg9, s16 argA, s16 argB, s16 argC);
 f32 func_global_asm_80611850(f32 arg0);
 void func_global_asm_80675D70(Actor *arg0);
@@ -2409,7 +2411,7 @@ s32 func_global_asm_806CE7A0(Actor*, f32, f32, s16, s16);
 s32 func_global_asm_806CCC10(void);
 void func_global_asm_806CF2EC(s32*, s32*);
 void func_global_asm_806CF918(void);
-void func_global_asm_806AD260(s16 arg0, u8 arg1, u16 arg2);
+void func_global_asm_806AD260(s16 arg0, u8 arg1, s32 arg2);
 void func_global_asm_806F10E8(Actor *arg0);
 void func_global_asm_806F14BC(Actor *arg0);
 s16 func_global_asm_80665C18(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);

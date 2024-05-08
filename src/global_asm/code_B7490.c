@@ -292,8 +292,6 @@ void func_global_asm_806B3420(void) {
 // close, switch case woes
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3680.s")
 
-s32 func_global_asm_8072AB74(u8, f32, f32, s32, f32);
-
 extern s32 D_global_asm_8072073C;
 extern s32 D_global_asm_8071ABDC;
 
@@ -603,7 +601,7 @@ void func_global_asm_806B49B0(u8 arg0, s16 arg1, s16 arg2) {
                 playActorAnimation(current_actor_pointer, arg1);
                 current_actor_pointer->control_state_progress++;
             }
-            func_global_asm_8072AB74(arg0, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0xE1, 0.0f);
+            func_global_asm_8072AB74(arg0, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0xE1, 0);
             if (current_actor_pointer->y_position < sp32) {
                 if (current_actor_pointer->control_state_progress == 2) {
                     current_actor_pointer->y_position += ((f32)D_global_asm_807FDC9C[0].unkA_u8[1] * 0.03125);
@@ -627,7 +625,7 @@ void func_global_asm_806B49B0(u8 arg0, s16 arg1, s16 arg2) {
             }
             break;
         case 0x37:
-            func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x22, 0.0f);
+            func_global_asm_8072AB74(0x37, 0, 0, 0x22, 0);
             if (current_actor_pointer->unk6A & 1) {
                 current_actor_pointer->control_state = 0x40;
             }

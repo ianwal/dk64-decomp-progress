@@ -6,8 +6,6 @@ extern s32 D_global_asm_8072073C; // TODO: Proper datatype
 
 extern f32 D_global_asm_8075B1A8;
 
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
-
 void func_global_asm_80612BC0(f32*, f32);
 
 void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
@@ -288,8 +286,6 @@ void func_global_asm_806AEE08(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AEE84.s")
 
 void func_global_asm_806AF688(void) {
-    s32 var_v0;
-
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_8072B79C(0x2C0, 0x2C1, 0x2C1);
@@ -330,24 +326,14 @@ void func_global_asm_806AF688(void) {
                 current_actor_pointer->control_state = 0x11;
                 current_actor_pointer->control_state_progress = 0;
             }
-            if (current_actor_pointer->control_state == 1) {
-                var_v0 = 2;
-            } else {
-                var_v0 = 0;
-            }
-            func_global_asm_80724E48(var_v0);
+            func_global_asm_80724E48(current_actor_pointer->control_state == 1 ? 2 : 0);
             func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
             break;
         case 0x2:
         case 0x3:
         case 0x7:
         case 0x35:
-            if (current_actor_pointer->control_state == 0x35) {
-                var_v0 = 2;
-            } else {
-                var_v0 = 3;
-            }
-            func_global_asm_80724E48(var_v0);
+            func_global_asm_80724E48(current_actor_pointer->control_state == 0x35 ? 2 : 3);
             func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0, 0.0f);
             break;
         case 0x37:

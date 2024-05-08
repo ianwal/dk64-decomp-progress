@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9CE20/func_global_asm_80698120.s")
 
 void func_global_asm_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, u8 arg8, s16 arg9, s16 argA, s16 argB, s16 argC);
@@ -27,7 +28,6 @@ typedef struct {
 } AAD_global_asm_80698120;
 
 /*
-// TODO: Doable, good progress made
 void func_global_asm_80698120(u8 arg0) {
     PlayerAdditionalActorData *PaaD;
     u8 sp63;
@@ -55,7 +55,23 @@ void func_global_asm_80698120(u8 arg0) {
         aaD->unk24 = ((rand() >> 0xF) % 100) / 1000.0 + 0.1;
         aaD->unk18 = 0.0f;
         current_actor_pointer->animation_state->unk1C = malloc(0x80);
-        func_global_asm_8072EE7C(current_actor_pointer, 0, 0, 0, arg0 * 0.33333299999999999, 0.15f, 100.0f, 20.0f, 8.0f, 0, 0.0f, 0.0f, 0);
+        func_global_asm_8072EE7C(
+            current_actor_pointer,
+            0,
+            0,
+            0,
+            0,
+            arg0 * 0.33333299999999999,
+            0.15f,
+            100.0f,
+            20.0f,
+            8.0f,
+            0.0f,
+            0,
+            0.0f,
+            0.0f,
+            0
+        );
         for (var_v1 = 1; var_v1 < arg0; var_v1++) {
             func_global_asm_8072EF7C(current_actor_pointer, 0, var_v1 + 1, var_v1 - 1, var_v1, 0.3333329856f, 0.0f, 0.0f, 0, 0, 0, 0, 0);
         }
@@ -63,9 +79,9 @@ void func_global_asm_80698120(u8 arg0) {
         current_actor_pointer->unk131 = 0xC8;
         var_t1_2->unk14 = 0;
         var_t1_2->unk15 = 0;
-        aaD->unk28 = isFlagSet(0x183, FLAG_TYPE_PERMANENT) != FALSE
-            || (D_global_asm_807FBB64 & 0x10000000) != 0
-            || gameIsInDKTVMode() != FALSE;
+        aaD->unk28 = isFlagSet(0x183, FLAG_TYPE_PERMANENT)
+            || (D_global_asm_807FBB64 & 0x10000000)
+            || gameIsInDKTVMode();
     }
     if ((player_pointer->control_state == 0x63) || (aaD->unk28 == 0) || ((current_actor_pointer->unk124->unk0 == 1) && !(PaaD->unk1F0 & 0x40))) {
         current_actor_pointer->object_properties_bitfield &= 0xFBFFFFFB;

@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
 typedef struct global_asm_struct_78 {
     s32 unk0;
     s32 unk4; // Index into object model 2 array?

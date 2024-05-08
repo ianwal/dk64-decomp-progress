@@ -96,7 +96,7 @@ void func_global_asm_8072EE0C(Actor *arg0, u8 arg1, u8 arg2) {
     }
 }
 
-void func_global_asm_8072EE7C(s32 arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, u8 argB, f32 argC, f32 argD, u8 argE) {
+void func_global_asm_8072EE7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, u8 argB, f32 argC, f32 argD, u8 argE) {
     GlobalASMStruct82 **var_t0;
     GlobalASMStruct82 *current;
     GlobalASMStruct82 *sp18;

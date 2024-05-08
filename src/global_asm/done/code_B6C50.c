@@ -4,7 +4,6 @@
 extern s32 D_global_asm_8072030C;
 extern s32 D_global_asm_80720340; // Sprite
 
-void func_global_asm_8072AB74(s32, f32, f32, s32, f32);
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
 void func_global_asm_806B1F50(void) {
@@ -138,7 +137,7 @@ void func_global_asm_806B24B8(void) {
                 current_actor_pointer->unkF0 = 1;
             }
         }
-        func_global_asm_8072AB74(0x23, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
+        func_global_asm_8072AB74(0x23, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0);
     } else {
         func_global_asm_8072B7CC(0x1F8);
     }
