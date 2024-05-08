@@ -264,7 +264,7 @@ segments:
       - [0x209CE20, c, code_9CE20]
       - [0x209DD70, c, code_9DD70]
       - [0x20A2F10, c, code_A2F10]
-      - [0x20A6280, c, code_A6280]
+      - [0x20A6280, c, done/code_A6280]
       - [0x20A7710, c, code_A7710]
       - [0x20A8400, c, code_A8400]
       - [0x20ACDC0, c, code_ACDC0]
@@ -392,7 +392,7 @@ segments:
       - [0x215EF40, .rodata, code_9CE20]
       - [0x215EFD0, .rodata, code_9DD70]
       - [0x215F110, .rodata, code_A2F10]
-      - [0x215F250, .rodata, code_A6280]
+      - [0x215F250, .rodata, done/code_A6280]
       - [0x215F2B0, .rodata, code_A7710]
       - [0x215F440, rodata] # code_A8400
       - [0x215F780, rodata] # code_ACDC0

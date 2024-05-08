@@ -1,22 +1,29 @@
 #include <ultra64.h>
 #include "functions.h"
 
-/*
-dlabel D_global_asm_8075A550 .float 50000
-dlabel D_global_asm_8075A558 .double 0.0100000000000000002
-dlabel D_global_asm_8075A560 .float 19600
-dlabel D_global_asm_8075A568 .double 0.0100000000000000002
-dlabel D_global_asm_8075A570 .double 0.0100000000000000002
-dlabel D_global_asm_8075A578 .double 150
-dlabel D_global_asm_8075A580 .float 0.6999999881
-dlabel D_global_asm_8075A588 .double 4095
-dlabel D_global_asm_8075A590 .double 360
-dlabel D_global_asm_8075A598 .double 4095
-dlabel D_global_asm_8075A5A0 .double 360
-*/
+extern s32 D_global_asm_8071FFA0;
+extern s32 D_global_asm_8071FF18;
+
+extern u8 D_global_asm_807506C0[];
 
 extern u8 D_global_asm_807FBD70;
-extern u8 D_global_asm_807506C0[];
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    f32 unk4;
+    f32 unk8;
+} AAD_global_asm_806A1FD8;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+} AAD_806A2328;
+
+void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
 
 void func_global_asm_806A1580(void) {
     s16 sp36;
@@ -100,8 +107,6 @@ void func_global_asm_806A18A8(void) {
 void func_global_asm_806A1ABC(void) {
 
 }
-
-extern s32 D_global_asm_8071FFA0;
 
 void func_global_asm_806A1AC4(void) {
     f32 randomScale;
@@ -201,17 +206,6 @@ void func_global_asm_806A1FD0(void) {
 
 }
 
-extern s32 D_global_asm_8071FF18;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    f32 unk4;
-    f32 unk8;
-} AAD_global_asm_806A1FD8;
-
-void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
-
 void func_global_asm_806A1FD8(void) {
     s32 var_v1;
     AAD_global_asm_806A1FD8 *aaD;
@@ -286,18 +280,6 @@ void func_global_asm_806A1FD8(void) {
     current_actor_pointer->y_position = aaD->unk8;
 }
 
-// TODO: Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A6280/func_global_asm_806A2328.s")
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-} AAD_806A2328;
-
-/*
 void func_global_asm_806A2328(void) {
     f32 dx;
     f32 temp_f0_2;
@@ -321,9 +303,8 @@ void func_global_asm_806A2328(void) {
         current_actor_pointer->noclip_byte = 0x24;
         current_actor_pointer->unkFA = 9000;
         current_actor_pointer->unk160 = current_actor_pointer->unk124->unk4;
-        // TODO: Issue is here
         temp_f12 = (current_actor_pointer->unk160) * (current_actor_pointer->unkEC * 0.01);
-        current_actor_pointer->unk160 = MIN((temp_f12 > 15.0) ? temp_f12 : 0.0, 150.0);
+        current_actor_pointer->unk160 = MIN(MAX(temp_f12, 15.0), 150.0);
         aaD->unk8 = current_actor_pointer->unk160;
     }
     func_global_asm_8067ACB4(current_actor_pointer);
@@ -352,7 +333,6 @@ void func_global_asm_806A2328(void) {
     func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0x1E, 0x1E, 1, 0x12C, 0xB4, 0, 1.0f);
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806A285C(void) {
     s16 spBE;
