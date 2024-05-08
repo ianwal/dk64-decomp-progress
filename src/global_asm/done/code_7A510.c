@@ -56,6 +56,52 @@ typedef struct {
     s32 unk18;
 } Struct80675810_arg1;
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s8 unk4;
+    s8 unk5;
+    u8 unk6;
+    u8 unk7;
+    void (*unk8)(Actor*, Actor*, u8, u8);
+    u8 unkC;
+    u8 unkD;
+    u8 unkE;
+    u8 unkF;
+} Struct8074ABCC;
+
+extern Struct8074ABCC D_global_asm_8074ABCC[];
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    u8 unk8;
+    s8 unk9;
+    u8 unkA;
+    s8 unkB;
+} Struct80748FE8;
+
+extern Struct80748FE8 D_global_asm_80748FE8[];
+
+typedef struct {
+    u16 unk0; // Actor behaviour
+    u8 unk2;
+    u8 unk3;
+    u16 unk4;
+} Struct80748F58;
+
+extern s8 D_global_asm_80748E50[];
+extern Struct80748F58 D_global_asm_80748F58[];
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+} GlobalASMStruct55;
+
+extern GlobalASMStruct55 D_global_asm_8074D0C4[];
+
 void func_global_asm_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
     Actor *temp_s2;
     Struct80675810 *var_s1;
@@ -141,22 +187,6 @@ void func_global_asm_80675810(Actor *arg0, Struct80675810_arg1 *arg1) {
         }
     }
 }
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s8 unk4;
-    s8 unk5;
-    u8 unk6;
-    u8 unk7;
-    void (*unk8)(Actor*, Actor*, u8, u8);
-    u8 unkC;
-    u8 unkD;
-    u8 unkE;
-    u8 unkF;
-} Struct8074ABCC;
-
-extern Struct8074ABCC D_global_asm_8074ABCC[];
 
 void func_global_asm_80675AFC(Actor *arg0, Actor *arg1) {
     s32 found2;
@@ -276,39 +306,20 @@ void func_global_asm_80675DD0(Actor *arg0, Actor *arg1) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7A510/func_global_asm_80675E3C.s")
-
-/*
-// TODO: Astonishingly close, extra NOP
 s32 func_global_asm_80675E3C(GlobalASMStruct57 *arg0, s16 arg1, s16 arg2) {
     s16 temp_s1;
     void *temp_s2;
+    s32 temp;
 
     do {
         temp_s1 = arg0->unk0;
         temp_s2 = arg0->unk4;
-        if (!func_global_asm_80675C70(arg1, arg2, temp_s1)) {
-            arg0++;
-        }
-    } while (temp_s1);
+        temp = func_global_asm_80675C70(arg1, arg2, temp_s1);
+        arg0++;
+    } while (!temp && temp_s1);
 
     return temp_s2;
 }
-*/
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    u8 unk8;
-    s8 unk9;
-    u8 unkA;
-    s8 unkB;
-} Struct80748FE8;
-
-extern Struct80748FE8 D_global_asm_80748FE8[];
 
 void func_global_asm_80675EE0(Actor *arg0) {
     AnimationStateUnk0 *temp_v0;
@@ -375,16 +386,6 @@ void func_global_asm_80675EE0(Actor *arg0) {
     arg0->unk136 = 0;
 }
 
-typedef struct {
-    u16 unk0; // Actor behaviour
-    u8 unk2;
-    u8 unk3;
-    u16 unk4;
-} Struct80748F58;
-
-extern s8 D_global_asm_80748E50[];
-extern Struct80748F58 D_global_asm_80748F58[];
-
 void func_global_asm_8067605C(Actor *arg0, u8 arg1) {
     s16 i;
     s32 found;
@@ -415,13 +416,6 @@ void func_global_asm_8067618C(Actor *arg0, u8 *arg1) {
         *arg1 = 0x15;
     }
 }
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-} GlobalASMStruct55;
-
-extern GlobalASMStruct55 D_global_asm_8074D0C4[];
 
 void func_global_asm_806761D0(Actor *arg0) {
     arg0->health = D_global_asm_8074D0C4[arg0->unk58].unk0;

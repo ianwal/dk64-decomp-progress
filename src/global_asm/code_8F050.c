@@ -48,13 +48,13 @@ s32 func_global_asm_8068A3A0(s32 arg0, u32 *arg1) {
 
 void func_global_asm_8068A404(Actor *arg0, s32 arg1, s32 arg2) {
     s32 temp_a1;
-    s32 var_s0;
+    s32 i;
 
     if (arg0->unk4C == 0) {
         arg0->unk4C = func_global_asm_80612E90(arg0, D_global_asm_80750100[arg1].unk2, 0);
     }
-    for (var_s0 = 0; var_s0 < 2; var_s0++) {
-        temp_a1 = D_global_asm_80750100[arg1].unkC[var_s0];
+    for (i = 0; i < 2; i++) {
+        temp_a1 = D_global_asm_80750100[arg1].unkC[i];
         if (temp_a1 != -1) {
             func_global_asm_8068A350(arg0, temp_a1, arg2);
         }

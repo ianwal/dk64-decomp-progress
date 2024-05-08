@@ -44,6 +44,7 @@ extern f32 D_global_asm_807F5FB0;
 extern f32 D_global_asm_807F5FB4;
 extern s16 D_global_asm_807F7138;
 
+// close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80650E20.s")
 
 typedef struct global_asm_struct_18 {
@@ -86,10 +87,8 @@ typedef struct {
 void func_global_asm_80650E20(Struct80650E20_arg0 *arg0) {
     s32 size;
     u8 phi_v1;
-    s32 temp;
 
-    temp = arg0->unk0[arg0->unk64];
-    D_global_asm_807F6C28 = temp;
+    D_global_asm_807F6C28 = *(u32*)(&arg0->unk0[arg0->unk64]);
     if (D_global_asm_807F6C28 >= 2) {
         phi_v1 = D_global_asm_807F6C28;
     } else {

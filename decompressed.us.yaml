@@ -232,7 +232,7 @@ segments:
       - [0x20478F0, c, code_478F0]
       - [0x2054150, c, code_54150]
       - [0x2055B20, c, code_55B20]
-      - [0x205DE10, c, code_5DE10]
+      - [0x205DE10, c, done/code_5DE10]
       - [0x205E020, c, code_5E020]
       - [0x205E2F0, c, code_5E2F0]
       - [0x2061690, c, code_61690] # TODO: Weird "handwritten instructions" in function, could it be mips3? Could it be hasm?
@@ -248,7 +248,7 @@ segments:
       - [0x2070FD0, c, code_70FD0]
       - [0x2077B90, c, code_77B90] # TODO: Weird "handwritten instructions" in functions, could it be mips3? Could it be hasm?
       - [0x2079890, c, code_79890]
-      - [0x207A510, c, code_7A510]
+      - [0x207A510, c, done/code_7A510]
       - [0x207AF60, c, code_7AF60]
       - [0x207BBD0, c, code_7BBD0]
       - [0x207CA80, c, code_7CA80]
@@ -379,7 +379,7 @@ segments:
       - [0x215DB20, rodata] # code_699B0, TODO: might need another split around 758F70
       - [0x215DD50, .rodata, code_70FD0]
       - [0x215DEA0, .rodata, code_79890]
-      - [0x215DEC0, .rodata, code_7A510]
+      - [0x215DEC0, .rodata, done/code_7A510]
       - [0x215DEE0, .rodata, code_7AF60]
       - [0x215DF60, .rodata, code_7CA80]
       - [0x215E090, .rodata, code_80150]
