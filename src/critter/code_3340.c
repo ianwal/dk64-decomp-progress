@@ -20,7 +20,7 @@ void func_critter_80027340(s32 arg0) {
     }
 }
 
-// Jumptable
+// Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80027448.s")
 
 typedef struct {
@@ -80,7 +80,7 @@ void func_critter_80027448(void) {
             }
         } else {
             func_global_asm_806F8BC4(9, 1, 0);
-            if (isFlagSet(levelIndex + 0x1CD, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(0x1CD + levelIndex, FLAG_TYPE_PERMANENT)) {
                 current_actor_pointer->control_state_progress = 4;
             }
             playActorAnimation(current_actor_pointer, 0x39E);
@@ -315,5 +315,5 @@ void func_critter_80027DC0(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028120.s")

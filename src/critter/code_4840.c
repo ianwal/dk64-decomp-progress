@@ -68,7 +68,6 @@ Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_80028EE8.s")
 
 s32 func_critter_800288A8(void *, s32, s16); // extern
-s32 strcpy(void *, s32); // extern
 extern s16 D_global_asm_80744490;
 
 /*
@@ -118,6 +117,6 @@ void func_critter_8002904C(void) {
         current_actor_pointer->unk168--;
         addActorToTextOverlayRenderArray(&func_critter_80028DE8, current_actor_pointer, 3);
     }
-    D_critter_8002A1CE += 1;
+    D_critter_8002A1CE++;
 }
 */

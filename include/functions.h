@@ -9,6 +9,7 @@
 void *malloc(s32 size);
 s32 rand(void);
 void *memcpy(void *dest, void *src, u32 n);
+char *strcpy(char *dest, char *src);
 
 void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3);
 void loadExits(Maps map);
