@@ -236,37 +236,33 @@ void func_jetpac_800255D4(Gfx **arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025700.s")
 
-// Displaylist stuff, regalloc, doable
+// Displaylist stuff, doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025904.s")
+
 /*
 void func_jetpac_80025904(Gfx **arg0) {
     JetpacStruct1 *s3;
-    s32 s4;
-    s32 s7;
-    Gfx *sp50;
-    s32 s1;
-    s16 tmp_a1;
-    s16 tmp_a2;
-
+    s32 j, i;
+    Gfx *dl;
+    s32 k;
 
     s3 = &D_jetpac_8002F3D0[0][0];
-    sp50 = *arg0;
-    for (s7 = 0; s7 < 0x18; s7++) {
-        for (s4 = 0; s4 < 0x20; s4++) {
+    dl = *arg0;
+    for (i = 0; i < 0x18; i++) {
+        for (j = 0; j < 0x20; j++) {
             if (s3->unk60) {
-                gDPSetPrimColor(sp50++, 0, 0, s3->unk64, s3->unk65, s3->unk66, 0xff);
+                // TODO: Problem is here, colors are loaded and shifted in the wrong order
+                gDPSetPrimColor(dl++, 0, 0, s3->unk64, s3->unk65, s3->unk66, 0xFF);
             }
-            for (s1 = 0; s1 < s3->unk60; s1++) {
-                func_global_asm_8070E8F0(&sp50, s3->unk0[s1].unkC);
-                func_global_asm_8070F2C8(0x400, 0x400, s3->unk0[s1].unkB, 0);
-                tmp_a1 = (s3->unk0[s1].unk0 + 0x20);
-                tmp_a2 = (s3->unk0[s1].unk4 + 0x18);
-                func_global_asm_8070F2FC(&sp50, 4*tmp_a1, 4*tmp_a2);
+            for (k = 0; k < s3->unk60; k++) {
+                func_global_asm_8070E8F0(&dl, s3->unk0[k].unkC);
+                func_global_asm_8070F2C8(0x400, 0x400, s3->unk0[k].unk8, 0);
+                func_global_asm_8070F2FC(&dl, (s3->unk0[k].unk0 + 0x20) << 2, (s3->unk0[k].unk4 + 0x18) << 2);
             }
-        s3++;
+            s3++;
         }
     }
-    *arg0 = sp50;
+    *arg0 = dl;
 }
 */
 

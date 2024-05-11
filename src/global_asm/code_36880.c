@@ -1997,8 +1997,42 @@ void func_global_asm_8063D608(void) {
     D_global_asm_807F619C = getPointerTableFile(0x19, 0x1765, 1, 0); // Texture
 }
 
-// Displaylist stuff, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063D638.s")
+extern f32 D_global_asm_807F61A0;
+
+Gfx *func_global_asm_8063D638(Gfx *dl) {
+    s32 alpha;
+
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_2CYCLE);
+    gDPSetTextureLOD(dl++, G_TL_LOD);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BACK | G_SHADING_SMOOTH);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
+    gDPSetRenderMode(dl++, G_RM_PASS, G_RM_ZB_XLU_SURF2);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA_PRIM2);
+    
+    switch (current_map) {
+        case MAP_DK_ISLES_OVERWORLD:
+        case MAP_CASTLE_BARREL_BLAST:
+            alpha = 0xFF;
+            break;
+        case MAP_GALLEON_BARREL_BLAST:
+        case MAP_FUNGI_BARREL_BLAST:
+            alpha = 0x96;
+            break;
+        default:
+            alpha = 0x50;
+            break;
+    }
+
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+    // TODO: Better match for this
+    gDPLoadTextureBlock(dl++, (s32)D_global_asm_807F619C + 0x80000000, G_IM_FMT_RGBA, G_IM_SIZ_16b, 32, 32, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 5, 5, G_TX_NOLOD, G_TX_NOLOD);
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, (s32)D_global_asm_807F61A0, 0x007C, 0x007C);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, 1, 0, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 5, G_TX_NOLOD);
+
+    return dl;
+}
 
 void func_global_asm_8063D854(void) {
     switch (current_map) {
