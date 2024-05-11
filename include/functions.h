@@ -1250,7 +1250,7 @@ void func_global_asm_8066BDE0(void);
 void func_global_asm_806FB480(void);
 void func_global_asm_806FB488(void);
 void func_global_asm_806FBB58(void);
-s32 func_global_asm_806FBB9C(s16 textureIndex);
+void *func_global_asm_806FBB9C(s16 textureIndex);
 void func_global_asm_80663C60(f32 *arg0, s16 arg1);
 void func_global_asm_8072ED90(void);
 u8 func_global_asm_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4);
@@ -2365,6 +2365,7 @@ void func_global_asm_8061C6A8(Actor *, Actor *, s32, s32, s32, s32, s32, s32, s3
 void func_race_8002BBD0(Actor *arg0, s32 numRacers);
 
 void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2);
+void func_global_asm_806F69A8(u8 playerIndex);
 
 // Round 5
 void func_global_asm_806EB5C8(void);

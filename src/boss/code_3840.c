@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern s32 D_global_asm_8074E880[];
 extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
 
 void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
@@ -98,7 +97,7 @@ void func_boss_80028478(u16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg
         func_global_asm_8071498C(&func_global_asm_8071CDE0);
         func_global_asm_807149FC(-1);
         func_global_asm_807149B8(1);
-        func_global_asm_80714950(D_global_asm_807FDC94);
+        func_global_asm_80714950((s32)D_global_asm_807FDC94);
         drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position);
     }
     func_global_asm_806A5DF0(0x48, arg1, arg2, arg3, arg4, arg5, arg0, 0);

@@ -7,10 +7,10 @@ typedef struct {
     void *unk4; // Pointer to struct, see func_global_asm_80675810
 } GlobalASMStruct57;
 
-s32 func_global_asm_80675E3C(GlobalASMStruct57 *arg0, s16 arg1, s16 arg2);
+void *func_global_asm_80675E3C(GlobalASMStruct57 *arg0, s16 arg1, s16 arg2);
 
 typedef struct {
-    s32 unk0;
+    void *unk0;
     s32 unk4;
 } Struct8074C604;
 
@@ -196,8 +196,8 @@ void func_global_asm_80675AFC(Actor *arg0, Actor *arg1) {
     found = FALSE;
     i = 0;
     while (!found) {
-        if (func_global_asm_80675C70(arg0->unk58, arg0->interactable, D_global_asm_8074ABCC[i].unk0) != 0) {
-            if (func_global_asm_80675C70(arg1->unk58, arg1->interactable, D_global_asm_8074ABCC[i].unk2) != 0) {
+        if (func_global_asm_80675C70(arg0->unk58, arg0->interactable, D_global_asm_8074ABCC[i].unk0)) {
+            if (func_global_asm_80675C70(arg1->unk58, arg1->interactable, D_global_asm_8074ABCC[i].unk2)) {
                 if (D_global_asm_8074ABCC[i].unk4 == -1 || D_global_asm_8074ABCC[i].unk4 == D_global_asm_807FBB70.unk200) {
                     if (D_global_asm_8074ABCC[i].unk5 != -1) {
                         found2 = FALSE;
@@ -233,51 +233,51 @@ void func_global_asm_80675AFC(Actor *arg0, Actor *arg1) {
 
 s32 func_global_asm_80675C70(s16 arg0, s16 arg1, s16 arg2) {
     if (arg2 == arg0) {
-        return 1;
+        return TRUE;
     }
     switch (arg2) {
         case -1:
             if (arg1 == 1) {
-                return 1;
+                return TRUE;
             }
             break;
         case -2:
             if (arg1 == 2) {
-                return 1;
+                return TRUE;
             }
             break;
         case -8:
             if (arg1 == 0x80) {
-                return 1;
+                return TRUE;
             }
             break;
         case -3:
             if (arg1 == 4) {
-                return 1;
+                return TRUE;
             }
             break;
         case -4:
             if (arg1 == 8) {
-                return 1;
+                return TRUE;
             }
             break;
         case -5:
             if (arg1 == 0x10) {
-                return 1;
+                return TRUE;
             }
             break;
         case -6:
             if (arg1 == 0x20) {
-                return 1;
+                return TRUE;
             }
             break;
         case -7:
             if (arg1 == 0x40) {
-                return 1;
+                return TRUE;
             }
             break;
     }
-    return 0;
+    return FALSE;
 }
 
 void func_global_asm_80675D70(Actor *arg0) {
@@ -306,7 +306,7 @@ void func_global_asm_80675DD0(Actor *arg0, Actor *arg1) {
     }
 }
 
-s32 func_global_asm_80675E3C(GlobalASMStruct57 *arg0, s16 arg1, s16 arg2) {
+void *func_global_asm_80675E3C(GlobalASMStruct57 *arg0, s16 arg1, s16 arg2) {
     s16 temp_s1;
     void *temp_s2;
     s32 temp;

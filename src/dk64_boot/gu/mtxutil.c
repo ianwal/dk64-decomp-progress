@@ -54,8 +54,8 @@ void guMtxL2F(float mf[4][4], Mtx *m)
 }
 
 void guMtxIdent(Mtx *m) {
-    Mtx sp18;
+    f32 sp18[4][4];
 
-    guMtxIdentF(&sp18);
-    guMtxF2L(&sp18, m);
+    guMtxIdentF(sp18);
+    guMtxF2L(sp18, m);
 }

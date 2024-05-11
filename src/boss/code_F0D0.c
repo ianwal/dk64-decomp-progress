@@ -39,7 +39,6 @@ const f32 D_boss_80036C40[] = {
 void func_global_asm_8061EF4C(s32, s32, s32, f32, f32, f32, f32, f32);
 
 extern f64 D_boss_80036C58;
-extern void *D_global_asm_8074E880[];
 
 typedef struct BossStruct0 {
     u8 unk0;

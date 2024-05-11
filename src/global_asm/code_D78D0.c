@@ -17,8 +17,6 @@ typedef struct BoulderAAD {
 extern s32 D_global_asm_8071FF18;
 extern s32 D_global_asm_8072014C;
 
-extern void *D_global_asm_8074E880[];
-
 extern u8 D_global_asm_80750AB8;
 extern f32 D_global_asm_80750FC0;
 extern s32 D_global_asm_80750FC4; // TODO: Datatype

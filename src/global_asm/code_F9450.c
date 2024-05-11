@@ -216,7 +216,7 @@ void func_global_asm_806F5378(void) {
     GlobalASMStruct36 *next;
     GlobalASMStruct36 *current;
 
-    D_global_asm_807FD738 = 1;
+    D_global_asm_807FD738 = TRUE;
     current = D_global_asm_807FD730;
     while (current) {
         next = current->next;
@@ -728,8 +728,8 @@ void func_global_asm_806F6F28(void) {
         } else {
             PaaD->unk1F4 &= ~2;
         }
-        if ((character_change_array[playerIndex].player_pointer->control_state != 0x36) && (D_global_asm_807FD738 == 0)) {
-            func_global_asm_806F69A8(playerIndex & 0xFF);
+        if ((character_change_array[playerIndex].player_pointer->control_state != 0x36) && !D_global_asm_807FD738) {
+            func_global_asm_806F69A8(playerIndex);
         }
     }
 }

@@ -4,11 +4,10 @@
 
 extern u8 D_global_asm_807FBD70;
 extern s32 D_global_asm_8071FB34;
-extern s32 D_global_asm_8074E880[];
 extern u8 D_global_asm_80750628[];
 
-void func_global_asm_80612BC0(Mtx*, f32);
-void func_global_asm_80612C30(Mtx*, f32);
+void func_global_asm_80612BC0(f32 (*mf)[4], f32);
+void func_global_asm_80612C30(f32 (*mf)[4], f32);
 void func_global_asm_80611A70(f32, f32, f32*, f32*);
 
 // Jumptable
@@ -40,37 +39,35 @@ void func_global_asm_806B9CE0(u8 arg0, s8 yOffset) {
 }
 
 s32 func_global_asm_806B9EB4(u8 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    Mtx sp80;
-    Mtx sp40;
-    f32 sp3C;
-    f32 sp38;
-    f32 sp34;
+    f32 sp80[4][4];
+    f32 sp40[4][4];
+    f32 x, y, z;
     f32 temp;
     f32 sp2C;
 
     if (D_global_asm_80750628[arg0]) {
-        getBonePosition(D_global_asm_807FDCA0->unk1C, D_global_asm_80750628[arg0], &sp3C, &sp38, &sp34);
-        func_global_asm_80611A70(arg2, arg4, &sp3C, &sp34);
-        sp2C = func_global_asm_80611BB4(sp3C - arg2, sp34 - arg4);
-        guTranslateF(&sp80, 0.0f, -arg1, 0.0f);
-        func_global_asm_80612C30(&sp40, (current_actor_pointer->y_rotation * 360) / 4096);
-        guMtxCatF(&sp80, &sp40, &sp80);
-        func_global_asm_80612BC0(&sp40, -90.0f);
-        guMtxCatF(&sp80, &sp40, &sp80);
-        guAlignF(&sp40, (sp2C * 57.29577637f) + 180.0f, sp3C - arg2, sp38 - arg3, sp34 - arg4);
-        guMtxCatF(&sp80, &sp40, &sp80);
-        guTranslateF(&sp40, 0.0f, arg1, 0.0f);
-        guMtxCatF(&sp80, &sp40, &sp80);
-        guScaleF(&sp40,
+        getBonePosition(D_global_asm_807FDCA0->unk1C, D_global_asm_80750628[arg0], &x, &y, &z);
+        func_global_asm_80611A70(arg2, arg4, &x, &z);
+        sp2C = func_global_asm_80611BB4(x - arg2, z - arg4);
+        guTranslateF(sp80, 0.0f, -arg1, 0.0f);
+        func_global_asm_80612C30(sp40, (current_actor_pointer->y_rotation * 360) / 4096);
+        guMtxCatF(sp80, sp40, sp80);
+        func_global_asm_80612BC0(sp40, -90.0f);
+        guMtxCatF(sp80, sp40, sp80);
+        guAlignF(sp40, (sp2C * 57.29577637f) + 180.0f, x - arg2, y - arg3, z - arg4);
+        guMtxCatF(sp80, sp40, sp80);
+        guTranslateF(sp40, 0.0f, arg1, 0.0f);
+        guMtxCatF(sp80, sp40, sp80);
+        guScaleF(sp40,
                  current_actor_pointer->animation_state->scale_x,
                  current_actor_pointer->animation_state->scale_y,
                  current_actor_pointer->animation_state->scale_z);
-        guMtxCatF(&sp80, &sp40, &sp80);
-        guTranslateF(&sp40,
+        guMtxCatF(sp80, sp40, sp80);
+        guTranslateF(sp40,
                      current_actor_pointer->x_position,
                      current_actor_pointer->y_position,
                      current_actor_pointer->z_position);
-        guMtxCatF(&sp80, &sp40, &current_actor_pointer->unkC);
+        guMtxCatF(sp80, sp40, &current_actor_pointer->unkC);
         return TRUE;
     }
     return FALSE;
@@ -190,25 +187,24 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
 
 void func_global_asm_806BA76C(f32 arg0) {
     Actor178 *a178;
-    f32 var_f0;
-    f32 var_f2;
+    f32 x, z;
 
     a178 = current_actor_pointer->unk178;
-    var_f0 = D_global_asm_807FDC90->unkA;
-    var_f2 = D_global_asm_807FDC90->unkE;
+    x = D_global_asm_807FDC90->unkA;
+    z = D_global_asm_807FDC90->unkE;
     switch (current_actor_pointer->control_state) {
         case 0x1:
         case 0x10:
         case 0x15:
         case 0x23:
-            var_f0 = D_global_asm_807FDC94->x_position;
-            var_f2 = D_global_asm_807FDC94->z_position;
+            x = D_global_asm_807FDC94->x_position;
+            z = D_global_asm_807FDC94->z_position;
             // fallthrough
         case 0x2:
         case 0x3:
         case 0x7:
         case 0x35:
-            if (!(func_global_asm_8072AB74(current_actor_pointer->control_state, var_f0, var_f2, (current_actor_pointer->unkFC ? 0x10 : 0x810), 0) & 1) && (current_actor_pointer->unkFC == 0)) {
+            if (!(func_global_asm_8072AB74(current_actor_pointer->control_state, x, z, (current_actor_pointer->unkFC ? 0x10 : 0x810), 0) & 1) && (current_actor_pointer->unkFC == 0)) {
                 a178->unk0 += arg0;
             }
             break;

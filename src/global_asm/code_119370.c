@@ -6,8 +6,6 @@ extern Struct80717D84 *D_minecart_80028C30;
 extern s32 D_global_asm_8071FEF4;
 extern s32 D_global_asm_8071FFA0; // TODO: Datatype
 
-extern s32 D_global_asm_8074E880[]; // TODO: Datatype
-
 extern u8 D_global_asm_8074450C;
 
 extern u8 D_global_asm_80750AB4;

@@ -585,14 +585,14 @@ void func_global_asm_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
 Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, void *string) {
     f32 sp70[4][4];
     f32 sp30[4][4];
-    f32 *mtx;
+    Mtx *mtx;
 
-    mtx = malloc(0x40);
+    mtx = malloc(sizeof(Mtx));
     func_global_asm_8061134C(mtx);
-    guScaleF(&sp70[0], scale, scale, 1.0f);
-    guTranslateF(&sp30[0], x, y, 0.0f);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
-    guMtxF2L(&sp70[0], mtx);
+    guScaleF(sp70, scale, scale, 1.0f);
+    guTranslateF(sp30, x, y, 0.0f);
+    guMtxCatF(sp70, sp30, sp70);
+    guMtxF2L(sp70, mtx);
     gSPMatrix(dl++, mtx, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     dl = printStyledText(dl, 1, 0, 0, string, 0x80);
     gSPPopMatrix(dl++, G_MTX_MODELVIEW);

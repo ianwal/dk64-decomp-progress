@@ -1273,7 +1273,7 @@ void func_global_asm_80695BAC(void) {
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(-1);
         func_global_asm_8071498C(func_global_asm_807189BC);
-        func_global_asm_80714950(current_actor_pointer);
+        func_global_asm_80714950((s32)current_actor_pointer);
         drawSpriteAtPosition(&D_global_asm_8071FC40, 0.3f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
     }
     if (((current_actor_pointer->unkFC != 0) && ((D_global_asm_8076A068 - aaD->unk0) >= 6)) || (D_global_asm_807FBB85 != 0)) {

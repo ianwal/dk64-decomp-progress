@@ -1,16 +1,16 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_8070C89C(float (*mf)[4], f32, f32, f32);
-void func_global_asm_8070C8F4(float (*mf)[4], f32, f32, f32);
-void func_global_asm_8070C990(float (*mf)[4], f32, f32, f32);
-void func_global_asm_8070CAB4(float (*mf)[4], f32);
-void func_global_asm_8070CB2C(float (*mf)[4], f32);
-void func_global_asm_8070CBA4(float (*mf)[4], f32);
-void func_global_asm_8070CCC4(float (*mf)[4]);
-void func_global_asm_8070CD44(float (*mf)[4], f32, f32, f32);
+void func_global_asm_8070C89C(f32 (*mf)[4], f32, f32, f32);
+void func_global_asm_8070C8F4(f32 (*mf)[4], f32, f32, f32);
+void func_global_asm_8070C990(f32 (*mf)[4], f32, f32, f32);
+void func_global_asm_8070CAB4(f32 (*mf)[4], f32);
+void func_global_asm_8070CB2C(f32 (*mf)[4], f32);
+void func_global_asm_8070CBA4(f32 (*mf)[4], f32);
+void func_global_asm_8070CCC4(f32 (*mf)[4]);
+void func_global_asm_8070CD44(f32 (*mf)[4], f32, f32, f32);
 void func_global_asm_8070CDD0(f32 (*arg0)[4], f32 (*arg1)[4], f32 arg2, f32 arg3, f32 arg4);
-void func_global_asm_8070D07C(Mtx*, Mtx*, f32, f32, f32, f32, f32, f32);
+void func_global_asm_8070D07C(f32 (*mf)[4], f32 (*mf2)[4], f32, f32, f32, f32, f32, f32);
 
 // tiny, round float, can't auto decompile
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070C200.s")
@@ -31,8 +31,8 @@ void func_global_asm_8070C210(float (*mf)[4], f32, f32, f32, f32, f32, f32);
 void func_global_asm_8070C27C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 sp28[4][4];
 
-    func_global_asm_8070C210(&sp28, arg1, arg2, arg3, arg4, arg5, arg6);
-    guMtxF2L(&sp28, arg0);
+    func_global_asm_8070C210(sp28, arg1, arg2, arg3, arg4, arg5, arg6);
+    guMtxF2L(sp28, arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070C2D8.s")
@@ -143,24 +143,24 @@ void func_global_asm_8070C990(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3) {
 }
 
 void func_global_asm_8070C9E8(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3) {
-    Mtx sp18;
+    f32 sp18[4][4];
 
-    func_global_asm_8070C89C(&sp18, arg1, arg2, arg3);
-    guMtxF2L(&sp18, arg0);
+    func_global_asm_8070C89C(sp18, arg1, arg2, arg3);
+    guMtxF2L(sp18, arg0);
 }
 
 void func_global_asm_8070CA2C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3) {
-    Mtx sp18;
+    f32 sp18[4][4];
 
-    func_global_asm_8070C8F4(&sp18, arg1, arg2, arg3);
-    guMtxF2L(&sp18, arg0);
+    func_global_asm_8070C8F4(sp18, arg1, arg2, arg3);
+    guMtxF2L(sp18, arg0);
 }
 
 void func_global_asm_8070CA70(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3) {
-    Mtx sp18;
+    f32 sp18[4][4];
 
-    func_global_asm_8070C990(&sp18, arg1, arg2, arg3);
-    guMtxF2L(&sp18, arg0);
+    func_global_asm_8070C990(sp18, arg1, arg2, arg3);
+    guMtxF2L(sp18, arg0);
 }
 
 void func_global_asm_8070CAB4(float (*mf)[4], f32 arg1) {
@@ -209,24 +209,24 @@ void func_global_asm_8070CBA4(float (*mf)[4], f32 arg1) {
 }
 
 void func_global_asm_8070CC1C(Mtx *arg0, f32 arg1) {
-    Mtx sp18;
+    f32 sp18[4][4];
 
-    func_global_asm_8070CAB4(&sp18, arg1);
-    guMtxF2L(&sp18, arg0);
+    func_global_asm_8070CAB4(sp18, arg1);
+    guMtxF2L(sp18, arg0);
 }
 
 void func_global_asm_8070CC54(Mtx *arg0, f32 arg1) {
-    Mtx sp18;
+    f32 sp18[4][4];
 
-    func_global_asm_8070CB2C(&sp18, arg1);
-    guMtxF2L(&sp18, arg0);
+    func_global_asm_8070CB2C(sp18, arg1);
+    guMtxF2L(sp18, arg0);
 }
 
 void func_global_asm_8070CC8C(Mtx *arg0, f32 arg1) {
-    Mtx sp18;
+    f32 sp18[4][4];
 
-    func_global_asm_8070CBA4(&sp18, arg1);
-    guMtxF2L(&sp18, arg0);
+    func_global_asm_8070CBA4(sp18, arg1);
+    guMtxF2L(sp18, arg0);
 }
 
 void func_global_asm_8070CCC4(float (*mf)[4]) {
@@ -249,10 +249,10 @@ void func_global_asm_8070CCC4(float (*mf)[4]) {
 }
 
 void func_global_asm_8070CD14(Mtx *arg0) {
-    Mtx sp18;
+    f32 sp18[4][4];
 
-    func_global_asm_8070CCC4(&sp18);
-    guMtxF2L(&sp18, arg0);
+    func_global_asm_8070CCC4(sp18);
+    guMtxF2L(sp18, arg0);
 }
 
 void func_global_asm_8070CD44(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3) {
@@ -263,10 +263,10 @@ void func_global_asm_8070CD44(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3) {
 }
 
 void func_global_asm_8070CD8C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3) {
-    float sp18[4][4];
+    f32 sp18[4][4];
 
-    func_global_asm_8070CD44(&sp18, arg1, arg2, arg3);
-    guMtxF2L(&sp18, arg0);
+    func_global_asm_8070CD44(sp18, arg1, arg2, arg3);
+    guMtxF2L(sp18, arg0);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070CDD0.s")
@@ -359,22 +359,22 @@ void func_global_asm_8070CDD0(f32 (*arg0)[4], f32 (*arg1)[4], f32 arg2, f32 arg3
 */
 
 void func_global_asm_8070D020(Mtx *arg0, Mtx *arg1, f32 arg2, f32 arg3, f32 arg4) {
-    Mtx sp60;
-    Mtx sp20;
+    f32 sp60[4][4];
+    f32 sp20[4][4];
 
-    func_global_asm_8070CDD0(&sp60, &sp20, arg2, arg3, arg4);
-    guMtxF2L(&sp60, arg0);
-    guMtxF2L(&sp20, arg1);
+    func_global_asm_8070CDD0(sp60, sp20, arg2, arg3, arg4);
+    guMtxF2L(sp60, arg0);
+    guMtxF2L(sp20, arg1);
 }
 
 // TODO: It's going to be very similar to func_global_asm_8070CDD0, better match that one first to get familiar with what it's doing
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070D07C.s")
 
 void func_global_asm_8070D300(Mtx *arg0, Mtx *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
-    Mtx sp68;
-    Mtx sp28;
+    f32 sp68[4][4];
+    f32 sp28[4][4];
 
-    func_global_asm_8070D07C(&sp68, &sp28, arg2, arg3, arg4, arg5, arg6, arg7);
-    guMtxF2L(&sp68, arg0);
-    guMtxF2L(&sp28, arg1);
+    func_global_asm_8070D07C(sp68, sp28, arg2, arg3, arg4, arg5, arg6, arg7);
+    guMtxF2L(sp68, arg0);
+    guMtxF2L(sp28, arg1);
 }

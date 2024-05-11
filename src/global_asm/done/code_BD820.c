@@ -3,8 +3,6 @@
 
 extern s32 D_global_asm_8071FFA0;
 
-extern void *D_global_asm_8074E880[]; // TODO: Sprite
-
 extern s16 D_global_asm_807F6248;
 extern s16 D_global_asm_807F624C;
 

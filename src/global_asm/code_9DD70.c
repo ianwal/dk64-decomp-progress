@@ -544,7 +544,7 @@ Gfx *func_global_asm_8069D930(Gfx *dl, Actor *arg1) {
 extern void func_global_asm_8069D424(); // TODO: Proper signature
 
 typedef struct {
-    s32 unk0;
+    void *unk0;
     u16 unk4;
     u16 unk6;
     u8 unk8;
@@ -552,15 +552,15 @@ typedef struct {
 } AAD_global_asm_8069DA54;
 
 void func_global_asm_8069DA54(void) {
-    AAD_global_asm_8069DA54 *temp_a3;
+    AAD_global_asm_8069DA54 *aaD;
 
-    temp_a3 = current_actor_pointer->additional_actor_data;
+    aaD = current_actor_pointer->additional_actor_data;
     if (current_actor_pointer->unkEE != 0) {
         addActorToTextOverlayRenderArray(&func_global_asm_8069D930, current_actor_pointer, 3);
         return;
     }
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->unk168 = temp_a3->unk4;
+        current_actor_pointer->unk168 = aaD->unk4;
     }
     switch (current_actor_pointer->control_state) {
         case 0:
@@ -576,12 +576,12 @@ void func_global_asm_8069DA54(void) {
             }
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
-                    if ((0xFF - temp_a3->unk8) >= current_actor_pointer->unk15F) {
-                        current_actor_pointer->unk15F = current_actor_pointer->unk15F + temp_a3->unk8;
+                    if ((0xFF - aaD->unk8) >= current_actor_pointer->unk15F) {
+                        current_actor_pointer->unk15F = current_actor_pointer->unk15F + aaD->unk8;
                     } else {
                         current_actor_pointer->unk15F = 0xFF;
                         current_actor_pointer->control_state_progress++;
-                        current_actor_pointer->unk168 = temp_a3->unk6;
+                        current_actor_pointer->unk168 = aaD->unk6;
                     }
                     break;
                 case 1:
@@ -592,15 +592,15 @@ void func_global_asm_8069DA54(void) {
                     }
                     break;
                 case 2:
-                    if (current_actor_pointer->unk15F >= temp_a3->unk9) {
-                        current_actor_pointer->unk15F -= temp_a3->unk9;
+                    if (current_actor_pointer->unk15F >= aaD->unk9) {
+                        current_actor_pointer->unk15F -= aaD->unk9;
                     } else {
                         current_actor_pointer->control_state_progress++;
                         current_actor_pointer->unk15F = 0;
                     }
                     break;
                 case 3:
-                    free(temp_a3->unk0);
+                    free(aaD->unk0);
                     deleteActor(current_actor_pointer);
                     break;
             }
@@ -625,10 +625,8 @@ void func_global_asm_8069DC10(s32 *arg0, s32 *arg1[], u8 arg2) {
 }
 */
 
-s32 func_global_asm_806FBB9C(s16 textureIndex);
-
 void *func_global_asm_8069DC80(u8 arg0, void *arg1, u8 arg2, u8 arg3, u8 arg4) {
-    s32 sp24;
+    void *sp24;
 
     sp24 = func_global_asm_806FBB9C(arg0 + arg3);
     if (arg1) {
@@ -646,9 +644,9 @@ extern s16 D_global_asm_807FC930[];
 
 // TODO: Add to aaD union
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
+    void *unk0;
+    void *unk4;
+    void *unk8;
 } AAD_global_asm_8069DD40;
 
 void func_global_asm_8069DD40(void) {
@@ -689,8 +687,8 @@ void func_global_asm_8069DD40(void) {
 
 // TODO: Add to aaD union
 typedef struct {
-    s32 unk0;
-    s32 unk4;
+    void *unk0;
+    void *unk4;
 } AAD_global_asm_8069DF58;
 
 void func_global_asm_8069DF58(void) {

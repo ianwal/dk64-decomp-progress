@@ -38,6 +38,8 @@ extern OSContPad *D_global_asm_807ECDEC;
 
 extern u16 D_global_asm_807446C0[];
 
+extern void *D_global_asm_8074E880[]; // TODO: Sprite
+
 extern u8 D_global_asm_807445E0[]; // level_index_mapping
 extern s32 D_global_asm_80744720[] ;/*= {
     0x181, // Kong Unlocked: DK

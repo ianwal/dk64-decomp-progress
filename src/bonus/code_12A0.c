@@ -33,19 +33,6 @@ const u32 D_bonus_8002DCA8[] = {
     0x00040000,
 };
 
-// rodata
-// const char D_bonus_8002DCB0[] = "HIT";
-/*
-const f32 D_bonus_8002DCB4 = 0.3f;
-const f32 D_bonus_8002DCB8 = 0.09f;
-const f32 D_bonus_8002DCE4 = 0.09f;
-const f64 D_bonus_8002DD00 = 6.28318548202514648; // TWO_PI
-const f64 D_bonus_8002DD08 = 90.0;
-const f64 D_bonus_8002DD10 = 0.3;
-*/
-
-extern void* D_global_asm_8074E880[];
-
 void func_global_asm_80627948(Actor*, s32, s32, s32);
 Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *);
 Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);

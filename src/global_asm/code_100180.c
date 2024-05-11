@@ -16,7 +16,7 @@ typedef struct {
     u8 unk5;
 } Struct80754A34;
 
-extern s32 *D_global_asm_807FD7F0; // Array of 43 texture pointers
+extern void **D_global_asm_807FD7F0; // Array of 43 texture pointers
 extern u8 *D_global_asm_807FD7F4; // Array of 43 u8's
 extern Struct80754A18 *D_global_asm_80754A18;
 extern Struct80754A34 D_global_asm_80754A34[];
@@ -51,7 +51,7 @@ void func_global_asm_806FBB58(void) {
     func_global_asm_80611690(D_global_asm_807FD7F4 = malloc(sizeof(u8) * 43));
 }
 
-s32 func_global_asm_806FBB9C(s16 textureIndex) {
+void *func_global_asm_806FBB9C(s16 textureIndex) {
     if (!D_global_asm_807FD7F4[textureIndex]) {
         // Texture
         D_global_asm_807FD7F0[textureIndex] = getPointerTableFile(0xE, textureIndex, 1, 1);

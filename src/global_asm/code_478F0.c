@@ -396,8 +396,6 @@ void func_global_asm_80643C0C(Struct80643C0C *arg0, s32 arg1, s16 arg2, s32 arg3
     }
 }
 
-extern s32 D_global_asm_8074E880[];
-
 void func_global_asm_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s16 i;
     for (i = 0; i < 0x1E; i++) {

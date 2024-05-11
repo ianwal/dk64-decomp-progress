@@ -75,7 +75,6 @@ typedef struct {
 /* variables */
 extern s32 D_minecart_80028BD0;
 extern s32 D_global_asm_8072030C;
-extern s32 D_global_asm_8074E880[];
 extern s32 D_global_asm_80720120; // sprite
 extern u8 D_global_asm_807FBB85;
 extern s32 D_global_asm_8072030C; // TODO: Type
