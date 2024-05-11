@@ -1,33 +1,29 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_910A0/func_global_asm_8068C3A0.s")
-
 void func_global_asm_80612CA0(f32 (*)[4], f32);
 extern s32 D_global_asm_807501E8; // TODO: Type
 
-/*
-Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 arg2, s16 arg3, s16 arg4) {
+Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 x, s16 y, s16 arg4) {
     f32 spA0[4][4];
     f32 sp60[4][4];
-    f32 *sp5C;
-    void *padA4;
+    Mtx *sp5C;
+    s32 pad;
 
-    sp5C = malloc(0x40);
+    sp5C = malloc(sizeof(Mtx));
     func_global_asm_8061134C(sp5C);
     gDPPipeSync(dl++);
     gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, arg1 + 0x80000000);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
-    gDPLoadSync(dl++);
-    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+    gDPLoadSync(dl++);\
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);\
     gDPPipeSync(dl++);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
     gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
     func_global_asm_80612CA0(&spA0[0], arg4);
-    guTranslateF(&sp60[0], arg2, arg3, 0.0f);
-    guMtxCatF(&spA0[0], &sp60[0], &spA0[0]);
-    guMtxF2L(&spA0[0], sp5C);
+    guTranslateF(sp60, x, y, 0.0f);
+    guMtxCatF(spA0, sp60, spA0);
+    guMtxF2L(spA0, sp5C);
     gSPMatrix(dl++, sp5C, G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPVertex(dl++, osVirtualToPhysical(&D_global_asm_807501E8), 4, 0);
     gSP2Triangles(dl++, 0, 1, 2, 0, 0, 2, 3, 0);
@@ -35,7 +31,6 @@ Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 arg2, s16 arg3, s16 arg4) {
     gDPPipeSync(dl++);
     return dl;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_910A0/displayImage.s")
