@@ -171,7 +171,7 @@ void func_global_asm_806BE09C(void) {
                             func_global_asm_8071498C(&func_global_asm_8071D0F0);
                             func_global_asm_807149FC(-1);
                             func_global_asm_807149B8(1);
-                            func_global_asm_80714950(current_actor_pointer);
+                            func_global_asm_80714950((s32)current_actor_pointer);
                             func_global_asm_80714C08(func_global_asm_806FACE8(0), 0.3f, player_pointer, 4, 0);
                         }
                     } else if (D_global_asm_807FDC90->unk2E == 0) {

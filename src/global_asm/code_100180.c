@@ -63,10 +63,7 @@ s32 func_global_asm_806FBB9C(s16 textureIndex) {
 }
 
 void func_global_asm_806FBC34(void) {
-    s16 i;
-    s16 k;
-    s16 j;
-    Struct80754A34 *temp_s3;
+    s16 i, k, j;
 
     i = 0;
     for (j = 0; j < 8; j++) {

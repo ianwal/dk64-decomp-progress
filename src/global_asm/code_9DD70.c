@@ -523,7 +523,7 @@ typedef struct {
     u8 unkA;
 } AAD_global_asm_8069D930;
 
-s32 func_global_asm_8069D930(Gfx *dl, Actor *arg1) {
+Gfx *func_global_asm_8069D930(Gfx *dl, Actor *arg1) {
     AAD_global_asm_8069D930 *aaD;
 
     aaD = arg1->additional_actor_data;

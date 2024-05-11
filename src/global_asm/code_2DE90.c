@@ -82,7 +82,7 @@ void func_global_asm_806291B4(u8 arg0) {
 // Jumptable, doable, displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2DE90/func_global_asm_80629300.s")
 
-void func_global_asm_8062A130(s32 arg0, s32 arg1, s32 arg2) {
+void func_global_asm_8062A130(s32 arg0, s32 arg1, void* arg2) {
     f32 temp_f0;
     s32 phi_v0;
 
@@ -104,15 +104,15 @@ void func_global_asm_8062A130(s32 arg0, s32 arg1, s32 arg2) {
     func_global_asm_80704130(arg2, 0xFF, 0xFF, 0xFF, phi_v0, 0);
 }
 
-void func_global_asm_8062A228(s32 arg0, s32 arg1, s32 arg2) {
+void func_global_asm_8062A228(s32 arg0, s32 arg1, void *arg2) {
     func_global_asm_8062A274(arg0, arg1, arg2, 0, 0);
 }
 
-void func_global_asm_8062A24C(s32 arg0, s32 arg1, s32 arg2) {
+void func_global_asm_8062A24C(s32 arg0, s32 arg1, void *arg2) {
     func_global_asm_8062A274(arg0, arg1, arg2, 0xA0, 0x78);
 }
 
-void func_global_asm_8062A274(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_global_asm_8062A274(s32 arg0, s32 arg1, void *arg2, s32 arg3, s32 arg4) {
     f32 temp_f0;
     s32 temp_v0;
     s32 temp_v1;

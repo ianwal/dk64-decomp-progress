@@ -1871,7 +1871,7 @@ void func_menu_80030894(MenuAdditionalActorData *arg0, void *arg1, s32 arg2, s32
     func_global_asm_80714998(arg5);
     func_global_asm_8071495C();
     func_global_asm_807149FC(-1);
-    func_global_asm_80714950(arg0);
+    func_global_asm_80714950((s32)arg0);
     func_global_asm_8071498C(&func_menu_80030C14);
     func_global_asm_80714A28(1);
     sp3C = drawSpriteAtPosition(arg1, arg4, arg2, arg3, -10.0f);

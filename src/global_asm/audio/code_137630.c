@@ -6,13 +6,13 @@ typedef struct {
     s32 unk4;
     s32 unk8;
     s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
+    void *unk10;
+    void *unk14;
+    void *unk18;
 } Struct80732DEC;
 
 typedef struct {
-    s32 unk0;
+    void *unk0;
     u8 unk4;
     s8 unk5;
     s8 unk6;
@@ -128,11 +128,11 @@ s32 func_global_asm_80732B3C(Struct80732B3C *arg0, f32 *arg1) {
     return sp24;
 }
 
-void func_global_asm_80732D80(s32 *arg0) {
-    s32 *sp4;
+void func_global_asm_80732D80(Struct80732B3C *arg0) {
+    Struct80732B3C *sp4;
 
     sp4 = arg0;
-    *arg0 = D_global_asm_807FF030;
+    arg0->unk0 = D_global_asm_807FF030;
     D_global_asm_807FF030 = arg0;
 }
 

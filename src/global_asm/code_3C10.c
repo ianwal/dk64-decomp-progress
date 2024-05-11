@@ -721,7 +721,7 @@ s32 func_global_asm_80600080(Maps map) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600174.s")
 
-int func_global_asm_80689C20(s32, s32, s32, s32, f32, f32);
+int func_global_asm_80689C20(s32, s32, s32, f32, f32, f32);
 void func_global_asm_80631F58(void*, void*, void*);
 s16 func_global_asm_80600174(f32*, f32*, f32*);
 
@@ -747,7 +747,7 @@ s16 func_global_asm_80600174(f32 *x, f32 *y, f32 *z) {
 s32 func_global_asm_80600340(s32 arg0, u8 arg1, s32 *arg2) {
     s32 sp3C;
     s32 sp38;
-    s32 sp34;
+    f32 sp34;
     f32 sp30;
     f32 sp2C;
     u8 temp_1 = func_global_asm_80600174(&sp34, &sp30, &sp2C);

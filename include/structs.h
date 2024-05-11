@@ -1405,7 +1405,8 @@ struct actor {
         void *additional_data_pointer; //legacy
     };
     union {
-        Actor178 *unk178;
+        void *unk178;
+        Actor178 *a178;
         RaceActor178 *race178;
         BossActor178 *boss178;
         A178_806A18A8 *a178_806A18A8;
@@ -1414,7 +1415,7 @@ struct actor {
         Actor17C *unk17C;
     };
     union {
-        s32 unk180;
+        void *unk180;
         SnideAaD180* snide_aad_180;
     };
     void* unk184;

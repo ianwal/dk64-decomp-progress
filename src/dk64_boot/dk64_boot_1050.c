@@ -47,8 +47,8 @@ void func_dk64_boot_80000450(s32 devAddr, s32 arg1, void *dramAddr) {
 }
 
 void func_dk64_boot_800004B4(s32 *arg0, s32 *arg1) {
-    func_dk64_boot_800024E0(arg0, arg1, 0x804FAE00);
-    func_dk64_boot_800024E0(arg0, arg1, 0x804FAE00);
+    func_dk64_boot_800024E0(arg0, arg1, (void*)0x804FAE00);
+    func_dk64_boot_800024E0(arg0, arg1, (void*)0x804FAE00);
 }
 
 void func_dk64_boot_800004F4(s32 arg0) {
@@ -58,7 +58,7 @@ void func_dk64_boot_800004F4(s32 arg0) {
     switch ((u32)sp24) {
         case 0x29d://L80000538
             if (D_dk64_boot_8000DCB0) {
-                gaFunc = 0x805fb300;
+                gaFunc = (void*)0x805fb300;
                 gaFunc(&D_dk64_boot_80011548, 2);
                 break;
             }
@@ -66,17 +66,17 @@ void func_dk64_boot_800004F4(s32 arg0) {
             while(1);
         case 0x309: //L80000570
             osSetThreadPri(NULL, 0x12);
-            gaFunc = 0x805fb300;
+            gaFunc = (void*)0x805fb300;
             gaFunc(&D_dk64_boot_80011548, 1);
             while(1);
     }
 }
 
 #ifndef NONMATCHING
-void func_dk64_boot_800005A8(s32 arg0);
+void func_dk64_boot_800005A8(void *arg0);
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1050/func_dk64_boot_800005A8.s")
 #else
-void func_dk64_boot_800005A8(s32 arg0) {
+void func_dk64_boot_800005A8(void *arg0) {
     u32 sp34;
     u32 sp30;
     s32 sp20[3] = D_dk64_boot_8000DE74;
@@ -157,7 +157,7 @@ void func_dk64_boot_80000980(void) {
 void func_dk64_boot_800009D0(void) {
     u32 *tmp_a0;
     osInitialize();
-    tmp_a0 = 0xA02FE1C0;
+    tmp_a0 = (void*)0xA02FE1C0;
     while(0xAD170014 != *tmp_a0);
     *tmp_a0 = 0xF0F0F0F0;
     func_dk64_boot_80000980();

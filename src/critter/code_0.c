@@ -93,16 +93,6 @@ typedef struct {
     CritterStruct0 *unk4;
 } CritterStruct1;
 
-// CritterController again?
-typedef struct unkStruct_critter_80029BA0 {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-    s32 unk8;
-} unkStruct_critter_80029BA0;
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -172,7 +162,7 @@ typedef struct Struct80025AD0 {
     Struct800247F4* unk8;
 } Struct80025AD0;
 
-extern unkStruct_critter_80029BA0* D_critter_80029BA0;
+extern CritterController* D_critter_80029BA0;
 extern s32 D_critter_80029BA8;
 
 extern s32 D_global_asm_8071FC40;
@@ -184,7 +174,7 @@ Gfx *func_critter_80025AD0(Gfx *, Struct80025AD0 *);
 void func_critter_80025DB8(CritterStruct6*, CritterStruct6*, u8, s16, u8);
 void func_critter_800262C0(Critter*, CritterController*);
 void func_critter_8002646C(Critter*, Critter*);
-void func_critter_80026E0C(s32);
+void func_critter_80026E0C(CritterController*);
 
 void func_global_asm_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
 void func_global_asm_80718BF4(void);
@@ -881,7 +871,7 @@ void func_critter_80026904(Critter *arg0, CritterController *arg1) {
     }
 }
 
-s32 func_critter_80026A5C(Critter *arg0, s32 arg1) {
+s32 func_critter_80026A5C(Critter *arg0, CritterController *arg1) {
     CritterStruct5 *temp_v0;
 
     if (arg0->unk1E2 == 1) {
@@ -915,7 +905,7 @@ s32 func_critter_80026A5C(Critter *arg0, s32 arg1) {
 }
 
 void func_critter_80026B78(CritterController *arg0) {
-    void (*var_s3)(void *);
+    void (*var_s3)(Critter *);
     s32 i;
     u8 temp_t6;
     Critter *critter;
@@ -1007,20 +997,20 @@ void func_critter_80026C9C(CritterController *arg0) {
 
 void func_critter_80027118(CritterController *arg0);
 
-void func_critter_80026E0C(s32 arg0) {
+void func_critter_80026E0C(CritterController *arg0) {
     s32 j;
-    unkStruct_critter_80029BA0 *var_s2;
+    CritterController *var_s2;
     Struct80026E0C *var_s0;
     s32 i;
     s32 var_s3;
 
-    if (arg0 != 0) {
+    if (arg0 != NULL) {
         memcpy(D_critter_80029BA0, arg0, 1);
-        var_s3 = arg0 + 1;
-        for (i = 0; i < D_critter_80029BA0->unk0; i++) {
+        var_s3 = &arg0->unk1;
+        for (i = 0; i < D_critter_80029BA0->critter_count; i++) {
             j = 0;
             if (i == 0) {
-                D_critter_80029BA0->unk4 = malloc(D_critter_80029BA0->unk0 * 0xC);
+                D_critter_80029BA0->unk4 = malloc(D_critter_80029BA0->critter_count * 0xC);
                 func_global_asm_80611690(D_critter_80029BA0->unk4);
                 var_s2 = D_critter_80029BA0->unk4;
             } else {
@@ -1049,7 +1039,7 @@ void func_critter_80026E0C(s32 arg0) {
     }
 }
 
-void func_critter_80026FD0(s32 arg0) {
+void func_critter_80026FD0(void *arg0) {
     D_critter_80029BA8 = 0;
     D_critter_80029BA0 = malloc(8); // TODO: Something up here...
     func_global_asm_80611690(D_critter_80029BA0);

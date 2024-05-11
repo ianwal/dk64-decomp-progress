@@ -93,7 +93,7 @@ Gfx *func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
-    sprintf(&sp38, "%d", *arg1);
+    sprintf(sp38, "%d", *arg1);
     return printStyledText(dl, 3, 260, 80, &sp38, 1);
 }
 
@@ -135,19 +135,19 @@ Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
     f32 pad48;
     s32 pad44;
     s32 minutes;
-    s32 sp3C;
+    char sp3C[4];
     s32 y;
 
     sp50 = arg2 - (func_global_asm_806FD894(0x86) * 0.5f);
-    sprintf(&sp3C, ":");
-    sp4C = getCenterOfString(6, &sp3C) * 0.5f;
+    sprintf(sp3C, ":");
+    sp4C = getCenterOfString(6, sp3C) * 0.5f;
     sp54 = arg1 - sp4C;
     y = sp50 * 4.0f;
     minutes = seconds / 60;
     dl = printStyledText(dl, 6, sp54 * 4.0f, y, &sp3C, 1);
-    sprintf(&sp3C, "%2d", minutes);
+    sprintf(sp3C, "%2d", minutes);
     sp54 -= getCenterOfString(0x86, &sp3C);
     dl = printStyledText(dl, 0x86, sp54 * 4.0f, y, &sp3C, 1);
-    sprintf(&sp3C, "%02d", seconds - (minutes * 60));
+    sprintf(sp3C, "%02d", seconds - (minutes * 60));
     return printStyledText(dl, 0x86, (arg1 + sp4C) * 4.0f, y, &sp3C, 1);
 }

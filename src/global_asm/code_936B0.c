@@ -1559,7 +1559,7 @@ void func_global_asm_80696A6C(void) {
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(func_global_asm_8071AF30);
         func_global_asm_807149A8(0x3E8);
-        func_global_asm_80714950(current_actor_pointer);
+        func_global_asm_80714950((s32)current_actor_pointer);
         func_global_asm_80714C08(&D_global_asm_80720120, 1.0f, current_actor_pointer, 1, 0);
     }
     renderActor(current_actor_pointer, 0);

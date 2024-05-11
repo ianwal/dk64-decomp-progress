@@ -736,8 +736,8 @@ void func_global_asm_8071338C(Gfx *dl) {
 }
 
 void func_global_asm_80713438(Gfx *dl, u8 arg1) {
-    void *sp34;
-    s32 sp30;
+    char *sp34;
+    char *sp30;
     s32 pad2C;
     f32 sp28;
     f32 temp_f16;

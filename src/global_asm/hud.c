@@ -770,7 +770,7 @@ void func_global_asm_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32
     }
     func_global_asm_80714998(sp2C);
     func_global_asm_80714944(arg4);
-    func_global_asm_80714950(arg0);
+    func_global_asm_80714950((s32)arg0);
     func_global_asm_8071498C(&func_global_asm_8071BE04);
     func_global_asm_80714A28(0x21);
     if (arg1 == 3) {
