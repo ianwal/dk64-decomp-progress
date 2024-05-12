@@ -65,20 +65,12 @@ Gfx *func_global_asm_806A3C6C(Gfx *dl, s32 arg1, u8 arg2, s32 arg3) {
     return dl;
 }
 
-// stack, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A3DA0.s")
-
 void func_global_asm_806A3DA0(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, AAD_global_asm_806A4DDC *arg4);
 
-/*
 void func_global_asm_806A3DA0(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, AAD_global_asm_806A4DDC *arg4) {
-    f32 sp20;
-
-    sp20 = arg2 * 3000.0f;
-    *arg0 += arg2 * arg3 * 24.0f * func_global_asm_80612794((s16)(arg4->unk38 + sp20) & 0xFFF);
-    *arg1 += arg2 * arg3 * 16.0f * func_global_asm_80612790((s16)(arg4->unk3A + sp20) & 0xFFF);
+    *arg0 += arg2 * arg3 * 24.0f * func_global_asm_80612794((s16)(arg4->unk38 + (arg2 * 3000.0f)) & 0xFFF);
+    *arg1 += arg2 * arg3 * 16.0f * func_global_asm_80612790((s16)(arg4->unk3A + (arg2 * 3000.0f)) & 0xFFF);
 }
-*/
 
 // Matrix stuff
 // rodata
