@@ -291,6 +291,9 @@ extern u16 D_global_asm_80744710[]; // = { // Permanent flag index lookup array
 //     380, // Key 8 Collected
 // }; // Permanent flag index lookup array
 
+extern const u8 D_global_asm_80757184[];
+extern const char D_global_asm_80757188[];
+
 extern s32 D_global_asm_80741F40;
 extern s32 D_global_asm_807432D0;
 extern s32 D_global_asm_80760840;

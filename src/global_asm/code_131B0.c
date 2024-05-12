@@ -7,7 +7,6 @@ void func_global_asm_8060E6E8(s32);
 u8 func_global_asm_8060AC28();
 void func_global_asm_8060E4D0(u8);
 void func_global_asm_8060E664(u8);
-void func_global_asm_8060EC54(s32);
 void func_global_asm_8060E8CC(Struct807F0470*);
 u8 func_global_asm_8060AB38(s32);
 
@@ -16,10 +15,6 @@ extern u8 D_global_asm_80746818;
 extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_807ECD09;
 extern OSMesgQueue D_global_asm_807ECCF0;
-
-// rodata
-// const static u8 D_global_asm_80757184[] = {0,0,0,0};
-// const static char D_global_asm_80757188[] = "WARNING!!";
 
 void func_global_asm_8060E4B0(Struct807F0470 *arg0) {
     bzero(arg0, sizeof(Struct807F0470));
@@ -254,7 +249,25 @@ s32 func_global_asm_8060EE58(s32 arg0) {
 }
 
 // Jumptable, appears to be the main function of a thread
+// rodata
+// const char D_global_asm_80757140[] = "CURRENT=%x\n";
+// const char D_global_asm_8075714C[] = "START=%x\n";
+// const char D_global_asm_80757158[] = "END=%x\n";
+// const char D_global_asm_80757160[] = "DPSTAT=%x\n";
+// const char D_global_asm_8075716C[] = "SPSTAT=%x\n";
+// const char D_global_asm_80757178[] = "MAIN-PC=%x\n";
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060EE60.s")
+
+const u8 D_global_asm_80757184[] = {0,0,0,0};
+const char D_global_asm_80757188[] = "WARNING!!";
+// const char D_global_asm_80757194[] = "  %05x.:Triangle:.(%s)....\n";
+// const char D_global_asm_807571B0[] = "  %08x.%08x.%08x.%08x\n";
+// const char D_global_asm_807571C8[] = "  ----------------------------------\n";
+// const char D_global_asm_807571F0[] = "  %05x.:.%s...%s.\n";
+// const char D_global_asm_80757204[] = "  %08x..%08x............\n";
+// const char D_global_asm_80757220[] = "  %08x.%08x.%08x.%08x...\n";
+// const char D_global_asm_8075723C[] = " %05x  NOOP..........\n";
+// const char D_global_asm_80757254[] = "  %05x Undef.............\n";
 
 void func_global_asm_8060F1D0(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {
     func_global_asm_8060F928(arg0, arg1);

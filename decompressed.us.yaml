@@ -358,7 +358,7 @@ segments:
       - [0x215B2E0, .rodata, code_3C10]
       - [0x215B4B0, rodata] # code_6710 // TODO: Problem with 80756F08, might be an array of doubles?
       - [0x215BD20, .rodata, code_104F0]
-      - [0x215BE40, rodata] # code_131B0 // TODO: Problem with some pointer table in .data pointing to this (D_global_asm_80746A0C)
+      - [0x215BE40, .rodata, code_131B0]
       - [0x215BF90, .rodata, heap]
       - [0x215BFD0, .rodata, done/code_16550]
       - [0x215BFF0, rodata] # TODO: code_166A0, code_1E2D0
