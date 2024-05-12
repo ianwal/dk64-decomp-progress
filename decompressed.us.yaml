@@ -179,7 +179,7 @@ segments:
       - [0x10CD0, data]
       - [0x10D30, .data, io/vi]
       - [0x10DA0, data]
-      - [0x10F10, rodata] # dk64_boot_3D20
+      - [0x10F10, .rodata, dk64_boot_3D20]
       - [0x11120, .rodata, gu/perspective]
       - [0x11130, .rodata, gu/nonmatching/lookathil]
       - [0x11140, rodata] # llcvt
