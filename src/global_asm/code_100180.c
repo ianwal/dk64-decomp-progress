@@ -1,6 +1,25 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// rodata
+static const u32 D_global_asm_8075DC20[] = {
+    0x41424344,
+    0x45464748,
+    0x494A4B4C,
+    0x4D4E4F50,
+    0x51525354,
+    0x55565758,
+    0x595A2E2D,
+    0x3F7B7D3A,
+    0x3D303132,
+    0x33343536,
+    0x3738393C,
+    0x3E6D2921,
+    0x40232425,
+    0x5E266361,
+    0x62000000,
+};
+
 typedef struct {
     u8 unk0[0x17C - 0x0];
     s16 unk17C;

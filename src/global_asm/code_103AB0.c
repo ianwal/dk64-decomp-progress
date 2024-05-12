@@ -232,7 +232,7 @@ void func_global_asm_80701C90(void) {
     D_global_asm_807FD890 = 1;
 }
 
-// Jumptable
+// Jumptable, displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80701CA0.s")
 
 // TODO: Is this signature correct?
@@ -567,7 +567,7 @@ Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_807063B8.s")
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_807065F8.s")
 
 // Displaylist stuff
@@ -579,7 +579,7 @@ Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_8070770C.s")
 
-// Jumptable, 2524 bytes
+// Jumptable, displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80707980.s")
 
 // Displaylist stuff
