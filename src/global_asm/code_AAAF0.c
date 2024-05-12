@@ -226,7 +226,6 @@ extern s32 D_global_asm_80720440; // TODO: Type
 void func_global_asm_806A6468(void) {
     void *aaD;
     void *sp18;
-    enum actors_e temp_t2;
 
     aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
@@ -256,8 +255,39 @@ void func_global_asm_806A6468(void) {
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_AAAF0/func_global_asm_806A6574.s")
+extern s32 D_global_asm_80720EBC; // TODO: Type
+extern s32 D_global_asm_80720EE8; // TODO: Type
+extern s32 D_global_asm_80720F14; // TODO: Type
+extern s32 D_global_asm_80720F40; // TODO: Type
+extern s32 D_global_asm_80720F6C; // TODO: Type
+
+void func_global_asm_806A6574(void) {
+    void *aaD;
+    void *sp18;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    func_global_asm_806A664C(4.5f);
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        switch (player_pointer->unk58) {
+            case ACTOR_DIDDY:
+                sp18 = &D_global_asm_80720EE8;
+                break;
+            case ACTOR_DK:
+                sp18 = &D_global_asm_80720F40;
+                break;
+            case ACTOR_LANKY:
+                sp18 = &D_global_asm_80720F14;
+                break;
+            case ACTOR_CHUNKY:
+                sp18 = &D_global_asm_80720EBC;
+                break;
+            case ACTOR_TINY:
+                sp18 = &D_global_asm_80720F6C;
+                break;
+        }
+        func_global_asm_806A5EAC(aaD, sp18, 1.0f);
+    }
+}
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_AAAF0/func_global_asm_806A664C.s")
