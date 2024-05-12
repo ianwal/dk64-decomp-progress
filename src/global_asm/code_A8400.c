@@ -291,6 +291,7 @@ void func_global_asm_806A57C0(AAD_global_asm_806A4DDC *arg0) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5868.s")
 
 /*

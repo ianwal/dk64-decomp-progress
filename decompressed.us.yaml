@@ -397,7 +397,7 @@ segments:
       - [0x215F250, .rodata, done/code_A6280]
       - [0x215F2B0, .rodata, code_A7710]
       - [0x215F440, .rodata, code_A8400]
-      - [0x215F6A0, rodata] # code_AAAF0
+      - [0x215F6A0, .rodata, code_AAAF0]
       - [0x215F780, rodata] # code_ACDC0, TODO: Double 255.0 in a row, weird
       - [0x215FA20, .rodata, code_B1F60]
       - [0x215FB20, .rodata, code_B2CE0]

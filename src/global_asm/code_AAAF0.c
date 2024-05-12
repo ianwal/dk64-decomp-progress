@@ -68,16 +68,6 @@ void func_global_asm_806A6DB4(s32 arg0);
 s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
 void func_global_asm_80723484(s32, Actor*);
 
-// rodata
-extern f32 D_global_asm_8075A9A0;
-extern f64 D_global_asm_8075A9A8;
-extern f32 D_global_asm_8075A9B0;
-extern f32 D_global_asm_8075A9B4;
-extern f32 D_global_asm_8075AA70;
-extern f32 D_global_asm_8075AA74;
-extern f32 D_global_asm_8075AA78;
-extern f32 D_global_asm_8075AA7C;
-
 // rodata, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_AAAF0/func_global_asm_806A5DF0.s")
 
@@ -86,9 +76,9 @@ void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, 
     f32 var_f0;
     f32 sp2C[8];
 
-    var_f0 = D_global_asm_8075A9A0;
+    var_f0 = 0.15f;
     if (D_global_asm_807FBB68 & 0x10) {
-        var_f0 = 2.0f * D_global_asm_8075A9A0;
+        var_f0 = 2.0f * 0.15f;
     }
     sp2C[0] = arg5;
     sp2C[1] = arg4;
@@ -104,7 +94,7 @@ void func_global_asm_806A5EAC(AAD_global_asm_806A5EAC *arg0, void *arg1, f32 arg
     func_global_asm_807149FC(-1);
     func_global_asm_807149B8(1);
     func_global_asm_80714998(2);
-    arg0->unk4 = func_global_asm_80714C08(arg1, arg2 * D_global_asm_8075A9A8, current_actor_pointer, 1, 2);
+    arg0->unk4 = func_global_asm_80714C08(arg1, arg2 * 0.35, current_actor_pointer, 1, 2);
 }
 
 void func_global_asm_806A5F44(void) {
@@ -162,7 +152,7 @@ void func_global_asm_806A615C(void) {
     void *sp1C = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        func_global_asm_80714A08(D_global_asm_8075A9B0, D_global_asm_8075A9B4);
+        func_global_asm_80714A08(-0.35f, 0.35f);
         func_global_asm_806A5EAC(sp1C, &D_global_asm_80720768, 1.0f);
     }
 }
@@ -275,11 +265,11 @@ void func_global_asm_806A7518(void) {
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
         func_global_asm_80686A5C(current_actor_pointer, 20.0f, 40.0f, 0x1E);
-        current_actor_pointer->floor = D_global_asm_8075AA70;
+        current_actor_pointer->floor = 99999.0f;
         func_global_asm_80665564(current_actor_pointer, 0.0f);
     }
     func_global_asm_806A6DB4(0);
-    if (D_global_asm_8075AA74 != current_actor_pointer->floor) {
+    if (99999.0f != current_actor_pointer->floor) {
         func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0x19, 0x19, 1, 0x96, 0x78, 0, 1.0f);
     }
 }
@@ -426,7 +416,7 @@ void func_global_asm_806A7BDC(void) {
         func_global_asm_8066E854(current_actor_pointer, 0, 10.0f, 0, -1);
         func_global_asm_8066EB40(current_actor_pointer, 175.0f);
         func_global_asm_8066E8E4(current_actor_pointer, 0, 10.0f, 0, 80.0f, -1);
-        current_actor_pointer->floor = D_global_asm_8075AA78;
+        current_actor_pointer->floor = 99999.0f;
         func_global_asm_80665564(current_actor_pointer, 0.0f);
     }
     func_global_asm_8067ACB4(current_actor_pointer);
@@ -450,7 +440,7 @@ void func_global_asm_806A7BDC(void) {
         changeActorColor(0xFF, 0xFF, 0xFF, sp64 != 0 ? 0xFF : 0x7F);
         func_global_asm_80714C08(&D_global_asm_80721170, 0.4f, current_actor_pointer, 1, 2);
     }
-    if (D_global_asm_8075AA7C != current_actor_pointer->floor) {
+    if (99999.0f != current_actor_pointer->floor) {
         func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xE, 0xE, 1, 0x96, 0x78, 0, 1.0f);
     }
 }
