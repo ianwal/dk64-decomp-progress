@@ -87,10 +87,6 @@ void func_global_asm_806FDF1C(s16 arg0, char *arg1) {
     strcpy(func_global_asm_806FD9B4(arg0)->unk4, arg1);
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FDF54.s")
-
-/*
 void func_global_asm_806FDF54(f32 *arg0, f32 *arg1) {
     while (*arg1 < 0.0f) {
         *arg1 += 6.283185482f;
@@ -100,7 +96,6 @@ void func_global_asm_806FDF54(f32 *arg0, f32 *arg1) {
     }
     *arg0 = (func_global_asm_806CC190((*arg0 * 2048.0) / 3.14159274101257324, (*arg1 * 2048.0) / 3.14159274101257324, 5.0f) * 3.141592741f) * 0.00048828125;
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FE078.s")
