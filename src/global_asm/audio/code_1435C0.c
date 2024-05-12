@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_global_asm_8073E8C0.s")
 
 typedef struct {
@@ -60,8 +60,6 @@ s32 func_global_asm_8073F1E4(Struct8073F1E4 *arg0, s32 arg1, s32 *arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_global_asm_8073F328.s")
 
-extern f32 D_global_asm_80760554;
-
 s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
     s16 spE;
     s16 spC;
@@ -93,7 +91,7 @@ s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
     spC = sp0;
     spE += spC;
     sp0 -= spC;
-    *arg3 = D_global_asm_80760554 * sp0;
+    *arg3 = 65535.0f * sp0;
     return spE;
 }
 
@@ -115,5 +113,3 @@ s16 func_global_asm_8073F81C(s16 arg0, s32 arg1, s16 arg2, u16 arg3) {
     return arg0 + sp4;
 }
 */
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_global_asm_8073F8A0.s")

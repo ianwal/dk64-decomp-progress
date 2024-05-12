@@ -289,10 +289,10 @@ void func_global_asm_806A6574(void) {
     }
 }
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_AAAF0/func_global_asm_806A664C.s")
 
-// Jumptable
+// Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_AAAF0/func_global_asm_806A6DB4.s")
 
 void func_global_asm_806A734C(void) {
