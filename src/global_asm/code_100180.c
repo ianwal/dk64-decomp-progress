@@ -62,7 +62,7 @@ void func_global_asm_806FB8B0(s32 arg0) {
     func_global_asm_806FB490(D_global_asm_80754A18->unk17E, arg0, D_global_asm_807FD7F0[2], D_global_asm_80754A18->unk17C, 2, &sp2F, 0x30);
 }
 
-// Jumptable
+// Jumptable, doable, string processing
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FB914.s")
 
 void func_global_asm_806FBB58(void) {
@@ -110,7 +110,7 @@ s16 func_global_asm_806FBEAC(u8 *arg0) {
     return count;
 }
 
-// Jumptable
+// Jumptable, displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FBEF0.s")
 
 // Displaylist stuff
