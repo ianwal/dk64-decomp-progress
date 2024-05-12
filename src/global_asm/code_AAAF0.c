@@ -68,24 +68,19 @@ void func_global_asm_806A6DB4(s32 arg0);
 s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
 void func_global_asm_80723484(s32, Actor*);
 
-// rodata, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_AAAF0/func_global_asm_806A5DF0.s")
-
-/*
 void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7) {
     f32 var_f0;
     f32 sp2C[8];
 
     var_f0 = 0.15f;
     if (D_global_asm_807FBB68 & 0x10) {
-        var_f0 = 2.0f * 0.15f;
+        var_f0 = 2.0f * var_f0;
     }
     sp2C[0] = arg5;
     sp2C[1] = arg4;
     sp2C[2] = arg6;
     func_global_asm_806891D8(arg0, arg1, arg2, arg3, 0, var_f0, arg7, &sp2C);
 }
-*/
 
 void func_global_asm_806A5EAC(AAD_global_asm_806A5EAC *arg0, void *arg1, f32 arg2) {
     if (D_global_asm_807FBB68 & 0x10) {
