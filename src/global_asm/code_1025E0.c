@@ -81,6 +81,7 @@ void func_global_asm_806FDAEC(s16 arg0) {
     free(var_a1);
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FDB8C.s")
 
 void func_global_asm_806FDF1C(s16 arg0, char *arg1) {

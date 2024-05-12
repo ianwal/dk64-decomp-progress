@@ -3,12 +3,15 @@
 
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
+extern s16 D_global_asm_80744498; // upper left x rect
+extern s16 D_global_asm_8074449C; // upper left y rect
+extern s16 D_global_asm_807444A0; // lower right x rect
+extern s16 D_global_asm_807444A4; // lower right y rect
+extern s16 D_global_asm_807444A8;
+extern s16 D_global_asm_807444AC;
+extern s16 D_global_asm_807444B0;
 
-// rodata
-extern f32 D_global_asm_8075DE70;
-extern f64 D_global_asm_8075DE78;
-extern f32 D_global_asm_8075DFB0;
-extern f32 D_global_asm_8075DFB4;
+extern f32 D_global_asm_80754CE8;
 
 extern u8 D_global_asm_807FD890;
 extern u16 D_global_asm_807FD892;
@@ -21,8 +24,11 @@ extern u8 D_global_asm_807FD899;
 extern s32 D_global_asm_807FD8A0;
 extern Mtx D_global_asm_807FD928;
 extern f32 D_global_asm_807FD968;
+extern f32 D_global_asm_807FD96C;
+extern f32 D_global_asm_807FD970;
 extern s32 D_global_asm_807FD978;
 
+void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, u32, u32, u32);
 s32 func_global_asm_80690F30(s32, s32 *, Actor*, s32, s32, s32, s32 *, s32 *, s32 *);
 
 Gfx *func_global_asm_806FEDB0(Gfx *dl, u8 arg1) {
@@ -48,7 +54,7 @@ Gfx *func_global_asm_806FEF7C(Gfx *dl, Actor *arg1) {
     gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
 
-    return displayImage(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, D_global_asm_8075DE70);
+    return displayImage(dl, 0x3C, 3, 1, 0x40, 0x40, 0xA0, 0x78, 5.0f, 5.0f, 0, 0.001f);
 }
 
 Gfx *func_global_asm_806FF01C(Gfx *dl, Actor *arg1) {
@@ -106,7 +112,7 @@ Gfx *func_global_asm_806FF628(Gfx *dl, s32 arg1) {
 
 void func_global_asm_806FFB2C(Gfx *dl, Actor *arg1) {
     f32 sp3C;
-    sp3C = arg1->control_state_progress * D_global_asm_8075DE78;
+    sp3C = arg1->control_state_progress * 1.4;
     dl = func_global_asm_806FEDB0(dl, arg1->PaaD->unk1A4);
     gDPSetRenderMode(dl++, G_RM_CLD_SURF, G_RM_CLD_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, 0xFF);
@@ -245,15 +251,6 @@ void func_global_asm_80702464(Gfx *arg0, void *texture, s32 arg2, s32 arg3, s32 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_807024E0.s")
 
-extern s16 D_global_asm_80744498; // upper left x rect
-extern s16 D_global_asm_8074449C; // upper left y rect
-extern s16 D_global_asm_807444A0; // lower right x rect
-extern s16 D_global_asm_807444A4; // lower right y rect
-extern s16 D_global_asm_807444A8;
-extern s16 D_global_asm_807444AC;
-extern s16 D_global_asm_807444B0;
-extern f64 D_global_asm_8075DF48;
-
 Gfx *func_global_asm_80703374(Gfx *dl, u8 r, u8 g, u8 b, u8 a) {
     if (a != 0) {
         gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
@@ -280,7 +277,7 @@ void func_global_asm_80703850(u8 arg0) {
     s16 temp_a0_2;
     s16 temp_a1;
 
-    temp_f0 = (f32)arg0 / D_global_asm_8075DF48;
+    temp_f0 = (f32)arg0 / 255.0;
     if (func_global_asm_805FCA64() != 0) {
         character_change_array->unk272 = D_global_asm_8074449C + ((((D_global_asm_80744494 >> 1) - D_global_asm_8074449C) - 1) * temp_f0);
         character_change_array->unk276 = D_global_asm_807444A4 + (((D_global_asm_80744494 >> 1) - D_global_asm_807444A4) * temp_f0);
@@ -317,9 +314,6 @@ void func_global_asm_80704108(u8 arg0, u8 arg1, u8 arg2) {
     D_global_asm_807FD899 = arg2;
 }
 
-extern f64 D_global_asm_8075DF78;
-extern f64 D_global_asm_8075DF80;
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -338,9 +332,9 @@ void func_global_asm_80704130(Struct80704130 *arg0, u8 arg1, u8 arg2, u8 arg3, u
     arg0->unkF = arg4;
     if (arg5 & 0x10) {
         if (arg5 & 0x40) {
-            arg0->unk2 += (64.0f * func_global_asm_80612794((arg4 * D_global_asm_8075DF78) + 1024.0));
+            arg0->unk2 += (64.0f * func_global_asm_80612794((arg4 * 12.05) + 1024.0));
         } else {
-            arg0->unk2 -= (64.0f * func_global_asm_80612794((arg4 * D_global_asm_8075DF80) + 1024.0));
+            arg0->unk2 -= (64.0f * func_global_asm_80612794((arg4 * 12.05) + 1024.0));
         }
     }
 }
@@ -467,10 +461,6 @@ Gfx *func_global_asm_80704960(Gfx *dl) {
 }
 */
 
-extern f32 D_global_asm_807FD968;
-extern f32 D_global_asm_807FD96C;
-extern f32 D_global_asm_807FD970;
-
 void func_global_asm_80704AFC(f32 arg0, f32 arg1, f32 arg2) {
     D_global_asm_807FD968 = arg0;
     D_global_asm_807FD96C = arg1;
@@ -500,17 +490,13 @@ void func_global_asm_80705B30(void) {
         (D_global_asm_80744490 * 16.0f) - 1.0,
         (D_global_asm_80744494 * 16.0f) - 1.0,
         0.0f,
-        D_global_asm_8075DFB0,
-        D_global_asm_8075DFB4,
+        -20000.0f,
+        20000.0f,
         1.0f
     );
     D_global_asm_807FD968 = -1.0f;
     D_global_asm_807FD978 = 0;
 }
-
-void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, u32, u32, u32);
-extern f64 D_global_asm_8075DFB8;
-extern f64 D_global_asm_8075DFC0;
 
 void func_global_asm_80705C00(s16 arg0, s16 arg1, u8 arg2) {
     f32 sp4C;
@@ -520,8 +506,8 @@ void func_global_asm_80705C00(s16 arg0, s16 arg1, u8 arg2) {
     s16 temp_f4; // sp40
     s16 temp_v1; // sp3E
 
-    sp42 = func_global_asm_80612794(arg0) * D_global_asm_8075DFB8;
-    temp_v1 = func_global_asm_80612790(arg0) * D_global_asm_8075DFC0;
+    sp42 = func_global_asm_80612794(arg0) * 32767.0;
+    temp_v1 = func_global_asm_80612790(arg0) * 32767.0;
     temp_f4 = arg1 - (8.0 * character_change_array->unk2CA);
     switch (arg2) {
         case 1:
@@ -539,13 +525,6 @@ void func_global_asm_80705C00(s16 arg0, s16 arg1, u8 arg2) {
 // Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80705F5C.s")
 
-extern f32 D_global_asm_80754CE8;
-extern f64 D_global_asm_8075DFC8;
-extern f64 D_global_asm_8075DFD0;
-extern f64 D_global_asm_8075DFD8;
-extern f64 D_global_asm_8075DFE0;
-extern f64 D_global_asm_8075DFE8;
-
 /*
 Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
     s16 sp76;
@@ -559,23 +538,23 @@ Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
     alpha = 0xFF;
     if (arg3 == 1) {
         func_global_asm_80659620(&sp58[2], &sp58[1], &sp58[0], player_pointer->unk12C);
-        var_f2 = MIN(1.0, (1.0 - sp58[1]) / D_global_asm_8075DFC8);
-        alpha = (u8)(var_f2 * D_global_asm_8075DFD0);
+        var_f2 = MIN(1.0, (1.0 - sp58[1]) / 0.7);
+        alpha = (u8)(var_f2 * 255.0);
     } else if (arg3 == 2) {
         var_f0 = D_global_asm_80754CE8 - 0.5;
         if (var_f0 < 0.0) {
             var_f0 = 0.0f;
         }
         var_f2 = var_f0 * 512.0;
-        if (D_global_asm_8075DFD8 < var_f2) {
+        if (255.0 < var_f2) {
             var_f2 = 255.0f;
         }
         alpha = (u8)var_f2;
     }
     sp58[2] = var_f2;
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
-    sp76 = func_global_asm_80612794(arg1) * D_global_asm_8075DFE0;
-    func_global_asm_80626F8C(sp76, arg2 - (f32)(8.0 * character_change_array->unk2CA), func_global_asm_80612790(arg1) * D_global_asm_8075DFE8, &x, &y, 0, 4.0f, 0);
+    sp76 = func_global_asm_80612794(arg1) * 32767.0;
+    func_global_asm_80626F8C(sp76, arg2 - (f32)(8.0 * character_change_array->unk2CA), func_global_asm_80612790(arg1) * 32767.0, &x, &y, 0, 4.0f, 0);
     if ((x > -320.0f) && (x < 1600.0f) && (y > -240.0f) && (y < 1200.0f)) {
         dl = func_global_asm_806FEDB0(dl, 0);
         gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
@@ -605,8 +584,6 @@ Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_8070835C.s")
-
-extern f32 D_global_asm_80754CE8;
 
 void func_global_asm_80708574(f32 arg0) {
     // TODO: Clamp macro?
