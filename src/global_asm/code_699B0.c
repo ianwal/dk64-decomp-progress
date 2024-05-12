@@ -93,6 +93,7 @@ void func_global_asm_80665160(Actor *arg0, s16 arg1, s16 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_806651FC.s")
 
 extern s32 D_global_asm_80744478;
+
 extern f32 D_global_asm_80758E30;
 extern f64 D_global_asm_80758E38;
 
@@ -139,6 +140,7 @@ void func_global_asm_806651FC(Actor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_806653C0.s")
 
 extern s32 D_global_asm_80744478;
+
 extern f32 D_global_asm_80758E40;
 extern f64 D_global_asm_80758E48;
 
@@ -1448,14 +1450,14 @@ s32 func_global_asm_80669CB4(GlobalASMStruct80 *arg0, f32 arg1, f32 arg2) {
         var_f14 = temp_f12;
     }
     if (arg1 < var_f14) {
-        return 0;
+        return FALSE;
     }
     var_f14 = MAX(temp_f0, temp_f2);
     if (!(temp_f12 < var_f14)) {
         var_f14 = temp_f12;
     }
     if (var_f14 < arg1) {
-        return 0;
+        return FALSE;
     }
     temp_f0 = arg0->unk18;
     temp_f2 = arg0->unk1C;
@@ -1465,16 +1467,16 @@ s32 func_global_asm_80669CB4(GlobalASMStruct80 *arg0, f32 arg1, f32 arg2) {
         var_f14 = temp_f12;
     }
     if (arg2 < var_f14) {
-        return 0;
+        return FALSE;
     }
     var_f14 = MAX(temp_f0, temp_f2);
     if (!(temp_f12 < var_f14)) {
         var_f14 = temp_f12;
     }
     if (var_f14 < arg2) {
-        return 0;
+        return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80669E04.s")
