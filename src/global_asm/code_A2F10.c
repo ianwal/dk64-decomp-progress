@@ -27,30 +27,31 @@ const char D_global_asm_8075A44C[] = "KONG";
 // const char D_global_asm_8075A45C[] = "%d";
 // const char D_global_asm_8075A460[] = "%d";
 // const char D_global_asm_8075A464[] = "%d";
-// const f64 D_global_asm_8075A498 = 1.04000000000000004;
-// const f64 D_global_asm_8075A4A0 = 0.0100000000000000002;
+// const f64 D_global_asm_8075A498 = 1.04;
+// const f64 D_global_asm_8075A4A0 = 0.01;
 // const f64 D_global_asm_8075A4A8 = 6.66666666999999968;
 // const f64 D_global_asm_8075A4B0 = 6.66666666999999968;
 // const f64 D_global_asm_8075A4B8 = 6.66666666999999968;
 // const f64 D_global_asm_8075A4C0 = 6.66666666999999968;
-// const f64 D_global_asm_8075A4C8 = 0.0200000000000000004;
-// const f64 D_global_asm_8075A4D0 = 0.0100000000000000002;
-// const f64 D_global_asm_8075A4D8 = 0.299999999999999989;
+// const f64 D_global_asm_8075A4C8 = 0.02;
+// const f64 D_global_asm_8075A4D0 = 0.01;
+// const f64 D_global_asm_8075A4D8 = 0.3;
 // const f32 D_global_asm_8075A504 = 99999.0f;
 // const f32 D_global_asm_8075A508 = 99999.0f;
-// const f64 D_global_asm_8075A510 = 0.100000000000000006;
-// const f64 D_global_asm_8075A518 = 0.149999999999999994;
-// const f64 D_global_asm_8075A520 = 0.800000000000000044;
-// const f64 D_global_asm_8075A528 = 0.299999999999999989;
-// const f64 D_global_asm_8075A530 = 1.19999999999999996;
-// const f64 D_global_asm_8075A538 = 0.299999999999999989;
-// const f64 D_global_asm_8075A540 = 0.149999999999999994;
+// const f64 D_global_asm_8075A510 = 0.1;
+// const f64 D_global_asm_8075A518 = 0.15;
+// const f64 D_global_asm_8075A520 = 0.8;
+// const f64 D_global_asm_8075A528 = 0.3;
+// const f64 D_global_asm_8075A530 = 1.2;
+// const f64 D_global_asm_8075A538 = 0.3;
+// const f64 D_global_asm_8075A540 = 0.15;
 
 extern s32 D_global_asm_807FBB68;
 extern u8 D_global_asm_807FBD70;
 
 GlobalASMStruct60 *func_global_asm_80688584(Actor*, s32);
-void func_global_asm_8069FA40(void);
+Gfx *func_global_asm_8069FA40(Gfx *arg0, Actor *arg1);
+extern char *D_global_asm_80750338[];
 void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
 
 // Jumptable, close doable

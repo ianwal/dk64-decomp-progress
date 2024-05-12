@@ -25,7 +25,6 @@ s32 func_global_asm_8061CB08();
 s32 func_global_asm_8061CB38();
 s32 func_global_asm_806A2A10(s32, s32, u8);
 u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
-Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
 s32 (*func_critter_80029110(s32))(s32 *, s32);
 
 // rodata

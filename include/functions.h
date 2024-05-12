@@ -50,6 +50,7 @@ Actor *getSpawnerTiedActor(s16 spawn_trigger, u16 arg1);
 Actor *func_global_asm_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
 
 Gfx *displayImage(Gfx *dl, u16 textureIndex, s32 arg3, s32 codec, s32 width, s32 height, s32 x, s32 y, f32 xScale, f32 yScale, s32 arg11, f32 arg12);
+Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
 
 // TODO: What do the params mean?
 s32 playCutscene(Actor*, s16, s32);

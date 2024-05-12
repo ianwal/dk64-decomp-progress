@@ -42,7 +42,6 @@ extern s8 D_bonus_8002DEF0[];
 extern s16 D_80744518;
 extern u16 D_807ECD60;
 
-Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
 s8 func_global_asm_806FDB8C(s32, void*, s32, f32, f32, f32);
 s32 func_global_asm_806A2A10(s32, s32, u8);
 void func_global_asm_8061CB08(void);

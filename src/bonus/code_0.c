@@ -1,8 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void *func_global_asm_8068DC54(s32, s32, s32, void *, s32, void *);
-s32 func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
+Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void *, s32, void *);
 
 typedef struct {
     u8 unk0;

@@ -35,7 +35,6 @@ const u32 D_bonus_8002DCA8[] = {
 
 void func_global_asm_80627948(Actor*, s32, s32, s32);
 Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *);
-Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
 int func_global_asm_80717404(); // TODO: Signature
 
 Gfx *func_bonus_800252A0(Gfx *dl, Actor *arg1) {
