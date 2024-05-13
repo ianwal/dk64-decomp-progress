@@ -438,29 +438,19 @@ void func_global_asm_80685D84(Actor *actor) {
     }
 }
 
-// rodata, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80685E78.s")
-
-/*
 void func_global_asm_80685E78(Actor *arg0) {
-    f32 sp28;
-    ActorAnimationState *temp_v0;
+    s32 pad;
+    f32 scale;
 
-    temp_v0 = arg0->animation_state;
-    if (temp_v0 != NULL) {
-        sp28 = temp_v0->scale_y / 0.15;
-    } else {
-        sp28 = 1.0;
-    }
+    scale = arg0->animation_state != NULL ? arg0->animation_state->scale_y / 0.15 : 1.0;
     func_global_asm_80714998(3);
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(1);
     func_global_asm_8071498C(func_global_asm_807184F4);
     func_global_asm_80714A28(4);
     changeActorColor(0xC8, 0xFF, 0xFF, 0xC8);
-    drawSpriteAtPosition(&D_global_asm_8071FED0, sp28 * 0.6, arg0->x_position, arg0->unkAC, arg0->z_position)->unk338 = arg0;
+    drawSpriteAtPosition(&D_global_asm_8071FED0, scale * 0.6, arg0->x_position, arg0->unkAC, arg0->z_position)->unk338 = arg0;
 }
-*/
 
 // TODO: Close, something up with phi_v1
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80685F60.s")
