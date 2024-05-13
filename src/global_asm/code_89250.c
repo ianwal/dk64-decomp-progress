@@ -491,26 +491,14 @@ void func_global_asm_80685F60(Actor *actor) {
 }
 */
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_8068613C.s")
-
-/*
-// TODO: Pretty close
 void func_global_asm_8068613C(Actor *arg0) {
-    f64 sp48;
-    ActorAnimationState *temp_v0;
-    f32 var_f20;
-    u8 temp_v1;
+    f32 scale;
+    u8 count;
     u8 i;
 
-    temp_v0 = arg0->animation_state;
-    if (temp_v0 != NULL) {
-        var_f20 = temp_v0->scale_y / 0.15;
-    } else {
-        var_f20 = 1.0f;
-    }
+    scale = arg0->animation_state != NULL ?  arg0->animation_state->scale_y / 0.15 : 1.0;
     if (arg0->unk58 == ACTOR_BOSS_PROJECTILE_FIREBALL) {
-        var_f20 *= 2;
+        scale *= 2;
         func_global_asm_8068588C(arg0, 0, 4.0f, arg0->x_position, arg0->y_position, arg0->z_position, -0x96);
         deleteActor(arg0);
     }
@@ -518,19 +506,18 @@ void func_global_asm_8068613C(Actor *arg0) {
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(1);
     changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
-    drawSpriteAtPosition(&D_global_asm_8071FC0C, var_f20 * 0.65, arg0->x_position, arg0->unkAC + 15.0f, arg0->z_position);
+    drawSpriteAtPosition(&D_global_asm_8071FC0C, scale * 0.65, arg0->x_position, arg0->unkAC + 15.0f, arg0->z_position);
     if (D_global_asm_80750AD0 == 0) {
-        temp_v1 = (func_global_asm_806119A0() & 3) + 4;
-        for (i = 0; i < temp_v1; i++) {
+        count = (func_global_asm_806119A0() & 3) + 4;
+        for (i = 0; i < count; i++) {
             func_global_asm_807149B8(1);
             func_global_asm_807149FC(-1);
             func_global_asm_8071498C(&func_global_asm_8071DB74);
             func_global_asm_80714A28(4);
-            drawSpriteAtPosition(&D_global_asm_80720B58, var_f20 * 0.1, arg0->x_position, arg0->unkAC, arg0->z_position);
+            drawSpriteAtPosition(&D_global_asm_80720B58, scale * 0.1, arg0->x_position, arg0->unkAC, arg0->z_position);
         }
     }
 }
-*/
 
 void func_global_asm_80686340(void) {
     func_global_asm_807149B8(1);
@@ -540,7 +527,6 @@ void func_global_asm_80686340(void) {
     func_global_asm_80714A28(4);
 }
 
-void func_global_asm_8068613C(Actor *arg0);
 extern s32 D_global_asm_8071FBF4;
 
 void func_global_asm_80686390(Actor *actor, f32 arg1, f32 x, f32 y, f32 z) {
