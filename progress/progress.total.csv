@@ -714,7 +714,7 @@ us,asm,func_global_asm_80655CF8,216,no
 us,asm,func_global_asm_80610B84,84,yes
 us,asm,func_global_asm_80737EA4,104,yes
 us,asm,func_global_asm_80611408,300,no
-us,asm,func_global_asm_8062EDA8,160,no
+us,asm,func_global_asm_8062EDA8,160,yes
 us,asm,func_global_asm_806ABA6C,300,no
 us,asm,func_global_asm_8066E21C,164,yes
 us,asm,func_global_asm_8072B324,12,yes

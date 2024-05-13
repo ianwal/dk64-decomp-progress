@@ -1250,9 +1250,6 @@ s32 func_global_asm_8062EBB8(Struct8062EBB8_arg0 *arg0, f32 arg1, f32 arg2, f32 
 }
 */
 
-// Hmm, DisplayList stuff?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062EDA8.s")
-
 typedef struct {
     u8 unk0;
     u8 unk1;
@@ -1269,6 +1266,16 @@ typedef struct {
 
 extern u8 D_global_asm_807F5FC1;
 extern Struct807F5FC4 *D_global_asm_807F5FC4;
+
+Gfx *func_global_asm_8062EDA8(Gfx *dl, u8 arg1) {
+    s32 i;
+    for (i = 0; i < D_global_asm_807F5FC1; i++) {
+        if (arg1 == D_global_asm_807F5FC4[i].unk1) {
+            gSPSegment(dl++, D_global_asm_807F5FC4[i].unk0, D_global_asm_807F5FC4[i].unk8);
+        }
+    }
+    return dl;
+}
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062EE48.s")

@@ -177,6 +177,8 @@ int func_race_80024634(RaceStruct8 *arg0, RaceStruct9 *arg1) {
 // Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80024690.s")
 
+// TODO: File split here
+
 s32 func_race_80025770(s32 arg0, s32 arg1) {
     s32 temp_v1 = arg1 + 1;
     if (arg0 != temp_v1) {
