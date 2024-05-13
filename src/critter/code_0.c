@@ -440,7 +440,7 @@ void func_critter_80024F28(Critter *arg0) {
             func_global_asm_807149B8(1U);
             func_global_asm_80714950(1);
             func_global_asm_807149FC(-1);
-            func_global_asm_8071498C(&func_global_asm_80718BF4);
+            func_global_asm_8071498C(func_global_asm_80718BF4);
             drawSpriteAtPosition(&D_global_asm_8071FC40, 0.0f, arg0->x_pos, arg0->y_pos, arg0->z_pos);
         }
         temp = ABS(sp3E);
@@ -590,7 +590,6 @@ extern Gfx D_critter_80029B18;
 extern Gfx D_critter_80029B30;
 extern Gfx D_critter_80029B78;
 extern Gfx D_critter_80029B88;
-extern s32 D_global_asm_807F6C28;
 
 Gfx *func_critter_80025AD0(Gfx *dl, Struct80025AD0 *arg1) {
     s32 i;
@@ -603,23 +602,23 @@ Gfx *func_critter_80025AD0(Gfx *dl, Struct80025AD0 *arg1) {
 
     var_s0 = arg1->unk8;
     switch (arg1->unk0) {
-    case 0:
-    case 1:
-        gSPDisplayList(dl++, &D_critter_80029B30);
-        sp6C = func_critter_800247F4;
-        break;
-    case 3:
-        gSPDisplayList(dl++, &D_critter_80029B18);
-        sp6C = func_critter_80024C88;
-        break;
-    case 2:
-        gSPDisplayList(dl++, &D_critter_80029B78);
-        sp6C = func_critter_8002516C;
-        break;
-    case 4:
-        gSPDisplayList(dl++, &D_critter_80029B88);
-        sp6C = func_critter_800255C4;
-        break;
+        case 0:
+        case 1:
+            gSPDisplayList(dl++, &D_critter_80029B30);
+            sp6C = func_critter_800247F4;
+            break;
+        case 3:
+            gSPDisplayList(dl++, &D_critter_80029B18);
+            sp6C = func_critter_80024C88;
+            break;
+        case 2:
+            gSPDisplayList(dl++, &D_critter_80029B78);
+            sp6C = func_critter_8002516C;
+            break;
+        case 4:
+            gSPDisplayList(dl++, &D_critter_80029B88);
+            sp6C = func_critter_800255C4;
+            break;
     }
     i = 0;
     for (i = 0; i < arg1->unk2; i++) {
@@ -640,7 +639,6 @@ Gfx *func_critter_80025AD0(Gfx *dl, Struct80025AD0 *arg1) {
     gDPPipeSync(dl++);
     return dl;
 }
-
 
 s32 func_critter_80025D1C(s32 arg0, CritterController *arg1) {
     s32 i;

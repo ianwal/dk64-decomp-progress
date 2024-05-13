@@ -190,7 +190,7 @@ void func_critter_80029118(void) {
             current_actor_pointer->control_state = 0xFE;
             break;
     }
-    addActorToTextOverlayRenderArray(&func_critter_800296DC, current_actor_pointer, 3);
+    addActorToTextOverlayRenderArray(func_critter_800296DC, current_actor_pointer, 3);
 }
 */
 

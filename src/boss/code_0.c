@@ -111,7 +111,7 @@ void func_boss_80024000(void) {
         func_global_asm_8067E2E4(current_actor_pointer, sp48[i].unk0, 3.0f);
     }
     for (i = 0; i < 0xC; i++) {
-        func_global_asm_8071498C(&func_global_asm_8071E864);
+        func_global_asm_8071498C(func_global_asm_8071E864);
         func_global_asm_80714950(i);
         func_global_asm_807149B8(1);
         changeActorColor(0x8C, 0x8C, 0x8C, 0xFF);
@@ -360,12 +360,12 @@ void func_boss_800253AC(void) {
 
     scale = ((f32)((f32)(((MAX(current_actor_pointer->y_velocity, 0.0) / 150.0)) * 0.12) + 0.3) * 4.0f);
     func_global_asm_807149B8(1);
-    func_global_asm_8071498C(&func_global_asm_8071AF30);
+    func_global_asm_8071498C(func_global_asm_8071AF30);
     func_global_asm_807149A8(1000);
     func_global_asm_80714950((s32)current_actor_pointer);
     func_global_asm_80714C08(&D_global_asm_80720120, scale, current_actor_pointer, 3, 0);
     func_global_asm_807149B8(1);
-    func_global_asm_8071498C(&func_global_asm_8071AF30);
+    func_global_asm_8071498C(func_global_asm_8071AF30);
     func_global_asm_807149A8(1000);
     func_global_asm_80714950((s32)current_actor_pointer);
     func_global_asm_80714C08(&D_global_asm_80720120, scale, current_actor_pointer, 4, 0);

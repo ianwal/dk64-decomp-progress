@@ -9,7 +9,7 @@ extern s16 D_global_asm_807F624C;
 int func_global_asm_8071C9E8(); // TODO: Signature
 
 void func_global_asm_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
-    func_global_asm_8071498C(&func_global_asm_8071C9E8);
+    func_global_asm_8071498C(func_global_asm_8071C9E8);
     func_global_asm_807149FC(-1);
     func_global_asm_807149B8(1);
     func_global_asm_8071496C(arg3);
@@ -18,7 +18,7 @@ void func_global_asm_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
 
 void func_global_asm_806B8BDC(s16 arg0, s16 arg1, s16 arg2) {
     func_global_asm_80714998(2);
-    func_global_asm_8071498C(&func_global_asm_80717D4C);
+    func_global_asm_8071498C(func_global_asm_80717D4C);
     func_global_asm_80714950(-0x28);
     func_global_asm_807149B8(1);
     changeActorColor(0xFF, 0xFF, 0xFF, 0xC8);

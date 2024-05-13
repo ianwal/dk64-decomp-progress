@@ -155,13 +155,13 @@ void func_boss_8002A5CC(void) {
     y += ((rand() >> 0xF) % 100) + 50;
     z += ((rand() >> 0xF) % 80) - 40;
     func_global_asm_807149B8(1);
-    func_global_asm_8071498C(&func_global_asm_8071EDEC);
+    func_global_asm_8071498C(func_global_asm_8071EDEC);
     func_global_asm_80714950((s32)current_actor_pointer);
     changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
     drawSpriteAtPosition(&D_global_asm_80720120, 1.5f, x, y, z);
     for (i = 0; i < 4; i++) {
         func_global_asm_80714998(2);
-        func_global_asm_8071498C(&func_global_asm_8071720C);
+        func_global_asm_8071498C(func_global_asm_8071720C);
         func_global_asm_807149B8(1);
         func_global_asm_80714C08(
             D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],

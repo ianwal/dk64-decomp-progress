@@ -137,7 +137,7 @@ s32 func_global_asm_806882DC(Actor *actor, s32 arg1, s16 arg2) {
     return temp_v0->unk0[arg2];
 }
 
-void func_global_asm_80688320(Actor *actor, s32 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_80688320(Actor *actor, s32 arg1, s16 arg2, void *arg3) {
     GlobalASMStruct60 *temp_v0 = func_global_asm_80688584(actor, arg1);
 
     if ((temp_v0) && (arg2 < temp_v0->unkA)) {

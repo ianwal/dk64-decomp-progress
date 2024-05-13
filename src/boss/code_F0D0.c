@@ -82,18 +82,20 @@ void func_boss_800334A4(Struct800334A4_arg0 *arg0, f32 arg1) {
 }
 
 void func_boss_800336C0(void) {
-    f32 sp24;
+    f32 scale;
 
-    sp24 = current_actor_pointer->animation_state->scale_y / 0.149999999999999994; //rodata .double 0.149999999999999994
+    scale = current_actor_pointer->animation_state->scale_y / 0.15;
     func_global_asm_80714998(2);
-    func_global_asm_8071498C(&func_global_asm_8071720C);
+    func_global_asm_8071498C(func_global_asm_8071720C);
     func_global_asm_807149B8(1);
     func_global_asm_80714950(1);
-    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
-        (f64)sp24,
+    drawSpriteAtPosition(
+        D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+        (f64)scale,
         current_actor_pointer->x_position,
         current_actor_pointer->y_position,
-        current_actor_pointer->z_position);
+        current_actor_pointer->z_position
+    );
 }
 
 // Oof, I had a crack at this one but it's very fiddly

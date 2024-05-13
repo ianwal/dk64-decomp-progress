@@ -107,7 +107,7 @@ void func_global_asm_80699284(void) {
             current_actor_pointer->control_state_progress++;
         }
         if ((extra_player_info_pointer->unk1EC != 0xFF) && (aaD->unk10 != 0)) {
-            addActorToTextOverlayRenderArray(&func_global_asm_806FF628, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_global_asm_806FF628, current_actor_pointer, 3);
         }
     }
     func_global_asm_80699070(&spE8, &spEA, character_change_array->look_at_eye_x, character_change_array->look_at_eye_y, character_change_array->look_at_eye_z, character_change_array->look_at_at_x, character_change_array->look_at_at_y, character_change_array->look_at_at_z);
@@ -459,7 +459,7 @@ typedef struct {
 
 u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
 
-void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, void *arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
+void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, char *arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
     GlobalASMStruct_8069D0F8 *temp_s0;
 
     if (spawnActor(ACTOR_TEXT_OVERLAY, 0)) {
@@ -489,7 +489,7 @@ void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, void *arg3, u16 arg4,
     }
 }
 
-void func_global_asm_8069D2AC(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
+void func_global_asm_8069D2AC(u8 arg0, s16 arg1, s16 arg2, char *arg3, u16 arg4, u16 arg5, u8 arg6, u8 arg7) {
     if ((cc_number_of_players < 2)
         && !gameIsInMainMenuMode()
         && !gameIsInDKTVMode()
@@ -499,16 +499,16 @@ void func_global_asm_8069D2AC(u8 arg0, s16 arg1, s16 arg2, s32 arg3, u16 arg4, u
 }
 
 Gfx *func_global_asm_8069D358(Gfx *dl, Actor *arg1, s16 arg2, f32 arg3) {
-    f32 *spA4;
+    Mtx *spA4;
     f32 sp64[4][4];
     f32 sp24[4][4];
 
-    spA4 = malloc(0x40);
+    spA4 = malloc(sizeof(Mtx));
     func_global_asm_8061134C(spA4);
-    guScaleF(&sp64[0], arg3, arg3, 1.0f);
-    guTranslateF(&sp24[0], arg1->x_position + (2.0 * arg2), arg1->y_position, 0.0f);
-    guMtxCatF(&sp64[0], &sp24[0], &sp64[0]);
-    guMtxF2L(&sp64[0], spA4);
+    guScaleF(sp64, arg3, arg3, 1.0f);
+    guTranslateF(sp24, arg1->x_position + (2.0 * arg2), arg1->y_position, 0.0f);
+    guMtxCatF(sp64, sp24, sp64);
+    guMtxF2L(sp64, spA4);
     gSPMatrix(dl++, spA4, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     return dl;
 }
@@ -554,7 +554,7 @@ void func_global_asm_8069DA54(void) {
 
     aaD = current_actor_pointer->additional_actor_data;
     if (current_actor_pointer->unkEE != 0) {
-        addActorToTextOverlayRenderArray(&func_global_asm_8069D930, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_global_asm_8069D930, current_actor_pointer, 3);
         return;
     }
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -570,7 +570,7 @@ void func_global_asm_8069DA54(void) {
             break;
         case 1:
             if (current_actor_pointer->control_state_progress != 3) {
-                addActorToTextOverlayRenderArray(&func_global_asm_8069D424, current_actor_pointer, 3);
+                addActorToTextOverlayRenderArray(func_global_asm_8069D424, current_actor_pointer, 3);
             }
             switch (current_actor_pointer->control_state_progress) {
                 case 0:

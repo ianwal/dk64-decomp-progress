@@ -753,7 +753,7 @@ void func_global_asm_806A112C(void) {
             (current_actor_pointer->animation_state->unk24 + temp_v0_2)->unk1 = 0xFF;
         } while (var_s0_2 < 7);
         if (current_actor_pointer->unk15F == 0) {
-            sp38 = current_actor_pointer->animation_state->scale_y / D_global_asm_8075A540;
+            sp38 = current_actor_pointer->animation_state->scale_y / 0.15;
             *temp_s5 = getPointerTableFile(0x13, 6, 1, 1);
             var_s2 = 1;
             func_global_asm_806A0F78(current_actor_pointer, D_global_asm_807503D4, D_global_asm_807503E0);

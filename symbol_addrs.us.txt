@@ -1055,6 +1055,7 @@ D_menu_80033FAF = 0x80033FAF; // segment:menu
 D_menu_80033FAE = 0x80033FAE; // segment:menu
 D_menu_80033FAD = 0x80033FAD; // segment:menu
 D_menu_80033F60 = 0x80033F60; // segment:menu
+D_menu_80033F61 = 0x80033F61; // segment:menu
 D_menu_80033F50 = 0x80033F50; // segment:menu
 D_menu_80033FB0 = 0x80033FB0; // segment:menu
 D_menu_80033FB1 = 0x80033FB1; // segment:menu

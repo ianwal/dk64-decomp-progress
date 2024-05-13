@@ -356,7 +356,7 @@ void func_global_asm_806E8244(void) {
 
     RaaD = extra_player_info_pointer->vehicle_actor_pointer->additional_actor_data;
     if (func_global_asm_805FCA64()) {
-        addActorToTextOverlayRenderArray(&func_global_asm_8068E474, extra_player_info_pointer->vehicle_actor_pointer, 5);
+        addActorToTextOverlayRenderArray(func_global_asm_8068E474, extra_player_info_pointer->vehicle_actor_pointer, 5);
     }
     if ((current_actor_pointer->y_rotation < 0x200) || (current_actor_pointer->y_rotation >= 0xE01)) {
         RaaD->unk2 = D_global_asm_807FD610[cc_player_index].unk2E;

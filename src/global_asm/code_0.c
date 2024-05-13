@@ -685,7 +685,7 @@ void func_global_asm_805FE7FC(void) {
         func_global_asm_8068C2EC();
         func_global_asm_806F4778();
         func_global_asm_8070E8C8();
-        func_global_asm_8060098C(&func_global_asm_806025AC, 2, 0, 0, 0);
+        func_global_asm_8060098C(func_global_asm_806025AC, 2, 0, 0, 0);
         if (D_global_asm_807FBB64 & 0x1000) {
             sp28 = getPointerTableFile(0x16, current_map, 1, 1);
             func_critter_80026FD0(sp28);

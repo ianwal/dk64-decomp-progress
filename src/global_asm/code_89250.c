@@ -219,7 +219,7 @@ void func_global_asm_80685020(u8 arg0, u8 arg1) {
     }
 }
 
-int func_global_asm_8071910C();
+int func_global_asm_8071910C(); // TODO: Signature
 
 void func_global_asm_806850D0(void) {
     f32 scale;
@@ -237,7 +237,7 @@ void func_global_asm_806850D0(void) {
     for (temp_s0 = 0; temp_s0 < 7; temp_s0++) {
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(0xA);
-        func_global_asm_8071498C(&func_global_asm_8071910C);
+        func_global_asm_8071498C(func_global_asm_8071910C);
         func_global_asm_80714998(2);
         func_global_asm_80714950(0);
         drawSpriteAtPosition(&D_global_asm_8072073C,
@@ -535,7 +535,7 @@ void func_global_asm_80686390(Actor *actor, f32 arg1, f32 x, f32 y, f32 z) {
     s32 pad;
 
     if (actor != NULL) {
-        scale = actor->animation_state != NULL ? actor->animation_state->scale[1] / 0.15 : 1.0;
+        scale = actor->animation_state != NULL ? actor->animation_state->scale_y / 0.15 : 1.0;
         if (actor->unk6A & 4) {
             if ((actor->y_velocity > -10.0f) || (actor->unk6A & actor->unk6C & 1)) {
                 var_f0 = 0.0f;

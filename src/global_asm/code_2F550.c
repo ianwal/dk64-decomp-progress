@@ -452,14 +452,13 @@ void func_global_asm_8063B4C0(Chunk14*, s32);
 void func_global_asm_8062BB2C(Struct8062BB2C_arg0 *arg0, Struct8062BB2C_arg1 *arg1, u8 arg2) {
     Struct8062BB2C_arg1_unk4 *next;
     Struct8062BB2C_arg1_unk4 *current;
-    s32 temp = arg2;
 
 loop_1:
     if (arg0 != NULL) {
         switch (arg1->unk1) {
             case 3:
                 func_global_asm_8062BB2C(arg0->unk0, arg1->unkC, 0);
-                temp = 0;
+                arg2 = 0;
                 arg0 = arg0->unk4;
                 arg1 = arg1->unk10;
                 goto loop_1;
@@ -473,7 +472,7 @@ loop_1:
                         current = arg1->unk4;
                         while (current != NULL) {
                             next = current->unk14;
-                            func_global_asm_8063B4C0(current, temp);
+                            func_global_asm_8063B4C0(current, arg2);
                             current = next;
                         }
                         break;
@@ -482,14 +481,14 @@ loop_1:
                             case 1:
                             case 2:
                                 if (arg1->unk0 != 0) {
-                                    func_global_asm_8062BB2C(arg0->unk4, arg1->unk10, temp);
-                                    temp = 0;
+                                    func_global_asm_8062BB2C(arg0->unk4, arg1->unk10, arg2);
+                                    arg2 = 0;
                                     arg0 = arg0->unk0;
                                     arg1 = arg1->unkC;
                                     goto loop_1;
                                 } else {
-                                    func_global_asm_8062BB2C(arg0->unk0, arg1->unkC, temp);
-                                    temp = 0;
+                                    func_global_asm_8062BB2C(arg0->unk0, arg1->unkC, arg2);
+                                    arg2 = 0;
                                     arg0 = arg0->unk4;
                                     arg1 = arg1->unk10;
                                     goto loop_1;
@@ -497,14 +496,14 @@ loop_1:
                                 break;
                             case 0:
                                 if (arg1->unk0 == 0) {
-                                    func_global_asm_8062BB2C(arg0->unk0, arg1->unkC, temp);
-                                    temp &= 0xFF;
+                                    func_global_asm_8062BB2C(arg0->unk0, arg1->unkC, arg2);
+                                    arg2 &= 0xFF;
                                     arg0 = arg0->unk4;
                                     arg1 = arg1->unk10;
                                     goto loop_1;
                                 } else {
-                                    func_global_asm_8062BB2C(arg0->unk4, arg1->unk10, temp);
-                                    temp &= 0xFF;
+                                    func_global_asm_8062BB2C(arg0->unk4, arg1->unk10, arg2);
+                                    arg2 &= 0xFF;
                                     arg0 = arg0->unk0;
                                     arg1 = arg1->unkC;
                                     goto loop_1;

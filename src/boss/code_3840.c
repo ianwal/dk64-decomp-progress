@@ -94,7 +94,7 @@ void func_boss_80028478(u16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg
         return;
     }
     for (i = 0; i < 6; i++) {
-        func_global_asm_8071498C(&func_global_asm_8071CDE0);
+        func_global_asm_8071498C(func_global_asm_8071CDE0);
         func_global_asm_807149FC(-1);
         func_global_asm_807149B8(1);
         func_global_asm_80714950((s32)D_global_asm_807FDC94);

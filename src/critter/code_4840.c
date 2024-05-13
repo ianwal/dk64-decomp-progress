@@ -115,7 +115,7 @@ void func_critter_8002904C(void) {
     }
     if (current_actor_pointer->unk168 != 0) {
         current_actor_pointer->unk168--;
-        addActorToTextOverlayRenderArray(&func_critter_80028DE8, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_critter_80028DE8, current_actor_pointer, 3);
     }
     D_critter_8002A1CE++;
 }

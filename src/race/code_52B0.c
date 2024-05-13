@@ -321,8 +321,6 @@ void initializeCastleCarRace(Actor *arg0) {
     aaD->unk26 = 0;
 }
 
-void func_global_asm_80665564(Actor*, f32);
-
 void func_race_8002A7F8(A178_race_8002B964 *arg0) {
     f32 sp5C;
     f32 sp58;
@@ -513,7 +511,7 @@ void func_race_8002AE9C(void) {
         func_global_asm_8068ECF4(2, sp43);
     }
     if ((aaD->unk34 > 0) && (aaD->unk34 < 5)) {
-        func_global_asm_806F4D70(aaD->unk28, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, (current_actor_pointer->animation_state->scale[1] / 0.15) * 40.0);
+        func_global_asm_806F4D70(aaD->unk28, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, (current_actor_pointer->animation_state->scale_y / 0.15) * 40.0);
         addActorToTextOverlayRenderArray(func_race_8002AE6C, current_actor_pointer, 3);
     }
     renderActor(current_actor_pointer, 0);

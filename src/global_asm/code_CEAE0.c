@@ -2705,10 +2705,10 @@ void func_global_asm_806D2954(s16 arg0) {
     if ((extra_player_info_pointer->unk8C != 0) && func_global_asm_805FCA64()) {
         if (D_global_asm_807FD568->weapon == 7) {
             arg0 = 0xF;
-            addActorToTextOverlayRenderArray(&func_global_asm_806FF75C, current_actor_pointer, 5);
+            addActorToTextOverlayRenderArray(func_global_asm_806FF75C, current_actor_pointer, 5);
         } else {
             arg0 = 0xE;
-            addActorToTextOverlayRenderArray(&func_global_asm_806FF01C, current_actor_pointer, 5);
+            addActorToTextOverlayRenderArray(func_global_asm_806FF01C, current_actor_pointer, 5);
         }
     }
     if (current_actor_pointer->control_state_progress != 0) {
@@ -2725,9 +2725,9 @@ void func_global_asm_806D2A14(s16 arg0) {
     }
     if (func_global_asm_805FCA64()) {
         if (!handleInputsForControlState(arg0)) {
-            addActorToTextOverlayRenderArray(&func_global_asm_806FF358, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_global_asm_806FF358, current_actor_pointer, 3);
         }
-        addActorToTextOverlayRenderArray(&func_global_asm_806FF32C, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_global_asm_806FF32C, current_actor_pointer, 3);
     }
 }
 

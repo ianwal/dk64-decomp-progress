@@ -110,8 +110,79 @@ s16 func_global_asm_806FBEAC(u8 *arg0) {
     return count;
 }
 
-// Jumptable, displaylist stuff, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FBEF0.s")
+Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2) {
+    s16 textureIndex;
+
+    textureIndex = (D_global_asm_80754A34[arg1].unk0 + arg2) - 1;
+    func_global_asm_806FBB9C(textureIndex);
+    switch (arg1) {
+        case 6:
+            gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, (s32)D_global_asm_807FD7F0[textureIndex] + 0x80000000);\
+            gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPLoadSync(dl++);\
+            gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1143, 94);\
+            gDPPipeSync(dl++);\
+            gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 22, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x02BC, 0x0030);
+            break;
+        case 0:
+            gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, (s32)D_global_asm_807FD7F0[textureIndex] + 0x80000000);\
+            gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPLoadSync(dl++);\
+            gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 2047, 64);\
+            gDPPipeSync(dl++);\
+            gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_4b, 32, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x07FC, 0x003C);\
+            break;
+        case 1:
+            gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, (s32)D_global_asm_807FD7F0[textureIndex] + 0x80000000);\
+            gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPLoadSync(dl++);\
+            gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1823, 108);\
+            gDPPipeSync(dl++);\
+            gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 19, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x012C, 0x005C);\
+            break;
+        case 2:
+            gDPSetTextureImage(dl++, G_IM_FMT_I, G_IM_SIZ_16b, 1, (s32)D_global_asm_807FD7F0[textureIndex] + 0x80000000);\
+            gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPLoadSync(dl++);\
+            gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 64);\
+            gDPPipeSync(dl++);\
+            gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_4b, 32, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x07FC, 0x001C);\
+            break;
+        case 3:
+        case 7:
+            gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, (s32)D_global_asm_807FD7F0[textureIndex] + 0x80000000);\
+            gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPLoadSync(dl++);\
+            gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);\
+            gDPPipeSync(dl++);\
+            gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);\
+            break;
+        case 4:
+            gDPSetTextureImage(dl++, G_IM_FMT_I, G_IM_SIZ_16b, 1, (s32)D_global_asm_807FD7F0[textureIndex] + 0x80000000);\
+            gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPLoadSync(dl++);\
+            gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 2047, 32);\
+            gDPPipeSync(dl++);\
+            gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_4b, 64, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x0FFC, 0x001C);\
+            break;
+        case 5:
+            gDPSetTextureImage(dl++, G_IM_FMT_I, G_IM_SIZ_16b, 1, (s32)D_global_asm_807FD7F0[textureIndex] + 0x80000000);\
+            gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPLoadSync(dl++);\
+            gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 2047, 32);\
+            gDPPipeSync(dl++);\
+            gDPSetTile(dl++, G_IM_FMT_I, G_IM_SIZ_4b, 64, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
+            gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x0FFC, 0x001C);\
+            break;
+    }
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/printStyledText.s")

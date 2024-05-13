@@ -641,7 +641,7 @@ void func_global_asm_8072DA60(void) {
 void func_global_asm_8072DAA4(void) {
     func_global_asm_80714998(2);
     func_global_asm_807149B8(1);
-    func_global_asm_8071498C(&func_global_asm_80717D4C);
+    func_global_asm_8071498C(func_global_asm_80717D4C);
     func_global_asm_80714950(-0x28 - ((rand() >> 0xF) % 15));
     drawSpriteAtPosition(&D_global_asm_8071FF18,
                   (((rand() >> 0xF) % 1000) / D_global_asm_8075FF20) + 0.5,

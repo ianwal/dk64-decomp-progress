@@ -760,7 +760,7 @@ void func_global_asm_806F70FC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     f32 phi_f4_2;
 
     func_global_asm_80714950(0x1006E);
-    func_global_asm_8071498C(&func_global_asm_8071C48C);
+    func_global_asm_8071498C(func_global_asm_8071C48C);
     func_global_asm_807149B8(1);
     drawSpriteAtPosition(&D_global_asm_8071FC58, arg3, arg0, arg1, arg2);
     temp_f20 = 1000.0 / (arg4 + arg4);
@@ -768,7 +768,7 @@ void func_global_asm_806F70FC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
         phi_f4 = (func_global_asm_806119A0() / 10000U) % 1000;
         phi_f6 = (func_global_asm_806119A0() / 10000U) % 1000;
         phi_f4_2 = (func_global_asm_806119A0() / 10000U) % 1000;
-        func_global_asm_8071498C(&func_global_asm_8071C620);
+        func_global_asm_8071498C(func_global_asm_8071C620);
         func_global_asm_8071496C(i);
         func_global_asm_807149B8(1);
         drawSpriteAtPosition(

@@ -64,12 +64,27 @@ s32 func_jetpac_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32
 // doable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027BE8.s")
 
-/*
+void func_jetpac_80025700(void*, s32, s32, void*, s32);
 f32 func_jetpac_80027410(f32); // extern
 extern s32 D_8002F3C0;
 extern s32 D_jetpac_8002DCE8;
 
-void func_jetpac_80027BE8(s32 *arg0, s32 arg1) {
+extern JetpacPlayerStruct D_jetpac_8002EC30;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+} Struct80027BE8_arg0;
+
+/*
+void func_jetpac_80027BE8(Struct80027BE8_arg0 *arg0, s32 arg1) {
     s32 sp58;
     Competitor *temp_s7;
     s32 *var_s1;
@@ -97,12 +112,12 @@ void func_jetpac_80027BE8(s32 *arg0, s32 arg1) {
                     func_jetpac_80025700(temp_a0, temp_s6, var_s2, &sp58, arg0->unk20);
                 }
                 var_s0 += 1;
-                var_s1 += 4;
+                var_s1++;
                 var_s2 += 8;
             } while (var_s0 != 2);
             return;
         }
-        func_jetpac_80025700(arg0->unk0, temp_s6, var_s2, arg0 + 0x18, arg0->unk20);
+        func_jetpac_80025700(arg0->unk0, temp_s6, var_s2, &arg0->unk18, arg0->unk20);
     }
 }
 */
@@ -208,8 +223,6 @@ block_5:
 }
 */
 
-extern JetpacPlayerStruct D_jetpac_8002EC30;
-
 void func_jetpac_80028544(void) {
     void (*temp_v0)(void *, s32);
     s32 i;
@@ -266,8 +279,6 @@ void func_jetpac_80028950(void) {
 
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_800289EC.s")
-
-void func_jetpac_80025700(void*, s32, s32, void*, s32);
 
 typedef struct {
     s32 unk0;

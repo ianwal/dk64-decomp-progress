@@ -367,7 +367,7 @@ void func_global_asm_806AFA60(u8 arg0) {
         temp_f22 = current_actor_pointer->animation_state->scale_y / 0.15;
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(0xA);
-        func_global_asm_8071498C(&func_global_asm_8071910C);
+        func_global_asm_8071498C(func_global_asm_8071910C);
         func_global_asm_80714998(2);
         func_global_asm_80714950(0);
         func_global_asm_80714C08(&D_global_asm_8072073C, temp_f22 * 0.15, current_actor_pointer, arg0, 0);
@@ -654,8 +654,8 @@ void func_global_asm_806B0848(void) {
 
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->unk130 = MIN(255, (current_actor_pointer->animation_state->scale[1] / 0.15) * 100.0);
-        current_actor_pointer->unk131 = MIN(255, (current_actor_pointer->animation_state->scale[1] / 0.15) * 100.0);
+        current_actor_pointer->unk130 = MIN(255, (current_actor_pointer->animation_state->scale_y / 0.15) * 100.0);
+        current_actor_pointer->unk131 = MIN(255, (current_actor_pointer->animation_state->scale_y / 0.15) * 100.0);
         func_global_asm_8072B79C(0x35E, 0x35F, 0x360);
     }
     if (D_global_asm_807FBB70.unk200 != 9) {

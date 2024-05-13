@@ -119,7 +119,7 @@ void func_bonus_8002733C(Struct8002733C *arg0) {
         func_global_asm_807149FC(-1);
         func_global_asm_80714998(2);
         func_global_asm_80714944(i * 3);
-        func_global_asm_8071498C(&func_global_asm_8071A038);
+        func_global_asm_8071498C(func_global_asm_8071A038);
         func_global_asm_80714950(&arg0->unk18[i]);
         arg0->unk4[i] = drawSpriteAtPosition(&D_global_asm_8071FFD4, 1.0f, x, 210.0f, -10.0f);
         x -= 30;
@@ -369,7 +369,7 @@ void func_bonus_800277F8(void) {
         loadText(current_actor_pointer, 0, 1);
     }
     if (aaD->unk0 >= -1) {
-        addActorToTextOverlayRenderArray(&func_bonus_80026940, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_bonus_80026940, current_actor_pointer, 3);
     }
     renderActor(current_actor_pointer, 0);
 }

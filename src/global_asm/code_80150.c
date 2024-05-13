@@ -550,7 +550,7 @@ void func_global_asm_8067DCC0(void) {
         temp_s0 = (s32)(func_global_asm_806119A0() / 10000U) % 3;
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(0xA);
-        func_global_asm_8071498C(&func_global_asm_8071910C);
+        func_global_asm_8071498C(func_global_asm_8071910C);
         func_global_asm_80714998(2);
         func_global_asm_80714950(2);
         switch (temp_s0) {

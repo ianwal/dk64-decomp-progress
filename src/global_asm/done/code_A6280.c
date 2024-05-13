@@ -158,7 +158,7 @@ void func_global_asm_806A1AC4(void) {
                     if ((object_timer & 7) == 0) {
                         for (i = 0; i < 0xC; i++) {
                             randomScale = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * 0.01;
-                            func_global_asm_8071498C(&func_global_asm_8071E864);
+                            func_global_asm_8071498C(func_global_asm_8071E864);
                             func_global_asm_80714950(i);
                             func_global_asm_807149B8(1);
                             changeActorColor(0x8C, 0x8C, 0x8C, 0xFF);
@@ -244,7 +244,7 @@ void func_global_asm_806A1FD8(void) {
             for (i = 1; i < 9; i++) {
                 func_global_asm_80714998(2);
                 func_global_asm_807149B8(1);
-                func_global_asm_8071498C(&func_global_asm_80717D4C);
+                func_global_asm_8071498C(func_global_asm_80717D4C);
                 func_global_asm_80714950(-0x64);
                 changeActorColor(0x64, 0x46, 0x1E, 0xFF);
                 getBonePosition(current_actor_pointer, i, &x, &y, &z);
@@ -343,12 +343,12 @@ void func_global_asm_806A285C(void) {
     func_global_asm_80699070(&spBE, &spBC, character_change_array[0].look_at_eye_x, character_change_array[0].look_at_eye_y, character_change_array[0].look_at_eye_z, character_change_array[0].look_at_at_x, character_change_array[0].look_at_at_y, character_change_array[0].look_at_at_z);
     current_actor_pointer->y_rotation = spBC;
     current_actor_pointer->z_rotation = spBE;
-    guRotateF(&sp7C, (spBE / 4095.0) * 360.0, 1.0f, 0.0f, 0.0f);
-    guRotateF(&sp3C, (spBC / 4095.0) * 360.0, 0.0f, 1.0f, 0.0f);
-    guMtxCatF(&sp7C, &sp3C, &sp7C);
-    guTranslateF(&sp3C, character_change_array[0].look_at_eye_x, character_change_array[0].look_at_eye_y, character_change_array[0].look_at_eye_z);
-    guMtxCatF(&sp7C, &sp3C, &sp7C);
-    guMtxXFMF(&sp7C, 0.0f, 0.0f, -11.0f, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+    guRotateF(sp7C, (spBE / 4095.0) * 360.0, 1.0f, 0.0f, 0.0f);
+    guRotateF(sp3C, (spBC / 4095.0) * 360.0, 0.0f, 1.0f, 0.0f);
+    guMtxCatF(sp7C, sp3C, sp7C);
+    guTranslateF(sp3C, character_change_array[0].look_at_eye_x, character_change_array[0].look_at_eye_y, character_change_array[0].look_at_eye_z);
+    guMtxCatF(sp7C, sp3C, sp7C);
+    guMtxXFMF(sp7C, 0.0f, 0.0f, -11.0f, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
     guTranslateF(&current_actor_pointer->unkC, 0.0f, -20.0f, 0.0f);
     renderActor(current_actor_pointer, 1);
 }

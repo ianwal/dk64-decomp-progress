@@ -1416,6 +1416,8 @@ void func_menu_8002EE18(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002F284.s")
 
 extern s8 D_menu_80033F60;
+extern s8 D_menu_80033F61;
+
 void func_menu_8002F6C8(Actor *arg0, s32 arg1) {
     PlayerAdditionalActorData* PaaD = arg0->PaaD; // TODO: Might be MaaD
 
@@ -1428,12 +1430,10 @@ void func_menu_8002F6C8(Actor *arg0, s32 arg1) {
 // Doable, unrolled loop
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002F75C.s")
 
-/*
 extern s8 D_menu_800339A8;
-extern s8 D_menu_80033F60;
-extern s8 D_menu_80033F61;
-extern s16 D_global_asm_80744518;
+extern s16 D_80744518;
 
+/*
 void func_menu_8002F75C(void) {
     MenuStruct7 *var_v0;
     s32 var_a2;
@@ -1445,7 +1445,7 @@ void func_menu_8002F75C(void) {
         var_v0 = &D_global_asm_80744568;
     }
     for (i = 0; i < 4; i++) {
-        if (D_global_asm_80744518 >= var_v0[i].unk0) {
+        if (D_80744518 >= var_v0[i].unk0) {
             for (var_a2 = 0; var_a2 <= 4; var_a2++) {
                 // var_v0[var_a2] = var_v0[var_a2 + 1];
                 var_v0[var_a2].unk0 = var_v0[var_a2 + 1].unk0;
@@ -1454,7 +1454,7 @@ void func_menu_8002F75C(void) {
                 var_v0[var_a2].unk4 = var_v0[var_a2 + 1].unk4;
                 var_v0[var_a2].unk5 = var_v0[var_a2 + 1].unk5;
             }
-            var_v0[i].unk0 = D_global_asm_80744518;
+            var_v0[i].unk0 = D_80744518;
             var_v0[i].unk2 = 0x2E;
             var_v0[i].unk3 = 0x2E;
             var_v0[i].unk4 = 0x2E;
@@ -1872,7 +1872,7 @@ void func_menu_80030894(MenuAdditionalActorData *arg0, void *arg1, s32 arg2, s32
     func_global_asm_8071495C();
     func_global_asm_807149FC(-1);
     func_global_asm_80714950((s32)arg0);
-    func_global_asm_8071498C(&func_menu_80030C14);
+    func_global_asm_8071498C(func_menu_80030C14);
     func_global_asm_80714A28(1);
     sp3C = drawSpriteAtPosition(arg1, arg4, arg2, arg3, -10.0f);
     temp_v0 = malloc(sizeof(Struct80717D84_80030894));

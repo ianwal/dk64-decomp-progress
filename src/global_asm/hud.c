@@ -771,7 +771,7 @@ void func_global_asm_806F9744(Struct806F9744_arg0 *arg0, s32 arg1, f32 arg2, f32
     func_global_asm_80714998(sp2C);
     func_global_asm_80714944(arg4);
     func_global_asm_80714950((s32)arg0);
-    func_global_asm_8071498C(&func_global_asm_8071BE04);
+    func_global_asm_8071498C(func_global_asm_8071BE04);
     func_global_asm_80714A28(0x21);
     if (arg1 == 3) {
         changeActorColor(0xFF, 0, 0, 0xFF);
@@ -825,7 +825,7 @@ void func_global_asm_806F9B64(s32 arg0) {
     for (i = 0; i < 5; i++) {
         func_global_asm_8071495C();
         func_global_asm_807149FC(-1);
-        func_global_asm_8071498C(&func_global_asm_806F9AF0);
+        func_global_asm_8071498C(func_global_asm_806F9AF0);
         func_global_asm_80714950(i);
         D_global_asm_807FD7A0[i] = -100.0f;
         drawSpriteAtPosition(var_s2[i], 1.0f, -200.0f, 0.0f, -10.0f);
