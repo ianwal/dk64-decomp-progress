@@ -437,7 +437,7 @@ void func_global_asm_806C8EE8(void) {
     current_character_index[cc_player_index] %= 8;
     extra_player_info_pointer->unk8C = 0;
     func_global_asm_806C8F8C(&D_global_asm_8075C410[current_character_index[cc_player_index]]);
-    func_global_asm_8060098C(&func_global_asm_806C9C80, 0x14, cc_player_index, 0, 0);
+    func_global_asm_8060098C(func_global_asm_806C9C80, 0x14, cc_player_index, 0, 0);
 }
 
 void func_global_asm_806C8F8C(Struct806C8F8C_arg0 *arg0) {

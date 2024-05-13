@@ -455,20 +455,20 @@ void func_global_asm_80685E78(Actor *arg0) {
     func_global_asm_80714998(3);
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(1);
-    func_global_asm_8071498C(&func_global_asm_807184F4);
+    func_global_asm_8071498C(func_global_asm_807184F4);
     func_global_asm_80714A28(4);
     changeActorColor(0xC8, 0xFF, 0xFF, 0xC8);
     drawSpriteAtPosition(&D_global_asm_8071FED0, sp28 * 0.6, arg0->x_position, arg0->unkAC, arg0->z_position)->unk338 = arg0;
 }
 */
 
+// TODO: Close, something up with phi_v1
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80685F60.s")
 
 extern s16 D_global_asm_80753A08[];
 extern s16 D_global_asm_80753A18[];
 
 /*
-// TODO: Close, something up with phi_v1
 void func_global_asm_80685F60(Actor *actor) {
     f32 phi_f0;
     u8 phi_v1;
@@ -550,85 +550,63 @@ void func_global_asm_80686340(void) {
     func_global_asm_80714A28(4);
 }
 
-// close, float regalloc, stack, other minor stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80686390.s")
-
-s32 func_global_asm_8068613C(void); // TODO: Signature
+void func_global_asm_8068613C(Actor *arg0);
 extern s32 D_global_asm_8071FBF4;
 
-/*
-void func_global_asm_80686390(Actor *arg0, f32 arg1, f32 x, f32 y, f32 z) {
-    f32 scale;
-    s32 sp34;
-    f64 sp28;
-    ActorAnimationState *temp_v0;
-    f32 temp_f0_2;
-    f32 temp_f10;
-    f32 temp_f2;
-    f32 temp_f2_2;
+void func_global_asm_80686390(Actor *actor, f32 arg1, f32 x, f32 y, f32 z) {
     f32 var_f0;
-    f32 var_f12;
-    s32 temp_t6;
+    f32 scale;
+    s32 pad;
 
-    if (arg0 != NULL) {
-        temp_v0 = arg0->animation_state;
-        if (temp_v0 != NULL) {
-            scale = temp_v0->scale[1] / 0.15;
-        } else {
-            scale = 1.0;
-        }
-        if (arg0->unk6A & 4) {
-            if ((arg0->y_velocity > -10.0f) || (arg0->unk6A & arg0->unk6C & 1)) {
+    if (actor != NULL) {
+        scale = actor->animation_state != NULL ? actor->animation_state->scale[1] / 0.15 : 1.0;
+        if (actor->unk6A & 4) {
+            if ((actor->y_velocity > -10.0f) || (actor->unk6A & actor->unk6C & 1)) {
                 var_f0 = 0.0f;
             } else {
-                var_f0 = arg0->unkA0 - arg0->y_position;
+                var_f0 = actor->unkA0 - actor->y_position;
             }
-            temp_f2 = (arg0->unkAC - arg0->floor) * 2.0f;
-            if (var_f0 < temp_f2) {
-                var_f12 = var_f0;
-            } else {
-                var_f12 = temp_f2;
-            }
-            if (var_f12 < 0.0f) {
-                var_f0 = 0.0f;
-            } else {
-                if (var_f0 < temp_f2) {
-                    var_f12 = var_f0;
-                } else {
-                    var_f12 = temp_f2;
-                }
-                var_f0 = var_f12;
-            }
-            if ((arg0->unk58 == ACTOR_PROJECTILE_ORANGE) || (arg0->unk58 == ACTOR_PROJECTILE_LIME)) {
-                playSoundAtActorPosition(arg0, 0x2C7, 0xFF, 0x7F, 1);
+            var_f0 = MAX(0.0f, MIN(var_f0, (actor->unkAC - actor->floor) * 2));
+            if ((actor->unk58 == ACTOR_PROJECTILE_ORANGE) || (actor->unk58 == ACTOR_PROJECTILE_LIME)) {
+                playSoundAtActorPosition(actor, 0x2C7, 0xFF, 0x7F, 1);
             } else if (var_f0 < 10.0f) {
-                playSoundAtActorPosition(arg0, 0x10, (var_f0 * 25.5), 0x7F, 1);
+                playSoundAtActorPosition(actor, 0x10, (var_f0 * 25.5), 0x7F, 1);
             } else if (var_f0 < 20.0f) {
-                playSoundAtActorPosition(arg0, 0xF, 0xFF, 0x7F, 1);
+                playSoundAtActorPosition(actor, 0xF, 0xFF, 0x7F, 1);
             } else {
-                func_global_asm_8068613C();
+                func_global_asm_8068613C(actor);
             }
         }
     } else {
         scale = arg1;
     }
     func_global_asm_80686340();
-    sp28 = scale;
-    drawSpriteAtPosition(&D_global_asm_8071FBF4, sp28 * 0.3, x, y, z);
+    drawSpriteAtPosition(
+        &D_global_asm_8071FBF4,
+        scale * 0.3,
+        x,
+        y,
+        z
+    );
     func_global_asm_80686340();
     func_global_asm_8071496C(2);
-    sp34 = rand();
-    temp_f2_2 = sp28 * 0.05;
-    temp_t6 = (u8)(30.0f * scale);
-    temp_f0_2 = (u8)(15.0f * scale);
-    temp_f10 = (rand() >> 0xF) % temp_t6;
-    drawSpriteAtPosition(&D_global_asm_8071FBF4, temp_f2_2, (((sp34 >> 0xF) % temp_t6) + x) - temp_f0_2, y, (temp_f10 + z) - temp_f0_2);
+    drawSpriteAtPosition(
+        &D_global_asm_8071FBF4,
+        scale * 0.05,
+        x + ((rand() >> 0xF) % (u8)(30.0f * scale)) - (u8)(15.0f * scale),
+        y,
+        z + ((rand() >> 0xF) % (u8)(30.0f * scale)) - (u8)(15.0f * scale)
+    );
     func_global_asm_80686340();
     func_global_asm_8071496C(4);
-    sp34 = rand();
-    drawSpriteAtPosition(&D_global_asm_8071FBF4, temp_f2_2, (((sp34 >> 0xF) % temp_t6) + x) - temp_f0_2, y, (((rand() >> 0xF) % temp_t6) + z) - temp_f0_2);
+    drawSpriteAtPosition(
+        &D_global_asm_8071FBF4,
+        scale * 0.05,
+        x + ((rand() >> 0xF) % (u8)(30.0f * scale)) - (u8)(15.0f * scale),
+        y,
+        z + ((rand() >> 0xF) % (u8)(30.0f * scale)) - (u8)(15.0f * scale)
+    );
 }
-*/
 
 void func_global_asm_8068696C(Actor *actor) {
     s32 i;
