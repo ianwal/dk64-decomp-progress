@@ -93,10 +93,10 @@ Gfx *func_menu_80025B64(Gfx *dl, Actor *arg1) {
             case 5:
                 arg1->unk15F += MIN(8, 0xFF - arg1->unk15F);
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-                sprintf(&sp4C, "q %s", getTextString(0x24, 0x10, 1));
-                dl = printStyledText(dl, 1, 500, 400, &sp4C, 1);
-                sprintf(&sp4C, "b %s", getTextString(0x24, 0x11, 1));
-                dl = printStyledText(dl, 1, 500, 500, &sp4C, 1);
+                sprintf(sp4C, "q %s", getTextString(0x24, 0x10, 1));
+                dl = printStyledText(dl, 1, 500, 400, sp4C, 1);
+                sprintf(sp4C, "b %s", getTextString(0x24, 0x11, 1));
+                dl = printStyledText(dl, 1, 500, 500, sp4C, 1);
                 break;
         }
     }
@@ -831,7 +831,7 @@ extern void func_global_asm_8060B110(Struct807ECD58 *arg0);
 
 void func_menu_800275FC(void) {
     // Candy Code
-    Actor178 *sp34;
+    Actor178 *a178;
     CharacterProgress *sp30;
     u8 pad[0xC];
     s32* lim;
@@ -842,7 +842,7 @@ void func_menu_800275FC(void) {
 
     initializeCharacterSpawnerActor();
     if (current_map == MAP_CANDYS_MUSIC_SHOP) {
-        sp34 = current_actor_pointer->unk178;
+        a178 = current_actor_pointer->unk178;
         sp30 = &D_global_asm_807FC950->character_progress[*current_character_index];
         if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
             // Anti-tamper
@@ -856,9 +856,9 @@ void func_menu_800275FC(void) {
                 sp1C = func_menu_800275EC((s32)(&func_global_asm_8063FA48) + 0xFFDE0BB1);
                 *sp1C = func_menu_800275EC(0x03BE0BB9);
             }
-            func_menu_800266F0(sp34, sp30, 0x175);
+            func_menu_800266F0(a178, sp30, 0x175);
         }
-        func_menu_80027028(sp34, sp30, 0x175);
+        func_menu_80027028(a178, sp30, 0x175);
     }
     if (current_actor_pointer->object_properties_bitfield & 0x10000000) {
         initializeCharacterSpawnerActor();
@@ -867,20 +867,18 @@ void func_menu_800275FC(void) {
     renderActor(current_actor_pointer, 0U);
 }
 
-
-
 void func_menu_80027738(void) {
-    MenuStruct1 *temp;
+    MenuStruct1 *a178;
     CharacterProgress *var1;
     initializeCharacterSpawnerActor();
 
     if (current_map == MAP_FUNKYS_STORE) {
-        temp = current_actor_pointer->unk178;
+        a178 = current_actor_pointer->unk178;
         var1 = &D_global_asm_807FC950[0].character_progress[current_character_index[0]];
         if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-            func_menu_800266F0(temp, var1, 0x176);
+            func_menu_800266F0(a178, var1, 0x176);
         }
-        func_menu_80027028(temp, var1, 0x176);
+        func_menu_80027028(a178, var1, 0x176);
     }
     if ((current_actor_pointer->object_properties_bitfield & (0x80000000 >> 3))) {
         initializeCharacterSpawnerActor();

@@ -2417,7 +2417,7 @@ extern s32 D_global_asm_8071FC8C;
 
 int func_global_asm_80717100();
 
-void func_global_asm_805FF9AC(enum map_e arg0, s32 arg1, s32 arg2, s16 arg3);
+void func_global_asm_805FF9AC(Maps arg0, s32 arg1, s32 arg2, s16 arg3);
 
 /*
 void func_global_asm_806D9AD4(void) {

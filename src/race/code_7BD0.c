@@ -168,20 +168,21 @@ typedef struct {
 } AAD_race_8002BDDC;
 
 /*
-void func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6) {
-    f32 temp_f12;
-    f32 temp_f14;
+Gfx *func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6) {
+    f32 x, y;
     AAD_race_8002BDDC *aaD;
 
     aaD = arg1->additional_actor_data;
-    temp_f12 = aaD->unkC - arg2;
-    temp_f14 = aaD->unk10 - arg3;
-    temp_f12 *= aaD->unk4;
-    temp_f14 *= aaD->unk8;
-    temp_f12 *= 0.5f;
-    temp_f14 *= 0.5f;
+    x = aaD->unkC - arg2;
+    y = aaD->unk10 - arg3;
+    x *= aaD->unk4;
+    y *= aaD->unk8;
+    x = (50.0f + ((x) * 0.5f));
+    x *= 4.0f;
+    y = (60.0f + ((y) * 0.5f));
+    y *= 4.0f;
     gDPSetPrimColor(dl++, 0, 0, arg4, arg5, arg6, 0xC8);
-    displayImage(dl, 0x4A, 3, 1, 0x10, 0x10, ((temp_f12) + 50.0f) * 4.0f, ((temp_f14) + 60.0f) * 4.0f, 1.0f, 1.0f, 0, 0.0f);
+    return displayImage(dl, 0x4A, 3, 1, 16, 16, x, y, 1.0f, 1.0f, 0, 0.0f);
 }
 */
 

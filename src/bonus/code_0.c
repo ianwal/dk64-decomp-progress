@@ -40,12 +40,12 @@ void func_bonus_800240F0() {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024158.s")
 
-Gfx *func_bonus_80024D3C(Gfx *arg0, s32 arg1) {
-    gSPDisplayList(arg0++, &D_1000118);
+Gfx *func_bonus_80024D3C(Gfx *dl, s32 arg1) {
+    gSPDisplayList(dl++, &D_1000118);
     // TODO: Get rid of magic constants
-    gDPSetCombine(arg0++, 0x119623, 0xFF2FFFFF);
-    gDPSetPrimColor(arg0++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    return arg0;
+    gDPSetCombine(dl++, 0x119623, 0xFF2FFFFF);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    return dl;
 }
 
 s32 func_bonus_80024D8C(void) {

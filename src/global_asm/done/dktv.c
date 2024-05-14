@@ -136,7 +136,7 @@ u8 func_global_asm_8060B7C4(void) {
     return D_global_asm_807ECE30;
 }
 
-void func_global_asm_8060B7D0(s32 *mapPointer, s32 *exitPointer) {
+void func_global_asm_8060B7D0(Maps *mapPointer, s32 *exitPointer) {
     *mapPointer = D_global_asm_807ECE20.map;
     *exitPointer = D_global_asm_807ECE20.exit;
 }

@@ -44,7 +44,7 @@ void func_critter_80029118(void) {
     s32 sp70;
     s32 sp58[6];
     s32 (*sp50)(s32 *, s32);
-    enum map_e sp3C;
+    Maps sp3C;
     s32 sp38;
     s32 (*temp_v1)(s32 *, s32);
     s32 *var_s0;

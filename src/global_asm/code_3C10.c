@@ -559,7 +559,7 @@ extern s32 D_global_asm_807F6C28;
 
 /*
 // Eh, made some progress...
-void func_global_asm_805FF9AC(enum map_e arg0, s32 arg1, s32 arg2, s16 arg3) {
+void func_global_asm_805FF9AC(Maps arg0, s32 arg1, s32 arg2, s16 arg3) {
     s32 sp50;
     s32 sp4C;
     f32 sp40;

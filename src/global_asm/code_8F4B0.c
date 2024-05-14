@@ -34,7 +34,7 @@ s32 func_global_asm_8068ABE0(s16 arg0) {
     s32 sp20;
     s32 found;
     s32 i;
-    enum map_e map;
+    Maps map;
     s32 exit; // 20
 
     cutsceneIndex = -1;
@@ -350,9 +350,9 @@ void *func_global_asm_8068C12C(u16 textureIndex) {
 }
 
 typedef struct {
-    void *unk0; // TODO: Function pointer
+    Gfx *(*unk0)(Gfx*, Actor*); // Used
     Actor *unk4; // Used
-    s8 unk8; // Used
+    u8 unk8; // Used
     s8 unk9;
     s8 unkA;
     s8 unkB;
@@ -360,8 +360,30 @@ typedef struct {
 
 extern TempCBig D_global_asm_807FC630[];
 
-// Displaylist stuff, uses TempCBig
+// Displaylist stuff, uses TempCBig, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068C20C.s")
+
+/*
+void *func_global_asm_8068C20C(Gfx *dl, u8 arg1) {
+    TempCBig *temp_v1;
+    u8 i;
+
+    i = D_global_asm_807501E0;
+
+    while (i != 0) {
+        temp_v1 = &D_global_asm_807FC630[--i];
+        if (arg1 == temp_v1->unk8) {
+            gDPPipeSync(dl++);\
+            dl = temp_v1->unk0(dl, temp_v1->unk4);
+        }
+    }
+
+    if (arg1 == 7) {
+        D_global_asm_807501E0 = 0;
+    }
+    return dl;
+}
+*/
 
 void func_global_asm_8068C2EC(void) {
     D_global_asm_807501E0 = 0;

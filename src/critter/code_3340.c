@@ -3,7 +3,7 @@
 
 extern f32 D_critter_8002A1B0;
 
-extern void *func_critter_80028DE8(Gfx *arg0, Actor *arg1);
+extern void *func_critter_80028DE8(Gfx *dl, Actor *arg1);
 s32 func_global_asm_8061CB38();
 
 void func_critter_80027340(s32 arg0) {

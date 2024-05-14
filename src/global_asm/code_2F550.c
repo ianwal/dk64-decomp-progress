@@ -737,7 +737,7 @@ void func_global_asm_8062CA0C(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062CA70.s")
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062CEA8.s")
 
 typedef struct Struct8062D0CC_arg0 Struct8062D0CC_arg0;
@@ -862,7 +862,7 @@ u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1
     u8 sp27;
 
     if (arg0 == NULL) {
-        return 0;
+        return FALSE;
     }
     switch (arg0->unkB8) {
         case 2:
@@ -873,12 +873,12 @@ u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1
         case 0:
             if (func_global_asm_8062D2F0(arg0->unk0, arg1->unkC, arg2, arg3, arg4) != 0) {
                 if (arg4 == 0) {
-                    return 1;
+                    return TRUE;
                 }
             }
             return func_global_asm_8062D2F0(arg0->unk4, arg1->unk10, arg2, arg3, arg4);
     }
-    return 0;
+    return FALSE;
 }
 
 typedef struct {

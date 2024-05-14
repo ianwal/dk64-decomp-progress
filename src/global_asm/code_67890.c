@@ -56,7 +56,7 @@ s32 func_global_asm_806634A4(s32 arg0) {
 
     lowest = 100000000.0f;
     do {
-        found = 0;
+        found = FALSE;
         var_f2 = 0.0f;
         for (i = 0; i < D_global_asm_807F93F8; i++) {
             if (D_global_asm_807F93F4[i].unk11 != 0) {
@@ -64,7 +64,7 @@ s32 func_global_asm_806634A4(s32 arg0) {
                     if (var_f2 < D_global_asm_807F93F4[i].unk0) {
                         var_s1 = i;
                         var_f2 = D_global_asm_807F93F4[i].unk0;
-                        found = 1;
+                        found = TRUE;
                     }
                 }
             }

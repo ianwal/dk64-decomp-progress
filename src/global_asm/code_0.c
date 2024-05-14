@@ -515,9 +515,9 @@ Gfx *func_global_asm_805FE398(Gfx *dl) {
 
 extern s32 D_global_asm_80744470[];
 
-Gfx *func_global_asm_805FE4D4(Gfx *arg0) {
-    gDPSetColorImage(arg0++, 0, 2, D_global_asm_80744490, osVirtualToPhysical(D_global_asm_80744470[D_global_asm_807444FC]));
-    return arg0;
+Gfx *func_global_asm_805FE4D4(Gfx *dl) {
+    gDPSetColorImage(dl++, 0, 2, D_global_asm_80744490, osVirtualToPhysical(D_global_asm_80744470[D_global_asm_807444FC]));
+    return dl;
 }
 
 void func_global_asm_805FE71C(Gfx *dl, u8 arg1, s32 *arg2, u8 arg3);

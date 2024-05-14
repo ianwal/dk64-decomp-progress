@@ -93,8 +93,44 @@ Gfx *func_global_asm_806A921C(Gfx *dl) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806A92B4.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806AA09C.s")
+extern s8 D_global_asm_8075AAFC;
+extern s8 D_global_asm_8075AB00;
+
+Gfx *func_global_asm_806AA09C(s16 x, s16 y, s16 arg2, s16 arg3, Gfx *dl, s8 arg5, f32 scale) {
+    Mtx *spEC;
+    s32 var_s0;
+    f32 spA8[4][4];
+    f32 sp68[4][4];
+    char sp60[8];
+    char sp58[8];
+
+    spEC = malloc(sizeof(Mtx));
+    func_global_asm_8061134C(spEC);
+    if (arg2 >= 0x64) {
+        var_s0 = 0x7C;
+    } else {
+        if (arg2 >= 0xA) {
+            var_s0 = 0x5C;
+        } else {
+            var_s0 = 0x3C;
+        }
+    }
+    if (arg5 != 0) {
+        x = x - (var_s0 * scale);
+    }
+    guScaleF(&spA8[0], scale, scale, 1.0f);
+    guTranslateF(sp68, x, y, 0.0f);
+    guMtxCatF(spA8, sp68, spA8);
+    guMtxF2L(spA8, spEC);
+    gSPMatrix(dl++, spEC, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    sprintf(sp60, &D_global_asm_8075AAFC, arg2);
+    sprintf(sp58, &D_global_asm_8075AB00, arg3);
+    dl = printStyledText(dl, 1, 0, -0x28, sp60, 0x80);
+    dl = printStyledText(dl, 1, var_s0, 0x28, sp58, 0);
+    gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    return displayImage(dl, 0x9F, 0, 2, 32, 32, x + ((var_s0 - 16) * scale), y + (45.0f * scale), scale * 3.125, scale * 3.125, 0, 0.0f);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806AA304.s")
 

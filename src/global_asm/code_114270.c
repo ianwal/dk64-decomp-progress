@@ -722,20 +722,20 @@ Gfx *func_global_asm_807132DC(Gfx *dl) {
 
 extern Mtx D_807FDAC0; // TODO: Correct datatype?
 
-void func_global_asm_8071338C(Gfx *dl) {
-    void *temp_v0;
+Gfx *func_global_asm_8071338C(Gfx *dl) {
+    char *string;
     f32 temp;
 
-    temp_v0 = getTextString(0xC, 0, 1);
+    string = getTextString(0xC, 0, 1);
     gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
     gSPMatrix(dl++, &D_807FDAC0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     temp = 20.0f;
     temp *= 2.0f;
     temp *= 4.0f;
-    printStyledText(dl, 1, 0x118, temp, temp_v0, 4);
+    return printStyledText(dl, 1, 0x118, temp, string, 4);
 }
 
-void func_global_asm_80713438(Gfx *dl, u8 arg1) {
+Gfx *func_global_asm_80713438(Gfx *dl, u8 arg1) {
     char *sp34;
     char *sp30;
     s32 pad2C;
@@ -755,7 +755,7 @@ void func_global_asm_80713438(Gfx *dl, u8 arg1) {
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, arg1);
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
-    printStyledText(dl, 1, sp28 * 4.0f, temp_f16 * 4.0f, sp34, 4);
+    return printStyledText(dl, 1, sp28 * 4.0f, temp_f16 * 4.0f, sp34, 4);
 }
 
 // Displaylist stuff, doable
@@ -765,7 +765,7 @@ s32 func_global_asm_8071375C(s32 arg0) {
     return arg0;
 }
 
-void func_global_asm_80713764(Gfx *dl, u8 arg1, f32 arg2) {
+Gfx *func_global_asm_80713764(Gfx *dl, u8 arg1, f32 arg2) {
     f32 temp;
     f32 temp2;
     temp = D_global_asm_80744490 * 0.5;
@@ -774,12 +774,11 @@ void func_global_asm_80713764(Gfx *dl, u8 arg1, f32 arg2) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1);
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
     gDPSetTextureFilter(dl++, G_TF_POINT);
-    displayImage(dl, 0x2C, 0, 2, 0xE0, 0x80, temp, temp2, 1.0f, 1.0f, 0, 0.0f);
+    return displayImage(dl, 0x2C, 0, 2, 0xE0, 0x80, temp, temp2, 1.0f, 1.0f, 0, 0.0f);
 }
 
-// TODO: This might return a displaylist
-void func_global_asm_807138A4(s32 *arg0) {
-    func_global_asm_807135B4(func_global_asm_807132DC(arg0));
+Gfx *func_global_asm_807138A4(Gfx *dl) {
+    return func_global_asm_807135B4(func_global_asm_807132DC(dl));
 }
 
 // Displaylist stuff
@@ -795,8 +794,41 @@ Gfx *func_global_asm_80713AA8(Gfx *dl) {
     return dl;
 }
 
-// Displaylist stuff
+// Displaylist stuff, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80713B40.s")
+
+extern s32 D_global_asm_80755378; // TODO: Datatype
+
+/*
+Gfx *func_global_asm_80713B40(Gfx *dl) {
+    f32 temp_f0;
+    Gfx *temp = dl;
+    s16 temp_t0;
+    s16 temp_v0;
+    s16 alpha;
+
+    temp_t0 = (D_global_asm_8075531C - 140);
+    if (temp_t0 >= 0 && temp_t0 < 150) {
+        temp_v0 = (temp_t0 - 90);
+        if (temp_v0 < 0) {
+            alpha = 0xFF;
+        } else {
+            alpha = (60 - temp_v0) * 5;
+        }
+        if (temp_t0 < 60) {
+            alpha = temp_t0 * 5;
+        }
+        if (alpha >= 0x100) {
+            alpha = 0xFF;
+        }
+        temp = func_global_asm_80713AA8(temp);
+        gDPSetPrimColor(temp++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+        temp_f0 = ((150 - temp_t0) / 40.0);
+        temp = printText(temp, 640, 480.0 - (temp_f0 * 32.0), temp_f0, &D_global_asm_80755378);
+    }
+    return temp;
+}
+*/
 
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80713C8C.s")
@@ -846,7 +878,7 @@ extern s16 D_global_asm_807FC82A;
 extern s16 D_global_asm_807FC82C;
 
 /*
-void func_global_asm_80713EB0(enum map_e arg0, s32 arg1, s32 arg2) {
+void func_global_asm_80713EB0(Maps arg0, s32 arg1, s32 arg2) {
     s32 temp_v1;
     Struct80713EB0 *t;
 

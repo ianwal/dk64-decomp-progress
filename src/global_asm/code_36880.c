@@ -1780,7 +1780,7 @@ s16 func_global_asm_8063C328(s16 arg0) {
 
 typedef struct {
     void (*unk0)(void); // Function pointer, used
-    void (*unk4)(s32); // Function pointer, used
+    Gfx *(*unk4)(Gfx*); // Function pointer, used
     void (*unk8)(void); // Function pointer, used
     u8 unkC; // Used
     s8 unkD;
@@ -1805,9 +1805,8 @@ void func_global_asm_8063C3C0(s16 arg0) {
     }
 }
 
-// TODO: May return arg0 (Gfx*), see func_global_asm_8062CEA8
-void func_global_asm_8063C418(s32 arg0, s16 arg1) {
-    D_global_asm_80747D80[arg1].unk4(arg0);
+Gfx *func_global_asm_8063C418(Gfx *dl, s16 arg1) {
+    return D_global_asm_80747D80[arg1].unk4(dl);
 }
 
 void func_global_asm_8063C450(void) {
