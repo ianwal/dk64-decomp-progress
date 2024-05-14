@@ -166,24 +166,19 @@ void func_global_asm_807002AC(u16 *arg0, s16 **arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_8070033C.s")
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_8070068C.s")
-
-/*
 Gfx *func_global_asm_8070068C(Gfx *dl) {
     gSPMatrix(dl++, &D_2000100, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
     gSPViewport(dl++, osVirtualToPhysical(&character_change_array->unk250[D_global_asm_807444FC]));
     gDPSetScissor(
         dl++,
         G_SC_NON_INTERLACE,
-        character_change_array->unk272,
-        character_change_array->unk270,
-        character_change_array->unk276,
-        character_change_array->unk274
+        character_change_array[0].unk270,
+        character_change_array[0].unk272,
+        character_change_array[0].unk274,
+        character_change_array[0].unk276
     );
     return dl;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_807007B8.s")
@@ -574,8 +569,38 @@ Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80706F90.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_8070770C.s")
+Gfx *func_global_asm_8070770C(Gfx *dl) {
+    gDPPipeSync(dl++);
+    gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+    gDPSetFillColor(dl++, 0x00010001);
+    gDPSetCycleType(dl++, G_CYC_FILL);
+    gDPSetScissor(
+        dl++,
+        G_SC_NON_INTERLACE,
+        D_global_asm_80744498,
+        D_global_asm_8074449C,
+        D_global_asm_807444A0,
+        D_global_asm_807444A4
+    );
+    gDPFillRectangle(
+        dl++,
+        D_global_asm_80744498,
+        D_global_asm_8074449C,
+        D_global_asm_807444A0 - 1,
+        D_global_asm_807444A4 - 1
+    );
+    gDPPipeSync(dl++);
+    gDPSetScissor(
+        dl++,
+        G_SC_NON_INTERLACE,
+        character_change_array[0].unk270,
+        character_change_array[0].unk272,
+        character_change_array[0].unk274,
+        character_change_array[0].unk276
+    );
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    return dl;
+}
 
 // Jumptable, displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80707980.s")
