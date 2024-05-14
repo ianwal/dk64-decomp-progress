@@ -186,8 +186,46 @@ Gfx *func_race_8002BDDC(Gfx *dl, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 ar
 }
 */
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002BEE8.s")
+extern s16 D_global_asm_80744490;
+
+Gfx *func_race_8002BEE8(Gfx *dl, Actor *arg1) {
+    u8 alpha;
+    s32 sp38;
+    s32 pad;
+    f32 temp;
+    s32 var_a2;
+    char *var_s1;
+    RaceAdditionalActorData *RaaD;
+
+    alpha = 0xFF;
+    sp38 = D_global_asm_80744490 / 2;
+    RaaD = arg1->RaaD;
+    if (arg1->control_state == 2 || arg1->control_state == 1) {
+        if (RaaD->unk1C < 0x78) {
+            if (RaaD->unk1C < 0x5A) {
+                var_a2 = (0x78 - RaaD->unk1C) / 30;
+                if (var_a2 >= 3) {
+                    var_a2 = 3;
+                }
+                var_s1 = malloc(4);
+                func_global_asm_8061134C(var_s1);
+                sprintf(var_s1, "%d", var_a2);
+            } else {
+                temp = 0.033333335f * (0x78 - RaaD->unk1C);
+                alpha *= temp;
+                var_s1 = getTextString(0x26, 9, 1);
+            }
+            gSPDisplayList(dl++, &D_1000118);
+            gDPPipeSync(dl++);
+            gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+            gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, alpha);
+            gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
+            sp38 -= getCenterOfString(1, var_s1) >> 1;
+            dl = printStyledText(dl, 1, sp38 * 4, 0x3C, var_s1, 1);
+        }
+    }
+    return dl;
+}
 
 typedef struct {
     u8 unk0[0x2A - 0x0];

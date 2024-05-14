@@ -688,19 +688,20 @@ void func_global_asm_806ABE3C(void) {
 }
 */
 
-void func_global_asm_806AC048(s32 arg0, s32 arg1) {
-    func_global_asm_80703374(arg0, 0, 0, 0, 0x46);
+Gfx *func_global_asm_80703374(Gfx *, s32, s32, s32, s32);
+
+Gfx *func_global_asm_806AC048(Gfx *dl, Actor *arg1) {
+    return func_global_asm_80703374(dl, 0, 0, 0, 0x46);
 }
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806AC07C.s")
 
-s32 func_global_asm_80703374(Gfx *, s32, s32, s32, s32);  // extern
 extern s8 D_global_asm_8075AB14;
 extern s8 D_global_asm_8075AB1C;
 
 Gfx *func_global_asm_806ACA88(Gfx *dl, Actor *arg1) {
-    u8 sp40[40];
+    char sp40[40];
 
     arg1->shadow_opacity += MIN(8, 0xFF - arg1->shadow_opacity);
     dl = func_global_asm_80703374(dl, 0, 0, 0, MIN(0x7F, arg1->shadow_opacity));
@@ -708,10 +709,10 @@ Gfx *func_global_asm_806ACA88(Gfx *dl, Actor *arg1) {
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->shadow_opacity);
     dl = printStyledText(dl, 1, 0x168, 0x104, D_global_asm_807FC7E0[0], 1);
-    sprintf(&sp40, &D_global_asm_8075AB14, D_global_asm_807FC7E0[1]);
-    dl = printStyledText(dl, 1, 0x208, 0x190, &sp40, 1);
-    sprintf(&sp40, &D_global_asm_8075AB1C, D_global_asm_807FC7E0[2]);
-    return printStyledText(dl, 1, 0x208, 0x21C, &sp40, 1);
+    sprintf(sp40, &D_global_asm_8075AB14, D_global_asm_807FC7E0[1]);
+    dl = printStyledText(dl, 1, 0x208, 0x190, sp40, 1);
+    sprintf(sp40, &D_global_asm_8075AB1C, D_global_asm_807FC7E0[2]);
+    return printStyledText(dl, 1, 0x208, 0x21C, sp40, 1);
 }
 
 void func_global_asm_806ACC00(u8 arg0) {
@@ -855,7 +856,7 @@ void func_global_asm_806ACFFC(void) {
             current_actor_pointer->control_state_progress = 2;
         }
     }
-    addActorToTextOverlayRenderArray(&func_global_asm_806AC048, current_actor_pointer, 1);
-    addActorToTextOverlayRenderArray(&func_global_asm_806ACF10, current_actor_pointer, 5);
+    addActorToTextOverlayRenderArray(func_global_asm_806AC048, current_actor_pointer, 1);
+    addActorToTextOverlayRenderArray(func_global_asm_806ACF10, current_actor_pointer, 5);
 }
 */

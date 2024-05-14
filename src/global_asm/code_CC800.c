@@ -75,12 +75,12 @@ void func_global_asm_806C7B50(Actors actorIndex, u8 arg1, Actor *player) {
 
     spawnActor(actorIndex, 0x82);
     moveAndScaleActorToAnother(last_spawned_actor, player, 0.15f);
-    temp_v0 = last_spawned_actor->PaaD;
+    temp_v0 = last_spawned_actor->additional_actor_data;
     temp_v0->unk4 = player;
     temp_v0->unk8 = arg1;
 }
 
-void func_global_asm_806C7BAC(s32 arg0, s32 arg1) {
+void func_global_asm_806C7BAC(Actor *arg0, s32 arg1) {
     // TODO: Is this aaD type actually correct? The args line up but that's all I know right now
     // Maybe run it through a debugger or something
     OtherAdditionalActorData *temp_v0;
@@ -130,7 +130,6 @@ Struct80750948 *func_global_asm_806C7C94(u8 arg0) {
     return &D_global_asm_80750948[i];
 }
 
-// Delay slot problem with mips_to_c
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C7D40.s")
 
 void func_global_asm_806C80E4(void) {

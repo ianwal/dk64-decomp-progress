@@ -229,9 +229,9 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     
     temp_t7 = (arg1->unk168 / 30);
     if (temp_t7) {
-        sprintf(&sp4C, "%d", MIN(3, temp_t7));
+        sprintf(sp4C, "%d", MIN(3, temp_t7));
     } else {
-        sprintf(&sp4C, getTextString(0x26, 9, 1));
+        sprintf(sp4C, getTextString(0x26, 9, 1));
     }
     if ((arg1->unk168 % 30) == 0) {
         if (temp_t7) {
