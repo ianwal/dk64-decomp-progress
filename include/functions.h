@@ -59,7 +59,7 @@ void playSoundAtObjectModel2(s16 arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 a
 void playSoundAtPosition(f32 x, f32 y, f32 z, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
 void playSound(s16, u32, f32, f32, s32, s32);
 
-Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, void *string);
+Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, char *string);
 
 void func_global_asm_80613C48(Actor*, s16, f32, f32);
 
@@ -2188,7 +2188,7 @@ void func_global_asm_80613794(Actor*, u8);
 u16 func_global_asm_80688C84(u16);
 f32 func_global_asm_80689DD4(f32 x, f32 y, f32 z);
 s32 func_global_asm_80675C70(s16, s16, s16);
-s32 getCenterOfString(s16, void*);
+s32 getCenterOfString(s16 renderStyle, char *string);
 void func_global_asm_8061C464(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 Gfx *func_global_asm_805FE4D4(Gfx *arg0);
 
@@ -2224,7 +2224,7 @@ void func_global_asm_8060ED6C(Struct131B0_2 *arg0, Struct131B0_1 *arg1, s32 arg2
 void func_global_asm_8060F928(Struct131B0_2*, Struct131B0_1*);
 
 int sprintf(char *str, const char *format, ...);
-Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, void *string, u32 extraBitfield);
+Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, char *string, u32 extraBitfield);
 
 int func_global_asm_8071ABDC(); // TODO: Datatype
 void func_global_asm_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);

@@ -364,7 +364,7 @@ extern TempCBig D_global_asm_807FC630[];
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068C20C.s")
 
 /*
-void *func_global_asm_8068C20C(Gfx *dl, u8 arg1) {
+Gfx *func_global_asm_8068C20C(Gfx *dl, u8 arg1) {
     TempCBig *temp_v1;
     u8 i;
 

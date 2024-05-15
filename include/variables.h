@@ -38,6 +38,7 @@ extern OSContPad *D_global_asm_807ECDEC;
 
 extern u16 D_global_asm_807446C0[];
 
+extern Gfx *D_global_asm_8076A050[];
 extern void *D_global_asm_8074E880[]; // TODO: Sprite
 
 extern u8 D_global_asm_807445E0[]; // level_index_mapping

@@ -2541,7 +2541,7 @@ us,asm,func_global_asm_806D10D0,64,yes
 us,asm,func_global_asm_80671E00,340,no
 us,asm,func_global_asm_80704108,40,yes
 us,asm,printStyledText,1880,no
-us,asm,func_global_asm_80602498,276,no
+us,asm,func_global_asm_80602498,276,yes
 us,asm,func_global_asm_8066C904,84,yes
 us,asm,func_global_asm_806686F4,236,yes
 us,asm,gameIsInAdventureMode,52,yes

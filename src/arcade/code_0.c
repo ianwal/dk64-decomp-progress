@@ -25139,7 +25139,7 @@ void func_arcade_80024000(void) {
 }
 
 void func_arcade_8002419C(void *arg0, Gfx **arg1) {
-    Gfx *dl = (Gfx *)D_global_asm_8076A050[D_global_asm_807444FC];
+    Gfx *dl = D_global_asm_8076A050[D_global_asm_807444FC];
     gSPSegment(dl++, 0x00, NULL);
     gSPSegment(dl++, 0x02, osVirtualToPhysical(arg0));
     gSPSegment(dl++, 0x01, osVirtualToPhysical(D_global_asm_8076A080));

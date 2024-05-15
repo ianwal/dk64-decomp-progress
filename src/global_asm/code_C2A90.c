@@ -245,7 +245,7 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
 
     dl = func_global_asm_8070068C(dl);
-    dl = printStyledText(dl, 1, (320 - getCenterOfString(1, &sp4C)) << 1, 0xAA, &sp4C, 1);
+    dl = printStyledText(dl, 1, (320 - getCenterOfString(1, sp4C)) << 1, 0xAA, sp4C, 1);
     if (arg1->unk168-- == 0) {
         arg1->control_state_progress++;
     }

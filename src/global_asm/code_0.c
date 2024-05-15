@@ -362,7 +362,6 @@ void func_global_asm_805FBFF4(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FC2B0.s")
 
 extern s32 *D_global_asm_8076A048;
-extern Gfx* D_global_asm_8076A050[];
 extern s32 D_global_asm_8076A150;
 extern s32 D_global_asm_8076A088;
 extern s32 D_global_asm_8076A08C;
@@ -528,8 +527,8 @@ void func_global_asm_805FE544(u8 arg0) {
     } else {
         D_global_asm_8076A058 = arg0 * 3000;
     }
-    D_global_asm_8076A050[0] = (void*)malloc(D_global_asm_8076A058 * 8);
-    D_global_asm_8076A050[1] = (void*)malloc(D_global_asm_8076A058 * 8);
+    D_global_asm_8076A050[0] = malloc(D_global_asm_8076A058 * sizeof(Gfx));
+    D_global_asm_8076A050[1] = malloc(D_global_asm_8076A058 * sizeof(Gfx));
     func_global_asm_805FE71C(func_global_asm_805FE634(D_global_asm_8076A050[0], 0), 0, &D_global_asm_8076A088, 1);
     func_global_asm_805FE71C(func_global_asm_805FE634(D_global_asm_8076A050[1], 1), 1, &D_global_asm_8076A088, 1);
 }

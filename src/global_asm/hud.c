@@ -209,10 +209,10 @@ void func_global_asm_806F8004(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg
     f32 sp34;
 
     sp34 = character_change_array[cc_player_index].near;
-    guRotateF(&sp88, arg0, 1.0f, 0.0f, 0.0f);
-    guMtxXFMF(&sp88, 0.0f, 0.0f, -sp34, &sp3C, &sp40, &sp44);
-    guRotateF(&sp48, arg1, 0.0f, 1.0f, 0.0f);
-    guMtxXFMF(&sp48, sp3C, sp40, sp44, arg2, arg3, arg4);
+    guRotateF(sp88, arg0, 1.0f, 0.0f, 0.0f);
+    guMtxXFMF(sp88, 0.0f, 0.0f, -sp34, &sp3C, &sp40, &sp44);
+    guRotateF(sp48, arg1, 0.0f, 1.0f, 0.0f);
+    guMtxXFMF(sp48, sp3C, sp40, sp44, arg2, arg3, arg4);
     temp_f2_2 = -sp34 / *arg4;
     *arg2 *= temp_f2_2;
     *arg3 *= temp_f2_2;

@@ -240,7 +240,6 @@ void func_global_asm_8070A934(s32 nextMap, s32 nextExit) {
 Gfx *func_global_asm_805FE398(Gfx *);
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
-extern Gfx *D_global_asm_8076A050[];
 extern void *D_global_asm_8076A080;
 extern u16 D_global_asm_8076A09C;
 

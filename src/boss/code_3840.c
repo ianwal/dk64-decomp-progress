@@ -118,18 +118,18 @@ Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
 
     sp4C = malloc(sizeof(Mtx));
     func_global_asm_8061134C(sp4C);
-    guScaleF(&sp90, 0.6f, 0.6f, 1.0f);
-    guTranslateF(&sp50, 100.0f, (character_change_array->unk276 * 4) - 0x3C, 0);
-    guMtxCatF(&sp90, &sp50, &sp90);
-    guMtxF2L(&sp90, sp4C);
+    guScaleF(sp90, 0.6f, 0.6f, 1.0f);
+    guTranslateF(sp50, 100.0f, (character_change_array->unk276 * 4) - 0x3C, 0);
+    guMtxCatF(sp90, sp50, sp90);
+    guMtxF2L(sp90, sp4C);
     gSPMatrix(dl++, sp4C, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    sprintf(&sp3C, "ROUND %d", D_global_asm_80750AD4);
+    sprintf(sp3C, "ROUND %d", D_global_asm_80750AD4);
     gSPDisplayList(dl++, &D_1000118);
     gDPPipeSync(dl++);
     gDPSetCombineMode(dl++ , G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     dl = func_global_asm_8070068C(dl++);
-    return printStyledText(dl, 1, 0, 0, &sp3C, 0);
+    return printStyledText(dl, 1, 0, 0, sp3C, 0);
 }
 
 void func_boss_80028818() {

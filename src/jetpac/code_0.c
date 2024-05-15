@@ -6,7 +6,6 @@ extern s32 D_global_asm_8076A048;
 extern s32 D_global_asm_8076A088;
 extern u8 D_global_asm_8076A0B1;
 extern s32 D_global_asm_8076A08C;
-extern s32 D_global_asm_8076A050[];
 extern s32 D_global_asm_8076A080;
 
 extern f32 D_global_asm_807FD888;

@@ -618,7 +618,7 @@ void func_global_asm_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ABA6C.s")
 
-Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, void *string) {
+Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, char *string) {
     f32 sp70[4][4];
     f32 sp30[4][4];
     Mtx *mtx;

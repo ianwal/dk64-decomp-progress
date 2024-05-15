@@ -16,7 +16,7 @@ typedef struct {
     u8 unk18;
     u8 unk19;
     u16 unk1A;
-    s32 unk1C[1]; // TODO: How many?
+    Actor *unk1C[1]; // TODO: How many?
 } Struct8002EDD4_arg0;
 
 // TODO: Is this the same as RaceStruct6?
@@ -219,10 +219,10 @@ void func_race_8002EDD4(Struct8002EDD4_arg0 *arg0) {
                 if (i) {
                     var_f22 *= -1.0f;
                 }
-                guRotateF(&spD0, last_spawned_actor->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
-                guTranslateF(&sp90, arg0->unk0, arg0->unk2, arg0->unk4);
-                guMtxCatF(&spD0, &sp90, &spD0);
-                guMtxXFMF(&spD0, var_f22, 0.0f, 0.0f, &last_spawned_actor->x_position, &last_spawned_actor->y_position, &last_spawned_actor->z_position);
+                guRotateF(spD0, last_spawned_actor->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
+                guTranslateF(sp90, arg0->unk0, arg0->unk2, arg0->unk4);
+                guMtxCatF(spD0, sp90, spD0);
+                guMtxXFMF(spD0, var_f22, 0.0f, 0.0f, &last_spawned_actor->x_position, &last_spawned_actor->y_position, &last_spawned_actor->z_position);
             }
         } else {
             func_race_8002ED04(arg0->unk14, arg0->unk10, (arg0->unk18 == 1));

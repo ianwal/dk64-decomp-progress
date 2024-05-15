@@ -140,7 +140,7 @@ extern f32 menu_icon_transition_scale;
 extern f32 menu_selection_speed;
 
 s32 func_menu_800322D0(s32);
-s32 func_menu_80030340(Actor*, s32, Gfx*, s32);
+Gfx *func_menu_80030340(Actor*, s32, Gfx*, s32);
 void func_global_asm_8061D4E4(Actor*);
 void func_menu_80030894(MenuAdditionalActorData*,void*,s32,s32,f32,u8,s32); // Param 1 is ActorAdditionalData
 
@@ -386,7 +386,7 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
 }
 */
 
-s32 *label_string_pointer_array;
+char **label_string_pointer_array;
 
 typedef struct {
     f32 unk0;
@@ -413,17 +413,17 @@ Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
     s32 pad3;
     f32 sp7C[4][4];
     f32 sp3C[4][4];
-    HeapHeader *sp38;
+    Mtx *sp38;
 
     global_properties_bitfield |= 0x10;
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     spD0 = func_menu_800317E8(aaD, 160.0f, 20.0f, &spC4, &spC0, 5, 1, 0.3f);
-    sp38 = malloc(0x40);
+    sp38 = malloc(sizeof(Mtx));
     func_global_asm_8061134C(sp38);
-    guScaleF(&sp7C, 0.7f, 0.7f, 1.0f);
-    guTranslateF(&sp3C, spC4 * 4.0, spC0 * 4.0, 0);
-    guMtxCatF(&sp7C, &sp3C, &sp7C);
-    guMtxF2L(&sp7C, sp38);
+    guScaleF(sp7C, 0.7f, 0.7f, 1.0f);
+    guTranslateF(sp3C, spC4 * 4.0, spC0 * 4.0, 0);
+    guMtxCatF(sp7C, sp3C, sp7C);
+    guMtxF2L(sp7C, sp38);
     gSPMatrix(dl++, sp38, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     return printStyledText(dl, 1, 0, 0, label_string_pointer_array[spD0], 0x80);
 }
@@ -524,24 +524,24 @@ Gfx *func_menu_80028D3C(Actor *arg0, Gfx *dl) {
     f32 temp[4][4];
     void *aaD = arg0->additional_actor_data;
     s32 pad2;
-    s32 sp2C;
+    char sp2C[4]; // TODO: How big?
 
     global_properties_bitfield &= ~0x10;
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     sp100 = func_menu_800317E8(aaD, 160.0f, 15.0f, &spFC, &spF8, 4, 1, 0.3f);
     if (sp100 == 2) {
-        sprintf(&sp2C, "%s", label_string_pointer_array[5]);
+        sprintf(sp2C, "%s", label_string_pointer_array[5]);
     } else {
         if (sp100 == 3) {
             sp100 = 2;
         }
         if (func_menu_800322D0(sp100) != 0) {
-            sprintf(&sp2C, "%s", label_string_pointer_array[6]);
+            sprintf(sp2C, "%s", label_string_pointer_array[6]);
         } else {
-            sprintf(&sp2C, "%s %d", label_string_pointer_array[7], sp100 + 1);
+            sprintf(sp2C, "%s %d", label_string_pointer_array[7], sp100 + 1);
         }
     }
-    return printText(dl, spFC * 4.0f, spF8 * 4.0f, 0.6f, &sp2C);
+    return printText(dl, spFC * 4.0f, spF8 * 4.0f, 0.6f, sp2C);
 }
 
 void func_menu_80028EA8(Actor *arg0, s32 arg1) {
@@ -667,11 +667,11 @@ Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     spFE = sp110 * 4.0f;
     sp100 = sp10C * 4.0f;
     if (func_menu_800322D0(sp120)) {
-        sprintf(&sp34, "%s", label_string_pointer_array[6]);
+        sprintf(sp34, "%s", label_string_pointer_array[6]);
     } else {
-        sprintf(&sp34, "%s %d", label_string_pointer_array[7], sp120 + 1);
+        sprintf(sp34, "%s %d", label_string_pointer_array[7], sp120 + 1);
     }
-    dl = printText(dl, spFE, sp100, 0.6f, &sp34);
+    dl = printText(dl, spFE, sp100, 0.6f, sp34);
     sp100 -= 0x3C;
     return printText(dl, sp110 * 4.0f, sp100, 0.6f, label_string_pointer_array[8]);
 }
@@ -1614,7 +1614,7 @@ void func_menu_8002FE08(MenuAdditionalActorData *MaaD, s32 arg1) {
 // Jumptable, 916 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002FEBC.s")
 
-void func_menu_80030258(Gfx *dl, Actor *arg1) {
+Gfx *func_menu_80030258(Gfx *dl, Actor *arg1) {
     gDPPipeSync(dl++);
     gSPDisplayList(dl++, &D_1000118);
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
@@ -1622,7 +1622,7 @@ void func_menu_80030258(Gfx *dl, Actor *arg1) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    func_menu_80030340(arg1, 1, dl, 0);
+    return func_menu_80030340(arg1, 1, dl, 0);
 }
 
 extern s8 D_8076A0D0[];
@@ -1641,7 +1641,7 @@ typedef struct {
     s8 unk17; // Used
 } AAD_80030340;
 
-s32 func_menu_80030340(Actor *actor, s32 arg1, Gfx *dl, s32 arg3) {
+Gfx *func_menu_80030340(Actor *actor, s32 arg1, Gfx *dl, s32 arg3) {
     AAD_80030340 *aaD;
     u32 sp18;
     u16 temp_v0;
@@ -1956,8 +1956,8 @@ void func_menu_80030A90(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk340 += var_v0->unk0;
     arg0->unk344 += var_v0->unk4;
     var_v0->unk8 += var_v0->unkC;
-    guRotateF(&sp30, var_v0->unk8, 0, 0, 1.0f);
-    guMtxF2L(&sp30, &arg0->unk128[D_global_asm_807444FC]);
+    guRotateF(sp30, var_v0->unk8, 0, 0, 1.0f);
+    guMtxF2L(sp30, &arg0->unk128[D_global_asm_807444FC]);
 }
 
 // Jumptable

@@ -55,7 +55,7 @@ typedef struct Critter {
     u8 unk1E2;
     u8 unk1E3;
     s16 unk1E4[2];
-    s32 unk1E8[2];
+    void *unk1E8[2];
 } Critter;
 
 typedef struct CritterController {
@@ -577,8 +577,8 @@ typedef struct {
 void func_critter_80025A3C(Struct800247F4 *arg0) {
     f32 sp30[4][4];
 
-    func_critter_800258B0(&sp30, -arg0->unk2, arg0->unk0, 0, arg0->unk38 * 0.07f, arg0->unk8, arg0->unkC + arg0->unk14, arg0->unk10);
-    guMtxF2L(&sp30, arg0->unk60[D_global_asm_807444FC]);
+    func_critter_800258B0(sp30, -arg0->unk2, arg0->unk0, 0, arg0->unk38 * 0.07f, arg0->unk8, arg0->unkC + arg0->unk14, arg0->unk10);
+    guMtxF2L(sp30, arg0->unk60[D_global_asm_807444FC]);
 }
 
 Gfx *func_critter_800247F4(Gfx *, Struct800247F4 *);
@@ -640,23 +640,23 @@ Gfx *func_critter_80025AD0(Gfx *dl, Struct80025AD0 *arg1) {
     return dl;
 }
 
-s32 func_critter_80025D1C(s32 arg0, CritterController *arg1) {
+Gfx *func_critter_80025D1C(Gfx *dl, CritterController *arg1) {
     s32 i;
     s32 var_s1;
 
     if (arg1 == NULL) {
-        return arg0;
+        return dl;
     }
     D_critter_80029BA8 = 0;
     var_s1 = arg1->unk4;
     if (var_s1 != 0) {
-        arg0 = func_critter_800257D4(arg0);
+        dl = func_critter_800257D4(dl);
     }
     for (i = 0; i < arg1->critter_count; i++) {
-        arg0 = func_critter_80025AD0(arg0, var_s1);
+        dl = func_critter_80025AD0(dl, var_s1);
         var_s1 += sizeof(CritterController);
     }
-    return arg0;
+    return dl;
 }
 
 void func_critter_80025DB8(CritterStruct6 *arg0, CritterStruct6 *arg1, u8 arg2, s16 arg3, u8 arg4) {
@@ -1046,14 +1046,14 @@ void func_critter_80026FD0(void *arg0) {
     func_global_asm_80611690(D_critter_80029BA4);
 }
 
-s32 func_critter_80027034(s32 arg0) {
+Gfx *func_critter_80027034(Gfx *dl) {
     if (global_properties_bitfield & 0x10) {
         if (!(global_properties_bitfield & 2)) {
             func_critter_80026C9C(D_critter_80029BA0);
         }
-        arg0 = func_critter_80025D1C(arg0, D_critter_80029BA0);
+        dl = func_critter_80025D1C(dl, D_critter_80029BA0);
     }
-    return arg0;
+    return dl;
 }
 
 void func_critter_8002708C(CritterController *arg0) {

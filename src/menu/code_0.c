@@ -223,13 +223,13 @@ Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
         }
     } else {
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-        sprintf(&sp70, "q %s", getTextString(0x2A, 0, 1));
-        dl = printStyledText(dl, 1, 350, 400, &sp70, 1);
-        sprintf(&sp70, "b %s", getTextString(0x2A, 1, 1));
-        dl = printStyledText(dl, 1, 350, 500, &sp70, 1);
+        sprintf(sp70, "q %s", getTextString(0x2A, 0, 1));
+        dl = printStyledText(dl, 1, 350, 400, sp70, 1);
+        sprintf(sp70, "b %s", getTextString(0x2A, 1, 1));
+        dl = printStyledText(dl, 1, 350, 500, sp70, 1);
         if (snide_aad->minigame_menu_unlocked) {
-            sprintf(&sp70, "n %s", getTextString(0x2A, 2, 1));
-            dl = printStyledText(dl, 1, 350, 600, &sp70, 1);
+            sprintf(sp70, "n %s", getTextString(0x2A, 2, 1));
+            dl = printStyledText(dl, 1, 350, 600, sp70, 1);
         }
     }
     return dl;

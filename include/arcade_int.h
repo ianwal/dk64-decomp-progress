@@ -51,7 +51,7 @@ typedef struct arcade_struct_1 {
         f32 unk10; // lifetime?
         s32 unk10_s32;
     };
-    s32 *sprite; // imageDataPointer
+    void *sprite; // imageDataPointer
     u8 object_type; // object_type
     u8 unk19; // state?
     u8 unk1A;
@@ -179,7 +179,6 @@ extern s32 arcade_text_y;
 
 /* global_asm */
 extern u8  D_global_asm_807444FC;
-extern Gfx *D_global_asm_8076A050[];
 extern s32 D_global_asm_8076A048;
 extern void *D_global_asm_8076A080;
 extern s32 D_global_asm_8076A088;

@@ -202,8 +202,53 @@ void func_global_asm_80602488(u8 arg0) {
     D_global_asm_80745654 = arg0;
 }
 
-// Doable, kinda annoying
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80602498.s")
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+} Struct80770DD8;
+
+extern Struct80770DD8 D_80770DD8;
+extern s8 D_global_asm_80745650;
+
+typedef struct {
+    s16 unk0; // map
+    s16 unk2;
+    s16 unk4; // song index
+    s16 unk6;
+    u8 unk8;
+    u8 unk9;
+} Struct807459FC;
+
+extern Struct807459FC D_global_asm_807459FC[];
+extern u8 D_global_asm_80770DC9;
+
+void func_global_asm_80602498(void) {
+    s16 temp_v0;
+    s16 max;
+    u8 i;
+
+    D_global_asm_80745650 = 1;
+    if (D_global_asm_80745654 != 0) {
+        if (D_80770DD8.unk1 == 0xFF) {
+            D_80770DD8.unk1 = 0;
+        }
+    } else {
+        max = 0x1D;
+        temp_v0 = func_global_asm_806531B8(character_change_array->look_at_eye_x, character_change_array->look_at_eye_y, character_change_array->look_at_eye_z, 0);
+        for (i = 0; i < max; i++) {
+            if ((current_map == D_global_asm_807459FC[i].unk0) && (temp_v0 == D_global_asm_807459FC[i].unk2)) {
+                D_global_asm_80770DC9 = D_global_asm_807459FC[i].unk8;
+                playSong(D_global_asm_807459FC[i].unk4, 1.0f);
+                if (D_global_asm_807459FC[i].unk6 != 0) {
+                    D_80770DD8.unk1 = D_global_asm_807459FC[i].unk6;
+                }
+                return;
+            }
+        }
+        D_80770DD8.unk1 = 0xFF;
+        return;
+    }
+}
 
 void func_global_asm_806025AC(s32 arg0, s32 arg1, s32 arg2) {
     func_global_asm_80602498();

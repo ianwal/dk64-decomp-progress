@@ -141,7 +141,7 @@ void func_global_asm_806FFF5C(void) {
     getPointerTableFile(0x19, 0x138B, 1, 1);
 }
 
-// Doable
+// Doable, matrix arrays
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_806FFF88.s")
 
 // Haha what, some crazy one liner
