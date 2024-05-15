@@ -179,8 +179,58 @@ void func_global_asm_80699914(void) {
 // Huge, lots of ActorAnimationState stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_80699958.s")
 
-// doable
+// doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A614.s")
+
+typedef struct {
+    u8 unk0[0x98 - 0x0];
+    f32 unk98;
+    u8 unk9C[0xA8 - 0x9C];
+    f32 unkA8;
+    u8 unkAC[0xB8 - 0xAC];
+    u8 unkB8;
+} AAD_8069A614_unk0;
+
+typedef struct {
+    AAD_8069A614_unk0 *unk0[4];
+} AAD_8069A614;
+
+/*
+void func_global_asm_8069A614(f32 arg0, u8 arg1) {
+    f64 temp_f0;
+    s16 i;
+    s32 found;
+    AAD_8069A614 *aaD;
+    AAD_8069A614_unk0 *temp_v1;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    found = FALSE;
+    i = 0;
+    while (i < 4 && !found) {
+        temp_v1 = aaD->unk0[i];
+        if (!temp_v1->unkB8) {
+            found = TRUE;
+        } else {
+            i++;
+        }
+    }
+    if (found) {
+        temp_v1->unkB8 = TRUE;
+        switch (arg1) { // irregular
+            case 0:
+                temp_f0 = arg0 / 843.0;
+                temp_v1->unkA8 = 10.0f;
+                temp_v1->unk98 = ABS(temp_f0);
+                break;
+            case 1:
+                temp_f0 = arg0 / 480.0;
+                temp_v1->unkA8 = 12.0f;
+                temp_v1->unk98 = ABS(temp_f0);
+                break;
+        }
+    }
+}
+*/
 
 // TODO: Needs some more shape on D_global_asm_807FBB70.unk0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A750.s")

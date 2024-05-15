@@ -1168,8 +1168,8 @@ void func_global_asm_80671A6C(Struct80671A6C *arg0, u8 arg1) {
         temp_s6 = arg0->unk74[var_v0];
         while (current != NULL) {
             if (current->unk18 == -1) {
-                memcpy(&sp5C[0], arg0->unk70, 0x40);
-                guMtxXFMF(&sp5C[0], current->unk0, current->unk4, current->unk8, &spA4, &spA0, &sp9C);
+                memcpy(sp5C, arg0->unk70, 0x40);
+                guMtxXFMF(sp5C, current->unk0, current->unk4, current->unk8, &spA4, &spA0, &sp9C);
             } else {
                 guMtxXFML(&temp_s6[current->unk18], current->unk0, current->unk4, current->unk8, &spA4, &spA0, &sp9C);
             }

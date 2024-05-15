@@ -758,8 +758,41 @@ Gfx *func_global_asm_80713438(Gfx *dl, u8 arg1) {
     return printStyledText(dl, 1, sp28 * 4.0f, temp_f16 * 4.0f, sp34, 4);
 }
 
-// Displaylist stuff, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807135B4.s")
+extern u8 D_global_asm_8074450C;
+
+typedef struct {
+    s32 unk0[2];
+} Struct80755370;
+
+extern Struct80755370 D_global_asm_80755370;
+extern u8 D_global_asm_807ECD09;
+
+Gfx *func_global_asm_807135B4(Gfx *dl) {
+    char *string;
+    s32 sp40;
+    Struct80755370 sp38;
+    f32 sp34;
+    f32 sp30;
+
+    sp40 = 0;
+    if (((object_timer - 0x5A) >= 0) && !((object_timer - 0x5A) & 0x10)) {
+        sp38 = D_global_asm_80755370;
+        sp34 = D_global_asm_80744490;
+        sp30 = 0xBD - func_global_asm_806FD894(6);
+        if (D_global_asm_807ECD09) {
+            if (!gameIsInDKTVMode() || current_map == MAP_DK_RAP) {
+                return dl;
+            } else {
+                sp40 = 1;
+            }
+        }
+        sp34 *= 0.5;
+        gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+        string = getTextString(0xC, sp38.unk0[sp40], 1);
+        dl = printText(dl, sp34 * 4.0f, ((f32)D_global_asm_8074450C) * sp30 * 4.0f, 0.7f, string);
+    }
+    return dl;
+}
 
 s32 func_global_asm_8071375C(s32 arg0) {
     return arg0;

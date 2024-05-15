@@ -216,8 +216,40 @@ s32 func_global_asm_80732064(s32 arg0, s32 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_8073209C.s")
 
-// doable
+// doable, close, not 100% on signature
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80732158.s")
+
+/*
+void func_global_asm_80732158(Actor *arg0) {
+    Actor *sp48; // compiler-managed
+    s32 sp40;
+    f32 sp3C;
+    s32 var_v0;
+    s32 var_v1;
+    u32 *temp_s0;
+
+    sp48 = arg0->unk11C;
+    sp40 = arg0->unkF4;
+    sp3C = arg0->unk104;
+    D_global_asm_807FF018 = 0;
+    while ((sp48 != NULL) && (D_global_asm_807FF018 < 0x12)) {
+        temp_s0 = sp48->unk0;
+        sp48 = &sp48->animation_state;
+        var_v0 = func_global_asm_8073209C(temp_s0, &sp40, sp3C, &sp48);
+        if (var_v0 == 0) {
+            var_v0 = func_global_asm_8073202C(temp_s0, sp40, &sp3C);
+        }
+        if (var_v0 == 0) {
+            func_global_asm_80732064(temp_s0, &sp40);
+        }
+        var_v1 = (D_global_asm_807FF018 != 0 && !(D_global_asm_807FEF88[D_global_asm_807FF018 - 1].unk4 < 0x10));
+        if (var_v1) {
+            break;
+        }
+    }
+    D_global_asm_807563B8 += 1;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80732280.s")
 
