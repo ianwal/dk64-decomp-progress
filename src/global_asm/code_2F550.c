@@ -662,7 +662,7 @@ u8 func_global_asm_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_
 }
 */
 
-// Displaylist stuff
+// Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062BF24.s")
 
 void func_global_asm_8062EE48(u8 arg0);

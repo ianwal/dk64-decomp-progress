@@ -237,8 +237,40 @@ void func_global_asm_8070A934(s32 nextMap, s32 nextExit) {
 }
 */
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070AC74.s")
+Gfx *func_global_asm_805FE398(Gfx *);
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
+extern Gfx *D_global_asm_8076A050[];
+extern void *D_global_asm_8076A080;
+extern u16 D_global_asm_8076A09C;
+
+void func_global_asm_8070AC74(Mtx *arg0, Gfx **dlp) {
+    Gfx *dl;
+    dl = D_global_asm_8076A050[D_global_asm_807444FC];
+    gSPSegment(dl++, 0x00, 0x00000000);
+    gSPSegment(dl++, 0x02, osVirtualToPhysical(arg0));
+    gSPSegment(dl++, 0x01, osVirtualToPhysical(D_global_asm_8076A080));
+    gSPDisplayList(dl++, &D_1000090);
+    dl = func_global_asm_805FCFD8(dl);
+    dl = func_global_asm_805FE398(dl);
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    guTranslate(&arg0[6], 0.0f, 0.0f, 0.0f);
+    guLookAt(&arg0[8], 0.0f, 0.0f, 200.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f);
+    guPerspective(arg0, &D_global_asm_8076A09C, 61.9f, 1.3333334f, 10.0f, 1000.0f, 1.0f);
+    gDPPipeSync(dl++);
+    dl = func_global_asm_805FE4D4(dl);
+    gDPSetColorDither(dl++, G_CD_MAGICSQ);
+    gDPSetAlphaDither(dl++, G_AD_PATTERN);
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, 10, 10, 309, 229);
+    gDPSetFillColor(dl++, 0xFFC1FFC1);
+    gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
+    gSPClearGeometryMode(dl++, G_ZBUFFER);
+    gDPFillRectangle(dl++, 0, 0, D_global_asm_80744490 - 1, D_global_asm_80744494 - 1);
+    gSPPerspNormalize(dl++, D_global_asm_8076A09C);
+    gSPClipRatio(dl++, FRUSTRATIO_2);
+    *dlp = dl;
+}
 
 extern s32 D_global_asm_80744470[];
 extern s16 D_global_asm_80744494;
