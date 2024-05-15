@@ -148,7 +148,7 @@ void func_minecart_800241A0(s16 *arg0, u8 arg1, u8 arg2) {
     if (((func_global_asm_806119A0() & 0xFF) >= (u32)arg2) && (*arg0 == 0)) {
         playSoundAtActorPosition(current_actor_pointer, 0x8A, 0x96, 0x7F, 0x32);
         func_global_asm_80714950((s32)current_actor_pointer);
-        func_global_asm_8071498C(&func_global_asm_8071A440);
+        func_global_asm_8071498C(func_global_asm_8071A440);
         D_minecart_80028C30 = func_global_asm_80714C08(&D_global_asm_8072006C, 0.4f, current_actor_pointer, arg1 + 7, 2);
     }
 }

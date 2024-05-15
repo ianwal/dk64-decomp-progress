@@ -293,8 +293,8 @@ void func_jetpac_8002976C(JetpacStruct *arg0) {
 
 void func_jetpac_80029884(struct_jetpac_80029640 *arg0) {
     arg0->unk28 = 0xB;
-    func_jetpac_80029640(arg0, 1.60000002384f, 0.5f);
-    arg0->unk48 = &func_jetpac_800298C8;
+    func_jetpac_80029640(arg0, 1.6f, 0.5f);
+    arg0->unk48 = func_jetpac_800298C8;
 }
 
 void func_jetpac_800298C8(JetpacStruct *arg0) {
@@ -303,7 +303,7 @@ void func_jetpac_800298C8(JetpacStruct *arg0) {
 }
 
 void func_jetpac_8002992C(JetpacStruct *arg0) {
-    arg0->unk48 = &func_jetpac_8002998C;
+    arg0->unk48 = func_jetpac_8002998C;
     arg0->unk44 = 0x50;
     if (arg0->unk4 < 88.0f) {
         arg0->unk8 = -1.2f;
@@ -348,7 +348,7 @@ void func_jetpac_8002998C(JetpacStruct *arg0) {
 }
 
 void func_jetpac_80029AF8(JetpacStruct *arg0) {
-    arg0->unk48 = &func_jetpac_80029C1C;
+    arg0->unk48 = func_jetpac_80029C1C;
     arg0->unk44 = 0x28;
     if (arg0->unk4 < 88.0f) {
         arg0->unk8 = -1.2f;
@@ -424,7 +424,7 @@ void func_jetpac_80029C1C(JetpacStruct *arg0) {
 }
 
 void func_jetpac_80029E0C(struct_jetpac_80029640 *arg0) {
-    arg0->unk48 = &func_jetpac_80029F7C;
+    arg0->unk48 = func_jetpac_80029F7C;
     arg0->unk44 = 0x37;
     arg0->unk2C = (func_jetpac_80027210() * 60.0f) + 10.0f;
     arg0->unk40 = (func_jetpac_80027210() * 180.0f) + 10.0f;
@@ -516,7 +516,7 @@ void func_jetpac_80029F7C(struct_jetpac_8002998C *arg0) {
 */
 
 void func_jetpac_8002A254(JetpacStruct *arg0) {
-    arg0->unk48 = &func_jetpac_8002A530;
+    arg0->unk48 = func_jetpac_8002A530;
     arg0->unk44 = 0x32;
     if (arg0->unk4 < 88.0f) {
         arg0->unk18 = 0;
@@ -626,7 +626,7 @@ void func_jetpac_8002A67C(JetpacStruct *arg0) {
 }
 
 void func_jetpac_8002A6C0(JetpacStruct *arg0) {
-    arg0->unk48 = &func_jetpac_8002A758;
+    arg0->unk48 = func_jetpac_8002A758;
     arg0->unk44 = 0x3C;
     arg0->unk2C = (s32) (func_jetpac_80027210() * 16.0f);
     if (arg0->unk4 < 88.0f) {
@@ -681,7 +681,7 @@ void func_jetpac_8002A8F0(struct_jetpac_80029640 *arg0) {
     arg0->unk28 = 0xE;
     arg0->unk4C = &D_jetpac_8002E8C0;
     func_jetpac_80029640(arg0, 1.2f, 0.3f);
-    arg0->unk48 = &func_jetpac_8002976C;
+    arg0->unk48 = func_jetpac_8002976C;
 }
 
 void func_jetpac_8002A944(JetpacStruct *arg0) {

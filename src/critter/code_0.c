@@ -829,7 +829,7 @@ s32 func_critter_80026530(Critter *arg0, s32 arg1) {
 void func_critter_80026874(Critter *arg0, CritterController *arg1) {
     if (arg0->unk1E1 & 1) {
         if (arg0->unk1E1 & 4) {
-            func_critter_8002658C(arg0, arg1, 0, &func_critter_80026530);
+            func_critter_8002658C(arg0, arg1, 0, func_critter_80026530);
         }
     }
     if (arg0->unk1E2 == 2) {
@@ -932,7 +932,7 @@ void func_critter_80026B78(CritterController *arg0) {
         if (critter->unk1E0 == 0) {
             func_critter_80026874(critter, arg0);
         } else {
-            func_critter_8002658C(critter, arg0, &func_critter_80026904, &func_critter_80026A5C);
+            func_critter_8002658C(critter, arg0, func_critter_80026904, func_critter_80026A5C);
         }
         critter->unk44 = critter->unk42;
         if (var_s3 != NULL) {

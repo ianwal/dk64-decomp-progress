@@ -489,9 +489,9 @@ void func_global_asm_8069FDA0(void) {
         current_actor_pointer->unkE0 = (temp_f12 * -8.0) + 12.0;
         current_actor_pointer->y_rotation = 255.0f * temp_f12;
         if ((current_actor_pointer->unk15F >= 0x14) && (current_actor_pointer->unk15F < 0x1E)) {
-            addActorToTextOverlayRenderArray(&func_global_asm_8069F904, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_global_asm_8069F904, current_actor_pointer, 3);
         } else {
-            addActorToTextOverlayRenderArray(&func_global_asm_8069FA40, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_global_asm_8069FA40, current_actor_pointer, 3);
         }
         if ((current_actor_pointer->unk15F == 0) && (current_actor_pointer->unk160 == 3)) {
             spawnActor(ACTOR_TEXT_OVERLAY, 0);
@@ -606,7 +606,7 @@ void func_global_asm_806A0330(void) {
             getBonePosition(current_actor_pointer, i, &x, &y, &z);
             func_global_asm_8071496C(i);
             func_global_asm_807149B8(1);
-            func_global_asm_8071498C(&func_global_asm_8071BB14);
+            func_global_asm_8071498C(func_global_asm_8071BB14);
             changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
             drawSpriteAtPosition(&D_global_asm_80720BE8, 1.5f, x, y, z);
         }

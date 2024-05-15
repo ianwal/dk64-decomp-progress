@@ -1901,8 +1901,39 @@ void func_global_asm_8063CF0C(void) {
     D_global_asm_807F6190 = getPointerTableFile(7, 0x3E0, 1, 0); // Texture
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063CF3C.s")
+extern f32 D_global_asm_80747E00;
+extern f32 D_global_asm_80747E04;
+extern s16 D_global_asm_80747E08;
+
+Gfx *func_global_asm_8063CF3C(Gfx *dl) {
+    gDPPipeSync(dl++);
+    gDPSetCycleType(dl++, G_CYC_2CYCLE);
+    gSPClearGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_CULL_BOTH | G_FOG | G_LIGHTING | G_TEXTURE_GEN | G_TEXTURE_GEN_LINEAR | G_LOD | G_SHADING_SMOOTH | G_CLIPPING | 0x0040F9FA);
+    gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
+    gDPSetTextureLOD(dl++, G_TL_TILE);
+    gSPTexture(dl++, 0xFFFF, 0xFFFF, 1, 1, G_ON);
+    if (func_global_asm_80659190()) {
+        gSPSetGeometryMode(dl++, G_FOG);
+        gDPSetRenderMode(dl++, G_RM_FOG_SHADE_A, G_RM_ZB_XLU_SURF2);
+        gDPSetCombineLERP(dl++, 0, 0, 0, 0, TEXEL0, 0, TEXEL1, 0, TEXEL1, 0, TEXEL0, 0, COMBINED, 0, PRIMITIVE, 0);
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, D_global_asm_80747E08);
+    } else {
+        gDPSetRenderMode(dl++, G_RM_PASS, G_RM_ZB_XLU_SURF2);
+        gDPSetCombineLERP(dl++, 0, 0, 0, 0, TEXEL0, 0, TEXEL1, 0, TEXEL1, 0, TEXEL0, 0, COMBINED, 0, SHADE, 0);
+    }
+    gDPSetTextureImage(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 1, (s32)D_global_asm_807F6190 + 0x80000000);
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);
+    gDPLoadSync(dl++);
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 2047, 256);
+    gDPPipeSync(dl++);\
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 6, G_TX_NOLOD);\
+    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x00FC, 0x00FC);
+    gDPSetTileSize(dl++, 1, 0, (s32)D_global_asm_80747E00, 0x00FC, 0x00FC);
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, 1, 0, G_TX_NOMIRROR | G_TX_WRAP, 6, 1, G_TX_NOMIRROR | G_TX_WRAP, 6, 1);
+    gDPSetTileSize(dl++, 2, 0, (s32)D_global_asm_80747E04, 0x00FC, 0x00FC);
+    gDPSetTile(dl++, G_IM_FMT_IA, G_IM_SIZ_8b, 8, 0x0000, 2, 0, G_TX_NOMIRROR | G_TX_WRAP, 6, 1, G_TX_NOMIRROR | G_TX_WRAP, 6, 1);
+    return dl;
+}
 
 void func_global_asm_8063D1D8(void) {
     D_global_asm_80747E00 -= 5.0;

@@ -540,26 +540,26 @@ void func_global_asm_806B4194(void) {
 
 void func_global_asm_806B486C(void) {
     initializeCharacterSpawnerActor();
-    func_global_asm_806B42A8(&func_global_asm_806B3E7C, 0x251, 0x250, 0x10E);
+    func_global_asm_806B42A8(func_global_asm_806B3E7C, 0x251, 0x250, 0x10E);
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
 }
 
 void func_global_asm_806B48B8(void) {
     initializeCharacterSpawnerActor();
-    func_global_asm_806B42A8(&func_global_asm_806B3DA4, 0x251, 0x250, 0x10E);
+    func_global_asm_806B42A8(func_global_asm_806B3DA4, 0x251, 0x250, 0x10E);
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
 }
 
 void func_global_asm_806B4904(void) {
     initializeCharacterSpawnerActor();
-    func_global_asm_806B42A8(&func_global_asm_806B3D18, 0x254, 0x252, 0x108);
+    func_global_asm_806B42A8(func_global_asm_806B3D18, 0x254, 0x252, 0x108);
     func_global_asm_806B4194();
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
 }
 
 void func_global_asm_806B4958(void) {
     initializeCharacterSpawnerActor();
-    func_global_asm_806B42A8(&func_global_asm_806B3E7C, 0x251, 0x250, 0x10E);
+    func_global_asm_806B42A8(func_global_asm_806B3E7C, 0x251, 0x250, 0x10E);
     if (current_actor_pointer->control_state != 0x37) {
         func_global_asm_806B3E08();
     }
@@ -736,9 +736,9 @@ void func_global_asm_806B513C(void) {
         }
     }
     if ((object_timer & 1)) {
-        phi_a0 = &func_global_asm_806B3E7C;
+        phi_a0 = func_global_asm_806B3E7C;
     } else {
-        phi_a0 = &func_global_asm_806B3F3C;
+        phi_a0 = func_global_asm_806B3F3C;
     }
     func_global_asm_806B42A8(phi_a0, 0x30E, 0x30B, 0);
 }

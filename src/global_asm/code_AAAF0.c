@@ -416,7 +416,7 @@ void func_global_asm_806A7600(void *arg0) {
             if (var_a0_2 != 0) {
                 changeActorColor(0xFF, 0xFF, 0xFF, 0x96);
             } else {
-                func_global_asm_8071498C(&func_global_asm_8071EB70);
+                func_global_asm_8071498C(func_global_asm_8071EB70);
                 func_global_asm_80714950(0x226);
             }
             func_global_asm_80714A28(4);
@@ -484,7 +484,7 @@ void func_global_asm_806A7BDC(void) {
     if ((sp64 != 0) && (D_global_asm_807FBD70 == 4) && ((object_timer % 5U) == 0)) {
         sp60 = ((rand() >> 0xF) % 255) % 7;
         sp44 = D_global_asm_807504A4;
-        func_global_asm_8071498C(&func_global_asm_8071D28C);
+        func_global_asm_8071498C(func_global_asm_8071D28C);
         func_global_asm_807149FC(-1);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(0x64);
@@ -495,7 +495,7 @@ void func_global_asm_806A7BDC(void) {
     }
     if (!(object_timer & 0xF)) {
         func_global_asm_807149B8(1);
-        func_global_asm_8071498C(&func_global_asm_8071EB70);
+        func_global_asm_8071498C(func_global_asm_8071EB70);
         func_global_asm_80714950(0x226);
         func_global_asm_80714998(2);
         changeActorColor(0xFF, 0xFF, 0xFF, sp64 != 0 ? 0xFF : 0x7F);

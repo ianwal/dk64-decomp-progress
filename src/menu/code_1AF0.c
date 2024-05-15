@@ -501,7 +501,7 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
             break;
         case 1:
         case 5:
-            addActorToTextOverlayRenderArray(&func_menu_80025B64, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_menu_80025B64, current_actor_pointer, 3);
             break;
         case 10:
             if (func_menu_80026250(arg0) == 0) {

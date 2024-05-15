@@ -39,7 +39,7 @@ void func_global_asm_806B1348(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B5EC0/func_global_asm_806B13B4.s")
 
 void func_global_asm_8072C918(s16, s16, s16);
-u8 func_global_asm_8072D13C(u8, s32); // extern
+u8 func_global_asm_8072D13C(u8, s32);
 
 /*
 void func_global_asm_806B13B4(u8 arg0) {

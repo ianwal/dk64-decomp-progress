@@ -181,7 +181,7 @@ void func_global_asm_806B7EA0(void) {
                 break;
             case 0x11:
                 if (!func_global_asm_8061CC00()) {
-                    addActorToTextOverlayRenderArray(&func_global_asm_806B7830, current_actor_pointer, 3);
+                    addActorToTextOverlayRenderArray(func_global_asm_806B7830, current_actor_pointer, 3);
                 }
                 if (D_global_asm_807FDC90->unk2C != 0) {
                     D_global_asm_807FDC90->unk2C--;
@@ -197,7 +197,7 @@ void func_global_asm_806B7EA0(void) {
                 break;
         }
         if (!func_global_asm_8061CC00()) {
-            addActorToTextOverlayRenderArray(&func_global_asm_806B76B0, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_global_asm_806B76B0, current_actor_pointer, 3);
         }
     }
 }
@@ -223,7 +223,7 @@ void func_global_asm_806B83E4(void) {
         func_global_asm_807149FC(3);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(-0x1C2);
-        func_global_asm_8071498C(&func_global_asm_80717D4C);
+        func_global_asm_8071498C(func_global_asm_80717D4C);
         drawSpriteAtPosition(&D_global_asm_807201D4, 1.2f, current_actor_pointer->x_position, current_actor_pointer->y_position + 7.0, current_actor_pointer->z_position);
     }
     if (D_global_asm_807FDC90->unk2C != 0) {

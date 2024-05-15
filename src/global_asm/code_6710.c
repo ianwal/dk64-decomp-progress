@@ -139,7 +139,7 @@ void *func_global_asm_806022DC(s32 *arg0) {
         D_global_asm_80770188.unk0 = 1;
     }
     *arg0 = &D_global_asm_80770188;
-    return &func_global_asm_80602144;
+    return func_global_asm_80602144;
 }
 
 // Libultra stuff osRecvMesg, alUnlink, alLink

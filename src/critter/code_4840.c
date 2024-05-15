@@ -67,7 +67,7 @@ Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
 // TODO: Very close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_80028EE8.s")
 
-s32 func_critter_800288A8(void *, s32, s16); // extern
+s32 func_critter_800288A8(void *, s32, s16);
 extern s16 D_global_asm_80744490;
 
 /*

@@ -340,7 +340,7 @@ void func_global_asm_806CB53C(void) {
         if (extra_player_info_pointer->unk23E != 0) {
             func_global_asm_80714950(((rand() >> 0xF) % 10) + 0x8008);
             func_global_asm_807149FC(2);
-            func_global_asm_8071498C(&func_global_asm_80717930);
+            func_global_asm_8071498C(func_global_asm_80717930);
             func_global_asm_807149B8(1);
             func_global_asm_80714A28(6);
             func_global_asm_80714C08(&D_global_asm_8071FFA0, (((rand() >> 0xF) % 50) / 80.0) + 0.5, current_actor_pointer, 2, 0);
@@ -436,7 +436,7 @@ void func_global_asm_806CB53C(void) {
         if (extra_player_info_pointer->unk1FE != -1) {
             extra_player_info_pointer->unk1FE -= 1;
             if (!(extra_player_info_pointer->unk1FE & 7)) {
-                func_global_asm_8071498C(&func_global_asm_80716FB4);
+                func_global_asm_8071498C(func_global_asm_80716FB4);
                 func_global_asm_807149B8(1);
                 func_global_asm_807149FC(3);
                 drawSpriteAtPosition(&D_global_asm_8071FB08, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
@@ -1351,8 +1351,8 @@ void func_global_asm_806CEE64(f32 arg0) {
     GlobalASMStruct61 *temp_v0;
 
     if (extra_player_info_pointer->unk1AC != 0) {
-        temp_v0 = malloc(0x14);
-        temp_v0->unk0 = &func_global_asm_806CEFBC;
+        temp_v0 = malloc(sizeof(GlobalASMStruct61));
+        temp_v0->unk0 = func_global_asm_806CEFBC;
         temp_v0->unk8 = arg0;
         temp_v0->unkC = current_actor_pointer;
         temp_v0->unk10 = extra_player_info_pointer->unk1AC;
@@ -1408,8 +1408,8 @@ void func_global_asm_806CF0D0(void) {
     GlobalASMStruct62 *temp_v0;
 
     if (extra_player_info_pointer->unk1AC != 0) {
-        temp_v0 = malloc(0x14);
-        temp_v0->unk0 = &func_global_asm_806CF138;
+        temp_v0 = malloc(sizeof(GlobalASMStruct62));
+        temp_v0->unk0 = func_global_asm_806CF138;
         temp_v0->unk8 = current_actor_pointer;
         temp_v0->unkC = extra_player_info_pointer->unk1AC;
         temp_v0->unk4 = 0;
@@ -1571,7 +1571,7 @@ void func_global_asm_806CF580(void) {
         && (D_global_asm_80750AD0 == 0)
         && ((extra_player_info_pointer->unkD0 + 9) < (u32)object_timer)
         && (((func_global_asm_806119A0() % 2500U) / 200) == 0)) {
-        func_global_asm_8071498C(&func_global_asm_80718BF4);
+        func_global_asm_8071498C(func_global_asm_80718BF4);
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(-1);
         func_global_asm_80714C08(&D_global_asm_8071FC40, 0.0f, current_actor_pointer, 4, 0);
@@ -1584,7 +1584,7 @@ void func_global_asm_806CF878(void) {
         if ((current_actor_pointer->control_state_progress >= 5) && (current_actor_pointer->y_velocity > 30.0f)) {
             func_global_asm_80714998(2);
             func_global_asm_807149B8(1);
-            func_global_asm_8071498C(&func_global_asm_80716FB4);
+            func_global_asm_8071498C(func_global_asm_80716FB4);
             drawSpriteAtPosition(&D_global_asm_8071FB08, 0.8f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
         }
     }
@@ -1596,7 +1596,7 @@ extern s32 D_global_asm_8071FF40;
 void func_global_asm_806CF918(void) {
     s32 i;
     for (i = 0; i < 5; i++) {
-        func_global_asm_8071498C(&func_global_asm_807195D4);
+        func_global_asm_8071498C(func_global_asm_807195D4);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(i * 0x28);
         func_global_asm_807149FC(0x45);
@@ -2544,7 +2544,7 @@ void func_global_asm_806D2330(void *arg0) {
 }
 
 void func_global_asm_806D2378(void) {
-    func_global_asm_806D2330(&func_global_asm_8068E9B0);
+    func_global_asm_806D2330(func_global_asm_8068E9B0);
 }
 
 void func_global_asm_806D239C(void) {
@@ -2650,7 +2650,7 @@ void func_global_asm_806D26D8(void) {
 }
 
 void func_global_asm_806D2744(s32 arg0) {
-    func_global_asm_806D2330(&func_global_asm_8068EA38);
+    func_global_asm_806D2330(func_global_asm_8068EA38);
     handleInputsForControlState(arg0);
     current_actor_pointer->unk6C = current_actor_pointer->unk6A;
 }
@@ -2738,7 +2738,7 @@ typedef struct {
 void func_global_asm_806D2AA0(s16 arg0) {
     handleInputsForControlState(1);
     if (current_actor_pointer->control_state_progress < 6) {
-        addActorToTextOverlayRenderArray(&func_global_asm_806FFB2C, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_global_asm_806FFB2C, current_actor_pointer, 3);
         current_actor_pointer->control_state_progress++;
     } else {
         current_actor_pointer->control_state = arg0;

@@ -722,7 +722,7 @@ void func_global_asm_8060E1A8(void) {
     D_global_asm_807EDEAC = osEepromProbe(&D_global_asm_807ECCF0);
     osCreateMesgQueue(&D_global_asm_807EE0D0, &D_global_asm_807EE0B0, 8);
     osCreateMesgQueue(&D_global_asm_807F02B8, &D_global_asm_807F0298, 8);
-    osCreateThread(&D_global_asm_807EE0E8, 9, &func_global_asm_8060E128, 0, &D_global_asm_807F0298, 0xC);
+    osCreateThread(&D_global_asm_807EE0E8, 9, func_global_asm_8060E128, 0, &D_global_asm_807F0298, 0xC);
     osStartThread(&D_global_asm_807EE0E8);
     D_global_asm_807467E0 = 1;
     func_global_asm_8060B8F8(0);

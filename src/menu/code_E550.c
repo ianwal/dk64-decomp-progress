@@ -110,7 +110,7 @@ void func_menu_8003264C(void) {
             break;
     }
     if (current_actor_pointer->control_state >= 3) {
-        addActorToTextOverlayRenderArray(&func_menu_8003292C, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_menu_8003292C, current_actor_pointer, 3);
     }
     renderActor(current_actor_pointer, 0);
 }

@@ -559,6 +559,7 @@ void func_global_asm_80678CC8(Actor *arg0) {
     u32 temp_v0;
     u32 temp_v0_2;
 
+    // TODO: Cleanup
     if (*(s32*)(&D_global_asm_8074DA30[D_global_asm_8074D8D4[arg0->unk58]]) == (s32)&func_global_asm_8067B3F4) {
         guTranslateF(&arg0->unkC, arg0->x_position, arg0->y_position, arg0->z_position);
     }
@@ -877,7 +878,7 @@ void func_global_asm_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
                         sp3C = 0x27;
                         break;
                     case 3:
-                        temp = &func_global_asm_8071F758;
+                        temp = func_global_asm_8071F758;
                         func_global_asm_807149FC(0xF0);
                         func_global_asm_807149B8(1);
                         func_global_asm_8071498C(temp);

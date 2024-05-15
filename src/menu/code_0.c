@@ -319,7 +319,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
                     var_v0 = 0xFF - current_actor_pointer->unk15F;
                 }
                 current_actor_pointer->unk15F += var_v0;
-                addActorToTextOverlayRenderArray(&func_menu_800244EC, current_actor_pointer, 3);
+                addActorToTextOverlayRenderArray(func_menu_800244EC, current_actor_pointer, 3);
                 if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
                     func_menu_800241E8();
                     arg0->screen = 2;
@@ -354,7 +354,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
                 D_menu_80032F50 = 1;
                 arg0->screen = 0x37;
             }
-            addActorToTextOverlayRenderArray(&func_menu_800244EC, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_menu_800244EC, current_actor_pointer, 3);
             break;
     }
     arg0->previous_y = D_global_asm_807ECDEC->stick_y;

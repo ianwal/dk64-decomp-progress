@@ -947,7 +947,7 @@ void func_race_8002E484(void) {
     }
     if (temp_s0->unk34 > 0) {
         if (temp_s0->unk34 < 5) {
-            addActorToTextOverlayRenderArray(&func_race_8002E464, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_race_8002E464, current_actor_pointer, 3);
         }
     }
     if (temp_s0->unk40 < temp_s0->unk1C) {

@@ -175,7 +175,7 @@ void func_multiplayer_800243C8(void) {
         aaD->unk8 = 0;
         func_multiplayer_800242FC(aaD);
     }
-    addActorToTextOverlayRenderArray(&func_multiplayer_80024000, current_actor_pointer, 7);
+    addActorToTextOverlayRenderArray(func_multiplayer_80024000, current_actor_pointer, 7);
 }
 
 void func_multiplayer_8002449C(void) {
@@ -247,10 +247,8 @@ void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, void *arg3, s32 ar
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025264.s")
 
-Gfx *func_multiplayer_800249D8(Gfx *); // extern
-Gfx *func_multiplayer_80024CA4(Gfx *); // extern
-extern s16 D_global_asm_80744490;
-extern s16 D_global_asm_80744494;
+Gfx *func_multiplayer_800249D8(Gfx *);
+Gfx *func_multiplayer_80024CA4(Gfx *);
 
 /*
 Gfx *func_multiplayer_80025264(Gfx *dl) {
@@ -341,7 +339,7 @@ s32 func_multiplayer_80025404(void) {
                 func_global_asm_807149FC(-1);
                 func_global_asm_80714998(2);
                 changeActorColor(0xFF, 0xFF, 0xFF, 0x7F);
-                func_global_asm_8071498C(&func_global_asm_8071F3C0);
+                func_global_asm_8071498C(func_global_asm_8071F3C0);
                 PaaD->unk260 = func_global_asm_80714C08(&D_global_asm_807207BC, 0.5f, character_change_array[i].player_pointer, boneIndex, 2);
                 D_global_asm_807FC950[i].unk2FA = temp_s3;
             }

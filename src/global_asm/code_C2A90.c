@@ -26,10 +26,10 @@ extern u8 D_global_asm_807FBDC4;
 extern s32 D_global_asm_807FBDC8[];
 extern u16 D_global_asm_807FC930[];
 
-void func_global_asm_8061CAD8(void); // extern
+void func_global_asm_8061CAD8(void);
 void func_global_asm_8061CB08(void);
-void func_global_asm_8061F510(s32, s32); // extern
-void func_global_asm_8062217C(Actor *, s32); // extern
+void func_global_asm_8061F510(s32, s32);
+void func_global_asm_8062217C(Actor *, s32);
 void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
 u8 func_global_asm_8072881C(u8 arg0, u32 *arg1);
 void func_global_asm_8072A450(void);
@@ -168,7 +168,7 @@ void func_global_asm_806BE09C(void) {
                                 D_global_asm_807FDC90->unk2C = 0;
                                 func_global_asm_806F8D58(0, 0);
                             }
-                            func_global_asm_8071498C(&func_global_asm_8071D0F0);
+                            func_global_asm_8071498C(func_global_asm_8071D0F0);
                             func_global_asm_807149FC(-1);
                             func_global_asm_807149B8(1);
                             func_global_asm_80714950((s32)current_actor_pointer);
@@ -313,7 +313,7 @@ void func_global_asm_806BE8BC(void) {
                     }
                     break;
                 case 1:
-                    addActorToTextOverlayRenderArray(&func_global_asm_806BE6F0, current_actor_pointer, 3);
+                    addActorToTextOverlayRenderArray(func_global_asm_806BE6F0, current_actor_pointer, 3);
                     break;
                 case 2:
                     playSong(0xA9, 1.0f);
@@ -422,7 +422,7 @@ void func_global_asm_806BE8BC(void) {
             // fallthrough
         default:
             if (current_actor_pointer->unk15F < 0x10U) {
-                addActorToTextOverlayRenderArray(&func_global_asm_8068E474, current_actor_pointer, 3);
+                addActorToTextOverlayRenderArray(func_global_asm_8068E474, current_actor_pointer, 3);
             }
             if ((((rand() >> 0xF) % 1000) >= 0x3DF) && (current_actor_pointer->animation_state->unk64 == 0x302)) {
                 playActorAnimation(current_actor_pointer, (object_timer & 1) ? 0x303 : 0x304);
@@ -725,7 +725,7 @@ void func_global_asm_806C1734(void) {
                     if ((current_actor_pointer->y_velocity > 30.0f) && !(object_timer & 3)) {
                         func_global_asm_80714998(2);
                         func_global_asm_807149B8(1);
-                        func_global_asm_8071498C(&func_global_asm_8071C818);
+                        func_global_asm_8071498C(func_global_asm_8071C818);
                         func_global_asm_80714C08(&D_global_asm_8071FB08, 0.8f, current_actor_pointer, 5, 0);
                     }
                     break;
@@ -746,7 +746,7 @@ void func_global_asm_806C1734(void) {
                         sp29 = ((rand() >> 0xF) % 32767) % 2;
                         func_global_asm_807149B8(1);
                         func_global_asm_80714950(0x50);
-                        func_global_asm_8071498C(&func_global_asm_8071A8B0);
+                        func_global_asm_8071498C(func_global_asm_8071A8B0);
                         func_global_asm_80714C08(&D_global_asm_807200D4, 0.5f, current_actor_pointer, sp29 + 9, 2);
                     }
                     break;
@@ -872,7 +872,7 @@ void func_global_asm_806C1CCC(void) {
         func_global_asm_806BFBF4();
         if (current_actor_pointer->object_properties_bitfield & 4) {
             if ((current_actor_pointer->animation_state->unk0->unk10 == 0x2C4) && (current_actor_pointer->animation_state->unk0->unk4 > 25.0f)) {
-                addActorToTextOverlayRenderArray(&func_global_asm_807035C4, NULL, 3);
+                addActorToTextOverlayRenderArray(func_global_asm_807035C4, NULL, 3);
             }
         }
         func_global_asm_80724E48(D_global_asm_807FDC94 == player_pointer ? 5 : 7);
@@ -932,7 +932,7 @@ void func_global_asm_806C1E44(void) {
                             func_global_asm_80714998(2);
                             func_global_asm_807149B8(1);
                             func_global_asm_807149FC(0x28);
-                            func_global_asm_8071498C(&func_global_asm_807197B4);
+                            func_global_asm_8071498C(func_global_asm_807197B4);
                             func_global_asm_80714C08(&D_global_asm_8071FF58, 0.05f, current_actor_pointer, 1, 0);
                         }
                     }
@@ -949,7 +949,7 @@ void func_global_asm_806C1E44(void) {
                     for (i = 0; i < 0xA; i++) {
                         func_global_asm_807149B8(1);
                         func_global_asm_807149FC(0x28);
-                        func_global_asm_8071498C(&func_global_asm_8071F078);
+                        func_global_asm_8071498C(func_global_asm_8071F078);
                         func_global_asm_80714950(current_actor_pointer->y_rotation);
                         func_global_asm_80714C08(&D_global_asm_80720B58, 0.7f, current_actor_pointer, 1, 0);
                     }
@@ -1016,7 +1016,7 @@ void func_global_asm_806C226C(void) {
             if (current_actor_pointer->unk6A & 4) {
                 func_global_asm_8072A920(2, 0, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkC, D_global_asm_807FDC90->unkE, 0x46, 30.0f, 100.0f, 0);
                 if (((rand() >> 0xF) % 1000) >= 0x3A3) {
-                    func_global_asm_8071498C(&func_global_asm_80718BF4);
+                    func_global_asm_8071498C(func_global_asm_80718BF4);
                     func_global_asm_807149B8(1);
                     func_global_asm_807149FC(-1);
                     drawSpriteAtPosition(&D_global_asm_8071FC40, 0.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
@@ -1124,7 +1124,7 @@ void func_global_asm_806C2A64(u8 red, u8 green, u8 blue, f32 x, f32 y, f32 z, vo
     func_global_asm_80714998(0xFF);
     func_global_asm_80714944(((rand() >> 0xF) % 32767) % 11);
     changeActorColor(red, green, blue, 0xFF);
-    func_global_asm_8071498C(&func_global_asm_80717D84);
+    func_global_asm_8071498C(func_global_asm_80717D84);
     func_global_asm_80714950(2);
     drawSpriteAtPosition(sprite, scale * 0.2, x, y, z);
 }

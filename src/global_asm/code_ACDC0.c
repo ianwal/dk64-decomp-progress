@@ -782,7 +782,7 @@ void func_global_asm_806ACCE8(void) {
             current_actor_pointer->control_state = 1;
         }
     }
-    addActorToTextOverlayRenderArray(&func_global_asm_806ACA88, current_actor_pointer, 5);
+    addActorToTextOverlayRenderArray(func_global_asm_806ACA88, current_actor_pointer, 5);
 }
 
 Gfx *func_global_asm_806A921C();

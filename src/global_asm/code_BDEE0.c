@@ -21,11 +21,11 @@ void func_global_asm_806B9CB0(void) {
 void func_global_asm_806B9CE0(u8 arg0, s8 yOffset) {
     switch (arg0) {
         case 0:
-            func_global_asm_8071498C(&func_global_asm_8071720C);
+            func_global_asm_8071498C(func_global_asm_8071720C);
             break;
         case 1:
             func_global_asm_80714950(-0x258);
-            func_global_asm_8071498C(&func_global_asm_80717D4C);
+            func_global_asm_8071498C(func_global_asm_80717D4C);
             break;
     }
     func_global_asm_807149B8(1);

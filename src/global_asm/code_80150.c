@@ -583,7 +583,7 @@ void func_global_asm_8067DF44(f32 x, f32 y, f32 z, f32 arg3, u8 arg4, u8 arg5) {
         playSoundAtPosition(x, y, z, 0xF6, 0xFF, 0x7F, 0x19, 0x1E, 0.3f, 0);
     }
     func_global_asm_807149B8(1);
-    func_global_asm_8071498C(&func_global_asm_8071B89C);
+    func_global_asm_8071498C(func_global_asm_8071B89C);
     drawSpriteAtPosition(&D_global_asm_80720120, 0.0f, x, y + 5.0f, z);
     sp80 = arg3;
     sp7C = arg3 * 1.5;
@@ -594,20 +594,20 @@ void func_global_asm_8067DF44(f32 x, f32 y, f32 z, f32 arg3, u8 arg4, u8 arg5) {
         func_global_asm_8071496C(4);
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(1);
-        func_global_asm_8071498C(&func_global_asm_8071BB14);
+        func_global_asm_8071498C(func_global_asm_8071BB14);
         drawSpriteAtPosition(&D_global_asm_80720340, sp7C, x + randomXOffset, y + randomYOffset, z + randomZOffset);
     }
     func_global_asm_8071496C(4);
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(1);
-    func_global_asm_8071498C(&func_global_asm_8071BB14);
+    func_global_asm_8071498C(func_global_asm_8071BB14);
     drawSpriteAtPosition(&D_global_asm_80720340, sp7C, x, y, z);
     if (arg4 != 0) {
         for (i = 0; i < 0xC; i++) {
             func_global_asm_807149B8(1);
             func_global_asm_807149FC(2);
             func_global_asm_80714950(i + 0x0B020000);
-            func_global_asm_8071498C(&func_global_asm_8071ABDC);
+            func_global_asm_8071498C(func_global_asm_8071ABDC);
             func_global_asm_80714998(1);
             drawSpriteAtPosition(&D_global_asm_8072038C, sp80 * 0.5, x, y, z);
         }
@@ -902,7 +902,7 @@ void func_global_asm_80681BD8(void) {
     }
 }
 
-s32 func_global_asm_8067B450(Actor *); // extern
+s32 func_global_asm_8067B450(Actor *);
 extern s16 D_global_asm_80750390;
 
 typedef struct {
@@ -1167,27 +1167,27 @@ s32 func_global_asm_806832F4(s32 arg0, s32 arg1) {
     s32 flagIsSet;
     s32 flagIndex;
 
-    flagIsSet = 0;
+    flagIsSet = FALSE;
     switch (current_map) {
-    default:
-        return 0;
-    case MAP_JAPES:
-    case MAP_FACTORY:
-    case MAP_GALLEON:
-    case MAP_AZTEC:
-    case MAP_TROFF_N_SCOFF:
-    case MAP_FUNGI:
-        sp28 = func_global_asm_805FEF10(&flagIndex);
-        if (sp28 != 0) {
-            flagIsSet = isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
-            if ((arg1 != 0) && (!flagIsSet)) {
-                setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
-                playCutscene(player_pointer, 0x19, 4);
-                current_actor_pointer->noclip_byte = 1;
-                current_actor_pointer->control_state_progress = 0xB;
+        default:
+            return FALSE;
+        case MAP_JAPES:
+        case MAP_FACTORY:
+        case MAP_GALLEON:
+        case MAP_AZTEC:
+        case MAP_TROFF_N_SCOFF:
+        case MAP_FUNGI:
+            sp28 = func_global_asm_805FEF10(&flagIndex);
+            if (sp28 != 0) {
+                flagIsSet = isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
+                if ((arg1 != 0) && (!flagIsSet)) {
+                    setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
+                    playCutscene(player_pointer, 0x19, 4);
+                    current_actor_pointer->noclip_byte = 1;
+                    current_actor_pointer->control_state_progress = 0xB;
+                }
             }
-        }
-        return sp28 != 0 && !flagIsSet;
+            return sp28 != 0 && !flagIsSet;
     }
 }
 
@@ -1385,7 +1385,7 @@ void func_global_asm_8068412C(void) {
             break;
         case 1:
             func_global_asm_806836D0(YaaD);
-            addActorToTextOverlayRenderArray(&func_global_asm_80683AD8, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_global_asm_80683AD8, current_actor_pointer, 3);
             break;
         case 2:
             if (YaaD->unk4) {

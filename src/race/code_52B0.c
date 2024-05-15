@@ -216,7 +216,7 @@ void func_race_800294A8(void) {
         }
         func_global_asm_8068F72C(aaD, a178, 1, 1);
         if (!gameIsInDKTVMode()) {
-            addActorToTextOverlayRenderArray(&func_race_800292B0, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_race_800292B0, current_actor_pointer, 3);
         }
     } else if (aaD->unk34 == 5) {
         if (aaD->unk35 == 0) {

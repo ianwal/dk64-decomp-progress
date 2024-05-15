@@ -1024,7 +1024,7 @@ void func_menu_8002C584(Actor *arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CB18.s")
 
 /*
-? func_global_asm_806BF920(); // extern
+? func_global_asm_806BF920();
 extern u8 D_80033F24[];
 extern u8 D_menu_80033878;
 

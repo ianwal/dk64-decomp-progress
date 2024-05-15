@@ -200,7 +200,7 @@ void func_global_asm_806C7270(void) {
             D_global_asm_807FC8EC = 1.0f;
         }
     }
-    addActorToTextOverlayRenderArray(&func_global_asm_806C75A4, current_actor_pointer, 3);
+    addActorToTextOverlayRenderArray(func_global_asm_806C75A4, current_actor_pointer, 3);
 }
 */
 

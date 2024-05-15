@@ -413,7 +413,7 @@ void func_global_asm_806A5868(void) {
         func_global_asm_806A5174(current_actor_pointer, var_a3, sp18);
         if (var_a3->unk0 != 0) {
             func_global_asm_806A4DDC(current_actor_pointer);
-            addActorToTextOverlayRenderArray(&func_global_asm_806A4284, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_global_asm_806A4284, current_actor_pointer, 3);
         }
     }
 }

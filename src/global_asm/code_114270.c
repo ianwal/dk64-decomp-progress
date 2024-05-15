@@ -387,7 +387,7 @@ void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) 
         func_global_asm_8070F5CC(2, arg3, (((((rand() >> 0xF) % 0x7FFF) % 125) / 800.0) + 0.1) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
     }
     if (D_global_asm_807550E0->unk0 != 0) {
-        addActorToTextOverlayRenderArray(&func_global_asm_80710CA0, NULL, 1);
+        addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1);
     }
 }
 */
@@ -398,7 +398,7 @@ s32 func_global_asm_807122B4(void) {
     if (D_global_asm_807550E0->unk0 != 0) {
         D_global_asm_8077058C = D_global_asm_8077058C * D_global_asm_8075E5B0;
         // D_global_asm_8077058C = D_global_asm_8077058C * 0.9;
-        addActorToTextOverlayRenderArray(&func_global_asm_80710CA0, NULL, 1);
+        addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1);
         return 0;
     }
     if (D_global_asm_807FDA1C != 6) {

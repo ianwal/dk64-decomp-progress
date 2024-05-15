@@ -171,7 +171,7 @@ void func_minecart_80026B6C(MinecartStruct0 *arg0, f32 arg1) {
 
 void func_minecart_80026C54(void) {
     func_global_asm_80714950(((rand() >> 0xF) % 100) + 300);
-    func_global_asm_8071498C(&func_global_asm_80717D4C);
+    func_global_asm_8071498C(func_global_asm_80717D4C);
     func_global_asm_807149B8(1);
     func_global_asm_80714A28(4);
     drawSpriteAtPosition(

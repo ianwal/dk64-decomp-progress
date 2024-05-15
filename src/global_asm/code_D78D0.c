@@ -3216,8 +3216,8 @@ void func_global_asm_806DC410(void) {
         return;
     }
     extra_player_info_pointer->unk100 = D_global_asm_80753C84[D_global_asm_807FD584];
-    temp_v0 = malloc(0x14);
-    temp_v0->unk0 = &func_global_asm_807300BC;
+    temp_v0 = malloc(sizeof(Struct806DC410));
+    temp_v0->unk0 = func_global_asm_807300BC;
     temp_v0->unk8 = current_player;
     temp_v0->unk4 = 1;
     func_global_asm_80679064(temp_v0);

@@ -499,7 +499,7 @@ void func_jetpac_800260DC(Struct800260DC *arg0) {
         temp_v0->unk14 = 3;
         temp_v0->unk2C = 0;
         temp_v0->unk40 = (s32)(func_jetpac_80027210() * 8.0f) + 0xD;
-        temp_v0->unk48 = &func_jetpac_80025CB0;
+        temp_v0->unk48 = func_jetpac_80025CB0;
         temp_v0->unk4C = 0;
         func_jetpac_80024E70(6);
     }

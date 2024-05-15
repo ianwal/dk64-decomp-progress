@@ -237,20 +237,20 @@ typedef struct {
 } Struct8065FEB8_arg1;
 
 Gfx *func_global_asm_8065FEB8(Gfx *dl, Struct8065FEB8_arg1 *arg1) {
-    s16 temp_v0;
+    s16 chunkIndex;
     Struct8065FEB8_arg1_unk0 *temp_v1;
 
     gDPPipeSync(dl++);
     temp_v1 = arg1->unk0;
     if (temp_v1->unk67 == 1) {
-        temp_v0 = temp_v1->unk50;
+        chunkIndex = temp_v1->unk50;
         gDPSetScissor(
             dl++,
             G_SC_NON_INTERLACE,
-            chunk_array_pointer[temp_v0].deload1,
-            chunk_array_pointer[temp_v0].deload2,
-            chunk_array_pointer[temp_v0].deload3,
-            chunk_array_pointer[temp_v0].deload4
+            chunk_array_pointer[chunkIndex].deload1,
+            chunk_array_pointer[chunkIndex].deload2,
+            chunk_array_pointer[chunkIndex].deload3,
+            chunk_array_pointer[chunkIndex].deload4
         );
     } else {
         gDPSetScissor(

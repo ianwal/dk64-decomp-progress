@@ -65,7 +65,7 @@ s32 func_jetpac_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027BE8.s")
 
 void func_jetpac_80025700(void*, s32, s32, void*, s32);
-f32 func_jetpac_80027410(f32); // extern
+f32 func_jetpac_80027410(f32);
 extern s32 D_8002F3C0;
 extern s32 D_jetpac_8002DCE8;
 

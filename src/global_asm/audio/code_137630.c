@@ -153,7 +153,7 @@ void func_global_asm_80732DEC(Struct80732DEC *arg0, s32 arg1) {
         sp24 = sp24->unk0;
     }
     sp24->unk0 = NULL;
-    arg0->unk10 = &func_global_asm_807329AC;
-    arg0->unk14 = &func_global_asm_80732B3C;
-    arg0->unk18 = &func_global_asm_80732D80;
+    arg0->unk10 = func_global_asm_807329AC;
+    arg0->unk14 = func_global_asm_80732B3C;
+    arg0->unk18 = func_global_asm_80732D80;
 }
