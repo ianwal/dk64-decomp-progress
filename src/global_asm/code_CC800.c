@@ -53,10 +53,6 @@ extern s16 D_global_asm_8076AEF0;
 extern s32 D_global_asm_807FD56C;
 extern u16 D_global_asm_807FD570; // Tranferred actor behaviour index (through loading zone)
 
-extern ExitData *exit_array;
-extern ExitData D_global_asm_807FD574;
-extern ExitData D_global_asm_807FC908;
-extern ExitData D_global_asm_807FC918;
 extern s16 D_global_asm_807FC930[];
 
 void func_global_asm_806C7B00(void) {

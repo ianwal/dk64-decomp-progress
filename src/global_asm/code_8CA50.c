@@ -49,6 +49,7 @@ void func_global_asm_80687FC8(GlobalASMStruct60 *arg0) {
     s32 temp_lo;
     s32 temp_lo_2;
     s32 temp_v0_5;
+    s32 temp;
 
     switch ((u8)arg0->unk20) {
         case 0:
@@ -59,12 +60,13 @@ void func_global_asm_80687FC8(GlobalASMStruct60 *arg0) {
             if (arg0->unkC >= arg0->unk1E) {
                 temp_lo = arg0->unkC / arg0->unk1E;
                 arg0->unk1A += temp_lo;
+                temp = 1;
                 if ((arg0->unk1A >= arg0->unk18) && (arg0->unk18 != -1)) {
                     arg0->unkC = arg0->unk1E - 1;
-                    arg0->unk22 = 1;
+                    arg0->unk22 = temp;
                     arg0->unk14 = 1.0f;
                     if ((u8)arg0->unk21 == 1) {
-                        arg0->unk20 = 1;
+                        arg0->unk20 = temp;
                     }
                 } else {
                     switch ((u8)arg0->unk21) {

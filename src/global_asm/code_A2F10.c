@@ -467,8 +467,69 @@ void func_global_asm_8069F904(Gfx *dl, Actor *arg1) {
     displayImage(dl, (arg1->unk15F + 0x61), 0, 2, 0x28, 0x33, arg1->x_position, arg1->y_position, temp_f0, temp_f0, 0, 0.0f);
 }
 
-// Jumptable, displaylist stuff, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069FA40.s")
+Gfx *func_global_asm_8069FA40(Gfx *dl, Actor *arg1) {
+    f32 spFC;
+    f32 spBC[4][4];
+    f32 sp7C[4][4];
+    Mtx *sp78;
+    char sp68[0x10];
+    s16 center;
+    u8 style;
+    u8 sp64;
+
+    spFC = 0.3 * MAX(0.01, arg1->unkE0 - 2.0);
+    sp64 = FALSE;
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->y_rotation);
+    dl = func_global_asm_8070068C(dl);
+    sp78 = malloc(sizeof(Mtx));
+    func_global_asm_8061134C(sp78);
+    style = 1;
+    switch (arg1->unk15F) {
+        case 0:
+            sprintf(sp68, "ROUND");
+            break;
+        case 30:
+        case 31:
+        case 32:
+        case 33:
+        case 34:
+        case 35:
+        case 36:
+        case 37:
+        case 38:
+            sp64 = TRUE;
+            // TODO: WTF
+            sprintf(sp68, D_global_asm_80750338[arg1->unk15F << 0]);
+            break;
+        default:
+            if (arg1->unk15F & 0x80) {
+                spFC = 4.0 - spFC;
+                style = 3;
+                sprintf(sp68, "%d", 0xA - (arg1->unk15F & 0x3F));
+            } else if (arg1->unk15F & 0x40) {
+                spFC = 4.0 - spFC;
+                style = 3;
+                sprintf(sp68, "%d", 8 - (arg1->unk15F & 0x3F));
+            } else {
+                sprintf(sp68, "%d", arg1->unk15F);
+            }
+            break;
+    }
+    center = getCenterOfString(style, sp68);
+    if (sp64) {
+        arg1->x_position = (320 - center) << 1;
+    }
+    guScaleF(spBC, spFC, spFC, 1);
+    guTranslateF(sp7C, arg1->x_position + (2.0 * center), arg1->y_position * 4.0f, 0);
+    guMtxCatF(spBC, sp7C, spBC);
+    guMtxF2L(spBC, sp78);
+    gSPMatrix(dl++, sp78, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return printStyledText(dl, style, center * -2, 0, sp68, 0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069FDA0.s")
 

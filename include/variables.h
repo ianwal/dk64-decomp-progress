@@ -36,6 +36,11 @@ extern Chunk *chunk_array_pointer;
 extern u8 current_file;
 extern OSContPad *D_global_asm_807ECDEC;
 
+extern ExitData *exit_array;
+extern ExitData D_global_asm_807FD574;
+extern ExitData D_global_asm_807FC908;
+extern ExitData D_global_asm_807FC918;
+
 extern u16 D_global_asm_807446C0[];
 
 extern Gfx *D_global_asm_8076A050[];
