@@ -137,7 +137,8 @@ void func_global_asm_806DF670(s16 *arg0, s16 arg1, s16 arg2) {
     }
 }
 
-// doable, stack regalloc
+// doable, stack, regalloc
+// https://decomp.me/scratch/hyCim
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/handleInputsForControlState.s")
 
 u16 func_global_asm_806DFF34(u16, s32 *);
@@ -181,7 +182,7 @@ s32 handleInputsForControlState(s32 controlState) {
     oldControlState = current_player->control_state;
 
     // Read button inputs
-    D_global_asm_807FD610[cc_player_index].unk2A = func_global_asm_806DFF34(D_global_asm_807ECDEC->buttons, &D_global_asm_80750FF0);
+    D_global_asm_807FD610[cc_player_index].unk2A = func_global_asm_806DFF34(D_global_asm_807ECDEC->button, &D_global_asm_80750FF0);
     D_global_asm_807FD610[cc_player_index].unk2C = func_global_asm_806DFF34(D_global_asm_807ECDF0, &D_global_asm_80750FF0);
 
     // Buttons disabled?
@@ -191,8 +192,8 @@ s32 handleInputsForControlState(s32 controlState) {
     }
 
     // Read joystick inputs and clamp between -80 and 80
-    D_global_asm_807ECDEC->unk2 = MIN(MAX(D_global_asm_807ECDEC->stick_x, -80), 80);
-    D_global_asm_807ECDEC->unk3 = MIN(MAX(D_global_asm_807ECDEC->stick_y, -80), 80);
+    D_global_asm_807ECDEC->stick_x = MIN(MAX(D_global_asm_807ECDEC->stick_x, -80), 80);
+    D_global_asm_807ECDEC->stick_y = MIN(MAX(D_global_asm_807ECDEC->stick_y, -80), 80);
     D_global_asm_807FD610[cc_player_index].unk2E = D_global_asm_807ECDEC->stick_x;
     D_global_asm_807FD610[cc_player_index].unk2F = D_global_asm_807ECDEC->stick_y;
 

@@ -375,6 +375,7 @@ void func_global_asm_806AFA60(u8 arg0) {
 }
 
 // Jumptable, close, regalloc
+// https://decomp.me/scratch/Z6JAV
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AFB58.s")
 
 /*

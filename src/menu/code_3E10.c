@@ -1129,7 +1129,8 @@ void func_menu_8002CB18(void) {
 }
 */
 
-// regalloc
+// regalloc, close, doable
+// https://decomp.me/scratch/m94iK
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CFA4.s")
 
 extern s16 D_menu_80033670;

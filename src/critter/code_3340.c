@@ -21,6 +21,7 @@ void func_critter_80027340(s32 arg0) {
 }
 
 // Jumptable, close
+// https://decomp.me/scratch/wrAMt
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80027448.s")
 
 typedef struct {

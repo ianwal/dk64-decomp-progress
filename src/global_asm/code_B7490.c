@@ -107,6 +107,7 @@ void func_global_asm_806B2D5C(void) {
 }
 
 // Jumptable, close, v1 a3 regalloc
+// https://decomp.me/scratch/iuQGD
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B2D64.s")
 
 /*
