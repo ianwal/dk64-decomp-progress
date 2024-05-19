@@ -9,6 +9,7 @@ void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
 extern f64 D_global_asm_8075FF38;
 
 // doable, close
+// https://decomp.me/scratch/KfxB4
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/initializeCharacterSpawnerActor.s")
 
 extern s8 D_global_asm_807FBB85;

@@ -204,6 +204,7 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
 }
 
 // close, doable
+// https://decomp.me/scratch/Rfh5H
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_800277F8.s")
 
 extern f32 D_bonus_8002DD40;

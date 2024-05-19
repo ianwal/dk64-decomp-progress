@@ -193,6 +193,7 @@ void func_menu_80027F40(Actor *arg0, s32 arg1) {
 }
 
 // doable, close
+// https://decomp.me/scratch/cRDSb
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80027FAC.s")
 
 typedef struct {

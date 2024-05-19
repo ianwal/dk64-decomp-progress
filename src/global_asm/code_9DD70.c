@@ -30,6 +30,7 @@ void func_global_asm_80699128(Gfx *dl, Struct80699128_arg1 *arg1) {
 }
 
 // doable, matrix nonsense, close
+// https://decomp.me/scratch/NUaRm
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_80699284.s")
 
 u16 *func_global_asm_806FFF88();
@@ -120,12 +121,12 @@ void func_global_asm_80699284(void) {
     current_actor_pointer->y_rotation = spEA;
     temp_f0_2 = var_f2 / 30.0;
     current_actor_pointer->z_rotation = spE8 - (2048.0f + (-2048.0f * temp_f0_2));
-    guRotateF(&spA8[0], (spE8 / 4095.0) * 360.0, 1.0f, 0.0f, 0.0f);
-    guRotateF(&sp68[0], (spEA / 4095.0) * 360.0, 0.0f, 1.0f, 0.0f);
-    guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
-    guTranslateF(&sp68[0], character_change_array->look_at_eye_x, character_change_array->look_at_eye_y, character_change_array->look_at_eye_z);
-    guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
-    guMtxXFMF(&spA8[0], 0.0f, 0.0f, -30.0f * temp_f0_2, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+    guRotateF(spA8, (spE8 / 4095.0) * 360.0, 1.0f, 0.0f, 0.0f);
+    guRotateF(sp68, (spEA / 4095.0) * 360.0, 0.0f, 1.0f, 0.0f);
+    guMtxCatF(spA8, sp68, spA8);
+    guTranslateF(sp68, character_change_array->look_at_eye_x, character_change_array->look_at_eye_y, character_change_array->look_at_eye_z);
+    guMtxCatF(spA8, sp68, spA8);
+    guMtxXFMF(spA8, 0.0f, 0.0f, -30.0f * temp_f0_2, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
     if (aaD->unk10 != 0) {
         aaD->unk10--;
     } else {
