@@ -8,10 +8,20 @@ typedef struct menu_struct_1 {
     u16 unk8;
     u8  unkA;
     s8  unkB;
-    u8  unkC;
-    u8  unkD;
-    u8  unkE;
-    u8  unkF;
+    union {
+        struct {
+            u8  unkC;
+            u8  unkD;
+        };
+        s16 unkC_s16;
+    };
+    union {
+        struct {
+            u8  unkE;
+            u8  unkF;
+        };
+        s16 unkE_s16;
+    };
     u8  unk10;
     u8  unk11;
     u8  unk12;
@@ -179,7 +189,7 @@ void func_menu_80025E04(MenuStruct1 *arg0, CharacterProgress *arg1) {
 // It checks whether levels have been entered and does stuff with actor behaviour index
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80025FB4.s")
 
-extern u8 D_global_asm_807FCC4C;
+extern u8 D_807FCC4C;
 
 /*
 void func_menu_80025FB4(MenuStruct1 *arg0, CharacterProgress *arg1, ? arg2) {
@@ -257,7 +267,7 @@ block_18:
             arg0->unkB = -2;
         }
     }
-    arg0->unk10 = D_global_asm_807FCC4C;
+    arg0->unk10 = D_807FCC4C;
 }
 */
 
@@ -302,26 +312,23 @@ extern MenuStruct1 D_menu_80033514;
 extern u16 D_menu_80033528;
 extern u16 D_global_asm_80750AC8;
 
-extern u8 D_global_asm_807FCC4C;
 extern u8 D_menu_800334DD[];
 
+void func_menu_800262A8(MenuStruct1*, CharacterProgress*, s32);
+
 /*
-void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
+void func_menu_800262A8(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
     MenuStruct1 *sp44;
     u16 sp42;
     s32 sp3C;
-    u16 sp3A;
-    u16 sp38;
-    u16 sp36;
-    u16 sp34;
+    u16 var_v1;
+    u16 var_a2;
+    u16 var_t0;
+    u16 var_t1;
     u16 sp2C;
     s32 sp28;
     s16 var_a0;
     s32 temp_v0_2;
-    u16 var_a2;
-    u16 var_t0;
-    u16 var_t1;
-    u16 var_v1;
 
     if (func_global_asm_80629148()) {
         sp44 = NULL;
@@ -336,19 +343,11 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                 var_t0 = 0xC;
                 var_t1 = 0xE;
                 if (arg0->unkB >= 0) {
-                    sp3A = 3;
-                    sp38 = 7;
-                    sp36 = 0xC;
-                    sp34 = 0xE;
-                    var_v1 = 3;
-                    var_a2 = 7;
-                    var_t0 = 0xC;
-                    var_t1 = 0xE;
-                    temp_v0_2 = func_menu_80025AF0(arg0, 1, 7, arg0);
-                    if (arg1[arg0->unkB] & 1) {
+                    temp_v0_2 = func_menu_80025AF0(arg0, 1);
+                    if (((u8*)arg1)[arg0->unkB] & 1) {
                         var_a2 = 9;
                         var_v1 = 5;
-                        if (D_global_asm_807FCC4C < D_menu_800334DD[arg1[arg0->unkB]]) {
+                        if (D_807FCC4C < D_menu_800334DD[((u8*)arg1)[arg0->unkB]]) {
                             var_v1 = 6;
                             var_t0 = 0xD;
                             var_t1 = 0xF;
@@ -362,8 +361,8 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                 }
                 D_menu_80033500.unk4 = var_v1;
                 D_menu_80033500.unk6 = var_a2;
-                D_menu_80033500.unkC = var_t0;
-                D_menu_80033500.unkE = var_t1;
+                D_menu_80033500.unkC_s16 = var_t0;
+                D_menu_80033500.unkE_s16 = var_t1;
                 sp44 = &D_menu_80033500;
                 sp42 = 9;
                 break;
@@ -391,7 +390,7 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                             var_v1 = 0x21;
                         }
                     } else {
-                        sp28 = countSetFlags(0x225, 0x28, 0);
+                        sp28 = countSetFlags(0x225, 0x28, FLAG_TYPE_PERMANENT);
                         if (sp28 >= 0xF) {
                             func_menu_80026290(arg0, &sp3C);
                             if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT)) {
@@ -413,7 +412,7 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
                     sp44 = &D_menu_80033528;
                 } else {
                     var_a0 = 4;
-                    if ((arg0->unkB >= 0) && (arg1[arg0->unkB] & 1)) {
+                    if ((arg0->unkB >= 0) && (((u8*)arg1)[arg0->unkB] & 1)) {
                         var_v1 = 5;
                         var_a0 = 6;
                     }
@@ -435,8 +434,6 @@ void func_menu_800262A8(MenuStruct1 *arg0, u8 *arg1, s32 arg2) {
     }
 }
 */
-
-void func_menu_800262A8(MenuStruct1*, CharacterProgress*, s32);
 
 void func_menu_80026684(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
     switch (arg0->unkE) {

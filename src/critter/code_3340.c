@@ -316,6 +316,7 @@ void func_critter_80027DC0(void) {
 }
 
 // Jumptable, doable, float, regalloc, close
+// https://decomp.me/scratch/YxzWl
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028120.s")
 
 s32 func_global_asm_8072881C(s32, f64 *);

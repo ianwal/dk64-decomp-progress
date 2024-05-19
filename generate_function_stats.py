@@ -134,6 +134,7 @@ standardSearchColumns = {
 print(
     "file",
     "function",
+    "scratch",
     "bytes",
     "worth",
     end=" "
@@ -163,11 +164,14 @@ for root, dirs, files in os.walk(searchPath):
         if sum(excludePath in fullFile for excludePath in excludePaths) == 0 and file.endswith('.c'):
             with open(fullFile, "r") as fh_c:
                 comments = {}
+                scratch = ''
                 for comment in commentSearch:
                     comments[comment] = False
 
                 for line in fh_c:
                     if line.startswith("//"):
+                        if line.startswith('// https://decomp.me/scratch/'):
+                            scratch = line.replace('// ', '').replace('\n', '')
                         lowerCaseComment = line.lower()
                         for comment in commentSearch:
                             check = sum(searchTerm in lowerCaseComment for searchTerm in commentSearch[comment])
@@ -181,8 +185,13 @@ for root, dirs, files in os.walk(searchPath):
                         with open(ASMFile, "r") as fh_asm:
                             # Reset function stats
                             size = 0
+                            countingSize = False
                             jals = 0
                             labels = 0
+                            
+                            ASMFilePath = ASMFile.split("/")
+                            functionName = ASMFilePath[-1].replace(".s", "")
+
                             columns = {}
                             for column in standardSearchColumns:
                                 columns[column] = 0
@@ -190,18 +199,19 @@ for root, dirs, files in os.walk(searchPath):
                             for line in fh_asm:
                                 for column in standardSearchColumns:
                                     columns[column] += sum(searchTerm in line for searchTerm in standardSearchColumns[column])
+                                if line.startswith(f"glabel {functionName}"):
+                                    countingSize = True
                                 if "jal" in line:
                                     jals += 1
-                                if line.startswith("/* "):
+                                if countingSize and line.startswith("/* "):
                                     size += 4
                                 if line.startswith(".L"):
                                     labels += 1
 
-                            ASMFilePath = ASMFile.split("/")
-
                             print(
                                 ASMFile.replace(ASMFilePath[-1], ""),
-                                ASMFilePath[-1].replace(".s", ""),
+                                functionName,
+                                scratch,
                                 size,
                                 f"{str(round(size / totalCodeBytes * 100, precision)).ljust(precision + 2, '0')}%",
                                 end=" ")
@@ -225,5 +235,6 @@ for root, dirs, files in os.walk(searchPath):
                             print()
                         continue
 
+                    scratch = ''
                     for comment in commentSearch:
                         comments[comment] = False

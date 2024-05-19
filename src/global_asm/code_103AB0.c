@@ -563,6 +563,72 @@ Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
 // Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_807065F8.s")
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct80754F58;
+
+extern Struct80754F58 D_global_asm_80754F58[];
+
+/*
+void func_global_asm_807065F8(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
+    f32 temp_f0;
+    f32 var_f16;
+    f32 var_f6;
+    f32 var_f8;
+    s16 temp_a1;
+    u8 i;
+    u8 temp_a3;
+    u8 temp_t0;
+    u8 temp_t1;
+    Struct80754F58 *temp_a2;
+    Struct80754F58 *temp_v1;
+
+    switch (current_map) {
+        case MAP_AZTEC_BEETLE_RACE:
+            for (i = 0; arg0 < D_global_asm_80754F58[i].unk0;) {
+                i++;
+            }
+            temp_a2 = &D_global_asm_80754F58[i];
+            temp_v1 = &D_global_asm_80754F58[i];
+            temp_a1 = temp_v1[1].unk0;
+            temp_a3 = temp_v1[1].unk2;
+            temp_f0 = (arg0 - temp_a1) / (temp_a2->unk0 - temp_a1);
+            var_f6 = temp_a3;
+            *arg1 = ((temp_a2->unk2 - temp_a3) * temp_f0) + var_f6;
+            temp_t0 = temp_v1[1].unk2;
+            var_f16 = temp_t0;
+            *arg2 = ((temp_a2->unk2 - temp_t0) * temp_f0) + var_f16;
+            temp_t1 = temp_v1[2].unk0;
+            var_f8 = temp_t1;
+            *arg3 = ((temp_a2->unk4 - temp_t1) * temp_f0) + var_f8;
+            break;
+        case MAP_STEALTHY_SNOOP_NORMAL:
+        case MAP_MAD_MAZE_MAUL_HARD:
+        case MAP_STASH_SNATCH_NORMAL:
+        case MAP_MAD_MAZE_MAUL_EASY:
+        case MAP_MAD_MAZE_MAUL_NORMAL:
+        case MAP_STASH_SNATCH_EASY:
+        case MAP_STASH_SNATCH_HARD:
+        case MAP_MAD_MAZE_MAUL_INSANE:
+        case MAP_STASH_SNATCH_INSANE:
+        case MAP_STEALTHY_SNOOP_VERY_EASY:
+        case MAP_STEALTHY_SNOOP_EASY:
+        case MAP_STEALTHY_SNOOP_HARD:
+            *arg1 = 0x3F;
+            *arg2 = 0x3F;
+            *arg3 = 0x3F;
+            break;
+        default:
+            *arg1 = 0xFF;
+            *arg2 = 0xFF;
+            *arg3 = 0xFF;
+            break;
+    }
+}
+*/
+
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_807069A4.s")
 

@@ -161,6 +161,7 @@ s32 func_global_asm_8069E724(s32 arg0) {
 }
 
 // Doable, close
+// https://decomp.me/scratch/yDXeC
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069E774.s")
 
 // TODO: Add to aaD union

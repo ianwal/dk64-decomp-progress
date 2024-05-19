@@ -329,7 +329,7 @@ typedef struct actor_animation_state {
     s16 unk12;
     void *bone_array_1; // at 0x14, camera, update bone positions // TODO: Proper type
     void *bone_array_2; // at 0x18, camera, update bone positions // TODO: Proper type
-    AnimationStateUnk1C *unk1C; // TODO: Used in func_global_asm_80724CA4 and func_global_asm_8068FF40, pretty easy match, array of 0x8 structs? // malloc(0x100) in func_global_asm_80683158
+    AnimationStateUnk1C *unk1C; // malloc(0x100) in func_global_asm_80683158
     AnimationStateUnk20 *unk20; // See boss func_dk64_boot_8002FB7C
     AnimationStateUnk24 *unk24;
     s32 unk28;
@@ -1205,8 +1205,14 @@ typedef struct {
     s32 unk14;
 } FloorTriangle;
 
+typedef struct {
+    // Small header on top of DisplayList Pointer
+    u8 unk0[0x20 - 0x0];
+    Mtx *unk20;
+} Actor_unk0;
+
 struct actor {
-    u32 *unk0; // Small header on top of DisplayList Pointer // TODO: Proper type
+    Actor_unk0 *unk0; 
     ActorAnimationState *animation_state;
     u32 *unk8; // Current bone array Pointer // TODO: Proper type
     s16 unkC;
