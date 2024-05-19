@@ -478,10 +478,10 @@ void func_global_asm_80715E38(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 void func_global_asm_80716F10(Struct80717D84 *arg0, s32 arg1) {
     f32 sp68[4][4];
     f32 sp28[4][4];
-    guScaleF(&sp68[0], arg0->unk360, arg0->unk364, 0.0f);
-    guRotateF(&sp28[0], arg0->unk35C, 0.0f, 0.0f, 1.0f);
-    guMtxCatF(&sp68[0], &sp28[0], &sp68[0]);
-    guMtxF2L(&sp68[0], &arg0->unk128[D_global_asm_807444FC]);
+    guScaleF(sp68, arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(sp28, arg0->unk35C, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(sp68, sp28, sp68);
+    guMtxF2L(sp68, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
 
@@ -502,10 +502,10 @@ void func_global_asm_80716FB4(Struct80717D84 *arg0, s32 arg1) {
     }
     var_v1 = arg0->unk384;
     var_v1->unk0 += var_v1->unk4;
-    guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
-    guRotateF(&sp30[0], arg0->unk384->unk0, 0.0f, 0.0f, 1.0f);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
-    guMtxF2L(&sp70[0], &arg0->unk128[D_global_asm_807444FC]);
+    guScaleF(sp70, arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(sp30, arg0->unk384->unk0, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(sp70, sp30, sp70);
+    guMtxF2L(sp70, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
 
@@ -829,10 +829,10 @@ void func_global_asm_8071827C(Struct80717D84 *arg0, s32 arg1) {
     f32 sp30[4][4];
 
     guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
-    guRotateF(&sp30[0], 90.0f, 1.0f, 0.0f, 0.0f);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
-    guTranslateF(&sp30[0], arg0->unk340, arg0->unk344, arg0->unk348);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guRotateF(sp30, 90.0f, 1.0f, 0.0f, 0.0f);
+    guMtxCatF(sp70, sp30, sp70);
+    guTranslateF(sp30, arg0->unk340, arg0->unk344, arg0->unk348);
+    guMtxCatF(sp70, sp30, sp70);
     arg0->unk360 += D_global_asm_8075E748;
     arg0->unk364 += D_global_asm_8075E748;
     if (arg0->unk36D >= 0xA) {
@@ -840,7 +840,7 @@ void func_global_asm_8071827C(Struct80717D84 *arg0, s32 arg1) {
     } else {
         arg0->unk36D = 0;
     }
-    guMtxF2L(&sp70[0], &arg0->unk128[D_global_asm_807444FC]);
+    guMtxF2L(sp70, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 3;
 }
 */
@@ -857,13 +857,13 @@ void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1) {
         arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80718380));
         *((f32*)arg0->unk384) = (func_global_asm_806119A0() % 36000U) / 100;
     }
-    guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
-    guRotateF(&sp30[0], 90.0f, 1.0f, 0.0f, 0.0f);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
-    guRotateF(&sp30[0], *((f32*)arg0->unk384), 0.0f, 1.0f, 0.0f);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
-    guTranslateF(&sp30[0], arg0->unk340, arg0->unk344, arg0->unk348);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guScaleF(sp70, arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(sp30, 90.0f, 1.0f, 0.0f, 0.0f);
+    guMtxCatF(sp70, sp30, sp70);
+    guRotateF(sp30, *((f32*)arg0->unk384), 0.0f, 1.0f, 0.0f);
+    guMtxCatF(sp70, sp30, sp70);
+    guTranslateF(sp30, arg0->unk340, arg0->unk344, arg0->unk348);
+    guMtxCatF(sp70, sp30, sp70);
     if (arg0->unk36D >= 0xA) {
         arg0->unk36D -= 0xA;
     } else {
@@ -897,18 +897,18 @@ void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1) {
         arg0->unk384_f32->unk0 = 0.0f;
         arg0->unk384_f32->unk4 = (func_global_asm_806119A0() % 400U) / 100;
     }
-    guScaleF(&sp70[0], arg0->unk360, arg0->unk364, 0.0f);
-    guRotateF(&sp30[0], arg0->unk384->unk0, 0.0f, 0.0f, 1.0f);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
-    guRotateF(&sp30[0], 90.0f, 1.0f, 0.0f, 0.0f);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
+    guScaleF(sp70, arg0->unk360, arg0->unk364, 0.0f);
+    guRotateF(sp30, arg0->unk384->unk0, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(sp70, sp30, sp70);
+    guRotateF(sp30, 90.0f, 1.0f, 0.0f, 0.0f);
+    guMtxCatF(sp70, sp30, sp70);
     temp_v0_2 = arg0->unk338;
     if (temp_v0_2 != NULL) {
         arg0->unk344 = temp_v0_2->unkAC;
     }
-    guTranslateF(&sp30[0], arg0->unk340, arg0->unk344, arg0->unk348);
-    guMtxCatF(&sp70[0], &sp30[0], &sp70[0]);
-    guMtxF2L(&sp70[0], arg0->unk128[D_global_asm_807444FC]);
+    guTranslateF(sp30, arg0->unk340, arg0->unk344, arg0->unk348);
+    guMtxCatF(sp70, sp30, sp70);
+    guMtxF2L(sp70, arg0->unk128[D_global_asm_807444FC]);
     if (arg0->unk35C != 0) {
         arg0->unk384_f32->unk0 += arg0->unk384_f32->unk4;
         // TODO: Need rodata

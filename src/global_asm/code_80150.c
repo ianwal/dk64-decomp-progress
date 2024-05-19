@@ -30,6 +30,7 @@ u8 func_global_asm_8067B450(void) {
 */
 
 // Jumptable, close, regalloc
+// https://decomp.me/scratch/2C6WT
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067B4C8.s")
 
 void func_global_asm_80613CA8(Actor*, s32, f32, f32);

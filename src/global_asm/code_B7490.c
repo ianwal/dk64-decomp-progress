@@ -291,6 +291,7 @@ void func_global_asm_806B3420(void) {
 }
 
 // close, switch case woes
+// https://decomp.me/scratch/FQyHV
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3680.s")
 
 extern s32 D_global_asm_8072073C;

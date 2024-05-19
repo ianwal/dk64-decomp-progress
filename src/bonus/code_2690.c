@@ -499,6 +499,7 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002881C.s")
 
 // close
+// https://decomp.me/scratch/IsDEU
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80028E3C.s")
 
 extern s16 D_bonus_8002D8C0[];

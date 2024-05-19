@@ -34,11 +34,11 @@ void func_global_asm_806ADFE0(void) {
     if (current_actor_pointer->unk15F != 0) {
         renderActor(current_actor_pointer, 0);
     } else {
-        guTranslateF(&sp88[0], 0.0f, -30.0f, 0.0f);
-        func_global_asm_80612BC0(&sp48[0], 180.0f);
-        guMtxCatF(&sp88[0], &sp48[0], &sp88[0]);
-        guTranslateF(&sp48[0], 0.0f, 30.0f, 0.0f);
-        guMtxCatF(&sp88[0], &sp48[0], &current_actor_pointer->unkC);
+        guTranslateF(sp88, 0.0f, -30.0f, 0.0f);
+        func_global_asm_80612BC0(sp48, 180.0f);
+        guMtxCatF(sp88, sp48, sp88);
+        guTranslateF(sp48, 0.0f, 30.0f, 0.0f);
+        guMtxCatF(sp88, sp48, &current_actor_pointer->unkC);
         renderActor(current_actor_pointer, 1);
     }
     if (((current_actor_pointer->unk6A & 1) != 0) && !(current_actor_pointer->unk6C & 1)) {
@@ -92,6 +92,7 @@ void func_global_asm_806AE394(f32 arg0, f32 arg1) {
 }
 
 // Jumptable, very close
+// https://decomp.me/scratch/zfcEP
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AE588.s")
 
 void func_global_asm_8072C918(s16, s16, s16);
@@ -229,7 +230,7 @@ void func_global_asm_806AE588(void) {
             func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, 0, 0.0f);
             break;
         case 0x37:
-            current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 0x40E00000);
+            current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 7.0f);
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072AB74(0x37, 0, 0, 0x200, 0);
@@ -682,7 +683,7 @@ block_12:
     }
     switch (current_actor_pointer->control_state) {
         case 0x37:
-            current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 0x40E00000);
+            current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, current_actor_pointer->unkEE, 7.0f);
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x202, 0.0f);

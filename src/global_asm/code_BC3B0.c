@@ -103,6 +103,7 @@ void func_global_asm_806B7C74(GlobalASMStruct90 *arg0, f32 arg1, f32 arg2) {
 }
 
 // close
+// https://decomp.me/scratch/3u9KS
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BC3B0/func_global_asm_806B7EA0.s")
 
 extern s32 D_global_asm_807FBB68;

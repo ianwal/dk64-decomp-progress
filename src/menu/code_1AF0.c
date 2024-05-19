@@ -674,6 +674,7 @@ void func_menu_80027028(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagInde
 }
 
 // Jumptable, very close, stack, regalloc
+// https://decomp.me/scratch/BWUlC
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_800270E0.s")
 
 typedef struct {
