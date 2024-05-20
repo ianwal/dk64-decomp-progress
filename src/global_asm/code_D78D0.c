@@ -2467,10 +2467,6 @@ void func_global_asm_806D9AD4(void) {
 }
 */
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D9D58.s")
-
-/*
 void func_global_asm_806D9D58(void) {
     f32 phi_f0;
     f64 temp;
@@ -2503,13 +2499,12 @@ void func_global_asm_806D9D58(void) {
             }
             if (current_actor_pointer->unk168 <= current_actor_pointer->y_position) {
                 current_actor_pointer->y_velocity = 0.0f;
-                current_actor_pointer->y_acceleration = 150.0;
+                current_actor_pointer->y_acceleration = -0.01f;
             }
             break;
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806D9FD0(void) {
     switch (current_actor_pointer->control_state_progress) {
