@@ -107,6 +107,7 @@ void func_global_asm_806C7268(void) {
 }
 
 // stack, float, regalloc
+// https://decomp.me/scratch/poTWc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CBEA0/func_global_asm_806C7270.s")
 
 typedef struct {

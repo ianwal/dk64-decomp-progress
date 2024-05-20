@@ -1,7 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
+// close, doable, stack
+// https://decomp.me/scratch/KH3n0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_global_asm_80676ED0.s")
 
 extern s8 D_global_asm_807FB5FD;
@@ -9,7 +10,6 @@ extern u8 D_global_asm_807FB5FF;
 extern s8 D_global_asm_807FB600;
 
 /*
-// TODO: Painfully close, only difference is it's using 0x50 on the stack instead of 0x54 for a variable
 u8 func_global_asm_80676ED0(Actor *arg0, s16 *arg1, s16 *arg2) {
     LedgeInfo *sp7C;
     LedgeInfo *temp_s2;
@@ -68,7 +68,7 @@ u8 func_global_asm_80676ED0(Actor *arg0, s16 *arg1, s16 *arg2) {
 // Actor* arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_global_asm_80677148.s")
 
-typedef struct  {
+typedef struct {
     s32 unk0;
     s32 unk4;
     s32 unk8;

@@ -2411,6 +2411,7 @@ void func_global_asm_806D9940(void) {
 }
 
 // close, doable, regalloc
+// https://decomp.me/scratch/YQGZn
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D9AD4.s")
 
 extern s32 D_global_asm_8071FC8C;

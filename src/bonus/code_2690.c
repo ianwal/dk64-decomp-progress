@@ -799,6 +799,7 @@ void func_bonus_8002AD10(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002AED8.s")
 
 // regalloc, stack
+// https://decomp.me/scratch/kcLfg
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002B920.s")
 
 extern f32 D_bonus_8002DE40;

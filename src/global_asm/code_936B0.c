@@ -1364,6 +1364,7 @@ void func_global_asm_806960A4(void) {
 }
 
 // extremely close, float regalloc
+// https://decomp.me/scratch/5rWpB
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80696574.s")
 
 extern s16 D_global_asm_807502D0;

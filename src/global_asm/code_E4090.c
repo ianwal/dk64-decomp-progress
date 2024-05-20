@@ -1311,6 +1311,7 @@ void func_global_asm_806E3D14(f32 arg0) {
 }
 
 // rodata regalloc close
+// https://decomp.me/scratch/Tovqc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E3E40.s")
 
 extern u8 D_global_asm_807FD6E0;

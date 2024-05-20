@@ -332,6 +332,7 @@ void func_minecart_80024914(void) {
 }
 
 // long, structs
+// https://decomp.me/scratch/2LtnJ
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024B00.s")
 
 void func_minecart_80024E78(AAD_minecart_80027DA0* arg0, s32* arg1[], u8 arg2, u8 arg3) {

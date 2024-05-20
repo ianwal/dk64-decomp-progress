@@ -609,6 +609,7 @@ f32 func_global_asm_806F1B90(f32 *arg0, f32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F22A8.s")
 
 // regalloc
+// https://decomp.me/scratch/nTpwl
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F2754.s")
 
 typedef struct {
@@ -696,6 +697,7 @@ void func_global_asm_806F2A40(Actor *arg0, Struct806F2EDC *arg1, s32 *arg2) {
     *arg2 += 1;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F2C48.s")
 
 typedef struct {
@@ -707,7 +709,6 @@ typedef struct {
 } Struct806F2C48;
 
 /*
-// TODO: Quite close
 void func_global_asm_806F2C48(Actor *arg0, Struct806F2C48 *arg1, s32 *arg2) {
     f32 temp_f0;
     f32 temp_f12;
