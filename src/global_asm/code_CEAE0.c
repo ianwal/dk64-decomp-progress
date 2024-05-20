@@ -92,7 +92,6 @@ extern s16 D_global_asm_80753A78[];
 extern f32 D_global_asm_80753AFC[];
 
 extern s32 D_global_asm_807FBB68;
-extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern u8 D_global_asm_807FD586;
 
 void func_global_asm_8062217C(Actor*, u8);

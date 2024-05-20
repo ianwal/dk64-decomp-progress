@@ -31,7 +31,6 @@ extern f32 D_global_asm_80753D8C[];
 extern s32 D_global_asm_80767CC0;
 
 extern u32 D_global_asm_807FBB68;
-extern s16 D_global_asm_807FD584;
 extern s32 D_global_asm_807FD6F0[];
 extern s16 D_global_asm_807FD6F2;
 

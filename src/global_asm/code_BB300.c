@@ -7,6 +7,7 @@ extern s16 D_global_asm_807502E0;
 extern u8 D_global_asm_807FBD70;
 
 // rodata, close, doable
+// https://decomp.me/scratch/0Ln4b
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_global_asm_806B6600.s")
 
 typedef struct {

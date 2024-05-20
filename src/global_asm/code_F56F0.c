@@ -110,8 +110,6 @@ extern u8 D_global_asm_807FD716; // bitfield, idk what it's for
 
 extern s32 D_global_asm_807FBB68;
 
-extern s16 D_global_asm_807FD584;
-
 extern Struct80753EA0 D_global_asm_80753EA0[];
 
 void func_global_asm_806F386C(u8, Actor*, Actor*, s16, u8);

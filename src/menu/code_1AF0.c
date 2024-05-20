@@ -567,6 +567,7 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026B28.s")
 
 // Jumptable, very close
+// https://decomp.me/scratch/ssEq8
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026DAC.s")
 
 /*

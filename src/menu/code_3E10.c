@@ -2156,6 +2156,7 @@ void func_menu_80031B08(void) {
 }
 
 // TODO: float & stack nonsense, close
+// https://decomp.me/scratch/Rb4u3
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80032024.s")
 
 typedef struct {

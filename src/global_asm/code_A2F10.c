@@ -54,7 +54,8 @@ Gfx *func_global_asm_8069FA40(Gfx *arg0, Actor *arg1);
 extern char *D_global_asm_80750338[];
 void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
 
-// Jumptable, close doable
+// Jumptable, close, doable
+// https://decomp.me/scratch/yqWRH
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069E210.s")
 
 s32 func_global_asm_80613CA8(Actor *, s32, f32, f32);

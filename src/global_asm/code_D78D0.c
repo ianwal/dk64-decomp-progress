@@ -87,7 +87,6 @@ extern s32 D_global_asm_80767CC0;
 
 extern s32 D_global_asm_807FBB68;
 extern f32 D_global_asm_807FBC58;
-extern s16 D_global_asm_807FD584; // index into a ton of arrays
 
 s32 handleInputsForControlState(s32 arg0);
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
@@ -1964,6 +1963,7 @@ int func_global_asm_806D850C(void) {
 }
 
 // close, float
+// https://decomp.me/scratch/en55B
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D87FC.s")
 
 extern f32 D_global_asm_807539A4[];

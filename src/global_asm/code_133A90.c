@@ -191,7 +191,7 @@ void func_global_asm_8072F120(void) {
     }
 }
 
-// close, beq vs beql and beqz vs beqzl
+// close, beq vs beql and beqz vs beqzl, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_8072F230.s")
 
 extern f32 D_global_asm_8075FF50;

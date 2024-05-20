@@ -48,7 +48,6 @@ extern f32 D_global_asm_80753B18[];
 extern s32 D_global_asm_80767CC0;
 
 extern s32 D_global_asm_807FBB68;
-extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern f32 D_global_asm_807FD888;
 
 extern void func_global_asm_8068E474(void);

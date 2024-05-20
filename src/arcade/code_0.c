@@ -27603,6 +27603,7 @@ void func_arcade_8002CD64(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002D6FC.s")
 
 // TODO: Close
+// https://decomp.me/scratch/cfs6S
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002E158.s")
 
 /*

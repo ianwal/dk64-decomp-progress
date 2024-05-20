@@ -158,8 +158,6 @@ void func_global_asm_806C81DC(s16 arg0, s16 arg1) {
 // Unrolled loops
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C8220.s")
 
-extern s16 D_global_asm_807FD584;
-
 extern f32 D_global_asm_80753578[];
 extern f32 D_global_asm_807535E8[];
 

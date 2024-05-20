@@ -36,7 +36,6 @@ extern s32 D_global_asm_80767CC0;
 extern s32 D_global_asm_807FBB68;
 extern u8 D_global_asm_807FBB8C;
 extern u8 D_global_asm_807FC8B9;
-extern s16 D_global_asm_807FD584; // index into a ton of arrays
 extern f32 D_global_asm_807FD888;
 
 s32 handleInputsForControlState(s32 arg0);

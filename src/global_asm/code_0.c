@@ -275,6 +275,7 @@ void func_global_asm_805FBE04(void) {
 }
 
 // close, just missing some nops
+// https://decomp.me/scratch/lJIx2
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FBFF4.s")
 
 extern s32 D_global_asm_8076A070;

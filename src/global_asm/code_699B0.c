@@ -638,8 +638,6 @@ extern f32 D_global_asm_80753008[];
 extern f32 D_807F9460;
 extern s8 D_807F9464;
 
-extern s16 D_global_asm_807FD584;
-
 void func_global_asm_80666D88(f32 arg0, f32 arg1, u8 arg2, Actor *arg3, u8 arg4) {
     f32 *var_v0;
     f32 *var_v1;

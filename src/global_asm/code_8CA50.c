@@ -39,6 +39,7 @@ void func_global_asm_80687F7C(Actor *arg0) {
 }
 
 // close, doable
+// https://decomp.me/scratch/mep3M
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_global_asm_80687FC8.s")
 
 /*
