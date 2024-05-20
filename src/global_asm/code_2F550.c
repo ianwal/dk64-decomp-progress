@@ -1022,6 +1022,7 @@ f32 func_global_asm_8062E040(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s
 */
 
 // regalloc
+// https://decomp.me/scratch/QdSOv
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062E1F8.s")
 
 typedef struct {

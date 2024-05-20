@@ -74,7 +74,7 @@ extern f32 D_global_asm_8075340C[];
 extern f32 D_global_asm_80753428[];
 extern f32 D_global_asm_80753578[]; // yAccelArray in ghidra
 extern f32 D_global_asm_80753594[];
-extern f32 D_global_asm_807535B0[] ;/*= {-17, -17, -17, -17, -10, -10, -17}; // Kong Jumping Y Acceleration*/
+extern f32 D_global_asm_807535B0[];/*= {-17, -17, -17, -17, -10, -10, -17}; // Kong Jumping Y Acceleration*/
 extern f32 D_global_asm_80753658[];
 extern f32 D_global_asm_807536E4[];
 extern f32 D_global_asm_80753700[];
@@ -98,10 +98,8 @@ extern u8 D_global_asm_807FD586;
 void func_global_asm_8062217C(Actor*, u8);
 int func_global_asm_806FF358(); // TODO: Signature
 int func_global_asm_806FF75C(); // TODO: Signature
-f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
 
 s32 handleInputsForControlState(s32 arg0);
-s32 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
 void func_global_asm_80718BF4(void);

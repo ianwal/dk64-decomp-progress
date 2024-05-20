@@ -259,6 +259,7 @@ u8 func_global_asm_807102AC(Struct8071006C_arg0 *arg0) {
 */
 
 // regalloc
+// https://decomp.me/scratch/sk00B
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807103E0.s")
 
 typedef struct {

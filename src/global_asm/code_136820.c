@@ -76,6 +76,7 @@ void func_global_asm_80731B60(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80731B88.s")
 
 // Close, regalloc, stack
+// https://decomp.me/scratch/3IeSa
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80731D20.s")
 
 extern s32 D_global_asm_807FEF70;
@@ -118,6 +119,7 @@ void func_global_asm_80731D20(char *arg0, ...) {
 */
 
 // regalloc, rodata, close, doable
+// https://decomp.me/scratch/x50qz
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80731E68.s")
 
 extern s32 D_global_asm_80756360[];

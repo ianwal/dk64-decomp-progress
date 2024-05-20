@@ -14,6 +14,8 @@ typedef struct BoulderAAD {
     s8 unk1E;
 } BoulderAAD;
 
+extern s32 D_global_asm_8071FC58; // TODO: Sprite
+extern s32 D_global_asm_8071FCC0; // TODO: Sprite
 extern s32 D_global_asm_8071FF18;
 extern s32 D_global_asm_8072014C;
 
@@ -53,6 +55,8 @@ extern f32 D_global_asm_8075348C[];
 extern s16 D_global_asm_807534A8[];
 extern f32 D_global_asm_8075352C[];
 extern s16 D_global_asm_80753548[];
+extern s16 D_global_asm_80753558[];
+extern s16 D_global_asm_80753568[];
 extern f32 D_global_asm_80753604[];
 extern f32 D_global_asm_80753620[];
 extern f32 D_global_asm_8075363C[];
@@ -61,6 +65,9 @@ extern f32 D_global_asm_80753690[];
 extern f32 D_global_asm_807536C8[];
 extern f32 D_global_asm_807536E4[];
 extern f32 D_global_asm_80753738[];
+extern f32 D_global_asm_80753770[];
+extern f32 D_global_asm_807537A8[];
+extern f32 D_global_asm_807537C4[];
 extern s16 D_global_asm_8075387C[];
 extern s16 D_global_asm_8075388C[];
 extern s16 D_global_asm_807538B8[];
@@ -69,18 +76,24 @@ extern s16 D_global_asm_807539DC[];
 extern s16 D_global_asm_807539EC[];
 extern f32 D_global_asm_80753A5C[];
 extern f32 D_global_asm_80753AFC[];
+extern f32 D_global_asm_80753C30[];
+extern f32 D_global_asm_80753C4C[];
+extern f32 D_global_asm_80753C68[];
+extern s16 D_global_asm_80753C84[];
+extern s16 D_global_asm_80753CA4[];
 extern f32 D_global_asm_80753CB4[];
 
 extern s32 D_global_asm_80767CC0;
+
 extern s32 D_global_asm_807FBB68;
 extern f32 D_global_asm_807FBC58;
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 
-f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount); // boostSpeed
 s32 handleInputsForControlState(s32 arg0);
 u8 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
 void func_global_asm_806224CC(s32, Actor*);
+extern void func_global_asm_807300BC(); // TODO: Proper signature
 
 void func_global_asm_806D2BD0(void) {
     func_global_asm_806D2954(0xC);
@@ -1024,8 +1037,6 @@ void func_global_asm_806D57F0(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-extern s32 D_global_asm_80767CC0;
-
 void func_global_asm_806D5834(void) {
     if (current_actor_pointer); // TODO: Yikes, fakematch? fake match?
 
@@ -1219,9 +1230,6 @@ void func_global_asm_806D5CCC(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-extern s16 D_global_asm_80753558[];
-extern s16 D_global_asm_80753568[];
-
 void func_global_asm_806D61B8(void) {
     func_global_asm_806DF494(&current_actor_pointer->y_rotation, current_actor_pointer->unkEE, extra_player_info_pointer->unk48);
     func_global_asm_806D3608();
@@ -1288,9 +1296,6 @@ void func_global_asm_806D61B8(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-
-extern f32 D_global_asm_8075352C[];
-extern s16 D_global_asm_807FD584;
 
 void func_global_asm_806D6558(void) {
     func_global_asm_806D3608();
@@ -1876,10 +1881,6 @@ void func_global_asm_806D80A8(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-extern f32 D_global_asm_80753770[];
-extern f32 D_global_asm_807537A8[];
-extern f32 D_global_asm_807537C4[];
-
 void func_global_asm_806D8308(void) {
     Actor *var_a3;
     PlayerAdditionalActorData *temp_v0;
@@ -2231,7 +2232,6 @@ void func_global_asm_806D91A4(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D9320.s")
 
 extern f32 D_global_asm_80753CD0[];
-extern s16 D_global_asm_807FD584;
 
 /*
 void func_global_asm_806D9320(void) {
@@ -2836,13 +2836,14 @@ void func_global_asm_806DB08C(void) {
     renderActor(current_actor_pointer, 0);
 }
 
+// close
+// https://decomp.me/scratch/ZffnL
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DB0C4.s")
 
 /*
 void func_global_asm_806DB0C4(void) {
     Actor *temp_v1;
-    f32 temp_f14;
-    f32 temp_f20;
+    f32 dz, dx;
 
     if (D_global_asm_807FBB70.unkE4 != 0) {
         extra_player_info_pointer->unkDC = D_global_asm_807FBB70.unkEC;
@@ -2851,17 +2852,17 @@ void func_global_asm_806DB0C4(void) {
         extra_player_info_pointer->unkA4 = D_global_asm_807FBB70.unkD8;
         extra_player_info_pointer->unkA8 = D_global_asm_807FBB70.unkE0;
         extra_player_info_pointer->unkAC_f32 = 0.0f;
-        temp_f20 = extra_player_info_pointer->unkA4 - extra_player_info_pointer->unk9C;
-        temp_f14 = extra_player_info_pointer->unkA8 - extra_player_info_pointer->unkA0;
-        extra_player_info_pointer->unk94 = sqrtf((temp_f20 * temp_f20) + (temp_f14 * temp_f14)) * 0.8;
-        extra_player_info_pointer->unk98 = ((func_global_asm_80611BB4(temp_f20, temp_f14) * 4096.0f) / 6.283185482f);
+        dx = extra_player_info_pointer->unkA4 - extra_player_info_pointer->unk9C;
+        dz = extra_player_info_pointer->unkA8 - extra_player_info_pointer->unkA0;
+        extra_player_info_pointer->unk94 = sqrtf((dx * dx) + (dz * dz)) * 0.8;
+        extra_player_info_pointer->unk98 = ((func_global_asm_80611BB4(dx, dz) * 4096.0f) / 6.283185482f);
         extra_player_info_pointer->unk4C = -1;
     }
     extra_player_info_pointer->unkAC_f32 += 0.02;
     if (extra_player_info_pointer->unkAC_f32 > 1.0) {
         if (extra_player_info_pointer->unkDC != NULL) {
             extra_player_info_pointer->unk98 = (func_global_asm_80611BB4(extra_player_info_pointer->unkDC->x_position - extra_player_info_pointer->unk9C, extra_player_info_pointer->unkDC->z_position - extra_player_info_pointer->unkA0) * 4096.0f) / 6.283185482f;
-            if (current_actor_pointer->y_rotation == extra_player_info_pointer->unk98) {
+            if (current_actor_pointer->y_rotation == (s16)extra_player_info_pointer->unk98) {
                 func_global_asm_806CFF9C(current_actor_pointer);
             }
         }
@@ -3033,9 +3034,6 @@ void func_global_asm_806DB670(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-extern s32 D_global_asm_8071FC58; // TODO: Sprite
-extern s32 D_global_asm_8071FCC0; // TODO: Sprite
-
 void func_global_asm_806DBB04(void) {
     f32 x2, y2, z2;
     u8 sp63;
@@ -3179,14 +3177,6 @@ void func_global_asm_806DC3A4(f32 arg0) {
     }
     extra_player_info_pointer->unk94 = phi_f0;
 }
-
-extern s16 D_global_asm_80753C84[];
-
-extern f32 D_global_asm_80753C30[];
-extern f32 D_global_asm_80753C4C[];
-extern f32 D_global_asm_80753C68[];
-extern s16 D_global_asm_80753CA4[];
-extern void func_global_asm_807300BC(); // TODO: Proper signature
 
 typedef struct {
     void *unk0; // Used

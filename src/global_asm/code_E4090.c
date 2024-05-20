@@ -1070,6 +1070,7 @@ void func_global_asm_806E2FE8(void) {
 }
 
 // regalloc v1 a2
+// https://decomp.me/scratch/0BloP
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E3040.s")
 
 extern f32 D_global_asm_8075371C[];

@@ -469,6 +469,7 @@ void func_global_asm_806B3F3C(void) {
 }
 
 // doable regalloc
+// https://decomp.me/scratch/QB4dJ
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3F90.s")
 
 typedef struct GlobalASMStruct91 {

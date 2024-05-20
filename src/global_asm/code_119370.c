@@ -1633,6 +1633,7 @@ void func_global_asm_8071BE04(Struct80717D84 *arg0, s32 arg1) {
 }
 
 // regalloc
+// https://decomp.me/scratch/KjSwy
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_8071C004.s")
 
 extern s32 D_global_asm_807201D4; // TODO: Datatype
