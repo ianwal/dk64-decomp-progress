@@ -516,6 +516,7 @@ void func_global_asm_80705C00(s16 arg0, s16 arg1, u8 arg2) {
 }
 
 // Displaylist stuff, close
+// https://decomp.me/scratch/KwbFD
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80705F5C.s")
 
 /*

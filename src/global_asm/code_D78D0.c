@@ -2044,6 +2044,7 @@ void func_global_asm_806D8A64(void) {
 }
 
 // Jumptable, very close
+// https://decomp.me/scratch/6V0uT
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D8B08.s")
 
 extern s16 D_global_asm_80753A78[];
@@ -2229,6 +2230,7 @@ void func_global_asm_806D91A4(void) {
 }
 
 // Jumptable, close, float
+// https://decomp.me/scratch/WkVsv
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D9320.s")
 
 extern f32 D_global_asm_80753CD0[];

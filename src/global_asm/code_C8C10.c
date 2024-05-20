@@ -2,6 +2,7 @@
 #include "functions.h"
 
 // close
+// https://decomp.me/scratch/SurwJ
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_global_asm_806C3F10.s")
 
 void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);

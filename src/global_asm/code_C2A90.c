@@ -788,12 +788,13 @@ void func_global_asm_806C19F4(void) {
     renderActor(current_actor_pointer, 0);
 }
 
+// close, switch case woes 
+// https://decomp.me/scratch/YGbiZ
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C1B50.s")
 
 extern s32 D_global_asm_8071FB34; // TODO: Datatype
 
 /*
-// TODO: Switch case woes
 void func_global_asm_806C1B50(void) {
     s32 var_v0;
     u32 var_v1;
