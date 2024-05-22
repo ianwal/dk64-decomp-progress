@@ -1,14 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// close
-// https://decomp.me/scratch/SurwJ
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_global_asm_806C3F10.s")
-
 void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_806B49B0(u8 arg0, s16 arg1, s16 arg2);
 
-/*
 void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
     Actor178 *a178;
 
@@ -27,7 +22,7 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
     a178->unk0 = MAX(0, D_global_asm_807FDC90->unkC - D_global_asm_807FDC9C->unk6);
     switch (current_actor_pointer->control_state) {
         case 39:
-            if ((D_global_asm_807FDC90->unk1A & 4) && (arg0 == (D_global_asm_807FDC90->unk25 & 0x7F))) {
+            if ((D_global_asm_807FDC90->unk1A & 4) && ((D_global_asm_807FDC90->unk25 & 0x7F) == arg0)) {
                 if (!character_change_array->unk2C0) {
                     loadText(current_actor_pointer, 0x10, 1);
                     current_actor_pointer->control_state = 0x29;
@@ -53,7 +48,7 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
         case 38:
         case 41:
             if (D_global_asm_807FDC90->unk1A & 0x8000) {
-                if ((D_global_asm_807FDC90->unk1A & 4) && (arg1 == (D_global_asm_807FDC90->unk25 & 0x7F))) {
+                if ((D_global_asm_807FDC90->unk1A & 4) && ((D_global_asm_807FDC90->unk25 & 0x7F) == arg1)) {
                     if (!arg2) {
                         func_global_asm_806225C0(D_global_asm_807F5D10);
                     }
@@ -65,7 +60,7 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
                     D_global_asm_807FDC90->unk1A &= 0x7FFF;
                 } else {
                     if (!arg2) {
-                        func_global_asm_8061C464(D_global_asm_807F5D10, player_pointer, 4, object_timer * 0x14, 0x1E, 0, 0xA, 0x1E, 0xC, 0, 0.2f);
+                        func_global_asm_8061C464(D_global_asm_807F5D10, player_pointer, 4, (s16)(object_timer * 0x14), 0x1E, 0, 0xA, 0x1E, 0xC, 0, 0.2f);
                     }
                     player_pointer->y_rotation = current_actor_pointer->y_rotation;
                     player_pointer->x_position = current_actor_pointer->x_position;
@@ -81,7 +76,6 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
             return;
     }
 }
-*/
 
 void func_global_asm_806C43A8(void) {
     s32 song = 0;
