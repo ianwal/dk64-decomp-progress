@@ -1281,11 +1281,6 @@ loop_7:
 // Object model 2 loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671F54.s")
 
-// close, doable
-// https://decomp.me/scratch/S7lVq
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672134.s")
-
-/*
 s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s16 var_a3;
     s16 temp_v0_2;
@@ -1293,39 +1288,41 @@ s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     f32 var_f2;
     s16 var_v0;
 
-    if (arg1 >= arg0 && arg2 >= arg0 && arg1 >= arg2) {
-        return 9999;
-    } else if (arg2 < arg0 && arg1 >= arg2) {
-        return 9999;
+    if (arg1 >= arg0) {
+        if (arg2 >= arg0 && arg1 >= arg2) {
+            return 9999;
+        }
     } else {
-        var_a3 = arg2 + 0x800;
-        if (var_a3 >= 0x1000) {
-            var_a3 = var_a3 - 0x1000;
+        if (!(arg2 < arg0) || arg1 >= arg2) {
+            return 9999;
         }
-        temp_v0_2 = func_global_asm_80672A70(arg0, arg1);
-        var_a1 = ABS(arg0 - temp_v0_2);
-        if (var_a1 >= 0x800) {
-            var_a1 = 0xFFF - var_a1;
-        }
-        var_v0 = ABS(var_a3 - temp_v0_2);
-        if (var_v0 >= 0x800) {
-            var_v0 = 0xFFF - var_v0;
-        }
-        if (var_a1 != 0) {
-            var_f2 = (f32)var_v0 / var_a1;
-        } else {
-            var_f2 = 0.0f;
-        }
-        if (var_f2 > 1.0) {
-            var_f2 = 1.0f;
-        }
-        if (var_f2 < 0.2) {
-            var_f2 = 0.0f;
-        }
-        return arg3 * var_f2;
     }
+    var_a3 = arg2 + 0x800;
+    if (var_a3 >= 0x1000) {
+        var_a3 = var_a3 - 0x1000;
+    }
+    temp_v0_2 = func_global_asm_80672A70(arg0, arg1);
+    var_a1 = ABS(arg0 - temp_v0_2);
+    if (var_a1 >= 0x800) {
+        var_a1 = 0xFFF - var_a1;
+    }
+    var_v0 = ABS(var_a3 - temp_v0_2);
+    if (var_v0 >= 0x800) {
+        var_v0 = 0xFFF - var_v0;
+    }
+    if (var_a1 != 0) {
+        var_f2 = (f32)var_v0 / var_a1;
+    } else {
+        var_f2 = 0.0f;
+    }
+    if (var_f2 > 1.0) {
+        var_f2 = 1.0f;
+    }
+    if (var_f2 < 0.2) {
+        var_f2 = 0.0f;
+    }
+    return arg3 * var_f2;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672328.s")
 

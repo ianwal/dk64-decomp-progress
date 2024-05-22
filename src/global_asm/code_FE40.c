@@ -2,7 +2,7 @@
 #include "functions.h"
 
 // Doable, close
-// https://decomp.me/scratch/cEa1L
+// https://decomp.me/scratch/5iYVm
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FE40/func_global_asm_8060B140.s")
 
 extern s8 D_global_asm_80746834;
