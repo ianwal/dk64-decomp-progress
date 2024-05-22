@@ -1363,10 +1363,6 @@ void func_global_asm_806960A4(void) {
     }
 }
 
-// extremely close, float regalloc
-// https://decomp.me/scratch/5rWpB
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80696574.s")
-
 extern s16 D_global_asm_807502D0;
 extern f32 D_global_asm_807502F8;
 
@@ -1381,26 +1377,13 @@ typedef struct {
     s32 unk0; // Used
 } AAD_80696574;
 
-/*
 void func_global_asm_80696574(void) {
     AAD_807FBB70_1FC *aaD1FC;
     s16 i;
-    u8 sp79;
-    u8 sp78;
-    u8 sp77;
-    u8 unk76;
-    u8 unk75;
-    u8 unk74;
-    u8 unk73;
-    u8 unk72;
-    u8 unk71;
-    u8 sp70;
-    u8 unk6F;
-    u8 unk6E;
-    u8 unk6D;
-    u8 sp6C;
+    u8 sp6C[10]; // TODO: This is a fakematch
     s32 bitmask;
     AAD_80696574 *aaD;
+    f32 temp;
 
     aaD = ((AAD_80696574*)current_actor_pointer->additional_actor_data);
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -1414,7 +1397,7 @@ void func_global_asm_80696574(void) {
         }
         aaD->unk0 = D_global_asm_8076A068;
         current_actor_pointer->object_properties_bitfield |= bitmask;
-        func_global_asm_80666290(current_actor_pointer, &sp79, &sp70, &sp78, &sp6C, sp77);
+        func_global_asm_80666290(current_actor_pointer, &sp6C[9], &sp6C[0], &sp6C[8], &sp6C[-4], sp6C[7]); // TODO: This stack is a fake match, notice [-4]
         current_actor_pointer->y_acceleration = D_global_asm_807502F8 - (((rand() >> 0xF) % 32767) % 10);
         current_actor_pointer->unk6A &= 0xFFFE;
     }
@@ -1454,11 +1437,11 @@ void func_global_asm_80696574(void) {
                 current_actor_pointer->y_velocity = D_global_asm_807502D0;
             }
         }
-        func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, (s16)(current_actor_pointer->animation_state->scale[1] * 300.0f), (s16)(current_actor_pointer->animation_state->scale[1] * 300.0f), 1, 0x96, 0x96, 0, 1.0f);
+        temp = current_actor_pointer->animation_state->scale[1] * 300.0f;
+        func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, (s16)temp, (s16)temp, 1, 0x96, 0x96, 0, 1.0f);
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 typedef struct {
     s32 unk0; // Used
