@@ -400,6 +400,7 @@ void func_global_asm_80704444(GlobalASMStruct3 *arg0, s16 arg1, s16 arg2, s16 ar
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80704484.s")
 
 // Displaylist stuff, regalloc, close
+// https://decomp.me/scratch/q4pwB
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80704960.s")
 
 extern u8 D_global_asm_8074450C;

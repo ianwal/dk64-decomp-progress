@@ -469,6 +469,7 @@ void func_global_asm_80661658(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_806616A0.s")
 
 // Displaylist stuff, close
+// https://decomp.me/scratch/BWl97
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_806618A0.s")
 
 typedef struct {

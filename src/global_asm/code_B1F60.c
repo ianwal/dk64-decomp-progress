@@ -241,6 +241,7 @@ void func_global_asm_806AD9F4(void) {
 }
 
 // close, stack
+// https://decomp.me/scratch/g7WPj
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B1F60/func_global_asm_806ADDD8.s")
 
 /*

@@ -630,6 +630,7 @@ u8 func_global_asm_8062BCC8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
 }
 
 // close
+// https://decomp.me/scratch/5GC3h
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062BDB0.s")
 
 /*

@@ -265,6 +265,7 @@ void func_global_asm_806BB32C(void) {
 }
 
 // doable, close
+// https://decomp.me/scratch/jNSL1
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BB400.s")
 
 /*

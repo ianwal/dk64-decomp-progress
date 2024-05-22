@@ -365,43 +365,37 @@ void func_global_asm_806A57C0(AAD_global_asm_806A4DDC *arg0) {
     }
 }
 
-// close
-// https://decomp.me/scratch/kJwok
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5868.s")
-
-/*
-// TODO: Extremely close, one statement left to fix
 void func_global_asm_806A5868(void) {
-    AAD_global_asm_806A4DDC *var_a3;
+    AAD_global_asm_806A4DDC *aaD;
     f32 sp18;
     f32 var_f0;
     s32 var_v0_2;
     f32 temp;
 
-    var_a3 = current_actor_pointer->additional_actor_data;
-    sp18 = 0.05000000075f;
+    aaD = current_actor_pointer->additional_actor_data;
+    sp18 = 0.05f;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         sp18 = 1.0f;
-        var_a3->unk34 = malloc(0x280);
-        var_a3->unk55 = 0;
+        aaD->unk34 = malloc(0x280);
+        aaD->unk55 = 0;
     } else {
-        if (!(var_a3->unk55 & 1)) {
+        if (!(aaD->unk55 & 1)) {
             if ((current_actor_pointer->control_state != 4) && (current_actor_pointer->control_state != 5)) {
-                if (var_a3->unk0 > 15.0) {
+                if (aaD->unk0 > 15.0) {
                     if (newly_pressed_input_copy & B_BUTTON) {
-                        var_a3->unk55 |= 1;
+                        aaD->unk55 |= 1;
                     }
                     if (D_global_asm_807ECD58.unk0 & Z_TRIG) {
-                        var_a3->unk55 |=  2;
+                        aaD->unk55 |=  2;
                     } else {
-                        var_a3->unk55 &= 0xFFFD;
+                        aaD->unk55 &= 0xFFFD;
                     }
-                    if (!(var_a3->unk55 & 2) && (D_global_asm_807ECD58.unk0 == A_BUTTON)) {
-                        var_a3->unk55 |= 4;
+                    if (!(aaD->unk55 & 2) && (D_global_asm_807ECD58.unk0 == A_BUTTON)) {
+                        aaD->unk55 |= 4;
                     } else {
-                        var_a3->unk55 &= 0xFFFB;
+                        aaD->unk55 &= 0xFFFB;
                     }
-                    if (var_a3->unk55 & 1) {
+                    if (aaD->unk55 & 1) {
                         // func_global_asm_8061CB08(0x280, current_actor_pointer, var_a3);
                         func_global_asm_8061CB08();
                         current_actor_pointer->control_state = 5;
@@ -410,89 +404,64 @@ void func_global_asm_806A5868(void) {
             }
         }
     }
-    var_a3->unk38 += 0x14;
-    var_a3->unk3A += 0x32;
+    aaD->unk38 += 0x14;
+    aaD->unk3A += 0x32;
     switch (current_actor_pointer->control_state) {
         case 0:
-            if (var_a3->unk0 < 0x1E) {
-                var_a3->unk0++;
+            if (aaD->unk0 < 0x1E) {
+                aaD->unk0++;
             } else {
                 current_actor_pointer->control_state = 1;
-                var_a3->unk1D = D_global_asm_807503F0;
-                func_global_asm_8070E808(current_actor_pointer, var_a3->unk4);
-                func_global_asm_806A57C0(var_a3);
+                aaD->unk1D = D_global_asm_807503F0;
+                func_global_asm_8070E808(current_actor_pointer, aaD->unk4);
+                func_global_asm_806A57C0(aaD);
             }
             break;
         case 2:
             var_f0 = 2.0f;
-            if (var_a3->unk55 & 4) {
+            if (aaD->unk55 & 4) {
                 temp = 3.0f;
                 var_f0 = 2.0f * temp;
-            } else if (var_a3->unk55 & 2) {
+            } else if (aaD->unk55 & 2) {
                 temp = 0.5f;
                 var_f0 = 2.0f * temp;
             }
-            if (!(var_f0 < var_a3->unk18)) {
-                var_f0 = var_a3->unk18;
+            if (!(var_f0 < aaD->unk18)) {
+                var_f0 = aaD->unk18;
             }
-            var_a3->unk14 -= var_f0;
-            var_a3->unk18 -= var_f0;
-            if (var_a3->unk18 < 0.0001) {
+            aaD->unk14 -= var_f0;
+            aaD->unk18 -= var_f0;
+            if (aaD->unk18 < 0.0001) {
                 current_actor_pointer->control_state = 1;
             }
             break;
         case 4:
-            if (var_a3->unk1D != 0) {
-                // Option 1
-                // if (var_a3->unk1D >= 0x34) {
-                //     var_v0_2 = 0x33;
-                // } else {
-                //     var_v0_2 = var_a3->unk1D;
-                // }
-                // var_a3->unk1D -= var_v0_2;
-
-                // Option 2
-                var_v0_2 = MIN(0x33, var_a3->unk1D);
-                var_a3->unk1D -= var_v0_2;
-
-                // Option 3
-                // var_v0_2 = (var_a3->unk1D >= 0x34) ? 0x33 : var_a3->unk1D;
-                // var_a3->unk1D -= var_v0_2;
-
-                // Option 4
-                // var_a3->unk1D -= MIN(0x33, var_a3->unk1D);
-
-                // Option 5
-                // if (var_a3->unk1D >= 0x34) {
-                //     var_a3->unk1D -= 0x33;
-                // } else {
-                //     var_a3->unk1D -= var_a3->unk1D;
-                // }
+            if (aaD->unk1D) {
+                aaD->unk1D -= MIN(0x33, aaD->unk1D);
             } else {
-                if (var_a3->unk0 != 0) {
-                    if (var_a3->unkC != 0) {
-                        func_global_asm_8070DA28(var_a3);
+                if (aaD->unk0 != 0) {
+                    if (aaD->unkC != 0) {
+                        func_global_asm_8070DA28(aaD);
                     }
-                    var_a3->unk0--;
+                    aaD->unk0--;
                 } else {
                     current_actor_pointer->control_state = 5;
                 }
             }
             break;
         case 5:
-            func_global_asm_8070DA74(var_a3->unk4);
+            func_global_asm_8070DA74(aaD->unk4);
             break;
     }
     if (current_actor_pointer->control_state != 5) {
-        var_a3->unk20 = var_a3->unk0 * 0.03333333507f;
-        func_global_asm_806A5174(current_actor_pointer, var_a3, sp18);
-        if (var_a3->unk0 != 0) {
+        aaD->unk20 = aaD->unk0 * 0.03333333507f;
+        func_global_asm_806A5174(current_actor_pointer, aaD, sp18);
+        if (aaD->unk0 != 0) {
             func_global_asm_806A4DDC(current_actor_pointer);
             addActorToTextOverlayRenderArray(func_global_asm_806A4284, current_actor_pointer, 3);
         }
     }
 }
-*/
 
 // TODO: Progress made, kinda fiddly, last loop is sus
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A5C60.s")

@@ -1356,7 +1356,8 @@ void func_global_asm_806F0344(void) {
     last_spawned_actor->unk11C = current_player;
 }
 
-// Stupidly close https://decomp.me/scratch/EphMR
+// Stupidly close
+// https://decomp.me/scratch/EphMR
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EFDC0/func_global_asm_806F03C4.s")
 
 /*

@@ -1282,6 +1282,7 @@ loop_7:
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671F54.s")
 
 // close, doable
+// https://decomp.me/scratch/S7lVq
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672134.s")
 
 /*

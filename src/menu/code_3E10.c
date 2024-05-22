@@ -22,8 +22,6 @@ extern void D_global_asm_8072052C(); // TODO: Is this actually a function?
 extern s32 D_global_asm_807204BC;
 extern s32 D_global_asm_80720CF0;
 extern s32 D_global_asm_80720D14;
-extern s32 D_global_asm_80720D14;
-extern s32 D_global_asm_80720C34;
 extern s32 D_global_asm_80720D38;
 extern s8 menu_selection_available;
 
@@ -834,6 +832,7 @@ void func_menu_8002AB28(s32 arg0) {
 }
 
 // close
+// https://decomp.me/scratch/3bSNx
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002AB80.s")
 
 extern s8 D_8076A0D6;

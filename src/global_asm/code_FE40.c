@@ -12,7 +12,7 @@ extern void *D_807ECE18;
 
 /*
 void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u8 arg5, u8 *arg6) {
-    u8 i;
+    s32 i;
     u32 var_a0;
     u8 *sp5C;
     u8 *sp58;
@@ -21,7 +21,7 @@ void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u
     u8 *var_s1;
 
     sp58 = arg1;
-    if ((arg3) || (arg4)) {
+    if (arg3 || arg4) {
         if (arg3 & 0x80) {
             sp5C = arg6;
             arg6 += 0x3800;
@@ -35,22 +35,17 @@ void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u
         sp5C = arg1;
     }
     osInvalDCache(sp5C, *arg2);
-    i = 0;
     var_v1 = *arg2;
     var_a0 = var_v1 >> 0xE;
-    var_s1 = sp5C;
-    if (var_a0 != 0) {
-        do {
-            osPiStartDma(&D_global_asm_807ECE00, 0, 0, arg0, var_s1, 0x4000, &D_global_asm_807655F0);
-            D_global_asm_80746834 = 4;
-            osRecvMesg(&D_global_asm_807655F0, NULL, 1);
-            D_global_asm_80746834 = 0;
-            i += 1;
-            var_v1 = *arg2;
-            arg0 += 0x4000;
-            var_s1 += 0x4000;
-            var_a0 = var_v1 >> 0xE;
-        } while (i < var_a0);
+    for (i = 0, var_s1 = sp5C; i < var_a0; i++) {
+        osPiStartDma(&D_global_asm_807ECE00, 0, 0, arg0, var_s1, 0x4000, &D_global_asm_807655F0);
+        D_global_asm_80746834 = 4;
+        osRecvMesg(&D_global_asm_807655F0, NULL, 1);
+        D_global_asm_80746834 = 0;
+        var_v1 = *arg2;
+        arg0 += 0x4000;
+        var_s1 += 0x4000;
+        var_a0 = var_v1 >> 0xE;
     }
     if (var_v1 - (var_a0 << 0xE) != 0) {
         osPiStartDma(&D_global_asm_807ECE00, 0, 0, arg0, var_s1, var_v1 - (var_a0 << 0xE), &D_global_asm_807655F0);

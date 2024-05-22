@@ -453,6 +453,7 @@ void func_global_asm_80685E78(Actor *arg0) {
 }
 
 // TODO: Close, something up with phi_v1
+// https://decomp.me/scratch/YU9ml
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80685F60.s")
 
 extern s16 D_global_asm_80753A08[];

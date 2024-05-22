@@ -719,6 +719,7 @@ s32 func_global_asm_80600080(Maps map) {
 }
 
 // close
+// https://decomp.me/scratch/Eg37x
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600174.s")
 
 int func_global_asm_80689C20(s32, s32, s32, f32, f32, f32);

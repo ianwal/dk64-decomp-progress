@@ -166,6 +166,7 @@ void func_global_asm_8067BA3C(void) {
 }
 
 // Jumptable, close
+// https://decomp.me/scratch/xIcYq
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067BA7C.s")
 
 extern u8 D_global_asm_807FBBA8;
