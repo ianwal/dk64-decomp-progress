@@ -3657,7 +3657,7 @@ us,.critter,func_critter_80024518,96,yes
 us,.critter,func_critter_80027034,88,yes
 us,.critter,func_critter_80028840,104,yes
 us,.critter,func_critter_80028DE8,256,yes
-us,.critter,func_critter_8002516C,916,no
+us,.critter,func_critter_8002516C,916,yes
 us,.critter,func_critter_80025D1C,156,yes
 us,.critter,func_critter_800257D4,220,yes
 us,.critter,func_critter_80028A9C,844,no

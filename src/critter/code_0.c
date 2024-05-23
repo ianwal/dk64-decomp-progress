@@ -143,7 +143,8 @@ typedef struct Struct800247F4 {
     f32 unk3C;
     u8 unk40[0x48 - 0x40];
     f32 unk48;
-    u8 unk4C[0x58 - 0x4C];
+    f32 unk4C;
+    u8 unk50[0x58 - 0x50];
     Struct800247F4Sub58* unk58;
     u8 unk5C[0x60 - 0x5C];
     f32 unk60[2][4][4]; // At least 2 4x4 matrices
@@ -516,8 +517,50 @@ void func_critter_80024F28(Critter *arg0) {
     func_critter_80024578(arg0);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_8002516C.s")
+s32 func_global_asm_80612C30(f32 (*)[4], f32); // extern
+extern s32 D_critter_80029940;
+extern s32 D_critter_80029980;
+
+Gfx *func_critter_8002516C(Gfx *dl, Struct800247F4 *arg1) {
+    f32 spD0[4][4];
+    f32 sp90[4][4];
+
+    if (D_critter_80029BA8 != arg1->unk1E8) {
+        D_critter_80029BA8 = arg1->unk1E8;
+        gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_critter_80029BA8);
+        gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD);\
+        gDPLoadSync(dl++);\
+        gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1535, 171);\
+        gDPPipeSync(dl++);\
+        gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 12, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD);
+        gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x00BC, 0x007C);
+    }
+    func_critter_80025A3C(arg1);
+    gSPMatrix(dl++, arg1->unk60[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_global_asm_80612C30(spD0, arg1->unk4C);
+    guMtxF2L(spD0, arg1->unk160[D_global_asm_807444FC]);
+    gSPMatrix(dl++, arg1->unk160[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPClearGeometryMode(dl++, G_CULL_BOTH);
+    guTranslateF(sp90, 0.0f, 0.0f, -27.0f);
+    func_global_asm_80612C30(spD0, arg1->unk48);
+    guMtxCatF(spD0, sp90, spD0);
+    guMtxF2L(spD0, arg1->unkE0[D_global_asm_807444FC]);
+    gSPMatrix(dl++, arg1->unkE0[D_global_asm_807444FC], G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPVertex(dl++, &D_critter_80029940, 4, 0);
+    gSP2Triangles(dl++, 0, 1, 2, 0, 2, 3, 0, 0);
+    gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+    gSPSetGeometryMode(dl++, G_CULL_BACK);
+    gSPVertex(dl++, &D_critter_80029980, 9, 0);
+    gSP2Triangles(dl++, 0, 1, 2, 0, 0, 3, 4, 0);
+    gSP2Triangles(dl++, 5, 1, 6, 0, 4, 3, 5, 0);
+    gSP2Triangles(dl++, 0, 4, 6, 0, 0, 6, 1, 0);
+    gSP2Triangles(dl++, 4, 5, 6, 0, 5, 2, 1, 0);
+    gSP2Triangles(dl++, 0, 7, 3, 0, 3, 7, 5, 0);
+    gSP2Triangles(dl++, 2, 5, 8, 0, 2, 8, 0, 0);
+    gSP2Triangles(dl++, 0, 8, 7, 0, 7, 8, 5, 0);
+    gDPPipeSync(dl++);
+    return dl;
+}
 
 void func_critter_80025500(Critter *arg0) {
     if ((arg0->unk1E0 != 0) && (arg0->unk1E1 & 1) && ((s16) (func_global_asm_806119A0() % 255U) < 6)) {
