@@ -164,14 +164,64 @@ typedef struct Struct80025AD0 {
     Struct800247F4* unk8;
 } Struct80025AD0;
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+    f32 unk3C;
+    u8 unk40[0x60 - 0x40];
+    f32 unk60[2][4][4]; // At least 2 4x4 matrices
+} Struct80025A3C;
+
+extern s8 D_critter_800297F0; // TODO: Vert arrays?
+extern s8 D_critter_80029830; // TODO: Vert arrays?
+extern s8 D_critter_80029870; // TODO: Vert arrays?
+extern s8 D_critter_800298D0; // TODO: Vert arrays?
+extern s8 D_critter_800298E0; // TODO: Vert arrays?
+extern Gfx D_critter_80029B18;
+extern Gfx D_critter_80029B30;
+extern Gfx D_critter_80029B78;
+extern Gfx D_critter_80029B88;
+extern s8 D_critter_80029B40;
 extern CritterController* D_critter_80029BA0;
 extern s32 D_critter_80029BA8;
+
+typedef struct {
+    s16 temp[3];
+} D_80029F6C;
+
+extern D_80029F6C D_critter_80029F6C;
+
+typedef struct {
+    s16 temp[4];
+} D_80029F74;
+
+extern D_80029F74 D_critter_80029F74;
 
 extern s32 D_global_asm_8071FC40;
 extern u8 D_global_asm_80770DC9;
 extern s32 D_global_asm_807F6C28;
 
 void func_critter_80024578(Critter *);
+Gfx *func_critter_800247F4(Gfx *, Struct800247F4 *);
+Gfx *func_critter_80024C88(Gfx *, Struct800247F4 *);
+Gfx *func_critter_8002516C(Gfx *, Struct800247F4 *);
+Gfx *func_critter_800255C4(Gfx *, Struct800247F4 *);
+void func_critter_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
+void func_critter_80025A3C(Struct800247F4 *);
 Gfx *func_critter_80025AD0(Gfx *, Struct80025AD0 *);
 void func_critter_80025DB8(CritterStruct6*, CritterStruct6*, u8, s16, u8);
 void func_critter_800262C0(Critter*, CritterController*);
@@ -179,6 +229,8 @@ void func_critter_8002646C(Critter*, Critter*);
 void func_critter_80026E0C(CritterController*);
 
 void func_global_asm_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
+void func_global_asm_80612CA0(f32 (*)[4], f32);
+void func_global_asm_8065C334(f32, f32, f32, s16, s8 *, s8 *, s8 *, s16);
 void func_global_asm_80718BF4(void);
 
 void func_critter_80024000(Critter *arg0, u8 *arg1, f32 arg2) {
@@ -233,12 +285,6 @@ void func_critter_800240EC(CritterController *arg0) {
     }
 }
 
-typedef struct {
-    s16 temp[3];
-} D_80029F6C;
-
-extern D_80029F6C D_critter_80029F6C;
-
 void func_critter_80024154(CritterController *arg0) {
     s32 i;
     s32 pad; // TODO: what?
@@ -260,12 +306,6 @@ void func_critter_80024154(CritterController *arg0) {
         critter++;
     }
 }
-
-typedef struct {
-    s16 temp[4];
-} D_80029F74;
-
-extern D_80029F74 D_critter_80029F74;
 
 void func_critter_8002427C(CritterController *arg0) {
     Critter *critter;
@@ -354,14 +394,6 @@ void func_critter_800245B8(Critter *arg0) {
     func_critter_80024578(arg0);
 }
 
-void func_critter_80025A3C(Struct800247F4 *);
-void func_global_asm_80612CA0(f32 (*)[4], f32);
-extern s8 D_critter_80029870;
-extern s8 D_critter_800298D0;
-extern s8 D_critter_800298E0;
-extern s8 D_critter_80029B40;
-extern s32 D_critter_80029BA8;
-
 Gfx *func_critter_800247F4(Gfx *dl, Struct800247F4 *arg1) {
     f32 sp90[4][4];
     f32 sp8C;
@@ -417,8 +449,38 @@ void func_critter_80024B78(Critter *arg0) {
     func_critter_80024578(arg0);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80024C88.s")
+Gfx *func_critter_80024C88(Gfx *dl, Struct800247F4 *arg1) {
+    f32 sp70[4][4];
+    f32 sp6C;
+
+    sp6C = arg1->unk48;
+    if (D_critter_80029BA8 != arg1->unk1E8) {
+        D_critter_80029BA8 = arg1->unk1E8;
+        gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, D_critter_80029BA8);
+        gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);\
+        gDPLoadSync(dl++);\
+        gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1023, 256);\
+        gDPPipeSync(dl++);\
+        gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);
+        gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
+    }
+    func_critter_80025A3C(arg1);
+    gSPMatrix(dl++, arg1->unk60[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    func_global_asm_80612CA0(sp70, sp6C);
+    guMtxF2L(sp70, arg1->unkE0[D_global_asm_807444FC]);
+    gSPMatrix(dl++, arg1->unkE0[D_global_asm_807444FC], G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPVertex(dl++, &D_critter_800297F0, 4, 0);
+    gSP2Triangles(dl++, 0, 1, 2, 0, 0, 2, 3, 0);
+    gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+    func_global_asm_80612CA0(sp70, -sp6C);
+    guMtxF2L(sp70, arg1->unk160[D_global_asm_807444FC]);
+    gSPMatrix(dl++, arg1->unk160[D_global_asm_807444FC], G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    gSPVertex(dl++, &D_critter_80029830, 4, 0);
+    gSP2Triangles(dl++, 0, 1, 2, 0, 0, 2, 3, 0);
+    gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    return dl;
+}
 
 void func_critter_80024F28(Critter *arg0) {
     s16 temp_v1;
@@ -546,46 +608,12 @@ void func_critter_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg
     arg0[3][3] = 1.0f;
 }
 
-void func_critter_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    f32 unk18;
-    f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-    f32 unk2C;
-    f32 unk30;
-    f32 unk34;
-    f32 unk38;
-    f32 unk3C;
-    u8 unk40[0x60 - 0x40];
-    f32 unk60[2][4][4]; // At least 2 4x4 matrices
-} Struct80025A3C;
-
 void func_critter_80025A3C(Struct800247F4 *arg0) {
     f32 sp30[4][4];
 
     func_critter_800258B0(sp30, -arg0->unk2, arg0->unk0, 0, arg0->unk38 * 0.07f, arg0->unk8, arg0->unkC + arg0->unk14, arg0->unk10);
     guMtxF2L(sp30, arg0->unk60[D_global_asm_807444FC]);
 }
-
-Gfx *func_critter_800247F4(Gfx *, Struct800247F4 *);
-Gfx *func_critter_80024C88(Gfx *, Struct800247F4 *);
-Gfx *func_critter_8002516C(Gfx *, Struct800247F4 *);
-Gfx *func_critter_800255C4(Gfx *, Struct800247F4 *);
-void func_global_asm_8065C334(f32, f32, f32, s16, s8 *, s8 *, s8 *, s16);
-extern Gfx D_critter_80029B18;
-extern Gfx D_critter_80029B30;
-extern Gfx D_critter_80029B78;
-extern Gfx D_critter_80029B88;
 
 Gfx *func_critter_80025AD0(Gfx *dl, Struct80025AD0 *arg1) {
     s32 i;
