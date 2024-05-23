@@ -3644,7 +3644,7 @@ us,.critter,func_critter_80025AD0,588,yes
 us,.critter,func_critter_80025F3C,80,yes
 us,.critter,func_critter_8002409C,80,yes
 us,.critter,func_critter_80027340,264,yes
-us,.critter,func_critter_800247F4,900,no
+us,.critter,func_critter_800247F4,900,yes
 us,.critter,func_critter_80026410,92,yes
 us,.critter,func_critter_80025F8C,144,yes
 us,.critter,func_critter_80024F28,580,yes

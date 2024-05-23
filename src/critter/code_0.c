@@ -147,7 +147,9 @@ typedef struct Struct800247F4 {
     Struct800247F4Sub58* unk58;
     u8 unk5C[0x60 - 0x5C];
     f32 unk60[2][4][4]; // At least 2 4x4 matrices
-    u8 unkE0[0x1E1 - 0xE0];
+    f32 unkE0[2][4][4]; // At least 2 4x4 matrices
+    f32 unk160[2][4][4]; // At least 2 4x4 matrices
+    u8 unk1E0;
     u8 unk1E1;
     u8 unk1E2[0x1E8 - 0x1E2];
     s32 unk1E8;
@@ -352,9 +354,6 @@ void func_critter_800245B8(Critter *arg0) {
     func_critter_80024578(arg0);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_800247F4.s")
-
 void func_critter_80025A3C(Struct800247F4 *);
 void func_global_asm_80612CA0(f32 (*)[4], f32);
 extern s8 D_critter_80029870;
@@ -363,48 +362,45 @@ extern s8 D_critter_800298E0;
 extern s8 D_critter_80029B40;
 extern s32 D_critter_80029BA8;
 
-/*
 Gfx *func_critter_800247F4(Gfx *dl, Struct800247F4 *arg1) {
-    f32 sp90[16];
+    f32 sp90[4][4];
     f32 sp8C;
 
     sp8C = arg1->unk48;
     gSPSetGeometryMode(dl++, G_CULL_BACK);
     gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, arg1->unk1E8);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);
-    gDPLoadSync(dl++);
-    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 511, 256);
-    gDPPipeSync(dl++);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);\
+    gDPLoadSync(dl++);\
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 511, 256);\
+    gDPPipeSync(dl++);\
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 4, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);\
     gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x003C);
     func_critter_80025A3C(arg1);
-    gSPMatrix(dl++, (arg1 + (D_global_asm_807444FC << 6) + 0x60), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(dl++, arg1->unk60[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gSPVertex(dl++, &D_critter_80029870, 6, 0);
     gSPDisplayList(dl++, &D_critter_80029B40);
     gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, arg1->unk1EC);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);
-    gDPLoadSync(dl++);
-    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1535, 256);
-    gDPPipeSync(dl++);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);\
+    gDPLoadSync(dl++);\
+    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 1535, 256);\
+    gDPPipeSync(dl++);\
+    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 6, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, 5, G_TX_NOLOD);\
     gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x00BC);
-    func_global_asm_80612CA0((f32 (*)[4]) &sp90[0], -sp8C);
-    guMtxF2L((f32 (*)[4]) &sp90[0], arg1 + (D_global_asm_807444FC << 6) + 0xE0);
-    gSPMatrix(dl++, (arg1 + (D_global_asm_807444FC << 6) + 0xE0), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    func_global_asm_80612CA0(sp90, -sp8C);
+    guMtxF2L(sp90, arg1->unkE0[D_global_asm_807444FC]);
+    gSPMatrix(dl++, arg1->unkE0[D_global_asm_807444FC], G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPVertex(dl++, &D_critter_800298D0, 4, 6);
     gSP2Triangles(dl++, 6, 7, 8, 0, 6, 8, 9, 0);
     gSPPopMatrix(dl++, G_MTX_MODELVIEW);
-    func_global_asm_80612CA0((f32 (*)[4]) &sp90[0], sp8C);
-    guMtxF2L((f32 (*)[4]) &sp90[0], arg1 + (D_global_asm_807444FC << 6) + 0x160);
-    gSPMatrix(dl++, (arg1 + (D_global_asm_807444FC << 6) + 0x160), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+    func_global_asm_80612CA0(sp90, sp8C);
+    guMtxF2L(sp90, arg1->unk160[D_global_asm_807444FC]);
+    gSPMatrix(dl++, arg1->unk160[D_global_asm_807444FC], G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
     gSPVertex(dl++, &D_critter_800298E0, 6, 7);
     gSP2Triangles(dl++, 10, 11, 7, 0, 10, 7, 12, 0);
     D_critter_80029BA8 = 0;
     gDPPipeSync(dl++);
     return dl;
 }
-*/
-
 
 void func_critter_80024B78(Critter *arg0) {
     f32 temp_f0;
