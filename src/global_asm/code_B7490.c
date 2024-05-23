@@ -468,10 +468,6 @@ void func_global_asm_806B3F3C(void) {
     }
 }
 
-// doable regalloc
-// https://decomp.me/scratch/QB4dJ
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3F90.s")
-
 typedef struct GlobalASMStruct91 {
     s16 unk0;
     s16 unk2;
@@ -485,26 +481,23 @@ typedef struct GlobalASMStruct91 {
 
 void func_global_asm_806B3F90(GlobalASMStruct91 *arg0, u8 arg1);
 
-/*
-// TODO: Very doable, float regalloc, I might have got the MIN/MAX macros mixed up?
 void func_global_asm_806B3F90(GlobalASMStruct91 *arg0, u8 arg1) {
     f32 dz;
     f32 dx;
     f32 var_f16;
     f32 var_f18;
-    f64 temp_f16;
+    f32 temp_f16;
 
     dz = arg0->unkE - current_actor_pointer->z_position;
     dx = arg0->unkA - current_actor_pointer->x_position;
     temp_f16 = sqrtf((dz * dz) + (dx * dx));
-    var_f18 = ((temp_f16 / MAX(0.0001, current_actor_pointer->unkB8)) < 0.0001) ? 0.0001 : temp_f16 / MIN(current_actor_pointer->unkB8, 0.0001);
+    var_f18 = MAX(0.0001, (temp_f16 / MAX(0.0001, current_actor_pointer->unkB8)));
     current_actor_pointer->y_velocity = 0.0f;
     var_f16 = (current_actor_pointer->y_position < arg0->unkC) ? 0.0f : current_actor_pointer->y_position - arg0->unkC;
     current_actor_pointer->y_acceleration = -(var_f16 / var_f18);
     current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, (func_global_asm_80665E94(arg0->unkA, arg0->unkC, arg0->unkE, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x46) * 2048.0) / 3.14159274101257324, 3.3f);
     func_global_asm_8072AB74(arg1, arg0->unkA, arg0->unkE, 0x2E0, 0.0f);
 }
-*/
 
 void func_global_asm_806B4194(void) {
     u8 temp;
