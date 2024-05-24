@@ -758,10 +758,10 @@ void func_global_asm_806A0F78(Actor *arg0, u8 arg1, u8 arg2) {
 
 void func_global_asm_806A1008(u8 arg0, u8 arg1) {
     Actor *temp_a0;
-    s16 var_v0;
+    s16 i;
 
-    for (var_v0 = 0; var_v0 < D_global_asm_807FBB34; var_v0++) {
-        temp_a0 = D_global_asm_807FB930[var_v0].unk0;
+    for (i = 0; i < D_global_asm_807FBB34; i++) {
+        temp_a0 = D_global_asm_807FB930[i].unk0;
         if (temp_a0->unk58 == ACTOR_ROPE && (temp_a0->unk15F / 3) == arg0) {
             temp_a0->control_state = arg1;
             temp_a0->control_state_progress = 0;

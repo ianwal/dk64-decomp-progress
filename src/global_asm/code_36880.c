@@ -1743,7 +1743,36 @@ void func_global_asm_8063B4A4(void) {
 // big, object model 2
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063BBB0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063BEC0.s")
+typedef struct {
+    s16 unk0;
+    u8 unk2[0x117 - 0x2];
+    u8 unk117;
+    u8 unk118[0x120 - 0x118];
+    u8 unk120;
+    u8 unk121[0x250 - 0x121];
+    u8 unk250; // Index into array at unk254
+    u8 unk251[0x254 - 0x251];
+    s32 unk254[1][16]; // TODO: What is this? Matrix array? Substruct array?
+} Struct8063BEC0_arg0;
+
+void func_global_asm_8063BEC0(Struct8063BEC0_arg0 *arg0, s32 arg1, s16 arg2, s16 arg3) {
+    s32 found;
+    s32 i;
+
+    found = FALSE;
+    for (i = 0; !found && i < arg1;) {
+        if (arg2 == arg0->unk0) {
+            found = TRUE;
+        } else {
+            i++;
+            arg0 = arg0->unk254[arg0->unk250];
+        }
+    }
+    if (found) {
+        arg0->unk117 = arg3;
+        arg0->unk120 = 1;
+    }
+}
 
 // object model 2 -> 0x48, 0x49, 0x4E, 0x7C -> 0x10, 0x12, 0x38, 0x94, 0x9A
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063BF34.s")
