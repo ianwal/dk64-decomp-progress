@@ -96,30 +96,37 @@ void func_boss_8002FC48(Actor *arg0, u8 arg1) {
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_B100/func_boss_8002FC98.s")
 
+typedef struct {
+    s32 unk0[4];
+} A17C_8002FC98;
+
 /*
 void func_boss_8002FC98(Actor *arg0, u8 arg1, s32 arg2, u8 arg3) {
-    Actor17C *temp_s4;
-    f64 temp_f20;
+    A17C_8002FC98 *a17C;
     s16 i;
 
-    temp_s4 = arg0->unk17C;
-    temp_f20 = 0.01;
+    a17C = arg0->unk17C;
     for (i = 0; i < 4; i++) {
         if (arg1 & (1 << i)) {
             if (i != 0) {
-                arg0 = temp_s4[i].unk0;
+                arg0 = a17C->unk0[i - 1];
             }
-            if ((arg2 != -1) && (arg2 != 0)) {
-                if ((arg2 == 1) || (arg2 == 2)) {
+            switch (arg2) {
+                case -1:
+                case 0:
                     arg0->unk132 = arg2;
-                } else {
+                    break;
+                case 1:
+                case 2:
+                    arg0->unk132 = arg2;
+                    arg0->unk138 = arg2;
+                    break;
+                default:
                     playActorAnimation(arg0, arg2);
                     if (arg3 != 0) {
-                        func_global_asm_80614D00(arg0, arg3 * temp_f20, 0);
+                        func_global_asm_80614D00(arg0, arg3 * 0.01, 0);
                     }
-                }
-            } else {
-                arg0->unk138 = arg2;
+                    break;
             }
         }
     }

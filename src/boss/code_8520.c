@@ -2,15 +2,25 @@
 #include "functions.h"
 
 void func_boss_8002C520(s16, s16, s16);
+extern u8 D_global_asm_807FBB85;
+extern u8 D_global_asm_807FBD70;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} A178_8002C964;
 
 void func_boss_8002C520(s16 arg0, s16 arg1, s16 arg2) {
-    func_global_asm_807271F4(arg0,
-                  current_actor_pointer->x_position + (func_global_asm_80612794(arg2) * arg1),
-                  D_global_asm_807FDC9C->unk6,
-                  current_actor_pointer->z_position + (func_global_asm_80612790(arg2) * arg1),
-                  0,
-                  0,
-                  0);
+    func_global_asm_807271F4(
+        arg0,
+        current_actor_pointer->x_position + (func_global_asm_80612794(arg2) * arg1),
+        D_global_asm_807FDC9C->unk6,
+        current_actor_pointer->z_position + (func_global_asm_80612790(arg2) * arg1),
+        0,
+        0,
+        0
+    );
     last_spawned_actor->terminal_velocity *= 2;
     last_spawned_actor->draw_distance = 2000;
 }
@@ -62,24 +72,17 @@ void func_boss_8002C7CC(void) {
 
 void func_boss_8002C8B4(void) {
     func_global_asm_80690814(current_actor_pointer, 1);
-    func_global_asm_80690A28(0x116, 
-                (((rand() >> 0xF) % 3) + 1), 
-                1.0f, 
-                D_global_asm_807FDC94->x_position, 
-                D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, 
-                D_global_asm_807FDC94->z_position, 
-                300.0f, 
-                current_actor_pointer);
+    func_global_asm_80690A28(
+        0x116, 
+        (((rand() >> 0xF) % 3) + 1), 
+        1.0f, 
+        D_global_asm_807FDC94->x_position, 
+        D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, 
+        D_global_asm_807FDC94->z_position, 
+        300.0f, 
+        current_actor_pointer
+    );
 }
-
-extern u8 D_global_asm_807FBB85;
-extern u8 D_global_asm_807FBD70;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-} A178_8002C964;
 
 void func_boss_8002C964(void) {
     A178_8002C964 *a178;

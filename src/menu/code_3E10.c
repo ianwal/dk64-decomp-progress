@@ -1861,7 +1861,7 @@ typedef struct {
     f32 unk24;
 } Struct80717D84_80030894;
 
-void func_menu_80030894(MenuAdditionalActorData *arg0, void *arg1, s32 arg2, s32 arg3, f32 arg4, u8 arg5, s32 arg6) {
+void func_menu_80030894(MenuAdditionalActorData *arg0, void *sprite, s32 x, s32 y, f32 scale, u8 arg5, s32 arg6) {
     Struct80717D84 *sp3C;
     Struct80717D84_80030894 *temp_v0;
     f32 dX;
@@ -1875,7 +1875,7 @@ void func_menu_80030894(MenuAdditionalActorData *arg0, void *arg1, s32 arg2, s32
     func_global_asm_80714950((s32)arg0);
     func_global_asm_8071498C(func_menu_80030C14);
     func_global_asm_80714A28(1);
-    sp3C = drawSpriteAtPosition(arg1, arg4, arg2, arg3, -10.0f);
+    sp3C = drawSpriteAtPosition(sprite, scale, x, y, -10.0f);
     temp_v0 = malloc(sizeof(Struct80717D84_80030894));
     sp3C->unk384 = temp_v0;
     temp_v0->unk0 = arg6;
@@ -1905,15 +1905,15 @@ void func_menu_80030894(MenuAdditionalActorData *arg0, void *arg1, s32 arg2, s32
         case 2:
         case 3:
         case 10:
-            temp_v0->unk8 = arg2;
-            temp_v0->unk10 = arg4;
+            temp_v0->unk8 = x;
+            temp_v0->unk10 = scale;
             temp_v0->unk14 = 0.0f;
             break;
         case 15:
-            temp_v0->unk8 = arg2;
+            temp_v0->unk8 = x;
             break;
         default:
-            temp_v0->unk10 = arg4;
+            temp_v0->unk10 = scale;
             temp_v0->unk14 = 0.0f;
             break;
     }

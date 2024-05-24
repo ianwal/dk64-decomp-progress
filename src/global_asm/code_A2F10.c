@@ -177,8 +177,6 @@ typedef struct {
     u8 unk12; // Used
 } AAD_global_asm_8069E774;
 
-f32 func_global_asm_8066E9EC(Actor *arg0, s32 arg1, f32 arg2);
-
 /*
 // TODO: Doable, great progress made
 void func_global_asm_8069E774(void) {

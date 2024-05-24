@@ -634,7 +634,7 @@ extern s16 D_global_asm_80750370;
 extern u8 D_global_asm_80750AD0;
 extern u32 D_global_asm_8076A068;
 extern u8 D_global_asm_807FBB85;
-extern s32 D_global_asm_8071FB34; // Sprite?
+extern s32 D_global_asm_8071FB34; // Sprite
 extern s32 D_global_asm_807201A0; // Sprite?
 extern s16 D_global_asm_80750358;
 extern s16 D_global_asm_8075036C;

@@ -297,8 +297,6 @@ void func_global_asm_806B3420(void) {
 extern s32 D_global_asm_8072073C;
 extern s32 D_global_asm_8071ABDC;
 
-void func_global_asm_8066E9EC(Actor*, s32, f32);
-
 /*
 void func_global_asm_806B3680(void) {
     f32 var_f12;

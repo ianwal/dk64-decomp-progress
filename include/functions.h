@@ -30,6 +30,8 @@ void func_global_asm_806653C0(Actor *, f32, f32);
 void func_global_asm_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 void func_global_asm_806CC638(f32 arg0);
 
+f32 func_global_asm_8066E9EC(Actor *arg0, s32 arg1, f32 arg2);
+
 u16 func_global_asm_806F8EDC(s32, s32); // getMaxItemCapacity(HUDItemIndex, playerIndex)
 void func_global_asm_8060BF84(s32, u8, u16 *, u8*);
 void func_global_asm_8060BEA8(s32, u8, u16 *, u8*);

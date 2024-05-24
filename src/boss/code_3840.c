@@ -26,12 +26,37 @@ typedef struct BossStruct1 {
     u8 unk5;
 } BossStruct1;
 
+typedef struct {
+    u8 unk0[0x12 - 0x0];
+    u16 unk12;
+    u8 unk14;
+    u8 unk15;
+} A178_80028878;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    u8 unkC;
+    u8 unkD;
+    s16 unkE;
+    s16 unk10;
+} A17C_80028878;
+
 void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
 extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
+void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
 extern BossStruct1 D_boss_800359D0[];
+extern s16 D_boss_800359A0[];
+extern s16 D_boss_800359AC[];
+extern s16 D_boss_800359B8[];
+extern s16 D_boss_800359C4[];
 
+extern s32 D_global_asm_8071FE08; // TODO: Sprite
 extern u8 D_global_asm_80750AD4;
+extern s32 D_global_asm_80767CC0;
+extern s32 D_global_asm_8076D1F8;
 
 void func_boss_80027840(u8 *arg0) {
     s16 i;
@@ -66,23 +91,21 @@ void func_boss_80027950(Struct80027A30_arg0 *arg0, u8 *arg1) {
 }
 
 void func_boss_80027A30(Struct80027A30_arg0 *arg0, u8 *arg1) {
-    f32 dz;
-    f32 dy;
-    f32 dx;
-    s32 temp_f6;
-    s32 var_s1;
+    f32 dz, dy, dx;
+    s32 d;
+    s32 highest;
     u8 temp_a0;
     s16 i;
 
-    var_s1 = 0;
+    highest = 0;
     for (i = arg1[arg0->unk15]; i <= arg1[arg0->unk15 + 1]; i++) {
         temp_a0 = D_global_asm_807FDC98->unk20[i].unk0;
         dz = current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[temp_a0].unk4;
         dx = current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[temp_a0].unk0;
         dy = current_actor_pointer->y_position - D_global_asm_807FDCA0->unk14[temp_a0].unk2;
-        temp_f6 = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
-        if (var_s1 < temp_f6) {
-            var_s1 = temp_f6;
+        d = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
+        if (highest < d) {
+            highest = d;
             D_global_asm_807FDC90->unk25 = i;
         }
     }
@@ -153,33 +176,6 @@ void func_boss_80028820() {
     setFlag(0x54, FALSE, FLAG_TYPE_TEMPORARY);
 }
 
-void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
-extern s16 D_boss_800359A0[];
-extern s16 D_boss_800359AC[];
-extern s16 D_boss_800359B8[];
-extern s16 D_boss_800359C4[];
-extern s32 D_global_asm_8071FE08; // TODO: Sprite
-extern u8 D_global_asm_80750AD4;
-extern s32 D_global_asm_80767CC0;
-extern s32 D_global_asm_8076D1F8;
-
-typedef struct {
-    u8 unk0[0x12 - 0x0];
-    u16 unk12;
-    u8 unk14;
-    u8 unk15;
-} A178_80028878;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    u8 unkC;
-    u8 unkD;
-    s16 unkE;
-    s16 unk10;
-} A17C_80028878;
-
 void func_boss_80028878(u8 *arg0) {
     A178_80028878 *a178;
     u8 sp43;
@@ -224,20 +220,20 @@ void func_boss_80028878(u8 *arg0) {
         // Hmm, some debug code commented out?
     }
 
-    switch (current_actor_pointer->control_state) { // switch 1; irregular
-        case 0x37: // switch 1
+    switch (current_actor_pointer->control_state) {
+        case 0x37:
             if (current_actor_pointer->control_state_progress == 0) {
                 func_global_asm_806A2B20(current_actor_pointer->unk11C);
             }
             break;
-        case 0x6A: // switch 1
+        case 0x6A:
             if (current_actor_pointer->control_state_progress == 0) {
                 playActorAnimation(current_actor_pointer, 0);
                 current_actor_pointer->control_state_progress++;
             }
             break;
-        case 0x6C: // switch 1
-            a178->unk12 = a178->unk12 | 1;
+        case 0x6C:
+            a178->unk12 |= 1;
             func_boss_80028680();
             if ((a178->unk14 != 0) && (current_actor_pointer->unk58 == ACTOR_BOSS_KROOL_TINY)) {
                 func_global_asm_806A2B80(current_actor_pointer->unk11C);
@@ -246,7 +242,7 @@ void func_boss_80028878(u8 *arg0) {
             a178->unk15++;
             current_actor_pointer->control_state_progress = 0;
             break;
-        default: // switch 1
+        default:
             if ((current_actor_pointer->unk11C != NULL) && (current_actor_pointer->unk11C->control_state == 5)) {
                 func_boss_80028820();
                 current_actor_pointer->control_state = 0x6A;

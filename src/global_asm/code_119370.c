@@ -1632,20 +1632,16 @@ void func_global_asm_8071BE04(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk32C = 3;
 }
 
-// regalloc
-// https://decomp.me/scratch/KjSwy
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_8071C004.s")
-
 extern s32 D_global_asm_807201D4; // TODO: Datatype
 void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1);
 
-/*
 void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1) {
     f32 temp_f0;
     s32 pad3;
     s32 pad2;
     s16 sp44[3];
     f32 temp;
+    f32 temp2;
 
     if (current_map == MAP_HELM_LOBBY) {
         sp44[0] = 0xFF;sp44[1] = 0x46;sp44[2] = 0;
@@ -1662,18 +1658,21 @@ void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1) {
                 drawSpriteAtPosition(&D_global_asm_807201D4, 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
             } else {
                 temp_f0 = arg0->unk330->unk16 * 2;
-                temp = 200.0f * (f32)(1.0 - ((temp_f0 - ((arg0->unk34E * 2) + arg0->unk351)) / temp_f0));
-                createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, temp, 0, 0xFF, sp44[1], sp44[2]);
+                temp2 = (((arg0->unk34E * 2) + arg0->unk351));
+                temp =  1.0 - ((temp_f0 - temp2) / temp_f0);
+                temp = 200.0f * temp;
+                createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0, 0, 0, temp, 0, 0xFF, sp44[1], sp44[2]);
             }
             break;
         case 1:
             temp_f0 = arg0->unk330->unk16 * 2;
-            temp = 200.0f * ((temp_f0 - ((arg0->unk34E * 2) + arg0->unk351)) / temp_f0);
-            createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, temp, 0, 0xFF, sp44[1], sp44[2]);
+            temp2 = (((arg0->unk34E * 2) + arg0->unk351));
+            temp = ((temp_f0 - temp2) / temp_f0);
+            temp = 200.0f * temp;
+            createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0, 0, 0, temp, 0, 0xFF, sp44[1], sp44[2]);
             break;
     }
 }
-*/
 
 void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1);
 

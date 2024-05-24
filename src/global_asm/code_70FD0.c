@@ -1,10 +1,23 @@
 #include <ultra64.h>
 #include "functions.h"
 
+void func_global_asm_8066C2D0(s32, s32, f32, f32, f32, f32, f32, f32, f32);
+void func_global_asm_8066CDF8(void);
+LedgeInfo8C *func_global_asm_8066EAEC(Actor*, s32);
 void func_global_asm_8066EC6C(LedgeInfo *);
 void func_global_asm_8066F06C(LedgeInfo *);
+u8 func_global_asm_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3);
+void func_global_asm_8066F400(Actor *);
+u8 func_global_asm_8066F4AC(Actor *, s16 *, s16 *);
+u8 func_global_asm_80670FA4(Actor *, s16 *, s16 *);
+void func_global_asm_80671260(Actor *arg0);
+void func_global_asm_80672C70(s32);
+void func_global_asm_80672E90(s32, s32, s32);
+s32 func_global_asm_806730A4(s32, s32, s32, s32);
+s32 func_global_asm_806734E4(s32, s32, s32, s32, s16 *, s16 *);
+void func_global_asm_80674E14(Actor *);
+s8 func_global_asm_80676ED0(Actor *, s16 *, s16 *);
 void func_global_asm_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5, s32 arg6);
-void func_global_asm_8066C2D0(s32, s32, f32, f32, f32, f32, f32, f32, f32);
 
 s32 func_global_asm_80672328(Actor*, f32, f32);
 s32 func_global_asm_80672680(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
@@ -14,6 +27,8 @@ extern s32 D_global_asm_807FB53C;
 extern Actor *D_global_asm_807FB540;
 extern s16 D_global_asm_807FB544;
 extern u8 D_global_asm_807FB546;
+extern u8 D_global_asm_807FB547;
+extern s8 D_global_asm_807FB548;
 extern s16 D_global_asm_807FB5EC;
 extern s16 D_global_asm_807FB5EE;
 extern s16 D_global_asm_807FB5F0;
@@ -22,6 +37,9 @@ extern s16 D_global_asm_807FB5F8;
 extern s16 D_global_asm_807FB5FA;
 extern u8 D_global_asm_807FB602;
 extern u8 D_global_asm_807FB604;
+extern u8 D_global_asm_807FB605;
+extern u8 D_global_asm_807FB606;
+extern u8 D_global_asm_807FB61C;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066C2D0.s")
 
@@ -129,8 +147,6 @@ void func_global_asm_8066CCD8(void) {
     }
 }
 */
-
-void func_global_asm_8066CDF8(void);
 
 void func_global_asm_8066CDD0(void) {
     func_global_asm_8066CDF8();
@@ -363,8 +379,6 @@ void func_global_asm_8066E21C(LedgeInfo *ledgeInfo) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066E2C0.s")
 
-LedgeInfo8C *func_global_asm_8066EAEC(Actor*, s32);
-
 void func_global_asm_8066E5CC(Actor *arg0, s32 arg1, u16 arg2) {
     LedgeInfo8C *temp_v0 = func_global_asm_8066EAEC(arg0, arg1);
     if (temp_v0) {
@@ -505,27 +519,20 @@ void func_global_asm_8066E8E4(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg
     *var_a0 = temp_v0;
 }
 
-// TODO: Matches, but kinda ugly
-// Any cleanup possible?
 void func_global_asm_8066E990(Actor *arg0) {
-    LedgeInfo *sp24;
-    LedgeInfo *var_v0;
-    LedgeInfo8C *temp_s1;
-    LedgeInfo8C *var_s0;
+    LedgeInfo *ledgeInfo;
+    LedgeInfo8C *current;
+    LedgeInfo8C *next;
 
-    var_v0 = arg0->ledge_info_pointer;
-    if (var_v0 != NULL) {
-        var_s0 = var_v0->unk8C;
-        if (var_s0 != NULL) {
-            sp24 = var_v0;
-            do {
-                temp_s1 = var_s0->next;
-                free(var_s0);
-                var_s0 = temp_s1;
-            } while (temp_s1 != NULL);
-            var_v0 = sp24;
+    ledgeInfo = arg0->ledge_info_pointer;
+    if (ledgeInfo) {
+        current = ledgeInfo->unk8C;
+        while (current) {
+            next = current->next;
+            free(current);
+            current = next;
         }
-        var_v0->unk8C = NULL;
+        ledgeInfo->unk8C = NULL;
     }
 }
 
@@ -765,8 +772,6 @@ void func_global_asm_8066F06C(LedgeInfo *arg0) {
 }
 */
 
-u8 func_global_asm_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3);
-
 u8 func_global_asm_8066F1F8(Actor *arg0, s16 arg1) {
     s16 sp1E;
     s16 sp1C;
@@ -784,17 +789,6 @@ u8 func_global_asm_8066F250(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3) {
     D_global_asm_807FB604 = 0;
     return func_global_asm_8066F274(arg0, arg1, arg2, arg3);
 }
-
-void func_global_asm_8066F400(Actor *);
-u8 func_global_asm_8066F4AC(Actor *, s16 *, s16 *);
-u8 func_global_asm_80670FA4(Actor *, s16 *, s16 *);
-void func_global_asm_80672C70(s32);
-void func_global_asm_80672E90(s32, s32, s32);
-void func_global_asm_80674E14(Actor *);
-s8 func_global_asm_80676ED0(Actor *, s16 *, s16 *);
-extern u8 D_global_asm_807FB547;
-extern u8 D_global_asm_807FB605;
-extern u8 D_global_asm_807FB606;
 
 u8 func_global_asm_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3) {
     LedgeInfo *temp_v0;
@@ -912,13 +906,6 @@ void func_global_asm_80670F04(LedgeInfo *arg0) {
         D_global_asm_807FB5F2 = D_global_asm_807FB5F2 - 0xFFF;
     }
 }
-
-s32 func_global_asm_806730A4(s32, s32, s32, s32);
-s32 func_global_asm_806734E4(s32, s32, s32, s32, s16 *, s16 *);
-extern s8 D_global_asm_807FB548;
-extern u8 D_global_asm_807FB61C;
-
-void func_global_asm_80671260(Actor *arg0);
 
 u8 func_global_asm_80670FA4(Actor *arg0, s16 *arg1, s16 *arg2) {
     s32 pad[2]; // TODO: Yucky

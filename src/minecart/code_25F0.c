@@ -85,7 +85,6 @@ extern s32 D_minecart_80028C40; // TODO: Type
 extern s32 D_minecart_80028C48; // TODO: Type
 
 /* function signatures */
-void func_global_asm_8066E9EC(Actor*, s32, f32);
 void func_minecart_80024E78(AAD_minecart_80027DA0*, void*, s32, s32);
 void func_minecart_800253C0(AAD_minecart_80027DA0*, s16, u8);
 void func_minecart_80027EE8(AAD_minecart_80027DA0* arg0);
