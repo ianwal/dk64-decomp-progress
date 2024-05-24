@@ -253,6 +253,7 @@ void func_global_asm_80732158(Actor *arg0) {
 }
 */
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80732280.s")
 
 /*

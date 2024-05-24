@@ -27,35 +27,20 @@ typedef struct menu_struct_1 {
     u8  unk12;
 } MenuStruct1;
 
-// TODO: Array of structs?
-const u16 D_menu_80033A50[] = {
-    0x0000, // Donkey
-    0x000B,
-    0x000F,
-    0x0014,
-    0x0000, // Diddy
-    0x000C,
-    0x0010,
-    0x0015,
-    0x0000, // Lanky
-    0x000E,
-    0x0013,
-    0x0016,
-    0x0000, // Tiny
-    0x000D,
-    0x0011,
-    0x0017,
-    0x0000, // Chunky
-    0x000D,
-    0x0012,
-    0x0018,
-};
+typedef struct {
+    s16 unk0; // TODO: Is this an array[4]?
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+} MenuStruct80033A50;
 
-const u16 D_menu_80033A78[] = {
-    0x0000, // Krusha?
-    0x0019,
-    0x001A,
-    0x001B,
+const MenuStruct80033A50 D_menu_80033A50[] = {
+    {0x0000, 0x000B, 0x000F, 0x0014}, // Donkey
+    {0x0000, 0x000C, 0x0010, 0x0015}, // Diddy
+    {0x0000, 0x000E, 0x0013, 0x0016}, // Lanky
+    {0x0000, 0x000D, 0x0011, 0x0017}, // Tiny
+    {0x0000, 0x000D, 0x0012, 0x0018}, // Chunky
+    {0x0000, 0x0019, 0x001A, 0x001B}, // Krusha
 };
 
 extern u8 D_menu_800334DC[];
@@ -565,6 +550,8 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80026B28.s")
+
+extern s16 D_menu_800334E4[];
 
 // Jumptable, very close
 // https://decomp.me/scratch/ssEq8

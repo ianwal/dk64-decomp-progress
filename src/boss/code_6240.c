@@ -77,10 +77,10 @@ extern s32 D_global_asm_80720120;
 
 s32 func_global_asm_80725BA4(s16, s16, s32);
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_6240/func_boss_8002A240.s")
 
 /*
-// TODO: Quite close
 void func_boss_8002A240(void) {
     Actor17C *temp_s0;
     f32 temp_f10;

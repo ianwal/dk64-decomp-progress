@@ -731,8 +731,38 @@ void func_menu_80029EF8(Actor *arg0, s32 arg1) {
     func_menu_8002FC1C(arg0, MaaD, 1);
 }
 
-// Displaylist stuff
+// Displaylist stuff, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002A088.s")
+
+/*
+Gfx *func_menu_8002A088(Actor *arg0, Gfx *dl) {
+    f32 sp118;
+    f32 sp114;
+    u8 unk108[0x114 - 0x108];
+    s16 sp106;
+    s8 sp3C[0x106 - 0x3C];
+    Struct800317E8 *aaD;
+    s16 temp_f4;
+
+    aaD = arg0->additional_actor_data;
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    func_menu_800317E8(aaD, 160.0f, 25.0f, &sp118, &sp114, 5, 0, 0.45f);
+    sp106 = sp118 * 4.0f;
+    temp_f4 = (sp114 * 4.0f);
+    if (func_menu_800322D0(D_menu_80033F48)) {
+        sprintf(&sp3C, "%s", label_string_pointer_array[6]);
+    } else {
+        sprintf(&sp3C, "%s %d", label_string_pointer_array[7], D_menu_80033F48 + 1);
+    }
+    dl = printText(dl, sp106, temp_f4, 0.6f, &sp3C);
+    dl = printText(dl, sp118 * 4.0f, temp_f4 - 60, 0.6f, label_string_pointer_array[8]);
+    func_menu_800317E8(aaD, 160.0f, 80.0f, &sp118, &sp114, 5, 0, 2.0f);
+    dl = printText(dl, sp118 * 4.0f, sp114 * 4.0f, 0.6f, label_string_pointer_array[9]);
+    func_menu_800317E8(aaD, 80.0f, 120.0f, &sp118, &sp114, 5, 0, 2.0f);
+    dl = printText(dl, sp118 * 4.0f, sp114 * 4.0f, 0.6f, label_string_pointer_array[10]);
+    return printText(dl, 1280 - (s32)(sp118 * 4.0f), sp114 * 4.0f, 0.6f, label_string_pointer_array[11]);
+}
+*/
 
 void func_menu_8002A36C(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
@@ -1350,8 +1380,52 @@ void func_menu_8002D8AC(Actor *arg0, s32 arg1) {
     }
 }
 
-// Jumptable, 780 bytes of code, displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002DBDC.s")
+Gfx *func_menu_8002F980(Gfx *, Struct800317E8 *, s8 **, s8, u32 *, s32, f32 *, f32, s32); // extern
+extern s16 D_menu_80033674;
+
+Gfx *func_menu_8002DBDC(Actor *arg0, Gfx *dl) {
+    Struct800317E8 *aaD;
+    u32 sp68;
+    f32 x;
+    f32 sp60;
+    f32 sp5C;
+    s32 pad6;
+    s16 y;
+    s32 pad;
+    s32 pad2;
+    s32 pad3;
+    s32 pad4;
+    s32 pad5;
+    s32 pad7;
+
+    aaD = arg0->additional_actor_data;
+    global_properties_bitfield &= ~0x10;
+    func_menu_800317E8(aaD, 160.0f, 20.0f, &x, &sp60, D_menu_800338FC, 0, 1.5f);
+    dl = printStyledText(dl, 1, 640, sp60 * 4.0f, label_string_pointer_array[41], 0x81);
+    dl = func_menu_8002F980(dl, aaD, &label_string_pointer_array[42], D_menu_800338FC, &sp68, 1, &sp5C, 80.0f, -1);
+    D_menu_80033674 = 1000;
+    func_menu_800317E8(aaD, 160.0f, 150.0f, &x, &sp60, 2, 0, 1.5f);
+    y = sp60 * 4.0f;
+    x = (x - sp5C) * 4.0f;
+    switch (sp68) {
+        case 0:
+            dl = printStyledText(dl, 1, x, y + 64, label_string_pointer_array[47 + widescreen_enabled], 0x81);
+            break;
+        case 1:
+            dl = printStyledText(dl, 1, x, y + 64, label_string_pointer_array[49 + story_skip], 0x81);
+            break;
+        case 2:
+            D_menu_80033674 = 0;
+            break;
+        case 3:
+            dl = printStyledText(dl, 1, x, y + 64, label_string_pointer_array[52 + D_global_asm_80744530], 0x81);
+            break;
+        case 4:
+            dl = printStyledText(dl, 1, x, y + 64, label_string_pointer_array[51], 0x81);
+            break;
+    }
+    return dl;
+}
 
 void func_menu_8002DEE8(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
@@ -2009,6 +2083,7 @@ typedef struct {
 
 /*
 f32 func_menu_80031980(Struct80031980 *arg0, f32 arg1, f32 *arg2) {
+    // TODO: These are possibly volatile
     f32 temp =  ( (2.0f * arg0->unk0) + (-2.0f * arg0->unk4) +          arg0->unk8)  + arg0->unkC;
     f32 temp2 = ((-3.0f * arg0->unk0) +  (3.0f * arg0->unk4) + (-2.0f * arg0->unk8)) - arg0->unkC;
     if (arg2 != NULL) {
@@ -2237,8 +2312,8 @@ void func_menu_80032024(void) {
 }
 */
 
-s32 func_menu_800322D0(s32 arg0) {
-    return !func_global_asm_8060C6B8(0xD, 0, 0, arg0);
+s32 func_menu_800322D0(s32 fileIndex) {
+    return !func_global_asm_8060C6B8(0xD, 0, 0, fileIndex);
 }
 
 extern s16 D_global_asm_807FC828[];

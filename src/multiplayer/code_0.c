@@ -238,20 +238,72 @@ void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, void *arg3, s32 ar
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800246EC.s")
 
-// Displaylist stuff
+// Displaylist stuff, close, float, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800249D8.s")
+
+s32 func_multiplayer_80024254(s32);
+Gfx *func_multiplayer_800246EC(Gfx *, void *, f32);
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
+
+typedef struct {
+    u8 unk0[0x6 - 0x0];
+    s16 unk6;
+} AAD_800249D8_unk20;
+
+typedef struct {
+    u8 unk0[0x20 - 0x0];
+    AAD_800249D8_unk20 *unk20;
+    u8 unk24[0x30 - 0x24];
+    s32 unk30;
+} AAD_800249D8;
+
+/*
+Gfx *func_multiplayer_800249D8(Gfx *dl, Actor *arg1) {
+    char sp98[1];
+    f32 x;
+    f32 y;
+    f32 temp_f20;
+    f32 temp_f24;
+    s32 i;
+    AAD_800249D8 *aaD;
+
+    aaD = arg1->additional_actor_data;
+    temp_f24 = (f32)D_global_asm_80744490 / (cc_number_of_players + 1);
+    temp_f20 = aaD->unk20->unk6 + 8;
+    gDPSetScissor(dl++, G_SC_NON_INTERLACE, 0, 0, D_global_asm_80744490, D_global_asm_80744494);
+    dl = func_multiplayer_800246EC(dl, aaD, temp_f24);
+    if (D_global_asm_807552E8 != 3) {
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xB4);
+        gSPDisplayList(dl++, &D_1000118);
+        gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+        gSPMatrix(dl++, aaD->unk30, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+        gDPPipeSync(dl++);
+        gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xB4);
+        for (i = 0; i < cc_number_of_players;) {
+            sprintf(&sp98, "%d", func_multiplayer_80024254(i));
+            y = (temp_f20 + 8.0f) * 8.0f;
+            i++;
+            x = ((i * temp_f24) - ((f32)(getCenterOfString(1, &sp98) * 0.25))) * 8.0f;
+            dl = printStyledText(dl, 1, x, y, &sp98, 4);
+        }
+    }
+    return dl;
+}
+*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80024CA4.s")
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025264.s")
 
-Gfx *func_multiplayer_800249D8(Gfx *);
-Gfx *func_multiplayer_80024CA4(Gfx *);
+Gfx *func_multiplayer_800249D8(Gfx *, Actor *);
+Gfx *func_multiplayer_80024CA4(Gfx *, Actor *);
 
 /*
-Gfx *func_multiplayer_80025264(Gfx *dl) {
+Gfx *func_multiplayer_80025264(Gfx *dl, Actor *arg1) {
     s32 temp_t0;
 
     temp_t0 = (D_global_asm_807552E4.unk8 >= 2);
@@ -262,10 +314,10 @@ Gfx *func_multiplayer_80025264(Gfx *dl) {
     if (!(global_properties_bitfield & 3)) {
         if (D_global_asm_807552E4.unk0 == 0) {
             if ((D_global_asm_807552E4.unk8 == 1) || (temp_t0)) {
-                dl = func_multiplayer_800249D8(dl);
+                dl = func_multiplayer_800249D8(dl, arg1);
             }
         } else if ((D_global_asm_807552E4.unk8 == 1) || (temp_t0)) {
-            dl = func_multiplayer_80024CA4(dl);
+            dl = func_multiplayer_80024CA4(dl, arg1);
         }
     }
     return dl;
