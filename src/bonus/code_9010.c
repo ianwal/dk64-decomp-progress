@@ -39,14 +39,14 @@ extern s8 D_bonus_8002D928;
 extern s8 D_bonus_8002D92C;
 extern s8 D_bonus_8002D930;
 extern s8 D_bonus_8002DEF0[];
+
 extern s16 D_80744518;
 extern u16 D_807ECD60;
 
-s8 func_global_asm_806FDB8C(s32, void*, s32, f32, f32, f32);
-s32 func_global_asm_806A2A10(s32, s32, u8);
 void func_global_asm_8061CB08(void);
-
 Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void*, s16, void*);
+s32 func_global_asm_806A2A10(s32, s32, u8);
+s8 func_global_asm_806FDB8C(s32, void*, s32, f32, f32, f32);
 
 Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
     s16 pad;

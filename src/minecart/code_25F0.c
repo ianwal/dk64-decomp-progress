@@ -118,7 +118,7 @@ void func_minecart_800265F0(void) {
         current_actor_pointer->object_properties_bitfield &= ~0x00008000;
         current_actor_pointer->shadow_opacity = 0x96;
     }
-    if (func_global_asm_80724A20() != 0) {
+    if (func_global_asm_80724A20()) {
         if (extra_player_info_pointer->vehicle_actor_pointer->control_state == 5) {
             if (current_actor_pointer->control_state == 6) {
                 current_actor_pointer->control_state = 5;

@@ -1,9 +1,37 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
+typedef struct BossStruct2 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} BossStruct2;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s8 unk14;
+    u8 unk15;
+} Struct80027A30_arg0;
+
+typedef struct BossStruct1 {
+    u8 unk0; // Map
+    u8 unk1;
+    s16 unk2; // Flag
+    u8 unk4;
+    u8 unk5;
+} BossStruct1;
 
 void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
+extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
+
+extern BossStruct1 D_boss_800359D0[];
+
+extern u8 D_global_asm_80750AD4;
 
 void func_boss_80027840(u8 *arg0) {
     s16 i;
@@ -21,27 +49,10 @@ void func_boss_80027840(u8 *arg0) {
     }
 }
 
-typedef struct BossStruct2 {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} BossStruct2;
-
 void func_boss_800278F4(BossStruct2 *arg0, f32 arg1, s16 arg2, s16 arg3) {
     arg0->unkC += ((arg2 - arg0->unkC) * arg1);
     arg0->unk8 += ((arg3 - arg0->unk8) * arg1);
 }
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s8 unk14;
-    u8 unk15;
-} Struct80027A30_arg0;
 
 void func_boss_80027950(Struct80027A30_arg0 *arg0, u8 *arg1) {
     u8 temp_s3;
@@ -108,8 +119,6 @@ void func_boss_80028680() {
     func_global_asm_806A2B08(current_actor_pointer->unk11C);
 }
 
-extern u8 D_global_asm_80750AD4;
-
 Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     f32 sp90[4][4];
     f32 sp50[4][4];
@@ -144,8 +153,199 @@ void func_boss_80028820() {
     setFlag(0x54, FALSE, FLAG_TYPE_TEMPORARY);
 }
 
-// Jumptable, 2140 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_80028878.s")
+void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
+extern s16 D_boss_800359A0[];
+extern s16 D_boss_800359AC[];
+extern s16 D_boss_800359B8[];
+extern s16 D_boss_800359C4[];
+extern s32 D_global_asm_8071FE08; // TODO: Sprite
+extern u8 D_global_asm_80750AD4;
+extern s32 D_global_asm_80767CC0;
+extern s32 D_global_asm_8076D1F8;
+
+typedef struct {
+    u8 unk0[0x12 - 0x0];
+    u16 unk12;
+    u8 unk14;
+    u8 unk15;
+} A178_80028878;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    u8 unkC;
+    u8 unkD;
+    s16 unkE;
+    s16 unk10;
+} A17C_80028878;
+
+void func_boss_80028878(u8 *arg0) {
+    A178_80028878 *a178;
+    u8 sp43;
+    s16 flagIndex;
+    s16 var_a0_2;
+    u8 var_a0;
+    A17C_80028878 *a17C;
+
+    a178 = current_actor_pointer->unk178;
+    sp43 = current_map - MAP_KROOL_FIGHT_DK_PHASE;
+    a17C = current_actor_pointer->unk17C;
+    if (player_pointer->y_position < 30.0f) {
+        player_pointer->x_position = 780.0f;
+        player_pointer->y_position = 50.0f;
+        player_pointer->z_position = 750.0f;
+        drawSpriteAtPosition(&D_global_asm_8071FE08, 1.0f, player_pointer->x_position, player_pointer->y_position, player_pointer->z_position);
+    }
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_global_asm_806FB370(5, 0, 1);
+        func_global_asm_806FB370(2, 0, 1);
+        current_actor_pointer->object_properties_bitfield &= 0xFFFDFFFF;
+        if ((a178->unk14 == 0) || (current_actor_pointer->unk58 != ACTOR_BOSS_KROOL_TINY)) {
+            if (!isFlagSet(0x5A, FLAG_TYPE_TEMPORARY)) {
+                func_global_asm_80709464(0);
+            }
+            D_global_asm_80750AD4++;
+            if (D_global_asm_80750AD4 >= 0xD) {
+                func_global_asm_80602B60(0x2B, 0);
+                func_global_asm_80709464(0);
+                setFlag(0x55, FALSE, FLAG_TYPE_TEMPORARY);
+                func_global_asm_80712524(MAP_KROOLS_ARENA, 0);
+                D_global_asm_80750AD4 = 0;
+                current_actor_pointer->control_state = 0x6A;
+                current_actor_pointer->control_state_progress = 0;
+            }
+        }
+        func_global_asm_80737638(D_global_asm_8076D1F8, 0x1E6, 0, 0x40, 1.0f, 0x80, &a17C->unk4);
+        func_global_asm_80737638(D_global_asm_8076D1F8, 0x119, 0, 0x40, 1.0f, 0x80, &a17C->unk8);
+    }
+
+    if (func_global_asm_80724A20()) {
+        // Hmm, some debug code commented out?
+    }
+
+    switch (current_actor_pointer->control_state) { // switch 1; irregular
+        case 0x37: // switch 1
+            if (current_actor_pointer->control_state_progress == 0) {
+                func_global_asm_806A2B20(current_actor_pointer->unk11C);
+            }
+            break;
+        case 0x6A: // switch 1
+            if (current_actor_pointer->control_state_progress == 0) {
+                playActorAnimation(current_actor_pointer, 0);
+                current_actor_pointer->control_state_progress++;
+            }
+            break;
+        case 0x6C: // switch 1
+            a178->unk12 = a178->unk12 | 1;
+            func_boss_80028680();
+            if ((a178->unk14 != 0) && (current_actor_pointer->unk58 == ACTOR_BOSS_KROOL_TINY)) {
+                func_global_asm_806A2B80(current_actor_pointer->unk11C);
+            }
+            current_actor_pointer->control_state = arg0[a178->unk15];
+            a178->unk15++;
+            current_actor_pointer->control_state_progress = 0;
+            break;
+        default: // switch 1
+            if ((current_actor_pointer->unk11C != NULL) && (current_actor_pointer->unk11C->control_state == 5)) {
+                func_boss_80028820();
+                current_actor_pointer->control_state = 0x6A;
+                current_actor_pointer->control_state_progress = 0;
+                playCutscene(current_actor_pointer, D_boss_800359C4[sp43], 1);
+                setFlag(0x5A, TRUE, FLAG_TYPE_TEMPORARY);
+            }
+            break;
+    }
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        if (gameIsInMysteryMenuMinigameMode()) {
+            setFlag(0x55, FALSE, FLAG_TYPE_TEMPORARY);
+        }
+        var_a0 = 0x5C;
+        if (!isFlagSet(0x5D, FLAG_TYPE_TEMPORARY) || (var_a0 = sp43, (isFlagSet(0x5C, FLAG_TYPE_TEMPORARY)))) {
+            func_boss_80028820();
+            D_global_asm_80750AD4 = 1;
+            if (!isFlagSet(0x5D, FLAG_TYPE_TEMPORARY)) {
+                playCutscene(current_actor_pointer, 0x19, 1);
+                setFlag(0x5D, TRUE, FLAG_TYPE_TEMPORARY);
+            } else {
+                playCutscene(current_actor_pointer, D_boss_800359A0[0], 1);
+            }
+            setFlag(0x5C, FALSE, FLAG_TYPE_TEMPORARY);
+            setFlag(0x55, TRUE, FLAG_TYPE_TEMPORARY);
+        } else {
+            flagIndex = var_a0 + 0x55;
+            if (!isFlagSet(flagIndex, FLAG_TYPE_TEMPORARY)) {
+                playCutscene(current_actor_pointer, D_boss_800359A0[sp43], 1);
+                setFlag(flagIndex, TRUE, FLAG_TYPE_TEMPORARY);
+            } else if (isFlagSet(0x5A, FLAG_TYPE_TEMPORARY)) {
+                if (isFlagSet(0x5B, FLAG_TYPE_TEMPORARY)) {
+                    playCutscene(current_actor_pointer, D_boss_800359AC[sp43], 1);
+                    setFlag(0x5A, FALSE, FLAG_TYPE_TEMPORARY);
+                } else {
+                    func_global_asm_80602B60(0x2B, 0);
+                    current_actor_pointer->control_state = 0x6A;
+                    current_actor_pointer->control_state_progress = 0;
+                    setFlag(0x5B, TRUE, FLAG_TYPE_TEMPORARY);
+                    func_global_asm_80712524(MAP_KROOLS_ARENA, 1);
+                    D_global_asm_80750AD4 -= 1;
+                }
+            } else {
+                playCutscene(current_actor_pointer, D_boss_800359B8[sp43], 1);
+            }
+        }
+    }
+    if ((current_player->control_state == 0x67) || (func_global_asm_80602D4C(0xF) > 0.1)) {
+        a17C->unkE = 7500;
+        a17C->unk10 = MAX(7500, a17C->unk10 - 1000);
+    } else {
+        a17C->unkE = MAX(8000, a17C->unkE - 100);
+        a17C->unk10 = MIN(a17C->unkE, a17C->unk10 + 1000);
+    }
+    func_global_asm_80737AC4(a17C->unk4, 8, a17C->unk10);
+    func_global_asm_80737AC4(a17C->unk8, 8, a17C->unk10);
+    if (a17C->unkD & 0x17) {
+        if ((D_global_asm_80767CC0 - a17C->unk0) >= 6U) {
+            var_a0_2 = 0x1E8;
+            a17C->unk0 = D_global_asm_80767CC0;
+            a17C->unkC = 0;
+            if (a17C->unkD & 0x10) {
+                var_a0_2 = 0x42B;
+            } else if (a17C->unkD & 4) {
+                var_a0_2 = 0x1EA;
+            } else if (a17C->unkD & 2) {
+                var_a0_2 = 0x1E7;
+            }
+            playSound(var_a0_2, 0x58EF, 64.0f, 1.0f, 0x14, 0x80);
+        }
+        a17C->unkE = MIN(0x7FFF, a17C->unkE + 18000);
+        a17C->unkD &= 0xFFE0;
+    }
+    if (a17C->unkD & 8) {
+        if ((D_global_asm_80767CC0 - a17C->unk0) >= 6U) {
+            if (a17C->unkC == 0) {
+                a17C->unk0 = D_global_asm_80767CC0;
+            }
+            a17C->unkC++;
+            switch (a17C->unkC) {
+                case 0x3E:
+                    a17C->unkC = 0;
+                    a17C->unkD &= 0xFFF7;
+                    // fallthrough
+                case 0x1:
+                case 0x10:
+                case 0x1D:
+                case 0x29:
+                case 0x34:
+                    playSound(0x1E9, 0x58EF, 64.0f, 1.0f, 0, 0x80);
+                    break;
+            }
+        }
+        a17C->unkE = MIN(0x7FFF, a17C->unkE + 18000);
+    }
+    if ((a178->unk12 & 1) && (func_global_asm_805FCA64())) {
+        addActorToTextOverlayRenderArray(&func_boss_800286B8, current_actor_pointer, 3);
+    }
+}
 
 void func_boss_800290D4(u8 arg0) {
     if (arg0) {
@@ -156,16 +356,6 @@ void func_boss_800290D4(u8 arg0) {
         func_global_asm_8066EA90(current_actor_pointer, 3);
     }
 }
-
-typedef struct BossStruct1 {
-    u8 unk0; // Map
-    u8 unk1;
-    s16 unk2; // Flag
-    u8 unk4;
-    u8 unk5;
-} BossStruct1;
-
-extern BossStruct1 D_boss_800359D0[];
 
 void func_boss_80029140(s16* arg0) {
     s16 i = 0;

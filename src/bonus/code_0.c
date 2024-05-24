@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void *, s32, void *);
+extern void *D_global_asm_8076D1F8;
 
 typedef struct {
     u8 unk0;
@@ -15,10 +15,27 @@ typedef struct {
     u8 unk9;
 } A178_80024000;
 
+typedef struct {
+    u16 unk0;
+    s16 unk2;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    u16 unk18;
+} A178_80024E38;
+
+Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void *, s32, void *);
+void func_global_asm_806A2A10(s32, s32, s32);
+void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
+void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
+
 Gfx *func_bonus_80024000(Gfx *dl, Actor *arg1) {
     A178_80024000 *a178;
     a178 = arg1->unk178;
-    if (func_global_asm_805FCA64() != 0) {
+    if (func_global_asm_805FCA64()) {
         gSPDisplayList(dl++, &D_1000118);
         dl = func_global_asm_8070068C(dl);
         gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
@@ -74,25 +91,6 @@ s32 func_bonus_80024D8C(void) {
             return -1;
     }
 }
-
-extern void *D_global_asm_8076D1F8;
-
-typedef struct {
-    u16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s16 unk8;
-    s16 unkA;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    u16 unk18;
-} A178_80024E38;
-
-void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
-void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
-
-void func_global_asm_806A2A10(s32, s32, s32);
 
 void func_bonus_80024E38(void) {
     A178_80024E38 *a178;

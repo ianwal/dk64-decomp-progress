@@ -271,7 +271,7 @@ void func_global_asm_80703850(u8 arg0) {
     s16 temp_a1;
 
     temp_f0 = (f32)arg0 / 255.0;
-    if (func_global_asm_805FCA64() != 0) {
+    if (func_global_asm_805FCA64()) {
         character_change_array->unk272 = D_global_asm_8074449C + ((((D_global_asm_80744494 >> 1) - D_global_asm_8074449C) - 1) * temp_f0);
         character_change_array->unk276 = D_global_asm_807444A4 + (((D_global_asm_80744494 >> 1) - D_global_asm_807444A4) * temp_f0);
     } else {
