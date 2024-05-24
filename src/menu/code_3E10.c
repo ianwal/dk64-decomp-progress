@@ -831,13 +831,8 @@ void func_menu_8002AB28(s32 arg0) {
     D_global_asm_8076A0E4[arg0] = -0x80;
 }
 
-// close
-// https://decomp.me/scratch/3bSNx
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002AB80.s")
-
 extern s8 D_8076A0D6;
 
-/*
 void func_menu_8002AB80(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *temp_s0;
     Struct8076A0E8 *var_v0;
@@ -849,9 +844,8 @@ void func_menu_8002AB80(Actor *arg0, s32 arg1) {
     func_menu_80030894(temp_s0, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
     func_menu_80030894(temp_s0, &D_global_asm_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
     func_menu_80030894(temp_s0, &D_global_asm_80720C34, 0xA0, 0x78, 0.75f, 2, 4);
-    // TODO: This loop is the problem
     for (i = 0; i < 6; i++) {
-        for (var_s0 = 0; var_s0 < 4; var_s0++) {
+        for (var_s0 = 0; var_s0 < 4; var_s0++) {\
             D_global_asm_8076A0E8[i].unk0[var_s0] = -1;
         }
     }
@@ -864,7 +858,6 @@ void func_menu_8002AB80(Actor *arg0, s32 arg1) {
         }
     }
 }
-*/
 
 s32 func_menu_8002ACD4(s32 arg0) {
     s32 found;

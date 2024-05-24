@@ -28,7 +28,7 @@ void func_global_asm_8063D930(void) {
     for (i = 0; i < 600; i++) {
         D_global_asm_807F6240[i] = -1;
     }
-    for (i = 0; i < 530; i++) {
+    for (i = 0; i < 530; i++) {\
         D_global_asm_807F66F0[i] = 0;
     }
 }
