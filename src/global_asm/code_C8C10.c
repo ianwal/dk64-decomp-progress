@@ -267,7 +267,7 @@ void func_global_asm_806C55E0(void) {
                     }
                     break;
                 case 1:
-                    if (func_global_asm_80629148() != 0) {
+                    if (func_global_asm_80629148()) {
                         playActorAnimation(current_actor_pointer, 0x354);
                         current_actor_pointer->control_state_progress++;
                     }
