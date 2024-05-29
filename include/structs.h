@@ -2041,7 +2041,20 @@ typedef struct JetpacItem {
 
 typedef struct JetpacPickupStruct JetpacPickupStruct;
 
-struct JetpacPickupStruct {
+typedef struct JetpacSpawningInfoSub {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 counter;
+} JetpacSpawningInfoSub;
+
+typedef struct JetpacSpawningInfo {
+    s32 *sprite;
+    JetpacSpawningInfoSub sub;
+} JetpacSpawningInfo;
+
+typedef struct JetpacPickupPrimary {
     s32 *sprite;
     u8 unk4[0x4];
     f32 posX;
@@ -2054,15 +2067,15 @@ struct JetpacPickupStruct {
     u8 will_render;
     s32 unk1C;
     s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 counter;
+    JetpacSpawningInfoSub unk24;
     s32 unk38;
     s32 point_bonus;
     s32 drop_type;
     void (*unk44)(JetpacPickupStruct*);
+} JetpacPickupPrimary;
+
+struct JetpacPickupStruct {
+    JetpacPickupPrimary primary_info;
     void (*code)(JetpacPickupStruct*, s32);
 };
 

@@ -3870,7 +3870,7 @@ us,.jetpac,func_jetpac_80024390,120,yes
 us,.jetpac,func_jetpac_80026CA4,72,yes
 us,.jetpac,func_jetpac_8002A374,444,yes
 us,.jetpac,func_jetpac_8002992C,96,yes
-us,.jetpac,func_jetpac_80027D64,348,no
+us,.jetpac,func_jetpac_80027D64,348,yes
 us,.jetpac,func_jetpac_80028BD0,108,yes
 us,.jetpac,func_jetpac_80027728,1216,no
 us,.jetpac,func_jetpac_800298C8,100,yes

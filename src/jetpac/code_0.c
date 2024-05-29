@@ -295,7 +295,7 @@ void func_jetpac_80024C90(s32 arg0) {
     Competitor *player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     func_jetpac_80024408(arg0);
     func_jetpac_80026CEC();
-    player->next_bonus_item.unk44(&player->next_bonus_item);
+    player->next_bonus_item.primary_info.unk44(&player->next_bonus_item);
     func_jetpac_800286D0();
     func_jetpac_8002ABDC();
     func_jetpac_800255D4(arg0);
@@ -428,7 +428,7 @@ void func_jetpac_800250A0(void) {
     func_jetpac_80027D64(player);
     if ((player->level & 3) == 0) {
         func_jetpac_800275F4(player);
-        player->fuel_item.unk1C = 0;
+        player->fuel_item.primary_info.unk1C = 0;
         player->unk10 = 1;
         func_jetpac_80024F9C(2);
         return;

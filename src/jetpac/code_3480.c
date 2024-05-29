@@ -122,47 +122,32 @@ void func_jetpac_80027BE8(Struct80027BE8_arg0 *arg0, s32 arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027D64.s")
-
-/*
-typedef struct JetpacItemData {
-    void* image;
-    u8 pad[0x14];
-} JetpacItemData;
-
 f32 func_jetpac_80027210();                        
 s32 func_jetpac_80027480();                        
 s32 func_jetpac_800274C0();                        
 extern u8 D_8002F3C8;
-extern JetpacItemData D_jetpac_8002D968[7];
-extern f32 D_jetpac_8002DCEC;
+extern JetpacSpawningInfo D_jetpac_8002D968[7];
+extern JetpacPickupStruct D_jetpac_8002DCEC;
+
 
 void func_jetpac_80027D64(Competitor *arg0) {
-    s32 sp64;
-    s32 *sp24;
-    void *sp18;
-    s32 *temp_v1;
-    s32 i;
+    JetpacPickupStruct sp24;
+    JetpacPickupStruct *temp_v1;
+    s32 temp;
 
-    for (i = 0; i < 0x13; i++) {
-        *(s32*)(&sp24 + i) = *(s32*)(&D_jetpac_8002DCEC + i);
-    }
-    if ((D_8002F3C8 != 0) && (arg0->current_score >= 0x1388) && (isFlagSet(0x17B, 0U) == 0) && (isFlagSet(0x62, 2U) == 0)) {
-        sp64 = 6;
+    sp24 = D_jetpac_8002DCEC;
+    if ((D_8002F3C8) && (arg0->current_score >= 5000) && (isFlagSet(0x17B, 0U) == 0) && (isFlagSet(0x62, 2U) == 0)) {
+        sp24.primary_info.drop_type = 6;
     } else {
-        sp64 = (s32) (func_jetpac_80027210() * (f32) 5) + 1;
+        temp = 5;
+        sp24.primary_info.drop_type = (s32)(func_jetpac_80027210() * temp) + 1;
     }
     temp_v1 = &arg0->next_bonus_item;
-    sp24 = (sp64 * 0x18) + &D_jetpac_8002D968;
-    for (i = 0; i < 0x12; i++) {
-        *(s32*)(temp_v1 + i) = *(s32*)(&sp24 + i);
-    }
-    *(temp_v1 + 0x12) = *(&sp24 + 0x12);
-    sp18 = temp_v1;
-    *(f32 *)(temp_v1 + 2) = (f32) func_jetpac_800274C0();
+    sp24.primary_info.sprite = &D_jetpac_8002D968[sp24.primary_info.drop_type];;
+    *temp_v1 = sp24;
+    temp_v1->primary_info.posX = func_jetpac_800274C0();
     arg0->unk_144 = func_jetpac_80027480();
 }
-*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027EC0.s")
@@ -330,7 +315,7 @@ void func_jetpac_80028340(Competitor *arg0) {
     f32 sp24;
 
     sp1C = D_jetpac_8002DD38;
-    sp1C.posX = func_jetpac_800274C0();
+    sp1C.primary_info.posX = func_jetpac_800274C0();
     arg0->fuel_item = sp1C;
     arg0->unk10 = 3;
 }
@@ -387,7 +372,7 @@ void func_jetpac_80028544(void) {
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     var_s0 = &player->unk14;
     for (i = 0; i < 4; i++) {
-        if (var_s0->unk1C >= 2) {
+        if (var_s0->primary_info.unk1C >= 2) {
             temp_v0 = var_s0->code;
             if (temp_v0 != NULL) {
                 temp_v0(var_s0, i);
@@ -411,8 +396,8 @@ void func_jetpac_80028634(void) {
     temp = temp_v0->rocket_segments;
     temp_v0->rocket_stage = 8;
     for (i = 0; i < 3; i++, temp++) {
-        temp->posX = 168.0f;
-        temp->posY = (i * 16) + 136.0f;
+        temp->primary_info.posX = 168.0f;
+        temp->primary_info.posY = (i * 16) + 136.0f;
     }
 }
 
@@ -424,11 +409,11 @@ void func_jetpac_80028950(void) {
     JetpacPickupStruct *var_v1;
 
     temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    var_v1 = &temp_v0->rocket_segments[0].sprite;
+    var_v1 = &temp_v0->rocket_segments[0];
     temp_v0->rocket_stage = 2;
     for (i = 0; i < 3; i++, var_v1++) {
-        var_v1->posX = 168.0f;
-        var_v1->posY = (i * 16) + -8.0f;
+        var_v1->primary_info.posX = 168.0f;
+        var_v1->primary_info.posY = (i * 16) + -8.0f;
     }
 }
 
