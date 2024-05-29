@@ -2042,7 +2042,7 @@ typedef struct JetpacItem {
 typedef struct JetpacPickupStruct JetpacPickupStruct;
 
 struct JetpacPickupStruct {
-    s32 *unk0;
+    s32 *sprite;
     u8 unk4[0x4];
     f32 posX;
     f32 posY;
@@ -2053,7 +2053,11 @@ struct JetpacPickupStruct {
     u8 blue;
     u8 will_render;
     s32 unk1C;
-    u8 unk20[0x34-0x20];
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
     s32 counter;
     s32 unk38;
     s32 point_bonus;
@@ -2077,7 +2081,7 @@ typedef struct Competitor {
 
 typedef struct JetpacPlayerSub36C {
     s32 unk0;
-    s32 unk4;
+    f32 unk4;
     s32 unk8;
     s32 unkC;
     s32 unk10;
