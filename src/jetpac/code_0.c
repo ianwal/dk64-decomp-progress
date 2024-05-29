@@ -428,7 +428,7 @@ void func_jetpac_800250A0(void) {
     func_jetpac_80027D64(player);
     if ((player->level & 3) == 0) {
         func_jetpac_800275F4(player);
-        player->unk14[3].unk1C = 0;
+        player->fuel_item.unk1C = 0;
         player->unk10 = 1;
         func_jetpac_80024F9C(2);
         return;

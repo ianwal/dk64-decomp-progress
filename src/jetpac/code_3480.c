@@ -176,7 +176,7 @@ void func_jetpac_80028340(Competitor *arg0) {
 
     sp1C = D_jetpac_8002DD38;
     sp1C.posX = func_jetpac_800274C0();
-    arg0->unk14[3] = sp1C;
+    arg0->fuel_item = sp1C;
     arg0->unk10 = 3;
 }
 
@@ -253,7 +253,7 @@ void func_jetpac_80028634(void) {
     JetpacPickupStruct *temp;
 
     temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    temp = temp_v0->unk14;
+    temp = temp_v0->rocket_segments;
     temp_v0->lives_consumed = 8;
     for (i = 0; i < 3; i++, temp++) {
         temp->posX = 168.0f;
@@ -269,7 +269,7 @@ void func_jetpac_80028950(void) {
     JetpacPickupStruct *var_v1;
 
     temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    var_v1 = &temp_v0->unk14[0].unk0;
+    var_v1 = &temp_v0->rocket_segments[0].unk0;
     temp_v0->lives_consumed = 2;
     for (i = 0; i < 3; i++, var_v1++) {
         var_v1->posX = 168.0f;

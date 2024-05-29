@@ -2066,7 +2066,8 @@ typedef struct Competitor {
     s32 lives;
     s32 lives_consumed;
     s32 unk10; //used
-    JetpacPickupStruct unk14[4];
+    JetpacPickupStruct rocket_segments[3];
+    JetpacPickupStruct fuel_item;
     s32 unk_144;
     JetpacPickupStruct next_bonus_item;
     //u8 unk_190[4];
