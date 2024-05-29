@@ -216,7 +216,7 @@ void func_jetpac_800248E8(s32 arg0) {
     func_jetpac_80024408(arg0);
     func_jetpac_80026D48();
     func_jetpac_80026CEC();
-    player->fun_ptr(&player->next_item_pointer);
+    player->next_bonus_item.unk44(&player->next_bonus_item);
     player_sub = &player->unk14[player->unk10];
     player_sub->unk44(player_sub);
     func_jetpac_8002ABDC();
@@ -295,7 +295,7 @@ void func_jetpac_80024C90(s32 arg0) {
     Competitor *player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     func_jetpac_80024408(arg0);
     func_jetpac_80026CEC();
-    player->fun_ptr(&player->next_item_pointer);
+    player->next_bonus_item.unk44(&player->next_bonus_item);
     func_jetpac_800286D0();
     func_jetpac_8002ABDC();
     func_jetpac_800255D4(arg0);

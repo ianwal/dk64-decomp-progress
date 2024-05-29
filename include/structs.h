@@ -2068,12 +2068,7 @@ typedef struct Competitor {
     s32 unk10; //used
     JetpacPickupStruct unk14[4];
     s32 unk_144;
-    JetpacItem next_item_pointer;
-    u8 unk14C[4];
-    float unk150;
-    u8 pad1[0x18C - 0x154];
-    void (*fun_ptr)(JetpacItem*);
-    void (*fun_ptr2)(JetpacItem*,u8);
+    JetpacPickupStruct next_bonus_item;
     //u8 unk_190[4];
 } Competitor;
 

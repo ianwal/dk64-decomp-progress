@@ -152,7 +152,7 @@ void func_jetpac_80027D64(Competitor *arg0) {
     } else {
         sp64 = (s32) (func_jetpac_80027210() * (f32) 5) + 1;
     }
-    temp_v1 = &arg0->next_item_pointer;
+    temp_v1 = &arg0->next_bonus_item;
     sp24 = (sp64 * 0x18) + &D_jetpac_8002D968;
     for (i = 0; i < 0x12; i++) {
         *(s32*)(temp_v1 + i) = *(s32*)(&sp24 + i);
@@ -244,7 +244,7 @@ void func_jetpac_80028544(void) {
 
 void func_jetpac_800285DC(void) {
     Competitor *player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    player->fun_ptr2(&player->next_item_pointer,5);
+    player->next_bonus_item.code(&player->next_bonus_item,5);
 }
 
 void func_jetpac_80028634(void) {
