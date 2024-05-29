@@ -254,7 +254,7 @@ void func_jetpac_80028634(void) {
 
     temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     temp = temp_v0->rocket_segments;
-    temp_v0->lives_consumed = 8;
+    temp_v0->rocket_stage = 8;
     for (i = 0; i < 3; i++, temp++) {
         temp->posX = 168.0f;
         temp->posY = (i * 16) + 136.0f;
@@ -270,7 +270,7 @@ void func_jetpac_80028950(void) {
 
     temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     var_v1 = &temp_v0->rocket_segments[0].unk0;
-    temp_v0->lives_consumed = 2;
+    temp_v0->rocket_stage = 2;
     for (i = 0; i < 3; i++, var_v1++) {
         var_v1->posX = 168.0f;
         var_v1->posY = (i * 16) + -8.0f;
