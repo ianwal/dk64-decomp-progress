@@ -168,14 +168,14 @@ void func_jetpac_80027D64(Competitor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027EC0.s")
 
 s32 func_jetpac_800274C0();
-extern CompetitorSub14 D_jetpac_8002DD38;
+extern JetpacPickupStruct D_jetpac_8002DD38;
 
 void func_jetpac_80028340(Competitor *arg0) {
-    CompetitorSub14 sp1C;
+    JetpacPickupStruct sp1C;
     f32 sp24;
 
     sp1C = D_jetpac_8002DD38;
-    sp1C.unk8 = func_jetpac_800274C0();
+    sp1C.posX = func_jetpac_800274C0();
     arg0->unk14[3] = sp1C;
     arg0->unk10 = 3;
 }
@@ -226,7 +226,7 @@ block_5:
 void func_jetpac_80028544(void) {
     void (*temp_v0)(void *, s32);
     s32 i;
-    CompetitorSub14 *var_s0;
+    JetpacPickupStruct *var_s0;
     JetpacPlayerStruct* player;
 
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
@@ -250,14 +250,14 @@ void func_jetpac_800285DC(void) {
 void func_jetpac_80028634(void) {
     s32 i;
     Competitor *temp_v0;
-    CompetitorSub14 *temp;
+    JetpacPickupStruct *temp;
 
     temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     temp = temp_v0->unk14;
     temp_v0->lives_consumed = 8;
     for (i = 0; i < 3; i++, temp++) {
-        temp->unk8 = 168.0f;
-        temp->unkC = (i * 16) + 136.0f;
+        temp->posX = 168.0f;
+        temp->posY = (i * 16) + 136.0f;
     }
 }
 
@@ -266,14 +266,14 @@ void func_jetpac_80028634(void) {
 void func_jetpac_80028950(void) {
     s32 i;
     Competitor *temp_v0;
-    CompetitorSub14 *var_v1;
+    JetpacPickupStruct *var_v1;
 
     temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     var_v1 = &temp_v0->unk14[0].unk0;
     temp_v0->lives_consumed = 2;
     for (i = 0; i < 3; i++, var_v1++) {
-        var_v1->unk8 = 168.0f;
-        var_v1->unkC = (i * 16) + -8.0f;
+        var_v1->posX = 168.0f;
+        var_v1->posY = (i * 16) + -8.0f;
     }
 }
 

@@ -2039,17 +2039,26 @@ typedef struct JetpacItem {
     u8 unk0;
 } JetpacItem;
 
-typedef struct CompetitorSub14 {
+typedef struct JetpacPickupStruct {
     s32 *unk0;
     u8 unk4[0x4];
-    f32 unk8;
-    f32 unkC;
-    u8 unk10[0x1C-0x10];
+    f32 posX;
+    f32 posY;
+    f32 velX;
+    f32 velY;
+    u8 red;
+    u8 green;
+    u8 blue;
+    u8 will_render;
     s32 unk1C;
-    u8 unk20[0x44-0x20];
+    u8 unk20[0x34-0x20];
+    s32 counter;
+    s32 unk38;
+    s32 point_bonus;
+    s32 drop_type;
     void (*unk44)(void*);
     void (*code)(void*, s32);
-} CompetitorSub14;
+} JetpacPickupStruct;
 
 typedef struct Competitor {
     s32 level;
@@ -2057,7 +2066,7 @@ typedef struct Competitor {
     s32 lives;
     s32 lives_consumed;
     s32 unk10; //used
-    CompetitorSub14 unk14[4];
+    JetpacPickupStruct unk14[4];
     s32 unk_144;
     JetpacItem next_item_pointer;
     u8 unk14C[4];
