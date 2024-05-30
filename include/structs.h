@@ -2055,8 +2055,7 @@ typedef struct JetpacSpawningInfo {
 } JetpacSpawningInfo;
 
 typedef struct JetpacPickupPrimary {
-    s32 *sprite;
-    u8 unk4[0x4];
+    s32 *sprite[2];
     f32 posX;
     f32 posY;
     f32 velX;

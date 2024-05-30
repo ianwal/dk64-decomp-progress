@@ -3857,7 +3857,7 @@ us,.jetpac,func_jetpac_80028544,152,yes
 us,.jetpac,func_jetpac_80024E70,180,yes
 us,.jetpac,func_jetpac_80024F9C,260,yes
 us,.jetpac,func_jetpac_80025BB8,136,yes
-us,.jetpac,func_jetpac_800275F4,308,no
+us,.jetpac,func_jetpac_800275F4,308,yes
 us,.jetpac,func_jetpac_80024F64,56,yes
 us,.jetpac,func_jetpac_80029640,300,yes
 us,.jetpac,func_jetpac_80027380,72,yes

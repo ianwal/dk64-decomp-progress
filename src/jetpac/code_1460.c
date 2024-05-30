@@ -245,6 +245,7 @@ void func_jetpac_80025904(Gfx **arg0) {
     s32 j, i;
     Gfx *dl;
     s32 k;
+    u8 red;
 
     s3 = &D_jetpac_8002F3D0[0][0];
     dl = *arg0;

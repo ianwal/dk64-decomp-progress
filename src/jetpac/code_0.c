@@ -205,20 +205,18 @@ void func_jetpac_800248A0(Gfx **arg0) {
 // TODO: Doable
 void func_jetpac_800248E8(s32 arg0) {
     Competitor *player;
-    CompetitorSub14 *player_sub;
-    s32 score;
+    JetpacPickupStruct *rocket;
 
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    score = player->current_score;
-    if (score >= 1000000) {
-        player->current_score = score - 1000000;
+    if (player->current_score >= 1000000) {
+        player->current_score -= 1000000;
     }
     func_jetpac_80024408(arg0);
     func_jetpac_80026D48();
     func_jetpac_80026CEC();
-    player->next_bonus_item.unk44(&player->next_bonus_item);
-    player_sub = &player->unk14[player->unk10];
-    player_sub->unk44(player_sub);
+    player->next_bonus_item.primary_info.unk44(&player->next_bonus_item);
+    rocket = &player->rocket_segments[player->unk10];
+    rocket->primary_info.unk44(rocket);
     func_jetpac_8002ABDC();
     func_jetpac_800255D4(arg0);
     func_jetpac_80028E88();
