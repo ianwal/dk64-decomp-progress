@@ -2010,7 +2010,7 @@ typedef struct global_asm_struct_17 {
     s8 unk3;
 } GlobalASMStruct17;
 
-typedef struct JetpacStruct {
+typedef struct JetpacStructSub0 {
     f32 unk0;
     f32 unk4;
     f32 unk8;
@@ -2031,8 +2031,16 @@ typedef struct JetpacStruct {
     s32 unk38;
     u8 pad1[0x44 - 0x3C];
     s32   unk44;
-    void (*unk48)();
-    s32 *unk4C;
+} JetpacStructSub0;
+
+typedef struct JetpacStructSub1 {
+    void (*unk0)();
+    s32 unk4;
+} JetpacStructSub1;
+
+typedef struct JetpacStruct {
+    JetpacStructSub0 unk0;
+    JetpacStructSub1 unk48;
 } JetpacStruct;
 
 typedef struct JetpacItem {

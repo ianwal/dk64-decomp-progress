@@ -432,20 +432,20 @@ void func_jetpac_80025FC4(JetpacStruct *arg0) {
 
     if (var_s4) {} // TODO: This fixes regalloc but it's an awful way to get a match...
 
-    temp_s5 = arg0->unk18;
+    temp_s5 = arg0->unk0.unk18;
     var_s1 = 0;
-    if (arg0->unk14 >= 2) {
+    if (arg0->unk0.unk14 >= 2) {
         var_s4 = -8;
-        temp_s7 = arg0->unk4;
-        temp_t7 = (arg0->unk24 - arg0->unk1C) / 8;
-        if (arg0->unk14 == 4) {
-            var_s1 = arg0->unk2C;
+        temp_s7 = arg0->unk0.unk4;
+        temp_t7 = (arg0->unk0.unk24 - arg0->unk0.unk1C) / 8;
+        if (arg0->unk0.unk14 == 4) {
+            var_s1 = arg0->unk0.unk2C;
         }
         if (temp_s5 != 0) {
             var_s4 = 8;
-            sp6C = arg0->unk1C;
+            sp6C = arg0->unk0.unk1C;
         } else {
-            sp6C = arg0->unk24 - 8;
+            sp6C = arg0->unk0.unk24 - 8;
         }
         for (i = 0; i < temp_t7; i++) {
             if (var_s1 < 4) {
@@ -455,7 +455,7 @@ void func_jetpac_80025FC4(JetpacStruct *arg0) {
             } else {
                 var_a0 = 2;
             }
-            func_jetpac_80025F48(var_a0, &sp6C, var_s4, temp_s7, &arg0->unk10, temp_s5);
+            func_jetpac_80025F48(var_a0, &sp6C, var_s4, temp_s7, &arg0->unk0.unk10, temp_s5);
             var_s1 += 1;
         }
     }
