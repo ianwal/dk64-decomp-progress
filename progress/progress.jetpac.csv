@@ -1,6 +1,6 @@
 version,section,function,length,matching
 us,.jetpac,func_jetpac_80025168,512,yes
-us,.jetpac,func_jetpac_80029450,156,no
+us,.jetpac,func_jetpac_80029450,156,yes
 us,.jetpac,func_jetpac_8002976C,280,yes
 us,.jetpac,func_jetpac_80025368,240,yes
 us,.jetpac,func_jetpac_800254B8,284,no

@@ -23,7 +23,7 @@ void func_jetpac_80025168(void*);
 // TODO: Pretty close
 void func_jetpac_80024000(void) {
     s32 sp2C;
-    void *sp28;
+    Gfx **sp28;
     s32 temp_a0;
     s32 temp_t5;
     u8 temp_t1;
@@ -31,10 +31,9 @@ void func_jetpac_80024000(void) {
     func_global_asm_8060A9BC();
     func_global_asm_80610044(D_global_asm_8076A050[D_global_asm_807444FC], D_global_asm_8076A088, 3, 1, 0x4D2, 1);
     temp_t1 = D_global_asm_807444FC ^ 1;
-    temp_t5 = (temp_t1 & 0xFF) * 0x11B0;
     D_global_asm_807444FC = temp_t1;
     object_timer++;
-    D_global_asm_8076A048 = D_global_asm_80767CE8[temp_t5];
+    D_global_asm_8076A048 = D_global_asm_80767CE8[(temp_t1 & 0xFF) * 0x11B0];
     func_global_asm_8060AC7C();
     if ((D_global_asm_8076A0B1 & 1) && (D_global_asm_807FD888 == 31.0f)) {
         sp2C = D_global_asm_8076A050[D_global_asm_807444FC];

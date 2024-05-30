@@ -166,38 +166,32 @@ void func_jetpac_80029204(JetpacStruct *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_800292C4.s")
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029450.s")
+typedef struct StructJetpac800292C4 {
+    u8 unk0[0x14];
+    s32 unk14;
+} StructJetpac800292C4;
 
-/*
-// need to insert a += 0x1C which does nothing in the middle
-Competitor *func_jetpac_800292C4(void);
+StructJetpac800292C4 *func_jetpac_800292C4(void);
 extern void* D_jetpac_8002E8F4[8];
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
 void func_jetpac_80029450(void) {
-    u32 lvl;
-    s32* read;
-    void (*sp1C)(void *);
-    Competitor *temp_v0;
-    Competitor *sp18;
+    StructJetpac800292C4 *sp18;
+    Competitor * player;
+    void (*sp1C)(StructJetpac800292C4 *);
+    StructJetpac800292C4 *temp_v0;
+    s32 level;
 
-    lvl = D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].level & 7;
-    read = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].level;
-    if (D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].level < 0) {
-        if (lvl) {
-            lvl -= 8;
-        }
-    }
-    sp1C = D_jetpac_8002E8F4[lvl];
+    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    level = player->level % 8;
+    sp1C = D_jetpac_8002E8F4[level];
     temp_v0 = func_jetpac_800292C4();
-    if (temp_v0 != NULL) {
+    if (temp_v0) {
         sp18 = temp_v0;
         sp1C(temp_v0);
-        *(s32*)(&sp18->unk14[0].unk0) = 3;
+        sp18->unk14 = 3;
     }
 }
-*/
 
 void func_jetpac_800294EC(JetpacStruct *arg0, s32 arg1) {
     f32 temp = (arg0->unk0 + arg0->unk1C);
