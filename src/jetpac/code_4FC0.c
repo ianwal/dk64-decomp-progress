@@ -89,7 +89,28 @@ s32 func_jetpac_80028CF8(f32, f32, f32, f32, s32);
 void func_jetpac_800294EC(JetpacStruct *, s32);
 void *func_global_asm_806FD490(Gfx *, s32, s16, s16, s32);
 
-void *func_jetpac_80028FC0(void) {
+typedef struct StructJetpac8002E914Sub0 {
+    f32 unk0;
+    f32 unk4;
+    u8 unk8[0x10-0x8];
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    s32 unk14;
+    u8 unk18[0x48 - 0x18];
+} StructJetpac8002E914Sub0;
+typedef struct StructJetpac8002E914Sub1 {
+    s32 unk0;
+    s32 unk4;
+} StructJetpac8002E914Sub1;
+
+typedef struct StructJetpac8002E914 { // Don't think this is JetpacPickupStruct
+    StructJetpac8002E914Sub0 unk0;
+    StructJetpac8002E914Sub1 unk48;
+} StructJetpac8002E914;
+
+StructJetpac8002E914 *func_jetpac_80028FC0(void) {
     s32 i;
     JetpacStruct *temp = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
@@ -164,22 +185,49 @@ void func_jetpac_80029204(JetpacStruct *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_800292C4.s")
+extern StructJetpac8002E914 D_jetpac_8002E914[2];
 
-typedef struct StructJetpac800292C4 {
-    u8 unk0[0x14];
-    s32 unk14;
-} StructJetpac800292C4;
+StructJetpac8002E914 *func_jetpac_800292C4(void) {
+    StructJetpac8002E914 *temp;
+    StructJetpac8002E914 *sp70;
+    StructJetpac8002E914 sp20;
 
-StructJetpac800292C4 *func_jetpac_800292C4(void);
+    sp70 = func_jetpac_80028FC0();
+    temp = &sp20;
+    sp20 = D_jetpac_8002E914[0];
+    if (!sp70) {
+        return NULL;
+    }
+    *sp70 = sp20;
+    sp70->unk0.unk0 = 0.0f;
+    sp70->unk0.unk4 = (((s32) (func_jetpac_80027210() * 15.0f) % 15) * 8) + 0x20;
+    switch ((s32) (func_jetpac_80027210() * 4.0f) % 4) {                              /* irregular */
+    case 0:
+        sp70->unk0.unk10 = 0;
+        break;
+    case 1:
+        sp70->unk0.unk11 = 0;
+        break;
+    case 2:
+        sp70->unk0.unk10 = 0;
+        sp70->unk0.unk12 = 0;
+        break;
+    case 3:
+        sp70->unk0.unk11 = 0;
+        sp70->unk0.unk12 = 0;
+        break;
+    }
+    return sp70;
+}
+
 extern void* D_jetpac_8002E8F4[8];
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
 void func_jetpac_80029450(void) {
-    StructJetpac800292C4 *sp18;
+    StructJetpac8002E914 *sp18;
     Competitor * player;
-    void (*sp1C)(StructJetpac800292C4 *);
-    StructJetpac800292C4 *temp_v0;
+    void (*sp1C)(StructJetpac8002E914 *);
+    StructJetpac8002E914 *temp_v0;
     s32 level;
 
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
@@ -189,7 +237,7 @@ void func_jetpac_80029450(void) {
     if (temp_v0) {
         sp18 = temp_v0;
         sp1C(temp_v0);
-        sp18->unk14 = 3;
+        sp18->unk0.unk14 = 3;
     }
 }
 
