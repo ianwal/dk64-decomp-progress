@@ -1309,8 +1309,7 @@ struct actor {
     f32 terminal_velocity; // at 0xC8
     u8 unkCC; // Used, bone index?
     u8 unkCD;
-    u8 unkCE;
-    u8 unkCF;
+    s16 unkCE;
     u8 unkD0;
     u8 unkD1; // Used
     u8 unkD2;

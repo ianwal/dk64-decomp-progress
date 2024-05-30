@@ -181,7 +181,8 @@ void func_jetpac_80027D64(Competitor *arg0) {
     arg0->unk_144 = func_jetpac_80027480();
 }
 
-// Jumptable
+// Jumptable, close
+// https://decomp.me/scratch/5Smwc
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027EC0.s")
 
 void func_jetpac_80024E70(u8);                          /* extern */
@@ -195,8 +196,8 @@ extern f32 D_jetpac_8002F050;
 extern f32 D_jetpac_8002F054;
 extern s32 D_jetpac_8002F064;
 extern s32 D_jetpac_8002F078;
+
 /*
-Somewhat close
 void func_jetpac_80027EC0(JetpacPickupStruct *arg0) {
     Competitor *player;
     f32 temp_f18;
@@ -239,10 +240,10 @@ void func_jetpac_80027EC0(JetpacPickupStruct *arg0) {
                 arg0->posY + arg0->unk28,
                 arg0->posX + arg0->unk2C,
                 arg0->posY + arg0->unk30,
-                D_jetpac_8002F050 + D_8002F06C,
-                D_jetpac_8002F054 + D_8002F070,
-                D_jetpac_8002F050 + D_8002F074,
-                D_jetpac_8002F054 + D_jetpac_8002F078)) {
+                D_8002F06C + D_jetpac_8002F050,
+                D_8002F070 + D_jetpac_8002F054,
+                D_8002F074 + D_jetpac_8002F050,
+                D_jetpac_8002F078 + D_jetpac_8002F054)) {
                 if (arg0->drop_type == 6) {
                     setFlag(0x62, TRUE, FLAG_TYPE_TEMPORARY);
                 }
@@ -256,7 +257,7 @@ void func_jetpac_80027EC0(JetpacPickupStruct *arg0) {
     switch (arg0->drop_type) {
         case 6:
             arg0->counter++;
-            temp_v0_3 = arg0->counter - player->unk_144;
+            temp_v0_3 = (arg0->counter - player->unk_144);
             if (temp_v0_3 >= 0x97) {
                 func_jetpac_80027D64(player);
                 return;
@@ -337,7 +338,6 @@ void func_jetpac_80027EC0(JetpacPickupStruct *arg0) {
     }
 }
 */
-
 
 s32 func_jetpac_800274C0();
 extern JetpacPickupStruct D_jetpac_8002DD38;
