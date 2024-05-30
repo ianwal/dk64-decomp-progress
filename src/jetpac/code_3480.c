@@ -131,6 +131,7 @@ extern JetpacPickupStruct D_jetpac_8002DCEC;
 
 
 void func_jetpac_80027D64(Competitor *arg0) {
+    // Spawn Jetpac Bonus Item
     JetpacPickupStruct sp24;
     JetpacPickupStruct *temp_v1;
     s32 temp;
@@ -421,7 +422,7 @@ void func_jetpac_80028950(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_800289EC.s")
 
 typedef struct {
-    s32 unk0;
+    void* unk0;
     s32 unk4;
     s32 unk8;
     s32 unkC;
@@ -431,22 +432,35 @@ typedef struct {
 
 extern Struct8002DC38 D_jetpac_8002DC38[2];
 extern s32 D_jetpac_8002DD88;
-
 /*
+close
 void func_jetpac_800289EC(void) {
-    s32 sp44;
-    CompetitorSub14 *var_s1;
+    s32 pad[6];
+    s32* sp44;
+    f32 rocket_base_y;
     s32 i;
     s32 var_v1;
+    Competitor *player;
+    JetpacPickupStruct *rocket_segment;
+    s32 player_index;
 
-    var_s1 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index].unk14;
-    sp44 = D_jetpac_8002DD88;
-    if (var_s1->unkC < 116.0f) {
-        var_v1 = ABS(((s32)var_s1->unkC / 3) % 2);
-        func_jetpac_80025700(&D_jetpac_8002DC38[var_v1], var_s1->unk8, var_s1->unkC + 48.0f + 4.0f, &sp44, 0);
+    player_index = D_jetpac_8002EC30.player_index; \
+    *sp44 = D_jetpac_8002DD88;
+    player = &D_jetpac_8002EC30.player[player_index];
+    rocket_base_y = player->rocket_segments[0].primary_info.posY;
+    rocket_segment = &player->rocket_segments[0];
+    if (rocket_base_y < 116.0f) {
+        var_v1 = ABS(((s32) rocket_base_y / 3) % 2);
+        func_jetpac_80025700(
+            &D_jetpac_8002DC38[var_v1], 
+            rocket_segment->primary_info.posX, 
+            rocket_base_y + 48.0f + 4.0f, 
+            sp44,
+            0);
     }
     for (i = 0; i < 3; i++) {
-        var_s1[i].code(var_s1, i);
+        rocket_segment->code(rocket_segment, i);
+        rocket_segment++;
     }
 }
 */

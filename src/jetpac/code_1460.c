@@ -221,7 +221,7 @@ void func_jetpac_800255D4(Gfx **arg0) {
     gDPPipeSync(dl++);
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, 32, 24, 288, 216);
     gSPClearGeometryMode(dl++, -1);
-    gSPSetGeometryMode(dl++, G_SHADE | 0x00200000);
+    gSPSetGeometryMode(dl++, G_SHADE | G_SHADING_SMOOTH);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
     gDPSetTextureFilter(dl++, G_TF_POINT);
