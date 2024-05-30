@@ -61,6 +61,7 @@ extern JetpacPickupStruct D_jetpac_8002DC9C;
 void func_jetpac_80028B54(Competitor *);
 
 void func_jetpac_800275F4(Competitor *arg0) {
+    // Spawn Rocket Segments
     s32 i;
     JetpacPickupStruct sp38;
     s32 j;
