@@ -3799,7 +3799,7 @@ us,.jetpac,func_jetpac_800273C8,72,yes
 us,.jetpac,func_jetpac_80027BE8,380,no
 us,.jetpac,func_jetpac_80025B70,72,yes
 us,.jetpac,func_jetpac_80029C1C,496,yes
-us,.jetpac,func_jetpac_800283EC,344,no
+us,.jetpac,func_jetpac_800283EC,344,yes
 us,.jetpac,func_jetpac_800250A0,200,yes
 us,.jetpac,func_jetpac_80028B54,124,yes
 us,.jetpac,func_jetpac_8002463C,48,yes

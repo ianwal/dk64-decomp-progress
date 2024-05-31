@@ -352,48 +352,29 @@ void func_jetpac_80028340(Competitor *arg0) {
     arg0->unk10 = 3;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_800283EC.s")
+s32 func_jetpac_800283EC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    Competitor *player;
+    JetpacPickupStruct *rocket;
+    s32 i;
 
-/*
-// Weird struct stuff surrounding Jetpac Player Struct
-extern JetpacPlayerStruct D_jetpac_8002EC30;
-
-s32 func_jetpac_800283EC(f32 arg0, f32 arg1, s32 arg2, f32 arg3) {
-    s32 temp_v0;
-    s32 var_s1;
-    u8 *temp_s3;
-    u8 *temp_s3_2;
-    u8 *var_s0;
-
-    temp_s3 = &D_jetpac_8002EC30 + (D_jetpac_8002EC30.player_index * 0x194);
-    temp_v0 = *(s32*)(&temp_s3 + 0x28);
-    temp_s3_2 = *(s32*)(&temp_s3 + 0x1C);
-    if (temp_v0 < 2) {
-        var_s0 = temp_s3_2 + 0x14;
-        var_s1 = 0;
-        if ((2 - temp_v0) > 0) {
-loop_2:
-            if (func_jetpac_80027510((Struct80027510*)&var_s0, arg0, arg1, arg2, arg3, 1) != 0) {
+    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    if (player->rocket_stage < 2) {
+        rocket = player->rocket_segments;
+        for (i = 0; i < (2 - player->rocket_stage); i++) {
+            if (func_jetpac_80027510(rocket, arg0, arg1, arg2, arg3, 1)) {
                 return 1;
             }
-            var_s1 += 1;
-            var_s0 += 0x4C;
-            if (var_s1 >= (2 - *(s32*)(&temp_s3_2 + 0xC))) {
-                goto block_5;
-            }
-            goto loop_2;
+            rocket++;
         }
     }
-block_5:
-    if (func_jetpac_80027510((Struct80027510*)(&temp_s3_2 + 0xF8), arg0, arg1, arg2, arg3, 0) != 0) {
+    if (func_jetpac_80027510(&player->fuel_item, arg0, arg1, arg2, arg3, 0)) {
         return 1;
     }
-    if (func_jetpac_80027510((Struct80027510*)(&temp_s3_2 + 0x148), arg0, arg1, arg2, arg3, 0) != 0) {
+    if (func_jetpac_80027510(&player->next_bonus_item, arg0, arg1, arg2, arg3, 0)) {
         return 1;
     }
     return 0;
 }
-*/
 
 void func_jetpac_80028544(void) {
     void (*temp_v0)(void *, s32);
