@@ -20,25 +20,25 @@ void func_global_asm_806B2790(void) {
     func_global_asm_80685020(0x1F, 0);
     switch (current_actor_pointer->control_state) {
         case 0x27:
-            var_a2 = 0;
+            var_a2 = FALSE;
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     playActorAnimation(current_actor_pointer, 0x2E0);
-                    var_a2 = 0;
+                    var_a2 = FALSE;
                     current_actor_pointer->control_state_progress = 1;
                     break;
                 case 2:
-                    var_a2 = 1;
+                    var_a2 = TRUE;
                     current_actor_pointer->unkB8 = 150.0f;
                     current_actor_pointer->unk132 = 2;
                     break;
                 case 3:
                     current_actor_pointer->unk132 = 1;
-                    var_a2 = 1;
+                    var_a2 = TRUE;
                     break;
                 case 4:
                     func_global_asm_8072DE44(0x2DE);
-                    var_a2 = 0;
+                    var_a2 = FALSE;
                     break;
             }
             if (var_a2) {
@@ -107,7 +107,7 @@ void func_global_asm_806B2D5C(void) {
 }
 
 // Jumptable, close, v1 a3 regalloc
-// https://decomp.me/scratch/iuQGD
+// https://decomp.me/scratch/eraSt
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B2D64.s")
 
 /*
@@ -290,8 +290,8 @@ void func_global_asm_806B3420(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// close, switch case woes
-// https://decomp.me/scratch/FQyHV
+// close, switch case woes, stack
+// https://decomp.me/scratch/NO9ZZ
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3680.s")
 
 extern s32 D_global_asm_8072073C;
@@ -305,7 +305,6 @@ void func_global_asm_806B3680(void) {
     f32 scale;
     f32 sp54;
     f32 dy;
-    s32 *sp44;
     s16 i;
 
     scale = current_actor_pointer->animation_state->scale_y * 800.0f;
@@ -319,7 +318,7 @@ void func_global_asm_806B3680(void) {
             sp54 = 0.7f;
         }
     }
-    scale = scale * scale;
+    scale *= scale;
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk64 |= 4;
@@ -350,13 +349,12 @@ void func_global_asm_806B3680(void) {
             func_global_asm_8072E1A4(0xA, D_global_asm_807FDC94);
             break;
         default:
-            switch (current_actor_pointer->control_state) {
+            switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     playSoundAtActorPosition(current_actor_pointer, 0x1C2, 0xFF, 0x7F, 0);
                     D_global_asm_807FDC90->unk30 = 2.0 * current_actor_pointer->animation_state->scale_y;
                 default:
                     current_actor_pointer->control_state_progress++;
-                    break;
                 case 1:
                     if (current_actor_pointer->animation_state->scale_y < D_global_asm_807FDC90->unk30) {
                         func_global_asm_807248B0(current_actor_pointer, current_actor_pointer->animation_state->scale_y * 1.01);
@@ -375,8 +373,8 @@ void func_global_asm_806B3680(void) {
                         func_global_asm_8066E9EC(current_actor_pointer, 1, current_actor_pointer->ledge_info_pointer->unkC * sp54);
                         func_global_asm_8066EB40(current_actor_pointer, current_actor_pointer->ledge_info_pointer->unkC * sp54);
                         current_actor_pointer->object_properties_bitfield &= ~4;
-                        current_actor_pointer->control_state_progress++;
                     }
+                    current_actor_pointer->control_state_progress++;
                     break;
                 case 5:
                     current_actor_pointer->control_state = 0x40;
