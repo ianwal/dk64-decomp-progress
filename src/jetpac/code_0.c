@@ -102,8 +102,6 @@ void func_jetpac_80024390(void) {
     D_jetpac_8002EC30.player_index = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_80024408.s")
-
 extern s32 D_jetpac_8002EC48;
 extern s32 D_jetpac_8002BA6C;
 extern s32 D_jetpac_8002EF74;
@@ -116,42 +114,38 @@ void func_jetpac_8002AE94(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 // TODO: Arg2 might be s16... Causes a mismatch in func_jetpac_80024D48.
 void func_jetpac_8002AEFC(Gfx **arg0, char *arg1, s32 arg2, s16 arg3, s32 arg4);
 
-/*
-// TODO: Annoyingly close, stack oddity
 void func_jetpac_80024408(Gfx **arg0) {
     Competitor *player;
     s32 pad[15];
     s8 sp60[16];
-    s32 lives;
     s32 temp_s0;
     s32 playerIndex;
-    s32 pad0;
+    s32 pad2;
 
     temp_s0 = func_jetpac_80026FE0() & D_jetpac_8002BA6C;
     func_jetpac_8002AE00(arg0);
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
-    func_jetpac_8002AEFC(arg0, "1UP", 0x38, 0x18, temp_s0 && D_jetpac_8002EF74 == 0);
+    func_jetpac_8002AEFC(arg0, "1UP", 0x38, 0x18, temp_s0 && !D_jetpac_8002EF74);
     player = &D_jetpac_8002EC30.player[0];
     for (playerIndex = 0; playerIndex < 2; playerIndex++) {
-        lives = player->lives;
-        if (lives > 0) {
-            sprintf(&sp60, "%d!", lives);
-            func_jetpac_8002AEFC(arg0, &sp60, (playerIndex * 0x70) + 0x60, 0x18, 0);
+        if (player->lives > 0) {
+            sprintf(sp60, "%d!", player->lives);
+            func_jetpac_8002AEFC(arg0, &sp60, 0x60 + (playerIndex * 0x70), 0x18, 0);
         }
         player++;
     }
     func_jetpac_8002AEFC(arg0, "2UP", 0xF8, 0x18, temp_s0 && D_jetpac_8002EF74 == 1);
     func_jetpac_8002AE94(0, 0xFF, 0xFF, 0xFF);
     func_jetpac_8002AEFC(arg0, "HI", 0x98, 0x18, 0);
+    player = &D_jetpac_8002EC30.player[0];
     func_jetpac_8002AE94(0xFF, 0xFF, 0, 0xFF);
-    sprintf(&sp60, "%06d", D_jetpac_8002EC50);
+    sprintf(sp60, "%06d", player[0].current_score);
     func_jetpac_8002AEFC(arg0, &sp60, 0x28, 0x20, 0);
-    sprintf(&sp60, "%06d", D_jetpac_8002EC30.unk18);
+    sprintf(sp60, "%06d", D_jetpac_8002EC30.unk18);
     func_jetpac_8002AEFC(arg0, &sp60, 0x88, 0x20, 0);
-    sprintf(&sp60, "%06d", D_jetpac_8002EDE4);
+    sprintf(sp60, "%06d", player[1].current_score);
     func_jetpac_8002AEFC(arg0, &sp60, 0xE8, 0x20, 0);
 }
-*/
 
 void func_jetpac_800250A0();
 

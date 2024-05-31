@@ -435,6 +435,82 @@ void func_jetpac_80028634(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_800286D0.s")
 
+/*
+extern s32 D_global_asm_80770DF8[];
+
+void func_jetpac_800286D0(void) {
+  
+    JetpacPickupStruct *sp28;
+    f32 sp24;
+    f32 sp1C;
+    JetpacPickupStruct *var_a2;
+    f32 temp_f0;
+    f32 var_f0;
+    f32 var_f12;
+    f32 var_f18;
+    f32 var_f2;
+    s32 temp_f16;
+    s32 var_v0;
+    s32 var_v1;
+    Competitor *player;
+
+    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    var_f12 = player->rocket_segments[0].primary_info.posY;
+    var_f2 = 0.0f;
+    var_a2 = player->rocket_segments;
+    temp_f0 = (var_f12 - -8.0f) / 144.0f;
+    if (temp_f0 < 0.0f) {
+
+    } else if (temp_f0 > 1.0f) {
+        var_f2 = 1.0f;
+    } else {
+        var_f2 = temp_f0;
+    }
+    if (D_jetpac_8002EC30.unk78C == 1) {
+        if (!D_global_asm_80770DF8[1]) {
+            sp28 = var_a2;
+            sp1C = var_f2;
+            func_jetpac_80024E70(1);
+        }
+        sp28 = var_a2;
+        func_jetpac_80024F24(1, (1.0f - (var_f2 * 0.059466f)));
+        var_f12 = var_a2->primary_info.posY;
+        if (var_f12 >= 136.0f) {
+            for (var_v0 = 0; var_v0 < 0x30; var_v0 += 0x10) {
+                var_a2->primary_info.posX = 168.0f;
+                var_a2->primary_info.posY = var_v0 + 136.0f;
+                var_a2++;
+            }
+            func_jetpac_80024F64(1);
+            func_jetpac_80024F9C(2);
+            return;
+        }
+        sp24 = 0.4f;
+    } else if (D_jetpac_8002EC30.unk78C == 4) {
+        if (D_global_asm_80770DF8[0] == 0) {
+            sp28 = var_a2;
+            sp1C = var_f2;
+            func_jetpac_80024E70(0);
+        }
+        sp28 = var_a2;
+        func_jetpac_80024F24(0, (((1.0f - var_f2) * 0.059466f) + 1.0f));
+        var_f12 = var_a2->primary_info.posY;
+        if (var_f12 < -8.0f) {
+            func_jetpac_80024F64(0);
+            func_jetpac_800250A0();
+            return;
+        }
+        sp24 = -0.4f;
+    }
+    var_f0 = var_f12 + sp24;
+    for (var_v1 = 0; var_v1 < 3; var_v1++) {
+        var_a2->primary_info.posY = var_f0;
+        var_f0 += 16.0f;
+        var_a2++;
+    }
+}
+*/
+
 void func_jetpac_80028950(void) {
     s32 i;
     Competitor *temp_v0;

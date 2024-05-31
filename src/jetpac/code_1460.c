@@ -36,9 +36,12 @@ typedef struct {
 typedef struct {
     s32 unk0;
     s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
     s32 unk14;
 } Struct8002C4D0;
 
@@ -148,7 +151,7 @@ extern s32 D_jetpac_80045BD0;
 extern f32 func_jetpac_80027210();
 extern void func_global_asm_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 extern void func_global_asm_8070E8F0(Gfx**, Sprite*);
-s32 func_jetpac_80025700(Struct8002C4D0 *, s32, s32, s32, s32);
+void func_jetpac_80025700(Struct8002C4D0 *, s32, s32, s32, s32);
 void func_jetpac_80025368(Competitor*);
 void func_jetpac_80025FC4(JetpacStruct*);
 int func_jetpac_80026FE0(void);
@@ -235,6 +238,67 @@ void func_jetpac_800255D4(Gfx **arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025700.s")
+
+void func_jetpac_800254B8(Struct8002C4D0 *, s32, s32, s32, s32);
+extern Struct8002C4D0 D_80042BD0[0x100][2];
+extern s32 D_jetpac_80045BD0;
+/*
+void func_jetpac_80025700(Struct8002C4D0 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+    s32 lim_0;
+    s32 lim_1;
+    s32 temp_v0;
+    s32 temp_v0_2;
+    s32 var_s0_2;
+    s32 var_s2;
+    s32 var_s5_2;
+    s32 var_v1;
+    Struct8002C4D0 *temp_a0;
+
+    lim_0 = arg0->unkC - 1;
+    lim_1 = arg0->unkA - 1;
+    if (D_jetpac_80045BD0 > 0xFF) {
+        return;
+    }
+    if (arg1 < 0) {
+        arg1 += 0x100;
+    }
+    var_s2 = 0;
+    do {
+        var_s5_2 = ((arg2 + 8) & 0xFFF8) - arg2;
+        var_v1 = 0;
+        var_s5_2 = MIN(var_s5_2, lim_0);
+        do {
+            temp_v0 = D_jetpac_80045BD0;
+            if (D_jetpac_80045BD0 > 0xFF) {
+                return;
+            }
+            D_jetpac_80045BD0 = temp_v0 + 1;
+            temp_a0 = &D_80042BD0[temp_v0][D_global_asm_807444FC];
+            *temp_a0 = *arg0;
+            var_s0_2 = ((arg1 + 8) & 0xFFF8) - arg1;
+            temp_v0_2 = arg1 + var_v1;
+            var_s0_2 = MIN(var_s0_2, lim_1);
+            if (arg4) {
+                temp_a0->unk10 += (lim_1 - var_s0_2);
+            } else {
+                temp_a0->unk10 += var_v1;
+            }
+            temp_a0->unk12 += var_s2;
+            temp_a0->unkA = ((var_s0_2 - var_v1) + 1);
+            temp_a0->unkC = ((var_s5_2 - var_s2) + 1);
+            temp_v0_2 &= 0xFF;
+            if (temp_v0_2 >= 0x100) {
+                temp_v0_2 -= 0x100;
+            }
+            func_jetpac_800254B8(temp_a0, temp_v0_2, arg2 + var_s2, arg3, arg4);
+            var_v1 = var_s0_2;
+            arg1 = var_s0_2 + arg1;
+        } while (var_s0_2 < lim_1);
+        var_s2 = var_s5_2;
+        arg2 += var_s5_2;
+    } while (var_s5_2 < lim_0);
+}
+*/
 
 // Displaylist stuff, doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025904.s")
