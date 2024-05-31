@@ -327,10 +327,16 @@ Gfx *func_multiplayer_80025264(Gfx *dl, Actor *arg1) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025378.s")
 
+typedef struct MultiplayerStruct3 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} MultiplayerStruct3;
+
 typedef struct {
     Maps map;
     s32 unk4;
-    s32 unk8;
+    MultiplayerStruct3 *unk8;
     s32 unkC[4];
     s32 unk1C;
 } Struct80025F84;
@@ -425,45 +431,39 @@ s32 func_multiplayer_80025608(s32 objectType) {
     return func_global_asm_8063254C(objectType, &sp38, &sp34, &sp30, &sp_1, &sp2E, &sp2C);
 }
 
-// close, issue is with call to func_global_asm_806F5EB4, extra param on the stack doesn't match global_asm signature
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025654.s")
-
 void func_multiplayer_800243C8();
-typedef struct MultiplayerStruct3 {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-} MultiplayerStruct3;
 void func_global_asm_806F5FE8(s32, s16, s16, s16, s32);
 extern s32 D_global_asm_807552F0;
 
-/*
 void func_multiplayer_80025654(MultiplayerStruct4 *arg0) {
     s32 temp_v0;
     MultiplayerStruct3 *sp20;
+    u8 temp_v0_2;
 
     sp20 = func_multiplayer_80025378()->unk8;
-    if (gameIsInAdventureMode() && ((global_properties_bitfield & 2) == 0)) {
-        if (D_global_asm_807552E8 == 3) {
-            func_multiplayer_800243C8();
+    if ((!gameIsInAdventureMode()) || (global_properties_bitfield & 2)) {
+        return;
+    }
+    if (D_global_asm_807552E8 == 3) {
+        func_multiplayer_800243C8();
+    }
+    temp_v0 = func_multiplayer_80025404();
+    if (temp_v0 == -1) {
+        if (
+            (!arg0->unk4C) && 
+            (!func_global_asm_8067ADB4(0x7AU)) && 
+            (!func_multiplayer_80025608(0x1D2)) && 
+            (!func_global_asm_806F5EB4(0x1D2, 0, sp20->unk0, sp20->unk2, sp20->unk4))
+            ) {
+            func_global_asm_806F5FE8(0x1D2, sp20->unk0, sp20->unk2, sp20->unk4, 0xA);
         }
-        temp_v0 = func_multiplayer_80025404();
-        if (temp_v0 == -1) {
-            if ((arg0->unk4C == 0) && 
-                (!func_global_asm_8067ADB4(0x7A)) && // DK Coin (Multiplayer)
-                (func_multiplayer_80025608(0x1D2) == 0) && 
-                (!func_global_asm_806F5EB4(0x1D2, 0, sp20->unk0, sp20->unk2))) {
-                    func_global_asm_806F5FE8(0x1D2, sp20->unk0, sp20->unk2, sp20->unk4, 0xA);
-            }
-        } else if ((D_global_asm_807552E8 == 5) && (func_multiplayer_80024254(temp_v0) >= D_global_asm_807552F0)) {
-            func_multiplayer_800242FC(arg0);
-        }
-        if (arg0->unk4C != 0) {
-            arg0->unk4C--;
-        }
+    } else if ((D_global_asm_807552E8 == 5) && (func_multiplayer_80024254(temp_v0) >= D_global_asm_807552F0)) {
+        func_multiplayer_800242FC(arg0);
+    }
+    if (arg0->unk4C) {
+        arg0->unk4C--;
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025794.s")
 
