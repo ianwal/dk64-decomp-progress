@@ -3250,7 +3250,7 @@ us,asm,func_global_asm_8064B3F8,180,no
 us,asm,func_global_asm_8067A864,164,yes
 us,asm,func_global_asm_80676A0C,100,yes
 us,asm,func_global_asm_80686CF8,328,yes
-us,asm,func_global_asm_806A664C,1896,no
+us,asm,func_global_asm_806A664C,1896,yes
 us,asm,func_global_asm_806BC1AC,48,yes
 us,asm,func_global_asm_806D8070,56,yes
 us,asm,func_global_asm_80634D64,172,yes

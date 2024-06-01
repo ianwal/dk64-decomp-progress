@@ -288,11 +288,6 @@ void func_global_asm_806A6574(void) {
     }
 }
 
-// Jumptable, doable, close, doable, regalloc
-// https://decomp.me/scratch/PQEQr
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_AAAF0/func_global_asm_806A664C.s")
-
-/*
 extern s16 D_global_asm_8075038C;
 extern s32 D_global_asm_807FBB68;
 
@@ -315,6 +310,7 @@ typedef struct {
 void func_global_asm_806A664C(f32 arg0) {
     AAD_806A664C *aaD;
     s32 temp_v0;
+    s16 temp_0;
     s16 temp2;
 
     aaD = current_actor_pointer->additional_actor_data;
@@ -339,14 +335,15 @@ void func_global_asm_806A664C(f32 arg0) {
         if (func_global_asm_806725A0(current_actor_pointer, current_actor_pointer->unkEE) == 0) {
             // Regalloc in here somewhere
             temp_v0 = func_global_asm_80672A70(current_actor_pointer->unkF4, current_actor_pointer->unkF6);
-            temp2 = (current_actor_pointer->unkEE + 0x800);
-            temp2 = temp2 & 0xFFF;
-            temp_v0 = (temp_v0 - temp2) + temp_v0;
+            temp2 = current_actor_pointer->unkEE;
+            temp2 = (temp2 + 0x800) & 0xFFF;
+            temp_0 = temp_v0 - temp2;
+            temp_v0 += temp_0;
             current_actor_pointer->unkEE = temp_v0;
         }
     }
     switch (current_actor_pointer->control_state) {
-        case 0:
+        case 1:
             current_actor_pointer->noclip_byte = 0x1C;
             func_global_asm_8066EB40(current_actor_pointer, 60.0f);
             func_global_asm_8066E8E4(current_actor_pointer, 0.0f, 0.0f, 0.0f, 50.0f, -1);
@@ -357,7 +354,7 @@ void func_global_asm_806A664C(f32 arg0) {
             }
             current_actor_pointer->control_state++;
             // fallthrough
-        case 1:
+        case 2:
             func_global_asm_806651FC(current_actor_pointer);
             func_global_asm_80665564(current_actor_pointer, arg0);
             current_actor_pointer->y_velocity -= 20.0f;
@@ -392,25 +389,27 @@ void func_global_asm_806A664C(f32 arg0) {
                         }
                         break;
                 }
-                switch (current_actor_pointer->unk58) { // switch 2; irregular
-                    case ACTOR_ORANGE_PICKUP: // switch 2
+                switch (current_actor_pointer->unk58) {
+                    case ACTOR_ORANGE_PICKUP:
                         playSoundAtActorPosition(current_actor_pointer, 0xF5, (u8)(current_actor_pointer->y_velocity + 105.0f), 0x7F, 0x1E);
                         break;
-                    case ACTOR_DK_COIN: // switch 2
-                        if (aaD->unk0 == 0) {
+                    case ACTOR_DK_COIN:
+                        temp_v0 = aaD->unk0;
+                        if (!temp_v0) {
                             playSoundAtActorPosition(current_actor_pointer, 0x1D1, 0xFF, 0x7F, 0xA);
                         }
                         break;
-                    default: // switch 2
+                    default:
                         playSoundAtActorPosition(current_actor_pointer, 1, (u8)(current_actor_pointer->y_velocity + 105.0f), 0x7F, 0x14);
                         break;
                 }
                 aaD->unk0++;
-                break;
             }
-        default:
             break;
-        case 2:
+        default:
+        case 0:
+            break;
+        case 3:
             if (func_global_asm_8061CB50() == 0) {
                 aaD->unk8--;
             }
@@ -418,7 +417,7 @@ void func_global_asm_806A664C(f32 arg0) {
                 current_actor_pointer->control_state = 4;
             }
             break;
-        case 3:
+        case 4:
             aaD->unk4->unk36D -= 5;
             if (aaD->unk4->unk36D < 0xA) {
                 if ((D_global_asm_807FBB64 & 0x10000) && (func_global_asm_806F5C30(current_actor_pointer->unk58) != 0)) {
@@ -427,16 +426,15 @@ void func_global_asm_806A664C(f32 arg0) {
                 deleteActor(current_actor_pointer);
             }
             break;
-        case 24:
+        case 25:
             aaD->unk8 = 0x64;
             current_actor_pointer->control_state = 3;
             aaD->unk1 = 1;
             break;
-        case 25:
+        case 24:
             break;
     }
 }
-*/
 
 extern s16 D_global_asm_80750384;
 extern f32 D_global_asm_80750388;
