@@ -438,11 +438,6 @@ void func_global_asm_806A664C(f32 arg0) {
 }
 */
 
-// Jumptable, doable, close, regalloc
-// https://decomp.me/scratch/YrJAm
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_AAAF0/func_global_asm_806A6DB4.s")
-
-/*
 extern s16 D_global_asm_80750384;
 extern f32 D_global_asm_80750388;
 extern s16 D_global_asm_8075038C;
@@ -461,7 +456,7 @@ void func_global_asm_806A6DB4(u8 arg0) {
     AAD_806A6DB4 *aaD;
     s16 temp_v0_2;
     s32 var_v1_2;
-    u8 var_v1;
+    s16 temp_0;
 
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -490,10 +485,14 @@ void func_global_asm_806A6DB4(u8 arg0) {
     if ((current_actor_pointer->unkFC != 0) && (func_global_asm_806725A0(current_actor_pointer, current_actor_pointer->unkEE) == 0)) {
         // regalloc
         temp_v0_2 = func_global_asm_80672A70(current_actor_pointer->unkF4, current_actor_pointer->unkF6);
-        current_actor_pointer->unkEE = temp_v0_2 + (temp_v0_2 - ((current_actor_pointer->unkEE + 0x800) & 0xFFF));
+        temp_0 = current_actor_pointer->unkEE;
+        temp_0 = (temp_0 + 0x800) & 0xFFF;
+        var_v1_2 = temp_v0_2;
+        temp_v0_2 -= temp_0;
+        var_v1_2 += temp_v0_2;
+        current_actor_pointer->unkEE = var_v1_2;
     }
-    var_v1 = current_actor_pointer->control_state;
-    if ((var_v1 == 1) || (var_v1 == 2) || (var_v1 == 4) || (var_v1 == 5) || (var_v1 == 6)) {
+    if ((current_actor_pointer->control_state == 1) || (current_actor_pointer->control_state == 2) || (current_actor_pointer->control_state == 4) || (current_actor_pointer->control_state == 5) || (current_actor_pointer->control_state == 6)) {
         current_actor_pointer->noclip_byte = 0x1C;
         func_global_asm_8066EB40(current_actor_pointer, 60.0f);
         func_global_asm_8066E8E4(current_actor_pointer, 0.0f, 0.0f, 0.0f, 50.0f, -1);
@@ -568,7 +567,6 @@ void func_global_asm_806A6DB4(u8 arg0) {
     current_actor_pointer->y_rotation += 0x72;
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806A734C(void) {
     func_global_asm_806A6DB4(1);
