@@ -86,6 +86,7 @@ s32 func_global_asm_806111BC(s32 arg0, s32 arg1) {
     return 0;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_806111F8.s")
 
 typedef struct Struct807F0988_unk8 Struct807F0988_unk8;
@@ -108,7 +109,6 @@ typedef struct {
 extern Struct807F0988 D_global_asm_807F0988[];
 
 /*
-// TODO: Close
 void *func_global_asm_806111F8(s32 arg0, u32 arg1) {
     u32 temp_a0;
     u32 var_v0;

@@ -464,8 +464,6 @@ void func_global_asm_805FF660(u8 arg0) {
     D_global_asm_80744820 = arg0;
 }
 
-void func_global_asm_806A5DF0(s32, f32, f32, f32, u16, s32, s32, s32);
-
 void func_global_asm_805FF670(void) {
     f32 temp_f20;
     s16 spawn_x;

@@ -19,7 +19,6 @@ extern Struct80750400 D_global_asm_80750400[];
 int func_global_asm_806A4284();
 void func_global_asm_806A4DDC(Actor *arg0);
 void func_global_asm_806A5174(Actor*, void*, f32);
-void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
 
 void func_global_asm_8070DA74(Actor*);
 void func_global_asm_8070E808(Actor *arg0, Actor *arg1);

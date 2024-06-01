@@ -43,7 +43,6 @@ typedef struct {
     s16 unk10;
 } A17C_80028878;
 
-void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s16, s32);
 extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
 void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 

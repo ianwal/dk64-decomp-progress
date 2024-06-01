@@ -30,7 +30,6 @@ void func_global_asm_8061CAD8(void);
 void func_global_asm_8061CB08(void);
 void func_global_asm_8061F510(s32, s32);
 void func_global_asm_8062217C(Actor *, s32);
-void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
 u8 func_global_asm_8072881C(u8 arg0, u32 *arg1);
 void func_global_asm_8072A450(void);
 u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);

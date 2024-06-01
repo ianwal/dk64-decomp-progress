@@ -1915,8 +1915,6 @@ void func_global_asm_8064C134(Struct8064BFD0 *arg0, s32 arg1, s16 arg2, s32 arg3
     }
 }
 
-void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
-
 void func_global_asm_8064C250(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_global_asm_806A5DF0(0x2F, D_global_asm_807F621C, D_global_asm_807F6220 + 15.0f, D_global_asm_807F6224, 0, 1, -1, 0);
     func_global_asm_806A5DF0(0x2F, D_global_asm_807F621C, D_global_asm_807F6220 + 15.0f, D_global_asm_807F6224, 0x400, 1, -1, 0);

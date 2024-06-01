@@ -520,8 +520,8 @@ typedef struct {
 
 extern Struct8002DC38 D_jetpac_8002DC38[2];
 extern s32 D_jetpac_8002DD88;
+
 /*
-close
 void func_jetpac_800289EC(void) {
     s32 pad[6];
     s32* sp44;

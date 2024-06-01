@@ -267,7 +267,7 @@ segments:
       - [0x20A6280, c, done/code_A6280]
       - [0x20A7710, c, code_A7710]
       - [0x20A8400, c, code_A8400]
-      - [0x20AAAF0, c, code_AAAF0]
+      - [0x20AAAF0, c, done/code_AAAF0]
       - [0x20ACDC0, c, code_ACDC0]
       - [0x20B1F60, c, code_B1F60]
       - [0x20B2CE0, c, code_B2CE0]
@@ -398,7 +398,7 @@ segments:
       - [0x215F250, .rodata, done/code_A6280]
       - [0x215F2B0, .rodata, code_A7710]
       - [0x215F440, .rodata, code_A8400]
-      - [0x215F6A0, .rodata, code_AAAF0]
+      - [0x215F6A0, .rodata, done/code_AAAF0]
       - [0x215F780, rodata] # code_ACDC0, TODO: Double 255.0 in a row, weird
       - [0x215FA20, .rodata, code_B1F60]
       - [0x215FB20, .rodata, code_B2CE0]

@@ -20,7 +20,6 @@ extern s32 D_global_asm_807FD780[];
 
 void func_global_asm_806F5270(void);
 void func_global_asm_806F54E0(u8, s32, u8);
-void func_global_asm_806A5DF0(s16, f32, f32, f32, s32, s32, s32, s32);
 
 void func_global_asm_806F4750(void) {
     func_global_asm_806F5270();

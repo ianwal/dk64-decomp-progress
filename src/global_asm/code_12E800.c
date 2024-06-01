@@ -4,7 +4,6 @@
 extern s32 D_global_asm_8071FB34;
 extern s32 D_global_asm_8071FF18;
 extern f64 D_global_asm_8075FF20;
-void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
 
 extern f64 D_global_asm_8075FF38;
 

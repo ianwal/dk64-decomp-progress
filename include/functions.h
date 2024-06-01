@@ -37,6 +37,9 @@ void func_global_asm_8060BF84(s32, u8, u16 *, u8*);
 void func_global_asm_8060BEA8(s32, u8, u16 *, u8*);
 void func_global_asm_8060BCA0(s32 arg0, u8 arg1, u8 arg2, u16 *arg3, u8 *arg4);
 
+void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
+void func_global_asm_806A6DB4(u8 arg0);
+
 u8 func_global_asm_8072AB74(u8 arg0, f32 x, f32 z, u16 arg3, f32 arg4);
 
 void func_global_asm_806A1AC4(void);

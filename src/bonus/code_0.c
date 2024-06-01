@@ -29,7 +29,6 @@ typedef struct {
 
 Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void *, s32, void *);
 void func_global_asm_806A2A10(s32, s32, s32);
-void func_global_asm_806A5DF0(s32, f32, f32, f32, s32, s32, s32, s32);
 void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
 Gfx *func_bonus_80024000(Gfx *dl, Actor *arg1) {
@@ -54,13 +53,353 @@ void func_bonus_800240F0() {
     func_global_asm_8072707C(5, 0x40, 0);
 }
 
-// Jumptable
+// Jumptable, doable, close
+// https://decomp.me/scratch/4iOmJ
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024158.s")
+
+/*
+void func_global_asm_806C8E58(s16 arg0);
+u8 func_global_asm_806FDB8C(s32, s8 *, s32, s32, f32, f32); // extern
+extern s32 D_bonus_8002D863[4];
+extern s16 D_global_asm_80750AC4;
+extern s16 D_global_asm_8076AEF2;
+extern u8 D_global_asm_807FBDC4;
+
+typedef struct {
+    u16 unk0;
+    s16 unk2;
+    s16 unk4;
+    u8 unk6[0x9 - 0x6];
+    u8 unk9;
+} A178_80024158;
+
+void func_bonus_80024158(void) {
+    s16 i;
+    u8 sp6F;
+    u8 sp6E;
+    char *aString;
+    u8 boolVal2;
+    u8 boolVal1;
+    s16 temp_v0_2;
+    char *bString;
+    char *cString;
+    s32 song;
+    s32 var_v1;
+    u8 temp_v1_2;
+    A178_80024158 *a178;
+
+    a178 = current_actor_pointer->unk178;
+    initializeCharacterSpawnerActor();
+    sp6F = D_global_asm_807FDC9C[1].pad0;
+    sp6E = D_global_asm_807FDC9C->unkA_u8[0];
+    addActorRecolor(
+        player_pointer,
+        player_pointer->x_position,
+        player_pointer->y_position + 30.0f,
+        player_pointer->z_position,
+        0xFF, 0xFF, 0xFF, 0xFF,
+        0
+    );
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        boolVal2 = FALSE;
+        func_global_asm_80629174();
+        D_global_asm_807FDC98->unk46 |= 0x80;
+        func_global_asm_806FB370(2, 0, 1);
+        func_global_asm_806FB370(5, 0, 1);
+        func_global_asm_806FB370(4, 0, 2);
+        current_actor_pointer->control_state = 0;
+        func_global_asm_806A2A10(0xDC, 0x2A, D_global_asm_807FDC9C->unkA_u8[1]);
+        switch (sp6F) { // switch 1
+            case 14: // switch 1
+                func_global_asm_8063DA78(((rand() >> 0xF) % 32767) % 4, 1, 1);
+                // fallthrough
+            case 0: // switch 1
+            case 4: // switch 1
+            case 13: // switch 1
+block_4:
+                aString = getTextString(0x1A, 2, 1);
+                boolVal2 = TRUE;
+                break;
+            case 15: // switch 1
+                func_global_asm_806C8E58(8);
+                current_player->control_state = 0xC;
+                current_player->control_state_progress = 0;
+                playAnimation(current_player, 9);
+                current_player->unkB8 = 0.0f;
+                func_global_asm_806D03BC();
+                goto block_4;
+            case 1: // switch 1
+            case 10: // switch 1
+            case 12: // switch 1
+            case 16: // switch 1
+                a178->unk2 = 0;
+                break;
+            case 3: // switch 1
+                func_bonus_800240F0();
+                break;
+            case 5: // switch 1
+                func_bonus_800240F0();
+                // fallthrough
+            case 2: // switch 1
+            case 6: // switch 1
+            case 7: // switch 1
+            case 8: // switch 1
+            case 11: // switch 1
+                D_global_asm_80750AC4 = 0;
+                aString = getTextString(0x1A, 3, 1);
+                boolVal2 = TRUE;
+                break;
+            case 9: // switch 1
+                getSpawnerTiedActor((((rand() >> 0xF) % 32767) % 8) + 0x11, 0)->unk15F = 1;
+                break;
+        }
+        if (boolVal2) {
+            a178->unk9 = func_global_asm_806FDB8C(1, aString, 8, 0, 0.0f, 0.0f);
+            func_global_asm_806FDAB8(a178->unk9, 0.0f);
+            a178->unk4 = sp6E;
+            a178->unk2 = sp6E;
+        }
+    }
+    if (current_actor_pointer->control_state == 0) {
+        for (i = 0; i < D_global_asm_807FBDC4; i++) {
+            if (D_global_asm_807FBB70.unk258[i] == 3) {
+                boolVal1 = TRUE;
+                temp_v1_2 = D_global_asm_807FBB70.unk278[i]->unk2;
+                switch (sp6F) { // switch 2
+                    case 0: // switch 2
+                        temp_v0_2 = a178->unk4;
+                        if (temp_v0_2 != 0) {
+                            if (temp_v0_2 >= 2) {
+                                aString = getTextString(0x1A, 0xF, 1);
+                                bString = malloc(strlen(aString) + 5);
+                                func_global_asm_8061134C(bString);
+                                sprintf(bString, "%d %s", a178->unk4, aString);
+                            } else {
+                                bString = getTextString(0x1A, 0x10, 1);
+                            }
+                            func_global_asm_8069D2AC(0, 0, 0x8C, bString, 0, 0x28, 8, 8);
+                            boolVal1 = FALSE;
+                        }
+                        break;
+                    case 16: // switch 2
+                        if ((a178->unk2 == 0) && (temp_v1_2 != 0x28)) {
+                            func_global_asm_8069D2AC(0, 0, 0x8C, getTextString(0x1A, 0x17, 1), 0, 0x28, 8, 8);
+                            boolVal1 = FALSE;
+                        }
+                        if (temp_v1_2 == 0x28) {
+                            boolVal1 = FALSE;
+                        }
+                        break;
+                    case 2: // switch 2
+                        boolVal1 = TRUE;
+                        if (func_global_asm_806F8AD4(0xB, 0) < sp6E) {
+                            if (a178->unk4 >= 2) {
+                                aString = getTextString(0x1A, 0x11, 1);
+                                cString = malloc(strlen(aString) + 5);
+                                sprintf(cString, "%d %s", sp6E - func_global_asm_806F8AD4(0xB, 0), aString);
+                            } else {
+                                cString = getTextString(0x1A, 0x12, 1);
+                            }
+                            func_global_asm_8069D2AC(0, 0, 0x8C, cString, 0, 0x28, 8, 8);
+                            boolVal1 = FALSE;
+                        }
+                        break;
+                    case 7: // switch 2
+                    case 8: // switch 2
+                    case 9: // switch 2
+                    case 11: // switch 2
+                    case 15: // switch 2
+                        boolVal1 = FALSE;
+                        break;
+                    case 12: // switch 2
+                    case 13: // switch 2
+                        boolVal1 = FALSE;
+                        if (temp_v1_2 != 0x12) {
+                            if (temp_v1_2 == 0x27) {
+                                current_actor_pointer->unk15F++;
+                                if (current_actor_pointer->unk15F >= 3) {
+                                    boolVal1 = FALSE;
+                                    func_global_asm_8063DA40(2, 0xA);
+                                }
+                            } else {
+                                boolVal1 = FALSE;
+                                func_bonus_800265C0(1, 1);
+                            }
+                        }
+                        break;
+                }
+                if (boolVal1) {
+                    func_bonus_800264E0(1, 0xE);
+                    func_global_asm_80726EE0(0);
+                }
+            }
+        }
+    }
+    if (current_actor_pointer->control_state == 0) {
+        switch (sp6F) { // switch 3
+            case 15: // switch 3
+                func_global_asm_80724A20();
+                // fallthrough
+            case 4: // switch 3
+            case 11: // switch 3
+            case 13: // switch 3
+            case 14: // switch 3
+                if (a178->unk4 == 0) {
+                    func_bonus_800264E0(1, 0xE);
+                }
+                // fallthrough
+            case 0: // switch 3
+                var_v1 = sp6E - enemies_killed;
+                if (var_v1 < 0) {
+                    var_v1 = 0;
+                }
+                if (var_v1 != a178->unk4) {
+                    func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
+                    a178->unk4 = MAX(0, sp6E - enemies_killed);
+                }
+block_71:
+                if (a178->unk0 >= 2) {
+                    addActorToTextOverlayRenderArray(&func_bonus_80024000, current_actor_pointer, 3);
+                }
+                break;
+            case 7: // switch 3
+            case 8: // switch 3
+                func_global_asm_80724A20();
+                goto block_71;
+            case 5: // switch 3
+                if ((current_map == MAP_SPLISH_SPLASH_SALVAGE_EASY) && (a178->unk4 == 1)) {
+                    if (current_actor_pointer->control_state_progress == 0) {
+                        current_actor_pointer->control_state_progress++;
+                        func_global_asm_80641874(0, 0);
+                        func_global_asm_80641874(1, 0);
+                        func_global_asm_80641874(2, 0);
+                    }
+                }
+                // fallthrough
+            case 6: // switch 3
+                if (a178->unk4 == 0) {
+                    func_bonus_800264E0(1, 0xE);
+                }
+                // fallthrough
+            case 2: // switch 3
+                var_v1 = MAX(0, sp6E - func_global_asm_806F8AD4(0xB, 0));
+                if (var_v1 != a178->unk4) {
+                    func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
+                    a178->unk4 = MAX(0, func_global_asm_806F8AD4(0xB, 0));
+                }
+                goto block_71;
+            case 9: // switch 3
+            case 10: // switch 3
+            case 12: // switch 3
+            case 16: // switch 3
+                func_global_asm_80724A20();
+                break;
+        }
+    }
+    switch (a178->unk0) { // switch 6; irregular
+        case 0: // switch 6
+            if (func_global_asm_80629148() != 0) {
+                func_global_asm_80629174();
+                if (D_global_asm_8076AEF2 == 0x11) {
+                    func_global_asm_8070E8DC(2);
+                }
+                loadText(current_actor_pointer, 0, D_bonus_8002D863[sp6F]);
+                a178->unk0++;
+            }
+            break;
+        case 1: // switch 6
+            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+                func_global_asm_8061CB08(current_actor_pointer);
+                func_global_asm_806A2B08(current_actor_pointer->unk11C);
+                switch (current_map) { // switch 7; irregular
+                    case MAP_KROOL_BARREL_TINY_MUSHROOM_GAME:
+                    case MAP_KROOL_BARREL_DK_TARGET_GAME:
+                    case MAP_KROOL_BARREL_LANKY_MAZE:
+                    case MAP_KROOL_BARREL_DIDDY_KREMLING_GAME: // switch 7
+                    case MAP_KROOL_BARREL_DIDDY_ROCKETBARREL_GAME: // switch 7
+                    case MAP_KROOL_BARREL_LANKY_SHOOTING_GAME: // switch 7
+                    case MAP_KROOL_BARREL_CHUNKY_HIDDEN_KREMLING_GAME: // switch 7
+                    case MAP_KROOL_BARREL_TINY_PONY_TAIL_TWIRL_GAME: // switch 7
+                    case MAP_KROOL_BARREL_CHUNKY_SHOOTING_GAME: // switch 7
+                    case MAP_KROOL_BARREL_DK_RAMBI_GAME: // switch 7
+                        song = 0x75;
+                        break;
+                    case MAP_KROOL_FIGHT_DK_PHASE: // switch 7
+                    case MAP_KROOL_FIGHT_DIDDY_PHASE: // switch 7
+                    case MAP_KROOL_FIGHT_LANKY_PHASE: // switch 7
+                    case MAP_KROOL_FIGHT_TINY_PHASE: // switch 7
+                    case MAP_KROOL_FIGHT_CHUNKY_PHASE: // switch 7
+                    case MAP_BLOOPERS_ENDING: // switch 7
+                        song = 0x52;
+                        if (sp6F != 0) {
+                            if (sp6F != 1) {
+                                song = 8;
+                            } else {
+                                song = 0x59;
+                            }
+                        }
+                }
+                playSong(song, 1.0f);
+                a178->unk0++;
+            }
+            break;
+    }
+    switch (current_actor_pointer->control_state) { // switch 5
+        case 0x0: // switch 5
+            if (((sp6F == 1) || (sp6F == 0) || (sp6F == 2) || (sp6F == 0x10)) && (player_pointer->y_position < 0.0f)) {
+                func_bonus_800265C0(1, 1);
+            } else if ((sp6F == 4) && (player_pointer->y_position < -20.0f)) {
+                playSoundAtActorPosition(current_actor_pointer, 0x362, 0xFF, 0x7F, 0);
+                func_bonus_800265C0(0, 1);
+                playCutscene(current_actor_pointer, 1, 1);
+            } else if (player_pointer->control_state == 0x73) {
+                if (sp6F == 1) {
+                    func_bonus_800265C0(1, 0x13);
+                } else {
+                    func_bonus_800265C0(1, 1);
+                }
+            } else if ((sp6F == 3) && (player_pointer->control_state == 0x31)) {
+                func_bonus_800265C0(1, 0x14);
+            } else if (current_actor_pointer->unk11C->control_state == 5) {
+                if (sp6F == 3) {
+                    func_bonus_800264E0(1, 0x15);
+                } else {
+                    func_bonus_800265C0(1, 0x16);
+                }
+            }
+            break;
+        default: // switch 5
+            break;
+        case 0x1: // switch 5
+            current_actor_pointer->unk11C->control_state = 0;
+            current_actor_pointer->control_state++;
+            break;
+        case 0x27: // switch 5
+            func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
+            a178->unk4--;
+            if (a178->unk4 == 0) {
+                func_bonus_800264E0(1, 0xE);
+            } else {
+                current_actor_pointer->control_state = 0;
+            }
+            break;
+        case 0x28: // switch 5
+            a178->unk2 = 1;
+            current_actor_pointer->control_state = 0;
+            break;
+        case 0x37: // switch 5
+            func_bonus_800265C0(1, 1);
+            break;
+        case 0x12: // switch 5
+            func_bonus_800264E0(1, 0xE);
+            break;
+    }
+}
+*/
 
 Gfx *func_bonus_80024D3C(Gfx *dl, s32 arg1) {
     gSPDisplayList(dl++, &D_1000118);
-    // TODO: Get rid of magic constants
-    gDPSetCombine(dl++, 0x119623, 0xFF2FFFFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     return dl;
 }

@@ -23,7 +23,6 @@ typedef struct {
     s16 unk8;
 } AAD_806A2328;
 
-void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 arg5, s16 arg6, Actor *arg7);
 
 void func_global_asm_806A1580(void) {
     s16 sp36;

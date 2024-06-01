@@ -52,7 +52,6 @@ s32 func_multiplayer_80025608(s32 objectType);
 void func_multiplayer_80025F84();
 s32 func_multiplayer_80026BD8(s32);
 
-void func_global_asm_806A5DF0(u16, f32, f32, f32, s32, s32, s32, s32);
 void func_global_asm_806F54E0(u8, s32, s32);
 extern int func_global_asm_8071F3C0(); // TODO: Signature
 

@@ -332,8 +332,118 @@ void func_minecart_80024914(void) {
 }
 
 // long, structs
-// https://decomp.me/scratch/2LtnJ
+// https://decomp.me/scratch/3Hkbw
 #pragma GLOBAL_ASM("asm/nonmatchings/minecart/code_0/func_minecart_80024B00.s")
+
+/*
+extern s32 D_global_asm_807F5FD0;
+extern s32 D_minecart_80028C48;
+extern u8 D_minecart_80028C50;
+
+typedef struct Vec3f {
+    f32 x;
+    f32 y;
+    f32 z;
+} Vec3f;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    Actor *unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    u8 unk14[0x24 - 0x14];
+    f32 unk24;
+    f32 unk28;
+    s32 unk34;
+} AAD_minecart_80024B00;
+
+void func_minecart_80024B00(void) {
+    s16 sp4E;
+    Vec3f sp3C;
+    Struct807F5FD4_unk0* temp_t7_2;
+    Vec3f* temp_t8;
+    Struct807F5FD4_unk0* temp_t8_2;
+    Struct807F5FD4_unk0* temp_t9;
+    Struct807F5FD4_unk0* temp_v0;
+    Struct807F5FD4_unk0* temp_a2;
+    Struct807F5FD4_unk0** temp_a2_2;
+    f32 temp_f0;
+    s16 j;
+    s16 i;
+    s32 temp_lo;
+    s32 temp_t4;
+    s32 temp_t7;
+    Actor *temp_v0_2;
+    u8 var_v0;
+    AAD_minecart_80024B00* aaD;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    temp_f0 = current_actor_pointer->animation_state->scale[1] * 0.16666666675;
+    sp4E = aaD->unk0;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        func_global_asm_807248B0(player_pointer, 0.12f);
+        current_actor_pointer->y_acceleration = D_global_asm_807502F8;
+        current_actor_pointer->terminal_velocity = D_global_asm_807502D0;
+        aaD->unk24 = 0.1f;
+        aaD->unk28 = 5.0f;
+    }
+    aaD->unk0 += (current_actor_pointer->y_velocity * temp_f0);
+    func_global_asm_80729E6C();
+    if (aaD->unk0 < 0) {
+        aaD->unk0 = 0;
+        if (sp4E != 0) {
+            playSoundAtActorPosition(current_actor_pointer, 0x8B, 0xFFU, 0x7F, 0x1EU);
+        }
+    }
+    if (player_pointer->unk6A & 0x100) {
+        player_pointer->unk6A &= 0xFEFF;
+        current_actor_pointer->unk168 = 2;
+    }
+    func_minecart_8002430C(1U, &D_minecart_80028C48, 0x7FFF, 0x23U);
+    func_minecart_80024768();
+    if ((aaD->unk34 >= 7) && (func_global_asm_8061CB50()) && (current_actor_pointer->control_state != 5)) {
+        current_actor_pointer->unkB8 = 300.0f;
+    }
+    if (current_actor_pointer->control_state == 4) {
+        for (i = 0; i < D_global_asm_807F5FD0; i++) {
+            temp_a2 = &D_global_asm_807F5FD4->unk0[i];
+            j = 0;
+            temp_lo = (s32) (temp_a2->unk4 - temp_a2->unk0) / 12;
+            temp_t4 = (s16) temp_lo / 2;
+            while (j < temp_t4) {
+                temp_a2_2 = &D_global_asm_807F5FD4->unk0[i];
+                temp_t8 = &D_global_asm_807F5FD4->unk0[i][j];
+                temp_t7 = (s16) temp_lo - j;
+                sp3C.x = temp_t8->x;
+                sp3C.y = temp_t8->y;
+                sp3C.z = temp_t8->z;
+                temp_v0 = *temp_a2_2;
+                temp_t8_2 = &temp_v0[temp_t7];
+                temp_t9 = &temp_v0[j];
+                // temp_t9->unk0 = temp_t8_2->unk-C;
+                // temp_t9->unk4 = temp_t8_2->unk-8;
+                // temp_t9->unk8 = temp_t8_2->unk-4;
+                temp_t7_2 = &D_global_asm_807F5FD4->unk0[i][temp_t7];
+                // temp_t7_2->unk-C = (f32) sp3C.unk0;
+                j += 1;
+                // temp_t7_2->unk-8 = (f32) sp3C.unk4;
+                // temp_t7_2->unk-4 = (f32) sp3C.unk8;                    
+            }
+        }
+        aaD->unk34 = &D_minecart_80028C50;
+        aaD->unk10 = 2;
+        current_actor_pointer->control_state = 5;
+        aaD->unkC = 0;
+    }
+    if (current_actor_pointer->control_state != 0) {
+        temp_v0_2 = aaD->unk4;
+        getBonePosition(current_actor_pointer, 9, &temp_v0_2->x_position, &temp_v0_2->y_position, &temp_v0_2->z_position);
+    }
+}
+*/
 
 void func_minecart_80024E78(AAD_minecart_80027DA0* arg0, s32* arg1[], u8 arg2, u8 arg3) {
     s32 var_s3;
