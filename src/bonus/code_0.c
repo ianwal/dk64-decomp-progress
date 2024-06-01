@@ -59,7 +59,7 @@ void func_bonus_800240F0() {
 
 /*
 void func_global_asm_806C8E58(s16 arg0);
-u8 func_global_asm_806FDB8C(s32, s8 *, s32, s32, f32, f32); // extern
+u8 func_global_asm_806FDB8C(s32, s8 *, s32, f32, f32, f32); // extern
 extern s32 D_bonus_8002D863[4];
 extern s16 D_global_asm_80750AC4;
 extern s16 D_global_asm_8076AEF2;
@@ -74,23 +74,24 @@ typedef struct {
 } A178_80024158;
 
 void func_bonus_80024158(void) {
-    s16 i;
     u8 sp6F;
     u8 sp6E;
+    s16 i;
     char *aString;
     u8 boolVal2;
-    u8 boolVal1;
-    s16 temp_v0_2;
-    char *bString;
-    char *cString;
-    s32 song;
-    s32 var_v1;
     u8 temp_v1_2;
+    u8 boolVal1;
+    char *bString;
+    s16 temp_v0_2;
+    s32 song;
+    char *cString;
+    s32 var_v1;
     A178_80024158 *a178;
+    s32 pad;
 
     a178 = current_actor_pointer->unk178;
     initializeCharacterSpawnerActor();
-    sp6F = D_global_asm_807FDC9C[1].pad0;
+    sp6F = *D_global_asm_807FDC9C[1].pad0;
     sp6E = D_global_asm_807FDC9C->unkA_u8[0];
     addActorRecolor(
         player_pointer,
@@ -154,7 +155,7 @@ block_4:
                 break;
         }
         if (boolVal2) {
-            a178->unk9 = func_global_asm_806FDB8C(1, aString, 8, 0, 0.0f, 0.0f);
+            a178->unk9 = func_global_asm_806FDB8C(1, aString, 8, 0.0f, 0.0f, 0.0f);
             func_global_asm_806FDAB8(a178->unk9, 0.0f);
             a178->unk4 = sp6E;
             a178->unk2 = sp6E;
@@ -249,19 +250,12 @@ block_4:
                 }
                 // fallthrough
             case 0: // switch 3
-                var_v1 = sp6E - enemies_killed;
-                if (var_v1 < 0) {
-                    var_v1 = 0;
-                }
+                var_v1 = MAX(0, sp6E - enemies_killed);
                 if (var_v1 != a178->unk4) {
                     func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
                     a178->unk4 = MAX(0, sp6E - enemies_killed);
                 }
-block_71:
-                if (a178->unk0 >= 2) {
-                    addActorToTextOverlayRenderArray(&func_bonus_80024000, current_actor_pointer, 3);
-                }
-                break;
+                goto block_71;
             case 7: // switch 3
             case 8: // switch 3
                 func_global_asm_80724A20();
@@ -287,7 +281,11 @@ block_71:
                     func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
                     a178->unk4 = MAX(0, func_global_asm_806F8AD4(0xB, 0));
                 }
-                goto block_71;
+block_71:
+                if (a178->unk0 >= 2) {
+                    addActorToTextOverlayRenderArray(&func_bonus_80024000, current_actor_pointer, 3);
+                }
+                break;
             case 9: // switch 3
             case 10: // switch 3
             case 12: // switch 3
@@ -330,14 +328,16 @@ block_71:
                     case MAP_KROOL_FIGHT_TINY_PHASE: // switch 7
                     case MAP_KROOL_FIGHT_CHUNKY_PHASE: // switch 7
                     case MAP_BLOOPERS_ENDING: // switch 7
-                        song = 0x52;
                         if (sp6F != 0) {
                             if (sp6F != 1) {
                                 song = 8;
                             } else {
                                 song = 0x59;
                             }
+                        } else {
+                            song = 0x52;
                         }
+                        break;
                 }
                 playSong(song, 1.0f);
                 a178->unk0++;
