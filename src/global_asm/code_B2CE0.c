@@ -172,7 +172,6 @@ void func_global_asm_806AE588(void) {
                     // fallthrough
                 case 1:
                     func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
-                    current_actor_pointer = current_actor_pointer;
                     if (current_actor_pointer->unkB8 < 1.0f) {
                         current_actor_pointer->control_state_progress++;
                     }
