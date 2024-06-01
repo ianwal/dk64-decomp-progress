@@ -25304,6 +25304,7 @@ s32 arcade_get_object_type_count(enum ARCADE_OBJ_E arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024940.s")
+
 /*
 void func_arcade_80024940(Gfx **gpp) {
     Gfx* sp1C;
@@ -25345,6 +25346,7 @@ void func_arcade_80024940(Gfx **gpp) {
 
 // struct, score, big offset, loops, aaa
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024A50.s")
+
 /*
 void func_arcade_80024A50(s32 arg0) {
     // adds score to high scores
@@ -25927,6 +25929,7 @@ void func_arcade_80026680(Gfx **gpp) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800268AC.s")
+
 /*
 void func_arcade_800268AC(Gfx **gpp) {
     s32 i;
@@ -26945,6 +26948,8 @@ s32 __arcade_abs_w(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002B390.s")
 
+extern s32 D_arcade_8004A75C;
+
 /*
 // TODO: Doable, it compiles
 void func_arcade_8002B390(s32 arg0) {
@@ -26957,8 +26962,8 @@ void func_arcade_8002B390(s32 arg0) {
     s32 temp_v0;
     s32 temp_v0_2;
     s32 temp_v0_3;
-    s32 var_s0;
-    s32 var_s4;
+    s32 y;
+    s32 x;
     u8 temp_t2;
     u8 temp_v1;
     u8 var_v0;
@@ -26966,40 +26971,40 @@ void func_arcade_8002B390(s32 arg0) {
     ArcadeStruct1 *temp_v1_2;
 
     temp_a1 = &arcade_objects[arg0];
+    temp_f0 = temp_a1->unk10;
     temp_v1 = temp_a1->unk19;
     temp_t7 = temp_a1->unk1A & 2;
-    temp_f0 = temp_a1->unk10;
     temp_f4 = temp_f0;
     temp_a1->unk1A = (temp_t7 / 2) | temp_t7;
     temp_a1->unk1B = 0;
     if (temp_v1 == 2) {
-        if (D_arcade_8004C710 != 0) {
+        if (arcade_hammer_timer != 0) {
             temp_v0 = temp_f4 & 3;
-            if (D_arcade_8004C710 & 8) {
+            if (arcade_hammer_timer & 8) {
                 temp_v0_2 = temp_f4 & 3;
                 switch (temp_v0_2) {
                     case 0:
                     case 2:
-                        temp_a1->unk14 = &D_arcade_8003C178;
+                        temp_a1->sprite = &D_arcade_8003C178;
                         return;
                     case 1:
-                        temp_a1->unk14 = &D_arcade_8003C608;
+                        temp_a1->sprite = &D_arcade_8003C608;
                         return;
                     case 3:
-                        temp_a1->unk14 = &D_arcade_8003CA98;
+                        temp_a1->sprite = &D_arcade_8003CA98;
                         return;
                 }
             } else {
                 switch (temp_v0) {
                     case 0:
                     case 2:
-                        temp_a1->unk14 = &D_arcade_8003C3C0;
+                        temp_a1->sprite = &D_arcade_8003C3C0;
                         return;
                     case 1:
-                        temp_a1->unk14 = &D_arcade_8003C850;
+                        temp_a1->sprite = &D_arcade_8003C850;
                         return;
                     case 3:
-                        temp_a1->unk14 = &D_arcade_8003CCE0;
+                        temp_a1->sprite = &D_arcade_8003CCE0;
                         return;
                 }
             }
@@ -27008,33 +27013,33 @@ void func_arcade_8002B390(s32 arg0) {
             switch (temp_v0_3) {
                 case 0:
                 case 2:
-                    temp_a1->unk14 = &D_arcade_8003B180;
+                    temp_a1->sprite = &D_arcade_8003B180;
                     return;
                 case 1:
-                    temp_a1->unk14 = &D_arcade_8003B3C8;
+                    temp_a1->sprite = &D_arcade_8003B3C8;
                     return;
                 case 3:
-                    temp_a1->unk14 = &D_arcade_8003B610;
+                    temp_a1->sprite = &D_arcade_8003B610;
                     return;
             }
         }
     } else {
         if (temp_v1 == 3) {
-            temp_a1->unk14 = &D_arcade_8003CF28;
+            temp_a1->sprite = &D_arcade_8003CF28;
             return;
         }
         if (temp_v1 == 5) {
             temp_f2 = temp_a1->y_position;
             if (((D_arcade_8004C6E8 - temp_f2) < 1.0f) || (temp_f0_2 = temp_f2 - D_arcade_8004C6E4, (temp_f0_2 < 1.0f))) {
-                temp_a1->unk14 = &D_arcade_8003BF30;
+                temp_a1->sprite = &D_arcade_8003BF30;
             } else if (temp_f0_2 < 6.0f) {
-                temp_a1->unk14 = &D_arcade_8003B858;
+                temp_a1->sprite = &D_arcade_8003B858;
             } else if (temp_f0_2 < 10.0f) {
-                temp_a1->unk14 = &D_arcade_8003BCE8;
+                temp_a1->sprite = &D_arcade_8003BCE8;
             } else if (temp_f0_2 < 14.0f) {
-                temp_a1->unk14 = &D_arcade_8003BAA0;
+                temp_a1->sprite = &D_arcade_8003BAA0;
             } else {
-                temp_a1->unk14 = &D_arcade_8003B858;
+                temp_a1->sprite = &D_arcade_8003B858;
             }
             temp_a1->unk1A = (u8)(temp_a1->unk10 / 4.5) & 1;
             return;
@@ -27054,30 +27059,30 @@ void func_arcade_8002B390(s32 arg0) {
                         func_arcade_80024D90();
                         return;
                     }
-                    var_s4 = 0x6C;
+                    x = 0x6C;
                     if (D_arcade_8004A764 == 0) {
                         D_arcade_8004A764 = 1;
                         do {
-                            var_s0 = 0xA6;
+                            y = 0xA6;
 loop_53:
                             temp_v1_2 = &arcade_objects[func_arcade_800247F0()];
                             temp_v1_2->x_position = D_arcade_8004A6B8.x_position;
                             temp_v1_2->y_position = D_arcade_8004A6B8.y_position;
                             temp_v1_2->y_velocity = D_arcade_8004A6B8.y_velocity;
                             temp_v1_2->x_velocity = D_arcade_8004A6B8.x_velocity;
-                            temp_f4_2 = var_s0;
+                            temp_f4_2 = y;
                             temp_v1_2->unk10 = D_arcade_8004A6B8.unk10;
-                            temp_v1_2->unk14 = D_arcade_8004A6B8.unk14;
-                            var_s0 += 0x10;
-                            temp_v1_2->x_position = var_s4;
+                            temp_v1_2->sprite = D_arcade_8004A6B8.sprite;
+                            y += 0x10;
+                            temp_v1_2->x_position = x;
                             temp_v1_2->y_position = temp_f4_2;
                             temp_v1_2->unk1C = D_arcade_8004A6B8.unk1C;
-                            temp_v1_2->unk18 = D_arcade_8004A6B8.unk18;
-                            if (var_s0 != 0xC6) {
+                            temp_v1_2->object_type = D_arcade_8004A6B8.object_type;
+                            if (y != 0xC6) {
                                 goto loop_53;
                             }
-                            var_s4 += 0x10;
-                        } while (var_s4 != 0xCC);
+                            x += 0x10;
+                        } while (x != 0xCC);
                     }
                 } else {
                     arcade_lives_internal -= 1;
@@ -27085,15 +27090,15 @@ loop_53:
                 }
             } else {
                 if (temp_f0 > 20.0f) {
-                    temp_a1->unk14 = &D_arcade_8003D848;
+                    temp_a1->sprite = &D_arcade_8003D848;
                     return;
                 }
                 if (temp_f0 > 8.0f) {
                     arcade_game_state = 2;
                     if (temp_f4 & 1) {
-                        temp_a1->unk14 = &D_arcade_8003D3B8;
+                        temp_a1->sprite = &D_arcade_8003D3B8;
                     } else {
-                        temp_a1->unk14 = &D_arcade_8003D600;
+                        temp_a1->sprite = &D_arcade_8003D600;
                     }
                     temp_t2 = (u8)temp_a1->unk10 & 3;
                     var_v0 = temp_t2;
@@ -27107,7 +27112,7 @@ loop_53:
                 }
             }
         } else {
-            temp_a1->unk14 = &D_arcade_8003D170;
+            temp_a1->sprite = &D_arcade_8003D170;
         }
     }
 }
@@ -27116,23 +27121,11 @@ loop_53:
 #ifndef NONMATCHING
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002B89C.s")
 #else
-    extern f32 D_arcade_8004AA1C;
-    extern f64 D_arcade_8004AA20;
-    extern f32 D_arcade_8004AA28;
-    extern f64 D_arcade_8004AA30;
-    extern f32 D_arcade_8004AA38;
-    extern f64 D_arcade_8004AA40;
-    extern f32 D_arcade_8004AA64;
-    extern f64 D_arcade_8004AA68;
-    extern f64 D_arcade_8004AA78;
-    extern f64 D_arcade_8004AA80;
-    extern f64 D_arcade_8004AA88;
-    extern f32 D_arcade_8004AA90;
-    extern s32 D_arcade_8004BC80;
-    extern s32 D_arcade_8004BC84;
-    extern s32 D_arcade_8004C700;
+extern s32 D_arcade_8004BC80;
+extern s32 D_arcade_8004BC84;
+extern s32 D_arcade_8004C700;
 
-    extern s32  D_global_asm_80770DFC;
+extern s32  D_global_asm_80770DFC;
 
 void func_arcade_8002B89C(s32 arg0) {
     f32 sp44;
@@ -27157,22 +27150,22 @@ void func_arcade_8002B89C(s32 arg0) {
                 && D_arcade_8004C6F0 < sp30->x_position
             ) {
                 D_arcade_8004BC80 += 3;
-                sp30->x_velocity = D_arcade_8004AA1C;
-                sp30->unk10 += D_arcade_8004AA20;
+                sp30->x_velocity = -0.7f;
+                sp30->unk10 += 0.3;
             } else if ((D_global_asm_807ECDE8->unk0 & 0x100 || D_global_asm_807ECDE8->unk2 >= 0x15)
                     && D_arcade_8004C6F4 < sp30->x_position
             ) {//L8002B9DC
                 D_arcade_8004BC80 += 3;
-                sp30->x_velocity = D_arcade_8004AA28;
-                sp30->unk10 += D_arcade_8004AA30;
+                sp30->x_velocity = 0.7f;
+                sp30->unk10 += 0.3;
             } else {
                  sp30->x_velocity = 0.0f;
             }//L8002BA5C
             if (newly_pressed_input.button & (A_BUTTON | B_BUTTON | Z_TRIG) && !D_arcade_8004C710) {
                 func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7fff, 0x3F, 1.0f, 0, 0);
                 sp30->unk10 = 0.0f;
-                sp30->y_velocity = D_arcade_8004AA38;
-                sp30->x_velocity *= D_arcade_8004AA40;
+                sp30->y_velocity = -1.2f;
+                sp30->x_velocity *= 0.65;
                 sp30->unk1D = (s8) (u32) sp30->y_position;
                 sp30->unk19 = 3;
             }
@@ -27255,8 +27248,8 @@ void func_arcade_8002B89C(s32 arg0) {
                     ) {//L8002C198
                         func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7fff, 0x3f, 1.0f, 0, NULL);
                         sp30->unk10 = 0.0f;
-                        sp30->y_velocity = D_arcade_8004AA64;
-                        sp30->x_velocity *= D_arcade_8004AA68; 
+                        sp30->y_velocity = -1.2f;
+                        sp30->x_velocity *= 0.65; 
                         sp30->unk19 = 3;
                         sp30->unk1D = (s8) (u32) sp30->y_position;
                     } else {//L8002C2AC
@@ -27266,7 +27259,7 @@ void func_arcade_8002B89C(s32 arg0) {
                 case 3:// 8002C420
                     if (D_arcade_8004C6F4 < sp30->x_position) {
                         sp30->x_position = D_arcade_8004C6F4;
-                        if (sp30->y_velocity < D_arcade_8004AA78) {
+                        if (sp30->y_velocity < 1.8) {
                             sp30->unk1A &= 1;
                             sp30->x_velocity = -sp30->x_velocity;
                             sp30->y_velocity = -sp30->y_velocity;
@@ -27274,7 +27267,7 @@ void func_arcade_8002B89C(s32 arg0) {
                     } else { //L8002C490
                         if (sp30->x_position < D_arcade_8004C6F0) {
                             sp30->x_position = D_arcade_8004C6F0;
-                            if (sp30->y_velocity < D_arcade_8004AA80) {
+                            if (sp30->y_velocity < 1.8) {
                                 sp30->unk1A |= 2;
                                 sp30->x_velocity = -sp30->x_velocity;
                                 sp30->y_velocity = -sp30->y_velocity;
@@ -27282,8 +27275,8 @@ void func_arcade_8002B89C(s32 arg0) {
                         }
                     }//L8002C4F8
                     sp30->y_position += sp30->y_velocity;
-                    sp30->y_velocity += D_arcade_8004AA88;
-                    if (0.0f <= sp30->y_velocity && sp30->y_velocity < D_arcade_8004AA88) {
+                    sp30->y_velocity += 0.06;
+                    if (0.0f <= sp30->y_velocity && sp30->y_velocity < 0.06) {
                         sp38 = 0;
                         for (i = 0; i < 0x50; i++) {
                             if (arcade_objects[i].unk18 == 1 || arcade_objects[i].unk18 == 2) {
@@ -27351,7 +27344,7 @@ void func_arcade_8002B89C(s32 arg0) {
                 if (tmp_v0 & 1) {
                     sp44 = 1.0f; 
                 } else {
-                    sp44 = D_arcade_8004AA90;
+                    sp44 = 0.7071120143f;
                 }
                 func_global_asm_80737638(D_global_asm_8076D1F8, SFX_40_ARCADE_JUMPMAN_MOVING, 0x7fff, 0x3f, 1.0f, 0, &D_global_asm_80770DFC);
                 func_global_asm_80737AC4(D_global_asm_80770DFC, 0x10, sp44);
@@ -27502,7 +27495,7 @@ void func_arcade_8002CD64(s32 arg0) {
                     }
                 } else {//L8002CFDC
                     if (!(this->unk1C & 0x47)) {
-                        this->unk1C = 0x40 | (4096.0f + func_arcade_800246C8((f32)D_arcade_8004A76C, 5.0f) * 1512.0f > (f32)func_arcade_80024644()) ? TRUE : FALSE;
+                        this->unk1C = 0x40 | (4096.0f + func_arcade_800246C8((f32)D_arcade_8004A76C, 5.0f) * 1512.0f > (f32)arcade_cycle_rng()) ? TRUE : FALSE;
                     }//L8002D074
                     if ((f32)sp3C - this->y_position < 3.0f) {
                         this->y_position = sp3C;
@@ -27547,7 +27540,7 @@ void func_arcade_8002CD64(s32 arg0) {
                 ) {
                     this->y_velocity = 0.0f;
                     if (this->unk1D == 2) {
-                        sp34 = func_arcade_80024644();
+                        sp34 = arcade_cycle_rng();
                         this->x_velocity = ((f64)func_arcade_800246C8(3.0f, D_arcade_8004A76C) * (sp34 - 0)) / 40000.0 + (-this->x_velocity) * 0.2;
                     }//L8002D414
                     if (230.0f < this->y_position) {
@@ -27895,6 +27888,7 @@ void arcade_dk_title_update(s32 arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002EEB8.s")
+
 /*
 extern s32 D_arcade_80043498;
 extern s32 D_arcade_800463F0;
@@ -27925,8 +27919,6 @@ void func_arcade_8002EEB8(s32 arg0) {
     u8 temp_a2;
     u8 temp_v0_2;
     u8 var_a2;
-
-    
 
     if ((arcade_game_state == 0) || (arcade_objects[arg0].unk19 == 5)) {
         DK = &arcade_objects[arg0];
@@ -27961,7 +27953,7 @@ void func_arcade_8002EEB8(s32 arg0) {
                     return;
                 }
                 if (var_a1 != 0) {
-                    sp24 = func_arcade_80024644();
+                    sp24 = arcade_cycle_rng();
                     if (sp24 >= ((func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 2000.0f) + 2048.0f)) {
                         return;
                     }
@@ -27982,10 +27974,10 @@ void func_arcade_8002EEB8(s32 arg0) {
                     return;
                 }
                 sp18 = temp_a0_2;
-                temp_v0_3 = func_arcade_80024644();
+                temp_v0_3 = arcade_cycle_rng();
                 sp24 = temp_v0_3;
                 temp_a0_2->x_velocity = (func_arcade_800246C8(3.0f, D_arcade_8004A76C) * (((arcade_objects[arcade_jumpman_slot].x_position - 92.0) / 200.0) + ((temp_v0_3 - 16384.0) / 30000.0)));
-                sp24 = func_arcade_80024644();
+                sp24 = arcade_cycle_rng();
                 var_f12_2 = D_arcade_8004A76C;
                 if (D_arcade_8004A76C < 0) {
                     var_f12_2 += 4294967296.0f;
@@ -28025,7 +28017,7 @@ void func_arcade_8002EEB8(s32 arg0) {
             DK->unk1C--;
             if (!DK->unk1C) {
                 sp20 = func_arcade_800246C8(D_arcade_8004A76C, 3.0f);
-                DK->unk1C = ((func_arcade_80024644() & 0xF) + (51.0f - (sp20 * 5.0f)));
+                DK->unk1C = ((arcade_cycle_rng() & 0xF) + (51.0f - (sp20 * 5.0f)));
                 DK->unk19 = 0xC;
                 DK->unk14 = &D_arcade_800424D0;
                 DK->unk1A = 0;
@@ -28041,7 +28033,7 @@ void func_arcade_8002EEB8(s32 arg0) {
             var_f16 = temp_a0_4;
             if (var_f16 == (temp_f0_2 * 3.0f)) {
                 sp20 = func_arcade_800246C8(D_arcade_8004A76C, 3.0f);
-                DK->unk1C = ((func_arcade_80024644() & 0xF) + (51.0f - (sp20 * 5.0f)));
+                DK->unk1C = ((arcade_cycle_rng() & 0xF) + (51.0f - (sp20 * 5.0f)));
                 DK->unk19 = 0xC;
                 DK->unk14 = &D_arcade_80040540;
                 DK->unk1A = 0;
@@ -28190,9 +28182,9 @@ void arcade_points_text_update(s32 arg0) {
     if (arcade_objects[arg0].unk10 == 0.0f) {
         func_global_asm_80737638(D_global_asm_8076D1F8, SFX_45_ARCADE_POINTS, 0x7FFF, 0x3F, 1.0f, 0, 0);
     }
-    phi_v1 = 0;
+    phi_v1 = FALSE;
     if (arcade_objects[arg0].unk10 > 40.0f) {
-        phi_v1 = 1;
+        phi_v1 = TRUE;
     }
     arcade_objects[arg0].unk10++;
     if (phi_v1) {
@@ -28208,15 +28200,13 @@ void arcade_bonus_item_update(s32 arg0) {
         if (D_arcade_8004A76C == 1) {
             arcade_objects[arg0].sprite = &D_arcade_800383B8;
             arcade_add_points_to_score(300);
-            return;
-        }
-        if (D_arcade_8004A76C == 2) {
+        } else if (D_arcade_8004A76C == 2) {
             arcade_objects[arg0].sprite = &D_arcade_800385C0;
             arcade_add_points_to_score(500);
-            return;
-        }
-        arcade_objects[arg0].sprite = &D_arcade_800387C8;
-        arcade_add_points_to_score(800);
+        } else {
+        	arcade_objects[arg0].sprite = &D_arcade_800387C8;
+        	arcade_add_points_to_score(800);
+		}
     }
 }
 
@@ -28405,7 +28395,6 @@ void arcade_pie_update(u8 arg0) {
     }
 }
 
-
 void func_arcade_80030C70(u8 arg0) {
     if (!(arcade_objects[arcade_get_first_object_of_type(0x17)].unk10 > 460.0f)) {
         arcade_objects[arg0].unk1A = (arcade_objects[arg0].unk1C++ / 8) & 1;
@@ -28447,8 +28436,8 @@ void func_arcade_80030CEC(u8 arg0) {
         D_arcade_8004C720 = 0xC;
     }//L80030E40
     a0 = arcade_objects[arg0].unk1D;
-    arcade_objects[arg0].unk0 = (f32) (((a0 % 0x10) * 0x10) + 0x54);
-    arcade_objects[arg0].unk4 = (f32) (((s32) ((a0 / 0xA) << 7) / 7) + 0x4A);
+    arcade_objects[arg0].x_position = (f32) (((a0 % 0x10) * 0x10) + 0x54);
+    arcade_objects[arg0].y_position = (f32) (((s32) ((a0 / 0xA) << 7) / 7) + 0x4A);
     if (newly_pressed_input.button & A_BUTTON) {
         if ((a0 = 0x1D) || (D_arcade_8004C6DC == 0x708)) {
             D_arcade_8004C6DC = 0x744;
@@ -28580,14 +28569,14 @@ void func_arcade_800311E0(void) {
     if (D_arcade_8004C6DC % 0x78 == 0 && arcade_get_object_type_count(ARCADE_OBJ_04_PIE) < 5) {
         sp1F = func_arcade_80024764();
         arcade_objects[sp1F] = arcade_pie_obj_template;
-        if (func_arcade_80024644() > 0x4000) {
+        if (arcade_cycle_rng() > 0x4000) {
             if ((D_arcade_8004C6DC / 350) & 1)
                 arcade_objects[sp1F].x_position = 40;
             else
                 arcade_objects[sp1F].x_position = 280;
         } else {//L80031354
             arcade_objects[sp1F].y_position = 127;
-            if (func_arcade_80024644() > 0x4000) {
+            if (arcade_cycle_rng() > 0x4000) {
                 arcade_objects[sp1F].unk1C = 1;
                 arcade_objects[sp1F].x_position = 40;
             } else {
