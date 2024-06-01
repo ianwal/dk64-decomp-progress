@@ -35,8 +35,111 @@ Gfx *func_bonus_80026690(Gfx *dl, Actor *arg1) {
     return displayImage(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A - 0x34), (s16)(sp68 + 0x34), temp_f20, temp_f20, 0x87, 0.0f);
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80026940.s")
+Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *); /* extern */
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
+
+typedef struct KremlingKoshAAD {
+    void* sprite[5];
+    u8 unk14[0x1E - 0x14];
+    s16 x;
+    s16 y;
+    u8 unk22;
+    u8 timer;
+    u8 unk24;
+    u8 unk25;
+    u8 unk26;
+} KremlingKoshAAD;
+
+typedef struct KremlingKoshInit {
+    Actor* slots[8];
+    s16 hit_requirement;
+    s16 hit_requirement_hud;
+    u8 unk24;
+    u8 unk25;
+    u8 unk26;
+    u8 no_spawn_percent;
+    u8 green_chance;
+    u8 time_limit;
+    u8 unk2A[2];
+    f32 unk2C;
+} KremlingKoshInit;
+
+Gfx *func_bonus_80026940(Gfx *dl, Actor *KoshController) {
+    s32 pad7C;
+    KremlingKoshInit *init;
+    s32 pad74;
+    s32 pad70;
+    s32 pad68;
+    s32 pad68_0;
+    s8 *text_str;
+    s32 pad[0x6];
+    s32 x;
+    KremlingKoshAAD *aad;
+    s8 *sp64;
+    s32 style_height_0;
+    s32 style_height_1;
+    s32 x_0;
+    s32 pad30;
+    s32 pad2C;
+    
+
+    aad = KoshController->additional_actor_data;
+    init = KoshController->unk178;
+    if ((KoshController->control_state == 0) && (aad->unk26 != 0)) {
+        dl = func_bonus_80026690(dl, KoshController);
+    }
+    gSPDisplayList(dl++, &D_1000118);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xC8, 0xC8, 0xC8, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIDECALA_PRIM, G_CC_MODULATEIDECALA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    if (KoshController->control_state != 1) {
+        dl = func_global_asm_806FE078(dl, init->unk25, 8, 30.0f, 36.0f, 0.0f, 1.5f);
+        dl = func_global_asm_8068DC54(
+            dl,
+            0x26,
+            0x32,
+            &init->hit_requirement,
+            init->hit_requirement_hud,
+            &init->unk24);
+    }
+    if (aad->unk25 != 0) {
+        x = D_global_asm_80744490 >> 1;
+        text_str = getTextString(0x1AU, 6, 1);
+        gDPPipeSync(dl++);
+        gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, aad->unk25);
+        gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
+        x -= (getCenterOfString(1, text_str) >> 1);
+        style_height_0 = func_global_asm_806FD894(1);
+        dl = printStyledText(
+            dl, 1,
+            x * 4,
+            ((D_global_asm_80744494 - style_height_0) * 2),
+            text_str,
+            1U);
+        aad->unk25 -= MIN(aad->unk25, 8);
+    }
+    if (aad->unk24 != 0) {
+        x_0 = D_global_asm_80744490 >> 1;
+        text_str = getTextString(0x1AU, 8, 1);
+        gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, aad->unk24);
+        gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
+        x_0 -= getCenterOfString(1, text_str) >> 1;
+        dl = printStyledText(
+            dl,
+            1,
+            x_0 * 4,
+            ((func_global_asm_806FD894(1) + D_global_asm_80744494) * 2),
+            text_str,
+            1U);
+        aad->unk24 -= MIN(aad->unk24, 8);
+    }
+    return dl;
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80026CF0.s")
@@ -212,7 +315,6 @@ extern f32 D_bonus_8002DD44;
 extern f32 D_bonus_8002DD48;
 extern f32 D_bonus_8002DD4C;
 extern f32 D_bonus_8002DD50;
-void func_bonus_80026940(void* arg0, Actor* arg1);
 
 typedef struct {
     s16 unk0;
