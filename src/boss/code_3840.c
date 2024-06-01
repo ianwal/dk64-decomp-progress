@@ -44,7 +44,6 @@ typedef struct {
 } A17C_80028878;
 
 extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
-void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
 extern BossStruct1 D_boss_800359D0[];
 extern s16 D_boss_800359A0[];

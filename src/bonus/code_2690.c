@@ -709,8 +709,82 @@ void func_bonus_80028E3C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80029364.s")
 
-// Displaylist stuff
+// Displaylist stuff, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80029B9C.s")
+
+/*
+typedef struct {
+    u8 unk0[0x25 - 0x0]; // Unused
+    u8 unk25;
+    u8 unk26;
+    u8 unk27; // Unused
+    u8 unk28;
+    s16 unk2A;
+} AAD_80029B9C;
+
+typedef struct {
+    u8 unk0[0x3 - 0x0]; // Unused
+    u8 unk3;
+    u8 unk4[0x6 - 0x4]; // Unused
+    u8 unk6;
+    u8 unk7; // Unused
+    u8 unk8;
+    u8 unk9; // Unused
+    s16 unkA;
+    u8 unkC[0x11 - 0xC]; // Unused
+    u8 unk11;
+    u8 unk12;
+    u8 unk13; // Unused
+    u8 unk14;
+    s16 unk16;
+} A178_80029B9C;
+
+
+Gfx *func_bonus_80029B9C(Gfx *dl, Actor *arg1) {
+    s32 pad;
+    A178_80029B9C *a178;
+    AAD_80029B9C *aaD;
+
+    aaD = arg1->additional_actor_data;
+    a178 = arg1->unk178;
+    if ((arg1->unk58 != 0x7E) && (arg1->control_state == 0) && aaD->unk26) {
+        dl = func_bonus_80026690(dl, arg1);
+    }
+    gSPDisplayList(dl++, &D_1000118);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0xC8, 0xC8, 0xC8, 0xFF);
+    gDPSetCombineLERP(dl++, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, COMBINED);
+    gDPSetRenderMode(dl++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    switch (arg1->unk58) {
+        case 0x7D:
+            if (arg1->control_state != 3) {
+                dl = func_global_asm_806FE078(dl, a178->unk11, 8, 30.0f, 36.0f, 0.0f, 1.5f);
+                dl = func_global_asm_8068DC54(dl, 0x26, 0x32, &a178->unk14, a178->unk16, &a178->unk12);
+            }
+            break;
+        case 0x7C:
+            if (arg1->control_state != 3) {
+                dl = func_global_asm_806FE078(dl, a178->unk3, 8, 30.0f, 36.0f, 0.0f, 1.5f);
+                dl = func_global_asm_8068DC54(dl, 0x26, 0x32, &a178->unk8, a178->unkA, &a178->unk6);
+            }
+            break;
+        case 0x7E:
+            switch (arg1->control_state) {
+                case 7:
+                    break;
+                case 0:
+                case 1:
+                case 2:
+                    dl = func_global_asm_806FE078(dl, aaD->unk25, 8, 30.0f, 36.0f, 0.0f, 1.5f);
+                    dl = func_global_asm_8068DC54(dl, 0x26, 0x32, &aaD->unk28, aaD->unk2A, &aaD->unk26);
+                    break;
+            }
+            break;
+    }
+    return dl;
+}
+*/
 
 // rodata, needs D_global_asm_807F5FD4 shape, otherwise doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80029E54.s")

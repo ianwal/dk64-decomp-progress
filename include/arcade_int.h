@@ -97,7 +97,6 @@ void func_arcade_80030FEC(void);
 void func_arcade_800313B8(void);
 
 void func_global_asm_8060DEA8(void);
-void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
 /*.rodata 0x8004A840*/
 extern u8  D_arcade_8004A934;

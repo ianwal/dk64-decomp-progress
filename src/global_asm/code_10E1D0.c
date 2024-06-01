@@ -9,8 +9,6 @@ extern u8 D_global_asm_807FD9BD;
 extern s32 D_global_asm_8076D1F8;
 extern s32 D_global_asm_807FD9C8;
 
-void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
-
 void func_global_asm_807094D0(u8 arg0) { // init zipper
     D_global_asm_807444F4 = is_cutscene_active;
     switch (arg0) {

@@ -29,7 +29,6 @@ typedef struct {
 
 Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void *, s32, void *);
 void func_global_asm_806A2A10(s32, s32, s32);
-void func_global_asm_80737638(void * arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, u32 arg6);
 
 Gfx *func_bonus_80024000(Gfx *dl, Actor *arg1) {
     A178_80024000 *a178;
@@ -40,7 +39,8 @@ Gfx *func_bonus_80024000(Gfx *dl, Actor *arg1) {
         gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
         gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-        dl = func_global_asm_8068DC54(func_global_asm_806FE078(dl, a178->unk9, 8, 30.0f, 36.0f, 0.0f, 1.5f), 0x26, 0x32, &a178->unk2, a178->unk4, &a178->unk8);
+        dl = func_global_asm_806FE078(dl, a178->unk9, 8, 30.0f, 36.0f, 0.0f, 1.5f);
+        dl = func_global_asm_8068DC54(dl, 0x26, 0x32, &a178->unk2, a178->unk4, &a178->unk8);
     }
     return dl;
 }
@@ -433,7 +433,6 @@ s32 func_bonus_80024D8C(void) {
 
 void func_bonus_80024E38(void) {
     A178_80024E38 *a178;
-    s32 temp_v0_5;
 
     a178 = current_actor_pointer->unk178;
     initializeCharacterSpawnerActor();

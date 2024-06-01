@@ -457,6 +457,7 @@ D_arcade_8004C72E = 0x8004C72E; // segment:arcade
 D_arcade_8004C730 = 0x8004C730; // segment:arcade
 D_arcade_8004C732 = 0x8004C732; // segment:arcade
 
+D_jetpac_8002BA50 = 0x8002BA50; // segment:jetpac
 D_jetpac_8002EC30 = 0x8002EC30; // segment:jetpac
 D_jetpac_8002EC48 = 0x8002EC48; // segment:jetpac
 D_jetpac_8002EC50 = 0x8002EC50; // segment:jetpac

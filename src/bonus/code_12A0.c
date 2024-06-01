@@ -51,13 +51,13 @@ Gfx *func_bonus_800252A0(Gfx *dl, Actor *arg1) {
     return func_global_asm_8068DC54(dl, 0x26, 0x32, &aaD->unk14, aaD->unk16, &aaD->unk18);
 }
 
-Actor* func_bonus_800253E4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+Actor* func_bonus_800253E4(s32 model, s16 x, s16 y, s16 z) {
     BaaD2 *tmp;
-    if (spawnActor(ACTOR_BANDIT_SLOT, arg0)) {
+    if (spawnActor(ACTOR_BANDIT_SLOT, model)) {
         tmp = last_spawned_actor->BaaD2;
-        last_spawned_actor->x_position = arg1;
-        last_spawned_actor->y_position = arg2;
-        last_spawned_actor->z_position = arg3;
+        last_spawned_actor->x_position = x;
+        last_spawned_actor->y_position = y;
+        last_spawned_actor->z_position = z;
         tmp->unk0 = current_actor_pointer;
     }
     return last_spawned_actor;
@@ -156,25 +156,25 @@ void func_bonus_800261B8(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-void func_bonus_800264E0(u8 arg0, u8 arg1) {
+void func_bonus_800264E0(u8 arg0, u8 textIndex) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
-    func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, arg1, 1), 0, 0x28, 8, 8);
+    func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, textIndex, 1), 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
     playSong(0x28, 1.0f);
     setAction(0x44, NULL, 0);
     current_actor_pointer->control_state++;
-    if (arg0 != 0) {
+    if (arg0) {
         func_global_asm_80627948(player_pointer, 5, 0x21, 5);
     }
 }
 
-void func_bonus_800265C0(u8 arg0, u8 arg1) {
+void func_bonus_800265C0(u8 arg0, u8 textIndex) {
     current_actor_pointer->unk11C->control_state = 0;
-    func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, arg1, 1), 0, 0x28, 8, 8);
+    func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, textIndex, 1), 0, 0x28, 8, 8);
     playSong(0x57, 1.0f);
     setAction(0x43, NULL, 0);
     current_actor_pointer->control_state++;
-    if (arg0 != 0) {
+    if (arg0) {
         func_global_asm_80627948(player_pointer, 5, 0x21, 5);
     }
 }

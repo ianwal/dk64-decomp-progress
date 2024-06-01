@@ -2356,8 +2356,8 @@ void func_multiplayer_80026D40(Actor *arg0, s32 arg1);
 void func_multiplayer_800268C0(u8);
 s32 func_global_asm_80631EB8(u16);
 Gfx *func_global_asm_8070068C(Gfx *);
-void func_bonus_800264E0(u8 arg0, u8 arg1);
-void func_bonus_800265C0(u8 arg0, u8 arg1);
+void func_bonus_800264E0(u8 arg0, u8 textIndex);
+void func_bonus_800265C0(u8 arg0, u8 textIndex);
 void func_global_asm_8072D714(Actor*, s32);
 void func_global_asm_8072B7CC(s32);
 Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2);
@@ -2372,6 +2372,8 @@ void func_race_8002BBD0(Actor *arg0, s32 numRacers);
 
 void func_global_asm_806FB370(u8 HUDItemIndex, u8 playerIndex, u8 arg2);
 void func_global_asm_806F69A8(u8 playerIndex);
+
+void func_global_asm_80737638(void *arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, void *arg6);
 
 // Round 5
 void func_global_asm_806EB5C8(void);
