@@ -1,4 +1,9 @@
+// TODO: Where is the best place to put this so it's available everywhere and doesn't conflict with internal libultra/gu stuff?
 #define ARRAY_COUNT(arr) (sizeof(arr) / sizeof(arr[0]))
+#define	ABS(d)		(((d) > 0) ? (d) : -(d))
+#define ABS_DIFF(a, b) (((b) < (a)) ? ((a) - (b)) : (-((a) - (b))))
+#define TWO_PI 6.28318548202514648
+
 extern s8 story_skip;
 extern s8 widescreen_enabled;
 extern PlayerAdditionalActorData *extra_player_info_pointer;

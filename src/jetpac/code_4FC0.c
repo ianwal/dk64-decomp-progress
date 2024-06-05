@@ -87,7 +87,7 @@ f32 func_jetpac_80027210();
 extern void (func_jetpac_80029C1C)();
 s32 func_jetpac_80028CF8(f32, f32, f32, f32, s32);
 void func_jetpac_800294EC(JetpacStruct *, s32);
-void *func_global_asm_806FD490(Gfx *, s32, s16, s16, s32);
+void *func_global_asm_806FD490(Gfx *, s32, s16 x, s16 y, char *string);
 
 JetpacStruct *func_jetpac_80028FC0(void) {
     s32 i;
@@ -838,7 +838,7 @@ void func_jetpac_8002AEC8(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
     D_jetpac_8002E9CC = arg3;
 }
 
-void func_jetpac_8002AEFC(Gfx **arg0, char *arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_jetpac_8002AEFC(Gfx **arg0, char *string, s32 x, s32 y, s32 arg4) {
     Gfx *dl;
 
     dl = *arg0;
@@ -849,5 +849,5 @@ void func_jetpac_8002AEFC(Gfx **arg0, char *arg1, s32 arg2, s32 arg3, s32 arg4) 
         gDPSetPrimColor(dl++, 0, 0, D_jetpac_80045BE0, D_jetpac_80045BE1, D_jetpac_80045BE2, D_jetpac_80045BE3);
         gDPSetEnvColor(dl++, D_jetpac_8002E9C0, D_jetpac_8002E9C4, D_jetpac_8002E9C8, D_jetpac_8002E9CC);
     }
-    *arg0 = func_global_asm_806FD490(dl, 4, arg2, arg3, arg1);
+    *arg0 = func_global_asm_806FD490(dl, 4, x, y, string);
 }

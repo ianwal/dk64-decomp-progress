@@ -2623,4 +2623,129 @@ struct Struct807FDB04 {
     Struct807FDB04 *next;
 };
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s16 unk4C;
+    u8 unk4E;
+    u8 unk4F;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
+    s32 unk88;
+    s32 unk8C;
+    s32 unk90;
+    s32 unk94;
+    s32 unk98;
+    s32 unk9C;
+    s32 unkA0;
+    s32 unkA4;
+    s32 unkA8;
+    s32 unkAC;
+    s32 unkB0;
+    s32 unkB4;
+    s32 unkB8;
+    s32 unkBC;
+    s32 unkC0;
+    s32 unkC4;
+    s32 unkC8;
+    s32 unkCC;
+    s32 unkD0;
+    s32 unkD4;
+    s32 unkD8;
+    s32 unkDC;
+    s32 unkE0;
+    s32 unkE4;
+    s32 unkE8;
+    s32 unkEC;
+    s32 unkF0;
+    s32 unkF4;
+    s32 unkF8;
+    s32 unkFC;
+    s32 unk100;
+    s32 unk104;
+    s32 unk108;
+    s32 unk10C;
+    s32 unk110;
+    s32 unk114;
+    s32 unk118;
+    s32 unk11C;
+    s32 unk120;
+    s32 unk124;
+    s32 unk128;
+    s16 unk12C;
+} Struct80652374_arg0_unk0;
+
+typedef struct {
+    Struct80652374_arg0_unk0 *unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s16 unk1C;
+    s16 unk1E;
+    s16 unk20;
+    u8 unk22;
+    u8 unk23;
+    u8 unk24;
+} Struct80652374_arg0;
+
+typedef struct Struct131B0_1 Struct131B0_1;
+
+struct Struct131B0_1 {
+    Struct131B0_1 *next;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+};
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+} Struct131B0_2_unk274;
+
+typedef struct {
+    u8  pad0[0x260 - 0x0];
+    Struct131B0_1 *unk260;
+    s32 unk264;
+    s32 unk268;
+    Struct131B0_1 *unk26C;
+    Struct131B0_1 *unk270;
+    Struct131B0_2_unk274 *unk274;
+} Struct131B0_2;
+
 #endif

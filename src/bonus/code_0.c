@@ -54,7 +54,7 @@ void func_bonus_800240F0() {
 }
 
 // Jumptable, doable, close
-// https://decomp.me/scratch/4iOmJ
+// https://decomp.me/scratch/6Kwyv
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024158.s")
 
 /*
@@ -279,7 +279,7 @@ block_4:
                 var_v1 = MAX(0, sp6E - func_global_asm_806F8AD4(0xB, 0));
                 if (var_v1 != a178->unk4) {
                     func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
-                    a178->unk4 = MAX(0, func_global_asm_806F8AD4(0xB, 0));
+                    a178->unk4 = MAX(0, sp6E - func_global_asm_806F8AD4(0xB, 0));
                 }
 block_71:
                 if (a178->unk0 >= 2) {
@@ -322,12 +322,7 @@ block_71:
                     case MAP_KROOL_BARREL_DK_RAMBI_GAME: // switch 7
                         song = 0x75;
                         break;
-                    case MAP_KROOL_FIGHT_DK_PHASE: // switch 7
-                    case MAP_KROOL_FIGHT_DIDDY_PHASE: // switch 7
-                    case MAP_KROOL_FIGHT_LANKY_PHASE: // switch 7
-                    case MAP_KROOL_FIGHT_TINY_PHASE: // switch 7
-                    case MAP_KROOL_FIGHT_CHUNKY_PHASE: // switch 7
-                    case MAP_BLOOPERS_ENDING: // switch 7
+                    default:
                         if (sp6F != 0) {
                             if (sp6F != 1) {
                                 song = 8;

@@ -578,10 +578,10 @@ s16 func_global_asm_806CC284(s16 arg0, s16 arg1, f32 arg2) {
     return arg0 & 0xFFF;
 }
 
+// close, float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CC364.s")
 
 /*
-// TODO: Close, float & stack nonsense
 void func_global_asm_806CC364(u8 arg0) {
     f32 temp_f14_2;
     f32 phi_f12;

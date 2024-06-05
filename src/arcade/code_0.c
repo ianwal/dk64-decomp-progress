@@ -25094,7 +25094,7 @@ extern uSprite D_arcade_8004BC50[2];
 extern void func_global_asm_8060A9BC(void);
 extern void func_global_asm_8060AC7C(void);
 extern void func_global_asm_80610044(Gfx *, s32, s32, s32, s32, s32);
-extern Gfx *func_global_asm_806FD490(Gfx *, s32, s32, s32, s32 *);
+extern Gfx *func_global_asm_806FD490(Gfx *, s32, s32 x, s32 y, char *string);
 extern void func_global_asm_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 extern void func_global_asm_8070E8F0(Gfx**, Sprite*);
 
@@ -25192,16 +25192,16 @@ void arcade_set_text_position(s32 x, s32 y) {
     arcade_text_y = y;
 }
 
-void arcade_draw_text(Gfx **gpp, s32 *arg1) {
+void arcade_draw_text(Gfx **gpp, char *string) {
     Gfx *gp = *gpp; 
     gDPPipeSync(gp++);
     gDPSetCycleType(gp++, G_CYC_1CYCLE);
     gSPClearGeometryMode(gp++, -1);
-    gSPSetGeometryMode(gp++, G_SHADE | 0x200000);
+    gSPSetGeometryMode(gp++, G_SHADE | G_SHADING_SMOOTH);
     gDPSetPrimColor(gp++, 0, 0, arcade_text_red, arcade_text_green, arcade_text_blue, arcade_text_alpha);
     gDPSetCombineMode(gp++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetRenderMode(gp++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-    *gpp = func_global_asm_806FD490(gp, 2, (s16)arcade_text_x, (s16)arcade_text_y, arg1);
+    *gpp = func_global_asm_806FD490(gp, 2, (s16)arcade_text_x, (s16)arcade_text_y, string);
 }
 
 // cycle_rng
@@ -27596,7 +27596,7 @@ void func_arcade_8002CD64(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002D6FC.s")
 
 // TODO: Close
-// https://decomp.me/scratch/cfs6S
+// https://decomp.me/scratch/wfinO
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002E158.s")
 
 /*
@@ -27608,7 +27608,7 @@ void func_arcade_8002E158(s32 arg0) {
         return;
     
     arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
-    arcade_objects[arg0].unk10 += 0.1;
+    arcade_objects[arg0].unk10 = arcade_objects[arg0].unk10 + 0.1;
     temp = arcade_objects[arg0].unk10;
     switch (temp & 0x1) {
         case 0:
@@ -27637,7 +27637,7 @@ void func_arcade_8002E158(s32 arg0) {
     if (arcade_objects[arg0].y_position > 271.0f) {
         arcade_objects[arg0].object_type = 0;
     }
-    if (__arcade_abs_w(arcade_objects[arg0].x_position - arcade_objects[arcade_jumpman_slot].x_position) < 7) {
+    if (__arcade_abs_w((s32)(arcade_objects[arg0].x_position - arcade_objects[arcade_jumpman_slot].x_position)) < 7) {
         dy = arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position;
         if (dy < 4.0f && -8.0f < dy) {
             func_arcade_80027E8C();

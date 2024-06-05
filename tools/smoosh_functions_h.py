@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+orphanFunctionsWithSignatures = [
+    "rand",
+    "func_global_asm_80614D48",
+    "func_global_asm_80613AF8",
+    "func_global_asm_806119A0",
+    "func_global_asm_80611BB4",
+    "playCutscene",
+    "func_global_asm_80613C48",
+    "func_global_asm_80614A64",
+    "func_global_asm_80612794",
+    "playAnimation",
+    "playActorAnimation",
+    "func_global_asm_806119FC",
+    "func_global_asm_80614D90",
+    "func_global_asm_80612790",
+    "func_global_asm_806E770C",
+    "addActorRecolor",
+    "func_global_asm_80614D00",
+    "func_global_asm_80612D10",
+    "func_global_asm_80612D1C",
+    "func_global_asm_8061CB50",
+    "func_global_asm_8060C648",
+    "func_global_asm_8073243C",
+    "func_global_asm_8073E8B4",
+    "func_global_asm_807383EC",
+    "func_global_asm_807383F4",
+    "func_global_asm_80738BA8",
+    "func_global_asm_80738BB0",
+    "func_global_asm_80737600",
+    "func_global_asm_80737630",
+    "func_global_asm_80737B48",
+    "func_global_asm_80737B50",
+    "func_global_asm_806A36F4",
+    "func_global_asm_8073AD48",
+    "func_global_asm_805FCA64",
+    "func_global_asm_80735A44",
+    "func_global_asm_80737E9C",
+    "func_global_asm_80737F38",
+    "func_global_asm_80732924",
+    "func_global_asm_80613794",
+    "func_global_asm_8061C464",
+    "func_global_asm_80626F8C",
+    "func_global_asm_8061C6A8",
+]
+
+functionsHLines = []
+cFiles = {}
+
+def getSignature(functionName):
+    for i, line in enumerate(functionsHLines):
+        if functionName in line:
+            lc = line
+            del functionsHLines[i]
+            return lc
+    return f'// TODO: {functionName.replace("(", "")} has no documented signature'
+
+if __name__ == "__main__":
+    with open("./include/functions.h", 'r') as f:
+        for line in f:
+            functionsHLines.append(line.strip())
+
+    # header header
+    print("#ifndef __FUNCTIONS_H__")
+    print("#define __FUNCTIONS_H__")
+    print("")
+    print('#include "enums.h"')
+    print('#include "structs.h"')
+    print('#include "variables.h"')
+    print("")
+    print("/* your function prototype definitions go here */")
+    print("")
+    print("// Orphaned functions with signatures")
+    print("// TODO: Assign these to a .c file")
+    for func in orphanFunctionsWithSignatures:
+        print(getSignature(func))
+
+    with open("./build/us/donkeykong64.us.map", 'r') as f:
+        grabbingFunctions = False
+        filename = ''
+        for line in f:
+            line = line.strip()
+            if line.startswith(".text") and line.endswith(".c.o"):
+                info = line.split()
+                address = info[1].replace("0x00000000", '0x')
+                filename = info[3].replace("build/us/src/", "").replace(".o", "")
+                grabbingFunctions = True
+                cFiles[filename] = []
+                print("")
+                print(f"// {filename}")
+            elif line.startswith(".data") or line.startswith(".rodata") or line.endswith("_TEXT_END = ."):
+                if grabbingFunctions:
+                    grabbingFunctions = False
+            elif grabbingFunctions:
+                splitLine = line.split()
+                if len(splitLine) == 2 and not splitLine[1].startswith(".L"):
+                    sig = getSignature(f"{splitLine[1]}(")
+                    print(sig)
+
+    # header footer
+    print("#endif")
+    print("")
