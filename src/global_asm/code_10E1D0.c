@@ -25,7 +25,7 @@ void func_global_asm_807094D0(u8 arg0) { // init zipper
             is_cutscene_active = 6;
             D_global_asm_807FD9BD = 2;
             if ((D_global_asm_807444F4 == 1) && (D_global_asm_807FBB64 & 1)) {
-                func_global_asm_80600BBC(0);
+                func_global_asm_80600BBC(NULL);
             }
             break;
     }
@@ -145,8 +145,6 @@ void func_global_asm_8070A848(Struct8070A848 *arg0, Struct8070A848 *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A934.s")
 
 /*
-s32 func_global_asm_805FE71C(s32, u8, s32 *, ?);
-s32 func_global_asm_805FE7B4(s32 *, s32 *, s32 *, ?);
 s32 func_global_asm_80610044(s32, s32, ?, ?, s32, s32);
 s32 func_global_asm_8061CBCC();
 s32 func_global_asm_8070AC74(s32, s32 *, u8 *);

@@ -40,7 +40,6 @@ void func_global_asm_8064F6F8(void *arg0, s16 arg1) {
 }
 */
 
-void func_global_asm_80650684(OM2_unk78*);
 void func_global_asm_8064F804(OM2_unk78 *arg0) {
     if (arg0) {
         // TODO: Hmm...
@@ -166,8 +165,6 @@ void func_global_asm_806508B4(s16 arg0, s16 arg1, s16 arg2) {
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8065092C.s")
-
-void func_global_asm_8064FA7C(void*, void*);
 
 /*
 void func_global_asm_8065092C(s16 arg0, s16 arg1) {

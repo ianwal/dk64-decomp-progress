@@ -133,32 +133,28 @@ extern Struct806F50C8 *D_global_asm_807FD72C;
 
 void func_global_asm_806F50C8(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8 arg5) {
     Struct806F50C8 *temp_v0_2;
-    f32 sp60;
-    f32 sp5C;
-    f32 sp58;
-    f32 sp54;
-    f32 sp50;
-    f32 sp4C;
-    f32 sp48;
+    f32 x, y, z;
+    f32 xRot, yRot, zRot;
+    f32 scale;
     f32 sp44;
     s32 sp40;
     s32 temp_v0_3;
     Struct806F50C8 **var_v1;
     Struct806F50C8 *current;
 
-    func_global_asm_806357F8(arg0, &sp60, &sp5C, &sp58, &sp54, &sp50, &sp4C, &sp48, &sp44, 1);
+    func_global_asm_806357F8(arg0, &x, &y, &z, &xRot, &yRot, &zRot, &scale, &sp44, 1);
 
     if (!arg5) {
-        sp40 = func_global_asm_806F4EBC(sp60, sp58);
+        sp40 = func_global_asm_806F4EBC(x, z);
         if (!(D_global_asm_807FD720 >= sp40 && sp40 >= 0)) {
             return;
         }
     }
 
     temp_v0_2 = malloc(0x1C);
-    temp_v0_2->unk8 = sp60;
-    temp_v0_2->unkA = sp5C;
-    temp_v0_2->unkC = sp58;
+    temp_v0_2->unk8 = x;
+    temp_v0_2->unkA = y;
+    temp_v0_2->unkC = z;
     temp_v0_2->unk0 = arg0;
 
     temp_v0_3 = func_global_asm_806F4E74(arg1);
@@ -369,7 +365,7 @@ void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) 
                 break;
         }
         if (sp27 != 0) {
-            func_global_asm_8060DEC8();
+            func_global_asm_8060DEC8(); // saveTheGame()
         }
     }
 }
@@ -379,15 +375,13 @@ void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2) {
     s32 var_s0;
     s32 i;
     f32 x, y, z;
-    f32 sp70;
-    f32 sp6C;
-    f32 sp68;
-    f32 sp64;
+    f32 xRot, yRot, zRot;
+    f32 scale;
     f32 sp60;
     s16 var_s2;
 
     if (cc_number_of_players == 1) {
-        func_global_asm_806357F8(arg1, &x, &y, &z, &sp70, &sp6C, &sp68, &sp64, &sp60, 1);
+        func_global_asm_806357F8(arg1, &x, &y, &z, &xRot, &yRot, &zRot, &scale, &sp60, 1);
     }
     
     switch (arg2->unk58) {
@@ -427,16 +421,14 @@ void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2) {
 void func_global_asm_806F5A48(u8 arg0, s16 arg1, Actor *arg2, u16 arg3) {
     s32 i;
     f32 x, y, z;
-    f32 sp84;
-    f32 sp80;
-    f32 sp7C;
-    f32 sp78;
+    f32 xRot, yRot, zRot;
+    f32 scale;
     f32 sp74;
     s32 var_s0;
     s16 var_s2;
 
     if (cc_number_of_players == 1) {
-        func_global_asm_806357F8(arg1, &x, &y, &z, &sp84, &sp80, &sp7C, &sp78, &sp74, 1);
+        func_global_asm_806357F8(arg1, &x, &y, &z, &xRot, &yRot, &zRot, &scale, &sp74, 1);
     }
     switch (arg2->unk58) {
         case 3:

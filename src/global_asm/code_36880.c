@@ -339,7 +339,7 @@ extern Struct80747D50 D_global_asm_80747D50[];
 void func_global_asm_80632E10(s16 arg0, u8 *arg1) {
     s32 i = 0;
     s32 max = 8;
-    s32 map;
+    Maps map;
     Struct80747D50 *temp;
 
     map = current_map;temp = D_global_asm_80747D50; // Unreal...
@@ -392,7 +392,7 @@ typedef struct {
 void func_global_asm_80632F20(s32 arg0, Struct80632F20 *arg1) {
     s32 i;
     s32 max;
-    s32 map;
+    Maps map;
     Struct80747D30 *var_a3;
 
     max = 5;
@@ -466,7 +466,7 @@ void func_global_asm_80633570(GlobalASMStruct83 *arg0) {
     }
 }
 
-void func_global_asm_806335B0(s32 arg0, u8 arg1, s32 arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
+void func_global_asm_806335B0(s32 arg0, u8 arg1, s32 boneIndex, f32 *x, f32 *y, f32 *z) {
     s32 var_v0;
     OM2_unk74 *var_v1;
 
@@ -474,19 +474,19 @@ void func_global_asm_806335B0(s32 arg0, u8 arg1, s32 arg2, f32 *arg3, f32 *arg4,
         arg0 = func_global_asm_80659470(arg0);
     }
     var_v1 = D_global_asm_807F6000[arg0].unk74;
-    var_v0 = arg2 - 1;
+    var_v0 = boneIndex - 1;
     while (var_v1 != 0 && var_v0 != 0) {
         var_v1 = var_v1->next;
         var_v0 -= 1;
     }
     if (var_v1 != 0) {
-        *arg3 = var_v1->unk0;
-        *arg4 = var_v1->unk4;
-        *arg5 = var_v1->unk8;
+        *x = var_v1->unk0;
+        *y = var_v1->unk4;
+        *z = var_v1->unk8;
     } else {
-        *arg5 = 0.0f;
-        *arg4 = 0.0f;
-        *arg3 = 0.0f;
+        *z = 0.0f;
+        *y = 0.0f;
+        *x = 0.0f;
     }
 }
 
@@ -495,8 +495,6 @@ void func_global_asm_806335B0(s32 arg0, u8 arg1, s32 arg2, f32 *arg3, f32 *arg4,
 
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063373C.s")
-
-void func_global_asm_806338B4(OM2_unk74 *arg0);
 
 void func_global_asm_806338B4(OM2_unk74 *current) {
     OM2_unk74 *next;
@@ -699,8 +697,6 @@ s32 func_global_asm_80634768(Struct80634768 *arg0, Struct80634768_arg1 *arg1, f3
     return 1;
 }
 
-void func_global_asm_806348B4(OM2_unk48 *arg0);
-
 void func_global_asm_806348B4(OM2_unk48 *arg0) {
     void *temp_a2 = arg0->unk0;
 
@@ -766,13 +762,6 @@ loop_2:
 
 // Init for Model2Model50_B8
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806349FC.s")
-
-void func_global_asm_80634E10(Model2Model50_B8*, s16, s16, s16, s16*, s16*, u8);
-void func_global_asm_80634FA0(Model2Model50_B8*, s16, u8, u8*, u8);
-void func_global_asm_80635098(Model2Model50_B8*, s16, s32, s32);
-void func_global_asm_80634F14(s32, s16, u8, u8*, u8);
-void func_global_asm_80634F14(s32, s16, u8, u8*, u8);
-void func_global_asm_80634D64(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4, s32 arg5, u8 arg6);
 
 void func_global_asm_80634CC8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     func_global_asm_80634D64(arg0, arg1, arg2, arg3, &arg2, &arg3, 0);
@@ -976,8 +965,6 @@ void func_global_asm_80635548(s32 arg0, Struct80635548 *arg1) {
 
 extern s32 D_global_asm_80747D70;
 
-void func_global_asm_806355DC(s32 arg0, u8 arg1);
-
 void func_global_asm_80635588(void) {
     s32 temp_s1;
     s32 i;
@@ -989,15 +976,9 @@ void func_global_asm_80635588(void) {
     func_global_asm_80659350();
 }
 
-void func_global_asm_80605380(s16);
-
 void func_global_asm_8063DE68(void*);
-void func_global_asm_806645B8(s16 arg0);
 
 void func_global_asm_8066C904(OM2_unk28 *arg0);
-
-void func_global_asm_806593C8(s32 arg0, s32 arg1);
-void func_global_asm_80636074(ObjectModel2 *arg0);
 
 void func_global_asm_806355DC(s32 arg0, u8 arg1) {
     s16 sp36;
@@ -1038,17 +1019,17 @@ void func_global_asm_806355DC(s32 arg0, u8 arg1) {
     D_global_asm_80747D70 -= 1;
 }
 
-void func_global_asm_806357F8(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg5, f32 *arg6, f32 *arg7, f32 *arg8, u8 arg9) {
+void func_global_asm_806357F8(s32 arg0, f32 *x, f32 *y, f32 *z, f32 *xRot, f32 *yRot, f32 *zRot, f32 *scale, f32 *arg8, u8 arg9) {
     if (arg9 == 1) {
         arg0 = func_global_asm_80659470(arg0);
     }
-    *arg1 = D_global_asm_807F6000[arg0].x_position;
-    *arg2 = D_global_asm_807F6000[arg0].y_position;
-    *arg3 = D_global_asm_807F6000[arg0].z_position;
-    *arg4 = D_global_asm_807F6000[arg0].x_rotation;
-    *arg5 = D_global_asm_807F6000[arg0].y_rotation;
-    *arg6 = D_global_asm_807F6000[arg0].z_rotation;
-    *arg7 = D_global_asm_807F6000[arg0].hitbox_scale;
+    *x = D_global_asm_807F6000[arg0].x_position;
+    *y = D_global_asm_807F6000[arg0].y_position;
+    *z = D_global_asm_807F6000[arg0].z_position;
+    *xRot = D_global_asm_807F6000[arg0].x_rotation;
+    *yRot = D_global_asm_807F6000[arg0].y_rotation;
+    *zRot = D_global_asm_807F6000[arg0].z_rotation;
+    *scale = D_global_asm_807F6000[arg0].hitbox_scale;
     *arg8 = D_global_asm_807F6000[arg0].unk1C;
 }
 
@@ -1088,7 +1069,6 @@ void func_global_asm_80636014(s32 arg0, u8 arg1, u8 arg2) {
 }
 
 void func_global_asm_80636380(OM2_unk24 *arg0, Struct80635548 *arg1);
-void func_global_asm_806365D0(ObjectModel2 *arg0, OM2_unk24 *arg1, Model2Model *arg2);
 
 void func_global_asm_80636074(ObjectModel2 *arg0) {
     Model2Model50_B8 *var_s0;
@@ -1481,10 +1461,6 @@ u8 func_global_asm_80636A8C(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636AE8.s")
 
 /*
-void func_global_asm_80636AE8(ObjectModel2 *);
-
-void func_global_asm_8065CDB0(void *arg0, void *arg1);
-
 void func_global_asm_80636AE8(ObjectModel2 *arg0) {
     Model2Model *model;
     s32 count1;
@@ -1578,8 +1554,6 @@ void func_global_asm_806398E4(s32 objectModel2Index, u8 arg1, u8 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639968.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639C04.s")
-
-s32 func_global_asm_80639F1C(Model2Model50_B8 *, s32 *, s32 *);
 
 typedef struct {
     u8 unk0[0x30 - 0x0];

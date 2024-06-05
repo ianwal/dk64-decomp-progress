@@ -536,7 +536,6 @@ void func_global_asm_80604C80(u8 arg0, u8 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80604CBC.s")
 
 s16 func_global_asm_80604D70(Actor *arg0, s16 arg1, u8 arg2, s32 arg3, u8 arg4, f32 arg5, s8 arg6);
-void func_global_asm_80605380(s16);
 
 /*
 // TODO: Very close, call to func_global_asm_80605314 is pulling a1 from temp reg instead of stack

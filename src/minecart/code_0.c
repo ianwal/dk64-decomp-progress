@@ -112,7 +112,6 @@ extern s16 D_global_asm_80750AC4;
 extern s32 D_minecart_80028C20;
 
 /* function signatures */
-void func_global_asm_8065A660(f32, f32);
 void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3);
 void func_minecart_80024E78(AAD_minecart_80027DA0* arg0, s32* arg1[], u8 arg2, u8 arg3);
 void func_minecart_800253C0(AAD_minecart_80027DA0*, s16, u8);

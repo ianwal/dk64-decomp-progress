@@ -18,11 +18,6 @@ typedef struct {
 extern Struct807F9430 *D_global_asm_807F9430;
 extern s16 D_global_asm_807F9434;
 
-s32 func_global_asm_8063C2A8(s16);
-void func_global_asm_80664A38(s16 arg0);
-void func_global_asm_80664834(s16 arg0);
-void func_global_asm_806643C4(s32 arg0, s32 arg1, f32 arg2);
-
 void func_global_asm_806641A0(void) {
     s32 i, count;
 

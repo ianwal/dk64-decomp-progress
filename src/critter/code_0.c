@@ -231,7 +231,6 @@ void func_critter_80026E0C(CritterController*);
 
 void func_global_asm_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
 void func_global_asm_80612CA0(f32 (*)[4], f32);
-void func_global_asm_8065C334(f32, f32, f32, s16, s8 *, s8 *, s8 *, s16);
 void func_global_asm_80718BF4(void);
 
 void func_critter_80024000(Critter *arg0, u8 *arg1, f32 arg2) {

@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_80722E00(s32 map) {
+void func_global_asm_80722E00(Maps map) {
     void *paths;
 
     paths = getPointerTableFile(0xF, map, 1, 1);

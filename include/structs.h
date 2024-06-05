@@ -2748,4 +2748,27 @@ typedef struct {
     Struct131B0_2_unk274 *unk274;
 } Struct131B0_2;
 
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s16 unk14;
+    s16 unk16;
+    u8 unk18;
+    u8 unk19;
+    u16 unk1A;
+    u32 unk1C;
+    f64 unk20;
+    f64 unk28;
+    f64 unk30;
+    f64 unk38;
+} GlobalASMStruct64;
+
 #endif

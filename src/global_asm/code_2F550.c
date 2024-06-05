@@ -72,29 +72,6 @@ void func_global_asm_8062AC68(void *arg0) {
 // Copying matrices?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062AD28.s")
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s16 unk10;
-    s16 unk12;
-    s16 unk14;
-    s16 unk16;
-    u8 unk18;
-    u8 unk19;
-    u16 unk1A;
-    u32 unk1C;
-    f64 unk20;
-    f64 unk28;
-    f64 unk30;
-    f64 unk38;
-} GlobalASMStruct64;
-
 void func_global_asm_8062B194(GlobalASMStruct64 *arg0) {
     s16 temp1;
     s16 temp2;
@@ -666,8 +643,6 @@ u8 func_global_asm_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_
 // Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062BF24.s")
 
-void func_global_asm_8062EE48(u8 arg0);
-
 void func_global_asm_8062C1C0(s32 arg0) {
     func_global_asm_8065EFF0();
     func_global_asm_8062D3E4(D_global_asm_807F5FF4);
@@ -680,8 +655,6 @@ void func_global_asm_8062C1C0(s32 arg0) {
     func_global_asm_8065F614();
     D_global_asm_807F5FEC = 1;
 }
-
-void func_global_asm_8062EFA0(void);
 
 void func_global_asm_8062C22C(void) {
     if (D_global_asm_807F6C28 != 0) {
@@ -853,7 +826,6 @@ void func_global_asm_8062D26C(Actor *arg0) {
 }
 
 u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, s32 arg3, u8 arg4);
-u8 func_global_asm_80652594(Model2Model *arg0, s16 *arg1, u8 arg2);
 
 u8 func_global_asm_8062D2AC(void *arg0, void *arg1, u8 arg2) {
     return func_global_asm_8062D2F0(D_global_asm_807F5DE4, D_global_asm_807F5E60, arg0, arg1, arg2);
@@ -872,7 +844,7 @@ u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1
             arg1->unk4 = func_global_asm_80630588(arg1->unk4, arg2, 0, &sp27);
             return sp27;
         case 0:
-            if (func_global_asm_8062D2F0(arg0->unk0, arg1->unkC, arg2, arg3, arg4) != 0) {
+            if (func_global_asm_8062D2F0(arg0->unk0, arg1->unkC, arg2, arg3, arg4)) {
                 if (arg4 == 0) {
                     return TRUE;
                 }
@@ -1106,15 +1078,15 @@ void func_global_asm_8062E3B4(Struct8062E67C *arg0, f32 *arg1, s32 arg2, s32 *ar
     *arg3 = 0;
     temp = &arg0[arg2 - 1];
     for (i = 0; i < arg2; i++, temp++, arg0++) {
-        if (func_global_asm_8062E548(&arg0, arg4, arg6, arg8) != 0) {
-            if (func_global_asm_8062E548(temp, arg4, arg6, arg8) != 0) {
+        if (func_global_asm_8062E548(&arg0, arg4, arg6, arg8)) {
+            if (func_global_asm_8062E548(temp, arg4, arg6, arg8)) {
                 func_global_asm_8062E608(&arg0, arg3, arg1);
             } else {
                 func_global_asm_8062E67C(temp, &arg0, arg4, arg6, &sp60);
                 func_global_asm_8062E608(&sp60, arg3, arg1);
                 func_global_asm_8062E608(&arg0, arg3, arg1);
             }
-        } else if (func_global_asm_8062E548(temp, arg4, arg6, arg8) != 0) {
+        } else if (func_global_asm_8062E548(temp, arg4, arg6, arg8)) {
             func_global_asm_8062E67C(temp, &arg0, arg4, arg6, &sp60);
             func_global_asm_8062E608(&sp60, arg3, arg1);
         }
@@ -1139,16 +1111,16 @@ s32 func_global_asm_8062E548(s16 *arg0, u8 arg1, f64 arg3, u8 arg4) {
     switch (arg4) {
         case 0:
             if (arg3 <= phi_f0) {
-                return 1;
+                return TRUE;
             }
             break;
         case 1:
             if (phi_f0 <= arg3) {
-                return 1;
+                return TRUE;
             }
             break;
     }
-    return 0;
+    return FALSE;
 }
 
 void func_global_asm_8062E608(void *arg0, s32 *arg1, s32 arg2) {
@@ -1332,11 +1304,6 @@ void func_global_asm_8062EFA0(void) {
 // doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F050.s")
 
-void func_global_asm_8063C390(void);
-void func_global_asm_8065E040(s32);
-
-void func_global_asm_8062F328(s32 arg0);
-
 extern MapGeometryHeader *D_807F5DE0;
 extern void *D_807F5DE8;
 extern void *D_807F5DEC;
@@ -1360,11 +1327,6 @@ extern s16 D_807FB5EA;
 extern u8 D_global_asm_807F5FED;
 
 extern f32 D_global_asm_807444C4;
-
-void func_global_asm_8062F318(void);
-
-void func_global_asm_80659110(u8);
-void func_global_asm_8065CDA0(u8);
 
 /*
 void func_global_asm_8062F050(MapGeometryHeader *arg0) {

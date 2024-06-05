@@ -813,7 +813,6 @@ s32 func_menu_800275EC(s32 arg0) {
 
 extern void func_global_asm_8063FA48(void*, void*, s32, s32); // Unsure of this, it's just using this addr for a checksum
 extern void func_global_asm_8060AC7C(void);
-extern void func_global_asm_8060B110(Struct807ECD58 *arg0);
 
 void func_menu_800275FC(void) {
     // Candy Code

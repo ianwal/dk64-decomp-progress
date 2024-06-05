@@ -40,7 +40,7 @@ Gfx *func_global_asm_8065919C(Gfx *dl) {
     return dl;
 }
 
-void *func_global_asm_806592B4(Gfx *dl) {
+Gfx *func_global_asm_806592B4(Gfx *dl) {
     if (D_global_asm_807F7360 != 0) {
         gSPSetGeometryMode(dl++, 0x10000);
         dl = func_global_asm_8065919C(dl);

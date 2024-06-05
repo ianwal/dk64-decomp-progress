@@ -14,8 +14,6 @@ extern f32 D_global_asm_807F6238;
 
 extern u8 D_global_asm_807F693F;
 
-s32 func_global_asm_806418E8(s16, s16, s16);
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8063D930.s")
 
 extern u8 D_global_asm_807F66F0[];
@@ -52,8 +50,6 @@ s16 func_global_asm_8063D9D0(s16 arg0, u8 arg1) {
     D_global_asm_807F6240[var_v1] = arg0;
     return var_v1;
 }
-
-void func_global_asm_8063DA78(s16 arg0, s16 arg1, s16 arg2);
 
 void func_global_asm_8063DA40(s16 arg0, s16 arg1) {
     func_global_asm_8063DA78(arg0, arg1, 0);
@@ -468,8 +464,6 @@ void func_global_asm_80641A78(void) {
         func_global_asm_806355DC(D_global_asm_807F6240[D_global_asm_807F6918[i]], 1);
     }
 }
-
-void func_global_asm_8063DED0(OM2_unk7C*);
 
 void func_global_asm_80641B00(s16 arg0, s16 arg1, s16 arg2) {
     arg0 = func_global_asm_80659470(arg0);

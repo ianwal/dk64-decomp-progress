@@ -67,8 +67,6 @@ void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1);
 
 extern void func_race_8002CFF0(void);
 
-f32 func_global_asm_80665E48(f32, f32, f32, f32);
-
 typedef struct {
     f32 unk0;
     f32 unk4;

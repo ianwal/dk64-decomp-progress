@@ -48,7 +48,7 @@ extern s32 D_global_asm_8075533C; // cutscene_to_play_next_map
 extern s32 D_global_asm_80755348; // helm_timer
 extern u8 D_global_asm_80755350;
 extern s8 D_global_asm_8075536C; // Exit
-extern s32 D_global_asm_80755384[];
+extern Maps D_global_asm_80755384[];
 
 // rodata
 extern char D_global_asm_8075E5D4[];
@@ -1004,8 +1004,6 @@ int func_global_asm_80714464(void) {
         || game_mode == GAME_MODE_END_SEQUENCE_DK_THEATRE;
 }
 
-void func_global_asm_8060DC3C(u8, s32);
-
 void func_global_asm_807144B8(s8 arg0) {
     Maps map;
     s32 exit;
@@ -1036,7 +1034,7 @@ void func_global_asm_807144B8(s8 arg0) {
 }
 
 void func_global_asm_8071458C(void) {
-    s32 map;
+    Maps map;
 
     func_global_asm_806C9AE0();
     D_global_asm_80750AB8 = 0;

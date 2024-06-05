@@ -51,7 +51,7 @@ void func_global_asm_80600BBC(void *arg0) {
     var_s0 = D_global_asm_807452A0;
     var_s1 = NULL;
     while (var_s0 != NULL) {
-        if (arg0 == var_s0->unk4 || (arg0 == 0 && var_s0->unk8 & 0x80000000)) {
+        if (arg0 == var_s0->unk4 || (arg0 == NULL && var_s0->unk8 & 0x80000000)) {
             free(var_s0);
             var_s0 = var_s0->unk0;
             if (var_s1 != NULL) {

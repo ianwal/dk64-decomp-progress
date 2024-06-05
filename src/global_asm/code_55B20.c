@@ -2,19 +2,9 @@
 #include "functions.h"
 
 void func_global_asm_8063B4C0(Chunk14*, u8);
-s32 func_global_asm_8063A38C(Chunk14*, Chunk14*, f32, f32, f32);
-void func_global_asm_80652FDC(f32, f32, f32, s16, s16, s16*);
 Chunk14* func_global_asm_80630890(Chunk14*, f32, f32, f32, void*);
 u8 func_global_asm_80668E9C(s32, s16, f32, f32, f32, s32);
-Chunk14 *func_global_asm_8063070C(Chunk14 *arg0);
-s32 func_global_asm_80653804(Chunk78_7C*, f32, f32);
-void func_global_asm_8062A944(f32, f32, f32);
-void func_global_asm_8062AD28(f32, f32, f32, void *, void *);
-void func_global_asm_806547A8(f32, f32, f32);
-void func_global_asm_80655410(f32, f32, f32);
 void func_global_asm_80656F14(s16, s32, s16, s16, s32, s32, f32, f32, f32);
-void func_global_asm_8065F678(f32, f32, f32, u8);
-void func_global_asm_8066308C(f32, f32, f32);
 
 extern s32 D_global_asm_8076A0B4;
 extern s32 D_global_asm_8076A0B8;
@@ -740,8 +730,6 @@ void func_global_asm_80653F68(s16 index) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80653FA4.s")
 
-void func_global_asm_80654A2C(f32, f32, f32);
-void func_global_asm_80655258(f32, f32, f32, s32);
 extern s32 D_global_asm_807F70AC;
 
 void func_global_asm_80654380(f32 arg0, f32 arg1, f32 arg2) {
@@ -1036,8 +1024,6 @@ void func_global_asm_8065756C(s16 arg0) {
     }
     D_global_asm_807F6C58[D_global_asm_807F6C80++] = arg0;
 }
-
-void func_global_asm_80657CB0(s32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg4, f32 *arg5, f32 *arg6);
 
 typedef struct {
     f32 unk0;

@@ -69,7 +69,6 @@ extern OSMesg D_global_asm_8076A108;
 extern OSMesg D_global_asm_8076A128;
 extern OSTimer D_global_asm_8076A130;
 
-f32 func_global_asm_8062A850(void);
 void func_global_asm_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 
 void func_global_asm_80712A40(void);
@@ -78,7 +77,6 @@ void func_global_asm_80605510(void);
 void func_global_asm_807215EC();
 
 void func_global_asm_80650E20(s32* arg0);
-void func_global_asm_8062F050(s32* arg0);
 
 void func_global_asm_806886E0(s32* arg0, s32 arg1, s32 arg2);
 void func_global_asm_80677D80(void);
@@ -87,7 +85,6 @@ void func_global_asm_80626264(void*);
 void func_global_asm_806C7D40(s32 arg0);
 
 void func_global_asm_8061EA78();
-void func_global_asm_8060098C(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 
 void func_global_asm_80712BD4();
 void func_global_asm_805FB944(u8);
@@ -520,8 +517,6 @@ Gfx *func_global_asm_805FE4D4(Gfx *dl) {
     return dl;
 }
 
-void func_global_asm_805FE71C(Gfx *dl, u8 arg1, s32 *arg2, u8 arg3);
-
 void func_global_asm_805FE544(u8 arg0) {
     if (D_global_asm_807FBB64 & 1) {
         D_global_asm_8076A058 = 6000;
@@ -573,7 +568,7 @@ void func_global_asm_805FE7FC(void) {
     void *sp28;
     s32 *mapSetup;
     f32 phi_f0;
-    s32 map;
+    Maps map;
     u8 player_count;
 
     D_global_asm_80746830 = 1;

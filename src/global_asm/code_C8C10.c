@@ -438,7 +438,7 @@ void func_global_asm_806C5C20(void) {
     if (((extra_player_info_pointer->unk1F0 & 0x8000)) && (extra_player_info_pointer->unk1EC == 1)) {
         if (current_actor_pointer->control_state != 0x40) {
             setFlag(func_global_asm_80731784(D_global_asm_8076A0AA, func_global_asm_80727194(current_actor_pointer), &sp44), TRUE, FLAG_TYPE_PERMANENT);
-            func_global_asm_8060DEC8();
+            func_global_asm_8060DEC8(); // saveTheGame()
         }
         current_actor_pointer->control_state = 0x40;
     }

@@ -134,7 +134,7 @@ void func_global_asm_806886E0(s32 arg0, s32 arg1, u8 arg2) {
 void func_global_asm_80688940(void) {
     s32 actorIndex;
     s32 numActors;
-    s32 mapIndex;
+    Maps mapIndex;
     s32 sp60;
     s32 *sp5C;
     void *setup;

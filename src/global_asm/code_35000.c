@@ -1,9 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-s32 func_global_asm_8063162C(Actor *, s16 *);
-s32 func_global_asm_806317D4(Actor *, s16 *, f32, f32, f32);
-
 extern Chunk14 *D_global_asm_807F5FF0;
 extern Chunk14 *D_global_asm_807F5FF4;
 extern Chunk14 *D_global_asm_807F5FF8;

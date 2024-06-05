@@ -28,9 +28,6 @@ extern s16 D_global_asm_807F9060;
 extern u32 D_global_asm_807F9064;
 extern s32 D_global_asm_807F9068;
 
-s32 func_global_asm_8065E0CC(void);
-s32 func_global_asm_8065E81C(s32, s32);
-
 void func_global_asm_8065CDA0(u8 arg0) {
     D_global_asm_807F7F00 = arg0;
 }
@@ -66,9 +63,6 @@ void func_global_asm_8065CDB0(Gfx *dl, Gfx *endDL) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065CE4C.s")
-
-f32 func_global_asm_8065CFB8(s16, f32);
-f32 func_global_asm_8065D0FC(f32);
 
 /*
 // TODO: Quite close, annoying float nonsense

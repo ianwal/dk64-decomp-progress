@@ -702,8 +702,6 @@ extern void* D_global_asm_8071FBC8;
 extern void* D_global_asm_8071FE08;
 extern s8 D_menu_80033FAC;
 
-void func_global_asm_8060C830(u8, s32);
-
 void func_menu_80029EF8(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
     if ((MaaD->unk0 == 0.0f) && (MaaD->unk4 == 0.0f)) {
@@ -1160,7 +1158,6 @@ extern s8 D_global_asm_8074583C;
 extern s8 D_global_asm_80745840;
 extern s8 D_global_asm_80745844;
 
-void func_global_asm_8060DEA8();
 typedef struct MenuStruct7 {
     s16 unk0;
     u8 unk2;

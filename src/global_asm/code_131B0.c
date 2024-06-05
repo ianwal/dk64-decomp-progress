@@ -1,15 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-void func_global_asm_8060EC54(s32);
-void func_global_asm_8060E6E8(s32);
-u8 func_global_asm_8060AC28();
-void func_global_asm_8060E4D0(u8);
-void func_global_asm_8060E664(u8);
-void func_global_asm_8060E8CC(Struct807F0470*);
-u8 func_global_asm_8060AB38(s32);
-
 extern s32 D_global_asm_80746810;
 extern u8 D_global_asm_80746818;
 extern u8 D_global_asm_8076A0B1;

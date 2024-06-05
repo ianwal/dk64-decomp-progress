@@ -810,8 +810,6 @@ extern s8 D_global_asm_8076A105;
 extern s8 D_807FC80E;
 extern s8 D_global_asm_807FC8B9;
 
-void func_global_asm_806291B4();
-
 /*
 void func_global_asm_806ACFFC(void) {
     s32 i;

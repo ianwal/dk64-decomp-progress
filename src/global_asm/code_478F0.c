@@ -95,18 +95,13 @@ extern u32 D_global_asm_8076A068;
 
 void func_global_asm_80716F10(Struct80717D84 *arg0, s32 arg1);
 
-void func_global_asm_8065A660(f32, f32);
 int func_global_asm_8071E3EC(); // TODO: Signature
 int func_global_asm_8071910C(); // TODO: Signature
 int func_global_asm_80718BF4();
 extern int func_global_asm_8071F1D0(); // TODO: Signature
 int func_global_asm_8071C004();
 
-s32 func_global_asm_806418E8(s16, s16, s16);
-u8 func_global_asm_8064EC60(s32, s16, s16, s16);
 extern void func_global_asm_8064EE08(void);
-
-u8 func_global_asm_80661300(s32);
 
 void func_global_asm_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 1, 0);
@@ -121,22 +116,20 @@ void func_global_asm_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
     u8 temp_v1;
-    f32 sp6C;
-    f32 sp68;
-    f32 sp64;
+    f32 x, y, z;
 
     switch ((u8)D_global_asm_807F6000[(s16)func_global_asm_80659470(arg1)].unk78[2].unk5) {
         case 0xD:
         case 0x15:
         case 0x19:
             for (i = 1; i < 0xF; i++) {
-                func_global_asm_806335B0(arg1, 1, i, &sp6C, &sp68, &sp64);
+                func_global_asm_806335B0(arg1, 1, i, &x, &y, &z);
                 func_global_asm_807149B8(1);
                 func_global_asm_80714998(2);
                 func_global_asm_80714950(-0x14 - ((func_global_asm_806119A0() / 10000U) % 50U));
                 changeActorColor(0xE1, 0x87, 0x38, 0xFF);
                 func_global_asm_8071498C(func_global_asm_80717D4C);
-                drawSpriteAtPosition(&D_global_asm_8071FF18, 0.5f, sp6C, sp68 + 2.0f, sp64);
+                drawSpriteAtPosition(&D_global_asm_8071FF18, 0.5f, x, y + 2.0f, z);
             }
             break;
     }
@@ -144,9 +137,9 @@ void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 */
 
 void func_global_asm_80642E34(s32 **arg0, s16 arg1, s16 arg2, s32 arg3) {
-    f32 sp5C;
-    f32 sp58;
-    f32 sp54;
+    f32 x;
+    f32 y;
+    f32 z;
     s32 *var_v1;
     f32 var_f0;
     s32 sp48;
@@ -160,9 +153,9 @@ void func_global_asm_80642E34(s32 **arg0, s16 arg1, s16 arg2, s32 arg3) {
     if (0.7 < var_f0) {
         var_f0 = 1.0f;
     }
-    func_global_asm_806335B0(arg1, 1, 1, &sp5C, &sp58, &sp54);
+    func_global_asm_806335B0(arg1, 1, 1, &x, &y, &z);
     sp48 = ((func_global_asm_806119A0() / 10000U) % 200) + 0x37;
-    createLight(sp5C, sp58, sp54, 0.0f, 0.0f, 0.0f, var_f0 * 200.0, 0, 0, sp48, ((func_global_asm_806119A0() / 10000U) % 80) + 0xAF);
+    createLight(x, y, z, 0.0f, 0.0f, 0.0f, var_f0 * 200.0, 0, 0, sp48, ((func_global_asm_806119A0() / 10000U) % 80) + 0xAF);
     if (++(*var_v1) == 0x14) {
         *var_v1 = 0;
     }
@@ -318,14 +311,14 @@ void func_global_asm_8064384C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_8067DF44(temp_v1->x_position, temp_v1->y_position, temp_v1->z_position, temp_v1->hitbox_scale, 0, 1);
 }
 
-void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 boneIndex) {
     s32 pad;
     s32 temp_s0;
     s32 i;
     f32 x, y, z;
 
     if (arg2 == 1) {
-        func_global_asm_806335B0(arg1, 1, arg3, &x, &y, &z);
+        func_global_asm_806335B0(arg1, 1, boneIndex, &x, &y, &z);
     } else {
         x = D_global_asm_807F621C;
         y = D_global_asm_807F6220;
@@ -449,8 +442,6 @@ void func_global_asm_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80644A18.s")
-
-void func_global_asm_80644A18(s32, s32, s32, f32);
 
 typedef struct {
     f32 unk0;
@@ -1731,9 +1722,7 @@ void func_global_asm_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
 }
 
 void func_global_asm_8064B9E0(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
-    s16 x;
-    s16 y;
-    s16 z;
+    s16 x, y, z;
 
     switch (arg2) {
         case 0:
@@ -1793,13 +1782,9 @@ s32 func_global_asm_8064BCB0(s32 arg0, s32 arg1) {
 }
 
 s32 func_global_asm_8064BD2C(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
-    f32 sp5C;
-    f32 sp58;
-    f32 sp54;
-    s32 sp50;
-    f32 sp4C;
-    s32 sp48;
-    s32 sp44;
+    f32 x, y, z;
+    f32 xRot, yRot, zRot;
+    s32 scale;
     s32 sp40;
     s32 temp_a0;
     s32 temp_v0;
@@ -1814,16 +1799,16 @@ s32 func_global_asm_8064BD2C(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
         if (func_global_asm_8064BCB0(temp_a0, arg3) != -1) {
             return 0;
         } else {
-            func_global_asm_806357F8(temp_a0, &sp5C, &sp58, &sp54, &sp50, &sp4C, &sp48, &sp44, &sp40, 1);
+            func_global_asm_806357F8(temp_a0, &x, &y, &z, &xRot, &yRot, &zRot, &scale, &sp40, 1);
             func_global_asm_8067ABC0(
                 0,
                 character_change_array[temp_v0].player_pointer,
                 9,
-                sp4C * 11.37777805f, 
+                yRot * 11.37777805f, 
                 0,
-                sp5C,
-                sp58,
-                sp54
+                x,
+                y,
+                z
             );
         }
     }
@@ -2150,8 +2135,6 @@ void func_global_asm_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064D0C4.s")
 
-void func_global_asm_8065092C(s16, s16);
-
 /*
 void func_global_asm_8064D0C4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 sp24;
@@ -2367,8 +2350,6 @@ void func_global_asm_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064DF5C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064E174.s")
-
-s32 func_global_asm_8064E174(s32, s16, s16, s32 *, s32, s32, s32);
 
 typedef struct {
     s32 unk0;

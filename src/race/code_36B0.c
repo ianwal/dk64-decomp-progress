@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-f32 func_global_asm_80665E48(f32, f32, f32, f32);
-
 typedef struct {
     u8 pad0[0x10 - 0x0];
     u8 unk10;

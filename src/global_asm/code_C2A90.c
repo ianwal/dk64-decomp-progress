@@ -49,7 +49,7 @@ u8 func_global_asm_806BDD90(void) {
 
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        if (func_global_asm_805FF0C8() != 0) {
+        if (func_global_asm_805FF0C8()) {
             current_actor_pointer->control_state = 0x40;
         } else {
             current_actor_pointer->unk130 = 0x3C;

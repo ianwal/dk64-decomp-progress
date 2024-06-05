@@ -102,7 +102,7 @@ void func_global_asm_806B904C(void) {
         current_actor_pointer->animation_state->scale_x = temp_f0;
         current_actor_pointer->animation_state->scale_y = temp_f0;
         current_actor_pointer->animation_state->scale_z = temp_f0;
-        if (func_global_asm_805FF0C8() != 0) {
+        if (func_global_asm_805FF0C8()) {
             current_actor_pointer->control_state = 0x40;
         } else {
             current_actor_pointer->draw_distance = 1000;

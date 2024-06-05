@@ -73,8 +73,6 @@ u8 func_global_asm_8065F5F0(GlobalASMStruct58 *arg0) {
     return D_global_asm_80748A90[arg0->unk0->unk66].unk15;
 }
 
-void func_global_asm_806615BC(void);
-
 void func_global_asm_8065F614(void) {
     GlobalASMStruct58 *phi_s0 = D_global_asm_807F93C0;
 
@@ -94,7 +92,6 @@ void func_global_asm_8065F614(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8065F964.s")
 
 void func_global_asm_806545D4(s32 arg0, s32 arg1, s32 arg2, s32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, f32 (*arg8)[4], s32 arg9, f32 *argA);
-void func_global_asm_80657E24(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 *arg8, s32 *arg9, s32 *argA, s32 *argB);
 
 /*
 void func_global_asm_8065F964(GlobalASMStruct58 *arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, f32 arg5[4][4], s32 arg6) {
@@ -160,7 +157,6 @@ s32 func_global_asm_8065FB04(GlobalASMStruct81 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_63EC0/func_global_asm_8065FB64.s")
 
-s16 func_global_asm_8065BAA0(f32 arg0, f32 arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s32 arg9, s8 *argA);
 void func_global_asm_8065C990(s32 arg0, s32 arg1, s32 arg2, void *arg3, s32 arg26, s32 arg27);
 extern f32 D_global_asm_8076A0B4[];
 extern s32 D_global_asm_807F78C0;

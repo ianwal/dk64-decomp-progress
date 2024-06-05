@@ -96,8 +96,6 @@ void arcade_pie_update(u8);
 void func_arcade_80030FEC(void);
 void func_arcade_800313B8(void);
 
-void func_global_asm_8060DEA8(void);
-
 /*.rodata 0x8004A840*/
 extern u8  D_arcade_8004A934;
 extern u8  D_arcade_8004A944;

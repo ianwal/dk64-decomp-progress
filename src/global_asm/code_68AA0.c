@@ -26,7 +26,7 @@ void func_global_asm_80663DA0(void) {
     count = 0;
     D_global_asm_807F9424 = 0;
     for (i = 0; i < D_global_asm_80747D70; i++) {
-        if (func_global_asm_80663FCC(i) != 0) {
+        if (func_global_asm_80663FCC(i)) {
             D_global_asm_807F9424 += 1;
         }
     }
@@ -67,8 +67,6 @@ u8 func_global_asm_80663FCC(s16 model2ArrayIndex) {
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68AA0/func_global_asm_80664044.s")
-
-void func_global_asm_80603340(f32, f32, f32, u8, s32, f32);
 
 /*
 void func_global_asm_80664044(u8 arg0, u8 arg1, u8 arg2, f32 arg3) {
