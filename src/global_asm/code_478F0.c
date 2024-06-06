@@ -137,9 +137,7 @@ void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 */
 
 void func_global_asm_80642E34(s32 **arg0, s16 arg1, s16 arg2, s32 arg3) {
-    f32 x;
-    f32 y;
-    f32 z;
+    f32 x, y, z;
     s32 *var_v1;
     f32 var_f0;
     s32 sp48;

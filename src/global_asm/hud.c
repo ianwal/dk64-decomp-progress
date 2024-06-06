@@ -454,19 +454,19 @@ u16 func_global_asm_806F8AD4(u8 arg0, u8 playerIndex) {
     return phi_a2;
 }
 
-void func_global_asm_806F8BC4(s32 arg0, u8 arg1, s32 arg2) {
+void func_global_asm_806F8BC4(s32 HUDItemIndex, u8 arg1, s32 arg2) {
     if ((cc_number_of_players < 2) && (!gameIsInDKTVMode())) {
         // TODO: Can this syntax be simplified
-        if ((arg0 != 8) || (func_global_asm_806F8BC4(9, arg1, arg2 + 0xA), (current_map != MAP_SNIDES_HQ))) {
-            D_global_asm_80754280->hud_item[arg0].unk_24 = arg1;
-            if (D_global_asm_80754280->hud_item[arg0].hud_state == 0) {
-                D_global_asm_80754280->hud_item[arg0].counter_timer = arg2;
+        if ((HUDItemIndex != 8) || (func_global_asm_806F8BC4(9, arg1, arg2 + 0xA), (current_map != MAP_SNIDES_HQ))) {
+            D_global_asm_80754280->hud_item[HUDItemIndex].unk_24 = arg1;
+            if (D_global_asm_80754280->hud_item[HUDItemIndex].hud_state == 0) {
+                D_global_asm_80754280->hud_item[HUDItemIndex].counter_timer = arg2;
             } else {
-                D_global_asm_80754280->hud_item[arg0].counter_timer = 0;
+                D_global_asm_80754280->hud_item[HUDItemIndex].counter_timer = 0;
             }
-            D_global_asm_80754280->hud_item[arg0].hud_state = 1;
-            if (D_global_asm_80754280->hud_item[arg0].freeze_timer == 0) {
-                D_global_asm_80754280->hud_item[arg0].freeze_timer = arg1 != 0;
+            D_global_asm_80754280->hud_item[HUDItemIndex].hud_state = 1;
+            if (D_global_asm_80754280->hud_item[HUDItemIndex].freeze_timer == 0) {
+                D_global_asm_80754280->hud_item[HUDItemIndex].freeze_timer = arg1 != 0;
             }
         }
     }

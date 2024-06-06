@@ -758,8 +758,6 @@ s32 func_global_asm_80666FC8(f32 arg0, f32 arg1, f32 arg2, u8 arg3) {
     return TRUE;
 }
 
-u8 func_global_asm_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3);
-
 // TODO: What does this return? Fake match?
 s32 func_global_asm_80667110(f32 arg0, f32 arg1, f32 *arg2) {
     D_global_asm_807F9484 = 0;
@@ -781,9 +779,6 @@ u8 func_global_asm_80667174(void) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80667180.s")
 
-// s32 func_global_asm_80666FC8(f32, f32, s32, u8, f32, s32);
-s32 func_global_asm_806672B8(f32, f32, f32 *, s32);
-u8 func_global_asm_806679BC(f32, f32, f32 *);
 extern s8 D_global_asm_807F94B6;
 
 /*
@@ -1036,8 +1031,6 @@ s32 func_global_asm_8066893C(Struct8066893C *arg0) {
 
 // Matrix?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_806689F0.s")
-
-void func_global_asm_80666AF8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5, u8 arg6);
 
 /*
 void func_global_asm_806689F0(s32 arg0, Struct8066893C *arg1, s32 arg2) {
@@ -1480,7 +1473,6 @@ s32 func_global_asm_80669CB4(GlobalASMStruct80 *arg0, f32 arg1, f32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_8066A08C.s")
 
 s32 func_global_asm_8066AC10(f32);
-void func_global_asm_8066ACA4(s32, s32, s32);
 
 void func_global_asm_8066A584(s32 arg0, f32 arg1) {
     if (D_global_asm_807F9510 != 0xA) {
@@ -1639,10 +1631,6 @@ void func_global_asm_8066AEE4(void *arg0, s32 arg1) {
     free(arg0);
 }
 
-//forward decl needed
-void func_global_asm_8066B4AC(s32,s32,s32);
-s32  func_global_asm_8066B9F4(void*);
-
 extern OSMesgQueue D_global_asm_807656D0;
 extern s32 D_global_asm_807F9680;
 
@@ -1688,8 +1676,6 @@ void func_global_asm_8066AF40(void) {
     }
     D_global_asm_807F9680 = 0;
 }
-
-s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3);
 
 s32 func_global_asm_8066B020(s32 pointerTableIndex, s32 fileIndex) {
     s32 sp1C;
@@ -1800,8 +1786,6 @@ void func_global_asm_8066B424(void) {
     D_global_asm_807F967D = 1;
 }
 
-void func_global_asm_8066BC00(s32 arg0, s32 arg1, s32 arg2);
-
 // It's usually a file from a pointer table in arg0
 void func_global_asm_8066B434(void *arg0, s32 arg1, s32 arg2) {
     s32 sp1C;
@@ -1858,12 +1842,12 @@ s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3) {
 }
 */
 
-s32 func_global_asm_8066B5C8(s32 arg0, s32 arg1) {
+s32 func_global_asm_8066B5C8(s32 pointerTableIndex, s32 fileIndex) {
     s32 phi_v1;
 
     phi_v1 = 0;
-    if (D_global_asm_807F95A8[arg0]) {
-        phi_v1 = D_global_asm_807F95A8[arg0][arg1];
+    if (D_global_asm_807F95A8[pointerTableIndex]) {
+        phi_v1 = D_global_asm_807F95A8[pointerTableIndex][fileIndex];
     }
     return phi_v1;
 }
@@ -1896,11 +1880,8 @@ typedef struct {
     s8 unk13;
 } GlobalASMStruct65;
 
-u32 func_global_asm_8066C2B4(u32);
-GlobalASMStruct40 *func_global_asm_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s32 arg2, s32 arg3);
+GlobalASMStruct40 *func_global_asm_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s32 pointerTableIndex, s32 arg3);
 void func_global_asm_8066B7F4(GlobalASMStruct40 *arg0, u32 arg1, s32 *arg2, s32 *arg3);
-void func_global_asm_8066BA2C(s32 arg0, u8 *arg1, u16 *arg2, s32 *arg3);
-void func_global_asm_8066BE20(s32);
 void func_global_asm_8066BECC(GlobalASMStruct40 *arg0);
 GlobalASMStruct40 *func_global_asm_8066BF0C(GlobalASMStruct65 *arg0, s32 arg1, s32 arg2);
 void func_global_asm_8066BFF0(GlobalASMStruct40 *arg0, GlobalASMStruct40 *arg1, s32 *arg2);
@@ -1945,17 +1926,17 @@ void func_global_asm_8066B7F4(GlobalASMStruct40 *arg0, u32 arg1, s32 *arg2, s32 
     func_global_asm_8066B7F4(arg0->unk14, arg1, arg2, arg3);
 }
 
-void func_global_asm_8066B8C8(u32 arg0, s32 arg1, s32 arg2) {
+void func_global_asm_8066B8C8(u32 arg0, s32 pointerTableIndex, s32 arg2) {
     u32 sp1C = func_global_asm_8066C2B4(arg0);
-    D_global_asm_807F9628[sp1C] = func_global_asm_8066B924(D_global_asm_807F9628[sp1C], arg0, arg1, arg2);
+    D_global_asm_807F9628[sp1C] = func_global_asm_8066B924(D_global_asm_807F9628[sp1C], arg0, pointerTableIndex, arg2);
 }
 
-GlobalASMStruct40 *func_global_asm_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s32 arg2, s32 arg3) {
+GlobalASMStruct40 *func_global_asm_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s32 pointerTableIndex, s32 arg3) {
     if (arg0 == NULL) {
         arg0 = malloc(sizeof(GlobalASMStruct40));
         arg0->unkC = 1;
         arg0->unk0 = arg1;
-        arg0->unk4 = arg2;
+        arg0->unk4 = pointerTableIndex;
         arg0->unk8 = arg3;
         arg0->unk10 = D_global_asm_807F967C;
         arg0->unk18 = NULL;
@@ -1967,9 +1948,9 @@ GlobalASMStruct40 *func_global_asm_8066B924(GlobalASMStruct40 *arg0, u32 arg1, s
                 arg0->unk10 = 1;
             }
         } else if (arg0->unk0 < arg1) {
-            arg0->unk18 = func_global_asm_8066B924(arg0->unk18, arg1, arg2, arg3);
+            arg0->unk18 = func_global_asm_8066B924(arg0->unk18, arg1, pointerTableIndex, arg3);
         } else {
-            arg0->unk14 = func_global_asm_8066B924(arg0->unk14, arg1, arg2, arg3);
+            arg0->unk14 = func_global_asm_8066B924(arg0->unk14, arg1, pointerTableIndex, arg3);
         }
     }
     return arg0;

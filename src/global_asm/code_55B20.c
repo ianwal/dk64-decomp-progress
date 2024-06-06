@@ -3,7 +3,6 @@
 
 void func_global_asm_8063B4C0(Chunk14*, u8);
 Chunk14* func_global_asm_80630890(Chunk14*, f32, f32, f32, void*);
-u8 func_global_asm_80668E9C(s32, s16, f32, f32, f32, s32);
 void func_global_asm_80656F14(s16, s32, s16, s16, s32, s32, f32, f32, f32);
 
 extern s32 D_global_asm_8076A0B4;

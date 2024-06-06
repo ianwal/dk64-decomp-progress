@@ -569,7 +569,6 @@ typedef struct {
 
 u8 func_global_asm_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_arg2 *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6);
 
-u8 func_global_asm_80668E9C(void *arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 *arg5);
 extern void *D_global_asm_807F5DE4;
 
 typedef struct Struct807F5FF4 Struct807F5FF4;
