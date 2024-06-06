@@ -136,31 +136,8 @@ u64 func_dk64_boot_80005918(u64, u64);
 // TODO: func_dk64_boot_80005A70 has no documented signature
 // TODO: __osGetFpcCsr has no documented signature
 
-// dk64_boot/gu/nonmatching/usprite.c
-// TODO: guSprite2DInit has no documented signature
-
 // dk64_boot/io/spsetstat.c
 // TODO: __osSpSetStatus has no documented signature
-
-// dk64_boot/gu/translate.c
-// TODO: guTranslateF has no documented signature
-// TODO: guTranslate has no documented signature
-
-// dk64_boot/gu/perspective.c
-// TODO: guPerspectiveF has no documented signature
-// TODO: guPerspective has no documented signature
-
-// dk64_boot/gu/nonmatching/lookathil.c
-// TODO: guLookAtHiliteF has no documented signature
-// TODO: guLookAtHilite has no documented signature
-
-// dk64_boot/gu/lookat.c
-// TODO: guLookAtF has no documented signature
-// TODO: guLookAt has no documented signature
-
-// dk64_boot/gu/ortho.c
-// TODO: guOrthoF has no documented signature
-// TODO: guOrtho has no documented signature
 
 // dk64_boot/io/controller.c
 // TODO: __osContGetInitData has no documented signature
@@ -201,30 +178,6 @@ f32 func_dk64_boot_8000773C(s64);
 
 // dk64_boot/io/sptaskyield.c
 // TODO: osSpTaskYield has no documented signature
-
-// dk64_boot/gu/scale.c
-// TODO: guScaleF has no documented signature
-// TODO: guScale has no documented signature
-
-// dk64_boot/gu/nonmatching/rotate.c
-// TODO: guRotateF has no documented signature
-// TODO: guRotate has no documented signature
-
-// dk64_boot/gu/mtxcatf.c
-// TODO: guMtxXFMF has no documented signature
-// TODO: guMtxCatF has no documented signature
-
-// dk64_boot/gu/mtxcatl.c
-// TODO: guMtxXFML has no documented signature
-// TODO: guMtxCatL has no documented signature
-
-// dk64_boot/gu/nonmatching/align.c
-// TODO: guAlignF has no documented signature
-// TODO: guAlign has no documented signature
-
-// dk64_boot/gu/nonmatching/position.c
-// TODO: guPositionF has no documented signature
-// TODO: guPosition has no documented signature
 
 // dk64_boot/os/virtualtophysical.c
 // TODO: __osDisableInt has no documented signature
@@ -267,22 +220,13 @@ f32 func_dk64_boot_8000773C(s64);
 // dk64_boot/io/sirawwrite.c
 // TODO: __osSiRawWriteIo has no documented signature
 
-// dk64_boot/gu/mtxutil.c
-// TODO: guMtxF2L has no documented signature
-// TODO: guMtxIdentF has no documented signature
-// TODO: guMtxIdent has no documented signature
-// TODO: guMtxL2F has no documented signature
-
 // dk64_boot/gu/cosf.c
 // TODO: fcos has no documented signature
-// TODO: cosf has no documented signature
 // TODO: __cosf has no documented signature
 
 // dk64_boot/gu/sinf.c
-// TODO: sinf has no documented signature
 // TODO: __sinf has no documented signature
 // TODO: fsin has no documented signature
-// TODO: sqrtf has no documented signature
 
 // dk64_boot/io/ai.c
 // TODO: __osAiDeviceBusy has no documented signature
@@ -322,9 +266,6 @@ f32 func_dk64_boot_8000773C(s64);
 
 // dk64_boot/io/sp.c
 // TODO: __osSpDeviceBusy has no documented signature
-
-// dk64_boot/gu/normalize.c
-// TODO: guNormalize has no documented signature
 
 // dk64_boot/io/piacs.c
 // TODO: __osPiCreateAccessQueue has no documented signature

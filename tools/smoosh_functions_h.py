@@ -69,6 +69,10 @@ if __name__ == "__main__":
         for line in f:
             osHLines.append(line.strip())
 
+    with open("./include/2.0L/PR/gu.h", 'r') as f:
+        for line in f:
+            osHLines.append(line.strip())
+
     # header header
     print("#ifndef __FUNCTIONS_H__")
     print("#define __FUNCTIONS_H__")
