@@ -375,16 +375,16 @@ void func_boss_800253AC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_boss_800254D0.s")
 
 void func_boss_80027770(void) {
-    u8 var_v1;
+    u8 boneIndex;
 
     if (!(object_timer & 3)) {
         if (!(object_timer & 0xF)) {
-            var_v1 = 0xC;
+            boneIndex = 0xC;
         } else {
-            var_v1 = ((((rand() >> 0xF) % 32767) % 7) + 0x1D);
+            boneIndex = ((((rand() >> 0xF) % 32767) % 7) + 0x1D);
         }
         func_global_asm_80714998(3);
         changeActorColor(0x50, 0x50, 0x50, 0xC8);
-        func_global_asm_8068588C(current_actor_pointer, var_v1, 2.0f, 0.0f, 0.0f, 0.0f, -0x78);
+        func_global_asm_8068588C(current_actor_pointer, boneIndex, 2.0f, 0.0f, 0.0f, 0.0f, -0x78);
     }
 }

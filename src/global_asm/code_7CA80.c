@@ -22,22 +22,7 @@ extern u16 D_global_asm_8074D624[];
 Actor *actor_list[256];
 s16 actor_count;
 
-s32 func_global_asm_8067B2C0(s32);
-void func_global_asm_80678F64(Actor*);
-void func_global_asm_8067B01C(void);
-s16 func_global_asm_8067AF74(Actor*);
-s32 func_global_asm_806782E8(Actor *arg0);
-s32 func_global_asm_8067B3F4(s32 arg0);
-void func_global_asm_80679178(Actor *arg0);
-void func_global_asm_80678E6C(Actor *arg0);
-void func_global_asm_80678E14(Actor *arg0);
-void func_global_asm_806790F4(u8);
-void func_global_asm_8067A1DC(Actor *arg0);
-
-void func_global_asm_806783BC();
 void func_global_asm_806136B4();
-// Note: The pointer can be to any one of the above 10 structs, maybe more
-void func_global_asm_8070DA74(Actor*);
 
 // regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80677D80.s")
@@ -133,8 +118,6 @@ typedef struct {
     Actor124 *unk1C;
 } Struct80677ED0;
 
-extern s32 func_global_asm_80678050(u16);
-
 s32 func_global_asm_80677ED0(Struct80677ED0 *arg0) {
     s32 master_type;
 
@@ -183,7 +166,6 @@ extern u16 *D_global_asm_8074E218[];
 extern u16 D_global_asm_8074DA58[];
 
 void func_global_asm_8067AE90(Actor *arg0);
-void func_global_asm_806761D0(Actor *arg0);
 
 /*
 // Doable, initializeActor(behaviour)
@@ -848,8 +830,6 @@ ActorCollision *func_global_asm_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 ar
 
 extern u8 D_global_asm_807FBB85;
 extern s32 D_global_asm_80720E2C; // TODO: Datatype
-
-void func_global_asm_80686CF8(Actor *actor);
 
 void func_global_asm_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
     s32 sp3C;

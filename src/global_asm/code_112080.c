@@ -581,8 +581,6 @@ void func_global_asm_8070E2AC(s32 arg0, Struct8070E2AC_arg1 *arg1, Struct8070E2A
 // https://decomp.me/scratch/b7jCl
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070E548.s")
 
-void func_global_asm_8070E34C(void *arg0, void *arg1, s32 arg2);
-
 /*
 void func_global_asm_8070E548(Actor *arg0, u16 arg1, u8 arg2) {
     Struct8070DDDC *temp_s2;

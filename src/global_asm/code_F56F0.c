@@ -117,7 +117,6 @@ s32 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 void func_global_asm_80614FD8(void*);
 void func_global_asm_80614F28(void*);
 s32 func_global_asm_80613448();
-s32 func_global_asm_806C8DE0(u8);
 
 void func_global_asm_806F09F0(Actor *arg0, u16 arg1) {
     switch (arg1) {

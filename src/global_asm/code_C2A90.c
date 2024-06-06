@@ -27,12 +27,10 @@ extern s32 D_global_asm_807FBDC8[];
 extern u16 D_global_asm_807FC930[];
 
 void func_global_asm_8061CAD8(void);
-void func_global_asm_8061CB08(void);
 void func_global_asm_8061F510(s32, s32);
 void func_global_asm_8062217C(Actor *, s32);
 u8 func_global_asm_8072881C(u8 arg0, u32 *arg1);
 void func_global_asm_8072A450(void);
-u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);
 extern int func_global_asm_8068E474(); // TODO: Signature
 Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1);
 

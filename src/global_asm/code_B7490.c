@@ -6,7 +6,6 @@ extern s16 D_global_asm_80750340;
 extern u8 D_global_asm_807FBD70;
 
 void func_global_asm_8072A86C(s16 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4);
-u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);
 
 void func_global_asm_806B2790(void) {
     u8 var_a2;

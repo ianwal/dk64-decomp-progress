@@ -28,10 +28,11 @@ void func_global_asm_80614A64(Actor *arg0);
 void func_global_asm_80614D00(Actor *arg0, f32 arg1, f32 arg2);
 void func_global_asm_80614D48(Actor *arg0, f32 arg1, f32 arg2);
 void func_global_asm_80614D90(Actor *arg0);
-void func_global_asm_8061C464(Actor *arg0, Actor *arg1, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32, s32, s32, s32, s32, s32, s32, s32, f32);
+void func_global_asm_8061C464(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
+void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
+void func_global_asm_8061CB08(void);
 s32 func_global_asm_8061CB50(void);
-void func_global_asm_80626F8C(f32, f32, f32, f32 *, f32 *, s32, f32, s32);
+void func_global_asm_80626F8C(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, f32 arg6, s32 arg7);
 void func_global_asm_806A36F4(void);
 u8 func_global_asm_806E770C(void);
 void func_global_asm_8073243C(void);
@@ -70,11 +71,11 @@ void func_global_asm_8073E8B4(void);
 // dk64_boot/inflate.c
 // TODO: func_dk64_boot_800010C0 has no documented signature
 // TODO: func_dk64_boot_80001700 has no documented signature
-// TODO: func_dk64_boot_80001AF4 has no documented signature
-// TODO: func_dk64_boot_80001C48 has no documented signature
-// TODO: func_dk64_boot_80001DB0 has no documented signature
-// TODO: func_dk64_boot_800022D4 has no documented signature
-// TODO: func_dk64_boot_800023F4 has no documented signature
+int func_dk64_boot_80001AF4(void); // inflate_stored();
+int func_dk64_boot_80001C48(void); // inflate_fixed();
+int func_dk64_boot_80001DB0(void); // inflate_dynamic();
+int func_dk64_boot_800022D4(int *e); // inflate_block();
+int func_dk64_boot_800023F4(void); //int inflate()
 
 // dk64_boot/dk64_boot_30E0.c
 // TODO: func_dk64_boot_800024E0 has no documented signature
@@ -939,7 +940,7 @@ void func_global_asm_80632FCC(s16 arg0, u8 arg1);
 // TODO: func_global_asm_806330C4 has no documented signature
 // TODO: func_global_asm_806333F8 has no documented signature
 void func_global_asm_80633570(GlobalASMStruct83 *arg0);
-void func_global_asm_806335B0(s32, u8, s32 boneIndex, f32* x, f32* y, f32* z);
+void func_global_asm_806335B0(s32 arg0, u8 arg1, s32 boneIndex, f32* x, f32* y, f32* z);
 // TODO: func_global_asm_8063367C has no documented signature
 // TODO: func_global_asm_8063373C has no documented signature
 void func_global_asm_806338B4(OM2_unk74 *arg0);
@@ -956,13 +957,13 @@ void func_global_asm_8063495C(OM2_unk24 *arg0, ObjectModel2 *arg1);
 void func_global_asm_80634CC8(s32 arg0, s16 arg1, s16 arg2, s16 arg3);
 void func_global_asm_80634D14(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
 void func_global_asm_80634D64(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4, s32 arg5, u8 arg6);
-void func_global_asm_80634E10(Model2Model50_B8*, s16, s16, s16, s16*, s16*, u8);
+void func_global_asm_80634E10(Model2Model50_B8 *arg0, s16 arg1, s16 arg2, s16 arg3, s16 *arg4, s16 *arg5, u8 arg6);
 void func_global_asm_80634EA4(s32 arg0, s16 arg1, u8 arg2);
 void func_global_asm_80634EDC(s32 arg0, s16 arg1, u8 *arg2);
-void func_global_asm_80634F14(s32, s16, u8, u8*, u8);
-void func_global_asm_80634FA0(Model2Model50_B8*, s16, u8, u8*, u8);
+void func_global_asm_80634F14(s32 arg0, s16 arg1, u8 arg2, u8 *arg3, u8 arg4);
+void func_global_asm_80634FA0(Model2Model50_B8 *arg0, s16 arg1, u8 arg2, u8 *arg3, u8 arg4);
 void func_global_asm_80635018(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
-void func_global_asm_80635098(Model2Model50_B8*, s16, s32, s32);
+void func_global_asm_80635098(Model2Model50_B8 *arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_80635114 has no documented signature
 s32 func_global_asm_80635214(Gfx *arg0);
 // TODO: func_global_asm_8063524C has no documented signature
@@ -999,9 +1000,9 @@ void func_global_asm_806398E4(s32 objectModel2Index, u8 arg1, u8 arg2);
 // TODO: func_global_asm_80639968 has no documented signature
 // TODO: func_global_asm_80639C04 has no documented signature
 // TODO: func_global_asm_80639CD0 has no documented signature
-s32 func_global_asm_80639F1C(Model2Model50_B8 *, s32 *, s32 *);
+s32 func_global_asm_80639F1C(Model2Model50_B8 *arg0, s32 *arg1, s32 *arg2);
 // TODO: func_global_asm_80639FC0 has no documented signature
-s32 func_global_asm_8063A38C(Chunk14*, Chunk14*, f32, f32, f32);
+s32 func_global_asm_8063A38C(Chunk14 *arg0, Chunk14 *arg1, f32 arg2, f32 arg3, f32 arg4);
 // TODO: func_global_asm_8063A848 has no documented signature
 void func_global_asm_8063A8C4(s16 arg0, u8 arg1, f32 arg2);
 // TODO: func_global_asm_8063A968 has no documented signature
@@ -1105,7 +1106,7 @@ void func_global_asm_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 void func_global_asm_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_806443E4 has no documented signature
 void func_global_asm_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
-void func_global_asm_80644A18(s32, s32, s32, f32);
+void func_global_asm_80644A18(s32 arg0, s32 arg1, s32 arg2, f32 arg3);
 void func_global_asm_80644CC0(void **arg0, s32 arg1, s32 arg2, s32 arg3);
 void func_global_asm_80644D50(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
 void func_global_asm_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
@@ -1208,7 +1209,7 @@ void func_global_asm_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
 void func_global_asm_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_8064DE04 has no documented signature
 // TODO: func_global_asm_8064DF5C has no documented signature
-s32 func_global_asm_8064E174(s32, s16, s16, s32 *, s32, s32, s32);
+s32 func_global_asm_8064E174(s32 arg0, s16 arg1, s16 arg2, s32 *arg3, s32 arg4, s32 arg5, s32 arg6);
 void func_global_asm_8064E428(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
 void func_global_asm_8064E48C(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
 void func_global_asm_8064E4F8(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
@@ -1239,7 +1240,7 @@ void func_global_asm_8064F804(OM2_unk78 *arg0);
 // TODO: func_global_asm_8064F84C has no documented signature
 void func_global_asm_8064F954(s32 arg0);
 // TODO: func_global_asm_8064F97C has no documented signature
-void func_global_asm_8064FA7C(void*, void*);
+void func_global_asm_8064FA7C(void *arg0, void *arg1);
 // TODO: func_global_asm_8064FB64 has no documented signature
 // TODO: func_global_asm_806500E0 has no documented signature
 void func_global_asm_8065051C(void);
@@ -1288,12 +1289,12 @@ u8 func_global_asm_80652E58(s16 arg0);
 u8 func_global_asm_80652EBC(s16 arg0);
 u8 func_global_asm_80652F24(s16, s16);
 s16 func_global_asm_80652F9C(f32 arg0, f32 arg1, f32 arg2, s16 arg3);
-void func_global_asm_80652FDC(f32, f32, f32, s16, s16, s16*);
-s16 func_global_asm_806531B8(f32, f32, f32, s16);
+void func_global_asm_80652FDC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 *arg5);
+s16 func_global_asm_806531B8(f32 arg0, f32 arg1, f32 arg2, s16 arg3);
 s32 func_global_asm_806533C4(f32 arg0, f32 arg1, f32 arg2);
 s32 func_global_asm_806534E0(f32 arg0, f32 arg1, f32 arg2, s16 chunkIndex, s8 *arg4, f32 *arg5);
-s32 func_global_asm_80653684(Chunk78_7C*, f32, f32);
-s32 func_global_asm_80653804(Chunk78_7C*, f32, f32);
+s32 func_global_asm_80653684(Chunk78_7C *arg0, f32 arg1, f32 arg2);
+s32 func_global_asm_80653804(Chunk78_7C *arg0, f32 arg1, f32 arg2);
 void func_global_asm_80653A70(s16 chunkIndex);
 void func_global_asm_80653B70(u8 arg0);
 void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2);
@@ -1301,17 +1302,17 @@ void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2);
 void func_global_asm_80653EA8(Gfx *arg0, Gfx *arg1);
 void func_global_asm_80653F68(s16 index);
 // TODO: func_global_asm_80653FA4 has no documented signature
-void func_global_asm_80654380(f32, f32, f32);
-void func_global_asm_80654418(f32, f32, f32);
+void func_global_asm_80654380(f32 arg0, f32 arg1, f32 arg2);
+void func_global_asm_80654418(f32 arg0, f32 arg1, f32 arg2);
 // TODO: func_global_asm_806545D4 has no documented signature
-void func_global_asm_806547A8(f32, f32, f32);
-void func_global_asm_80654A2C(f32, f32, f32);
+void func_global_asm_806547A8(f32 arg0, f32 arg1, f32 arg2);
+void func_global_asm_80654A2C(f32 arg0, f32 arg1, f32 arg2);
 void func_global_asm_80654BC0(s32 arg0, u8 arg1);
 // TODO: func_global_asm_80654CCC has no documented signature
 // TODO: func_global_asm_80654E84 has no documented signature
 // TODO: func_global_asm_80654FEC has no documented signature
 void func_global_asm_80655258(f32 arg0, f32 arg1, f32 arg2, s32 arg3);
-void func_global_asm_80655410(f32, f32, f32);
+void func_global_asm_80655410(f32 arg0, f32 arg1, f32 arg2);
 void func_global_asm_80655AD0(void);
 void func_global_asm_80655BF0(void);
 s32 func_global_asm_80655CF8(s16 arg0, s32 arg1);
@@ -1335,7 +1336,7 @@ void func_global_asm_8065850C(f32 arg0[4][4], f32 arg1[4][4], s32 arg2, f32 arg3
 // TODO: func_global_asm_80658624 has no documented signature
 void func_global_asm_806588E0(s32 fileIndex);
 // TODO: func_global_asm_80658930 has no documented signature
-s16 func_global_asm_80658B08(s8, u8*, s16);
+s16 func_global_asm_80658B08(s8 arg0, u8 *arg1, s16 arg2);
 void func_global_asm_80658BD0(void);
 void func_global_asm_80658C10(s32 arg0, s16 arg1, s16 arg2, s16 arg3);
 void func_global_asm_80658CCC(void);
@@ -1419,7 +1420,7 @@ void func_global_asm_8065F49C(s32 arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_8065F4F4(GlobalASMStruct58 *arg0);
 u8 func_global_asm_8065F5F0(GlobalASMStruct58 *arg0);
 void func_global_asm_8065F614(void);
-void func_global_asm_8065F678(f32, f32, f32, u8);
+void func_global_asm_8065F678(f32 arg0, f32 arg1, f32 arg2, u8 arg3);
 void func_global_asm_8065F964(GlobalASMStruct58 *arg0, f32 arg1, f32 arg2, f32 arg3, u8 arg4, f32 arg5[4][4], s32 arg6);
 // TODO: func_global_asm_8065FB04 has no documented signature
 // TODO: func_global_asm_8065FB64 has no documented signature
@@ -1525,7 +1526,7 @@ void func_global_asm_80666290(Actor *arg0, void *arg1, void *arg2, void *arg3, v
 u8 func_global_asm_8066635C(Actor *arg0, f32 x, f32 y, f32 z, f32 *arg4);
 void func_global_asm_806663F8(void);
 u8 func_global_asm_8066641C(void);
-void func_global_asm_80666428(Actor *arg0, f32 x, f32 y, f32 z, void*, void*, void*, void*, u8);
+void func_global_asm_80666428(Actor *arg0, f32 x, f32 y, f32 z, void *arg4, void *arg5, void *arg6, void *arg7, u8 arg8);
 u8 func_global_asm_80666A88(void);
 u8 func_global_asm_80666A94(void);
 u8 func_global_asm_80666AA0(void);
@@ -1542,9 +1543,9 @@ s32 func_global_asm_80667110(f32 arg0, f32 arg1, f32 *arg2);
 u8 func_global_asm_8066715C(f32 *arg0);
 u8 func_global_asm_80667174(void);
 u8 func_global_asm_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3);
-s32 func_global_asm_806672B8(f32, f32, f32 *, s32);
+s32 func_global_asm_806672B8(f32 arg0, f32 arg1, f32 *arg2, s32 arg3);
 f32 func_global_asm_8066785C(void *arg0, f32 arg1, f32 arg2);
-u8 func_global_asm_806679BC(f32, f32, f32 *);
+u8 func_global_asm_806679BC(f32 arg0, f32 arg1, f32 *arg2);
 s32 func_global_asm_80668520(f32 *arg0, f32 arg1, f32 arg2, f32 *arg3);
 // TODO: func_global_asm_806685E0 has no documented signature
 void func_global_asm_806686F4(s32 arg0);
@@ -1583,7 +1584,7 @@ void func_global_asm_8066B0DC(void);
 void func_global_asm_8066B0EC(s32 arg0);
 void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3);
 void func_global_asm_8066B424(void);
-void func_global_asm_8066B434(void*, s32, s32);
+void func_global_asm_8066B434(void *arg0, s32 arg1, s32 arg2);
 void func_global_asm_8066B4AC(s32 arg0, s32 arg1, s32 arg2);
 s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3);
 s32 func_global_asm_8066B5C8(s32 pointerTableIndex, s32 fileIndex);
@@ -1734,7 +1735,7 @@ void func_global_asm_806755A8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, 
 // global_asm/done/code_7A510.c
 // TODO: func_global_asm_80675810 has no documented signature
 void func_global_asm_80675AFC(Actor *arg0, Actor *arg1);
-s32 func_global_asm_80675C70(s16, s16, s16);
+s32 func_global_asm_80675C70(s16 arg0, s16 arg1, s16 arg2);
 void func_global_asm_80675D70(Actor *arg0);
 void func_global_asm_80675DD0(Actor *arg0, Actor *arg1);
 // TODO: func_global_asm_80675E3C has no documented signature
@@ -1778,7 +1779,7 @@ u8 func_global_asm_80676CB0(Struct80676CB0 *arg0, u8 arg1);
 void func_global_asm_80676D00(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3);
 
 // global_asm/code_7BBD0.c
-// TODO: func_global_asm_80676ED0 has no documented signature
+u8 func_global_asm_80676ED0(Actor *arg0, s16 *arg1, s16 *arg2);
 // TODO: func_global_asm_80677148 has no documented signature
 // TODO: func_global_asm_8067760C has no documented signature
 // TODO: func_global_asm_806776A0 has no documented signature
@@ -1786,12 +1787,12 @@ s32 func_global_asm_80677CAC(s16 arg0, s16 arg1);
 s32 func_global_asm_80677D58(Actor *arg0);
 
 // global_asm/code_7CA80.c
-// TODO: func_global_asm_80677D80 has no documented signature
+void func_global_asm_80677D80(void);
 void func_global_asm_80677EC8(s32 arg0);
 // TODO: func_global_asm_80677ED0 has no documented signature
 s32 spawnActor(Actors actorIndex, s32 modelIndex);
 s32 func_global_asm_80678014(s32 arg0);
-// TODO: func_global_asm_80678050 has no documented signature
+s32 func_global_asm_80678050(u16);
 void deleteActor(Actor *arg0);
 s32 func_global_asm_806782E8(Actor *arg0);
 void func_global_asm_806783BC(void);
@@ -1827,12 +1828,12 @@ void func_global_asm_806791EC(Actor *arg0, s32 arg1);
 void func_global_asm_80679200(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, s32 arg4, void *arg5);
 void func_global_asm_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5, s32 arg6);
 // TODO: func_global_asm_80679334 has no documented signature
-ActorCollision *func_global_asm_80679490(Actor *, s32, u8, s32, void*);
+ActorCollision *func_global_asm_80679490(Actor *arg0, s32 arg1, u8 arg2, s32 arg3, void *arg4);
 // TODO: func_global_asm_806794EC has no documented signature
 void func_global_asm_80679DC4(Actor *arg0, Actor *arg1, u8 arg2);
 // TODO: func_global_asm_8067A09C has no documented signature
 void func_global_asm_8067A170(Actor* arg0, u8 arg1);
-// TODO: func_global_asm_8067A1DC has no documented signature
+void func_global_asm_8067A1DC(Actor *arg0);
 void func_global_asm_8067A69C(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5);
 void func_global_asm_8067A70C(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, f32 arg4, u8 arg5, u8 arg6);
 void func_global_asm_8067A784(Actor *arg0, Actor *arg1, s16 arg2, f32 arg3, s16 arg4);
@@ -1856,7 +1857,7 @@ void func_global_asm_8067AE90(Actor *arg0);
 void func_global_asm_8067AEFC(Actor *arg0);
 s32 func_global_asm_8067AF44(Actor *arg0);
 s16 func_global_asm_8067AF74(Actor *arg0);
-// TODO: func_global_asm_8067B01C has no documented signature
+void func_global_asm_8067B01C(void);
 void func_global_asm_8067B100(Actor *player);
 u8 func_global_asm_8067B1E0(Actor *arg0);
 void moveAndScaleActorToAnother(Actor *destination, Actor *source, f32 scale);
@@ -1955,8 +1956,8 @@ void func_global_asm_806852C4(f32 arg0, f32 arg1, f32 arg2, f32 arg3);
 // TODO: func_global_asm_80685390 has no documented signature
 void func_global_asm_80685520(f32 arg0, u8 arg1, f32 arg2, f32 arg3, f32 arg4);
 void func_global_asm_80685708(Actor *arg0, u8 arg1);
-void func_global_asm_8068581C(Actor *, s16, f32, f32, f32, f32, s32);
-void func_global_asm_8068588C(Actor *actor, s16 arg1, f32 scale, f32 x, f32 y, f32 z, s32 arg6);
+void func_global_asm_8068581C(Actor *actor, s16 boneIndex, f32 scale, f32 x, f32 y, f32 z, s32 arg6);
+void func_global_asm_8068588C(Actor *actor, s16 boneIndex, f32 scale, f32 x, f32 y, f32 z, s32 arg6);
 void func_global_asm_806858E8(Actor *actor, s16 boneIndex, f32 scale, f32 x, f32 y, f32 z, s32 arg6);
 void func_global_asm_80685984(f32 arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_80685B44(void *arg0, u8 arg1, f32 arg2, u8 arg3, u8 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8);
@@ -1968,7 +1969,7 @@ void func_global_asm_80686340(void);
 // TODO: func_global_asm_80686390 has no documented signature
 void func_global_asm_8068696C(Actor *arg0);
 void func_global_asm_80686A5C(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
-// TODO: func_global_asm_80686CF8 has no documented signature
+void func_global_asm_80686CF8(Actor *actor);
 void func_global_asm_80686E40(f32 x, f32 y, f32 z, s32 arg3);
 void func_global_asm_80686F90(u8 arg0, s16 arg1, s16 arg2);
 void func_global_asm_80687080(void);
@@ -2112,7 +2113,7 @@ void func_global_asm_80690470(Actor *arg0);
 void func_global_asm_80690500(void);
 void func_global_asm_806907B8(void);
 void func_global_asm_806907E0(void);
-void func_global_asm_806907F0(f32, f32, f32);
+void func_global_asm_806907F0(f32 x, f32 y, f32 z);
 void func_global_asm_80690814(Actor *arg0, s32 arg1);
 void func_global_asm_8069084C(s16 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4, f32 arg5, Actor *arg6);
 void func_global_asm_80690930(s16 arg0, s16 arg1, s16 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, Actor *arg8);
@@ -2143,7 +2144,7 @@ void func_global_asm_8069329C(void);
 // TODO: func_global_asm_80694D20 has no documented signature
 s32 func_global_asm_806951B0(Actor *arg0);
 // TODO: func_global_asm_806951E8 has no documented signature
-// TODO: func_global_asm_80695724 has no documented signature
+void func_global_asm_80695724(f32 arg0, u8 arg1);
 void func_global_asm_80695B50(void);
 // TODO: func_global_asm_80695BAC has no documented signature
 // TODO: func_global_asm_806960A4 has no documented signature
@@ -2166,7 +2167,7 @@ void func_global_asm_8069902C(void);
 void func_global_asm_8069904C(void);
 
 // global_asm/code_9DD70.c
-void func_global_asm_80699070(s16 *, s16 *, f32, f32, f32, f32, f32, f32);
+void func_global_asm_80699070(s16 *arg0, s16 *arg1, f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2);
 // TODO: func_global_asm_80699128 has no documented signature
 // TODO: func_global_asm_80699284 has no documented signature
 void func_global_asm_806998C8(void);
@@ -2264,13 +2265,13 @@ void func_global_asm_806A3B78(s32 *arg0, AAD_global_asm_806A4DDC *arg1, Struct80
 // TODO: func_global_asm_806A495C has no documented signature
 // TODO: func_global_asm_806A4B84 has no documented signature
 // TODO: func_global_asm_806A4DDC has no documented signature
-// TODO: func_global_asm_806A5174 has no documented signature
+void func_global_asm_806A5174(Actor *arg0, void *arg1, f32 arg2);
 void func_global_asm_806A57C0(AAD_global_asm_806A4DDC *arg0);
-// TODO: func_global_asm_806A5868 has no documented signature
-// TODO: func_global_asm_806A5C60 has no documented signature
+void func_global_asm_806A5868(void);
+void func_global_asm_806A5C60(Actor *arg0);
 
 // global_asm/done/code_AAAF0.c
-void func_global_asm_806A5DF0(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
+void func_global_asm_806A5DF0(s16 arg0, f32 x, f32 y, f32 z, s16 arg4, u8 arg5, s16 arg6, s32 arg7);
 // TODO: func_global_asm_806A5EAC has no documented signature
 void func_global_asm_806A5F44(void);
 void func_global_asm_806A5FA4(void);
@@ -2290,7 +2291,7 @@ void func_global_asm_806A63A8(void);
 void func_global_asm_806A6408(void);
 // TODO: func_global_asm_806A6468 has no documented signature
 // TODO: func_global_asm_806A6574 has no documented signature
-// TODO: func_global_asm_806A664C has no documented signature
+void func_global_asm_806A664C(f32 arg0);
 void func_global_asm_806A6DB4(u8 arg0);
 void func_global_asm_806A734C(void);
 void func_global_asm_806A736C(void);
@@ -2564,7 +2565,7 @@ void func_global_asm_806C850C(s32 arg0, u8 arg1);
 void func_global_asm_806C8984(void);
 void func_global_asm_806C8D20(Actor *arg0);
 u8 func_global_asm_806C8D2C(s16 arg0);
-// TODO: func_global_asm_806C8DE0 has no documented signature
+s32 func_global_asm_806C8DE0(s32 playerIndex);
 // TODO: func_global_asm_806C8E58 has no documented signature
 void func_global_asm_806C8EE8(void);
 // TODO: func_global_asm_806C8F8C has no documented signature
@@ -3226,15 +3227,15 @@ f32 func_global_asm_806F7378(s32 arg0);
 // global_asm/hud.c
 // TODO: func_global_asm_806F7FD0 has no documented signature
 void func_global_asm_806F8004(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4);
-void func_global_asm_806F8170(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3);
+void func_global_asm_806F8170(s32 HUDItemIndex, f32 *arg1, f32 *arg2, f32 *arg3);
 // TODO: func_global_asm_806F8278 has no documented signature
 void func_global_asm_806F833C(s32 arg0);
 void func_global_asm_806F8A8C(u8 arg0, u8 playerIndex, s32 arg2);
 u16 func_global_asm_806F8AD4(u8 arg0, u8 playerIndex);
 void func_global_asm_806F8BC4(s32 HUDItemIndex, u8 arg1, s32 arg2);
-void func_global_asm_806F8CB0(s32 arg0);
-void func_global_asm_806F8CFC(s32 arg0, s32 arg1);
-void func_global_asm_806F8D58(s32 arg0, s32 arg1);
+void func_global_asm_806F8CB0(s32 HUDItemIndex);
+void func_global_asm_806F8CFC(s32 HUDItemIndex, s32 arg1);
+void func_global_asm_806F8D58(s32 HUDItemIndex, s32 arg1);
 void func_global_asm_806F8DC4(u8 *arg0, s32 arg1, s32 arg2);
 s32 func_global_asm_806F8EB4(void);
 u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex); // getMaxItemCapacity(HUDItemIndex, playerIndex)
@@ -3262,7 +3263,7 @@ s32 func_global_asm_806FA7A4(s32 arg0);
 // TODO: func_global_asm_806FA9C0 has no documented signature
 // TODO: func_global_asm_806FAB20 has no documented signature
 void func_global_asm_806FAC64(u8 arg0);
-// TODO: func_global_asm_806FACE8 has no documented signature
+void *func_global_asm_806FACE8(u32 arg0);
 // TODO: func_global_asm_806FAFE4 has no documented signature
 void func_global_asm_806FB218(void);
 void func_global_asm_806FB290(void);
@@ -3303,10 +3304,10 @@ void func_global_asm_806FDAEC(s16 arg0);
 // TODO: func_global_asm_806FDB8C has no documented signature
 void func_global_asm_806FDF1C(s16 arg0, char *arg1);
 // TODO: func_global_asm_806FDF54 has no documented signature
-Gfx *func_global_asm_806FE078(Gfx *, u8, s32, f32, f32, f32, f32);
+Gfx *func_global_asm_806FE078(Gfx *dl, u8 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
 
 // global_asm/code_103AB0.c
-Gfx *func_global_asm_806FEDB0(Gfx*, u8);
+Gfx *func_global_asm_806FEDB0(Gfx *dl, u8 arg1);
 // TODO: func_global_asm_806FEF7C has no documented signature
 Gfx *func_global_asm_806FF01C(Gfx *dl, Actor *arg1);
 void func_global_asm_806FF144(Gfx *dl);
@@ -3322,7 +3323,7 @@ void func_global_asm_806FFF5C(void);
 // TODO: func_global_asm_80700088 has no documented signature
 void func_global_asm_807002AC(u16 *arg0, s16 **arg1, f32 arg2);
 // TODO: func_global_asm_8070033C has no documented signature
-Gfx *func_global_asm_8070068C(Gfx *);
+Gfx *func_global_asm_8070068C(Gfx *dl);
 // TODO: func_global_asm_807007B8 has no documented signature
 // TODO: func_global_asm_807009F4 has no documented signature
 // TODO: func_global_asm_80700AE4 has no documented signature
@@ -3394,25 +3395,25 @@ void func_global_asm_8070C27C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4,
 // TODO: func_global_asm_8070C2D8 has no documented signature
 void func_global_asm_8070C590(f32 (*arg0)[4], f32 (*arg1)[4], f32 (*arg2)[4]);
 // TODO: func_global_asm_8070C808 has no documented signature
-void func_global_asm_8070C89C(float (*mf)[4], f32, f32, f32);
-void func_global_asm_8070C8F4(float (*mf)[4], f32, f32, f32);
-void func_global_asm_8070C990(float (*mf)[4], f32, f32, f32);
+void func_global_asm_8070C89C(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3);
+void func_global_asm_8070C8F4(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3);
+void func_global_asm_8070C990(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_8070C9E8(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_8070CA2C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_8070CA70(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3);
-void func_global_asm_8070CAB4(float (*mf)[4], f32);
-void func_global_asm_8070CB2C(float (*mf)[4], f32);
-void func_global_asm_8070CBA4(float (*mf)[4], f32);
+void func_global_asm_8070CAB4(float (*mf)[4], f32 arg1);
+void func_global_asm_8070CB2C(float (*mf)[4], f32 arg1);
+void func_global_asm_8070CBA4(float (*mf)[4], f32 arg1);
 void func_global_asm_8070CC1C(Mtx *arg0, f32 arg1);
 void func_global_asm_8070CC54(Mtx *arg0, f32 arg1);
 void func_global_asm_8070CC8C(Mtx *arg0, f32 arg1);
 void func_global_asm_8070CCC4(float (*mf)[4]);
 void func_global_asm_8070CD14(Mtx *arg0);
-void func_global_asm_8070CD44(float (*mf)[4], f32, f32, f32);
+void func_global_asm_8070CD44(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3);
 void func_global_asm_8070CD8C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3);
-// TODO: func_global_asm_8070CDD0 has no documented signature
+void func_global_asm_8070CDD0(f32 (*arg0)[4], f32 (*arg1)[4], f32 arg2, f32 arg3, f32 arg4);
 void func_global_asm_8070D020(Mtx *arg0, Mtx *arg1, f32 arg2, f32 arg3, f32 arg4);
-// TODO: func_global_asm_8070D07C has no documented signature
+void func_global_asm_8070D07C(f32 (*mf)[4], f32 (*mf2)[4], f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 void func_global_asm_8070D300(Mtx *arg0, Mtx *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 
 // global_asm/code_112080.c
@@ -3429,7 +3430,7 @@ void loadText(Actor *arg0, u16 fileIndex, u8 textIndex);
 void func_global_asm_8070D970(u16 arg0);
 void func_global_asm_8070D9AC(Struct806A57C0_2 *arg0);
 void func_global_asm_8070DA28(AAD_global_asm_806A4DDC *arg0);
-// TODO: func_global_asm_8070DA74 has no documented signature
+void func_global_asm_8070DA74(Actor*);
 // TODO: func_global_asm_8070DB7C has no documented signature
 // TODO: func_global_asm_8070DB9C has no documented signature
 // TODO: func_global_asm_8070DC40 has no documented signature
@@ -3439,8 +3440,8 @@ void func_global_asm_8070DA28(AAD_global_asm_806A4DDC *arg0);
 s32 func_global_asm_8070DDDC(u16 arg0, s32 arg1);
 // TODO: func_global_asm_8070DED4 has no documented signature
 // TODO: func_global_asm_8070E2AC has no documented signature
-// TODO: func_global_asm_8070E34C has no documented signature
-// TODO: func_global_asm_8070E548 has no documented signature
+void func_global_asm_8070E34C(void *arg0, void *arg1, s32 arg2);
+void func_global_asm_8070E548(Actor *arg0, u16 arg1, u8 arg2);
 char *getTextString(u8 fileIndex, s32 stringIndex, s32 arg2);
 void func_global_asm_8070E808(Actor *arg0, Actor *arg1);
 void func_global_asm_8070E8C8(void);
@@ -3453,7 +3454,7 @@ void func_global_asm_8070F2C8(s16 arg0, s16 arg1, u8 arg2, u8 arg3);
 
 // global_asm/code_114270.c
 void func_global_asm_8070F570(void);
-// TODO: func_global_asm_8070F5CC has no documented signature
+void func_global_asm_8070F5CC(s32 arg0, s16 arg1, f32 arg2, s16 arg3, s16 arg4, u8 arg5);
 // TODO: func_global_asm_8070FA58 has no documented signature
 // TODO: func_global_asm_8070FC40 has no documented signature
 // TODO: func_global_asm_8070FCCC has no documented signature
@@ -3463,10 +3464,10 @@ void func_global_asm_8070F570(void);
 // TODO: func_global_asm_807103E0 has no documented signature
 // TODO: func_global_asm_807105D4 has no documented signature
 // TODO: func_global_asm_80710CA0 has no documented signature
-// TODO: func_global_asm_80711410 has no documented signature
+void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4);
 // TODO: func_global_asm_80711950 has no documented signature
 // TODO: func_global_asm_80711BD0 has no documented signature
-// TODO: func_global_asm_80711F90 has no documented signature
+void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4);
 s32 func_global_asm_807122B4(void);
 void func_global_asm_80712490(Maps newMap, s32 newExit, u8 newGameMode);
 void func_global_asm_807124B8(Maps newMap, s32 cutsceneIndex, u8 newGameMode);
@@ -3655,7 +3656,7 @@ void func_global_asm_8071F8E4(Struct80717D84 *arg0, u8 *arg1);
 void func_global_asm_80722E00(Maps map);
 // TODO: func_global_asm_80722E48 has no documented signature
 s32 func_global_asm_80722FEC(u8 arg0);
-// TODO: func_global_asm_80723020 has no documented signature
+s32 func_global_asm_80723020(Actor *arg0, s32 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, u8 arg6);
 void func_global_asm_80723284(s32 arg0, u8 arg1);
 void func_global_asm_807232B8(s32 arg0, u8 arg1);
 void func_global_asm_807232EC(s32 arg0, u8 arg1);
@@ -3664,7 +3665,7 @@ void func_global_asm_8072334C(s32 arg0, u8 arg1);
 void func_global_asm_80723380(s32 arg0, u8 arg1);
 void func_global_asm_807233B4(Actor *arg0);
 void func_global_asm_80723428(s32 arg0);
-// TODO: func_global_asm_80723484 has no documented signature
+void func_global_asm_80723484(s32 arg0, Actor *arg1);
 // TODO: func_global_asm_807238D4 has no documented signature
 u8 func_global_asm_80723C98(s32 arg0);
 // TODO: func_global_asm_80723CCC has no documented signature
@@ -3700,7 +3701,7 @@ s32 func_global_asm_80726164(Actor *actor, s16 x, s16 y, s16 z, void *arg4);
 // TODO: func_global_asm_80726744 has no documented signature
 u8 func_global_asm_80726D7C(u8 arg0);
 u8 func_global_asm_80726DC0(u8 arg0);
-u8 func_global_asm_80726DEC(u8, u8);
+u8 func_global_asm_80726DEC(u8 arg0, u8 arg1);
 void func_global_asm_80726E60(u16 arg0, u8 arg1);
 void func_global_asm_80726EE0(u8 arg0);
 void func_global_asm_8072707C(s16 arg0, u8 arg1, u16 arg2);
@@ -3747,7 +3748,7 @@ void func_global_asm_8072C870(u8 arg0, u8 arg1, s32 arg2);
 // TODO: func_global_asm_8072C918 has no documented signature
 void func_global_asm_8072CFE8(s16 *arg0, s16 *arg1, s16 *arg2);
 void func_global_asm_8072D08C(void);
-// TODO: func_global_asm_8072D13C has no documented signature
+u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);
 void func_global_asm_8072D714(Actor *arg0, s32 arg1);
 void func_global_asm_8072D99C(void);
 void func_global_asm_8072D9D4(void);
@@ -3917,7 +3918,7 @@ void func_global_asm_807381D8(ALSeqPlayer *seqp, f32 arg1, f32 arg2);
 void func_global_asm_80738230(ALSeqPlayer *seqp, u8 arg1, u8 arg2);
 
 // global_asm/audio/code_13CFA0.c
-void func_global_asm_807382A0(ALSeqPlayer*, s32, u8, u8, u8);
+void func_global_asm_807382A0(ALSeqPlayer *seqp, s32 arg1, u8 arg2, u8 arg3, u8 arg4);
 
 // global_asm/audio/code_13D020.c
 // TODO: func_global_asm_80738320 has no documented signature

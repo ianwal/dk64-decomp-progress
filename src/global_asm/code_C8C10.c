@@ -229,7 +229,6 @@ void func_global_asm_806C55D8(void) {
 
 }
 
-void func_global_asm_8061CB08(void);
 typedef struct {
     s16 unk0;
 } A180_806C55E0;

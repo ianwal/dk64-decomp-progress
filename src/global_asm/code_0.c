@@ -79,7 +79,6 @@ void func_global_asm_807215EC();
 void func_global_asm_80650E20(s32* arg0);
 
 void func_global_asm_806886E0(s32* arg0, s32 arg1, s32 arg2);
-void func_global_asm_80677D80(void);
 
 void func_global_asm_80626264(void*);
 void func_global_asm_806C7D40(s32 arg0);

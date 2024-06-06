@@ -98,9 +98,6 @@ void func_global_asm_806AE394(f32 arg0, f32 arg1) {
 void func_global_asm_8072C918(s16, s16, s16);
 
 void func_global_asm_8072A450(void);
-u8 func_global_asm_8072D13C(u8, s32);
-
-void func_global_asm_806A5C60(Actor *);
 
 /*
 void func_global_asm_806AE588(void) {

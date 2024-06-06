@@ -4,14 +4,13 @@
 extern s8 D_global_asm_807F6951;
 extern s8 D_global_asm_807F6950;
 
-void func_global_asm_80699070(s16 *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
-    f32 temp_f0;
-    f32 temp_f2;
+void func_global_asm_80699070(s16 *arg0, s16 *arg1, f32 x1, f32 y1, f32 z1, f32 x2, f32 y2, f32 z2) {
+    f32 dx, dz;
 
-    *arg1 = func_global_asm_80665DE0(arg2, arg4, arg5, arg7);
-    temp_f0 = arg5 - arg2;
-    temp_f2 = arg7 - arg4;
-    *arg0 = (func_global_asm_80611BB4(arg6 - arg3, sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2))) * 2048.0) / 3.14159274101257324;
+    *arg1 = func_global_asm_80665DE0(x1, z1, x2, z2);
+    dx = x2 - x1;
+    dz = z2 - z1;
+    *arg0 = (func_global_asm_80611BB4(y2 - y1, sqrtf((dx * dx) + (dz * dz))) * 2048.0) / 3.14159274101257324;
 }
 
 typedef struct {

@@ -2,7 +2,6 @@
 #include "functions.h"
 
 void func_multiplayer_80026B0C(s32);
-s32 func_global_asm_806C8DE0(s16);
 s32 func_global_asm_807085D0(s32, PlayerProgress *, CharacterProgress *, void *);
 
 extern s8 D_global_asm_80744504;

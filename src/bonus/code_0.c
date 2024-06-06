@@ -307,7 +307,7 @@ block_71:
             break;
         case 1: // switch 6
             if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
-                func_global_asm_8061CB08(current_actor_pointer);
+                func_global_asm_8061CB08();
                 func_global_asm_806A2B08(current_actor_pointer->unk11C);
                 switch (current_map) { // switch 7; irregular
                     case MAP_KROOL_BARREL_TINY_MUSHROOM_GAME:

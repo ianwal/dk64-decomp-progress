@@ -310,8 +310,6 @@ u8 func_global_asm_807103E0(Struct807103E0 *arg0) {
 // rodata, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711410.s")
 
-void func_global_asm_8070F5CC(s32 arg0, s16 arg1, f32 arg2, s16 arg3, s16 arg4, u8 arg5);
-
 extern f64 D_global_asm_8075E550;
 extern f64 D_global_asm_8075E558;
 extern f64 D_global_asm_8075E560;

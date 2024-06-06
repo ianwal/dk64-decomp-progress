@@ -1,17 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_8070C89C(f32 (*mf)[4], f32, f32, f32);
-void func_global_asm_8070C8F4(f32 (*mf)[4], f32, f32, f32);
-void func_global_asm_8070C990(f32 (*mf)[4], f32, f32, f32);
-void func_global_asm_8070CAB4(f32 (*mf)[4], f32);
-void func_global_asm_8070CB2C(f32 (*mf)[4], f32);
-void func_global_asm_8070CBA4(f32 (*mf)[4], f32);
-void func_global_asm_8070CCC4(f32 (*mf)[4]);
-void func_global_asm_8070CD44(f32 (*mf)[4], f32, f32, f32);
-void func_global_asm_8070CDD0(f32 (*arg0)[4], f32 (*arg1)[4], f32 arg2, f32 arg3, f32 arg4);
-void func_global_asm_8070D07C(f32 (*mf)[4], f32 (*mf2)[4], f32, f32, f32, f32, f32, f32);
-
 // tiny, round float, can't auto decompile
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070C200.s")
 

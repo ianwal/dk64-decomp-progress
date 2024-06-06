@@ -138,7 +138,6 @@ Gfx *func_global_asm_806AA09C(s16 x, s16 y, s16 arg2, s16 arg3, Gfx *dl, s8 arg5
 f32 func_global_asm_80612E40(f32);
 ? func_global_asm_806AB4EC(void *, ? *, s32, s32, f32, s32, s32);
 ? func_global_asm_806AB808(void *, ?, ?, ?, s32, s32, s32, s32);
-s32 func_global_asm_806C8DE0(?);
 extern ? D_global_asm_80720C34;
 extern ? D_global_asm_80720D38;
 extern ? D_global_asm_80720D5C;

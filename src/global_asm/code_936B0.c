@@ -344,10 +344,10 @@ void func_global_asm_806907E0(void) {
     D_global_asm_80750270 = 1;
 }
 
-void func_global_asm_806907F0(f32 arg0, f32 arg1, f32 arg2) {
-    D_global_asm_807FC7B0 = arg0;
-    D_global_asm_807FC7B4 = arg1;
-    D_global_asm_807FC7B8 = arg2;
+void func_global_asm_806907F0(f32 x, f32 y, f32 z) {
+    D_global_asm_807FC7B0 = x;
+    D_global_asm_807FC7B4 = y;
+    D_global_asm_807FC7B8 = z;
 }
 
 void func_global_asm_80690814(Actor *arg0, s32 arg1) {
@@ -418,9 +418,7 @@ void func_global_asm_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 bon
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80690F30.s")
 
 void func_global_asm_806915B0(void) {
-    f32 randomZ;
-    f32 randomY;
-    f32 randomX;
+    f32 randomZ, randomY, randomX;
     s32 i;
     s32 max;
 
@@ -1119,8 +1117,6 @@ s32 func_global_asm_806951B0(Actor *arg0) {
 
 // doable, matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_806951E8.s")
-
-void func_global_asm_80695724(f32, u8);
 
 extern s32 D_global_asm_8072006C; // Sprite
 extern s16 D_global_asm_80750344;

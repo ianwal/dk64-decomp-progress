@@ -54,14 +54,14 @@ void func_global_asm_80684550(Actor *actor, u8 boneIndex, f32 scale) {
 
 void func_global_asm_806845B8(u8 arg0, u8 arg1) {
     f32 scale;
-    u8 sp2B;
+    u8 boneIndex;
 
     if ((object_timer & 3) == 0) {
         scale = current_actor_pointer->animation_state->scale_y / 0.15;
-        sp2B = (((rand() >> 0xF) % 0x7FFF) % ((arg1 - arg0) + 1)) + arg0;
+        boneIndex = (((rand() >> 0xF) % 0x7FFF) % ((arg1 - arg0) + 1)) + arg0;
         func_global_asm_80714998(3);
         changeActorColor(0xE6, 0xE6, 0xE6, 0xE6);
-        func_global_asm_8068588C(current_actor_pointer, sp2B, scale, 0.0f, 0.0f, 0.0f, -0x78);
+        func_global_asm_8068588C(current_actor_pointer, boneIndex, scale, 0.0f, 0.0f, 0.0f, -0x78);
     }
 }
 
@@ -689,30 +689,30 @@ void func_global_asm_80687080(void) {
 
 void func_global_asm_806871DC(u8 arg0) {
     s16 var_s4;
-    u8 var_v0;
+    u8 boneIndex;
     u8 var_s2;
 
     var_s2 = ((object_timer & 3) * 4) + 3;
     for (var_s4 = 0; var_s4 < 4; var_s4++) {
         if (var_s2 == 0x10) {
-            var_v0 = 0x14;
+            boneIndex = 0x14;
         } else if (var_s2 == 0x11) {
-            var_v0 = 0x15;
+            boneIndex = 0x15;
         } else {
-            var_v0 = var_s2;
+            boneIndex = var_s2;
         }
         switch (arg0) {
             case 3:
-                if (var_v0 < 0xA) {
+                if (boneIndex < 0xA) {
                     break;
                 }
             case 1:
                 func_global_asm_80714998(1);
                 changeActorColor(0xB4, 0xB4, 0xB4, 0xC8);
-                func_global_asm_8068588C(current_actor_pointer, var_v0, 2.0f, 0.0f, 0.0f, 0.0f, -0x78);
+                func_global_asm_8068588C(current_actor_pointer, boneIndex, 2.0f, 0.0f, 0.0f, 0.0f, -0x78);
                 break;
             case 2:
-                if (var_v0 < 0xA) {
+                if (boneIndex < 0xA) {
                     break;
                 }
             case 0:
@@ -720,7 +720,7 @@ void func_global_asm_806871DC(u8 arg0) {
                 func_global_asm_8071498C(func_global_asm_80717D4C);
                 func_global_asm_80714950(-1000);
                 changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
-                func_global_asm_80714C08(&D_global_asm_80720120, (((rand() >> 0xF) % 100) / 30.0) + 1.0, current_actor_pointer, var_v0, 0);
+                func_global_asm_80714C08(&D_global_asm_80720120, (((rand() >> 0xF) % 100) / 30.0) + 1.0, current_actor_pointer, boneIndex, 0);
                 break;
         }
         var_s2++;

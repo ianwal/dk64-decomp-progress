@@ -521,7 +521,6 @@ typedef struct {
     Actor *unk94;
 } GlobalASMStruct44;
 
-s32 func_global_asm_80678014(s32);
 extern s16 D_global_asm_807F693C;
 extern u8 D_global_asm_807F693F;
 

@@ -192,8 +192,6 @@ s32 func_global_asm_806F9518(s32);
 Gfx *func_global_asm_806FA5A4(s32, Gfx *);
 Gfx *func_global_asm_806FA7BC(s32, Gfx *);
 Gfx *func_global_asm_806FA9C0(s32, Gfx *);
-s32 func_global_asm_806C8DE0(s32);
-void *func_global_asm_806FACE8(u32 arg0);
 
 PlayerHUD* func_global_asm_806F7FD0(u8 playerIndex) {
     return &D_global_asm_80754280[playerIndex];
@@ -222,20 +220,20 @@ void func_global_asm_806F8004(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg
     *arg4 = *arg4 * 10.5;
 }
 
-void func_global_asm_806F8170(s32 arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
+void func_global_asm_806F8170(s32 HUDItemIndex, f32 *arg1, f32 *arg2, f32 *arg3) {
     s32 temp_v0;
 
-    if (arg0 < 0) {
+    if (HUDItemIndex < 0) {
         func_global_asm_806F8004(16.5f, 0.0f, arg1, arg2, arg3);
         return;
     }
-    if (arg0 == 8) {
-        func_global_asm_806F8004(1.5 - (D_global_asm_80754280->hud_item[arg0].hud_count * 7), 26.0f, arg1, arg2, arg3);
+    if (HUDItemIndex == 8) {
+        func_global_asm_806F8004(1.5 - (D_global_asm_80754280->hud_item[HUDItemIndex].hud_count * 7), 26.0f, arg1, arg2, arg3);
         return;
     }
-    *arg1 = D_global_asm_80754280->hud_item[arg0].unk_10;
-    *arg2 = D_global_asm_80754280->hud_item[arg0].unk_14;
-    *arg3 = D_global_asm_80754280->hud_item[arg0].unk_18;
+    *arg1 = D_global_asm_80754280->hud_item[HUDItemIndex].unk_10;
+    *arg2 = D_global_asm_80754280->hud_item[HUDItemIndex].unk_14;
+    *arg3 = D_global_asm_80754280->hud_item[HUDItemIndex].unk_18;
 }
 
 // Close
@@ -419,7 +417,7 @@ void func_global_asm_806F8A8C(u8 arg0, u8 playerIndex, s32 arg2) {
 u16 func_global_asm_806F8AD4(u8 arg0, u8 playerIndex) {
     u16 phi_a2;
     u16 *temp;
-    s32 sp1C;
+    s32 kong;
     HUDDisplay *HUDItem;
     s32 levelIndex;
 
@@ -432,15 +430,15 @@ u16 func_global_asm_806F8AD4(u8 arg0, u8 playerIndex) {
             if (temp) {
                 phi_a2 = *((u16*)HUDItem->actual_count_pointer);
             } else {
-                sp1C = func_global_asm_806C8DE0(playerIndex);
+                kong = func_global_asm_806C8DE0(playerIndex);
                 levelIndex = getLevelIndex(D_global_asm_8076A0AB, TRUE);
                 phi_a2 = 0;
                 switch (arg0) {
                     case 0xC:
-                        phi_a2 = func_global_asm_80731A04(0x1D5, levelIndex, levelIndex, sp1C);
+                        phi_a2 = func_global_asm_80731A04(0x1D5, levelIndex, levelIndex, kong);
                         break;
                     case 0xA:
-                        phi_a2 = func_global_asm_80731A04(0x225, levelIndex, levelIndex, sp1C);
+                        phi_a2 = func_global_asm_80731A04(0x225, levelIndex, levelIndex, kong);
                         break;
                 }
             }
@@ -472,13 +470,13 @@ void func_global_asm_806F8BC4(s32 HUDItemIndex, u8 arg1, s32 arg2) {
     }
 }
 
-void func_global_asm_806F8CB0(s32 arg0) {
+void func_global_asm_806F8CB0(s32 HUDItemIndex) {
     s32 phi_v1;
     GlobalASMStruct71 *phi_v0;
 
     // GB Count (Character)?
-    if (arg0 == 8) {
-        phi_v0 = D_global_asm_80754280->hud_item[arg0].counter_pointer;
+    if (HUDItemIndex == 8) {
+        phi_v0 = D_global_asm_80754280->hud_item[HUDItemIndex].counter_pointer;
         phi_v1 = 0;
         while (phi_v0) {
             phi_v0->unkC = phi_v1;
@@ -488,23 +486,23 @@ void func_global_asm_806F8CB0(s32 arg0) {
     }
 }
 
-void func_global_asm_806F8CFC(s32 arg0, s32 arg1) {
-    D_global_asm_80754280->hud_item[arg0].counter_timer = 0;
-    D_global_asm_80754280->hud_item[arg0].freeze_timer = 0;
-    if (arg0 == 8) {
+void func_global_asm_806F8CFC(s32 HUDItemIndex, s32 arg1) {
+    D_global_asm_80754280->hud_item[HUDItemIndex].counter_timer = 0;
+    D_global_asm_80754280->hud_item[HUDItemIndex].freeze_timer = 0;
+    if (HUDItemIndex == 8) {
         func_global_asm_806F8D58(9, 0);
     }
 }
 
-void func_global_asm_806F8D58(s32 arg0, s32 arg1) {
+void func_global_asm_806F8D58(s32 HUDItemIndex, s32 arg1) {
     GlobalASMStruct71 *phi_v0 = D_global_asm_80754284;
 
-    D_global_asm_80754280->hud_item[arg0].unk_1c = 0;
+    D_global_asm_80754280->hud_item[HUDItemIndex].unk_1c = 0;
     while (phi_v0) {
-        phi_v0->unk0 &= ~(1 << arg0);
+        phi_v0->unk0 &= ~(1 << HUDItemIndex);
         phi_v0 = phi_v0->unk4;
     }
-    func_global_asm_806F8CFC(arg0, arg1);
+    func_global_asm_806F8CFC(HUDItemIndex, arg1);
 }
 
 void func_global_asm_806F8DC4(u8 *arg0, s32 arg1, s32 arg2) {
@@ -974,10 +972,10 @@ void func_global_asm_806FAC64(u8 arg0) {
 }
 
 void *func_global_asm_806FACE8(u32 arg0) {
-    void *var_v1;
+    void *sprite;
     u32 kong;
 
-    var_v1 = NULL;
+    sprite = NULL;
     kong = func_global_asm_806C8DE0(0);
     if (arg0 == 0xD) {
         kong = D_global_asm_80754288;
@@ -987,49 +985,49 @@ void *func_global_asm_806FACE8(u32 arg0) {
         case 13:
             switch (kong) {
                 case 1:
-                    var_v1 = &D_global_asm_8072057C;
+                    sprite = &D_global_asm_8072057C;
                     break;
                 case 0:
-                    var_v1 = &D_global_asm_807205E8;
+                    sprite = &D_global_asm_807205E8;
                     break;
                 case 3:
-                    var_v1 = &D_global_asm_8072060C;
+                    sprite = &D_global_asm_8072060C;
                     break;
                 case 2:
-                    var_v1 = &D_global_asm_807205C4;
+                    sprite = &D_global_asm_807205C4;
                     break;
                 case 4:
                 case 5:
-                    var_v1 = &D_global_asm_807205A0;
+                    sprite = &D_global_asm_807205A0;
                     break;
             }
             break;
         case 6:
-            var_v1 = &D_global_asm_80720488;
+            sprite = &D_global_asm_80720488;
             break;
         case 4:
-            var_v1 = &D_global_asm_807204BC;
+            sprite = &D_global_asm_807204BC;
             break;
         case 2:
         case 3:
             switch (kong) {
                 case 1:
-                    var_v1 = &D_global_asm_807200A0;
+                    sprite = &D_global_asm_807200A0;
                     break;
                 case 0:
-                    var_v1 = &D_global_asm_807206A8;
+                    sprite = &D_global_asm_807206A8;
                     break;
                 case 3:
-                    var_v1 = &D_global_asm_80720854;
+                    sprite = &D_global_asm_80720854;
                     break;
                 case 2:
-                    var_v1 = &D_global_asm_8072029C;
+                    sprite = &D_global_asm_8072029C;
                     break;
                 case 4:
-                    var_v1 = &D_global_asm_807201A0;
+                    sprite = &D_global_asm_807201A0;
                     break;
                 case 5:
-                    var_v1 = &D_global_asm_80720268;
+                    sprite = &D_global_asm_80720268;
                     break;
             }
             break;
@@ -1037,107 +1035,107 @@ void *func_global_asm_806FACE8(u32 arg0) {
         case 14:
             switch (kong) {
                 case 1:
-                    var_v1 = &D_global_asm_807203B0;
+                    sprite = &D_global_asm_807203B0;
                     break;
                 case 0:
-                    var_v1 = &D_global_asm_8072041C;
+                    sprite = &D_global_asm_8072041C;
                     break;
                 case 3:
-                    var_v1 = &D_global_asm_80720440;
+                    sprite = &D_global_asm_80720440;
                     break;
                 case 2:
-                    var_v1 = &D_global_asm_807203F8;
+                    sprite = &D_global_asm_807203F8;
                     break;
                 case 4:
                 case 5:
-                    var_v1 = &D_global_asm_807203D4;
+                    sprite = &D_global_asm_807203D4;
                     break;
             }
             break;
         case 11:
-            var_v1 = &D_global_asm_807207BC;
+            sprite = &D_global_asm_807207BC;
             break;
         case 7:
             switch (kong) {
                 case 1:
-                    var_v1 = &D_global_asm_80720878;
+                    sprite = &D_global_asm_80720878;
                     break;
                 case 0:
-                    var_v1 = &D_global_asm_80720890;
+                    sprite = &D_global_asm_80720890;
                     break;
                 case 3:
-                    var_v1 = &D_global_asm_807208A8;
+                    sprite = &D_global_asm_807208A8;
                     break;
                 case 2:
-                    var_v1 = &D_global_asm_807208D8;
+                    sprite = &D_global_asm_807208D8;
                     break;
                 case 4:
                 case 5:
-                    var_v1 = &D_global_asm_807208C0;
+                    sprite = &D_global_asm_807208C0;
                     break;
             }
             break;
         case 5:
-            var_v1 = &D_global_asm_80720508;
+            sprite = &D_global_asm_80720508;
             break;
         case 8:
-            var_v1 = &D_global_asm_8072052C;
+            sprite = &D_global_asm_8072052C;
             break;
         case 9:
-            var_v1 = &D_global_asm_8072052C;
+            sprite = &D_global_asm_8072052C;
             break;
         case 10:
-            var_v1 = &D_global_asm_80720558;
+            sprite = &D_global_asm_80720558;
             break;
         case 12:
             switch (kong) {
                 case 1:
-                    var_v1 = &D_global_asm_807209EC;
+                    sprite = &D_global_asm_807209EC;
                     break;
                 case 0:
-                    var_v1 = &D_global_asm_80720A34;
+                    sprite = &D_global_asm_80720A34;
                     break;
                 case 3:
-                    var_v1 = &D_global_asm_80720A58;
+                    sprite = &D_global_asm_80720A58;
                     break;
                 case 2:
-                    var_v1 = &D_global_asm_807207E0;
+                    sprite = &D_global_asm_807207E0;
                     break;
                 case 4:
                 case 5:
-                    var_v1 = &D_global_asm_80720A10;
+                    sprite = &D_global_asm_80720A10;
                     break;
             }
             break;
         case 16:
-            var_v1 = &D_global_asm_8072145C;
+            sprite = &D_global_asm_8072145C;
             break;
         case 17:
-            var_v1 = &D_global_asm_80721250;
+            sprite = &D_global_asm_80721250;
             break;
         case 18:
-            var_v1 = &D_global_asm_80721200;
+            sprite = &D_global_asm_80721200;
             break;
         case 19:
-            var_v1 = &D_global_asm_8072121C;
+            sprite = &D_global_asm_8072121C;
             break;
         case 20:
-            var_v1 = &D_global_asm_807214A0;
+            sprite = &D_global_asm_807214A0;
             break;
         case 21:
-            var_v1 = &D_global_asm_807214B8;
+            sprite = &D_global_asm_807214B8;
             break;
         case 22:
-            var_v1 = &D_global_asm_807214D0;
+            sprite = &D_global_asm_807214D0;
             break;
         case 23:
-            var_v1 = &D_global_asm_807214E8;
+            sprite = &D_global_asm_807214E8;
             break;
         case 24:
-            var_v1 = &D_global_asm_80721500;
+            sprite = &D_global_asm_80721500;
             break;
     }
-    return var_v1;
+    return sprite;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FAFE4.s")

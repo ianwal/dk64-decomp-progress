@@ -18,10 +18,6 @@ extern Struct80750400 D_global_asm_80750400[];
 
 int func_global_asm_806A4284();
 void func_global_asm_806A4DDC(Actor *arg0);
-void func_global_asm_806A5174(Actor*, void*, f32);
-
-void func_global_asm_8070DA74(Actor*);
-void func_global_asm_8070E808(Actor *arg0, Actor *arg1);
 
 void func_global_asm_806A3700(s32 arg0, s32 arg1) {
 
@@ -395,7 +391,6 @@ void func_global_asm_806A5868(void) {
                         aaD->unk55 &= 0xFFFB;
                     }
                     if (aaD->unk55 & 1) {
-                        // func_global_asm_8061CB08(0x280, current_actor_pointer, var_a3);
                         func_global_asm_8061CB08();
                         current_actor_pointer->control_state = 5;
                     }

@@ -2,11 +2,9 @@
 #include "functions.h"
 
 s32 func_global_asm_8072881C(s32, s32);
-void func_global_asm_806A5C60(Actor *arg0);
 
 // Not 100% on these signatures
 void func_global_asm_8072C918(s16, s16, s16);
-u8 func_global_asm_8072D13C(u8 arg0, s32 arg1);
 
 void func_global_asm_806AD260(s16 arg0, u8 arg1, s32 arg2) {
     if (arg0 != 0) {
