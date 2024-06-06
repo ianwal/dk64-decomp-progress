@@ -91,16 +91,17 @@ if __name__ == "__main__":
         for line in f:
             line = line.strip()
             if line.startswith(".text") and line.endswith(".c.o"):
-                if len(sigs) > 0:
-                    print("")
-                    print(f"// {filename}")
-                    for sig in sigs:
-                        print(sig)
+                if grabbingFunctions:
+                    if len(sigs) > 0:
+                        print("")
+                        print(f"// {filename}")
+                        for sig in sigs:
+                            print(sig)
+                        sigs = []
                 info = line.split()
                 address = info[1].replace("0x00000000", '0x')
                 filename = info[3].replace("build/us/src/", "").replace(".o", "")
                 grabbingFunctions = True
-                sigs = []
             elif line.startswith(".data") or line.startswith(".rodata") or line.endswith("_TEXT_END = ."):
                 if grabbingFunctions:
                     grabbingFunctions = False
@@ -109,6 +110,7 @@ if __name__ == "__main__":
                         print(f"// {filename}")
                         for sig in sigs:
                             print(sig)
+                        sigs = []
             elif grabbingFunctions:
                 splitLine = line.split()
                 if len(splitLine) == 2 and not splitLine[1].startswith(".L"):
