@@ -21,8 +21,6 @@ extern s32 D_global_asm_807210EC;
 extern s32 D_global_asm_80721158;
 extern s32 D_global_asm_8072139C;
 
-void func_global_asm_80718BF4(void);
-
 extern u8 D_global_asm_80750AD0;
 
 typedef struct {

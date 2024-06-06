@@ -2439,7 +2439,7 @@ s32 func_global_asm_806CCC10(void);
 f32 func_global_asm_806CD898(f32 currentSpeed, f32 desiredSpeed, f32 boostAmount);
 void func_global_asm_806CD8EC(void);
 s16 func_global_asm_806CD988(Actor *arg0);
-// TODO: func_global_asm_806CD9A0 has no documented signature
+s16 func_global_asm_806CD9A0(Actor *arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4);
 // TODO: func_global_asm_806CDD24 has no documented signature
 u32 func_global_asm_806CE174(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
 s16 func_global_asm_806CE4E4(Actor *arg0, f32 arg1, f32 arg2, s32 arg3);
@@ -3399,7 +3399,7 @@ void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
 // TODO: func_global_asm_807184F4 has no documented signature
 // TODO: func_global_asm_807186C8 has no documented signature
 void func_global_asm_807189BC(Struct80717D84 *arg0, s8 *arg1);
-// TODO: func_global_asm_80718BF4 has no documented signature
+void func_global_asm_80718BF4(Struct80717D84 *arg0, s8 *arg1);
 // TODO: func_global_asm_8071910C has no documented signature
 // TODO: func_global_asm_807195D4 has no documented signature
 // TODO: func_global_asm_807197B4 has no documented signature

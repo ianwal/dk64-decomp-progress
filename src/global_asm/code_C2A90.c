@@ -38,7 +38,6 @@ void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32,
 void func_global_asm_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_806BF920(void);
 int func_global_asm_807035C4(); // TODO: Signature
-void func_global_asm_80718BF4(void);
 int func_global_asm_807197B4(); // TODO: Signature
 int func_global_asm_8071C818(); // TODO: Signature
 
@@ -620,8 +619,6 @@ void func_global_asm_806C1300(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-
-s16 func_global_asm_806CD9A0(Actor *, f32, f32, u8, s32);
 
 void func_global_asm_806C13AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
     s16 temp_v0;

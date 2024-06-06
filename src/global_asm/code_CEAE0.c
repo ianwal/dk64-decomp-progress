@@ -101,10 +101,8 @@ int func_global_asm_806FF75C(); // TODO: Signature
 s32 handleInputsForControlState(s32 arg0);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
-void func_global_asm_80718BF4(void);
 void func_global_asm_806CEFBC(Struct806CEFBC*); // TODO: Proper signature, just for function pointer
 void func_global_asm_806CF138(Struct806CF138 *arg0);
-s16 func_global_asm_806CD9A0(Actor*, f32, f32, s16, s16);
 void func_global_asm_80613A50(Actor*, s32);
 
 void func_global_asm_806C9DE0(void) {
@@ -870,8 +868,84 @@ s16 func_global_asm_806CD988(Actor *arg0) {
     return temp;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CD9A0.s")
+extern f32 D_global_asm_8075318C[];
+extern f32 D_global_asm_807531A8[];
+extern f32 D_global_asm_80753170[];
+extern f32 D_global_asm_807531C4[];
+extern f32 D_global_asm_807531E0[];
+
+s16 func_global_asm_806CD9A0(Actor *arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4) {
+    f32 var_f0 = MAX(arg1, arg2);
+
+    if ((arg0->unk6A | arg0->unk6C) & 1) {
+        switch (arg3) {
+            case 0:
+            case 1:
+            case 2:
+                if (arg2 != 0.0f) {
+                    if (arg2 < D_global_asm_8075318C[arg4]) {
+                        arg3 = 3;
+                    } else if (arg2 < D_global_asm_807531C4[arg4]) {
+                        arg3 = 4;
+                    } else {
+                        arg3 = 5;
+                    }
+                }
+                break;
+            case 3:
+                if ((arg2 == 0.0f) && (arg1 < D_global_asm_80753170[arg4])) {
+                    arg3 = 0;
+                } else if (D_global_asm_807531C4[arg4] < arg2) {
+                    arg3 = 5;
+                } else if (D_global_asm_8075318C[arg4] < arg2) {
+                    arg3 = 4;
+                }
+                break;
+            case 4:
+                if (var_f0 < D_global_asm_807531A8[arg4]) {
+                    if (arg2 < D_global_asm_80753170[arg4]) {
+                        arg3 = 0;
+                    } else {
+                        arg3 = 3;
+                    }
+                } else if (D_global_asm_807531C4[arg4] < arg2) {
+                    arg3 = 5;
+                }
+                break;
+            case 5:
+                if (var_f0 < D_global_asm_807531E0[arg4]) {
+                    arg3 = 4;
+                }
+                break;
+            default:
+                if (arg1 < D_global_asm_80753170[arg4]) {
+                    arg3 = 0;
+                } else if (arg1 < D_global_asm_807531A8[arg4]) {
+                    arg3 = 3;
+                } else {
+                    if (arg1 < D_global_asm_807531E0[arg4]) {
+                        arg3 = 4;
+                    } else {
+                        arg3 = 5;
+                    }
+                }
+                break;
+        }
+        if ((extra_player_info_pointer->unk1F0 & 0x100) && ((arg3 == 4) || (arg3 == 5))) {
+            arg3 = 3;
+        }
+        if ((arg3 == 0) && ((current_map == MAP_FUNKYS_STORE) || (current_map == MAP_CRANKYS_LAB) || (current_map == MAP_CANDYS_MUSIC_SHOP) || (current_map == MAP_SNIDES_HQ))) {
+            arg3 = 2;
+        } else if ((arg3 == 0) && ((cc_number_of_players >= 2) || (extra_player_info_pointer->unk1F0 & 0x40) || !(arg0->object_properties_bitfield & 4) || (is_cutscene_active == 1))) {
+            arg3 = 1;
+        } else if ((arg3 == 1) && (cc_number_of_players < 2) && !(extra_player_info_pointer->unk1F0 & 0x40) && (arg0->object_properties_bitfield & 4) && (is_cutscene_active != 1)) {
+            arg3 = 0;
+        }
+    } else {
+        arg3 = 6;
+    }
+    return arg3;
+}
 
 s32 func_global_asm_806CDD24(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     s16 var_v1;
@@ -1159,10 +1233,6 @@ s16 func_global_asm_806CE4E4(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
     }
     return sp36;
 }
-
-extern f32 D_global_asm_80753170[];
-extern f32 D_global_asm_807531C4[];
-extern f32 D_global_asm_807531E0[];
 
 s32 func_global_asm_806CE7A0(Actor *arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4) {
     f32 var_f0;
