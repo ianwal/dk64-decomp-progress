@@ -270,14 +270,14 @@ s32 func_global_asm_807317FC(s16 arg0, s16 arg1) {
     if ((flagIndex >= 0)) {
         flagIsSet = isFlagSet(flagIndex, FLAG_TYPE_PERMANENT);
         if (flagIsSet && D_global_asm_80755DA8[sp20].unk6) {
-            return 1;
+            return TRUE;
         }
         if (!(flagIsSet) && !D_global_asm_80755DA8[sp20].unk6) {
-            return 1;
+            return TRUE;
         }
-        return 0;
+        return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 s32 func_global_asm_807318AC(s16 arg0, s16 arg1) {
@@ -288,15 +288,15 @@ s32 func_global_asm_807318AC(s16 arg0, s16 arg1) {
     for (i = 0; i < max; i++) {
         if (arg0 == D_global_asm_80755EA0[i].unk0 && arg1 == D_global_asm_80755EA0[i].unk2) {
             if (isFlagSet(D_global_asm_80755EA0[i].flagIndex, FLAG_TYPE_PERMANENT)) {
-                return 0;
+                return FALSE;
             }
             if (D_global_asm_80755EA0[i].unk6) {
                 setFlag(D_global_asm_80755EA0[i].flagIndex, TRUE, FLAG_TYPE_PERMANENT);
             }
-            return 1;
+            return TRUE;
         }
     }
-    return 1;
+    return TRUE;
 }
 
 // TODO: This might not be right, the struct array is not used anywhere else

@@ -6,9 +6,6 @@
 void func_global_asm_80688514(Actor *, s32);
 */
 
-GlobalASMStruct60 *func_global_asm_80688584(Actor*, s32);
-void func_global_asm_80687FC8(GlobalASMStruct60 *arg0);
-
 // malloc and initialization for GlobalASMStruct60
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_global_asm_80687D50.s")
 

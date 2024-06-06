@@ -1382,11 +1382,11 @@ s32 func_global_asm_806D69A4(void) {
             } else {
                 func_global_asm_806CFF9C(current_actor_pointer);
             }
-            return 1;
+            return TRUE;
         }
         func_global_asm_806DF494(&current_actor_pointer->y_rotation, current_actor_pointer->unkEE, extra_player_info_pointer->unk48);
     }
-    return 0;
+    return FALSE;
 }
 
 void func_global_asm_806D6B00(void) {

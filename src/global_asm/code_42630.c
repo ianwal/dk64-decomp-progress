@@ -448,9 +448,9 @@ s32 func_global_asm_806419F8(void) {
         goto block_9;
     }
 block_8:
-    return 0;
+    return FALSE;
 block_9:
-    return 1;
+    return TRUE;
 }
 
 extern u8 D_global_asm_807F6938;

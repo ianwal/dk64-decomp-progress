@@ -13,8 +13,6 @@ typedef struct {
     f32 unkC;
 } Struct80689250;
 
-ActorSpawner *func_global_asm_80689250(s16 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, f32 arg5, void *arg6, u8 arg7, Actor *arg8, s16 arg9);
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -257,9 +255,9 @@ u16 func_global_asm_80688C84(u16 arg0) {
         case 0x71:
         case 0x72:
         case 0x8B:
-            return 1;
+            return TRUE;
         default:
-            return 0;
+            return FALSE;
     }
 }
 
@@ -812,9 +810,9 @@ s32 func_global_asm_80689F2C(void) {
         case MAP_CASTLE_LOBBY:
         case MAP_CAVES_LOBBY:
         case MAP_DK_ISLES_SNIDES_ROOM:
-            return 1;
+            return TRUE;
         default:
-            return 0;
+            return FALSE;
     }
 }
 

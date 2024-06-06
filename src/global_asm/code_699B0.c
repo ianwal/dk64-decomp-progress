@@ -1023,9 +1023,9 @@ s32 func_global_asm_8066893C(Struct8066893C *arg0) {
     sp4[3] = arg0->unkE - arg0->unkC;
     sp4[0] = (sp4[6] * sp4[1]) - (sp4[4] * sp4[3]);
     if (sp4[0] <= 0.0) {
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -1095,14 +1095,14 @@ s32 func_global_asm_80668B28(Struct8066893C *arg0, s32 arg1, s32 arg2) {
         var_a1 = temp_a3;
     }
     if (arg1 < var_a1) {
-        return 0;
+        return FALSE;
     }
     var_a1 = MAX(temp_v0, temp_v1);
     if (temp_a3 >= var_a1) {
         var_a1 = temp_a3;
     }
     if (var_a1 < arg1) {
-        return 0;
+        return FALSE;
     }
     temp_v0 = arg0->unkC;
     temp_v1 = arg0->unkE;
@@ -1112,16 +1112,16 @@ s32 func_global_asm_80668B28(Struct8066893C *arg0, s32 arg1, s32 arg2) {
         var_a1 = temp_a3;
     }
     if (arg2 < var_a1) {
-        return 0;
+        return FALSE;
     }
     var_a1 = MAX(temp_v0, temp_v1);
     if (temp_a3 >= var_a1) {
         var_a1 = temp_a3;
     }
     if (var_a1 < arg2) {
-        return 0;
+        return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80668C30.s")
@@ -1234,10 +1234,10 @@ s32 func_global_asm_80669650(u8 arg0, u8 *arg1) {
     u8 i;
     for (i = 0; i < 2; i++) {
         if (arg1[i] != 0xFF && arg0 == arg1[i]) {
-            return 0;
+            return FALSE;
         }
     }
-    return 1;
+    return TRUE;
 }
 
 typedef struct {
@@ -1316,9 +1316,9 @@ s32 func_global_asm_80669930(f32 arg0[4][4]) {
     sp4[3] = arg0[1][3] - arg0[1][2];
     sp4[0] = (sp4[6] * sp4[1]) - (sp4[4] * sp4[3]);
     if (sp4[0] <= 0.0) {
-        return 1;
+        return TRUE;
     } else {
-        return 0;
+        return FALSE;
     }
 }
 

@@ -103,7 +103,6 @@ if __name__ == "__main__":
                             print(sig)
                         sigs = []
                 info = line.split()
-                address = info[1].replace("0x00000000", '0x')
                 filename = info[3].replace("build/us/src/", "").replace(".o", "")
                 grabbingFunctions = True
             elif line.startswith(".data") or line.startswith(".rodata") or line.endswith("_TEXT_END = ."):

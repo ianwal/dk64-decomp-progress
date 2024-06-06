@@ -1788,7 +1788,7 @@ s32 func_global_asm_806E56EC(void) {
                     extra_player_info_pointer->unk21C = D_global_asm_807FBB70.unk10;
                     setAction(0x1E, NULL, cc_player_index);
                     func_global_asm_806C93E4(current_actor_pointer, extra_player_info_pointer);
-                    return 1;
+                    return TRUE;
                 }
                 break;
             case 5:
@@ -1800,7 +1800,7 @@ s32 func_global_asm_806E56EC(void) {
                         extra_player_info_pointer->unk20C = D_global_asm_807FBB70.unkC;
                         setAction(0x1C, NULL, cc_player_index);
                         func_global_asm_806C93E4(current_actor_pointer, extra_player_info_pointer);
-                        return 1;
+                        return TRUE;
                     }
                 }
                 break;
@@ -1813,7 +1813,7 @@ s32 func_global_asm_806E56EC(void) {
                         extra_player_info_pointer->unk20C = D_global_asm_807FBB70.unkC;
                         setAction(0x1D, NULL, cc_player_index);
                         func_global_asm_806C93E4(current_actor_pointer, extra_player_info_pointer);
-                        return 1;
+                        return TRUE;
                     }
                 }
                 break;
@@ -1823,13 +1823,13 @@ s32 func_global_asm_806E56EC(void) {
                     func_global_asm_805FF158(0);
                     func_global_asm_805FF9AC(D_global_asm_807FBB70.unk10, D_global_asm_807FBB70.unk12, 0, 0);
                 }
-                return 1;
+                return TRUE;
             case 4:
                 if (!(extra_player_info_pointer->unk1F0 & 0x40)) {
                     func_global_asm_806F1250(player_pointer);
                     extra_player_info_pointer->unk1FE = D_global_asm_807FBB70.unk10;
                 }
-                return 1;
+                return TRUE;
             case 0:
                 if ((u32)object_timer >= 4) {
                     playCutscene(current_actor_pointer, 0x26, 5);
@@ -1848,7 +1848,7 @@ s32 func_global_asm_806E56EC(void) {
                         drawSpriteAtPosition(&D_global_asm_8072014C, 0.8f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
                     }
                     func_global_asm_80686CF8(player_pointer);
-                    return 1;
+                    return TRUE;
                 }
                 break;
             case 2:
@@ -1857,7 +1857,7 @@ s32 func_global_asm_806E56EC(void) {
                 extra_player_info_pointer->unk54 = D_global_asm_807536AC[D_global_asm_807FD584];
                 extra_player_info_pointer->unk50 = 0;
                 playAnimation(current_actor_pointer, 0x14);
-                return 1;
+                return TRUE;
             case 6:
                 current_actor_pointer->control_state = 0x6E;
                 current_actor_pointer->control_state_progress = 0;
@@ -1865,19 +1865,19 @@ s32 func_global_asm_806E56EC(void) {
                 current_actor_pointer->y_acceleration = (D_global_asm_807FBB70.unk10 * 0.2) + 2.0;
                 extra_player_info_pointer->unkC0 = D_global_asm_807FBB70.unk12;
                 playActorAnimation(current_actor_pointer, 0x169);
-                return 1;
+                return TRUE;
             case 7:
                 current_actor_pointer->noclip_byte = 1;
                 extra_player_info_pointer->unk242 = D_global_asm_807FBB70.unk10;
                 current_actor_pointer->control_state = 0x76;
                 current_actor_pointer->control_state_progress = 0;
                 playAnimation(current_actor_pointer, 0x86);
-                return 1;
+                return TRUE;
             default:
                 break;
         }
     }
-    return 0;
+    return FALSE;
 }
 
 void func_global_asm_806E5C2C(s32 arg0, s32 arg1, s32 arg2) {

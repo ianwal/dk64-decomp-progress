@@ -723,12 +723,12 @@ s32 func_jetpac_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
                 player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
                 func_jetpac_800291AC(var_s0);
                 player->current_score += var_s0->unk0.unk44;
-                return 1;
+                return TRUE;
             }
         }
         var_s0++;
     }
-    return 0;
+    return FALSE;
 }
 
 void func_jetpac_80029450();

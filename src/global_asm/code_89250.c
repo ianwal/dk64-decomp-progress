@@ -33,16 +33,12 @@ extern Struct8074E898 D_global_asm_8074E898;
 extern s32 D_global_asm_80720B24;
 
 void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1);
-void func_global_asm_80685E78(Actor*);
 
 typedef struct {
     s32 unk0;
     s16 unk4;
     s8 unk6;
 } AAD_global_asm_80685708;
-
-void func_global_asm_80686390(Actor*, f32, f32, f32, f32);
-void func_global_asm_80685F60(Actor *actor);
 
 void func_global_asm_80684550(Actor *actor, u8 boneIndex, f32 scale) {
     func_global_asm_807149B8(1);

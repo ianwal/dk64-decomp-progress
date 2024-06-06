@@ -701,7 +701,7 @@ s32 func_global_asm_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
     sp20.unkE = arg0->unk14;
     sp20.unk10 = arg0->unk20;
     if (func_global_asm_8066D250(&sp20) != 0) {
-        return 0;
+        return FALSE;
     }
     arg1->unk24 = arg0->unk0 * 8.0f;
     arg1->unk28 = arg0->unkC * 8.0f;
@@ -721,7 +721,7 @@ s32 func_global_asm_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
     arg1->unk48 = sp20.unk12;
     arg1->unk4C = sp20.unk13;
     func_global_asm_8066DD34(arg1);
-    return 1;
+    return TRUE;
 }
 
 // close, doable
@@ -1541,51 +1541,51 @@ s32 func_global_asm_80672CBC(s8 arg0) {
     switch (arg0) {
         case 0:
             if (D_global_asm_807FB53C == 0xBC) {
-                return 1;
+                return TRUE;
             }
             break;
         case 1:
             if (D_global_asm_807FB53C != 0xBC) {
-                return 1;
+                return TRUE;
             }
             break;
         case 2:
             if ((D_global_asm_807FB53C != 5) || (character_change_array->unk2C0 == 1)) {
-                return 1;
+                return TRUE;
             }
             break;
         case 3:
             if ((D_global_asm_807FB53C == 5) && (character_change_array->unk2C0 != 1)) {
-                return 1;
+                return TRUE;
             }
             break;
         case 4:
             if (D_global_asm_807FB53C == 8) {
-                return 1;
+                return TRUE;
             }
             break;
         case 5:
             D_global_asm_807FB548 = 1;
-            return 1;
+            return TRUE;
         case 6:
             PaaD = player_pointer->PaaD;
             if ((D_global_asm_807FB53C == 3) && (PaaD->unk1A3 != 0)) {
-                return 1;
+                return TRUE;
             }
             break;
         case 7:
             PaaD = player_pointer->PaaD;
             if ((D_global_asm_807FB53C == 6) && ((character_change_array->unk2C0 != 1) || (PaaD->unk1CC != PaaD->unk1C0))) {
-                return 1;
+                return TRUE;
             }
             break;
         case 8:
             if (D_global_asm_807FB53C == 9) {
-                return 1;
+                return TRUE;
             }
             break;
     }
-    return 0;
+    return FALSE;
 }
 
 void func_global_asm_80672E64() {

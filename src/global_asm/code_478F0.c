@@ -2449,13 +2449,13 @@ void func_global_asm_8064EAB4(GlobalASMStruct7 *arg0, s32 arg1, s32 arg2, s32 ar
 s32 func_global_asm_8064EB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     // DK Arcade GB Collected
     if (!isFlagSet(0x82, FLAG_TYPE_PERMANENT)) {
-        return 1;
+        return TRUE;
     }
     // DK Arcade Level 3?
     if (isFlagSet(0x83, FLAG_TYPE_PERMANENT)) {
-        return 1;
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 u8 func_global_asm_8064EB9C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {

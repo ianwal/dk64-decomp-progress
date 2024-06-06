@@ -1093,15 +1093,15 @@ s32 func_global_asm_806575D0(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
         var_f2 = 0.0 - var_f2;
     }
     if (var_f2 > 80.0) {
-        return 0;
+        return FALSE;
     } else {
         func_global_asm_80657CB0(arg0, arg1, arg2, arg3, &sp7C, &sp78, &sp74);
         func_global_asm_80657974(arg0, sp7C, sp78, sp74, &sp4C);
         if (func_global_asm_8065776C(&sp4C) != 0) {
-            return 1;
+            return TRUE;
         }
     }
-    return 0;
+    return FALSE;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_8065776C.s")

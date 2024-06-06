@@ -94,12 +94,12 @@ s32 func_global_asm_8068EB3C(f32 arg0, f32 arg1, f32 arg2, Struct8068EB3C_arg4 *
         *arg7 = sp48;
         *arg8 = sp4C;
         *arg9 = sp50;
-        return 0;
+        return FALSE;
     } else {
         *arg7 = sp54;
         *arg8 = sp58;
         *arg9 = sp5C;
-        return 1;
+        return TRUE;
     }
 }
 

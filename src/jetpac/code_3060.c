@@ -17,9 +17,9 @@ s32 func_jetpac_80027060(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 a
     arg2 = MIN(arg2, arg6);
     arg3 = MIN(arg3, arg7);
     if (arg0 <= arg2 && arg1 <= arg3) {
-        return 1;
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 void func_jetpac_80027108(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg5) {

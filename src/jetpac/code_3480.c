@@ -44,16 +44,16 @@ s32 func_jetpac_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32
     var_f12 = arg0->unk8;
     var_f14 = arg0->unkC;
     if (arg0->unk38 == 1) {
-        return 0;
+        return FALSE;
     }
     if (arg5 == 0) {
         var_f12 += arg0->unk24;
         var_f14 += arg0->unk28;
     }
     if ((arg0->unk1C >= 2) && (func_jetpac_80027250(var_f12, var_f14, arg0->unk8 + arg0->unk2C, arg0->unkC + arg0->unk30, arg1, arg2, arg3, arg4) != 0)) {
-        return 1;
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 extern JetpacSpawningInfo D_jetpac_8002D1A0[6];
@@ -362,18 +362,18 @@ s32 func_jetpac_800283EC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
         rocket = player->rocket_segments;
         for (i = 0; i < (2 - player->rocket_stage); i++) {
             if (func_jetpac_80027510(rocket, arg0, arg1, arg2, arg3, 1)) {
-                return 1;
+                return TRUE;
             }
             rocket++;
         }
     }
     if (func_jetpac_80027510(&player->fuel_item, arg0, arg1, arg2, arg3, 0)) {
-        return 1;
+        return TRUE;
     }
     if (func_jetpac_80027510(&player->next_bonus_item, arg0, arg1, arg2, arg3, 0)) {
-        return 1;
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 void func_jetpac_80028544(void) {

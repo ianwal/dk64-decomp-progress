@@ -88,15 +88,15 @@ s32 func_global_asm_8068ABE0(s16 arg0) {
                 setFlag(0x1C5 + i, TRUE, FLAG_TYPE_PERMANENT);
                 if (story_skip) {
                     func_global_asm_805FF378(arg0, exit);
-                    return 1;
+                    return TRUE;
                 } else {
                     func_global_asm_80712524(map, cutsceneIndex);
-                    return 1;
+                    return TRUE;
                 }
             }
         }
     }
-    return 0;
+    return FALSE;
 }
 
 // Jumptable

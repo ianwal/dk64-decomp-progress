@@ -49,7 +49,6 @@ const char D_global_asm_8075A44C[] = "KONG";
 extern s32 D_global_asm_807FBB68;
 extern u8 D_global_asm_807FBD70;
 
-GlobalASMStruct60 *func_global_asm_80688584(Actor*, s32);
 Gfx *func_global_asm_8069FA40(Gfx *arg0, Actor *arg1);
 extern char *D_global_asm_80750338[];
 

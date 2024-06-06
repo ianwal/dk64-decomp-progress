@@ -160,9 +160,9 @@ s32 func_global_asm_80631EB8(u16 arg0) {
         case 518:
         case 519:
         case 520:
-            return 1;
+            return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 // regalloc
@@ -1766,11 +1766,11 @@ s32 func_global_asm_8063C2A8(s16 arg0) {
     temp_v1 = D_global_asm_807F6000[(s16)func_global_asm_80659470(arg0)].unk7C;
     if (temp_v1 != NULL) {
         if ((temp_v1->unk60 == 1) && (temp_v1->unk64 == 0)) {
-            return 0;
+            return FALSE;
         }
-        return 1;
+        return TRUE;
     }
-    return 1;
+    return TRUE;
 }
 
 s16 func_global_asm_8063C328(s16 arg0) {

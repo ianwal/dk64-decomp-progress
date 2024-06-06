@@ -615,47 +615,47 @@ s32 func_global_asm_806F6644(s16 arg0, s32 arg1, u16 arg2) {
     switch (arg2) {
         case 0x11:
             if ((D_global_asm_807FC950[cc_player_index].character_progress[current_character_index[cc_player_index]].weapon & 3) != 3) {
-                return 0;
+                return FALSE;
             }
         default:
             break;
         case 0x8F:
             if (!((D_global_asm_807FC950[cc_player_index].character_progress[current_character_index[cc_player_index]].weapon & 1))) {
-                return 0;
+                return FALSE;
             }
             break;
         case 0x98:
             PaaD = character_change_array[cc_player_index].player_pointer->PaaD;
             if (!(PaaD->unk1F4 & 1)) {
-                return 0;
+                return FALSE;
             }
             break;
         case 0x8E:
             PaaD = character_change_array[cc_player_index].player_pointer->PaaD;
             if (!(PaaD->unk1F4 & 2)) {
-                return 0;
+                return FALSE;
             }
             break;
         case 0x90:
             temp = &D_global_asm_807F6000[func_global_asm_80659470(arg0)];
             if (temp->unk7C->unk64 != 0xFF) {
-                return 0;
+                return FALSE;
             }
             break;
     }
     temp_a0 = D_global_asm_807F6000[func_global_asm_80659470(arg0)].unk8C;
     if (temp_a0 & 8 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_DK) {
-        return 0;
+        return FALSE;
     } else if (temp_a0 & 2 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_DIDDY) {
-        return 0;
+        return FALSE;
     } else if (temp_a0 & 4 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_TINY) {
-        return 0;
+        return FALSE;
     } else if (temp_a0 & 0x10 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_LANKY) {
-        return 0;
+        return FALSE;
     } else if (temp_a0 & 1 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_CHUNKY) {
-        return 0;
+        return FALSE;
     }
-    return 1;
+    return TRUE;
 }
 
 // matrix stuff

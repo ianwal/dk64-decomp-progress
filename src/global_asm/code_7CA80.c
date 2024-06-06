@@ -432,6 +432,7 @@ void func_global_asm_8067881C(void) {
 
 }
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80678824.s")
 
 extern s16 D_global_asm_807FBF10;

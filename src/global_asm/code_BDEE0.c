@@ -360,7 +360,7 @@ s32 func_global_asm_806BB604(u8 arg0, s16 arg1, s16 arg2, s32 arg3) {
     if (D_global_asm_807FDC90->unk2C != 0) {
         func_global_asm_806B9CE0(0, 0xA);
         D_global_asm_807FDC90->unk2C -= 1;
-        return 0;
+        return FALSE;
     }
     if (func_global_asm_807271F4(arg0, ((rand() >> 0xF) % 10) + (current_actor_pointer->x_position - 5.0f), current_actor_pointer->y_position + 5.0f, ((rand() >> 0xF) % 10) + (current_actor_pointer->z_position - 5.0f), (((rand() >> 0xF) % 1024) + current_actor_pointer->y_rotation) - 0x200, arg1, arg2) != 0) {
         last_spawned_actor->control_state = 0x17;
@@ -373,9 +373,9 @@ s32 func_global_asm_806BB604(u8 arg0, s16 arg1, s16 arg2, s32 arg3) {
         }
         last_spawned_actor->noclip_byte = 1;
         last_spawned_actor->draw_distance = 0x3E8;
-        return 1;
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 void func_global_asm_806BB81C(void) {

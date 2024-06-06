@@ -26673,9 +26673,9 @@ s32 func_arcade_8002A408(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 a
         D_arcade_8004C6E4 = arg3;
         D_arcade_8004C6E8 = arg5;
         D_arcade_8004C6EC = arg4;
-        return 1;
+        return TRUE;
     }
-    return 0;
+    return FALSE;
 }
 
 s32 func_arcade_8002A474(s32 arg0, s32 arg1) {
@@ -26777,74 +26777,74 @@ s32 func_arcade_8002A734(s32 arg0, s32 arg1) {
 
 s32 func_arcade_8002AA24(s32 arg0, s32 arg1) {
     if (func_arcade_8002A408(arg0, arg1, 0xB4, 0x37, 0x37, 0x57)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xD4, 0x57, 0x57, 0x77)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x104, 0x67, 0x67, 0x8F)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xBC, 0x7F, 0x7F, 0x9F)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xEC, 0x8F, 0x8F, 0xAF)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x104, 0xB7, 0xB7, 0xCF)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x44, 0x87, 0x87, 0xBF)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x74, 0x87, 0x87, 0xCF)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x84, 0x87, 0x87, 0xCF)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x3C, 0xBF, 0xBF, 0xE7)) {
-        return 1;
+        return TRUE;
     }
     D_arcade_8004C6E0 = 0;
     D_arcade_8004C6E4 = 300;
     D_arcade_8004C6EC = 300;
     D_arcade_8004C6E8 = 1;
-    return 0;
+    return FALSE;
 }
 
 s32 func_arcade_8002AC54(s32 arg0, s32 arg1) {
     s32 phi_v0;
 
     if (func_arcade_8002A408(arg0, arg1, 0x4C, 0xCF, 0xCF, 0xF7)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x84, 0xCF, 0xCF, 0xF7)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xBC, 0xCF, 0xCF, 0xF7)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xF4, 0xCF, 0xCF, 0xF7)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x74, 0xA7, 0xA7, 0xCF)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xC4, 0xA7, 0xA7, 0xCF)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x4C, 0x7F, 0x7F, 0xA7)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x84, 0x7F, 0x7F, 0xA7)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xBC, 0x7F, 0x7F, 0xA7)) {
-        return 1;
+        return TRUE;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xF4, 0x7F, 0x7F, 0xA7)) {
-        return 1;
+        return TRUE;
     }
     phi_v0 = arcade_objects[0].y_position;
     if (phi_v0 == 0x61) {
@@ -26853,7 +26853,7 @@ s32 func_arcade_8002AC54(s32 arg0, s32 arg1) {
         phi_v0 = 0x74;
     }
     if (func_arcade_8002A408(arg0, arg1, 0x44, 0x57, phi_v0, 0x7F)) {
-        return 1;
+        return TRUE;
     }
 
     phi_v0 = arcade_objects[1].y_position;
@@ -26863,13 +26863,13 @@ s32 func_arcade_8002AC54(s32 arg0, s32 arg1) {
         phi_v0 = 0x74;
     }
     if (func_arcade_8002A408(arg0, arg1, 0xFC, 0x57, phi_v0, 0x7F)) {
-        return 1;
+        return TRUE;
     }
     D_arcade_8004C6E0 = 0;
     D_arcade_8004C6E4 = 300;
     D_arcade_8004C6EC = 300;
     D_arcade_8004C6E8 = 1;
-    return 0;
+    return FALSE;
 }
 
 s32 func_arcade_8002AF2C(s32 arg0, s32 arg1) {

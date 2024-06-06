@@ -312,11 +312,11 @@ s32 func_global_asm_8065C240(Struct8065C240 *arg0) {
             dx = arg0->unk18 - character_change_array[i].look_at_eye_x;
             dy = arg0->unk1C - character_change_array[i].look_at_eye_y;
             if (sqrtf((dz * dz) + ((dx * dx) + (dy * dy))) < arg0->unk32) {
-                return 1;
+                return TRUE;
             }
         }
     }
-    return 0;
+    return FALSE;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_global_asm_8065C334.s")

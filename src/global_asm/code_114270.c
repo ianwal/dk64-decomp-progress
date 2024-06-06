@@ -398,7 +398,7 @@ s32 func_global_asm_807122B4(void) {
         D_global_asm_8077058C = D_global_asm_8077058C * D_global_asm_8075E5B0;
         // D_global_asm_8077058C = D_global_asm_8077058C * 0.9;
         addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1);
-        return 0;
+        return FALSE;
     }
     if (D_global_asm_807FDA1C != 6) {
         D_global_asm_8077058C = 0;
@@ -408,7 +408,7 @@ s32 func_global_asm_807122B4(void) {
         }
         D_global_asm_807FDA1C = 6;
         D_global_asm_807FDA28 = 0;
-        return 1;
+        return TRUE;
     }
     // BUG: Missing return?
 }
