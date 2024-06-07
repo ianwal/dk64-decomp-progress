@@ -513,12 +513,14 @@ segments:
     exclusive_ram_id: overlay
     subsegments:
       - [0x2187A60, c, code_0]
+      - [0x21891D0, c, code_1770]
       - [0x218B110, c, code_36B0]
       - [0x218CD10, c, code_52B0]
       - [0x218F630, c, code_7BD0]
       - [0x21923C0, c, code_A960]
       - [0x2193570, data, code_0]
       - [0x2193760, .rodata, code_0]
+      - [0x2193830, .rodata, code_1770]
       - [0x21938D0, .rodata, code_36B0]
       - [0x2193A10, .rodata, code_52B0]
       - [0x2193B20, .rodata, code_7BD0]

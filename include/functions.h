@@ -144,7 +144,7 @@ u64 func_dk64_boot_80005918(u64, u64);
 // TODO: func_dk64_boot_800074E0 has no documented signature but has been matched
 
 // dk64_boot/libc/llcvt.c
-// TODO: __ull_to_f has no documented signature
+float __ull_to_f(unsigned long long u);
 // TODO: func_dk64_boot_800075CC has no documented signature
 // TODO: func_dk64_boot_800075E8 has no documented signature
 u64 func_dk64_boot_80007688(f32);
