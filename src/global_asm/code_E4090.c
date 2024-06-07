@@ -635,6 +635,7 @@ void func_global_asm_806E0D40(void) {
 }
 */
 
+// TODO: Good progress
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E0FAC.s")
 
 typedef struct {
@@ -654,7 +655,6 @@ typedef struct {
 extern Struct807FBB54 D_global_asm_807FBB54;
 
 /*
-// TODO: Good progress
 void func_global_asm_806E0FAC(void) {
     f32 sp1C;
     f32 temp_f0;
@@ -1460,12 +1460,12 @@ void func_global_asm_806E4634(void) {
     }
 }
 
+// TODO: Very close, just an issue with the branches in the first switch case
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E4740.s")
 
 extern f32 D_global_asm_8075318C[];
 
 /*
-// TODO: Very close, just an issue with the branches in the first switch case
 void func_global_asm_806E4740(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
         if (D_global_asm_8075318C[D_global_asm_807FD584] < extra_player_info_pointer->unk20) {

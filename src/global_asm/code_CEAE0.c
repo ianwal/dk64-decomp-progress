@@ -59,6 +59,10 @@ extern f32 D_global_asm_80750FA8;
 
 // .data
 extern f32 D_global_asm_80753170[];
+extern f32 D_global_asm_8075318C[];
+extern f32 D_global_asm_807531A8[];
+extern f32 D_global_asm_807531C4[];
+extern f32 D_global_asm_807531E0[];
 extern f32 D_global_asm_807531FC[]; // Kong Walking Maximum Velocity
 extern f32 D_global_asm_80753218[];
 extern f32 D_global_asm_80753234[];
@@ -868,12 +872,6 @@ s16 func_global_asm_806CD988(Actor *arg0) {
     return temp;
 }
 
-extern f32 D_global_asm_8075318C[];
-extern f32 D_global_asm_807531A8[];
-extern f32 D_global_asm_80753170[];
-extern f32 D_global_asm_807531C4[];
-extern f32 D_global_asm_807531E0[];
-
 s16 func_global_asm_806CD9A0(Actor *arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4) {
     f32 var_f0 = MAX(arg1, arg2);
 
@@ -1295,13 +1293,13 @@ s16 func_global_asm_806CE928(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
         switch (sp1C) {
             case 0:
                 switch ((u32)extra_player_info_pointer->unk1AC->unk58) {
-                    case 0x3D:
-                    case 0x3F:
-                    case 0x40:
-                    case 0x41:
-                    case 0x42:
-                    case 0x55:
-                    case 0x82:
+                    case ACTOR_BOULDER:
+                    case ACTOR_VASE_OVAL:
+                    case ACTOR_VASE_DOTS:
+                    case ACTOR_VASE_TRIANGLE:
+                    case ACTOR_VASE_PLUS:
+                    case ACTOR_STEEL_KEG:
+                    case ACTOR_APPLE:
                         playActorAnimation(current_player, 0x1C9);
                         break;
                     default:
@@ -1313,14 +1311,14 @@ s16 func_global_asm_806CE928(Actor *arg0, f32 arg1, f32 arg2, s32 arg3) {
                 break;
             case 1:
                 switch ((u32)extra_player_info_pointer->unk1AC->unk58) {
-                    case 0x3D:
-                    case 0x3F:
-                    case 0x40:
-                    case 0x41:
-                    case 0x42:
-                    case 0x43:
-                    case 0x55:
-                    case 0x82:
+                    case ACTOR_BOULDER:
+                    case ACTOR_VASE_OVAL:
+                    case ACTOR_VASE_DOTS:
+                    case ACTOR_VASE_TRIANGLE:
+                    case ACTOR_VASE_PLUS:
+                    case ACTOR_CANNON_BALL:
+                    case ACTOR_STEEL_KEG:
+                    case ACTOR_APPLE:
                         playActorAnimation(current_player, 0x1CA);
                         break;
                     default:
@@ -1729,7 +1727,7 @@ void func_global_asm_806CF9CC(void) {
 }
 */
 
-u8 func_global_asm_806CFC90(Actor *arg0, s32 arg1, u8 arg2, f32 arg3) {
+u8 func_global_asm_806CFC90(Actor *arg0, f32 *arg1, u8 arg2, f32 arg3) {
     f32 sp34;
     f32 temp_a3;
     s16 phi_a3;

@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-s16 func_global_asm_80731784(s16, s16, s32 *);
-
 typedef struct {
     s16 startFlagIndex;
     s16 endFlagIndex;

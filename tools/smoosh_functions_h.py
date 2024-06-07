@@ -45,19 +45,29 @@ orphanFunctionsWithSignatures = [
 
 functionsHLines = []
 osHLines = []
+progressLines = []
 
 def getSignature(functionName):
     for i, line in enumerate(functionsHLines):
         if functionName in line:
-            lc = line
             del functionsHLines[i]
-            return lc
-    return f'// TODO: {functionName.replace("(", "")} has no documented signature'
+            return line
+    functionName = functionName.replace("(", "")
+    if isMatched(functionName):
+        return f'// TODO: {functionName} has no documented signature but has been matched'
+    else:
+        return f'// TODO: {functionName} has no documented signature'
 
 def isLibultra(functionName):
     for line in osHLines:
         if functionName in line:
             return True
+    return False
+
+def isMatched(functionName):
+    for line in progressLines:
+        if functionName in line:
+            return line.endswith(",yes")
     return False
 
 if __name__ == "__main__":
@@ -72,6 +82,10 @@ if __name__ == "__main__":
     with open("./include/2.0L/PR/gu.h", 'r') as f:
         for line in f:
             osHLines.append(line.strip())
+
+    with open("./progress/progress.total.csv", 'r') as f:
+        for line in f:
+            progressLines.append(line.strip())
 
     # header header
     print("#ifndef __FUNCTIONS_H__")

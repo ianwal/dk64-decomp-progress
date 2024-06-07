@@ -2,7 +2,6 @@
 #include "functions.h"
 
 void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-void func_global_asm_806B49B0(u8 arg0, s16 arg1, s16 arg2);
 
 void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
     Actor178 *a178;
@@ -384,7 +383,6 @@ void func_global_asm_806C55E0(void) {
     }
 }
 
-s16 func_global_asm_80731784(s16, s16, void *);
 extern s16 D_807FD802;
 extern s16 D_807FD804;
 extern s16 D_807FD806;

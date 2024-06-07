@@ -6,7 +6,6 @@ void func_race_80026004(Actor178*, s32, f32);
 void func_global_asm_8062217C(Actor*, s32);
 void func_global_asm_80627878(Actor*);
 void func_global_asm_806CD424(s16, f32, f32);
-void func_global_asm_806EEAF8(s16);
 
 extern s16 D_global_asm_807530B0[];
 extern f32 D_global_asm_807531C4[];

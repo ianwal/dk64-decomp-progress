@@ -3401,10 +3401,10 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
 }
 */
 
+// TODO: Kinda close, good progress made
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806DCF60.s")
 
 /*
-// TODO: Kinda close, good progress made
 void func_global_asm_806DCF60(void) {
     Actor *temp_s0;
     f32 dx;
