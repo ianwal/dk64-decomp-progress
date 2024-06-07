@@ -3999,9 +3999,11 @@ void func_bonus_8002D6F8(s16 arg0);
 // TODO: func_bonus_8002D7E8 has no documented signature but has been matched
 
 // race/code_0.c
-// TODO: func_race_80024000 has no documented signature
+void func_race_80024000(void);
 // TODO: func_race_80024634 has no documented signature but has been matched
 // TODO: func_race_80024690 has no documented signature
+
+// race/code_1770.c
 // TODO: func_race_80025770 has no documented signature but has been matched
 // TODO: func_race_8002578C has no documented signature but has been matched
 // TODO: func_race_800257A4 has no documented signature
@@ -4084,7 +4086,7 @@ Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2);
 // TODO: func_race_8002D40C has no documented signature but has been matched
 // TODO: func_race_8002D4A0 has no documented signature but has been matched
 // TODO: func_race_8002D524 has no documented signature
-// TODO: func_race_8002D72C has no documented signature but has been matched
+void func_race_8002D72C(Actor *arg0);
 // TODO: func_race_8002D754 has no documented signature but has been matched
 // TODO: func_race_8002D778 has no documented signature
 // TODO: func_race_8002DA68 has no documented signature but has been matched
@@ -4116,7 +4118,7 @@ void setupRaceOnMapLoad(Maps map);
 // TODO: func_race_8002F304 has no documented signature but has been matched
 // TODO: func_race_8002F36C has no documented signature but has been matched
 // TODO: func_race_8002F420 has no documented signature but has been matched
-// TODO: func_race_8002F490 has no documented signature
+void func_race_8002F490(void *arg0);
 // TODO: func_race_8002F784 has no documented signature
 // TODO: func_race_8002F90C has no documented signature but has been matched
 // TODO: func_race_8002F950 has no documented signature

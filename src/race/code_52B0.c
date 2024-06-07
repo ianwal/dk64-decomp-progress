@@ -86,7 +86,6 @@ void func_race_800283D4(f32 arg0);
 void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
 void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3);
 f32 func_race_8002D2C0(void *arg0);
-void func_race_8002D72C(Actor *arg0);
 void func_race_8002D754(Actor *arg0);
 void func_race_8002DE78(void *, s32, void *, s32);
 s32 func_race_8002E8EC(void *arg0, void *arg1, s32 arg2);
