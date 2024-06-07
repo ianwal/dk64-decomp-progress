@@ -149,7 +149,6 @@ extern JetpacStruct1 D_jetpac_8002F3D0[0x18][0x20];
 extern s32 D_jetpac_80045BD0;
 
 extern f32 func_jetpac_80027210();
-extern void func_global_asm_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 extern void func_global_asm_8070E8F0(Gfx**, Sprite*);
 void func_jetpac_80025700(Struct8002C4D0 *, s32, s32, s32, s32);
 void func_jetpac_80025368(Competitor*);

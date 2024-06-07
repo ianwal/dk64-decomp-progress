@@ -134,14 +134,6 @@ u64 func_dk64_boot_80005918(u64, u64);
 // TODO: func_dk64_boot_800059A8 has no documented signature
 // TODO: func_dk64_boot_80005A44 has no documented signature
 // TODO: func_dk64_boot_80005A70 has no documented signature but has been matched
-// TODO: __osGetFpcCsr has no documented signature but has been matched
-
-// dk64_boot/io/spsetstat.c
-// TODO: __osSpSetStatus has no documented signature but has been matched
-
-// dk64_boot/io/controller.c
-// TODO: __osContGetInitData has no documented signature but has been matched
-// TODO: __osPackRequestData has no documented signature but has been matched
 
 // dk64_boot/dk64_boot_7F60.c
 // TODO: func_dk64_boot_80007360 has no documented signature but has been matched
@@ -161,10 +153,6 @@ f32 func_dk64_boot_8000773C(s64);
 // TODO: func_dk64_boot_80007754 has no documented signature
 // TODO: func_dk64_boot_80007788 has no documented signature
 
-// dk64_boot/io/conteepwrite.c
-// TODO: __osPackEepWriteData has no documented signature
-// TODO: __osEepStatus has no documented signature
-
 // dk64_boot/io/motor.c
 // TODO: osMotorStartStop has no documented signature
 // TODO: _MakeMotorData has no documented signature
@@ -179,46 +167,8 @@ f32 func_dk64_boot_8000773C(s64);
 // dk64_boot/io/sptaskyield.c
 // TODO: osSpTaskYield has no documented signature but has been matched
 
-// dk64_boot/os/virtualtophysical.c
-// TODO: __osDisableInt has no documented signature but has been matched
-// TODO: __osRestoreInt has no documented signature but has been matched
-
 // dk64_boot/os/thread.c
-// TODO: __osDequeueThread has no documented signature but has been matched
-// TODO: __osExceptionPreamble has no documented signature but has been matched
-// TODO: __osException has no documented signature but has been matched
 // TODO: send_mesg has no documented signature but has been matched
-// TODO: __osEnqueueAndYield has no documented signature but has been matched
-// TODO: __osEnqueueThread has no documented signature but has been matched
-// TODO: __osPopThread has no documented signature but has been matched
-// TODO: __osDispatchThread has no documented signature but has been matched
-// TODO: __osCleanupThread has no documented signature but has been matched
-
-// dk64_boot/io/vi.c
-// TODO: __osViInit has no documented signature but has been matched
-
-// dk64_boot/os/timerintr.c
-// TODO: __osTimerServicesInit has no documented signature
-// TODO: __osTimerInterrupt has no documented signature but has been matched
-// TODO: __osSetTimerIntr has no documented signature but has been matched
-// TODO: __osInsertTimer has no documented signature but has been matched
-
-// dk64_boot/io/vigetcurrcontext.c
-// TODO: __osViGetCurrentContext has no documented signature but has been matched
-
-// dk64_boot/io/viswapcontext.c
-// TODO: __osViSwapContext has no documented signature
-
-// dk64_boot/os/sendmesg.c
-// TODO: __osSetSR has no documented signature but has been matched
-// TODO: __osGetSR has no documented signature but has been matched
-// TODO: __osSetFpcCsr has no documented signature but has been matched
-
-// dk64_boot/io/sirawread.c
-// TODO: __osSiRawReadIo has no documented signature but has been matched
-
-// dk64_boot/io/sirawwrite.c
-// TODO: __osSiRawWriteIo has no documented signature but has been matched
 
 // dk64_boot/gu/cosf.c
 // TODO: fcos has no documented signature
@@ -228,84 +178,10 @@ f32 func_dk64_boot_8000773C(s64);
 // TODO: __sinf has no documented signature but has been matched
 // TODO: fsin has no documented signature
 
-// dk64_boot/io/ai.c
-// TODO: __osAiDeviceBusy has no documented signature but has been matched
-
 // dk64_boot/io/pigetcmdq.c
 // TODO: osPiGetCmdQueue has no documented signature but has been matched
 
-// dk64_boot/io/sirawdma.c
-// TODO: __osSiRawStartDma has no documented signature but has been matched
-
-// dk64_boot/io/siacs.c
-// TODO: __osSiCreateAccessQueue has no documented signature but has been matched
-// TODO: __osSiGetAccess has no documented signature but has been matched
-// TODO: __osSiRelAccess has no documented signature but has been matched
-
-// dk64_boot/io/conteepread.c
-// TODO: __osPackEepReadData has no documented signature
-
-// dk64_boot/io/crc.c
-// TODO: __osContAddressCrc has no documented signature
-// TODO: __osContDataCrc has no documented signature
-
-// dk64_boot/io/contramwritesafe.c
-// TODO: __osPackRamWriteDataSafe has no documented signature
-
-// dk64_boot/io/contramread.c
-// TODO: __osContRamReadData has no documented signature
-
-// dk64_boot/io/spgetstat.c
-// TODO: __osSpGetStatus has no documented signature but has been matched
-
-// dk64_boot/io/spsetpc.c
-// TODO: __osSpSetPc has no documented signature but has been matched
-
-// dk64_boot/io/sprawdma.c
-// TODO: __osSpRawStartDma has no documented signature but has been matched
-
-// dk64_boot/io/sp.c
-// TODO: __osSpDeviceBusy has no documented signature but has been matched
-
-// dk64_boot/io/piacs.c
-// TODO: __osPiCreateAccessQueue has no documented signature but has been matched
-// TODO: __osPiGetAccess has no documented signature but has been matched
-// TODO: __osPiRelAccess has no documented signature but has been matched
-// TODO: __osProbeTLB has no documented signature but has been matched
-
-// dk64_boot/os/destroythread.c
-// TODO: __osSetCompare has no documented signature but has been matched
-
-// dk64_boot/io/si.c
-// TODO: __osSiDeviceBusy has no documented signature but has been matched
-
-// dk64_boot/io/devmgr.c
-// TODO: __osDevMgrMain has no documented signature but has been matched
-
-// dk64_boot/io/contramwrite.c
-// TODO: __osContRamWrite has no documented signature
-
-// dk64_boot/io/pfsisplug.c
-// TODO: __osPfsRequestData has no documented signature but has been matched
-// TODO: __osPfsGetInitData has no documented signature but has been matched
-
-// dk64_boot/io/pfsgetstatus.c
-// TODO: __osPfsGetStatus has no documented signature
-// TODO: __osPfsRequestOneChannel has no documented signature
-// TODO: __osPfsGetOneChannelData has no documented signature but has been matched
-
-// dk64_boot/os/resetglobalintmask.c
-// TODO: __osResetGlobalIntMask has no documented signature but has been matched
-
-// dk64_boot/os/setglobalintmask.c
-// TODO: __osSetGlobalIntMask has no documented signature but has been matched
-
 // dk64_boot/io/contpfs.c
-// TODO: __osSumcalc has no documented signature but has been matched
-// TODO: __osIdCheckSum has no documented signature
-// TODO: __osRepairPackId has no documented signature
-// TODO: __osCheckPackId has no documented signature
-// TODO: __osGetId has no documented signature
 // TODO: func_dk64_boot_8000D7E0 has no documented signature
 // TODO: func_dk64_boot_8000D8B4 has no documented signature
 
@@ -3011,8 +2887,8 @@ void func_global_asm_806F5378(void);
 s32 func_global_asm_806F544C(s32 arg0, s32 actorBehaviourIndex, u8 arg2);
 void func_global_asm_806F5498(void);
 // TODO: func_global_asm_806F54E0 has no documented signature
-// TODO: func_global_asm_806F58A0 has no documented signature but has been matched
-// TODO: func_global_asm_806F5A48 has no documented signature but has been matched
+void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2);
+void func_global_asm_806F5A48(u8 arg0, s16 arg1, Actor *arg2, u16 arg3);
 s32 func_global_asm_806F5C30(s32 arg0);
 s32 func_global_asm_806F5CE4(s32 arg0);
 void func_global_asm_806F5D80(s32 *arg0, s32 *arg1);
@@ -3055,7 +2931,7 @@ void func_global_asm_806F93EC(u16 *arg0, Maps map);
 void func_global_asm_806F942C(u16 *arg0, Maps map);
 u8 func_global_asm_806F9470(u16 arg0, Maps map);
 // TODO: func_global_asm_806F94AC has no documented signature but has been matched
-// TODO: func_global_asm_806F9518 has no documented signature
+void func_global_asm_806F9518(s32 HUDItemIndex);
 void func_global_asm_806F95C8(void);
 // TODO: func_global_asm_806F9608 has no documented signature but has been matched
 // TODO: func_global_asm_806F966C has no documented signature but has been matched
@@ -3191,7 +3067,7 @@ void func_global_asm_807094D0(u8 arg0);
 // TODO: func_global_asm_8070A220 has no documented signature
 // TODO: func_global_asm_8070A848 has no documented signature
 // TODO: func_global_asm_8070A934 has no documented signature
-// TODO: func_global_asm_8070AC74 has no documented signature but has been matched
+void func_global_asm_8070AC74(Mtx *arg0, Gfx **dlp);
 void func_global_asm_8070AF24(void);
 // TODO: func_global_asm_8070B05C has no documented signature
 void setIntroStoryPlaying(u8 arg0);
@@ -3261,7 +3137,7 @@ void func_global_asm_8070E8DC(u8 arg0);
 // global_asm/code_1135F0.c
 // TODO: func_global_asm_8070E8F0 has no documented signature
 void func_global_asm_8070F2C8(s16 arg0, s16 arg1, u8 arg2, u8 arg3);
-// TODO: func_global_asm_8070F2FC has no documented signature
+void func_global_asm_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 
 // global_asm/code_114270.c
 void func_global_asm_8070F570(void);

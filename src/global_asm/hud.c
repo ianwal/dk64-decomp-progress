@@ -188,7 +188,7 @@ extern u16 D_global_asm_80750AC8;
 // static const char D_global_asm_8075DA64[] = "NA";
 // static const char D_global_asm_8075DA68[] = "%d";
 
-s32 func_global_asm_806F9518(s32);
+void func_global_asm_806F9518(s32 HUDItemIndex);
 Gfx *func_global_asm_806FA5A4(s32, Gfx *);
 Gfx *func_global_asm_806FA7BC(s32, Gfx *);
 Gfx *func_global_asm_806FA9C0(s32, Gfx *);
@@ -682,16 +682,16 @@ void func_global_asm_806F94AC(Struct806F94AC_arg0 *arg0, s32 arg1) {
     arg0->unk364 *= var_f2;
 }
 
+// TODO: Pretty close... hmm
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F9518.s")
 
 /*
-// TODO: Pretty close... hmm
-void func_global_asm_806F9518(s32 arg0) {
+void func_global_asm_806F9518(s32 HUDItemIndex) {
     GlobalASMStruct71 *phi_s1;
     GlobalASMStruct72 **next;
 
-    D_global_asm_80754280->hud_item[arg0].hud_state = 0;
-    phi_s1 = D_global_asm_80754280->hud_item[arg0].counter_pointer;
+    D_global_asm_80754280->hud_item[HUDItemIndex].hud_state = 0;
+    phi_s1 = D_global_asm_80754280->hud_item[HUDItemIndex].counter_pointer;
     while (phi_s1) {
         next = &phi_s1->unk18;
         if (phi_s1->unk0 == 1) {
@@ -706,9 +706,9 @@ void func_global_asm_806F9518(s32 arg0) {
 */
 
 void func_global_asm_806F95C8(void) {
-    s32 i;
-    for (i = 0; i < 15; i++) {
-        func_global_asm_806F9518(i);
+    s32 HUDItemIndex;
+    for (HUDItemIndex = 0; HUDItemIndex < 15; HUDItemIndex++) {
+        func_global_asm_806F9518(HUDItemIndex);
     }
 }
 

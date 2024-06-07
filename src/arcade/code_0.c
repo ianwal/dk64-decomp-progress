@@ -25095,7 +25095,6 @@ extern void func_global_asm_8060A9BC(void);
 extern void func_global_asm_8060AC7C(void);
 extern void func_global_asm_80610044(Gfx *, s32, s32, s32, s32, s32);
 extern Gfx *func_global_asm_806FD490(Gfx *, s32, s32 x, s32 y, char *string);
-extern void func_global_asm_8070F2FC(Gfx **arg0, s16 arg1, s16 arg2);
 extern void func_global_asm_8070E8F0(Gfx**, Sprite*);
 
 void func_arcade_8002419C(void *arg0, Gfx **arg1);

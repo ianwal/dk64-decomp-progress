@@ -59,9 +59,13 @@ def getSignature(functionName):
         return f'// TODO: {functionName} has no documented signature'
 
 def isLibultra(functionName):
+    if functionName.startswith("__os"):
+        return True
+
     for line in osHLines:
         if functionName in line:
             return True
+
     return False
 
 def isMatched(functionName):
