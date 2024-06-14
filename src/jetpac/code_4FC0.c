@@ -64,29 +64,13 @@ extern u8 D_jetpac_80045BE2;
 extern u8 D_jetpac_80045BE3;
 
 void func_jetpac_80025700(s32, s32, s32, s32, s32);
-void func_jetpac_80025A60(s32);
-f32 func_jetpac_80027210();
-void func_jetpac_80024E70(u8);
+void func_jetpac_80025A60(void*);
 void func_jetpac_80029640(struct_jetpac_80029640*, f32, f32);
-extern void func_jetpac_800298C8(JetpacStruct *arg0);
-void func_jetpac_8002976C(JetpacStruct*);
-extern void (func_jetpac_8002998C)();
-f32 func_jetpac_80027210();
 void func_jetpac_80029B90(JetpacStruct *);
 f32 func_jetpac_80027380(s32 *);
 f32 func_jetpac_800273C8(JetpacStruct *);
-f32 func_jetpac_8002A2DC(f32, f32);
-//void func_jetpac_8002A67C(JetpacStruct *);
-f32 func_jetpac_80027210();
-s32 func_jetpac_80027250(f32, f32, f32, f32, f32, f32, f32, f32);
-extern void (func_jetpac_8002A758)();
-void func_jetpac_8002A374(JetpacStruct*);
-void func_jetpac_8002A530(JetpacStruct *arg0);
-extern void func_jetpac_80029F7C(JetpacStruct*);
-f32 func_jetpac_80027210();
-extern void (func_jetpac_80029C1C)();
-s32 func_jetpac_80028CF8(f32, f32, f32, f32, s32);
-void func_jetpac_800294EC(JetpacStruct *, s32);
+
+void func_jetpac_80029F7C(JetpacStruct *arg0);
 void *func_global_asm_806FD490(Gfx *, s32, s16 x, s16 y, char *string);
 
 JetpacStruct *func_jetpac_80028FC0(void) {
@@ -180,7 +164,7 @@ JetpacStruct *func_jetpac_800292C4(void) {
     *sp70 = sp20;
     sp70->unk0.unk0 = 0.0f;
     sp70->unk0.unk4 = (((s32) (func_jetpac_80027210() * 15.0f) % 15) * 8) + 0x20;
-    switch ((s32) (func_jetpac_80027210() * 4.0f) % 4) {                              /* irregular */
+    switch ((s32) (func_jetpac_80027210() * 4.0f) % 4) {
     case 0:
         sp70->unk0.unk10 = 0;
         break;
@@ -731,7 +715,6 @@ s32 func_jetpac_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return FALSE;
 }
 
-void func_jetpac_80029450();
 extern JetpacStruct D_jetpac_8002E964;
 
 void func_jetpac_8002AAD4(void) {
@@ -824,14 +807,14 @@ void func_jetpac_8002AE00(Gfx **arg0) {
     *arg0 = dl;
 }
 
-void func_jetpac_8002AE94(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
+void func_jetpac_8002AE94(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     D_jetpac_80045BE0 = arg0;
     D_jetpac_80045BE1 = arg1;
     D_jetpac_80045BE2 = arg2;
     D_jetpac_80045BE3 = arg3;
 }
 
-void func_jetpac_8002AEC8(s8 arg0, s8 arg1, s8 arg2, s8 arg3) {
+void func_jetpac_8002AEC8(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     D_jetpac_8002E9C0 = arg0;
     D_jetpac_8002E9C4 = arg1;
     D_jetpac_8002E9C8 = arg2;

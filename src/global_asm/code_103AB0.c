@@ -92,7 +92,7 @@ void func_global_asm_806FF32C(Gfx *dl, Actor *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_806FF358.s")
 
-Gfx *func_global_asm_806FF628(Gfx *dl, s32 arg1) {
+Gfx *func_global_asm_806FF628(Gfx *dl, Actor *arg1) {
     PlayerAdditionalActorData *PaaD;
 
     PaaD = character_change_array->player_pointer->additional_actor_data;

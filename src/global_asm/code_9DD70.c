@@ -33,7 +33,6 @@ void func_global_asm_80699128(Gfx *dl, Struct80699128_arg1 *arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_80699284.s")
 
 u16 *func_global_asm_806FFF88();
-extern void func_global_asm_806FF628(); // TODO: Proper signature
 
 typedef struct {
     PlayerAdditionalActorData *unk0;

@@ -1,19 +1,14 @@
 #include <ultra64.h>
 #include "functions.h"
 
-f32 func_jetpac_80027210();
-
 s32 func_jetpac_80027480(void) {
     return (s32) ((func_jetpac_80027210() * 200.0f) + 90.0f);
 }
 
 extern s32 D_jetpac_8002DC68[];
-f32 func_jetpac_80027210();
 s32 func_jetpac_800274C0(void) {
     return D_jetpac_8002DC68[(s32)(func_jetpac_80027210() * 13.0f) % 13];
 }
-
-s32 func_jetpac_80027250(f32, f32, f32, f32, f32, f32, f32, f32);
 
 typedef struct {
     s32 unk0;
@@ -58,7 +53,6 @@ s32 func_jetpac_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32
 
 extern JetpacSpawningInfo D_jetpac_8002D1A0[6];
 extern JetpacPickupStruct D_jetpac_8002DC9C;
-void func_jetpac_80028B54(Competitor *);
 
 void func_jetpac_800275F4(Competitor *arg0) {
     // Spawn Rocket Segments
@@ -96,7 +90,6 @@ typedef struct JetpacStruct8002DCE8 { // P sure this is RGBA
 } JetpacStruct8002DCE8;
 
 void func_jetpac_80025700(void*, s32, s32, void*, s32);
-f32 func_jetpac_80027410(f32);
 extern s32 D_8002F3C0;
 extern JetpacStruct8002DCE8 D_jetpac_8002DCE8;
 extern JetpacPlayerStruct D_jetpac_8002EC30;
@@ -153,13 +146,9 @@ void func_jetpac_80027BE8(JetpacPickupStruct *arg0, s32 arg1) {
 }
 */
 
-f32 func_jetpac_80027210();                        
-s32 func_jetpac_80027480();                        
-s32 func_jetpac_800274C0();                        
 extern u8 D_8002F3C8;
 extern JetpacSpawningInfo D_jetpac_8002D968[7];
 extern JetpacPickupStruct D_jetpac_8002DCEC;
-
 
 void func_jetpac_80027D64(Competitor *arg0) {
     // Spawn Jetpac Bonus Item
@@ -185,10 +174,6 @@ void func_jetpac_80027D64(Competitor *arg0) {
 // https://decomp.me/scratch/5Smwc
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027EC0.s")
 
-void func_jetpac_80024E70(u8);                          /* extern */
-void func_jetpac_80027D64(Competitor*);
-s32 func_jetpac_80027250(f32, f32, f32, f32, f32, f32, f32, f32); /* extern */
-s32 func_jetpac_80028CF8(f32, f32, f32, f32, s32);  /* extern */
 extern s32 D_8002F06C;
 extern s32 D_8002F070;
 extern s32 D_8002F074;
@@ -339,7 +324,6 @@ void func_jetpac_80027EC0(JetpacPickupStruct *arg0) {
 }
 */
 
-s32 func_jetpac_800274C0();
 extern JetpacPickupStruct D_jetpac_8002DD38;
 
 void func_jetpac_80028340(Competitor *arg0) {
@@ -581,8 +565,6 @@ typedef struct Struct8002EF80 {
     s32 unk2C;
     s32 unk30;
 } Struct8002EF80;
-
-void func_jetpac_80028BD0(Struct8002EF80*, s32, s32, s32, u8, u8, u8); 
 
 void func_jetpac_80028BD0(Struct8002EF80 *arg0, s32 arg1, s32 arg2, s32 arg3, u8 arg4, u8 arg5, u8 arg6) {
     arg0->unk30 = arg3;

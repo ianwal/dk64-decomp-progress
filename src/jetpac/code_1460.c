@@ -148,15 +148,10 @@ extern JetpacStruct1 D_jetpac_8002F3D0[0x18][0x20];
 
 extern s32 D_jetpac_80045BD0;
 
-extern f32 func_jetpac_80027210();
 extern void func_global_asm_8070E8F0(Gfx**, Sprite*);
 void func_jetpac_80025700(Struct8002C4D0 *, s32, s32, s32, s32);
-void func_jetpac_80025368(Competitor*);
-void func_jetpac_80025FC4(JetpacStruct*);
-int func_jetpac_80026FE0(void);
 void func_jetpac_80026318(s32*);
 void func_jetpac_80027010(JetpacStruct3 *arg0);
-void func_jetpac_80024E70(s32);
 
 void func_jetpac_80025460(void) {
     int x, y;
@@ -388,11 +383,6 @@ void func_jetpac_80025CA0(JetpacStruct0 *arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025CB0.s")
-
-// TODO: These are sus
-s32 func_jetpac_80028CF8(f32, f32, f32, f32, s32);
-s32 func_jetpac_8002A974(f32, f32, f32, f32);
-s32 func_jetpac_800283EC(f32, f32, f32, f32);
 
 void func_jetpac_80025CB0(JetpacStruct0 *arg0);
 

@@ -687,8 +687,6 @@ void func_global_asm_806ABE3C(void) {
 }
 */
 
-Gfx *func_global_asm_80703374(Gfx *, s32, s32, s32, s32);
-
 Gfx *func_global_asm_806AC048(Gfx *dl, Actor *arg1) {
     return func_global_asm_80703374(dl, 0, 0, 0, 0x46);
 }

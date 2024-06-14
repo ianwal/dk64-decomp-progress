@@ -10,6 +10,7 @@ extern s32 D_global_asm_8076A080;
 
 extern f32 D_global_asm_807FD888;
 
+// TODO: Pretty close
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_80024000.s")
 
 typedef struct {
@@ -17,10 +18,8 @@ typedef struct {
     u8 unk80;
 } Struct8002419C_arg0;
 void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1);
-void func_jetpac_80025168(void*);
 
 /*
-// TODO: Pretty close
 void func_jetpac_80024000(void) {
     s32 sp2C;
     Gfx **sp28;
@@ -108,12 +107,6 @@ extern s32 D_jetpac_8002EF74;
 extern s32 D_jetpac_8002EC50;
 extern s32 D_jetpac_8002EDE4;
 
-Gfx **func_jetpac_8002AE00(Gfx**);
-void func_jetpac_8002AE94(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
-
-// TODO: Arg2 might be s16... Causes a mismatch in func_jetpac_80024D48.
-void func_jetpac_8002AEFC(Gfx **arg0, char *arg1, s32 arg2, s16 arg3, s32 arg4);
-
 void func_jetpac_80024408(Gfx **arg0) {
     Competitor *player;
     s32 pad[15];
@@ -147,9 +140,7 @@ void func_jetpac_80024408(Gfx **arg0) {
     func_jetpac_8002AEFC(arg0, &sp60, 0xE8, 0x20, 0);
 }
 
-void func_jetpac_800250A0();
-
-void func_jetpac_8002463C() {
+void func_jetpac_8002463C(void) {
     func_jetpac_80028C3C();
     func_jetpac_80024390();
     func_jetpac_800250A0();
@@ -201,7 +192,7 @@ void func_jetpac_800248A0(Gfx **arg0) {
 
 /*
 // TODO: Doable
-void func_jetpac_800248E8(s32 arg0) {
+void func_jetpac_800248E8(Gfx **arg0) {
     Competitor *player;
     JetpacPickupStruct *rocket;
 
@@ -287,7 +278,7 @@ void func_jetpac_80024A8C(Gfx **arg0) {
     }
 }
 
-void func_jetpac_80024C90(s32 arg0) {
+void func_jetpac_80024C90(Gfx **arg0) {
     Competitor *player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     func_jetpac_80024408(arg0);
     func_jetpac_80026CEC();
@@ -302,12 +293,6 @@ void func_jetpac_80024C90(s32 arg0) {
     func_jetpac_80026CA4();
     func_jetpac_80025904(arg0);
 }
-
-void func_jetpac_80024F9C(s32);
-void func_jetpac_800275F4(Competitor *);
-void func_jetpac_80027D64(Competitor *);
-void func_jetpac_80028340(Competitor *);
-void func_jetpac_80025368(Competitor *arg0);
 
 void func_jetpac_80024D48(Gfx **arg0) {
     s32 sp4C;
@@ -442,7 +427,7 @@ typedef struct {
 extern Struct807ECDE8 *D_global_asm_807ECDE8;
 extern u8 D_jetpac_8002BA70;
 
-void func_jetpac_80025168(void *arg0) {
+void func_jetpac_80025168(Gfx **arg0) {
     u8 *temp = &D_jetpac_8002BA70;
     if (*temp) {
         D_jetpac_8002EC30.unk78C = 0;

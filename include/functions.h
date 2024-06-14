@@ -52,12 +52,12 @@ void func_global_asm_8073AD48(void);
 void func_global_asm_8073E8B4(void);
 
 // dk64_boot/dk64_boot_1050.c
-// TODO: func_dk64_boot_80000450 has no documented signature but has been matched
-// TODO: func_dk64_boot_800004B4 has no documented signature but has been matched
-// TODO: func_dk64_boot_800004F4 has no documented signature but has been matched
+void func_dk64_boot_80000450(s32 devAddr, s32 arg1, void *dramAddr);
+void func_dk64_boot_800004B4(s32 *arg0, s32 *arg1);
+void func_dk64_boot_800004F4(s32 arg0);
 // TODO: func_dk64_boot_800005A8 has no documented signature
-// TODO: func_dk64_boot_80000980 has no documented signature but has been matched
-// TODO: func_dk64_boot_800009D0 has no documented signature but has been matched
+void func_dk64_boot_80000980(void);
+void func_dk64_boot_800009D0(void);
 
 // dk64_boot/dk64_boot_1630.c
 // TODO: func_dk64_boot_80000A30 has no documented signature
@@ -3000,11 +3000,11 @@ Gfx *func_global_asm_806FF01C(Gfx *dl, Actor *arg1);
 void func_global_asm_806FF144(Gfx *dl);
 void func_global_asm_806FF32C(Gfx *dl, Actor *arg1);
 // TODO: func_global_asm_806FF358 has no documented signature
-// TODO: func_global_asm_806FF628 has no documented signature but has been matched
+Gfx *func_global_asm_806FF628(Gfx *dl, Actor *arg1);
 // TODO: func_global_asm_806FF75C has no documented signature
 void func_global_asm_806FFB2C(Gfx *dl, Actor *arg1);
 // TODO: func_global_asm_806FFC04 has no documented signature
-// TODO: func_global_asm_806FFEAC has no documented signature but has been matched
+s16 *func_global_asm_806FFEAC(s16 *arg0, s16 *arg1);
 void func_global_asm_806FFF5C(void);
 // TODO: func_global_asm_806FFF88 has no documented signature
 // TODO: func_global_asm_80700088 has no documented signature
@@ -3021,7 +3021,7 @@ void func_global_asm_80701C90(void);
 void func_global_asm_807023E8(Gfx **dl, void *texture, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC);
 void func_global_asm_80702464(Gfx **dl, void *texture, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC, u8 argD, u8 argE);
 // TODO: func_global_asm_807024E0 has no documented signature
-// TODO: func_global_asm_80703374 has no documented signature but has been matched
+Gfx *func_global_asm_80703374(Gfx *dl, u8 r, u8 g, u8 b, u8 a);
 // TODO: func_global_asm_807035C4 has no documented signature
 void func_global_asm_80703850(u8 arg0);
 // TODO: func_global_asm_80703AB0 has no documented signature
@@ -3044,7 +3044,7 @@ void func_global_asm_80705C00(s16 arg0, s16 arg1, u8 arg2);
 // TODO: func_global_asm_807065F8 has no documented signature
 // TODO: func_global_asm_807069A4 has no documented signature
 // TODO: func_global_asm_80706F90 has no documented signature
-// TODO: func_global_asm_8070770C has no documented signature but has been matched
+Gfx *func_global_asm_8070770C(Gfx *dl);
 // TODO: func_global_asm_80707980 has no documented signature
 // TODO: func_global_asm_8070835C has no documented signature
 void func_global_asm_80708574(f32 arg0);
@@ -3185,15 +3185,15 @@ void func_global_asm_80713168(void);
 void func_global_asm_807131BC(void);
 void func_global_asm_8071321C(void);
 void func_global_asm_80713270(void);
-// TODO: func_global_asm_807132DC has no documented signature but has been matched
-// TODO: func_global_asm_8071338C has no documented signature but has been matched
+Gfx *func_global_asm_807132DC(Gfx *dl);
+Gfx *func_global_asm_8071338C(Gfx *dl);
 Gfx *func_global_asm_80713438(Gfx *dl, u8 arg1);
-// TODO: func_global_asm_807135B4 has no documented signature but has been matched
+Gfx *func_global_asm_807135B4(Gfx *dl);
 s32 func_global_asm_8071375C(s32 arg0);
 Gfx *func_global_asm_80713764(Gfx *dl, u8 arg1, f32 arg2);
 Gfx *func_global_asm_807138A4(Gfx *dl);
 // TODO: func_global_asm_807138CC has no documented signature
-// TODO: func_global_asm_80713AA8 has no documented signature but has been matched
+Gfx *func_global_asm_80713AA8(Gfx *dl);
 // TODO: func_global_asm_80713B40 has no documented signature
 // TODO: func_global_asm_80713C8C has no documented signature
 Gfx *func_global_asm_80713DFC(Gfx *dl);
@@ -3302,7 +3302,7 @@ void func_global_asm_8071B8EC(Struct80717D84 *arg0, s8 *arg1);
 void func_global_asm_8071BB14(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071BC80(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071BE04(Struct80717D84 *arg0, s32 arg1);
-// TODO: func_global_asm_8071C004 has no documented signature but has been matched
+void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1);
 void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1);
 // TODO: func_global_asm_8071C48C has no documented signature
 void func_global_asm_8071C620(Struct80717D84 *arg0, s32 arg1);
@@ -3357,7 +3357,7 @@ void func_global_asm_80723484(s32 arg0, Actor *arg1);
 u8 func_global_asm_80723C98(s32 arg0);
 // TODO: func_global_asm_80723CCC has no documented signature
 // TODO: func_global_asm_80723F88 has no documented signature
-// TODO: func_global_asm_80724154 has no documented signature but has been matched
+void func_global_asm_80724154(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 *arg4, f32 *arg5);
 // TODO: func_global_asm_80724308 has no documented signature
 s16 func_global_asm_807245D8(s32 arg0);
 
@@ -3384,7 +3384,7 @@ u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s1
 // TODO: func_global_asm_80725ED4 has no documented signature
 s32 func_global_asm_80726164(Actor *actor, s16 x, s16 y, s16 z, void *arg4);
 // TODO: func_global_asm_807264B0 has no documented signature
-// TODO: func_global_asm_807266E8 has no documented signature but has been matched
+void func_global_asm_807266E8(Actor *arg0, CharacterSpawner *arg1);
 // TODO: func_global_asm_80726744 has no documented signature
 u8 func_global_asm_80726D7C(u8 arg0);
 u8 func_global_asm_80726DC0(u8 arg0);
@@ -3427,7 +3427,7 @@ void func_global_asm_8072B324(Actor *arg0, s32 arg1);
 void func_global_asm_8072B330(u16 arg0);
 void func_global_asm_8072B438(u16 arg0);
 void func_global_asm_8072B59C(u8 arg0, s16 arg1, s32 arg2);
-// TODO: func_global_asm_8072B608 has no documented signature but has been matched
+void func_global_asm_8072B608(void);
 void func_global_asm_8072B79C(s16 arg0, s16 arg1, s16 arg2);
 void func_global_asm_8072B7CC(s32 arg0);
 // TODO: func_global_asm_8072C670 has no documented signature
@@ -3882,15 +3882,15 @@ s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3);
 // TODO: func_menu_8003292C has no documented signature
 
 // multiplayer/code_0.c
-// TODO: func_multiplayer_80024000 has no documented signature but has been matched
-// TODO: func_multiplayer_800241F4 has no documented signature but has been matched
-// TODO: func_multiplayer_80024254 has no documented signature but has been matched
-// TODO: func_multiplayer_800242FC has no documented signature but has been matched
-// TODO: func_multiplayer_800243C8 has no documented signature but has been matched
-// TODO: func_multiplayer_8002449C has no documented signature but has been matched
-// TODO: func_multiplayer_8002452C has no documented signature but has been matched
+Gfx *func_multiplayer_80024000(Gfx *dl, Actor *arg1);
+s32 func_multiplayer_800241F4(PlayerProgress *arg0, s32 playerIndex);
+s32 func_multiplayer_80024254(s32 playerIndex);
+void func_multiplayer_800242FC(void *aaD);
+void func_multiplayer_800243C8(void);
+void func_multiplayer_8002449C(void);
+void func_multiplayer_8002452C(void);
 // TODO: func_multiplayer_800245B0 has no documented signature
-// TODO: func_multiplayer_800246EC has no documented signature
+Gfx *func_multiplayer_800246EC(Gfx *dl, void *aaD, f32 arg2);
 // TODO: func_multiplayer_800249D8 has no documented signature
 // TODO: func_multiplayer_80024CA4 has no documented signature
 // TODO: func_multiplayer_80025264 has no documented signature
@@ -4391,32 +4391,32 @@ void func_boss_8002920C(void);
 // TODO: func_arcade_800319D4 has no documented signature
 
 // jetpac/code_0.c
-// TODO: func_jetpac_80024000 has no documented signature
+void func_jetpac_80024000(void);
 // TODO: func_jetpac_8002419C has no documented signature but has been matched
-// TODO: func_jetpac_80024390 has no documented signature but has been matched
-// TODO: func_jetpac_80024408 has no documented signature but has been matched
-// TODO: func_jetpac_8002463C has no documented signature but has been matched
-// TODO: func_jetpac_8002466C has no documented signature but has been matched
-// TODO: func_jetpac_800248A0 has no documented signature but has been matched
-// TODO: func_jetpac_800248E8 has no documented signature
-// TODO: func_jetpac_80024A4C has no documented signature but has been matched
-// TODO: func_jetpac_80024A8C has no documented signature but has been matched
-// TODO: func_jetpac_80024C90 has no documented signature but has been matched
-// TODO: func_jetpac_80024D48 has no documented signature but has been matched
-// TODO: func_jetpac_80024E70 has no documented signature but has been matched
-// TODO: func_jetpac_80024F24 has no documented signature but has been matched
-// TODO: func_jetpac_80024F64 has no documented signature but has been matched
-// TODO: func_jetpac_80024F9C has no documented signature but has been matched
-// TODO: func_jetpac_800250A0 has no documented signature but has been matched
-// TODO: func_jetpac_80025168 has no documented signature but has been matched
-// TODO: func_jetpac_80025368 has no documented signature but has been matched
+void func_jetpac_80024390(void);
+void func_jetpac_80024408(Gfx **arg0);
+void func_jetpac_8002463C(void);
+void func_jetpac_8002466C(Gfx **arg0);
+void func_jetpac_800248A0(Gfx **arg0);
+void func_jetpac_800248E8(Gfx **arg0);
+void func_jetpac_80024A4C(void);
+void func_jetpac_80024A8C(Gfx **arg0);
+void func_jetpac_80024C90(Gfx **arg0);
+void func_jetpac_80024D48(Gfx **arg0);
+void func_jetpac_80024E70(s32 arg0);
+void func_jetpac_80024F24(s32 arg0, s32 arg1);
+void func_jetpac_80024F64(s32 arg0);
+void func_jetpac_80024F9C(s32 arg0);
+void func_jetpac_800250A0(void);
+void func_jetpac_80025168(Gfx **arg0);
+void func_jetpac_80025368(Competitor *arg0);
 
 // jetpac/code_1460.c
-// TODO: func_jetpac_80025460 has no documented signature but has been matched
+void func_jetpac_80025460(void);
 // TODO: func_jetpac_800254B8 has no documented signature
-// TODO: func_jetpac_800255D4 has no documented signature but has been matched
+void func_jetpac_800255D4(Gfx **arg0);
 // TODO: func_jetpac_80025700 has no documented signature
-// TODO: func_jetpac_80025904 has no documented signature
+void func_jetpac_80025904(Gfx **arg0);
 // TODO: func_jetpac_80025A60 has no documented signature but has been matched
 // TODO: func_jetpac_80025B70 has no documented signature but has been matched
 // TODO: func_jetpac_80025BB8 has no documented signature but has been matched
@@ -4424,88 +4424,88 @@ void func_boss_8002920C(void);
 // TODO: func_jetpac_80025CA0 has no documented signature but has been matched
 // TODO: func_jetpac_80025CB0 has no documented signature
 // TODO: func_jetpac_80025F48 has no documented signature but has been matched
-// TODO: func_jetpac_80025FC4 has no documented signature but has been matched
+void func_jetpac_80025FC4(JetpacStruct *arg0);
 // TODO: func_jetpac_800260DC has no documented signature but has been matched
 // TODO: func_jetpac_80026318 has no documented signature
 // TODO: func_jetpac_80026A3C has no documented signature but has been matched
 // TODO: func_jetpac_80026AB0 has no documented signature
-// TODO: func_jetpac_80026CA4 has no documented signature but has been matched
-// TODO: func_jetpac_80026CEC has no documented signature but has been matched
-// TODO: func_jetpac_80026D48 has no documented signature but has been matched
-// TODO: func_jetpac_80026DC8 has no documented signature but has been matched
-// TODO: func_jetpac_80026FE0 has no documented signature but has been matched
+void func_jetpac_80026CA4(void);
+void func_jetpac_80026CEC(void);
+void func_jetpac_80026D48(void);
+void func_jetpac_80026DC8(void);
+int func_jetpac_80026FE0(void);
 // TODO: func_jetpac_80027010 has no documented signature but has been matched
 
 // jetpac/code_3060.c
-// TODO: func_jetpac_80027060 has no documented signature but has been matched
-// TODO: func_jetpac_80027108 has no documented signature but has been matched
-// TODO: func_jetpac_80027210 has no documented signature but has been matched
-// TODO: func_jetpac_80027250 has no documented signature but has been matched
-// TODO: func_jetpac_80027330 has no documented signature but has been matched
+s32 func_jetpac_80027060(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
+void func_jetpac_80027108(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg5);
+f32 func_jetpac_80027210(void);
+int func_jetpac_80027250(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
+int func_jetpac_80027330(f32 arg0);
 // TODO: func_jetpac_80027380 has no documented signature but has been matched
 // TODO: func_jetpac_800273C8 has no documented signature but has been matched
-// TODO: func_jetpac_80027410 has no documented signature but has been matched
+f32 func_jetpac_80027410(f32 arg0);
 
 // jetpac/code_3480.c
-// TODO: func_jetpac_80027480 has no documented signature but has been matched
-// TODO: func_jetpac_800274C0 has no documented signature but has been matched
+s32 func_jetpac_80027480(void);
+s32 func_jetpac_800274C0(void);
 // TODO: func_jetpac_80027510 has no documented signature but has been matched
-// TODO: func_jetpac_800275F4 has no documented signature but has been matched
+void func_jetpac_800275F4(Competitor *arg0);
 // TODO: func_jetpac_80027728 has no documented signature
 // TODO: func_jetpac_80027BE8 has no documented signature
-// TODO: func_jetpac_80027D64 has no documented signature but has been matched
+void func_jetpac_80027D64(Competitor *arg0);
 // TODO: func_jetpac_80027EC0 has no documented signature
-// TODO: func_jetpac_80028340 has no documented signature but has been matched
-// TODO: func_jetpac_800283EC has no documented signature but has been matched
-// TODO: func_jetpac_80028544 has no documented signature but has been matched
-// TODO: func_jetpac_800285DC has no documented signature but has been matched
-// TODO: func_jetpac_80028634 has no documented signature but has been matched
+void func_jetpac_80028340(Competitor *arg0);
+s32 func_jetpac_800283EC(f32 arg0, f32 arg1, f32 arg2, f32 arg3);
+void func_jetpac_80028544(void);
+void func_jetpac_800285DC(void);
+void func_jetpac_80028634(void);
 // TODO: func_jetpac_800286D0 has no documented signature
-// TODO: func_jetpac_80028950 has no documented signature but has been matched
+void func_jetpac_80028950(void);
 // TODO: func_jetpac_800289EC has no documented signature
-// TODO: func_jetpac_80028B54 has no documented signature but has been matched
+void func_jetpac_80028B54(Competitor *arg0);
 // TODO: func_jetpac_80028BD0 has no documented signature but has been matched
-// TODO: func_jetpac_80028C3C has no documented signature but has been matched
-// TODO: func_jetpac_80028CF8 has no documented signature but has been matched
-// TODO: func_jetpac_80028E04 has no documented signature but has been matched
+void func_jetpac_80028C3C(void);
+s32 func_jetpac_80028CF8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4);
+s32 func_jetpac_80028E04(s32 arg0, s32 arg1, s32 arg2);
 // TODO: func_jetpac_80028E88 has no documented signature
 
 // jetpac/code_4FC0.c
-// TODO: func_jetpac_80028FC0 has no documented signature but has been matched
+JetpacStruct *func_jetpac_80028FC0(void);
 // TODO: func_jetpac_80029064 has no documented signature
 // TODO: func_jetpac_800291AC has no documented signature but has been matched
-// TODO: func_jetpac_80029204 has no documented signature but has been matched
-// TODO: func_jetpac_800292C4 has no documented signature but has been matched
-// TODO: func_jetpac_80029450 has no documented signature but has been matched
-// TODO: func_jetpac_800294EC has no documented signature but has been matched
+void func_jetpac_80029204(JetpacStruct *arg0);
+JetpacStruct *func_jetpac_800292C4(void);
+void func_jetpac_80029450(void);
+void func_jetpac_800294EC(JetpacStruct *arg0, s32 arg1);
 // TODO: func_jetpac_80029640 has no documented signature but has been matched
-// TODO: func_jetpac_8002976C has no documented signature but has been matched
+void func_jetpac_8002976C(JetpacStruct *arg0);
 // TODO: func_jetpac_80029884 has no documented signature but has been matched
-// TODO: func_jetpac_800298C8 has no documented signature but has been matched
-// TODO: func_jetpac_8002992C has no documented signature but has been matched
-// TODO: func_jetpac_8002998C has no documented signature but has been matched
-// TODO: func_jetpac_80029AF8 has no documented signature but has been matched
-// TODO: func_jetpac_80029B90 has no documented signature but has been matched
-// TODO: func_jetpac_80029C1C has no documented signature but has been matched
+void func_jetpac_800298C8(JetpacStruct *arg0);
+void func_jetpac_8002992C(JetpacStruct *arg0);
+void func_jetpac_8002998C(JetpacStruct *arg0);
+void func_jetpac_80029AF8(JetpacStruct *arg0);
+void func_jetpac_80029B90(JetpacStruct *arg0);
+void func_jetpac_80029C1C(JetpacStruct *arg0);
 // TODO: func_jetpac_80029E0C has no documented signature but has been matched
 // TODO: func_jetpac_80029F7C has no documented signature
-// TODO: func_jetpac_8002A254 has no documented signature but has been matched
-// TODO: func_jetpac_8002A2AC has no documented signature but has been matched
-// TODO: func_jetpac_8002A2DC has no documented signature but has been matched
-// TODO: func_jetpac_8002A374 has no documented signature but has been matched
-// TODO: func_jetpac_8002A530 has no documented signature but has been matched
-// TODO: func_jetpac_8002A67C has no documented signature but has been matched
-// TODO: func_jetpac_8002A6C0 has no documented signature but has been matched
-// TODO: func_jetpac_8002A758 has no documented signature
+void func_jetpac_8002A254(JetpacStruct *arg0);
+void func_jetpac_8002A2AC(JetpacStruct *arg0);
+f32 func_jetpac_8002A2DC(f32 arg0, f32 arg1);
+void func_jetpac_8002A374(JetpacStruct *arg0);
+void func_jetpac_8002A530(JetpacStruct *arg0);
+void func_jetpac_8002A67C(JetpacStruct *arg0);
+void func_jetpac_8002A6C0(JetpacStruct *arg0);
+void func_jetpac_8002A758(JetpacStruct *arg0);
 // TODO: func_jetpac_8002A8F0 has no documented signature but has been matched
-// TODO: func_jetpac_8002A944 has no documented signature but has been matched
-// TODO: func_jetpac_8002A974 has no documented signature but has been matched
-// TODO: func_jetpac_8002AAD4 has no documented signature but has been matched
-// TODO: func_jetpac_8002ABDC has no documented signature but has been matched
-// TODO: func_jetpac_8002AD8C has no documented signature but has been matched
-// TODO: func_jetpac_8002AE00 has no documented signature but has been matched
-// TODO: func_jetpac_8002AE94 has no documented signature but has been matched
-// TODO: func_jetpac_8002AEC8 has no documented signature but has been matched
-// TODO: func_jetpac_8002AEFC has no documented signature but has been matched
+void func_jetpac_8002A944(JetpacStruct *arg0);
+s32 func_jetpac_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3);
+void func_jetpac_8002AAD4(void);
+void func_jetpac_8002ABDC(void);
+void func_jetpac_8002AD8C(void);
+void func_jetpac_8002AE00(Gfx **arg0);
+void func_jetpac_8002AE94(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
+void func_jetpac_8002AEC8(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
+void func_jetpac_8002AEFC(Gfx **arg0, char *string, s32 x, s32 y, s32 arg4);
 #endif
 

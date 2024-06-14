@@ -1984,7 +1984,8 @@ typedef struct global_asm_struct_12 {
 } GlobalASMStruct12;
 
 typedef struct {
-    u8 pad0[0x4 - 0x0];
+    u8 pad0[0x2 - 0x0];
+    s16 unk2;
     s16 unk4;
     s16 unk6;
     s16 unk8;

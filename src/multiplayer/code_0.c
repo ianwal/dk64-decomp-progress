@@ -46,7 +46,6 @@ typedef struct {
     u8 unk4C;
 } struct_unknown_mp_aad;
 
-void func_multiplayer_800242FC(void *);
 s32 func_multiplayer_80025404(void);
 s32 func_multiplayer_80025608(s32 objectType);
 void func_multiplayer_80025F84();
@@ -93,9 +92,9 @@ Gfx *func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
     return func_global_asm_8068E7B4(dl, var_f2, var_f12, aaD->unk8);
 }
 
-s32 func_multiplayer_800241F4(PlayerProgress *arg0, s32 arg1) {
+s32 func_multiplayer_800241F4(PlayerProgress *arg0, s32 playerIndex) {
     s32 var_v1;
-    s32 temp = arg1;
+    s32 temp = playerIndex;
 
     var_v1 = -arg0->unk2FE[temp];
     if (temp != 0) {
@@ -135,7 +134,7 @@ s32 func_multiplayer_80024254(s32 playerIndex) {
 }
 
 // TODO: which aaD are they expecting? It's not PaaD
-void func_multiplayer_800242FC(void *arg0) {
+void func_multiplayer_800242FC(void *aaD) {
     s32 check;
     s32 playerIndex;
     s32 highest;
@@ -240,8 +239,6 @@ void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, void *arg3, s32 ar
 // Displaylist stuff, close, float, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800249D8.s")
 
-s32 func_multiplayer_80024254(s32);
-Gfx *func_multiplayer_800246EC(Gfx *, void *, f32);
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 
@@ -430,7 +427,6 @@ s32 func_multiplayer_80025608(s32 objectType) {
     return func_global_asm_8063254C(objectType, &sp38, &sp34, &sp30, &sp_1, &sp2E, &sp2C);
 }
 
-void func_multiplayer_800243C8();
 void func_global_asm_806F5FE8(s32, s16, s16, s16, s32);
 extern s32 D_global_asm_807552F0;
 

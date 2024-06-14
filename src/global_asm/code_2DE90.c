@@ -2,10 +2,16 @@
 #include "functions.h"
 
 extern s32 D_global_asm_80744470[];
+extern u32 D_global_asm_80744478;
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
+extern s16 D_global_asm_80744498;
+extern s16 D_global_asm_8074449C;
+extern s16 D_global_asm_807444A0;
+extern s16 D_global_asm_807444A4;
 
 extern u8 D_global_asm_80747B20;
+extern s32 D_global_asm_80747B24;
 extern s32 D_global_asm_80747B28;
 extern u8 *D_global_asm_80747B2C;
 extern s32 D_global_asm_80747B38;
@@ -24,11 +30,13 @@ extern s16 D_807F5D88;
 extern f32 D_global_asm_807F5D8C;
 extern f32 D_global_asm_807F5D90;
 extern f32 D_global_asm_807F5D94;
-
+extern Mtx D_807F5D98;
 extern void *D_global_asm_807F5DD8;
 
-void func_global_asm_80704130(void*, s32, s32, s32, s32, s32);
 void func_dk64_boot_80002E98(void *arg0, s32 arg1, s32 arg2);
+
+void func_global_asm_807024E0(Gfx **, void *, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, void (*)(s32, s32, void *)); // extern
+void func_global_asm_80704130(void*, s32, s32, s32, s32, s32);
 
 void func_global_asm_80629190(void) {
     D_global_asm_807F5D84 = 0;
@@ -79,19 +87,8 @@ void func_global_asm_806291B4(u8 arg0) {
     }
 }
 
-void func_global_asm_807024E0(Gfx **, void *, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, void (*)(s32, s32, void *)); // extern
-extern Mtx D_807F5D98;
-extern u32 D_global_asm_80744478;
-extern s16 D_global_asm_80744498;
-extern s16 D_global_asm_8074449C;
-extern s16 D_global_asm_807444A0;
-extern s16 D_global_asm_807444A4;
-extern s32 D_global_asm_80747B24;
-
 Gfx *func_global_asm_80629300(Gfx *dl) {
     s32 sp54;
-    s16 temp_v1;
-    s32 temp_t8_3;
 
     sp54 = D_global_asm_80744478 * 0.5f;
     if (D_global_asm_80747B24 == 0) {
@@ -99,10 +96,10 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
         D_global_asm_80747B24 = 1;
     }
     if ((D_global_asm_807F5D84 == 0) && (D_global_asm_80747B20 != 0)) {
-        D_global_asm_80747B20 -= 1;
+        D_global_asm_80747B20--;
     }
     if (D_global_asm_807F5D84 < 0) {
-        D_global_asm_807F5D84 += 1;
+        D_global_asm_807F5D84++;
         if (D_global_asm_807F5D84 == 0) {
             func_global_asm_8061134C(D_807F5D80);
         }
@@ -145,7 +142,7 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
                     if (D_807F5D86 >= 0x11) {
                         func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x10, 0x50, (D_807F5D86 - 0x10), 0.0f, D_807F5D86, 239.0f, (D_807F5D86 - 0x10), 0.0f, 1, 0x10, 1, NULL);
                     }
-                    D_807F5D86 = D_807F5D86 + (sp54 * 0xA);
+                    D_807F5D86 += (sp54 * 0xA);
                     if (D_807F5D86 >= 0x137) {
                         D_global_asm_807F5D84 = -2;
                     }
@@ -158,7 +155,7 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
                     if (D_807F5D86 < 0x131) {
                         func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x10, 0x20, D_807F5D86, 0.0f, D_807F5D86 + 0x10, 239.0f, D_807F5D86, 0.0f, 1, 0x10, 2, NULL);
                     }
-                    D_807F5D86 = D_807F5D86 - (sp54 * 0xA);
+                    D_807F5D86 -= (sp54 * 0xA);
                     if (D_807F5D86 < 0xB) {
                         D_global_asm_807F5D84 = -2;
                     }
@@ -176,7 +173,7 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
                         func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x10, 0x20, D_807F5D88, 0.0f, D_807F5D88 + 0x10, 239.0f, D_807F5D88, 0.0f, 1, 0x10, 2, NULL);
                     }
                     D_807F5D86 += (sp54 * 0xA);
-                    D_807F5D88 = D_807F5D88 - (sp54 * 0xA);
+                    D_807F5D88 -= (sp54 * 0xA);
                     if (D_807F5D86 >= 0x137) {
                         D_global_asm_807F5D84 = -2;
                     }

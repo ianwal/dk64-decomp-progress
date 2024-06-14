@@ -1674,8 +1674,6 @@ void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1);
-
 extern f64 D_global_asm_8075E9B8;
 extern s32 D_global_asm_8071FB54;
 

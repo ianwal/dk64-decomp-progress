@@ -220,7 +220,7 @@ u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s1
 // arg0 Actor, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_807264B0.s")
 
-void func_global_asm_807266E8(Actor *arg0, GlobalASMStruct8 *arg1) {
+void func_global_asm_807266E8(Actor *arg0, CharacterSpawner *arg1) {
     arg0->x_position = arg1->unk4;
     arg0->y_position = arg1->unk6;
     arg0->unk8C = arg1->unk6;
