@@ -1899,7 +1899,7 @@ void func_global_asm_8069E490(u16 arg0, s16 arg1);
 void func_global_asm_8069E4E0(s16 arg0);
 void func_global_asm_8069E5B8(void);
 int func_global_asm_8069E660(Actor *arg0, f32 arg1, f32 arg2);
-s32 func_global_asm_8069E724(s32 arg0);
+s32 func_global_asm_8069E724(Actors actorBehaviourIndex);
 // TODO: func_global_asm_8069E774 has no documented signature
 s32 func_global_asm_8069EF50(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4);
 // TODO: func_global_asm_8069F020 has no documented signature
@@ -1962,7 +1962,7 @@ void func_global_asm_806A5DF0(s16 arg0, f32 x, f32 y, f32 z, s16 arg4, u8 arg5, 
 // TODO: func_global_asm_806A5EAC has no documented signature but has been matched
 void func_global_asm_806A5F44(void);
 void func_global_asm_806A5FA4(void);
-void func_global_asm_806A6004(void *arg0, s32 arg1);
+void func_global_asm_806A6004(void *arg0, Actors arg1);
 void func_global_asm_806A6094(void);
 void func_global_asm_806A60BC(void);
 void func_global_asm_806A60E4(void);

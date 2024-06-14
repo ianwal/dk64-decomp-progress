@@ -142,17 +142,17 @@ int func_global_asm_8069E660(Actor *arg0, f32 arg1, f32 arg2) {
         && (arg0->noclip_byte != 1);
 }
 
-s32 func_global_asm_8069E724(s32 arg0) {
-    switch (arg0) {
-        case 2:
+s32 func_global_asm_8069E724(Actors actorBehaviourIndex) {
+    switch (actorBehaviourIndex) {
+        case ACTOR_DK:
             return 0xB;
-        case 3:
+        case ACTOR_DIDDY:
             return 0xE;
-        case 5:
-        case 6:
-        case 7:
+        case ACTOR_TINY:
+        case ACTOR_CHUNKY:
+        case ACTOR_KRUSHA:
             return 0xA;
-        case 4:
+        case ACTOR_LANKY:
             return 0xD;
         default:
             return 0;

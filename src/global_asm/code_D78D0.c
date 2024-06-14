@@ -2389,19 +2389,19 @@ void func_global_asm_806D9940(void) {
             song = 0xA;
             phi_f0 = 1.0f;
             switch (current_actor_pointer->unk58) {
-                case 2:
+                case ACTOR_DK:
                     song = 0xB;
                     break;
-                case 5:
+                case ACTOR_TINY:
                     song = 0xD;
                     break;
-                case 4:
+                case ACTOR_LANKY:
                     song = 0xC;
                     if (!(D_global_asm_807FBB68 & 2)) {
                         phi_f0 = 0.82f;
                     }
                     break;
-                case 6:
+                case ACTOR_CHUNKY:
                     song = 9;
                     break;
             }

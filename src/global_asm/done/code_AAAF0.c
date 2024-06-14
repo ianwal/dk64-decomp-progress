@@ -38,6 +38,10 @@ extern s32 D_global_asm_80721378;
 extern s32 D_global_asm_80721028;
 extern s32 D_global_asm_80721004;
 
+extern s16 D_global_asm_80750384;
+extern f32 D_global_asm_80750388;
+extern s16 D_global_asm_8075038C;
+
 typedef struct {
     s32 unk0[7];
 } Struct807504A4;
@@ -50,16 +54,16 @@ extern u8 D_global_asm_807504C8;
 extern u8 D_global_asm_807504CC;
 extern u8 D_global_asm_807504D0;
 
+extern s32 D_global_asm_8076A068;
+
+extern s32 D_global_asm_807FBB68;
+extern u8 D_global_asm_807FBD70;
+
 // TODO: Add to aaD union
 typedef struct {
     s32 unk0;
     s32 unk4;
 } AAD_global_asm_806A5EAC;
-
-extern s32 D_global_asm_8076A068;
-
-extern s32 D_global_asm_807FBB68;
-extern u8 D_global_asm_807FBD70;
 
 typedef struct {
     u8 unk0;
@@ -69,6 +73,37 @@ typedef struct {
     u16 unk4;
     s16 unk6;
 } AAD_global_asm_806A7600;
+
+typedef struct {
+    u8 unk0[0x36C - 0x0];
+    u8 unk36C;
+    u8 unk36D;
+} AAD_806A664C_unk4;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    AAD_806A664C_unk4 *unk4;
+    u16 unk8;
+    s16 unkA;
+} AAD_806A664C;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    u16 unk8;
+    s16 unkA;
+} AAD_806A6DB4;
+
+typedef struct {
+    f32 unk0;
+    s16 unk4;
+} AAD_global_asm_806A7EF0;
 
 void func_global_asm_806A5DF0(s16 arg0, f32 x, f32 y, f32 z, s16 arg4, u8 arg5, s16 arg6, s32 arg7) {
     f32 var_f0;
@@ -96,76 +131,76 @@ void func_global_asm_806A5EAC(AAD_global_asm_806A5EAC *arg0, void *sprite, f32 s
 
 void func_global_asm_806A5F44(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_80720710, 1.0f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_80720710, 1.0f);
     }
 }
 
 void func_global_asm_806A5FA4(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_80720508, 1.0f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_80720508, 1.0f);
     }
 }
 
-void func_global_asm_806A6004(void *arg0, s32 arg1) {
+void func_global_asm_806A6004(void *arg0, Actors arg1) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (arg1 != player_pointer->unk58) {
             changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
         }
-        func_global_asm_806A5EAC(sp1C, arg0, 1.0f);
+        func_global_asm_806A5EAC(aaD, arg0, 1.0f);
     }
 }
 
 void func_global_asm_806A6094(void) {
-    func_global_asm_806A6004(&D_global_asm_807209EC, 3);
+    func_global_asm_806A6004(&D_global_asm_807209EC, ACTOR_DIDDY);
 }
 
 void func_global_asm_806A60BC(void) {
-    func_global_asm_806A6004(&D_global_asm_80720A10, 6);
+    func_global_asm_806A6004(&D_global_asm_80720A10, ACTOR_CHUNKY);
 }
 
 void func_global_asm_806A60E4(void) {
-    func_global_asm_806A6004(&D_global_asm_807207E0, 4);
+    func_global_asm_806A6004(&D_global_asm_807207E0, ACTOR_LANKY);
 }
 
 void func_global_asm_806A610C(void) {
-    func_global_asm_806A6004(&D_global_asm_80720A34, 2);
+    func_global_asm_806A6004(&D_global_asm_80720A34, ACTOR_DK);
 }
 
 void func_global_asm_806A6134(void) {
-    func_global_asm_806A6004(&D_global_asm_80720A58, 5);
+    func_global_asm_806A6004(&D_global_asm_80720A58, ACTOR_TINY);
 }
 
 void func_global_asm_806A615C(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         func_global_asm_80714A08(-0.35f, 0.35f);
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_80720768, 1.0f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_80720768, 1.0f);
     }
 }
 
 void func_global_asm_806A61D0(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_807204BC, 1.0f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_807204BC, 1.0f);
     }
 }
 
 void func_global_asm_806A6230(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     s32 temp_v1;
 
     func_global_asm_806A664C(4.5f);
@@ -174,7 +209,7 @@ void func_global_asm_806A6230(void) {
         if (((temp_v1 << 0xC) < 0) || (temp_v1 & 0x2000)) {
             current_actor_pointer->unk15F = 1;
         }
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_807207BC, 1.0f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_807207BC, 1.0f);
     }
 }
 
@@ -184,38 +219,38 @@ void func_global_asm_806A62B4(void) {
 
 void func_global_asm_806A62D4(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         changeActorColor(0xFF, 0xFF, 0, 0xFF);
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_807211D0, 1.5f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_807211D0, 1.5f);
     }
 }
 
 void func_global_asm_806A6348(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_807205C4, 1.0f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_807205C4, 1.0f);
     }
 }
 
 void func_global_asm_806A63A8(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_807205E8, 1.0f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_807205E8, 1.0f);
     }
 }
 
 void func_global_asm_806A6408(void) {
     // TODO: Which aaD type are they actually expecting here?
-    void *sp1C = current_actor_pointer->additional_actor_data;
+    void *aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806A664C(12.0f);
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        func_global_asm_806A5EAC(sp1C, &D_global_asm_80721378, 2.0f);
+        func_global_asm_806A5EAC(aaD, &D_global_asm_80721378, 2.0f);
     }
 }
 
@@ -278,25 +313,6 @@ void func_global_asm_806A6574(void) {
         func_global_asm_806A5EAC(aaD, sprite, 1.0f);
     }
 }
-
-extern s16 D_global_asm_8075038C;
-extern s32 D_global_asm_807FBB68;
-
-typedef struct {
-    u8 unk0[0x36C - 0x0];
-    u8 unk36C;
-    u8 unk36D;
-} AAD_806A664C_unk4;
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    AAD_806A664C_unk4 *unk4;
-    u16 unk8;
-    s16 unkA;
-} AAD_806A664C;
 
 void func_global_asm_806A664C(f32 arg0) {
     AAD_806A664C *aaD;
@@ -426,20 +442,6 @@ void func_global_asm_806A664C(f32 arg0) {
             break;
     }
 }
-
-extern s16 D_global_asm_80750384;
-extern f32 D_global_asm_80750388;
-extern s16 D_global_asm_8075038C;
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-    u16 unk8;
-    s16 unkA;
-} AAD_806A6DB4;
 
 void func_global_asm_806A6DB4(u8 arg0) {
     AAD_806A6DB4 *aaD;
@@ -767,11 +769,6 @@ void func_global_asm_806A7BDC(void) {
         func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xE, 0xE, 1, 0x96, 0x78, 0, 1.0f);
     }
 }
-
-typedef struct {
-    f32 unk0;
-    s16 unk4;
-} AAD_global_asm_806A7EF0;
 
 void func_global_asm_806A7EF0(void) {
     AAD_global_asm_806A7EF0 *aaD;

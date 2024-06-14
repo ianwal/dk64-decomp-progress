@@ -204,7 +204,7 @@ u8 func_global_asm_80676AB8(Actor *arg0, Actor *arg1, Actor *arg2) {
         var_v1 = (character_change_array[temp].unk2C0 == 2);
         if (var_v1 != 0) {
             if (cc_number_of_players == 1) {
-                var_v1 = (arg0->unk58 == 6);
+                var_v1 = (arg0->unk58 == ACTOR_CHUNKY);
             }
         }
     }

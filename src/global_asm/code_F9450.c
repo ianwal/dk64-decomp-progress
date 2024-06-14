@@ -385,22 +385,22 @@ void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2) {
     }
     
     switch (arg2->unk58) {
-        case 3:
+        case ACTOR_DIDDY:
             var_s2 = 0xA;
             break;
-        case 5:
+        case ACTOR_TINY:
             var_s2 = 0x16;
             break;
-        case 4:
-        case 9:
+        case ACTOR_LANKY:
+        case ACTOR_ENGUARDE:
             var_s2 = 0x1E;
             break;
-        case 6:
-        case 7:
+        case ACTOR_CHUNKY:
+        case ACTOR_KRUSHA:
             var_s2 = 0x1F;
             break;
-        case 2:
-        case 8:
+        case ACTOR_DK:
+        case ACTOR_RAMBI:
             var_s2 = 0xD;
             break;
         default:
@@ -431,20 +431,20 @@ void func_global_asm_806F5A48(u8 arg0, s16 arg1, Actor *arg2, u16 arg3) {
         func_global_asm_806357F8(arg1, &x, &y, &z, &xRot, &yRot, &zRot, &scale, &sp74, 1);
     }
     switch (arg2->unk58) {
-        case 3:
+        case ACTOR_DIDDY:
             var_s2 = 0x91;
             break;
-        case 5:
+        case ACTOR_TINY:
             var_s2 = 0x15D;
             break;
-        case 4:
+        case ACTOR_LANKY:
             var_s2 = 0x15E;
             break;
-        case 6:
-        case 7:
+        case ACTOR_CHUNKY:
+        case ACTOR_KRUSHA:
             var_s2 = 0x15F;
             break;
-        case 2:
+        case ACTOR_DK:
             var_s2 = 0x160;
             break;
         default:

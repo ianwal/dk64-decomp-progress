@@ -1740,27 +1740,27 @@ u8 func_global_asm_806E560C(Actor *arg0) {
     if (arg0->locked_to_pad == 1) {
         switch (func_global_asm_8063C328(arg0->unk10C)) {
             case 0xA8:
-                if (arg0->unk58 == 2) {
+                if (arg0->unk58 == ACTOR_DK) {
                     sp1F = TRUE;
                 }
                 break;
             case 0xA9:
-                if (arg0->unk58 == 3) {
+                if (arg0->unk58 == ACTOR_DIDDY) {
                     sp1F = TRUE;
                 }
                 break;
             case 0xAA:
-                if (arg0->unk58 == 5) {
+                if (arg0->unk58 == ACTOR_TINY) {
                     sp1F = TRUE;
                 }
                 break;
             case 0xAB:
-                if (arg0->unk58 == 6) {
+                if (arg0->unk58 == ACTOR_CHUNKY) {
                     sp1F = TRUE;
                 }
                 break;
             case 0xAC:
-                if (arg0->unk58 == 4) {
+                if (arg0->unk58 == ACTOR_LANKY) {
                     sp1F = TRUE;
                 }
                 break;

@@ -316,8 +316,8 @@ void func_global_asm_806F1048(Actor *arg0) {
 
 void func_global_asm_806F10E8(Actor *arg0) {
     switch ((u32)arg0->unk58) {
-        case 0x2:
-        case 0xC4:
+        case ACTOR_DK:
+        case ACTOR_CUTSCENE_DK:
             func_global_asm_806F0C18(arg0);
             spawnActor(ACTOR_BONGOS, 0xA6);
             moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[1] * 1.25);
@@ -325,23 +325,23 @@ void func_global_asm_806F10E8(Actor *arg0) {
             last_spawned_actor->z_rotation = arg0->z_rotation;
             last_spawned_actor->object_properties_bitfield |= 0x40000000;
             return;
-        case 0x3:
-        case 0xC5:
+        case ACTOR_DIDDY:
+        case ACTOR_CUTSCENE_DIDDY:
             func_global_asm_806F0C18(arg0);
             func_global_asm_80613194(arg0, 2);
             return;
-        case 0x4:
-        case 0xC6:
+        case ACTOR_LANKY:
+        case ACTOR_CUTSCENE_LANKY:
             func_global_asm_806F0C18(arg0);
             func_global_asm_80613194(arg0, 7);
             return;
-        case 0x5:
-        case 0xC7:
+        case ACTOR_TINY:
+        case ACTOR_CUTSCENE_TINY:
             func_global_asm_806F0C18(arg0);
             func_global_asm_80613194(arg0, 0xA);
             return;
-        case 0x6:
-        case 0xC8:
+        case ACTOR_CHUNKY:
+        case ACTOR_CUTSCENE_CHUNKY:
             func_global_asm_806F0C18(arg0);
             func_global_asm_80613194(arg0, 0xD);
             return;

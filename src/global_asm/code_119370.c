@@ -1352,7 +1352,7 @@ void func_global_asm_8071AF30(Struct80717D84 *arg0, s8 *arg1) {
             guMtxF2L(&sp78[0], arg0->unk384);
             arg0->unk36D = 0xC8;
         }
-        if (temp_s1->unk58 == 0xC5 && arg0->unk360 < 0.5) {
+        if (temp_s1->unk58 == ACTOR_CUTSCENE_DIDDY && arg0->unk360 < 0.5) {
             arg0->unk340 -= (10.0 * arg0->unk360 * func_global_asm_80612794(temp_s1->unkEE));
             arg0->unk348 -= (10.0 * arg0->unk360 * func_global_asm_80612790(temp_s1->unkEE));
         } else {
@@ -1360,7 +1360,7 @@ void func_global_asm_8071AF30(Struct80717D84 *arg0, s8 *arg1) {
             arg0->unk348 += (temp_s1->unkB8 * D_global_asm_8075E938 * func_global_asm_80612790(temp_s1->unkEE));
             arg0->unk344 -= D_global_asm_8075E940;
         }
-        if (temp_s1->unk58 == 0xFE) {
+        if (temp_s1->unk58 == ACTOR_CUTSCENE_OBJECT) {
             arg0->unk344 -= D_global_asm_8075E948;
         }
         memcpy(arg0->unk128[D_global_asm_807444FC], arg0->unk384, 0x40);
