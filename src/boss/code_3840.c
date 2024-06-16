@@ -135,12 +135,12 @@ void func_boss_80028478(u16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg
     func_global_asm_806A5DF0(0x48, arg1, arg2, arg3, arg4, arg5, arg0, 0);
 }
 
-void func_boss_80028680() {
+void func_boss_80028680(void) {
     func_global_asm_806A2A10(-0x7F83, 0xD2, 0xB4);
     func_global_asm_806A2B08(current_actor_pointer->unk11C);
 }
 
-Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
+Gfx *func_boss_800286B8(Gfx *dl, Actor *arg1) {
     f32 sp90[4][4];
     f32 sp50[4][4];
     Mtx *sp4C;
@@ -162,11 +162,11 @@ Gfx *func_boss_800286B8(Gfx *dl, s32 arg1) {
     return printStyledText(dl, 1, 0, 0, sp3C, 0);
 }
 
-void func_boss_80028818() {
+void func_boss_80028818(void) {
 
 }
 
-void func_boss_80028820() {
+void func_boss_80028820(void) {
     // K. Rool Tiny Phase Toes Complete
     setFlag(0x51, FALSE, FLAG_TYPE_TEMPORARY);
     setFlag(0x52, FALSE, FLAG_TYPE_TEMPORARY);

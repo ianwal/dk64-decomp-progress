@@ -1,18 +1,39 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s32 D_global_asm_8071FBA0; // TODO: Datatype
+
+typedef struct {
+    s32 unk0[3];
+} Struct807502C0;
+
+extern Struct807502C0 D_global_asm_807502C0;
+
+extern s32 D_global_asm_8076A068;
+
+extern u8 D_global_asm_807FBB85;
+extern void **D_global_asm_807FC7C0;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10;
+    u8 unk12;
+    u8 unk13;
+} AAD_global_asm_80697CEC;
+
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_global_asm_80697230.s")
-
-extern s32 *D_global_asm_807FC7C0;
 
 void func_global_asm_806978FC(void) {
     s16 phi_s0;
     s16 i;
 
     phi_s0 = 0;
-    D_global_asm_807FC7C0 = malloc(0xC0);
-    for (i = 0; i < 0x30; i++) {
+    D_global_asm_807FC7C0 = malloc(48 * sizeof(void*));
+    for (i = 0; i < 48; i++) {
         D_global_asm_807FC7C0[phi_s0] = getPointerTableFile(0x19, phi_s0 + 0x1654, 1, 1);
         phi_s0++;
     }
@@ -92,28 +113,6 @@ void func_global_asm_80697988(void) {
     addActorToTextOverlayRenderArray(func_global_asm_80697230, current_actor_pointer, 1);
 }
 */
-
-extern s32 D_global_asm_8071FBA0; // TODO: Datatype
-
-extern s32 D_global_asm_8076A068;
-
-extern u8 D_global_asm_807FBB85;
-
-typedef struct {
-    s32 unk0[3];
-} Struct807502C0;
-
-extern Struct807502C0 D_global_asm_807502C0;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s16 unk10;
-    u8 unk12;
-    u8 unk13;
-} AAD_global_asm_80697CEC;
 
 void func_global_asm_80697CEC(void) {
     AAD_global_asm_80697CEC *aaD;

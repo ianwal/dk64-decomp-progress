@@ -231,7 +231,7 @@ void func_global_asm_80701C90(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80701CA0.s")
 
 // TODO: Is this signature correct?
-void func_global_asm_807024E0(Gfx*, void*, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
+void func_global_asm_807024E0(Gfx**, void*, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32);
 
 void func_global_asm_807023E8(Gfx **dl, void *texture, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, f32 argB, f32 argC) {
     func_global_asm_807024E0(dl, texture, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA, argB, argC, 1, 0x10, 0, 0);
@@ -469,9 +469,9 @@ typedef struct global_asm_struct_1 {
     u8 unkC;
     u8 unkD;
     u8 unkE;
-} GlobalASMStruct1;
+} Struct80705B14;
 
-void func_global_asm_80705B14(GlobalASMStruct1 *arg0, u8 arg1, u8 arg2, u8 arg3) {
+void func_global_asm_80705B14(Struct80705B14 *arg0, u8 arg1, u8 arg2, u8 arg3) {
     arg0->unkC = arg1;
     arg0->unkD = arg2;
     arg0->unkE = arg3;

@@ -16,7 +16,6 @@ typedef struct {
 
 extern Struct80750400 D_global_asm_80750400[];
 
-int func_global_asm_806A4284();
 void func_global_asm_806A4DDC(Actor *arg0);
 
 void func_global_asm_806A3700(s32 arg0, s32 arg1) {
@@ -29,6 +28,8 @@ void func_global_asm_806A3700(s32 arg0, s32 arg1) {
 /*
 void func_global_asm_806A370C(Gfx **arg0, AAD_global_asm_806A4DDC *arg1, Struct806A57C0_2 *arg2, Struct806A57C0_3 *arg3) {
     u16 spE8; // compiler-managed
+    f32 spA8[4][4];
+    f32 sp68[4][4];
     f32 sp60;
     f32 sp5C;
     f32 sp4C;
@@ -45,21 +46,21 @@ void func_global_asm_806A370C(Gfx **arg0, AAD_global_asm_806A4DDC *arg1, Struct8
 
     temp_s3 = *arg0;
     spE8 = D_global_asm_8075A740;
-    guMtxIdentF(&spA8[0]);
+    guMtxIdentF(spA8);
     temp_s1 = arg3 + 0x10;
     if ((temp_s1->unk0 != 0) && (arg3->unk2 != 0)) {
         temp_f12 = arg3->unk0 * 0.5f * 4.0f;
         sp60 = temp_f12;
         temp_f14 = arg2->unk18 * 0.5f * 4.0f;
         sp5C = temp_f14;
-        guTranslateF(&sp68[0], -temp_f12, -temp_f14, 0.0f);
-        guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
+        guTranslateF(sp68, -temp_f12, -temp_f14, 0.0f);
+        guMtxCatF(spA8, sp68, spA8);
         temp_s1->unk88 = temp_s1->unk88 + 0.41887903213500977;
         if (temp_s1->unk0 & 8) {
             temp_f0 = temp_s1->unk88 * 0.5;
             if (temp_f0 <= 6.2831855f) {
-                guRotateF(&sp68[0], temp_f0 * 57.295776f, 0.0f, 0.0f, 1.0f);
-                guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
+                guRotateF(sp68, temp_f0 * 57.295776f, 0.0f, 0.0f, 1.0f);
+                guMtxCatF(spA8, sp68, spA8);
             }
         }
         if (temp_s1->unk0 & 4) {
@@ -69,24 +70,24 @@ void func_global_asm_806A370C(Gfx **arg0, AAD_global_asm_806A4DDC *arg1, Struct8
             } else {
                 var_f2 = 1.0f;
             }
-            guScaleF(&sp68[0], var_f2, var_f2, 1.0f);
-            guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
+            guScaleF(sp68, var_f2, var_f2, 1.0f);
+            guMtxCatF(spA8, sp68, spA8);
         }
         if (temp_s1->unk0 & 2) {
             sp38 = func_global_asm_80612D1C(temp_s1->unk88);
             sp4C = ((20.0f - ((rand() >> 0xF) % 40)) / 20.0f) * (4.0f * sp38);
             sp38 = func_global_asm_80612D1C(temp_s1->unk88);
-            guTranslateF(&sp68[0], sp4C, ((20.0f - ((rand() >> 0xF) % 40)) / 20.0f) * (4.0f * sp38), 0.0f);
-            guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
+            guTranslateF(sp68, sp4C, ((20.0f - ((rand() >> 0xF) % 40)) / 20.0f) * (4.0f * sp38), 0.0f);
+            guMtxCatF(spA8, sp68, spA8);
         }
-        guTranslateF(&sp68[0], sp60, sp5C, 0.0f);
-        guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
+        guTranslateF(sp68, sp60, sp5C, 0.0f);
+        guMtxCatF(spA8, sp68, spA8);
     }
-    guScaleF(&sp68[0], 1.0f, 1.0f, 1.0f);
-    guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
-    guTranslateF(&sp68[0], (arg1->unk44 + arg3->unk4) * 4.0, (arg1->unk48 + arg3->unk8) * 4.0, 0.0f);
-    guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
-    guMtxF2L(&spA8[0], temp_s1 + (D_global_asm_807444FC << 6) + 8);
+    guScaleF(sp68, 1.0f, 1.0f, 1.0f);
+    guMtxCatF(spA8, sp68, spA8);
+    guTranslateF(sp68, (arg1->unk44 + arg3->unk4) * 4.0, (arg1->unk48 + arg3->unk8) * 4.0, 0.0f);
+    guMtxCatF(spA8, sp68, spA8);
+    guMtxF2L(spA8, temp_s1 + (D_global_asm_807444FC << 6) + 8);
     temp_s3->words.w0 = 0xDA380003;
     temp_v1 = temp_s3 + 8;
     temp_s3->words.w1 = temp_s1 + (D_global_asm_807444FC << 6) + 8;

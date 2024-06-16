@@ -69,7 +69,7 @@ void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1) {
     gDPSetFillColor(dl++, 0x00010001);
     gDPFillRectangle(dl++, 0, 0, 319, 239);
     gSPMatrix(dl++, &D_2000080, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-    sp68 = malloc(0x5DC0);
+    sp68 = malloc(3000 * sizeof(Gfx));
     func_global_asm_8061134C(sp68);
     sp6C = sp68;
     func_jetpac_80025168(&sp6C);

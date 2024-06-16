@@ -1324,8 +1324,9 @@ s32 func_global_asm_80669930(f32 arg0[4][4]) {
 
 void func_global_asm_8062FF10(f32 (*)[4], void *);
 void func_global_asm_8066C610(s16, s8, void *);
+extern f32 D_global_asm_80758FE0;
 
-void func_global_asm_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, u8 arg3, f32 arg4, f32 arg5, f32 arg6) {
+void func_global_asm_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, u8 arg3, f32 x, f32 y, f32 z) {
     u8 pad[0x28];
     f32 spB0[4][4];
     f32 sp70[4][4];
@@ -1336,10 +1337,8 @@ void func_global_asm_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, u8 arg3, 
     arg0->unk10F = arg2;
     func_global_asm_8066C610(arg1, arg2, &spB0);
     func_global_asm_8062FF10(&sp30[0], &spB0);
-    guMtxXFMF(&sp30[0], arg4, arg5, arg6, &arg0->unk100, &arg0->unk104, &arg0->unk108);
+    guMtxXFMF(&sp30[0], x, y, z, &arg0->unk100, &arg0->unk104, &arg0->unk108);
 }
-
-extern f32 D_global_asm_80758FE0;
 
 void func_global_asm_80669A6C(Actor *arg0) {
     s32 pad;
@@ -1362,7 +1361,7 @@ void func_global_asm_80669A6C(Actor *arg0) {
 
     sp42 = func_global_asm_80659470(arg0->unk10C);
     if (sp42 != -1) {
-        func_global_asm_8066C610(sp42, arg0->unk10F, &sp90[0]);
+        func_global_asm_8066C610(sp42, arg0->unk10F, sp90);
         temp_v1 = D_global_asm_807F6000[sp42].unk7C;
         if (temp_v1 != NULL) {
             if (arg0->unkFC == 0) {
@@ -1377,7 +1376,7 @@ void func_global_asm_80669A6C(Actor *arg0) {
             arg0->unk100 += D_global_asm_807F6000[sp42].unk7C->unk8;
             arg0->unk108 += D_global_asm_807F6000[sp42].unk7C->unkC;
         }
-        guMtxXFMF(&sp90[0], arg0->unk100, arg0->unk104, arg0->unk108, &sp4C, &sp48, &sp44);
+        guMtxXFMF(sp90, arg0->unk100, arg0->unk104, arg0->unk108, &sp4C, &sp48, &sp44);
         arg0->unk94 = sp4C;
         arg0->unk98 = sp44;
         if (arg0->unkFC == 0) {
@@ -2109,7 +2108,7 @@ GlobalASMStruct40 *func_global_asm_8066BD54(GlobalASMStruct40 *arg0, s32 *arg1, 
     return arg0;
 }
 
-void func_global_asm_8066BDE0() {
+void func_global_asm_8066BDE0(void) {
     int i;
     for (i = 0; i < 0x14; i++) {
         func_global_asm_8066BE20(i);

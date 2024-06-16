@@ -1134,7 +1134,7 @@ void func_global_asm_80683158(void) {
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->object_properties_bitfield |= 0x1000;
-        current_actor_pointer->animation_state->unk1C = malloc(0x100);
+        current_actor_pointer->animation_state->unk1C = malloc(32 * sizeof(AnimationStateUnk1C));
         func_global_asm_80611690(current_actor_pointer->animation_state->unk1C);
         func_global_asm_806C8220(0, current_actor_pointer->unk178, aaD->unk0);
         switch (aaD->unk0) {

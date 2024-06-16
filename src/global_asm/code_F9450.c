@@ -151,7 +151,7 @@ void func_global_asm_806F50C8(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8
         }
     }
 
-    temp_v0_2 = malloc(0x1C);
+    temp_v0_2 = malloc(sizeof(Struct806F50C8));
     temp_v0_2->unk8 = x;
     temp_v0_2->unkA = y;
     temp_v0_2->unkC = z;
@@ -241,7 +241,7 @@ typedef struct GlobalASMStruct37 {
 } GlobalASMStruct37;
 
 GlobalASMStruct36 *func_global_asm_806F53EC(GlobalASMStruct37 *arg0) {
-    GlobalASMStruct36 *temp_v0 = malloc(0x20);
+    GlobalASMStruct36 *temp_v0 = malloc(sizeof(GlobalASMStruct36));
     temp_v0->unk10 = 0;
     temp_v0->unk14 = 0.0f;
     temp_v0->unk0 = arg0->unk0;

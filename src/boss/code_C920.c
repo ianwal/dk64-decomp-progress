@@ -80,7 +80,7 @@ void func_boss_80030D50(void) {
     current_actor_pointer->z_position += 80.0f * func_global_asm_80612790(current_actor_pointer->y_rotation + 0x400) * sp20;
 }
 
-void func_boss_80030E58() {
+void func_boss_80030E58(void) {
     D_global_asm_807FDC90->unk1A |= 1;
     playSoundAtPosition(
         current_actor_pointer->x_position, 

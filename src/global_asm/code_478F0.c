@@ -170,7 +170,7 @@ void func_global_asm_80642FC4(void **arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 sp2C;
 
     if (*arg0 == NULL) {
-        var_v1 = malloc(0x10);
+        var_v1 = malloc(sizeof(Struct80642FC4));
         *arg0 = var_v1;
         var_v1->unk0 = 7.0f;
         var_v1->unk4 = ((func_global_asm_806119A0() / 10000U) % 1548) + 0x5DC;

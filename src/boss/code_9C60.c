@@ -2,7 +2,6 @@
 #include "functions.h"
 
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
-void func_boss_8002FB7C(u8);
 
 //rodata
 const s32 D_boss_80036750[] = {

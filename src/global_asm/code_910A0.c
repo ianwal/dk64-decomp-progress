@@ -20,7 +20,7 @@ Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 x, s16 y, s16 arg4) {
     gDPPipeSync(dl++);
     gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOLOD);\
     gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x007C, 0x007C);
-    func_global_asm_80612CA0(&spA0[0], arg4);
+    func_global_asm_80612CA0(spA0, arg4);
     guTranslateF(sp60, x, y, 0.0f);
     guMtxCatF(spA0, sp60, spA0);
     guMtxF2L(spA0, sp5C);

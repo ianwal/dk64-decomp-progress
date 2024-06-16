@@ -118,7 +118,7 @@ Gfx *func_global_asm_806AA09C(s16 x, s16 y, s16 arg2, s16 arg3, Gfx *dl, s8 arg5
     if (arg5 != 0) {
         x = x - (var_s0 * scale);
     }
-    guScaleF(&spA8[0], scale, scale, 1.0f);
+    guScaleF(spA8, scale, scale, 1.0f);
     guTranslateF(sp68, x, y, 0.0f);
     guMtxCatF(spA8, sp68, spA8);
     guMtxF2L(spA8, spEC);

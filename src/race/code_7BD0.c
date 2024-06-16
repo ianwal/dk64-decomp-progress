@@ -890,9 +890,8 @@ void func_race_8002E2C8(Actor *arg0) {
     sp5C->unk26 = 0;
 }
 
-void func_race_8002E464(s32 arg0, Actor *arg1) {
-    // TODO: Which aaD type are they actually expecting here?
-    func_race_8002CAC8(arg0, arg1, arg1->PaaD);
+Gfx *func_race_8002E464(Gfx *arg0, Actor *arg1) {
+    return func_race_8002CAC8(arg0, arg1, arg1->additional_actor_data);
 }
 
 typedef struct {

@@ -2,7 +2,6 @@
 #include "functions.h"
 
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
-void func_boss_8002FB7C(u8);
 extern u8 D_global_asm_807FBD70;
 
 // RODATA
@@ -147,7 +146,7 @@ void func_boss_8002FDF8(Actor* arg0, u8 arg1) {
         func_boss_8002FC98(arg0, 0xF, 0, 0);
         // Note: This temporary variable appears to be required for this function to match
         temp = current_actor_pointer;
-        func_boss_8002FC48(temp, 0xA - temp->health);
+        func_boss_8002FC48(temp, 10 - temp->health);
         playActorAnimation(current_actor_pointer, 0x415);
     }
     if ((D_global_asm_807FBD70 == 5) || (D_global_asm_807FBD70 == 4)) {

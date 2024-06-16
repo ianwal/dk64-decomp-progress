@@ -398,7 +398,7 @@ void func_global_asm_8068C2F8(Actor *arg0) {
     }
 }
 
-// TODO: Arg0 is a function pointer
+// TODO: Arg0 is a function pointer of signature: Gfx* func(Gfx *dl, Actor *arg1);
 void addActorToTextOverlayRenderArray(void *arg0, Actor *arg1, u8 arg2) {
     if (D_global_asm_807501E0 < 8) {
         D_global_asm_807FC630[D_global_asm_807501E0].unk0 = arg0;

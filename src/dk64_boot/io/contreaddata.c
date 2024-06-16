@@ -7,8 +7,6 @@
 extern OSPifRam D_dk64_boot_80014DC0; // __osContPifRam
 extern u8 D_dk64_boot_80014E01; // __osMaxControllers
 
-void func_dk64_boot_800074E0(void);
-
 s32 func_dk64_boot_800073D0(OSMesgQueue *arg0) {
     s32 temp_v0;
 

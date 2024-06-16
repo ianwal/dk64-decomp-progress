@@ -62,10 +62,10 @@ void func_global_asm_8062AC68(void *arg0) {
     f32 sp58[4][4];
     s32 i;
 
-    guMtxL2F(&sp98[0], arg0);
-    func_global_asm_8062FF10(&sp58[0], &sp98[0]);
+    guMtxL2F(sp98, arg0);
+    func_global_asm_8062FF10(sp58, sp98);
     for (i = 0; i < 4; i++) {
-        guMtxXFMF(&sp58[0], D_global_asm_807F5DF0[i][0], D_global_asm_807F5DF0[i][1], D_global_asm_807F5DF0[i][2], &D_global_asm_807F5E20[i][0], &D_global_asm_807F5E20[i][1], &D_global_asm_807F5E20[i][2]);
+        guMtxXFMF(sp58, D_global_asm_807F5DF0[i][0], D_global_asm_807F5DF0[i][1], D_global_asm_807F5DF0[i][2], &D_global_asm_807F5E20[i][0], &D_global_asm_807F5E20[i][1], &D_global_asm_807F5E20[i][2]);
     }
 }
 

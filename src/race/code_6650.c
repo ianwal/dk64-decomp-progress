@@ -241,12 +241,11 @@ void func_race_8002A7F8(A178_race_8002B964 *arg0) {
     }
 }
 
-void func_race_8002AE6C(s32 arg0, Actor *arg1) {
+void func_race_8002AE6C(Gfx *dl, Actor *arg1) {
     // TODO: Which aaD type are they actually expecting here?
-    func_global_asm_8068E474(func_race_8002CAC8(arg0, arg1, arg1->PaaD), arg1);
+    func_global_asm_8068E474(func_race_8002CAC8(dl, arg1, arg1->PaaD), arg1);
 }
 
-s32 func_race_80026CA8();
 s32 func_race_80026D2C(f32);
 
 typedef struct {

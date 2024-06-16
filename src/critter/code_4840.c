@@ -28,11 +28,10 @@ extern void* D_critter_8002A1C8[];
 extern u16 D_critter_8002A1CE;
 extern u16 D_critter_8002A1CC;
 
-Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1);
 Gfx *func_critter_80028A9C(Gfx *dl, void *arg1, void *arg2, u8 arg3);
 void *func_dk64_boot_80002DE4(void*, char*);
 
-void func_critter_80028840() {
+void func_critter_80028840(void) {
     D_critter_8002A1C0 = getPointerTableFile(0x13, 4, 1, 1);
     D_critter_8002A1C8[0] = getPointerTableFile(0x13, 5, 1, 1);
     D_critter_8002A1C4 = NULL;

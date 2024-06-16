@@ -46,18 +46,16 @@ void func_global_asm_806641A0(void) {
     }
 }
 
-void func_global_asm_806643C4(s32 arg0, s32 arg1, f32 arg2) {
+void func_global_asm_806643C4(s32 arg0, s32 arg1, f32 angle) {
     f32 temp[2];
-    f32 sp74;
-    f32 sp70;
-    f32 sp6C;
+    f32 x, y, z;
     f32 sp2C[4][4];
 
     if (arg1 == 0x138) {
-        guRotateF(&sp2C[0], arg2, 0.0f, 1.0f, 0.0f);
-        guMtxXFMF(&sp2C[0], 0.0f, 0.0f, -10.0f, &sp74, &sp70, &sp6C);
-        D_global_asm_807F9430[arg0].unk2 += sp74;
-        D_global_asm_807F9430[arg0].unk6 += sp6C;
+        guRotateF(sp2C, angle, 0.0f, 1.0f, 0.0f);
+        guMtxXFMF(sp2C, 0.0f, 0.0f, -10.0f, &x, &y, &z);
+        D_global_asm_807F9430[arg0].unk2 += x;
+        D_global_asm_807F9430[arg0].unk6 += z;
     }
 }
 

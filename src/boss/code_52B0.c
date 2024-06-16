@@ -58,7 +58,6 @@ void func_boss_800293C0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_52B0/func_boss_80029468.s")
 
 s32 func_boss_80027BA8(void*, s32, f32);
-// ? func_boss_80028478(?, s16, s16, s16, s32, s32); // extern
 typedef struct {
     union {
         s32 unk0_s32;

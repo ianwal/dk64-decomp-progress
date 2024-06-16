@@ -15,12 +15,12 @@ typedef struct global_asm_struct_21 {
     u8 unk8;
     u8 unk9;
     u8 unkA;
-} GlobalASMStruct21;
+} Struct80708BB8;
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_global_asm_807085D0.s")
 
-void func_global_asm_80708BB8(GlobalASMStruct21 *arg0) {
+void func_global_asm_80708BB8(Struct80708BB8 *arg0) {
     if ((D_global_asm_807FBB64 & 0x800)) {
         arg0->unk6 = 0x20;
     } else {

@@ -7,62 +7,13 @@ void func_global_asm_8072F230(Actor*, u8, u8);
 s32 func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
 f32 func_global_asm_80627A00(f64, f32, f32, f32, f32);
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    s16 unk10;
-    s16 unk12;
-    s16 unk14;
-    s16 unk16;
-    s8 unk18;
-    s8 unk19;
-    s8 unk1A;
-    s8 unk1B;
-} Unk34;
-
-typedef struct GlobalASMStruct82 GlobalASMStruct82;
-
-struct GlobalASMStruct82 {
-    Actor *unk0; // Used
-    u8 unk4; // Used
-    u8 unk5;
-    u8 unk6;
-    u8 unk7;
-    f32 unk8;
-    f32 unkC;
-    s32 unk10;
-    f32 unk14;
-    u8 unk18;
-    s8 unk19;
-    s8 unk1A;
-    s8 unk1B;
-    f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-    f32 unk2C;
-    s8 unk30;
-    u8 unk31;
-    s8 unk32;
-    s8 unk33;
-    Unk34 *unk34;
-    GlobalASMStruct82 *next;
-};
-
-extern GlobalASMStruct82 *D_global_asm_807FDCC0;
-
 void func_global_asm_8072ED90(void) {
     D_global_asm_807FDCC0 = NULL;
 }
 
 void func_global_asm_8072ED9C(Actor *arg0, u8 arg1, u8 arg2) {
     s32 found;
-    GlobalASMStruct82 *current;
+    Struct807FDCC0 *current;
 
     current = D_global_asm_807FDCC0;
     found = FALSE;
@@ -80,7 +31,7 @@ void func_global_asm_8072ED9C(Actor *arg0, u8 arg1, u8 arg2) {
 
 void func_global_asm_8072EE0C(Actor *arg0, u8 arg1, u8 arg2) {
     s32 found;
-    GlobalASMStruct82 *current;
+    Struct807FDCC0 *current;
 
     current = D_global_asm_807FDCC0;
     found = FALSE;
@@ -97,9 +48,9 @@ void func_global_asm_8072EE0C(Actor *arg0, u8 arg1, u8 arg2) {
 }
 
 void func_global_asm_8072EE7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, f32 argA, u8 argB, f32 argC, f32 argD, u8 argE) {
-    GlobalASMStruct82 **var_t0;
-    GlobalASMStruct82 *current;
-    GlobalASMStruct82 *sp18;
+    Struct807FDCC0 **var_t0;
+    Struct807FDCC0 *current;
+    Struct807FDCC0 *sp18;
 
     var_t0 = &D_global_asm_807FDCC0;
     current = D_global_asm_807FDCC0;
@@ -107,7 +58,7 @@ void func_global_asm_8072EE7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f
         var_t0 = &current->next;
         current = current->next;
     }
-    current = malloc(sizeof(GlobalASMStruct82));
+    current = malloc(sizeof(Struct807FDCC0));
     *var_t0 = current;
     current->unk0 = arg0;
     current->unk4 = arg1;
@@ -126,11 +77,11 @@ void func_global_asm_8072EE7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f
     current->unk30 = argE;
     current->unk31 = 1;
     current->next = NULL;
-    current->unk34 = malloc(arg4 * sizeof(Unk34));
+    current->unk34 = malloc(arg4 * sizeof(Struct807FDCC0_unk34));
 }
 
 void func_global_asm_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, u8 arg8, s16 arg9, s16 argA, s16 argB, s16 argC) {
-    GlobalASMStruct82 *current;
+    Struct807FDCC0 *current;
     s32 found;
 
     current = D_global_asm_807FDCC0;
@@ -157,9 +108,9 @@ void func_global_asm_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f
 }
 
 void func_global_asm_8072F09C(Actor *arg0) {
-    GlobalASMStruct82 **var_s2;
-    GlobalASMStruct82 *next;
-    GlobalASMStruct82 *current;
+    Struct807FDCC0 **var_s2;
+    Struct807FDCC0 *next;
+    Struct807FDCC0 *current;
 
     var_s2 = &D_global_asm_807FDCC0;
     current = D_global_asm_807FDCC0;
@@ -196,9 +147,8 @@ void func_global_asm_8072F120(void) {
 
 extern f32 D_global_asm_8075FF50;
 
-f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, GlobalASMStruct82 *arg2, u8 arg3);
 void func_global_asm_8072FCC4(void *arg0, s32 arg1, f32 arg2, f32 *arg3);
-u8 func_global_asm_8072F59C(void *arg0, GlobalASMStruct82 *arg1, f32 *arg2, s8 *arg3);
+u8 func_global_asm_8072F59C(void *arg0, Struct807FDCC0 *arg1, f32 *arg2, s8 *arg3);
 
 /*
 void func_global_asm_8072F230(Actor *arg0, u8 arg1, u8 arg2) {
@@ -214,9 +164,9 @@ void func_global_asm_8072F230(Actor *arg0, u8 arg1, u8 arg2) {
     u8 sp73;
     u8 sp72;
     f32 sp6C; // sp6C
-    GlobalASMStruct82 *current;
+    Struct807FDCC0 *current;
     PlayerAdditionalActorData *PaaD; // sp64
-    GlobalASMStruct82 *found;
+    Struct807FDCC0 *found;
     u8 temp_s1;
     u8 var_s4;
 
@@ -292,7 +242,7 @@ u8 func_global_asm_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_8072F59C.s")
 
-s32 func_global_asm_8072F8D4(GlobalASMStruct82 *arg0, s32 arg1, s16 arg2) {
+s32 func_global_asm_8072F8D4(Struct807FDCC0 *arg0, s32 arg1, s16 arg2) {
     s16 model2ArrayIndex;
     s32 angle;
 
@@ -317,7 +267,7 @@ s32 func_global_asm_8072F8D4(GlobalASMStruct82 *arg0, s32 arg1, s16 arg2) {
     return FALSE;
 }
 
-f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, GlobalASMStruct82 *arg2, u8 arg3) {
+f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, Struct807FDCC0 *arg2, u8 arg3) {
     u8 boneIndex1;
     u8 boneIndex2;
     f32 z2, y2, x2;
@@ -370,7 +320,7 @@ f32 func_global_asm_8072FA14(Actor *arg0, PlayerAdditionalActorData *arg1, Globa
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_8072FCC4.s")
 
 // TODO: Any cleanup possible? This is an odd one...
-void func_global_asm_8072FDD4(GlobalASMStruct82 *arg0, f32 arg1, s8 *arg2, f32 *arg3) {
+void func_global_asm_8072FDD4(Struct807FDCC0 *arg0, f32 arg1, s8 *arg2, f32 *arg3) {
     f32 var_f0;
     u8 i;
 
@@ -395,7 +345,7 @@ void func_global_asm_8072FDD4(GlobalASMStruct82 *arg0, f32 arg1, s8 *arg2, f32 *
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_80730408.s")
 
-void func_global_asm_80730AEC(u8 arg0, f32 arg1, GlobalASMStruct82 *arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
+void func_global_asm_80730AEC(u8 arg0, f32 arg1, Struct807FDCC0 *arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
     u8 bones[4];
     f32 sp4C[4][3];
 

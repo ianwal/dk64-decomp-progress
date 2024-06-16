@@ -45,7 +45,7 @@ Gfx *func_bonus_80024000(Gfx *dl, Actor *arg1) {
     return dl;
 }
 
-void func_bonus_800240F0() {
+void func_bonus_800240F0(void) {
     func_global_asm_8072707C(1, 0x40, 0);
     func_global_asm_8072707C(2, 0x40, 0);
     func_global_asm_8072707C(3, 0x40, 0);

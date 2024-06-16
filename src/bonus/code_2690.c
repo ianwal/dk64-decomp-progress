@@ -1128,7 +1128,7 @@ typedef struct bonus_additional_actor_data {
     f32 z_position;
 } BonusAdditionalActorData;
 
-void func_bonus_8002BE44() {
+void func_bonus_8002BE44(void) {
     ActorAnimationState *sp24;
     BonusAdditionalActorData *temp_a0;
     BonusStruct1 *temp_t8;

@@ -1061,7 +1061,7 @@ typedef struct {
 } GlobalASMStruct34;
 
 void func_global_asm_8067A69C(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, u8 arg4, u8 arg5) {
-    GlobalASMStruct38 *temp_v0 = malloc(0xC);
+    GlobalASMStruct38 *temp_v0 = malloc(sizeof(GlobalASMStruct38));
     temp_v0->unk0 = arg2;
     temp_v0->unk4 = arg3;
     temp_v0->unk8 = arg4;
@@ -1082,7 +1082,7 @@ void func_global_asm_8067A70C(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, f32 
 void func_global_asm_8067A784(Actor *arg0, Actor *arg1, s16 arg2, f32 arg3, s16 arg4) {
     GlobalASMStruct27 *temp_v0;
 
-    temp_v0 = malloc(0xC);
+    temp_v0 = malloc(sizeof(GlobalASMStruct27));
     temp_v0->unk0 = arg2;
     temp_v0->unk4 = arg3;
     temp_v0->unk8 = arg4;
@@ -1092,7 +1092,7 @@ void func_global_asm_8067A784(Actor *arg0, Actor *arg1, s16 arg2, f32 arg3, s16 
 void func_global_asm_8067A7EC(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, u8 arg6) {
     GlobalASMStruct28 *temp_v0;
 
-    temp_v0 = malloc(0x14);
+    temp_v0 = malloc(sizeof(GlobalASMStruct28));
     temp_v0->unk0 = arg2;
     temp_v0->unk4 = arg3;
     temp_v0->unk8 = arg4;
@@ -1138,7 +1138,7 @@ void func_global_asm_8067A99C(Actor *arg0, Actor *arg1, s32 arg2) {
 void func_global_asm_8067A9F0(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, f32 arg4) {
     GlobalASMStruct31 *temp_v0;
 
-    temp_v0 = malloc(0xC);
+    temp_v0 = malloc(sizeof(GlobalASMStruct31));
     temp_v0->unk0 = arg2;
     temp_v0->unk4 = arg3;
     temp_v0->unk8 = arg4;
@@ -1148,7 +1148,7 @@ void func_global_asm_8067A9F0(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3, f32 
 void func_global_asm_8067AA58(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3) {
     GlobalASMStruct32 *temp_v0;
 
-    temp_v0 = malloc(8);
+    temp_v0 = malloc(sizeof(GlobalASMStruct32));
     temp_v0->unk0 = arg2;
     temp_v0->unk4 = arg3;
     func_global_asm_80679200(arg1, arg0, 0x200000, 0, 1, temp_v0);
@@ -1157,7 +1157,7 @@ void func_global_asm_8067AA58(Actor *arg0, Actor *arg1, f32 arg2, f32 arg3) {
 void func_global_asm_8067AAB8(Actor* arg0, Actor *arg1, s16 arg2, f32 arg3, s16 arg4) {
     GlobalASMStruct33 *temp_v0;
 
-    temp_v0 = malloc(0xC);
+    temp_v0 = malloc(sizeof(GlobalASMStruct33));
     temp_v0->unk4 = arg3;
     temp_v0->unk8 = arg4;
     temp_v0->unk0 = arg2;
@@ -1179,7 +1179,7 @@ void func_global_asm_8067AB20(Actor *arg0, Actor *arg1, s32 arg2, u8 arg3, void 
 void func_global_asm_8067ABC0(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, f32 arg5, f32 arg6, f32 arg7) {
     GlobalASMStruct34 *temp_v0;
 
-    temp_v0 = malloc(0x10);
+    temp_v0 = malloc(sizeof(GlobalASMStruct34));
     temp_v0->unk0 = arg5;
     temp_v0->unk4 = arg6;
     temp_v0->unk8 = arg7;

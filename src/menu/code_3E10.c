@@ -1532,7 +1532,7 @@ void func_menu_8002F75C(void) {
 }
 */
 
-void func_menu_8002F8EC() {
+void func_menu_8002F8EC(void) {
     character_change_array->look_at_eye_x = player_pointer->x_position;
     character_change_array->look_at_eye_y = player_pointer->y_position + 13.1f;
     character_change_array->look_at_eye_z = player_pointer->z_position - 50.0f;

@@ -1,9 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-void func_dk64_boot_80002750(void);
-
 extern s32 D_dk64_boot_8000EEE0;
 
 extern void *D_dk64_boot_80013AB0;

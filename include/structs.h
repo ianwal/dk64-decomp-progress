@@ -329,7 +329,7 @@ typedef struct actor_animation_state {
     s16 unk12;
     void *bone_array_1; // at 0x14, camera, update bone positions // TODO: Proper type
     void *bone_array_2; // at 0x18, camera, update bone positions // TODO: Proper type
-    AnimationStateUnk1C *unk1C; // malloc(0x100) in func_global_asm_80683158
+    AnimationStateUnk1C *unk1C;
     AnimationStateUnk20 *unk20; // See boss func_dk64_boot_8002FB7C
     AnimationStateUnk24 *unk24;
     s32 unk28;
@@ -1159,7 +1159,7 @@ typedef struct {
     s32 unk28;
     s32 unk2C;
     s32 unk30;
-    s32 unk34;
+    void *unk34; // Used
     s16 unk38;
     s16 unk3A;
     s32 unk3C;
@@ -2771,5 +2771,54 @@ typedef struct {
     f64 unk30;
     f64 unk38;
 } GlobalASMStruct64;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    s16 unk10;
+    s16 unk12;
+    s16 unk14;
+    s16 unk16;
+    s8 unk18;
+    s8 unk19;
+    s8 unk1A;
+    s8 unk1B;
+} Struct807FDCC0_unk34;
+
+typedef struct Struct807FDCC0 Struct807FDCC0;
+
+struct Struct807FDCC0 {
+    Actor *unk0; // Used
+    u8 unk4; // Used
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    f32 unk8;
+    f32 unkC;
+    s32 unk10;
+    f32 unk14;
+    u8 unk18;
+    s8 unk19;
+    s8 unk1A;
+    s8 unk1B;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    s8 unk30;
+    u8 unk31;
+    s8 unk32;
+    s8 unk33;
+    Struct807FDCC0_unk34 *unk34;
+    Struct807FDCC0 *next;
+};
+
+extern Struct807FDCC0 *D_global_asm_807FDCC0;
 
 #endif

@@ -2,7 +2,6 @@
 #include "functions.h"
 
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
-void func_boss_8002FB7C(u8);
 
 // RODATA
 const s32 D_boss_80036840[] = {
@@ -79,7 +78,7 @@ void func_boss_8002E9B8(s32 arg0, s16 arg1) {
     func_global_asm_80613CA8(sp1C->unk0, arg1, 0.0f, 6.0f);
 }
 
-void func_boss_8002EA14() {
+void func_boss_8002EA14(void) {
     // TODO: BossActor178?
     Actor178 *sp1C = current_actor_pointer->unk178;
     func_boss_8002E9B8(0x406, 0x674);

@@ -2,10 +2,8 @@
 #include "functions.h"
 
 void func_dk64_boot_80000AA0(void);
-void func_dk64_boot_80000D8C(void *arg0);
 void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, u8 *arg3);
 void func_dk64_boot_80000EEC(s16* arg0[8][8], s32 arg1, s32 arg2, u8 arg3);
-void func_dk64_boot_8000102C(s32 arg0, s32 arg1, void *arg2);
 
 extern u8 *D_dk64_boot_8000DDCC;
 extern u8 D_dk64_boot_8000ED24;

@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_boss_8002C520(s16, s16, s16);
 extern u8 D_global_asm_807FBB85;
 extern u8 D_global_asm_807FBD70;
 
