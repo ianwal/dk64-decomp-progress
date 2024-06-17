@@ -17,8 +17,6 @@ extern s16 D_global_asm_807FC834;
 extern s16 D_global_asm_807FC836;
 extern s16 D_global_asm_807FC838;
 
-extern Gfx *func_global_asm_806ACA88(Gfx* dl, Actor *arg1);
-
 s32 func_global_asm_806A80C0(s8 arg0) {
     s32 i;
 
@@ -782,7 +780,6 @@ void func_global_asm_806ACCE8(void) {
     addActorToTextOverlayRenderArray(func_global_asm_806ACA88, current_actor_pointer, 5);
 }
 
-Gfx *func_global_asm_806A921C();
 extern u8 D_global_asm_807505F8[2]; // at least 2
 
 Gfx *func_global_asm_806ACF10(Gfx* dl, Actor *arg1) {

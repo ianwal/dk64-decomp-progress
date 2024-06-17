@@ -277,8 +277,6 @@ void func_global_asm_806F5498(void) {
 // Jumptable, very close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F54E0.s")
 
-void func_menu_80029EF8(Actor *arg0, s32 arg1);
-
 /*
 void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) {
     CharacterProgress *temp_v0_2;

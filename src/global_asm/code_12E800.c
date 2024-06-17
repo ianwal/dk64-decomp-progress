@@ -557,8 +557,6 @@ void func_global_asm_8072D08C(void) {
 extern f64 D_global_asm_8075FF10;
 extern f64 D_global_asm_8075FF18;
 
-void func_bonus_8002D7E8(u16);
-
 /*
 void func_global_asm_8072D714(Actor *arg0, s32 arg1) {
     f32 temp_f0_2;
@@ -615,7 +613,7 @@ void func_global_asm_8072D714(Actor *arg0, s32 arg1) {
     }
     enemies_killed += 1;
     if (current_map == MAP_RAMBI_ARENA) {
-        func_bonus_8002D7E8(current_actor_pointer->unk58);
+        func_bonus_8002D7E8((u16)current_actor_pointer->unk58);
     }
 }
 */

@@ -285,7 +285,7 @@ void func_global_asm_8068BA2C(void) {
         }
     }
     if (var_s3 == 0) {
-        temp_s1->unk1F0 &= 0xFBFFFFFF;
+        temp_s1->unk1F0 &= ~0x04000000;
     }
     if (sp58->unkAC & 1) {
         createLight(character_change_array->look_at_eye_x, character_change_array->look_at_eye_y, character_change_array->look_at_eye_z, character_change_array->look_at_at_x, character_change_array->look_at_at_y, character_change_array->look_at_at_z, 0.0f, 1, 0xFF, 0xFF, 0xFF);

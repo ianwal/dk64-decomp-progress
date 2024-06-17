@@ -120,12 +120,9 @@ typedef struct RaceStruct10 {
 
 extern u16 D_global_asm_80750AC4;
 
-void func_race_80025FDC();
-void func_race_8002D0FC();
 void func_race_8002DCF0(void*, s32);
 void *func_race_8002E960(u8, RaceStruct2*);
 void *func_race_8002E9AC(u8);
-f32 func_race_8002F04C(f32, f32, f32, f32, f32, f32, f32, f32);
 void func_race_8002F36C(RaceStruct13*, RaceStruct13*);
 void func_race_8002E9F8(s32 *checkpointFile);
 

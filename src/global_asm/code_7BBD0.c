@@ -5,9 +5,9 @@
 // https://decomp.me/scratch/KH3n0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_global_asm_80676ED0.s")
 
-extern s8 D_global_asm_807FB5FD;
-extern u8 D_global_asm_807FB5FF;
-extern s8 D_global_asm_807FB600;
+extern s8 D_807FB5FD;
+extern u8 D_807FB5FF;
+extern s8 D_807FB600;
 
 /*
 u8 func_global_asm_80676ED0(Actor *arg0, s16 *arg1, s16 *arg2) {
@@ -33,20 +33,20 @@ u8 func_global_asm_80676ED0(Actor *arg0, s16 *arg1, s16 *arg2) {
     sp70 = sp7C->unk4;
     sp6C = sp7C->unk8;
     sp68 = sp7C->unkC;
-    D_global_asm_807FB600 = 0;
+    D_807FB600 = 0;
     i = 0;
     while (i < D_global_asm_807FBB34) {
         temp_s7 = D_global_asm_807FB930[i].unk0;
         temp_s2 = temp_s7->ledge_info_pointer;
         if (!(temp_s7->object_properties_bitfield & 0x2000) && (sp7C != temp_s2) && (temp_s7->noclip_byte != 1) && (temp_s7->object_properties_bitfield & 0x10) && (func_global_asm_80674ADC(sp74, sp70, sp6C, sp68, temp_s2->unk0, temp_s2->unk4, temp_s2->unk8, temp_s2->unkC) != 0)) {
             var_s0 = sp7C->unk8C;
-            D_global_asm_807FB5FF = 0;
+            D_807FB5FF = 0;
             if (temp_s7->unk64 & 0x20) {
-                D_global_asm_807FB5FD = 0;
+                D_807FB5FD = 0;
             } else {
-                D_global_asm_807FB5FD = 1;
+                D_807FB5FD = 1;
             }
-            while ((var_s0 != NULL) && (D_global_asm_807FB5FF == 0)) {
+            while ((var_s0 != NULL) && (D_807FB5FF == 0)) {
                 if ((var_s0->unk26 != 0) && !(var_s0->unk27 & 2)) {
                     var_s3 |= func_global_asm_80673708(var_s0->unk10, var_s0->unk14, var_s0->unk18, var_s0->unk1C, temp_s2->unkA4, temp_s2->unkA8, arg1, arg2);
                 }
@@ -55,7 +55,7 @@ u8 func_global_asm_80676ED0(Actor *arg0, s16 *arg1, s16 *arg2) {
             if (temp_s7->unk64 & 0x20) {
                 arg0->unkFC |= var_s3;
             }
-            if (D_global_asm_807FB5FF != 0) {
+            if (D_807FB5FF != 0) {
                 sp5A |= func_global_asm_80677148(arg0, temp_s7);
             }
         }

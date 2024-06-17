@@ -66,8 +66,6 @@ void func_global_asm_806A2B80(Actor *arg0) {
     arg0->control_state_progress = 0;
 }
 
-Gfx *func_global_asm_806A2B90(Gfx *arg0, Actor *arg1); 
-
 // Displaylist stuff (actor)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_global_asm_806A2B90.s")
 

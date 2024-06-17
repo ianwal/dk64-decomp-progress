@@ -133,8 +133,6 @@ void func_global_asm_806C49D0(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-extern int func_global_asm_8068E474(); // TODO: Signature
-
 typedef struct {
     s16 unk0;
 } A178_806C4AC4;
@@ -327,7 +325,7 @@ void func_global_asm_806C55E0(void) {
                             func_global_asm_806ACC00(4);
                             current_actor_pointer->control_state_progress = 3;
                         } else {
-                            current_actor_pointer->control_state_progress += 1;
+                            current_actor_pointer->control_state_progress++;
                             current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
                         }
                     }

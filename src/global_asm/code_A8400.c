@@ -117,7 +117,7 @@ void func_global_asm_806A3B78(s32 *arg0, AAD_global_asm_806A4DDC *arg1, Struct80
             func_global_asm_806A370C(&sp44, arg1, arg2, var_s0);
         }
         var_s0 = var_s0->unkA0;
-        i += 1;
+        i++;
     }
     *arg0 = sp44;
 }

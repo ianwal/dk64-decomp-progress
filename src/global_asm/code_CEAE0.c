@@ -2253,7 +2253,7 @@ void func_global_asm_806D12CC(void) {
             extra_player_info_pointer->unk38 = 100.0f;
             handleInputsForControlState(0x67);
             func_global_asm_806CC8F0();
-            current_actor_pointer->control_state_progress += 1;
+            current_actor_pointer->control_state_progress++;
             break;
         case 1:
             func_global_asm_806CC8F0();

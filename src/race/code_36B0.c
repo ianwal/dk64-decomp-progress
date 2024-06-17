@@ -23,14 +23,6 @@ typedef struct RaceStruct15 {
     u16 unk2;
 } RaceStruct15;
 
-typedef struct RaceStruct3 {
-    u8 unk0;
-    u8 unk1;
-    s16 unk2;
-    f32 unk4;
-    f32 unk8;
-} RaceStruct3;
-
 typedef struct {
     u8 unk0[0x37 - 0x0];
     s8 unk37;

@@ -257,8 +257,6 @@ typedef struct {
 
 extern u8 D_menu_800330C0[];
 
-//void func_menu_800244EC();
-
 /*
 // TODO: Doable, good progress made
 void func_menu_80024788(SnideAaD180 *arg0) {

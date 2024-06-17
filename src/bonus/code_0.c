@@ -283,7 +283,7 @@ block_4:
                 }
 block_71:
                 if (a178->unk0 >= 2) {
-                    addActorToTextOverlayRenderArray(&func_bonus_80024000, current_actor_pointer, 3);
+                    addActorToTextOverlayRenderArray(func_bonus_80024000, current_actor_pointer, 3);
                 }
                 break;
             case 9: // switch 3

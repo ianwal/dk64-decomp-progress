@@ -221,7 +221,6 @@ Gfx *func_critter_800247F4(Gfx *, Struct800247F4 *);
 Gfx *func_critter_80024C88(Gfx *, Struct800247F4 *);
 Gfx *func_critter_8002516C(Gfx *, Struct800247F4 *);
 Gfx *func_critter_800255C4(Gfx *, Struct800247F4 *);
-void func_critter_800258B0(f32 arg0[4][4], s16 arg1, s16 arg2, s16 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7);
 void func_critter_80025A3C(Struct800247F4 *);
 Gfx *func_critter_80025AD0(Gfx *, Struct80025AD0 *);
 void func_critter_80025DB8(CritterStruct6*, CritterStruct6*, u8, s16, u8);
@@ -1094,7 +1093,7 @@ void func_critter_80026E0C(CritterController *arg0) {
                     var_s0->unk28 = func_global_asm_806531B8(var_s0->unk0, var_s0->unk2, var_s0->unk4, 0);
                     var_s0->unk24 = 0xFF;
                 }
-                j += 1;
+                j++;
                 var_s3 += 0x20;
             }
             func_critter_80027118(var_s2);

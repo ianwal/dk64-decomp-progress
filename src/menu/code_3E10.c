@@ -137,9 +137,6 @@ extern f32 menu_rotation_speed;
 extern f32 menu_icon_transition_scale;
 extern f32 menu_selection_speed;
 
-s32 func_menu_800322D0(s32);
-Gfx *func_menu_80030340(Actor*, s32, Gfx*, s32);
-void func_global_asm_8061D4E4(Actor*);
 void func_menu_80030894(MenuAdditionalActorData*,void*,s32,s32,f32,u8,s32); // Param 1 is ActorAdditionalData
 
 void func_menu_80027E10(void) {
@@ -176,8 +173,8 @@ void func_menu_80027E60(Actor *arg0, s32 arg1) {
     }
 }
 
-s32 func_menu_80027F34(s32 arg0, s32 arg1) {
-    return arg1;
+Gfx *func_menu_80027F34(Actor *arg0, Gfx *dl) {
+    return dl;
 }
 
 void func_menu_80027F40(Actor *arg0, s32 arg1) {
@@ -566,8 +563,6 @@ void func_menu_80028EA8(Actor *arg0, s32 arg1) {
     func_menu_80030894(MaaD, &D_global_asm_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
 }
 
-void func_menu_8002907C(void);
-
 extern u8 D_menu_80033818; // Current input index
 extern u16 D_menu_8003381C[] ;//= {U_JPAD, L_JPAD, U_JPAD, D_JPAD, R_JPAD, D_JPAD, Z_TRIG}; // Required input sequence
 extern s8 D_global_asm_807563B4; // Enable stack trace upon crash
@@ -645,7 +640,7 @@ void func_menu_80029AAC(Actor *arg0, s32 arg1) {
 
 Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     s32 pad124;
-    s32 sp120;
+    s32 fileIndex;
     s32 pad11C;
     s32 pad118;
     s32 pad114;
@@ -662,13 +657,13 @@ Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     char sp34[4];
 
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-    sp120 = func_menu_800317E8(aaD, 160.0f, 25.0f, &sp110, &sp10C, 3, 1, 0.45f);
+    fileIndex = func_menu_800317E8(aaD, 160.0f, 25.0f, &sp110, &sp10C, 3, 1, 0.45f);
     spFE = sp110 * 4.0f;
     sp100 = sp10C * 4.0f;
-    if (func_menu_800322D0(sp120)) {
+    if (func_menu_800322D0(fileIndex)) {
         sprintf(sp34, "%s", label_string_pointer_array[6]);
     } else {
-        sprintf(sp34, "%s %d", label_string_pointer_array[7], sp120 + 1);
+        sprintf(sp34, "%s %d", label_string_pointer_array[7], fileIndex + 1);
     }
     dl = printText(dl, spFE, sp100, 0.6f, sp34);
     sp100 -= 0x3C;
@@ -797,7 +792,7 @@ void func_menu_8002A468(Actor *arg0, s32 arg1) {
             if (MaaD->unk17 == 0) {
                 if (((D_menu_80033670 & 0x10) == 0) && ((arg1 & 0x10) != 0)) {
                     playSound(0x75, 0x7FFF, 63.0f, 1.0f, 0, 0);
-                    D_global_asm_80744538 += 1;
+                    D_global_asm_80744538++;
                     if (D_global_asm_80744538 >= 3) {
                         D_global_asm_80744538 = 0;
                     }
@@ -960,8 +955,6 @@ typedef struct {
     s8 unk8;
 } AAD_MultiplayerMenuKong;
 
-void func_menu_8002F8EC();
-
 void func_menu_8002C0C8(Actor *arg0, s32 arg1) {
     s32 globalFlagIndex;
     s32 i;
@@ -1045,7 +1038,6 @@ void func_menu_8002C584(Actor *arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CB18.s")
 
 /*
-? func_global_asm_806BF920();
 extern u8 D_80033F24[];
 extern u8 D_menu_80033878;
 
@@ -1299,8 +1291,6 @@ typedef struct {
     u8 unk16;
     u8 unk17;
 } AAD_8002D8AC;
-
-void func_menu_800324CC(void);
 
 void func_menu_8002D8AC(Actor *arg0, s32 arg1) {
     AAD_8002D8AC *aaD;

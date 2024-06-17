@@ -13,7 +13,7 @@ f32 func_global_asm_80611850(f32 arg0) {
     } else {
         var_a0 = arg0 * 32767.0f;
     }
-    return (func_global_asm_80611DA0(var_a0) * 3.141592741f) / 65535.0f;
+    return (func_global_asm_80611DA0(var_a0) * M_PIF) / 65535.0f;
 }
 
 f32 func_global_asm_806118FC(f32 arg0) {
@@ -26,5 +26,5 @@ f32 func_global_asm_806118FC(f32 arg0) {
     } else {
         phi_a0 = arg0 * 32767.0f;
     }
-    return (func_global_asm_80611DF4(phi_a0) * 3.141592741f) / 65535.0f;
+    return (func_global_asm_80611DF4(phi_a0) * M_PIF) / 65535.0f;
 }

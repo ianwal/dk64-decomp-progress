@@ -76,7 +76,7 @@ void func_global_asm_806C7B50(Actors actorIndex, u8 arg1, Actor *player) {
     temp_v0->unk8 = arg1;
 }
 
-void func_global_asm_806C7BAC(Actor *arg0, s32 arg1) {
+void func_global_asm_806C7BAC(Actor *arg0, Actor *arg1) {
     // TODO: Is this aaD type actually correct? The args line up but that's all I know right now
     // Maybe run it through a debugger or something
     OtherAdditionalActorData *temp_v0;

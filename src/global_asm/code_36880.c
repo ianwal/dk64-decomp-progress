@@ -883,14 +883,14 @@ void func_global_asm_80635098(Model2Model50_B8 *arg0, s16 arg1, s32 arg2, s32 ar
 
 /*
 // Appears to find the offset of the first G_ENDDL command in a Display List
-s32 func_global_asm_80635214(Gfx *arg0) {
+s32 func_global_asm_80635214(Gfx *dl) {
     s32 found;
     s32 offset;
 
     offset = 0;
     found = FALSE;
     while (!found) {
-        if (((arg0++)->words.w0 >> 0x18) == G_ENDDL) {
+        if (((dl++)->words.w0 >> 0x18) == G_ENDDL) {
             found = TRUE;
         }
         offset += 8;

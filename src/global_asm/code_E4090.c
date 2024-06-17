@@ -1880,12 +1880,12 @@ s32 func_global_asm_806E56EC(void) {
     return FALSE;
 }
 
-void func_global_asm_806E5C2C(s32 arg0, s32 arg1, s32 arg2) {
+void func_global_asm_806E5C2C(Maps map, s32 arg1, s32 arg2) {
     if (arg1 != 0) {
         setIntroStoryPlaying(2);
         func_global_asm_805FF158(0);
     }
-    func_global_asm_805FF9AC(arg0, 0, 0, 0);
+    func_global_asm_805FF9AC(map, 0, 0, 0);
 }
 
 int func_global_asm_806E5C74(void) {

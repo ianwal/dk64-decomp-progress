@@ -50,7 +50,6 @@ extern s32 D_global_asm_80767CC0;
 extern s32 D_global_asm_807FBB68;
 extern f32 D_global_asm_807FD888;
 
-extern void func_global_asm_8068E474(void);
 void func_global_asm_8061C2F0(Actor *, f32, f32, f32, f32, f32, f32, s32);
 void func_global_asm_8062217C(Actor*, u8);
 s16 func_global_asm_8062773C(s32);

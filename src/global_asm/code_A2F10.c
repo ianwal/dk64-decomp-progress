@@ -7,8 +7,8 @@ extern s32 D_global_asm_80744478;
 
 extern f32 D_global_asm_80750394;
 extern f32 D_global_asm_80750398;
-extern u8 D_global_asm_807503D4;
-extern u8 D_global_asm_807503E0;
+extern u8 D_global_asm_807503D4[];
+extern u8 D_global_asm_807503E0[];
 
 extern u8 D_global_asm_80750AB8;
 extern u8 D_global_asm_80750AD4;
@@ -49,7 +49,6 @@ const char D_global_asm_8075A44C[] = "KONG";
 extern s32 D_global_asm_807FBB68;
 extern u8 D_global_asm_807FBD70;
 
-Gfx *func_global_asm_8069FA40(Gfx *arg0, Actor *arg1);
 extern char *D_global_asm_80750338[];
 
 // Jumptable, close, doable
@@ -782,79 +781,76 @@ void func_global_asm_806A10BC(s32 *arg0) {
 }
 */
 
+// TODO: Close, doable, try merging k and i
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_806A112C.s")
 
-/*
-// TODO: Pretty close, need some structs
-void func_global_asm_806A112C(void) {
-    f32 sp38;
-    f32 temp_f20;
-    s16 var_s0_3;
-    s32 temp_v0_2;
-    s32 var_s2;
-    s8 var_s0_2;
-    u32 temp_v0;
-    u8 temp_v0_3;
-    void *temp_a1;
-    void *temp_a2;
-    void *temp_s5;
+typedef struct {
+    void* unk0;
+} AAD_806A112C;
 
-    temp_v0 = current_actor_pointer->object_properties_bitfield;
-    temp_s5 = current_actor_pointer->additional_actor_data;
-    if (!(temp_v0 & 0x10)) {
-        current_actor_pointer->object_properties_bitfield = temp_v0 | 0x400;
+typedef struct {
+    void* unk0;
+} AAD_806A112C_2;
+
+/*
+void func_global_asm_806A112C(void) {
+    f32 scale;
+    f32 temp_f20;
+    s16 k;
+    u8 j;
+    s16 i;
+    AAD_806A112C *aaD;
+
+    aaD = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->object_properties_bitfield |= 0x400;
         func_global_asm_80724D28(0, 7);
-        var_s0_2 = 0;
-        do {
-            temp_v0_2 = var_s0_2 * 0x10;
-            *(current_actor_pointer->animation_state->unk24 + temp_v0_2) = var_s0_2;
-            var_s0_2 = var_s0_2 + 1;
-            (current_actor_pointer->animation_state->unk24 + temp_v0_2)->unk1 = 0xFF;
-        } while (var_s0_2 < 7);
+        for (i = 0; i < 7; i++) {
+            current_actor_pointer->animation_state->unk24[i].unk0 = i;
+            current_actor_pointer->animation_state->unk24[i].unk1 = 0xFF;
+        }
         if (current_actor_pointer->unk15F == 0) {
-            sp38 = current_actor_pointer->animation_state->scale_y / 0.15;
-            *temp_s5 = getPointerTableFile(0x13, 6, 1, 1);
-            var_s2 = 1;
-            func_global_asm_806A0F78(current_actor_pointer, D_global_asm_807503D4, D_global_asm_807503E0);
-            temp_f20 = 75.0f * sp38;
-            var_s0_3 = 1;
+            scale = current_actor_pointer->animation_state->scale_y / 0.15;
+            aaD->unk0 = getPointerTableFile(0x13, 6, 1, 1);
+            func_global_asm_806A0F78(current_actor_pointer, D_global_asm_807503D4[0], D_global_asm_807503E0[0]);
+            j = 1;
+            temp_f20 = 75.0f * scale;
+            k = 1;
             do {
                 spawnActor(ACTOR_ROPE, 0xE1);
-                *last_spawned_actor->additional_actor_data = *temp_s5;
-                last_spawned_actor->unk15F = var_s0_3;
-                last_spawned_actor->y_rotation = current_actor_pointer->y_rotation + ((var_s0_3 / 3) << 0xA);
+                ((AAD_806A112C_2*)last_spawned_actor->additional_actor_data)->unk0 = aaD->unk0;
+                last_spawned_actor->unk15F = k;
+                last_spawned_actor->y_rotation = current_actor_pointer->y_rotation + ((k / 3) << 0xA);
                 last_spawned_actor->x_position = current_actor_pointer->x_position - (func_global_asm_80612794(last_spawned_actor->y_rotation) * temp_f20);
-                last_spawned_actor->y_position = current_actor_pointer->y_position + (((var_s0_3 % 3) & 0xFF) * 0x11);
+                last_spawned_actor->y_position = current_actor_pointer->y_position + (((k % 3) & 0xFF) * 0x11);
                 last_spawned_actor->z_position = current_actor_pointer->z_position - (func_global_asm_80612790(last_spawned_actor->y_rotation) * temp_f20);
                 func_global_asm_807248B0(last_spawned_actor, current_actor_pointer->animation_state->scale_y);
-                temp_a2 = var_s2 + 0x80750000;
-                temp_a1 = var_s2 + 0x80750000;
-                var_s2 = (var_s2 + 1) & 0xFF;
-                func_global_asm_806A0F78(last_spawned_actor, temp_a1->unk3D4, temp_a2->unk3E0);
-                var_s0_3 += 1;
-            } while (var_s0_3 < 0xC);
+                j++;
+                func_global_asm_806A0F78(last_spawned_actor, D_global_asm_807503D4[j], D_global_asm_807503E0[j]);
+                k++;
+            } while (k < 0xC);
             current_actor_pointer->x_position -= temp_f20 * func_global_asm_80612794(current_actor_pointer->y_rotation);
             current_actor_pointer->z_position -= temp_f20 * func_global_asm_80612790(current_actor_pointer->y_rotation);
         }
     }
     switch (current_actor_pointer->control_state) {
         case 1:
-            current_actor_pointer->unk168 += 1;
+            current_actor_pointer->unk168++;
             if (current_actor_pointer->unk168 == 7) {
-                current_actor_pointer->control_state += 1;
+                current_actor_pointer->control_state++;
                 current_actor_pointer->unk168 = 0;
             }
             break;
         case 2:
-            func_global_asm_806A10BC(temp_s5);
-            current_actor_pointer->unk168 += 1;
+            func_global_asm_806A10BC(aaD);
+            current_actor_pointer->unk168++;
             if (current_actor_pointer->unk168 == 0xB) {
-                current_actor_pointer->control_state += 1;
+                current_actor_pointer->control_state++;
             }
             break;
         case 3:
-            func_global_asm_806A10BC(temp_s5);
-            current_actor_pointer->unk168 += 1;
+            func_global_asm_806A10BC(aaD);
+            current_actor_pointer->unk168++;
             if (current_actor_pointer->unk168 >= 0x34) {
                 current_actor_pointer->unk168 = ((rand() >> 0xF) % 1000) % 3;
                 current_actor_pointer->control_state = 0;
@@ -862,7 +858,7 @@ void func_global_asm_806A112C(void) {
             break;
         case 10:
             current_actor_pointer->unk168 = 0xB;
-            func_global_asm_806A10BC(temp_s5);
+            func_global_asm_806A10BC(aaD);
             break;
     }
     renderActor(current_actor_pointer, 0);

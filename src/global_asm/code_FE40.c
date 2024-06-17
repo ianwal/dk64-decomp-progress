@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// Doable, close
+// Doable, close, regalloc
 // https://decomp.me/scratch/5iYVm
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FE40/func_global_asm_8060B140.s")
 

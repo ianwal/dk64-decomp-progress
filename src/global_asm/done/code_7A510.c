@@ -288,7 +288,7 @@ void func_global_asm_80675D70(Actor *arg0) {
     if (D_global_asm_807FBB70.unk201 < 0xF) {
         D_global_asm_807FBB70.unk204[D_global_asm_807FBB70.unk201] = arg0;
         D_global_asm_807FBB70.unk244[D_global_asm_807FBB70.unk201] = 2;
-        D_global_asm_807FBB70.unk201 += 1;
+        D_global_asm_807FBB70.unk201++;
     }
 }
 

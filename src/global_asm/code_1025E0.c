@@ -1,19 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct GlobalASMStruct2 GlobalASMStruct2;
-
-struct GlobalASMStruct2 {
-    GlobalASMStruct2 *next;
-    void *unk4;
-    void *unk8;
-    u8 padC[0x18 - 0x0C];
-    f32 unk18;
-    s16 unk1C;
-};
-
 extern s16 D_global_asm_80744490;
-extern GlobalASMStruct2 *D_global_asm_80754AD0;
 extern u16 D_global_asm_80754AD4;
 
 Gfx *func_global_asm_806FD8E0(Gfx *dl, s16 style, char *string, s16 y, u8 extraBitfield) {
@@ -30,14 +18,14 @@ void func_global_asm_806FD9A0(void) {
     D_global_asm_80754AD4 = 0;
 }
 
-GlobalASMStruct2 *func_global_asm_806FD9B4(s16 arg0) {
-    GlobalASMStruct2 *var_v1;
+Struct80754AD0 *func_global_asm_806FD9B4(s16 arg0) {
+    Struct80754AD0 *current;
 
-    var_v1 = D_global_asm_80754AD0;
-    while (var_v1 != NULL && arg0 != var_v1->unk1C) {
-        var_v1 = var_v1->next;
+    current = D_global_asm_80754AD0;
+    while (current != NULL && arg0 != current->unk1C) {
+        current = current->next;
     }
-    return var_v1;
+    return current;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FD9FC.s")
@@ -62,8 +50,8 @@ void func_global_asm_806FDAB8(s16 arg0, f32 arg1) {
 }
 
 void func_global_asm_806FDAEC(s16 arg0) {
-    GlobalASMStruct2 *var_a1;
-    GlobalASMStruct2 *var_v0;
+    Struct80754AD0 *var_a1;
+    Struct80754AD0 *var_v0;
 
     var_a1 = D_global_asm_80754AD0;
     var_v0 = NULL;
@@ -95,7 +83,7 @@ void func_global_asm_806FDF54(f32 *arg0, f32 *arg1) {
     while (6.283185482f <= *arg1) {
         *arg1 -= 6.283185482f;
     }
-    *arg0 = (func_global_asm_806CC190((*arg0 * 2048.0) / 3.14159274101257324, (*arg1 * 2048.0) / 3.14159274101257324, 5.0f) * 3.141592741f) * 0.00048828125;
+    *arg0 = (func_global_asm_806CC190((*arg0 * 2048.0) / 3.14159274101257324, (*arg1 * 2048.0) / 3.14159274101257324, 5.0f) * M_PIF) * 0.00048828125;
 }
 
 // Jumptable

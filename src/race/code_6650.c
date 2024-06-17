@@ -246,8 +246,6 @@ void func_race_8002AE6C(Gfx *dl, Actor *arg1) {
     func_global_asm_8068E474(func_race_8002CAC8(dl, arg1, arg1->PaaD), arg1);
 }
 
-s32 func_race_80026D2C(f32);
-
 typedef struct {
     s32 unk0;
     f32 unk4; // Used

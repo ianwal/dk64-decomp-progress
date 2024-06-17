@@ -10,7 +10,6 @@ D_race_80030108 .float 0.3f
 D_race_80030110 .double 0.15
 */
 
-void func_race_8002E2C8(Actor *arg0);
 void func_race_80025E9C(Actor *);
 
 void func_race_8002BBD0(Actor *arg0, s32 numRacers) {
@@ -540,14 +539,6 @@ void func_race_8002D754(Actor *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002D778.s")
 
-typedef struct RaceStruct3 {
-    u8 unk0;
-    u8 unk1;
-    s16 unk2;
-    f32 unk4;
-    f32 unk8;
-} RaceStruct3;
-
 void func_race_8002DA68(RaceStruct3 *arg0) {
     f32 temp_f2;
     s16 temp_v1;
@@ -583,16 +574,8 @@ void func_race_8002DB90(void) {
     }
 }
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    f32 unk4;
-} AAD_race_8002DC24;
-
 void func_race_8002DC24(void) {
-    AAD_race_8002DC24 *RaaD = current_actor_pointer->RaaD;
+    RaceStruct3 *RaaD = current_actor_pointer->additional_actor_data;
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         RaaD->unk4 = current_actor_pointer->animation_state->scale_y;
     }
@@ -879,7 +862,7 @@ void func_race_8002E2C8(Actor *arg0) {
         sp58 = sp54->additional_actor_data;
         sp58->unk27 = 0;
         func_race_8002BC2C(arg0, var_s1, sp54, sp58);
-        var_s1 += 1;
+        var_s1++;
         sp58->unk28 = i;
     }
     for (i = 0; i < numRacers; i++) {
@@ -890,8 +873,8 @@ void func_race_8002E2C8(Actor *arg0) {
     sp5C->unk26 = 0;
 }
 
-Gfx *func_race_8002E464(Gfx *arg0, Actor *arg1) {
-    return func_race_8002CAC8(arg0, arg1, arg1->additional_actor_data);
+Gfx *func_race_8002E464(Gfx *dl, Actor *arg1) {
+    return func_race_8002CAC8(dl, arg1, arg1->additional_actor_data);
 }
 
 typedef struct {
@@ -935,7 +918,7 @@ void func_race_8002E484(void) {
     if (temp_s0->unk34 == 2) {
         if (current_actor_pointer->control_state == 0) {
             setAction(0x57, NULL, temp_s0->unk28);
-            current_actor_pointer->control_state += 1;
+            current_actor_pointer->control_state++;
         }
     }
     current_actor_pointer->x_position = var_a3->x_position;

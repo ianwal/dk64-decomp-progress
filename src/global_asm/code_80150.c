@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_80683AD8();
-
 extern s32 D_global_asm_8071FC8C;
 
 typedef struct {
@@ -273,8 +271,6 @@ void func_global_asm_8067BD28(void) {
         func_global_asm_80689114(0x55, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 1.0f, current_actor_pointer);
     }
 }
-
-u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3);
 
 void func_global_asm_8067BDB8(void) {
     func_global_asm_8067BA7C(0x95);
@@ -1163,7 +1159,7 @@ void func_global_asm_80683158(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-s32 func_global_asm_806832F4(s32 arg0, s32 arg1) {
+s32 func_global_asm_806832F4(Actors arg0, s32 arg1) {
     s32 pad;
     s32 sp28;
     s32 flagIsSet;

@@ -89,8 +89,7 @@ void func_minecart_80024E78(AAD_minecart_80027DA0*, void*, s32, s32);
 void func_minecart_800253C0(AAD_minecart_80027DA0*, s16, u8);
 void func_minecart_80027EE8(AAD_minecart_80027DA0* arg0);
 void func_global_asm_8061F0B0(s32, s32, s32);
-s32 func_global_asm_806131D4(Actor *, s16);
-s16 func_global_asm_80613448(Actor *);
+s32 func_global_asm_806131D4(Actor *arg0, s16 arg1);
 
 void func_minecart_800265F0(void) {
     u8 sp47;
@@ -303,7 +302,7 @@ void func_minecart_80026DA8(void) {
             if ((current_actor_pointer->control_state_progress == 0) && (a11C->unk15F == 4)) {
                 extra_player_info_pointer->unk1F0 |= 0x10000000;
                 current_actor_pointer->unk15F = 0xB4;
-                current_actor_pointer->control_state_progress += 1;
+                current_actor_pointer->control_state_progress++;
             }
             current_actor_pointer->unkEC = func_global_asm_806CC190(current_actor_pointer->unkEC, 0x64, 10.0f);
             break;

@@ -115,7 +115,6 @@ extern Struct80753EA0 D_global_asm_80753EA0[];
 void func_global_asm_806F386C(u8, Actor*, Actor*, s16, u8);
 void func_global_asm_80614FD8(void*);
 void func_global_asm_80614F28(void*);
-s32 func_global_asm_80613448();
 
 void func_global_asm_806F09F0(Actor *arg0, u16 arg1) {
     switch (arg1) {
@@ -176,7 +175,7 @@ void func_global_asm_806F0C18(Actor *arg0) {
     s32 temp_v0;
     PlayerAdditionalActorData *temp_v0_2;
 
-    temp_v0 = func_global_asm_80613448();
+    temp_v0 = func_global_asm_80613448(arg0);
     switch (temp_v0) {
         case 0x1:
         case 0x2:
@@ -227,7 +226,7 @@ void func_global_asm_806F0D68(Actor *arg0) {
     s32 temp_v0;
     PlayerAdditionalActorData *PaaD;
 
-    temp_v0 = func_global_asm_80613448();
+    temp_v0 = func_global_asm_80613448(arg0);
     switch (temp_v0) {
         case 0x1:
         case 0x2:
@@ -589,9 +588,9 @@ f32 func_global_asm_806F1B90(f32 *arg0, f32 arg1) {
 
     phi_f2 = arg1 - *arg0;
     *arg0 = arg1;
-    if (3.141592741f < phi_f2) {
+    if (M_PIF < phi_f2) {
         phi_f2 = 6.283185482f - phi_f2;
-    } else if (phi_f2 < -3.141592741f) {
+    } else if (phi_f2 < -M_PIF) {
         phi_f2 = -(6.283185482f + phi_f2);
     }
     phi_f2 *= 0.1591549367f;

@@ -337,7 +337,7 @@ void func_boss_80028878(u8 *arg0) {
         a17C->unkE = MIN(0x7FFF, a17C->unkE + 18000);
     }
     if ((a178->unk12 & 1) && (func_global_asm_805FCA64())) {
-        addActorToTextOverlayRenderArray(&func_boss_800286B8, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_boss_800286B8, current_actor_pointer, 3);
     }
 }
 

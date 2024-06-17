@@ -1523,7 +1523,7 @@ void func_global_asm_80696A6C(void) {
             }
             current_actor_pointer->unkB8 = MIN(current_actor_pointer->unkB8 + 20.0f, sp44->unk18);
             current_actor_pointer->unkEE = func_global_asm_806CC190(current_actor_pointer->unkEE, current_actor_pointer->y_rotation, 1.0f);
-            current_actor_pointer->unkF0 = func_global_asm_806CC190(current_actor_pointer->unkF0, (func_global_asm_80665E94(player_pointer->x_position, player_pointer->y_position + player_pointer->unk15E, player_pointer->z_position, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x14) * 2048.0) / 3.1415927410125732, 30.0f);
+            current_actor_pointer->unkF0 = func_global_asm_806CC190(current_actor_pointer->unkF0, (func_global_asm_80665E94(player_pointer->x_position, player_pointer->y_position + player_pointer->unk15E, player_pointer->z_position, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x14) * 2048.0) / M_PIF, 30.0f);
             current_actor_pointer->y_velocity = func_global_asm_80612794(current_actor_pointer->unkF0) * -current_actor_pointer->unkB8;
             sp44->unk8 = -(func_global_asm_80611BB4(current_actor_pointer->y_velocity, current_actor_pointer->unkB8) * 57.295776f);
             break;

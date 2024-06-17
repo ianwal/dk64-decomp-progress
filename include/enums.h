@@ -609,7 +609,6 @@ typedef enum sfx_e{
     SFX_54_ARCADE_JUMPMAN_DEATH
 } SFX_E;
 
-// TODO: Maybe we should just define these with preprocessor macros, unless there's a way to make this enum explicitly u8
 typedef enum flagtype_e {
     FLAG_TYPE_PERMANENT,
     FLAG_TYPE_GLOBAL,

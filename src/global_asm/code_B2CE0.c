@@ -302,12 +302,12 @@ void func_global_asm_806AF688(void) {
                 case 0:
                     func_global_asm_8072B324(current_actor_pointer, 0);
                     playActorAnimation(current_actor_pointer, 0x2C0);
-                    current_actor_pointer->control_state_progress += 1;
+                    current_actor_pointer->control_state_progress++;
                     // fallthrough
                 case 1:
                     func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200, 0.0f);
                     if (current_actor_pointer->unkB8 < 1.0f) {
-                        current_actor_pointer->control_state_progress += 1;
+                        current_actor_pointer->control_state_progress++;
                     }
                     break;
                 case 2:
@@ -561,11 +561,11 @@ void func_global_asm_806B0354(void) {
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkD);
-                    current_actor_pointer->control_state_progress += 1;
+                    current_actor_pointer->control_state_progress++;
                     // Fallthrough
                 case 1:
                     if (((rand() >> 0xF) % 1000) >= 0x3E4) {
-                        current_actor_pointer->control_state_progress += 1;
+                        current_actor_pointer->control_state_progress++;
                         playActorAnimation(current_actor_pointer, 0x379);
                         func_global_asm_8072B324(current_actor_pointer, 0);
                     } else {
@@ -594,7 +594,7 @@ void func_global_asm_806B0354(void) {
                     break;
                 case 1:
                     func_global_asm_806A5C60(current_actor_pointer);
-                    current_actor_pointer->control_state_progress += 1;
+                    current_actor_pointer->control_state_progress++;
                     // fallthrough
                 case 2:
                     func_global_asm_8072DC7C(0xA);

@@ -341,7 +341,7 @@ extern u8 D_global_asm_807FD898;
 extern u8 D_global_asm_807FD899;
 
 /*
-void func_global_asm_80704298(s32 arg0, u8 arg1, u8 arg2) {
+void func_global_asm_80704298(Struct80704130 *arg0, u8 arg1, u8 arg2) {
     s16 var_t0;
     s16 var_t1;
     s32 temp = (s16)D_global_asm_807FD892;
@@ -367,9 +367,9 @@ void func_global_asm_80704298(s32 arg0, u8 arg1, u8 arg2) {
         var_t1 = 0xFF;
     }
     func_global_asm_80704130(arg0, D_global_asm_807FD894, D_global_asm_807FD895, D_global_asm_807FD896, var_t0, arg2);
-    arg0 += 0x10;
+    arg0++;
     func_global_asm_80704130(arg0, D_global_asm_807FD894, D_global_asm_807FD895, D_global_asm_807FD896, var_t1, arg2);
-    arg0 += 0x10;
+    arg0++;
     func_global_asm_80704130(arg0, D_global_asm_807FD897, D_global_asm_807FD898, D_global_asm_807FD899, var_t1, (arg2 | 0x40));
     func_global_asm_80704130(arg0, D_global_asm_807FD897, D_global_asm_807FD898, D_global_asm_807FD899, var_t0, (arg2 | 0x40));
 }

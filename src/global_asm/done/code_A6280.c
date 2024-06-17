@@ -168,15 +168,15 @@ void func_global_asm_806A1AC4(void) {
                     break;
                 case 2:
                     func_global_asm_807289B0(0, 0);
-                    current_actor_pointer->control_state_progress += 1;
+                    current_actor_pointer->control_state_progress++;
                     break;
                 case 4:
                     func_global_asm_807289B0(0, 2);
-                    current_actor_pointer->control_state_progress += 1;
+                    current_actor_pointer->control_state_progress++;
                     break;
                 case 6:
                     func_global_asm_807289B0(0, 0);
-                    current_actor_pointer->control_state += 1;
+                    current_actor_pointer->control_state++;
                     break;
             }
             break;
@@ -322,7 +322,7 @@ void func_global_asm_806A2328(void) {
         if (aaD->unk8 == 0xB) {
             temp_v0_3 = current_actor_pointer->unk11C;
             if (temp_v0_3 != NULL) {
-                temp_v0_3->control_state_progress += 1;
+                temp_v0_3->control_state_progress++;
             }
         }
     } else {

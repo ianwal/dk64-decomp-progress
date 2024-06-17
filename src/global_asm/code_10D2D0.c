@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_multiplayer_80026B0C(s32);
 s32 func_global_asm_807085D0(s32, PlayerProgress *, CharacterProgress *, void *);
 
 extern s8 D_global_asm_80744504;
@@ -35,7 +34,7 @@ void func_global_asm_80708BB8(Struct80708BB8 *arg0) {
     arg0->unk0 = 4.0f;
 }
 
-void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3) {
+void func_global_asm_80708C24(s32 playerIndex, CharacterChange *arg1, PlayerProgress *arg2, s32 arg3) {
     s32 segmentsPerMelon;
     u8 sp28;
 
@@ -53,7 +52,7 @@ void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *a
                 arg2->health = 0;
                 arg1->unk2E6 = 0xC;
                 if (cc_number_of_players >= 2) {
-                    func_multiplayer_80026B0C(arg0);
+                    func_multiplayer_80026B0C(playerIndex);
                 }
             } else {
                 playSound(0x24B, 0x7FFF, 63.0f, 1.0f, 0, 0);
@@ -74,15 +73,15 @@ void func_global_asm_80708C24(s32 arg0, CharacterChange *arg1, PlayerProgress *a
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_global_asm_80708DA4.s")
 
 /*
-Gfx *func_global_asm_80708DA4(Gfx *dl, s16 arg1, CharacterChange* arg2) {
+Gfx *func_global_asm_80708DA4(Gfx *dl, s16 playerIndex, CharacterChange* arg2) {
     CharacterProgress *sp38;
     PlayerProgress *sp28;
     s32 temp_a0;
     u8 temp;
     u8 var_t0;
 
-    sp38 = &D_global_asm_807FC950[arg1].character_progress[func_global_asm_806C8DE0(arg1)];
-    sp28 = &D_global_asm_807FC950[arg1];
+    sp38 = &D_global_asm_807FC950[playerIndex].character_progress[func_global_asm_806C8DE0(arg1)];
+    sp28 = &D_global_asm_807FC950[playerIndex];
     temp_a0 = cc_number_of_players == 1;
     var_t0 = arg2->unk2E4;
     temp = arg2->unk2E2;
@@ -90,7 +89,7 @@ Gfx *func_global_asm_80708DA4(Gfx *dl, s16 arg1, CharacterChange* arg2) {
         var_t0 = 0;
     }
     if (!temp_a0) {
-        func_global_asm_80708C24(arg1, arg2, sp28, sp38);
+        func_global_asm_80708C24(playerIndex, arg2, sp28, sp38);
         arg2->unk2E2 &= 0xFFEA;
     }
     if (temp & 0x10) {
@@ -133,7 +132,7 @@ Gfx *func_global_asm_80708DA4(Gfx *dl, s16 arg1, CharacterChange* arg2) {
                 }
                 break;
             case 2:
-                func_global_asm_80708C24(arg1, arg2, sp28, sp38);
+                func_global_asm_80708C24(playerIndex, arg2, sp28, sp38);
                 break;
             case 3:
                 arg2->unk2E0 = func_global_asm_80612D1C((1.57079637050628662 - ((arg2->unk2E5 / 18.0) * 1.57079637050628662)) + 1.57079637050628662) * 65535.0;

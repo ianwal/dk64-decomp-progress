@@ -490,7 +490,7 @@ s32 func_global_asm_806B3F90(GlobalASMStruct91 *arg0, u8 arg1) {
     current_actor_pointer->y_velocity = 0.0f;
     var_f16 = (current_actor_pointer->y_position < arg0->unkC) ? 0.0f : current_actor_pointer->y_position - arg0->unkC;
     current_actor_pointer->y_acceleration = -(var_f16 / var_f18);
-    current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, (func_global_asm_80665E94(arg0->unkA, arg0->unkC, arg0->unkE, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x46) * 2048.0) / 3.14159274101257324, 3.3f);
+    current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, (func_global_asm_80665E94(arg0->unkA, arg0->unkC, arg0->unkE, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x46) * 2048.0) / M_PIF, 3.3f);
     return func_global_asm_8072AB74(arg1, arg0->unkA, arg0->unkE, 0x2E0, 0.0f);
 }
 

@@ -312,10 +312,10 @@ void func_global_asm_805FF168(void) {
     D_global_asm_80744824 = 1;
 }
 
-void func_global_asm_805FF188(s16 arg0, u8 arg1) {
-    D_global_asm_80744828 = 1;
-    D_global_asm_8076AEF4 = arg0;
-    D_global_asm_8076AEF6 = arg1;
+void func_global_asm_805FF188(s16 map, u8 exit) {
+    D_global_asm_80744828 = TRUE;
+    D_global_asm_8076AEF4 = map;
+    D_global_asm_8076AEF6 = exit;
 }
 
 void func_global_asm_805FF1B0(s32 player_index) {
@@ -330,7 +330,7 @@ void func_global_asm_805FF1B0(s32 player_index) {
     i = 0;
     new_exit = 0;
     found_special_void = FALSE;
-    if (D_global_asm_80744828 != 0) {
+    if (D_global_asm_80744828) {
         new_map = D_global_asm_8076AEF4; // Void Map
         new_exit = D_global_asm_8076AEF6; // Void Exit
     } else {
@@ -357,7 +357,7 @@ void func_global_asm_805FF1B0(s32 player_index) {
         func_global_asm_805FFFC8();
     }
     func_global_asm_805FF378(new_map, new_exit);
-    D_global_asm_80744828 = 0;
+    D_global_asm_80744828 = FALSE;
 }
 
 void func_global_asm_805FF2F4(void) {

@@ -31,12 +31,9 @@ void func_global_asm_8061F510(s32, s32);
 void func_global_asm_8062217C(Actor *, s32);
 u8 func_global_asm_8072881C(u8 arg0, u32 *arg1);
 void func_global_asm_8072A450(void);
-extern int func_global_asm_8068E474(); // TODO: Signature
-Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1);
 
 void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 void func_global_asm_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-void func_global_asm_806BF920(void);
 int func_global_asm_807035C4(); // TODO: Signature
 int func_global_asm_807197B4(); // TODO: Signature
 int func_global_asm_8071C818(); // TODO: Signature
@@ -82,7 +79,7 @@ void func_global_asm_806BDEC8(void) {
                 playActorAnimation(current_actor_pointer, 0x28E);
                 func_global_asm_8061C600(PaaD->unk104, current_actor_pointer, 4, 0xE77, 0xFA, 2, 0x32, 0x20, 0x3F, 0x4A, 0.1599999964f);
                 D_global_asm_807FDC90->unk2C = 0x32;
-                current_actor_pointer->control_state_progress += 1;
+                current_actor_pointer->control_state_progress++;
                 break;
             case 2:
                 if (D_global_asm_807FDC90->unk2C != 0) {
@@ -533,7 +530,7 @@ void func_global_asm_806BFA8C(u16 arg0) {
         case 0x12E:
         case 0x12F:
         case 0x130:
-            func_global_asm_806C7BAC(current_actor_pointer, 0);
+            func_global_asm_806C7BAC(current_actor_pointer, NULL);
             break;
         case 0x114:
             func_global_asm_806F0C18(current_actor_pointer);
@@ -1036,11 +1033,11 @@ void func_global_asm_806C226C(void) {
                     func_global_asm_80724B5C(2, 3, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
                     playActorAnimation(current_actor_pointer, 0x2A6);
                     current_actor_pointer->z_rotation = 0;
-                    current_actor_pointer->control_state_progress += 1;
+                    current_actor_pointer->control_state_progress++;
                     // Fallthrough
                 case 0x1:
                     if (func_global_asm_8072E22C(0xC8) != 0) {
-                        current_actor_pointer->control_state_progress += 1;
+                        current_actor_pointer->control_state_progress++;
                         if (isFlagSet(0xC1, FLAG_TYPE_PERMANENT) != 0) {
                             if ((current_character_index[0] == 0) && !isFlagSet(0xA5, FLAG_TYPE_PERMANENT)) {
                                 loadText(current_actor_pointer, 0x1C, 2);

@@ -2,25 +2,11 @@
 #include "functions.h"
 
 void func_global_asm_8066C2D0(s32, s32, f32, f32, f32, f32, f32, f32, f32);
-void func_global_asm_8066CDF8(void);
-LedgeInfo8C *func_global_asm_8066EAEC(Actor*, s32);
-void func_global_asm_8066EC6C(LedgeInfo *);
-void func_global_asm_8066F06C(LedgeInfo *);
-u8 func_global_asm_8066F274(Actor *arg0, s16 *arg1, s16 *arg2, s8 *arg3);
-void func_global_asm_8066F400(Actor *);
 u8 func_global_asm_8066F4AC(Actor *, s16 *, s16 *);
-u8 func_global_asm_80670FA4(Actor *, s16 *, s16 *);
-void func_global_asm_80671260(Actor *arg0);
-void func_global_asm_80672C70(s32);
+s32 func_global_asm_80672328(Actor*, f32, f32);
 void func_global_asm_80672E90(s32, s32, s32);
 s32 func_global_asm_806730A4(s32, s32, s32, s32);
 s32 func_global_asm_806734E4(s32, s32, s32, s32, s16 *, s16 *);
-void func_global_asm_80674E14(Actor *);
-void func_global_asm_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4, s32 arg5, s32 arg6);
-
-s32 func_global_asm_80672328(Actor*, f32, f32);
-s32 func_global_asm_80672680(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16* arg4);
-s32 func_global_asm_806726DC(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s16 *arg4, s16 arg5);
 
 extern s32 D_global_asm_807FB53C;
 extern Actor *D_global_asm_807FB540;

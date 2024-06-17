@@ -16,7 +16,7 @@ void func_global_asm_8073BB10(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4
     if (arg1 >= (arg0 - 200.0f)) {
         arg1 = arg0 - 200.0f;
     }
-    sp3C = func_global_asm_80611BB4(arg1 * 3.141592741f, arg0);
+    sp3C = func_global_asm_80611BB4(arg1 * M_PIF, arg0);
     sp38 = sp3C * sp3C;
     sp34 = (sp3C * 1.414213657f) / arg2;
     arg3[0] = sp38 / (1.0f + sp38 + sp34);
@@ -42,7 +42,7 @@ void func_global_asm_8073BC74(Struct8073BC74 *arg0) {
         arg0->unk8[sp14] = 0;
     }
     arg0->unk8[sp14] = spE;
-    sp14 += 1;
+    sp14++;
     sp0 = 16384.0f;
     sp4 = sp8 = spE / sp0;
     if (sp14 < 0x10) {

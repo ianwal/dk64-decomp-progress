@@ -112,7 +112,6 @@ extern s16 D_global_asm_80750AC4;
 extern s32 D_minecart_80028C20;
 
 /* function signatures */
-void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3);
 void func_minecart_80024E78(AAD_minecart_80027DA0* arg0, s32* arg1[], u8 arg2, u8 arg3);
 void func_minecart_800253C0(AAD_minecart_80027DA0*, s16, u8);
 void func_global_asm_8061C2F0(Actor*, f32, f32, f32, f32, f32, f32, s32);
@@ -528,7 +527,7 @@ void func_minecart_80024FD0(void) {
             func_global_asm_807248B0(current_actor_pointer, 0.15f);
             func_global_asm_807248B0(player_pointer, 0.225f);
             current_actor_pointer->x_rotation = 0;
-            current_actor_pointer->control_state += 1;
+            current_actor_pointer->control_state++;
             break;
         case 10:
             playSong(0x5A, 1.0f);

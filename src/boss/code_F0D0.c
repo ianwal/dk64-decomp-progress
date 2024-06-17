@@ -33,8 +33,85 @@ const f32 D_boss_80036C40[] = {
     0.0f // TODO: Is this just padding?
 };
 
-// Quite big but pretty doable, needs some struct/array definitions
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_boss_800330D0.s")
+
+extern u8 D_boss_80035B80[4];
+
+typedef struct {
+    u8 unk0[0x14 - 0x0];
+    u8 unk14;
+} Struct800330D0_arg0;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+} Struct800330D0_arg1;
+
+/*
+u8 func_boss_800330D0(Struct800330D0_arg0 *arg0, Struct800330D0_arg1 *arg1) {
+    f32 dZ;
+    f32 dX;
+    s32 closest;
+    s32 sp44[0x10];
+    s8 temp_a2;
+    s8 temp_a3;
+    u8 i;
+    u8 var_t2;
+    u8 var_t4;
+
+    var_t2 = arg1->unk0;
+    closest = 9999999;
+    var_t4 = var_t2;
+    for (i = 0; i < 0x10; i++) {
+        dZ = D_global_asm_807FDCA0->unk14[i].unk4 - player_pointer->z_position;
+        dX = D_global_asm_807FDCA0->unk14[i].unk0 - player_pointer->x_position;
+        sp44[i] = (dZ * dZ) + (dX * dX);
+        if (sp44[i] < closest) {
+            arg1->unk3 = i;
+            closest = sp44[i];
+        }
+    }
+    if (player_pointer->y_position < (current_actor_pointer->y_position - 10.0f)) {
+        return D_boss_80035B80[(rand() >> 0xF) % 4];
+    }
+    temp_a2 = (arg1->unk0 / 4) - (arg1->unk3 / 4);
+    temp_a3 = (arg1->unk0 % 4) - (arg1->unk3 % 4);
+    if (temp_a2 > 0) {
+        var_t2 -= 4;
+    } else if (temp_a2 < 0) {
+        var_t2 += 4;
+    } else if (temp_a3 > 0) {
+        var_t2 -= 1;
+    } else if (temp_a3 < 0) {
+        var_t2 += 1;
+    }
+    if (arg0->unk14 >= 3) {
+        return var_t2;
+    }
+    if ((var_t2 == arg1->unk2) || ((var_t2 == var_t4))) {
+        if ((temp_a2 != 0) || (var_t2 == var_t4)) {
+            if ((sp44[(var_t4 - 1) & 0xF] < sp44[(var_t4 + 1) & 0xF]) && (var_t4 & 3)) {
+                var_t4--;
+            } else if ((sp44[(var_t4 + 1) & 0xF] < sp44[(var_t4 - 1) & 0xF]) && ((var_t4 & 3) != 3)) {
+                var_t4++;
+            }
+        }
+        if (((temp_a2 == 0) && (temp_a3 != 0)) || (var_t2 == var_t4)) {
+            if ((sp44[(var_t4 - 4) & 0xF] < sp44[(var_t4 + 4) & 0xF]) && (var_t4 >= 4)) {
+                var_t4 -= 4;
+            } else if ((sp44[(var_t4 + 4) & 0xF] < sp44[(var_t4 - 4) & 0xF]) && (var_t4 < 0xC)) {
+                var_t4 += 4;
+            }
+        }
+        // Duplicate return node #37. Try simplifying control flow for better match
+        return var_t4;
+    }
+    return var_t2;
+}
+*/
 
 void func_global_asm_8061EF4C(s32, s32, s32, f32, f32, f32, f32, f32);
 

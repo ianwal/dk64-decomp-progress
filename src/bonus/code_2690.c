@@ -352,7 +352,6 @@ typedef struct {
     f32 unk2C;
 } A178_800277F8;
 
-u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2);
 u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
@@ -522,7 +521,7 @@ void func_bonus_800284C0(void) {
         case 0:
             if (D_global_asm_807FBB85 != 0) {
                 temp_a3->unk22 = MAX(0, temp_a3->unk22 - (temp_a2->unk8 ? 2 : 1));
-                func_global_asm_806FDAB8(temp_a3->unk25, 3.1415927f);
+                func_global_asm_806FDAB8(temp_a3->unk25, M_PIF);
                 playActorAnimation(current_actor_pointer, (temp_a2->unk8 ? 0x212 : 0x210));
                 current_actor_pointer->control_state = 1;
                 current_actor_pointer->control_state_progress = 0;
@@ -738,7 +737,6 @@ typedef struct {
     u8 unk14;
     s16 unk16;
 } A178_80029B9C;
-
 
 Gfx *func_bonus_80029B9C(Gfx *dl, Actor *arg1) {
     s32 pad;
@@ -1258,5 +1256,58 @@ void func_bonus_8002C8EC(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Displaylist stuff, actor arg1, doable
+// Displaylist stuff, doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002CC08.s")
+
+extern f32 D_bonus_8002DEB4;
+
+typedef struct {
+    u8 unk0[0x23 - 0x0];
+    u8 unk23;
+    u8 unk24;
+    u8 unk25;
+    u8 unk26;
+    u8 unk27;
+    s16 unk28;
+} AAD_8002CC08;
+
+/*
+Gfx *func_bonus_8002CC08(Gfx *dl, Actor *arg1) {
+    AAD_8002CC08 *aaD;
+    f32 sp80;
+    f32 sp7C;
+    f32 temp_f20;
+    s16 temp_f16;
+    s16 temp_f18;
+    u8 temp_v0;
+    u8 temp_v1_3;
+
+    aaD = arg1->additional_actor_data;
+    func_global_asm_80626F8C(arg1->x_position, arg1->y_position, arg1->z_position, &sp80, &sp7C, 0, 1.0f, cc_player_index);
+    temp_f16 = (f32)(sp7C * 4.0);
+    temp_f18 = (f32)(sp80 * 4.0);
+    gDPPipeSync(dl++);
+    gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gSPDisplayList(dl++, &D_1000118);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    if ((arg1->control_state == 0) || (arg1->control_state == 1)) {
+        temp_f20 = D_bonus_8002DEB4;
+        dl = displayImage(dl, ((((u32)object_timer >> 1) % 12) + 0x83), 0, 2, 0x20, 0x10, (s16)(temp_f18 - 0x34), (s16)(temp_f16 - 0x34), temp_f20, temp_f20, 0xE1, 0.0f);
+        dl = displayImage(dl, ((((u32)object_timer >> 1) % 12) + 0x83), 0, 2, 0x20, 0x10, (s16)(temp_f18 + 0x34), (s16)(temp_f16 - 0x34), temp_f20, temp_f20, 0x13B, 0.0f);
+        dl = displayImage(dl, ((((u32)object_timer >> 1) % 12) + 0x83), 0, 2, 0x20, 0x10, (s16)(temp_f18 + 0x34), (s16)(temp_f16 + 0x34), temp_f20, temp_f20, 0x2D, 0.0f);
+        dl = displayImage(dl, ((((u32)object_timer >> 1) % 12) + 0x83), 0, 2, 0x20, 0x10, (s16)(temp_f18 - 0x34), (s16)(temp_f16 + 0x34), temp_f20, temp_f20, 0x87, 0.0f);
+    }
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    switch (arg1->control_state) {
+        case 7:
+            break;
+        case 0:
+        case 1:
+            dl = func_global_asm_806FE078(dl, aaD->unk23, 8, 30.0f, 36.0f, 0.0f, 1.5f);
+            dl = func_global_asm_8068DC54(dl, 0x26, 0x32, &aaD->unk26, aaD->unk28, &aaD->unk24);
+            break;
+    }
+    return dl;
+}
+*/

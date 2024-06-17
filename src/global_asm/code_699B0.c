@@ -71,10 +71,8 @@ void func_global_asm_80664CB0(s16 arg0) {
     }
 }
 
-// doable
+// doable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_699B0/func_global_asm_80664D20.s")
-
-u16 func_global_asm_80672134(s16, s16, s16, s16);
 
 void func_global_asm_80665160(Actor *arg0, s16 arg1, s16 arg2) {
     func_global_asm_8067ACB4(arg0);
@@ -949,7 +947,7 @@ void func_global_asm_806685E0(Struct806685E0_arg0 *arg0, f32 arg1) {
         }
         func_global_asm_806689F0(0, arg0, 0);
         D_global_asm_807F94C0[D_global_asm_807F9510].unk4 = D_global_asm_807F94A8;
-        D_global_asm_807F9510 += 1;
+        D_global_asm_807F9510++;
     }
 }
 
@@ -1226,7 +1224,7 @@ void func_global_asm_80669588(s32 arg0, f32 arg1) {
         }
         func_global_asm_80669830(0, arg0, 0);
         D_global_asm_807F94C0[D_global_asm_807F9510].unk4 = D_global_asm_807F94A8;
-        D_global_asm_807F9510 += 1;
+        D_global_asm_807F9510++;
     }
 }
 
@@ -1483,7 +1481,7 @@ void func_global_asm_8066A584(s32 arg0, f32 arg1) {
         }
         func_global_asm_8066ACA4(0, arg0, 0);
         D_global_asm_807F94C0[D_global_asm_807F9510].unk4 = D_global_asm_807F94A8;
-        D_global_asm_807F9510 += 1;
+        D_global_asm_807F9510++;
     }
 }
 
@@ -1772,7 +1770,7 @@ void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3
         }
         osInvalDCache(D_global_asm_807FA8A0[D_global_asm_807F9680].unk0, sp4C);
         osPiStartDma(&D_global_asm_807F9688[D_global_asm_807F9680].unk0, 0, 0, sp50, D_global_asm_807FA8A0[D_global_asm_807F9680].unk0, sp4C, &D_global_asm_807656D0);
-        D_global_asm_807F9680 += 1;
+        D_global_asm_807F9680++;
     }
     func_global_asm_8066B4AC(pointerTableIndex, fileIndex, var_v0);
     func_global_asm_8066B8C8(var_v0, pointerTableIndex, fileIndex);

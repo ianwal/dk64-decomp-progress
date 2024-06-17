@@ -2821,4 +2821,92 @@ struct Struct807FDCC0 {
 
 extern Struct807FDCC0 *D_global_asm_807FDCC0;
 
+typedef struct global_asm_struct_71 GlobalASMStruct71;
+
+struct global_asm_struct_71 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8; // Used
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    GlobalASMStruct71 *unk14; // Used, prev?
+    GlobalASMStruct71 *unk18; // Next?
+};
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8; // Used
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    GlobalASMStruct71 *unk14; // Used, prev?
+    GlobalASMStruct71 *unk18; // Next?
+} GS71_F32;
+
+typedef struct HUDDisplay {
+	/* 0x000 */ u16* actual_count_pointer;
+	/* 0x004 */	u16 hud_count;
+	/* 0x006 */	u8 freeze_timer;
+	/* 0x007 */	u8 counter_timer;
+	/* 0x008 */	s32 screen_x;
+	/* 0x00C */	s32 screen_y;
+	/* 0x010 */ f32 unk_10;
+    /* 0x014 */ f32 unk_14;
+    /* 0x018 */ f32 unk_18;
+    /* 0x01C */ u8 unk_1c;
+    /* 0x01D */ u8 unk_1d;
+    /* 0x01E */ u8 unk_1e;
+    /* 0x01F */ u8 unk_1f;
+	/* 0x020 */ u32 hud_state; // 0 = invisible, 1 = appearing, 2 = visible, 3 = disappearing
+	/* 0x024 */ s32 unk_24;
+	/* 0x028 */	GlobalASMStruct71* counter_pointer;
+	/* 0x02C */ u8 unk_2c; // Infinites?
+    /* 0x02D */ u8 unk_2d; // Infinites?
+    /* 0x02E */ u8 unk_2e;
+    /* 0x02F */ u8 unk_2f;
+} HUDDisplay;
+
+typedef struct {
+    // TODO: Union with friendly field names?
+    // TODO: Enum with indexes?
+    // 0 = Coloured Banana
+    // 1 = Banana Coin
+    // 2 = ???
+    // 3 = ???
+    // 4 = ???
+    // 5 = Crystal Coconut
+    // 6 = ???
+    // 7 = ???
+    // 8 = GB Count (Character)
+    // 9 = ???
+    // 10 = Banana Medal
+    // 11 = ???
+    // 12 = Blueprint
+    // 13 = Coloured Banana?
+    // 14 = Banana Coin?
+    HUDDisplay hud_item[15];
+} PlayerHUD;
+
+typedef struct Struct80754AD0 Struct80754AD0;
+
+struct Struct80754AD0 {
+    Struct80754AD0 *next;
+    void *unk4;
+    void *unk8;
+    u8 padC[0x18 - 0x0C];
+    f32 unk18;
+    s16 unk1C;
+};
+extern Struct80754AD0 *D_global_asm_80754AD0;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    f32 unk4;
+    f32 unk8;
+} RaceStruct3;
+
 #endif

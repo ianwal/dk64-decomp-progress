@@ -10,7 +10,7 @@ void func_global_asm_80699070(s16 *arg0, s16 *arg1, f32 x1, f32 y1, f32 z1, f32 
     *arg1 = func_global_asm_80665DE0(x1, z1, x2, z2);
     dx = x2 - x1;
     dz = z2 - z1;
-    *arg0 = (func_global_asm_80611BB4(y2 - y1, sqrtf((dx * dx) + (dz * dz))) * 2048.0) / 3.14159274101257324;
+    *arg0 = (func_global_asm_80611BB4(y2 - y1, sqrtf((dx * dx) + (dz * dz))) * 2048.0) / M_PIF;
 }
 
 typedef struct {
@@ -547,15 +547,15 @@ void func_global_asm_8069D2AC(u8 arg0, s16 arg1, s16 arg2, char *arg3, u16 arg4,
     }
 }
 
-Gfx *func_global_asm_8069D358(Gfx *dl, Actor *arg1, s16 arg2, f32 arg3) {
+Gfx *func_global_asm_8069D358(Gfx *dl, Actor *arg1, s16 xOffset, f32 scale) {
     Mtx *spA4;
     f32 sp64[4][4];
     f32 sp24[4][4];
 
     spA4 = malloc(sizeof(Mtx));
     func_global_asm_8061134C(spA4);
-    guScaleF(sp64, arg3, arg3, 1.0f);
-    guTranslateF(sp24, arg1->x_position + (2.0 * arg2), arg1->y_position, 0.0f);
+    guScaleF(sp64, scale, scale, 1.0f);
+    guTranslateF(sp24, arg1->x_position + (2.0 * xOffset), arg1->y_position, 0.0f);
     guMtxCatF(sp64, sp24, sp64);
     guMtxF2L(sp64, spA4);
     gSPMatrix(dl++, spA4, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
@@ -587,8 +587,6 @@ Gfx *func_global_asm_8069D930(Gfx *dl, Actor *arg1) {
     }
     return dl;
 }
-
-extern void func_global_asm_8069D424(); // TODO: Proper signature
 
 typedef struct {
     void *unk0;

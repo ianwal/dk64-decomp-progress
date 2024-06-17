@@ -24,7 +24,6 @@ extern Struct80755264 D_global_asm_80755264[];
 extern u8 D_global_asm_8077058C;
 extern s32 D_global_asm_807FD9F0[];
 extern u8 D_global_asm_807FDA1C;
-void func_global_asm_80710CA0(void); // TODO: Datatypes
 
 typedef struct {
     u16 unk0;

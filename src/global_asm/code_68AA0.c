@@ -27,7 +27,7 @@ void func_global_asm_80663DA0(void) {
     D_global_asm_807F9424 = 0;
     for (i = 0; i < D_global_asm_80747D70; i++) {
         if (func_global_asm_80663FCC(i)) {
-            D_global_asm_807F9424 += 1;
+            D_global_asm_807F9424++;
         }
     }
     D_global_asm_807F9420 = NULL;
@@ -45,7 +45,7 @@ void func_global_asm_80663DA0(void) {
                 if (temp_v0_2 != 4) {
                     D_global_asm_807F9420[count].unk8[temp_v0_2] = -1;
                 }
-                count += 1;
+                count++;
             }
         }
     }

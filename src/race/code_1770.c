@@ -182,7 +182,7 @@ void func_race_80025E9C(Actor *arg0) {
 }
 */
 
-void func_race_80025FDC() {
+void func_race_80025FDC(void) {
     func_race_8002597C();
     func_race_8002CFF0();
 }
@@ -212,7 +212,7 @@ void func_race_80026098(Struct80026098 *arg0, Struct80026098 *arg1) {
     f32 temp;
     f32 sp24;
 
-    sp2E = (func_global_asm_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / 3.14159274101257324;
+    sp2E = (func_global_asm_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / M_PIF;
     temp = sqrtf(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
     sp24 = current_actor_pointer->unkB8 * 0.03 * temp;
     current_actor_pointer->x_position = arg1->unk0 + (sp24 * func_global_asm_80612794(sp2E));
@@ -256,8 +256,6 @@ void func_race_800261E0(Struct800261E0_arg0 *arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_1770/func_race_80026354.s")
-
-Actor *func_race_8002D360(Actor *);
 
 typedef struct {
     u8 unk0[0x29 - 0x0];

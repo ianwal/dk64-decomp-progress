@@ -1,74 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct global_asm_struct_71 GlobalASMStruct71;
-
-struct global_asm_struct_71 {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8; // Used
-    s32 unkC;
-    s16 unk10;
-    s16 unk12;
-    GlobalASMStruct71 *unk14; // Used, prev?
-    GlobalASMStruct71 *unk18; // Next?
-};
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8; // Used
-    s32 unkC;
-    s16 unk10;
-    s16 unk12;
-    GlobalASMStruct71 *unk14; // Used, prev?
-    GlobalASMStruct71 *unk18; // Next?
-} GS71_F32;
-
-typedef struct HUDDisplay {
-	/* 0x000 */ u16* actual_count_pointer;
-	/* 0x004 */	u16 hud_count;
-	/* 0x006 */	u8 freeze_timer;
-	/* 0x007 */	u8 counter_timer;
-	/* 0x008 */	s32 screen_x;
-	/* 0x00C */	s32 screen_y;
-	/* 0x010 */ f32 unk_10;
-    /* 0x014 */ f32 unk_14;
-    /* 0x018 */ f32 unk_18;
-    /* 0x01C */ u8 unk_1c;
-    /* 0x01D */ u8 unk_1d;
-    /* 0x01E */ u8 unk_1e;
-    /* 0x01F */ u8 unk_1f;
-	/* 0x020 */ u32 hud_state; // 0 = invisible, 1 = appearing, 2 = visible, 3 = disappearing
-	/* 0x024 */ s32 unk_24;
-	/* 0x028 */	GlobalASMStruct71* counter_pointer;
-	/* 0x02C */ u8 unk_2c; // Infinites?
-    /* 0x02D */ u8 unk_2d; // Infinites?
-    /* 0x02E */ u8 unk_2e;
-    /* 0x02F */ u8 unk_2f;
-} HUDDisplay;
-
-typedef struct {
-    // TODO: Union with friendly field names?
-    // TODO: Enum with indexes?
-    // 0 = Coloured Banana
-    // 1 = Banana Coin
-    // 2 = ???
-    // 3 = ???
-    // 4 = ???
-    // 5 = Crystal Coconut
-    // 6 = ???
-    // 7 = ???
-    // 8 = GB Count (Character)
-    // 9 = ???
-    // 10 = Banana Medal
-    // 11 = ???
-    // 12 = Blueprint
-    // 13 = Coloured Banana?
-    // 14 = Banana Coin?
-    HUDDisplay hud_item[15];
-} PlayerHUD;
-
 typedef struct global_asm_struct_72 GlobalASMStruct72;
 
 struct global_asm_struct_72 {
@@ -188,52 +120,47 @@ extern u16 D_global_asm_80750AC8;
 // static const char D_global_asm_8075DA64[] = "NA";
 // static const char D_global_asm_8075DA68[] = "%d";
 
-void func_global_asm_806F9518(s32 HUDItemIndex);
-Gfx *func_global_asm_806FA5A4(s32, Gfx *);
-Gfx *func_global_asm_806FA7BC(s32, Gfx *);
-Gfx *func_global_asm_806FA9C0(s32, Gfx *);
-
 PlayerHUD* func_global_asm_806F7FD0(u8 playerIndex) {
     return &D_global_asm_80754280[playerIndex];
 }
 
-void func_global_asm_806F8004(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
+void func_global_asm_806F8004(f32 xRotation, f32 yRotation, f32 *xOut, f32 *yOut, f32 *zOut) {
     float sp88[4][4];
     float sp48[4][4];
-    f32 sp44;
-    f32 sp40;
-    f32 sp3C;
+    f32 z;
+    f32 y;
+    f32 x;
     f32 temp_f2_2;
     f32 sp34;
 
     sp34 = character_change_array[cc_player_index].near;
-    guRotateF(sp88, arg0, 1.0f, 0.0f, 0.0f);
-    guMtxXFMF(sp88, 0.0f, 0.0f, -sp34, &sp3C, &sp40, &sp44);
-    guRotateF(sp48, arg1, 0.0f, 1.0f, 0.0f);
-    guMtxXFMF(sp48, sp3C, sp40, sp44, arg2, arg3, arg4);
-    temp_f2_2 = -sp34 / *arg4;
-    *arg2 *= temp_f2_2;
-    *arg3 *= temp_f2_2;
-    *arg4 = -sp34;
-    *arg2 = *arg2 * 10.5;
-    *arg3 = *arg3 * 10.5;
-    *arg4 = *arg4 * 10.5;
+    guRotateF(sp88, xRotation, 1.0f, 0.0f, 0.0f);
+    guMtxXFMF(sp88, 0.0f, 0.0f, -sp34, &x, &y, &z);
+    guRotateF(sp48, yRotation, 0.0f, 1.0f, 0.0f);
+    guMtxXFMF(sp48, x, y, z, xOut, yOut, zOut);
+    temp_f2_2 = -sp34 / *zOut;
+    *xOut *= temp_f2_2;
+    *yOut *= temp_f2_2;
+    *zOut = -sp34;
+    *xOut = *xOut * 10.5;
+    *yOut = *yOut * 10.5;
+    *zOut = *zOut * 10.5;
 }
 
-void func_global_asm_806F8170(s32 HUDItemIndex, f32 *arg1, f32 *arg2, f32 *arg3) {
+void func_global_asm_806F8170(s32 HUDItemIndex, f32 *xOut, f32 *yOut, f32 *zOut) {
     s32 temp_v0;
 
     if (HUDItemIndex < 0) {
-        func_global_asm_806F8004(16.5f, 0.0f, arg1, arg2, arg3);
+        func_global_asm_806F8004(16.5f, 0.0f, xOut, yOut, zOut);
         return;
     }
     if (HUDItemIndex == 8) {
-        func_global_asm_806F8004(1.5 - (D_global_asm_80754280->hud_item[HUDItemIndex].hud_count * 7), 26.0f, arg1, arg2, arg3);
+        func_global_asm_806F8004(1.5 - (D_global_asm_80754280->hud_item[HUDItemIndex].hud_count * 7), 26.0f, xOut, yOut, zOut);
         return;
     }
-    *arg1 = D_global_asm_80754280->hud_item[HUDItemIndex].unk_10;
-    *arg2 = D_global_asm_80754280->hud_item[HUDItemIndex].unk_14;
-    *arg3 = D_global_asm_80754280->hud_item[HUDItemIndex].unk_18;
+    *xOut = D_global_asm_80754280->hud_item[HUDItemIndex].unk_10;
+    *yOut = D_global_asm_80754280->hud_item[HUDItemIndex].unk_14;
+    *zOut = D_global_asm_80754280->hud_item[HUDItemIndex].unk_18;
 }
 
 // Close
@@ -864,18 +791,21 @@ typedef struct {
     void *unk14;
 } Struct806FA504_arg1;
 
+Gfx *func_global_asm_806F9D8C(s32, void*, Gfx*);
+Gfx *func_global_asm_806FA1A4(s32, void*, Gfx*);
+
 // TODO: Which struct is arg1?
-s32 func_global_asm_806FA504(s32 arg0, Struct806FA504_arg1 *arg1, s32 arg2, s32 arg3) {
+Gfx *func_global_asm_806FA504(s32 arg0, Struct806FA504_arg1 *arg1, s32 arg2, Gfx *dl) {
     if (arg1->unk0 == 0) {
         if (arg0 != 8) {
-            arg3 = func_global_asm_806F9D8C(arg0, arg1, arg3);
+            dl = func_global_asm_806F9D8C(arg0, arg1, dl);
         } else {
-            arg3 = func_global_asm_806FA1A4(arg0, arg1, arg3);
+            dl = func_global_asm_806FA1A4(arg0, arg1, dl);
         }
     } else if ((arg0 == 8) || (arg0 == 0xA) || (arg0 == 0xC)) {
         func_global_asm_806F8DC4(arg1->unk14, arg2, arg0);
     }
-    return arg3;
+    return dl;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FA5A4.s")
@@ -894,7 +824,7 @@ s32 func_global_asm_806FA7A4(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806FA7BC.s")
 
-Gfx *func_global_asm_806FA9C0(s32 arg0, Gfx *arg1) {
+Gfx *func_global_asm_806FA9C0(s32 arg0, Gfx *dl) {
     s32 var_a0;
     s32 var_s1;
     s32 var_v1;
@@ -903,7 +833,7 @@ Gfx *func_global_asm_806FA9C0(s32 arg0, Gfx *arg1) {
     counter = D_global_asm_80754280->hud_item[arg0].counter_pointer;
     var_s1 = 0;
     while (counter != NULL) {
-        arg1 = func_global_asm_806FA504(arg0, counter, var_s1, arg1);
+        dl = func_global_asm_806FA504(arg0, counter, var_s1, dl);
         if (counter->unk0 == 1) {
             var_s1++;
         }
@@ -934,7 +864,7 @@ Gfx *func_global_asm_806FA9C0(s32 arg0, Gfx *arg1) {
             D_global_asm_80754280->hud_item[arg0].hud_state = 0;
         }
     }
-    return arg1;
+    return dl;
 }
 
 Gfx *func_global_asm_806FAB20(Gfx *dl) {
