@@ -2,8 +2,6 @@
 #include "functions.h"
 
 
-extern u8 D_global_asm_80748E00;
-extern u8 D_global_asm_80748E04;
 extern void *D_global_asm_80748E14; // TODO: Datatype
 extern u8 D_global_asm_80748E18[];
 
@@ -37,24 +35,6 @@ extern u8 D_global_asm_807F967C;
 extern u8 D_global_asm_807F967D;
 
 extern s32 *D_global_asm_807FB1A0[];
-
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-} Temp20Big;
-
-extern Temp20Big D_global_asm_80748BA0[];
-extern s8 D_global_asm_807F9440[];
-extern s32 D_global_asm_807F9448;
 
 void func_global_asm_80666280(u8 arg0) {
     D_global_asm_807F94B4 = arg0;

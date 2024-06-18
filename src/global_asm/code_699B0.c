@@ -1,42 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern u8 D_global_asm_80748E00;
-extern u8 D_global_asm_80748E04;
-extern void *D_global_asm_80748E14; // TODO: Datatype
-extern u8 D_global_asm_80748E18[];
-
-extern f64 D_global_asm_80758F08;
-
-extern u8 D_global_asm_807F951D;
-extern f32 D_global_asm_807F9468;
-extern u8 D_global_asm_807F946C;
-extern u8 D_global_asm_807F946E;
-extern f32 D_global_asm_807F9488;
-extern f32 D_global_asm_807F948C;
-extern s16 D_global_asm_807F9490[];
-extern s16 D_global_asm_807F9498[];
-extern s16 D_global_asm_807F94A2;
-extern s16 D_global_asm_807F94A4;
-extern u8 D_global_asm_807F94AA;
-extern u8 D_global_asm_807F94AE;
-extern u8 D_global_asm_807F94AF;
-extern u8 D_global_asm_807F94B0;
-extern u8 D_global_asm_807F94B1;
-extern u8 D_global_asm_807F94B3;
-extern u8 D_global_asm_807F94B4;
-extern u8 D_global_asm_807F94B5;
-extern u8 D_global_asm_807F94B7;
-extern u8 D_global_asm_807F94BC;
-extern u8 D_global_asm_807F9484;
-extern u8 D_global_asm_807F9510;
-extern s32 *D_global_asm_807F95A8[];
-extern s32 D_global_asm_807F9678;
-extern u8 D_global_asm_807F967C;
-extern u8 D_global_asm_807F967D;
-
-extern s32 *D_global_asm_807FB1A0[];
-
 typedef struct {
     u8 unk0;
     u8 unk1;
