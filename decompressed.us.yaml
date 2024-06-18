@@ -382,7 +382,7 @@ segments:
       - [0x215DAF0, .rodata, done/code_68960]
       - [0x215DB10, .rodata, done/code_68EA0]
       - [0x215DB20, .rodata, code_699B0]
-      - [0x215DB30, rodata] # code_69E60
+      - [0x215DB30, .rodata, code_69E60]
       - [0x215DBC0, rodata] # code_6AF80
       - [0x215DD50, .rodata, code_70FD0]
       - [0x215DEA0, .rodata, code_79890]
