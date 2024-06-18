@@ -23,10 +23,10 @@ extern u8 D_global_asm_807F70AA;
 extern u8 D_global_asm_807F70AB;
 extern u8 D_global_asm_807F7140;
 
-extern u16 D_global_asm_807F7358;
-extern u16 D_global_asm_807F735A;
-extern u16 D_global_asm_807F735C;
-extern u16 D_global_asm_807F735E;
+extern s16 D_global_asm_807F7358;
+extern s16 D_global_asm_807F735A;
+extern s16 D_global_asm_807F735C;
+extern s16 D_global_asm_807F735E;
 extern s32 D_global_asm_807F5E20; // TODO: Datatype
 extern f32 D_global_asm_807F5E68[2][4][4]; // TODO: How many? At least 2
 extern f32 D_global_asm_807F5FB0;
@@ -1278,7 +1278,63 @@ void func_global_asm_8065850C(f32 arg0[4][4], f32 arg1[4][4], s32 arg2, f32 arg3
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80658624.s")
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct807F6D78;
+
+extern Struct807F6D78 D_807F6D78[];
+
+void func_global_asm_80658624(s32 arg0, s32 *arg1, s32 *arg2, s32 *arg3, s32 *arg4) {
+    f32 sp7C;
+    f32 sp78;
+    s16 var_a1;
+    s16 var_a2;
+    s32 i;
+    u8 var_s3;
+
+    *arg1 = character_change_array[cc_player_index].unk274;
+    *arg2 = character_change_array[cc_player_index].unk276;
+    *arg3 = character_change_array[cc_player_index].unk270;
+    *arg4 = character_change_array[cc_player_index].unk272;
+    var_s3 = 0;
+    for (i = 0; i < arg0; i++) {
+        var_s3 |= func_global_asm_80626F8C(D_807F6D78[i].unk0, D_807F6D78[i].unk4, D_807F6D78[i].unk8, &sp7C, &sp78, 0, 1.0f, cc_player_index);
+        var_a1 = sp7C;\
+        var_a2 = sp78;
+        if (var_a1 < character_change_array[cc_player_index].unk270) {
+            var_a1 = character_change_array[cc_player_index].unk270;
+        }
+        if (var_a2 < character_change_array[cc_player_index].unk272) {
+            var_a2 = character_change_array[cc_player_index].unk272;
+        }
+        if (character_change_array[cc_player_index].unk274 < var_a1) {
+            var_a1 = character_change_array[cc_player_index].unk274;
+        }
+        if (character_change_array[cc_player_index].unk276 < var_a2) {
+            var_a2 = character_change_array[cc_player_index].unk276;
+        }
+        if (var_a1 < *arg1) {
+            *arg1 = var_a1;
+        }
+        if (var_a2 < *arg2) {
+            *arg2 = var_a2;
+        }
+        if (*arg3 < var_a1) {
+            *arg3 = var_a1;
+        }
+        if (*arg4 < var_a2) {
+            *arg4 = var_a2;
+        }
+    }
+    if ((*arg1 == *arg3) || (*arg2 == *arg4) || (var_s3)) {
+        *arg1 = -1;
+        *arg2 = -1;
+        *arg3 = -1;
+        *arg4 = -1;
+    }
+}
 
 void func_global_asm_806588E0(s32 fileIndex) {
     void *file = getPointerTableFile(0x14, fileIndex, 1, 1);
@@ -1393,4 +1449,62 @@ void func_global_asm_80658E58(u16 arg0, u16 arg1, u16 arg2, u16 arg3) {
     D_global_asm_807F735E = arg3;
 }
 
+// doable, close, float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80658E8C.s")
+
+/*
+s32 func_global_asm_80658E8C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4) {
+    f32 sp44;
+    f32 sp40;
+    s16 sp3E;
+    s16 sp3C;
+    f32 dz;
+    f32 d;
+    f32 dy;
+    f32 dx;
+    f32 temp_f2_2;
+    s16 var_a0;
+    s16 var_a1;
+    s16 var_a2;
+    s16 var_v1;
+    s32 temp_f6;
+    s32 var_v0;
+
+    func_global_asm_80626F8C(arg0, arg1, arg2, &sp44, &sp40, 0, 1.0f, cc_player_index);
+    sp3E = sp44;
+    sp3C = sp40;
+    dx = arg0 - character_change_array[cc_player_index].unk21C;
+    dy = arg1 - character_change_array[cc_player_index].unk220;
+    dz = arg2 - character_change_array[cc_player_index].unk224;
+    d = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
+    if (d < 90.0f) {
+        return 0;
+    }
+    if (d >= 180.0f) {
+        var_v1 = 0x14;
+        var_a0 = 0x14;
+        var_a1 = 0;
+        var_a2 = 0x32;
+    } else {
+        temp_f2_2 = (d - 60.0f) / 120.0f;
+        if (temp_f2_2 > 0.0) {
+            temp_f6 = (-60.0f * temp_f2_2) + 80.0f;
+            var_v1 = temp_f6;
+            var_a0 = temp_f6;
+            var_a1 = (-130.0f * temp_f2_2) + 130.0f;
+            var_a2 = (-80.0f * temp_f2_2) + 130.0f;
+        } else {
+            var_v1 = 0x50;
+            var_a0 = 0x50;
+            var_a1 = 0x82;
+            var_a2 = 0x82;
+        }
+    }
+    if ((sp3E < ((D_global_asm_807F7358 - var_v1) - arg3)) || ((D_global_asm_807F735C + var_a0 + arg3) < sp3E) || (sp3C < ((D_global_asm_807F735A - var_a1) - arg4)) || ((((D_global_asm_807F735E + var_a2 + arg4) < sp3C) != 0))) {
+        var_v0 = 1;
+    } else {
+        var_v0 = 0;
+    }
+    return var_v0;
+}
+*/

@@ -5,7 +5,6 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9CE20/func_global_asm_80698120.s")
 
 void func_global_asm_8072EF7C(Actor *arg0, u8 arg1, u8 arg2, u8 arg3, u8 arg4, f32 arg5, f32 arg6, f32 arg7, u8 arg8, s16 arg9, s16 argA, s16 argB, s16 argC);
-extern u32 D_global_asm_80744478;
 
 extern s16 D_global_asm_8075037C;
 extern s16 D_global_asm_80750380;

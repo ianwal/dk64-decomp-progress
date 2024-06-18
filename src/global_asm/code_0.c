@@ -359,7 +359,7 @@ void func_global_asm_805FBFF4(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FC2B0.s")
 
 extern s32 *D_global_asm_8076A048;
-extern s32 D_global_asm_8076A150;
+extern s32 D_8076A150;
 extern s32 D_global_asm_8076A088;
 extern s32 D_global_asm_8076A08C;
 
@@ -413,9 +413,8 @@ void func_global_asm_805FC2B0(void) {
         func_global_asm_806F6F28();
     }
     func_global_asm_8070DD44();
-    temp_v0 = *(&D_global_asm_8076A050 + (D_global_asm_807444FC * 4));
-    //temp_v0 = D_global_asm_8076A050[D_global_asm_807444FC * 4];
-    D_global_asm_8076A150 = temp_v0;
+    temp_v0 = D_global_asm_8076A050[D_global_asm_807444FC];
+    D_8076A150 = temp_v0;
     if (((D_global_asm_8076A0B1 & 1) != 0) && (D_global_asm_807FD888 == 31.0f)) {
         sp2C = temp_v0;
         sp28 = D_global_asm_8076A048 + 0xDB0;
@@ -425,12 +424,12 @@ void func_global_asm_805FC2B0(void) {
     }
     if ((global_properties_bitfield & 0x100) != 0) {
         global_properties_bitfield &= ~0x100;
-        func_global_asm_807094D0(2, &global_properties_bitfield);
+        func_global_asm_807094D0(2);
     } else if ((global_properties_bitfield & 0x200) != 0) {
         D_global_asm_80744504--;
         if (D_global_asm_80744504 == 0) {
             global_properties_bitfield &= ~0x200;
-            func_global_asm_807094D0(3, &global_properties_bitfield);
+            func_global_asm_807094D0(3);
         }
     } else {
         sp2C = func_global_asm_80704484(sp2C, loading_zone_transition_type);
@@ -444,6 +443,7 @@ void func_global_asm_805FC2B0(void) {
 }
 */
 
+// OSTime stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FC668.s")
 
 extern OSTime D_global_asm_807445B8;

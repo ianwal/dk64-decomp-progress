@@ -2922,7 +2922,7 @@ us,asm,func_global_asm_8065756C,100,yes
 us,asm,func_global_asm_80641724,152,yes
 us,asm,func_global_asm_8067BD28,144,yes
 us,asm,func_global_asm_806DADA0,444,yes
-us,asm,func_global_asm_80658624,700,no
+us,asm,func_global_asm_80658624,700,yes
 us,asm,func_global_asm_80714670,52,yes
 us,asm,func_global_asm_806D0A84,864,yes
 us,asm,func_global_asm_806EBAF4,80,yes

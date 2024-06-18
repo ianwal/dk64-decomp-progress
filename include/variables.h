@@ -43,6 +43,8 @@ extern OSContPad *D_global_asm_807ECDEC;
 
 extern s16 D_global_asm_807FD584; // index into a ton of arrays
 
+extern u32 D_global_asm_80744478;
+
 extern ExitData *exit_array;
 extern ExitData D_global_asm_807FD574;
 extern ExitData D_global_asm_807FC908;

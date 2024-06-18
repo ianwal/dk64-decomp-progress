@@ -2,7 +2,6 @@
 #include "functions.h"
 
 extern s32 D_global_asm_80744470[];
-extern u32 D_global_asm_80744478;
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 extern s16 D_global_asm_80744498;

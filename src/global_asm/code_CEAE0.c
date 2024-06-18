@@ -689,8 +689,6 @@ void func_global_asm_806CC948(void) {
     func_global_asm_806CC970();
 }
 
-extern u32 D_global_asm_80744478;
-
 void func_global_asm_806CC970(void) {
     f32 dx;
     f32 dz;

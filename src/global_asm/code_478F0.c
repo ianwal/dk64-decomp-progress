@@ -1329,9 +1329,7 @@ void func_global_asm_806491F4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 }
 */
 
-extern s32 D_global_asm_80721298; // TODO: Datatype
-
-int func_global_asm_8071F660(); // TODO: Signature
+extern s32 D_global_asm_80721298; // TODO: Sprite
 
 void func_global_asm_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     u8 temp_s1;

@@ -864,7 +864,6 @@ void func_global_asm_80600590(Maps map) {
 // Delay slot problem
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600674.s")
 
-extern u32 D_global_asm_80744478;
 extern u8 D_global_asm_80745290;
 
 /*

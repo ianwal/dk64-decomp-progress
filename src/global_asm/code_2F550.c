@@ -695,16 +695,13 @@ void func_global_asm_8062C99C(GlobalASMStruct_8062C99C *arg0, s32 arg1, s32 arg2
     arg0->unkE = 0;
 }
 
-// TODO: What is the actual signature?
-void func_global_asm_80630B70(s32, s32, f32, f32, f32, s32, s32, s32);
-
 extern s32 D_global_asm_807F5FF8;
 extern u8 D_global_asm_807F6009;
 
 // TODO: Might be a fake match?
-void func_global_asm_8062CA0C(s32 arg0, f32 arg1, f32 arg2, f32 arg3) {
+Gfx *func_global_asm_8062CA0C(Gfx *dl, f32 arg1, f32 arg2, f32 arg3) {
     D_global_asm_807F6009 = 0xFF;
-    func_global_asm_80630B70(arg0, D_global_asm_807F5FF8, arg1, arg2, arg3, 0x30030, -1, 0);
+    return func_global_asm_80630B70(dl, D_global_asm_807F5FF8, arg1, arg2, arg3, 0x30030, -1, 0);
 }
 
 // Displaylist stuff

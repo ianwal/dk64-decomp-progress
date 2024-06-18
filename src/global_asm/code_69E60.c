@@ -17,8 +17,6 @@ void func_global_asm_80665160(Actor *arg0, s16 arg1, s16 arg2) {
     }
 }
 
-extern u32 D_global_asm_80744478;
-
 void func_global_asm_806651FC(Actor *arg0) {
     f32 temp_f0;
     f32 sp28;
