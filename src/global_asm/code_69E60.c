@@ -17,12 +17,8 @@ void func_global_asm_80665160(Actor *arg0, s16 arg1, s16 arg2) {
     }
 }
 
-// doable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_69E60/func_global_asm_806651FC.s")
+extern u32 D_global_asm_80744478;
 
-extern s32 D_global_asm_80744478;
-
-/*
 void func_global_asm_806651FC(Actor *arg0) {
     f32 temp_f0;
     f32 sp28;
@@ -33,10 +29,6 @@ void func_global_asm_806651FC(Actor *arg0) {
     var_f20 = arg0->unkB8;
     if (arg0->unkFC != 0) {
         var_f20 = MIN(arg0->unkFA, var_f20);
-        // temp_f0 = arg0->unkFA;
-        // if (temp_f0 < var_f20) {
-            // var_f20 = temp_f0;
-        // }
     }
     if (arg0->animation_state != NULL) {
         var_f0 = arg0->animation_state->scale_y;
@@ -53,15 +45,12 @@ void func_global_asm_806651FC(Actor *arg0) {
         var_f20 *= ABS(func_global_asm_80612794(arg0->unkDA));
     }
     if (arg0->object_properties_bitfield & 0x400000) {
-        var_f20 *= D_global_asm_80744478 * 0.5;
+        var_f20 *= (u32)D_global_asm_80744478 * 0.5;
     }
     arg0->x_position += var_f20 * func_global_asm_80612794(arg0->unkEE);
     arg0->z_position += var_f20 * func_global_asm_80612790(arg0->unkEE);
     arg0->y_position += arg0->y_velocity * sp28;
 }
-*/
-
-extern s32 D_global_asm_80744478;
 
 void func_global_asm_806653C0(Actor *arg0, f32 arg1, f32 arg2) {
     f32 sp28;

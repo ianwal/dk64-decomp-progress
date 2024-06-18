@@ -3,7 +3,7 @@
 
 extern s32 D_global_asm_80720BE8;
 
-extern s32 D_global_asm_80744478;
+extern u32 D_global_asm_80744478;
 
 extern f32 D_global_asm_80750394;
 extern f32 D_global_asm_80750398;
@@ -528,6 +528,7 @@ Gfx *func_global_asm_8069FA40(Gfx *dl, Actor *arg1) {
     return printStyledText(dl, style, center * -2, 0, sp68, 0);
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_8069FDA0.s")
 
 /*
@@ -540,7 +541,7 @@ void func_global_asm_8069FDA0(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unkEE = current_actor_pointer->unk160;
     }
-    temp_f2 = D_global_asm_80744478 * 0.5;
+    temp_f2 = (u32)D_global_asm_80744478 * 0.5;
     if (temp_f2 < current_actor_pointer->unk160) {
         current_actor_pointer->unk160 = current_actor_pointer->unk160 - temp_f2;
         temp_f12 = current_actor_pointer->unk160 / current_actor_pointer->unkEE;

@@ -837,7 +837,7 @@ us,asm,func_global_asm_806F833C,1872,yes
 us,asm,func_global_asm_8065FB04,96,yes
 us,asm,func_global_asm_806D9134,80,yes
 us,asm,func_global_asm_80739E24,56,no
-us,asm,func_global_asm_806651FC,452,no
+us,asm,func_global_asm_806651FC,452,yes
 us,asm,func_global_asm_80719A0C,380,yes
 us,asm,func_global_asm_80662108,8,yes
 us,asm,gameIsInQuitGameMode,84,yes
