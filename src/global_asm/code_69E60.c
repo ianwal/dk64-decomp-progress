@@ -61,43 +61,30 @@ void func_global_asm_806651FC(Actor *arg0) {
 }
 */
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_69E60/func_global_asm_806653C0.s")
-
 extern s32 D_global_asm_80744478;
 
-/*
-// TODO: Close, float nonsense. Hmmm, .rodata/.bss?
 void func_global_asm_806653C0(Actor *arg0, f32 arg1, f32 arg2) {
     f32 sp28;
-    f32 temp_f16;
     f32 var_f0;
-    f32 var_f20;
-    f32 var_f20_2;
-    f32 var_f2;
-    f64 var_f6;
 
-    var_f20 = arg1;
     if (arg0->unkFC != 0) {
         if (arg0->unkFA < arg1) {
-            var_f20 = arg0->unkFA;
+            arg1 = arg0->unkFA;
         }
     }
     var_f0 = arg0->animation_state != NULL ? arg0->animation_state->scale_y : 0.15f;
-    temp_f16 = var_f0 * 0.16666666675;
-    sp28 = temp_f16;
-    var_f20 *= temp_f16;
+    sp28 = var_f0 * 0.16666666675;
+    arg1 *= sp28;
     if (arg0->unk6A & 1) {
-        var_f20 *= ABS(func_global_asm_80612794(arg0->unkDA));
+        arg1 *= ABS(func_global_asm_80612794(arg0->unkDA));
     }
     if (arg0->object_properties_bitfield & 0x400000) {
-        var_f20 *= (D_global_asm_80744478 * 0.5);
+        arg1 *= ((u32)D_global_asm_80744478 * 0.5);
     }
-    arg0->x_position += var_f20 * func_global_asm_80612794(arg0->unkEE);
-    arg0->z_position += var_f20 * func_global_asm_80612790(arg0->unkEE);
+    arg0->x_position += arg1 * func_global_asm_80612794(arg0->unkEE);
+    arg0->z_position += arg1 * func_global_asm_80612790(arg0->unkEE);
     arg0->y_position += arg2 * sp28;
 }
-*/
 
 void func_global_asm_80665548(void) {
     D_global_asm_80748E00 = 1;
