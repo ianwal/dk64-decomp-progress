@@ -10,8 +10,6 @@ D_race_80030108 .float 0.3f
 D_race_80030110 .double 0.15
 */
 
-void func_race_80025E9C(Actor *);
-
 void func_race_8002BBD0(Actor *arg0, s32 numRacers) {
     RaceAdditionalActorData *sp1C;
     RaaD_unk20 *temp_v0;

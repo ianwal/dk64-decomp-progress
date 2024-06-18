@@ -95,7 +95,6 @@ extern u32 D_global_asm_8076A068;
 
 void func_global_asm_80716F10(Struct80717D84 *arg0, s32 arg1);
 
-int func_global_asm_8071E3EC(); // TODO: Signature
 int func_global_asm_8071910C(); // TODO: Signature
 extern int func_global_asm_8071F1D0(); // TODO: Signature
 

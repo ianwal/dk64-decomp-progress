@@ -217,7 +217,7 @@ u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s1
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80726164.s")
 
-// arg0 Actor, doable
+// arg0 Actor, doable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_807264B0.s")
 
 void func_global_asm_807266E8(Actor *arg0, CharacterSpawner *arg1) {

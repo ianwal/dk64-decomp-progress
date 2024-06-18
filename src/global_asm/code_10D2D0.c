@@ -5,8 +5,6 @@ s32 func_global_asm_807085D0(s32, PlayerProgress *, CharacterProgress *, void *)
 
 extern s8 D_global_asm_80744504;
 
-Gfx *func_global_asm_80708DA4(Gfx *dl, s16 arg1, CharacterChange* arg2);
-
 typedef struct global_asm_struct_21 {
     f32 unk0;
     u16 unk4;

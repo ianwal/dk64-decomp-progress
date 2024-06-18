@@ -19,7 +19,8 @@ extern f32 D_global_asm_80770B68[];
 extern f32 D_global_asm_80770BC0[];
 
 typedef struct RaceStruct15 {
-    s16 unk0;
+    u8 unk0;
+    u8 unk1;
     u16 unk2;
 } RaceStruct15;
 
@@ -112,8 +113,57 @@ f32 func_race_80027880(s32 arg0, u16 arg1, u16 arg2) {
 }
 */
 
-// doable
+// doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80027920.s")
+
+f32 func_race_80027710(s32, s32, RaceStruct15 *);
+
+/*
+f32 func_race_80027920(s32 arg0, RaceStruct15 *arg1, s32 arg2, RaceStruct15 *arg3) {
+    f32 temp_f0;
+    s32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    f32 var_f20;
+    u32 temp_lo;
+    s32 var_s0;
+    s32 sign;
+    u32 var_s2;
+    Struct807F5FD4_unk0 *temp = &D_global_asm_807F5FD4[arg3->unk0];
+
+    temp_lo = (temp->unk4_s32_ptr - temp->unk0_s32_ptr) / 12;
+    sp40 = func_race_800276B0(temp_lo, arg1, arg3);
+    sp3C = func_race_80027710(temp_lo, arg0, arg1);
+    sp38 = func_race_80027710(temp_lo, arg2, arg3);
+    sp34 = func_race_80027880(temp_lo, arg3->unk0, arg1->unk2);
+    temp_f0 = func_race_80027880(temp_lo, arg3->unk0, arg3->unk2);
+    if (sp40 == 0) {
+        var_f20 = (sp38 * temp_f0) - (sp3C * sp34);
+    } else {
+        if (sp40 > 0) {
+            var_f20 = (sp38 * temp_f0) + ((1.0f - sp3C) * sp34);
+            var_s0 = func_race_80025770(temp_lo, arg1->unk2);
+            var_s2 = arg3->unk2;
+        } else {
+            var_f20 = (sp3C * sp34) + ((1.0f - sp38) * temp_f0);
+            var_s0 = func_race_80025770(temp_lo, arg3->unk2);
+            var_s2 = arg1->unk2;
+        }
+        while (var_s0 != var_s2) {
+            var_f20 += func_race_80027880(temp_lo, arg3->unk0, var_s0);
+            var_s0 = func_race_80025770(temp_lo, var_s0);
+        }
+        if (sp40 >= 0) {
+            sign = 1;
+        } else {
+            sign = -1;
+        }
+        var_f20 = sign * var_f20;
+    }
+    return var_f20;
+}
+*/
 
 void func_race_80027AF8(RaceStruct3 *arg0, s8 arg1) {
     if (arg1 > 0) {

@@ -844,6 +844,9 @@ void func_bonus_80029E54(Actor *arg0) {
 }
 */
 
+extern s16 D_bonus_8002D8D4[];
+extern s16 D_bonus_8002D8E0[];
+
 // rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002A010.s")
 
