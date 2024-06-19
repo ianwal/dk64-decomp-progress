@@ -1149,8 +1149,8 @@ void func_global_asm_806627CC(u8 arg0);
 // TODO: func_global_asm_80662B90 has no documented signature
 s32 func_global_asm_80663040(s32 arg0);
 void func_global_asm_8066308C(f32 arg0, f32 arg1, f32 arg2);
-s32 func_global_asm_806634A4(s32 arg0);
-s32 func_global_asm_80663594(s32 arg0, s32 arg1);
+Gfx *func_global_asm_806634A4(Gfx *dl);
+Gfx *func_global_asm_80663594(Gfx *dl, s32 arg1);
 
 // global_asm/code_684C0.c
 void func_global_asm_806637C0(MapGeometryHeader *arg0);

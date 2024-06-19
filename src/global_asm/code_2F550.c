@@ -707,8 +707,39 @@ Gfx *func_global_asm_8062CA0C(Gfx *dl, f32 arg1, f32 arg2, f32 arg3) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062CA70.s")
 
-// Displaylist stuff, doable
+// Displaylist stuff, doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062CEA8.s")
+
+/*
+Gfx *func_global_asm_8062CEA8(Gfx *dl, Struct8062F420 *arg1, u8 arg2) {
+    GlobalASMStruct73 *temp_a0_2;
+    s32 i;
+    void *temp_s1;
+    void *temp_s4;
+    Struct8062F420 *var_s5;
+
+    for (i = 0; i < arg1->unkC5; i++) {
+        var_s5 = arg1;
+        temp_s1 = arg1 + (i * 2);
+        if ((arg2 == var_s5->unkB9) && (((temp_s1->unk88 == -1)) || (func_global_asm_80652EBC(temp_s1->unk88) != 0))) {
+            temp_s4 = arg1 + (i * 4);
+            dl = func_global_asm_8063C418(dl, temp_s1->unk70);
+            gSPClearGeometryMode(dl++, G_CULL_BACK);
+            temp_a0_2 = &D_global_asm_807F5FB8[var_s5->unkAC];
+            if ((temp_a0_2->unk80 != 0.0) && (temp_a0_2->unk8C != 0)) {
+                gSPMatrix(dl++, osVirtualToPhysical(D_global_asm_807F5FB8[D_global_asm_807444FC][var_s5->unkAC]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPDisplayList(dl++, osVirtualToPhysical(temp_s4->unk1C));
+                gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+            } else {
+                gSPDisplayList(dl++, osVirtualToPhysical(temp_s4->unk1C));
+            }
+            gDPPipeSync(dl++);
+        }
+        var_s5 += 1;
+    }
+    return dl;
+}
+*/
 
 typedef struct Struct8062D0CC_arg0 Struct8062D0CC_arg0;
 typedef struct Struct8062D0CC_arg1 Struct8062D0CC_arg1;
