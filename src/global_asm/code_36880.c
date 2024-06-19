@@ -218,7 +218,7 @@ s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
     return D_global_asm_807F614A;
 }
 
-// Load Model 2 Setup?
+// doable, load Model 2 Setup?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80632084.s")
 
 void func_global_asm_806323C0(Chunk14 *arg0) {

@@ -14,12 +14,12 @@ extern f32 D_global_asm_807F6238;
 
 extern u8 D_global_asm_807F693F;
 
+// close, last loop is wrong somehow
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8063D930.s")
 
 extern u8 D_global_asm_807F66F0[];
 
 /*
-// TODO: Pretty close, last loop is wrong somehow
 void func_global_asm_8063D930(void) {
     s32 i;
 
@@ -826,7 +826,7 @@ void func_global_asm_80642844(s16 arg0, s16 arg1, Struct80642844 *arg2, s32 arg3
     }
 }
 
-extern s32 D_global_asm_8071FC58;
+extern s32 D_global_asm_8071FC58; // TODO: Sprite
 
 void func_global_asm_80642940(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 randomZOffset;

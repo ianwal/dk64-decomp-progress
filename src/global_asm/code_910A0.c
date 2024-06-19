@@ -120,8 +120,42 @@ Gfx *func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
 // Displaylist stuff, huge
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_910A0/func_global_asm_8068DC54.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_910A0/func_global_asm_8068E474.s")
+typedef struct {
+    u8 unk0;
+} AAD_8068E474_unk34;
+
+typedef struct {
+    u8 unk0[0x34 - 0x0];
+    AAD_8068E474_unk34 *unk34;
+} AAD_8068E474;
+
+Gfx *func_global_asm_8068E474(Gfx *dl, Actor *arg1) {
+    s16 rot;
+    AAD_8068E474 *aaD;
+    s16 temp;
+
+    temp = arg1->unkEC + 0x5A;
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    if (D_global_asm_807FBB64 & 0x80000) {
+        aaD = arg1->additional_actor_data;
+        rot = arg1->y_rotation;
+        if (rot < 0x200 || rot >= 0xE01 || (rot >= 0x601 && rot < 0xA00)) {
+            if ((aaD->unk34->unk0 != 0x10) && (aaD->unk34->unk0 != 0x13)) {
+                dl = displayImage(dl, (((u32)object_timer >> 1) % 12U) + 0x83, 0, 2, 0x20, 0x10, 0x78, 0x1E0, 4.0f, 4.0f, 0, 0.0f);
+                dl = displayImage(dl, (((u32)object_timer >> 1) % 12U) + 0x83, 0, 2, 0x20, 0x10, 0x488, 0x1E0, 4.0f, 4.0f, 0xB4, 0.0f);
+            }
+        } else {
+            dl = displayImage(dl, (((u32)object_timer >> 1) % 12U) + 0x83, 0, 2, 0x20, 0x10, 0x280, 0x78, 4.0f, 4.0f, 0x5A, 0.0f);
+            dl = displayImage(dl, (((u32)object_timer >> 1) % 12U) + 0x83, 0, 2, 0x20, 0x10, 0x280, 0x348, 4.0f, 4.0f, 0x10E, 0.0f);
+        }
+    } else {
+        dl = displayImage(dl, (((u32)object_timer >> 1) % 12U) + 0x83, 0, 2, 0x20, 0x10, 0xB4, 0xC8, 8.0f, 8.0f, temp, 0.0f);
+    }
+    return dl;
+}
 
 Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
     f32 sp54;
