@@ -10,8 +10,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800029EC.s")
 
-// Should be doable, surprisingly hard
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/strcpy.s")
+u8 *strcpy(u8 *dest, u8 const *src) {
+    u8 *const ptr = dest;
+    while ((*dest++ = *src++) != '\0');
+    return ptr;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002A64.s")
 
@@ -29,11 +32,43 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002DE4.s")
 
-// memset?
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002E98.s")
+void *memset(void *dest, s32 val, u32 len)
+{
+  u8 *ptr = dest;
+  while (len-- > 0) {
+    *ptr++ = val;
+  }
+  return dest;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/strchr.s")
+u8 *strchr(const u8 *str, s32 c) {
+    if (str == NULL) {
+        return NULL;
+    }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/strlen.s")
+    while(*str != '\0') {
+        if ((u8)c == *str) {
+            return (u8*)str; // cast to remove const. it's ok.
+        }
+        ++str;
+    }
+    return NULL;
+}
+
+u32 strlen(const u8 *str) {
+    u32 len = 0;
+
+    if (str == NULL) {
+        return 0;
+    }
+
+    while(*str != '\0')
+    {
+        ++len;
+        ++str;
+    }
+    return len;
+}
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002F54.s")

@@ -2,7 +2,6 @@ version,section,function,length,matching
 us,boot,__osSiDeviceBusy,44,yes
 us,boot,osViBlack,112,yes
 us,boot,guLookAtHilite,184,yes
-us,boot,func_dk64_boot_80002E98,52,no
 us,boot,__osSiRawWriteIo,76,yes
 us,boot,func_dk64_boot_80002B0C,172,no
 us,boot,__osPackEepWriteData,172,no
@@ -24,7 +23,7 @@ us,boot,func_dk64_boot_80005854,44,no
 us,boot,guPosition,112,no
 us,boot,guMtxF2L,256,yes
 us,boot,__osSpGetStatus,12,yes
-us,boot,strchr,76,no
+us,boot,strchr,76,yes
 us,boot,__osSetFpcCsr,16,yes
 us,boot,func_dk64_boot_8000773C,24,no
 us,boot,func_dk64_boot_80005070,324,yes
@@ -90,6 +89,7 @@ us,boot,__osDevMgrMain,1168,yes
 us,boot,func_dk64_boot_80000450,100,yes
 us,boot,func_dk64_boot_800029EC,68,no
 us,boot,osSetThreadPri,224,yes
+us,boot,memset,52,yes
 us,boot,func_dk64_boot_8000D8B4,732,no
 us,boot,__osExceptionPreamble,16,yes
 us,boot,__osSpSetStatus,12,yes
@@ -124,7 +124,7 @@ us,boot,func_dk64_boot_80002BB8,188,no
 us,boot,guPerspectiveF,560,yes
 us,boot,__osSetGlobalIntMask,76,yes
 us,boot,func_dk64_boot_80007788,56,no
-us,boot,strcpy,52,no
+us,boot,strcpy,52,yes
 us,boot,guMtxL2F,180,yes
 us,boot,__osSetTimerIntr,116,yes
 us,boot,__osIdCheckSum,252,no
@@ -213,7 +213,7 @@ us,boot,func_dk64_boot_80000A30,112,no
 us,boot,guMtxCatF,360,yes
 us,boot,osYieldThread,76,yes
 us,boot,guRotate,92,no
-us,boot,strlen,60,no
+us,boot,strlen,60,yes
 us,boot,osViGetNextFramebuffer,64,yes
 us,boot,osEepromProbe,112,yes
 us,boot,guMtxIdentF,136,yes

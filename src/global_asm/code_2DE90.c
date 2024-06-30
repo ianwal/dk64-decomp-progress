@@ -32,8 +32,6 @@ extern f32 D_global_asm_807F5D94;
 extern Mtx D_807F5D98;
 extern void *D_global_asm_807F5DD8;
 
-void func_dk64_boot_80002E98(void *arg0, s32 arg1, s32 arg2);
-
 void func_global_asm_807024E0(Gfx **, void *, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, void (*)(s32, s32, void *)); // extern
 void func_global_asm_80704130(void*, s32, s32, s32, s32, s32);
 
@@ -279,7 +277,7 @@ void func_global_asm_8062A348(void) {
 void func_global_asm_8062A774(void) {
     if (!D_global_asm_80747B40) {
         D_global_asm_807F5DD8 = malloc(0x25800);
-        func_dk64_boot_80002E98(D_global_asm_807F5DD8, 0, 0x25800); // memset?
+        memset(D_global_asm_807F5DD8, 0, 0x25800);
         D_global_asm_80747B40 = 1;
     }
 }
