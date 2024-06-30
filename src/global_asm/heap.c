@@ -169,14 +169,20 @@ void *func_global_asm_806111F8(s32 arg0, u32 arg1) {
 */
 
 void free(void *arg0) {
-    if (((HeapHeader*)arg0 != D_global_asm_807F5A64) && ((HeapHeader*)arg0 -= 1)->unkB == 0) {
-        func_global_asm_80611408(arg0);
+    if (((HeapHeader*)arg0 != D_global_asm_807F5A64)) {
+        arg0 = (HeapHeader*)arg0 - 1;
+        if (((HeapHeader*)arg0)->unkB == 0) {
+            func_global_asm_80611408(arg0);
+        }
     }
 }
 
 void func_global_asm_8061134C(void *arg0) {
-    if (((HeapHeader*)arg0 != D_global_asm_807F5A64) && ((HeapHeader*)arg0 -= 1)->unkB == 0) {
-        func_global_asm_8061138C(arg0);
+    if (((HeapHeader*)arg0 != D_global_asm_807F5A64)) {
+        arg0 = (HeapHeader*)arg0 - 1;
+        if (((HeapHeader*)arg0)->unkB == 0) {
+            func_global_asm_8061138C(arg0);
+        }
     }
 }
 

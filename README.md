@@ -33,7 +33,7 @@ A Dockerfile is provided that is based on Ubuntu can be used for development and
 Build the Docker image:
 
 ```sh
-docker build -t sm64 .
+docker build -t dk64 .
 ```
 
 Then the ROM can be built with Docker using `make`
