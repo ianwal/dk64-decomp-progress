@@ -157,7 +157,7 @@ us,boot,__osDispatchThread,380,yes
 us,boot,__osViSwapContext,768,no
 us,boot,osViSwapBuffer,80,yes
 us,boot,__osException,1316,yes
-us,boot,osEPiRawStartDma,480,no
+us,boot,osEPiRawStartDma,480,yes
 us,boot,__osProbeTLB,192,yes
 us,boot,__osDisableInt,32,yes
 us,boot,__ll_mod,156,no
