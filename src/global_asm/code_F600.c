@@ -17,7 +17,7 @@ u8 func_global_asm_8060A900(void) {
     osCreateMesgQueue(&D_global_asm_807ECCF0, &D_global_asm_807ECCE0, 4);
     osSetEventMesg(5, &D_global_asm_807ECCF0, NULL);
     osContInit(&D_global_asm_807ECCF0, &D_global_asm_807ECD09, &D_global_asm_807ECCD0);
-    func_dk64_boot_80007360(4);
+    osContSetCh(4);
     if (!(D_global_asm_807ECD09 & 1)) {
         D_global_asm_807ECD09 = 0;
     }

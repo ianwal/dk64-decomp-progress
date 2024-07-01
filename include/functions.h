@@ -138,7 +138,7 @@ u64 __ll_mul(u64, u64);
 s32 func_dk64_boot_80005A70(void);
 
 // dk64_boot/dk64_boot_7F60.c
-s32 func_dk64_boot_80007360(u8 arg0);
+s32 osContSetCh(u8 arg0);
 
 // dk64_boot/io/contreaddata.c
 s32 func_dk64_boot_800073D0(OSMesgQueue *arg0);

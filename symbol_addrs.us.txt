@@ -84,6 +84,7 @@ osPiStartDma = 0x80006F10; // segment:dk64_boot
 osContInit = 0x80007020; // segment:dk64_boot
 __osContGetInitData = 0x80007190; // segment:dk64_boot
 __osPackRequestData = 0x80007260; // segment:dk64_boot
+osContSetCh = 0x80007360; // segment:dk64_boot
 __ull_to_f = 0x800075B0; // segment:dk64_boot
 osSetTimer = 0x800077C0; // segment:dk64_boot
 osGetThreadId = 0x800078A0; // segment:dk64_boot

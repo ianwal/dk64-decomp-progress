@@ -4040,7 +4040,6 @@ us,boot,osPiGetStatus,12,yes
 us,boot,func_dk64_boot_80002790,152,no
 us,boot,guMtxCatL,88,yes
 us,boot,func_dk64_boot_80002724,44,yes
-us,boot,func_dk64_boot_80007360,100,yes
 us,boot,osPiRawStartDma,224,yes
 us,boot,osViSetMode,104,yes
 us,boot,__osViInit,316,yes
@@ -4184,6 +4183,7 @@ us,boot,osEepromProbe,112,yes
 us,boot,guMtxIdentF,136,yes
 us,boot,osMotorStartStop,360,no
 us,boot,__osSpDeviceBusy,44,yes
+us,boot,osContSetCh,100,yes
 us,boot,func_dk64_boot_80007688,156,no
 us,boot,func_dk64_boot_80005A70,12,yes
 us,boot,__cosf,360,yes

@@ -7,7 +7,7 @@ void __osSiRelAccess(void);
 
 extern u8 D_dk64_boot_80014E01;
 
-s32 func_dk64_boot_80007360(u8 arg0) {
+s32 osContSetCh(u8 arg0) {
     s32 sp1C;
 
     sp1C = 0;
