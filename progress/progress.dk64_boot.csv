@@ -163,7 +163,7 @@ us,boot,__osProbeTLB,192,yes
 us,boot,__osDisableInt,32,yes
 us,boot,__ll_mod,156,no
 us,boot,osPiReadIo,64,yes
-us,boot,guLookAtHiliteF,1848,no
+us,boot,guLookAtHiliteF,1848,yes
 us,boot,osSetTime,36,yes
 us,boot,osWriteBackDCacheAll,48,yes
 us,boot,__osGetFpcCsr,16,yes
