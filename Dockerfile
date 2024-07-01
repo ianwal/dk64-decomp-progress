@@ -24,7 +24,7 @@ RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 RUN python3 -m pip install \
-    capstone pyyaml pylibyaml pycparser \
+    pyyaml pylibyaml pycparser \
     colorama ansiwrap watchdog python-Levenshtein cxxfilt \
     python-ranges \
     pypng anybadge \

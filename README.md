@@ -76,7 +76,7 @@ sudo apt-get update && \
     vbindiff
 
 sudo python3 -m pip install \
-    capstone pyyaml pylibyaml pycparser \
+    pyyaml pylibyaml pycparser \
     colorama ansiwrap watchdog python-Levenshtein cxxfilt \
     python-ranges \
     pypng anybadge \
@@ -86,7 +86,7 @@ sudo python3 -m pip install \
 Then to build everything just run make:
 
 ```sh
-make -j8
+make -j
 ```
 
 The ROM will now be built.
