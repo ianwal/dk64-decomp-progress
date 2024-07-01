@@ -48,6 +48,7 @@ osInvalICache = 0x80005260; // segment:dk64_boot
 osWriteBackDCacheAll = 0x800052E0; // segment:dk64_boot
 osInitialize = 0x80005310; // segment:dk64_boot
 osWritebackDCache = 0x80005670; // segment:dk64_boot
+osViSetEvent = 0x800056F0; // segment:dk64_boot
 osViSwapBuffer = 0x80005760; // segment:dk64_boot
 __osGetFpcCsr = 0x80005A80; // segment:dk64_boot
 guSprite2DInit = 0x80005A90; // segment:dk64_boot

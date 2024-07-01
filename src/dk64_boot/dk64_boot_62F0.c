@@ -2,12 +2,22 @@
 #include "functions.h"
 #include "viint.h"
 
-void func_dk64_boot_800056F0(OSMesgQueue *arg0, OSMesg arg1, s32 arg2) {
-    register s32 temp_v0;
+void osViSetEvent(OSMesgQueue* mq, OSMesg m, u32 retraceCount) {
+    register u32 saveMask;
 
-    temp_v0 = __osDisableInt();
-    __osViNext->msgq = arg0;
-    __osViNext->msg = arg1;
-    __osViNext->retraceCount = arg2;
-    __osRestoreInt(temp_v0);
+#ifdef _DEBUG
+    if (!__osViDevMgr.active) {
+        __osError(ERR_OSVISETEVENT, 0);
+        return;
+    }
+
+    assert(mq != NULL);
+#endif
+
+    saveMask = __osDisableInt();
+
+    __osViNext->msgq = mq;
+    __osViNext->msg = m;
+    __osViNext->retraceCount = retraceCount;
+    __osRestoreInt(saveMask);
 }

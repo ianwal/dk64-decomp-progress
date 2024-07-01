@@ -85,7 +85,7 @@ void func_global_asm_806C7D40(s32 arg0);
 
 void func_global_asm_8061EA78();
 
-void func_global_asm_80712BD4();
+void func_global_asm_80712BD4(void);
 void func_global_asm_805FB944(u8);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FB300.s")

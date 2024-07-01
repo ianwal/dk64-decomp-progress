@@ -21,7 +21,6 @@ extern s32 D_global_asm_80755348; // helm_timer
 extern u8 D_global_asm_80755350;
 extern Maps D_global_asm_80755384[];
 
-// rodata
 extern s32 D_global_asm_807FBB68;
 
 extern u8 D_global_asm_807FDA1C;

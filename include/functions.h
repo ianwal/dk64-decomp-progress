@@ -122,7 +122,7 @@ s32 func_dk64_boot_80005070(u32 frequency); //s32 osAiSetFrequency(u32 frequency
 void func_dk64_boot_800055D0(void);
 
 // dk64_boot/dk64_boot_62F0.c
-void func_dk64_boot_800056F0(OSMesgQueue *arg0, OSMesg arg1, s32 arg2);
+void osViSetEvent(OSMesgQueue* mq, OSMesg m, u32 retraceCount);
 
 // dk64_boot/dk64_boot_63B0.c
 // TODO: func_dk64_boot_800057B0 has no documented signature

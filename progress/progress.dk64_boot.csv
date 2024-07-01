@@ -184,12 +184,12 @@ us,boot,func_dk64_boot_800004F4,180,yes
 us,boot,__osTimerInterrupt,376,yes
 us,boot,__osGetId,428,no
 us,boot,func_dk64_boot_800022D4,288,yes
-us,boot,func_dk64_boot_800056F0,108,yes
 us,boot,func_dk64_boot_80002A64,88,no
 us,boot,osInitialize,704,no
 us,boot,__osPackRequestData,244,yes
 us,boot,__osSiRawStartDma,172,yes
 us,boot,osEepromWrite,376,no
+us,boot,osViSetEvent,108,yes
 us,boot,func_dk64_boot_8000DB90,288,no
 us,boot,guOrthoF,340,yes
 us,boot,__osSpSetPc,52,yes
