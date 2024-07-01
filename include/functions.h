@@ -125,16 +125,16 @@ void func_dk64_boot_800055D0(void);
 void osViSetEvent(OSMesgQueue* mq, OSMesg m, u32 retraceCount);
 
 // dk64_boot/dk64_boot_63B0.c
-// TODO: func_dk64_boot_800057B0 has no documented signature
-// TODO: func_dk64_boot_800057DC has no documented signature
-u64 func_dk64_boot_80005818(u64, u64);
-// TODO: func_dk64_boot_80005854 has no documented signature
-// TODO: func_dk64_boot_80005880 has no documented signature
-// TODO: func_dk64_boot_800058BC has no documented signature
-u64 func_dk64_boot_80005918(u64, u64);
-// TODO: func_dk64_boot_80005948 has no documented signature
-// TODO: func_dk64_boot_800059A8 has no documented signature
-// TODO: func_dk64_boot_80005A44 has no documented signature
+// TODO: __ull_rshift has no documented signature
+// TODO: __ull_rem has no documented signature
+u64 __ull_div(u64, u64);
+// TODO: __ll_lshift has no documented signature
+// TODO: __ll_rem has no documented signature
+// TODO: __ll_div has no documented signature
+u64 __ll_mul(u64, u64);
+// TODO: __ull_divremi has no documented signature
+// TODO: __ll_mod has no documented signature
+// TODO: __ll_rshift has no documented signature
 s32 func_dk64_boot_80005A70(void);
 
 // dk64_boot/dk64_boot_7F60.c

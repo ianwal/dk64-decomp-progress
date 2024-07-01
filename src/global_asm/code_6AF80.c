@@ -1363,7 +1363,7 @@ void func_global_asm_8066B4AC(s32 arg0, s32 arg1, s32 arg2) {
 // stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066B4D4.s")
 
-s32 func_dk64_boot_800057B0(s32, s32, f32, s32);
+s32 __ull_rshift(s32, s32, f32, s32);
 
 /*
 // TODO: Pretty close, s16/u16 and stack nonsense
@@ -1382,7 +1382,7 @@ s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3) {
     if (temp_v0 & 0x80000000) {
         sp2C = 8;
         func_global_asm_8060B140(D_dk64_boot_8000DDCC + (temp_v0 & 0x7FFFFFFF), &sp38, &sp2C, 0, 0, 0, 0);
-        var_t0 = func_dk64_boot_800057B0(sp38, sp3C, 0, 0x30);
+        var_t0 = __ull_rshift(sp38, sp3C, 0, 0x30);
         func_global_asm_8066B4D4(arg0, var_t0, arg2, arg3);
     } else {
         *arg2 = D_dk64_boot_8000DDCC + temp_v0;
