@@ -22,8 +22,6 @@ extern u8 D_global_asm_80755350;
 extern Maps D_global_asm_80755384[];
 
 // rodata
-extern char D_global_asm_8075E5D4[];
-
 extern s32 D_global_asm_807FBB68;
 
 extern u8 D_global_asm_807FDA1C;
@@ -34,13 +32,13 @@ typedef struct {
     s16 unk2;
 } Struct8075E5C0;
 
-extern const Struct8075E5C0 D_global_asm_8075E5C0[];/* = {
+extern const Struct8075E5C0 D_global_asm_8075E5C0[] = {
     {0x04, 0x00, 0x01E0},
     {0x00, 0x00, 0x0294},
     {0x01, 0x00, 0x01E0},
     {0x03, 0x00, 0x0258},
     {0x02, 0x00, 0x0258},
-};*/
+};
 
 void func_global_asm_80712B80(void) {
     if (game_mode == GAME_MODE_DK_TV) {
@@ -193,8 +191,7 @@ Gfx *func_global_asm_80713438(Gfx *dl, u8 arg1) {
     temp_f16 = 418.0f;
     sp34 = malloc(size);
     func_global_asm_8061134C(sp34);
-    sprintf(sp34, &D_global_asm_8075E5D4, 0x63, sp30);
-    // sprintf(sp34, "%c%s", 0x63, sp30);
+    sprintf(sp34, "%c%s", 0x63, sp30);
     sp28 -= 0.5 * getCenterOfString(1, sp34);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, arg1);
