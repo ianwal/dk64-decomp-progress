@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-#include <ultra64.h>
 #include <rcp.h>
 #include "piint.h"
 
