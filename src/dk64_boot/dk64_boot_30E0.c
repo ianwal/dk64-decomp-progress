@@ -30,6 +30,73 @@ void func_dk64_boot_800024E0(u8 **arg0, s32 *arg1, void *arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_30E0/func_dk64_boot_800025A4.s")
 
+/*
+// very close, just missing a few sltu instructions  
+extern s32 D_dk64_boot_8000EEE4;
+extern s32 D_dk64_boot_80013ACC;
+extern s32 D_dk64_boot_80013AEC;
+
+s32 func_dk64_boot_800025A4(void) {
+    u8 flag;
+    u8 control_flag;
+    s32 temp_t6;
+
+    D_dk64_boot_80013AEC += 2;
+    D_dk64_boot_8000EEE0 = -1;
+    D_dk64_boot_80013ACC = 0;
+    D_dk64_boot_8000EEE0 = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0);
+    ++D_dk64_boot_80013AEC;
+    if (D_dk64_boot_8000EEE0 != 8) {
+        D_dk64_boot_8000EEE4 = 1;
+        return -1;
+    }
+    
+    control_flag = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0);
+    ++D_dk64_boot_80013AEC;
+    D_dk64_boot_80013AEC += 6;
+    if (control_flag & 2) {
+        D_dk64_boot_80013AEC += 2;
+    }
+
+    if (control_flag & 4) {
+        
+        // correct registers, but missing instructions :/
+        // flag = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0);
+        // D_dk64_boot_80013AEC += 1;
+        // D_dk64_boot_80013AEC = (D_dk64_boot_80013AEC ) + (flag | (*(D_dk64_boot_80013AC0 + D_dk64_boot_80013AEC) << 8));
+
+        // correct instructions but some wrong registers
+        flag = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0);
+        D_dk64_boot_80013AEC += 1;
+        temp_t6 = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0 + 1);
+        D_dk64_boot_80013AEC += 1;
+        D_dk64_boot_80013AEC = D_dk64_boot_80013AEC + (flag | temp_t6 << 8);
+    }
+  
+    if (control_flag & 16) {
+        flag = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0);
+        ++D_dk64_boot_80013AEC;
+        while(flag != 0)
+        {
+            flag = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0);
+           ++D_dk64_boot_80013AEC;
+        }
+    }
+
+    if (control_flag & 8) {
+        flag = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0);
+        ++D_dk64_boot_80013AEC;
+        while(flag != 0)
+        {
+            flag = *(D_dk64_boot_80013AEC + D_dk64_boot_80013AC0);
+            ++D_dk64_boot_80013AEC;
+        }
+    }
+    D_dk64_boot_80013ACC = D_dk64_boot_80013AEC + 8;
+    return D_dk64_boot_8000EEE0;
+}
+*/
+
 u32 func_dk64_boot_80002724(u32 arg0, s32 arg1) {
     u32 v1 = 0;
     do {
