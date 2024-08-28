@@ -524,26 +524,31 @@ void func_global_asm_80712830(Actor *arg0, s32 exit) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80712944.s")
+typedef struct input_controller_struct {
+    /* 0x000 */ u16 buttons;
+    /* 0x002 */ s8 x;
+    /* 0x003 */ s8 y;
+} input_controller_struct;
 
-/*
-void func_global_asm_80712944(GlobalASMStruct12 *arg0) {
-    func_global_asm_8060AC34(arg0); // wrapper for subdragHookFunction()
-    arg0->unk2 &= D_global_asm_8075530C;
-    arg0->unk3 &= D_global_asm_80755310;
-    arg0->unk0 &= D_global_asm_80755308;
-    arg0->unk8 &= D_global_asm_8075530C;
-    arg0->unk9 &= D_global_asm_80755310;
-    arg0->unk6 &= D_global_asm_80755308;
-    arg0->unkE &= D_global_asm_8075530C;
-    arg0->unkF &= D_global_asm_80755310;
-    arg0->unkC &= D_global_asm_80755308;
-    arg0->unk14 &= D_global_asm_8075530C;
-    arg0->unk15 &= D_global_asm_80755310;
-    arg0->unk12 &= D_global_asm_80755308;
+typedef struct input_struct {
+    /* 0x000 */ input_controller_struct controller;
+    /* 0x004 */ s16 unk4;
+} input_struct;
+
+typedef struct console_inputs {
+    /* 0x000 */ input_struct player[4];
+} console_inputs;
+
+void func_global_asm_80712944(console_inputs *arg0) {
+    s32 i;
+    
+    func_global_asm_8060AC34((GlobalASMStruct12*) arg0); // wrapper for subdragHookFunction()
+    for (i = 0; i < 4; i++) {
+        arg0->player[i].controller.x &= D_global_asm_8075530C;
+        arg0->player[i].controller.y &= D_global_asm_80755310;
+        arg0->player[i].controller.buttons &= D_global_asm_80755308;
+    }
 }
-*/
 
 // osGetTime stuff, probably timestamp maths
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80712A40.s")
