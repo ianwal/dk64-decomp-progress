@@ -100,8 +100,8 @@ void func_global_asm_8060AC34(OSContPad *arg0) {
 /*
 void func_global_asm_806F3E0C(OSContPad *, OSContPad *);
 void func_global_asm_80712944(OSContPad *);
-extern OSContPad D_807ECD40;
-extern OSContPad D_807ECD50;
+extern u16 D_807ECD40[];
+extern u16 D_807ECD50[];
 extern OSContPad D_807ECD60;
 extern u16 D_807ECD68;
 extern u8 D_global_asm_807467C4;
@@ -129,7 +129,7 @@ void func_global_asm_8060AC7C(void) {
     s32 var_s1;
     s32 var_s1_2;
     s32 var_s2;
-    s32 var_v0;
+    s32 i;
     s32 var_v0_3;
     s32 var_v1;
     s32 var_v1_2;
@@ -147,8 +147,8 @@ void func_global_asm_8060AC7C(void) {
     D_global_asm_807ECD58.button = 0;
     D_global_asm_807ECD58.stick_x = 0;
     D_global_asm_807ECD58.stick_y = 0;
-    if ((D_global_asm_807ECD08 != 0) || (D_global_asm_807467C4 != 0)) {
-        if ((D_global_asm_807467C4 == 0) && (D_global_asm_807ECD08 != 0)) {
+    if ((D_global_asm_807ECD08) || (D_global_asm_807467C4)) {
+        if ((!D_global_asm_807467C4) && (D_global_asm_807ECD08)) {
             D_global_asm_80746834 = 3;
             osRecvMesg(&D_global_asm_807ECCF0, NULL, 1);
             D_global_asm_80746834 = 0;
@@ -159,29 +159,25 @@ void func_global_asm_8060AC7C(void) {
         case 0:
             func_global_asm_80712944(D_global_asm_807ECDE8);
             func_global_asm_8060B110(D_global_asm_807ECDE8);
-block_16:
             var_t0 = &D_global_asm_807ECD58;
             break;
         case 2:
             func_global_asm_80712944(D_global_asm_807ECDF4);
             func_global_asm_8060B110(D_global_asm_807ECDF4);
             func_global_asm_8060B4D4(D_global_asm_807ECDE8);
-            var_s1 = 0;
-            var_v0 = 0;
-            do {
-                if (D_global_asm_807ECD09 & (1 << var_v0)) {
-                    temp_v1 = &D_global_asm_807ECDE8[var_s1];
-                    temp_v1->button |= (D_global_asm_807ECDF4[var_s1].button & 0x1000);
+            for (i = 0; i < 4; i++) {
+                if (D_global_asm_807ECD09 & (1 << i)) {
+                    temp_v1 = &D_global_asm_807ECDE8[i];
+                    temp_v1->button |= (D_global_asm_807ECDF4[i].button & 0x1000);
                 }
-                var_v0 = (var_s1 + 1) & 0xFF;
-                var_s1 = var_v0;
-            } while (var_v0 < 4);
-            goto block_16;
+            }
+            var_t0 = &D_global_asm_807ECD58;
+            break;
         case 3:
             func_global_asm_80712944(D_global_asm_807ECDF4);
             func_global_asm_8060B110(D_global_asm_807ECDF4);
             func_global_asm_806F3E0C(D_global_asm_807ECDE8, D_global_asm_807ECDF4);
-            goto block_16;
+            var_t0 = &D_global_asm_807ECD58;
         }
     }
     if (temp_v0 != 0) {
@@ -189,23 +185,20 @@ block_16:
         var_t0 = &D_global_asm_807ECD58;
     }
     temp_a1 = var_t0->button;
-    newly_pressed_input_copy = (temp_a1 ^ D_807ECD60.button) & temp_a1;
-    var_v0_2 = &func_global_asm_80611730;
+    // Anti-tamper
+    newly_pressed_input_copy[0].new_inputs = (temp_a1 ^ D_807ECD60.button) & temp_a1;
     var_v1 = 0;
-    if ((u32) &func_global_asm_80611730 < (u32) func_global_asm_80611844) {
-        do {
-            temp_t7 = *var_v0_2;
-            var_v0_2 += 4;
-            var_v1 += temp_t7;
-        } while ((u32) var_v0_2 < (u32) func_global_asm_80611844);
+    for (var_v0_2 = &func_global_asm_80611730; var_v0_2 < (s32 *)func_global_asm_80611844; var_v0_2++) {
+        var_v1 += *var_v0_2;
     }
     var_s2 = 0;
     if (var_v1 != 0x624C9A6C) {
         object_timer = 0;
     }
+    //
     var_s1_2 = 0;
     var_v0_3 = 0;
-    do {
+    for (var_v0_3 = 0; var_v0_3 < 4; var_v0_3++) {
         if (temp_v0 != 0) {
             var_v1_2 = D_global_asm_807ECDF8 & (1 << var_v0_3) & 0xFF;
         } else {
@@ -218,10 +211,10 @@ block_16:
         if (var_v1_2 != 0) {
             temp_v1_2 = var_s2 * 2;
             temp_a1_2 = &D_global_asm_807ECD10[var_s2];
-            temp_t0 = temp_v1_2 + &D_807ECD40;
+            temp_t0 = &D_807ECD40[var_s2];
             temp_a2 = temp_a1_2->button;
             var_t2 = (*temp_t0 ^ temp_a2) & temp_a2 & 0xFFFF;
-            temp_v0_2 = temp_v1_2 + &D_807ECD50;
+            temp_v0_2 = &D_807ECD50[var_s2];
             *temp_t0 = temp_a2;
             var_a3 = temp_a2;
             if (is_autowalking == 0) {
@@ -265,9 +258,7 @@ block_42:
                 var_s2 += 1;
             }
         }
-        var_v0_3 = (var_s1_2 + 1) & 0xFF;
-        var_s1_2 = var_v0_3;
-    } while (var_v0_3 < 4);
+    }
     D_global_asm_807ECDEC = &D_global_asm_807ECD10;
     D_global_asm_807ECDF0 = newly_pressed_input[0];
 }

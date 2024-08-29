@@ -378,7 +378,7 @@ void func_global_asm_806A5868(void) {
         if (!(aaD->unk55 & 1)) {
             if ((current_actor_pointer->control_state != 4) && (current_actor_pointer->control_state != 5)) {
                 if (aaD->unk0 > 15.0) {
-                    if (newly_pressed_input_copy & B_BUTTON) {
+                    if (newly_pressed_input_copy[0].new_inputs & B_BUTTON) {
                         aaD->unk55 |= 1;
                     }
                     if (D_global_asm_807ECD58.button & Z_TRIG) {
