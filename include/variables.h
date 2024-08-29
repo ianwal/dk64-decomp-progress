@@ -128,7 +128,7 @@ typedef struct {
     s8 unk3;
 } Struct807ECD58;
 
-extern Struct807ECD58 D_global_asm_807ECD58;
+extern OSContPad D_global_asm_807ECD58;
 
 typedef struct Struct807FD610 {
     s32 unk0; // Timer that ticks up once per frame

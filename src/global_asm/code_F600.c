@@ -97,8 +97,8 @@ void func_global_asm_8060AC34(OSContPad *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_global_asm_8060AC7C.s")
 
-void func_global_asm_8060B110(Struct807ECD58 *arg0) {
-    D_global_asm_807ECD58.unk0 = arg0->unk0;
-    D_global_asm_807ECD58.unk2 = arg0->unk2;
-    D_global_asm_807ECD58.unk3 = arg0->unk3;
+void func_global_asm_8060B110(OSContPad *arg0) {
+    D_global_asm_807ECD58.button = arg0->button;
+    D_global_asm_807ECD58.stick_x = arg0->stick_x;
+    D_global_asm_807ECD58.stick_y = arg0->stick_y;
 }

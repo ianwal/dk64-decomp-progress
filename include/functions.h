@@ -348,7 +348,7 @@ u8 func_global_asm_8060AB38(s32 arg0);
 u8 func_global_asm_8060AC28(void);
 // TODO: func_global_asm_8060AC34 has no documented signature
 // TODO: func_global_asm_8060AC7C has no documented signature
-void func_global_asm_8060B110(Struct807ECD58 *arg0);
+void func_global_asm_8060B110(OSContPad *arg0);
 
 // global_asm/code_FE40.c
 // TODO: func_global_asm_8060B140 has no documented signature
