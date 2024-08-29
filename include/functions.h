@@ -245,7 +245,7 @@ void func_global_asm_80600590(Maps map);
 
 // global_asm/code_5650.c
 void func_global_asm_80600950(void);
-s32 func_global_asm_8060095C(s32 arg0, s32 *arg1, s32 *arg2);
+void* func_global_asm_8060095C(s32 arg0, s32 *arg1, s32 *arg2);
 void func_global_asm_8060098C(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4);
 void func_global_asm_80600B10(void);
 void func_global_asm_80600BBC(void *arg0);
