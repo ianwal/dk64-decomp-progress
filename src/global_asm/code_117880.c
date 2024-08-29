@@ -97,7 +97,7 @@ void func_global_asm_80712FC8(void) {
 
 void func_global_asm_80713088(void) {
     D_global_asm_8075531C = 0x1E;
-    if (newly_pressed_input_copy[0].new_inputs & A_BUTTON) {
+    if (newly_pressed_input_copy & A_BUTTON) {
         setIntroStoryPlaying(0);
         func_global_asm_80712490(MAP_MAIN_MENU, 0, GAME_MODE_MAIN_MENU);
     }
@@ -107,7 +107,7 @@ void func_global_asm_807130D4(void) {
     if (func_global_asm_8061CB50()) {
         D_global_asm_8075531C = 0x1E;
     }
-    if ((D_global_asm_80755330 == 1) || (D_global_asm_8075531C == 0) || (newly_pressed_input_copy[0].new_inputs & A_BUTTON)) {
+    if ((D_global_asm_80755330 == 1) || (D_global_asm_8075531C == 0) || (newly_pressed_input_copy & A_BUTTON)) {
         setIntroStoryPlaying(0);
         D_global_asm_80755330 = 0;
         func_global_asm_80712490(MAP_MAIN_MENU, 0, GAME_MODE_MAIN_MENU);
@@ -116,7 +116,7 @@ void func_global_asm_807130D4(void) {
 }
 
 void func_global_asm_80713168(void) {
-    if ((D_global_asm_80755334 < 0x1E) || ((newly_pressed_input_copy[0].new_inputs & (A_BUTTON | START_BUTTON)) == 0)) {
+    if ((D_global_asm_80755334 < 0x1E) || ((newly_pressed_input_copy & (A_BUTTON | START_BUTTON)) == 0)) {
         if (D_global_asm_8075531C == 0) {
             block_3:
             func_global_asm_807124B8(MAP_NINTENDO_LOGO, 0, GAME_MODE_OPENING_CUTSCENE);

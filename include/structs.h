@@ -2890,23 +2890,4 @@ typedef struct {
     f32 unk8;
 } RaceStruct3;
 
-typedef struct UnkInputStruct {
-    u16 new_inputs;
-    u16 unk2;
-    u16 unk4;
-    u16 unk6;
-    u16 unk8;
-    u16 unkA;
-    u16 unkC;
-    u16 unkE;
-    u16 unk10;
-    u16 unk12;
-    u16 unk14;
-    u16 unk16;
-    u16 unk18;
-    u16 unk1A;
-    u16 unk1C;
-    u16 unk1E;
-} UnkInputStruct;
-
 #endif

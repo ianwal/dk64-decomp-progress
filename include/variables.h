@@ -28,7 +28,7 @@ extern u8 is_cutscene_active;
 extern u8 game_mode;
 extern u8 game_mode_copy;
 extern u16 newly_pressed_input[];
-extern UnkInputStruct newly_pressed_input_copy[];
+extern u16 newly_pressed_input_copy;
 extern Struct807FDC90 *D_global_asm_807FDC90; // Array?
 extern CharacterSpawner *D_global_asm_807FDC9C; // Character spawner array
 extern s32 object_timer;

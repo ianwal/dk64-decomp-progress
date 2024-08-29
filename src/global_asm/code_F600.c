@@ -103,7 +103,7 @@ void func_global_asm_80712944(OSContPad *);
 extern u16 D_807ECD40[];
 extern u16 D_807ECD50[];
 extern OSContPad D_807ECD60;
-extern u16 D_807ECD68;
+extern u16 D_807ECD68[0x10];
 extern u8 D_global_asm_807467C4;
 extern s8 D_global_asm_80746834;
 extern u8 D_global_asm_8076A0B1;
@@ -186,7 +186,7 @@ void func_global_asm_8060AC7C(void) {
     }
     temp_a1 = var_t0->button;
     // Anti-tamper
-    newly_pressed_input_copy[0].new_inputs = (temp_a1 ^ D_807ECD60.button) & temp_a1;
+    newly_pressed_input_copy = (temp_a1 ^ D_807ECD60.button) & temp_a1;
     var_v1 = 0;
     for (var_v0_2 = &func_global_asm_80611730; var_v0_2 < (s32 *)func_global_asm_80611844; var_v0_2++) {
         var_v1 += *var_v0_2;

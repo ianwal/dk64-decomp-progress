@@ -1359,7 +1359,7 @@ void func_menu_8002D8AC(Actor *arg0, s32 arg1) {
         func_menu_8002FE08(aaD, D_menu_800338FC);
     }
     func_menu_8002FC1C(arg0, aaD, 1);
-    if (newly_pressed_input_copy[0].new_inputs & (U_CBUTTONS | D_CBUTTONS)) {
+    if (newly_pressed_input_copy & (U_CBUTTONS | D_CBUTTONS)) {
         D_global_asm_80744544 ^= 0x100;
     }
     if (optionChanged) {
