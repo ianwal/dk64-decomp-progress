@@ -21,23 +21,27 @@ static const u32 D_global_asm_8075DC20[] = {
 };
 
 typedef struct {
-    u8 unk0[0x17C - 0x0];
-    s16 unk17C;
-    u8 unk17E;
+    s16 x_start;
+    u8 width;
+    u8 unk3;
+} Struct80754A18_inner;
+
+typedef struct {
+    Struct80754A18_inner character[96];
 } Struct80754A18;
 
 typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    u8 unk4;
-    u8 unk5;
+    u8 width;
+    u8 file_count;
+    u8 height;
+    u8 kerning_space;
+    u8 kerning_character;
+    u8 kerning_animation;
 } Struct80754A34;
 
 extern void **D_global_asm_807FD7F0; // Array of 43 texture pointers
 extern u8 *D_global_asm_807FD7F4; // Array of 43 u8's
-extern Struct80754A18 *D_global_asm_80754A18;
+extern Struct80754A18 *D_global_asm_80754A18[7];
 extern Struct80754A34 D_global_asm_80754A34[];
 
 s32 func_global_asm_806FB490(u8, s32, s32, s16, s32, s8 *, s32);
@@ -59,7 +63,7 @@ void func_global_asm_806FB8B0(s32 arg0) {
 
     sp2F = 0;
     func_global_asm_806FBB9C(2);
-    func_global_asm_806FB490(D_global_asm_80754A18->unk17E, arg0, D_global_asm_807FD7F0[2], D_global_asm_80754A18->unk17C, 2, &sp2F, 0x30);
+    func_global_asm_806FB490(D_global_asm_80754A18[0]->character[0x5F].width, arg0, D_global_asm_807FD7F0[2], D_global_asm_80754A18[0]->character[0x5F].x_start, 2, &sp2F, 0x30);
 }
 
 // Jumptable, doable, string processing
@@ -86,7 +90,7 @@ void func_global_asm_806FBC34(void) {
 
     i = 0;
     for (j = 0; j < 8; j++) {
-        for (k = 0; k < D_global_asm_80754A34[j].unk1; k++) {
+        for (k = 0; k < D_global_asm_80754A34[j].file_count; k++) {
             if (D_global_asm_807FD7F4[i++]) {
                 if (--D_global_asm_807FD7F4[i - 1] == 0) {
                     func_global_asm_8066B434(D_global_asm_807FD7F0[i - 1], 0x156, 0x23);
@@ -113,7 +117,7 @@ s16 func_global_asm_806FBEAC(u8 *arg0) {
 Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2) {
     s16 textureIndex;
 
-    textureIndex = (D_global_asm_80754A34[arg1].unk0 + arg2) - 1;
+    textureIndex = (D_global_asm_80754A34[arg1].width + arg2) - 1;
     func_global_asm_806FBB9C(textureIndex);
     switch (arg1) {
         case 6:
@@ -198,9 +202,36 @@ Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FD7A8.s")
 
+s32 func_global_asm_806FB914(s16, u8 *, s32);
+/*
+s16 func_global_asm_806FD7A8(s16 arg0, u8 arg1) {
+    Struct80754A34 *var_a0;
+    Struct80754A18 *text_data;
+    s32 temp_a2;
+    u8 var_v1;
+    s32 val;
+
+    temp_a2 = arg0;
+    if (arg0 & 0x80) {
+        var_a0 = &D_global_asm_80754A34[(s16) (arg0 ^ 0x80)];
+        var_v1 = var_a0->kerning_animation;
+    } else if (arg1 == ' ') {
+        var_a0 = &D_global_asm_80754A34[temp_a2];
+        var_v1 = var_a0->kerning_space;
+    } else {
+        val = func_global_asm_806FB914(temp_a2, &arg1, temp_a2);
+        text_data = D_global_asm_80754A18[arg1];
+        var_v1 = text_data->character[temp_a2].width;
+        var_a0 = &D_global_asm_80754A34[temp_a2];
+    }
+    return var_v1 + var_a0->kerning_character;
+}
+*/
+
+
 u8 func_global_asm_806FD894(s16 arg0) {
     if (arg0 & 0x80) {
         arg0 ^= 0x80;
     }
-    return D_global_asm_80754A34[arg0].unk2;
+    return D_global_asm_80754A34[arg0].height;
 }

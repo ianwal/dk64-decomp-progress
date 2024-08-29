@@ -414,9 +414,9 @@ void func_global_asm_805FF4D8(Maps map, s32 exit) {
 }
 
 typedef struct {
-    Maps unk0; // Map
-    Maps unk4; // Map
-    s32 unk8; // Exit
+    Maps race_map; // Map
+    Maps container_map; // Map
+    s32 container_exit; // Exit
 } GlobalASMStruct42;
 
 // TODO: Use map enums
@@ -434,8 +434,8 @@ extern GlobalASMStruct42 D_global_asm_807447A0[]; // = {
 void func_global_asm_805FF544(void) {
     s32 i;
     for (i = 0; i < 8; i++) {
-        if (current_map == D_global_asm_807447A0[i].unk0) {
-            func_global_asm_805FF378(D_global_asm_807447A0[i].unk4, D_global_asm_807447A0[i].unk8);
+        if (current_map == D_global_asm_807447A0[i].race_map) {
+            func_global_asm_805FF378(D_global_asm_807447A0[i].container_map, D_global_asm_807447A0[i].container_exit);
             return;
         }
     }

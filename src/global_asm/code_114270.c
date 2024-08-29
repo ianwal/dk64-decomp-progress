@@ -535,5 +535,35 @@ void func_global_asm_80712944(OSContPad *arg0) {
     }
 }
 
-// osGetTime stuff, probably timestamp maths
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80712A40.s")
+void func_global_asm_806119F0(u32);
+extern OSTime D_global_asm_807445B8;
+extern OSTime D_global_asm_807445C0;
+extern s8 D_global_asm_80746B60;
+extern s32 D_global_asm_80755320;
+extern s8 D_global_asm_80755324;
+
+void func_global_asm_80712A40(void) {
+    OSTime delta;
+
+    func_global_asm_8060B6CC();
+    if ((game_mode == 3) || (game_mode == 4)) {
+        func_global_asm_806119F0(0x8E32B6F7U);
+        D_global_asm_80746B60 = 1;
+    } else {
+        func_global_asm_806119F0(osGetTime());
+        D_global_asm_80746B60 = 0;
+    }
+    D_global_asm_8075530C = 0;
+    D_global_asm_80755310 = 0;
+    game_mode_copy = game_mode;
+    D_global_asm_80755324 = 0;
+    D_global_asm_80755320 = 0;
+    if (global_properties_bitfield & 2) {
+        delta = osGetTime() - D_global_asm_807445C0;
+        D_global_asm_807445B8 += delta;
+        if (D_global_asm_80755340.unk10 != 0) {
+            D_global_asm_80755340.unk0 += delta;
+        }
+    }
+}
+
