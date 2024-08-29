@@ -570,7 +570,7 @@ extern s8 D_global_asm_807563B4; // Enable stack trace upon crash
 // Button code on controller to enable stack trace upon crash
 // Accessible from the sound menu
 void func_menu_8002907C(void) {
-    if (D_menu_8003381C[D_menu_80033818] == *(u16*)(&newly_pressed_input.button)) {
+    if (D_menu_8003381C[D_menu_80033818] == *(u16*)(&newly_pressed_input[0])) {
         D_menu_80033818 = D_menu_80033818 + 1;
         if (D_menu_80033818 > 6U) {
             D_global_asm_807563B4 = TRUE;
@@ -578,7 +578,7 @@ void func_menu_8002907C(void) {
             D_menu_80033818 = 0;
         }
     } else {
-        if (newly_pressed_input.button != 0) {
+        if (newly_pressed_input[0] != 0) {
             D_menu_80033818 = 0;
         }
     }

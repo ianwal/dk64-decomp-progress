@@ -79,7 +79,7 @@ void func_global_asm_80712FC8(void) {
     Maps map;
     s32 exit;
 
-    if ((D_global_asm_80755334 >= 0x5A) && (newly_pressed_input.button & START_BUTTON)) {
+    if ((D_global_asm_80755334 >= 0x5A) && (newly_pressed_input[0] & START_BUTTON)) {
         func_global_asm_80712EDC();
         return;
     }
@@ -138,13 +138,13 @@ void func_global_asm_807131BC(void) {
 }
 
 void func_global_asm_8071321C(void) {
-    if ((D_global_asm_8075531C == 0) || ((D_global_asm_80755334 >= 0xA) && (newly_pressed_input.button & START_BUTTON))) {
+    if ((D_global_asm_8075531C == 0) || ((D_global_asm_80755334 >= 0xA) && (newly_pressed_input[0] & START_BUTTON))) {
         func_global_asm_807131BC();
     }
 }
 
 void func_global_asm_80713270(void) {
-    if ((D_global_asm_80755324 != 0) || ((game_mode_copy == GAME_MODE_OPENING_CUTSCENE) && (D_global_asm_80755334 >= 0x5A) && newly_pressed_input.button & START_BUTTON)) {
+    if ((D_global_asm_80755324 != 0) || ((game_mode_copy == GAME_MODE_OPENING_CUTSCENE) && (D_global_asm_80755334 >= 0x5A) && newly_pressed_input[0] & START_BUTTON)) {
         func_global_asm_807124B8(MAP_DK_RAP, 0, GAME_MODE_DK_RAP);
     }
 }

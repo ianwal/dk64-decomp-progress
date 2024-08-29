@@ -743,7 +743,7 @@ void func_global_asm_806ACCE8(void) {
     if (current_actor_pointer->unk168 != 0) {
         current_actor_pointer->unk168--;
     } else if (current_actor_pointer->control_state == 0) {
-        if (D_global_asm_807ECD58.unk0 & 0x8000) {
+        if (D_global_asm_807ECD58.button & 0x8000) {
             switch (current_actor_pointer->unk15F) {
                 case 2:
                     playCutscene(NULL, 0x20, 1);
@@ -759,7 +759,7 @@ void func_global_asm_806ACCE8(void) {
                     break;
             }
             current_actor_pointer->control_state = 1;
-        } else if (D_global_asm_807ECD58.unk0 & 0x4000) {
+        } else if (D_global_asm_807ECD58.button & 0x4000) {
             switch (current_actor_pointer->unk15F) {
                 case 3:
                 case 4:

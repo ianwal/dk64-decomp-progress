@@ -25460,7 +25460,7 @@ void func_arcade_80024E84(Gfx **arg0) {
     if (D_arcade_8004C6DC & 0x200) {
         func_arcade_8002B2C0(&sp24);
     }
-    if (D_arcade_8004A740 && D_arcade_8004C6DC == 0x5FE || newly_pressed_input.button & (A_BUTTON | START_BUTTON)) {
+    if (D_arcade_8004A740 && D_arcade_8004C6DC == 0x5FE || newly_pressed_input[0] & (A_BUTTON | START_BUTTON)) {
         arcade_current_score = 0;
         D_arcade_8004C723 = 0;
         arcade_lives_internal = 2;
@@ -25570,7 +25570,7 @@ void func_arcade_800252D8(Gfx **arg0) {
         if (arcade_background_visual == 4) {
             func_arcade_800311E0(); //50m_pie_spawn_check
         }
-        if (newly_pressed_input.button & START_BUTTON) {
+        if (newly_pressed_input[0] & START_BUTTON) {
             func_arcade_8002549C();
             D_arcade_8004C724 = 4;
         }
@@ -25610,12 +25610,12 @@ void func_arcade_800255F4(Gfx **arg0) {
     sp2C = *arg0;
     func_arcade_800259D0(&sp2C);
     func_arcade_8002B2C0(&sp2C);
-    if (newly_pressed_input.button & U_JPAD
+    if (newly_pressed_input[0] & U_JPAD
         || (D_global_asm_807ECDE8->unk3 >= 0x1F && D_arcade_8004C70C < 0x1F)
     ) {
         D_arcade_8004A768--;
     }
-    if (newly_pressed_input.button & D_JPAD
+    if (newly_pressed_input[0] & D_JPAD
         || (D_global_asm_807ECDE8->unk3 < -0x1E && D_arcade_8004C70C >= -0x1E)
     ) {
         D_arcade_8004A768++;
@@ -25629,12 +25629,12 @@ void func_arcade_800255F4(Gfx **arg0) {
         D_arcade_8004A768 = 2;
     }
     D_arcade_8004C70C = D_global_asm_807ECDE8->unk3;
-    if (newly_pressed_input.button & CONT_START) {
+    if (newly_pressed_input[0] & CONT_START) {
         func_arcade_800255A8();
         D_arcade_8004C724 = 5;
     }
 
-    if (newly_pressed_input.button & (CONT_A | CONT_B)) {
+    if (newly_pressed_input[0] & (CONT_A | CONT_B)) {
         switch (D_arcade_8004A768) {
             case 0:
                 func_arcade_800255A8();
@@ -27160,7 +27160,7 @@ void func_arcade_8002B89C(s32 arg0) {
             } else {
                  sp30->x_velocity = 0.0f;
             }//L8002BA5C
-            if (newly_pressed_input.button & (A_BUTTON | B_BUTTON | Z_TRIG) && !D_arcade_8004C710) {
+            if (newly_pressed_input[0] & (A_BUTTON | B_BUTTON | Z_TRIG) && !D_arcade_8004C710) {
                 func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7fff, 0x3F, 1.0f, 0, 0);
                 sp30->unk10 = 0.0f;
                 sp30->y_velocity = -1.2f;
@@ -27243,7 +27243,7 @@ void func_arcade_8002B89C(s32 arg0) {
                        sp30->unk19 = 2;
                     } else if (
                         sp40 == sp30->y_position 
-                        && newly_pressed_input.button & (A_BUTTON | B_BUTTON | Z_TRIG)
+                        && newly_pressed_input[0] & (A_BUTTON | B_BUTTON | Z_TRIG)
                     ) {//L8002C198
                         func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7fff, 0x3f, 1.0f, 0, NULL);
                         sp30->unk10 = 0.0f;
@@ -28437,7 +28437,7 @@ void func_arcade_80030CEC(u8 arg0) {
     a0 = arcade_objects[arg0].unk1D;
     arcade_objects[arg0].x_position = (f32) (((a0 % 0x10) * 0x10) + 0x54);
     arcade_objects[arg0].y_position = (f32) (((s32) ((a0 / 0xA) << 7) / 7) + 0x4A);
-    if (newly_pressed_input.button & A_BUTTON) {
+    if (newly_pressed_input[0] & A_BUTTON) {
         if ((a0 = 0x1D) || (D_arcade_8004C6DC == 0x708)) {
             D_arcade_8004C6DC = 0x744;
             arcade_objects[arg0].unk19 = 4;

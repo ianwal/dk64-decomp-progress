@@ -218,8 +218,8 @@ void func_critter_80027448(void) {
                 break;
         }
         D_critter_8002A1B0 = d;
-        if (newly_pressed_input.button != 0) {
-            if (D_critter_80029F90[D_critter_80029F80[0]] & newly_pressed_input.button) {
+        if (newly_pressed_input[0] != 0) {
+            if (D_critter_80029F90[D_critter_80029F80[0]] & newly_pressed_input[0]) {
                 D_critter_80029F80[0]++;
                 if (D_critter_80029F80[0] == 4) {
                     D_critter_80029F80[0] = 0;
@@ -393,7 +393,7 @@ void func_critter_80028120(void) {
             break;
         case 0x64:
             if ((((dx * dx) + (dz * dz)) < 2500.0f) != 0) {
-                if (newly_pressed_input.button & 0x8000) {
+                if (newly_pressed_input[0] & 0x8000) {
                     playCutscene(current_actor_pointer, 4, 1);
                     func_global_asm_80629174();
                     current_actor_pointer->control_state = 0x65;

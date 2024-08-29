@@ -381,12 +381,12 @@ void func_global_asm_806A5868(void) {
                     if (newly_pressed_input_copy & B_BUTTON) {
                         aaD->unk55 |= 1;
                     }
-                    if (D_global_asm_807ECD58.unk0 & Z_TRIG) {
+                    if (D_global_asm_807ECD58.button & Z_TRIG) {
                         aaD->unk55 |=  2;
                     } else {
                         aaD->unk55 &= 0xFFFD;
                     }
-                    if (!(aaD->unk55 & 2) && (D_global_asm_807ECD58.unk0 == A_BUTTON)) {
+                    if (!(aaD->unk55 & 2) && (D_global_asm_807ECD58.button == A_BUTTON)) {
                         aaD->unk55 |= 4;
                     } else {
                         aaD->unk55 &= 0xFFFB;

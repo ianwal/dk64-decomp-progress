@@ -129,7 +129,7 @@ void func_bonus_8002D2F0(void) {
                     loadText(current_actor_pointer, 0, textIndex);
                     current_actor_pointer->control_state = 1;
                     func_global_asm_806A2A10(0xDC, 0x2A, aaD->unk4);
-                } else if ((D_global_asm_807ECD58.unk0 & 0x8000) && !(D_807ECD60 & 0x8000)) {
+                } else if ((D_global_asm_807ECD58.button & 0x8000) && !(D_807ECD60 & 0x8000)) {
                     playCutscene(player_pointer, 1, 1);
                     current_actor_pointer->control_state = 2;
                     func_global_asm_806A2A10(0xDC, 0x2A, aaD->unk4);
@@ -138,7 +138,7 @@ void func_bonus_8002D2F0(void) {
             }
             break;
         case 1:
-            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000) || ((D_global_asm_807ECD58.unk0 & 0x8000) && !(D_807ECD60 & 0x8000))) {
+            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000) || ((D_global_asm_807ECD58.button & 0x8000) && !(D_807ECD60 & 0x8000))) {
                 func_global_asm_8061CB08();
                 current_actor_pointer->control_state = 2;
                 func_global_asm_806A2B08(current_actor_pointer->unk11C);
