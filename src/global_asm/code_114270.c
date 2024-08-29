@@ -46,7 +46,7 @@ extern u8 D_global_asm_807FDA1C;
 extern u8 D_global_asm_807FDA28;
 extern s8 D_global_asm_807FDA30[];
 
-void func_global_asm_8060AC34(GlobalASMStruct12*);
+void func_global_asm_8060AC34(console_inputs *);
 
 void func_global_asm_8070F570(void) {
     s16 i;
@@ -524,25 +524,10 @@ void func_global_asm_80712830(Actor *arg0, s32 exit) {
     }
 }
 
-typedef struct input_controller_struct {
-    /* 0x000 */ u16 buttons;
-    /* 0x002 */ s8 x;
-    /* 0x003 */ s8 y;
-} input_controller_struct;
-
-typedef struct input_struct {
-    /* 0x000 */ input_controller_struct controller;
-    /* 0x004 */ s16 unk4;
-} input_struct;
-
-typedef struct console_inputs {
-    /* 0x000 */ input_struct player[4];
-} console_inputs;
-
 void func_global_asm_80712944(console_inputs *arg0) {
     s32 i;
     
-    func_global_asm_8060AC34((GlobalASMStruct12*) arg0); // wrapper for subdragHookFunction()
+    func_global_asm_8060AC34(arg0); // wrapper for subdragHookFunction()
     for (i = 0; i < 4; i++) {
         arg0->player[i].controller.x &= D_global_asm_8075530C;
         arg0->player[i].controller.y &= D_global_asm_80755310;

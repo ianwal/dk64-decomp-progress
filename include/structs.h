@@ -1965,23 +1965,20 @@ typedef struct {
 } Struct8073BC74;
 
 // func_global_asm_80712944, func_global_asm_8060AC34
-typedef struct global_asm_struct_12 {
-    u16 unk0;
-    s8 unk2;
-    s8 unk3;
-    s16 unk4;
-    u16 unk6;
-    s8 unk8;
-    s8 unk9;
-    u16 unkA;
-    u16 unkC;
-    s8 unkE;
-    s8 unkF;
-    u16 unk10;
-    u16 unk12;
-    s8 unk14;
-    s8 unk15;
-} GlobalASMStruct12;
+typedef struct input_controller_struct {
+    /* 0x000 */ u16 buttons;
+    /* 0x002 */ s8 x;
+    /* 0x003 */ s8 y;
+} input_controller_struct;
+
+typedef struct input_struct {
+    /* 0x000 */ input_controller_struct controller;
+    /* 0x004 */ s16 unk4;
+} input_struct;
+
+typedef struct console_inputs {
+    /* 0x000 */ input_struct player[4];
+} console_inputs;
 
 typedef struct {
     u8 pad0[0x2 - 0x0];
