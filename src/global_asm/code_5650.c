@@ -3,13 +3,11 @@
 
 typedef struct DelayedCSData DelayedCSData;
 
-struct DelayedCSData{
+struct DelayedCSData {
     DelayedCSData* next;
     s32 (*function)(s32 a, s32 b, s32 c); 
     s32 action_frame;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
+    s32 args[3];
 };
 
 extern DelayedCSData *D_global_asm_807452A0;
@@ -29,68 +27,66 @@ void* func_global_asm_8060095C(s32 arg0, s32 *arg1, s32 *arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5650/func_global_asm_8060098C.s")
 
 /*
-void func_global_asm_8060098C(void *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    DelayedCSData *sp40;
-    DelayedCSData *sp3C;
-    s32 sp30;
-    s32 sp28;
-    s32 sp24;
-    DelayedCSData *temp_v0;
-    DelayedCSData *var_t0;
+very close, regalloc and 2 instructions swapped around
+void func_global_asm_8060098C(void *func, s32 time_delta, s32 arg2, s32 arg3, s32 arg4) {
     DelayedCSData *var_v0;
-    DelayedCSData *var_v1;
-    s32 temp_t9;
+    DelayedCSData *local;
+    DelayedCSData *sp3C;
+    s32 frame;
     u32 temp_a0;
+    s32 sp30;
     s32 (* func_def)(s32, void*);
+    u32 sp28;
+    u32 sp24;
+    DelayedCSData *current;
 
     sp3C = NULL;
-    temp_v0 = malloc(0x18);
-    sp28 = -0x390F5057;
+    local = malloc(sizeof(DelayedCSData));
+    sp28 = 0xC6F0AFA9;
     sp24 = 0x5FAFBA0C;
-    sp40 = temp_v0;
-    func_def = func_global_asm_8060095C((s32) ((s32)osPiReadIo + 0xC000FF01), &sp28, &sp24);
+    local = local;
+    func_def = func_global_asm_8060095C(((s32)osPiReadIo + 0xC000FF01), &sp28, &sp24);
     func_def(sp24, &sp30);
-    var_t0 = sp3C;
     if (sp30 != sp28) {
-        arg1 *= 2;
+        time_delta *= 2;
     }
-    sp40->function = arg0;
-    sp40->unkC = arg2;
-    sp40->unk10 = arg3;
-    sp40->unk14 = arg4;
-    sp40->next = NULL;
-    temp_t9 = D_global_asm_8076A068 + arg1;
-    sp40->action_frame = temp_t9;
-    var_v1 = D_global_asm_807452A0;
-    if (var_v1 != NULL) {
-        var_v0 = var_v1->next;
-        if (var_v0 != NULL) {
-            temp_a0 = temp_t9 & 0x7FFFFFFF;
-            if (temp_a0 >= (u32) (var_v1->action_frame & 0x7FFFFFFF)) {
+    local->function = func;
+    local->unkC = arg2;
+    local->unk10 = arg3;
+    local->unk14 = arg4;
+    frame = time_delta + D_global_asm_8076A068;
+    local->action_frame = frame;
+    local->next = NULL;
+    current = D_global_asm_807452A0;
+    if (current) {
+        var_v0 = current->next;
+        if (var_v0) {
+            temp_a0 = (frame) & 0x7FFFFFFF;
+            if (temp_a0 >= (u32) (current->action_frame & 0x7FFFFFFF)) {
 loop_5:
-                var_t0 = var_v1;
-                var_v1 = var_v0;
+                sp3C = current;
+                current = var_v0;
                 var_v0 = var_v0->next;
-                if (var_v0 != NULL) {
-                    if (temp_a0 >= (u32) (var_v1->action_frame & 0x7FFFFFFF)) {
+                if (var_v0) {
+                    if (temp_a0 >= (u32) (current->action_frame & 0x7FFFFFFF)) {
                         goto loop_5;
                     }
                 }
             }
         }
-        if ((u32) (sp40->action_frame & 0x7FFFFFFF) < (u32) (var_v1->action_frame & 0x7FFFFFFF)) {
-            sp40->next = var_v1;
-            if (var_t0 != NULL) {
-                var_t0->next = sp40;
+        if ((u32) (local->action_frame & 0x7FFFFFFF) < (u32) (current->action_frame & 0x7FFFFFFF)) {
+            local->next = current;
+            if (sp3C) {
+                sp3C->next = local;
                 return;
             }
-            goto block_12;
+            D_global_asm_807452A0 = local;
+            return;
         }
-        var_v1->next = sp40;
+        current->next = local;
         return;
     }
-block_12:
-    D_global_asm_807452A0 = sp40;
+    D_global_asm_807452A0 = local;
 }
 */
 
@@ -102,7 +98,7 @@ void func_global_asm_80600B10(void) {
     var_s1 = 0;
     while (var_s0 != NULL && !var_s1) {
         if (D_global_asm_8076A068 >= (var_s0->action_frame & 0x7FFFFFFF)) {
-            var_s0->function(var_s0->unkC, var_s0->unk10, var_s0->unk14);
+            var_s0->function(var_s0->args[0], var_s0->args[1], var_s0->args[2]);
             free(var_s0);
             var_s0 = var_s0->next;
         } else {
