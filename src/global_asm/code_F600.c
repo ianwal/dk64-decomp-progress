@@ -72,12 +72,14 @@ u8 func_global_asm_8060AC28(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_global_asm_8060AC34.s")
 
 /*
-// TODO: They're using some stack, we're not, not sure why
-void func_global_asm_8060AC34(OSContPad* arg0) {
-    if ((D_global_asm_807467C4 == 0) && (D_global_asm_807ECD08 != 0)) {
-        func_dk64_boot_80007454(arg0); // subdrag hook function
+void func_global_asm_8060AC34(OSContPad *arg0) {
+    u8 * unk0;
+    
+    unk0 = &D_global_asm_807ECD08;
+    if ((!D_global_asm_807467C4) && (*unk0)) {
+        func_dk64_boot_80007454(arg0);
     }
-    D_global_asm_807ECD08 = 0;
+    *unk0 = 0;
 }
 */
 
