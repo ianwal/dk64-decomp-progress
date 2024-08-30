@@ -91,4 +91,4 @@ void func_boss_80030E58(void) {
 }
 
 // Jumptable, 3036 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_C920/func_boss_80030EC4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolChunky/func_boss_80030EC4.s")

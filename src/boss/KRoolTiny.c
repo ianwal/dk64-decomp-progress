@@ -72,7 +72,7 @@ const s32 D_boss_80036968[] = {
 };
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_B100/func_boss_8002F100.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolTiny/func_boss_8002F100.s")
 
 void func_boss_8002FB7C(u8 arg0) {
     AnimationStateUnk20 *temp_v0;
@@ -93,7 +93,7 @@ void func_boss_8002FC48(Actor *arg0, u8 arg1) {
 }
 
 // rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_B100/func_boss_8002FC98.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolTiny/func_boss_8002FC98.s")
 
 typedef struct {
     s32 unk0[4];
@@ -165,7 +165,7 @@ void func_boss_8002FEC0(Actor* toes[], u8 toeIndex, s32 modelIndex) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_B100/func_boss_8002FF74.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolTiny/func_boss_8002FF74.s")
 
 void func_boss_80030888(void) {
     Actor* temp;

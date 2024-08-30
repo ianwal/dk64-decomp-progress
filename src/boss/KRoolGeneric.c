@@ -111,7 +111,7 @@ void func_boss_80027A30(Struct80027A30_arg0 *arg0, u8 *arg1) {
 }
 
 // Jumptable, 2224 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_3840/func_boss_80027BA8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolGeneric/func_boss_80027BA8.s")
 
 void func_boss_80028458(void) {
     func_global_asm_805FF8F8();

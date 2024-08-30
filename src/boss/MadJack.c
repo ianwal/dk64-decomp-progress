@@ -34,7 +34,7 @@ const f32 D_boss_80036C40[] = {
 };
 
 // close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_boss_800330D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/MadJack/func_boss_800330D0.s")
 
 extern u8 D_boss_80035B80[4];
 
@@ -176,7 +176,7 @@ void func_boss_800336C0(void) {
 }
 
 // Oof, I had a crack at this one but it's very fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_boss_80033784.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/MadJack/func_boss_80033784.s")
 
 typedef struct {
     u8 unk0;
@@ -217,7 +217,8 @@ void func_boss_80033A80(s8 arg0) {
 }
 
 // Jumptable, 7276 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_F0D0/func_boss_80033AF0.s")
+// Mad Jack
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/MadJack/func_boss_80033AF0.s")
 
 void func_boss_8003575C(void) {
     f32 dx, dz;

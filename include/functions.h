@@ -4181,7 +4181,7 @@ Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1);
 // TODO: func_critter_80029118 has no documented signature
 Gfx *func_critter_800296DC(Gfx *dl, Actor *arg1);
 
-// boss/code_0.c
+// boss/ArmyDillo.c
 // TODO: func_boss_80024000 has no documented signature
 // TODO: func_boss_8002413C has no documented signature
 void func_boss_80024300(void);
@@ -4197,7 +4197,7 @@ void func_boss_800253AC(void);
 // TODO: func_boss_800254D0 has no documented signature
 void func_boss_80027770(void);
 
-// boss/code_3840.c
+// boss/KRoolGeneric.c
 void func_boss_80027840(u8 *arg0);
 // TODO: func_boss_800278F4 has no documented signature but has been matched
 // TODO: func_boss_80027950 has no documented signature but has been matched
@@ -4214,12 +4214,12 @@ void func_boss_800290D4(u8 arg0);
 void func_boss_80029140(s16* arg0);
 void func_boss_8002920C(void);
 
-// boss/code_52B0.c
+// boss/Pufftoss.c
 void func_boss_800292B0(f32 arg0);
 void func_boss_800293C0(void);
 // TODO: func_boss_80029468 has no documented signature
 
-// boss/code_6240.c
+// boss/Dogadon.c
 // TODO: func_boss_8002A240 has no documented signature
 void func_boss_8002A41C(u8 arg0);
 void func_boss_8002A55C(u8 arg0, f32 arg1);
@@ -4227,7 +4227,7 @@ void func_boss_8002A5CC(void);
 void func_boss_8002A8B8(s32 arg0);
 // TODO: func_boss_8002A92C has no documented signature
 
-// boss/code_8520.c
+// boss/SpiderBoss.c
 void func_boss_8002C520(s16 arg0, s16 arg1, s16 arg2);
 void func_boss_8002C5F4(void);
 void func_boss_8002C748(u8 arg0);
@@ -4235,23 +4235,23 @@ void func_boss_8002C7CC(void);
 void func_boss_8002C8B4(void);
 void func_boss_8002C964(void);
 
-// boss/code_9230.c
+// boss/KRoolDK.c
 // TODO: func_boss_8002D230 has no documented signature
 
-// boss/code_9C60.c
+// boss/KRoolDiddy.c
 void func_boss_8002DC60(void);
 void func_boss_8002DCE0(void);
 void func_boss_8002DD7C(void);
 // TODO: func_boss_8002DE04 has no documented signature
 
-// boss/code_A7A0.c
+// boss/KRoolLanky.c
 void func_boss_8002E7A0(Actor *arg0);
 void func_boss_8002E82C(void);
 void func_boss_8002E9B8(s32 arg0, s16 arg1);
 void func_boss_8002EA14(void);
 // TODO: func_boss_8002EA7C has no documented signature
 
-// boss/code_B100.c
+// boss/KRoolTiny.c
 // TODO: func_boss_8002F100 has no documented signature
 void func_boss_8002FB7C(u8 arg0);
 void func_boss_8002FC48(Actor *arg0, u8 arg1);
@@ -4261,7 +4261,7 @@ void func_boss_8002FEC0(Actor* toes[], u8 toeIndex, s32 modelIndex);
 // TODO: func_boss_8002FF74 has no documented signature
 void func_boss_80030888(void);
 
-// boss/code_C920.c
+// boss/KRoolChunky.c
 void func_boss_80030920(s32 arg0);
 // TODO: func_boss_80030AE0 has no documented signature but has been matched
 void func_boss_80030C30(f32 arg0);
@@ -4269,11 +4269,11 @@ void func_boss_80030D50(void);
 void func_boss_80030E58(void);
 // TODO: func_boss_80030EC4 has no documented signature
 
-// boss/code_DAA0.c
+// boss/KutOut.c
 // TODO: func_boss_80031AA0 has no documented signature
 void func_boss_80032B08(void);
 
-// boss/code_F0D0.c
+// boss/MadJack.c
 // TODO: func_boss_800330D0 has no documented signature
 // TODO: func_boss_8003340C has no documented signature but has been matched
 // TODO: func_boss_800334A4 has no documented signature but has been matched

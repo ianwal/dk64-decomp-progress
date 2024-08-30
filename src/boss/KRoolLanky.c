@@ -86,4 +86,4 @@ void func_boss_8002EA14(void) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_A7A0/func_boss_8002EA7C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolLanky/func_boss_8002EA7C.s")

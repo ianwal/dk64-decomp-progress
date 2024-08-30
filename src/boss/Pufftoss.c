@@ -55,7 +55,7 @@ void func_boss_800293C0(void) {
 
 // Jumptable, doable
 // https://decomp.me/scratch/hG5eF
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_52B0/func_boss_80029468.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/Pufftoss/func_boss_80029468.s")
 
 s32 func_boss_80027BA8(void*, s32, f32);
 typedef struct {

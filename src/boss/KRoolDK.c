@@ -33,4 +33,4 @@ const s32 D_boss_8003669C[] = {
 };
 
 // Jumptable, 2608 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_9230/func_boss_8002D230.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolDK/func_boss_8002D230.s")

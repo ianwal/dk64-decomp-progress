@@ -78,7 +78,7 @@ extern s32 D_global_asm_80720120;
 s32 func_global_asm_80725BA4(s16, s16, s32);
 
 // close
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_6240/func_boss_8002A240.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/Dogadon/func_boss_8002A240.s")
 
 /*
 void func_boss_8002A240(void) {
@@ -181,4 +181,4 @@ void func_boss_8002A8B8(s32 arg0) {
 }
 
 // Jumptable, huge
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_6240/func_boss_8002A92C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/Dogadon/func_boss_8002A92C.s")

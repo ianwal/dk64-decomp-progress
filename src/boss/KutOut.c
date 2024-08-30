@@ -49,10 +49,10 @@ static s16 D_boss_80035B20[] = {
 const u8 D_boss_80036B80[] = {0x3D, 0xCC, 0xCC, 0xCD}; // TODO: Unused?
 
 // Jumptable, 4200 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_DAA0/func_boss_80031AA0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KutOut/func_boss_80031AA0.s")
 
 // rodata, close, doable, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_DAA0/func_boss_80032B08.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/KutOut/func_boss_80032B08.s")
 
 s32 func_global_asm_80614644(Actor *, AnimationStateUnk0 *, f32);
 extern s8 D_boss_80035B28;

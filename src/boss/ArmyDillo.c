@@ -92,7 +92,7 @@ typedef struct {
 s32 func_boss_80024568(Struct8002450C*, u8, f32, f32, f32);
 
 // TODO: Close, just gotta figure out sp48 and D_boss_8003598C
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_boss_80024000.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/ArmyDillo/func_boss_80024000.s")
 
 /*
 typedef struct {
@@ -122,7 +122,7 @@ void func_boss_80024000(void) {
 */
 
 // Flag check, animation state, unrolled loops
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_boss_8002413C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/ArmyDillo/func_boss_8002413C.s")
 
 typedef struct {
     s8 unk0;
@@ -269,7 +269,7 @@ void func_boss_80024524(u8 arg0, s16 arg1) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_boss_80024568.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/ArmyDillo/func_boss_80024568.s")
 
 void func_boss_80024EAC(void) {
     s32 temp_v0;
@@ -372,7 +372,7 @@ void func_boss_800253AC(void) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/code_0/func_boss_800254D0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/boss/ArmyDillo/func_boss_800254D0.s")
 
 void func_boss_80027770(void) {
     u8 boneIndex;
