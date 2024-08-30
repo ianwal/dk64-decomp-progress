@@ -260,6 +260,9 @@ const char D_global_asm_80757188[] = "WARNING!!";
 // const char D_global_asm_8075723C[] = " %05x  NOOP..........\n";
 // const char D_global_asm_80757254[] = "  %05x Undef.............\n";
 
+
+void func_global_asm_8060F960(Struct131B0_2 *, s32);
+
 void func_global_asm_8060F1D0(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {
     func_global_asm_8060F928(arg0, arg1);
     if (arg0->unk274 == 0) {
@@ -286,6 +289,56 @@ void func_global_asm_8060F208(Struct131B0_2 *arg0) {
 
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F54C.s")
+
+s32 func_global_asm_8060F854(Struct131B0_2 *, Struct131B0_2_unk274 *);         
+extern OSTime D_807F04C0;
+extern OSTime D_807F04C8;
+extern OSTime D_807F04D0;
+extern u32 D_807F04E8;
+extern OSTime D_807F0500;
+extern OSTime D_807F0508;
+extern OSTime D_807F0510;
+extern s8 D_global_asm_80746828;
+
+/*
+Close
+void func_global_asm_8060F54C(Struct131B0_2 *arg0) {
+    Struct131B0_2_unk274 *temp_s0;
+    Struct131B0_2_unk268 *temp_v0;
+
+    temp_s0 = arg0->unk274;
+    arg0->unk274 = NULL;
+    if (temp_s0->unk4 == 3) {
+        D_807F04D0 = osGetTime() - D_807F04C0;
+        if (D_807F04D0 > D_807F04C8) {
+            D_807F04C8 = D_807F04D0;
+        }
+        if (osSpTaskYielded(&temp_s0->unk10) == 0) {
+            temp_s0->unk4 = 2;
+            temp_s0->unk8 |= 4;
+            func_global_asm_8060F854(arg0, temp_s0);
+        }
+        func_global_asm_8060F960(arg0, 0);
+        return;
+    }
+    if (temp_s0->unk8 & 0x40) {
+        D_807F04E8 = __ull_div(osGetTime() - arg0->unk290, 0x1E91);
+        D_global_asm_80746828 = 1;
+    } else if (temp_s0->unk10.t.type == 2) {
+        D_807F0510 = osGetTime();
+        D_807F0500 = D_807F0508;
+    }
+    temp_s0->unk4 = 2;
+    temp_s0->unk8 |= 4;
+    if (func_global_asm_8060F854(arg0, temp_s0)) {
+        temp_v0 = arg0->unk268;
+        if ((temp_v0) && (temp_v0->unk8 != 0x47)) {
+            func_global_asm_8060F960(arg0, 1);
+        }
+    }
+}
+*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F730.s")
 

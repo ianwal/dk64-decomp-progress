@@ -2718,16 +2718,28 @@ typedef struct {
     s32 unk8;
     s32 unkC;
     s32 unk10;
+} Struct131B0_2_unk268;
+
+// P Sure this is OSScTask_s
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    OSTask unk10;
 } Struct131B0_2_unk274;
 
 typedef struct {
     u8  pad0[0x260 - 0x0];
     Struct131B0_1 *unk260;
     s32 unk264;
-    s32 unk268;
+    Struct131B0_2_unk268 * unk268;
     Struct131B0_1 *unk26C;
     Struct131B0_1 *unk270;
     Struct131B0_2_unk274 *unk274;
+    u8 pad278[0x290 - 0x278];
+    OSTime unk290;
+
 } Struct131B0_2;
 
 typedef struct {

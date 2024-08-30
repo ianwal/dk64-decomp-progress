@@ -92,6 +92,51 @@ void func_global_asm_805FB944(u8);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FB5C4.s")
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+} Struct80744464;
+
+void __osSpSetStatus(u32);
+extern OSThread D_80761430;
+extern OSTime D_807655E8;
+extern s8 D_global_asm_80744460;
+extern Struct80744464 D_global_asm_80744464;
+#define BUFFER_TIME OS_NSEC_TO_CYCLES(48484843)
+
+/*
+Close
+void func_global_asm_805FB5C4(OSMesgQueue *arg0, s32 arg1) {
+    Struct80744464 sp34;
+    void *sp20;
+    OSTime temp_time;
+    OSTime target_time;
+    OSTime buffer_time;
+
+    sp34 = D_global_asm_80744464;
+    if (arg1 == 2) {
+        osViBlack(1U);
+        func_global_asm_80601CF0(1);
+        D_global_asm_80744460 = 1;
+        while (TRUE) {}
+    }
+    osRecvMesg(arg0, &sp20, 1);
+    D_global_asm_80744460 = 1;
+    func_global_asm_80601CF0(1);
+    osStopThread(&D_80761430);
+    osSetThreadPri(NULL, 0xB);
+    D_807655E8 = osGetTime();
+    while (osGetTime() < D_807655E8 + BUFFER_TIME);
+    osViBlack(1U);
+    __osSpSetStatus(0xAAAA82);
+    osDpSetStatus(0x1D6U);
+    func_global_asm_8060E930();
+    while (TRUE) {}
+}
+*/
+
+
 void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
     s32 sp2C;
 
