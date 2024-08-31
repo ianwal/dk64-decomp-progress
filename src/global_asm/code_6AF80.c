@@ -908,7 +908,7 @@ void func_global_asm_80669A6C(Actor *arg0) {
     f32 sp48;
     f32 sp44;
     s16 sp42;
-    OM2_unk7C *temp_v1;
+    OM2_scriptdata *temp_v1;
 
     sp42 = func_global_asm_80659470(arg0->unk10C);
     if (sp42 != -1) {

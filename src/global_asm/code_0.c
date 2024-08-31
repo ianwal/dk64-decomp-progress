@@ -491,6 +491,73 @@ void func_global_asm_805FC2B0(void) {
 // OSTime stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FC668.s")
 
+void func_global_asm_806FB2B8();                       /* extern */
+extern OSTime D_global_asm_807445B0;
+extern OSTime D_global_asm_807445B8;
+extern OSTime D_global_asm_807445C0;
+extern s8 D_global_asm_807445C8;
+
+/*
+s32 func_global_asm_805FC668(void) {
+    Actor *temp_v0;
+    enum actors_e var_v0;
+    OSTime temp_time;
+
+    if ((current_map == MAP_MAIN_MENU) || ((func_global_asm_80714360() == 0) && (gameIsInAdventureMode() == 0) && (gameIsInMysteryMenuMinigameMode() == 0) && (gameIsInSnidesBonusGameMode() == 0))) {
+        global_properties_bitfield &= ~1;
+    }
+    if (global_properties_bitfield & 2) {
+        if ((global_properties_bitfield & 0x40) && ((gameIsInAdventureMode() != 0) || (gameIsInMysteryMenuMinigameMode() != 0))) {
+            func_global_asm_80602B60(0x22, 0U);
+            global_properties_bitfield &= 0xFFEBFFBD;
+            if (((s32) cc_number_of_players < 2) && (gameIsInMysteryMenuMinigameMode() == 0)) {
+                var_v0 = ACTOR_PAUSE_MENU;
+            } else {
+                var_v0 = ACTOR_PAUSE_MENU_MYSTERY_MENU;
+            }
+            temp_v0 = func_global_asm_8067ADB4(var_v0);
+            if (temp_v0) {
+                deleteActor(temp_v0);
+            }
+            D_global_asm_807445B0 = osGetTime() - D_global_asm_807445C0;
+            func_global_asm_806FB2B8();
+        }
+    } else {
+        D_global_asm_807445B8 += D_global_asm_807445B0;
+        D_global_asm_807445C0 = 0;
+        D_global_asm_807445B0 = 0;
+        if (D_global_asm_807445C8 > 0) {
+            if (!(global_properties_bitfield & 1)) {
+                D_global_asm_807445C8 = 0;
+            } else {
+                if (--D_global_asm_807445C8 <= 0) {
+                    if (((gameIsInAdventureMode() != 0) || (gameIsInMysteryMenuMinigameMode() != 0)) && !(global_properties_bitfield & 0x40000)) {
+                        playSong(0x22, 1.0f);
+                        playSong(0x29, 1.0f);
+                        if ((cc_number_of_players < 2) && (gameIsInMysteryMenuMinigameMode() == 0)) {
+                            spawnActor(ACTOR_PAUSE_MENU, 0);
+                            global_properties_bitfield |= 0x100000;
+                        } else {
+                            spawnActor(ACTOR_PAUSE_MENU_MYSTERY_MENU, 0);
+                        }
+                        last_spawned_actor->unk64 |= 2;
+                    }
+                    D_global_asm_807445C0 = osGetTime();
+                    global_properties_bitfield ^= 1;
+                    global_properties_bitfield |= 2;
+                }
+            }
+        }
+        if ((global_properties_bitfield & 1) && (D_global_asm_807445C8 <= 0)) {
+            func_global_asm_806FB290();
+            D_global_asm_807445C8 = 2;
+        }
+    }
+    return global_properties_bitfield & 2;
+}
+*/
+
+
 extern OSTime D_global_asm_807445B8;
 extern OSTime D_global_asm_807445C0;
 extern u32 D_global_asm_80750AB0;

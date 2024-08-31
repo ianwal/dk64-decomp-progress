@@ -1760,7 +1760,7 @@ void func_global_asm_8063C248(s32 arg0, u8 arg1) {
 }
 
 s32 func_global_asm_8063C2A8(s16 arg0) {
-    OM2_unk7C *temp_v1;
+    OM2_scriptdata *temp_v1;
 
     // TODO: Find a way to get rid of s16 typecast...?
     temp_v1 = D_global_asm_807F6000[(s16)func_global_asm_80659470(arg0)].unk7C;

@@ -1660,7 +1660,7 @@ typedef struct {
 } Model2Model;
 
 typedef struct {
-    s32 unk0;
+    void* unk0;
     u32 unk4;
     f32 unk8;
     f32 unkC;
@@ -1681,7 +1681,7 @@ typedef struct {
     s16 unk42;
     s16 unk44[2];
     u8 unk48[3];
-    u8 unk4B[3];
+    u8 next_state[3];
     s8 unk4E;
     s8 unk4F;
     u8 unk50;
@@ -1728,7 +1728,7 @@ typedef struct {
     s8 unk9B;
     s32 unk9C;
     s32 unkA0;
-} OM2_unk7C;
+} OM2_scriptdata;
 
 typedef struct {
     s32 unk0;
@@ -1841,7 +1841,7 @@ typedef struct object_model2 {
     GlobalASMStruct83 *unk70;
     OM2_unk74 *unk74;
     OM2_unk78 *unk78; // used in func_global_asm_80650AD8, weird format
-    OM2_unk7C *unk7C; // labelled behavior_pointer in ScriptHawk
+    OM2_scriptdata *unk7C; // labelled behavior_pointer in ScriptHawk
     s32 unk80;
     s16 object_type; // at 0x84
     s16 unk86;

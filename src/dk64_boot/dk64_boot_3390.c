@@ -28,7 +28,21 @@ u8 *strcpy(u8 *dest, u8 const *src) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002CE8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002D60.s")
+u8 *func_dk64_boot_80002D60(u8 *str, u8 *ptr) {
+    u8 *temp_v0;
+    u8 *var_s1;
+    u8 character;
+
+    var_s1 = strchr(str, *ptr);
+    while (*ptr) {
+        character = *ptr++;
+        temp_v0 = strchr(str, character);
+        if ((temp_v0) && ((temp_v0 < var_s1) || (!var_s1))) {
+            var_s1 = temp_v0;
+        }
+    }
+    return var_s1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002DE4.s")
 

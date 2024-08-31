@@ -1102,7 +1102,7 @@ void func_global_asm_80647D7C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80648000.s")
 
 /*
-void func_global_asm_80648000(OM2_unk7C *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80648000(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 sp48;
     f32 sp40;
     f32 sp3C;
@@ -1411,6 +1411,20 @@ void func_global_asm_80649F64(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80649FC0.s")
+
+typedef struct {
+    OSTime unk0;
+    s32 unk8;
+    s32 unkC;
+    s32 time_remaining_minutes;
+    s32 time_remaining_seconds;
+    s32 unk18;
+    s32 unk1C;
+} TimerInfo;
+
+extern OSTime D_global_asm_807445B0;
+extern Gfx *func_global_asm_8068DBA4(Gfx *, TimerInfo *);
+
 
 void func_global_asm_8064A180(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
@@ -2424,7 +2438,7 @@ void func_global_asm_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 typedef struct global_asm_struct_7 {
     u8 unk0[0x4B];
-    s8 unk4B;
+    s8 next_state;
 } GlobalASMStruct7;
 
 void func_global_asm_8064EAB4(GlobalASMStruct7 *arg0, s32 arg1, s32 arg2, s32 arg3) {
@@ -2438,7 +2452,7 @@ void func_global_asm_8064EAB4(GlobalASMStruct7 *arg0, s32 arg1, s32 arg2, s32 ar
     numberOfGunSwitchesPressed += isFlagSet(0xE7, FLAG_TYPE_PERMANENT);
     numberOfGunSwitchesPressed += isFlagSet(0xEA, FLAG_TYPE_PERMANENT);
 
-    arg0->unk4B = numberOfGunSwitchesPressed;
+    arg0->next_state = numberOfGunSwitchesPressed;
 }
 
 s32 func_global_asm_8064EB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {

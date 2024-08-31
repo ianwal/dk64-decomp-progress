@@ -665,7 +665,7 @@ typedef struct {
     s32 unk44;
     s16 unk48;
     u8 unk4A;
-    u8 unk4B;
+    u8 next_state;
     u8 unk4C;
     u8 unk4D;
     u8 unk4E;
@@ -699,7 +699,7 @@ s32 func_global_asm_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
     arg1->unk40 = arg0->unk14 * 8.0f;
     arg1->unk44 = arg0->unk20 * 8.0f;
     sp20.unk12 = func_global_asm_8066D4DC(&sp20, &sp20.unk13, arg0);
-    arg1->unk4B = func_global_asm_8066D2F4(&sp20);
+    arg1->next_state = func_global_asm_8066D2F4(&sp20);
     arg1->unk4D = 0;
     arg1->unk4F = 0;
     arg1->unk51 = 0;
