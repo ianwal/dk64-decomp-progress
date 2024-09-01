@@ -74,7 +74,7 @@ segments:
       - [0x6270, hasm, os/writebackdcache]    #DONE
       - [0x62F0, c, dk64_boot_62F0]
       - [0x6360, c, io/viswapbuf]             #DONE
-      - [0x63B0, c, dk64_boot_63B0]
+      - [0x63B0, c, ll]
       - [0x6680, hasm, os/getfpccsr]          #DONE
       - [0x6690, c, gu/nonmatching/usprite]
       - [0x66E0, c, os/stopthread]            #DONE

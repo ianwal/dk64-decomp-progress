@@ -124,7 +124,7 @@ void func_dk64_boot_800055D0(void);
 // dk64_boot/dk64_boot_62F0.c
 void osViSetEvent(OSMesgQueue* mq, OSMesg m, u32 retraceCount);
 
-// dk64_boot/dk64_boot_63B0.c
+// dk64_boot/ll.c
 // TODO: __ull_rshift has no documented signature
 // TODO: __ull_rem has no documented signature
 u64 __ull_div(u64, u64);
