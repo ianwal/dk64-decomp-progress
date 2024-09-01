@@ -4172,7 +4172,7 @@ us,boot,func_dk64_boot_80000980,80,yes
 us,boot,osCreateViManager,384,no
 us,boot,__ll_rem,60,yes
 us,boot,guRotateF,404,no
-us,boot,sprintf,44,no
+us,boot,sprintf,44,yes
 us,boot,func_dk64_boot_80000A30,112,no
 us,boot,guMtxCatF,360,yes
 us,boot,osYieldThread,76,yes
