@@ -3979,7 +3979,7 @@ us,boot,__ull_rem,60,no
 us,boot,guMtxXFMF,160,yes
 us,boot,__osPiRelAccess,44,yes
 us,boot,osViGetCurrentFramebuffer,64,yes
-us,boot,func_dk64_boot_80002ABC,80,no
+us,boot,func_dk64_boot_80002ABC,80,yes
 us,boot,guMtxXFML,96,yes
 us,boot,func_dk64_boot_80002C74,116,yes
 us,boot,osDestroyThread,260,yes
