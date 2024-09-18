@@ -91,24 +91,20 @@ typedef struct {
 
 s32 func_boss_80024568(Struct8002450C*, u8, f32, f32, f32);
 
-// TODO: Close, just gotta figure out sp48 and D_boss_8003598C
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/ArmyDillo/func_boss_80024000.s")
-
-/*
 typedef struct {
-    u16 unk0;
+    u8 unk0[6];
 } Struct80024000;
 
 extern s32 D_global_asm_8071FFA0;
-extern Struct80024000 D_boss_8003598C[];
+extern Struct80024000 D_boss_8003598C;
 
 void func_boss_80024000(void) {
-    Struct80024000 sp48[6];
+    Struct80024000 sp48;
     s16 i;
 
     for (i = 0; i < 6; i++) {
-        sp48[i] = D_boss_8003598C[i];
-        func_global_asm_8067E2E4(current_actor_pointer, sp48[i].unk0, 3.0f);
+        sp48 = D_boss_8003598C;
+        func_global_asm_8067E2E4(current_actor_pointer, sp48.unk0[i], 3.0f);
     }
     for (i = 0; i < 0xC; i++) {
         func_global_asm_8071498C(func_global_asm_8071E864);
@@ -119,7 +115,6 @@ void func_boss_80024000(void) {
         drawSpriteAtPosition(&D_global_asm_8071FFA0, 2.5f, current_actor_pointer->x_position, current_actor_pointer->y_position + 40.0f, current_actor_pointer->z_position);
     }
 }
-*/
 
 // Flag check, animation state, unrolled loops
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/ArmyDillo/func_boss_8002413C.s")
