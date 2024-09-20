@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "voiddeleteactor.h"
 
 void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 

@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "voiddeleteactor.h"
 
 extern Struct807500B4 D_global_asm_807500B4; // TODO: Array?
 extern Struct807500B4 D_global_asm_807500D4; // TODO: D_global_asm_807500D4[1]?

@@ -1473,7 +1473,6 @@ void func_global_asm_80677EC8(s32 arg0);
 s32 spawnActor(Actors actorIndex, s32 modelIndex);
 s32 func_global_asm_80678014(s32 arg0);
 s32 func_global_asm_80678050(u16);
-void deleteActor(Actor *arg0);
 s32 func_global_asm_806782E8(Actor *arg0);
 void func_global_asm_806783BC(void);
 void func_global_asm_80678428(Actor *arg0);
@@ -1906,7 +1905,7 @@ void func_global_asm_806A0330(void);
 void func_global_asm_806A05D4(void);
 void func_global_asm_806A05FC(void);
 void func_global_asm_806A081C(Actor *arg0);
-// TODO: func_global_asm_806A0864 has no documented signature
+void func_global_asm_806A0864(void);
 // TODO: func_global_asm_806A0B74 has no documented signature
 void func_global_asm_806A0F78(Actor *arg0, u8 arg1, u8 arg2);
 void func_global_asm_806A1008(u8 arg0, u8 arg1);

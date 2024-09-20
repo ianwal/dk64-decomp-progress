@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "voiddeleteactor.h"
 
 // TODO: Is there a file split somewhere in here? Rodata messes up around D_bonus_8002DDD4
 //rodata

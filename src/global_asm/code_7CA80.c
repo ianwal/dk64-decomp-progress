@@ -261,9 +261,9 @@ s32 func_global_asm_80678050(u16 arg0) {
 }
 */
 
-void deleteActor(Actor *arg0) {
+s32 deleteActor(Actor *arg0) {
     func_global_asm_806897F0(arg0);
-    func_global_asm_806782E8(arg0);
+    return func_global_asm_806782E8(arg0);
 }
 
 s32 func_global_asm_806782E8(Actor *arg0) {

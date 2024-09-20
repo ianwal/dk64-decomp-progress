@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "voiddeleteactor.h"
 
 typedef struct {
     s16 min_x; // 0

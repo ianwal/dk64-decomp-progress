@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "voiddeleteactor.h"
 
 extern s16 D_boss_80035B00[];
 extern s16 D_boss_80035B08[];

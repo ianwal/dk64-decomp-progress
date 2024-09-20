@@ -327,8 +327,7 @@ typedef struct actor_animation_state {
     s32 unkC;
     s16 unk10;
     s16 unk12;
-    void *bone_array_1; // at 0x14, camera, update bone positions // TODO: Proper type
-    void *bone_array_2; // at 0x18, camera, update bone positions // TODO: Proper type
+    void *bone_arrays[2]; // at 0x14, camera, update bone positions // TODO: Proper type
     AnimationStateUnk1C *unk1C;
     AnimationStateUnk20 *unk20; // See boss func_dk64_boot_8002FB7C
     AnimationStateUnk24 *unk24;
@@ -1208,8 +1207,8 @@ typedef struct {
 typedef struct {
     // Small header on top of DisplayList Pointer
     u8 unk0[0x20 - 0x0];
-    Mtx *unk20;
-    u8 unk24[0x38 - 0x24];
+    u8 unk20;
+    u8 unk21[0x38 - 0x21];
     f32 unk38;
 } Actor_unk0;
 
