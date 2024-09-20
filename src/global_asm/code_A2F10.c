@@ -744,8 +744,7 @@ typedef struct KongReflectionAAD {
     Actor* parent;
     s32 parent_spawn_index;
     enum actors_e parent_actor_type;
-    u8 unkC;
-    u8 unkD;
+    s16 unkC;
     u8 unkE;
     u8 unkF;
 } KongReflectionAAD;
@@ -813,50 +812,41 @@ void func_global_asm_806A0864(void) {
     }
 }
 
-// Matrix stuff, doable, needs actor unk0 shape
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_806A0B74.s")
-
-/*
 void func_global_asm_806A0B74(void) {
     Mtx sp128;
-    f32 sp110;
     f32 spE8[4][4];
     f32 spA8[4][4];
     f32 sp68[4][4];
-    f32 sp58;
-    f32 sp54;
-    f32 sp50;
-    Actor *temp_v0;
-    Actor *temp_v0_2;
-    Actor *temp_v0_3;
-    s32 var_s2;
-    u32 *var_s1;
-    u32 temp_v1;
-    KongReflectionAAD *temp_s0;
+    Actor *parent;
+    s32 i;
+    Mtx *var_s1;
+    f32 x, y, z;
+    KongReflectionAAD *aad;
 
-    temp_v1 = current_actor_pointer->object_properties_bitfield;
-    temp_s0 = current_actor_pointer->additional_actor_data;
-    if (!(temp_v1 & 0x10)) {
-        current_actor_pointer->object_properties_bitfield = temp_v1 | 0x08100000;
-        current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
-        func_global_asm_806131D4(current_actor_pointer, func_global_asm_80613448(current_actor_pointer));
-        temp_s0->parent_spawn_index = current_actor_pointer->unk11C->unk54;
-        temp_s0->parent = current_actor_pointer->unk11C;
-        temp_s0->parent_actor_type = current_actor_pointer->unk11C->unk58;
+    aad = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->object_properties_bitfield |= 0x08100000;
+        current_actor_pointer->object_properties_bitfield &= ~0x8000;
+        func_global_asm_806131D4(current_actor_pointer, 
+            func_global_asm_80613448(current_actor_pointer)
+        );
+        aad->parent_spawn_index = current_actor_pointer->unk11C->unk54;
+        aad->parent = current_actor_pointer->unk11C;
+        aad->parent_actor_type = current_actor_pointer->unk11C->unk58;
     }
-    if ((func_global_asm_8067AF44(temp_s0->parent) == 0) || (temp_v0 = current_actor_pointer->unk11C, (temp_v0->unk54 != temp_s0->parent_spawn_index))) {
+    if ((func_global_asm_8067AF44(aad->parent) == 0) || (aad->parent_spawn_index != current_actor_pointer->unk11C->unk54)) {
         deleteActor(current_actor_pointer);
         func_global_asm_80663BE8(current_actor_pointer);
         return;
     }
-    if ((temp_v0->unk58 != temp_s0->parent_actor_type) || (func_global_asm_8067AE0C(temp_s0->parent) == 0) || !(temp_s0->parent->unk68 & 0x80)) {
+    if ((aad->parent_actor_type != current_actor_pointer->unk11C->unk58) || (func_global_asm_8067AE0C(aad->parent) == 0) || !(aad->parent->unk68 & 0x80)) {
         deleteActor(current_actor_pointer);
         func_global_asm_80663BE8(current_actor_pointer);
-        temp_s0->parent->unk156--;
+        aad->parent->unk156--;
         return;
     }
-    current_actor_pointer->shadow_opacity = temp_s0->unkF;
-    current_actor_pointer->unk146 = current_actor_pointer->unk11C->unk146;
+    current_actor_pointer->shadow_opacity = aad->unkF;
+    current_actor_pointer->unk146_s16 = current_actor_pointer->unk11C->unk146_s16;
     current_actor_pointer->x_position = current_actor_pointer->unk11C->x_position;
     current_actor_pointer->y_position = current_actor_pointer->unk11C->y_position;
     current_actor_pointer->unkA8 = current_actor_pointer->unk11C->unkA8;
@@ -865,33 +855,31 @@ void func_global_asm_806A0B74(void) {
     current_actor_pointer->unk8 = current_actor_pointer->animation_state->bone_arrays[D_global_asm_807444FC];
     memcpy(current_actor_pointer->unk8, current_actor_pointer->unk11C->unk8, current_actor_pointer->unk0->unk20 * sizeof(Mtx));
     guMtxIdentF(&spE8[0][0]);
-    if (temp_s0->unkE & 1) {
+    if (aad->unkE & 1) {
         spE8[0][0] = -1.0f;
-        guTranslateF(&sp68[0], -temp_s0->unkC, 0.0f, 0.0f);
+        guTranslateF(&sp68[0], -aad->unkC, 0.0f, 0.0f);
         guMtxCatF(&sp68[0], &spE8[0], &spE8[0]);
         guMtxF2L(&spE8[0], &sp128);
-        guTranslateF(&sp68[0], temp_s0->unkC, 0.0f, 0.0f);
+        guTranslateF(&sp68[0], aad->unkC, 0.0f, 0.0f);
     } else {
-        sp110 = -1.0f;
-        guTranslateF(&sp68[0], 0.0f, 0.0f, (f32) -temp_s0->unkC);
+        spE8[2][2] = -1.0f;
+        guTranslateF(&sp68[0], 0.0f, 0.0f, (f32) -aad->unkC);
         guMtxCatF(&sp68[0], &spE8[0], &spE8[0]);
         guMtxF2L(&spE8[0], &sp128);
-        guTranslateF(&sp68[0], 0.0f, 0.0f, (f32) temp_s0->unkC);
+        guTranslateF(&sp68[0], 0.0f, 0.0f, (f32) aad->unkC);
     }
-    temp_v0_3 = current_actor_pointer;
-    var_s2 = 0;
-    var_s1 = temp_v0_3->unk8;
-    for (var_s2 = 0; var_s2 < current_actor_pointer->unk0->unk20; var_s2++) {
+    i = 0;
+    var_s1 = current_actor_pointer->unk8;
+    for (i = 0; i < current_actor_pointer->unk0->unk20; i++) {
         guMtxL2F(&spA8[0], var_s1);
         guMtxCatF(&spA8[0], &spE8[0], &spA8[0]);
         guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
         guMtxF2L(&spA8[0], var_s1);
         var_s1++;
     }
-    guMtxXFMF(&spE8[0], temp_v0_3->x_position, temp_v0_3->y_position, temp_v0_3->z_position, &sp58, &sp54, &sp50);
-    guMtxXFMF(&sp68[0], sp58, sp54, sp50, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+    guMtxXFMF(&spE8[0], current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, &x, &y, &z);
+    guMtxXFMF(&sp68[0], x, y, z, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
 }
-*/
 
 void func_global_asm_806A0F78(Actor *arg0, u8 arg1, u8 arg2) {
     func_global_asm_8068842C(arg0, 0, 1);
