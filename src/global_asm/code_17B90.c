@@ -48,13 +48,52 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614644.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614A54.s")
+f32 func_global_asm_80614A54(Actor *arg0) {
+    return arg0->animation_state->unk0->unk4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614A64.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614B34.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614C38.s")
+
+typedef struct Struct80614C38_0 Struct80614C38;
+struct Struct80614C38_0 {
+    void *unk0;
+    void *unk4;
+    u8 unk8;
+    u8 pad9[0x12 - 0x9];
+    Struct80614C38 *next;
+};
+
+typedef struct ActorModelHeader {
+    u8 pad0[0x14];
+    Struct80614C38 * unk14;
+    u8 pad18[0x20 - 0x18];
+    u8 bone_count;
+    u8 pad21[0x28 - 0x21];
+} ActorModelHeader;
+
+/*
+Gfx *func_global_asm_80614C38(Gfx *dl, Actor *arg1, ActorModelHeader *arg2) {
+    u16 hand_state;
+    u32 var_v0;
+    u8 temp_v1;
+    Struct80614C38 *var_s0;
+    void* p_addr;
+
+    var_s0 = arg2->unk14;
+    hand_state = arg1->unk146;
+    while (var_s0) {
+        temp_v1 = var_s0->unk8;
+        p_addr = (hand_state >> ((temp_v1 - 7) & 0xFF)) & 1 ? osVirtualToPhysical(var_s0->unk0) : osVirtualToPhysical(var_s0->unk4);
+        gSPSegment(dl++, temp_v1, p_addr);
+        var_s0 = var_s0->next;
+    }
+    return dl;
+}
+*/
 
 void func_global_asm_80614D00(Actor *arg0, f32 arg1, f32 arg2) {
     ActorAnimationState *temp_v0;
@@ -99,7 +138,18 @@ void playAnimation(Actor *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614F28.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614F4C.s")
+extern u8 *D_807F5AF0;
+/*
+void func_global_asm_80614F28(u8 *arg0) {
+    *arg0 = *D_807F5AF0++;
+}
+*/
+
+void func_global_asm_80614F4C(s16 * arg0) {
+    ((u8*)arg0)++;
+    ((u8*)arg0)[-1] = *D_807F5AF0++;
+    ((u8*)arg0)[0] = *D_807F5AF0++;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614F88.s")
 
