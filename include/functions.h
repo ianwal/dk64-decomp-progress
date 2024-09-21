@@ -32,7 +32,7 @@ void func_global_asm_80614D90(Actor *arg0);
 void func_global_asm_8061C464(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
 void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
 void func_global_asm_8061CB08(void);
-s32 func_global_asm_8061CB50(void);
+u8 func_global_asm_8061CB50(void);
 void func_global_asm_8061D4E4(Actor *arg0);
 s32 func_global_asm_80626F8C(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4, s32 arg5, f32 arg6, s32 arg7);
 void func_global_asm_806A36F4(void);
