@@ -220,19 +220,19 @@ segments:
       - [0x2015010, c, code_15010]
       - [0x2015050, c, heap]
       - [0x2016550, c, done/code_16550]
-      - [0x20166A0, c, code_166A0] # -O3?
-      - [0x20169F0, c, code_169F0] # -O3?
-      - [0x2016A20, c, code_16A20] # -O3?
-      - [0x2016B60, bin, code_16B60] # -O3?
+      - [0x20166A0, c, code_166A0] 
+      - [0x20169F0, c, code_169F0] 
+      - [0x2016A20, c, code_16A20] 
+      - [0x2016B60, bin, code_16B60] 
       # - [0x2016C0C, bin, code_16C0C]  # Sine tables
-      - [0x2017490, c, code_17490] # -O3?
-      - [0x2017540, c, code_17540] # -O3?
-      - [0x2017800, c, code_17800] # -O3?
-      - [0x2017B40, c, code_17B40] # -O3?
-      - [0x2017B90, c, code_17B90] # -O3?
-      - [0x201E2D0, bin, code_1E2D0] # -O3?
+      - [0x2017490, hasm, code_17490] # hasm
+      - [0x2017540, c, code_17540]
+      - [0x2017800, c, code_17800]
+      - [0x2017B40, c, code_17B40]
+      - [0x2017B90, c, code_17B90]
+      - [0x201E2D0, bin, code_1E2D0]
       # - [0x201F9A0, bin, code_1F9A0] # Float to Array
-      # - [0x20201E4, c, code_201E4] # -O3?
+      - [0x20201B0, c, code_201B0]
       - [0x202C700, c, code_2C700]
       - [0x202C910, c, code_2C910]
       - [0x202DE90, c, code_2DE90]

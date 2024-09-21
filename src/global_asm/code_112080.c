@@ -645,7 +645,7 @@ typedef struct {
     Struct8070D754_unk8 *unk8;
 } Struct8070D754;
 
-extern s32 D_global_asm_8061DA84; // TODO: Datatype, possibly a function
+extern void func_global_asm_8061DA84(void); // TODO: Datatype, possibly a function
 
 void func_global_asm_8070E808(Actor *arg0, Actor *arg1) {
     AAD_global_asm_8070E808 *sp24;
@@ -657,7 +657,7 @@ void func_global_asm_8070E808(Actor *arg0, Actor *arg1) {
     if (temp_v0->unk8 == NULL) {
         arg1->object_properties_bitfield &= 0xFDFFFFFF;
         if (sp24->unk54 & 1) {
-            func_global_asm_8060098C(&D_global_asm_8061DA84, 0x1E, 0, 0, 0);
+            func_global_asm_8060098C(&func_global_asm_8061DA84, 0x1E, 0, 0, 0);
         }
         arg0->control_state = 4;
         return;
