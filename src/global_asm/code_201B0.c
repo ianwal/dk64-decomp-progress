@@ -48,7 +48,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061CB08.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061CB38.s")
+extern u16 D_807F5CF4;
+
+u8 func_global_asm_8061CB38(void) {
+    return (D_807F5CF4 & 0x40) != 0;
+}
 
 extern u8 D_global_asm_8076A0B1;
 
