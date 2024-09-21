@@ -38,11 +38,146 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C518.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C600.s")
+extern u8 D_global_asm_8076A0B1;
+extern s8 D_global_asm_8076A0B3;
+
+void func_global_asm_8061C600(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 argA) {
+    if (is_cutscene_active == 1) {
+        func_global_asm_8061D4E4(arg0);
+    }
+    D_global_asm_8076A0B3 = 0;
+    D_global_asm_8076A0B1 |= 0x10;
+    func_global_asm_8061C464(arg0, arg1, (s32) arg2, (s32) arg3, (s32) arg4, (s32) arg5, (s32) arg6, (s32) arg7, (s32) arg8, (s32) arg9, argA);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C6A8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C804.s")
+
+typedef struct CutsceneBank_unk0 {
+    u8 pad0[4];
+    void* unk4;
+} CutsceneBank_unk0;
+
+typedef struct CutsceneBank_FuncBank {
+    u8 unk0;
+    u8 command;
+    u8 unk2;
+    u8 unk3;
+    s32 params[3];
+    u8 pad10[4];
+} CutsceneBank_FuncBank;
+
+typedef struct CutsceneBank_CamBank {
+    s16 point_count;
+    s16 unk2;
+    s16 * point_array;
+    s16 * length_array;
+} CutsceneBank_CamBank;
+
+typedef struct CutsceneBank {
+    CutsceneBank_unk0 unk0[24];
+    s16 lock_count;
+    u8 padC2[2];
+    void * lock_regions;
+    u8 * lock_chunks;
+    s16 cutscene_count;
+    u8 padCE[2];
+    CutsceneBank_CamBank * camera_bank;
+    u8 unkD4[4];
+    CutsceneBank_FuncBank * function_bank;
+    f32 unkDC;
+} CutsceneBank;
+
+void func_global_asm_8061D898(void);
+void func_global_asm_80622B24(Actor *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, void *); /* extern */
+extern Actor *D_807F5CE8;
+extern s16 D_807F5CEC;
+extern s16 D_807F5CF0;
+extern u16 D_807F5CF4;
+extern f32 D_807F5CFC;
+extern f32 D_807F5D00;
+extern s16 D_807F5D04;
+extern s16 D_807F5D06;
+extern s16 D_807F5D08;
+extern s16 D_807F5D0A;
+extern s16 D_global_asm_807476F4;
+extern CutsceneBank *D_global_asm_807476FC;
+
+/*
+s16 func_global_asm_8061C804(s16 arg0) {
+    s16 spA6;
+    u8 spA0;
+    f32 sp94;
+    f32 sp90;
+    f32 sp8C;
+    f32 sp88;
+    f32 sp84;
+    f32 sp80;
+    s16 temp_s1;
+    s16 point_count;
+    s16 i;
+    s32 var_s4;
+    CutsceneBank_CamBank * var_a2;
+    s32 var_s6;
+    CutsceneBank_FuncBank *temp_a0;
+    CutsceneBank_CamBank *cam_bank;
+
+    spA6 = 0;
+    var_s6 = 0;
+    var_s4 = arg0;
+    var_a2 = D_global_asm_807476FC->camera_bank;
+    do {
+        spA0 = 0;
+        point_count = D_global_asm_807476FC->camera_bank[var_s4].point_count;
+        for (i = 0; i < point_count; i++) {
+            cam_bank = &var_a2[var_s4];
+            temp_a0 = &D_global_asm_807476FC->function_bank[cam_bank->point_array[i]];
+            switch (temp_a0->command) {
+            case 6:
+            case 14:
+                break;
+            case 13:
+                if ((temp_a0->params[0] & 0xFF) == 8) {
+                    spA0 = 1;
+                    var_s4 = temp_a0->params[1] >> 0x10;
+                }
+                break;
+            default:
+                if (!var_s6) {
+                    temp_s1 = D_807F5CE8->unk168;
+                    var_s6 = 1;
+                    sp94 = character_change_array->look_at_eye_x;
+                    sp90 = character_change_array->look_at_eye_y;
+                    sp8C = character_change_array->look_at_eye_z;
+                    sp88 = character_change_array->look_at_at_x;
+                    sp84 = character_change_array->look_at_at_y;
+                    D_807F5CFC = 1.0f;
+                    D_807F5D00 = 0.0f;
+                    D_global_asm_807476F4 = var_s4;
+                    D_807F5CF0 = i;
+                    sp80 = character_change_array->look_at_at_z;
+                    func_global_asm_8061D898();
+                    func_global_asm_80622B24(D_global_asm_807F5D10, &sp94, &sp90, &sp8C, &sp88, &sp84, &sp80, D_807F5CE8);
+                    D_807F5CF0 = 0;
+                    D_global_asm_807476F4 = arg0;
+                    D_807F5D04 = sp94;
+                    D_807F5D06 = sp90;
+                    D_807F5D08 = sp8C;
+                    D_807F5D0A = func_global_asm_80665DE0(sp88, sp80, sp94, sp8C);
+                    D_807F5CF4 |= 0x20;
+                    D_807F5CEC = 0;
+                    D_807F5CE8->unk168 = temp_s1;
+                    cam_bank = &var_a2[var_s4];
+                }
+                spA6 += cam_bank[1].point_count;
+                break;
+            }
+        }
+    } while (spA0 != 0);
+    return spA6;
+}
+*/
 
 extern u16 D_807F5CF4;
 
@@ -69,8 +204,6 @@ extern u16 D_807F5CF4;
 u8 func_global_asm_8061CB38(void) {
     return (D_807F5CF4 & 0x40) != 0;
 }
-
-extern u8 D_global_asm_8076A0B1;
 
 u8 func_global_asm_8061CB50(void) {
     return (is_cutscene_active == 1) || (D_global_asm_8076A0B1 & 0x10);
@@ -114,27 +247,9 @@ void func_global_asm_8061CC30(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/playCutscene.s")
 
-typedef struct CutsceneBank_unk0 {
-    u8 pad0[4];
-    void* unk4;
-} CutsceneBank_unk0;
 
-typedef struct CutsceneBank {
-    CutsceneBank_unk0 unk0[24];
-    s16 lock_count;
-    u8 padC2[2];
-    void * lock_regions;
-    u8 * lock_chunks;
-    s16 cutscene_count;
-    u8 padCE[2];
-    void * camera_bank;
-    u8 unkD4[4];
-    void * function_bank;
-    f32 unkDC;
-} CutsceneBank;
 
 void func_global_asm_806119F0(u32);
-u16 func_global_asm_8061C804(s16);
 extern CutsceneBank D_807F5B10[2];
 extern OSTime D_807F5CE0;
 extern Actor *D_807F5CE8;
@@ -153,7 +268,6 @@ extern s16 D_global_asm_807476E4;
 extern s16 D_global_asm_807476F0;
 extern s16 D_global_asm_807476F4;
 extern s16 D_global_asm_807476F8;
-extern CutsceneBank *D_global_asm_807476FC;
 extern u8 D_global_asm_8076A0B1;
 extern s8 D_global_asm_8076A0B3;
 extern u8 D_global_asm_80770DC9;
