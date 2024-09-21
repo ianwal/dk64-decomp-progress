@@ -1220,11 +1220,20 @@ typedef struct {
 
 typedef struct {
     s32 unk0;
-    u8 pad4[0x44 - 0x4];
+    u8 pad4[0x20 - 0x4];
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    u8 pad38[0x44 - 0X38];
     CameraPaad_unk44 * unk44;
     s32 unk48;
     u8 pad4C[0xF3 - 0x4C];
     u8 unkF3;
+    u8 padF4[0xFB - 0xF4];
+    u8 unkFB;
 } CameraPaad;
 
 typedef struct {

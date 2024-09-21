@@ -30,7 +30,17 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C2F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C39C.s")
+void func_global_asm_8061C39C(Actor *camera) {
+    CameraPaad *temp_v0;
+
+    temp_v0 = camera->CaaD;
+    character_change_array[temp_v0->unkFB].look_at_eye_x = temp_v0->unk20;
+    character_change_array[temp_v0->unkFB].look_at_eye_y = temp_v0->unk24;
+    character_change_array[temp_v0->unkFB].look_at_eye_z = temp_v0->unk28;
+    character_change_array[temp_v0->unkFB].look_at_at_x = temp_v0->unk2C;
+    character_change_array[temp_v0->unkFB].look_at_at_y = temp_v0->unk30;
+    character_change_array[temp_v0->unkFB].look_at_at_z = temp_v0->unk34;
+}
 
 void func_global_asm_8061C458(Actor *camera, s32 arg1) {
     if (camera->CaaD);

@@ -1954,7 +1954,7 @@ us,asm,func_global_asm_8062E67C,540,yes
 us,asm,func_global_asm_80665160,156,yes
 us,asm,func_global_asm_806FB8B0,100,yes
 us,asm,func_global_asm_806E06E8,148,yes
-us,asm,func_global_asm_8061C39C,188,no
+us,asm,func_global_asm_8061C39C,188,yes
 us,asm,func_global_asm_8069B010,1004,no
 us,asm,func_global_asm_80701CA0,1864,no
 us,asm,func_global_asm_806BB81C,88,yes
