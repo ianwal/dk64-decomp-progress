@@ -1,10 +1,17 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern u32 D_global_asm_80746A40;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_166A0/func_global_asm_806119A0.s")
+u32 func_global_asm_806119A0(void) {
+    s64 sp18;
+    s64 temp_v0;
 
-extern s32 D_global_asm_80746A40;
+    sp18 = D_global_asm_80746A40;
+    temp_v0 = __ll_mul(sp18, 0x01DF5E0D) + 1;
+    D_global_asm_80746A40 = temp_v0 & 0xFFFFFFFF;
+    return D_global_asm_80746A40;
+}
 
 void func_global_asm_806119F0(s32 arg0) {
     D_global_asm_80746A40 = arg0;
