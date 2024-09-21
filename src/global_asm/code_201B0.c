@@ -26,7 +26,13 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C2C4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C2D8.s")
+void func_global_asm_8061C2D8(Actor *camera, s32 arg1) {
+    CameraPaad *temp_v0;
+
+    temp_v0 = camera->CaaD;
+    temp_v0->unkAC &= ~arg1;
+}
+
 
 void func_global_asm_8061C2F0(Actor *camera, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7) {
     CameraPaad *temp_v0;
