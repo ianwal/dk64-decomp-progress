@@ -56,7 +56,18 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061CB98.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061CBCC.s")
+void func_global_asm_8061D898(void);
+extern s16 D_807F5CF0;
+extern s16 D_global_asm_807476F4;
+extern s16 D_global_asm_807476F8;
+
+void func_global_asm_8061CBCC(void) {
+    D_global_asm_807476F4 = D_global_asm_807476F8;
+    D_807F5CF0 = 0;
+    func_global_asm_8061D898();
+}
+
+
 
 extern Actor * D_global_asm_807F5D10;
 
@@ -70,8 +81,6 @@ extern u8 D_global_asm_807476EC;
 void func_global_asm_8061CC30(void) {
     D_global_asm_807476EC = 1;
 }
-
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/playCutscene.s")
 

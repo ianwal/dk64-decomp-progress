@@ -1933,7 +1933,7 @@ us,asm,func_global_asm_80612A54,132,no
 us,asm,func_global_asm_806E7088,20,yes
 us,asm,func_global_asm_806E9468,280,yes
 us,asm,func_global_asm_806317D4,496,no
-us,asm,func_global_asm_8061CBCC,52,no
+us,asm,func_global_asm_8061CBCC,52,yes
 us,asm,func_global_asm_80652DB4,164,no
 us,asm,func_global_asm_806192A4,604,no
 us,asm,func_global_asm_8069B908,5268,no
