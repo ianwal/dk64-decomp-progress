@@ -1230,7 +1230,9 @@ typedef struct {
     u8 pad38[0x44 - 0X38];
     CameraPaad_unk44 * unk44;
     s32 unk48;
-    u8 pad4C[0xF3 - 0x4C];
+    u8 pad4C[0xAC - 0x4C];
+    s32 unkAC;
+    u8 padB0[0xF3 - 0xB0];
     u8 unkF3;
     u8 padF4[0xFB - 0xF4];
     u8 unkFB;

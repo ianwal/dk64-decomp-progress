@@ -28,7 +28,23 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C2D8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C2F0.s")
+void func_global_asm_8061C2F0(Actor *camera, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7) {
+    CameraPaad *temp_v0;
+
+    temp_v0 = camera->CaaD;
+    if ((is_cutscene_active == 1) && (arg7 != 0)) {
+        func_global_asm_8061D4E4(camera);
+    }
+    if ((is_cutscene_active != 1) || (arg7 != 0)) {
+        temp_v0->unkAC |= 0x80000000;
+    }
+    temp_v0->unk20 = arg1;
+    temp_v0->unk24 = arg2;
+    temp_v0->unk28 = arg3;
+    temp_v0->unk2C = arg4;
+    temp_v0->unk30 = arg5;
+    temp_v0->unk34 = arg6;
+}
 
 void func_global_asm_8061C39C(Actor *camera) {
     CameraPaad *temp_v0;
