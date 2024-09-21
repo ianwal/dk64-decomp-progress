@@ -36,10 +36,24 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C464.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C518.s")
-
+extern f32 D_global_asm_807574E0;
 extern u8 D_global_asm_8076A0B1;
 extern s8 D_global_asm_8076A0B3;
+
+void func_global_asm_8061C518(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 argA) {
+    f32 sp3C;
+
+    sp3C = arg1->animation_state->scale[1];
+    if (is_cutscene_active == 1) {
+        func_global_asm_8061D4E4(arg0);
+    }
+    D_global_asm_8076A0B3 = 0;
+    D_global_asm_8076A0B1 |= 0x10;
+    arg1->animation_state->scale[1] = D_global_asm_807574E0;
+    func_global_asm_8061C6A8(arg0, arg1, (s32) arg2, (s32) arg3, (s32) arg4, (s32) arg5, (s32) arg6, (s32) arg7, (s32) arg8, (s32) arg9, argA);
+    arg1->animation_state->scale[1] = sp3C;
+    global_properties_bitfield &= ~1;
+}
 
 void func_global_asm_8061C600(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 argA) {
     if (is_cutscene_active == 1) {
