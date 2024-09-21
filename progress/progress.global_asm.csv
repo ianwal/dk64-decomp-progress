@@ -3562,7 +3562,7 @@ us,asm,func_global_asm_806E6368,80,yes
 us,asm,func_global_asm_806D2BD0,132,yes
 us,asm,func_global_asm_8063524C,540,no
 us,asm,func_global_asm_8068412C,960,yes
-us,asm,func_global_asm_80611A70,324,no
+us,asm,func_global_asm_80611A70,324,yes
 us,asm,loadExits,136,yes
 us,asm,func_global_asm_80673708,456,no
 us,asm,func_global_asm_806877C8,68,yes
