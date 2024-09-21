@@ -56,13 +56,44 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614C38.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614D00.s")
+void func_global_asm_80614D00(Actor *arg0, f32 arg1, f32 arg2) {
+    ActorAnimationState *temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614D48.s")
+    temp_v0 = arg0->animation_state;
+    if (arg2 > 0.0f) {
+        temp_v0->unk58 = arg2;
+        temp_v0->unk50 = arg1;
+        temp_v0->unk54 = 0.0f;
+        temp_v0->unk4C = temp_v0->unk48;
+        return;
+    }
+    temp_v0->unk48 = arg1;
+    temp_v0->unk58 = 0.0f;
+}
+
+void func_global_asm_80614D48(Actor *arg0, f32 arg1, f32 arg2) {
+    AnimationStateUnk0 *temp_v0;
+
+    temp_v0 = arg0->animation_state->unk0;
+    if (arg2 > 0.0f) {
+        temp_v0->unk34 = arg2;
+        temp_v0->unk2C = arg1;
+        temp_v0->unk30 = 0.0f;
+        temp_v0->unk28 = (f32) temp_v0->unk24;
+        return;
+    }
+    temp_v0->unk24 = arg1;
+    temp_v0->unk34 = 0.0f;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614D90.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/playAnimation.s")
+extern u16 *D_807FBB54;
+
+void playAnimation(Actor *arg0, s32 arg1) {
+    s32 offset = (arg1 * 7) + (arg0->unk58 - 2);
+    playActorAnimation(arg0, D_807FBB54[offset]);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/playActorAnimation.s")
 

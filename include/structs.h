@@ -283,6 +283,10 @@ typedef struct animation_state_unk0 {
     s32 unk1C;
     s32 unk20;
     f32 unk24; // Used
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
 } AnimationStateUnk0;
 
 typedef struct animation_state_unk8 {
@@ -345,10 +349,10 @@ typedef struct actor_animation_state {
     s32 unk40;
     s32 unk44;
     f32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
+    f32 unk4C;
+    f32 unk50;
+    f32 unk54;
+    f32 unk58;
     s32 unk5C;
     s32 unk60;
     u16 unk64; // Used
