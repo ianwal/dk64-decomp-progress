@@ -17,7 +17,13 @@ void func_global_asm_806119F0(s32 arg0) {
     D_global_asm_80746A40 = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_166A0/func_global_asm_806119FC.s")
+f32 func_global_asm_806119FC(void) {
+    f32 var_f6;
+    u32 temp_v0;
+
+    var_f6 = func_global_asm_806119A0();
+    return var_f6 * 2.3283064e-10f;
+}
 
 s32 rand(void) {
     return func_global_asm_806119A0() & 0x7FFFFFFF;

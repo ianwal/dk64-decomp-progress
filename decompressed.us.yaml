@@ -220,7 +220,7 @@ segments:
       - [0x2015010, c, code_15010]
       - [0x2015050, c, heap]
       - [0x2016550, c, done/code_16550]
-      - [0x20166A0, c, code_166A0] 
+      - [0x20166A0, c, rand] 
       - [0x20169F0, c, code_169F0] 
       - [0x2016A20, c, code_16A20] 
       - [0x2016B60, bin, code_16B60] 
@@ -375,7 +375,7 @@ segments:
       - [0x215BE40, .rodata, code_131B0]
       - [0x215BF90, .rodata, heap]
       - [0x215BFD0, .rodata, done/code_16550]
-      - [0x215BFF0, rodata] # TODO: code_166A0, code_1E2D0
+      - [0x215BFF0, rodata] # TODO: rand, code_1E2D0
       - [0x215CC70, .rodata, code_2C910]
       - [0x215CE00, .rodata, code_2DE90]
       - [0x215CE60, .rodata, code_2F550]
