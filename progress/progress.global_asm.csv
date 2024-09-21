@@ -3450,7 +3450,7 @@ us,asm,func_global_asm_80704AFC,36,yes
 us,asm,func_global_asm_806E8B28,124,yes
 us,asm,renderActor,432,yes
 us,asm,func_global_asm_8060B7C4,12,yes
-us,asm,func_global_asm_8061CB08,48,no
+us,asm,func_global_asm_8061CB08,48,yes
 us,asm,func_global_asm_806E8BFC,48,yes
 us,asm,func_global_asm_806224CC,244,no
 us,asm,func_global_asm_806790F4,132,yes
