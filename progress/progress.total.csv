@@ -3463,7 +3463,7 @@ us,asm,func_global_asm_80611A70,324,no
 us,asm,loadExits,136,yes
 us,asm,func_global_asm_80673708,456,no
 us,asm,func_global_asm_806877C8,68,yes
-us,asm,func_global_asm_80612E40,80,no
+us,asm,func_global_asm_80612E40,68,yes
 us,asm,func_global_asm_80602144,408,no
 us,asm,func_global_asm_806190C0,484,no
 us,asm,func_global_asm_806CC364,632,no
