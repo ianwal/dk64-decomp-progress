@@ -54,7 +54,11 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061CB80.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061CB98.s")
+extern s16 D_global_asm_807476F8;
+
+u8 func_global_asm_8061CB98(u8 arg0) {
+    return (is_cutscene_active == 1) && (arg0 == D_global_asm_807476F8);
+}
 
 void func_global_asm_8061D898(void);
 extern s16 D_807F5CF0;
@@ -66,8 +70,6 @@ void func_global_asm_8061CBCC(void) {
     D_807F5CF0 = 0;
     func_global_asm_8061D898();
 }
-
-
 
 extern Actor * D_global_asm_807F5D10;
 
