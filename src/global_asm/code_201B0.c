@@ -65,9 +65,13 @@ u8 func_global_asm_8061CC00(void) {
     return (D_global_asm_807F5D10->CaaD->unkF3 == 3) || (D_global_asm_807F5D10->CaaD->unkF3 == 0xB);
 }
 
+extern u8 D_global_asm_807476EC;
+
+void func_global_asm_8061CC30(void) {
+    D_global_asm_807476EC = 1;
+}
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061CC30.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/playCutscene.s")
 
@@ -107,7 +111,6 @@ extern s8 D_807F5D14;
 extern OSTime D_global_asm_807476D0;
 extern s8 D_global_asm_807476D8;
 extern s16 D_global_asm_807476E4;
-extern u8 D_global_asm_807476EC;
 extern s16 D_global_asm_807476F0;
 extern s16 D_global_asm_807476F4;
 extern s16 D_global_asm_807476F8;
