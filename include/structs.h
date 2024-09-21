@@ -1205,6 +1205,11 @@ typedef struct {
 } FloorTriangle;
 
 typedef struct {
+    u8 pad0[0xF3];
+    u8 unkF3;
+} CameraPaad;
+
+typedef struct {
     // Small header on top of DisplayList Pointer
     u8 unk0[0x20 - 0x0];
     u8 unk20;
@@ -1405,6 +1410,7 @@ struct actor {
         YetAnotherAdditionalActorData5 *YaaD5;
         MenuAdditionalActorData *MaaD;
         PlayerAdditionalActorData *PaaD;
+        CameraPaad *CaaD;
         PaaD0 *PaaD0; // TODO: Figure this out
         BaaD2 *BaaD2; // TODO: Figure this out
         TempAAD *TaaD; // TODO: Figure this out (race overlay)
