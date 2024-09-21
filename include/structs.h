@@ -1205,7 +1205,25 @@ typedef struct {
 } FloorTriangle;
 
 typedef struct {
-    u8 pad0[0xF3];
+    Actor *unk0;
+    Actor *unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s16 unk14;
+    s16 unk16;
+    s16 unk18;
+} CameraPaad_unk44;
+
+typedef struct {
+    s32 unk0;
+    u8 pad4[0x44 - 0x4];
+    CameraPaad_unk44 * unk44;
+    s32 unk48;
+    u8 pad4C[0xF3 - 0x4C];
     u8 unkF3;
 } CameraPaad;
 

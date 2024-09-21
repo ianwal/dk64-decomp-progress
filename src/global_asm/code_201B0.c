@@ -32,7 +32,10 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C39C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C458.s")
+void func_global_asm_8061C458(Actor *camera, s32 arg1) {
+    if (camera->CaaD);
+    camera->CaaD->unk48 = arg1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C464.s")
 
