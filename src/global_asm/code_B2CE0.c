@@ -283,6 +283,7 @@ void func_global_asm_806AEE08(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B2CE0/func_global_asm_806AEE84.s")
 
+// Kop
 void func_global_asm_806AF688(void) {
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {

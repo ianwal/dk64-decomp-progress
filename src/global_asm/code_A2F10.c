@@ -630,6 +630,7 @@ void func_global_asm_806A0310(void) {
     func_global_asm_806A018C();
 }
 
+// Stalactite
 void func_global_asm_806A0330(void) {
     s32 pad[8];
     s32 i;
@@ -682,6 +683,7 @@ typedef struct {
     s16 unk200;
 } AAD_global_asm_806A05FC;
 
+// Trap Bubble
 void func_global_asm_806A05FC(void) {
     ActorAnimationState *temp_v0;
     f64 temp_f0;

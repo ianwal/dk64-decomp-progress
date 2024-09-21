@@ -225,6 +225,7 @@ void func_global_asm_806B2D64(void) {
 }
 */
 
+// Giant Clam
 void func_global_asm_806B3420(void) {
     f32 dx, dy, dz;
     s32 temp;

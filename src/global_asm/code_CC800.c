@@ -404,24 +404,22 @@ void func_global_asm_806C8F8C(Struct806C8F8C_arg0 *arg0);
 
 /*
 void func_global_asm_806C8E58(s16 arg0) {
-    u8 var_a1;
-    u8 var_v0;
-    u8 *temp_v1;
-    u8 temp_t3;
+    u8 valid;
+    s32 i = 0;
+    u8 j;
 
-    temp_v1 = &current_character_index[cc_player_index];
-    var_a1 = 0;
-    var_v0 = 0;
-    *temp_v1 = 0;
-    while (var_a1 == 0) {
-        if (arg0 == D_global_asm_8075C410[var_v0].unk0) {
-            var_a1 = 1;
-        } else {
-            var_v0++;
-            *temp_v1 = var_v0;
+    valid = 0;
+    current_character_index[cc_player_index] = 0;
+    while (!valid) {
+        j = i + 1;
+        if (arg0 == D_global_asm_8075C410[i].unk0) {
+            valid = 1;
+            break;
         }
-    }
-    func_global_asm_806C8F8C(&D_global_asm_8075C410[var_v0]);
+        i = j;
+        current_character_index[cc_player_index] = i;
+    };
+    func_global_asm_806C8F8C(&D_global_asm_8075C410[j]);
 }
 */
 

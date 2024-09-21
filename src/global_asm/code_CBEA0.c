@@ -111,11 +111,11 @@ void func_global_asm_806C7268(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CBEA0/func_global_asm_806C7270.s")
 
 typedef struct {
-    s16 unk0;
-    s16 unk2;
-    u8 unk4;
-    s8 unk5;
-} Struct807506D0;
+    s16 duration;
+    s16 cooldown;
+    u8 squish_from;
+    s8 text_count;
+} EndSequenceCardStruct;
 
 typedef struct {
     f32 unk0;
@@ -124,7 +124,7 @@ typedef struct {
     f32 unkC;
 } Struct8075075C;
 
-extern Struct807506D0 D_global_asm_807506D0[];
+extern EndSequenceCardStruct D_global_asm_807506D0[];
 extern s8 D_global_asm_80750754;
 extern s16 D_global_asm_80750758;
 extern Struct8075075C D_global_asm_8075075C[];
@@ -135,7 +135,6 @@ extern s16 D_global_asm_807FC8E4;
 extern f32 D_global_asm_807FC8E8;
 extern f32 D_global_asm_807FC8EC;
 extern u8 *D_global_asm_807FC8F0;
-extern void func_global_asm_806C75A4(); // TODO: Signature
 
 /*
 void func_global_asm_806C7270(void) {
@@ -207,3 +206,115 @@ void func_global_asm_806C7270(void) {
 
 // Displaylist stuff, matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CBEA0/func_global_asm_806C75A4.s")
+
+typedef struct struct80750814 {
+    u8 data[4];
+} struct80750814;
+
+extern struct80750814 D_global_asm_80750814;
+extern f32 D_global_asm_80750818[];
+extern f32 D_global_asm_80750828[];
+
+/*
+Gfx *func_global_asm_806C75A4(Gfx *dl, Actor *arg1) {
+    f32 sp10C;
+    f32 sp108;
+    struct80750814 sp104;
+    f32 spC4[4][4];
+    f32 sp84[4][4];
+    Gfx *temp_a0;
+    Gfx *var_s3;
+    Mtx *temp_v0_2;
+    f32 temp_s0;
+    f32 var_f0;
+    f32 var_f12;
+    f32 var_f2;
+    s16 y;
+    s16 i;
+    s16 var_v1;
+    s32 temp_v0;
+    s8 *str;
+    s8 direction;
+    s8 temp_v0_3;
+    u8 temp_t4;
+
+    sp104 = D_global_asm_80750814;
+    if (D_global_asm_80750754 < 0) {
+        return dl;
+    }
+    direction = D_global_asm_807506D0[D_global_asm_80750754].squish_from;
+    temp_s0 = D_global_asm_80750818[direction];
+    var_v1 = D_global_asm_80750828[direction] * D_global_asm_807FC8EC;
+    var_v1 += ((D_global_asm_807FC8E8 - 0.5) * temp_s0);
+    if (var_v1 < 0) {
+        var_v1 = 0;
+    }
+    sp104.data[direction] = var_v1;
+    func_global_asm_805FEE84(sp104.data[1], sp104.data[3], sp104.data[0], sp104.data[2]);
+    if (D_global_asm_807FC8E8 == 0.0f) {
+        return dl;
+    }
+    temp_v0_2 = malloc(sizeof(Mtx));
+    func_global_asm_8061134C(temp_v0_2);
+    gDPPipeSync(dl++);
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetCycleType(dl++, G_CYC_1CYCLE);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gSPMatrix(dl++, 0x020000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, temp_v0_2, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    var_f12 = 1.0f;
+    var_f2 = 1.0f;
+    if (direction & 1) {
+        // left/right
+        var_f2 = D_global_asm_807FC8EC;
+    } else {
+        // top/bottom
+        var_f12 = D_global_asm_807FC8EC;
+    }
+    guScaleF(&spC4[0], var_f2 * 0.55, var_f12 * 0.55, 1.0f);
+    switch (direction) {
+    default:
+        var_f0 = sp10C;
+        break;
+    case 0:
+        // Top
+        var_f0 = 160.0f;
+        sp108 = (temp_s0 * D_global_asm_807FC8E8) + -55.0;
+        break;
+    case 2:
+        // Bottom
+        var_f0 = 160.0f;
+        sp108 = 265.0 - (temp_s0 * D_global_asm_807FC8E8);
+        break;
+    case 1:
+        // Left
+        sp108 = 120.0f;
+        var_f0 = ((temp_s0 * D_global_asm_807FC8E8) + -70.0) + 8.0;
+        break;
+    case 3:
+        // Right
+        sp108 = 120.0f;
+        var_f0 = (390.0 - (temp_s0 * D_global_asm_807FC8E8)) - 8.0;
+        break;
+    }
+    guTranslateF(&sp84[0], (f32) ((f64) var_f0 * 4.0), (f32) ((f64) sp108 * 4.0), 0.0f);
+    guMtxCatF(&spC4[0], &sp84[0], &spC4[0]);
+    guMtxF2L(&spC4[0], temp_v0_2);
+    str = D_global_asm_807FC8F0;
+    for (i = 0; i < D_global_asm_80750758; str++) {
+        if (*str == '\0') i++;
+    }
+    y = D_global_asm_807506D0[D_global_asm_80750754].text_count * -35;
+    for (i = 0; i < D_global_asm_807506D0[D_global_asm_80750754].text_count; i++) {
+        var_s3 = printStyledText(var_s3, 1, ((getCenterOfString(1, str) * 2) * -1), y, str, 0U);
+        y += 0x60;
+        while (*str) str++;
+        str++;
+    }
+    gSPPopMatrix(dl++, G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    return dl;
+}
+*/

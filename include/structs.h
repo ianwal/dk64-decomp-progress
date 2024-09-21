@@ -1947,6 +1947,24 @@ typedef struct {
 } Struct807500B4;
 
 typedef struct {
+    u8 unk0[4];
+    u8 images_per_frame_horizontal;
+    u8 images_per_frame_vertical;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    u8 unkC;
+    u8 table;
+    s16 width;
+    s16 height;
+    s16 image_count;
+    s16 images[];
+} SpriteData;
+
+typedef struct {
     s16 unk0;
     s16 unk2;
     s16 unk4;

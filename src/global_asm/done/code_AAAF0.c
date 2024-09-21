@@ -44,7 +44,7 @@ extern f32 D_global_asm_80750388;
 extern s16 D_global_asm_8075038C;
 
 typedef struct {
-    s32 unk0[7];
+    SpriteData *unk0[7];
 } Struct807504A4;
 
 extern Struct807504A4 D_global_asm_807504A4;
@@ -732,6 +732,7 @@ void func_global_asm_806A7BB8(void) {
     func_global_asm_806A7600(&D_global_asm_80721004);
 }
 
+// Headphones
 void func_global_asm_806A7BDC(void) {
     s32 sp64;
     s32 sp60;

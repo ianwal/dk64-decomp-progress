@@ -278,24 +278,6 @@ void func_boss_80033A80(s8 arg0) {
 // Mad Jack
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/MadJack/func_boss_80033AF0.s")
 
-typedef struct {
-    u8 unk0[4];
-    u8 images_per_frame_horizontal;
-    u8 images_per_frame_vertical;
-    u8 unk6;
-    u8 unk7;
-    u8 unk8;
-    u8 unk9;
-    u8 unkA;
-    u8 unkB;
-    u8 unkC;
-    u8 table;
-    s16 width;
-    s16 height;
-    s16 image_count;
-    s16 images[];
-} SpriteData;
-
 u8 func_boss_80027BA8(u8 *, s32, s32, Actor**);
 u8 func_boss_800330D0(MadJackFightData *, MadJackPosData *);
 void func_global_asm_80626110(Actor *, s16, s16);

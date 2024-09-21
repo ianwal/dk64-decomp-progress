@@ -389,6 +389,7 @@ extern s32 D_global_asm_8071FB08; // TODO: Sprite
 extern s16 D_global_asm_8076A0AA;
 extern int func_global_asm_8071C818(); // TODO: Proper signature
 
+// Banana Fairy
 void func_global_asm_806C5C20(void) {
     f32 sp54;
     f32 sp50;

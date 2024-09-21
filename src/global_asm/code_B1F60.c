@@ -244,21 +244,22 @@ void func_global_asm_806AD9F4(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B1F60/func_global_asm_806ADDD8.s")
 
 /*
+// Evil Tomato
 void func_global_asm_806ADDD8(void) {
-    s32 temp = 0x31A;
-    // Might not need this
-    u8 pad = current_actor_pointer->control_state;
+    const s32 temp = 0x31A;
+    s32 pad;
 
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC98->unk46 |= 0x40;
         D_global_asm_807FDC98->unk28 = temp;
     }
-    switch (current_actor_pointer->control_state) {
+    pad = current_actor_pointer->control_state;
+    switch (pad) {
         case 0:
         case 1:
             if (func_global_asm_8072E22C(300)) {
-                playActorAnimation(current_actor_pointer, 0x31A);
+                playActorAnimation(current_actor_pointer, temp);
                 current_actor_pointer->control_state = 0x23;
                 current_actor_pointer->control_state_progress = 0;
             }
@@ -274,13 +275,13 @@ void func_global_asm_806ADDD8(void) {
             }
             break;
         case 30:
-            if (current_actor_pointer->animation_state->unk64 == 0x31A) {
+            if (current_actor_pointer->animation_state->unk64 == temp) {
                 current_actor_pointer->control_state = 0x23;
                 current_actor_pointer->control_state_progress = 0;
             }
             break;
         case 35:
-            if ((current_actor_pointer->animation_state->unk64 == 0x31A) && (current_actor_pointer->animation_state->unk0->unk4 > 4.0f)) {
+            if ((current_actor_pointer->animation_state->unk64 == temp) && (current_actor_pointer->animation_state->unk0->unk4 > 4.0f)) {
                 func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0, 0.0f);
             }
             if (!func_global_asm_8072E22C(300)) {

@@ -456,6 +456,7 @@ void func_global_asm_8069CD9C(void) {
     func_global_asm_8069B908();
 }
 
+// Apple Code
 void func_global_asm_8069CF54(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk130 = 0x3C;
