@@ -1967,7 +1967,7 @@ us,asm,func_global_asm_8062C99C,112,yes
 us,asm,func_global_asm_806663F8,36,yes
 us,asm,func_global_asm_80712524,36,yes
 us,asm,func_global_asm_806D7878,364,yes
-us,asm,func_global_asm_80611DA0,84,no
+us,asm,func_global_asm_80611DA0,84,yes
 us,asm,func_global_asm_8069DF58,192,yes
 us,asm,func_global_asm_80724E48,1888,no
 us,asm,alEvtqFlushType,208,yes
@@ -3267,7 +3267,7 @@ us,asm,func_global_asm_806C7208,8,yes
 us,asm,func_global_asm_8067BA7C,492,no
 us,asm,func_global_asm_806F50C8,424,yes
 us,asm,func_global_asm_806623CC,8,yes
-us,asm,func_global_asm_80611DF4,108,no
+us,asm,func_global_asm_80611DF4,100,yes
 us,asm,func_global_asm_8067DCC0,644,yes
 us,asm,func_global_asm_806951B0,56,yes
 us,asm,func_global_asm_80602314,284,no
