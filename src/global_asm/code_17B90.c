@@ -136,24 +136,36 @@ void playAnimation(Actor *arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/playActorAnimation.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614F28.s")
-
 extern u8 *D_807F5AF0;
-/*
+
 void func_global_asm_80614F28(u8 *arg0) {
+    // getAnimationArg8
     *arg0 = *D_807F5AF0++;
 }
-*/
 
 void func_global_asm_80614F4C(s16 * arg0) {
+    // getAnimationArg16
     ((u8*)arg0)++;
     ((u8*)arg0)[-1] = *D_807F5AF0++;
     ((u8*)arg0)[0] = *D_807F5AF0++;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614F88.s")
+void func_global_asm_80614F88(s32 * arg0) {
+    // getAnimationArg24
+    ((u8*)arg0) += 2;
+    ((u8*)arg0)[-2] = *D_807F5AF0++;
+    ((u8*)arg0)[-1] = *D_807F5AF0++;
+    ((u8*)arg0)[0] = *D_807F5AF0++;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614FD8.s")
+void func_global_asm_80614FD8(s32 * arg0) {
+    // getAnimationArg32
+    ((u8*)arg0) += 3;
+    ((u8*)arg0)[-3] = *D_807F5AF0++;
+    ((u8*)arg0)[-2] = *D_807F5AF0++;
+    ((u8*)arg0)[-1] = *D_807F5AF0++;
+    ((u8*)arg0)[0] = *D_807F5AF0++;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061503C.s")
 
