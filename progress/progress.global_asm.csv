@@ -308,7 +308,7 @@ us,asm,func_global_asm_806783BC,108,yes
 us,asm,createLight,380,no
 us,asm,func_global_asm_806531B8,524,no
 us,asm,func_global_asm_806E6234,228,yes
-us,asm,func_global_asm_80612AD8,40,no
+us,asm,func_global_asm_80612AD8,32,yes
 us,asm,func_global_asm_8060E930,40,yes
 us,asm,func_global_asm_8062B8E4,296,yes
 us,asm,func_global_asm_8060D7A8,1172,yes
