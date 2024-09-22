@@ -188,12 +188,11 @@ s32 func_global_asm_8061507C(Actor *arg0) {
 
 s32 func_global_asm_806150C8(Actor *arg0) {
     s32 temp_v1;
-    ActorAnimationState *temp_v0;
+    ActorAnimationState *AAS;
 
-    temp_v0 = arg0->animation_state;
-    temp_v1 = temp_v0->unk88;
-    if (temp_v1 != 0) {
-        temp_v0->unk88 = temp_v1 - 1;
+    AAS = arg0->animation_state;
+    if (AAS->unk88) {
+        AAS->unk88--;
     }
     D_807F5AF0++;
     return 1;
@@ -228,15 +227,64 @@ s32 func_global_asm_80615134(Actor *arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806151BC.s")
+s32 func_global_asm_806151BC(Actor *arg0) {
+    u8 sp1F;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061522C.s")
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1F);
+    if (sp1F) {
+        arg0->animation_state->unk7C = sp1F - 1;
+        arg0->animation_state->unk78 |= 2;
+        return 0;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806152FC.s")
+s32 func_global_asm_8061522C(Actor *arg0) {
+    u8 temp_a0;
+    u8 sp1E;
+    u8 sp1D;
+    s32 var_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615328.s")
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1E);
+    func_global_asm_80614F28(&sp1D);
+    temp_a0 = (((rand() >> 0xF) % 32767) % ((sp1D - sp1E) + 1)) + sp1E;
+    if (temp_a0) {
+        arg0->animation_state->unk7C = temp_a0 - 1;
+        arg0->animation_state->unk78 |= 2;
+        return 0;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061537C.s")
+s32 func_global_asm_806152FC(Actor *arg0) {
+    D_807F5AF0++;
+    arg0->animation_state->unk78 |= 4;
+    return 0;
+}
+
+s32 func_global_asm_80615328(Actor *arg0) {
+    s16 sp1E;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    arg0->animation_state->unk78 |= sp1E;
+    return 0;
+}
+
+s32 func_global_asm_8061537C(Actor *arg0) {
+    f32 sp1C;
+
+    D_807F5AF0++;
+    func_global_asm_80614FD8(&sp1C);
+    if (sp1C < 0.0f) {
+        sp1C = arg0->animation_state->unk88;
+    }
+    arg0->animation_state->unk80 = sp1C;
+    arg0->animation_state->unk78 |= 8;
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061540C.s")
 

@@ -363,7 +363,7 @@ typedef struct actor_animation_state {
     s32 unk74;
     s32 unk78;
     s32 unk7C;
-    s32 unk80;
+    f32 unk80;
     s32 unk84;
     s32 unk88;
     s32 unk8C;
