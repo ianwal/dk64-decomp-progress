@@ -372,23 +372,129 @@ s32 func_global_asm_806156A0(Actor *arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806156DC.s")
+s32 func_global_asm_806156DC(Actor *arg0) {
+    f32 sp24;
+    AnimationStateUnk0 *var_v1;
+    f32 var_f8;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615774.s")
+    if (arg0->animation_state->unk84 != 0) {
+        var_v1 = arg0->animation_state->unk4;
+    } else {
+        var_v1 = arg0->animation_state->unk0;
+    }
+    D_807F5AF0++;
+    func_global_asm_80614FD8(&sp24);
+    if (sp24 < var_v1->unk0->unk12) {
+        var_v1->unk14 = sp24;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061580C.s")
+s32 func_global_asm_80615774(Actor *arg0) {
+    f32 sp24;
+    AnimationStateUnk0 *var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806158E8.s")
+    if (arg0->animation_state->unk84 != 0) {
+        var_v1 = arg0->animation_state->unk4;
+    } else {
+        var_v1 = arg0->animation_state->unk0;
+    }
+    D_807F5AF0++;
+    func_global_asm_80614FD8(&sp24);
+    if (sp24 < var_v1->unk0->unk12) {
+        var_v1->unk18 = sp24;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061594C.s")
+s32 func_global_asm_8061580C(Actor *arg0) {
+    f32 sp24;
+    f32 sp20;
+    AnimationStateUnk0 *var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061599C.s")
+    if (arg0->animation_state->unk84 != 0) {
+        var_v1 = arg0->animation_state->unk4;
+    } else {
+        var_v1 = arg0->animation_state->unk0;
+    }
+    D_807F5AF0++;
+    func_global_asm_80614FD8(&sp24);
+    func_global_asm_80614FD8(&sp20);
+    if (sp24 < var_v1->unk0->unk12) {
+        var_v1->unk14 = sp24;
+    }
+    if (sp20 < var_v1->unk0->unk12) {
+        var_v1->unk18 = sp20;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806159EC.s")
+s32 func_global_asm_806158E8(Actor *arg0) {
+    AnimationStateUnk0_0 *temp_a0;
+    AnimationStateUnk0 *var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615A3C.s")
+    if (arg0->animation_state->unk84 != 0) {
+        var_v1 = arg0->animation_state->unk4;
+    } else {
+        var_v1 = arg0->animation_state->unk0;
+    }
+    temp_a0 = var_v1->unk0;
+    D_807F5AF0++;
+    var_v1->unk14 = 0.0f;
+    var_v1->unk18 = temp_a0->unk12 - 1;
+    var_v1->unk1C = temp_a0->unk4;
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615A94.s")
+s32 func_global_asm_8061594C(Actor *arg0) {
+    s16 sp1E;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    func_global_asm_80613C48(arg0, sp1E, 0.0f, 1.0f);
+    return 1;
+}
+
+void func_global_asm_80613BA0(Actor *, s16, f32, f32);
+void func_global_asm_80613CA8(Actor *, s16, f32, f32);
+
+s32 func_global_asm_8061599C(Actor *arg0) {
+    s16 sp1E;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    func_global_asm_80613BA0(arg0, sp1E, 0, 1.0f);
+    return 1;
+}
+
+s32 func_global_asm_806159EC(Actor *arg0) {
+    s16 sp1E;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    func_global_asm_80613CA8(arg0, sp1E, 0, 0.0f);
+    return 1;
+}
+
+s32 func_global_asm_80615A3C(Actor *arg0) {
+    s16 sp1E;
+    f32 sp18;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    func_global_asm_80614FD8(&sp18);
+    func_global_asm_80613C48(arg0, sp1E, 0.0f, sp18);
+    return 1;
+}
+
+s32 func_global_asm_80615A94(s32 arg0) {
+    s8 sp1F;
+
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1F);
+    func_global_asm_80613A50(arg0, sp1F);
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615ADC.s")
 
