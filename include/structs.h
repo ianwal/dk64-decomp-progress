@@ -271,7 +271,7 @@ typedef struct ledge_info {
 } LedgeInfo;
 
 typedef struct AnimationStateUnk0_0 {
-    u8 pad0[0x4];
+    f32 unk0;
     u16 unk4;
     u8 pad6[0x12 - 0x6];
     u8 unk12;
@@ -281,15 +281,17 @@ typedef struct AnimationStateUnk0_0 {
 typedef struct animation_state_unk0 {
     AnimationStateUnk0_0 *unk0;
     f32 unk4; // Used
-    s32 unk8;
-    s32 unkC;
+    f32 unk8;
+    s16 unkC;
+    s16 unkE;
     s16 unk10; // Used
     s16 unk12;
     f32 unk14;
     f32 unk18;
     s16 unk1C;
     s16 unk1E;
-    s32 unk20;
+    s16 unk20;
+    s16 unk22;
     f32 unk24; // Used
     f32 unk28;
     f32 unk2C;
