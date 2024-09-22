@@ -306,43 +306,43 @@ void func_global_asm_806F1048(Actor *arg0) {
         case ACTOR_CUTSCENE_TINY:
         case ACTOR_CUTSCENE_CHUNKY:
             if (!(PaaD->unk1F0 & 0x40)) {
-                func_global_asm_80613214();
+                func_global_asm_80613214(arg0);
             }
             break;
     }
     func_global_asm_806C8D20(current_actor_pointer);
 }
 
-void func_global_asm_806F10E8(Actor *arg0) {
-    switch ((u32)arg0->unk58) {
+void func_global_asm_806F10E8(Actor *actor) {
+    switch ((u32)actor->unk58) {
         case ACTOR_DK:
         case ACTOR_CUTSCENE_DK:
-            func_global_asm_806F0C18(arg0);
+            func_global_asm_806F0C18(actor);
             spawnActor(ACTOR_BONGOS, 0xA6);
-            moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[1] * 1.25);
-            last_spawned_actor->x_rotation = arg0->x_rotation;
-            last_spawned_actor->z_rotation = arg0->z_rotation;
+            moveAndScaleActorToAnother(last_spawned_actor, actor, actor->animation_state->scale[1] * 1.25);
+            last_spawned_actor->x_rotation = actor->x_rotation;
+            last_spawned_actor->z_rotation = actor->z_rotation;
             last_spawned_actor->object_properties_bitfield |= 0x40000000;
             return;
         case ACTOR_DIDDY:
         case ACTOR_CUTSCENE_DIDDY:
-            func_global_asm_806F0C18(arg0);
-            func_global_asm_80613194(arg0, 2);
+            func_global_asm_806F0C18(actor);
+            func_global_asm_80613194(actor, 2);
             return;
         case ACTOR_LANKY:
         case ACTOR_CUTSCENE_LANKY:
-            func_global_asm_806F0C18(arg0);
-            func_global_asm_80613194(arg0, 7);
+            func_global_asm_806F0C18(actor);
+            func_global_asm_80613194(actor, 7);
             return;
         case ACTOR_TINY:
         case ACTOR_CUTSCENE_TINY:
-            func_global_asm_806F0C18(arg0);
-            func_global_asm_80613194(arg0, 0xA);
+            func_global_asm_806F0C18(actor);
+            func_global_asm_80613194(actor, 0xA);
             return;
         case ACTOR_CHUNKY:
         case ACTOR_CUTSCENE_CHUNKY:
-            func_global_asm_806F0C18(arg0);
-            func_global_asm_80613194(arg0, 0xD);
+            func_global_asm_806F0C18(actor);
+            func_global_asm_80613194(actor, 0xD);
             return;
     }
 }
@@ -363,7 +363,7 @@ void func_global_asm_806F1250(Actor *arg0) {
 void func_global_asm_806F12FC(Actor *arg0) {
     PlayerAdditionalActorData *PaaD = arg0->PaaD;
     if (arg0->unk58 == ACTOR_CHUNKY) {
-        func_global_asm_80613214();
+        func_global_asm_80613214(arg0);
         func_global_asm_80602B60(0x6C, 0);
     }
     PaaD->unk1F0 &= ~0x40;

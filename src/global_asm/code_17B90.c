@@ -4,18 +4,34 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80612E90.s")
 
+// Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806130A4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613194.s")
+void func_global_asm_80613194(Actor *actor, s16 arg1) {
+    if (actor->unk50 == 0) {
+        actor->unk50 = func_global_asm_80612E90(actor, arg1, 0);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806131D4.s")
+void func_global_asm_806131D4(Actor *actor, s16 arg1) {
+    if (actor->unk50 == 0) {
+        actor->unk50 = func_global_asm_80612E90(actor, arg1, 1);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613214.s")
+void func_global_asm_80613214(Actor *actor) {
+    if (actor->unk50 != 0) {
+        func_global_asm_80613794(actor, 2);
+        actor->unk50 = 0;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061324C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613358.s")
 
+// Displaylist stuff, looks for 0xFD (G_SETTIMG) commands in a loop
+// Possibly the code responsible for loading textures dynamically
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806133C8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613448.s")
@@ -200,12 +216,11 @@ s32 func_global_asm_806150C8(Actor *arg0) {
 
 s32 func_global_asm_806150F8(Actor *arg0) {
     s32 temp_a1;
-    ActorAnimationState *temp_v1;
+    ActorAnimationState *aaS;
 
-    temp_v1 = arg0->animation_state;
-    temp_a1 = temp_v1->unk88;
-    if (temp_a1 != 0) {
-        temp_v1->unk88 = temp_a1 - 1;
+    aaS = arg0->animation_state;
+    if (aaS->unk88) {
+        aaS->unk88--;
         return 0;
     }
     D_807F5AF0++;
@@ -213,16 +228,15 @@ s32 func_global_asm_806150F8(Actor *arg0) {
 }
 
 s32 func_global_asm_80615134(Actor *arg0) {
-    ActorAnimationState *temp_v0;
-    ActorAnimationState *temp_v0_2;
+    ActorAnimationState *aaS;
     AnimationStateUnk0 *var_v1;
 
-    temp_v0 = arg0->animation_state;
-    var_v1 = temp_v0->unk84 ? temp_v0->unk4 : temp_v0->unk0;
+    aaS = arg0->animation_state;
+    var_v1 = aaS->unk84 ? aaS->unk4 : aaS->unk0;
     D_807F5AF0++;
     if ((var_v1->unk24 != 0.0f) || ((var_v1->unk2C != 0.0f) && (var_v1->unk34 != 0.0f))) {
-        temp_v0_2 = arg0->animation_state;
-        temp_v0_2->unk78 |= 1;
+        aaS = arg0->animation_state;
+        aaS->unk78 |= 1;
     }
     return 0;
 }
@@ -241,17 +255,16 @@ s32 func_global_asm_806151BC(Actor *arg0) {
 }
 
 s32 func_global_asm_8061522C(Actor *arg0) {
-    u8 temp_a0;
+    u8 random;
     u8 sp1E;
     u8 sp1D;
-    s32 var_v0;
 
     D_807F5AF0++;
     func_global_asm_80614F28(&sp1E);
     func_global_asm_80614F28(&sp1D);
-    temp_a0 = (((rand() >> 0xF) % 32767) % ((sp1D - sp1E) + 1)) + sp1E;
-    if (temp_a0) {
-        arg0->animation_state->unk7C = temp_a0 - 1;
+    random = (((rand() >> 0xF) % 32767) % ((sp1D - sp1E) + 1)) + sp1E;
+    if (random) {
+        arg0->animation_state->unk7C = random - 1;
         arg0->animation_state->unk78 |= 2;
         return 0;
     }
@@ -325,15 +338,15 @@ s32 func_global_asm_8061551C(Actor *arg0) {
 
 s32 func_global_asm_80615558(Actor *arg0) {
     f32 sp1C;
-    ActorAnimationState *sp18;
+    ActorAnimationState *aaS;
 
-    sp18 = arg0->animation_state;
+    aaS = arg0->animation_state;
     D_807F5AF0++;
     func_global_asm_80614FD8(&sp1C);
-    if (sp18->unk8->unk0) {
-        if (sp1C < sp18->unk44) {
-            sp18->unk44 = sp1C;
-            sp18->unk40 = (sp18->unk44 - (sp18->unk10 * sp18->unk44));
+    if (aaS->unk8->unk0) {
+        if (sp1C < aaS->unk44) {
+            aaS->unk44 = sp1C;
+            aaS->unk40 = (aaS->unk44 - (aaS->unk10 * aaS->unk44));
         }
         arg0->animation_state->unk78 |= 0x10;
     }
@@ -375,7 +388,6 @@ s32 func_global_asm_806156A0(Actor *arg0) {
 s32 func_global_asm_806156DC(Actor *arg0) {
     f32 sp24;
     AnimationStateUnk0 *var_v1;
-    f32 var_f8;
 
     if (arg0->animation_state->unk84 != 0) {
         var_v1 = arg0->animation_state->unk4;

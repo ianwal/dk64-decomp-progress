@@ -5,8 +5,6 @@ orphanFunctionsWithSignatures = [
     "playAnimation",
     "playActorAnimation",
     "addActorRecolor",
-    "func_global_asm_806119A0",
-    "func_global_asm_806119FC",
     "func_global_asm_80611BB4",
     "func_global_asm_80612790",
     "func_global_asm_80612794",
