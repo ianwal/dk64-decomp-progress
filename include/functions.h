@@ -13,7 +13,7 @@ s32 rand(void);
 s32 playCutscene(Actor *arg0, s16 arg1, s32 arg2);
 void playAnimation(Actor *arg0, s32 arg2);
 void playActorAnimation(Actor *arg0, s32 arg1);
-void addActorRecolor(Actor *actor, s16 x, s16 y, s16 z, s32 alpha, s32 red, s32 green, s32 blue, s32);
+void addActorRecolor(Actor *actor, s16 x, s16 y, s16 z, u8 alpha, u8 red, u8 green, u8 blue, u8);
 u32 func_global_asm_806119A0(void);
 f32 func_global_asm_806119FC(void);
 f32 func_global_asm_80611BB4(f32 arg0, f32 arg1);
