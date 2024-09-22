@@ -2,7 +2,6 @@
 orphanFunctionsWithSignatures = [
     "func_global_asm_80612790",
     "func_global_asm_80612794",
-    "func_global_asm_8061C464",
     "func_global_asm_806A36F4",
     "func_global_asm_806E770C",
     "func_global_asm_8073243C",

@@ -28,10 +28,10 @@ void func_dk64_boot_800024E0(u8 **arg0, s32 *arg1, void *arg2) {
     }
 }
 
+// very close, just missing a few sltu instructions  
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_30E0/func_dk64_boot_800025A4.s")
 
 /*
-// very close, just missing a few sltu instructions  
 extern s32 D_dk64_boot_8000EEE4;
 extern s32 D_dk64_boot_80013ACC;
 extern s32 D_dk64_boot_80013AEC;

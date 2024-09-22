@@ -69,6 +69,7 @@ void func_global_asm_80612CA0(f32 (*arg0)[4], f32 arg1) {
     arg0[1][1] = sp20;
 }
 
+// TODO: HASM?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17800/func_global_asm_80612D10.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17800/func_global_asm_80612D1C.s")

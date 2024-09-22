@@ -1363,8 +1363,6 @@ void func_global_asm_8066B4AC(s32 arg0, s32 arg1, s32 arg2) {
 // stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066B4D4.s")
 
-s32 __ull_rshift(s32, s32, f32, s32);
-
 /*
 // TODO: Pretty close, s16/u16 and stack nonsense
 s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3) {

@@ -1,6 +1,14 @@
 #include <ultra64.h>
 #include "functions.h"
 
+void func_global_asm_80613BA0(Actor *, s16, f32, f32);
+void func_global_asm_80613CA8(Actor *, s16, f32, f32);
+void func_global_asm_80614014(Actor *, u16, f32, u8);
+void func_global_asm_80613FB0(Actor *, u16, f32, u8);
+void func_global_asm_80614644(Actor *, AnimationStateUnk0 *, f32);
+
+extern u8 *D_807F5AF0;
+extern u16 *D_807FBB54;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80612E90.s")
 
@@ -143,16 +151,12 @@ void func_global_asm_80614D48(Actor *arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614D90.s")
 
-extern u16 *D_807FBB54;
-
 void playAnimation(Actor *arg0, s32 arg1) {
     s32 offset = (arg1 * 7) + (arg0->unk58 - 2);
     playActorAnimation(arg0, D_807FBB54[offset]);
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/playActorAnimation.s")
-
-extern u8 *D_807F5AF0;
 
 void func_global_asm_80614F28(u8 *arg0) {
     // getAnimationArg8
@@ -467,12 +471,6 @@ s32 func_global_asm_8061594C(Actor *arg0) {
     return 1;
 }
 
-void func_global_asm_80613BA0(Actor *, s16, f32, f32);
-void func_global_asm_80613CA8(Actor *, s16, f32, f32);
-void func_global_asm_80614014(Actor *, u16, f32, u8);
-void func_global_asm_80613FB0(Actor *, u16, f32, u8);
-void func_global_asm_80614644(Actor *, AnimationStateUnk0 *, f32);
-
 s32 func_global_asm_8061599C(Actor *arg0) {
     s16 sp1E;
 
@@ -535,7 +533,7 @@ s32 func_global_asm_80615B84(Actor *arg0) {
     s16 sp1E;
     f32 sp18;
 
-    D_807F5AF0 += 1;
+    D_807F5AF0++;
     func_global_asm_80614F4C(&sp1E);
     func_global_asm_80614FD8(&sp18);
     func_global_asm_80613AF8(arg0, sp1E, 0.0f, sp18);
@@ -582,7 +580,7 @@ s32 func_global_asm_80615CE4(Actor *arg0) {
     } else {
         var_a1 = arg0->animation_state->unk0;
     }
-    D_807F5AF0 += 1;
+    D_807F5AF0++;
     func_global_asm_80614F28(&sp27);
     func_global_asm_80614644(arg0, var_a1, D_global_asm_80746D5C);
     if (D_global_asm_80746D5C != 0) {
@@ -593,9 +591,63 @@ s32 func_global_asm_80615CE4(Actor *arg0) {
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615DA4.s")
+s32 func_global_asm_80615DA4(Actor *arg0) {
+    u8 sp27;
+    AnimationStateUnk0 *sp20;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615E74.s")
+    if (arg0->animation_state->unk84 != 0) {
+        sp20 = arg0->animation_state->unk4;
+    } else {
+        sp20 = arg0->animation_state->unk0;
+    }
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp27);
+    sp20->unk1E = sp20->unkC;
+    sp20->unk20 = sp27;
+    sp20->unk1C |= 8;
+    if (sp20->unkC < sp20->unk4) {
+        sp20->unk8 = sp20->unk4 - sp20->unkC;
+    } else {
+        sp20->unk8 = -(sp20->unk4 - sp20->unkC);
+    }
+    sp20->unkE = sp27;
+    arg0->animation_state->unk78 |= 0x20;
+    return 1;
+}
+
+s32 func_global_asm_80615E74(Actor *arg0) {
+    u8 sp2F;
+    u8 sp2E;
+    AnimationStateUnk0 *sp28;
+    ActorAnimationState *aaS;
+
+    aaS = arg0->animation_state;
+    if (aaS->unk84 != 0) {
+        sp28 = aaS->unk4;
+    } else {
+        sp28 = aaS->unk0;
+    }
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp2F);
+    func_global_asm_80614F28(&sp2E);
+    if (sp28->unkC == sp2F) {
+        sp28->unk1E = sp28->unkC;
+        sp28->unk20 = sp2E;
+        sp28->unk1C |= 8;
+        if (sp28->unkC < sp28->unk4) {
+            sp28->unk8 = sp28->unk4 - sp28->unkC;
+        } else {
+            sp28->unk8 = -(sp28->unk4 - sp28->unkC);
+        }
+        sp28->unkE = sp2E;
+        arg0->animation_state->unk78 |= 0x20;
+    } else {
+        sp28->unkC = (sp28->unkC + sp2E) - sp2F;
+        sp28->unkE = (sp28->unkE + sp2E) - sp2F;
+        sp28->unk4 = sp28->unk4 + (sp2E - sp2F);
+    }
+    return 1;
+}
 
 s32 func_global_asm_80615FA0(Actor *arg0) {
     s16 sp26;

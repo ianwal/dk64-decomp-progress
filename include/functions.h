@@ -11,7 +11,6 @@
 // TODO: Assign these to a .c file
 f32 func_global_asm_80612790(s16 arg0);
 f32 func_global_asm_80612794(s16 arg0);
-void func_global_asm_8061C464(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
 void func_global_asm_806A36F4(void);
 u8 func_global_asm_806E770C(void);
 void func_global_asm_8073243C(void);
@@ -69,12 +68,12 @@ void func_dk64_boot_80002750(void);
 // TODO: func_dk64_boot_800029EC has no documented signature
 u8 *strcpy(u8 *dest, u8 const *src);
 // TODO: func_dk64_boot_80002A64 has no documented signature
-// TODO: func_dk64_boot_80002ABC has no documented signature but has been matched
+u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1);
 // TODO: func_dk64_boot_80002B0C has no documented signature
 // TODO: func_dk64_boot_80002BB8 has no documented signature
-// TODO: func_dk64_boot_80002C74 has no documented signature but has been matched
+s32 func_dk64_boot_80002C74(u8 *str, u8 *arg1);
 // TODO: func_dk64_boot_80002CE8 has no documented signature
-// TODO: func_dk64_boot_80002D60 has no documented signature but has been matched
+u8 *func_dk64_boot_80002D60(u8 *str, u8 *ptr);
 // TODO: func_dk64_boot_80002DE4 has no documented signature
 void *memset(void *dest, s32 val, u32 len);
 u8 *strchr(u8 const *str, s32 c);
@@ -99,16 +98,16 @@ s32 func_dk64_boot_80005070(u32 frequency); //s32 osAiSetFrequency(u32 frequency
 void func_dk64_boot_800055D0(void);
 
 // dk64_boot/ll.c
-// TODO: __ull_rshift has no documented signature but has been matched
-// TODO: __ull_rem has no documented signature but has been matched
+u64 __ull_rshift(u64 arg0, u64 arg1);
+u64 __ull_rem(u64 arg0, u64 arg1);
 u64 __ull_div(u64, u64);
-// TODO: __ll_lshift has no documented signature but has been matched
-// TODO: __ll_rem has no documented signature but has been matched
-// TODO: __ll_div has no documented signature but has been matched
+s64 __ll_lshift(u64 arg0, u64 arg1);
+s64 __ll_rem(u64 arg0, u64 arg1);
+s64 __ll_div(s64 arg0, s64 arg1);
 u64 __ll_mul(u64, u64);
-// TODO: __ull_divremi has no documented signature but has been matched
-// TODO: __ll_mod has no documented signature but has been matched
-// TODO: __ll_rshift has no documented signature but has been matched
+void __ull_divremi(u64 *div, u64 *rem, u64 arg2, u16 arg3);
+s64 __ll_mod(s64 arg0, s64 arg1);
+s64 __ll_rshift(s64 arg0, s64 arg1);
 s32 func_dk64_boot_80005A70(void);
 
 // dk64_boot/io/contreaddata.c
@@ -315,7 +314,7 @@ u8 func_global_asm_8060A900(void);
 void func_global_asm_8060AA04(void);
 // TODO: func_global_asm_8060AA58 has no documented signature
 u8 func_global_asm_8060AB38(s32 arg0);
-// TODO: func_global_asm_8060AB48 has no documented signature but has been matched
+void func_global_asm_8060AB48(OSContPad *arg0);
 u8 func_global_asm_8060AC28(void);
 // TODO: func_global_asm_8060AC34 has no documented signature
 // TODO: func_global_asm_8060AC7C has no documented signature
@@ -371,7 +370,7 @@ void func_global_asm_8060DEA8(void);
 void func_global_asm_8060DEC8(void); // saveTheGame()
 void func_global_asm_8060E128(s32 arg0);
 void func_global_asm_8060E1A8(void);
-u8* getFlagBlockAddress(u8 flagType); // TODO: Can we use the FlagTypes enum? Needs to be a u8 to match
+u8 *getFlagBlockAddress(u8 flagType); // TODO: Can we use the FlagTypes enum? Needs to be a u8 to match
 u8 func_global_asm_8060E3B0(u16 arg0, u8 arg1);
 void func_global_asm_8060E430(u16 arg0, u8 arg1, u8 arg2);
 
@@ -560,8 +559,8 @@ s32 func_global_asm_80615B84(Actor *arg0);
 s32 func_global_asm_80615BDC(Actor *arg0);
 s32 func_global_asm_80615C34(Actor *arg0);
 s32 func_global_asm_80615CE4(Actor *arg0);
-// TODO: func_global_asm_80615DA4 has no documented signature
-// TODO: func_global_asm_80615E74 has no documented signature
+s32 func_global_asm_80615DA4(Actor *arg0);
+s32 func_global_asm_80615E74(Actor *arg0);
 s32 func_global_asm_80615FA0(Actor *arg0);
 s32 func_global_asm_8061600C(Actor *arg0);
 // TODO: func_global_asm_8061607C has no documented signature
@@ -675,7 +674,7 @@ void func_global_asm_8061C2D8(Actor *camera, s32 arg1);
 void func_global_asm_8061C2F0(Actor *camera, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7);
 void func_global_asm_8061C39C(Actor *camera);
 void func_global_asm_8061C458(Actor *camera, s32 arg1);
-// TODO: func_global_asm_8061C464 has no documented signature
+void func_global_asm_8061C464(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
 void func_global_asm_8061C518(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 argA);
 void func_global_asm_8061C600(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 argA);
 void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
@@ -3618,13 +3617,13 @@ void func_global_asm_8071F8E4(Struct80717D84 *arg0, u8 *arg1);
 
 // global_asm/code_126260.c
 // TODO: func_global_asm_80721560 has no documented signature
-// TODO: func_global_asm_807215AC has no documented signature but has been matched
-// TODO: func_global_asm_807215D0 has no documented signature but has been matched
-// TODO: func_global_asm_807215EC has no documented signature but has been matched
+void func_global_asm_807215AC(s8 arg0, s8 arg1, s8 arg2);
+void func_global_asm_807215D0(s8 arg0, s8 arg1);
+void func_global_asm_807215EC(void);
 // TODO: func_global_asm_8072167C has no documented signature
 void addActorRecolor(Actor *actor, s16 x, s16 y, s16 z, u8 alpha, u8 red, u8 green, u8 blue, u8);
 // TODO: func_global_asm_80721814 has no documented signature
-// TODO: func_global_asm_80722280 has no documented signature
+void func_global_asm_80722280(void);
 // TODO: func_global_asm_80722294 has no documented signature
 
 // global_asm/code_127B00.c

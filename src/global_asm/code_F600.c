@@ -94,7 +94,7 @@ u8 func_global_asm_8060AB38(s32 arg0) {
     return D_global_asm_807ECDFC[arg0];
 }
 
-void func_global_asm_8060AB48(OSContPad * arg0) {
+void func_global_asm_8060AB48(OSContPad *arg0) {
     s32 i, j;
 
     j = 0;
@@ -127,8 +127,6 @@ void func_global_asm_8060AC34(OSContPad *arg0) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_global_asm_8060AC7C.s")
-
-
 
 /*
 void func_global_asm_806F3E0C(OSContPad *, OSContPad *);

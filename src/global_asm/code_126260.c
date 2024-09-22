@@ -49,8 +49,6 @@ void func_global_asm_80721560(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8
     D_807FDB80 = arg5;
 }
 
-
-
 void func_global_asm_807215AC(s8 arg0, s8 arg1, s8 arg2) {
     D_807FDB60.unkB = arg0;
     D_807FDB60.unkC = arg1;
