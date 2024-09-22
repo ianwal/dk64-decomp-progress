@@ -847,7 +847,7 @@ us,asm,func_global_asm_806C1CCC,376,yes
 us,asm,func_global_asm_806174B4,272,no
 us,asm,func_global_asm_8070DD44,152,no
 us,asm,func_global_asm_8066B434,120,yes
-us,asm,addActorRecolor,152,no
+us,asm,addActorRecolor,152,yes
 us,asm,func_global_asm_806E3C14,36,yes
 us,asm,func_global_asm_80672E64,8,yes
 us,asm,func_global_asm_80627888,192,no
@@ -2567,7 +2567,7 @@ us,asm,func_global_asm_80649D74,140,yes
 us,asm,func_global_asm_80631F58,84,no
 us,asm,func_global_asm_806F142C,112,yes
 us,asm,func_global_asm_806E341C,188,yes
-us,asm,func_global_asm_80722280,20,no
+us,asm,func_global_asm_80722280,20,yes
 us,asm,func_global_asm_80680774,248,yes
 us,asm,func_global_asm_80677D80,328,no
 us,asm,func_global_asm_8073928C,148,no

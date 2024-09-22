@@ -94,9 +94,8 @@ void func_global_asm_8072167C(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
 }
 */
 
-// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_126260/addActorRecolor.s")
-
 extern u8 D_807FDB74;
+extern u8 D_807FDB75;
 
 void addActorRecolor(Actor *actor, s16 x, s16 y, s16 z, u8 alpha, u8 red, u8 green, u8 blue, u8 arg8) {
     u8 var_v0;
@@ -119,6 +118,9 @@ void addActorRecolor(Actor *actor, s16 x, s16 y, s16 z, u8 alpha, u8 red, u8 gre
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_126260/func_global_asm_80721814.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_126260/func_global_asm_80722280.s")
+void func_global_asm_80722280(void) {
+    D_807FDB74 = 0;
+    D_807FDB75 = 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_126260/func_global_asm_80722294.s")
