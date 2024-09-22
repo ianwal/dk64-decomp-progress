@@ -167,17 +167,66 @@ void func_global_asm_80614FD8(s32 * arg0) {
     ((u8*)arg0)[0] = *D_807F5AF0++;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061503C.s")
+s32 func_global_asm_8061503C(Actor *arg0) {
+    D_807F5AF0++;
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061505C.s")
+s32 func_global_asm_8061505C(Actor *arg0) {
+    D_807F5AF0++;
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061507C.s")
+s32 func_global_asm_8061507C(Actor *arg0) {
+    s16 sp1E;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806150C8.s")
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    arg0->animation_state->unk88 = sp1E;
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806150F8.s")
+s32 func_global_asm_806150C8(Actor *arg0) {
+    s32 temp_v1;
+    ActorAnimationState *temp_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615134.s")
+    temp_v0 = arg0->animation_state;
+    temp_v1 = temp_v0->unk88;
+    if (temp_v1 != 0) {
+        temp_v0->unk88 = temp_v1 - 1;
+    }
+    D_807F5AF0++;
+    return 1;
+}
+
+s32 func_global_asm_806150F8(Actor *arg0) {
+    s32 temp_a1;
+    ActorAnimationState *temp_v1;
+
+    temp_v1 = arg0->animation_state;
+    temp_a1 = temp_v1->unk88;
+    if (temp_a1 != 0) {
+        temp_v1->unk88 = temp_a1 - 1;
+        return 0;
+    }
+    D_807F5AF0++;
+    return 1;
+}
+
+s32 func_global_asm_80615134(Actor *arg0) {
+    ActorAnimationState *temp_v0;
+    ActorAnimationState *temp_v0_2;
+    AnimationStateUnk0 *var_v1;
+
+    temp_v0 = arg0->animation_state;
+    var_v1 = temp_v0->unk84 ? temp_v0->unk4 : temp_v0->unk0;
+    D_807F5AF0++;
+    if ((var_v1->unk24 != 0.0f) || ((var_v1->unk2C != 0.0f) && (var_v1->unk34 != 0.0f))) {
+        temp_v0_2 = arg0->animation_state;
+        temp_v0_2->unk78 |= 1;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806151BC.s")
 

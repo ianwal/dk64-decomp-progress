@@ -326,7 +326,7 @@ typedef struct animation_state_unk20 {
 
 typedef struct actor_animation_state {
     AnimationStateUnk0 *unk0;
-    s32 unk4;
+    AnimationStateUnk0 *unk4;
     AnimationStateUnk8 *unk8;
     s32 unkC;
     s16 unk10;
