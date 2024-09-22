@@ -6,10 +6,6 @@ extern u8 D_global_asm_807FBD70;
 extern s32 D_global_asm_8071FB34;
 extern u8 D_global_asm_80750628[];
 
-void func_global_asm_80612BC0(f32 (*mf)[4], f32);
-void func_global_asm_80612C30(f32 (*mf)[4], f32);
-void func_global_asm_80611A70(f32, f32, f32*, f32*);
-
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806B91E0.s")
 

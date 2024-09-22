@@ -740,8 +740,6 @@ void func_global_asm_806A081C(Actor *arg0) {
     arg0->unk6A |=  0x800;
 }
 
-s32 func_global_asm_806131D4(Actor *, s16);           /* extern */
-
 typedef struct KongReflectionAAD {
     Actor* parent;
     s32 parent_spawn_index;

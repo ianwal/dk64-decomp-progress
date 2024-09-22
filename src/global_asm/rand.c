@@ -3,12 +3,20 @@
 
 extern u32 D_global_asm_80746A40;
 
+extern f32 D_global_asm_807572F0;
+extern f32 D_global_asm_807572F4;
+extern f32 D_global_asm_807572F8;
+extern f32 D_global_asm_807572FC;
+extern f32 D_global_asm_80757300;
+extern f32 D_global_asm_80757304;
+extern f32 D_global_asm_80757308;
+
 u32 func_global_asm_806119A0(void) {
     s64 sp18;
     s64 temp_v0;
 
     sp18 = D_global_asm_80746A40;
-    temp_v0 = __ll_mul(sp18, 0x01DF5E0D) + 1;
+    temp_v0 = (sp18 * 0x01DF5E0D) + 1;
     D_global_asm_80746A40 = temp_v0 & 0xFFFFFFFF;
     return D_global_asm_80746A40;
 }
@@ -18,11 +26,7 @@ void func_global_asm_806119F0(s32 arg0) {
 }
 
 f32 func_global_asm_806119FC(void) {
-    f32 var_f6;
-    u32 temp_v0;
-
-    var_f6 = func_global_asm_806119A0();
-    return var_f6 * 2.3283064e-10f;
+    return func_global_asm_806119A0() * 2.3283064e-10f;
 }
 
 s32 rand(void) {
@@ -44,17 +48,8 @@ void func_global_asm_80611A70(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3) {
     }
 }
 
-extern f32 D_global_asm_807572F0;
-extern f32 D_global_asm_807572F4;
-extern f32 D_global_asm_807572F8;
-extern f32 D_global_asm_807572FC;
-extern f32 D_global_asm_80757300;
-extern f32 D_global_asm_80757304;
-extern f32 D_global_asm_80757308;
-
 f32 func_global_asm_80611BB4(f32 arg0, f32 arg1) {
     f32 temp_f0;
-    f32 temp_f0_2;
     f32 temp_f12;
     f32 var_f2;
 
@@ -65,10 +60,9 @@ f32 func_global_asm_80611BB4(f32 arg0, f32 arg1) {
     } else {
         temp_f0 = sqrtf((arg0 * arg0) + (arg1 * arg1));
         if (arg1 < arg0) {
-            temp_f0_2 = func_global_asm_80611850(arg1 / temp_f0);
-            var_f2 = temp_f0_2;
+            var_f2 = func_global_asm_80611850(arg1 / temp_f0);
             if (arg0 < 0.0f) {
-                var_f2 = D_global_asm_807572FC - temp_f0_2;
+                var_f2 = D_global_asm_807572FC - var_f2;
             }
         } else {
             temp_f12 = D_global_asm_80757300 - func_global_asm_80611850(arg0 / temp_f0);

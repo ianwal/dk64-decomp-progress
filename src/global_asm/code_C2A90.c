@@ -27,14 +27,11 @@ extern u8 D_global_asm_807FBDC4;
 extern s32 D_global_asm_807FBDC8[];
 extern u16 D_global_asm_807FC930[];
 
-void func_global_asm_8061CAD8(void);
 void func_global_asm_8061F510(s32, s32);
 void func_global_asm_8062217C(Actor *, s32);
 u8 func_global_asm_8072881C(u8 arg0, u32 *arg1);
 void func_global_asm_8072A450(void);
 
-void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-void func_global_asm_8061C600(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
 int func_global_asm_807035C4(); // TODO: Signature
 int func_global_asm_807197B4(); // TODO: Signature
 int func_global_asm_8071C818(); // TODO: Signature

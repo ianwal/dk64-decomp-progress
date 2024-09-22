@@ -229,7 +229,6 @@ void func_critter_8002646C(Critter*, Critter*);
 void func_critter_80026E0C(CritterController*);
 
 void func_global_asm_8060956C(f32, f32, f32, s32, u8, f32, u8, u8);
-void func_global_asm_80612CA0(f32 (*)[4], f32);
 
 void func_critter_80024000(Critter *arg0, u8 *arg1, f32 arg2) {
     switch (*arg1) {
@@ -514,7 +513,6 @@ void func_critter_80024F28(Critter *arg0) {
     func_critter_80024578(arg0);
 }
 
-s32 func_global_asm_80612C30(f32 (*)[4], f32); // extern
 extern s32 D_critter_80029940;
 extern s32 D_critter_80029980;
 

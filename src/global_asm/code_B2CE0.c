@@ -7,8 +7,6 @@ extern s32 D_global_asm_8072073C; // TODO: Proper datatype
 
 extern f32 D_global_asm_8075B1A8;
 
-void func_global_asm_80612BC0(f32*, f32);
-
 void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
 
 void func_global_asm_806ADFE0(void) {

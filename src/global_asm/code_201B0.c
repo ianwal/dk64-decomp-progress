@@ -33,7 +33,6 @@ void func_global_asm_8061C2D8(Actor *camera, s32 arg1) {
     temp_v0->unkAC &= ~arg1;
 }
 
-
 void func_global_asm_8061C2F0(Actor *camera, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7) {
     CameraPaad *temp_v0;
 
@@ -296,9 +295,6 @@ void func_global_asm_8061CC30(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/playCutscene.s")
 
-
-
-void func_global_asm_806119F0(u32);
 extern CutsceneBank D_807F5B10[2];
 extern OSTime D_807F5CE0;
 extern Actor *D_807F5CE8;
@@ -382,7 +378,7 @@ s32 playCutscene(Actor *arg0, s16 arg1, s32 arg2) {
         }
         D_global_asm_807476EC = 0;
         if ((arg1 == 0) && (current_map == MAP_DK_ISLES_DK_THEATRE)) {
-            func_global_asm_806119F0(0x8E32B6F7);
+            func_global_asm_806119F0(0x8E32B6F7U);
             D_807F5CE0 = osGetTime();
             D_807F5D14 = 0;
         } else if (isIntroStoryPlaying() == 0) {

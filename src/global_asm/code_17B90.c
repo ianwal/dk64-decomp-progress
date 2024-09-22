@@ -159,14 +159,14 @@ void func_global_asm_80614F28(u8 *arg0) {
     *arg0 = *D_807F5AF0++;
 }
 
-void func_global_asm_80614F4C(s16 * arg0) {
+void func_global_asm_80614F4C(s16 *arg0) {
     // getAnimationArg16
     ((u8*)arg0)++;
     ((u8*)arg0)[-1] = *D_807F5AF0++;
     ((u8*)arg0)[0] = *D_807F5AF0++;
 }
 
-void func_global_asm_80614F88(s32 * arg0) {
+void func_global_asm_80614F88(s32 *arg0) {
     // getAnimationArg24
     ((u8*)arg0) += 2;
     ((u8*)arg0)[-2] = *D_807F5AF0++;
@@ -174,7 +174,7 @@ void func_global_asm_80614F88(s32 * arg0) {
     ((u8*)arg0)[0] = *D_807F5AF0++;
 }
 
-void func_global_asm_80614FD8(s32 * arg0) {
+void func_global_asm_80614FD8(s32 *arg0) {
     // getAnimationArg32
     ((u8*)arg0) += 3;
     ((u8*)arg0)[-3] = *D_807F5AF0++;
@@ -542,7 +542,7 @@ s32 func_global_asm_80615B84(Actor *arg0) {
     return 1;
 }
 
-s32 func_global_asm_80615BDC(s32 arg0) {
+s32 func_global_asm_80615BDC(Actor *arg0) {
     u16 sp1E;
     u8 sp1D;
 

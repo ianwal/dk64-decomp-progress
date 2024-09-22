@@ -535,7 +535,6 @@ void func_global_asm_80712944(OSContPad *arg0) {
     }
 }
 
-void func_global_asm_806119F0(u32);
 extern OSTime D_global_asm_807445B8;
 extern OSTime D_global_asm_807445C0;
 extern s8 D_global_asm_80746B60;

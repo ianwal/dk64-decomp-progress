@@ -90,7 +90,6 @@ void func_minecart_80024E78(AAD_minecart_80027DA0*, void*, s32, s32);
 void func_minecart_800253C0(AAD_minecart_80027DA0*, s16, u8);
 void func_minecart_80027EE8(AAD_minecart_80027DA0* arg0);
 void func_global_asm_8061F0B0(s32, s32, s32);
-s32 func_global_asm_806131D4(Actor *arg0, s16 arg1);
 
 void func_minecart_800265F0(void) {
     u8 sp47;

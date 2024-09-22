@@ -645,7 +645,7 @@ typedef struct other_additional_actor_data {
 typedef struct another_additional_actor_data {
     s32 unk0;
     s32 unk4;
-    s32 unk8;
+    f32 unk8;
     s32 unkC;
     s16 unk10;
     u8 unk12;

@@ -20,7 +20,6 @@ extern s8 D_critter_80029FA8;
 
 extern u16 D_global_asm_807FCC44;
 
-s32 func_global_asm_8061CB38();
 s32 func_global_asm_806A2A10(s32, s32, u8);
 u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
 s32 (*func_critter_80029110(s32))(s32 *, s32);
@@ -81,7 +80,7 @@ void func_critter_80029118(void) {
     switch (current_actor_pointer->control_state) {
         case 0x0:
             if (is_cutscene_active == 1) {
-                if (func_global_asm_8061CB38() != 0) {
+                if (func_global_asm_8061CB38()) {
                     switch (current_map) {
                         case MAP_DIVE_BARREL:
                             sp74 = 0;

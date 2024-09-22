@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_80612CA0(f32 (*)[4], f32);
 extern s32 D_global_asm_807501E8; // TODO: Type
 
 Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 x, s16 y, s16 arg4) {

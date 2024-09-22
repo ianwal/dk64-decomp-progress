@@ -113,8 +113,6 @@ extern s32 D_global_asm_807FBB68;
 extern Struct80753EA0 D_global_asm_80753EA0[];
 
 void func_global_asm_806F386C(u8, Actor*, Actor*, s16, u8);
-void func_global_asm_80614FD8(void*);
-void func_global_asm_80614F28(void*);
 
 void func_global_asm_806F09F0(Actor *arg0, u16 arg1) {
     switch (arg1) {
@@ -291,9 +289,9 @@ void func_global_asm_806F0D68(Actor *arg0) {
     }
 }
 
-void func_global_asm_806F1048(Actor *arg0) {
-    s32 actorBehaviourIndex = arg0->unk58;
-    PlayerAdditionalActorData *PaaD = arg0->PaaD;
+void func_global_asm_806F1048(Actor *actor) {
+    s32 actorBehaviourIndex = actor->unk58;
+    PlayerAdditionalActorData *PaaD = actor->PaaD;
 
     switch (actorBehaviourIndex) {
         case ACTOR_LANKY:
@@ -306,7 +304,7 @@ void func_global_asm_806F1048(Actor *arg0) {
         case ACTOR_CUTSCENE_TINY:
         case ACTOR_CUTSCENE_CHUNKY:
             if (!(PaaD->unk1F0 & 0x40)) {
-                func_global_asm_80613214(arg0);
+                func_global_asm_80613214(actor);
             }
             break;
     }
@@ -360,10 +358,10 @@ void func_global_asm_806F1250(Actor *arg0) {
     PaaD->unk1F0 |= 0x40;
 }
 
-void func_global_asm_806F12FC(Actor *arg0) {
-    PlayerAdditionalActorData *PaaD = arg0->PaaD;
-    if (arg0->unk58 == ACTOR_CHUNKY) {
-        func_global_asm_80613214(arg0);
+void func_global_asm_806F12FC(Actor *actor) {
+    PlayerAdditionalActorData *PaaD = actor->PaaD;
+    if (actor->unk58 == ACTOR_CHUNKY) {
+        func_global_asm_80613214(actor);
         func_global_asm_80602B60(0x6C, 0);
     }
     PaaD->unk1F0 &= ~0x40;

@@ -2353,8 +2353,6 @@ void func_global_asm_8071EEA4(Struct80717D84 *arg0, s32 arg1) {
 extern f32 D_global_asm_8075EAA8;
 extern f64 D_global_asm_8075EAB0;
 
-void func_global_asm_80612CA0(f32 (*)[4], f32);
-
 typedef struct {
     f32 unk0;
     f32 unk4;

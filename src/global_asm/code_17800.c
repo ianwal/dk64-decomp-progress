@@ -1,6 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern f32 D_global_asm_80757310;
+extern f32 D_global_asm_80757314;
+extern f32 D_global_asm_80757318;
+
 f32 func_global_asm_80612B00(f32 arg0, s16 arg1) {
     f32 var_f2;
     s16 i;
@@ -15,19 +19,13 @@ f32 func_global_asm_80612B00(f32 arg0, s16 arg1) {
 }
 
 f32 func_global_asm_80612B48(s16 arg0) {
-    s16 i;
-
-    i = 0;
-    if (arg0 != 0) {
-        do {
-            arg0 /= 10;
-            i++;
-        } while (arg0 != 0);
+    s16 i = 0;
+    while (arg0) {
+        arg0 /= 10;
+        i++;
     }
     return i - 1;
 }
-
-extern f32 D_global_asm_80757310;
 
 void func_global_asm_80612BC0(f32 (*arg0)[4], f32 arg1) {
     f32 sp24;
@@ -43,8 +41,6 @@ void func_global_asm_80612BC0(f32 (*arg0)[4], f32 arg1) {
     arg0[2][2] = sp20;
 }
 
-extern f32 D_global_asm_80757314;
-
 void func_global_asm_80612C30(f32 (*arg0)[4], f32 arg1) {
     f32 sp24;
     f32 sp20;
@@ -58,8 +54,6 @@ void func_global_asm_80612C30(f32 (*arg0)[4], f32 arg1) {
     arg0[0][0] = sp20;
     arg0[2][2] = sp20;
 }
-
-extern f32 D_global_asm_80757318;
 
 void func_global_asm_80612CA0(f32 (*arg0)[4], f32 arg1) {
     f32 sp24;

@@ -117,7 +117,7 @@ void func_bonus_8002D2F0(void) {
     switch (current_actor_pointer->control_state) {
         case 0:
             if (is_cutscene_active == 1) {
-                if (func_global_asm_8061CB38() != 0) {
+                if (func_global_asm_8061CB38()) {
                     switch (current_map) {
                         case MAP_RAMBI_ARENA:
                             textIndex = 0x1F;

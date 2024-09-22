@@ -134,7 +134,6 @@ Gfx *func_global_asm_806AA09C(s16 x, s16 y, s16 arg2, s16 arg3, Gfx *dl, s8 arg5
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806AA304.s")
 
 /*
-f32 func_global_asm_80612E40(f32);
 ? func_global_asm_806AB4EC(void *, ? *, s32, s32, f32, s32, s32);
 ? func_global_asm_806AB808(void *, ?, ?, ?, s32, s32, s32, s32);
 extern ? D_global_asm_80720C34;

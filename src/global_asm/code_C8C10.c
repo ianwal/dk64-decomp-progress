@@ -2,8 +2,6 @@
 #include "functions.h"
 #include "voiddeleteactor.h"
 
-void func_global_asm_8061C518(Actor*, Actor*, s32, s32, s32, s32, s32, s32, s32, s32, f32);
-
 void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
     Actor178 *a178;
 

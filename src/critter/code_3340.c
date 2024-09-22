@@ -3,8 +3,6 @@
 
 extern f32 D_critter_8002A1B0;
 
-s32 func_global_asm_8061CB38();
-
 void func_critter_80027340(s32 arg0) {
     s32 phi_s0;
     s32 phi_s2;
