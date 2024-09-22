@@ -286,19 +286,91 @@ s32 func_global_asm_8061537C(Actor *arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061540C.s")
+s32 func_global_asm_8061540C(Actor *arg0) {
+    f32 sp24;
+    AnimationStateUnk0 *var_v0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061551C.s")
+    if (arg0->animation_state->unk84 != 0) {
+        var_v0 = arg0->animation_state->unk4;
+    } else {
+        var_v0 = arg0->animation_state->unk0;
+    }
+    D_807F5AF0++;
+    func_global_asm_80614FD8(&sp24);
+    if (sp24 < 0.0f) {
+        sp24 = arg0->animation_state->unk88;
+    }
+    if ((arg0->animation_state->unk48 * var_v0->unk24) > 0.0f) {
+        if (sp24 <= var_v0->unk4) {
+            return 1;
+        }
+        goto block_10;
+    }
+    if (var_v0->unk4 <= sp24) {
+        return 1;
+    }
+block_10:
+    arg0->animation_state->unk80 = sp24;
+    arg0->animation_state->unk78 |= 8;
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615558.s")
+s32 func_global_asm_8061551C(Actor *arg0) {
+    D_807F5AF0++;
+    if (arg0->animation_state->unk8->unk0 != 0) {
+        arg0->animation_state->unk78 |= 0x10;
+    }
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806155F4.s")
+s32 func_global_asm_80615558(Actor *arg0) {
+    f32 sp1C;
+    ActorAnimationState *sp18;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061562C.s")
+    sp18 = arg0->animation_state;
+    D_807F5AF0++;
+    func_global_asm_80614FD8(&sp1C);
+    if (sp18->unk8->unk0) {
+        if (sp1C < sp18->unk44) {
+            sp18->unk44 = sp1C;
+            sp18->unk40 = (sp18->unk44 - (sp18->unk10 * sp18->unk44));
+        }
+        arg0->animation_state->unk78 |= 0x10;
+    }
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80615664.s")
+s32 func_global_asm_806155F4(Actor *arg0) {
+    if (arg0->animation_state->unk88 != 0) {
+        D_807F5AF0++;
+        return 1;
+    }
+    return 0;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806156A0.s")
+s32 func_global_asm_8061562C(Actor *arg0) {
+    if (arg0->animation_state->unk88 == 0) {
+        D_807F5AF0++;
+        return 1;
+    }
+    return 0;
+}
+
+s32 func_global_asm_80615664(Actor *arg0) {
+    if (arg0->animation_state->unk4->unk0 == 0) {
+        D_807F5AF0++;
+        return 1;
+    }
+    return 0;
+}
+
+s32 func_global_asm_806156A0(Actor *arg0) {
+    if (arg0->animation_state->unk28 == arg0->animation_state->unk2C) {
+        D_807F5AF0++;
+        return 1;
+    }
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806156DC.s")
 

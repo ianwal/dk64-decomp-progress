@@ -329,14 +329,15 @@ typedef struct actor_animation_state {
     AnimationStateUnk0 *unk4;
     AnimationStateUnk8 *unk8;
     s32 unkC;
-    s16 unk10;
-    s16 unk12;
+    f32 unk10;
     void *bone_arrays[2]; // at 0x14, camera, update bone positions // TODO: Proper type
     AnimationStateUnk1C *unk1C;
     AnimationStateUnk20 *unk20; // See boss func_dk64_boot_8002FB7C
     AnimationStateUnk24 *unk24;
-    s32 unk28;
-    s32 unk2C;
+    s16 unk28;
+    s16 unk2A;
+    s16 unk2C;
+    s16 unk2E;
     s32 unk30;
     union {
         struct {
@@ -346,8 +347,8 @@ typedef struct actor_animation_state {
         };
         f32 scale[3];
     };
-    s32 unk40;
-    s32 unk44;
+    f32 unk40;
+    f32 unk44;
     f32 unk48;
     f32 unk4C;
     f32 unk50;
