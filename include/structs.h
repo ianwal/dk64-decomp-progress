@@ -1594,7 +1594,10 @@ typedef struct {
     f32     unk2C4; // Used
     s16     unk2C8; // Used
     s16     unk2CA;
-    u8      pad_unknown4[0x2E0 - 0x2CC];
+    s16 unk2CC;
+    s16 unk2CE;
+    f32 unk2D0;
+    u8      pad_unknown4[0x2E0 - 0x2D4];
     u16     unk2E0;
     u16     unk2E2;
     u8      unk2E4;

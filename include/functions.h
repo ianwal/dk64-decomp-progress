@@ -697,7 +697,7 @@ s32 playCutscene(Actor *arg0, s16 arg1, s32 arg2);
 // TODO: func_global_asm_8061D1FC has no documented signature
 void func_global_asm_8061D4E4(Actor *arg0);
 // TODO: func_global_asm_8061D6A8 has no documented signature
-// TODO: func_global_asm_8061D898 has no documented signature
+void func_global_asm_8061D898(void);
 // TODO: func_global_asm_8061D934 has no documented signature
 // TODO: func_global_asm_8061D968 has no documented signature
 // TODO: func_global_asm_8061D9EC has no documented signature
