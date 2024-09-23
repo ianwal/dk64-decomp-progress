@@ -351,7 +351,8 @@ typedef struct actor_animation_state {
     s16 unk2A;
     s16 unk2C;
     s16 unk2E;
-    s32 unk30;
+    s16 unk30;
+    s16 unk32;
     union {
         struct {
             f32 scale_x; // at 0x34
@@ -381,7 +382,7 @@ typedef struct actor_animation_state {
     f32 unk80;
     s32 unk84;
     s32 unk88;
-    s32 unk8C;
+    f32 unk8C;
     s32 unk90;
     f32 animation_timer_1; // at 0x94
     f32 animation_timer_2; // at 0x98

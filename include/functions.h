@@ -618,7 +618,7 @@ s32 func_global_asm_80616594(Actor *arg0);
 // TODO: func_global_asm_80617D20 has no documented signature
 // TODO: func_global_asm_80617D70 has no documented signature
 // TODO: func_global_asm_80617D94 has no documented signature
-// TODO: func_global_asm_80617DFC has no documented signature
+void func_global_asm_80617DFC(Actor *, s16);
 // TODO: func_global_asm_80617FFC has no documented signature
 // TODO: func_global_asm_80618048 has no documented signature
 // TODO: func_global_asm_806180FC has no documented signature
