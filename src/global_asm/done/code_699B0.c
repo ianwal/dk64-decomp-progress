@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 typedef struct {
     u8 unk0;
@@ -37,8 +38,8 @@ void func_global_asm_80664CB0(s16 arg0) {
     }
 }
 
-extern s32 D_global_asm_8071FF18; // Sprite
-extern s32 D_global_asm_8072140C; // Sprite
+extern SpriteData D_global_asm_8071FF18; // Sprite
+extern SpriteData D_global_asm_8072140C; // Sprite
 
 void func_global_asm_80664D20(void) {
     Temp20Big *temp_s0;

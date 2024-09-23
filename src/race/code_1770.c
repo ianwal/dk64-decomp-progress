@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 typedef struct {
     u8 pad0[0x10 - 0x0];
@@ -49,8 +50,8 @@ typedef struct {
     f32 unk8;
 } Struct80026098;
 
-extern s32 D_global_asm_8071FFA0; // TODO: Datatype
-extern s32 D_global_asm_80720340; // TODO: Datatype
+extern SpriteData D_global_asm_8071FFA0; // TODO: Datatype
+extern SpriteData D_global_asm_80720340; // TODO: Datatype
 
 extern u16 D_global_asm_80750AC4;
 

@@ -1,7 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
-extern s32 D_global_asm_8071FBA0; // TODO: Datatype
+extern SpriteData D_global_asm_8071FBA0; // TODO: Datatype
 
 typedef struct {
     s32 unk0[3];

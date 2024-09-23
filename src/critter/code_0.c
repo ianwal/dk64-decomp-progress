@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 typedef struct CritterStruct5 {
     s16 x_position; // 0x00
@@ -212,7 +213,7 @@ typedef struct {
 
 extern D_80029F74 D_critter_80029F74;
 
-extern s32 D_global_asm_8071FC40;
+extern SpriteData D_global_asm_8071FC40;
 extern u8 D_global_asm_80770DC9;
 extern s32 D_global_asm_807F6C28;
 

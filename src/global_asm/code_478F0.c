@@ -1,38 +1,39 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 extern s32 D_global_asm_80718188;
 
-extern s32 D_global_asm_80720EA4;
-extern s32 D_global_asm_8071FC8C; // TODO: Datatype
-extern s32 D_global_asm_8071FC40;
+extern SpriteData D_global_asm_80720EA4;
+extern SpriteData D_global_asm_8071FC8C; // TODO: Datatype
+extern SpriteData D_global_asm_8071FC40;
 
-extern s32 D_global_asm_8071FBC8;
-extern s32 D_global_asm_8071FB54;
-extern s32 D_global_asm_8071FE08; // TODO: Datatype
-extern s32 D_global_asm_8071FE64;
-extern s32 D_global_asm_8071FE88;
-extern s32 D_global_asm_8071FFA0;
-extern s32 D_global_asm_8071FEAC;
-extern s32 D_global_asm_8071FF18;
-extern s32 D_global_asm_8071FFA0;
+extern SpriteData D_global_asm_8071FBC8;
+extern SpriteData D_global_asm_8071FB54;
+extern SpriteData D_global_asm_8071FE08; // TODO: Datatype
+extern SpriteData D_global_asm_8071FE64;
+extern SpriteData D_global_asm_8071FE88;
+extern SpriteData D_global_asm_8071FFA0;
+extern SpriteData D_global_asm_8071FEAC;
+extern SpriteData D_global_asm_8071FF18;
+extern SpriteData D_global_asm_8071FFA0;
 
-extern s32 D_global_asm_80720A7C;
-extern s32 D_global_asm_80720B00;
-extern s32 D_global_asm_80720BE8;
-extern s32 D_global_asm_80720BC4; // TODO: Datatype
-extern s32 D_global_asm_80720CD8;
-extern s32 D_global_asm_80720E44;
-extern s32 D_global_asm_80720E5C;
-extern s32 D_global_asm_80720E74;
-extern s32 D_global_asm_80720E8C;
+extern SpriteData D_global_asm_80720A7C;
+extern SpriteData D_global_asm_80720B00;
+extern SpriteData D_global_asm_80720BE8;
+extern SpriteData D_global_asm_80720BC4; // TODO: Datatype
+extern SpriteData D_global_asm_80720CD8;
+extern SpriteData D_global_asm_80720E44;
+extern SpriteData D_global_asm_80720E5C;
+extern SpriteData D_global_asm_80720E74;
+extern SpriteData D_global_asm_80720E8C;
 
-extern s32 D_global_asm_80721200;
-extern s32 D_global_asm_8072121C;
-extern s32 D_global_asm_80721238;
-extern s32 D_global_asm_80721250;
-extern s32 D_global_asm_8072126C;
-extern s32 D_global_asm_80721530;
+extern SpriteData D_global_asm_80721200;
+extern SpriteData D_global_asm_8072121C;
+extern SpriteData D_global_asm_80721238;
+extern SpriteData D_global_asm_80721250;
+extern SpriteData D_global_asm_8072126C;
+extern SpriteData D_global_asm_80721530;
 
 typedef struct {
     f32 unk0;
@@ -362,7 +363,7 @@ void func_global_asm_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-extern s32 D_global_asm_807201D4;
+extern SpriteData D_global_asm_807201D4;
 
 typedef struct {
     void *unk0;
@@ -922,7 +923,7 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80647610.s")
 
-extern s32 D_global_asm_80720DE0; // TODO: Datatype
+extern SpriteData D_global_asm_80720DE0; // TODO: Datatype
 
 /*
 void func_global_asm_80647610(s32 **arg0, s32 arg1, s16 arg2, s16 arg3) {
@@ -1203,7 +1204,7 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_806485A0.s")
 
-extern s32 D_global_asm_8071FF18;
+extern SpriteData D_global_asm_8071FF18;
 
 /*
 void func_global_asm_806485A0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
@@ -1329,7 +1330,7 @@ void func_global_asm_806491F4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 }
 */
 
-extern s32 D_global_asm_80721298; // TODO: Sprite
+extern SpriteData D_global_asm_80721298; // TODO: Sprite
 
 void func_global_asm_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     u8 temp_s1;

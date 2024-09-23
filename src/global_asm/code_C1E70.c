@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 extern s8 D_global_asm_80750660;
 extern s8 D_global_asm_807506A4;
@@ -186,7 +187,7 @@ void func_global_asm_806BD3E4(void) {
 // Jumptable, doable, close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C1E70/func_global_asm_806BD7B0.s")
 
-extern s32 D_global_asm_80720A7C; // TODO: Sprite
+extern SpriteData D_global_asm_80720A7C; // TODO: Sprite
 
 typedef struct {
     s16 unk0;

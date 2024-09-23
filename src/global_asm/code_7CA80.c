@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 const char D_global_asm_80759260[] = "DONKEY";
 const char D_global_asm_80759268[] = "DIDDY";
@@ -830,7 +831,7 @@ ActorCollision *func_global_asm_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 ar
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_806794EC.s")
 
 extern u8 D_global_asm_807FBB85;
-extern s32 D_global_asm_80720E2C; // TODO: Datatype
+extern SpriteData D_global_asm_80720E2C; // TODO: Datatype
 
 void func_global_asm_80679DC4(Actor *arg0, Actor *arg1, u8 arg2) {
     s32 sp3C;

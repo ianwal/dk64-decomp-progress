@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 extern u8 D_global_asm_80750AB8;
 extern s32 D_global_asm_80750FF0;
@@ -1770,7 +1771,7 @@ u8 func_global_asm_806E560C(Actor *arg0) {
 }
 
 extern u8 D_807F6903;
-extern s32 D_global_asm_8072014C; // Sprite
+extern SpriteData D_global_asm_8072014C; // Sprite
 extern f32 D_global_asm_807536AC[];
 extern s32 D_global_asm_8076A094;
 extern u8 D_global_asm_8076A0B2;

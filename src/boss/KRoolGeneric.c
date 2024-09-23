@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 typedef struct BossStruct2 {
     f32 unk0;
@@ -51,7 +52,7 @@ extern s16 D_boss_800359AC[];
 extern s16 D_boss_800359B8[];
 extern s16 D_boss_800359C4[];
 
-extern s32 D_global_asm_8071FE08; // TODO: Sprite
+extern SpriteData D_global_asm_8071FE08; // TODO: Sprite
 extern u8 D_global_asm_80750AD4;
 extern s32 D_global_asm_80767CC0;
 extern s32 D_global_asm_8076D1F8;

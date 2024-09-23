@@ -2002,11 +2002,11 @@ typedef struct {
 } Struct807500B4;
 
 typedef struct {
-    u8 unk0[4];
+    s32 id;
     u8 images_per_frame_horizontal;
     u8 images_per_frame_vertical;
     u8 unk6;
-    u8 unk7;
+    u8 codec;
     u8 unk8;
     u8 unk9;
     u8 unkA;

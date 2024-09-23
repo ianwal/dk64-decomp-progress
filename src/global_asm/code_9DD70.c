@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 extern s8 D_global_asm_807F6951;
 extern s8 D_global_asm_807F6950;
@@ -313,9 +314,9 @@ void func_global_asm_8069AFF0(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069B010.s")
 
-extern s32 D_global_asm_8071FC58; // TODO: Sprite
-extern s32 D_global_asm_8071FC8C; // TODO: Sprite
-extern s32 D_global_asm_8071FCC0; // TODO: Sprite
+extern SpriteData D_global_asm_8071FC58; // TODO: Sprite
+extern SpriteData D_global_asm_8071FC8C; // TODO: Sprite
+extern SpriteData D_global_asm_8071FCC0; // TODO: Sprite
 
 typedef struct {
     s16 unk0; // y rotation

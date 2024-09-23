@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 /* structs */
 typedef struct {
@@ -104,7 +105,7 @@ extern s32 D_minecart_80028C30; // TODO: Proper datatype
 extern s32 D_minecart_80028C34; // TODO: Datatype
 extern s32 D_minecart_80028C3C; // TODO: Datatype
 extern s32 D_minecart_80028C40; // TODO: Datatype
-extern s32 D_global_asm_8072006C; // TODO: Proper datatype
+extern SpriteData D_global_asm_8072006C; // TODO: Proper datatype
 extern s16 D_global_asm_807502D0;
 extern f32 D_global_asm_807502F8;
 extern s16 D_global_asm_80750338;

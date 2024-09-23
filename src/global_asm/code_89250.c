@@ -1,25 +1,26 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 int func_global_asm_8071827C(); // TODO: Signature
 int func_global_asm_807197B4(); // TODO: Signature
 
-extern s32 D_global_asm_8071FC0C; // TODO: Datatype
-extern s32 D_global_asm_8071FC40;
-extern s32 D_global_asm_8071FE08;
-extern s32 D_global_asm_8071FED0; // TODO: Datatype
-extern s32 D_global_asm_8071FF18;
-extern s32 D_global_asm_8071FF40;
-extern s32 D_global_asm_8071FF58;
-extern s32 D_global_asm_8071FFA0; // TODO: Datatype
-extern s32 *D_global_asm_8072006C;
-extern s32 D_global_asm_80720120;
-extern s32 D_global_asm_80720558;
-extern s32 D_global_asm_8072073C;
-extern s32 D_global_asm_80720B58; // TODO: Datatype
-extern s32 D_global_asm_807210EC;
-extern s32 D_global_asm_80721158;
-extern s32 D_global_asm_8072139C;
+extern SpriteData D_global_asm_8071FC0C; // TODO: Datatype
+extern SpriteData D_global_asm_8071FC40;
+extern SpriteData D_global_asm_8071FE08;
+extern SpriteData D_global_asm_8071FED0; // TODO: Datatype
+extern SpriteData D_global_asm_8071FF18;
+extern SpriteData D_global_asm_8071FF40;
+extern SpriteData D_global_asm_8071FF58;
+extern SpriteData D_global_asm_8071FFA0; // TODO: Datatype
+extern SpriteData D_global_asm_8072006C;
+extern SpriteData D_global_asm_80720120;
+extern SpriteData D_global_asm_80720558;
+extern SpriteData D_global_asm_8072073C;
+extern SpriteData D_global_asm_80720B58; // TODO: Datatype
+extern SpriteData D_global_asm_807210EC;
+extern SpriteData D_global_asm_80721158;
+extern SpriteData D_global_asm_8072139C;
 
 extern u8 D_global_asm_80750AD0;
 
@@ -28,7 +29,7 @@ typedef struct {
 } Struct8074E898;
 
 extern Struct8074E898 D_global_asm_8074E898;
-extern s32 D_global_asm_80720B24;
+extern SpriteData D_global_asm_80720B24;
 
 void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1);
 
@@ -522,7 +523,7 @@ void func_global_asm_80686340(void) {
     func_global_asm_80714A28(4);
 }
 
-extern s32 D_global_asm_8071FBF4;
+extern SpriteData D_global_asm_8071FBF4;
 
 void func_global_asm_80686390(Actor *actor, f32 arg1, f32 x, f32 y, f32 z) {
     f32 var_f0;

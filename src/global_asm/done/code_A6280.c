@@ -1,8 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
-extern s32 D_global_asm_8071FFA0;
-extern s32 D_global_asm_8071FF18;
+extern SpriteData D_global_asm_8071FFA0;
+extern SpriteData D_global_asm_8071FF18;
 
 extern u8 D_global_asm_807506C0[];
 

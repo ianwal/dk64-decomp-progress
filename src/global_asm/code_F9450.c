@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-
+#include "sprites.h"
 
 extern s16 D_global_asm_807FD790[];
 extern u8 D_global_asm_807FD798;
@@ -738,7 +738,7 @@ s32 func_global_asm_806F70A8(s16 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F70FC.s")
 
 int func_global_asm_8071C48C(); // TODO: Signature
-extern s32 D_global_asm_8071FC58; // TODO: Datatype
+extern SpriteData D_global_asm_8071FC58; // TODO: Datatype
 
 /*
 void func_global_asm_806F70FC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {

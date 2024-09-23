@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 typedef struct menu_struct_0 {
     u8  unk0;
@@ -19,7 +20,7 @@ typedef struct menu_struct_0 {
     u8 unk1A;
 } MenuStruct0;
 
-extern s32 D_global_asm_80720268;
+extern SpriteData D_global_asm_80720268;
 extern s16 D_global_asm_80750AC8;
 
 typedef struct {

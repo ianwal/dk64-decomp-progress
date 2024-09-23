@@ -1,7 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
-extern s32 D_global_asm_8071FC8C;
+extern SpriteData D_global_asm_8071FC8C;
 
 typedef struct {
     u16 unk0;
@@ -32,7 +33,7 @@ u8 func_global_asm_8067B450(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067B4C8.s")
 
 void func_global_asm_80613CA8(Actor*, s32, f32, f32);
-extern s32 D_global_asm_8071FBC8; // TODO: Type
+extern SpriteData D_global_asm_8071FBC8; // TODO: Type
 extern u8 D_global_asm_807FBDC4;
 
 typedef struct {
@@ -169,7 +170,7 @@ void func_global_asm_8067BA3C(void) {
 
 extern u8 D_global_asm_807FBBA8;
 
-extern s32 D_global_asm_8071FE08; // TODO: Sprite
+extern SpriteData D_global_asm_8071FE08; // TODO: Sprite
 
 /*
 void func_global_asm_8067BA7C(s32 arg0) {
@@ -528,9 +529,9 @@ void func_global_asm_8067C6FC(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067C71C.s")
 
 int func_global_asm_8071910C(); // TODO: Signature
-extern s32 D_global_asm_8071FE64; // TODO: Datatype
-extern s32 D_global_asm_8071FE88; // TODO: Datatype
-extern s32 D_global_asm_8071FEAC; // TODO: Datatype
+extern SpriteData D_global_asm_8071FE64; // TODO: Datatype
+extern SpriteData D_global_asm_8071FE88; // TODO: Datatype
+extern SpriteData D_global_asm_8071FEAC; // TODO: Datatype
 
 void func_global_asm_8067DCC0(void) {
     f32 scale;
@@ -565,9 +566,9 @@ void func_global_asm_8067DCC0(void) {
     }
 }
 
-extern s32 D_global_asm_80720120;
-extern s32 D_global_asm_80720340;
-extern s32 D_global_asm_8072038C;
+extern SpriteData D_global_asm_80720120;
+extern SpriteData D_global_asm_80720340;
+extern SpriteData D_global_asm_8072038C;
 
 void func_global_asm_8067DF44(f32 x, f32 y, f32 z, f32 arg3, u8 arg4, u8 arg5) {
     f64 sp80;

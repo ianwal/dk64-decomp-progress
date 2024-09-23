@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 extern f32 D_critter_8002A1B0;
 
@@ -36,8 +37,8 @@ extern u16 D_global_asm_807FC930[];
 extern s8 D_critter_80029F80[];
 extern s8 D_critter_80029F84[];
 extern u16 D_critter_80029F90[];
-extern s32 D_global_asm_8071FE08; // TODO: Datatype
-extern s32 D_global_asm_80720A7C; // TODO: Datatype
+extern SpriteData D_global_asm_8071FE08; // TODO: Datatype
+extern SpriteData D_global_asm_80720A7C; // TODO: Datatype
 
 /*
 void func_critter_80027448(void) {

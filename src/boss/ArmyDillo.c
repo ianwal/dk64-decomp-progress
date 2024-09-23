@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 // rodata
 const s32 D_boss_80035C00[] = {
@@ -82,7 +83,7 @@ const s32 D_boss_80035CC0[] = {
     0x03000000,
 };
 
-extern void *D_global_asm_80720120;
+extern SpriteData D_global_asm_80720120;
 
 typedef struct {
     u8 unk0[0x6 - 0x0];
@@ -95,7 +96,7 @@ typedef struct {
     u8 unk0[6];
 } Struct80024000;
 
-extern s32 D_global_asm_8071FFA0;
+extern SpriteData D_global_asm_8071FFA0;
 extern Struct80024000 D_boss_8003598C;
 
 void func_boss_80024000(void) {

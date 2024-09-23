@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 typedef struct {
     s32 unk0;
@@ -55,7 +56,7 @@ extern int func_global_asm_8071F3C0(); // TODO: Signature
 
 extern u8 D_multiplayer_80026F70;
 
-extern s32 D_global_asm_807207BC; // TODO: Type
+extern SpriteData D_global_asm_807207BC; // TODO: Type
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 extern u8 D_global_asm_80750AB8;

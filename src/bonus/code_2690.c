@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 // TODO: Is there a file split somewhere in here? Rodata messes up around D_bonus_8002DDD4
 //rodata
@@ -196,7 +197,7 @@ void func_bonus_80027308(BonusStruct0 *arg0, s32 *arg1) {
     deleteActor(current_actor_pointer);
 }
 
-extern s32 D_global_asm_8071FFD4;
+extern SpriteData D_global_asm_8071FFD4;
 
 typedef struct {
     s32 unk0;

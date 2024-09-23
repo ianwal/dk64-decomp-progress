@@ -1,14 +1,15 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
-extern s32 D_global_asm_8071FB08; // TODO: Proper datatype
-extern s32 D_global_asm_8071FBA0;
-extern s32 D_global_asm_8071FC40; // TODO: Proper datatype
-extern s32 D_global_asm_8071FF58; // TODO: Datatype
-extern s32 D_global_asm_8071FFA0;
+extern SpriteData D_global_asm_8071FB08; // TODO: Proper datatype
+extern SpriteData D_global_asm_8071FBA0;
+extern SpriteData D_global_asm_8071FC40; // TODO: Proper datatype
+extern SpriteData D_global_asm_8071FF58; // TODO: Datatype
+extern SpriteData D_global_asm_8071FFA0;
 
-extern s32 D_global_asm_807200D4; // TODO: Proper datatype
-extern s32 D_global_asm_80720B58; // TODO: Datatype
+extern SpriteData D_global_asm_807200D4; // TODO: Proper datatype
+extern SpriteData D_global_asm_80720B58; // TODO: Datatype
 extern s16 D_global_asm_80750AC8;
 
 typedef struct {
@@ -780,7 +781,7 @@ void func_global_asm_806C19F4(void) {
 // https://decomp.me/scratch/YGbiZ
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C1B50.s")
 
-extern s32 D_global_asm_8071FB34; // TODO: Datatype
+extern SpriteData D_global_asm_8071FB34; // TODO: Datatype
 
 /*
 void func_global_asm_806C1B50(void) {

@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 typedef struct {
     void *unk0; // function pointer
@@ -49,9 +50,9 @@ typedef struct {
     f32 unk10;
 } AAD_global_asm_806D0A84;
 
-extern s32 D_global_asm_8071FB08; // TODO: Proper datatype
-extern s32 D_global_asm_8071FC40;
-extern s32 D_global_asm_8071FFA0;
+extern SpriteData D_global_asm_8071FB08; // TODO: Proper datatype
+extern SpriteData D_global_asm_8071FC40;
+extern SpriteData D_global_asm_8071FFA0;
 
 extern u8 D_global_asm_80750AD0;
 extern GlobalASMStruct63 D_global_asm_80750B54[];
@@ -1662,7 +1663,7 @@ void func_global_asm_806CF878(void) {
 }
 
 void func_global_asm_807195D4(void);
-extern s32 D_global_asm_8071FF40;
+extern SpriteData D_global_asm_8071FF40;
 
 void func_global_asm_806CF918(void) {
     s32 i;

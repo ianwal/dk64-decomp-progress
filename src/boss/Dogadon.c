@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 const s32 D_boss_800362F0[] = {
     0x09000102,
@@ -73,7 +74,7 @@ const s32 D_boss_8003639C[] = {
     0xFFFF0000,
 };
 
-extern s32 D_global_asm_80720120;
+extern SpriteData D_global_asm_80720120;
 
 s32 func_global_asm_80725BA4(s16, s16, s32);
 

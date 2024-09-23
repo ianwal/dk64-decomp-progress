@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 void func_global_asm_80613BA0(Actor *, s16, f32, f32);
 void func_global_asm_80613CA8(Actor *, s16, f32, f32);
@@ -1460,8 +1461,8 @@ void func_global_asm_806180FC(Actor *arg0) {
 // jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618104.s")
 
-extern s32 D_global_asm_8071FE08; // TODO: Sprite?
-extern s32 D_global_asm_8071FF18; // TODO: Sprite?
+extern SpriteData D_global_asm_8071FE08; // TODO: Sprite?
+extern SpriteData D_global_asm_8071FF18; // TODO: Sprite?
 
 void func_global_asm_80618430(Actor *arg0) {
     u8 sp27;
@@ -1510,8 +1511,8 @@ void func_global_asm_8061859C(Actor *arg0) {
 // rodata, doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618608.s")
 
-extern s32 D_global_asm_8072006C;
-extern s32 D_global_asm_80720B58;
+extern SpriteData D_global_asm_8072006C;
+extern SpriteData D_global_asm_80720B58;
 extern s32 D_global_asm_807FBB68;
 
 /*

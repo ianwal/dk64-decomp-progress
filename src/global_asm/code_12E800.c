@@ -1,8 +1,9 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
-extern s32 D_global_asm_8071FB34;
-extern s32 D_global_asm_8071FF18;
+extern SpriteData D_global_asm_8071FB34;
+extern SpriteData D_global_asm_8071FF18;
 extern f64 D_global_asm_8075FF20;
 
 extern f64 D_global_asm_8075FF38;
@@ -122,7 +123,7 @@ void func_global_asm_8072A450(void) {
 */
 
 extern f64 D_global_asm_8075FD28;
-extern s32 D_global_asm_80720120; // TODO: Datatype
+extern SpriteData D_global_asm_80720120; // TODO: Datatype
 
 // killEnemy
 void func_global_asm_8072A714(void) {

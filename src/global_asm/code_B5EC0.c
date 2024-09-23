@@ -1,12 +1,13 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 
 extern u8 D_global_asm_807FBD70;
 extern s32 D_global_asm_80750600[];
 
 // TODO: Are these correct?
-extern s32 D_global_asm_8071FFA0;
+extern SpriteData D_global_asm_8071FFA0;
 
 void func_global_asm_806B11C0(u8 boneIndex) {
     f32 x, y, z;

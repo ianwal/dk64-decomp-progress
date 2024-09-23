@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sprites.h"
 
 extern s8 D_global_asm_80745844;
 extern s8 opening_cutscene_transition;
@@ -11,18 +12,18 @@ extern s8 is_raining;
 extern s8 menu_cutscene_index;
 extern s16 menu_cutscene_timer;
 extern s16 D_menu_800336A4[];
-extern void *D_global_asm_80721094;
-extern void *D_global_asm_807210EC;
-extern void *D_global_asm_80721170;
-extern void *D_global_asm_807211D0;
-extern void D_global_asm_80721444(); // TODO: Is this actually a function?
-extern s32 D_global_asm_80720C34;
+extern SpriteData D_global_asm_80721094;
+extern SpriteData D_global_asm_807210EC;
+extern SpriteData D_global_asm_80721170;
+extern SpriteData D_global_asm_807211D0;
+extern SpriteData D_global_asm_80721444;
+extern SpriteData D_global_asm_80720C34;
 extern s8 current_file_selection;
-extern void D_global_asm_8072052C(); // TODO: Is this actually a function?
-extern s32 D_global_asm_807204BC;
-extern s32 D_global_asm_80720CF0;
-extern s32 D_global_asm_80720D14;
-extern s32 D_global_asm_80720D38;
+extern SpriteData D_global_asm_8072052C;
+extern SpriteData D_global_asm_807204BC;
+extern SpriteData D_global_asm_80720CF0;
+extern SpriteData D_global_asm_80720D14;
+extern SpriteData D_global_asm_80720D38;
 extern s8 menu_selection_available;
 
 // Rodata
@@ -438,11 +439,11 @@ void func_menu_80028834(Actor *arg0, s32 arg1) {
     func_menu_80027E10();
     MaaD->unk17 = current_menu_selection;
     func_menu_80030894(MaaD, &D_global_asm_80720C34, 160, 210, 0.75f, 2, 0);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 0,   0,   1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 1,   0,   1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 2,   0,   1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 3,   0,   1.2f, 2, 0x12);
-    func_menu_80030894(MaaD, &D_global_asm_80721444, 4,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_80721444, 0,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_80721444, 1,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_80721444, 2,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_80721444, 3,   0,   1.2f, 2, 0x12);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_80721444, 4,   0,   1.2f, 2, 0x12);
     func_menu_80030894(MaaD, &D_global_asm_8072052C, 0,   0,   0.6f, 2, 6);
     func_menu_80030894(MaaD, &D_global_asm_807211D0, 1,   0,   0.8f, 2, 6);
     // Is the mystery menu not unlocked?
@@ -549,15 +550,15 @@ void func_menu_80028EA8(Actor *arg0, s32 arg1) {
     if (func_menu_800322D0(0)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(MaaD, &D_global_asm_8072052C, 0, 0, 1.0f, 2, 2);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_8072052C, 0, 0, 1.0f, 2, 2);
     if (func_menu_800322D0(1)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(MaaD, &D_global_asm_8072052C, 1, 0, 1.0f, 2, 2);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_8072052C, 1, 0, 1.0f, 2, 2);
     if (func_menu_800322D0(2)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(MaaD, &D_global_asm_8072052C, 3, 0, 1.0f, 2, 2);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_8072052C, 3, 0, 1.0f, 2, 2);
     func_menu_80030894(MaaD, &D_global_asm_807204BC, 2, 0, 1.0f, 2, 2);
     func_menu_80030894(MaaD, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
     func_menu_80030894(MaaD, &D_global_asm_80720D14, 0x23, 0xD2, 0.75f, 2, 0);
@@ -680,21 +681,21 @@ void func_menu_80029D30(Actor *arg0, s32 arg1) {
     if (func_menu_800322D0(0)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(MaaD, &D_global_asm_8072052C, 0, 0, 1.0f, 2, 3);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_8072052C, 0, 0, 1.0f, 2, 3);
     if (func_menu_800322D0(1)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(MaaD, &D_global_asm_8072052C, 1, 0, 1.0f, 2, 3);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_8072052C, 1, 0, 1.0f, 2, 3);
     if (func_menu_800322D0(2)) {
         D_menu_80033F38 = 0;
     }
-    func_menu_80030894(MaaD, &D_global_asm_8072052C, 2, 0, 1.0f, 2, 3);
+    func_menu_80030894(MaaD, (s32)&D_global_asm_8072052C, 2, 0, 1.0f, 2, 3);
     func_menu_80030894(MaaD, &D_global_asm_807204BC, 0xA0, 0x78, 1.0f, 2, 4);
     func_menu_80030894(MaaD, &D_global_asm_80720C34, 0xA0, 0xD2, 0.75f, 2, 0);
 }
 
-extern void* D_global_asm_8071FBC8;
-extern void* D_global_asm_8071FE08;
+extern SpriteData D_global_asm_8071FBC8;
+extern SpriteData D_global_asm_8071FE08;
 extern s8 D_menu_80033FAC;
 
 void func_menu_80029EF8(Actor *arg0, s32 arg1) {
@@ -938,9 +939,9 @@ extern s16 D_menu_8003386C[];
 extern s8 D_menu_80033FAD;
 extern s8 D_menu_80033FAE;
 extern s8 D_menu_80033FAF;
-extern s32 D_global_asm_80720D5C;
-extern s32 D_global_asm_80720D80;
-extern s32 D_global_asm_807211AC;
+extern SpriteData D_global_asm_80720D5C;
+extern SpriteData D_global_asm_80720D80;
+extern SpriteData D_global_asm_807211AC;
 extern s8 D_global_asm_8074451C;
 extern s16 D_global_asm_80744544;
 
@@ -2104,7 +2105,7 @@ void func_menu_80031A5C(void) {
 }
 
 void func_global_asm_8061B650(Actor *);
-extern s32 D_global_asm_8071FE64; // TODO: Type
+extern SpriteData D_global_asm_8071FE64; // TODO: Type
 extern s16 D_global_asm_80754CE0;
 extern f32 D_menu_80033678[];
 extern f32 dk_screen_transition_height;
