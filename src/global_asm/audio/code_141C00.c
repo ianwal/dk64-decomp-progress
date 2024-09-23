@@ -37,8 +37,6 @@ void func_global_asm_8073CFB0(Struct8073F1E4_container *arg0, u8 arg1) {
     }
 }
 
-// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_141C00/func_global_asm_8073D060.s")
-
 s32 func_global_asm_8073D060(ALCSeq *arg0, u32 *arg1) {
     u32 spC;
     u32 sp8;
