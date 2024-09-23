@@ -223,8 +223,7 @@ segments:
       - [0x20166A0, c, done/rand]
       - [0x20169F0, c, done/code_169F0]
       - [0x2016A20, c, code_16A20]
-      - [0x2016B60, bin, code_16B60]
-      # - [0x2016C0C, bin, code_16C0C] # Sine tables
+      - [0x2016B60, hasm, code_16B60]
       - [0x2017490, hasm, code_17490] # hasm
       - [0x2017540, c, code_17540]
       - [0x2017800, c, code_17800]

@@ -1,4 +1,4 @@
-static s16 D_global_asm_80611F0C[] = {
+static s16 D_global_asm_80611F0C[0x401] = {
     0x0000,
     0x000A,
     0x0014,
@@ -1025,7 +1025,7 @@ static s16 D_global_asm_80611F0C[] = {
     0x3E33,
     0x4000,
 };
-static f32 D_global_asm_80612710[] = {
+static f32 D_global_asm_80612710[32] = {
     0.17504200339317f,
     0.18187806010246f,
     0.18871410191059f,
