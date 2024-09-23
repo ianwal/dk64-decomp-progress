@@ -709,7 +709,7 @@ void func_global_asm_8061D4E4(Actor *arg0);
 // TODO: func_global_asm_8061EA78 has no documented signature
 // TODO: func_global_asm_8061EB04 has no documented signature
 // TODO: func_global_asm_8061EDA0 has no documented signature
-// TODO: func_global_asm_8061EF4C has no documented signature
+void func_global_asm_8061EF4C(Actor*, u8, u16, f32, f32, f32, f32, f32);
 // TODO: func_global_asm_8061F0B0 has no documented signature
 // TODO: func_global_asm_8061F164 has no documented signature
 // TODO: func_global_asm_8061F18C has no documented signature

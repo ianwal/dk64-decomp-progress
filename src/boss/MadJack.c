@@ -114,8 +114,6 @@ u8 func_boss_800330D0(Struct800330D0_arg0 *arg0, Struct800330D0_arg1 *arg1) {
 }
 */
 
-void func_global_asm_8061EF4C(s32, s32, s32, f32, f32, f32, f32, f32);
-
 extern f64 D_boss_80036C58;
 
 typedef struct {

@@ -1916,8 +1916,6 @@ void func_global_asm_8064C250(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     drawSpriteAtPosition(&D_global_asm_8071FFA0, 2.5f, D_global_asm_807F621C, D_global_asm_807F6220 + 30.0f, D_global_asm_807F6224);
 }
 
-void func_global_asm_8061EF4C(s32, s32, s32, f32, f32, f32, f32, f32);
-
 typedef struct {
     s32 unk0;
     s32 unk4;

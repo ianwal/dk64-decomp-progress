@@ -1580,33 +1580,174 @@ void func_global_asm_80618968(Actor *arg0) {
     arg0->y_acceleration = sp1C;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618998.s")
+extern f64 D_global_asm_80757450;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618B6C.s")
+void func_global_asm_80618998(Actor *arg0) {
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    s16 sp42;
+    s16 sp40;
+    u8 sp3F;
+    u8 sp3E;
+    s32 var_v1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618C00.s")
+    func_global_asm_8072E2B0(arg0, &sp4C, &sp48, &sp44);
+    func_global_asm_80614F28(&sp3E);
+    func_global_asm_80614F28(&sp3F);
+    func_global_asm_80614F4C(&sp42);
+    func_global_asm_80614F4C(&sp40);
+    sp3F *= (arg0->animation_state->scale[1] / D_global_asm_80757450);
+    if ((arg0->unk58 == ACTOR_BOSS_MAD_JACK) || ((arg0->unk6A & 1) && ((arg0->object_properties_bitfield & 4) || (arg0->unk58 == ACTOR_TOY_MONSTER)) && (is_cutscene_active != 1))) {
+        if (sp3F >= 0x15) {
+            var_v1 = 0x14;
+        } else {
+            var_v1 = sp3F;
+        }
+        func_global_asm_8061EF4C(extra_player_info_pointer->unk104, sp3E, var_v1, sp4C, sp48, sp44, sp42, sp40);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618C8C.s")
+void func_global_asm_80618B6C(Actor *arg0) {
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+    s16 sp32;
+    s16 sp30;
+    u8 sp2F;
+    u8 sp2E;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618CD8.s")
+    func_global_asm_8072E2B0(arg0, &sp3C, &sp38, &sp34);
+    func_global_asm_80614F28(&sp2E);
+    func_global_asm_80614F28(&sp2F);
+    func_global_asm_80614F4C(&sp32);
+    func_global_asm_80614F4C(&sp30);
+    func_global_asm_8061EF4C(extra_player_info_pointer->unk104, sp2E, sp2F, sp3C, sp38, sp34, sp32, sp30);
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618D20.s")
+extern f32 D_global_asm_80757458;
+extern f32 D_global_asm_8075745C;
 
+void func_global_asm_80618C00(Actor *actor, u8 boneIndex) {
+    f32 x, y, z;
+    f32 yScale;
+
+    yScale = D_global_asm_80757458;
+    getBonePosition(actor, boneIndex, &x, &y, &z);
+    if ((actor->unk58 == ACTOR_CHUNKY) || (actor->unk58 == ACTOR_KRUSHA)) {
+        yScale = D_global_asm_8075745C;
+    }
+    func_global_asm_806846B4(x, actor->floor, z, 0.03f, yScale, actor, 0);
+}
+
+void func_global_asm_80618C8C(Actor *arg0) {
+    u8 boneIndex = arg0->unk58 == ACTOR_DK ? 2 : 8;
+    func_global_asm_80618C00(arg0, boneIndex);
+    extra_player_info_pointer->unkCA = 0x28;
+}
+
+void func_global_asm_80618CD8(Actor *arg0) {
+    u8 sp1F;
+
+    func_global_asm_80614F28(&sp1F);
+    if (sp1F & 0x80) {
+        arg0->unk132 = sp1F & 0x7F;
+    } else {
+        func_global_asm_8066EA64(arg0, sp1F);
+    }
+}
+
+void func_global_asm_80618D20(Actor *arg0) {
+    u8 sp1F;
+
+    func_global_asm_80614F28(&sp1F);
+    if (sp1F & 0x80) {
+        arg0->unk132 = sp1F & 0x7F;
+    } else {
+        func_global_asm_8066EA90(arg0, sp1F);
+    }
+}
+
+// rodata, loop, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618D68.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618E4C.s")
+void func_global_asm_80618E4C(Actor *arg0) {
+    u8 sp1F;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618EE8.s")
+    func_global_asm_80614F28(&sp1F);
+    if (sp1F != 0) {
+        arg0->object_properties_bitfield &= ~0x40000000;
+        global_properties_bitfield |= 0x10030;
+    } else {
+        arg0->object_properties_bitfield |= 0x40000000;
+        global_properties_bitfield &= ~0x10030;
+        func_global_asm_806D9924(arg0);
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618F74.s")
+extern s16 D_global_asm_80746E10[];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80619018.s")
+typedef struct {
+    s32 unk0;
+    u16 unk4;
+    u16 unk6;
+} AAD_80618EE8;
+
+void func_global_asm_80618EE8(Actor *arg0) {
+    AAD_80618EE8 *aaD;
+    spawnActor(ACTOR_INSTRUMENT_LOGO, D_global_asm_80746E10[arg0->unk58]);
+    moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[0]);
+    last_spawned_actor->z_rotation = arg0->z_rotation;
+    last_spawned_actor->x_rotation = arg0->x_rotation;
+    aaD = ((AAD_80618EE8*)last_spawned_actor->additional_actor_data);
+    func_global_asm_80614F28(&aaD->unk6);
+}
+
+void func_global_asm_80618F74(Actor *arg0) {
+    u8 sp1F;
+    Actor *vehicle;
+
+    func_global_asm_80614F28(&sp1F);
+    if (sp1F != 0) {
+        spawnActor(ACTOR_SPOTLIGHT, 0xA8);
+        moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[0]);
+        extra_player_info_pointer->vehicle_actor_pointer = last_spawned_actor;
+    } else {
+        vehicle = extra_player_info_pointer->vehicle_actor_pointer;
+        if ((vehicle != NULL) && (vehicle->unk58 == ACTOR_SPOTLIGHT)) {
+            deleteActor(vehicle);
+            extra_player_info_pointer->vehicle_actor_pointer = NULL;
+        }
+    }
+}
+
+extern f32 D_807F5AF8[3];
+extern f32 D_807F5AFC;
+extern f32 D_807F5B00;
+
+void func_global_asm_80619018(Actor *arg0) {
+    u8 sp1F;
+
+    func_global_asm_80614F28(&sp1F);
+    if (sp1F != 0) {
+        if (arg0->unk12C != -1) {
+            func_global_asm_80659620(&D_807F5AF8, &D_807F5AFC, &D_807F5B00, arg0->unk12C);
+            func_global_asm_80659670(107.0f, 48.0f, 80.0f, arg0->unk12C);
+        }
+    } else {
+        if (arg0->unk12C != -1) {
+            func_global_asm_80659670(D_807F5AF8[0], D_807F5AF8[1], D_807F5AF8[2], arg0->unk12C);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806190C0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806192A4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80619500.s")
+void func_global_asm_80619500(Actor *arg0) {
+    deleteActor(arg0);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80619520.s")
 
