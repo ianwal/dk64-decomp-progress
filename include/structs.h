@@ -2036,7 +2036,14 @@ typedef struct {
     s32 unk20;
     s32 unk24;
     s32 unk28;
+    void *unk2C;
+    void *unk30;
 } Struct8073BC74;
+
+typedef struct Struct8073BC74_auxbus {
+    u8 pad0[0x44];
+    Struct8073BC74 * unk44;
+} Struct8073BC74_auxbus;
 
 typedef struct {
     u8 pad0[0x2 - 0x0];
