@@ -45,6 +45,7 @@ void func_global_asm_80613214(Actor *actor) {
 // Possibly the code responsible for loading textures dynamically
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806133C8.s")
 
+// cheeky little struct array loop, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613448.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806134B4.s")
@@ -61,7 +62,16 @@ void func_global_asm_80613214(Actor *actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613BA0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613C48.s")
+void func_global_asm_80613C48(Actor *arg0, s16 arg1, f32 arg2, f32 arg3) {
+    AnimationStateUnk0 *temp_v0;
+
+    temp_v0 = arg0->animation_state->unk0;
+    if (arg1 == temp_v0->unk10) {
+        temp_v0->unk24 = temp_v0->unk0->unk0;
+        return;
+    }
+    func_global_asm_80613CA8(arg0, arg1, arg2, arg3);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613CA8.s")
 
@@ -160,6 +170,31 @@ void playAnimation(Actor *arg0, s32 arg1) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/playActorAnimation.s")
+
+/*
+extern s32 D_807FBB50[];
+
+void playActorAnimation(Actor *arg0, s32 arg1) {
+    ActorAnimationState *aaS;
+
+    aaS = arg0->animation_state;
+    aaS->unk70 = 0;
+    aaS->unk78 = 0;
+    aaS->unk7C = 0;
+    aaS->unk80 = 0;
+    aaS->unk88 = 0;
+    if (arg1 == 0) {
+        aaS->unk68 = 0;
+        D_807F5AF0 = 0;
+        D_807F5AF4 = 0;
+    } else {
+        aaS->unk64 = arg1;
+        aaS->unk68 = D_807FBB50[arg1] + D_807F5AF0;
+        aaS->unk6C = aaS->unk68;
+        D_807F5AF0 = aaS->unk68;
+    }
+}
+*/
 
 void func_global_asm_80614F28(u8 *arg0) {
     // getAnimationArg8

@@ -459,6 +459,7 @@ void func_global_asm_8061D934(u8 arg0) {
     func_global_asm_8061D898();
 }
 
+// hmm, causes fiddly signature for func_global_asm_8061D898
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D968.s")
 
 void func_global_asm_8061D9EC(s32 arg0, s32 arg1, s32 arg2) {
@@ -466,7 +467,14 @@ void func_global_asm_8061D9EC(s32 arg0, s32 arg1, s32 arg2) {
     loading_zone_transition_speed = D_global_asm_807576DC;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061DA14.s")
+extern f32 D_global_asm_807576E0;
+
+void func_global_asm_8061DA14(s32 arg0, s32 arg1, s32 arg2) {
+    D_global_asm_8076A0B1 |= 0x40;
+    loading_zone_transition_type = 0;
+    loading_zone_transition_speed = D_global_asm_807576E0;
+    func_global_asm_8060098C(&func_global_asm_8061D9EC, 0x8000003C, 0, 0, 0);
+}
 
 void func_global_asm_8061DA84(s32 arg0, s32 arg1, s32 arg2) {
     func_global_asm_8061CB08();
@@ -474,11 +482,42 @@ void func_global_asm_8061DA84(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061DAAC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061DB64.s")
+s32 func_global_asm_80620628(Actor*, f32, s32, s32); // extern
+
+typedef struct {
+    Actor *unk0;
+    u8 unk4[0xAC - 0x4];
+    s32 unkAC;
+    u8 unkB0[0xF3 - 0xB0];
+    u8 unkF3;
+    u8 unkF4;
+    u8 unkF5;
+    u8 unkF6;
+} AAD_8061DB64;
+
+void func_global_asm_8061DB64(Actor *arg0) {
+    AAD_8061DB64 *aaD;
+
+    aaD = arg0->additional_actor_data;
+    func_global_asm_80620628(arg0, -1.0f, aaD->unk0->y_rotation, 0);
+    aaD->unkF5 = 0xF;
+    aaD->unkF6 = 0xF;
+    global_properties_bitfield &= ~0x2000;
+    aaD->unkAC &= 0xFFEFFFFF;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061DBD4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061EA78.s")
+s32 func_global_asm_8061EB04(Actor *playerPointer, u8 playerIndex);
+
+void func_global_asm_8061EA78(void) {
+    u8 playerIndex;
+    for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
+        if (character_change_array[playerIndex].does_player_exist) {
+            func_global_asm_8061EB04(character_change_array[playerIndex].player_pointer, playerIndex);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061EB04.s")
 
@@ -545,7 +584,16 @@ void func_global_asm_8061F510(u8 arg0, s8 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80621E9C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062210C.s")
+typedef struct {
+    u8 unk0[0x9E - 0x0];
+    s16 unk9E;
+} Struct8062210C;
+
+void func_global_asm_8062210C(Struct8062210C *arg0, f32 *arg1, s32 arg2, f32 *arg3, f32 arg4) {
+    func_global_asm_80621E9C(arg0, arg1, arg2);
+    *arg1 += arg4 * func_global_asm_80612794(arg0->unk9E);
+    *arg3 += arg4 * func_global_asm_80612790(arg0->unk9E);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062217C.s")
 
@@ -574,7 +622,22 @@ void func_global_asm_806225C0(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806228BC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80622ABC.s")
+extern f32 D_global_asm_80757A18;
+extern f32 D_global_asm_80757A1C;
+extern f32 D_global_asm_80757A20;
+extern f32 D_global_asm_80757A24;
+
+f32 func_global_asm_80622ABC(f32 arg0, f32 arg1, f32 arg2) {
+    f32 temp_f0;
+
+    temp_f0 = arg0 - arg1;
+    if (D_global_asm_80757A18 < temp_f0) {
+        arg1 += D_global_asm_80757A1C;
+    } else if (temp_f0 < D_global_asm_80757A20) {
+        arg0 += D_global_asm_80757A24;
+    }
+    return ((arg1 - arg0) * arg2) + arg0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80622B24.s")
 
@@ -601,7 +664,23 @@ f32 func_global_asm_806252CC(f32 arg0, f32 arg1, f32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806256D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80625994.s")
+extern f32 D_global_asm_807476A4;
+
+typedef struct {
+    u8 unk0[0x78 - 0x0];
+    f32 unk78;
+    f32 unk7C;
+    f32 unk80;
+} AAD_80625994;
+
+void func_global_asm_80625994(Actor *arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
+    AAD_80625994 *aaD;
+
+    aaD = arg0->additional_actor_data;
+    *arg2 = *arg2 + ((aaD->unk78 - *arg2) * D_global_asm_807476A4);
+    *arg3 = *arg3 + ((aaD->unk7C - *arg3) * arg1);
+    *arg4 = *arg4 + ((aaD->unk80 - *arg4) * D_global_asm_807476A4);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806259FC.s")
 
@@ -628,7 +707,37 @@ void func_global_asm_806261CC(Actor *arg0) {
     aaD->unkAC &= 0xFFFEFFFB;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806261EC.s")
+s32 func_global_asm_806264DC(s32, void*, u8); // extern
+
+typedef struct {
+    u8 unk0[0x3C1 - 0x0];
+    u8 unk3C1;
+    u8 unk3C2[0x3D5 - 0x3C2];
+    u8 unk3D5;
+    u8 unk3D6[0x3E9 - 0x3D6];
+    u8 unk3E9;
+    u8 unk3EA[0x3FD - 0x3EA];
+    u8 unk3FD;
+    u8 unk3FE[0x411 - 0x3FE];
+    u8 unk411;
+    u8 unk412[0x425 - 0x412];
+    u8 unk425;
+} Struct806261EC_arg1_unkD8;
+
+typedef struct {
+    u8 unk0[0xD8 - 0x0];
+    Struct806261EC_arg1_unkD8 *unkD8;
+} Struct806261EC_arg1;
+
+void func_global_asm_806261EC(s32 arg0, Struct806261EC_arg1 *arg1, u8 arg2) {
+    func_global_asm_806264DC(arg0, arg1, arg2);
+    arg1->unkD8->unk3C1 = 0xE;
+    arg1->unkD8->unk3D5 = 0xB;
+    arg1->unkD8->unk3E9 = 6;
+    arg1->unkD8->unk3FD = 0x11;
+    arg1->unkD8->unk411 = 7;
+    arg1->unkD8->unk425 = 8;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626264.s")
 
