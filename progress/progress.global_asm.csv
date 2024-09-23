@@ -900,7 +900,7 @@ us,asm,func_global_asm_8065A654,12,yes
 us,asm,func_global_asm_80676540,80,yes
 us,asm,func_global_asm_806E9388,112,yes
 us,asm,func_global_asm_806CD9A0,900,yes
-us,asm,func_global_asm_8073E63C,256,no
+us,asm,func_global_asm_8073E63C,256,yes
 us,asm,func_global_asm_80634908,84,yes
 us,asm,func_global_asm_806B1290,184,yes
 us,asm,func_global_asm_806E0454,140,yes
@@ -1214,7 +1214,7 @@ us,asm,func_global_asm_806D850C,752,yes
 us,asm,func_global_asm_80661658,72,yes
 us,asm,func_global_asm_806A7EF0,384,yes
 us,asm,func_global_asm_806C8F8C,312,yes
-us,asm,func_global_asm_8073E800,160,no
+us,asm,func_global_asm_8073E800,148,yes
 us,asm,func_global_asm_806019B8,76,yes
 us,asm,func_global_asm_80620B38,968,no
 us,asm,isIntroStoryPlaying,12,yes
