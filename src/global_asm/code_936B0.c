@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 extern s32 D_global_asm_8071FFA0;
 extern s32 D_global_asm_80720020; // TODO: Type
@@ -1456,7 +1455,6 @@ void func_global_asm_80696A6C(void) {
     AAD_80696A6C *sp44;
     s16 temp_v0;
     s16 var_a3;
-    Actor *temp;
     s32 temp2;
 
     sp44 = current_actor_pointer->additional_actor_data;
@@ -1498,8 +1496,7 @@ void func_global_asm_80696A6C(void) {
         func_global_asm_8067E278(0, 1);
         func_global_asm_80605314(current_actor_pointer, 0);
         deleteActor(current_actor_pointer);
-        temp = current_actor_pointer->unk11C;
-        if ((temp != NULL) && (temp->unk58 == ACTOR_BOSS_ARMY_DILLO) && (temp->control_state != 0x37)) {
+        if ((current_actor_pointer->unk11C != NULL) && (current_actor_pointer->unk11C->unk58 == ACTOR_BOSS_ARMY_DILLO) && (current_actor_pointer->unk11C->control_state != 0x37)) {
             current_actor_pointer->unk11C->control_state_progress++;
         }
     }

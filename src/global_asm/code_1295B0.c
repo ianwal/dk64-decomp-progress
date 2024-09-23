@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 typedef struct Struct80755690_unk4 Struct80755690_unk4;
 

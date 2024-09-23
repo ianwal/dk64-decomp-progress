@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 extern s32 D_global_asm_807203B0; // TODO: Sprite
 extern s32 D_global_asm_807203D4; // TODO: Sprite

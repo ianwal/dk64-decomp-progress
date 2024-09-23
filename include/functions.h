@@ -1754,7 +1754,7 @@ void func_global_asm_80677EC8(s32 arg0);
 s32 spawnActor(Actors actorIndex, s32 modelIndex);
 s32 func_global_asm_80678014(s32 arg0);
 s32 func_global_asm_80678050(u16);
-// TODO: deleteActor has no documented signature but has been matched
+s32 deleteActor(Actor*);
 s32 func_global_asm_806782E8(Actor *arg0);
 void func_global_asm_806783BC(void);
 void func_global_asm_80678428(Actor *arg0);

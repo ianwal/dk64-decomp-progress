@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 extern s8 D_global_asm_80750560[];
 extern s8 D_global_asm_80750530[];

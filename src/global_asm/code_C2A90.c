@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 extern s32 D_global_asm_8071FB08; // TODO: Proper datatype
 extern s32 D_global_asm_8071FBA0;

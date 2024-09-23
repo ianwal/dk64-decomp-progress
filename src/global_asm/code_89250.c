@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 int func_global_asm_8071827C(); // TODO: Signature
 int func_global_asm_807197B4(); // TODO: Signature

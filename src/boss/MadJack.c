@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 const s32 D_boss_80036C10[] = {
     0x4F230825,

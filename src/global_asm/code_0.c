@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 extern s32 D_dk64_boot_8000DDCC;
 extern s32 D_dk64_boot_8000DDE4;

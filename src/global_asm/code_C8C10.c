@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "voiddeleteactor.h"
 
 void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
     Actor178 *a178;

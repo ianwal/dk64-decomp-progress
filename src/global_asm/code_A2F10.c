@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "s32deleteactor.h"
 
 extern s32 D_global_asm_80720BE8;
 
