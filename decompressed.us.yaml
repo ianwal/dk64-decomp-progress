@@ -366,7 +366,8 @@ segments:
       - [0x2144A90, c, audio/code_144A90]
       - [0x2144E00, c, audio/code_144E00]
       - [0x2145950, c, audio/code_145950]
-      - [0x2145D70, bin, code_145D70] #mips3
+      - [0x2145D70, c, audio/code_145D70]
+      - [0x2146010, bin, code_146010]
       - [0x2149160, data, data_149160]
       - [0x215B290, .rodata, code_0]
       - [0x215B2E0, .rodata, code_3C10]
