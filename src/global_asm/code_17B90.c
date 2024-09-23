@@ -1107,37 +1107,255 @@ s32 func_global_asm_80616DA8(Actor *arg0) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616DB4.s")
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    u8 unkC;
+    u8 unkD;
+} A17C_80616DB4;
 
+s32 func_global_asm_80616DB4(Actor *arg0) {
+    A17C_80616DB4 *a17C;
+    u8 sp1B;
+
+    a17C = arg0->unk17C;
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1B);
+    a17C->unkD |= sp1B;
+    return 1;
+}
+
+// jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616E08.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617140.s")
+extern s32 D_global_asm_807457C8;
+extern f64 D_global_asm_807573A8;
 
+s32 func_global_asm_80617140(Actor *arg0) {
+    s16 sp2E;
+    s16 unkC;
+    u8 sp2B;
+    u8 sp2A;
+    u8 sp29;
+    s16 temp_v0;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp2E);
+    func_global_asm_80614F28(&sp2B);
+    func_global_asm_80614F28(&sp2A);
+    func_global_asm_80614F28(&sp29);
+    if (D_global_asm_807457C8 != 0) {
+        func_global_asm_80737924(D_global_asm_807457C8);
+        D_global_asm_807457C8 = 0;
+    }
+    temp_v0 = func_global_asm_8060A7C0(sp2E, arg0, arg0->unk78);
+    if (temp_v0 == 8) {
+        sp29 = 4;
+    }
+    func_global_asm_8060866C(arg0, temp_v0, sp2B, sp2A / D_global_asm_807573A8, sp29, 0x4B);
+    return 1;
+}
+
+// jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617238.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617400.s")
+extern f32 D_global_asm_807573D0;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806174B4.s")
+s32 func_global_asm_80617400(Actor *arg0) {
+    s16 sp36;
+    u8 sp35;
+    u8 sp34;
+    u8 sp33;
+    u8 sp32;
 
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp36);
+    func_global_asm_80614F28(&sp33);
+    func_global_asm_80614F28(&sp32);
+    func_global_asm_80614F28(&sp35);
+    func_global_asm_80614F28(&sp34);
+    if (arg0->object_properties_bitfield & 4) {
+        playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, sp36, sp33, sp32, sp35, sp34, D_global_asm_807573D0, 0);
+    }
+    return 1;
+}
+
+s32 func_global_asm_806174B4(Actor *arg0) {
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    s16 sp4A;
+    u8 sp49;
+    s32 pad;
+    u8 sp43;
+    u8 sp42;
+    u8 sp41;
+    u8 sp40;
+    u8 sp3F;
+    f32 sp38;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp4A);
+    func_global_asm_80614F28(&sp40);
+    func_global_asm_80614F28(&sp3F);
+    func_global_asm_80614F28(&sp49);
+    func_global_asm_80614F28(&sp43);
+    func_global_asm_80614FD8(&sp38);
+    func_global_asm_80614F28(&sp42);
+    func_global_asm_80614F28(&sp41);
+    if (arg0->object_properties_bitfield & 4) {
+        if (sp42) {
+            getBonePosition(arg0, sp42, &sp54, &sp50, &sp4C);
+        } else {
+            sp54 = arg0->x_position;
+            sp50 = arg0->y_position;
+            sp4C = arg0->z_position;
+        }
+        playSoundAtPosition(sp54, sp50, sp4C, sp4A, sp40, sp3F, sp49, sp43, sp38, sp41);
+    }
+    return 1;
+}
+
+// rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806175C4.s")
 
+extern f64 D_global_asm_807573D8;
+extern f64 D_global_asm_807573E0;
+extern f64 D_global_asm_807573E8;
+extern f64 D_global_asm_807573F0;
+extern f32 D_global_asm_807573F8;
+
+/*
+s32 func_global_asm_806175C4(Actor *arg0) {
+    s16 sp46;
+    u8 sp45;
+    u8 sp44;
+    u8 sp43;
+    u8 sp42;
+    f32 var_f2;
+    f64 temp_f0;
+
+    D_807F5AF0 += 1;
+    func_global_asm_80614F4C(&sp46);
+    func_global_asm_80614F28(&sp43);
+    func_global_asm_80614F28(&sp42);
+    func_global_asm_80614F28(&sp45);
+    func_global_asm_80614F28(&sp44);
+    temp_f0 = ((((arg0->animation_state->scale_x / D_global_asm_807573E0) * 200.0) + D_global_asm_807573E8) * sp43) / D_global_asm_807573F0;
+    if (D_global_asm_807573D8 < temp_f0) {
+        var_f2 = D_global_asm_807573D8;
+    } else {
+        var_f2 = temp_f0;
+    }
+    playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, sp46, var_f2, sp42, sp45, sp44, D_global_asm_807573F8, 0);
+    return 1;
+}
+*/
+
+// m2c errors
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617770.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061796C.s")
+s32 func_global_asm_8061796C(Actor *arg0) {
+    s16 sp1E;
+    u8 sp1D;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806179C0.s")
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    func_global_asm_80614F28(&sp1D);
+    func_global_asm_80617770(arg0, sp1E, sp1D);
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617A60.s")
+s32 func_global_asm_806179C0(Actor *arg0) {
+    s16 sp2E;
+    u8 sp2D;
+    u8 sp2C;
+    u8 sp2B;
+    s8 sp2A;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617AF0.s")
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp2E);
+    func_global_asm_80614F28(&sp2D);
+    func_global_asm_80614F28(&sp2B);
+    func_global_asm_80614F28(&sp2C);
+    func_global_asm_80614F28(&sp2A);
+    func_global_asm_80605314(arg0, sp2D);
+    func_global_asm_80604CBC(arg0, sp2E, sp2C, 1, sp2D, sp2B, 1.0f, sp2A);
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617B38.s")
+s32 func_global_asm_80617A60(Actor *arg0) {
+    f32 sp1C;
+    u8 sp1B;
+    u8 sp1A;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617BD8.s")
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1A);
+    func_global_asm_80614FD8(&sp1C);
+    func_global_asm_80614F28(&sp1B);
+    func_global_asm_80604BE8(arg0->unk6E[sp1A], sp1C, sp1B);
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617C6C.s")
+s32 func_global_asm_80617AF0(Actor *arg0) {
+    u8 sp1F;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617CC0.s")
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1F);
+    func_global_asm_80605314(arg0, sp1F);
+    return 1;
+}
+
+s32 func_global_asm_80617B38(Actor *arg0) {
+    s16 sp2E;
+    u8 sp2D;
+    u8 sp2C;
+    s8 sp2B;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp2E);
+    func_global_asm_80614F28(&sp2D);
+    func_global_asm_80614F28(&sp2C);
+    func_global_asm_80614F28(&sp2B);
+    func_global_asm_80604CBC(arg0, sp2E, sp2C, 1, sp2D, 0xFF, 1.0f, sp2B);
+    arg0->unk72 = arg0->animation_state->unk0->unk10;
+    return 1;
+}
+
+extern f64 D_global_asm_80757400;
+extern u8 D_global_asm_80746D60[];
+
+s32 func_global_asm_80617BD8(Actor *arg0) {
+    u8 sp1F;
+    u8 sp1E;
+
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1F);
+    func_global_asm_80614F28(&sp1E);
+    playSong(D_global_asm_80746D60[sp1F], sp1E / D_global_asm_80757400);
+    return 1;
+}
+
+s32 func_global_asm_80617C6C(Actor *arg0) {
+    u8 sp1F;
+
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1F);
+    func_global_asm_80602B60(D_global_asm_80746D60[sp1F], 0);
+    return 1;
+}
+
+s32 func_global_asm_80617CC0(Actor *arg0) {
+    u16 sp1E;
+    u8 sp1D;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    func_global_asm_80614F28(&sp1D);
+    loadText(arg0, sp1E, sp1D);
+    return 1;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617D14.s")
 
