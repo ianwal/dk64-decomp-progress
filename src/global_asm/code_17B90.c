@@ -1012,25 +1012,100 @@ s32 func_global_asm_80616A1C(Actor *arg0) {
     return D_807F5AF4;
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616A9C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616BA4.s")
+extern f64 D_global_asm_80757370;
+extern f64 D_global_asm_80757378;
+extern f64 D_global_asm_80757380;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616BF0.s")
+/*
+s32 func_global_asm_80616A9C(Actor *arg0) {
+    s16 sp26;
+    u8 sp25;
+    s16 sp22;
+    u8 sp21;
+    u8 sp20;
+    f32 var_f6_2;
+    f64 var_f6;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616C1C.s")
+    D_807F5AF0 += 1;
+    func_global_asm_80614F4C(&sp26);
+    func_global_asm_80614F28(&sp25);
+    func_global_asm_80614F28(&sp20);
+    func_global_asm_80614F4C(&sp22);
+    func_global_asm_80614F28(&sp21);
+    var_f6 = sp25;
+    var_f6_2 = sp20;
+    playSound(sp26, (var_f6 * D_global_asm_80757370) / D_global_asm_80757378, var_f6_2, sp22 / D_global_asm_80757380, sp21, 0);
+    return 1;
+}
+*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616C64.s")
+s32 func_global_asm_80616BA4(Actor *arg0) {
+    u8 controlState;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616C8C.s")
+    D_807F5AF0++;
+    func_global_asm_80614F28(&controlState);
+    arg0->control_state = controlState;
+    arg0->control_state_progress = 0;
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616CB8.s")
+s32 func_global_asm_80616BF0(Actor *arg0) {
+    D_807F5AF0++;
+    arg0->control_state_progress = 0;
+    arg0->control_state++;
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616D5C.s")
+s32 func_global_asm_80616C1C(Actor *arg0) {
+    u8 controlStateProgress;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616D84.s")
+    D_807F5AF0++;
+    func_global_asm_80614F28(&controlStateProgress);
+    arg0->control_state_progress = controlStateProgress;
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616DA8.s")
+s32 func_global_asm_80616C64(Actor *arg0) {
+    D_807F5AF0++;
+    arg0->control_state_progress++;
+    return 1;
+}
+
+s32 func_global_asm_80616C8C(Actor *arg0) {
+    D_807F5AF0++;
+    arg0->unk11C->control_state_progress++;
+    return 1;
+}
+
+s32 func_global_asm_80616CB8(Actor *arg0) {
+    u8 sp1F;
+    u8 sp1E;
+
+    D_807F5AF0++;
+    func_global_asm_80614F28(&sp1F);
+    func_global_asm_80614F28(&sp1E);
+    arg0->animation_state->unk88 = (((rand() >> 0xF) % 32767) % ((sp1E - sp1F) + 1)) + sp1F;
+    return 1;
+}
+
+s32 func_global_asm_80616D5C(Actor *arg0) {
+    D_807F5AF0++;
+    arg0->animation_state->unk84 = 1;
+    return 1;
+}
+
+s32 func_global_asm_80616D84(Actor *arg0) {
+    D_807F5AF0++;
+    arg0->animation_state->unk84 = 0;
+    return 1;
+}
+
+s32 func_global_asm_80616DA8(Actor *arg0) {
+    return 0;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616DB4.s")
 
