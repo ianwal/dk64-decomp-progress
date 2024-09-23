@@ -220,15 +220,15 @@ segments:
       - [0x2015010, c, code_15010]
       - [0x2015050, c, heap]
       - [0x2016550, c, done/code_16550]
-      - [0x20166A0, c, rand] 
-      - [0x20169F0, c, code_169F0] 
-      - [0x2016A20, c, code_16A20] 
-      - [0x2016B60, bin, code_16B60] 
-      # - [0x2016C0C, bin, code_16C0C]  # Sine tables
+      - [0x20166A0, c, done/rand]
+      - [0x20169F0, c, done/code_169F0]
+      - [0x2016A20, c, code_16A20]
+      - [0x2016B60, bin, code_16B60]
+      # - [0x2016C0C, bin, code_16C0C] # Sine tables
       - [0x2017490, hasm, code_17490] # hasm
       - [0x2017540, c, code_17540]
       - [0x2017800, c, code_17800]
-      - [0x2017B40, c, code_17B40]
+      - [0x2017B40, c, done/code_17B40]
       - [0x2017B90, c, code_17B90]
       - [0x201E2D0, bin, code_1E2D0]
       # - [0x201F9A0, bin, code_1F9A0] # Float to Array
@@ -255,7 +255,7 @@ segments:
       - [0x2068960, c, done/code_68960]
       - [0x2068AA0, c, code_68AA0]
       - [0x2068EA0, c, done/code_68EA0]
-      - [0x20699B0, c, code_699B0]
+      - [0x20699B0, c, done/code_699B0]
       - [0x2069E60, c, code_69E60]
       - [0x206AF80, c, code_6AF80]
       - [0x2070FD0, c, code_70FD0]
@@ -376,9 +376,9 @@ segments:
       - [0x215BE40, .rodata, code_131B0]
       - [0x215BF90, .rodata, heap]
       - [0x215BFD0, .rodata, done/code_16550]
-      - [0x215BFF0, .rodata, rand]
+      - [0x215BFF0, .rodata, done/rand]
       - [0x215C010, rodata] # TODO: code_17800+
-      - [0x215C050, .rodata, code_17B40]
+      - [0x215C050, .rodata, done/code_17B40]
       - [0x215C060, rodata] # TODO: code_17B90
       - [0x215C070, rodata] # TODO: split here
       - [0x215C1A0, rodata] # TODO: code_201B0
@@ -399,7 +399,7 @@ segments:
       - [0x215DAE0, .rodata, code_67890]
       - [0x215DAF0, .rodata, done/code_68960]
       - [0x215DB10, .rodata, done/code_68EA0]
-      - [0x215DB20, .rodata, code_699B0]
+      - [0x215DB20, .rodata, done/code_699B0]
       - [0x215DB30, .rodata, code_69E60]
       - [0x215DBC0, rodata] # code_6AF80
       - [0x215DD50, .rodata, code_70FD0]
