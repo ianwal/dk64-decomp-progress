@@ -824,7 +824,7 @@ s32 func_global_asm_806163E8(Actor *arg0) {
         sp20 = aaS->unk0;
     }
     sp20 = sp20;
-    D_807F5AF0 += 1;
+    D_807F5AF0++;
     func_global_asm_80614FD8(&sp24);
     arg0->animation_state->unk88 = sp20->unk4 - sp24;
     return 1;
@@ -874,29 +874,143 @@ s32 func_global_asm_80616594(Actor *arg0) {
     return 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806165F0.s")
+s32 func_global_asm_806165F0(Actor *arg0) {
+    s16 sp1E;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616644.s")
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806166A8.s")
+s32 func_global_asm_80616644(Actor *arg0) {
+    s16 sp1E;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_8061670C.s")
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    if (arg0->animation_state->unk88 != 0) {
+        D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616770.s")
+s32 func_global_asm_806166A8(Actor *arg0) {
+    s16 sp1E;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806167D4.s")
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    if (arg0->animation_state->unk88 == 0) {
+        D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806167EC.s")
+s32 func_global_asm_8061670C(Actor *arg0) {
+    s16 sp1E;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616850.s")
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    if (arg0->animation_state->unk88 > 0) {
+        D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806168E4.s")
+s32 func_global_asm_80616770(Actor *arg0) {
+    s16 sp1E;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616964.s")
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    if (arg0->animation_state->unk88 < 0) {
+        D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
+    }
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806169C0.s")
+s32 func_global_asm_806167D4(Actor *arg0) {
+    D_807F5AF0 = arg0->animation_state->unk68;
+    return 1;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616A1C.s")
+s32 func_global_asm_806167EC(Actor *arg0) {
+    s16 sp1E;
+
+    D_807F5AF0 += (arg0->animation_state->unk88 * 2) + 1;
+    func_global_asm_80614F4C(&sp1E);
+    D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
+    return 1;
+}
+
+s32 func_global_asm_80616850(Actor *arg0) {
+    s32 sp24;
+    u16 sp22;
+    ActorAnimationState *aaS;
+
+    aaS = arg0->animation_state;
+    sp24 = arg0->animation_state->unk88;
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp22);
+    aaS->unk5C = aaS->unk64;
+    aaS->unk60 = D_807F5AF0 - aaS->unk68;
+    playActorAnimation(arg0, sp22);
+    D_807F5AF0 = aaS->unk6C;
+    aaS->unk88 = sp24;
+    return D_807F5AF4;
+}
+
+s32 func_global_asm_806168E4(Actor *arg0) {
+    u16 sp1E;
+    ActorAnimationState *aaS;
+
+    aaS = arg0->animation_state;
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    aaS->unk5C = aaS->unk64;
+    aaS->unk60 = D_807F5AF0 - aaS->unk68;
+    playAnimation(arg0, sp1E);
+    D_807F5AF0 = aaS->unk6C;
+    return D_807F5AF4;
+}
+
+s32 func_global_asm_80616964(Actor *arg0) {
+    s32 sp1C;
+    ActorAnimationState *aaS;
+
+    aaS = arg0->animation_state;
+    sp1C = arg0->animation_state->unk88;
+    playActorAnimation(arg0, aaS->unk5C);
+    D_807F5AF0 = aaS->unk68 + aaS->unk60;
+    aaS->unk5C = 0;
+    aaS->unk60 = 0;
+    aaS->unk88 = sp1C;
+    return 1;
+}
+
+extern s32 (*D_global_asm_80746D64[])(Actor *arg0);
+
+s32 func_global_asm_806169C0(Actor *arg0) {
+    s16 sp1E;
+
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    D_global_asm_80746D64[sp1E](arg0);
+    return D_807F5AF4;
+}
+
+s32 func_global_asm_80616A1C(Actor *arg0) {
+    s16 sp1E;
+    ActorAnimationState *aaS;
+
+    aaS = arg0->animation_state;
+    D_807F5AF0++;
+    func_global_asm_80614F4C(&sp1E);
+    aaS->unk70 = D_global_asm_80746D64[sp1E];
+    aaS->unk74 = D_807F5AF0;
+    if (sp1E != 0) {
+        aaS->unk70(arg0);
+    }
+    return D_807F5AF4;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616A9C.s")
 

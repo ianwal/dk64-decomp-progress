@@ -334,6 +334,9 @@ typedef struct animation_state_unk20 {
     f32 unkC;
 } AnimationStateUnk20;
 
+typedef struct actor_collision ActorCollision;
+typedef struct actor Actor;
+
 typedef struct actor_animation_state {
     AnimationStateUnk0 *unk0;
     AnimationStateUnk0 *unk4;
@@ -364,13 +367,14 @@ typedef struct actor_animation_state {
     f32 unk50;
     f32 unk54;
     f32 unk58;
-    s32 unk5C;
+    u16 unk5C;
+    s16 unk5E;
     s32 unk60;
     u16 unk64; // Used
     u16 unk66;
     s32 unk68;
     s32 unk6C;
-    s32 unk70;
+    s32 (*unk70)(Actor *);
     s32 unk74;
     s32 unk78;
     s32 unk7C;
@@ -477,9 +481,6 @@ typedef struct actor_17C {
     s16 unk6;
     s16 unk8;
 } Actor17C;
-
-typedef struct actor_collision ActorCollision;
-typedef struct actor Actor;
 
 typedef struct {
     Actor *unk0[4]; // Used
