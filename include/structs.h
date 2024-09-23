@@ -2040,8 +2040,24 @@ typedef struct {
     void *unk30;
 } Struct8073BC74;
 
+typedef struct Struct8073BC74_auxbus_unk20_unk4 {
+    u8 pad0[0x10];
+    f32 unk10;
+    f32 unk14;
+    u8 unk18[4];
+    f32 unk1C;
+    u8 unk20[0x28 - 0x20];
+} Struct8073BC74_auxbus_unk20_unk4;
+
+typedef struct Struct8073BC74_auxbus_unk20 {
+    u8 pad0[0x4];
+    Struct8073BC74_auxbus_unk20_unk4 unk4[];
+} Struct8073BC74_auxbus_unk20;
+
 typedef struct Struct8073BC74_auxbus {
-    u8 pad0[0x44];
+    u8 pad0[0x20];
+    Struct8073BC74_auxbus_unk20 *unk20;
+    u8 pad24[0x44 - 0x24];
     Struct8073BC74 * unk44;
 } Struct8073BC74_auxbus;
 
