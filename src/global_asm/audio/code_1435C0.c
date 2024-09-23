@@ -4,27 +4,6 @@
 // Jumptable, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_global_asm_8073E8C0.s")
 
-typedef struct {
-    u8 unk0[0x48 - 0x0];
-    s32 unk48;
-    f32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s16 unk58;
-    s16 unk5A;
-    s32 unk5C;
-    s32 unk60;
-    s32 unk64;
-    s32 unk68;
-    s32 unk6C;
-    s32 unk70;
-    s32 unk74;
-    s32 unk78;
-    s32 unk7C;
-    s32 *unk80;
-    s32 unk84;
-} Struct8073F1E4;
-
 s32 func_global_asm_8073F1E4(Struct8073F1E4 *arg0, s32 arg1, s32 *arg2) {
     Struct8073F1E4 *sp24;
 

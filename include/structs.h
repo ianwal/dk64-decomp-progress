@@ -2075,6 +2075,33 @@ typedef struct Struct8073BC74_auxbus {
 } Struct8073BC74_auxbus;
 
 typedef struct {
+    u8 unk0[0x48 - 0x0];
+    s32 unk48;
+    f32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s16 unk58;
+    s16 unk5A;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 *unk80;
+    s32 unk84;
+    s32 unk88;
+} Struct8073F1E4;
+
+typedef struct Struct8073F1E4_container {
+    u8 pad0[8];
+    Struct8073F1E4* unk8;
+} Struct8073F1E4_container;
+
+typedef struct {
     u8 pad0[0x2 - 0x0];
     s16 unk2;
     s16 unk4;
