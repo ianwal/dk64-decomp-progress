@@ -272,8 +272,6 @@ u8 func_global_asm_80739098(ALCSeq *seq, s32 track) {
     return theByte;
 }
 
-// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/cseq/func_global_asm_8073928C.s")
-
 s32 func_global_asm_8073928C(ALCSeq *seq, s32 track) {
     // __readVarLen
     u32 value;

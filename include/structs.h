@@ -1,5 +1,6 @@
 #ifndef __STRUCTS_H__
 #define __STRUCTS_H__
+#include "synthinternal.h"
 
 /* your struct definitions go here */
 
@@ -2100,6 +2101,29 @@ typedef struct Struct8073F1E4_container {
     u8 pad0[8];
     Struct8073F1E4* unk8;
 } Struct8073F1E4_container;
+
+typedef Acmd *(*CommandHandler)(s32, Acmd *, s32);
+
+typedef struct N_ALMAinBus_s {
+    ALFilter *source;
+    CommandHandler handler;
+} N_ALMAinBus;
+
+typedef struct CustomPVoice {
+    ALLink node;
+    u8 pad8[0x2C - 0x8];
+    ALResampler resampler;
+    u8 pad60[0x8C - 0x60];
+    u8 unk8C;
+    u8 pad8D[0x90 - 0x8D];
+    s16 unk90;
+    s16 unk92;
+    u8 pad94[0x98 - 0x94];
+    s32 unk98;
+    u8 pad9C[0xB8 - 0x9C];
+    s32 unkB8;
+    s32 unkBC;
+} CustomPVoice;
 
 typedef struct {
     u8 pad0[0x2 - 0x0];

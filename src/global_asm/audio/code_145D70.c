@@ -2,12 +2,6 @@
 #include "functions.h"
 #include "synthinternal.h"
 
-typedef struct CustomPVoice {
-    ALLink node;
-    u8 pad8[0x2C - 0x8];
-    ALResampler resampler;
-} CustomPVoice;
-
 Acmd *func_global_asm_80740100(CustomPVoice *, s16 *, s32, Acmd *);
 extern f64 D_global_asm_80760580;
 extern f32 D_global_asm_80760588;

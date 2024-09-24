@@ -5,13 +5,6 @@
 extern u8 D_global_asm_807FF0F4[2];
 extern u8 D_global_asm_807FF0F6[2];
 
-typedef Acmd *(*CommandHandler)(s32, Acmd *, s32);
-
-typedef struct N_ALMAinBus_s {
-    ALFilter *source;
-    CommandHandler handler;
-} N_ALMAinBus;
-
 Acmd *func_global_asm_8073FD90(s32 arg0, Acmd *arg1) {
     Acmd *sp4C;
     s32 sp48;
