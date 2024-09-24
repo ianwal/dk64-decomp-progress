@@ -3903,7 +3903,7 @@ s32 func_global_asm_807383B0(ALSeqPlayer *arg0);
 // global_asm/audio/code_13D100.c
 void func_global_asm_80738400(ALSeqPlayer *arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4);
 
-// global_asm/audio/code_13D170.c
+// global_asm/audio/cseq.c
 void func_global_asm_80738470(ALCSeq *seq, ALCMidiHdr *music_midi_bin);
 void func_global_asm_807385F0(ALCSeq *arg0, ALEvent *arg1, s32 arg2);
 s32 func_global_asm_8073876C(ALCSeq *seq, s32 track, ALEvent *event, s32 arg3);

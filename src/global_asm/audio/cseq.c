@@ -1,10 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-
-u32 func_global_asm_8073928C(ALCSeq *, u32);
-
 void func_global_asm_80738470(ALCSeq *seq, ALCMidiHdr *music_midi_bin) {
     // alCSeqNew
     u32 i;
@@ -183,15 +179,114 @@ u32 func_global_asm_80738BA0(ALCSeq *seq) {
     return seq->lastTicks;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80738BB8.s")
+void func_global_asm_80738BB8(ALCSeq *seq, ALCSeqMarker *m) {
+    // alCSeqSetLoc
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80738C6C.s")
+    seq->validTracks = m->validTracks;
+    seq->lastTicks = m->lastTicks;
+    seq->lastDeltaTicks = m->lastDeltaTicks;
+    for (i = 0; i < 0x10; i++) {
+        seq->curLoc[i] = m->curLoc[i];
+        seq->curBUPtr[i] = m->curBUPtr[i];
+        seq->curBULen[i] = m->curBULen[i];
+        seq->lastStatus[i] = m->lastStatus[i];
+        seq->evtDeltaTicks[i] = m->evtDeltaTicks[i];
+    }
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80738D20.s")
+void func_global_asm_80738C6C(ALCSeq *seq, ALCSeqMarker *m) {
+    // alCSeqGetLoc
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80738E58.s")
+    m->validTracks = seq->validTracks;
+    m->lastTicks = seq->lastTicks;
+    m->lastDeltaTicks = seq->lastDeltaTicks;
+    for (i = 0; i < 0x10; i++) {
+        m->curLoc[i] = seq->curLoc[i];
+        m->curBUPtr[i] = seq->curBUPtr[i];
+        m->curBULen[i] = seq->curBULen[i];
+        m->lastStatus[i] = seq->lastStatus[i];
+        m->evtDeltaTicks[i] = seq->evtDeltaTicks[i];
+    };
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_80739098.s")
+void func_global_asm_80738D20(ALCSeq *seq, ALCSeqMarker *m, u32 ticks) {
+    // alCSeqNewMarker
+    ALEvent event;
+    ALCSeq tempSeq;
+    s32 i;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13D170/func_global_asm_8073928C.s")
+    func_global_asm_80738470(&tempSeq, seq->base);
+    do {
+        m->validTracks = tempSeq.validTracks;
+        m->lastTicks = tempSeq.lastTicks;
+        m->lastDeltaTicks = tempSeq.lastDeltaTicks;
+        for (i = 0; i < 0x10; i++) {
+            m->curLoc[i] = tempSeq.curLoc[i];
+            m->curBUPtr[i] = tempSeq.curBUPtr[i];
+            m->curBULen[i] = tempSeq.curBULen[i];
+            m->lastStatus[i] = tempSeq.lastStatus[i];
+            m->evtDeltaTicks[i] = tempSeq.evtDeltaTicks[i];
+        }
+        func_global_asm_807385F0(&tempSeq, &event, 0);
+        if (event.type == AL_SEQ_END_EVT) break;
+    } while (tempSeq.lastTicks < ticks);
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/cseq/func_global_asm_80738E58.s")
+
+u8 func_global_asm_80739098(ALCSeq *seq, s32 track) {
+    u8 theByte;
+
+    if (seq->curBULen[track]) {
+        theByte = *seq->curBUPtr[track];
+        seq->curBUPtr[track]++;
+        seq->curBULen[track]--;
+    } else {
+        theByte = *seq->curLoc[track];
+        seq->curLoc[track]++;
+        if (theByte == AL_CMIDI_BLOCK_CODE) {
+            u8 loBackUp, hiBackUp, theLen, nextByte;
+            u32 backup;
+
+            nextByte = *seq->curLoc[track];
+            seq->curLoc[track]++;
+            if (nextByte != AL_CMIDI_BLOCK_CODE) {
+                hiBackUp = nextByte;
+                loBackUp = *seq->curLoc[track];
+                seq->curLoc[track]++;
+                theLen = *seq->curLoc[track];
+                seq->curLoc[track]++;
+                backup = (u32) hiBackUp;
+                backup <<= 8;
+                backup += loBackUp;
+                seq->curBUPtr[track] = seq->curLoc[track] - (backup + 4);
+                seq->curBULen[track] = (u32)theLen;
+                theByte = *seq->curBUPtr[track];
+                seq->curBUPtr[track]++;
+                seq->curBULen[track]--;
+            }
+        }
+    }
+    return theByte;
+}
+
+// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/cseq/func_global_asm_8073928C.s")
+
+s32 func_global_asm_8073928C(ALCSeq *seq, s32 track) {
+    // __readVarLen
+    u32 value;
+    u32 c;
+
+    value = func_global_asm_80739098(seq, track);
+    if (value & 0x80) {
+        value &= 0x7F;
+        do {
+            c = func_global_asm_80739098(seq, track);
+            value = (value << 7) + (c & 0x7F);
+        } while (c & 0x80);
+    }
+    return value;
+}
 
