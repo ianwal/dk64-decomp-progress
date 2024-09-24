@@ -2109,6 +2109,23 @@ typedef struct N_ALMAinBus_s {
     CommandHandler handler;
 } N_ALMAinBus;
 
+typedef struct SoundState {
+    ALLink node;
+    ALSound *sound;
+    ALVoice voice;
+    f32 unk28;
+    f32 unk2C;
+    u8 pad30[0x38-0x30];
+    s16 volume;
+    u8 pad3A[0x40 - 0x3A];
+    u8 priority;
+    u8 pan;
+    u8 unk42;
+    u8 status;
+    u8 playState;
+    u8 pad45[0x48-0x45];
+} SoundState;
+
 typedef struct CustomPVoice {
     ALLink node;
     u8 pad8[0x2C - 0x8];
