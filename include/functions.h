@@ -655,7 +655,7 @@ void func_global_asm_80618E4C(Actor *arg0);
 void func_global_asm_80618EE8(Actor *arg0);
 void func_global_asm_80618F74(Actor *arg0);
 void func_global_asm_80619018(Actor *arg0);
-// TODO: func_global_asm_806190C0 has no documented signature
+void func_global_asm_806190C0(Actor *arg0);
 // TODO: func_global_asm_806192A4 has no documented signature
 void func_global_asm_80619500(Actor *arg0); // TODO: s32 return?
 // TODO: func_global_asm_80619520 has no documented signature but has been matched

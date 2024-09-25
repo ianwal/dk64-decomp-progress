@@ -1876,7 +1876,67 @@ void func_global_asm_80619018(Actor *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806190C0.s")
+s32 func_global_asm_8071D94C(Actor *, Struct80717D84 *, u8 *); // extern
+extern s32 D_global_asm_80746B80[]; // TODO: Datatype
+extern s32 D_global_asm_80746BD4[]; // TODO: Datatype
+extern u8 D_global_asm_80750AD0;
+
+void func_global_asm_806190C0(Actor *arg0) {
+    u16 sp4E;
+    u16 sp4C;
+    u8 sp4B;
+    u8 boneIndex;
+    s8 sp49;
+    u8 sp48;
+    s16 sp46;
+    f32 sp40;
+    f32 x;
+    f32 y;
+    f32 z;
+    Struct80717D84 *var_a1;
+    u8 sp2F;
+
+    func_global_asm_80614F4C(&sp4E);
+    func_global_asm_80614F4C(&sp4C);
+    func_global_asm_80614F28(&sp4B);
+    func_global_asm_80614F28(&boneIndex);
+    func_global_asm_80614F28(&sp49);
+    func_global_asm_80614F28(&sp48);
+    func_global_asm_80614F4C(&sp46);
+    if (D_global_asm_80750AD0 == 0) {
+        sp40 = sp4C * 0.00048828125f;
+        func_global_asm_807149B8(1);
+        func_global_asm_80714998(sp4B);
+        func_global_asm_807149FC(sp46);
+        if (!boneIndex) {
+            x = arg0->x_position;
+            y = arg0->y_position;
+            z = arg0->z_position;
+        } else {
+            getBonePosition(arg0, boneIndex, &x, &y, &z);
+        }
+        y += sp49 * sp40;
+        if (sp48 != 0) {
+            func_global_asm_8071498C(D_global_asm_80746BD4[sp48]);
+        }
+        var_a1 = drawSpriteAtPosition(D_global_asm_80746B80[sp4E], sp40, x, y, z);
+        sp2F = 0;
+        switch (sp48) { // irregular
+            case 1:
+                func_global_asm_8071D94C(arg0, var_a1, &sp2F);
+                break;
+            case 2:
+                var_a1->unk35C = 1;
+                break;
+            case 4:
+                var_a1->unk35C = -0x32 - ((rand() >> 0xF) % 50);
+                break;
+        }
+        if (sp2F != 0) {
+            func_global_asm_80715908(var_a1);
+        }
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806192A4.s")
 
