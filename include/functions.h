@@ -3836,7 +3836,7 @@ void func_global_asm_8073239C(void);
 f32 func_global_asm_80732DAC(f32 arg0);
 // TODO: func_global_asm_80732DEC has no documented signature but has been matched
 
-// global_asm/audio/code_137C10.c
+// global_asm/audio/csplayer.c
 // TODO: func_global_asm_80732F10 has no documented signature
 // TODO: func_global_asm_80733180 has no documented signature
 // TODO: func_global_asm_80733A88 has no documented signature

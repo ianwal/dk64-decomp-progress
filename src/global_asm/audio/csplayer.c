@@ -2,18 +2,56 @@
 #include "functions.h"
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80732F10.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733180.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80733180.s")
+extern void func_global_asm_80733D8C(ALCSPlayer *, ALEvent *);
+extern void func_global_asm_807359A0(ALCSPlayer *);
+extern void func_global_asm_80735624(ALCSPlayer *, ALEvent *);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80733A88.s")
+void func_global_asm_80733A88(ALCSPlayer *seqp) {
+    // __CSPHandleNextSeqEvent
+    ALEvent	evt;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80733B88.s")
+    /* sct 1/5/96 - Do nothing if we don't have a target sequence. */
+    if (seqp->target == NULL)
+	return;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80733C34.s")
+    func_global_asm_807385F0(seqp->target, &evt, 1);
+
+    switch (evt.type)
+    {
+      case AL_SEQ_MIDI_EVT:
+          func_global_asm_80733D8C(seqp, &evt);
+	  func_global_asm_807359A0(seqp);
+	  break;
+
+      case AL_TEMPO_EVT:
+          func_global_asm_80735624(seqp, &evt);
+	  func_global_asm_807359A0(seqp);
+	  break;
+
+      case AL_SEQ_END_EVT:
+	  seqp->state = AL_STOPPING;      
+	  evt.type    = AL_SEQP_STOP_EVT;
+	  alEvtqPostEvent(&seqp->evtq, &evt, AL_EVTQ_END);
+	  break;
+
+      case AL_TRACK_END:
+      case AL_CSP_LOOPSTART:
+      case AL_CSP_LOOPEND:
+	  func_global_asm_807359A0(seqp);
+	  break;
+      default:
+      break;
+    }
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733B88.s")
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733C34.s")
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137C10/func_global_asm_80733D8C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733D8C.s")
 
 extern void func_global_asm_80735958(ALCSPlayer *, f32);
 extern void  func_global_asm_80735864(ALEventQueue *, ALEventListItem *);
