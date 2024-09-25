@@ -2024,7 +2024,7 @@ typedef struct {
     s16 width;
     s16 height;
     s16 image_count;
-    s16 images[];
+    s16 images[1]; // TODO: How many elements? m2c doesn't support VLAs
 } SpriteData;
 
 typedef struct {
@@ -2055,7 +2055,7 @@ typedef struct Struct8073BC74_auxbus_unk20_unk4_unk20 {
     void *unk8;
     u8 padC[0x28 - 0xC];
     s32 unk28;
-    void *unk2C[];
+    void *unk2C[1]; // TODO: How many elements? m2c doesn't support VLAs
 } Struct8073BC74_auxbus_unk20_unk4_unk20;
 
 typedef struct Struct8073BC74_auxbus_unk20_unk4 {
@@ -2072,7 +2072,7 @@ typedef struct Struct8073BC74_auxbus_unk20 {
     s32 unk0;
     Struct8073BC74_auxbus_unk20_unk4 *unk4;
     u8 pad8[0x20 - 0x8];
-    s16 *unk20[];
+    s16 *unk20[1]; // TODO: How many elements? m2c doesn't support VLAs
 } Struct8073BC74_auxbus_unk20;
 
 typedef struct Struct8073BC74_auxbus {
