@@ -564,6 +564,7 @@ void func_global_asm_8061D4E4(Actor *arg0) {
 }
 */
 
+// heavy use of rodata, don't bother until it's migrated
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D6A8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D898.s")
@@ -734,7 +735,42 @@ void func_global_asm_8061F164(AAD_8061F164 *aaD, s16 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F18C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F2B8.s")
+void func_global_asm_8061F2B8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 *arg9, f32 *argA, f32 *argB) {
+    f32 d2;
+    f32 d3;
+    f32 d;
+    f32 temp_f2_3;
+
+    d =   ((arg3 - arg6) * (arg3 - arg6))
+        + ((arg4 - arg7) * (arg4 - arg7))
+        + ((arg5 - arg8) * (arg5 - arg8));
+    if (d == 0.0f) {
+        *arg9 = arg3;
+        *argA = arg4;
+        *argB = arg5;
+        return;
+    }
+    d2 =  ((arg6 - arg0) * (arg6 - arg0))
+        + ((arg7 - arg1) * (arg7 - arg1))
+        + ((arg8 - arg2) * (arg8 - arg2));
+    d3 =  ((arg3 - arg0) * (arg3 - arg0))
+        + ((arg4 - arg1) * (arg4 - arg1))
+        + ((arg5 - arg2) * (arg5 - arg2));
+    temp_f2_3 = ((d3 + d) - d2) / (2 * d);
+    if ((temp_f2_3 >= 1.0f) || (d2 == 0.0f)) {
+        *arg9 = arg6;
+        *argA = arg7;
+        *argB = arg8;
+    } else if ((temp_f2_3 <= 0.0f) || (d3 == 0.0f)) {
+        *arg9 = arg3;
+        *argA = arg4;
+        *argB = arg5;
+    } else {
+        *arg9 = (temp_f2_3 * (arg6 - arg3)) + arg3;
+        *argA = (temp_f2_3 * (arg7 - arg4)) + arg4;
+        *argB = (temp_f2_3 * (arg8 - arg5)) + arg5;
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F4B0.s")
 
@@ -857,7 +893,44 @@ void func_global_asm_806225C0(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806227F0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806228BC.s")
+typedef struct {
+    Actor *unk0;
+    Actor *unk4;
+    u8 unk8[0x12 - 0x8];
+    s16 unk12;
+    s16 unk14;
+    u8 unk16[0xAC - 0x16];
+    s32 unkAC;
+    s16 unkB0;
+    s16 unkB2;
+} AAD_806228BC;
+
+void func_global_asm_806228BC(Actor *actor, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg5, f32 *arg6) {
+    AAD_806228BC *aaD;
+    Actor *aaDActor;
+    s16 temp_v0_5;
+    s32 var_v1;
+
+    aaD = actor->additional_actor_data;
+    aaDActor = aaD->unk0;
+    *arg1 = aaDActor->x_position;
+    if ((aaDActor->control_state == 3) || (aaDActor->control_state == 5)) {
+        *arg2 = MAX(0xF, aaDActor->unk15E) + aaDActor->y_position;
+    } else if (current_map == MAP_FUNGI) {
+        *arg2 = MAX(0x16, aaDActor->unk15E) + aaDActor->y_position;
+    } else {
+        *arg2 = MAX(0xA, aaDActor->unk15E) + aaDActor->y_position;
+    }
+    *arg3 = aaDActor->z_position;
+    if (aaDActor->unkFC != 0) {
+        temp_v0_5 = func_global_asm_80672A70(aaDActor->unkF4, aaDActor->unkF6);
+        *arg1 += (5.0 * func_global_asm_80612794(temp_v0_5));
+        *arg3 += (5.0 * func_global_asm_80612790(temp_v0_5));
+    }
+    *arg4 = aaDActor->x_position - (func_global_asm_80612794(aaD->unkB2) * 50.0f);
+    *arg5 = aaDActor->y_position - (actor->distance_from_floor - 138.0f);
+    *arg6 = aaDActor->z_position - (func_global_asm_80612790(aaD->unkB2) * 50.0f);
+}
 
 extern f32 D_global_asm_80757A18;
 extern f32 D_global_asm_80757A1C;
