@@ -27,6 +27,7 @@ void *func_global_asm_80612840(Vector3F *arg0, f32 arg1, f32 arg2, f32 arg3, f32
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17540/func_global_asm_80612910.s")
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17540/func_global_asm_80612970.s")
 
 // stack

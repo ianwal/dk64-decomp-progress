@@ -57,7 +57,23 @@ void func_global_asm_80613214(Actor *actor) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613944.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613A50.s")
+void func_global_asm_80613A50(Actor *arg0, s8 arg1) {
+    s16 temp1;
+    s16 temp2;
+    f32 temp3;
+    AnimationStateUnk0 *aaS0;
+    AnimationStateUnk8 *aaS8;
+    ActorAnimationState *aaS;
+
+    aaS = arg0->animation_state;
+    aaS0 = aaS->unk0;
+    aaS8 = aaS->unk8;
+    temp1 = (aaS0->unk18 - aaS0->unk14) + 1.0f;
+    temp2 = (aaS8->unk18 - aaS8->unk14) + 1.0f;
+    temp3 = (aaS8->unk4 * temp1) / temp2;
+    temp3 += arg1;
+    func_global_asm_80614644(arg0, aaS0, temp3);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613AF8.s")
 

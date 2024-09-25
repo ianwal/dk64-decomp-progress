@@ -302,6 +302,13 @@ typedef struct animation_state_unk0 {
 
 typedef struct animation_state_unk8 {
     s32 unk0;
+    f32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    f32 unk14;
+    f32 unk18;
+    s32 unk1C;
 } AnimationStateUnk8;
 
 typedef struct {
