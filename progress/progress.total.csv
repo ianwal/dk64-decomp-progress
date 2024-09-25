@@ -1248,7 +1248,7 @@ us,asm,func_global_asm_806DFF34,108,no
 us,asm,func_global_asm_806291A8,12,yes
 us,asm,func_global_asm_806EC2CC,240,yes
 us,asm,func_global_asm_80674688,132,no
-us,asm,func_global_asm_8073D160,144,no
+us,asm,func_global_asm_8073D160,136,yes
 us,asm,func_global_asm_80634F14,140,yes
 us,asm,func_global_asm_80718188,244,yes
 us,asm,func_global_asm_8064826C,820,yes
@@ -3499,7 +3499,7 @@ us,asm,playSound,1068,no
 us,asm,func_global_asm_80612A14,64,no
 us,asm,func_global_asm_80610BD8,156,no
 us,asm,func_global_asm_8061EDA0,428,no
-us,asm,func_global_asm_8073CDD0,304,no
+us,asm,func_global_asm_8073CDD0,300,yes
 us,asm,func_global_asm_8066B7AC,72,yes
 us,asm,func_global_asm_80615C34,176,yes
 us,asm,func_global_asm_8060ED6C,100,yes

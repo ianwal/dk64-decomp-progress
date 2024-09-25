@@ -4005,7 +4005,7 @@ void func_global_asm_8073C9C0(s32 arg0, s16 arg1, s32 arg2);
 // TODO: func_global_asm_8073CAC0 has no documented signature
 // TODO: func_global_asm_8073CC94 has no documented signature
 
-// global_asm/audio/code_141AD0.c
+// global_asm/audio/synstartvoiceparam.c
 // TODO: func_global_asm_8073CDD0 has no documented signature
 
 // global_asm/audio/code_141C00.c
