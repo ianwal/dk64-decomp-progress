@@ -2033,7 +2033,7 @@ us,asm,alEvtqFlushType,208,yes
 us,asm,func_global_asm_806998F0,36,yes
 us,asm,func_global_asm_80645C04,272,yes
 us,asm,func_global_asm_8062754C,352,no
-us,asm,func_global_asm_80735958,72,no
+us,asm,func_global_asm_80735958,72,yes
 us,asm,func_global_asm_8061C2C4,20,yes
 us,asm,func_global_asm_8073BA60,176,no
 us,asm,func_global_asm_8071BC80,388,yes

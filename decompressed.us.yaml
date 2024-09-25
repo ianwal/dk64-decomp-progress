@@ -331,6 +331,7 @@ segments:
       - [0x21371D0, c, audio/code_1371D0]
       - [0x2137630, c, audio/code_137630]
       - [0x2137C10, c, audio/code_137C10]
+      - [0x213A6A0, c, audio/code_13A6A0]
       - [0x213A750, c, audio/code_13A750]
       - [0x213A7A0, c, audio/code_13A7A0]
       - [0x213C920, c, audio/code_13C920]
