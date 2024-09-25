@@ -12,6 +12,7 @@ void func_global_asm_8060FFF0(void) {
     D_global_asm_807F0588.unkC = &D_global_asm_80760840;
 }
 
+// libultra stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_14CF0/func_global_asm_80610044.s")
 
 extern OSMesgQueue D_global_asm_807659E8;

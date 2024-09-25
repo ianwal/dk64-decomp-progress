@@ -13,6 +13,7 @@ extern u8 *D_807F5AF0;
 extern s32 D_807F5AF4;
 extern u16 *D_807FBB54;
 
+// Displaylist stuff?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80612E90.s")
 
 // Displaylist stuff
@@ -49,6 +50,7 @@ void func_global_asm_80613214(Actor *actor) {
 // cheeky little struct array loop, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613448.s")
 
+// matrix initialization
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806134B4.s")
 
 s32 func_global_asm_80613944(Actor *, AnimationStateUnk0 *); // extern
@@ -1938,7 +1940,77 @@ void func_global_asm_806190C0(Actor *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806192A4.s")
+extern f64 D_global_asm_80757468;
+extern f64 D_global_asm_80757470;
+extern f64 D_global_asm_80757478;
+extern f64 D_global_asm_80757480;
+extern f32 D_global_asm_80757488;
+extern f32 D_global_asm_8075748C;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s32 unk4;
+    s32 unk8;
+    s16 unkC;
+    s16 unkE;
+    f32 unk10;
+} AAD_806192A4;
+
+void func_global_asm_806192A4(Actor *arg0) {
+    u16 sp46;
+    u16 sp44;
+    u16 sp42;
+    u16 sp40;
+    f32 scale;
+    AAD_806192A4 *aaD;
+
+    scale = arg0->animation_state->scale[1] / D_global_asm_80757468;
+    func_global_asm_80614F4C(&sp46);
+    func_global_asm_80614F4C(&sp44);
+    func_global_asm_80614F4C(&sp42);
+    func_global_asm_80614F4C(&sp40);
+    spawnActor(ACTOR_PARTICLE_IDLE, sp42);
+    moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[0]);
+    last_spawned_actor->y_rotation = arg0->y_rotation;
+    last_spawned_actor->z_rotation = arg0->z_rotation;
+    last_spawned_actor->x_rotation = arg0->x_rotation;
+    aaD = last_spawned_actor->additional_actor_data;
+    aaD->unk10 = 0.0f;
+    if (sp46 != 0xFFFF) {
+        func_global_asm_807149FC(-1);
+        func_global_asm_807149B8(1);
+        switch (arg0->unk58) { // irregular
+            default:
+                scale *= D_global_asm_80757470;
+                break;
+            case ACTOR_KLUMP:
+                scale *= D_global_asm_80757478;
+                changeActorColor(0, 0xFF, 0, 0xFF);
+                break;
+            case ACTOR_LANKY:
+            case ACTOR_TINY:
+                func_global_asm_80714998(0);
+                scale *= D_global_asm_80757480;
+                aaD->unk10 = D_global_asm_80757488;
+                break;
+            case ACTOR_DIDDY:
+                func_global_asm_80714998(0);
+                scale *= 0.25;
+                aaD->unk10 = D_global_asm_8075748C;
+                break;
+        }
+    }
+    last_spawned_actor->y_position -= aaD->unk10;
+    if (sp46 != 0xFFFF) {
+        func_global_asm_80714C08(D_global_asm_80746B80[sp46], scale, last_spawned_actor, 1, 2);
+    }
+    aaD->unk0 = sp44;
+    aaD->unk4 = arg0;
+    aaD->unk8 = arg0->unk54;
+    aaD->unkC = arg0->animation_state->unk64;
+    aaD->unk2 = sp40;
+}
 
 void func_global_asm_80619500(Actor *arg0) {
     deleteActor(arg0);

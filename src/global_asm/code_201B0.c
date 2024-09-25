@@ -1077,6 +1077,7 @@ void func_global_asm_806261EC(s32 arg0, Struct806261EC_arg1 *arg1, u8 arg2) {
     arg1->unkD8->unk425 = 8;
 }
 
+// jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626264.s")
 
 // doable, weird negative offsets
