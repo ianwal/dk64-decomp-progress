@@ -2103,7 +2103,6 @@ void func_menu_80031A5C(void) {
     }
 }
 
-void func_global_asm_8061B650(Actor *);
 extern SpriteData D_global_asm_8071FE64; // TODO: Type
 extern s16 D_global_asm_80754CE0;
 extern f32 D_menu_80033678[];

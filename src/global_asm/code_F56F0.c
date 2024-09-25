@@ -430,7 +430,7 @@ void func_global_asm_806F14BC(Actor *arg0) {
     }
     var_f12 = (sp53 - temp_f16) / temp_v0;
     if (var_f12 < 0.0f) {
-        var_f12 = 0.009999999776f;
+        var_f12 = 0.01f;
     }
     var_f12 /= MAX(0.01, arg0->animation_state->unk0->unk24);
     if (sp54 < var_f12) {

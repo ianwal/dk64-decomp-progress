@@ -645,8 +645,6 @@ typedef struct {
     Struct8070D754_unk8 *unk8;
 } Struct8070D754;
 
-extern void func_global_asm_8061DA84(void); // TODO: Datatype, possibly a function
-
 void func_global_asm_8070E808(Actor *arg0, Actor *arg1) {
     AAD_global_asm_8070E808 *sp24;
     Struct8070D754 *temp_v0;

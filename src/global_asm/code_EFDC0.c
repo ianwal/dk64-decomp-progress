@@ -3,7 +3,6 @@
 
 void func_race_80026004(Actor178*, s32, f32);
 
-void func_global_asm_80627878(Actor*);
 void func_global_asm_806CD424(s16, f32, f32);
 
 extern s16 D_global_asm_807530B0[];
@@ -1429,7 +1428,7 @@ void func_global_asm_806F0700(void) {
     current_player->control_state = 0x88;
     current_player->control_state_progress = 0;
     playActorAnimation(current_player, 0);
-    temp_f0 = 0.009999999776;
+    temp_f0 = 0.01;
     current_player->x_position = extra_player_info_pointer->unk22C;
     current_player->y_position = extra_player_info_pointer->unk230;
     current_player->z_position = extra_player_info_pointer->unk234;

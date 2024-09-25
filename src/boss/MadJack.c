@@ -277,7 +277,6 @@ void func_boss_80033A80(s8 arg0) {
 
 u8 func_boss_80027BA8(u8 *, s32, s32, Actor**);
 u8 func_boss_800330D0(MadJackFightData *, MadJackPosData *);
-void func_global_asm_80626110(Actor *, s16, s16);
 void func_global_asm_8072A450(void);
 extern u8 D_80036DD0[];
 extern s16 D_807502DC;

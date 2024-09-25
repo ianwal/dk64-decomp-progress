@@ -91,7 +91,6 @@ extern f32 D_global_asm_807FBC58;
 
 s32 handleInputsForControlState(s32 arg0);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
-void func_global_asm_806224CC(s32, Actor*);
 extern void func_global_asm_807300BC(); // TODO: Proper signature
 
 void func_global_asm_806D2BD0(void) {
@@ -932,7 +931,7 @@ void func_global_asm_806D5008(void) {
             if (!(current_actor_pointer->unk6A & 4)) {
                 playSoundAtActorPosition(current_actor_pointer, 0x96, 0xFF, 0x7F, 0x19);
                 func_global_asm_80685708(current_actor_pointer, D_global_asm_807FD568->simian_slam);
-                func_global_asm_8061F0B0(extra_player_info_pointer->unk104, 0x14, (D_global_asm_807FD568->simian_slam * 5) & 0xFFFF);
+                func_global_asm_8061F0B0(extra_player_info_pointer->unk104, 0x14, (D_global_asm_807FD568->simian_slam * 5));
             }
             func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
             current_actor_pointer->control_state_progress++;

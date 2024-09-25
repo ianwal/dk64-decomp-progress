@@ -675,8 +675,6 @@ void func_global_asm_8061EDA0(Struct8061EDA0 *arg0, f32 *arg1, f32 *arg2, f32 *a
 }
 */
 
-void func_global_asm_8061F0B0(Actor *arg0, u8 arg1, u16 arg2);
-
 void func_global_asm_8061EF4C(Actor *arg0, u8 arg1, u16 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 dX;
     f32 d;
@@ -1082,8 +1080,6 @@ typedef struct {
     u8 unkF4[0xFB - 0xF4];
     u8 unkFB;
 } AAD_8062773C;
-
-void func_global_asm_80627888(Actor *arg0);
 
 s16 func_global_asm_8062773C(Actor *arg0) {
     AAD_8062773C *aaD;

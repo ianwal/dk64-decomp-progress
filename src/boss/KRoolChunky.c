@@ -52,7 +52,7 @@ void func_boss_80030AE0(BossStruct3 *arg0) {
         func_global_asm_806CFF9C(player_pointer);
     }
     func_global_asm_806224CC(D_global_asm_807F5D10, player_pointer);
-    extra_player_info_pointer->unk1D8 = 0.009999999776f;
+    extra_player_info_pointer->unk1D8 = 0.01f;
     func_global_asm_8063DA40(0xB, arg0->unk14 <= 0 ? 0 : 4);
     func_global_asm_8063DA40(0xC, arg0->unk14 < 2 ? 0 : 4);
     func_global_asm_8063DA40(0xD, arg0->unk14 < 3 ? 0 : 4);
