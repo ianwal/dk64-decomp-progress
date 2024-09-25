@@ -99,7 +99,6 @@ extern f32 D_global_asm_80753AFC[];
 extern s32 D_global_asm_807FBB68;
 extern u8 D_global_asm_807FD586;
 
-void func_global_asm_8062217C(Actor*, u8);
 int func_global_asm_806FF358(); // TODO: Signature
 int func_global_asm_806FF75C(); // TODO: Signature
 
@@ -108,7 +107,6 @@ void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
 void func_global_asm_806CEFBC(Struct806CEFBC*); // TODO: Proper signature, just for function pointer
 void func_global_asm_806CF138(Struct806CF138 *arg0);
-void func_global_asm_80613A50(Actor*, s32);
 
 void func_global_asm_806C9DE0(void) {
     // DK Actor

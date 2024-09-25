@@ -1161,7 +1161,6 @@ typedef struct MenuStruct7 {
 extern MenuStruct7 D_global_asm_80744548[];
 extern MenuStruct7 D_global_asm_80744568[];
 
-s32 func_global_asm_80737B58(s32, u16);
 void func_global_asm_8060A398(s32);
 
 /*

@@ -23,8 +23,6 @@ extern u16 D_global_asm_8074D624[];
 Actor *actor_list[256];
 s16 actor_count;
 
-void func_global_asm_806136B4();
-
 // regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80677D80.s")
 
@@ -354,7 +352,7 @@ void func_global_asm_806785D4(Actor *arg0) {
     Actor *temp_v0;
 
     if (arg0->unk0) {
-        func_global_asm_806136B4();
+        func_global_asm_806136B4(arg0);
     }
     if (arg0->unk11C) {
         func_global_asm_80679200(arg0->unk11C, arg0, 0x80000, 0, 0, 0);

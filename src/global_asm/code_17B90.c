@@ -2,11 +2,10 @@
 #include "functions.h"
 #include "sprites.h"
 
-void func_global_asm_80613BA0(Actor *, s16, f32, f32);
-void func_global_asm_80613CA8(Actor *, s16, f32, f32);
-void func_global_asm_80614014(Actor *, u16, f32, u8);
-void func_global_asm_80613FB0(Actor *, u16, f32, u8);
-void func_global_asm_80614644(Actor *, AnimationStateUnk0 *, f32);
+void func_global_asm_80613BA0(Actor*, s16, f32, f32);
+void func_global_asm_80613CA8(Actor*, s16, f32, f32);
+void func_global_asm_80613FB0(Actor*, u16, f32, u8);
+void func_global_asm_80614644(Actor*, AnimationStateUnk0*, f32);
 
 extern u8 D_global_asm_80746D5C;
 
@@ -75,6 +74,7 @@ void func_global_asm_806136B4(Actor *arg0) {
     func_global_asm_8061134C(arg0->animation_state);
 }
 
+// Displaylist stuff, looks for 0xFD (G_SETTIMG) commands in a loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613794.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613944.s")

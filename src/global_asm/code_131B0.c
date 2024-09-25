@@ -339,7 +339,7 @@ void func_global_asm_8060F54C(Struct131B0_2 *arg0) {
 }
 */
 
-
+// 64 bit maths, timestamps, probably doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F730.s")
 
 // Struct131B0_2* arg0

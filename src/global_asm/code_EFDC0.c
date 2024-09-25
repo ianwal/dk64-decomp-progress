@@ -3,7 +3,6 @@
 
 void func_race_80026004(Actor178*, s32, f32);
 
-void func_global_asm_8062217C(Actor*, s32);
 void func_global_asm_80627878(Actor*);
 void func_global_asm_806CD424(s16, f32, f32);
 

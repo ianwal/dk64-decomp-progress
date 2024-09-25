@@ -451,7 +451,7 @@ void func_global_asm_80611844(void);
 f32 func_global_asm_80611850(f32 arg0);
 f32 func_global_asm_806118FC(f32 arg0);
 
-// global_asm/rand.c
+// global_asm/done/rand.c
 u32 func_global_asm_806119A0(void);
 void func_global_asm_806119F0(s32 arg0);
 f32 func_global_asm_806119FC(void);
@@ -459,7 +459,7 @@ s32 rand(void);
 void func_global_asm_80611A70(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3);
 f32 func_global_asm_80611BB4(f32 arg0, f32 arg1);
 
-// global_asm/code_169F0.c
+// global_asm/done/code_169F0.c
 f32 func_global_asm_80611CF0(f32 arg0);
 s32 func_global_asm_80611D08(f32 arg0);
 
@@ -467,6 +467,12 @@ s32 func_global_asm_80611D08(f32 arg0);
 // TODO: func_global_asm_80611D20 has no documented signature
 u16 func_global_asm_80611DA0(s16 arg0);
 s16 func_global_asm_80611DF4(s16 arg0);
+// TODO: func_global_asm_80611E60 has no documented signature but has been matched
+// TODO: func_global_asm_80611E88 has no documented signature but has been matched
+// TODO: D_global_asm_80611F0C has no documented signature
+// TODO: D_global_asm_80612710 has no documented signature
+// TODO: func_global_asm_80612790 has no documented signature but has been matched
+// TODO: func_global_asm_80612800 has no documented signature but has been matched
 
 // global_asm/code_17540.c
 // TODO: func_global_asm_80612840 has no documented signature
@@ -486,7 +492,7 @@ void func_global_asm_80612CA0(f32 (*arg0)[4], f32 arg1);
 f32 func_global_asm_80612D10(f32 arg0);
 f32 func_global_asm_80612D1C(f32 arg0);
 
-// global_asm/code_17B40.c
+// global_asm/done/code_17B40.c
 f32 func_global_asm_80612E40(f32 arg0);
 
 // global_asm/code_17B90.c
@@ -500,16 +506,16 @@ void func_global_asm_80613214(Actor *actor);
 // TODO: func_global_asm_806133C8 has no documented signature
 s16 func_global_asm_80613448(Actor *arg0);
 // TODO: func_global_asm_806134B4 has no documented signature
-// TODO: func_global_asm_806136B4 has no documented signature
+void func_global_asm_806136B4(Actor *arg0);
 void func_global_asm_80613794(Actor *arg0, u8 arg1);
 // TODO: func_global_asm_80613944 has no documented signature
-// TODO: func_global_asm_80613A50 has no documented signature
+void func_global_asm_80613A50(Actor *arg0, s8 arg1);
 void func_global_asm_80613AF8(Actor *arg0, s32 arg1, f32 arg2, f32 arg3);
 // TODO: func_global_asm_80613BA0 has no documented signature
 void func_global_asm_80613C48(Actor *arg0, s16 arg1, f32 arg2, f32 arg3);
 // TODO: func_global_asm_80613CA8 has no documented signature
 // TODO: func_global_asm_80613FB0 has no documented signature
-// TODO: func_global_asm_80614014 has no documented signature
+void func_global_asm_80614014(Actor *arg0, u16 arg1, f32 arg2, u8 arg3);
 // TODO: func_global_asm_80614130 has no documented signature
 // TODO: func_global_asm_8061421C has no documented signature
 // TODO: func_global_asm_80614644 has no documented signature
@@ -576,100 +582,100 @@ s32 func_global_asm_80616470(Actor *arg0);
 s32 func_global_asm_806164C4(Actor *arg0);
 s32 func_global_asm_80616518(Actor *arg0);
 s32 func_global_asm_80616594(Actor *arg0);
-// TODO: func_global_asm_806165F0 has no documented signature
-// TODO: func_global_asm_80616644 has no documented signature
-// TODO: func_global_asm_806166A8 has no documented signature
-// TODO: func_global_asm_8061670C has no documented signature
-// TODO: func_global_asm_80616770 has no documented signature
-// TODO: func_global_asm_806167D4 has no documented signature
-// TODO: func_global_asm_806167EC has no documented signature
-// TODO: func_global_asm_80616850 has no documented signature
-// TODO: func_global_asm_806168E4 has no documented signature
-// TODO: func_global_asm_80616964 has no documented signature
-// TODO: func_global_asm_806169C0 has no documented signature
-// TODO: func_global_asm_80616A1C has no documented signature
+s32 func_global_asm_806165F0(Actor *arg0);
+s32 func_global_asm_80616644(Actor *arg0);
+s32 func_global_asm_806166A8(Actor *arg0);
+s32 func_global_asm_8061670C(Actor *arg0);
+s32 func_global_asm_80616770(Actor *arg0);
+s32 func_global_asm_806167D4(Actor *arg0);
+s32 func_global_asm_806167EC(Actor *arg0);
+s32 func_global_asm_80616850(Actor *arg0);
+s32 func_global_asm_806168E4(Actor *arg0);
+s32 func_global_asm_80616964(Actor *arg0);
+s32 func_global_asm_806169C0(Actor *arg0);
+s32 func_global_asm_80616A1C(Actor *arg0);
 // TODO: func_global_asm_80616A9C has no documented signature
-// TODO: func_global_asm_80616BA4 has no documented signature
-// TODO: func_global_asm_80616BF0 has no documented signature
-// TODO: func_global_asm_80616C1C has no documented signature
-// TODO: func_global_asm_80616C64 has no documented signature
-// TODO: func_global_asm_80616C8C has no documented signature
-// TODO: func_global_asm_80616CB8 has no documented signature
-// TODO: func_global_asm_80616D5C has no documented signature
-// TODO: func_global_asm_80616D84 has no documented signature
-// TODO: func_global_asm_80616DA8 has no documented signature
-// TODO: func_global_asm_80616DB4 has no documented signature
+s32 func_global_asm_80616BA4(Actor *arg0);
+s32 func_global_asm_80616BF0(Actor *arg0);
+s32 func_global_asm_80616C1C(Actor *arg0);
+s32 func_global_asm_80616C64(Actor *arg0);
+s32 func_global_asm_80616C8C(Actor *arg0);
+s32 func_global_asm_80616CB8(Actor *arg0);
+s32 func_global_asm_80616D5C(Actor *arg0);
+s32 func_global_asm_80616D84(Actor *arg0);
+s32 func_global_asm_80616DA8(Actor *arg0);
+s32 func_global_asm_80616DB4(Actor *arg0);
 // TODO: func_global_asm_80616E08 has no documented signature
-// TODO: func_global_asm_80617140 has no documented signature
+s32 func_global_asm_80617140(Actor *arg0);
 // TODO: func_global_asm_80617238 has no documented signature
-// TODO: func_global_asm_80617400 has no documented signature
-// TODO: func_global_asm_806174B4 has no documented signature
+s32 func_global_asm_80617400(Actor *arg0);
+s32 func_global_asm_806174B4(Actor *arg0);
 // TODO: func_global_asm_806175C4 has no documented signature
 // TODO: func_global_asm_80617770 has no documented signature
-// TODO: func_global_asm_8061796C has no documented signature
-// TODO: func_global_asm_806179C0 has no documented signature
-// TODO: func_global_asm_80617A60 has no documented signature
-// TODO: func_global_asm_80617AF0 has no documented signature
-// TODO: func_global_asm_80617B38 has no documented signature
-// TODO: func_global_asm_80617BD8 has no documented signature
-// TODO: func_global_asm_80617C6C has no documented signature
-// TODO: func_global_asm_80617CC0 has no documented signature
-// TODO: func_global_asm_80617D14 has no documented signature
-// TODO: func_global_asm_80617D20 has no documented signature
-// TODO: func_global_asm_80617D70 has no documented signature
-// TODO: func_global_asm_80617D94 has no documented signature
-void func_global_asm_80617DFC(Actor *, s16);
-// TODO: func_global_asm_80617FFC has no documented signature
-// TODO: func_global_asm_80618048 has no documented signature
-// TODO: func_global_asm_806180FC has no documented signature
+s32 func_global_asm_8061796C(Actor *arg0);
+s32 func_global_asm_806179C0(Actor *arg0);
+// TODO: func_global_asm_80617A60 has no documented signature but has been matched
+// TODO: func_global_asm_80617AF0 has no documented signature but has been matched
+// TODO: func_global_asm_80617B38 has no documented signature but has been matched
+// TODO: func_global_asm_80617BD8 has no documented signature but has been matched
+// TODO: func_global_asm_80617C6C has no documented signature but has been matched
+// TODO: func_global_asm_80617CC0 has no documented signature but has been matched
+// TODO: func_global_asm_80617D14 has no documented signature but has been matched
+// TODO: func_global_asm_80617D20 has no documented signature but has been matched
+// TODO: func_global_asm_80617D70 has no documented signature but has been matched
+// TODO: func_global_asm_80617D94 has no documented signature but has been matched
+void func_global_asm_80617DFC(Actor*, s16);
+// TODO: func_global_asm_80617FFC has no documented signature but has been matched
+// TODO: func_global_asm_80618048 has no documented signature but has been matched
+// TODO: func_global_asm_806180FC has no documented signature but has been matched
 // TODO: func_global_asm_80618104 has no documented signature
-// TODO: func_global_asm_80618430 has no documented signature
-// TODO: func_global_asm_8061849C has no documented signature
-// TODO: func_global_asm_806184BC has no documented signature
-// TODO: func_global_asm_8061859C has no documented signature
+// TODO: func_global_asm_80618430 has no documented signature but has been matched
+// TODO: func_global_asm_8061849C has no documented signature but has been matched
+// TODO: func_global_asm_806184BC has no documented signature but has been matched
+// TODO: func_global_asm_8061859C has no documented signature but has been matched
 // TODO: func_global_asm_80618608 has no documented signature
-// TODO: func_global_asm_80618728 has no documented signature
-// TODO: func_global_asm_806187BC has no documented signature
-// TODO: func_global_asm_806187E8 has no documented signature
-// TODO: func_global_asm_80618820 has no documented signature
-// TODO: func_global_asm_8061885C has no documented signature
-// TODO: func_global_asm_80618880 has no documented signature
-// TODO: func_global_asm_806188B8 has no documented signature
-// TODO: func_global_asm_806188F4 has no documented signature
-// TODO: func_global_asm_8061892C has no documented signature
-// TODO: func_global_asm_80618968 has no documented signature
-// TODO: func_global_asm_80618998 has no documented signature
-// TODO: func_global_asm_80618B6C has no documented signature
-// TODO: func_global_asm_80618C00 has no documented signature
-// TODO: func_global_asm_80618C8C has no documented signature
-// TODO: func_global_asm_80618CD8 has no documented signature
-// TODO: func_global_asm_80618D20 has no documented signature
+// TODO: func_global_asm_80618728 has no documented signature but has been matched
+// TODO: func_global_asm_806187BC has no documented signature but has been matched
+// TODO: func_global_asm_806187E8 has no documented signature but has been matched
+// TODO: func_global_asm_80618820 has no documented signature but has been matched
+// TODO: func_global_asm_8061885C has no documented signature but has been matched
+// TODO: func_global_asm_80618880 has no documented signature but has been matched
+// TODO: func_global_asm_806188B8 has no documented signature but has been matched
+// TODO: func_global_asm_806188F4 has no documented signature but has been matched
+// TODO: func_global_asm_8061892C has no documented signature but has been matched
+// TODO: func_global_asm_80618968 has no documented signature but has been matched
+// TODO: func_global_asm_80618998 has no documented signature but has been matched
+// TODO: func_global_asm_80618B6C has no documented signature but has been matched
+// TODO: func_global_asm_80618C00 has no documented signature but has been matched
+// TODO: func_global_asm_80618C8C has no documented signature but has been matched
+// TODO: func_global_asm_80618CD8 has no documented signature but has been matched
+// TODO: func_global_asm_80618D20 has no documented signature but has been matched
 // TODO: func_global_asm_80618D68 has no documented signature
-// TODO: func_global_asm_80618E4C has no documented signature
-// TODO: func_global_asm_80618EE8 has no documented signature
-// TODO: func_global_asm_80618F74 has no documented signature
-// TODO: func_global_asm_80619018 has no documented signature
+// TODO: func_global_asm_80618E4C has no documented signature but has been matched
+// TODO: func_global_asm_80618EE8 has no documented signature but has been matched
+// TODO: func_global_asm_80618F74 has no documented signature but has been matched
+// TODO: func_global_asm_80619018 has no documented signature but has been matched
 // TODO: func_global_asm_806190C0 has no documented signature
 // TODO: func_global_asm_806192A4 has no documented signature
-// TODO: func_global_asm_80619500 has no documented signature
-// TODO: func_global_asm_80619520 has no documented signature
-// TODO: func_global_asm_80619540 has no documented signature
-// TODO: func_global_asm_80619580 has no documented signature
-// TODO: func_global_asm_806195B4 has no documented signature
+// TODO: func_global_asm_80619500 has no documented signature but has been matched
+// TODO: func_global_asm_80619520 has no documented signature but has been matched
+// TODO: func_global_asm_80619540 has no documented signature but has been matched
+// TODO: func_global_asm_80619580 has no documented signature but has been matched
+// TODO: func_global_asm_806195B4 has no documented signature but has been matched
 
 // global_asm/code_201B0.c
-// TODO: func_global_asm_8061B4B0 has no documented signature
+// TODO: func_global_asm_8061B4B0 has no documented signature but has been matched
 // TODO: func_global_asm_8061B4E4 has no documented signature
-// TODO: func_global_asm_8061B5C4 has no documented signature
-// TODO: func_global_asm_8061B610 has no documented signature
-// TODO: func_global_asm_8061B650 has no documented signature
+// TODO: func_global_asm_8061B5C4 has no documented signature but has been matched
+// TODO: func_global_asm_8061B610 has no documented signature but has been matched
+// TODO: func_global_asm_8061B650 has no documented signature but has been matched
 // TODO: func_global_asm_8061B660 has no documented signature
 // TODO: func_global_asm_8061B7E0 has no documented signature
-// TODO: func_global_asm_8061B840 has no documented signature
+// TODO: func_global_asm_8061B840 has no documented signature but has been matched
 // TODO: func_global_asm_8061B84C has no documented signature
 // TODO: func_global_asm_8061B9B0 has no documented signature
-// TODO: func_global_asm_8061C0FC has no documented signature
-// TODO: func_global_asm_8061C2C4 has no documented signature
+// TODO: func_global_asm_8061C0FC has no documented signature but has been matched
+// TODO: func_global_asm_8061C2C4 has no documented signature but has been matched
 void func_global_asm_8061C2D8(Actor *camera, s32 arg1);
 void func_global_asm_8061C2F0(Actor *camera, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7);
 void func_global_asm_8061C39C(Actor *camera);
@@ -690,28 +696,29 @@ u8 func_global_asm_8061CC00(void);
 void func_global_asm_8061CC30(void);
 s32 playCutscene(Actor *arg0, s16 arg1, s32 arg2);
 // TODO: func_global_asm_8061CF24 has no documented signature
-// TODO: func_global_asm_8061CF80 has no documented signature
-// TODO: func_global_asm_8061CF90 has no documented signature
-// TODO: func_global_asm_8061CFCC has no documented signature
+// TODO: func_global_asm_8061CF80 has no documented signature but has been matched
+// TODO: func_global_asm_8061CF90 has no documented signature but has been matched
+// TODO: func_global_asm_8061CFCC has no documented signature but has been matched
+// TODO: func_global_asm_8061D058 has no documented signature but has been matched
 // TODO: func_global_asm_8061D060 has no documented signature
 // TODO: func_global_asm_8061D1FC has no documented signature
 void func_global_asm_8061D4E4(Actor *arg0);
 // TODO: func_global_asm_8061D6A8 has no documented signature
 void func_global_asm_8061D898(void);
-// TODO: func_global_asm_8061D934 has no documented signature
+// TODO: func_global_asm_8061D934 has no documented signature but has been matched
 // TODO: func_global_asm_8061D968 has no documented signature
-// TODO: func_global_asm_8061D9EC has no documented signature
-// TODO: func_global_asm_8061DA14 has no documented signature
-// TODO: func_global_asm_8061DA84 has no documented signature
-// TODO: func_global_asm_8061DAAC has no documented signature
-// TODO: func_global_asm_8061DB64 has no documented signature
+// TODO: func_global_asm_8061D9EC has no documented signature but has been matched
+// TODO: func_global_asm_8061DA14 has no documented signature but has been matched
+// TODO: func_global_asm_8061DA84 has no documented signature but has been matched
+// TODO: func_global_asm_8061DAAC has no documented signature but has been matched
+// TODO: func_global_asm_8061DB64 has no documented signature but has been matched
 // TODO: func_global_asm_8061DBD4 has no documented signature
-// TODO: func_global_asm_8061EA78 has no documented signature
+// TODO: func_global_asm_8061EA78 has no documented signature but has been matched
 // TODO: func_global_asm_8061EB04 has no documented signature
 // TODO: func_global_asm_8061EDA0 has no documented signature
 void func_global_asm_8061EF4C(Actor*, u8, u16, f32, f32, f32, f32, f32);
-// TODO: func_global_asm_8061F0B0 has no documented signature
-// TODO: func_global_asm_8061F164 has no documented signature
+// TODO: func_global_asm_8061F0B0 has no documented signature but has been matched
+// TODO: func_global_asm_8061F164 has no documented signature but has been matched
 // TODO: func_global_asm_8061F18C has no documented signature
 // TODO: func_global_asm_8061F2B8 has no documented signature
 // TODO: func_global_asm_8061F4B0 has no documented signature
@@ -723,29 +730,29 @@ void func_global_asm_8061EF4C(Actor*, u8, u16, f32, f32, f32, f32, f32);
 // TODO: func_global_asm_80621174 has no documented signature
 // TODO: func_global_asm_8062133C has no documented signature
 // TODO: func_global_asm_80621E9C has no documented signature
-// TODO: func_global_asm_8062210C has no documented signature
-// TODO: func_global_asm_8062217C has no documented signature
+// TODO: func_global_asm_8062210C has no documented signature but has been matched
+void func_global_asm_8062217C(Actor*, s16);
 // TODO: func_global_asm_80622334 has no documented signature
-// TODO: func_global_asm_806224CC has no documented signature
-// TODO: func_global_asm_806225C0 has no documented signature
+// TODO: func_global_asm_806224CC has no documented signature but has been matched
+// TODO: func_global_asm_806225C0 has no documented signature but has been matched
 // TODO: func_global_asm_806225D4 has no documented signature
 // TODO: func_global_asm_806227F0 has no documented signature
 // TODO: func_global_asm_806228BC has no documented signature
-// TODO: func_global_asm_80622ABC has no documented signature
+// TODO: func_global_asm_80622ABC has no documented signature but has been matched
 // TODO: func_global_asm_80622B24 has no documented signature
 // TODO: func_global_asm_80624978 has no documented signature
 // TODO: func_global_asm_80624CA4 has no documented signature
-// TODO: func_global_asm_806252CC has no documented signature
+// TODO: func_global_asm_806252CC has no documented signature but has been matched
 // TODO: func_global_asm_80625320 has no documented signature
 // TODO: func_global_asm_806256D0 has no documented signature
-// TODO: func_global_asm_80625994 has no documented signature
+// TODO: func_global_asm_80625994 has no documented signature but has been matched
 // TODO: func_global_asm_806259FC has no documented signature
 // TODO: func_global_asm_80625A80 has no documented signature
 // TODO: func_global_asm_80625B3C has no documented signature
 // TODO: func_global_asm_80625C30 has no documented signature
-// TODO: func_global_asm_80626110 has no documented signature
-// TODO: func_global_asm_806261CC has no documented signature
-// TODO: func_global_asm_806261EC has no documented signature
+// TODO: func_global_asm_80626110 has no documented signature but has been matched
+// TODO: func_global_asm_806261CC has no documented signature but has been matched
+// TODO: func_global_asm_806261EC has no documented signature but has been matched
 // TODO: func_global_asm_80626264 has no documented signature
 // TODO: func_global_asm_80626478 has no documented signature
 // TODO: func_global_asm_8062649C has no documented signature
@@ -757,10 +764,10 @@ s32 func_global_asm_80626F8C(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4,
 // TODO: func_global_asm_80627490 has no documented signature
 // TODO: func_global_asm_8062754C has no documented signature
 // TODO: func_global_asm_806276AC has no documented signature
-// TODO: func_global_asm_8062773C has no documented signature
-// TODO: func_global_asm_80627878 has no documented signature
-// TODO: func_global_asm_80627888 has no documented signature
-// TODO: func_global_asm_80627948 has no documented signature
+// TODO: func_global_asm_8062773C has no documented signature but has been matched
+// TODO: func_global_asm_80627878 has no documented signature but has been matched
+// TODO: func_global_asm_80627888 has no documented signature but has been matched
+// TODO: func_global_asm_80627948 has no documented signature but has been matched
 
 // global_asm/code_2C700.c
 // TODO: func_global_asm_80627A00 has no documented signature
@@ -1459,7 +1466,7 @@ void func_global_asm_8066466C(void);
 void func_global_asm_80664834(s16 arg0);
 void func_global_asm_80664A38(s16 arg0);
 
-// global_asm/code_699B0.c
+// global_asm/done/code_699B0.c
 void func_global_asm_80664CB0(s16 arg0);
 void func_global_asm_80664D20(void);
 
@@ -3865,7 +3872,7 @@ void func_global_asm_80737A74(void);
 void func_global_asm_80737A9C(void);
 void func_global_asm_80737AC4(s32 arg0, s16 arg1, s32 arg2);
 u16 func_global_asm_80737B2C(u8 arg0);
-// TODO: func_global_asm_80737B58 has no documented signature
+void func_global_asm_80737B58(u8 arg0, u16 arg1);
 
 // global_asm/audio/code_13C920.c
 void func_global_asm_80737C20(s32 arg0);
@@ -3908,12 +3915,12 @@ void func_global_asm_80738470(ALCSeq *seq, ALCMidiHdr *music_midi_bin);
 void func_global_asm_807385F0(ALCSeq *arg0, ALEvent *arg1, s32 arg2);
 s32 func_global_asm_8073876C(ALCSeq *seq, s32 track, ALEvent *event, s32 arg3);
 u32 func_global_asm_80738BA0(ALCSeq *seq);
-// TODO: func_global_asm_80738BB8 has no documented signature
-// TODO: func_global_asm_80738C6C has no documented signature
-// TODO: func_global_asm_80738D20 has no documented signature
+// TODO: func_global_asm_80738BB8 has no documented signature but has been matched
+// TODO: func_global_asm_80738C6C has no documented signature but has been matched
+// TODO: func_global_asm_80738D20 has no documented signature but has been matched
 // TODO: func_global_asm_80738E58 has no documented signature
-// TODO: func_global_asm_80739098 has no documented signature
-// TODO: func_global_asm_8073928C has no documented signature
+// TODO: func_global_asm_80739098 has no documented signature but has been matched
+// TODO: func_global_asm_8073928C has no documented signature but has been matched
 
 // global_asm/audio/n_sl.c
 void n_alInit(N_ALGlobals *g, ALSynConfig *c);
@@ -3988,7 +3995,7 @@ void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1);
 // TODO: func_global_asm_8073C604 has no documented signature
 
 // global_asm/audio/code_141520.c
-// TODO: func_global_asm_8073C820 has no documented signature
+// TODO: func_global_asm_8073C820 has no documented signature but has been matched
 // TODO: func_global_asm_8073C8D0 has no documented signature
 // TODO: func_global_asm_8073C948 has no documented signature
 void func_global_asm_8073C9C0(s32 arg0, s16 arg1, s32 arg2);
@@ -4002,9 +4009,9 @@ void func_global_asm_8073C9C0(s32 arg0, s16 arg1, s32 arg2);
 // TODO: func_global_asm_8073CDD0 has no documented signature
 
 // global_asm/audio/code_141C00.c
-// TODO: func_global_asm_8073CF00 has no documented signature
-// TODO: func_global_asm_8073CFB0 has no documented signature
-// TODO: func_global_asm_8073D060 has no documented signature
+// TODO: func_global_asm_8073CF00 has no documented signature but has been matched
+// TODO: func_global_asm_8073CFB0 has no documented signature but has been matched
+// TODO: func_global_asm_8073D060 has no documented signature but has been matched
 
 // global_asm/audio/n_syndelete.c
 void n_alSynDelete(void);
@@ -4017,10 +4024,10 @@ void n_alSynDelete(void);
 // TODO: func_global_asm_8073DA30 has no documented signature
 // TODO: func_global_asm_8073DF50 has no documented signature
 // TODO: func_global_asm_8073E268 has no documented signature
-// TODO: func_global_asm_8073E460 has no documented signature
-// TODO: func_global_asm_8073E63C has no documented signature
-// TODO: func_global_asm_8073E73C has no documented signature
-// TODO: func_global_asm_8073E800 has no documented signature
+// TODO: func_global_asm_8073E460 has no documented signature but has been matched
+// TODO: func_global_asm_8073E63C has no documented signature but has been matched
+// TODO: func_global_asm_8073E73C has no documented signature but has been matched
+// TODO: func_global_asm_8073E800 has no documented signature but has been matched
 
 // global_asm/audio/code_1435A0.c
 // TODO: func_global_asm_8073E8A0 has no documented signature but has been matched
@@ -4036,7 +4043,7 @@ s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3);
 // TODO: func_global_asm_8073F8A0 has no documented signature
 
 // global_asm/audio/code_144A90.c
-// TODO: func_global_asm_8073FD90 has no documented signature
+// TODO: func_global_asm_8073FD90 has no documented signature but has been matched
 
 // global_asm/audio/code_144E00.c
 // TODO: func_global_asm_80740100 has no documented signature
@@ -4046,6 +4053,10 @@ s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3);
 // global_asm/audio/code_145950.c
 // TODO: func_global_asm_80740C50 has no documented signature
 // TODO: func_global_asm_80740F48 has no documented signature but has been matched
+
+// global_asm/audio/code_145D70.c
+// TODO: func_global_asm_80741070 has no documented signature but has been matched
+// TODO: func_global_asm_807412B4 has no documented signature but has been matched
 
 // menu/code_0.c
 // TODO: func_menu_80024000 has no documented signature but has been matched
