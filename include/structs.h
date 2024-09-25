@@ -2137,7 +2137,8 @@ typedef struct CustomPVoice {
     ALLink node;
     u8 pad8[0x2C - 0x8];
     ALResampler resampler;
-    u8 pad60[0x8C - 0x60];
+    u8 pad60[0x88 - 0x60];
+    s32 unk88;
     u8 unk8C;
     u8 pad8D[0x90 - 0x8D];
     s16 unk90;

@@ -3973,14 +3973,14 @@ ALMicroTime alEvtqNextEvent(ALEventQueue *evtq, ALEvent *evt);
 void alEvtqPostEvent(ALEventQueue *evtq, ALEvent *evt, ALMicroTime delta);
 void alEvtqFlushType(ALEventQueue *evtq, s16 type);
 
-// global_asm/audio/code_140260.c
+// global_asm/audio/code_synaddplayer.c
 void func_global_asm_8073B560(ALPlayer *arg0);
 void func_global_asm_8073B5D0(ALPlayer *arg0);
 void func_global_asm_8073B640(ALPlayer *arg0);
 // TODO: func_global_asm_8073B6B0 has no documented signature
 // TODO: func_global_asm_8073B750 has no documented signature
 
-// global_asm/audio/code_140530.c
+// global_asm/audio/synsetvol.c
 // TODO: func_global_asm_8073B830 has no documented signature
 
 // global_asm/audio/code_140600.c
@@ -4029,7 +4029,7 @@ void n_alSynDelete(void);
 // TODO: func_global_asm_8073E73C has no documented signature but has been matched
 // TODO: func_global_asm_8073E800 has no documented signature but has been matched
 
-// global_asm/audio/code_1435A0.c
+// global_asm/audio/synsetpriority.c
 // TODO: func_global_asm_8073E8A0 has no documented signature but has been matched
 
 // global_asm/audio/code_1435C0.c
