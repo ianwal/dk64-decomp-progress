@@ -4269,7 +4269,7 @@ us,.boss,func_boss_80030AE0,336,yes
 us,.boss,func_boss_800292B0,272,yes
 us,.boss,func_boss_80033A80,112,yes
 us,.boss,func_boss_800254D0,8864,no
-us,.boss,func_boss_8002F100,2684,no
+us,.boss,func_boss_8002F100,2684,yes
 us,.boss,func_boss_8002450C,24,yes
 us,.boss,func_boss_8002A8B8,116,yes
 us,.boss,func_boss_8002FDF8,200,yes

@@ -694,7 +694,7 @@ u8 func_global_asm_8061CB98(u8 arg0);
 void func_global_asm_8061CBCC(void);
 u8 func_global_asm_8061CC00(void);
 void func_global_asm_8061CC30(void);
-s32 playCutscene(Actor *arg0, s16 arg1, u32 arg2);
+s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2);
 // TODO: func_global_asm_8061CF24 has no documented signature
 void func_global_asm_8061CF80(s16 arg0);
 void func_global_asm_8061CF90(Actor *arg0, s16 arg1);

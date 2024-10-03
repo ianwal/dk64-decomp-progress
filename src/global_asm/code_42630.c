@@ -545,13 +545,13 @@ void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 s
         }
         switch (arg2) {
             case 0:
-                playCutscene(arg0->unk94, arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
+                playCutscene(arg0->unk94, arg1, phi_v1 | 1 | D_global_asm_807F693C);
                 return;
             case 1:
-                playCutscene(NULL, arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
+                playCutscene(NULL, arg1, phi_v1 | 1 | D_global_asm_807F693C);
                 return;
             case 2:
-                playCutscene(getSpawnerTiedActor(spawn_trigger, 0x400), arg1, (phi_v1 | 1 | D_global_asm_807F693C) & 0xFF);
+                playCutscene(getSpawnerTiedActor(spawn_trigger, 0x400), arg1, phi_v1 | 1 | D_global_asm_807F693C);
                 break;
         }
     }

@@ -271,7 +271,7 @@ void func_global_asm_8068BA2C(void) {
                 } else {
                     var_v0 = 0;
                 }
-                playCutscene(NULL, temp_v1->unk0, (var_v0 | 1) & 0xFF);
+                playCutscene(NULL, temp_v1->unk0, var_v0 | 1);
                 break;
             case 2:
                 func_global_asm_8072167C(temp_v1->unk0, temp_v1->unk2, temp_v1->unk4, temp_v1->unk6);
