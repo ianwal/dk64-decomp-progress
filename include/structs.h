@@ -1274,6 +1274,17 @@ typedef struct {
     f32 unk38;
 } Actor_unk0;
 
+typedef struct KRoolChunkyAAD178 {
+    Actor *unk0;
+    u8 pad4[0x14 - 0x4];
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    u8 unk17;
+    u8 unk18;
+    u8 unk19;
+} KRoolChunkyAAD178;
+
 struct actor {
     Actor_unk0 *unk0; 
     ActorAnimationState *animation_state;
@@ -1421,7 +1432,10 @@ struct actor {
     u8 unk12F; // Used
     u8 unk130; // Used
     u8 unk131; // Used
-    s16 unk132; // Used
+    union {
+        s16 unk132;
+        u16 unk132_u16;
+    };
     s16 health;
     s16 unk136;
     u32 unk138;
