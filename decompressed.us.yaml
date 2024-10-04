@@ -366,7 +366,7 @@ segments:
       - [0x2141E60, c, audio/code_141E60]
       - [0x2141EF0, c, audio/code_141EF0]
       - [0x21435A0, c, audio/synsetpriority]
-      - [0x21435C0, c, audio/code_1435C0]
+      - [0x21435C0, c, audio/env]
       - [0x21445A0, c, audio/code_1445A0]
       - [0x2144A90, c, audio/code_144A90]
       - [0x2144E00, c, audio/code_144E00]
@@ -477,7 +477,7 @@ segments:
       - [0x21651B0, .rodata, audio/code_140600]
       - [0x21651D0, .rodata, audio/code_141520]
       - [0x21651E0, .rodata, audio/code_141EF0]
-      - [0x2165210, .rodata, audio/code_1435C0]
+      - [0x2165210, .rodata, audio/env]
       - [0x2165260, .rodata, audio/code_1445A0]
       - [0x2165270, rodata] # audio/code_145950
   - name: menu

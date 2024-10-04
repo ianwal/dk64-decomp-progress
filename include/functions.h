@@ -4032,7 +4032,7 @@ void n_alSynDelete(void);
 // global_asm/audio/synsetpriority.c
 // TODO: func_global_asm_8073E8A0 has no documented signature but has been matched
 
-// global_asm/audio/code_1435C0.c
+// global_asm/audio/env.c
 // TODO: func_global_asm_8073E8C0 has no documented signature
 // TODO: func_global_asm_8073F1E4 has no documented signature but has been matched
 // TODO: func_global_asm_8073F328 has no documented signature

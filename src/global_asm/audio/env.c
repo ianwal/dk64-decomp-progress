@@ -296,7 +296,7 @@ s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
     return spE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_1435C0/func_global_asm_8073F81C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/env/func_global_asm_8073F81C.s")
 
 /*
 // __n_getVol?
