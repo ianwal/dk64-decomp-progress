@@ -1,8 +1,53 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_145950/func_global_asm_80740C50.s")
+void *func_global_asm_80741070(CustomPVoice *, s16 *, Acmd *);
+extern f32 D_global_asm_80760570;
+extern f32 D_global_asm_80760574;
+extern f32 D_global_asm_80760578;
+
+void *func_global_asm_80740C50(CustomPVoice *arg0, s16 *arg1, s32 arg2, Acmd *arg3) {
+    // Unsure of arg2 type, doesn't seem used?
+    Acmd *sp2C;
+    u8 pad[4];
+    f32 sp24;
+    Acmd *sp20;
+    Acmd *sp1C;
+    Acmd *sp18;
+
+    sp2C = arg3;
+    sp2C = func_global_asm_80741070(arg0, arg1, arg3);
+    if ((arg0->unk8C != 0) && (arg0->unk8C < 0x40)) {
+        if (arg0->unk8C >= 6) {
+            sp24 = D_global_asm_80760570 / sqrtf(arg0->unk8C + 1.0f);
+        } else {
+            sp24 = 65536.0f / ((f32) arg0->unk8C + 1.0f);
+        }
+        if (sp24 < D_global_asm_80760574) {
+            sp24 = D_global_asm_80760578;
+        }
+        sp20 = sp2C++;
+        sp20->words.w0 = (*arg1 & 0xFFFF);
+        sp20->words.w1 = ((((u32) sp24 & 0xFFFF) << 0x10) | ((arg0->unk8C + 1) & 0xFFFF));
+    }
+    if (arg0->unk92 > 0) {
+        if (arg0->unkB8 != 0) {
+            func_global_asm_8073BE54(&arg0->unk90, 22050.0f);
+        }
+        sp1C = sp2C++;
+        sp1C->words.w0 = 0x0B000020;
+        sp1C->words.w1 = osVirtualToPhysical(&arg0->unk98);
+        if (arg0->unkB8 == 2) {
+            arg0->unkB8 = 0;
+        }
+        sp18 = sp2C++;
+        sp18->words.w0 = ((*arg1 & 0xFFFF) | (((arg0->unkB8 & 0xFF) << 0x10) | 0x0E000000));
+        sp18->words.w1 = (osVirtualToPhysical(arg0->unkBC) & 0xFFFFFF & 0xFFFFFF);
+        arg0->unkB8 = 0;
+    }
+    return sp2C;
+}
+
 
 void func_global_asm_807407A8(void *, s32, void*);
 

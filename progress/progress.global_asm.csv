@@ -802,7 +802,7 @@ us,asm,func_global_asm_8073A900,140,yes
 us,asm,func_global_asm_80727F20,228,yes
 us,asm,func_global_asm_80659470,88,yes
 us,asm,func_global_asm_806C7B34,28,yes
-us,asm,func_global_asm_80740C50,760,no
+us,asm,func_global_asm_80740C50,760,yes
 us,asm,func_global_asm_806A5FA4,96,yes
 us,asm,func_global_asm_806625D0,72,yes
 us,asm,func_global_asm_806ACC64,132,yes
