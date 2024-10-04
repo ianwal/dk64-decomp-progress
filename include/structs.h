@@ -2173,6 +2173,42 @@ typedef struct CustomPVoice_unk70 {
     u8 pad0[0xB8];
 } CustomPVoice_unk70;
 
+typedef struct CustomPVoice_unk7C_unkC {
+    u8 pad0[0x88];
+    s32 unk88;
+} CustomPVoice_unk7C_unkC;
+
+typedef struct CustomPVoice_unk7C CustomPVoice_unk7C;
+struct CustomPVoice_unk7C {
+    CustomPVoice_unk7C *unk0;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+    union {
+        struct {
+            s16 unkC;
+            s16 unkE;
+        };
+        CustomPVoice_unk7C_unkC *unkC_ptr;
+        f32 unkC_f32;
+        s32 unkC_s32;
+    };
+    union {
+        struct {
+            s16 unk10;
+            u8 unk12;
+            u8 unk13;
+        };
+        s32 unk10_s32;
+    };
+    u8 unk14;
+    u8 unk15;
+    u8 pad16[0x18 - 0x16];
+    f32 unk18;
+    s32 unk1C;
+    void *unk20;
+};
+
 typedef struct CustomPVoice {
     ALLink node;
     u8 pad8[4];
@@ -2189,11 +2225,14 @@ typedef struct CustomPVoice {
     u16 unk6A;
     s16 unk6C;
     s16 unk6E;
-    CustomPVoice_unk70 *unk70;
+    union {
+        CustomPVoice_unk70 *unk70;
+        s32 unk70_s32;
+    };
     s32 unk74;
     s32 unk78;
-    s32 unk7C;
-    s32 unk80;
+    CustomPVoice_unk7C *unk7C;
+    s32 *unk80;
     s32 unk84;
     s32 unk88;
     u8 unk8C;

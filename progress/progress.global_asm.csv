@@ -2080,7 +2080,7 @@ us,asm,func_global_asm_806EEAF8,3384,no
 us,asm,func_global_asm_806CF4B8,200,yes
 us,asm,func_global_asm_806CF398,148,yes
 us,asm,func_global_asm_806CA2AC,56,yes
-us,asm,func_global_asm_8073E8C0,2340,no
+us,asm,func_global_asm_8073E8C0,2340,yes
 us,asm,func_global_asm_80678814,8,yes
 us,asm,func_global_asm_806FFB2C,216,yes
 us,asm,func_global_asm_806DF670,100,yes
