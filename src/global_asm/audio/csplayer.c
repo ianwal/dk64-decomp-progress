@@ -228,3 +228,31 @@ void func_global_asm_80735958(ALCSPlayer *seqp, f32 tempo) {
         seqp->uspt = 0x1E8;
     }
 }
+
+extern s32 func_global_asm_8073D060(ALCSeq *, u32 *);
+
+void func_global_asm_807359A0(ALCSPlayer *seqp) {
+    // __CSPPostNextSeqEvent
+    ALEvent sp20;
+    u32 sp1C;
+
+    if (!(seqp->state == AL_PLAYING) || (!seqp->target)) {
+        return;
+    }
+
+    if (!func_global_asm_8073D060(seqp->target, &sp1C)) {
+        return;
+    }
+
+    sp20.type = AL_SEQ_REF_EVT;
+    alEvtqPostEvent(&seqp->evtq, &sp20, seqp->uspt * sp1C);
+}
+
+typedef struct {
+    u8 unk0[0x88 - 0x0];
+    u8 unk88;
+} Struct80735A34;
+
+void func_global_asm_80735A34(Struct80735A34 *arg0, u8 arg1) {
+    arg0->unk88 = arg1;
+}

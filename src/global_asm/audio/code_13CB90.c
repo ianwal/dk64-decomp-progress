@@ -51,13 +51,6 @@ typedef struct {
     Struct80737F0C_unk60 *unk60;  
 } Struct80737F0C;
 
-void func_global_asm_80737E50(ALSeqPlayer* arg0) {
-    ALEvent sp18;
-
-    sp18.type = AL_SEQP_PLAY_EVT;
-    alEvtqPostEvent(&arg0->evtq, &sp18, 0);
-}
-
 void func_global_asm_80737E90(Struct80737E90 *arg0, s32 arg1) {
     arg0->unk84 = arg1;
 }
@@ -87,7 +80,7 @@ void func_global_asm_80737F40(Struct80737F0C *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB50/func_global_asm_80737FD8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_80737FD8.s")
 
 /*
 void func_global_asm_80737FD8(ALSeqPlayer *arg0, s32 arg1) {
@@ -95,7 +88,7 @@ void func_global_asm_80737FD8(ALSeqPlayer *arg0, s32 arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB50/func_global_asm_8073801C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_8073801C.s")
 
 /*
 void func_global_asm_8073801C(ALSeqPlayer *arg0, s32 arg1) {
@@ -104,7 +97,7 @@ void func_global_asm_8073801C(ALSeqPlayer *arg0, s32 arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB50/func_global_asm_80738080.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_80738080.s")
 
 /*
 void func_global_asm_80738080(ALSeqPlayer *arg0, s32 arg1, u8 arg2) {
@@ -112,7 +105,7 @@ void func_global_asm_80738080(ALSeqPlayer *arg0, s32 arg1, u8 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB50/func_global_asm_807380CC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_807380CC.s")
 
 /*
 void func_global_asm_807380CC(ALSeqPlayer *arg0, s32 arg1, u8 arg2) {
@@ -120,7 +113,7 @@ void func_global_asm_807380CC(ALSeqPlayer *arg0, s32 arg1, u8 arg2) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB50/func_global_asm_80738118.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_80738118.s")
 
 /*
 void func_global_asm_80738118(ALSeqPlayer *arg0, s32 arg1, u8 arg2) {

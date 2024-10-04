@@ -3849,8 +3849,8 @@ f32 func_global_asm_80732DAC(f32 arg0);
 // TODO: func_global_asm_807359A0 has no documented signature but has been matched
 // TODO: func_global_asm_80735A34 has no documented signature but has been matched
 
-// global_asm/audio/code_13A750.c
-void func_global_asm_80735A50(ALSeqPlayer *arg0, s32 arg1);
+// global_asm/audio/cspsetbank.c
+void func_global_asm_80735A50(ALSeqPlayer *arg0, ALBank *arg1);
 
 // global_asm/audio/code_13A7A0.c
 // TODO: func_global_asm_80735AA0 has no documented signature
@@ -3878,11 +3878,11 @@ void func_global_asm_80737B58(u8 arg0, u16 arg1);
 void func_global_asm_80737C20(s32 arg0);
 void func_global_asm_80737CF4(s32 arg0, s32 arg1);
 
-// global_asm/audio/code_13CB30.c
+// global_asm/audio/seqpgetstate.c
 s32 func_global_asm_80737E30(ALSeqPlayer *seqp);
 
-// global_asm/audio/code_13CB50.c
-void func_global_asm_80737E50(ALSeqPlayer *seqp);
+// global_asm/audio/cspplay.c
+void func_global_asm_80737E50(ALCSPlayer *seqp);
 // TODO: func_global_asm_80737E90 has no documented signature but has been matched
 // TODO: func_global_asm_80737EA4 has no documented signature but has been matched
 // TODO: func_global_asm_80737F0C has no documented signature but has been matched

@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "sndp.h"
 
 typedef struct {
     u8 unk0[0x14];
@@ -76,8 +77,8 @@ extern SoundState *D_global_asm_807563C0;
 extern u16 *D_global_asm_807FF0E4;
 
 void func_global_asm_80735DBC(ALEvent *);
-void func_global_asm_807370A4(s32, void *, s32);
-void func_global_asm_8073749C(void *);
+void func_global_asm_807370A4(ALEventQueue *, ALSoundState *, u16);
+void func_global_asm_8073749C(SoundState *);
 void func_global_asm_8073B6B0(void *);
 void func_global_asm_8073B750(void *);
 
@@ -129,13 +130,90 @@ void func_global_asm_80737028(struct_80737028_0 *arg0) {
     alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp20, 0x8235);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_807370A4.s")
+void func_global_asm_807370A4(ALEventQueue *evtq, ALSoundState *state, u16 arg2) {
+    // __removeEVents
+    ALLink *thisNode;
+    ALLink *nextNode;
+    ALEventListItem *thisItem;
+    ALEventListItem *nextItem;
+    ALSndpEvent *sp1C;
+    OSIntMask mask;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_80737198.s")
+    mask = osSetIntMask(1U);
+    thisNode = evtq->allocList.next;
+    while (thisNode) {
+        nextNode = thisNode->next;
+        thisItem = thisNode;
+        nextItem = nextNode;
+        sp1C = (ALSndpEvent *)&thisItem->evt;
+        if ((sp1C->common.state == state) && (*(u16*)(&sp1C->common.type) & arg2)) {
+            if (nextItem != NULL) {
+                nextItem->delta += thisItem->delta;
+            }
+            alUnlink(thisNode);
+            alLink(thisNode, evtq);
+        }
+        thisNode = nextNode;
+    }
+    osSetIntMask(mask);
+}
+
+extern SoundState *D_global_asm_807563C0;
+extern SoundState *D_global_asm_807563C4;
+extern SoundState *D_global_asm_807563C8;
+
+u16 func_global_asm_80737198(u16 *arg0, u16 *arg1) {
+    u16 sp16;
+    u16 sp14;
+    u16 sp12;
+    SoundState *spC;
+    SoundState *sp8;
+    SoundState *sp4;
+
+    spC = D_global_asm_807563C0;
+    sp8 = D_global_asm_807563C8;
+    sp4 = D_global_asm_807563C4;
+    for (sp16 = 0; spC; sp16++, spC = spC->node.next) {}
+    for (sp14 = 0; sp8; sp14++, sp8 = sp8->node.next) {}
+    for (sp12 = 0; sp4; sp12++, sp4 = sp4->node.prev) {}
+    *arg0 = sp14;
+    *arg1 = sp16;
+    return sp12;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_8073726C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_8073749C.s")
+extern s16 D_global_asm_807563D0;
+
+void func_global_asm_8073749C(SoundState *arg0) {
+    if (D_global_asm_807563C0 == arg0) {
+        D_global_asm_807563C0 = arg0->node.next;
+    }
+    if (D_global_asm_807563C4 == arg0) {
+        D_global_asm_807563C4 = arg0->node.prev;
+    }
+    alUnlink(arg0);
+    if (D_global_asm_807563C8 != NULL) {
+        arg0->node.next = D_global_asm_807563C8;
+        arg0->node.prev = NULL;
+        D_global_asm_807563C8->node.prev = arg0;
+        D_global_asm_807563C8 = arg0;
+    } else {
+        arg0->node.prev = NULL;
+        arg0->node.next = arg0->node.prev;
+        D_global_asm_807563C8 = arg0;
+    }
+    if (arg0->status & 4) {
+        D_global_asm_807563D0--;
+    }
+    arg0->playState = 0;
+    if (arg0->unk30 != NULL) {
+        if (*arg0->unk30 == arg0) {
+            *arg0->unk30 = 0;
+        }
+        arg0->unk30 = NULL;
+    }
+}
 
 void func_global_asm_807375E0(Struct_807375E0 *arg0, u8 arg1) {
     if (arg0 != 0) {
