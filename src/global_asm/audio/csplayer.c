@@ -1,6 +1,61 @@
 #include <ultra64.h>
 #include "functions.h"
 
+ALEventListItem *func_global_asm_80732444(s32, s32, s32, u8, s32); /* extern */
+s32 func_global_asm_80733180(void *);
+void func_global_asm_80737F40(ALCSPlayer *);
+void func_global_asm_8073AA74(ALCSPlayer *);
+
+void func_global_asm_80732F10(ALCSPlayer *seqp, ALSeqpConfig *c) {
+    // alCSPNew
+    s32 i;
+    u8 pad[8];
+    ALEventListItem *items;
+    ALVoiceState *vs;
+    ALVoiceState *voices;
+
+    ALHeap *hp = c->heap;
+
+    seqp->bank = 0;
+    seqp->target = 0;
+    seqp->drvr = n_syn;
+    seqp->chanMask = 0xFFFF;
+    func_global_asm_80737F40(seqp);
+    seqp->uspt = 0x1E8;
+    seqp->nextDelta = 0;
+    seqp->state = AL_STOPPED;
+    seqp->vol = 0x7FFF;
+    seqp->debugFlags = c->debugFlags;
+    seqp->frameTime = AL_USEC_PER_FRAME;
+    seqp->curTime = 0;
+    seqp->initOsc = c->initOsc;
+    seqp->updateOsc = c->updateOsc;
+    seqp->stopOsc = c->stopOsc;
+    seqp->unk7C = 0.0f;
+    seqp->unk80 = 1.0f;
+    seqp->unk84 = 0;
+    seqp->unk89 = 0;
+    seqp->unk88 = c->maxVoices;
+    seqp->nextEvent.type = AL_SEQP_API_EVT;
+    seqp->maxChannels = c->maxChannels;
+    seqp->chanState = func_global_asm_80732444(0, 0, hp, c->maxChannels, 0x34);
+    func_global_asm_8073AA74(seqp);
+    voices = func_global_asm_80732444(0, 0, hp, c->maxVoices, sizeof(ALVoiceState));
+    seqp->vFreeList = NULL;
+    for (i = 0; i < c->maxVoices; i++) {
+        vs = &voices[i];
+        vs->next = seqp->vFreeList;
+        seqp->vFreeList = vs;
+    }
+    seqp->vAllocHead = 0;
+    seqp->vAllocTail = 0;
+    items = func_global_asm_80732444(0, 0, hp, c->maxEvents, 0x1C);
+    alEvtqNew(&seqp->evtq, items, c->maxEvents);
+    seqp->node.next = NULL;
+    seqp->node.handler = func_global_asm_80733180;
+    seqp->node.clientData = seqp;
+    func_global_asm_8073B640(seqp);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733180.s")
 

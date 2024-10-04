@@ -1443,7 +1443,7 @@ us,asm,func_global_asm_80673240,104,no
 us,asm,func_global_asm_806E9ECC,192,yes
 us,asm,func_global_asm_80619018,168,yes
 us,asm,func_global_asm_806A1AC4,1124,yes
-us,asm,func_global_asm_80732F10,624,no
+us,asm,func_global_asm_80732F10,624,yes
 us,asm,func_global_asm_80650998,108,yes
 us,asm,getFlagBlockAddress,340,no
 us,asm,func_global_asm_8070CBA4,120,yes

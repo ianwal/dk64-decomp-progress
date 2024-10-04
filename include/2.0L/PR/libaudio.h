@@ -678,6 +678,8 @@ typedef struct ALVoiceState_s {
     u8          tremelo;        /* current value of the tremelo */
     u8          flags;          /* bit 0 tremelo flag
                                    bit 1 vibrato flag           */
+    /* DK64 Stuff */
+    u8          unk38[8];       // Currently padding, has to be size 0x40
 } ALVoiceState;
 
 typedef struct {
@@ -806,6 +808,12 @@ typedef struct {
     ALOscInit           initOsc;
     ALOscUpdate         updateOsc;
     ALOscStop           stopOsc;
+    /* From here is custom variables for DK64 */
+    f32                 unk7C;
+    f32                 unk80;
+    s32                 unk84;
+    s8                  unk88;
+    s8                  unk89;
 } ALCSPlayer;
 
 /*
