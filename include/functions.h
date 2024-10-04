@@ -4001,7 +4001,7 @@ void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1);
 void func_global_asm_8073C9C0(s32 arg0, s16 arg1, s32 arg2);
 // TODO: func_global_asm_8073CA04 has no documented signature but has been matched
 
-// global_asm/audio/code_1417C0.c
+// global_asm/audio/synallocvoice.c
 // TODO: func_global_asm_8073CAC0 has no documented signature
 // TODO: func_global_asm_8073CC94 has no documented signature
 

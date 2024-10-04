@@ -2211,7 +2211,7 @@ struct CustomPVoice_unk7C {
 
 typedef struct CustomPVoice {
     ALLink node;
-    u8 pad8[4];
+    ALVoice *vvoice;
     void* unkC;
     void* unk10;
     u8 pad14[0x28 - 0x14];
