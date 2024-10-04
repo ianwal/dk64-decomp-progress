@@ -2169,6 +2169,10 @@ typedef struct CustomResampler {
     s16 unk32;
 } CustomResampler;
 
+typedef struct CustomPVoice_unk70 {
+    u8 pad0[0xB8];
+} CustomPVoice_unk70;
+
 typedef struct CustomPVoice {
     ALLink node;
     u8 pad8[4];
@@ -2179,13 +2183,13 @@ typedef struct CustomPVoice {
     CustomResampler resampler;
     s16 unk60;
     s16 unk62;
-    s16 unk64;
+    u16 unk64;
     s16 unk66;
     s16 unk68;
-    s16 unk6A;
+    u16 unk6A;
     s16 unk6C;
     s16 unk6E;
-    s32 unk70;
+    CustomPVoice_unk70 *unk70;
     s32 unk74;
     s32 unk78;
     s32 unk7C;
