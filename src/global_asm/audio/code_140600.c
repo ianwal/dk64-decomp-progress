@@ -105,74 +105,8 @@ void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073C040.s")
-
 s32 func_global_asm_80732444(s32, s32, ALHeap *, s32, s32);
-extern s32 D_global_asm_80756458[];
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-} Struct8073C040_sp28_unk20;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    f32 unk24;
-    s32 unk28;
-} Struct8073C040_sp28_unk24;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    f32 unk10;
-    f32 unk14;
-    s32 unk18;
-    f32 unk1C;
-    Struct8073C040_sp28_unk20 *unk20;
-    Struct8073C040_sp28_unk24 *unk24;
-} Struct8073C040_sp28;
-
-typedef struct {
-    u32 unk0;
-    Struct8073C040_sp28 *unk4;
-    u8 unk8;
-    u8 unk9;
-    u8 unkA;
-    u8 unkB;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20[1]; // TODO: How many elements?
-    s32 unk24[1]; // TODO: How many elements?
-    s32 unk28;
-    s32 unk2C;
-} Struct8073C040_sp24;
+extern s32 *D_global_asm_80756458[];
 
 typedef struct {
     s32 unk0;
@@ -186,21 +120,58 @@ typedef struct {
     s32 unk20[1]; // TODO: How many elements?
 } Struct8073C040_arg1;
 
-/*
-// TODO: Very close considering the size of it...
-void func_global_asm_8073C040(s16 **arg0, Struct8073C040_arg1 *arg1, s16 arg2, s32 arg3) {
-    u16 sp36;
-    u16 sp34;
-    u16 sp32;
+typedef struct Struct8073C040_SP28_sub20 {
+    s16 unk0;
+    u8 pad2[0x2C - 2];
+    void *unk2C;
+    void *unk30;
+} Struct8073C040_SP28_sub20;
+
+typedef struct Struct8073C040_SP28_sub24 {
+    u8 pad0[0x14];
+    void *unk14;
+    void *unk18;
+    u8 pad1C[0x24 - 0x1C];
+    f32 unk24;
+    s32 unk28;
+} Struct8073C040_SP28_sub24;
+
+typedef struct Struct8073C040_SP28 {
+    s32 unk0;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    u8 padE[2];
+    f32 unk10;
+    f32 unk14;
+    s32 unk18;
+    f32 unk1C;
+    Struct8073C040_SP28_sub20 *unk20;
+    Struct8073C040_SP28_sub24 *unk24;
+} Struct8073C040_SP28;
+
+typedef struct Struct8073C040_SP24 {
+    u32 unk0;
+    Struct8073C040_SP28 *unk4;
+    u8 unk8;
+    u8 pad9[0x20 - 0x9];
+    s16 *unk20;
+    s16 *unk24;
+    s16 *unk28;
+    s16 *unk2C;
+} Struct8073C040_SP24;
+
+void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, s16 arg2, s32 arg3) {
+    // Might (?) be alfxnew
+    u16 i, j, k;
     s32 *sp2C;
-    Struct8073C040_sp28 *sp28;
-    Struct8073C040_sp24 *sp24;
-    f32 var_f8;
+    Struct8073C040_SP28 *sp28;
+    Struct8073C040_SP24 *sp24;
 
     sp2C = NULL;
-    sp24 = func_global_asm_80732444(0, 0, arg3, 1, 0x30);
+    sp24 = func_global_asm_80732444(0, 0, arg3, 1U, 0x30);
     *arg0 = sp24;
-
     switch (arg1->unk1C[arg2]) {
         case 6:
             sp2C = arg1->unk20[arg2];
@@ -209,55 +180,53 @@ void func_global_asm_8073C040(s16 **arg0, Struct8073C040_arg1 *arg1, s16 arg2, s
             sp2C = &D_global_asm_80756458;
             break;
     }
-
-    sp34 = 0;
-    sp24->unk8 = sp2C[sp34++];
-    sp24->unk0 = sp2C[sp34++];
+    j = 0;
+    sp24->unk8 = sp2C[j++];
+    sp24->unk0 = sp2C[j++];
     sp24->unk4 = func_global_asm_80732444(0, 0, arg3, sp24->unk8, 0x28);
-    sp24->unk20[0] = func_global_asm_80732444(0, 0, arg3, sp24->unk0, 2);
-    sp24->unk28 = sp24->unk20[0];
-    sp24->unk24[0] = func_global_asm_80732444(0, 0, arg3, sp24->unk0, 2);
-    sp24->unk2C = sp24->unk24[0];
-    // Fine up to here
-    for (sp32 = 0; sp32 < sp24->unk0; sp32++) {
-        sp24->unk24[sp32] = 0;
-        sp24->unk20[sp32] = sp24->unk24[sp32];
+    sp24->unk20 = func_global_asm_80732444(0, 0, arg3, sp24->unk0, 2);
+    sp24->unk28 = sp24->unk20;
+    sp24->unk24 = func_global_asm_80732444(0, 0, arg3, sp24->unk0, 2);
+    sp24->unk2C = (void *) sp24->unk24;
+    for (k = 0; k < sp24->unk0; k++) {
+        sp24->unk24[k] = 0;
+        sp24->unk20[k] = sp24->unk24[k];
     }
-    for (sp36 = 0; sp36 < sp24->unk8; sp36++) {
-        sp28 = &sp24->unk4[sp36];
-        sp28->unk0 = sp2C[sp34++];
-        sp28->unk4 = sp2C[sp34++];
-        sp28->unkA = sp2C[sp34++];
-        sp28->unk8 = sp2C[sp34++];
-        sp28->unkC = sp2C[sp34++];
-        if (sp2C[sp34] != 0) {
-            sp28->unk10 = ((sp2C[sp34++] / 1000.0f) * 2.0f) / arg1->unk18;
-            sp28->unk1C = (sp2C[sp34++] / 173123.4062f) * (sp28->unk4 - sp28->unk0);
+    for (i = 0; i < sp24->unk8; i++) {
+        sp28 = &sp24->unk4[i];
+        sp28->unk0 = sp2C[j++];
+        sp28->unk4 = sp2C[j++];
+        sp28->unkA = sp2C[j++];
+        sp28->unk8 = sp2C[j++];
+        sp28->unkC = sp2C[j++];
+        if (sp2C[j]) {
+            sp28->unk10 = ((sp2C[j++] / 1000.0f) * 2.0f) / ((ALSynConfig*) arg1)->outputRate;
+            sp28->unk1C = (sp2C[j++] / 173123.4f) * (u32)(sp28->unk4 - sp28->unk0);
             sp28->unk14 = 1.0f;
             sp28->unk18 = 0;
-            sp28->unk24 = func_global_asm_80732444(0, 0, arg3, 1, 0x38);
-            sp28->unk24->unk14 = func_global_asm_80732444(0, 0, arg3, 1, 0x20);
-            sp28->unk24->unk18 = func_global_asm_80732444(0, 0, arg3, 1, 0x20);
+            sp28->unk24 = func_global_asm_80732444(0, 0, arg3, 1U, 0x38);
+            sp28->unk24->unk14 = func_global_asm_80732444(0, 0, arg3, 1U, 0x20);
+            sp28->unk24->unk18 = func_global_asm_80732444(0, 0, arg3, 1U, 0x20);
             sp28->unk24->unk24 = 0.0f;
             sp28->unk24->unk28 = 1;
         } else {
             sp28->unk24 = NULL;
-            sp34 += 1;
-            sp34 += 1;
+            j++;
+            j++;
         }
-        if (sp2C[sp34] != 0) {
-            sp28->unk20 = func_global_asm_80732444(0, 0, arg3, 1, 0x38);
-            sp28->unk20->unk2C = func_global_asm_80732444(0, 0, arg3, 1, 8);
-            sp28->unk20->unk30 = func_global_asm_80732444(0, 0, arg3, 1, 8);
-            sp28->unk20->unk0 = sp2C[sp34++];
+        if (sp2C[j]) {
+            sp28->unk20 = func_global_asm_80732444(0, 0, arg3, 1U, 0x38);
+            sp28->unk20->unk2C = func_global_asm_80732444(0, 0, arg3, 1U, 8);
+            sp28->unk20->unk30 = func_global_asm_80732444(0, 0, arg3, 1U, 8);
+            sp28->unk20->unk0 = (s16) sp2C[j];
+            j++;
             func_global_asm_8073BC74(sp28->unk20);
         } else {
             sp28->unk20 = NULL;
-            sp34 += 1;
+            j++;
         }
     }
 }
-*/
 
 void func_global_asm_8073C604(CustomPVoice *arg0, s32 (*arg1)(CustomResampler *), ALHeap *arg2) {
     arg0->unkC = func_global_asm_80732444(0, 0, arg2, 1, 0x20);
