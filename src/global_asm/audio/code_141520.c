@@ -4,25 +4,42 @@
 ALParam *__n_allocParam();
 s32 func_global_asm_8073F1E4(Struct8073F1E4 *, s32, ALParam *);
 
-void func_global_asm_8073C820(Struct8073F1E4_container *arg0, u8 arg1) {
+void func_global_asm_8073C820(ALVoice *arg0, u8 arg1) {
     ALParam *sp1C;
 
-    if (arg0->unk8 != NULL) {
+    if (arg0->pvoice != NULL) {
         sp1C = __n_allocParam();
-        if (sp1C == NULL) {
-            return;
-        }
-        sp1C->delta = n_syn->paramSamples + arg0->unk8->unk88;
-        sp1C->type = 0x10;
+        ALFailIf(sp1C == 0, ERR_ALSYN_NO_UPDATE);
+        sp1C->delta = n_syn->paramSamples + ((CustomPVoice *)arg0->pvoice)->unk88;
+        sp1C->type = AL_SEQP_STOP_EVT;
         sp1C->data.i = arg1;
         sp1C->next = 0;
-        func_global_asm_8073F1E4(arg0->unk8, 3, sp1C);
+        func_global_asm_8073F1E4(arg0->pvoice, 3, sp1C);
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_141520/func_global_asm_8073C8D0.s")
+extern s32 func_global_asm_8073D1F0(s32, Acmd *, s32);  // Unsure of this sig, used for an & ref, so not important if changed
+s32 func_global_asm_8073C8D0(s16 arg0) {
+    N_ALMAinBus *sp4;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_141520/func_global_asm_8073C948.s")
+    sp4 = n_syn->mainBus;
+    if ((s32)(sp4->handler) == (s32)&func_global_asm_8073D1F0) {
+        return ((Struct8073BC74_auxbus *)n_syn->auxBus)[arg0].unk20;
+    } else {
+        return 0;
+    }
+}
+
+s32 func_global_asm_8073C948(s16 arg0) {
+    N_ALMAinBus *sp4;
+
+    sp4 = n_syn->mainBus;
+    if ((s32)(sp4->handler) == (s32)&func_global_asm_8073D1F0) {
+        return ((Struct8073BC74_auxbus *)n_syn->auxBus)[arg0].unk44;
+    } else {
+        return 0;
+    }
+}
 
 s32 func_global_asm_8073DA30(s32, s16, s32);
 
