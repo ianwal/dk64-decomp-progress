@@ -1,23 +1,16 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_807382A0(ALSeqPlayer *arg0, s32 arg1, u8 arg2, u8 arg3, u8 arg4) {
-    s32 sp2C;
-    u8 sp2B;
-    u8 sp2A;
-    u8 sp29;
-    u8 sp28;
-    s32 sp24;
-    s16 sp22;
-    s16 sp20; // TODO: ALEvent
-    s32 sp1C;
+void func_global_asm_807382A0(ALSeqPlayer *seqp, s32 ticks, u8 status, u8 byte1, u8 byte2) {
+    ALEvent evt;
+    ALMicroTime deltaTIme;
 
-    sp20 = 2;
-    sp24 = 0;
-    sp28 = arg2;
-    sp29 = arg3;
-    sp2A = arg4;
-    sp2C = 0;
-    sp1C = arg1;
-    alEvtqPostEvent(&arg0->evtq, &sp20, sp1C);
+    evt.type = AL_SEQP_MIDI_EVT;
+    evt.msg.midi.ticks = 0;
+    evt.msg.midi.status = status;
+    evt.msg.midi.byte1 = byte1;
+    evt.msg.midi.byte2 = byte2;
+    evt.msg.midi.duration = 0;
+    deltaTIme = ticks;
+    alEvtqPostEvent(&seqp->evtq, &evt, deltaTIme);
 }
