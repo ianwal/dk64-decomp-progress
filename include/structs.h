@@ -2209,13 +2209,43 @@ struct CustomPVoice_unk7C {
     void *unk20;
 };
 
+typedef struct CustomPVoice_unk20_unkC {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+} CustomPVoice_unk20_unkC;
+
+typedef struct CustomPVoice_unk20_unk10 {
+    s32 unk0;
+    s32 unk4;
+} CustomPVoice_unk20_unk10;
+
+typedef struct CustomPVoice_unk20 {
+    s32 unk0;
+    s32 unk4;
+    u8 unk8;
+    u8 pad9[0xC - 0x9];
+    CustomPVoice_unk20_unkC *unkC;
+    union {
+        CustomPVoice_unk20_unk10 *unk10;
+        s32 unk10_s32;
+    };
+} CustomPVoice_unk20;
+
+typedef s32   (*CustomPVoice_unk28)(s32, s32, CustomResampler *);
+
 typedef struct CustomPVoice {
     ALLink node;
     ALVoice *vvoice;
-    void* unkC;
-    void* unk10;
-    u8 pad14[0x28 - 0x14];
-    s32 unk28;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    CustomPVoice_unk20 *unk20;
+    s32 unk24;
+    CustomPVoice_unk28 unk28;
     CustomResampler resampler;
     s16 unk60;
     s16 unk62;
