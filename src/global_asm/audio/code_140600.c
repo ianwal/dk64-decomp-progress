@@ -1,11 +1,57 @@
 #include <ultra64.h>
 #include "functions.h"
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073B900.s")
+ALParam *__n_allocParam();
+void func_global_asm_8073F1E4(CustomPVoice *, s32, ALParam *);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073B9B0.s")
+void func_global_asm_8073B900(ALVoice *arg0, f32 arg1) {
+    ALParam *sp1C;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073BA60.s")
+    if (arg0->pvoice != NULL) {
+        sp1C = __n_allocParam();
+        if (sp1C == NULL) {
+            return;
+        }
+        sp1C->delta = n_syn->paramSamples + ((CustomPVoice *)arg0->pvoice)->unk88;
+        sp1C->type = 7;
+        sp1C->data.f = arg1;
+        sp1C->next = 0;
+        func_global_asm_8073F1E4(arg0->pvoice, 3, sp1C);
+    }
+}
+
+void func_global_asm_8073B9B0(ALVoice *arg0, f32 arg1) {
+    ALParam *sp1C;
+
+    if (arg0->pvoice != NULL) {
+        sp1C = __n_allocParam();
+        if (sp1C == NULL) {
+            return;
+        }
+        sp1C->delta = n_syn->paramSamples + ((CustomPVoice *)arg0->pvoice)->unk88;
+        sp1C->type = 0x13;
+        sp1C->data.f = arg1;
+        sp1C->next = 0;
+        func_global_asm_8073F1E4(arg0->pvoice, 3, sp1C);
+    }
+}
+
+void func_global_asm_8073BA60(ALVoice *arg0, u8 arg1) {
+    ALParam *sp1C;
+
+    if (arg0->pvoice != NULL) {
+        sp1C = __n_allocParam();
+        if (sp1C == NULL) {
+            return;
+        }
+        sp1C->delta = n_syn->paramSamples + ((CustomPVoice *)arg0->pvoice)->unk88;
+        sp1C->type = 0x12;
+        sp1C->data.i = arg1;
+        sp1C->next = 0;
+        func_global_asm_8073F1E4(arg0->pvoice, 3, sp1C);
+    }
+}
+
 
 void func_global_asm_8073BB10(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4) {
     f32 sp3C;
