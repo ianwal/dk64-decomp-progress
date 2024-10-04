@@ -2151,11 +2151,46 @@ typedef struct SoundState {
     u8 pad45[0x48-0x45];
 } SoundState;
 
+typedef struct CustomResampler {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    void* unk14;
+    f32 unk18;
+    s32 unk1C;
+    f32 unk20;
+    s32 unk24;
+    void* unk28;
+    s16 unk2C;
+    s16 unk2E;
+    s16 unk30;
+    s16 unk32;
+} CustomResampler;
+
 typedef struct CustomPVoice {
     ALLink node;
-    u8 pad8[0x2C - 0x8];
-    ALResampler resampler;
-    u8 pad60[0x88 - 0x60];
+    u8 pad8[4];
+    void* unkC;
+    void* unk10;
+    u8 pad14[0x28 - 0x14];
+    s32 unk28;
+    CustomResampler resampler;
+    s16 unk60;
+    s16 unk62;
+    s16 unk64;
+    s16 unk66;
+    s16 unk68;
+    s16 unk6A;
+    s16 unk6C;
+    s16 unk6E;
+    s32 unk70;
+    s32 unk74;
+    s32 unk78;
+    s32 unk7C;
+    s32 unk80;
+    s32 unk84;
     s32 unk88;
     u8 unk8C;
     u8 pad8D[0x90 - 0x8D];

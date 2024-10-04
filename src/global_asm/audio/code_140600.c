@@ -107,7 +107,7 @@ void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073C040.s")
 
-s16 *func_global_asm_80732444(s32, s32, s32, u8, s32);
+s32 func_global_asm_80732444(s32, s32, ALHeap *, s32, s32);
 extern s32 D_global_asm_80756458[];
 
 typedef struct {
@@ -259,4 +259,41 @@ void func_global_asm_8073C040(s16 **arg0, Struct8073C040_arg1 *arg1, s16 arg2, s
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073C604.s")
+void func_global_asm_8073C604(CustomPVoice *arg0, s32 (*arg1)(CustomResampler *), ALHeap *arg2) {
+    arg0->unkC = func_global_asm_80732444(0, 0, arg2, 1, 0x20);
+    arg0->unk10 = func_global_asm_80732444(0, 0, arg2, 1, 0x20);
+    arg0->unk28 = arg1(&arg0->resampler);
+    arg0->resampler.unk8 = 0;
+    arg0->resampler.unkC = 1;
+    arg0->resampler.unk10 = 0;
+    arg0->resampler.unk14 = func_global_asm_80732444(0, 0, arg2, 1, 0x20);
+    arg0->resampler.unk20 = 0.0f;
+    arg0->resampler.unk24 = 1;
+    arg0->resampler.unk18 = 1.0f;
+    arg0->resampler.unk1C = 0;
+    arg0->resampler.unk28 = func_global_asm_80732444(0, 0, arg2, 1, 0x50);
+    arg0->unk78 = 1;
+    arg0->unk84 = 0;
+    arg0->resampler.unk2E = 1;
+    arg0->unk68 = 1;
+    arg0->unk6E = 1;
+    arg0->resampler.unk30 = 1;
+    arg0->resampler.unk32 = 1;
+    arg0->unk60 = 0;
+    arg0->unk62 = 0;
+    arg0->unk66 = 1;
+    arg0->unk64 = 0;
+    arg0->unk66 = 1;
+    arg0->unk64 = 0;
+    arg0->unk70 = 0;
+    arg0->unk74 = 0;
+    arg0->resampler.unk2C = 0;
+    arg0->unk7C = 0;
+    arg0->unk80 = 0;
+    arg0->unk8C = 0;
+    arg0->unk92 = 0;
+    arg0->unk90 = 0;
+    arg0->unkBC = func_global_asm_80732444(0, 0, arg2, 1, 8);
+    arg0->unkB8 = 0;
+}
+
