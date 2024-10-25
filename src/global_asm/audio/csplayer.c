@@ -37,9 +37,9 @@ void func_global_asm_80732F10(ALCSPlayer *seqp, ALSeqpConfig *c) {
     seqp->unk88 = c->maxVoices;
     seqp->nextEvent.type = AL_SEQP_API_EVT;
     seqp->maxChannels = c->maxChannels;
-    seqp->chanState = alHeapDBAlloc(0, 0, hp, c->maxChannels, 0x34);
+    seqp->chanState = alHeapAlloc(hp, c->maxChannels, 0x34);
     func_global_asm_8073AA74(seqp);
-    voices = alHeapDBAlloc(0, 0, hp, c->maxVoices, sizeof(ALVoiceState));
+    voices = alHeapAlloc(hp, c->maxVoices, sizeof(ALVoiceState));
     seqp->vFreeList = NULL;
     for (i = 0; i < c->maxVoices; i++) {
         vs = &voices[i];
@@ -48,7 +48,7 @@ void func_global_asm_80732F10(ALCSPlayer *seqp, ALSeqpConfig *c) {
     }
     seqp->vAllocHead = 0;
     seqp->vAllocTail = 0;
-    items = alHeapDBAlloc(0, 0, hp, c->maxEvents, 0x1C);
+    items = alHeapAlloc(hp, c->maxEvents, 0x1C);
     alEvtqNew(&seqp->evtq, items, c->maxEvents);
     seqp->node.next = NULL;
     seqp->node.handler = func_global_asm_80733180;
