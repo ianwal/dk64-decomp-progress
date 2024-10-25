@@ -280,6 +280,7 @@ playerCanDive = 0x806E770C; // segment:global_asm
 getLevelIndex = 0x805FF030; // segment:global_asm
 playAnimation = 0x80614E78; // segment:global_asm
 playActorAnimation = 0x80614EBC; // segment:global_asm
+
 n_alInit = 0x80739320; // segment:global_asm
 n_alClose = 0x8073938C; // segment:global_asm
 alLink = 0x807393E0; // segment:global_asm
@@ -300,6 +301,9 @@ alEvtqNextEvent = 0x8073B26C; // segment:global_asm
 alEvtqPostEvent = 0x8073B310; // segment:global_asm
 alEvtqFlushType = 0x8073B490; // segment:global_asm
 n_alSynDelete = 0x8073D140; // segment:global_asm
+alHeapInit = 0x80732420; // segment:global_asm
+alHeapDBAlloc = 0x80732444; // segment:global_asm
+
 next_map = 0x807444E4; // segment:global_asm
 next_exit = 0x807444E8; // segment:global_asm
 is_cutscene_active = 0x807444EC; // segment:global_asm

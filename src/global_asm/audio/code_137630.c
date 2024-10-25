@@ -144,7 +144,7 @@ void func_global_asm_80732DEC(Struct80732DEC *arg0, s32 arg1) {
     Struct80732B3C *sp24;
     s32 i;
 
-    D_global_asm_807FF034 = func_global_asm_80732444(0, 0, arg0->unkC, arg1, 0x2C);
+    D_global_asm_807FF034 = alHeapDBAlloc(0, 0, arg0->unkC, arg1, 0x2C);
     D_global_asm_807FF030 = D_global_asm_807FF034;
     D_global_asm_807FF030 = D_global_asm_807FF034;
     sp24 = D_global_asm_807FF034;

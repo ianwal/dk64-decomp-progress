@@ -151,7 +151,6 @@ void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
     }
 }
 
-s32 func_global_asm_80732444(s32, s32, ALHeap *, s32, s32);
 extern s32 *D_global_asm_80756458[];
 
 typedef struct {
@@ -216,7 +215,7 @@ void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, 
     Struct8073C040_SP24 *sp24;
 
     sp2C = NULL;
-    sp24 = func_global_asm_80732444(0, 0, arg3, 1U, 0x30);
+    sp24 = alHeapDBAlloc(0, 0, arg3, 1U, 0x30);
     *arg0 = sp24;
     switch (arg1->unk1C[arg2]) {
         case 6:
@@ -229,10 +228,10 @@ void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, 
     j = 0;
     sp24->unk8 = sp2C[j++];
     sp24->unk0 = sp2C[j++];
-    sp24->unk4 = func_global_asm_80732444(0, 0, arg3, sp24->unk8, 0x28);
-    sp24->unk20 = func_global_asm_80732444(0, 0, arg3, sp24->unk0, 2);
+    sp24->unk4 = alHeapDBAlloc(0, 0, arg3, sp24->unk8, 0x28);
+    sp24->unk20 = alHeapDBAlloc(0, 0, arg3, sp24->unk0, 2);
     sp24->unk28 = sp24->unk20;
-    sp24->unk24 = func_global_asm_80732444(0, 0, arg3, sp24->unk0, 2);
+    sp24->unk24 = alHeapDBAlloc(0, 0, arg3, sp24->unk0, 2);
     sp24->unk2C = (void *) sp24->unk24;
     for (k = 0; k < sp24->unk0; k++) {
         sp24->unk24[k] = 0;
@@ -250,9 +249,9 @@ void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, 
             sp28->unk1C = (sp2C[j++] / 173123.4f) * (u32)(sp28->unk4 - sp28->unk0);
             sp28->unk14 = 1.0f;
             sp28->unk18 = 0;
-            sp28->unk24 = func_global_asm_80732444(0, 0, arg3, 1U, 0x38);
-            sp28->unk24->unk14 = func_global_asm_80732444(0, 0, arg3, 1U, 0x20);
-            sp28->unk24->unk18 = func_global_asm_80732444(0, 0, arg3, 1U, 0x20);
+            sp28->unk24 = alHeapDBAlloc(0, 0, arg3, 1U, 0x38);
+            sp28->unk24->unk14 = alHeapDBAlloc(0, 0, arg3, 1U, 0x20);
+            sp28->unk24->unk18 = alHeapDBAlloc(0, 0, arg3, 1U, 0x20);
             sp28->unk24->unk24 = 0.0f;
             sp28->unk24->unk28 = 1;
         } else {
@@ -261,9 +260,9 @@ void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, 
             j++;
         }
         if (sp2C[j]) {
-            sp28->unk20 = func_global_asm_80732444(0, 0, arg3, 1U, 0x38);
-            sp28->unk20->unk2C = func_global_asm_80732444(0, 0, arg3, 1U, 8);
-            sp28->unk20->unk30 = func_global_asm_80732444(0, 0, arg3, 1U, 8);
+            sp28->unk20 = alHeapDBAlloc(0, 0, arg3, 1U, 0x38);
+            sp28->unk20->unk2C = alHeapDBAlloc(0, 0, arg3, 1U, 8);
+            sp28->unk20->unk30 = alHeapDBAlloc(0, 0, arg3, 1U, 8);
             sp28->unk20->unk0 = (s16) sp2C[j];
             j++;
             func_global_asm_8073BC74(sp28->unk20);
@@ -275,18 +274,18 @@ void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, 
 }
 
 void func_global_asm_8073C604(CustomPVoice *arg0, s32 (*arg1)(CustomResampler *), ALHeap *arg2) {
-    arg0->unkC = func_global_asm_80732444(0, 0, arg2, 1, 0x20);
-    arg0->unk10 = func_global_asm_80732444(0, 0, arg2, 1, 0x20);
+    arg0->unkC = alHeapDBAlloc(0, 0, arg2, 1, 0x20);
+    arg0->unk10 = alHeapDBAlloc(0, 0, arg2, 1, 0x20);
     arg0->unk28 = arg1(&arg0->resampler);
     arg0->resampler.unk8 = 0;
     arg0->resampler.unkC = 1;
     arg0->resampler.unk10 = 0;
-    arg0->resampler.unk14 = func_global_asm_80732444(0, 0, arg2, 1, 0x20);
+    arg0->resampler.unk14 = alHeapDBAlloc(0, 0, arg2, 1, 0x20);
     arg0->resampler.unk20 = 0.0f;
     arg0->resampler.unk24 = 1;
     arg0->resampler.unk18 = 1.0f;
     arg0->resampler.unk1C = 0;
-    arg0->resampler.unk28 = func_global_asm_80732444(0, 0, arg2, 1, 0x50);
+    arg0->resampler.unk28 = alHeapDBAlloc(0, 0, arg2, 1, 0x50);
     arg0->unk78 = 1;
     arg0->unk84 = 0;
     arg0->resampler.unk2E = 1;
@@ -308,7 +307,7 @@ void func_global_asm_8073C604(CustomPVoice *arg0, s32 (*arg1)(CustomResampler *)
     arg0->unk8C = 0;
     arg0->unk92 = 0;
     arg0->unk90 = 0;
-    arg0->unkBC = func_global_asm_80732444(0, 0, arg2, 1, 8);
+    arg0->unkBC = alHeapDBAlloc(0, 0, arg2, 1, 8);
     arg0->unkB8 = 0;
 }
 

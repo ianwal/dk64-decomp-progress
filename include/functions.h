@@ -3817,8 +3817,8 @@ void raiseException(u8 arg0, s32 arg1, s32 arg2, s32 arg3);
 void func_global_asm_8073239C(void);
 
 // global_asm/audio/code_137120.c
-// TODO: func_global_asm_80732420 has no documented signature but has been matched
-// TODO: func_global_asm_80732444 has no documented signature but has been matched
+// TODO: alHeapInit has no documented signature but has been matched
+// TODO: alHeapDBAlloc has no documented signature but has been matched
 
 // global_asm/audio/code_1371D0.c
 // TODO: func_global_asm_807324D0 has no documented signature but has been matched
