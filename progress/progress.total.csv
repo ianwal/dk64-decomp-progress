@@ -4338,7 +4338,7 @@ us,boot,__osRepairPackId,848,no
 us,boot,__osSiCreateAccessQueue,80,yes
 us,boot,__osSumcalc,116,yes
 us,boot,bcopy,784,yes
-us,boot,func_dk64_boot_80002F54,172,no
+us,boot,func_dk64_boot_80002F54,168,yes
 us,boot,osVirtualToPhysical,124,yes
 us,boot,osMotorInit,348,yes
 us,boot,osRecvMesg,312,yes

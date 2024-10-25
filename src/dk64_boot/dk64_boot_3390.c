@@ -117,5 +117,25 @@ u32 strlen(const u8 *str) {
     return len;
 }
 
+u8 *func_dk64_boot_80002F54(u8 *arg0, u8 *arg1) {
+    s32 i;
+    s32 len;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002F54.s")
+    len = strlen(arg1);
+    i = 0;
+    if ((!arg0) || (!arg1)) {
+        return NULL;
+    }
+    while ((i < len) && (*arg0)) {
+        if (*(arg0 + i) == arg1[i]) {
+            i += 1;
+        } else {
+            i = 0;
+            arg0 += 1;
+        }
+    }
+    if (i != len) {
+        arg0 = NULL;
+    }
+    return arg0;
+}
