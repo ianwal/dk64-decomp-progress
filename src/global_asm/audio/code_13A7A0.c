@@ -79,7 +79,6 @@ extern u16 *D_global_asm_807FF0E4;
 void func_global_asm_80735DBC(ALEvent *);
 void func_global_asm_807370A4(ALEventQueue *, ALSoundState *, u16);
 void func_global_asm_8073749C(SoundState *);
-void func_global_asm_8073B6B0(void *);
 void func_global_asm_8073B750(void *);
 
 f32 func_global_asm_80739FE0(s8);
@@ -111,7 +110,7 @@ s32 func_global_asm_80735CF4(struct_80735CF4 *arg0) {
 
 void func_global_asm_80736FB8(struct_80736FB8 *arg0) {
     if (arg0->unk43 & 4) {
-        func_global_asm_8073B6B0(&arg0->unkC);
+        n_alSynStopVoice(&arg0->unkC);
         func_global_asm_8073B750(&arg0->unkC);
     }
     func_global_asm_8073749C(arg0);

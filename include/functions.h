@@ -3977,7 +3977,7 @@ void alEvtqFlushType(ALEventQueue *evtq, s16 type);
 void func_global_asm_8073B560(ALPlayer *arg0);
 void func_global_asm_8073B5D0(ALPlayer *arg0);
 void func_global_asm_8073B640(ALPlayer *arg0);
-// TODO: func_global_asm_8073B6B0 has no documented signature
+// TODO: n_alSynStopVoice has no documented signature
 // TODO: func_global_asm_8073B750 has no documented signature
 
 // global_asm/audio/synsetvol.c
