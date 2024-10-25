@@ -30,23 +30,6 @@ typedef struct {
 extern Struct80032F48 D_menu_80032F48[];
 extern s32 D_menu_800330A0[];
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    u16 unk4;
-    u8 unk6;
-    u8 unk7;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s16 unk18;
-    u8 unk1A;
-    u8 unk1B;
-} MenuStruct80024000;
-
 void func_menu_80024000(MenuStruct80024000 *arg0) {
     s32 temp_v1;
 

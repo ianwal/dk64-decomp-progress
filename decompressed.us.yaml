@@ -206,6 +206,7 @@ segments:
     exclusive_ram_id: global_asm
     subsegments:
       - [0x2000000, c, code_0]
+      - [0x2000450, c, code_450]
       - [0x2003C10, c, code_3C10]
       - [0x2005650, c, code_5650]
       - [0x2005A50, c, code_5A50]
@@ -217,7 +218,7 @@ segments:
       - [0x20104F0, c, code_104F0]
       - [0x20131B0, c, code_131B0]
       - [0x2014CF0, c, code_14CF0]
-      - [0x2015010, c, code_15010]
+      - [0x2015010, hasm, code_15010]
       - [0x2015050, c, heap]
       - [0x2016550, c, done/code_16550]
       - [0x20166A0, c, done/rand]
@@ -373,7 +374,7 @@ segments:
       - [0x2145D70, c, audio/code_145D70]
       - [0x2146010, bin, code_146010]
       - [0x2149160, data, data_149160]
-      - [0x215B290, .rodata, code_0]
+      - [0x215B290, .rodata, code_450]
       - [0x215B2E0, .rodata, code_3C10]
       - [0x215B4B0, rodata] # code_6710 // TODO: Problem with 80756F08, might be an array of doubles?
       - [0x215BD20, .rodata, code_104F0]

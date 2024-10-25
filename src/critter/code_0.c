@@ -23,7 +23,7 @@ typedef struct CritterStruct5 {
     u8 unk26[0x2C - 0x26];
 } CritterStruct5;
 
-typedef struct Critter {
+struct Critter {
     s16 unk0;
     s16 unk2;
     s16 unk4;
@@ -57,7 +57,7 @@ typedef struct Critter {
     u8 unk1E3;
     s16 unk1E4[2];
     void *unk1E8[2];
-} Critter;
+};
 
 typedef struct CritterController {
     u8 critter_count;

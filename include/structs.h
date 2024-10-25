@@ -4,6 +4,34 @@
 
 /* your struct definitions go here */
 
+typedef struct OverlayInfoStruct {
+    s32 rom_code_start;
+    s32 rom_data_end;
+    void *rdram_start;
+    void *overlay_end;
+    void *rdram_code_end;
+    void *rdram_data_end;
+} OverlayInfoStruct;
+
+typedef struct Critter Critter;
+
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    u16 unk4;
+    u8 unk6;
+    u8 unk7;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s16 unk18;
+    u8 unk1A;
+    u8 unk1B;
+} MenuStruct80024000;
+
 typedef struct {
     s32 unk0;
     s32 unk4;

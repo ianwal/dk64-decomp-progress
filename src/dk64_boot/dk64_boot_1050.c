@@ -1,12 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct {
-    void *unk0;
-    void *unk4;
-    u8 pad8[0x10];
-} dk64_boot_struct_0;
-
 extern u8 D_1050;
 extern u8 D_11320;
 extern u8 D_113F0;
@@ -29,7 +23,7 @@ extern u8 D_1FED020;
 
 extern s8 D_dk64_boot_8000DCB0;
 extern s32 D_dk64_boot_8000DCB4;
-extern dk64_boot_struct_0 D_8000DCC4[];
+extern OverlayInfoStruct D_8000DCC4[];
 extern OSViMode D_dk64_boot_8000EF20[];
 extern s32 D_dk64_boot_8000DE74[3];
 
