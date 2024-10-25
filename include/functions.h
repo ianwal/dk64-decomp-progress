@@ -3821,12 +3821,12 @@ void func_global_asm_8073239C(void);
 // TODO: alHeapDBAlloc has no documented signature but has been matched
 
 // global_asm/audio/code_1371D0.c
-// TODO: func_global_asm_807324D0 has no documented signature but has been matched
-// TODO: func_global_asm_80732534 has no documented signature but has been matched
-// TODO: func_global_asm_80732618 has no documented signature but has been matched
-// TODO: func_global_asm_80732730 has no documented signature but has been matched
-// TODO: func_global_asm_807327F4 has no documented signature but has been matched
-// TODO: func_global_asm_80732894 has no documented signature but has been matched
+// TODO: alSeqFileNew has no documented signature but has been matched
+// TODO: alBnkfNew has no documented signature but has been matched
+// TODO: _bnkfPatchBank has no documented signature but has been matched
+// TODO: _bnkfPatchInst has no documented signature but has been matched
+// TODO: _bnkfPatchSound has no documented signature but has been matched
+// TODO: _bnkfPatchWaveTable has no documented signature but has been matched
 
 // global_asm/audio/code_137630.c
 // TODO: func_global_asm_80732930 has no documented signature

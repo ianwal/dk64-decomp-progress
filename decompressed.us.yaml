@@ -328,7 +328,7 @@ segments:
       - [0x2135D30, c, code_135D30]
       - [0x2136820, c, code_136820]
       - [0x2137120, c, audio/heap]
-      - [0x21371D0, c, audio/code_1371D0]
+      - [0x21371D0, c, audio/bnkf]
       - [0x2137630, c, audio/code_137630]
       - [0x2137C10, c, audio/csplayer]
       - [0x213A750, c, audio/cspsetbank]

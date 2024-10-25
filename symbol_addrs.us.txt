@@ -303,6 +303,12 @@ alEvtqFlushType = 0x8073B490; // segment:global_asm
 n_alSynDelete = 0x8073D140; // segment:global_asm
 alHeapInit = 0x80732420; // segment:global_asm
 alHeapDBAlloc = 0x80732444; // segment:global_asm
+alSeqFileNew = 0x807324D0; // segment:global_asm
+alBnkfNew = 0x80732534; // segment:global_asm
+_bnkfPatchWaveTable = 0x80732894; // segment:global_asm
+_bnkfPatchSound = 0x807327F4; // segment:global_asm
+_bnkfPatchInst = 0x80732730; // segment:global_asm
+_bnkfPatchBank = 0x80732618; // segment:global_asm
 
 next_map = 0x807444E4; // segment:global_asm
 next_exit = 0x807444E8; // segment:global_asm
