@@ -1,5 +1,6 @@
 version,section,function,length,matching
 us,boot,__osSiDeviceBusy,44,yes
+us,boot,__f_to_ull,156,yes
 us,boot,osViBlack,112,yes
 us,boot,guLookAtHilite,184,yes
 us,boot,__osSiRawWriteIo,76,yes
@@ -9,6 +10,7 @@ us,boot,guScale,72,yes
 us,boot,func_dk64_boot_80002750,52,yes
 us,boot,_MakeMotorData,268,no
 us,boot,func_dk64_boot_80001700,1012,yes
+us,boot,__ll_to_f,24,yes
 us,boot,guMtxIdent,48,yes
 us,boot,osStartThread,336,yes
 us,boot,__ull_rem,60,yes
@@ -26,7 +28,6 @@ us,boot,__osSpGetStatus,12,yes
 us,boot,strchr,76,yes
 us,boot,__ull_rshift,44,yes
 us,boot,__osSetFpcCsr,16,yes
-us,boot,func_dk64_boot_8000773C,24,no
 us,boot,func_dk64_boot_80005070,324,yes
 us,boot,osCreateMesgQueue,44,yes
 us,boot,__osEepStatus,428,no
@@ -68,7 +69,6 @@ us,boot,osVirtualToPhysical,124,yes
 us,boot,osMotorInit,348,yes
 us,boot,osRecvMesg,312,yes
 us,boot,memcpy,288,no
-us,boot,func_dk64_boot_80007724,24,no
 us,boot,guScaleF,84,yes
 us,boot,osSendMesg,332,yes
 us,boot,osSetEventMesg,104,yes
@@ -80,7 +80,8 @@ us,boot,osPiRawStartDma,224,yes
 us,boot,osViSetMode,104,yes
 us,boot,__osViInit,316,yes
 us,boot,osUnmapTLBAll,80,yes
-us,boot,__ull_to_f,28,no
+us,boot,__ull_to_f,48,yes
+us,boot,__ull_to_d,52,yes
 us,boot,__osDevMgrMain,1168,yes
 us,boot,func_dk64_boot_80000450,100,yes
 us,boot,func_dk64_boot_800029EC,68,no
@@ -92,8 +93,8 @@ us,boot,__osSpSetStatus,12,yes
 us,boot,__osCheckPackId,356,no
 us,boot,guNormalize,132,yes
 us,boot,__osTimerServicesInit,140,no
-us,boot,func_dk64_boot_80007754,52,no
 us,boot,func_dk64_boot_800005A8,984,no
+us,boot,__d_to_ll,28,yes
 us,boot,__osPfsGetStatus,208,no
 us,boot,osPiStartDma,268,yes
 us,boot,osPiRawReadIo,84,yes
@@ -109,7 +110,6 @@ us,boot,__osSetCompare,16,yes
 us,boot,__osSetSR,16,yes
 us,boot,guAlign,80,no
 us,boot,func_dk64_boot_80000AA0,564,no
-us,boot,func_dk64_boot_800075E8,160,no
 us,boot,__osSiGetAccess,68,yes
 us,boot,__osEnqueueAndYield,256,yes
 us,boot,func_dk64_boot_80001AF4,340,yes
@@ -118,7 +118,6 @@ us,boot,osInvalICache,128,yes
 us,boot,func_dk64_boot_80002BB8,188,no
 us,boot,guPerspectiveF,560,yes
 us,boot,__osSetGlobalIntMask,76,yes
-us,boot,func_dk64_boot_80007788,56,no
 us,boot,strcpy,52,yes
 us,boot,guMtxL2F,180,yes
 us,boot,__osSetTimerIntr,116,yes
@@ -130,7 +129,6 @@ us,boot,func_dk64_boot_800009D0,88,yes
 us,boot,__osPiCreateAccessQueue,80,yes
 us,boot,osSetIntMask,160,yes
 us,boot,osSpTaskLoad,400,yes
-us,boot,func_dk64_boot_800075CC,28,no
 us,boot,osPiGetCmdQueue,40,yes
 us,boot,func_dk64_boot_800025A4,384,no
 us,boot,__osAiDeviceBusy,48,yes
@@ -139,6 +137,7 @@ us,boot,func_dk64_boot_8000102C,144,yes
 us,boot,__osPfsGetOneChannelData,152,yes
 us,boot,osJamMesg,336,yes
 us,boot,osSpTaskStartGo,64,yes
+us,boot,__ll_to_d,24,yes
 us,boot,__osResetGlobalIntMask,88,yes
 us,boot,osSetTimer,212,yes
 us,boot,__osPackRamWriteDataSafe,128,no
@@ -150,6 +149,7 @@ us,boot,__osPackEepReadData,140,no
 us,boot,osContInit,368,yes
 us,boot,func_dk64_boot_80003120,192,no
 us,boot,osViSetSpecialFeatures,440,yes
+us,boot,__f_to_ll,28,yes
 us,boot,guAlignF,448,no
 us,boot,__osDequeueThread,64,yes
 us,boot,send_mesg,232,yes
@@ -205,6 +205,7 @@ us,boot,func_dk64_boot_80000EEC,320,no
 us,boot,osDpSetStatus,12,yes
 us,boot,viMgrMain,400,no
 us,boot,func_dk64_boot_80000980,80,yes
+us,boot,__d_to_ull,160,yes
 us,boot,osCreateViManager,384,no
 us,boot,__ll_rem,60,yes
 us,boot,guRotateF,404,no
@@ -220,7 +221,6 @@ us,boot,guMtxIdentF,136,yes
 us,boot,osMotorStartStop,360,no
 us,boot,__osSpDeviceBusy,44,yes
 us,boot,osContSetCh,100,yes
-us,boot,func_dk64_boot_80007688,156,no
 us,boot,func_dk64_boot_80005A70,12,yes
 us,boot,__cosf,360,yes
 us,boot,guOrtho,104,yes

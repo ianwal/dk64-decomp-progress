@@ -77,7 +77,7 @@ void func_global_asm_8060B84C(f32 arg0) {
     OSMesg sp3C;
     void *sp38;
 
-    temp_ret_3 = __ull_div(__ll_mul(func_dk64_boot_80007688(arg0 * 1000.0f), 0xBB8), 0x40);
+    temp_ret_3 = __ull_div(__ll_mul(__f_to_ull(arg0 * 1000.0f), 0xBB8), 0x40);
     osSetTimer(&sp48, temp_ret_3, 0, &D_global_asm_807EE0D0, sp3C);
     D_global_asm_80746834 = 1;
     osRecvMesg(&D_global_asm_807EE0D0, &sp38, 1);

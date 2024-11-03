@@ -182,7 +182,7 @@ segments:
       - [0x10F10, .rodata, dk64_boot_3D20]
       - [0x11120, .rodata, gu/perspective]
       - [0x11130, .rodata, gu/nonmatching/lookathil]
-      - [0x11140, rodata] # llcvt
+      - [0x11140, .rodata, libc/llcvt]
       - [0x11150, .rodata, gu/nonmatching/rotate]
       - [0x11160, .rodata, gu/nonmatching/align]
       - [0x11170, .rodata, gu/nonmatching/position]

@@ -97,7 +97,7 @@ LD_SCRIPT            := $(BASENAME).ld
 ALL_OBJS             := $(C_OBJS) $(ASM_OBJS) $(BIN_OBJS)
 SYMBOL_ADDRS         := symbol_addrs.$(VERSION).txt
 MIPS3_OBJS           := $(BUILD_DIR)/$(SRC_ROOT)/global_asm/ll.c.o
-BOOT_MIPS3_OBJS      := $(BUILD_DIR)/$(SRC_ROOT)/dk64_boot/ll.c.o
+BOOT_MIPS3_OBJS      := $(BUILD_DIR)/$(SRC_ROOT)/dk64_boot/ll.c.o $(BUILD_DIR)/$(SRC_ROOT)/dk64_boot/libc/llcvt.c.o
 BOOT_C_OBJS          := $(filter-out $(BOOT_MIPS3_OBJS),$(BOOT_C_OBJS))
 COMPRESSED_SYMBOLS   := $(BUILD_DIR)/compressed_symbols.txt
 
@@ -326,6 +326,8 @@ build/us/src/dk64_boot/dk64_boot_61D0.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/dk64_boot_62F0.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/ll.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/ll.c.o: MIPSBIT := -mips3 -o32
+build/us/src/dk64_boot/libc/llcvt.c.o: OPT_FLAGS = -O1
+build/us/src/dk64_boot/libc/llcvt.c.o: MIPSBIT := -mips3 -o32
 build/us/src/dk64_boot/dk64_boot_7F60.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/dk64_boot_CA20.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/gu/%.c.o: OPT_FLAGS = -O3
@@ -348,8 +350,10 @@ build/us/src/dk64_boot/io/motor.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/crc.c.o: OPT_FLAGS = -O2
 
 build/us/src/dk64_boot/libc/%.c.o: OPT_FLAGS = -O3
-build/us/src/dk64_boot/libc/ll%.o: MIPSISET := -mips3 -o32
 build/us/src/dk64_boot/libc/ll%.o: OPT_FLAGS := -O1
+build/us/src/dk64_boot/libc/ll%.o: MIPSISET := -mips3 -o32
+build/us/src/dk64_boot/libc/llcvt%.o: OPT_FLAGS := -O1
+build/us/src/dk64_boot/libc/llcvt%.0: MIPSISET := -mips3 -o32
 build/us/src/dk64_boot/os/%.c.o: OPT_FLAGS = -O1
 
 build/us/src/global_asm/audio/%.c.o: OPT_FLAGS = -g

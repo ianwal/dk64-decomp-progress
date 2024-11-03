@@ -1,48 +1,36 @@
+// IDO Compiler Intrinsics for 64-bit conversion
+
 #include <ultra64.h>
 #include "functions.h"
 
-// TODO: Needs MIPS3 support
+s64 __d_to_ll(f64 d) {
+    return d;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/__ull_to_f.s")
+s64 __f_to_ll(f32 f) {
+    return f;
+}
 
-// float __ull_to_f(unsigned long long u) {
-//    return u;
-// }
+u64 __d_to_ull(f64 d) {
+    return d;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/func_dk64_boot_800075CC.s")
+u64 __f_to_ull(f32 f) {
+    return f;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/func_dk64_boot_800075E8.s")
+f64 __ll_to_d(s64 l) {
+    return l;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/func_dk64_boot_80007688.s")
+f32 __ll_to_f(s64 l) {
+    return l;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/func_dk64_boot_80007724.s")
+f64 __ull_to_d(u64 l) {
+    return l;
+}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/func_dk64_boot_8000773C.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/func_dk64_boot_80007754.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/libc/llcvt/func_dk64_boot_80007788.s")
-
-// Not sure which order these are in yet
-
-// long long __d_to_ll(double d) {
-//    return d;
-// }
-// long long __f_to_ll(float f) {
-//    return f;
-// }
-// unsigned long long __d_to_ull(double d) {
-//    return d;
-// }
-// unsigned long long __f_to_ull(float f) {
-//    return f;
-// }
-// double __ll_to_d(long long s) {
-//    return s;
-// }
-// float __ll_to_f(long long s) {
-//    return s;
-// }
-// double __ull_to_d(unsigned long long u) {
-//    return u;
-// }
+f32 __ull_to_f(u64 l) {
+    return l;
+}

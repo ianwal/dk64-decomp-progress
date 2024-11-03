@@ -116,14 +116,14 @@ void func_dk64_boot_80007454(OSContPad *data); //void osContGetReadData(OSContPa
 void func_dk64_boot_800074E0(void); //static void __osPackReadData(void)
 
 // dk64_boot/libc/llcvt.c
-float __ull_to_f(unsigned long long u);
-// TODO: func_dk64_boot_800075CC has no documented signature
-// TODO: func_dk64_boot_800075E8 has no documented signature
-u64 func_dk64_boot_80007688(f32);
-// TODO: func_dk64_boot_80007724 has no documented signature
-f32 func_dk64_boot_8000773C(s64);
-// TODO: func_dk64_boot_80007754 has no documented signature
-// TODO: func_dk64_boot_80007788 has no documented signature
+s64 __d_to_ll(f64 d);
+s64 __f_to_ll(f32 f);
+u64 __d_to_ull(f64 d);
+u64 __f_to_ull(f32 f);
+f64 __ll_to_d(s64 l);
+f32 __ll_to_f(s64 l);
+f64 __ull_to_d(u64 l);
+f32 __ull_to_f(u64 l);
 
 // dk64_boot/io/motor.c
 // TODO: osMotorStartStop has no documented signature
