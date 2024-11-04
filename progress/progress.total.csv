@@ -4420,7 +4420,7 @@ us,boot,__osInsertTimer,392,yes
 us,boot,osAiSetFrequency,324,yes
 us,boot,func_dk64_boot_800073D0,132,yes
 us,boot,func_dk64_boot_800004B4,64,yes
-us,boot,__osPackEepReadData,140,no
+us,boot,__osPackEepReadData,140,yes
 us,boot,osContInit,368,yes
 us,boot,func_dk64_boot_80003120,192,no
 us,boot,osViSetSpecialFeatures,440,yes
@@ -4466,7 +4466,7 @@ us,boot,guOrthoF,340,yes
 us,boot,__osSpSetPc,52,yes
 us,boot,func_dk64_boot_80002DE4,180,no
 us,boot,__ull_divremi,96,yes
-us,boot,osEepromRead,452,no
+us,boot,osEepromRead,452,yes
 us,boot,__osEnqueueThread,72,yes
 us,boot,__osPiGetAccess,68,yes
 us,boot,__osPopThread,16,yes
