@@ -65,7 +65,7 @@ segments:
       - [0x5890, c, io/vimgr]
       - [0x5BA0, c, io/visetmode]             #DONE
       - [0x5C10, bin, dk64_boot_5C10] #??? nops ???
-      - [0x5C70, c, dk64_boot_5C70]
+      - [0x5C70, c, io/aisetfreq]
       - [0x5DC0, hasm, libc/bzero]            #DONE
       - [0x5E60, hasm, os/invalicache]        #DONE
       - [0x5EE0, hasm, os/writebackdcacheall] #DONE

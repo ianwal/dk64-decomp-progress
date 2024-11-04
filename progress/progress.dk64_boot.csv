@@ -28,7 +28,6 @@ us,boot,__osSpGetStatus,12,yes
 us,boot,strchr,76,yes
 us,boot,__ull_rshift,44,yes
 us,boot,__osSetFpcCsr,16,yes
-us,boot,func_dk64_boot_80005070,324,yes
 us,boot,osCreateMesgQueue,44,yes
 us,boot,__osEepStatus,428,no
 us,boot,func_dk64_boot_800024E0,196,yes
@@ -143,6 +142,7 @@ us,boot,osSetTimer,212,yes
 us,boot,__osPackRamWriteDataSafe,128,no
 us,boot,sqrtf,16,yes
 us,boot,__osInsertTimer,392,yes
+us,boot,osAiSetFrequency,324,yes
 us,boot,func_dk64_boot_800073D0,132,yes
 us,boot,func_dk64_boot_800004B4,64,yes
 us,boot,__osPackEepReadData,140,no
@@ -198,7 +198,7 @@ us,boot,__osPopThread,16,yes
 us,boot,func_dk64_boot_800023F4,232,yes
 us,boot,func_dk64_boot_8000320C,4884,no
 us,boot,__ll_mul,48,yes
-us,boot,__osContAddressCrc,208,no
+us,boot,__osContAddressCrc,208,yes
 us,boot,__ll_div,92,yes
 us,boot,osGetTime,132,yes
 us,boot,func_dk64_boot_80000EEC,320,no
@@ -225,7 +225,7 @@ us,boot,func_dk64_boot_80005A70,12,yes
 us,boot,__cosf,360,yes
 us,boot,guOrtho,104,yes
 us,boot,__osGetSR,16,yes
-us,boot,__osContDataCrc,160,no
+us,boot,__osContDataCrc,148,yes
 us,boot,osInvalDCache,176,yes
 us,boot,__osSpRawStartDma,140,yes
 us,boot,osMapTLBRdb,96,yes

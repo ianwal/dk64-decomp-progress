@@ -90,8 +90,8 @@ void *memcpy(void *dest, void *src, u32 n);
 // dk64_boot/io/vimgr.c
 // TODO: viMgrMain has no documented signature
 
-// dk64_boot/dk64_boot_5C70.c
-s32 func_dk64_boot_80005070(u32 frequency); //s32 osAiSetFrequency(u32 frequency)
+// dk64_boot/io/aisetfreq.c
+s32 osAiSetFrequency(u32 frequency); //s32 osAiSetFrequency(u32 frequency)
 // TODO: osWriteBackDCacheAll has no documented signature but has been matched
 
 // dk64_boot/dk64_boot_61D0.c

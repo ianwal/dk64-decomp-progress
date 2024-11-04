@@ -4,8 +4,7 @@
 #include <rcp.h>
 #include "osint.h"
 
-s32 func_dk64_boot_80005070(u32 frequency) //s32 osAiSetFrequency(u32 frequency)
-{
+s32 osAiSetFrequency(u32 frequency) {
     register unsigned int dacRate;
     register unsigned char bitRate;
     register float f;

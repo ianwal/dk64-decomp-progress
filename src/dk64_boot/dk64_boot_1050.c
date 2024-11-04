@@ -88,7 +88,7 @@ void func_dk64_boot_800005A8(void *arg0) {
         func_dk64_boot_80000A30();
     } else {
         func_dk64_boot_80000450(&D_11320, &D_113F0, 0x805FB000);
-        D_dk64_boot_8000DCB4 = func_dk64_boot_80005070(22050); // osAiSetFrequency
+        D_dk64_boot_8000DCB4 = osAiSetFrequency(22050); // osAiSetFrequency
         bzero(0x805FB300, 0x204D00);
         sp34 = 0x80020000;
         sp30 = 0x805FB300;

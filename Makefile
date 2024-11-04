@@ -321,7 +321,7 @@ clean:
 build/us/src/dk64_boot/dk64_boot_3390.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/dk64_boot_3D20.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/dk64_boot_3C00.c.o: OPT_FLAGS = -O1
-build/us/src/dk64_boot/dk64_boot_5C70.c.o: OPT_FLAGS = -O2
+build/us/src/dk64_boot/io/aisetfreq.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/dk64_boot_61D0.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/dk64_boot_62F0.c.o: OPT_FLAGS = -O1
 build/us/src/dk64_boot/ll.c.o: OPT_FLAGS = -O1
