@@ -247,11 +247,8 @@ void func_menu_80024788(SnideAaD180 *arg0) {
     s32 temp_v0;
     s32 sp40;
     CharacterProgress *sp3C;
-    s32 var_s0_3;
-    s32 temp_a0;
-    s32 var_s0_2;
-    s32 var_v0;
-    s32 var_t5;
+    s32 i;
+    s32 new_screen;
 
     sp40 = 0;
     D_menu_800330D8 = 0;
@@ -262,12 +259,12 @@ void func_menu_80024788(SnideAaD180 *arg0) {
         case 0x0:
             if (func_global_asm_806F70A8(4) != 0) {
                 sp3C = &D_global_asm_807FC950->character_progress[*current_character_index];
-                for (var_s0_2 = 0; var_s0_2 < 8; var_s0_2++) {
-                    if (isFlagSet(func_global_asm_807319D8(0x1D5, var_s0_2, *current_character_index), FLAG_TYPE_PERMANENT) != 0) {
-                        temp_v0 = func_global_asm_807319D8(0x1FD, var_s0_2, *current_character_index);
+                for (i = 0; i < 8; i++) {
+                    if (isFlagSet(func_global_asm_807319D8(0x1D5, i, *current_character_index), FLAG_TYPE_PERMANENT) != 0) {
+                        temp_v0 = func_global_asm_807319D8(0x1FD, i, *current_character_index);
                         if (isFlagSet(temp_v0, FLAG_TYPE_PERMANENT) == FALSE) {
                             setFlag(temp_v0, TRUE, FLAG_TYPE_PERMANENT);
-                            sp3C->golden_bananas[var_s0_2] += 1;
+                            sp3C->golden_bananas[i] += 1;
                             sp40 = 1;
                         }
                     }
@@ -284,23 +281,19 @@ void func_menu_80024788(SnideAaD180 *arg0) {
             }
             break;
         case 0x1:
+            // Issue starts here, it's wanting to use sll/subu instead of multu for the offset of 807fd610
             if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
                 current_actor_pointer->unk15F = 0;
                 arg0->screen = 3;
             } else {
-                arg0->minigame_menu_unlocked = 1;
-                for (var_s0_3 = 0x1FD; var_s0_3 < 0x225; var_s0_3++) {
-                    if (isFlagSet(var_s0_3, FLAG_TYPE_PERMANENT) == FALSE) {
-                        arg0->minigame_menu_unlocked = 0;
-                        var_s0_3 = 0x224;
+                arg0->minigame_menu_unlocked = TRUE;
+                for (i = 0x1FD; i < 0x225; i++) {
+                    if (!isFlagSet(i, FLAG_TYPE_PERMANENT)) {
+                        arg0->minigame_menu_unlocked = FALSE;
+                        i = 0x224;
                     }
                 }
-                if (0xFF - current_actor_pointer->unk15F >= 9) {
-                    var_v0 = 8;
-                } else {
-                    var_v0 = 0xFF - current_actor_pointer->unk15F;
-                }
-                current_actor_pointer->unk15F += var_v0;
+                current_actor_pointer->unk15F += 0xFF - current_actor_pointer->unk15F >= 9 ? 8 : 0xFF - current_actor_pointer->unk15F;
                 addActorToTextOverlayRenderArray(func_menu_800244EC, current_actor_pointer, 3);
                 if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
                     func_menu_800241E8();
@@ -318,7 +311,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
             break;
         default:
             if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
-                var_t5 = 1;
+                new_screen = 1;
             } else {
                 if ((D_global_asm_807ECDEC->stick_y >= 0x29) && (arg0->previous_y < 0x29)) {
                     arg0->screen--;
@@ -328,11 +321,11 @@ void func_menu_80024788(SnideAaD180 *arg0) {
                     arg0->screen++;
                     playSound(0x2A0, 0x7FFF, 64.0f, 1.0f, 0, 0);
                 }
-                var_t5 = ((arg0->screen - 4) & 7) + 4;
+                new_screen = ((arg0->screen - 4) & 7) + 4;
             }
-            arg0->screen = var_t5;
+            arg0->screen = new_screen;
             if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
-                func_global_asm_80712774(D_menu_800330C0[var_t5]);
+                func_global_asm_80712774(D_menu_800330C0[new_screen]);
                 D_menu_80032F50 = 1;
                 arg0->screen = 0x37;
             }
@@ -452,32 +445,123 @@ void func_menu_80024CB0(void) {
 // Checks if all blueprints turned in, malloc, current_actor_pointer, playSFX
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_80024EF0.s")
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_800252AC.s")
-
-typedef struct model_vertex {
-    s16 x;
-    s16 y;
-    s16 z;
-    s16 u;
-    s16 v;
-    s16 w;
+typedef struct RGB {
     u8 red;
     u8 green;
     u8 blue;
-    u8 alpha;
-} model_vertex;
+} RGB;
 
-typedef struct struct_menu_80033F10 {
-    model_vertex vertices[4];
-} struct_menu_80033F10;
+extern Vtx *D_80033F10;
+extern Mtx *D_menu_800330D0;
+extern void *D_menu_800330D4;
+extern s16 D_menu_800330D8;
+extern u8 D_menu_800330E0[0x140]; // Is this the BoM image?
+extern s16 D_menu_80033220[];
+extern RGB D_menu_80033228[];
+extern s8 D_menu_80033258;
+Gfx *func_menu_800252AC(Gfx *, Actor *);
+
+/*
+// Close
+void func_menu_80024EF0(void) {
+    s32 color_index;
+    s32 i, j, k;
+    s32 var_s3;
+    s32 var_s5;
+    s32 var_s6;
+    s32 var_s7;
+    s32 vtx_i;
+    s8 all_bps_turned;
+    s16 *var_s0;
+    RGB *color_data;
+
+    var_s0 = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        *var_s0 = 0xF0;
+        current_actor_pointer->control_state = 0;
+        D_menu_800330D0 = malloc(2 * sizeof(Mtx));
+        D_menu_800330D4 = malloc(0x140);
+        memcpy(D_menu_800330D4, &D_menu_800330E0, 0x140U);
+        *var_s0 = -1000;
+        D_80033F10 = malloc(0x1400);
+        all_bps_turned = countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT) == 40;
+        var_s7 = 0;
+        vtx_i = 0;
+        for (i = 0; i != 0x96; i += 0x1E) {
+            var_s3 = 0;
+            var_s5 = 0x28;
+            var_s6 = 0x46;
+            for (k = 0x1E; k < 0x10E; k += 0x1E) {
+                color_index = var_s7;
+                for (j = 0; j < 5; j++) {
+                    if (all_bps_turned) {
+                        color_index = 0x15;
+                    }
+                    color_data = &D_menu_80033228[color_index++];
+                    D_80033F10[vtx_i].v.ob[0] = var_s5 << 2;
+                    D_80033F10[vtx_i].v.ob[1] = (D_menu_80033220[j] + i + 0x2D) << 2;
+                    D_80033F10[vtx_i].v.ob[2] = -10;
+                    D_80033F10[vtx_i].v.tc[0] = var_s3 << 6;
+                    D_80033F10[vtx_i].v.tc[1] = (D_menu_80033220[j] + i) << 6;
+                    D_80033F10[vtx_i].v.cn[0] = color_data->red;
+                    D_80033F10[vtx_i].v.cn[1] = color_data->green;
+                    D_80033F10[vtx_i].v.cn[2] = color_data->blue;
+                    D_80033F10[vtx_i].v.cn[3] = 0xFF;
+                    D_80033F10[vtx_i].v.flag = 0;
+                    vtx_i++;
+                    // Might not be needed
+                    D_80033F10[vtx_i].v.ob[0] = var_s6 << 2;
+                    D_80033F10[vtx_i].v.ob[1] = (D_menu_80033220[j] + i + 0x2D) << 2;
+                    D_80033F10[vtx_i].v.ob[2] = 0x16;
+                    D_80033F10[vtx_i].v.tc[0] = k << 6;
+                    D_80033F10[vtx_i].v.tc[1] = (D_menu_80033220[j] + i) << 6;
+                    D_80033F10[vtx_i].v.cn[0] = color_data->red;
+                    D_80033F10[vtx_i].v.cn[1] = color_data->green;
+                    D_80033F10[vtx_i].v.cn[2] = color_data->blue;
+                    D_80033F10[vtx_i].v.cn[3] = 0xFF;
+                    D_80033F10[vtx_i].v.flag = 0;
+                    vtx_i++;
+                }
+                // Loop stuff
+                var_s3 += 0x1E;
+                var_s5 += 0x1E;
+                var_s6 += 0x1E;
+            }
+            var_s7 += 9;
+        }
+        D_menu_80033258 = all_bps_turned;
+    }
+    if (D_menu_800330D8 != 0) {
+        if (*var_s0 == -1000) {
+            playSound(0x2A3, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+        }
+        *var_s0 += 0x80;
+        if (*var_s0 > 0) {
+            *var_s0 = 0;
+        }
+    } else {
+        if (*var_s0 == 0) {
+            playSound(0x2A3, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+        }
+        *var_s0 -= 0x80;
+        if (*var_s0 < -1000) {
+            *var_s0 = -1000;
+        }
+    }
+    D_menu_800330D8 = 0;
+    if (*var_s0 >= -0x3E7) {
+        addActorToTextOverlayRenderArray(&func_menu_800252AC, current_actor_pointer, 3U);
+    }
+}
+*/
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_800252AC.s")
 
 typedef struct snide_menu_aad_174 {
     f32 unk0;
 } snide_menu_aad_174;
 
-extern struct_menu_80033F10 *D_80033F10;
-extern Mtx D_menu_800330D0[2];
 extern void *D_menu_800330D4;
 extern s8 D_menu_80033258;
 

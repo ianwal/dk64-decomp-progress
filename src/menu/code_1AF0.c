@@ -170,42 +170,55 @@ void func_menu_80025E04(MenuStruct1 *arg0, CharacterProgress *arg1) {
     func_global_asm_8060DEC8(); // saveTheGame()
 }
 
-// Doable, big project though
-// It checks whether levels have been entered and does stuff with actor behaviour index
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_1AF0/func_menu_80025FB4.s")
 
+typedef struct PurchaseStruct {
+    s16 purchase_type;
+    s16 purchase_value;
+    s16 price;
+} PurchaseStruct;
+
+typedef enum PurchaseTypes {
+    /* 0x000 */ PURCHASE_TYPE_SPECIAL,
+    /* 0x001 */ PURCHASE_TYPE_SLAM,
+    /* 0x002 */ PURCHASE_TYPE_GUN,
+    /* 0x003 */ PURCHASE_TYPE_AMMOBELT,
+    /* 0x004 */ PURCHASE_TYPE_INSTRUMENT
+} PurchaseTypes;
+
 extern u8 D_807FCC4C;
+extern PurchaseStruct D_menu_80033260[5][7];
+extern PurchaseStruct D_menu_80033334[5][7];
+extern PurchaseStruct D_menu_80033408[5][7];
+extern u16 D_global_asm_80750AC8;
 
 /*
-void func_menu_80025FB4(MenuStruct1 *arg0, CharacterProgress *arg1, ? arg2) {
-    ? *var_v1;
-    s16 temp_a0;
-    s16 temp_v0;
-    s32 temp_s0;
-    s32 var_a2;
-    s32 var_s0;
-    s32 var_s1;
-    u32 temp_v1;
-    void *var_a1;
+void func_menu_80025FB4(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
+    PurchaseStruct (*var_v1)[5][7];
+    s16 p_type;
+    s32 i;
+    s32 latest_level_entered;
+    s32 found_purchase;
+    PurchaseStruct *var_a1;
+    PurchaseStruct *default_purchase; // sp2C
 
-    var_s1 = 0;
-    var_s0 = 6;
+    found_purchase = FALSE;
+    latest_level_entered = 6;
     if (!isFlagSet(0x1CB, FLAG_TYPE_PERMANENT)) {
 loop_1:
-        var_s0 -= 1;
-        if (var_s0 >= 0) {
-            if (!isFlagSet(var_s0 + 0x1C5, FLAG_TYPE_PERMANENT)) {
+        latest_level_entered--;
+        if (latest_level_entered >= 0) {
+            if (!isFlagSet(latest_level_entered + 0x1C5, FLAG_TYPE_PERMANENT)) {
                 goto loop_1;
             }
         }
     }
-    temp_s0 = var_s0 + 1;
-    arg0->unkC = getLevelIndex(D_global_asm_8076A0AB, 0);
-    temp_v1 = current_actor_pointer->unk58;
-    var_a2 = 0 * 6;
-    switch (temp_v1) {
+    latest_level_entered++;
+    arg0->unkC = getLevelIndex(D_global_asm_8076A0AB, FALSE);
+    i = 0;
+    switch (current_actor_pointer->unk58) {
         default:
-            var_v1 = sp2C;
+            var_v1 = default_purchase;
             break;
         case ACTOR_CRANKY: // Cranky
             var_v1 = &D_menu_80033260;
@@ -217,38 +230,31 @@ loop_1:
             var_v1 = &D_menu_80033408;
             break;
     }
-    if (temp_s0 > 0) {
-        var_a1 = var_v1 + (current_character_index * 0x2A) + var_a2;
-loop_12:
-        temp_a0 = var_a1->unk0;
-        var_a2 += 6;
-        if (temp_a0 >= 0) {
-            if ((temp_a0 == 2) || (temp_a0 == 4)) {
-                if (!((1 << (var_a1->unk2 + 0x1F)) & *(arg1 + temp_a0))) {
-                    goto block_18;
+    var_a1 = &var_v1[current_character_index[0]][i];
+    while ((latest_level_entered > i) && (!found_purchase)) {
+        p_type = var_a1->purchase_type;
+        if (p_type >= 0) {
+            if ((p_type == PURCHASE_TYPE_GUN) || (p_type == PURCHASE_TYPE_INSTRUMENT)) {
+                if (!((1 << (var_a1->purchase_value - 1)) & *((u8*)&arg1 + p_type))) {
+                    found_purchase = TRUE;
                 }
-            } else if (*(arg1 + temp_a0) < var_a1->unk2) {
-block_18:
-                var_s1 = 1;
+            } else if (*((u8*)&arg1 + p_type) < var_a1->purchase_value) {
+                found_purchase = TRUE;
             }
-            if (var_s1 != 0) {
-                arg0->unkB = temp_a0;
-                temp_v0 = var_a1->unk4;
-                arg0->unk4 = temp_v0;
-                D_global_asm_80750AC8 = temp_v0;
-                arg0->unk11 = var_a1->unk2;
+            if (found_purchase) {
+                arg0->unkB = p_type;
+                D_global_asm_80750AC8 = arg0->unk4 = var_a1->price;
+                arg0->unk11 = var_a1->purchase_value;
             }
         }
-        var_a1 += 6;
-        if ((var_a2 < (temp_s0 * 6)) && (var_s1 == 0)) {
-            goto loop_12;
-        }
+        var_a1++;
+        i++;
     }
-    if (var_s1 == 0) {
+    if (!found_purchase) {
         arg0->unk4 = 0;
         arg0->unkB = -1;
         D_global_asm_80750AC8 = arg0->unk4;
-        if (temp_s0 >= 7) {
+        if (latest_level_entered > 6) {
             arg0->unkB = -2;
         }
     }
@@ -295,7 +301,6 @@ extern MenuStruct1 D_menu_800334EC;
 extern MenuStruct1 D_menu_80033500;
 extern MenuStruct1 D_menu_80033514;
 extern u16 D_menu_80033528;
-extern u16 D_global_asm_80750AC8;
 
 extern u8 D_menu_800334DD[];
 

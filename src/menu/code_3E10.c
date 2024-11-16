@@ -1032,13 +1032,61 @@ void func_menu_8002C584(Actor *arg0, s32 arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002C634.s")
 
-// Weird negative struct offset stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002C91C.s")
+
+extern u8 D_80033F20[];
+extern u8 D_80033F24[];
+extern s16 D_80744524[];
+extern s8 D_global_asm_8076A105;
+extern u8 D_menu_80033878;
+extern u8 D_menu_8003387C[];
+
+typedef struct MultiKongAAD {
+    Actor *controller;
+    s32 unk4;
+    s8 unk8;
+} MultiKongAAD;
+
+/*
+void func_menu_8002C91C(Actor *arg0, s32 arg1) {
+    MenuAdditionalActorData *MaaD = arg0->MaaD;
+    u8 *var_s3;
+    s32 i;
+    s8 *var_a1;
+    u8 *var_s1;
+    MultiKongAAD *temp_v0;
+
+    var_a1 = &D_global_asm_8076A0E4;
+    for (i = 0; i < 4; i++) {
+        if (!(*var_a1 & 0x80)) {
+            D_menu_8003387C[D_menu_80033878] = *var_a1 & 0x7F;
+            D_80033F20[D_menu_80033878] = i;
+            D_80033F24[i] = D_menu_80033878;
+            if (D_global_asm_8076A105 == D_menu_80033878) D_80744524[i]++;
+            D_menu_80033878++;
+        }
+        var_a1++;
+    }
+    func_menu_8002F8EC();
+    MaaD->unk17 = 0;
+    var_s3 = &D_80033F20;
+    var_s1 = &D_menu_8003387C;
+    for (i = 0; i < D_menu_80033878; i++, var_s3++, var_s1++) {
+        spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_menu_8003386C[*var_s1]);
+        last_spawned_actor->unk17C->unk0_s16[0] = D_menu_8003386C[*var_s1];
+        last_spawned_actor->control_state = *var_s3 | 0x80;
+        last_spawned_actor->control_state_progress = *var_s1;
+        temp_v0 = last_spawned_actor->additional_actor_data;
+        temp_v0->controller = arg0;
+        temp_v0->unk8 = (i == D_global_asm_8076A105) + 1;
+    }
+    func_menu_80030894(MaaD, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
+}
+*/
 
 // TODO: Huge, very doable, need energy
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CB18.s")
 
-/*
 extern u8 D_80033F24[];
 extern u8 D_menu_80033878;
 
@@ -1048,72 +1096,59 @@ typedef struct {
 } Menu80033894;
 
 extern Menu80033894 D_menu_80033894[];
-extern ? D_menu_800338B4;
+extern s32 D_menu_800338B4[3][6];
 
+/*
 void func_menu_8002CB18(void) {
-    Struct800317E8 *aad2;
-    f32 sp54;
-    f32 sp50;
-    s8 sp4F;
-    s16 sp4C;
-    s16 *sp38;
-    Actor *temp_a0;
     ActorAnimationState *temp_v0;
-    ActorAnimationState *temp_v0_2;
-    ActorAnimationState *temp_v0_3;
     f32 temp_f10;
-    f32 temp_f4;
-    s16 *temp_a2_2;
+    Struct800317E8 *aad2;
+    MultiKongAAD *aaD1;
+    s8 delete_actor;
+    f32 x, y;
     s16 temp_t7;
     s32 temp_s1_2;
-    s8 temp_a2;
     u8 var_t0;
-    void *aaD1;
     Menu80033894 *temp_v0_4;
 
     aaD1 = current_actor_pointer->additional_actor_data;
-    sp4F = 0;
-    aad2 = aaD1->unk0->unk174;
+    delete_actor = FALSE;
+    aad2 = aaD1->controller->additional_actor_data;
     func_global_asm_806BF920();
-    temp_a0 = current_actor_pointer;
-    if (!(temp_a0->object_properties_bitfield & 0x10)) {
-        temp_v0 = temp_a0->animation_state;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        temp_v0 = current_actor_pointer->animation_state;
         temp_v0->scale[0] *= 2.0f;
-        temp_v0_2 = current_actor_pointer->animation_state;
-        temp_v0_2->scale[1] *= 2.0f;
-        temp_v0_3 = current_actor_pointer->animation_state;
-        temp_v0_3->scale[2] *= 2.0f;
-        playActorAnimation(current_actor_pointer, *(&D_menu_800338B4 + (((aaD1->unk8 * 6) * 4) + ((current_actor_pointer->control_state_progress & 0xF) * 4))));
+        temp_v0 = current_actor_pointer->animation_state;
+        temp_v0->scale[1] *= 2.0f;
+        temp_v0 = current_actor_pointer->animation_state;
+        temp_v0->scale[2] *= 2.0f;
+        playActorAnimation(current_actor_pointer, D_menu_800338B4[aaD1->unk8][current_actor_pointer->control_state_progress & 0xF]);
         func_global_asm_806F0C18(current_actor_pointer);
         current_actor_pointer->object_properties_bitfield |= 0x1000;
         aaD1->unk4 = D_global_asm_8076A100[current_actor_pointer->control_state & 0xF];
         func_global_asm_8068A4C8(current_actor_pointer, current_actor_pointer->control_state_progress + 2, D_global_asm_8076A100[current_actor_pointer->control_state & 0xF]);
     }
-    var_t0 = temp_a0->control_state;
+    var_t0 = current_actor_pointer->control_state;
     if (!(var_t0 & 0x80)) {
-        temp_a2 = D_global_asm_8076A100[var_t0];
-        if (aaD1->unk4 != temp_a2) {
-            func_global_asm_8068A4C8(temp_a0, temp_a0->control_state_progress + 2, temp_a2);
+        if (aaD1->unk4 != D_global_asm_8076A100[var_t0]) {
+            func_global_asm_8068A4C8(current_actor_pointer, current_actor_pointer->control_state_progress + 2, D_global_asm_8076A100[var_t0]);
             aaD1->unk4 = D_global_asm_8076A100[current_actor_pointer->control_state];
             var_t0 = current_actor_pointer->control_state;
         }
         temp_t7 = D_global_asm_8076A0E4[var_t0] & 0x7F;
-        if (temp_t7 != temp_a0->control_state_progress) {
-            temp_a2_2 = &D_menu_8003386C[temp_t7];
-            sp38 = temp_a2_2;
-            sp4C = temp_t7;
-            spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, *temp_a2_2);
-            last_spawned_actor->unk17C->unk0_s16[0] = *temp_a2_2;
+        if (temp_t7 != current_actor_pointer->control_state_progress) {
+            spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_menu_8003386C[temp_t7]);
+            last_spawned_actor->unk17C->unk0_s16[0] = D_menu_8003386C[temp_t7];
             last_spawned_actor->control_state = current_actor_pointer->control_state;
-            last_spawned_actor->control_state_progress = sp4C;
-            last_spawned_actor->additional_actor_data->unk0 = aaD1->unk0;
-            sp4F = 1;
+            last_spawned_actor->control_state_progress = temp_t7;
+            ((MultiKongAAD *)last_spawned_actor->additional_actor_data)->controller = aaD1->controller;
+            delete_actor = TRUE;
             var_t0 = current_actor_pointer->control_state;
         }
         temp_v0_4 = &D_menu_80033894[var_t0];
-        func_menu_800317E8(aad2, temp_v0_4->unk0, temp_v0_4->unk4, &sp54, &sp50, 2, 0, 1.8f);
-        current_actor_pointer->x_position = player_pointer->x_position + (sp54 - 160.0f);
-        current_actor_pointer->y_position = (player_pointer->y_position - (sp50 - 120.0f)) - 20.0f;
+        func_menu_800317E8(aad2, temp_v0_4->unk0, temp_v0_4->unk4, &x, &y, 2, 0, 1.8f);
+        current_actor_pointer->x_position = player_pointer->x_position + (x - 160.0f);
+        current_actor_pointer->y_position = (player_pointer->y_position - (y - 120.0f)) - 20.0f;
         current_actor_pointer->z_position = player_pointer->z_position - 300.0f;
         if (D_global_asm_8076A0E4[current_actor_pointer->control_state] & 0x80) {
             current_actor_pointer->object_properties_bitfield &= ~4;
@@ -1122,20 +1157,16 @@ void func_menu_8002CB18(void) {
         }
     } else {
         temp_s1_2 = 0x140 / D_menu_80033878;
-        sp4C = D_80033F24[var_t0 & 0xF];
-        func_menu_800317E8(aad2, 160.0f, 150.0f, &sp54, &sp50, 2, 0, 1.8f);
-        temp_f10 = ((sp4C * temp_s1_2) + (temp_s1_2 >> 1)) - 0xA0;
-        sp54 = temp_f10;
-        temp_f4 = temp_f10 * 0.78;
-        sp54 = temp_f4;
-        current_actor_pointer->x_position = player_pointer->x_position + temp_f4;
-        current_actor_pointer->y_position = (player_pointer->y_position - (sp50 - 120.0f)) + 16.0f;
+        func_menu_800317E8(aad2, 160.0f, 150.0f, &x, &y, 2, 0, 1.8f);
+        temp_f10 = ((D_80033F24[var_t0 & 0xF] * temp_s1_2) + (temp_s1_2 >> 1)) - 0xA0;
+        current_actor_pointer->x_position = player_pointer->x_position + (temp_f10 * 0.78);
+        current_actor_pointer->y_position = (player_pointer->y_position - (y - 120.0f)) + 16.0f;
         current_actor_pointer->z_position = player_pointer->z_position - 300.0f;
     }
     if (aad2->unk0 > 1.0f) {
-        sp4F = 1;
+        delete_actor = TRUE;
     }
-    if (sp4F != 0) {
+    if (delete_actor) {
         deleteActor(current_actor_pointer);
     }
     renderActor(current_actor_pointer, 0);
@@ -1264,7 +1295,54 @@ void func_menu_8002CFA4(Actor *arg0, s32 arg1) {
 */
 
 // displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002D520.s")
+
+Gfx *func_menu_8002F980(Gfx *, Struct800317E8 *, s8 **, s8, u32 *, s32, f32 *, f32, s32); // extern
+extern s8 D_global_asm_8074583C;
+extern s8 D_global_asm_80745840;
+extern s8 D_global_asm_80745844;
+extern s16 D_menu_80033674;
+
+Gfx *func_menu_8002D520(Actor *arg0, Gfx *dl) {
+    MenuAdditionalActorData *MaaD = arg0->MaaD;
+    s32 sp60;
+    s8 pad[4];
+    f32 sp58;
+    f32 sp54;
+    f32 sp50;
+    s16 pad4;
+    s16 temp_f10;
+    s8 pad3[2];
+    s8 var_v0;
+    s8 sp40[4];
+
+    global_properties_bitfield &= ~0x10;
+    func_menu_800317E8(MaaD, 160.0f, 20.0f, &sp58, &sp54, 2, 0, 1.5f);
+    dl = printStyledText(dl, 1, 0x280, sp54 * 4.0f, label_string_pointer_array[32], 0x81U);
+    dl = func_menu_8002F980(dl, MaaD, &label_string_pointer_array[33], 4, &sp60, 1, &sp50, 80.0f, -1);
+    D_menu_80033674 = 0x3E8;
+    dl = dl;
+    func_menu_800317E8(MaaD, 160.0f, 150.0f, &sp58, &sp54, 2, 0, 1.5f);
+    temp_f10 = sp54 * 4.0f;
+    sp58 = (sp58 - sp50) * 4.0f;
+    switch (sp60) {
+    case 0:
+        dl = printStyledText(dl, 1, sp58, temp_f10, label_string_pointer_array[D_global_asm_80745844 + 37], 0x81U);
+        break;
+    case 1:
+    case 2:
+        dl = printStyledText(dl, 1, sp58, temp_f10, label_string_pointer_array[40], 0x81U);
+        var_v0 = sp60 == 1 ? D_global_asm_8074583C : D_global_asm_80745840;
+        sprintf(&sp40, "%d", (var_v0 + 1) >> 1);
+        dl = printStyledText(dl, 1, sp58, temp_f10 + 0x78, &sp40, 0x81U);
+        break;
+    case 3:
+        D_menu_80033674 = 0;
+        break;
+    }
+    return dl;
+}
+
+
 
 void func_menu_8002D7EC(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
@@ -1367,7 +1445,6 @@ void func_menu_8002D8AC(Actor *arg0, s32 arg1) {
     }
 }
 
-Gfx *func_menu_8002F980(Gfx *, Struct800317E8 *, s8 **, s8, u32 *, s32, f32 *, f32, s32); // extern
 extern s16 D_menu_80033674;
 
 Gfx *func_menu_8002DBDC(Actor *arg0, Gfx *dl) {
