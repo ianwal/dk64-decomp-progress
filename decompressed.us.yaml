@@ -76,7 +76,7 @@ segments:
       - [0x6360, c, io/viswapbuf]             #DONE
       - [0x63B0, c, ll]
       - [0x6680, hasm, os/getfpccsr]          #DONE
-      - [0x6690, c, gu/nonmatching/usprite]
+      - [0x6690, c, gu/usprite]
       - [0x66E0, c, os/stopthread]            #DONE
       - [0x67A0, c, io/dpsetstat]             #DONE
       - [0x67B0, c, io/spsetstat]             #DONE

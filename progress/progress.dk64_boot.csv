@@ -47,7 +47,7 @@ us,boot,guTranslate,84,yes
 us,boot,osGetCount,16,yes
 us,boot,__osContRamReadData,560,no
 us,boot,osEPiRawWriteIo,352,no
-us,boot,guSprite2DInit,80,no
+us,boot,guSprite2DInit,68,yes
 us,boot,osGetThreadId,24,yes
 us,boot,guPerspective,88,yes
 us,boot,osCreatePiManager,368,yes
