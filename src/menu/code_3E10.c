@@ -1294,8 +1294,6 @@ void func_menu_8002CFA4(Actor *arg0, s32 arg1) {
 }
 */
 
-// displaylist stuff
-
 Gfx *func_menu_8002F980(Gfx *, Struct800317E8 *, s8 **, s8, u32 *, s32, f32 *, f32, s32); // extern
 extern s8 D_global_asm_8074583C;
 extern s8 D_global_asm_80745840;
@@ -1500,7 +1498,153 @@ void func_menu_8002DEE8(Actor *arg0, s32 arg1) {
     func_menu_80030894(MaaD, &D_global_asm_80720D38, 0xA0, 0xC8, 1.0f, 2, 0xC);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002DFA8.s")
+typedef struct DKTheatreWarpStruct {
+    s16 map;
+    s16 cutscene;
+} DKTheatreWarpStruct;
+
+typedef struct MysteryMenuWarpStruct {
+    s16 map;
+    s16 kong;
+} MysteryMenuWarpStruct;
+
+typedef struct MysteryMenuMovesStruct {
+    MysteryMenuWarpStruct warp;
+    s8 special_moves;
+    s8 slam;
+    s8 instrument;
+    s8 melons;
+} MysteryMenuMovesStruct;
+
+extern s8 D_80744514;
+extern s8 D_8074453C[];
+extern s16 D_global_asm_80744544;
+extern s16 D_menu_80033670;
+extern DKTheatreWarpStruct D_menu_80033900[];
+extern MysteryMenuMovesStruct D_menu_80033938[];
+extern MysteryMenuWarpStruct D_menu_80033978[];
+extern s8 D_menu_80033988[]; // Mys Menu Vertical Max
+extern s16 D_menu_80033998[];
+extern s8 D_menu_800339A8;
+extern s8 barrel_visibility_timer;
+
+void func_menu_8002DFA8(Actor *arg0, s32 arg1) {
+    MenuAdditionalActorData *MaaD = arg0->MaaD;
+    s8 sp3B;
+    s8 max_vertical;
+    s8 sp39;
+    s8 screen;
+    s32 temp_a0_2;
+
+    sp3B = FALSE;
+    if (MaaD->unk0 == 0.0f) {
+        if (MaaD->unk4 == 0.0f) {
+            screen = MaaD->unk17;
+            max_vertical = D_menu_80033988[screen];
+            if (max_vertical > 0) {
+                if ((arg1 & 0x10) && !(D_menu_80033670 & 0x10) && (max_vertical != 1)) {
+                    sp3B = TRUE;
+                    do {
+                        D_8074453C[screen]++;
+                        if (D_8074453C[screen] >= max_vertical) {
+                            D_8074453C[screen] = 0;
+                        }
+                    } while (!(D_menu_80033998[screen] & (1 << D_8074453C[screen])));
+                }
+                if ((arg1 & 0x20) && !(D_menu_80033670 & 0x20) && (max_vertical != 1)) {
+                    sp3B = TRUE; \
+                    do {
+                        D_8074453C[screen]--;
+                        if (D_8074453C[screen] < 0) {
+                            D_8074453C[screen] = max_vertical - 1;
+                        }
+                    } while (!(D_menu_80033998[screen] & (1 << D_8074453C[screen])));
+                }
+                sp39 = D_8074453C[screen];
+                if (arg1 & 1) {
+                    switch (screen) {
+                    case 0:
+                        if (sp39 != 0xD) {
+                            func_global_asm_80712634(
+                                D_menu_80033900[sp39].map,
+                                D_menu_80033900[sp39].cutscene);
+                        } else {
+                            // End Sequence
+                            func_global_asm_807127F4(1);
+                        }
+                        D_80744514 = 3;
+                        break;
+                    case 1:
+                        switch (D_menu_80033978[sp39].map) {
+                            case MAP_RAMBI_ARENA:
+                                playSound(0x2C9, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+                                MaaD->unk16 = 0;
+                                MaaD->unk13 = 0xC;
+                                D_menu_800339A8 = 0;
+                                break;
+                            case MAP_ENGUARDE_ARENA:
+                                playSound(0x2C9, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+                                MaaD->unk16 = 0;
+                                MaaD->unk13 = 0xC;
+                                D_menu_800339A8 = 1;
+                                break;
+                            default:
+                                func_global_asm_807126B0(
+                                    D_menu_80033978[sp39].map, 0,
+                                    D_menu_80033978[sp39].kong, 3, 3, 1, 3);
+                                D_80744514 = 5;
+                                break;
+                        }
+                        break;
+                    case 2:
+                        func_global_asm_807126B0(
+                            D_menu_80033938[sp39].warp.map,
+                            0,
+                            D_menu_80033938[sp39].warp.kong,
+                            D_menu_80033938[sp39].special_moves,
+                            D_menu_80033938[sp39].slam,
+                            D_menu_80033938[sp39].instrument,
+                            D_menu_80033938[sp39].melons);
+                        D_80744514 = 4;
+                        break;
+                    }
+                }
+                if (arg1 & 0x100) {
+                    if (screen == 3) {
+                        D_global_asm_80744544 ^= 1;
+                        sp3B = TRUE;
+                    } else if (screen == 4) {
+                        temp_a0_2 = 1 << (sp39 + 1);
+                        sp3B = TRUE;
+                        D_global_asm_80744544 ^= temp_a0_2;
+                        if (sp39 == 6) {
+                            if (D_global_asm_80744544 & temp_a0_2) {
+                                D_global_asm_80744544 |= 0xFEFE;
+                            } else {
+                                D_global_asm_80744544 &= 1;
+                            }
+                        }
+                    }
+                }
+            }
+            if (arg1 & 2) {
+                playSound(0x2C9, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+                MaaD->unk16 = 0;
+                MaaD->unk13 = 1;
+                barrel_visibility_timer = 3;
+            } else {
+                func_menu_8002FD38(MaaD, 5, arg1);
+            }
+        }
+        func_menu_8002FE08(MaaD, 5);
+    }
+    func_menu_8002FC1C(arg0, MaaD, 1);
+    if (sp3B) {
+        playSound(0x74, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+    }
+}
+
+
 
 // Jumptable, displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002E420.s")
