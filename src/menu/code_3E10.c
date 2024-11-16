@@ -425,7 +425,7 @@ Gfx *func_menu_800286C8(Actor *arg0, Gfx *dl) {
     return printStyledText(dl, 1, 0, 0, label_string_pointer_array[spD0], 0x80);
 }
 
-s8 current_menu_selection;
+extern s8 D_8076A0D0[];
 
 void func_menu_80028834(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD;
@@ -437,7 +437,7 @@ void func_menu_80028834(Actor *arg0, s32 arg1) {
     player_pointer->control_state_progress = 0;
     D_global_asm_80745844 = func_global_asm_8060C6B8(0x1E, 0, 0, 0);
     func_menu_80027E10();
-    MaaD->unk17 = current_menu_selection;
+    MaaD->unk17 = D_8076A0D0[1];
     func_menu_80030894(MaaD, &D_global_asm_80720C34, 160, 210, 0.75f, 2, 0);
     func_menu_80030894(MaaD, (s32)&D_global_asm_80721444, 0,   0,   1.2f, 2, 0x12);
     func_menu_80030894(MaaD, (s32)&D_global_asm_80721444, 1,   0,   1.2f, 2, 0x12);
@@ -1516,7 +1516,7 @@ typedef struct MysteryMenuMovesStruct {
     s8 melons;
 } MysteryMenuMovesStruct;
 
-extern s8 D_80744514;
+extern u8 D_80744514;
 extern s8 D_8074453C[];
 extern s16 D_global_asm_80744544;
 extern s16 D_menu_80033670;
@@ -1887,8 +1887,104 @@ void func_menu_8002FE08(MenuAdditionalActorData *MaaD, s32 arg1) {
     }
 }
 
-// Jumptable, 916 bytes of code
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002FEBC.s")
+extern s8 D_80033F30;
+extern void *D_80033F34;
+
+extern s8 D_menu_80033738;
+extern s8 D_menu_800339A8;
+extern s8 D_menu_80033F50;
+extern s8 D_menu_80033F60;
+extern f32 dk_screen_transition_height;
+extern f32 menu_icon_transition_scale;
+
+// Main Menu Controller Code
+void func_menu_8002FEBC(void) {
+    MenuAdditionalActorData *MaaD;
+    PlayerAdditionalActorData *PaaD;
+    s32 i;
+
+    MaaD = current_actor_pointer->MaaD;
+    PaaD = player_pointer->PaaD;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        global_properties_bitfield |= 0x10;
+        func_menu_800324CC();
+        func_menu_8002ECE8();
+        if (D_80744514 == 0) {
+            for (i = 0; i < 0xD; i++) D_8076A0D0[i] = 0;
+        } else {
+            player_pointer->x_position = 700.0f;
+            player_pointer->y_position = 0.0f;
+            player_pointer->z_position = 70.0f;
+        }
+        D_menu_80033F50 = 0;
+        D_menu_80033738 = 0;
+        D_menu_80033F60 = -1;
+        dk_screen_transition_height = 0.0f;
+        spawnActor(ACTOR_BARREL_MAIN_MENU, 0xD7);
+        MaaD = MaaD;
+        last_spawned_actor->x_position = player_pointer->x_position;
+        last_spawned_actor->y_position = player_pointer->y_position;
+        last_spawned_actor->z_position = player_pointer->z_position;
+        last_spawned_actor->y_rotation = player_pointer->y_rotation;
+        if (D_80744514) {
+            D_menu_80033738 = 0x15;
+            player_pointer->control_state = 0x85;
+            player_pointer->control_state_progress = 0;
+            playActorAnimation(player_pointer, 0x347);
+            player_pointer->control_state_progress = 6;
+            func_global_asm_8061B650(D_global_asm_807F5D10);
+            menu_icon_transition_scale = 1.0f;
+            PaaD->unk23C = 0x50;
+        }
+        switch (D_80744514) {
+        case 1:
+            MaaD->unk12 = 1;
+            break;
+        case 2:
+            MaaD->unk12 = 0xB;
+            break;
+        case 3:
+        case 4:
+        case 5:
+            MaaD->unk12 = 0xA;
+            break;
+        case 6:
+        case 7:
+            MaaD->unk12 = 0xC;
+            D_menu_800339A8 = D_80744514 - 6;
+            func_menu_8002F75C();
+            break;
+        default:
+            playActorAnimation(last_spawned_actor, 0x349);
+            player_pointer->control_state = 0x86;
+            player_pointer->control_state_progress = 0;
+            MaaD->unk12 = 0;
+            break;
+        }
+        player_pointer->animation_state->scale[0] *= 0.8;
+        player_pointer->animation_state->scale[1] *= 0.8;
+        player_pointer->animation_state->scale[2] *= 0.8;
+        MaaD->unk17 = 0;
+        MaaD->unkC = 0;
+        MaaD->unkE = 0;
+        MaaD->unk16 = 1;
+        MaaD->unk10 = 0;
+        MaaD->unk0 = 1.0f;
+        MaaD->unk4 = 0.0f;
+        D_80033F34 = malloc(0x80);
+        D_80033F30 = 0;
+        func_menu_80030340(current_actor_pointer, 0, NULL, 0);
+        D_80744514 = 0;
+        func_global_asm_8060AA58(0xFF);
+        func_global_asm_8060CB9C();
+    }
+    func_menu_80030340(current_actor_pointer, 2, NULL, 0);
+    addActorToTextOverlayRenderArray(func_menu_80030258, current_actor_pointer, 3U);
+}
+
+void func_menu_80030250(void) {
+
+}
 
 Gfx *func_menu_80030258(Gfx *dl, Actor *arg1) {
     gDPPipeSync(dl++);

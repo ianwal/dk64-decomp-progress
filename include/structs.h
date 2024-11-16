@@ -810,7 +810,8 @@ typedef struct menu_additional_actor_data {
     f32 unk0;
     f32 unk4;
     f32 unk8;
-    s32 unkC;
+    s16 unkC;
+    s16 unkE;
     s16 unk10;
     s8  unk12;
     s8  unk13;
