@@ -1594,20 +1594,20 @@ typedef struct {
 void func_global_asm_8064B3F8(Struct8064B3F8 **arg0, s16 arg1, s16 arg2, s16 arg3) {
     Struct8064B3F8 *temp_t0;
     Struct8064B3F8 *temp_a0;
-    f32 temp;
-    f32 temp2;
-    f32 temp3;
-    s32 temp4;
+    f32 x;
+    f32 y;
+    f32 z;
+    s32 objectModel2Index;
 
     temp_t0 = *arg0;
+    objectModel2Index = func_global_asm_80659470(arg1);
+    x = D_global_asm_807F6000[objectModel2Index].x_position;
+    y = D_global_asm_807F6000[objectModel2Index].y_position;
+    z = D_global_asm_807F6000[objectModel2Index].z_position;
     temp_a0 = &arg0[arg3];
-    temp4 = func_global_asm_80659470(arg1);
-    temp = D_global_asm_807F6000[temp4].x_position;
-    temp2 = D_global_asm_807F6000[temp4].y_position;
-    temp3 = D_global_asm_807F6000[temp4].z_position;
-    temp_a0->unk14 = (temp_t0->unk0 - temp) / arg2;
-    temp_a0->unk18 = (temp_t0->unk4 - temp2) / arg2;
-    temp_a0->unk1C = (temp_t0->unk8 - temp3) / arg2;
+    temp_a0->unk14 = (temp_t0->unk0 - x) / arg2;
+    temp_a0->unk18 = (temp_t0->unk4 - y) / arg2;
+    temp_a0->unk1C = (temp_t0->unk8 - z) / arg2;
 }
 */
 

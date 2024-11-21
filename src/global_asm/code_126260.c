@@ -1,8 +1,16 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_126260/func_global_asm_80721560.s")
+// rodata
+/*
+extern f64 D_global_asm_8075EB00 = 0.1;
+extern f64 D_global_asm_8075EB08 = 0.001;
+extern f64 D_global_asm_8075EB10 = 0.001;
+extern f64 D_global_asm_8075EB18 = 0.1;
+extern f64 D_global_asm_8075EB20 = 0.02;
+extern f64 D_global_asm_8075EB28 = 255;
+extern f64 D_global_asm_8075EB30 = 0.05;
+*/
 
 typedef struct struct807FDB60 {
     u8 pad[0x4];
@@ -75,22 +83,17 @@ void func_global_asm_807215EC(void) {
     func_global_asm_807215D0(1, 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_126260/func_global_asm_8072167C.s")
-
 extern s16 D_global_asm_80755680;
 extern f32 D_global_asm_80755684;
 extern f32 D_global_asm_80755688;
 extern f32 D_global_asm_8075568C;
-extern f64 D_global_asm_8075EB00;
 
-/*
 void func_global_asm_8072167C(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
-    D_global_asm_80755680 = D_global_asm_80755680 + (arg3 - D_global_asm_80755680) * D_global_asm_8075EB00;
-    D_global_asm_80755684 = D_global_asm_80755684 + (arg0 - D_global_asm_80755684) * D_global_asm_8075EB00;
-    D_global_asm_80755688 = D_global_asm_80755688 + (arg1 - D_global_asm_80755688) * D_global_asm_8075EB00;
-    D_global_asm_8075568C = D_global_asm_8075568C + (arg2 - D_global_asm_8075568C) * D_global_asm_8075EB00;
+    D_global_asm_80755680 += (arg3 - D_global_asm_80755680) * 0.1;
+    D_global_asm_80755684 += (arg0 - D_global_asm_80755684) * 0.1;
+    D_global_asm_80755688 += (arg1 - D_global_asm_80755688) * 0.1;
+    D_global_asm_8075568C += (arg2 - D_global_asm_8075568C) * 0.1;
 }
-*/
 
 extern u8 D_807FDB74;
 extern u8 D_807FDB75;

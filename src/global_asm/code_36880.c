@@ -165,7 +165,8 @@ s32 func_global_asm_80631EB8(u16 arg0) {
     return FALSE;
 }
 
-// regalloc
+// regalloc, close, doable
+// https://decomp.me/scratch/L4Vuz
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80631F58.s")
 
 /*

@@ -24,7 +24,7 @@ u8 func_global_asm_8067B450(void) {
             return isFlagSet(D_global_asm_8074E7A0[i].unk4, FLAG_TYPE_PERMANENT);
         }
     }
-    return 0;
+    return FALSE;
 }
 */
 

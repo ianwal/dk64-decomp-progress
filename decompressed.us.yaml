@@ -225,7 +225,7 @@ segments:
       - [0x20169F0, c, done/code_169F0]
       - [0x2016A20, c, code_16A20]
       - [0x2016B60, hasm, code_16B60]
-      - [0x2017490, hasm, code_17490] # hasm
+      - [0x2017490, hasm, code_17490]
       - [0x2017540, c, code_17540]
       - [0x2017800, c, code_17800]
       - [0x2017B40, c, done/code_17B40]
@@ -463,6 +463,7 @@ segments:
       - [0x21632C0, .rodata, code_117880]
       - [0x21633A0, rodata] # code_119370
       - [0x21633D0, rodata] # TODO: code_1?????, split needed
+      - [0x2163800, .rodata, code_126260]
       - [0x2163840, .rodata, code_127B00]
       - [0x2163870, .rodata, code_1292F0]
       - [0x2163880, rodata] # code_1295B0, code12E800?

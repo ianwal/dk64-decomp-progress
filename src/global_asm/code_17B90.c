@@ -47,8 +47,32 @@ void func_global_asm_80613214(Actor *actor) {
 // Possibly the code responsible for loading textures dynamically
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806133C8.s")
 
-// cheeky little struct array loop, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613448.s")
+typedef struct {
+    u16 modelIndex;
+    s16 unk2;
+    Actor_unk0 *unk4;
+    s32 unk8;
+} Struct807FB630;
+
+extern Struct807FB630 D_807FB630[];
+extern u16 D_807FBB30;
+
+u16 func_global_asm_80613448(Actor *arg0) {
+    Actor_unk0 *var_v0 = arg0->unk0;
+    s32 searchIndex;
+
+    searchIndex = D_807FBB30;
+    while (searchIndex >= 0) {
+        if (var_v0 == D_807FB630[searchIndex].unk4) {
+            break;
+        }
+        searchIndex--;
+    }
+    if (searchIndex >= 0) {
+        return D_807FB630[searchIndex].modelIndex;
+    }
+    return 0;
+}
 
 // matrix initialization
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806134B4.s")
@@ -117,6 +141,20 @@ void func_global_asm_80613C48(Actor *arg0, s16 arg1, f32 arg2, f32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613CA8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613FB0.s")
+
+typedef struct {
+    u16 *unk0;
+    u16 unk4;
+} Struct807FBB58;
+
+extern Struct807FBB58 D_807FBB58[];
+
+/*
+void func_global_asm_80613FB0(Actor *arg0, u16 arg1, f32 arg2, u8 arg3) {
+    u16 lu = arg0->unk58 - 2;
+    func_global_asm_80614014(arg0, D_807FBB58[arg1].unk0[lu], arg2, arg3);
+}
+*/
 
 typedef struct {
     f32 unk0;

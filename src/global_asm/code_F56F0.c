@@ -169,11 +169,11 @@ void func_global_asm_806F0B34(Actor *arg0) {
     }
 }
 
-void func_global_asm_806F0C18(Actor *arg0) {
-    s32 temp_v0;
-    PlayerAdditionalActorData *temp_v0_2;
+// TODO: Why is s16 required in the signature here? u16 breaks the switch case codegen
+s16 func_global_asm_80613448(Actor *arg0);
 
-    temp_v0 = func_global_asm_80613448(arg0);
+void func_global_asm_806F0C18(Actor *arg0) {
+    s32 temp_v0 = func_global_asm_80613448(arg0);
     switch (temp_v0) {
         case 0x1:
         case 0x2:
@@ -212,10 +212,11 @@ void func_global_asm_806F0C18(Actor *arg0) {
             break;
     }
     if (arg0->interactable & 1) {
-        temp_v0_2 = arg0->additional_actor_data;
-        if (temp_v0_2->unk8C != 0) {
+        PlayerAdditionalActorData *aaD;
+        aaD = arg0->PaaD;
+        if (aaD->unk8C != 0) {
             func_global_asm_806F0B34(arg0);
-            temp_v0_2->unk8C = 0;
+            aaD->unk8C = 0;
         }
     }
 }

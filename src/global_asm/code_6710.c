@@ -14,7 +14,7 @@ extern u8 D_global_asm_80770598[];
 extern u8 D_global_asm_80770560[];
 extern f32 D_global_asm_80770568[];
 extern s16 D_global_asm_80770628[];
-extern s16 D_global_asm_80770710[];
+extern s16 D_80770710[];
 extern f32 D_global_asm_80770B68[];
 extern f32 D_global_asm_80770BC0[];
 extern f32 D_global_asm_80770C18[];
@@ -541,7 +541,7 @@ s16 func_global_asm_80604D70(Actor *arg0, s16 arg1, u8 arg2, s32 arg3, u8 arg4, 
 // TODO: Very close, call to func_global_asm_80605314 is pulling a1 from temp reg instead of stack
 void func_global_asm_80604CBC(Actor *arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, s8 arg7) {
     if (arg0->unk6E[arg4] != -1) {
-        if (arg1 != D_global_asm_80770710[D_global_asm_80770628[arg0->unk6E[arg4]]]) {
+        if (arg1 != D_80770710[D_global_asm_80770628[arg0->unk6E[arg4]]]) {
             func_global_asm_80605314(arg0, arg4);
         } else {
             return;
@@ -587,7 +587,7 @@ void func_global_asm_80605380(s16 arg0) {
         D_global_asm_80770658[D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770740[D_global_asm_80770628[arg0]]]] = D_global_asm_80770658[D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770658[arg0]]];
         D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770658[arg0]] = D_global_asm_807707A0[D_global_asm_80770628[arg0]].unk0[D_global_asm_80770740[D_global_asm_80770628[arg0]]];
     } else {
-        D_global_asm_80770710[D_global_asm_80770628[arg0]] = 0;
+        D_80770710[D_global_asm_80770628[arg0]] = 0;
         D_global_asm_807706F8[D_global_asm_80770628[arg0]] = 0;
     }
     if (D_global_asm_80770740[D_global_asm_80770628[arg0]] < 0 || D_global_asm_80770740[D_global_asm_80770628[arg0]] >= 0x17) {

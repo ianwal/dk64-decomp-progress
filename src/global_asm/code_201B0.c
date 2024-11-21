@@ -22,11 +22,23 @@ typedef struct CutsceneBank_CamBank {
     s16 *length_array;
 } CutsceneBank_CamBank;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s16 unk10;
+    s16 unk12;
+    s16 unk14;
+    s16 unk16;
+    s32 unk18;
+} CutsceneBank_LockRegion;
+
 typedef struct CutsceneBank {
     CutsceneBank_unk0 unk0[24];
     s16 lock_count;
     u8 padC2[2];
-    void *lock_regions;
+    CutsceneBank_LockRegion *lock_regions;
     u8 *lock_chunks;
     s16 cutscene_count;
     u8 padCE[2];
@@ -44,7 +56,7 @@ extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_8076A0B3;
 extern Actor *D_807F5CE8;
 extern s16 D_807F5CEC;
-extern s16 D_807F5CF0;
+extern u16 D_807F5CF0;
 extern u16 D_807F5CF4;
 extern f32 D_807F5CFC;
 extern f32 D_807F5D00;
@@ -66,7 +78,7 @@ extern s8 D_807F5CFA;
 extern Actor *D_807F5D0C;
 extern s8 D_807F5D14;
 extern OSTime D_global_asm_807476D0;
-extern s8 D_global_asm_807476D8;
+extern u8 D_global_asm_807476D8;
 extern s16 D_global_asm_807476E4;
 extern s16 D_global_asm_807476F0;
 extern u8 D_global_asm_80770DC9;
@@ -136,7 +148,23 @@ void func_global_asm_8061B660(Struct8061B660 *arg0, f32 *arg1, f32 *arg2, f32 *a
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061B7E0.s")
+extern f32 D_global_asm_807574A0;
+
+typedef struct {
+    u8 unk0[0x90 - 0x0];
+    f32 unk90;
+    u8 unk94[0xFA - 0x94];
+    s8 unkFA;
+} Struct8061B7E0;
+
+void func_global_asm_8061B7E0(Actor *arg0, Struct8061B7E0 *arg1, f32 x, f32 z) {
+    f32 y;
+
+    y = D_global_asm_807574A0;
+    arg1->unkFA = 0;
+    func_global_asm_8066635C(arg0, x, y, z, &y);
+    arg1->unkFA = func_global_asm_8066715C(&arg1->unk90);
+}
 
 typedef struct {
     u8 unk0[0xF7 - 0x0];
@@ -238,7 +266,53 @@ void func_global_asm_8061C458(Actor *camera, s32 arg1) {
     aaD->unk48 = arg1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C464.s")
+typedef struct {
+    Actor *unk0;
+    Actor *unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s16 unk14;
+    // s16 unk16 padding, appears to be unused
+    f32 unk18;
+} AAD_8061C464_unk44;
+
+typedef struct {
+    s32 *unk0;
+    u8 unk4[0x44 - 0x4];
+    AAD_8061C464_unk44 unk44; // This is really weird, the function below uses a pointer to the substruct
+    u8 unk48[0xF3 - 0x60];
+    u8 unkF3;
+} AAD_8061C464;
+
+void func_global_asm_8061C464(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 argA) {
+    AAD_8061C464 *aaD;
+    AAD_8061C464_unk44 *aaD44;
+
+    aaD = ((AAD_8061C464*)arg0->additional_actor_data);
+    aaD44 = &aaD->unk44;
+    if (arg1) {
+        aaD44->unk0 = arg1;
+        aaD44->unk4 = arg1;
+        aaD44->unk8 = arg3;
+        aaD44->unkA = arg4;
+        aaD44->unkC = arg5;
+        aaD44->unkE = arg6;
+        aaD44->unk10 = arg7;
+        aaD44->unk12 = arg8;
+        aaD44->unk14 = arg9;
+        aaD44->unk18 = argA;
+        if (aaD->unkF3 == 3) {
+            func_global_asm_806EAB44(player_pointer, 0);
+        }
+        aaD->unkF3 = arg2;
+    } else {
+        func_global_asm_806224CC(arg0, aaD->unk0);
+    }
+}
 
 void func_global_asm_8061C518(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 argA) {
     f32 sp3C;
@@ -250,7 +324,7 @@ void func_global_asm_8061C518(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 a
     D_global_asm_8076A0B3 = 0;
     D_global_asm_8076A0B1 |= 0x10;
     arg1->animation_state->scale[1] = D_global_asm_807574E0;
-    func_global_asm_8061C6A8(arg0, arg1, (s32) arg2, (s32) arg3, (s32) arg4, (s32) arg5, (s32) arg6, (s32) arg7, (s32) arg8, (s32) arg9, argA);
+    func_global_asm_8061C6A8(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9, argA);
     arg1->animation_state->scale[1] = sp3C;
     global_properties_bitfield &= ~1;
 }
@@ -261,7 +335,19 @@ void func_global_asm_8061C600(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 a
     }
     D_global_asm_8076A0B3 = 0;
     D_global_asm_8076A0B1 |= 0x10;
-    func_global_asm_8061C464(arg0, arg1, (s32) arg2, (s32) arg3, (s32) arg4, (s32) arg5, (s32) arg6, (s32) arg7, (s32) arg8, (s32) arg9, argA);
+    func_global_asm_8061C464(
+        arg0,
+        arg1,
+        arg2,
+        arg3,
+        arg4,
+        arg5,
+        arg6,
+        arg7,
+        arg8,
+        arg9,
+        argA
+    );
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C6A8.s")
@@ -390,29 +476,28 @@ void func_global_asm_8061CC30(void) {
     D_global_asm_807476EC = 1;
 }
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/playCutscene.s")
 
 /*
-s32 playCutscene(Actor *arg0, s16 arg1, s32 arg2) {
+s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
     u16 sp26;
     s32 is_global;
-    s32 temp_a2;
 
     sp26 = 0;
     if ((is_cutscene_active == 1) && (D_807F5CF4 & 0x80)) {
         return 0;
     }
-    is_global = (u8) arg2 & 4;
-    temp_a2 = (u8) arg2;
-    if ((is_global != 0) && (current_map != MAP_TEST_MAP)) {
+    is_global = arg2 & 4;
+    if ((is_global) && (current_map != MAP_TEST_MAP)) {
         D_global_asm_807476FC = &D_807F5B10[1];
     } else {
         D_global_asm_807476FC = &D_807F5B10[0];
     }
-    if (spawnActor(ACTOR_CUTSCENE_CONTROLLER, 0) != 0) {
+    if (spawnActor(ACTOR_CUTSCENE_CONTROLLER, 0)) {
         D_807F5D0C = last_spawned_actor;
         last_spawned_actor->noclip_byte = 1;
-        if ((is_global == 0) && (D_global_asm_807FBB64 & 1)) {
+        if ((!is_global) && (D_global_asm_807FBB64 & 1)) {
             func_boss_80029140(&arg1);
         }
         if (arg0 != NULL) {
@@ -421,14 +506,14 @@ s32 playCutscene(Actor *arg0, s16 arg1, s32 arg2) {
             D_807F5CE8 = character_change_array->player_pointer;
         }
         is_cutscene_active = 1;
-        if (!(temp_a2 & 8)) {
+        if (!(arg2 & 8)) {
             D_global_asm_8076A0B1 |= 0x10;
             D_global_asm_8076A0B3 = 0;
         }
         D_global_asm_807476D0 = osGetTime();
         D_global_asm_807476F4 = arg1;
         D_global_asm_807476F8 = arg1;
-        D_807F5CF4 = (u8) arg2;
+        D_807F5CF4 = arg2;
         D_807F5CFA = 0;
         D_global_asm_807476D8 = 0;
         D_global_asm_807476E4 = 0;
@@ -456,16 +541,23 @@ s32 playCutscene(Actor *arg0, s16 arg1, s32 arg2) {
             func_global_asm_806119F0(0x8E32B6F7U);
             D_807F5CE0 = osGetTime();
             D_807F5D14 = 0;
-        } else if (isIntroStoryPlaying() == 0) {
+        } else if (!isIntroStoryPlaying()) {
             D_807F5CE0 = 0;
         }
-        return sp26;
     }
-    return 0;
+    return sp26;
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061CF24.s")
+void func_global_asm_8061CF24(s16 *arg0, s16 *arg1, s16 *arg2, s16 *arg3) {
+    if (D_807F5CF4 & 0x20) {
+        *arg0 = D_807F5D04;
+        *arg1 = D_807F5D06;
+        *arg2 = D_807F5D08;
+        *arg3 = D_807F5D0A;
+        D_807F5CF4 &= 0xFFDF;
+    }
+}
 
 void func_global_asm_8061CF80(s16 arg0) {
     D_807F5CEE = arg0;
@@ -567,7 +659,13 @@ void func_global_asm_8061D4E4(Actor *arg0) {
 // heavy use of rodata, don't bother until it's migrated
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D6A8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D898.s")
+void func_global_asm_8061D898(void) {
+    D_807F5D0C->unk168 = 0;
+    D_807F5D0C->unk160 = 0.0;
+    D_807F5CF2 = D_global_asm_807476FC->camera_bank[D_global_asm_807476F4].point_array[D_807F5CF0];
+    D_807F5CEC = D_global_asm_807476FC->camera_bank[D_global_asm_807476F4].length_array[D_807F5CF0];
+    func_global_asm_806F3DB0();
+}
 
 void func_global_asm_8061D934(u8 arg0) {
     D_global_asm_807476F4 = arg0;
@@ -575,8 +673,21 @@ void func_global_asm_8061D934(u8 arg0) {
     func_global_asm_8061D898();
 }
 
-// hmm, causes fiddly signature for func_global_asm_8061D898
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D968.s")
+extern u16 D_807F5CF8;
+
+void func_global_asm_8061D968(u8 arg0, u8 arg1) {
+    if (D_global_asm_807476D8) {
+        if (--D_global_asm_807476D8) {
+            D_807F5CF0 = D_807F5CF8;
+            func_global_asm_8061D898();
+        }
+    } else {
+        D_global_asm_807476D8 = arg1;
+        D_807F5CF8 = arg0;
+        D_807F5CF0 = arg0;
+        func_global_asm_8061D898();
+    }
+}
 
 void func_global_asm_8061D9EC(s32 arg0, s32 arg1, s32 arg2) {
     loading_zone_transition_type = 0;
@@ -994,7 +1105,16 @@ void func_global_asm_80625994(Actor *arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806259FC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80625A80.s")
+extern s16 D_807F5CD2;
+extern s16 D_807F5CD4;
+extern s16 D_807F5CD8;
+
+s16 func_global_asm_80625A80(s32 lockRegionIndex) {
+    CutsceneBank_LockRegion *lockRegion;
+
+    lockRegion = &D_global_asm_807476FC->lock_regions[lockRegionIndex];
+    return ((lockRegion->unk10 - D_807F5CD2) / 400) + (((lockRegion->unk14 - D_807F5CD4) / 400) * D_807F5CD8);
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80625B3C.s")
 

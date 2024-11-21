@@ -314,7 +314,7 @@ void func_minecart_80026DA8(void) {
     if (a11C->control_state == 6) {
         if (current_actor_pointer->unk15F != 0) {
             current_actor_pointer->unk15F = current_actor_pointer->unk15F - 0xC;
-            func_global_asm_8061C464(extra_player_info_pointer->unk104, extra_player_info_pointer->vehicle_actor_pointer, 4, (s32) (s16) ((s32) (current_actor_pointer->unk15F << 0xC) / 360), 0x64, 0, 5, 0x23, 0x14, 0, 0.2f);
+            func_global_asm_8061C464(extra_player_info_pointer->unk104, extra_player_info_pointer->vehicle_actor_pointer, 4, ((current_actor_pointer->unk15F << 0xC) / 360), 0x64, 0, 5, 0x23, 0x14, 0, 0.2f);
         }
     }
     if (a11C->control_state != 6) {

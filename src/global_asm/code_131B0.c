@@ -270,25 +270,8 @@ void func_global_asm_8060F1D0(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {
     }
 }
 
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F208.s")
-
-extern OSTime D_global_asm_807F04D0;
-
-/*
-void func_global_asm_8060F208(Struct131B0_2 *arg0) {
-    if (arg0->unk274 != 0) {
-        func_global_asm_8060FA5C();
-    } else {
-        D_global_asm_807F04D0 = 0;
-        func_global_asm_8060F960(arg0, 0);
-    }
-}
-*/
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F254.s")
-
-// 64 bit stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F54C.s")
 
 s32 func_global_asm_8060F854(Struct131B0_2 *, Struct131B0_2_unk274 *);         
 extern OSTime D_807F04C0;
@@ -301,7 +284,22 @@ extern OSTime D_807F0510;
 extern s8 D_global_asm_80746828;
 
 /*
-Close
+void func_global_asm_8060F208(Struct131B0_2 *arg0) {
+    if (arg0->unk274 != NULL) {
+        func_global_asm_8060FA5C();
+    } else {
+        D_807F04D0 = 0;
+        func_global_asm_8060F960(arg0, 0);
+    }
+}
+*/
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F254.s")
+
+// 64 bit stuff, close
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F54C.s")
+
+/*
 void func_global_asm_8060F54C(Struct131B0_2 *arg0) {
     Struct131B0_2_unk274 *temp_s0;
     Struct131B0_2_unk268 *temp_v0;
