@@ -181,6 +181,7 @@ void func_global_asm_806F50C8(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8
     *var_v1 = temp_v0_2;
 }
 
+// looks like it loops through linked lists and frees them
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F5270.s")
 
 typedef struct globalASMStruct36 GlobalASMStruct36;

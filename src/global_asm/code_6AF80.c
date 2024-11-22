@@ -1366,10 +1366,8 @@ void func_global_asm_8066B4AC(s32 arg0, s32 arg1, s32 arg2) {
 /*
 // TODO: Pretty close, s16/u16 and stack nonsense
 s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3) {
-    s16 var_t0;
-    s32 sp40;
-    s32 sp3C;
-    s32 sp38;
+    s32 var_t0;
+    u64 sp38;
     s32 sp2C;
     s32 temp_v0;
     s32 *temp_t1;
@@ -1380,7 +1378,7 @@ s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3) {
     if (temp_v0 & 0x80000000) {
         sp2C = 8;
         func_global_asm_8060B140(D_dk64_boot_8000DDCC + (temp_v0 & 0x7FFFFFFF), &sp38, &sp2C, 0, 0, 0, 0);
-        var_t0 = __ull_rshift(sp38, sp3C, 0, 0x30);
+        var_t0 = sp38 >> 0x30;
         func_global_asm_8066B4D4(arg0, var_t0, arg2, arg3);
     } else {
         *arg2 = D_dk64_boot_8000DDCC + temp_v0;

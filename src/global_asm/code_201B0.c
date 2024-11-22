@@ -844,7 +844,23 @@ void func_global_asm_8061F164(AAD_8061F164 *aaD, s16 arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F18C.s")
+typedef struct {
+    Actor *unk0;
+} AAD_8061F18C;
+
+void func_global_asm_8061F18C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3) {
+    AAD_8061F18C *aaD;
+    s16 sp2A;
+    s16 pad;
+    s16 sp26;
+    f32 d;
+
+    aaD = arg0->additional_actor_data;
+    sp2A = func_global_asm_80665DE0(aaD->unk0->x_position, aaD->unk0->z_position, arg1, arg3);
+    sp26 = func_global_asm_806CC14C(sp2A, func_global_asm_80665DE0(aaD->unk0->x_position, aaD->unk0->z_position, arg0->unk88, arg0->unk90));
+    d = sqrtf(((arg1 - arg0->unk88) * (arg1 - arg0->unk88)) + ((arg2 - arg0->unk8C) * (arg2 - arg0->unk8C)) + ((arg3 - arg0->unk90) * (arg3 - arg0->unk90)));
+    func_global_asm_8061F164(aaD, d * MAX(1.0, sp26 * 0.0009765625));
+}
 
 void func_global_asm_8061F2B8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 *arg9, f32 *argA, f32 *argB) {
     f32 d2;
@@ -1116,7 +1132,27 @@ s16 func_global_asm_80625A80(s32 lockRegionIndex) {
     return ((lockRegion->unk10 - D_807F5CD2) / 400) + (((lockRegion->unk14 - D_807F5CD4) / 400) * D_807F5CD8);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80625B3C.s")
+void func_global_asm_80625B3C(s16 *arg0, s16 *arg1, s16 *arg2) {
+    s16 i;
+
+    *arg0 = 0x7FFF;
+    *arg2 = 0x7FFF;
+    *arg1 = -0x8000;
+    for (i = 0; i < D_global_asm_807476FC->lock_count; i++) {
+        if (D_global_asm_807476FC->lock_regions[i].unk10 < *arg0) {
+            *arg0 = D_global_asm_807476FC->lock_regions[i].unk10;
+        }
+        if (*arg1 < D_global_asm_807476FC->lock_regions[i].unk10) {
+            *arg1 = D_global_asm_807476FC->lock_regions[i].unk10;
+        }
+        if (D_global_asm_807476FC->lock_regions[i].unk14 < *arg2) {
+            *arg2 = D_global_asm_807476FC->lock_regions[i].unk14;
+        }
+    }
+    *arg0 -= 200;
+    *arg1 += 200;
+    *arg2 -= 200;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80625C30.s")
 

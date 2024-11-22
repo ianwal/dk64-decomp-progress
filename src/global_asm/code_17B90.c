@@ -16,7 +16,7 @@ extern u16 *D_807FBB54;
 // Displaylist stuff?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80612E90.s")
 
-// Displaylist stuff
+// Displaylist stuff, searching a DL for 0xD9 (G_GEOMETRYMODE) commands
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806130A4.s")
 
 void func_global_asm_80613194(Actor *actor, s16 arg1) {

@@ -9,7 +9,7 @@ extern void *D_global_asm_807F5E60;
 extern s8 D_global_asm_807F5FEC;
 extern s32 D_global_asm_807F6C28;
 
-// rodata, close
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062A850.s")
 
 /*

@@ -228,7 +228,6 @@ s16 func_global_asm_806FD7A8(s16 arg0, u8 arg1) {
 }
 */
 
-
 u8 func_global_asm_806FD894(s16 arg0) {
     if (arg0 & 0x80) {
         arg0 ^= 0x80;

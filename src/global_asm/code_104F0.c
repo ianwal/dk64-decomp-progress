@@ -464,9 +464,9 @@ void func_global_asm_8060C758(u8 fileIndex, s32 arg1) {
 
 void func_global_asm_8060C830(u8 fileIndex, s32 arg1) {
     current_file = fileIndex;
-    func_global_asm_8060C758(fileIndex, 0);
+    func_global_asm_8060C758(fileIndex, FALSE);
     if (func_global_asm_8060C6B8(0xF, 0, 0, 3) == fileIndex) {
-        func_global_asm_8060C758(3, 0);
+        func_global_asm_8060C758(3, FALSE);
     }
     if (arg1) {
         func_global_asm_8060B8F8(1);
@@ -631,7 +631,7 @@ void func_global_asm_8060DC3C(u8 fileIndex, s32 arg1) {
     current_file = fileIndex;
     current_character_index[0] = 0; // DK
     if (func_global_asm_8060C6B8(0xD, 0, 0, fileIndex) == 0) {
-        func_global_asm_8060C758(fileIndex, 0);
+        func_global_asm_8060C758(fileIndex, FALSE);
     }
     if (arg1 != 0) {
         func_global_asm_8060BA14();

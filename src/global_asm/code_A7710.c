@@ -4,7 +4,6 @@
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_global_asm_806A2A10.s")
 
-/*
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -12,18 +11,19 @@ typedef struct {
     s32 unkC;
 } AAD_global_asm_806A2A10;
 
+/*
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2) {
     spawnActor(ACTOR_TIMER_CONTROLLER, 0);
-    if ((arg0 & 0x8000) != 0) {
-        last_spawned_actor->unk15F = 0xB;
+    if (arg0 & 0x8000) {
         arg2--;
+        last_spawned_actor->unk15F = 0xB;
     } else {
         last_spawned_actor->unk15F = 6;
     }
     current_actor_pointer->unk11C = last_spawned_actor;
     extra_player_info_pointer->unk1A8 = last_spawned_actor;
     ((AAD_global_asm_806A2A10*)last_spawned_actor->additional_data_pointer)->unkC = arg2;
-    last_spawned_actor->x_position = (s16) (arg0 & 0x7FFF);
+    last_spawned_actor->x_position = (s16)(arg0 & 0x7FFF);
     last_spawned_actor->y_position = arg1;
     last_spawned_actor->control_state = 1;
     last_spawned_actor->shadow_opacity = 0;
