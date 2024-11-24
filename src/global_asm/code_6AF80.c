@@ -327,23 +327,26 @@ u8 func_global_asm_80667174(void) {
     return D_global_asm_807F94B5;
 }
 
-// close
+// close, doable, float regalloc (f0,f8)(f8,f10)(f10,f16)
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_80667180.s")
 
-extern s8 D_global_asm_807F94B6;
+extern s8 D_807F94B6;
 
 /*
 u8 func_global_asm_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3) {
     u8 sp3F;
     f32 sp38;
     f32 sp34;
-    u8 temp_v1;
     s32 var_v1;
+    u8 pad;
+    u8 temp_v1;
 
     sp38 = *arg2;
-    sp3F = func_global_asm_806679BC(arg0, arg1, &sp38);
+    // TODO: These typecasts fix a regalloc, is there a better method?
+    sp3F = (s8)(u8)(s8)func_global_asm_806679BC(arg0, arg1, &sp38);
     sp34 = *arg2;
     temp_v1 = (func_global_asm_806672B8(arg0, arg1, &sp34, arg3) * 2) + sp3F;
+    pad = 1;
     switch (temp_v1) {
         case 0:
             break;
@@ -352,12 +355,12 @@ u8 func_global_asm_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3) {
             break;
         case 2:
             *arg2 = sp34;
-            D_global_asm_807F94B6 = 1;
+            D_807F94B6 = pad;
             break;
         case 3:
-            if (func_global_asm_80666FC8(sp38, sp34, *arg2 + 4.0, 0) != 0) {
+            if (func_global_asm_80666FC8(sp38, sp34, *arg2 + 4.0, 0)) {
                 *arg2 = sp34;
-                D_global_asm_807F94B6 = 1;
+                D_807F94B6 = pad;
             } else {
                 *arg2 = sp38;
             }

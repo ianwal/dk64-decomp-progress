@@ -520,7 +520,7 @@ u32 func_global_asm_805FC98C(void) {
     if (global_properties_bitfield & 2) {
         temp_t8 = temp_t8 - currentTime + D_global_asm_807445C0;
     }
-    return D_global_asm_80750AB0 + (u32)__ull_div(__ull_div(__ll_mul(temp_t8, 0x40), 3000), 1000000);
+    return D_global_asm_80750AB0 + (u32)(temp_t8 * 64 / 3000 / 1000000);
 }
 
 u8 func_global_asm_805FCA64(void) { // getCutsceneBarState()

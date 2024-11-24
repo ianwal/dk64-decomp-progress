@@ -50,6 +50,7 @@ void func_global_asm_8064F804(OM2_unk78 *arg0) {
     }
 }
 
+// looks doable, loops through 200 size 0x14 structs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064F84C.s")
 
 void func_global_asm_8064F954(s32 arg0) {

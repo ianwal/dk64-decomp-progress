@@ -675,6 +675,7 @@ void func_global_asm_8072DC7C(u8 arg0) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072DCF4.s")
 
 /*

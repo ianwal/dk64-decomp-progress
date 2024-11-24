@@ -158,16 +158,13 @@ void func_multiplayer_800242FC(void *aaD) {
 }
 
 void func_multiplayer_800243C8(void) {
-    s32 pad;
-    u64 temp_ret_3;
-    u64 temp;
     AAD_multiplayer_800243C8 *aaD;
+    OSTime temp_ret_3;
 
     aaD = current_actor_pointer->additional_actor_data;
-    temp = __ll_mul(osGetTime() - aaD->unk0, 0x40);
-    temp_ret_3 = __ull_div(temp, 3000);
+    temp_ret_3 = ((osGetTime() - aaD->unk0) * 64) / 3000;
     if (!(global_properties_bitfield & 2)) {
-        aaD->unk8 = aaD->unkC - __ull_div(temp_ret_3, 1000000);
+        aaD->unk8 = aaD->unkC - temp_ret_3 / 1000000;
     }
     if (!(aaD->unk8 > 0)) {
         aaD->unk8 = 0;

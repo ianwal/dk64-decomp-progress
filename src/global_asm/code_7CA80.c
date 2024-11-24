@@ -455,7 +455,7 @@ void func_global_asm_80678824(void) {
 }
 */
 
-// Jumptable, can auto decompile for some reason...
+// Jumptable, can auto decompile for some reason... Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_8067889C.s")
 
 // Jumptable, close

@@ -174,11 +174,8 @@ u8 func_global_asm_80710174(Struct8071006C_arg0 *arg0) {
     return (arg0->unkC > 240.0f || arg0->unkB1 < 0xA);
 }
 
-// TODO: close, float thing needs to be broken up I think
+// TODO: close, float thing needs to be broken up I think, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807102AC.s")
-
-extern f64 D_global_asm_8075E4E8;
-extern f32 D_global_asm_807FD9EC;
 
 /*
 u8 func_global_asm_807102AC(Struct8071006C_arg0 *arg0) {
@@ -193,7 +190,7 @@ u8 func_global_asm_807102AC(Struct8071006C_arg0 *arg0) {
     temp_v0 = arg0->unkB0;
     arg0->unk20 += 0x32;
     arg0->unkB0 = temp_v0 + 1;
-    arg0->unkC += (((10.0f - (((1.0 / (arg0->unk10 * 3.0)) * 8.0) - 10.0f)) + 10.0f) * D_global_asm_8075E4E8);
+    arg0->unkC += (((10.0f - (((1.0 / (arg0->unk10 * 3.0)) * 8.0) - 10.0f)) + 10.0f) * 0.07);
     if (temp_v0 >= 0x6F) {
         if (arg0->unkB1 >= 0xA) {
             arg0->unkB1 -= 0xA;

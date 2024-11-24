@@ -1554,6 +1554,7 @@ void func_global_asm_806398E4(s32 objectModel2Index, u8 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639968.s")
 
+// Doable, needs some structs
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639C04.s")
 
 typedef struct {

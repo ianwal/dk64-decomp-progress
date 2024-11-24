@@ -301,8 +301,26 @@ void func_global_asm_80614D48(Actor *arg0, f32 arg1, f32 arg2) {
     temp_v0->unk34 = 0.0f;
 }
 
-// function pointer array, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614D90.s")
+extern s32 D_807F5AF4;
+extern s32 (*D_global_asm_80746BEC[])(Actor*);
+
+void func_global_asm_80614D90(Actor *arg0) {
+    ActorAnimationState *aaS;
+
+    aaS = arg0->animation_state;
+    if (aaS->unk68 != 0) {
+        D_807F5AF4 = 1;
+        D_807F5AF0 = aaS->unk6C;
+        while ((aaS->unk78 == 0) && (D_807F5AF4 != 0)) {
+            D_807F5AF4 = D_global_asm_80746BEC[D_807F5AF0[0]](arg0);
+        }
+        aaS->unk6C = D_807F5AF0;
+        if (aaS->unk70 != NULL) {
+            D_807F5AF0 = aaS->unk74;
+            aaS->unk70(arg0);
+        }
+    }
+}
 
 void playAnimation(Actor *arg0, s32 arg1) {
     s32 offset = (arg1 * 7) + (arg0->unk58 - 2);

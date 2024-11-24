@@ -929,7 +929,7 @@ u8 func_global_asm_80670FA4(Actor *arg0, s16 *arg1, s16 *arg2) {
 /*
 extern s16 D_global_asm_807FB544;
 extern s8 D_global_asm_807FB546;
-extern s32 D_global_asm_807FB5D0;
+extern s32 D_807FB5D0;
 
 void func_global_asm_806710E0(void *arg0, ? arg1, ? arg2, ? arg3) {
     s16 sp36;
@@ -947,12 +947,12 @@ void func_global_asm_806710E0(void *arg0, ? arg1, ? arg2, ? arg3) {
         func_global_asm_806CC14C((arg0->unk48 + 0x800) & 0xFFF, extra_player_info_pointer->unkEA);
         temp_v1 = D_global_asm_807FB540->ledge_info_pointer;
         func_global_asm_806744A8(arg0, temp_v1->unk0, temp_v1->unk4, temp_v1->unk8, temp_v1->unkC);
-        temp_t7 = D_global_asm_807FB5D0;
+        temp_t7 = D_807FB5D0;
         sp28 = temp_t7;
         sp30 = func_global_asm_80612794(D_global_asm_807FB544) * 20.0f;
         temp_v1_2 = D_global_asm_807FB540->ledge_info_pointer;
         func_global_asm_806744A8(arg0, temp_v1_2->unk0 + sp30, temp_v1_2->unk4, temp_v1_2->unk8 + (func_global_asm_80612790(D_global_asm_807FB544) * 20.0f), temp_v1_2->unkC);
-        if ((temp_t7 - 2) < D_global_asm_807FB5D0) {
+        if ((temp_t7 - 2) < D_807FB5D0) {
             D_global_asm_807FB546 = 0;
         }
     }
@@ -1013,9 +1013,9 @@ void func_global_asm_80671260(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_806713E4.s")
 
-extern s32 D_global_asm_807FB5C4;
-extern s32 D_global_asm_807FB5CC;
-extern s32 D_global_asm_807FB5D0;
+extern s32 D_807FB5C4;
+extern s32 D_807FB5CC;
+extern s32 D_807FB5D0;
 
 s32 func_global_asm_806717FC(Actor *arg0);
 
@@ -1030,17 +1030,17 @@ void func_global_asm_806713E4(Actor *arg0, u8 arg1) {
     f32 temp_f14;
     f32 var_f10;
 
-    if (D_global_asm_807FB5D0 < func_global_asm_806717FC(arg0)) {
+    if (D_807FB5D0 < func_global_asm_806717FC(arg0)) {
         ledgeInfo = arg0->ledge_info_pointer;
         func_global_asm_80671528(arg0, &sp24, &sp28, &sp2C, arg1);
-        temp_f12 = D_global_asm_807FB5C4 / 8.0f;
-        temp_f14 = D_global_asm_807FB5CC / 8.0f;
+        temp_f12 = D_807FB5C4 / 8.0f;
+        temp_f14 = D_807FB5CC / 8.0f;
         if (D_global_asm_807FB548 != 0) {
             temp_f0 = func_global_asm_806717FC(arg0) / 8.0f;
             var_f10 = sp2C * temp_f0;
             sp24 *= temp_f0;
         } else {
-            temp_f0 = (D_global_asm_807FB5D0 + 6) / 8.0f;
+            temp_f0 = (D_807FB5D0 + 6) / 8.0f;
             var_f10 = sp2C * temp_f0;
             sp24 *= temp_f0;
         }

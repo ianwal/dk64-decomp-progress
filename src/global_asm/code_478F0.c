@@ -920,13 +920,15 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.5f, x, y - 70, z);
 }
 
-// Close
+// Close, regalloc, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80647610.s")
 
 extern SpriteData D_global_asm_80720DE0; // TODO: Datatype
 
 /*
 void func_global_asm_80647610(s32 **arg0, s32 arg1, s16 arg2, s16 arg3) {
+    s32 pad;
+    s32 pad2;
     s32 sp2C;
     s32 sp28;
     s32 sp24;
@@ -2139,6 +2141,7 @@ void func_global_asm_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064CD3C.s")
 
+// close, doable, datatype and stack issues
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064D0C4.s")
 
 /*

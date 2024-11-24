@@ -1018,12 +1018,13 @@ void func_global_asm_806225C0(Actor *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806225D4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806227F0.s")
-
 typedef struct {
     Actor *unk0;
     Actor *unk4;
-    u8 unk8[0x12 - 0x8];
+    s32 unk8;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
     s16 unk12;
     s16 unk14;
     u8 unk16[0xAC - 0x16];
@@ -1031,6 +1032,21 @@ typedef struct {
     s16 unkB0;
     s16 unkB2;
 } AAD_806228BC;
+
+typedef struct {
+    u8 unk0[0x44 - 0x0];
+    AAD_806228BC unk44; // TODO: Is this the right struct?
+} Struct806227F0_arg0;
+
+void func_global_asm_806227F0(Struct806227F0_arg0 *arg0, f32 *arg1, f32 *arg2, f32 *arg3) {
+    AAD_806228BC *aaD = &arg0->unk44;
+    s16 angle;
+
+    angle = (aaD->unk0->y_rotation + aaD->unkC) & 0xFFF;
+    *arg1 = (func_global_asm_80612794(angle) * aaD->unkE) + aaD->unk4->x_position;
+    *arg3 = (func_global_asm_80612790(angle) * aaD->unkE) + aaD->unk4->z_position;
+    *arg2 = aaD->unk4->y_position + aaD->unk12;
+}
 
 void func_global_asm_806228BC(Actor *actor, f32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg5, f32 *arg6) {
     AAD_806228BC *aaD;

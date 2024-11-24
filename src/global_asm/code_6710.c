@@ -644,6 +644,7 @@ void func_global_asm_8060866C(Actor *arg0, s16 arg1, u8 arg2, f32 arg3, u8 arg4,
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_8060A1B0.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_8060A398.s")
 
 void func_global_asm_8060A4D0(s32 arg0, f32 arg1) {
@@ -696,4 +697,5 @@ void func_global_asm_8060A670(s32 arg0, u8 arg1) {
     func_global_asm_8060A1B0(arg0, arg1, D_global_asm_80770588);
 }
 
+// rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_8060A6A0.s")

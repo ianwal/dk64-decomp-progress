@@ -462,7 +462,7 @@ extern void *D_global_asm_807FDB04;
 extern void *D_global_asm_807FDB08;
 
 void func_global_asm_80715908(void *arg0) {
-    ? sp3F;
+    u8 sp3F;
     s32 var_s1;
     void *temp_a0;
     void *temp_s0;
