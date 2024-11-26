@@ -286,6 +286,8 @@ typedef struct {
     AAD_8061C464_unk44 unk44; // This is really weird, the function below uses a pointer to the substruct
     u8 unk48[0xF3 - 0x60];
     u8 unkF3;
+    u8 unkF4[0xFB - 0xF4];
+    u8 unkFB;
 } AAD_8061C464;
 
 void func_global_asm_8061C464(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 argA) {
@@ -350,7 +352,42 @@ void func_global_asm_8061C600(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 a
     );
 }
 
+// doable, close, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C6A8.s")
+
+extern f64 D_global_asm_807574E8;
+
+/*
+void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6, s16 arg7, s16 arg8, s16 arg9, f32 arg10) {
+    f32 scale;
+    AAD_8061C464_unk44 *aaD44;
+    AAD_8061C464 *aaD;
+
+    aaD = arg0->additional_actor_data;
+    if (arg1 != NULL) {
+        aaD44 = &aaD->unk44;
+        aaD44->unk0 = arg1;
+        aaD44->unk4 = arg1;
+        scale = arg1->animation_state->scale_y / D_global_asm_807574E8;
+        aaD44->unk8 = arg3;
+        aaD44->unkA = arg4 * scale;
+        aaD44->unkC = arg5;
+        aaD44->unkE = arg6 * scale;
+        aaD44->unk10 = arg7 * scale;
+        aaD44->unk12 = arg8 * scale;
+        aaD44->unk14 = arg9;
+        aaD44->unk18 = arg10;
+        if (aaD->unkF3 == 3) {
+            func_global_asm_806EAB44(player_pointer, 0);
+        }
+        aaD->unkF3 = arg2;
+        global_properties_bitfield |= 0x2000;
+        func_global_asm_8061B5C4(aaD->unkFB);
+    } else {
+        func_global_asm_806224CC(arg0, aaD->unk0);
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061C804.s")
 
@@ -1283,7 +1320,35 @@ void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg5
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80627490.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062754C.s")
+extern f32 D_global_asm_80757F54;
+
+void func_global_asm_8062754C(f32 arg0) {
+    s16 playerIndex;
+
+    func_global_asm_8061F2B8(
+        character_change_array->look_at_at_x,
+        character_change_array->look_at_at_y,
+        character_change_array->look_at_at_z,
+        517.0f,
+        312.0f,
+        346.0f,
+        D_global_asm_80757F54,
+        312.0f,
+        494.0f,
+        &character_change_array->look_at_eye_x,
+        &character_change_array->look_at_eye_y,
+        &character_change_array->look_at_eye_z
+    );
+    playerIndex = 0;
+    character_change_array->look_at_eye_x = ((character_change_array->look_at_eye_x - character_change_array->look_at_at_x) * arg0) + character_change_array->look_at_at_x;
+    character_change_array->look_at_eye_y = ((character_change_array->look_at_eye_y - character_change_array->look_at_at_y) * arg0) + character_change_array->look_at_at_y;
+    character_change_array->look_at_eye_z = ((character_change_array->look_at_eye_z - character_change_array->look_at_at_z) * arg0) + character_change_array->look_at_at_z;
+    while (++playerIndex < cc_number_of_players) {
+        character_change_array[playerIndex].look_at_eye_x = character_change_array->look_at_eye_x;
+        character_change_array[playerIndex].look_at_eye_y = character_change_array->look_at_eye_y;
+        character_change_array[playerIndex].look_at_eye_z = character_change_array->look_at_eye_z;
+    }
+}
 
 // rodata, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806276AC.s")

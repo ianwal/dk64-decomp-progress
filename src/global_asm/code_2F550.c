@@ -1278,7 +1278,7 @@ Gfx *func_global_asm_8062EDA8(Gfx *dl, u8 arg1) {
     return dl;
 }
 
-// close
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062EE48.s")
 
 /*
