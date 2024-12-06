@@ -4,8 +4,8 @@
 typedef struct {
     s16 unk0;
     s16 unk2;
-    void *unk4;
-    void *unk8;
+    s16 *unk4;
+    s16 *unk8;
     u8 unkC[0x810 - 0xC];
     u8 unk810[1]; // TODO: How many elements?
 } AAD_critter_8002904C;
@@ -39,7 +39,37 @@ void func_critter_80028840(void) {
     D_critter_8002A1CC = 1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_800288A8.s")
+s16 func_critter_800288A8(AAD_critter_8002904C *arg0, u8 *arg1, s16 arg2) {
+    s16 temp_f16;
+    s8 *temp_v0;
+    s16 sp94[14];
+    s16 sp70[18];
+    u8 sp4C[0x24];
+    u8 count;
+    s16 i;
+
+    strcpy(&sp4C, arg1);
+    temp_v0 = func_dk64_boot_80002DE4(&sp4C, " ");
+    temp_f16 = getCenterOfString(6, temp_v0) * 0.5 * 4.0;
+    count = 0;
+    sp70[count] = arg2;
+    sp94[count++] = arg2 + temp_f16;
+    arg2 += (temp_f16 * 2) + 0x14;
+    while (temp_v0 = func_dk64_boot_80002DE4(NULL, " "), temp_v0 != NULL) {
+        temp_f16 = getCenterOfString(6, temp_v0) * 0.5 * 4.0;
+        sp70[count] = arg2;
+        sp94[count++] = arg2 + temp_f16;
+        arg2 += (temp_f16 * 2) + 0x14;
+    }
+    arg0->unk2 = count;
+    arg0->unk8 = malloc(count * 2);
+    arg0->unk4 = malloc(count * 2);
+    for (i = 0; i < count; i++) {
+        arg0->unk4[i] = sp70[i];
+        arg0->unk8[i] = sp94[i];
+    }
+    return sp94[0];
+}
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_80028A9C.s")
@@ -66,7 +96,6 @@ Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
 // TODO: Very close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_80028EE8.s")
 
-s32 func_critter_800288A8(void *, s32, s16);
 extern s16 D_global_asm_80744490;
 
 /*

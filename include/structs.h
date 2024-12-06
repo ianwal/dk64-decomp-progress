@@ -3246,4 +3246,14 @@ typedef struct {
     f32 unk8;
 } RaceStruct3;
 
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+} Struct80750948;
+
 #endif

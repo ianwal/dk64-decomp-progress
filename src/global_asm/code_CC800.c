@@ -8,15 +8,6 @@ typedef struct {
     s8 unk8;
 } AppleAAD;
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-    s32 unk8;
-} Struct80750948;
-
 extern Struct80750948 D_global_asm_80750948[];
 extern u8 D_global_asm_80750AB4;
 extern u8 D_global_asm_80750AB8;

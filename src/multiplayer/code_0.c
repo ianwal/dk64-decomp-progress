@@ -324,6 +324,8 @@ typedef struct MultiplayerStruct3 {
     s16 unk0;
     s16 unk2;
     s16 unk4;
+    s16 unk6;
+    s16 unk8;
 } MultiplayerStruct3;
 
 typedef struct {
@@ -459,6 +461,75 @@ void func_multiplayer_80025654(MultiplayerStruct4 *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025794.s")
 
+/*
+Progress..
+void func_multiplayer_80025794(void) {
+    s32 i, j, k;
+    f32 temp_f20;
+    f32 temp_f20_2;
+    f32 temp_f22;
+    f32 temp_f26;
+    f32 temp_f26_2;
+    f32 temp_f28;
+    f32 temp_f28_2;
+    f32 var_f22;
+    f32 var_f24;
+    s16 temp_s4;
+    s16 var_s0;
+    s32 temp_s3;
+    s32 temp_t8;
+    s32 var_s7;
+    MultiplayerStruct3 *temp_s0;
+    Struct80025F84 *temp_v0;
+    s64 temp_double;
+
+    temp_v0 = func_multiplayer_80025378();
+    temp_s0 = temp_v0->unk8;
+    func_multiplayer_800243C8();
+    if ((gameIsInAdventureMode() == 0) || (global_properties_bitfield & 2)) {
+        return;
+    }
+    for (i = 0; i < temp_v0->unk4; i++) {
+        if (temp_s0->unk8) {
+            temp_s0->unk8--;
+        } else {
+            if (temp_s0->unk6 == 0) {
+                var_s7 = 1;
+            } else {
+                var_s7 = (((rand() >> 0xF) % 32767) % 3) + 1;
+            }
+            for (j = 0; j < var_s7; j++) {
+                temp_s3 = (((rand() >> 0xF) % 32767) % 3) + 1;
+                temp_s4 = func_multiplayer_800253C8();
+                temp_f22 = ((func_global_asm_806119FC() * 0.8) + 0.2) * temp_s0->unk6;
+                temp_t8 = (rand() >> 0xF) % 4096;
+                temp_f20 = temp_s0->unk2 - 0x17;
+                temp_f26 = temp_s0->unk0;
+                temp_f28 = temp_s0->unk4;
+                temp_f26_2 = temp_f26 + (temp_f22 * func_global_asm_80612794(temp_t8));
+                temp_f28_2 = temp_f28 + (temp_f22 * func_global_asm_80612790(temp_t8));
+                if (temp_s3 >= 2) {
+                    var_f22 = 15.0f;
+                    var_s0 = (rand() >> 0xF) % 4096;
+                    var_f24 = 4096.0f / (f32) temp_s3;
+                } else {
+                    var_f22 = 0.0f;
+                    var_f24 = 0.0f;
+                    var_s0 = 0;
+                }
+                for (k = 0; k < temp_s3; k++) {
+                    temp_f20_2 = (func_global_asm_80612794(var_s0) * var_f22) + temp_f26_2;
+                    func_global_asm_806F5F2C(0x7A, temp_s4, temp_f20_2, temp_f20, ((func_global_asm_80612790(var_s0) * var_f22) + temp_f28_2));
+                    var_s0 = (s32) ((f32) var_s0 + var_f24) & 0xFFF;
+                }
+            }
+            temp_s0->unk8 = func_multiplayer_800253C8();
+        }
+        temp_s0++;
+    }
+}
+*/
+
 void func_multiplayer_80025B48(Struct80025B48 *arg0) {
     s32 var_a2;
 
@@ -592,6 +663,217 @@ void func_multiplayer_80025FFC(Struct80025FFC *arg0) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80026094.s")
+
+typedef struct MultiplayerActor318AAD_Sub50 {
+    void *unk0[4];
+} MultiplayerActor318AAD_Sub50;
+
+typedef struct MultiplayerActor318AAD {
+    OSTime unk0;
+    u8 pad8[0xC - 0x8];
+    s32 unkC;
+    s32 unk10;
+    u8 pad14[0x20 - 0x14];
+    Struct80750948 *unk20[4];
+    Mtx *unk30;
+    s32 unk34;
+    u8 unk38;
+    u8 pad39[0x3C - 0x39];
+    s32 unk3C;
+    s16 unk40;
+    s16 unk42;
+    void *unk44;
+    void *unk48;
+    u8 pad4C[0x50 - 0x4C];
+    void *unk50[8];
+    u8 unk70;
+} MultiplayerActor318AAD;
+
+typedef struct Struct80027024 {
+    void* unk0;
+    f32 unk4;
+    s32 unk8;
+} Struct80027024;
+
+typedef struct Struct80026094_0 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct80026094_0;
+
+typedef struct Struct80026094_1 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+} Struct80026094_1;
+
+Struct80750948 *func_global_asm_806C7C94(u8);
+Gfx *func_multiplayer_80025264(Gfx *, Actor *);
+void func_multiplayer_80025794(void);
+extern OSTime D_global_asm_807445B0;
+extern s32 D_global_asm_80767CC0;
+extern void *D_global_asm_8076D1F8;
+extern u8 D_multiplayer_80026F70;
+extern Struct80027024 D_multiplayer_80027024[];
+
+/*
+void func_multiplayer_80026094(void) {
+    f32 var_f2;
+    s16 var_s0_4;
+    s32 var_s2;
+    s32 i, j;
+    Struct80026094_1 *temp_s0;
+    Struct80027024 *temp_s1;
+    MultiplayerActor318AAD *aad;
+    Struct80026094_0 *temp_t0;
+
+    aad = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        var_s2 = FALSE;
+        func_global_asm_806C9AE0();
+        for (i = 0; i < cc_number_of_players; i++) {
+            aad->unk20[i] = func_global_asm_806C7C94(i);
+        }
+        D_global_asm_807552E4.unk8 = 1;
+        aad->unk0 = osGetTime();
+        aad->unk34 = D_global_asm_80767CC0;
+        aad->unk38 = 0U;
+        aad->unk42 = 0;
+        aad->unk40 = 0;
+        func_global_asm_80737638(D_global_asm_8076D1F8, 0x1E6, 0U, 0x40U, 1.0f, 0x80U, &aad->unk3C);
+        D_multiplayer_80026F70 = 0;
+        switch (D_global_asm_807552E4.unk4) {
+            case 3:
+            case 5:
+                var_s2 = TRUE;
+            case 2:
+                if (var_s2) {
+                    temp_t0 = func_multiplayer_80025378()->unk8;
+                    func_global_asm_806F5FE8(0x1D2, temp_t0->unk0, temp_t0->unk2, temp_t0->unk4, 0xA);
+                }
+                break;
+            case 4:
+                for (i = 0; i < cc_number_of_players; i++) {
+                    changeCollectableCount(7, i, D_global_asm_807552E4.unkC);
+                }
+                func_global_asm_806F833C(0);
+                break;
+        }
+        if ((D_global_asm_807552E4.unk0 == 0) && (current_map == MAP_KONG_BATTLE_BATTLE_ARENA)) {
+            func_global_asm_806F5FA0(0x24E, 0xD4, 0x205);
+            func_global_asm_806F5FA0(0x24E, 0xD4, 0x285);
+            func_global_asm_806F5FA0(0x212, 0xD4, 0x24E);
+            func_global_asm_806F5FA0(0x28E, 0xD4, 0x247);
+        }
+        aad->unk30 = malloc(0x40);
+        guScale(aad->unk30, 0.5f, 0.5f, 1.0f);
+        aad->unkC = D_global_asm_807552E4.unkC;
+        aad->unkC *= 60;
+        current_actor_pointer->unk64 |= 2;
+        aad->unk44 = getPointerTableFile(0xE, 0xB9, 0U, 0U);
+        aad->unk48 = getPointerTableFile(0xE, 0xBA, 0U, 0U);
+        aad->unk10 = 0;
+    }
+    aad->unk0 += D_global_asm_807445B0;
+    switch (D_global_asm_807552E4.unk8) {
+    case 2:
+    case 3:
+        break;
+    case 1:
+        switch (D_global_asm_807552E4.unk4) {
+        case 3:
+        case 5:
+            func_multiplayer_80025654(aad);
+            break;
+        case 2:
+            func_multiplayer_80025794();
+            break;
+        case 0:
+            func_multiplayer_800243C8();
+            break;
+        case 1:
+            func_multiplayer_8002449C();
+            break;
+        case 4:
+            func_multiplayer_8002452C();
+            break;
+        }
+        break;
+    }
+    if (D_global_asm_807552E4.unk0 == 0) {
+        for (i = 0; i < cc_number_of_players; i++) {
+            func_multiplayer_80025CE8(i);
+        }
+        if (cc_number_of_players == 2) {
+            func_multiplayer_80025B48(aad);
+        }
+    } else if ((global_properties_bitfield & 2) || ((s32) ((f32) aad->unk10 * 0.033333335f) & 1)) {
+        func_multiplayer_80025FFC(aad);
+    } else if (aad->unk70 == 0) {
+        for (i = 0; i < 2; i++) {
+            for (j = 0; j < cc_number_of_players; j++) {
+                if (character_change_array[j].does_player_exist) {
+                    temp_s0 = aad->unk20[j];
+                    temp_s1 = &D_multiplayer_80027024[i];
+                    func_global_asm_8071495C();
+                    func_global_asm_807149FC(-1);
+                    func_global_asm_80714998(0U);
+                    func_global_asm_80714944(temp_s1->unk8);
+                    if (i) {
+                        var_f2 = temp_s0->unk4 + 0xB;
+                    } else {
+                        var_f2 = temp_s0->unk8 - 0xB;
+                    }
+                    aad->unk50[(cc_number_of_players * i) + j] = drawSpriteAtPosition(
+                        temp_s1->unk0,
+                        temp_s1->unk4,
+                        var_f2,
+                        temp_s0->unkA - 0xB,
+                        -10.0f);
+                }
+            }
+        }
+        aad->unk70 = 1U;
+    }
+    aad->unk10++;
+    aad->unk10 %= 180;
+    aad->unk40 = MAX(0x1F40, aad->unk40 - 100);
+    aad->unk42 = MIN(aad->unk40, aad->unk42 + 0x3E8);
+    func_global_asm_80737AC4(aad->unk3C, 8, aad->unk42);
+    if (D_multiplayer_80026F70 & 0x80) {
+        aad->unk40 = 0x7FFF;
+        D_multiplayer_80026F70 &= 0xFF7F;
+    }
+    if (D_multiplayer_80026F70 & 7) {
+        if ((D_global_asm_80767CC0 - aad->unk34) >= 6U) {
+            aad->unk34 = D_global_asm_80767CC0;
+            aad->unk38 = 0U;
+            var_s0_4 = 0x1E8;
+            if (D_multiplayer_80026F70 & 4) {
+                var_s0_4 = 0x1EA;
+            } else if ((D_multiplayer_80026F70 & 3) && ((((D_multiplayer_80026F70 & 2) * 0x12C) + 0x1F4) < ((s32) (rand() >> 0xF) % 1000))) {
+                var_s0_4 = ((rand() >> 0xF) % 1000) & 1 ? 0x1E7 : 0x1EA;
+            }
+            playSound(var_s0_4, 0x7FFFU, 64.0f, 1.0f, 0x14, 0x80);
+        }
+        aad->unk40 = MIN(0x7FFF, aad->unk40 + 0x4650);
+        D_multiplayer_80026F70 &= 0xFFF8;
+    }
+    if ((u32) ((aad->unk38 * 35) + 0x384) < (u32) (D_global_asm_80767CC0 - aad->unk34)) {
+        playSound(0x1E9, (aad->unk38 * 0xBB8) + 0x511F, 64.0f, 1.0f, 0xA, 0x80);
+        aad->unk38++;
+        if (aad->unk38  == 5) {
+            aad->unk38 = 0U;
+            aad->unk34 = (s32) D_global_asm_80767CC0;
+        }
+    }
+    addActorToTextOverlayRenderArray(&func_multiplayer_80025264, current_actor_pointer, 7U);
+}
+*/
+
 
 void func_multiplayer_800268C0(u8 arg0) {
     D_multiplayer_80026F70 |= arg0;
