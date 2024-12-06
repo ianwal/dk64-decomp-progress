@@ -94,17 +94,17 @@ Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
 }
 
 // TODO: Very close
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_80028EE8.s")
 
 extern s16 D_global_asm_80744490;
 
-/*
-void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5) {
+void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5, u16 arg6) {
     AAD_critter_8002904C *aaD;
     s16 sp2A;
     s16 i;
 
-    sp2A = (D_global_asm_80744490 - getCenterOfString(arg0, &D_critter_8002A1C0[arg3])) * 2;
+    sp2A = (D_global_asm_80744490 - getCenterOfString(
+        arg0,
+        &D_critter_8002A1C0[0] + arg3)) * 2;
     if (D_critter_8002A1C4 != NULL) {
         aaD = D_critter_8002A1C4->additional_actor_data;
         free(aaD->unk8);
@@ -116,16 +116,18 @@ void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5) {
         D_critter_8002A1C4 = last_spawned_actor;
         D_critter_8002A1C4->unkEC = 0;
     }
-    D_critter_8002A1C4->x_position = func_critter_800288A8(aaD, &D_critter_8002A1C0[arg3], sp2A);
+    D_critter_8002A1C4->x_position = func_critter_800288A8(
+        aaD,
+        &D_critter_8002A1C0[0] + arg3,
+        sp2A);
     D_critter_8002A1C4->unkEE = 0;
-    D_critter_8002A1C4->unk168 = arg5 + 0xE;
-    strcpy(&aaD->unk810[0x10], &D_critter_8002A1C0[arg3]);
+    D_critter_8002A1C4->unk168 = arg6 + 0xE;
+    strcpy(&aaD->unk810[0x10], &D_critter_8002A1C0[0] + arg3);
     for (i = 1; i < 0x10; i++) {
         aaD->unk810[i] = 0;
     }
     aaD->unk810[0] = 0xC;
 }
-*/
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_8002904C.s")
