@@ -24,7 +24,7 @@ typedef struct {
 
 extern Struct8002A1C0 *D_critter_8002A1C0;
 extern Actor *D_critter_8002A1C4;
-extern void* D_critter_8002A1C8[];
+extern u16* D_critter_8002A1C8[];
 extern u16 D_critter_8002A1CE;
 extern u16 D_critter_8002A1CC;
 
@@ -129,16 +129,12 @@ void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5, u16 a
     aaD->unk810[0] = 0xC;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_8002904C.s")
-
-/*
 void func_critter_8002904C(void) {
     AAD_critter_8002904C *aaD;
     s32 temp;
     aaD = current_actor_pointer->additional_actor_data;
     if (D_critter_8002A1CC < 0xF0) {
-        if (D_critter_8002A1CE >= *((u16*)D_critter_8002A1C8[D_critter_8002A1CC])) {
+        if (D_critter_8002A1CE >= *(D_critter_8002A1C8[0] + D_critter_8002A1CC)) {
             D_critter_8002A1CC++;
             aaD->unk810[++current_actor_pointer->unkEE] = 0xC;
         }
@@ -149,4 +145,3 @@ void func_critter_8002904C(void) {
     }
     D_critter_8002A1CE++;
 }
-*/
