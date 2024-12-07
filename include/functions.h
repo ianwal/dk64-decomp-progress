@@ -293,7 +293,7 @@ void playSoundAtObjectModel2(s16 arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 a
 void func_global_asm_8060866C(Actor *arg0, s16 arg1, u8 arg2, f32 arg3, u8 arg4, u8 arg5);
 void playSoundAtPosition(f32 x, f32 y, f32 z, s16 arg3, u8 arg4, s16 arg5, u8 arg6, u8 arg7, f32 arg8, u8 arg9);
 // TODO: func_global_asm_80608DA8 has no documented signature
-void playSound(s16 arg0, u32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5);
+s16 playSound(s16 arg0, u32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5);
 // TODO: func_global_asm_8060956C has no documented signature
 // TODO: func_global_asm_80609B80 has no documented signature
 // TODO: func_global_asm_8060A1B0 has no documented signature

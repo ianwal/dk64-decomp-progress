@@ -1238,16 +1238,14 @@ void func_bonus_8002C8EC(void) {
             playActorAnimation(current_actor_pointer, 0x332);
             current_actor_pointer->control_state = 1;
             playSound(0x16, 0x7FFF, 63.0f, 1.0f, 0, 0);
-            var_v0 = 0;
             if (temp_s3->unk28 != 0) {
                 temp_s3->unk28--;
             }
-            while (var_v0 <= 0) {
+            for (var_v0 = 0; var_v0 <= 0; var_v0++) {
                 if (temp_s3->unk2A[var_v0] == 0) {
                     temp_s3->unk2A[var_v0] = 0x1E;
                     var_v0 = 1;
                 }
-                var_v0++;
             }
         }
     } else {

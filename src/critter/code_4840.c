@@ -6,7 +6,8 @@ typedef struct {
     s16 unk2;
     s16 *unk4;
     s16 *unk8;
-    u8 unkC[0x810 - 0xC];
+    u8 unkC[0x90 - 0xC];
+    Mtx unk90[15][2]; // Not sure on whether it's 15 or not
     u8 unk810[1]; // TODO: How many elements?
 } AAD_critter_8002904C;
 
@@ -28,7 +29,7 @@ extern u16* D_critter_8002A1C8[];
 extern u16 D_critter_8002A1CE;
 extern u16 D_critter_8002A1CC;
 
-Gfx *func_critter_80028A9C(Gfx *dl, void *arg1, void *arg2, u8 arg3);
+Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg3);
 void *func_dk64_boot_80002DE4(void*, char*);
 
 void func_critter_80028840(void) {
@@ -74,6 +75,41 @@ s16 func_critter_800288A8(AAD_critter_8002904C *arg0, u8 *arg1, s16 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_80028A9C.s")
 
+/*
+Very close - s1 and s2 need to be swapped
+Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg3) {
+    Mtx sp98;
+    Mtx sp58;
+    u8 sp57 = 100;
+    f32 sp50;
+    s16 temp_t1;
+    s16 sp4C;
+
+    guMtxIdentF(&sp98);
+    if (arg1->unk810[arg3]) {
+        sp50 = arg1->unk810[arg3] / 12.0f;
+        arg1->unk810[arg3]--;
+        temp_t1 = arg1->unk8[arg3] - arg1->unk4[arg3];
+        guTranslateF(&sp98, -temp_t1, -26.0f, 0.0f);
+        guScaleF(&sp58,
+            (func_global_asm_80612794(sp50 * 2048.0f) * 0.5) + 1.0,
+            (func_global_asm_80612794(sp50 * 2048.0f) * 0.8) + 1.0,
+            1.0f);
+        guMtxCatF(&sp98, &sp58, &sp98);
+        guTranslateF(&sp58, temp_t1, 26.0f, 0.0f);
+        guMtxCatF(&sp98, &sp58, &sp98);
+        sp57 = (func_global_asm_80612794(sp50 * 2048.0f) * 127.0f) + 128.0f;
+    }
+    guTranslateF(&sp58, arg1->unk4[arg3], arg1->unk0, 0.0f);
+    guMtxCatF(&sp98, &sp58, &sp98);
+    guMtxF2L(&sp98, &arg1->unk90[D_global_asm_807444FC]);
+    gSPMatrix(dl++, &arg1->unk90[D_global_asm_807444FC][arg3], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, sp57);
+    return printStyledText(dl, 6, 0, 0, arg2, 0U);
+}
+*/
+
+
 Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
     void *var_a2;
     u8 i;
@@ -92,8 +128,6 @@ Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
     }
     return dl;
 }
-
-// TODO: Very close
 
 extern s16 D_global_asm_80744490;
 
