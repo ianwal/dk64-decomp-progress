@@ -97,7 +97,19 @@ typedef struct {
     s32 unk18; // Used
 } Struct806F1B58;
 
-extern Struct80753E90 *D_global_asm_80753E90;
+typedef struct AutowalkFile {
+    s16 count;
+    s16 data[];
+} AutowalkFile;
+
+typedef struct AutowalkRDRAM AutowalkRDRAM;
+
+struct AutowalkRDRAM {
+    s16 count;
+    AutowalkRDRAM *items;
+};
+
+extern AutowalkRDRAM *D_global_asm_80753E90;
 extern u8 D_global_asm_8076A0B1;
 extern void *D_global_asm_807FD70C;
 extern Struct80753E90_2 *D_global_asm_807FD708;
@@ -112,6 +124,7 @@ extern s32 D_global_asm_807FBB68;
 
 extern Struct80753EA0 D_global_asm_80753EA0[];
 
+void func_global_asm_806F4528(AutowalkFile *);
 void func_global_asm_806F386C(u8, Actor*, Actor*, s16, u8);
 
 void func_global_asm_806F09F0(Actor *arg0, u16 arg1) {
@@ -849,13 +862,13 @@ void func_global_asm_806F386C(u8 arg0, Actor *arg1, Actor *arg2, s16 arg3, u8 ar
     PlayerAdditionalActorData *temp_v0;
 
     temp_v0 = arg1->PaaD;
-    if (D_global_asm_80753E90[0].unk0 >= arg0) {
+    if (D_global_asm_80753E90[0].count >= arg0) {
         is_autowalking = 3;
         D_global_asm_8076A0B1 |= 0x10;
         D_global_asm_807FD710 = arg1;
         temp_v0->unk1F0 &= ~1;
         D_global_asm_807FD714 = 0;
-        D_global_asm_807FD708 = &D_global_asm_80753E90->unk4[arg0];
+        D_global_asm_807FD708 = &D_global_asm_80753E90->items[arg0];
         D_global_asm_807FD70C = D_global_asm_807FD708->unk4;
         D_global_asm_807FD718 = arg3;
         D_global_asm_807FD71C = arg2;
@@ -888,7 +901,7 @@ void func_global_asm_806F39E8(Actor *arg0, ExitData *arg1, u8 arg2) {
     Struct80753E90_unk4 *temp;
     Struct80753E90_2 *temp_v1;
 
-    temp_v1 = &D_global_asm_80753E90->unk4[D_global_asm_80753E90->unk0];
+    temp_v1 = &D_global_asm_80753E90->items[D_global_asm_80753E90->count];
     temp_v1->unk0 = 2;
     temp_v1->unk4 = malloc(0x24);
     func_global_asm_80611690(temp_v1->unk4);
@@ -902,7 +915,7 @@ void func_global_asm_806F39E8(Actor *arg0, ExitData *arg1, u8 arg2) {
     temp->unk2 = arg1->y_pos;
     temp->unk4 = (func_global_asm_80612790((arg1->angle / 255.0) * 4095.0) * arg2) + arg1->z_pos;
     temp->unk9 = 0x32;
-    func_global_asm_806F386C(D_global_asm_80753E90->unk0, arg0, 0, 0, 0);
+    func_global_asm_806F386C(D_global_asm_80753E90->count, arg0, 0, 0, 0);
     D_global_asm_807FD716 = 0;
     global_properties_bitfield |= 0x400;
 }
@@ -914,7 +927,7 @@ void func_global_asm_806F3BEC(Actor *arg0, s16 arg1, s16 arg2, u8 arg3) {
     Struct80753E90_2 *temp_a1;
 
     sp3A = func_global_asm_80665DE0(arg1, arg2, arg0->x_position, arg0->z_position);
-    temp_a1 = &D_global_asm_80753E90->unk4[D_global_asm_80753E90->unk0];
+    temp_a1 = &D_global_asm_80753E90->items[D_global_asm_80753E90->count];
     if (arg0->control_state != 0x44) {
         temp_a1->unk0 = 2;
         temp_a1->unk4 = malloc(0x24);
@@ -930,7 +943,7 @@ void func_global_asm_806F3BEC(Actor *arg0, s16 arg1, s16 arg2, u8 arg3) {
         temp_t0->unk2 = arg0->y_position;
         temp_t0->unk4 = (func_global_asm_80612790(sp3A) * arg3) + arg0->z_position;
         temp_t0->unk9 = 0x28;
-        func_global_asm_806F386C(D_global_asm_80753E90->unk0, arg0, 0, 0, 0);
+        func_global_asm_806F386C(D_global_asm_80753E90->count, arg0, 0, 0, 0);
         D_global_asm_807FD716 = 0;
         global_properties_bitfield |= 0x400;
     }
@@ -956,6 +969,56 @@ void func_global_asm_806F3DC8(u16 *arg0, s16 *arg1, u8 *arg2, u16 arg3) {
 
 // Autowalk file arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F4528.s")
+
+typedef struct AutowalkInternal {
+    s16 x;
+    s16 y;
+    s16 z;
+    u8 pad6[0x12 - 6];
+} AutowalkInternal;
+
+typedef struct AutowalkInternal2 {
+    s16 count;
+    AutowalkInternal *data;
+} AutowalkInternal2;
+
+/*
+Missing a meaningless branch
+void func_global_asm_806F4528(AutowalkFile *arg0) {
+    s16 sp34;
+    AutowalkInternal *sp38;
+    AutowalkFile *temp_a1;
+    AutowalkInternal *var_s1;
+    AutowalkRDRAM *var_s2;
+    s16 i, j;
+
+    if (arg0 != NULL) {
+        temp_a1 = &arg0->data;
+        D_global_asm_80753E90->count = arg0->count;
+        sp34 = temp_a1;
+        D_global_asm_80753E90->items = malloc((D_global_asm_80753E90->count * 8) + 8);
+        var_s2 = D_global_asm_80753E90->items;
+        for (i = 0; i < D_global_asm_80753E90->count; i++) {
+            var_s1 = &temp_a1->data;
+            var_s2->count = temp_a1->count;
+            for (j = 0; j < var_s2->count; j++) {
+                sp38++;
+                if (j == 0) {
+                    var_s2->items = malloc(var_s2->count * sizeof(AutowalkInternal));
+                    sp38 = var_s2->items;
+                }
+                *sp38 = *var_s1++;
+            }
+            temp_a1 = var_s1;
+            var_s2++;
+
+        }
+    } else {
+        D_global_asm_80753E90->count = 0;
+    }
+}
+*/
+
 
 f32 func_global_asm_806F46B0(s16 arg0) {
     s16 i;

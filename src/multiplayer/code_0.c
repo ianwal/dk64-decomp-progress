@@ -233,6 +233,63 @@ void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, void *arg3, s32 ar
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800246EC.s")
 
+Gfx *func_multiplayer_800245B0(Gfx *, s16 *, s16, s32, s32);
+extern u8 D_global_asm_80750AB8;
+
+/*
+Gfx *func_multiplayer_800246EC(Gfx *dl, Struct800246EC *aaD, f32 arg2) {
+    s16 spAE;
+    s16 temp_s4;
+    s32 temp_s0;
+    s32 temp_v0_3;
+    s32 i;
+    u8 var_v1;
+    s32 var_s1;
+    Struct800246EC_unk20 *temp_a2;
+    CharacterChange *temp_v0;
+
+    gDPPipeSync(dl++);
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_NOOP2);
+    gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gDPSetTextureFilter(dl++, G_TF_POINT);
+    gDPSetTexturePersp(dl++, G_TP_NONE);
+    for (i = 0; i < cc_number_of_players; i++) {
+        temp_a2 = aaD->unk20[i];
+        var_v1 = 0xFF;
+        temp_v0 = &character_change_array[i];
+        if (temp_v0->unk2EA) {
+            var_v1 = temp_v0->player_pointer->shadow_opacity;
+            if (temp_v0->player_pointer->shadow_opacity > 0xFF) {
+                var_v1 = 0xFF;
+            }
+        }
+        if ((!temp_v0->does_player_exist) || (var_v1 == 0)) {
+            continue;
+        }
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, var_v1);
+        if (D_global_asm_80750AB8 == 0) {
+            spAE = temp_a2->unk8 - 0x30;
+        } else {
+            spAE = ((i + 1) * arg2) - 20.0;
+        }
+        temp_s4 = temp_a2->unk6 + 8;
+        var_s1 = MAX(0, D_global_asm_807FC950[i].health);
+        temp_s0 = var_s1 / 2;
+        if (temp_s0) {
+            dl = func_multiplayer_800245B0(dl, &spAE, temp_s4, aaD->unk44, temp_s0);
+        }
+        temp_v0_3 = var_s1 - (var_s1 << 1);
+        if (temp_v0_3) {
+            dl = func_multiplayer_800245B0(dl, &spAE, temp_s4, aaD->unk48, temp_v0_3);
+        }
+    }
+    return dl;
+}
+*/
+
+
 // Displaylist stuff, close, float, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800249D8.s")
 

@@ -62,7 +62,13 @@ void func_global_asm_806F4DC0(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
 }
 */
 
-extern s16 D_global_asm_80753EF0; // TODO: Array of 0xA structs?
+typedef struct Struct806F73A0 {
+    u8 pad0[0xE];
+    s16 unkE;
+    u8 pad10[0x4];
+} Struct806F73A0;
+
+extern Struct806F73A0 D_global_asm_80753EF0[]; // TODO: Array of 0xA structs?
 
 // TODO: Array of 0xA structs?
 s32 func_global_asm_806F4E74(s16 arg0) {
@@ -782,6 +788,144 @@ f32 func_global_asm_806F7378(s32 arg0) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F73A0.s")
+
+s32 func_global_asm_80626BC8(s32, s32, s32, s32, s32, s32);
+void func_global_asm_806F79E0(s16, s32);
+
+typedef struct Struct806FD73A0_0 Struct806FD73A0_0;
+
+struct Struct806FD73A0_0 {
+    u8 pad0[0x10];
+    Struct806FD73A0_0 *unk10;
+};
+
+typedef struct Struct806FD73A0_1 {
+    u8 unk0;
+    u8 unk1;
+} Struct806FD73A0_1;
+
+/*
+void func_global_asm_806F73A0(s32 arg0) {
+    s32 j;
+    GlobalASMStruct53 *sp58;
+    Struct806F73A0 *var_s3;
+    Actor *player;
+    Actor *temp_s2;
+    enum actors_e temp_a0;
+    enum actors_e temp_v0_2;
+    s16 temp_s0;
+    s16 temp_s0_2;
+    s16 temp_v0;
+    s16 temp_v0_3;
+    u8 temp_s6;
+    s32 temp_t3;
+    s32 var_s5;
+    s32 var_v1;
+    Struct807FD740 *temp_s1;
+    Struct806FD73A0_1 *temp_s4;
+    PlayerAdditionalActorData *PaaD;
+    Struct806FD73A0_0 *var_s0;
+    s32 i;
+
+    temp_s6 = arg0;
+    player = character_change_array[temp_s6].player_pointer;
+    PaaD = player->additional_actor_data;
+    if (D_global_asm_807FC950[temp_s6].health <= 0) {
+        return;
+    }
+    for (i = 0; i < 42; i++) {
+        var_s3 = &D_global_asm_80753EF0[i];
+        if (var_s3->unkE != 0) {
+            for (j = 0; j < D_global_asm_807FBB34; j++) {
+                sp58 = &D_global_asm_807FB930[j];
+                temp_s2 = sp58->unk0;
+                if ((global_properties_bitfield & 0x10000) && (temp_s2->unk58 == var_s3->unkE) && ((temp_v0 = var_s3->unkC, (temp_v0 == 0)) || (player->unk58 == temp_v0))) {
+                    temp_s1 = &D_global_asm_807FD740[temp_s6];
+                    var_s0 = D_global_asm_807FD780[temp_s6];
+                    var_v1 = 0;
+                    if ((f32) func_global_asm_80626BC8((s32) temp_s2->x_position, (s32) ((f32) var_s3->unk10 + temp_s2->y_position), (s32) temp_s2->z_position, (s32) temp_s1->unk0, (s32) temp_s1->unk4, (s32) temp_s1->unk8) < (((f32) var_s3->unk12 + temp_s1->unkC) - 1.0f)) {
+                        var_v1 = 1;
+                    }
+                    if ((var_v1 == 0) && (var_s0 != NULL)) {
+loop_13:
+                        var_v1 = 0;
+                        if ((f32) func_global_asm_80626BC8((s32) temp_s2->x_position, (s32) ((f32) var_s3->unk10 + temp_s2->y_position), (s32) temp_s2->z_position, (s32) var_s0->unk0, (s32) var_s0->unk4, (s32) var_s0->unk8) < (((f32) var_s3->unk12 + var_s0->unkC) - 1.0f)) {
+                            var_v1 = 1;
+                        }
+                        var_s0 = var_s0->unk10;
+                        if ((var_v1 == 0) && (var_s0 != NULL)) {
+                            goto loop_13;
+                        }
+                    }
+                    if ((temp_s2->control_state == 0x64) || (var_v1 != 0)) {
+                        if ((D_global_asm_807FBB64 & 0x10000) && (func_global_asm_806F5C30(temp_s2->unk58) != 0)) {
+                            func_global_asm_806F5F2C(temp_s2->unk58, 0x258, (s16) (s32) temp_s2->x_position, (s16) (s32) temp_s2->y_position, (s16) (s32) temp_s2->z_position);
+                        }
+                        temp_s4 = temp_s2->additional_actor_data;
+                        if (temp_s4->unk1 != 0) {
+                            if ((s32) cc_number_of_players >= 2) {
+                                temp_v0_2 = temp_s2->unk58;
+                                switch ((u32) temp_v0_2) {
+                                case 0x7A:
+                                    func_global_asm_806F79E0(0x1D2, temp_s6 & 0xFF);
+                                    func_global_asm_806F54E0(temp_s6 & 0xFF, 0x1D2, 0);
+                                    break;
+                                case 0x79:
+                                    func_global_asm_806F79E0(0x8E, temp_s6 & 0xFF);
+                                    PaaD->unk264 = 0;
+                                    break;
+                                case 0x2F:
+                                    func_global_asm_806F79E0(0x57, temp_s6 & 0xFF);
+                                    func_global_asm_806F54E0(temp_s6 & 0xFF, 0x57, 0);
+                                    break;
+                                case 0x77:
+                                    func_global_asm_806F79E0(0x1D0, temp_s6 & 0xFF);
+                                    PaaD->unk264 = 1;
+                                    break;
+                                case 0x78:
+                                    func_global_asm_806F79E0(0x1CF, temp_s6 & 0xFF);
+                                    PaaD->unk264 = 2;
+                                    break;
+                                case 0x33:
+                                    func_global_asm_806F79E0(0x8F, temp_s6 & 0xFF);
+                                    if ((func_global_asm_80714608(0) != 0) && (player->additional_actor_data->unk8C == 0)) {
+                                        func_global_asm_806F0D68(player);
+                                        func_global_asm_806CFF9C(player);
+                                    }
+                                    break;
+                                case 0x34:
+                                    func_global_asm_806F79E0(0x56, temp_s6 & 0xFF);
+                                    PaaD->unk264 = 3;
+                                    break;
+                                case 0x76:
+                                    func_global_asm_806F79E0(0x1D1, temp_s6 & 0xFF);
+                                    PaaD->unk264 = 4;
+                                    break;
+                                }
+                            } else {
+                                temp_a0 = temp_s2->unk58;
+                                var_s5 = 1;
+                                if ((temp_a0 != ACTOR_WATERMELON_SLICE) && (temp_a0 != ACTOR_BOSS_KEY) && (temp_a0 != ACTOR_CROWN)) {
+                                    var_s5 = 0;
+                                }
+                                temp_v0_3 = func_global_asm_80632630((s32) var_s3->unk0, temp_s2->x_position, func_global_asm_806F7378(temp_a0) + temp_s2->y_position, temp_s2->z_position, 0.0f, 0U);
+                                temp_s0 = func_global_asm_8063D990(temp_v0_3);
+                                func_global_asm_80731410(*(&current_map + 2), temp_s0, temp_s4->unkA, func_global_asm_8073198C(temp_s4->unkA) & 0xFF);
+                                temp_s0_2 = func_global_asm_8063D990(temp_v0_3);
+                                func_global_asm_80632E74(*(&current_map + 2), temp_s0_2, &D_global_asm_807F6000[func_global_asm_80659470((s32) temp_v0_3)].unk8C);
+                                func_global_asm_806F50C8(temp_v0_3, var_s3->unk0, 0, 1U, 0U, (u8) var_s5);
+                                temp_s2->unk11C = NULL;
+                            }
+                            deleteActor(temp_s2);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+*/
+
 
 // Jumptable, rodata problems, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F79E0.s")

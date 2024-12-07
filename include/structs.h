@@ -3256,4 +3256,18 @@ typedef struct {
     s16 unkA;
 } Struct80750948;
 
+typedef struct Struct800246EC_unk20 {
+    u8 pad0[0x6];
+    s16 unk6;
+    s16 unk8;
+} Struct800246EC_unk20;
+
+typedef struct Struct800246EC {
+    u8 pad0[0x20];
+    Struct800246EC_unk20 *unk20[4];
+    u8 unk30[0x44 - 0x30];
+    s32 unk44;
+    s32 unk48;
+} Struct800246EC;
+
 #endif

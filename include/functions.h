@@ -4188,7 +4188,7 @@ void func_multiplayer_800243C8(void);
 void func_multiplayer_8002449C(void);
 void func_multiplayer_8002452C(void);
 // TODO: func_multiplayer_800245B0 has no documented signature
-Gfx *func_multiplayer_800246EC(Gfx *dl, void *aaD, f32 arg2);
+Gfx *func_multiplayer_800246EC(Gfx *dl, Struct800246EC *aaD, f32 arg2);
 // TODO: func_multiplayer_800249D8 has no documented signature
 // TODO: func_multiplayer_80024CA4 has no documented signature
 // TODO: func_multiplayer_80025264 has no documented signature

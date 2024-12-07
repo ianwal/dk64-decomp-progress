@@ -870,10 +870,6 @@ void func_global_asm_806E9B3C(void) {
     }
 }
 
-// close, regalloc v0 v1
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E9BA8.s")
-
-/*
 void func_global_asm_806E9BA8(s32 arg0) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) && !(extra_player_info_pointer->unk1F0 & 0x8000) && func_global_asm_806F8AD4(6, cc_player_index) > 0) {
         playSound(0x263, 0x7FFF, 63.0f, 1.0f, 0xA, 0);
@@ -895,7 +891,6 @@ void func_global_asm_806E9BA8(s32 arg0) {
         );
     }
 }
-*/
 
 void func_global_asm_806E9CDC(void) {
     func_global_asm_806E9BA8(0x64);
