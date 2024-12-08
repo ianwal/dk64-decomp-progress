@@ -967,9 +967,6 @@ void func_global_asm_806F3DC8(u16 *arg0, s16 *arg1, u8 *arg2, u16 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F3E0C.s")
 
-// Autowalk file arg0
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F4528.s")
-
 typedef struct AutowalkInternal {
     s16 x;
     s16 y;
@@ -982,8 +979,6 @@ typedef struct AutowalkInternal2 {
     AutowalkInternal *data;
 } AutowalkInternal2;
 
-/*
-Missing a meaningless branch
 void func_global_asm_806F4528(AutowalkFile *arg0) {
     s16 sp34;
     AutowalkInternal *sp38;
@@ -1002,10 +997,12 @@ void func_global_asm_806F4528(AutowalkFile *arg0) {
             var_s1 = &temp_a1->data;
             var_s2->count = temp_a1->count;
             for (j = 0; j < var_s2->count; j++) {
-                sp38++;
                 if (j == 0) {
+                    sp38++;
                     var_s2->items = malloc(var_s2->count * sizeof(AutowalkInternal));
                     sp38 = var_s2->items;
+                } else {
+                    sp38++;
                 }
                 *sp38 = *var_s1++;
             }
@@ -1017,7 +1014,6 @@ void func_global_asm_806F4528(AutowalkFile *arg0) {
         D_global_asm_80753E90->count = 0;
     }
 }
-*/
 
 
 f32 func_global_asm_806F46B0(s16 arg0) {
