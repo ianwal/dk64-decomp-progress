@@ -1,32 +1,35 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_80722E00(Maps map) {
-    void *paths;
+typedef struct PathPoint {
+    u8 pad0[2];
+    s16 x;
+    s16 y;
+    s16 z;
+    u8 speed;
+    u8 pad9;
+} PathPoint;
 
-    paths = getPointerTableFile(0xF, map, 1, 1);
-    func_global_asm_80722E48(paths);
-    func_global_asm_8066B434(paths, 0x47, 0x27);
-}
+typedef struct PathItemSub {
+    s16 count;
+    s16 unk2;
+    s16 data;
+} PathItemSub;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_global_asm_80722E48.s")
+typedef struct PathItem {
+    s16 id;
+    PathItemSub sub;
+} PathItem;
 
-// Used in func_global_asm_80722FEC as well as func_global_asm_807245D8.
-typedef struct global_asm_struct_3 {
-    s32 unk0; // Pointer
-    s16 unk4; // Unknown, seen value of 2
-} GlobalASMStruct3;
+typedef struct PathUnk {
+    PathPoint *unk0;
+    s16 unk4;
+} PathUnk;
 
-extern GlobalASMStruct3 *D_global_asm_807FDB90[];
-
-s32 func_global_asm_80722FEC(u8 arg0) {
-    if (D_global_asm_807FDB90[arg0]) {
-        return TRUE;
-    }
-    return FALSE;
-}
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_global_asm_80723020.s")
+typedef struct PathFile {
+    s16 count;
+    s16 data[];
+} PathFile;
 
 typedef struct {
     Actor *unk0;
@@ -41,7 +44,61 @@ typedef struct {
     s8  unk21;
 } GlobalASMStruct00;
 
+void func_global_asm_80722E48(PathFile *);
+
+void func_global_asm_80722E00(Maps map) {
+    void *paths;
+
+    paths = getPointerTableFile(0xF, map, 1, 1);
+    func_global_asm_80722E48(paths);
+    func_global_asm_8066B434(paths, 0x47, 0x27);
+}
+
+extern PathUnk *D_global_asm_807FDB90[];
 extern GlobalASMStruct00* D_global_asm_807FDBF8[];
+
+void func_global_asm_80722E48(PathFile *arg0) {
+    s16 *var_s2;
+    s16 k;
+    s16 i, j;
+    s16 count;
+    s16 *var_s1;
+    PathPoint *arg0_dupe;
+
+    for (i = 0; i < 0x1A; i++) {
+        D_global_asm_807FDB90[i] = 0;
+    }
+    count = arg0->count;
+    var_s2 = &arg0->data;
+    for (i = 0; i < count; i++) {
+        k = *var_s2++;
+        D_global_asm_807FDB90[k] = malloc(sizeof(PathUnk));
+        D_global_asm_807FDB90[k]->unk4 = *var_s2++;
+        var_s2++;
+        D_global_asm_807FDB90[k]->unk0 = malloc((D_global_asm_807FDB90[k]->unk4 + 1) * sizeof(PathPoint));
+        arg0_dupe = var_s2;
+        for (j = 0; j < D_global_asm_807FDB90[k]->unk4; j++) {
+            D_global_asm_807FDB90[k]->unk0[j] = *(PathPoint *)arg0_dupe++;
+        }
+        var_s2 = arg0_dupe;
+    }
+    for (i = 0; i < 0x20; i++) {
+        D_global_asm_807FDBF8[i] = 0;
+    }
+}
+
+
+
+// Used in func_global_asm_80722FEC as well as func_global_asm_807245D8.
+
+s32 func_global_asm_80722FEC(u8 arg0) {
+    if (D_global_asm_807FDB90[arg0]) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_global_asm_80723020.s")
 
 void func_global_asm_80723284(s32 arg0, u8 arg1) {
     if (arg0 != -1 && D_global_asm_807FDBF8[arg0]) {
