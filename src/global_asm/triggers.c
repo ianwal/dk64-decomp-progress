@@ -105,7 +105,7 @@ void func_global_asm_8072E740(Maps map) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_global_asm_8072E7DC.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/triggers/func_global_asm_8072E7DC.s")
 
 /*
 // TODO: Quite close, out stack is too small and something is missing at the end
@@ -131,7 +131,7 @@ s32 func_global_asm_8072E7DC(s16 arg0, Actor **arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_global_asm_8072E868.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/triggers/func_global_asm_8072E868.s")
 
 extern u8 D_global_asm_807FBDC4;
 extern s16 D_global_asm_807FDCB8;

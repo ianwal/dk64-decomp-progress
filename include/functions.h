@@ -3749,7 +3749,7 @@ void func_global_asm_8072E2B0(Actor *arg0, f32 *arg1, f32 *arg2, f32 *arg3);
 void func_global_asm_8072E320(f32 arg0);
 u8 func_global_asm_8072E54C(void);
 
-// global_asm/code_1332B0.c
+// global_asm/triggers.c
 u8 func_global_asm_8072E5B0(void);
 // TODO: func_global_asm_8072E5FC has no documented signature
 void func_global_asm_8072E740(Maps map);

@@ -324,7 +324,7 @@ segments:
       - [0x21292F0, c, code_1292F0]
       - [0x21295B0, c, code_1295B0]
       - [0x212E800, c, code_12E800]
-      - [0x21332B0, c, code_1332B0]
+      - [0x21332B0, c, triggers]
       - [0x2133A90, c, code_133A90]
       - [0x2135D30, c, code_135D30]
       - [0x2136820, c, code_136820]
