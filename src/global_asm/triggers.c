@@ -202,20 +202,7 @@ void func_global_asm_8072E868(void) {
 
 extern s16 D_global_asm_8076A0AA;
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    u8 unkC;
-    u8 unkD[0x38 - 0xD];
-    u8 unk38;
-    u8 unk39;
-} Struct8072EA90;
-
-u8 func_global_asm_8072EA90(Struct8072EA90 *arg0) {
+u8 func_global_asm_8072EA90(TriggerData *arg0) {
     u8 var_t3;
     u8 playerIndex;
     s32 pad;
@@ -226,46 +213,46 @@ u8 func_global_asm_8072EA90(Struct8072EA90 *arg0) {
     var_t4 = 0;
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
         if (character_change_array[playerIndex].does_player_exist != 0) {
-            if (arg0->unk8 == -1 || (arg0->unk2 <= character_change_array[playerIndex].player_pointer->y_position && character_change_array[playerIndex].player_pointer->y_position < (arg0->unk2 + arg0->unk8))) {
-                d = ((arg0->unk0 - character_change_array[playerIndex].player_pointer->x_position) * (arg0->unk0 - character_change_array[playerIndex].player_pointer->x_position)) + ((arg0->unk4 - character_change_array[playerIndex].player_pointer->z_position) * (arg0->unk4 - character_change_array[playerIndex].player_pointer->z_position));
-                if (d < (arg0->unk6 * arg0->unk6)) {
+            if (arg0->raw.height == -1 || (arg0->raw.y <= character_change_array[playerIndex].player_pointer->y_position && character_change_array[playerIndex].player_pointer->y_position < (arg0->raw.y + arg0->raw.height))) {
+                d = ((arg0->raw.x - character_change_array[playerIndex].player_pointer->x_position) * (arg0->raw.x - character_change_array[playerIndex].player_pointer->x_position)) + ((arg0->raw.z - character_change_array[playerIndex].player_pointer->z_position) * (arg0->raw.z - character_change_array[playerIndex].player_pointer->z_position));
+                if (d < (arg0->raw.radius * arg0->raw.radius)) {
                     var_t3 = TRUE;
                 }
             }
         }
     }
-    switch (arg0->unkC) {
+    switch (arg0->raw.activation_type) {
         case 0:
             if (var_t3) {
-                if (arg0->unk38 == 1 && arg0->unk39 != 0) {
+                if (arg0->not_in_zone == 1 && arg0->active != 0) {
                     var_t4 = 1;
                 }
             }
             break;
         case 1:
             if (!var_t3) {
-                if (arg0->unk38 == 0 && arg0->unk39 != 0) {
+                if (arg0->not_in_zone == 0 && arg0->active != 0) {
                     var_t4 = 1;
                 }
             }
             break;
         case 2:
             if (var_t3) {
-                if (arg0->unk39 != 0) {
+                if (arg0->active != 0) {
                     var_t4 = 1;
                 }
             }
             break;
     }
     if (var_t4 != 0) {
-        if (func_global_asm_807318AC(D_global_asm_8076A0AA, arg0->unkA) == 0) {
+        if (func_global_asm_807318AC(D_global_asm_8076A0AA, arg0->raw.unkA) == 0) {
             var_t4 = 0;
         }
     }
     if (var_t3 != 0) {
-        arg0->unk38 = 0;
+        arg0->not_in_zone = 0;
     } else {
-        arg0->unk38 = 1;
+        arg0->not_in_zone = 1;
     }
     return var_t4;
 }
