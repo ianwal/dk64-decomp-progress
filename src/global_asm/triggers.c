@@ -32,7 +32,7 @@ typedef struct TriggerData {
 
 typedef struct TriggerFile {
     s16 count;
-    TriggerRawItem items[];
+    TriggerRawItem items[1];
 } TriggerFile;
 
 typedef struct TriggersRDRAM {
