@@ -105,31 +105,26 @@ void func_global_asm_8072E740(Maps map) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/triggers/func_global_asm_8072E7DC.s")
-
-/*
-// TODO: Quite close, out stack is too small and something is missing at the end
 s32 func_global_asm_8072E7DC(s16 arg0, Actor **arg1) {
-    Actor *sp4;
+    s32 pad;
+    s32 targ_actor;
     Actor *temp_a1;
     s32 i;
     s32 found;
 
     found = FALSE;
     i = 0;
-    while (!found && i < D_global_asm_807FBB34) {
+    while ((!found) && (i < D_global_asm_807FBB34)) {
         temp_a1 = D_global_asm_807FB930[i].unk0;
-        if (D_global_asm_807FB930[i].unk0->unk58 == arg0) {
+        if (temp_a1->unk58 == (u32)arg0) {
             found = TRUE;
         } else {
-            i += 1;
+            i++;
         }
-        sp4 = temp_a1;
     }
-    *arg1 = sp4;
+    *arg1 = temp_a1;
     return found;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/triggers/func_global_asm_8072E868.s")
 
