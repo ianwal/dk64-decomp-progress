@@ -1301,6 +1301,52 @@ void func_global_asm_80658624(s32 arg0, s32 *arg1, s32 *arg2, s32 *arg3, s32 *ar
     }
 }
 
+
+typedef struct Pointer20Struct_sub0 {
+    u8 pad0[0x20];
+} Pointer20Struct_sub0;
+
+typedef struct Pointer20Struct_sub1 {
+    u8 pad0[0x10];
+} Pointer20Struct_sub1;
+
+typedef struct Pointer20Struct_sub {
+    Pointer20Struct_sub0 unk0;
+    s16 unk20;
+} Pointer20Struct_sub;
+
+typedef struct Pointer20Struct {
+    void *unk0;
+    s16 unk4;
+    s16 unk6;
+    s32 unk8;
+    u8 padC[0xE - 0xC];
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    Pointer20Struct_sub0 unk14;
+    s8 unk34;
+    u8 pad35;
+    Pointer20Struct_sub0 unk36;
+    s8 unk56;
+    u8 pad57;
+    Pointer20Struct_sub1 unk58;
+    s8 unk68;
+    u8 pad69[0x6C - 0x69];
+} Pointer20Struct;
+
+typedef struct Pointer20Struct_sub2 {
+    s16 unk0;
+    s16 unk2;
+} Pointer20Struct_sub2;
+
+typedef struct Pointer20File {
+    s16 count;
+    s16 data[];
+} Pointer20File;
+
+void func_global_asm_80658930(Pointer20File *);
+
 void func_global_asm_806588E0(s32 fileIndex) {
     void *file = getPointerTableFile(0x14, fileIndex, 1, 1);
     func_global_asm_80658930(file);
@@ -1310,6 +1356,58 @@ void func_global_asm_806588E0(s32 fileIndex) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80658930.s")
+
+void func_global_asm_80651708(s32);
+extern Pointer20Struct *D_807F70B8[];
+
+/*
+void func_global_asm_80658930(Pointer20File *arg0) {
+    s16 sp46;
+    Pointer20Struct_sub2 *temp_s0_2;
+    s16 *var_s0;
+    s16 temp_s3;
+    s16 count;
+    s32 i;
+    Pointer20Struct_sub *temp_s0_3;
+    Pointer20Struct_sub1 *temp_s0_5;
+    Pointer20Struct *temp_s2;
+    Pointer20Struct *temp_s2_2;
+    s16 temp = -0x8000;
+
+    for (i = 0; i < 0x20; i++) {
+        D_807F70B8[i] = 0;
+    }
+    if (arg0 == NULL) {
+        return;
+    }
+    count = arg0->count;
+    var_s0 = &arg0->data;
+    for (i = 0; i < count; i++) {
+        temp_s3 = *var_s0++;
+        D_807F70B8[temp_s3] = malloc(sizeof(Pointer20Struct));
+        D_807F70B8[temp_s3]->unk12 = temp;
+        D_807F70B8[temp_s3]->unk10 = 0x7FFF;
+        D_807F70B8[temp_s3]->unk8 = 0;
+        D_807F70B8[temp_s3]->unk4 = *var_s0++;
+        D_807F70B8[temp_s3]->unk0 = malloc(D_807F70B8[temp_s3]->unk4 * 6);
+        memcpy(D_807F70B8[temp_s3]->unk0, var_s0, D_807F70B8[temp_s3]->unk4 * 6);
+        temp_s0_2 = var_s0 + ((u32) (D_807F70B8[temp_s3]->unk4 * 6) >> 1);
+        temp_s0_3 = temp_s0_2 + 1;
+        D_807F70B8[temp_s3]->unkE = temp_s0_2->unk0;
+        D_807F70B8[temp_s3]->unk34 = temp_s0_2->unk2;
+        memcpy(&D_807F70B8[temp_s3]->unk14, temp_s0_3, sizeof(Pointer20Struct_sub0));
+        D_807F70B8[temp_s3]->unk56 = temp_s0_3->unk20;
+        temp_s0_3++;
+        memcpy(&D_807F70B8[temp_s3]->unk36, temp_s0_3, sizeof(Pointer20Struct_sub0));
+        D_807F70B8[temp_s3]->unk68 = temp_s0_3->unk20;
+        temp_s0_5 = temp_s0_3 + 1;
+        memcpy(&D_807F70B8[temp_s3]->unk58, temp_s0_5, sizeof(Pointer20Struct_sub1));
+        var_s0 = temp_s0_5 + 1;
+        func_global_asm_80651708(temp_s3);
+    }
+}
+*/
+
 
 s16 func_global_asm_80658B08(s8 arg0, u8 *arg1, s16 arg2) {
     s16 i;

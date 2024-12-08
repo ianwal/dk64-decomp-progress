@@ -8,7 +8,67 @@ u8 func_global_asm_8072E5B0(void) {
         && !(player_pointer->control_state == 0x63); // Rocketbarrel
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_global_asm_8072E5FC.s")
+typedef struct TriggerRawItem {
+    s16 x;
+    s16 y;
+    s16 z;
+    s16 radius;
+    s16 height;
+    s16 unkA;
+    u8 activation_type;
+    u8 default_active_state;
+    u8 padE[2];
+    u16 type;
+    u16 map;
+    u16 exit;
+    u8 pad16[0x38 - 0x16];
+} TriggerRawItem;
+
+typedef struct TriggerData {
+    TriggerRawItem raw;
+    u8 not_in_zone;
+    u8 active;
+} TriggerData;
+
+typedef struct TriggerFile {
+    s16 count;
+    TriggerRawItem items[];
+} TriggerFile;
+
+typedef struct TriggersRDRAM {
+    s16 count;
+    TriggerData *data;
+} TriggersRDRAM;
+
+extern TriggersRDRAM *D_global_asm_80755A14;
+
+void func_global_asm_8072E5FC(TriggerFile *arg0) {
+    TriggerRawItem *var_s2;
+    TriggerData *var_v1;
+    s16 i;
+
+    D_global_asm_80755A14->count = 0;
+    D_global_asm_80755A14->data = NULL;
+    if (arg0 == NULL) {
+        return;
+    }
+    var_s2 = &arg0->items;
+    D_global_asm_80755A14->count = arg0->count;
+    for (i = 0; i < D_global_asm_80755A14->count; i++) {
+        if (i == 0) {
+            var_v1++;
+            D_global_asm_80755A14->data = malloc(D_global_asm_80755A14->count * sizeof(TriggerData));
+            var_v1 = D_global_asm_80755A14->data;
+        } else {
+            var_v1++;
+        }
+        var_v1->raw = *var_s2++;
+        var_v1->not_in_zone = 0;
+        var_v1->active = (u8) var_v1->raw.default_active_state;
+    }
+}
+
+
 
 typedef struct {
     s16 unk0;
@@ -73,24 +133,6 @@ s32 func_global_asm_8072E7DC(s16 arg0, Actor **arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1332B0/func_global_asm_8072E868.s")
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    u8 unkC[0x39 - 0xC];
-    u8 unk39;
-} Struct80755A14_unk4;
-
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    Struct80755A14_unk4 *unk4;
-} Struct80755A14;
-
-extern Struct80755A14 *D_global_asm_80755A14;
 extern u8 D_global_asm_807FBDC4;
 extern s16 D_global_asm_807FDCB8;
 extern s16 D_global_asm_807FDCBC;
@@ -106,8 +148,8 @@ void func_global_asm_8072E868(void) {
     s32 var_s1;
     s32 var_v1;
     GlobalASMStruct67 *temp_v0_4;
-    Struct80755A14_unk4 *var_s0_2;
-    Struct80755A14_unk4 *var_s2;
+    TriggerData *var_s0_2;
+    TriggerData *var_s2;
     void *var_v0;
 
     if (D_global_asm_807FBDC4 > 0) {
@@ -236,13 +278,13 @@ u8 func_global_asm_8072EA90(Struct8072EA90 *arg0) {
 void func_global_asm_8072EC94(s32 arg0, u8 arg1) {
     s32 i;
     s32 found;
-    Struct80755A14_unk4 *var_v1;
+    TriggerData *var_v1;
 
     found = FALSE;
-    var_v1 = D_global_asm_80755A14->unk4;
-    for (i = 0; i < D_global_asm_80755A14->unk0 && !found; i++) {
-        if (arg0 == var_v1->unkA) {
-            var_v1->unk39 = arg1;
+    var_v1 = D_global_asm_80755A14->data;
+    for (i = 0; i < D_global_asm_80755A14->count && !found; i++) {
+        if (arg0 == var_v1->raw.unkA) {
+            var_v1->active = arg1;
             found = TRUE;
         }
         var_v1++;
@@ -252,15 +294,15 @@ void func_global_asm_8072EC94(s32 arg0, u8 arg1) {
 void func_global_asm_8072ECFC(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 i;
     s32 found;
-    Struct80755A14_unk4 *var_v1;
+    TriggerData *var_v1;
 
     found = FALSE;
-    var_v1 = D_global_asm_80755A14->unk4;
-    for (i = 0; i < D_global_asm_80755A14->unk0 && !found; i++) {
-        if (arg0 == var_v1->unkA) {
-            var_v1->unk0 = arg1;
-            var_v1->unk2 = arg2;
-            var_v1->unk4 = arg3;
+    var_v1 = D_global_asm_80755A14->data;
+    for (i = 0; i < D_global_asm_80755A14->count && !found; i++) {
+        if (arg0 == var_v1->raw.unkA) {
+            var_v1->raw.x = arg1;
+            var_v1->raw.y = arg2;
+            var_v1->raw.z = arg3;
             found = TRUE;
         }
         var_v1++;
