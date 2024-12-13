@@ -154,7 +154,7 @@ extern s32 D_global_asm_80756360[];
 extern s32 D_global_asm_807563B8;
 
 typedef struct {
-    s32 unk0;
+    void *unk0;
     s32 unk4;
 } Struct807FEF88;
 
@@ -244,7 +244,25 @@ s32 func_global_asm_80732064(s32 arg0, s32 *arg1) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_8073209C.s")
+s32 func_global_asm_80732064(s32, s32*);
+
+s32 func_global_asm_8073209C(s32 instruction, s32 *shift, s32 *addr, s32 **addr_0) {
+    if ((instruction & 0x03FFFFFF) == 0x03E00008) {
+        func_global_asm_80732064(**addr_0, shift);
+        if ((D_global_asm_807FF018 != 0) && ((addr == D_global_asm_807FEF88[D_global_asm_807FF018 - 1].unk0))) {
+            D_global_asm_807FEF88[D_global_asm_807FF018 - 1].unk4++;
+        } else {
+            D_global_asm_807FEF88[D_global_asm_807FF018].unk0 = addr;
+            D_global_asm_807FEF88[D_global_asm_807FF018].unk4 = TRUE;
+            D_global_asm_807FF018++;
+        }
+        *addr_0 = addr;
+        return 1;
+    }
+    return 0;
+}
+
+
 
 // doable, close, not 100% on signature
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80732158.s")
