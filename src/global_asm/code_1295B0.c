@@ -59,6 +59,46 @@ typedef struct global_asm_struct_8 {
     s16 unk8;
 } GlobalASMStruct8;
 
+typedef struct Fence6Struct {
+    s16 x;
+    s16 y;
+    s16 z;
+} Fence6Struct;
+
+typedef struct FenceAStruct {
+    u8 pad0[0x8];
+    u16 unk8;
+} FenceAStruct;
+
+typedef struct FenceStruct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    u8 padA[2];
+    Fence6Struct *unkC;
+    s16 unk10;
+    u8 pad12[2];
+    FenceAStruct *unk14;
+    s8 unk18;
+    s8 unk19;
+    u8 pad1A[0x24 - 0x1A];
+} FenceStruct;
+
+typedef struct FenceDataStruct {
+    s16 count;
+    FenceStruct *data;
+} FenceDataStruct;
+
+typedef struct SpawnerDataStruct {
+    s16 count;
+    EnemySpawner *data;
+} SpawnerDataStruct;
+
+void func_global_asm_80728300(s16 *, FenceDataStruct *, SpawnerDataStruct *);
+void func_global_asm_80726744(Actor *, EnemySpawner *);
+
 extern Struct80755690 *D_global_asm_80755690;
 extern EnemySpawnerLocator *D_global_asm_80755694;
 extern u8 D_global_asm_80755698[];
@@ -245,7 +285,7 @@ u8 func_global_asm_80726DEC(u8 arg0, u8 arg1) {
 
     var_v1 = D_global_asm_80755694->firstSpawner;
     for (i = 0; i < D_global_asm_80755694->count; i++) {
-        if (var_v1->spawn_trigger == arg0) {
+        if (var_v1->init.spawn_trigger == arg0) {
             return (var_v1->spawn_state == arg1);
         }
         var_v1++;
@@ -281,7 +321,7 @@ void func_global_asm_80726EE0(u8 arg0) {
                 func_global_asm_80679290(var_s0->tied_actor, 0, 8, 0, 0, 0, 1);
             } else if (var_s0->spawn_state == 6 && (var_s0->tied_actor->interactable & 2)) {
                 var_s0->spawn_state = 7;
-                var_s0->respawn_time = var_s0->respawn_timer_init * 0x1E;
+                var_s0->respawn_time = var_s0->init.respawn_timer_init * 0x1E;
                 func_global_asm_8061CFCC(var_s0->tied_actor);
                 deleteActor(var_s0->tied_actor);
             }
@@ -315,7 +355,7 @@ Actor *getSpawnerTiedActor(s16 spawn_trigger, u16 arg1) {
 
     var_v1 = D_global_asm_80755694->firstSpawner;
     for (i = 0; i < D_global_asm_80755694->count; i++) {
-        if (spawn_trigger == var_v1->spawn_trigger) {
+        if (spawn_trigger == var_v1->init.spawn_trigger) {
             if (var_v1->spawn_state == 5) {
                 var_v1->properties_bitfield |= arg1;
                 return var_v1->tied_actor;
@@ -339,7 +379,7 @@ u8 func_global_asm_80727194(Actor *arg0) {
     for (i = 0; i < D_global_asm_80755694->count; i++) {
         if (arg0 == var_v1->tied_actor) {
             if (var_v1->spawn_state == 5) {
-                return var_v1->spawn_trigger;
+                return var_v1->init.spawn_trigger;
             }
         }
         var_v1++;
@@ -354,7 +394,7 @@ Actor *func_global_asm_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
 
     var_s0 = D_global_asm_80755694->firstSpawner;
     for (i = 0; i < D_global_asm_80755694->count; i++) {
-        if (arg0 == var_s0->spawn_trigger) {
+        if (arg0 == var_s0->init.spawn_trigger) {
             if (var_s0->spawn_state != 5) {
                 temp_v0 = &D_global_asm_8075EB80[var_s0->alternative_enemy_spawn];
                 if (spawnActor(temp_v0->unk0, temp_v0->unk2) != 0) {
@@ -404,8 +444,54 @@ void func_global_asm_8072752C(s16 arg0, s16 x1, s16 y1, s16 z1, s16 x2, s16 y2, 
     }
 }
 
-// Current map access as struct
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80727678.s")
+void func_global_asm_80727678(void) {
+    s32 pad;
+    s16 i, j;
+    EnemySpawner *var_s0;
+    Struct807FBB70_unk278 *temp_t0;
+
+    var_s0 = D_global_asm_80755694->firstSpawner;
+    for (i = 0; i < D_global_asm_80755694->count; i++) {
+        for (j = 0; j < D_global_asm_807FBB70.unk254; j++) {
+            temp_t0 = D_global_asm_807FBB70.unk278[j];
+            if (temp_t0->unk0 != var_s0->init.spawn_trigger) {
+                continue;
+            }
+            switch (D_global_asm_807FBB70.unk258[j]) {
+            case 1:
+                if (
+                    (var_s0->spawn_state == 0) && 
+                    func_global_asm_807317FC(current_map, var_s0->init.spawn_trigger) && 
+                    spawnActor(D_global_asm_8075EB80[var_s0->alternative_enemy_spawn].unk0, D_global_asm_8075EB80[var_s0->alternative_enemy_spawn].unk2)) {
+                    func_global_asm_80726744(last_spawned_actor, var_s0);
+                } else if ((var_s0->spawn_state == 3) && 
+                    func_global_asm_807317FC(current_map, var_s0->init.spawn_trigger)) {
+                    if (spawnActor(D_global_asm_8075EB80[var_s0->alternative_enemy_spawn].unk0, D_global_asm_8075EB80[var_s0->alternative_enemy_spawn].unk2)) {
+                        func_global_asm_80726744(last_spawned_actor, var_s0);
+                        last_spawned_actor->control_state = 0x36;
+                    }
+                }
+                break;
+            case 2:
+                if (var_s0->spawn_state == 7) {
+                    var_s0->spawn_state = var_s0->init.something_spawn_state;
+                    break;
+                }
+                break;
+            case 3:
+            case 4:
+                if (var_s0->spawn_state == 5) {
+                    func_global_asm_8067AB20(current_actor_pointer, var_s0->tied_actor, 0x01000000, D_global_asm_807FBB70.unk258[j], temp_t0, 0U);
+                    break;
+                }
+                break;
+            }
+        }
+        var_s0++;
+    }
+}
+
+
 
 void func_global_asm_807278C0(EnemyInfo *arg0) {
     u8 temp_v0;
@@ -493,6 +579,123 @@ void func_global_asm_8072827C(Struct80755690_unk4 *arg0) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80728300.s")
+
+/*
+Close - Enemy spawner loader
+void func_global_asm_80728300(s16 *file, FenceDataStruct *fence, SpawnerDataStruct *spawner) {
+    s16 j;
+    s16 var_s3;
+    s16 i;
+    s32 var_s4;
+    s16 fence_count;
+    s16 fence_6_count;
+    s16 fence_a_count;
+    s16 spawner_count;
+    s16 *file_copy;
+    FenceStruct *var_s0;
+    EnemySpawner *var_s0_2;
+    SpawnerData_unk20 *var_s0_3;
+    SpawnerFileData *file_spawner;
+    FenceAStruct *file_fence_a;
+    Fence6Struct *file_fence_6;
+    SpawnerData_unk20 *file_spawner_sub;
+
+    if (file) {
+        fence_count = fence->count = *file++;
+    } else {
+        fence_count = fence->count = 0;
+    }
+    file_copy = file;
+    fence->data = var_s0 = malloc(fence_count * sizeof(FenceStruct));
+    for (i = 0; i < fence->count; i++) {
+        var_s4 = TRUE;
+        if (i) var_s0++;
+        var_s0->unk0 = 0x7FFF;
+        var_s0->unk4 = -0x8000;
+        var_s0->unk2 = var_s0->unk0;
+        var_s0->unk6 = var_s0->unk4;
+        if (file_copy) {
+            fence_6_count = var_s0->unk8 = *file_copy++;
+        } else {
+            fence_6_count = var_s0->unk8 = 0;
+        }
+        file_fence_6 = file_copy;
+        if (fence_6_count != 0) {
+            var_s0->unkC = malloc(fence_6_count * sizeof(Fence6Struct));
+        }
+        for (j = 0; j < fence_6_count; j++) {
+            var_s0->unkC[j] = *file_fence_6++;
+            var_s0->unk0 = MIN(var_s0->unk0, var_s0->unkC[j].x);
+            var_s0->unk2 = MIN(var_s0->unk2, var_s0->unkC[j].z);
+            var_s0->unk4 = MAX(var_s0->unk4, var_s0->unkC[j].x);
+            var_s0->unk6 = MAX(var_s0->unk6, var_s0->unkC[j].z);
+            if (j == 0) {
+                var_s3 = var_s0->unkC[j].y;
+            } else {
+                if (var_s3 != var_s0->unkC[j].y) {
+                    var_s4 = FALSE;
+                }
+                var_s3 = var_s0->unkC[j].y;
+            }
+        }
+        file_copy = file_fence_6;
+        if (file_copy) {
+            fence_a_count = var_s0->unk10 = *file_copy++;
+        } else {
+            fence_a_count = var_s0->unk10 = 0;
+        }
+        file_fence_a = file_copy;
+        if (fence_a_count != 0) {
+            var_s0->unk14 = malloc(fence_a_count * sizeof(FenceAStruct));
+        }
+        for (j = 0; j < fence_a_count; j++) {
+            var_s0->unk14[j] = *file_fence_a++;
+        }
+        file_copy = file_fence_a;
+        if (file_copy) {
+            var_s0->unk18 = *file_copy++;
+            var_s0->unk19 = *file_copy++;
+            if (var_s4) {
+                var_s0->unk19 = TRUE;
+            }
+        }
+    }
+    if (file_copy) {
+        spawner_count = spawner->count = *file_copy++;
+    } else {
+        spawner_count = spawner->count = 0;
+    }
+    spawner->data = malloc(spawner_count * sizeof(SpawnerData));
+    func_global_asm_80611690(spawner->data);
+    var_s0_2 = spawner->data;
+    for (i = 0; i < spawner->count; i++) {
+        if (i) {
+            var_s0_2++;
+        }
+        file_spawner = file_copy;
+        var_s0_2->init = *file_spawner++;
+        file_spawner_sub = file_spawner;
+        var_s0_2->spawn_state = var_s0_2->init.unk12;
+        var_s0_2->alt_enemy_spawn = var_s0_2->init.enemy_value;
+        var_s0_2->tied_actor = 0;
+        var_s0_2->unk46 = 0;
+        var_s0_2->respawn_timer = 0;
+        var_s0_2->counter = 0;
+        var_s0_2->unk3C = 0.0f;
+        var_s0_2->chunk = func_global_asm_806531B8(var_s0_2->init.x, var_s0_2->init.y, var_s0_2->init.z, 0);
+        var_s0_2->unk20 = malloc(var_s0_2->init.extra_data_count * sizeof(SpawnerData_unk20));
+        for (j = 0; j < var_s0_2->init.extra_data_count; j++) {
+            var_s0_3 = &var_s0_2->unk20[j];
+            var_s0_3->unk0 = file_spawner_sub->unk0;
+            var_s0_3->unk1 = file_spawner_sub->unk1;
+            file_spawner_sub++;
+        }
+        file_copy = file_spawner_sub;
+        func_global_asm_8072827C(var_s0_2);
+    }
+}
+*/
+
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_8072881C.s")

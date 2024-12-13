@@ -2556,8 +2556,8 @@ typedef struct {
     EnemyAggressionBox *aggression_box_pointer; // = 0xC, -- u32
 } EnemyMovementBox;
 
-typedef struct {
-	u8 enemy_value; // 0x0
+typedef struct SpawnerFileData {
+    u8 enemy_value; // 0x0
     u8 unk1;
 	u16 y_rot; // 0x2
 	s16 x_pos; // 0x4
@@ -2575,11 +2575,20 @@ typedef struct {
 	u8 spawn_trigger; // 0x13
 	u8 respawn_timer_init; // 0x14 - Result is multiplied by 30 to get actual respawn timer
 	u8 unk15;
+} SpawnerFileData;
+
+typedef struct SpawnerData_unk20 {
+    u8 unk0;
+    u8 unk1;
+} SpawnerData_unk20;
+
+typedef struct {
+	SpawnerFileData init;
     u8 unk16;
     u8 unk17;
     Actor *tied_actor; // 0x18
 	EnemyMovementBox *movement_box_pointer; // 0x1C
-	void *unk20; // 0x20
+	SpawnerData_unk20 *unk20; // 0x20
 	s16 respawn_time; // 0x24
     s16 unk26;
     s32 unk28;
