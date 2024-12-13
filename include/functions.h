@@ -3676,7 +3676,7 @@ u8 func_global_asm_80725B38(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s1
 // TODO: func_global_asm_80725BA4 has no documented signature
 u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6);
 // TODO: func_global_asm_80725ED4 has no documented signature
-s32 func_global_asm_80726164(Actor *actor, s16 x, s16 y, s16 z, void *arg4);
+s32 func_global_asm_80726164(Actor *actor, s16 x, s16 y, s16 z, FenceStruct *arg4);
 // TODO: func_global_asm_807264B0 has no documented signature
 void func_global_asm_807266E8(Actor *arg0, CharacterSpawner *arg1);
 // TODO: func_global_asm_80726744 has no documented signature

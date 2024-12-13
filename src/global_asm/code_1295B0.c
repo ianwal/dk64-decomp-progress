@@ -59,43 +59,6 @@ typedef struct global_asm_struct_8 {
     s16 unk8;
 } GlobalASMStruct8;
 
-typedef struct Fence6Struct {
-    s16 x;
-    s16 y;
-    s16 z;
-} Fence6Struct;
-
-typedef struct FenceAStruct {
-    u8 pad0[0x8];
-    u16 unk8;
-} FenceAStruct;
-
-typedef struct FenceStruct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    u8 padA[2];
-    Fence6Struct *unkC;
-    s16 unk10;
-    u8 pad12[2];
-    FenceAStruct *unk14;
-    s8 unk18;
-    s8 unk19;
-    u8 pad1A[0x24 - 0x1A];
-} FenceStruct;
-
-typedef struct FenceDataStruct {
-    s16 count;
-    FenceStruct *data;
-} FenceDataStruct;
-
-typedef struct SpawnerDataStruct {
-    s16 count;
-    EnemySpawner *data;
-} SpawnerDataStruct;
-
 void func_global_asm_80728300(s16 *, FenceDataStruct *, SpawnerDataStruct *);
 void func_global_asm_80726744(Actor *, EnemySpawner *);
 
@@ -255,7 +218,63 @@ u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s1
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80725ED4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80726164.s")
+s32 func_global_asm_807255A8(s16, s16, s16, s16, s32, s32, s32, s32, void *, void *);
+
+s32 func_global_asm_80726164(Actor *actor, s16 x, s16 y, s16 z, FenceStruct *arg4) {
+    s32 var_v0;
+    f32 sp98;
+    f32 sp94;
+    f32 x0, y0, z0;
+    u8 var_s3;
+    u8 var_s5;
+    s16 i;
+    s16 var_s6;
+    FenceAStruct *a;
+
+    var_s6 = 0;
+    var_s5 = 0;
+    x0 = actor->x_position;
+    y0 = actor->y_position + actor->unk15E;
+    z0 = actor->z_position;
+    for (i = 1; i < arg4->unk8; i++) {
+        if ((i + 1) != arg4->unk8) {
+            var_v0 = func_global_asm_807255A8(x, z, -0x8000, -0x8000, arg4->unkC[i].x, arg4->unkC[i].z, arg4->unkC[i + 1].x, arg4->unkC[i + 1].z, &sp98, &sp94);
+        } else {
+            var_v0 = func_global_asm_807255A8(x, z, -0x8000, -0x8000, arg4->unkC[i].x, arg4->unkC[i].z, arg4->unkC[1].x, arg4->unkC[1].z, &sp98, &sp94);
+        }
+        var_s6 += var_v0 != 0;
+        if (var_v0 == 3) {
+            var_s5++;
+        }
+    }
+    if ((var_s5 != 0) && !(var_s5 & 1) && (var_s6 == var_s5)) {
+        var_s6--;
+    }
+    var_s3 = TRUE;
+    if (var_s6 & 1) {
+        for (i = 0; var_s3 && i < arg4->unk10; i++) {
+            a = &arg4->unk14[i];
+            if (a->unk6 & 0x80) {
+                continue;
+            }
+            if ((((a->unk6 & 0x7F) != 0) && ((a->unk6 & 0x7F) != 5))) {
+                continue;
+            }
+            if (!func_global_asm_80725DC0(x0, z0, x, z, a->unk0, a->unk4, a->unk7)) {
+                continue;
+            }
+            a = &arg4->unk14[i];
+            if ((a->unk2 <= y0) && (y0 <= (a->unk8 + a->unk2))) {
+                var_s3 = FALSE;
+            }
+        }
+    } else {
+        var_s3 = FALSE;
+    }
+    return var_s3;
+}
+
+
 
 // arg0 Actor, doable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_807264B0.s")
@@ -513,7 +532,7 @@ void func_global_asm_807278C0(EnemySpawner *arg0) {
     }
 }
 
-s32 func_global_asm_8072818C(EnemySpawner *, s32);     /* extern */
+u8 func_global_asm_8072818C(EnemySpawner *, s32);     /* extern */
 
 void func_global_asm_80727958(void) {
     Actor *temp_a0;
@@ -684,17 +703,16 @@ u8 func_global_asm_807280C8(EnemyInfo *arg0, s32 arg1) {
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_8072818C.s")
-
 /*
-u8 func_global_asm_8072818C(EnemyInfo *arg0, s32 arg1) {
+u8 func_global_asm_8072818C(EnemySpawner *arg0, s32 arg1) {
     f32 temp_f0;
 
     temp_f0 = sqrtf(arg1) * 1.5;
-    return ((arg0->unk18->interactable & 2) && !(arg0->unk46 & 0x20) && arg0->unk12 == 2)
+    return ((arg0->tied_actor->interactable & 2) && !(arg0->properties_bitfield & 0x20) && arg0->init.something_spawn_state == 2)
         && ((temp_f0) * (temp_f0)) < 
-            ((character_change_array[0].look_at_eye_z - arg0->unk18->z_position) * (character_change_array[0].look_at_eye_z - arg0->unk18->z_position))
-            + ((character_change_array[0].look_at_eye_y - arg0->unk18->y_position) * (character_change_array[0].look_at_eye_y - arg0->unk18->y_position))
-            + ((character_change_array[0].look_at_eye_x - arg0->unk18->x_position) * (character_change_array[0].look_at_eye_x - arg0->unk18->x_position));
+            ((character_change_array[0].look_at_eye_z - arg0->tied_actor->z_position) * (character_change_array[0].look_at_eye_z - arg0->tied_actor->z_position))
+            + ((character_change_array[0].look_at_eye_y - arg0->tied_actor->y_position) * (character_change_array[0].look_at_eye_y - arg0->tied_actor->y_position))
+            + ((character_change_array[0].look_at_eye_x - arg0->tied_actor->x_position) * (character_change_array[0].look_at_eye_x - arg0->tied_actor->x_position));
 }
 */
 

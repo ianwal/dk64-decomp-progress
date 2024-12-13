@@ -2633,6 +2633,48 @@ typedef struct {
 	u16 properties_bitfield; // = 0x46 bitfield -- TODO: Document this, find where this comes from so we can display stuff pre-load
 } EnemySpawner; // 807FDC8C pointer to array of structs, count at 807FDC88
 
+typedef struct Fence6Struct {
+    s16 x;
+    s16 y;
+    s16 z;
+} Fence6Struct;
+
+typedef struct FenceAStruct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+} FenceAStruct;
+
+typedef struct FenceStruct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    u8 padA[2];
+    Fence6Struct *unkC;
+    s16 unk10;
+    u8 pad12[2];
+    FenceAStruct *unk14;
+    s8 unk18;
+    s8 unk19;
+    u8 pad1A[0x24 - 0x1A];
+} FenceStruct;
+
+typedef struct FenceDataStruct {
+    s16 count;
+    FenceStruct *data;
+} FenceDataStruct;
+
+typedef struct SpawnerDataStruct {
+    s16 count;
+    EnemySpawner *data;
+} SpawnerDataStruct;
+
 typedef struct Struct807FDC90 Struct807FDC90;
 
 // Use this for D_global_asm_807FDC90

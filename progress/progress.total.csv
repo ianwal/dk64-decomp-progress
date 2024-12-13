@@ -1786,7 +1786,7 @@ us,asm,_n_freePVoice,64,yes
 us,asm,func_global_asm_806B7660,68,yes
 us,asm,func_global_asm_806A1F28,60,yes
 us,asm,func_global_asm_806E0FAC,904,no
-us,asm,func_global_asm_80726164,844,no
+us,asm,func_global_asm_80726164,844,yes
 us,asm,func_global_asm_8069E724,80,yes
 us,asm,func_global_asm_8062F538,264,no
 us,asm,func_global_asm_8062D0CC,220,yes
