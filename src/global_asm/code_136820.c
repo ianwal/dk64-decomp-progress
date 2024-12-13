@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "stdarg.h"
 
 // .rodata
 const char D_global_asm_8075FFF0[] = "CLIP ARRAY OVERFLOW";
@@ -101,27 +102,23 @@ void func_global_asm_80731B88(u8 arg0) {
     }
 }
 
-
-
-// Close, regalloc, stack
-// https://decomp.me/scratch/3IeSa
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80731D20.s")
-
 extern s32 D_global_asm_807FEF70;
 extern s32 D_global_asm_807FEF74;
 extern s32 D_global_asm_807FEF78;
 extern s32 D_global_asm_807FEF7C;
 
-/*
 void func_global_asm_80731D20(char *arg0, ...) {
-    unsigned char sp4D[0x81];
-    unsigned char *var_s1;
-    unsigned char character;
+    u8 character;
+    u8 sp4C[0x80];
+    u8 *var_s1;
+    va_list args;
+    va_start(args, arg0);
 
-    func_dk64_boot_8000320C(&sp4D);
-    var_s1 = &sp4D;
-    character = *var_s1;
-    while (character != '\0') {
+    func_dk64_boot_8000320C(&sp4C, arg0, args);
+    va_end(args);
+    var_s1 = &sp4C;
+    character = *var_s1++;
+    while (character) {
         switch (character) {
             case ' ':
                 D_global_asm_807FEF70 += D_global_asm_807FEF78;
@@ -132,19 +129,17 @@ void func_global_asm_80731D20(char *arg0, ...) {
                 D_global_asm_807FEF70 *= 8;
                 break;
             case '\n':
-                D_global_asm_807FEF74 += D_global_asm_807FEF78;
                 D_global_asm_807FEF70 = D_global_asm_807FEF7C;
+                D_global_asm_807FEF74 += D_global_asm_807FEF78;
                 break;
             default:
                 func_global_asm_80731B88(character);
                 D_global_asm_807FEF70 += D_global_asm_807FEF78;
                 break;
         }
-        character = *var_s1;
-        var_s1++;
+        character = *var_s1++;
     }
 }
-*/
 
 // regalloc, rodata, close, doable
 // https://decomp.me/scratch/x50qz
