@@ -1135,7 +1135,7 @@ s32 func_global_asm_8066AC10(Struct8066AC10 *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066ACA4.s")
 
 extern s32 D_dk64_boot_8000DDCC;
-extern void *D_global_asm_807F9520;
+extern s32 *D_global_asm_807F9520;
 extern s32 *D_global_asm_807F9528[];
 extern s32 D_global_asm_807F9628[];
 extern s32 D_global_asm_807F9680;
@@ -1401,7 +1401,43 @@ s32 func_global_asm_8066B5C8(s32 pointerTableIndex, s32 fileIndex) {
     return phi_v1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066B5F4.s")
+void func_global_asm_8060B140(s32, s32 *, s32 *, s32, s32, s32, s32);
+extern s32 D_dk64_boot_8000DDCC;
+
+void func_global_asm_8066B5F4(s32 pointerTableIndex) {
+    s32 tbl_off;
+    u64 file_addr;
+    u32 i;
+    u32 file_size;
+    s32 size;
+    s32 pad;
+
+    size = 8;
+    if (D_global_asm_807F9528[pointerTableIndex]) {
+        return;
+    }
+    tbl_off = D_global_asm_807F9520[pointerTableIndex];
+    func_global_asm_8060B140(D_dk64_boot_8000DDCC + tbl_off, &file_addr, &size, 0, 0, 0, 0);
+    file_size = (s32)__ull_rshift(file_addr, 32) - tbl_off;
+    D_global_asm_807F9528[pointerTableIndex] = malloc(file_size);
+    func_global_asm_8060B140(D_dk64_boot_8000DDCC + tbl_off, D_global_asm_807F9528[pointerTableIndex], &file_size, 0, 0, 0, 0);
+    switch (pointerTableIndex) {
+        case 4:
+        case 7:
+        case 0xE:
+        case 0x19:
+            D_global_asm_807F95A8[pointerTableIndex] = malloc(file_size);
+            for (i = 0; i < file_size >> 2; i++) {
+                D_global_asm_807F95A8[pointerTableIndex][i] = 0;
+            }
+            break;
+        default:
+            D_global_asm_807F95A8[pointerTableIndex] = 0;
+            break;
+    }
+}
+
+
 
 typedef struct global_asm_struct_40 GlobalASMStruct40;
 
