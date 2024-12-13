@@ -41,12 +41,11 @@ extern OSMesgQueue D_global_asm_807FEF58;
 extern s32 D_global_asm_807FEF70;
 extern s32 D_global_asm_807FEF74;
 extern s32 D_global_asm_807FEF78;
-extern s32 D_global_asm_807FEF80;
+extern u16 *D_global_asm_807FEF80;
 extern u16 D_global_asm_807FEF84;
-extern s16 D_global_asm_807FEF86;
+extern u16 D_global_asm_807FEF86;
 
 extern OSMesgQueue D_global_asm_807FEF58;
-extern s32 D_global_asm_807FEF80;
 
 extern u8 D_global_asm_807FF01C;
 extern s32 D_global_asm_807FF020;
@@ -73,7 +72,36 @@ void func_global_asm_80731B60(s32 arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80731B88.s")
+typedef struct StackTraceLetterStruct {
+    u8 line[6];
+} StackTraceLetterStruct;
+
+extern s16 D_global_asm_80744490;
+extern u8 D_global_asm_8074450C;
+extern StackTraceLetterStruct D_global_asm_80756130[];
+
+void func_global_asm_80731B88(u8 arg0) {
+    s32 i, j, k, l;
+    u16 *var_v1;
+    u8 *var_v0;
+
+    var_v0 = &D_global_asm_80756130[arg0 - '!'];
+    var_v1 = ((D_global_asm_807FEF70 + 3) * D_global_asm_8074450C * 4) + D_global_asm_807FEF80 + (D_global_asm_80744490 * (D_global_asm_807FEF74 + 3) * D_global_asm_8074450C * 6);
+    for (i = 0; i < 6; i++) {
+        for (j = 0; j < D_global_asm_8074450C * D_global_asm_807FEF78; j++) {
+            for (k = 3; k >= 0; k--) {
+                for (l = 0; l < D_global_asm_8074450C * D_global_asm_807FEF78; l++) {
+                    *var_v1++ = *var_v0 & (1 << k) ? D_global_asm_807FEF84 : D_global_asm_807FEF86;
+                }
+            }
+            var_v1 += (D_global_asm_80744490 - (D_global_asm_807FEF78 * 4 * D_global_asm_8074450C));
+
+        }
+        var_v0++;
+    }
+}
+
+
 
 // Close, regalloc, stack
 // https://decomp.me/scratch/3IeSa

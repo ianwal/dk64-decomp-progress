@@ -1383,7 +1383,7 @@ us,asm,func_global_asm_806C90C4,512,yes
 us,asm,func_global_asm_8071261C,12,yes
 us,asm,func_global_asm_8060BB18,200,no
 us,asm,gameIsInSnidesBonusGameMode,52,yes
-us,asm,func_global_asm_80731B88,408,no
+us,asm,func_global_asm_80731B88,408,yes
 us,asm,func_global_asm_806BC1E0,3512,no
 us,asm,func_global_asm_806E0D40,620,no
 us,asm,func_global_asm_80704298,428,no
