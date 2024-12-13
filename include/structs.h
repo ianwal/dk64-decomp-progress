@@ -2529,7 +2529,9 @@ typedef struct {
     u16 unk2;
     s32 unk4;
     s32 unk8;
-    s32 unkC;
+    s16 unkC;
+    u8 unkE;
+    u8 unkF;
     s32 unk10;
     u8 unk14;
     u8 unk15;
@@ -2548,13 +2550,18 @@ typedef struct {
     s16 coords_4[3]; // 0x18
 } EnemyAggressionBox;
 
-typedef struct {
+typedef struct EnemyMovementBox EnemyMovementBox;
+
+struct EnemyMovementBox {
     s16 x_pos_0; // 0x0
     s16 z_pos_0; // 0x2
     s16 x_pos_1; // 0x4
     s16 z_pos_1; // 0x6
+    u8 pad[4];
     EnemyAggressionBox *aggression_box_pointer; // = 0xC, -- u32
-} EnemyMovementBox;
+    u8 pad10[0xC];
+    Actor *unk1C;
+};
 
 typedef struct SpawnerFileData {
     u8 enemy_value; // 0x0

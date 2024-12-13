@@ -3692,7 +3692,7 @@ Actor *func_global_asm_807271F4(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
 void func_global_asm_807273A8(s16 arg0, u8 arg1);
 void func_global_asm_8072752C(s16 arg0, s16 x1, s16 y1, s16 z1, s16 x2, s16 y2, s16 z2, s16 arg7, s16 arg8);
 // TODO: func_global_asm_80727678 has no documented signature
-void func_global_asm_807278C0(EnemyInfo *arg0);
+void func_global_asm_807278C0(EnemySpawner *arg0);
 // TODO: func_global_asm_80727958 has no documented signature
 u8 func_global_asm_80727F20(EnemyInfo *arg0, s32 arg1);
 u8 func_global_asm_80728004(EnemyInfo *arg0, s32 arg1);

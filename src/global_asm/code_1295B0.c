@@ -493,27 +493,167 @@ void func_global_asm_80727678(void) {
 
 
 
-void func_global_asm_807278C0(EnemyInfo *arg0) {
+void func_global_asm_807278C0(EnemySpawner *arg0) {
     u8 temp_v0;
 
-    if (current_map == MAP_FUNGI && extra_player_info_pointer->unk1F0 & 0x100000 && D_global_asm_80755698[arg0->enemy_type] != 0xA) {
-        switch (arg0->enemy_type) {
+    if (current_map == MAP_FUNGI && extra_player_info_pointer->unk1F0 & 0x100000 && D_global_asm_80755698[arg0->init.enemy_value] != 0xA) {
+        switch (arg0->init.enemy_value) {
             case 28: // TODO: Enemy type enum
-                arg0->unk44 = 0x63;
+                arg0->alternative_enemy_spawn = 0x63;
                 return;
             case 9: // TODO: Enemy type enum
-                arg0->unk44 = 0x54;
+                arg0->alternative_enemy_spawn = 0x54;
                 return;
             case 44: // TODO: Enemy type enum
-                arg0->unk44 = 0x67;
+                arg0->alternative_enemy_spawn = 0x67;
                 return;
         }
     } else {
-        arg0->unk44 = arg0->enemy_type;
+        arg0->alternative_enemy_spawn = arg0->init.enemy_value;
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80727958.s")
+s32 func_global_asm_8072818C(EnemySpawner *, s32);     /* extern */
+
+void func_global_asm_80727958(void) {
+    Actor *temp_a0;
+    Actor *temp_a0_2;
+    Actor *temp_a0_3;
+    Actor *temp_a0_4;
+    Actor *temp_a0_5;
+    Actor *temp_a0_6;
+    Actor *temp_v0_5;
+    EnemyMovementBox *temp_v0_4;
+    EnemySpawner *var_s0;
+    Struct8075EB80 *temp_v0_2;
+    Struct8075EB80 *temp_v0_3;
+    f32 dz;
+    f32 dx;
+    s16 temp_v0;
+    s16 j;
+    s16 i;
+    u8 temp_a1;
+    s32 temp_f16;
+    s32 temp_lo;
+    s32 temp_t4;
+    s32 var_s1;
+    s32 min_dist;
+    s32 var_v0;
+    u8 temp_v0_6;
+    u8 temp_v0_7;
+    PlayerAdditionalActorData *PaaD;
+
+    var_s0 = D_global_asm_80755694->firstSpawner;
+    for (i = 0; i < D_global_asm_80755694->count; i++) {
+        temp_a1 = (var_s0->spawn_state > 4) && (var_s0->spawn_state < 7);
+        if (temp_a1 != 0) {
+            D_global_asm_807FDC90 = var_s0->tied_actor->additional_actor_data;
+        }
+        var_s1 = D_global_asm_8075EB80[var_s0->alternative_enemy_spawn].unkE * 100;
+        var_s1 = var_s1 * var_s1;
+        if (temp_a1 != 0) {
+            var_s0->chunk = var_s0->tied_actor->unk12C;
+        }
+        if ((var_s1 == 0) || (var_s0->properties_bitfield & 4) || (D_global_asm_807FBB64 & 0x100)) {
+            var_s1 = 0x7FFFFFFF;
+        }
+        if ((temp_a1 != 0) && var_s0->tied_actor->control_state == 0x3B) {
+            func_global_asm_8061CFCC(var_s0->tied_actor);
+            deleteActor(var_s0->tied_actor);
+            var_s0->spawn_state = 0;
+        } else if ((temp_a1 != 0) && var_s0->tied_actor->control_state == 0x3C) {
+            func_global_asm_8061CFCC(var_s0->tied_actor);
+            deleteActor(var_s0->tied_actor);
+            var_s0->spawn_state = var_s0->init.something_spawn_state;
+            var_s0->properties_bitfield &= 0xFFFB;
+        } else {
+            if ((var_s0->spawn_state == 7) && (var_s0->respawn_time != 0)) {
+                if (!(var_s0->properties_bitfield & 2)) {
+                    var_s0->respawn_time--;
+                    if (var_s0->respawn_time == 0) {
+                        var_s0->counter += 1;
+                        var_s0->spawn_state = var_s0->init.something_spawn_state;
+                        var_s0->chunk = func_global_asm_806531B8(var_s0->init.x_pos, var_s0->init.y_pos, var_s0->init.z_pos, 0);
+                        func_global_asm_807278C0(var_s0);
+                        temp_v0_2 = &D_global_asm_8075EB80[var_s0->alternative_enemy_spawn];
+                        if (spawnActor(temp_v0_2->unk0, temp_v0_2->unk2)) {
+                            func_global_asm_80726744(last_spawned_actor, var_s0);
+                            last_spawned_actor->control_state = 0x36;
+                            var_s0->properties_bitfield |= 1;
+                        }
+                    }
+                }
+            } else if (var_s0->spawn_state == 2) {
+                if ((func_global_asm_80727F20(var_s0, var_s1)) && (func_global_asm_807317FC(current_map, var_s0->init.spawn_trigger))) {
+                    func_global_asm_807278C0(var_s0);
+                    temp_v0_3 = &D_global_asm_8075EB80[var_s0->alternative_enemy_spawn];
+                    if (spawnActor(temp_v0_3->unk0, temp_v0_3->unk2)) {
+                        func_global_asm_80726744(last_spawned_actor, var_s0);
+                    }
+                }
+            } else if ((temp_a1 != 0) && var_s0->tied_actor->control_state == 0x40) {
+                temp_v0_4 = var_s0->movement_box_pointer;
+                var_s0->spawn_state = 7;
+                var_s0->respawn_time = var_s0->init.respawn_timer_init * 30;
+                if (temp_v0_4->unk1C == var_s0->tied_actor) {
+                    temp_v0_4->unk1C = 0;
+                }
+                func_global_asm_8061CFCC(var_s0->tied_actor);
+                deleteActor(var_s0->tied_actor);
+            } else if (temp_a1 != 0) {
+                min_dist = 999999;
+                temp_v0_5 = D_global_asm_807FDC90->unk4;
+                if ((temp_v0_5->interactable & 1) && (temp_v0_5->control_state == 0x67)) {
+                    temp_a0_4 = var_s0->tied_actor;
+                    if ((temp_a0_4->interactable & 2) && (var_s0->spawn_state == 5)) {
+                        temp_v0_6 = temp_a0_4->control_state;
+                        if ((temp_v0_6 != 0x16) && (temp_v0_6 != 0x37) && !(var_s0->properties_bitfield & 0x40)) {
+                            temp_a0_4->control_state = 0x16;
+                            var_s0->tied_actor->control_state_progress = 0;
+                        }
+                    }
+                }
+                if (cc_number_of_players > 1) {
+                    for (j = 0; j < cc_number_of_players; j++) {
+                        PaaD = character_change_array->player_pointer->PaaD;
+                        dz = current_actor_pointer->z_position - character_change_array[j].player_pointer->z_position;
+                        dx = current_actor_pointer->x_position - character_change_array[j].player_pointer->x_position;
+                        temp_f16 = (dz * dz) + (dx * dx);
+                        if ((temp_f16 < min_dist) || (PaaD->unkD4 != 0)) {
+                            min_dist = temp_f16;
+                            D_global_asm_807FDC90->unk4 = character_change_array[j].player_pointer;
+                        }
+
+                    }
+                }
+                if (var_s0->spawn_state == 6) {
+                    if (func_global_asm_8072818C(var_s0, var_s1) != 0) {
+                        deleteActor(var_s0->tied_actor);
+                        var_s0->spawn_state = var_s0->init.something_spawn_state;
+                    } else if (func_global_asm_80728004(var_s0, var_s1) != 0) {
+                        func_global_asm_80678428(var_s0->tied_actor);
+                        var_s0->spawn_state = 5;
+                        var_s0->properties_bitfield |= 0x8000;
+                    }
+                } else if ((var_s0->spawn_state == 5) && (func_global_asm_807280C8(var_s0, var_s1) != 0)) {
+                    if ((var_s0->tied_actor->control_state != 0x16) && (var_s0->tied_actor->control_state != 0x37)) {
+                        if (var_s0->tied_actor->unk58 == ACTOR_FAIRY) {
+                            func_global_asm_80602B60(0x42, 0U);
+                        }
+                        func_global_asm_80605314(var_s0->tied_actor, 0U);
+                        func_global_asm_80605314(var_s0->tied_actor, 1U);
+                        func_global_asm_80678458(var_s0->tied_actor);
+                        var_s0->spawn_state = 6;
+                        D_global_asm_807FDC90->unk18 = 0;
+                    }
+                }
+            }
+        }
+        var_s0++;
+    }
+}
+
+
 
 u8 func_global_asm_80727F20(EnemyInfo *arg0, s32 arg1) {
     return (((character_change_array[0].look_at_eye_x - arg0->x_position) * (character_change_array[0].look_at_eye_x - arg0->x_position))
