@@ -27594,20 +27594,14 @@ void func_arcade_8002CD64(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002D6FC.s")
 
-// TODO: Close
-// https://decomp.me/scratch/wfinO
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002E158.s")
-
-/*
 void func_arcade_8002E158(s32 arg0) {
     s32 temp;
-    f32 dy;
 
     if (arcade_game_state != 0)
         return;
     
     arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
-    arcade_objects[arg0].unk10 = arcade_objects[arg0].unk10 + 0.1;
+    arcade_objects[arg0].unk10 += 0.1;
     temp = arcade_objects[arg0].unk10;
     switch (temp & 0x1) {
         case 0:
@@ -27617,7 +27611,7 @@ void func_arcade_8002E158(s32 arg0) {
             arcade_objects[arg0].sprite = &D_arcade_80037990;
             break;
     }
-    arcade_objects[arg0].y_position += 5.0f;
+    arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
     if (arcade_objects[arg0].y_velocity < 5.0f) {
         arcade_objects[arg0].y_velocity += 0.3;
     }
@@ -27637,13 +27631,11 @@ void func_arcade_8002E158(s32 arg0) {
         arcade_objects[arg0].object_type = 0;
     }
     if (__arcade_abs_w((s32)(arcade_objects[arg0].x_position - arcade_objects[arcade_jumpman_slot].x_position)) < 7) {
-        dy = arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position;
-        if (dy < 4.0f && -8.0f < dy) {
+        if ((arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position) < 4.0f && -8.0f < (arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position)) {
             func_arcade_80027E8C();
         }
     }
 }
-*/
 
 void func_arcade_8002E3D4(s32 arg0) {
     s32 newFlameIndex;
