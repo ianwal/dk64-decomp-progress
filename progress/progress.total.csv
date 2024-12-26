@@ -4062,7 +4062,7 @@ us,.arcade,arcade_75m_setup,1792,yes
 us,.arcade,func_arcade_80031948,140,yes
 us,.arcade,func_arcade_800275E8,1104,no
 us,.arcade,func_arcade_8002EEB8,2420,no
-us,.arcade,func_arcade_8002E158,636,no
+us,.arcade,func_arcade_8002E158,636,yes
 us,.arcade,func_arcade_80024CF8,152,yes
 us,.arcade,func_arcade_80024E84,852,yes
 us,.arcade,func_arcade_8002A734,752,yes
