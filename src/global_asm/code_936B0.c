@@ -1482,11 +1482,10 @@ void func_global_asm_80696A6C(void) {
         func_global_asm_807248B0(current_actor_pointer, current_actor_pointer->unk124->unkC * 0.15);
     }
     sp44->unk11++;
-    if (sp44->unk10 < (sp44->unk11)) {
+    if (sp44->unk10 < sp44->unk11) {
         playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x15B, 0xFF, 0x6E, 0, 0x1E, 0.3f, 0);
-        temp2 = sp44->unk10;
         sp44->unk11 = 0;
-        if (temp2 >= 3) {
+        if (sp44->unk10 >= 3) {
             sp44->unk10--;
         }
     }
