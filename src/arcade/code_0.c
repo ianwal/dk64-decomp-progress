@@ -25104,6 +25104,7 @@ void func_arcade_800251D8(Gfx **arg0);
 void func_arcade_800252D8(Gfx **arg0);
 void func_arcade_800257D8(void); 
 void func_arcade_80025960(Gfx **arg0);
+void func_arcade_80026EF4(Gfx **arg0);
 void func_arcade_800275E8(Gfx **arg0);
 void func_arcade_80027A38(Gfx **arg0);
 void func_arcade_800311E0(void);
@@ -26025,7 +26026,103 @@ void func_arcade_800268AC(Gfx **gpp) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80026EF4.s")
+void func_arcade_80026EF4(Gfx **arg0) {
+    s32 i;
+    Gfx *sp60;
+
+    sp60 = *arg0;
+
+    if (D_arcade_8004C708 < 2) {
+        D_arcade_8004C719 = 2;
+        D_arcade_8004C71A = 8;
+        D_arcade_8004C6D4 = 0x400;
+        D_arcade_8004C6D0 = D_arcade_80032F18;
+        guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+        func_global_asm_8070E8F0(&sp60, (Sprite* ) &D_arcade_8004BC50[D_global_asm_807444FC]);
+        func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+        for (i = 0; i < 4; i++)
+        {
+            func_global_asm_8070F2FC(&sp60, 0x1DC, (s16) (s32) ((f64) (s32) ((i * 8) + 51.625 + 8.0) * 4.0));
+        }
+
+        for (i = 0; i < 4; i++)
+        {
+            func_global_asm_8070F2FC(&sp60, 0x31C, (s16) (s32) ((f64) (s32) ((i * 8) + 51.625 + 8.0) * 4.0));
+        }
+    }
+
+    D_arcade_8004C719 = 8;
+    D_arcade_8004C71A = 8;
+    D_arcade_8004C6D4 = 0x400;
+    D_arcade_8004C6D0 = D_arcade_80032C20;
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+
+    func_global_asm_8070E8F0(&sp60, (Sprite* ) &D_arcade_8004BB00[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    for (i = 6; i < 34; i++) {
+        func_global_asm_8070F2FC(&sp60, i * 32, 0x380);
+    }
+
+    if (D_arcade_8004C708 == 0) {
+        for (i = 1; i < 0x1B; ++i) {
+            if ((i != 7) && (i != 0x14)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x2F8);
+            }
+        }
+        for (i = 2; i < 0x1A; ++i) {
+            if ((i != 7) && (i != 0x14)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x270);
+            }
+        }
+        for (i = 3; i < 0x19; ++i) {
+            if ((i != 7) && (i != 0x14)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x1EC);
+            }
+        }
+        for (i = 4; i < 0x18; ++i) {
+            if ((i != 7) && (i != 0x14)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x164);
+            }
+        }
+    } else {
+        for (i = 14; i < 26; i++) {
+            func_global_asm_8070F2FC(&sp60, i * 32, 0x360);
+            func_global_asm_8070F2FC(&sp60, i * 32, 0x340);
+            func_global_asm_8070F2FC(&sp60, i * 32, 0x320);
+            func_global_asm_8070F2FC(&sp60, i * 32, 0x300);
+        }
+        for (i = 1; i < 0x1B; ++i) {
+            if ((i < 7) || (i >= 0x15)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x2F8);
+            }
+        }
+        for (i = 2; i < 0x1A; ++i) {
+            if ((i < 7) || (i >= 0x15)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x270);
+            }
+        }
+        for (i = 3; i < 0x19; ++i) {
+            if ((i < 7) || (i >= 0x15)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x1EC);
+            }
+        }
+        for (i = 4; i < 0x18; ++i) {
+            if ((i < 7) || (i >= 0x15) || (D_arcade_8004C708 == 2)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x164);
+            }
+        }
+    }
+
+    if (D_arcade_8004C708 < 2) {
+        for (i = 13; i < 27; i++) {
+            func_global_asm_8070F2FC(&sp60, i * 32, 0xD8);
+        }
+    }
+
+    func_arcade_8002628C(&sp60);
+    *arg0 = sp60;
+}
 
 void func_arcade_800274E0(s32 *arg0, u8 arg1, u8 arg2, s16 arg3) {
     u8 i;

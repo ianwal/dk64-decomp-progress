@@ -150,7 +150,7 @@ extern s32 D_arcade_8004C6F4;
 extern s32 D_arcade_8004C6F8;
 extern s32 D_arcade_8004C6FC;
 extern s32 D_arcade_8004C704;
-extern u32 D_arcade_8004C708;
+extern s32 D_arcade_8004C708;
 extern s32 D_arcade_8004C70C;
 extern s32 arcade_hammer_timer;
 extern s32 arcade_next_sfx; //0x8004C714
