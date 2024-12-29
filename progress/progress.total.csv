@@ -2481,7 +2481,7 @@ us,asm,func_global_asm_80600C68,228,yes
 us,asm,func_global_asm_80636B50,176,no
 us,asm,func_global_asm_8061600C,112,yes
 us,asm,func_global_asm_8060D0A8,164,yes
-us,asm,func_global_asm_806A2B90,672,no
+us,asm,func_global_asm_806A2B90,672,yes
 us,asm,alHeapInit,36,yes
 us,asm,func_global_asm_8062B660,480,no
 us,asm,func_global_asm_806CA26C,64,yes
