@@ -27592,7 +27592,130 @@ void func_arcade_8002CD64(s32 arg0) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002D6FC.s")
+void func_arcade_8002D6FC(s32 arg0) {
+    s32 sp2C;
+    s32 temp_a0;
+
+    if (arcade_game_state == 0) {
+        arcade_objects[arg0].unk10 = (arcade_objects[arg0].unk10 + 0.15);
+
+        if (arcade_objects[arg0].unk10 >= 5.0f) {
+            arcade_objects[arg0].unk10 -= 5.0f;
+        }
+        if (arcade_background_visual == 2) {
+            if (arcade_hammer_timer != 0) {
+                if (((s32) D_arcade_8004C6DC / 4) & 1) {
+                    arcade_objects[arg0].sprite = D_arcade_80036810;
+                } else {
+                    arcade_objects[arg0].sprite = D_arcade_80036A58;
+                }
+            } else if (((s32) D_arcade_8004C6DC / 4) & 1) {
+                arcade_objects[arg0].sprite = D_arcade_80036380;
+            } else {
+                arcade_objects[arg0].sprite = D_arcade_800365C8;
+            }
+        } else if (arcade_hammer_timer != 0) {
+            if (((s32) D_arcade_8004C6DC / 4) & 1) {
+                arcade_objects[arg0].sprite = D_arcade_80036CA0;
+            } else {
+                arcade_objects[arg0].sprite = D_arcade_80036EE8;
+            }
+        } else if (((s32) D_arcade_8004C6DC / 4) & 1) {
+            arcade_objects[arg0].sprite = D_arcade_80035EF0;
+        } else {
+            arcade_objects[arg0].sprite = D_arcade_80036138;
+        }
+
+        sp2C = func_arcade_8002A390(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+        func_arcade_8002AF2C(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+
+        switch (arcade_objects[arg0].unk19) {
+        case 2:
+            if (arcade_cycle_rng() < ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 60.0f) + 256.0f)) {
+                temp_a0 = (arcade_objects[arg0].x_position < arcade_objects[arcade_jumpman_slot].x_position);
+                temp_a0 += (((arcade_objects[arcade_jumpman_slot].unk1A & 2) * 3) / 2);
+                arcade_objects[arg0].unk1A = (((arcade_cycle_rng() + (temp_a0 * 0xFB8)) - 0x1F70) >= 0x4001);
+            }
+            if ((func_arcade_8002A390((arcade_objects[arg0].x_position + (arcade_objects[arg0].x_velocity * 8.0f)), arcade_objects[arg0].y_position) - arcade_objects[arg0].y_position) > 5.0f) {
+                arcade_objects[arg0].unk1A = !arcade_objects[arg0].unk1A;
+            } else {
+                arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+            }
+
+
+            arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5) * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 15.0) + 1.0);
+
+            temp_a0 = ((arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position) * func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 3.0f);
+            if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8) && (arcade_cycle_rng() < (0x400 - temp_a0))) {
+                arcade_objects[arg0].unk19 = 5;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_position += 1.0f;
+                arcade_objects[arg0].y_velocity = (2.0 * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 30.0) + 0.2));
+                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+            } else if ((arcade_objects[arg0].y_position > D_arcade_8004C6E4) && (arcade_cycle_rng() < (temp_a0 + 0x400))) {
+                arcade_objects[arg0].unk19 = 6;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_position -= 1.0f;
+                arcade_objects[arg0].y_velocity = -((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 30.0) + 0.2);
+                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+            } else
+            {
+                if ((sp2C - arcade_objects[arg0].y_position) < 3.0f) {
+                    arcade_objects[arg0].y_position = sp2C;
+                } else {
+                    arcade_objects[arg0].unk1A = !arcade_objects[arg0].unk1A;
+                }
+            }
+            break;
+        case 3:
+            arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+            arcade_objects[arg0].y_velocity += 0.06;
+            if ((sp2C < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - sp2C) < 3.0f)) {
+                arcade_objects[arg0].y_position = sp2C;
+                arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity / 3.0f;
+                if (arcade_objects[arg0].y_velocity > -0.2) {
+                    arcade_objects[arg0].unk19 = 2;
+                }
+            }
+            break;
+        case 5:
+            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+            if ((D_arcade_8004C6E8 - 1) < arcade_objects[arg0].y_position) {
+                arcade_objects[arg0].y_position = sp2C;
+                arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
+                arcade_objects[arg0].x_velocity = 1 - (arcade_objects[arg0].unk1A * 2);
+                arcade_objects[arg0].unk19 = 2;
+            }
+            break;
+        case 6:
+            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+            if (arcade_objects[arg0].y_position < (D_arcade_8004C6E4 + 1)) {
+                arcade_objects[arg0].y_position = sp2C;
+                arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
+                arcade_objects[arg0].x_velocity = 1 - (arcade_objects[arg0].unk1A * 2);
+                arcade_objects[arg0].unk19 = 2;
+            }
+            break;
+        default:
+            break;
+        }
+
+        if (arcade_objects[arg0].x_position > 270.0f) {
+            arcade_objects[arg0].unk1A = 0;
+            arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5);
+        } else if (arcade_objects[arg0].x_position < 50.0f) {
+            arcade_objects[arg0].unk1A = 1;
+            arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5);
+        }
+
+        if (((arcade_objects[arg0].x_position - arcade_objects[arcade_jumpman_slot].x_position) < 8.0f) && ((arcade_objects[arcade_jumpman_slot].x_position - arcade_objects[arg0].x_position) < 8.0f)) {
+            if (((arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position) < 3.0f) && ((arcade_objects[arcade_jumpman_slot].y_position - arcade_objects[arg0].y_position) < 8.0f)) {
+                func_arcade_80027E8C();
+            }
+        }
+    }
+}
 
 void func_arcade_8002E158(s32 arg0) {
     s32 temp;
