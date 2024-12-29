@@ -2418,7 +2418,7 @@ void func_global_asm_806BC0E4(void);
 void func_global_asm_806BC148(void);
 void func_global_asm_806BC1AC(void);
 
-// global_asm/code_C0EE0.c
+// global_asm/IceTomato.c
 // TODO: func_global_asm_806BC1E0 has no documented signature
 Gfx *func_global_asm_806BCF98(Gfx *dl, s32 arg1);
 void func_global_asm_806BD094(s16 arg0, s8 arg1);

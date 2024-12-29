@@ -99,7 +99,23 @@ void func_global_asm_80716F10(Struct80717D84 *arg0, s32 arg1);
 int func_global_asm_8071910C(); // TODO: Signature
 extern int func_global_asm_8071F1D0(); // TODO: Signature
 
-extern void func_global_asm_8064EE08(void);
+typedef struct SpriteStructSub384 {
+    s16 unk0;
+    s16 unk2;
+    f32 unk4;
+} SpriteStructSub384;
+
+typedef struct SpriteStruct {
+    u8 pad0[0x344];
+    f32 unk344;
+    u8 pad348[0x360 - 0x348];
+    f32 unk360;
+    f32 unk364;
+    u8 pad368[0x384 - 0x368];
+    SpriteStructSub384* unk384;
+} SpriteStruct;
+
+extern void func_global_asm_8064EE08(SpriteStruct *, u8 *);
 
 void func_global_asm_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 1, 0);
@@ -2549,7 +2565,56 @@ s32 func_global_asm_8064ED68(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     return phi_s3;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064EE08.s")
+extern s8 D_global_asm_807F6950;
+
+void func_global_asm_8064EE08(SpriteStruct *arg0, u8 *arg1) {
+    SpriteStructSub384 *var_t0;
+
+    if (arg0->unk384 == NULL) {
+        arg0->unk384 = var_t0 = malloc(8);
+        var_t0->unk0 = 0;
+        var_t0->unk2 = 0;
+        var_t0->unk4 = arg0->unk344;
+    }
+    var_t0 = arg0->unk384;
+    switch (var_t0->unk0) {
+        case 0:
+            arg0->unk360 += 0.015;
+            if (arg0->unk360 > 0.5) {
+                arg0->unk360 = 0.5f;
+                var_t0->unk0 = 1;
+            }
+            break;
+        case 1:
+            if (func_global_asm_8061CB38()) {
+                var_t0->unk0 = 2;
+            }
+            if (!func_global_asm_8061CB50()) {
+                var_t0->unk0 = 2;
+            }
+            break;
+        case 2:
+            if (!func_global_asm_8061CB38() || !func_global_asm_8061CB50()) {
+                var_t0->unk0 = 3;
+                playSound(0x2E8, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+            }
+            break;
+        case 3:
+            arg0->unk360 -= 0.015;
+            if (arg0->unk360 < 0.0) {
+                D_global_asm_807F6950 = 1;
+                arg0->unk360 = 0.0f;
+                *arg1 = 1;
+            }
+            break;
+    }
+    if (var_t0->unk0 != 3) {
+        arg0->unk344 = (func_global_asm_80612794(((object_timer * 0x3C) & 0xFFF)) * 2.75f) + var_t0->unk4;
+    }
+    arg0->unk364 = arg0->unk360;
+}
+
+
 
 void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     changeActorColor(0xFF, 0xFF, 0xFF, 0x80);
