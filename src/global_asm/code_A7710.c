@@ -5,9 +5,8 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_global_asm_806A2A10.s")
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
+    OSTime unk0;
+    u32 unk8;
     s32 unkC;
     u8 unk10;
 } AAD_global_asm_806A2A10;
@@ -121,7 +120,169 @@ Gfx *func_global_asm_806A2B90(Gfx *dl, Actor *arg1) {
     return dl;
 }
 
+u8 func_global_asm_806FDB8C(s16, s8 *, u8, f32, f32, f32);
+extern u32 D_807FC7D4;
+extern u8 D_807FC7D8;
+extern OSTime D_global_asm_807445B0;
+extern OSTime D_global_asm_807476C8;
 
+void func_global_asm_806A2E30(void) {
+    f32 sp84;
+    f32 temp_f2;
+    char sp60[0x20]; // 60
+    AAD_global_asm_806A2A10 *aad; // 5c
+    u64 res; // 50
+    s32 delta;
+    s32 var_v0;
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A7710/func_global_asm_806A2E30.s")
+    aad = current_actor_pointer->additional_actor_data;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        if (current_actor_pointer->unk15F == 6) {
+            sprintf(&sp60, "%.2d", aad->unkC);
+        } else {
+            sprintf(&sp60, "%.2d:%.2d:00", aad->unkC / 60U, aad->unkC % 60U);
+        }
+        aad->unk10 = func_global_asm_806FDB8C(current_actor_pointer->unk15F == 0xB ? 6 : 3, &sp60, current_actor_pointer->unk15F, 0.0f, 0.0f, 0.0f);
+    }
+    if (current_actor_pointer->control_state == 3) {
+        aad->unk0 = osGetTime() - D_global_asm_807FC7D0;
+        current_actor_pointer->control_state = 2;
+        current_actor_pointer->control_state_progress = 1;
+    }
+    aad->unk0 += D_global_asm_807445B0;
+    if (current_actor_pointer->unk15F == 0xB) {
+        aad->unk0 += D_global_asm_807476C8;
+    }
+    res = __ll_mul(osGetTime() - aad->unk0, 0x40);
+    res = __ull_div(res, 0xBB8);
+    aad->unk8 = __ull_div(res, 0xF4240);
+    if (D_global_asm_807476C8 == 0) {
+        D_807FC7D8 = __ull_rem(__ull_div(res, 0x2710), 0x64);
+    }
+    sp84 = ((f32) (s32) ((func_global_asm_806FDA8C(aad->unk10) - 1.5707964f) / 3.1415927f) * 3.1415927f) + 3.1415927f + 1.5707964f;
+    temp_f2 = (f32) ((((__ull_to_d(res) / 10000.0) / 100.0) * 3.1415927410125732) + 1.5707963705062866);
+    func_global_asm_806FDAB8(aad->unk10, 0.0f);
+    
+    delta = aad->unkC - aad->unk8;
+    switch (current_actor_pointer->control_state) {
+    case 1:
+        if (current_actor_pointer->shadow_opacity < 0xFF) {
+            current_actor_pointer->shadow_opacity = MIN(0xFF, current_actor_pointer->shadow_opacity + 3);
+        }
+        func_global_asm_806FDAB8(aad->unk10, 1.5707964f);
+        current_actor_pointer->unk168 = 0;
+        break;
+    case 4:
+        current_actor_pointer->control_state = 2;
+        current_actor_pointer->control_state_progress = 0xFF;
+    case 2:
+        if (current_actor_pointer->control_state_progress == 0) {
+            current_actor_pointer->control_state_progress++;
+            aad->unk0 = osGetTime();
+            aad->unk8 = 0;
+            temp_f2 = 1.5707964f;
+        }
+        delta = aad->unkC - aad->unk8;
+        if (delta >= 0) {
+            func_global_asm_806FDAB8(aad->unk10, MAX(0.0f, temp_f2));
+            current_actor_pointer->unk160 = MAX(0.0f, temp_f2);
+            if (sp84 <= temp_f2) {
+                if (
+                    (aad->unk8 >= aad->unkC) && 
+                    (
+                        (current_actor_pointer->unk15F == 6) || 
+                        (aad->unkC < aad->unk8) || 
+                        (D_807FC7D8 >= 0x5B)
+                    )) {
+                    current_actor_pointer->control_state = 5;
+                    current_actor_pointer->control_state_progress = 0;
+                } else if (current_actor_pointer->unk15F == 6) {
+                    if ((s32) (sp84 / 3.1415927f) & 1) {
+                        playSound(0x8E, 0x58EFU, 63.0f, 1.0f, 5, 0);
+                    } else {
+                        playSound(0x8F, 0x58EFU, 63.0f, 1.0f, 5, 0);
+                    }
+                }
+                if (delta == 0xA) {
+                    current_actor_pointer->control_state = 4;
+                }
+            }
+            if (current_actor_pointer->unk15F == 6) {
+                sprintf(&sp60, "%.2d", delta);
+            } else if (current_actor_pointer->control_state != 5) {
+                sprintf(&sp60, "%.2d:%.2d:%.2d", delta / 60, delta % 60, 0x63 - D_807FC7D8);
+            } else {
+                sprintf(&sp60, "00:00:00");
+            }
+            current_actor_pointer->unk168 = strlen(&sp60);
+            func_global_asm_806FDF1C(aad->unk10, &sp60);
+        } else {
+            current_actor_pointer->control_state = 5;
+            current_actor_pointer->control_state_progress = 0;
+            func_global_asm_806FDF1C(aad->unk10, "00:00:00");
+        }
+        break;
+    case 5:
+        switch (current_map) {
+            case MAP_BATTLE_ARENA_BEAVER_BRAWL:
+            case MAP_BATTLE_ARENA_KRITTER_KARNAGE:
+            case MAP_BATTLE_ARENA_ARENA_AMBUSH:
+            case MAP_BATTLE_ARENA_MORE_KRITTER_KARNAGE:
+            case MAP_BATTLE_ARENA_FOREST_FRACAS:
+            case MAP_BATTLE_ARENA_BISH_BASH_BRAWL:
+            case MAP_BATTLE_ARENA_KAMIKAZE_KREMLINGS:
+            case MAP_BATTLE_ARENA_PLINTH_PANIC:
+            case MAP_BATTLE_ARENA_PINNACLE_PALAVER:
+            case MAP_BATTLE_ARENA_SHOCKWAVE_SHOWDOWN:
+                switch (current_actor_pointer->control_state_progress) {               /* switch 4 */
+                    case 0:
+                    case 7:
+                    case 14:
+                    case 21:
+                    case 28:
+                    case 35:
+                    case 42:
+                        playSound(0x3BD, 0x7FFFU, 63.0f, 1.15f, 1, 0x80);
+                        break;
+                }
+                current_actor_pointer->control_state_progress++;
+                break;
+            case MAP_AZTEC_FIVE_DOOR_TEMPLE_DK:
+            case MAP_AZTEC_FIVE_DOOR_TEMPLE_DIDDY:
+            case MAP_AZTEC_FIVE_DOOR_TEMPLE_TINY:
+            case MAP_AZTEC_FIVE_DOOR_TEMPLE_LANKY:
+            case MAP_AZTEC_FIVE_DOOR_TEMPLE_CHUNKY:
+                break;
+            case MAP_KROOL_FIGHT_DK_PHASE:
+            case MAP_KROOL_FIGHT_DIDDY_PHASE:
+            case MAP_KROOL_FIGHT_LANKY_PHASE:
+            case MAP_KROOL_FIGHT_TINY_PHASE:
+            case MAP_KROOL_FIGHT_CHUNKY_PHASE:
+                break;
+            default:
+            case MAP_AZTEC_LLAMA_TEMPLE:
+                if (current_actor_pointer->control_state_progress == 0) {
+                    playSound(0x1BB, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+                    current_actor_pointer->control_state_progress++;                    
+                }
+                break;
+        }
+        current_actor_pointer->unk168 = 0;
+        if ((delta <= 0) && (delta >= -2)) {
+            func_global_asm_806FDAB8(aad->unk10,
+                (
+                    (
+                        (rand() >> 0xF) % 180 / 180.0
+                    ) * 3.1415927410125732
+                ) + 1.5707963705062866
+            );
+        }
+        break;
+    }
+    addActorToTextOverlayRenderArray(func_global_asm_806A2B90, current_actor_pointer, 7U);
+}
+
+void func_global_asm_806A36F4(void) {
+
+}
+
