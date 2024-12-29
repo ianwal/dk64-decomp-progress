@@ -48,14 +48,10 @@ void func_global_asm_806A2B20(Actor *arg0) {
 
 extern OSTime D_global_asm_807FC7D0;
 
-typedef struct {
-    OSTime unk0;
-} AAD_global_asm_806A2B38;
-
 /*
 void func_global_asm_806A2B38(Actor *arg0) {
     D_global_asm_807FC7D0 = osGetTime() - 
-        ((AAD_global_asm_806A2B38 *)arg0->additional_actor_data)->unk0;
+        ((AAD_global_asm_806A2A10 *)arg0->additional_actor_data)->unk0;
 }
 */
 
