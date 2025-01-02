@@ -142,8 +142,8 @@ extern s16 D_arcade_8004C6D6;
 extern s32 D_arcade_8004C6D8;
 extern s32 D_arcade_8004C6DC; // arcade_internal_timer
 extern s32 D_arcade_8004C6E0;
-extern D_arcade_8004C6E4;
-extern D_arcade_8004C6EC;
+extern s32 D_arcade_8004C6E4;
+extern s32 D_arcade_8004C6EC;
 extern s32 D_arcade_8004C6E8;
 extern s32 D_arcade_8004C6F0;
 extern s32 D_arcade_8004C6F4;
