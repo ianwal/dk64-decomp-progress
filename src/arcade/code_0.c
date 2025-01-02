@@ -26140,57 +26140,68 @@ void func_arcade_800274E0(s32 *arg0, u8 arg1, u8 arg2, s16 arg3) {
 void func_arcade_80027A38(Gfx **arg0) {
     s32 i;
     s32 j;
-    Gfx *sp6C = *arg0;
+    Gfx* sp6C = *arg0;
+
     D_arcade_8004C719 = 8;
-    D_arcade_8004C71A = 10;
-    D_arcade_8004C6D4 = 1170;
+    D_arcade_8004C71A = 0xA;
+    D_arcade_8004C6D4 = 0x492;
     D_arcade_8004C6D0 = D_arcade_80032D50;
     guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
-    func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BB00[D_global_asm_807444FC]);
-    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
-    for (i = 0x220; i < 0x2e0; i += 32) {
-        func_global_asm_8070F2FC(&sp6C, i, 0xe0);
+
+    func_global_asm_8070E8F0(&sp6C, (Sprite* ) &D_arcade_8004BB00[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    // Pauline girders
+    for (i = 17; i < 23; i++) {
+        func_global_asm_8070F2FC(&sp6C, i * 32, 0xE0);
     }
-    for (i = 0xC0; i < 0x440; i += 32) {
-        func_global_asm_8070F2FC(&sp6C, i, 0x380);
+
+    // Bottom of the level girders
+    for (i = 6; i < 34; i++) {
+        func_global_asm_8070F2FC(&sp6C, (i * 32), 0x380);
     }
+
+    // In between conveyers girders
     for (i = 1; i < 0x1B; i++) {
-        if (i != 6 && i != 7 && i != 0x13 && i != 0x14) {
-            func_global_asm_8070F2FC(&sp6C, 0xC0 + 0x20*i, 0x268);
+        if ((i != 6) && (i != 7) && (i != 0x13) && (i != 0x14)) {
+            func_global_asm_8070F2FC(&sp6C, 0xC0 + (i * 32), 0x268);
         }
     }
 
-    //50m conveyer belt
-    D_arcade_8004C6D0 = &D_arcade_80032CA8;
-    guSprite2DInit(&D_arcade_8004BC20[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
-        D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
-    );
-    func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BC20[D_global_asm_807444FC]);
-    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
-    for (i = 0; i < 0x1A; i++) {
-        func_global_asm_8070F2FC(&sp6C, 0xE0 + 0x20*i, 0x150);
+    D_arcade_8004C6D0 = D_arcade_80032CA8;
+    guSprite2DInit(&D_arcade_8004BC20[D_global_asm_807444FC], D_arcade_8004C6D0, 0, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp6C, (Sprite* ) &D_arcade_8004BC20[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    // DK conveyer
+    for (i = 7; i < 33; i++) {
+        func_global_asm_8070F2FC(&sp6C, (i * 32), 0x150);
     }
+
+    // Oil barrel conveyer
     for (i = 0; i < 0x1C; i++) {
-        if (i < 0xC || i >= 0x10) {
-            func_global_asm_8070F2FC(&sp6C, 0xC0 + 0x20*i, 0x1DC);
+        if ((i < 0xC) || (i >= 0x10)) {
+            func_global_asm_8070F2FC(&sp6C, 0xC0 + (i * 32), 0x1DC);
         }
-    }
-    for (i = 0; i < 0x1A; i++) {
-        func_global_asm_8070F2FC(&sp6C, 0xE0 + 0x20*i, 0x2f4);
     }
 
-    //50m background grate
-    D_arcade_8004C6D0 = &D_arcade_800342B8;
-    guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
-        D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
-    );
-    func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BC50[D_global_asm_807444FC]);
-    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
-    for (i = 0; i < 4; i++) {
+    // Pie conveyer
+    for (i = 7; i < 33; i++) {
+        func_global_asm_8070F2FC(&sp6C, (i * 32), 0x2F4);
+    }
+
+    D_arcade_8004C6D0 = D_arcade_800342B8;
+    guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, 0, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp6C, (Sprite* ) &D_arcade_8004BC50[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    // Grate
+    for (i = 18; i < 22; i++) {
         for (j = 0; j < 3; j++) {
-            func_global_asm_8070F2FC(&sp6C, 0x240 + 0x20*i, ((0x9f - 8*j)*0.875 + 8.0)*4.0);
+            func_global_asm_8070F2FC(&sp6C, i * 32, (((0x9F - (8 * j)) * 0.875) + 8.0) * 4.0);
         }
     }
+
     func_arcade_80026518(&sp6C);
     *arg0 = sp6C;
 }
