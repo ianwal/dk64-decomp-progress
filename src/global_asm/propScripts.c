@@ -123,16 +123,14 @@ void func_global_asm_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 3, 0);
 }
 
-// doable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80642C78.s")
-
-/*
-void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80642C78(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
-    u8 temp_v1;
+    u8 temp;
     f32 x, y, z;
+    s16 index;
 
-    switch ((u8)D_global_asm_807F6000[(s16)func_global_asm_80659470(arg1)].unk78[2].unk5) {
+    index = func_global_asm_80659470(arg1);
+    switch (D_global_asm_807F6000[index].unk78[2].unk5_u8) {
         case 0xD:
         case 0x15:
         case 0x19:
@@ -140,7 +138,7 @@ void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
                 func_global_asm_806335B0(arg1, 1, i, &x, &y, &z);
                 func_global_asm_807149B8(1);
                 func_global_asm_80714998(2);
-                func_global_asm_80714950(-0x14 - ((func_global_asm_806119A0() / 10000U) % 50U));
+                func_global_asm_80714950(- ((func_global_asm_806119A0() / 10000U) % 50U) - 0x14);
                 changeActorColor(0xE1, 0x87, 0x38, 0xFF);
                 func_global_asm_8071498C(func_global_asm_80717D4C);
                 drawSpriteAtPosition(&D_global_asm_8071FF18, 0.5f, x, y + 2.0f, z);
@@ -148,7 +146,6 @@ void func_global_asm_80642C78(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
             break;
     }
 }
-*/
 
 void func_global_asm_80642E34(s32 **arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 x, y, z;
@@ -433,7 +430,7 @@ void func_global_asm_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064409C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064409C.s")
 
 void func_global_asm_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     f32 x2, x1;
@@ -445,7 +442,7 @@ void func_global_asm_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     createLight(x1, y1, z1, x2, y2, z2, 0.0f, 1, D_global_asm_807480D0, D_global_asm_807480D4, D_global_asm_807480D8);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_806443E4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806443E4.s")
 
 void func_global_asm_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714998(2);
@@ -453,7 +450,7 @@ void func_global_asm_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714B84(&D_global_asm_8071FBC8, 1.5f, arg1, arg2, 1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80644A18.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80644A18.s")
 
 typedef struct {
     f32 unk0;
@@ -775,10 +772,10 @@ void func_global_asm_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80646058.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646058.s")
 
 // doable, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80646770.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646770.s")
 
 extern f32 D_global_asm_807480F0;
 
@@ -835,7 +832,7 @@ void func_global_asm_80646770(s32 **arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80646978.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646978.s")
 
 void func_global_asm_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 pad2;
@@ -937,7 +934,7 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 // Close, regalloc, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80647610.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80647610.s")
 
 extern SpriteData D_global_asm_80720DE0; // TODO: Datatype
 
@@ -1035,7 +1032,7 @@ void func_global_asm_80647A14(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 // close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80647B74.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80647B74.s")
 
 typedef struct {
     u32 unk0;
@@ -1118,7 +1115,7 @@ void func_global_asm_80647D7C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 // doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80648000.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80648000.s")
 
 /*
 void func_global_asm_80648000(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
@@ -1220,7 +1217,7 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
 }
 
 // rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_806485A0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806485A0.s")
 
 extern SpriteData D_global_asm_8071FF18;
 
@@ -1268,7 +1265,7 @@ loop_8:
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_806487C4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806487C4.s")
 
 int func_global_asm_80648C50(void) {
     s16 chunk = character_change_array[0].chunk;
@@ -1282,7 +1279,7 @@ int func_global_asm_80648C50(void) {
 }
 
 // doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80648C84.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80648C84.s")
 
 void func_global_asm_8064911C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
@@ -1298,7 +1295,7 @@ void func_global_asm_8064911C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 // close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_806491F4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806491F4.s")
 
 extern s8 D_global_asm_80748170[];
 extern s8 D_global_asm_80748178;
@@ -1386,9 +1383,9 @@ void func_global_asm_8064954C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 // doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_806496B0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806496B0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80649BF0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80649BF0.s")
 
 typedef struct {
     s16 unk0;
@@ -1420,7 +1417,7 @@ void func_global_asm_80649E00(GlobalASMStruct49 *arg0, s32 arg1, s32 arg2, s32 a
 }
 
 // Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80649E34.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80649E34.s")
 
 void func_global_asm_80649F64(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     // TODO: Might actually use unk88 which gets read as unk8A because of the explicit s16 in the function signature
@@ -1429,7 +1426,7 @@ void func_global_asm_80649F64(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 // 64 bit stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_80649FC0.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80649FC0.s")
 
 typedef struct {
     OSTime unk0;
@@ -1475,9 +1472,9 @@ void func_global_asm_8064A194(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 // 64 bit stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064A258.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064A258.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064A804.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064A804.s")
 
 void func_global_asm_8064AAC4(s32 arg0, s16 arg1, s8 arg2, s32 arg3) {
     func_global_asm_806BD094(D_global_asm_807F6000[func_global_asm_80659470(arg1)].unk8A, arg2);
@@ -1503,7 +1500,7 @@ s32 func_global_asm_8064AB1C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     return FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064AC28.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064AC28.s")
 
 void func_global_asm_8064B118(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_bonus_8002D6F8(arg1);
@@ -1595,7 +1592,7 @@ void func_global_asm_8064B370(GlobalASMStruct86 **arg0, s32 arg1, s32 arg2, s32 
 }
 
 // regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064B3F8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064B3F8.s")
 
 typedef struct {
     f32 unk0;
@@ -1846,7 +1843,7 @@ u8 func_global_asm_8064BE58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 // rodata, doable, float, regalloc, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064BE80.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064BE80.s")
 
 extern s32 D_global_asm_807552F0;
 
@@ -2155,10 +2152,10 @@ void func_global_asm_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064CD3C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064CD3C.s")
 
 // close, doable, datatype and stack issues
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064D0C4.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064D0C4.s")
 
 /*
 void func_global_asm_8064D0C4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
@@ -2194,9 +2191,9 @@ void func_global_asm_8064D0C4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 */
 
 // Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064D1E8.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064D1E8.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064D418.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064D418.s")
 
 void func_global_asm_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 phi_f0;
@@ -2301,37 +2298,8 @@ void func_global_asm_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80635018(arg1, 4, temp_f0, temp_f2);
 }
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    u8 unk5C;
-    u8 unk5D;
-    u16 unk5E;
-} Struct8064DE04_arg0;
-
 // TODO: Any cleanup possible? Stack seems a bit whack
-void func_global_asm_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064DE04(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s32 arg3) {
     Actor *temp;
     Actor *closestActor;
     f32 dx;
@@ -2372,9 +2340,9 @@ void func_global_asm_8064DE04(Struct8064DE04_arg0 *arg0, s32 arg1, s16 arg2, s32
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064DF5C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064DF5C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064E174.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064E174.s")
 
 typedef struct {
     s32 unk0;
@@ -2443,7 +2411,7 @@ void func_global_asm_8064E5C0(Struct8064E5C0_arg0 *arg0, s32 arg1, s32 arg2, s32
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064E65C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064E65C.s")
 
 void func_global_asm_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (func_global_asm_806F8AD4(1, 0) >= 2) {
@@ -2504,7 +2472,7 @@ u8 func_global_asm_8064EC04(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 // Doable, pretty close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064EC60.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064EC60.s")
 
 /*
 u8 func_global_asm_8064EC60(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
@@ -2650,7 +2618,7 @@ u8 func_global_asm_8064F1C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 }
 
 // regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_478F0/func_global_asm_8064F210.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064F210.s")
 
 /*
 u8 func_global_asm_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
