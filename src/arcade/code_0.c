@@ -28613,61 +28613,57 @@ void func_arcade_80030C70(u8 arg0) {
     }
 }
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80030CEC.s")
-#else
 void func_arcade_80030CEC(u8 arg0) {
-    u8 a0;
-    if (arcade_objects[arg0].unk19 == 4)
-        return;
-    if ((D_global_asm_807ECDE8->unk0 & 0x200) || D_global_asm_807ECDE8->unk2 < -0x14) {
-        D_arcade_8004C720--;
-        switch (D_arcade_8004C720) {
-            case 0://L80030D74
-                D_arcade_8004C720 = 8;
-            case 0xb://L80030D80
-                arcade_objects[arg0].unk1D--;
-                if (arcade_objects[arg0].unk1D >= 0x29) {
-                    arcade_objects[arg0].unk1D = 0x1d;
-                }
-                break;
+    if (arcade_objects[arg0].unk19 != 4) {
+        if ((D_global_asm_807ECDE8->unk0 & 0x200) || (((D_global_asm_807ECDE8->unk2 < -0x14)))) {
+            --D_arcade_8004C720;
+            switch (D_arcade_8004C720) {
+                case 0:
+                    D_arcade_8004C720 = 8;
+                case 0xB:
+                    --arcade_objects[arg0].unk1D;
+                    if (arcade_objects[arg0].unk1D >= 0x29) {
+                        arcade_objects[arg0].unk1D = 0x1D;
+                    }
+                    break;
+            }
+        } else if ((D_global_asm_807ECDE8->unk0 & 0x100) || (D_global_asm_807ECDE8->unk2 >= 0x15)) {
+            --D_arcade_8004C720;
+            switch (D_arcade_8004C720) {
+                case 0:
+                    D_arcade_8004C720 = 8;
+                case 0xB:
+                    ++arcade_objects[arg0].unk1D;
+                    if (arcade_objects[arg0].unk1D >= 0x1E) {
+                        arcade_objects[arg0].unk1D -= 0x1E;
+                    }
+                    break;
+            }
+        } else {
+            D_arcade_8004C720 = 0xC;
         }
-    } else if ((D_global_asm_807ECDE8->unk0 & 0x100) || D_global_asm_807ECDE8->unk2 >= 0x15) {//L80030DB0
-        D_arcade_8004C720--;
-        switch (D_arcade_8004C720) {
-            case 0://L80030D74
-                D_arcade_8004C720 = 8;
-            case 0xb://L80030D80
-                arcade_objects[arg0].unk1D++;
-                if (arcade_objects[arg0].unk1D >= 0x1e) {
-                    arcade_objects[arg0].unk1D -= 0x1e;
-                }
-                break;
-        }
-    } else {//L80030E2C
-        D_arcade_8004C720 = 0xC;
-    }//L80030E40
-    a0 = arcade_objects[arg0].unk1D;
-    arcade_objects[arg0].x_position = (f32) (((a0 % 0x10) * 0x10) + 0x54);
-    arcade_objects[arg0].y_position = (f32) (((s32) ((a0 / 0xA) << 7) / 7) + 0x4A);
-    if (newly_pressed_input[0] & A_BUTTON) {
-        if ((a0 = 0x1D) || (D_arcade_8004C6DC == 0x708)) {
-            D_arcade_8004C6DC = 0x744;
-            arcade_objects[arg0].unk19 = 4;
-            arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][0] = D_arcade_8004A774[0];
-            arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][1] = D_arcade_8004A774[1];
-            arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][2] = D_arcade_8004A774[2];
-            func_arcade_80024320();
-        } else if (a0 = 0x1C && arcade_objects[arg0].unk19) {//L80030F2C
-            arcade_objects[arg0].unk19--;
-            D_arcade_8004A774[arcade_objects[arg0].unk19] = D_global_asm_80746800[0x1C]; 
-        } else if (arcade_objects[arg0].unk19 < 3) {//L80030F70
-            D_arcade_8004A774[arcade_objects[arg0].unk19] = D_global_asm_80746800[arcade_objects[arg0].unk1D];
-            arcade_objects[arg0].unk19++;
+
+        arcade_objects[arg0].x_position = ((arcade_objects[arg0].unk1D % 10) * 0x10) + 0x54;
+        arcade_objects[arg0].y_position = (((arcade_objects[arg0].unk1D / 10) << 7) / 7) + 0x4A;
+
+        if (*newly_pressed_input & 0x8000) {
+            if ((arcade_objects[arg0].unk1D == 0x1D) || (D_arcade_8004C6DC == 0x708)) {
+                D_arcade_8004C6DC = 0x744;
+                arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][0] = D_arcade_8004A774[0];
+                arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][1] = D_arcade_8004A774[1];
+                arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][2] = D_arcade_8004A774[2];
+                arcade_objects[arg0].unk19 = 4;
+                func_arcade_80024320();
+            }
+            else if ((arcade_objects[arg0].unk1D == 0x1C) && (arcade_objects[arg0].unk19 != 0)) {
+                D_arcade_8004A774[--arcade_objects[arg0].unk19] = D_global_asm_80746800[0x1C];
+            }
+            else if (arcade_objects[arg0].unk19 < 3) {
+                D_arcade_8004A774[arcade_objects[arg0].unk19++] = D_global_asm_80746800[arcade_objects[arg0].unk1D];
+            }
         }
     }
 }
-#endif
 
 void arcade_barrel_stack_update(u8 arg0) {
     if (arcade_objects[arg0].unk1C >= arcade_bonus_timer)
