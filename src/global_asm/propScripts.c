@@ -147,26 +147,31 @@ void func_global_asm_80642C78(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3
     }
 }
 
-void func_global_asm_80642E34(s32 **arg0, s16 arg1, s16 arg2, s32 arg3) {
+typedef struct InstanceData80642E34 {
+    s32 unk0;
+} InstanceData80642E34;
+
+void func_global_asm_80642E34(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 x, y, z;
-    s32 *var_v1;
+    InstanceData80642E34 *var_v1;
     f32 var_f0;
     s32 sp48;
 
-    if (*arg0 == NULL) {
-        *arg0 = malloc(4);
-        **arg0 = arg2;
+    if (arg0->unk0 == NULL) {
+        arg0->unk0 = malloc(sizeof(InstanceData80642E34));
+        ((InstanceData80642E34 *)arg0->unk0)->unk0 = arg2;
     }
-    var_v1 = *arg0;
-    var_f0 = ((20.0 - *var_v1) / 20.0);
+    var_v1 = arg0->unk0;
+    var_f0 = ((20.0 - var_v1->unk0) / 20.0);
     if (0.7 < var_f0) {
         var_f0 = 1.0f;
     }
     func_global_asm_806335B0(arg1, 1, 1, &x, &y, &z);
     sp48 = ((func_global_asm_806119A0() / 10000U) % 200) + 0x37;
     createLight(x, y, z, 0.0f, 0.0f, 0.0f, var_f0 * 200.0, 0, 0, sp48, ((func_global_asm_806119A0() / 10000U) % 80) + 0xAF);
-    if (++(*var_v1) == 0x14) {
-        *var_v1 = 0;
+    var_v1->unk0++;
+    if (var_v1->unk0 == 0x14) {
+        var_v1->unk0 = 0;
     }
 }
 
