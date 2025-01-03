@@ -375,25 +375,24 @@ void func_global_asm_80643B24(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3
 
 extern SpriteData D_global_asm_807201D4;
 
-typedef struct {
-    void *unk0;
-    u8 unk4[0x49 - 0x4];
-    u8 unk49;
-} Struct80643C0C;
+typedef struct InstanceData80643C0C {
+    s32 unk0;
+    s32 unk4;
+} InstanceData80643C0C;
 
-void func_global_asm_80643C0C(Struct80643C0C *arg0, s32 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_80643C0C(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s32 arg3) {
     f32 var_f2;
     f32 temp_f20;
-    s32 *var_v1;
+    InstanceData80643C0C *var_v1;
 
     if (arg0->unk0 == NULL) {
-        arg0->unk0 = malloc(8);
+        arg0->unk0 = malloc(sizeof(InstanceData80643C0C));
     }
     var_v1 = arg0->unk0;
     if (arg2 == 1) {
-        *var_v1 = 0;
+        var_v1->unk0 = 0;
     }
-    temp_f20 = (0x46 - (*var_v1)++) / 70.0f;
+    temp_f20 = (0x46 - var_v1->unk0++) / 70.0f;
     if (temp_f20 > 0.5) {
         var_f2 = 1.0 - (2.0 * (temp_f20 - 0.5));
     } else {
@@ -411,11 +410,11 @@ void func_global_asm_80643C0C(Struct80643C0C *arg0, s32 arg1, s16 arg2, s32 arg3
         }
     }
     if (temp_f20 < 0.1) {
-        arg0->unk49 = 1;
+        arg0->unk48[1] = 1;
     }
 }
 
-void func_global_asm_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80643F38(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
     s16 i;
     for (i = 0; i < 0x1E; i++) {
         func_global_asm_807149B8(1);
@@ -426,8 +425,77 @@ void func_global_asm_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064409C.s")
+s16 func_global_asm_80605044(s16, s16, s16, s16, s32, f32, s32);
+
+typedef struct InstanceData8064409C {
+    u32 unk0;
+    s32 unk4;
+    s32 unk8;
+} InstanceData8064409C;
+
+void func_global_asm_8064409C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    InstanceData8064409C *temp_v0;
+
+    if (arg0->unk0 == NULL) {
+        temp_v0 = malloc(sizeof(InstanceData8064409C));
+        arg0->unk0 = temp_v0;
+        temp_v0->unk0 = 0;
+        temp_v0->unk4 = 0;
+    }
+    temp_v0 = arg0->unk0;
+    switch (temp_v0->unk0) {
+    case 0:
+        temp_v0->unk4++;
+        if (temp_v0->unk4 == 4) {
+            temp_v0->unk8 = 0;
+            temp_v0->unk0++;
+            if (arg0->unk10 < 0) {
+                arg0->unk10 = func_global_asm_80605044(arg1, 0x12C, 0x3C, 1, 0x64, 1.0f, 0);
+            }
+        }
+        break;
+    case 1:
+        temp_v0->unk4++;
+        if (temp_v0->unk4 == 7) {
+            temp_v0->unk4 = 4;
+            temp_v0->unk8++;
+            if (temp_v0->unk8 == 0x1E) {
+                temp_v0->unk8 = 0;
+                temp_v0->unk0++;
+                if (arg0->unk10 >= 0) {
+                    func_global_asm_80605380(arg0->unk10);
+                    arg0->unk10 = -1;
+                }
+                playSoundAtObjectModel2(arg1, 0x74, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
+            }
+        }
+        break;
+    case 2:
+        temp_v0->unk4 = 7;
+        temp_v0->unk8++;
+        if (temp_v0->unk8 == 0x28) {
+            temp_v0->unk8 = 0;
+            temp_v0->unk0++;
+            playSoundAtObjectModel2(arg1, 0x74, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
+        }
+        break;
+    case 3:
+        temp_v0->unk4 = 8;
+        temp_v0->unk8++;
+        if (temp_v0->unk8 == 0x28) {
+            temp_v0->unk8 = 0;
+            temp_v0->unk0++;
+            playSoundAtObjectModel2(arg1, 0x75, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
+        }
+        break;
+    case 4:
+        temp_v0->unk4 = 9;
+        break;
+    default:
+        break;
+    }
+    func_global_asm_80635018(arg1, 1, temp_v0->unk4, 0);
+}
 
 void func_global_asm_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     f32 x2, x1;
