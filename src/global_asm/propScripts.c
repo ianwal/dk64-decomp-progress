@@ -117,7 +117,7 @@ typedef struct SpriteStruct {
 
 extern void func_global_asm_8064EE08(SpriteStruct *, u8 *);
 
-void func_global_asm_80642BF0(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80642BF0(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 1, 0);
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 2, 0);
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 3, 0);
@@ -175,27 +175,27 @@ void func_global_asm_80642E34(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3
     }
 }
 
-typedef struct {
+typedef struct InstanceData80642FC4 {
     f32 unk0;
     f32 unk4;
     f32 unk8;
     f32 unkC;
-} Struct80642FC4;
+} InstanceData80642FC4;
 
-void func_global_asm_80642FC4(void **arg0, s32 arg1, s32 arg2, s32 arg3) {
-    Struct80642FC4 *var_v1;
+void func_global_asm_80642FC4(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
+    InstanceData80642FC4 *var_v1;
     u8 sp33;
     f32 sp2C;
 
-    if (*arg0 == NULL) {
-        var_v1 = malloc(sizeof(Struct80642FC4));
-        *arg0 = var_v1;
+    if (arg0->unk0 == NULL) {
+        var_v1 = malloc(sizeof(InstanceData80642FC4));
+        arg0->unk0 = var_v1;
         var_v1->unk0 = 7.0f;
         var_v1->unk4 = ((func_global_asm_806119A0() / 10000U) % 1548) + 0x5DC;
         var_v1->unk8 = (((func_global_asm_806119A0() / 10000U) % 100) / 40.0) + 2.5;
         D_global_asm_807F6234 = (((func_global_asm_806119A0() / 10000U) % 100) / 500.0) + 0.14;
     }
-    var_v1 = *arg0;
+    var_v1 = arg0->unk0;
     sp2C = D_global_asm_807F6220;
     sp33 = func_global_asm_80667110(D_global_asm_807F621C, D_global_asm_807F6224, &sp2C);
     var_v1->unk0 = var_v1->unk0 + -0.64;
@@ -213,7 +213,7 @@ void func_global_asm_80642FC4(void **arg0, s32 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-void func_global_asm_80643274(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80643274(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 sp24;
 
     if ((object_timer % (u32)arg3) == 0) {
@@ -243,20 +243,16 @@ void func_global_asm_80643354(s32 arg0, u32 arg1, u32 arg2) {
     }
 }
 
-typedef struct {
+typedef struct InstanceData80643440 {
     s16 unk0;
-} Struct80643440_arg0_unk0;
+} InstanceData80643440;
 
-typedef struct {
-    Struct80643440_arg0_unk0 *unk0;
-} Struct80643440_arg0;
-
-void func_global_asm_80643440(Struct80643440_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80643440(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 temp_f24;
-    Struct80643440_arg0_unk0 *var_v1;
+    InstanceData80643440 *var_v1;
 
     if (arg0->unk0 == NULL) {
-        arg0->unk0 = malloc(sizeof(Struct80643440_arg0_unk0));
+        arg0->unk0 = malloc(sizeof(InstanceData80643440));
         var_v1 = arg0->unk0;
         var_v1->unk0 = 0;
     }
@@ -273,27 +269,23 @@ void func_global_asm_80643440(Struct80643440_arg0 *arg0, s32 arg1, s32 arg2, s32
     var_v1->unk0 += 0x32;
 }
 
-void func_global_asm_806436A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_806436A4(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_global_asm_80643354(0, arg2, arg3);
 }
 
-typedef struct {
+typedef struct InstanceData806436E0 {
     u32 unk0;
     s32 unk4;
-} Struct806436E0_malloc;
+} InstanceData806436E0;
 
-typedef struct {
-    Struct806436E0_malloc *unk0;
-} Struct806436E0_arg0;
-
-void func_global_asm_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_806436E0(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
     Struct807F5FD4_unk0 *temp_v0_2;
-    Struct806436E0_malloc *var_v1;
+    InstanceData806436E0 *var_v1;
     s32 x, y, z;
     s32 count;
 
     if (arg0->unk0 == NULL) {
-        var_v1 = malloc(sizeof(Struct806436E0_malloc));;
+        var_v1 = malloc(sizeof(InstanceData806436E0));;
         arg0->unk0 = var_v1;
         var_v1->unk0 = 0;
         var_v1->unk4 = 0;
@@ -319,13 +311,13 @@ void func_global_asm_806436E0(Struct806436E0_arg0 *arg0, s32 arg1, s32 arg2, s32
     var_v1->unk0--;
 }
 
-void func_global_asm_8064384C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_8064384C(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
     ObjectModel2 *temp_v1 = &D_global_asm_807F6000[func_global_asm_80659470(arg1)];
 
     func_global_asm_8067DF44(temp_v1->x_position, temp_v1->y_position, temp_v1->z_position, temp_v1->hitbox_scale, 0, 1);
 }
 
-void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 boneIndex) {
+void func_global_asm_806438B8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 boneIndex) {
     s32 pad;
     s32 temp_s0;
     s32 i;
@@ -364,7 +356,7 @@ void func_global_asm_806438B8(s32 arg0, s16 arg1, s16 arg2, s16 boneIndex) {
     }
 }
 
-void func_global_asm_80643B24(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80643B24(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
     if ((object_timer % 5U) == 0) {
         func_global_asm_80714950(-0x78);
         func_global_asm_8071498C(func_global_asm_80717D4C);
