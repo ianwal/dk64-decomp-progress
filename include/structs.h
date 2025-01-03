@@ -1805,8 +1805,7 @@ typedef struct {
     s32 unk58;
     u8 unk5C;
     u8 unk5D;
-    u8 unk5E;
-    u8 unk5F;
+    u16 unk5E;
     u8 unk60;
     u8 unk61;
     s16 unk62;
@@ -1888,7 +1887,10 @@ typedef struct {
     u8 unk2;
     u8 unk3;
     u8 unk4;
-    s8 unk5;
+    union {
+        s8 unk5;
+        u8 unk5_u8;
+    };
     u8 unk6;
     u8 unk7;
     s32 unk8;
