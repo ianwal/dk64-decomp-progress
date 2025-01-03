@@ -27100,177 +27100,135 @@ s32 __arcade_abs_w(s32 arg0) {
     return -arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002B390.s")
-
-extern s32 D_arcade_8004A75C;
-
-/*
-// TODO: Doable, it compiles
 void func_arcade_8002B390(s32 arg0) {
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f2;
-    f32 temp_f4_2;
-    s32 temp_f4;
-    s32 temp_t7;
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 temp_v0_3;
-    s32 y;
-    s32 x;
-    u8 temp_t2;
-    u8 temp_v1;
-    u8 var_v0;
-    ArcadeStruct1 *temp_a1;
-    ArcadeStruct1 *temp_v1_2;
+    s32 object_index;
+    s32 unk10_truncated;
+    s32 i;
+    s32 j;
 
-    temp_a1 = &arcade_objects[arg0];
-    temp_f0 = temp_a1->unk10;
-    temp_v1 = temp_a1->unk19;
-    temp_t7 = temp_a1->unk1A & 2;
-    temp_f4 = temp_f0;
-    temp_a1->unk1A = (temp_t7 / 2) | temp_t7;
-    temp_a1->unk1B = 0;
-    if (temp_v1 == 2) {
+    arcade_objects[arg0].unk1A = (arcade_objects[arg0].unk1A & 2) | ((arcade_objects[arg0].unk1A & 2) / 2);
+    arcade_objects[arg0].unk1B = 0;
+    unk10_truncated = (s32)arcade_objects[arg0].unk10;
+    if (arcade_objects[arg0].unk19 == 2) {
         if (arcade_hammer_timer != 0) {
-            temp_v0 = temp_f4 & 3;
             if (arcade_hammer_timer & 8) {
-                temp_v0_2 = temp_f4 & 3;
-                switch (temp_v0_2) {
-                    case 0:
-                    case 2:
-                        temp_a1->sprite = &D_arcade_8003C178;
-                        return;
-                    case 1:
-                        temp_a1->sprite = &D_arcade_8003C608;
-                        return;
-                    case 3:
-                        temp_a1->sprite = &D_arcade_8003CA98;
-                        return;
+                switch (unk10_truncated & 3) {
+                case 0:
+                case 2:
+                    arcade_objects[arg0].sprite = D_arcade_8003C178;
+                    return;
+                case 1:
+                    arcade_objects[arg0].sprite = D_arcade_8003C608;
+                    return;
+                case 3:
+                    arcade_objects[arg0].sprite = D_arcade_8003CA98;
+                    return;
                 }
             } else {
-                switch (temp_v0) {
-                    case 0:
-                    case 2:
-                        temp_a1->sprite = &D_arcade_8003C3C0;
-                        return;
-                    case 1:
-                        temp_a1->sprite = &D_arcade_8003C850;
-                        return;
-                    case 3:
-                        temp_a1->sprite = &D_arcade_8003CCE0;
-                        return;
+                switch (unk10_truncated & 3) {
+                case 0:
+                case 2:
+                    arcade_objects[arg0].sprite = D_arcade_8003C3C0;
+                    return;
+                case 1:
+                    arcade_objects[arg0].sprite = D_arcade_8003C850;
+                    return;
+                case 3:
+                    arcade_objects[arg0].sprite = D_arcade_8003CCE0;
+                    return;
                 }
             }
         } else {
-            temp_v0_3 = temp_f4 & 3;
-            switch (temp_v0_3) {
-                case 0:
-                case 2:
-                    temp_a1->sprite = &D_arcade_8003B180;
-                    return;
-                case 1:
-                    temp_a1->sprite = &D_arcade_8003B3C8;
-                    return;
-                case 3:
-                    temp_a1->sprite = &D_arcade_8003B610;
-                    return;
+            switch (unk10_truncated & 3) {
+            case 0:
+            case 2:
+                arcade_objects[arg0].sprite = D_arcade_8003B180;
+                return;
+            case 1:
+                arcade_objects[arg0].sprite = D_arcade_8003B3C8;
+                return;
+            case 3:
+                arcade_objects[arg0].sprite = D_arcade_8003B610;
+                return;
             }
         }
     } else {
-        if (temp_v1 == 3) {
-            temp_a1->sprite = &D_arcade_8003CF28;
+        if (arcade_objects[arg0].unk19 == 3) {
+            arcade_objects[arg0].sprite = D_arcade_8003CF28;
             return;
         }
-        if (temp_v1 == 5) {
-            temp_f2 = temp_a1->y_position;
-            if (((D_arcade_8004C6E8 - temp_f2) < 1.0f) || (temp_f0_2 = temp_f2 - D_arcade_8004C6E4, (temp_f0_2 < 1.0f))) {
-                temp_a1->sprite = &D_arcade_8003BF30;
-            } else if (temp_f0_2 < 6.0f) {
-                temp_a1->sprite = &D_arcade_8003B858;
-            } else if (temp_f0_2 < 10.0f) {
-                temp_a1->sprite = &D_arcade_8003BCE8;
-            } else if (temp_f0_2 < 14.0f) {
-                temp_a1->sprite = &D_arcade_8003BAA0;
+        if (arcade_objects[arg0].unk19 == 5) {
+            if ((((f32) D_arcade_8004C6E8 - arcade_objects[arg0].y_position) < 1.0f) || ((arcade_objects[arg0].y_position - D_arcade_8004C6E4 < 1.0f))) {
+                arcade_objects[arg0].sprite = D_arcade_8003BF30;
+            } else if (arcade_objects[arg0].y_position - D_arcade_8004C6E4 < 6.0f) {
+                arcade_objects[arg0].sprite = D_arcade_8003B858;
+            } else if (arcade_objects[arg0].y_position - D_arcade_8004C6E4 < 10.0f) {
+                arcade_objects[arg0].sprite = D_arcade_8003BCE8;
+            } else if (arcade_objects[arg0].y_position - D_arcade_8004C6E4 < 14.0f) {
+                arcade_objects[arg0].sprite = D_arcade_8003BAA0;
             } else {
-                temp_a1->sprite = &D_arcade_8003B858;
+                arcade_objects[arg0].sprite = D_arcade_8003B858;
             }
-            temp_a1->unk1A = (u8)(temp_a1->unk10 / 4.5) & 1;
+            arcade_objects[arg0].unk1A = (s32) ((f64) arcade_objects[arg0].unk10 / 4.5) & 1;
             return;
         }
-        if (temp_v1 == 8) {
-            if (temp_f0 > 38.0f) {
+        if (arcade_objects[arg0].unk19 == 8) {
+            if (arcade_objects[arg0].unk10 > 38.0f) {
                 if (arcade_lives_internal == 0) {
-                    if (temp_f0 > 48.0f) {
-                        if (D_arcade_8004A75C < arcade_current_score) {
+                    if (arcade_objects[arg0].unk10 > 48.0f) {
+                        if (arcade_saved_high_scores[4] < arcade_current_score) {
                             func_arcade_80024B04();
                             return;
                         }
-                        if (D_arcade_8004A740 != 0) {
+                        else if (D_arcade_8004A740 != 0) {
                             func_arcade_80024C34();
                             return;
                         }
-                        func_arcade_80024D90();
-                        return;
+                        else {
+                            func_arcade_80024D90();
+                            return;
+                        }
                     }
-                    x = 0x6C;
-                    if (D_arcade_8004A764 == 0) {
+                    else if (D_arcade_8004A764 == 0) {
                         D_arcade_8004A764 = 1;
-                        do {
-                            y = 0xA6;
-loop_53:
-                            temp_v1_2 = &arcade_objects[func_arcade_800247F0()];
-                            temp_v1_2->x_position = D_arcade_8004A6B8.x_position;
-                            temp_v1_2->y_position = D_arcade_8004A6B8.y_position;
-                            temp_v1_2->y_velocity = D_arcade_8004A6B8.y_velocity;
-                            temp_v1_2->x_velocity = D_arcade_8004A6B8.x_velocity;
-                            temp_f4_2 = y;
-                            temp_v1_2->unk10 = D_arcade_8004A6B8.unk10;
-                            temp_v1_2->sprite = D_arcade_8004A6B8.sprite;
-                            y += 0x10;
-                            temp_v1_2->x_position = x;
-                            temp_v1_2->y_position = temp_f4_2;
-                            temp_v1_2->unk1C = D_arcade_8004A6B8.unk1C;
-                            temp_v1_2->object_type = D_arcade_8004A6B8.object_type;
-                            if (y != 0xC6) {
-                                goto loop_53;
+                        for (i = 0; i != 6; i++) {
+                            for (j = 0; j != 2; j++) {
+                                s32 object_index = func_arcade_800247F0();
+                                arcade_objects[object_index] = D_arcade_8004A6B8;
+                                arcade_objects[object_index].x_position = 0x6C + (i * 16);
+                                arcade_objects[object_index].y_position = 0xA6 + (j * 16);
                             }
-                            x += 0x10;
-                        } while (x != 0xCC);
+                        }
                     }
                 } else {
                     arcade_lives_internal -= 1;
                     func_arcade_800257D8();
                 }
             } else {
-                if (temp_f0 > 20.0f) {
-                    temp_a1->sprite = &D_arcade_8003D848;
+                if (arcade_objects[arg0].unk10 > 20.0f) {
+                    arcade_objects[arg0].sprite = D_arcade_8003D848;
                     return;
                 }
-                if (temp_f0 > 8.0f) {
+                if (arcade_objects[arg0].unk10 > 8.0f) {
                     arcade_game_state = 2;
-                    if (temp_f4 & 1) {
-                        temp_a1->sprite = &D_arcade_8003D3B8;
+                    if ((s32)arcade_objects[arg0].unk10 & 1) {
+                        arcade_objects[arg0].sprite = D_arcade_8003D3B8;
                     } else {
-                        temp_a1->sprite = &D_arcade_8003D600;
+                        arcade_objects[arg0].sprite = D_arcade_8003D600;
                     }
-                    temp_t2 = (u8)temp_a1->unk10 & 3;
-                    var_v0 = temp_t2;
-                    if (temp_t2 == 2) {
-                        temp_a1->unk1A = temp_a1->unk1A ^ 1;
-                        var_v0 = (u8)temp_a1->unk10 & 3;
+                    if (((s32)arcade_objects[arg0].unk10 & 3) == 2) {
+                        arcade_objects[arg0].unk1A ^= 1;
                     }
-                    if (var_v0 == 1) {
-                        temp_a1->unk1B = temp_a1->unk1B == 0;
+                    if (((s32)arcade_objects[arg0].unk10 & 3) == 1) {
+                        arcade_objects[arg0].unk1B = !arcade_objects[arg0].unk1B;
                     }
                 }
             }
         } else {
-            temp_a1->sprite = &D_arcade_8003D170;
+            arcade_objects[arg0].sprite = D_arcade_8003D170;
         }
     }
 }
-*/
 
 void func_arcade_8002B89C(s32 arg0) {
     union { f32 as_f32; s32 as_s32; } sp44;
