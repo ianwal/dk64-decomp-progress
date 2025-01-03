@@ -73,6 +73,12 @@ typedef struct {
     u8 pad0[0xC];
 } ArcadeStruct4;
 
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u16 unk2;
+} ArcadeStruct5;
+
 void func_arcade_8002549C(void);
 void func_arcade_80024D90(void);
 void func_arcade_800259D0(Gfx **arg0);

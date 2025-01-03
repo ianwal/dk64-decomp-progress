@@ -25043,28 +25043,28 @@ s32 D_arcade_8004A798[] = {
 	0x0035AB64,
 	0x0035E938,
 };
-u32 D_arcade_8004A7C8[] = {
-	0x0B110037,
-	0x001C00F7,
-	0x00150057,
-	0x000300E7,
-	0x000300BF,
-	0x00030087,
-	0x0F1200E7,
-	0x131500DF,
-	0x161800D7,
-	0x191C00CF,
-	0x080B00CF,
-	0x070B0087,
-	0x1A1C00B7,
-	0x171900AF,
-	0x141600A7,
-	0x1113009F,
-	0x1013007F,
-	0x171C008F,
-	0x1A1C0067,
-	0x1719006F,
-	0x14160077,
+ArcadeStruct5 D_arcade_8004A7C8[] = {
+    { 0x0B, 0x11, 0x0037 },
+    { 0x00, 0x1C, 0x00F7 },
+    { 0x00, 0x15, 0x0057 },
+    { 0x00, 0x03, 0x00E7 },
+    { 0x00, 0x03, 0x00BF },
+    { 0x00, 0x03, 0x0087 },
+    { 0x0F, 0x12, 0x00E7 },
+    { 0x13, 0x15, 0x00DF },
+    { 0x16, 0x18, 0x00D7 },
+    { 0x19, 0x1C, 0x00CF },
+    { 0x08, 0x0B, 0x00CF },
+    { 0x07, 0x0B, 0x0087 },
+    { 0x1A, 0x1C, 0x00B7 },
+    { 0x17, 0x19, 0x00AF },
+    { 0x14, 0x16, 0x00A7 },
+    { 0x11, 0x13, 0x009F },
+    { 0x10, 0x13, 0x007F },
+    { 0x17, 0x1C, 0x008F },
+    { 0x1A, 0x1C, 0x0067 },
+    { 0x17, 0x19, 0x006F },
+    { 0x14, 0x16, 0x0077 },
 };
 u8 D_arcade_8004A81C[8][2] = {
     // 50m rivet positions
@@ -26133,7 +26133,67 @@ void func_arcade_800274E0(s32 *arg0, u8 arg1, u8 arg2, s16 arg3) {
     *arg0 = sp40;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800275E8.s")
+extern f32 D_arcade_8004BC88[6][3];
+
+void func_arcade_800275E8(Gfx** arg0) {
+    s32 i;
+    s32 j;
+    u8 length;
+    Gfx* sp90;
+    s32 var_s0;
+
+    sp90 = *arg0;
+    
+    D_arcade_8004C719 = 2;
+    D_arcade_8004C71A = 8;
+    D_arcade_8004C6D4 = 0x400;
+    D_arcade_8004C6D0 = D_arcade_80032F40;
+    guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp90, (Sprite* ) &D_arcade_8004BC50[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+    
+    for (i = 5; i < 20; i++)
+    {
+        func_global_asm_8070F2FC(&sp90, 0x15C, ((s32) ((i * 8) + 51.625 + 8.0) * 4.0));
+    }
+    for (i = 5; i != 20; i++)
+    {
+        func_global_asm_8070F2FC(&sp90, 0x25C, ((s32)((i * 8) + 51.625 + 8.0) * 4.0));
+    }
+
+    D_arcade_8004C719 = 8;
+    D_arcade_8004C71A = 0xA;
+    D_arcade_8004C6D4 = 0x492;
+    D_arcade_8004C6D0 = D_arcade_80034568;
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp90, (Sprite* ) &D_arcade_8004BB00[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    length = 21;
+    for (i = 0; i < length; i++) {
+        func_arcade_800274E0(&sp90, D_arcade_8004A7C8[i].unk0, D_arcade_8004A7C8[i].unk1, D_arcade_8004A7C8[i].unk2);
+    }
+    
+    for (i = 0; i < 6; i++) {
+        if ((arcade_game_state == 0) && (D_arcade_8004C724 == 5)) {
+            D_arcade_8004BC88[i][1] += D_arcade_8004BC88[i][2];
+            if (D_arcade_8004BC88[i][1] < 99.0f) {
+                D_arcade_8004BC88[i][1] += 144.0f;
+            }
+            if (D_arcade_8004BC88[i][1] > 243.0f) {
+                D_arcade_8004BC88[i][1] -= 144.0f;
+            }
+        }
+        
+        for (j = 0; j < 2; j++) {
+            func_global_asm_8070F2FC(&sp90, ((D_arcade_8004BC88[i][0] + 40.0f + (j * 8)) * 4.0f), (((D_arcade_8004BC88[i][1] * 0.875) + 8.0) * 4.0));
+        }
+    }
+    
+    func_arcade_800263EC(&sp90);
+    *arg0 = sp90;
+}
+
 
 //arcade_50m_draw
 void func_arcade_80027A38(Gfx **arg0) {
