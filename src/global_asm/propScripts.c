@@ -497,7 +497,7 @@ void func_global_asm_8064409C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
     func_global_asm_80635018(arg1, 1, temp_v0->unk4, 0);
 }
 
-void func_global_asm_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_8064431C(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
     f32 x2, x1;
     f32 y2, y1;
     f32 z2, z1;
@@ -509,7 +509,99 @@ void func_global_asm_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806443E4.s")
 
-void func_global_asm_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_80608DA8(s32, u8, s32, s32, s32);
+extern f32 D_80770DCC;
+extern f32 D_80770DD0;
+extern f32 D_80770DD4;
+extern f32 D_global_asm_807480DC;
+extern s8 D_global_asm_8077058C;
+extern u8 D_global_asm_80770DC9;
+extern f32 D_global_asm_807F621C;
+extern f32 D_global_asm_807F6220;
+extern f32 D_global_asm_807F6224;
+
+typedef struct InstanceData806443E4 {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} InstanceData806443E4;
+
+/*
+Close, regalloc
+void func_global_asm_806443E4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    InstanceData806443E4 *var_v1;
+    f32 var_f16;
+    f32 var_f14;
+    f32 dx, dy, dz;
+
+    if (player_pointer->PaaD->unk1F0 & 0x20000000) {
+        return;
+    }
+    if (arg0->unk0 == NULL) {
+        var_v1 = malloc(0x10);
+        arg0->unk0 = var_v1;
+        var_v1->unk0 = 0;
+        var_v1->unk4 = 0.0f;
+        var_v1->unk8 = 0.0f;
+        var_v1->unkC = 0.0f;
+    }
+    var_v1 = arg0->unk0;
+    dz = character_change_array->look_at_eye_z - D_global_asm_807F6224;
+    dx = character_change_array->look_at_eye_x - D_global_asm_807F621C;
+    dy = character_change_array->look_at_eye_y - D_global_asm_807F6220;
+    var_f16 = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
+    if ((character_change_array->chunk == 0xE) && (is_cutscene_active != 1)) {
+        var_f14 = 1.0f;
+    } else if (character_change_array->chunk == 7) {
+        var_f14 = 0.0f;
+    } else {
+        dx = D_global_asm_807F621C - 1714.0f;
+        dy = D_global_asm_807F6220 - 226.0f;
+        dz = D_global_asm_807F6224 - 3410.0f;
+        var_f16 -= sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+        if (var_f16 < 0.0) {
+            var_f16 = 0.0f;
+        }
+        if (var_f16 > 600.0f) {
+            var_f14 = 0.0f;
+        } else {
+            var_f14 = 1.0 - (var_f16 / 600.0f);
+        }
+    }
+    if ((character_change_array->chunk == 0xE) || ((character_change_array->chunk == 0xB) && (var_f16 < D_global_asm_807480DC))) {
+        func_global_asm_80711410(2.9f, -0x1E, var_f14, 0xE, MAX(0.05, var_f14));
+    } else {
+        D_global_asm_8077058C = 0;
+    }
+    if (((rand() >> 0xF) % 50) == 0xF) {
+        var_v1->unk0 = 0x28;
+    }
+    if (var_v1->unk0) {
+        var_v1->unk0--;
+        if (((rand() >> 0xF) % 10) == 5) {
+            if (var_f16 < 2200.0f) {
+                if (D_global_asm_80770DC9 != 0) {
+                    if (D_80770DD4 < 600.0f) {
+                        playSound(0x9C, (s32) ((((var_f14 * 32767.0f * 60.0f) / 255.0f) * (600.0 - D_80770DD4)) / 1000.0), D_80770DCC, 0.8f, 0x1E, (u32) D_80770DD0);
+                    }
+                } else {
+                    func_global_asm_80608DA8(0x9C, var_f14 * 60.0f, 0x7F, 0x1E, (rand() >> 0xF) % 3);
+                }
+            }
+            var_v1->unk4 = 1.0f;
+            var_v1->unk8 = 1.0f;
+            var_v1->unkC = 1.0f;
+        }
+    }
+    var_v1->unk4 = ((0.4 - var_v1->unk4) * 0.2) + var_v1->unk4;
+    var_v1->unk8 = ((0.3 - var_v1->unk8) * 0.2) + var_v1->unk8;
+    var_v1->unkC = ((0.3 - var_v1->unkC) * 0.2) + var_v1->unkC;
+    func_global_asm_80659670(var_v1->unk4, var_v1->unk8, var_v1->unkC, 0xE);
+}
+*/
+
+void func_global_asm_806449C0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714998(2);
     func_global_asm_807149B8(1);
     func_global_asm_80714B84(&D_global_asm_8071FBC8, 1.5f, arg1, arg2, 1);
@@ -517,13 +609,15 @@ void func_global_asm_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80644A18.s")
 
-typedef struct {
+typedef struct InstanceData80644CC0 {
     f32 unk0;
     f32 unk4;
-} Struct80644CC0;
+} InstanceData80644CC0;
+
+f32 func_global_asm_80627A00(f64, f32, s32, s32, s16, f32, f32, f32);
 
 void func_global_asm_80644CC0(void **arg0, s32 arg1, s32 arg2, s32 arg3) {
-    Struct80644CC0 *var_v1;
+    InstanceData80644CC0 *var_v1;
 
     if (*arg0 == NULL) {
         var_v1 = malloc(8);
@@ -843,41 +937,34 @@ void func_global_asm_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646770.s")
 
 extern f32 D_global_asm_807480F0;
+typedef struct InstanceData80646770 {
+    s32 unk0;
+} InstanceData80646770;
 
 /*
-void func_global_asm_80646770(s32 **arg0, s32 arg1, s32 arg2, s32 arg3) {
-    Struct807F5FD4_unk0 *temp_v1;
-    Struct807F5FD4_unk0 *temp_v1_2;
-    f32 dz;
-    f32 dy;
-    f32 dx;
-    s32 *temp_v0;
-    s32 *var_v1;
-    s32 temp_fp;
+void func_global_asm_80646770(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
+    f32 dx, dy, dz;
+    InstanceData80646770 *var_v1;
+    s32 old;
     s32 count;
-    s32 temp_t9;
-    s32 temp_t9_2;
-    s32 found;
+    u8 found;
 
-    var_v1 = *arg0;
     found = FALSE;
-    if (var_v1 == NULL) {
-        temp_v0 = malloc(4);
-        *arg0 = temp_v0;
-        *temp_v0 = 0;
-        var_v1 = *arg0;
+    if (arg0->unk0 == NULL) {
+        var_v1 = malloc(sizeof(InstanceData80646770));
+        arg0->unk0 = var_v1;
+        var_v1->unk0 = 0;
     }
-    count = (D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0]);
-    temp_fp = *var_v1;
-    (*var_v1)++;
-    if (count == *var_v1) {
-        *var_v1 = 0;
+    var_v1 = arg0->unk0;
+    count = D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0];
+    old = var_v1->unk0++;
+    if (count == var_v1->unk0) {
+        var_v1->unk0 = 0;
     }
-    while (!found && temp_fp != *var_v1) {
-        temp_v1 = &D_global_asm_807F5FD4->unk0[0][*var_v1];
-        dz = (character_change_array->look_at_eye_z - temp_v1->unk8);
-        dy = (character_change_array->look_at_eye_y - temp_v1->unk4);
-        dx = (character_change_array->look_at_eye_x - temp_v1->unk0);
+    while (!found && old != var_v1->unk0) {
+        dz = character_change_array->look_at_eye_z - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8;
+        dy = character_change_array->look_at_eye_y - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk4;
+        dx = character_change_array->look_at_eye_x - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk0;
         if (sqrtf((dy * dy) + (dx * dx) + (dz * dz)) < D_global_asm_807480F0) {
             found = TRUE;
             func_global_asm_807149B8(1);
@@ -885,12 +972,15 @@ void func_global_asm_80646770(s32 **arg0, s32 arg1, s32 arg2, s32 arg3) {
             func_global_asm_80714950(0);
             func_global_asm_8071498C(func_global_asm_8071E3EC);
             func_global_asm_807149A8(0x320);
-            temp_v1_2 = &D_global_asm_807F5FD4->unk0[0][*var_v1];
-            drawSpriteAtPosition(&D_global_asm_80720BC4, 2.5f, temp_v1_2->unk0, temp_v1_2->unk4, temp_v1_2->unk8);
+            drawSpriteAtPosition(
+                &D_global_asm_80720BC4, 2.5f,
+                D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk0,
+                D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk4,
+                D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8);
         } else {
-            (*var_v1)++;
-            if (count == *var_v1) {
-                *var_v1 = 0;
+            var_v1->unk0++;
+            if (count == var_v1->unk0) {
+                var_v1->unk0 = 0;
             }
         }
     }
@@ -898,6 +988,85 @@ void func_global_asm_80646770(s32 **arg0, s32 arg1, s32 arg2, s32 arg3) {
 */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646978.s")
+
+typedef struct Struct80748154 {
+    u8 pad0[3];
+    u8 unk3;
+} Struct80748154;
+
+extern f32 D_global_asm_8074811C;
+extern f32 D_global_asm_80748120;
+extern f32 D_global_asm_80748124;
+extern f32 D_global_asm_80748128;
+extern s32 D_global_asm_8074812C;
+extern s32 D_global_asm_80748130;
+extern f32 D_global_asm_80748140;
+extern f32 D_global_asm_80748144;
+extern s32 D_global_asm_80748148;
+extern f32 D_global_asm_8074814C;
+extern s32 D_global_asm_80748150;
+extern Struct80748154 D_global_asm_80748154;
+extern f32 D_global_asm_807F621C;
+extern f32 D_global_asm_807F6220;
+extern f32 D_global_asm_807F6224;
+
+typedef struct tuple_f {
+    f32 x;
+    f32 y;
+    f32 z;
+} tuple_f;
+
+/*
+void func_global_asm_80646978(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    tuple_f sp88;
+    f64 dx, dy, dz;
+    s16 i;
+    s32 j;
+
+    for (i = 0; i < D_global_asm_80748148; i++) {
+        dx = (func_global_asm_806119A0() / 1000U) % 100U;
+        dy = (func_global_asm_806119A0() / 1000U) % 100U;
+        dz = (func_global_asm_806119A0() / 1000U) % 100U;
+        func_global_asm_8071496C(i);
+        func_global_asm_807149B8(1U);
+        if (i == 0) {
+            func_global_asm_80714950(D_global_asm_80748150 + 0x10000);
+            func_global_asm_8071498C(func_global_asm_8071AADC);
+            func_global_asm_80714998(D_global_asm_80748154.unk3);
+        } else {
+            func_global_asm_8071498C(func_global_asm_8071BB14);
+        }
+        drawSpriteAtPosition(&D_global_asm_80720BE8,
+            D_global_asm_80748140,
+            D_global_asm_807F621C + (dx - 50.0),
+            D_global_asm_807F6220 + (dy - 50.0),
+            D_global_asm_807F6224 + (dz - 50.0));
+    }
+    for (j = 0; j < 0xC; j++) {
+        func_global_asm_8071498C(func_global_asm_8071E864);
+        func_global_asm_80714950(i);
+        func_global_asm_807149B8(1);
+        changeActorColor(0x8CU, 0x8CU, 0x8CU, 0xFFU);
+        func_global_asm_80714998(3U);
+        drawSpriteAtPosition(&D_global_asm_8071FFA0,
+            D_global_asm_80748144,
+            D_global_asm_807F621C,
+            D_global_asm_807F6220 + D_global_asm_8074814C,
+            D_global_asm_807F6224);
+    }
+    for (j = 0; j < 0x1130; j += 0x190) {
+        sp88.x = ((rand() >> 0xF) % D_global_asm_8074812C) + D_global_asm_80748120;
+        sp88.y = j;
+        sp88.z = ((rand() >> 0xF) % D_global_asm_80748130) + D_global_asm_80748124;
+        func_global_asm_806891D8(0x5A,
+            D_global_asm_807F621C,
+            D_global_asm_807F6220 + D_global_asm_8074811C,
+            D_global_asm_807F6224, 0,
+            D_global_asm_80748128,
+            NULL, &sp88);
+    }
+}
+*/
 
 void func_global_asm_80646DC4(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 pad2;
@@ -998,37 +1167,33 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.5f, x, y - 70, z);
 }
 
-// Close, regalloc, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80647610.s")
-
 extern SpriteData D_global_asm_80720DE0; // TODO: Datatype
 
-/*
-void func_global_asm_80647610(s32 **arg0, s32 arg1, s16 arg2, s16 arg3) {
+typedef struct InstanceData80647610 {
+    s32 unk0;
+} InstanceData80647610;
+
+void func_global_asm_80647610(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s16 arg3) {
     s32 pad;
     s32 pad2;
     s32 sp2C;
     s32 sp28;
     s32 sp24;
     Struct807F5FD4_unk0 *temp_v0_2;
-    s32 *temp_v0;
-    s32 *var_v1;
+    InstanceData80647610 *var_v1;
     s32 var_a1;
 
-    var_v1 = *arg0;
-    if (var_v1 == NULL) {
-        temp_v0 = malloc(4);
-        *arg0 = temp_v0;
-        *temp_v0 = 0;
-        var_v1 = *arg0;
+    if (arg0->unk0 == NULL) {
+        var_v1 = malloc(sizeof(InstanceData80647610));
+        arg0->unk0 = var_v1;
+        var_v1->unk0 = 0;
     }
-    var_a1 = *var_v1 + 1;
-    *var_v1 = var_a1;
-    if (arg3 == var_a1) {
-        *var_v1 = 0;
-        var_a1 = 0;
+    var_v1 = arg0->unk0;
+    var_v1->unk0++;
+    if (arg3 == var_v1->unk0) {
+        var_v1->unk0 = 0;
     }
-    temp_v0_2 = &D_global_asm_807F5FD4->unk0[arg2][var_a1];
+    temp_v0_2 = &D_global_asm_807F5FD4->unk0[arg2][var_v1->unk0];
     sp2C = temp_v0_2->unk0;
     sp28 = temp_v0_2->unk4;
     sp24 = temp_v0_2->unk8;
@@ -1037,7 +1202,6 @@ void func_global_asm_80647610(s32 **arg0, s32 arg1, s16 arg2, s16 arg3) {
     changeActorColor(0xFF, 0xFF, 0xFF, 0xC8);
     drawSpriteAtPosition(&D_global_asm_80720DE0, 1.0f, sp2C, sp28 + 0xA, sp24);
 }
-*/
 
 void func_global_asm_8064774C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
@@ -1096,25 +1260,17 @@ void func_global_asm_80647A14(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80647B74.s")
-
-typedef struct {
+typedef struct InstanceData80647B74 {
     u32 unk0;
     s32 unk4;
-} Struct80647B74;
+} InstanceData80647B74;
 
-typedef struct {
-    Struct80647B74 *unk0;
-} Struct80647B74_arg0;
-
-/*
-void func_global_asm_80647B74(Struct80647B74_arg0 *arg0, s16 arg1, s32 arg2, s32 arg3) {
-    Struct80647B74 *var_v1;
+void func_global_asm_80647B74(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    InstanceData80647B74 *var_v1;
 
     if (arg0->unk0 == NULL) {
-        arg0->unk0 = malloc(sizeof(Struct80647B74));
-        var_v1 = arg0->unk0;
+        var_v1= malloc(sizeof(InstanceData80647B74));
+        arg0->unk0 = var_v1;
         var_v1->unk0 = 0;
         var_v1->unk4 = 0;
     }
@@ -1124,6 +1280,9 @@ void func_global_asm_80647B74(Struct80647B74_arg0 *arg0, s16 arg1, s32 arg2, s32
             var_v1->unk4 = 1;
             var_v1->unk0 = object_timer;
         }
+    }
+    if (!var_v1->unk4) {
+        return;
     }
     switch (var_v1->unk4) {
         case 1:
@@ -1140,11 +1299,10 @@ void func_global_asm_80647B74(Struct80647B74_arg0 *arg0, s16 arg1, s32 arg2, s32
             var_v1->unk4 = 0;
             break;
     }
-    if (var_v1->unk4 != 0) {
+    if (var_v1->unk4) {
         var_v1->unk4++;
     }
 }
-*/
 
 void func_global_asm_80647CF4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714998(2);
@@ -1369,7 +1527,7 @@ extern s16 D_global_asm_807505AE[];
 extern u8 D_global_asm_807446F0[];
 
 /*
-void func_global_asm_806491F4(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_806491F4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
     s32 pad;
     s32 sp28;
     s32 levelIndex;
@@ -1452,6 +1610,80 @@ void func_global_asm_8064954C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80649BF0.s")
 
+typedef struct Struct80748180 {
+    s16 unk0;
+    s16 unk2;
+} Struct80748180;
+
+extern Struct80748180 D_global_asm_80748180[];
+
+typedef struct InstanceData80649BF0 {
+    s32 unk0;
+    s32 unk4;
+} InstanceData80649BF0;
+
+/*
+void func_global_asm_80649BF0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s32 i;
+    s32 found;
+    InstanceData80649BF0 *temp_v0;
+    Struct80748180 *ptr;
+
+    if (arg0->unk0 == NULL) {
+        temp_v0 = malloc(sizeof(InstanceData80649BF0));
+        arg0->unk0 = temp_v0;
+        temp_v0->unk0 = 0;
+        temp_v0->unk4 = -1;
+    }
+    temp_v0 = arg0->unk0;
+    if (temp_v0->unk4 == -1) {
+        temp_v0->unk4 = arg0->unk48[0];
+        return;
+    }
+    found = FALSE;
+    if (temp_v0->unk4 & 1) {
+        if ((arg0->unk48[0] + 1) == temp_v0->unk4) {
+            found = TRUE;
+        }
+    } else if (arg0->unk48[0] == (temp_v0->unk4 + 1)) {
+        found = TRUE;
+    }
+    if (found) {
+        found = FALSE;
+        temp_v0->unk0++;
+        if (temp_v0->unk0 == 8) {
+            arg0->next_state[0] = 0x64;
+        }
+    } else {
+        found = FALSE;
+        i = 0;
+        ptr = &D_global_asm_80748180;
+        while (!found) {
+            if (temp_v0->unk4 == ptr->unk0) {
+                found = TRUE;
+            } else {
+                i++;
+                ptr++;
+            }
+            if (i);
+        }
+        found = FALSE;
+        func_global_asm_806418E8(ptr->unk2, 0x28, 0);
+        ptr = &D_global_asm_80748180;
+        while (!found) {
+            if (ptr->unk0 == arg0->unk48[0]) {
+                found = TRUE;
+            } else {
+                ptr++;
+            }
+        }
+        func_global_asm_806418E8(ptr->unk2, 0x28, 0);
+    }
+    temp_v0->unk4 = -1;
+}
+*/
+
+
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -1493,7 +1725,7 @@ void func_global_asm_80649F64(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80649FC0.s")
 
-typedef struct {
+typedef struct InstanceData80649FC0 {
     OSTime unk0;
     s32 unk8;
     s32 unkC;
@@ -1501,11 +1733,62 @@ typedef struct {
     s32 time_remaining_seconds;
     s32 unk18;
     s32 unk1C;
-} TimerInfo;
+} InstanceData80649FC0;
 
 extern OSTime D_global_asm_807445B0;
-extern Gfx *func_global_asm_8068DBA4(Gfx *, TimerInfo *);
+extern Gfx *func_global_asm_8068DBA4(Gfx *, InstanceData80649FC0 *);
 
+/*
+void func_global_asm_80649FC0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    InstanceData80649FC0 *temp_v0;
+    s32 temp_t2;
+    u32 temp_t1;
+    u32 temp_t3;
+    u32 temp_t4;
+    u32 temp_t5;
+    u32 temp_t9;
+    u32 temp_v1;
+    u32 temp_v1_2;
+    u64 temp_ret_3;
+
+    if (arg0->unk0 == NULL) {
+        temp_v0 = malloc(sizeof(InstanceData80649FC0));
+        arg0->unk0 = temp_v0;
+        temp_v0->unk0 = osGetTime();
+        temp_v0->unk8 = arg2 >> 0x1F;
+        temp_v0->time_remaining_seconds = 0;
+        temp_v0->time_remaining_minutes = 0;
+        temp_v0->unk1C = 0;
+        temp_v0->unk18 = 0;
+        temp_v0->unkC = arg2;
+    }
+    temp_v0 = arg0->unk0;
+    temp_v0->unk0 += D_global_asm_807445B0;
+    temp_ret_3 = __ll_mul(osGetTime() - temp_v0->unk0, 0x40);
+    temp_ret_3 = __ull_div(temp_ret_3, 0xBB8);
+    temp_ret_3 = __ull_div(temp_ret_3, 0xF4240);
+    temp_v1_2 = (u32) temp_ret_3;
+    temp_t3 = temp_v0->unkC;
+    temp_t4 = (temp_v0->unk8 - temp_ret_3) - (temp_t3 < temp_v1_2);
+    temp_t5 = temp_t3 - temp_v1_2;
+    temp_v0->time_remaining_seconds = temp_t5;
+    temp_v0->time_remaining_minutes = temp_t4;
+    if ((temp_v0->unk18 == 0U) && (temp_v0->unk1C == 0U)) {
+        temp_t2 = arg3 >> 0x1F;
+        if (((u32) temp_t2 >= temp_t4) && ((temp_t4 < (u32) temp_t2) || (temp_t5 < (u32) arg3))) {
+            temp_v0->unk1C = 1;
+            temp_v0->unk18 = 0;
+            arg0->next_state[0] = 0x14;
+        }
+    }
+    if ((temp_v0->time_remaining_minutes == 0) && (temp_v0->time_remaining_seconds == 0)) {
+        func_global_asm_8061134C(arg0->unk0);
+        arg0->next_state[0] = 0x1E;
+        arg0->unk0 = NULL;
+    }
+    addActorToTextOverlayRenderArray(&func_global_asm_8068DBA4, temp_v0, 5U);
+}
+*/
 
 void func_global_asm_8064A180(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 

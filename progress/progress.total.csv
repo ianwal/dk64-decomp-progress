@@ -1151,7 +1151,7 @@ us,asm,func_global_asm_806A7BB8,36,yes
 us,asm,func_global_asm_80611534,96,no
 us,asm,func_global_asm_806EAF6C,128,yes
 us,asm,func_global_asm_8065FD88,304,no
-us,asm,func_global_asm_80647B74,384,no
+us,asm,func_global_asm_80647B74,384,yes
 us,asm,func_global_asm_80612790,112,yes
 us,asm,func_global_asm_8060E128,128,yes
 us,asm,func_global_asm_8064B2AC,196,yes
@@ -2902,7 +2902,7 @@ us,asm,func_global_asm_80704484,1244,no
 us,asm,func_global_asm_80625C30,1248,no
 us,asm,_bnkfPatchSound,160,yes
 us,asm,func_global_asm_80617D20,80,yes
-us,asm,func_global_asm_80647610,316,no
+us,asm,func_global_asm_80647610,316,yes
 us,asm,func_global_asm_80610DCC,184,no
 us,asm,func_global_asm_806EC708,248,yes
 us,asm,func_global_asm_806C7258,8,yes
