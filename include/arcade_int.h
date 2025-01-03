@@ -149,6 +149,7 @@ extern s32 D_arcade_8004C6F0;
 extern s32 D_arcade_8004C6F4;
 extern s32 D_arcade_8004C6F8;
 extern s32 D_arcade_8004C6FC;
+extern s32 D_arcade_8004C700;
 extern s32 D_arcade_8004C704;
 extern s32 D_arcade_8004C708;
 extern s32 D_arcade_8004C70C;
@@ -185,6 +186,7 @@ extern u8  D_global_asm_80767CE8;
 extern f32 D_global_asm_807FD888;
 extern u32 D_global_asm_8076D1F8; // ??
 extern s32 D_global_asm_80770DF8;
+extern s32 D_global_asm_80770DFC;
 extern GlobalASMStruct17 *D_global_asm_807ECDE8;
 extern u8 *D_global_asm_80746800;
 #endif /* ARCADE_INTERNAL_H */
