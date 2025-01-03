@@ -25028,8 +25028,6 @@ u8 D_arcade_8004A788[] = {
 	0x03,
 	0x02,
 };
-s32 D_arcade_8004A78C = 1;
-s32 D_arcade_8004A790 = 0;
 u8 D_arcade_8004A794 = ' ';
 s32 D_arcade_8004A798[] = {
 	0x019D2975,
@@ -25303,19 +25301,20 @@ s32 arcade_get_object_type_count(enum ARCADE_OBJ_E arg0) {
     return count;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024940.s")
-
-/*
 void func_arcade_80024940(Gfx **gpp) {
-    Gfx* sp1C;
+    Gfx *sp1C;
+    static s32 D_arcade_8004A78C = 1;
+    static s32 D_arcade_8004A790 = 0;
     
     sp1C = *gpp;
+    
     if (D_arcade_8004A78C) {
         D_arcade_8004A78C = 0;
         arcade_background_visual = 1;
         func_arcade_80024D90();
         func_arcade_8002440C();
     }
+    
     switch (D_arcade_8004C724) {
         case 0:// 800249A8
             func_arcade_80024E84(&sp1C);
@@ -25337,12 +25336,12 @@ void func_arcade_80024940(Gfx **gpp) {
             func_arcade_80025960(&sp1C);
             break;
     }
+    
     func_arcade_800319D4(&sp1C);
-    D_arcade_8004C6D8++;
+    ++D_arcade_8004C6D8;
     *gpp = --sp1C;
-    D_arcade_8004A790++;
+    ++D_arcade_8004A790;
 }
-*/
 
 // struct, score, big offset, loops, aaa
 #pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024A50.s")
