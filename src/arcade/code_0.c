@@ -25343,29 +25343,27 @@ void func_arcade_80024940(Gfx **gpp) {
     ++D_arcade_8004A790;
 }
 
-// struct, score, big offset, loops, aaa
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024A50.s")
+void func_arcade_80024A50(s32 arg0)
+{
+    s32 i;
+    s32 j;
+    u8 blank[] = {' '};
 
-/*
-void func_arcade_80024A50(s32 arg0) {
-    // adds score to high scores
-    volatile u8 spC = D_arcade_8004A794; //static???
-    u8 pad[0x10];
-    s32 i, j;
-
-    
-    for (i = 4; arg0 < i; i--) {
+    for (i = 4; i > arg0; --i)
+    {
         arcade_saved_high_scores[i] = arcade_saved_high_scores[i - 1];
-        for (j = 0; j < 3; j++) {
+        for (j = 0; j < 3; ++j)
+        {
             arcade_saved_high_score_initials[i][j] = arcade_saved_high_score_initials[i - 1][j];
         }
     }
+
     arcade_saved_high_scores[arg0] = arcade_current_score;
-    for (j = 0; j < 3; j++) {
-        arcade_saved_high_score_initials[arg0][j] = spC;
+    for (i = 0; i < 3; i++) \
+    { \
+        arcade_saved_high_score_initials[arg0][i] = blank[0];
     }
 }
-*/
 
 void func_arcade_80024B04(void) {
     u8 i, j;
