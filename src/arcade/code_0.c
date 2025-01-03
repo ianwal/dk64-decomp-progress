@@ -28769,45 +28769,48 @@ void func_arcade_80030FEC(void) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800311E0.s")
-
-/*
 void func_arcade_800311E0(void) {
-    u8 sp1F;
     u8 i;
 
     if (!(D_arcade_8004C6DC & 1)) {
         D_arcade_8004A308[1] = 1;
         D_arcade_8004A308[2] = -1;
-        D_arcade_8004A308[3] = (D_arcade_8004C6DC / 0x15E) & 1 ? 1 : -1;
-    } else {//L80031238
-        for (i = 0; i < 4; i++) {\
+        if ((D_arcade_8004C6DC / 350) & 1) {
+            D_arcade_8004A308[3] = 1;
+        } else {
+            D_arcade_8004A308[3] = -1;
+        }
+    } else {
+        for (i = 0; i < 4; i++) { \
             D_arcade_8004A308[i] = 0;
         }
     }
-
-    if (D_arcade_8004C6DC % 0x78 == 0 && arcade_get_object_type_count(ARCADE_OBJ_04_PIE) < 5) {
-        sp1F = func_arcade_80024764();
-        arcade_objects[sp1F] = arcade_pie_obj_template;
-        if (arcade_cycle_rng() > 0x4000) {
-            if ((D_arcade_8004C6DC / 350) & 1)
-                arcade_objects[sp1F].x_position = 40;
+    if (((D_arcade_8004C6DC % 120) == 0) && (arcade_get_object_type_count(ARCADE_OBJ_04_PIE) < 5)) {
+        i = func_arcade_80024764();
+        arcade_objects[i] = arcade_pie_obj_template;
+        if (arcade_cycle_rng() >= 0x4001) {
+            if ((D_arcade_8004C6DC / 350) & 1) {
+                arcade_objects[i].x_position = 40.0f;
+            }
             else
-                arcade_objects[sp1F].x_position = 280;
-        } else {//L80031354
-            arcade_objects[sp1F].y_position = 127;
-            if (arcade_cycle_rng() > 0x4000) {
-                arcade_objects[sp1F].unk1C = 1;
-                arcade_objects[sp1F].x_position = 40;
-            } else {
-                arcade_objects[sp1F].unk1C = 2;
-                arcade_objects[sp1F].x_position = 280;
+            {
+                arcade_objects[i].x_position = 280.0f;
             }
         }
-    }//L800313AC
+        else
+        {
+            arcade_objects[i].y_position = 127.0f;
+            if (arcade_cycle_rng() >= 0x4001) {
+                arcade_objects[i].unk1C = 1;
+                arcade_objects[i].x_position = 40.0f;
+            }
+            else {
+                arcade_objects[i].unk1C = 2;
+                arcade_objects[i].x_position = 280.0f;
+            }
+        }
+    }
 }
-*/
 
 void func_arcade_800313B8(void) {
     u8 sp1f;
