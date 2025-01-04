@@ -3403,7 +3403,7 @@ us,asm,func_global_asm_8072752C,332,yes
 us,asm,func_global_asm_806A36F4,8,yes
 us,asm,func_global_asm_80627B58,172,yes
 us,asm,func_global_asm_806C8EE8,164,yes
-us,asm,func_global_asm_8064D0C4,292,no
+us,asm,func_global_asm_8064D0C4,292,yes
 us,asm,func_global_asm_8073198C,76,yes
 us,asm,func_global_asm_806EB364,156,yes
 us,asm,func_global_asm_80691830,256,yes
