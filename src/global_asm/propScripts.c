@@ -1913,7 +1913,128 @@ s32 func_global_asm_8064AB1C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     return FALSE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064AC28.s")
+typedef struct DKTile {
+    u8 position;
+    u8 pad1;
+    s16 enable_countdown;
+    u8 tile_activated;
+    u8 pad5;
+} DKTile;
+
+typedef struct InstanceData8064AC28 {
+    u8 pad[0x18];
+    DKTile tiles[9];
+    u8 unk4E;
+    u8 unk4F;
+} InstanceData8064AC28;
+
+void func_global_asm_8064AC28(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    InstanceData8064AC28 *temp_v0; // A4
+    u8 pad0[3];
+    u8 unkcounter;
+    s16 sp9C; // 9C
+    f32 sp98; // 98
+    u8 sp97; // 97
+    f32 dxz;
+    s32 j;
+    s32 i;
+    u8 puzzle_complete; // 87
+    f32 x, y, z; // 78, 7C, 80
+    Actor *player;
+    f32 max_dist;
+
+    puzzle_complete = TRUE;
+    unkcounter = 0;
+    if (arg0->unk0 == NULL) {
+        temp_v0 = arg0->unk0 = malloc(sizeof(InstanceData8064AC28));
+        temp_v0->unk4E = 0;
+        if (isFlagSet(0x146, FLAG_TYPE_PERMANENT)) {
+            for (i = 0; i < 9; i++) { \
+                temp_v0->tiles[i].position = 3;
+            }
+        } else {
+            temp_v0->tiles[2].position = 2;
+            temp_v0->tiles[5].position = 2;
+            temp_v0->tiles[7].position = 2;
+            temp_v0->tiles[0].position = 0;
+            temp_v0->tiles[1].position = 3;
+            temp_v0->tiles[3].position = 0;
+            temp_v0->tiles[4].position = 1;
+            temp_v0->tiles[6].position = 3;
+            temp_v0->tiles[8].position = 1;
+        }
+        for (i = 0; i < 9; i++) {
+            temp_v0->tiles[i].tile_activated = TRUE;
+            temp_v0->tiles[i].enable_countdown = 10;
+        }
+        temp_v0->unk4F = 0;
+    }
+    temp_v0 = arg0->unk0;
+    for (i = 0; i < 9; i++) {
+        if (temp_v0->tiles[i].tile_activated) {
+            unkcounter++;
+            func_global_asm_80650D8C(arg1, i + 1, &sp9C, &sp98, &sp97);
+            if ((sp9C == temp_v0->tiles[i].position) && (sp98 < 0.1) && (!temp_v0->tiles[i].enable_countdown)) {
+                func_global_asm_80650A04(arg1, i + 1, 0);
+                func_global_asm_80650AD8(arg1, i + 1, sp9C, 0.0f);
+                temp_v0->tiles[i].tile_activated = FALSE;
+                func_global_asm_806335B0(arg1, 1, i + 1, &x, &y, &z);
+                playSoundAtPosition(x, y, z, 0x1AE, 0xFFU, 0x7F, 0x14U, 0x50U, 0.7f, 0U);
+            }
+            if (temp_v0->tiles[i].enable_countdown) {
+                temp_v0->tiles[i].enable_countdown--;
+            }
+        }
+        if ((temp_v0->tiles[i].tile_activated) || (temp_v0->tiles[i].position != 3)) {
+            puzzle_complete = FALSE;
+        }
+    }
+    if (isFlagSet(0x146, FLAG_TYPE_PERMANENT)) {
+        temp_v0->unk4F = 0x14U;
+    }
+    if (temp_v0->unk4F == 0) {
+        player = character_change_array->player_pointer;
+        if (
+            (player->control_state == 0x1C) &&
+            (player->control_state_progress < 7) && 
+            (current_character_index[0] == 0) && 
+            (player->locked_to_pad == 1)
+        ) {
+            if (arg1 == player->unk10C) {
+                max_dist = 100000.0f;
+                j = -1;
+                for (i = 0; i < 9; i++) {
+                    func_global_asm_806335B0(arg1, 1, i + 1, &x, &y, &z);
+                    x = player_pointer->x_position - x;
+                    z = player_pointer->z_position - z;
+                    dxz = (x * x) + (z * z);
+                    if (dxz < max_dist) {
+                        j = i;
+                        max_dist = dxz;
+                    }
+                }
+                if (j >= 0) {
+                    temp_v0->tiles[j].position++;
+                    temp_v0->tiles[j].position %= 4;
+                    temp_v0->tiles[j].tile_activated = TRUE;
+                    func_global_asm_80650A04(arg1, j + 1, 0x19);
+                    temp_v0->unk4F = 0x14U;
+                }
+            }
+        }
+    }
+    if (temp_v0->unk4F) {
+        temp_v0->unk4F--;
+    }
+    if (puzzle_complete) {
+        func_global_asm_8063DA40(0xF, 0xA);
+        func_global_asm_8061134C(arg0->unk0);
+        arg0->next_state[0] = 0x28;
+        arg0->unk0 = NULL;
+    }
+}
+
+
 
 void func_global_asm_8064B118(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_bonus_8002D6F8(arg1);

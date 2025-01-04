@@ -1445,7 +1445,7 @@ us,asm,func_global_asm_80732F10,624,yes
 us,asm,func_global_asm_80650998,108,yes
 us,asm,getFlagBlockAddress,340,no
 us,asm,func_global_asm_8070CBA4,120,yes
-us,asm,func_global_asm_8064AC28,1264,no
+us,asm,func_global_asm_8064AC28,1264,yes
 us,asm,func_global_asm_8072F59C,824,no
 us,asm,func_global_asm_806F13C8,100,yes
 us,asm,func_global_asm_806EE06C,160,yes
@@ -1974,8 +1974,8 @@ us,asm,func_global_asm_80688FC0,164,no
 us,asm,func_global_asm_8061892C,60,yes
 us,asm,func_global_asm_8065F1C0,732,no
 us,asm,func_global_asm_806A5EAC,152,yes
-us,asm,func_global_asm_806D7DF8,144,yes
 us,asm,func_global_asm_80673FDC,164,no
+us,asm,func_global_asm_806D7DF8,144,yes
 us,asm,func_global_asm_80616A9C,264,no
 us,asm,func_global_asm_8062133C,2912,no
 us,asm,func_global_asm_806D428C,792,yes
