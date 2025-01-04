@@ -1776,14 +1776,7 @@ typedef struct {
     f32 unkC;
     s16 unk10;
     s16 unk12;
-    f32 unk14;
-    f32 unk18;
-    f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-    f32 unk2C;
-    f32 unk30;
+    f32 unk14[8]; // Unsure how many members of this array there are
     f32 unk34;
     s32 unk38;
     f32 unk3C;

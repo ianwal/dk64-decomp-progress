@@ -2125,9 +2125,6 @@ void func_global_asm_8064B370(GlobalASMStruct86 **arg0, s32 arg1, s32 arg2, s32 
     D_global_asm_807F6238 = temp_v0->unk24;
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064B3F8.s")
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -2139,26 +2136,23 @@ typedef struct {
     f32 unk1C;
 } Struct8064B3F8;
 
-/*
-void func_global_asm_8064B3F8(Struct8064B3F8 **arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064B3F8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
     Struct8064B3F8 *temp_t0;
-    Struct8064B3F8 *temp_a0;
+    OM2_scriptdata *temp_a0;
     f32 x;
     f32 y;
     f32 z;
     s32 objectModel2Index;
 
-    temp_t0 = *arg0;
+    temp_t0 = arg0->unk0;
     objectModel2Index = func_global_asm_80659470(arg1);
     x = D_global_asm_807F6000[objectModel2Index].x_position;
     y = D_global_asm_807F6000[objectModel2Index].y_position;
     z = D_global_asm_807F6000[objectModel2Index].z_position;
-    temp_a0 = &arg0[arg3];
-    temp_a0->unk14 = (temp_t0->unk0 - x) / arg2;
-    temp_a0->unk18 = (temp_t0->unk4 - y) / arg2;
-    temp_a0->unk1C = (temp_t0->unk8 - z) / arg2;
+    arg0->unk14[arg3] = (temp_t0->unk0 - x) / arg2;
+    arg0->unk14[arg3 + 1] = (temp_t0->unk4 - y) / arg2;
+    arg0->unk14[arg3 + 2] = (temp_t0->unk8 - z) / arg2;
 }
-*/
 
 void func_global_asm_8064B4AC(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_global_asm_806335B0(D_global_asm_807F6240[arg2], 1, arg3, &D_global_asm_807F621C, &D_global_asm_807F6220, &D_global_asm_807F6224);
