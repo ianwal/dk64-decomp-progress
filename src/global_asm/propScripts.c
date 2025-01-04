@@ -2129,11 +2129,6 @@ typedef struct {
     f32 unk0;
     f32 unk4;
     f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    f32 unk18;
-    f32 unk1C;
 } Struct8064B3F8;
 
 void func_global_asm_8064B3F8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
@@ -2370,12 +2365,8 @@ u8 func_global_asm_8064BE58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return D_global_asm_807552E8 == 5;
 }
 
-// rodata, doable, float, regalloc, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064BE80.s")
-
 extern s32 D_global_asm_807552F0;
 
-/*
 s32 func_global_asm_8064BE80(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     s32 playerIndex;
     f32 temp;
@@ -2387,13 +2378,12 @@ s32 func_global_asm_8064BE80(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     if (func_global_asm_806F8AD4(1, playerIndex) != 0) {
         changeCollectableCount(7, playerIndex, 1);
         temp = (f32)((s32)func_global_asm_806F8AD4(7, playerIndex)) / D_global_asm_807552F0;
-        temp = 0.5f + (temp / 2.0f);
+        temp = ((1 / 2.0f) * temp) + 0.5f;
         playSound(0x2A1, 0x7FFF, 63.0f, temp, 5, 0);
         return TRUE;
     }
     return FALSE;
 }
-*/
 
 s32 func_global_asm_8064BF58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f64 dz, dx;
