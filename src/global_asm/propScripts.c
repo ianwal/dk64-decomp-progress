@@ -1739,9 +1739,9 @@ extern OSTime D_global_asm_807445B0;
 extern Gfx *func_global_asm_8068DBA4(Gfx *, InstanceData80649FC0 *);
 
 /*
-void func_global_asm_80649FC0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80649FC0(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
     InstanceData80649FC0 *temp_v0;
-    s32 temp_t2;
+    u32 temp_t2;
     u32 temp_t1;
     u32 temp_t3;
     u32 temp_t4;
@@ -1768,14 +1768,13 @@ void func_global_asm_80649FC0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
     temp_ret_3 = __ull_div(temp_ret_3, 0xBB8);
     temp_ret_3 = __ull_div(temp_ret_3, 0xF4240);
     temp_v1_2 = (u32) temp_ret_3;
-    temp_t3 = temp_v0->unkC;
-    temp_t4 = (temp_v0->unk8 - temp_ret_3) - (temp_t3 < temp_v1_2);
-    temp_t5 = temp_t3 - temp_v1_2;
+    temp_t4 = (temp_v0->unk8 - temp_ret_3) - (temp_v0->unkC < temp_v1_2);
+    temp_t5 = temp_v0->unkC - temp_v1_2;
     temp_v0->time_remaining_seconds = temp_t5;
     temp_v0->time_remaining_minutes = temp_t4;
     if ((temp_v0->unk18 == 0U) && (temp_v0->unk1C == 0U)) {
         temp_t2 = arg3 >> 0x1F;
-        if (((u32) temp_t2 >= temp_t4) && ((temp_t4 < (u32) temp_t2) || (temp_t5 < (u32) arg3))) {
+        if ((temp_t2 >= temp_t4) && ((temp_t4 < temp_t2) || (temp_t5 < arg3))) {
             temp_v0->unk1C = 1;
             temp_v0->unk18 = 0;
             arg0->next_state[0] = 0x14;
@@ -1822,7 +1821,73 @@ void func_global_asm_8064A194(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064A258.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064A804.s")
+extern s16 D_global_asm_8074822C[6][2];
+extern s16 D_global_asm_80748244[12][2];
+
+typedef struct InstanceData8064A804 {
+    u8 unk0[6];
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+} InstanceData8064A804;
+
+void func_global_asm_8064A804(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    InstanceData8064A804 *temp_v0; // 44
+    u8 found; // 43
+    u8 temp_t6;
+    s16 temp_s0;
+    s32 i; // 3c
+    s32 j; // 38
+    InstanceData8064A804 *temp_t2;
+
+    found = FALSE;
+    if (arg0->unk0 == NULL) {
+        temp_v0 = malloc(sizeof(InstanceData8064A804));
+        arg0->unk0 = temp_v0;
+        for (i = 0; i < 6; i++) { \
+            temp_v0->unk0[i] = 0;
+        }
+        temp_v0->unk6 = 1;
+        temp_v0->unk9 = 0;
+    }
+    temp_v0 = arg0->unk0;
+    for (i = 0; i < 6 && !found; i++) {
+        for (j = 0; j < 2 && !found; j++) {
+            if (D_global_asm_8074822C[i][j] == arg0->unk48[1]) {
+                found = TRUE;
+            }
+        }
+    }
+    i--;
+    j--;
+    if (!(temp_v0->unk0[i] & 1 << j)) {
+        temp_v0->unk0[i] = temp_v0->unk0[i] | (1 << j);
+        temp_s0 = (i * 2) + j;
+        if (temp_v0->unk0[i] == 3) {
+            func_global_asm_80635018(arg1, D_global_asm_80748244[temp_s0][0], 0, 0);
+            func_global_asm_80635018(arg1, D_global_asm_80748244[temp_s0][1], 0, 0);
+            playSound(0x2A1, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+            temp_v0->unk9++;
+            if (temp_v0->unk9 == 6) {
+                arg0->next_state[1] = 0x32;
+            }
+        } else if (temp_v0->unk6) {
+            func_global_asm_80635018(arg1, D_global_asm_80748244[temp_s0][0], 0, 0);
+            func_global_asm_80635018(arg1, D_global_asm_80748244[temp_s0][1], 0, 0);
+            temp_v0->unk8 = temp_s0;
+            temp_v0->unk7 = i;
+        } else {
+            temp_v0->unk0[temp_v0->unk7] = 0;
+            temp_v0->unk0[i] = 0;
+            func_global_asm_80635018(arg1, D_global_asm_80748244[temp_v0->unk8][0], 1, 0);
+            func_global_asm_80635018(arg1, D_global_asm_80748244[temp_v0->unk8][1], 1, 0);
+            playSound(0x2A2, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+        }
+        temp_v0->unk6 ^= 1;
+    }
+}
+
 
 void func_global_asm_8064AAC4(s32 arg0, s16 arg1, s8 arg2, s32 arg3) {
     func_global_asm_806BD094(D_global_asm_807F6000[func_global_asm_80659470(arg1)].unk8A, arg2);
