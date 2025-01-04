@@ -2665,8 +2665,6 @@ void func_global_asm_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064CD3C.s")
-
 extern f32 D_807F61FC;
 extern f32 D_807F6200;
 extern f32 D_807F6204;
@@ -2681,12 +2679,10 @@ typedef struct InstanceData8064CD3C {
     s32 unk168[2];
 } InstanceData8064CD3C;
 
-/*
-// https://decomp.me/scratch/GgE7B
 void func_global_asm_8064CD3C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064CD3C *temp_v0;
     s32 pad;
-    f32 *temp;
+    tuple_f *temp;
     f64 temp_f2;
     s16 var_s1;
     s16 var_s2;
@@ -2716,10 +2712,11 @@ void func_global_asm_8064CD3C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         }
     } else {
         var_v0_2 = D_global_asm_807482B0 - 1;
+        temp = temp_v0->unk0;
         if (var_v0_2 < 0) {
             var_v0_2 = 0x1D;
         }
-        D_global_asm_807F6220 = temp_v0->unk0[var_v0_2].y;
+        D_global_asm_807F6220 = temp[var_v0_2].y;
     }
     temp_v0->unk0[D_global_asm_807482B0].x = D_global_asm_807F621C;
     temp_v0->unk0[D_global_asm_807482B0].y = D_global_asm_807F6220;
@@ -2745,7 +2742,6 @@ void func_global_asm_8064CD3C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         var_s2 = 0x14;
     }
 }
-*/
 
 void func_global_asm_8064D0C4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 sp24;
@@ -2780,6 +2776,66 @@ void func_global_asm_8064D0C4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3
 
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064D1E8.s")
+
+typedef struct InstanceData8064D1E8 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+} InstanceData8064D1E8;
+
+/*
+void func_global_asm_8064D1E8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    InstanceData8064D1E8 *temp_v0;
+    s32 var_a0;
+
+    if (arg0->unk0 == NULL) {
+        temp_v0 = malloc(sizeof(InstanceData8064D1E8));
+        arg0->unk0 = temp_v0;
+        temp_v0->unk0 = 0;
+        temp_v0->unk4 = 0;
+        temp_v0->unk8 = 0xDAC;
+    }
+    temp_v0 = arg0->unk0;
+    func_global_asm_80661398(0, (f32) (((f64) func_global_asm_80612794(temp_v0->unk8) * 60.0) + 40.0), 20.0f);
+    if (temp_v0->unk0 == 0) {
+        if ((temp_v0->unk8 >= 0x2BC) && (temp_v0->unk8 < 0x2C6)) {
+            playSound(0x359, 0x7FFFU, 63.0f, 0.6f, 0, 0);
+        }
+        if (((temp_v0->unk8 >= 0x2EE) && (temp_v0->unk8 < 0x2F8)) || ((temp_v0->unk8 >= 0x960) && (temp_v0->unk8 < 0x96A))) {
+            if (arg0->unk10 >= 0) {
+                func_global_asm_80605380(arg0->unk10);
+                arg0->unk10 = -1;
+            }
+        }
+        if (((temp_v0->unk8 >= 0x410) && (temp_v0->unk8 < 0x41A)) || ((temp_v0->unk8 >= 0xE74) && (temp_v0->unk8 < 0xE7E))) {
+            arg0->unk10 = func_global_asm_80605044(arg1, 0x138, 1, 1, 0x78, 1.0f, -1);
+        }
+        
+        if ((temp_v0->unk8 - 0x400) > 0) {
+            var_a0 = temp_v0->unk8 - 0x400;
+        } else {
+            var_a0 = 0x400 - temp_v0->unk8;
+        }
+        if (var_a0 >= 0xA) {
+            var_a0 = ABS(temp_v0->unk8 - 0xC00);
+        }
+        if (var_a0 < 0xA) {
+            if (temp_v0->unk4 == 0) {
+                temp_v0->unk0 = 0x12C;
+            }
+        }
+        if (temp_v0->unk4) {
+            temp_v0->unk4--;
+        }
+        temp_v0->unk8 = (temp_v0->unk8 + 0xA) & 0xFFF;
+        return;
+    }
+    temp_v0->unk0--;
+    if (temp_v0->unk0 == 0) {
+        temp_v0->unk4 = 0xA;
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064D418.s")
 
