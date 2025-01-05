@@ -31,7 +31,7 @@ extern u16 newly_pressed_input[];
 extern u16 newly_pressed_input_copy;
 extern Struct807FDC90 *D_global_asm_807FDC90; // Array?
 extern CharacterSpawner *D_global_asm_807FDC9C; // Character spawner array
-extern s32 object_timer;
+extern u32 object_timer;
 extern u8 is_autowalking;
 extern ActorSpawner *actor_spawner_pointer;
 extern PlayerProgress D_global_asm_807FC950[4];

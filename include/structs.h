@@ -3347,4 +3347,10 @@ typedef struct global_asm_struct_1 {
     rgb chunk_rgb[52];
 } Struct8076A160; // Size 0xC0
 
+typedef struct dk64_boot_struct_0 {
+    u8 *unk0;
+    u8 *unk4;
+    u8 pad8[0x10];
+} dk64_boot_struct_0;
+
 #endif

@@ -70,7 +70,6 @@ void func_global_asm_80632084(void*, s32, u8, s16, s32);
 void func_global_asm_80688FC0(ActorSpawnerFromFile *);
 void func_global_asm_8063BF34(void *, s32);
 extern f64 D_global_asm_80759BB0;
-extern s16 D_global_asm_8076A0AA;
 extern Struct8076A160 D_global_asm_8076A160[];
 extern s32 D_global_asm_807F6010;
 extern s32 D_global_asm_807F6C28;
@@ -79,63 +78,58 @@ extern s32 D_global_asm_807F6C28;
 void func_global_asm_806886E0(s32 arg0, u8 arg1, u8 arg2) {
     s32 sp5C;
     s32 sp58;
-    s32 sp54;
     u16 sp4E;
-    u8 var_f10;
-    u8 var_f18;
-    u8 var_f6;
-    s16 var_s1_2;
-    s32 temp_a0;
-    s32 temp_s2;
-    s32 temp_v0;
+    u8 blue;
+    u8 green;
+    u8 red;
+    s16 i;
+    s32 parent_idx;
     s32 var_s0;
     s32 var_s0_2;
     s32 var_s1;
-    u8 temp_t3;
-    u8 temp_t4;
-    u8 temp_t5;
+    u8 level;
     Struct8076A160 *temp_v0_2;
 
-    var_s0 = arg0;
-    var_s1 = 0;
+    var_s1 = FALSE;
     func_global_asm_80688A6C();
-    temp_v0 = func_global_asm_80600080(current_map);
-    sp54 = temp_v0;
-    if (temp_v0 == -1) {
+    parent_idx = func_global_asm_80600080(current_map);
+    if (parent_idx == -1) {
         switch (arg1) {
             case 0:
-                D_global_asm_807F6010 = var_s0;
+                D_global_asm_807F6010 = arg0;
                 sp4E = func_global_asm_80631D8C(current_map);
-                var_s1 = 1;
+                var_s1 = TRUE;
+                var_s0 = arg0;
                 break;
             case 1:
                 var_s0 = D_global_asm_807F6010;
                 break;
+            default:
+                var_s0 = arg0;
+                break;
         }
     } else {
-        D_global_asm_807F6010 = var_s0;
-        var_s0 = D_global_asm_8076A160[temp_v0].unk18;
+        D_global_asm_807F6010 = arg0;
+        var_s0 = D_global_asm_8076A160[parent_idx].unk18;
     }
     func_global_asm_80631F58(var_s0, &sp5C, &sp58);
-    if (arg2 != 0) {
-        var_s0_2 = 0;
-    } else {
-        var_s0_2 = func_global_asm_806C7B34();
-    }
-    func_global_asm_80632084(sp5C, var_s0_2, var_s1 & 0xFF, sp4E, getLevelIndex(current_map, 1));
-    func_global_asm_8063DBD8(D_global_asm_8076A0AA);
+    var_s0_2 = arg2 ? 0 : func_global_asm_806C7B34();
+    level = getLevelIndex(current_map, TRUE);
+    func_global_asm_80632084(sp5C, var_s0_2, var_s1, sp4E, level);
+    func_global_asm_8063DBD8(current_map);
     func_global_asm_80688FC0(sp58);
-    if (sp54 != -1) {
-        temp_v0_2 = &D_global_asm_8076A160[sp54];
-        if (temp_v0_2->unk20) {
-            func_global_asm_8063BF34(temp_v0_2->unk20, temp_v0_2->unk1C);
-        }
-        for (var_s1_2 = 0; var_s1_2 < D_global_asm_807F6C28; var_s1_2++) {
-            var_f6 = temp_v0_2->chunk_rgb[var_s1_2].red;
-            var_f18 = temp_v0_2->chunk_rgb[var_s1_2].green;
-            var_f10 = temp_v0_2->chunk_rgb[var_s1_2].blue;
-            func_global_asm_80659670(var_f6 / 255.0, var_f18 / 255.0, var_f10 / 255.0, var_s1_2);
-        }
+    if (parent_idx == -1) {
+        return;
+    }
+    temp_v0_2 = &D_global_asm_8076A160[parent_idx];
+    if (temp_v0_2->unk20) {
+        func_global_asm_8063BF34(temp_v0_2->unk20, temp_v0_2->unk1C);
+    }
+    for (i = 0; i < D_global_asm_807F6C28; i++) {
+        red = temp_v0_2->chunk_rgb[i].red;
+        green = temp_v0_2->chunk_rgb[i].green;
+        blue = temp_v0_2->chunk_rgb[i].blue;
+        func_global_asm_80659670(red / 255.0, green / 255.0, blue / 255.0, i);
     }
 }
 */
