@@ -187,24 +187,6 @@ extern s16 D_global_asm_8076AEF2;
 extern u16 D_global_asm_8076AEF4;
 extern u8 D_global_asm_8076AEF6;
 
-typedef struct global_asm_struct_1 {
-    u8 unk0; // inSubmap?
-    u8 unk1;
-    s16 unk2;
-    f32 xPosition; // X Position
-    f32 yPosition; // Y Position
-    f32 zPosition; // Z Position
-    s16 yRotation; // Y Rotation
-    s16 unk12; // Map
-    u8 unk14; // Used
-    u8 unk15;
-    s16 unk16;
-    void *unk18;
-    s32 unk1C;
-    void *unk20; // Used
-    u8 pad24[0x9C];
-} Struct8076A160; // Size 0xC0
-
 extern Struct8076A160 D_global_asm_8076A160[];
 extern s16 D_global_asm_8076AEE2;
 extern f32 D_global_asm_8076AEE4; // X Position

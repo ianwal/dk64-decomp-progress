@@ -1713,10 +1713,6 @@ void func_global_asm_80649E00(GlobalASMStruct49 *arg0, s32 arg1, s32 arg2, s32 a
     arg0->unk14 = arg0->unk49;
 }
 
-// Doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80649E34.s")
-
-
 extern s16 D_global_asm_807481F4[];
 
 typedef struct InstanceData80649E34 {
@@ -1724,13 +1720,11 @@ typedef struct InstanceData80649E34 {
     s32 unk4;
 } InstanceData80649E34;
 
-/*
 void func_global_asm_80649E34(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData80649E34 *temp_v0; // 2C
     s32 found; // 28
     s32 idx; // 24
-    s32 pad;
-    s16 *ref; // 1C
+    s32 i; // 1C
 
     if (arg0->unk0 == NULL) {
         temp_v0 = malloc(sizeof(InstanceData80649E34));
@@ -1739,30 +1733,29 @@ void func_global_asm_80649E34(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         temp_v0->unk4 = 0;
     }
     temp_v0 = arg0->unk0;
-    pad = arg0->unk48[1];
-    if (pad == temp_v0->unk4) {
+    i = arg0->unk48[1];
+    if (i == temp_v0->unk4) {
         return;
     }
     found = FALSE;
-    ref = &D_global_asm_807481F4;
+    i = 0;
     while (!found) {
-        if (*ref == arg0->unk48[1]) {
+        if (D_global_asm_807481F4[i] == arg0->unk48[1]) {
             found = TRUE;
         } else {
-            ref++;
+            i++;
         }
     }
-    if (ref < &D_global_asm_807481F4[0xF]) {
-        func_global_asm_806418E8(ref[1], 0xA, 0);
-        idx = func_global_asm_80659470(D_global_asm_807F6240[ref[1]]);
+    if (i < 15) {
+        func_global_asm_806418E8(D_global_asm_807481F4[i + 1], 0xA, 0);
+        idx = func_global_asm_80659470(D_global_asm_807F6240[D_global_asm_807481F4[i + 1]]);
         func_global_asm_8064199C(D_global_asm_807F6000[idx].unk7C, 0, 0);
     }
-    if (ref >= &D_global_asm_807481F4[1]) {
-        func_global_asm_806418E8(ref[-1], 0x14, 0);
+    if (i > 0) {
+        func_global_asm_806418E8(D_global_asm_807481F4[i - 1], 0x14, 0);
     }
     temp_v0->unk4 = arg0->unk48[1];
 }
-*/
 
 void func_global_asm_80649F64(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     // TODO: Might actually use unk88 which gets read as unk8A because of the explicit s16 in the function signature

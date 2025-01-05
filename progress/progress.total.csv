@@ -110,7 +110,7 @@ us,asm,changeActorColor,52,yes
 us,asm,func_global_asm_80636380,188,yes
 us,asm,func_global_asm_806FBB9C,152,yes
 us,asm,func_global_asm_806FF358,720,no
-us,asm,func_global_asm_80649E34,304,no
+us,asm,func_global_asm_80649E34,304,yes
 us,asm,func_global_asm_806DF280,272,yes
 us,asm,func_global_asm_8068A784,36,yes
 us,asm,n_alSynDelete,28,yes

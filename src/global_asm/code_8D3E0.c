@@ -47,22 +47,43 @@ typedef struct global_asm_struct_18 {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_global_asm_806886E0.s")
 
-/*
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s16 unk30;
+    s16 unk32;
+    s16 unk34;
+    s16 unk36;
+} ActorSpawnerFromFile;
+
+void func_global_asm_80632084(void*, s32, u8, s16, s32);
+void func_global_asm_80688FC0(ActorSpawnerFromFile *);
+void func_global_asm_8063BF34(void *, s32);
 extern f64 D_global_asm_80759BB0;
 extern s16 D_global_asm_8076A0AA;
-extern ? D_global_asm_8076A160; // TODO: Define this struct array
+extern Struct8076A160 D_global_asm_8076A160[];
 extern s32 D_global_asm_807F6010;
 extern s32 D_global_asm_807F6C28;
 
-void func_global_asm_806886E0(s32 arg0, s32 arg1, u8 arg2) {
+/*
+void func_global_asm_806886E0(s32 arg0, u8 arg1, u8 arg2) {
     s32 sp5C;
     s32 sp58;
     s32 sp54;
     u16 sp4E;
-    f64 temp_f20;
-    f64 var_f10;
-    f64 var_f18;
-    f64 var_f6;
+    u8 var_f10;
+    u8 var_f18;
+    u8 var_f6;
     s16 var_s1_2;
     s32 temp_a0;
     s32 temp_s2;
@@ -73,20 +94,18 @@ void func_global_asm_806886E0(s32 arg0, s32 arg1, u8 arg2) {
     u8 temp_t3;
     u8 temp_t4;
     u8 temp_t5;
-    void *temp_v0_2;
-    void *var_s0_3;
+    Struct8076A160 *temp_v0_2;
 
     var_s0 = arg0;
-    temp_s2 = arg1 & 0xFF;
     var_s1 = 0;
     func_global_asm_80688A6C();
     temp_v0 = func_global_asm_80600080(current_map);
     sp54 = temp_v0;
     if (temp_v0 == -1) {
-        switch (temp_s2) {
+        switch (arg1) {
             case 0:
                 D_global_asm_807F6010 = var_s0;
-                sp4E = func_global_asm_80631D8C(D_global_asm_8076A0AB);
+                sp4E = func_global_asm_80631D8C(current_map);
                 var_s1 = 1;
                 break;
             case 1:
@@ -95,7 +114,7 @@ void func_global_asm_806886E0(s32 arg0, s32 arg1, u8 arg2) {
         }
     } else {
         D_global_asm_807F6010 = var_s0;
-        var_s0 = *(&D_global_asm_8076A178 + (temp_v0 * 0xC0));
+        var_s0 = D_global_asm_8076A160[temp_v0].unk18;
     }
     func_global_asm_80631F58(var_s0, &sp5C, &sp58);
     if (arg2 != 0) {
@@ -103,27 +122,19 @@ void func_global_asm_806886E0(s32 arg0, s32 arg1, u8 arg2) {
     } else {
         var_s0_2 = func_global_asm_806C7B34();
     }
-    func_global_asm_80632084(sp5C, var_s0_2, var_s1 & 0xFF, sp4E, getLevelIndex(D_global_asm_8076A0AB, 1));
+    func_global_asm_80632084(sp5C, var_s0_2, var_s1 & 0xFF, sp4E, getLevelIndex(current_map, 1));
     func_global_asm_8063DBD8(D_global_asm_8076A0AA);
     func_global_asm_80688FC0(sp58);
     if (sp54 != -1) {
-        temp_v0_2 = (sp54 * 0xC0) + &D_global_asm_8076A160;
-        temp_a0 = temp_v0_2->unk20;
-        if (temp_a0 != 0) {
-            func_global_asm_8063BF34(temp_a0, temp_v0_2->unk1C);
+        temp_v0_2 = &D_global_asm_8076A160[sp54];
+        if (temp_v0_2->unk20) {
+            func_global_asm_8063BF34(temp_v0_2->unk20, temp_v0_2->unk1C);
         }
-        var_s1_2 = 0;
-        if (D_global_asm_807F6C28 > 0) {
-            temp_f20 = D_global_asm_80759BB0;
-            var_s0_3 = (sp54 * 0xC0) + &D_global_asm_8076A160;
-            do {
-                var_f6 = var_s0_3->unk24;
-                var_f18 = var_s0_3->unk25;
-                var_f10 = var_s0_3->unk26;
-                func_global_asm_80659670(var_f6 / temp_f20, var_f18 / temp_f20, var_f10 / temp_f20, var_s1_2);
-                var_s1_2 += 1;
-                var_s0_3 += 3;
-            } while (var_s1_2 < D_global_asm_807F6C28);
+        for (var_s1_2 = 0; var_s1_2 < D_global_asm_807F6C28; var_s1_2++) {
+            var_f6 = temp_v0_2->chunk_rgb[var_s1_2].red;
+            var_f18 = temp_v0_2->chunk_rgb[var_s1_2].green;
+            var_f10 = temp_v0_2->chunk_rgb[var_s1_2].blue;
+            func_global_asm_80659670(var_f6 / 255.0, var_f18 / 255.0, var_f10 / 255.0, var_s1_2);
         }
     }
 }
@@ -361,25 +372,6 @@ void func_global_asm_80688F74(Actor *arg0, f32 x, f32 y, f32 z) {
 
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_global_asm_80688FC0.s")
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s16 unk30;
-    s16 unk32;
-    s16 unk34;
-    s16 unk36;
-} ActorSpawnerFromFile;
 
 /*
 void func_global_asm_80688FC0(ActorSpawnerFromFile *arg0) {

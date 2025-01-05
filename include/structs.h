@@ -3323,4 +3323,28 @@ typedef struct Struct800246EC {
     s32 unk48;
 } Struct800246EC;
 
+typedef struct rgb {
+    u8 red;
+    u8 green;
+    u8 blue;
+} rgb;
+
+typedef struct global_asm_struct_1 {
+    u8 unk0; // inSubmap?
+    u8 unk1;
+    s16 unk2;
+    f32 xPosition; // X Position
+    f32 yPosition; // Y Position
+    f32 zPosition; // Z Position
+    s16 yRotation; // Y Rotation
+    s16 unk12; // Map
+    u8 unk14; // Used
+    u8 unk15;
+    s16 unk16;
+    void *unk18;
+    s32 unk1C;
+    void *unk20; // Used
+    rgb chunk_rgb[52];
+} Struct8076A160; // Size 0xC0
+
 #endif
