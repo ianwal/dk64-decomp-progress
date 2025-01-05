@@ -3264,17 +3264,13 @@ u8 func_global_asm_8064EC04(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return ((s16)func_global_asm_806FB418() >= D_global_asm_807446D0[sp1E]);
 }
 
-// Doable, pretty close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064EC60.s")
-
-/*
-u8 func_global_asm_8064EC60(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
-    u8 sp1B;
+u8 func_global_asm_8064EC60(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    s32 sp1B;
     s32 temp_v0;
     s32 kongIndex;
     u8 phi_t0;
 
-    phi_t0 = 0;
+    phi_t0 = FALSE;
     switch (arg2) {
         case 3:
             kongIndex = 1;
@@ -3293,25 +3289,20 @@ u8 func_global_asm_8064EC60(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
             break;
     }
     temp_v0 = func_global_asm_80600530();
-    if ((D_global_asm_807FC950->character_progress[kongIndex].unk5 & 0x7F) == temp_v0) {
+    sp1B = D_global_asm_807FC950->character_progress[kongIndex].unk5 & 0x7F;
+    if (sp1B == temp_v0) {
         phi_t0 = TRUE;
-        if (arg3 == 0) {
-            phi_t0 = TRUE;
-            if ((D_global_asm_807FC950->character_progress[kongIndex].unk5 & 0x80)) {
-                phi_t0 = FALSE;
-            }
+        if ((arg3 == 0) && (D_global_asm_807FC950->character_progress[kongIndex].unk5 & 0x80)) {
+            phi_t0 = FALSE;
         }
-    } else if (temp_v0 < (D_global_asm_807FC950->character_progress[kongIndex].unk5 & 0x7F)) {
+    } else if (temp_v0 < sp1B) {
         phi_t0 = TRUE;
     }
-    if (phi_t0 == TRUE) {
-        if (arg3 == 2) {
-            D_global_asm_807FC950->character_progress[kongIndex].unk5 = (D_global_asm_807FC950->character_progress[kongIndex].unk5 & 0x7F);
-        }
+    if ((phi_t0 == TRUE) && (arg3 == 2)) {
+        D_global_asm_807FC950->character_progress[kongIndex].unk5 &= 0x7F;
     }
     return phi_t0;
 }
-*/
 
 s32 func_global_asm_8064ED68(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     u8 phi_s0;

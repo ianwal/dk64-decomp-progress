@@ -1185,7 +1185,7 @@ void func_global_asm_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 s32 func_global_asm_8064EB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 u8 func_global_asm_8064EB9C(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 u8 func_global_asm_8064EC04(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
-u8 func_global_asm_8064EC60(s32 arg0, s16 arg1, s16 arg2, s16 arg3);
+u8 func_global_asm_8064EC60(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3);
 s32 func_global_asm_8064ED68(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_8064EE08 has no documented signature
 void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3);
