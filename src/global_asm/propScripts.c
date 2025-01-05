@@ -1716,6 +1716,54 @@ void func_global_asm_80649E00(GlobalASMStruct49 *arg0, s32 arg1, s32 arg2, s32 a
 // Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80649E34.s")
 
+
+extern s16 D_global_asm_807481F4[];
+
+typedef struct InstanceData80649E34 {
+    s32 unk0;
+    s32 unk4;
+} InstanceData80649E34;
+
+/*
+void func_global_asm_80649E34(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+    InstanceData80649E34 *temp_v0; // 2C
+    s32 found; // 28
+    s32 idx; // 24
+    s32 pad;
+    s16 *ref; // 1C
+
+    if (arg0->unk0 == NULL) {
+        temp_v0 = malloc(sizeof(InstanceData80649E34));
+        arg0->unk0 = temp_v0;
+        temp_v0->unk0 = 0;
+        temp_v0->unk4 = 0;
+    }
+    temp_v0 = arg0->unk0;
+    pad = arg0->unk48[1];
+    if (pad == temp_v0->unk4) {
+        return;
+    }
+    found = FALSE;
+    ref = &D_global_asm_807481F4;
+    while (!found) {
+        if (*ref == arg0->unk48[1]) {
+            found = TRUE;
+        } else {
+            ref++;
+        }
+    }
+    if (ref < &D_global_asm_807481F4[0xF]) {
+        func_global_asm_806418E8(ref[1], 0xA, 0);
+        idx = func_global_asm_80659470(D_global_asm_807F6240[ref[1]]);
+        func_global_asm_8064199C(D_global_asm_807F6000[idx].unk7C, 0, 0);
+    }
+    if (ref >= &D_global_asm_807481F4[1]) {
+        func_global_asm_806418E8(ref[-1], 0x14, 0);
+    }
+    temp_v0->unk4 = arg0->unk48[1];
+}
+*/
+
 void func_global_asm_80649F64(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     // TODO: Might actually use unk88 which gets read as unk8A because of the explicit s16 in the function signature
     // We'll see what looks more logical when the fields shake out down the line
@@ -3069,13 +3117,60 @@ void func_global_asm_8064DF5C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064E174.s")
-
 typedef struct InstanceData8064E174 {
-    s8 unk0[5];
+    u8 unk0[5];
     u8 unk5;
     u8 unk6;
 } InstanceData8064E174;
+
+void func_global_asm_8064E174(OM2_scriptdata *arg0, s16 arg1, s16 arg2, u8 *array, s32 size, s16 arg5, s16 arg6) {
+    InstanceData8064E174 *temp_v0;
+    s32 i;
+    s32 diff;
+    s8 j;
+
+    if (arg0->unk0 == NULL) {
+        temp_v0 = malloc(sizeof(InstanceData8064E174));
+        arg0->unk0 = temp_v0;
+        temp_v0->unk5 = 0;
+        temp_v0->unk6 = 0;
+    }
+    temp_v0 = arg0->unk0;
+    temp_v0->unk0[temp_v0->unk5] = arg2;
+    j = temp_v0->unk5++;
+    if (size == temp_v0->unk5) {
+        temp_v0->unk5 = 0;
+    }
+    if (temp_v0->unk5 == temp_v0->unk6) {
+        temp_v0->unk6++;
+        if (size == temp_v0->unk6) {
+            temp_v0->unk6 = 0U;
+        }
+        diff = size;
+    } else {
+        diff = temp_v0->unk5 - temp_v0->unk6;
+    }
+    for (i = (size - diff); i < size; i++) {
+        if (array[i] != temp_v0->unk0[j]) {
+            if (arg6 != -1) {
+                arg0->next_state[0] = arg6;
+            }
+            temp_v0->unk5 = 0;
+            temp_v0->unk6 = 0;
+            return;
+        }
+        j--;
+        if (j < 0) {
+            j = size - 1;
+        }
+    }
+    if (arg5 != -1) {
+        if (size == diff) {
+            arg0->next_state[0] = arg5;
+        }
+    }
+}
+
 
 typedef struct {
     s32 unk0;
