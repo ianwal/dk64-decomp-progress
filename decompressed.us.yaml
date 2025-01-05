@@ -209,7 +209,7 @@ segments:
       - [0x2000450, c, code_450]
       - [0x2003C10, c, code_3C10]
       - [0x2005650, c, code_5650]
-      - [0x2005A50, c, code_5A50]
+      - [0x2005A50, c, done/code_5A50]
       - [0x2006710, c, code_6710]
       - [0x200F4C0, c, done/code_F4C0]
       - [0x200F600, c, code_F600]
