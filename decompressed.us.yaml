@@ -616,6 +616,7 @@ segments:
       - [0x21BAD50, .data, code_0]
       - [0x21D3370, .rodata, code_0]
       - { start: 0x21D3730, type: bss, vram: 0x8004AC00 }
+      - [0x21D47B0, .bss, code_0]
   - name: jetpac
     dir: jetpac
     type: code
