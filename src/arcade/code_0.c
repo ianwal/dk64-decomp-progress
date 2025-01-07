@@ -27237,8 +27237,8 @@ void func_arcade_8002B89C(s32 arg0) {
     s32 sp38;
     s32 unused;
     
-    static s32 D_8004BC80;
-    static s32 D_8004BC84;
+    static s32 D_arcade_8004BC80;
+    static s32 D_arcade_8004BC84;
 
     if ((arcade_objects[arg0].unk19 == 8) || (arcade_game_state == 0)) {
         if (arcade_objects[arg0].unk19 == 2) {
@@ -27250,11 +27250,11 @@ void func_arcade_8002B89C(s32 arg0) {
                 arcade_objects[arg0].unk1A |= 2;
             }
             if (((D_global_asm_807ECDE8->unk0 & 0x200) || (D_global_asm_807ECDE8->unk2 < -0x14)) && (D_arcade_8004C6F0 < arcade_objects[arg0].x_position)) {
-                D_8004BC80 += 3;
+                D_arcade_8004BC80 += 3;
                 arcade_objects[arg0].x_velocity = -0.7f;
                 arcade_objects[arg0].unk10 += 0.3;
             } else if (((D_global_asm_807ECDE8->unk0 & 0x100) || (D_global_asm_807ECDE8->unk2 >= 0x15)) && (arcade_objects[arg0].x_position < (f32) D_arcade_8004C6F4)) {
-                D_8004BC80 += 3;
+                D_arcade_8004BC80 += 3;
                 arcade_objects[arg0].x_velocity = 0.7f;
                 arcade_objects[arg0].unk10 += 0.3;
             } else {
@@ -27366,12 +27366,12 @@ void func_arcade_8002B89C(s32 arg0) {
             } else {
                 if ((D_arcade_8004C6EC < arcade_objects[arg0].y_position) && (((D_global_asm_807ECDE8->unk0 & 0x800) | (D_global_asm_807ECDE8->unk3 >= 0x15)))) {
                     arcade_objects[arg0].y_velocity = -0.5f;
-                    D_8004BC80 += 2;
+                    D_arcade_8004BC80 += 2;
                 } else
                 {
                     if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8) && (((D_global_asm_807ECDE8->unk0 & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14)))) {
                         arcade_objects[arg0].y_velocity = 0.5f;
-                        D_8004BC80 += 2;
+                        D_arcade_8004BC80 += 2;
                     } else {
                         arcade_objects[arg0].y_velocity = 0.0f;
                     }
@@ -27463,13 +27463,13 @@ void func_arcade_8002B89C(s32 arg0) {
             break;
         }
         
-        if (D_8004BC80 >= 0x24) {
-            D_8004BC80 = 0;
-            ++D_8004BC84;
-            if (D_8004BC84 == 7) {
-                D_8004BC84 = 0;
+        if (D_arcade_8004BC80 >= 0x24) {
+            D_arcade_8004BC80 = 0;
+            ++D_arcade_8004BC84;
+            if (D_arcade_8004BC84 == 7) {
+                D_arcade_8004BC84 = 0;
             }
-            sp44.as_f32 = (D_8004BC84 & 1) ? 1.0f : 0.7071120143f;
+            sp44.as_f32 = (D_arcade_8004BC84 & 1) ? 1.0f : 0.7071120143f;
             func_global_asm_80737638(D_global_asm_8076D1F8, SFX_40_ARCADE_JUMPMAN_MOVING, 0x7FFFU, 0x3FU, 1.0f, 0U, &D_global_asm_80770DFC);
             func_global_asm_80737AC4(D_global_asm_80770DFC, 0x10, sp44.as_s32);
         }
