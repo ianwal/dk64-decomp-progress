@@ -198,11 +198,6 @@ extern OSMesgQueue D_global_asm_8076A110;
 
 extern s32 D_global_asm_80767CD8;
 
-typedef struct {
-    u8 *unk0;
-    u8 *unk4;
-    u8 pad8[0x10];
-} dk64_boot_struct_0;
 extern dk64_boot_struct_0 D_dk64_boot_8000DCC4[];
 
 void func_global_asm_8060EC80(OSMesgQueue *arg0, void *arg1, s32 arg2, s32 arg3, u8 arg4);

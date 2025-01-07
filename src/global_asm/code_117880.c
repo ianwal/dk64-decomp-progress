@@ -215,7 +215,7 @@ Gfx *func_global_asm_807135B4(Gfx *dl) {
     f32 sp30;
 
     sp40 = 0;
-    if (((object_timer - 0x5A) >= 0) && !((object_timer - 0x5A) & 0x10)) {
+    if ((((s32)object_timer - 0x5A) >= 0) && !(((s32)object_timer - 0x5A) & 0x10)) {
         sp38 = D_global_asm_80755370;
         sp34 = D_global_asm_80744490;
         sp30 = 0xBD - func_global_asm_806FD894(6);

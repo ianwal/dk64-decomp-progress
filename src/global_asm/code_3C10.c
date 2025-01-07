@@ -187,24 +187,6 @@ extern s16 D_global_asm_8076AEF2;
 extern u16 D_global_asm_8076AEF4;
 extern u8 D_global_asm_8076AEF6;
 
-typedef struct global_asm_struct_1 {
-    u8 unk0; // inSubmap?
-    u8 unk1;
-    s16 unk2;
-    f32 xPosition; // X Position
-    f32 yPosition; // Y Position
-    f32 zPosition; // Z Position
-    s16 yRotation; // Y Rotation
-    s16 unk12; // Map
-    u8 unk14; // Used
-    u8 unk15;
-    s16 unk16;
-    void *unk18;
-    s32 unk1C;
-    void *unk20; // Used
-    u8 pad24[0x9C];
-} Struct8076A160; // Size 0xC0
-
 extern Struct8076A160 D_global_asm_8076A160[];
 extern s16 D_global_asm_8076AEE2;
 extern f32 D_global_asm_8076AEE4; // X Position
@@ -820,25 +802,16 @@ s32 func_global_asm_80600530(void) { // getLobbyIndex()
 
 extern s32 D_global_asm_80767CC4;
 
-typedef struct {
-    u16 unk0;
-    u16 unk2;
-    u16 unk4;
-    u16 unk6;
-} Struct8076AF00;
-extern Struct8076AF00 D_global_asm_8076AF00[];
+extern s16 D_global_asm_8076AF00[];
 
 extern s32 D_global_asm_8076AF10;
-extern s8 D_global_asm_8076AF14;
+extern u8 D_global_asm_8076AF14;
 
 void func_global_asm_80600590(Maps map) {
     s32 i;
 
-    for (i = 0; i < 2; i++) {
-        D_global_asm_8076AF00[i].unk2 = 2;
-        D_global_asm_8076AF00[i].unk4 = 2;
-        D_global_asm_8076AF00[i].unk6 = 2;
-        D_global_asm_8076AF00[i].unk0 = 2;
+    for (i = 0; i < 8; i++) {
+        D_global_asm_8076AF00[i] = 2;
     }
     D_global_asm_8076AF10 = D_global_asm_80767CC4;
     switch (map) {
@@ -853,135 +826,73 @@ void func_global_asm_80600590(Maps map) {
         case MAP_DK_ISLES_DK_THEATRE:
         case MAP_ROCK_INTRO_STORY:
         case MAP_BLOOPERS_ENDING:
-            D_global_asm_8076AF14 = 0;
+            D_global_asm_8076AF14 = FALSE;
             return;
         default:
-            D_global_asm_8076AF14 = 1;
+            D_global_asm_8076AF14 = TRUE;
             return;
     }
 }
 
-// Delay slot problem
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600674.s")
 
 extern u8 D_global_asm_80745290;
-
 /*
-// Lag calculation formula
-// incredibly beefy
+// Close
 void func_global_asm_80600674(void) {
-    s16 *lagboost_arrayaddr;
-    s32 lagboost_currtest;
-    s32 lagboost_pasttest;
-    s32 lagboost_min;
-    s32 lagboost_max;
-    s32 lagboost_new;
-    s32 temp_s0;
-    s32 lagboost_initialslot;
-    s32 lagboost_searchrange;
-    s32 var_t3;
-    s32 counter;
-    u32 temp_a2;
+    s32 max_boost = 1;
+    s32 min_boost = 20;
+    s32 newBoost;
+    s32 pad;
+    s32 cap;
+    s32 idx;
+    s32 updateLagBoost;
+    u32 oldBoost;
     s32 i;
+    Struct80767A40 *osdata;
 
-    lagboost_min = 1;
-    lagboost_max = 0x14;
-    if ((u8)D_global_asm_8076AF14 != 0) {
-        lagboost_new = D_global_asm_80767A40.frame_count - D_global_asm_8076AF10;
-        if (lagboost_new <= 0) {
-            lagboost_new = 1;
-        }
-        counter = 0;
-        D_global_asm_8076AF00[D_global_asm_80745290].unk0 = lagboost_new;
-        lagboost_initialslot = D_global_asm_80745290 + 1;
-        D_global_asm_80745290 = lagboost_initialslot;
-        if (lagboost_initialslot == 8) {
+    if (D_global_asm_8076AF14) {
+        osdata = &D_global_asm_80767A40;
+        newBoost = osdata->frame_count - D_global_asm_8076AF10;
+        newBoost = MAX(1, newBoost);
+        D_global_asm_8076AF00[D_global_asm_80745290++] = newBoost;
+        updateLagBoost = FALSE;
+        if (D_global_asm_80745290 == 8) {
             D_global_asm_80745290 = 0;
-            lagboost_initialslot = 0;
         }
-        if (D_global_asm_80744478 >= 4U) {
-            lagboost_searchrange = 1;
+        oldBoost = D_global_asm_80744478;
+        if (oldBoost >= 4) {
+            cap = 1;
+        } else if (oldBoost < newBoost) {
+            cap = 2;
         } else {
-            lagboost_searchrange = 4;
-            if (D_global_asm_80744478 < lagboost_new) {
-                lagboost_searchrange = 2;
+            cap = 4;
+        }
+        idx = D_global_asm_80745290;
+        for (i = 0; i < cap; i++) {
+            idx--;
+            if (idx < 0) {
+                idx = 7;
             }
+            max_boost = MAX(max_boost, D_global_asm_8076AF00[idx]);
+            min_boost = MIN(min_boost, D_global_asm_8076AF00[idx]);
         }
-        var_t3 = lagboost_initialslot;
-        if (lagboost_searchrange > 0) {
-            temp_s0 = lagboost_searchrange & 3;
-            if (temp_s0 != 0) {
-                do {
-                    var_t3--;
-                    if (var_t3 < 0) {
-                        var_t3 = 7;
-                    }
-                    lagboost_currtest = D_global_asm_8076AF00[var_t3].unk0;
-                    counter += 1;
-                    if (lagboost_currtest >= lagboost_min) {
-                        lagboost_min = lagboost_currtest;
-                    }
-                    if (lagboost_max >= lagboost_currtest) {
-                        lagboost_max = lagboost_currtest;
-                    }
-                } while (temp_s0 != counter);
-                if (counter != lagboost_searchrange) {
-                    goto loop_21;
-                }
-            } else {
-                do {
-loop_21:
-                    var_t3--;
-                    if (var_t3 < 0) {
-                        var_t3 = 7;
-                    }
-                    lagboost_arrayaddr = &D_global_asm_8076AF00[var_t3];
-                    lagboost_pasttest = *lagboost_arrayaddr;
-                    var_t3--;
-                    counter += 4;
-                    if (lagboost_pasttest >= lagboost_min) {
-                        lagboost_min = lagboost_pasttest;
-                    }
-                    if (lagboost_max >= lagboost_pasttest) {
-                        lagboost_max = lagboost_pasttest;
-                    }
-                    for (i = 0; i < 3; i++) {
-                        lagboost_arrayaddr = &lagboost_arrayaddr[-1];
-                        if (var_t3 < 0) {
-                            lagboost_arrayaddr = &D_global_asm_8076AF00[7];
-                            var_t3 = 7;
-                        }
-                        lagboost_pasttest = *lagboost_arrayaddr;
-                        if (i < 2) {
-                            var_t3--;
-                        }
-                        if (lagboost_pasttest >= lagboost_min) {
-                            lagboost_min = lagboost_pasttest;
-                        }
-                        if (lagboost_max >= lagboost_pasttest) {
-                            lagboost_max = lagboost_pasttest;
-                        }
-                    }
-                } while (counter != lagboost_searchrange);
-            }
+        if ((oldBoost < newBoost) && (oldBoost < min_boost)) {
+            updateLagBoost = TRUE;
+        } else if ((newBoost < oldBoost) && (max_boost < oldBoost)) {
+            updateLagBoost = TRUE;
         }
-        if (
-            ((D_global_asm_80744478 < lagboost_new) && (D_global_asm_80744478 < lagboost_max)) ||
-            (lagboost_new < D_global_asm_80744478) && (lagboost_min < D_global_asm_80744478)
-        ) {
-            D_global_asm_80744478 = lagboost_new;
+        if (updateLagBoost) {
+            D_global_asm_80744478 = newBoost;
         }
-        if (object_timer >= 11U) {
-            temp_a2 = D_global_asm_8076AF10 + D_global_asm_80744478;
-            if (D_global_asm_80767A40.frame_count < temp_a2) {
-                do {
-
-                } while (D_global_asm_80767CC4 < temp_a2);
-            }
+        if (object_timer > 10) {
+            while (D_global_asm_8076AF10 + D_global_asm_80744478 > osdata->frame_count);
         }
-    } else {
-        D_global_asm_80744478 = D_global_asm_80767A40.frame_count - D_global_asm_8076AF10;
+        D_global_asm_8076AF10 = osdata->frame_count;
+        return;
     }
-    D_global_asm_8076AF10 = D_global_asm_80767A40.frame_count;
+    osdata = &D_global_asm_80767A40;
+    D_global_asm_80744478 = osdata->frame_count - D_global_asm_8076AF10;
+    D_global_asm_8076AF10 = osdata->frame_count;
 }
 */

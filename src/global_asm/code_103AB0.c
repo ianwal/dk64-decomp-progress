@@ -464,7 +464,7 @@ void func_global_asm_80704AFC(f32 arg0, f32 arg1, f32 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80704B20.s")
 
-typedef struct global_asm_struct_1 {
+typedef struct Struct80705B14 {
     u8 unk0[0x0C];
     u8 unkC;
     u8 unkD;

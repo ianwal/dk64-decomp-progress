@@ -1065,11 +1065,11 @@ void func_global_asm_8064384C(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3
 void func_global_asm_806438B8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 boneIndex);
 void func_global_asm_80643B24(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_80643C0C has no documented signature but has been matched
-void func_global_asm_80643F38(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
+void func_global_asm_80643F38(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_8064409C has no documented signature
-void func_global_asm_8064431C(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
+void func_global_asm_8064431C(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_806443E4 has no documented signature
-void func_global_asm_806449C0(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
+void func_global_asm_806449C0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3);
 void func_global_asm_80644A18(s32 arg0, s32 arg1, s32 arg2, f32 arg3);
 void func_global_asm_80644CC0(void **arg0, s32 arg1, s32 arg2, s32 arg3);
 void func_global_asm_80644D50(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
@@ -1165,7 +1165,7 @@ void func_global_asm_8064C814(void **arg0, s16 arg1, s32 arg2, s32 arg3);
 void func_global_asm_8064CB3C(s32 **arg0, s16 arg1, s32 arg2, s32 arg3);
 void func_global_asm_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_8064CD3C has no documented signature
-void func_global_asm_8064D0C4(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
+void func_global_asm_8064D0C4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3);
 // TODO: func_global_asm_8064D1E8 has no documented signature
 // TODO: func_global_asm_8064D418 has no documented signature
 void func_global_asm_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
@@ -1173,7 +1173,7 @@ void func_global_asm_8064D880(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
 void func_global_asm_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_8064DE04 has no documented signature but has been matched
 // TODO: func_global_asm_8064DF5C has no documented signature
-s32 func_global_asm_8064E174(s32 arg0, s16 arg1, s16 arg2, s32 *arg3, s32 arg4, s32 arg5, s32 arg6);
+void func_global_asm_8064E174(OM2_scriptdata *arg0, s16 arg1, s16 arg2, u8 *array, s32 size, s16 arg5, s16 arg6);
 void func_global_asm_8064E428(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
 void func_global_asm_8064E48C(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
 void func_global_asm_8064E4F8(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
@@ -1185,7 +1185,7 @@ void func_global_asm_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 s32 func_global_asm_8064EB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 u8 func_global_asm_8064EB9C(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
 u8 func_global_asm_8064EC04(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
-u8 func_global_asm_8064EC60(s32 arg0, s16 arg1, s16 arg2, s16 arg3);
+u8 func_global_asm_8064EC60(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3);
 s32 func_global_asm_8064ED68(s32 arg0, s16 arg1, s32 arg2, s32 arg3);
 // TODO: func_global_asm_8064EE08 has no documented signature
 void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3);
