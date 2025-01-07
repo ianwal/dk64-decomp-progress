@@ -25049,6 +25049,7 @@ void func_arcade_80026EF4(Gfx **arg0);
 void func_arcade_800275E8(Gfx **arg0);
 void func_arcade_80027A38(Gfx **arg0);
 void func_arcade_800311E0(void);
+void func_arcade_800319D4(Gfx **arg0);
 
 void func_arcade_80024E84(Gfx **arg0);
 void func_arcade_800255F4(Gfx **arg0);
@@ -25363,7 +25364,6 @@ u8 D_arcade_8004A82C[5][3] = {
     {'4','T','H'},
     {'5','T','H'},
 };
-s32 D_arcade_8004A83C = 0;
 
 void func_arcade_80024B04(void) {
     u8 i, j;
@@ -29043,179 +29043,166 @@ void func_arcade_80031948(s8 arg0) {
     }
 }
 
-// close, probably needs .data migrated
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800319D4.s")
-
-/*
 void func_arcade_800319D4(Gfx **arg0) {
-    int i;
+    s32 i;
     Gfx *sp90;
-    char sp40[0x50];
-    s32 score;
-    u8 sp3B;
+    s8 sp40[0x4E];
+
+    static s32 D_arcade_8004A83C = 0;
 
     sp90 = *arg0;
     gDPSetScissor(sp90++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
+
     D_arcade_8004C6D4 = 0x400;
     D_arcade_8004C719 = 8;
-    D_arcade_8004C6D0 = &D_arcade_8003DA90;
+    D_arcade_8004C6D0 = D_arcade_8003DA90;
     D_arcade_8004C71A = 8;
-    guSprite2DInit(&D_arcade_8004BBF0[D_global_asm_807444FC], D_arcade_8004C6D0, 0,
-        D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A,
-        G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0
-    );
-    func_global_asm_8070E8F0(&sp90, &D_arcade_8004BBF0[D_global_asm_807444FC]);
-    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
+    guSprite2DInit(&D_arcade_8004BBF0[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp90, (Sprite* ) &D_arcade_8004BBF0[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
     for (i = 0; i < arcade_lives_visual; i++) {
-        func_global_asm_8070F2FC(&sp90, 0x360 + i * 0x20, 0x4C);
+        func_global_asm_8070F2FC(&sp90, 0x360 + (i * 32), 0x4C);
     }
-    arcade_set_text_rgba(0xff, 0, 00, 0xff);
-    if ((D_arcade_8004C6D8 & 0x10) || !D_arcade_8004C724) {
+
+    arcade_set_text_rgba(0xFF, 0, 0, 0xFF);
+    if ((D_arcade_8004C6D8 & 0x10) || (D_arcade_8004C724 == 0)) {
         arcade_set_text_position(0x48, 0x13);
         sprintf(sp40, "1UP");
         arcade_draw_text(&sp90, sp40);
-    }//L80031B78
-
+    }
     arcade_set_text_position(0x78, 0x13);
     sprintf(sp40, "HIGH SCORE");
     arcade_draw_text(&sp90, sp40);
-
-    arcade_set_text_rgba(0, 0, 0xff, 0xff);
-    arcade_set_text_position(0xd8, 0x1b);
+    arcade_set_text_rgba(0, 0, 0xFF, 0xFF);
+    arcade_set_text_position(0xD8, 0x1B);
     sprintf(sp40, "L=%02d", D_arcade_8004A76C);
     arcade_draw_text(&sp90, sp40);
-
-    arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
-    arcade_set_text_position(0x38, 0x1b);
-    sprintf(sp40, "%06d    %06d", arcade_current_score, D_arcade_8004A760);
+    arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
+    arcade_set_text_position(0x38, 0x1B);
+    sprintf(sp40, "%06d    %06d", arcade_current_score, arcade_high_score);
     arcade_draw_text(&sp90, sp40);
 
-    if (D_arcade_8004C724 == 5 || D_arcade_8004C724 == 4) {//L80031C50
-        if (D_arcade_8004A764) {
+    if ((D_arcade_8004C724 == 5) || (D_arcade_8004C724 == 4)) {
+        if (D_arcade_8004A764 != 0) {
             if (arcade_background_visual == 2) {
-                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
-            } else if (arcade_background_visual == 4) {//L80031C8C
-                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xFF, 0xA0, 0x10, 0xFF);
+            } else if (arcade_background_visual == 4) {
+                arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             } else {
-                arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
-            } //L80031CC4
-            arcade_set_text_position(0x78, 0xa3);
+                arcade_set_text_rgba(0, 0xFF, 0xFF, 0xFF);
+            }
+            arcade_set_text_position(0x78, 0xA3);
             sprintf(sp40, "GAME OVER");
             arcade_draw_text(&sp90, sp40);
-        }//L80031CF4
+        }
         if (D_arcade_8004C724 == 4) {
-            if (!D_arcade_8004A768 || arcade_background_visual == 4) {
-                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+            if ((D_arcade_8004A768 == 0) || (arcade_background_visual == 4)) {
+                arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             } else if (arcade_background_visual == 2) {
-                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xFF, 0xA0, 0x10, 0xFF);
             } else {
-                arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
-            }//L80031D64
+                arcade_set_text_rgba(0, 0xFF, 0xFF, 0xFF);
+            }
             func_arcade_80031948(0);
-            arcade_set_text_position(0x88, 0x8b);
+            arcade_set_text_position(0x88, 0x8B);
             sprintf(sp40, "RETURN");
             arcade_draw_text(&sp90, sp40);
-
             func_arcade_80031948(1);
-            arcade_set_text_position(0x68, 0x9b);
+            arcade_set_text_position(0x68, 0x9B);
             sprintf(sp40, "DELETE HISCORE");
             arcade_draw_text(&sp90, sp40);
-
             func_arcade_80031948(2);
-            arcade_set_text_position(0x68, 0xab);
+            arcade_set_text_position(0x68, 0xAB);
             sprintf(sp40, "EXIT DK ARCADE");
             arcade_draw_text(&sp90, sp40);
-        }//L80031DF8
+        }
         if (arcade_background_visual == 2) {
-            if (D_arcade_8004C71E < 0xA) {
-                arcade_set_text_rgba(0, 0, 0xff, 0xff);
+            if (arcade_bonus_timer < 0xA) {
+                arcade_set_text_rgba(0, 0, 0xFF, 0xFF);
             } else {
-                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xFF, 0xA0, 0x10, 0xFF);
             }
-        } else if (arcade_background_visual == 4) {//L80031E54
-            if (D_arcade_8004C71E < 0xA) {
-                arcade_set_text_rgba(0xf0, 0x30, 0, 0xff);
+        } else if (arcade_background_visual == 4) {
+            if (arcade_bonus_timer < 0xA) {
+                arcade_set_text_rgba(0xF0, 0x30, 0, 0xFF);
             } else {
-                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             }
+        } else if (arcade_bonus_timer < 0xA) {
+            arcade_set_text_rgba(0xFF, 0, 0, 0xFF);
         } else {
-            if (D_arcade_8004C71E < 0xA) {
-                arcade_set_text_rgba(0xff, 0, 0, 0xff);
-            } else {
-                arcade_set_text_rgba(0x60, 0xe0, 0xff, 0xff);
-            }
-        }//L80031EE4
-        arcade_set_text_position(0xe0, 0x30);
-        score = MAX(D_arcade_8004C71E, 0);
-        sprintf(sp40, "%02d00", score, score);
+            arcade_set_text_rgba(0x60, 0xE0, 0xFF, 0xFF);
+        }
+        arcade_set_text_position(0xE0, 0x30);
+
+        i = MAX(arcade_bonus_timer, 0);
+        sprintf(sp40, "%02d00", i);
         arcade_draw_text(&sp90, sp40);
-        
-    }//L80031F30
+    }
     if (D_arcade_8004C724 == 2) {
+        u8 sp3B;
+
         sp3B = (D_arcade_8004C723 & 3) + 1;
-        arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
-        arcade_set_text_position(0x48, 0xd7);
+        arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
+        arcade_set_text_position(0x48, 0xD7);
         sprintf(sp40, "HOW HIGH CAN YOU GET ?");
         arcade_draw_text(&sp90, sp40);
-        arcade_set_text_position(0x58, 0xc9);
-        sprintf(sp40, "@%%m");
+        arcade_set_text_position(0x58, 0xC9);
+        sprintf(sp40, "@%% m");
         arcade_draw_text(&sp90, sp40);
-        //sp34 = sp3B;
         if (sp3B >= 2) {
-            arcade_set_text_position(0x58, 0xad);
-            sprintf(sp40, "%%)m");
+            arcade_set_text_position(0x58, 0xAD);
+            sprintf(sp40, "%%) m");
             arcade_draw_text(&sp90, sp40);
         }
         if (sp3B >= 3) {
             arcade_set_text_position(0x58, 0x91);
-            sprintf(sp40, "&%%m");
+            sprintf(sp40, "&%% m");
             arcade_draw_text(&sp90, sp40);
         }
         if (sp3B >= 4) {
             arcade_set_text_position(0x50, 0x75);
-            sprintf(sp40, "!))m");
+            sprintf(sp40, "!)) m");
             arcade_draw_text(&sp90, sp40);
         }
-    }//L80032054
+    }
     if (D_arcade_8004C724 == 3) {
         func_arcade_8003159C(&sp90);
-    }//L80032078
+    }
     if (D_arcade_8004C724 == 0) {
         if (!(D_arcade_8004C6DC & 0x200)) {
-            arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
+            arcade_set_text_rgba(0, 0xFF, 0xFF, 0xFF);
             arcade_set_text_position(0x70, 0x33);
             sprintf(sp40, "INSERT COIN");
             arcade_draw_text(&sp90, sp40);
-
             arcade_set_text_position(0x68, 0x43);
             sprintf(sp40, "PLAYER    COIN");
             arcade_draw_text(&sp90, sp40);
-
             arcade_set_text_position(0x78, 0x53);
             sprintf(sp40, "1        1");
             arcade_draw_text(&sp90, sp40);
-
-            arcade_set_text_position(0x38, 0x7b);
+            arcade_set_text_position(0x38, 0x7B);
             sprintf(sp40, "RANK  SCORE  NAME");
             arcade_draw_text(&sp90, sp40);
             func_arcade_8003159C(&sp90);
-            arcade_set_text_rgba(0xff, 0, 0, 0xff);
-
+            arcade_set_text_rgba(0xFF, 0, 0, 0xFF);
             arcade_set_text_position(0x78, 0x63);
             sprintf(sp40, "2        2");
             arcade_draw_text(&sp90, sp40);
-        } else {//L80032190
+        } else {
             if (D_arcade_8004C6DC & 0x182) {
-                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xFF, 0xA0, 0x10, 0xFF);
             } else {
-                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             }
-            arcade_set_text_position(0x68, 0xd7);
+            arcade_set_text_position(0x68, 0xD7);
             sprintf(sp40, "c NINTENDO 1981");
             arcade_draw_text(&sp90, sp40);
         }
-    }//L800321EC
+    }
+
     *arg0 = sp90;
     D_arcade_8004A83C++;
 }
-*/
+
