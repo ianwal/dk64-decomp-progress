@@ -1,6 +1,11 @@
 #include <ultra64.h>
 #include "functions.h"
 
+typedef struct UnkMQStruct {
+    OSMesgQueue mq;
+    OSMesg msgs[];
+} UnkMQStruct;
+
 extern s32 D_dk64_boot_8000DDCC;
 extern s32 D_dk64_boot_8000DDE4;
 
@@ -56,13 +61,13 @@ extern f32 loading_zone_transition_speed;
 extern u8 loading_zone_transition_type;
 
 extern OSIoMesg D_global_asm_807ECE00;
-extern OSMesgQueue D_global_asm_807655F0;
+extern UnkMQStruct D_global_asm_807655F0;
 extern OSMesg D_global_asm_80765608;
 
-extern OSMesgQueue D_global_asm_807656D0;
+extern UnkMQStruct D_global_asm_807656D0;
 extern OSMesg D_global_asm_807656E8;
 
-extern OSMesgQueue D_global_asm_807659E8;
+extern UnkMQStruct D_global_asm_807659E8;
 extern OSMesg D_global_asm_80765A00;
 
 extern OSMesg D_global_asm_8076A108;
@@ -89,8 +94,8 @@ void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
 
     sp2C = D_dk64_boot_8000DDCC;
     osWritebackDCache(arg2, arg1);
-    osPiStartDma(&D_global_asm_807ECE00, 0, 0, sp2C + arg0, arg2, arg1, &D_global_asm_807655F0);
-    osRecvMesg(&D_global_asm_807655F0, 0, 1);
+    osPiStartDma(&D_global_asm_807ECE00, 0, 0, sp2C + arg0, arg2, arg1, &D_global_asm_807655F0.mq);
+    osRecvMesg(&D_global_asm_807655F0.mq, 0, 1);
     osInvalDCache(arg2, arg1);
 }
 
@@ -100,6 +105,7 @@ void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
 
 void func_global_asm_805FB7E4(void);
 void func_global_asm_80610350(u8, u8, s32);
+
 extern OSViMode D_dk64_boot_8000EF20[];
 extern s16 D_global_asm_80744494;
 extern s16 D_global_asm_80744498;
@@ -112,7 +118,7 @@ extern s16 D_global_asm_807444B0;
 extern s16 D_global_asm_807444B4;
 extern u8 D_global_asm_8074450C;
 extern s8 D_global_asm_80744510;
-extern s32 D_global_asm_80744584[][2];
+extern s32 D_global_asm_80744588[];
 extern s8 D_global_asm_807445A0;
 extern s8 D_global_asm_807445A4;
 extern s16 D_global_asm_80744490;
@@ -190,9 +196,6 @@ void func_global_asm_805FB944(u8 arg0) {
 }
 */
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FBC5C.s")
-
 extern s32 D_global_asm_8076A07C;
 extern OSMesgQueue D_global_asm_8076A110;
 
@@ -200,17 +203,24 @@ extern s32 D_global_asm_80767CD8;
 
 extern dk64_boot_struct_0 D_dk64_boot_8000DCC4[];
 
-void func_global_asm_8060EC80(OSMesgQueue *arg0, void *arg1, s32 arg2, s32 arg3, u8 arg4);
+void func_global_asm_8060EC80(OSMesgQueue *arg0, void *arg1, s32 arg2, u8 arg3, u8 arg4);
 
-/*
-// TODO: Pretty close
+extern s32 D_80767A40; // I hate this, but fixes a compilation issue
 void func_global_asm_805FBC5C(void) {
+    UnkMQStruct *mq;
     D_global_asm_8076A084 = D_dk64_boot_8000DCC4[12].unk4 - D_dk64_boot_8000DCC4[12].unk0;
-    osCreateMesgQueue(&D_global_asm_807655F0, &D_global_asm_80765608, 0x32);
-    osCreateMesgQueue(&D_global_asm_807656D0, &D_global_asm_807656E8, 0xC0);
-    func_global_asm_8060EC80(&D_global_asm_80767A40, &D_global_asm_80767A40, 0x19, osTvType, 1);
-    osCreateMesgQueue(&D_global_asm_807659E8, &D_global_asm_80765A00, 0x10);
-    func_global_asm_8060ED6C(&D_global_asm_80767A40, &D_global_asm_80767CD8, &D_global_asm_807659E8, 1, 1);
+    osCreateMesgQueue(&D_global_asm_807655F0.mq, &D_global_asm_807655F0.msgs[0], 0x32);
+    osCreateMesgQueue(&D_global_asm_807656D0.mq, &D_global_asm_807656D0.msgs[0], 0xC0);
+    func_global_asm_8060EC80(
+        &D_global_asm_80767A40.unk0,
+        &D_80767A40,
+        0x19,
+        D_global_asm_80744588[osTvType + osTvType], 1);
+    osCreateMesgQueue(&D_global_asm_807659E8.mq, &D_global_asm_807659E8.msgs[0], 0x10);
+    func_global_asm_8060ED6C(
+        &D_global_asm_80767A40,
+        &D_global_asm_80767CD8,
+        &D_global_asm_807659E8.mq, 1, 1);
     current_map = next_map;
     func_global_asm_805FB944(0);
     D_global_asm_8076A07C = 5;
@@ -220,11 +230,18 @@ void func_global_asm_805FBC5C(void) {
     setIntroStoryPlaying(0);
     func_global_asm_8073239C();
     osWriteBackDCacheAll();
-    osCreateMesgQueue(&D_global_asm_8076A110, &D_global_asm_8076A108, 2);
-    osSetTimer(&D_global_asm_8076A130, 0, 0xD693A4, &D_global_asm_8076A110, D_global_asm_8076A128);
+    mq = &D_global_asm_8076A110;
+    osCreateMesgQueue(
+        mq,
+        &D_global_asm_8076A108, 2);
+    osSetTimer(
+        &D_global_asm_8076A130,
+        0xD693A4,
+        0,
+        mq,
+        mq->msgs[0]);
     playSound(0x23C, 0x7FFF, 63.0f, 1.0f, 0, 0);
 }
-*/
 
 void func_global_asm_805FBE04(void) {
     s32 stackpad1;
