@@ -99,7 +99,52 @@ void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
     osInvalDCache(arg2, arg1);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FB7E4.s")
+void func_dk64_boot_800024E0(u8 **, u32 *, s32);
+void osWriteBackDCacheAll(void);
+extern u16 *D_global_asm_80744470[2];
+
+void func_global_asm_805FB7E4(void) {
+    s32 empty;
+    s32 sp58;
+    s32 *temp_s0;
+    u16 *var_v1; // 50
+    u16 *sp4C;
+    s32 sp48;
+    s32 sp44;
+    s32 sp40;
+    s32 sp3C;
+    u32 sp38;
+    u16 *end;
+    s32 y, x;
+
+    var_v1 = D_global_asm_80744470[0];
+    end = &var_v1[0x12C00];
+    while (var_v1 < end) {
+        *var_v1++ = 1;
+    }
+    osWriteBackDCacheAll();
+    temp_s0 = &D_global_asm_80744470[1][0x6400];
+    func_global_asm_805FB750(0x38, 0x10, temp_s0);
+    func_global_asm_805FB750(temp_s0[0] + 0x178, 0x10, temp_s0);
+    func_global_asm_805FB750(temp_s0[0], temp_s0[1] - temp_s0[0], temp_s0);
+    sp3C = temp_s0;
+    sp38 = D_global_asm_80744470[1];
+    sp4C = D_global_asm_80744470[1];
+    func_dk64_boot_800024E0(&sp3C, &sp38, &D_global_asm_80744470[1][0xAF00]);
+    var_v1 = &D_global_asm_80744470[0][0x7840];
+    for (y = 0; y < 0x30; y++) {
+        for (x = 0; x < 0xC0; x++) {
+            *var_v1++ = *sp4C++;
+        }
+        var_v1 += 0x80;
+    }
+    var_v1 = D_global_asm_80744470[1];
+    end = &var_v1[0x12C00];
+    while (var_v1 < end) {
+        *var_v1++ = 1;
+    }
+    osWriteBackDCacheAll();
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FB944.s")
 
@@ -117,16 +162,18 @@ extern s16 D_global_asm_807444AC;
 extern s16 D_global_asm_807444B0;
 extern s16 D_global_asm_807444B4;
 extern u8 D_global_asm_8074450C;
-extern s8 D_global_asm_80744510;
+extern u8 D_global_asm_80744510;
 extern s32 D_global_asm_80744588[];
 extern s8 D_global_asm_807445A0;
 extern s8 D_global_asm_807445A4;
 extern s16 D_global_asm_80744490;
 
 /*
+Very close
 void func_global_asm_805FB944(u8 arg0) {
     u8 var_a1 = 1;
     s32 var_a2;
+    u32 temp;
 
     var_a2 = 0;
     func_global_asm_806003EC(D_global_asm_8076A0AA);
@@ -173,8 +220,7 @@ void func_global_asm_805FB944(u8 arg0) {
     }
     func_global_asm_80610350(arg0, var_a1, var_a2);
     if (D_global_asm_807445A4 == 0) {
-        s32 index = D_global_asm_80744584[osTvType][D_global_asm_8074450C];
-        osViSetMode(&D_dk64_boot_8000EF20[index]);
+        osViSetMode(&D_dk64_boot_8000EF20[D_global_asm_80744588[osTvType + osTvType + D_global_asm_8074450C - 1]]);
         if (D_global_asm_807445A0 == 0) {
             osViBlack(1U);
         }
@@ -579,8 +625,6 @@ Gfx *func_global_asm_805FE398(Gfx *dl) {
     gDPPipeSync(dl++);
     return dl;
 }
-
-extern s32 D_global_asm_80744470[];
 
 Gfx *func_global_asm_805FE4D4(Gfx *dl) {
     gDPSetColorImage(dl++, 0, 2, D_global_asm_80744490, osVirtualToPhysical(D_global_asm_80744470[D_global_asm_807444FC]));
