@@ -427,10 +427,6 @@ void func_global_asm_8072B79C(s16 arg0, s16 arg1, s16 arg2) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072B7CC.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072C670.s")
-
-/*
-// TODO: Get rid of the GOTOs
 u8 func_global_asm_8072C670(u8 arg0, s8 *arg1) {
     u8 temp_v0;
     u8 temp_v1;
@@ -443,84 +439,62 @@ u8 func_global_asm_8072C670(u8 arg0, s8 *arg1) {
         if (current_actor_pointer->control_state != 0x15) {
             if (D_global_asm_807FDC94->unk58 == ACTOR_CHUNKY) {
                 if (character_change_array->unk2C0 == 2) {
-                    if (cc_number_of_players != 1) {
-                        goto block_5;
-                    }
-                    goto block_7;
+                    if (cc_number_of_players == 1U) goto step0;
                 }
-                goto block_5;
             }
-block_5:
             if (D_global_asm_807FDC94->interactable & 1) {
                 if (PaaD->unk1F0 & 0x10) {
-block_7:
+step0:
                     var_v1 = 7;
-                } else {
-                    goto block_8;
+                    goto end;
                 }
-            } else {
-                goto block_8;
             }
+        }
+        if (D_global_asm_807FDC90->unk37 == 7) {
+            if (arg0) {
+                if (!(D_global_asm_807FDC90->unk1A & 0x200)) {
+                    if (D_global_asm_807FDC90->unk20 == 0) {
+                        D_global_asm_807FDC90->unk20 = 0x10;
+                        if (func_global_asm_80725ED4(0x81, current_actor_pointer, D_global_asm_807FDCA0, &D_global_asm_807FDC90->unkA, &D_global_asm_807FDC90->unkC, &D_global_asm_807FDC90->unkE) == 0) {
+                            var_v1 = 0x10;
+                        } else {
+                            var_v1 = 7;
+                        }
+                        goto end;
+                    }
+                }
+            }
+        }
+        if (D_global_asm_807FDC90->unk20 != 0) {
+            D_global_asm_807FDC90->unk20--;
+        }
+        if (D_global_asm_807FDC94->interactable & 1) {
+            if (PaaD->unkD4 != 0) {
+                var_v1 = 1;
+                if (!(D_global_asm_807FBB64 & 0x100000)) {
+                    *arg1 = 0;
+                    goto end;
+                }
+            }
+        }
+        if (D_global_asm_807FDC90->unk1A & 0x400) {
+            var_v1 = D_global_asm_807FDC90->unk37;
         } else {
-block_8:
-            if (D_global_asm_807FDC90->unk37 == 7) {
-                if (arg0) {
-                    if (!(D_global_asm_807FDC90->unk1A & 0x200)) {
-                        if (D_global_asm_807FDC90->unk20 == 0) {
-                            D_global_asm_807FDC90->unk20 = 0x10;
-                            if (func_global_asm_80725ED4(0x81, current_actor_pointer, D_global_asm_807FDCA0, &D_global_asm_807FDC90->unkA, &D_global_asm_807FDC90->unkC, &D_global_asm_807FDC90->unkE) == 0) {
-                                var_v1 = 0x10;
-                            } else {
-                                var_v1 = 7;
-                            }
-                        } else {
-                            goto block_15;
-                        }
-                    } else {
-                        goto block_15;
-                    }
-                } else {
-                    goto block_15;
-                }
+            if (D_global_asm_807FDC9C->unk10 == 7) {
+                var_v1 = 1;
             } else {
-block_15:
-                if (D_global_asm_807FDC90->unk20 != 0) {
-                    D_global_asm_807FDC90->unk20--;
-                }
-                if (D_global_asm_807FDC94->interactable & 1) {
-                    if (PaaD->unkD4 != 0) {
-                        var_v1 = 1;
-                        if (!(D_global_asm_807FBB64 & 0x100000)) {
-                            *arg1 = 0;
-                        } else {
-                            goto block_21;
-                        }
-                    } else {
-                        goto block_21;
-                    }
-                } else {
-block_21:
-                    if (D_global_asm_807FDC90->unk1A & 0x400) {
-                        var_v1 = D_global_asm_807FDC90->unk37;
-                    } else {
-                        if (D_global_asm_807FDC9C->unk10 == 7) {
-                            var_v1 = 1;
-                        } else {
-                            var_v1 = D_global_asm_807FDC9C->unk10;
-                        }
-                    }
-                }
+                var_v1 = D_global_asm_807FDC9C->unk10;
             }
         }
     } else {
         var_v1 = D_global_asm_807FDC9C->unk10;
     }
+    end:
     if (var_v1 == 9) {
         var_v1 = 1;
     }
     return var_v1;
 }
-*/
 
 void func_global_asm_8072C870(u8 arg0, u8 arg1, s32 arg2) {
     if (arg0 == 7) {
