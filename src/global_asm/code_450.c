@@ -725,9 +725,6 @@ Gfx *func_global_asm_805FD030(Gfx *dl) {
     return dl++;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FD088.s")
-
 Gfx *func_global_asm_8062BF24(Gfx *, s32);
 Gfx *func_global_asm_8068C20C(Gfx *, u8);
 Struct80750948 *func_global_asm_806C7C94(u8);
@@ -760,18 +757,9 @@ extern u16 D_global_asm_8076A09C;
 extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_8076A0B3;
 
-/*
-Stupidly close: https://decomp.me/scratch/GHQ4F
 void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
     Gfx *dl; // 114
     Gfx *dl_0;
-    f32 temp_f0;
-    f32 temp0;
-    f32 temp_f2;
-    u32 vf;
-    s16 n, d;
-    Struct80750948 *temp_v0_6;
-    s16 x, y;
 
     dl = D_global_asm_8076A050[D_global_asm_807444FC];
     dl_0 = &arg0->dl[0];
@@ -786,6 +774,14 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
     gSPSegment(dl_0++, 0x01, osVirtualToPhysical(D_global_asm_8076A080));
     gSPDisplayList(dl++, &D_1000090);
     gSPDisplayList(dl_0++, &D_1000090);
+    {
+    f32 temp_f0;
+    f32 temp0;
+    f32 temp_f2;
+    u32 vf;
+    s16 n, d;
+    Struct80750948 *temp_v0_6;
+    s16 x, y;
     dl = func_global_asm_805FCFD8(dl);
     dl_0 = func_global_asm_805FCFD8(dl_0);
     gDPSetScissorFrac(dl++, G_SC_NON_INTERLACE, 0, 0, D_global_asm_80744490 * 4.0f, D_global_asm_80744494 * 4.0f);
@@ -947,8 +943,8 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
     func_global_asm_80722280();
     *arg1 = dl;
     *arg2 = dl_0;
+    }
 }
-*/
 
 
 extern void *D_8076A060;

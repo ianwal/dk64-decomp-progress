@@ -337,6 +337,8 @@ typedef struct animation_state_unk8 {
     f32 unk14;
     f32 unk18;
     s32 unk1C;
+    u8 pad20[0x34 - 0x20];
+    f32 unk34;
 } AnimationStateUnk8;
 
 typedef struct {
@@ -380,7 +382,7 @@ typedef struct actor_animation_state {
     AnimationStateUnk0 *unk0;
     AnimationStateUnk0 *unk4;
     AnimationStateUnk8 *unk8;
-    s32 unkC;
+    AnimationStateUnk8 *unkC;
     f32 unk10;
     void *bone_arrays[2]; // at 0x14, camera, update bone positions // TODO: Proper type
     AnimationStateUnk1C *unk1C;

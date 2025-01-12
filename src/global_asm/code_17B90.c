@@ -13,6 +13,8 @@ extern u8 *D_807F5AF0;
 extern s32 D_807F5AF4;
 extern u16 *D_807FBB54;
 
+void *func_global_asm_80612E90(Actor *, s16, s32);
+
 // Displaylist stuff?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80612E90.s")
 
@@ -76,6 +78,98 @@ u16 func_global_asm_80613448(Actor *arg0) {
 
 // matrix initialization
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806134B4.s")
+
+extern f32 D_global_asm_80757360;
+
+typedef struct Struct80614C38_0 Struct80614C38;
+struct Struct80614C38_0 {
+    void *unk0;
+    void *unk4;
+    u8 unk8;
+    u8 pad9[0x12 - 0x9];
+    Struct80614C38 *next;
+};
+
+typedef struct ActorModelHeader {
+    u8 pad0[0x14];
+    Struct80614C38 * unk14;
+    u8 pad18[0x20 - 0x18];
+    u8 bone_count;
+    u8 pad21[0x28 - 0x21];
+} ActorModelHeader;
+
+/*
+s32 func_global_asm_806134B4(Actor *arg0, s32 arg1) {
+    s32 temp_a3;
+    s32 temp_s1;
+    s32 var_s0;
+    void **temp_v0_2;
+    ActorAnimationState *temp_v1;
+    ActorAnimationState *temp_v1_2;
+    ActorModelHeader *temp_v0;
+
+    temp_a3 = arg1 & 0xFFFF;
+    temp_v0 = func_global_asm_80612E90(temp_a3, 0, temp_a3);
+    if (temp_v0 == NULL) {
+        return 0;
+    }
+    arg0->unk0 = temp_v0;
+    arg0->unk4C = 0;
+    arg0->unk50 = 0;
+    temp_v0_2 = malloc((temp_v0->bone_count << 7) + 0x170);
+    arg0->animation_state = temp_v0_2;
+    *temp_v0_2 = temp_v0_2 + 0x90;
+    arg0->animation_state->unk4 = (void *) (temp_v0_2 + 0xC8);
+    arg0->animation_state->unk8 = (void *) (temp_v0_2 + 0x100);
+    var_s0 = 0;
+    arg0->animation_state->unkC = (void *) (temp_v0_2 + 0x138);
+    arg0->animation_state->bone_arrays[0] = (void *) (temp_v0_2 + 0x170);
+    temp_v1 = arg0->animation_state;
+    temp_v1->bone_arrays[1] = (void *) (temp_v1->bone_arrays[0] + (temp_v0->bone_count << 6));
+    for (var_s0 = 0; var_s0 < temp_v0->bone_count; var_s0++) {
+        temp_s1 = var_s0 << 6;
+        guMtxIdent(arg0->animation_state->bone_arrays[0] + temp_s1);
+        guMtxIdent(arg0->animation_state->bone_arrays[1] + temp_s1);
+    }
+    guMtxIdentF(arg0 + 0xC);
+    temp_v1 = arg0->animation_state;
+    temp_v1->unk1C = 0;
+    temp_v1->unk20 = 0;
+    temp_v1->unk24 = 0;
+    temp_v1->scale_x = D_global_asm_80757360;
+    temp_v1->scale_y = D_global_asm_80757360;
+    temp_v1->scale_z = D_global_asm_80757360;
+    temp_v1->unk0->unk4 = 0.0f;
+    temp_v1->unk0->unk8 = 0.0f;
+    temp_v1->unk0->unk0 = 0;
+    temp_v1->unk0->unk10 = -1;
+    temp_v1->unk0->unk1C = 0;
+    temp_v1->unk0->unk14 = 0.0f;
+    temp_v1->unk0->unk18 = 0.0f;
+    temp_v1->unk0->unk24 = 1.0f;
+    temp_v1->unk0->unk34 = 0.0f;
+    temp_v1->unk4->unk0 = 0;
+    temp_v1->unk4->unk34 = 0.0f;
+    temp_v1->unk8->unk0 = 0;
+    temp_v1->unk8->unk34 = 0.0f;
+    temp_v1->unkC->unk0 = 0;
+    temp_v1->unkC->unk34 = 0.0f;
+    temp_v1->unk68 = 0;
+    temp_v1->unk64 = 0;
+    temp_v1->unk70 = 0;
+    temp_v1->unk78 = 0;
+    temp_v1->unk7C = 0;
+    temp_v1->unk84 = 0;
+    temp_v1->unk88 = 0;
+    temp_v1->unk10 = 0.0f;
+    temp_v1->unk44 = 0.0f;
+    temp_v1->unk58 = 0.0f;
+    temp_v1->unk48 = 1.0f;
+    temp_v1->unk80 = 0.0f;
+    return 1;
+}
+*/
+
 
 s32 func_global_asm_80613944(Actor *, AnimationStateUnk0 *); // extern
 
@@ -233,23 +327,6 @@ void func_global_asm_80614A64(Actor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614B34.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80614C38.s")
-
-typedef struct Struct80614C38_0 Struct80614C38;
-struct Struct80614C38_0 {
-    void *unk0;
-    void *unk4;
-    u8 unk8;
-    u8 pad9[0x12 - 0x9];
-    Struct80614C38 *next;
-};
-
-typedef struct ActorModelHeader {
-    u8 pad0[0x14];
-    Struct80614C38 * unk14;
-    u8 pad18[0x20 - 0x18];
-    u8 bone_count;
-    u8 pad21[0x28 - 0x21];
-} ActorModelHeader;
 
 /*
 Gfx *func_global_asm_80614C38(Gfx *dl, Actor *arg1, ActorModelHeader *arg2) {
