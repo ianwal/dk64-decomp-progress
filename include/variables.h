@@ -91,6 +91,7 @@ extern Gfx **D_1000068;
 extern Gfx **D_1000040;
 extern Gfx **D_1000090;
 extern Gfx **D_1000118;
+extern Mtx D_2000000;
 extern Mtx D_2000080;
 extern Mtx D_20000C0;
 extern Mtx D_2000100;
@@ -330,8 +331,8 @@ typedef struct gASMStruct3 {
     u8 unk0[0x44];
     s16 unk44;
 }gASMStruct3;
-extern gASMStruct1 D_global_asm_807F0570;
-extern gASMStruct2 D_global_asm_807F0588;
+extern void *D_global_asm_807F0570[];
+extern void *D_global_asm_807F0588[];
 
 typedef struct {
     void *unk0;

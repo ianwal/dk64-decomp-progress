@@ -350,7 +350,7 @@ if __name__ == "__main__":
         metavar="LINES",
         dest="max_lines",
         type=int,
-        default=1024,
+        default=2048,
         help="The maximum length of the diff, in lines.",
     )
     parser.add_argument(

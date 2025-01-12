@@ -1359,7 +1359,7 @@ f32 func_global_asm_8065D0FC(f32 arg0);
 void func_global_asm_8065D170(void);
 void func_global_asm_8065D1AC(void);
 void func_global_asm_8065D244(u16 arg0);
-void func_global_asm_8065D254(Actor *actor, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
+void func_global_asm_8065D254(Actor *actor, s32 arg1, s32 arg2, s32 arg3, s32 arg4, u8 arg5, s32 arg6, s32 arg7, s32 arg8, s32 arg9, f32 arg10);
 // TODO: func_global_asm_8065D964 has no documented signature but has been matched
 // TODO: func_global_asm_8065D994 has no documented signature
 void func_global_asm_8065E040(s32 arg0);
@@ -2055,7 +2055,7 @@ void addActorToTextOverlayRenderArray(void *arg0, Actor *arg1, u8 arg2);
 
 // global_asm/code_910A0.c
 Gfx *func_global_asm_8068C3A0(Gfx *dl, s32 arg1, s16 x, s16 y, s16 arg4);
-Gfx *displayImage(Gfx *dl, u16 textureIndex, s32 arg3, s32 codec, s32 width, s32 height, s32 x, s32 y, f32 xScale, f32 yScale, s32 arg11, f32 arg12);
+Gfx *displayImage(Gfx *dl, u16 textureIndex, s32 arg3, s32 codec, s32 width, s32 height, s16 x, s16 y, f32 xScale, f32 yScale, s32 arg11, f32 arg12);
 Gfx *func_global_asm_8068D264(Gfx *dl, f32 *arg1);
 void func_global_asm_8068D8C8(Gfx *dl, s32 arg1);
 // TODO: func_global_asm_8068D9DC has no documented signature

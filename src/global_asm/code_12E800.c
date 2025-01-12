@@ -97,28 +97,37 @@ void func_global_asm_80729E6C(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_80729EB0.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072A450.s")
-
-extern f64 D_global_asm_8075FD20;
 
 void func_global_asm_8072A450(void);
 
 /*
-// TODO: Float nonsense
 void func_global_asm_8072A450(void) {
     ActorAnimationState *temp_v0_2;
-    f32 temp_f0;
     Struct8075EB80 *temp_v1;
+    f32 temp_f0;
+    u32 temp_v0;
 
-    if (!(current_actor_pointer->object_properties_bitfield & 0x01000000)) {
-        if (current_actor_pointer->object_properties_bitfield & 4) {
-            if (!(D_global_asm_807FDC98->unk46 & 0x100)) {
-                temp_v0_2 = current_actor_pointer->animation_state;
-                temp_v1 = &D_global_asm_8075EB80[D_global_asm_807FDC98->unk44];
-                func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, (temp_v0_2->scale_x * temp_v1->unk14 * D_global_asm_807FDC98->unk30), (temp_v0_2->scale_z * temp_v1->unk15 * D_global_asm_807FDC98->unk30), 1, 0x12C, (current_actor_pointer->shadow_opacity * D_global_asm_8075FD20), current_actor_pointer->y_rotation, 1.0f);
-            }
-        }
+    if (current_actor_pointer->object_properties_bitfield & 0x01000000) {
+        return;
     }
+    if (!(current_actor_pointer->object_properties_bitfield & 4)) {
+        return;
+    }
+    if (D_global_asm_807FDC98->unk46 & 0x100) {
+        return;
+    }
+    temp_v0_2 = current_actor_pointer->animation_state;
+    temp_v1 = &D_global_asm_8075EB80[D_global_asm_807FDC98->unk44];
+    temp_f0 = D_global_asm_807FDC98->unk30;
+    func_global_asm_8065D254(
+        current_actor_pointer, 0x3C8, 0x40, 0x40,
+        temp_v0_2->scale[0] * (f32) temp_v1->unk14 * temp_f0,
+        temp_v0_2->scale[2] * (f32) temp_v1->unk15 * temp_f0,
+        1, 0x12C,
+        (f64) current_actor_pointer->shadow_opacity * 0.7,
+        (s32) current_actor_pointer->y_rotation, 1.0f);
 }
 */
 

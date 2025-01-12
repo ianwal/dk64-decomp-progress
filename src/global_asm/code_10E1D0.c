@@ -34,6 +34,56 @@ void func_global_asm_807094D0(u8 arg0) { // init zipper
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_807095E4.s")
 
+typedef struct Struct807FD9B4 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+} Struct807FD9B4;
+
+extern Struct807FD9B4 *D_807FD9B4;
+extern s16 D_global_asm_80744490;
+extern s16 D_global_asm_80744494;
+
+/*
+void func_global_asm_807095E4(s32 arg0, s32 arg1) {
+    s32 t0, t1;
+    u32 var_a2, var_v0;
+    s32 a2, v0;
+    s32 i, j, k, l;
+    s32 var_t3;
+
+    var_v0 = D_global_asm_80744490 / arg0;
+    var_a2 = D_global_asm_80744494 / arg1;
+    t0 = D_global_asm_80744490 - (arg0 * var_v0);
+    t1 = D_global_asm_80744494 - (arg1 * var_a2);
+    if (t0 > 0) {
+        var_v0++;
+    }
+    if (t1 > 0) {
+        var_a2++;
+    }
+    v0 = var_v0;
+    a2 = var_a2;
+    k = 1;
+    if (t1) {
+        var_t3 = D_global_asm_80744494 - t1;
+    } else {
+        var_t3 = D_global_asm_80744494 - arg1;
+    }
+    for (i = 0; i < a2; i++) {
+        l = 0;
+        for (j = 0; j < v0; k++) {
+            j++;
+            D_807FD9B4[k].unk0 = D_global_asm_80744490 * var_t3 + l;
+            D_807FD9B4[k].unk4 = t0 && (v0 == j) ? t0 : arg0;
+            D_807FD9B4[k].unk8 = t1 && (i == 0) ? t1 : arg0;
+            l += arg0;
+        }
+        var_t3 -= arg1;
+    }
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_80709890.s")
 
 typedef struct {

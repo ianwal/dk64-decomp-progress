@@ -1,8 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-s32 func_global_asm_807085D0(s32, PlayerProgress *, CharacterProgress *, void *);
-
 extern s8 D_global_asm_80744504;
 
 typedef struct global_asm_struct_21 {
@@ -16,6 +14,62 @@ typedef struct global_asm_struct_21 {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10D2D0/func_global_asm_807085D0.s")
+
+/*
+Gfx *func_global_asm_807085D0(Gfx *dl, PlayerProgress *arg1, CharacterProgress *arg2, CharacterChange *arg3) {
+    f32 temp0;
+    f32 temp_f20;
+    f32 temp_f20_2;
+    f32 inv_y_scale;
+    f32 temp_f6;
+    f32 x_scale; // e8
+    s16 a;
+    f32 y;
+    s16 i;
+    u8 temp_s0;
+    s8 health;
+    s32 x;
+    s32 pad;
+    f32 temp2;
+    f32 temp1;
+
+    health = arg1->health;
+    temp_f20 = arg3->unk2E0 / 65535.0;
+    temp_s0 = ((arg1->melons * 70) - 70);
+    if ((global_properties_bitfield & 3) || (func_global_asm_80714464())) {
+        return dl;
+    }
+    gSPDisplayList(dl++, &D_1000118);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    for (i = 0; i < arg1->melons; i++) {
+        a = (i * 0X400) + (object_timer * 200);
+        x_scale = (func_global_asm_80612794(a) * 0.3) + 3.0;
+        inv_y_scale = (func_global_asm_80612794(a + 0x800) * 0.3) + 3.0;
+        temp_f20_2 = func_global_asm_80612794((a >> 1) + 0x200) * 10.0;
+        temp_f6 = ((func_global_asm_80612794(a) * 0.5) + 0.5) * 30.0;
+        gDPPipeSync(dl++);
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, MIN(80.0f, temp_f20 * 511.0f));
+        x = (((i * 140) + 0x280) + temp_f20_2) - temp_s0;
+        y = (s16)(temp_f20 * 200.0) + temp_f6;
+        dl = displayImage(dl, 0x5D, 
+            0, 2, 0x30, 0x2A, x, y, 
+            x_scale, -inv_y_scale, 0, 0.0f);
+        gDPPipeSync(dl++);
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, MIN(255.0f, temp_f20 * 511.0f));
+        if (health > 0) {
+            dl = displayImage(dl, 
+                MIN(health - 1, 3) + 0x5A, 0, 2,
+                0x30, 0x2A, x, y,
+                x_scale, -inv_y_scale, 0, 0.0f);
+        }
+        health = MAX(0, health - 4);
+    }
+    gDPPipeSync(dl++);
+    return dl;
+}
+*/
 
 void func_global_asm_80708BB8(Struct80708BB8 *arg0) {
     if ((D_global_asm_807FBB64 & 0x800)) {

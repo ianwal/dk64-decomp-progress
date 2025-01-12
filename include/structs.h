@@ -1287,11 +1287,14 @@ typedef struct {
     u8 pad38[0x44 - 0X38];
     CameraPaad_unk44 * unk44;
     s32 unk48;
-    u8 pad4C[0xAC - 0x4C];
+    u8 pad4C[0x90 - 0x4C];
+    f32 unk90;
+    u8 pad94[0xAC - 0x94];
     s32 unkAC;
     u8 padB0[0xF3 - 0xB0];
     u8 unkF3;
-    u8 padF4[0xFB - 0xF4];
+    u8 padF4[0xFA - 0xF4];
+    u8 unkFA;
     u8 unkFB;
 } CameraPaad;
 
@@ -1593,14 +1596,19 @@ typedef struct {
 } CharacterChange250;
 
 typedef struct {
-    u8     does_player_exist; // bitfield? 0x00
-    u8     unk1;
-    u8     unk2;
-    u8     unk3;
+    u8      does_player_exist; // bitfield? 0x00
+    u8      unk1;
+    u8      unk2;
+    u8      unk3;
     Actor*  player_pointer;    // 0x04
-    CharacterChange8Array unk8[2]; // TODO: How many elements are there here?
-    f32 unk88[3][4][4]; // TODO: How many?
-    u8      pad_unknownB8[0x210 - 0x148];
+    Mtx     unk8[2];
+    Mtx     unk88[2];
+    u8      pad108[0x188 - 0x108];
+    u16     unk188;
+    u8      pad18A[0x190 - 0x18A];
+    LookAt  unk190[2];
+    Hilite  unk1D0[2];
+    u8      pad1F0[0x210 - 0x1F0];
     f32     look_at_eye_x; // 0x210 maybe an array?
     f32     look_at_eye_y; // 0x214
     f32     look_at_eye_z; // 0x218
@@ -3304,7 +3312,8 @@ typedef struct {
     u8 unk1;
     u8 unk2;
     u8 unk3;
-    s32 unk4;
+    s16 unk4;
+    s16 unk6;
     s16 unk8;
     s16 unkA;
 } Struct80750948;
@@ -3352,5 +3361,10 @@ typedef struct dk64_boot_struct_0 {
     u8 *unk4;
     u8 pad8[0x10];
 } dk64_boot_struct_0;
+
+typedef struct UnkMQStruct {
+    OSMesgQueue mq;
+    OSMesg msgs[];
+} UnkMQStruct;
 
 #endif
