@@ -140,8 +140,8 @@ void func_global_asm_806C80E4(void) {
 void func_global_asm_806C81DC(s16 arg0, s16 arg1) {
     CharacterChange *cc = character_change_array;
     cc->unk27A = arg1 - arg0;
-    cc->unk272 = arg0;
-    cc->unk276 = arg1;
+    cc->unk270[1] = arg0;
+    cc->unk270[3] = arg1;
     // TODO: What do these typecasts do and can we get rid of them?
     cc->unk280 = (f32)cc->unk278 / (f32)cc->unk27A;
 }

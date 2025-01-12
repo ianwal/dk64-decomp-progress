@@ -761,7 +761,7 @@ extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_8076A0B3;
 
 /*
-Stupidly close: https://decomp.me/scratch/x73Mu
+Stupidly close: https://decomp.me/scratch/GHQ4F
 void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
     Gfx *dl; // 114
     Gfx *dl_0;
@@ -794,7 +794,7 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
     guOrtho(&arg0->unk80, 0.0f, (f32) D_global_asm_80744490 - 1.0, (f32) D_global_asm_80744494 - 1.0, 0.0f, -20000.0f, 20000.0f, 1.0f);
     guOrtho(&arg0->unkC0, 0.0f, (f32) D_global_asm_80744490 * 4.0 - 1.0, (f32) D_global_asm_80744494 * 4.0 - 1.0, 0.0f, -20000.0f, 20000.0f, 1.0f);
     guOrtho(&arg0->unk140, 0.0f, 2.0 * (f32) D_global_asm_80744490 - 1.0, 2.0 * (f32) D_global_asm_80744494 - 1.0, 0.0f, -20000.0f, 20000.0f, 1.0f);
-    guOrtho(&arg0->unk100, (f32) character_change_array->unk270 * 4.0, (f32) character_change_array->unk274 * 4.0 - 1.0, (f32) character_change_array->unk276 * 4.0 - 1.0, (f32) character_change_array->unk272 * 4.0, -20000.0f, 20000.0f, 1.0f);
+    guOrtho(&arg0->unk100, (f32) character_change_array->unk270[0] * 4.0, (f32) character_change_array->unk270[2] * 4.0 - 1.0, (f32) character_change_array->unk270[3] * 4.0 - 1.0, (f32) character_change_array->unk270[1] * 4.0, -20000.0f, 20000.0f, 1.0f);
     temp0 = func_global_asm_8062A850();
     guPerspective(arg0, &D_global_asm_8076A09C, D_global_asm_807444B8, temp0 * D_global_asm_807444BC, D_global_asm_807444C8, D_global_asm_807444C4, 1.0f);
     gSPMatrix(dl_0++, &D_2000000, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
@@ -849,25 +849,25 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
                 D_global_asm_807444B0 + temp_f0,
                 D_global_asm_80744490,
                 D_global_asm_807444B4 + temp_f0);
-            character_change_array->unk272 = D_global_asm_807444AC - temp_f0;
-            character_change_array->unk276 = D_global_asm_807444B0 + temp_f0;
+            character_change_array->unk270[1] = D_global_asm_807444AC - temp_f0;
+            character_change_array->unk270[3] = D_global_asm_807444B0 + temp_f0;
         } else {
             gDPFillRectangle(dl++, 0, D_global_asm_807444A8, D_global_asm_80744490, D_global_asm_807444AC);
             gDPFillRectangle(dl++, 0, D_global_asm_807444B0, D_global_asm_80744490, D_global_asm_807444B4);
-            character_change_array->unk272 = D_global_asm_807444AC;
-            character_change_array->unk276 = D_global_asm_807444B0;
+            character_change_array->unk270[1] = D_global_asm_807444AC;
+            character_change_array->unk270[3] = D_global_asm_807444B0;
         }
-        character_change_array->unk27A = character_change_array->unk276 - character_change_array->unk272;
+        character_change_array->unk27A = character_change_array->unk270[3] - character_change_array->unk270[1];
         character_change_array->unk280 = (f32) character_change_array->unk278 / (f32) character_change_array->unk27A;
         gDPPipeSync(dl++);
         gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
     }
     if ((D_global_asm_8074447C) || (D_global_asm_80744480) || (D_global_asm_80744484) || (D_global_asm_80744488) || (D_global_asm_8074448C)) {
         temp_v0_6 = func_global_asm_806C7C94(0);
-        character_change_array->unk270 = temp_v0_6->unk4 + D_global_asm_8074447C;
-        character_change_array->unk274 = temp_v0_6->unk8 - D_global_asm_80744480;
-        character_change_array->unk272 = temp_v0_6->unk6 + D_global_asm_80744484;
-        character_change_array->unk276 = temp_v0_6->unkA - D_global_asm_80744488;
+        character_change_array->unk270[0] = temp_v0_6->unk4 + D_global_asm_8074447C;
+        character_change_array->unk270[2] = temp_v0_6->unk8 - D_global_asm_80744480;
+        character_change_array->unk270[1] = temp_v0_6->unk6 + D_global_asm_80744484;
+        character_change_array->unk270[3] = temp_v0_6->unkA - D_global_asm_80744488;
         gDPPipeSync(dl++);
         gDPSetCycleType(dl++, G_CYC_FILL);
         gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
@@ -883,12 +883,12 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
             gDPFillRectangle(dl++,
                 temp_v0_6->unk4, 
                 temp_v0_6->unk6, 
-                character_change_array->unk270, 
+                character_change_array->unk270[0], 
                 temp_v0_6->unkA);
         }
         if (D_global_asm_80744480) {
             gDPFillRectangle(dl++, 
-            character_change_array->unk274, 
+            character_change_array->unk270[2], 
             temp_v0_6->unk6, 
             temp_v0_6->unk8, 
             temp_v0_6->unkA);
@@ -896,22 +896,22 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
         if (D_global_asm_80744484) {
             // Load for 274 and 272 need to be swapped
             gDPFillRectangle(dl++, 
-            character_change_array->unk270, 
+            character_change_array->unk270[0], 
             temp_v0_6->unk6, 
-            character_change_array->unk274, 
-            character_change_array->unk272);
+            character_change_array->unk270[2], 
+            character_change_array->unk270[1]);
         }
         if (D_global_asm_80744488) {
             // load for 270 and 276 need to be swapped
             gDPFillRectangle(dl++, 
-            character_change_array->unk270, 
-            character_change_array->unk276, 
-            character_change_array->unk274, 
+            character_change_array->unk270[0], 
+            character_change_array->unk270[3], 
+            character_change_array->unk270[2], 
             temp_v0_6->unkA);
         }
         gDPPipeSync(dl++);
-        character_change_array->unk278 = character_change_array->unk274 - character_change_array->unk270;
-        character_change_array->unk27A = character_change_array->unk276 - character_change_array->unk272;
+        character_change_array->unk278 = character_change_array->unk270[2] - character_change_array->unk270[0];
+        character_change_array->unk27A = character_change_array->unk270[3] - character_change_array->unk270[1];
         if (
             (!D_global_asm_8074447C) &&
             (!D_global_asm_80744480) && 

@@ -404,7 +404,7 @@ Gfx *func_boss_800286B8(Gfx *dl, Actor *arg1) {
     sp4C = malloc(sizeof(Mtx));
     func_global_asm_8061134C(sp4C);
     guScaleF(sp90, 0.6f, 0.6f, 1.0f);
-    guTranslateF(sp50, 100.0f, (character_change_array->unk276 * 4) - 0x3C, 0);
+    guTranslateF(sp50, 100.0f, (character_change_array->unk270[3] * 4) - 0x3C, 0);
     guMtxCatF(sp90, sp50, sp90);
     guMtxF2L(sp90, sp4C);
     gSPMatrix(dl++, sp4C, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);

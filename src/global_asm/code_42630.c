@@ -584,10 +584,10 @@ u8 func_global_asm_80641F70(s16 arg0) {
             dz *= dz;
             if (sqrtf(dx + dy + dz) < arg0) {
                 func_global_asm_80626F8C(D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224, &sp8C, &sp88, 0, 1.0f, i);
-                if ((s16)sp8C >= (character_change_array[i].unk270 + 0x14)
-                    && ((s16)sp88 >= (character_change_array[i].unk272 + 0x14))
-                    && (((s16)sp8C <= character_change_array[i].unk274 - 0x14))
-                    && ((character_change_array[i].unk276 - 0x14) >= (s16)sp88)) {
+                if ((s16)sp8C >= (character_change_array[i].unk270[0] + 0x14)
+                    && ((s16)sp88 >= (character_change_array[i].unk270[1] + 0x14))
+                    && (((s16)sp8C <= character_change_array[i].unk270[2] - 0x14))
+                    && ((character_change_array[i].unk270[3] - 0x14) >= (s16)sp88)) {
                         sp73 = TRUE;
                 }
             }

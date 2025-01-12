@@ -288,10 +288,10 @@ void func_global_asm_806A4DDC(Actor *arg0) {
     aaD->unk4C = arg0->x_position + temp_f0;
     aaD->unk50 = arg0->y_position + temp_f2;
 
-    aaD->unk44 = MAX(aaD->unk44, character_change_array->unk270);
-    aaD->unk48 = MAX(aaD->unk48, character_change_array->unk272);
-    aaD->unk4C = MAX(aaD->unk4C, character_change_array->unk274);
-    aaD->unk50 = MAX(aaD->unk50, character_change_array->unk276);
+    aaD->unk44 = MAX(aaD->unk44, character_change_array->unk270[0]);
+    aaD->unk48 = MAX(aaD->unk48, character_change_array->unk270[1]);
+    aaD->unk4C = MAX(aaD->unk4C, character_change_array->unk270[2]);
+    aaD->unk50 = MAX(aaD->unk50, character_change_array->unk270[3]);
 
     var_f22 = aaD->unk14;
     var_s0 = 0;

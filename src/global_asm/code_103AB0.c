@@ -37,10 +37,10 @@ Gfx *func_global_asm_806FEDB0(Gfx *dl, u8 arg1) {
     gDPSetScissor(
         dl++,
         G_SC_NON_INTERLACE,
-        character_change_array[arg1].unk270,
-        character_change_array[arg1].unk272,
-        character_change_array[arg1].unk274,
-        character_change_array[arg1].unk276
+        character_change_array[arg1].unk270[0],
+        character_change_array[arg1].unk270[1],
+        character_change_array[arg1].unk270[2],
+        character_change_array[arg1].unk270[3]
     );
     gSPDisplayList(dl++, &D_1000118);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
@@ -172,10 +172,10 @@ Gfx *func_global_asm_8070068C(Gfx *dl) {
     gDPSetScissor(
         dl++,
         G_SC_NON_INTERLACE,
-        character_change_array[0].unk270,
-        character_change_array[0].unk272,
-        character_change_array[0].unk274,
-        character_change_array[0].unk276
+        character_change_array[0].unk270[0],
+        character_change_array[0].unk270[1],
+        character_change_array[0].unk270[2],
+        character_change_array[0].unk270[3]
     );
     return dl;
 }
@@ -272,16 +272,16 @@ void func_global_asm_80703850(u8 arg0) {
 
     temp_f0 = (f32)arg0 / 255.0;
     if (func_global_asm_805FCA64()) {
-        character_change_array->unk272 = D_global_asm_8074449C + ((((D_global_asm_80744494 >> 1) - D_global_asm_8074449C) - 1) * temp_f0);
-        character_change_array->unk276 = D_global_asm_807444A4 + (((D_global_asm_80744494 >> 1) - D_global_asm_807444A4) * temp_f0);
+        character_change_array->unk270[1] = D_global_asm_8074449C + ((((D_global_asm_80744494 >> 1) - D_global_asm_8074449C) - 1) * temp_f0);
+        character_change_array->unk270[3] = D_global_asm_807444A4 + (((D_global_asm_80744494 >> 1) - D_global_asm_807444A4) * temp_f0);
     } else {
-        character_change_array->unk272 = D_global_asm_807444AC + ((((D_global_asm_80744494 >> 1) - D_global_asm_807444AC) - 1) * temp_f0);
-        character_change_array->unk276 = D_global_asm_807444B0 + (((D_global_asm_80744494 >> 1) - D_global_asm_807444B0) * temp_f0);
+        character_change_array->unk270[1] = D_global_asm_807444AC + ((((D_global_asm_80744494 >> 1) - D_global_asm_807444AC) - 1) * temp_f0);
+        character_change_array->unk270[3] = D_global_asm_807444B0 + (((D_global_asm_80744494 >> 1) - D_global_asm_807444B0) * temp_f0);
     }
-    character_change_array->unk270 = D_global_asm_80744498 + ((((D_global_asm_80744490 >> 1) - D_global_asm_80744498) - 1) * temp_f0);
-    character_change_array->unk274 = D_global_asm_807444A0 + (((D_global_asm_80744490 >> 1) - D_global_asm_807444A0) * temp_f0);
-    character_change_array->unk27A = character_change_array->unk276 - character_change_array->unk272;
-    character_change_array->unk278 = character_change_array->unk274 - character_change_array->unk270;
+    character_change_array->unk270[0] = D_global_asm_80744498 + ((((D_global_asm_80744490 >> 1) - D_global_asm_80744498) - 1) * temp_f0);
+    character_change_array->unk270[2] = D_global_asm_807444A0 + (((D_global_asm_80744490 >> 1) - D_global_asm_807444A0) * temp_f0);
+    character_change_array->unk27A = character_change_array->unk270[3] - character_change_array->unk270[1];
+    character_change_array->unk278 = character_change_array->unk270[2] - character_change_array->unk270[0];
     character_change_array->unk280 = (f32)character_change_array->unk278 / character_change_array->unk27A;
 }
 
@@ -661,10 +661,10 @@ Gfx *func_global_asm_8070770C(Gfx *dl) {
     gDPSetScissor(
         dl++,
         G_SC_NON_INTERLACE,
-        character_change_array[0].unk270,
-        character_change_array[0].unk272,
-        character_change_array[0].unk274,
-        character_change_array[0].unk276
+        character_change_array[0].unk270[0],
+        character_change_array[0].unk270[1],
+        character_change_array[0].unk270[2],
+        character_change_array[0].unk270[3]
     );
     gDPSetCycleType(dl++, G_CYC_1CYCLE);
     return dl;

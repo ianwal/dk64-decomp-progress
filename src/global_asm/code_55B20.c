@@ -751,10 +751,10 @@ s32 func_global_asm_80653804(Chunk78_7C *arg0, f32 arg1, f32 arg2) {
 void func_global_asm_80653A70(s16 chunkIndex) {
     chunk_array_pointer[chunkIndex].loaded = 1;
     chunk_array_pointer[chunkIndex].unk1 |= 1 << cc_player_index;
-    chunk_array_pointer[chunkIndex].deload1 = character_change_array[cc_player_index].unk270;
-    chunk_array_pointer[chunkIndex].deload2 = character_change_array[cc_player_index].unk272;
-    chunk_array_pointer[chunkIndex].deload3 = character_change_array[cc_player_index].unk274;
-    chunk_array_pointer[chunkIndex].deload4 = character_change_array[cc_player_index].unk276;
+    chunk_array_pointer[chunkIndex].deload1 = character_change_array[cc_player_index].unk270[0];
+    chunk_array_pointer[chunkIndex].deload2 = character_change_array[cc_player_index].unk270[1];
+    chunk_array_pointer[chunkIndex].deload3 = character_change_array[cc_player_index].unk270[2];
+    chunk_array_pointer[chunkIndex].deload4 = character_change_array[cc_player_index].unk270[3];
 }
 
 void func_global_asm_80653B70(u8 arg0) {
@@ -779,10 +779,10 @@ void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2) {
     func_global_asm_80656F14(
         character_change_array[cc_player_index].chunk,
         0,
-        character_change_array[cc_player_index].unk270,
-        character_change_array[cc_player_index].unk272,
-        character_change_array[cc_player_index].unk274,
-        character_change_array[cc_player_index].unk276,
+        character_change_array[cc_player_index].unk270[0],
+        character_change_array[cc_player_index].unk270[1],
+        character_change_array[cc_player_index].unk270[2],
+        character_change_array[cc_player_index].unk270[3],
         arg0,
         arg1,
         arg2);
@@ -1259,26 +1259,26 @@ void func_global_asm_80658624(s32 arg0, s32 *arg1, s32 *arg2, s32 *arg3, s32 *ar
     s32 i;
     u8 var_s3;
 
-    *arg1 = character_change_array[cc_player_index].unk274;
-    *arg2 = character_change_array[cc_player_index].unk276;
-    *arg3 = character_change_array[cc_player_index].unk270;
-    *arg4 = character_change_array[cc_player_index].unk272;
+    *arg1 = character_change_array[cc_player_index].unk270[2];
+    *arg2 = character_change_array[cc_player_index].unk270[3];
+    *arg3 = character_change_array[cc_player_index].unk270[0];
+    *arg4 = character_change_array[cc_player_index].unk270[1];
     var_s3 = 0;
     for (i = 0; i < arg0; i++) {
         var_s3 |= func_global_asm_80626F8C(D_807F6D78[i].unk0, D_807F6D78[i].unk4, D_807F6D78[i].unk8, &sp7C, &sp78, 0, 1.0f, cc_player_index);
         var_a1 = sp7C;\
         var_a2 = sp78;
-        if (var_a1 < character_change_array[cc_player_index].unk270) {
-            var_a1 = character_change_array[cc_player_index].unk270;
+        if (var_a1 < character_change_array[cc_player_index].unk270[0]) {
+            var_a1 = character_change_array[cc_player_index].unk270[0];
         }
-        if (var_a2 < character_change_array[cc_player_index].unk272) {
-            var_a2 = character_change_array[cc_player_index].unk272;
+        if (var_a2 < character_change_array[cc_player_index].unk270[1]) {
+            var_a2 = character_change_array[cc_player_index].unk270[1];
         }
-        if (character_change_array[cc_player_index].unk274 < var_a1) {
-            var_a1 = character_change_array[cc_player_index].unk274;
+        if (character_change_array[cc_player_index].unk270[2] < var_a1) {
+            var_a1 = character_change_array[cc_player_index].unk270[2];
         }
-        if (character_change_array[cc_player_index].unk276 < var_a2) {
-            var_a2 = character_change_array[cc_player_index].unk276;
+        if (character_change_array[cc_player_index].unk270[3] < var_a2) {
+            var_a2 = character_change_array[cc_player_index].unk270[3];
         }
         if (var_a1 < *arg1) {
             *arg1 = var_a1;

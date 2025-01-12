@@ -1626,10 +1626,7 @@ typedef struct {
     f32     look_at_up_z; // 0x248;
     s32     unk24C;
     CharacterChange250 unk250[2];
-    s16     unk270; // Used, related to map chunk "deload" value
-    s16     unk272; // Used, related to map chunk "deload" value
-    s16     unk274; // Used, related to map chunk "deload" value
-    s16     unk276; // Used, related to map chunk "deload" value
+    s16     unk270[4];
     s16     unk278;
     s16     unk27A;
     f32     fov_y; // 0x27C

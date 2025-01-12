@@ -89,7 +89,7 @@ Gfx *func_global_asm_806A2B90(Gfx *dl, Actor *arg1) {
             temp = func_global_asm_806FD9B4(sp5C->unk10);
             dl = printStyledText(dl, 0x86, 
                 arg1->x_position * 4.0f,
-                ((character_change_array->unk276 * 4) - 0x3C),
+                ((character_change_array->unk270[3] * 4) - 0x3C),
                 temp->unk4, 1U);
         } else {
             var_v0 = 8;
