@@ -110,8 +110,10 @@ extern s32 D_global_asm_807454E8;
 
 /*
 void func_global_asm_80602104(s32 arg0) {
-    if (((osAiGetLength() >> 2) == 0) && (D_global_asm_807454E8 == 0)) {
-        D_global_asm_807454E8 = 0;
+    if (!(osAiGetLength() >> 2)) {
+        if (!D_global_asm_807454E8) {
+            D_global_asm_807454E8 = 0;
+        }
     }
 }
 */

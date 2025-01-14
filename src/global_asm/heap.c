@@ -43,6 +43,33 @@ void func_global_asm_80610B84(s32 arg0, s32 arg1, u32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80610BD8.s")
 
+typedef struct HeapArenaMeta {
+    void *  index;
+    void *  start;
+    void *  tail;
+    s32     bin_size;
+    s16     chunk_size;
+    u8      pad12[2];
+} HeapArenaMeta;
+
+typedef struct Struct80610BD8_arg1 {
+    s32 unk0;
+    s32 unk4;
+    union {
+        struct {
+            u8 unk8;
+            u8 unk9;
+            u8 unkA;
+            u8 unkB;
+        };
+        s32 unk8_s32;
+    };
+    s32 unkC;
+} Struct80610BD8_arg1;
+
+extern HeapArenaMeta D_807F0988[];
+extern s32 D_807F0A28;
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80610C74.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80610DCC.s")

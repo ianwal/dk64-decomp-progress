@@ -50,8 +50,46 @@ void func_global_asm_8064F804(OM2_unk78 *arg0) {
     }
 }
 
-// looks doable, loops through 200 size 0x14 structs
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064F84C.s")
+extern s32 D_807F6BE0;
+extern s32 D_807F6BE4;
+extern OM2_unk78 *D_807F6BE8;
+extern u8 D_global_asm_807F6BEC;
+
+typedef struct Struct8064F84C {
+    s32 unk0[2];
+    s32 unk8;
+    u8 padC[0x14 - 0xC];
+    s16 unk14;
+    u8 unk16;
+} Struct8064F84C;
+
+u8 func_global_asm_8064F84C(s16 arg0) {
+    Struct8064F84C *temp_s6;
+    Struct8064F84C *var_s0;
+    s32 var_s1;
+
+    temp_s6 = D_global_asm_807F6000[func_global_asm_80659470((s32) arg0)].unk78;
+    D_global_asm_807F6BEC = 0;
+    if (temp_s6 != NULL) {
+        var_s1 = 0;
+        D_807F6BE0 = temp_s6->unk0[D_global_asm_807444FC];
+        var_s0 = temp_s6;
+        D_807F6BE4 = temp_s6->unk0[D_global_asm_807444FC ^ 1];
+        D_807F6BE8 = temp_s6;
+        do {
+            if (var_s0->unk16 == 1) {
+                func_global_asm_8064F954((s32) &var_s0->unk8);
+                D_global_asm_807F6BEC = 1;
+            }
+            var_s1 += 0x14;
+            var_s0 = &var_s0->unk14;
+        } while (var_s1 != 0xC8);
+        func_global_asm_806506E8(temp_s6);
+    }
+    return D_global_asm_807F6BEC;
+}
+
+
 
 void func_global_asm_8064F954(s32 arg0) {
     func_global_asm_806500E0();
@@ -78,7 +116,6 @@ typedef struct {
 } GlobalASMStruct10;
 
 extern GlobalASMStruct10 D_global_asm_807F6960[];
-extern s8 D_global_asm_807F6BEC;
 
 void func_global_asm_8065051C(void) {
     s32 i;

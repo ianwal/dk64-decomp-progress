@@ -328,19 +328,6 @@ typedef struct animation_state_unk0 {
     f32 unk34;
 } AnimationStateUnk0;
 
-typedef struct animation_state_unk8 {
-    s32 unk0;
-    f32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    f32 unk14;
-    f32 unk18;
-    s32 unk1C;
-    u8 pad20[0x34 - 0x20];
-    f32 unk34;
-} AnimationStateUnk8;
-
 typedef struct {
     s8 unk0;
     s8 unk1;
@@ -378,13 +365,17 @@ typedef struct animation_state_unk20 {
 typedef struct actor_collision ActorCollision;
 typedef struct actor Actor;
 
+typedef struct ActorAnimationState_unk170 {
+    u8 pad0[0x80];
+} ActorAnimationState_unk170;
+
 typedef struct actor_animation_state {
     AnimationStateUnk0 *unk0;
     AnimationStateUnk0 *unk4;
-    AnimationStateUnk8 *unk8;
-    AnimationStateUnk8 *unkC;
+    AnimationStateUnk0 *unk8;
+    AnimationStateUnk0 *unkC;
     f32 unk10;
-    void *bone_arrays[2]; // at 0x14, camera, update bone positions // TODO: Proper type
+    Mtx *bone_arrays[2]; // at 0x14, camera, update bone positions // TODO: Proper type
     AnimationStateUnk1C *unk1C;
     AnimationStateUnk20 *unk20; // See boss func_dk64_boot_8002FB7C
     AnimationStateUnk24 *unk24;
@@ -424,13 +415,8 @@ typedef struct actor_animation_state {
     s32 unk84;
     s32 unk88;
     f32 unk8C;
-    s32 unk90;
-    f32 animation_timer_1; // at 0x94
-    f32 animation_timer_2; // at 0x98
-    s32 unk9C;
-    s32 unk100;
-    f32 animation_timer_3; // at 0x104
-    f32 animation_timer_4; // at 0x108
+    AnimationStateUnk0 unk90[4];
+    ActorAnimationState_unk170 unk170[];
 } ActorAnimationState;
 
 typedef struct {
@@ -3365,5 +3351,11 @@ typedef struct UnkMQStruct {
     OSMesgQueue mq;
     OSMesg msgs[];
 } UnkMQStruct;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    AnimationStateUnk0_0 *unk8;
+} Struct807FB7B0;
 
 #endif

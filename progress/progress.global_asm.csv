@@ -770,7 +770,7 @@ us,asm,func_global_asm_8060B4D4,136,yes
 us,asm,func_global_asm_80652EBC,104,yes
 us,asm,func_global_asm_806E7050,56,yes
 us,asm,func_global_asm_805FE398,316,yes
-us,asm,func_global_asm_8064F84C,264,no
+us,asm,func_global_asm_8064F84C,264,yes
 us,asm,func_global_asm_80654A2C,404,no
 us,asm,func_global_asm_807085D0,1512,no
 us,asm,func_global_asm_80685520,488,yes

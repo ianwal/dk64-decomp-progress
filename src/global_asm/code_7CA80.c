@@ -33,12 +33,6 @@ typedef struct {
     s32 unk8;
 } Struct807FB630;
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-} Struct807FB7B0;
-
 extern Struct807FB630 D_807FB630[];
 extern Struct807FB7B0 D_807FB7B0[];
 extern s16 D_807FBB30;
