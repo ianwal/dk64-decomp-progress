@@ -471,9 +471,6 @@ s32 func_global_asm_806F1668(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     return phi_f12 + 0.5;
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F1768.s")
-
 extern u16 D_global_asm_80752F20[];
 extern u16 D_global_asm_80752F30[];
 extern u16 D_global_asm_80752F38[];
@@ -487,43 +484,41 @@ typedef struct {
     u16 unk6;
 } Struct806F1858;
 
-/*
 void func_global_asm_806F1768(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     s32 temp_v1;
     u16 temp_v0;
 
-    temp_v1 = extra_player_info_pointer->unk8E - 0x14;
-    if ((temp_v1 >= 0) && (temp_v1 < 7U)) {
-        temp_v0 = D_global_asm_80752F20[extra_player_info_pointer->unk8E];
-        arg1[*arg2].unk0 = 0x7F;
-        if (extra_player_info_pointer->unk91 != 0) {
-            arg1[*arg2].unk1 = 9;
-        } else {
-            arg1[*arg2].unk1 = 8;
-        }
-        arg1[*arg2].unk2 = 0;
-        if (extra_player_info_pointer->unk91 != 0) {
-            arg1[*arg2].unk4 = temp_v0;
-        } else {
-            arg1[*arg2].unk4 = -temp_v0;
-        }
-        arg1[*arg2].unk6 = 0;
-        *arg2 += 1;
+    temp_v1 = extra_player_info_pointer->unk8E - 20;
+    if (temp_v1 < 0) {
+        return;
     }
+    if (temp_v1 > 6U) {
+        return;
+    }
+    temp_v0 = D_global_asm_80752F20[(u32)(extra_player_info_pointer->unk8E - 20)];
+    arg1[*arg2].unk0 = 0x7F;
+    if (extra_player_info_pointer->unk91) {
+        arg1[*arg2].unk1 = 9;
+    } else {
+        arg1[*arg2].unk1 = 8;
+    }
+    arg1[*arg2].unk2 = 0;
+    if (extra_player_info_pointer->unk91) {
+        arg1[*arg2].unk4 = temp_v0;
+    } else {
+        arg1[*arg2].unk4 = -temp_v0;
+    }
+    arg1[*arg2].unk6 = 0;
+    *arg2 += 1;
 }
-*/
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F1858.s")
-
-/*
 void func_global_asm_806F1858(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     s32 temp_v1;
     s32 temp;
 
     temp_v1 = extra_player_info_pointer->unk8E - 0x14;
     if ((temp_v1 >= 0) && (temp_v1 < 4U)) {
-        temp = D_global_asm_80752F30[extra_player_info_pointer->unk8E];
+        temp = D_global_asm_80752F30[(u32)(extra_player_info_pointer->unk8E - 0x14)];
         arg1[*arg2].unk0 = 0x7F;
         arg1[*arg2].unk1 = 4;
         arg1[*arg2].unk2 = 0;
@@ -532,19 +527,14 @@ void func_global_asm_806F1858(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
         *arg2 += 1;
     }
 }
-*/
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F18F4.s")
-
-/*
 void func_global_asm_806F18F4(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     s32 temp_v1;
     s32 temp;
 
     temp_v1 = extra_player_info_pointer->unk8E - 0x16;
     if ((temp_v1 >= 0) && (temp_v1 < 4U)) {
-        temp = D_global_asm_80752F38[extra_player_info_pointer->unk8E];
+        temp = D_global_asm_80752F38[(u32)(extra_player_info_pointer->unk8E - 0x16)];
         arg1[*arg2].unk0 = 0x7F;
         arg1[*arg2].unk1 = 1;
         arg1[*arg2].unk2 = 0;
@@ -553,7 +543,6 @@ void func_global_asm_806F18F4(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
         *arg2 += 1;
     }
 }
-*/
 
 void func_global_asm_806F1990(s32 arg0, Struct806F1858 *arg1, s32 *arg2) {
     u16 temp_v0;
