@@ -73,6 +73,12 @@ typedef struct {
     u8 pad0[0xC];
 } ArcadeStruct4;
 
+typedef struct {
+    u8 unk0;
+    u8 unk1;
+    u16 unk2;
+} ArcadeStruct5;
+
 void func_arcade_8002549C(void);
 void func_arcade_80024D90(void);
 void func_arcade_800259D0(Gfx **arg0);
@@ -142,15 +148,16 @@ extern s16 D_arcade_8004C6D6;
 extern s32 D_arcade_8004C6D8;
 extern s32 D_arcade_8004C6DC; // arcade_internal_timer
 extern s32 D_arcade_8004C6E0;
-extern D_arcade_8004C6E4;
-extern D_arcade_8004C6EC;
+extern s32 D_arcade_8004C6E4;
+extern s32 D_arcade_8004C6EC;
 extern s32 D_arcade_8004C6E8;
 extern s32 D_arcade_8004C6F0;
 extern s32 D_arcade_8004C6F4;
 extern s32 D_arcade_8004C6F8;
 extern s32 D_arcade_8004C6FC;
+extern s32 D_arcade_8004C700;
 extern s32 D_arcade_8004C704;
-extern u32 D_arcade_8004C708;
+extern s32 D_arcade_8004C708;
 extern s32 D_arcade_8004C70C;
 extern s32 arcade_hammer_timer;
 extern s32 arcade_next_sfx; //0x8004C714
@@ -185,6 +192,7 @@ extern u8  D_global_asm_80767CE8;
 extern f32 D_global_asm_807FD888;
 extern u32 D_global_asm_8076D1F8; // ??
 extern s32 D_global_asm_80770DF8;
+extern s32 D_global_asm_80770DFC;
 extern GlobalASMStruct17 *D_global_asm_807ECDE8;
 extern u8 *D_global_asm_80746800;
 #endif /* ARCADE_INTERNAL_H */

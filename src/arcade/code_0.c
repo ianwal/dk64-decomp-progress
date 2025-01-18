@@ -25028,65 +25028,6 @@ u8 D_arcade_8004A788[] = {
 	0x03,
 	0x02,
 };
-s32 D_arcade_8004A78C = 1;
-s32 D_arcade_8004A790 = 0;
-u8 D_arcade_8004A794 = ' ';
-s32 D_arcade_8004A798[] = {
-	0x019D2975,
-	0x0155AA45,
-	0x0155EE77,
-	0x01556A42,
-	0x019D2972,
-	0x00000000,
-	0x00000000,
-	0x0035E938,
-	0x003DAD60,
-	0x0039AF6C,
-	0x0035AB64,
-	0x0035E938,
-};
-u32 D_arcade_8004A7C8[] = {
-	0x0B110037,
-	0x001C00F7,
-	0x00150057,
-	0x000300E7,
-	0x000300BF,
-	0x00030087,
-	0x0F1200E7,
-	0x131500DF,
-	0x161800D7,
-	0x191C00CF,
-	0x080B00CF,
-	0x070B0087,
-	0x1A1C00B7,
-	0x171900AF,
-	0x141600A7,
-	0x1113009F,
-	0x1013007F,
-	0x171C008F,
-	0x1A1C0067,
-	0x1719006F,
-	0x14160077,
-};
-u8 D_arcade_8004A81C[8][2] = {
-    // 50m rivet positions
-    {0x6C, 0xD0},
-    {0xD4, 0xD0},
-    {0x6C, 0xAA},
-    {0xD4, 0xAA},
-    {0x6C, 0x84},
-    {0xD4, 0x84},
-    {0x6C, 0x5D},
-    {0xD4, 0x5D},
-};
-u8 D_arcade_8004A82C[5][3] = {
-    {'1','S','T'},
-    {'2','N','D'},
-    {'3','R','D'},
-    {'4','T','H'},
-    {'5','T','H'},
-};
-s32 D_arcade_8004A83C = 0;
 
 extern uSprite D_arcade_8004BC20[2];
 extern uSprite D_arcade_8004BC50[2];
@@ -25104,9 +25045,11 @@ void func_arcade_800251D8(Gfx **arg0);
 void func_arcade_800252D8(Gfx **arg0);
 void func_arcade_800257D8(void); 
 void func_arcade_80025960(Gfx **arg0);
+void func_arcade_80026EF4(Gfx **arg0);
 void func_arcade_800275E8(Gfx **arg0);
 void func_arcade_80027A38(Gfx **arg0);
 void func_arcade_800311E0(void);
+void func_arcade_800319D4(Gfx **arg0);
 
 void func_arcade_80024E84(Gfx **arg0);
 void func_arcade_800255F4(Gfx **arg0);
@@ -25302,19 +25245,20 @@ s32 arcade_get_object_type_count(enum ARCADE_OBJ_E arg0) {
     return count;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024940.s")
-
-/*
 void func_arcade_80024940(Gfx **gpp) {
-    Gfx* sp1C;
+    Gfx *sp1C;
+    static s32 D_arcade_8004A78C = 1;
+    static s32 D_arcade_8004A790 = 0;
     
     sp1C = *gpp;
+    
     if (D_arcade_8004A78C) {
         D_arcade_8004A78C = 0;
         arcade_background_visual = 1;
         func_arcade_80024D90();
         func_arcade_8002440C();
     }
+    
     switch (D_arcade_8004C724) {
         case 0:// 800249A8
             func_arcade_80024E84(&sp1C);
@@ -25336,36 +25280,90 @@ void func_arcade_80024940(Gfx **gpp) {
             func_arcade_80025960(&sp1C);
             break;
     }
-    func_arcade_800319D4(&sp1C);
-    D_arcade_8004C6D8++;
-    *gpp = --sp1C;
-    D_arcade_8004A790++;
-}
-*/
-
-// struct, score, big offset, loops, aaa
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80024A50.s")
-
-/*
-void func_arcade_80024A50(s32 arg0) {
-    // adds score to high scores
-    volatile u8 spC = D_arcade_8004A794; //static???
-    u8 pad[0x10];
-    s32 i, j;
-
     
-    for (i = 4; arg0 < i; i--) {
+    func_arcade_800319D4(&sp1C);
+    ++D_arcade_8004C6D8;
+    *gpp = --sp1C;
+    ++D_arcade_8004A790;
+}
+
+void func_arcade_80024A50(s32 arg0)
+{
+    s32 i;
+    s32 j;
+    u8 blank[] = {' '};
+
+    for (i = 4; i > arg0; --i)
+    {
         arcade_saved_high_scores[i] = arcade_saved_high_scores[i - 1];
-        for (j = 0; j < 3; j++) {
+        for (j = 0; j < 3; ++j)
+        {
             arcade_saved_high_score_initials[i][j] = arcade_saved_high_score_initials[i - 1][j];
         }
     }
+
     arcade_saved_high_scores[arg0] = arcade_current_score;
-    for (j = 0; j < 3; j++) {
-        arcade_saved_high_score_initials[arg0][j] = spC;
+    for (i = 0; i < 3; i++) \
+    { \
+        arcade_saved_high_score_initials[arg0][i] = blank[0];
     }
 }
-*/
+
+s32 D_arcade_8004A798[] = {
+	0x019D2975,
+	0x0155AA45,
+	0x0155EE77,
+	0x01556A42,
+	0x019D2972,
+	0x00000000,
+	0x00000000,
+	0x0035E938,
+	0x003DAD60,
+	0x0039AF6C,
+	0x0035AB64,
+	0x0035E938,
+};
+ArcadeStruct5 D_arcade_8004A7C8[] = {
+    { 0x0B, 0x11, 0x0037 },
+    { 0x00, 0x1C, 0x00F7 },
+    { 0x00, 0x15, 0x0057 },
+    { 0x00, 0x03, 0x00E7 },
+    { 0x00, 0x03, 0x00BF },
+    { 0x00, 0x03, 0x0087 },
+    { 0x0F, 0x12, 0x00E7 },
+    { 0x13, 0x15, 0x00DF },
+    { 0x16, 0x18, 0x00D7 },
+    { 0x19, 0x1C, 0x00CF },
+    { 0x08, 0x0B, 0x00CF },
+    { 0x07, 0x0B, 0x0087 },
+    { 0x1A, 0x1C, 0x00B7 },
+    { 0x17, 0x19, 0x00AF },
+    { 0x14, 0x16, 0x00A7 },
+    { 0x11, 0x13, 0x009F },
+    { 0x10, 0x13, 0x007F },
+    { 0x17, 0x1C, 0x008F },
+    { 0x1A, 0x1C, 0x0067 },
+    { 0x17, 0x19, 0x006F },
+    { 0x14, 0x16, 0x0077 },
+};
+u8 D_arcade_8004A81C[8][2] = {
+    // 50m rivet positions
+    {0x6C, 0xD0},
+    {0xD4, 0xD0},
+    {0x6C, 0xAA},
+    {0xD4, 0xAA},
+    {0x6C, 0x84},
+    {0xD4, 0x84},
+    {0x6C, 0x5D},
+    {0xD4, 0x5D},
+};
+u8 D_arcade_8004A82C[5][3] = {
+    {'1','S','T'},
+    {'2','N','D'},
+    {'3','R','D'},
+    {'4','T','H'},
+    {'5','T','H'},
+};
 
 void func_arcade_80024B04(void) {
     u8 i, j;
@@ -25927,105 +25925,200 @@ void func_arcade_80026680(Gfx **gpp) {
     *gpp = dl;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800268AC.s")
-
-/*
 void func_arcade_800268AC(Gfx **gpp) {
     s32 i;
     Gfx *sp68;
-    s32 x;
-    s32 y;
 
     D_arcade_8004C719 = 8;
-    D_arcade_8004C71A = 8;
+    D_arcade_8004C71A = 0xA;
     D_arcade_8004C6D4 = 0x492;
-
-    D_arcade_8004C6D0 = &D_arcade_80034568;
-    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
-        D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
-    );
-    sp68 = *gpp;
-
+    D_arcade_8004C6D0 = D_arcade_80034568;
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
     
+    sp68 = *gpp;    
     func_global_asm_8070E8F0(&sp68, &D_arcade_8004BB00[D_global_asm_807444FC]);
     func_global_asm_8070F2C8(0x400, D_arcade_8004C6D4, 0, 0);
-    for (i = 0x220; i < 0x2E0; i += 0x20) {
-        func_global_asm_8070F2FC(&sp68, i, 0xE0);
+
+    // Updates/renders girders and bends them based on how many times DK has bounced in the intro
+    // Pauline's girders
+    for (i = 0; i < 6; i++) {
+        func_global_asm_8070F2FC(&sp68, (i + 17) * 32, 0xE0);
     }
-    
-    if (!((s32)D_arcade_8004C708 < 6)) {
-        for (i = 0xC0; i < 0x280; i += 0x20) {////L800269FC
-            func_global_asm_8070F2FC(&sp68, i, 0x380);
-        }
-        for (i = 0xE; i < 0x1C; i++) {//L80026A50
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, ((0xf7 - (i-0xC)/2)*0.875 + 8.0)*4.0);
-        }
-    } else {//L80026AC0
-        for (i = 0xC0; i < 0x440; i += 0x20) {
-            func_global_asm_8070F2FC(&sp68, i, 0x368);
-        }
-    }//L80026B0C
 
-    if (!((s32)D_arcade_8004C708 < 5)) {
-        for (i  = 0; i < 0x1A; i++) {//L80026B30
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, ((0xCF + (i/2))*0.875 + 8.0)*4.0);
+    // Bottom row
+    if (D_arcade_8004C708 >= 6) {
+        for (i = 0; i < 14; i++) {
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), 0x380);
         }
-    } else {//L80026B98
+
+        for (i = 14; i != 0x1C; i++) {
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), ((0xF7 - (i - 0xC) / 2) * 0.875 + 8.0) * 4.0);
+        }
+    } else {
+        for (i = 0; i < 0x1c; i++) {
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), 0x368);
+        }
+    }
+
+    // Second from the bottom
+    if (D_arcade_8004C708 >= 5) {
         for (i = 0; i < 0x1A; i++) {
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, 0x2f4);
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), (((((i / 2) + 0xCF) * 0.875) + 8.0) * 4.0));
         }
-    }//L80026BC0
-
-
-    if (!((s32)D_arcade_8004C708 < 4)) {
-        for (i  = 2; i < 0x1C; i++) {//L80026B30
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, ((0xbb - (i/2))*0.875 + 8.0)*4.0);
+    } else {
+        for (i = 0; i < 0x1A; i++) {
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), 0x2f4);
         }
-    } else {//L80026C50
+    }
+
+    // Third from bottom
+    if (D_arcade_8004C708 >= 4) {
         for (i = 2; i < 0x1C; i++) {
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, 0x281);
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), ((0xbb - (i/2))*0.875 + 8.0)*4.0);
         }
-    }//L80026C74
+    } else {
+        for (i = 2; i < 0x1C; i++) {
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), 0x281);
+        }
+    }
 
-    if (!((s32)D_arcade_8004C708 < 3)) {
+    // Fourth from bottom
+    if (D_arcade_8004C708 >= 3) {
         for (i = 0; i < 0x1A; i++) {
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, ((0x8d + (i/2))*0.875 + 8.0)*4.0);
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), ((0x8d + (i/2))*0.875 + 8.0)*4.0);
         }
-    } else {//L80026D04
+    } else {
         for (i = 0; i < 0x1A; i++) {
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, 0x20d);
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), 0x20d);
         }
-    }//L80026D24
+    }
 
-    if (!((s32)D_arcade_8004C708 < 2)) {
-        for (i = 2; i < 0x1A; i++) {
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, ((0x79 - (i/2))*0.875 + 8.0)*4.0);
+    // Fifth from bottom
+    if (D_arcade_8004C708 >= 2) {
+        for (i = 2; i < 0x1C; i++) {
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), ((0x79 - (i / 2)) * 0.875 + 8.0) * 4.0);
         }
-    } else {//L80026DB4
-        for (i = 0; i < 0x1A; i++) {
-            func_global_asm_8070F2FC(&sp68, 0x100 + i*0x20, 0x19a);
+        } else {
+        for (i = 2; i < 0x1C; i++) {
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), 0x19a);
         }
-    }//L80026DD8
+    }
 
-    if (!((s32)D_arcade_8004C708 < 1)) {
+    // Top row, the one DK is standing on
+    if (D_arcade_8004C708 >= 1) {
         for (i = 0; i < 0x12; i++) {
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, 0x142);
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), 0x142);
         }
         for (i = 0x12; i < 0x1A; i++) {
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, ((0x53 + ((i - 0x10)/2))*0.875 + 8.0)*4.0);
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), ((0x53 + ((i - 0x10)/2))*0.875 + 8.0)*4.0);
         }
-    } else {//L80026E90
+    } else {
         for (i = 0; i < 0x1A; i++) {
-            func_global_asm_8070F2FC(&sp68, 0xC0 + i*0x20, 0x142);
+            func_global_asm_8070F2FC(&sp68, 0xC0 + (i * 32), 0x142);
         }
     } 
 
     func_arcade_80026050(&sp68);
     *gpp = sp68;
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80026EF4.s")
+void func_arcade_80026EF4(Gfx **arg0) {
+    s32 i;
+    Gfx *sp60;
+
+    sp60 = *arg0;
+
+    if (D_arcade_8004C708 < 2) {
+        D_arcade_8004C719 = 2;
+        D_arcade_8004C71A = 8;
+        D_arcade_8004C6D4 = 0x400;
+        D_arcade_8004C6D0 = D_arcade_80032F18;
+        guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+        func_global_asm_8070E8F0(&sp60, (Sprite* ) &D_arcade_8004BC50[D_global_asm_807444FC]);
+        func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+        for (i = 0; i < 4; i++)
+        {
+            func_global_asm_8070F2FC(&sp60, 0x1DC, (s16) (s32) ((f64) (s32) ((i * 8) + 51.625 + 8.0) * 4.0));
+        }
+
+        for (i = 0; i < 4; i++)
+        {
+            func_global_asm_8070F2FC(&sp60, 0x31C, (s16) (s32) ((f64) (s32) ((i * 8) + 51.625 + 8.0) * 4.0));
+        }
+    }
+
+    D_arcade_8004C719 = 8;
+    D_arcade_8004C71A = 8;
+    D_arcade_8004C6D4 = 0x400;
+    D_arcade_8004C6D0 = D_arcade_80032C20;
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+
+    func_global_asm_8070E8F0(&sp60, (Sprite* ) &D_arcade_8004BB00[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    for (i = 6; i < 34; i++) {
+        func_global_asm_8070F2FC(&sp60, i * 32, 0x380);
+    }
+
+    if (D_arcade_8004C708 == 0) {
+        for (i = 1; i < 0x1B; ++i) {
+            if ((i != 7) && (i != 0x14)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x2F8);
+            }
+        }
+        for (i = 2; i < 0x1A; ++i) {
+            if ((i != 7) && (i != 0x14)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x270);
+            }
+        }
+        for (i = 3; i < 0x19; ++i) {
+            if ((i != 7) && (i != 0x14)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x1EC);
+            }
+        }
+        for (i = 4; i < 0x18; ++i) {
+            if ((i != 7) && (i != 0x14)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x164);
+            }
+        }
+    } else {
+        for (i = 14; i < 26; i++) {
+            func_global_asm_8070F2FC(&sp60, i * 32, 0x360);
+            func_global_asm_8070F2FC(&sp60, i * 32, 0x340);
+            func_global_asm_8070F2FC(&sp60, i * 32, 0x320);
+            func_global_asm_8070F2FC(&sp60, i * 32, 0x300);
+        }
+        for (i = 1; i < 0x1B; ++i) {
+            if ((i < 7) || (i >= 0x15)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x2F8);
+            }
+        }
+        for (i = 2; i < 0x1A; ++i) {
+            if ((i < 7) || (i >= 0x15)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x270);
+            }
+        }
+        for (i = 3; i < 0x19; ++i) {
+            if ((i < 7) || (i >= 0x15)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x1EC);
+            }
+        }
+        for (i = 4; i < 0x18; ++i) {
+            if ((i < 7) || (i >= 0x15) || (D_arcade_8004C708 == 2)) {
+                func_global_asm_8070F2FC(&sp60, (s16) ((i * 32) + 0xC0), 0x164);
+            }
+        }
+    }
+
+    if (D_arcade_8004C708 < 2) {
+        for (i = 13; i < 27; i++) {
+            func_global_asm_8070F2FC(&sp60, i * 32, 0xD8);
+        }
+    }
+
+    func_arcade_8002628C(&sp60);
+    *arg0 = sp60;
+}
 
 void func_arcade_800274E0(s32 *arg0, u8 arg1, u8 arg2, s16 arg3) {
     u8 i;
@@ -26038,75 +26131,137 @@ void func_arcade_800274E0(s32 *arg0, u8 arg1, u8 arg2, s16 arg3) {
     *arg0 = sp40;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800275E8.s")
+extern f32 D_arcade_8004BC88[6][3];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80027A38.s")
+void func_arcade_800275E8(Gfx** arg0) {
+    s32 i;
+    s32 j;
+    u8 length;
+    Gfx* sp90;
+    s32 var_s0;
 
-/*
+    sp90 = *arg0;
+    
+    D_arcade_8004C719 = 2;
+    D_arcade_8004C71A = 8;
+    D_arcade_8004C6D4 = 0x400;
+    D_arcade_8004C6D0 = D_arcade_80032F40;
+    guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp90, (Sprite* ) &D_arcade_8004BC50[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+    
+    for (i = 5; i < 20; i++)
+    {
+        func_global_asm_8070F2FC(&sp90, 0x15C, ((s32) ((i * 8) + 51.625 + 8.0) * 4.0));
+    }
+    for (i = 5; i != 20; i++)
+    {
+        func_global_asm_8070F2FC(&sp90, 0x25C, ((s32)((i * 8) + 51.625 + 8.0) * 4.0));
+    }
+
+    D_arcade_8004C719 = 8;
+    D_arcade_8004C71A = 0xA;
+    D_arcade_8004C6D4 = 0x492;
+    D_arcade_8004C6D0 = D_arcade_80034568;
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp90, (Sprite* ) &D_arcade_8004BB00[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    length = 21;
+    for (i = 0; i < length; i++) {
+        func_arcade_800274E0(&sp90, D_arcade_8004A7C8[i].unk0, D_arcade_8004A7C8[i].unk1, D_arcade_8004A7C8[i].unk2);
+    }
+    
+    for (i = 0; i < 6; i++) {
+        if ((arcade_game_state == 0) && (D_arcade_8004C724 == 5)) {
+            D_arcade_8004BC88[i][1] += D_arcade_8004BC88[i][2];
+            if (D_arcade_8004BC88[i][1] < 99.0f) {
+                D_arcade_8004BC88[i][1] += 144.0f;
+            }
+            if (D_arcade_8004BC88[i][1] > 243.0f) {
+                D_arcade_8004BC88[i][1] -= 144.0f;
+            }
+        }
+        
+        for (j = 0; j < 2; j++) {
+            func_global_asm_8070F2FC(&sp90, ((D_arcade_8004BC88[i][0] + 40.0f + (j * 8)) * 4.0f), (((D_arcade_8004BC88[i][1] * 0.875) + 8.0) * 4.0));
+        }
+    }
+    
+    func_arcade_800263EC(&sp90);
+    *arg0 = sp90;
+}
+
+
 //arcade_50m_draw
 void func_arcade_80027A38(Gfx **arg0) {
-    int i, j;
-    Gfx *sp6C;
+    s32 i;
+    s32 j;
+    Gfx* sp6C = *arg0;
 
-    sp6C = *arg0;
     D_arcade_8004C719 = 8;
-    D_arcade_8004C71A = 10;
-    D_arcade_8004C6D4 = 1170;
+    D_arcade_8004C71A = 0xA;
+    D_arcade_8004C6D4 = 0x492;
+    D_arcade_8004C6D0 = D_arcade_80032D50;
+    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
 
-    //50m solid beam
-    D_arcade_8004C6D0 = &D_arcade_80032D50;
-    guSprite2DInit(&D_arcade_8004BB00[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
-        D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
-    );
-    func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BB00[D_global_asm_807444FC]);
-    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
-    for (i = 0; i < 0x6; i++) {
-        func_global_asm_8070F2FC(&sp6C, 0x220 + 0x20*i, 0xe0);
+    func_global_asm_8070E8F0(&sp6C, (Sprite* ) &D_arcade_8004BB00[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    // Pauline girders
+    for (i = 17; i < 23; i++) {
+        func_global_asm_8070F2FC(&sp6C, i * 32, 0xE0);
     }
-    for (i = 0; i < 0x1C; i++) {
-        func_global_asm_8070F2FC(&sp6C, 0xC0 + 0x20*i, 0x380);
+
+    // Bottom of the level girders
+    for (i = 6; i < 34; i++) {
+        func_global_asm_8070F2FC(&sp6C, (i * 32), 0x380);
     }
+
+    // In between conveyers girders
     for (i = 1; i < 0x1B; i++) {
-        if (i != 6 && i != 7 && i != 0x13 && i != 0x14) {
-            func_global_asm_8070F2FC(&sp6C, 0xC0 + 0x20*i, 0x268);
+        if ((i != 6) && (i != 7) && (i != 0x13) && (i != 0x14)) {
+            func_global_asm_8070F2FC(&sp6C, 0xC0 + (i * 32), 0x268);
         }
     }
 
-    //50m conveyer belt
-    D_arcade_8004C6D0 = &D_arcade_80032CA8;
-    guSprite2DInit(&D_arcade_8004BC20[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
-        D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
-    );
-    func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BC20[D_global_asm_807444FC]);
-    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
-    for (i = 0; i < 0x1A; i++) {
-        func_global_asm_8070F2FC(&sp6C, 0xE0 + 0x20*i, 0x150);
+    D_arcade_8004C6D0 = D_arcade_80032CA8;
+    guSprite2DInit(&D_arcade_8004BC20[D_global_asm_807444FC], D_arcade_8004C6D0, 0, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp6C, (Sprite* ) &D_arcade_8004BC20[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    // DK conveyer
+    for (i = 7; i < 33; i++) {
+        func_global_asm_8070F2FC(&sp6C, (i * 32), 0x150);
     }
+
+    // Oil barrel conveyer
     for (i = 0; i < 0x1C; i++) {
-        if (i < 0xC || i >= 0x10) {
-            func_global_asm_8070F2FC(&sp6C, 0xC0 + 0x20*i, 0x1DC);
+        if ((i < 0xC) || (i >= 0x10)) {
+            func_global_asm_8070F2FC(&sp6C, 0xC0 + (i * 32), 0x1DC);
         }
-    }
-    for (i = 0; i < 0x1A; i++) {
-        func_global_asm_8070F2FC(&sp6C, 0xE0 + 0x20*i, 0x2f4);
     }
 
-    //50m background grate
-    D_arcade_8004C6D0 = &D_arcade_800342B8;
-    guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, 0, 
-        D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0
-    );
-    func_global_asm_8070E8F0(&sp6C, &D_arcade_8004BC50[D_global_asm_807444FC]);
-    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
-    for (i = 0; i < 4; i++) {
+    // Pie conveyer
+    for (i = 7; i < 33; i++) {
+        func_global_asm_8070F2FC(&sp6C, (i * 32), 0x2F4);
+    }
+
+    D_arcade_8004C6D0 = D_arcade_800342B8;
+    guSprite2DInit(&D_arcade_8004BC50[D_global_asm_807444FC], D_arcade_8004C6D0, 0, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp6C, (Sprite* ) &D_arcade_8004BC50[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
+    // Grate
+    for (i = 18; i < 22; i++) {
         for (j = 0; j < 3; j++) {
-            func_global_asm_8070F2FC(&sp6C, 0x240 + 0x20*i, ((0x9f - 8*j)*0.875 + 8.0)*4.0);
+            func_global_asm_8070F2FC(&sp6C, i * 32, (((0x9F - (8 * j)) * 0.875) + 8.0) * 4.0);
         }
     }
+
     func_arcade_80026518(&sp6C);
     *arg0 = sp6C;
 }
-*/
 
 // death()?
 void func_arcade_80027E8C(void) {
@@ -26945,443 +27100,415 @@ s32 __arcade_abs_w(s32 arg0) {
     return -arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002B390.s")
-
-extern s32 D_arcade_8004A75C;
-
-/*
-// TODO: Doable, it compiles
 void func_arcade_8002B390(s32 arg0) {
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f2;
-    f32 temp_f4_2;
-    s32 temp_f4;
-    s32 temp_t7;
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 temp_v0_3;
-    s32 y;
-    s32 x;
-    u8 temp_t2;
-    u8 temp_v1;
-    u8 var_v0;
-    ArcadeStruct1 *temp_a1;
-    ArcadeStruct1 *temp_v1_2;
+    s32 object_index;
+    s32 unk10_truncated;
+    s32 i;
+    s32 j;
 
-    temp_a1 = &arcade_objects[arg0];
-    temp_f0 = temp_a1->unk10;
-    temp_v1 = temp_a1->unk19;
-    temp_t7 = temp_a1->unk1A & 2;
-    temp_f4 = temp_f0;
-    temp_a1->unk1A = (temp_t7 / 2) | temp_t7;
-    temp_a1->unk1B = 0;
-    if (temp_v1 == 2) {
+    arcade_objects[arg0].unk1A = (arcade_objects[arg0].unk1A & 2) | ((arcade_objects[arg0].unk1A & 2) / 2);
+    arcade_objects[arg0].unk1B = 0;
+    unk10_truncated = (s32)arcade_objects[arg0].unk10;
+    if (arcade_objects[arg0].unk19 == 2) {
         if (arcade_hammer_timer != 0) {
-            temp_v0 = temp_f4 & 3;
             if (arcade_hammer_timer & 8) {
-                temp_v0_2 = temp_f4 & 3;
-                switch (temp_v0_2) {
-                    case 0:
-                    case 2:
-                        temp_a1->sprite = &D_arcade_8003C178;
-                        return;
-                    case 1:
-                        temp_a1->sprite = &D_arcade_8003C608;
-                        return;
-                    case 3:
-                        temp_a1->sprite = &D_arcade_8003CA98;
-                        return;
+                switch (unk10_truncated & 3) {
+                case 0:
+                case 2:
+                    arcade_objects[arg0].sprite = D_arcade_8003C178;
+                    return;
+                case 1:
+                    arcade_objects[arg0].sprite = D_arcade_8003C608;
+                    return;
+                case 3:
+                    arcade_objects[arg0].sprite = D_arcade_8003CA98;
+                    return;
                 }
             } else {
-                switch (temp_v0) {
-                    case 0:
-                    case 2:
-                        temp_a1->sprite = &D_arcade_8003C3C0;
-                        return;
-                    case 1:
-                        temp_a1->sprite = &D_arcade_8003C850;
-                        return;
-                    case 3:
-                        temp_a1->sprite = &D_arcade_8003CCE0;
-                        return;
+                switch (unk10_truncated & 3) {
+                case 0:
+                case 2:
+                    arcade_objects[arg0].sprite = D_arcade_8003C3C0;
+                    return;
+                case 1:
+                    arcade_objects[arg0].sprite = D_arcade_8003C850;
+                    return;
+                case 3:
+                    arcade_objects[arg0].sprite = D_arcade_8003CCE0;
+                    return;
                 }
             }
         } else {
-            temp_v0_3 = temp_f4 & 3;
-            switch (temp_v0_3) {
-                case 0:
-                case 2:
-                    temp_a1->sprite = &D_arcade_8003B180;
-                    return;
-                case 1:
-                    temp_a1->sprite = &D_arcade_8003B3C8;
-                    return;
-                case 3:
-                    temp_a1->sprite = &D_arcade_8003B610;
-                    return;
+            switch (unk10_truncated & 3) {
+            case 0:
+            case 2:
+                arcade_objects[arg0].sprite = D_arcade_8003B180;
+                return;
+            case 1:
+                arcade_objects[arg0].sprite = D_arcade_8003B3C8;
+                return;
+            case 3:
+                arcade_objects[arg0].sprite = D_arcade_8003B610;
+                return;
             }
         }
     } else {
-        if (temp_v1 == 3) {
-            temp_a1->sprite = &D_arcade_8003CF28;
+        if (arcade_objects[arg0].unk19 == 3) {
+            arcade_objects[arg0].sprite = D_arcade_8003CF28;
             return;
         }
-        if (temp_v1 == 5) {
-            temp_f2 = temp_a1->y_position;
-            if (((D_arcade_8004C6E8 - temp_f2) < 1.0f) || (temp_f0_2 = temp_f2 - D_arcade_8004C6E4, (temp_f0_2 < 1.0f))) {
-                temp_a1->sprite = &D_arcade_8003BF30;
-            } else if (temp_f0_2 < 6.0f) {
-                temp_a1->sprite = &D_arcade_8003B858;
-            } else if (temp_f0_2 < 10.0f) {
-                temp_a1->sprite = &D_arcade_8003BCE8;
-            } else if (temp_f0_2 < 14.0f) {
-                temp_a1->sprite = &D_arcade_8003BAA0;
+        if (arcade_objects[arg0].unk19 == 5) {
+            if ((((f32) D_arcade_8004C6E8 - arcade_objects[arg0].y_position) < 1.0f) || ((arcade_objects[arg0].y_position - D_arcade_8004C6E4 < 1.0f))) {
+                arcade_objects[arg0].sprite = D_arcade_8003BF30;
+            } else if (arcade_objects[arg0].y_position - D_arcade_8004C6E4 < 6.0f) {
+                arcade_objects[arg0].sprite = D_arcade_8003B858;
+            } else if (arcade_objects[arg0].y_position - D_arcade_8004C6E4 < 10.0f) {
+                arcade_objects[arg0].sprite = D_arcade_8003BCE8;
+            } else if (arcade_objects[arg0].y_position - D_arcade_8004C6E4 < 14.0f) {
+                arcade_objects[arg0].sprite = D_arcade_8003BAA0;
             } else {
-                temp_a1->sprite = &D_arcade_8003B858;
+                arcade_objects[arg0].sprite = D_arcade_8003B858;
             }
-            temp_a1->unk1A = (u8)(temp_a1->unk10 / 4.5) & 1;
+            arcade_objects[arg0].unk1A = (s32) ((f64) arcade_objects[arg0].unk10 / 4.5) & 1;
             return;
         }
-        if (temp_v1 == 8) {
-            if (temp_f0 > 38.0f) {
+        if (arcade_objects[arg0].unk19 == 8) {
+            if (arcade_objects[arg0].unk10 > 38.0f) {
                 if (arcade_lives_internal == 0) {
-                    if (temp_f0 > 48.0f) {
-                        if (D_arcade_8004A75C < arcade_current_score) {
+                    if (arcade_objects[arg0].unk10 > 48.0f) {
+                        if (arcade_saved_high_scores[4] < arcade_current_score) {
                             func_arcade_80024B04();
                             return;
                         }
-                        if (D_arcade_8004A740 != 0) {
+                        else if (D_arcade_8004A740 != 0) {
                             func_arcade_80024C34();
                             return;
                         }
-                        func_arcade_80024D90();
-                        return;
+                        else {
+                            func_arcade_80024D90();
+                            return;
+                        }
                     }
-                    x = 0x6C;
-                    if (D_arcade_8004A764 == 0) {
+                    else if (D_arcade_8004A764 == 0) {
                         D_arcade_8004A764 = 1;
-                        do {
-                            y = 0xA6;
-loop_53:
-                            temp_v1_2 = &arcade_objects[func_arcade_800247F0()];
-                            temp_v1_2->x_position = D_arcade_8004A6B8.x_position;
-                            temp_v1_2->y_position = D_arcade_8004A6B8.y_position;
-                            temp_v1_2->y_velocity = D_arcade_8004A6B8.y_velocity;
-                            temp_v1_2->x_velocity = D_arcade_8004A6B8.x_velocity;
-                            temp_f4_2 = y;
-                            temp_v1_2->unk10 = D_arcade_8004A6B8.unk10;
-                            temp_v1_2->sprite = D_arcade_8004A6B8.sprite;
-                            y += 0x10;
-                            temp_v1_2->x_position = x;
-                            temp_v1_2->y_position = temp_f4_2;
-                            temp_v1_2->unk1C = D_arcade_8004A6B8.unk1C;
-                            temp_v1_2->object_type = D_arcade_8004A6B8.object_type;
-                            if (y != 0xC6) {
-                                goto loop_53;
+                        for (i = 0; i != 6; i++) {
+                            for (j = 0; j != 2; j++) {
+                                s32 object_index = func_arcade_800247F0();
+                                arcade_objects[object_index] = D_arcade_8004A6B8;
+                                arcade_objects[object_index].x_position = 0x6C + (i * 16);
+                                arcade_objects[object_index].y_position = 0xA6 + (j * 16);
                             }
-                            x += 0x10;
-                        } while (x != 0xCC);
+                        }
                     }
                 } else {
                     arcade_lives_internal -= 1;
                     func_arcade_800257D8();
                 }
             } else {
-                if (temp_f0 > 20.0f) {
-                    temp_a1->sprite = &D_arcade_8003D848;
+                if (arcade_objects[arg0].unk10 > 20.0f) {
+                    arcade_objects[arg0].sprite = D_arcade_8003D848;
                     return;
                 }
-                if (temp_f0 > 8.0f) {
+                if (arcade_objects[arg0].unk10 > 8.0f) {
                     arcade_game_state = 2;
-                    if (temp_f4 & 1) {
-                        temp_a1->sprite = &D_arcade_8003D3B8;
+                    if ((s32)arcade_objects[arg0].unk10 & 1) {
+                        arcade_objects[arg0].sprite = D_arcade_8003D3B8;
                     } else {
-                        temp_a1->sprite = &D_arcade_8003D600;
+                        arcade_objects[arg0].sprite = D_arcade_8003D600;
                     }
-                    temp_t2 = (u8)temp_a1->unk10 & 3;
-                    var_v0 = temp_t2;
-                    if (temp_t2 == 2) {
-                        temp_a1->unk1A = temp_a1->unk1A ^ 1;
-                        var_v0 = (u8)temp_a1->unk10 & 3;
+                    if (((s32)arcade_objects[arg0].unk10 & 3) == 2) {
+                        arcade_objects[arg0].unk1A ^= 1;
                     }
-                    if (var_v0 == 1) {
-                        temp_a1->unk1B = temp_a1->unk1B == 0;
+                    if (((s32)arcade_objects[arg0].unk10 & 3) == 1) {
+                        arcade_objects[arg0].unk1B = !arcade_objects[arg0].unk1B;
                     }
                 }
             }
         } else {
-            temp_a1->sprite = &D_arcade_8003D170;
+            arcade_objects[arg0].sprite = D_arcade_8003D170;
         }
     }
 }
-*/
-
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002B89C.s")
-#else
-extern s32 D_arcade_8004BC80;
-extern s32 D_arcade_8004BC84;
-extern s32 D_arcade_8004C700;
-
-extern s32  D_global_asm_80770DFC;
 
 void func_arcade_8002B89C(s32 arg0) {
-    f32 sp44;
+    union { f32 as_f32; s32 as_s32; } sp44;
     s32 sp40;
     s32 sp3C;
     s32 sp38;
-    ArcadeStruct1 *sp30 = arcade_objects + arg0;
-    s32 tmp_v0;
-    int i;
-    int pointIndx;
-    ArcadeStruct1 *stagePtr;
+    s32 unused;
+    
+    static s32 D_arcade_8004BC80;
+    static s32 D_arcade_8004BC84;
 
-    if (sp30->unk19 == 8 || arcade_game_state == 0) {
-        if (sp30->unk19 == 2) {
-            func_arcade_8002A390(sp30->x_position, sp30->y_position);
-            if (sp30->x_velocity < 0.0f) {
-                sp30->unk1A &= 1;
-            } else if (0.0f < sp30->x_velocity) {
-                sp30->unk1A |= 2;
+    if ((arcade_objects[arg0].unk19 == 8) || (arcade_game_state == 0)) {
+        if (arcade_objects[arg0].unk19 == 2) {
+            func_arcade_8002A390(arcade_objects[arg0].x_position, (s32) arcade_objects[arg0].y_position);
+
+            if (arcade_objects[arg0].x_velocity < 0.0f) {
+                arcade_objects[arg0].unk1A &= 1;
+            } else if (arcade_objects[arg0].x_velocity > 0.0f) {
+                arcade_objects[arg0].unk1A |= 2;
             }
-            if (( D_global_asm_807ECDE8->unk0 & 0x200 || D_global_asm_807ECDE8->unk2 < -0x14 )
-                && D_arcade_8004C6F0 < sp30->x_position
-            ) {
+            if (((D_global_asm_807ECDE8->unk0 & 0x200) || (D_global_asm_807ECDE8->unk2 < -0x14)) && (D_arcade_8004C6F0 < arcade_objects[arg0].x_position)) {
                 D_arcade_8004BC80 += 3;
-                sp30->x_velocity = -0.7f;
-                sp30->unk10 += 0.3;
-            } else if ((D_global_asm_807ECDE8->unk0 & 0x100 || D_global_asm_807ECDE8->unk2 >= 0x15)
-                    && D_arcade_8004C6F4 < sp30->x_position
-            ) {//L8002B9DC
+                arcade_objects[arg0].x_velocity = -0.7f;
+                arcade_objects[arg0].unk10 += 0.3;
+            } else if (((D_global_asm_807ECDE8->unk0 & 0x100) || (D_global_asm_807ECDE8->unk2 >= 0x15)) && (arcade_objects[arg0].x_position < (f32) D_arcade_8004C6F4)) {
                 D_arcade_8004BC80 += 3;
-                sp30->x_velocity = 0.7f;
-                sp30->unk10 += 0.3;
+                arcade_objects[arg0].x_velocity = 0.7f;
+                arcade_objects[arg0].unk10 += 0.3;
             } else {
-                 sp30->x_velocity = 0.0f;
-            }//L8002BA5C
-            if (newly_pressed_input[0] & (A_BUTTON | B_BUTTON | Z_TRIG) && !D_arcade_8004C710) {
-                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7fff, 0x3F, 1.0f, 0, 0);
-                sp30->unk10 = 0.0f;
-                sp30->y_velocity = -1.2f;
-                sp30->x_velocity *= 0.65;
-                sp30->unk1D = (s8) (u32) sp30->y_position;
-                sp30->unk19 = 3;
+                arcade_objects[arg0].x_velocity = 0.0f;
             }
-        }//L8002BB74
-        if (sp30->y_position < func_arcade_8002A390( sp30->x_velocity +  sp30->x_position,sp30->y_position) + 3) {
-            sp30->x_position += sp30->x_velocity;
-        } else {
-            sp30->x_velocity = 0.0f;
+            
+            if ((*newly_pressed_input & 0xE000) && (arcade_hammer_timer == 0)) {
+                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+                arcade_objects[arg0].unk10 = 0.0f;
+                arcade_objects[arg0].y_velocity = -1.2f;
+                arcade_objects[arg0].x_velocity *= 0.65;
+                arcade_objects[arg0].unk1D = arcade_objects[arg0].y_position;
+                arcade_objects[arg0].unk19 = 3;
+            }
         }
-        if (sp30->unk19 != 8 
-            && arcade_background_visual == 3
-            && ( (76.0f < sp30->x_position && sp30->x_position < 140.0f) || (140.0f < sp30->x_position && sp30->x_position < 164.0f))
-            && ( (sp30->y_position  < 116.0f && 239.0f < sp30->y_position) || (239.0f < sp30->y_position))
-        ) {
+        if (arcade_objects[arg0].y_position < (func_arcade_8002A390(arcade_objects[arg0].x_position + arcade_objects[arg0].x_velocity, arcade_objects[arg0].y_position) + 3)) {
+            arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+        } else {
+            arcade_objects[arg0].x_velocity = 0.0f;
+        }
+        
+        if ((arcade_objects[arg0].unk19 != 8)
+            && (arcade_background_visual == 3)
+            && ((((arcade_objects[arg0].x_position > 76.0f)) && (arcade_objects[arg0].x_position < 100.0f)) || ((arcade_objects[arg0].x_position > 140.0f) && (arcade_objects[arg0].x_position < 164.0f)))
+            && ((((arcade_objects[arg0].y_position < 116.0f)) && (arcade_objects[arg0].y_position > 90.0f)) || (arcade_objects[arg0].y_position > 239.0f)))
+        {
             func_arcade_80027E8C();
-        } else {////L8002BCC4
-            D_arcade_8004C700 = func_arcade_8002AF2C(sp30->x_position, sp30->y_position);
-            sp40 = func_arcade_8002A390(sp30->x_position, sp30->y_position);
-            D_arcade_8004C6FC = D_arcade_8004C6F8;
-            switch (sp30->unk19) {
-                case 2:// 8002BD64
-                    if (D_arcade_8004C6FC == 0)
-                        arcade_objects[arcade_jumpman_slot].unk0 += D_arcade_8004A308[0];
-                    if (D_arcade_8004C6FC == 1)
-                        arcade_objects[arcade_jumpman_slot].unk0 += D_arcade_8004A308[1];
-                    if (D_arcade_8004C6FC == 2)
-                        arcade_objects[arcade_jumpman_slot].unk0 += D_arcade_8004A308[2];
-                    if (D_arcade_8004C6FC == 3)
-                        arcade_objects[arcade_jumpman_slot].unk0 += D_arcade_8004A308[3];
-                    
-                    if (sp30->x_position <= D_arcade_8004C6F0 - 1)
-                        sp30->x_position = D_arcade_8004C6F0;
-                    if (D_arcade_8004C6F4 + 1 <= sp30->x_position)
-                        sp30->x_position = D_arcade_8004C6F4;
-                    
-                    if (D_arcade_8004C6EC < sp30->y_position
-                        && ((D_global_asm_807ECDE8->x_position & 0x800) | ((D_global_asm_807ECDE8->unk3 < 0x15) ^ 1))
-                        && D_global_asm_807ECDE8->unk2 < 0x29 && D_global_asm_807ECDE8->unk2 >= -0x28
-                        && !(D_global_asm_807ECDE8->x_position & 0x300)
-                        && !D_arcade_8004C710
-                    ) {
-                        sp30->unk19 = 5;
-                        sp30->x_velocity = 0.0f;
-                        sp30->y_position--; 
-                        sp30->x_position = D_arcade_8004C6E0;
-                    } else if (
-                        sp30->y_position < D_arcade_8004C6E8
-                        && D_arcade_8004C6EC <= sp30->y_position
-                        && !(D_global_asm_807ECDE8->x_position & 0x300)
-                        && D_global_asm_807ECDE8->unk2 < 0x29 && D_global_asm_807ECDE8->unk2 >= -0x28
-                        && ((D_global_asm_807ECDE8->x_position & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14))
-                        && !D_arcade_8004C710
-                    ) {
-                        sp30->unk19 = 5;
-                        sp30->x_velocity = 0.0f;
-                        sp30->y_position++;
-                        sp30->x_position = D_arcade_8004C6E0;
-                    } else if (sp40 - sp30->y_position < 2.0f) {
-                        sp30->y_position = sp40;
+            return;
+        }
+        
+        D_arcade_8004C700 = func_arcade_8002AF2C(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+        sp40 = func_arcade_8002A390(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+        D_arcade_8004C6FC = D_arcade_8004C6F8;
+        switch (arcade_objects[arg0].unk19) {
+        case 2:
+            for (sp3C = 0; sp3C < 4; sp3C++) {
+                if (D_arcade_8004C6F8 == sp3C) {
+                    arcade_objects[arcade_jumpman_slot].x_position += D_arcade_8004A308[sp3C];
+                }
+            }
+            
+            if (arcade_objects[arg0].x_position <= D_arcade_8004C6F0 - 1) {
+                arcade_objects[arg0].x_position = D_arcade_8004C6F0;
+            }
+            if ((D_arcade_8004C6F4 + 1) <= arcade_objects[arg0].x_position) {
+                arcade_objects[arg0].x_position = D_arcade_8004C6F4;
+            }
+
+            if ((D_arcade_8004C6EC < arcade_objects[arg0].y_position)
+                && (D_global_asm_807ECDE8->unk0 & 0x800) | ((D_global_asm_807ECDE8->unk3 >= 0x15))
+                && (D_global_asm_807ECDE8->unk2 < 0x29)
+                && (D_global_asm_807ECDE8->unk2 >= -0x28)
+                && !(D_global_asm_807ECDE8->unk0 & 0x300)
+                && (arcade_hammer_timer == 0))
+            {
+                arcade_objects[arg0].unk19 = 5;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_position -= 1.0f;
+                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+                break;
+            }
+            
+            if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8)
+                && (D_arcade_8004C6EC <= arcade_objects[arg0].y_position)
+                && !(D_global_asm_807ECDE8->unk0 & 0x300)
+                && ((D_global_asm_807ECDE8->unk2 < 0x29) && (D_global_asm_807ECDE8->unk2 >= -0x28))
+                && ((D_global_asm_807ECDE8->unk0 & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14))
+                && (arcade_hammer_timer == 0))
+            {
+                arcade_objects[arg0].unk19 = 5;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_position += 1.0f;
+                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+                break;
+            }
+            
+            if ((sp40 - arcade_objects[arg0].y_position) < 2.0f) {
+                arcade_objects[arg0].y_position = sp40;
+            } else {
+                arcade_objects[arg0].unk19 = 3;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_velocity = 0.0f;
+                arcade_objects[arg0].unk1D = arcade_objects[arg0].y_position;
+            }
+            break;
+        case 5:
+            if ((sp40 == arcade_objects[arg0].y_position) &&
+                (((((D_global_asm_807ECDE8->unk0 & 0x300) | ((D_global_asm_807ECDE8->unk2 >= 0x15)) | (D_global_asm_807ECDE8->unk2 < -0x14))))
+                    || ((D_arcade_8004C6F8 == 2) && (D_arcade_8004A308[2] != 0))
+                    || ((D_arcade_8004C6F8 == 1) && (D_arcade_8004A308[1] != 0))
+                    || ((D_arcade_8004C6F8 == 3) && (D_arcade_8004A308[3] != 0))))
+            {
+                arcade_objects[arg0].unk19 = 2;
+            } else if ((sp40 == arcade_objects[arg0].y_position) && (*newly_pressed_input & 0xE000)) {
+                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+                arcade_objects[arg0].unk10 = 0.0f;
+                arcade_objects[arg0].y_velocity = -1.2f;
+                arcade_objects[arg0].x_velocity *= 0.65;
+                arcade_objects[arg0].unk19 = 3;
+                arcade_objects[arg0].unk1D = arcade_objects[arg0].y_position;
+            } else if (arcade_objects[arg0].y_position < D_arcade_8004C6EC) {
+                arcade_objects[arg0].y_position += 0.2;
+                if ((D_arcade_8004C6EC - arcade_objects[arg0].y_position) > 10.0f) {
+                    arcade_objects[arg0].y_position = (D_arcade_8004C6EC - 0xA);
+                }
+                if (D_arcade_8004C6EC < arcade_objects[arg0].y_position) {
+                    arcade_objects[arg0].y_position = D_arcade_8004C6EC;
+                }
+            } else {
+                if ((D_arcade_8004C6EC < arcade_objects[arg0].y_position) && (((D_global_asm_807ECDE8->unk0 & 0x800) | (D_global_asm_807ECDE8->unk3 >= 0x15)))) {
+                    arcade_objects[arg0].y_velocity = -0.5f;
+                    D_arcade_8004BC80 += 2;
+                } else
+                {
+                    if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8) && (((D_global_asm_807ECDE8->unk0 & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14)))) {
+                        arcade_objects[arg0].y_velocity = 0.5f;
+                        D_arcade_8004BC80 += 2;
                     } else {
-                        sp30->unk19 = 3;
-                        sp30->x_velocity = 0.0f;
-                        sp30->y_velocity = 0.0f;
-                        sp30->unk1D = (s8) (u32) sp30->y_position;
+                        arcade_objects[arg0].y_velocity = 0.0f;
                     }
-                    sp3C = 4;
-                    break;
-                case 5:// 8002C0FC
-                    if (sp40 == sp30->y_position
-                        && ( ( (D_global_asm_807ECDE8->x_position & 0x300) | (D_global_asm_807ECDE8->unk2 < 0x15)^1 | (D_global_asm_807ECDE8->unk2 < -0x14))
-                             || (D_arcade_8004C6FC == 2 && D_arcade_8004A308[2])
-                             || (D_arcade_8004C6FC == 1 && D_arcade_8004A308[1])
-                             || (D_arcade_8004C6FC == 3 && D_arcade_8004A308[3])
-                        )
-                    ) {
-                       sp30->unk19 = 2;
-                    } else if (
-                        sp40 == sp30->y_position 
-                        && newly_pressed_input[0] & (A_BUTTON | B_BUTTON | Z_TRIG)
-                    ) {//L8002C198
-                        func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7fff, 0x3f, 1.0f, 0, NULL);
-                        sp30->unk10 = 0.0f;
-                        sp30->y_velocity = -1.2f;
-                        sp30->x_velocity *= 0.65; 
-                        sp30->unk19 = 3;
-                        sp30->unk1D = (s8) (u32) sp30->y_position;
-                    } else {//L8002C2AC
-                        //TODO: FINISH THIS
-                    }
-                    break;
-                case 3:// 8002C420
-                    if (D_arcade_8004C6F4 < sp30->x_position) {
-                        sp30->x_position = D_arcade_8004C6F4;
-                        if (sp30->y_velocity < 1.8) {
-                            sp30->unk1A &= 1;
-                            sp30->x_velocity = -sp30->x_velocity;
-                            sp30->y_velocity = -sp30->y_velocity;
-                        }
-                    } else { //L8002C490
-                        if (sp30->x_position < D_arcade_8004C6F0) {
-                            sp30->x_position = D_arcade_8004C6F0;
-                            if (sp30->y_velocity < 1.8) {
-                                sp30->unk1A |= 2;
-                                sp30->x_velocity = -sp30->x_velocity;
-                                sp30->y_velocity = -sp30->y_velocity;
+                }
+
+                arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+                arcade_objects[arg0].unk10 += arcade_objects[arg0].y_velocity;
+            }
+            break;
+        case 3:
+            if (arcade_objects[arg0].x_position > D_arcade_8004C6F4) {
+                arcade_objects[arg0].x_position = D_arcade_8004C6F4;
+                if (arcade_objects[arg0].y_velocity < 1.8) {
+                    arcade_objects[arg0].unk1A &= 1;
+                    arcade_objects[arg0].x_velocity = -arcade_objects[arg0].x_velocity;
+                    arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity;
+                }
+            } else if (arcade_objects[arg0].x_position < D_arcade_8004C6F0) {
+                arcade_objects[arg0].x_position = D_arcade_8004C6F0;
+                if (arcade_objects[arg0].y_velocity < 1.8) {
+                    arcade_objects[arg0].unk1A |= 2;
+                    arcade_objects[arg0].x_velocity = -arcade_objects[arg0].x_velocity;
+                    arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity;
+                }
+            }
+            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+            arcade_objects[arg0].y_velocity += 0.06;
+            
+            if ((arcade_objects[arg0].y_velocity >= 0.0f) && (arcade_objects[arg0].y_velocity < 0.06)) {
+                sp38 = 0;
+                for (sp3C = 0; sp3C < 0x50; sp3C++)
+                {
+                    if ((arcade_objects[sp3C].object_type == 1) || (arcade_objects[sp3C].object_type == 2)) {
+                        if (__arcade_abs_w(arcade_objects[sp3C].x_position - arcade_objects[arg0].x_position) < 0xD) {
+                            if (((arcade_objects[sp3C].y_position - arcade_objects[arg0].y_position) < 24.0f) && (arcade_objects[arg0].y_position < arcade_objects[sp3C].y_position)) {
+                                ++sp38;
                             }
                         }
-                    }//L8002C4F8
-                    sp30->y_position += sp30->y_velocity;
-                    sp30->y_velocity += 0.06;
-                    if (0.0f <= sp30->y_velocity && sp30->y_velocity < 0.06) {
-                        sp38 = 0;
-                        for (i = 0; i < 0x50; i++) {
-                            if (arcade_objects[i].unk18 == 1 || arcade_objects[i].unk18 == 2) {
-                                if (__arcade_abs_w(arcade_objects[i].unk0) < 0xD
-                                    && arcade_objects[i].unk0 - sp30->x_position < 24.0f
-                                    && sp30->x_position < arcade_objects[i].unk0
-                                ) {
-                                    sp38++;
-                                }
-                            }//L8002C5EC
-                        }
-                        if (sp38) {
-                            pointIndx = func_arcade_800247F0();
-                           arcade_objects[pointIndx] = arcade_points_text_obj_template;
-                           arcade_objects[pointIndx].unk0 = sp30->x_position;
-                           arcade_objects[pointIndx].unk4 = sp30->y_position;
-                           if (sp38 == 1) {
-                               arcade_add_points_to_score(100);
-                           } else if (sp38 == 2) {
-                               arcade_objects[pointIndx].unk14 = &D_arcade_800383B8;
-                               arcade_add_points_to_score(300);
-                           } else if (sp38 == 3) {
-                               arcade_objects[pointIndx].unk14 = &D_arcade_800385C0;
-                               arcade_add_points_to_score(500);
-                           }
-                        }
-                    }//L8002C70C
-                    if (15.0f < sp30->y_position - sp30->unk1D) {
-                        func_global_asm_80737638(D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7fff, 0x3f, 1.0f, 0, NULL);
-                        sp30->unk1D = 0xff;
                     }
-                    if (2.5 < sp30->y_velocity) {
-                        sp30->y_velocity = 2.5f;
+                }
+                if (sp38 != 0) {
+                    sp3C = func_arcade_800247F0();
+                    arcade_objects[sp3C] = arcade_points_text_obj_template;
+                    arcade_objects[sp3C].x_position = arcade_objects[arg0].x_position;
+                    arcade_objects[sp3C].y_position = arcade_objects[arg0].y_position + 9.0f;
+                    if (sp38 == 1) {
+                        arcade_add_points_to_score(100);
+                    } else if (sp38 == 2) {
+                        arcade_objects[sp3C].sprite = D_arcade_800383B8;
+                        arcade_add_points_to_score(300);
+                    } else {
+                        arcade_objects[sp3C].sprite = D_arcade_800385C0;
+                        arcade_add_points_to_score(500);
                     }
-                    if (sp40 < sp30->y_position && sp30->y_position - sp40 < 3.0f) {
-                        sp30->y_position = sp40;
-                        if (sp30->unk1D  == 0xff) {
-                            func_arcade_80027E8C();
-                        } else {
-                            sp30->unk19 = 4;
-                            sp30->y_velocity = 0.0f;
-                            sp30->x_velocity = 0.0f;
-                            sp30->unk10 = 4.0f;
-                        }
-                    }//L8002C850
-                    break;
-                case 4:// 8002C858
-                    if (0.0f == sp30->unk10) {
-                        sp30->unk19 = 2;
-                    }
-                    break;
-                case 8:// 8002C898
-                    sp30->unk10 += 0.125;
-                    if (8.0f == sp30->unk10) {
-                        func_global_asm_80737638(D_global_asm_8076D1F8, SFX_54_ARCADE_JUMPMAN_DEATH, 0x7fff, 0x3f, 1.0, 0, NULL);
-                    }
-                    break;
-            }// 8002C908
-            if (!(D_arcade_8004BC80 < 0x24)) {
-                D_arcade_8004BC80 = 0;
-                tmp_v0 = D_arcade_8004BC84;
-                tmp_v0++;
-                if (tmp_v0 == 7)
-                    tmp_v0 = 0;
-                if (tmp_v0 & 1) {
-                    sp44 = 1.0f; 
+                }
+            }
+            
+            if ((arcade_objects[arg0].y_position - arcade_objects[arg0].unk1D) > 15.0f) {
+                func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+                arcade_objects[arg0].unk1D = 0xFF;
+            }
+            if (arcade_objects[arg0].y_velocity > 2.5) {
+                arcade_objects[arg0].y_velocity = 2.5f;
+            }
+            if ((sp40 < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - sp40) < 3.0f)) {
+                arcade_objects[arg0].y_position = sp40;
+                if (arcade_objects[arg0].unk1D == 0xFF) {
+                    func_arcade_80027E8C();
                 } else {
-                    sp44 = 0.7071120143f;
+                    arcade_objects[arg0].unk19 = 4;
+                    arcade_objects[arg0].y_velocity = 0.0f;
+                    arcade_objects[arg0].x_velocity = 0.0f;
+                    arcade_objects[arg0].unk10 = 4.0f;
                 }
-                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_40_ARCADE_JUMPMAN_MOVING, 0x7fff, 0x3f, 1.0f, 0, &D_global_asm_80770DFC);
-                func_global_asm_80737AC4(D_global_asm_80770DFC, 0x10, sp44);
-            }//L8002C9C0
-            sp40 = func_arcade_8002A390(sp30->x_position, sp30->y_position);
-            sp30->unk1C = D_arcade_8004C6F8;
-            D_arcade_8004C704 = sp30->y_position - D_arcade_8004C6E4;
-            if (D_arcade_8004C71E < 0 && sp30->unk19 != 8) {
-                func_arcade_80027E8C();
             }
-            if (D_arcade_8004C6F8 == 0 && sp40 == sp30->y_position) {
-                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_4C_ARCADE_PAULINE_SAVED_STAGE, 0x7fff, 0x3f, 1.0f, 0, NULL);
-                func_arcade_800252A4(0);
-                if (arcade_background_visual == 1) {
-                    stagePtr = func_arcade_80024860(ARCADE_OBJ_16_DK_25M);
-                } else if (arcade_background_visual == 3) {
-                    stagePtr = func_arcade_80024860(ARCADE_OBJ_18_DK_75M);
-                } else if (arcade_background_visual == 4) {
-                    stagePtr = func_arcade_80024860(ARCADE_OBJ_19_DK_50M);
-                }
-                //L8002CB6C
-                stagePtr->unk19 = 5;
-                if (arcade_background_visual != 4) {
-                    stagePtr->unk18 = ARCADE_OBJ_18_DK_75M;
-                }
-                stagePtr->unk10 = 0.0f;
-                arcade_game_state = 3;
-                sp30->unk14 = &D_arcade_8003B180;
-                sp30->unk1A = 0;
-
-            } else {//L8002CBB4
-                if (sp30->unk19)
-                    func_arcade_8002B390(arg0);
+            break;
+        case 4:
+            arcade_objects[arg0].y_position = sp40;
+            arcade_objects[arg0].unk10 -= 1.0f;
+            if (arcade_objects[arg0].unk10 == 0.0f) {
+                arcade_objects[arg0].unk19 = 2;
             }
+            break;
+        case 8:
+            arcade_objects[arg0].unk10 += 0.125;
+            if (arcade_objects[arg0].unk10 == 8.0f) {
+                func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_54_ARCADE_JUMPMAN_DEATH, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+            }
+            break;
         }
-    }//L8002CBC8
+        
+        if (D_arcade_8004BC80 >= 0x24) {
+            D_arcade_8004BC80 = 0;
+            ++D_arcade_8004BC84;
+            if (D_arcade_8004BC84 == 7) {
+                D_arcade_8004BC84 = 0;
+            }
+            sp44.as_f32 = (D_arcade_8004BC84 & 1) ? 1.0f : 0.7071120143f;
+            func_global_asm_80737638(D_global_asm_8076D1F8, SFX_40_ARCADE_JUMPMAN_MOVING, 0x7FFFU, 0x3FU, 1.0f, 0U, &D_global_asm_80770DFC);
+            func_global_asm_80737AC4(D_global_asm_80770DFC, 0x10, sp44.as_s32);
+        }
+        
+        sp40 = func_arcade_8002A390(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+        arcade_objects[arg0].unk1C = D_arcade_8004C6F8;
+        D_arcade_8004C704 = arcade_objects[arg0].y_position - D_arcade_8004C6E4;
+        if ((arcade_bonus_timer < 0) && (arcade_objects[arg0].unk19 != 8)) {
+            func_arcade_80027E8C();
+        }
+        if ((D_arcade_8004C6F8 == 0) && (sp40 == arcade_objects[arg0].y_position)) {
+            func_global_asm_80737638(D_global_asm_8076D1F8, SFX_4C_ARCADE_PAULINE_SAVED_STAGE, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+            arcade_play_sfx(SFX_0_SILENCE);
+            
+            if (arcade_background_visual == 1) {
+                sp3C = arcade_get_first_object_of_type(ARCADE_OBJ_16_DK_25M);
+            }
+            else if (arcade_background_visual == 3) {
+                sp3C = arcade_get_first_object_of_type(ARCADE_OBJ_18_DK_75M);
+            }
+            else if (arcade_background_visual == 4) {
+                sp3C = arcade_get_first_object_of_type(ARCADE_OBJ_19_DK_50M);
+            }
+            
+            arcade_objects[sp3C].unk19 = 5;
+            if (arcade_background_visual != 4) {
+                arcade_objects[sp3C].object_type = 0x16;
+            }
+
+            arcade_objects[sp3C].unk10 = 0.0f;
+            arcade_game_state = 3;
+            arcade_objects[arg0].sprite = D_arcade_8003B180;
+            arcade_objects[arg0].unk1A = 0;
+        }
+        else if (arcade_objects[arg0].unk19 != 0) {
+            func_arcade_8002B390(arg0);
+        }
+    }
 }
-#endif
 
 //arcade_barrel_update_sprite
 void func_arcade_8002CBD8(s32 arg0) {
@@ -27446,153 +27573,266 @@ void func_arcade_8002CBD8(s32 arg0) {
     }
 }
 
-
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002CD64.s")
-
-/*
 void func_arcade_8002CD64(s32 arg0) {
-    s32 sp3C;
-    s32 sp34;
-    f32 sp30;
-    ArcadeStruct1 *this;
-    f32 tmp_f12;
-    s32 flame_indx;
-
-    if (arcade_game_state != 0)
+    s32 y_value;
+    f32 very_important_one;
+    
+    if (arcade_game_state != 0) {
         return;
-
-    this = &arcade_objects[arg0];
-    if (this->unk19 == 0 || this->unk19 == 1) {
+    }
+    
+    if ((arcade_objects[arg0].unk19 == 0) || (arcade_objects[arg0].unk19 == 1)) {
         func_arcade_8002CBD8(arg0);
-    } else {
-        this->x_position += this->x_velocity;
-        sp3C = func_arcade_8002A390(this->x_position, this->y_position);
-        func_arcade_8002AF2C(this->x_position, this->y_position);
-        switch (this->unk19) {
-            case 2: //L8002CE70
-                this->x_velocity = (f32)(1 - (this->unk1A << 1));
-                this->unk10 += 0.2;
-                if ((this->y_position < D_arcade_8004C6E8)
-                    && ( D_arcade_8004C6F8 + 1 < D_arcade_8004C6FC
-                        || (D_arcade_8004C6FC == this->unk1C && D_arcade_8004C704 < 0x12)
-                        || (arcade_objects[0].unk19 != 5))
-                ) {
-                    if (this->unk1C & 0x80)
-                        break;
+        return;
+    }
 
-                    this->unk1C &= 0xF;
-                    if (this->unk1C > 0) {
-                        this->unk1C--;
-                        this->unk19 = 5;
-                        this->y_position += 1.0f;
-                        this->y_velocity = 1.0f;
-                        this->x_velocity = 0.0f;
-                        this->x_position = D_arcade_8004C6E0;
-                    } else {
-                        this->unk1C |= 0x80;
-                    }
-                } else {//L8002CFDC
-                    if (!(this->unk1C & 0x47)) {
-                        this->unk1C = 0x40 | (4096.0f + func_arcade_800246C8((f32)D_arcade_8004A76C, 5.0f) * 1512.0f > (f32)arcade_cycle_rng()) ? TRUE : FALSE;
-                    }//L8002D074
-                    if ((f32)sp3C - this->y_position < 3.0f) {
-                        this->y_position = sp3C;
-                    } else {
-                        this->unk19 = 3;
-                        this->y_velocity = 0.0f;
-                        this->x_velocity /= 2;
-                    }
-                }
+    arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+    y_value = func_arcade_8002A390(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+    func_arcade_8002AF2C(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+    switch (arcade_objects[arg0].unk19) {
+    case 2:
+        arcade_objects[arg0].unk10 += 0.2;
+        arcade_objects[arg0].x_velocity = (1 - (2 * arcade_objects[arg0].unk1A));
+        if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8)
+            && ((D_arcade_8004C6F8 + 1 < D_arcade_8004C6FC)
+                || ((D_arcade_8004C6FC == D_arcade_8004C6F8 + 1) && ((D_arcade_8004C704 >= 0x12) || (arcade_objects[arcade_jumpman_slot].unk19 != 5)))))
+        {
+            if ((arcade_objects[arg0].unk1C & 0x80) != 0) 
+            {
                 break;
-            case 3: //L8002D0FC
-                this->unk10 += 0.2;
-                this->y_position += this->y_velocity;
-                this->y_velocity += 0.06;
-                if (sp3C < this->y_position
-                    && this->y_position - sp3C < 3.0f
-                ) {
-                    this->y_position = sp3C;
-                    this->y_velocity = -this->y_velocity / 3.0f;
-                    if (-0.2 < this->y_velocity)
-                        this->unk19 = 2;
-                }//L8002D1C8
-                break;
-            case 5: //L8002D1E4
-                this->unk10 += 0.3;
-                this->y_position += this->y_velocity;
-                if (D_arcade_8004C6E8 < this->y_position) {
-                    this->unk1A = (1 - this->unk1A);
-                    this->unk19 = 2;
-                    this->y_position = sp3C;
-                    this->x_velocity = 1 - 2 * this->unk1A;
-                }//L8002D28C
-                break;
-            case 7: //L8002D2A8
-                this->unk10 += 0.3;
-                this->y_position += this->y_velocity;
-                this->y_velocity += 0.06;
-                tmp_f12 = func_arcade_8002A390(this->x_position, this->y_position);
-                if (tmp_f12 < this->y_position
-                    && this->y_position - tmp_f12 < 8.0f
-                    && this->unk1C < D_arcade_8004C6F8
-                ) {
-                    this->y_velocity = 0.0f;
-                    if (this->unk1D == 2) {
-                        sp34 = arcade_cycle_rng();
-                        this->x_velocity = ((f64)func_arcade_800246C8(3.0f, D_arcade_8004A76C) * (sp34 - 0)) / 40000.0 + (-this->x_velocity) * 0.2;
-                    }//L8002D414
-                    if (230.0f < this->y_position) {
-                        this->unk19 = 3;
-                        this->unk1A = 1;
-                        this->x_velocity = -1.0f;
-                        this->y_velocity = -0.7f;
-                    }
-                }//L8002D454
-                break;
-        }//L8002D47C
-        if (!(arcade_objects[arcade_jumpman_slot].unk1C < D_arcade_8004C6F8)
-            || this->unk1D
-        ) {
-            if (270.0f < this->x_position) {
-                this->unk1A = 1;
-                this->x_velocity = (1 - ((s8)this->unk1A) << 1);
-            } else if (this->x_position < 50.0f) {
-                this->unk1A = 0;
-                this->x_velocity = (1 - ((s8)this->unk1A) << 1);
             }
-        }//L8002D504
-        if ((278.0f < this->x_position) || (this->x_position < 2.0f)) {
-            this->unk18 = 0;
-        }//L8002D548
-        if ((242.0f < this->y_position) & (this->x_position < 74.0f)) {
-            if (this->unk1D) {
-                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7fff, 0x3f, arcade_objects[arcade_jumpman_slot].x_position, 0, NULL);
-                flame_indx = func_arcade_80024860(ARCADE_OBJ_13_OIL_DRUM_FLAMES);
-                if (flame_indx < 0) {
-                    flame_indx = func_arcade_800246EC();
-                    arcade_objects[flame_indx] = arcade_oil_drum_flame_obj_template;
-                }
-                arcade_objects[flame_indx].unk19 = 3;
-                this->unk18 = 0;
-            }//L8002D668
-            else {
-                this->unk18 = 0;
+
+            arcade_objects[arg0].unk1C &= 0xF;
+            if (arcade_objects[arg0].unk1C > 0) {
+                arcade_objects[arg0].unk1C -= 1;
+                arcade_objects[arg0].unk19 = 5;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_velocity = 1.0f;
+                arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+                break;
             }
-        }//L8002D674
-        if (this->x_position - arcade_objects[arcade_jumpman_slot].x_position < 8.0f
-            && arcade_objects[arcade_jumpman_slot].x_position - this->x_position < 8.0f
-            && this->y_position - arcade_objects[arcade_jumpman_slot].y_position < 3.0f
-            && arcade_objects[arcade_jumpman_slot].y_position - this->y_position < 3.0f
-        ) {
+            
+            arcade_objects[arg0].unk1C |= 0x80;
+        }
+        else if (!(arcade_objects[arg0].unk1C & 0x47)) {
+            arcade_objects[arg0].unk1C = ((4096.0f + (func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 1512.0f)) > arcade_cycle_rng()) | 0x40;
+        }
+        if ((y_value - arcade_objects[arg0].y_position) < 3.0f) {
+            arcade_objects[arg0].y_position = y_value;
+        } else {
+            arcade_objects[arg0].y_velocity = 0.0f;
+            arcade_objects[arg0].x_velocity /= 2;
+            arcade_objects[arg0].unk19 = 3;
+        }
+        break;
+    case 3:
+        arcade_objects[arg0].unk10 += 0.2;
+        arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+        arcade_objects[arg0].y_velocity += 0.06;
+        if ((arcade_objects[arg0].y_position > y_value) && ((arcade_objects[arg0].y_position - y_value) < 3.0f)) {
+            arcade_objects[arg0].y_position = y_value;
+            arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity / 3.0f;
+            if ((f64) arcade_objects[arg0].y_velocity > -0.2) {
+                arcade_objects[arg0].unk19 = 2;
+            }
+        }
+        break;
+    case 5:
+        arcade_objects[arg0].unk10 += 0.3;
+        arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+        if (arcade_objects[arg0].y_position > (D_arcade_8004C6E8 - 1)) {
+            arcade_objects[arg0].y_position = y_value;
+            arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
+            arcade_objects[arg0].x_velocity = (1 - (arcade_objects[arg0].unk1A * 2));
+            arcade_objects[arg0].unk19 = 2;
+
+        }
+        break;
+    case 7:
+        arcade_objects[arg0].unk10 += 0.3;
+        arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+        arcade_objects[arg0].y_velocity += 0.06;
+        very_important_one = func_arcade_8002A390((s32) arcade_objects[arg0].x_position, (s32) arcade_objects[arg0].y_position);
+        if ((very_important_one < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - very_important_one) < 8.0f) && (arcade_objects[arg0].unk1C < D_arcade_8004C6F8)) {
+            arcade_objects[arg0].unk1C = (u8) D_arcade_8004C6F8;
+            arcade_objects[arg0].y_position = very_important_one;
+            arcade_objects[arg0].y_velocity = 0.0f;
+            if (arcade_objects[arg0].unk1D != 2) {
+                arcade_objects[arg0].x_velocity = (-arcade_objects[arg0].x_velocity * 0.2) + ((arcade_cycle_rng() - 16384.0) * (func_arcade_800246C8(3.0f, D_arcade_8004A76C)) / 40000.0);
+            }
+            if (arcade_objects[arg0].y_position > 230.0f) {
+                arcade_objects[arg0].unk19 = 3;
+                arcade_objects[arg0].unk1A = 1;
+                arcade_objects[arg0].x_velocity = -1.0f;
+                arcade_objects[arg0].y_velocity = -0.7f;
+            }
+        }
+        break;
+    }
+
+    if ((arcade_objects[arcade_jumpman_slot].unk1C >= D_arcade_8004C6F8) || (arcade_objects[arg0].unk1D != 0)) {
+        if (arcade_objects[arg0].x_position > 270.0f) {
+            arcade_objects[arg0].unk1A = 1;
+            arcade_objects[arg0].x_velocity = (1 - (arcade_objects[arg0].unk1A * 2));
+        } else if (arcade_objects[arg0].x_position < 50.0f) {
+            arcade_objects[arg0].unk1A = 0;
+            arcade_objects[arg0].x_velocity = (1 - (arcade_objects[arg0].unk1A * 2));
+        }
+    }
+    
+    if ((arcade_objects[arg0].x_position > 278.0f) || (arcade_objects[arg0].x_position < 2.0f)) {
+        arcade_objects[arg0].object_type = 0;
+    }
+
+    very_important_one = 1.0f;
+    if ((arcade_objects[arg0].y_position > 242.0f) & (arcade_objects[arg0].x_position < 74.0f)) {
+        if (arcade_objects[arg0].unk1D != 0) {
+            func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, very_important_one, 0U, NULL);
+            y_value = arcade_get_first_object_of_type(ARCADE_OBJ_13_OIL_DRUM_FLAMES);
+            if (y_value < 0) {
+                y_value = arcade_get_first_empty_slot();
+                arcade_objects[y_value] = arcade_oil_drum_flame_obj_template;
+            }
+            arcade_objects[y_value].unk19 = 3;
+            arcade_objects[arg0].object_type = 0;
+        } else {
+            arcade_objects[arg0].object_type = 0;
+        }
+    }
+
+    if (((arcade_objects[arg0].x_position - arcade_objects[arcade_jumpman_slot].x_position) < 8.0f) && ((arcade_objects[arcade_jumpman_slot].x_position - arcade_objects[arg0].x_position) < 8.0f)) {
+        if (((arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position) < 3.0f) && ((arcade_objects[arcade_jumpman_slot].y_position - arcade_objects[arg0].y_position) < 8.0f)) {
             func_arcade_80027E8C();
         }
-        func_arcade_8002CBD8(arg0);
+    }
+    func_arcade_8002CBD8(arg0);
+}
+
+void func_arcade_8002D6FC(s32 arg0) {
+    s32 sp2C;
+    s32 temp_a0;
+
+    if (arcade_game_state == 0) {
+        arcade_objects[arg0].unk10 = (arcade_objects[arg0].unk10 + 0.15);
+
+        if (arcade_objects[arg0].unk10 >= 5.0f) {
+            arcade_objects[arg0].unk10 -= 5.0f;
+        }
+        if (arcade_background_visual == 2) {
+            if (arcade_hammer_timer != 0) {
+                if (((s32) D_arcade_8004C6DC / 4) & 1) {
+                    arcade_objects[arg0].sprite = D_arcade_80036810;
+                } else {
+                    arcade_objects[arg0].sprite = D_arcade_80036A58;
+                }
+            } else if (((s32) D_arcade_8004C6DC / 4) & 1) {
+                arcade_objects[arg0].sprite = D_arcade_80036380;
+            } else {
+                arcade_objects[arg0].sprite = D_arcade_800365C8;
+            }
+        } else if (arcade_hammer_timer != 0) {
+            if (((s32) D_arcade_8004C6DC / 4) & 1) {
+                arcade_objects[arg0].sprite = D_arcade_80036CA0;
+            } else {
+                arcade_objects[arg0].sprite = D_arcade_80036EE8;
+            }
+        } else if (((s32) D_arcade_8004C6DC / 4) & 1) {
+            arcade_objects[arg0].sprite = D_arcade_80035EF0;
+        } else {
+            arcade_objects[arg0].sprite = D_arcade_80036138;
+        }
+
+        sp2C = func_arcade_8002A390(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+        func_arcade_8002AF2C(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
+
+        switch (arcade_objects[arg0].unk19) {
+        case 2:
+            if (arcade_cycle_rng() < ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 60.0f) + 256.0f)) {
+                temp_a0 = (arcade_objects[arg0].x_position < arcade_objects[arcade_jumpman_slot].x_position);
+                temp_a0 += (((arcade_objects[arcade_jumpman_slot].unk1A & 2) * 3) / 2);
+                arcade_objects[arg0].unk1A = (((arcade_cycle_rng() + (temp_a0 * 0xFB8)) - 0x1F70) >= 0x4001);
+            }
+            if ((func_arcade_8002A390((arcade_objects[arg0].x_position + (arcade_objects[arg0].x_velocity * 8.0f)), arcade_objects[arg0].y_position) - arcade_objects[arg0].y_position) > 5.0f) {
+                arcade_objects[arg0].unk1A = !arcade_objects[arg0].unk1A;
+            } else {
+                arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+            }
+
+
+            arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5) * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 15.0) + 1.0);
+
+            temp_a0 = ((arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position) * func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 3.0f);
+            if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8) && (arcade_cycle_rng() < (0x400 - temp_a0))) {
+                arcade_objects[arg0].unk19 = 5;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_position += 1.0f;
+                arcade_objects[arg0].y_velocity = (2.0 * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 30.0) + 0.2));
+                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+            } else if ((arcade_objects[arg0].y_position > D_arcade_8004C6E4) && (arcade_cycle_rng() < (temp_a0 + 0x400))) {
+                arcade_objects[arg0].unk19 = 6;
+                arcade_objects[arg0].x_velocity = 0.0f;
+                arcade_objects[arg0].y_position -= 1.0f;
+                arcade_objects[arg0].y_velocity = -((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 30.0) + 0.2);
+                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+            } else
+            {
+                if ((sp2C - arcade_objects[arg0].y_position) < 3.0f) {
+                    arcade_objects[arg0].y_position = sp2C;
+                } else {
+                    arcade_objects[arg0].unk1A = !arcade_objects[arg0].unk1A;
+                }
+            }
+            break;
+        case 3:
+            arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+            arcade_objects[arg0].y_velocity += 0.06;
+            if ((sp2C < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - sp2C) < 3.0f)) {
+                arcade_objects[arg0].y_position = sp2C;
+                arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity / 3.0f;
+                if (arcade_objects[arg0].y_velocity > -0.2) {
+                    arcade_objects[arg0].unk19 = 2;
+                }
+            }
+            break;
+        case 5:
+            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+            if ((D_arcade_8004C6E8 - 1) < arcade_objects[arg0].y_position) {
+                arcade_objects[arg0].y_position = sp2C;
+                arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
+                arcade_objects[arg0].x_velocity = 1 - (arcade_objects[arg0].unk1A * 2);
+                arcade_objects[arg0].unk19 = 2;
+            }
+            break;
+        case 6:
+            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+            if (arcade_objects[arg0].y_position < (D_arcade_8004C6E4 + 1)) {
+                arcade_objects[arg0].y_position = sp2C;
+                arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
+                arcade_objects[arg0].x_velocity = 1 - (arcade_objects[arg0].unk1A * 2);
+                arcade_objects[arg0].unk19 = 2;
+            }
+            break;
+        default:
+            break;
+        }
+
+        if (arcade_objects[arg0].x_position > 270.0f) {
+            arcade_objects[arg0].unk1A = 0;
+            arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5);
+        } else if (arcade_objects[arg0].x_position < 50.0f) {
+            arcade_objects[arg0].unk1A = 1;
+            arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5);
+        }
+
+        if (((arcade_objects[arg0].x_position - arcade_objects[arcade_jumpman_slot].x_position) < 8.0f) && ((arcade_objects[arcade_jumpman_slot].x_position - arcade_objects[arg0].x_position) < 8.0f)) {
+            if (((arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position) < 3.0f) && ((arcade_objects[arcade_jumpman_slot].y_position - arcade_objects[arg0].y_position) < 8.0f)) {
+                func_arcade_80027E8C();
+            }
+        }
     }
 }
-*/
-
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002D6FC.s")
 
 void func_arcade_8002E158(s32 arg0) {
     s32 temp;
@@ -27878,222 +28118,262 @@ void arcade_dk_title_update(s32 arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002EEB8.s")
-
-/*
-extern s32 D_arcade_80043498;
-extern s32 D_arcade_800463F0;
-
 void func_arcade_8002EEB8(s32 arg0) {
-    s32 sp2C;
-    s32 sp28;
-    s32 sp24;
-    f32 sp20;
-    ArcadeStruct1 *sp18;
-    ArcadeStruct1 *temp_a0;
-    ArcadeStruct1 *temp_a0_2;
-    ArcadeStruct1 *temp_a0_3;
-    ArcadeStruct1 *temp_a0_5;
-    ArcadeStruct1 *DK;
-    f32 temp_f0;
-    f32 temp_f0_2;
-    f32 temp_f0_3;
-    f32 temp_f0_4;
-    f32 var_f12;
-    f32 var_f12_2;
-    f32 var_f16;
-    s32 temp_v0;
-    s32 temp_v0_3;
-    s32 var_a1;
-    s32 var_v0;
-    u8 temp_a0_4;
-    u8 temp_a2;
-    u8 temp_v0_2;
-    u8 var_a2;
+    s32 unk1D;
+    s32 unk10;
 
-    if ((arcade_game_state == 0) || (arcade_objects[arg0].unk19 == 5)) {
-        DK = &arcade_objects[arg0];
-        switch (DK->unk19) {
-        case 12:
-            DK->unk1C--;
-            if (!DK->unk1C) {
-                DK->unk1C = 0x14;
-                DK->unk19 = 9;
-                DK->unk14 = &D_arcade_8003E9F0;
-                DK->unk1A = 0;
-                temp_v0_2 = func_arcade_800246EC();
-                temp_f0 = DK->unk10;
-                DK->unk1D = temp_v0_2;
-                DK->unk10 += 1.0f;
-                arcade_objects[temp_v0_2] = arcade_barrel_obj_template;
-                var_a1 = temp_f0;
-                var_a2 = temp_v0_2;
-                if (!(var_a1 & 7)) {
-                    temp_a0->unk1D = 1;
+    if ((arcade_game_state != 0) && (arcade_objects[arg0].unk19 != 5)) {
+        return;
+    }
+
+    switch (arcade_objects[arg0].unk19) {
+    case 12:
+        if (--arcade_objects[arg0].unk1C == 0) {
+            arcade_objects[arg0].unk1C = 0x14;
+            arcade_objects[arg0].unk19 = 9;
+            arcade_objects[arg0].sprite = D_arcade_8003E9F0;
+            arcade_objects[arg0].unk1A = 0;
+            unk1D = arcade_get_first_empty_slot();
+            arcade_objects[arg0].unk1D = unk1D;
+            unk10 = arcade_objects[arg0].unk10;
+            arcade_objects[arg0].unk10 += 1.0f;
+            arcade_objects[unk1D] = arcade_barrel_obj_template;
+            if ((unk10 & 7) == 0) {
+                arcade_objects[unk1D].unk1D = 1;
+            }
+            if ((unk10 == 2) && (D_arcade_8004C723 != 0)) {
+                arcade_objects[unk1D].unk1C = 2;
+            }
+            else if (unk10 == 1) {
+                if (D_arcade_8004C723 == 0) {
+                    arcade_objects[unk1D].unk1C = 2;
                 }
-                if ((var_a1 == 2) && D_arcade_8004C723) {
-                    temp_a0->unk1C = 2;
-                    return;
+                else
+                {
+                    arcade_objects[unk1D].unk1C = 5;
                 }
-                if (var_a1 == 1) {
-                    if (!D_arcade_8004C723) {
-                        temp_a0->unk1C = 2;
-                        return;
-                    }
-                    temp_a0->unk1C = 5;
-                    return;
-                }
-                if (var_a1 != 0) {
-                    sp24 = arcade_cycle_rng();
-                    if (sp24 >= ((func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 2000.0f) + 2048.0f)) {
-                        return;
-                    }
-                }
-                temp_a0_2 = &arcade_objects[var_a2];
-                temp_a0_2->unk10 = 1.0f;
-                if (var_a1 == 0) {
-                    temp_a0_2->unk1D = 2;
+            }
+            else if ((unk10 == 0) || (arcade_cycle_rng() < (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 2000.0f + 2048.0f))) {
+                arcade_objects[unk1D].unk10 = 1.0f;
+                if (unk10 == 0) {
+                    arcade_objects[unk1D].unk1D = 2;
                     if (D_arcade_8004A76C == 1) {
-                        temp_a0_2->x_velocity = 0.0f;
-                        return;
+                        arcade_objects[unk1D].x_velocity = 0.0f;
                     }
-                    if (D_arcade_8004A76C == 2) {
-                        temp_a0_2->x_velocity = 0.65f;
-                        return;
+                    else if (D_arcade_8004A76C == 2) {
+                        arcade_objects[unk1D].x_velocity = 0.65f;
                     }
-                    temp_a0_2->x_velocity = 0.77f;
-                    return;
-                }
-                sp18 = temp_a0_2;
-                temp_v0_3 = arcade_cycle_rng();
-                sp24 = temp_v0_3;
-                temp_a0_2->x_velocity = (func_arcade_800246C8(3.0f, D_arcade_8004A76C) * (((arcade_objects[arcade_jumpman_slot].x_position - 92.0) / 200.0) + ((temp_v0_3 - 16384.0) / 30000.0)));
-                sp24 = arcade_cycle_rng();
-                var_f12_2 = D_arcade_8004A76C;
-                if (D_arcade_8004A76C < 0) {
-                    var_f12_2 += 4294967296.0f;
-                }
-                if (sp24 < ((func_arcade_800246C8(var_f12_2, 3.0f) * 2000.0f) + 4096.0f)) {
-                    sp18->unk1C = 6;
-                    return;
-                }
-            } else if (temp_v0 == 0x14) {
-                D_arcade_8004C71E--;
-                return;
-            }
-            break;
-        case 9:
-            DK->unk1C--;
-            if (!DK->unk1C) {
-                temp_a0_3 = &arcade_objects[DK->unk1D];
-                temp_a0_3->x_position = 92.0f;
-                if (temp_a0_3->unk10 != 0.0f) {
-                    DK->unk1C = 0x1E;
-                    DK->unk19 = 0xB;
-                    DK->unk14 = &D_arcade_80040540;
-                    DK->unk1A = 0;
-                    temp_a0_3->unk19 = 7;
-                    temp_a0_3->unk1C = 2;
-                    return;
-                }
-                DK->unk1C = 0x3C;
-                DK->unk19 = 0xA;
-                DK->unk14 = &D_arcade_80043498;
-                DK->unk1A = 0;
-                temp_a0_3->unk19 = 1;
-                return;
-            }
-            break;
-        case 11:
-            DK->unk1C--;
-            if (!DK->unk1C) {
-                sp20 = func_arcade_800246C8(D_arcade_8004A76C, 3.0f);
-                DK->unk1C = ((arcade_cycle_rng() & 0xF) + (51.0f - (sp20 * 5.0f)));
-                DK->unk19 = 0xC;
-                DK->unk14 = &D_arcade_800424D0;
-                DK->unk1A = 0;
-                return;
-            }
-            break;
-        case 10:
-            temp_a2 = DK->unk1D;
-            DK->unk1C--;
-            sp2C = temp_a2;
-            temp_f0_2 = func_arcade_800246C8(D_arcade_8004A76C, 3.0f);
-            temp_a0_4 = DK->unk1C;
-            var_f16 = temp_a0_4;
-            if (var_f16 == (temp_f0_2 * 3.0f)) {
-                sp20 = func_arcade_800246C8(D_arcade_8004A76C, 3.0f);
-                DK->unk1C = ((arcade_cycle_rng() & 0xF) + (51.0f - (sp20 * 5.0f)));
-                DK->unk19 = 0xC;
-                DK->unk14 = &D_arcade_80040540;
-                DK->unk1A = 0;
-                return;
-            }
-            if (temp_a0_4 == 0x28) {
-                DK->unk14 = &D_arcade_8003E9F0;
-                DK->unk1A = 1;
-                temp_a0_5 = &arcade_objects[temp_a2];
-                temp_a0_5->unk19 = 0;
-                temp_a0_5->x_position = 122.0f;
-                temp_a0_5->y_position = 83.0f;
-                return;
-            }
-            if (temp_a0_4 == 0x14) {
-                arcade_objects[temp_a2].unk19 = 2;
-                return;
-            }
-            break;
-        case 5:
-            temp_f0_3 = DK->unk10;
-            var_v0 = 0;
-            if (temp_f0_3 > 60.0f) {
-                var_v0 = 1;
-            }
-            DK->unk10 = temp_f0_3 + 1.0f;
-            if (var_v0 != 0) {
-                if (D_arcade_8004C721 != 0) {
-                    DK->unk14 = &D_arcade_800463F0;
-                    DK->unk1A = (s32) (DK->unk10 / 8.0f) & 1;
-                } else {
-                    DK->unk1A = 0;
-                    if ((s32) (DK->unk10 / 8.0f) & 1) {
-                        DK->unk14 = &D_arcade_80045428;
-                    } else {
-                        DK->unk14 = &D_arcade_80044460;
+                    else {
+                        arcade_objects[unk1D].x_velocity = 0.77f;
                     }
                 }
-                if (arcade_background_visual != 4) {
-                    DK->x_position = 100.0f;
+                else
+                {
+                    arcade_objects[unk1D].x_velocity = (((arcade_objects[arcade_jumpman_slot].x_position - 92.0) / 200.0) + ((arcade_cycle_rng() - 16384.0) / 30000.0)) * func_arcade_800246C8(3.0f, D_arcade_8004A76C);
+                    if (arcade_cycle_rng() < (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 2000.0f) + 4096.0f) {
+                        arcade_objects[unk1D].unk1C = 6;
+                    }
                 }
-                DK->y_position = DK->y_position - 0.4;
-                if (DK->y_position < 23.0f) {
-                    D_arcade_8004C721 = 0;
-                }
-                temp_f0_4 = DK->unk10;
-                if (temp_f0_4 > 280.0f) {
-                    D_arcade_8004C723 += 1;
-                    func_arcade_800257D8();
-                    return;
-                }
-                if ((temp_f0_4 == 200.0f) && (D_arcade_8004C71E > 0)) {
-                    arcade_add_points_to_score(D_arcade_8004C71E * 0x64);
-                    return;
-                }
-            } else {
-                DK->unk1A = 1;
-                DK->unk14 = &D_arcade_8003E9F0;
             }
-            break;
-        default:
-            break;
+        } else if (arcade_objects[arg0].unk1C == 0x14) {
+            arcade_bonus_timer--;
         }
+        break;
+    case 9:
+        if (--arcade_objects[arg0].unk1C == 0) {
+            unk1D = arcade_objects[arg0].unk1D;
+            arcade_objects[unk1D].x_position = 92.0f;
+            if (arcade_objects[unk1D].unk10 != 0.0f) {
+                arcade_objects[arg0].unk1C = 0x1E;
+                arcade_objects[arg0].unk19 = 0xB;
+                arcade_objects[arg0].sprite = D_arcade_80040540;
+                arcade_objects[arg0].unk1A = 0;
+                arcade_objects[unk1D].unk19 = 7;
+                arcade_objects[unk1D].unk1C = 2;
+            }
+            else
+            {
+                arcade_objects[arg0].unk1C = 0x3C;
+                arcade_objects[arg0].unk19 = 0xA;
+                arcade_objects[arg0].sprite = D_arcade_80043498;
+                arcade_objects[arg0].unk1A = 0;
+                arcade_objects[unk1D].unk19 = 1;
+            }
+        }
+        break;
+    case 11:
+        if (--arcade_objects[arg0].unk1C == 0) {
+            arcade_objects[arg0].unk1C = (51.0f - (func_arcade_800246C8(D_arcade_8004A76C, 3.0f)) * 5.0f) + (arcade_cycle_rng() & 0xF);
+            arcade_objects[arg0].unk19 = 0xC;
+            arcade_objects[arg0].sprite = D_arcade_800424D0;
+            arcade_objects[arg0].unk1A = 0;
+        }
+        break;
+    case 10:
+        unk1D = arcade_objects[arg0].unk1D;
+        if (--arcade_objects[arg0].unk1C == (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 3.0f)) {
+            arcade_objects[arg0].unk1C = (51.0f - (func_arcade_800246C8(D_arcade_8004A76C, 3.0f)) * 5.0f) + (arcade_cycle_rng() & 0xF);
+            arcade_objects[arg0].unk19 = 0xC;
+            arcade_objects[arg0].sprite = D_arcade_80040540;
+            arcade_objects[arg0].unk1A = 0;
+        }
+        else
+        {
+            if (arcade_objects[arg0].unk1C == 0x28) {
+                arcade_objects[arg0].sprite = D_arcade_8003E9F0;
+                arcade_objects[arg0].unk1A = 1;
+                arcade_objects[unk1D].unk19 = 0;
+                arcade_objects[unk1D].x_position = 122.0f;
+                arcade_objects[unk1D].y_position = 83.0f;
+            }
+            else if (arcade_objects[arg0].unk1C == 0x14) {
+                arcade_objects[unk1D].unk19 = 2;
+            }
+        }
+        break;
+    case 5:
+        if (arcade_objects[arg0].unk10++ > 60.f) {
+            if (D_arcade_8004C721 != 0) {
+                arcade_objects[arg0].sprite = D_arcade_800463F0;
+                arcade_objects[arg0].unk1A = (s32)(arcade_objects[arg0].unk10 / 8) & 1;
+            } else {
+                arcade_objects[arg0].unk1A = 0;
+                if ((s32)(arcade_objects[arg0].unk10 / 8) & 1) {
+                    arcade_objects[arg0].sprite = D_arcade_80045428;
+                } else {
+                    arcade_objects[arg0].sprite = D_arcade_80044460;
+                }
+            }
+            if (arcade_background_visual != 4) {
+                arcade_objects[arg0].x_position = 100.0f;
+            }
+            arcade_objects[arg0].y_position -= 0.4;
+            if (arcade_objects[arg0].y_position < 23.0f) {
+                D_arcade_8004C721 = 0;
+            }
+            if (arcade_objects[arg0].unk10 > 280.0f) {
+                D_arcade_8004C723++;
+                func_arcade_800257D8();
+            }
+            else if ((arcade_objects[arg0].unk10 == 200.0f) && (arcade_bonus_timer > 0)) {
+                arcade_add_points_to_score(arcade_bonus_timer * 0x64);
+            }
+        } else {
+            arcade_objects[arg0].unk1A = 1;
+            arcade_objects[arg0].sprite = D_arcade_8003E9F0;
+        }
+        break;
     }
 }
-*/
 
-// big
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_8002F82C.s")
+void func_arcade_8002F82C(s32 arg0) {
+    s32 temp;
+
+    switch (arcade_objects[arg0].unk19) {
+    case 2:
+        if (arcade_game_state == 0) {
+            if ((D_arcade_8004C6DC % 120) == 0) {
+                --arcade_bonus_timer;
+            }
+            
+            if ((arcade_objects[arcade_jumpman_slot].y_position < 95.0f) && (arcade_objects[arcade_jumpman_slot].y_position > 76.0f)
+                && (arcade_objects[arcade_jumpman_slot].x_position > 135.0f) && (arcade_objects[arcade_jumpman_slot].x_position < 186.0f))
+            {
+                func_arcade_80027E8C();
+            }
+            
+            arcade_objects[arg0].unk1C++;
+            if ((arcade_objects[arg0].unk1C & 0xFF) < 0xA0) {
+                arcade_objects[arg0].sprite = D_arcade_80040540;
+            }
+            else
+            {
+                if (!(arcade_objects[arg0].unk1C & 0x1F)) {
+                    func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+                }
+                arcade_objects[arg0].sprite = D_arcade_800424D0;
+                temp = arcade_objects[arg0].unk1C & 0x20;
+                arcade_objects[arg0].unk1A = (temp / 32) == 0;
+            }
+        }
+        break;
+    case 8:
+        temp = (arcade_objects[arg0].unk10 == 720.0f);
+        arcade_objects[arg0].unk10 += 1.0f;
+        if (temp) {
+            D_arcade_8004C723 += 1;
+            if (D_arcade_8004A740 != 0) {
+                D_arcade_8004A770 = 1;
+                if (arcade_saved_high_scores[4] < arcade_current_score) {
+                    func_arcade_80024B04();
+                } else {
+                    func_arcade_80024C34();
+                }
+            } else {
+                func_arcade_800257D8();
+            }
+        }
+        else
+        {
+            if ((arcade_objects[arg0].unk10 > 480.0f)) {
+                break;
+            }
+            
+            if (arcade_objects[arg0].unk10 == 400.0f) {
+                if (arcade_bonus_timer > 0) {
+                    arcade_add_points_to_score(arcade_bonus_timer * 0x64);
+                }
+            } else if (arcade_objects[arg0].unk10 > 200.0f) {
+                if (arcade_objects[arg0].y_position < 178.0f) {
+                    arcade_objects[arg0].unk1B = 1;
+                    arcade_objects[arg0].y_position += 1.0f;
+                    if (arcade_objects[arg0].y_position >= 178.0f) {
+                        arcade_objects[arcade_get_first_empty_slot()] = arcade_100m_complete_particle_obj_template;
+                    }
+                } else {
+                    if (D_arcade_8004C708 != 2) {
+                        D_arcade_8004C708 = 2;
+                        func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+                    }
+                    arcade_objects[arg0].y_position = 178.0f;
+                    arcade_objects[arg0].unk1A = 0;
+                    temp = (s32) (arcade_objects[arg0].unk10 / 6.0f) % 3;
+                    if (temp == 0) {
+                        arcade_objects[arg0].sprite = D_arcade_800473B8;
+                    }
+                    else if (temp == 1) {
+                        arcade_objects[arg0].sprite = D_arcade_80048380;
+                    }
+                    else if (temp == 2) {
+                        arcade_objects[arg0].sprite = D_arcade_80049348;
+                    }
+                    if (arcade_objects[arg0].unk10 == 350.0f) {
+                        func_global_asm_80737638((void* ) D_global_asm_8076D1F8, 0x50, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+                        arcade_objects[arcade_jumpman_slot].sprite = D_arcade_8003B180;
+                        arcade_objects[arcade_jumpman_slot].unk1A = 0;
+                        arcade_objects[arcade_jumpman_slot].x_position = 190.0f;
+                        arcade_objects[arcade_jumpman_slot].y_position = 93.0f;
+                        arcade_game_state = 3;
+                    }
+                }
+            } else if (arcade_objects[arg0].unk10 > 180.0f) {
+                arcade_objects[arg0].unk1A = 0;
+                arcade_objects[arg0].sprite = D_arcade_80040540;
+            } else if (arcade_objects[arg0].unk10 > 30.0f) {
+                arcade_objects[arg0].unk1A = (s32)(arcade_objects[arg0].unk10 / 6.0f) & 1;
+                arcade_objects[arg0].sprite = D_arcade_800424D0;
+            }
+        }
+
+        if (arcade_objects[arg0].unk10 == 2.0f) {
+            func_global_asm_80737638((void* ) D_global_asm_8076D1F8, 0x52, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+        }
+        if (arcade_objects[arg0].unk10 == 200.0f) {
+            func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+        }
+        break;
+    }
+}
 
 void func_arcade_8002FE28(s32 arg0) {
     s32 temp;
@@ -28392,61 +28672,57 @@ void func_arcade_80030C70(u8 arg0) {
     }
 }
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_80030CEC.s")
-#else
 void func_arcade_80030CEC(u8 arg0) {
-    u8 a0;
-    if (arcade_objects[arg0].unk19 == 4)
-        return;
-    if ((D_global_asm_807ECDE8->unk0 & 0x200) || D_global_asm_807ECDE8->unk2 < -0x14) {
-        D_arcade_8004C720--;
-        switch (D_arcade_8004C720) {
-            case 0://L80030D74
-                D_arcade_8004C720 = 8;
-            case 0xb://L80030D80
-                arcade_objects[arg0].unk1D--;
-                if (arcade_objects[arg0].unk1D >= 0x29) {
-                    arcade_objects[arg0].unk1D = 0x1d;
-                }
-                break;
+    if (arcade_objects[arg0].unk19 != 4) {
+        if ((D_global_asm_807ECDE8->unk0 & 0x200) || (((D_global_asm_807ECDE8->unk2 < -0x14)))) {
+            --D_arcade_8004C720;
+            switch (D_arcade_8004C720) {
+                case 0:
+                    D_arcade_8004C720 = 8;
+                case 0xB:
+                    --arcade_objects[arg0].unk1D;
+                    if (arcade_objects[arg0].unk1D >= 0x29) {
+                        arcade_objects[arg0].unk1D = 0x1D;
+                    }
+                    break;
+            }
+        } else if ((D_global_asm_807ECDE8->unk0 & 0x100) || (D_global_asm_807ECDE8->unk2 >= 0x15)) {
+            --D_arcade_8004C720;
+            switch (D_arcade_8004C720) {
+                case 0:
+                    D_arcade_8004C720 = 8;
+                case 0xB:
+                    ++arcade_objects[arg0].unk1D;
+                    if (arcade_objects[arg0].unk1D >= 0x1E) {
+                        arcade_objects[arg0].unk1D -= 0x1E;
+                    }
+                    break;
+            }
+        } else {
+            D_arcade_8004C720 = 0xC;
         }
-    } else if ((D_global_asm_807ECDE8->unk0 & 0x100) || D_global_asm_807ECDE8->unk2 >= 0x15) {//L80030DB0
-        D_arcade_8004C720--;
-        switch (D_arcade_8004C720) {
-            case 0://L80030D74
-                D_arcade_8004C720 = 8;
-            case 0xb://L80030D80
-                arcade_objects[arg0].unk1D++;
-                if (arcade_objects[arg0].unk1D >= 0x1e) {
-                    arcade_objects[arg0].unk1D -= 0x1e;
-                }
-                break;
-        }
-    } else {//L80030E2C
-        D_arcade_8004C720 = 0xC;
-    }//L80030E40
-    a0 = arcade_objects[arg0].unk1D;
-    arcade_objects[arg0].x_position = (f32) (((a0 % 0x10) * 0x10) + 0x54);
-    arcade_objects[arg0].y_position = (f32) (((s32) ((a0 / 0xA) << 7) / 7) + 0x4A);
-    if (newly_pressed_input[0] & A_BUTTON) {
-        if ((a0 = 0x1D) || (D_arcade_8004C6DC == 0x708)) {
-            D_arcade_8004C6DC = 0x744;
-            arcade_objects[arg0].unk19 = 4;
-            arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][0] = D_arcade_8004A774[0];
-            arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][1] = D_arcade_8004A774[1];
-            arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][2] = D_arcade_8004A774[2];
-            func_arcade_80024320();
-        } else if (a0 = 0x1C && arcade_objects[arg0].unk19) {//L80030F2C
-            arcade_objects[arg0].unk19--;
-            D_arcade_8004A774[arcade_objects[arg0].unk19] = D_global_asm_80746800[0x1C]; 
-        } else if (arcade_objects[arg0].unk19 < 3) {//L80030F70
-            D_arcade_8004A774[arcade_objects[arg0].unk19] = D_global_asm_80746800[arcade_objects[arg0].unk1D];
-            arcade_objects[arg0].unk19++;
+
+        arcade_objects[arg0].x_position = ((arcade_objects[arg0].unk1D % 10) * 0x10) + 0x54;
+        arcade_objects[arg0].y_position = (((arcade_objects[arg0].unk1D / 10) << 7) / 7) + 0x4A;
+
+        if (*newly_pressed_input & 0x8000) {
+            if ((arcade_objects[arg0].unk1D == 0x1D) || (D_arcade_8004C6DC == 0x708)) {
+                D_arcade_8004C6DC = 0x744;
+                arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][0] = D_arcade_8004A774[0];
+                arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][1] = D_arcade_8004A774[1];
+                arcade_saved_high_score_initials[arcade_objects[arg0].unk1C][2] = D_arcade_8004A774[2];
+                arcade_objects[arg0].unk19 = 4;
+                func_arcade_80024320();
+            }
+            else if ((arcade_objects[arg0].unk1D == 0x1C) && (arcade_objects[arg0].unk19 != 0)) {
+                D_arcade_8004A774[--arcade_objects[arg0].unk19] = D_global_asm_80746800[0x1C];
+            }
+            else if (arcade_objects[arg0].unk19 < 3) {
+                D_arcade_8004A774[arcade_objects[arg0].unk19++] = D_global_asm_80746800[arcade_objects[arg0].unk1D];
+            }
         }
     }
 }
-#endif
 
 void arcade_barrel_stack_update(u8 arg0) {
     if (arcade_objects[arg0].unk1C >= arcade_bonus_timer)
@@ -28539,45 +28815,48 @@ void func_arcade_80030FEC(void) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800311E0.s")
-
-/*
 void func_arcade_800311E0(void) {
-    u8 sp1F;
     u8 i;
 
     if (!(D_arcade_8004C6DC & 1)) {
         D_arcade_8004A308[1] = 1;
         D_arcade_8004A308[2] = -1;
-        D_arcade_8004A308[3] = (D_arcade_8004C6DC / 0x15E) & 1 ? 1 : -1;
-    } else {//L80031238
-        for (i = 0; i < 4; i++) {\
+        if ((D_arcade_8004C6DC / 350) & 1) {
+            D_arcade_8004A308[3] = 1;
+        } else {
+            D_arcade_8004A308[3] = -1;
+        }
+    } else {
+        for (i = 0; i < 4; i++) { \
             D_arcade_8004A308[i] = 0;
         }
     }
-
-    if (D_arcade_8004C6DC % 0x78 == 0 && arcade_get_object_type_count(ARCADE_OBJ_04_PIE) < 5) {
-        sp1F = func_arcade_80024764();
-        arcade_objects[sp1F] = arcade_pie_obj_template;
-        if (arcade_cycle_rng() > 0x4000) {
-            if ((D_arcade_8004C6DC / 350) & 1)
-                arcade_objects[sp1F].x_position = 40;
+    if (((D_arcade_8004C6DC % 120) == 0) && (arcade_get_object_type_count(ARCADE_OBJ_04_PIE) < 5)) {
+        i = func_arcade_80024764();
+        arcade_objects[i] = arcade_pie_obj_template;
+        if (arcade_cycle_rng() >= 0x4001) {
+            if ((D_arcade_8004C6DC / 350) & 1) {
+                arcade_objects[i].x_position = 40.0f;
+            }
             else
-                arcade_objects[sp1F].x_position = 280;
-        } else {//L80031354
-            arcade_objects[sp1F].y_position = 127;
-            if (arcade_cycle_rng() > 0x4000) {
-                arcade_objects[sp1F].unk1C = 1;
-                arcade_objects[sp1F].x_position = 40;
-            } else {
-                arcade_objects[sp1F].unk1C = 2;
-                arcade_objects[sp1F].x_position = 280;
+            {
+                arcade_objects[i].x_position = 280.0f;
             }
         }
-    }//L800313AC
+        else
+        {
+            arcade_objects[i].y_position = 127.0f;
+            if (arcade_cycle_rng() >= 0x4001) {
+                arcade_objects[i].unk1C = 1;
+                arcade_objects[i].x_position = 40.0f;
+            }
+            else {
+                arcade_objects[i].unk1C = 2;
+                arcade_objects[i].x_position = 280.0f;
+            }
+        }
+    }
 }
-*/
 
 void func_arcade_800313B8(void) {
     u8 sp1f;
@@ -28698,179 +28977,166 @@ void func_arcade_80031948(s8 arg0) {
     }
 }
 
-// close, probably needs .data migrated
-#pragma GLOBAL_ASM("asm/nonmatchings/arcade/code_0/func_arcade_800319D4.s")
-
-/*
 void func_arcade_800319D4(Gfx **arg0) {
-    int i;
+    s32 i;
     Gfx *sp90;
-    char sp40[0x50];
-    s32 score;
-    u8 sp3B;
+    s8 sp40[0x4E];
+
+    static s32 D_arcade_8004A83C = 0;
 
     sp90 = *arg0;
     gDPSetScissor(sp90++, G_SC_NON_INTERLACE, 0, 0, 320, 240);
+
     D_arcade_8004C6D4 = 0x400;
     D_arcade_8004C719 = 8;
-    D_arcade_8004C6D0 = &D_arcade_8003DA90;
+    D_arcade_8004C6D0 = D_arcade_8003DA90;
     D_arcade_8004C71A = 8;
-    guSprite2DInit(&D_arcade_8004BBF0[D_global_asm_807444FC], D_arcade_8004C6D0, 0,
-        D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A,
-        G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0
-    );
-    func_global_asm_8070E8F0(&sp90, &D_arcade_8004BBF0[D_global_asm_807444FC]);
-    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0, 0);
+    guSprite2DInit(&D_arcade_8004BBF0[D_global_asm_807444FC], D_arcade_8004C6D0, NULL, D_arcade_8004C719, D_arcade_8004C719, D_arcade_8004C71A, 0, 2, 0, 0);
+    func_global_asm_8070E8F0(&sp90, (Sprite* ) &D_arcade_8004BBF0[D_global_asm_807444FC]);
+    func_global_asm_8070F2C8(0x400, D_arcade_8004C6D6, 0U, 0U);
+
     for (i = 0; i < arcade_lives_visual; i++) {
-        func_global_asm_8070F2FC(&sp90, 0x360 + i * 0x20, 0x4C);
+        func_global_asm_8070F2FC(&sp90, 0x360 + (i * 32), 0x4C);
     }
-    arcade_set_text_rgba(0xff, 0, 00, 0xff);
-    if ((D_arcade_8004C6D8 & 0x10) || !D_arcade_8004C724) {
+
+    arcade_set_text_rgba(0xFF, 0, 0, 0xFF);
+    if ((D_arcade_8004C6D8 & 0x10) || (D_arcade_8004C724 == 0)) {
         arcade_set_text_position(0x48, 0x13);
         sprintf(sp40, "1UP");
         arcade_draw_text(&sp90, sp40);
-    }//L80031B78
-
+    }
     arcade_set_text_position(0x78, 0x13);
     sprintf(sp40, "HIGH SCORE");
     arcade_draw_text(&sp90, sp40);
-
-    arcade_set_text_rgba(0, 0, 0xff, 0xff);
-    arcade_set_text_position(0xd8, 0x1b);
+    arcade_set_text_rgba(0, 0, 0xFF, 0xFF);
+    arcade_set_text_position(0xD8, 0x1B);
     sprintf(sp40, "L=%02d", D_arcade_8004A76C);
     arcade_draw_text(&sp90, sp40);
-
-    arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
-    arcade_set_text_position(0x38, 0x1b);
-    sprintf(sp40, "%06d    %06d", arcade_current_score, D_arcade_8004A760);
+    arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
+    arcade_set_text_position(0x38, 0x1B);
+    sprintf(sp40, "%06d    %06d", arcade_current_score, arcade_high_score);
     arcade_draw_text(&sp90, sp40);
 
-    if (D_arcade_8004C724 == 5 || D_arcade_8004C724 == 4) {//L80031C50
-        if (D_arcade_8004A764) {
+    if ((D_arcade_8004C724 == 5) || (D_arcade_8004C724 == 4)) {
+        if (D_arcade_8004A764 != 0) {
             if (arcade_background_visual == 2) {
-                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
-            } else if (arcade_background_visual == 4) {//L80031C8C
-                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xFF, 0xA0, 0x10, 0xFF);
+            } else if (arcade_background_visual == 4) {
+                arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             } else {
-                arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
-            } //L80031CC4
-            arcade_set_text_position(0x78, 0xa3);
+                arcade_set_text_rgba(0, 0xFF, 0xFF, 0xFF);
+            }
+            arcade_set_text_position(0x78, 0xA3);
             sprintf(sp40, "GAME OVER");
             arcade_draw_text(&sp90, sp40);
-        }//L80031CF4
+        }
         if (D_arcade_8004C724 == 4) {
-            if (!D_arcade_8004A768 || arcade_background_visual == 4) {
-                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+            if ((D_arcade_8004A768 == 0) || (arcade_background_visual == 4)) {
+                arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             } else if (arcade_background_visual == 2) {
-                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xFF, 0xA0, 0x10, 0xFF);
             } else {
-                arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
-            }//L80031D64
+                arcade_set_text_rgba(0, 0xFF, 0xFF, 0xFF);
+            }
             func_arcade_80031948(0);
-            arcade_set_text_position(0x88, 0x8b);
+            arcade_set_text_position(0x88, 0x8B);
             sprintf(sp40, "RETURN");
             arcade_draw_text(&sp90, sp40);
-
             func_arcade_80031948(1);
-            arcade_set_text_position(0x68, 0x9b);
+            arcade_set_text_position(0x68, 0x9B);
             sprintf(sp40, "DELETE HISCORE");
             arcade_draw_text(&sp90, sp40);
-
             func_arcade_80031948(2);
-            arcade_set_text_position(0x68, 0xab);
+            arcade_set_text_position(0x68, 0xAB);
             sprintf(sp40, "EXIT DK ARCADE");
             arcade_draw_text(&sp90, sp40);
-        }//L80031DF8
+        }
         if (arcade_background_visual == 2) {
-            if (D_arcade_8004C71E < 0xA) {
-                arcade_set_text_rgba(0, 0, 0xff, 0xff);
+            if (arcade_bonus_timer < 0xA) {
+                arcade_set_text_rgba(0, 0, 0xFF, 0xFF);
             } else {
-                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xFF, 0xA0, 0x10, 0xFF);
             }
-        } else if (arcade_background_visual == 4) {//L80031E54
-            if (D_arcade_8004C71E < 0xA) {
-                arcade_set_text_rgba(0xf0, 0x30, 0, 0xff);
+        } else if (arcade_background_visual == 4) {
+            if (arcade_bonus_timer < 0xA) {
+                arcade_set_text_rgba(0xF0, 0x30, 0, 0xFF);
             } else {
-                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             }
+        } else if (arcade_bonus_timer < 0xA) {
+            arcade_set_text_rgba(0xFF, 0, 0, 0xFF);
         } else {
-            if (D_arcade_8004C71E < 0xA) {
-                arcade_set_text_rgba(0xff, 0, 0, 0xff);
-            } else {
-                arcade_set_text_rgba(0x60, 0xe0, 0xff, 0xff);
-            }
-        }//L80031EE4
-        arcade_set_text_position(0xe0, 0x30);
-        score = MAX(D_arcade_8004C71E, 0);
-        sprintf(sp40, "%02d00", score, score);
+            arcade_set_text_rgba(0x60, 0xE0, 0xFF, 0xFF);
+        }
+        arcade_set_text_position(0xE0, 0x30);
+
+        i = MAX(arcade_bonus_timer, 0);
+        sprintf(sp40, "%02d00", i);
         arcade_draw_text(&sp90, sp40);
-        
-    }//L80031F30
+    }
     if (D_arcade_8004C724 == 2) {
+        u8 sp3B;
+
         sp3B = (D_arcade_8004C723 & 3) + 1;
-        arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
-        arcade_set_text_position(0x48, 0xd7);
+        arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
+        arcade_set_text_position(0x48, 0xD7);
         sprintf(sp40, "HOW HIGH CAN YOU GET ?");
         arcade_draw_text(&sp90, sp40);
-        arcade_set_text_position(0x58, 0xc9);
-        sprintf(sp40, "@%%m");
+        arcade_set_text_position(0x58, 0xC9);
+        sprintf(sp40, "@%% m");
         arcade_draw_text(&sp90, sp40);
-        //sp34 = sp3B;
         if (sp3B >= 2) {
-            arcade_set_text_position(0x58, 0xad);
-            sprintf(sp40, "%%)m");
+            arcade_set_text_position(0x58, 0xAD);
+            sprintf(sp40, "%%) m");
             arcade_draw_text(&sp90, sp40);
         }
         if (sp3B >= 3) {
             arcade_set_text_position(0x58, 0x91);
-            sprintf(sp40, "&%%m");
+            sprintf(sp40, "&%% m");
             arcade_draw_text(&sp90, sp40);
         }
         if (sp3B >= 4) {
             arcade_set_text_position(0x50, 0x75);
-            sprintf(sp40, "!))m");
+            sprintf(sp40, "!)) m");
             arcade_draw_text(&sp90, sp40);
         }
-    }//L80032054
+    }
     if (D_arcade_8004C724 == 3) {
         func_arcade_8003159C(&sp90);
-    }//L80032078
+    }
     if (D_arcade_8004C724 == 0) {
         if (!(D_arcade_8004C6DC & 0x200)) {
-            arcade_set_text_rgba(0, 0xff, 0xff, 0xff);
+            arcade_set_text_rgba(0, 0xFF, 0xFF, 0xFF);
             arcade_set_text_position(0x70, 0x33);
             sprintf(sp40, "INSERT COIN");
             arcade_draw_text(&sp90, sp40);
-
             arcade_set_text_position(0x68, 0x43);
             sprintf(sp40, "PLAYER    COIN");
             arcade_draw_text(&sp90, sp40);
-
             arcade_set_text_position(0x78, 0x53);
             sprintf(sp40, "1        1");
             arcade_draw_text(&sp90, sp40);
-
-            arcade_set_text_position(0x38, 0x7b);
+            arcade_set_text_position(0x38, 0x7B);
             sprintf(sp40, "RANK  SCORE  NAME");
             arcade_draw_text(&sp90, sp40);
             func_arcade_8003159C(&sp90);
-            arcade_set_text_rgba(0xff, 0, 0, 0xff);
-
+            arcade_set_text_rgba(0xFF, 0, 0, 0xFF);
             arcade_set_text_position(0x78, 0x63);
             sprintf(sp40, "2        2");
             arcade_draw_text(&sp90, sp40);
-        } else {//L80032190
+        } else {
             if (D_arcade_8004C6DC & 0x182) {
-                arcade_set_text_rgba(0xff, 0xa0, 0x10, 0xff);
+                arcade_set_text_rgba(0xFF, 0xA0, 0x10, 0xFF);
             } else {
-                arcade_set_text_rgba(0xff, 0xff, 0xff, 0xff);
+                arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             }
-            arcade_set_text_position(0x68, 0xd7);
+            arcade_set_text_position(0x68, 0xD7);
             sprintf(sp40, "c NINTENDO 1981");
             arcade_draw_text(&sp90, sp40);
         }
-    }//L800321EC
+    }
+
     *arg0 = sp90;
     D_arcade_8004A83C++;
 }
-*/
+

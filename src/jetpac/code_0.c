@@ -331,8 +331,6 @@ extern StructJetpac8002BA52 D_jetpac_8002BA52[]; // likely 8002ba50 s32, but rea
 
 void func_global_asm_80737924(s32);
 
-void func_global_asm_80737638(void *arg0, enum sfx_e arg1, u32 arg2, u32 arg3, f32 arg4, u32 arg5, void *arg6);
-
 void func_jetpac_80024E70(s32 arg0) {
     s32 i;
     s16 sfx;

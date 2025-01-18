@@ -470,6 +470,7 @@ D_arcade_8004C6F0 = 0x8004C6F0; // segment:arcade
 D_arcade_8004C6F4 = 0x8004C6F4; // segment:arcade
 D_arcade_8004C6F8 = 0x8004C6F8; // segment:arcade
 D_arcade_8004C6FC = 0x8004C6FC; // segment:arcade
+D_arcade_8004C700 = 0x8004C700; // segment:arcade
 D_arcade_8004C704 = 0x8004C704; // segment:arcade
 D_arcade_8004C708 = 0x8004C708; // segment:arcade
 D_arcade_8004C70C = 0x8004C70C; // segment:arcade
@@ -613,6 +614,7 @@ D_global_asm_80770C70 = 0x80770C70;
 D_global_asm_80770CE0 = 0x80770CE0;
 D_global_asm_80770DC9 = 0x80770DC9;
 D_global_asm_80770DF8 = 0x80770DF8;
+D_global_asm_80770DFC = 0x80770DFC;
 
 D_global_asm_807ECCD0 = 0x807ECCD0;
 D_global_asm_807ECCE0 = 0x807ECCE0;
