@@ -334,9 +334,13 @@ typedef struct gASMStruct3 {
 extern void *D_global_asm_807F0570[];
 extern void *D_global_asm_807F0588[];
 
+typedef struct Struct807FB534_sub0 {
+    u8 pad0[0x28];
+} Struct807FB534_sub0;
+
 typedef struct {
-    void *unk0;
-    void *unk4;
+    Struct807FB534_sub0 *unk0;
+    Struct807FB534_sub0 *unk4;
     s32 unk8;
     s32 unkC;
     s32 unk10;

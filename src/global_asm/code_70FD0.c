@@ -1,7 +1,26 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_8066C2D0(s32, s32, f32, f32, f32, f32, f32, f32, f32);
+typedef struct PropFileStruct {
+    u8 pad0[0x20];
+    s32 unk20;
+    u8 pad24[0x40 - 0x24];
+    s32 unk40;
+    s32 unk44;
+    s32 unk48;
+    s32 unk4C;
+    s32 unk50;
+    s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
+    s32 unk68;
+    s32 unk6C;
+    s32 unk70;
+} PropFileStruct;
+
+void func_global_asm_8066C2D0(s32, PropFileStruct *, f32, f32, f32, f32, f32, f32, f32);
 u8 func_global_asm_8066F4AC(Actor *, s16 *, s16 *);
 s32 func_global_asm_80672328(Actor*, f32, f32);
 void func_global_asm_80672E90(s32, s32, s32);
@@ -26,11 +45,119 @@ extern u8 D_global_asm_807FB605;
 extern u8 D_global_asm_807FB606;
 extern u8 D_global_asm_807FB61C;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066C2D0.s")
+typedef struct Struct8066C2D0_1 {
+    u8 pad0[0x58];
+} Struct8066C2D0_1;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066C610.s")
+typedef struct Struct8066C2D0_0 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 pad16[2];
+    Struct8066C2D0_1* unk18;
+    s32 unk1C;
+} Struct8066C2D0_0;
 
-/*
+typedef struct tuple_s {
+    s16 x;
+    s16 y;
+    s16 z;
+} tuple_s;
+
+typedef struct OM2Wall {
+    tuple_s vert[3];
+    u8 pad12[2];
+    s8 unk14;
+    u8 pad15;
+} OM2Wall;
+
+typedef struct OM2WallData {
+    s32 count;
+    OM2Wall walls[];
+} OM2WallData;
+
+typedef struct OM2UnkWallData {
+    s32 unk0[8];
+} OM2UnkWallData;
+
+void func_global_asm_8066C7F4(OM2UnkWallData *, s32, f32 (*)[4]);
+s32 func_global_asm_8066CEE4(OM2Wall *, Struct8066C2D0_1 *, f32 (*)[4]);
+
+void func_global_asm_8066C2D0(s32 arg0, PropFileStruct *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
+    s32 *temp_a2;
+    s32 count;
+    s32 i;
+    OM2Wall *var_s0;
+    s8 var_s6;
+    f32 sp124[4][4];
+    f32 spE4[4][4];
+    f32 spA4[4][4];
+    f32 sp64[4][4];
+    Struct8066C2D0_1 *var_s1; // 60
+    Struct8066C2D0_0 *var_t0; // 5c
+    s32 sp58;
+    OM2UnkWallData *sp54;
+
+    var_s6 = -1;
+    var_t0 = &D_global_asm_807F6000[arg0].unk28;
+    temp_a2 = D_global_asm_807F6000[arg0].unk78;
+    if (temp_a2 != NULL) {
+        sp58 = temp_a2[D_global_asm_807444FC];
+    } else {
+        sp58 = 0;
+    }
+    sp54 = arg1->unk60 + (s32)arg1;
+    var_t0->unkC = arg1->unk20 * arg8 * 8.0f * 1.5;
+    var_t0->unk0 = arg2 * 8.0f;
+    var_t0->unk4 = arg3 * 8.0f;
+    var_t0->unk8 = arg4 * 8.0f;
+    count = ((OM2WallData*)(arg1->unk4C + (s32)arg1))->count;
+    if (count) {
+        var_t0->unk15 |= 2;
+        if ((var_t0->unk15 & 1) == 0) {
+            var_t0->unk18 = malloc(count * sizeof(Struct8066C2D0_1));
+        }
+        var_s0 = &((OM2WallData*)(arg1->unk4C + (s32)arg1))->walls;
+        var_s1 = var_t0->unk18;
+        guScaleF(&sp124, arg8, arg8, arg8);
+        guRotateF(&spE4, arg5, 1.0f, 0.0f, 0.0f);
+        guMtxCatF(&sp124, &spE4, &sp124);
+        guRotateF(&spE4, arg6, 0.0f, 1.0f, 0.0f);
+        guMtxCatF(&sp124, &spE4, &sp124);
+        guRotateF(&spE4, arg7, 0.0f, 0.0f, 1.0f);
+        guMtxCatF(&sp124, &spE4, &sp124);
+        guTranslateF(&spE4, arg2, arg3, arg4);
+        guMtxCatF(&sp124, &spE4, &sp124);
+        for (i = 0; i < count; i++) {
+            if (var_s0->unk14 == -1) {
+                if (func_global_asm_8066CEE4(var_s0, var_s1, &sp124)) {
+                    var_s1++;
+                }
+            } else {
+                if (var_s6 != var_s0->unk14) {
+                    func_global_asm_8066C7F4(&sp54[var_s0->unk14], sp58, &spA4);
+                    guMtxCatF(&spA4, &sp124, &sp64);
+                    var_s6 = var_s0->unk14;
+                }
+                if (func_global_asm_8066CEE4(var_s0, var_s1, &sp64)) {
+                    var_s1++;
+                }
+            }
+            var_s0++;
+        }
+        var_t0->unk1C = var_s1;
+    } else {
+        var_t0->unk18 = 0;
+        var_t0->unk1C = 0;
+    }
+    var_t0->unk15 |= 1;
+    var_t0->unk10 = object_timer;
+}
+
 void func_global_asm_8066C610(s16 arg0, s8 arg1, f32 (*arg2)[4]) {
     f32 spEC;
     f32 spE8;
@@ -40,44 +167,50 @@ void func_global_asm_8066C610(s16 arg0, s8 arg1, f32 (*arg2)[4]) {
     f32 spD8;
     f32 spD4;
     f32 spD0;
+    s32 *temp_v0;
     f32 sp8C[4][4];
     f32 sp4C[4][4];
     s32 sp48;
-    void *sp44;
-    OM2_unk24 *temp_v0_2;
-    OM2_unk78 *temp_v0;
-    ObjectModel2 *temp_v1;
+    OM2UnkWallData *sp44;
+    Struct8066C2D0_0 *var_t0;
 
-    temp_v1 = &D_global_asm_807F6000[arg0];
-    temp_v0 = temp_v1->unk78;
+    temp_v0 = D_global_asm_807F6000[arg0].unk78;
     if (temp_v0 != NULL) {
-        sp48 = *(temp_v0 + (D_global_asm_807444FC * 4));
+        sp48 = temp_v0[D_global_asm_807444FC];
     } else {
         sp48 = 0;
     }
-    temp_v0_2 = temp_v1->unk24;
-    sp44 = temp_v0_2->unk60 + temp_v0_2;
+    sp44 = (s32)D_global_asm_807F6000[arg0].unk24 + D_global_asm_807F6000[arg0].unk24->unk60;
     func_global_asm_806357F8(arg0, &spEC, &spE8, &spE4, &spE0, &spDC, &spD8, &spD4, &spD0, 0);
     guScaleF(sp8C, spD4, spD4, spD4);
     guRotateF(sp4C, spE0, 1.0f, 0.0f, 0.0f);
     guMtxCatF(sp8C, sp4C, sp8C);
     guRotateF(sp4C, spDC, 0.0f, 1.0f, 0.0f);
     guMtxCatF(sp8C, sp4C, sp8C);
-    guRotateF(sp4C, spD8, 0.0f, 0.0f, 1.0f);
+    guRotateF(sp4C, spD8, 0.0f, 0, 1.0f);
     guMtxCatF(sp8C, sp4C, sp8C);
     guTranslateF(sp4C, spEC, spE8, spE4);
     if (arg1 != -1) {
         guMtxCatF(sp8C, sp4C, sp8C);
-        func_global_asm_8066C7F4((arg1 << 5) + sp44, sp48, arg2);
+        func_global_asm_8066C7F4(&sp44[arg1], sp48, arg2);
         guMtxCatF(arg2, sp8C, arg2);
         return;
     }
     guMtxCatF(sp8C, sp4C, arg2);
 }
-*/
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066C7F4.s")
+void func_global_asm_8066C7F4(OM2UnkWallData *arg0, s32 arg1, f32 (*arg2)[4]) {
+    s32 i;
+    Mtx sp38;
+
+    i = 1;
+    memcpy(&sp38, arg0->unk0[0] + arg1, 0x40U);
+    while (arg0->unk0[i] != -1) {
+        guMtxCatL(&sp38, arg0->unk0[i] + arg1, &sp38);
+        i++;
+    }
+    guMtxL2F(arg2, &sp38);
+}
 
 void func_global_asm_8066C8B0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     func_global_asm_8066C2D0(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
@@ -95,6 +228,9 @@ void func_global_asm_8066C904(OM2_unk28 *arg0) {
 
 // Loads walls for the current map from pointer table 2
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066C958.s")
+
+void func_dk64_boot_800024E0(s32 **, s32 **, void *);
+extern s32 D_807FB530;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066CB88.s")
 
