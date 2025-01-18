@@ -423,8 +423,46 @@ void func_global_asm_8060C340(u16 *arg0, u8 *arg1, s32 arg2, u8 arg3, u8 arg4, u
     }
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_104F0/func_global_asm_8060C430.s")
+extern u8 *D_global_asm_80746800;
+
+u32 func_global_asm_8060C430(s32 arg0, u32 arg1, s32 arg2) {
+    f32 var_f0;
+
+    switch (arg0) {
+    case 17:
+        var_f0 = 5.0f;
+        if (arg2 != 0) {
+            var_f0 = 1.0f / var_f0;
+        }
+        arg1 *= var_f0;
+        break;
+    case 21:
+        var_f0 = 50.0f;
+        if (arg2 != 0) {
+            var_f0 = 1.0f / var_f0;
+        }
+        arg1 *= var_f0;
+        break;
+    case 18:
+    case 19:
+    case 20:
+    case 22:
+    case 23:
+    case 24:
+    case 26:
+    case 27:
+    case 28:
+        if (arg2 != 0) {
+            arg1 = strchr(D_global_asm_80746800, (s32) arg1) - D_global_asm_80746800;
+        } else {
+            arg1 = D_global_asm_80746800[arg1];
+        }
+        break;
+    }
+    return arg1;
+}
+
+
 
 // TODO: Is arg4 u8?
 void func_global_asm_8060C648(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex, s32 arg4) {
