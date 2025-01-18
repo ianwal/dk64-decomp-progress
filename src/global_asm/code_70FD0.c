@@ -46,7 +46,28 @@ extern u8 D_global_asm_807FB606;
 extern u8 D_global_asm_807FB61C;
 
 typedef struct Struct8066C2D0_1 {
-    u8 pad0[0x58];
+    u8 pad0[0x12];
+    u8 unk12;
+    u8 pad13[0x24 - 0x13];
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    s16 unk48;
+    u8 unk4A;
+    u8 unk4B;
+    u8 unk4C;
+    u8 unk4D;
+    s8 unk4E;
+    u8 unk4F;
+    u8 unk50;
+    u8 unk51;
+    u8 pad52[0x58 - 0x52];
 } Struct8066C2D0_1;
 
 typedef struct Struct8066C2D0_0 {
@@ -70,9 +91,10 @@ typedef struct tuple_s {
 
 typedef struct OM2Wall {
     tuple_s vert[3];
-    u8 pad12[2];
+    u8 unk12;
+    u8 unk13;
     s8 unk14;
-    u8 pad15;
+    u8 unk15;
 } OM2Wall;
 
 typedef struct OM2WallData {
@@ -289,37 +311,96 @@ void func_global_asm_8066CDF8(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066CEE4.s")
-
 typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s16 unk10;
+    tuple_s vert[3];
     s16 unk12;
-    u8 unk13;
+    u8 unk14;
 } Struct8066D250;
+
+s32 func_global_asm_8066D250(Struct8066D250 *);
+s8 func_global_asm_8066D2F4(s16 *);
+s16 func_global_asm_8066D4DC(s16 *, u8 *);
+s32 func_global_asm_8066DD34(void *);
+
+s32 func_global_asm_8066CEE4(OM2Wall *arg0, Struct8066C2D0_1 *arg1, f32 (*arg2)[4]) {
+    Struct8066D250 sp58;
+    f32 sp54;
+    f32 sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp38;
+    f32 sp34;
+
+    guMtxXFMF(arg2, arg0->vert[0].x, arg0->vert[0].y, arg0->vert[0].z, &sp54, &sp50, &sp4C);
+    sp58.vert[0].x = sp54;
+    sp58.vert[0].y = sp50;
+    sp58.vert[0].z = sp4C;
+    guMtxXFMF(arg2, arg0->vert[1].x, arg0->vert[1].y, arg0->vert[1].z, &sp48, &sp44, &sp40);
+    sp58.vert[1].x = sp48;
+    sp58.vert[1].y = sp44;
+    sp58.vert[1].z = sp40;
+    guMtxXFMF(arg2, arg0->vert[2].x, arg0->vert[2].y, arg0->vert[2].z, &sp3C, &sp38, &sp34);
+    sp58.vert[2].x = sp3C;
+    sp58.vert[2].y = sp38;
+    sp58.vert[2].z = sp34;
+    if (func_global_asm_8066D250(&sp58) != 0) {
+        return 0;
+    }
+    if (arg0->unk12 & 1) {
+        arg1->unk4D = 1;
+    } else {
+        arg1->unk4D = 0;
+    }
+    if (arg0->unk12 & 2) {
+        arg1->unk4F = arg0->unk13;
+    } else {
+        arg1->unk4F = 0U;
+    }
+    if (arg0->unk12 & 4) {
+        arg1->unk51 = 1;
+    } else {
+        arg1->unk51 = 0;
+    }
+    if (arg0->unk12 & 8) {
+        arg1->unk50 = 5;
+    } else {
+        arg1->unk50 = 0xFF;
+    }
+    arg1->unk4E = arg0->unk14;
+    arg1->unk24 = sp54 * 8.0f;
+    arg1->unk28 = sp50 * 8.0f;
+    arg1->unk2C = sp4C * 8.0f;
+    arg1->unk30 = sp48 * 8.0f;
+    arg1->unk34 = sp44 * 8.0f;
+    arg1->unk38 = sp40 * 8.0f;
+    arg1->unk3C = sp3C * 8.0f;
+    arg1->unk40 = sp38 * 8.0f;
+    arg1->unk44 = sp34 * 8.0f;
+    sp58.unk12 = func_global_asm_8066D4DC(&sp58, &sp58.unk14);
+    arg1->unk4B = func_global_asm_8066D2F4(&sp58);
+    arg1->unk48 = sp58.unk12;
+    arg1->unk4C = sp58.unk14;
+    return func_global_asm_8066DD34(arg1);
+}
 
 s32 func_global_asm_8066D250(Struct8066D250 *arg0) {
     s16 temp_a1;
     s16 temp_v0;
     s16 temp_v1;
 
-    temp_v0 = arg0->unk6;
-    temp_v1 = arg0->unk0;
-    if ((temp_v0 == temp_v1) && (arg0->unk2 == arg0->unk8) && (arg0->unk4 == arg0->unkA)) {
+    temp_v0 = arg0->vert[1].x;
+    temp_v1 = arg0->vert[0].x;
+    if ((temp_v0 == temp_v1) && (arg0->vert[1].y == arg0->vert[0].y) && (arg0->vert[1].z == arg0->vert[0].z)) {
         return TRUE;
     }
-    temp_a1 = arg0->unkC;
-    if ((temp_v0 == temp_a1) && (arg0->unkE == arg0->unk8) && (arg0->unk10 == arg0->unkA)) {
+    temp_a1 = arg0->vert[2].x;
+    if ((temp_v0 == temp_a1) && (arg0->vert[1].y == arg0->vert[2].y) && (arg0->vert[1].z == arg0->vert[2].z)) {
         return TRUE;
     }
-    if ((temp_a1 == temp_v1) && (arg0->unk2 == arg0->unkE) && (arg0->unk4 == arg0->unk10)) {
+    if ((temp_a1 == temp_v1) && (arg0->vert[2].y == arg0->vert[0].y) && (arg0->vert[2].z == arg0->vert[0].z)) {
         return TRUE;
     }
     return FALSE;
@@ -813,15 +894,15 @@ typedef struct {
 s32 func_global_asm_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
     Struct8066D250 sp20;
 
-    sp20.unk0 = arg0->unk0;
-    sp20.unk2 = arg0->unkC;
-    sp20.unk4 = arg0->unk18;
-    sp20.unk6 = arg0->unk4;
-    sp20.unk8 = arg0->unk10;
-    sp20.unkA = arg0->unk1C;
-    sp20.unkC = arg0->unk8;
-    sp20.unkE = arg0->unk14;
-    sp20.unk10 = arg0->unk20;
+    sp20.vert[0].x = arg0->unk0;
+    sp20.vert[0].y = arg0->unkC;
+    sp20.vert[0].z = arg0->unk18;
+    sp20.vert[1].x = arg0->unk4;
+    sp20.vert[1].y = arg0->unk10;
+    sp20.vert[1].z = arg0->unk1C;
+    sp20.vert[2].x = arg0->unk8;
+    sp20.vert[2].y = arg0->unk14;
+    sp20.vert[2].z = arg0->unk20;
     if (func_global_asm_8066D250(&sp20) != 0) {
         return FALSE;
     }
@@ -834,14 +915,14 @@ s32 func_global_asm_8066EE50(Struct8066EE50_1 *arg0, Struct8066EE50_2 *arg1) {
     arg1->unk3C = arg0->unk8 * 8.0f;
     arg1->unk40 = arg0->unk14 * 8.0f;
     arg1->unk44 = arg0->unk20 * 8.0f;
-    sp20.unk12 = func_global_asm_8066D4DC(&sp20, &sp20.unk13, arg0);
+    sp20.unk12 = func_global_asm_8066D4DC(&sp20, &sp20.unk14);
     arg1->next_state = func_global_asm_8066D2F4(&sp20);
     arg1->unk4D = 0;
     arg1->unk4F = 0;
     arg1->unk51 = 0;
     arg1->unk50 = 0xFF;
     arg1->unk48 = sp20.unk12;
-    arg1->unk4C = sp20.unk13;
+    arg1->unk4C = sp20.unk14;
     func_global_asm_8066DD34(arg1);
     return TRUE;
 }
