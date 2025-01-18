@@ -335,7 +335,7 @@ void func_global_asm_8060B750(s32 fileIndex);
 u8 func_global_asm_8060B7C4(void);
 void func_global_asm_8060B7D0(Maps *mapPointer, s32 *exitPointer);
 
-// global_asm/code_104F0.c
+// global_asm/saveFile.c
 void func_global_asm_8060B7F0(void);
 void func_global_asm_8060B84C(f32 arg0);
 void func_global_asm_8060B8F8(s32 arg0);
@@ -350,7 +350,7 @@ void func_global_asm_8060BF84(s32 arg0, u8 arg1, u16 *arg2, u8 *arg3);
 void func_global_asm_8060C2C4(s32 arg0, s32 arg1, u8 arg2, u16 *arg3, s8 *arg4);
 void func_global_asm_8060C340(u16 *arg0, u8 *arg1, s32 arg2, u8 arg3, u8 arg4, u8 arg5);
 // TODO: func_global_asm_8060C430 has no documented signature
-void func_global_asm_8060C648(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex, s32 arg4);
+void func_global_asm_8060C648(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex, u32 arg4);
 s32 func_global_asm_8060C6B8(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex);
 s32 func_global_asm_8060C724(u8 fileIndex);
 // TODO: func_global_asm_8060C758 has no documented signature

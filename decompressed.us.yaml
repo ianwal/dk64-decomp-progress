@@ -215,7 +215,7 @@ segments:
       - [0x200F600, c, code_F600]
       - [0x200FE40, c, code_FE40]
       - [0x2010130, c, done/dktv]
-      - [0x20104F0, c, code_104F0]
+      - [0x20104F0, c, saveFile]
       - [0x20131B0, c, code_131B0]
       - [0x2014CF0, c, code_14CF0]
       - [0x2015010, hasm, code_15010]
@@ -377,7 +377,7 @@ segments:
       - [0x215B290, .rodata, code_450]
       - [0x215B2E0, .rodata, code_3C10]
       - [0x215B4B0, rodata] # code_6710 // TODO: Problem with 80756F08, might be an array of doubles?
-      - [0x215BD20, .rodata, code_104F0]
+      - [0x215BD20, .rodata, saveFile]
       - [0x215BE40, .rodata, code_131B0]
       - [0x215BF90, .rodata, heap]
       - [0x215BFD0, .rodata, done/code_16550]
