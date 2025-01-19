@@ -2744,7 +2744,7 @@ us,asm,func_global_asm_8067C2B8,964,yes
 us,asm,func_global_asm_806B02EC,104,yes
 us,asm,func_global_asm_8064F97C,256,no
 us,asm,initializeCharacterSpawnerActor,876,no
-us,asm,func_global_asm_806B6600,856,no
+us,asm,func_global_asm_806B6600,856,yes
 us,asm,func_global_asm_806D0430,56,yes
 us,asm,func_global_asm_8065A570,216,yes
 us,asm,func_global_asm_8062773C,316,yes

@@ -6,28 +6,17 @@ extern s16 D_global_asm_807502E0;
 
 extern u8 D_global_asm_807FBD70;
 
-// rodata, close, doable
-// https://decomp.me/scratch/0Ln4b
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_global_asm_806B6600.s")
-
 typedef struct {
     u8 unk0;
     u8 unk1;
 } Actor178_806B6600;
 
-typedef struct {
-    u8 unk0;
-    u8 unk1;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-} AnimationState1C_806B6600;
-
-/*
 void func_global_asm_806B6600(u8 arg0) {
     Actor178_806B6600 *a178;
-    u32 temp_f0;
-    AnimationState1C_806B6600 *temp_t0;
+    u16 temp_f0;
+    AnimationStateUnk1C *temp_t0;
+    f32 temp;
+    f32 temp1;
 
     a178 = current_actor_pointer->unk178;
     temp_t0 = current_actor_pointer->animation_state->unk1C;
@@ -58,15 +47,16 @@ void func_global_asm_806B6600(u8 arg0) {
                 break;
         }
     }
-    temp_f0 = (8000.0f * (a178->unk0 / 255.0));
-    temp_t0->unk2 = -temp_f0;
-    (++temp_t0)->unk1 = 3;
-    temp_t0->unk0 = 0x7F;
-    temp_t0->unk2 = temp_f0;
-    temp_t0->unk4 = 0;
-    temp_t0->unk6 = 0;
+    temp1 = (a178->unk0 / 255.0);
+    temp = 8000.0f * temp1;
+    temp_t0[0].unk2_u16 = -temp;
+    temp_t0[1].unk1 = 3;
+    temp_t0++;
+    temp_t0[0].unk0 = 0x7F;
+    temp_t0[0].unk2_u16 = temp;
+    temp_t0[0].unk4 = 0;
+    temp_t0[0].unk6 = 0;
 }
-*/
 
 void func_global_asm_806B6958(void) {
     initializeCharacterSpawnerActor();
