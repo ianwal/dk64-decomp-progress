@@ -23,13 +23,12 @@ void* func_global_asm_8060095C(s32 arg0, s32 *arg1, s32 *arg2) {
     return (void*)(arg0 + 0x3FFF00FF);
 }
 
-// malloc, small struct?
+// very close, regalloc, 2 instructions swapped
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5650/func_global_asm_8060098C.s")
 
 /*
-very close, regalloc and 2 instructions swapped around
 void func_global_asm_8060098C(void *func, s32 time_delta, s32 arg2, s32 arg3, s32 arg4) {
-    DelayedCSData *var_v0;
+    DelayedCSData *next;
     DelayedCSData *local;
     DelayedCSData *sp3C;
     s32 frame;
@@ -44,49 +43,48 @@ void func_global_asm_8060098C(void *func, s32 time_delta, s32 arg2, s32 arg3, s3
     local = malloc(sizeof(DelayedCSData));
     sp28 = 0xC6F0AFA9;
     sp24 = 0x5FAFBA0C;
-    local = local;
     func_def = func_global_asm_8060095C(((s32)osPiReadIo + 0xC000FF01), &sp28, &sp24);
     func_def(sp24, &sp30);
     if (sp30 != sp28) {
         time_delta *= 2;
     }
     local->function = func;
-    local->unkC = arg2;
-    local->unk10 = arg3;
-    local->unk14 = arg4;
+    local->args[0] = arg2;
+    local->args[1] = arg3;
+    local->args[2] = arg4;
     frame = time_delta + D_global_asm_8076A068;
     local->action_frame = frame;
     local->next = NULL;
     current = D_global_asm_807452A0;
     if (current) {
-        var_v0 = current->next;
-        if (var_v0) {
+        next = current->next;
+        if (next) {
             temp_a0 = (frame) & 0x7FFFFFFF;
             if (temp_a0 >= (u32) (current->action_frame & 0x7FFFFFFF)) {
 loop_5:
                 sp3C = current;
-                current = var_v0;
-                var_v0 = var_v0->next;
-                if (var_v0) {
-                    if (temp_a0 >= (u32) (current->action_frame & 0x7FFFFFFF)) {
+                current = next;
+                next = next->next;
+                if (next) {
+                    if (temp_a0 >= (current->action_frame & 0x7FFFFFFF)) {
                         goto loop_5;
                     }
                 }
             }
         }
-        if ((u32) (local->action_frame & 0x7FFFFFFF) < (u32) (current->action_frame & 0x7FFFFFFF)) {
+        if ((local->action_frame & 0x7FFFFFFF) < (u32) (current->action_frame & 0x7FFFFFFF)) {
             local->next = current;
             if (sp3C) {
                 sp3C->next = local;
-                return;
+            } else {
+                D_global_asm_807452A0 = local;
             }
-            D_global_asm_807452A0 = local;
-            return;
+        } else {
+            current->next = local;
         }
-        current->next = local;
-        return;
+    } else {
+        D_global_asm_807452A0 = local;
     }
-    D_global_asm_807452A0 = local;
 }
 */
 

@@ -631,6 +631,7 @@ Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, char *string) {
     return dl;
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ABC94.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ABE3C.s")

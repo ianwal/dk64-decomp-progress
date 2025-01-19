@@ -143,7 +143,7 @@ void func_boss_8002413C(void) {
     s16 j;
     Struct800358E0 *temp_a2_2;
     u8 var_a3;
-    s32  temp;
+    s32 temp;
 
     if (current_map == MAP_JAPES_ARMY_DILLO) {
         var_a3 = 0;

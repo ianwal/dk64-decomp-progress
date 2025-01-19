@@ -367,7 +367,7 @@ s32 func_global_asm_806C8DE0(s32 playerIndex) {
         case 6:
         case 7:
             Player = character_change_array[playerIndex].player_pointer;
-            PaaD = Player->PaaD_arr[playerIndex];
+            PaaD = Player->AAD_as_array[playerIndex];
             phi_v1 = func_global_asm_806C8D2C(PaaD->unk1EE);
     }
     return phi_v1;

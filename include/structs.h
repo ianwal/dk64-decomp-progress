@@ -1491,36 +1491,40 @@ struct actor {
     u8 unk172;
     u8 unk173;
     union {
-        void *additional_actor_data; // For when you don't know which one it's using
-        OtherAdditionalActorData *OaaD;
-        AnotherAdditionalActorData *AaaD;
-        RaceAdditionalActorData *RaaD;
-        RaceAdditionalActorData2 *RaaD2;
-        YetAnotherAdditionalActorData *YaaD;
-        YetAnotherAdditionalActorData4 *YaaD4;
-        YetAnotherAdditionalActorData5 *YaaD5;
-        MenuAdditionalActorData *MaaD;
-        PlayerAdditionalActorData *PaaD;
-        PlayerAdditionalActorData *PaaD_arr[1]; // Not sure if we should fix PaaD to be like this or not. Can't be bovvered right now
-        CameraPaad *CaaD;
-        PaaD0 *PaaD0; // TODO: Figure this out
-        BaaD2 *BaaD2; // TODO: Figure this out
-        TempAAD *TaaD; // TODO: Figure this out (race overlay)
-        void *additional_data_pointer; //legacy
-    };
-    union {
-        void *unk178;
-        Actor178 *a178;
-        RaceActor178 *race178;
-        BossActor178 *boss178;
-        A178_806A18A8 *a178_806A18A8;
-    };
-    union {
-        Actor17C *unk17C;
-    };
-    union {
-        void *unk180;
-        SnideAaD180* snide_aad_180;
+        void *AAD_as_array[4];
+        struct {
+            union {
+                void *additional_actor_data; // For when you don't know which one it's using
+                OtherAdditionalActorData *OaaD;
+                AnotherAdditionalActorData *AaaD;
+                RaceAdditionalActorData *RaaD;
+                RaceAdditionalActorData2 *RaaD2;
+                YetAnotherAdditionalActorData *YaaD;
+                YetAnotherAdditionalActorData4 *YaaD4;
+                YetAnotherAdditionalActorData5 *YaaD5;
+                MenuAdditionalActorData *MaaD;
+                PlayerAdditionalActorData *PaaD;
+                CameraPaad *CaaD;
+                PaaD0 *PaaD0; // TODO: Figure this out
+                BaaD2 *BaaD2; // TODO: Figure this out
+                TempAAD *TaaD; // TODO: Figure this out (race overlay)
+                void *additional_data_pointer; //legacy
+            };
+            union {
+                void *unk178;
+                Actor178 *a178;
+                RaceActor178 *race178;
+                BossActor178 *boss178;
+                A178_806A18A8 *a178_806A18A8;
+            };
+            union {
+                Actor17C *unk17C;
+            };
+            union {
+                void *unk180;
+                SnideAaD180* snide_aad_180;
+            };
+        };
     };
     void* unk184;
 };
