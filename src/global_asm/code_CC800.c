@@ -357,12 +357,6 @@ u8 func_global_asm_806C8D2C(s16 arg0) {
     return 0;
 }
 
-// close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C8DE0.s")
-
-// u8 func_global_asm_806C8D2C(s16, s32);
-
-/*
 s32 func_global_asm_806C8DE0(s32 playerIndex) {
     s32 phi_v1;
     PlayerAdditionalActorData *PaaD;
@@ -373,12 +367,11 @@ s32 func_global_asm_806C8DE0(s32 playerIndex) {
         case 6:
         case 7:
             Player = character_change_array[playerIndex].player_pointer;
-            PaaD = Player->PaaD;
+            PaaD = Player->PaaD_arr[playerIndex];
             phi_v1 = func_global_asm_806C8D2C(PaaD->unk1EE);
     }
     return phi_v1;
 }
-*/
 
 // TODO: Quite fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C8E58.s")

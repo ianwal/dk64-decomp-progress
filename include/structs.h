@@ -1501,6 +1501,7 @@ struct actor {
         YetAnotherAdditionalActorData5 *YaaD5;
         MenuAdditionalActorData *MaaD;
         PlayerAdditionalActorData *PaaD;
+        PlayerAdditionalActorData *PaaD_arr[1]; // Not sure if we should fix PaaD to be like this or not. Can't be bovvered right now
         CameraPaad *CaaD;
         PaaD0 *PaaD0; // TODO: Figure this out
         BaaD2 *BaaD2; // TODO: Figure this out

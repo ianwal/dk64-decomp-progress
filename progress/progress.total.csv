@@ -1981,7 +1981,7 @@ us,asm,func_global_asm_8062133C,2912,no
 us,asm,func_global_asm_806D428C,792,yes
 us,asm,func_global_asm_80719B88,120,yes
 us,asm,func_global_asm_806C9C1C,100,yes
-us,asm,func_global_asm_806C8DE0,120,no
+us,asm,func_global_asm_806C8DE0,120,yes
 us,asm,func_global_asm_80618EE8,140,yes
 us,asm,func_global_asm_806761D0,28,yes
 us,asm,func_global_asm_80617FFC,76,yes
