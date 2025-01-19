@@ -446,7 +446,6 @@ extern s16 D_global_asm_8075388C[];
 void func_global_asm_806EC4AC(void) {
     f32 temp_f12;
     f32 var_f14;
-    f32 var_f18;
     f32 var_f20;
     f32 var_f2;
 
@@ -456,26 +455,22 @@ void func_global_asm_806EC4AC(void) {
     if (D_global_asm_807538D8[D_global_asm_807FD584] < var_f2) {
         var_f2 = D_global_asm_807538D8[D_global_asm_807FD584];
     }
-    temp_f12 = ((((D_global_asm_807538F8[D_global_asm_807FD584]) - D_global_asm_807538E8[D_global_asm_807FD584]) * (var_f2 / D_global_asm_807538D8[D_global_asm_807FD584])) + D_global_asm_807538E8[D_global_asm_807FD584]) - ((current_player->unkAC - D_global_asm_8075388C[D_global_asm_807FD584]) - current_player->y_position) * 40.0f;
+    temp_f12 = D_global_asm_807538F8[D_global_asm_807FD584] - D_global_asm_807538E8[D_global_asm_807FD584];
+    temp_f12 *= (var_f2 / D_global_asm_807538D8[D_global_asm_807FD584]);
+    temp_f12 += D_global_asm_807538E8[D_global_asm_807FD584];
+    temp_f12 -= ((current_player->unkAC - D_global_asm_8075388C[D_global_asm_807FD584]) - current_player->y_position);
+    temp_f12 *= 40.0f;
     if (temp_f12 > 0.0f) {
-        var_f14 = current_player->y_velocity * (0.5 + ((var_f2 * 40.0f) / (2.0f * (D_global_asm_807538D8[D_global_asm_807FD584] * 40.0f))));
-        var_f18 = (var_f14 * var_f14) / (2.0f * temp_f12);
-        if (var_f18 < var_f20) {
-            var_f18 = var_f20;
-        }
+        var_f14 = current_player->y_velocity * (0.5 + ((40.0f * var_f2) / (2.0f * (D_global_asm_807538D8[D_global_asm_807FD584] * 40.0f))));
+        var_f20 = MAX((var_f14 * var_f14) / (2.0f * temp_f12), var_f20);
     } else {
         var_f14 = 0.0f;
-        var_f18 = var_f20;
     }
     current_player->y_velocity = var_f14;
-    extra_player_info_pointer->unk1C = var_f18;
+    extra_player_info_pointer->unk1C = var_f20;
     extra_player_info_pointer->unk10 = 0;
     extra_player_info_pointer->unk30 = D_global_asm_80753250[D_global_asm_807FD584];
-    if (current_actor_pointer->unkB8 < D_global_asm_80753988[D_global_asm_807FD584]) {
-        current_actor_pointer->unkB8 = current_actor_pointer->unkB8;
-    } else {
-        current_actor_pointer->unkB8 = D_global_asm_80753988[D_global_asm_807FD584];
-    }
+    current_actor_pointer->unkB8 = MIN(current_actor_pointer->unkB8, D_global_asm_80753988[D_global_asm_807FD584]);
     current_player->control_state = 0x4E;
     current_player->control_state_progress = 0;
     playAnimation(current_actor_pointer, 0x35);

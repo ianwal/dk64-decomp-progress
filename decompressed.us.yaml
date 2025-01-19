@@ -228,6 +228,7 @@ segments:
       - [0x2017490, hasm, code_17490]
       - [0x2017540, c, code_17540]
       - [0x2017800, c, code_17800]
+      - [0x2017A10, hasm, code_17A10]
       - [0x2017B40, c, done/code_17B40]
       - [0x2017B90, c, code_17B90]
       - [0x201E2D0, bin, code_1E2D0]
