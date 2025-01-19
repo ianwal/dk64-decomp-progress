@@ -141,7 +141,7 @@ void func_global_asm_806DF670(s16 *arg0, s16 arg1, s16 arg2) {
 // https://decomp.me/scratch/hyCim
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/handleInputsForControlState.s")
 
-u16 func_global_asm_806DFF34(u16, s32 *);
+// u16 func_global_asm_806DFF34(u32, u16 *);
 
 typedef struct {
     void (*unk0)(void); // Start Button Pressed Handler
@@ -316,30 +316,21 @@ s32 handleInputsForControlState(s32 controlState) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806DFF34.s")
+u16 func_global_asm_806DFF34(u16 arg0, u16 *arg1) {
+    u16 i;
+    u16 j;
 
-/*
-// TODO: Pretty close
-u16 func_global_asm_806DFF34(u32 arg0, u16 *arg1) {
-    u16 var_a2;
-    u16 var_v1;
-    u32 var_v0;
-
-    var_v0 = *arg1;
-    var_v1 = 0;
-    var_a2 = 0;
-    while (var_v0 != 0) {
-        var_v1 |= var_v0;
-        arg1++;
-        if (var_v0 & arg0) {
-            var_a2 |= arg1[0];
+    j = 0;
+    i = 0;
+    while (*arg1) {
+        j |= *arg1;
+        if (*arg1++ & arg0) {
+            i |= *arg1;
         }
-        var_v0 = arg1[1];
         arg1++;
     }
-    return (var_a2 | (arg0 & ~var_v1));
+    return (i | (arg0 & ~j));
 }
-*/
 
 f32 func_global_asm_806DFFA0(f32 arg0, s16 arg1, s16 arg2) {
     return func_global_asm_80612790(arg2 - arg1) * arg0;
