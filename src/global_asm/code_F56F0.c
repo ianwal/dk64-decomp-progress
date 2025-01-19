@@ -598,7 +598,94 @@ f32 func_global_asm_806F1B90(f32 *arg0, f32 arg1) {
     return phi_f2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F1C04.s")
+typedef struct KongTagBarrelAAD178_sub1C {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    s32 unk14;
+} KongTagBarrelAAD178_sub1C;
+
+typedef struct KongTagBarrelAAD178 {
+    f32 unk0;
+    f32 unk4;
+    u8 pad8[0x10 - 0x8];
+    f32 unk10;
+    u8 unk14;
+    u8 pad15[0x18 - 0x15];
+    s32 unk18;
+    KongTagBarrelAAD178_sub1C unk1C[];
+} KongTagBarrelAAD178;
+
+void func_global_asm_806F1C04(Actor *arg0, AnimationStateUnk1C *arg1, s32 *arg2) {
+    s32 pad[2];
+    f32 temp_f0;
+    f32 spB8;
+    f32 spB4;
+    f32 spB0;
+    f32 spAC;
+    f32 spA8;
+    f32 spA4;
+    f32 temp_f0_2;
+    f32 temp_f2;
+    f32 var_f24;
+    f32 var_f26;
+    s32 sp90;
+    KongTagBarrelAAD178 *temp_s0;
+    s32 var_s3;
+    KongTagBarrelAAD178_sub1C *var_s1;
+    f32 sp80;
+    f32 sp7C;
+    s32 i;
+    s32 var_s4;
+    s8 var_fp;
+    
+
+    temp_s0 = arg0->unk178;
+    var_fp = -0x80;
+    var_f24 = 0.0f;
+    var_f26 = 0.0f;
+    var_s1 = &temp_s0->unk1C;
+    sp90 = func_global_asm_806F1B58(arg0, temp_s0, 2);
+    sp80 = 0.0f;
+    sp7C = 0.0f;
+    var_s4 = *arg2;
+    var_s3 = 0x14;
+    getBonePosition(arg0, 0xD, &spA4, &spA8, &spAC);
+    getBonePosition(arg0, 0xE, &spB0, &spB4, &spB8);
+    temp_f0 = func_global_asm_80611BB4(spAC - spB8, spA4 - spB0);
+    if (sp90 == 0) {
+        temp_s0->unk0 = temp_f0;
+        temp_s0->unk4 = spA8;
+        if ((temp_s0->unk14 != 0) && (arg0->object_properties_bitfield & 0x100) && (temp_s0->unk18 == 2)) {
+            temp_s0->unk14--;
+        }
+    } else {
+        temp_f0_2 = func_global_asm_806F1B90(temp_s0, temp_f0);
+        temp_s0->unk10 += ((-128.0f - temp_s0->unk10) * 0.3);
+        var_fp = temp_s0->unk10;
+        var_f26 = 0.4f * temp_f0_2;
+        var_f24 = func_global_asm_806F1AE0(arg0, temp_s0, 0.02f);
+    }
+    for (i = 0; i < 4; i++) {
+        if (sp90) {
+            func_global_asm_806F1A18(var_f24, 0.06f, var_s1, &sp80);
+            func_global_asm_806F1A18(var_f26, 0.06f, &var_s1->unkC, &sp7C);
+        }
+        arg1[var_s4].unk0 = var_fp;
+        arg1[var_s4].unk1 = var_s3;
+        arg1[var_s4].unk2 = (var_s1->unk4 + var_s1->unk0) * 10430.218905280077;
+        arg1[var_s4].unk4 = 0;
+        arg1[var_s4].unk6 = (var_s1->unk10 + var_s1->unkC) * 10430.218905280077;
+        var_s1++;
+        var_s4++;
+        var_s3++;
+    }
+    *arg2 = var_s4;
+}
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F1EB0.s")
 
