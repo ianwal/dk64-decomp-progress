@@ -491,90 +491,81 @@ void func_global_asm_806E077C(void) {
     extra_player_info_pointer->unk4 = 0.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E07F8.s")
-
-/*
 // TODO: WIP, quite close considering the size of it
 void func_global_asm_806E07F8(void) {
-    s16 temp_a1;
-    s16 temp_v0_3;
-    s32 temp_v0;
     f32 phi_f0;
-    f32 phi_f0_2;
-    Actor *phi_t9;
+    s16 temp_v0_3;
     u8 phi_v0;
+    s8 temp;
 
     func_global_asm_806E007C();
-    temp_a1 = current_actor_pointer->unkEE;
-    temp_v0 = current_actor_pointer->y_rotation - temp_a1;
-    if (temp_v0 > 0) {
-        phi_f0 = temp_v0;
-    } else {
-        phi_f0 = -temp_v0;
-    }
-    phi_f0_2 = phi_f0;
+    phi_f0 = ABS(current_actor_pointer->y_rotation - current_actor_pointer->unkEE);
     if (phi_f0 > 2048.0f) {
-        phi_f0_2 = 4096.0f - phi_f0;
+        phi_f0 = 4096.0f - phi_f0;
     }
-    if (phi_f0_2 > 400.0f) {
-        // TODO: Some float stuff missing here?
+    phi_f0 = MIN(400.0f, phi_f0);
+    phi_f0 *= (0.25 + (0.75 * (current_actor_pointer->unkB8 / extra_player_info_pointer->unk38)));
+
+    if(phi_f0);
+
+    func_global_asm_806DF494(
+        &current_actor_pointer->y_rotation,
+        current_actor_pointer->unkEE,
+        extra_player_info_pointer->unk48 / 4);
+    if (current_actor_pointer->control_state == 0x14) {
+        return;
     }
-    func_global_asm_806DF494(&current_actor_pointer->y_rotation, temp_a1, extra_player_info_pointer->unk48 / 4);
-    if (current_actor_pointer->control_state != 0x14) {
-        if ((current_actor_pointer->control_state == 0xF) && ((temp_v0_3 = ((s16*)current_actor_pointer->animation_state->unk0)[8], (temp_v0_3 == 0x1F2)) || (temp_v0_3 == 0x1B3))) {
+    if (current_actor_pointer->control_state == 0xF) {
+        temp_v0_3 = current_actor_pointer->animation_state->unk0->unk10;
+        if ((temp_v0_3 == 0x1F2) || (temp_v0_3 == 0x1B3)) {
             if (D_global_asm_807FD610[cc_player_index].unk2E < -0x1E) {
                 playAnimation(current_actor_pointer, 0x61);
                 current_actor_pointer->control_state = 0x10;
                 current_actor_pointer->control_state_progress = 0;
-            }
-            if (D_global_asm_807FD610[cc_player_index].unk2E >= 0x1F) {
+            } else if (D_global_asm_807FD610[cc_player_index].unk2E >= 0x1F) {
                 playAnimation(current_actor_pointer, 0x5F);
                 current_actor_pointer->control_state = 0x11;
                 current_actor_pointer->control_state_progress = 0;
-            } else {
-                if (D_global_asm_807FD610[cc_player_index].unk2F >= 0x1F) {
-                    playAnimation(current_actor_pointer, 0x63);
-                    current_actor_pointer->control_state = 0x12;
-                    current_actor_pointer->control_state_progress = 0;
-                } else if (D_global_asm_807FD610[cc_player_index].unk2F < -0x1E) {
-                    playAnimation(current_actor_pointer, 0x65);
-                    current_actor_pointer->control_state = 0x13;
-block_19:
-                    current_actor_pointer->control_state_progress = 0;
-                }
+            } else if (D_global_asm_807FD610[cc_player_index].unk2F >= 0x1F) {
+                playAnimation(current_actor_pointer, 0x63);
+                current_actor_pointer->control_state = 0x12;
+                current_actor_pointer->control_state_progress = 0;
+            } else if (D_global_asm_807FD610[cc_player_index].unk2F < -0x1E) {
+                playAnimation(current_actor_pointer, 0x65);
+                current_actor_pointer->control_state = 0x13;
+                current_actor_pointer->control_state_progress = 0;
             }
-        }
-        // Joystick range check
-        if (((D_global_asm_807FD610[cc_player_index].unk2E < 0x1E) && ((current_actor_pointer->control_state == 0x11))) || ((((D_global_asm_807FD610[cc_player_index].unk2F < -0x1D) == 0)) && ((current_actor_pointer->control_state == 0x13))) || ((D_global_asm_807FD610[cc_player_index].unk2F < 0x1E) && (current_actor_pointer->control_state == 0x12)) || ((D_global_asm_807FD610[cc_player_index].unk2E >= -0x1D) && (current_actor_pointer->control_state == 0x10))) {
-            if ((current_character_index[cc_player_index] == 2) && (current_actor_pointer->control_state != 0x12)) {
-                playActorAnimation(current_actor_pointer, 0x191);
-            } else {
-                if (current_actor_pointer->control_state_progress == 1) {
-                    switch (current_actor_pointer->control_state) {
-                        case 17:
-                            playAnimation(current_actor_pointer, 0x60);
-                            break;
-                        case 16:
-                            playAnimation(current_actor_pointer, 0x62);
-                            break;
-                        case 18:
-                            playAnimation(current_actor_pointer, 0x64);
-                            break;
-                        case 19:
-                            playAnimation(current_actor_pointer, 0x66);
-                            break;
-                    }
-                } else {
-                    playAnimation(current_actor_pointer, 0x68);
-                }
-            }
-
-            current_actor_pointer->control_state = 0xF;
-            current_actor_pointer->control_state_progress = 0;
         }
     }
+    // Joystick range check
+    if (((D_global_asm_807FD610[cc_player_index].unk2E < 0x1E) && ((current_actor_pointer->control_state == 0x11))) || ((((D_global_asm_807FD610[cc_player_index].unk2F > -0x1E) )) && ((current_actor_pointer->control_state == 0x13))) || ((D_global_asm_807FD610[cc_player_index].unk2F < 0x1E) && (current_actor_pointer->control_state == 0x12)) || ((D_global_asm_807FD610[cc_player_index].unk2E >= -0x1D) && (current_actor_pointer->control_state == 0x10))) {
+        if ((current_character_index[cc_player_index] == 2) && (current_actor_pointer->control_state != 0x12)) {
+            playActorAnimation(current_actor_pointer, 0x191);
+        } else {
+            if (current_actor_pointer->control_state_progress == 1) {
+                switch (current_actor_pointer->control_state) {
+                    case 17:
+                        playAnimation(current_actor_pointer, 0x60);
+                        break;
+                    case 16:
+                        playAnimation(current_actor_pointer, 0x62);
+                        break;
+                    case 18:
+                        playAnimation(current_actor_pointer, 0x64);
+                        break;
+                    case 19:
+                        playAnimation(current_actor_pointer, 0x66);
+                        break;
+                }
+            } else {
+                playAnimation(current_actor_pointer, 0x68);
+            }
+        }
+
+        current_actor_pointer->control_state = 0xF;
+        current_actor_pointer->control_state_progress = 0;
+    }
 }
-*/
 
 void func_global_asm_806E0BEC(void) {
     f32 phi_f0;

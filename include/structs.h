@@ -416,7 +416,7 @@ typedef struct actor_animation_state {
     s32 unk88;
     f32 unk8C;
     AnimationStateUnk0 unk90[4];
-    ActorAnimationState_unk170 unk170[];
+    ActorAnimationState_unk170 unk170[1];
 } ActorAnimationState;
 
 typedef struct {
@@ -3354,7 +3354,7 @@ typedef struct dk64_boot_struct_0 {
 
 typedef struct UnkMQStruct {
     OSMesgQueue mq;
-    OSMesg msgs[];
+    OSMesg msgs[1];
 } UnkMQStruct;
 
 typedef struct {
