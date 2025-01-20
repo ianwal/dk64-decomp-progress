@@ -1291,7 +1291,9 @@ typedef struct {
 
 typedef struct {
     // Small header on top of DisplayList Pointer
-    u8 unk0[0x20 - 0x0];
+    u8 unk0[0x1C - 0x0];
+    s16 unk1C;
+    u8 pad1E[2];
     u8 unk20;
     u8 unk21[0x38 - 0x21];
     f32 unk38;

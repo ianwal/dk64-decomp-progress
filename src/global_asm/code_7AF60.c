@@ -94,81 +94,62 @@ u8 func_global_asm_806767E0(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return func_global_asm_80676CB0(arg2, 2);
 }
 
-// TODO: Needs actor->unk0 shape
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7AF60/func_global_asm_8067680C.s")
-
 extern u8 D_807FBBA9;
 
-/*
 s32 func_global_asm_8067680C(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
-    s32 var_v0;
-    enum actors_e temp_v0;
-    f32 temp_f12;
-    f32 temp_f2;
+    u32 var_v0;
     f32 var_f0;
+    f32 var_f12;
     f32 var_f14;
+    PlayerAdditionalActorData *PaaD;
 
     if (arg1->interactable & 1) {
-        if (arg1->PaaD->unk1F0 & 0x01000000) {
-            return 1;
+        PaaD = arg1->PaaD;
+        if (PaaD->unk1F0 & 0x01000000) {
+            return TRUE;
         }
-        goto block_3;
     }
-block_3:
-    if (func_global_asm_8067641C(arg0, arg1, arg2) == 0) {
-        return 0;
+    if (!func_global_asm_8067641C(arg0, arg1, arg2)) {
+        return FALSE;
     }
-    temp_f12 = arg1->y_position;
-    temp_f2 = arg0->y_position + (arg0->animation_state->scale[1] * arg0->unk0->unk1C);
-    if (temp_f12 < temp_f2) {
-        var_f14 = temp_f2 - temp_f12;
-    } else {
-        var_f14 = -(temp_f2 - temp_f12);
-    }
-    temp_v0 = arg0->unk58;
-    if (temp_v0 >= 0x56) {
-        switch (temp_v0);                           // switch 1; irregular
-    } else if (temp_v0 >= 0x1B) {
-        switch (temp_v0) {
-            case ACTOR_VASE_OVAL:
-            case ACTOR_VASE_DOTS:
-            case ACTOR_VASE_TRIANGLE:
-            case ACTOR_VASE_PLUS:
-            case ACTOR_CANNON_BALL:
-                var_f0 = 14.0f;
-                break;
-            case ACTOR_BOULDER:
-            case ACTOR_APPLE:                       // switch 1
-                var_f0 = 25.0f;
-                break;
-        }
-    } else if (temp_v0 != ACTOR_BARREL_DIDDY_5DI) {
-        if (temp_v0 == ACTOR_TNT_BARREL) {
-            goto block_18;
-        }
-    default:
-        var_f0 = 0.0f;
-    } else {
-    case ACTOR_STEEL_KEG:
-    case ACTOR_BARREL:                              // switch 1
-    case ACTOR_BARREL_BANANA:                       // switch 1
-block_18:
-        var_f0 = 8.0f;
+    var_f0 = arg0->animation_state->scale[1] * arg0->unk0->unk1C;
+    var_f12 = arg0->y_position + var_f0;
+    var_f14 = ABS(var_f12 - arg1->y_position);
+    var_v0 = arg0->unk58;
+    switch (var_v0) {
+        case ACTOR_BARREL_DIDDY_5DI:
+        case ACTOR_TNT_BARREL:
+        case ACTOR_STEEL_KEG:
+        case ACTOR_BARREL:
+        case ACTOR_BARREL_BANANA: 
+            var_f0 = 8.0f;
+            break;
+        case ACTOR_VASE_OVAL:
+        case ACTOR_VASE_DOTS:
+        case ACTOR_VASE_TRIANGLE:
+        case ACTOR_VASE_PLUS:
+        case ACTOR_CANNON_BALL:
+            var_f0 = 14.0f;
+            break;
+        case ACTOR_BOULDER:
+        case ACTOR_APPLE:
+            var_f0 = 25.0f;
+            break;
+        default:
+            var_f0 = 0.0f;
+            break;
     }
     if (var_f0 < var_f14) {
-        return 0;
+        return FALSE;
     }
-    if (D_807FBBA9 != 0) {
-        return 0;
+    if (D_807FBBA9) {
+        return FALSE;
     }
-    var_v0 = 1;
-    if (!(arg0->unk68 & 1)) {
-        var_v0 = 0;
+    if ((arg0->unk68 & 1) == 0) {
+        return FALSE;
     }
-    return var_v0;
+    return TRUE;
 }
-*/
 
 int func_global_asm_806769A8(s32 arg0, Actor *arg1, s32 arg2) {
     if (arg1->unk58 == ACTOR_CHUNKY) {
