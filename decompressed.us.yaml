@@ -217,7 +217,7 @@ segments:
       - [0x2010130, c, done/dktv]
       - [0x20104F0, c, saveFile]
       - [0x20131B0, c, code_131B0]
-      - [0x2014CF0, c, code_14CF0]
+      - [0x2014CF0, c, done/code_14CF0]
       - [0x2015010, hasm, code_15010]
       - [0x2015050, c, heap]
       - [0x2016550, c, done/code_16550]
