@@ -2956,7 +2956,7 @@ us,asm,func_global_asm_8063D9D0,112,yes
 us,asm,func_global_asm_806766E0,80,yes
 us,asm,func_global_asm_80654CCC,440,no
 us,asm,func_global_asm_806A921C,152,yes
-us,asm,func_global_asm_80611D20,128,no
+us,asm,func_global_asm_80611D20,128,yes
 us,asm,func_global_asm_80610310,28,yes
 us,asm,func_global_asm_8065E138,1276,no
 us,asm,func_global_asm_8072E54C,88,yes

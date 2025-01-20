@@ -1,21 +1,21 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_16A20/func_global_asm_80611D20.s")
-
 extern u16 D_global_asm_80746A50[];
 extern u16 D_global_asm_80746ACC[];
 extern u16 D_global_asm_80746B4C[];
 
 s32 func_global_asm_80611D20(s32);
 
-/*
 s32 func_global_asm_80611D20(s32 arg0) {
     u16 *var_a2;
     s32 var_a1;
     s32 var_v1;
     s32 i;
+    s32 temp;
+    s32 temp2;
+    s32 temp3;
+    s32 temp4;
 
     if (arg0 >= 0x7FE0) {
         var_v1 = 7;
@@ -33,9 +33,12 @@ s32 func_global_asm_80611D20(s32 arg0) {
         var_a2 = &D_global_asm_80746A50;
     }
     i = arg0 >> var_a1;
-    return var_a2[i] - (((var_a2[i] - var_a2[i + 1]) * (arg0 & var_v1)) >> var_a1);
+    temp = var_a2[i];
+    temp4 = var_a2[i + 1];
+    temp2 = temp - temp4;
+    temp3 = arg0 & var_v1;
+    return temp - ((temp2 * temp3) >> var_a1);
 }
-*/
 
 u16 func_global_asm_80611DA0(s16 arg0) {
     s32 temp_a1;
