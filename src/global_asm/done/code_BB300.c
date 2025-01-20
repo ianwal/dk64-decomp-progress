@@ -112,9 +112,6 @@ void func_global_asm_806B6C88(s16 arg0, s16 arg1) {
     }
 }
 
-// Close, Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BB300/func_global_asm_806B6DB0.s")
-
 s32 func_global_asm_8072881C(s32, s32 *);
 void func_global_asm_8072C918(s32, s16, s16);
 
@@ -123,15 +120,12 @@ typedef struct KlaptrapAAD178 {
     s16 unk2;
 } KlaptrapAAD178;
 
-/*
 void func_global_asm_806B6DB0(s32 arg0) {
     KlaptrapAAD178 *aad178; // 34
     s16 var_a2; // 32
     u8 sp31; // 31
     s8 var_t1;
     Actor *temp; // 2C
-    f32 dz;
-    f32 dx;
 
     aad178 = current_actor_pointer->AAD_as_array[1];
     if (current_actor_pointer->unkEE < current_actor_pointer->y_rotation) {
@@ -139,12 +133,10 @@ void func_global_asm_806B6DB0(s32 arg0) {
     } else {
         var_a2 = current_actor_pointer->unkEE - current_actor_pointer->y_rotation;
     }
-    dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
-    dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
-    sp31 = FALSE;
-    if (((dx * dx) + (dz * dz)) < 2500.0f) {
-        sp31 = TRUE;
-    }
+
+    sp31 = SQ(current_actor_pointer->x_position - D_global_asm_807FDC94->x_position) + SQ(current_actor_pointer->z_position - D_global_asm_807FDC94->z_position) < 2500.0f;
+
+    
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC98->unk34 = 1.0f;
         func_global_asm_80724CA4(2, 2);
@@ -283,7 +275,6 @@ void func_global_asm_806B6DB0(s32 arg0) {
     }
     renderActor(current_actor_pointer, 0U);
 }
-*/
 
 
 void func_global_asm_806B75F4(void) {
