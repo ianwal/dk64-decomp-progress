@@ -33,30 +33,27 @@ void func_global_asm_80659350(void) {
     func_global_asm_80659320();
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E020/func_global_asm_806593C8.s")
-
-/*
 void func_global_asm_806593C8(s32 arg0, s32 arg1) {
     global_asm_struct_78 *temp_v0;
-    global_asm_struct_78 *temp_v1;
+    global_asm_struct_78 *var_a1;
+    global_asm_struct_78 *var_v1;
 
-    temp_v1 = D_global_asm_807F7370[func_global_asm_80659544(arg0)];
-    while (temp_v1 && arg0 != temp_v1->unk0) {
-        temp_v1 = temp_v1->unk8;
+    var_a1 = &D_global_asm_807F7370[func_global_asm_80659544(arg0)];
+    var_v1 = var_a1->unk0;
+    while ((var_v1 != NULL) && (arg0 != var_v1->unk0)) {
+        var_a1 = &var_v1->unk8;
+        var_v1 = var_v1->unk8;
     }
-
-    if (!temp_v1) {
+    if (var_v1 == NULL) {
         temp_v0 = malloc(sizeof(global_asm_struct_78));
-        temp_v1->unk8 = temp_v0;
+        var_a1->unk0 = temp_v0;
         temp_v0->unk0 = arg0;
         temp_v0->unk4 = arg1;
-        temp_v0->unk8 = NULL;
-    } else {
-        temp_v1->unk4 = arg1;
+        temp_v0->unk8 = 0;
+        return;
     }
+    var_v1->unk4 = arg1;
 }
-*/
 
 // Returns an index into object model2 array
 s32 func_global_asm_80659470(s32 arg0) {

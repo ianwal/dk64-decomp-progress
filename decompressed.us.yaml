@@ -245,7 +245,7 @@ segments:
       - [0x2054150, c, code_54150]
       - [0x2055B20, c, code_55B20]
       - [0x205DE10, c, done/code_5DE10]
-      - [0x205E020, c, code_5E020]
+      - [0x205E020, c, done/code_5E020]
       - [0x205E2F0, c, code_5E2F0]
       - [0x2061690, c, code_61690] # TODO: Weird "handwritten instructions" in function, could it be mips3? Could it be hasm?
       - [0x2061AA0, c, code_61AA0]
