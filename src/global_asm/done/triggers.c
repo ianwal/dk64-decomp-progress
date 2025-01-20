@@ -8,6 +8,11 @@ u8 func_global_asm_8072E5B0(void) {
         && !(player_pointer->control_state == 0x63); // Rocketbarrel
 }
 
+typedef struct TriggerRawItem_sub10 {
+    s16 type;
+    u16 args[4];
+} TriggerRawItem_sub10;
+
 typedef struct TriggerRawItem {
     s16 x;
     s16 y;
@@ -17,11 +22,9 @@ typedef struct TriggerRawItem {
     s16 unkA;
     u8 activation_type;
     u8 default_active_state;
-    u8 padE[2];
-    u16 type;
-    u16 map;
-    u16 exit;
-    u8 pad16[0x38 - 0x16];
+    u8 unkE;
+    u8 unkF;
+    TriggerRawItem_sub10 data[4];
 } TriggerRawItem;
 
 typedef struct TriggerData {
@@ -72,7 +75,7 @@ void func_global_asm_8072E5FC(TriggerFile *arg0) {
 
 typedef struct {
     s16 unk0;
-    s16 unk2;
+    u16 unk2;
     s16 unk4;
     u8 unk6;
     u8 unk7;
@@ -126,79 +129,69 @@ s32 func_global_asm_8072E7DC(s16 arg0, Actor **arg1) {
     return found;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/triggers/func_global_asm_8072E868.s")
-
 extern u8 D_global_asm_807FBDC4;
 extern s16 D_global_asm_807FDCB8;
+extern s16 D_global_asm_807FDCBA;
 extern s16 D_global_asm_807FDCBC;
+u8 func_global_asm_8072EA90(TriggerData *);
 
-/*
 void func_global_asm_8072E868(void) {
-    s32 sp4C;
+    s32 pad[2];
+    s32 j;
     GlobalASMStruct35 *var_s0;
     Struct807FBB70_unk278 *temp_v0;
     s32 (*temp_v0_3)();
-    s32 temp_a0;
-    s32 temp_v0_2;
-    s32 var_s1;
+    s32 k;
     s32 var_v1;
     GlobalASMStruct67 *temp_v0_4;
-    TriggerData *var_s0_2;
+    TriggerRawItem_sub10 *var_s0_2;
     TriggerData *var_s2;
     void *var_v0;
-
-    if (D_global_asm_807FBDC4 > 0) {
-        var_s0 = &D_global_asm_807FBB70;
-        do {
-            temp_a0 = var_s0->unk258[0];
-            temp_v0 = var_s0->unk278[0];
-            if (temp_a0 != 1) {
-                if (temp_a0 != 2) {
-                    var_v0 = &D_global_asm_807FBB70.unk0[D_global_asm_807FBDC4];
-                } else {
-                    func_global_asm_8072EC94(temp_v0->unk0, 0);
-                    var_v0 = &D_global_asm_807FBB70.unk0[D_global_asm_807FBDC4];
-                }
-            } else {
+    s32 i;
+    
+    for (i = 0; i < D_global_asm_807FBDC4; i++) {
+        temp_v0 = D_global_asm_807FBB70.unk278[i];
+        switch (D_global_asm_807FBB70.unk258[i]) {
+            default:
+                break;
+            case 1:
                 func_global_asm_8072EC94(temp_v0->unk0, 1);
-                var_v0 = &D_global_asm_807FBB70.unk0[D_global_asm_807FBDC4];
-            }
-            var_s0 += 4;
-        } while (var_s0 < var_v0);
+                break;
+            case 2:
+                func_global_asm_8072EC94(temp_v0->unk0, 0);
+                break;
+        }
     }
-    var_s2 = D_global_asm_80755A14->unk4;
-    sp4C = 0;
-    if (D_global_asm_80755A14->unk0 > 0) {
-        do {
-            if (func_global_asm_8072EA90(var_s2) != 0) {
-                var_s1 = 0;
-                var_s0_2 = var_s2;
-                if (var_s2->unkE > 0) {
-                    do {
-                        temp_v0_3 = &D_global_asm_807557A0[var_s0_2->unk10].unkC;
-                        if ((temp_v0_3 == NULL) || (temp_v0_3() != 0)) {
-                            var_v1 = 0;
-                            temp_v0_4 = &D_global_asm_807557A0[var_s0_2->unk10];
-                            if (temp_v0_4->unk2 == 0xA) {
-                                var_v1 = 1;
-                            }
-                            func_global_asm_8067AB20(current_actor_pointer, temp_v0_4->unk8, 0x01000000, temp_v0_4->unk7, var_s0_2 + 0x12, var_v1);
-                            D_global_asm_807FDCB8 = var_s2->unk0;
-                            D_global_asm_807FDCBA = var_s2->unk2;
-                            D_global_asm_807FDCBC = var_s2->unk4;
-                        }
-                        var_s1 += 1;
-                        var_s0_2 += 0xA;
-                    } while (var_s1 < var_s2->unkE);
+    var_s2 = D_global_asm_80755A14->data;
+    for (j = 0; j < D_global_asm_80755A14->count; j++) {
+        if (func_global_asm_8072EA90(var_s2)) {
+            for (k = 0; k < var_s2->raw.unkE; k++) {
+                temp_v0_3 = D_global_asm_807557A0[var_s2->raw.data[k].type].unkC;
+                if (temp_v0_3) {
+                    if (!temp_v0_3()) {
+                        continue;
+                    }
                 }
+                if (D_global_asm_807557A0[var_s2->raw.data[k].type].unk2 == 0xA) {
+                    var_v1 = TRUE;
+                } else {
+                    var_v1 = FALSE;
+                }
+                func_global_asm_8067AB20(
+                    current_actor_pointer,
+                    D_global_asm_807557A0[var_s2->raw.data[k].type].unk8,
+                    0x01000000,
+                    D_global_asm_807557A0[var_s2->raw.data[k].type].unk7,
+                    &var_s2->raw.data[k].args,
+                    var_v1);
+                D_global_asm_807FDCB8 = var_s2->raw.x;
+                D_global_asm_807FDCBA = var_s2->raw.y;
+                D_global_asm_807FDCBC = var_s2->raw.z;
             }
-            temp_v0_2 = sp4C + 1;
-            sp4C = temp_v0_2;
-            var_s2 += 0x3A;
-        } while (temp_v0_2 < D_global_asm_80755A14->unk0);
+        }
+        var_s2++;
     }
 }
-*/
 
 extern s16 D_global_asm_8076A0AA;
 
