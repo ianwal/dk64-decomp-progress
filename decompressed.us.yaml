@@ -322,7 +322,7 @@ segments:
       - [0x2124780, bin, code_124780] #sprites
       - [0x2126260, c, code_126260]
       - [0x2127B00, c, code_127B00]
-      - [0x21292F0, c, code_1292F0]
+      - [0x21292F0, c, done/code_1292F0]
       - [0x21295B0, c, code_1295B0]
       - [0x212E800, c, code_12E800]
       - [0x21332B0, c, triggers]
@@ -466,7 +466,7 @@ segments:
       - [0x21633D0, rodata] # TODO: code_1?????, split needed
       - [0x2163800, .rodata, code_126260]
       - [0x2163840, .rodata, code_127B00]
-      - [0x2163870, .rodata, code_1292F0]
+      - [0x2163870, .rodata, done/code_1292F0]
       - [0x2163880, rodata] # code_1295B0, code12E800?
       - [0x2164880, rodata] # code_12E800
       - [0x2164C50, .rodata, code_133A90]

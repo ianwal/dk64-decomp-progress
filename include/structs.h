@@ -521,9 +521,12 @@ typedef struct {
 typedef struct {
     s32 unk0; // TODO: Proper members
     s32 unk4;
-    s32 unk8;
-    s32 unkC;
+    f32 unk8;
+    u8 unkC;
+    s8 unkD;
+    s16 unkE;
     s16 unk10;
+    s16 unk12;
 } Actor118;
 
 typedef struct {
@@ -1394,7 +1397,8 @@ struct actor {
     f32 floor; // at 0xA4
     f32 unkA8; // Used
     f32 unkAC;
-    u32 unkB0;
+    s8 unkB0;
+    s8 padB1[3];
     f32 distance_from_floor; // at 0xB4
     f32 unkB8; // at 0xB8 // velocity?
     f32 unkBC; // at 0xBC
