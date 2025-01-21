@@ -1629,7 +1629,7 @@ us,asm,func_global_asm_8064B260,76,yes
 us,asm,func_global_asm_8063D5AC,92,yes
 us,asm,func_global_asm_8072ECFC,136,yes
 us,asm,func_global_asm_80688D20,232,no
-us,asm,func_global_asm_8061B660,384,no
+us,asm,func_global_asm_8061B660,384,yes
 us,asm,func_global_asm_80618728,148,yes
 us,asm,func_global_asm_80657F14,236,yes
 us,asm,func_global_asm_80678E6C,248,yes

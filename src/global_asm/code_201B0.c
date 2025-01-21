@@ -127,25 +127,16 @@ void func_global_asm_8061B650(Actor *arg0) {
     aaD->unkF3 = 9;
 }
 
-// close, something up with the func_global_asm_80612794 calls
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061B660.s")
-
 typedef struct {
     u8 unk0[0xB2 - 0x0];
     s16 unkB2;
 } Struct8061B660;
 
-/*
 void func_global_asm_8061B660(Struct8061B660 *arg0, f32 *arg1, f32 *arg2, f32 *arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
-    f32 sp18;
-
-    sp18 = func_global_asm_80612794(arg0->unkB2 + 0x400);
-    *arg1 += arg4 * func_global_asm_80612794(object_timer * arg6) * sp18;
-    sp18 = func_global_asm_80612790(arg0->unkB2 + 0x400);
-    *arg3 += arg4 * func_global_asm_80612794(object_timer * arg6) * sp18;
+    *arg1 += arg4 * func_global_asm_80612794(object_timer * arg6) * func_global_asm_80612794(arg0->unkB2 + 0x400);
+    *arg3 += arg4 * func_global_asm_80612794(object_timer * arg6) * func_global_asm_80612790(arg0->unkB2 + 0x400);
     *arg2 += arg5 * func_global_asm_80612794(object_timer * arg7);
 }
-*/
 
 typedef struct {
     u8 unk0[0x90 - 0x0];
@@ -631,6 +622,7 @@ void func_global_asm_8061D058(void) {
 // jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D060.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D1FC.s")
 
 // close, doable, 64 bit?
@@ -779,8 +771,6 @@ void func_global_asm_8061EA78(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061EB04.s")
-
-extern f64 D_global_asm_80757760;
 
 typedef struct {
     u8 unk0[0xC0 - 0x0];
@@ -946,6 +936,7 @@ void func_global_asm_8061F510(u8 arg0, s8 arg1) {
 }
 */
 
+// jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F53C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80620628.s")
@@ -1265,8 +1256,74 @@ void func_global_asm_806261EC(s32 arg0, Struct806261EC_arg1 *arg1, u8 arg2) {
     arg1->unkD8->unk425 = 8;
 }
 
-// jumptable, rodata
+// jumptable, rodata, close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626264.s")
+
+void func_global_asm_80625C30();
+extern f32 D_807F5CCC;
+extern s8 D_global_asm_807476B4;
+extern s16 D_global_asm_807476B8;
+extern s16 D_global_asm_807476BC;
+extern s32 D_global_asm_807476C0;
+extern Struct806261EC_arg1 *D_global_asm_80747700;
+extern s32 D_global_asm_80747704;
+
+/*
+void func_global_asm_80626264(s32 arg0) {
+    void *sp1C;
+
+    sp1C = getPointerTableFile(8, 0, 1, 1);
+    func_global_asm_80627B58(0.5f);
+    D_global_asm_807476FC = D_807F5B10;
+    D_807F5CF4 = 0;
+    D_global_asm_807476C0 = 0;
+    D_global_asm_80747704 = 0;
+    func_global_asm_806261EC(arg0, D_global_asm_807476FC, 1);
+    func_global_asm_806261EC(sp1C, D_global_asm_80747700, 0);
+    func_global_asm_8066B434(sp1C, 0x10B4, 0xC);
+    func_global_asm_80625C30();
+    D_global_asm_807476B4 = 0;
+    D_global_asm_807476B8 = 0;
+    D_global_asm_807476BC = 0;
+    D_807F5CCC = 6.0f;
+    if (D_global_asm_807FBB64 & 1) {
+        D_807F5CCC = 12.0f;
+    }
+    switch (current_map) {
+        case MAP_BUSY_BARREL_BARRAGE_EASY:
+        case MAP_BUSY_BARREL_BARRAGE_NORMAL:
+        case MAP_BUSY_BARREL_BARRAGE_HARD:
+            D_global_asm_807476B4 = 0x1E;
+            break;
+        case MAP_JAPES_BARREL_BLAST:
+        case MAP_AZTEC_BARREL_BLAST:
+            D_global_asm_807476B8 = 0x1F4;
+            break;
+        case MAP_GALLEON_BARREL_BLAST:
+            D_global_asm_807476B8 = 0xFA;
+            break;
+        case MAP_FACTORY_BARREL_BLAST:
+            D_global_asm_807476B8 = 0x226;
+            break;
+        case MAP_CAVES_BARREL_BLAST:
+            D_global_asm_807476B8 = 0xFA;
+            break;
+        case MAP_CASTLE_BARREL_BLAST:
+        case MAP_FUNGI_BARREL_BLAST:
+            D_global_asm_807476B8 = 0x12C;
+            break;
+        case MAP_GALLEON_SEAL_RACE:
+            D_807F5CCC = 10.0f;
+            break;
+        case MAP_GALLEON_MERMAID:
+            D_global_asm_807476BC = 0x78;
+            break;
+    }
+    // TODO: Issue with these writes
+    D_global_asm_807476C8 = 0;
+    D_global_asm_807476D0 = 0;
+}
+*/
 
 // doable, weird negative offsets
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626478.s")
