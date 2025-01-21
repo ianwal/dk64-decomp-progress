@@ -1039,7 +1039,7 @@ us,asm,func_global_asm_80677ED0,216,yes
 us,asm,func_global_asm_80616644,100,yes
 us,asm,func_global_asm_80726744,1592,no
 us,asm,func_global_asm_805FCFD8,88,yes
-us,asm,func_global_asm_806276AC,144,no
+us,asm,func_global_asm_806276AC,144,yes
 us,asm,func_global_asm_806C7210,8,yes
 us,asm,func_global_asm_80632860,1456,no
 us,asm,func_global_asm_8073A98C,232,yes
@@ -3499,7 +3499,7 @@ us,asm,func_global_asm_806907E0,16,yes
 us,asm,playSound,1068,no
 us,asm,func_global_asm_80612A14,64,no
 us,asm,func_global_asm_80610BD8,156,no
-us,asm,func_global_asm_8061EDA0,428,no
+us,asm,func_global_asm_8061EDA0,428,yes
 us,asm,func_global_asm_8073CDD0,300,yes
 us,asm,func_global_asm_8066B7AC,72,yes
 us,asm,func_global_asm_80615C34,176,yes

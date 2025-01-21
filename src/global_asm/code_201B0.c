@@ -780,40 +780,33 @@ void func_global_asm_8061EA78(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061EB04.s")
 
-// doable, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061EDA0.s")
-
 extern f64 D_global_asm_80757760;
 
 typedef struct {
     u8 unk0[0xC0 - 0x0];
-    f32 unkC0;
+    s32 unkC0;
     u8 unkC4[0xF2 - 0xC4];
-    s16 unkF2;
+    u8 unkF2;
 } Struct8061EDA0;
 
-/*
 void func_global_asm_8061EDA0(Struct8061EDA0 *arg0, f32 *arg1, f32 *arg2, f32 *arg3, s32 arg4, u8 arg5) {
     s32 random;
     s32 temp_v1;
-    s32 var_a1;
 
     random = rand();
-    var_a1 = arg4;
-    if (var_a1 == 0) {
-        var_a1 = 1;
+    if (arg4 == 0) {
+        arg4 = 1;
     }
-    temp_v1 = var_a1 >> 1;
-    *arg1 = *arg1 + (((random % var_a1) - temp_v1) * 0.01);
-    *arg2 = *arg2 + ((((random / 100) % var_a1) - temp_v1) * 0.01);
-    *arg3 = *arg3 + ((((random / 10000) % var_a1) - temp_v1) * 0.01);
+    temp_v1 = arg4 >> 1;
+    *arg1 = *arg1 + (((random % arg4) - temp_v1) * 0.01);
+    *arg2 = *arg2 + ((((random / 100) % arg4) - temp_v1) * 0.01);
+    *arg3 = *arg3 + ((((random / 10000) % arg4) - temp_v1) * 0.01);
     if (arg5 != 0) {
         arg0->unkF2 = arg0->unkF2 - 1;
         arg0->unkC0 = arg0->unkC0 - (arg0->unkC0 * 0.111);
         arg0->unkC0 = arg0->unkC0 + 1;
     }
 }
-*/
 
 void func_global_asm_8061EF4C(Actor *arg0, u8 arg1, u16 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 dX;
@@ -1334,10 +1327,6 @@ void func_global_asm_8062754C(f32 arg0) {
     }
 }
 
-// rodata, close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806276AC.s")
-
-/*
 f32 func_global_asm_806276AC(void) {
     s16 playerIndex;
 
@@ -1348,7 +1337,6 @@ f32 func_global_asm_806276AC(void) {
     }
     return 1.0f;
 }
-*/
 
 typedef struct {
     Actor *unk0;
