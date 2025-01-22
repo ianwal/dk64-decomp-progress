@@ -320,6 +320,7 @@ segments:
       - [0x2114270, c, code_114270]
       - [0x2117880, c, code_117880]
       - [0x2119370, c, code_119370]
+      - [0x211BE00, c, code_11BE00]
       - [0x2124780, bin, code_124780] #sprites
       - [0x2126260, c, code_126260]
       - [0x2127B00, c, code_127B00]
@@ -465,7 +466,7 @@ segments:
       - [0x21631B0, .rodata, code_114270]
       - [0x21632C0, .rodata, code_117880]
       - [0x21633A0, rodata] # code_119370
-      - [0x21633D0, rodata] # TODO: code_1?????, split needed
+      - [0x21633D0, rodata] # TODO: code_11BE00
       - [0x2163800, .rodata, code_126260]
       - [0x2163840, .rodata, code_127B00]
       - [0x2163870, .rodata, done/code_1292F0]
