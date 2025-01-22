@@ -32,10 +32,17 @@ const s32 D_boss_8003669C[] = {
     0x1E500000,
 };
 
+// .data
+void *D_boss_80035A50[] = {
+    D_boss_80036660,
+    D_boss_80036678,
+    D_boss_80036688,
+    D_boss_8003669C,
+};
+
 u8 func_boss_80027BA8(u8 *, u16, f32);
 s32 func_global_asm_8072881C(s32, s32 *);
 void func_global_asm_8072A450(void);
-extern u8 *D_boss_80035A50[];
 extern u8 D_global_asm_807FBD70;
 
 typedef struct KRoolDKAAD178 {

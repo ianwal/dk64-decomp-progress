@@ -4,7 +4,7 @@
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
 extern u8 D_global_asm_807FBD70;
 
-// RODATA
+// .rodata
 const s32 D_boss_800368C0[] = {
     0x00546C51,
     0x03E44101,
@@ -71,6 +71,22 @@ const s32 D_boss_80036968[] = {
     0x0A283250,
 };
 
+// .data
+extern void *D_boss_80035A90[] = {
+    D_boss_800368C0,
+    D_boss_800368E4,
+    D_boss_800368F8,
+    D_boss_80036910,
+    D_boss_800368C0,
+};
+
+extern void *D_boss_80035AA4[] = {
+    D_boss_80036950,
+    D_boss_80036968,
+    D_boss_80036950,
+    D_boss_80036968,
+};
+
 void func_boss_8002FC98(Actor *, u8, s32, u8);
 
 u8 func_boss_80027BA8(u8 *, u16, f32);
@@ -78,7 +94,6 @@ void func_global_asm_806A2B38(Actor *);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 s32 func_global_asm_8072881C(s32, s32 *);
 void func_global_asm_8072A450(void);
-extern u8 *D_boss_80035A90[];
 extern u8 D_global_asm_807FBD70;
 
 void func_boss_8002F100(void) {
@@ -372,7 +387,6 @@ void func_boss_8002FEC0(Actor* toes[], u8 toeIndex, s32 modelIndex) {
 
 u8 func_boss_80027BA8(u8 *, u16, f32);
 s32 func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
-extern u8 *D_boss_80035AA4[];
 
 typedef struct KRoolFootAAD178 {
     Actor *unk0;

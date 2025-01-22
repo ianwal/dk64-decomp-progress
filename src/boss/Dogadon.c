@@ -74,6 +74,23 @@ const s32 D_boss_8003639C[] = {
     0xFFFF0000,
 };
 
+// .data
+void *D_boss_80035A20[] = {
+    D_boss_800362FC,
+    D_boss_80036308,
+    D_boss_8003631C,
+    NULL,
+    NULL,
+};
+
+void *D_boss_80035A34[] = {
+    D_boss_80036334,
+    D_boss_80036340,
+    D_boss_80036354,
+    D_boss_80036388,
+    D_boss_8003639C,
+};
+
 extern SpriteData D_global_asm_80720120;
 
 s32 func_global_asm_80725BA4(s16, s16, s32);

@@ -3,7 +3,7 @@
 
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
 
-// RODATA
+// .rodata
 const s32 D_boss_80036840[] = {
     0x546C0041,
     0x0141025F,
@@ -14,6 +14,14 @@ const s32 D_boss_80036840[] = {
 const s32 D_boss_80036850[] = {
     0x4F4B0007,
     0x50000000,
+};
+
+// .data
+void *D_boss_80035A80[] = {
+    D_boss_80036840,
+    D_boss_80036850,
+    D_boss_80036850,
+    D_boss_80036850,
 };
 
 void func_boss_8002E7A0(Actor *arg0) {
@@ -89,7 +97,6 @@ u8 func_boss_80027BA8(u8 *, u16, f32);
 u8 func_global_asm_8061CB98(u8);
 s32 func_global_asm_8072881C(s32, s32 *);
 void func_global_asm_8072A450(void);
-extern u8 *D_boss_80035A80[4];
 
 typedef struct KRoolLankyAAD178 {
     Actor *unk0;
