@@ -348,10 +348,6 @@ void func_global_asm_80718188(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071827C.s")
-
-/*
 void func_global_asm_8071827C(Struct80717D84 *arg0, s32 arg1) {
     f32 sp70[4][4];
     f32 sp30[4][4];
@@ -371,7 +367,6 @@ void func_global_asm_8071827C(Struct80717D84 *arg0, s32 arg1) {
     guMtxF2L(sp70, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 3;
 }
-*/
 
 typedef struct {
     f32 unk0;
@@ -404,15 +399,11 @@ void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_807184F4.s")
-
 typedef struct {
     f32 unk0;
     f32 unk4;
 } Struct80717D84_unk384_807184F4;
 
-/*
 void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1) {
     f32 sp70[4][4];
     f32 sp30[4][4];
@@ -447,7 +438,6 @@ void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1) {
     }
     arg0->unk32C = 3;
 }
-*/
 
 // Matrix stuff
 // rodata
@@ -518,7 +508,7 @@ void func_global_asm_807195D4(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk344 += (f32)(3.5);
     arg0->unk348 += (f32)(func_global_asm_80612D10(arg0->unk384_f32->unk0 * 0.01745329238f) * 2.5);
     arg0->unk384_f32->unk0 += 8.0;
-    arg0->unk384_f32->unk4 += 7.29999999999999982;
+    arg0->unk384_f32->unk4 += 7.3;
     guScaleF(sp6C, arg0->unk360, arg0->unk364, 0.0f);
     guRotateF(sp2C, arg0->unk384->unk4, 0.0f, 0.0f, 1.0f);
     guMtxCatF(sp6C, sp2C, sp6C);
@@ -1241,19 +1231,14 @@ void func_global_asm_8071C620(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk348 += var_v0->unk8;
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071C818.s")
-
 void func_global_asm_8071C818(Struct80717D84 *arg0, s8 *arg1);
 
-/*
 void func_global_asm_8071C818(Struct80717D84 *arg0, s8 *arg1) {
-    f64 temp = 0.05;
     float sp70[4][4];
     float sp30[4][4];
 
-    arg0->unk360 -= temp;
-    arg0->unk364 -= temp;
+    arg0->unk360 -= 0.05;
+    arg0->unk364 -= 0.05;
     if (arg0->unk360 <= 0.0f) {
         *arg1 = 1;
     }
@@ -1264,7 +1249,6 @@ void func_global_asm_8071C818(Struct80717D84 *arg0, s8 *arg1) {
     guMtxF2L(sp70, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
-*/
 
 void func_global_asm_8071C914(Struct80717D84 *arg0, s32 arg1) {
     f32 sp70[4][4];
@@ -1629,10 +1613,6 @@ void func_global_asm_8071E1C8(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// rodata, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071E3EC.s")
-
-/*
 void func_global_asm_8071E3EC(Struct80717D84 *arg0, s8 *arg1) {
     f32 *var_v1;
     f32 temp_f0;
@@ -1706,7 +1686,6 @@ void func_global_asm_8071E3EC(Struct80717D84 *arg0, s8 *arg1) {
     temp_f0 = 255.0f * sp4C;
     createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_v1[0], 0, temp_f0 * sp48, temp_f0 * sp44, temp_f0 * sp40);
 }
-*/
 
 void func_global_asm_8071E864(Struct80717D84 *arg0, s8 *arg1) {
     f32 sp24;
@@ -1917,23 +1896,14 @@ void func_global_asm_8071F2F8(Struct80717D84 *arg0, s32 arg1) {
     }
 }
 
-// rodata, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071F3C0.s")
-
-/*
 void func_global_asm_8071F3C0(Struct80717D84 *arg0, s32 arg1) {
-    f32 *var_v1;
-
     if (arg0->unk384 == NULL) {
         arg0->unk384 = malloc(4);
-        var_v1 = arg0->unk384;
-        *var_v1 = arg0->unk364 * 6.66666666666666696;
+        arg0->unk384->unk0 = arg0->unk364 * 6.66666666666666696;
     }
-    var_v1 = arg0->unk384;
-    arg0->unk360 = arg0->unk338->animation_state->scale_y * *var_v1;
+    arg0->unk360 = arg0->unk338->animation_state->scale_y * arg0->unk384->unk0;
     arg0->unk364 = arg0->unk360;
 }
-*/
 
 void func_global_asm_8071F444(Struct80717D84 *arg0, s8 *arg1) {
     f32 temp_f16;

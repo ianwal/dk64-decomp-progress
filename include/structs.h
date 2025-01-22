@@ -2944,6 +2944,7 @@ struct Struct80717D84 {
     union {
         s32 unk35C;
         u32 unk35C_u32;
+        u8 unk35C_arr[4];
         Actor *unk35C_actor;
     };
     f32 unk360; // X
