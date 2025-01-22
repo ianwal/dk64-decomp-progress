@@ -677,7 +677,7 @@ void func_global_asm_8061D4E4(Actor *arg0) {
 }
 */
 
-// heavy use of rodata, don't bother until it's migrated
+// rodata, Actor* arg0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D6A8.s")
 
 void func_global_asm_8061D898(void) {
@@ -757,6 +757,7 @@ void func_global_asm_8061DB64(Actor *arg0) {
     aaD->unkAC &= 0xFFEFFFFF;
 }
 
+// jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061DBD4.s")
 
 s32 func_global_asm_8061EB04(Actor *playerPointer, u8 playerIndex);
@@ -770,6 +771,7 @@ void func_global_asm_8061EA78(void) {
     }
 }
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061EB04.s")
 
 typedef struct {
@@ -939,16 +941,20 @@ void func_global_asm_8061F510(u8 arg0, s8 arg1) {
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F53C.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80620628.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80620B38.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80620F00.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80621174.s")
 
+// jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062133C.s")
 
+// rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80621E9C.s")
 
 typedef struct {

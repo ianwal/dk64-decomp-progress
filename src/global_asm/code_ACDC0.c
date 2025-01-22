@@ -1,6 +1,31 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// .rodata
+const char D_global_asm_8075AA80[] = "JUNGLE";
+const char D_global_asm_8075AA88[] = "TEMPLE";
+const char D_global_asm_8075AA90[] = "TOY";
+const char D_global_asm_8075AA94[] = "WRECK";
+const char D_global_asm_8075AA9C[] = "FOREST";
+const char D_global_asm_8075AAA4[] = "CRYSTAL";
+const char D_global_asm_8075AAAC[] = "SPOOKY";
+const char D_global_asm_8075AAB4[] = "WORLD";
+const char D_global_asm_8075AABC[] = "HIDEOUT";
+const char D_global_asm_8075AAC4[] = "BONUS";
+const char D_global_asm_8075AACC[] = "MULTI";
+const char D_global_asm_8075AAD4[] = "STORY";
+const char D_global_asm_8075AADC[] = "TEST";
+const char D_global_asm_8075AAE4[] = "SHARED";
+// const char D_global_asm_8075AAEC[] = "q %s";
+// const char D_global_asm_8075AAF4[] = "b %s";
+// const char D_global_asm_8075AAFC[] = "%d";
+// const char D_global_asm_8075AB00[] = "%d";
+// const char D_global_asm_8075AB04[] = "%02d";
+// const char D_global_asm_8075AB0C[] = "%d";
+// const char D_global_asm_8075AB10[] = "%d";
+// const char D_global_asm_8075AB14[] = "q %s";
+// const char D_global_asm_8075AB1C[] = "b %s";
+
 extern s8 D_global_asm_80750560[];
 extern s8 D_global_asm_80750530[];
 extern s16 D_global_asm_807505AE[];
@@ -91,9 +116,6 @@ Gfx *func_global_asm_806A921C(Gfx *dl) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806A92B4.s")
 
-extern s8 D_global_asm_8075AAFC;
-extern s8 D_global_asm_8075AB00;
-
 Gfx *func_global_asm_806AA09C(s16 x, s16 y, s16 arg2, s16 arg3, Gfx *dl, s8 arg5, f32 scale) {
     Mtx *spEC;
     s32 var_s0;
@@ -121,8 +143,8 @@ Gfx *func_global_asm_806AA09C(s16 x, s16 y, s16 arg2, s16 arg3, Gfx *dl, s8 arg5
     guMtxCatF(spA8, sp68, spA8);
     guMtxF2L(spA8, spEC);
     gSPMatrix(dl++, spEC, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    sprintf(sp60, &D_global_asm_8075AAFC, arg2);
-    sprintf(sp58, &D_global_asm_8075AB00, arg3);
+    sprintf(sp60, "%d", arg2);
+    sprintf(sp58, "%d", arg3);
     dl = printStyledText(dl, 1, 0, -0x28, sp60, 0x80);
     dl = printStyledText(dl, 1, var_s0, 0x28, sp58, 0);
     gSPPopMatrix(dl++, G_MTX_MODELVIEW);
@@ -154,12 +176,6 @@ extern s16 D_global_asm_807505CA;
 extern s8 D_global_asm_807505D0;
 extern ? D_global_asm_807505D8;
 extern u8 D_global_asm_80755DA8;
-extern f32 D_global_asm_8075AC38;
-extern f32 D_global_asm_8075AC3C;
-extern f32 D_global_asm_8075AC40;
-extern f32 D_global_asm_8075AC44;
-extern f32 D_global_asm_8075AC48;
-extern f32 D_global_asm_8075AC4C;
 extern ? D_global_asm_807FC7F8;
 extern s8 D_global_asm_807FC800;
 extern f32 D_global_asm_807FC804;
@@ -283,13 +299,13 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
             }
             if (temp_s0->unk2 != 0) {
                 func_global_asm_806AB808(arg0, 0x1E, 0x7D, 0xC, -0xA, D_global_asm_807FCC40, 1, 1);
-                func_global_asm_806AB4EC(arg0, 2, 0x1E, 0x7D, D_global_asm_8075AC38, 2, 1);
+                func_global_asm_806AB4EC(arg0, 2, 0x1E, 0x7D, 0.6499999762f, 2, 1);
             }
             if (func_global_asm_806F6E58(current_character_index[0]) != 0) {
                 temp_f6 = func_global_asm_806FA7A4(5);
                 var_f16 = D_global_asm_807FCC46;
                 func_global_asm_806AB808(arg0, 0x1E, 0xA0, 0xC, -0xA, func_global_asm_80612E40(var_f16 / temp_f6), 1, 1);
-                func_global_asm_806AB4EC(arg0, 5, 0x1E, 0xA0, D_global_asm_8075AC3C, 2, 1);
+                func_global_asm_806AB4EC(arg0, 5, 0x1E, 0xA0, 0.6499999762f, 2, 1);
             }
             if (isFlagSet(0x18C, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x122, 0x5A, -0xF, -0xA, temp_s0->unk6, 1, 0x80);
@@ -301,7 +317,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
             }
             if (isFlagSet(0x179, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x122, 0xA0, -0xC, -0xA, D_global_asm_807FCC48, 1, 0x81);
-                func_global_asm_806AB4EC(arg0, 6, 0x122, 0xA0, D_global_asm_8075AC40, 2, 1);
+                func_global_asm_806AB4EC(arg0, 6, 0x122, 0xA0, 0.6499999762f, 2, 1);
             }
             if (D_global_asm_807FC828 > 0) {
                 func_global_asm_806AB808(arg0, 0x91, 0xBE, 0xF, -0xA, D_global_asm_807FC828, 1, 0);
@@ -327,7 +343,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                     }
                     func_global_asm_806AB4EC(arg0, 0xA, 0x113, 0x7D, 0.75f, 2, 2);
                     if (func_global_asm_80731A04(0x225, var_s0, var_s0, current_character_index[0]) != 0) {
-                        func_global_asm_806AB4EC(arg0, &D_global_asm_80721518, 0x113, 0x7D, D_global_asm_8075AC44, 2, 0xD);
+                        func_global_asm_806AB4EC(arg0, &D_global_asm_80721518, 0x113, 0x7D, 0.349999994f, 2, 0xD);
                     }
                 }
             }
@@ -364,7 +380,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                     D_global_asm_807FC80F = isFlagSet(func_global_asm_807319D8(0x1D5, sp7C, current_character_index[0]), 0);
                     func_global_asm_806AB4EC(arg0, 0xC, 0x26, 0x7D, 0.75f, 2, 2);
                     if (isFlagSet(func_global_asm_807319D8(0x1FD, sp7C, current_character_index[0]), 0) != 0) {
-                        func_global_asm_806AB4EC(arg0, &D_global_asm_80721518, 0x26, 0x7D, D_global_asm_8075AC48, 2, 0xD);
+                        func_global_asm_806AB4EC(arg0, &D_global_asm_80721518, 0x26, 0x7D, 0.349999994f, 2, 0xD);
                     }
                 }
             }
@@ -435,7 +451,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                     }
                     func_global_asm_806AB4EC(arg0, 0xA, *sp38, 0, 0.75f, 2, 3);
                     if (func_global_asm_80731A04(0x225, sp58, sp58, var_s0_6) != 0) {
-                        func_global_asm_806AB4EC(arg0, &D_global_asm_80721518, *sp38, 0, D_global_asm_8075AC4C, 2, 0xE);
+                        func_global_asm_806AB4EC(arg0, &D_global_asm_80721518, *sp38, 0, 0.349999994f, 2, 0xE);
                     }
                     var_s0_6 += 1;
                     sp38 += 2;
@@ -559,14 +575,14 @@ void func_global_asm_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
     }
     switch (arg7) {
         case 1:
-            sprintf(&sp2C, &D_global_asm_8075AB04, arg5);
+            sprintf(&sp2C, "%02d", arg5);
             break;
         case 2:
-            sprintf(&sp2C, &D_global_asm_8075AB0C, arg5);
+            sprintf(&sp2C, "%d", arg5);
             arg3 -= getCenterOfString(1, &sp2C) >> 1;
             break;
         default:
-            sprintf(&sp2C, &D_global_asm_8075AB10, arg5);
+            sprintf(&sp2C, "%d", arg5);
             break;
     }
     if (sp37 != 0) {
@@ -692,9 +708,6 @@ Gfx *func_global_asm_806AC048(Gfx *dl, Actor *arg1) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806AC07C.s")
 
-extern s8 D_global_asm_8075AB14;
-extern s8 D_global_asm_8075AB1C;
-
 Gfx *func_global_asm_806ACA88(Gfx *dl, Actor *arg1) {
     char sp40[40];
 
@@ -704,9 +717,9 @@ Gfx *func_global_asm_806ACA88(Gfx *dl, Actor *arg1) {
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->shadow_opacity);
     dl = printStyledText(dl, 1, 0x168, 0x104, D_global_asm_807FC7E0[0], 1);
-    sprintf(sp40, &D_global_asm_8075AB14, D_global_asm_807FC7E0[1]);
+    sprintf(sp40, "q %s", D_global_asm_807FC7E0[1]);
     dl = printStyledText(dl, 1, 0x208, 0x190, sp40, 1);
-    sprintf(sp40, &D_global_asm_8075AB1C, D_global_asm_807FC7E0[2]);
+    sprintf(sp40, "b %s", D_global_asm_807FC7E0[2]);
     return printStyledText(dl, 1, 0x208, 0x21C, sp40, 1);
 }
 
