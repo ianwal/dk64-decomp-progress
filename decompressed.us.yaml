@@ -465,7 +465,7 @@ segments:
       - [0x2163190, .rodata, code_112080]
       - [0x21631B0, .rodata, code_114270]
       - [0x21632C0, .rodata, code_117880]
-      - [0x21633A0, rodata] # code_119370
+      - [0x21633A0, .rodata, code_119370]
       - [0x21633D0, rodata] # TODO: code_11BE00
       - [0x2163800, .rodata, code_126260]
       - [0x2163840, .rodata, code_127B00]

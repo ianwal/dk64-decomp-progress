@@ -2,135 +2,10 @@
 #include "functions.h"
 #include "sprites.h"
 
-extern Struct80717D84 *D_minecart_80028C30;
-
-extern SpriteData D_global_asm_8071FB54;
-extern SpriteData D_global_asm_8071FEF4;
-extern SpriteData D_global_asm_8071FFA0; // TODO: Datatype
 
 extern u8 D_global_asm_8074450C;
 
 extern u8 D_global_asm_80750AB4;
-extern s16 D_global_asm_807502D0;
-
-extern f32 D_global_asm_80755674;
-extern f32 D_global_asm_80755678;
-
-// .rodata
-extern f64 D_global_asm_8075E6D0;
-extern f64 D_global_asm_8075E6D8;
-extern f64 D_global_asm_8075E6E0;
-extern f64 D_global_asm_8075E6E8;
-extern f64 D_global_asm_8075E6F0;
-extern f64 D_global_asm_8075E6F8;
-extern f64 D_global_asm_8075E700;
-extern f64 D_global_asm_8075E708;
-extern f64 D_global_asm_8075E710;
-extern f64 D_global_asm_8075E718;
-extern f64 D_global_asm_8075E720;
-extern f32 D_global_asm_8075E728;
-extern f32 D_global_asm_8075E72C;
-extern f32 D_global_asm_8075E730;
-extern f64 D_global_asm_8075E738;
-extern f64 D_global_asm_8075E740;
-extern f64 D_global_asm_8075E748;
-extern f64 D_global_asm_8075E750;
-
-extern f64 D_global_asm_8075E770;
-extern f64 D_global_asm_8075E778;
-extern f64 D_global_asm_8075E780;
-
-extern f32 D_global_asm_8075E840;
-extern f32 D_global_asm_8075E844;
-extern f64 D_global_asm_8075E848;
-extern f64 D_global_asm_8075E850;
-extern f64 D_global_asm_8075E858;
-extern f64 D_global_asm_8075E860;
-extern f64 D_global_asm_8075E868;
-extern f64 D_global_asm_8075E870;
-extern f64 D_global_asm_8075E878;
-extern f64 D_global_asm_8075E880;
-extern f64 D_global_asm_8075E888;
-extern f64 D_global_asm_8075E890;
-extern f64 D_global_asm_8075E898;
-extern f32 D_global_asm_8075E8A0;
-extern f64 D_global_asm_8075E8A8;
-extern f32 D_global_asm_8075E8B0;
-extern f32 D_global_asm_8075E8B4;
-extern f64 D_global_asm_8075E8B8;
-extern f32 D_global_asm_8075E8C0;
-extern f64 D_global_asm_8075E8C8;
-extern f64 D_global_asm_8075E8D0;
-extern f32 D_global_asm_8075E8D8;
-extern f32 D_global_asm_8075E8DC;
-extern f32 D_global_asm_8075E8E0;
-extern f64 D_global_asm_8075E8E8;
-extern f64 D_global_asm_8075E8F0;
-extern f64 D_global_asm_8075E8F8;
-extern f64 D_global_asm_8075E900;
-extern f64 D_global_asm_8075E908;
-extern f64 D_global_asm_8075E910;
-extern f64 D_global_asm_8075E930;
-extern f64 D_global_asm_8075E938;
-extern f64 D_global_asm_8075E940;
-extern f64 D_global_asm_8075E948;
-extern f32 D_global_asm_8075E950;
-extern f32 D_global_asm_8075E954;
-extern f32 D_global_asm_8075E958;
-extern f32 D_global_asm_8075E95C;
-extern f32 D_global_asm_8075E960;
-extern f32 D_global_asm_8075E964;
-extern f32 D_global_asm_8075E968;
-extern f64 D_global_asm_8075E970;
-extern f32 D_global_asm_8075E978;
-extern f64 D_global_asm_8075E980;
-extern f64 D_global_asm_8075E988;
-extern f64 D_global_asm_8075E990;
-extern f32 D_global_asm_8075E998;
-extern f64 D_global_asm_8075E9A0;
-extern f64 D_global_asm_8075E9A8;
-extern f64 D_global_asm_8075E9B0;
-extern f64 D_global_asm_8075E9B8;
-extern f64 D_global_asm_8075E9C8;
-extern f64 D_global_asm_8075E9D0;
-extern f32 D_global_asm_8075E9E8;
-extern f64 D_global_asm_8075E9F0;
-extern f64 D_global_asm_8075E9F8;
-extern f64 D_global_asm_8075EA00;
-extern f64 D_global_asm_8075EA08;
-extern f32 D_global_asm_8075EA10;
-extern f64 D_global_asm_8075EA18;
-extern f32 D_global_asm_8075EA20;
-extern f32 D_global_asm_8075EA24;
-extern f32 D_global_asm_8075EA28;
-extern f32 D_global_asm_8075EA2C;
-extern f64 D_global_asm_8075EA30;
-extern f32 D_global_asm_8075EA38;
-extern f64 D_global_asm_8075EA40;
-extern f64 D_global_asm_8075EA48;
-extern f32 D_global_asm_8075EA50;
-extern f64 D_global_asm_8075EA58;
-extern f64 D_global_asm_8075EA60;
-extern f32 D_global_asm_8075EA68;
-extern f32 D_global_asm_8075EA6C;
-extern f64 D_global_asm_8075EA70;
-extern f64 D_global_asm_8075EA78;
-extern f32 D_global_asm_8075EA80;
-extern f64 D_global_asm_8075EA88;
-extern f32 D_global_asm_8075EA90;
-extern f64 D_global_asm_8075EA98;
-extern f64 D_global_asm_8075EAA0;
-extern f32 D_global_asm_8075EAA8;
-extern f64 D_global_asm_8075EAB0;
-extern f64 D_global_asm_8075EAB8;
-extern f64 D_global_asm_8075EAC0;
-extern f64 D_global_asm_8075EAC8;
-extern f64 D_global_asm_8075EAD0;
-extern f64 D_global_asm_8075EAD8;
-extern f32 D_global_asm_8075EAE0;
-extern f64 D_global_asm_8075EAE8;
-extern f64 D_global_asm_8075EAF0;
-extern f64 D_global_asm_8075EAF8;
 
 extern Struct807FDB00 *D_global_asm_807FDB00;
 extern Struct807FDB04 *D_global_asm_807FDB04;
@@ -161,8 +36,6 @@ extern s16 D_global_asm_807FDB42;
 
 void func_global_asm_80714778(f32);
 void func_global_asm_80714A9C(void);
-int func_global_asm_80717404(); // TODO: Signature
-void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
 
 void func_global_asm_80714670(void) {
     D_global_asm_807FDB00 = NULL;
