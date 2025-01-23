@@ -33,7 +33,6 @@ void func_global_asm_8072A450(void);
 
 int func_global_asm_807035C4(); // TODO: Signature
 int func_global_asm_807197B4(); // TODO: Signature
-int func_global_asm_8071C818(); // TODO: Signature
 
 u8 func_global_asm_806BDD90(void) {
     s16 i;

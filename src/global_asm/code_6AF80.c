@@ -877,7 +877,6 @@ s32 func_global_asm_80669930(f32 arg0[4][4]) {
 }
 
 void func_global_asm_8062FF10(f32 (*)[4], void *);
-void func_global_asm_8066C610(s16, s8, void *);
 extern f32 D_global_asm_80758FE0;
 
 void func_global_asm_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, u8 arg3, f32 x, f32 y, f32 z) {

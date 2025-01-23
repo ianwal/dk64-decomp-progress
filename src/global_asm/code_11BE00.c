@@ -1231,8 +1231,6 @@ void func_global_asm_8071C620(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk348 += var_v0->unk8;
 }
 
-void func_global_asm_8071C818(Struct80717D84 *arg0, s8 *arg1);
-
 void func_global_asm_8071C818(Struct80717D84 *arg0, s8 *arg1) {
     float sp70[4][4];
     float sp30[4][4];

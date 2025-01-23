@@ -125,12 +125,9 @@ Actor *func_global_asm_80627EA8(s16 spawn_trigger) {
 void func_critter_80028EE8(u8, s32, s16, u8, u16, u16);
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
 void func_global_asm_8061421C(Actor *);
-void func_global_asm_8061D968(u8, u8);
 void func_global_asm_806C8E58(s16);
 void func_global_asm_80713EB0(s16, s32, s32);
-void func_global_asm_80721560(s16, s16, s16, u8, u8, u8);
 void func_global_asm_807289E8(s16, s16, s16, s16);
-s32 func_global_asm_8072E7DC(s16, Actor **);
 void func_global_asm_80737924(SoundState *);
 extern void *D_8076D1FC;
 extern ? D_807F5D6C;

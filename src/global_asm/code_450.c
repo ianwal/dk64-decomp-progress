@@ -71,7 +71,6 @@ extern OSTimer D_global_asm_8076A130;
 
 void func_global_asm_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 
-void func_global_asm_80712A40(void);
 void func_global_asm_80605510(void);
 
 void func_global_asm_80650E20(s32* arg0);
@@ -581,8 +580,6 @@ u8 func_global_asm_805FCA64(void) { // getCutsceneBarState()
 // rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FCA94.s")
 
-void func_global_asm_8062754C(f32);
-f32 func_global_asm_806276AC();
 extern f32 D_global_asm_807444CC;
 extern f32 D_global_asm_807444D0;
 extern f32 D_global_asm_807444D4;

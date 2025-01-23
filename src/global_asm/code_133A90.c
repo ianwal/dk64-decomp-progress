@@ -4,7 +4,6 @@
 s32 func_global_asm_8063367C(s32, u8, s32);
 s32 func_global_asm_80671D64(Actor*, s32);
 void func_global_asm_8072F230(Actor*, u8, u8);
-s32 func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
 f32 func_global_asm_80627A00(f64, f32, f32, f32, f32);
 
 void func_global_asm_8072ED90(void) {

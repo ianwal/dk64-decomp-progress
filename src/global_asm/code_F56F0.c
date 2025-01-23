@@ -640,7 +640,6 @@ void func_global_asm_806F1C04(Actor *arg0, AnimationStateUnk1C *arg1, s32 *arg2)
     s32 i;
     s32 var_s4;
     s8 var_fp;
-    
 
     temp_s0 = arg0->unk178;
     var_fp = -0x80;

@@ -33,7 +33,7 @@ extern Mtx D_807F5D98;
 extern void *D_global_asm_807F5DD8;
 
 void func_global_asm_807024E0(Gfx **, void *, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, void (*)(s32, s32, void *));
-void func_global_asm_80704130(void*, s32, s32, s32, s32, s32);
+void func_global_asm_80704130(void*, u8, u8, u8, u8, u8);
 
 void func_global_asm_80629190(void) {
     D_global_asm_807F5D84 = 0;

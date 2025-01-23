@@ -615,16 +615,16 @@ s8 func_global_asm_806C9830(s8 arg0, Actor *arg1) {
     return phi_a2;
 }
 
-s32 func_global_asm_806C9974(u8 arg0, s8 arg1) {
-    CharacterChange *temp2 = &character_change_array[arg0];
-    PlayerProgress *temp = &D_global_asm_807FC950[arg0];
+s32 func_global_asm_806C9974(u8 playerIndex, s8 arg1) {
+    CharacterChange *temp2 = &character_change_array[playerIndex];
+    PlayerProgress *temp = &D_global_asm_807FC950[playerIndex];
 
     temp2->unk2E2 |= 0x11;
     if ((cc_number_of_players >= 2) && (arg1 < 0) && (D_global_asm_807552EC == 1)) {
-        func_multiplayer_80026E20(arg0, arg1);
+        func_multiplayer_80026E20(playerIndex, arg1);
     }
     if (arg1 < 0) {
-        func_global_asm_8060E7EC(arg0, 0xFF, 5);
+        func_global_asm_8060E7EC(playerIndex, 0xFF, 5);
     }
     if (!(D_global_asm_807FBB64 & 0x800)) {
         temp->unk2FD += arg1;

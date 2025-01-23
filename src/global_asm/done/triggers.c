@@ -83,8 +83,6 @@ typedef struct {
 
 extern GlobalASMStruct67 D_global_asm_807557A0[];
 
-s32 func_global_asm_8072E7DC(s16 arg0, Actor **arg1);
-
 // TODO: This stack is super sus, fake match?
 void func_global_asm_8072E740(Maps map) {
     s32 i;

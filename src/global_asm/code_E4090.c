@@ -141,8 +141,6 @@ void func_global_asm_806DF670(s16 *arg0, s16 arg1, s16 arg2) {
 // https://decomp.me/scratch/hyCim
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/handleInputsForControlState.s")
 
-// u16 func_global_asm_806DFF34(u32, u16 *);
-
 typedef struct {
     void (*unk0)(void); // Start Button Pressed Handler
     void (*unk4)(void); // Always Called (before input handlers)
@@ -491,7 +489,6 @@ void func_global_asm_806E077C(void) {
     extra_player_info_pointer->unk4 = 0.0f;
 }
 
-// TODO: WIP, quite close considering the size of it
 void func_global_asm_806E07F8(void) {
     f32 phi_f0;
     s16 temp_v0_3;
@@ -506,6 +503,7 @@ void func_global_asm_806E07F8(void) {
     phi_f0 = MIN(400.0f, phi_f0);
     phi_f0 *= (0.25 + (0.75 * (current_actor_pointer->unkB8 / extra_player_info_pointer->unk38)));
 
+    // TODO: Can we get rid of this?
     if(phi_f0);
 
     func_global_asm_806DF494(

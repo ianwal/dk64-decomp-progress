@@ -60,7 +60,6 @@ extern f32 D_global_asm_80770B68[];
 extern f32 D_global_asm_80770BC0[];
 
 void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1);
-extern void func_race_8002CFF0(void);
 
 s32 func_race_80025770(s32 arg0, s32 arg1) {
     s32 temp_v1 = arg1 + 1;

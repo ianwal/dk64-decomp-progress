@@ -201,8 +201,6 @@ void func_global_asm_8068B9B4(void) {
     }
 }
 
-void func_global_asm_8072167C(s16, s16, s16, s16);
-
 // TODO: Probably overlap with an existing aaD
 typedef struct {
     s32 unk0;

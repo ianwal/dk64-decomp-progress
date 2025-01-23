@@ -236,8 +236,6 @@ s32 func_global_asm_80725BA4(s16 x, s16 z, FenceStruct *arg2) {
     return v0 & 1;
 }
 
-void func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
-
 u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6) {
     f32 sp4C;
     f32 sp48;

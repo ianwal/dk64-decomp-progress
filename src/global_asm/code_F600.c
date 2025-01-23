@@ -130,7 +130,6 @@ void func_global_asm_8060AC34(OSContPad *arg0) {
 
 /*
 void func_global_asm_806F3E0C(OSContPad *, OSContPad *);
-void func_global_asm_80712944(OSContPad *);
 extern s16 D_807ECD40[];
 extern s16 D_807ECD50[];
 extern OSContPad D_807ECD60;

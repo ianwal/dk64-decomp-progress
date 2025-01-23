@@ -2,7 +2,6 @@
 #include "functions.h"
 #include "sprites.h"
 
-int func_global_asm_8071827C(); // TODO: Signature
 int func_global_asm_807197B4(); // TODO: Signature
 
 extern SpriteData D_global_asm_8071FC0C; // TODO: Datatype
@@ -30,8 +29,6 @@ typedef struct {
 
 extern Struct8074E898 D_global_asm_8074E898;
 extern SpriteData D_global_asm_80720B24;
-
-void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1);
 
 typedef struct {
     s32 unk0;

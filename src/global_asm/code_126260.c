@@ -68,8 +68,6 @@ void func_global_asm_807215D0(s8 arg0, s8 arg1) {
     D_807FDB7D = arg1;
 }
 
-void func_global_asm_80721560(s16, s16, s16, u8, u8, u8);
-
 void func_global_asm_807215EC(void) {
     D_807FDB60.unk8 = 0;
     D_807FDB60.unkB = 0x6B;

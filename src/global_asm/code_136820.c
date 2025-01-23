@@ -177,6 +177,7 @@ typedef struct {
 } Struct80731E68;
 
 /*
+// TODO: OSThread *arg0
 void func_global_asm_80731E68(Struct80731E68 *arg0) {
     s32 *var_s1;
     s32 j;

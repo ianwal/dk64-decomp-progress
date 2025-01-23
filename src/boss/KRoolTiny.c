@@ -384,7 +384,6 @@ void func_boss_8002FEC0(Actor* toes[], u8 toeIndex, s32 modelIndex) {
 }
 
 u8 func_boss_80027BA8(u8 *, u16, f32);
-s32 func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
 
 typedef struct KRoolFootAAD178 {
     Actor *unk0;

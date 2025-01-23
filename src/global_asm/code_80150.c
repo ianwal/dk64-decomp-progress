@@ -1117,7 +1117,6 @@ typedef struct {
     s32 unk8;
 } AAD_80683158;
 
-void func_global_asm_806F1C04(void);
 void func_global_asm_806F22A8(void);
 void func_global_asm_806F1EB0(void);
 
