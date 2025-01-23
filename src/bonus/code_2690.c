@@ -36,7 +36,7 @@ Gfx *func_bonus_80026690(Gfx *dl, Actor *arg1) {
     return displayImage(dl, (((object_timer / 2U) % 12U) + 0x83), 0, 2, 0x20, 0x10, (s16)(sp6A - 0x34), (s16)(sp68 + 0x34), temp_f20, temp_f20, 0x87, 0.0f);
 }
 
-Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *); /* extern */
+Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *);
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 

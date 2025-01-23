@@ -1,8 +1,8 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_80723CCC(s32, s32, f32, f32 *, f32 *, f32 *); /* extern */
-void func_global_asm_80723F88(s16, f32, f32, f32, void *, void *); /* extern */
+void func_global_asm_80723CCC(s32, s32, f32, f32 *, f32 *, f32 *);
+void func_global_asm_80723F88(s16, f32, f32, f32, void *, void *);
 
 void func_global_asm_807245F0(Actor *arg0, u8 arg1) {
     s32 temp_a0;

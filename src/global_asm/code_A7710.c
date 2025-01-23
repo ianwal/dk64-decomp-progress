@@ -230,7 +230,7 @@ void func_global_asm_806A2E30(void) {
             case MAP_BATTLE_ARENA_PLINTH_PANIC:
             case MAP_BATTLE_ARENA_PINNACLE_PALAVER:
             case MAP_BATTLE_ARENA_SHOCKWAVE_SHOWDOWN:
-                switch (current_actor_pointer->control_state_progress) {               /* switch 4 */
+                switch (current_actor_pointer->control_state_progress) {
                     case 0:
                     case 7:
                     case 14:

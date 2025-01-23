@@ -117,7 +117,7 @@ int func_race_80024634(RaceStruct8 *arg0, RaceStruct9 *arg1) {
 // https://decomp.me/scratch/zubvl
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80024690.s")
 
-s32 func_race_8002E8EC(void *, s32, s32); // extern
+s32 func_race_8002E8EC(void *, s32, s32);
 extern u16 D_global_asm_80750AC8;
 extern u8 D_global_asm_807FBD70;
 extern s32 D_race_8002FB94[];

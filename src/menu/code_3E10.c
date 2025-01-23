@@ -1294,7 +1294,7 @@ void func_menu_8002CFA4(Actor *arg0, s32 arg1) {
 }
 */
 
-Gfx *func_menu_8002F980(Gfx *, Struct800317E8 *, s8 **, s8, u32 *, s32, f32 *, f32, s32); // extern
+Gfx *func_menu_8002F980(Gfx *, Struct800317E8 *, s8 **, s8, u32 *, s32, f32 *, f32, s32);
 extern s8 D_global_asm_8074583C;
 extern s8 D_global_asm_80745840;
 extern s8 D_global_asm_80745844;

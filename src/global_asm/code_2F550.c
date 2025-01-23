@@ -1350,7 +1350,6 @@ extern s32 D_807FB5E0;
 extern s32 D_807FB5E4;
 extern s16 D_807FB5E8;
 extern s16 D_807FB5EA;
-// extern s32 D_global_asm_807F5FCC;
 extern u8 D_global_asm_807F5FED;
 
 extern f32 D_global_asm_807444C4;

@@ -48,7 +48,7 @@ typedef struct CutsceneBank {
     f32 unkDC;
 } CutsceneBank;
 
-void func_global_asm_80622B24(Actor *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, void *); /* extern */
+void func_global_asm_80622B24(Actor *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, void *);
 
 extern OSTime D_807F5CE0;
 extern f32 D_global_asm_807574E0;
@@ -733,7 +733,7 @@ void func_global_asm_8061DAAC(s16 arg0, s16 arg1, u16 arg2) {
     D_global_asm_807476E0 = (arg1 << 0xC) / 360;
 }
 
-s32 func_global_asm_80620628(Actor*, f32, s32, s32); // extern
+s32 func_global_asm_80620628(Actor*, f32, s32, s32);
 
 typedef struct {
     Actor *unk0;
@@ -1230,7 +1230,7 @@ void func_global_asm_806261CC(Actor *arg0) {
     aaD->unkAC &= 0xFFFEFFFB;
 }
 
-s32 func_global_asm_806264DC(s32, void*, u8); // extern
+s32 func_global_asm_806264DC(s32, void*, u8);
 
 typedef struct {
     u8 unk0[0x3C1 - 0x0];
@@ -1478,7 +1478,7 @@ void func_global_asm_80627888(Actor *arg0) {
     arg0->unk15F = (aaD->unkB2 / 4095.0) * 255.0;
 }
 
-s32 func_global_asm_80671E00(f32, f32, f32, f32, s16*, s16*, s32, s32); // extern
+s32 func_global_asm_80671E00(f32, f32, f32, f32, s16*, s16*, s32, s32);
 
 void func_global_asm_80627948(Actor *arg0, u8 arg1, u8 arg2, u8 arg3) {
     s16 sp2E;

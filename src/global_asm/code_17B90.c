@@ -174,7 +174,7 @@ s32 func_global_asm_806134B4(Actor *arg0, u16 arg1) {
 }
 */
 
-void func_global_asm_80613944(Actor *, AnimationStateUnk0 *); // extern
+void func_global_asm_80613944(Actor *, AnimationStateUnk0 *);
 
 void func_global_asm_806136B4(Actor *arg0) {
     func_global_asm_80613794(arg0, 0);
@@ -311,7 +311,7 @@ f32 func_global_asm_80614A54(Actor *arg0) {
     return arg0->animation_state->unk0->unk4;
 }
 
-s32 func_global_asm_806195D0(f32, f32); // extern
+s32 func_global_asm_806195D0(f32, f32);
 
 void func_global_asm_80614A64(Actor *arg0) {
     if (arg0->x_position >= -8192.0f) {
@@ -2014,7 +2014,7 @@ void func_global_asm_80619018(Actor *arg0) {
     }
 }
 
-s32 func_global_asm_8071D94C(Actor *, Struct80717D84 *, u8 *); // extern
+s32 func_global_asm_8071D94C(Actor *, Struct80717D84 *, u8 *);
 extern s32 D_global_asm_80746B80[]; // TODO: Datatype
 extern s32 D_global_asm_80746BD4[]; // TODO: Datatype
 extern u8 D_global_asm_80750AD0;

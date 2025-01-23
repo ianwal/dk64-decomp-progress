@@ -557,7 +557,7 @@ void func_global_asm_807278C0(EnemySpawner *arg0) {
     }
 }
 
-u8 func_global_asm_8072818C(EnemySpawner *, s32);     /* extern */
+u8 func_global_asm_8072818C(EnemySpawner *, s32);
 
 void func_global_asm_80727958(void) {
     Actor *temp_a0;

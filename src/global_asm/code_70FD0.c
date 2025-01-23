@@ -1421,8 +1421,6 @@ void func_global_asm_80671D10(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671D64.s")
 
-// extern u8 D_global_asm_807444FC;
-
 /*
 // TODO: Yikes
 s32 func_global_asm_80671D64(Actor *arg0, s32 arg1) {
@@ -1513,14 +1511,13 @@ s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     return arg3 * var_f2;
 }
 
+// close, float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672328.s")
 
 s32 func_global_asm_806725A0(Actor *arg0, s16 arg1);
 s32 func_global_asm_80611E60(s32, s32);
 
 /*
-// TODO: Pretty close
-// Float, s16 and stack nonsense
 s32 func_global_asm_80672328(Actor *arg0, f32 arg1, f32 arg2) {
     s32 temp_f6;
     s32 temp_v1;

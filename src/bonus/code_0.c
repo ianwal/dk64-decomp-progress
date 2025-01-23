@@ -59,7 +59,7 @@ void func_bonus_800240F0(void) {
 
 /*
 void func_global_asm_806C8E58(s16 arg0);
-u8 func_global_asm_806FDB8C(s32, s8 *, s32, f32, f32, f32); // extern
+u8 func_global_asm_806FDB8C(s32, s8 *, s32, f32, f32, f32);
 extern s32 D_bonus_8002D863[4];
 extern s16 D_global_asm_80750AC4;
 extern s16 D_global_asm_8076AEF2;

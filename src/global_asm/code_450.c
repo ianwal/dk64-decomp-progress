@@ -491,7 +491,7 @@ void func_global_asm_805FC2B0(void) {
 // OSTime stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FC668.s")
 
-void func_global_asm_806FB2B8();                       /* extern */
+void func_global_asm_806FB2B8();
 extern OSTime D_global_asm_807445B0;
 extern OSTime D_global_asm_807445B8;
 extern OSTime D_global_asm_807445C0;

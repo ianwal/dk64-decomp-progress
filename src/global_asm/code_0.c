@@ -4,7 +4,7 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FB300.s")
 
 void func_global_asm_805FB5C4(OSMesgQueue *, s32);
-void func_global_asm_805FBFF4(void *);              /* extern */
+void func_global_asm_805FBFF4(void *);
 extern void func_dk64_boot_80000450(s32 devAddr, s32 arg1, void *dramAddr);
 extern OverlayInfoStruct D_8000DCC4[];
 extern void func_arcade_80024000(void);
