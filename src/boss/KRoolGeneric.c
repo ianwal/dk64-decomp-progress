@@ -367,7 +367,6 @@ block_16:
 }
 */
 
-
 void func_boss_80028458(void) {
     func_global_asm_805FF8F8();
 }

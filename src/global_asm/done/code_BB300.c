@@ -276,7 +276,6 @@ void func_global_asm_806B6DB0(s32 arg0) {
     renderActor(current_actor_pointer, 0U);
 }
 
-
 void func_global_asm_806B75F4(void) {
     initializeCharacterSpawnerActor();
     func_global_asm_806B6DB0(10000);

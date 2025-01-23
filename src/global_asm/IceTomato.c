@@ -358,7 +358,6 @@ Gfx *func_global_asm_806BCF98(Gfx *dl, s32 arg1) {
     return printStyledText(dl, 1, 520, 300, "b NO", 1);
 }
 
-
 // Set Caves Ice Tomato Board Square
 void func_global_asm_806BD094(s16 arg0, s8 arg1) {
     if (arg0 >= 0 && arg0 < 0x10) {

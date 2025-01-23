@@ -666,7 +666,6 @@ block_108:
 }
 */
 
-
 s32 func_global_asm_80629148(void) {
     s32 phi_v1 = FALSE;
     if (current_actor_pointer->unk6A & 0x100) {

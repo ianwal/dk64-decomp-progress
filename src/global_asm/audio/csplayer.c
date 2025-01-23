@@ -120,7 +120,6 @@ void func_global_asm_80735624(ALCSPlayer *seqp, ALEvent *event) {
     ALMicroTime         tempDelta,curDelta = 0;
     ALEventListItem     *thisNode,*nextNode,*firstTemp = 0;
 
-
     if (event->msg.tempo.status == AL_MIDI_Meta)
     {
         if (event->msg.tempo.type == AL_MIDI_META_TEMPO)

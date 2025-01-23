@@ -24,7 +24,6 @@ typedef struct {
     s16 unk8;
 } AAD_806A2328;
 
-
 void func_global_asm_806A1580(void) {
     s16 sp36;
     Actor *sp30;

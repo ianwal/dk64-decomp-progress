@@ -26192,7 +26192,6 @@ void func_arcade_800275E8(Gfx** arg0) {
     *arg0 = sp90;
 }
 
-
 //arcade_50m_draw
 void func_arcade_80027A38(Gfx **arg0) {
     s32 i;
@@ -27758,7 +27757,6 @@ void func_arcade_8002D6FC(s32 arg0) {
             } else {
                 arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
             }
-
 
             arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5) * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 15.0) + 1.0);
 

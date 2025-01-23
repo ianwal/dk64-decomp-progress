@@ -52,7 +52,6 @@ void func_global_asm_8073BA60(ALVoice *arg0, u8 arg1) {
     }
 }
 
-
 void func_global_asm_8073BB10(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4) {
     f32 sp3C;
     f32 sp38;

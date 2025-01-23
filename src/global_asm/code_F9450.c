@@ -926,7 +926,6 @@ loop_13:
 }
 */
 
-
 // Jumptable, rodata problems, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F79E0.s")
 

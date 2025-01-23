@@ -318,5 +318,3 @@ void func_boss_80030EC4(void) {
     }
     renderActor(current_actor_pointer, 0U);
 }
-
-

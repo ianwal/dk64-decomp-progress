@@ -236,8 +236,6 @@ s32 func_global_asm_80725BA4(s16 x, s16 z, FenceStruct *arg2) {
     return v0 & 1;
 }
 
-
-
 void func_global_asm_8061F2B8(f32, f32, f32, f32, f32, f32, f32, f32, f32, f32 *, f32 *, f32 *);
 
 u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s16 arg5, s16 arg6) {
@@ -250,7 +248,6 @@ u8 func_global_asm_80725DC0(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, s1
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80725ED4.s")
-
 
 s32 func_global_asm_80726164(Actor *actor, s16 x, s16 y, s16 z, FenceStruct *arg4) {
     s32 var_v0;
@@ -305,8 +302,6 @@ s32 func_global_asm_80726164(Actor *actor, s16 x, s16 y, s16 z, FenceStruct *arg
     }
     return var_s3;
 }
-
-
 
 // arg0 Actor, doable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_807264B0.s")
@@ -542,8 +537,6 @@ void func_global_asm_80727678(void) {
     }
 }
 
-
-
 void func_global_asm_807278C0(EnemySpawner *arg0) {
     u8 temp_v0;
 
@@ -703,8 +696,6 @@ void func_global_asm_80727958(void) {
         var_s0++;
     }
 }
-
-
 
 u8 func_global_asm_80727F20(EnemyInfo *arg0, s32 arg1) {
     return (((character_change_array[0].look_at_eye_x - arg0->x_position) * (character_change_array[0].look_at_eye_x - arg0->x_position))
@@ -885,7 +876,6 @@ void func_global_asm_80728300(s16 *file, FenceDataStruct *fence, SpawnerDataStru
     }
 }
 */
-
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_8072881C.s")

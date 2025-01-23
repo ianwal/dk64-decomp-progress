@@ -471,8 +471,6 @@ u32 func_global_asm_8060C430(s32 arg0, u32 arg1, s32 arg2) {
     return arg1;
 }
 
-
-
 // TODO: Is arg4 u8?
 void func_global_asm_8060C648(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex, u32 arg4) {
     u16 sp26;
@@ -827,7 +825,6 @@ block_20:
     D_global_asm_807467C4 = 0;
 }
 */
-
 
 void func_global_asm_8060D768(void) {
     func_global_asm_8060D2C8(0);

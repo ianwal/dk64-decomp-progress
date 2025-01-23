@@ -75,7 +75,6 @@ void func_global_asm_805FB300(OSMesgQueue *arg0, s32 arg1) {
 }
 */
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_0/func_global_asm_805FB5C4.s")
 
 typedef struct {

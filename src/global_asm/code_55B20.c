@@ -1301,7 +1301,6 @@ void func_global_asm_80658624(s32 arg0, s32 *arg1, s32 *arg2, s32 *arg3, s32 *ar
     }
 }
 
-
 typedef struct Pointer20Struct_sub0 {
     u8 pad0[0x20];
 } Pointer20Struct_sub0;
@@ -1407,7 +1406,6 @@ void func_global_asm_80658930(Pointer20File *arg0) {
     }
 }
 */
-
 
 s16 func_global_asm_80658B08(s8 arg0, u8 *arg1, s16 arg2) {
     s16 i;

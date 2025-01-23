@@ -1340,8 +1340,6 @@ Gfx *func_menu_8002D520(Actor *arg0, Gfx *dl) {
     return dl;
 }
 
-
-
 void func_menu_8002D7EC(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
 
@@ -1643,8 +1641,6 @@ void func_menu_8002DFA8(Actor *arg0, s32 arg1) {
         playSound(0x74, 0x7FFFU, 63.0f, 1.0f, 0, 0);
     }
 }
-
-
 
 // Jumptable, displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002E420.s")

@@ -143,7 +143,6 @@ Acmd *func_global_asm_80740100(CustomPVoice *arg0, s16 *arg1, s32 arg2, Acmd *ar
 }
 */
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_144E00/func_global_asm_807407A8.s")
 
 /*
@@ -203,7 +202,6 @@ void func_global_asm_807407A8(CustomPVoice *arg0, s32 arg1, s32 *arg2) {
     }
 }
 */
-
 
 Acmd *func_global_asm_80740A90(Acmd *arg0, CustomPVoice *arg1, s32 arg2, s32 arg3, s16 arg4, s16 arg5, s32 arg6) {
     s32 sp2C;

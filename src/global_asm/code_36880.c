@@ -1335,7 +1335,6 @@ block_3:
 }
 */
 
-
 // Appears to parse a displaylist looking for 0xFD command
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636784.s")

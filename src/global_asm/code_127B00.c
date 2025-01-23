@@ -87,8 +87,6 @@ void func_global_asm_80722E48(PathFile *arg0) {
     }
 }
 
-
-
 // Used in func_global_asm_80722FEC as well as func_global_asm_807245D8.
 
 s32 func_global_asm_80722FEC(u8 arg0) {

@@ -245,5 +245,3 @@ void func_boss_8002EA7C(void) {
     }
     renderActor(current_actor_pointer, 0U);
 }
-
-

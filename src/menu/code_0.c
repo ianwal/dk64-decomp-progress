@@ -219,7 +219,6 @@ Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
     return dl;
 }
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_80024788.s")
 
 extern s16 D_menu_800330D8;

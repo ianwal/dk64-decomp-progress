@@ -40,7 +40,7 @@ void func_global_asm_806978FC(void) {
     }
 }
 
-// close
+// close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_global_asm_80697988.s")
 
 void func_global_asm_80697230(void);
@@ -56,7 +56,6 @@ typedef struct {
 } AAD_global_asm_80697988;
 
 /*
-// TODO: Doable, made some progress
 void func_global_asm_80697988(void) {
     AAD_global_asm_80697988 *aaD;
 

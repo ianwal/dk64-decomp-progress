@@ -89,8 +89,6 @@ u8 func_global_asm_8064F84C(s16 arg0) {
     return D_global_asm_807F6BEC;
 }
 
-
-
 void func_global_asm_8064F954(s32 arg0) {
     func_global_asm_806500E0();
     func_global_asm_8064F97C(arg0);

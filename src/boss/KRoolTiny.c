@@ -293,8 +293,6 @@ void func_boss_8002F100(void) {
     renderActor(current_actor_pointer, 0U);
 }
 
-
-
 void func_boss_8002FB7C(u8 arg0) {
     AnimationStateUnk20 *temp_v0;
 
@@ -590,8 +588,6 @@ void func_boss_8002FF74(void) {
     }
     renderActor(current_actor_pointer, 0U);
 }
-
-
 
 void func_boss_80030888(void) {
     Actor* temp;

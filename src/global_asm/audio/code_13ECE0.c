@@ -213,7 +213,6 @@ u8 func_global_asm_8073A900(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
     return sp4;
 }
 
-
 void func_global_asm_8073A98C(Struct8073AB00 *arg0, Struct8073A98C_arg1 *arg1) {
     s32 i;
     Struct8073AD50_arg1 *sp18;

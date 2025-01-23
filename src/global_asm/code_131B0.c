@@ -260,7 +260,6 @@ const char D_global_asm_80757188[] = "WARNING!!";
 // const char D_global_asm_8075723C[] = " %05x  NOOP..........\n";
 // const char D_global_asm_80757254[] = "  %05x Undef.............\n";
 
-
 void func_global_asm_8060F960(Struct131B0_2 *, s32);
 
 void func_global_asm_8060F1D0(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {

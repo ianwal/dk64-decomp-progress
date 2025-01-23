@@ -109,7 +109,6 @@ Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg
 }
 */
 
-
 Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
     void *var_a2;
     u8 i;

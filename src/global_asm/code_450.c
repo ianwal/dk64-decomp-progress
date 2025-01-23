@@ -557,7 +557,6 @@ s32 func_global_asm_805FC668(void) {
 }
 */
 
-
 extern OSTime D_global_asm_807445B8;
 extern OSTime D_global_asm_807445C0;
 extern u32 D_global_asm_80750AB0;
@@ -766,7 +765,6 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
     gSPPerspNormalize(dl_0++, D_global_asm_8076A09C);
     gSPClipRatio(dl_0++, FRUSTRATIO_3);
     gSPSegment(dl++, 0x00, 0x00000000);
-    // Some stack nonsense here
     gSPSegment(dl++, 0x02, osVirtualToPhysical(arg0));
     gSPSegment(dl++, 0x01, osVirtualToPhysical(D_global_asm_8076A080));
     gSPSegment(dl_0++, 0x00, 0x00000000);
@@ -890,7 +888,6 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
             temp_v0_6->unkA);
         }
         if (D_global_asm_80744484) {
-            // Load for 274 and 272 need to be swapped
             gDPFillRectangle(dl++, 
             character_change_array->unk270[0], 
             temp_v0_6->unk6, 
@@ -898,7 +895,6 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
             character_change_array->unk270[1]);
         }
         if (D_global_asm_80744488) {
-            // load for 270 and 276 need to be swapped
             gDPFillRectangle(dl++, 
             character_change_array->unk270[0], 
             character_change_array->unk270[3], 
@@ -925,7 +921,6 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
         d = temp_v0_6->unkA - temp_v0_6->unk6;
         character_change_array->unk280 = (f32)(n) / (f32)(d);
         gDPSetRenderMode(dl++, G_RM_OPA_SURF, G_RM_OPA_SURF2);
-
     }
     dl = func_global_asm_805FD030(dl);
     dl = func_global_asm_8068C20C(dl, 3);
@@ -945,7 +940,6 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
     *arg2 = dl_0;
     }
 }
-
 
 extern void *D_8076A060;
 extern s16 D_global_asm_80744490;

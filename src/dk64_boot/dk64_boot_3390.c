@@ -38,7 +38,6 @@ u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1) {
     return start_str;
 }
 
-
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002B0C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002BB8.s")

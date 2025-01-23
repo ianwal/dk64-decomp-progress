@@ -206,7 +206,6 @@ u8 func_global_asm_806B5A90(s32 arg0, s32 arg1) {
 }
 */
 
-
 void func_global_asm_806B63E0(void) {
     initializeCharacterSpawnerActor();
     func_global_asm_806B5A90(10000, 0);

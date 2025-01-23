@@ -1683,7 +1683,6 @@ void func_global_asm_80649BF0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
 }
 */
 
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -1929,7 +1928,6 @@ void func_global_asm_8064A804(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
     }
 }
 
-
 void func_global_asm_8064AAC4(s32 arg0, s16 arg1, s8 arg2, s32 arg3) {
     func_global_asm_806BD094(D_global_asm_807F6000[func_global_asm_80659470(arg1)].unk8A, arg2);
 }
@@ -2074,8 +2072,6 @@ void func_global_asm_8064AC28(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         arg0->unk0 = NULL;
     }
 }
-
-
 
 void func_global_asm_8064B118(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_bonus_8002D6F8(arg1);
@@ -3164,7 +3160,6 @@ void func_global_asm_8064E174(OM2_scriptdata *arg0, s16 arg1, s16 arg2, u8 *arra
     }
 }
 
-
 typedef struct {
     s32 unk0;
 } Struct807482DC;
@@ -3291,8 +3286,6 @@ void func_global_asm_8064E65C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         return;
     }
 }
-
-
 
 void func_global_asm_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     if (func_global_asm_806F8AD4(1, 0) >= 2) {
@@ -3453,8 +3446,6 @@ void func_global_asm_8064EE08(SpriteStruct *arg0, u8 *arg1) {
     }
     arg0->unk364 = arg0->unk360;
 }
-
-
 
 void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     changeActorColor(0xFF, 0xFF, 0xFF, 0x80);

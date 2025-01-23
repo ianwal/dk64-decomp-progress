@@ -865,7 +865,6 @@ block_134:
 }
 */
 
-
 void func_boss_8003575C(void) {
     f32 dx, dz;
 

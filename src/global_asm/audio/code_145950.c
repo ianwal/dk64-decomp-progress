@@ -48,7 +48,6 @@ void *func_global_asm_80740C50(CustomPVoice *arg0, s16 *arg1, s32 arg2, Acmd *ar
     return sp2C;
 }
 
-
 void func_global_asm_807407A8(void *, s32, void*);
 
 typedef struct {

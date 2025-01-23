@@ -289,7 +289,6 @@ Gfx *func_multiplayer_800246EC(Gfx *dl, Struct800246EC *aaD, f32 arg2) {
 }
 */
 
-
 // Displaylist stuff, close, float, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800249D8.s")
 
@@ -930,7 +929,6 @@ void func_multiplayer_80026094(void) {
     addActorToTextOverlayRenderArray(&func_multiplayer_80025264, current_actor_pointer, 7U);
 }
 */
-
 
 void func_multiplayer_800268C0(u8 arg0) {
     D_multiplayer_80026F70 |= arg0;

@@ -358,6 +358,7 @@ u8 isIntroStoryPlaying(void) {
     return D_global_asm_80755070;
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070B324.s")
 
 extern s8 D_global_asm_8074583C;
@@ -365,7 +366,6 @@ extern u8 D_global_asm_8076A0B1;
 extern s32 D_global_asm_807550A4;
 
 /*
-// TODO: Doable, progess made
 void func_global_asm_8070B324(f32 arg0, s32 arg1, s32 *arg2) {
     s32 sp34;
     s32 *var_s0;

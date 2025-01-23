@@ -265,7 +265,6 @@ void func_global_asm_806B8898(void) {
     func_global_asm_806B88B8();
 }
 
-
 void func_global_asm_806B88B8(void) {
     Actor178 *temp_v1;
     Actor178 *sp3C;

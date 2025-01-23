@@ -69,12 +69,12 @@ void func_global_asm_8068A4C8(Actor *arg0, s32 arg1, s32 arg2) {
     }
 }
 
+// close, float
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F050/func_global_asm_8068A508.s")
 
 extern s32 D_global_asm_807552F4[];
 
 /*
-// TODO: Close, float nonsense
 void func_global_asm_8068A508(void) {
     s32 sp80;
     f32 dz;

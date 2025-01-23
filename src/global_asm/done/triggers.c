@@ -71,8 +71,6 @@ void func_global_asm_8072E5FC(TriggerFile *arg0) {
     }
 }
 
-
-
 typedef struct {
     s16 unk0;
     u16 unk2;

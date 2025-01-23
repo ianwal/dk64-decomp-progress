@@ -1437,8 +1437,6 @@ void func_global_asm_8066B5F4(s32 pointerTableIndex) {
     }
 }
 
-
-
 typedef struct global_asm_struct_40 GlobalASMStruct40;
 
 struct global_asm_struct_40 {

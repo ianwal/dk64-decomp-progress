@@ -685,8 +685,6 @@ void func_global_asm_806F1C04(Actor *arg0, AnimationStateUnk1C *arg1, s32 *arg2)
     *arg2 = var_s4;
 }
 
-
-
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F1EB0.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F56F0/func_global_asm_806F22A8.s")
@@ -1090,7 +1088,6 @@ void func_global_asm_806F4528(AutowalkFile *arg0) {
         D_global_asm_80753E90->count = 0;
     }
 }
-
 
 f32 func_global_asm_806F46B0(s16 arg0) {
     s16 i;
