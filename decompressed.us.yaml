@@ -231,8 +231,8 @@ segments:
       - [0x2017A10, hasm, code_17A10]
       - [0x2017B40, c, done/code_17B40]
       - [0x2017B90, c, code_17B90]
-      - [0x201E2D0, bin, code_1E2D0]
-      # - [0x201F9A0, bin, code_1F9A0] # Float to Array
+      - [0x201E2D0, c, code_1E2D0]
+      - [0x201F9A0, bin, code_1F9A0] # Float to Array
       - [0x20201B0, c, code_201B0]
       - [0x202C700, c, code_2C700]
       - [0x202C910, c, code_2C910]
