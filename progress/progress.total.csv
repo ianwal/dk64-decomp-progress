@@ -652,7 +652,7 @@ us,asm,func_global_asm_80666D88,380,yes
 us,asm,func_global_asm_806534E0,420,yes
 us,asm,func_global_asm_8073FD90,876,yes
 us,asm,func_global_asm_806EAFEC,8,yes
-us,asm,func_global_asm_806C1B50,380,no
+us,asm,func_global_asm_806C1B50,380,yes
 us,asm,func_global_asm_80643274,224,yes
 us,asm,func_global_asm_806A60E4,40,yes
 us,asm,func_global_asm_806C55E0,1600,yes

@@ -776,17 +776,9 @@ void func_global_asm_806C19F4(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// close, switch case woes 
-// https://decomp.me/scratch/YGbiZ
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C1B50.s")
-
 extern SpriteData D_global_asm_8071FB34; // TODO: Datatype
 
-/*
 void func_global_asm_806C1B50(void) {
-    s32 var_v0;
-    u32 var_v1;
-
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         func_global_asm_806C15E8();
@@ -796,42 +788,29 @@ void func_global_asm_806C1B50(void) {
     if (current_actor_pointer->object_properties_bitfield & 0x10000000) {
         func_global_asm_806BFBF4();
         if (current_actor_pointer->object_properties_bitfield & 4) {
-            if (current_actor_pointer->control_state_progress != 0) {
-                var_v1 = 7;
+            if (current_actor_pointer->control_state_progress) {
+                u8 var_v1;
+                u8 boneIndex = 0x11;
                 switch (current_actor_pointer->animation_state->unk0->unk10) {
                     case 0x23E:
-                        var_v0 = 0xD;
+                        var_v1 = 7;
+                        boneIndex = 0xD;
                         break;
                     case 0x23F:
                         var_v1 = 7;
-                        var_v0 = 0xE;
+                        boneIndex = 0xE;
                         break;
                     case 0x240:
                         var_v1 = 3;
-                        var_v0 = 0x11;
-                        // fallthrough
-                    default:
-                        var_v1 = 3;
+                        boneIndex = 0x11;
                         break;
+                    default:
+                        // TODO: Do it without a label... hmm...
+                        goto render_806C1B50;
 
                 }
-                // if (current_actor_pointer->control_state_progress != 0x23E) {
-                //     var_v1 = 7;
-                //     if (current_actor_pointer->control_state_progress != 0x23F) {
-                //         var_v1 = 3;
-                //         if (current_actor_pointer->control_state_progress != 0x240) {
-
-                //         } else {
-                //             var_v0 = 0x11;
-                //         }
-                //     } else {
-                //         var_v0 = 0xE;
-                //     }
-                // } else {
-                //     var_v0 = 0xD;
-                // }
                 if (var_v1 < current_actor_pointer->animation_state->unk0->unk4) {
-                    func_global_asm_80714C08(&D_global_asm_8071FB34, 0.5f, current_actor_pointer, var_v0, 0);
+                    func_global_asm_80714C08(&D_global_asm_8071FB34, 0.5f, current_actor_pointer, boneIndex, 0);
                     current_actor_pointer->control_state_progress = 0;
                 }
             }
@@ -840,9 +819,9 @@ void func_global_asm_806C1B50(void) {
         func_global_asm_806C10A0(2, 4, 0x3DB);
         func_global_asm_806C151C(4, 1, 8);
     }
+render_806C1B50:
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806C1CCC(void) {
     initializeCharacterSpawnerActor();

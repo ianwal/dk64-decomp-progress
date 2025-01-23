@@ -322,13 +322,14 @@ void func_global_asm_8067BE30(void) {
                 aaD->unk0 = 0x1A;
                 break;
         }
+        continue;
     }
-    if (aaD->unk0 != 0) {
-        if (func_global_asm_8067BF84(aaD->unk0, &aaD->unk2, &aaD->unk3, &aaD->unk4) != 0) {
+    if (aaD->unk0) {
+        if (func_global_asm_8067BF84(aaD->unk0, &aaD->unk2, &aaD->unk3, &aaD->unk4)) {
             aaD->unk0 = 0x1A;
         }
     } else {
-        if (D_global_asm_807FBB70.unk38 != 0) {
+        if (D_global_asm_807FBB70.unk38) {
             aaD->unk4 = 1;
         }
         renderActor(current_actor_pointer, 0);
