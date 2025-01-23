@@ -245,8 +245,6 @@ f32 func_global_asm_80665AE4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return sp1C * 57.29577637f;
 }
 
-s32 func_global_asm_80611E60(s32);
-
 s16 func_global_asm_80665C18(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s16 sp36;
 

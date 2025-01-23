@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 orphanFunctionsWithSignatures = [
-    "func_global_asm_80612790",
     "func_global_asm_80612794",
     "func_global_asm_806A36F4",
     "func_global_asm_806E770C",

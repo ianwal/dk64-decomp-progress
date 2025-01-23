@@ -235,7 +235,96 @@ void func_global_asm_8069A614(f32 arg0, u8 arg1) {
 // TODO: Needs some more shape on D_global_asm_807FBB70.unk0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A750.s")
 
+// close, doable, float, struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A7C8.s")
+
+typedef struct {
+    f32 unk0;
+    u8 unk4;
+    f32 unk8;
+    s32 unkC;
+} AAD_8069A7C8;
+
+/*
+void func_global_asm_8069A7C8(void) {
+    GlobalASMStruct35 *var_s0;
+    GlobalASMStruct35 *var_s2;
+    f32 temp_f0;
+    f32 temp_f0_3;
+    f32 temp_f0_4;
+    f32 var_f24;
+    f32 temp_f2;
+    f32 var_f2;
+    f64 temp_f0_5;
+    s32 i;
+    u32 temp_v1;
+    AAD_8069A7C8 *aaD;
+
+    temp_v1 = current_actor_pointer->object_properties_bitfield;
+    aaD = current_actor_pointer->additional_actor_data;
+    var_f24 = 0.0f;
+    if (!(temp_v1 & 0x10)) {
+        current_actor_pointer->object_properties_bitfield = temp_v1 | 0x400;
+        current_actor_pointer->animation_state->unk24 = malloc(2 * sizeof(AnimationStateUnk24));
+        current_actor_pointer->animation_state->unk24[0].unk0 = 1;
+        current_actor_pointer->animation_state->unk24[0].unk1 = 0xFF;
+        current_actor_pointer->animation_state->unk24[0].unk4 = 0.0f;
+        current_actor_pointer->animation_state->unk24[0].unkC = 0.0f;
+        current_actor_pointer->animation_state->unk24[0].unk8 = 0.0f;
+        current_actor_pointer->animation_state->unk24[1].unk0 = 0xFF;
+        current_actor_pointer->draw_distance = 0x3E8;
+        aaD->unk0 = 0.0f;
+        aaD->unk4 = 0;
+        aaD->unk8 = 0.0f;
+        aaD->unkC = 0;
+    }
+    var_s0 = &D_global_asm_807FBB70;
+    for (i = 0; i < D_global_asm_807FBB70.unk39; i++) {
+        temp_f0 = var_s0->unk44;
+        temp_f2 = var_s0->unk3C;
+        var_f2 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2));
+        if (var_f2 > 1347.0f) {
+            var_f2 = 1347.0f;
+        }
+        var_f24 += 1347.0f - var_f2;
+        temp_f0_3 = ((Actor*)D_global_asm_807FBB70.unk7C[i])->unkB8 * 0.1;
+        if (aaD->unk8 < temp_f0_3) {
+            aaD->unk8 = temp_f0_3;
+        }
+        var_s0++; // += 0xC (f32[3]?)
+    }
+    if (var_f24 > 1347.0f) {
+        var_f24 = 1347.0f;
+    }
+    var_f24 = var_f24 / 10.0;
+    if (aaD->unk0 < var_f24) {
+        aaD->unk0 = aaD->unk0 + ((var_f24 - aaD->unk0) * 0.25);
+        if (var_f24 < aaD->unk0) {
+            aaD->unk0 = var_f24;
+        }
+    }
+    if (var_f24 < aaD->unk0) {
+        aaD->unk0 = aaD->unk0 - ((aaD->unk0 - var_f24) * 0.5);
+        if (aaD->unk0 < var_f24) {
+            aaD->unk0 = var_f24;
+        }
+    }
+    aaD->unkC++;
+    if ((f64)aaD->unk8 == 0.0) {
+        aaD->unkC = 0;
+    }
+    if (D_global_asm_807FBB70.unk39 != aaD->unk4) {
+        aaD->unk8 = 12.0f;
+    }
+    aaD->unk8 = aaD->unk8 - (aaD->unk8 / 40.0);
+    if (aaD->unk8 < 0.5) {
+        aaD->unk8 = 0.0f;
+    }
+    current_actor_pointer->animation_state->unk24->unk8 = 0 - (f64)((func_global_asm_80612D1C(aaD->unkC * 0.5) * aaD->unk8) + aaD->unk0);
+    aaD->unk4 = D_global_asm_807FBB70.unk39;
+    renderActor(current_actor_pointer, 0);
+}
+*/
 
 // Very close, type issues on RGB
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069AB74.s")

@@ -582,7 +582,7 @@ typedef struct {
     s32 unk70;
     s32 unk74;
     s32 unk78;
-    void *unk7C; // TODO: Actor*?
+    void *unk7C[1]; // TODO: Actor*?
     s32 unk80;
     s32 unk84;
     s32 unk88;

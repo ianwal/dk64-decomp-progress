@@ -5,8 +5,6 @@ extern u16 D_global_asm_80746A50[];
 extern u16 D_global_asm_80746ACC[];
 extern u16 D_global_asm_80746B4C[];
 
-s32 func_global_asm_80611D20(s32);
-
 s32 func_global_asm_80611D20(s32 arg0) {
     u16 *var_a2;
     s32 var_a1;

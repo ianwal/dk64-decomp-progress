@@ -143,7 +143,6 @@ void func_global_asm_805FB7E4(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FB944.s")
 
-void func_global_asm_805FB7E4(void);
 void func_global_asm_80610350(u8, u8, s32);
 
 extern OSViMode D_dk64_boot_8000EF20[];

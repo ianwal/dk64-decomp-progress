@@ -1511,45 +1511,43 @@ s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     return arg3 * var_f2;
 }
 
-// close, float, stack
+// close, stack, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672328.s")
 
 s32 func_global_asm_806725A0(Actor *arg0, s16 arg1);
-s32 func_global_asm_80611E60(s32, s32);
 
 /*
 s32 func_global_asm_80672328(Actor *arg0, f32 arg1, f32 arg2) {
     s32 temp_f6;
-    s32 temp_v1;
     s32 temp_f16;
-    s32 temp_a1;
-    s32 temp_f8;
-    s32 temp_f18;
-    s32 phi_a2;
-    s32 phi_v1;
-    f32 temp_f0;
+    s32 temp_f8; // sp44
+    s32 temp_f18; // sp40
+    s32 dx;
+    s32 dz;
+    f32 temp_f0; // sp34
+    s16 phi_a2;
 
     temp_f8 = arg0->unk88 * 8.0f;
     temp_f6 = arg1 * 8.0f;
     temp_f18 = arg0->unk90 * 8.0f;
-    temp_v1 = temp_f6 - temp_f8;
+    dx = temp_f6 - temp_f8;
     temp_f16 = arg2 * 8.0f;
-    temp_a1 = temp_f16 - temp_f18;
-    temp_f0 = sqrtf((temp_v1 * temp_v1) + (temp_a1 * temp_a1));
+    dz = temp_f16 - temp_f18;
+    temp_f0 = sqrtf((dx * dx) + (dz * dz));
     if (temp_f0 == 0.0) {
         return TRUE;
     }
-    if ((temp_v1 >= 0) && (temp_a1 >= 0)) {
-        phi_a2 = func_global_asm_80611E60((temp_v1 * 65535.9) / temp_f0, temp_a1) >> 4;
+    if ((dx >= 0) && (dz >= 0)) {
+        phi_a2 = func_global_asm_80611E60((dx * 65535.9) / temp_f0) >> 4;
     }
-    if (((temp_f6 - temp_f8) >= 0) && ((temp_f16 - temp_f18) < 0)) {
-        phi_a2 = (func_global_asm_80611E60(((temp_f18 - temp_f16) * 65535.9) / temp_f0, temp_f16 - temp_f18) >> 4) + 0x400;
+    if ((dx >= 0) && (dz < 0)) {
+        phi_a2 = (func_global_asm_80611E60(((temp_f18 - temp_f16) * 65535.9) / temp_f0) >> 4) + 0x400;
     }
-    if (((temp_f6 - temp_f8) < 0) && ((temp_f16 - temp_f18) < 0)) {
-        phi_a2 = (func_global_asm_80611E60(((temp_f8 - temp_f6) * 65535.9) / temp_f0, temp_f16 - temp_f18) >> 4) + 0x800;
+    if ((dx < 0) && (dz < 0)) {
+        phi_a2 = (func_global_asm_80611E60(((temp_f8 - temp_f6) * 65535.9) / temp_f0) >> 4) + 0x800;
     }
-    if (((temp_f6 - temp_f8) < 0) && ((temp_f16 - temp_f18) >= 0)) {
-        phi_a2 = (func_global_asm_80611E60(((temp_f16 - temp_f18) * 65535.9) / temp_f0, temp_f16 - temp_f18) >> 4) + 0xC00;
+    if ((dx < 0) && (dz >= 0)) {
+        phi_a2 = (func_global_asm_80611E60(((dz) * 65535.9) / temp_f0) >> 4) + 0xC00;
     }
     return func_global_asm_806725A0(arg0, phi_a2) ? TRUE : FALSE;
 }

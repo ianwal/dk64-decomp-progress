@@ -126,7 +126,6 @@ void func_global_asm_80675380(Actor *arg0, Actor *arg1) {
 // Matrix nonsense
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_79890/func_global_asm_80675478.s")
 
-s32 func_global_asm_80611E60(s32);
 s32 func_global_asm_806742C0(s16, s16, s32, s32);
 
 void func_global_asm_806755A8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
