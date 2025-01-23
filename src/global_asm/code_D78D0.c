@@ -1961,16 +1961,10 @@ int func_global_asm_806D850C(void) {
     return FALSE;
 }
 
-// close, float
-// https://decomp.me/scratch/en55B
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D87FC.s")
-
 extern f32 D_global_asm_807539A4[];
 extern f32 D_global_asm_80753988[];
 extern s16 D_global_asm_80753B34[];
 
-/*
-// TODO: Very close, something iffy with the order of loading floats from those arrays
 void func_global_asm_806D87FC(void) {
     f32 temp_f0;
     f32 temp_f0_2;
@@ -1981,7 +1975,7 @@ void func_global_asm_806D87FC(void) {
     temp = D_global_asm_80753988[D_global_asm_807FD584];
     if (current_actor_pointer->y_velocity < 0.0f) {
         temp_f0 = -current_actor_pointer->y_velocity / 3.0f;
-        if (!(temp_f0 < D_global_asm_807539A4[D_global_asm_807FD584])) {
+        if (!(temp_f0 < phi_f2)) {
             phi_f2 = temp_f0;
         }
     }
@@ -2023,7 +2017,6 @@ void func_global_asm_806D87FC(void) {
     current_actor_pointer->object_properties_bitfield &= -2;
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806D8A64(void) {
     extra_player_info_pointer->unk24 = 0;

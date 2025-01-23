@@ -267,6 +267,7 @@ void func_global_asm_806852C4(f32 scale, f32 x, f32 y, f32 z) {
     }
 }
 
+// doable, fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80685390.s")
 
 typedef struct {
@@ -284,7 +285,6 @@ typedef struct {
 } AAD_global_asm_80685390;
 
 /*
-// TODO: Eh doable, kinda fiddly
 void func_global_asm_80685390(void) {
     AAD_global_asm_80685390 *aaD;
     Struct8074E88C sp20;
