@@ -753,8 +753,73 @@ void func_global_asm_8061D4E4(Actor *arg0) {
 }
 */
 
-// rodata, Actor* arg0
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D6A8.s")
+extern f32 D_global_asm_807476A8;
+extern f32 D_global_asm_807476AC;
+extern f32 D_global_asm_807476B0;
+
+// TODO: Which struct is this?
+typedef struct {
+    Actor *unk0;
+    u8 unk4[0x6C - 0x4];
+    f32 unk6C;
+    u8 unk70[0x84 - 0x70];
+    f32 unk84;
+    f32 unk88;
+    f32 unk8C;
+    u8 unk90[0x94 - 0x90];
+    f32 unk94;
+} Struct_8061D6A8_arg0;
+
+// TODO: Yuk, clean up stack and temp vars
+void func_global_asm_8061D6A8(Struct_8061D6A8_arg0 *arg0) {
+    f32 dZ2;
+    f32 dZ3;
+    f32 dX2;
+    f32 sp40; // 40
+    f32 sp3C; // 3C
+    f32 sp38; // 38
+    f32 dX3;
+    s32 pad3;
+    s32 pad5;
+    f32 z;
+    f32 x; // 24
+    f32 temp_f0_2;
+    f32 var_f2;
+    Actor *actor;
+    f32 temp_f14;
+    f32 temp_f18;
+    f32 temp_f2_2;
+
+    actor = arg0->unk0;
+    D_global_asm_807476A8 = sqrtf(SQ(arg0->unk8C - actor->z_position) + SQ(arg0->unk84 - actor->x_position));
+    sp38 = func_global_asm_80612794(actor->y_rotation);
+    sp3C = func_global_asm_80612794(actor->y_rotation);
+    sp40 = func_global_asm_80612790(actor->y_rotation);
+    temp_f0_2 = func_global_asm_80612790(actor->y_rotation);
+    temp_f2_2 = arg0->unk94;
+    temp_f14 = arg0->unk8C;
+    z = actor->z_position;
+    temp_f18 = arg0->unk84;
+    x = actor->x_position;
+    D_global_asm_807476AC = sqrtf(((temp_f14 - ((temp_f0_2 * temp_f2_2) + z)) * (temp_f14 - (z + (temp_f2_2 * sp40)))) + ((temp_f18 - (x + (temp_f2_2 * sp3C))) * (temp_f18 - (x + (temp_f2_2 * sp38)))));
+    dZ2 = arg0->unk0->z_position - arg0->unk8C;
+    dX2 = actor->x_position - arg0->unk84;
+    D_global_asm_807476B0 = func_global_asm_80611BB4(actor->y_position - arg0->unk88, sqrtf(SQ(dZ2) + SQ(dX2)));
+    dZ3 = actor->z_position - arg0->unk8C;
+    dX3 = actor->x_position - arg0->unk84;
+    var_f2 = func_global_asm_80611BB4(arg0->unk6C - arg0->unk88, sqrtf(SQ(dZ3) + SQ(dX3)));
+    if (D_global_asm_807476B0 > 3.1415927f) {
+        D_global_asm_807476B0 -= 3.1415927f;
+    } else {
+        D_global_asm_807476B0 += 3.1415927f;
+    }
+    if (var_f2 > 3.1415927f) {
+        var_f2 = var_f2 - 3.1415927f;
+    } else {
+        var_f2 = var_f2 + 3.1415927f;
+    }
+    D_global_asm_807476B0 -= var_f2;
+}
 
 void func_global_asm_8061D898(void) {
     D_807F5D0C->unk168 = 0;
