@@ -290,6 +290,10 @@ playerCanDive = 0x806E770C; // segment:global_asm
 getLevelIndex = 0x805FF030; // segment:global_asm
 playAnimation = 0x80614E78; // segment:global_asm
 playActorAnimation = 0x80614EBC; // segment:global_asm
+getAnimationArg8 = 0x80614F28; // segment:global_asm
+getAnimationArg16 = 0x80614F4C; // segment:global_asm
+getAnimationArg24 = 0x80614F88; // segment:global_asm
+getAnimationArg32 = 0x80614FD8; // segment:global_asm
 
 n_alInit = 0x80739320; // segment:global_asm
 n_alClose = 0x8073938C; // segment:global_asm

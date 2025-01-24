@@ -392,14 +392,14 @@ void func_global_asm_806F1378(s32 arg0) {
 void func_global_asm_806F1380(Actor *arg0) {
     f32 sp1C;
 
-    func_global_asm_80614FD8(&sp1C);
+    getAnimationArg32(&sp1C);
     arg0->animation_state->unk88 = arg0->unkB8 - sp1C;
 }
 
 void func_global_asm_806F13C8(Actor *arg0) {
     u8 sp27;
 
-    func_global_asm_80614F28(&sp27);
+    getAnimationArg8(&sp27);
     arg0->animation_state->unk88 = func_global_asm_806CD9A0(arg0, arg0->unkB8, arg0->unkB8, extra_player_info_pointer->unk4C, D_global_asm_807FD584) - sp27;
 }
 
@@ -425,8 +425,8 @@ void func_global_asm_806F14BC(Actor *arg0) {
     f32 temp_f16;
     s32 temp_v0;
 
-    func_global_asm_80614FD8(&sp54);
-    func_global_asm_80614F28(&sp53);
+    getAnimationArg32(&sp54);
+    getAnimationArg8(&sp53);
     temp_f16 = arg0->animation_state->unk0->unk4;
     arg0->animation_state->unk88 = 0;
     if ((arg0->unk6A & 2) && (((arg0->unkAC - arg0->floor) > 12.0f))) {

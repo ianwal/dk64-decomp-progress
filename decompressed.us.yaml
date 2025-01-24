@@ -386,6 +386,7 @@ segments:
       - [0x215BFD0, .rodata, done/code_16550]
       - [0x215BFF0, .rodata, done/rand]
       - [0x215C010, rodata] # TODO: code_17800+, probably a split and HASM in here
+      - [0x215C020, rodata] # TODO: code_17800+, probably a split and HASM in here
       - [0x215C050, .rodata, done/code_17B40]
       - [0x215C060, rodata] # TODO: code_17B90
       - [0x215C070, rodata] # TODO: split here
@@ -485,6 +486,7 @@ segments:
       - [0x2165210, .rodata, audio/env]
       - [0x2165260, .rodata, audio/code_1445A0]
       - [0x2165270, rodata] # audio/code_145950
+      - [0x2165290, rodata] # ???
   - name: menu
     dir: menu
     type: code

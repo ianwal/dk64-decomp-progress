@@ -434,28 +434,24 @@ void playActorAnimation(Actor *arg0, s32 arg1) {
 }
 */
 
-void func_global_asm_80614F28(u8 *arg0) {
-    // getAnimationArg8
+void getAnimationArg8(u8 *arg0) {
     *arg0 = *D_807F5AF0++;
 }
 
-void func_global_asm_80614F4C(s16 *arg0) {
-    // getAnimationArg16
+void getAnimationArg16(s16 *arg0) {
     ((u8*)arg0)++;
     ((u8*)arg0)[-1] = *D_807F5AF0++;
     ((u8*)arg0)[0] = *D_807F5AF0++;
 }
 
-void func_global_asm_80614F88(s32 *arg0) {
-    // getAnimationArg24
+void getAnimationArg24(s32 *arg0) {
     ((u8*)arg0) += 2;
     ((u8*)arg0)[-2] = *D_807F5AF0++;
     ((u8*)arg0)[-1] = *D_807F5AF0++;
     ((u8*)arg0)[0] = *D_807F5AF0++;
 }
 
-void func_global_asm_80614FD8(s32 *arg0) {
-    // getAnimationArg32
+void getAnimationArg32(s32 *arg0) {
     ((u8*)arg0) += 3;
     ((u8*)arg0)[-3] = *D_807F5AF0++;
     ((u8*)arg0)[-2] = *D_807F5AF0++;
@@ -477,7 +473,7 @@ s32 func_global_asm_8061507C(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     arg0->animation_state->unk88 = sp1E;
     return 1;
 }
@@ -525,7 +521,7 @@ s32 func_global_asm_806151BC(Actor *arg0) {
     u8 sp1F;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     if (sp1F) {
         arg0->animation_state->unk7C = sp1F - 1;
         arg0->animation_state->unk78 |= 2;
@@ -540,8 +536,8 @@ s32 func_global_asm_8061522C(Actor *arg0) {
     u8 sp1D;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1E);
-    func_global_asm_80614F28(&sp1D);
+    getAnimationArg8(&sp1E);
+    getAnimationArg8(&sp1D);
     random = (((rand() >> 0xF) % 32767) % ((sp1D - sp1E) + 1)) + sp1E;
     if (random) {
         arg0->animation_state->unk7C = random - 1;
@@ -561,7 +557,7 @@ s32 func_global_asm_80615328(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     arg0->animation_state->unk78 |= sp1E;
     return 0;
 }
@@ -570,7 +566,7 @@ s32 func_global_asm_8061537C(Actor *arg0) {
     f32 sp1C;
 
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp1C);
+    getAnimationArg32(&sp1C);
     if (sp1C < 0.0f) {
         sp1C = arg0->animation_state->unk88;
     }
@@ -589,7 +585,7 @@ s32 func_global_asm_8061540C(Actor *arg0) {
         var_v0 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp24);
+    getAnimationArg32(&sp24);
     if (sp24 < 0.0f) {
         sp24 = arg0->animation_state->unk88;
     }
@@ -622,7 +618,7 @@ s32 func_global_asm_80615558(Actor *arg0) {
 
     aaS = arg0->animation_state;
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp1C);
+    getAnimationArg32(&sp1C);
     if (aaS->unk8->unk0) {
         if (sp1C < aaS->unk44) {
             aaS->unk44 = sp1C;
@@ -675,7 +671,7 @@ s32 func_global_asm_806156DC(Actor *arg0) {
         var_v1 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp24);
+    getAnimationArg32(&sp24);
     if (sp24 < var_v1->unk0->unk12) {
         var_v1->unk14 = sp24;
     }
@@ -692,7 +688,7 @@ s32 func_global_asm_80615774(Actor *arg0) {
         var_v1 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp24);
+    getAnimationArg32(&sp24);
     if (sp24 < var_v1->unk0->unk12) {
         var_v1->unk18 = sp24;
     }
@@ -710,8 +706,8 @@ s32 func_global_asm_8061580C(Actor *arg0) {
         var_v1 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp24);
-    func_global_asm_80614FD8(&sp20);
+    getAnimationArg32(&sp24);
+    getAnimationArg32(&sp20);
     if (sp24 < var_v1->unk0->unk12) {
         var_v1->unk14 = sp24;
     }
@@ -742,7 +738,7 @@ s32 func_global_asm_8061594C(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     func_global_asm_80613C48(arg0, sp1E, 0.0f, 1.0f);
     return 1;
 }
@@ -751,7 +747,7 @@ s32 func_global_asm_8061599C(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     func_global_asm_80613BA0(arg0, sp1E, 0, 1.0f);
     return 1;
 }
@@ -760,7 +756,7 @@ s32 func_global_asm_806159EC(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     func_global_asm_80613CA8(arg0, sp1E, 0, 0.0f);
     return 1;
 }
@@ -770,8 +766,8 @@ s32 func_global_asm_80615A3C(Actor *arg0) {
     f32 sp18;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
-    func_global_asm_80614FD8(&sp18);
+    getAnimationArg16(&sp1E);
+    getAnimationArg32(&sp18);
     func_global_asm_80613C48(arg0, sp1E, 0.0f, sp18);
     return 1;
 }
@@ -780,7 +776,7 @@ s32 func_global_asm_80615A94(Actor *arg0) {
     s8 sp1F;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     func_global_asm_80613A50(arg0, sp1F);
     return 1;
 }
@@ -790,8 +786,8 @@ s32 func_global_asm_80615ADC(Actor *arg0) {
     u8 sp1D;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
-    func_global_asm_80614F28(&sp1D);
+    getAnimationArg16(&sp1E);
+    getAnimationArg8(&sp1D);
     func_global_asm_80614014(arg0, sp1E, 0.0f, sp1D);
     return 1;
 }
@@ -800,7 +796,7 @@ s32 func_global_asm_80615B34(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     func_global_asm_80613AF8(arg0, sp1E, 0.0f, 1.0f);
     return 1;
 }
@@ -810,8 +806,8 @@ s32 func_global_asm_80615B84(Actor *arg0) {
     f32 sp18;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
-    func_global_asm_80614FD8(&sp18);
+    getAnimationArg16(&sp1E);
+    getAnimationArg32(&sp18);
     func_global_asm_80613AF8(arg0, sp1E, 0.0f, sp18);
     return 1;
 }
@@ -821,8 +817,8 @@ s32 func_global_asm_80615BDC(Actor *arg0) {
     u8 sp1D;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
-    func_global_asm_80614F28(&sp1D);
+    getAnimationArg16(&sp1E);
+    getAnimationArg8(&sp1D);
     func_global_asm_80613FB0(arg0, sp1E, 0, sp1D);
     return 1;
 }
@@ -837,7 +833,7 @@ s32 func_global_asm_80615C34(Actor *arg0) {
         var_a1 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp27);
+    getAnimationArg8(&sp27);
     if (sp27 == 0xFF) {
         sp27 = arg0->animation_state->unk88;
     }
@@ -855,7 +851,7 @@ s32 func_global_asm_80615CE4(Actor *arg0) {
         var_a1 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp27);
+    getAnimationArg8(&sp27);
     func_global_asm_80614644(arg0, var_a1, D_global_asm_80746D5C);
     if (D_global_asm_80746D5C != 0) {
         D_global_asm_80746D5C += sp27;
@@ -875,7 +871,7 @@ s32 func_global_asm_80615DA4(Actor *arg0) {
         sp20 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp27);
+    getAnimationArg8(&sp27);
     sp20->unk1E = sp20->unkC;
     sp20->unk20 = sp27;
     sp20->unk1C |= 8;
@@ -902,8 +898,8 @@ s32 func_global_asm_80615E74(Actor *arg0) {
         sp28 = aaS->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp2F);
-    func_global_asm_80614F28(&sp2E);
+    getAnimationArg8(&sp2F);
+    getAnimationArg8(&sp2E);
     if (sp28->unkC == sp2F) {
         sp28->unk1E = sp28->unkC;
         sp28->unk20 = sp2E;
@@ -933,7 +929,7 @@ s32 func_global_asm_80615FA0(Actor *arg0) {
         var_v1 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp26);
+    getAnimationArg16(&sp26);
     var_v1->unk1C |= sp26;
     return 1;
 }
@@ -948,7 +944,7 @@ s32 func_global_asm_8061600C(Actor *arg0) {
         var_v1 = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp26);
+    getAnimationArg16(&sp26);
     var_v1->unk1C &= ~sp26;
     return 1;
 }
@@ -964,7 +960,7 @@ s32 func_global_asm_8061607C(Actor *arg0) {
         sp1C = arg0->animation_state->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp20);
+    getAnimationArg32(&sp20);
     if (sp1C->unk0 != NULL) {
         var_f0 = sp1C->unk0->unk0;
     } else {
@@ -995,8 +991,8 @@ s32 func_global_asm_8061612C(Actor *arg0) {
         sp1C = aaS->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp24);
-    func_global_asm_80614FD8(&sp20);
+    getAnimationArg32(&sp24);
+    getAnimationArg32(&sp20);
     if (sp20 > 0.0f) {
         sp1C->unk34 = sp20;
         sp1C->unk2C = sp24;
@@ -1054,8 +1050,8 @@ s32 func_global_asm_806162C4(Actor *arg0) {
     f32 sp18;
 
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp1C);
-    func_global_asm_80614FD8(&sp18);
+    getAnimationArg32(&sp1C);
+    getAnimationArg32(&sp18);
     func_global_asm_80614D00(arg0, sp1C, sp18);
     return 1;
 }
@@ -1064,7 +1060,7 @@ s32 func_global_asm_80616318(Actor *arg0) {
     u16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     playAnimation(arg0, sp1E);
     D_807F5AF0 = arg0->animation_state->unk6C;
     return D_807F5AF4;
@@ -1074,7 +1070,7 @@ s32 func_global_asm_80616374(Actor *arg0) {
     u16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     playActorAnimation(arg0, sp1E);
     D_807F5AF0 = arg0->animation_state->unk6C;
     return D_807F5AF4;
@@ -1098,7 +1094,7 @@ s32 func_global_asm_806163E8(Actor *arg0) {
     }
     sp20 = sp20;
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp24);
+    getAnimationArg32(&sp24);
     arg0->animation_state->unk88 = sp20->unk4 - sp24;
     return 1;
 }
@@ -1107,7 +1103,7 @@ s32 func_global_asm_80616470(Actor *arg0) {
     u16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     arg0->animation_state->unk88 = arg0->control_state - sp1E;
     return 1;
 }
@@ -1116,7 +1112,7 @@ s32 func_global_asm_806164C4(Actor *arg0) {
     u16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     arg0->animation_state->unk88 = arg0->control_state_progress - sp1E;
     return 1;
 }
@@ -1133,7 +1129,7 @@ s32 func_global_asm_80616518(Actor *arg0) {
         sp20 = aaS->unk0;
     }
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp26);
+    getAnimationArg16(&sp26);
     arg0->animation_state->unk88 = sp20->unk10 - sp26;
     return 1;
 }
@@ -1142,7 +1138,7 @@ s32 func_global_asm_80616594(Actor *arg0) {
     u16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     arg0->animation_state->unk88 = extra_player_info_pointer->unk4E - sp1E;
     return 1;
 }
@@ -1151,7 +1147,7 @@ s32 func_global_asm_806165F0(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
     return 1;
 }
@@ -1160,7 +1156,7 @@ s32 func_global_asm_80616644(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     if (arg0->animation_state->unk88 != 0) {
         D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
     }
@@ -1171,7 +1167,7 @@ s32 func_global_asm_806166A8(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     if (arg0->animation_state->unk88 == 0) {
         D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
     }
@@ -1182,7 +1178,7 @@ s32 func_global_asm_8061670C(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     if (arg0->animation_state->unk88 > 0) {
         D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
     }
@@ -1193,7 +1189,7 @@ s32 func_global_asm_80616770(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     if (arg0->animation_state->unk88 < 0) {
         D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
     }
@@ -1209,7 +1205,7 @@ s32 func_global_asm_806167EC(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0 += (arg0->animation_state->unk88 * 2) + 1;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     D_807F5AF0 = arg0->animation_state->unk68 + sp1E;
     return 1;
 }
@@ -1222,7 +1218,7 @@ s32 func_global_asm_80616850(Actor *arg0) {
     aaS = arg0->animation_state;
     sp24 = arg0->animation_state->unk88;
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp22);
+    getAnimationArg16(&sp22);
     aaS->unk5C = aaS->unk64;
     aaS->unk60 = D_807F5AF0 - aaS->unk68;
     playActorAnimation(arg0, sp22);
@@ -1237,7 +1233,7 @@ s32 func_global_asm_806168E4(Actor *arg0) {
 
     aaS = arg0->animation_state;
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     aaS->unk5C = aaS->unk64;
     aaS->unk60 = D_807F5AF0 - aaS->unk68;
     playAnimation(arg0, sp1E);
@@ -1265,7 +1261,7 @@ s32 func_global_asm_806169C0(Actor *arg0) {
     s16 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     D_global_asm_80746D64[sp1E](arg0);
     return D_807F5AF4;
 }
@@ -1276,7 +1272,7 @@ s32 func_global_asm_80616A1C(Actor *arg0) {
 
     aaS = arg0->animation_state;
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     aaS->unk70 = D_global_asm_80746D64[sp1E];
     aaS->unk74 = D_807F5AF0;
     if (sp1E != 0) {
@@ -1303,11 +1299,11 @@ s32 func_global_asm_80616A9C(Actor *arg0) {
     f64 var_f6;
 
     D_807F5AF0 += 1;
-    func_global_asm_80614F4C(&sp26);
-    func_global_asm_80614F28(&sp25);
-    func_global_asm_80614F28(&sp20);
-    func_global_asm_80614F4C(&sp22);
-    func_global_asm_80614F28(&sp21);
+    getAnimationArg16(&sp26);
+    getAnimationArg8(&sp25);
+    getAnimationArg8(&sp20);
+    getAnimationArg16(&sp22);
+    getAnimationArg8(&sp21);
     var_f6 = sp25;
     var_f6_2 = sp20;
     playSound(sp26, (var_f6 * D_global_asm_80757370) / D_global_asm_80757378, var_f6_2, sp22 / D_global_asm_80757380, sp21, 0);
@@ -1319,7 +1315,7 @@ s32 func_global_asm_80616BA4(Actor *arg0) {
     u8 controlState;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&controlState);
+    getAnimationArg8(&controlState);
     arg0->control_state = controlState;
     arg0->control_state_progress = 0;
     return 1;
@@ -1336,7 +1332,7 @@ s32 func_global_asm_80616C1C(Actor *arg0) {
     u8 controlStateProgress;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&controlStateProgress);
+    getAnimationArg8(&controlStateProgress);
     arg0->control_state_progress = controlStateProgress;
     return 1;
 }
@@ -1358,8 +1354,8 @@ s32 func_global_asm_80616CB8(Actor *arg0) {
     u8 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1F);
-    func_global_asm_80614F28(&sp1E);
+    getAnimationArg8(&sp1F);
+    getAnimationArg8(&sp1E);
     arg0->animation_state->unk88 = (((rand() >> 0xF) % 32767) % ((sp1E - sp1F) + 1)) + sp1F;
     return 1;
 }
@@ -1394,7 +1390,7 @@ s32 func_global_asm_80616DB4(Actor *arg0) {
 
     a17C = arg0->unk17C;
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1B);
+    getAnimationArg8(&sp1B);
     a17C->unkD |= sp1B;
     return 1;
 }
@@ -1414,10 +1410,10 @@ s32 func_global_asm_80617140(Actor *arg0) {
     s16 temp_v0;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp2E);
-    func_global_asm_80614F28(&sp2B);
-    func_global_asm_80614F28(&sp2A);
-    func_global_asm_80614F28(&sp29);
+    getAnimationArg16(&sp2E);
+    getAnimationArg8(&sp2B);
+    getAnimationArg8(&sp2A);
+    getAnimationArg8(&sp29);
     if (D_global_asm_807457C8 != 0) {
         func_global_asm_80737924(D_global_asm_807457C8);
         D_global_asm_807457C8 = 0;
@@ -1443,11 +1439,11 @@ s32 func_global_asm_80617400(Actor *arg0) {
     u8 sp32;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp36);
-    func_global_asm_80614F28(&sp33);
-    func_global_asm_80614F28(&sp32);
-    func_global_asm_80614F28(&sp35);
-    func_global_asm_80614F28(&sp34);
+    getAnimationArg16(&sp36);
+    getAnimationArg8(&sp33);
+    getAnimationArg8(&sp32);
+    getAnimationArg8(&sp35);
+    getAnimationArg8(&sp34);
     if (arg0->object_properties_bitfield & 4) {
         playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, sp36, sp33, sp32, sp35, sp34, D_global_asm_807573D0, 0);
     }
@@ -1455,37 +1451,37 @@ s32 func_global_asm_80617400(Actor *arg0) {
 }
 
 s32 func_global_asm_806174B4(Actor *arg0) {
-    f32 sp54;
-    f32 sp50;
-    f32 sp4C;
+    f32 x;
+    f32 y;
+    f32 z;
     s16 sp4A;
     u8 sp49;
     s32 pad;
     u8 sp43;
-    u8 sp42;
+    u8 boneIndex;
     u8 sp41;
     u8 sp40;
     u8 sp3F;
     f32 sp38;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp4A);
-    func_global_asm_80614F28(&sp40);
-    func_global_asm_80614F28(&sp3F);
-    func_global_asm_80614F28(&sp49);
-    func_global_asm_80614F28(&sp43);
-    func_global_asm_80614FD8(&sp38);
-    func_global_asm_80614F28(&sp42);
-    func_global_asm_80614F28(&sp41);
+    getAnimationArg16(&sp4A);
+    getAnimationArg8(&sp40);
+    getAnimationArg8(&sp3F);
+    getAnimationArg8(&sp49);
+    getAnimationArg8(&sp43);
+    getAnimationArg32(&sp38);
+    getAnimationArg8(&boneIndex);
+    getAnimationArg8(&sp41);
     if (arg0->object_properties_bitfield & 4) {
-        if (sp42) {
-            getBonePosition(arg0, sp42, &sp54, &sp50, &sp4C);
+        if (boneIndex) {
+            getBonePosition(arg0, boneIndex, &x, &y, &z);
         } else {
-            sp54 = arg0->x_position;
-            sp50 = arg0->y_position;
-            sp4C = arg0->z_position;
+            x = arg0->x_position;
+            y = arg0->y_position;
+            z = arg0->z_position;
         }
-        playSoundAtPosition(sp54, sp50, sp4C, sp4A, sp40, sp3F, sp49, sp43, sp38, sp41);
+        playSoundAtPosition(x, y, z, sp4A, sp40, sp3F, sp49, sp43, sp38, sp41);
     }
     return 1;
 }
@@ -1510,11 +1506,11 @@ s32 func_global_asm_806175C4(Actor *arg0) {
     f64 temp_f0;
 
     D_807F5AF0 += 1;
-    func_global_asm_80614F4C(&sp46);
-    func_global_asm_80614F28(&sp43);
-    func_global_asm_80614F28(&sp42);
-    func_global_asm_80614F28(&sp45);
-    func_global_asm_80614F28(&sp44);
+    getAnimationArg16(&sp46);
+    getAnimationArg8(&sp43);
+    getAnimationArg8(&sp42);
+    getAnimationArg8(&sp45);
+    getAnimationArg8(&sp44);
     temp_f0 = ((((arg0->animation_state->scale_x / D_global_asm_807573E0) * 200.0) + D_global_asm_807573E8) * sp43) / D_global_asm_807573F0;
     if (D_global_asm_807573D8 < temp_f0) {
         var_f2 = D_global_asm_807573D8;
@@ -1534,8 +1530,8 @@ s32 func_global_asm_8061796C(Actor *arg0) {
     u8 sp1D;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
-    func_global_asm_80614F28(&sp1D);
+    getAnimationArg16(&sp1E);
+    getAnimationArg8(&sp1D);
     func_global_asm_80617770(arg0, sp1E, sp1D);
     return 1;
 }
@@ -1548,11 +1544,11 @@ s32 func_global_asm_806179C0(Actor *arg0) {
     s8 sp2A;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp2E);
-    func_global_asm_80614F28(&sp2D);
-    func_global_asm_80614F28(&sp2B);
-    func_global_asm_80614F28(&sp2C);
-    func_global_asm_80614F28(&sp2A);
+    getAnimationArg16(&sp2E);
+    getAnimationArg8(&sp2D);
+    getAnimationArg8(&sp2B);
+    getAnimationArg8(&sp2C);
+    getAnimationArg8(&sp2A);
     func_global_asm_80605314(arg0, sp2D);
     func_global_asm_80604CBC(arg0, sp2E, sp2C, 1, sp2D, sp2B, 1.0f, sp2A);
     return 1;
@@ -1564,9 +1560,9 @@ s32 func_global_asm_80617A60(Actor *arg0) {
     u8 sp1A;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1A);
-    func_global_asm_80614FD8(&sp1C);
-    func_global_asm_80614F28(&sp1B);
+    getAnimationArg8(&sp1A);
+    getAnimationArg32(&sp1C);
+    getAnimationArg8(&sp1B);
     func_global_asm_80604BE8(arg0->unk6E[sp1A], sp1C, sp1B);
     return 1;
 }
@@ -1575,7 +1571,7 @@ s32 func_global_asm_80617AF0(Actor *arg0) {
     u8 sp1F;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     func_global_asm_80605314(arg0, sp1F);
     return 1;
 }
@@ -1587,10 +1583,10 @@ s32 func_global_asm_80617B38(Actor *arg0) {
     s8 sp2B;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp2E);
-    func_global_asm_80614F28(&sp2D);
-    func_global_asm_80614F28(&sp2C);
-    func_global_asm_80614F28(&sp2B);
+    getAnimationArg16(&sp2E);
+    getAnimationArg8(&sp2D);
+    getAnimationArg8(&sp2C);
+    getAnimationArg8(&sp2B);
     func_global_asm_80604CBC(arg0, sp2E, sp2C, 1, sp2D, 0xFF, 1.0f, sp2B);
     arg0->unk72 = arg0->animation_state->unk0->unk10;
     return 1;
@@ -1604,8 +1600,8 @@ s32 func_global_asm_80617BD8(Actor *arg0) {
     u8 sp1E;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1F);
-    func_global_asm_80614F28(&sp1E);
+    getAnimationArg8(&sp1F);
+    getAnimationArg8(&sp1E);
     playSong(D_global_asm_80746D60[sp1F], sp1E / D_global_asm_80757400);
     return 1;
 }
@@ -1614,19 +1610,19 @@ s32 func_global_asm_80617C6C(Actor *arg0) {
     u8 sp1F;
 
     D_807F5AF0++;
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     func_global_asm_80602B60(D_global_asm_80746D60[sp1F], 0);
     return 1;
 }
 
 s32 func_global_asm_80617CC0(Actor *arg0) {
-    u16 sp1E;
-    u8 sp1D;
+    u16 fileIndex;
+    u8 textIndex;
 
     D_807F5AF0++;
-    func_global_asm_80614F4C(&sp1E);
-    func_global_asm_80614F28(&sp1D);
-    loadText(arg0, sp1E, sp1D);
+    getAnimationArg16(&fileIndex);
+    getAnimationArg8(&textIndex);
+    loadText(arg0, fileIndex, textIndex);
     return 1;
 }
 
@@ -1654,10 +1650,10 @@ void func_global_asm_80617D70(Actor *arg0) {
 void func_global_asm_80617D94(s32 arg0) {
     u8 sp27;
 
-    func_global_asm_80614F28(&sp27);
+    getAnimationArg8(&sp27);
     while (sp27) {
         D_807F5AF0 += 4;
-        func_global_asm_80614F28(&sp27);
+        getAnimationArg8(&sp27);
     }
 }
 
@@ -1668,7 +1664,7 @@ s32 func_global_asm_80617FFC(Actor *arg0) {
     f32 sp1C;
 
     D_807F5AF0++;
-    func_global_asm_80614FD8(&sp1C);
+    getAnimationArg32(&sp1C);
     arg0->animation_state->unk8C = sp1C;
     return 1;
 }
@@ -1702,14 +1698,14 @@ extern SpriteData D_global_asm_8071FE08; // TODO: Sprite?
 extern SpriteData D_global_asm_8071FF18; // TODO: Sprite?
 
 void func_global_asm_80618430(Actor *arg0) {
-    u8 sp27;
+    u8 boneIndex;
 
-    func_global_asm_80614F28(&sp27);
+    getAnimationArg8(&boneIndex);
     func_global_asm_8071498C(func_global_asm_8071B1AC);
     func_global_asm_80714998(2);
     func_global_asm_80714950(arg0->y_rotation);
     func_global_asm_807149B8(1);
-    func_global_asm_80714C08(&D_global_asm_8071FF18, 0.4f, arg0, sp27, 0);
+    func_global_asm_80714C08(&D_global_asm_8071FF18, 0.4f, arg0, boneIndex, 0);
 }
 
 void func_global_asm_8061849C(Actor *arg0) {
@@ -1717,10 +1713,10 @@ void func_global_asm_8061849C(Actor *arg0) {
 }
 
 void func_global_asm_806184BC(Actor *arg0) {
-    u8 sp2F;
+    u8 boneIndex;
 
-    func_global_asm_80614F28(&sp2F);
-    if (sp2F == 0xFF) {
+    getAnimationArg8(&boneIndex);
+    if (boneIndex == 0xFF) {
         func_global_asm_807149B8(0);
         func_global_asm_807149FC(1);
         drawSpriteAtPosition(&D_global_asm_8071FE08, 0.7f, arg0->x_position, arg0->y_position + 7.0f, arg0->z_position);
@@ -1730,19 +1726,19 @@ void func_global_asm_806184BC(Actor *arg0) {
         func_global_asm_80714950((arg0->y_rotation + 0x800) & 0xFFF);
         func_global_asm_807149B8(1);
         func_global_asm_80714A28(0x80);
-        func_global_asm_80714C08(&D_global_asm_8071FF18, 0.4f, arg0, sp2F, 0);
+        func_global_asm_80714C08(&D_global_asm_8071FF18, 0.4f, arg0, boneIndex, 0);
     }
 }
 
 void func_global_asm_8061859C(Actor *arg0) {
-    u8 sp27;
+    u8 boneIndex;
 
-    func_global_asm_80614F28(&sp27);
+    getAnimationArg8(&boneIndex);
     func_global_asm_8071498C(func_global_asm_8071B44C);
     func_global_asm_80714998(2);
     func_global_asm_80714950(arg0->unkEE);
     func_global_asm_807149B8(1);
-    func_global_asm_80714C08(&D_global_asm_8071FF18, 0.4f, arg0, sp27, 0);
+    func_global_asm_80714C08(&D_global_asm_8071FF18, 0.4f, arg0, boneIndex, 0);
 }
 
 // rodata, doable, close
@@ -1759,7 +1755,7 @@ void func_global_asm_80618608(Actor *arg0) {
     u8 sp3F;
     s16 i;
 
-    func_global_asm_80614F28(&sp3F);
+    getAnimationArg8(&sp3F);
     if (D_global_asm_807FBB68 & 2) {
         for (i = 0; i < 0x14; i++) {
             func_global_asm_807149B8(1);
@@ -1790,28 +1786,28 @@ void func_global_asm_806187BC(s32 arg0) {
     s16 sp1E;
     s16 sp1C;
 
-    func_global_asm_80614F4C(&sp1E);
-    func_global_asm_80614F4C(&sp1C);
+    getAnimationArg16(&sp1E);
+    getAnimationArg16(&sp1C);
 }
 
 void func_global_asm_806187E8(Actor *arg0) {
     s16 sp1E;
 
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     arg0->unk146_s16 |= sp1E;
 }
 
 void func_global_asm_80618820(Actor *arg0) {
     s16 sp1E;
 
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     arg0->unk146_s16 &= ~sp1E;
 }
 
 void func_global_asm_8061885C(Actor *arg0) {
     s32 sp1C;
 
-    func_global_asm_80614FD8(&sp1C);
+    getAnimationArg32(&sp1C);
 }
 
 void func_global_asm_80618880(Actor *arg0) {
@@ -1842,14 +1838,14 @@ void func_global_asm_806188F4(Actor *arg0) {
 void func_global_asm_8061892C(Actor *arg0) {
     s16 sp1E;
 
-    func_global_asm_80614F4C(&sp1E);
+    getAnimationArg16(&sp1E);
     arg0->y_velocity = sp1E;
 }
 
 void func_global_asm_80618968(Actor *arg0) {
     f32 sp1C;
 
-    func_global_asm_80614FD8(&sp1C);
+    getAnimationArg32(&sp1C);
     arg0->y_acceleration = sp1C;
 }
 
@@ -1866,10 +1862,10 @@ void func_global_asm_80618998(Actor *arg0) {
     s32 var_v1;
 
     func_global_asm_8072E2B0(arg0, &sp4C, &sp48, &sp44);
-    func_global_asm_80614F28(&sp3E);
-    func_global_asm_80614F28(&sp3F);
-    func_global_asm_80614F4C(&sp42);
-    func_global_asm_80614F4C(&sp40);
+    getAnimationArg8(&sp3E);
+    getAnimationArg8(&sp3F);
+    getAnimationArg16(&sp42);
+    getAnimationArg16(&sp40);
     sp3F *= (arg0->animation_state->scale[1] / D_global_asm_80757450);
     if ((arg0->unk58 == ACTOR_BOSS_MAD_JACK) || ((arg0->unk6A & 1) && ((arg0->object_properties_bitfield & 4) || (arg0->unk58 == ACTOR_TOY_MONSTER)) && (is_cutscene_active != 1))) {
         if (sp3F >= 0x15) {
@@ -1891,10 +1887,10 @@ void func_global_asm_80618B6C(Actor *arg0) {
     u8 sp2E;
 
     func_global_asm_8072E2B0(arg0, &sp3C, &sp38, &sp34);
-    func_global_asm_80614F28(&sp2E);
-    func_global_asm_80614F28(&sp2F);
-    func_global_asm_80614F4C(&sp32);
-    func_global_asm_80614F4C(&sp30);
+    getAnimationArg8(&sp2E);
+    getAnimationArg8(&sp2F);
+    getAnimationArg16(&sp32);
+    getAnimationArg16(&sp30);
     func_global_asm_8061EF4C(extra_player_info_pointer->unk104, sp2E, sp2F, sp3C, sp38, sp34, sp32, sp30);
 }
 
@@ -1922,7 +1918,7 @@ void func_global_asm_80618C8C(Actor *arg0) {
 void func_global_asm_80618CD8(Actor *arg0) {
     u8 sp1F;
 
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     if (sp1F & 0x80) {
         arg0->unk132 = sp1F & 0x7F;
     } else {
@@ -1933,7 +1929,7 @@ void func_global_asm_80618CD8(Actor *arg0) {
 void func_global_asm_80618D20(Actor *arg0) {
     u8 sp1F;
 
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     if (sp1F & 0x80) {
         arg0->unk132 = sp1F & 0x7F;
     } else {
@@ -1947,7 +1943,7 @@ void func_global_asm_80618D20(Actor *arg0) {
 void func_global_asm_80618E4C(Actor *arg0) {
     u8 sp1F;
 
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     if (sp1F != 0) {
         arg0->object_properties_bitfield &= ~0x40000000;
         global_properties_bitfield |= 0x10030;
@@ -1973,14 +1969,14 @@ void func_global_asm_80618EE8(Actor *arg0) {
     last_spawned_actor->z_rotation = arg0->z_rotation;
     last_spawned_actor->x_rotation = arg0->x_rotation;
     aaD = ((AAD_80618EE8*)last_spawned_actor->additional_actor_data);
-    func_global_asm_80614F28(&aaD->unk6);
+    getAnimationArg8(&aaD->unk6);
 }
 
 void func_global_asm_80618F74(Actor *arg0) {
     u8 sp1F;
     Actor *vehicle;
 
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     if (sp1F != 0) {
         spawnActor(ACTOR_SPOTLIGHT, 0xA8);
         moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[0]);
@@ -2001,7 +1997,7 @@ extern f32 D_807F5B00;
 void func_global_asm_80619018(Actor *arg0) {
     u8 sp1F;
 
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     if (sp1F != 0) {
         if (arg0->unk12C != -1) {
             func_global_asm_80659620(&D_807F5AF8, &D_807F5AFC, &D_807F5B00, arg0->unk12C);
@@ -2034,13 +2030,13 @@ void func_global_asm_806190C0(Actor *arg0) {
     Struct80717D84 *var_a1;
     u8 sp2F;
 
-    func_global_asm_80614F4C(&sp4E);
-    func_global_asm_80614F4C(&sp4C);
-    func_global_asm_80614F28(&sp4B);
-    func_global_asm_80614F28(&boneIndex);
-    func_global_asm_80614F28(&sp49);
-    func_global_asm_80614F28(&sp48);
-    func_global_asm_80614F4C(&sp46);
+    getAnimationArg16(&sp4E);
+    getAnimationArg16(&sp4C);
+    getAnimationArg8(&sp4B);
+    getAnimationArg8(&boneIndex);
+    getAnimationArg8(&sp49);
+    getAnimationArg8(&sp48);
+    getAnimationArg16(&sp46);
     if (D_global_asm_80750AD0 == 0) {
         sp40 = sp4C * 0.00048828125f;
         func_global_asm_807149B8(1);
@@ -2059,7 +2055,7 @@ void func_global_asm_806190C0(Actor *arg0) {
         }
         var_a1 = drawSpriteAtPosition(D_global_asm_80746B80[sp4E], sp40, x, y, z);
         sp2F = 0;
-        switch (sp48) { // irregular
+        switch (sp48) {
             case 1:
                 func_global_asm_8071D94C(arg0, var_a1, &sp2F);
                 break;
@@ -2096,17 +2092,17 @@ typedef struct {
 void func_global_asm_806192A4(Actor *arg0) {
     u16 sp46;
     u16 sp44;
-    u16 sp42;
+    u16 idleParticleModelIndex;
     u16 sp40;
     f32 scale;
     AAD_806192A4 *aaD;
 
     scale = arg0->animation_state->scale[1] / D_global_asm_80757468;
-    func_global_asm_80614F4C(&sp46);
-    func_global_asm_80614F4C(&sp44);
-    func_global_asm_80614F4C(&sp42);
-    func_global_asm_80614F4C(&sp40);
-    spawnActor(ACTOR_PARTICLE_IDLE, sp42);
+    getAnimationArg16(&sp46);
+    getAnimationArg16(&sp44);
+    getAnimationArg16(&idleParticleModelIndex);
+    getAnimationArg16(&sp40);
+    spawnActor(ACTOR_PARTICLE_IDLE, idleParticleModelIndex);
     moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[0]);
     last_spawned_actor->y_rotation = arg0->y_rotation;
     last_spawned_actor->z_rotation = arg0->z_rotation;
@@ -2116,7 +2112,7 @@ void func_global_asm_806192A4(Actor *arg0) {
     if (sp46 != 0xFFFF) {
         func_global_asm_807149FC(-1);
         func_global_asm_807149B8(1);
-        switch (arg0->unk58) { // irregular
+        switch (arg0->unk58) {
             default:
                 scale *= D_global_asm_80757470;
                 break;
@@ -2173,7 +2169,7 @@ void func_global_asm_80619540(Actor *arg0) {
     A178_80619580 *a178;
 
     a178 = func_global_asm_80619520(arg0);
-    func_global_asm_80614F28(&sp1F);
+    getAnimationArg8(&sp1F);
     if (a178 != NULL) {
         a178->unk35 = sp1F;
     }

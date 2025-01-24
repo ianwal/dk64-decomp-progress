@@ -458,13 +458,13 @@ void func_global_asm_80678824(void) {
 /*
 void (*D_global_asm_8074C0A0[])();
 
-extern u32 D_807FBFE4;
-extern u32 D_807FBFE8;
 extern u16 D_807FBB3C;
 
 void func_global_asm_806789E4(void) {
-    D_807FBFE4 = 0;
-    D_807FBFE8 = 0;
+    s32 i;
+    for (i = 0; i < 4; i++) {
+        D_global_asm_807FBFE0[i] = NULL;
+    }
     D_807FBB3C = 0;
     while (D_807FBB3C < D_global_asm_807FBB34) {
         current_actor_pointer = D_global_asm_807FB930[D_807FBB3C].unk0;

@@ -216,7 +216,7 @@ void func_global_asm_8069A614(f32 arg0, u8 arg1) {
     }
     if (found) {
         temp_v1->unkB8 = TRUE;
-        switch (arg1) { // irregular
+        switch (arg1) {
             case 0:
                 temp_f0 = arg0 / 843.0;
                 temp_v1->unkA8 = 10.0f;

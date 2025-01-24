@@ -619,8 +619,84 @@ void func_global_asm_8061D058(void) {
     
 }
 
-// jumptable, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D060.s")
+// TODO: Which struct is this?
+typedef struct {
+    Actor *unk0;
+    u8 unk4[0x6C - 0x4];
+    f32 unk6C;
+    f32 unk70;
+    u8 unk74[0xAC - 0x74];
+    s32 unkAC;
+    u8 unkB0[0xDC - 0xB0];
+    f32 unkDC;
+} Struct_8061D060_arg0;
+
+void func_global_asm_8061D060(Struct_8061D060_arg0 *arg0) {
+    f32 yPosition;
+    Actor *actor;
+
+    actor = arg0->unk0;
+    if (actor->floor != arg0->unk70) {
+        if (arg0->unkAC & 0x100) {
+            yPosition = actor->y_position;
+            arg0->unk6C = yPosition;
+            arg0->unk70 = yPosition;
+            global_properties_bitfield |= 0x2000;
+        } else if (actor->control_state == 0x59) {
+            arg0->unk70 = actor->unkA8;
+        } else {
+            arg0->unk70 = actor->floor;
+        }
+    }
+    switch (actor->control_state) {
+        // TODO: Document control states
+        case 0x0:
+        case 0x15:
+        case 0x16:
+        case 0x1E:
+        case 0x20:
+        case 0x22:
+        case 0x2A:
+        case 0x31:
+        case 0x35:
+        case 0x59:
+        case 0x5B:
+        case 0x5C:
+        case 0x63:
+        case 0x6E:
+            arg0->unk6C = arg0->unkDC;
+            break;
+        case 0x17:
+        case 0x19:
+        case 0x1C:
+        case 0x1D:
+        case 0x29:
+        case 0x3E:
+        case 0x41:
+        case 0x4C:
+        case 0x61:
+            if (arg0->unk70 < arg0->unk6C) {
+                if ((actor->unk9C - actor->y_position) > 50.0f) {
+                    arg0->unk6C = arg0->unk6C + ((arg0->unk70 - arg0->unk6C) * 0.3);
+                }
+            }
+            break;
+        case 0x44:
+        case 0x52:
+        case 0x53:
+        case 0x54:
+            arg0->unk6C = arg0->unk70;
+            break;
+        default:
+            if (arg0->unk70 < arg0->unk6C) {
+                arg0->unk6C = arg0->unk6C + ((arg0->unk70 - arg0->unk6C) * 0.3);
+            }
+            break;
+    }
+    if (arg0->unk6C <= arg0->unk70) {
+        arg0->unk6C = arg0->unk6C + ((arg0->unk70 - arg0->unk6C) * 0.8);
+    }
+}
 
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061D1FC.s")

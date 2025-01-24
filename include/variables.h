@@ -4,6 +4,7 @@
 #define ABS_DIFF(a, b) (((b) < (a)) ? ((a) - (b)) : (-((a) - (b))))
 #define TWO_PI 6.28318548202514648
 #define SQ(x) ((x) * (x))
+#define reinterpret_cast(type, var) (*((type *)&var))
 
 extern s8 story_skip;
 extern s8 widescreen_enabled;
