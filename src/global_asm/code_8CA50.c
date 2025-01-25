@@ -6,8 +6,62 @@
 void func_global_asm_80688514(Actor *, s32);
 */
 
-// malloc and initialization for GlobalASMStruct60
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_global_asm_80687D50.s")
+typedef struct Struct80687D50 {
+    u8 pad0[0x10];
+    s16 *unk10;
+} Struct80687D50;
+
+void func_global_asm_80687D50(Actor *arg0, Struct80687D50 *arg1) {
+    s16 *var_s3;
+    s16 temp_s4;
+    s16 i;
+    s32 j;
+    s32 *var_s0;
+    s32 *var_s1;
+    GlobalASMStruct60 **var_s7;
+    GlobalASMStruct60 *temp_v0;
+
+    if (arg0->unk158 != 0) {
+        if ((current_map == MAP_MAIN_MENU) || (cc_number_of_players >= 2)) {
+            func_global_asm_80688638(&arg0->unk158);
+        } else {
+            return;
+        }
+    }
+    var_s3 = arg1->unk10;
+    var_s7 = &arg0->unk158;
+    for (i = *var_s3++; i; i--) {
+        *var_s7 = temp_v0 = malloc(sizeof(GlobalASMStruct60));
+        temp_s4 = *var_s3++;
+        temp_v0->unk1C = 0;
+        temp_v0->unkC = 0;
+        temp_v0->unk10 = 0.0f;
+        temp_v0->unk14 = 0.0f;
+        temp_v0->unk18 = 0;
+        temp_v0->unk1A = 0;
+        temp_v0->unk22 = 1;
+        temp_v0->unk20 = 0;
+        temp_v0->unk21 = 0;
+        temp_v0->unkA = temp_s4;
+        temp_v0->unk1E = temp_s4;
+        temp_v0->unk8 = *var_s3++;
+        var_s7 = &temp_v0->next;
+        temp_v0->unk23 = *var_s3++;
+        temp_v0->unk0 = malloc(temp_s4 * 4);
+        temp_v0->unk4 = malloc(temp_s4 * 4);
+        var_s0 = temp_v0->unk0;
+        var_s1 = temp_v0->unk4;
+        for (j = 0; j < temp_s4; j++) {
+            *var_s1 = *var_s0 = getPointerTableFile(0x19, *var_s3, 1U, 0U);
+            var_s0++;
+            var_s1++;
+            var_s3++;
+        }
+    }
+    *var_s7 = NULL;
+}
+
+
 
 Gfx *func_global_asm_80687EE0(Gfx *dl, Actor *arg1) {
     GlobalASMStruct60 *current;
