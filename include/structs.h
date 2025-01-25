@@ -2126,8 +2126,22 @@ typedef struct Struct8073BC74_auxbus_unk20 {
     s16 *unk20[1]; // TODO: How many elements? m2c doesn't support VLAs
 } Struct8073BC74_auxbus_unk20;
 
+typedef struct Struct8073BC74_auxbus_unk1C Struct8073BC74_auxbus_unk1C; 
+
+struct Struct8073BC74_auxbus_unk1C {
+    u8 pad0[8];
+    Struct8073BC74_auxbus_unk1C *next;
+    u8 unkC[0x18 - 0xC];
+    s16 unk18;
+    u8 pad1A[0x8C - 0x1A];
+    u8 unk8C;
+};
+
 typedef struct Struct8073BC74_auxbus {
-    u8 pad0[0x20];
+    u8 pad0[0x14];
+    s32 unk14;
+    u8 pad18[4];
+    Struct8073BC74_auxbus_unk1C *unk1C;
     Struct8073BC74_auxbus_unk20 *unk20;
     s32 unk24;
     u8 pad28[0x44 - 0x28];
