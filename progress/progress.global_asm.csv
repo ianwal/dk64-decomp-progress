@@ -3429,7 +3429,7 @@ us,asm,func_global_asm_8068C20C,224,no
 us,asm,func_global_asm_806D7510,500,yes
 us,asm,func_global_asm_80609B80,1584,no
 us,asm,func_global_asm_806ADDD8,516,yes
-us,asm,func_global_asm_8068AD7C,2704,no
+us,asm,func_global_asm_8068AD7C,2704,yes
 us,asm,func_global_asm_8069D0B8,32,yes
 us,asm,func_global_asm_8072CFE8,164,yes
 us,asm,func_global_asm_806F7378,40,yes

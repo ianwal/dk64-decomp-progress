@@ -3435,7 +3435,7 @@ Gfx *func_global_asm_80710CA0(Gfx *dl, Actor *arg1);
 void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4);
 // TODO: func_global_asm_80711950 has no documented signature
 // TODO: func_global_asm_80711BD0 has no documented signature
-void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4);
+void func_global_asm_80711F90(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4);
 s32 func_global_asm_807122B4(void);
 void func_global_asm_80712490(Maps newMap, s32 newExit, u8 newGameMode);
 void func_global_asm_807124B8(Maps newMap, s32 cutsceneIndex, u8 newGameMode);
