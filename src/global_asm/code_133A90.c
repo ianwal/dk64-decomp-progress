@@ -144,8 +144,6 @@ void func_global_asm_8072F120(void) {
 // close, beq vs beql and beqz vs beqzl, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_8072F230.s")
 
-extern f32 D_global_asm_8075FF50;
-
 void func_global_asm_8072FCC4(void *arg0, s32 arg1, f32 arg2, f32 *arg3);
 u8 func_global_asm_8072F59C(void *arg0, Struct807FDCC0 *arg1, f32 *arg2, s8 *arg3);
 
@@ -171,16 +169,16 @@ void func_global_asm_8072F230(Actor *arg0, u8 arg1, u8 arg2) {
 
     PaaD = arg0->additional_actor_data;
     current = D_global_asm_807FDCC0;
-    least = D_global_asm_8075FF50;
+    least = 9999.0f;
     found = NULL;
     var_s4 = arg0->unk58 == ACTOR_CHUNKY && character_change_array[PaaD->unk1A4].unk2C0 == 2;
-    while (current != NULL) {
+    while (current) {
         temp_s1 = func_global_asm_8072F4A8(current->unk0, current->unk4, &sp90, &sp8C, &sp88);
         dx = (arg0->x_position - sp90);
         dy = (arg0->y_position - sp8C);
         dz = (arg0->z_position - sp88);
-        if (sqrtf((dx * dx) + (dy * dy) + (dz * dz)) < current->unk1C) {
-            if (!current->unk31 || (current->unk6 != 1 && arg2 && current->unk0->object_properties_bitfield & 0x04000000)) {
+        if (sqrtf(SQ(dx) + SQ(dy) + SQ(dz)) < current->unk1C) {
+            if (!current->unk31 || (!(current->unk6 == 1) && arg2 && current->unk0->object_properties_bitfield & 0x04000000)) {
                 if (!temp_s1 || !var_s4) {
                     if (func_global_asm_8072F59C(arg0, current, &sp7C, &sp72)) {
                         if (sp7C < least) {
