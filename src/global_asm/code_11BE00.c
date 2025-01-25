@@ -53,15 +53,14 @@ void func_global_asm_80717100(Struct80717D84 *arg0, s32 arg1) {
     Struct80717D84_unk384_80717100 *var_v1;
 
     if (arg0->unk384 == NULL) {
-        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80717100));
-        var_v1 = arg0->unk384_80717100;
+        var_v1 = arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80717100));
         var_v1->unk0 = (rand() >> 0xF) % 4095;
         var_v1->unk2 = arg0->unk35C;
         var_v1->unk4 = arg0->unk35C >> 0x10;
         var_v1->unk6 = arg0->unk340;
         var_v1->unk8 = arg0->unk348;
     }
-    var_v1 = arg0->unk384_80717100;
+    var_v1 = arg0->unk384;
     var_v1->unk0 = var_v1->unk4 + var_v1->unk0;
     arg0->unk340 = var_v1->unk6 + (var_v1->unk2 * func_global_asm_80612794(var_v1->unk0));
     arg0->unk348 = var_v1->unk8 + (var_v1->unk2 * func_global_asm_80612790(var_v1->unk0));

@@ -21,7 +21,7 @@ typedef struct {
     s32 unk10;
     s32 unk14;
 } Struct807563CC;
-extern ALSndPlayer *D_global_asm_807563CC;
+extern N_ALSndPlayer *D_global_asm_807563CC;
 
 typedef struct {
     u8 unk0[0xC];
@@ -83,7 +83,53 @@ void func_global_asm_8073B750(void *);
 
 f32 func_global_asm_80739FE0(s8);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_80735AA0.s")
+s32 func_global_asm_80735CF4(struct_80735CF4 *);
+extern SoundState *D_global_asm_807563C8;
+
+typedef struct Struct80735AA0 {
+    s32 unk0;
+    s32 unk4;
+    s32 maxSounds;
+    ALHeap *heap;
+    u16 unk10;
+} Struct80735AA0;
+
+typedef struct Struct80735AA0_1 {
+    u8 pad0[0x48];
+} Struct80735AA0_1;
+
+void func_global_asm_80735AA0(Struct80735AA0 *arg0) {
+    u32 sp3C;
+    ALEventListItem *sp38;
+    N_ALEvent sp28;
+    Struct80735AA0_1 *sp24;
+    ALLink *temp_t1;
+
+    D_global_asm_807563CC->maxSounds = arg0->maxSounds;
+    D_global_asm_807563CC->target = NULL;
+    D_global_asm_807563CC->frameTime = 16000;
+    sp38 = alHeapAlloc(arg0->heap, 1, arg0->unk0 * 0x48);
+    D_global_asm_807563CC->sndState = sp38;
+    sp38 = alHeapAlloc(arg0->heap, 1, arg0->unk4 * 0x1C);
+    alEvtqNew(&D_global_asm_807563CC->evtq, sp38, arg0->unk4);
+    D_global_asm_807563C8 = D_global_asm_807563CC->sndState;
+    for (sp3C = 1; sp3C < arg0->unk0; sp3C++) {
+        sp24 = D_global_asm_807563CC->sndState;
+        alLink(sp3C + sp24, sp3C + sp24 - 1);
+    }
+    D_global_asm_807FF0E4 = alHeapAlloc(arg0->heap, 2, arg0->unk10);
+    for (sp3C = 0; sp3C < arg0->unk10; sp3C++) {
+        D_global_asm_807FF0E4[sp3C] = 0x7FFF;
+    }
+
+    D_global_asm_807563CC->node.next = NULL;
+    D_global_asm_807563CC->node.handler = func_global_asm_80735CF4;
+    D_global_asm_807563CC->node.clientData = D_global_asm_807563CC;
+    func_global_asm_8073B5D0(D_global_asm_807563CC);
+    sp28.type = 0x20;
+    alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp28, D_global_asm_807563CC->frameTime);
+    D_global_asm_807563CC->nextDelta = alEvtqNextEvent(&D_global_asm_807563CC->evtq, &D_global_asm_807563CC->nextEvent);
+}
 
 s32 func_global_asm_80735CF4(struct_80735CF4 *arg0) {
     struct_80735CF4 *sp2C;
@@ -159,7 +205,6 @@ void func_global_asm_807370A4(ALEventQueue *evtq, ALSoundState *state, u16 arg2)
 
 extern SoundState *D_global_asm_807563C0;
 extern SoundState *D_global_asm_807563C4;
-extern SoundState *D_global_asm_807563C8;
 
 u16 func_global_asm_80737198(u16 *arg0, u16 *arg1) {
     u16 sp16;

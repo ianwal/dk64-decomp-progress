@@ -13,7 +13,7 @@ extern Struct807502C0 D_global_asm_807502C0;
 extern s32 D_global_asm_8076A068;
 
 extern u8 D_global_asm_807FBB85;
-extern void **D_global_asm_807FC7C0;
+extern u16 **D_global_asm_807FC7C0;
 
 typedef struct {
     s32 unk0;
@@ -25,8 +25,102 @@ typedef struct {
     u8 unk13;
 } AAD_global_asm_80697CEC;
 
-// Displaylist stuff
+// Displaylist stuff, close, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_global_asm_80697230.s")
+
+extern void *D_global_asm_80750280;
+
+typedef struct Struct80697230 {
+    s16 unk0;
+    u8 pad2[2];
+    Mtx *unk4;
+    f32 unk8;
+    u8 padC[0x10 - 0xC];
+    u8 unk10;
+    u8 unk11;
+} Struct80697230;
+
+/*
+Gfx *func_global_asm_80697230(Gfx *dl, Actor *arg1) {
+    Mtx sp154; // 154
+    Mtx sp114; // 114
+    Struct80697230 *AAD; // not on stack
+    u8 idx; // not on stack
+    s16 sp110; // 110
+    s16 i; // Not on stack
+    
+
+    AAD = arg1->AAD_as_array[0];
+    sp110 = 0x1000 / AAD->unk0;
+    idx = (AAD->unk10++ % 16) + arg1->unk168;
+    gSPDisplayList(dl++, &D_1000118);
+    gSPMatrix(dl++, &D_2000000, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_2000200, G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPTexture(dl++, 0x8000, 0x8000, 0, G_TX_RENDERTILE, G_ON);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    gDPSetTextureFilter(dl++, G_TF_BILERP);
+    gSPSetGeometryMode(dl++, G_ZBUFFER);
+    gDPSetRenderMode(dl++, G_RM_ZB_XLU_SURF, G_RM_ZB_XLU_SURF2);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    func_global_asm_8066E990(arg1);
+    {
+        f32 spE4; // e4
+
+        if (arg1->unk15F != 0) {
+            switch (AAD->unk11) {
+            case 0:
+                spE4 = AAD->unk8 * 10.0;
+                break;
+            case 1:
+                spE4 = AAD->unk8 * 0.15 * 2048.0;
+                break;
+            }
+            func_global_asm_8066EB40(arg1, spE4);
+        }
+        for (i = 0; i < AAD->unk0; i++) {
+            f32 spE0; // e0
+            f32 spDC; // dc
+            f32 spD8; // d8
+            f32 spD4; // d4
+            s16 temp;
+            f32 temp_f0_2; // not on stack
+
+            temp = i * sp110;
+            
+            switch (AAD->unk11) {
+            case 0:
+                spD4 = 1.0f;
+                spDC = 0.0f;
+                spE0 = func_global_asm_80612794(temp) * AAD->unk8;
+                spD8 = func_global_asm_80612790(temp) * AAD->unk8;
+                break;
+            case 1:
+                temp_f0_2 = (MIN(1.0, (arg1->unkEE - arg1->unk15F) * 0.05) * 0.028999999999999998) + 0.001;
+                spD4 = 130.0f * temp_f0_2;
+                spDC = 1500.0f * temp_f0_2;
+                spE0 = func_global_asm_80612794(arg1->y_rotation + 0x400) * (temp_f0_2 * AAD->unk8 * (0x800 - temp));
+                spD8 = func_global_asm_80612790(arg1->y_rotation + 0x400) * (temp_f0_2 * AAD->unk8 * (0x800 - temp));
+            }
+            if (arg1->unk15F) {
+                func_global_asm_8066E8E4(arg1, spE0, spDC, spD8, spD4 * 80.0, -1);
+            }
+            gDPLoadTextureBlock(dl++, D_global_asm_807FC7C0[idx], G_IM_FMT_RGBA, G_IM_SIZ_32b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
+            guScaleF(&sp154, spD4, spD4, spD4);
+            func_global_asm_80612C30(&sp114, ((character_change_array->unk2C8 * 0x168) / 4096));
+            guMtxCatF(&sp154, &sp114, &sp154);
+            guTranslateF(&sp114, arg1->x_position + spE0, arg1->y_position, arg1->z_position + spD8);
+            guMtxCatF(&sp154, &sp114, &sp154);
+            guMtxF2L(&sp154, &AAD->unk4[(i * 2) + D_global_asm_807444FC]);
+            gSPMatrix(dl++, &AAD->unk4[(i * 2) + D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gSPVertex(dl++, osVirtualToPhysical(&D_global_asm_80750280), 4, 0);
+            gSP2Triangles(dl++, 0, 1, 2, 0, 0, 2, 3, 0);
+            gDPPipeSync(dl++);
+        }
+    }
+    return dl;
+}
+*/
+
 
 void func_global_asm_806978FC(void) {
     s16 phi_s0;
@@ -43,7 +137,7 @@ void func_global_asm_806978FC(void) {
 // close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_global_asm_80697988.s")
 
-void func_global_asm_80697230(void);
+Gfx *func_global_asm_80697230(Gfx *, Actor *);
 
 typedef struct {
     s16 unk0;
