@@ -799,7 +799,7 @@ s32 func_global_asm_8062A844(s32 arg0);
 f32 func_global_asm_8062A850(void);
 void func_global_asm_8062A944(f32 arg0, f32 arg1, f32 arg2);
 void func_global_asm_8062AC68(void *arg0);
-void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, void *arg3, void *arg4);
+void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, GlobalASMStruct64 *arg3, f32 *arg4);
 void func_global_asm_8062B194(GlobalASMStruct64 *arg0);
 // TODO: func_global_asm_8062B220 has no documented signature
 // TODO: func_global_asm_8062B3C4 has no documented signature

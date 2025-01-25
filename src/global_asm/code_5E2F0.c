@@ -110,7 +110,27 @@ void func_global_asm_80659DB0(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_global_asm_80659F7C.s")
+void func_global_asm_80659F7C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) {
+    s32 i;
+    u8 var_v1;
+
+    var_v1 = MAX(1, D_global_asm_807F6C28);
+    if (arg4 != -1) {
+        if (arg4 < var_v1) {
+            D_global_asm_8076A0B4[arg4] = ((D_global_asm_8076A0C0[arg4] - arg0) * arg3) + arg0;
+            D_global_asm_8076A0B8[arg4] = ((D_global_asm_8076A0C4[arg4] - arg1) * arg3) + arg1;
+            D_global_asm_8076A0BC[arg4] = ((D_global_asm_8076A0C8[arg4] - arg2) * arg3) + arg2;
+        }
+    } else {
+        for (i = 0; i < var_v1; i++) {
+            D_global_asm_8076A0B4[i] = ((D_global_asm_8076A0C0[i] - arg0) * arg3) + arg0;
+            D_global_asm_8076A0B8[i] = ((D_global_asm_8076A0C4[i] - arg1) * arg3) + arg1;
+            D_global_asm_8076A0BC[i] = ((D_global_asm_8076A0C8[i] - arg2) * arg3) + arg2;
+        }
+    }
+}
+
+
 
 void func_global_asm_8065A570(void) {
     D_global_asm_807F7ECC = func_global_asm_80612D10(0.4363323152f);

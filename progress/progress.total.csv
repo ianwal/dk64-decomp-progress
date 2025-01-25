@@ -720,7 +720,7 @@ us,asm,func_global_asm_806D3DE4,444,yes
 us,asm,func_global_asm_8072DE44,100,yes
 us,asm,func_global_asm_80653B70,16,yes
 us,asm,func_global_asm_80731654,304,yes
-us,asm,func_global_asm_80659F7C,1524,no
+us,asm,func_global_asm_80659F7C,1524,yes
 us,asm,func_global_asm_8060B700,80,yes
 us,asm,func_global_asm_80661E34,144,yes
 us,asm,addActorToTextOverlayRenderArray,80,yes

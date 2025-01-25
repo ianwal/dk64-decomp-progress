@@ -1588,10 +1588,14 @@ typedef struct {
 } CharacterChange8Array;
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
 } CharacterChange250;
 
 typedef struct {
@@ -1607,7 +1611,7 @@ typedef struct {
     u8      pad18A[0x190 - 0x18A];
     LookAt  unk190[2];
     Hilite  unk1D0[2];
-    u8      pad1F0[0x210 - 0x1F0];
+    Hilite  unk1F0[2]; // Unsure on struct. Is a 0x10-sized struct 
     f32     look_at_eye_x; // 0x210 maybe an array?
     f32     look_at_eye_y; // 0x214
     f32     look_at_eye_z; // 0x218
