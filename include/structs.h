@@ -1236,8 +1236,8 @@ struct global_asm_struct_60 {
     s16 unk1A; // Used
     s16 unk1C; // Used
     s16 unk1E; // Used
-    s8 unk20; // Used
-    s8 unk21; // Used
+    u8 unk20; // Used
+    u8 unk21; // Used
     u8 unk22; // Used
     u8 unk23;
     GlobalASMStruct60 *next; // at 0x24

@@ -269,7 +269,7 @@ segments:
       - [0x207CA80, c, code_7CA80]
       - [0x2080150, c, code_80150]
       - [0x2089250, c, code_89250]
-      - [0x208CA50, c, code_8CA50]
+      - [0x208CA50, c, done/code_8CA50]
       - [0x208D3E0, c, code_8D3E0]
       - [0x208F050, c, code_8F050]
       - [0x208F4B0, c, code_8F4B0]

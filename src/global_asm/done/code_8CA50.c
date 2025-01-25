@@ -89,21 +89,14 @@ void func_global_asm_80687F7C(Actor *arg0) {
     }
 }
 
-// close, doable
-// https://decomp.me/scratch/mep3M
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8CA50/func_global_asm_80687FC8.s")
-
-/*
-// TODO: Just some fiddly last steps with order of operations
-// Maybe need to eliminate the last of the temporary variables
 void func_global_asm_80687FC8(GlobalASMStruct60 *arg0) {
     s32 temp_f10;
     s32 temp_lo;
-    s32 temp_lo_2;
+    s32 var_a3;
     s32 temp_v0_5;
     s32 temp;
 
-    switch ((u8)arg0->unk20) {
+    switch (arg0->unk20) {
         case 0:
             arg0->unk14 += arg0->unk10;
             temp_f10 = arg0->unk14;
@@ -112,16 +105,15 @@ void func_global_asm_80687FC8(GlobalASMStruct60 *arg0) {
             if (arg0->unkC >= arg0->unk1E) {
                 temp_lo = arg0->unkC / arg0->unk1E;
                 arg0->unk1A += temp_lo;
-                temp = 1;
                 if ((arg0->unk1A >= arg0->unk18) && (arg0->unk18 != -1)) {
                     arg0->unkC = arg0->unk1E - 1;
-                    arg0->unk22 = temp;
+                    arg0->unk22 = 1;
                     arg0->unk14 = 1.0f;
-                    if ((u8)arg0->unk21 == 1) {
-                        arg0->unk20 = temp;
+                    if (arg0->unk21 == 1) {
+                        arg0->unk20 = 1;
                     }
                 } else {
-                    switch ((u8)arg0->unk21) {
+                    switch (arg0->unk21) {
                         case 0:
                             arg0->unkC %= arg0->unk1E;
                             if (arg0->unkC < arg0->unk1C) {
@@ -147,17 +139,16 @@ void func_global_asm_80687FC8(GlobalASMStruct60 *arg0) {
                 arg0->unk14 -= temp_v0_5;
             }
             if (arg0->unkC < 0) {
-                temp_lo_2 = -arg0->unkC / arg0->unk1E;
-                arg0->unk1A += temp_lo_2 + 1;
+                arg0->unk1A += ((-arg0->unkC / arg0->unk1E) + 1);
                 if ((arg0->unk1A >= arg0->unk18) && (arg0->unk18 != -1)) {
                     arg0->unkC = 0;
                     arg0->unk22 = 1;
                     arg0->unk14 = 0.0f;
-                    if ((u8)arg0->unk21 == 1) {
+                    if (arg0->unk21 == 1) {
                         arg0->unk20 = 0;
                     }
                 } else {
-                    switch ((u8)arg0->unk21) {
+                    switch (arg0->unk21) {
                         case 0:
                             arg0->unkC = -arg0->unkC % (arg0->unk1E - 1);
                             if (arg0->unkC != 0) {
@@ -165,7 +156,8 @@ void func_global_asm_80687FC8(GlobalASMStruct60 *arg0) {
                             }
                             break;
                         case 1:
-                            if ((temp_lo_2 + 1) != 0) {
+                            temp = (-arg0->unkC / arg0->unk1E) + 1;
+                            if (temp) {
                                 arg0->unkC = 0;
                                 arg0->unk20 = 0;
                                 if (arg0->unkC < arg0->unk1C) {
@@ -180,7 +172,6 @@ void func_global_asm_80687FC8(GlobalASMStruct60 *arg0) {
             break;
     }
 }
-*/
 
 s32 func_global_asm_806882DC(Actor *actor, s32 arg1, s16 arg2) {
     GlobalASMStruct60 *temp_v0 = func_global_asm_80688584(actor, arg1);
