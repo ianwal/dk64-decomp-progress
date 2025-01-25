@@ -115,8 +115,6 @@ void func_global_asm_8062B220(GlobalASMStruct64 *arg0) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062B3C4.s")
-
 typedef struct Struct8062F420 Struct8062F420;
 
 struct Struct8062F420 {
@@ -177,24 +175,22 @@ struct Struct8062F420 {
     u8 unkC5;
 };
 
-/*
-// TODO: Hmm, something going on with s0 s4
 void func_global_asm_8062B3C4(Struct8062F420 *arg0, s32 *arg1) {
     s32 i;
-    Struct8062F420 *current = arg0;
-
-    while (current) {
-        for (i = 0; i < current->unkC5; i++) {
-            func_global_asm_8063C3C0(current->unk70[i]);
-            if (*arg1 < current->unkAC[i] + 1) {
-                *arg1 = current->unkAC[i] + 1;
+    do {
+        if (!arg0) {
+            break;
+        }
+        for (i = 0; i < arg0->unkC5; i++) {
+            func_global_asm_8063C3C0(arg0->unk70[i]);
+            if (*arg1 < arg0->unkAC[i] + 1) {
+                *arg1 = arg0->unkAC[i] + 1;
             }
         }
-        func_global_asm_8062B3C4(current->unk0, arg1);
-        current = current->unk4;
-    }
+        func_global_asm_8062B3C4(arg0->unk0, arg1);
+        arg0 = arg0->unk4;
+    } while (TRUE);
 }
-*/
 
 typedef struct {
     s32 unk0;

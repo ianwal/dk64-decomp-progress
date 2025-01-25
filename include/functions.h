@@ -711,7 +711,7 @@ void func_global_asm_8061DAAC(s16 arg0, s16 arg1, u16 arg2);
 void func_global_asm_8061DB64(Actor *arg0);
 // TODO: func_global_asm_8061DBD4 has no documented signature
 void func_global_asm_8061EA78(void);
-// TODO: func_global_asm_8061EB04 has no documented signature
+s32 func_global_asm_8061EB04(Actor *playerPointer, u8 playerIndex);
 // TODO: func_global_asm_8061EDA0 has no documented signature but has been matched
 void func_global_asm_8061EF4C(Actor*, u8, u16, f32, f32, f32, f32, f32);
 void func_global_asm_8061F0B0(Actor *arg0, u8 arg1, u16 arg2);

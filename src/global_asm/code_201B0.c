@@ -901,8 +901,6 @@ void func_global_asm_8061DB64(Actor *arg0) {
 // jumptable, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061DBD4.s")
 
-s32 func_global_asm_8061EB04(Actor *playerPointer, u8 playerIndex);
-
 void func_global_asm_8061EA78(void) {
     u8 playerIndex;
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
@@ -912,7 +910,7 @@ void func_global_asm_8061EA78(void) {
     }
 }
 
-// rodata
+// rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061EB04.s")
 
 typedef struct {

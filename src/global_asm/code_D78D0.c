@@ -3908,8 +3908,6 @@ void func_global_asm_806DE9F4(void) {
     extra_player_info_pointer->unk30 = D_global_asm_80750FDC;
 }
 
-s32 func_global_asm_8061EB04(Actor *, s32);
-
 void func_global_asm_806DEAA4(void) {
     switch (current_actor_pointer->control_state_progress) {
         case 0:

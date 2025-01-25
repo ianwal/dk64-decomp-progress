@@ -834,11 +834,11 @@ void func_global_asm_80600590(Maps map) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600674.s")
 
 extern u8 D_global_asm_80745290;
 /*
-// Close
 void func_global_asm_80600674(void) {
     s32 max_boost = 1;
     s32 min_boost = 20;
