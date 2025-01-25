@@ -2,7 +2,7 @@
 #include "functions.h"
 
 void *__n_allocParam();
-s32 func_global_asm_80739E24(s32);;
+s32 func_global_asm_80739E24(s32);
 void func_global_asm_8073F1E4(CustomPVoice *, s32, ALStartParamAlt *);
 
 typedef struct ALStartParamAlt_0 {

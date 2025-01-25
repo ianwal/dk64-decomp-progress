@@ -168,6 +168,12 @@ typedef struct {
     u8                         chan;
 } N_ALOscEvent;
 
+typedef struct {
+    union {
+        s32 i;
+        s32 f;
+    } data[2];
+} N_ALGenericEvent;
 
 typedef struct {
     s16                 	type;
@@ -183,6 +189,7 @@ typedef struct {
 	ALSeqpSeqEvent		spseq;
 	ALSeqpBankEvent		spbank;
         N_ALOscEvent      	osc;
+        N_ALGenericEvent    generic;
     } msg;
 } N_ALEvent;
 
