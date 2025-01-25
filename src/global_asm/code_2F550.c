@@ -242,9 +242,6 @@ void func_global_asm_8062B220(GlobalASMStruct64 *arg0) {
 }
 */
 
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062B3C4.s")
-
 typedef struct Struct8062F420 Struct8062F420;
 
 struct Struct8062F420 {
