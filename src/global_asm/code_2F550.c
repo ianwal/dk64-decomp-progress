@@ -6,7 +6,7 @@ extern f32 D_global_asm_80747CD0;
 
 extern void *D_global_asm_807F5DE4; // TODO: Actually a pointer to a struct (map model?)
 extern void *D_global_asm_807F5E60;
-extern s8 D_global_asm_807F5FEC;
+extern u8 D_global_asm_807F5FEC;
 extern s32 D_global_asm_807F6C28;
 
 // close
@@ -50,12 +50,46 @@ f32 func_global_asm_8062A850(void) {
 }
 */
 
-// Rotating a bunch of matrices
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062A944.s")
+
+extern f32 D_global_asm_807F5DF0[][3];
+
+/*
+void func_global_asm_8062A944(f32 arg0, f32 arg1, f32 arg2) {
+    s32 i;
+    Mtx spB0;
+    Mtx sp70;
+    f32 z, y, x;
+    // 60
+    // 5c
+    f32 temp_f0; // 58
+    f32 *temp0;
+
+    temp_f0 = arg0 * 0.5;
+    guRotateF(&spB0, temp_f0, 1.0f, 0.0f, 0.0f);
+    guMtxXFMF(&spB0, 0.0f, 0.0f, -arg2, &x, &y, &z);
+    guRotateF(&sp70, temp_f0 * arg1, 0.0f, 1.0f, 0.0f);
+    guMtxXFMF(&sp70, x, y, z, &D_global_asm_807F5DF0[0][0], &D_global_asm_807F5DF0[0][1], &D_global_asm_807F5DF0[0][2]);
+    guRotateF(&sp70, -(temp_f0 * arg1), 0.0f, 1.0f, 0.0f);
+    guMtxXFMF(&sp70, x, y, z, &D_global_asm_807F5DF0[1][0], &D_global_asm_807F5DF0[1][1], &D_global_asm_807F5DF0[1][2]);
+    guRotateF(&spB0, -temp_f0, 1.0f, 0.0f, 0.0f);
+    guMtxXFMF(&spB0, 0.0f, 0.0f, -arg2, &x, &y, &z);
+    guRotateF(&sp70, temp_f0 * arg1, 0.0f, 1.0f, 0.0f);
+    guMtxXFMF(&sp70, x, y, z, &D_global_asm_807F5DF0[2][0], &D_global_asm_807F5DF0[2][1], &D_global_asm_807F5DF0[2][2]);
+    guRotateF(&sp70, -(temp_f0 * arg1), 0.0f, 1.0f, 0.0f);
+    guMtxXFMF(&sp70, x, y, z, &D_global_asm_807F5DF0[3][0], &D_global_asm_807F5DF0[3][1], &D_global_asm_807F5DF0[3][2]);
+    for (i = 0; i < 4; i++) {
+        temp_f0 = -arg2 / D_global_asm_807F5DF0[i][2];
+        D_global_asm_807F5DF0[i][0] *= temp_f0;
+        D_global_asm_807F5DF0[i][1] *= temp_f0;
+        D_global_asm_807F5DF0[i][2] = -arg2;
+    }
+}
+*/
 
 void func_global_asm_8062FF10(f32 (*)[4], f32 (*)[4]);
 extern f32 D_global_asm_807F5E20[][3];
-extern f32 D_global_asm_807F5DF0[][3];
 
 void func_global_asm_8062AC68(void *arg0) {
     f32 sp98[4][4];
@@ -69,8 +103,101 @@ void func_global_asm_8062AC68(void *arg0) {
     }
 }
 
-// Copying matrices?
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062AD28.s")
+
+void func_global_asm_8062B220(GlobalASMStruct64 *);    /* extern */
+
+/*
+void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, GlobalASMStruct64 *arg3, f32 *arg4) {
+    f32 x;
+    f32 sp78[5];
+    f32 sp64[5];
+    f32 sp50[5];
+    GlobalASMStruct64 *var_s0;
+    s32 i;
+
+    var_s0 = arg3;
+    for (i = 0; i < 4; i++) {
+        var_s0++;
+        var_s0[-1].unk0 = arg0;
+        var_s0[-1].unk2 = arg1;
+        var_s0[-1].unk4 = arg2;
+        var_s0[-1].unk18 = 3;
+    }
+    var_s0 = arg3;
+
+    arg3[0].unk6 = arg4[0];
+    arg3[0].unk8 = arg4[1];
+    arg3[0].unkA = arg4[2];
+    arg3[0].unkC = arg4[3];
+    arg3[0].unkE = arg4[4];
+    arg3[0].unk10 = arg4[5];
+    sp78[0] = arg4[6];
+    sp64[0] = arg4[7];
+    sp50[0] = arg4[8];
+
+    arg3[1].unk6 = arg4[6];
+    arg3[1].unk8 = arg4[7];
+    arg3[1].unkA = arg4[8];
+    arg3[1].unkC = arg4[0];
+    arg3[1].unkE = arg4[1];
+    arg3[1].unk10 = arg4[2];
+    sp78[1] = arg4[9];
+    sp64[1] = arg4[10];
+    sp50[1] = arg4[11];
+
+    arg3[2].unk6 = arg4[9];
+    arg3[2].unk8 = arg4[10];
+    arg3[2].unkA = arg4[11];
+    arg3[2].unkC = arg4[6];
+    arg3[2].unkE = arg4[7];
+    arg3[2].unk10 = arg4[8];
+    sp78[2] = arg4[0];
+    sp64[2] = arg4[1];
+    sp50[2] = arg4[2];
+
+    arg3[3].unk6 = arg4[3];
+    arg3[3].unk8 = arg4[4];
+    arg3[3].unkA = arg4[5];
+    arg3[3].unkC = arg4[9];
+    arg3[3].unkE = arg4[10];
+    arg3[3].unk10 = arg4[11];
+    sp78[3] = arg4[0];
+    sp64[3] = arg4[1];
+    sp50[3] = arg4[2];
+
+    arg3[4].unk18 = 4;
+    arg3[4].unk0 = arg4[6];
+    arg3[4].unk2 = arg4[7];
+    arg3[4].unk4 = arg4[8];
+    arg3[4].unk6 = arg4[9];
+    arg3[4].unk8 = arg4[10];
+    arg3[4].unkA = arg4[11];
+    arg3[4].unkC = arg4[0];
+    arg3[4].unkE = arg4[1];
+    arg3[4].unk10 = arg4[2];
+    arg3[4].unk12 = arg4[3];
+    arg3[4].unk14 = arg4[4];
+    arg3[4].unk16 = arg4[5];
+    sp50[4] = arg2;
+    sp64[4] = arg1;
+    sp78[4] = arg0;
+    for (i = 0; i < 5; i++) {
+        func_global_asm_8062B220(var_s0);
+        if ((
+            (var_s0->unk20 * sp78[i]) + 
+            (var_s0->unk30 * sp50[i]) +
+            (var_s0->unk28 * sp64[i]) + 
+            var_s0->unk38) < 0.0) {
+            func_global_asm_8062B194(var_s0);
+            func_global_asm_8062B220(var_s0);
+        }
+        var_s0++;
+    }
+}
+*/
+
 
 void func_global_asm_8062B194(GlobalASMStruct64 *arg0) {
     s16 temp1;
@@ -114,6 +241,9 @@ void func_global_asm_8062B220(GlobalASMStruct64 *arg0) {
     arg0->unk38 = -((((arg0->unk2 * arg0->unkA) - (arg0->unk4 * arg0->unk8)) * arg0->unkC) + ((arg0->unk0 * ((arg0->unk8 * arg0->unk10) - (arg0->unkE * arg0->unkA))) + (arg0->unk6 * ((arg0->unkE * arg0->unk4) - (arg0->unk2 * arg0->unk10)))));
 }
 */
+
+// Close
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062B3C4.s")
 
 typedef struct Struct8062F420 Struct8062F420;
 
@@ -193,42 +323,11 @@ void func_global_asm_8062B3C4(Struct8062F420 *arg0, s32 *arg1) {
 }
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-    s32 unk60;
-    s32 unk64;
-    s32 unk68;
-    s32 unk6C;
-    s32 unk70;
-    s32 unk74;
-    s32 unk78;
-    s32 unk7C;
+    Mtx unk0[2];
     f32 unk80; // Used
     f32 unk84; // Used
     f32 unk88; // Used
-    s8 unk8C; // Used
+    u8 unk8C; // Used
     s8 unk8D;
     s16 unk8E;
 } GlobalASMStruct73;
@@ -668,19 +767,102 @@ void func_global_asm_8062C22C(void) {
 // Displaylist Stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062C29C.s")
 
-// TODO: Just a s16*?
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-} GlobalASMStruct_8062C99C;
+typedef struct Struct8062CA70_arg1 Struct8062CA70_arg1;
 
-void func_global_asm_8062C99C(GlobalASMStruct_8062C99C *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+struct Struct8062CA70_arg1 {
+    Struct8062CA70_arg1 *unk0;
+    Struct8062CA70_arg1 *unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C[1]; // Unknown count, same as unk70
+    u8 pad20[0x6E - 0x20];
+    s16 unk6E;
+    s16 unk70[1]; // Unknown count
+    u8 pad72[0x88 - 0x72];
+    s16 unk88[1]; // Unknown count, same as unk70
+    u8 pad8A[0xAC - 0x8A];
+    u8 unkAC;
+    u8 padAD[0xB8 - 0xAD];
+    u8 unkB8;
+    u8 unkB9[1]; // Unknown count, same as unk70
+    u8 padBA[0xC5 - 0xBA];
+    u8 unkC5;
+};
+
+typedef struct Struct8062CA70_arg2 Struct8062CA70_arg2;
+
+struct Struct8062CA70_arg2 {
+    u8 unk0;
+    u8 unk1;
+    u8 pad2[2];
+    s32 unk4;
+    s32 unk8;
+    Struct8062CA70_arg2 *unkC;
+    Struct8062CA70_arg2 *unk10;
+};
+
+void func_global_asm_8062C99C(CharacterChange250 *, s32, s32, s32, s32);
+Gfx *func_global_asm_8062CA70(Gfx *, Struct8062CA70_arg1 *, Struct8062CA70_arg2 *, f32, f32, f32, s32);
+void func_global_asm_8062D620(s32, s32, s32, f32, f32, f32, s32, s32, s32);
+s32 *func_global_asm_8070835C(Gfx *, u8);
+s32 *func_global_asm_80722294(void *, Actor *, s16);
+extern void *D_807F5DE8;
+extern void *D_807F5DEC;
+extern s32 D_807F5E64;
+extern u8 D_global_asm_80750AB4;
+extern f32 D_global_asm_807F5E68;
+extern f32 D_global_asm_807F5FA8;
+extern f32 D_global_asm_807F5FAC;
+extern f32 D_global_asm_807F5FB0;
+extern f32 D_global_asm_807F5FB4;
+extern f32 D_global_asm_807F5FDC;
+extern f32 D_global_asm_807F5FE0;
+extern s32 D_global_asm_807F5FF0;
+
+/*
+Gfx *func_global_asm_8062C29C(Gfx *dl, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9) {
+    void *temp_s3;
+
+    D_807F5E64 = 0;
+    D_global_asm_807F5FB4 = arg7;
+    D_global_asm_807F5FB0 = arg8;
+    D_global_asm_807F5FAC = arg9;
+    D_global_asm_807F5FA8 = D_global_asm_807F5FAC;
+    temp_s3 = &character_change_array[cc_player_index].unk1F0[D_global_asm_807444FC];
+    D_global_asm_807F5FE0 = func_global_asm_80612D10(arg7 * 0.017453292f);
+    D_global_asm_807F5FE0 = (((D_global_asm_807F5FE0 - D_global_asm_807F5FDC) * 3.0) + D_global_asm_807F5FDC);
+    func_global_asm_8062DB70(arg1, arg2, arg3, arg4, arg5, arg6);
+    func_global_asm_8062A944(D_global_asm_807F5FB4, D_global_asm_807F5FB0, D_global_asm_807F5FA8);
+    func_global_asm_8062AC68(&character_change_array[cc_player_index].unk8[D_global_asm_807444FC]);
+    func_global_asm_8062AD28(arg1, arg2, arg3, &D_global_asm_807F5E68, &D_global_asm_807F5E20);
+    func_global_asm_8062D620(D_global_asm_807F5DE4, D_global_asm_807F5E60, D_global_asm_807F5FF0, arg1, arg2, arg3, 0, D_global_asm_807F5FEC == 0, ((s32) D_global_asm_80750AB4 < 2) ^ 1);
+    gSPSegment(dl++, 0x06, osVirtualToPhysical(D_807F5DE8));
+    gSPSegment(dl++, 0x07, osVirtualToPhysical(D_807F5DEC));
+    dl = func_global_asm_80722294(dl, character_change_array[cc_player_index].player_pointer, cc_player_index);
+    gSPSegment(dl++, 0x05, osVirtualToPhysical(temp_s3));
+    gDPSetHilite1Tile(dl++, G_TX_RENDERTILE, &character_change_array[cc_player_index].unk1D0[D_global_asm_807444FC], 32, 32);
+    gSPEndDisplayList(dl++);
+    func_global_asm_8062C99C(&character_change_array[cc_player_index].unk250[D_global_asm_807444FC], character_change_array[cc_player_index].unk270[0], character_change_array[cc_player_index].unk270[1], character_change_array[cc_player_index].unk270[2], character_change_array[cc_player_index].unk270[3]);
+    gSPPerspNormalize(dl++, character_change_array[cc_player_index].unk188);
+    gSPViewport(dl++, osVirtualToPhysical(&character_change_array[cc_player_index].unk250[D_global_asm_807444FC]));
+    gDPSetScissorFrac(dl++, G_SC_NON_INTERLACE, character_change_array[cc_player_index].unk270[0] * 4.0f, character_change_array[cc_player_index].unk270[1] * 4.0f, character_change_array[cc_player_index].unk270[2] * 4.0f, character_change_array[cc_player_index].unk270[3] * 4.0f);
+    gSPLookAt(dl++, osVirtualToPhysical(&character_change_array[cc_player_index].unk190[D_global_asm_807444FC]));
+    func_global_asm_80658E58(character_change_array[cc_player_index].unk270[0], character_change_array[cc_player_index].unk270[1], character_change_array[cc_player_index].unk270[2], character_change_array[cc_player_index].unk270[3]);
+    dl = func_global_asm_8065919C(dl);
+    dl = func_global_asm_8070835C(dl, cc_player_index);
+    gSPMatrix(dl++, osVirtualToPhysical(&character_change_array[cc_player_index].unk88[D_global_asm_807444FC]), G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, osVirtualToPhysical(&character_change_array[cc_player_index].unk8[D_global_asm_807444FC]), G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    dl = func_global_asm_8062CA70(dl, D_global_asm_807F5DE4, D_global_asm_807F5E60, arg1, arg2, arg3, global_properties_bitfield);
+    gDPPipeSync(dl++);
+    return dl;
+}
+*/
+
+void func_global_asm_8062C99C(CharacterChange250 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     arg0->unk0 = (arg3 - arg1) * 2;
     arg0->unk2 = (arg4 - arg2) * 2;
     arg0->unk4 = 0x1FF;
@@ -700,38 +882,119 @@ Gfx *func_global_asm_8062CA0C(Gfx *dl, f32 arg1, f32 arg2, f32 arg3) {
     return func_global_asm_80630B70(dl, D_global_asm_807F5FF8, arg1, arg2, arg3, 0x30030, -1, 0);
 }
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062CA70.s")
 
-// Displaylist stuff, doable, close
+Gfx *func_global_asm_8062CEA8(Gfx *, Struct8062CA70_arg1 *, u8);
+Gfx *func_global_asm_8063A968(Gfx *, s32);
+Gfx *func_global_asm_80655DD0(Gfx *, void *, f32, f32, f32, s32);
+Gfx *func_global_asm_8065D994(Gfx *, s32);
+extern s32 D_global_asm_807F5FFC;
+
+/*
+Gfx *func_global_asm_8062CA70(Gfx *dl, Struct8062CA70_arg1 *arg1, Struct8062CA70_arg2 *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
+    u8 temp;
+
+    loop_1:
+    if (arg1 == NULL) {
+        return dl;
+    }
+    if (arg2->unk1 == 3) {
+        return dl;
+    }
+    switch (arg1->unkB8) {
+        case 2:
+            dl = func_global_asm_80655DD0(dl, arg1, arg3, arg4, arg5, arg6);
+            break;
+        case 1:
+            D_807F5E64 += arg1->unk6E;
+            if (arg6 & 0x10) {
+                gSPSegment(dl++, 0x06, osVirtualToPhysical(D_807F5DE8));
+                gSPSegment(dl++, 0x07, osVirtualToPhysical(D_807F5DEC));
+                dl = func_global_asm_8062CEA8(dl, arg1, 1);
+                dl = func_global_asm_806592B4(dl);
+                dl = func_global_asm_8062EDA8(dl, 0xFFU);
+                if (arg1->unk8 != -1) {
+                    gSPDisplayList(dl++, osVirtualToPhysical(arg1->unk8));
+                }
+                if (arg1->unkC != -1) {
+                    gSPDisplayList(dl++, osVirtualToPhysical(arg1->unkC));
+                }
+                if (arg1->unk14 != -1) {
+                    gSPDisplayList(dl++, osVirtualToPhysical(arg1->unk14));
+                }
+                if (arg1->unk10 != -1) {
+                    gSPDisplayList(dl++, osVirtualToPhysical(arg1->unk10));
+                }
+                if (arg1->unk18 != -1) {
+                    gSPDisplayList(dl++, osVirtualToPhysical(arg1->unk18));
+                }
+                dl = func_global_asm_8062CEA8(dl, arg1, 2);
+            }
+            dl = func_global_asm_8063A968(dl, arg2->unk8);
+            dl = func_global_asm_8065D994(dl, -1);
+            D_global_asm_807F6009 = 0xFF;
+            dl = func_global_asm_80630B70(dl, arg2->unk4, arg3, arg4, arg5, arg6, -1, 0);
+            if (arg6 & 0x10) {
+                gSPSegment(dl++, 0x06, osVirtualToPhysical(D_807F5DE8));
+                gSPSegment(dl++, 0x07, osVirtualToPhysical(D_807F5DEC));
+                dl = func_global_asm_8062CEA8(dl, arg1, 3);
+                gDPPipeSync(dl++);
+            }
+            dl = func_global_asm_80630B70(dl, D_global_asm_807F5FFC, arg3, arg4, arg5, arg6, -1, 0);
+            break;
+        case 0:
+            switch (arg2->unk1) {
+                case 1:
+                case 2:
+                    if (arg2->unk0 != 0) {
+                        arg1 = arg1->unk4;
+                        arg2 = arg2->unk10;
+                    } else {
+                        arg1 = arg1->unk0;
+                        arg2 = arg2->unkC;
+                    }
+                    goto loop_1;
+                case 0:
+                    if (arg2->unk0 != 0) {
+                        dl = func_global_asm_8062CA70(dl, arg1->unk0, arg2->unkC, arg3, arg4, arg5, arg6);
+                        arg1 = arg1->unk4;
+                        arg2 = arg2->unk10;
+                    } else {
+                        dl = func_global_asm_8062CA70(dl, arg1->unk4, arg2->unk10, arg3, arg4, arg5, arg6);
+                        arg1 = arg1->unk0;
+                        arg2 = arg2->unkC;
+                    }
+                    goto loop_1;
+            }
+            break;
+    }
+    return dl;
+}
+*/
+
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062CEA8.s")
 
 /*
-Gfx *func_global_asm_8062CEA8(Gfx *dl, Struct8062F420 *arg1, u8 arg2) {
-    GlobalASMStruct73 *temp_a0_2;
+Gfx *func_global_asm_8062CEA8(Gfx *dl, Struct8062CA70_arg1 *arg1, u8 arg2) {
     s32 i;
-    void *temp_s1;
-    void *temp_s4;
-    Struct8062F420 *var_s5;
+    u8 temp_v1;
 
     for (i = 0; i < arg1->unkC5; i++) {
-        var_s5 = arg1;
-        temp_s1 = arg1 + (i * 2);
-        if ((arg2 == var_s5->unkB9) && (((temp_s1->unk88 == -1)) || (func_global_asm_80652EBC(temp_s1->unk88) != 0))) {
-            temp_s4 = arg1 + (i * 4);
-            dl = func_global_asm_8063C418(dl, temp_s1->unk70);
+        if ((arg1->unkB9[i] == arg2) && (((arg1->unk88[i] == -1)) || (func_global_asm_80652EBC(arg1->unk88[i])))) {
+            dl = func_global_asm_8063C418(dl, arg1->unk70[i]);
             gSPClearGeometryMode(dl++, G_CULL_BACK);
-            temp_a0_2 = &D_global_asm_807F5FB8[var_s5->unkAC];
-            if ((temp_a0_2->unk80 != 0.0) && (temp_a0_2->unk8C != 0)) {
-                gSPMatrix(dl++, osVirtualToPhysical(D_global_asm_807F5FB8[D_global_asm_807444FC][var_s5->unkAC]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
-                gSPDisplayList(dl++, osVirtualToPhysical(temp_s4->unk1C));
+            temp_v1 = arg1->unkAC;
+            if ((D_global_asm_807F5FB8[temp_v1].unk80 != 0.0) && (D_global_asm_807F5FB8[temp_v1].unk8C)) {
+                gSPMatrix(dl++, osVirtualToPhysical(&D_global_asm_807F5FB8[temp_v1].unk0[D_global_asm_807444FC]), G_MTX_PUSH | G_MTX_MUL | G_MTX_MODELVIEW);
+                gSPDisplayList(dl++, osVirtualToPhysical(arg1->unk1C[i]));
                 gSPPopMatrix(dl++, G_MTX_MODELVIEW);
             } else {
-                gSPDisplayList(dl++, osVirtualToPhysical(temp_s4->unk1C));
+                gSPDisplayList(dl++, osVirtualToPhysical(arg1->unk1C[i]));
             }
             gDPPipeSync(dl++);
         }
-        var_s5 += 1;
     }
     return dl;
 }
@@ -815,25 +1078,20 @@ void func_global_asm_8062D1A8(void) {
 
 /*
 void func_global_asm_8062D1E0(Struct8062D1E0_arg0 *arg0, Struct8062D1E0_arg1 *arg1) {
-    Struct8062D1E0_arg0 *var_s0;
-    Struct8062D1E0_arg1 *var_s1;
-
-    var_s0 = arg0;
-    var_s1 = arg1;
-    while (var_s0 != NULL) {
-        switch (var_s0->unkB8) {
+    while (arg0) {
+        switch (arg0->unkB8) {
             default:
                 return;
             case 2:
                 func_global_asm_8065297C();
                 return;
             case 1:
-                func_global_asm_806323C0(var_s1->unk4);
+                func_global_asm_806323C0(arg1->unk4);
                 return;
             case 0:
-                func_global_asm_8062D1E0(var_s0->unk0, var_s1->unkC);
-                var_s0 = var_s0->next;
-                var_s1 = var_s1->unk10;
+                func_global_asm_8062D1E0(arg0->unk0, arg1->unkC);
+                arg0 = arg0->next;
+                arg1 = arg1->unk10;
                 break;
         }
     }
@@ -945,7 +1203,6 @@ void func_global_asm_8062D414(Struct8062D414_arg0 *arg0, Struct8062D414_arg1 *ar
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062D620.s")
 
 s32 func_global_asm_8062DBDC(s16, s16, s16, s16, s32, s32, f32, f32, f32, f32, s32 *);
-extern s32 D_global_asm_807F5E68; // TODO: Datatype
 extern f32 D_global_asm_807F5FA8;
 
 typedef struct {
@@ -1328,8 +1585,6 @@ void func_global_asm_8062EFA0(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F050.s")
 
 extern MapGeometryHeader *D_807F5DE0;
-extern void *D_807F5DE8;
-extern void *D_807F5DEC;
 extern s32 D_global_asm_807F5FC8;
 extern void *D_global_asm_807F5FCC;
 extern s32 D_global_asm_807F5FD0;
