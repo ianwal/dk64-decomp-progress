@@ -11,8 +11,6 @@ void func_global_asm_8068A350(Actor *arg0, s32 arg1, s32 arg2) {
     func_global_asm_806883F4(arg0, arg1, arg2, 0.0f);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F050/func_global_asm_8068A3A0.s")
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -26,25 +24,26 @@ typedef struct {
 
 extern GlobalASMStruct76 D_global_asm_80750100[];
 
-/*
-// TODO: Fiddly, might want another look at the mips_to_c output
 s32 func_global_asm_8068A3A0(s32 arg0, u32 *arg1) {
-    u16 i;
-    s32 found;
+    u8 found = FALSE;
+    u32 i;
+    u32 j;
 
-    found = FALSE;
-    i = 0;
-    *arg1 = i;
-    for (i = 0; i < 7U & !found; i++) {
-        if (arg0 == D_global_asm_80750100[i].unk0) {
+    if (arg0);
+    *arg1 = 0;
+    for (i = 0; !found;) {
+        j = i + 1;
+        if (D_global_asm_80750100[i].unk0 == arg0) {
             found = TRUE;
+            j = i;
         } else {
-            *arg1 = i;
+            *arg1 = j;
+            i = j;
         }
-    }
+        if (j > 6) break;
+    };
     return found;
 }
-*/
 
 void func_global_asm_8068A404(Actor *arg0, s32 arg1, s32 arg2) {
     s32 temp_a1;

@@ -993,7 +993,7 @@ us,asm,func_global_asm_80631FAC,216,yes
 us,asm,func_global_asm_8068ECF4,608,yes
 us,asm,func_global_asm_806BA76C,348,yes
 us,asm,func_global_asm_8068086C,156,yes
-us,asm,func_global_asm_8068A3A0,100,no
+us,asm,func_global_asm_8068A3A0,100,yes
 us,asm,func_global_asm_8062217C,440,no
 us,asm,func_global_asm_80724874,56,yes
 us,asm,func_global_asm_80714A58,16,yes
