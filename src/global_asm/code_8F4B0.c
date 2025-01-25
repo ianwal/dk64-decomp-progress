@@ -26,8 +26,73 @@ void func_global_asm_8068A830(void) {
     func_global_asm_80727958();
 }
 
-// Hmm, negative struct offsets
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068A858.s")
+typedef struct Struct80750194 {
+    u8 unk0;
+    u8 unk1;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+} Struct80750194;
+
+extern Struct80750194 D_global_asm_80750194[];
+extern rgb D_global_asm_807501C0[];
+extern u8 D_global_asm_807FC621;
+extern u8 D_global_asm_807FC622;
+
+void func_global_asm_8068A858(u8 *arg0, u8 *arg1, u8 *arg2) {
+    rgb *temp_v0;
+    f32 sp40;
+    f32 sp3C;
+    f32 var_f2;
+
+    if (current_actor_pointer->object_properties_bitfield & 4) {
+        switch (D_global_asm_807FC622) {
+        case 0:
+            *arg0 = 0xFF;
+            *arg1 = 0xFF;
+            *arg2 = 0xFF;
+            break;
+        case 1:
+            if (!(object_timer & 0xF)) {
+                goto block_9;
+            }
+            break;
+        case 2:
+            if (!(object_timer & 0x3)) {
+block_9:
+                temp_v0 = &D_global_asm_807501C0[(u8)((func_global_asm_80612790(200 * object_timer) * 4.0f) + 4.0f)];
+                *arg0 = temp_v0->red;
+                *arg1 = temp_v0->green;
+                *arg2 = temp_v0->blue;
+            }
+            break;
+        
+        }
+        if ((D_global_asm_807FC621 & 0x80) && (D_global_asm_807FC621 & 0x7F)) {
+            D_global_asm_807FC621 &= 0x7F;
+            sp40 = D_global_asm_80750194[D_global_asm_807FC621 - 1].unk8;
+            sp3C = D_global_asm_80750194[D_global_asm_807FC621 - 1].unkA;
+            var_f2 = D_global_asm_80750194[D_global_asm_807FC621 - 1].unkC;
+            if (D_global_asm_807FC622) {
+                sp40 += 80.0f * func_global_asm_80612794(object_timer * 400);
+                var_f2 += 80.0f * func_global_asm_80612790(object_timer * 200);
+            }
+            func_global_asm_8065A660(D_global_asm_80750194[D_global_asm_807FC621 - 1].unk0, D_global_asm_80750194[D_global_asm_807FC621 - 1].unk1);
+            createLight(
+                D_global_asm_80750194[D_global_asm_807FC621 - 1].unk2,
+                D_global_asm_80750194[D_global_asm_807FC621 - 1].unk4, 
+                D_global_asm_80750194[D_global_asm_807FC621 - 1].unk6,
+                sp40, sp3C, var_f2,
+                0.0f, 1U, 
+                *arg0, *arg1, *arg2);
+        }
+    }
+}
+
+
 
 s32 func_global_asm_8068ABE0(s16 arg0) {
     s16 cutsceneIndex;
