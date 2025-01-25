@@ -2263,7 +2263,7 @@ void func_global_asm_806D9320(void) {
             } else {
                 current_actor_pointer->unkB8 -= var_a1;
             }
-            current_actor_pointer->z_rotation = (func_global_asm_80611BB4(current_actor_pointer->unkB8, current_actor_pointer->y_velocity) * 4096.0f) / 6.2831855f;
+            current_actor_pointer->z_rotation = (func_global_asm_80611BB4(current_actor_pointer->unkB8, current_actor_pointer->y_velocity) * 4096.0f) / MATH_2PI_F;
             current_actor_pointer->unkEE = current_actor_pointer->y_rotation = (func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, extra_player_info_pointer->unkB0_f32, extra_player_info_pointer->unkB8) + 0x800) % 4095;
             dz = extra_player_info_pointer->unkB8 - player_pointer->z_position;
             dy = (extra_player_info_pointer->unkB4 - player_pointer->y_position) / (player_pointer->animation_state->scale[1] * 0.16666666675);

@@ -808,15 +808,15 @@ void func_global_asm_8061D6A8(Struct_8061D6A8_arg0 *arg0) {
     dZ3 = actor->z_position - arg0->unk8C;
     dX3 = actor->x_position - arg0->unk84;
     var_f2 = func_global_asm_80611BB4(arg0->unk6C - arg0->unk88, sqrtf(SQ(dZ3) + SQ(dX3)));
-    if (D_global_asm_807476B0 > 3.1415927f) {
-        D_global_asm_807476B0 -= 3.1415927f;
+    if (D_global_asm_807476B0 > MATH_PI_F) {
+        D_global_asm_807476B0 -= MATH_PI_F;
     } else {
-        D_global_asm_807476B0 += 3.1415927f;
+        D_global_asm_807476B0 += MATH_PI_F;
     }
-    if (var_f2 > 3.1415927f) {
-        var_f2 = var_f2 - 3.1415927f;
+    if (var_f2 > MATH_PI_F) {
+        var_f2 = var_f2 - MATH_PI_F;
     } else {
-        var_f2 = var_f2 + 3.1415927f;
+        var_f2 = var_f2 + MATH_PI_F;
     }
     D_global_asm_807476B0 -= var_f2;
 }

@@ -155,7 +155,7 @@ void func_global_asm_806A2E30(void) {
     if (D_global_asm_807476C8 == 0) {
         D_807FC7D8 = __ull_rem(__ull_div(res, 0x2710), 0x64);
     }
-    sp84 = ((f32) (s32) ((func_global_asm_806FDA8C(aad->unk10) - 1.5707964f) / 3.1415927f) * 3.1415927f) + 3.1415927f + 1.5707964f;
+    sp84 = ((f32) (s32) ((func_global_asm_806FDA8C(aad->unk10) - MATH_HALFPI_F) / MATH_PI_F) * MATH_PI_F) + MATH_PI_F + MATH_HALFPI_F;
     temp_f2 = (f32) ((((__ull_to_d(res) / 10000.0) / 100.0) * 3.1415927410125732) + 1.5707963705062866);
     func_global_asm_806FDAB8(aad->unk10, 0.0f);
     
@@ -165,7 +165,7 @@ void func_global_asm_806A2E30(void) {
         if (current_actor_pointer->shadow_opacity < 0xFF) {
             current_actor_pointer->shadow_opacity = MIN(0xFF, current_actor_pointer->shadow_opacity + 3);
         }
-        func_global_asm_806FDAB8(aad->unk10, 1.5707964f);
+        func_global_asm_806FDAB8(aad->unk10, MATH_HALFPI_F);
         current_actor_pointer->unk168 = 0;
         break;
     case 4:
@@ -176,7 +176,7 @@ void func_global_asm_806A2E30(void) {
             current_actor_pointer->control_state_progress++;
             aad->unk0 = osGetTime();
             aad->unk8 = 0;
-            temp_f2 = 1.5707964f;
+            temp_f2 = MATH_HALFPI_F;
         }
         delta = aad->unkC - aad->unk8;
         if (delta >= 0) {
@@ -193,7 +193,7 @@ void func_global_asm_806A2E30(void) {
                     current_actor_pointer->control_state = 5;
                     current_actor_pointer->control_state_progress = 0;
                 } else if (current_actor_pointer->unk15F == 6) {
-                    if ((s32) (sp84 / 3.1415927f) & 1) {
+                    if ((s32) (sp84 / MATH_PI_F) & 1) {
                         playSound(0x8E, 0x58EFU, 63.0f, 1.0f, 5, 0);
                     } else {
                         playSound(0x8F, 0x58EFU, 63.0f, 1.0f, 5, 0);

@@ -252,7 +252,7 @@ block_4:
             case 0: // switch 3
                 var_v1 = MAX(0, sp6E - enemies_killed);
                 if (var_v1 != a178->unk4) {
-                    func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
+                    func_global_asm_806FDAB8(a178->unk9, MATH_PI_F);
                     a178->unk4 = MAX(0, sp6E - enemies_killed);
                 }
                 goto block_71;
@@ -278,7 +278,7 @@ block_4:
             case 2: // switch 3
                 var_v1 = MAX(0, sp6E - func_global_asm_806F8AD4(0xB, 0));
                 if (var_v1 != a178->unk4) {
-                    func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
+                    func_global_asm_806FDAB8(a178->unk9, MATH_PI_F);
                     a178->unk4 = MAX(0, sp6E - func_global_asm_806F8AD4(0xB, 0));
                 }
 block_71:
@@ -370,7 +370,7 @@ block_71:
             current_actor_pointer->control_state++;
             break;
         case 0x27: // switch 5
-            func_global_asm_806FDAB8(a178->unk9, 3.1415927f);
+            func_global_asm_806FDAB8(a178->unk9, MATH_PI_F);
             a178->unk4--;
             if (a178->unk4 == 0) {
                 func_bonus_800264E0(1, 0xE);

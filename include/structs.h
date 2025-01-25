@@ -1267,7 +1267,7 @@ typedef struct {
 } CameraPaad_unk44;
 
 typedef struct {
-    s32 unk0;
+    Actor *unk0;
     u8 pad4[0x20 - 0x4];
     f32 unk20;
     f32 unk24;
@@ -1656,10 +1656,12 @@ typedef struct {
     f32     unk2C4; // Used
     s16     unk2C8; // Used
     s16     unk2CA;
-    s16 unk2CC;
-    s16 unk2CE;
-    f32 unk2D0;
-    u8      pad_unknown4[0x2E0 - 0x2D4];
+    s16     unk2CC;
+    s16     unk2CE;
+    f32     unk2D0;
+    f32     unk2D4;
+    f32     unk2D8;
+    u8      pad2DC[0x2E0 - 0x2DC];
     u16     unk2E0;
     u16     unk2E2;
     u8      unk2E4;

@@ -633,8 +633,110 @@ void func_global_asm_8068BA2C(void) {
     }
 }
 
-// Jumptable
+// Jumptable, Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068BBF8.s")
+
+void func_global_asm_8061DBD4(Actor *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *);
+extern s16 D_807FC624;
+
+/*
+void func_global_asm_8068BBF8(void) {
+    CameraPaad *CaaD;
+    s16 sp52;
+    s16 sp50;
+    s16 temp_v1_3;
+    s16 temp_v0;
+    f32 sp48;
+    f32 var_f2;
+    f32 sp40;
+    f32 sp3C;
+    s16 sp3A;
+    CharacterChange *cc;
+    s32 var_v1;
+    s32 var_v1_2;
+
+    CaaD = current_actor_pointer->AAD_as_array[0];
+    temp_v1_3 = 0;
+    sp3A = 0x1E;
+    sp40 = 0.08f;
+    sp3C = 8.0f;
+    cc = &character_change_array[CaaD->unkFB];
+    cc->unk2CC = current_actor_pointer->unkEC;
+    current_actor_pointer->unkEC = current_actor_pointer->x_rotation;
+    cc->unk2CA = cc->look_at_eye_y;
+    sp48 = func_global_asm_80665E48(cc->look_at_eye_z, cc->look_at_eye_x, cc->look_at_at_z, cc->look_at_at_x);
+    var_f2 = func_global_asm_80665E48(0.0f, cc->look_at_eye_y, sqrtf(SQ(cc->look_at_at_z - cc->look_at_eye_z) + SQ(cc->look_at_at_x - cc->look_at_eye_x)), cc->look_at_at_y) + MATH_PI_F;
+    if (var_f2 > MATH_2PI_F) {
+        var_f2 -= MATH_2PI_F;
+    }
+    if (var_f2 > MATH_PI_F) {
+        var_f2 = MATH_PI_F - (var_f2 - MATH_PI_F);
+    }
+    cc->unk2D4 = MATH_2PI_F - sp48;
+    cc->unk2D8 = MATH_2PI_F - var_f2;
+    func_global_asm_806C9D20(CaaD->unkFB);
+    sp52 = func_global_asm_80665DE0(cc->look_at_eye_x, cc->look_at_eye_z, cc->look_at_at_x, cc->look_at_at_z);
+    func_global_asm_8061DBD4(current_actor_pointer,
+        &cc->look_at_eye_x, &cc->look_at_eye_y, &cc->look_at_eye_z,
+        &cc->look_at_at_x, &cc->look_at_at_y, &cc->look_at_at_z,
+        &cc->look_at_up_x, &cc->look_at_up_y, &cc->look_at_up_z);
+    temp_v0 = func_global_asm_80665DE0(cc->look_at_eye_x, cc->look_at_eye_z, cc->look_at_at_x, cc->look_at_at_z);
+    if (player_pointer == CaaD->unk0) {
+        if ((current_map == MAP_GALLEON_KROOLS_SHIP) || (current_map == MAP_GALLEON_MECHANICAL_FISH)) {
+            current_actor_pointer->x_rotation = func_global_asm_80612794(D_807FC624) * 100.0f;
+            if (current_map == MAP_GALLEON_KROOLS_SHIP) {
+                if (D_807FC624 < 0x1E) {
+                    playSound(0x15, 0x7FFFU, 64.0f, 1.0f, 0xA, 0x80);
+                }
+                if ((D_807FC624 > 0x801) && (D_807FC624 < 0x81E)) {
+                    playSound(0x14, 0x7FFFU, 64.0f, 1.0f, 0xA, 0x80);
+                }
+            }
+            D_807FC624 = D_807FC624 + 0x1E & 0xFFF;
+            return;
+        }
+        if (is_cutscene_active != 1) {
+            switch (CaaD->unk0->control_state) {
+            case 0x63:
+                sp40 = 0.02f;
+                sp3C = 15.0f;
+                goto block_29;
+            case 0x7:
+            case 0x8:
+            case 0x9:
+            case 0xA:
+            case 0xB:
+            case 0xF:
+            case 0x10:
+            case 0x11:
+            case 0x12:
+            case 0x13:
+            case 0x14:
+                sp3A = 0x64;
+                sp40 = 0.1f;
+            case 0x4F:
+            case 0x69:
+            case 0x6D:
+block_29:
+                temp_v1_3 = sp52 - temp_v0;
+                if (temp_v1_3 > 0x800) {
+                    temp_v1_3 -= 0x1000;
+                } else if (temp_v1_3 < -0x800) {
+                    temp_v1_3 += 0x1000;
+                }
+                break;
+            }
+            var_v1 = MAX(-sp3A, temp_v1_3);
+            var_v1_2 = sp3A;
+            if (var_v1 < sp3A) {
+                var_v1_2 = MAX(temp_v1_3, var_v1);
+            }
+            current_actor_pointer->x_rotation = ((((var_v1_2 * sp3C) - current_actor_pointer->x_rotation) * sp40) + current_actor_pointer->x_rotation);
+        }
+    }
+}
+*/
+
 
 typedef struct {
     void *texturePointer; // Texture Pointer (from table 0xE)
@@ -706,16 +808,17 @@ extern TempCBig D_global_asm_807FC630[];
 
 /*
 Gfx *func_global_asm_8068C20C(Gfx *dl, u8 arg1) {
-    TempCBig *temp_v1;
+    s32 j;
     u8 i;
 
     i = D_global_asm_807501E0;
 
-    while (i != 0) {
-        temp_v1 = &D_global_asm_807FC630[--i];
-        if (arg1 == temp_v1->unk8) {
-            gDPPipeSync(dl++);\
-            dl = temp_v1->unk0(dl, temp_v1->unk4);
+    while (i) {
+        j = i - 1;
+        i = j;
+        if (arg1 == D_global_asm_807FC630[j].unk8) {
+            gDPPipeSync(dl++);
+            dl = D_global_asm_807FC630[i].unk0(dl, D_global_asm_807FC630[i].unk4);
         }
     }
 

@@ -6,6 +6,10 @@
 #define SQ(x) ((x) * (x))
 #define reinterpret_cast(type, var) (*((type *)&var))
 
+#define MATH_HALFPI_F 1.5707964f
+#define MATH_PI_F 3.1415927f
+#define MATH_2PI_F 6.2831855f
+
 extern s8 story_skip;
 extern s8 widescreen_enabled;
 extern PlayerAdditionalActorData *extra_player_info_pointer;

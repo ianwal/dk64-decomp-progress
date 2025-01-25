@@ -269,7 +269,7 @@ void func_bonus_8002570C(void) {
                 (func_bonus_80025480(aaD, 0) == func_bonus_80025480(aaD, 1)) &&
                 (func_bonus_80025480(aaD, 1) == func_bonus_80025480(aaD, 2)) &&
                 (func_bonus_80025480(aaD, 2) == func_bonus_80025480(aaD, 3))) {
-                func_global_asm_806FDAB8(aaD->unk19, 3.1415927f);
+                func_global_asm_806FDAB8(aaD->unk19, MATH_PI_F);
                 aaD->unk16--;
                 if (aaD->unk16 == 0) {
                     player_pointer->control_state_progress = 1;

@@ -664,7 +664,7 @@ void func_global_asm_80692940(void) {
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk6A &= 0xFFFE;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x3C;
@@ -753,7 +753,7 @@ void func_global_asm_80692E50(void) {
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk6A &= 0xFFFE;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x3C;
@@ -855,7 +855,7 @@ void func_global_asm_80693EC0(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         playSoundAtActorPosition(current_actor_pointer, 0xF4, 0xFF, 0x7F, 5);
         current_actor_pointer->unk6A &= 0xFFFE;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = (current_actor_pointer->unk124->unk4 / 4) * 2.6;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x3C;
@@ -960,7 +960,7 @@ void func_global_asm_806944BC(void) {
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk6A &= 0xFFFE;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x3C;
@@ -1047,7 +1047,7 @@ void func_global_asm_80694D20(void) {
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk6A &= 0xFFFE;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x3C;
@@ -1148,7 +1148,7 @@ void func_global_asm_80695724(f32 arg0, u8 arg1) {
             playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x306, 0xFF, 0x7F, 0, 0, 0.3f, 0);
         }
         current_actor_pointer->unk6A &= 0xFFFE;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->y_rotation = current_actor_pointer->unkEE;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
@@ -1241,7 +1241,7 @@ void func_global_asm_80695BAC(void) {
         current_actor_pointer->unkFA = 0x270F;
         current_actor_pointer->unk6E[0] = -2;
         current_actor_pointer->unk6A &= ~1;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         aaD->unk13 = current_actor_pointer->unk124->unk10;
@@ -1312,7 +1312,7 @@ void func_global_asm_806960A4(void) {
         current_actor_pointer->unkFA = 0x270F;
         current_actor_pointer->unk6E[0] = -2;
         current_actor_pointer->unk6A &= ~1;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x1C;

@@ -58,15 +58,15 @@ void func_global_asm_806A370C(Gfx **arg0, AAD_global_asm_806A4DDC *arg1, Struct8
         temp_s1->unk88 = temp_s1->unk88 + 0.41887903213500977;
         if (temp_s1->unk0 & 8) {
             temp_f0 = temp_s1->unk88 * 0.5;
-            if (temp_f0 <= 6.2831855f) {
+            if (temp_f0 <= MATH_2PI_F) {
                 guRotateF(sp68, temp_f0 * 57.295776f, 0.0f, 0.0f, 1.0f);
                 guMtxCatF(spA8, sp68, spA8);
             }
         }
         if (temp_s1->unk0 & 4) {
             temp_f0_2 = temp_s1->unk88;
-            if (temp_f0_2 <= 6.2831855f) {
-                var_f2 = (0.25f * (func_global_asm_80612D1C(temp_f0_2 - 1.5707964f) + 1.0f)) + 1.0f;
+            if (temp_f0_2 <= MATH_2PI_F) {
+                var_f2 = (0.25f * (func_global_asm_80612D1C(temp_f0_2 - MATH_HALFPI_F) + 1.0f)) + 1.0f;
             } else {
                 var_f2 = 1.0f;
             }
