@@ -25,9 +25,6 @@ typedef struct {
     u8 unk13;
 } AAD_global_asm_80697CEC;
 
-// Displaylist stuff, close, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_global_asm_80697230.s")
-
 extern void *D_global_asm_80750280;
 
 typedef struct Struct80697230 {
@@ -40,11 +37,10 @@ typedef struct Struct80697230 {
     u8 unk11;
 } Struct80697230;
 
-/*
 Gfx *func_global_asm_80697230(Gfx *dl, Actor *arg1) {
-    Mtx sp154; // 154
-    Mtx sp114; // 114
     Struct80697230 *AAD; // not on stack
+    f32 sp154[4][4]; // 154
+    f32 sp114[4][4]; // 114
     u8 idx; // not on stack
     s16 sp110; // 110
     s16 i; // Not on stack
@@ -87,12 +83,13 @@ Gfx *func_global_asm_80697230(Gfx *dl, Actor *arg1) {
 
             temp = i * sp110;
             
-            switch (AAD->unk11) {
+            switch (AAD->unk11) { 
             case 0:
-                spD4 = 1.0f;
-                spDC = 0.0f;
                 spE0 = func_global_asm_80612794(temp) * AAD->unk8;
                 spD8 = func_global_asm_80612790(temp) * AAD->unk8;
+                spD4 = 1.0f;
+                spDC = 0.0f;
+
                 break;
             case 1:
                 temp_f0_2 = (MIN(1.0, (arg1->unkEE - arg1->unk15F) * 0.05) * 0.028999999999999998) + 0.001;
@@ -119,8 +116,6 @@ Gfx *func_global_asm_80697230(Gfx *dl, Actor *arg1) {
     }
     return dl;
 }
-*/
-
 
 void func_global_asm_806978FC(void) {
     s16 phi_s0;
