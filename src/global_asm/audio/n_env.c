@@ -218,11 +218,6 @@ Acmd *func_global_asm_8073F328(CustomPVoice *arg0, s16 *arg1, s32 arg2, s32 arg3
     // unsure on arg2
     Acmd *sp34;
     CustomPVoice *sp30;
-    Acmd *sp2C;
-    Acmd *sp28;
-    Acmd *sp24;
-    Acmd *sp20;
-    Acmd *sp1C;
 
     sp34 = arg4;
     sp30 = arg0;
@@ -236,23 +231,13 @@ Acmd *func_global_asm_8073F328(CustomPVoice *arg0, s16 *arg1, s32 arg2, s32 arg3
         sp30->unk66 = func_global_asm_8073F60C(sp30->resampler.unk30, sp30->unk68, sp30->unk74, &sp30->unk64);
         sp30->unk6E = ((s32) (D_global_asm_80756490[0x7F - sp30->resampler.unk2C] * sp30->resampler.unk2E) >> 0xF);
         sp30->unk6C = func_global_asm_8073F60C(sp30->resampler.unk32, sp30->unk6E, sp30->unk74, &sp30->unk6A);
-        sp2C = sp34++;
-        sp2C->words.w0 = ((sp30->resampler.unk30 & 0xFFFF) | 0x09060000);
-        sp2C->words.w1 = (((sp30->unk60 & 0xFFFF) << 0x10) | (sp30->unk62 & 0xFFFF));
-        sp28 = sp34++;
-        sp28->words.w0 = ((sp30->unk6E & 0xFFFF) | 0x09040000);
-        sp28->words.w1 = (((sp30->unk6C & 0xFFFF) << 0x10) | (sp30->unk6A & 0xFFFF));
-        sp24 = sp34++;
-        sp24->words.w0 = ((sp30->unk68 & 0xFFFF) | 0x09000000);
-        sp24->words.w1 = (((sp30->unk66 & 0xFFFF) << 0x10) | (sp30->unk64 & 0xFFFF));
-        sp20 = sp34++;
-        sp20->words.w0 = ((sp30->resampler.unk32 & 0xFFFF) | 0x03010000);
-        sp20->words.w1 = osVirtualToPhysical(sp30->resampler.unk28);
+        n_aSetVolume(sp34++, A_LEFT | A_VOL, sp30->resampler.unk30, sp30->unk60, sp30->unk62);\
+        n_aSetVolume(sp34++, A_RIGHT | A_VOL, sp30->unk6E, sp30->unk6C, sp30->unk6A);\
+        n_aSetVolume(sp34++, A_RATE, sp30->unk68, sp30->unk66, sp30->unk64);\
+        n_aEnvMixer(sp34++, A_INIT | A_NOAUX, sp30->resampler.unk32, osVirtualToPhysical(sp30->resampler.unk28));
         ; // Yes this is necessary and does change compilation
     } else {
-        sp1C = sp34++;
-        sp1C->words.w0 = 0x03000000;
-        sp1C->words.w1 = osVirtualToPhysical(sp30->resampler.unk28);
+        n_aEnvMixer(sp34++, A_CONTINUE | A_NOAUX, 0, osVirtualToPhysical(sp30->resampler.unk28));
     }
     *arg1 += 0x170;
     sp30->unk70++;
@@ -294,21 +279,21 @@ s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
     return spE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/env/func_global_asm_8073F81C.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/n_env/func_global_asm_8073F81C.s")
 
 /*
-// __n_getVol?
-// TODO: Something wrong with the shifts
-s16 func_global_asm_8073F81C(s16 arg0, s32 arg1, s16 arg2, u16 arg3) {
-    s32 sp4;
+// __n_getVol
+s16 func_global_asm_8073F81C(s16 ivol, s32 samples, s16 ratem, u16 ratel) {
+    s32 m;
 
-    arg1 = arg1 >> 3;
-    if (arg1 == 0) {
-        return arg0;
+    samples >>= 3;
+    if (samples == 0) {
+        return (s16)ivol;
     }
-    sp4 = arg3 * arg1;
-    sp4 = sp4 >> 0x10;
-    sp4 += arg2 * arg1;
-    return arg0 + sp4;
+    m = ((ratel * samples));
+    m >>= 0x10;
+    m += (ratem * samples);
+    ivol += m;
+    return ivol;
 }
 */
