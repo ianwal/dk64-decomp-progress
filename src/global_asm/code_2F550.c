@@ -1070,12 +1070,11 @@ void func_global_asm_8062D1A8(void) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062D1E0.s")
-
-/*
 void func_global_asm_8062D1E0(Struct8062D1E0_arg0 *arg0, Struct8062D1E0_arg1 *arg1) {
-    while (arg0) {
+    do {
+        if (!arg0) {
+            break;
+        }
         switch (arg0->unkB8) {
             default:
                 return;
@@ -1091,9 +1090,8 @@ void func_global_asm_8062D1E0(Struct8062D1E0_arg0 *arg0, Struct8062D1E0_arg1 *ar
                 arg1 = arg1->unk10;
                 break;
         }
-    }
+    } while (TRUE);
 }
-*/
 
 // TODO: Any cleanup possible for this?
 void func_global_asm_8062D26C(Actor *arg0) {
