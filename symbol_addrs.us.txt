@@ -1146,6 +1146,7 @@ D_minecart_80028C30 = 0x80028C30; // segment:minecart
 D_bonus_8002DDD4 = 0x8002DDD4; // segment:bonus
 D_bonus_8002DEF0 = 0x8002DEF0; // segment:bonus
 
+D_boss_80035AD0 = 0x80035AD0; // segment:boss
 D_boss_80036DC4 = 0x80036DC4; // segment:boss
 
 D_critter_80029FA0 = 0x80029FA0; // segment:critter

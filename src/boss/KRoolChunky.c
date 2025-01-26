@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-// rodata
+// .rodata
 const s32 D_boss_80036A90[] = {
     0x00546C5F,
     0x005103E4,
@@ -14,6 +14,30 @@ const s32 D_boss_80036A90[] = {
 const s32 D_boss_80036AA8[] = {
     0x284F4B00,
     0x06275000,
+};
+
+// .data
+void *D_boss_80035AC0[4] = {
+    D_boss_80036A90,
+    D_boss_80036AA8,
+    D_boss_80036AA8,
+    D_boss_80036AA8,
+};
+
+u8 D_boss_80035AD0[4] = {0x03,0x00,0x02,0x01};
+
+f32 D_boss_80035AD4[4] = {
+    0.015f,
+    0.025f,
+    0.03f,
+    0.01f,
+};
+
+f32 D_boss_80035AE4[4] = {
+    1.0f,
+    1.3f,
+    1.8f,
+    0.7f,
 };
 
 void func_boss_80030920(KRoolChunkyAAD178 *arg0) {
@@ -84,10 +108,6 @@ void func_boss_80030E58(void) {
 u8 func_boss_80027BA8(u8 *, u16, f32);
 void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 s32 func_global_asm_8072881C(s32, s32 *);
-extern u8 *D_boss_80035AC0[];
-extern u8 D_boss_80035ACF[]; // TODO: Shift this to D0 rather than CF
-extern f32 D_boss_80035AD4[];
-extern f32 D_boss_80035AE4[];
 extern u8 D_global_asm_807FBD70;
 
 void func_boss_80030EC4(void) {
@@ -241,7 +261,7 @@ void func_boss_80030EC4(void) {
         switch (current_actor_pointer->control_state_progress) {
         case 0:
             func_global_asm_8072CFE8(&x, &y, &z);
-            func_global_asm_806A1008(D_boss_80035ACF[D_global_asm_807FDC98->unk20[D_global_asm_807FDC90->unk25 & 0x7F].unk0], 1U);
+            func_global_asm_806A1008(D_boss_80035AD0[D_global_asm_807FDC98->unk20[D_global_asm_807FDC90->unk25 & 0x7F].unk0 - 1], 1U);
             current_actor_pointer->unkEC = func_global_asm_80665DE0(x, z, current_actor_pointer->x_position, current_actor_pointer->z_position);
             if (func_global_asm_806CC10C(current_actor_pointer->y_rotation, current_actor_pointer->unkEC) < 0) {
                 playActorAnimation(current_actor_pointer, 0x401);

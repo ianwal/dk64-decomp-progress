@@ -2,6 +2,8 @@
 #include "functions.h"
 #include "sprites.h"
 
+extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
+
 typedef struct BossStruct2 {
     f32 unk0;
     f32 unk4;
@@ -44,13 +46,54 @@ typedef struct {
     s16 unk10;
 } A17C_80028878;
 
-extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
+// .data
+u16 D_boss_800359A0[] = {
+    0x0004,
+    0x0003,
+    0x0006,
+    0x0014,
+    0x0004,
+    0x0000,
+};
 
-extern BossStruct1 D_boss_800359D0[];
-extern s16 D_boss_800359A0[];
-extern s16 D_boss_800359AC[];
-extern s16 D_boss_800359B8[];
-extern s16 D_boss_800359C4[];
+u16 D_boss_800359AC[] = {
+    0x002D,
+    0x002D,
+    0x002D,
+    0x002D,
+    0x002D,
+    0x0000,
+};
+
+u16 D_boss_800359B8[] = {
+    0x0004,
+    0x0003,
+    0x0006,
+    0x0003,
+    0x0004,
+    0x0000,
+};
+
+u16 D_boss_800359C4[] = {
+    0x000B,
+    0x000B,
+    0x000B,
+    0x000B,
+    0x000B,
+    0x0000,
+};
+
+BossStruct1 D_boss_800359D0[8] = {
+    // map                      flag
+    { MAP_JAPES_ARMY_DILLO,   0, 0x0068, 0x00, 0x14 },
+    { MAP_FUNGI_DOGADON,      0, 0x0069, 0x00, 0x14 },
+    { MAP_GALLEON_PUFFTOSS,   0, 0x006B, 0x00, 0x14 },
+    { MAP_FACTORY_MAD_JACK,   0, 0x006A, 0x00, 0x14 },
+    { MAP_CAVES_ARMY_DILLO,   0, 0x006D, 0x0B, 0x00 },
+    { MAP_AZTEC_DOGADON,      0, 0x0067, 0x0B, 0x14 },
+    { MAP_CASTLE_KING_KUT_OUT,0, 0x006C, 0x03, 0x01 },
+    { MAP_TEST_MAP,           0, 0x0000, 0x00, 0x00 }, // TODO: Padding?
+};
 
 extern SpriteData D_global_asm_8071FE08; // TODO: Sprite
 extern u8 D_global_asm_80750AD4;

@@ -3,7 +3,7 @@
 
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
 
-//rodata
+//. rodata
 const s32 D_boss_80036750[] = {
     0x00546C51,
     0x03E44100,
@@ -31,6 +31,16 @@ const s32 D_boss_80036780[] = {
     0x50000000,
     0x00000000,
 };
+
+// .data
+void *D_boss_80035A60[4] = {
+    D_boss_80036750,
+    D_boss_80036768,
+    D_boss_80036774,
+    D_boss_80036780,
+};
+
+u8 D_boss_80035A70[] = {0xA, 0xB, 0xC, 0xD, 0xE, 0xF};
 
 extern u8 D_global_asm_807FBD70;
 
@@ -73,7 +83,6 @@ void func_boss_8002DD7C(void) {
 u8 func_boss_80027BA8(u8 *, u16, f32);
 s32 func_global_asm_8072881C(s32, s32 *);
 void func_global_asm_8072A450(void);
-extern u8 *D_boss_80035A60[];
 
 typedef struct KRoolDiddyAAD178 {
     Actor *unk0;
