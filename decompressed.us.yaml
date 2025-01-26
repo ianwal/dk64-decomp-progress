@@ -363,7 +363,7 @@ segments:
       - [0x2140530, c, audio/done/synsetvol]
       - [0x2140600, c, audio/done/code_140600]
       - [0x2141520, c, audio/done/code_141520]
-      - [0x21417C0, c, audio/synallocvoice]
+      - [0x21417C0, c, audio/done/n_synallocvoice]
       - [0x2141AD0, c, audio/done/synstartvoiceparam]
       - [0x2141C00, c, audio/done/code_141C00]
       - [0x2141E40, c, audio/done/n_syndelete]

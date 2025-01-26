@@ -2504,7 +2504,7 @@ us,asm,playAnimation,68,yes
 us,asm,func_global_asm_8072FDD4,140,yes
 us,asm,func_global_asm_80724A9C,192,yes
 us,asm,alHeapDBAlloc,132,yes
-us,asm,func_global_asm_8073CAC0,468,no
+us,asm,func_global_asm_8073CAC0,468,yes
 us,asm,func_global_asm_80615B34,80,yes
 us,asm,func_global_asm_806FDF1C,56,yes
 us,asm,func_global_asm_806F14BC,428,yes
