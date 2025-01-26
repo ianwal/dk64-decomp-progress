@@ -98,10 +98,6 @@ void func_global_asm_8073BC74(Struct8073BC74 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_140600/func_global_asm_8073BDC4.s")
-
-/*
-// TODO: Something up with the shift
 f32 func_global_asm_8073BDC4(s32 arg0) {
     f32 sp4;
     f32 sp0;
@@ -123,7 +119,6 @@ f32 func_global_asm_8073BDC4(s32 arg0) {
     }
     return sp0;
 }
-*/
 
 void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1) {
     s32 sp3C;

@@ -279,9 +279,6 @@ s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
     return spE;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/n_env/func_global_asm_8073F81C.s")
-
-/*
 // __n_getVol
 s16 func_global_asm_8073F81C(s16 ivol, s32 samples, s16 ratem, u16 ratel) {
     s32 m;
@@ -296,4 +293,3 @@ s16 func_global_asm_8073F81C(s16 ivol, s32 samples, s16 ratem, u16 ratel) {
     ivol += m;
     return ivol;
 }
-*/
