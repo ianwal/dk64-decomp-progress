@@ -6,9 +6,9 @@
 
 #define RANGE 2.0f
 
-Acmd *func_global_asm_8073DF50(ALFx *r, ALDelay *d, s32 arg2, s32 buff, Acmd *p);
-Acmd *func_global_asm_8073E268(ALFx *r, s32 arg1, s16 *curr_ptr, s32 buff,s32 count, Acmd *p);
-Acmd *func_global_asm_8073E460(ALFx *r, s32 arg1, s16 *curr_ptr, s32 buff, Acmd *p);
+Acmd *_n_loadOutputBuffer(ALFx *r, ALDelay *d, s32 arg2, s32 buff, Acmd *p);
+Acmd *_n_loadBuffer(ALFx *r, s32 arg1, s16 *curr_ptr, s32 buff,s32 count, Acmd *p);
+Acmd *_n_saveBuffer(ALFx *r, s32 arg1, s16 *curr_ptr, s32 buff, Acmd *p);
 Acmd *_n_filterBuffer(ALLowPass *lp, s32 buff, s32 count, Acmd *p);
 f32 _doModFunc(ALDelay *d, s32 count);
 Acmd *func_global_asm_8073F8A0(s32 sampleOffset, Acmd *cmdptr, s32 fxBus, s32 *numpulls);
@@ -16,8 +16,7 @@ Acmd *func_global_asm_8073F8A0(s32 sampleOffset, Acmd *cmdptr, s32 fxBus, s32 *n
 extern u8 D_global_asm_807FF0F4[];
 extern u8 D_global_asm_807FF0F6[];
 
-// n_alFxPull
-Acmd *func_global_asm_8073D1F0(s32 sampleOffset, Acmd *p, s32 arg2)
+Acmd *n_alFxPull(s32 sampleOffset, Acmd *p, s32 arg2)
 {
 	Acmd *ptr = p;
 	ALFx *r = (ALFx *)n_syn->auxBus[arg2].fx;
@@ -47,10 +46,10 @@ Acmd *func_global_asm_8073D1F0(s32 sampleOffset, Acmd *p, s32 arg2)
 	}
 
 	/* and write the mixed value to the delay line at r->input */
-	ptr = func_global_asm_8073E460(r, 0, r->input[0], input, ptr);
+	ptr = _n_saveBuffer(r, 0, r->input[0], input, ptr);
 
 	if (D_global_asm_807FF0F4[arg2]) {
-		ptr = func_global_asm_8073E460(r, 1, r->input[1], 0x930, ptr);
+		ptr = _n_saveBuffer(r, 1, r->input[1], 0x930, ptr);
 	}
 
 	for (j = 0; j <= D_global_asm_807FF0F4[arg2]; j++) {
@@ -71,22 +70,22 @@ Acmd *func_global_asm_8073D1F0(s32 sampleOffset, Acmd *p, s32 arg2)
 				buff2 = buff1;
 				buff1 = t;
 			} else {  /* load data at in_ptr into buff1 */
-				ptr = func_global_asm_8073E268(r, j, in_ptr, buff1, FIXED_SAMPLE, ptr);
+				ptr = _n_loadBuffer(r, j, in_ptr, buff1, FIXED_SAMPLE, ptr);
 			}
 
-			ptr = func_global_asm_8073DF50(r, d, j, buff2, ptr);
+			ptr = _n_loadOutputBuffer(r, d, j, buff2, ptr);
 
 			if (d->ffcoef) {
 				aMix(ptr++, 0, (u16)d->ffcoef, buff1, buff2);
 
 				if (!d->rs && !d->lp) {
-					ptr = func_global_asm_8073E460(r, j, out_ptr, buff2, ptr);
+					ptr = _n_saveBuffer(r, j, out_ptr, buff2, ptr);
 				}
 			}
 
 			if (d->fbcoef) {
 				aMix(ptr++, 0, (u16)d->fbcoef, buff2, buff1);
-				ptr = func_global_asm_8073E460(r, j, in_ptr, buff1, ptr);
+				ptr = _n_saveBuffer(r, j, in_ptr, buff1, ptr);
 			}
 
 			if (d->lp) {
@@ -94,7 +93,7 @@ Acmd *func_global_asm_8073D1F0(s32 sampleOffset, Acmd *p, s32 arg2)
 			}
 
 			if (!d->rs) {
-				ptr = func_global_asm_8073E460(r, j, out_ptr, buff2, ptr);
+				ptr = _n_saveBuffer(r, j, out_ptr, buff2, ptr);
 			}
 
 			if (d->gain) {
@@ -115,7 +114,7 @@ Acmd *func_global_asm_8073D1F0(s32 sampleOffset, Acmd *p, s32 arg2)
 		}
 
 		if (D_global_asm_807FF0F4[arg2] && j == 0) {
-			ptr = func_global_asm_8073E268(r, 1, r->input[1], input, FIXED_SAMPLE, ptr);
+			ptr = _n_loadBuffer(r, 1, r->input[1], input, FIXED_SAMPLE, ptr);
 
 			if (D_global_asm_807FF0F6[arg2]) {
 				aMix(ptr++, 0, 0x5a82, output, 0x650);
@@ -146,8 +145,7 @@ Acmd *func_global_asm_8073D1F0(s32 sampleOffset, Acmd *p, s32 arg2)
 	return ptr;
 }
 
-// n_alFxParamHdl
-s32 func_global_asm_8073DA30(void *filter, s32 paramID, void *param)
+s32 n_alFxParamHdl(void *filter, s32 paramID, void *param)
 {
 	ALFx *f = (ALFx *) filter;
 	s32 p = paramID & 7;
@@ -240,10 +238,9 @@ s32 func_global_asm_8073DA30(void *filter, s32 paramID, void *param)
 	return 0;
 }
 
-f32 func_global_asm_8073E73C(ALDelay *, s32);
+f32 _doModFunc(ALDelay *, s32);
 
-// _n_loadOutputBuffer
-Acmd *func_global_asm_8073DF50(ALFx *r, ALDelay *d, s32 arg2, s32 buff, Acmd *p)
+Acmd *_n_loadOutputBuffer(ALFx *r, ALDelay *d, s32 arg2, s32 buff, Acmd *p)
 {
 	Acmd *ptr = p;
 	s32 ratio, count, rbuff = N_AL_TEMP_2;
@@ -255,7 +252,7 @@ Acmd *func_global_asm_8073DF50(ALFx *r, ALDelay *d, s32 arg2, s32 buff, Acmd *p)
 
 	if (d->rs) {
 		length = d->output - d->input;
-		delta = func_global_asm_8073E73C(d, incount);
+		delta = _doModFunc(d, incount);
 		delta /= length;
 		delta = (s32)(delta * UNITY_PITCH);
 		delta = delta / UNITY_PITCH;
@@ -265,7 +262,7 @@ Acmd *func_global_asm_8073DF50(ALFx *r, ALDelay *d, s32 arg2, s32 buff, Acmd *p)
 		d->rs->delta = fincount - (f32)count;
 		out_ptr = &r->input[arg2][(s32)-(d->output - d->rsdelta)];
 		ramalign = ((s32)out_ptr & 0x7) >> 1;
-		ptr = func_global_asm_8073E268(r, arg2, out_ptr - ramalign, rbuff, count + ramalign, ptr);
+		ptr = _n_loadBuffer(r, arg2, out_ptr - ramalign, rbuff, count + ramalign, ptr);
 
 		ratio = (s32)(fratio * UNITY_PITCH);
 
@@ -276,14 +273,13 @@ Acmd *func_global_asm_8073DF50(ALFx *r, ALDelay *d, s32 arg2, s32 buff, Acmd *p)
 		d->rsdelta += count - incount;
 	} else {
 		out_ptr = &r->input[arg2][(s32)-d->output];
-		ptr = func_global_asm_8073E268(r, arg2, out_ptr, buff, FIXED_SAMPLE, ptr);
+		ptr = _n_loadBuffer(r, arg2, out_ptr, buff, FIXED_SAMPLE, ptr);
 	}
 
 	return ptr;
 }
 
-// _n_loadBuffer
-Acmd *func_global_asm_8073E268(ALFx *r, s32 arg1, s16 *curr_ptr, s32 buff,s32 count, Acmd *p)
+Acmd *_n_loadBuffer(ALFx *r, s32 arg1, s16 *curr_ptr, s32 buff,s32 count, Acmd *p)
 {
 	Acmd *ptr = p;
 	s32 after_end, before_end;
@@ -310,7 +306,7 @@ Acmd *func_global_asm_8073E268(ALFx *r, s32 arg1, s16 *curr_ptr, s32 buff,s32 co
 	return ptr;
 }
 
-Acmd *func_global_asm_8073E460(ALFx *arg0, s32 arg1, s16 *arg2, s32 arg3, Acmd *arg4) {
+Acmd *_n_saveBuffer(ALFx *arg0, s32 arg1, s16 *arg2, s32 arg3, Acmd *arg4) {
     Acmd *sp34;
     s32 sp30;
     s32 sp2C;
@@ -356,8 +352,7 @@ Acmd *_n_filterBuffer(ALLowPass *lp, s32 buff, s32 count, Acmd *p)
 	return ptr;
 }
 
-// _doModFunc
-f32 func_global_asm_8073E73C(ALDelay *arg0, s32 arg1) {
+f32 _doModFunc(ALDelay *arg0, s32 arg1) {
     f32 sp4;
 
     arg0->rsval += (arg0->rsinc * (f32) arg1);
@@ -371,6 +366,8 @@ f32 func_global_asm_8073E73C(ALDelay *arg0, s32 arg1) {
     sp4 -= RANGE/2;
     return arg0->rsgain * sp4;
 }
+
+// FILE SPLIT NEEDS TO OCCUR HERE
 
 Acmd *func_global_asm_8073FD90(s32, Acmd *);
 

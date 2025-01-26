@@ -18,12 +18,12 @@ void func_global_asm_8073C820(ALVoice *arg0, u8 arg1) {
     }
 }
 
-extern s32 func_global_asm_8073D1F0(s32, Acmd *, s32);  // Unsure of this sig, used for an & ref, so not important if changed
+extern s32 n_alFxPull(s32, Acmd *, s32);  // Unsure of this sig, used for an & ref, so not important if changed
 s32 func_global_asm_8073C8D0(s16 arg0) {
     N_ALMAinBus *sp4;
 
     sp4 = n_syn->mainBus;
-    if ((s32)(sp4->handler) == (s32)&func_global_asm_8073D1F0) {
+    if ((s32)(sp4->handler) == (s32)&n_alFxPull) {
         return ((Struct8073BC74_auxbus *)n_syn->auxBus)[arg0].unk20;
     } else {
         return 0;
@@ -34,20 +34,20 @@ s32 func_global_asm_8073C948(s16 arg0) {
     N_ALMAinBus *sp4;
 
     sp4 = n_syn->mainBus;
-    if ((s32)(sp4->handler) == (s32)&func_global_asm_8073D1F0) {
+    if ((s32)(sp4->handler) == (s32)&n_alFxPull) {
         return ((Struct8073BC74_auxbus *)n_syn->auxBus)[arg0].unk44;
     } else {
         return 0;
     }
 }
 
-s32 func_global_asm_8073DA30(s32, s16, s32);
+s32 n_alFxParamHdl(s32, s16, s32);
 
 void func_global_asm_8073C9C0(s32 arg0, s16 arg1, s32 arg2) {
     s32 sp1C;
 
     sp1C = arg0;
-    func_global_asm_8073DA30(sp1C, arg1, arg2);
+    n_alFxParamHdl(sp1C, arg1, arg2);
 }
 
 typedef struct {

@@ -197,6 +197,7 @@ us,asm,func_global_asm_8067889C,328,no
 us,asm,func_global_asm_806761EC,28,yes
 us,asm,func_global_asm_8066F274,396,yes
 us,asm,func_global_asm_80679DC4,728,yes
+us,asm,_n_saveBuffer,476,yes
 us,asm,func_global_asm_806C5FEC,476,yes
 us,asm,func_global_asm_8071F078,344,yes
 us,asm,func_global_asm_80616964,92,yes
@@ -205,7 +206,6 @@ us,asm,func_global_asm_80639C04,204,no
 us,asm,func_global_asm_80616518,124,yes
 us,asm,func_global_asm_80664D20,1088,yes
 us,asm,func_global_asm_80642748,252,yes
-us,asm,func_global_asm_8073A070,192,yes
 us,asm,func_global_asm_8071498C,12,yes
 us,asm,func_global_asm_8063DB0C,48,yes
 us,asm,func_global_asm_80672630,80,yes
@@ -424,7 +424,6 @@ us,asm,func_global_asm_80670548,1812,no
 us,asm,func_global_asm_8065BF18,808,no
 us,asm,func_global_asm_80651708,508,no
 us,asm,func_global_asm_806256D0,708,no
-us,asm,func_global_asm_8073AB00,592,yes
 us,asm,func_global_asm_8072F4A8,244,yes
 us,asm,func_global_asm_80678E14,88,yes
 us,asm,func_global_asm_806167EC,100,yes
@@ -499,6 +498,7 @@ us,asm,func_global_asm_8060A670,48,yes
 us,asm,func_global_asm_8065D964,48,yes
 us,asm,func_global_asm_8064C250,408,yes
 us,asm,func_global_asm_806ECE2C,240,yes
+us,asm,__n_lookupSoundQuick,376,yes
 us,asm,func_global_asm_8064F404,64,yes
 us,asm,func_global_asm_806921DC,804,yes
 us,asm,func_global_asm_8068B830,116,yes
@@ -614,6 +614,7 @@ us,asm,func_global_asm_805FBC5C,424,yes
 us,asm,func_global_asm_80663DA0,556,yes
 us,asm,func_global_asm_806CBE90,636,yes
 us,asm,func_global_asm_806D0150,92,yes
+us,asm,__n_vsVol,296,yes
 us,asm,func_global_asm_8071BE04,512,yes
 us,asm,func_global_asm_806EA8A0,92,yes
 us,asm,func_global_asm_80617770,508,no
@@ -690,10 +691,8 @@ us,asm,countSetFlags,116,yes
 us,asm,func_global_asm_8061DAAC,184,yes
 us,asm,n_alCSeqNextEvent,380,yes
 us,asm,func_global_asm_806F1768,240,yes
-us,asm,func_global_asm_8073D1F0,2112,yes
 us,asm,func_global_asm_8071A038,428,yes
 us,asm,func_global_asm_8067A69C,112,yes
-us,asm,func_global_asm_8073A2A4,288,yes
 us,asm,func_global_asm_806F5D80,120,yes
 us,asm,func_global_asm_8064A180,20,yes
 us,asm,func_global_asm_806BDD90,312,yes
@@ -793,10 +792,8 @@ us,asm,func_global_asm_806E31FC,272,yes
 us,asm,func_global_asm_8064BBD8,216,yes
 us,asm,func_global_asm_806B8878,32,yes
 us,asm,func_global_asm_8072D99C,56,yes
-us,asm,func_global_asm_8073E460,476,yes
 us,asm,func_global_asm_8060B49C,56,yes
 us,asm,func_global_asm_806DC3A4,108,yes
-us,asm,func_global_asm_8073A900,140,yes
 us,asm,func_global_asm_80727F20,228,yes
 us,asm,func_global_asm_80659470,88,yes
 us,asm,func_global_asm_806C7B34,28,yes
@@ -871,6 +868,7 @@ us,asm,func_global_asm_8068A858,904,yes
 us,asm,func_global_asm_8069E4E0,216,yes
 us,asm,func_global_asm_80713088,76,yes
 us,asm,func_global_asm_80719EF4,324,yes
+us,asm,__n_mapVoice,196,yes
 us,asm,func_global_asm_8069D018,64,yes
 us,asm,func_global_asm_8070CC1C,56,yes
 us,asm,func_global_asm_80712628,12,yes
@@ -927,7 +925,6 @@ us,asm,gameIsInQuitGameMode,84,yes
 us,asm,func_global_asm_80635EF0,292,yes
 us,asm,func_global_asm_806B1F50,1384,yes
 us,asm,func_global_asm_80653DF0,184,no
-us,asm,func_global_asm_8073AD50,828,yes
 us,asm,func_global_asm_8061D058,8,yes
 us,asm,func_global_asm_8071586C,84,yes
 us,asm,func_global_asm_8060E1A8,180,yes
@@ -947,6 +944,7 @@ us,asm,func_global_asm_806C2A64,200,yes
 us,asm,func_global_asm_806D2CAC,140,yes
 us,asm,func_global_asm_8061EF4C,356,yes
 us,asm,func_global_asm_80727194,96,yes
+us,asm,__n_seqpReleaseVoice,372,yes
 us,asm,func_global_asm_806A7600,1284,yes
 us,asm,func_global_asm_80732064,56,no
 us,asm,func_global_asm_80737E90,20,yes
@@ -1009,6 +1007,7 @@ us,asm,func_global_asm_806358E8,1544,no
 us,asm,func_global_asm_807189BC,568,yes
 us,asm,func_global_asm_8066EBF4,120,yes
 us,asm,func_global_asm_8061670C,100,yes
+us,asm,__n_vsDelta,68,yes
 us,asm,func_global_asm_8063B758,384,no
 us,asm,func_global_asm_806C75A4,1372,no
 us,asm,func_global_asm_80600B10,172,yes
@@ -1043,7 +1042,6 @@ us,asm,func_global_asm_805FCFD8,88,yes
 us,asm,func_global_asm_806276AC,144,yes
 us,asm,func_global_asm_806C7210,8,yes
 us,asm,func_global_asm_80632860,1456,no
-us,asm,func_global_asm_8073A98C,232,yes
 us,asm,func_global_asm_8060BF84,832,yes
 us,asm,func_global_asm_806672B8,1444,no
 us,asm,playerCanThrowOrange,292,yes
@@ -1052,7 +1050,6 @@ us,asm,func_global_asm_806EB544,132,yes
 us,asm,func_global_asm_8071F8E4,400,yes
 us,asm,func_global_asm_8071A1E4,604,no
 us,asm,func_global_asm_8070CC54,56,yes
-us,asm,func_global_asm_8073DA30,1312,yes
 us,asm,func_global_asm_80690C60,720,no
 us,asm,func_global_asm_80612BC0,112,yes
 us,asm,func_global_asm_80737990,188,yes
@@ -1220,7 +1217,6 @@ us,asm,func_global_asm_8073E800,148,yes
 us,asm,func_global_asm_806019B8,76,yes
 us,asm,func_global_asm_80620B38,968,no
 us,asm,isIntroStoryPlaying,12,yes
-us,asm,func_global_asm_8073A130,372,yes
 us,asm,func_global_asm_806CF2EC,172,yes
 us,asm,func_global_asm_806A610C,40,yes
 us,asm,func_global_asm_80612C30,112,yes
@@ -1354,6 +1350,7 @@ us,asm,getSpawnerTiedActor,212,yes
 us,asm,func_global_asm_8070CA2C,68,yes
 us,asm,func_global_asm_806871DC,548,yes
 us,asm,func_global_asm_806D37CC,224,yes
+us,asm,_n_loadOutputBuffer,792,yes
 us,asm,func_global_asm_8066ACA4,252,no
 us,asm,func_global_asm_8072C870,168,yes
 us,asm,func_global_asm_806787EC,8,yes
@@ -1595,6 +1592,7 @@ us,asm,func_global_asm_80687474,120,yes
 us,asm,func_global_asm_806E2140,284,yes
 us,asm,func_global_asm_8068581C,112,yes
 us,asm,func_global_asm_806CC948,40,yes
+us,asm,__n_initChanState,140,yes
 us,asm,func_global_asm_8064C708,268,yes
 us,asm,func_global_asm_806C92C4,64,yes
 us,asm,func_global_asm_8061885C,36,yes
@@ -1688,7 +1686,6 @@ us,asm,func_global_asm_806725E4,76,yes
 us,asm,func_global_asm_80692520,32,yes
 us,asm,func_global_asm_8060E4B0,32,yes
 us,asm,func_global_asm_806C7B50,92,yes
-us,asm,func_global_asm_8073E73C,196,yes
 us,asm,func_global_asm_8073BB10,356,yes
 us,asm,func_global_asm_8060EE60,880,no
 us,asm,func_global_asm_806EE5A4,144,yes
@@ -1862,7 +1859,7 @@ us,asm,func_global_asm_8068A24C,88,yes
 us,asm,func_global_asm_806119A0,80,yes
 us,asm,func_global_asm_806E6FF0,96,yes
 us,asm,func_global_asm_80684D98,648,yes
-us,asm,func_global_asm_8073A3C4,196,yes
+us,asm,n_alFxParamHdl,1312,yes
 us,asm,func_global_asm_806ECA74,80,yes
 us,asm,func_global_asm_806F2754,748,no
 us,asm,func_global_asm_806DDAB0,1972,no
@@ -1971,6 +1968,7 @@ us,asm,func_global_asm_8062CA0C,100,yes
 us,asm,func_global_asm_806F8004,364,yes
 us,asm,func_global_asm_80688FC0,164,no
 us,asm,func_global_asm_8061892C,60,yes
+us,asm,__n_vsPan,140,yes
 us,asm,func_global_asm_8065F1C0,732,no
 us,asm,func_global_asm_806A5EAC,152,yes
 us,asm,func_global_asm_80673FDC,164,no
@@ -2033,7 +2031,7 @@ us,asm,func_global_asm_8061C2C4,20,yes
 us,asm,func_global_asm_8073BA60,176,yes
 us,asm,func_global_asm_8071BC80,388,yes
 us,asm,func_global_asm_80664CB0,112,yes
-us,asm,func_global_asm_8073B08C,316,yes
+us,asm,__n_unmapVoice,192,yes
 us,asm,func_global_asm_806C151C,204,yes
 us,asm,func_global_asm_806D28E4,32,yes
 us,asm,func_global_asm_806B1DD4,212,yes
@@ -2209,6 +2207,7 @@ us,asm,func_global_asm_806C71F8,8,yes
 us,asm,func_global_asm_806264DC,1772,no
 us,asm,func_global_asm_806A7B4C,36,yes
 us,asm,func_global_asm_80724C78,44,yes
+us,asm,__n_seqpStopOsc,316,yes
 us,asm,func_global_asm_8066B424,16,yes
 us,asm,func_global_asm_80733180,2312,no
 us,asm,func_global_asm_806FF144,488,yes
@@ -2395,7 +2394,6 @@ us,asm,func_global_asm_8061C458,12,yes
 us,asm,func_global_asm_806944BC,1164,yes
 us,asm,func_global_asm_806F5CE4,156,yes
 us,asm,func_global_asm_8060A398,312,no
-us,asm,func_global_asm_8073A488,144,yes
 us,asm,func_global_asm_8069A750,120,no
 us,asm,func_global_asm_806BA8C8,116,yes
 us,asm,func_global_asm_80712798,28,yes
@@ -2423,7 +2421,6 @@ us,asm,func_global_asm_8062BF24,668,no
 us,asm,func_global_asm_806ECBD4,116,yes
 us,asm,func_global_asm_8060EDD0,136,yes
 us,asm,func_global_asm_80665F24,144,no
-us,asm,func_global_asm_8073E268,504,yes
 us,asm,func_global_asm_80672CBC,424,yes
 us,asm,__n_allocParam,96,yes
 us,asm,func_global_asm_806261EC,120,yes
@@ -2486,7 +2483,6 @@ us,asm,func_global_asm_8062B660,480,no
 us,asm,func_global_asm_806CA26C,64,yes
 us,asm,func_global_asm_80659544,48,yes
 us,asm,func_global_asm_80617140,248,yes
-us,asm,func_global_asm_8073DF50,792,yes
 us,asm,func_global_asm_80708574,88,yes
 us,asm,func_global_asm_806DE930,196,yes
 us,asm,func_global_asm_80634FA0,120,yes
@@ -2621,9 +2617,11 @@ us,asm,func_global_asm_80672134,500,yes
 us,asm,func_global_asm_806EFC38,280,yes
 us,asm,func_global_asm_807255A8,1424,no
 us,asm,func_global_asm_80636164,172,yes
+us,asm,__n_voiceNeedsNoteKill,288,yes
 us,asm,func_global_asm_8068FF40,280,yes
 us,asm,func_global_asm_80641F68,8,yes
 us,asm,func_global_asm_806E9580,644,yes
+us,asm,__n_setInstChanState,828,yes
 us,asm,func_global_asm_805FEE84,52,yes
 us,asm,func_global_asm_8066AC10,148,no
 us,asm,func_global_asm_8068A810,32,yes
@@ -2695,7 +2693,6 @@ us,asm,func_global_asm_806E7780,312,yes
 us,asm,func_global_asm_80737E50,64,yes
 us,asm,func_global_asm_806450C0,376,yes
 us,asm,func_global_asm_806F9518,176,no
-us,asm,func_global_asm_8073AA74,140,yes
 us,asm,func_global_asm_806FD894,64,yes
 us,asm,func_global_asm_80613194,64,yes
 us,asm,func_global_asm_805FB300,708,no
@@ -2741,6 +2738,7 @@ us,asm,func_global_asm_806D45A4,436,yes
 us,asm,func_global_asm_8073B560,112,yes
 us,asm,func_global_asm_807130D4,148,yes
 us,asm,func_global_asm_8067C2B8,964,yes
+us,asm,__n_initFromBank,232,yes
 us,asm,func_global_asm_806B02EC,104,yes
 us,asm,func_global_asm_8064F97C,256,no
 us,asm,initializeCharacterSpawnerActor,876,no
@@ -2952,6 +2950,7 @@ us,asm,func_global_asm_80672F94,272,no
 us,asm,func_global_asm_80652A08,252,yes
 us,asm,func_global_asm_806F966C,96,yes
 us,asm,func_global_asm_80723C98,52,yes
+us,asm,_doModFunc,196,yes
 us,asm,func_global_asm_80676C64,76,yes
 us,asm,func_global_asm_80705C00,860,yes
 us,asm,func_global_asm_8063D9D0,112,yes
@@ -3059,7 +3058,6 @@ us,asm,func_global_asm_80666AA0,12,yes
 us,asm,func_global_asm_80703AB0,584,no
 us,asm,func_global_asm_806EA600,40,yes
 us,asm,func_global_asm_806E0694,84,yes
-us,asm,func_global_asm_8073A690,296,yes
 us,asm,func_global_asm_806970CC,184,yes
 us,asm,func_global_asm_806F1380,72,yes
 us,asm,func_global_asm_8064B370,136,yes
@@ -3109,6 +3107,7 @@ us,asm,func_global_asm_80669A6C,380,yes
 us,asm,func_global_asm_8069084C,228,yes
 us,asm,func_global_asm_80715270,1532,no
 us,asm,alEvtqPostEvent,384,yes
+us,asm,n_alFxPull,2112,yes
 us,asm,func_global_asm_80619500,32,yes
 us,asm,func_global_asm_80634768,332,yes
 us,asm,func_global_asm_805FFEF8,208,yes
@@ -3252,6 +3251,7 @@ us,asm,func_global_asm_8064C644,196,yes
 us,asm,func_global_asm_806F1A18,200,yes
 us,asm,func_global_asm_80653A70,256,yes
 us,asm,func_global_asm_8071006C,264,yes
+us,asm,_n_loadBuffer,504,yes
 us,asm,func_global_asm_806785D4,504,yes
 us,asm,func_global_asm_806D9FD0,848,yes
 us,asm,func_global_asm_80685D84,244,yes
@@ -3325,6 +3325,7 @@ us,asm,alEvtqNextEvent,164,yes
 us,asm,func_global_asm_80683A80,88,no
 us,asm,func_global_asm_80717404,860,no
 us,asm,func_global_asm_8066AEE4,92,yes
+us,asm,__n_resetPerfChanState,592,yes
 us,asm,func_global_asm_8060E574,240,yes
 us,asm,func_global_asm_80634EDC,56,yes
 us,asm,alEvtqNew,156,yes
@@ -3344,7 +3345,6 @@ us,asm,func_global_asm_8066A584,200,yes
 us,asm,func_global_asm_8067641C,188,yes
 us,asm,func_global_asm_80676730,44,yes
 us,asm,setIntroStoryPlaying,16,yes
-us,asm,func_global_asm_8073A8BC,68,yes
 us,asm,alSeqFileNew,100,yes
 us,asm,func_global_asm_8061B7E0,96,yes
 us,asm,func_global_asm_80612910,96,no
@@ -3458,6 +3458,7 @@ us,asm,func_global_asm_8061B4B0,52,yes
 us,asm,func_global_asm_8062A24C,40,yes
 us,asm,func_global_asm_806891D8,120,yes
 us,asm,func_global_asm_80677CAC,172,yes
+us,asm,__n_lookupVoice,144,yes
 us,asm,func_global_asm_8068839C,44,yes
 us,asm,func_global_asm_806DE9F4,176,yes
 us,asm,func_global_asm_80699914,68,yes
@@ -3515,7 +3516,6 @@ us,asm,func_global_asm_8060128C,72,yes
 us,asm,func_global_asm_80721814,2668,no
 us,asm,func_global_asm_806B486C,76,yes
 us,asm,func_global_asm_806252CC,84,yes
-us,asm,func_global_asm_8073A518,376,yes
 us,asm,func_global_asm_806C71E8,8,yes
 us,asm,func_global_asm_8060C724,52,yes
 us,asm,func_global_asm_80685984,448,yes

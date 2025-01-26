@@ -3,7 +3,7 @@
 #include "n_synthInternals.h"
 
 ALFxRef func_global_asm_8073D160( s16 bus,ALSynConfig *c, ALHeap *hp);
-Acmd *func_global_asm_8073D1F0( s32 sampleOffset, Acmd *p, s32 arg2);
+Acmd *n_alFxPull( s32 sampleOffset, Acmd *p, s32 arg2);
 void alN_PVoiceNew(N_PVoice *mv, ALDMANew dmaNew, ALHeap *hp);
 
 typedef struct ParamStruct {
@@ -67,7 +67,7 @@ void n_alSynNew(ALSynConfig *c) {
 	n_syn->mainBus = (N_ALMainBus *)alHeapAlloc(hp, 1, sizeof(N_ALMainBus));
 
 	/******* fx new *******************************/
-	n_syn->mainBus->filter.handler = (N_ALCmdHandler)func_global_asm_8073D1F0;
+	n_syn->mainBus->filter.handler = (N_ALCmdHandler)n_alFxPull;
 
 	n_syn->pFreeList.next = 0;
 	n_syn->pFreeList.prev = 0;

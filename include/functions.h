@@ -3951,21 +3951,21 @@ void alSepqSetVol(ALSeqPlayer *seqp, s16 vol);
 
 // global_asm/audio/code_13ECE0.c
 // TODO: func_global_asm_80739FE0 has no documented signature
-// TODO: func_global_asm_8073A070 has no documented signature
-// TODO: func_global_asm_8073A130 has no documented signature
-// TODO: func_global_asm_8073A2A4 has no documented signature
-// TODO: func_global_asm_8073A3C4 has no documented signature
-// TODO: func_global_asm_8073A488 has no documented signature
-// TODO: func_global_asm_8073A518 has no documented signature
-// TODO: func_global_asm_8073A690 has no documented signature but has been matched
+// TODO: __n_unmapVoice has no documented signature
+// TODO: __n_seqpReleaseVoice has no documented signature
+// TODO: __n_voiceNeedsNoteKill has no documented signature
+// TODO: __n_mapVoice has no documented signature
+// TODO: __n_lookupVoice has no documented signature
+// TODO: __n_lookupSoundQuick has no documented signature
+// TODO: __n_vsVol has no documented signature but has been matched
 // TODO: func_global_asm_8073A7B8 has no documented signature
-// TODO: func_global_asm_8073A8BC has no documented signature but has been matched
-// TODO: func_global_asm_8073A900 has no documented signature but has been matched
-// TODO: func_global_asm_8073A98C has no documented signature but has been matched
-// TODO: func_global_asm_8073AA74 has no documented signature but has been matched
-// TODO: func_global_asm_8073AB00 has no documented signature but has been matched
-// TODO: func_global_asm_8073AD50 has no documented signature but has been matched
-// TODO: func_global_asm_8073B08C has no documented signature
+// TODO: __n_vsDelta has no documented signature but has been matched
+// TODO: __n_vsPan has no documented signature but has been matched
+// TODO: __n_initFromBank has no documented signature but has been matched
+// TODO: __n_initChanState has no documented signature but has been matched
+// TODO: __n_resetPerfChanState has no documented signature but has been matched
+// TODO: __n_setInstChanState has no documented signature but has been matched
+// TODO: __n_seqpStopOsc has no documented signature
 
 // global_asm/audio/event.c
 void alEvtqNew(ALEventQueue *evtq, ALEventListItem *items, s32 itemCount);
@@ -4026,13 +4026,13 @@ void n_alSynDelete(void);
 // TODO: func_global_asm_8073D160 has no documented signature but has been matched
 
 // global_asm/audio/code_141EF0.c
-// TODO: func_global_asm_8073D1F0 has no documented signature
-// TODO: func_global_asm_8073DA30 has no documented signature
-// TODO: func_global_asm_8073DF50 has no documented signature
-// TODO: func_global_asm_8073E268 has no documented signature
-// TODO: func_global_asm_8073E460 has no documented signature but has been matched
+// TODO: n_alFxPull has no documented signature
+// TODO: n_alFxParamHdl has no documented signature
+// TODO: _n_loadOutputBuffer has no documented signature
+// TODO: _n_loadBuffer has no documented signature
+// TODO: _n_saveBuffer has no documented signature but has been matched
 // TODO: func_global_asm_8073E63C has no documented signature but has been matched
-// TODO: func_global_asm_8073E73C has no documented signature but has been matched
+// TODO: _doModFunc has no documented signature but has been matched
 // TODO: func_global_asm_8073E800 has no documented signature but has been matched
 
 // global_asm/audio/synsetpriority.c

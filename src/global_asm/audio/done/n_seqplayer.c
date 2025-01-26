@@ -90,8 +90,8 @@ typedef struct {
     Struct8073AD50_arg1 *unkC[1]; // TODO: How many elements
 } Struct8073A98C_arg1;
 
-void func_global_asm_8073AB00(Struct8073AB00 *arg0, s32 arg1);
-void func_global_asm_8073AD50(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s32 arg2);
+void __n_resetPerfChanState(Struct8073AB00 *arg0, s32 arg1);
+void __n_setInstChanState(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s32 arg2);
 
 typedef struct {
     s32 unk0;
@@ -119,8 +119,7 @@ typedef struct {
     s32 unk24;
 } Struct8073A8BC;
 
-// __n_unmapVoice
-void func_global_asm_8073A070(N_ALSeqPlayer *seqp, N_ALVoice *voice) {
+void __n_unmapVoice(N_ALSeqPlayer *seqp, N_ALVoice *voice) {
     N_ALVoiceState *prev = 0;
 	N_ALVoiceState *vs;
 
@@ -151,8 +150,7 @@ void func_global_asm_8073A070(N_ALSeqPlayer *seqp, N_ALVoice *voice) {
 	}
 }
 
-// __n_seqpReleaseVoice
-void func_global_asm_8073A130(N_ALSeqPlayer *seqp, N_ALVoice *voice, ALMicroTime deltaTime)
+void __n_seqpReleaseVoice(N_ALSeqPlayer *seqp, N_ALVoice *voice, ALMicroTime deltaTime)
 {
 	N_ALEvent evt;
 	N_ALVoiceState *vs = (N_ALVoiceState *)voice->clientPrivate;
@@ -205,8 +203,7 @@ void func_global_asm_8073A130(N_ALSeqPlayer *seqp, N_ALVoice *voice, ALMicroTime
 	alEvtqPostEvent(&seqp->evtq, &evt, deltaTime);
 }
 
-// __n_voiceNeedsNoteKill
-u8 func_global_asm_8073A2A4(N_ALSeqPlayer *seqp, N_ALVoice *voice, ALMicroTime killTime)
+u8 __n_voiceNeedsNoteKill(N_ALSeqPlayer *seqp, N_ALVoice *voice, ALMicroTime killTime)
 {
 	ALLink *thisNode;
 	ALLink *nextNode;
@@ -244,8 +241,7 @@ u8 func_global_asm_8073A2A4(N_ALSeqPlayer *seqp, N_ALVoice *voice, ALMicroTime k
 	return needsNoteKill;
 }
 
-// __n_mapVoice
-N_ALVoiceState *func_global_asm_8073A3C4(N_ALSeqPlayer *seqp, u8 key, u8 vel, u8 channel)
+N_ALVoiceState *__n_mapVoice(N_ALSeqPlayer *seqp, u8 key, u8 vel, u8 channel)
 {
 	N_ALVoiceState *vs = seqp->vFreeList;
 
@@ -276,8 +272,7 @@ N_ALVoiceState *func_global_asm_8073A3C4(N_ALSeqPlayer *seqp, u8 key, u8 vel, u8
 	return vs;
 }
 
-// __n_lookupVoice
-N_ALVoiceState *func_global_asm_8073A488(N_ALSeqPlayer *seqp, u8 key, u8 channel)
+N_ALVoiceState *__n_lookupVoice(N_ALSeqPlayer *seqp, u8 key, u8 channel)
 {
 	N_ALVoiceState *vs = seqp->vAllocHead;
 
@@ -295,8 +290,7 @@ N_ALVoiceState *func_global_asm_8073A488(N_ALSeqPlayer *seqp, u8 key, u8 channel
 	return 0;
 }
 
-// __n_lookupSoundQuick
-ALSound *func_global_asm_8073A518(N_ALSeqPlayer *seqp, u8 key, u8 vel, u8 chan)
+ALSound *__n_lookupSoundQuick(N_ALSeqPlayer *seqp, u8 key, u8 vel, u8 chan)
 {
 	ALInstrument *inst = seqp->chanState[chan].instrument;
 	s32 l = 1;
@@ -322,14 +316,14 @@ ALSound *func_global_asm_8073A518(N_ALSeqPlayer *seqp, u8 key, u8 vel, u8 chan)
 	return 0;
 }
 
-s16 func_global_asm_8073A690(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
+s16 __n_vsVol(N_ALVoiceState *arg0, N_ALSeqPlayer *arg1) {
     u32 sp4;
     u32 sp0;
 
-    sp4 = (arg0->unk36 * arg0->unk33 * arg0->unk30) >> 6;
-    sp0 = (arg1->unk60[arg0->unk31].unk9 * (arg0->unk20->unkD * arg1->unk32)) >> 0xE;
-    if (arg1->unk60[arg0->unk31].unkD != 0xFF) {
-        sp0 = ((arg1->unk60[arg0->unk31].unkD * sp0) + 1) >> 8;
+    sp4 = (arg0->tremelo * arg0->velocity * arg0->envGain) >> 6;
+    sp0 = (arg1->chanState[arg0->channel].vol * (arg0->sound->sampleVolume * arg1->vol)) >> 0xE;
+    if (arg1->chanState[arg0->channel].unk0d != 0xFF) {
+        sp0 = ((arg1->chanState[arg0->channel].unk0d * sp0) + 1) >> 8;
     }
     sp4 *= sp0;
     sp4 = sp4 >> 0xF;
@@ -345,62 +339,54 @@ u8 func_global_asm_8073A7B8(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
     return (MAX(0, MIN(0x7F, sp10)) | sp14);
 }
 
-s32 func_global_asm_8073A8BC(Struct8073A8BC *arg0, s32 arg1) {
+ALMicroTime __n_vsDelta(N_ALVoiceState *arg0, ALMicroTime arg1) {
     s32 sp4;
 
-    sp4 = arg0->unk24 - arg1;
+    sp4 = arg0->envEndTime - arg1;
     if (sp4 >= 0) {
         return sp4;
     } else {
-        return 1000;
+        return AL_GAIN_CHANGE_TIME;
     }
 }
 
-u8 func_global_asm_8073A900(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
+ALPan __n_vsPan(N_ALVoiceState *arg0, N_ALSeqPlayer *arg1) {
     s32 sp4;
 
-    sp4 = (arg1->unk60[arg0->unk31].unk7 + arg0->unk20->unkC) - 0x40;
-    if (sp4 > 0) {
-
-    } else {
-        sp4 = 0;
-    }
-    if (sp4 < 0x7F) {
-
-    } else {
-        sp4 = 0x7F;
-    }
+    sp4 = (arg1->chanState[arg0->channel].pan + arg0->sound->samplePan) - AL_PAN_CENTER;
+    sp4 = MAX(sp4, AL_PAN_LEFT);
+    sp4 = MIN(sp4, AL_PAN_RIGHT);
     return sp4;
 }
 
-void func_global_asm_8073A98C(Struct8073AB00 *arg0, Struct8073A98C_arg1 *arg1) {
+void __n_initFromBank(N_ALSeqPlayer *arg0, ALBank *arg1) {
     s32 i;
-    Struct8073AD50_arg1 *sp18;
+    ALInstrument *sp18;
 
     sp18 = NULL;
     for (i = 0; sp18 == NULL; i++) {
-        sp18 = arg1->unkC[i];
+        sp18 = arg1->instArray[i];
     }
-    for (i = 0; i < arg0->unk34; i++) {
-        func_global_asm_8073AB00(arg0, i);
-        func_global_asm_8073AD50(arg0, sp18, i);
+    for (i = 0; i < arg0->maxChannels; i++) {
+        __n_resetPerfChanState(arg0, i);
+        __n_setInstChanState(arg0, sp18, i);
     }
-    if (arg1->unk8 != 0) {
-        func_global_asm_8073AB00(arg0, i);
-        func_global_asm_8073AD50(arg0, arg1->unk8, 9);
+    if (arg1->percussion != 0) {
+        __n_resetPerfChanState(arg0, i);
+        __n_setInstChanState(arg0, arg1->percussion, 9);
     }
 }
 
-void func_global_asm_8073AA74(Struct8073AB00 *arg0) {
+void __n_initChanState(Struct8073AB00 *arg0) {
     s32 i;
 
     for (i = 0; i < arg0->unk34; i++) {
         arg0->unk60[i].unk0 = 0;
-        func_global_asm_8073AB00(arg0, i);
+        __n_resetPerfChanState(arg0, i);
     }
 }
 
-void func_global_asm_8073AB00(Struct8073AB00 *arg0, s32 arg1) {
+void __n_resetPerfChanState(Struct8073AB00 *arg0, s32 arg1) {
     arg0->unk60[arg1].unk6 = 0;
     arg0->unk60[arg1].unkA = 0;
     arg0->unk60[arg1].unk7 = 0x40;
@@ -420,7 +406,7 @@ void func_global_asm_8073AB00(Struct8073AB00 *arg0, s32 arg1) {
     arg0->unk60[arg1].unk32 = 0;
 }
 
-void func_global_asm_8073AD50(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s32 arg2) {
+void __n_setInstChanState(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s32 arg2) {
     Struct8073AD50_arg1_unk10 *temp;
     arg0->unk60[arg2].unk0 = arg1;
     arg0->unk60[arg2].unk7 = arg1->unk1;
@@ -449,8 +435,7 @@ void func_global_asm_8073AD50(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s
     arg0->unk60[arg2].unk31 = 0;
 }
 
-// __n_seqpStopOsc
-void func_global_asm_8073B08C(N_ALSeqPlayer *seqp, N_ALVoiceState *vs)
+void __n_seqpStopOsc(N_ALSeqPlayer *seqp, N_ALVoiceState *vs)
 {
 	N_ALEventListItem *thisNode,*nextNode;
 	s16 evtType;

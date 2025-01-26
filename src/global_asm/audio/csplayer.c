@@ -3,7 +3,7 @@
 
 s32 func_global_asm_80733180(void *);
 void func_global_asm_80737F40(ALCSPlayer *);
-void func_global_asm_8073AA74(ALCSPlayer *);
+void __n_initChanState(ALCSPlayer *);
 
 void func_global_asm_80732F10(N_ALCSPlayer *seqp, ALSeqpConfig *c) {
     // alCSPNew
@@ -38,7 +38,7 @@ void func_global_asm_80732F10(N_ALCSPlayer *seqp, ALSeqpConfig *c) {
     seqp->nextEvent.type = AL_SEQP_API_EVT;
     seqp->maxChannels = c->maxChannels;
     seqp->chanState = alHeapAlloc(hp, c->maxChannels, 0x34);
-    func_global_asm_8073AA74(seqp);
+    __n_initChanState(seqp);
     voices = alHeapAlloc(hp, c->maxVoices, sizeof(N_ALVoiceState));
     seqp->vFreeList = NULL;
     for (i = 0; i < c->maxVoices; i++) {
