@@ -296,6 +296,6 @@ void func_global_asm_8062A808(s32 arg0, s32 arg1) {
     D_global_asm_80747B48 = arg1;
 }
 
-s32 func_global_asm_8062A844(s32 arg0) {
-    return arg0;
+Gfx *func_global_asm_8062A844(Gfx *dl) {
+    return dl;
 }

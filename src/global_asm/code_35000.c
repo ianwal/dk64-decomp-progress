@@ -378,14 +378,14 @@ void renderActor(Actor *arg0, u8 arg1) {
         temp_yrot = arg0->y_rotation;
         if (arg1 != 0) {
             func_global_asm_806317D4(arg0, &sp78, temp_t7, temp, temp_yrot);
-            guMtxCatF(&arg0->unkC, &sp78, &arg0->unkC);
+            guMtxCatF(&arg0->unkC, sp78, &arg0->unkC);
         } else {
             func_global_asm_806317D4(arg0, &arg0->unkC, temp_t7, temp, temp_yrot);
         }
     } else {
         if (arg1 != 0) {
             func_global_asm_8063162C(arg0, &sp78);
-            guMtxCatF(&arg0->unkC, &sp78, &arg0->unkC);
+            guMtxCatF(&arg0->unkC, sp78, &arg0->unkC);
         } else {
             func_global_asm_8063162C(arg0, &arg0->unkC);
         }

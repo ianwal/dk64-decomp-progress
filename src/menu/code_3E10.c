@@ -1311,7 +1311,7 @@ Gfx *func_menu_8002D520(Actor *arg0, Gfx *dl) {
     s16 temp_f10;
     s8 pad3[2];
     s8 var_v0;
-    s8 sp40[4];
+    char sp40[4];
 
     global_properties_bitfield &= ~0x10;
     func_menu_800317E8(MaaD, 160.0f, 20.0f, &sp58, &sp54, 2, 0, 1.5f);
@@ -1330,7 +1330,7 @@ Gfx *func_menu_8002D520(Actor *arg0, Gfx *dl) {
     case 2:
         dl = printStyledText(dl, 1, sp58, temp_f10, label_string_pointer_array[40], 0x81U);
         var_v0 = sp60 == 1 ? D_global_asm_8074583C : D_global_asm_80745840;
-        sprintf(&sp40, "%d", (var_v0 + 1) >> 1);
+        sprintf(sp40, "%d", (var_v0 + 1) >> 1);
         dl = printStyledText(dl, 1, sp58, temp_f10 + 0x78, &sp40, 0x81U);
         break;
     case 3:

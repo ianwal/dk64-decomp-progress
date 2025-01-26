@@ -793,7 +793,7 @@ void func_global_asm_8062A348(void);
 void func_global_asm_8062A774(void);
 void func_global_asm_8062A7D0(void);
 void func_global_asm_8062A808(s32 arg0, s32 arg1);
-s32 func_global_asm_8062A844(s32 arg0);
+Gfx *func_global_asm_8062A844(Gfx *dl);
 
 // global_asm/code_2F550.c
 f32 func_global_asm_8062A850(void);
