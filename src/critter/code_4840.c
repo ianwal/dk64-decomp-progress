@@ -94,14 +94,14 @@ Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg
             (func_global_asm_80612794(sp50 * 2048.0f) * 0.5) + 1.0,
             (func_global_asm_80612794(sp50 * 2048.0f) * 0.8) + 1.0,
             1.0f);
-        guMtxCatF(&sp98, &sp58, &sp98);
+        guMtxCatF(sp98, sp58, sp98);
         guTranslateF(&sp58, temp_t1, 26.0f, 0.0f);
-        guMtxCatF(&sp98, &sp58, &sp98);
+        guMtxCatF(sp98, sp58, sp98);
         sp57 = (func_global_asm_80612794(sp50 * 2048.0f) * 127.0f) + 128.0f;
     }
-    guTranslateF(&sp58, arg1->unk4[arg3], arg1->unk0, 0.0f);
-    guMtxCatF(&sp98, &sp58, &sp98);
-    guMtxF2L(&sp98, &arg1->unk90[D_global_asm_807444FC]);
+    guTranslateF(sp58, arg1->unk4[arg3], arg1->unk0, 0.0f);
+    guMtxCatF(sp98, sp58, sp98);
+    guMtxF2L(sp98, &arg1->unk90[D_global_asm_807444FC]);
     gSPMatrix(dl++, &arg1->unk90[D_global_asm_807444FC][arg3], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, sp57);
     return printStyledText(dl, 6, 0, 0, arg2, 0U);

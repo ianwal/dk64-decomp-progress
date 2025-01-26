@@ -853,31 +853,31 @@ void func_global_asm_806A0B74(void) {
     current_actor_pointer->object_properties_bitfield |= 0x200;
     current_actor_pointer->unk8 = current_actor_pointer->animation_state->bone_arrays[D_global_asm_807444FC];
     memcpy(current_actor_pointer->unk8, current_actor_pointer->unk11C->unk8, current_actor_pointer->unk0->unk20 * sizeof(Mtx));
-    guMtxIdentF(&spE8[0][0]);
+    guMtxIdentF(spE8);
     if (aad->unkE & 1) {
         spE8[0][0] = -1.0f;
-        guTranslateF(&sp68[0], -aad->unkC, 0.0f, 0.0f);
-        guMtxCatF(&sp68[0], &spE8[0], &spE8[0]);
-        guMtxF2L(&spE8[0], &sp128);
-        guTranslateF(&sp68[0], aad->unkC, 0.0f, 0.0f);
+        guTranslateF(sp68, -aad->unkC, 0.0f, 0.0f);
+        guMtxCatF(sp68, spE8, spE8);
+        guMtxF2L(spE8, &sp128);
+        guTranslateF(sp68, aad->unkC, 0.0f, 0.0f);
     } else {
         spE8[2][2] = -1.0f;
-        guTranslateF(&sp68[0], 0.0f, 0.0f, (f32) -aad->unkC);
-        guMtxCatF(&sp68[0], &spE8[0], &spE8[0]);
-        guMtxF2L(&spE8[0], &sp128);
-        guTranslateF(&sp68[0], 0.0f, 0.0f, (f32) aad->unkC);
+        guTranslateF(sp68, 0.0f, 0.0f, (f32) -aad->unkC);
+        guMtxCatF(sp68, spE8, spE8);
+        guMtxF2L(spE8, &sp128);
+        guTranslateF(sp68, 0.0f, 0.0f, (f32) aad->unkC);
     }
     i = 0;
     var_s1 = current_actor_pointer->unk8;
     for (i = 0; i < current_actor_pointer->unk0->unk20; i++) {
-        guMtxL2F(&spA8[0], var_s1);
-        guMtxCatF(&spA8[0], &spE8[0], &spA8[0]);
-        guMtxCatF(&spA8[0], &sp68[0], &spA8[0]);
-        guMtxF2L(&spA8[0], var_s1);
+        guMtxL2F(spA8, var_s1);
+        guMtxCatF(spA8, spE8, spA8);
+        guMtxCatF(spA8, sp68, spA8);
+        guMtxF2L(spA8, var_s1);
         var_s1++;
     }
-    guMtxXFMF(&spE8[0], current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, &x, &y, &z);
-    guMtxXFMF(&sp68[0], x, y, z, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+    guMtxXFMF(spE8, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, &x, &y, &z);
+    guMtxXFMF(sp68, x, y, z, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
 }
 
 void func_global_asm_806A0F78(Actor *arg0, u8 arg1, u8 arg2) {

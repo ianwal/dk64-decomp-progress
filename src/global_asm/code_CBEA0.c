@@ -272,7 +272,7 @@ Gfx *func_global_asm_806C75A4(Gfx *dl, Actor *arg1) {
         // top/bottom
         var_f12 = D_global_asm_807FC8EC;
     }
-    guScaleF(&spC4[0], var_f2 * 0.55, var_f12 * 0.55, 1.0f);
+    guScaleF(spC4, var_f2 * 0.55, var_f12 * 0.55, 1.0f);
     switch (direction) {
     default:
         var_f0 = sp10C;
@@ -298,9 +298,9 @@ Gfx *func_global_asm_806C75A4(Gfx *dl, Actor *arg1) {
         var_f0 = (390.0 - (temp_s0 * D_global_asm_807FC8E8)) - 8.0;
         break;
     }
-    guTranslateF(&sp84[0], (f32) ((f64) var_f0 * 4.0), (f32) ((f64) sp108 * 4.0), 0.0f);
-    guMtxCatF(&spC4[0], &sp84[0], &spC4[0]);
-    guMtxF2L(&spC4[0], temp_v0_2);
+    guTranslateF(sp84, (f32) ((f64) var_f0 * 4.0), (f32) ((f64) sp108 * 4.0), 0.0f);
+    guMtxCatF(spC4, sp84, spC4);
+    guMtxF2L(spC4, temp_v0_2);
     str = D_global_asm_807FC8F0;
     for (i = 0; i < D_global_asm_80750758; str++) {
         if (*str == '\0') i++;

@@ -102,12 +102,12 @@ Gfx *func_global_asm_80697230(Gfx *dl, Actor *arg1) {
                 func_global_asm_8066E8E4(arg1, spE0, spDC, spD8, spD4 * 80.0, -1);
             }
             gDPLoadTextureBlock(dl++, D_global_asm_807FC7C0[idx], G_IM_FMT_RGBA, G_IM_SIZ_32b, 32, 32, 0, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMIRROR | G_TX_CLAMP, G_TX_NOMASK, G_TX_NOMASK, G_TX_NOLOD, G_TX_NOLOD);
-            guScaleF(&sp154, spD4, spD4, spD4);
+            guScaleF(sp154, spD4, spD4, spD4);
             func_global_asm_80612C30(&sp114, ((character_change_array->unk2C8 * 0x168) / 4096));
-            guMtxCatF(&sp154, &sp114, &sp154);
-            guTranslateF(&sp114, arg1->x_position + spE0, arg1->y_position, arg1->z_position + spD8);
-            guMtxCatF(&sp154, &sp114, &sp154);
-            guMtxF2L(&sp154, &AAD->unk4[(i * 2) + D_global_asm_807444FC]);
+            guMtxCatF(sp154, sp114, sp154);
+            guTranslateF(sp114, arg1->x_position + spE0, arg1->y_position, arg1->z_position + spD8);
+            guMtxCatF(sp154, sp114, sp154);
+            guMtxF2L(sp154, &AAD->unk4[(i * 2) + D_global_asm_807444FC]);
             gSPMatrix(dl++, &AAD->unk4[(i * 2) + D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gSPVertex(dl++, osVirtualToPhysical(&D_global_asm_80750280), 4, 0);
             gSP2Triangles(dl++, 0, 1, 2, 0, 0, 2, 3, 0);

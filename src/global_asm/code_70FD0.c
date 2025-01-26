@@ -145,15 +145,15 @@ void func_global_asm_8066C2D0(s32 arg0, PropFileStruct *arg1, f32 arg2, f32 arg3
         }
         var_s0 = &((OM2WallData*)(arg1->unk4C + (s32)arg1))->walls;
         var_s1 = var_t0->unk18;
-        guScaleF(&sp124, arg8, arg8, arg8);
-        guRotateF(&spE4, arg5, 1.0f, 0.0f, 0.0f);
-        guMtxCatF(&sp124, &spE4, &sp124);
-        guRotateF(&spE4, arg6, 0.0f, 1.0f, 0.0f);
-        guMtxCatF(&sp124, &spE4, &sp124);
-        guRotateF(&spE4, arg7, 0.0f, 0.0f, 1.0f);
-        guMtxCatF(&sp124, &spE4, &sp124);
-        guTranslateF(&spE4, arg2, arg3, arg4);
-        guMtxCatF(&sp124, &spE4, &sp124);
+        guScaleF(sp124, arg8, arg8, arg8);
+        guRotateF(spE4, arg5, 1.0f, 0.0f, 0.0f);
+        guMtxCatF(sp124, spE4, sp124);
+        guRotateF(spE4, arg6, 0.0f, 1.0f, 0.0f);
+        guMtxCatF(sp124, spE4, sp124);
+        guRotateF(spE4, arg7, 0.0f, 0.0f, 1.0f);
+        guMtxCatF(sp124, spE4, sp124);
+        guTranslateF(spE4, arg2, arg3, arg4);
+        guMtxCatF(sp124, spE4, sp124);
         for (i = 0; i < count; i++) {
             if (var_s0->unk14 == -1) {
                 if (func_global_asm_8066CEE4(var_s0, var_s1, &sp124)) {
@@ -162,7 +162,7 @@ void func_global_asm_8066C2D0(s32 arg0, PropFileStruct *arg1, f32 arg2, f32 arg3
             } else {
                 if (var_s6 != var_s0->unk14) {
                     func_global_asm_8066C7F4(&sp54[var_s0->unk14], sp58, &spA4);
-                    guMtxCatF(&spA4, &sp124, &sp64);
+                    guMtxCatF(spA4, sp124, sp64);
                     var_s6 = var_s0->unk14;
                 }
                 if (func_global_asm_8066CEE4(var_s0, var_s1, &sp64)) {

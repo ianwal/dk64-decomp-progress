@@ -890,7 +890,7 @@ void func_global_asm_806699C4(Struct806699C4 *arg0, s16 arg1, s8 arg2, u8 arg3, 
     arg0->unk10F = arg2;
     func_global_asm_8066C610(arg1, arg2, &spB0);
     func_global_asm_8062FF10(&sp30[0], &spB0);
-    guMtxXFMF(&sp30[0], x, y, z, &arg0->unk100, &arg0->unk104, &arg0->unk108);
+    guMtxXFMF(sp30, x, y, z, &arg0->unk100, &arg0->unk104, &arg0->unk108);
 }
 
 void func_global_asm_80669A6C(Actor *arg0) {
