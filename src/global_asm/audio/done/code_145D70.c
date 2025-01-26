@@ -3,8 +3,6 @@
 #include "synthinternal.h"
 
 Acmd *func_global_asm_80740100(CustomPVoice *, s16 *, s32, Acmd *);
-extern f64 D_global_asm_80760580;
-extern f32 D_global_asm_80760588;
 
 void *func_global_asm_80741070(CustomPVoice *arg0, s16 *arg1, Acmd *arg2) {
     Acmd *sp34;
@@ -24,8 +22,8 @@ void *func_global_asm_80741070(CustomPVoice *arg0, s16 *arg1, Acmd *arg2) {
         sp20->words.w1 = ((*arg1 & 0xFFFF) << 0x10) | 0x170;
         if (1) {}
     } else {
-        if (arg0->resampler.unk18 > D_global_asm_80760580) {
-            arg0->resampler.unk18 = D_global_asm_80760588;
+        if (arg0->resampler.unk18 > 1.99996) {
+            arg0->resampler.unk18 = 1.99996f;
         }
         arg0->resampler.unk18 = (s32) (arg0->resampler.unk18 * 32768.0f);
         arg0->resampler.unk18 /= 32768.0f;

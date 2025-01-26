@@ -2,9 +2,6 @@
 #include "functions.h"
 
 void *func_global_asm_80741070(CustomPVoice *, s16 *, Acmd *);
-extern f32 D_global_asm_80760570;
-extern f32 D_global_asm_80760574;
-extern f32 D_global_asm_80760578;
 
 void *func_global_asm_80740C50(CustomPVoice *arg0, s16 *arg1, s32 arg2, Acmd *arg3) {
     // Unsure of arg2 type, doesn't seem used?
@@ -19,12 +16,12 @@ void *func_global_asm_80740C50(CustomPVoice *arg0, s16 *arg1, s32 arg2, Acmd *ar
     sp2C = func_global_asm_80741070(arg0, arg1, arg3);
     if ((arg0->unk8C != 0) && (arg0->unk8C < 0x40)) {
         if (arg0->unk8C >= 6) {
-            sp24 = D_global_asm_80760570 / sqrtf(arg0->unk8C + 1.0f);
+            sp24 = 26755.0f / sqrtf(arg0->unk8C + 1.0f);
         } else {
             sp24 = 65536.0f / ((f32) arg0->unk8C + 1.0f);
         }
-        if (sp24 < D_global_asm_80760574) {
-            sp24 = D_global_asm_80760578;
+        if (sp24 < 7723.0f) {
+            sp24 = 7723.0f;
         }
         sp20 = sp2C++;
         sp20->words.w0 = (*arg1 & 0xFFFF);

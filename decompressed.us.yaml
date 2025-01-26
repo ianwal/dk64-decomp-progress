@@ -486,7 +486,8 @@ segments:
       - [0x21651E0, .rodata, audio/done/n_reverb]
       - [0x2165210, .rodata, audio/done/n_env]
       - [0x2165260, .rodata, audio/done/code_1445A0]
-      - [0x2165270, rodata] # audio/code_145950
+      - [0x2165270, .rodata, audio/done/code_145950]
+      - [0x2165280, .rodata, audio/done/code_145D70]
       - [0x2165290, rodata] # ???
   - name: menu
     dir: menu
