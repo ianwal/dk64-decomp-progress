@@ -1511,12 +1511,8 @@ s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     return arg3 * var_f2;
 }
 
-// close, stack, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80672328.s")
-
 s32 func_global_asm_806725A0(Actor *arg0, s16 arg1);
 
-/*
 s32 func_global_asm_80672328(Actor *arg0, f32 arg1, f32 arg2) {
     s32 temp_f6;
     s32 temp_f16;
@@ -1530,10 +1526,10 @@ s32 func_global_asm_80672328(Actor *arg0, f32 arg1, f32 arg2) {
     temp_f8 = arg0->unk88 * 8.0f;
     temp_f6 = arg1 * 8.0f;
     temp_f18 = arg0->unk90 * 8.0f;
-    dx = temp_f6 - temp_f8;
     temp_f16 = arg2 * 8.0f;
+    dx = temp_f6 - temp_f8;
     dz = temp_f16 - temp_f18;
-    temp_f0 = sqrtf((dx * dx) + (dz * dz));
+    temp_f0 = sqrtf(SQ(dx) + SQ(dz));
     if (temp_f0 == 0.0) {
         return TRUE;
     }
@@ -1551,7 +1547,6 @@ s32 func_global_asm_80672328(Actor *arg0, f32 arg1, f32 arg2) {
     }
     return func_global_asm_806725A0(arg0, phi_a2) ? TRUE : FALSE;
 }
-*/
 
 s32 func_global_asm_806725A0(Actor *arg0, s16 arg1) {
     s16 sp26, sp24;

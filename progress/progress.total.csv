@@ -623,7 +623,7 @@ us,asm,func_global_asm_8061D060,412,yes
 us,asm,func_global_asm_8065A660,152,yes
 us,asm,func_global_asm_8064CC80,188,yes
 us,asm,func_global_asm_8070E8F0,2520,no
-us,asm,func_global_asm_80672328,632,no
+us,asm,func_global_asm_80672328,632,yes
 us,asm,func_global_asm_80639CD0,588,yes
 us,asm,func_global_asm_80714A38,32,yes
 us,asm,func_global_asm_807127F4,60,yes
