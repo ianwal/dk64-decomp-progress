@@ -610,7 +610,7 @@ segments:
       - [0x21AB800, .data, KRoolTiny]
       - [0x21AB830, data, KRoolChunky]
       - [0x21AB870, data, KutOut]
-      - [0x21AB8F0, data, MadJack]
+      - [0x21AB8F0, .data, MadJack]
       - [0x21AB970, .rodata, ArmyDillo]
       - [0x21ABD00, .rodata, KRoolGeneric]
       - [0x21ABED0, .rodata, Pufftoss]

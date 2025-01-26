@@ -8,7 +8,7 @@ totalCodeBytes = 1647440 # Used to calculate how much percentage a function is w
 searchPath = "src"
 excludePaths = [
     "src/dk64_boot",
-    "src/global_asm/audio",
+    "src/global_asm/audio/done",
     "src/global_asm/done",
     "src/global_asm/heap.c",
     "src/global_asm/hud.c",

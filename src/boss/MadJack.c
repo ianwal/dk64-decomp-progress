@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
+// .rodata
 const s32 D_boss_80036C10[] = {
     0x4F230825,
     0x06325000
@@ -33,10 +34,83 @@ const f32 D_boss_80036C40[] = {
     0.0f // TODO: Is this just padding?
 };
 
+// .data
+u8 D_boss_80035B80[4] = {0x05, 0x06, 0x09, 0x0A};
+
+void *D_boss_80035B84[5] = {
+    D_boss_80036C10,
+    D_boss_80036C18,
+    D_boss_80036C20,
+    D_boss_80036C28,
+    D_boss_80036C30,
+};
+
+u16 D_boss_80035B98[32] = {
+    0x000F,
+    0x00F0,
+    0x0F00,
+    0xF000,
+    0x1111,
+    0x2222,
+    0x4444,
+    0x8888,
+    0x0001,
+    0x0012,
+    0x0124,
+    0x1248,
+    0x2480,
+    0x4800,
+    0x8000,
+    0x0000,
+    0x0001,
+    0x0002,
+    0x0004,
+    0x0008,
+    0x0080,
+    0x0040,
+    0x0020,
+    0x0010,
+    0x0100,
+    0x0200,
+    0x0400,
+    0x0800,
+    0x8000,
+    0x4000,
+    0x2000,
+    0x1000,
+};
+
+u8 D_boss_80035BD8[4] = {0x09, 0x0A, 0x0E, 0x00};
+
+u8 D_boss_80035BDC[8] = {0x10, 0x12, 0x15, 0x17, 0x18, 0x1A, 0x1D, 0x1F};
+
+u8 D_boss_80035BE4[8] = {0x11, 0x13, 0x14, 0x16, 0x19, 0x1B, 0x1C, 0x1E};
+
+u8 D_boss_80035BEC[20] = {
+    0x00,
+    0x01,
+    0x00,
+    0x01,
+    0x01,
+    0x00,
+    0x01,
+    0x00,
+    0x00,
+    0x01,
+    0x00,
+    0x01,
+    0x01,
+    0x00,
+    0x01,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+};
+
 // close, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/MadJack/func_boss_800330D0.s")
-
-extern u8 D_boss_80035B80[4];
 
 typedef struct {
     u8 unk0[0x14 - 0x0];
@@ -113,8 +187,6 @@ u8 func_boss_800330D0(Struct800330D0_arg0 *arg0, Struct800330D0_arg1 *arg1) {
 }
 */
 
-extern f64 D_boss_80036C58;
-
 typedef struct {
     u8 pad0[0x8];
     s16 unk8;
@@ -177,9 +249,6 @@ void func_boss_800336C0(void) {
         current_actor_pointer->z_position
     );
 }
-
-extern u8 D_boss_80035BDC[];
-extern u8 D_boss_80035BE4[];
 
 void func_boss_80033784(MadJackPosData *arg0, u8 arg1) {
     s32 random;
@@ -281,10 +350,6 @@ void func_global_asm_8072A450(void);
 extern u8 D_80036DD0[];
 extern s16 D_807502DC;
 extern f32 D_807502F0;
-extern u8 *D_boss_80035B84[];
-extern u16 D_boss_80035B98[];
-extern u8 D_boss_80035BD8[];
-extern u8 D_boss_80035BEC[];
 extern SpriteData D_global_asm_8071FC58;
 extern SpriteData D_global_asm_80720054;
 extern SpriteData D_global_asm_80720BE8;
