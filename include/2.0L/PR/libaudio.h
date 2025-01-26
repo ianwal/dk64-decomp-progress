@@ -22,7 +22,7 @@
  *
  *  $Revision: 1.173 $
  *  $Date: 1997/12/01 12:42:21 $
- *  $Source: /disk6/Master/cvsmdev2/PR/include/libaudio.h,v $
+ *  $Source: /hosts/gate3/exdisk2/cvs/N64OS/Master/cvsmdev2/PR/include/libaudio.h,v $
  *
  **************************************************************************/
 
@@ -34,11 +34,12 @@ extern "C" {
 #endif
 
 #include <PR/ultratypes.h>
+#include <PR/abi.h>
 #include <PR/mbi.h>
-    
+
 /***********************************************************************
  * misc defines
- ***********************************************************************/    
+ ***********************************************************************/
 #ifndef _EMULATOR
 #	ifdef AUD_PROFILE
 
@@ -61,23 +62,25 @@ extern "C" {
 #define NULL 0
 #endif
 
+#define IS_PAL                  0
 #define AL_FX_BUFFER_SIZE       8192
 #define AL_FRAME_INIT           -1
-#define AL_USEC_PER_FRAME       16000
+#define AL_USEC_PER_FRAME       (IS_PAL ? 20000 : 16000)
 #define AL_MAX_PRIORITY         127
-#define AL_GAIN_CHANGE_TIME     1000    
-    
+#define AL_GAIN_CHANGE_TIME     1000
+
 typedef s32     ALMicroTime;
 typedef u8      ALPan;
 
-#define AL_PAN_CENTER   64
-#define AL_PAN_LEFT     0
-#define AL_PAN_RIGHT    127
-#define AL_VOL_FULL     127
-#define AL_KEY_MIN      0
-#define AL_KEY_MAX      127
-#define AL_DEFAULT_FXMIX	0
-#define AL_SUSTAIN      63
+#define AL_PAN_CENTER    64
+#define AL_PAN_LEFT      0
+#define AL_PAN_RIGHT     127
+#define _AL_VOL_FULL     127    /* SDK/internal value */
+#define AL_VOL_FULL      0x7fff /* But the game uses this mostly */
+#define AL_KEY_MIN       0
+#define AL_KEY_MAX       127
+#define AL_DEFAULT_FXMIX 0
+#define AL_SUSTAIN       63
 
 /***********************************************************************
  * Error handling
@@ -118,7 +121,11 @@ typedef struct ALLink_s {
 void    alUnlink(ALLink *element);
 void    alLink(ALLink *element, ALLink *after);
 
+#ifdef PLATFORM_N64
 typedef s32 (*ALDMAproc)(s32 addr, s32 len, void *state);
+#else
+typedef uintptr_t (*ALDMAproc)(uintptr_t addr, s32 len, void *state);
+#endif
 typedef ALDMAproc (*ALDMANew)(void *state);
 
 void    alCopy(void *src, void *dest, s32 len);
@@ -171,7 +178,7 @@ enum    {AL_ADPCM_WAVE = 0,
 typedef struct {
     s32 order;
     s32 npredictors;
-    s16 book[1];        /* Actually variable size. Must be 8-byte aligned */
+    s16 book[128];        /* Actually variable size. Must be 8-byte aligned */
 } ALADPCMBook;
 
 typedef struct {
@@ -299,8 +306,8 @@ typedef struct {
     void                *dmaproc;
     ALHeap              *heap;
     s32                 outputRate;     /* output sample rate */
-    ALFxId              fxType;
-    s32                 *params;
+    ALFxId              fxTypes[4];
+    s32                 *params[2];
 } ALSynConfig;
 
 typedef struct ALPlayer_s {
@@ -337,9 +344,9 @@ typedef struct {
     s32         curSamples;     /* samples from start of game           */
     ALDMANew    dma;
     ALHeap      *heap;
-    
+
     struct ALParam_s    *paramList;
-    
+
     struct ALMainBus_s  *mainBus;
     struct ALAuxBus_s   *auxBus;        /* ptr to array of aux bus structs */
     struct ALFilter_s   *outputFilter;  /* last filter in the filter chain */
@@ -399,9 +406,13 @@ Acmd    *alAudioFrame(Acmd *cmdList, s32 *cmdLen, s16 *outBuf, s32 outLen);
 /*
  * Play states
  */
-#define AL_STOPPED      0
-#define AL_PLAYING      1
-#define AL_STOPPING     2
+#define AL_STOPPED  0
+#define AL_PLAYING  1
+#define AL_STOPPING 2
+#define AL_STATE3   3
+#define AL_STATE4   4
+#define AL_STATE5   5
+#define AL_STARTING 6
 
 #define AL_DEFAULT_PRIORITY     5
 #define AL_DEFAULT_VOICE        0
@@ -411,30 +422,32 @@ Acmd    *alAudioFrame(Acmd *cmdList, s32 *cmdLen, s16 *outBuf, s32 outLen);
  * Audio Library event type definitions
  */
 enum ALMsg {
-    AL_SEQ_REF_EVT,	/* Reference to a pending event in the sequence. */
-    AL_SEQ_MIDI_EVT,
-    AL_SEQP_MIDI_EVT,
-    AL_TEMPO_EVT,
-    AL_SEQ_END_EVT,
-    AL_NOTE_END_EVT,
-    AL_SEQP_ENV_EVT,
-    AL_SEQP_META_EVT,
-    AL_SEQP_PROG_EVT,
-    AL_SEQP_API_EVT,
-    AL_SEQP_VOL_EVT,
-    AL_SEQP_LOOP_EVT,
-    AL_SEQP_PRIORITY_EVT,
-    AL_SEQP_SEQ_EVT,
-    AL_SEQP_BANK_EVT,
-    AL_SEQP_PLAY_EVT,
-    AL_SEQP_STOP_EVT,
-    AL_SEQP_STOPPING_EVT,
-    AL_TRACK_END,
-    AL_CSP_LOOPSTART,
-    AL_CSP_LOOPEND,
-    AL_CSP_NOTEOFF_EVT,
-    AL_TREM_OSC_EVT,
-    AL_VIB_OSC_EVT
+    /*0x00*/ AL_SEQ_REF_EVT,	/* Reference to a pending event in the sequence. */
+    /*0x01*/ AL_SEQ_MIDI_EVT,
+    /*0x02*/ AL_SEQP_MIDI_EVT,
+    /*0x03*/ AL_TEMPO_EVT,
+    /*0x04*/ AL_SEQ_END_EVT,
+    /*0x05*/ AL_NOTE_END_EVT,
+    /*0x06*/ AL_SEQP_ENV_EVT,
+    /*0x07*/ AL_SEQP_META_EVT,
+    /*0x08*/ AL_SEQP_PROG_EVT,
+    /*0x09*/ AL_SEQP_API_EVT,
+    /*0x0a*/ AL_SEQP_VOL_EVT,
+    /*0x0b*/ AL_SEQP_LOOP_EVT,
+    /*0x0c*/ AL_SEQP_PRIORITY_EVT,
+    /*0x0d*/ AL_SEQP_SEQ_EVT,
+    /*0x0e*/ AL_SEQP_BANK_EVT,
+    /*0x0f*/ AL_SEQP_PLAY_EVT,
+    /*0x10*/ AL_SEQP_STOP_EVT,
+    /*0x11*/ AL_SEQP_STOPPING_EVT,
+    /*0x12*/ AL_TRACK_END,
+    /*0x13*/ AL_CSP_LOOPSTART,
+    /*0x14*/ AL_CSP_LOOPEND,
+    /*0x15*/ AL_CSP_NOTEOFF_EVT,
+    /*0x16*/ AL_TREM_OSC_EVT,
+    /*0x17*/ AL_VIB_OSC_EVT,
+    /*0x18*/ AL_18_EVT,
+    /*0x19*/ AL_19_EVT
 };
 
 /*
@@ -527,7 +540,7 @@ typedef struct {
 typedef struct {
     s32         ticks;    /* MIDI, Tempo and End events must start with ticks */
     u8          status;
-    u8          byte1; 
+    u8          byte1;
     u8          byte2;
     u32         duration;
 } ALMIDIEvent;
@@ -589,30 +602,14 @@ typedef struct {
 } ALOscEvent;
 
 typedef struct {
-    f32 unk00;
-    f32 unk04;
-} N_AL18Event;
-
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    s32 param;
-} N_AL19Event;
-
-typedef struct {
-    u8 unk00;
-    u8 unk01;
-    u8 unk02;
-    u8 unk03;
-    u8 unk04;
-    u8 unk05;
-    u8 unk06;
-    u8 unk07;
-    u8 unk08;
-    u8 unk09;
-} N_AL7Event;
+    u8 pad0[4];
+    u8 unk4;
+    u8 unk5;
+    u8 unk6;
+    u8 unk7;
+    u8 unk8;
+    u8 unk9;
+} ALMetaEvent;
 
 typedef struct {
     s16                 	type;
@@ -624,13 +621,11 @@ typedef struct {
         ALVolumeEvent   	vol;
         ALSeqpLoopEvent 	loop;
         ALSeqpVolEvent  	spvol;
-	ALSeqpPriorityEvent	sppriority;
-	ALSeqpSeqEvent		spseq;
-	ALSeqpBankEvent		spbank;
+        ALSeqpPriorityEvent	sppriority;
+        ALSeqpSeqEvent		spseq;
+        ALSeqpBankEvent		spbank;
         ALOscEvent      	osc;
-        N_AL7Event          evt7;
-        N_AL18Event      	evt18;
-		N_AL19Event      	evt19;
+        ALMetaEvent         meta;
     } msg;
 } ALEvent;
 
@@ -678,8 +673,6 @@ typedef struct ALVoiceState_s {
     u8          tremelo;        /* current value of the tremelo */
     u8          flags;          /* bit 0 tremelo flag
                                    bit 1 vibrato flag           */
-    /* DK64 Stuff */
-    u8          unk38[8];       // Currently padding, has to be size 0x40
 } ALVoiceState;
 
 typedef struct {
@@ -690,8 +683,34 @@ typedef struct {
     u8                  priority;       /* priority for this chan           */
     u8                  vol;            /* current volume for this chan     */
     u8                  fxmix;          /* current fx mix for this chan     */
+    u8                  unk0b;
     u8                  sustain;        /* current sustain pedal state      */
-    f32                 pitchBend;      /* current pitch bend val in cents  */
+    u8 unk0d;
+    u8 unk0e;
+    u8 unk0f;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    f32 pitchBend;      /* current pitch bend val in cents  */
+    ALMicroTime attackTime;
+    ALMicroTime decayTime;
+    ALMicroTime releaseTime;
+    u8 unk24;
+    u8 attackVolume;
+    u8 decayVolume;
+    s8 unk27;
+    u8 tremType;
+    u8 tremRate;
+    u8 tremDepth;
+    u8 tremDelay;
+    u8 vibType;
+    u8 vibRate;
+    u8 vibDepth;
+    u8 vibDelay;
+    u8 unk30;
+    u8 unk31;
+    u8 unk32;
 } ALChanState;
 
 typedef struct ALSeq_s {
@@ -753,7 +772,7 @@ typedef struct {
 } ALSeqpConfig;
 
 typedef ALMicroTime   (*ALOscInit)(void **oscState,f32 *initVal, u8 oscType,
-                                   u8 oscRate, u8 oscDepth, u8 oscDelay);
+                                   u8 oscRate, u8 oscDepth, u8 oscDelay, u8 unk07);
 typedef ALMicroTime   (*ALOscUpdate)(void *oscState, f32 *updateVal);
 typedef void          (*ALOscStop)(void *oscState);
 
@@ -808,12 +827,6 @@ typedef struct {
     ALOscInit           initOsc;
     ALOscUpdate         updateOsc;
     ALOscStop           stopOsc;
-    /* From here is custom variables for DK64 */
-    f32                 unk7C;
-    f32                 unk80;
-    s32                 unk84;
-    s8                  unk88;
-    s8                  unk89;
 } ALCSPlayer;
 
 /*
@@ -837,7 +850,7 @@ f32     alCSeqTicksToSec(ALCSeq *seq, s32 ticks, u32 tempo);
 u32     alCSeqSecToTicks(ALCSeq *seq, f32 sec, u32 tempo);
 void    alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks);
 void    alCSeqSetLoc(ALCSeq *seq, ALCSeqMarker *marker);
-void    alCSeqGetLoc(ALCSeq *seq, ALCSeqMarker *marker); 
+void    alCSeqGetLoc(ALCSeq *seq, ALCSeqMarker *marker);
 
 /*
  * Sequence Player routines
@@ -930,9 +943,11 @@ void    alCSPSendMidi(ALCSPlayer *seqp, s32 ticks, u8 status,
  ***********************************************************************/
 
 typedef struct {
-    s32         maxSounds;
+    s32         maxStates;
     s32         maxEvents;
+	s32         maxSounds;
     ALHeap      *heap;
+    u16         unk10;
 } ALSndpConfig;
 
 typedef struct {
@@ -949,7 +964,7 @@ typedef struct {
 } ALSndPlayer;
 
 typedef s16   ALSndId;
-    
+
 void            alSndpNew(ALSndPlayer *sndp, ALSndpConfig *c);
 void            alSndpDelete(ALSndPlayer *sndp);
 
@@ -971,14 +986,8 @@ void            alSndpSetPriority(ALSndPlayer *sndp, ALSndId id, u8 priority);
 void            alSndpSetFXMix(ALSndPlayer *sndp, u8 mix);
 s32             alSndpGetState(ALSndPlayer *sndp);
 
-#ifndef _FINALROM
-void alParseAbiCL(Acmd *cmdList, u32 nbytes);
-#endif
 #ifdef _LANGUAGE_C_PLUS_PLUS
 }
 #endif
 
 #endif /* !__LIB_AUDIO__ */
-
-
-

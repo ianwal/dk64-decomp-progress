@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "n_synthInternals.h"
 
 s32 *func_global_asm_8073E8C0(Struct8073BC74_auxbus_unk1C *, s32, Acmd *);     /* extern */
 
