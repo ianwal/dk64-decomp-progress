@@ -53,14 +53,9 @@ void func_bonus_800240F0(void) {
     func_global_asm_8072707C(5, 0x40, 0);
 }
 
-// Jumptable, doable, close
-// https://decomp.me/scratch/6Kwyv
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_0/func_bonus_80024158.s")
-
-/*
 void func_global_asm_806C8E58(s16 arg0);
 u8 func_global_asm_806FDB8C(s32, s8 *, s32, f32, f32, f32);
-extern s32 D_bonus_8002D863[4];
+extern s32 D_bonus_8002D860[4];
 extern s16 D_global_asm_80750AC4;
 extern s16 D_global_asm_8076AEF2;
 extern u8 D_global_asm_807FBDC4;
@@ -74,9 +69,11 @@ typedef struct {
 } A178_80024158;
 
 void func_bonus_80024158(void) {
+    s16 i;
+    s32 pad;
     u8 sp6F;
     u8 sp6E;
-    s16 i;
+    s16 pad1;
     char *aString;
     u8 boolVal2;
     u8 temp_v1_2;
@@ -86,8 +83,8 @@ void func_bonus_80024158(void) {
     s32 song;
     char *cString;
     s32 var_v1;
+    s32 var_v2;
     A178_80024158 *a178;
-    s32 pad;
 
     a178 = current_actor_pointer->unk178;
     initializeCharacterSpawnerActor();
@@ -110,18 +107,18 @@ void func_bonus_80024158(void) {
         func_global_asm_806FB370(4, 0, 2);
         current_actor_pointer->control_state = 0;
         func_global_asm_806A2A10(0xDC, 0x2A, D_global_asm_807FDC9C->unkA_u8[1]);
-        switch (sp6F) { // switch 1
-            case 14: // switch 1
+        switch (sp6F) {
+            case 14:
                 func_global_asm_8063DA78(((rand() >> 0xF) % 32767) % 4, 1, 1);
                 // fallthrough
-            case 0: // switch 1
-            case 4: // switch 1
-            case 13: // switch 1
+            case 0:
+            case 4:
+            case 13:
 block_4:
                 aString = getTextString(0x1A, 2, 1);
                 boolVal2 = TRUE;
                 break;
-            case 15: // switch 1
+            case 15:
                 func_global_asm_806C8E58(8);
                 current_player->control_state = 0xC;
                 current_player->control_state_progress = 0;
@@ -129,28 +126,28 @@ block_4:
                 current_player->unkB8 = 0.0f;
                 func_global_asm_806D03BC();
                 goto block_4;
-            case 1: // switch 1
-            case 10: // switch 1
-            case 12: // switch 1
-            case 16: // switch 1
+            case 1:
+            case 10:
+            case 12:
+            case 16:
                 a178->unk2 = 0;
                 break;
-            case 3: // switch 1
+            case 3:
                 func_bonus_800240F0();
                 break;
-            case 5: // switch 1
+            case 5:
                 func_bonus_800240F0();
                 // fallthrough
-            case 2: // switch 1
-            case 6: // switch 1
-            case 7: // switch 1
-            case 8: // switch 1
-            case 11: // switch 1
+            case 2:
+            case 6:
+            case 7:
+            case 8:
+            case 11:
                 D_global_asm_80750AC4 = 0;
                 aString = getTextString(0x1A, 3, 1);
                 boolVal2 = TRUE;
                 break;
-            case 9: // switch 1
+            case 9:
                 getSpawnerTiedActor((((rand() >> 0xF) % 32767) % 8) + 0x11, 0)->unk15F = 1;
                 break;
         }
@@ -166,11 +163,10 @@ block_4:
             if (D_global_asm_807FBB70.unk258[i] == 3) {
                 boolVal1 = TRUE;
                 temp_v1_2 = D_global_asm_807FBB70.unk278[i]->unk2;
-                switch (sp6F) { // switch 2
-                    case 0: // switch 2
-                        temp_v0_2 = a178->unk4;
-                        if (temp_v0_2 != 0) {
-                            if (temp_v0_2 >= 2) {
+                switch (sp6F) {
+                    case 0:
+                        if (a178->unk4 != 0) {
+                            if (a178->unk4 >= 2) {
                                 aString = getTextString(0x1A, 0xF, 1);
                                 bString = malloc(strlen(aString) + 5);
                                 func_global_asm_8061134C(bString);
@@ -182,7 +178,7 @@ block_4:
                             boolVal1 = FALSE;
                         }
                         break;
-                    case 16: // switch 2
+                    case 16:
                         if ((a178->unk2 == 0) && (temp_v1_2 != 0x28)) {
                             func_global_asm_8069D2AC(0, 0, 0x8C, getTextString(0x1A, 0x17, 1), 0, 0x28, 8, 8);
                             boolVal1 = FALSE;
@@ -191,7 +187,7 @@ block_4:
                             boolVal1 = FALSE;
                         }
                         break;
-                    case 2: // switch 2
+                    case 2:
                         boolVal1 = TRUE;
                         if (func_global_asm_806F8AD4(0xB, 0) < sp6E) {
                             if (a178->unk4 >= 2) {
@@ -205,15 +201,15 @@ block_4:
                             boolVal1 = FALSE;
                         }
                         break;
-                    case 7: // switch 2
-                    case 8: // switch 2
-                    case 9: // switch 2
-                    case 11: // switch 2
-                    case 15: // switch 2
+                    case 7:
+                    case 8:
+                    case 9:
+                    case 11:
+                    case 15:
                         boolVal1 = FALSE;
                         break;
-                    case 12: // switch 2
-                    case 13: // switch 2
+                    case 12:
+                    case 13:
                         boolVal1 = FALSE;
                         if (temp_v1_2 != 0x12) {
                             if (temp_v1_2 == 0x27) {
@@ -237,30 +233,29 @@ block_4:
         }
     }
     if (current_actor_pointer->control_state == 0) {
-        switch (sp6F) { // switch 3
-            case 15: // switch 3
+        switch (sp6F) {
+            case 15:
                 func_global_asm_80724A20();
                 // fallthrough
-            case 4: // switch 3
-            case 11: // switch 3
-            case 13: // switch 3
-            case 14: // switch 3
+            case 4:
+            case 11:
+            case 13:
+            case 14:
                 if (a178->unk4 == 0) {
                     func_bonus_800264E0(1, 0xE);
                 }
                 // fallthrough
-            case 0: // switch 3
-                var_v1 = MAX(0, sp6E - enemies_killed);
-                if (var_v1 != a178->unk4) {
+            case 0:
+                if (a178->unk4 != MAX(0, sp6E - enemies_killed)) {
                     func_global_asm_806FDAB8(a178->unk9, MATH_PI_F);
                     a178->unk4 = MAX(0, sp6E - enemies_killed);
                 }
                 goto block_71;
-            case 7: // switch 3
-            case 8: // switch 3
+            case 7:
+            case 8:
                 func_global_asm_80724A20();
                 goto block_71;
-            case 5: // switch 3
+            case 5:
                 if ((current_map == MAP_SPLISH_SPLASH_SALVAGE_EASY) && (a178->unk4 == 1)) {
                     if (current_actor_pointer->control_state_progress == 0) {
                         current_actor_pointer->control_state_progress++;
@@ -270,14 +265,13 @@ block_4:
                     }
                 }
                 // fallthrough
-            case 6: // switch 3
+            case 6:
                 if (a178->unk4 == 0) {
                     func_bonus_800264E0(1, 0xE);
                 }
                 // fallthrough
-            case 2: // switch 3
-                var_v1 = MAX(0, sp6E - func_global_asm_806F8AD4(0xB, 0));
-                if (var_v1 != a178->unk4) {
+            case 2:
+                if (a178->unk4 != MAX(0, sp6E - func_global_asm_806F8AD4(0xB, 0))) {
                     func_global_asm_806FDAB8(a178->unk9, MATH_PI_F);
                     a178->unk4 = MAX(0, sp6E - func_global_asm_806F8AD4(0xB, 0));
                 }
@@ -286,40 +280,40 @@ block_71:
                     addActorToTextOverlayRenderArray(func_bonus_80024000, current_actor_pointer, 3);
                 }
                 break;
-            case 9: // switch 3
-            case 10: // switch 3
-            case 12: // switch 3
-            case 16: // switch 3
+            case 9:
+            case 10:
+            case 12:
+            case 16:
                 func_global_asm_80724A20();
                 break;
         }
     }
-    switch (a178->unk0) { // switch 6; irregular
-        case 0: // switch 6
+    switch (a178->unk0) {
+        case 0:
             if (func_global_asm_80629148() != 0) {
                 func_global_asm_80629174();
                 if (D_global_asm_8076AEF2 == 0x11) {
                     func_global_asm_8070E8DC(2);
                 }
-                loadText(current_actor_pointer, 0, D_bonus_8002D863[sp6F]);
+                loadText(current_actor_pointer, 0, D_bonus_8002D860[sp6F]);
                 a178->unk0++;
             }
             break;
-        case 1: // switch 6
+        case 1:
             if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
                 func_global_asm_8061CB08();
                 func_global_asm_806A2B08(current_actor_pointer->unk11C);
-                switch (current_map) { // switch 7; irregular
+                switch (current_map) {
                     case MAP_KROOL_BARREL_TINY_MUSHROOM_GAME:
                     case MAP_KROOL_BARREL_DK_TARGET_GAME:
                     case MAP_KROOL_BARREL_LANKY_MAZE:
-                    case MAP_KROOL_BARREL_DIDDY_KREMLING_GAME: // switch 7
-                    case MAP_KROOL_BARREL_DIDDY_ROCKETBARREL_GAME: // switch 7
-                    case MAP_KROOL_BARREL_LANKY_SHOOTING_GAME: // switch 7
-                    case MAP_KROOL_BARREL_CHUNKY_HIDDEN_KREMLING_GAME: // switch 7
-                    case MAP_KROOL_BARREL_TINY_PONY_TAIL_TWIRL_GAME: // switch 7
-                    case MAP_KROOL_BARREL_CHUNKY_SHOOTING_GAME: // switch 7
-                    case MAP_KROOL_BARREL_DK_RAMBI_GAME: // switch 7
+                    case MAP_KROOL_BARREL_DIDDY_KREMLING_GAME:
+                    case MAP_KROOL_BARREL_DIDDY_ROCKETBARREL_GAME:
+                    case MAP_KROOL_BARREL_LANKY_SHOOTING_GAME:
+                    case MAP_KROOL_BARREL_CHUNKY_HIDDEN_KREMLING_GAME:
+                    case MAP_KROOL_BARREL_TINY_PONY_TAIL_TWIRL_GAME:
+                    case MAP_KROOL_BARREL_CHUNKY_SHOOTING_GAME:
+                    case MAP_KROOL_BARREL_DK_RAMBI_GAME:
                         song = 0x75;
                         break;
                     default:
@@ -339,8 +333,8 @@ block_71:
             }
             break;
     }
-    switch (current_actor_pointer->control_state) { // switch 5
-        case 0x0: // switch 5
+    switch (current_actor_pointer->control_state) {
+        case 0x0:
             if (((sp6F == 1) || (sp6F == 0) || (sp6F == 2) || (sp6F == 0x10)) && (player_pointer->y_position < 0.0f)) {
                 func_bonus_800265C0(1, 1);
             } else if ((sp6F == 4) && (player_pointer->y_position < -20.0f)) {
@@ -363,13 +357,13 @@ block_71:
                 }
             }
             break;
-        default: // switch 5
+        default:
             break;
-        case 0x1: // switch 5
+        case 0x1:
             current_actor_pointer->unk11C->control_state = 0;
             current_actor_pointer->control_state++;
             break;
-        case 0x27: // switch 5
+        case 0x27:
             func_global_asm_806FDAB8(a178->unk9, MATH_PI_F);
             a178->unk4--;
             if (a178->unk4 == 0) {
@@ -378,19 +372,18 @@ block_71:
                 current_actor_pointer->control_state = 0;
             }
             break;
-        case 0x28: // switch 5
+        case 0x28:
             a178->unk2 = 1;
             current_actor_pointer->control_state = 0;
             break;
-        case 0x37: // switch 5
+        case 0x37:
             func_bonus_800265C0(1, 1);
             break;
-        case 0x12: // switch 5
+        case 0x12:
             func_bonus_800264E0(1, 0xE);
             break;
     }
 }
-*/
 
 Gfx *func_bonus_80024D3C(Gfx *dl, s32 arg1) {
     gSPDisplayList(dl++, &D_1000118);

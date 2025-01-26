@@ -518,7 +518,7 @@ segments:
     exclusive_ram_id: overlay
     subsegments:
       - [0x2175C60, c, code_0]
-      - [0x2178BD0, data, code_0]
+      - [0x2178BD0, .data, code_0]
       - [0x2178CA0, .rodata, code_0]
   - name: minecart
     dir: minecart

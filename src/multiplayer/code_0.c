@@ -59,6 +59,115 @@ extern u32 D_global_asm_807552E8;
 extern s32 D_global_asm_807552EC;
 extern s8 D_global_asm_8076A105; // A player index
 
+// .data
+u8 D_multiplayer_80026F70 = 0;
+
+s32 D_multiplayer_80026F74[] = {
+    0x024900EB,
+    0x02440050,
+    0x00000000, // TODO: Padding?
+};
+
+s32 D_multiplayer_80026F80[] = {
+    0x057E0160,
+    0x057900C8,
+    0x00000000, // TODO: Padding?
+};
+
+s32 D_multiplayer_80026F8C[] = {
+    0x04B00025,
+    0x02BC00AA,
+    0x00000000, // TODO: Padding?
+};
+
+s32 D_multiplayer_80026F98[] = {
+    0x03E80050,
+    0x0384005A,
+    0x00000000,
+};
+
+typedef struct MultiplayerStruct3 {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    s16 unk8;
+} MultiplayerStruct3;
+
+typedef struct {
+    Maps map;
+    s32 unk4;
+    MultiplayerStruct3 *unk8;
+    s32 unkC[4];
+    s32 unk1C;
+} Struct80026FA4;
+
+Struct80026FA4 D_multiplayer_80026FA4[4] = {
+    {
+        MAP_KONG_BATTLE_BATTLE_ARENA,
+        0x00000001,
+        D_multiplayer_80026F74,
+        0xFFFFFFFF,
+        0xFFFFFFFF,
+        0xFFFFFFFF,
+        0xFFFFFFFF,
+        0xFFFFFFFF,
+    },
+    {
+        MAP_KONG_BATTLE_ARENA_1,
+        0x00000001,
+        D_multiplayer_80026F80,
+        0x00000050,
+        0x00000051,
+        0x00000052,
+        0x00000053,
+        0xFFFFFFFF,
+    },
+    {
+        MAP_KONG_BATTLE_ARENA_2,
+        0x00000001,
+        D_multiplayer_80026F8C,
+        0x00000028,
+        0x00000046,
+        0x00000049,
+        0x00000052,
+        0x00000053,
+    },
+    {
+        MAP_KONG_BATTLE_ARENA_3,
+        0x00000001,
+        D_multiplayer_80026F98,
+        0x00000026,
+        0x00000028,
+        0x00000027,
+        0x00000025,
+        0xFFFFFFFF,
+    }
+};
+
+typedef struct Struct80027024 {
+    void* unk0;
+    f32 unk4;
+    s32 unk8;
+} Struct80027024;
+
+// TODO: What are these?
+extern s32 D_global_asm_80720768;
+extern s32 D_global_asm_807204BC;
+
+Struct80027024 D_multiplayer_80027024[] = {
+    {
+        &D_global_asm_80720768,
+        0.3f,
+        0x0000000C,
+    },
+    {
+        &D_global_asm_807204BC,
+        0.5f,
+        0x00000000,
+    },
+};
+
 Gfx *func_multiplayer_80024000(Gfx *dl, Actor *arg1) {
     AAD_multiplayer_80024000 *aaD;
     f32 var_f2;
@@ -371,29 +480,11 @@ Gfx *func_multiplayer_80025264(Gfx *dl, Actor *arg1) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025378.s")
 
-typedef struct MultiplayerStruct3 {
-    s16 unk0;
-    s16 unk2;
-    s16 unk4;
-    s16 unk6;
-    s16 unk8;
-} MultiplayerStruct3;
-
-typedef struct {
-    Maps map;
-    s32 unk4;
-    MultiplayerStruct3 *unk8;
-    s32 unkC[4];
-    s32 unk1C;
-} Struct80025F84;
-
-Struct80025F84 *func_multiplayer_80025378();
-
-extern Struct80025F84 D_multiplayer_80026FA4[];
+Struct80026FA4 *func_multiplayer_80025378();
 
 /*
-Struct80025F84 *func_multiplayer_80025378(void) {
-    Struct80025F84 *var_v1;
+Struct80026FA4 *func_multiplayer_80025378(void) {
+    Struct80026FA4 *var_v1;
     u32 i;
 
     var_v1 = NULL;
@@ -531,7 +622,7 @@ void func_multiplayer_80025794(void) {
     s32 temp_t8;
     s32 var_s7;
     MultiplayerStruct3 *temp_s0;
-    Struct80025F84 *temp_v0;
+    Struct80026FA4 *temp_v0;
     s64 temp_double;
 
     temp_v0 = func_multiplayer_80025378();
@@ -688,7 +779,7 @@ void func_multiplayer_80025CE8(s32 playerIndex) {
 
 void func_multiplayer_80025F84(void) {
     s32 i;
-    Struct80025F84 *temp_v0;
+    Struct80026FA4 *temp_v0;
 
     temp_v0 = func_multiplayer_80025378();
     for (i = 0; i < 4 && temp_v0->unkC[i] != -1; i++) {
@@ -740,12 +831,6 @@ typedef struct MultiplayerActor318AAD {
     u8 unk70;
 } MultiplayerActor318AAD;
 
-typedef struct Struct80027024 {
-    void* unk0;
-    f32 unk4;
-    s32 unk8;
-} Struct80027024;
-
 typedef struct Struct80026094_0 {
     s16 unk0;
     s16 unk2;
@@ -767,7 +852,6 @@ void func_multiplayer_80025794(void);
 extern OSTime D_global_asm_807445B0;
 extern s32 D_global_asm_80767CC0;
 extern void *D_global_asm_8076D1F8;
-extern u8 D_multiplayer_80026F70;
 extern Struct80027024 D_multiplayer_80027024[];
 
 /*
