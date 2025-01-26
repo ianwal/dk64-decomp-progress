@@ -690,7 +690,7 @@ us,asm,func_global_asm_806F4EBC,148,yes
 us,asm,countSetFlags,116,yes
 us,asm,func_global_asm_8061DAAC,184,yes
 us,asm,func_global_asm_806F1768,240,yes
-us,asm,func_global_asm_8073D1F0,2112,no
+us,asm,func_global_asm_8073D1F0,2112,yes
 us,asm,func_global_asm_8071A038,428,yes
 us,asm,func_global_asm_8067A69C,112,yes
 us,asm,func_global_asm_8073A2A4,288,yes
@@ -899,7 +899,6 @@ us,asm,func_global_asm_8065A654,12,yes
 us,asm,func_global_asm_80676540,80,yes
 us,asm,func_global_asm_806E9388,112,yes
 us,asm,func_global_asm_806CD9A0,900,yes
-us,asm,func_global_asm_8073E63C,256,yes
 us,asm,func_global_asm_80634908,84,yes
 us,asm,func_global_asm_806B1290,184,yes
 us,asm,func_global_asm_806E0454,140,yes
@@ -1497,6 +1496,7 @@ us,asm,func_global_asm_8072A7DC,144,yes
 us,asm,func_global_asm_80616CB8,164,yes
 us,asm,func_global_asm_8064A804,704,yes
 us,asm,func_global_asm_80642204,212,yes
+us,asm,_n_filterBuffer,256,yes
 us,asm,func_global_asm_80611CF0,24,yes
 us,asm,func_global_asm_80697230,1740,yes
 us,asm,func_global_asm_806A495C,552,no

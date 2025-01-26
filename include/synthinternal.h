@@ -188,8 +188,9 @@ typedef struct {
         s16		fccoef[16];
         s64             force_aligned;
     } fcvec;
-    POLEF_STATE		*fstate;
     s32			first;
+    POLEF_STATE		*fstate[2];
+    s32         unk34;
 } ALLowPass;
 
 typedef struct {
@@ -208,13 +209,12 @@ typedef struct {
 
 typedef s32   (*ALSetFXParam)(void *, s32, void *);
 typedef struct {
-    struct ALFilter_s   filter;
-    s16			*base;
-    s16			*input;
-    u32			length;
-    ALDelay		*delay;
-    u8			section_count;
-    ALSetFXParam        paramHdl;
+    u32 length;
+    ALDelay *delay;
+    u8 section_count;
+    struct ALFilter_s filter;
+    s16 *base[2];
+    s16 *input[2];
 } ALFx;
 
 void    alFxNew(ALFx *r, ALSynConfig *c, ALHeap *hp);
