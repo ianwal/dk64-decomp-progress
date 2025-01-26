@@ -376,7 +376,7 @@ segments:
       - [0x21435C0, c, audio/done/n_env]
       - [0x21445A0, c, audio/done/code_1445A0]
       - [0x2144A90, c, audio/done/code_144A90]
-      - [0x2144E00, c, audio/code_144E00]
+      - [0x2144E00, c, audio/done/n_load]
       - [0x2145950, c, audio/done/code_145950]
       - [0x2145D70, c, audio/done/code_145D70]
       - [0x2146010, bin, code_146010]
