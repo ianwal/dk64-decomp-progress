@@ -346,7 +346,7 @@ segments:
       - [0x213D020, c, audio/done/code_13D020]
       - [0x213D0B0, c, audio/done/code_13D0B0]
       - [0x213D100, c, audio/done/code_13D100]
-      - [0x213D170, c, audio/cseq]
+      - [0x213D170, c, audio/done/n_csq]
       - [0x213E020, c, audio/done/n_sl]
       - [0x213E0E0, c, audio/done/link]
       - [0x213E160, c, audio/synthesizer]

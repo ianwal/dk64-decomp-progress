@@ -357,6 +357,7 @@ build/us/src/dk64_boot/libc/llcvt%.0: MIPSISET := -mips3 -o32
 build/us/src/dk64_boot/os/%.c.o: OPT_FLAGS = -O1
 
 build/us/src/global_asm/audio/%.c.o: OPT_FLAGS = -g
+build/us/src/global_asm/audio/%.c.o: CC := ido/ido7.1_recomp/cc
 
 #build/us/src/dk64_boot/gu/%.c.o: INCLUDE_CFLAGS = -I . -I include -I include/2.0L -I include/2.0L/PR
 

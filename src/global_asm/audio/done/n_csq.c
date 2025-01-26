@@ -234,9 +234,6 @@ void func_global_asm_80738D20(ALCSeq *seq, ALCSeqMarker *m, u32 ticks) {
     } while (tempSeq.lastTicks < ticks);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/cseq/func_global_asm_80738E58.s")
-
-/*
 void func_global_asm_80738E58(ALCSeq *seq, ALCSeqMarker *m, u32 ticks, u32 arg3) {
     N_ALEvent evt;
 	ALCSeq tempSeq;
@@ -278,7 +275,6 @@ void func_global_asm_80738E58(ALCSeq *seq, ALCSeqMarker *m, u32 ticks, u32 arg3)
 		}
 	} while (evt.type != AL_SEQ_END_EVT);
 }
-*/
 
 
 u8 func_global_asm_80739098(ALCSeq *seq, s32 track) {
