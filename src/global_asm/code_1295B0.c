@@ -724,6 +724,7 @@ u8 func_global_asm_807280C8(EnemyInfo *arg0, s32 arg1) {
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_8072818C.s")
+
 /*
 u8 func_global_asm_8072818C(EnemySpawner *arg0, s32 arg1) {
     f32 temp_f0;
@@ -757,10 +758,11 @@ void func_global_asm_8072827C(Struct80755690_unk4 *arg0) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_80728300.s")
 
 /*
-Close - Enemy spawner loader
+// Enemy spawner loader
 void func_global_asm_80728300(s16 *file, FenceDataStruct *fence, SpawnerDataStruct *spawner) {
     s16 j;
     s16 var_s3;

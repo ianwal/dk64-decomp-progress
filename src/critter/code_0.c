@@ -764,12 +764,12 @@ void func_critter_80025F8C(CritterStruct7 *arg0, CritterStruct7 *arg1, u8 arg2) 
     arg1->unk10 += arg0->unk4;
 }
 
+// float
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_8002601C.s")
 
 extern CritterStruct5 *D_critter_80029BA4;
 
 /*
-// TODO: Kinda close, lots of float nonsense to sort out
 void func_critter_8002601C(Critter *arg0) {
     CharacterChange *temp_v1_2;
     f32 temp_f12;

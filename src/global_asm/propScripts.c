@@ -507,6 +507,7 @@ void func_global_asm_8064431C(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3
     createLight(x1, y1, z1, x2, y2, z2, 0.0f, 1, D_global_asm_807480D0, D_global_asm_807480D4, D_global_asm_807480D8);
 }
 
+// close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806443E4.s")
 
 void func_global_asm_80608DA8(s32, u8, s32, s32, s32);
@@ -528,7 +529,6 @@ typedef struct InstanceData806443E4 {
 } InstanceData806443E4;
 
 /*
-Close, regalloc
 void func_global_asm_806443E4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData806443E4 *var_v1;
     f32 var_f16;

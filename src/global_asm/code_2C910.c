@@ -51,10 +51,10 @@ void func_global_asm_80627C10(u8 arg0) {
     last_spawned_actor->unk16C = D_global_asm_80757F70[index + 2];
 }
 
+// doable, struct on stack?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2C910/func_global_asm_80627C5C.s")
 
 /*
-// Seems doable, struct on the stack?
 void func_global_asm_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
     ? sp98;
     ? sp58;

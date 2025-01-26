@@ -757,7 +757,7 @@ void func_global_asm_8071A440(Struct80717D84 *arg0, s32 arg1) {
     }
 }
 
-// TODO: Close, rodata
+// Close, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071A674.s")
 
 extern Struct80717D84 *D_8002FBB0;

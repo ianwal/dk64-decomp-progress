@@ -152,6 +152,7 @@ s32 func_global_asm_80678014(s32 arg0) {
     return FALSE;
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80678050.s")
 
 extern u16 D_global_asm_807FBB3E;
@@ -161,7 +162,7 @@ extern u16 D_global_asm_8074DA58[];
 void func_global_asm_8067AE90(Actor *arg0);
 
 /*
-// Doable, initializeActor(behaviour)
+// initializeActor(behaviour)
 s32 func_global_asm_80678050(u16 arg0) {
     Actor *newActor;
     u16 var_a1;

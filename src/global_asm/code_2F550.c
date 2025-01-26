@@ -9,7 +9,7 @@ extern void *D_global_asm_807F5E60;
 extern u8 D_global_asm_807F5FEC;
 extern s32 D_global_asm_807F6C28;
 
-// close
+// close, float
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062A850.s")
 
 /*
@@ -106,7 +106,7 @@ void func_global_asm_8062AC68(void *arg0) {
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062AD28.s")
 
-void func_global_asm_8062B220(GlobalASMStruct64 *);    /* extern */
+void func_global_asm_8062B220(GlobalASMStruct64 *);
 
 /*
 void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, GlobalASMStruct64 *arg3, f32 *arg4) {
@@ -197,7 +197,6 @@ void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, GlobalASMStruct64 *a
     }
 }
 */
-
 
 void func_global_asm_8062B194(GlobalASMStruct64 *arg0) {
     s16 temp1;

@@ -140,6 +140,7 @@ void func_global_asm_805FB7E4(void) {
     osWriteBackDCacheAll();
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FB944.s")
 
 void func_global_asm_80610350(u8, u8, s32);
@@ -162,7 +163,6 @@ extern s8 D_global_asm_807445A4;
 extern s16 D_global_asm_80744490;
 
 /*
-Very close
 void func_global_asm_805FB944(u8 arg0) {
     u8 var_a1 = 1;
     s32 var_a2;

@@ -738,10 +738,10 @@ void func_global_asm_8066E990(Actor *arg0) {
     }
 }
 
+// close, fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066E9EC.s")
 
 /*
-// TODO: Pretty close, surprisingly fiddly
 f32 func_global_asm_8066E9EC(Actor *arg0, s32 arg1, f32 arg2) {
     LedgeInfo8C *phi_v1;
 

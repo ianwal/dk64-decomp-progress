@@ -235,10 +235,11 @@ void func_global_asm_8061159C(HeapHeader *arg0) {
     arg0[-1].unkB = 1;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_806115A8.s")
 
 /*
-// TODO: Close, might only have 1 param
+// TODO: Might only have 1 param
 void func_global_asm_806115A8(HeapHeader **arg0, HeapHeader *arg1) {
     arg1 = &(*arg0)[-1];
     arg1->unkB = 2;

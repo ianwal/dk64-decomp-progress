@@ -2,7 +2,7 @@
 #include "functions.h"
 #include "n_synthInternals.h"
 
-s32 *func_global_asm_8073E8C0(Struct8073BC74_auxbus_unk1C *, s32, Acmd *);     /* extern */
+s32 *func_global_asm_8073E8C0(Struct8073BC74_auxbus_unk1C *, s32, Acmd *);
 
 // n_alAuxBusPull
 s32 *func_global_asm_8073F8A0(s32 arg0, Acmd *arg1, s32 arg2, s32 *arg3) {

@@ -759,10 +759,10 @@ s32 func_global_asm_806CCC10(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CCC54.s")
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CD424.s")
 
 /*
-// TODO: Progress made, tricky but doable
 void func_global_asm_806CD424(s16 arg0, f32 arg1, f32 arg2) {
     f32 sp3C;
     f32 sp38;

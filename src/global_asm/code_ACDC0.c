@@ -152,6 +152,7 @@ Gfx *func_global_asm_806AA09C(s16 x, s16 y, s16 arg2, s16 arg3, Gfx *dl, s8 arg5
     return displayImage(dl, 0x9F, 0, 2, 32, 32, x + ((var_s0 - 16) * scale), y + (45.0f * scale), scale * 3.125, scale * 3.125, 0, 0.0f);
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806AA304.s")
 
 /*

@@ -2054,6 +2054,7 @@ void func_global_asm_806E64D0(void) {
     extra_player_info_pointer->unk38 = D_global_asm_80753988[D_global_asm_807FD584];
 }
 
+// fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E65BC.s")
 
 extern s16 D_global_asm_80753B44[];
@@ -2061,7 +2062,6 @@ extern s16 D_global_asm_80753B54[];
 extern s16 D_global_asm_80753B64[];
 
 /*
-// TODO: Surprisingly fiddly
 void func_global_asm_806E65BC(void) {
     f64 temp_f0;
     s16 phi_t1;

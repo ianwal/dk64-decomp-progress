@@ -174,7 +174,6 @@ typedef struct {
 } AAD_global_asm_8069E774;
 
 /*
-// TODO: Doable, great progress made
 void func_global_asm_8069E774(void) {
     u16 sp8E;
     f32 sp88;

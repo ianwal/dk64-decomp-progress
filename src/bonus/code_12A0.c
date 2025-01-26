@@ -94,7 +94,7 @@ void func_bonus_800256C4(Actor **arg0, u8 arg1) {
     }
 }
 
-// Jumptable
+// Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_bonus_8002570C.s")
 
 typedef struct HandleAAD {
@@ -121,7 +121,6 @@ extern SpriteData D_global_asm_80720CF0;
 extern SoundState *D_global_asm_807457E4[];
 
 /*
-Incredibly close...
 void func_bonus_8002570C(void) {
     PlayerAdditionalActorData *sp4C;
     SoundState *temp_a0;

@@ -24,10 +24,11 @@ void func_global_asm_8070C27C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4,
     guMtxF2L(sp28, arg0);
 }
 
+// stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070C2D8.s")
 
 /*
-// TODO: Logic is correct but missing some stack usage
+// Logic is correct but missing some stack usage
 void func_global_asm_8070C2D8(f32 (*arg0)[4], f32 (*arg1)[4], f32 (*arg2)[4]) {
     arg2[0][0] = (arg0[0][0] * arg1[0][0]) + (arg0[0][1] * arg1[1][0]) + (arg0[0][2] * arg1[2][0]);
     arg2[0][1] = (arg0[0][0] * arg1[0][1]) + (arg0[0][1] * arg1[1][1]) + (arg0[0][2] * arg1[2][1]);
@@ -75,10 +76,11 @@ void func_global_asm_8070C590(f32 (*arg0)[4], f32 (*arg1)[4], f32 (*arg2)[4]) {
     arg2[3][3] = 1.0f;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070C808.s")
 
 /*
-// TODO: Order of operations nonsense
+// Order of operations nonsense
 void func_global_asm_8070C808(float (*mf)[4], f32 *arg1, f32 *arg2, f32 *arg3) {
     *arg1 = (*arg1 * mf[0][0]) + (*arg2 * mf[1][0]) + (*arg3 * mf[2][0]) + mf[3][0];
     *arg2 = (*arg1 * mf[0][1]) + (*arg2 * mf[1][1]) + (*arg3 * mf[2][1]) + mf[3][1];
@@ -258,10 +260,10 @@ void func_global_asm_8070CD8C(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3) {
     guMtxF2L(sp18, arg0);
 }
 
+// close, fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070CDD0.s")
 
 /*
-// TODO: Surprisingly close but very fiddly
 void func_global_asm_8070CDD0(f32 (*arg0)[4], f32 (*arg1)[4], f32 arg2, f32 arg3, f32 arg4) {
     f32 sp30;
     f32 sp2C;

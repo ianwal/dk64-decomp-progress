@@ -188,10 +188,10 @@ void func_jetpac_800248A0(Gfx **arg0) {
     func_jetpac_80025904(arg0);
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_800248E8.s")
 
 /*
-// TODO: Doable
 void func_jetpac_800248E8(Gfx **arg0) {
     Competitor *player;
     JetpacPickupStruct *rocket;

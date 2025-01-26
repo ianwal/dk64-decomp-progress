@@ -334,10 +334,10 @@ void func_global_asm_806524A0(Model2Model *arg0, u8 arg1) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80652594.s")
 
 /*
-// TODO: Quite close
 // Something to do with arg2? Loop condition? Break?
 u8 func_global_asm_80652594(Model2Model *arg0, s16 *arg1, u8 arg2) {
     u8 sp4F;
@@ -472,10 +472,10 @@ u8 func_global_asm_80652BC8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     return phi_s1;
 }
 
+// fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80652DB4.s")
 
 /*
-// TODO: Surprisingly fiddly
 s32 func_global_asm_80652DB4(f32 arg0, f32 arg1, f32 arg2) {
     s16 temp_v0;
     s16 i;
@@ -520,6 +520,7 @@ s16 func_global_asm_80652F9C(f32 arg0, f32 arg1, f32 arg2, s16 arg3) {
     return sp26;
 }
 
+// fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80652FDC.s")
 
 typedef struct {
@@ -535,7 +536,6 @@ extern s32 D_global_asm_807F70AC;
 extern Struct807F70B4 *D_807F70B4;
 
 /*
-// TODO: Fiddly, progress made
 void func_global_asm_80652FDC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, s16 *arg5) {
     s32 i;
     Struct807F70B4 *temp_v0_2;
@@ -1002,7 +1002,7 @@ void func_global_asm_80655BF0(void) {
 extern s16 D_global_asm_807F6C30[];
 
 /*
-// TODO: Close, it's an unrolled loop
+// It's an unrolled loop
 s32 func_global_asm_80655CF8(s16 arg0, s32 arg1) {
     s32 i;
     for (i = 0; i < arg1; i++) {

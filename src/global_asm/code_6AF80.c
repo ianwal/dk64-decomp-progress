@@ -678,10 +678,10 @@ s32 func_global_asm_80668B28(Struct8066893C *arg0, s32 arg1, s32 arg2) {
     return TRUE;
 }
 
+// TODO: Progress made
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_80668C30.s")
 
 /*
-// TODO: Progress made
 u8 func_global_asm_80668C30(Struct8066893C *arg0, f32 arg1, f32 arg2) {
     f64 temp_f22;
     f64 temp_f24;

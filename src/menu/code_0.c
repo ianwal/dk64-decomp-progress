@@ -219,6 +219,7 @@ Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
     return dl;
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_80024788.s")
 
 extern s16 D_menu_800330D8;
@@ -241,7 +242,6 @@ typedef struct {
 extern u8 D_menu_800330C0[];
 
 /*
-// TODO: Doable, good progress made
 void func_menu_80024788(SnideAaD180 *arg0) {
     s32 temp_v0;
     s32 sp40;
@@ -442,6 +442,7 @@ void func_menu_80024CB0(void) {
 }
 
 // Checks if all blueprints turned in, malloc, current_actor_pointer, playSFX
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_80024EF0.s")
 
 typedef struct RGB {
@@ -461,7 +462,6 @@ extern s8 D_menu_80033258;
 Gfx *func_menu_800252AC(Gfx *, Actor *);
 
 /*
-// Close
 void func_menu_80024EF0(void) {
     s32 color_index;
     s32 i, j, k;

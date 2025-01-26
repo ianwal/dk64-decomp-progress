@@ -1478,6 +1478,7 @@ void func_global_asm_80636AE8(ObjectModel2 *arg0) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636B50.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636C00.s")
 
 extern s32 D_global_asm_80747D70;

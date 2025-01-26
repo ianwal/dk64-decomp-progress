@@ -62,10 +62,10 @@ void func_global_asm_8065CDB0(Gfx *dl, Gfx *endDL) {
     }
 }
 
+// float, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065CE4C.s")
 
 /*
-// TODO: Quite close, annoying float nonsense
 void func_global_asm_8065CE4C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 *arg5) {
     f32 dx, dy, dz;
     f32 phi_f14;

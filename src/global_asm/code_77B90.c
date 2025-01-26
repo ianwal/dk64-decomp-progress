@@ -17,10 +17,10 @@ void func_global_asm_80672E90(s32 arg0, s32 arg1, s32 arg2) {
 }
 */
 
+// 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_77B90/func_global_asm_80672EBC.s")
 
 /*
-// TODO: Hmm, 64 bit nonsense?
 void func_global_asm_80672F94(s16, s64);
 extern s32 D_global_asm_807FB5E0;
 extern s32 D_global_asm_807FB5E4;

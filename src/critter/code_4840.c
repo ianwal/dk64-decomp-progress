@@ -72,11 +72,10 @@ s16 func_critter_800288A8(AAD_critter_8002904C *arg0, u8 *arg1, s16 arg2) {
     return sp94[0];
 }
 
-// Displaylist stuff
+// Displaylist stuff, close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_80028A9C.s")
 
 /*
-Very close - s1 and s2 need to be swapped
 Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg3) {
     Mtx sp98;
     Mtx sp58;

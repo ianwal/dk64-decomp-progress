@@ -179,10 +179,10 @@ void func_global_asm_806306D0(Chunk14 *current) {
     }
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_8063070C.s")
 
 /*
-// TODO: Pretty close, not sure exactly what it's doing
 Chunk14 *func_global_asm_8063070C(Chunk14 *arg0) {
     while (arg0) {
         if ((arg0->unk22 == 1) && (arg0->unk23 == 0)) {
@@ -241,10 +241,10 @@ void func_global_asm_806307CC(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 arg3
     *arg4 = found;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_80630890.s")
 
 /*
-// TODO: Pretty close
 Chunk14 *func_global_asm_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, Chunk14 **arg4) {
     Chunk14 *phi_a1;
     Chunk14 *phi_v1;

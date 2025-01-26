@@ -130,8 +130,6 @@ void func_global_asm_80659F7C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4) 
     }
 }
 
-
-
 void func_global_asm_8065A570(void) {
     D_global_asm_807F7ECC = func_global_asm_80612D10(0.4363323152f);
     D_global_asm_807F7ED0 = func_global_asm_80612D10(1.134464025f);
@@ -339,10 +337,10 @@ s32 func_global_asm_8065C240(Struct8065C240 *arg0) {
     return FALSE;
 }
 
+// TODO: Decent progress made
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_global_asm_8065C334.s")
 
 /*
-// TODO: Decent progress made
 void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, s8 *arg5, s8 *arg6, s16 arg7) {
     f32 sp64;
     f32 sp5C;

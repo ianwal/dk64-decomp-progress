@@ -203,6 +203,7 @@ Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FD7A8.s")
 
 s32 func_global_asm_806FB914(s16, u8 *, s32);
+
 /*
 s16 func_global_asm_806FD7A8(s16 arg0, u8 arg1) {
     Struct80754A34 *var_a0;

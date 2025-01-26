@@ -92,8 +92,6 @@ block_9:
     }
 }
 
-
-
 s32 func_global_asm_8068ABE0(s16 arg0) {
     s16 cutsceneIndex;
     s32 sp20;
@@ -443,8 +441,6 @@ void func_global_asm_8068AD7C(void) {
     D_global_asm_807FC621 |= 0x80;
 }
 
-
-
 void func_global_asm_8068B80C(void) {
     D_global_asm_807FC620 = 1;
 }
@@ -736,7 +732,6 @@ block_29:
     }
 }
 */
-
 
 typedef struct {
     void *texturePointer; // Texture Pointer (from table 0xE)

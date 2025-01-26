@@ -61,8 +61,6 @@ void func_global_asm_80687D50(Actor *arg0, Struct80687D50 *arg1) {
     *var_s7 = NULL;
 }
 
-
-
 Gfx *func_global_asm_80687EE0(Gfx *dl, Actor *arg1) {
     GlobalASMStruct60 *current;
 

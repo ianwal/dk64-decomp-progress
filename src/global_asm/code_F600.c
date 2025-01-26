@@ -116,7 +116,7 @@ u8 func_global_asm_8060AC28(void) {
 
 /*
 void func_global_asm_8060AC34(OSContPad *arg0) {
-    u8 * unk0;
+    u8 *unk0;
     
     unk0 = &D_global_asm_807ECD08;
     if ((!D_global_asm_807467C4) && (*unk0)) {

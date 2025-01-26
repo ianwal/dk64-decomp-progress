@@ -493,10 +493,10 @@ s32 func_global_asm_8060C724(u8 fileIndex) {
     return func_global_asm_8060C6B8(0x10, 0, 0, fileIndex) + 1;
 }
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/saveFile/func_global_asm_8060C758.s")
 
 /*
-Super close
 void func_global_asm_8060C758(u8 fileIndex, s32 arg1) {
     u8 slot;
     u32 size;
@@ -582,7 +582,6 @@ extern u8 D_global_asm_807550C8;
 extern s16 D_global_asm_807ECEA0;
 
 /*
-Progress
 void func_global_asm_8060CBBC(void) {
     u8 sp7C[4];
     u8 sp78[4];

@@ -504,7 +504,6 @@ void func_global_asm_80735DBC(N_ALEvent *arg0) {
 }
 */
 
-
 void func_global_asm_80736FB8(struct_80736FB8 *arg0) {
     if (arg0->unk43 & 4) {
         n_alSynStopVoice(&arg0->unkC);

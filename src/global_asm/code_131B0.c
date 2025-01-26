@@ -360,12 +360,13 @@ void func_global_asm_8060F928(Struct131B0_2 *arg0, Struct131B0_1 *arg1) {
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060F960.s")
 
+// 64 bit stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_131B0/func_global_asm_8060FA5C.s")
 
 /*
 extern OSTime D_global_asm_807F04C0;
 
-// TODO: Something up with the OSTime write
+// Something up with the OSTime write
 void func_global_asm_8060FA5C(Struct131B0_2 *arg0) {
     Struct131B0_2_unk274 *temp_v0;
 

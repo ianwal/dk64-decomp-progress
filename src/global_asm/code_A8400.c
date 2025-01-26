@@ -190,12 +190,12 @@ void func_global_asm_806A495C(void *arg0, void *arg1, void *arg2) {
 }
 */
 
+// fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A4B84.s")
 
 void func_global_asm_806A4B84(f32 arg0, Actor *arg1, AAD_global_asm_806A4DDC *arg2, Struct806A57C0_2 *arg3, u8 arg4, u8 *arg5);
 
 /*
-// TODO: Progress made, fiddly
 void func_global_asm_806A4B84(f32 arg0, Actor *arg1, AAD_global_asm_806A4DDC *arg2, Struct806A57C0_2 *arg3, u8 arg4, u8 *arg5) {
     f32 var_f20;
     s32 var_a0;
@@ -253,10 +253,10 @@ void func_global_asm_806A4B84(f32 arg0, Actor *arg1, AAD_global_asm_806A4DDC *ar
 }
 */
 
+// fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A8400/func_global_asm_806A4DDC.s")
 
 /*
-// TODO: Progress made, fiddly
 void func_global_asm_806A4DDC(Actor *arg0) {
     u8 sp103;
     f32 sp50;

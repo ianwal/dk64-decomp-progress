@@ -13,6 +13,7 @@ typedef struct {
 
 extern GlobalASMStruct47 D_global_asm_8074E7A0[];
 
+// stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067B450.s")
 
 /*

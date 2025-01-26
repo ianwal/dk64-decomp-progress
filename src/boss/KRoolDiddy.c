@@ -66,7 +66,8 @@ void func_boss_8002DD7C(void) {
     }
 }
 
-// Jumptable
+// https://decomp.me/scratch/jvhWd
+// Jumptable, close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolDiddy/func_boss_8002DE04.s")
 
 u8 func_boss_80027BA8(u8 *, u16, f32);
@@ -86,9 +87,6 @@ typedef struct KRoolDiddyAAD178 {
 } KRoolDiddyAAD178;
 
 /*
-Note: VERY close, very minor regalloc
-Scratch: https://decomp.me/scratch/jvhWd
-
 void func_boss_8002DE04(void) {
     KRoolDiddyAAD178 *temp_t0;
     u8 *sp38;
