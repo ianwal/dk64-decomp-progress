@@ -119,38 +119,208 @@ typedef struct {
     s32 unk24;
 } Struct8073A8BC;
 
-f32 func_global_asm_80739FE0(s32 arg0) {
-    f32 sp4;
-    f32 sp0;
+// __n_unmapVoice
+void func_global_asm_8073A070(N_ALSeqPlayer *seqp, N_ALVoice *voice) {
+    N_ALVoiceState *prev = 0;
+	N_ALVoiceState *vs;
 
-    sp0 = 1.0f;
-    if (arg0 >= 0) {
-        sp4 = 1.0005778f;
-    } else {
-        sp4 = 0.99942255f;
-        arg0 = -arg0;
-    }
-    while (arg0 != 0) {
-        if (arg0 & 1) {
-            sp0 *= sp4;
-        }
-        sp4 *= sp4;
-        arg0 >>= 1;
-    }
-    return sp0;
+	/*
+	 * we could use doubly linked lists here and save some code and
+	 * execution time, but time spent here in negligible, so it won't
+	 * make much difference.
+	 */
+	for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+		if (&vs->voice == voice) {
+			if (prev) {
+				prev->next = vs->next;
+			} else {
+				seqp->vAllocHead = vs->next;
+			}
+
+			if (vs == seqp->vAllocTail) {
+				seqp->vAllocTail = prev;
+			}
+
+			vs->next = seqp->vFreeList;
+			seqp->vFreeList = vs;
+			seqp->unk89--;
+			return;
+		}
+
+		prev = vs;
+	}
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073A070.s")
+// __n_seqpReleaseVoice
+void func_global_asm_8073A130(N_ALSeqPlayer *seqp, N_ALVoice *voice, ALMicroTime deltaTime)
+{
+	N_ALEvent evt;
+	N_ALVoiceState *vs = (N_ALVoiceState *)voice->clientPrivate;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073A130.s")
+	/*
+	 * if in attack phase, remove all pending volume
+	 * events for this voice from the queue
+	 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073A2A4.s")
+	if (vs->envPhase == AL_PHASE_ATTACK) {
+		ALLink *thisNode;
+		ALLink *nextNode;
+		N_ALEventListItem *thisItem, *nextItem;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073A3C4.s")
+		thisNode = seqp->evtq.allocList.next;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073A488.s")
+		while (thisNode != 0) {
+			nextNode = thisNode->next;
+			thisItem = (N_ALEventListItem *)thisNode;
+			nextItem = (N_ALEventListItem *)nextNode;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073A518.s")
+			if (thisItem->evt.type == AL_SEQP_ENV_EVT) {
+				if (thisItem->evt.msg.vol.voice == voice) {
+					if (nextItem) {
+						nextItem->delta += thisItem->delta;
+					}
+
+					alUnlink(thisNode);
+					alLink(thisNode, &seqp->evtq.freeList);
+				}
+			}
+
+			thisNode = nextNode;
+		}
+	}
+
+	vs->velocity = 0;
+	vs->envPhase = AL_PHASE_RELEASE;
+	vs->envGain  = 0;
+	vs->envEndTime = seqp->curTime + deltaTime;
+
+	func_global_asm_8073E8A0(voice, 0); /* make candidate for stealing */
+	func_global_asm_8073B830(voice, 0, deltaTime);
+
+	evt.type = AL_NOTE_END_EVT;
+	evt.msg.note.voice = voice;
+
+	deltaTime += AL_USEC_PER_FRAME * 2;
+
+	alEvtqPostEvent(&seqp->evtq, &evt, deltaTime);
+}
+
+// __n_voiceNeedsNoteKill
+u8 func_global_asm_8073A2A4(N_ALSeqPlayer *seqp, N_ALVoice *voice, ALMicroTime killTime)
+{
+	ALLink *thisNode;
+	ALLink *nextNode;
+	N_ALEventListItem *thisItem;
+	ALMicroTime itemTime = 0;
+	u8 needsNoteKill = TRUE;
+
+	thisNode = seqp->evtq.allocList.next;
+
+	while (thisNode != 0) {
+		nextNode = thisNode->next;
+		thisItem = (N_ALEventListItem *)thisNode;
+		itemTime += thisItem->delta;
+
+		if (thisItem->evt.type == AL_NOTE_END_EVT) {
+			if (thisItem->evt.msg.note.voice == voice) {
+				if (itemTime > killTime) {
+					if ((N_ALEventListItem *)nextNode) {
+						((N_ALEventListItem *)nextNode)->delta += thisItem->delta;
+					}
+
+					alUnlink(thisNode);
+					alLink(thisNode, &seqp->evtq.freeList);
+				} else {
+					needsNoteKill = FALSE;
+				}
+
+				break;
+			}
+		}
+
+		thisNode = nextNode;
+	}
+
+	return needsNoteKill;
+}
+
+// __n_mapVoice
+N_ALVoiceState *func_global_asm_8073A3C4(N_ALSeqPlayer *seqp, u8 key, u8 vel, u8 channel)
+{
+	N_ALVoiceState *vs = seqp->vFreeList;
+
+	if (seqp->unk89 > seqp->unk88) {
+		return 0;
+	}
+
+	if (vs) {
+		seqp->vFreeList = vs->next;
+		vs->next = 0;
+
+		if (!seqp->vAllocHead) {
+			seqp->vAllocHead = vs;
+		} else {
+			seqp->vAllocTail->next = vs;
+		}
+
+		seqp->vAllocTail = vs;
+
+		vs->channel = channel;
+		vs->key = key;
+		vs->velocity = vel;
+		vs->voice.clientPrivate = vs;
+
+		seqp->unk89++;
+	}
+
+	return vs;
+}
+
+// __n_lookupVoice
+N_ALVoiceState *func_global_asm_8073A488(N_ALSeqPlayer *seqp, u8 key, u8 channel)
+{
+	N_ALVoiceState *vs = seqp->vAllocHead;
+
+	while (vs != 0) {
+		if (vs->key == key
+				&& vs->channel == channel
+				&& vs->phase != AL_PHASE_RELEASE
+				&& vs->phase != AL_PHASE_SUSTREL) {
+			return vs;
+		}
+
+		vs = vs->next;
+	}
+
+	return 0;
+}
+
+// __n_lookupSoundQuick
+ALSound *func_global_asm_8073A518(N_ALSeqPlayer *seqp, u8 key, u8 vel, u8 chan)
+{
+	ALInstrument *inst = seqp->chanState[chan].instrument;
+	s32 l = 1;
+	s32 r = inst->soundCount;
+	s32 i;
+	ALKeyMap *keymap;
+
+	while (r >= l) {
+		i = (l + r) / 2;
+
+		keymap = inst->soundArray[i - 1]->keyMap;
+
+		if (key >= keymap->keyMin && key <= keymap->keyMax
+				&& vel >= keymap->velocityMin && vel <= keymap->velocityMax) {
+			return inst->soundArray[i - 1];
+		} else if (key < keymap->keyMin || (vel < keymap->velocityMin && key <= keymap->keyMax)) {
+			r = i - 1;
+		} else {
+			l = i + 1;
+		}
+	}
+
+	return 0;
+}
 
 s16 func_global_asm_8073A690(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
     u32 sp4;
@@ -166,10 +336,6 @@ s16 func_global_asm_8073A690(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
     return sp4;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073A7B8.s")
-
-/*
-// TODO: Extremely close
 u8 func_global_asm_8073A7B8(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
     s32 sp14;
     s32 sp10;
@@ -178,7 +344,6 @@ u8 func_global_asm_8073A7B8(Struct8073A900_arg0 *arg0, Struct8073AB00 *arg1) {
     sp10 = ((arg1->unk60[arg0->unk31].unkA & 0x7F) + (s32)(arg1->unk7C * 127.0f)) * arg1->unk80;
     return (MAX(0, MIN(0x7F, sp10)) | sp14);
 }
-*/
 
 s32 func_global_asm_8073A8BC(Struct8073A8BC *arg0, s32 arg1) {
     s32 sp4;
@@ -284,4 +449,41 @@ void func_global_asm_8073AD50(Struct8073AB00 *arg0, Struct8073AD50_arg1 *arg1, s
     arg0->unk60[arg2].unk31 = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073B08C.s")
+// __n_seqpStopOsc
+void func_global_asm_8073B08C(N_ALSeqPlayer *seqp, N_ALVoiceState *vs)
+{
+	N_ALEventListItem *thisNode,*nextNode;
+	s16 evtType;
+
+	thisNode = (N_ALEventListItem*)seqp->evtq.allocList.next;
+
+	while (thisNode) {
+		nextNode = (N_ALEventListItem*)thisNode->node.next;
+		evtType = thisNode->evt.type;
+
+		if (evtType == AL_TREM_OSC_EVT || evtType == AL_VIB_OSC_EVT) {
+			if (thisNode->evt.msg.osc.vs == vs) {
+				(*seqp->stopOsc)(thisNode->evt.msg.osc.oscState);
+				alUnlink((ALLink*)thisNode);
+
+				if (nextNode) {
+					nextNode->delta += thisNode->delta;
+				}
+
+				alLink((ALLink*)thisNode, &seqp->evtq.freeList);
+
+				if (evtType == AL_TREM_OSC_EVT) {
+					vs->flags &= 0xfe;
+				} else { /* must be a AL_VIB_OSC_EVT */
+					vs->flags &= 0xfd;
+				}
+
+				if (!vs->flags) {
+					return;  /* there should be no more events */
+				}
+			}
+		}
+
+		thisNode = nextNode;
+	}
+}
