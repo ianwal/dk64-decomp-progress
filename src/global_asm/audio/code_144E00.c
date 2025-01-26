@@ -1,207 +1,263 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "n_synthInternals.h"
+#include <os.h>
+#include <R4300.h>
 
+#define ADPCMFBYTES      9
+#define LFSAMPLES        4
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_144E00/func_global_asm_80740100.s")
 
 Acmd *func_global_asm_80740A90(Acmd *, CustomPVoice *, s32, s32, s16, s16, s32);
 
-/*
-Acmd *func_global_asm_80740100(CustomPVoice *arg0, s16 *arg1, s32 arg2, Acmd *arg3) {
-    Acmd *sp7C;
-    s16 sp7A;
-    s32 sp74;
-    s32 sp70;
-    s32 sp6C;
-    s32 sp68;
-    s32 sp64;
-    s32 sp60;
-    s32 sp5C;
-    s32 sp58;
-    s32 sp54;
-    s32 sp50;
-    s32 sp4C;
-    s32 sp48;
-    CustomPVoice *sp44;
-    Acmd *sp40;
-    Acmd *sp3C;
-    Acmd *sp38;
-    CustomPVoice_unk20 *temp_t0_2;
-    s32 temp_t0;
-    u32 var_s0;
+// n_alAdpcmPull
+Acmd *func_global_asm_80740100(N_PVoice *filter, s16 *outp, s32 outCount, Acmd *p)
+{
+	Acmd *ptr = p;
+	s16 inp;
+	s32 tsam;
+	s32 nframes;
+	s32 nbytes;
+	s32 overFlow;
+	s32 startZero;
+	s32 nOver;
+	s32 nSam;
+	s32 op;
+	s32 nLeft;
+	s32 bEnd;
+	s32 decoded = 0;
+	s32 looped = 0;
 
-    sp7C = arg3;
-    sp4C = 0;
-    sp48 = 0;
-    sp44 = arg0;
-    if (arg2 == 0) {
-        return sp7C;
-    }
-    sp7A = 0;
-    sp40 = sp7C++;
-    sp40->words.w0 = (s32) ((sp44->unk24 & 0xFFFFFF) | 0x0B000000);
-    sp40->words.w1 = (s32) ((sp44->unk20->unk10_s32 + 8) & 0x1FFFFFFF);
-    var_s0 = (u32) sp44->unk18 < (u32) (sp44->resampler.unk4 + arg2);
-    if (var_s0) {
-        var_s0 = sp44->unk1C != 0;
-    }
-    sp48 = var_s0;
-    if (sp48 != 0) {
-        sp5C = sp44->unk18 - sp44->resampler.unk4;
-    } else {
-        sp5C = arg2;
-    }
-    if (sp44->resampler.unk8 != 0) {
-        sp54 = 0x10 - sp44->resampler.unk8;
-    } else {
-        sp54 = 0;
-    }
-    sp74 = sp5C - sp54;
-    if (sp74 < 0) {
-        sp74 = 0;
-    }
-    sp70 = (s32) (sp74 + 0xF) >> 4;
-    sp6C = sp70 * 9;
-    if (sp48 != 0) {
-        sp7C = func_global_asm_80740A90(sp7C, sp44, sp74, sp6C, (s32) *arg1, (s32) sp7A, sp44->resampler.unkC);
-        if (sp44->resampler.unk8 != 0) {
-            *arg1 += sp44->resampler.unk8 * 2;
-        } else {
-            *arg1 += 0x20;
-        }
-        sp44->resampler.unk8 = (s32) (sp44->unk14 & 0xF);
-        sp44->resampler.unk10 = (s32) (sp44->unk20->unk10 + (((u32) sp44->unk14 >> 4) * 9) + 9);
-        sp44->resampler.unk4 = (u32) sp44->unk14;
-        sp50 = (s32) *arg1;
-        while (sp5C < arg2) {
-            arg2 -= sp5C;
-            sp58 = (((sp70 + 1) << 5) + sp50 + 0x10) & ~0x1F;
-            sp50 += sp5C * 2;
-            temp_t0 = sp44->unk1C;
-            if ((temp_t0 != -1) && (temp_t0 != 0)) {
-                sp44->unk1C = (s32) (sp44->unk1C - 1);
-            }
-            if ((u32) arg2 < (u32) (sp44->unk18 - sp44->unk14)) {
-                sp5C = arg2;
-            } else {
-                sp5C = sp44->unk18 - sp44->unk14;
-            }
-            sp74 = (sp5C + sp44->resampler.unk8) - 0x10;
-            if (sp74 < 0) {
-                sp74 = 0;
-            }
-            sp70 = (s32) (sp74 + 0xF) >> 4;
-            sp6C = sp70 * 9;
-            sp7C = func_global_asm_80740A90(sp7C, sp44, sp74, sp6C, sp58, (s32) sp7A, sp44->resampler.unkC | 2);
-            sp3C = sp7C++;
-            sp3C->words.w0 = (s32) ((((sp44->resampler.unk8 * 2) + sp58) & 0xFFFFFF) | 0x0A000000);
-            sp3C->words.w1 = (s32) (((sp50 & 0xFFFF) << 0x10) | ((sp5C * 2) & 0xFFFF));
-        }
-        sp44->resampler.unk8 = (s32) ((sp44->resampler.unk8 + arg2) & 0xF);
-        sp44->resampler.unk4 = (u32) (sp44->resampler.unk4 + arg2);
-        sp44->resampler.unk10 += (sp70 * 9);
-        return sp7C;
-    }
-    sp5C = sp70 * 0x10;
-    temp_t0_2 = sp44->unk20;
-    sp68 = (sp44->resampler.unk10 + sp6C) - (temp_t0_2->unk0 + temp_t0_2->unk4);
-    if (sp68 < 0) {
-        sp68 = 0;
-    }
-    sp60 = (sp68 / 9) * 0x10;
-    if ((sp5C + sp54) < sp60) {
-        sp60 = sp5C + sp54;
-    }
-    sp6C -= sp68;
-    if ((sp60 - (sp60 & 0xF)) < arg2) {
-        sp4C = 1;
-        sp7C = func_global_asm_80740A90(sp7C, sp44, sp5C - sp60, sp6C, (s32) *arg1, (s32) sp7A, sp44->resampler.unkC);
-        if (sp44->resampler.unk8 != 0) {
-            *arg1 += sp44->resampler.unk8 * 2;
-        } else {
-            *arg1 += 0x20;
-        }
-        sp44->resampler.unk8 = (s32) ((sp44->resampler.unk8 + arg2) & 0xF);
-        sp44->resampler.unk4 = (u32) (sp44->resampler.unk4 + arg2);
-        sp44->resampler.unk10 = (s32) (sp44->resampler.unk10 + (sp70 * 9));
-    } else {
-        sp44->resampler.unk8 = 0;
-        sp44->resampler.unk10 = (s32) (sp44->resampler.unk10 + (sp70 * 9));
-    }
-    if (sp60 != 0) {
-        sp44->resampler.unk8 = 0;
-        if (sp4C != 0) {
-            sp64 = ((sp54 + sp5C) - sp60) * 2;
-        } else {
-            sp64 = 0;
-        }
-        sp38 = sp7C++;
-        sp38->words.w0 = (s32) (((*arg1 + sp64) & 0xFFFFFF) | 0x02000000);
-        sp38->words.w1 = (s32) (sp60 * 2);
-    }
-    return sp7C;
+	N_PVoice *f = filter;
+
+	if (outCount == 0) {
+		return ptr;
+	}
+
+	inp = N_AL_DECODER_IN;
+
+	aLoadADPCM(ptr++, f->dc_bookSize, K0_TO_PHYS(f->dc_table->waveInfo.adpcmWave.book->book));
+
+	looped = (outCount + f->dc_sample > f->dc_loop.end) && (f->dc_loop.count != 0);
+
+	if (looped) {
+		nSam = f->dc_loop.end - f->dc_sample;
+	} else {
+		nSam = outCount;
+	}
+
+	if (f->dc_lastsam) {
+		nLeft = ADPCMFSIZE - f->dc_lastsam;
+	} else {
+		nLeft = 0;
+	}
+
+	tsam = nSam - nLeft;
+
+	if (tsam<0) {
+		tsam = 0;
+	}
+
+	nframes = (tsam + ADPCMFSIZE - 1) >> LFSAMPLES;
+	nbytes =  nframes*ADPCMFBYTES;
+
+	if (looped) {
+		ptr = func_global_asm_80740A90(ptr, f, tsam, nbytes, *outp, inp, f->dc_first);
+
+		/*
+		 * Fix up output pointer, which will be used as the input pointer
+		 * by the following module.
+		 */
+		if (f->dc_lastsam) {
+			*outp += (f->dc_lastsam<<1);
+		} else {
+			*outp += (ADPCMFSIZE<<1);
+		}
+
+		/*
+		 * Now fix up state info to reflect the loop start point
+		 */
+		f->dc_lastsam = f->dc_loop.start &0xf;
+		f->dc_memin = f->dc_table->base + ADPCMFBYTES * ((s32) (f->dc_loop.start>>LFSAMPLES) + 1);
+		f->dc_sample = f->dc_loop.start;
+
+		bEnd = *outp;
+
+		while (outCount > nSam) {
+			outCount -= nSam;
+
+			/*
+			 * Put next one after the end of the last lot - on the
+			 * frame boundary (32 byte) after the end.
+			 */
+			op = (bEnd + ((nframes+1)<<(LFSAMPLES+1)) + 16) & ~0x1f;
+
+			/*
+			 * The actual end of data
+			 */
+			bEnd += (nSam<<1);
+
+			/*
+			 * -1 is loop forever - the loop count is not exact now
+			 * for small loops!
+			 */
+			if (f->dc_loop.count != -1 && f->dc_loop.count != 0) {
+				f->dc_loop.count--;
+			}
+
+			/*
+			 * What's left to compute.
+			 */
+			nSam = MIN(outCount, f->dc_loop.end - f->dc_loop.start);
+			tsam = nSam - ADPCMFSIZE + f->dc_lastsam;
+
+			if (tsam < 0) {
+				tsam = 0;
+			}
+
+			nframes = (tsam+ADPCMFSIZE - 1) >> LFSAMPLES;
+			nbytes =  nframes*ADPCMFBYTES;
+			ptr = func_global_asm_80740A90(ptr, f, tsam, nbytes, op, inp, f->dc_first | A_LOOP);
+
+			/*
+			 * Merge the two sections in DMEM.
+			 */
+			aDMEMMove(ptr++, op + (f->dc_lastsam << 1), bEnd, nSam << 1);
+		}
+
+		f->dc_lastsam = (outCount + f->dc_lastsam) & 0xf;
+		f->dc_sample += outCount;
+		f->dc_memin += ADPCMFBYTES*nframes;
+
+		return ptr;
+	}
+
+	/*
+	 * The unlooped case, which is executed most of the time
+	 */
+
+	nSam = nframes << LFSAMPLES;
+
+	/*
+	 * overFlow is the number of bytes past the end
+	 * of the bitstream I try to generate
+	 */
+	overFlow = f->dc_memin + nbytes - (s32)(f->dc_table->base + f->dc_table->len);
+
+	if (overFlow < 0) {
+		overFlow = 0;
+	}
+
+	nOver = (overFlow / ADPCMFBYTES) << LFSAMPLES;
+
+	if (nOver > nSam + nLeft) {
+		nOver = nSam + nLeft;
+	}
+
+	nbytes -= overFlow;
+
+	if (nOver - (nOver & 0xf) < outCount) {
+		decoded = 1;
+		ptr = func_global_asm_80740A90(ptr, f, nSam - nOver, nbytes, *outp, inp, f->dc_first);
+
+		if (f->dc_lastsam) {
+			*outp += f->dc_lastsam << 1;
+		} else {
+			*outp += ADPCMFSIZE << 1;
+		}
+
+		f->dc_lastsam = (outCount + f->dc_lastsam) & 0xf;
+		f->dc_sample += outCount;
+		f->dc_memin += ADPCMFBYTES * nframes;
+	} else {
+		f->dc_lastsam = 0;
+		f->dc_memin += ADPCMFBYTES * nframes;
+	}
+
+	/*
+	 * Put zeros in if necessary
+	 */
+	if (nOver) {
+		f->dc_lastsam = 0;
+
+		if (decoded) {
+			startZero = (nLeft + nSam - nOver) << 1;
+		} else {
+			startZero = 0;
+		}
+
+		aClearBuffer(ptr++, startZero + *outp, nOver << 1);
+	}
+
+	return ptr;
 }
-*/
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_144E00/func_global_asm_807407A8.s")
+// n_alLoadParam
+void func_global_asm_807407A8(N_PVoice *filter, s32 paramID, void *param)
+{
+	N_PVoice *a = filter;
 
-/*
-void func_global_asm_807407A8(CustomPVoice *arg0, s32 arg1, s32 *arg2) {
-    CustomPVoice *sp24;
+	switch (paramID) {
+	case (AL_FILTER_SET_WAVETABLE):
+		a->dc_table = (ALWaveTable *) param;
+		a->dc_memin = a->dc_table->base;
+		a->dc_sample = 0;
 
-    sp24 = arg0;
-    switch (arg1) {
-    case 5:
-        sp24->unk20 = arg2;
-        sp24->resampler.unk10 = sp24->unk20->unk0;
-        sp24->resampler.unk4 = 0;
-        switch (sp24->unk20->unk8) {
-        case 0:
-            sp24->unk20->unk4 = ((sp24->unk20->unk4 / 9) * 9);
-            sp24->unk24 = (sp24->unk20->unk10->unk0 * 2 * sp24->unk20->unk10->unk4 * 8);
-            if (sp24->unk20->unkC != 0) {
-                sp24->unk14 = sp24->unk20->unkC->unk0;
-                sp24->unk18 = sp24->unk20->unkC->unk4;
-                sp24->unk1C = sp24->unk20->unkC->unk8;
-                bcopy(&sp24->unk20->unkC->unkC, sp24->unk10, 0x20);
-            } else {
-                sp24->unk1C = 0;
-                sp24->unk14 = sp24->unk18 = sp24->unk1C;
-            }
-            break;
-        case 1:
-            if (sp24->unk20->unkC != 0) {
-                sp24->unk14 = sp24->unk20->unkC->unk0;
-                sp24->unk18 = sp24->unk20->unkC->unk4;
-                sp24->unk1C = sp24->unk20->unkC->unk8;
-            } else {
-                sp24->unk1C = 0;
-                sp24->unk14 = sp24->unk18 = sp24->unk1C;
-                break;
-            }
-            break;
-        }
+		switch (a->dc_table->type) {
+		case (AL_ADPCM_WAVE):
+			a->dc_table->len = ADPCMFBYTES * ((s32) (a->dc_table->len/ADPCMFBYTES));
+
+			a->dc_bookSize = 2*a->dc_table->waveInfo.adpcmWave.book->order*
+				a->dc_table->waveInfo.adpcmWave.book->npredictors*ADPCMVSIZE;
+
+			if (a->dc_table->waveInfo.adpcmWave.loop) {
+				a->dc_loop.start = a->dc_table->waveInfo.adpcmWave.loop->start;
+				a->dc_loop.end = a->dc_table->waveInfo.adpcmWave.loop->end;
+				a->dc_loop.count = a->dc_table->waveInfo.adpcmWave.loop->count;
+
+				bcopy(a->dc_table->waveInfo.adpcmWave.loop->state, a->dc_lstate, sizeof(ADPCM_STATE));
+			} else {
+				a->dc_loop.start = a->dc_loop.end = a->dc_loop.count = 0;
+			}
+			break;
+		case (AL_RAW16_WAVE):
+			if (a->dc_table->waveInfo.rawWave.loop) {
+				a->dc_loop.start = a->dc_table->waveInfo.rawWave.loop->start;
+				a->dc_loop.end = a->dc_table->waveInfo.rawWave.loop->end;
+				a->dc_loop.count = a->dc_table->waveInfo.rawWave.loop->count;
+			} else {
+				a->dc_loop.start = a->dc_loop.end = a->dc_loop.count = 0;
+			}
+			break;
+		default:
+			break;
+		}
+		break;
+	case (AL_FILTER_RESET):
+		a->dc_lastsam = 0;
+		a->dc_first   = 1;
+		a->dc_sample = 0;
+
+		/* sct 2/14/96 - Check table since it is initialized to null and */
+		/* Get loop info according to table type. */
+		if (a->dc_table) {
+			a->dc_memin  = a->dc_table->base;
+
+			if (a->dc_table->type == AL_ADPCM_WAVE) {
+				if (a->dc_table->waveInfo.adpcmWave.loop) {
+					a->dc_loop.count = a->dc_table->waveInfo.adpcmWave.loop->count;
+				}
+			} else if (a->dc_table->type == AL_RAW16_WAVE) {
+				if (a->dc_table->waveInfo.rawWave.loop) {
+					a->dc_loop.count = a->dc_table->waveInfo.rawWave.loop->count;
+				}
+			}
+		}
         break;
-    case 4:
-        sp24->resampler.unk8 = 0;
-        sp24->resampler.unkC = 1;
-        sp24->resampler.unk4 = 0;
-        if (sp24->unk20) {
-            sp24->resampler.unk10 = sp24->unk20->unk0;
-            if (!sp24->unk20->unk8) {
-                if (sp24->unk20->unkC) {
-                    sp24->unk1C = sp24->unk20->unkC->unk8;
-                }
-            } else if ((sp24->unk20->unk8 == 1) && (sp24->unk20->unkC)) {
-                sp24->unk1C = sp24->unk20->unkC->unk8;
-                break;
-            }
-        }
-        break;
-    }
+	default:
+		break;
+	}
 }
-*/
 
 Acmd *func_global_asm_80740A90(Acmd *arg0, CustomPVoice *arg1, s32 arg2, s32 arg3, s16 arg4, s16 arg5, s32 arg6) {
     s32 sp2C;
