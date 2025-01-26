@@ -8,7 +8,6 @@ us,boot,func_dk64_boot_80002B0C,172,no
 us,boot,__osPackEepWriteData,172,no
 us,boot,guScale,72,yes
 us,boot,func_dk64_boot_80002750,52,yes
-us,boot,_MakeMotorData,268,no
 us,boot,func_dk64_boot_80001700,1012,yes
 us,boot,__ll_to_f,24,yes
 us,boot,guMtxIdent,48,yes

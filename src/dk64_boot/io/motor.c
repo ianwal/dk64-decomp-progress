@@ -47,9 +47,6 @@ s32 osMotorStartStop(OSPfs *pfs, int arg1)
 }
 #endif
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/motor/_MakeMotorData.s")
-#else
 static void _MakeMotorData(int channel, OSPifRam *mdata)
 {
     u8 *ptr;
@@ -76,7 +73,6 @@ static void _MakeMotorData(int channel, OSPifRam *mdata)
     ptr += sizeof(__OSContRamReadFormat);
     ptr[0] = CONT_CMD_END;
 }
-#endif
 
 s32 osMotorInit(OSMesgQueue *mq, OSPfs *pfs, int channel)
 {
