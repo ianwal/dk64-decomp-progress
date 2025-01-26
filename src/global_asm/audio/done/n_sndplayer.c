@@ -498,6 +498,7 @@ void func_global_asm_80737028(struct_80737028_0 *arg0) {
     alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp20, 0x8235);
 }
 
+// _removeEvents
 void func_global_asm_807370A4(ALEventQueue *evtq, N_ALSoundState *state, u16 arg2) {
     // _func_global_asm_807370A4
     ALLink *thisNode;
@@ -528,6 +529,7 @@ void func_global_asm_807370A4(ALEventQueue *evtq, N_ALSoundState *state, u16 arg
 
 extern SoundState *D_global_asm_807563C0;
 
+// sndpCountStates
 u16 func_global_asm_80737198(u16 *arg0, u16 *arg1) {
     u16 sp16;
     u16 sp14;
@@ -598,6 +600,7 @@ SoundState *func_global_asm_8073726C(ALBank *bank, ALSound *sound) {
 
 extern s16 D_global_asm_807563D0;
 
+// sndpFreeState
 void func_global_asm_8073749C(SoundState *arg0) {
     if (D_global_asm_807563C0 == arg0) {
         D_global_asm_807563C0 = arg0->node.next;
@@ -628,12 +631,14 @@ void func_global_asm_8073749C(SoundState *arg0) {
     }
 }
 
+// sndSetPriority
 void func_global_asm_807375E0(Struct_807375E0 *arg0, u8 arg1) {
     if (arg0 != 0) {
         arg0->unk40 = (s16)arg1;
     }
 }
 
+// sndGetState
 u8 func_global_asm_80737608(Struct_807375E0 *arg0) {
     if (arg0 != NULL) {
         return arg0->unk44;
@@ -642,7 +647,85 @@ u8 func_global_asm_80737608(Struct_807375E0 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_80737638.s")
+struct sndstate *func_global_asm_80737638(ALBank *arg0, s16 soundnum, u16 vol, ALPan pan, f32 pitch, u8 fxmix, struct sndstate **handleptr)
+{
+	struct sndstate *state;
+	struct sndstate *state2 = NULL;
+	ALKeyMap *keymap;
+	ALSound *sound;
+	s16 sp4e = 0;
+	s32 sp48;
+	s32 sp44;
+	s32 sp40 = 0;
+	s32 abspan;
+	N_ALEvent evt;
+	N_ALEvent evt2;
+
+	if (soundnum != 0) {
+		do {
+			sound = arg0->instArray[0]->soundArray[soundnum - 1];
+			state = func_global_asm_8073726C(arg0, sound);
+
+			if (state != NULL) {
+				D_global_asm_807563CC->target = state;
+				evt.type = AL_SNDP_PLAY_EVT;
+				evt.msg.generic.sndstate = state;
+				abspan = pan + state->pan - AL_PAN_CENTER;
+
+				if (abspan > 127) {
+					abspan = 127;
+				} else if (abspan < 0) {
+					abspan = 0;
+				}
+
+				state->pan = abspan;
+				state->vol = (u32)(vol * state->vol) >> 15;
+				state->pitch *= pitch;
+				state->fxmix = fxmix;
+
+				sp44 = sound->keyMap->velocityMax * 33333;
+
+				if (state->flags & SNDSTATEFLAG_10) {
+					state->flags &= ~SNDSTATEFLAG_10;
+					alEvtqPostEvent(&D_global_asm_807563CC->evtq, &evt, sp40 + 1);
+					sp48 = sp44 + 1;
+					sp4e = soundnum;
+				} else {
+					alEvtqPostEvent(&D_global_asm_807563CC->evtq, &evt, sp44 + 1);
+				}
+
+				state2 = state;
+			}
+
+			sp40 += sp44;
+			keymap = sound->keyMap;
+			soundnum = keymap->velocityMin + (keymap->keyMin & 0xc0) * 4;
+            soundnum += (keymap->keyMin & 0x20) << 5;
+        } while (soundnum && state);
+
+		if (state2 != NULL) {
+			state2->flags |= SNDSTATEFLAG_01;
+			state2->unk30 = handleptr;
+
+			if (sp4e != 0) {
+				state2->flags |= SNDSTATEFLAG_10;
+
+				evt2.type = AL_SNDP_0200_EVT;
+				evt2.msg.generic.sndstate = state2;
+				evt2.msg.generic.data = sp4e;
+				evt2.msg.generic.data2 = arg0;
+
+				alEvtqPostEvent(&D_global_asm_807563CC->evtq, &evt2, sp48);
+			}
+		}
+	}
+
+	if (handleptr != NULL) {
+		*handleptr = state2;
+	}
+
+	return state2;
+}
 
 void func_global_asm_80737924(SoundState *arg0) {
     s32 pad2[2];

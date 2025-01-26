@@ -25547,8 +25547,7 @@ void func_arcade_800252D8(Gfx **arg0) {
         }
     }
     if (D_global_asm_80770DF8 == 0 && arcade_next_sfx > 0) {
-        temp = (s16) arcade_next_sfx;
-        func_global_asm_80737638(D_global_asm_8076D1F8, temp, 0x7FFF, 0x3F, 1.0f, 0, &D_global_asm_80770DF8);
+        func_global_asm_80737638(D_global_asm_8076D1F8, arcade_next_sfx, 0x7FFF, 0x3F, 1.0f, 0, &D_global_asm_80770DF8);
     }
     if (arcade_high_score < arcade_current_score) {
         arcade_high_score = arcade_current_score;

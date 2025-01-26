@@ -3866,7 +3866,7 @@ void func_global_asm_80735A50(ALSeqPlayer *arg0, ALBank *arg1);
 // TODO: func_global_asm_8073749C has no documented signature but has been matched
 // TODO: func_global_asm_807375E0 has no documented signature but has been matched
 // TODO: func_global_asm_80737608 has no documented signature but has been matched
-s32 func_global_asm_80737638(void *arg0, enum sfx_e arg1, u32 arg2 , u32 arg3, f32 arg4, u32 arg5, void *arg6);
+struct sndstate *func_global_asm_80737638(ALBank *arg0, s16 soundnum, u16 vol, ALPan pan, f32 pitch, u8 fxmix, struct sndstate **handleptr);
 // TODO: func_global_asm_80737924 has no documented signature but has been matched
 void func_global_asm_80737990(u8 arg0);
 void func_global_asm_80737A4C(void);
