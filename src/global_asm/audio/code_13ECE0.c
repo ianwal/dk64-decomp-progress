@@ -119,10 +119,6 @@ typedef struct {
     s32 unk24;
 } Struct8073A8BC;
 
-// TODO: Close, something up with the shift
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_80739FE0.s")
-
-/*
 f32 func_global_asm_80739FE0(s32 arg0) {
     f32 sp4;
     f32 sp0;
@@ -143,7 +139,6 @@ f32 func_global_asm_80739FE0(s32 arg0) {
     }
     return sp0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13ECE0/func_global_asm_8073A070.s")
 

@@ -80,44 +80,23 @@ void func_global_asm_80737F40(Struct80737F0C *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_80737FD8.s")
-
-/*
 void func_global_asm_80737FD8(ALSeqPlayer *arg0, s32 arg1) {
     func_global_asm_807382A0(arg0, 0, arg1 | 0xB0, 0xFF, 0);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_8073801C.s")
-
-/*
 void func_global_asm_8073801C(ALSeqPlayer *arg0, s32 arg1) {
     arg0->chanMask |= 1 << arg1;
     func_global_asm_807382A0(arg0, 0, arg1 | 0xB0, 0xFF, 0xFF);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_80738080.s")
-
-/*
 void func_global_asm_80738080(ALSeqPlayer *arg0, s32 arg1, u8 arg2) {
     func_global_asm_807382A0(arg0, 0, arg1 | 0xB0, 0xFF, arg2);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_807380CC.s")
-
-/*
 void func_global_asm_807380CC(ALSeqPlayer *arg0, s32 arg1, u8 arg2) {
     func_global_asm_807382A0(arg0, 0, arg1 | 0xB0, 0x41, arg2);
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13CB90/func_global_asm_80738118.s")
-
-/*
 void func_global_asm_80738118(ALSeqPlayer *arg0, s32 arg1, u8 arg2) {
     func_global_asm_807382A0(arg0, 0, arg1 | 0xB0, 0xFC, arg2);
 }
-*/
-

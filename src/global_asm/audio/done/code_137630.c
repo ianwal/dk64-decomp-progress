@@ -39,10 +39,6 @@ extern Struct80732B3C *D_global_asm_807FF034;
 f32 func_global_asm_80732930(u8);
 f32 func_global_asm_80739FE0(s32);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_137630/func_global_asm_80732930.s")
-
-/*
-// No idea why this doesn't match, something to do with the shift
 f32 func_global_asm_80732930(u8 arg0) {
     f32 sp4;
     f32 sp0;
@@ -58,7 +54,6 @@ f32 func_global_asm_80732930(u8 arg0) {
     }
     return sp0;
 }
-*/
 
 s32 func_global_asm_807329AC(Struct80732B3C **arg0, f32 *arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5) {
     Struct80732B3C *sp2C;
