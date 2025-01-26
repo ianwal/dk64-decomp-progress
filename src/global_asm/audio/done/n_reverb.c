@@ -146,11 +146,169 @@ Acmd *func_global_asm_8073D1F0(s32 sampleOffset, Acmd *p, s32 arg2)
 	return ptr;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_141EF0/func_global_asm_8073DA30.s")
+// n_alFxParamHdl
+s32 func_global_asm_8073DA30(void *filter, s32 paramID, void *param)
+{
+	ALFx *f = (ALFx *) filter;
+	s32 p = paramID & 7;
+	s32 s = paramID >> 3;
+	s32 val = *(s32*)param;
+	f32 rsgain;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_141EF0/func_global_asm_8073DF50.s")
+	if (s >= f->section_count) {
+		return 0;
+	}
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_141EF0/func_global_asm_8073E268.s")
+#define INPUT_PARAM         0
+#define OUTPUT_PARAM        1
+#define FBCOEF_PARAM        2
+#define FFCOEF_PARAM        3
+#define GAIN_PARAM          4
+#define CHORUSRATE_PARAM    5
+#define CHORUSDEPTH_PARAM   6
+#define LPFILT_PARAM        7
+
+	switch (p) {
+	case INPUT_PARAM:
+		f->delay[s].input = ((s32)val * n_syn->outputRate / 1000) & 0xfffffff8;
+		break;
+	case OUTPUT_PARAM:
+		f->delay[s].output = ((s32)val * n_syn->outputRate / 1000) & 0xfffffff8;
+		break;
+	case FBCOEF_PARAM:
+		f->delay[s].fbcoef = (s16)val;
+		break;
+	case FFCOEF_PARAM:
+		f->delay[s].ffcoef = (s16)val;
+		break;
+	case GAIN_PARAM:
+		f->delay[s].gain = (s16)val;
+		break;
+	case CHORUSRATE_PARAM:
+		f->delay[s].rsinc = ((((f32)val)/1000) * RANGE)/n_syn->outputRate;
+		break;
+	case CHORUSDEPTH_PARAM:
+		rsgain = val;
+		break;
+	case LPFILT_PARAM:
+		if (f->delay[s].lp) {
+			f->delay[s].lp->fc = (s16)val;
+			func_global_asm_8073BC74(f->delay[s].lp);
+		}
+		break;
+	}
+
+	if (f->delay[s].input >= f->length - 16) {
+		f->delay[s].input = f->length - 16;
+	}
+
+	if (f->delay[s].input >= f->length - 8) {
+		f->delay[s].input = f->length - 8;
+	}
+
+	if (f->delay[s].input >= f->delay[s].output) {
+		f->delay[s].output = f->delay[s].input + 8;
+	}
+
+	/**
+	 * the following constant is derived from:
+	 *
+	 *      ratio = 2^(cents/1200)
+	 *
+	 * and therefore for hundredths of a cent
+	 *                     x
+	 *      ln(ratio) = ---------------
+	 *              (120,000)/ln(2)
+	 * where
+	 *      120,000/ln(2) = 173123.40...
+	 */
+#define CONVERT 173123.404906676f
+#define LENGTH  (f->delay[s].output - f->delay[s].input)
+
+	if (f->delay[s].rs) {
+		if (p != 6) {
+			if (LENGTH != 0) {
+				rsgain = (f32)f->delay[s].rsgain / (f->delay[s].output - f->delay[s].input) * CONVERT;
+			} else {
+				rsgain = 0;
+			}
+		}
+
+		f->delay[s].rsgain = (f->delay[s].output - f->delay[s].input) * (rsgain / CONVERT);
+	}
+
+	return 0;
+}
+
+f32 func_global_asm_8073E73C(ALDelay *, s32);
+
+// _n_loadOutputBuffer
+Acmd *func_global_asm_8073DF50(ALFx *r, ALDelay *d, s32 arg2, s32 buff, Acmd *p)
+{
+	Acmd *ptr = p;
+	s32 ratio, count, rbuff = N_AL_TEMP_2;
+	s16 *out_ptr;
+	f32 fincount, fratio, delta;
+	s32 ramalign = 0, length;
+	s32 incount = FIXED_SAMPLE;
+	s16 tmp;
+
+	if (d->rs) {
+		length = d->output - d->input;
+		delta = func_global_asm_8073E73C(d, incount);
+		delta /= length;
+		delta = (s32)(delta * UNITY_PITCH);
+		delta = delta / UNITY_PITCH;
+		fratio = 1.0f - delta;
+		fincount = d->rs->delta + (fratio * (f32)incount);
+		count = (s32) fincount;
+		d->rs->delta = fincount - (f32)count;
+		out_ptr = &r->input[arg2][(s32)-(d->output - d->rsdelta)];
+		ramalign = ((s32)out_ptr & 0x7) >> 1;
+		ptr = func_global_asm_8073E268(r, arg2, out_ptr - ramalign, rbuff, count + ramalign, ptr);
+
+		ratio = (s32)(fratio * UNITY_PITCH);
+
+		tmp = buff >> 8;
+		n_aResample(ptr++, osVirtualToPhysical(d->rs->state[arg2]), d->rs->first, ratio, rbuff + (ramalign << 1), tmp);
+
+		d->rs->first = 0;
+		d->rsdelta += count - incount;
+	} else {
+		out_ptr = &r->input[arg2][(s32)-d->output];
+		ptr = func_global_asm_8073E268(r, arg2, out_ptr, buff, FIXED_SAMPLE, ptr);
+	}
+
+	return ptr;
+}
+
+// _n_loadBuffer
+Acmd *func_global_asm_8073E268(ALFx *r, s32 arg1, s16 *curr_ptr, s32 buff,s32 count, Acmd *p)
+{
+	Acmd *ptr = p;
+	s32 after_end, before_end;
+	s16 *updated_ptr, *delay_end;
+
+	delay_end = &r->base[arg1][r->length];
+
+	if (curr_ptr < r->base[arg1]) {
+		curr_ptr += r->length;
+	}
+
+	updated_ptr = curr_ptr + count;
+
+	if (updated_ptr > delay_end) {
+		after_end = updated_ptr - delay_end;
+		before_end = delay_end - curr_ptr;
+
+		n_aLoadBuffer(ptr++, before_end << 1, buff, osVirtualToPhysical(curr_ptr));
+		n_aLoadBuffer(ptr++, after_end << 1, buff + (before_end << 1), osVirtualToPhysical(r->base[arg1]));
+	} else {
+		n_aLoadBuffer(ptr++, count << 1, buff, osVirtualToPhysical(curr_ptr));
+	}
+
+	return ptr;
+}
 
 Acmd *func_global_asm_8073E460(ALFx *arg0, s32 arg1, s16 *arg2, s32 arg3, Acmd *arg4) {
     Acmd *sp34;
@@ -198,19 +356,20 @@ Acmd *_n_filterBuffer(ALLowPass *lp, s32 buff, s32 count, Acmd *p)
 	return ptr;
 }
 
-f32 func_global_asm_8073E73C(Struct8073BC74_auxbus_unk20_unk4 *arg0, s32 arg1) {
+// _doModFunc
+f32 func_global_asm_8073E73C(ALDelay *arg0, s32 arg1) {
     f32 sp4;
 
-    arg0->unk14 += (arg0->unk10 * (f32) arg1);
-    if (arg0->unk14 > 2.0f) {
-        arg0->unk14 -= 4.0f;
+    arg0->rsval += (arg0->rsinc * (f32) arg1);
+    if (arg0->rsval > RANGE) {
+        arg0->rsval -= (RANGE * 2);
     } else {
-        arg0->unk14 = arg0->unk14;
+        arg0->rsval = arg0->rsval;
     }
-    sp4 = arg0->unk14;
+    sp4 = arg0->rsval;
     sp4 = sp4 < 0.0f ? -sp4 : sp4;
-    sp4 -= 1.0f;
-    return arg0->unk1C * sp4;
+    sp4 -= RANGE/2;
+    return arg0->rsgain * sp4;
 }
 
 Acmd *func_global_asm_8073FD90(s32, Acmd *);

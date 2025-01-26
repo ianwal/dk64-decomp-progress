@@ -171,7 +171,7 @@ s32     alLoadParam(void *filter, s32 paramID, void *param);
 
 typedef struct ALResampler_s {
     ALFilter            filter;
-    RESAMPLE_STATE      *state;
+    RESAMPLE_STATE      *state[2];
     f32                 ratio;
     s32			upitch;
     f32		        delta;

@@ -368,7 +368,7 @@ segments:
       - [0x2141C00, c, audio/done/code_141C00]
       - [0x2141E40, c, audio/done/n_syndelete]
       - [0x2141E60, c, audio/done/code_141E60]
-      - [0x2141EF0, c, audio/code_141EF0]
+      - [0x2141EF0, c, audio/done/n_reverb]
       - [0x21435A0, c, audio/done/synsetpriority]
       - [0x21435C0, c, audio/done/n_env]
       - [0x21445A0, c, audio/done/code_1445A0]
@@ -483,7 +483,7 @@ segments:
       - [0x21651A0, .rodata, audio/done/code_13ECE0]
       - [0x21651B0, .rodata, audio/done/code_140600]
       - [0x21651D0, .rodata, audio/done/code_141520]
-      - [0x21651E0, .rodata, audio/code_141EF0]
+      - [0x21651E0, .rodata, audio/done/n_reverb]
       - [0x2165210, .rodata, audio/done/n_env]
       - [0x2165260, .rodata, audio/done/code_1445A0]
       - [0x2165270, rodata] # audio/code_145950
