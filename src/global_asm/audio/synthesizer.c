@@ -6,8 +6,47 @@
 //n_alSynNew
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/synthesizer/n_alSynNew.s")
 
-//n_alAudioFrame
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/synthesizer/n_alAudioFrame.s")
+s32 __n_nextSampleTime(ALPlayer **);                    /* extern */
+Acmd *func_global_asm_8073E800(s32, Acmd *);        /* extern */
+
+Acmd *n_alAudioFrame(Acmd *cmdList, s32 *cmdLen, s16 *outBuf, s32 outLen) {
+    ALPlayer *client;
+    s16 sp3A;
+    Acmd *cmdlEnd;
+    Acmd *cmdPtr;
+    s32 nOut;
+    s16 *lOutBuf;
+
+    sp3A = 0;
+    cmdlEnd = cmdList;
+    lOutBuf = outBuf;
+    if (n_syn->head == NULL) {
+        *cmdLen = 0;
+        return cmdList;
+    }
+    
+    for (n_syn->paramSamples = __n_nextSampleTime(&client);
+        (n_syn->paramSamples - n_syn->curSamples) < outLen;
+        n_syn->paramSamples = __n_nextSampleTime(&client)
+    ) {
+        n_syn->paramSamples &= ~0xF;
+        client->samplesLeft += _n_timeToSamplesNoRound((*client->handler)(client));
+        
+    }
+    n_syn->paramSamples &= ~0xF;
+    while (outLen > 0) {
+        nOut = MIN(n_syn->maxOutSamples, outLen);
+        cmdPtr = cmdlEnd;
+        n_syn->sv_dramout = (s32) lOutBuf;
+        cmdlEnd = func_global_asm_8073E800(n_syn->curSamples, cmdPtr);
+        outLen -= nOut;
+        lOutBuf += nOut << 1;
+        n_syn->curSamples += nOut;
+    }
+    *cmdLen = (s32) (cmdlEnd - cmdList);
+    _n_collectPVoices();
+    return cmdlEnd;
+}
 
 ALParam *__n_allocParam(void) {
     ALParam *update = 0;
@@ -63,14 +102,9 @@ s32 _n_timeToSamplesNoRound(s32 micros)
     return (s32)tmp;
 }
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/synthesizer/func_global_asm_80739E24.s")
-#else
-// s32 _timeToSamples(ALSynth *synth, s32 micros)
-s32 func_global_asm_80739E24(s32 micros)
-{ return _n_timeToSamplesNoRound(micros) & ~0xf;
+s32 func_global_asm_80739E24(s32 micros) {
+    return _n_timeToSamplesNoRound(micros) & ~0xf;
 }
-#endif
 
 static s32 __n_nextSampleTime(ALPlayer **client) 
 {
