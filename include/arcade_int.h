@@ -102,44 +102,15 @@ void arcade_pie_update(u8);
 void func_arcade_80030FEC(void);
 void func_arcade_800313B8(void);
 
-/*.rodata 0x8004A840*/
-extern u8  D_arcade_8004A934;
-extern u8  D_arcade_8004A944;
-extern u8  D_arcade_8004A954;
-extern u8  D_arcade_8004A95C;
-extern u8  D_arcade_8004A974;
-extern u8  D_arcade_8004A97C;
-extern u8  D_arcade_8004A984;
-extern u8  D_arcade_8004A98C;
-extern u8  D_arcade_8004A994;
-extern u8  D_arcade_8004A9A0;
-extern u8  D_arcade_8004A9B0;
-extern u8  D_arcade_8004A9BC;
-extern u8  D_arcade_8004A9D0;
-extern u8  D_arcade_8004A9DC;
-/*jmp_tbl D_arcade_8004A9EC[6]*/
-
-extern f32 D_arcade_8004AA18; // 1170.2857666
-extern f64 D_arcade_8004AA98;
-extern f64 D_arcade_8004AAA0;
-extern f64 D_arcade_8004AAA8;
-extern f64 D_arcade_8004AAB0;
-extern f32 D_arcade_8004AB24;
-extern f64 D_arcade_8004AB28;
-extern f64 D_arcade_8004AB30;
-extern f32 D_arcade_8004AB38;
-
-extern f32 D_arcade_8004AB78;
-extern f32 D_arcade_8004AB7C;
-
 /* .bss 0x804AC00 */
-extern ArcadeStruct3 D_arcade_8004AC00[];
+extern ArcadeStruct3 D_arcade_8004AC00[2];
 extern uSprite D_arcade_8004BB00[2];
 extern uSprite D_arcade_8004BB30[2];
 extern uSprite D_arcade_8004BB60[2];
 extern uSprite D_arcade_8004BB90[2];
 extern uSprite D_arcade_8004BBC0[2];
-extern uSprite D_arcade_8004BBF0[];
+extern uSprite D_arcade_8004BBF0[2];
+
 extern f32 D_arcade_8004BC88[6][3];
 extern ArcadeStruct1 arcade_objects[0x50];
 extern void *D_arcade_8004C6D0;
