@@ -575,10 +575,6 @@ u16 func_global_asm_80737198(u16 *arg0, u16 *arg1) {
     return sp12;
 }
 
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_8073726C.s")
-
-/*
 SoundState *func_global_asm_8073726C(ALBank *bank, ALSound *sound) {
     SoundState *ss;
     ALKeyMap *km;
@@ -627,7 +623,6 @@ SoundState *func_global_asm_8073726C(ALBank *bank, ALSound *sound) {
     }
     return ss;
 }
-*/
 
 extern s16 D_global_asm_807563D0;
 
