@@ -1,9 +1,10 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "n_synthInternals.h"
+#include "n_seqp.h"
 
 s32 func_global_asm_80733180(void *);
 void func_global_asm_80737F40(ALCSPlayer *);
-void __n_initChanState(ALCSPlayer *);
 
 void func_global_asm_80732F10(N_ALCSPlayer *seqp, ALSeqpConfig *c) {
     // alCSPNew
@@ -56,13 +57,269 @@ void func_global_asm_80732F10(N_ALCSPlayer *seqp, ALSeqpConfig *c) {
     func_global_asm_8073B640(seqp);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733180.s")
-
+extern void func_global_asm_80733A88(N_ALCSPlayer *);
 extern void func_global_asm_80733D8C(ALCSPlayer *, ALEvent *);
 extern void func_global_asm_807359A0(ALCSPlayer *);
 extern void func_global_asm_80735624(ALCSPlayer *, ALEvent *);
+extern void func_global_asm_8073B900(N_ALVoice *v, f32 pitch);
+extern f32 func_global_asm_8073BDC4(s32);
+extern void func_global_asm_8073B9B0(N_ALVoice *, f32);
+extern void func_global_asm_8073C820(N_ALVoice *, u8);
+extern u8 func_global_asm_8073A7B8(N_ALVoiceState *, N_ALCSPlayer *);
 
-void func_global_asm_80733A88(ALCSPlayer *seqp) {
+// __n_CSPVoiceHandler
+ALMicroTime func_global_asm_80733180(void *node)
+{
+	N_ALCSPlayer    *seqp = (N_ALCSPlayer *) node;
+	N_ALEvent        evt;
+	N_ALVoice       *voice;
+	ALMicroTime      delta;
+	N_ALVoiceState  *vs;
+	void            *oscState;
+	f32              oscValue;
+	u8               chan;
+    s32              pad;
+
+	do {
+		switch (seqp->nextEvent.type) {
+		case (AL_SEQ_REF_EVT):
+			func_global_asm_80733A88(seqp);
+			break;
+
+		case (AL_SEQP_API_EVT):
+			evt.type = AL_SEQP_API_EVT;
+			alEvtqPostEvent(&seqp->evtq, (N_ALEvent *)&evt, seqp->frameTime);
+			break;
+
+		case (AL_NOTE_END_EVT):
+			voice = seqp->nextEvent.msg.note.voice;
+
+			n_alSynStopVoice(voice);
+			func_global_asm_8073B750(voice);
+			vs = (N_ALVoiceState *)voice->clientPrivate;
+
+			if (vs->flags) {
+				__n_seqpStopOsc((N_ALSeqPlayer*)seqp,vs);
+			}
+
+			__n_unmapVoice((N_ALSeqPlayer*)seqp, voice);
+			break;
+
+		case (AL_SEQP_ENV_EVT):
+			voice = seqp->nextEvent.msg.vol.voice;
+			vs = (N_ALVoiceState *)voice->clientPrivate;
+
+			if (vs->envPhase == AL_PHASE_ATTACK) {
+				vs->envPhase = AL_PHASE_DECAY;
+			}
+
+			delta = seqp->nextEvent.msg.vol.delta;
+			vs->envEndTime = seqp->curTime + delta;
+			vs->envGain = seqp->nextEvent.msg.vol.vol;
+			func_global_asm_8073B830(voice, __n_vsVol(vs, (N_ALSeqPlayer*)seqp), delta);
+			break;
+
+		case (AL_TREM_OSC_EVT):
+			vs = seqp->nextEvent.msg.osc.vs;
+			oscState = seqp->nextEvent.msg.osc.oscState;
+			delta = (*seqp->updateOsc)(oscState,&oscValue);
+			vs->tremelo = (u8)oscValue;
+			func_global_asm_8073B830(&vs->voice, __n_vsVol(vs,(N_ALSeqPlayer*)seqp), __n_vsDelta(vs,seqp->curTime));
+			evt.type = AL_TREM_OSC_EVT;
+			evt.msg.osc.vs = vs;
+			evt.msg.osc.oscState = oscState;
+			alEvtqPostEvent(&seqp->evtq, &evt, delta);
+			break;
+
+		case (AL_VIB_OSC_EVT):
+			vs = seqp->nextEvent.msg.osc.vs;
+			oscState = seqp->nextEvent.msg.osc.oscState;
+			chan = seqp->nextEvent.msg.osc.chan;
+			delta = (*seqp->updateOsc)(oscState,&oscValue);
+			vs->vibrato = oscValue;
+			func_global_asm_8073B900( &vs->voice, vs->pitch * vs->vibrato * seqp->chanState[chan].pitchBend);
+
+			if (seqp->chanState[chan].unk11) {
+				func_global_asm_8073B9B0(&vs->voice,
+						440.0f
+                        * func_global_asm_8073BDC4(vs->key - vs->sound->keyMap->keyBase)
+						* seqp->chanState[chan].pitchBend
+						* vs->vibrato);
+			}
+
+			evt.type = AL_VIB_OSC_EVT;
+			evt.msg.osc.vs = vs;
+			evt.msg.osc.oscState = oscState;
+			evt.msg.osc.chan = chan;
+			alEvtqPostEvent(&seqp->evtq, &evt, delta);
+			break;
+
+		case (AL_SEQP_MIDI_EVT):
+		case (AL_CSP_NOTEOFF_EVT):	/* nextEvent is a note off midi message */
+			func_global_asm_80733D8C(seqp, &seqp->nextEvent);
+			break;
+
+		case (AL_SEQP_META_EVT):
+			func_global_asm_80735624(seqp, &seqp->nextEvent);
+			break;
+
+		case (AL_SEQP_VOL_EVT):
+			seqp->vol =  seqp->nextEvent.msg.spvol.vol;
+
+			for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+				func_global_asm_8073B830(&vs->voice,
+						__n_vsVol(vs, (N_ALSeqPlayer*)seqp),
+						__n_vsDelta(vs, seqp->curTime));
+			}
+			break;
+
+		case (AL_18_EVT):
+			seqp->unk7c = seqp->nextEvent.msg.evt18.unk00;
+			seqp->unk80 = seqp->nextEvent.msg.evt18.unk04;
+
+			for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+				func_global_asm_8073C820(&vs->voice, func_global_asm_8073A7B8(vs, seqp));
+			}
+			break;
+
+		case (AL_19_EVT):
+			if (seqp->nextEvent.msg.evt19.unk01 < 8) {
+				ALFxRef fx = func_global_asm_8073C8D0(seqp->nextEvent.msg.evt19.unk00);
+
+				if (fx) {
+					func_global_asm_8073C9C0(fx,
+							(seqp->nextEvent.msg.evt19.unk02 << 3) | (seqp->nextEvent.msg.evt19.unk01 & 7),
+							&seqp->nextEvent.msg.evt19.param);
+				}
+			} else {
+				ALFxRef fx = func_global_asm_8073C948(seqp->nextEvent.msg.evt19.unk00);
+
+				if (fx) {
+					func_global_asm_8073CA04(fx, seqp->nextEvent.msg.evt19.unk01, &seqp->nextEvent.msg.evt19.param);
+				}
+			}
+			break;
+
+		case (AL_SEQP_PLAY_EVT):
+			if (seqp->state != AL_PLAYING) {
+				seqp->state = AL_PLAYING;
+				func_global_asm_807359A0(seqp);
+				/* seqp must be AL_PLAYING before we call this routine. */
+			}
+			break;
+
+		case (AL_SEQP_STOP_EVT):
+			if (seqp->state == AL_STOPPING ) {
+				for (vs = seqp->vAllocHead; vs != 0; vs = seqp->vAllocHead) {
+					n_alSynStopVoice(&vs->voice);
+					func_global_asm_8073B750(&vs->voice);
+
+					if (vs->flags) {
+						__n_seqpStopOsc((N_ALSeqPlayer*)seqp,vs);
+					}
+
+					__n_unmapVoice((N_ALSeqPlayer*)seqp, &vs->voice);
+				}
+
+				seqp->state = AL_STOPPED;
+
+				/* alEvtqFlush(&seqp->evtq); - Don't flush event queue
+				   anymore. */
+				/* sct 1/3/96 - Don't overwrite nextEvent with
+				   AL_SEQP_API_EVT or set nextDelta to
+				   AL_USEC_PER_FRAME since we're not stopping event
+				   processing. */
+				/* sct 1/3/96 - Don't return here since we keep
+				   processing events as usual. */
+			}
+			break;
+
+		case (AL_SEQP_STOPPING_EVT):
+			if (seqp->state == AL_PLAYING) {
+				/* sct 12/29/95 - Remove events associated with the
+				 * stopping sequence.  For compact sequence player,
+				 * also remove all queued note off events since they
+				 * are not contained in a compact sequence but are
+				 * generated in response to note ons.  Note that
+				 * flushing AL_SEQP_MIDI_EVTs may flush events that
+				 * were posted after the call to alSeqpStop, so the
+				 * application must queue these events either when
+				 * the player is fully stopped, or when it is
+				 * playing. */
+				alEvtqFlushType(&seqp->evtq, AL_SEQ_REF_EVT);
+				alEvtqFlushType(&seqp->evtq, AL_CSP_NOTEOFF_EVT);
+				alEvtqFlushType(&seqp->evtq, AL_SEQP_MIDI_EVT);
+
+				/* sct 1/3/96 - Check to see which voices need to be
+				   killed and release them. */
+				/* Unkilled voices should have note end events
+				   occurring prior to KILL_TIME. */
+				for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+					if (__n_voiceNeedsNoteKill ((N_ALSeqPlayer*)seqp, &vs->voice, KILL_TIME)) {
+						__n_seqpReleaseVoice((N_ALSeqPlayer*)seqp, &vs->voice, KILL_TIME);
+					}
+				}
+
+				for (chan = 0; chan < 16; chan++) {
+					seqp->chanState[chan].unk0d = seqp->chanState[chan].unk0e;
+
+					if (seqp->chanState[chan].unk0d == 0) {
+						seqp->chanMask &= (1 << chan) ^ 0xffff;
+					} else {
+						seqp->chanMask |= 1 << chan;
+					}
+				}
+
+				seqp->state = AL_STOPPING;
+				evt.type = AL_SEQP_STOP_EVT;
+				alEvtqPostEvent(&seqp->evtq, &evt, AL_EVTQ_END);
+			}
+			break;
+
+		case (AL_SEQP_PRIORITY_EVT):
+			chan = seqp->nextEvent.msg.sppriority.chan;
+			seqp->chanState[chan].priority = seqp->nextEvent.msg.sppriority.priority;
+			break;
+
+		case (AL_SEQP_SEQ_EVT):
+			/* Must be done playing to change sequences. */
+
+			seqp->target = seqp->nextEvent.msg.spseq.seq;
+			seqp->chanMask = 0xffff;
+
+			if (seqp->bank) {
+				__n_initFromBank((N_ALSeqPlayer *)seqp, seqp->bank);
+			}
+			break;
+
+		case (AL_SEQP_BANK_EVT):
+			/* Must be fully stopped to change banks. */
+
+			seqp->bank = seqp->nextEvent.msg.spbank.bank;
+			__n_initFromBank((N_ALSeqPlayer *)seqp, seqp->bank);
+			break;
+
+			/* sct 11/6/95 - these events should
+			   now be handled by func_global_asm_80733A88 */
+
+		case (AL_SEQ_END_EVT):
+		case (AL_TEMPO_EVT):
+		case (AL_SEQ_MIDI_EVT):
+			break;
+		}
+
+		seqp->nextDelta = alEvtqNextEvent(&seqp->evtq, &seqp->nextEvent);
+	} while (seqp->nextDelta == 0);
+
+	/*
+	 * assume that next callback won't be more than half an
+	 * hour away
+	 */
+	seqp->curTime += seqp->nextDelta;		/* sct 11/7/95 */
+	return seqp->nextDelta;
+}
+
+void func_global_asm_80733A88(N_ALCSPlayer *seqp) {
     // __CSPHandleNextSeqEvent
     ALEvent	evt;
 

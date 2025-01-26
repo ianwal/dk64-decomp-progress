@@ -2209,7 +2209,7 @@ us,asm,func_global_asm_806A7B4C,36,yes
 us,asm,func_global_asm_80724C78,44,yes
 us,asm,__n_seqpStopOsc,316,yes
 us,asm,func_global_asm_8066B424,16,yes
-us,asm,func_global_asm_80733180,2312,no
+us,asm,func_global_asm_80733180,2312,yes
 us,asm,func_global_asm_806FF144,488,yes
 us,asm,func_global_asm_806D3B48,128,yes
 us,asm,func_global_asm_8062A7D0,56,yes
