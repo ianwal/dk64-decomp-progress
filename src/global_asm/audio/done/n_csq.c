@@ -1,8 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_80738470(ALCSeq *seq, ALCMidiHdr *music_midi_bin) {
-    // alCSeqNew
+void n_alCSeqNew(ALCSeq *seq, u8 *music_midi_bin) {
     u32 i;
     u32 tmpOff;
     s32 track_bitfield;
@@ -21,7 +20,7 @@ void func_global_asm_80738470(ALCSeq *seq, ALCMidiHdr *music_midi_bin) {
             track_bitfield = 1 << i;
             seq->validTracks |= track_bitfield;
             seq->curLoc[i] = (u8*)((u32)music_midi_bin + tmpOff);
-            seq->evtDeltaTicks[i] = func_global_asm_8073928C(seq, i);
+            seq->evtDeltaTicks[i] = __readVarLen(seq, i);
         } else {
             seq->curLoc[i] = 0;
         }
@@ -29,8 +28,7 @@ void func_global_asm_80738470(ALCSeq *seq, ALCMidiHdr *music_midi_bin) {
     seq->qnpt = 1.0f / seq->base->division;
 }
 
-void func_global_asm_807385F0(ALCSeq *arg0, ALEvent *arg1, s32 arg2) {
-    // alCSeqNextEvent
+void n_alCSeqNextEvent(ALCSeq *arg0, N_ALEvent *arg1, s32 arg2) {
     u32 i;
     u32 sp30;
     u32 sp2C;
@@ -50,38 +48,37 @@ void func_global_asm_807385F0(ALCSeq *arg0, ALEvent *arg1, s32 arg2) {
             }
         }
     }
-    func_global_asm_8073876C(arg0, sp2C, arg1, arg2);
+    __n_alCSeqTrackEvent(arg0, sp2C, arg1, arg2);
     arg1->msg.midi.ticks = sp30;
     arg0->lastTicks += sp30;
     arg0->lastDeltaTicks = sp30;
     if (arg1->type != AL_TRACK_END) {
-        arg0->evtDeltaTicks[sp2C] += func_global_asm_8073928C(arg0, sp2C);
+        arg0->evtDeltaTicks[sp2C] += __readVarLen(arg0, sp2C);
     }
     arg0->deltaFlag = 1;
 }
 
-u8 func_global_asm_80739098(ALCSeq *, s32);
+u8 __getTrackByte(ALCSeq *, s32);
 
-s32 func_global_asm_8073876C(ALCSeq *seq, s32 track, ALEvent *event, s32 arg3) {
-    // __alCSeqGetTrackEvent
+s32 __n_alCSeqTrackEvent(ALCSeq *seq, s32 track, N_ALEvent *event, s32 arg3) {
     u32     offset;
     u8      status, loopCt, curLpCt, *tmpPtr;
     
 
-    status = func_global_asm_80739098(seq,track);     /* read the status byte */
+    status = __getTrackByte(seq,track);     /* read the status byte */
 
     if (status == AL_MIDI_Meta) /* running status not allowed on meta events!! */
     {
-        u8 type = func_global_asm_80739098(seq,track);
+        u8 type = __getTrackByte(seq,track);
         
         if (type == AL_MIDI_META_TEMPO)
         {
             event->type = AL_TEMPO_EVT;
             event->msg.tempo.status = status;
             event->msg.tempo.type = type;
-            event->msg.tempo.byte1 = func_global_asm_80739098(seq,track);
-            event->msg.tempo.byte2 = func_global_asm_80739098(seq,track);
-            event->msg.tempo.byte3 = func_global_asm_80739098(seq,track);
+            event->msg.tempo.byte1 = __getTrackByte(seq,track);
+            event->msg.tempo.byte2 = __getTrackByte(seq,track);
+            event->msg.tempo.byte3 = __getTrackByte(seq,track);
             seq->lastStatus[track] = 0;  /* lastStatus not supported after meta */
         }
         else if (type == AL_MIDI_META_EOT)
@@ -98,9 +95,9 @@ s32 func_global_asm_8073876C(ALCSeq *seq, s32 track, ALEvent *event, s32 arg3) {
         }
         else if (type == AL_CMIDI_LOOPSTART_CODE)
         {
-            status = func_global_asm_80739098(seq,track); /* get next two bytes, ignore them */
+            status = __getTrackByte(seq,track); /* get next two bytes, ignore them */
             event->msg.midi.duration = (status << 8);
-            status = func_global_asm_80739098(seq,track);
+            status = __getTrackByte(seq,track);
             event->msg.midi.duration += status;
             seq->lastStatus[track] = 0;
             event->type = AL_CSP_LOOPSTART;
@@ -143,7 +140,7 @@ s32 func_global_asm_8073876C(ALCSeq *seq, s32 track, ALEvent *event, s32 arg3) {
         {
             
             event->msg.midi.status = (status & 0xF0) | track;
-            event->msg.midi.byte1 = func_global_asm_80739098(seq,track);
+            event->msg.midi.byte1 = __getTrackByte(seq,track);
             seq->lastStatus[track] = event->msg.midi.status;
         }
         else     /* running status */
@@ -159,10 +156,10 @@ s32 func_global_asm_8073876C(ALCSeq *seq, s32 track, ALEvent *event, s32 arg3) {
         if (((event->msg.midi.status & 0xf0) != AL_MIDI_ProgramChange) &&
             ((event->msg.midi.status & 0xf0) != AL_MIDI_ChannelPressure))
         {
-            event->msg.midi.byte2 = func_global_asm_80739098(seq,track);
+            event->msg.midi.byte2 = __getTrackByte(seq,track);
             if((event->msg.midi.status & 0xf0) == AL_MIDI_NoteOn)
             {
-                event->msg.midi.duration = func_global_asm_8073928C(seq,track);
+                event->msg.midi.duration = __readVarLen(seq,track);
 #ifdef _DEBUG                
                 if(event->msg.midi.byte2 == 0)
                     __osError( ERR_ALCSEQZEROVEL, 1, track);
@@ -175,12 +172,11 @@ s32 func_global_asm_8073876C(ALCSeq *seq, s32 track, ALEvent *event, s32 arg3) {
     return TRUE;
 }
 
-u32 func_global_asm_80738BA0(ALCSeq *seq) {
+s32 alCSeqGetTicks(ALCSeq *seq) {
     return seq->lastTicks;
 }
 
-void func_global_asm_80738BB8(ALCSeq *seq, ALCSeqMarker *m) {
-    // alCSeqSetLoc
+void alCSeqSetLoc(ALCSeq *seq, ALCSeqMarker *m) {
     s32 i;
 
     seq->validTracks = m->validTracks;
@@ -195,8 +191,7 @@ void func_global_asm_80738BB8(ALCSeq *seq, ALCSeqMarker *m) {
     }
 }
 
-void func_global_asm_80738C6C(ALCSeq *seq, ALCSeqMarker *m) {
-    // alCSeqGetLoc
+void alCSeqGetLoc(ALCSeq *seq, ALCSeqMarker *m) {
     s32 i;
 
     m->validTracks = seq->validTracks;
@@ -211,13 +206,12 @@ void func_global_asm_80738C6C(ALCSeq *seq, ALCSeqMarker *m) {
     };
 }
 
-void func_global_asm_80738D20(ALCSeq *seq, ALCSeqMarker *m, u32 ticks) {
-    // alCSeqNewMarker
+void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks) {
     ALEvent event;
     ALCSeq tempSeq;
     s32 i;
 
-    func_global_asm_80738470(&tempSeq, seq->base);
+    n_alCSeqNew(&tempSeq, seq->base);
     do {
         m->validTracks = tempSeq.validTracks;
         m->lastTicks = tempSeq.lastTicks;
@@ -229,7 +223,7 @@ void func_global_asm_80738D20(ALCSeq *seq, ALCSeqMarker *m, u32 ticks) {
             m->lastStatus[i] = tempSeq.lastStatus[i];
             m->evtDeltaTicks[i] = tempSeq.evtDeltaTicks[i];
         }
-        func_global_asm_807385F0(&tempSeq, &event, 0);
+        n_alCSeqNextEvent(&tempSeq, &event, 0);
         if (event.type == AL_SEQ_END_EVT) break;
     } while (tempSeq.lastTicks < ticks);
 }
@@ -241,7 +235,7 @@ void func_global_asm_80738E58(ALCSeq *seq, ALCSeqMarker *m, u32 ticks, u32 arg3)
 	s32 j;
 	ALCSeqMarker m2;
 
-	func_global_asm_80738470(&tempSeq, (u8*)seq->base);
+	n_alCSeqNew(&tempSeq, (u8*)seq->base);
 
 	for (j = 0; j < ticks; j++) {
 		m[j].lastTicks = 0;
@@ -260,7 +254,7 @@ void func_global_asm_80738E58(ALCSeq *seq, ALCSeqMarker *m, u32 ticks, u32 arg3)
 			m2.evtDeltaTicks[i] = tempSeq.evtDeltaTicks[i];
 		}
 
-		func_global_asm_807385F0(&tempSeq, &evt, 0);
+		n_alCSeqNextEvent(&tempSeq, &evt, 0);
 
 		if (evt.type == AL_CSP_LOOPSTART) {
 			if ((evt.msg.loop.count >> 8) >= arg3 && (evt.msg.loop.count >> 8) < arg3 + ticks) {
@@ -277,7 +271,7 @@ void func_global_asm_80738E58(ALCSeq *seq, ALCSeqMarker *m, u32 ticks, u32 arg3)
 }
 
 
-u8 func_global_asm_80739098(ALCSeq *seq, s32 track) {
+u8 __getTrackByte(ALCSeq *seq, s32 track) {
     u8 theByte;
 
     if (seq->curBULen[track]) {
@@ -313,16 +307,15 @@ u8 func_global_asm_80739098(ALCSeq *seq, s32 track) {
     return theByte;
 }
 
-s32 func_global_asm_8073928C(ALCSeq *seq, s32 track) {
-    // __readVarLen
+s32 __readVarLen(ALCSeq *seq, s32 track) {
     u32 value;
     u32 c;
 
-    value = func_global_asm_80739098(seq, track);
+    value = __getTrackByte(seq, track);
     if (value & 0x80) {
         value &= 0x7F;
         do {
-            c = func_global_asm_80739098(seq, track);
+            c = __getTrackByte(seq, track);
             value = (value << 7) + (c & 0x7F);
         } while (c & 0x80);
     }

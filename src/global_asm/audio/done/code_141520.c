@@ -2,7 +2,7 @@
 #include "functions.h"
 
 ALParam *__n_allocParam();
-s32 func_global_asm_8073F1E4(Struct8073F1E4 *, s32, ALParam *);
+s32 n_alEnvmixerParam(Struct8073F1E4 *, s32, ALParam *);
 
 void func_global_asm_8073C820(ALVoice *arg0, u8 arg1) {
     ALParam *sp1C;
@@ -14,7 +14,7 @@ void func_global_asm_8073C820(ALVoice *arg0, u8 arg1) {
         sp1C->type = AL_SEQP_STOP_EVT;
         sp1C->data.i = arg1;
         sp1C->next = 0;
-        func_global_asm_8073F1E4(arg0->pvoice, 3, sp1C);
+        n_alEnvmixerParam(arg0->pvoice, 3, sp1C);
     }
 }
 

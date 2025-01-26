@@ -1,15 +1,15 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "n_synthInternals.h"
 
 void __n_freeParam(ALParam *);
-void _n_freePVoice(PVoice *);
-s32 func_global_asm_8073F1E4(CustomPVoice *, s32, ALParam *);
-Acmd *func_global_asm_8073F328(CustomPVoice *, s16 *, s32, s32, Acmd *);
-s16 func_global_asm_8073F81C(s16, s32, s16, u16);
+s16 _getVol(s16, s32, s16, u16);
 void func_global_asm_807407A8(CustomPVoice *, s32, void *);
 extern u8 D_global_asm_807FF0F0;
 extern u8 D_global_asm_807FF0F1;
 extern u8 D_global_asm_807FF0F2;
+
+#define N_EQPOWER_LENGTH 128
 
 // .data
 s16 n_eqpower[] = {
@@ -31,8 +31,9 @@ s16 n_eqpower[] = {
 	0x0b11, 0x097d, 0x07e9, 0x0654, 0x04c0, 0x032a, 0x0195, 0x0000,
 };
 
-Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
-    // alEnvmixerPull
+Acmd *_pullSubFrame(N_PVoice *filter, s16 *inp, s16 *outp, s32 outCount, Acmd *p);
+
+Acmd *n_alEnvmixerPull(N_PVoice *arg0, s32 arg1, Acmd *arg2) {
     s32 sp54;
     CustomPVoice *sp50;
     s16 sp4E;
@@ -102,7 +103,7 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
         case 11:
         case 12:
         case 16:
-            sp54 = func_global_asm_8073F328(sp50, &sp4E, &sp3E, sp40, sp54);
+            sp54 = _pullSubFrame(sp50, &sp4E, &sp3E, sp40, sp54);
             if (sp50->unk70_s32 >= sp50->unk74) {
                 sp50->unk68 = ((n_eqpower[sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
                 sp50->unk6E = ((n_eqpower[0x7F - sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
@@ -110,8 +111,8 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
                 sp50->resampler.unk30 = sp50->unk68;
                 sp50->resampler.unk32 = sp50->unk6E;
             } else {
-                sp50->resampler.unk30 = func_global_asm_8073F81C(sp50->resampler.unk30, sp50->unk70_s32, sp50->unk66, sp50->unk64);
-                sp50->resampler.unk32 = func_global_asm_8073F81C(sp50->resampler.unk32, sp50->unk70_s32, sp50->unk6C, sp50->unk6A);
+                sp50->resampler.unk30 = _getVol(sp50->resampler.unk30, sp50->unk70_s32, sp50->unk66, sp50->unk64);
+                sp50->resampler.unk32 = _getVol(sp50->resampler.unk32, sp50->unk70_s32, sp50->unk6C, sp50->unk6A);
             }
             if (sp50->resampler.unk30 == 0) {
                 sp50->resampler.unk30 = 1;
@@ -157,8 +158,8 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
             sp50->unk84 = 1;
             break;
         case 15:
-            sp54 = func_global_asm_8073F328(sp50, &sp4E, &sp3E, sp40, sp54);
-            func_global_asm_8073F1E4(sp50, 4, 0);
+            sp54 = _pullSubFrame(sp50, &sp4E, &sp3E, sp40, sp54);
+            n_alEnvmixerParam(sp50, 4, 0);
             break;
         case 0:
             sp20 = sp50->unk7C;
@@ -166,20 +167,20 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
             _n_freePVoice(sp20->unkC_s32);
             break;
         case 7:
-            sp54 = func_global_asm_8073F328(sp50, &sp4E, &sp3E, sp40, sp54);
+            sp54 = _pullSubFrame(sp50, &sp4E, &sp3E, sp40, sp54);
             sp50->resampler.unk18 = sp50->unk7C->unkC_f32;
             break;
         case 8:
-            sp54 = func_global_asm_8073F328(sp50, &sp4E, &sp3E, sp40, sp54);
+            sp54 = _pullSubFrame(sp50, &sp4E, &sp3E, sp40, sp54);
             sp50->resampler.unk1C = 1;
             break;
         case 5:
-            sp54 = func_global_asm_8073F328(sp50, &sp4E, &sp3E, sp40, sp54);
+            sp54 = _pullSubFrame(sp50, &sp4E, &sp3E, sp40, sp54);
             func_global_asm_807407A8(sp50, 5, sp50->unk7C->unkC_s32);
             break;
         default:
-            sp54 = func_global_asm_8073F328(sp50, &sp4E, &sp3E, sp40, sp54);
-            func_global_asm_8073F1E4(sp50, sp50->unk7C->unk8, sp50->unk7C->unkC_s32);
+            sp54 = _pullSubFrame(sp50, &sp4E, &sp3E, sp40, sp54);
+            n_alEnvmixerParam(sp50, sp50->unk7C->unk8, sp50->unk7C->unkC_s32);
             break;
         }
         sp3E += sp40 * 2;
@@ -191,14 +192,14 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
         }
         __n_freeParam(sp34);
     }
-    sp54 = func_global_asm_8073F328(sp50, &sp4E, &sp3E, sp30, sp54);
+    sp54 = _pullSubFrame(sp50, &sp4E, &sp3E, sp30, sp54);
     if (sp50->unk70_s32 > sp50->unk74) {
         sp50->unk70_s32 = sp50->unk74;
     }
     return sp54;
 }
 
-s32 func_global_asm_8073F1E4(CustomPVoice *arg0, s32 arg1, ALParam *arg2) {
+s32 n_alEnvmixerParam(N_PVoice *arg0, s32 arg1, void *arg2) {
     CustomPVoice *sp24;
 
     sp24 = arg0;
@@ -233,37 +234,55 @@ s32 func_global_asm_8073F1E4(CustomPVoice *arg0, s32 arg1, ALParam *arg2) {
 
 Acmd *func_global_asm_80740C50(CustomPVoice *, s16 *, s32, Acmd *);
 
-Acmd *func_global_asm_8073F328(CustomPVoice *arg0, s16 *arg1, s32 arg2, s32 arg3, Acmd *arg4) {
-    // unsure on arg2
-    Acmd *sp34;
-    CustomPVoice *sp30;
+Acmd *_pullSubFrame(N_PVoice *filter, s16 *inp, s16 *outp, s32 outCount, Acmd *p)
+{
+	Acmd *ptr = p;
+	N_PVoice *e = filter;
 
-    sp34 = arg4;
-    sp30 = arg0;
-    if ((sp30->unk84 != 1) || (arg3 == 0)) {
-        return sp34;
-    }
-    sp34 = func_global_asm_80740C50(sp30, arg1, arg3, arg4);
-    if (sp30->unk78 != 0) {
-        sp30->unk78 = 0;
-        sp30->unk68 = ((s32) (n_eqpower[sp30->resampler.unk2C] * sp30->resampler.unk2E) >> 0xF);
-        sp30->unk66 = func_global_asm_8073F60C(sp30->resampler.unk30, sp30->unk68, sp30->unk74, &sp30->unk64);
-        sp30->unk6E = ((s32) (n_eqpower[0x7F - sp30->resampler.unk2C] * sp30->resampler.unk2E) >> 0xF);
-        sp30->unk6C = func_global_asm_8073F60C(sp30->resampler.unk32, sp30->unk6E, sp30->unk74, &sp30->unk6A);
-        n_aSetVolume(sp34++, A_LEFT | A_VOL, sp30->resampler.unk30, sp30->unk60, sp30->unk62);\
-        n_aSetVolume(sp34++, A_RIGHT | A_VOL, sp30->unk6E, sp30->unk6C, sp30->unk6A);\
-        n_aSetVolume(sp34++, A_RATE, sp30->unk68, sp30->unk66, sp30->unk64);\
-        n_aEnvMixer(sp34++, A_INIT | A_NOAUX, sp30->resampler.unk32, osVirtualToPhysical(sp30->resampler.unk28));
-        ; // Yes this is necessary and does change compilation
-    } else {
-        n_aEnvMixer(sp34++, A_CONTINUE | A_NOAUX, 0, osVirtualToPhysical(sp30->resampler.unk28));
-    }
-    *arg1 += 0x170;
-    sp30->unk70++;
-    return sp34;
+	/* filter must be playing and request non-zero output samples to pull. */
+	if (e->em_motion != AL_PLAYING || !outCount) {
+		return ptr;
+	}
+
+	/*
+	 * ask all filters upstream from us to build their command
+	 * lists.
+	 */
+
+	ptr = func_global_asm_80740C50(e, inp, outCount, p);
+
+	/*
+	 * construct our portion of the command list
+	 */
+	if (e->em_first) {
+		e->em_first = 0;
+
+		/*
+		 * Calculate derived parameters
+		 */
+		e->em_ltgt = (e->em_volume * n_eqpower[e->em_pan]) >> 15;
+		e->em_lratm = _getRate(e->em_cvolL, e->em_ltgt, e->em_segEnd, &(e->em_lratl));
+		e->em_rtgt = (e->em_volume * n_eqpower[N_EQPOWER_LENGTH - e->em_pan - 1]) >> 15;
+		e->em_rratm = _getRate(e->em_cvolR, e->em_rtgt, e->em_segEnd, &(e->em_rratl));
+
+		n_aSetVolume(ptr++, A_LEFT  | A_VOL, e->em_cvolL, e->em_dryamt, e->em_wetamt);
+		n_aSetVolume(ptr++, A_RIGHT | A_VOL, e->em_rtgt, e->em_rratm,  e->em_rratl);
+		n_aSetVolume(ptr++, A_RATE, e->em_ltgt, e->em_lratm, e->em_lratl);
+		n_aEnvMixer (ptr++, A_INIT, e->em_cvolR, osVirtualToPhysical(e->em_state));
+	} else {
+		n_aEnvMixer(ptr++, A_CONTINUE, 0, osVirtualToPhysical(e->em_state));
+	}
+
+	/*
+	 * bump the input buffer pointer
+	 */
+	*inp += (FIXED_SAMPLE << 1);
+	e->em_delta += FIXED_SAMPLE;
+
+	return ptr;
 }
 
-s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
+s16 _getRate(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
     s16 spE;
     s16 spC;
     f32 sp8;
@@ -298,8 +317,7 @@ s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3) {
     return spE;
 }
 
-// __n_getVol
-s16 func_global_asm_8073F81C(s16 ivol, s32 samples, s16 ratem, u16 ratel) {
+s16 _getVol(s16 ivol, s32 samples, s16 ratem, u16 ratel) {
     s32 m;
 
     samples >>= 3;

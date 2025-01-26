@@ -1,9 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-
-ALParam *__n_allocParam();
-void _n_freePVoice(PVoice *);
-s32 func_global_asm_8073F1E4(CustomPVoice *, s32, ALParam *);
+#include "n_synthInternals.h"
 
 // alsynfreevoice
 void func_global_asm_8073B750(ALVoice *v) {
@@ -17,7 +14,7 @@ void func_global_asm_8073B750(ALVoice *v) {
             update->delta = n_syn->paramSamples + ((CustomPVoice *)v->pvoice)->unk88;
             update->type = AL_FILTER_FREE_VOICE;
             update->pvoice = v->pvoice;
-            func_global_asm_8073F1E4(v->pvoice, AL_FILTER_ADD_UPDATE, update);
+            n_alEnvmixerParam(v->pvoice, AL_FILTER_ADD_UPDATE, update);
         } else {
             _n_freePVoice(v->pvoice);
         }

@@ -2,8 +2,6 @@
 #include "functions.h"
 #include "n_synthInternals.h"
 
-s32 *func_global_asm_8073E8C0(Struct8073BC74_auxbus_unk1C *, s32, Acmd *);
-
 // n_alAuxBusPull
 s32 *func_global_asm_8073F8A0(s32 arg0, Acmd *arg1, s32 arg2, s32 *arg3) {
     Acmd *sp44;
@@ -33,7 +31,7 @@ s32 *func_global_asm_8073F8A0(s32 arg0, Acmd *arg1, s32 arg2, s32 *arg3) {
             (sp3C[i]->next->unk18 == arg2) && 
             (sp3C[i]->next->next != NULL) && 
             (sp3C[i]->next->next->unk8C >= 0x40)) {
-            sp44 = func_global_asm_8073E8C0(sp3C[i], arg0, sp44);
+            sp44 = n_alEnvmixerPull(sp3C[i], arg0, sp44);
             *arg3 += 1;
             sp34++;
             if (sp3C[i]->next->next->unk8C > sp30) {
@@ -63,7 +61,7 @@ s32 *func_global_asm_8073F8A0(s32 arg0, Acmd *arg1, s32 arg2, s32 *arg3) {
             (sp3C[i]->next->next->unk8C < 0x40))) || 
             ((sp3C[i]->next == 0) && (arg2 == 0))) {
             sp1C = sp44;
-            sp44 = func_global_asm_8073E8C0(sp3C[i], arg0, sp44);
+            sp44 = n_alEnvmixerPull(sp3C[i], arg0, sp44);
             if (sp44 != sp1C) {
                 *arg3 += 1;
             }

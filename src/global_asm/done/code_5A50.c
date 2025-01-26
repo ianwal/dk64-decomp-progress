@@ -25,7 +25,6 @@ void func_global_asm_80737F0C(ALSeqPlayer*, s32, u8);
 void func_global_asm_80738080(ALSeqPlayer*, u8, u8);
 void func_global_asm_807380CC(ALSeqPlayer*, s32, u8);
 void func_global_asm_80738118(ALSeqPlayer*, s32, u8);
-void func_global_asm_80738BB8(struct_8076BF48*, struct_sub_8076C328 *, u8, u8);
 void func_global_asm_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);
 
 void func_global_asm_80601A10(s32 *, s32, s32 *);
@@ -298,11 +297,9 @@ void func_global_asm_806018D4(u8 arg0, u8 arg1, s32 arg2) {
 }
 
 void func_global_asm_8060193C(u8 arg0, u8 arg1) {
-    func_global_asm_80738BB8(
+    alCSeqSetLoc(
         &D_global_asm_8076BF48[arg0], 
-        &D_global_asm_8076C328[arg0].unk0[arg1],
-        arg0,
-        arg1);
+        &D_global_asm_8076C328[arg0].unk0[arg1]);
 }
 
 void func_global_asm_806019B8(u8 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {

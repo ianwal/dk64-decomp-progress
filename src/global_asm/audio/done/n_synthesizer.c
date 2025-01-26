@@ -4,7 +4,7 @@
 
 ALFxRef func_global_asm_8073D160( s16 bus,ALSynConfig *c, ALHeap *hp);
 Acmd *func_global_asm_8073D1F0( s32 sampleOffset, Acmd *p, s32 arg2);
-void func_global_asm_8073C604(N_PVoice *mv, ALDMANew dmaNew, ALHeap *hp);
+void alN_PVoiceNew(N_PVoice *mv, ALDMANew dmaNew, ALHeap *hp);
 
 typedef struct ParamStruct {
     ALParam param;
@@ -82,7 +82,7 @@ void n_alSynNew(ALSynConfig *c) {
 		pv = &pvoices[i];
 		alLink((ALLink *)pv, &n_syn->pFreeList);
 		pv->vvoice = 0;
-		func_global_asm_8073C604(pv, n_syn->dma, hp);
+		alN_PVoiceNew(pv, n_syn->dma, hp);
 
 		for (j = 0; j < n_syn->maxAuxBusses; j++) {
 			n_syn->auxBus[j].sources[n_syn->auxBus[j].sourceCount++] = pv;

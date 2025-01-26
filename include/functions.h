@@ -3915,16 +3915,12 @@ s32 func_global_asm_807383B0(ALSeqPlayer *arg0);
 void func_global_asm_80738400(ALSeqPlayer *arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4);
 
 // global_asm/audio/cseq.c
-void func_global_asm_80738470(ALCSeq *seq, ALCMidiHdr *music_midi_bin);
-void func_global_asm_807385F0(ALCSeq *arg0, ALEvent *arg1, s32 arg2);
-s32 func_global_asm_8073876C(ALCSeq *seq, s32 track, ALEvent *event, s32 arg3);
-u32 func_global_asm_80738BA0(ALCSeq *seq);
-// TODO: func_global_asm_80738BB8 has no documented signature but has been matched
-// TODO: func_global_asm_80738C6C has no documented signature but has been matched
-// TODO: func_global_asm_80738D20 has no documented signature but has been matched
+// TODO: alCSeqSetLoc has no documented signature but has been matched
+// TODO: alCSeqGetLoc has no documented signature but has been matched
+// TODO: n_alCSeqNewMarker has no documented signature but has been matched
 // TODO: func_global_asm_80738E58 has no documented signature
-// TODO: func_global_asm_80739098 has no documented signature but has been matched
-// TODO: func_global_asm_8073928C has no documented signature but has been matched
+// TODO: __getTrackByte has no documented signature but has been matched
+// TODO: __readVarLen has no documented signature but has been matched
 
 // global_asm/audio/n_sl.c
 void n_alInit(N_ALGlobals *g, ALSynConfig *c);
@@ -3998,11 +3994,11 @@ void func_global_asm_8073B640(ALPlayer *arg0);
 // TODO: func_global_asm_8073B9B0 has no documented signature but has been matched
 // TODO: func_global_asm_8073BA60 has no documented signature but has been matched
 void func_global_asm_8073BB10(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4);
-void func_global_asm_8073BC74(Struct8073BC74 *arg0);
+void _init_lpfilter(Struct8073BC74 *arg0);
 // TODO: func_global_asm_8073BDC4 has no documented signature
 void func_global_asm_8073BE54(Struct8073BC74 *arg0, f32 arg1);
-// TODO: func_global_asm_8073C040 has no documented signature but has been matched
-// TODO: func_global_asm_8073C604 has no documented signature but has been matched
+// TODO: n_alFxNew has no documented signature but has been matched
+// TODO: alN_PVoiceNew has no documented signature but has been matched
 
 // global_asm/audio/code_141520.c
 // TODO: func_global_asm_8073C820 has no documented signature but has been matched
@@ -4043,11 +4039,11 @@ void n_alSynDelete(void);
 // TODO: func_global_asm_8073E8A0 has no documented signature but has been matched
 
 // global_asm/audio/env.c
-// TODO: func_global_asm_8073E8C0 has no documented signature but has been matched
-// TODO: func_global_asm_8073F1E4 has no documented signature but has been matched
-// TODO: func_global_asm_8073F328 has no documented signature but has been matched
-s16 func_global_asm_8073F60C(f32 arg0, f32 arg1, s32 arg2, u16 *arg3);
-// TODO: func_global_asm_8073F81C has no documented signature
+// TODO: n_alEnvmixerPull has no documented signature but has been matched
+// TODO: n_alEnvmixerParam has no documented signature but has been matched
+// TODO: _pullSubFrame has no documented signature but has been matched
+s16 _getRate(f32 arg0, f32 arg1, s32 arg2, u16 *arg3);
+// TODO: _getVol has no documented signature
 
 // global_asm/audio/code_1445A0.c
 // TODO: func_global_asm_8073F8A0 has no documented signature

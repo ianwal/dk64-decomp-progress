@@ -3,7 +3,7 @@
 #include "synthinternal.h"
 
 ALParam *__n_allocParam();
-s32 func_global_asm_8073F1E4(CustomPVoice *, s32, ALParam *);
+s32 n_alEnvmixerParam(CustomPVoice *, s32, ALParam *);
 
 void func_global_asm_8073CF00(ALVoice *arg0, u8 arg1) {
     ALParam *sp1C;
@@ -17,7 +17,7 @@ void func_global_asm_8073CF00(ALVoice *arg0, u8 arg1) {
         sp1C->type = 0xC;
         sp1C->data.i = arg1;
         sp1C->next = 0;
-        func_global_asm_8073F1E4(arg0->pvoice, 3, sp1C);
+        n_alEnvmixerParam(arg0->pvoice, 3, sp1C);
     }
 }
 
@@ -33,7 +33,7 @@ void func_global_asm_8073CFB0(Struct8073F1E4_container *arg0, u8 arg1) {
         sp1C->type = 0x11;
         sp1C->data.i = arg1;
         sp1C->next = 0;
-        func_global_asm_8073F1E4(arg0->unk8, 3, sp1C);
+        n_alEnvmixerParam(arg0->unk8, 3, sp1C);
     }
 }
 

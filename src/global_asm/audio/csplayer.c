@@ -70,7 +70,7 @@ void func_global_asm_80733A88(ALCSPlayer *seqp) {
     if (seqp->target == NULL)
 	return;
 
-    func_global_asm_807385F0(seqp->target, &evt, 1);
+    n_alCSeqNextEvent(seqp->target, &evt, 1);
 
     switch (evt.type)
     {

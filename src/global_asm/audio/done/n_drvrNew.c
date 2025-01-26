@@ -2,7 +2,7 @@
 #include "functions.h"
 
 ALParam *__n_allocParam();
-void func_global_asm_8073F1E4(CustomPVoice *, s32, ALParam *);
+void n_alEnvmixerParam(CustomPVoice *, s32, ALParam *);
 
 // .data
 extern s32 *D_global_asm_80756458[];
@@ -26,7 +26,7 @@ void func_global_asm_8073BB10(f32 arg0, f32 arg1, f32 arg2, f32 *arg3, f32 *arg4
     arg4[2] = ((1.0f + sp38) - sp34) / (1.0f + sp38 + sp34);
 }
 
-void func_global_asm_8073BC74(Struct8073BC74 *arg0) {
+void _init_lpfilter(Struct8073BC74 *arg0) {
     s32 sp14;
     s32 sp10;
     s16 spE;
@@ -154,8 +154,7 @@ typedef struct Struct8073C040_SP24 {
     s16 *unk2C;
 } Struct8073C040_SP24;
 
-void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, s16 arg2, s32 arg3) {
-    // Might (?) be alfxnew
+void n_alFxNew(ALFx **arg0, ALSynConfig *arg1, s16 arg2, s32 arg3) {
     u16 i, j, k;
     s32 *sp2C;
     Struct8073C040_SP28 *sp28;
@@ -164,9 +163,9 @@ void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, 
     sp2C = NULL;
     sp24 = alHeapAlloc(arg3, 1U, 0x30);
     *arg0 = sp24;
-    switch (arg1->unk1C[arg2]) {
+    switch (arg1->fxTypes[arg2]) {
         case 6:
-            sp2C = arg1->unk20[arg2];
+            sp2C = arg1->params[arg2];
             break;
         default:
             sp2C = &D_global_asm_80756458;
@@ -212,7 +211,7 @@ void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, 
             sp28->unk20->unk30 = alHeapAlloc(arg3, 1U, 8);
             sp28->unk20->unk0 = (s16) sp2C[j];
             j++;
-            func_global_asm_8073BC74(sp28->unk20);
+            _init_lpfilter(sp28->unk20);
         } else {
             sp28->unk20 = NULL;
             j++;
@@ -220,7 +219,7 @@ void func_global_asm_8073C040(Struct8073BC74 **arg0, Struct8073C040_arg1 *arg1, 
     }
 }
 
-void func_global_asm_8073C604(CustomPVoice *arg0, s32 (*arg1)(CustomResampler *), ALHeap *arg2) {
+void alN_PVoiceNew(CustomPVoice *arg0, s32 (*arg1)(CustomResampler *), ALHeap *arg2) {
     arg0->unkC = alHeapAlloc(arg2, 1, 0x20);
     arg0->unk10 = alHeapAlloc(arg2, 1, 0x20);
     arg0->unk28 = arg1(&arg0->resampler);

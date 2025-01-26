@@ -295,6 +295,7 @@ getAnimationArg16 = 0x80614F4C; // segment:global_asm
 getAnimationArg24 = 0x80614F88; // segment:global_asm
 getAnimationArg32 = 0x80614FD8; // segment:global_asm
 
+// Audio
 n_alInit = 0x80739320; // segment:global_asm
 n_alClose = 0x8073938C; // segment:global_asm
 alLink = 0x807393E0; // segment:global_asm
@@ -325,6 +326,23 @@ _bnkfPatchInst = 0x80732730; // segment:global_asm
 _bnkfPatchBank = 0x80732618; // segment:global_asm
 n_alSynStopVoice = 0x8073B6B0; // segment:global_asm
 n_eqpower = 0x80756490; // segment:global_asm
+_getVol = 0x8073F81C; // segment:global_asm
+_getRate = 0x8073F60C; // segment:global_asm
+_pullSubFrame = 0x8073F328; // segment:global_asm
+n_alEnvmixerParam = 0x8073F1E4; // segment:global_asm
+n_alEnvmixerPull = 0x8073E8C0; // segment:global_asm
+_init_lpfilter = 0x8073BC74; // segment:global_asm
+alN_PVoiceNew = 0x8073C604; // segment:global_asm
+n_alFxNew = 0x8073C040; // segment:global_asm
+n_alCSeqNew = 0x80738470; // segment:global_asm
+n_alCSeqNextEvent = 0x807385F0; // segment:global_asm
+__n_alCSeqTrackEvent = 0x8073876C; // segment:global_asm
+alCSeqGetTicks = 0x80738BA0; // segment:global_asm
+alCSeqSetLoc = 0x80738BB8; // segment:global_asm
+alCSeqGetLoc = 0x80738C6C; // segment:global_asm
+n_alCSeqNewMarker = 0x80738D20; // segment:global_asm
+__getTrackByte = 0x80739098; // segment:global_asm
+__readVarLen = 0x8073928C; // segment:global_asm
 
 next_map = 0x807444E4; // segment:global_asm
 next_exit = 0x807444E8; // segment:global_asm

@@ -3,7 +3,7 @@
 #include "n_synthInternals.h"
 
 
-s32     func_global_asm_8073F1E4(N_PVoice *p, s32 paramID, void *param);
+s32     n_alEnvmixerParam(N_PVoice *p, s32 paramID, void *param);
 s32 func_global_asm_8073CC94(N_PVoice **pvoice, s16 priority);
 
 // n_alSynAllocVoice
@@ -41,7 +41,7 @@ s32 func_global_asm_8073CAC0(N_ALVoice *voice, ALVoiceConfig *vc)
 				update->data.i     = 0;
 				update->moredata.i = 368; /* pvoice->offset - 184 */
 
-				func_global_asm_8073F1E4(voice->pvoice, AL_FILTER_ADD_UPDATE, update);
+				n_alEnvmixerParam(voice->pvoice, AL_FILTER_ADD_UPDATE, update);
 			} else {
 				// empty
 			}
@@ -55,7 +55,7 @@ s32 func_global_asm_8073CAC0(N_ALVoice *voice, ALVoiceConfig *vc)
 				update->delta = n_syn->paramSamples + pvoice->offset;
 				update->type = AL_FILTER_STOP_VOICE;
 				update->next = 0;
-				func_global_asm_8073F1E4(voice->pvoice, AL_FILTER_ADD_UPDATE, update);
+				n_alEnvmixerParam(voice->pvoice, AL_FILTER_ADD_UPDATE, update);
 			} else {
 				// empty
 			}

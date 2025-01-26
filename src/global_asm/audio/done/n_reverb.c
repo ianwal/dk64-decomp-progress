@@ -193,7 +193,7 @@ s32 func_global_asm_8073DA30(void *filter, s32 paramID, void *param)
 	case LPFILT_PARAM:
 		if (f->delay[s].lp) {
 			f->delay[s].lp->fc = (s16)val;
-			func_global_asm_8073BC74(f->delay[s].lp);
+			_init_lpfilter(f->delay[s].lp);
 		}
 		break;
 	}

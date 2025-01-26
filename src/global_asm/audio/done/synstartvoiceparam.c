@@ -3,7 +3,7 @@
 
 void *__n_allocParam();
 s32 func_global_asm_80739E24(s32);
-void func_global_asm_8073F1E4(CustomPVoice *, s32, ALStartParamAlt *);
+void n_alEnvmixerParam(CustomPVoice *, s32, ALStartParamAlt *);
 
 typedef struct ALStartParamAlt_0 {
     ALParam *next; // 0
@@ -43,6 +43,6 @@ void func_global_asm_8073CDD0(ALVoice *v, ALWaveTable *w,
         update->unk18 = arg7;
         update->samples = func_global_asm_80739E24(arg9);
         update->wave = w;
-        func_global_asm_8073F1E4(v->pvoice, AL_FILTER_ADD_UPDATE, update);
+        n_alEnvmixerParam(v->pvoice, AL_FILTER_ADD_UPDATE, update);
     }
 }
