@@ -1,6 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sndp.h"
+#include "n_sndp.h"
+#include "n_synthInternals.h"
 
 typedef struct {
     u8 unk0[0x14];
@@ -74,10 +75,10 @@ typedef struct {
 
 extern SoundState *D_global_asm_807563C0;
 
-extern u16 *D_global_asm_807FF0E4;
+extern s16 *D_global_asm_807FF0E4;
 
-void func_global_asm_80735DBC(N_ALEvent *);
-void func_global_asm_807370A4(ALEventQueue *, ALSoundState *, u16);
+void func_global_asm_80735DBC(N_ALSndpEvent *);
+void func_global_asm_807370A4(ALEventQueue *, N_ALSoundState *, u16);
 void func_global_asm_8073749C(SoundState *);
 void func_global_asm_8073B750(void *);
 
@@ -151,9 +152,6 @@ s32 func_global_asm_80735CF4(struct_80735CF4 *arg0) {
     return sp2C->unk4C;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/code_13A7A0/func_global_asm_80735DBC.s")
-
 void func_global_asm_80736FB8(struct_80736FB8 *);
 void func_global_asm_80737028(struct_80737028_0 *);
 u16 func_global_asm_80737198(u16 *, u16 *);
@@ -184,325 +182,300 @@ typedef struct Struct80735DBC_0 {
     u8 unk44;
 } Struct80735DBC_0;
 
-/*
-void func_global_asm_80735DBC(N_ALEvent *arg0) {
-    ALVoiceConfig spB0;
-    ALSound *spAC;
-    void *spA8;
-    u8 spA7;
-    void *sp98;
-    s16 sp94;
-    enum sfx_e sp8C;
-    void *sp88;
-    N_ALEvent sp84;
-    s32 sp80;
-    s32 sp7C;
-    s32 sp78;
-    s32 sp74;
-    s32 sp70;
-    s32 sp6C;
-    s32 sp68;
-    s32 sp64;
-    Struct80735DBC_0 *sp60;
-    Struct80735DBC_0 *sp5C;
-    u16 sp5A;
-    u16 sp58;
-    Struct80735DBC_0 *sp54;
-    void *sp48;
-    N_ALEvent sp44;
-    s32 sp40;
-    s32 var_s0;
-    s32 var_s0_2;
-    s32 var_s0_3;
-    s32 var_s0_4;
-    s32 var_s0_5;
-    s32 var_s1;
-    s32 var_s1_2;
-    s32 var_s1_3;
-    s32 var_s1_4;
-    u16 temp_s0;
-    u8 temp_s0_2;
-    u8 temp_t6;
-    u8 temp_t8;
+// _n_handleEvent
+void func_global_asm_80735DBC(N_ALSndpEvent *event)
+{
+	ALVoiceConfig config;
+	ALSound *sound;
+	ALKeyMap *keymap;
+	ALPan pan;
+	N_ALSndpEvent sp94;
+	N_ALSndpEvent sp84;
+	ALMicroTime delta;
+	s32 fxmix;
+	s32 vol;
+	s32 tmppan;
+	s32 sp70;
+	s32 isspecial;
+	s32 done = TRUE;
+	s32 hasvoice = FALSE;
+	struct sndstate *state = NULL;
+	struct sndstate *nextstate = NULL;
+	s16 numfree;
+	s16 numalloced;
+	struct sndstate *iterstate;
+	N_ALSndpEvent sp44;
+	ALMicroTime sp40;
 
-    sp68 = 1;
-    sp64 = 0;
-    sp60 = NULL;
-    sp5C = NULL;
-    do {
-        if (sp5C != NULL) {
-            sp84.msg.generic.data[0].i = sp60;
-            sp84.type = arg0->type;
-            sp84.msg.generic.data[1].i = arg0->msg.vol.delta;
-            arg0 = &sp84;
-        }
-        sp60 = arg0->msg.generic.data[0].i;
-        spAC = sp60->unk8;
-        if (spAC == NULL) {
-            func_global_asm_80737198(&sp5A, &sp58);
-            return;
-        }
-        spA8 = spAC->keyMap;
-        sp5C = sp60->node.next;
-        switch (arg0->type) {
-        case 0x1:
-            if ((sp60->unk44 != 5) && (sp60->unk44 != 4)) {
-                return;
-            }
-            spB0.fxBus = 0;
-            spB0.priority = sp60->unk40;
-            spB0.unityPitch = 0;
-            sp70 = (D_global_asm_807563D0 < D_global_asm_807563CC->maxSounds) ^ 1;
-            if ((!sp70) || (sp60->unk43 & 0x10)) {
-                sp64 = func_global_asm_8073CAC0(sp60 + 0xC, &spB0);
-            }
-            if (sp64 == 0) {
-                if ((sp60->unk43 & 0x12) || (sp60->unk34 > 0)) {
-                    sp60->unk44 = 4U;
-                    sp60->unk34 = (s32) (sp60->unk34 - 1);
-                    alEvtqPostEvent(D_global_asm_807563CC + 0x14, arg0, 0x8235);
-                } else if (sp70 != 0) {
-                    sp54 = D_global_asm_807563C4;
-                    do {
-                        temp_t8 = sp54->unk43;
-                        if (!(temp_t8 & 0x12) && (temp_t8 & 4) && (sp54->unk44 != 3)) {
-                            sp44.type = 0x80;
-                            sp44.msg.generic.data[0].i = sp54;
-                            sp54->unk44 = 3U;
-                            sp70 = 0;
-                            alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp44, 0x3E8);
-                            func_global_asm_8073B830(&sp54->voice, 0, 0x3E8);
-                        }
-                        sp54 = sp54->node.prev;
-                    } while ((sp70 != 0) && (sp54 != NULL));
-                    if (sp70 == 0) {
-                        sp60->unk34 = 2;
-                        alEvtqPostEvent(D_global_asm_807563CC + 0x14, arg0, 0x3E9);
-                    } else {
-                        func_global_asm_80736FB8(sp60);
-                    }
-                } else {
-                    func_global_asm_80736FB8(sp60);
-                }
-                return;
-            }
-            sp60->unk43 |= 4;
-            sp60->unk3A = (s16) spAC->envelope->attackVolume;
-            sp80 = (s32) ((spAC->envelope->attackTime / sp60->unk2C) / sp60->unk28);
-            sp60->unk3C = (s32) (D_global_asm_807563CC->unk50 + sp80);
-            if ((((s32) D_global_asm_807FF0E4[spA8->unk2 & 0x1F] * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) <= 0) {
-                sp78 = 0;
-            } else {
-                sp78 = ((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) - 1;
-            }
-            sp74 = (sp60->unk41 + spAC->unkC) - 0x40;
-            if (sp74 > 0) {
-                var_s0 = sp74;
-            } else {
-                var_s0 = 0;
-            }
-            if (var_s0 < 0x7F) {
-                if (sp74 > 0) {
-                    var_s1 = sp74;
-                } else {
-                    var_s1 = 0;
-                }
-                spA7 = (u8) var_s1;
-            } else {
-                spA7 = 0x7F;
-            }
-            sp7C = (sp60->unk42 & 0x7F) + ((spA8->unk3 & 0xF) * 8);
-            if (sp7C < 0) {
-                var_s0_2 = 0;
-            } else {
-                var_s0_2 = sp7C;
-            }
-            if (var_s0_2 >= 0x80) {
-                sp7C = 0x7F;
-            } else {
-                if (sp7C < 0) {
-                    var_s1_2 = 0;
-                } else {
-                    var_s1_2 = sp7C;
-                }
-                sp7C = var_s1_2;
-            }
-            sp7C |= sp60->unk42 & 0x80;
-            func_global_asm_8073CDD0(sp60 + 0xC, spAC->unk8, sp60->unk2C * sp60->unk28, sp78, (s32) spA7, sp7C, 0, 0.0f, 0, sp80);
-            sp60->unk44 = 1U;
-            D_global_asm_807563D0 += 1;
-            if (!(sp60->unk43 & 2)) {
-                if (sp80 == 0) {
-                    sp60->unk3A = (s16) spAC->unk0->unkD;
-                    if (((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) <= 0) {
-                        sp78 = 0;
-                    } else {
-                        sp78 = ((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) - 1;
-                    }
-                    sp80 = (s32) (((f32) spAC->unk0->unk4 / sp60->unk28) / sp60->unk2C);
-                    sp60->unk3C = (s32) (D_global_asm_807563CC->unk50 + sp80);
-                    func_global_asm_8073B830(sp60 + 0xC, sp78, sp80);
-                    sp94 = 2;
-                    sp98 = sp60;
-                    alEvtqPostEvent(D_global_asm_807563CC + 0x14, (ALEvent *) &sp94, sp80);
-                    if (sp60->unk43 & 0x20) {
-                        func_global_asm_80737028(sp60);
-                    }
-                } else {
-                    sp94 = 0x40;
-                    sp98 = sp60;
-                    sp80 = (s32) (((f32) *spAC->unk0 / sp60->unk2C) / sp60->unk28);
-                    alEvtqPostEvent(D_global_asm_807563CC + 0x14, (ALEvent *) &sp94, sp80);
-                }
-            }
-        case 0x2:
-        case 0x400:
-        case 0x1000:
-            if ((arg0->unk0 != 0x1000) || (sp60->unk43 & 2)) {
-                temp_s0_2 = sp60->unk44;
-                switch (temp_s0_2) {
-                case 1:
-                    func_global_asm_807370A4(D_global_asm_807563CC + 0x14, sp60, 0x40);
-                    sp80 = (s32) (((f32) spAC->unk0->unk8 / sp60->unk28) / sp60->unk2C);
-                    func_global_asm_8073B830(sp60 + 0xC, 0, sp80);
-                    if (sp80 != 0) {
-                        sp94 = 0x80;
-                        sp98 = sp60;
-                        alEvtqPostEvent(D_global_asm_807563CC + 0x14, (ALEvent *) &sp94, sp80);
-                        sp60->unk44 = 2U;
-                    } else {
-                        func_global_asm_80736FB8(sp60);
-                    }
-                    break;
-                case 4:
-                case 5:
-                    func_global_asm_80736FB8(sp60);
-                    break;
-                }
-                if (arg0->unk0 == 2) {
-                    arg0->unk0 = 0x1000;
-                }
-            }
-            break;
-        case 0x4:
-            sp60->unk41 = (u8) arg0->unk8;
-            if (sp60->unk44 == 1) {
-                sp74 = (sp60->unk41 + spAC->unkC) - 0x40;
-                if (sp74 > 0) {
-                    var_s0_3 = sp74;
-                } else {
-                    var_s0_3 = 0;
-                }
-                if (var_s0_3 < 0x7F) {
-                    if (sp74 > 0) {
-                        var_s1_3 = sp74;
-                    } else {
-                        var_s1_3 = 0;
-                    }
-                    spA7 = (u8) var_s1_3;
-                } else {
-                    spA7 = 0x7F;
-                }
-                func_global_asm_8073CF00(sp60 + 0xC, spA7);
-            }
-            break;
-        case 0x10:
-            sp60->unk2C = (bitwise f32) arg0->unk8;
-            if (sp60->unk44 == 1) {
-                func_global_asm_8073B900(sp60 + 0xC, sp60->unk2C * sp60->unk28);
-                if (sp60->unk43 & 0x20) {
-                    func_global_asm_80737028(sp60);
-                }
-            }
-            break;
-        case 0x100:
-            sp60->unk42 = (u8) arg0->unk8;
-            if (sp60->unk44 == 1) {
-                sp7C = (sp60->unk42 & 0x7F) + ((spA8->unk3 & 0xF) * 8);
-                if (sp7C < 0) {
-                    var_s0_4 = 0;
-                } else {
-                    var_s0_4 = sp7C;
-                }
-                if (var_s0_4 >= 0x80) {
-                    sp7C = 0x7F;
-                } else {
-                    if (sp7C < 0) {
-                        var_s1_4 = 0;
-                    } else {
-                        var_s1_4 = sp7C;
-                    }
-                    sp7C = var_s1_4;
-                }
-                sp7C |= sp60->unk42 & 0x80;
-                func_global_asm_8073C820(sp60 + 0xC, sp7C);
-            }
-            break;
-        case 0x8:
-            sp60->unk38 = (s16) arg0->unk8;
-            if (sp60->unk44 == 1) {
-                if (((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) <= 0) {
-                    sp78 = 0;
-                } else {
-                    sp78 = ((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) - 1;
-                }
-                if ((sp60->unk3C - D_global_asm_807563CC->unk50) < 0x3E8) {
-                    var_s0_5 = 0x3E8;
-                } else {
-                    var_s0_5 = sp60->unk3C - D_global_asm_807563CC->unk50;
-                }
-                func_global_asm_8073B830(sp60 + 0xC, sp78, var_s0_5);
-            }
-            break;
-        case 0x800:
-            if (sp60->unk44 == 1) {
-                sp80 = (s32) (((f32) spAC->unk0->unk8 / sp60->unk28) / sp60->unk2C);
-                if (((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) <= 0) {
-                    sp78 = 0;
-                } else {
-                    sp78 = ((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) - 1;
-                }
-                func_global_asm_8073B830(sp60 + 0xC, sp78, sp80);
-            }
-            break;
-        case 0x40:
-            if (!(sp60->unk43 & 2)) {
-                sp60->unk3A = (s16) spAC->unk0->unkD;
-                if (((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) <= 0) {
-                    sp78 = 0;
-                } else {
-                    sp78 = ((s32) (*(D_global_asm_807FF0E4 + ((spA8->unk2 & 0x1F) * 2)) * ((s32) (sp60->unk3A * sp60->unk38 * spAC->unkD) / 16129)) / 32767) - 1;
-                }
-                sp80 = (s32) (((f32) spAC->unk0->unk4 / sp60->unk28) / sp60->unk2C);
-                sp60->unk3C = (s32) (D_global_asm_807563CC->unk50 + sp80);
-                func_global_asm_8073B830(sp60 + 0xC, sp78, sp80);
-                sp94 = 2;
-                sp98 = sp60;
-                alEvtqPostEvent(D_global_asm_807563CC + 0x14, (ALEvent *) &sp94, sp80);
-                if (sp60->unk43 & 0x20) {
-                    func_global_asm_80737028(sp60);
-                }
-            }
-            break;
-        case 0x80:
-            func_global_asm_80736FB8(sp60);
-            break;
-        case 0x200:
-            if (sp60->unk43 & 0x10) {
-                sp40 = func_global_asm_80737638(arg0->unkC, arg0->unk8, (u32) sp60->unk38, (u32) sp60->unk41, sp60->unk2C, (u32) sp60->unk42, sp60->unk30);
-            }
-            break;
-        default:
-            break;
-        }
-        sp6C = (u16)arg0->type & 0x2D1;
-        sp60 = sp5C;
-        if ((sp5C != NULL) && (sp6C == 0)) {
-            sp68 = sp60->unk43 & 1;
-        }
-    } while ((sp68 == 0) && (sp60 != NULL) && !sp6C);
+	do {
+		if (nextstate != NULL) {
+			sp84.common.state = (N_ALSoundState *)state;
+			sp84.common.type = event->common.type;
+			sp84.common.unk08 = event->common.unk08;
+			event = &sp84;
+		}
+
+		state = (struct sndstate *)event->common.state;
+
+		sound = state->sound;
+
+		if (sound == NULL) {
+			func_global_asm_80737198(&numfree, &numalloced);
+			return;
+		}
+
+		keymap = sound->keyMap;
+		nextstate = (struct sndstate *)state->node.next;
+
+		switch (event->common.type) {
+		case AL_SNDP_PLAY_EVT:
+			if (state->state != AL_STATE5 && state->state != AL_STATE4) {
+				return;
+			}
+
+			// config.fxBus = state->fxbus;
+            config.fxBus = 0;
+			config.priority = state->priority;
+			config.unityPitch = 0;
+			sp70 = D_global_asm_807563D0 >= D_global_asm_807563CC->maxSounds;
+
+			if (!sp70 || (state->flags & SNDSTATEFLAG_10)) {
+				hasvoice = func_global_asm_8073CAC0(&state->voice, &config);
+			}
+
+			if (!hasvoice) {
+				if (state->flags & (SNDSTATEFLAG_02 | SNDSTATEFLAG_10) || state->unk34 > 0) {
+					state->state = AL_STATE4;
+					state->unk34--;
+					alEvtqPostEvent(&D_global_asm_807563CC->evtq, &event->msg, 33333);
+				} else if (sp70) {
+					iterstate = D_global_asm_807563C4;
+
+					do {
+						if ((iterstate->flags & (SNDSTATEFLAG_02 | SNDSTATEFLAG_10)) == 0
+								&& (iterstate->flags & SNDSTATEFLAG_04)
+								&& iterstate->state != AL_STATE3) {
+							sp70 = 0;
+							sp44.common.type = AL_SNDP_END_EVT;
+							sp44.common.state = (N_ALSoundState *)iterstate;
+							iterstate->state = AL_STATE3;
+
+							alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp44.msg, 1000);
+							func_global_asm_8073B830(&iterstate->voice, 0, 1000);
+						}
+
+						iterstate = (struct sndstate *)iterstate->node.prev;
+					} while (sp70 && iterstate);
+
+					if (sp70 == 0) {
+						state->unk34 = 2;
+						alEvtqPostEvent(&D_global_asm_807563CC->evtq, &event->msg, 1001);
+					} else {
+						func_global_asm_80736FB8(state);
+					}
+				} else {
+					func_global_asm_80736FB8(state);
+				}
+				return;
+			}
+
+			// This is the same as above, but delta is calculated later
+			state->flags |= SNDSTATEFLAG_04;
+			state->envvol = sound->envelope->attackVolume;
+			// state->fxbus = config.fxBus;
+			delta = sound->envelope->attackTime / state->pitch / state->basepitch;
+			state->endtime = D_global_asm_807563CC->curTime + delta;
+
+			vol = MAX(0, (D_global_asm_807FF0E4[keymap->keyMin & 0x1f] * (state->envvol * state->vol * sound->sampleVolume / 0x3f01)) / 0x7fff - 1);
+			tmppan = state->pan + sound->samplePan - AL_PAN_CENTER;
+			pan = MIN(MAX(tmppan, 0), 127);
+
+			fxmix = (state->fxmix & 0x7f) + (keymap->keyMax & 0xf) * 8;
+			fxmix = MIN(127, MAX(0, fxmix));
+			fxmix |= state->fxmix & 0x80;
+
+			func_global_asm_8073CDD0(&state->voice, sound->wavetable, state->pitch * state->basepitch, vol, pan, fxmix, 0, 0, 0, delta);
+			state->state = AL_PLAYING;
+			D_global_asm_807563D0++;
+
+			if ((state->flags & SNDSTATEFLAG_02) == 0) {
+				if (delta == 0) {
+					state->envvol =  sound->envelope->decayVolume;
+
+					vol = MAX(0, (D_global_asm_807FF0E4[keymap->keyMin & 0x1f] * (state->envvol * state->vol * sound->sampleVolume / 0x3f01)) / 0x7fff - 1);
+
+					delta = sound->envelope->decayTime / state->basepitch / state->pitch;
+
+					state->endtime = D_global_asm_807563CC->curTime + delta;
+
+					func_global_asm_8073B830(&state->voice, vol, delta);
+
+					sp94.common.type = AL_SNDP_STOP_EVT;
+					sp94.common.state = (N_ALSoundState *)state;
+
+					alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp94.msg, delta);
+
+					if (state->flags & SNDSTATEFLAG_20) {
+						func_global_asm_80737028(state);
+					}
+				} else {
+					sp94.common.type = AL_SNDP_DECAY_EVT;
+					sp94.common.state = (N_ALSoundState *)state;
+					delta = sound->envelope->attackTime / state->pitch / state->basepitch;
+
+					alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp94.msg, delta);
+				}
+			}
+			break;
+		case AL_SNDP_STOP_EVT:
+		case AL_SNDP_0400_EVT:
+		case AL_SNDP_1000_EVT:
+			if (event->common.type != AL_SNDP_1000_EVT || (state->flags & SNDSTATEFLAG_02)) {
+				switch (state->state) {
+				case AL_PLAYING:
+					func_global_asm_807370A4(&D_global_asm_807563CC->evtq, (N_ALSoundState *)state, AL_SNDP_DECAY_EVT);
+					delta = sound->envelope->releaseTime / state->basepitch / state->pitch;
+
+					func_global_asm_8073B830(&state->voice, 0, delta);
+
+					if (delta) {
+						sp94.common.type = AL_SNDP_END_EVT;
+						sp94.common.state = (N_ALSoundState *)state;
+						alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp94.msg, delta);
+						state->state = AL_STOPPING;
+					} else {
+						func_global_asm_80736FB8(state);
+					}
+					break;
+				case AL_STATE4:
+				case AL_STATE5:
+					func_global_asm_80736FB8(state);
+					break;
+				default:
+					break;
+				}
+
+				if (event->common.type == AL_SNDP_STOP_EVT) {
+					event->common.type = AL_SNDP_1000_EVT;
+				}
+			}
+			break;
+		case AL_SNDP_PAN_EVT:
+			state->pan = event->common.unk08;
+
+			if (state->state == AL_PLAYING) {
+				tmppan = state->pan - AL_PAN_CENTER + sound->samplePan;
+				pan = MIN(MAX(tmppan, AL_PAN_LEFT), AL_PAN_RIGHT);
+
+				func_global_asm_8073CF00(&state->voice, pan);
+			}
+			break;
+		case AL_SNDP_PITCH_EVT:
+			state->pitch = event->pitch.pitch;
+
+			if (state->state == AL_PLAYING) {
+				func_global_asm_8073B900(&state->voice, state->pitch * state->basepitch);
+
+				if (state->flags & SNDSTATEFLAG_20) {
+					func_global_asm_80737028(state);
+				}
+			}
+			break;
+		case AL_SNDP_FX_EVT:
+			state->fxmix = event->common.unk08;
+
+			if (state->state == AL_PLAYING) {
+				fxmix = (state->fxmix & 0x7f) + (keymap->keyMax & 0xf) * 8;
+				fxmix = MIN(127, MAX(0, fxmix));
+				fxmix |= state->fxmix & 0x80;
+
+				func_global_asm_8073C820(&state->voice, fxmix);
+			}
+			break;
+		// case AL_SNDP_4000_EVT:
+		// 	state->fxmix = (u8)(state->fxmix & 0x7f) | (u8)(event->common.unk08 & 0x80);
+
+		// 	if (state->state == AL_PLAYING) {
+		// 		fxmix = (state->fxmix & 0x7f) + (keymap->keyMax & 0xf) * 8;
+		// 		fxmix = MIN(127, MAX(0, fxmix));
+		// 		fxmix |= state->fxmix & 0x80;
+
+		// 		func_global_asm_8073C820(&state->voice, fxmix);
+		// 	}
+		// 	break;
+		case AL_SNDP_VOL_EVT:
+			state->vol = event->common.unk08;
+
+			if (state->state == AL_PLAYING) {
+				vol = MAX(0, (D_global_asm_807FF0E4[keymap->keyMin & 0x1f] * (state->envvol * state->vol * sound->sampleVolume / 0x3f01)) / 0x7fff - 1);
+
+				func_global_asm_8073B830(&state->voice, vol, MAX(1000, state->endtime - D_global_asm_807563CC->curTime));
+			}
+			break;
+		case AL_SNDP_0800_EVT:
+			if (state->state == AL_PLAYING) {
+				delta = sound->envelope->releaseTime / state->basepitch / state->pitch;
+
+				vol = MAX(0, D_global_asm_807FF0E4[keymap->keyMin & 0x1f] * (state->envvol * state->vol * sound->sampleVolume / 0x3f01) / 0x7fff - 1);
+
+				func_global_asm_8073B830(&state->voice, vol, delta);
+			}
+			break;
+		// case AL_SNDP_FXBUS_EVT:
+		// 	state->fxbus = event->common.unk08;
+
+		// 	if (state->fxbus >= n_syn->maxAuxBusses) {
+		// 		state->fxbus = 0;
+		// 	}
+
+		// 	if (state->state == AL_PLAYING) {
+		// 		state->voice.fxBus = state->fxbus;
+		// 	}
+		// 	break;
+		case AL_SNDP_DECAY_EVT:
+			if ((state->flags & SNDSTATEFLAG_02) == 0) {
+				state->envvol = sound->envelope->decayVolume;
+				vol = MAX(0, D_global_asm_807FF0E4[keymap->keyMin & 0x1f] * (state->envvol * state->vol * sound->sampleVolume / 0x3f01) / 0x7fff - 1);
+				delta = sound->envelope->decayTime / state->basepitch / state->pitch;
+
+				state->endtime = D_global_asm_807563CC->curTime + delta;
+
+				func_global_asm_8073B830(&state->voice, vol, delta);
+
+				sp94.common.type = AL_SNDP_STOP_EVT;
+				sp94.common.state = (N_ALSoundState *)state;
+
+				alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp94.msg, delta);
+
+				if (state->flags & SNDSTATEFLAG_20) {
+					func_global_asm_80737028(state);
+				}
+			}
+			break;
+		case AL_SNDP_END_EVT:
+			func_global_asm_80736FB8(state);
+			break;
+		case AL_SNDP_0200_EVT:
+			if (state->flags & SNDSTATEFLAG_10) {
+				sp40 = func_global_asm_80737638(event->msg.msg.generic.data2, event->msg.msg.generic.data, state->vol, state->pan,
+						state->pitch, state->fxmix, state->unk30);
+			}
+			break;
+		default:
+			break;
+		}
+
+		isspecial = event->common.type & (AL_SNDP_PLAY_EVT
+				| AL_SNDP_PITCH_EVT
+				| AL_SNDP_DECAY_EVT
+				| AL_SNDP_END_EVT
+				| AL_SNDP_0200_EVT);
+
+		if ((state = nextstate) && !isspecial) {
+			done = state->flags & SNDSTATEFLAG_01;
+		}
+	} while (!done && state && !isspecial);
 }
-*/
 
 void func_global_asm_80736FB8(struct_80736FB8 *arg0) {
     if (arg0->unk43 & 4) {
@@ -525,13 +498,13 @@ void func_global_asm_80737028(struct_80737028_0 *arg0) {
     alEvtqPostEvent(&D_global_asm_807563CC->evtq, &sp20, 0x8235);
 }
 
-void func_global_asm_807370A4(ALEventQueue *evtq, ALSoundState *state, u16 arg2) {
-    // __removeEVents
+void func_global_asm_807370A4(ALEventQueue *evtq, N_ALSoundState *state, u16 arg2) {
+    // _func_global_asm_807370A4
     ALLink *thisNode;
     ALLink *nextNode;
     ALEventListItem *thisItem;
     ALEventListItem *nextItem;
-    ALSndpEvent *sp1C;
+    N_ALSndpEvent *sp1C;
     OSIntMask mask;
 
     mask = osSetIntMask(1U);
@@ -540,7 +513,7 @@ void func_global_asm_807370A4(ALEventQueue *evtq, ALSoundState *state, u16 arg2)
         nextNode = thisNode->next;
         thisItem = thisNode;
         nextItem = nextNode;
-        sp1C = (ALSndpEvent *)&thisItem->evt;
+        sp1C = (N_ALSndpEvent *)&thisItem->evt;
         if ((sp1C->common.state == state) && (*(u16*)(&sp1C->common.type) & arg2)) {
             if (nextItem != NULL) {
                 nextItem->delta += thisItem->delta;

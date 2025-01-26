@@ -10,6 +10,12 @@
 #define MATH_PI_F 3.1415927f
 #define MATH_2PI_F 6.2831855f
 
+#define SNDSTATEFLAG_01 0x01
+#define SNDSTATEFLAG_02 0x02
+#define SNDSTATEFLAG_04 0x04
+#define SNDSTATEFLAG_10 0x10
+#define SNDSTATEFLAG_20 0x20
+
 extern s8 story_skip;
 extern s8 widescreen_enabled;
 extern PlayerAdditionalActorData *extra_player_info_pointer;

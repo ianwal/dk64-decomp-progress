@@ -2184,6 +2184,26 @@ typedef struct N_ALMAinBus_s {
 
 typedef struct SoundState SoundState;
 
+struct sndstate {
+	/*0x00*/ ALLink node;
+	/*0x08*/ ALSound *sound;
+	/*0x0c*/ N_ALVoice voice;
+	/*0x28*/ f32 basepitch;
+	/*0x2c*/ f32 pitch;
+	/*0x30*/ struct sndstate **unk30;
+	/*0x34*/ s32 unk34;
+	/*0x38*/ s16 vol;
+	/*0x3a*/ s16 envvol;
+	/*0x3c*/ ALMicroTime endtime;
+	/*0x40*/ u8 priority;
+	/*0x41*/ ALPan pan;
+	/*0x42*/ u8 fxmix;
+	/*0x43*/ u8 flags;
+	/*0x44*/ u8 state;
+	/*0x45*/ u8 fxbus;
+	/*0x46*/ u16 soundnum;
+};
+
 struct SoundState {
     ALLink node;
     ALSound *sound;
