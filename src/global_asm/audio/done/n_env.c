@@ -7,10 +7,29 @@ s32 func_global_asm_8073F1E4(CustomPVoice *, s32, ALParam *);
 Acmd *func_global_asm_8073F328(CustomPVoice *, s16 *, s32, s32, Acmd *);
 s16 func_global_asm_8073F81C(s16, s32, s16, u16);
 void func_global_asm_807407A8(CustomPVoice *, s32, void *);
-extern s16 D_global_asm_80756490[];
 extern u8 D_global_asm_807FF0F0;
 extern u8 D_global_asm_807FF0F1;
 extern u8 D_global_asm_807FF0F2;
+
+// .data
+s16 n_eqpower[] = {
+	0x7fff, 0x7ffc, 0x7ff5, 0x7fe8, 0x7fd7, 0x7fc0, 0x7fa5, 0x7f84,
+	0x7f5f, 0x7f34, 0x7f05, 0x7ed0, 0x7e97, 0x7e58, 0x7e15, 0x7dcd,
+	0x7d7f, 0x7d2d, 0x7cd6, 0x7c7a, 0x7c1a, 0x7bb4, 0x7b49, 0x7ada,
+	0x7a66, 0x79ed, 0x796f, 0x78ed, 0x7866, 0x77da, 0x7749, 0x76b4,
+	0x761a, 0x757b, 0x74d8, 0x7430, 0x7384, 0x72d3, 0x721e, 0x7164,
+	0x70a6, 0x6fe3, 0x6f1c, 0x6e51, 0x6d81, 0x6cad, 0x6bd5, 0x6af9,
+	0x6a18, 0x6933, 0x684a, 0x675d, 0x666c, 0x6577, 0x647e, 0x6381,
+	0x6280, 0x617c, 0x6073, 0x5f67, 0x5e57, 0x5d43, 0x5c2c, 0x5b11,
+	0x59f2, 0x58d0, 0x57aa, 0x5681, 0x5555, 0x5425, 0x52f2, 0x51bc,
+	0x5082, 0x4f46, 0x4e06, 0x4cc3, 0x4b7d, 0x4a35, 0x48e9, 0x479b,
+	0x4649, 0x44f5, 0x439e, 0x4245, 0x40e9, 0x3f8a, 0x3e29, 0x3cc6,
+	0x3b60, 0x39f8, 0x388d, 0x3721, 0x35b2, 0x3441, 0x32ce, 0x3159,
+	0x2fe2, 0x2e69, 0x2cef, 0x2b72, 0x29f4, 0x2875, 0x26f3, 0x2570,
+	0x23ec, 0x2266, 0x20df, 0x1f57, 0x1dce, 0x1c43, 0x1ab7, 0x192a,
+	0x179c, 0x160e, 0x147e, 0x12ed, 0x115c, 0x0fca, 0x0e38, 0x0ca5,
+	0x0b11, 0x097d, 0x07e9, 0x0654, 0x04c0, 0x032a, 0x0195, 0x0000,
+};
 
 Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
     // alEnvmixerPull
@@ -57,11 +76,11 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
             sp28 = (sp2C->unk10 + sp2C->unk10) / 2;
             sp50->resampler.unk2E = sp28;
             sp50->resampler.unk2C = sp2C->unk12;
-            sp50->unk60 = ((D_global_asm_80756490[sp2C->unk13 & 0x7F] & 0xFFFE) | (sp2C->unk13 >> 7));
+            sp50->unk60 = ((n_eqpower[sp2C->unk13 & 0x7F] & 0xFFFE) | (sp2C->unk13 >> 7));
             if (D_global_asm_807FF0F0 == 0) {
                 sp50->unk60 &= 0xFFFE;
             }
-            sp50->unk62 = (D_global_asm_80756490[0x7F - (sp2C->unk13 & 0x7F)] & 0xFFFE);
+            sp50->unk62 = (n_eqpower[0x7F - (sp2C->unk13 & 0x7F)] & 0xFFFE);
             if (D_global_asm_807FF0F2 != 0) {
                 sp50->resampler.unk2C = ((sp50->resampler.unk2C >> 1) + 0x20);
             } else if (D_global_asm_807FF0F1 != 0) {
@@ -71,8 +90,8 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
                 sp50->resampler.unk30 = 1;
                 sp50->resampler.unk32 = 1;
             } else {
-                sp50->resampler.unk30 = ((D_global_asm_80756490[sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
-                sp50->resampler.unk32 = ((D_global_asm_80756490[0x7F - sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
+                sp50->resampler.unk30 = ((n_eqpower[sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
+                sp50->resampler.unk32 = ((n_eqpower[0x7F - sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
             }
             sp50->resampler.unk18 = sp2C->unkC_f32;
             sp50->unk92 = sp2C->unk15;
@@ -85,8 +104,8 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
         case 16:
             sp54 = func_global_asm_8073F328(sp50, &sp4E, &sp3E, sp40, sp54);
             if (sp50->unk70_s32 >= sp50->unk74) {
-                sp50->unk68 = ((D_global_asm_80756490[sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
-                sp50->unk6E = ((D_global_asm_80756490[0x7F - sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
+                sp50->unk68 = ((n_eqpower[sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
+                sp50->unk6E = ((n_eqpower[0x7F - sp50->resampler.unk2C] * sp50->resampler.unk2E) >> 0xF);
                 sp50->unk70_s32 = sp50->unk74;
                 sp50->resampler.unk30 = sp50->unk68;
                 sp50->resampler.unk32 = sp50->unk6E;
@@ -124,8 +143,8 @@ Acmd *func_global_asm_8073E8C0(CustomPVoice *arg0, s32 arg1, s32 arg2) {
                         sp50->unk62 ^= 1;
                     }
                 }
-                sp50->unk60 = ((D_global_asm_80756490[(sp50->unk7C->unkC_s32 & 0x7F)] & 0xFFFE) | (sp50->unk60 & 1));
-                sp50->unk62 = ((D_global_asm_80756490[0x7F - (sp50->unk7C->unkC_s32 & 0x7F)] & 0xFFFE) | (sp50->unk62 & 1));
+                sp50->unk60 = ((n_eqpower[(sp50->unk7C->unkC_s32 & 0x7F)] & 0xFFFE) | (sp50->unk60 & 1));
+                sp50->unk62 = ((n_eqpower[0x7F - (sp50->unk7C->unkC_s32 & 0x7F)] & 0xFFFE) | (sp50->unk62 & 1));
             }
             sp50->unk78 = 1;
             break;
@@ -227,9 +246,9 @@ Acmd *func_global_asm_8073F328(CustomPVoice *arg0, s16 *arg1, s32 arg2, s32 arg3
     sp34 = func_global_asm_80740C50(sp30, arg1, arg3, arg4);
     if (sp30->unk78 != 0) {
         sp30->unk78 = 0;
-        sp30->unk68 = ((s32) (D_global_asm_80756490[sp30->resampler.unk2C] * sp30->resampler.unk2E) >> 0xF);
+        sp30->unk68 = ((s32) (n_eqpower[sp30->resampler.unk2C] * sp30->resampler.unk2E) >> 0xF);
         sp30->unk66 = func_global_asm_8073F60C(sp30->resampler.unk30, sp30->unk68, sp30->unk74, &sp30->unk64);
-        sp30->unk6E = ((s32) (D_global_asm_80756490[0x7F - sp30->resampler.unk2C] * sp30->resampler.unk2E) >> 0xF);
+        sp30->unk6E = ((s32) (n_eqpower[0x7F - sp30->resampler.unk2C] * sp30->resampler.unk2E) >> 0xF);
         sp30->unk6C = func_global_asm_8073F60C(sp30->resampler.unk32, sp30->unk6E, sp30->unk74, &sp30->unk6A);
         n_aSetVolume(sp34++, A_LEFT | A_VOL, sp30->resampler.unk30, sp30->unk60, sp30->unk62);\
         n_aSetVolume(sp34++, A_RIGHT | A_VOL, sp30->unk6E, sp30->unk6C, sp30->unk6A);\

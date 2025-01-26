@@ -324,6 +324,7 @@ _bnkfPatchSound = 0x807327F4; // segment:global_asm
 _bnkfPatchInst = 0x80732730; // segment:global_asm
 _bnkfPatchBank = 0x80732618; // segment:global_asm
 n_alSynStopVoice = 0x8073B6B0; // segment:global_asm
+n_eqpower = 0x80756490; // segment:global_asm
 
 next_map = 0x807444E4; // segment:global_asm
 next_exit = 0x807444E8; // segment:global_asm

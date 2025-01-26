@@ -3993,7 +3993,7 @@ void func_global_asm_8073B640(ALPlayer *arg0);
 // global_asm/audio/synsetvol.c
 // TODO: func_global_asm_8073B830 has no documented signature but has been matched
 
-// global_asm/audio/code_140600.c
+// global_asm/audio/n_synsetpitch.c
 // TODO: func_global_asm_8073B900 has no documented signature but has been matched
 // TODO: func_global_asm_8073B9B0 has no documented signature but has been matched
 // TODO: func_global_asm_8073BA60 has no documented signature but has been matched

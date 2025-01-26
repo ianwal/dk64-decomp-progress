@@ -1,0 +1,21 @@
+#include <ultra64.h>
+#include "functions.h"
+
+ALParam *__n_allocParam();
+void func_global_asm_8073F1E4(CustomPVoice *, s32, ALParam *);
+
+void func_global_asm_8073B9B0(ALVoice *arg0, f32 arg1) {
+    ALParam *sp1C;
+
+    if (arg0->pvoice != NULL) {
+        sp1C = __n_allocParam();
+        if (sp1C == NULL) {
+            return;
+        }
+        sp1C->delta = n_syn->paramSamples + ((CustomPVoice *)arg0->pvoice)->unk88;
+        sp1C->type = 0x13;
+        sp1C->data.f = arg1;
+        sp1C->next = 0;
+        func_global_asm_8073F1E4(arg0->pvoice, 3, sp1C);
+    }
+}
