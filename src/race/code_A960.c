@@ -121,18 +121,23 @@ typedef struct RaceStruct10 {
 extern u16 D_global_asm_80750AC4;
 
 void func_race_8002DCF0(void*, s32);
-void *func_race_8002E960(u8, RaceStruct2*);
 void *func_race_8002E9AC(u8);
 void func_race_8002F36C(RaceStruct13*, RaceStruct13*);
 void func_race_8002E9F8(s32 *checkpointFile);
+void *func_race_8002E960(u8 arg0);
 
-void *func_race_8002E960(u8 arg0, RaceStruct2* arg1) {
-    arg1 = D_race_8002FCF0;
-    if (arg1 == NULL || arg0 >= arg1->unk0) {
+// regalloc
+#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E960.s")
+
+/*
+void *func_race_8002E960(u8 arg0) {
+    
+    if (D_race_8002FCF0 == NULL || arg0 >= D_race_8002FCF0->unk0) {
         return NULL;
     }
-    return &arg1->unk4[arg0];
+    return &D_race_8002FCF0->unk4[arg0];
 }
+*/
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E9AC.s")
@@ -363,7 +368,7 @@ f32 func_race_8002F90C(RaceStruct6 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F950.s")
 
 // TODO: Any struct overlap with existing structs?
-typedef struct {
+typedef struct Struct8002F950 {
     u16 unk0;
     u16 unk2;
     s32 unk4;
@@ -373,7 +378,8 @@ typedef struct {
     s32 unk20;
     u8 unk24;
     u8 unk25;
-    u16 unk26;
+    u8 unk26;
+    u8 unk27;
     s32 unk28;
     s32 unk2C;
     s32 unk30;
@@ -387,75 +393,68 @@ typedef struct {
     f32 unk40;
 } Struct8002F950;
 
-typedef struct {
+typedef struct Struct8002F950_temp_v0_2 {
     s16 unk0;
     s16 unk2;
     s16 unk4;
+    s16 unk6;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10;
+    u8 pad11[0x1C - 0x11];
+    Actor *unk1C[2];
+    s32 unk24;
 } Struct8002F950_temp_v0_2;
+
+typedef struct Struct8002F950_temp_v0_sub4 {
+    u8 unk0;
+    u8 unk1;
+} Struct8002F950_temp_v0_sub4;
+
+typedef struct Struct8002F950_temp_v0 {
+    u16 unk0;
+    u8 pad2[2];
+    Struct8002F950_temp_v0_sub4 *unk4;
+    s16 unk8;
+} Struct8002F950_temp_v0;
 
 /*
 void func_race_8002F950(Struct8002F950 *arg0) {
-    Actor *temp_a0;
-    f32 temp_f0;
-    f32 temp_f10;
-    f32 temp_f12;
-    f32 temp_f22;
-    f32 temp_f2;
-    f32 temp_f8;
-    s32 playerIndex;
-    s32 var_s0;
+    s32 i;
+    s32 k;
     s32 var_s2;
-    s32 var_s5;
-    s32 var_s6;
+    s32 j;
     s32 var_t3;
-    void *temp_v0;
-    Struct8002F950_temp_v0_2 *temp_v0_2;
-    void *var_s1;
+    Struct8002F950_temp_v0 *temp_v0;
+    Struct8002F950_temp_v0_2 *cpoint;
 
     temp_v0 = func_race_8002E960(arg0->unk26);
-    if (temp_v0 != NULL) {
-        var_s5 = 0;
-        var_s6 = 0;
-        if (temp_v0->unk0 > 0) {
-            temp_f22 = 302500.0f;
-            do {
-                temp_v0_2 = func_race_8002E9AC((temp_v0->unk4 + var_s6)->unk1);
-                if (temp_v0_2->unk10 != 0) {
-                    var_s2 = 0;
-                    for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
-                        do {
-                            temp_f10 = character_change_array[playerIndex].look_at_eye_z;
-                            temp_f2 = character_change_array[playerIndex].look_at_eye_x - temp_v0_2->unk0;
-                            temp_f12 = character_change_array[playerIndex].look_at_eye_y - temp_v0_2->unk2;
-                            temp_f8 = temp_f2 * temp_f2;
-                            temp_f0 = temp_f10 - temp_v0_2->unk4;
-                            var_t3 = 0;
-                            if (temp_f22 < ((temp_f0 * temp_f0) + (temp_f8 + (temp_f12 * temp_f12)))) {
-                                var_t3 = 1;
-                            }
-                            var_s2 |= var_t3;
-                    }
-                    var_s0 = 0;
-                    var_s1 = temp_v0_2;
-                    if (var_s2 != temp_v0_2->unk24) {
-                        do {
-                            temp_a0 = var_s1->unk1C;
-                            if (temp_a0 != NULL) {
-                                if (var_s2 != 0) {
-                                    func_global_asm_80678458(temp_a0);
-                                } else {
-                                    func_global_asm_80678428(temp_a0);
-                                }
-                            }
-                            var_s0 += 4;
-                            var_s1 += 4;
-                        } while (var_s0 != 8);
-                        temp_v0_2->unk24 = var_s2;
+    if (temp_v0 == NULL) {
+        return;
+    }
+    for (j = 0; j < temp_v0->unk0; j++) {
+        cpoint = func_race_8002E9AC(temp_v0->unk4[j].unk1);
+        if (cpoint->unk10) {
+            var_s2 = 0;
+            for (i = 0; i < cc_number_of_players; i++) {
+                var_t3 = 0;
+                if (302500.0f < (SQ(character_change_array[i].look_at_eye_x - cpoint->unk0) + SQ(character_change_array[i].look_at_eye_y - cpoint->unk2) + SQ(character_change_array[i].look_at_eye_z - cpoint->unk4))) {
+                    var_t3 = 1;
+                }
+                var_s2 |= var_t3;
+            }
+            if (var_s2 != cpoint->unk24) {
+                for (k = 0; k < 2; k++) {
+                    if (cpoint->unk1C[k]) {
+                        if (var_s2 != 0) {
+                            func_global_asm_80678458(cpoint->unk1C[k]);
+                        } else {
+                            func_global_asm_80678428(cpoint->unk1C[k]);
+                        }
                     }
                 }
-                var_s5 += 1;
-                var_s6 += 2;
-            } while (var_s5 < temp_v0->unk0);
+                cpoint->unk24 = var_s2;
+            }
         }
     }
 }

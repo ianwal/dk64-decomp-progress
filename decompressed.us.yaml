@@ -377,7 +377,7 @@ segments:
       - [0x21445A0, c, audio/code_1445A0]
       - [0x2144A90, c, audio/code_144A90]
       - [0x2144E00, c, audio/n_load]
-      - [0x2145950, c, audio/code_145950]
+      - [0x2145950, c, audio/n_resample2]
       - [0x2145D70, c, audio/code_145D70]
       - [0x2146010, bin, code_146010]
       - [0x2149160, data, data_149160]
@@ -491,7 +491,7 @@ segments:
       - [0x21651E0, .rodata, audio/n_reverb]
       - [0x2165210, .rodata, audio/n_env]
       - [0x2165260, .rodata, audio/code_1445A0]
-      - [0x2165270, .rodata, audio/code_145950]
+      - [0x2165270, .rodata, audio/n_resample2]
       - [0x2165280, .rodata, audio/code_145D70]
       - [0x2165290, rodata] # ???
   - name: menu

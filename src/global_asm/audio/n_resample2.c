@@ -1,5 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
+#include "n_synthInternals.h"
 
 void *func_global_asm_80741070(CustomPVoice *, s16 *, Acmd *);
 
@@ -67,28 +68,30 @@ typedef struct {
     s32 unkB8;
 } Struct80740F48;
 
-// TODO: Fake match? This makes no sense...
-s32 func_global_asm_80740F48(Struct80740F48 *arg0, s32 arg1, f32 *arg2) {
-    f32 *temp = &arg2;
-    switch (arg1) {
-        case 4:
-            arg0->unk92 = 0;
-            func_global_asm_807407A8(arg0, 4, arg2);
-            break;
-        case 18:
-            arg0->unk92 = arg2;
-            arg0->unkB8 |= 2;
-            break;
-        case 19:
-            arg0->unk90 = *temp;
-            arg0->unkB8 |= 2;
-            break;
-        case 17:
-            arg0->unk8C = arg2;
-            break;
-        default:
-            func_global_asm_807407A8(arg0, arg1, arg2);
-            break;
-    }
-    return 0;
+s32 func_global_asm_80740F48(N_PVoice *filter, s32 paramID, void *param)
+{
+	f32 *f = (f32 *) &param;
+
+	switch (paramID) {
+	case (AL_FILTER_RESET):
+		filter->fx.unk02 = 0;
+		func_global_asm_807407A8(filter, AL_FILTER_RESET, param);
+		break;
+	case (AL_FILTER_12):
+		filter->fx.unk02 = (s32) param;
+		filter->unkb8 |= 2;
+		break;
+	case (AL_FILTER_13):
+		filter->fx.unk00 = *f;
+		filter->unkb8 |= 2;
+		break;
+	case (AL_FILTER_11):
+		filter->unk8c = (u8)param;
+		break;
+	default:
+		func_global_asm_807407A8(filter, paramID, param);
+		break;
+	}
+
+	return 0;
 }
