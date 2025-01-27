@@ -27,10 +27,10 @@ typedef struct {
 typedef struct {
     JetpacStruct2 unk0[6];
     s32 unk60;
-    u8  unk64; // red
-    u8  unk65; // green
-    u8  unk66; // blue
-    u8  unk67;
+    union {
+        rgba unk64;
+        u8 rgba[4];
+    };
 } JetpacStruct1;
 
 typedef struct {
@@ -161,7 +161,7 @@ void func_jetpac_80025460(void) {
     for (x = 0; x < 0x18; x++) {
         for (y = 0; y < 0x20; y++) {
             ptr->unk60 = 0;
-            ptr->unk67 = 0;
+            ptr->unk64.alpha = 0;
             ptr++;
         }
     }
@@ -294,10 +294,6 @@ void func_jetpac_80025700(Struct8002C4D0 *arg0, s32 arg1, s32 arg2, s32 arg3, s3
 }
 */
 
-// Displaylist stuff, doable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025904.s")
-
-/*
 void func_jetpac_80025904(Gfx **arg0) {
     JetpacStruct1 *s3;
     s32 j, i;
@@ -311,7 +307,7 @@ void func_jetpac_80025904(Gfx **arg0) {
         for (j = 0; j < 0x20; j++) {
             if (s3->unk60) {
                 // TODO: Problem is here, colors are loaded and shifted in the wrong order
-                gDPSetPrimColor(dl++, 0, 0, s3->unk64, s3->unk65, s3->unk66, 0xFF);
+                gDPSetPrimColor(dl++, 0, 0, s3->rgba[0], s3->rgba[1], s3->rgba[2], 0xFF);
             }
             for (k = 0; k < s3->unk60; k++) {
                 func_global_asm_8070E8F0(&dl, s3->unk0[k].unkC);
@@ -323,7 +319,6 @@ void func_jetpac_80025904(Gfx **arg0) {
     }
     *arg0 = dl;
 }
-*/
 
 void func_jetpac_80025A60(Struct80025A60 *arg0) {
     s32 sp2C;

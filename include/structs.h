@@ -3375,6 +3375,13 @@ typedef struct rgb {
     u8 blue;
 } rgb;
 
+typedef struct rgba {
+    u8 red;
+    u8 green;
+    u8 blue;
+    u8 alpha;
+} rgba;
+
 typedef struct global_asm_struct_1 {
     u8 unk0; // inSubmap?
     u8 unk1;
