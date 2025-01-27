@@ -16,7 +16,7 @@ us,.jetpac,func_jetpac_80027330,80,yes
 us,.jetpac,func_jetpac_8002A944,48,yes
 us,.jetpac,func_jetpac_8002A8F0,84,yes
 us,.jetpac,func_jetpac_80028634,156,yes
-us,.jetpac,func_jetpac_80024000,412,no
+us,.jetpac,func_jetpac_80024000,412,yes
 us,.jetpac,func_jetpac_800291AC,88,yes
 us,.jetpac,func_jetpac_80027210,64,yes
 us,.jetpac,func_jetpac_80029064,328,no

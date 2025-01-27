@@ -211,7 +211,7 @@ void func_race_80024690(void) {
         }
     }
     sp5B = D_global_asm_807FDC90->unk24;
-    if ((aaD != NULL) && (a178->unk34 < 3) && (D_global_asm_807FBD70 == 4)) {
+    if (aaD && (a178->unk34 < 3) && (D_global_asm_807FBD70 == 4)) {
         setAction(0x33, current_actor_pointer, 0);
     }
     if ((a178->unk34 < 3) && (current_actor_pointer->control_state == 2) && (D_global_asm_807FBD70 == 5)) {
@@ -222,7 +222,7 @@ void func_race_80024690(void) {
         current_actor_pointer->y_acceleration = -40.0f;
         current_actor_pointer->y_velocity = 400.0f;
     }
-    if (func_global_asm_806CCC10() != 0) {
+    if (func_global_asm_806CCC10()) {
         current_actor_pointer->unk132 = 1;
     } else {
         current_actor_pointer->unk132 = 2;
@@ -236,7 +236,7 @@ void func_race_80024690(void) {
             }
             break;
         case 0: // switch 1
-            if (aaD && (aaD->unk1C == 0)) {
+            if (aaD && (!aaD->unk1C)) {
                 current_actor_pointer->control_state++;
                 current_actor_pointer->control_state_progress = 0;
                 current_actor_pointer->unk6A |= 0x200;
@@ -299,9 +299,9 @@ void func_race_80024690(void) {
             func_global_asm_8072B438(0x200);
             break;
         case 6: // switch 1
-            if (D_global_asm_807FDC90->unk2E != 0) {
+            if (D_global_asm_807FDC90->unk2E) {
                 D_global_asm_807FDC90->unk2E--;
-            } else if (current_actor_pointer->unkFC != 0) {
+            } else if (current_actor_pointer->unkFC) {
                 playSoundAtActorPosition(current_actor_pointer, 0xFF, 0x46, 0x7F, 2);
                 D_global_asm_807FDC90->unk2E = 0x14;
             }
@@ -313,10 +313,14 @@ void func_race_80024690(void) {
                 if (var_f2 < -2048.0f) {
                     var_f2 += 4096.0f;
                 }
-                var_f2 = MIN(50.0f, var_f2);
-                var_f2 = MAX(-50.0f, var_f2);
+                if (var_f2 > 50.0f) {
+                    var_f2 = 50.0f;
+                }
+                if (var_f2 < -50.0f) {
+                    var_f2 = -50.0f;
+                }
                 D_global_asm_807FDC90->unk2C += var_f2;
-                D_global_asm_807FDC90->unk2C = D_global_asm_807FDC90->unk2C - (D_global_asm_807FDC90->unk2C * 0.3);
+                D_global_asm_807FDC90->unk2C -= (D_global_asm_807FDC90->unk2C * 0.3);
             } else {
                 if ((current_actor_pointer->unk6A & 1) && !(current_actor_pointer->unk6C & 1)) {
                     playActorAnimation(current_actor_pointer, 0x285);
@@ -329,7 +333,7 @@ void func_race_80024690(void) {
                 if (var_f2 < -2048.0f) {
                     var_f2 += 4096.0f;
                 }
-                D_global_asm_807FDC90->unk2C = D_global_asm_807FDC90->unk2C + ((var_f2 * current_actor_pointer->unkB8) / 8000.0);
+                D_global_asm_807FDC90->unk2C += ((var_f2 * current_actor_pointer->unkB8) / 8000.0);
                 if (D_global_asm_807FDC90->unk2C > 0x1F4) {
                     D_global_asm_807FDC90->unk2C = 0x1F4;
                 }

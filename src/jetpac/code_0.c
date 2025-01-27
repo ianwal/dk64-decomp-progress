@@ -10,45 +10,36 @@ extern s32 D_global_asm_8076A080;
 
 extern f32 D_global_asm_807FD888;
 
-// TODO: Pretty close
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_80024000.s")
-
 typedef struct {
     u8 unk0[0x80 - 0x0];
     u8 unk80;
 } Struct8002419C_arg0;
 void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1);
 
-/*
 void func_jetpac_80024000(void) {
-    s32 sp2C;
+    Gfx *dl;
     Gfx **sp28;
-    s32 temp_a0;
-    s32 temp_t5;
-    u8 temp_t1;
 
     func_global_asm_8060A9BC();
     func_global_asm_80610044(D_global_asm_8076A050[D_global_asm_807444FC], D_global_asm_8076A088, 3, 1, 0x4D2, 1);
-    temp_t1 = D_global_asm_807444FC ^ 1;
-    D_global_asm_807444FC = temp_t1;
+    D_global_asm_807444FC = D_global_asm_807444FC ^ 1;
     object_timer++;
-    D_global_asm_8076A048 = D_global_asm_80767CE8[(temp_t1 & 0xFF) * 0x11B0];
+    D_global_asm_8076A048 = &D_global_asm_80767CE8[(D_global_asm_807444FC) * 0x11B0];
     func_global_asm_8060AC7C();
     if ((D_global_asm_8076A0B1 & 1) && (D_global_asm_807FD888 == 31.0f)) {
-        sp2C = D_global_asm_8076A050[D_global_asm_807444FC];
+        dl = D_global_asm_8076A050[D_global_asm_807444FC];
     } else {
-        func_jetpac_8002419C(D_global_asm_8076A048, &sp2C);
+        func_jetpac_8002419C(D_global_asm_8076A048, &dl);
     }
-    temp_a0 = func_global_asm_80704484(sp2C, 0);
+    dl = func_global_asm_80704484(dl, 0);
     if (is_cutscene_active != 4) {
         sp28 = D_global_asm_8076A048 + 0xDB0;
-        func_global_asm_805FE71C(temp_a0, D_global_asm_807444FC, &D_global_asm_8076A088, 0);
+        func_global_asm_805FE71C(dl, D_global_asm_807444FC, &D_global_asm_8076A088, 0);
         func_global_asm_805FE7B4(sp28, D_global_asm_8076A048, &D_global_asm_8076A08C, 1);
     } else {
-        func_global_asm_805FE71C(temp_a0, D_global_asm_807444FC, &D_global_asm_8076A088, 1);
+        func_global_asm_805FE71C(dl, D_global_asm_807444FC, &D_global_asm_8076A088, 1);
     }
 }
-*/
 
 void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1) {
     Gfx *sp6C;
