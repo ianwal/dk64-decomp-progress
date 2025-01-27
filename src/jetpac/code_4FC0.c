@@ -92,13 +92,13 @@ void func_jetpac_800291AC(JetpacStruct5 *arg0);
 
 /*
 s32 func_jetpac_80029064(JetpacStruct *arg0) {
-    f32 temp3 = arg0->unk0 + arg0->unk24;
-    f32 temp4 = arg0->unk4 + arg0->unk28;
+    f32 temp3 = arg0->unk0.unk0 + arg0->unk0.unk24;
+    f32 temp4 = arg0->unk0.unk4 + arg0->unk0.unk28;
     f32 temp7 = D_jetpac_8002EC30.unk420 + D_jetpac_8002EC30.unk444;
     f32 temp8 = (D_jetpac_8002EC30.unk424 - 2) + D_jetpac_8002EC30.unk448;
     
-    f32 temp = arg0->unk0 + arg0->unk1C;
-    f32 temp2 = arg0->unk4 + arg0->unk20;
+    f32 temp = arg0->unk0.unk0 + arg0->unk0.unk1C;
+    f32 temp2 = arg0->unk0.unk4 + arg0->unk0.unk20;
     f32 temp5 = (D_jetpac_8002EC30.unk43C + 2) + D_jetpac_8002EC30.unk420;
     f32 temp6 = (D_jetpac_8002EC30.unk440 + 4) + D_jetpac_8002EC30.unk424;
     
