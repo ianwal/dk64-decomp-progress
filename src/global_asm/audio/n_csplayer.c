@@ -357,9 +357,38 @@ void func_global_asm_80733A88(N_ALCSPlayer *seqp) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733B88.s")
+void func_global_asm_80733B88(N_ALCSPlayer *seqp, u8 channel)
+{
+	N_ALVoiceState *vs;
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733C34.s")
+	for (vs = seqp->vAllocHead; vs != NULL; vs = vs->next) {
+		if (vs->channel == channel && vs->envPhase != AL_PHASE_RELEASE) {
+			s16 volume = __n_vsVol(vs, (N_ALSeqPlayer *) seqp);
+
+			func_global_asm_8073B830(&vs->voice, volume, __n_vsDelta(vs, seqp->curTime));
+		}
+	}
+}
+
+void func_global_asm_80733C34(N_ALCSPlayer *seqp, u8 channel)
+{
+	N_ALVoiceState *vs;
+	s16 sp2a;
+	s8 sp29 = (s8)seqp->chanState[channel].unk12 - 64;
+	f32 sp24 = seqp->chanState[channel].pitchBend;
+
+	for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+		if (vs->channel == channel) {
+			sp2a = seqp->chanState[channel].unk11;
+
+			func_global_asm_8073BA60(&vs->voice, sp2a);
+
+			if (sp2a) {
+				func_global_asm_8073B9B0(&vs->voice, func_global_asm_8073BDC4((vs->key - vs->sound->keyMap->keyBase) + sp29) * 440 * sp24);
+			}
+		}
+	}
+}
 
 extern s32 D_global_asm_807FF040[];
 extern f32 func_global_asm_80739FE0(s32);
@@ -840,7 +869,7 @@ void func_global_asm_80733D8C(N_ALCSPlayer *seqp, N_ALEvent *event)
 			}
 			break;
 		case (0x5c):
-			if ((byte2 < n_syn->maxAuxBusses) && (byte2 >= 0)) {
+			if ((byte2 < n_syn->maxAuxBusses) && (byte2 >= 0)) { // This >= 0 isn't necessary due to it being a u8
                 seqp->chanState[chan].unk0b = byte2;
 			}
 			break;
