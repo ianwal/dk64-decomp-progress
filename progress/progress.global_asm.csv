@@ -2732,7 +2732,7 @@ us,asm,func_global_asm_80662838,636,no
 us,asm,func_global_asm_806C71B8,8,yes
 us,asm,func_global_asm_8064EC04,92,yes
 us,asm,func_global_asm_80673B78,188,no
-us,asm,func_global_asm_80733D8C,6296,no
+us,asm,func_global_asm_80733D8C,6296,yes
 us,asm,func_global_asm_806EA200,108,yes
 us,asm,func_global_asm_806D45A4,436,yes
 us,asm,func_global_asm_8073B560,112,yes

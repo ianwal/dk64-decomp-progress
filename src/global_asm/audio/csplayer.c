@@ -58,7 +58,7 @@ void func_global_asm_80732F10(N_ALCSPlayer *seqp, ALSeqpConfig *c) {
 }
 
 extern void func_global_asm_80733A88(N_ALCSPlayer *);
-extern void func_global_asm_80733D8C(ALCSPlayer *, ALEvent *);
+extern void func_global_asm_80733D8C(N_ALCSPlayer *, N_ALEvent *);
 extern void func_global_asm_807359A0(ALCSPlayer *);
 extern void func_global_asm_80735624(ALCSPlayer *, ALEvent *);
 extern void func_global_asm_8073B900(N_ALVoice *v, f32 pitch);
@@ -361,8 +361,646 @@ void func_global_asm_80733A88(N_ALCSPlayer *seqp) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733C34.s")
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/audio/csplayer/func_global_asm_80733D8C.s")
+extern s32 D_global_asm_807FF040[];
+extern f32 func_global_asm_80739FE0(s32);
+extern void    func_global_asm_8073CDD0(N_ALVoice *v, ALWaveTable *w,f32 pitch, s16 vol,
+				ALPan pan, u8 fxmix, u8 arg6, f32 arg7, u8 arg8, ALMicroTime t);
+
+// __n_CSPHandleMIDIMsg
+void func_global_asm_80733D8C(N_ALCSPlayer *seqp, N_ALEvent *event)
+{
+	N_ALVoice          *voice;
+	N_ALVoiceState     *vs;
+	s32                 status;
+	u8                  chan;
+	u8                  key;
+	u8                  vel;
+	u8                  byte1;
+	u8                  byte2;
+	ALMIDIEvent         *midi = &event->msg.midi;
+	s16                 vol;
+	N_ALEvent           evt;
+	ALMicroTime         deltaTime;
+	N_ALVoiceState     *vstate;
+	ALPan   		    pan;
+	ALChanState        *chanstate;
+	s32                 sp90;
+	ALVoiceConfig       config;
+	ALSound            *sound;
+	s16                 cents;
+	f32                 pitch,oscValue;
+	u8                  fxmix;
+	u8                  sp76;
+	f32                 sp70;
+	void               *oscState;
+	ALInstrument       *inst;
+	u8                  sp67;
+	u8                  sp66;
+	s32                 sp60;
+
+	status = midi->status & AL_MIDI_StatusMask;
+	chan = midi->status & AL_MIDI_ChannelMask;
+	byte1 = key  = midi->byte1;
+	byte2 = vel  = midi->byte2;
+
+	switch (status) {
+	case (AL_MIDI_NoteOn):
+
+		if (vel != 0) /* a real note on */ {
+			// oscState = 0;
+
+			/* If we're not playing, don't process note ons. */
+			if (seqp->state != AL_PLAYING || (seqp->chanMask & (1 << chan)) == 0) {
+				if (midi->duration) {
+					evt.type = AL_CSP_NOTEOFF_EVT;
+					evt.msg.midi.status = chan | 0x80;
+					evt.msg.midi.byte1 = key;
+					evt.msg.midi.byte2 = 0;
+
+					deltaTime = seqp->uspt * midi->duration;
+					D_global_asm_807FF040[chan] = deltaTime;
+
+					alEvtqPostEvent(&seqp->evtq, &evt, deltaTime);
+				}
+
+				break;
+			}
+
+			chanstate = &seqp->chanState[chan];
+
+			sound = __n_lookupSoundQuick((N_ALSeqPlayer*)seqp, key, vel, chan);
+			ALFlagFailIf(!sound, seqp->debugFlags & NO_SOUND_ERR_MASK,
+					ERR_ALSEQP_NO_SOUND);
+
+			config.priority = chanstate->priority;
+			config.fxBus = chanstate->unk0b;
+			config.unityPitch = 0;
+
+			vstate = __n_mapVoice((N_ALSeqPlayer*)seqp, key, vel, chan);
+			ALFlagFailIf(!vstate, seqp->debugFlags & NO_VOICE_ERR_MASK,
+					ERR_ALSEQP_NO_VOICE );
+
+			voice = &vstate->voice;
+
+			func_global_asm_8073CAC0(voice, &config);
+
+			/*
+			 * set up the voice state structure
+			 */
+			vstate->sound = sound;
+			vstate->envPhase = AL_PHASE_ATTACK;
+
+			if (chanstate->sustain > AL_SUSTAIN) {
+				vstate->phase = AL_PHASE_SUSTAIN;
+			} else {
+				vstate->phase = AL_PHASE_NOTEON;
+			}
+
+			cents = (key - sound->keyMap->keyBase) * 100 + sound->keyMap->detune;
+
+			if (chanstate->unk24) {
+				cents += chanstate->unk27;
+			}
+
+			vstate->pitch = func_global_asm_80739FE0(cents);
+
+			if (chanstate->unk24) {
+				vstate->envGain = chanstate->attackVolume;
+				vstate->envEndTime = seqp->curTime + chanstate->attackTime;
+			} else {
+				vstate->envGain = sound->envelope->attackVolume;
+				vstate->envEndTime = seqp->curTime + sound->envelope->attackTime;
+			}
+
+			/*
+			 * setup tremelo and vibrato if active
+			 */
+			vstate->flags = 0;
+
+			if (chanstate->unk24) {
+				sp90 = chanstate->tremType;
+			} else {
+				inst = seqp->chanState[chan].instrument;
+				sp90 = inst->tremType;
+			}
+
+			oscValue = (f32)_AL_VOL_FULL; /* set this as a default */
+
+			if (sp90) {
+				if (seqp->initOsc) {
+					if (chanstate->unk24) {
+						deltaTime = (*seqp->initOsc)(&oscState,&oscValue,chanstate->tremType,
+								chanstate->tremRate,chanstate->tremDepth,chanstate->tremDelay, chanstate->unk31);
+					} else {
+						deltaTime = (*seqp->initOsc)(&oscState,&oscValue,inst->tremType,
+								inst->tremRate,inst->tremDepth,inst->tremDelay, chanstate->unk31);
+					}
+
+					if (deltaTime) /* a deltaTime of zero means don't run osc */ {
+						evt.type = AL_TREM_OSC_EVT;
+						evt.msg.osc.vs = vstate;
+						evt.msg.osc.oscState = oscState;
+						alEvtqPostEvent(&seqp->evtq, &evt, deltaTime);
+						vstate->flags |= 0x01; /* set tremelo flag bit */
+						vstate->oscState = oscState;
+					}
+				}
+			}
+
+			vstate->tremelo = (u8)oscValue;
+
+			/* will default if not changed by initOsc */
+
+			oscValue = 1.0f; /* set this as a default */
+
+			if (chanstate->unk24) {
+				sp90 = chanstate->vibType;
+			} else {
+				sp90 = inst->vibType;
+			}
+
+			if (sp90) {
+				if (seqp->initOsc) {
+					if (chanstate->unk24) {
+						deltaTime = (*seqp->initOsc)(&oscState,&oscValue,chanstate->vibType,
+								chanstate->vibRate,chanstate->vibDepth,chanstate->vibDelay, chanstate->unk31);
+					} else {
+						deltaTime = (*seqp->initOsc)(&oscState,&oscValue,inst->vibType,
+								inst->vibRate,inst->vibDepth,inst->vibDelay, chanstate->unk31);
+					}
+
+					if (deltaTime)  /* a deltaTime of zero means don't run osc. */ {
+						evt.type = AL_VIB_OSC_EVT;
+						evt.msg.osc.vs = vstate;
+						evt.msg.osc.oscState = oscState;
+						evt.msg.osc.chan = chan;
+						alEvtqPostEvent(&seqp->evtq, &evt, deltaTime);
+						vstate->flags |= 0x02; /* set the vibrato flag bit */
+						vstate->oscState2 = oscState;
+					}
+				}
+			}
+
+			vstate->vibrato = oscValue; /* will default if not changed by initOsc */
+
+			/*
+			 * calculate the note on parameters
+			 */
+			pitch = vstate->pitch * chanstate->pitchBend * vstate->vibrato;
+
+			fxmix = func_global_asm_8073A7B8(vstate, seqp);
+
+			sp76 = chanstate->unk11;
+
+			if (sp76) {
+				sp70 = 440 * func_global_asm_8073BDC4(cents / 100 + chanstate->unk12 - 64) * chanstate->pitchBend;
+			} else {
+				sp70 = 127.0f;
+			}
+
+			pan = __n_vsPan(vstate, (N_ALSeqPlayer*)seqp);
+			vol = __n_vsVol(vstate, (N_ALSeqPlayer*)seqp);
+
+			if (chanstate->unk24) {
+				deltaTime = chanstate->attackTime;
+			} else {
+				deltaTime = sound->envelope->attackTime;
+			}
+
+			func_global_asm_8073CDD0(voice, sound->wavetable,
+					pitch, vol, pan, fxmix, sp76, sp70, chanstate->unk13, deltaTime);
+
+			/*
+			 * set up callbacks for envelope
+			 */
+			evt.type = AL_SEQP_ENV_EVT;
+			evt.msg.vol.voice = voice;
+
+			if (chanstate->unk24) {
+				evt.msg.vol.vol = chanstate->decayVolume;
+				evt.msg.vol.delta = chanstate->decayTime;
+			} else {
+				evt.msg.vol.vol = sound->envelope->decayVolume;
+				evt.msg.vol.delta = sound->envelope->decayTime;
+			}
+
+			alEvtqPostEvent(&seqp->evtq, &evt, deltaTime);
+
+			if (midi->duration) {
+				/*
+				 * set up note off evt. if no duration don't do this
+				 */
+				evt.type            = AL_CSP_NOTEOFF_EVT;
+				evt.msg.midi.status = chan | AL_MIDI_NoteOff;
+				evt.msg.midi.byte1  = key;
+				evt.msg.midi.byte2  = 0;   /* not needed ? */
+				deltaTime = seqp->uspt * midi->duration;
+				D_global_asm_807FF040[chan] = deltaTime;
+
+				/* max time would be about one hour ten minutes */
+				alEvtqPostEvent(&seqp->evtq, &evt, deltaTime);
+			}
+
+			if ((chanstate->unk10 & 1) && seqp->queue) {
+				osSendMesg(seqp->queue, (OSMesg)((D_global_asm_807FF040[chan] & 0xffffff00) | (chanstate->unk10 >> 2)), OS_MESG_NOBLOCK);
+			}
+
+			break;
+		}
+
+		/*
+		 * NOTE: intentional fall-through for note on with zero
+		 * velocity (Should never happen with compact midi sequence,
+		 * but could happen with real time midi.)
+		 */
+
+	case (AL_MIDI_NoteOff):
+		vstate = __n_lookupVoice((N_ALSeqPlayer*)seqp, key, chan);
+		ALFlagFailIf(!vstate, seqp->debugFlags & NOTE_OFF_ERR_MASK,
+				ERR_ALSEQP_OFF_VOICE );
+
+		chanstate = &seqp->chanState[chan];
+
+		if (vstate->phase == AL_PHASE_SUSTAIN) {
+			vstate->phase = AL_PHASE_SUSTREL;
+		} else {
+			vstate->phase = AL_PHASE_RELEASE;
+
+			if (chanstate->unk24) {
+				__n_seqpReleaseVoice((N_ALSeqPlayer*)seqp, &vstate->voice,
+						chanstate->releaseTime);
+			} else {
+				__n_seqpReleaseVoice((N_ALSeqPlayer*)seqp, &vstate->voice,
+						vstate->sound->envelope->releaseTime);
+			}
+		}
+
+		if ((chanstate->unk10 & 2) && seqp->queue) {
+			osSendMesg(seqp->queue, (OSMesg)(key << 16 | 8 | chanstate->unk10 >> 2), OS_MESG_NOBLOCK);
+		}
+
+		break;
+
+	case (AL_MIDI_PolyKeyPressure):
+		/*
+		 * Aftertouch per key (hardwired to volume). Note that
+		 * aftertouch affects only notes that are already
+		 * sounding.
+		 */
+		vstate = __n_lookupVoice((N_ALSeqPlayer*)seqp, key, chan);
+		ALFailIf(!vstate,  ERR_ALSEQP_POLY_VOICE );
+
+		vstate->velocity = byte2;
+		func_global_asm_8073B830( &vstate->voice,
+				__n_vsVol(vstate, (N_ALSeqPlayer*)seqp),
+				__n_vsDelta(vstate,seqp->curTime));
+		break;
+
+	case (AL_MIDI_ChannelPressure):
+		/*
+		 * Aftertouch per channel (hardwired to volume). Note that
+		 * aftertouch affects only notes that are already
+		 * sounding.
+		 */
+		for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+			if (vs->channel == chan) {
+				vs->velocity = byte1;
+				func_global_asm_8073B830( &vs->voice,
+						__n_vsVol(vs, (N_ALSeqPlayer*)seqp),
+						__n_vsDelta(vs,seqp->curTime));
+			}
+		}
+		break;
+
+	case (AL_MIDI_ControlChange):
+		switch (byte1) {
+		case (AL_MIDI_PAN_CTRL):
+			seqp->chanState[chan].pan = byte2;
+
+			for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+				if (vs->channel == chan) {
+					pan = __n_vsPan(vs, (N_ALSeqPlayer*)seqp);
+					func_global_asm_8073CF00( &vs->voice, pan);
+				}
+			}
+			break;
+		case (0xfd):
+			seqp->chanState[chan].unk0f = byte2;
+			break;
+		case (0xff):
+			if (seqp->chanState[chan].unk0f == 0) {
+				seqp->chanState[chan].unk0f = 0x90;
+			}
+
+			if (seqp->chanState[chan].unk0e != byte2) {
+				if (seqp->chanState[chan].unk0e == seqp->chanState[chan].unk0d) {
+					seqp->chanState[chan].unk0e = byte2;
+				} else {
+					seqp->chanState[chan].unk0e = byte2;
+					break;
+				}
+			} else {
+				break;
+			}
+
+			midi->byte1 = 0xfe;
+			// fall-through
+		case (0xfe):
+			sp67 = seqp->chanState[chan].unk0d;
+			sp66 = seqp->chanState[chan].unk0e;
+			vel = seqp->chanState[chan].unk0f;
+			sp60 = sp66 - sp67;
+
+			if (sp60 > 0) {
+				if (vel & 0x80) {
+					vel = (vel & 0x7f) << 1;
+				}
+
+				if (sp60 > vel) {
+					sp60 = vel;
+				}
+			} else {
+				vel &= 0x7f;
+
+				if (sp60 < -vel) {
+					sp60 = -vel;
+				}
+			}
+
+			sp67 += sp60;
+			seqp->chanState[chan].unk0d = sp67;
+
+			if (sp67 != sp66) {
+				alEvtqPostEvent(&seqp->evtq, event, seqp->uspt * 100);
+			}
+
+			if (sp67) {
+				seqp->chanMask |= 1 << chan;
+			} else {
+				seqp->chanMask &= ~(1 << chan);
+			}
+
+			func_global_asm_80733B88(seqp, chan);
+			break;
+		case (0xfc):
+			seqp->chanState[chan].unk0d = byte2;
+			seqp->chanState[chan].unk0e = byte2;
+
+			if (byte2 == 0) {
+				seqp->chanMask &= (1 << chan) ^ 0xffff;
+			} else {
+				seqp->chanMask |= 1 << chan;
+			}
+
+			func_global_asm_80733B88(seqp, chan);
+			break;
+		case (0x21):
+			seqp->chanState[chan].unk11 = byte2;
+			func_global_asm_80733C34(seqp, chan);
+			break;
+		case (0x22):
+			seqp->chanState[chan].unk12 = byte2;
+			func_global_asm_80733C34(seqp, chan);
+			break;
+		case (0x23):
+			seqp->chanState[chan].unk13 = byte2;
+
+			for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+				if (vs->channel == chan) {
+					func_global_asm_8073CFB0(&vs->voice, byte2);
+				}
+			}
+			break;
+		case (0x1e):
+			if (seqp->queue) {
+				osSendMesg(seqp->queue, (OSMesg)((byte2 & 7) | 0x10 | ((seqp->node.samplesLeft << 5) & 0xffffff00)), OS_MESG_NOBLOCK);
+			}
+			break;
+		case (AL_MIDI_VOLUME_CTRL):
+			seqp->chanState[chan].vol = byte2;
+
+			for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+				if ((vs->channel == chan) && (vs->envPhase != AL_PHASE_RELEASE)) {
+					vol = __n_vsVol(vs, (N_ALSeqPlayer*)seqp);
+					func_global_asm_8073B830(&vs->voice, vol, __n_vsDelta(vs,seqp->curTime));
+				}
+			}
+			break;
+		case (AL_MIDI_PRIORITY_CTRL):
+			/* leave current voices where they are */
+			seqp->chanState[chan].priority = byte2;
+			break;
+		case (AL_MIDI_SUSTAIN_CTRL):
+			seqp->chanState[chan].sustain = byte2;
+
+			for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+				if ((vs->channel == chan) && (vs->phase != AL_PHASE_RELEASE)) {
+					if ( byte2 > AL_SUSTAIN ) {
+						/*
+						 * sustain pedal down
+						 */
+						if (vs->phase == AL_PHASE_NOTEON) {
+							vs->phase = AL_PHASE_SUSTAIN;
+						}
+					} else {
+						/*
+						 * sustain pedal up
+						 */
+						if (vs->phase == AL_PHASE_SUSTAIN) {
+							vs->phase = AL_PHASE_NOTEON;
+						} else if (vs->phase == AL_PHASE_SUSTREL) {
+							vs->phase = AL_PHASE_RELEASE;
+
+							// @bug: chanstate is uninitialised
+							if (chanstate->unk24) {
+								__n_seqpReleaseVoice((N_ALSeqPlayer*)seqp,
+										&vs->voice,
+										(seqp->chanState[chan].releaseTime < AL_USEC_PER_FRAME ? AL_USEC_PER_FRAME : seqp->chanState[chan].releaseTime));
+							} else {
+								__n_seqpReleaseVoice((N_ALSeqPlayer*)seqp,
+										&vs->voice,
+										vstate->sound->envelope->releaseTime < AL_USEC_PER_FRAME ? AL_USEC_PER_FRAME : vstate->sound->envelope->releaseTime);
+							}
+						}
+					}
+				}
+			}
+			break;
+		case (AL_MIDI_FX1_CTRL):
+			seqp->chanState[chan].fxmix = (seqp->chanState[chan].fxmix & 0x80) | byte2;
+			byte2 = seqp->chanState[chan].fxmix >> 7;
+			// fall-through
+		case (0x41):
+			seqp->chanState[chan].fxmix = (seqp->chanState[chan].fxmix & 0x7f) | (byte2 << 7);
+
+			for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+				if (vs->channel == chan) {
+					func_global_asm_8073C820(&vs->voice, seqp->chanState[chan].fxmix);
+				}
+			}
+			break;
+		case (0x5c):
+			if ((byte2 < n_syn->maxAuxBusses) && (byte2 >= 0)) {
+                seqp->chanState[chan].unk0b = byte2;
+			}
+			break;
+		case (AL_MIDI_FX_CTRL_6):
+			// snd_start_mp3_by_filenum(byte2);
+			break;
+		case (0x20):
+			seqp->chanState[chan].unk32 = byte2;
+			break;
+		// case (AL_MIDI_FX_CTRL_0):
+		// 	seqp->chanState[chan].attackTime = var8005f150[byte2];
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (AL_MIDI_FX_CTRL_1):
+		// 	seqp->chanState[chan].attackVolume = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (AL_MIDI_FX_CTRL_2):
+		// 	seqp->chanState[chan].decayTime = var8005f150[byte2];
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (AL_MIDI_FX_CTRL_3):
+		// 	seqp->chanState[chan].decayVolume = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (AL_MIDI_FX_CTRL_4):
+		// 	seqp->chanState[chan].releaseTime = var8005f150[byte2];
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x02):
+		// 	seqp->chanState[chan].unk27 = byte2 - 64;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x03):
+		// 	seqp->chanState[chan].bendRange /= 100;
+		// 	seqp->chanState[chan].bendRange *= 100;
+		// 	seqp->chanState[chan].bendRange += byte2;
+		// 	break;
+		// case (0x04):
+		// 	seqp->chanState[chan].bendRange %= 100;
+		// 	seqp->chanState[chan].bendRange += byte2 * 100;
+		// 	break;
+		// case (0x0b):
+		// 	if (byte2) {
+		// 		byte2 += 0x80;
+		// 	}
+
+		// 	seqp->chanState[chan].vibType = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x0c):
+		// 	seqp->chanState[chan].vibRate = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x0d):
+		// 	seqp->chanState[chan].vibDepth = byte2 * 2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x0e):
+		// 	seqp->chanState[chan].vibDelay = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x0f):
+		// 	seqp->chanState[chan].tremType = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x11):
+		// 	seqp->chanState[chan].tremRate = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x12):
+		// 	seqp->chanState[chan].tremDepth = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x13):
+		// 	seqp->chanState[chan].tremDelay = byte2;
+		// 	seqp->chanState[chan].unk24 = 1;
+		// 	break;
+		// case (0x01):
+		// 	byte2 *= 2;
+
+		// 	for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+		// 		if (vs->channel == chan && vs->oscState2) {
+		// 			struct oscstate *sp5c = vs->oscState2;
+
+		// 			switch (sp5c->unk04 & 0xffffff7f) {
+		// 			case 0x02:
+		// 				sp5c->unk10 = -_depth2Cents(byte2);
+		// 				// fall-through
+		// 			case 0x03:
+		// 			case 0x04:
+		// 			case 0x05:
+		// 				sp5c->unk0c = _depth2Cents(byte2);
+		// 				break;
+		// 			case 0x07:
+		// 			case 0x09:
+		// 			case 0x0d:
+		// 				sp5c->unk0c = _depth2Cents(byte2) / 2.0f;
+		// 				break;
+		// 			case 0x0a:
+		// 				sp5c->unk0c = _depth2Cents(byte2) * 2.0f;
+		// 				break;
+		// 			default:
+		// 				sp5c->unk0c = _depth2Cents(byte2);
+		// 				break;
+		// 			}
+		// 		}
+		// 	}
+		// 	break;
+		// case 0x19:
+		// 	seqp->chanState[chan].unk31 = byte2;
+		// 	break;
+		default:
+			break;
+		}
+		break;
+	case (AL_MIDI_ProgramChange):
+		/* sct 1/16/96 - We must have a valid bank in order to process the program change. */
+		sp90 = (seqp->chanState[chan].unk32 << 7) + key;
+
+		if (sp90 < seqp->bank->instCount) {
+			ALInstrument *inst = seqp->bank->instArray[sp90];
+			__n_setInstChanState((N_ALSeqPlayer*)seqp, inst, chan);	/* sct 11/6/95 */
+		} else {
+			// empty
+		}
+		break;
+	case (AL_MIDI_PitchBendChange):
+		{
+			s32 bendVal;
+			f32 bendRatio;
+			s32 cents;
+
+			/* get 14-bit unsigned midi value */
+			bendVal = ((byte2 << 7) + byte1) - 8192;
+
+			/* calculate pitch bend in cents */
+			cents = seqp->chanState[chan].bendRange * bendVal / 8192;
+
+			/* calculate the corresponding ratio  */
+			bendRatio = func_global_asm_80739FE0(cents);
+			seqp->chanState[chan].pitchBend = bendRatio;
+
+			for (vs = seqp->vAllocHead; vs != 0; vs = vs->next) {
+				if (vs->channel == chan) {
+					func_global_asm_8073B900( &vs->voice, vs->pitch * bendRatio * vs->vibrato);
+
+					if (seqp->chanState[chan].unk11) {
+						func_global_asm_8073B9B0(&vs->voice, 440 * func_global_asm_8073BDC4(vs->key - vs->sound->keyMap->keyBase) * bendRatio * vs->vibrato);
+					}
+				}
+			}
+
+		}
+		break;
+
+	default:
+		break;
+	}
+}
 
 extern void func_global_asm_80735958(ALCSPlayer *, f32);
 extern void  func_global_asm_80735864(ALEventQueue *, ALEventListItem *);
