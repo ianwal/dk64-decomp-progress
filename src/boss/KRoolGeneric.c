@@ -84,15 +84,15 @@ u16 D_boss_800359C4[] = {
 };
 
 BossStruct1 D_boss_800359D0[8] = {
-    // map                      flag
-    { MAP_JAPES_ARMY_DILLO,   0, 0x0068, 0x00, 0x14 },
-    { MAP_FUNGI_DOGADON,      0, 0x0069, 0x00, 0x14 },
-    { MAP_GALLEON_PUFFTOSS,   0, 0x006B, 0x00, 0x14 },
-    { MAP_FACTORY_MAD_JACK,   0, 0x006A, 0x00, 0x14 },
-    { MAP_CAVES_ARMY_DILLO,   0, 0x006D, 0x0B, 0x00 },
-    { MAP_AZTEC_DOGADON,      0, 0x0067, 0x0B, 0x14 },
-    { MAP_CASTLE_KING_KUT_OUT,0, 0x006C, 0x03, 0x01 },
-    { MAP_TEST_MAP,           0, 0x0000, 0x00, 0x00 }, // TODO: Padding?
+    // map                        flag
+    { MAP_JAPES_ARMY_DILLO,    0, 0x0068, 0x00, 0x14 },
+    { MAP_FUNGI_DOGADON,       0, 0x0069, 0x00, 0x14 },
+    { MAP_GALLEON_PUFFTOSS,    0, 0x006B, 0x00, 0x14 },
+    { MAP_FACTORY_MAD_JACK,    0, 0x006A, 0x00, 0x14 },
+    { MAP_CAVES_ARMY_DILLO,    0, 0x006D, 0x0B, 0x00 },
+    { MAP_AZTEC_DOGADON,       0, 0x0067, 0x0B, 0x14 },
+    { MAP_CASTLE_KING_KUT_OUT, 0, 0x006C, 0x03, 0x01 },
+    { MAP_TEST_MAP,            0, 0x0000, 0x00, 0x00 }, // TODO: Padding?
 };
 
 extern SpriteData D_global_asm_8071FE08; // TODO: Sprite
@@ -414,11 +414,11 @@ void func_boss_80028458(void) {
     func_global_asm_805FF8F8();
 }
 
-void func_boss_80028478(u16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg5) {
+void func_boss_80028478(u16 flagIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg5) {
     s16 i;
     
     playSong(0x36, 1.0f);
-    if (isFlagSet(arg0, FLAG_TYPE_PERMANENT)) {
+    if (isFlagSet(flagIndex, FLAG_TYPE_PERMANENT)) {
         func_boss_80028458();
         return;
     }
@@ -429,7 +429,7 @@ void func_boss_80028478(u16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg
         func_global_asm_80714950((s32)D_global_asm_807FDC94);
         drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position);
     }
-    func_global_asm_806A5DF0(0x48, arg1, arg2, arg3, arg4, arg5, arg0, 0);
+    func_global_asm_806A5DF0(0x48, arg1, arg2, arg3, arg4, arg5, flagIndex, 0);
 }
 
 void func_boss_80028680(void) {

@@ -382,7 +382,9 @@ segments:
       - [0x2146010, bin, code_146010]
       - [0x2149160, data, data_149160]
       - [0x214B750, .data, done/code_16A20]
-      - [0x214B860, data, code_14B860]
+      - [0x214B860, data, data_14B860]
+      - [0x214D870, .data, done/code_68960]
+      - [0x214D8A0, data, data_14D8A0]
       - [0x215B0C0, .data, audio/n_sndplayer]
       - [0x215B0E0, data, data_15B0E0] # TODO: Audio
       - [0x215B190, .data, audio/n_env]

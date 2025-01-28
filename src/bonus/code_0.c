@@ -392,6 +392,7 @@ Gfx *func_bonus_80024D3C(Gfx *dl, s32 arg1) {
     return dl;
 }
 
+// Returns a permanent flag index
 s32 func_bonus_80024D8C(void) {
     switch (current_map) {
         case MAP_BATTLE_ARENA_BEAVER_BRAWL:

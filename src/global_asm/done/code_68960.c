@@ -2,13 +2,20 @@
 #include "functions.h"
 
 typedef struct {
-    s16 unk0;
+    s16 unk0; // Map
     s8 unk2;
-    s8 unk3;
+    // s8 pad3;
     s16 unk4;
 } GlobalASMStruct70;
 
-extern GlobalASMStruct70 D_global_asm_80748B70[];
+GlobalASMStruct70 D_global_asm_80748B70[6] = {
+    {MAP_CAVES,  4, 2500},
+    {MAP_CAVES,  8, 2500},
+    {MAP_CAVES,  5, 1000},
+    {MAP_CAVES,  0, 1500},
+    {MAP_CAVES, 13, 4000},
+    {MAP_CAVES, -1,  800},
+};
 
 void func_global_asm_80663C60(f32 *arg0, s16 arg1) {
     s16 sp26;
