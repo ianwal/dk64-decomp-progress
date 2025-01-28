@@ -6,7 +6,11 @@ typedef struct JetpacStruct5 {
     f32 unk4;
     u8 pad0[0x14 - 0x8];
     s32 unk14;
-    u8 pad1[0x2C - 0x18];
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
     s32 unk2C;
     s32 unk30;
     s32 unk34;
@@ -85,36 +89,47 @@ JetpacStruct *func_jetpac_80028FC0(void) {
     return NULL;
 }
 
-// Close, float, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029064.s")
-
 void func_jetpac_800291AC(JetpacStruct5 *arg0);
 
-/*
-s32 func_jetpac_80029064(JetpacStruct *arg0) {
-    f32 temp3 = arg0->unk0 + arg0->unk24;
-    f32 temp4 = arg0->unk4 + arg0->unk28;
-    f32 temp7 = D_jetpac_8002EC30.unk420 + D_jetpac_8002EC30.unk444;
-    f32 temp8 = (D_jetpac_8002EC30.unk424 - 2) + D_jetpac_8002EC30.unk448;
-    
-    f32 temp = arg0->unk0 + arg0->unk1C;
-    f32 temp2 = arg0->unk4 + arg0->unk20;
-    f32 temp5 = (D_jetpac_8002EC30.unk43C + 2) + D_jetpac_8002EC30.unk420;
-    f32 temp6 = (D_jetpac_8002EC30.unk440 + 4) + D_jetpac_8002EC30.unk424;
-    
-    s32 var_v1 = 0;
+s32 func_jetpac_80029064(JetpacStruct5* arg0) {
+    s32 pad;
+    f32 p0;
+    f32 p1;
+    f32 p2;
+    f32 p3;
+    f32 p4;
+    f32 p5;
+    f32 p6;
+    f32 p7;
+    s32 var_v1;
+
+    var_v1 = 0;
+
+    p0 = arg0->unk0;
+    p1 = arg0->unk4;
+    p2 = p0 + arg0->unk24;
+    p3 = p1 + arg0->unk28;
+
+    p5 = D_jetpac_8002EC30.unk420;
+    p4 = D_jetpac_8002EC30.unk424;
+    p6 = p5 + D_jetpac_8002EC30.unk444 - 2;
+    p7 = p4 + D_jetpac_8002EC30.unk448;
+
+    p0 += arg0->unk1C;
+    p1 += arg0->unk20;
+    p5 += (D_jetpac_8002EC30.unk43C + 2);
+    p4 += (D_jetpac_8002EC30.unk440 + 4);
 
     if (D_jetpac_8002EC30.unk434 == 3) {
         var_v1 = func_jetpac_80027250(
-            temp,
-            temp2,
-            temp3,
-            temp4,
-            temp5,
-            temp6,
-            temp7,
-            temp8
-        );
+            p0,
+            p1,
+            p2,
+            p3,
+            p5,
+            p4,
+            p6,
+            p7);
     }
     if (var_v1 != 0) {
         D_jetpac_8002F064 = 4;
@@ -124,7 +139,6 @@ s32 func_jetpac_80029064(JetpacStruct *arg0) {
     }
     return var_v1;
 }
-*/
 
 void func_jetpac_800291AC(JetpacStruct5 *arg0) {
     arg0->unk14 = 4;
