@@ -324,6 +324,78 @@ void func_race_8002AE9C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_6650/func_race_8002B180.s")
 
+f32 func_race_8002E1C8(void *, f32, void *, void *);
+s32 func_race_8002E960(u8);
+f32 func_race_8002F784(s32, void *, s32);
+f32 func_race_8002F90C(s32, void *, void *);
+
+typedef struct Struct8002B180_arg0 {
+    u8 pad0[0x4];
+    f32 unk4;
+    u8 pad8[0xC - 0x8];
+    f32 unkC;
+    u8 pad10[0x30 - 0x10];
+    Actor *unk30;
+    u8 unk34;
+}Struct8002B180_arg0;
+
+typedef struct Struct8002B180_tempv1_aad {
+    u8 pad0[0x26];
+    u8 unk26;
+} Struct8002B180_tempv1_aad;
+
+typedef struct Struct8002B180_arg1 {
+    u8 pad0[0x4];
+    void *unk4;
+    u8 pad8[0xF - 0x8];
+    u8 unkF;
+} Struct8002B180_arg1;
+
+/*
+void func_race_8002B180(Struct8002B180_arg0 *arg0, Struct8002B180_arg1 *arg1) {
+    f32 sp54;
+    f32 sp38;
+    s32 pad[2];
+    f32 temp_f0;
+    f32 temp_f0_3;
+    f32 dz;
+    f32 dx;
+    f32 var_f18;
+    f32 var_f2;
+    s32 temp_v0;
+    u8 idx;
+    Struct8002B180_tempv1_aad *temp_v1;
+    f32 temp0;
+
+    temp_v1 = arg0->unk30->AAD_as_array[0];
+    temp_v0 = func_race_8002E960(temp_v1->unk26);
+    sp38 = func_race_8002F784(temp_v0, arg0, arg1->unk4);
+    idx = D_global_asm_807FDC98->unk20[D_global_asm_807FDC90->unk25].unk0;
+    dx = D_global_asm_807FDCA0->unk14[idx].unk0 - current_actor_pointer->x_position;
+    dz = D_global_asm_807FDCA0->unk14[idx].unk4 - current_actor_pointer->z_position;
+    temp_f0 = sqrtf(SQ(dx) + SQ(dz));
+    if (temp_f0 < D_global_asm_807FDCA0->unk14[idx].unk7) {
+        D_global_asm_807FDC90->unk25++;
+        D_global_asm_807FDC90->unk25 %= D_global_asm_807FDC9C->unk11;
+    }
+    temp0 = func_global_asm_80665C18(D_global_asm_807FDCA0->unk14[idx].unk0, D_global_asm_807FDCA0->unk14[idx].unk4, current_actor_pointer->x_position, current_actor_pointer->z_position, temp_f0);
+    var_f18 = func_global_asm_806CC10C(temp0, current_actor_pointer->y_rotation);
+    sp54 = D_global_asm_807FDCA0->unk14[idx].unk7 * 1.2f;
+    if (temp_f0 < sp54) {
+        var_f18 *= (1.0 + ((1.0f - ((temp_f0 - var_f2) / (sp54 - var_f2))) * 1.5 * (2.0f * arg0->unk4)));
+    }
+    arg0->unkC += (((var_f18 * 0.0033333334f) - arg0->unkC) * 0.5f);
+    if ((arg0->unk34 >= 2) && (arg0->unk34 < 5)) {
+        if ((arg1->unkF != 0) && (func_race_8002F90C(temp_v0, arg0, temp_v1) > 0.75)) {
+            func_race_8002DE78(arg1, 0, &D_race_8002FC70, &D_race_8002FCA0);
+        }
+        temp_f0_3 = func_race_8002E1C8(arg1, sp38, &D_race_8002FC70, &D_race_8002FCA0);
+        current_actor_pointer->unkB8 = MIN(current_actor_pointer->unkB8, 650.0f);
+        arg0->unk4 = temp_f0_3;
+    }
+}
+*/
+
 void func_race_8002B518(Struct8002B610_arg0 *arg0) {
     switch (arg0->unk35) {
         case 0:

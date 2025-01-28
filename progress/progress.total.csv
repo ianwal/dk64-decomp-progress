@@ -3731,7 +3731,7 @@ us,.multiplayer,func_multiplayer_80026094,2092,no
 us,.multiplayer,func_multiplayer_80024000,500,yes
 us,.multiplayer,func_multiplayer_80026D40,224,yes
 us,.multiplayer,func_multiplayer_80025608,76,yes
-us,.multiplayer,func_multiplayer_800245B0,316,no
+us,.multiplayer,func_multiplayer_800245B0,316,yes
 us,.multiplayer,func_multiplayer_80025654,320,yes
 us,.multiplayer,func_multiplayer_800246EC,748,no
 us,.multiplayer,func_multiplayer_80025378,80,no

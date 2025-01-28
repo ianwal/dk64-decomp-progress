@@ -304,40 +304,29 @@ void func_multiplayer_8002452C(void) {
     }
 }
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800245B0.s")
-
-/*
-void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, void *arg3, s32 arg4) {
-    gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, arg3);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 3, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 3, G_TX_NOLOD);
-    gDPLoadSync(dl++);
-    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 63, 1024);
-    gDPPipeSync(dl++);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 2, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 3, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 3, G_TX_NOLOD);
-    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x001C, 0x001C);
+Gfx *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s16 arg2, void *arg3, s32 arg4) {
+    gDPLoadTextureBlock(dl++, arg3, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 8, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, 3, 3, G_TX_NOLOD, G_TX_NOLOD);
     // TODO: Issue is here
     gSPTextureRectangle(
         dl++,
-        *arg1,
-        arg2 * 4,
-        *arg1 + (arg4 * 8),
-        arg2 + 8,
+        *arg1 << 2,
+        arg2 << 2,
+        (*arg1 + (arg4 * 8)) << 2,
+        (arg2 + 8) << 2,
         G_TX_RENDERTILE,
         0,
         0,
         0x0400,
         0x0400
     );
-    *arg1 += arg4 * 8;
+    *arg1 += (arg4 * 8);
     return dl;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800246EC.s")
 
-Gfx *func_multiplayer_800245B0(Gfx *, s16 *, s16, s32, s32);
+Gfx *func_multiplayer_800245B0(Gfx *, s16 *, s16, void *, s32);
 extern u8 D_global_asm_80750AB8;
 
 /*
