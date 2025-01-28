@@ -938,7 +938,7 @@ void func_boss_8003575C(void) {
             if (current_actor_pointer->control_state == 0) {
                 dx = player_pointer->x_position - current_actor_pointer->x_position;
                 dz = player_pointer->z_position - current_actor_pointer->z_position;
-                if (((dx * dx) + (dz * dz)) < 4225.0f) { // 65 units away from the player
+                if ((SQ(dx) + SQ(dz)) < 4225.0f) { // 65 units away from the player
                     if (player_pointer->control_state != 0x31) {
                         setAction(0x2E, current_actor_pointer, 0);
                     }

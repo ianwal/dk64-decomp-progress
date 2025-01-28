@@ -188,16 +188,21 @@ typedef struct {
     f32 unk60[2][4][4]; // At least 2 4x4 matrices
 } Struct80025A3C;
 
-extern s8 D_critter_800297F0; // TODO: Vert arrays?
-extern s8 D_critter_80029830; // TODO: Vert arrays?
-extern s8 D_critter_80029870; // TODO: Vert arrays?
-extern s8 D_critter_800298D0; // TODO: Vert arrays?
-extern s8 D_critter_800298E0; // TODO: Vert arrays?
-extern Gfx D_critter_80029B18;
-extern Gfx D_critter_80029B30;
-extern Gfx D_critter_80029B78;
-extern Gfx D_critter_80029B88;
-extern s8 D_critter_80029B40;
+// .data
+extern Vtx D_critter_800297F0[];
+extern Vtx D_critter_80029830[];
+extern Vtx D_critter_80029870[];
+extern Vtx D_critter_800298D0[];
+extern Vtx D_critter_800298E0[];
+extern Vtx D_critter_80029940[];
+extern Vtx D_critter_80029980[];
+extern Vtx D_critter_80029A10[];
+
+extern Gfx D_critter_80029B18[];
+extern Gfx D_critter_80029B30[];
+extern Gfx D_critter_80029B78[];
+extern Gfx D_critter_80029B88[];
+extern Gfx D_critter_80029B40[];
 extern CritterController* D_critter_80029BA0;
 extern s32 D_critter_80029BA8;
 
@@ -514,9 +519,6 @@ void func_critter_80024F28(Critter *arg0) {
     func_critter_80024578(arg0);
 }
 
-extern s32 D_critter_80029940;
-extern s32 D_critter_80029980;
-
 Gfx *func_critter_8002516C(Gfx *dl, Struct800247F4 *arg1) {
     f32 spD0[4][4];
     f32 sp90[4][4];
@@ -564,8 +566,6 @@ void func_critter_80025500(Critter *arg0) {
     }
     func_critter_80024578(arg0);
 }
-
-extern s32 D_critter_80029A10; // TODO: vtx array?
 
 Gfx *func_critter_800255C4(Gfx *dl, Struct800247F4 *arg1) {
     if (D_critter_80029BA8 != arg1->unk1E8) {
