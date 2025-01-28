@@ -1,6 +1,43 @@
 #include <ultra64.h>
 #include "functions.h"
 
+<<<<<<< HEAD
+=======
+typedef struct JetpacStruct5 {
+    f32 unk0;
+    f32 unk4;
+    u8 pad0[0x14 - 0x8];
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+} JetpacStruct5;
+
+typedef struct {
+    // Enemy Struct?
+    u8 unk0[4];
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10[0x18-0x10];
+    s32 unk18;
+    u8 unk1C[0x28-0x1C];
+    s32 unk28;
+    s32 unk2C;
+    u8 unk30[0x40-0x30];
+    u32 unk40;
+    s32 unk44;
+    void* unk48;
+    void* unk4C;
+} struct_jetpac_80029640;
+
+>>>>>>> 7c3a4d8a (Matched func_jetpac_80029064)
 typedef struct JetpacStruct9 {
     u8 pad0[0x18];
 } JetpacStruct9;
