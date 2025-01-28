@@ -2,26 +2,26 @@
 #include "functions.h"
 
 // .rodata
-const s32 D_boss_80036160[] = {
+static const s32 D_boss_80036160[] = {
     0x2C01003C,
     0x4F460A00,
     0x50000000,
 };
 
-const s32 D_boss_8003616C[] = {
+static const s32 D_boss_8003616C[] = {
     0x2B012C0C,
     0x001E4F46,
     0x05002D50,
 };
 
-const s32 D_boss_80036178[] = {
+static const s32 D_boss_80036178[] = {
     0x2B0C2C11,
     0x001E4F46,
     0x05002D28,
     0x14085000,
 };
 
-const s32 D_boss_80036188[] = {
+static const s32 D_boss_80036188[] = {
     0x2B112C16,
     0x00144F46,
     0x05002814,
@@ -29,7 +29,7 @@ const s32 D_boss_80036188[] = {
     0x50000000,
 };
 
-const s32 D_boss_8003619C[] = {
+static const s32 D_boss_8003619C[] = {
     0x2B162C1B,
     0x001E4F46,
     0x05002A00,
@@ -38,7 +38,7 @@ const s32 D_boss_8003619C[] = {
 };
 
 // .data
-void *D_boss_80035A00[5] = {
+static void *D_boss_80035A00[5] = {
     D_boss_80036160,
     D_boss_8003616C,
     D_boss_80036178,

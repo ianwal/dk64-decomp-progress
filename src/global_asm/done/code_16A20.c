@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-u16 D_global_asm_80746A50[] = {
+static u16 D_global_asm_80746A50[] = {
     0x8000,
     0x7EBA,
     0x7D74,
@@ -66,7 +66,7 @@ u16 D_global_asm_80746A50[] = {
     0x0000,
 };
 
-u16 D_global_asm_80746ACC[] = {
+static u16 D_global_asm_80746ACC[] = {
     0x1CF6,
     0x1CBB,
     0x1C80,
@@ -133,7 +133,7 @@ u16 D_global_asm_80746ACC[] = {
     0x039A,
 };
 
-u16 D_global_asm_80746B4C[] = {
+static u16 D_global_asm_80746B4C[] = {
     0x039A,
     0x031E,
     0x028C,

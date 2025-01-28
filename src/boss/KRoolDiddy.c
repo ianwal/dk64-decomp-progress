@@ -4,7 +4,7 @@
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
 
 //. rodata
-const s32 D_boss_80036750[] = {
+static const s32 D_boss_80036750[] = {
     0x00546C51,
     0x03E44100,
     0x0027280A,
@@ -13,19 +13,19 @@ const s32 D_boss_80036750[] = {
     0x32785000,
 };
 
-const s32 D_boss_80036768[] = {
+static const s32 D_boss_80036768[] = {
     0x4101292C,
     0x4F281464,
     0x50000000,
 };
 
-const s32 D_boss_80036774[] = {
+static const s32 D_boss_80036774[] = {
     0x4102292C,
     0x4F280A5A,
     0x50000000,
 };
 
-const s32 D_boss_80036780[] = {
+static const s32 D_boss_80036780[] = {
     0x4103292C,
     0x4F280A5A,
     0x50000000,
@@ -33,14 +33,14 @@ const s32 D_boss_80036780[] = {
 };
 
 // .data
-void *D_boss_80035A60[4] = {
+static void *D_boss_80035A60[4] = {
     D_boss_80036750,
     D_boss_80036768,
     D_boss_80036774,
     D_boss_80036780,
 };
 
-u8 D_boss_80035A70[] = {0xA, 0xB, 0xC, 0xD, 0xE, 0xF};
+static u8 D_boss_80035A70[] = {0xA, 0xB, 0xC, 0xD, 0xE, 0xF};
 
 extern u8 D_global_asm_807FBD70;
 

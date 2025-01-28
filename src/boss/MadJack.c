@@ -2,30 +2,30 @@
 #include "functions.h"
 
 // .rodata
-const s32 D_boss_80036C10[] = {
+static const s32 D_boss_80036C10[] = {
     0x4F230825,
     0x06325000
 };
-const s32 D_boss_80036C18[] = {
+static const s32 D_boss_80036C18[] = {
     0x4F230A25,
     0x052D5000
 };
-const s32 D_boss_80036C20[] = {
+static const s32 D_boss_80036C20[] = {
     0x4F230B25,
     0x04285000
 };
-const s32 D_boss_80036C28[] = {
+static const s32 D_boss_80036C28[] = {
     0x4F230C28,
     0x04055000
 };
-const s32 D_boss_80036C30[] = {
+static const s32 D_boss_80036C30[] = {
     0x5F0A5429,
     0xFB544F23,
     0x0E280401,
     0x50000000
 };
 
-const f32 D_boss_80036C40[] = {
+static const f32 D_boss_80036C40[] = {
     0.8f,
     0.9f,
     1.0f,
@@ -35,9 +35,9 @@ const f32 D_boss_80036C40[] = {
 };
 
 // .data
-u8 D_boss_80035B80[4] = {0x05, 0x06, 0x09, 0x0A};
+static u8 D_boss_80035B80[4] = {0x05, 0x06, 0x09, 0x0A};
 
-void *D_boss_80035B84[5] = {
+static void *D_boss_80035B84[5] = {
     D_boss_80036C10,
     D_boss_80036C18,
     D_boss_80036C20,
@@ -45,7 +45,7 @@ void *D_boss_80035B84[5] = {
     D_boss_80036C30,
 };
 
-u16 D_boss_80035B98[32] = {
+static u16 D_boss_80035B98[32] = {
     0x000F,
     0x00F0,
     0x0F00,
@@ -80,13 +80,13 @@ u16 D_boss_80035B98[32] = {
     0x1000,
 };
 
-u8 D_boss_80035BD8[4] = {0x09, 0x0A, 0x0E, 0x00};
+static u8 D_boss_80035BD8[4] = {0x09, 0x0A, 0x0E, 0x00};
 
-u8 D_boss_80035BDC[8] = {0x10, 0x12, 0x15, 0x17, 0x18, 0x1A, 0x1D, 0x1F};
+static u8 D_boss_80035BDC[8] = {0x10, 0x12, 0x15, 0x17, 0x18, 0x1A, 0x1D, 0x1F};
 
-u8 D_boss_80035BE4[8] = {0x11, 0x13, 0x14, 0x16, 0x19, 0x1B, 0x1C, 0x1E};
+static u8 D_boss_80035BE4[8] = {0x11, 0x13, 0x14, 0x16, 0x19, 0x1B, 0x1C, 0x1E};
 
-u8 D_boss_80035BEC[20] = {
+static u8 D_boss_80035BEC[20] = {
     0x00,
     0x01,
     0x00,

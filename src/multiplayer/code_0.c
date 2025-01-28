@@ -102,7 +102,7 @@ typedef struct {
     s32 unk1C;
 } Struct80026FA4;
 
-Struct80026FA4 D_multiplayer_80026FA4[4] = {
+static Struct80026FA4 D_multiplayer_80026FA4[4] = {
     {
         MAP_KONG_BATTLE_BATTLE_ARENA,
         0x00000001,

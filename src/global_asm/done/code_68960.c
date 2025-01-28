@@ -8,7 +8,7 @@ typedef struct {
     s16 unk4;
 } GlobalASMStruct70;
 
-GlobalASMStruct70 D_global_asm_80748B70[6] = {
+static GlobalASMStruct70 D_global_asm_80748B70[6] = {
     {MAP_CAVES,  4, 2500},
     {MAP_CAVES,  8, 2500},
     {MAP_CAVES,  5, 1000},

@@ -2,12 +2,12 @@
 #include "functions.h"
 
 // .data
-s16 D_global_asm_807463A0 = 0;
-s32 D_global_asm_807463A4 = 0; // TODO: Unused? Pad?
-void *D_global_asm_807463A8 = NULL; // DKTV Inputs - Camera + Stick
-s16 D_global_asm_807463AC = 0;
-s16 D_global_asm_807463B0 = 0;
-u16 D_global_asm_807463B4 = 0;
+static s16 D_global_asm_807463A0 = 0;
+static s32 D_global_asm_807463A4 = 0; // TODO: Unused? Pad?
+static void *D_global_asm_807463A8 = NULL; // DKTV Inputs - Camera + Stick
+static s16 D_global_asm_807463AC = 0;
+static s16 D_global_asm_807463B0 = 0;
+static u16 D_global_asm_807463B4 = 0;
 u8 is_autowalking = 0;
 
 typedef struct {

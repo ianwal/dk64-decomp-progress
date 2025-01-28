@@ -47,7 +47,7 @@ typedef struct {
 } A17C_80028878;
 
 // .data
-u16 D_boss_800359A0[] = {
+static u16 D_boss_800359A0[] = {
     0x0004,
     0x0003,
     0x0006,
@@ -56,7 +56,7 @@ u16 D_boss_800359A0[] = {
     0x0000,
 };
 
-u16 D_boss_800359AC[] = {
+static u16 D_boss_800359AC[] = {
     0x002D,
     0x002D,
     0x002D,
@@ -65,7 +65,7 @@ u16 D_boss_800359AC[] = {
     0x0000,
 };
 
-u16 D_boss_800359B8[] = {
+static u16 D_boss_800359B8[] = {
     0x0004,
     0x0003,
     0x0006,
@@ -74,7 +74,7 @@ u16 D_boss_800359B8[] = {
     0x0000,
 };
 
-u16 D_boss_800359C4[] = {
+static u16 D_boss_800359C4[] = {
     0x000B,
     0x000B,
     0x000B,
@@ -83,7 +83,7 @@ u16 D_boss_800359C4[] = {
     0x0000,
 };
 
-BossStruct1 D_boss_800359D0[8] = {
+static BossStruct1 D_boss_800359D0[8] = {
     // map                        flag
     { MAP_JAPES_ARMY_DILLO,    0, 0x0068, 0x00, 0x14 },
     { MAP_FUNGI_DOGADON,       0, 0x0069, 0x00, 0x14 },

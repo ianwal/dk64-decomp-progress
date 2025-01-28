@@ -23,7 +23,7 @@ typedef struct {
 } Temp20Big;
 
 // .data
-extern Temp20Big D_global_asm_80748BA0[13] = {
+static Temp20Big D_global_asm_80748BA0[13] = {
     // ?   x     y    z     x2    y2   z2    gap    dist  scale scale
     {0xB0, 1985, 25,  1136, 1985, 25,  1212, 0.25f, 1000, 2.0f, 2.0f},
     {0xBD, 296,  51,  289,  313,  51,  257,  0.25f, 400,  1.0f, 1.0f},
