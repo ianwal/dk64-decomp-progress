@@ -381,6 +381,8 @@ segments:
       - [0x2145D70, c, audio/code_145D70]
       - [0x2146010, bin, code_146010]
       - [0x2149160, data, data_149160]
+      - [0x214B0A0, .data, done/dktv]
+      - [0x214B0C0, data, data_14B0C0]
       - [0x214B750, .data, done/code_16A20]
       - [0x214B860, data, data_14B860]
       - [0x214D870, .data, done/code_68960]

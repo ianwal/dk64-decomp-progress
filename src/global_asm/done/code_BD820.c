@@ -94,15 +94,15 @@ void func_global_asm_806B8C78(void) {
 }
 
 void func_global_asm_806B904C(void) {
-    f32 temp_f0;
+    f32 scale;
     s16 i;
 
     initializeCharacterSpawnerActor();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        temp_f0 = (D_global_asm_807FDC9C->unkF / 255.0) * 0.75;
-        current_actor_pointer->animation_state->scale_x = temp_f0;
-        current_actor_pointer->animation_state->scale_y = temp_f0;
-        current_actor_pointer->animation_state->scale_z = temp_f0;
+        scale = (D_global_asm_807FDC9C->unkF / 255.0) * 0.75;
+        current_actor_pointer->animation_state->scale_x = scale;
+        current_actor_pointer->animation_state->scale_y = scale;
+        current_actor_pointer->animation_state->scale_z = scale;
         if (func_global_asm_805FF0C8()) {
             current_actor_pointer->control_state = 0x40;
         } else {
