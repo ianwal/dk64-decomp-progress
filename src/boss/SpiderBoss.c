@@ -242,7 +242,7 @@ void func_boss_8002C964(void) {
         current_actor_pointer->z_rotation = -a178->unk0;
         current_actor_pointer->x_position = (func_global_asm_80612794(current_actor_pointer->unkEE) * a178->unk0) + D_global_asm_807FDC9C->unk4;
         current_actor_pointer->z_position = (func_global_asm_80612790(current_actor_pointer->unkEE) * a178->unk0) + D_global_asm_807FDC9C->unk8;
-        current_actor_pointer->y_position = D_global_asm_807FDC9C->unk6 - sqrtf(0x1C390 - (a178->unk0 * a178->unk0));
+        current_actor_pointer->y_position = D_global_asm_807FDC9C->unk6 - sqrtf(0x1C390 - SQ(a178->unk0));
     }
     if (D_global_asm_807FDC90->unk28 & 0x8000) {
         func_boss_8002C7CC();

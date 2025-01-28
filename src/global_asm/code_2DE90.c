@@ -248,7 +248,7 @@ void func_global_asm_8062A274(s32 arg0, s32 arg1, void *arg2, s32 arg3, s32 arg4
 
     temp_v0 = arg0 - arg3;
     temp_v1 = arg1 - arg4;
-    temp_f0 = sqrtf((temp_v0 * temp_v0) + (temp_v1 * temp_v1));
+    temp_f0 = sqrtf(SQ(temp_v0) + SQ(temp_v1));
     if (temp_f0 < D_global_asm_807F5D8C) {
         phi_v0 = 0;
     } else if (D_global_asm_807F5D90 < temp_f0) {

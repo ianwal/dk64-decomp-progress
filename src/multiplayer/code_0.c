@@ -83,7 +83,7 @@ s32 D_multiplayer_80026F8C[] = {
 s32 D_multiplayer_80026F98[] = {
     0x03E80050,
     0x0384005A,
-    0x00000000,
+    0x00000000, // TODO: Padding?
 };
 
 typedef struct MultiplayerStruct3 {
@@ -914,29 +914,29 @@ void func_multiplayer_80026094(void) {
     }
     aad->unk0 += D_global_asm_807445B0;
     switch (D_global_asm_807552E4.unk8) {
-    case 2:
-    case 3:
-        break;
-    case 1:
-        switch (D_global_asm_807552E4.unk4) {
-        case 3:
-        case 5:
-            func_multiplayer_80025654(aad);
-            break;
         case 2:
-            func_multiplayer_80025794();
-            break;
-        case 0:
-            func_multiplayer_800243C8();
+        case 3:
             break;
         case 1:
-            func_multiplayer_8002449C();
+            switch (D_global_asm_807552E4.unk4) {
+                case 3:
+                case 5:
+                    func_multiplayer_80025654(aad);
+                    break;
+                case 2:
+                    func_multiplayer_80025794();
+                    break;
+                case 0:
+                    func_multiplayer_800243C8();
+                    break;
+                case 1:
+                    func_multiplayer_8002449C();
+                    break;
+                case 4:
+                    func_multiplayer_8002452C();
+                    break;
+                }
             break;
-        case 4:
-            func_multiplayer_8002452C();
-            break;
-        }
-        break;
     }
     if (D_global_asm_807552E4.unk0 == 0) {
         for (i = 0; i < cc_number_of_players; i++) {

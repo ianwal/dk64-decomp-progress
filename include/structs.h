@@ -2464,7 +2464,7 @@ typedef struct Competitor {
 } Competitor;
 
 typedef struct JetpacPlayerSub36C {
-    s32 unk0;
+    f32 unk0;
     f32 unk4;
     s32 unk8;
     s32 unkC;

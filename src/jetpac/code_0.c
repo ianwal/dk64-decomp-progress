@@ -7,52 +7,76 @@ extern s32 D_global_asm_8076A088;
 extern u8 D_global_asm_8076A0B1;
 extern s32 D_global_asm_8076A08C;
 extern s32 D_global_asm_8076A080;
+extern void *D_global_asm_8076D1F8;
+
+extern s32 D_global_asm_80770DF8[];
 
 extern f32 D_global_asm_807FD888;
 
-// TODO: Pretty close
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_80024000.s")
+typedef struct StructJetpac8002BA52 {
+    s16 unk0;
+    s16 unk2;
+} StructJetpac8002BA52;
+
+extern StructJetpac8002BA52 D_jetpac_8002BA52[]; // likely 8002ba50 s32, but read as a s16
+extern s32 D_jetpac_8002BA6C;
+extern u8 D_jetpac_8002BA70;
+
+extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern s32 D_jetpac_8002EC48;
+extern s32 D_jetpac_8002BA6C;
+extern s32 D_jetpac_8002EF74;
+extern s32 D_jetpac_8002EC50;
+extern s32 D_jetpac_8002EDE4;
+extern s32 D_jetpac_8002F064;
+
+void func_global_asm_80737924(s32);
 
 typedef struct {
     u8 unk0[0x80 - 0x0];
     u8 unk80;
 } Struct8002419C_arg0;
-void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1);
 
-/*
+typedef struct {
+    u16 unk0;
+    s8 unk2;
+    s8 unk3;
+} Struct807ECDE8;
+
+extern Struct807ECDE8 *D_global_asm_807ECDE8;
+
+void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1);
+void func_jetpac_80026AB0(void);
+void func_jetpac_80028E88(void);
+
 void func_jetpac_80024000(void) {
-    s32 sp2C;
+    Gfx *dl;
     Gfx **sp28;
-    s32 temp_a0;
-    s32 temp_t5;
-    u8 temp_t1;
 
     func_global_asm_8060A9BC();
     func_global_asm_80610044(D_global_asm_8076A050[D_global_asm_807444FC], D_global_asm_8076A088, 3, 1, 0x4D2, 1);
-    temp_t1 = D_global_asm_807444FC ^ 1;
-    D_global_asm_807444FC = temp_t1;
+    D_global_asm_807444FC = D_global_asm_807444FC ^ 1;
     object_timer++;
-    D_global_asm_8076A048 = D_global_asm_80767CE8[(temp_t1 & 0xFF) * 0x11B0];
+    D_global_asm_8076A048 = &D_global_asm_80767CE8[(D_global_asm_807444FC) * 0x11B0];
     func_global_asm_8060AC7C();
     if ((D_global_asm_8076A0B1 & 1) && (D_global_asm_807FD888 == 31.0f)) {
-        sp2C = D_global_asm_8076A050[D_global_asm_807444FC];
+        dl = D_global_asm_8076A050[D_global_asm_807444FC];
     } else {
-        func_jetpac_8002419C(D_global_asm_8076A048, &sp2C);
+        func_jetpac_8002419C(D_global_asm_8076A048, &dl);
     }
-    temp_a0 = func_global_asm_80704484(sp2C, 0);
+    dl = func_global_asm_80704484(dl, 0);
     if (is_cutscene_active != 4) {
         sp28 = D_global_asm_8076A048 + 0xDB0;
-        func_global_asm_805FE71C(temp_a0, D_global_asm_807444FC, &D_global_asm_8076A088, 0);
+        func_global_asm_805FE71C(dl, D_global_asm_807444FC, &D_global_asm_8076A088, 0);
         func_global_asm_805FE7B4(sp28, D_global_asm_8076A048, &D_global_asm_8076A08C, 1);
     } else {
-        func_global_asm_805FE71C(temp_a0, D_global_asm_807444FC, &D_global_asm_8076A088, 1);
+        func_global_asm_805FE71C(dl, D_global_asm_807444FC, &D_global_asm_8076A088, 1);
     }
 }
-*/
 
 void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1) {
     Gfx *sp6C;
-    void *sp68;
+    Gfx *sp68;
     Gfx *dl;
 
     dl = D_global_asm_8076A050[D_global_asm_807444FC];
@@ -78,8 +102,6 @@ void func_jetpac_8002419C(Struct8002419C_arg0 *arg0, Gfx **arg1) {
     *arg1 = dl;
 }
 
-extern JetpacPlayerStruct D_jetpac_8002EC30;
-
 void func_jetpac_80024390(void) {
     s32 playerIndex;
     Competitor *player;
@@ -100,12 +122,6 @@ void func_jetpac_80024390(void) {
     }
     D_jetpac_8002EC30.player_index = 0;
 }
-
-extern s32 D_jetpac_8002EC48;
-extern s32 D_jetpac_8002BA6C;
-extern s32 D_jetpac_8002EF74;
-extern s32 D_jetpac_8002EC50;
-extern s32 D_jetpac_8002EDE4;
 
 void func_jetpac_80024408(Gfx **arg0) {
     Competitor *player;
@@ -230,8 +246,6 @@ void func_jetpac_80024A4C(void) {
     func_global_asm_8060DEA8();
 }
 
-extern s32 D_jetpac_8002BA6C;
-
 void func_jetpac_80024A8C(Gfx **arg0) {
     Maps nextMap;
 
@@ -320,21 +334,10 @@ void func_jetpac_80024D48(Gfx **arg0) {
     }
 }
 
-typedef struct StructJetpac8002BA52 {
-    s16 unk0;
-    s16 unk2;
-} StructJetpac8002BA52;
-
-extern s32 D_global_asm_80770DF8[];
-extern void *D_global_asm_8076D1F8;
-extern StructJetpac8002BA52 D_jetpac_8002BA52[]; // likely 8002ba50 s32, but read as a s16
-
-void func_global_asm_80737924(s32);
-
 void func_jetpac_80024E70(s32 arg0) {
     s32 i;
     s16 sfx;
-    void* temp;
+
     for (i = arg0; i < 7; i++) {
         if (D_global_asm_80770DF8[i] != 0) {
             func_global_asm_80737924(D_global_asm_80770DF8[i]);
@@ -358,8 +361,6 @@ void func_jetpac_80024F64(s32 arg0) {
         func_global_asm_80737924(temp_a1);
     }
 }
-
-extern s32 D_jetpac_8002F064;
 
 void func_jetpac_80024F9C(s32 arg0) {
     s32 pad24;
@@ -415,15 +416,6 @@ void func_jetpac_800250A0(void) {
     func_jetpac_80028340(player);
     func_jetpac_80024F9C(1);
 }
-
-typedef struct {
-    u16 unk0;
-    s8 unk2;
-    s8 unk3;
-} Struct807ECDE8;
-
-extern Struct807ECDE8 *D_global_asm_807ECDE8;
-extern u8 D_jetpac_8002BA70;
 
 void func_jetpac_80025168(Gfx **arg0) {
     u8 *temp = &D_jetpac_8002BA70;

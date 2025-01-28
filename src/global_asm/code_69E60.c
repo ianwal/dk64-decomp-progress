@@ -263,15 +263,13 @@ s16 func_global_asm_80665C18(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     return sp36;
 }
 
-// Looks like its taking the linear distance between 2 points (2D)
 s16 func_global_asm_80665DE0(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f0;
     f32 temp_f2;
 
     temp_f0 = arg0 - arg2;
     temp_f2 = arg1 - arg3;
-    return func_global_asm_80665C18(arg0, arg1, arg2, arg3, 
-                    sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2)));
+    return func_global_asm_80665C18(arg0, arg1, arg2, arg3, sqrtf(SQ(temp_f0) + SQ(temp_f2)));
 }
 
 f32 func_global_asm_80665E48(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
@@ -285,7 +283,7 @@ f32 func_global_asm_80665E94(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f
 
     temp_f0 = arg0 - arg3;
     temp_f2 = arg2 - arg5;
-    temp_f0 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2));
+    temp_f0 = sqrtf(SQ(temp_f0) + SQ(temp_f2));
     if (temp_f0 < arg6) {
         phi_f14 = arg6;
     } else {

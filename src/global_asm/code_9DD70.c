@@ -11,7 +11,7 @@ void func_global_asm_80699070(s16 *arg0, s16 *arg1, f32 x1, f32 y1, f32 z1, f32 
     *arg1 = func_global_asm_80665DE0(x1, z1, x2, z2);
     dx = x2 - x1;
     dz = z2 - z1;
-    *arg0 = (func_global_asm_80611BB4(y2 - y1, sqrtf((dx * dx) + (dz * dz))) * 2048.0) / M_PIF;
+    *arg0 = (func_global_asm_80611BB4(y2 - y1, sqrtf(SQ(dx) + SQ(dz))) * 2048.0) / M_PIF;
 }
 
 typedef struct {

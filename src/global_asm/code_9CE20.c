@@ -30,16 +30,13 @@ typedef struct {
 void func_global_asm_80698120(u8 arg0) {
     PlayerAdditionalActorData *PaaD;
     u8 sp63;
-    f32 var_f0_2;
+    s16 i;
     f32 var_f2;
-    s16 var_v1;
-    s16 var_v1_2;
-    u8 var_t0;
-    AnimationStateUnk1C *temp_v0_2;
-    AnimationStateUnk1C *temp_v0_4;
-    AnimationStateUnk1C *var_t0_2;
+    s16 var_t0;
+    AnimationStateUnk1C *temp_v0;
     AAD_global_asm_80698120 *aaD;
-    AAD_global_asm_80698120 *var_t1_2;
+    s32 pad2;
+    s32 pad;
 
     aaD = current_actor_pointer->additional_actor_data;
     PaaD = character_change_array->player_pointer->additional_actor_data;
@@ -71,44 +68,42 @@ void func_global_asm_80698120(u8 arg0) {
             0.0f,
             0
         );
-        for (var_v1 = 1; var_v1 < arg0; var_v1++) {
-            func_global_asm_8072EF7C(current_actor_pointer, 0, var_v1 + 1, var_v1 - 1, var_v1, 0.3333329856f, 0.0f, 0.0f, 0, 0, 0, 0, 0);
+        for (i = 1; i < arg0; i++) {
+            func_global_asm_8072EF7C(current_actor_pointer, 0, i + 1, i - 1, i, 0.3333329856f, 0.0f, 0.0f, 0, 0, 0, 0, 0);
         }
         current_actor_pointer->unk130 = 0x3C;
         current_actor_pointer->unk131 = 0xC8;
-        var_t1_2->unk14 = 0;
-        var_t1_2->unk15 = 0;
+        aaD->unk14 = 0;
+        aaD->unk15 = 0;
         aaD->unk28 = isFlagSet(0x183, FLAG_TYPE_PERMANENT)
             || (D_global_asm_807FBB64 & 0x10000000)
             || gameIsInDKTVMode();
     }
-    if ((player_pointer->control_state == 0x63) || (aaD->unk28 == 0) || ((current_actor_pointer->unk124->unk0 == 1) && !(PaaD->unk1F0 & 0x40))) {
+    if ((player_pointer->control_state == 0x63) || (aaD->unk28 == 0) || ((reinterpret_cast(s32, current_actor_pointer->unk124->unk0) == 1) && !(PaaD->unk1F0 & 0x40))) {
         current_actor_pointer->object_properties_bitfield &= 0xFBFFFFFB;
     } else {
         current_actor_pointer->object_properties_bitfield |= 0x04000004;
     }
-    for (var_v1_2 = 0; var_v1_2 < D_global_asm_807FBB70.unk254; var_v1_2++) {
-        if (D_global_asm_807FBB70.unk278[var_v1_2++] == 0) {
+    for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
+        if (D_global_asm_807FBB70.unk278[i] == 0) {
             aaD->unk16 = 0x50;
         }
     }
-    var_v1_2 = 0;
-    if (aaD->unk16 != 0) {
+    i = 0;
+    if (aaD->unk16) {
         current_actor_pointer->y_position = current_actor_pointer->y_position - 1.0;
         aaD->unk16 = aaD->unk16 - 1;
         aaD->unk1C = aaD->unk1C - 1.0;
     }
-    var_t0_2 = current_actor_pointer->animation_state->unk1C;
+    temp_v0 = current_actor_pointer->animation_state->unk1C;
     if (aaD->unk0 > 2.0f) {
         if ((aaD->unkC < 3.926990986f) && (3.926990986f <= (aaD->unkC + aaD->unk4))) {
             if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
-                // playSoundAtActorPosition(3.926990986f, temp_s0_2, 0x257, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
                 playSoundAtActorPosition(current_actor_pointer, 0x257, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
-                var_v1_2 = 0;
+                i = 0;
             } else {
-                // playSoundAtActorPosition(3.926990986f, temp_s0_2, 0x1C, ((aaD->unk0 * 100.0) / 15.0f) & 0xFF, 0x7F, 5);
                 playSoundAtActorPosition(current_actor_pointer, 0x1C, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
-                var_v1_2 = 0;
+                i = 0;
             }
         }
         if ((aaD->unkC < 0.7853981853f) && (0.7853981853f <= (aaD->unkC + aaD->unk4))) {
@@ -141,38 +136,37 @@ void func_global_asm_80698120(u8 arg0) {
 
     aaD->unkC += ((aaD->unk4 * D_global_asm_80744478) * 0.5);
     aaD->unk10 = func_global_asm_80612D1C(aaD->unkC) * aaD->unk0;
-    do {
-        temp_v0_2 = &var_t0_2[var_v1_2];
-        temp_v0_2->unk0 = -0x80;
-        temp_v0_2->unk1 = var_v1_2 + sp63;
-        temp_v0_2->unk4 = 0;
-        temp_v0_2->unk6 = 0;
-        var_v1_2++;
-        temp_v0_2->unk2 = (aaD->unk10 / 360.0) * 65535.0;
+    for (;i < 0xE; i++) {
+        temp_v0 = &temp_v0[i];
+        temp_v0->unk0 = -0x80;
+        temp_v0->unk1 = i + sp63;
+        temp_v0->unk4 = 0;
+        temp_v0->unk6 = 0;
+        temp_v0->unk2 = (aaD->unk10 / 360.0) * 65535.0;
         aaD->unk10 = aaD->unk10 * aaD->unk8;
-    } while (var_v1_2 < 0xE);
+    }
 
     // Vines (brown and green)
     if ((current_actor_pointer->unk58 == ACTOR_VINE) || (current_actor_pointer->unk58 == ACTOR_VINE_BROWN)) {
-        temp_v0_4 = &var_t0_2[var_v1_2];
-        temp_v0_4->unk0 = -0x80;
-        temp_v0_4->unk1 = 1;
-        temp_v0_4->unk2 = 0;
-        temp_v0_4->unk6 = 0;
-        var_v1_2++;
-        temp_v0_4->unk4 = (aaD->unk18 / 360.0) * 65535.0;
+        temp_v0 = &temp_v0[i];
+        temp_v0->unk0 = -0x80;
+        temp_v0->unk1 = 1;
+        temp_v0->unk2 = 0;
+        temp_v0->unk6 = 0;
+        temp_v0->unk4 = (aaD->unk18 / 360.0) * 65535.0;
+        i++;
         aaD->unk18 += 20.0f;
         if (aaD->unk18 > 360.0f) {
             aaD->unk18 -= 360.0f;
         }
     }
-    var_t0_2[var_v1_2].unk0 = 0;
+    temp_v0[i].unk0 = 0;
 
     // Leaving vine
     if (player_pointer->control_state == 0x58) {
         aaD->unk15 = 5;
     } else {
-        if (aaD->unk15 != 0) {
+        if (aaD->unk15) {
             aaD->unk15--;
         }
     }

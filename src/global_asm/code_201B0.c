@@ -948,7 +948,7 @@ void func_global_asm_8061EF4C(Actor *arg0, u8 arg1, u16 arg2, f32 arg3, f32 arg4
     dX = arg3 - arg0->x_position;
     dY = arg4 - arg0->y_position;
     dZ = arg5 - arg0->z_position;
-    d = sqrtf((dX * dX) + (dY * dY) + (dZ * dZ));
+    d = sqrtf(SQ(dX) + SQ(dY) + SQ(dZ));
     if (!(arg7 < d)) {
         if (d < arg6) {
             func_global_asm_8061F0B0(arg0, arg1, arg2);
@@ -1010,7 +1010,7 @@ void func_global_asm_8061F18C(Actor *arg0, f32 arg1, f32 arg2, f32 arg3) {
     aaD = arg0->additional_actor_data;
     sp2A = func_global_asm_80665DE0(aaD->unk0->x_position, aaD->unk0->z_position, arg1, arg3);
     sp26 = func_global_asm_806CC14C(sp2A, func_global_asm_80665DE0(aaD->unk0->x_position, aaD->unk0->z_position, arg0->unk88, arg0->unk90));
-    d = sqrtf(((arg1 - arg0->unk88) * (arg1 - arg0->unk88)) + ((arg2 - arg0->unk8C) * (arg2 - arg0->unk8C)) + ((arg3 - arg0->unk90) * (arg3 - arg0->unk90)));
+    d = sqrtf(SQ(arg1 - arg0->unk88) + SQ(arg2 - arg0->unk8C) + SQ(arg3 - arg0->unk90));
     func_global_asm_8061F164(aaD, d * MAX(1.0, sp26 * 0.0009765625));
 }
 
@@ -1020,21 +1020,15 @@ void func_global_asm_8061F2B8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     f32 d;
     f32 temp_f2_3;
 
-    d =   ((arg3 - arg6) * (arg3 - arg6))
-        + ((arg4 - arg7) * (arg4 - arg7))
-        + ((arg5 - arg8) * (arg5 - arg8));
+    d = SQ(arg3 - arg6) + SQ(arg4 - arg7) + SQ(arg5 - arg8);
     if (d == 0.0f) {
         *arg9 = arg3;
         *argA = arg4;
         *argB = arg5;
         return;
     }
-    d2 =  ((arg6 - arg0) * (arg6 - arg0))
-        + ((arg7 - arg1) * (arg7 - arg1))
-        + ((arg8 - arg2) * (arg8 - arg2));
-    d3 =  ((arg3 - arg0) * (arg3 - arg0))
-        + ((arg4 - arg1) * (arg4 - arg1))
-        + ((arg5 - arg2) * (arg5 - arg2));
+    d2 = SQ(arg6 - arg0) + SQ(arg7 - arg1) + SQ(arg8 - arg2);
+    d3 = SQ(arg3 - arg0) + SQ(arg4 - arg1) + SQ(arg5 - arg2);
     temp_f2_3 = ((d3 + d) - d2) / (2 * d);
     if ((temp_f2_3 >= 1.0f) || (d2 == 0.0f)) {
         *arg9 = arg6;

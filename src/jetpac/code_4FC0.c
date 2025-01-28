@@ -179,21 +179,21 @@ JetpacStruct *func_jetpac_800292C4(void) {
     sp70->unk0.unk0 = 0.0f;
     sp70->unk0.unk4 = (((s32) (func_jetpac_80027210() * 15.0f) % 15) * 8) + 0x20;
     switch ((s32) (func_jetpac_80027210() * 4.0f) % 4) {
-    case 0:
-        sp70->unk0.unk10 = 0;
-        break;
-    case 1:
-        sp70->unk0.unk11 = 0;
-        break;
-    case 2:
-        sp70->unk0.unk10 = 0;
-        sp70->unk0.unk12 = 0;
-        break;
-    case 3:
-        sp70->unk0.unk11 = 0;
-        sp70->unk0.unk12 = 0;
-        break;
-    }
+        case 0:
+            sp70->unk0.unk10 = 0;
+            break;
+        case 1:
+            sp70->unk0.unk11 = 0;
+            break;
+        case 2:
+            sp70->unk0.unk10 = 0;
+            sp70->unk0.unk12 = 0;
+            break;
+        case 3:
+            sp70->unk0.unk11 = 0;
+            sp70->unk0.unk12 = 0;
+            break;
+        }
     return sp70;
 }
 
@@ -798,7 +798,7 @@ void func_jetpac_8002AD8C(void) {
     s32 i;
 
     var_s0 = &D_jetpac_8002F1DC;
-    if (func_jetpac_80026FE0() == 0) {
+    if (!func_jetpac_80026FE0()) {
         for (i = 0; i < 6; i++) {
             if (var_s0->unk0.unk14 >= 2) {
                 if (var_s0->unk48.unk4) {

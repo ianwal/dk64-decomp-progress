@@ -145,7 +145,7 @@ void func_boss_80027A30(Struct80027A30_arg0 *arg0, u8 *arg1) {
         dz = current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[temp_a0].unk4;
         dx = current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[temp_a0].unk0;
         dy = current_actor_pointer->y_position - D_global_asm_807FDCA0->unk14[temp_a0].unk2;
-        d = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
+        d = sqrtf(SQ(dz) + (SQ(dx) + SQ(dy)));
         if (highest < d) {
             highest = d;
             D_global_asm_807FDC90->unk25 = i;
