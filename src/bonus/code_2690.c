@@ -279,7 +279,7 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
     aaD->unk1E = sp4C[2];
     aaD->unk20 = sp4C[1];
     current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(arg0, arg2, current_actor_pointer->x_position, current_actor_pointer->z_position), 10.0f);
-    d = sqrtf(((current_actor_pointer->x_position - arg0) * (current_actor_pointer->x_position - arg0)) + ((current_actor_pointer->z_position - arg2) * (current_actor_pointer->z_position - arg2)));
+    d = sqrtf(SQ(current_actor_pointer->x_position - arg0) + SQ(current_actor_pointer->z_position - arg2));
     current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, ((func_global_asm_80611BB4(current_actor_pointer->y_position - arg1, d) * 2048.0) / D_bonus_8002DD30) + D_bonus_8002DD38, 5.0f);
     if ((D_global_asm_807FD610[0].unk2C & 0xE000) && (current_actor_pointer->control_state == 0)) {
         sp40 = 1;

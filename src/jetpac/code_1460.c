@@ -236,6 +236,7 @@ void func_jetpac_800255D4(Gfx **arg0) {
 void func_jetpac_800254B8(Struct8002C4D0 *, s32, s32, s32, s32);
 extern Struct8002C4D0 D_80042BD0[0x100][2];
 extern s32 D_jetpac_80045BD0;
+
 /*
 void func_jetpac_80025700(Struct8002C4D0 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     s32 lim_0;
@@ -306,7 +307,6 @@ void func_jetpac_80025904(Gfx **arg0) {
     for (i = 0; i < 0x18; i++) {
         for (j = 0; j < 0x20; j++) {
             if (s3->unk60) {
-                // TODO: Problem is here, colors are loaded and shifted in the wrong order
                 gDPSetPrimColor(dl++, 0, 0, s3->rgba[0], s3->rgba[1], s3->rgba[2], 0xFF);
             }
             for (k = 0; k < s3->unk60; k++) {

@@ -227,7 +227,7 @@ void func_global_asm_80717B64(Struct80717D84 *arg0, s8 *arg1) {
     } else {
         var_v1->unk0++;
     }
-    temp_f0_2 = sqrtf(((character_change_array->look_at_eye_z - arg0->unk348) * (character_change_array->look_at_eye_z - arg0->unk348)) + (((character_change_array->look_at_eye_x - arg0->unk340) * (character_change_array->look_at_eye_x - arg0->unk340)) + ((character_change_array->look_at_eye_y - arg0->unk344) * (character_change_array->look_at_eye_y - arg0->unk344))));
+    temp_f0_2 = sqrtf(SQ(character_change_array->look_at_eye_z - arg0->unk348) + (SQ(character_change_array->look_at_eye_x - arg0->unk340) + SQ(character_change_array->look_at_eye_y - arg0->unk344)));
     if (temp_f0_2 < temp_f16) {
         arg0->unk36D = var_v1->unk4;
         return;
@@ -1334,7 +1334,7 @@ void func_global_asm_8071D28C(Struct80717D84 *arg0, s8 *arg1) {
         var_v1 = arg0->unk384;
         temp_f0 = actor->x_position - arg0->unk340;
         temp_f2 = actor->z_position - arg0->unk348;
-        var_v1->unk0 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2));
+        var_v1->unk0 = sqrtf(SQ(temp_f0) + SQ(temp_f2));
         var_v1->unk4 = (func_global_asm_806119FC() * 20.0f) + 10.0f;
         var_v1->unk8 = func_global_asm_806119FC() * 4095.0f;
         var_v1->unkC = (func_global_asm_806119FC() * 90.0f) + 10.0f;
@@ -1753,7 +1753,7 @@ void func_global_asm_8071EB70(Struct80717D84 *arg0, s32 arg1) {
     dx = character_change_array->unk224 - arg0->unk348;
     dy = character_change_array->unk21C - arg0->unk340;
     dz = character_change_array->unk220 - arg0->unk344;
-    d = sqrtf((dx * dx) + ((dy * dy) + (dz * dz)));
+    d = sqrtf(SQ(dx) + (SQ(dy) + SQ(dz)));
     if (d < temp_f16) {
         arg0->unk36D = *var_v1;
         return;

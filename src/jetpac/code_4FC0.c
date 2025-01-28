@@ -784,7 +784,7 @@ void func_jetpac_8002AD8C(void) {
     s32 i;
 
     var_s0 = &D_jetpac_8002F1DC;
-    if (func_jetpac_80026FE0() == 0) {
+    if (!func_jetpac_80026FE0()) {
         for (i = 0; i < 6; i++) {
             if (var_s0->unk0.unk14 >= 2) {
                 if (var_s0->unk48.unk4) {

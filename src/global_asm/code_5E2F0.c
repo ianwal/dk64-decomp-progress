@@ -319,9 +319,7 @@ typedef struct {
 } Struct8065C240;
 
 s32 func_global_asm_8065C240(Struct8065C240 *arg0) {
-    f32 dz;
-    f32 dy;
-    f32 dx;
+    f32 dz, dy, dx;
     s32 i;
 
     for (i = 0; i < D_global_asm_80750AB4; i++) {
@@ -329,7 +327,7 @@ s32 func_global_asm_8065C240(Struct8065C240 *arg0) {
             dz = arg0->unk20 - character_change_array[i].look_at_eye_z;
             dx = arg0->unk18 - character_change_array[i].look_at_eye_x;
             dy = arg0->unk1C - character_change_array[i].look_at_eye_y;
-            if (sqrtf((dz * dz) + ((dx * dx) + (dy * dy))) < arg0->unk32) {
+            if (sqrtf(SQ(dz) + (SQ(dx) + SQ(dy))) < arg0->unk32) {
                 return TRUE;
             }
         }

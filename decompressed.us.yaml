@@ -381,6 +381,8 @@ segments:
       - [0x2145D70, c, audio/code_145D70]
       - [0x2146010, bin, code_146010]
       - [0x2149160, data, data_149160]
+      - [0x214B750, .data, done/code_16A20]
+      - [0x214B860, data, code_14B860]
       - [0x215B0C0, data, data_15B0C0] # TODO: Audio
       - [0x215B190, .data, audio/n_env]
       - [0x215B290, .rodata, code_450]
