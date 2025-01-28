@@ -19,7 +19,9 @@ typedef struct {
     f32 unk1C;
 } Temp20Big;
 
+// .data
 extern Temp20Big D_global_asm_80748BA0[];
+
 extern u8 D_global_asm_807F9440[];
 extern s32 D_global_asm_807F9448;
 

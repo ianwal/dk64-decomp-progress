@@ -5,6 +5,7 @@
 extern SpriteData D_global_asm_80720A7C; // TODO: Datatype
 extern SpriteData D_global_asm_807213D0; // TODO: Datatype
 
+// .data
 extern s32 D_global_asm_80747D70;
 
 typedef struct {

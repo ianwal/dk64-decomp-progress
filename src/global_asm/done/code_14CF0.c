@@ -1,17 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-void func_global_asm_8060FFF0(void) {
-    D_global_asm_807F0570[0] = &D_global_asm_807432D0;
-    D_global_asm_807F0588[0] = &D_global_asm_80760C60;
-    D_global_asm_807F0570[1] = &D_global_asm_80741F40;
-    D_global_asm_807F0588[1] = &D_global_asm_80760840;
-    D_global_asm_807F0570[2] = &D_global_asm_80741F40;
-    D_global_asm_807F0588[2] = &D_global_asm_80760840;
-    D_global_asm_807F0570[3] = &D_global_asm_80741F40;
-    D_global_asm_807F0588[3] = &D_global_asm_80760840;
-}
-
 typedef struct Struct807F05A8 {
     s32 unk0;
     s32 unk4;
@@ -52,17 +41,33 @@ typedef struct Struct80767CE8 {
 void osWriteBackDCacheAll(void);
 extern s32 D_805FB000; // Unsure on type
 extern s32 D_805FB0D0; // Unsure on type
+
+// .data
+extern s8 D_global_asm_80744460;
+extern void *D_global_asm_80744470[];
+extern s8 D_global_asm_80746834;
+
+extern UnkMQStruct D_global_asm_807659E8;
 extern s32 D_80767CD8; // Unsure on type
+extern Struct80767CE8 D_global_asm_80767CE8[];
 extern s32 D_8076AF20; // Unsure on type
 extern s32 D_8076B320; // Unsure on type
+
+extern s8 D_global_asm_807F059C[];
 extern u8 *D_807F05A4;
 extern Struct807F05A8 D_807F05A8[][2];
 extern s32 D_807F0984;
-extern s8 D_global_asm_80744460;
-extern void *D_global_asm_80744470[];
-extern UnkMQStruct D_global_asm_807659E8;
-extern Struct80767CE8 D_global_asm_80767CE8[];
-extern s8 D_global_asm_807F059C[];
+
+void func_global_asm_8060FFF0(void) {
+    D_global_asm_807F0570[0] = &D_global_asm_807432D0;
+    D_global_asm_807F0588[0] = &D_global_asm_80760C60;
+    D_global_asm_807F0570[1] = &D_global_asm_80741F40;
+    D_global_asm_807F0588[1] = &D_global_asm_80760840;
+    D_global_asm_807F0570[2] = &D_global_asm_80741F40;
+    D_global_asm_807F0588[2] = &D_global_asm_80760840;
+    D_global_asm_807F0570[3] = &D_global_asm_80741F40;
+    D_global_asm_807F0588[3] = &D_global_asm_80760840;
+}
 
 void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, u8 arg5) {
     s32 temp_v0;
@@ -110,8 +115,6 @@ void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, 
         osSendMesg(&D_global_asm_80767A40, temp_s0, 1);
     }
 }
-
-extern s8 D_global_asm_80746834;
 
 void func_global_asm_80610268(s32 arg0) {
     u32 sp34;
