@@ -643,44 +643,44 @@ void func_jetpac_8002A6C0(JetpacStruct *arg0) {
     arg0->unk48.unk4 = &D_jetpac_8002E8A8;
 }
 
-// TODO: Close...ish
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_8002A758.s")
-
-/*
-void func_jetpac_8002A758(JetpacStruct *arg0) {
-    s32 temp_v0_2;
-
-    switch (arg0->unk14) {
-        case 3:
-            arg0->unkC += 0.005;
-            temp_v0_2 = func_jetpac_80028CF8(
-                        arg0->unk1C + (arg0->unk0 + arg0->unk8),
-                        arg0->unk20 + (arg0->unk4 + arg0->unkC),
-                        arg0->unk24 + (arg0->unk0 + arg0->unk8),
-                        arg0->unk28 + (arg0->unk4 + arg0->unkC), 1);
-            if (temp_v0_2 >= 0) {
-                func_jetpac_800294EC(arg0, temp_v0_2);
-                if (arg0->unkC > 0.0f && arg0->unkC < 0.0f) {
-                    func_jetpac_8002A67C(arg0);
-                }
+void func_jetpac_8002A758(JetpacStruct* arg0) {
+    f32 newUnkC;
+    f32 oldUnkC;
+    s32 returnValue;
+    switch (arg0->unk0.unk14) {
+    case 3:
+        arg0->unk0.unkC += 0.005;
+        oldUnkC = arg0->unk0.unkC;
+        returnValue = func_jetpac_80028CF8(
+            arg0->unk0.unk1C + arg0->unk0.unk0 + arg0->unk0.unk8,
+            arg0->unk0.unk20 + arg0->unk0.unk4 + arg0->unk0.unkC,
+            arg0->unk0.unk24 + arg0->unk0.unk0 + arg0->unk0.unk8,
+            arg0->unk0.unk28 + arg0->unk0.unk4 + arg0->unk0.unkC,
+            1);
+        if (returnValue >= 0) {
+            func_jetpac_800294EC(arg0, returnValue);
+            newUnkC = arg0->unk0.unkC;
+            if ((oldUnkC > 0.f) && (newUnkC < 0.f)) {
+                func_jetpac_8002A67C(arg0);
             }
-            if (!func_jetpac_80029064(arg0)) {
-                if ((arg0->unk4 + arg0->unkC) < 24.0f) {
-                    arg0->unkC = -arg0->unkC;
-                }
-                arg0->unk4 += arg0->unkC;
-                arg0->unk0 += arg0->unk8;
+        }
+        if (func_jetpac_80029064(arg0) == 0) {
+            newUnkC = arg0->unk0.unkC;
+            if (arg0->unk0.unk4 + arg0->unk0.unkC < 24.0f) {
+                arg0->unk0.unkC = -arg0->unk0.unkC;
             }
-            break;
-        case 4:
-            arg0->unk2C++;
-            if (arg0->unk2C >= 0xF) {
-                arg0->unk14 = 0;
-            }
-            break;
+            arg0->unk0.unk4 = arg0->unk0.unk4 + arg0->unk0.unkC;
+            arg0->unk0.unk0 += arg0->unk0.unk8;
+        }
+        break;
+    case 4:
+        arg0->unk0.unk2C++;
+        if (arg0->unk0.unk2C >= 0xF) {
+            arg0->unk0.unk14 = 0;
+        }
+        break;
     }
 }
-*/
 
 void func_jetpac_8002A8F0(struct_jetpac_80029640 *arg0) {
     arg0->unk28 = 0xE;
