@@ -462,77 +462,71 @@ void func_jetpac_80029E0C(struct_jetpac_80029640 *arg0) {
     arg0->unk4C = &D_jetpac_8002E878;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_4FC0/func_jetpac_80029F7C.s")
-
-/*
-void func_jetpac_80029F7C(struct_jetpac_8002998C *arg0) {
-    Competitor *temp_v0;
-
-    switch (arg0->unk14) {
-        case 3:
-            if (arg0->unk2C == 0) {
-                if (func_jetpac_80028CF8(
-                    arg0->unk1C + arg0->unk0 + arg0->unk8,
-                    arg0->unk20 + arg0->unk4 + arg0->unkC,
-                    arg0->unk24 + arg0->unk0 + arg0->unk8,
-                    arg0->unk28 + arg0->unk4 + arg0->unkC, 1) >= 0) {
-                    func_jetpac_800291AC(arg0);
-                } else {
-                    arg0->unk40--;
-                }
-                if (arg0->unk40 == 0) {
-                    func_jetpac_800291AC(arg0);
-                }
+void func_jetpac_80029F7C(JetpacStruct* arg0) {
+    switch (arg0->unk0.unk14) {
+    case 3:
+        if (arg0->unk0.unk2C == 0) {
+            if (func_jetpac_80028CF8(
+                arg0->unk0.unk1C + arg0->unk0.unk0 + arg0->unk0.unk8,
+                arg0->unk0.unk20 + arg0->unk0.unk4 + arg0->unk0.unkC,
+                arg0->unk0.unk24 + arg0->unk0.unk0 + arg0->unk0.unk8,
+                arg0->unk0.unk28 + arg0->unk0.unk4 + arg0->unk0.unkC, 1) >= 0) {
+                func_jetpac_800291AC(arg0);
+            } else {
+                arg0->unk0.unk40--;
             }
-            if ((D_jetpac_8002BA6C) && (arg0->unk4 < 32.0f)) {
+            if (arg0->unk0.unk40 == 0) {
                 func_jetpac_800291AC(arg0);
             }
-            if (arg0->unk14 == 3) {
-                func_jetpac_80029064(arg0);
-            }
-            if (arg0->unk14 == 4) {
-                temp_v0 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-                temp_v0->current_score += arg0->unk44;
-                break;
-            }
-            if (arg0->unk2C) {
-                arg0->unk2C--;
-                if (D_jetpac_8002BA6C) {
-                    arg0->unkC = -0.8f;
-                } else {
-                    arg0->unkC = 0.8f;
-                }
-                if (arg0->unk2C == 0) {
-                    if (arg0->unk18 != 0) {
-                        arg0->unk8 = -1.6f;
-                    } else {
-                        arg0->unk8 = 1.6f;
-                    }
-                    arg0->unk10_u8[0] = 0xFF;
-                    arg0->unk10_u8[1] = 0xFF;
-                    arg0->unk10_u8[2] = 0xFF;
-                }
-            }
-            if ((arg0->unk2C == 0) && (D_jetpac_8002EC30.unk790 & 2)) {
-                if (func_jetpac_800273C8(arg0) < (D_jetpac_8002F054 + D_jetpac_8002F078)) {
-                    arg0->unkC = 0.8f;
-                } else {
-                    arg0->unkC = -0.8f;
-                }
-            }
-            arg0->unk0 += arg0->unk8;
-            arg0->unk4 += arg0->unkC;
+        }
+        else if ((D_jetpac_8002BA6C != 0) && (arg0->unk0.unk4 < 32.0f)) {
+            func_jetpac_800291AC(arg0);
+        }
+
+        if (arg0->unk0.unk14 == 3) {
+            func_jetpac_80029064(arg0);
+        }
+        if (arg0->unk0.unk14 == 4) {
+            Competitor* competitor = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+            competitor->current_score += arg0->unk0.unk44;
             break;
-        case 4:
-            arg0->unk2C++;
-            if (arg0->unk2C >= 0xF) {
-                arg0->unk14 = 0;
+        }
+        if (arg0->unk0.unk2C != 0) {
+            arg0->unk0.unk2C--;
+            if (D_jetpac_8002BA6C != 0) {
+                arg0->unk0.unkC = -0.8f;
+            } else {
+                arg0->unk0.unkC = 0.8f;
             }
-            break;
+            if (arg0->unk0.unk2C == 0) {
+                if (arg0->unk0.unk18 != 0) {
+                    arg0->unk0.unk8 = -1.6f;
+                } else {
+                    arg0->unk0.unk8 = 1.6f;
+                }
+                arg0->unk0.unk10 = 0xFF;
+                arg0->unk0.unk11 = 0xFF;
+                arg0->unk0.unk12 = 0xFF;
+            }
+        }
+        if ((arg0->unk0.unk2C == 0) && (D_jetpac_8002EC30.unk790 & 2)) {
+            if (func_jetpac_800273C8(arg0) < (D_jetpac_8002F054 + D_jetpac_8002F078)) {
+                arg0->unk0.unkC = 0.8f;
+            } else {
+                arg0->unk0.unkC = -0.8f;
+            }
+        }
+        arg0->unk0.unk0 += arg0->unk0.unk8;
+        arg0->unk0.unk4 += arg0->unk0.unkC;
+        break;
+    case 4:
+        arg0->unk0.unk2C++;
+        if (arg0->unk0.unk2C >= 0xF) {
+            arg0->unk0.unk14 = 0;
+        }
+        break;
     }
 }
-*/
 
 void func_jetpac_8002A254(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_8002A530;

@@ -2393,8 +2393,9 @@ typedef struct JetpacStructSub0 {
     s32 unk30;
     s32 unk34;
     s32 unk38;
-    u8 pad1[0x44 - 0x3C];
-    s32   unk44;
+    u8 pad1[0x40 - 0x3C];
+    s32 unk40;
+    s32 unk44;
 } JetpacStructSub0;
 
 typedef struct JetpacStructSub1 {
