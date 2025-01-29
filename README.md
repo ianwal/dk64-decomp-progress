@@ -2,17 +2,17 @@
 
 <img src="./progress/progress_total.svg">
 
-- <img src="./progress/progress_dk64_boot.svg"><img src="./progress/data_percent_dk64_boot.svg"><img src="./progress/rodata_percent_dk64_boot.svg">
-- <img src="./progress/progress_global_asm.svg"><img src="./progress/data_percent_global_asm.svg"><img src="./progress/rodata_percent_global_asm.svg">
-- <img src="./progress/progress_arcade.svg"><img src="./progress/data_percent_arcade.svg"><img src="./progress/rodata_percent_arcade.svg">
-- <img src="./progress/progress_jetpac.svg"><img src="./progress/data_percent_jetpac.svg"><img src="./progress/rodata_percent_jetpac.svg">
-- <img src="./progress/progress_bonus.svg"><img src="./progress/data_percent_bonus.svg"><img src="./progress/rodata_percent_bonus.svg">
-- <img src="./progress/progress_boss.svg"><img src="./progress/data_percent_boss.svg"><img src="./progress/rodata_percent_boss.svg">
-- <img src="./progress/progress_menu.svg"><img src="./progress/data_percent_menu.svg"><img src="./progress/rodata_percent_menu.svg">
-- <img src="./progress/progress_minecart.svg"><img src="./progress/data_percent_minecart.svg"><img src="./progress/rodata_percent_minecart.svg">
-- <img src="./progress/progress_multiplayer.svg"><img src="./progress/data_percent_multiplayer.svg"><img src="./progress/rodata_percent_multiplayer.svg">
-- <img src="./progress/progress_race.svg"><img src="./progress/data_percent_race.svg"><img src="./progress/rodata_percent_race.svg">
-- <img src="./progress/progress_critter.svg"><img src="./progress/data_percent_critter.svg"><img src="./progress/rodata_percent_critter.svg">
+- <img src="./progress/progress_dk64_boot.svg"> <img src="./progress/data_percent_dk64_boot.svg"> <img src="./progress/rodata_percent_dk64_boot.svg">
+- <img src="./progress/progress_global_asm.svg"> <img src="./progress/data_percent_global_asm.svg"> <img src="./progress/rodata_percent_global_asm.svg">
+- <img src="./progress/progress_arcade.svg"> <img src="./progress/data_percent_arcade.svg"> <img src="./progress/rodata_percent_arcade.svg">
+- <img src="./progress/progress_jetpac.svg"> <img src="./progress/data_percent_jetpac.svg"> <img src="./progress/rodata_percent_jetpac.svg">
+- <img src="./progress/progress_bonus.svg"> <img src="./progress/data_percent_bonus.svg"> <img src="./progress/rodata_percent_bonus.svg">
+- <img src="./progress/progress_boss.svg"> <img src="./progress/data_percent_boss.svg"> <img src="./progress/rodata_percent_boss.svg">
+- <img src="./progress/progress_menu.svg"> <img src="./progress/data_percent_menu.svg"> <img src="./progress/rodata_percent_menu.svg">
+- <img src="./progress/progress_minecart.svg"> <img src="./progress/data_percent_minecart.svg"> <img src="./progress/rodata_percent_minecart.svg">
+- <img src="./progress/progress_multiplayer.svg"> <img src="./progress/data_percent_multiplayer.svg"> <img src="./progress/rodata_percent_multiplayer.svg">
+- <img src="./progress/progress_race.svg"> <img src="./progress/data_percent_race.svg"> <img src="./progress/rodata_percent_race.svg">
+- <img src="./progress/progress_critter.svg"> <img src="./progress/data_percent_critter.svg"> <img src="./progress/rodata_percent_critter.svg">
 
 ## Setup
 
