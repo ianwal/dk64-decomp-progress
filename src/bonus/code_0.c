@@ -1,7 +1,39 @@
 #include <ultra64.h>
 #include "functions.h"
 
+extern s16 D_global_asm_80750AC4;
+extern s16 D_global_asm_8076AEF2;
 extern void *D_global_asm_8076D1F8;
+extern u8 D_global_asm_807FBDC4;
+
+// .data
+static s32 D_bonus_8002D860[17] = {
+    0x0E,
+    0x0F,
+    0x11,
+    0x10,
+    0x0D,
+    0x12,
+    0x13,
+    0x15,
+    0x16,
+    0x17,
+    0x18,
+    0x19,
+    0x1A,
+    0x1B,
+    0x1C,
+    0x1D,
+    0x1E,
+};
+
+typedef struct {
+    u16 unk0;
+    s16 unk2;
+    s16 unk4;
+    u8 unk6[0x9 - 0x6];
+    u8 unk9;
+} A178_80024158;
 
 typedef struct {
     u8 unk0;
@@ -29,6 +61,8 @@ typedef struct {
 
 Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void *, s32, void *);
 void func_global_asm_806A2A10(s32, s32, s32);
+void func_global_asm_806C8E58(s16 arg0);
+u8 func_global_asm_806FDB8C(s32, s8 *, s32, f32, f32, f32);
 
 Gfx *func_bonus_80024000(Gfx *dl, Actor *arg1) {
     A178_80024000 *a178;
@@ -52,21 +86,6 @@ void func_bonus_800240F0(void) {
     func_global_asm_8072707C(4, 0x40, 0);
     func_global_asm_8072707C(5, 0x40, 0);
 }
-
-void func_global_asm_806C8E58(s16 arg0);
-u8 func_global_asm_806FDB8C(s32, s8 *, s32, f32, f32, f32);
-extern s32 D_bonus_8002D860[17];
-extern s16 D_global_asm_80750AC4;
-extern s16 D_global_asm_8076AEF2;
-extern u8 D_global_asm_807FBDC4;
-
-typedef struct {
-    u16 unk0;
-    s16 unk2;
-    s16 unk4;
-    u8 unk6[0x9 - 0x6];
-    u8 unk9;
-} A178_80024158;
 
 void func_bonus_80024158(void) {
     s16 i;

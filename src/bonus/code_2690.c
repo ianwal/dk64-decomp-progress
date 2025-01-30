@@ -3,10 +3,63 @@
 #include "sprites.h"
 
 // TODO: Is there a file split somewhere in here? Rodata messes up around D_bonus_8002DDD4
-//rodata
+// .rodata
 extern const f32 D_bonus_8002DD20; // = 3.2f;
 extern const f32 D_bonus_8002DD28; // = 385.0f;
 extern const f32 D_bonus_8002DDEC; // = 0.8f;
+
+// .data
+static s16 D_bonus_8002D8C0[] = {
+    0x01B3,
+    0x01B4,
+    0x01B5,
+    0x0000,
+    0x0004,
+    0x0001,
+    0x0006,
+    0x0009,
+    0x000C,
+    0x00D5,
+};
+
+static s16 D_bonus_8002D8D4[] = {
+    0x0336,
+    0x0339,
+    0x0342,
+    0x033F,
+    0x033C,
+    0xFFFF,
+};
+
+static s16 D_bonus_8002D8E0[] = {
+    0x0338,
+    0x033B,
+    0x0344,
+    0x0341,
+    0x033E,
+    0xFFFF,
+};
+
+static s16 D_bonus_8002D8EC[] = {
+    0x022C,
+    0x029B,
+    0x00B9,
+    0x00C2,
+};
+
+static s8 D_bonus_8002D8F4 = 0x32;
+
+static s16 D_bonus_8002D8F8 = 0;
+
+static s16 D_bonus_8002D8FC = 0;
+
+static s16 D_bonus_8002D900[] = {0, 0};
+
+static s8 D_bonus_8002D904 = 0;
+
+static s32 D_bonus_8002D908 = 0; // Padding, unused
+
+static f32 D_bonus_8002D90C = 0.0f;
 
 typedef struct {
     u8 unk0[0x1E - 0];
@@ -604,7 +657,6 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
 // https://decomp.me/scratch/IsDEU
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80028E3C.s")
 
-extern s16 D_bonus_8002D8C0[];
 
 extern f64 D_bonus_8002DD98;
 extern f32 D_bonus_8002DDA0;
@@ -790,7 +842,6 @@ Gfx *func_bonus_80029B9C(Gfx *dl, Actor *arg1) {
 
 /*
 extern s16 D_bonus_8002D8C8[];
-extern s16 D_bonus_8002D8D4[];
 extern f32 D_bonus_8002DDB8;
 
 void func_bonus_80029E54(Actor *arg0) {
@@ -845,16 +896,11 @@ void func_bonus_80029E54(Actor *arg0) {
 }
 */
 
-extern s16 D_bonus_8002D8D4[];
-extern s16 D_bonus_8002D8E0[];
-
 // rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002A010.s")
 
 // rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002A398.s")
-
-extern s16 D_bonus_8002D900;
 
 typedef struct {
     s32 unk0;
@@ -908,7 +954,7 @@ void func_bonus_8002AAA4(void) {
     if (sp54 == 0x239 || sp54 == 0x23B || (sp54 == 0x238 && sp50 != NULL && sp50->unk4 > 48.0f)) {
         if (D_global_asm_807FBB85 == 1) {
             playActorAnimation(current_actor_pointer, 0x23C);
-            aaD->unk6 = ((func_global_asm_806119A0() & 7) + 6) * D_bonus_8002D900;
+            aaD->unk6 = D_bonus_8002D900[0] * ((func_global_asm_806119A0() & 7) + 6);
         }
     }
     if (sp54 == 0x23A) {
