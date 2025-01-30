@@ -55,7 +55,7 @@ void func_bonus_800240F0(void) {
 
 void func_global_asm_806C8E58(s16 arg0);
 u8 func_global_asm_806FDB8C(s32, s8 *, s32, f32, f32, f32);
-extern s32 D_bonus_8002D860[4];
+extern s32 D_bonus_8002D860[17];
 extern s16 D_global_asm_80750AC4;
 extern s16 D_global_asm_8076AEF2;
 extern u8 D_global_asm_807FBDC4;

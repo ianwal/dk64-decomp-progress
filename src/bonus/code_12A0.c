@@ -33,6 +33,8 @@ const u32 D_bonus_8002DCA8[] = {
     0x00040000,
 };
 
+// .data
+
 Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *);
 int func_global_asm_80717404(); // TODO: Signature
 

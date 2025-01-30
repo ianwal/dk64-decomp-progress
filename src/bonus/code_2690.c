@@ -790,7 +790,7 @@ Gfx *func_bonus_80029B9C(Gfx *dl, Actor *arg1) {
 
 /*
 extern s16 D_bonus_8002D8C8[];
-extern ? D_bonus_8002D8D4;
+extern s16 D_bonus_8002D8D4[];
 extern f32 D_bonus_8002DDB8;
 
 void func_bonus_80029E54(Actor *arg0) {
