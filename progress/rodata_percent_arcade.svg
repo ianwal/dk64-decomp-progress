@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" width="226" height="20">
+<svg xmlns="http://www.w3.org/2000/svg" width="165" height="20">
     <linearGradient id="b" x2="0" y2="100%">
         <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
         <stop offset="1" stop-opacity=".1"/>
     </linearGradient>
     <mask id="anybadge_20">
-        <rect width="226" height="20" rx="3" fill="#fff"/>
+        <rect width="165" height="20" rx="3" fill="#fff"/>
     </mask>
     <g mask="url(#anybadge_20)">
         <path fill="#555" d="M0 0h54v20H0z"/>
-        <path fill="#00c000" d="M54 0h172v20H54z"/>
-        <path fill="url(#b)" d="M0 0h226v20H0z"/>
+        <path fill="#00c000" d="M54 0h111v20H54z"/>
+        <path fill="url(#b)" d="M0 0h165v20H0z"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
         <text x="28.0" y="15" fill="#010101" fill-opacity=".3">.rodata</text>
         <text x="27.0" y="14">.rodata</text>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="141.0" y="15" fill="#010101" fill-opacity=".3">960/960 bytes - 100.0000%</text>
-        <text x="140.0" y="14">960/960 bytes - 100.0000%</text>
+        <text x="110.5" y="15" fill="#010101" fill-opacity=".3">101% | 960 bytes</text>
+        <text x="109.5" y="14">101% | 960 bytes</text>
     </g>
 </svg>

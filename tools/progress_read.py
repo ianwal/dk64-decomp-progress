@@ -32,12 +32,33 @@ def RGB_to_hex(RGB):
     return "#"+"".join(["0{0:x}".format(v) if v < 16 else
                         "{0:x}".format(v) for v in RGB])
 
+def is_integer_num(n):
+    if isinstance(n, int):
+        return True
+    if isinstance(n, float):
+        return n.is_integer()
+    return False
+
+def makeUnitLabel(numerator, denominator, units):
+    percent = ((numerator/denominator) * 100)
+    if is_integer_num(percent):
+        if percent >= 100:
+            percent = 101
+        percentStr = f'{int(percent)}%'
+    else:
+        percentStr = ("%3.4f%%" % (percent))
+    if numerator == denominator:
+        unitStr = f"{numerator} {units}"
+    else:
+        unitStr = f"{numerator}/{denominator} {units}"
+    return f'{percentStr} | {unitStr}'
+
 def writeDataBadges(overlay, type, migratedBytes, totalBytes):
     percent = ((migratedBytes/totalBytes) * 100)
     green = min(255, round(min(1, (percent / 100) * 2) * 192))
     red = min(255, round(min(1, ((100 - percent) / 100) * 2) * 192))
     color = RGB_to_hex([red, green, 0])
-    badge = anybadge.Badge('.' + type, str(migratedBytes) + "/" + str(totalBytes) + " bytes - " + ("%3.4f%%" % (percent)), default_color=color)
+    badge = anybadge.Badge('.' + type, makeUnitLabel(migratedBytes, totalBytes, 'bytes'), default_color=color)
     badge.write_badge('progress/' + type + '_percent_' + overlay + '.svg',overwrite=True)
 
 def computeDataOverlays():
@@ -110,9 +131,9 @@ def main(csv_name, version, overlay):
             red = min(255, round(min(1, ((100 - percent) / 100) * 2) * 192))
             color = RGB_to_hex([red, green, 0])
             if overlay == 'total':
-                badge = anybadge.Badge("Donkey Kong 64 (US)", str(total_func - incomplete_func) + "/" + str(total_func) + " functions - " + ("%3.4f%%" % (percent)), default_color=color)
+                badge = anybadge.Badge("Donkey Kong 64 (US)", makeUnitLabel(total_func - incomplete_func, total_func, 'funcs'), default_color=color)
             else:
-                badge = anybadge.Badge(overlay, str(total_func - incomplete_func) + "/" + str(total_func) + " functions - " + ("%3.4f%%" % (percent)), default_color=color)
+                badge = anybadge.Badge(overlay, makeUnitLabel(total_func - incomplete_func, total_func, 'funcs'), default_color=color)
             badge.write_badge('progress/progress_' + overlay + '.svg',overwrite=True)
 
 if __name__ == '__main__':
