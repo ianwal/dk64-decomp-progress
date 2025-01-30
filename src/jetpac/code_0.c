@@ -204,24 +204,22 @@ void func_jetpac_800248A0(Gfx **arg0) {
     func_jetpac_80025904(arg0);
 }
 
-// doable
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_800248E8.s")
-
-/*
-void func_jetpac_800248E8(Gfx **arg0) {
-    Competitor *player;
-    JetpacPickupStruct *rocket;
-
-    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    if (player->current_score >= 1000000) {
-        player->current_score -= 1000000;
+void func_jetpac_800248E8(Gfx** arg0) {
+    Competitor* competitor = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    JetpacPickupStruct* rocket_segment;
+    if (competitor->current_score >= 1000000) {
+        competitor->current_score -= 1000000;
     }
+
     func_jetpac_80024408(arg0);
+
+    if (1) {}
+
     func_jetpac_80026D48();
     func_jetpac_80026CEC();
-    player->next_bonus_item.primary_info.unk44(&player->next_bonus_item);
-    rocket = &player->rocket_segments[player->unk10];
-    rocket->primary_info.unk44(rocket);
+    competitor->next_bonus_item.primary_info.unk44(&competitor->next_bonus_item);
+    rocket_segment = &competitor->rocket_segments[competitor->unk10];
+    rocket_segment->primary_info.unk44(rocket_segment);
     func_jetpac_8002ABDC();
     func_jetpac_800255D4(arg0);
     func_jetpac_80028E88();
@@ -231,7 +229,7 @@ void func_jetpac_800248E8(Gfx **arg0) {
     func_jetpac_800285DC();
     func_jetpac_80026CA4();
     func_jetpac_80025904(arg0);
-    if (func_jetpac_80026FE0()) {
+    if (func_jetpac_80026FE0() != 0) {
         D_jetpac_8002EC30.unk44C++;
     }
     if (D_jetpac_8002EC30.unk8 & 0x1000) {
@@ -239,7 +237,6 @@ void func_jetpac_800248E8(Gfx **arg0) {
         D_jetpac_8002EC30.unkC = 1;
     }
 }
-*/
 
 void func_jetpac_80024A4C(void) {
     func_global_asm_8060C648(0x11, 0, 0, 0, D_jetpac_8002EC48);
