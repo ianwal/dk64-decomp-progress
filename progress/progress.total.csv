@@ -3743,7 +3743,7 @@ us,.multiplayer,func_multiplayer_800268DC,176,yes
 us,.multiplayer,func_multiplayer_80025794,948,no
 us,.multiplayer,func_multiplayer_80025F84,120,yes
 us,.multiplayer,func_multiplayer_800268C0,28,yes
-us,.multiplayer,func_multiplayer_80025264,276,no
+us,.multiplayer,func_multiplayer_80025264,276,yes
 version,section,function,length,matching
 us,.minecart,func_minecart_80024000,220,yes
 us,.minecart,func_minecart_80024914,492,yes
