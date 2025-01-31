@@ -14,9 +14,10 @@ typedef struct {
     s16 unk4;
 } AAD_critter_80029118;
 
-extern s8 D_critter_80029FA0;
-extern u16 D_critter_80029FA4;
-extern s8 D_critter_80029FA8;
+// .data
+static s8 D_critter_80029FA0 = 0;
+static u16 D_critter_80029FA4 = 0;
+static s8 D_critter_80029FA8 = 0;
 
 extern u16 D_global_asm_807FCC44;
 
