@@ -590,41 +590,38 @@ void func_multiplayer_80025654(MultiplayerStruct4 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025794.s")
-
-/*
-Progress..
 void func_multiplayer_80025794(void) {
-    s32 i, j, k;
-    f32 temp_f20;
-    f32 temp_f20_2;
-    f32 temp_f22;
-    f32 temp_f26;
-    f32 temp_f26_2;
-    f32 temp_f28;
-    f32 temp_f28_2;
-    f32 var_f22;
-    f32 var_f24;
+    
+    Struct80026FA4 *temp_v0; // 84
+    MultiplayerStruct3 *temp_s0;
+    s32 i; // 7C
+    s32 var_s7;
+    MultiplayerStruct3 *temp_s5;
+    s32 temp_s3;
     s16 temp_s4;
     s16 var_s0;
-    s32 temp_s3;
-    s32 temp_t8;
-    s32 var_s7;
-    MultiplayerStruct3 *temp_s0;
-    Struct80026FA4 *temp_v0;
-    s64 temp_double;
 
     temp_v0 = func_multiplayer_80025378();
     temp_s0 = temp_v0->unk8;
     func_multiplayer_800243C8();
-    if ((gameIsInAdventureMode() == 0) || (global_properties_bitfield & 2)) {
+    if ((!gameIsInAdventureMode()) || (global_properties_bitfield & 2)) {
         return;
     }
+    temp_s5 = temp_s0;
     for (i = 0; i < temp_v0->unk4; i++) {
-        if (temp_s0->unk8) {
-            temp_s0->unk8--;
+        s32 j, k; // nis
+        f32 temp_f26; // nis
+        f32 temp_f28; // nis
+        f32 mult;
+        f32 temp_f20;
+        f32 var_f24;
+        f32 var_f4;
+        f32 var_f20;
+
+        if (temp_s5->unk8) {
+            temp_s5->unk8--;
         } else {
-            if (temp_s0->unk6 == 0) {
+            if (!temp_s5->unk6) {
                 var_s7 = 1;
             } else {
                 var_s7 = (((rand() >> 0xF) % 32767) % 3) + 1;
@@ -632,34 +629,35 @@ void func_multiplayer_80025794(void) {
             for (j = 0; j < var_s7; j++) {
                 temp_s3 = (((rand() >> 0xF) % 32767) % 3) + 1;
                 temp_s4 = func_multiplayer_800253C8();
-                temp_f22 = ((func_global_asm_806119FC() * 0.8) + 0.2) * temp_s0->unk6;
-                temp_t8 = (rand() >> 0xF) % 4096;
-                temp_f20 = temp_s0->unk2 - 0x17;
-                temp_f26 = temp_s0->unk0;
-                temp_f28 = temp_s0->unk4;
-                temp_f26_2 = temp_f26 + (temp_f22 * func_global_asm_80612794(temp_t8));
-                temp_f28_2 = temp_f28 + (temp_f22 * func_global_asm_80612790(temp_t8));
-                if (temp_s3 >= 2) {
-                    var_f22 = 15.0f;
+                mult = ((func_global_asm_806119FC() * 0.8) + 0.2) * temp_s5->unk6;
+                var_s0 = (rand() >> 0xF) % 4096;
+                temp_f26 = temp_s5->unk0;
+                temp_f20 = temp_s5->unk2 - 0x17;
+                temp_f28 = temp_s5->unk4;
+                temp_f26 += (mult * func_global_asm_80612794(var_s0));
+                temp_f28 += (mult * func_global_asm_80612790(var_s0));
+                if (temp_s3 > 1) {
                     var_s0 = (rand() >> 0xF) % 4096;
-                    var_f24 = 4096.0f / (f32) temp_s3;
+                    mult = 15.0f;
+                    var_f24 = 4096.0f / temp_s3;
                 } else {
-                    var_f22 = 0.0f;
+                    mult = 0.0f;
                     var_f24 = 0.0f;
                     var_s0 = 0;
                 }
                 for (k = 0; k < temp_s3; k++) {
-                    temp_f20_2 = (func_global_asm_80612794(var_s0) * var_f22) + temp_f26_2;
-                    func_global_asm_806F5F2C(0x7A, temp_s4, temp_f20_2, temp_f20, ((func_global_asm_80612790(var_s0) * var_f22) + temp_f28_2));
-                    var_s0 = (s32) ((f32) var_s0 + var_f24) & 0xFFF;
+                    var_f20 = (func_global_asm_80612794(var_s0) * mult) + temp_f26;
+                    var_f4 = (func_global_asm_80612790(var_s0) * mult) + temp_f28;
+                    func_global_asm_806F5F2C(0x7A, temp_s4, var_f20, temp_f20, var_f4);
+                    var_s0 += var_f24;
+                    var_s0 &= 0xFFF;
                 }
             }
-            temp_s0->unk8 = func_multiplayer_800253C8();
+            temp_s5->unk8 = func_multiplayer_800253C8();
         }
-        temp_s0++;
+        temp_s5++;
     }
 }
-*/
 
 void func_multiplayer_80025B48(Struct80025B48 *arg0) {
     s32 var_a2;
@@ -892,6 +890,7 @@ void func_multiplayer_80026094(void) {
             func_global_asm_806F5FA0(0x212, 0xD4, 0x24E);
             func_global_asm_806F5FA0(0x28E, 0xD4, 0x247);
         }
+        
         aad->unk30 = malloc(0x40);
         guScale(aad->unk30, 0.5f, 0.5f, 1.0f);
         aad->unkC = D_global_asm_807552E4.unkC;
@@ -946,10 +945,10 @@ void func_multiplayer_80026094(void) {
                     func_global_asm_807149FC(-1);
                     func_global_asm_80714998(0U);
                     func_global_asm_80714944(temp_s1->unk8);
-                    if (i) {
-                        var_f2 = temp_s0->unk4 + 0xB;
+                    if (!i) {
+                        var_f2 = temp_s0->unk8 + 0xB;
                     } else {
-                        var_f2 = temp_s0->unk8 - 0xB;
+                        var_f2 = temp_s0->unk4 - 0xB;
                     }
                     aad->unk50[(cc_number_of_players * i) + j] = drawSpriteAtPosition(
                         temp_s1->unk0,
