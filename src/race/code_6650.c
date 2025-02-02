@@ -78,9 +78,35 @@ void func_race_8002D754(Actor *arg0);
 void func_race_8002DE78(void *, s32, void *, s32);
 s32 func_race_8002E8EC(void *arg0, void *arg1, s32 arg2);
 
-extern s32 D_race_8002FC70;
-extern s32 D_race_8002FCA0;
-extern s32 D_race_8002FCAC[];
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct8002FC70;
+
+// .data
+static Struct8002FC70 D_race_8002FC70[] = {
+    { -1000.0f, 0.7f },
+    { -100.0f,  1.1f },
+    { -70.0f,   1.1f },
+    { 90.0f,    1.1f },
+    { 80.0f,    1.1f },
+    { 150.0f,   2.0f },
+};
+
+static f32 D_race_8002FCA0[] = {
+    0.7f,
+    1.1f,
+    2.0f,
+};
+
+static s32 D_race_8002FCAC[] = {
+    0x00000003,
+    0x00000000,
+    0x00000001,
+    0x00000002,
+    0x00000000, // PADDING
+};
+
 
 extern s16 D_global_asm_80750AC8;
 
