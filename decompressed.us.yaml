@@ -595,7 +595,7 @@ segments:
       - [0x2196F00, c, code_3340]
       - [0x2198400, c, code_4840]
       - [0x2198CD0, c, code_5110]
-      - [0x21993B0, data, code_0]
+      - [0x21993B0, .data, code_0]
       - [0x2199B40, .data, code_3340]
       - [0x2199B60, .data, code_5110]
       - [0x2199B70, .rodata, code_0]

@@ -189,34 +189,385 @@ typedef struct {
 } Struct80025A3C;
 
 // .data
-extern Vtx D_critter_800297F0[];
-extern Vtx D_critter_80029830[];
-extern Vtx D_critter_80029870[];
-extern Vtx D_critter_800298D0[];
-extern Vtx D_critter_800298E0[];
-extern Vtx D_critter_80029940[];
-extern Vtx D_critter_80029980[];
-extern Vtx D_critter_80029A10[];
+static Vtx D_critter_800297F0[] = {
+    {{{ -28 , 28 , -20 }, 0x0000, { 1024, 1024 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ -28 , 28 , 20 }, 0x0000, { 1024, 0 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 0 , 20 }, 0x0000, { 0, 0 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 0 , -20 }, 0x0000, { 0, 1024 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+};
 
-extern Gfx D_critter_80029B18[];
-extern Gfx D_critter_80029B30[];
-extern Gfx D_critter_80029B78[];
-extern Gfx D_critter_80029B88[];
-extern Gfx D_critter_80029B40[];
-extern CritterController* D_critter_80029BA0;
-extern s32 D_critter_80029BA8;
+static Vtx D_critter_80029830[] = {
+    {{{ 0 , 0 , -20 }, 0x0000, { 0, 1024 }, { 0xA5, 0xA5, 0xA5, 0xFF }}},
+    {{{ 0 , 0 , 20 }, 0x0000, { 0, 0 }, { 0xA5, 0xA5, 0x78, 0xFF }}},
+    {{{ 28 , 28 , 20 }, 0x0000, { 1024, 0 }, { 0xA5, 0xA5, 0xA5, 0xFF }}},
+    {{{ 28 , 28 , -20 }, 0x0000, { 1024, 1024 }, { 0xA5, 0xA5, 0xA5, 0xFF }}},
+};
+
+static Vtx D_critter_80029870[] = {
+    {{{ 0 , 9 , 12 }, 0x0000, { 285, 493 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , -4 , 33 }, 0x0000, { -13, 305 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 13 , -6 , 12 }, 0x0000, { 286, 265 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ -13 , -6 , 12 }, 0x0000, { 286, 265 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , -21 , 13 }, 0x0000, { 268, 48 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , -13 , -40 }, 0x0000, { 1028, 160 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+};
+
+static Vtx D_critter_800298D0[] = {
+    {{{ 13 , -6 , 12 }, 0x0000, { 157, 105 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+};
+
+static Vtx D_critter_800298E0[] = {
+    {{{ 0 , -13 , -40 }, 0x0000, { 1024, 0 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 5 , 93 , -22 }, 0x0000, { 646, 1598 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 18 , 83 , 31 }, 0x0000, { -215, 1451 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ -18 , 83 , 31 }, 0x0000, { -215, 1451 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ -5 , 93 , -22 }, 0x0000, { 646, 1598 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ -13 , -6 , 12 }, 0x0000, { 157, 105 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+};
+
+static Vtx D_critter_80029940[] = {
+    {{{ 0 , -4 , 0 }, 0x0000, { 975, 436 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , -24 , -31 }, 0x0000, { 1512, 94 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 26 , -31 }, 0x0000, { 1512, 944 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 5 , 0 }, 0x0000, { 975, 589 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+};
+
+static Vtx D_critter_80029980[] = {
+    {{{ -9 , 1 , 10 }, 0x0000, { 335, 512 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , -26 , -14 }, 0x0000, { 756, 49 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , -21 , 10 }, 0x0000, { 332, 138 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 28 , -14 }, 0x0000, { 756, 975 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 5 , -27 }, 0x0000, { 975, 589 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 9 , 1 , 10 }, 0x0000, { 335, 512 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , -4 , -27 }, 0x0000, { 975, 436 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 23 , 10 }, 0x0000, { 332, 886 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 1 , 29 }, 0x0000, { 14, 512 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+};
+
+static Vtx D_critter_80029A10[] = {
+    {{{ -19 , 13 , 6 }, 0x0000, { 418, 222 }, { 0xFF, 0xFF, 0xFF, 0xFF }}},
+    {{{ 0 , 23 , -26 }, 0x0000, { 938, 376 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ -18 , 0 , -17 }, 0x0000, { 797, 16 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 29 , -11 }, 0x0000, { 691, 477 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ -23 , 0 , 0 }, 0x0000, { 505, 16 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 0 , 31 }, 0x0000, { -3, 16 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 26 , 11 }, 0x0000, { 331, 428 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 0 , 0 , -31 }, 0x0000, { 1024, 16 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 18 , 0 , -17 }, 0x0000, { 797, 16 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+    {{{ 19 , 13 , 6 }, 0x0000, { 418, 222 }, { 0xFF, 0xFF, 0xFF, 0xFF }}},
+    {{{ 23 , 0 , 0 }, 0x0000, { 505, 16 }, { 0xFE, 0xFE, 0xFE, 0xFF }}},
+};
+
+static Gfx D_critter_80029AC0[] = {
+    gsDPPipeSync(),
+    gsDPSetCycleType(G_CYC_1CYCLE),
+    gsDPSetRenderMode(G_RM_AA_ZB_TEX_EDGE, G_RM_AA_ZB_TEX_EDGE2),
+    gsDPSetCombineMode(G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM),
+    gsSPSetGeometryMode(G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH),
+    gsDPSetTextureLOD(G_TL_TILE),
+    gsSPTexture(0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON),
+    gsDPSetTextureDetail(G_TD_CLAMP),
+    gsDPSetTextureFilter(G_TF_BILERP),
+    gsDPSetTextureLUT(G_TT_NONE),
+    gsSPEndDisplayList(),
+};
+
+static Gfx D_critter_80029B18[] = {
+    gsSPDisplayList(D_critter_80029AC0),
+    gsSPClearGeometryMode(G_CULL_BOTH),
+    gsSPEndDisplayList(),
+};
+
+static Gfx D_critter_80029B30[] = {
+    gsSPDisplayList(D_critter_80029AC0),
+    gsSPEndDisplayList(),
+};
+
+static Gfx D_critter_80029B40[] = {
+    gsSP2Triangles(0, 1, 2, 0, 3, 1, 0, 0),
+    gsSP2Triangles(4, 1, 3, 0, 4, 2, 1, 0),
+    gsSP2Triangles(0, 2, 5, 0, 3, 0, 5, 0),
+    gsSP2Triangles(4, 3, 5, 0, 2, 4, 5, 0),
+    gsDPPipeSync(),
+    gsSPClearGeometryMode(G_CULL_BOTH),
+    gsSPEndDisplayList(),
+};
+
+static Gfx D_critter_80029B78[] = {
+    gsSPDisplayList(D_critter_80029AC0),
+    gsSPEndDisplayList(),
+};
+
+
+static Gfx D_critter_80029B88[] = {
+    gsSPDisplayList(D_critter_80029AC0),
+    gsSPSetGeometryMode(G_CULL_BACK),
+    gsSPEndDisplayList(),
+};
+
+static CritterController *D_critter_80029BA0 = NULL;
+
+static CritterStruct5 *D_critter_80029BA4 = NULL;
+
+static s32 D_critter_80029BA8 = 0;
+
+// TODO: Proper struct definition for this
+static s32 D_critter_80029BAC[] = {
+    0x000F00E1,
+    0x000E0028,
+    0x00000000,
+    0x00000037,
+    0x00000BD1,
+    0x00140000,
+    0x00140190,
+    0x00180028,
+    0x00000000,
+    0x0000003C,
+    0x00000E10,
+    0x00000000,
+    0x000F00E1,
+    0x0010001E,
+    0x00000000,
+    0x0000002D,
+    0x000007E9,
+    0x000C0000,
+    0x000E00C4,
+    0x000C0014,
+    0x00000000,
+    0x00000022,
+    0x00000484,
+    0x00080000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x000F00E1,
+    0x000C0028,
+    0x00000000,
+    0x00000037,
+    0x00000BD1,
+    0x000E0000,
+    0x00140190,
+    0x00180028,
+    0x00000000,
+    0x0000003C,
+    0x00000E10,
+    0x00000000,
+    0x000F00E1,
+    0x000E001E,
+    0x00000000,
+    0x0000002D,
+    0x000007E9,
+    0x000A0000,
+    0x000E00C4,
+    0x000C0014,
+    0x00000000,
+    0x00000022,
+    0x00000484,
+    0x00080000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00120144,
+    0x00100028,
+    0x00000000,
+    0x0000003A,
+    0x00000D24,
+    0x00140000,
+    0x00140190,
+    0x00180028,
+    0x00000000,
+    0x0000003C,
+    0x00000E10,
+    0x00000000,
+    0x00120144,
+    0x0012001E,
+    0x00000000,
+    0x00000030,
+    0x00000900,
+    0x000C0000,
+    0x000E00C4,
+    0x000C0014,
+    0x00000000,
+    0x00000022,
+    0x00000484,
+    0x00080000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x000F00E1,
+    0x00100028,
+    0x00000000,
+    0x00000037,
+    0x00000BD1,
+    0x00140000,
+    0x00140190,
+    0x00180028,
+    0x00000000,
+    0x0000003C,
+    0x00000E10,
+    0x00000000,
+    0x000F00E1,
+    0x0012001E,
+    0x00000000,
+    0x0000002D,
+    0x000007E9,
+    0x000C0000,
+    0x000E00C4,
+    0x000C0014,
+    0x00000000,
+    0x00000022,
+    0x00000484,
+    0x00080000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x001501B9,
+    0x00180028,
+    0x00000000,
+    0x0000003D,
+    0x00000E89,
+    0x00180000,
+    0x00140190,
+    0x00180028,
+    0x00000000,
+    0x0000003C,
+    0x00000E10,
+    0x00000000,
+    0x001501B9,
+    0x001C001E,
+    0x00000000,
+    0x00000033,
+    0x00000A29,
+    0x00120000,
+    0x000E00C4,
+    0x000C0014,
+    0x00000000,
+    0x00000022,
+    0x00000484,
+    0x00080000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x001501B9,
+    0x00180028,
+    0x00000000,
+    0x0000003D,
+    0x00000E89,
+    0x00180000,
+    0x00140190,
+    0x00180028,
+    0x00000000,
+    0x0000003C,
+    0x00000E10,
+    0x00000000,
+    0x001501B9,
+    0x001C001E,
+    0x00000000,
+    0x00000033,
+    0x00000A29,
+    0x00120000,
+    0x000E00C4,
+    0x000C0014,
+    0x00000000,
+    0x00000022,
+    0x00000484,
+    0x00080000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x001E0384,
+    0x001C0028,
+    0x00000000,
+    0x00000046,
+    0x00001324,
+    0x001E0000,
+    0x00140190,
+    0x00180028,
+    0x00000000,
+    0x0000003C,
+    0x00000E10,
+    0x00000000,
+    0x001E0384,
+    0x0020001E,
+    0x00000000,
+    0x0000003C,
+    0x00000E10,
+    0x00160000,
+    0x000E00C4,
+    0x000C0014,
+    0x00000000,
+    0x00000022,
+    0x00000484,
+    0x00080000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x000F00E1,
+    0x000C0028,
+    0x00000000,
+    0x00000037,
+    0x00000BD1,
+    0x000E0000,
+    0x00140190,
+    0x00180014,
+    0x00000000,
+    0x00000028,
+    0x00000640,
+    0xFFF60000,
+    0x000F00E1,
+    0x000E001E,
+    0x00000000,
+    0x0000002D,
+    0x000007E9,
+    0x000A0000,
+    0x000E00C4,
+    0x000C0014,
+    0x00000000,
+    0x00000022,
+    0x00000484,
+    0x00080000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+    0x00000000,
+};
 
 typedef struct {
     s16 temp[3];
 } D_80029F6C;
 
-extern D_80029F6C D_critter_80029F6C;
+static D_80029F6C D_critter_80029F6C = {{0x0077, 0x0078, 0x0079}};
 
 typedef struct {
     s16 temp[4];
 } D_80029F74;
 
-extern D_80029F74 D_critter_80029F74;
+static D_80029F74 D_critter_80029F74 = {{0x007C, 0x007D, 0x007E, 0x007F}};
+
+static f32 D_critter_80029F7C = 2.0f;
 
 extern SpriteData D_global_asm_8071FC40;
 extern u8 D_global_asm_80770DC9;
@@ -1008,6 +1359,7 @@ void func_critter_80026B78(CritterController *arg0) {
 // TODO: Pretty close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80026C9C.s")
 
+/*
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -1024,7 +1376,6 @@ typedef struct {
 
 extern Struct80029BAC D_critter_80029BAC[];
 
-/*
 void func_critter_80026C9C(CritterController *arg0) {
     CritterStruct5 *temp_t5;
     Struct80029BAC_inner *temp_v0;
