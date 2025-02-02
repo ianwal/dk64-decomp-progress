@@ -189,7 +189,7 @@ us,asm,func_global_asm_8061D898,156,yes
 us,asm,func_global_asm_80695B50,92,yes
 us,asm,func_global_asm_8061CF24,92,yes
 us,asm,func_global_asm_8070F570,92,yes
-us,asm,func_global_asm_807197B4,600,no
+us,asm,func_global_asm_807197B4,600,yes
 us,asm,_getRate,528,yes
 us,asm,func_global_asm_8068C2EC,12,yes
 us,asm,func_global_asm_8065F678,748,no

@@ -591,93 +591,84 @@ void func_global_asm_8071910C(otherSpriteControl *arg0, s32 arg1) {
     arg0->unk32C = 2;
 }
 
-// rodata
+// rodata, regalloc, float, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_807195D4.s")
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-} Struct80717D84_unk384_807195D4;
-
 /*
-void func_global_asm_807195D4(Struct80717D84 *arg0, s32 arg1) {
-    f32 temp;
+void func_global_asm_807195D4(otherSpriteControl *arg0, s32 arg1) {
+    f32 spB4;
+    f32 spB0;
+    f32 spAC;
     f32 sp6C[4][4];
     f32 sp2C[4][4];
 
-    if (arg0->unk384 == NULL) {
-        arg0->unk384 = malloc(8);
-        arg0->unk384_f32->unk0 = arg0->unk35C * 2;
-        arg0->unk384_f32->unk4 = 0.0f;
-        arg0->unk36D = 0;
+    if (arg0->unk384_807195D4 == NULL) {
+        arg0->unk384_807195D4 = malloc(sizeof(Struct80717D84_unk384_807195D4));
+        arg0->unk384_807195D4->unk0 = arg0->unk35C * 2;
+        arg0->unk384_807195D4->unk4 = 0.0f;
+        arg0->transparency4 = 0;
     }
-    if (arg0->unk36D >= 0xDD) {
-        arg0->unk36D = 0xFF;
+    if (arg0->transparency4 >= 0xDD) {
+        arg0->transparency4 = 0xFF;
     } else {
-        arg0->unk36D += 0x14;
+        arg0->transparency4 += 0x14;
     }
-    arg0->unk340 += (f32)(func_global_asm_80612D1C(arg0->unk384_f32->unk0 * 0.01745329238f) * 2.5);
-    arg0->unk344 += (f32)(3.5);
-    arg0->unk348 += (f32)(func_global_asm_80612D10(arg0->unk384_f32->unk0 * 0.01745329238f) * 2.5);
-    arg0->unk384_f32->unk0 += 8.0;
-    arg0->unk384_f32->unk4 += 7.3;
-    guScaleF(sp6C, arg0->unk360, arg0->unk364, 0.0f);
+    spB0 = func_global_asm_80612D1C(arg0->unk384_807195D4->unk0 * 0.01745329238f) * 2.5;
+    spAC = func_global_asm_80612D10(arg0->unk384_807195D4->unk0 * 0.01745329238f) * 2.5;
+    arg0->xPos += spB0;
+    arg0->yPos += 3.5;
+    arg0->zPos += spAC;
+    arg0->unk384_807195D4->unk0 += 8.0;
+    arg0->unk384_807195D4->unk4 += 7.3;
+    guScaleF(sp6C, arg0->xScale, arg0->yScale, 0.0f);
     guRotateF(sp2C, arg0->unk384->unk4, 0.0f, 0.0f, 1.0f);
     guMtxCatF(sp6C, sp2C, sp6C);
-    guMtxF2L(sp6C, arg0->unk128[D_global_asm_807444FC]);
+    guMtxF2L(sp6C, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
 */
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_807197B4.s")
-
-typedef struct {
-    s32 unk0;
-    f32 unk4;
-    f32 unk8;
-} Struct80717D84_unk384_807197B4;
-
-/*
-void func_global_asm_807197B4(Struct80717D84 *arg0, s32 arg1) {
+void func_global_asm_807197B4(otherSpriteControl *arg0, s32 arg1) {
     f32 sp78[4][4];
+    f32 sp3C[15];
+    f32 sp38;
     f32 sp34;
+    f32 sp30;
     f32 sp2C;
-    f32 temp_f0;
-    f64 temp_f10;
-    Struct80717D84_unk384_807197B4 *var_v1;
-    u8 temp_v0_2;
+    f32 sp28;
+    f32 temp;
 
-    if (arg0->unk384 == NULL) {
-        arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_807197B4));
-        var_v1 = arg0->unk384;
-        var_v1->unk0 = 0;
-        var_v1->unk4 = arg0->unk360;
-        var_v1->unk8 = arg0->unk364;
+    if (arg0->unk384_807197B4 == NULL) {
+        arg0->unk384_807197B4 = malloc(sizeof(Struct80717D84_unk384_807197B4));
+        arg0->unk384_807197B4->unk0 = 0;
+        arg0->unk384_807197B4->unk4 = arg0->xScale;
+        arg0->unk384_807197B4->unk8 = arg0->yScale;
     }
-    var_v1 = arg0->unk384;
-    var_v1->unk4 += 0.0015;
-    var_v1->unk8 += 0.0015;
-    arg0->unk340 -= func_global_asm_80612D1C(arg0->unk35C * 2) * 0.2;
-    arg0->unk344 += 0.119999999999999996;
-    arg0->unk348 -= func_global_asm_80612D10(arg0->unk35C * 2) * 0.2;
-    arg0->unk360 = var_v1->unk4;
-    arg0->unk364 = var_v1->unk8;
-    arg0->unk360 *= (1.0 + (func_global_asm_80612D1C(var_v1->unk0 * 0.17) * 0.15));
-    arg0->unk364 *= (1.0 + (func_global_asm_80612D1C(var_v1->unk0 * 0.2267) * 0.15));
-    var_v1->unk0++;
+    arg0->unk384_807197B4->unk4 += 0.0015;
+    arg0->unk384_807197B4->unk8 += 0.0015;
+    sp2C = func_global_asm_80612D1C(arg0->unk35C * 2) * 0.2;
+    sp30 = func_global_asm_80612D10(arg0->unk35C * 2) * 0.2;
+    arg0->xPos -= sp2C;
+    arg0->yPos += 0.119999999999999996;
+    arg0->zPos -= sp30;
+    arg0->xScale = arg0->unk384_807197B4->unk4;
+    arg0->yScale = arg0->unk384_807197B4->unk8;
+    sp34 = func_global_asm_80612D1C(arg0->unk384_807197B4->unk0 * 0.17);
+    sp38 = func_global_asm_80612D1C(arg0->unk384_807197B4->unk0 * 0.2267);
+    arg0->xScale *= (1.0 + (sp34 * 0.15));
+    arg0->yScale *= (1.0 + (sp38 * 0.15));
+    arg0->unk384_807197B4->unk0++;
     if ((arg0->unk354 - arg0->unk358) < 0xA) {
-        if (arg0->unk36D >= 0x16) {
-            arg0->unk36D -= 0x14;
+        if (arg0->transparency4 >= 0x16) {
+            arg0->transparency4 -= 0x14;
         } else {
-            arg0->unk36D = 0;
+            arg0->transparency4 = 0;
         }
     }
-    guScaleF(sp78, arg0->unk360, arg0->unk364, 0.0f);
-    guMtxF2L(sp78, arg0->unk128[D_global_asm_807444FC]);
+    guScaleF(sp78, arg0->xScale, arg0->yScale, 0.0f);
+    guMtxF2L(sp78, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
-*/
 
 void func_global_asm_80719A0C(Struct80717D84 *arg0, s8 *arg1) {
     f32 temp;
