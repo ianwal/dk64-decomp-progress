@@ -444,6 +444,111 @@ Gfx *func_multiplayer_800249D8(Gfx *dl, Actor *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80024CA4.s")
 
+typedef struct MultiplayerActor318AAD_Sub50 {
+    void *unk0[4];
+} MultiplayerActor318AAD_Sub50;
+
+typedef struct MultiplayerActor318AAD {
+    OSTime unk0;
+    u8 pad8[0xC - 0x8];
+    s32 unkC;
+    s32 unk10;
+    u8 pad14[0x20 - 0x14];
+    Struct80750948 *unk20[4];
+    Mtx *unk30;
+    s32 unk34;
+    u8 unk38;
+    u8 pad39[0x3C - 0x39];
+    s32 unk3C;
+    s16 unk40;
+    s16 unk42;
+    void *unk44;
+    void *unk48;
+    u8 pad4C[0x50 - 0x4C];
+    void *unk50[8];
+    u8 unk70;
+} MultiplayerActor318AAD;
+
+/*
+Gfx *func_multiplayer_80024CA4(Gfx *dl, Actor *arg1) {
+    MultiplayerActor318AAD *aaD; // 104
+    f32 temp_f20;
+    f32 temp_f22;
+    f32 temp_f22_2;
+    Struct80750948 *temp_s4;
+    f32 spF0;
+    s32 temp1;
+    s32 i;
+    s32 temp_v0_3;
+    u32 temp_s6;
+    u8 alpha;
+    Actor *temp_a3;
+    s32 temp2;
+    f32 temp;
+    s8 spCC;
+    f32 temp4;
+    f32 temp3;
+    f32 spC0;
+
+    aaD = arg1->AAD_as_array[0];
+    spF0 = func_global_asm_806FD894(1);
+    spC0 = func_global_asm_806FD894(1);
+    dl = func_multiplayer_800246EC(dl, aaD, 0.0f);
+    gSPDisplayList(dl++, &D_1000118);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, aaD->unk30, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    for (i = 0; i < cc_number_of_players; i++) {
+        temp_a3 = character_change_array[i].player_pointer;
+        temp_s4 = aaD->unk20[i];
+        if (temp_a3->control_state == 0x84) {
+            alpha = temp_a3->shadow_opacity;
+            temp_f20 = (temp_s4->unk6 + ((temp_s4->unkA - temp_s4->unk6) * 0.5));
+            temp_f22 = (temp_s4->unk4 + ((temp_s4->unk8 - temp_s4->unk4) * 0.5));
+            gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF - alpha);
+            sprintf(&spCC, "BAD LUCK");
+            temp_f22 -= (getCenterOfString(1, &spCC) * 0.25);
+            dl = printStyledText(dl, 1, temp_f22 * 8.0f, (temp_f20 - (spF0 * 0.25)) * 8.0f, &spCC, 4U);
+        } else {
+            alpha = 0xFF;
+        }
+        if (alpha == 0) {
+            continue;
+        }
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+        if (aaD->unk70 == 0) {
+            temp_f22_2 = temp_s4->unk4 + 4.0f;
+            temp_f20 = (temp_s4->unkA - ((8.0f + spC0) * 0.5f)) * 8.0f;
+            temp_v0_3 = func_global_asm_806F8AD4(3, i);
+            if (temp_v0_3) {
+                gDPSetPrimColor(dl++, 0, 0, 0x64, 0x1E, 0x00, alpha);
+                sprintf(&spCC, "%d", temp_v0_3);
+            } else {
+                temp1 = func_global_asm_806F8AD4(2, i);
+                sprintf(&spCC, "%d", temp1);
+            }
+            dl = printStyledText(dl, 1, temp_f22_2 * 8.0f, temp_f20, &spCC, 4U);
+            if (temp_v0_3) {
+                gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+            }
+            temp1 = func_global_asm_806F8AD4(4, i);
+            sprintf(&spCC, "%d", temp1);
+            temp2 = getCenterOfString(1, &spCC);
+            dl = printStyledText(dl, 1, ((temp_s4->unk8 - ((temp2 + 8) * 0.5f)) * 8.0f), temp_f20, &spCC, 4U);
+        }
+        sprintf(&spCC, "%d", func_multiplayer_80024254(i));
+        temp3 = getCenterOfString(1, &spCC) * 0.5f;
+        temp = temp_s4->unk6;
+        temp4 = temp_s4->unk8;
+        temp += (8.0 + ((8.0f - (spC0 * 0.5f)) * 0.5));
+        temp4 -= temp3 + 50.0f;
+        dl = printStyledText(dl, 1, temp4 * 8.0f, temp * 8.0f, &spCC, 4U);
+    }
+    return dl;
+}
+*/
+
 Gfx *func_multiplayer_800249D8(Gfx *, Actor *);
 Gfx *func_multiplayer_80024CA4(Gfx *, Actor *);
 
@@ -792,31 +897,6 @@ void func_multiplayer_80025FFC(Struct80025FFC *arg0) {
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80026094.s")
-
-typedef struct MultiplayerActor318AAD_Sub50 {
-    void *unk0[4];
-} MultiplayerActor318AAD_Sub50;
-
-typedef struct MultiplayerActor318AAD {
-    OSTime unk0;
-    u8 pad8[0xC - 0x8];
-    s32 unkC;
-    s32 unk10;
-    u8 pad14[0x20 - 0x14];
-    Struct80750948 *unk20[4];
-    Mtx *unk30;
-    s32 unk34;
-    u8 unk38;
-    u8 pad39[0x3C - 0x39];
-    s32 unk3C;
-    s16 unk40;
-    s16 unk42;
-    void *unk44;
-    void *unk48;
-    u8 pad4C[0x50 - 0x4C];
-    void *unk50[8];
-    u8 unk70;
-} MultiplayerActor318AAD;
 
 typedef struct Struct80026094_0 {
     s16 unk0;

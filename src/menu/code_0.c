@@ -63,7 +63,7 @@ void func_menu_80024154(MenuStruct0 *arg0) {
     otherSpriteControl *sprite = arg0->unk8;
 
     sprite->xPos += arg0->unkC;
-    sprite->unk_348 += arg0->unk14;
+    sprite->zPos += arg0->unk14;
     arg0->unk10 += -1.0f;
     sprite->yPos += arg0->unk10;
     arg0->unk6++;

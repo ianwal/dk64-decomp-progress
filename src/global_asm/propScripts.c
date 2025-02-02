@@ -1010,12 +1010,6 @@ extern f32 D_global_asm_807F621C;
 extern f32 D_global_asm_807F6220;
 extern f32 D_global_asm_807F6224;
 
-typedef struct tuple_f {
-    f32 x;
-    f32 y;
-    f32 z;
-} tuple_f;
-
 /*
 void func_global_asm_80646978(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
     tuple_f sp88;

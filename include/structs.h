@@ -4,6 +4,17 @@
 
 /* your struct definitions go here */
 
+typedef struct tuple_f {
+    union {
+        struct {
+            f32 x;
+            f32 y;
+            f32 z;
+        };
+        f32 f[3];
+    };
+} tuple_f;
+
 typedef struct OverlayInfoStruct {
     s32 rom_code_start;
     s32 rom_data_end;
@@ -582,10 +593,7 @@ typedef struct {
     s32 unk70;
     s32 unk74;
     s32 unk78;
-    void *unk7C[1]; // TODO: Actor*?
-    s32 unk80;
-    s32 unk84;
-    s32 unk88;
+    Actor *unk7C[4]; // TODO: Confirm array count
     s32 unk8C;
     u8 unk90;
     u8 unk91;
@@ -2784,49 +2792,6 @@ typedef struct spriteControl {
 	/* 0x01C */ s32 unk_1C;
 } spriteControl;
 
-typedef struct otherSpriteControl {
-	/* 0x000 */ s8 unk_000[0x28];
-	/* 0x028 */ u8 left_stretch;
-	/* 0x029 */ u8 right_stretch;
-	/* 0x02A */ u8 up_stretch;
-	/* 0x02B */ u8 down_stretch;
-	/* 0x02C */ s8 unk_02C[0x340-0x2C];
-	/* 0x340 */ f32 xPos;
-	/* 0x344 */ f32 yPos;
-	/* 0x348 */ f32 unk_348;
-    /* 0x34C */ s8 unk_34C[4];
-	/* 0x350 */ s8 gif_update_frequency;
-	/* 0x351 */ s8 unk_351[0xB];
-	/* 0x35C */ spriteControl* gif_control_pointer;
-	/* 0x360 */ f32 xScale;
-	/* 0x364 */ f32 yScale;
-	/* 0x368 */ s8 unk_368[0x2];
-	/* 0x36A */ s8 transparency1;
-	/* 0x36B */ s8 transparency2;
-	/* 0x36C */ s8 transparency3;
-	/* 0x36D */ s8 transparency4;
-	/* 0x36E */ s8 unk_36E[0x384-0x36E];
-	/* 0x384 */ void* some_pointer;
-} otherSpriteControl;
-
-// TODO: Which struct is this?
-typedef struct {
-    s32 unk0[21];
-    s8 unk54; // Used
-    s8 unk55;
-    s8 unk56;
-    s8 unk57;
-    s32 unk58; // Used
-    s32 unk5C;
-} Struct8064199C_arg0;
-
-typedef struct {
-    u8  pad0[0x14];
-    f32 unk14;
-    u8  pad1[0x31];
-    u8 unk49;
-} GlobalASMStruct49;
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -2938,6 +2903,101 @@ typedef struct {
     f32 unk0;
     f32 unk4;
 } Struct80717D84_unk384_8071B2EC;
+
+typedef struct {
+    f32 unk0;
+    tuple_f unk4;
+    tuple_f unk10;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+} Struct80717D84_unk384_807186C8;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    s32 unk14;
+    u8 pad18[0x1C - 0x18];
+} Struct80717D84_unk384_8071910C;
+
+typedef struct otherSpriteControl_unk330 {
+    SpriteData *unk0;
+} otherSpriteControl_unk330;
+
+typedef struct otherSpriteControl {
+	/* 0x000 */ s8 unk_000[0x28];
+	/* 0x028 */ u8 left_stretch;
+	/* 0x029 */ u8 right_stretch;
+	/* 0x02A */ u8 up_stretch;
+	/* 0x02B */ u8 down_stretch;
+	/* 0x02C */ s8 unk_02C[0x128 - 0x2C];
+    /* 0x128 */ Mtx unk128[2];
+    /* 0x1A8 */ u8 unk1A8[0x32C - 0x1A8];
+    /* 0x32C */ s8 unk32C;
+    /* 0x32D */ u8 pad32D[0x330 - 0x32D];
+    /* 0x330 */ otherSpriteControl_unk330 *unk330;
+    /* 0x334 */ u8 pad334[0x340 - 0x334];
+	/* 0x340 */ f32 xPos;
+	/* 0x344 */ f32 yPos;
+	/* 0x348 */ f32 zPos;
+    /* 0x34C */ s8 unk_34C[4];
+	/* 0x350 */ s8 gif_update_frequency;
+	/* 0x351 */ s8 unk_351[0xB];
+	/* 0x35C */ s32 unk35C;
+	/* 0x360 */ f32 xScale;
+	/* 0x364 */ f32 yScale;
+	/* 0x368 */ s8 unk_368[0x2];
+	/* 0x36A */ s8 transparency1;
+	/* 0x36B */ s8 transparency2;
+	/* 0x36C */ s8 transparency3;
+	/* 0x36D */ u8 transparency4;
+	/* 0x36E */ s8 unk_36E[0x384-0x36E];
+    union {
+        void* some_pointer;
+        Struct80717D84_unk384 *unk384;
+        Struct80717D84_unk384_s16 *unk384_s16;
+        Struct80717D84_unk384_f32 *unk384_f32;
+        Struct80717D84_unk384_80717814 *unk384_80717814;
+        Struct80717D84_unk384_80717100 *unk384_80717100;
+        Struct80717D84_unk384_8071720C *unk384_8071720C;
+        Struct80717D84_unk384_80717B64 *unk384_80717B64;
+        Struct80717D84_unk384_8071DC90 *unk384_8071DC90;
+        Struct80717D84_unk384_8071E110 *unk384_8071E110;
+        Struct80717D84_unk384_8071F444 *unk384_8071F444;
+        Struct80717D84_unk384_80717930 *unk384_80717930;
+        Struct80717D84_unk384_807189BC *unk384_807189BC;
+        Struct80717D84_unk384_80719C00 *unk384_80719C00;
+        Struct80717D84_unk384_80719EF4 *unk384_80719EF4;
+        Struct80717D84_unk384_8071D0F0 *unk384_8071D0F0;
+        Struct80717D84_unk384_8071B2EC *unk384_8071B2EC;
+        Struct80717D84_unk384_807186C8 *unk384_807186C8;
+        Struct80717D84_unk384_8071910C *unk384_8071910C;
+    };
+	/* 0x384 */ 
+} otherSpriteControl;
+
+// TODO: Which struct is this?
+typedef struct {
+    s32 unk0[21];
+    s8 unk54; // Used
+    s8 unk55;
+    s8 unk56;
+    s8 unk57;
+    s32 unk58; // Used
+    s32 unk5C;
+} Struct8064199C_arg0;
+
+typedef struct {
+    u8  pad0[0x14];
+    f32 unk14;
+    u8  pad1[0x31];
+    u8 unk49;
+} GlobalASMStruct49;
+
+
 
 typedef struct {
     s32 unk0;
@@ -3349,16 +3409,23 @@ typedef struct {
     u8 unk1;
     u8 unk2;
     u8 unk3;
+    union {
+        struct {
+            s16 unk4;
+            s16 unk6;
+            s16 unk8;
+            s16 unkA;
+        };
+        s16 unk4_arr[4];
+    };
+} Struct80750948;
+
+typedef struct Struct800246EC_unk20 {
+    u8 pad0[0x4];
     s16 unk4;
     s16 unk6;
     s16 unk8;
     s16 unkA;
-} Struct80750948;
-
-typedef struct Struct800246EC_unk20 {
-    u8 pad0[0x6];
-    s16 unk6;
-    s16 unk8;
 } Struct800246EC_unk20;
 
 typedef struct Struct800246EC {
