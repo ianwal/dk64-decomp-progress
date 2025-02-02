@@ -41,7 +41,41 @@ void func_global_asm_80690190(void *arg0, void *arg1);
 void func_global_asm_8068F72C(void*, void*, s32, s32);
 void func_global_asm_8068FF40(s32, void*, void*);
 
-extern s32 D_race_8002FC5C[];
+// .data
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct8002FC20;
+
+static Struct8002FC20 D_race_8002FC20[] = {
+    { -1000.0f, 0.8f },
+};
+
+static Struct8002FC20 D_race_8002FC28[] = {
+    { -150.0f, 1.0f },
+};
+
+static Struct8002FC20 D_race_8002FC30[] = {
+    { -70.0f, 1.0f },
+    { 90.0f, 1.0f },
+    { 100.0f, 1.0f },
+    { 200.0f, 2.5f },
+};
+
+static f32 D_race_8002FC50[] = {
+    0.8f,
+    1.0f,
+};
+
+static f32 D_race_8002FC58 = 2.5f;
+
+static s32 D_race_8002FC5C[] = {
+    0x00000003,
+    0x00000000,
+    0x00000001,
+    0x00000002,
+    0x00000000, // PADDING
+};
 
 Gfx *func_race_800292B0(Gfx *dl, Actor *arg1) {
     return func_race_8002CAC8(dl, arg1, arg1->additional_actor_data);
