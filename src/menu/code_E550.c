@@ -4,7 +4,8 @@
 void func_global_asm_8068A858(s32 *, s32 *, s32 *);
 extern Gfx* func_menu_8003292C(Gfx *dl);
 
-extern u8 D_menu_800339D0;
+// .data
+static u8 D_menu_800339D0 = 0;
 
 extern s32 D_menu_80033FB0;
 extern s32 D_menu_80033FB1;
@@ -121,7 +122,6 @@ void func_menu_8003264C(void) {
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 extern u8 D_global_asm_8074450C;
-extern u8 D_menu_800339D0;
 
 /*
 Gfx* func_menu_8003292C(Gfx *dl) {
