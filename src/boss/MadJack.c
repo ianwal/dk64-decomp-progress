@@ -35,7 +35,11 @@ static const f32 D_boss_80036C40[] = {
 };
 
 // .data
-static u8 D_boss_80035B80[4] = {0x05, 0x06, 0x09, 0x0A};
+typedef struct {
+    u8 unk0[4];
+} Struct80035B80;
+
+static Struct80035B80 D_boss_80035B80 = {{0x05, 0x06, 0x09, 0x0A}};
 
 static void *D_boss_80035B84[5] = {
     D_boss_80036C10,
@@ -109,9 +113,6 @@ static u8 D_boss_80035BEC[20] = {
     0x00,
 };
 
-// close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/MadJack/func_boss_800330D0.s")
-
 typedef struct {
     u8 pad0[0x8];
     s16 unk8;
@@ -137,7 +138,6 @@ typedef struct {
     u8 unk6;
 } MadJackPosData;
 
-/*
 u8 func_boss_800330D0(MadJackFightData *arg0, MadJackPosData *arg1) {
     s32 closest;
     s32 distances[0x10];
@@ -146,6 +146,7 @@ u8 func_boss_800330D0(MadJackFightData *arg0, MadJackPosData *arg1) {
     u8 squareIndex;
     u8 var_t2;
     u8 var_t4;
+    Struct80035B80 tmp;
 
     var_t2 = arg1->jack.current;
     closest = 9999999;
@@ -158,7 +159,8 @@ u8 func_boss_800330D0(MadJackFightData *arg0, MadJackPosData *arg1) {
         }
     }
     if (player_pointer->y_position < (current_actor_pointer->y_position - 10.0f)) {
-        return D_boss_80035B80[(rand() >> 0xF) % 4];
+        tmp = D_boss_80035B80;
+        return tmp.unk0[(rand() >> 0xF) % 4];
     }
     temp_a2 = (arg1->jack.current / 4) - (arg1->kong.next / 4);
     temp_a3 = (arg1->jack.current % 4) - (arg1->kong.next % 4);
@@ -194,7 +196,6 @@ u8 func_boss_800330D0(MadJackFightData *arg0, MadJackPosData *arg1) {
     }
     return var_t2;
 }
-*/
 
 void func_boss_8003340C(MadJackPosData *arg0) {
     if ((current_actor_pointer->animation_state->unk64 != 0x223) && (arg0->jack.next == arg0->kong.next)) {
