@@ -212,11 +212,6 @@ void func_race_800294A8(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_race_8002978C.s")
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_race_80029F88.s")
-
-/*
-// TODO: hmm
 void func_race_80029F88(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     s32 temp_f2;
     f32 var_f12;
@@ -230,18 +225,17 @@ void func_race_80029F88(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     if (arg2 != 0.0f) {
         if (!(temp_f2 <= 0.0f)) {
             var_f12 = (arg4 - temp) / temp_f2;
-            if (var_f12 < 0.0f) {
+            if (var_f12 < 0) {
                 var_f12 = 0.01f;
             }
-            var_f12 /= MIN(0.01, temp_v0->unk24);
-            if (var_f12 > 2.0f) {
-                var_f12 = 2.0f;
+            var_f12 /= MAX(0.01, temp_v0->unk24);
+            if (var_f12 > 2) {
+                var_f12 = 2;
             }
-            func_global_asm_80614D00(arg0, var_f12, 0.0f);
+            func_global_asm_80614D00(arg0, var_f12, 0);
         }
     }
 }
-*/
 
 s32 func_race_8002A080(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1) {
     return D_race_8002FC5C[func_race_8002E8EC(arg0, arg1, 0xA)];

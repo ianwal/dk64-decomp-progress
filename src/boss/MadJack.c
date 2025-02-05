@@ -90,27 +90,11 @@ static u8 D_boss_80035BDC[8] = {0x10, 0x12, 0x15, 0x17, 0x18, 0x1A, 0x1D, 0x1F};
 
 static u8 D_boss_80035BE4[8] = {0x11, 0x13, 0x14, 0x16, 0x19, 0x1B, 0x1C, 0x1E};
 
-static u8 D_boss_80035BEC[20] = {
-    0x00,
-    0x01,
-    0x00,
-    0x01,
-    0x01,
-    0x00,
-    0x01,
-    0x00,
-    0x00,
-    0x01,
-    0x00,
-    0x01,
-    0x01,
-    0x00,
-    0x01,
-    0x00,
-    0x00,
-    0x00,
-    0x00,
-    0x00,
+static u8 D_boss_80035BEC[4 * 4] = {
+    0, 1, 0, 1,
+    1, 0, 1, 0,
+    0, 1, 0, 1,
+    1, 0, 1, 0,
 };
 
 typedef struct {
@@ -191,7 +175,6 @@ u8 func_boss_800330D0(MadJackFightData *arg0, MadJackPosData *arg1) {
                 var_t4 += 4;
             }
         }
-        // Duplicate return node #37. Try simplifying control flow for better match
         return var_t4;
     }
     return var_t2;
@@ -235,6 +218,7 @@ void func_boss_800336C0(void) {
     );
 }
 
+// TODO: Any cleanup possible?
 void func_boss_80033784(MadJackPosData *arg0, u8 arg1) {
     s32 random;
     u8 random_copy;
@@ -923,7 +907,8 @@ void func_boss_8003575C(void) {
             if (current_actor_pointer->control_state == 0) {
                 dx = player_pointer->x_position - current_actor_pointer->x_position;
                 dz = player_pointer->z_position - current_actor_pointer->z_position;
-                if ((SQ(dx) + SQ(dz)) < 4225.0f) { // 65 units away from the player
+                // 65 units away from the player
+                if ((SQ(dx) + SQ(dz)) < SQ(65.0f)) {
                     if (player_pointer->control_state != 0x31) {
                         setAction(0x2E, current_actor_pointer, 0);
                     }
