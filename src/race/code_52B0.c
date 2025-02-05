@@ -241,5 +241,167 @@ s32 func_race_8002A080(Struct8002E8EC_arg0 *arg0, Struct8002E8EC_arg1 *arg1) {
     return D_race_8002FC5C[func_race_8002E8EC(arg0, arg1, 0xA)];
 }
 
-// Jumptable
+// Jumptable, doable, close, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_52B0/func_race_8002A0AC.s")
+
+extern s16 D_global_asm_80750AC8;
+
+typedef struct {
+    Actor *unk0;
+    Struct8002E8EC_arg1 *unk4;
+    u8 unk8;
+    u8 unk9;
+    u16 unkA;
+} A180_8002A0AC;
+
+typedef struct {
+    s32 unk0; // Unused?
+    f32 unk4;
+    s32 unk8; // Unused?
+    s32 unkC; // Unused?
+    f32 unk10;
+    u8 unk14[0x30 - 0x14];
+    Actor *unk30;
+    u8 unk34;
+    u8 unk35;
+} A178_8002A0AC;
+
+typedef struct {
+    u8 unk0[0x1C - 0x0];
+    u16 unk1C;
+} AAD_8002A0AC;
+
+/*
+void func_race_8002A0AC(void) {
+    void *sp50;
+    A180_8002A0AC *a180; // 4C
+    f32 sp48;
+    AAD_8002A0AC *aaD;
+    A178_8002A0AC *a178;
+    Struct8002E8EC_arg1 *sp34;
+    ActorAnimationState *aaS;
+    f32 var_f2;
+    s32 pad;
+    s32 sp2C;
+    u16 temp_a0;
+    u8 temp_a1;
+
+    a178 = current_actor_pointer->a178;
+    sp50 = current_actor_pointer->unk17C;
+    a180 = current_actor_pointer->unk180;
+    sp48 = 0.0f;
+    initializeCharacterSpawnerActor();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        aaD = a178->unk30->additional_actor_data;
+        a178->unk10 = 1.0f;
+        current_actor_pointer->object_properties_bitfield &= 0xFFFDFFFE;
+        current_actor_pointer->draw_distance = 1500;
+        func_race_8002DE78(a180, 5, &D_race_8002FC20, &D_race_8002FC50);
+        a178->unk34 = 0;
+        func_global_asm_8061CC30();
+        temp_a0 = playCutscene(current_actor_pointer, 1, 1) - 0x3C;
+        aaD->unk1C = temp_a0;
+        a180->unkA = temp_a0;
+        a178->unk4 = 1.0f;
+        D_global_asm_807FDC90->unk25 = D_global_asm_807FDC9C->unk11 - 5;
+        temp_a1 = D_global_asm_807FDC98->unk20[D_global_asm_807FDC90->unk25].unk0;
+        current_actor_pointer->x_position = D_global_asm_807FDCA0->unk14[temp_a1].unk0;
+        current_actor_pointer->y_position = D_global_asm_807FDCA0->unk14[temp_a1].unk2;
+        current_actor_pointer->z_position = D_global_asm_807FDCA0->unk14[temp_a1].unk4;
+        D_global_asm_80750AC8 = 0xA;
+    }
+    if (a180->unkA != 0) {
+        a180->unkA--;
+    }
+    if (a178->unk34 < 5) {
+        sp48 = func_race_8002978C();
+        if (a178->unk34 == 2) {
+            func_race_8002E644(a180);
+        } else if (a178->unk34 == 4) {
+            if (a180->unk8 == 0) {
+                a180->unk8 = 1;
+                if (!isFlagSet(0xA5, FLAG_TYPE_PERMANENT)) {
+                    playCutscene(a180->unk0, 0, 1);
+                    func_global_asm_80629174();
+                } else {
+                    func_global_asm_805FF544();
+                }
+            }
+        }
+        func_global_asm_8068F72C(a178, sp50, 0, 0);
+    }
+    if (a178->unk34 == 5) {
+        switch (a178->unk35) {
+            case 0:
+                if (!isFlagSet(0xA5, FLAG_TYPE_PERMANENT)) {
+                    setAction(0x55, NULL, 0);
+                    current_actor_pointer->x_rotation = 0;
+                    current_actor_pointer->z_rotation = 0;
+                    playActorAnimation(current_actor_pointer, 0x29A);
+                }
+                a178->unk35++;
+                break;
+            case 1:
+                if (func_global_asm_80629148()) {
+                    sp34 = a180->unk4;
+                    func_global_asm_80629174();
+                    loadText(current_actor_pointer, 0x12, func_race_8002A080(a178, sp34));
+                    a178->unk35++;
+                }
+                break;
+            case 2:
+                if (current_actor_pointer->object_properties_bitfield & 0x02000000) {
+                    //
+                } else {
+                    func_global_asm_8061CB08();
+                    a178->unk35++;
+                }
+                break;
+            case 3:
+                if (func_global_asm_80629148()) {
+                    sp2C = func_race_8002A080(a178, a180->unk4);
+                    func_global_asm_80629174();
+                    if (sp2C == 0) {
+                        func_global_asm_8063DA40(0x3B, 0xA);
+                        setFlag(0xA5, TRUE, FLAG_TYPE_PERMANENT);
+                    } else {
+                        func_global_asm_806ACC00(1);
+                        a178->unk35++;
+                    }
+                    a178->unk35++;
+                }
+                break;
+            case 4:
+                if (func_global_asm_80629148()) {
+                    func_global_asm_80629174();
+                    func_global_asm_805FF544();
+                    a178->unk35++;
+                }
+                break;
+        }
+    } else {
+        //
+    }
+    aaS = current_actor_pointer->animation_state;
+    switch (aaS->unk64) {
+        case 0x29E:
+        case 0x2A2:
+            var_f2 = MAX(0.1, current_actor_pointer->unkB8 * 0.0025f);
+            func_global_asm_80614D00(current_actor_pointer, var_f2, 10.0f);
+            break;
+        case 0x2A0:
+            if (aaS->unk0->unk10 == 0x4A7) {
+                // TODO: a1 is wrong
+                func_race_80029F88(current_actor_pointer, 0, current_actor_pointer->unkB8 - a180->unk0->unkB8, (sp48 - D_race_8002FC30[0].unk0) * 40.0f, 23.0f);
+                break;
+            }
+        default:
+            if (aaS->unk0->unk10 != 0x49B) {
+                func_global_asm_80614D00(current_actor_pointer, 1.0f, 10.0f);
+            }
+            break;
+    }
+    renderActor(current_actor_pointer, 0);
+    func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
+}
+*/
