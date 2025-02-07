@@ -1490,34 +1490,26 @@ void func_global_asm_80658E58(u16 arg0, u16 arg1, u16 arg2, u16 arg3) {
     D_global_asm_807F735E = arg3;
 }
 
-// doable, close, float, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80658E8C.s")
-
-/*
 s32 func_global_asm_80658E8C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4) {
     f32 sp44;
     f32 sp40;
     s16 sp3E;
     s16 sp3C;
-    f32 dz;
     f32 d;
-    f32 dy;
-    f32 dx;
     f32 temp_f2_2;
     s16 var_a0;
     s16 var_a1;
     s16 var_a2;
     s16 var_v1;
-    s32 temp_f6;
-    s32 var_v0;
 
     func_global_asm_80626F8C(arg0, arg1, arg2, &sp44, &sp40, 0, 1.0f, cc_player_index);
     sp3E = sp44;
     sp3C = sp40;
-    dx = arg0 - character_change_array[cc_player_index].unk21C;
-    dy = arg1 - character_change_array[cc_player_index].unk220;
-    dz = arg2 - character_change_array[cc_player_index].unk224;
-    d = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
+    d = sqrtf(
+        SQ(arg0 - character_change_array[cc_player_index].unk21C) +
+        SQ(arg1 - character_change_array[cc_player_index].unk220) +
+        SQ(arg2 - character_change_array[cc_player_index].unk224)
+    );
     if (d < 90.0f) {
         return 0;
     }
@@ -1529,9 +1521,8 @@ s32 func_global_asm_80658E8C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4) {
     } else {
         temp_f2_2 = (d - 60.0f) / 120.0f;
         if (temp_f2_2 > 0.0) {
-            temp_f6 = (-60.0f * temp_f2_2) + 80.0f;
-            var_v1 = temp_f6;
-            var_a0 = temp_f6;
+            var_v1 = (-60.0f * temp_f2_2) + 80.0f;
+            var_a0 = (-60.0f * temp_f2_2) + 80.0f;
             var_a1 = (-130.0f * temp_f2_2) + 130.0f;
             var_a2 = (-80.0f * temp_f2_2) + 130.0f;
         } else {
@@ -1541,11 +1532,9 @@ s32 func_global_asm_80658E8C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4) {
             var_a2 = 0x82;
         }
     }
-    if ((sp3E < ((D_global_asm_807F7358 - var_v1) - arg3)) || ((D_global_asm_807F735C + var_a0 + arg3) < sp3E) || (sp3C < ((D_global_asm_807F735A - var_a1) - arg4)) || ((((D_global_asm_807F735E + var_a2 + arg4) < sp3C) != 0))) {
-        var_v0 = 1;
+    if ((sp3E < ((D_global_asm_807F7358 - var_v1) - arg3)) || ((D_global_asm_807F735C + var_a0 + arg3) < sp3E) || (sp3C < ((D_global_asm_807F735A - var_a1) - arg4)) || ((((D_global_asm_807F735E + var_a2 + arg4) < sp3C)))) {
+        return 1;
     } else {
-        var_v0 = 0;
+        return 0;
     }
-    return var_v0;
 }
-*/
