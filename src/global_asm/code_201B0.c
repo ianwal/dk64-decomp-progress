@@ -1467,8 +1467,10 @@ void func_global_asm_80626264(s32 arg0) {
 // doable, weird negative offsets
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626478.s")
 
-// memcpy concat, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062649C.s")
+void *func_global_asm_8062649C(u8 *src, void *dest, u16 size) {
+    memcpy(dest, &src[4], size);
+    return &src[4] + size;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806264DC.s")
 

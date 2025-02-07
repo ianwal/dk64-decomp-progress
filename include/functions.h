@@ -1171,10 +1171,10 @@ void func_global_asm_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3);
 void func_global_asm_8064DE04(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s32 arg3);
 // TODO: func_global_asm_8064DF5C has no documented signature
 void func_global_asm_8064E174(OM2_scriptdata *arg0, s16 arg1, s16 arg2, u8 *array, s32 size, s16 arg5, s16 arg6);
-void func_global_asm_8064E428(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
-void func_global_asm_8064E48C(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
-void func_global_asm_8064E4F8(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
-void func_global_asm_8064E55C(s32 arg0, s16 arg1, s16 arg2, s32 arg3);
+void func_global_asm_8064E428(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3);
+void func_global_asm_8064E48C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3);
+void func_global_asm_8064E4F8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3);
+void func_global_asm_8064E55C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3);
 // TODO: func_global_asm_8064E5C0 has no documented signature but has been matched
 void func_global_asm_8064E65C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3);
 void func_global_asm_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3);
@@ -4351,7 +4351,7 @@ void func_race_800292D0(Actor *arg0);
 void sealRaceSetup(void);
 void func_race_800294A8(void);
 // TODO: func_race_8002978C has no documented signature
-// TODO: func_race_80029F88 has no documented signature
+void func_race_80029F88(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 // TODO: func_race_8002A080 has no documented signature but has been matched
 // TODO: func_race_8002A0AC has no documented signature
 
@@ -4548,7 +4548,7 @@ void func_boss_8002C8B4(void);
 void func_boss_8002C964(void);
 
 // boss/KRoolDK.c
-// TODO: func_boss_8002D230 has no documented signature but has been matched
+void func_boss_8002D230(void);
 
 // boss/KRoolDiddy.c
 void func_boss_8002DC60(void);
@@ -4561,16 +4561,16 @@ void func_boss_8002E7A0(Actor *arg0);
 void func_boss_8002E82C(void);
 void func_boss_8002E9B8(s32 arg0, s16 arg1);
 void func_boss_8002EA14(void);
-// TODO: func_boss_8002EA7C has no documented signature but has been matched
+void func_boss_8002EA7C(void);
 
 // boss/KRoolTiny.c
-// TODO: func_boss_8002F100 has no documented signature but has been matched
+void func_boss_8002F100(void);
 void func_boss_8002FB7C(u8 arg0);
 void func_boss_8002FC48(Actor *arg0, u8 arg1);
 // TODO: func_boss_8002FC98 has no documented signature
 void func_boss_8002FDF8(Actor* arg0, u8 arg1);
 void func_boss_8002FEC0(Actor* toes[], u8 toeIndex, s32 modelIndex);
-// TODO: func_boss_8002FF74 has no documented signature but has been matched
+void func_boss_8002FF74(void);
 void func_boss_80030888(void);
 
 // boss/KRoolChunky.c
@@ -4579,7 +4579,7 @@ void func_boss_80030920(KRoolChunkyAAD178 *arg0);
 void func_boss_80030C30(f32 arg0);
 void func_boss_80030D50(void);
 void func_boss_80030E58(void);
-// TODO: func_boss_80030EC4 has no documented signature but has been matched
+void func_boss_80030EC4(void);
 
 // boss/KutOut.c
 // TODO: func_boss_80031AA0 has no documented signature

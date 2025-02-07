@@ -5,12 +5,12 @@
 extern s32 D_global_asm_80718188;
 
 extern SpriteData D_global_asm_80720EA4;
-extern SpriteData D_global_asm_8071FC8C; // TODO: Datatype
+extern SpriteData D_global_asm_8071FC8C;
 extern SpriteData D_global_asm_8071FC40;
 
 extern SpriteData D_global_asm_8071FBC8;
 extern SpriteData D_global_asm_8071FB54;
-extern SpriteData D_global_asm_8071FE08; // TODO: Datatype
+extern SpriteData D_global_asm_8071FE08;
 extern SpriteData D_global_asm_8071FE64;
 extern SpriteData D_global_asm_8071FE88;
 extern SpriteData D_global_asm_8071FFA0;
@@ -21,7 +21,7 @@ extern SpriteData D_global_asm_8071FFA0;
 extern SpriteData D_global_asm_80720A7C;
 extern SpriteData D_global_asm_80720B00;
 extern SpriteData D_global_asm_80720BE8;
-extern SpriteData D_global_asm_80720BC4; // TODO: Datatype
+extern SpriteData D_global_asm_80720BC4;
 extern SpriteData D_global_asm_80720CD8;
 extern SpriteData D_global_asm_80720E44;
 extern SpriteData D_global_asm_80720E5C;
@@ -2818,7 +2818,7 @@ typedef struct InstanceData8064D1E8 {
 void func_global_asm_8064D1E8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064D1E8 *temp_v0;
     s32 var_a0;
-    f32 temp;
+    s32 temp;
 
     if (arg0->unk0 == NULL) {
         temp_v0 = malloc(sizeof(InstanceData8064D1E8));
@@ -2828,8 +2828,7 @@ void func_global_asm_8064D1E8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         temp_v0->unk8 = 0xDAC;
     }
     temp_v0 = arg0->unk0;
-    temp = func_global_asm_80612794(temp_v0->unk8);
-    func_global_asm_80661398(0, ((temp * 60.0) + 40.0), 20.0f);
+    func_global_asm_80661398(0, ((func_global_asm_80612794(temp_v0->unk8) * 60.0) + 40.0), 20.0f);
     if (!temp_v0->unk0) {
         if ((temp_v0->unk8 >= 0x2BC) && (temp_v0->unk8 < 0x2C6)) {
             playSound(0x359, 0x7FFFU, 63.0f, 0.6f, 0, 0);
@@ -2844,8 +2843,12 @@ void func_global_asm_8064D1E8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
             arg0->unk10 = func_global_asm_80605044(arg1, 0x138, 1, 1, 0x78, 1.0f, -1);
         }
         var_a0 = ABS(temp_v0->unk8 - 0x400); // Issue is here
-        if (var_a0 >= 0xA) {
-            var_a0 = ABS(temp_v0->unk8 - 0xC00);
+        if (!(var_a0 < 0xA)) {
+            if (temp_v0->unk8 - 0xC00 < 0) {
+                var_a0 = -(temp_v0->unk8 - 0xC00);
+            } else {
+                var_a0 = temp_v0->unk8 - 0xC00;
+            }
         }
         if ((var_a0 < 0xA) && (temp_v0->unk4 == 0)) {
             temp_v0->unk0 = 0x12C;
@@ -3175,22 +3178,22 @@ extern Struct807482E8 D_global_asm_807482E8;
 extern Struct807482EC D_global_asm_807482EC;
 extern Struct807482DC D_global_asm_807482DC;
 
-void func_global_asm_8064E428(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064E428(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
     Struct807482DC sp2C = D_global_asm_807482DC;
     func_global_asm_8064E174(arg0, arg1, arg2, &sp2C, 4, 5, 0x14);
 }
 
-void func_global_asm_8064E48C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064E48C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
     Struct807482E0 sp28 = D_global_asm_807482E0;
     func_global_asm_8064E174(arg0, arg1, arg2, &sp28, 5, 4, 0x14);
 }
 
-void func_global_asm_8064E4F8(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064E4F8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
     Struct807482E8 sp2C = D_global_asm_807482E8;
     func_global_asm_8064E174(arg0, arg1, arg2, &sp2C, 3, 7, 0x14);
 }
 
-void func_global_asm_8064E55C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064E55C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
     Struct807482EC sp2C = D_global_asm_807482EC;
     func_global_asm_8064E174(arg0, arg1, arg2, &sp2C, 3, 7, 0x14);
 }
@@ -3241,43 +3244,43 @@ void func_global_asm_8064E65C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
     }
     temp_v0 = arg0->unk0;
     switch (arg2) {
-    case 10:
-    case 11:
-        playSoundAtPosition(x, y, z, 0x305, 0x64U, 0x7F, 0U, 0U, 0.0f, 0U);
-        spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D);
-        last_spawned_actor->animation_state->scale[0] *= 3.2;
-        last_spawned_actor->animation_state->scale[1] *= 3.2;
-        last_spawned_actor->animation_state->scale[2] *= 3.2;
-        last_spawned_actor->object_properties_bitfield |= 0x400;
-        playActorAnimation(last_spawned_actor, 0x335);
-        if (arg2 == 0xB) {
-            last_spawned_actor->x_position = D_global_asm_807F621C;
-            last_spawned_actor->y_position = D_global_asm_807F6220;
-            last_spawned_actor->z_position = D_global_asm_807F6224;
+        case 10:
+        case 11:
+            playSoundAtPosition(x, y, z, 0x305, 0x64U, 0x7F, 0U, 0U, 0.0f, 0U);
+            spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D);
+            last_spawned_actor->animation_state->scale[0] *= 3.2;
+            last_spawned_actor->animation_state->scale[1] *= 3.2;
+            last_spawned_actor->animation_state->scale[2] *= 3.2;
+            last_spawned_actor->object_properties_bitfield |= 0x400;
+            playActorAnimation(last_spawned_actor, 0x335);
+            if (arg2 == 0xB) {
+                last_spawned_actor->x_position = D_global_asm_807F621C;
+                last_spawned_actor->y_position = D_global_asm_807F6220;
+                last_spawned_actor->z_position = D_global_asm_807F6224;
+                return;
+            }
+            last_spawned_actor->x_position = x;
+            last_spawned_actor->y_position = y;
+            last_spawned_actor->z_position = z;
+        case 1:
+        case 3:
+        case 4:
+            if (temp_v0->unk0 >= 2) {
+                temp_v0->unk0 -= 2;
+            } else {
+                temp_v0->unk0 = 0;
+                break;
+            }
+        case 0:
+            if (arg2 == 0) {
+                temp_v0->unk0 = 0xFF;
+            }
+            func_global_asm_80659610(5000);
+            red = arg3 ? temp_v0->unk0 * 0.27 : temp_v0->unk0;
+            green = arg3 ? temp_v0->unk0 * 0.63 : temp_v0->unk0;
+            createLight(x, y - 50.0f, z, 0.0f, 0.0f, 0.0f, 240.0f, 0, red, green, temp_v0->unk0);
+        default:
             return;
-        }
-        last_spawned_actor->x_position = x;
-        last_spawned_actor->y_position = y;
-        last_spawned_actor->z_position = z;
-    case 1:
-    case 3:
-    case 4:
-        if (temp_v0->unk0 >= 2) {
-            temp_v0->unk0 -= 2;
-        } else {
-            temp_v0->unk0 = 0;
-            break;
-        }
-    case 0:
-        if (arg2 == 0) {
-            temp_v0->unk0 = 0xFF;
-        }
-        func_global_asm_80659610(5000);
-        red = arg3 ? temp_v0->unk0 * 0.27 : temp_v0->unk0;
-        green = arg3 ? temp_v0->unk0 * 0.63 : temp_v0->unk0;
-        createLight(x, y - 50.0f, z, 0.0f, 0.0f, 0.0f, 240.0f, 0, red, green, temp_v0->unk0);
-    default:
-        return;
     }
 }
 
@@ -3474,25 +3477,27 @@ u8 func_global_asm_8064F1C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return D_global_asm_807F6950;
 }
 
-// regalloc
+// regalloc, float, close
+// https://decomp.me/scratch/qE2WY
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064F210.s")
 
 /*
 u8 func_global_asm_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 sp2C;
     f32 temp2;
-    f32 temp3;
-    f32 temp4;
+    f64 temp3;
     s16 temp_f18;
+    f32 temp4;
     f32 temp_f0;
     f32 temp;
 
     temp_f18 = (D_global_asm_807F622C * 4096.0f) / 360.0f;
     sp2C = func_global_asm_80612794(temp_f18);
     temp_f0 = func_global_asm_80612790(temp_f18);
-    temp = -((D_global_asm_807F621C * sp2C) + (D_global_asm_807F6224 * temp_f0));
-    temp2 = (player_pointer->x_position * sp2C);
-    return (f64)(temp2 + (player_pointer->z_position * temp_f0) + temp) > 6;
+    temp = ((D_global_asm_807F621C * sp2C) + (D_global_asm_807F6224 * temp_f0));
+    temp = -temp;
+    temp2 = (player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position);
+    return (f64)(temp2 + temp) > 6;
 }
 */
 
