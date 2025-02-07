@@ -624,7 +624,7 @@ void playSoundAtActorPosition(Actor *arg0, s16 arg1, u8 arg2, s16 arg3, u8 arg4)
     playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, arg1, arg2, arg3, arg4, 0x4B, D_global_asm_80756DFC, var_v0);
 }
 
-void playSoundAtObjectModel2(s16 arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6) {
+void playSoundAtProp(s16 arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6) {
     playSoundAtPosition(D_global_asm_807F6000[arg0].x_position, D_global_asm_807F6000[arg0].y_position, D_global_asm_807F6000[arg0].z_position, arg1, arg2, arg3, arg4, arg5, arg6, 0);
 }
 

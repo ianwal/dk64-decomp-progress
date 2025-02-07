@@ -1694,7 +1694,7 @@ struct global_asm_struct_83 {
     GlobalASMStruct83 *next;
 };
 
-typedef struct model_2_model_50_b8 Model2Model50_B8;
+typedef struct model_2_model_50_b8 PropModel50_B8;
 
 struct model_2_model_50_b8 {
     s32 unk0[4];
@@ -1727,7 +1727,7 @@ struct model_2_model_50_b8 {
     u8 unkD1;
     u8 unkD2;
     u8 unkD3;
-    Model2Model50_B8 *next; // unkD4
+    PropModel50_B8 *next; // unkD4
 };
 
 typedef struct {
@@ -1741,7 +1741,7 @@ typedef struct {
     s32 unk1C;
     s16 unk20;
     s16 unk22;
-} Model2Model54_BC;
+} PropModel54_BC;
 
 typedef struct {
     s32 unk0[4];
@@ -1764,8 +1764,8 @@ typedef struct {
     s16 unk4C;
     u8 unk4E; // Used
     u8 unk4F; // Used
-    Model2Model50_B8 *unk50; // Used, pointer
-    Model2Model54_BC *unk54;
+    PropModel50_B8 *unk50; // Used, pointer
+    PropModel54_BC *unk54;
     u8 unk58;
     u8 unk59;
     u8 unk5A;
@@ -1779,13 +1779,13 @@ typedef struct {
     s32 unkB0;
     s16 unkB4;
     s16 unkB6;
-    Model2Model50_B8 *unkB8; // Used, pointer
-    Model2Model54_BC *unkBC; // Used
+    PropModel50_B8 *unkB8; // Used, pointer
+    PropModel54_BC *unkBC; // Used
     u8 unkC0;
     u8 unkC1;
     u8 unkC2;
     u8 unkC3;
-} Model2Model;
+} PropModel;
 
 typedef struct {
     void* unk0;
@@ -1848,7 +1848,7 @@ typedef struct {
     s8 unk9B;
     s32 unk9C;
     s32 unkA0;
-} OM2_scriptdata;
+} Prop_ScriptData;
 
 typedef struct {
     s32 unk0;
@@ -1882,15 +1882,15 @@ typedef struct {
     s32 unk60;
     s32 unk64;
     s32 unk68;
-} OM2_unk24;
+} Prop_unk24;
 
-typedef struct OM2_unk74 OM2_unk74;
+typedef struct Prop_unk74 Prop_unk74;
 
-struct OM2_unk74 {
+struct Prop_unk74 {
     f32 unk0;
     f32 unk4;
     f32 unk8;
-    OM2_unk74 *next;
+    Prop_unk74 *next;
 };
 
 typedef struct {
@@ -1908,7 +1908,7 @@ typedef struct {
     f32 unkC;
     s16 unk10;
     s16 unk12;
-} OM2_unk78;
+} Prop_unk78;
 
 typedef struct {
     u8 unk0[0x10 - 0x0];
@@ -1918,7 +1918,7 @@ typedef struct {
     u8 unk16;
     u8 unk17;
     void *unk18;
-} OM2_unk28;
+} Prop_unk28;
 
 typedef struct {
     void *unk0;
@@ -1927,9 +1927,9 @@ typedef struct {
     u8 unkC[0x24 - 0xC];
     u8 unk24;
     u8 unk25[2];
-} OM2_unk48;
+} Prop_unk48;
 
-typedef struct object_model2 {
+typedef struct prop {
     f32 x_position; // at 0x00
     f32 y_position; // at 0x04
     f32 z_position; // at 0x08
@@ -1938,9 +1938,9 @@ typedef struct object_model2 {
     f32 y_rotation; // at 0x14
     f32 z_rotation; // at 0x18
     f32 unk1C;
-    Model2Model *model_pointer; // at 0x20
-    OM2_unk24 *unk24; // labelled behavior_type_pointer in ScriptHawk
-    OM2_unk28 *unk28;
+    PropModel *model_pointer; // at 0x20
+    Prop_unk24 *unk24; // labelled behavior_type_pointer in ScriptHawk
+    Prop_unk28 *unk28;
     s32 unk2C;
     s32 unk30;
     s32 unk34;
@@ -1948,7 +1948,7 @@ typedef struct object_model2 {
     s32 unk3C;
     s32 unk40;
     s32 unk44;
-    OM2_unk48 *unk48;
+    Prop_unk48 *unk48;
     s32 unk4C;
     s32 unk50;
     s32 unk54;
@@ -1962,9 +1962,9 @@ typedef struct object_model2 {
     u8 unk6E;
     u8 unk6F;
     GlobalASMStruct83 *unk70;
-    OM2_unk74 *unk74;
-    OM2_unk78 *unk78; // used in func_global_asm_80650AD8, weird format
-    OM2_scriptdata *unk7C; // labelled behavior_pointer in ScriptHawk
+    Prop_unk74 *unk74;
+    Prop_unk78 *unk78; // used in func_global_asm_80650AD8, weird format
+    Prop_ScriptData *unk7C; // labelled behavior_pointer in ScriptHawk
     s32 unk80;
     s16 object_type; // at 0x84
     s16 unk86;
@@ -1974,12 +1974,12 @@ typedef struct object_model2 {
     u8 unk8D;
     u8 unk8E;
     u8 unk8F;
-} ObjectModel2;
+} Prop;
 
 typedef struct chunk_14 Chunk14;
 
 struct chunk_14 {
-    Model2Model *unk0;
+    PropModel *unk0;
     f32 unk4;
     f32 unk8;
     f32 unkC;

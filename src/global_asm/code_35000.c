@@ -40,7 +40,7 @@ void func_global_asm_8063039C(void) {
     D_global_asm_807F5FF4 = NULL;
 }
 
-Chunk14 *func_global_asm_806303C4(Chunk14 *arg0, u8 arg1, Model2Model *arg2, f32 arg3, f32 arg4, f32 arg5, s16 arg6, s16 arg7, u8 arg8, s16 arg9, u8 argA) {
+Chunk14 *func_global_asm_806303C4(Chunk14 *arg0, u8 arg1, PropModel *arg2, f32 arg3, f32 arg4, f32 arg5, s16 arg6, s16 arg7, u8 arg8, s16 arg9, u8 argA) {
     Chunk14 *temp_v0;
     Chunk14 *phi_v1;
     s32 phi_v0;
@@ -115,7 +115,7 @@ Chunk14 *func_global_asm_806303C4(Chunk14 *arg0, u8 arg1, Model2Model *arg2, f32
     return phi_a1;
 }
 
-Chunk14 *func_global_asm_80630588(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 *arg3) {
+Chunk14 *func_global_asm_80630588(Chunk14 *arg0, PropModel *arg1, u8 arg2, u8 *arg3) {
     u8 phi_v0;
     Chunk14 *phi_t0;
     Chunk14 *phi_a2;
@@ -209,7 +209,7 @@ void func_global_asm_806307AC(Chunk14 *current) {
     }
 }
 
-void func_global_asm_806307CC(Chunk14 *arg0, Model2Model *arg1, u8 arg2, u8 arg3, s8 *arg4) {
+void func_global_asm_806307CC(Chunk14 *arg0, PropModel *arg1, u8 arg2, u8 arg3, s8 *arg4) {
     s8 found = FALSE;
 
     if (arg2 == 1) {

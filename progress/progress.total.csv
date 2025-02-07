@@ -681,7 +681,6 @@ us,asm,func_global_asm_8061540C,272,yes
 us,asm,func_global_asm_8065D994,1708,no
 us,asm,func_global_asm_80679010,84,yes
 us,asm,func_global_asm_806E8E78,140,yes
-us,asm,playSoundAtObjectModel2,144,yes
 us,asm,func_global_asm_806765E8,168,yes
 us,asm,func_global_asm_80659350,120,yes
 us,asm,func_global_asm_806E352C,172,yes
@@ -1884,6 +1883,7 @@ us,asm,func_global_asm_806608FC,1084,no
 us,asm,func_global_asm_8072EF7C,288,yes
 us,asm,func_global_asm_80660520,784,no
 us,asm,func_global_asm_806F2FC0,464,yes
+us,asm,playSoundAtProp,144,yes
 us,asm,func_global_asm_8065EFF0,324,yes
 us,asm,func_global_asm_8069E018,40,yes
 us,asm,func_global_asm_806156A0,60,yes

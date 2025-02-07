@@ -614,7 +614,7 @@ void func_global_asm_806F6554(u8 arg0, Struct806F6554_arg1 *arg1) {
 
 s32 func_global_asm_806F6644(s16 arg0, s32 arg1, u16 arg2) {
     PlayerAdditionalActorData *PaaD;
-    ObjectModel2 *temp;
+    Prop *temp;
     u8 temp_a0;
 
     switch (arg2) {

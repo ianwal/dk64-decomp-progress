@@ -320,7 +320,7 @@ void func_global_asm_80652374(Struct80652374_arg0 *arg0) {
     *sp40 = func_global_asm_806303C4(*sp40, arg0->unk24, arg0->unk0, arg0->unk4, arg0->unk8, arg0->unkC, arg0->unk1C, arg0->unk1E, arg0->unk22, arg0->unk20, 0);
 }
 
-void func_global_asm_806524A0(Model2Model *arg0, u8 arg1) {
+void func_global_asm_806524A0(PropModel *arg0, u8 arg1) {
     u8 sp4F;
     s32 i;
 
@@ -339,7 +339,7 @@ void func_global_asm_806524A0(Model2Model *arg0, u8 arg1) {
 
 /*
 // Something to do with arg2? Loop condition? Break?
-u8 func_global_asm_80652594(Model2Model *arg0, s16 *arg1, u8 arg2) {
+u8 func_global_asm_80652594(PropModel *arg0, s16 *arg1, u8 arg2) {
     u8 sp4F;
     s16 i;
     s32 pad;

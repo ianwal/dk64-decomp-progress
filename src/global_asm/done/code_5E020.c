@@ -3,7 +3,7 @@
 
 typedef struct global_asm_struct_78 {
     s32 unk0;
-    s32 unk4; // Index into object model 2 array?
+    s32 unk4; // Index into prop array?
     struct global_asm_struct_78 *unk8; // Linked list?
 } global_asm_struct_78;
 
@@ -55,7 +55,7 @@ void func_global_asm_806593C8(s32 arg0, s32 arg1) {
     var_v1->unk4 = arg1;
 }
 
-// Returns an index into object model2 array
+// Returns an index into prop array
 s32 func_global_asm_80659470(s32 arg0) {
     global_asm_struct_78 *phi_v1;
 
