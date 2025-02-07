@@ -252,7 +252,7 @@ typedef enum actors_e {
     ACTOR_UNKNOWN_10, // Always loaded, not sure what it is
     ACTOR_UNKNOWN_11, // Always loaded, not sure what it is
     ACTOR_LOADING_ZONE_CONTROLLER, // Always loaded
-    ACTOR_OBJECT_MODEL_2_CONTROLLER, // Always loaded
+    ACTOR_PROP_CONTROLLER, // Always loaded
     ACTOR_UNKNOWN_14, // Always loaded, not sure what it is
     ACTOR_UNKNOWN_15, // Always loaded, not sure what it is
     ACTOR_UNKNOWN_16,

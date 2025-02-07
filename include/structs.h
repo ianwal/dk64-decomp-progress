@@ -1694,9 +1694,9 @@ struct global_asm_struct_83 {
     GlobalASMStruct83 *next;
 };
 
-typedef struct model_2_model_50_b8 PropModel50_B8;
+typedef struct prop_model_50_b8 PropModel50_B8;
 
-struct model_2_model_50_b8 {
+struct prop_model_50_b8 {
     s32 unk0[4];
     s32 unk10[4];
     s32 unk20[4];

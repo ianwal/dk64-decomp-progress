@@ -12,7 +12,7 @@ void func_global_asm_8068A7B0(void) {
     spawnActor(ACTOR_UNKNOWN_10, 0);
     spawnActor(ACTOR_UNKNOWN_11, 0);
     spawnActor(ACTOR_LOADING_ZONE_CONTROLLER, 0);
-    spawnActor(ACTOR_OBJECT_MODEL_2_CONTROLLER, 0);
+    spawnActor(ACTOR_PROP_CONTROLLER, 0);
     spawnActor(ACTOR_UNKNOWN_14, 0);
     spawnActor(ACTOR_UNKNOWN_15, 0);
 }
