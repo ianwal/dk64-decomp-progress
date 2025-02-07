@@ -382,9 +382,6 @@ Gfx *func_multiplayer_800246EC(Gfx *dl, Struct800246EC *aaD, f32 arg2) {
 }
 */
 
-// Displaylist stuff, close, float, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800249D8.s")
-
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 
@@ -400,7 +397,6 @@ typedef struct {
     s32 unk30;
 } AAD_800249D8;
 
-/*
 Gfx *func_multiplayer_800249D8(Gfx *dl, Actor *arg1) {
     AAD_800249D8 *aaD;
     s32 i;
@@ -409,15 +405,15 @@ Gfx *func_multiplayer_800249D8(Gfx *dl, Actor *arg1) {
     f32 x;
     f32 temp_f20;
     f32 temp_f24;
-    s32 temp0;
+    AAD_800249D8_unk20 *temp0;
     f32 temp1;
     s16 temp2;
     s16 temp3;
 
     aaD = arg1->additional_actor_data;
-    temp2 = D_global_asm_80744490;
-    temp_f24 = (f32)temp2 / (cc_number_of_players + 1);
-    temp_f20 = aaD->unk20->unk6 + 8;
+    temp_f24 = (f32)D_global_asm_80744490 / (cc_number_of_players + 1);
+    temp0 = aaD->unk20;
+    temp_f20 = temp0->unk6 + 8;
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, 0, 0, D_global_asm_80744490, D_global_asm_80744494);
     dl = func_multiplayer_800246EC(dl, aaD, temp_f24);
     if (D_global_asm_807552E8 != 3) {
@@ -439,7 +435,6 @@ Gfx *func_multiplayer_800249D8(Gfx *dl, Actor *arg1) {
     }
     return dl;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80024CA4.s")
