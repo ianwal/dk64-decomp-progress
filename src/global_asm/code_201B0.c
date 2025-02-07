@@ -1047,10 +1047,6 @@ void func_global_asm_8061F2B8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F4B0.s")
 
-// regalloc, close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F510.s")
-
-/*
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -1066,10 +1062,9 @@ typedef struct {
 
 extern Struct807F5BD4 *D_807F5BD4;
 
-void func_global_asm_8061F510(u8 arg0, s8 arg1) {
+void func_global_asm_8061F510(u8 arg0, u8 arg1) {
     D_807F5BD4[arg0].unk18 = arg1;
 }
-*/
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F53C.s")
