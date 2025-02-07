@@ -691,9 +691,9 @@ void func_global_asm_8060A634(s32 arg0, f32 arg1) {
     func_global_asm_8060A398(arg0);
 }
 
-extern s32 D_global_asm_80770588; // TODO: f32?
+extern f32 D_global_asm_80770588; // TODO: f32?
 
-void func_global_asm_8060A1B0(s32, u8, s32);
+void func_global_asm_8060A1B0(s32, u8, f32);
 
 void func_global_asm_8060A670(s32 arg0, u8 arg1) {
     func_global_asm_8060A1B0(arg0, arg1, D_global_asm_80770588);
@@ -701,3 +701,33 @@ void func_global_asm_8060A670(s32 arg0, u8 arg1) {
 
 // rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_8060A6A0.s")
+
+extern u8 D_8077058E;
+extern f64 D_global_asm_80757000;
+extern f64 D_global_asm_80757008;
+extern f64 D_global_asm_80757010;
+
+/*
+void func_global_asm_8060A6A0(s32 arg0, u8 arg1, f32 arg2) {
+    f64 var_f0;
+    f32 temp;
+    f32 temp2;
+
+    func_global_asm_8060A1B0(arg2, arg1, arg2);
+    var_f0 = D_8077058E;
+    temp = (var_f0 * D_global_asm_80757008) / D_global_asm_80757000;
+    temp2 = ((var_f0 * D_global_asm_80757010) / D_global_asm_80757000) + 1.0f;
+    if (arg0) {
+        if (D_global_asm_80745658[D_global_asm_80770560[arg0]] & 1) {
+            func_global_asm_807381D8(
+                D_global_asm_8076BF20[arg0],
+                temp,
+                temp2
+            );
+        } else {
+            func_global_asm_807381D8(D_global_asm_8076BF20[arg0], 0.0f, 1.0f);
+        }
+    }
+    func_global_asm_806049CC(arg0);
+}
+*/

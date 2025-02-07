@@ -155,15 +155,8 @@ void func_global_asm_80665564(Actor *arg0, f32 arg1) {
         D_global_asm_80748E04 = 1;
     }
     D_global_asm_80748E00 = 0;
-    if (arg0->object_properties_bitfield & 0x40000) {
-        var_f0 = 0.2;
-    } else {
-        var_f0 = 1.0;
-    }
-    var_t0 = 0x400;
-    if (arg0->unk6A & 1) {
-        var_t0 = arg0->unkDA;
-    }
+    var_f0 = (f32)(arg0->object_properties_bitfield & 0x40000 ? 0.2 : 1.0);
+    var_t0 = (arg0->unk6A & 1) ? arg0->unkDA : 0x400;
     var_a1 = arg0->unkD8;
     var_t1 = &D_global_asm_80748D40[arg0->unkD1];
     // TODO: Probably a switch case

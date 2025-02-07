@@ -1554,8 +1554,21 @@ void func_global_asm_806398E4(s32 objectModel2Index, u8 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639968.s")
 
-// Doable, needs some structs
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639C04.s")
+typedef struct {
+    u8 unk0[0x30 - 0x0];
+    s32 unk30;
+    u8 unk34[0x44 - 0x34];
+    s32 unk44;
+    u8 unk48[0xD4 - 0x48];
+    s32 unkD4;
+} Struct80639C04_arg0_unk50;
+
+typedef struct {
+    u8 unk0[0x24 - 0x0];
+    s32 unk24[1];
+    u8 unk28[0x50 - 0x28];
+    Struct80639C04_arg0_unk50 *unk50;
+} Struct80639C04_arg0;
 
 typedef struct {
     u8 unk0[0x30 - 0x0];
@@ -1577,6 +1590,37 @@ typedef struct {
     u8 unk60[0xD0 - 0x60];
     u8 unkD0;
 } Struct80639CD0;
+
+void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8 *arg3, s16 *arg4);
+
+void func_global_asm_80639C04(Struct80639C04_arg0 *arg0, s32 arg1, s32 *arg2, s32 arg3, s8 *arg4, s32 arg5) {
+    s32 temp_v1;
+    s32 found;
+    Struct80639C04_arg0_unk50 *current;
+
+    current = arg0->unk50;
+    if (current != NULL) {
+        temp_v1 = arg0->unk24[arg1];
+        found = FALSE;
+        while (current != NULL && !found) {
+            if (temp_v1 == current->unk44) {
+                found = TRUE;
+            } else {
+                current = current->unkD4;
+            }
+        }
+        if (found) {
+            func_global_asm_80639CD0(current, arg2, arg3, arg4, arg5);
+            current->unk30 = object_timer;
+        } else {
+            *arg4 = 0;
+            *arg2 = temp_v1;
+        }
+    } else {
+        *arg4 = 0;
+        *arg2 = arg0->unk24[arg1];
+    }
+}
 
 void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8 *arg3, s16 *arg4) {
     u8 var_v1;
