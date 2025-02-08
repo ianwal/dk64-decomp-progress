@@ -1173,10 +1173,6 @@ void func_menu_8002CB18(void) {
 }
 */
 
-// regalloc, close, doable
-// https://decomp.me/scratch/m94iK
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CFA4.s")
-
 extern s16 D_menu_80033670;
 extern s8 D_global_asm_8074583C;
 extern s8 D_global_asm_80745840;
@@ -1194,7 +1190,6 @@ extern MenuStruct7 D_global_asm_80744568[];
 
 void func_global_asm_8060A398(s32);
 
-/*
 void func_menu_8002CFA4(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
     s8 sp23 = FALSE;
@@ -1223,14 +1218,12 @@ void func_menu_8002CFA4(Actor *arg0, s32 arg1) {
                     break;
                 case 1:
                     if (arg1 & 0x10) {
-                        // Regalloc is here
                         D_global_asm_8074583C++;
                         playSound(0x2A0, 0x7FFF, 63.0f, 1.0f, 0, 0);
                         if (D_global_asm_8074583C > 0x28) {
                             D_global_asm_8074583C = 0x28;
                         }
                     } else if (arg1 & 0x20) {
-                        // Regalloc is here
                         D_global_asm_8074583C--;
                         playSound(0x2A0, 0x7FFF, 63.0f, 1.0f, 0, 0);
                         if (D_global_asm_8074583C < 0) {
@@ -1292,7 +1285,6 @@ void func_menu_8002CFA4(Actor *arg0, s32 arg1) {
         playSound(0x74, 0x7FFF, 63.0f, 1.0f, 0, 0);
     }
 }
-*/
 
 Gfx *func_menu_8002F980(Gfx *, Struct800317E8 *, s8 **, s8, u32 *, s32, f32 *, f32, s32);
 extern s8 D_global_asm_8074583C;
@@ -1323,19 +1315,19 @@ Gfx *func_menu_8002D520(Actor *arg0, Gfx *dl) {
     temp_f10 = sp54 * 4.0f;
     sp58 = (sp58 - sp50) * 4.0f;
     switch (sp60) {
-    case 0:
-        dl = printStyledText(dl, 1, sp58, temp_f10, label_string_pointer_array[D_global_asm_80745844 + 37], 0x81U);
-        break;
-    case 1:
-    case 2:
-        dl = printStyledText(dl, 1, sp58, temp_f10, label_string_pointer_array[40], 0x81U);
-        var_v0 = sp60 == 1 ? D_global_asm_8074583C : D_global_asm_80745840;
-        sprintf(sp40, "%d", (var_v0 + 1) >> 1);
-        dl = printStyledText(dl, 1, sp58, temp_f10 + 0x78, &sp40, 0x81U);
-        break;
-    case 3:
-        D_menu_80033674 = 0;
-        break;
+        case 0:
+            dl = printStyledText(dl, 1, sp58, temp_f10, label_string_pointer_array[D_global_asm_80745844 + 37], 0x81U);
+            break;
+        case 1:
+        case 2:
+            dl = printStyledText(dl, 1, sp58, temp_f10, label_string_pointer_array[40], 0x81U);
+            var_v0 = sp60 == 1 ? D_global_asm_8074583C : D_global_asm_80745840;
+            sprintf(sp40, "%d", (var_v0 + 1) >> 1);
+            dl = printStyledText(dl, 1, sp58, temp_f10 + 0x78, &sp40, 0x81U);
+            break;
+        case 3:
+            D_menu_80033674 = 0;
+            break;
     }
     return dl;
 }
@@ -1933,29 +1925,29 @@ void func_menu_8002FEBC(void) {
             PaaD->unk23C = 0x50;
         }
         switch (D_80744514) {
-        case 1:
-            MaaD->unk12 = 1;
-            break;
-        case 2:
-            MaaD->unk12 = 0xB;
-            break;
-        case 3:
-        case 4:
-        case 5:
-            MaaD->unk12 = 0xA;
-            break;
-        case 6:
-        case 7:
-            MaaD->unk12 = 0xC;
-            D_menu_800339A8 = D_80744514 - 6;
-            func_menu_8002F75C();
-            break;
-        default:
-            playActorAnimation(last_spawned_actor, 0x349);
-            player_pointer->control_state = 0x86;
-            player_pointer->control_state_progress = 0;
-            MaaD->unk12 = 0;
-            break;
+            case 1:
+                MaaD->unk12 = 1;
+                break;
+            case 2:
+                MaaD->unk12 = 0xB;
+                break;
+            case 3:
+            case 4:
+            case 5:
+                MaaD->unk12 = 0xA;
+                break;
+            case 6:
+            case 7:
+                MaaD->unk12 = 0xC;
+                D_menu_800339A8 = D_80744514 - 6;
+                func_menu_8002F75C();
+                break;
+            default:
+                playActorAnimation(last_spawned_actor, 0x349);
+                player_pointer->control_state = 0x86;
+                player_pointer->control_state_progress = 0;
+                MaaD->unk12 = 0;
+                break;
         }
         player_pointer->animation_state->scale[0] *= 0.8;
         player_pointer->animation_state->scale[1] *= 0.8;
