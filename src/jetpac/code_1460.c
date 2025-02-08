@@ -149,7 +149,7 @@ extern JetpacStruct1 D_jetpac_8002F3D0[0x18][0x20];
 extern s32 D_jetpac_80045BD0;
 
 extern void func_global_asm_8070E8F0(Gfx**, Sprite*);
-void func_jetpac_80025700(Struct8002C4D0 *, s32, s32, s32, s32);
+void func_jetpac_80025700(Struct8002C4D0 *, s32, s32, rgba*, s32);
 void func_jetpac_80026318(s32*);
 void func_jetpac_80027010(JetpacStruct3 *arg0);
 
@@ -233,9 +233,82 @@ void func_jetpac_800255D4(Gfx **arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025700.s")
 
-void func_jetpac_800254B8(Struct8002C4D0 *, s32, s32, s32, s32);
+void func_jetpac_800254B8(Struct8002C4D0 *, s32, s32, rgba*, s32);
 extern Struct8002C4D0 D_80042BD0[0x100][2];
 extern s32 D_jetpac_80045BD0;
+
+/* Frustratingly close...
+void func_jetpac_80025700(Struct8002C4D0* arg0, s32 base_or_stride_y, s32 base_or_stride_x, rgba* color, s32 arg4) {
+    Struct8002C4D0* temp_a0;
+    s32 limit_x;
+    s32 limit_y;
+    s32 next_y;
+    s32 next_x;
+    s32 current_y;
+    s32 current_x;
+    s32 previous_x;
+    s32 previous_y;
+    s32 index;
+    u8 index2;
+
+    // I may have the X and Y mixed up here, I just know this is a 2D something...
+    limit_y = arg0->unkA - 1;
+    limit_x = arg0->unkC - 1;
+
+    if (D_jetpac_80045BD0 >= 0x100) {
+        return;
+    }
+
+    if (base_or_stride_y < 0) {
+        base_or_stride_y += 0x100;
+    }
+
+    for (previous_x = 0, current_x = base_or_stride_x; previous_x < limit_x; previous_x = current_x, current_x += base_or_stride_x) {
+        current_x += 8;
+        current_x = (current_x & 0xFFF8) - base_or_stride_x;
+        if (current_x >= limit_x) {
+            if (!current_x);
+            current_x = limit_x;
+        }
+
+        for (previous_y = 0, current_y = base_or_stride_y; previous_y < limit_y; previous_y = current_y, current_y += base_or_stride_y) {
+            index = D_jetpac_80045BD0;
+            if (index >= 0x100) {
+                return;
+            }
+
+            temp_a0 = &D_80042BD0[D_global_asm_807444FC][index];
+            D_jetpac_80045BD0++;
+            *temp_a0 = *arg0;
+
+            current_y += 8;
+            current_y = (current_y & 0xFFF8) - base_or_stride_y;
+            if (current_y >= limit_y) {
+                if (!current_y);
+                current_y = limit_y;
+            }
+
+            if (arg4 != 0) {
+                temp_a0->unk10 += (limit_y - current_y);
+            } else {
+                temp_a0->unk10 += previous_y;
+            }
+
+            temp_a0->unk12 += previous_x;
+            temp_a0->unkA = (current_y - previous_y) + 1;
+            temp_a0->unkC = (current_x - previous_x) + 1;
+
+            next_x = base_or_stride_x + previous_x;
+            next_y = base_or_stride_y + previous_y;
+            if (next_y >= 0x100) {
+                next_y -= 0x100;
+            }
+
+            func_jetpac_800254B8(temp_a0, next_y, next_x, color, arg4);
+        }
+    }
+}
+*/
 
 /*
 void func_jetpac_80025700(Struct8002C4D0 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
