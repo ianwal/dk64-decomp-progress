@@ -100,7 +100,8 @@ typedef struct RaceStruct2 {
     RaceStruct2_unkC *unkC;
 } RaceStruct2;
 
-extern RaceStruct2 *D_race_8002FCF0;
+// .data
+RaceStruct2 *D_race_8002FCF0 = NULL;
 
 typedef struct {
     s16 unk0;
@@ -156,7 +157,7 @@ void *func_race_8002E9AC(u8 arg0) {
 
 void setupRaceOnMapLoad(Maps map) {
     s32 *checkpointFile = getPointerTableFile(0x18, map, 1, 1);
-    D_race_8002FCF0 = malloc(0x10);
+    D_race_8002FCF0 = malloc(sizeof(RaceStruct2));
     func_global_asm_80611690(D_race_8002FCF0);
     func_race_8002E9F8(checkpointFile);
     switch (map) {

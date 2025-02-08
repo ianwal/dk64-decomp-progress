@@ -2,6 +2,36 @@
 #include "functions.h"
 #include "sprites.h"
 
+// .data
+static s8 D_critter_80029F80[] = {
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+};
+
+static s8 D_critter_80029F84[] = {
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x00,
+    0x08,
+    0x00,
+    0x01,
+    0x00,
+    0x04,
+    0x00,
+    0x02,
+};
+
+static u16 D_critter_80029F90[] = {
+    0x0800,
+    0x0400,
+    0x0200,
+    0x0100,
+};
+
 extern f32 D_critter_8002A1B0;
 
 void func_critter_80027340(s32 arg0) {
@@ -34,9 +64,6 @@ typedef struct {
 extern s16 D_global_asm_807446D0[];
 extern Struct807446E0 D_global_asm_807446E0[];
 extern u16 D_global_asm_807FC930[];
-extern s8 D_critter_80029F80[];
-extern s8 D_critter_80029F84[];
-extern u16 D_critter_80029F90[];
 extern SpriteData D_global_asm_8071FE08; // TODO: Datatype
 extern SpriteData D_global_asm_80720A7C; // TODO: Datatype
 

@@ -31,17 +31,39 @@ typedef struct {
     u8 unkD;
 } AAD_8002D2F0;
 
-extern s8 D_bonus_8002D910[];
-extern s8 D_bonus_8002D91C[];
-extern s8 D_bonus_8002D920;
-extern s8 D_bonus_8002D924;
-extern s8 D_bonus_8002D928;
-extern s8 D_bonus_8002D92C;
-extern s8 D_bonus_8002D930;
-extern s8 D_bonus_8002DEF0[];
-
 extern s16 D_80744518;
 extern u16 D_807ECD60;
+
+// .data
+static s8 D_bonus_8002D910[] = {
+    0x07,
+    0x14,
+    0x08,
+    0x09,
+    0x0B,
+    0x0A,
+    0x0C,
+    0x0D,
+    0x0F,
+    0x0E,
+    0x00,
+    0x00,
+};
+
+static s8 D_bonus_8002D91C[] = {
+    0x08,
+    0x0B,
+    0x0C,
+    0x0E,
+};
+
+static s8 D_bonus_8002D920 = 0;
+static s8 D_bonus_8002D924 = 0;
+static s8 D_bonus_8002D928 = 0;
+static s8 D_bonus_8002D92C = 0;
+static s8 D_bonus_8002D930 = 0;
+
+extern s8 D_bonus_8002DEF0[];
 
 Gfx *func_global_asm_8068DC54(Gfx*, s32, s32, void*, s16, void*);
 s32 func_global_asm_806A2A10(s32, s32, u8);

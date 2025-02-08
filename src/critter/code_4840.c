@@ -77,8 +77,8 @@ s16 func_critter_800288A8(AAD_critter_8002904C *arg0, u8 *arg1, s16 arg2) {
 
 /*
 Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg3) {
-    Mtx sp98;
-    Mtx sp58;
+    f32 sp98[4][4];
+    f32 sp58[4][4];
     u8 sp57 = 100;
     f32 sp50;
     s16 temp_t1;

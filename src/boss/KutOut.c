@@ -37,25 +37,25 @@ static s16 D_boss_80035B20[] = {
     0x0000,
 };
 
-u8 D_boss_80035B28 = 0xFF;
+static u8 D_boss_80035B28 = 0xFF;
 
-s16 D_boss_80035B2C = 0x0000;
+static s16 D_boss_80035B2C = 0x0000;
 
-u8 D_boss_80035B30[] = {7, 3, 1, 0}; // TODO: last 0 is padding?
+static u8 D_boss_80035B30[] = {7, 3, 1, 0}; // TODO: last 0 is padding?
 
-u8 D_boss_80035B34[] = {0, 0, 0, 0}; // TODO: Just a u8 with padding?
-s32 D_boss_80035B38 = 0xFF000000; // TODO: Just a u8 with padding?
+static u8 D_boss_80035B34[] = {0, 0, 0, 0}; // TODO: Just a u8 with padding?
+static s32 D_boss_80035B38 = 0xFF000000; // TODO: Just a u8 with padding?
 
-f32 D_boss_80035B3C = 0.0f;
+static f32 D_boss_80035B3C = 0.0f;
 
-u8 D_boss_80035B40[] = {0, 0, 0, 0}; // TODO: Just a u8 with padding?
-u8 D_boss_80035B44[] = {2, 3, 4, 0}; // TODO: last 0 is padding?
+static u8 D_boss_80035B40[] = {0, 0, 0, 0}; // TODO: Just a u8 with padding?
+static u8 D_boss_80035B44[] = {2, 3, 4, 0}; // TODO: last 0 is padding?
 
-u8 D_boss_80035B48[] = {1, 0, 0, 0}; // TODO: Just a u8 with padding?
+static u8 D_boss_80035B48[] = {1, 0, 0, 0}; // TODO: Just a u8 with padding?
 
-u16 D_boss_80035B4C[] = {2, 3, 4, 5, 6, 0}; // TODO: last 0 is padding?
+static u16 D_boss_80035B4C[] = {2, 3, 4, 5, 6, 0}; // TODO: last 0 is padding?
 
-u8 D_boss_80035B58[] = {
+static u8 D_boss_80035B58[] = {
     0x02,
     0x01,
     0x03,
@@ -66,22 +66,22 @@ u8 D_boss_80035B58[] = {
     0x00, // TODO: Padding?
 };
 
-s16 D_boss_80035B60[4] = {
+static s16 D_boss_80035B60[4] = {
     0x00DC,
     0x00DD,
     0x00DE,
     0x00DF,
 };
 
-u8 D_boss_80035B68[4] = {0, 0, 0, 0};
-u8 D_boss_80035B6C[4] = {0, 0, 0, 0};
+static u8 D_boss_80035B68[4] = {0, 0, 0, 0};
+static u8 D_boss_80035B6C[4] = {0, 0, 0, 0};
 
-s16 D_boss_80035B70[2] = {0, 0};
+static s16 D_boss_80035B70[2] = {0, 0};
 
-s16 D_boss_80035B74 = 0x0078;
+static s16 D_boss_80035B74 = 0x0078;
 
 // .rodata
-const u8 D_boss_80036B80[4] = {0x3D, 0xCC, 0xCC, 0xCD}; // TODO: Unused?
+static const u8 D_boss_80036B80[4] = {0x3D, 0xCC, 0xCC, 0xCD}; // TODO: Unused?
 
 // Jumptable, 4200 bytes of code
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/KutOut/func_boss_80031AA0.s")
@@ -90,10 +90,7 @@ const u8 D_boss_80036B80[4] = {0x3D, 0xCC, 0xCC, 0xCD}; // TODO: Unused?
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/KutOut/func_boss_80032B08.s")
 
 s32 func_global_asm_80614644(Actor *, AnimationStateUnk0 *, f32);
-extern s16 D_boss_80035B2C;
-extern f32 D_boss_80035B3C;
 
-extern s16 D_boss_80035B74;
 extern f32 D_boss_80036DC4;
 
 typedef struct {

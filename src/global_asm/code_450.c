@@ -748,6 +748,7 @@ extern f32 D_global_asm_807444C4;
 extern f32 D_global_asm_807444C8;
 extern u8 D_global_asm_807467E4;
 extern u8 D_global_asm_80750AB8;
+extern void *D_8076A060;
 extern u16 D_global_asm_8076A09C;
 extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_8076A0B3;
@@ -936,10 +937,6 @@ void func_global_asm_805FD088(Struct805FD088 *arg0, Gfx **arg1, Gfx **arg2) {
     *arg2 = dl_0;
     }
 }
-
-extern void *D_8076A060;
-extern s16 D_global_asm_80744490;
-extern s16 D_global_asm_80744494;
 
 Gfx *func_global_asm_805FE398(Gfx *dl) {
     gDPPipeSync(dl++);

@@ -51,8 +51,8 @@ void func_global_asm_80663DA0(void) {
     }
 }
 
-u8 func_global_asm_80663FCC(s16 model2ArrayIndex) {
-    switch (D_global_asm_807F6000[model2ArrayIndex].object_type) {
+u8 func_global_asm_80663FCC(s16 propIndex) {
+    switch (D_global_asm_807F6000[propIndex].object_type) {
         case 0x1: // Thin Flame? (2D)
         case 0xC: // Flames (2D)
         case 0x10: // Flame (2D)

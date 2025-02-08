@@ -307,7 +307,7 @@ typedef struct DKTVExtraData {
 
 extern DKTVExtraData D_global_asm_807ECE20;
 
-extern ObjectModel2 *D_global_asm_807F6000;
+extern Prop *D_global_asm_807F6000;
 
 extern u16 D_global_asm_80744710[]; // = { // Permanent flag index lookup array
 //     26, // Key 1 Collected

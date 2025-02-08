@@ -2,19 +2,19 @@
 #include "functions.h"
 #include "sprites.h"
 
-const s32 D_boss_800362F0[] = {
+static const s32 D_boss_800362F0[] = {
     0x09000102,
     0x03040506,
     0x07080000,
 };
 
-const s32 D_boss_800362FC[] = {
+static const s32 D_boss_800362FC[] = {
     0x274F4B00,
     0x0346042A,
     0x48964350,
 };
 
-const s32 D_boss_80036308[] = {
+static const s32 D_boss_80036308[] = {
     0x41024F46,
     0x044B0003,
     0x46042A48,
@@ -22,7 +22,7 @@ const s32 D_boss_80036308[] = {
     0x03500000,
 };
 
-const s32 D_boss_8003631C[] = {
+static const s32 D_boss_8003631C[] = {
     0x41024F46,
     0x044B0003,
     0x46044B00,
@@ -31,13 +31,13 @@ const s32 D_boss_8003631C[] = {
     0x00035000,
 };
 
-const s32 D_boss_80036334[] = {
+static const s32 D_boss_80036334[] = {
     0x274F4B00,
     0x0346042A,
     0x48964350,
 };
 
-const s32 D_boss_80036340[] = {
+static const s32 D_boss_80036340[] = {
     0x41024F46,
     0x044B0003,
     0x46042A29,
@@ -45,7 +45,7 @@ const s32 D_boss_80036340[] = {
     0x00035000,
 };
 
-const s32 D_boss_80036354[] = {
+static const s32 D_boss_80036354[] = {
     0x41024604,
     0x4B000346,
     0x044B0003,
@@ -61,7 +61,7 @@ const s32 D_boss_80036354[] = {
     0x4B000350,
 };
 
-const s32 D_boss_80036388[] = {
+static const s32 D_boss_80036388[] = {
     0x41022C11,
     0x2B114850,
     0x114F434B,
@@ -69,13 +69,13 @@ const s32 D_boss_80036388[] = {
     0x2A485050,
 };
 
-const s32 D_boss_8003639C[] = {
+static const s32 D_boss_8003639C[] = {
     0x43410155,
     0xFFFF0000,
 };
 
 // .data
-void *D_boss_80035A20[] = {
+static void *D_boss_80035A20[] = {
     D_boss_800362FC,
     D_boss_80036308,
     D_boss_8003631C,
@@ -83,7 +83,7 @@ void *D_boss_80035A20[] = {
     NULL,
 };
 
-void *D_boss_80035A34[] = {
+static void *D_boss_80035A34[] = {
     D_boss_80036334,
     D_boss_80036340,
     D_boss_80036354,

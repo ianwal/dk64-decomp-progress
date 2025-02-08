@@ -14,18 +14,42 @@ typedef struct RaceStruct9 {
 
 extern u16 D_global_asm_80750AC4;
 
+// .data
 typedef struct {
     s16 unk0;
-    s16 unk2;
+    // s16 unk2; // PADDING
     f32 unk4;
     u8 unk8;
-    u8 unk9;
-    u8 unkA;
-    u8 unkB;
+    // u8 unk9; // PADDING
+    // u8 unkA; // PADDING
+    // u8 unkB; // PADDING
 } Struct8002FB10_race_8002FB70;
 
-extern Struct8002FB10_race_8002FB70 D_race_8002FB10[];
-extern Struct8002FB10_race_8002FB70 D_race_8002FB70[];
+static Struct8002FB10_race_8002FB70 D_race_8002FB10[] = {
+    { 0x0010, -360.0f, 0x00 },
+    { 0x0011, -19.0f,  0x00 },
+    { 0x0017, -20.0f,  0x01 },
+    { 0x001B, -360.0f, 0x00 },
+    { 0x001C, -17.0f,  0x00 },
+    { 0x0033, -20.0f,  0x01 },
+    { 0x0038, -20.0f,  0x02 },
+    { 0x003C, -20.0f,  0x02 },
+};
+static Struct8002FB10_race_8002FB70 D_race_8002FB70[] = {
+    { 0x0026, -20.0f, 0x01 },
+    { 0x0028, -20.0f, 0x02 },
+    { 0x0032, -20.0f, 0x02 },
+};
+
+static s32 D_race_8002FB94[] = {
+    0x00000004,
+    0x00000001,
+    0x00000003,
+    0x00000002,
+    0x00000000, // PADDING
+    0x00000000, // PADDING
+    0x00000000, // PADDING
+};
 
 // TODO: Quite close, float nonsense
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80024000.s")

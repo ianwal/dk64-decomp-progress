@@ -68,14 +68,14 @@ typedef struct {
     u16 unk28; // Used
     u16 unk2A;
     s32 unk2C;
-} ObjectModel2Setup;
+} PropSetup;
 
 void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2);
 
 void func_global_asm_80631C3C(void) {
     void *setupFile;
-    ObjectModel2Setup *var_s0;
-    s32 objectModel2Count;
+    PropSetup *var_s0;
+    s32 propCount;
     s32 *sp58;
     s32 sp54;
     s32 i;
@@ -93,9 +93,9 @@ void func_global_asm_80631C3C(void) {
             if (setupFile != NULL) {
                 levelIndex = getLevelIndex(i, 1);
                 func_global_asm_80631F58(setupFile, &sp58, &sp54);
-                objectModel2Count = *sp58;
+                propCount = *sp58;
                 var_s0 = sp58 + 1;
-                for (j = 0; j < objectModel2Count; j++) {
+                for (j = 0; j < propCount; j++) {
                     if (func_global_asm_80631EB8(var_s0->unk28)) {
                         D_global_asm_807F6150[levelIndex]++;
                     }
@@ -111,13 +111,13 @@ void func_global_asm_80631C3C(void) {
 s32 func_global_asm_80631D8C(u8 map) {
     s32 temp;
     s32 j;
-    s32 objectModel2Count;
+    s32 propCount;
     s32 i;
     s32 *sp5C;
     s32 sp58;
     u8 levelIndex;
     u16 singleCoinOrBunchCount;
-    ObjectModel2Setup *phi_s0;
+    PropSetup *phi_s0;
 
     levelIndex = getLevelIndex(map, 1);
     singleCoinOrBunchCount = 0;
@@ -127,9 +127,9 @@ s32 func_global_asm_80631D8C(u8 map) {
             void *setupFile = getPointerTableFile(9, i, 1, 1);
             if (setupFile) {
                 func_global_asm_80631F58(setupFile, &sp5C, &sp58);
-                objectModel2Count = *sp5C;
+                propCount = *sp5C;
                 phi_s0 = sp5C + 1;
-                for (j = 0; j < objectModel2Count; j++) {
+                for (j = 0; j < propCount; j++) {
                     if (func_global_asm_80631EB8(phi_s0->unk28)) {
                         singleCoinOrBunchCount++;
                     }
@@ -190,7 +190,7 @@ void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2) {
 
 extern s16 D_global_asm_807F614A;
 
-// TODO: Rename to allocateObjectModel2Array
+// TODO: Rename to allocatePropArray
 s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
     switch (map) {
         case MAP_FUNGI:
@@ -213,18 +213,18 @@ s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
             break;
     }
     if (arg1) {
-        D_global_asm_807F6000 = malloc(D_global_asm_807F614A * sizeof(ObjectModel2));
+        D_global_asm_807F6000 = malloc(D_global_asm_807F614A * sizeof(Prop));
         func_global_asm_80611690(D_global_asm_807F6000);
     }
     return D_global_asm_807F614A;
 }
 
-// doable, load Model 2 Setup?
+// doable, load prop Setup?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80632084.s")
 
 void func_global_asm_806323C0(Chunk14 *arg0) {
     s16 flagIndex;
-    Model2Model *temp_s0;
+    PropModel *temp_s0;
 
     while (arg0 != NULL) {
         if (arg0->unk24 == 2) {
@@ -422,9 +422,9 @@ u8 func_global_asm_80632F74(f32 arg0, f32 arg1, f32 arg2) {
 
 void func_global_asm_80632FCC(s16 arg0, u8 arg1) {
     s32 pad[4];
-    Model2Model *model;
-    Model2Model54_BC *var_a0_2;
-    OM2_unk24 *temp;
+    PropModel *model;
+    PropModel54_BC *var_a0_2;
+    Prop_unk24 *temp;
     f32 sp28;
     s16 sp26;
     s16 sp24;
@@ -469,7 +469,7 @@ void func_global_asm_80633570(GlobalASMStruct83 *arg0) {
 
 void func_global_asm_806335B0(s32 arg0, u8 arg1, s32 boneIndex, f32 *x, f32 *y, f32 *z) {
     s32 var_v0;
-    OM2_unk74 *var_v1;
+    Prop_unk74 *var_v1;
 
     if (arg1 == 1) {
         arg0 = func_global_asm_80659470(arg0);
@@ -497,8 +497,8 @@ void func_global_asm_806335B0(s32 arg0, u8 arg1, s32 boneIndex, f32 *x, f32 *y, 
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063373C.s")
 
-void func_global_asm_806338B4(OM2_unk74 *current) {
-    OM2_unk74 *next;
+void func_global_asm_806338B4(Prop_unk74 *current) {
+    Prop_unk74 *next;
 
     if (current != NULL) {
         do {
@@ -510,7 +510,7 @@ void func_global_asm_806338B4(OM2_unk74 *current) {
 }
 
 void func_global_asm_806338F4(s32 arg0) {
-    OM2_unk48 *temp_v0;
+    Prop_unk48 *temp_v0;
     u8 i;
 
     temp_v0 = &D_global_asm_807F6000[arg0].unk48;
@@ -698,7 +698,7 @@ s32 func_global_asm_80634768(Struct80634768 *arg0, Struct80634768_arg1 *arg1, f3
     return 1;
 }
 
-void func_global_asm_806348B4(OM2_unk48 *arg0) {
+void func_global_asm_806348B4(Prop_unk48 *arg0) {
     void *temp_a2 = arg0->unk0;
 
     if (temp_a2 != NULL) {
@@ -715,12 +715,12 @@ void func_global_asm_80634908(s32 arg0, void *arg1, f32 arg2, f32 arg3, f32 arg4
     func_global_asm_80633A1C(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-// TODO: Needs more shape on OM2_unk24
+// TODO: Needs more shape on Prop_unk24
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063495C.s")
 
 /*
-void func_global_asm_8063495C(OM2_unk24 *arg0, ObjectModel2 *arg1) {
-    Model2Model50_B8 *var_v0;
+void func_global_asm_8063495C(Prop_unk24 *arg0, Prop *arg1) {
+    PropModel50_B8 *var_v0;
     s16 *var_t0;
     s32 *temp_a3;
     s32 var_a0;
@@ -761,7 +761,7 @@ loop_2:
 }
 */
 
-// Init for Model2Model50_B8
+// Init for PropModel50_B8
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806349FC.s")
 
 void func_global_asm_80634CC8(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
@@ -775,10 +775,10 @@ void func_global_asm_80634D14(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 void func_global_asm_80634D64(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4, s32 arg5, u8 arg6) {
-    s32 model2ArrayIndex = func_global_asm_80659470(arg0);
-    Model2Model *model = D_global_asm_807F6000[model2ArrayIndex].model_pointer;
+    s32 propIndex = func_global_asm_80659470(arg0);
+    PropModel *model = D_global_asm_807F6000[propIndex].model_pointer;
 
-    switch (D_global_asm_807F6000[model2ArrayIndex].unk86) {
+    switch (D_global_asm_807F6000[propIndex].unk86) {
         case 2:
             func_global_asm_80634E10(model->unk50, arg1, arg2, arg3, arg4, arg5, arg6);
             break;
@@ -788,7 +788,7 @@ void func_global_asm_80634D64(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4, 
     }
 }
 
-void func_global_asm_80634E10(Model2Model50_B8 *arg0, s16 arg1, s16 arg2, s16 arg3, s16 *arg4, s16 *arg5, u8 arg6) {
+void func_global_asm_80634E10(PropModel50_B8 *arg0, s16 arg1, s16 arg2, s16 arg3, s16 *arg4, s16 *arg5, u8 arg6) {
     // TODO: Better match for arg1--, this syntax is weird
     arg1--;
     while (arg0 && arg1) {
@@ -816,10 +816,10 @@ void func_global_asm_80634EDC(s32 arg0, s16 arg1, u8 *arg2) {
 }
 
 void func_global_asm_80634F14(s32 arg0, s16 arg1, u8 arg2, u8 *arg3, u8 arg4) {
-    s32 model2ArrayIndex = func_global_asm_80659470(arg0);
-    Model2Model *model = D_global_asm_807F6000[model2ArrayIndex].model_pointer;
+    s32 propIndex = func_global_asm_80659470(arg0);
+    PropModel *model = D_global_asm_807F6000[propIndex].model_pointer;
 
-    switch (D_global_asm_807F6000[model2ArrayIndex].unk86) {
+    switch (D_global_asm_807F6000[propIndex].unk86) {
         case 2:
             func_global_asm_80634FA0(model->unk50, arg1, arg2, arg3, arg4);
             break;
@@ -829,7 +829,7 @@ void func_global_asm_80634F14(s32 arg0, s16 arg1, u8 arg2, u8 *arg3, u8 arg4) {
     }
 }
 
-void func_global_asm_80634FA0(Model2Model50_B8 *arg0, s16 arg1, u8 arg2, u8 *arg3, u8 arg4) {
+void func_global_asm_80634FA0(PropModel50_B8 *arg0, s16 arg1, u8 arg2, u8 *arg3, u8 arg4) {
     // TODO: Better match for arg1--, this syntax is weird
     arg1--;
     while (arg0 && arg1) {
@@ -846,10 +846,10 @@ void func_global_asm_80634FA0(Model2Model50_B8 *arg0, s16 arg1, u8 arg2, u8 *arg
 }
 
 void func_global_asm_80635018(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
-    s32 model2ArrayIndex = func_global_asm_80659470(arg0);
-    Model2Model *model = D_global_asm_807F6000[model2ArrayIndex].model_pointer;
+    s32 propIndex = func_global_asm_80659470(arg0);
+    PropModel *model = D_global_asm_807F6000[propIndex].model_pointer;
 
-    switch (D_global_asm_807F6000[model2ArrayIndex].unk86) {
+    switch (D_global_asm_807F6000[propIndex].unk86) {
         case 2:
             func_global_asm_80635098(model->unk50, arg1, arg2, arg3);
             break;
@@ -859,7 +859,7 @@ void func_global_asm_80635018(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-void func_global_asm_80635098(Model2Model50_B8 *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80635098(PropModel50_B8 *arg0, s16 arg1, s32 arg2, s32 arg3) {
     // TODO: Better match for arg1--, this syntax is weird
     arg1--;
     while (arg0 && arg1) {
@@ -979,7 +979,7 @@ void func_global_asm_80635588(void) {
 
 void func_global_asm_8063DE68(void*);
 
-void func_global_asm_8066C904(OM2_unk28 *arg0);
+void func_global_asm_8066C904(Prop_unk28 *arg0);
 
 void func_global_asm_806355DC(s32 arg0, u8 arg1) {
     s16 sp36;
@@ -1016,7 +1016,7 @@ void func_global_asm_806355DC(s32 arg0, u8 arg1) {
     if ((arg0 + 1) != D_global_asm_80747D70) {
         func_global_asm_806593C8(D_global_asm_807F6000[D_global_asm_80747D70 - 1].unk88, arg0);
     }
-    memcpy(&D_global_asm_807F6000[arg0], &D_global_asm_807F6000[D_global_asm_80747D70 - 1], sizeof(ObjectModel2));
+    memcpy(&D_global_asm_807F6000[arg0], &D_global_asm_807F6000[D_global_asm_80747D70 - 1], sizeof(Prop));
     D_global_asm_80747D70 -= 1;
 }
 
@@ -1069,12 +1069,12 @@ void func_global_asm_80636014(s32 arg0, u8 arg1, u8 arg2) {
     func_global_asm_8062D094(D_global_asm_807F6000[arg0].model_pointer, arg2);
 }
 
-void func_global_asm_80636380(OM2_unk24 *arg0, Struct80635548 *arg1);
+void func_global_asm_80636380(Prop_unk24 *arg0, Struct80635548 *arg1);
 
-void func_global_asm_80636074(ObjectModel2 *arg0) {
-    Model2Model50_B8 *var_s0;
-    Model2Model50_B8 *temp_a0_3;
-    Model2Model54_BC *sp24;
+void func_global_asm_80636074(Prop *arg0) {
+    PropModel50_B8 *var_s0;
+    PropModel50_B8 *temp_a0_3;
+    PropModel54_BC *sp24;
     s32 temp_a0;
 
     switch (arg0->unk86) {
@@ -1108,9 +1108,9 @@ void func_global_asm_80636074(ObjectModel2 *arg0) {
     }
 }
 
-void func_global_asm_80636164(Model2Model *arg0, u8 arg1) {
-    Model2Model50_B8 *temp_a0;
-    Model2Model50_B8 *var_s0;
+void func_global_asm_80636164(PropModel *arg0, u8 arg1) {
+    PropModel50_B8 *temp_a0;
+    PropModel50_B8 *var_s0;
 
     switch (arg1) {
         case 2:
@@ -1142,11 +1142,11 @@ void func_global_asm_80636164(Model2Model *arg0, u8 arg1) {
     }
 }
 
-void func_global_asm_80636210(Model2Model *arg0, u8 arg1) {
+void func_global_asm_80636210(PropModel *arg0, u8 arg1) {
     if (arg1 == 2) {
         if (arg0->unk50 == 0) {
             s32 i;
-            Model2Model *temp = arg0;
+            PropModel *temp = arg0;
             for (i = 0; i < temp->unk20; i++) {
                 if (temp->unk24[i] != NULL) {
                     func_global_asm_8066B434(temp->unk24[i], 0xA2B, 7);
@@ -1162,9 +1162,9 @@ void func_global_asm_80636210(Model2Model *arg0, u8 arg1) {
 }
 
 void func_global_asm_806362C4(s32 arg0, u8 arg1) {
-    Model2Model54_BC *temp_a3;
-    Model2Model54_BC **sp18;
-    ObjectModel2 *temp_v0;
+    PropModel54_BC *temp_a3;
+    PropModel54_BC **sp18;
+    Prop *temp_v0;
     s16 temp_v1;
 
     if (arg1 == 1) {
@@ -1189,7 +1189,7 @@ void func_global_asm_806362C4(s32 arg0, u8 arg1) {
     }
 }
 
-void func_global_asm_80636380(OM2_unk24 *arg0, Struct80635548 *arg1) {
+void func_global_asm_80636380(Prop_unk24 *arg0, Struct80635548 *arg1) {
     s32 i;
 
     for (i = 0; i < arg1->unk20; i++) {
@@ -1293,7 +1293,7 @@ void func_global_asm_806364C4(void) {
 
 /*
 // TODO: I think temp_v1 and temp_t0 is a count of the different between pointers to struct arrays
-void func_global_asm_806365D0(ObjectModel2 *arg0, OM2_unk24 *arg1, Model2Model *arg2) {
+void func_global_asm_806365D0(Prop *arg0, Prop_unk24 *arg1, PropModel *arg2) {
     u8 sp33;
     s32 var_v0;
     u32 temp_t0;
@@ -1339,7 +1339,7 @@ block_3:
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636784.s")
 
-// Object Model 2 Geometry, close
+// Prop Geometry, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806368F0.s")
 
 extern u8 D_global_asm_80750AB4;
@@ -1376,32 +1376,32 @@ typedef struct {
     u8 unk5A;
     u8 unk5B;
     s32 unk5C;
-} Model2ModelAlt;
+} PropModelAlt;
 
 /*
-void func_global_asm_806368F0(ObjectModel2 *arg0, s32 model2Type) {
+void func_global_asm_806368F0(Prop *arg0, s32 propType) {
     void *sp28;
     u8 temp_v0;
-    Model2ModelAlt *temp_v0_2;
-    Model2Model *temp_v0_3;
-    OM2_unk24 *temp_v1;
+    PropModelAlt *temp_v0_2;
+    PropModel *temp_v0_3;
+    Prop_unk24 *temp_v1;
     void *var_v0;
 
-    if (func_global_asm_80636A8C(model2Type) != 0) {
-        var_v0 = getPointerTableFile(4, model2Type, 1, 1);
+    if (func_global_asm_80636A8C(propType) != 0) {
+        var_v0 = getPointerTableFile(4, propType, 1, 1);
     } else {
-        var_v0 = getPointerTableFile(4, model2Type, 1, 0);
+        var_v0 = getPointerTableFile(4, propType, 1, 0);
     }
     temp_v1 = arg0->unk24;
     arg0->unk24 = var_v0;
     arg0->unk8C = 0;
     arg0->unk86 = temp_v1->unk1C;
-    arg0->object_type = model2Type;
+    arg0->object_type = propType;
     switch (temp_v1->unk1C) {
         case 2:
             temp_v0_2 = malloc(0x60);
             sp28 = temp_v0_2;
-            temp_v0_2->unk4A = model2Type;
+            temp_v0_2->unk4A = propType;
             temp_v0_2->unk50 = 0;
             temp_v0_2->unk54 = 0;
             temp_v0_2->unk4C = -1;
@@ -1413,7 +1413,7 @@ void func_global_asm_806368F0(ObjectModel2 *arg0, s32 model2Type) {
         case 1:
             temp_v0_3 = malloc(0xC8);
             sp28 = temp_v0_3;
-            temp_v0_3->unkB4 = model2Type;
+            temp_v0_3->unkB4 = propType;
             temp_v0_3->unkB8 = 0;
             temp_v0_3->unkA0[0] = temp_v1->unk40 + temp_v1;
             temp_v0_3->unkA0[2] = temp_v1->unk44 + temp_v1;
@@ -1431,12 +1431,12 @@ f32 func_global_asm_80636A44(s32 arg0) {
     s32 pad2; // TODO: Why is this needed?
     s32 pad; // TODO: Why is this needed?
     f32 sp1C;
-    f32 *model2Geometry;
+    f32 *propGeometry;
 
-    // Object Model 2 Geometry
-    model2Geometry = getPointerTableFile(4, arg0, 1, 0);
-    sp1C = model2Geometry[1];
-    func_global_asm_8066B434(model2Geometry, 0xB87, 7);
+    // Prop Geometry
+    propGeometry = getPointerTableFile(4, arg0, 1, 0);
+    sp1C = propGeometry[1];
+    func_global_asm_8066B434(propGeometry, 0xB87, 7);
     return sp1C;
 }
 
@@ -1444,16 +1444,16 @@ u8 func_global_asm_80636A8C(s32 arg0) {
     s32 pad; // TODO: Why is this needed?
     s32 pad2; // TODO: Why is this needed?
     s32 phi_v1;
-    s32 *model2Geometry;
+    s32 *propGeometry;
 
-    // Object Model 2 Geometry
-    model2Geometry = getPointerTableFile(4, arg0, 1, 0);
-    if (*model2Geometry & 8) {
+    // Prop Geometry
+    propGeometry = getPointerTableFile(4, arg0, 1, 0);
+    if (*propGeometry & 8) {
         phi_v1 = TRUE;
     } else {
         phi_v1 = FALSE;
     }
-    func_global_asm_8066B434(model2Geometry, 0xBA3, 7);
+    func_global_asm_8066B434(propGeometry, 0xBA3, 7);
     return phi_v1;
 }
 
@@ -1461,8 +1461,8 @@ u8 func_global_asm_80636A8C(s32 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636AE8.s")
 
 /*
-void func_global_asm_80636AE8(ObjectModel2 *arg0) {
-    Model2Model *model;
+void func_global_asm_80636AE8(Prop *arg0) {
+    PropModel *model;
     s32 count1;
     s32 count2;
 
@@ -1491,11 +1491,11 @@ void func_global_asm_80636B50(void *arg0, void *arg1, u8 arg2);
 void func_global_asm_80636C00(void) {
     u32 sp20;
     u8 var_a2;
-    Model2Model *temp_a3;
-    ObjectModel2 *temp_a0;
+    PropModel *temp_a3;
+    Prop *temp_a0;
     s32 temp_v1_2;
     u8 temp_v1;
-    OM2_unk24 *temp_v0;
+    Prop_unk24 *temp_v0;
 
     if (D_global_asm_80747D70 != 0) {
         D_global_asm_80747D74 += 1;
@@ -1537,13 +1537,13 @@ void func_global_asm_80636C00(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_806392BC.s")
 
-void func_global_asm_806398E4(s32 objectModel2Index, u8 arg1, u8 arg2) {
-    Model2Model *temp_v0;
+void func_global_asm_806398E4(s32 propIndex, u8 arg1, u8 arg2) {
+    PropModel *temp_v0;
 
     if (arg1 == 1) {
-        objectModel2Index = func_global_asm_80659470(objectModel2Index);
+        propIndex = func_global_asm_80659470(propIndex);
     }
-    temp_v0 = D_global_asm_807F6000[objectModel2Index].model_pointer;
+    temp_v0 = D_global_asm_807F6000[propIndex].model_pointer;
     if (arg2 != 0) {
         temp_v0->unk4E |= 1;
     } else {
@@ -1554,8 +1554,21 @@ void func_global_asm_806398E4(s32 objectModel2Index, u8 arg1, u8 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639968.s")
 
-// Doable, needs some structs
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639C04.s")
+typedef struct {
+    u8 unk0[0x30 - 0x0];
+    s32 unk30;
+    u8 unk34[0x44 - 0x34];
+    s32 unk44;
+    u8 unk48[0xD4 - 0x48];
+    s32 unkD4;
+} Struct80639C04_arg0_unk50;
+
+typedef struct {
+    u8 unk0[0x24 - 0x0];
+    s32 unk24[1];
+    u8 unk28[0x50 - 0x28];
+    Struct80639C04_arg0_unk50 *unk50;
+} Struct80639C04_arg0;
 
 typedef struct {
     u8 unk0[0x30 - 0x0];
@@ -1577,6 +1590,37 @@ typedef struct {
     u8 unk60[0xD0 - 0x60];
     u8 unkD0;
 } Struct80639CD0;
+
+void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8 *arg3, s16 *arg4);
+
+void func_global_asm_80639C04(Struct80639C04_arg0 *arg0, s32 arg1, s32 *arg2, s32 arg3, s8 *arg4, s32 arg5) {
+    s32 temp_v1;
+    s32 found;
+    Struct80639C04_arg0_unk50 *current;
+
+    current = arg0->unk50;
+    if (current != NULL) {
+        temp_v1 = arg0->unk24[arg1];
+        found = FALSE;
+        while (current != NULL && !found) {
+            if (temp_v1 == current->unk44) {
+                found = TRUE;
+            } else {
+                current = current->unkD4;
+            }
+        }
+        if (found) {
+            func_global_asm_80639CD0(current, arg2, arg3, arg4, arg5);
+            current->unk30 = object_timer;
+        } else {
+            *arg4 = 0;
+            *arg2 = temp_v1;
+        }
+    } else {
+        *arg4 = 0;
+        *arg2 = arg0->unk24[arg1];
+    }
+}
 
 void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8 *arg3, s16 *arg4) {
     u8 var_v1;
@@ -1638,7 +1682,7 @@ void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639F1C.s")
 
 /*
-s32 func_global_asm_80639F1C(Model2Model50_B8 *arg0, s32 *arg1, s32 *arg2) {
+s32 func_global_asm_80639F1C(PropModel50_B8 *arg0, s32 *arg1, s32 *arg2) {
     s32 var_v1;
     s32 temp;
 
@@ -1677,8 +1721,8 @@ s32 func_global_asm_80639F1C(Model2Model50_B8 *arg0, s32 *arg1, s32 *arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063A848.s")
 
 void func_global_asm_8063A8C4(s16 arg0, u8 arg1, f32 arg2) {
-    Model2Model *temp_v1;
-    Model2Model54_BC *phi_v0;
+    PropModel *temp_v1;
+    PropModel54_BC *phi_v0;
 
     if (arg1 == 1) {
         arg0 = func_global_asm_80659470(arg0);
@@ -1710,13 +1754,13 @@ void func_global_asm_8063B4A4(void) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063B4C0.s")
 
-// big, object model 2
+// big, prop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063B758.s")
 
-// big, object model 2
+// big, prop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063B8D8.s")
 
-// big, object model 2
+// big, prop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063BBB0.s")
 
 typedef struct {
@@ -1750,7 +1794,7 @@ void func_global_asm_8063BEC0(Struct8063BEC0_arg0 *arg0, s32 arg1, s16 arg2, s16
     }
 }
 
-// object model 2 -> 0x48, 0x49, 0x4E, 0x7C -> 0x10, 0x12, 0x38, 0x94, 0x9A
+// Prop -> 0x48, 0x49, 0x4E, 0x7C -> 0x10, 0x12, 0x38, 0x94, 0x9A
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063BF34.s")
 
 void func_global_asm_8063C1EC(s32 arg0, u8 arg1) {
@@ -1762,7 +1806,7 @@ void func_global_asm_8063C248(s32 arg0, u8 arg1) {
 }
 
 s32 func_global_asm_8063C2A8(s16 arg0) {
-    OM2_scriptdata *temp_v1;
+    Prop_ScriptData *temp_v1;
 
     // TODO: Find a way to get rid of s16 typecast...?
     temp_v1 = D_global_asm_807F6000[(s16)func_global_asm_80659470(arg0)].unk7C;
@@ -1776,11 +1820,11 @@ s32 func_global_asm_8063C2A8(s16 arg0) {
 }
 
 s16 func_global_asm_8063C328(s16 arg0) {
-    s16 model2ArrayIndex = func_global_asm_80659470(arg0);
-    if (model2ArrayIndex == -1) {
+    s16 propIndex = func_global_asm_80659470(arg0);
+    if (propIndex == -1) {
         return -1;
     }
-    return D_global_asm_807F6000[model2ArrayIndex].object_type;
+    return D_global_asm_807F6000[propIndex].object_type;
 }
 
 typedef struct {

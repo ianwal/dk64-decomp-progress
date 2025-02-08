@@ -1014,13 +1014,13 @@ struct Struct8062D0CC_arg1 {
     Struct8062D0CC_arg1 *unk10;
 };
 
-u8 func_global_asm_8062D0CC(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, u8 arg3);
+u8 func_global_asm_8062D0CC(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, PropModel *arg2, u8 arg3);
 
-void func_global_asm_8062D094(Model2Model *arg0, u8 arg1) {
+void func_global_asm_8062D094(PropModel *arg0, u8 arg1) {
     func_global_asm_8062D0CC(D_global_asm_807F5DE4, D_global_asm_807F5E60, arg0, arg1);
 }
 
-u8 func_global_asm_8062D0CC(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, u8 arg3) {
+u8 func_global_asm_8062D0CC(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, PropModel *arg2, u8 arg3) {
     u8 temp;
     s8 sp26;
 
@@ -1100,13 +1100,13 @@ void func_global_asm_8062D26C(Actor *arg0) {
     func_global_asm_8062D2AC(arg0, &sp1C, 1);
 }
 
-u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, s32 arg3, u8 arg4);
+u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, PropModel *arg2, s32 arg3, u8 arg4);
 
 u8 func_global_asm_8062D2AC(void *arg0, void *arg1, u8 arg2) {
     return func_global_asm_8062D2F0(D_global_asm_807F5DE4, D_global_asm_807F5E60, arg0, arg1, arg2);
 }
 
-u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, Model2Model *arg2, s32 arg3, u8 arg4) {
+u8 func_global_asm_8062D2F0(Struct8062D0CC_arg0 *arg0, Struct8062D0CC_arg1 *arg1, PropModel *arg2, s32 arg3, u8 arg4) {
     u8 sp27;
 
     if (arg0 == NULL) {

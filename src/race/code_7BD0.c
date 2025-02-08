@@ -2,13 +2,32 @@
 #include "functions.h"
 
 /*
-rodata
+// .rodata
 D_race_800300C0 = "%d"
 D_race_800300C4 = "%s %d %s %d"
 D_race_800300F0 .float 0.6f
 D_race_80030108 .float 0.3f
 D_race_80030110 .double 0.15
 */
+
+// .data
+s32 D_race_8002FCC0[] = {
+    0x00000004,
+    0x00000005,
+    0x00000006,
+    0x00000007,
+    0x00000008,
+};
+
+s32 D_race_8002FCD4[] = {
+    0x00000000,
+    0x00000001,
+    0x00000002,
+    0x00000003,
+    0x00000000, // PADDING
+    0x00000000, // PADDING
+    0x00000000, // PADDING
+};
 
 void func_race_8002BBD0(Actor *arg0, s32 numRacers) {
     RaceAdditionalActorData *sp1C;
@@ -366,8 +385,6 @@ void func_race_8002D0FC(void) {
 }
 
 s8 func_global_asm_806FDB8C(s32, s32, s32, f32, f32, f32);
-
-extern s32 D_race_8002FCD4[];
 
 void func_race_8002D148(Struct8002D148 *arg0, u8 arg1) {
     u8 var_a3;

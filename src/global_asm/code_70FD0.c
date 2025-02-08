@@ -89,31 +89,31 @@ typedef struct tuple_s {
     s16 z;
 } tuple_s;
 
-typedef struct OM2Wall {
+typedef struct Prop_Wall {
     tuple_s vert[3];
     u8 unk12;
     u8 unk13;
     s8 unk14;
     u8 unk15;
-} OM2Wall;
+} Prop_Wall;
 
-typedef struct OM2WallData {
+typedef struct Prop_WallData {
     s32 count;
-    OM2Wall walls[];
-} OM2WallData;
+    Prop_Wall walls[];
+} Prop_WallData;
 
-typedef struct OM2UnkWallData {
+typedef struct Prop_UnkWallData {
     s32 unk0[8];
-} OM2UnkWallData;
+} Prop_UnkWallData;
 
-void func_global_asm_8066C7F4(OM2UnkWallData *, s32, f32 (*)[4]);
-s32 func_global_asm_8066CEE4(OM2Wall *, Struct8066C2D0_1 *, f32 (*)[4]);
+void func_global_asm_8066C7F4(Prop_UnkWallData *, s32, f32 (*)[4]);
+s32 func_global_asm_8066CEE4(Prop_Wall *, Struct8066C2D0_1 *, f32 (*)[4]);
 
 void func_global_asm_8066C2D0(s32 arg0, PropFileStruct *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8) {
     s32 *temp_a2;
     s32 count;
     s32 i;
-    OM2Wall *var_s0;
+    Prop_Wall *var_s0;
     s8 var_s6;
     f32 sp124[4][4];
     f32 spE4[4][4];
@@ -122,7 +122,7 @@ void func_global_asm_8066C2D0(s32 arg0, PropFileStruct *arg1, f32 arg2, f32 arg3
     Struct8066C2D0_1 *var_s1; // 60
     Struct8066C2D0_0 *var_t0; // 5c
     s32 sp58;
-    OM2UnkWallData *sp54;
+    Prop_UnkWallData *sp54;
 
     var_s6 = -1;
     var_t0 = &D_global_asm_807F6000[arg0].unk28;
@@ -137,13 +137,13 @@ void func_global_asm_8066C2D0(s32 arg0, PropFileStruct *arg1, f32 arg2, f32 arg3
     var_t0->unk0 = arg2 * 8.0f;
     var_t0->unk4 = arg3 * 8.0f;
     var_t0->unk8 = arg4 * 8.0f;
-    count = ((OM2WallData*)(arg1->unk4C + (s32)arg1))->count;
+    count = ((Prop_WallData*)(arg1->unk4C + (s32)arg1))->count;
     if (count) {
         var_t0->unk15 |= 2;
         if ((var_t0->unk15 & 1) == 0) {
             var_t0->unk18 = malloc(count * sizeof(Struct8066C2D0_1));
         }
-        var_s0 = &((OM2WallData*)(arg1->unk4C + (s32)arg1))->walls;
+        var_s0 = &((Prop_WallData*)(arg1->unk4C + (s32)arg1))->walls;
         var_s1 = var_t0->unk18;
         guScaleF(sp124, arg8, arg8, arg8);
         guRotateF(spE4, arg5, 1.0f, 0.0f, 0.0f);
@@ -193,7 +193,7 @@ void func_global_asm_8066C610(s16 arg0, s8 arg1, f32 (*arg2)[4]) {
     f32 sp8C[4][4];
     f32 sp4C[4][4];
     s32 sp48;
-    OM2UnkWallData *sp44;
+    Prop_UnkWallData *sp44;
     Struct8066C2D0_0 *var_t0;
 
     temp_v0 = D_global_asm_807F6000[arg0].unk78;
@@ -221,7 +221,7 @@ void func_global_asm_8066C610(s16 arg0, s8 arg1, f32 (*arg2)[4]) {
     guMtxCatF(sp8C, sp4C, arg2);
 }
 
-void func_global_asm_8066C7F4(OM2UnkWallData *arg0, s32 arg1, f32 (*arg2)[4]) {
+void func_global_asm_8066C7F4(Prop_UnkWallData *arg0, s32 arg1, f32 (*arg2)[4]) {
     s32 i;
     Mtx sp38;
 
@@ -238,7 +238,7 @@ void func_global_asm_8066C8B0(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     func_global_asm_8066C2D0(arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8);
 }
 
-void func_global_asm_8066C904(OM2_unk28 *arg0) {
+void func_global_asm_8066C904(Prop_unk28 *arg0) {
     void *temp = arg0->unk18;
     if (temp != NULL) {
         if (arg0->unk15 & 1) {
@@ -262,11 +262,11 @@ extern s32 D_global_asm_80747D70;
 extern s16 D_global_asm_80748E40;
 
 /*
-// TODO: Hmm, are OM2_unk28 and OM2_unk48 substructs?
+// TODO: Hmm, are Prop_unk28 and Prop_unk48 substructs?
 void func_global_asm_8066CCD8(void) {
-    OM2_unk48 *temp_a0_2;
-    ObjectModel2 *var_v1;
-    OM2_unk28 *temp_a0;
+    Prop_unk48 *temp_a0_2;
+    Prop *var_v1;
+    Prop_unk28 *temp_a0;
 
     if (D_global_asm_80747D70 != 0) {
         D_global_asm_80748E40 += 1;
@@ -322,7 +322,7 @@ s8 func_global_asm_8066D2F4(s16 *);
 s16 func_global_asm_8066D4DC(s16 *, u8 *);
 s32 func_global_asm_8066DD34(void *);
 
-s32 func_global_asm_8066CEE4(OM2Wall *arg0, Struct8066C2D0_1 *arg1, f32 (*arg2)[4]) {
+s32 func_global_asm_8066CEE4(Prop_Wall *arg0, Struct8066C2D0_1 *arg1, f32 (*arg2)[4]) {
     Struct8066D250 sp58;
     f32 sp54;
     f32 sp50;
@@ -1465,7 +1465,7 @@ loop_7:
 // TODO: Very similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671E00.s")
 
-// Object model 2 loop
+// Prop loop
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671F54.s")
 
 s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {

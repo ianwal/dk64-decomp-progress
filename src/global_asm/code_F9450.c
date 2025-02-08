@@ -614,7 +614,7 @@ void func_global_asm_806F6554(u8 arg0, Struct806F6554_arg1 *arg1) {
 
 s32 func_global_asm_806F6644(s16 arg0, s32 arg1, u16 arg2) {
     PlayerAdditionalActorData *PaaD;
-    ObjectModel2 *temp;
+    Prop *temp;
     u8 temp_a0;
 
     switch (arg2) {
@@ -741,42 +741,38 @@ s32 func_global_asm_806F70A8(s16 arg0) {
     return FALSE;
 }
 
-// rodata, close, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F70FC.s")
-
 int func_global_asm_8071C48C(); // TODO: Signature
 extern SpriteData D_global_asm_8071FC58; // TODO: Datatype
 
-/*
-void func_global_asm_806F70FC(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
-    f32 temp_f20;
+void func_global_asm_806F70FC(f32 x, f32 y, f32 z, f32 scale, f32 arg4, s32 count) {
+    f64 temp_f20;
     s32 i;
-    f32 phi_f4;
-    f32 phi_f6;
-    f32 phi_f4_2;
+    s32 j;
+    f32 xOffset;
+    f32 yOffset;
+    f32 zOffset;
 
     func_global_asm_80714950(0x1006E);
     func_global_asm_8071498C(func_global_asm_8071C48C);
     func_global_asm_807149B8(1);
-    drawSpriteAtPosition(&D_global_asm_8071FC58, arg3, arg0, arg1, arg2);
-    temp_f20 = 1000.0 / (arg4 + arg4);
-    for (i = 0; i < arg5; i++) {
-        phi_f4 = (func_global_asm_806119A0() / 10000U) % 1000;
-        phi_f6 = (func_global_asm_806119A0() / 10000U) % 1000;
-        phi_f4_2 = (func_global_asm_806119A0() / 10000U) % 1000;
+    drawSpriteAtPosition(&D_global_asm_8071FC58, scale, x, y, z);
+    temp_f20 = 1000.0 / ((f64)arg4 + arg4);
+    for (i = 0; i < count; i++) {
+        xOffset = ((((func_global_asm_806119A0() / 10000U) % 1000)) / arg4) - temp_f20;
+        yOffset = ((((func_global_asm_806119A0() / 10000U) % 1000)) / arg4) - temp_f20;
+        zOffset = ((((func_global_asm_806119A0() / 10000U) % 1000)) / arg4) - temp_f20;
         func_global_asm_8071498C(func_global_asm_8071C620);
-        func_global_asm_8071496C(i);
+        func_global_asm_8071496C(i + 1);
         func_global_asm_807149B8(1);
         drawSpriteAtPosition(
             &D_global_asm_8071FC58,
-            arg3,
-            arg0 + ((phi_f4 / arg4) - temp_f20),
-            arg1 + ((phi_f6 / arg4) - temp_f20),
-            arg2 + ((phi_f4_2 / arg4) - temp_f20)
+            scale,
+            x + xOffset,
+            y + yOffset,
+            z + zOffset
         );
     }
 }
-*/
 
 f32 func_global_asm_806F7378(s32 arg0) {
     if (arg0 == 0x8C) {
