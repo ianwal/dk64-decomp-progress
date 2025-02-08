@@ -73,9 +73,17 @@ typedef struct {
     s8 unk44;
 } Struct_807375E0;
 
-extern SoundState *D_global_asm_807563C0;
-
 extern s16 *D_global_asm_807FF0E4;
+
+// .data
+SoundState *D_global_asm_807563C0 = NULL;
+SoundState *D_global_asm_807563C4 = NULL;
+SoundState *D_global_asm_807563C8 = NULL;
+
+// TODO: Symbol
+N_ALSndPlayer *D_global_asm_807563CC = 0x807FF080;
+
+s16 D_global_asm_807563D0 = 0;
 
 void func_global_asm_80735DBC(N_ALSndpEvent *);
 void func_global_asm_807370A4(ALEventQueue *, N_ALSoundState *, u16);
@@ -85,7 +93,6 @@ void func_global_asm_8073B750(void *);
 f32 func_global_asm_80739FE0(s32);
 
 s32 func_global_asm_80735CF4(struct_80735CF4 *);
-extern SoundState *D_global_asm_807563C8;
 
 typedef struct Struct80735AA0 {
     s32 unk0;
@@ -161,8 +168,6 @@ void func_global_asm_8073C820(void *, s32);
 s32 func_global_asm_8073CAC0(void *, s16 *);
 void func_global_asm_8073CDD0(void *, s32, f32, s32, s32, s32, s32, f32, s32, s32);
 void func_global_asm_8073CF00(void *, u8);
-extern SoundState *D_global_asm_807563C4;
-extern s16 D_global_asm_807563D0;
 
 typedef struct Struct80735DBC_0 {
     ALLink node;
@@ -527,8 +532,6 @@ void func_global_asm_807370A4(ALEventQueue *evtq, N_ALSoundState *state, u16 arg
     osSetIntMask(mask);
 }
 
-extern SoundState *D_global_asm_807563C0;
-
 // sndpCountStates
 u16 func_global_asm_80737198(u16 *arg0, u16 *arg1) {
     u16 sp16;
@@ -597,8 +600,6 @@ SoundState *func_global_asm_8073726C(ALBank *bank, ALSound *sound) {
     }
     return ss;
 }
-
-extern s16 D_global_asm_807563D0;
 
 // sndpFreeState
 void func_global_asm_8073749C(SoundState *arg0) {

@@ -148,7 +148,7 @@ void func_global_asm_8063DE68(Struct8063DE68_arg0 *arg0) {
     free(arg0);
 }
 
-void func_global_asm_8063DED0(OM2_scriptdata *arg0) {
+void func_global_asm_8063DED0(Prop_ScriptData *arg0) {
     s32 i = 0;
     f32 *temp = arg0;
     
@@ -224,7 +224,7 @@ void func_global_asm_8063DFEC(s32 arg0, void *arg1) {
     }
 }
 
-void func_global_asm_8063E078(OM2_scriptdata *arg0) {
+void func_global_asm_8063E078(Prop_ScriptData *arg0) {
     u8 i;
 
     for (i = 0; i < 2; i++) {
@@ -240,7 +240,7 @@ void func_global_asm_8063E078(OM2_scriptdata *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8063E0D4.s")
 
-void func_global_asm_8063E5B4(OM2_scriptdata *arg0) {
+void func_global_asm_8063E5B4(Prop_ScriptData *arg0) {
     Actor *temp_v1;
 
     arg0->unk34 = D_global_asm_807F622C - D_global_asm_807F620C;
@@ -267,7 +267,7 @@ void func_global_asm_8063E5B4(OM2_scriptdata *arg0) {
     D_global_asm_807F693F = 0;
 }
 
-void func_global_asm_8063E6B4(OM2_scriptdata *arg0) {
+void func_global_asm_8063E6B4(Prop_ScriptData *arg0) {
     if (arg0->unk4 != object_timer) {
         arg0->unk4 = object_timer;
         if (arg0->unk64 < arg0->unk62) {
@@ -284,7 +284,7 @@ void func_global_asm_8063E6B4(OM2_scriptdata *arg0) {
     }
 }
 
-void func_global_asm_8063E72C(OM2_scriptdata *arg0) {
+void func_global_asm_8063E72C(Prop_ScriptData *arg0) {
     switch (arg0->unk50) {
         case 0:
             break;
@@ -469,7 +469,7 @@ void func_global_asm_80641A78(void) {
 void func_global_asm_80641B00(s16 arg0, s16 arg1, s16 arg2) {
     arg0 = func_global_asm_80659470(arg0);
     arg1 = func_global_asm_80659470(arg1);
-    D_global_asm_807F6000[arg0].unk7C = malloc(sizeof(OM2_scriptdata));
+    D_global_asm_807F6000[arg0].unk7C = malloc(sizeof(Prop_ScriptData));
     func_global_asm_8063DED0(D_global_asm_807F6000[arg0].unk7C);
     D_global_asm_807F6000[arg0].unk7C->unk48[0] = arg2;
     D_global_asm_807F6000[arg0].unk7C->unkA0 = D_global_asm_807F6000[arg1].unk7C->unkA0;

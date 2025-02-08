@@ -213,7 +213,7 @@ void func_global_asm_8072F230(Actor *arg0, u8 arg1, u8 arg2) {
 */
 
 u8 func_global_asm_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg4) {
-    s16 model2ArrayIndex;
+    s16 propIndex;
     u8 phi_t0;
 
     phi_t0 = FALSE;
@@ -225,11 +225,11 @@ u8 func_global_asm_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg
             break;
         case 1:
         case 2:
-            model2ArrayIndex = func_global_asm_80659470(arg0);
-            *arg2 = D_global_asm_807F6000[model2ArrayIndex].x_position;
-            *arg3 = D_global_asm_807F6000[model2ArrayIndex].y_position;
-            *arg4 = D_global_asm_807F6000[model2ArrayIndex].z_position;
-            if (D_global_asm_807F6000[model2ArrayIndex].unk24->unk0 & 1) {
+            propIndex = func_global_asm_80659470(arg0);
+            *arg2 = D_global_asm_807F6000[propIndex].x_position;
+            *arg3 = D_global_asm_807F6000[propIndex].y_position;
+            *arg4 = D_global_asm_807F6000[propIndex].z_position;
+            if (D_global_asm_807F6000[propIndex].unk24->unk0 & 1) {
                 phi_t0 = TRUE;
             }
             break;
@@ -240,14 +240,14 @@ u8 func_global_asm_8072F4A8(Actor *arg0, u8 arg1, f32 *arg2, f32 *arg3, f32 *arg
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_133A90/func_global_asm_8072F59C.s")
 
 s32 func_global_asm_8072F8D4(Struct807FDCC0 *arg0, s32 arg1, s16 arg2) {
-    s16 model2ArrayIndex;
+    s16 propIndex;
     s32 angle;
 
     if (!arg0->unk4) {
         return TRUE;
     }
-    model2ArrayIndex = func_global_asm_80659470(arg0->unk0);
-    switch (D_global_asm_807F6000[model2ArrayIndex].object_type) {
+    propIndex = func_global_asm_80659470(arg0->unk0);
+    switch (D_global_asm_807F6000[propIndex].object_type) {
         case 0xC9: // Ladder
         case 0xCA: // Ladder
         case 0x1CB: // Ladder (Fungi)
@@ -257,7 +257,7 @@ s32 func_global_asm_8072F8D4(Struct807FDCC0 *arg0, s32 arg1, s16 arg2) {
         default:
             return TRUE;
     }
-    angle = D_global_asm_807F6000[model2ArrayIndex].y_rotation * 4096.0f / 360.0f;
+    angle = D_global_asm_807F6000[propIndex].y_rotation * 4096.0f / 360.0f;
     if (func_global_asm_806725E4((arg0->unk34[arg1].unk10 + angle) & 0xFFF, (arg0->unk34[arg1].unk14 + angle) & 0xFFF, arg2, 0)) {
         return TRUE;
     }

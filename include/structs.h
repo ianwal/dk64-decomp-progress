@@ -4,6 +4,17 @@
 
 /* your struct definitions go here */
 
+typedef struct tuple_f {
+    union {
+        struct {
+            f32 x;
+            f32 y;
+            f32 z;
+        };
+        f32 f[3];
+    };
+} tuple_f;
+
 typedef struct OverlayInfoStruct {
     s32 rom_code_start;
     s32 rom_data_end;
@@ -582,10 +593,7 @@ typedef struct {
     s32 unk70;
     s32 unk74;
     s32 unk78;
-    void *unk7C[1]; // TODO: Actor*?
-    s32 unk80;
-    s32 unk84;
-    s32 unk88;
+    Actor *unk7C[4]; // TODO: Confirm array count
     s32 unk8C;
     u8 unk90;
     u8 unk91;
@@ -1686,9 +1694,9 @@ struct global_asm_struct_83 {
     GlobalASMStruct83 *next;
 };
 
-typedef struct model_2_model_50_b8 Model2Model50_B8;
+typedef struct prop_model_50_b8 PropModel50_B8;
 
-struct model_2_model_50_b8 {
+struct prop_model_50_b8 {
     s32 unk0[4];
     s32 unk10[4];
     s32 unk20[4];
@@ -1719,7 +1727,7 @@ struct model_2_model_50_b8 {
     u8 unkD1;
     u8 unkD2;
     u8 unkD3;
-    Model2Model50_B8 *next; // unkD4
+    PropModel50_B8 *next; // unkD4
 };
 
 typedef struct {
@@ -1733,7 +1741,7 @@ typedef struct {
     s32 unk1C;
     s16 unk20;
     s16 unk22;
-} Model2Model54_BC;
+} PropModel54_BC;
 
 typedef struct {
     s32 unk0[4];
@@ -1756,8 +1764,8 @@ typedef struct {
     s16 unk4C;
     u8 unk4E; // Used
     u8 unk4F; // Used
-    Model2Model50_B8 *unk50; // Used, pointer
-    Model2Model54_BC *unk54;
+    PropModel50_B8 *unk50; // Used, pointer
+    PropModel54_BC *unk54;
     u8 unk58;
     u8 unk59;
     u8 unk5A;
@@ -1771,13 +1779,13 @@ typedef struct {
     s32 unkB0;
     s16 unkB4;
     s16 unkB6;
-    Model2Model50_B8 *unkB8; // Used, pointer
-    Model2Model54_BC *unkBC; // Used
+    PropModel50_B8 *unkB8; // Used, pointer
+    PropModel54_BC *unkBC; // Used
     u8 unkC0;
     u8 unkC1;
     u8 unkC2;
     u8 unkC3;
-} Model2Model;
+} PropModel;
 
 typedef struct {
     void* unk0;
@@ -1840,7 +1848,7 @@ typedef struct {
     s8 unk9B;
     s32 unk9C;
     s32 unkA0;
-} OM2_scriptdata;
+} Prop_ScriptData;
 
 typedef struct {
     s32 unk0;
@@ -1874,15 +1882,15 @@ typedef struct {
     s32 unk60;
     s32 unk64;
     s32 unk68;
-} OM2_unk24;
+} Prop_unk24;
 
-typedef struct OM2_unk74 OM2_unk74;
+typedef struct Prop_unk74 Prop_unk74;
 
-struct OM2_unk74 {
+struct Prop_unk74 {
     f32 unk0;
     f32 unk4;
     f32 unk8;
-    OM2_unk74 *next;
+    Prop_unk74 *next;
 };
 
 typedef struct {
@@ -1900,7 +1908,7 @@ typedef struct {
     f32 unkC;
     s16 unk10;
     s16 unk12;
-} OM2_unk78;
+} Prop_unk78;
 
 typedef struct {
     u8 unk0[0x10 - 0x0];
@@ -1910,7 +1918,7 @@ typedef struct {
     u8 unk16;
     u8 unk17;
     void *unk18;
-} OM2_unk28;
+} Prop_unk28;
 
 typedef struct {
     void *unk0;
@@ -1919,9 +1927,9 @@ typedef struct {
     u8 unkC[0x24 - 0xC];
     u8 unk24;
     u8 unk25[2];
-} OM2_unk48;
+} Prop_unk48;
 
-typedef struct object_model2 {
+typedef struct prop {
     f32 x_position; // at 0x00
     f32 y_position; // at 0x04
     f32 z_position; // at 0x08
@@ -1930,9 +1938,9 @@ typedef struct object_model2 {
     f32 y_rotation; // at 0x14
     f32 z_rotation; // at 0x18
     f32 unk1C;
-    Model2Model *model_pointer; // at 0x20
-    OM2_unk24 *unk24; // labelled behavior_type_pointer in ScriptHawk
-    OM2_unk28 *unk28;
+    PropModel *model_pointer; // at 0x20
+    Prop_unk24 *unk24; // labelled behavior_type_pointer in ScriptHawk
+    Prop_unk28 *unk28;
     s32 unk2C;
     s32 unk30;
     s32 unk34;
@@ -1940,7 +1948,7 @@ typedef struct object_model2 {
     s32 unk3C;
     s32 unk40;
     s32 unk44;
-    OM2_unk48 *unk48;
+    Prop_unk48 *unk48;
     s32 unk4C;
     s32 unk50;
     s32 unk54;
@@ -1954,9 +1962,9 @@ typedef struct object_model2 {
     u8 unk6E;
     u8 unk6F;
     GlobalASMStruct83 *unk70;
-    OM2_unk74 *unk74;
-    OM2_unk78 *unk78; // used in func_global_asm_80650AD8, weird format
-    OM2_scriptdata *unk7C; // labelled behavior_pointer in ScriptHawk
+    Prop_unk74 *unk74;
+    Prop_unk78 *unk78; // used in func_global_asm_80650AD8, weird format
+    Prop_ScriptData *unk7C; // labelled behavior_pointer in ScriptHawk
     s32 unk80;
     s16 object_type; // at 0x84
     s16 unk86;
@@ -1966,12 +1974,12 @@ typedef struct object_model2 {
     u8 unk8D;
     u8 unk8E;
     u8 unk8F;
-} ObjectModel2;
+} Prop;
 
 typedef struct chunk_14 Chunk14;
 
 struct chunk_14 {
-    Model2Model *unk0;
+    PropModel *unk0;
     f32 unk4;
     f32 unk8;
     f32 unkC;
@@ -2785,49 +2793,6 @@ typedef struct spriteControl {
 	/* 0x01C */ s32 unk_1C;
 } spriteControl;
 
-typedef struct otherSpriteControl {
-	/* 0x000 */ s8 unk_000[0x28];
-	/* 0x028 */ u8 left_stretch;
-	/* 0x029 */ u8 right_stretch;
-	/* 0x02A */ u8 up_stretch;
-	/* 0x02B */ u8 down_stretch;
-	/* 0x02C */ s8 unk_02C[0x340-0x2C];
-	/* 0x340 */ f32 xPos;
-	/* 0x344 */ f32 yPos;
-	/* 0x348 */ f32 unk_348;
-    /* 0x34C */ s8 unk_34C[4];
-	/* 0x350 */ s8 gif_update_frequency;
-	/* 0x351 */ s8 unk_351[0xB];
-	/* 0x35C */ spriteControl* gif_control_pointer;
-	/* 0x360 */ f32 xScale;
-	/* 0x364 */ f32 yScale;
-	/* 0x368 */ s8 unk_368[0x2];
-	/* 0x36A */ s8 transparency1;
-	/* 0x36B */ s8 transparency2;
-	/* 0x36C */ s8 transparency3;
-	/* 0x36D */ s8 transparency4;
-	/* 0x36E */ s8 unk_36E[0x384-0x36E];
-	/* 0x384 */ void* some_pointer;
-} otherSpriteControl;
-
-// TODO: Which struct is this?
-typedef struct {
-    s32 unk0[21];
-    s8 unk54; // Used
-    s8 unk55;
-    s8 unk56;
-    s8 unk57;
-    s32 unk58; // Used
-    s32 unk5C;
-} Struct8064199C_arg0;
-
-typedef struct {
-    u8  pad0[0x14];
-    f32 unk14;
-    u8  pad1[0x31];
-    u8 unk49;
-} GlobalASMStruct49;
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -2939,6 +2904,116 @@ typedef struct {
     f32 unk0;
     f32 unk4;
 } Struct80717D84_unk384_8071B2EC;
+
+typedef struct {
+    f32 unk0;
+    tuple_f unk4;
+    tuple_f unk10;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+} Struct80717D84_unk384_807186C8;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    s32 unk14;
+    u8 pad18[0x1C - 0x18];
+} Struct80717D84_unk384_8071910C;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct80717D84_unk384_807195D4;
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_807197B4;
+
+typedef struct otherSpriteControl_unk330 {
+    SpriteData *unk0;
+} otherSpriteControl_unk330;
+
+typedef struct otherSpriteControl {
+	/* 0x000 */ s8 unk_000[0x28];
+	/* 0x028 */ u8 left_stretch;
+	/* 0x029 */ u8 right_stretch;
+	/* 0x02A */ u8 up_stretch;
+	/* 0x02B */ u8 down_stretch;
+	/* 0x02C */ s8 unk_02C[0x128 - 0x2C];
+    /* 0x128 */ Mtx unk128[2];
+    /* 0x1A8 */ u8 unk1A8[0x32C - 0x1A8];
+    /* 0x32C */ s8 unk32C;
+    /* 0x32D */ u8 pad32D[0x330 - 0x32D];
+    /* 0x330 */ otherSpriteControl_unk330 *unk330;
+    /* 0x334 */ u8 pad334[0x340 - 0x334];
+	/* 0x340 */ f32 xPos;
+	/* 0x344 */ f32 yPos;
+	/* 0x348 */ f32 zPos;
+    /* 0x34C */ s8 unk_34C[4];
+	/* 0x350 */ s8 gif_update_frequency;
+	/* 0x351 */ s8 unk_351[0x3];
+    /* 0x354 */ s32 unk354;
+    /* 0x358 */ s32 unk358;
+	/* 0x35C */ s32 unk35C;
+	/* 0x360 */ f32 xScale;
+	/* 0x364 */ f32 yScale;
+	/* 0x368 */ s8 unk_368[0x2];
+	/* 0x36A */ s8 transparency1;
+	/* 0x36B */ s8 transparency2;
+	/* 0x36C */ s8 transparency3;
+	/* 0x36D */ u8 transparency4;
+	/* 0x36E */ s8 unk_36E[0x384-0x36E];
+    union {
+        void* some_pointer;
+        Struct80717D84_unk384 *unk384;
+        Struct80717D84_unk384_s16 *unk384_s16;
+        Struct80717D84_unk384_f32 *unk384_f32;
+        Struct80717D84_unk384_80717814 *unk384_80717814;
+        Struct80717D84_unk384_80717100 *unk384_80717100;
+        Struct80717D84_unk384_8071720C *unk384_8071720C;
+        Struct80717D84_unk384_80717B64 *unk384_80717B64;
+        Struct80717D84_unk384_8071DC90 *unk384_8071DC90;
+        Struct80717D84_unk384_8071E110 *unk384_8071E110;
+        Struct80717D84_unk384_8071F444 *unk384_8071F444;
+        Struct80717D84_unk384_80717930 *unk384_80717930;
+        Struct80717D84_unk384_807189BC *unk384_807189BC;
+        Struct80717D84_unk384_80719C00 *unk384_80719C00;
+        Struct80717D84_unk384_80719EF4 *unk384_80719EF4;
+        Struct80717D84_unk384_8071D0F0 *unk384_8071D0F0;
+        Struct80717D84_unk384_8071B2EC *unk384_8071B2EC;
+        Struct80717D84_unk384_807186C8 *unk384_807186C8;
+        Struct80717D84_unk384_8071910C *unk384_8071910C;
+        Struct80717D84_unk384_807195D4 *unk384_807195D4;
+        Struct80717D84_unk384_807197B4 *unk384_807197B4;
+    };
+	/* 0x384 */ 
+} otherSpriteControl;
+
+// TODO: Which struct is this?
+typedef struct {
+    s32 unk0[21];
+    s8 unk54; // Used
+    s8 unk55;
+    s8 unk56;
+    s8 unk57;
+    s32 unk58; // Used
+    s32 unk5C;
+} Struct8064199C_arg0;
+
+typedef struct {
+    u8  pad0[0x14];
+    f32 unk14;
+    u8  pad1[0x31];
+    u8 unk49;
+} GlobalASMStruct49;
+
+
 
 typedef struct {
     s32 unk0;
@@ -3350,16 +3425,23 @@ typedef struct {
     u8 unk1;
     u8 unk2;
     u8 unk3;
+    union {
+        struct {
+            s16 unk4;
+            s16 unk6;
+            s16 unk8;
+            s16 unkA;
+        };
+        s16 unk4_arr[4];
+    };
+} Struct80750948;
+
+typedef struct Struct800246EC_unk20 {
+    u8 pad0[0x4];
     s16 unk4;
     s16 unk6;
     s16 unk8;
     s16 unkA;
-} Struct80750948;
-
-typedef struct Struct800246EC_unk20 {
-    u8 pad0[0x6];
-    s16 unk6;
-    s16 unk8;
 } Struct800246EC_unk20;
 
 typedef struct Struct800246EC {

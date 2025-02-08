@@ -1,7 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
 
-const s32 D_boss_80036660[] = {
+static const s32 D_boss_80036660[] = {
     0x00546C51,
     0x03E44100,
     0x283C283C,
@@ -10,14 +10,14 @@ const s32 D_boss_80036660[] = {
     0x29037850,
 };
 
-const s32 D_boss_80036678[] = {
+static const s32 D_boss_80036678[] = {
     0x28055103,
     0xE441004F,
     0x28142904,
     0x2D500000,
 };
 
-const s32 D_boss_80036688[] = {
+static const s32 D_boss_80036688[] = {
     0x28055103,
     0xE441004F,
     0x2C0F2A02,
@@ -25,7 +25,7 @@ const s32 D_boss_80036688[] = {
     0x50000000,
 };
 
-const s32 D_boss_8003669C[] = {
+static const s32 D_boss_8003669C[] = {
     0x28055103,
     0xE441004F,
     0x2C0A2906,
@@ -33,7 +33,7 @@ const s32 D_boss_8003669C[] = {
 };
 
 // .data
-void *D_boss_80035A50[] = {
+static void *D_boss_80035A50[] = {
     D_boss_80036660,
     D_boss_80036678,
     D_boss_80036688,

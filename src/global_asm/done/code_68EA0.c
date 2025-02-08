@@ -5,10 +5,11 @@
 extern SpriteData D_global_asm_80720A7C; // TODO: Datatype
 extern SpriteData D_global_asm_807213D0; // TODO: Datatype
 
+// .data
 extern s32 D_global_asm_80747D70;
 
 typedef struct {
-    u16 unk0; // Object Model 2 Type
+    u16 unk0; // Prop Type
     s16 unk2; // X Position
     s16 unk4; // Y Position
     s16 unk6; // Z Position

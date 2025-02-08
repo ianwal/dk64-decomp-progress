@@ -70,6 +70,35 @@ typedef struct {
     Actor *unk30;
 } A17C_race_80029054;
 
+// .data
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+} Struct8002FBD0;
+
+static Struct8002FBD0 D_race_8002FBD0[] = {
+    { -1000.0f, 0.6999999881f },
+    { -200.0f, 1.200000048f },
+    { -70.0f, 1.200000048f },
+    { 0.0f, 1.200000048f },
+    { 500.0f, 1.200000048f },
+    { 1000.0f, 2.400000095f },
+};
+
+static f32 D_race_8002FC00[] = {
+    0.7f,
+    1.2f,
+    2.4f,
+};
+
+static s32 D_race_8002FC0C[] = {
+    0x00000002,
+    0x00000001,
+    0x00000004,
+    0x00000003,
+    0x00000000, // PADDING
+};
+
 s32 func_race_800276B0(s32 arg0, RaceStruct15 *arg1, RaceStruct15 *arg2) {
     s32 var_v0;
     s32 sign;

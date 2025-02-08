@@ -10,27 +10,33 @@ typedef struct {
     u8 unk19;
 } AAD_bonus_800252A0;
 
-extern u8* D_bonus_8002D8B0[];
-
 // rodata
-const u32 D_bonus_8002DC90[] = {
+static const u32 D_bonus_8002DC90[] = {
     0x00010200,
     0x03040000,
 };
 
-const u32 D_bonus_8002DC98[] = {
+static const u32 D_bonus_8002DC98[] = {
     0x04020300,
     0x01000000,
 };
 
-const u32 D_bonus_8002DCA0[] = {
+static const u32 D_bonus_8002DCA0[] = {
     0x02000104,
     0x00030000,
 };
 
-const u32 D_bonus_8002DCA8[] = {
+static const u32 D_bonus_8002DCA8[] = {
     0x03010002,
     0x00040000,
+};
+
+// .data
+static u8 *D_bonus_8002D8B0[] = {
+    D_bonus_8002DC90,
+    D_bonus_8002DC98,
+    D_bonus_8002DCA0,
+    D_bonus_8002DCA8,
 };
 
 Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *);

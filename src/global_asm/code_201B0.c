@@ -76,7 +76,7 @@ extern s16 D_807F5CF2;
 extern u8 D_807F5CF6;
 extern s8 D_807F5CFA;
 extern Actor *D_807F5D0C;
-extern s8 D_807F5D14;
+extern u8 D_807F5D14;
 extern OSTime D_global_asm_807476D0;
 extern u8 D_global_asm_807476D8;
 extern s16 D_global_asm_807476E4;
@@ -93,8 +93,29 @@ u8 func_global_asm_8061B4B0(void) {
     return D_807F5CE0 != 0;
 }
 
-// doable, 64 bit maths, timestamp
+// doable, 64 bit maths, timestamp, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061B4E4.s")
+
+/*
+typedef struct {
+    u32 unk0; // TODO: What is this?
+    u8 unk4; // Map
+    u8 unk5; // Cutscene index
+    u8 unk6; // TODO: What is this?
+    u8 unk7; // TODO: What is this?
+} Struct80747708;
+
+extern Struct80747708 D_global_asm_80747708[];
+
+void func_global_asm_8061B4E4(void) {
+    if ((u32)(((((osGetTime() - D_807F5CE0) * 64U))) / 3000U / 10000U) >= D_global_asm_80747708[D_807F5D14].unk0) {
+        func_global_asm_80712524(D_global_asm_80747708[D_807F5D14].unk4, D_global_asm_80747708[D_807F5D14].unk5);
+        if (++D_807F5D14 > 5) {
+            D_807F5CE0 = 0;
+        }
+    }
+}
+*/
 
 void func_global_asm_8061B5C4(s16 playerIndex) {
     character_change_array[playerIndex].unk2D0 = character_change_array[playerIndex].unk2C4;
@@ -351,7 +372,7 @@ void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s16 arg3, s16 
         aaD44 = &aaD->unk44;
         aaD44->unk0 = arg1;
         aaD44->unk4 = arg1;
-        scale = arg1->animation_state->scale_y / 0.149999999999999994;
+        scale = arg1->animation_state->scale_y / 0.15;
         aaD44->unk8 = arg3;
         aaD44->unkA = arg4 * scale;
         aaD44->unkC = arg5;
@@ -1047,10 +1068,6 @@ void func_global_asm_8061F2B8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F4B0.s")
 
-// regalloc, close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F510.s")
-
-/*
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -1066,10 +1083,9 @@ typedef struct {
 
 extern Struct807F5BD4 *D_807F5BD4;
 
-void func_global_asm_8061F510(u8 arg0, s8 arg1) {
+void func_global_asm_8061F510(u8 arg0, u8 arg1) {
     D_807F5BD4[arg0].unk18 = arg1;
 }
-*/
 
 // jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F53C.s")
@@ -1467,8 +1483,10 @@ void func_global_asm_80626264(s32 arg0) {
 // doable, weird negative offsets
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626478.s")
 
-// memcpy concat, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062649C.s")
+void *func_global_asm_8062649C(u8 *src, void *dest, u16 size) {
+    memcpy(dest, &src[4], size);
+    return &src[4] + size;
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806264DC.s")
 
@@ -1479,11 +1497,8 @@ void func_global_asm_80626264(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626F8C.s")
 
-// stack, close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80627388.s")
-
-/*
-void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg5, f32 *arg6, f32 *arg7, f32 *arg8) {
+// TODO: Is the unused argument correct?
+void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, s32 unused, f32 *arg5, f32 *arg6, f32 *arg7, f32 *arg8) {
     f32 sp18[4][4];
     guMtxL2F(sp18, arg0);
     *arg5 = ((sp18[0][0] * arg1) + (sp18[1][0] * arg2) + (sp18[2][0] * arg3)) + sp18[3][0];
@@ -1491,7 +1506,6 @@ void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg5
     *arg7 = ((sp18[0][2] * arg1) + (sp18[1][2] * arg2) + (sp18[2][2] * arg3)) + sp18[3][2];
     *arg8 = ((sp18[0][3] * arg1) + (sp18[1][3] * arg2) + (sp18[2][3] * arg3)) + sp18[3][3];
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80627490.s")
 

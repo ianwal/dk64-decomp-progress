@@ -2,14 +2,15 @@
 #include "functions.h"
 #include "sprites.h"
 
-const char D_global_asm_80759260[] = "DONKEY";
-const char D_global_asm_80759268[] = "DIDDY";
-const char D_global_asm_80759270[] = "LANKY";
-const char D_global_asm_80759278[] = "TINY";
-const char D_global_asm_80759280[] = "CHUNKY";
-const char D_global_asm_80759288[] = "KRUSHA";
-const char D_global_asm_80759290[] = "RAMBI";
-const char D_global_asm_80759298[] = "ENGUARDE";
+// .rodata
+static const char D_global_asm_80759260[] = "DONKEY";
+static const char D_global_asm_80759268[] = "DIDDY";
+static const char D_global_asm_80759270[] = "LANKY";
+static const char D_global_asm_80759278[] = "TINY";
+static const char D_global_asm_80759280[] = "CHUNKY";
+static const char D_global_asm_80759288[] = "KRUSHA";
+static const char D_global_asm_80759290[] = "RAMBI";
+static const char D_global_asm_80759298[] = "ENGUARDE";
 
 extern u8 D_global_asm_807F94B4;
 

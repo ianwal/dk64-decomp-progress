@@ -74,16 +74,111 @@ typedef struct {
 } A178_800286EC;
 
 /* variables */
-extern s32 D_minecart_80028BD0;
 extern SpriteData D_global_asm_8072030C;
 extern SpriteData D_global_asm_80720120; // sprite
 extern u8 D_global_asm_807FBB85;
 extern SpriteData D_global_asm_8072030C; // TODO: Type
 extern u8 D_global_asm_807FBD70;
 extern u8 D_global_asm_807FBDC4;
-extern s32 D_minecart_80028C34; // TODO: Type
-extern s32 D_minecart_80028C40; // TODO: Type
-extern s32 D_minecart_80028C48; // TODO: Type
+
+// .data
+static s32 D_minecart_80028B90[] = {
+    0xFF000000,
+    0xFF000000,
+    0x0B010904,
+    0x22011906,
+};
+
+static s32 D_minecart_80028BA0[] = {
+    0x08000C05,
+    0x18002307,
+    0x10020D0A,
+    0x20020108,
+};
+
+static s32 D_minecart_80028BB0[] = {
+    0x0C01110B,
+    0x18012109,
+    0x0603050C,
+    0x12030E0E,
+};
+
+static s32 D_minecart_80028BC0[] = {
+    0x0402070D,
+    0x0D02130F,
+    0xFF000000,
+    0xFF000000,
+};
+
+static void *D_minecart_80028BD0[] = {
+    D_minecart_80028B90,
+    D_minecart_80028BA0,
+    D_minecart_80028BB0,
+    D_minecart_80028BC0,
+};
+
+static s32 D_minecart_80028BE0[] = {
+    0x0C110917,
+    0x23111915,
+    0xFF000000,
+    0xFF000000,
+};
+
+static s32 D_minecart_80028BF0[] = {
+    0x10120D1B,
+    0x20120119,
+    0x08100D16,
+    0x18102414,
+};
+
+static s32 D_minecart_80028C00[] = {
+    0x0613061F,
+    0x12130F1D,
+    0x0C11111A,
+    0x18110118,
+};
+
+static s32 D_minecart_80028C10[] = {
+    0xFF000000,
+    0xFF000000,
+    0x0512071E,
+    0x0E12131C,
+};
+
+void *D_minecart_80028C20[] = {
+    D_minecart_80028BE0,
+    D_minecart_80028BF0,
+    D_minecart_80028C00,
+    D_minecart_80028C10,
+};
+
+void *D_minecart_80028C30 = NULL;
+
+s32 D_minecart_80028C34[] = {
+    0x00010304,
+    0x060709FF,
+};
+
+s32 D_minecart_80028C3C[] = {
+    0x00FF0000,
+};
+
+s32 D_minecart_80028C40[] = {
+    0x00010304,
+    0x07FF0000,
+};
+
+s32 D_minecart_80028C48[] = {
+    0x00814387,
+    0xFF000000,
+};
+
+s32 D_minecart_80028C50[] = {
+    0x87438100,
+    0xFF000000,
+    0x00000000, // PAD?
+    0x00000000, // PAD?
+};
 
 /* function signatures */
 void func_minecart_80024E78(AAD_minecart_80027DA0*, void*, s32, s32);

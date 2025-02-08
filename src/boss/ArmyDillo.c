@@ -83,6 +83,89 @@ const s32 D_boss_80035CC0[] = {
     0x03000000,
 };
 
+// .data
+void *D_boss_800358B0[] = {
+    D_boss_80035C00,
+    D_boss_80035C14,
+    D_boss_80035C28,
+    D_boss_80035C3C,
+    NULL,
+    D_boss_80035C44,
+    D_boss_80035C5C,
+    D_boss_80035C78,
+    D_boss_80035C94,
+    NULL,
+};
+
+u8 D_boss_800358D8[] = {
+    0x2E,
+    0x2F,
+    0x31,
+    0x32,
+    0x30,
+    0x00, // PADDING
+    0x00, // PADDING
+    0x00, // PADDING
+};
+
+typedef struct {
+    s8 unk0;
+    s8 unk1;
+    s8 unk2;
+    s8 unk3;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct800358E0;
+
+Struct800358E0 D_boss_800358E0[] = {
+    { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+    { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+    { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+    { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+    { 0x00, 0x80, 0x00, 0x00, 0.15f, 0.15f, 0.15f },
+    { 0x00, 0x00, 0x00, 0x00, 1.0f, 1.0f, 1.0f },
+    { 0x00, 0x00, 0x00, 0x00, 1.0f, 1.0f, 1.0f },
+    { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+    { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+    { 0x00, 0x80, 0x00, 0x00, 0.15f, 0.15f, 0.15f },
+};
+
+u8 D_boss_80035980[] = {
+    0x00, 0x01, 0xFF, 0x00,
+};
+
+u8 D_boss_80035984[] = {
+    0x02, 0x03, 0xFF, 0x00,
+};
+
+u8 D_boss_80035988[] = {
+    0x04, 0xFF, 0x00, 0x00,
+};
+
+typedef struct {
+    u8 unk0[6];
+} Struct80024000;
+
+Struct80024000 D_boss_8003598C = {
+    { 0x09, 0x0A, 0x0E, 0x12, 0x15, 0x16 }
+};
+
+u8 D_boss_80035994[] = {
+    0x29,
+    0x26,
+    0x27,
+    0x28,
+    0x2A,
+    0x2B,
+    0x2C,
+    0x2D,
+    0x00, // PADDING
+    0x00, // PADDING
+    0x00, // PADDING
+    0x00, // PADDING
+};
+
 extern SpriteData D_global_asm_80720120;
 
 typedef struct {
@@ -92,12 +175,7 @@ typedef struct {
 
 s32 func_boss_80024568(Struct8002450C*, u8, f32, f32, f32);
 
-typedef struct {
-    u8 unk0[6];
-} Struct80024000;
-
 extern SpriteData D_global_asm_8071FFA0;
-extern Struct80024000 D_boss_8003598C;
 
 void func_boss_80024000(void) {
     Struct80024000 sp48;
@@ -119,20 +197,6 @@ void func_boss_80024000(void) {
 
 // Flag check, animation state, unrolled loops
 #pragma GLOBAL_ASM("asm/nonmatchings/boss/ArmyDillo/func_boss_8002413C.s")
-
-typedef struct {
-    s8 unk0;
-    s8 unk1;
-    s8 unk2;
-    s8 unk3;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-} Struct800358E0;
-
-extern u8 D_boss_800358D8[];
-extern Struct800358E0 D_boss_800358E0[];
-extern u8 D_boss_80035994[];
 
 /*
 void func_boss_8002413C(void) {

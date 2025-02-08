@@ -5,12 +5,12 @@
 extern s32 D_global_asm_80718188;
 
 extern SpriteData D_global_asm_80720EA4;
-extern SpriteData D_global_asm_8071FC8C; // TODO: Datatype
+extern SpriteData D_global_asm_8071FC8C;
 extern SpriteData D_global_asm_8071FC40;
 
 extern SpriteData D_global_asm_8071FBC8;
 extern SpriteData D_global_asm_8071FB54;
-extern SpriteData D_global_asm_8071FE08; // TODO: Datatype
+extern SpriteData D_global_asm_8071FE08;
 extern SpriteData D_global_asm_8071FE64;
 extern SpriteData D_global_asm_8071FE88;
 extern SpriteData D_global_asm_8071FFA0;
@@ -21,7 +21,7 @@ extern SpriteData D_global_asm_8071FFA0;
 extern SpriteData D_global_asm_80720A7C;
 extern SpriteData D_global_asm_80720B00;
 extern SpriteData D_global_asm_80720BE8;
-extern SpriteData D_global_asm_80720BC4; // TODO: Datatype
+extern SpriteData D_global_asm_80720BC4;
 extern SpriteData D_global_asm_80720CD8;
 extern SpriteData D_global_asm_80720E44;
 extern SpriteData D_global_asm_80720E5C;
@@ -117,13 +117,13 @@ typedef struct SpriteStruct {
 
 extern void func_global_asm_8064EE08(SpriteStruct *, u8 *);
 
-void func_global_asm_80642BF0(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80642BF0(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 1, 0);
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 2, 0);
     func_global_asm_80714B84(&D_global_asm_8071FF18, 0.3f, arg1, 3, 0);
 }
 
-void func_global_asm_80642C78(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80642C78(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 i;
     u8 temp;
     f32 x, y, z;
@@ -151,7 +151,7 @@ typedef struct InstanceData80642E34 {
     s32 unk0;
 } InstanceData80642E34;
 
-void func_global_asm_80642E34(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_80642E34(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 x, y, z;
     InstanceData80642E34 *var_v1;
     f32 var_f0;
@@ -182,7 +182,7 @@ typedef struct InstanceData80642FC4 {
     f32 unkC;
 } InstanceData80642FC4;
 
-void func_global_asm_80642FC4(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80642FC4(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
     InstanceData80642FC4 *var_v1;
     u8 sp33;
     f32 sp2C;
@@ -213,7 +213,7 @@ void func_global_asm_80642FC4(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3
     }
 }
 
-void func_global_asm_80643274(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80643274(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 sp24;
 
     if ((object_timer % (u32)arg3) == 0) {
@@ -247,7 +247,7 @@ typedef struct InstanceData80643440 {
     s16 unk0;
 } InstanceData80643440;
 
-void func_global_asm_80643440(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80643440(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 temp_f24;
     InstanceData80643440 *var_v1;
 
@@ -269,7 +269,7 @@ void func_global_asm_80643440(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3
     var_v1->unk0 += 0x32;
 }
 
-void func_global_asm_806436A4(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_806436A4(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s16 arg3) {
     func_global_asm_80643354(0, arg2, arg3);
 }
 
@@ -278,7 +278,7 @@ typedef struct InstanceData806436E0 {
     s32 unk4;
 } InstanceData806436E0;
 
-void func_global_asm_806436E0(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_806436E0(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
     Struct807F5FD4_unk0 *temp_v0_2;
     InstanceData806436E0 *var_v1;
     s32 x, y, z;
@@ -311,13 +311,13 @@ void func_global_asm_806436E0(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3
     var_v1->unk0--;
 }
 
-void func_global_asm_8064384C(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
-    ObjectModel2 *temp_v1 = &D_global_asm_807F6000[func_global_asm_80659470(arg1)];
+void func_global_asm_8064384C(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg3) {
+    Prop *temp_v1 = &D_global_asm_807F6000[func_global_asm_80659470(arg1)];
 
     func_global_asm_8067DF44(temp_v1->x_position, temp_v1->y_position, temp_v1->z_position, temp_v1->hitbox_scale, 0, 1);
 }
 
-void func_global_asm_806438B8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 boneIndex) {
+void func_global_asm_806438B8(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 boneIndex) {
     s32 pad;
     s32 temp_s0;
     s32 i;
@@ -356,7 +356,7 @@ void func_global_asm_806438B8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 bone
     }
 }
 
-void func_global_asm_80643B24(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80643B24(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg3) {
     if ((object_timer % 5U) == 0) {
         func_global_asm_80714950(-0x78);
         func_global_asm_8071498C(func_global_asm_80717D4C);
@@ -380,7 +380,7 @@ typedef struct InstanceData80643C0C {
     s32 unk4;
 } InstanceData80643C0C;
 
-void func_global_asm_80643C0C(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_80643C0C(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s32 arg3) {
     f32 var_f2;
     f32 temp_f20;
     InstanceData80643C0C *var_v1;
@@ -414,7 +414,7 @@ void func_global_asm_80643C0C(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s32 arg3
     }
 }
 
-void func_global_asm_80643F38(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80643F38(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
     s16 i;
     for (i = 0; i < 0x1E; i++) {
         func_global_asm_807149B8(1);
@@ -433,7 +433,7 @@ typedef struct InstanceData8064409C {
     s32 unk8;
 } InstanceData8064409C;
 
-void func_global_asm_8064409C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064409C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064409C *temp_v0;
 
     if (arg0->unk0 == NULL) {
@@ -466,7 +466,7 @@ void func_global_asm_8064409C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
                     func_global_asm_80605380(arg0->unk10);
                     arg0->unk10 = -1;
                 }
-                playSoundAtObjectModel2(arg1, 0x74, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
+                playSoundAtProp(arg1, 0x74, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
             }
         }
         break;
@@ -476,7 +476,7 @@ void func_global_asm_8064409C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         if (temp_v0->unk8 == 0x28) {
             temp_v0->unk8 = 0;
             temp_v0->unk0++;
-            playSoundAtObjectModel2(arg1, 0x74, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
+            playSoundAtProp(arg1, 0x74, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
         }
         break;
     case 3:
@@ -485,7 +485,7 @@ void func_global_asm_8064409C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         if (temp_v0->unk8 == 0x28) {
             temp_v0->unk8 = 0;
             temp_v0->unk0++;
-            playSoundAtObjectModel2(arg1, 0x75, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
+            playSoundAtProp(arg1, 0x75, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
         }
         break;
     case 4:
@@ -497,7 +497,7 @@ void func_global_asm_8064409C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
     func_global_asm_80635018(arg1, 1, temp_v0->unk4, 0);
 }
 
-void func_global_asm_8064431C(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_8064431C(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg3) {
     f32 x2, x1;
     f32 y2, y1;
     f32 z2, z1;
@@ -529,7 +529,7 @@ typedef struct InstanceData806443E4 {
 } InstanceData806443E4;
 
 /*
-void func_global_asm_806443E4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData806443E4 *var_v1;
     f32 var_f16;
     f32 var_f14;
@@ -601,7 +601,7 @@ void func_global_asm_806443E4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
 }
 */
 
-void func_global_asm_806449C0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_806449C0(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714998(2);
     func_global_asm_807149B8(1);
     func_global_asm_80714B84(&D_global_asm_8071FBC8, 1.5f, arg1, arg2, 1);
@@ -829,7 +829,7 @@ void func_global_asm_80645A64(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 void func_global_asm_80645B9C(gASMStruct3 *arg0, s16 arg1, s32 arg2, s32 arg3) {
     if (((s32) (0x243 - arg0->unk44) % 60) == 0) {
-        playSoundAtObjectModel2(arg1, 0x38, 0xFF, 0x7F, 0, 0x3C, 0.0f);
+        playSoundAtProp(arg1, 0x38, 0xFF, 0x7F, 0, 0x3C, 0.0f);
     }
 }
 
@@ -942,7 +942,7 @@ typedef struct InstanceData80646770 {
 } InstanceData80646770;
 
 /*
-void func_global_asm_80646770(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 dx, dy, dz;
     InstanceData80646770 *var_v1;
     s32 old;
@@ -1010,14 +1010,8 @@ extern f32 D_global_asm_807F621C;
 extern f32 D_global_asm_807F6220;
 extern f32 D_global_asm_807F6224;
 
-typedef struct tuple_f {
-    f32 x;
-    f32 y;
-    f32 z;
-} tuple_f;
-
 /*
-void func_global_asm_80646978(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80646978(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     tuple_f sp88;
     f64 dx, dy, dz;
     s16 i;
@@ -1173,7 +1167,7 @@ typedef struct InstanceData80647610 {
     s32 unk0;
 } InstanceData80647610;
 
-void func_global_asm_80647610(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80647610(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s16 arg3) {
     s32 pad;
     s32 pad2;
     s32 sp2C;
@@ -1265,7 +1259,7 @@ typedef struct InstanceData80647B74 {
     s32 unk4;
 } InstanceData80647B74;
 
-void func_global_asm_80647B74(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80647B74(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData80647B74 *var_v1;
 
     if (arg0->unk0 == NULL) {
@@ -1341,7 +1335,7 @@ void func_global_asm_80647D7C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80648000.s")
 
 /*
-void func_global_asm_80648000(OM2_scriptdata *arg0, s16 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80648000(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg3) {
     s32 sp48;
     f32 sp40;
     f32 sp3C;
@@ -1527,7 +1521,7 @@ extern s16 D_global_asm_807505AE[];
 extern u8 D_global_asm_807446F0[];
 
 /*
-void func_global_asm_806491F4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_806491F4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     s32 pad;
     s32 sp28;
     s32 levelIndex;
@@ -1623,7 +1617,7 @@ typedef struct InstanceData80649BF0 {
 } InstanceData80649BF0;
 
 /*
-void func_global_asm_80649BF0(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80649BF0(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 i;
     s32 found;
     InstanceData80649BF0 *temp_v0;
@@ -1719,7 +1713,7 @@ typedef struct InstanceData80649E34 {
     s32 unk4;
 } InstanceData80649E34;
 
-void func_global_asm_80649E34(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_80649E34(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData80649E34 *temp_v0; // 2C
     s32 found; // 28
     s32 idx; // 24
@@ -1779,7 +1773,7 @@ extern OSTime D_global_asm_807445B0;
 extern Gfx *func_global_asm_8068DBA4(Gfx *, InstanceData80649FC0 *);
 
 /*
-void func_global_asm_80649FC0(OM2_scriptdata *arg0, s32 arg1, s32 arg2, s32 arg3) {
+void func_global_asm_80649FC0(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
     InstanceData80649FC0 *temp_v0;
     u32 temp_t2;
     u32 temp_t1;
@@ -1872,7 +1866,7 @@ typedef struct InstanceData8064A804 {
     u8 unk9;
 } InstanceData8064A804;
 
-void func_global_asm_8064A804(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064A804(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064A804 *temp_v0; // 44
     u8 found; // 43
     u8 temp_t6;
@@ -1967,7 +1961,7 @@ typedef struct InstanceData8064AC28 {
     u8 unk4F;
 } InstanceData8064AC28;
 
-void func_global_asm_8064AC28(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064AC28(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064AC28 *temp_v0; // A4
     u8 pad0[3];
     u8 unkcounter;
@@ -2168,19 +2162,19 @@ typedef struct {
     f32 unk8;
 } Struct8064B3F8;
 
-void func_global_asm_8064B3F8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064B3F8(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     Struct8064B3F8 *temp_t0;
-    OM2_scriptdata *temp_a0;
+    Prop_ScriptData *temp_a0;
     f32 x;
     f32 y;
     f32 z;
-    s32 objectModel2Index;
+    s32 propIndex;
 
     temp_t0 = arg0->unk0;
-    objectModel2Index = func_global_asm_80659470(arg1);
-    x = D_global_asm_807F6000[objectModel2Index].x_position;
-    y = D_global_asm_807F6000[objectModel2Index].y_position;
-    z = D_global_asm_807F6000[objectModel2Index].z_position;
+    propIndex = func_global_asm_80659470(arg1);
+    x = D_global_asm_807F6000[propIndex].x_position;
+    y = D_global_asm_807F6000[propIndex].y_position;
+    z = D_global_asm_807F6000[propIndex].z_position;
     arg0->unk14[arg3] = (temp_t0->unk0 - x) / arg2;
     arg0->unk14[arg3 + 1] = (temp_t0->unk4 - y) / arg2;
     arg0->unk14[arg3 + 2] = (temp_t0->unk8 - z) / arg2;
@@ -2433,7 +2427,7 @@ s32 func_global_asm_8064BF58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return FALSE;
 }
 
-void func_global_asm_8064BFD0(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064BFD0(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s16 arg3) {
     f32 temp_f12;
 
     temp_f12 = ((f64)ABS(arg0->unk14[arg2]) / arg0->unk14[arg3 + 1]);
@@ -2455,7 +2449,7 @@ void func_global_asm_8064BFD0(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s16 arg3
     }
 }
 
-void func_global_asm_8064C134(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064C134(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s32 arg3) {
     if (1.2 < D_global_asm_807F6228 || D_global_asm_807F6228 < -1.2) {
         if (D_global_asm_807F6228 > 0.0) {
             if (arg0->unk14[arg2] > -1.0) {
@@ -2584,11 +2578,11 @@ void func_global_asm_8064C708(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     if (*var_v1 == 0xB) {
         if (sp3E == 3) {
             *var_v1 = 3;
-            playSoundAtObjectModel2(arg1, 0x257, 0x78, 0x7F, 0xA, 0x50, 0.3f);
+            playSoundAtProp(arg1, 0x257, 0x78, 0x7F, 0xA, 0x50, 0.3f);
         }
     } else if (sp3E == 0xB) {
         *var_v1 = 0xB;
-        playSoundAtObjectModel2(arg1, 0x258, 0x78, 0x7F, 0xA, 0x50, 0.3f);
+        playSoundAtProp(arg1, 0x258, 0x78, 0x7F, 0xA, 0x50, 0.3f);
     }
 }
 
@@ -2698,7 +2692,7 @@ void func_global_asm_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     func_global_asm_80650D8C(arg1, 1, &sp3E, &sp38, &sp37);
     if (sp3E != *var_v1) {
         *var_v1 = sp3E;
-        playSoundAtObjectModel2(arg1, 0x129, 0xFF, 0x7F, 3, 0x50, 0.3f);
+        playSoundAtProp(arg1, 0x129, 0xFF, 0x7F, 3, 0x50, 0.3f);
     }
 }
 
@@ -2716,7 +2710,7 @@ typedef struct InstanceData8064CD3C {
     s32 unk168[2];
 } InstanceData8064CD3C;
 
-void func_global_asm_8064CD3C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064CD3C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064CD3C *temp_v0;
     s32 pad;
     tuple_f *temp;
@@ -2773,14 +2767,14 @@ void func_global_asm_8064CD3C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         if (sp70 != temp_v0->unk168[i]) {
             temp_v0->unk168[i] = (s32) sp70;
             if (sp70 == 0) {
-                playSoundAtObjectModel2(arg1, var_s2, 0xFFU, 0x7FU, 3U, 0x46U, 0.3f);
+                playSoundAtProp(arg1, var_s2, 0xFFU, 0x7FU, 3U, 0x46U, 0.3f);
             }
         }
         var_s2 = 0x14;
     }
 }
 
-void func_global_asm_8064D0C4(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064D0C4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     f32 sp24;
     f32 sp20;
     u8 temp_v0;
@@ -2821,10 +2815,10 @@ typedef struct InstanceData8064D1E8 {
 } InstanceData8064D1E8;
 
 /*
-void func_global_asm_8064D1E8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064D1E8(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064D1E8 *temp_v0;
     s32 var_a0;
-    f32 temp;
+    s32 temp;
 
     if (arg0->unk0 == NULL) {
         temp_v0 = malloc(sizeof(InstanceData8064D1E8));
@@ -2834,8 +2828,7 @@ void func_global_asm_8064D1E8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
         temp_v0->unk8 = 0xDAC;
     }
     temp_v0 = arg0->unk0;
-    temp = func_global_asm_80612794(temp_v0->unk8);
-    func_global_asm_80661398(0, ((temp * 60.0) + 40.0), 20.0f);
+    func_global_asm_80661398(0, ((func_global_asm_80612794(temp_v0->unk8) * 60.0) + 40.0), 20.0f);
     if (!temp_v0->unk0) {
         if ((temp_v0->unk8 >= 0x2BC) && (temp_v0->unk8 < 0x2C6)) {
             playSound(0x359, 0x7FFFU, 63.0f, 0.6f, 0, 0);
@@ -2850,8 +2843,12 @@ void func_global_asm_8064D1E8(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
             arg0->unk10 = func_global_asm_80605044(arg1, 0x138, 1, 1, 0x78, 1.0f, -1);
         }
         var_a0 = ABS(temp_v0->unk8 - 0x400); // Issue is here
-        if (var_a0 >= 0xA) {
-            var_a0 = ABS(temp_v0->unk8 - 0xC00);
+        if (!(var_a0 < 0xA)) {
+            if (temp_v0->unk8 - 0xC00 < 0) {
+                var_a0 = -(temp_v0->unk8 - 0xC00);
+            } else {
+                var_a0 = temp_v0->unk8 - 0xC00;
+            }
         }
         if ((var_a0 < 0xA) && (temp_v0->unk4 == 0)) {
             temp_v0->unk0 = 0x12C;
@@ -2975,7 +2972,7 @@ void func_global_asm_8064DB98(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
 }
 
 // TODO: Any cleanup possible? Stack seems a bit whack
-void func_global_asm_8064DE04(OM2_scriptdata *arg0, s32 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064DE04(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s32 arg3) {
     Actor *temp;
     Actor *closestActor;
     f32 dx;
@@ -3025,7 +3022,7 @@ typedef struct InstanceData8064DF5C {
 } InstanceData8064DF5C;
 
 /*
-void func_global_asm_8064DF5C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064DF5C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064DF5C *temp_v0;
     u8 var_t0; // 23
     s8 var_v0;
@@ -3112,7 +3109,7 @@ typedef struct InstanceData8064E174 {
     u8 unk6;
 } InstanceData8064E174;
 
-void func_global_asm_8064E174(OM2_scriptdata *arg0, s16 arg1, s16 arg2, u8 *array, s32 size, s16 arg5, s16 arg6) {
+void func_global_asm_8064E174(Prop_ScriptData *arg0, s16 arg1, s16 arg2, u8 *array, s32 size, s16 arg5, s16 arg6) {
     InstanceData8064E174 *temp_v0;
     s32 i;
     s32 diff;
@@ -3181,22 +3178,22 @@ extern Struct807482E8 D_global_asm_807482E8;
 extern Struct807482EC D_global_asm_807482EC;
 extern Struct807482DC D_global_asm_807482DC;
 
-void func_global_asm_8064E428(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064E428(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     Struct807482DC sp2C = D_global_asm_807482DC;
     func_global_asm_8064E174(arg0, arg1, arg2, &sp2C, 4, 5, 0x14);
 }
 
-void func_global_asm_8064E48C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064E48C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     Struct807482E0 sp28 = D_global_asm_807482E0;
     func_global_asm_8064E174(arg0, arg1, arg2, &sp28, 5, 4, 0x14);
 }
 
-void func_global_asm_8064E4F8(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064E4F8(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     Struct807482E8 sp2C = D_global_asm_807482E8;
     func_global_asm_8064E174(arg0, arg1, arg2, &sp2C, 3, 7, 0x14);
 }
 
-void func_global_asm_8064E55C(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
+void func_global_asm_8064E55C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg3) {
     Struct807482EC sp2C = D_global_asm_807482EC;
     func_global_asm_8064E174(arg0, arg1, arg2, &sp2C, 3, 7, 0x14);
 }
@@ -3230,7 +3227,7 @@ typedef struct InstanceData8064E65C {
     s32 unk0;
 } InstanceData8064E65C;
 
-void func_global_asm_8064E65C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+void func_global_asm_8064E65C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     InstanceData8064E65C *temp_v0;
     f32 x, y, z;
     f64 red;
@@ -3247,43 +3244,43 @@ void func_global_asm_8064E65C(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3
     }
     temp_v0 = arg0->unk0;
     switch (arg2) {
-    case 10:
-    case 11:
-        playSoundAtPosition(x, y, z, 0x305, 0x64U, 0x7F, 0U, 0U, 0.0f, 0U);
-        spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D);
-        last_spawned_actor->animation_state->scale[0] *= 3.2;
-        last_spawned_actor->animation_state->scale[1] *= 3.2;
-        last_spawned_actor->animation_state->scale[2] *= 3.2;
-        last_spawned_actor->object_properties_bitfield |= 0x400;
-        playActorAnimation(last_spawned_actor, 0x335);
-        if (arg2 == 0xB) {
-            last_spawned_actor->x_position = D_global_asm_807F621C;
-            last_spawned_actor->y_position = D_global_asm_807F6220;
-            last_spawned_actor->z_position = D_global_asm_807F6224;
+        case 10:
+        case 11:
+            playSoundAtPosition(x, y, z, 0x305, 0x64U, 0x7F, 0U, 0U, 0.0f, 0U);
+            spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D);
+            last_spawned_actor->animation_state->scale[0] *= 3.2;
+            last_spawned_actor->animation_state->scale[1] *= 3.2;
+            last_spawned_actor->animation_state->scale[2] *= 3.2;
+            last_spawned_actor->object_properties_bitfield |= 0x400;
+            playActorAnimation(last_spawned_actor, 0x335);
+            if (arg2 == 0xB) {
+                last_spawned_actor->x_position = D_global_asm_807F621C;
+                last_spawned_actor->y_position = D_global_asm_807F6220;
+                last_spawned_actor->z_position = D_global_asm_807F6224;
+                return;
+            }
+            last_spawned_actor->x_position = x;
+            last_spawned_actor->y_position = y;
+            last_spawned_actor->z_position = z;
+        case 1:
+        case 3:
+        case 4:
+            if (temp_v0->unk0 >= 2) {
+                temp_v0->unk0 -= 2;
+            } else {
+                temp_v0->unk0 = 0;
+                break;
+            }
+        case 0:
+            if (arg2 == 0) {
+                temp_v0->unk0 = 0xFF;
+            }
+            func_global_asm_80659610(5000);
+            red = arg3 ? temp_v0->unk0 * 0.27 : temp_v0->unk0;
+            green = arg3 ? temp_v0->unk0 * 0.63 : temp_v0->unk0;
+            createLight(x, y - 50.0f, z, 0.0f, 0.0f, 0.0f, 240.0f, 0, red, green, temp_v0->unk0);
+        default:
             return;
-        }
-        last_spawned_actor->x_position = x;
-        last_spawned_actor->y_position = y;
-        last_spawned_actor->z_position = z;
-    case 1:
-    case 3:
-    case 4:
-        if (temp_v0->unk0 >= 2) {
-            temp_v0->unk0 -= 2;
-        } else {
-            temp_v0->unk0 = 0;
-            break;
-        }
-    case 0:
-        if (arg2 == 0) {
-            temp_v0->unk0 = 0xFF;
-        }
-        func_global_asm_80659610(5000);
-        red = arg3 ? temp_v0->unk0 * 0.27 : temp_v0->unk0;
-        green = arg3 ? temp_v0->unk0 * 0.63 : temp_v0->unk0;
-        createLight(x, y - 50.0f, z, 0.0f, 0.0f, 0.0f, 240.0f, 0, red, green, temp_v0->unk0);
-    default:
-        return;
     }
 }
 
@@ -3345,7 +3342,7 @@ u8 func_global_asm_8064EC04(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return ((s16)func_global_asm_806FB418() >= D_global_asm_807446D0[sp1E]);
 }
 
-u8 func_global_asm_8064EC60(OM2_scriptdata *arg0, s16 arg1, s16 arg2, s16 arg3) {
+u8 func_global_asm_8064EC60(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg3) {
     s32 sp1B;
     s32 temp_v0;
     s32 kongIndex;
@@ -3480,25 +3477,27 @@ u8 func_global_asm_8064F1C4(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     return D_global_asm_807F6950;
 }
 
-// regalloc
+// regalloc, float, close
+// https://decomp.me/scratch/qE2WY
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_8064F210.s")
 
 /*
 u8 func_global_asm_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 sp2C;
     f32 temp2;
-    f32 temp3;
-    f32 temp4;
+    f64 temp3;
     s16 temp_f18;
+    f32 temp4;
     f32 temp_f0;
     f32 temp;
 
     temp_f18 = (D_global_asm_807F622C * 4096.0f) / 360.0f;
     sp2C = func_global_asm_80612794(temp_f18);
     temp_f0 = func_global_asm_80612790(temp_f18);
-    temp = -((D_global_asm_807F621C * sp2C) + (D_global_asm_807F6224 * temp_f0));
-    temp2 = (player_pointer->x_position * sp2C);
-    return (f64)(temp2 + (player_pointer->z_position * temp_f0) + temp) > 6;
+    temp = ((D_global_asm_807F621C * sp2C) + (D_global_asm_807F6224 * temp_f0));
+    temp = -temp;
+    temp2 = (player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position);
+    return (f64)(temp2 + temp) > 6;
 }
 */
 

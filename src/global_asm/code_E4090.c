@@ -1699,15 +1699,15 @@ s32 func_global_asm_806E5488(Actor *arg0) {
             return TRUE;
         }
     }
-    // Object Model 2 Behavior: Mushroom (0x88)
+    // Prop Behavior: Mushroom (0x88)
     if ((arg0->locked_to_pad == 1) && (func_global_asm_8063C328(arg0->unk10C) == 0x88)) {
         return TRUE;
     }
-    // Object Model 2 Behavior: Wooden Platform (Castle) (0x219)
+    // Prop Behavior: Wooden Platform (Castle) (0x219)
     if ((arg0->locked_to_pad == 1) && (func_global_asm_8063C328(arg0->unk10C) == 0x219)) {
         return TRUE;
     }
-    // Object Model 2 Behavior: Metal Platform (0x132)
+    // Prop Behavior: Metal Platform (0x132)
     if ((arg0->locked_to_pad == 1) && (func_global_asm_8063C328(arg0->unk10C) == 0x132)) {
         return TRUE;
     }

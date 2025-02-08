@@ -2,7 +2,7 @@
 #include "functions.h"
 
 // .rodata
-const s32 D_boss_80036A90[] = {
+static const s32 D_boss_80036A90[] = {
     0x00546C5F,
     0x005103E4,
     0x41002741,
@@ -11,29 +11,29 @@ const s32 D_boss_80036A90[] = {
     0x00062750,
 };
 
-const s32 D_boss_80036AA8[] = {
+static const s32 D_boss_80036AA8[] = {
     0x284F4B00,
     0x06275000,
 };
 
 // .data
-void *D_boss_80035AC0[4] = {
+static void *D_boss_80035AC0[4] = {
     D_boss_80036A90,
     D_boss_80036AA8,
     D_boss_80036AA8,
     D_boss_80036AA8,
 };
 
-u8 D_boss_80035AD0[4] = {0x03,0x00,0x02,0x01};
+static u8 D_boss_80035AD0[4] = {0x03,0x00,0x02,0x01};
 
-f32 D_boss_80035AD4[4] = {
+static f32 D_boss_80035AD4[4] = {
     0.015f,
     0.025f,
     0.03f,
     0.01f,
 };
 
-f32 D_boss_80035AE4[4] = {
+static f32 D_boss_80035AE4[4] = {
     1.0f,
     1.3f,
     1.8f,

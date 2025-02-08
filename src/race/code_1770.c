@@ -61,6 +61,10 @@ extern f32 D_global_asm_80770BC0[];
 
 void func_race_8002D338(Actor *arg0, RaceStruct0 *arg1);
 
+// .data
+static s32 D_race_8002FBB0[] = {0, 0, 0, 0}; // TODO: Hmm....
+static s32 D_race_8002FBC0[] = {0, 0, 0, 0}; // TODO: Hmm....
+
 s32 func_race_80025770(s32 arg0, s32 arg1) {
     s32 temp_v1 = arg1 + 1;
     if (arg0 != temp_v1) {

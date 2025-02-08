@@ -4,20 +4,20 @@
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
 
 // .rodata
-const s32 D_boss_80036840[] = {
+static const s32 D_boss_80036840[] = {
     0x546C0041,
     0x0141025F,
     0x014F4B00,
     0x07500000,
 };
 
-const s32 D_boss_80036850[] = {
+static const s32 D_boss_80036850[] = {
     0x4F4B0007,
     0x50000000,
 };
 
 // .data
-void *D_boss_80035A80[] = {
+static void *D_boss_80035A80[] = {
     D_boss_80036840,
     D_boss_80036850,
     D_boss_80036850,

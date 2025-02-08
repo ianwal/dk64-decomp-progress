@@ -102,7 +102,7 @@ typedef struct {
     s32 unk1C;
 } Struct80026FA4;
 
-Struct80026FA4 D_multiplayer_80026FA4[4] = {
+static Struct80026FA4 D_multiplayer_80026FA4[4] = {
     {
         MAP_KONG_BATTLE_BATTLE_ARENA,
         0x00000001,
@@ -304,40 +304,29 @@ void func_multiplayer_8002452C(void) {
     }
 }
 
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800245B0.s")
-
-/*
-void *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s32 arg2, void *arg3, s32 arg4) {
-    gDPSetTextureImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 1, arg3);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 0, 0x0000, G_TX_LOADTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 3, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 3, G_TX_NOLOD);
-    gDPLoadSync(dl++);
-    gDPLoadBlock(dl++, G_TX_LOADTILE, 0, 0, 63, 1024);
-    gDPPipeSync(dl++);
-    gDPSetTile(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, 2, 0x0000, G_TX_RENDERTILE, 0, G_TX_NOMIRROR | G_TX_CLAMP, 3, G_TX_NOLOD, G_TX_NOMIRROR | G_TX_WRAP, 3, G_TX_NOLOD);
-    gDPSetTileSize(dl++, G_TX_RENDERTILE, 0, 0, 0x001C, 0x001C);
+Gfx *func_multiplayer_800245B0(Gfx *dl, s16 *arg1, s16 arg2, void *arg3, s32 arg4) {
+    gDPLoadTextureBlock(dl++, arg3, G_IM_FMT_RGBA, G_IM_SIZ_16b, 8, 8, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_CLAMP, 3, 3, G_TX_NOLOD, G_TX_NOLOD);
     // TODO: Issue is here
     gSPTextureRectangle(
         dl++,
-        *arg1,
-        arg2 * 4,
-        *arg1 + (arg4 * 8),
-        arg2 + 8,
+        *arg1 << 2,
+        arg2 << 2,
+        (*arg1 + (arg4 * 8)) << 2,
+        (arg2 + 8) << 2,
         G_TX_RENDERTILE,
         0,
         0,
         0x0400,
         0x0400
     );
-    *arg1 += arg4 * 8;
+    *arg1 += (arg4 * 8);
     return dl;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800246EC.s")
 
-Gfx *func_multiplayer_800245B0(Gfx *, s16 *, s16, s32, s32);
+Gfx *func_multiplayer_800245B0(Gfx *, s16 *, s16, void *, s32);
 extern u8 D_global_asm_80750AB8;
 
 /*
@@ -393,9 +382,6 @@ Gfx *func_multiplayer_800246EC(Gfx *dl, Struct800246EC *aaD, f32 arg2) {
 }
 */
 
-// Displaylist stuff, close, float, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_800249D8.s")
-
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 
@@ -411,19 +397,23 @@ typedef struct {
     s32 unk30;
 } AAD_800249D8;
 
-/*
 Gfx *func_multiplayer_800249D8(Gfx *dl, Actor *arg1) {
-    char sp98[1];
+    AAD_800249D8 *aaD;
+    s32 i;
+    f32 v;
+    char sp98[0x14];
     f32 x;
-    f32 y;
     f32 temp_f20;
     f32 temp_f24;
-    s32 i;
-    AAD_800249D8 *aaD;
+    AAD_800249D8_unk20 *temp0;
+    f32 temp1;
+    s16 temp2;
+    s16 temp3;
 
     aaD = arg1->additional_actor_data;
     temp_f24 = (f32)D_global_asm_80744490 / (cc_number_of_players + 1);
-    temp_f20 = aaD->unk20->unk6 + 8;
+    temp0 = aaD->unk20;
+    temp_f20 = temp0->unk6 + 8;
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, 0, 0, D_global_asm_80744490, D_global_asm_80744494);
     dl = func_multiplayer_800246EC(dl, aaD, temp_f24);
     if (D_global_asm_807552E8 != 3) {
@@ -434,37 +424,137 @@ Gfx *func_multiplayer_800249D8(Gfx *dl, Actor *arg1) {
         gDPPipeSync(dl++);
         gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xB4);
-        for (i = 0; i < cc_number_of_players;) {
-            sprintf(&sp98, "%d", func_multiplayer_80024254(i));
-            y = (temp_f20 + 8.0f) * 8.0f;
-            i++;
-            x = ((i * temp_f24) - ((f32)(getCenterOfString(1, &sp98) * 0.25))) * 8.0f;
-            dl = printStyledText(dl, 1, x, y, &sp98, 4);
+        temp_f20 += 8.0f;
+        for (i = 0; i < cc_number_of_players; i++) {
+            temp0 = func_multiplayer_80024254(i);
+            sprintf(&sp98, "%d", temp0);
+            temp1 = getCenterOfString(1, &sp98);
+            x = (((i + 1) * temp_f24) - ((f32)(temp1 * 0.25))) * 8.0f;
+            dl = printStyledText(dl, 1, x, temp_f20 * 8.0f, &sp98, 4);
         }
+    }
+    return dl;
+}
+
+// Displaylist stuff
+#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80024CA4.s")
+
+typedef struct MultiplayerActor318AAD_Sub50 {
+    void *unk0[4];
+} MultiplayerActor318AAD_Sub50;
+
+typedef struct MultiplayerActor318AAD {
+    OSTime unk0;
+    u8 pad8[0xC - 0x8];
+    s32 unkC;
+    s32 unk10;
+    u8 pad14[0x20 - 0x14];
+    Struct80750948 *unk20[4];
+    Mtx *unk30;
+    s32 unk34;
+    u8 unk38;
+    u8 pad39[0x3C - 0x39];
+    s32 unk3C;
+    s16 unk40;
+    s16 unk42;
+    void *unk44;
+    void *unk48;
+    u8 pad4C[0x50 - 0x4C];
+    void *unk50[8];
+    u8 unk70;
+} MultiplayerActor318AAD;
+
+/*
+Gfx *func_multiplayer_80024CA4(Gfx *dl, Actor *arg1) {
+    MultiplayerActor318AAD *aaD; // 104
+    f32 temp_f20;
+    f32 temp_f22;
+    f32 temp_f22_2;
+    Struct80750948 *temp_s4;
+    f32 spF0;
+    s32 temp1;
+    s32 i;
+    s32 temp_v0_3;
+    u32 temp_s6;
+    u8 alpha;
+    Actor *temp_a3;
+    s32 temp2;
+    f32 temp;
+    s8 spCC;
+    f32 temp4;
+    f32 temp3;
+    f32 spC0;
+
+    aaD = arg1->AAD_as_array[0];
+    spF0 = func_global_asm_806FD894(1);
+    spC0 = func_global_asm_806FD894(1);
+    dl = func_multiplayer_800246EC(dl, aaD, 0.0f);
+    gSPDisplayList(dl++, &D_1000118);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, aaD->unk30, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+    for (i = 0; i < cc_number_of_players; i++) {
+        temp_a3 = character_change_array[i].player_pointer;
+        temp_s4 = aaD->unk20[i];
+        if (temp_a3->control_state == 0x84) {
+            alpha = temp_a3->shadow_opacity;
+            temp_f20 = (temp_s4->unk6 + ((temp_s4->unkA - temp_s4->unk6) * 0.5));
+            temp_f22 = (temp_s4->unk4 + ((temp_s4->unk8 - temp_s4->unk4) * 0.5));
+            gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF - alpha);
+            sprintf(&spCC, "BAD LUCK");
+            temp_f22 -= (getCenterOfString(1, &spCC) * 0.25);
+            dl = printStyledText(dl, 1, temp_f22 * 8.0f, (temp_f20 - (spF0 * 0.25)) * 8.0f, &spCC, 4U);
+        } else {
+            alpha = 0xFF;
+        }
+        if (alpha == 0) {
+            continue;
+        }
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+        if (aaD->unk70 == 0) {
+            temp_f22_2 = temp_s4->unk4 + 4.0f;
+            temp_f20 = (temp_s4->unkA - ((8.0f + spC0) * 0.5f)) * 8.0f;
+            temp_v0_3 = func_global_asm_806F8AD4(3, i);
+            if (temp_v0_3) {
+                gDPSetPrimColor(dl++, 0, 0, 0x64, 0x1E, 0x00, alpha);
+                sprintf(&spCC, "%d", temp_v0_3);
+            } else {
+                temp1 = func_global_asm_806F8AD4(2, i);
+                sprintf(&spCC, "%d", temp1);
+            }
+            dl = printStyledText(dl, 1, temp_f22_2 * 8.0f, temp_f20, &spCC, 4U);
+            if (temp_v0_3) {
+                gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+            }
+            temp1 = func_global_asm_806F8AD4(4, i);
+            sprintf(&spCC, "%d", temp1);
+            temp2 = getCenterOfString(1, &spCC);
+            dl = printStyledText(dl, 1, ((temp_s4->unk8 - ((temp2 + 8) * 0.5f)) * 8.0f), temp_f20, &spCC, 4U);
+        }
+        sprintf(&spCC, "%d", func_multiplayer_80024254(i));
+        temp3 = getCenterOfString(1, &spCC) * 0.5f;
+        temp = temp_s4->unk6;
+        temp4 = temp_s4->unk8;
+        temp += (8.0 + ((8.0f - (spC0 * 0.5f)) * 0.5));
+        temp4 -= temp3 + 50.0f;
+        dl = printStyledText(dl, 1, temp4 * 8.0f, temp * 8.0f, &spCC, 4U);
     }
     return dl;
 }
 */
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80024CA4.s")
-
-// Displaylist stuff, close
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025264.s")
-
 Gfx *func_multiplayer_800249D8(Gfx *, Actor *);
 Gfx *func_multiplayer_80024CA4(Gfx *, Actor *);
 
-/*
 Gfx *func_multiplayer_80025264(Gfx *dl, Actor *arg1) {
-    s32 temp_t0;
-
-    temp_t0 = (D_global_asm_807552E4.unk8 >= 2);
+    s32 temp_t0 = (D_global_asm_807552E4.unk8 > 1);
+    s32 temp_t7 = global_properties_bitfield & 3;
 
     gDPPipeSync(dl++);
     gDPSetScissor(dl++, G_SC_NON_INTERLACE, 0, 0, D_global_asm_80744490, D_global_asm_80744494);
 
-    if (!(global_properties_bitfield & 3)) {
+    if (!temp_t7) {
         if (D_global_asm_807552E4.unk0 == 0) {
             if ((D_global_asm_807552E4.unk8 == 1) || (temp_t0)) {
                 dl = func_multiplayer_800249D8(dl, arg1);
@@ -475,7 +565,6 @@ Gfx *func_multiplayer_80025264(Gfx *dl, Actor *arg1) {
     }
     return dl;
 }
-*/
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025378.s")
@@ -601,41 +690,38 @@ void func_multiplayer_80025654(MultiplayerStruct4 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025794.s")
-
-/*
-Progress..
 void func_multiplayer_80025794(void) {
-    s32 i, j, k;
-    f32 temp_f20;
-    f32 temp_f20_2;
-    f32 temp_f22;
-    f32 temp_f26;
-    f32 temp_f26_2;
-    f32 temp_f28;
-    f32 temp_f28_2;
-    f32 var_f22;
-    f32 var_f24;
+    
+    Struct80026FA4 *temp_v0; // 84
+    MultiplayerStruct3 *temp_s0;
+    s32 i; // 7C
+    s32 var_s7;
+    MultiplayerStruct3 *temp_s5;
+    s32 temp_s3;
     s16 temp_s4;
     s16 var_s0;
-    s32 temp_s3;
-    s32 temp_t8;
-    s32 var_s7;
-    MultiplayerStruct3 *temp_s0;
-    Struct80026FA4 *temp_v0;
-    s64 temp_double;
 
     temp_v0 = func_multiplayer_80025378();
     temp_s0 = temp_v0->unk8;
     func_multiplayer_800243C8();
-    if ((gameIsInAdventureMode() == 0) || (global_properties_bitfield & 2)) {
+    if ((!gameIsInAdventureMode()) || (global_properties_bitfield & 2)) {
         return;
     }
+    temp_s5 = temp_s0;
     for (i = 0; i < temp_v0->unk4; i++) {
-        if (temp_s0->unk8) {
-            temp_s0->unk8--;
+        s32 j, k; // nis
+        f32 temp_f26; // nis
+        f32 temp_f28; // nis
+        f32 mult;
+        f32 temp_f20;
+        f32 var_f24;
+        f32 var_f4;
+        f32 var_f20;
+
+        if (temp_s5->unk8) {
+            temp_s5->unk8--;
         } else {
-            if (temp_s0->unk6 == 0) {
+            if (!temp_s5->unk6) {
                 var_s7 = 1;
             } else {
                 var_s7 = (((rand() >> 0xF) % 32767) % 3) + 1;
@@ -643,34 +729,35 @@ void func_multiplayer_80025794(void) {
             for (j = 0; j < var_s7; j++) {
                 temp_s3 = (((rand() >> 0xF) % 32767) % 3) + 1;
                 temp_s4 = func_multiplayer_800253C8();
-                temp_f22 = ((func_global_asm_806119FC() * 0.8) + 0.2) * temp_s0->unk6;
-                temp_t8 = (rand() >> 0xF) % 4096;
-                temp_f20 = temp_s0->unk2 - 0x17;
-                temp_f26 = temp_s0->unk0;
-                temp_f28 = temp_s0->unk4;
-                temp_f26_2 = temp_f26 + (temp_f22 * func_global_asm_80612794(temp_t8));
-                temp_f28_2 = temp_f28 + (temp_f22 * func_global_asm_80612790(temp_t8));
-                if (temp_s3 >= 2) {
-                    var_f22 = 15.0f;
+                mult = ((func_global_asm_806119FC() * 0.8) + 0.2) * temp_s5->unk6;
+                var_s0 = (rand() >> 0xF) % 4096;
+                temp_f26 = temp_s5->unk0;
+                temp_f20 = temp_s5->unk2 - 0x17;
+                temp_f28 = temp_s5->unk4;
+                temp_f26 += (mult * func_global_asm_80612794(var_s0));
+                temp_f28 += (mult * func_global_asm_80612790(var_s0));
+                if (temp_s3 > 1) {
                     var_s0 = (rand() >> 0xF) % 4096;
-                    var_f24 = 4096.0f / (f32) temp_s3;
+                    mult = 15.0f;
+                    var_f24 = 4096.0f / temp_s3;
                 } else {
-                    var_f22 = 0.0f;
+                    mult = 0.0f;
                     var_f24 = 0.0f;
                     var_s0 = 0;
                 }
                 for (k = 0; k < temp_s3; k++) {
-                    temp_f20_2 = (func_global_asm_80612794(var_s0) * var_f22) + temp_f26_2;
-                    func_global_asm_806F5F2C(0x7A, temp_s4, temp_f20_2, temp_f20, ((func_global_asm_80612790(var_s0) * var_f22) + temp_f28_2));
-                    var_s0 = (s32) ((f32) var_s0 + var_f24) & 0xFFF;
+                    var_f20 = (func_global_asm_80612794(var_s0) * mult) + temp_f26;
+                    var_f4 = (func_global_asm_80612790(var_s0) * mult) + temp_f28;
+                    func_global_asm_806F5F2C(0x7A, temp_s4, var_f20, temp_f20, var_f4);
+                    var_s0 += var_f24;
+                    var_s0 &= 0xFFF;
                 }
             }
-            temp_s0->unk8 = func_multiplayer_800253C8();
+            temp_s5->unk8 = func_multiplayer_800253C8();
         }
-        temp_s0++;
+        temp_s5++;
     }
 }
-*/
 
 void func_multiplayer_80025B48(Struct80025B48 *arg0) {
     s32 var_a2;
@@ -806,31 +893,6 @@ void func_multiplayer_80025FFC(Struct80025FFC *arg0) {
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80026094.s")
 
-typedef struct MultiplayerActor318AAD_Sub50 {
-    void *unk0[4];
-} MultiplayerActor318AAD_Sub50;
-
-typedef struct MultiplayerActor318AAD {
-    OSTime unk0;
-    u8 pad8[0xC - 0x8];
-    s32 unkC;
-    s32 unk10;
-    u8 pad14[0x20 - 0x14];
-    Struct80750948 *unk20[4];
-    Mtx *unk30;
-    s32 unk34;
-    u8 unk38;
-    u8 pad39[0x3C - 0x39];
-    s32 unk3C;
-    s16 unk40;
-    s16 unk42;
-    void *unk44;
-    void *unk48;
-    u8 pad4C[0x50 - 0x4C];
-    void *unk50[8];
-    u8 unk70;
-} MultiplayerActor318AAD;
-
 typedef struct Struct80026094_0 {
     s16 unk0;
     s16 unk2;
@@ -903,6 +965,7 @@ void func_multiplayer_80026094(void) {
             func_global_asm_806F5FA0(0x212, 0xD4, 0x24E);
             func_global_asm_806F5FA0(0x28E, 0xD4, 0x247);
         }
+        
         aad->unk30 = malloc(0x40);
         guScale(aad->unk30, 0.5f, 0.5f, 1.0f);
         aad->unkC = D_global_asm_807552E4.unkC;
@@ -957,10 +1020,10 @@ void func_multiplayer_80026094(void) {
                     func_global_asm_807149FC(-1);
                     func_global_asm_80714998(0U);
                     func_global_asm_80714944(temp_s1->unk8);
-                    if (i) {
-                        var_f2 = temp_s0->unk4 + 0xB;
+                    if (!i) {
+                        var_f2 = temp_s0->unk8 + 0xB;
                     } else {
-                        var_f2 = temp_s0->unk8 - 0xB;
+                        var_f2 = temp_s0->unk4 - 0xB;
                     }
                     aad->unk50[(cc_number_of_players * i) + j] = drawSpriteAtPosition(
                         temp_s1->unk0,

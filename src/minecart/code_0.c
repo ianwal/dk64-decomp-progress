@@ -101,10 +101,10 @@ typedef struct {
 } AAD_minecart_80024FD0;
 
 /* variables */
-extern s32 D_minecart_80028C30; // TODO: Proper datatype
-extern s32 D_minecart_80028C34; // TODO: Datatype
-extern s32 D_minecart_80028C3C; // TODO: Datatype
-extern s32 D_minecart_80028C40; // TODO: Datatype
+extern void *D_minecart_80028C30; // TODO: Proper datatype
+extern s32 D_minecart_80028C34[]; // TODO: Datatype
+extern s32 D_minecart_80028C3C[]; // TODO: Datatype
+extern s32 D_minecart_80028C40[]; // TODO: Datatype
 extern SpriteData D_global_asm_8072006C; // TODO: Proper datatype
 extern s16 D_global_asm_807502D0;
 extern f32 D_global_asm_807502F8;
@@ -335,8 +335,8 @@ void func_minecart_80024914(void) {
 
 /*
 extern s32 D_global_asm_807F5FD0;
-extern s32 D_minecart_80028C48;
-extern u8 D_minecart_80028C50;
+extern s32 D_minecart_80028C48[];
+extern s32 D_minecart_80028C50[];
 
 typedef struct Vec3f {
     f32 x;

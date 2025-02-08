@@ -232,8 +232,36 @@ void func_global_asm_8069A614(f32 arg0, u8 arg1) {
 }
 */
 
-// TODO: Needs some more shape on D_global_asm_807FBB70.unk0
+// Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A750.s")
+
+extern u8 D_807FBBA9;
+
+/*
+s32 func_global_asm_8069A750(void) {
+    GlobalASMStruct35 *var_a0;
+    s32 temp_v0;
+    Actor *temp_t8;
+    s32 i;
+    s32 a_type;
+
+    for (i = 0; i < D_807FBBA9; i++) {
+        switch (D_global_asm_807FBB70.unk7C[i]->unk58) {
+            case 2:
+            case 3:
+                break;
+            default:
+                if (is_cutscene_active); // Purely to get this case to load
+                break;
+        }
+    }
+    if (current_actor_pointer->unk58 == ACTOR_CASTLE_BRIDGE) {
+        return 0;
+    }
+    return 0;
+}
+*/
+
 
 // close, doable, float, struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A7C8.s")

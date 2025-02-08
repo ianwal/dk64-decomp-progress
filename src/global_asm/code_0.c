@@ -30,7 +30,7 @@ extern s32 D_80027100;
 extern s32 D_80028E20;
 extern s32 D_80028E10;
 extern s32 D_8002DF10;
-extern s32 D_bonus_8002DEF0;
+extern s8 D_bonus_8002DEF0[];
 extern s32 D_80030170;
 extern s32 D_80030160;
 extern s32 D_8002A1E0;
