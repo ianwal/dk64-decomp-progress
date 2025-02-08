@@ -1616,7 +1616,7 @@ us,asm,func_global_asm_806CD898,84,yes
 us,asm,func_global_asm_8060F730,292,no
 us,asm,func_global_asm_806FE078,3384,no
 us,asm,func_global_asm_8060B430,108,yes
-us,asm,func_global_asm_806128A8,104,no
+us,asm,func_global_asm_806128A8,104,yes
 us,asm,func_global_asm_80671880,492,no
 us,asm,func_global_asm_8065CDA0,16,yes
 us,asm,func_global_asm_806DF390,64,yes
@@ -3347,7 +3347,7 @@ us,asm,func_global_asm_80676730,44,yes
 us,asm,setIntroStoryPlaying,16,yes
 us,asm,alSeqFileNew,100,yes
 us,asm,func_global_asm_8061B7E0,96,yes
-us,asm,func_global_asm_80612910,96,no
+us,asm,func_global_asm_80612910,96,yes
 us,asm,func_global_asm_806A2B08,24,yes
 us,asm,func_global_asm_80688EA4,64,yes
 us,asm,func_global_asm_8071A440,564,yes
