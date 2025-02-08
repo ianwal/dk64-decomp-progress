@@ -1497,11 +1497,8 @@ void *func_global_asm_8062649C(u8 *src, void *dest, u16 size) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626F8C.s")
 
-// stack, close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80627388.s")
-
-/*
-void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg5, f32 *arg6, f32 *arg7, f32 *arg8) {
+// TODO: Is the unused argument correct?
+void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, s32 unused, f32 *arg5, f32 *arg6, f32 *arg7, f32 *arg8) {
     f32 sp18[4][4];
     guMtxL2F(sp18, arg0);
     *arg5 = ((sp18[0][0] * arg1) + (sp18[1][0] * arg2) + (sp18[2][0] * arg3)) + sp18[3][0];
@@ -1509,7 +1506,6 @@ void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, f32 *arg5
     *arg7 = ((sp18[0][2] * arg1) + (sp18[1][2] * arg2) + (sp18[2][2] * arg3)) + sp18[3][2];
     *arg8 = ((sp18[0][3] * arg1) + (sp18[1][3] * arg2) + (sp18[2][3] * arg3)) + sp18[3][3];
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80627490.s")
 
