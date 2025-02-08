@@ -43,7 +43,9 @@ def makeUnitLabel(numerator, denominator, units, percent):
     if is_integer_num(percent):
         if percent >= 100:
             percent = 101
-        percentStr = f'{int(percent)}%'
+            percentStr = "101% 🍌"
+        else:
+            percentStr = f'{int(percent)}%'
     else:
         percentStr = ("%3.4f%%" % (percent))
     if numerator == denominator:
