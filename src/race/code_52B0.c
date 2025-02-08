@@ -350,9 +350,7 @@ void func_race_8002A0AC(void) {
                 }
                 break;
             case 2:
-                if (current_actor_pointer->object_properties_bitfield & 0x02000000) {
-                    //
-                } else {
+                if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
                     func_global_asm_8061CB08();
                     a178->unk35++;
                 }
@@ -361,7 +359,7 @@ void func_race_8002A0AC(void) {
                 if (func_global_asm_80629148()) {
                     sp2C = func_race_8002A080(a178, a180->unk4);
                     func_global_asm_80629174();
-                    if (sp2C == 0) {
+                    if (!sp2C) {
                         func_global_asm_8063DA40(0x3B, 0xA);
                         setFlag(0xA5, TRUE, FLAG_TYPE_PERMANENT);
                     } else {

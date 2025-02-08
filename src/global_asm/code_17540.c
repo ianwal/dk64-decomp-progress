@@ -1,59 +1,52 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct {
-    f32 x;
-    f32 y;
-    f32 z;
-    f32 temp;
-} Vector3F;
+void *func_global_asm_80612840(tuple_f *arg0, tuple_f a0, tuple_f a1) {
+    tuple_f result;
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17540/func_global_asm_80612840.s")
+    result.x = (a0.x - a1.x);
+    result.y = (a0.y - a1.y);
+    result.z = (a0.z - a1.z);
 
-/*
-void *func_global_asm_80612840(Vector3F *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
-    Vector3F sp4;
-
-    sp4.x = arg1 - arg4;
-    sp4.y = arg2 - arg5;
-    sp4.z = arg3 - arg6;
-    *arg0 = sp4;
+    *arg0 = result;
     return arg0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17540/func_global_asm_806128A8.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17540/func_global_asm_80612910.s")
 
-// doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17540/func_global_asm_80612970.s")
+void *func_global_asm_80612970(tuple_f *arg0, tuple_f arg1) {
+    tuple_f result;
+    f32 d;
 
-// stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17540/func_global_asm_80612A14.s")
+    d = sqrtf(SQ(arg1.x) + SQ(arg1.y) + SQ(arg1.z));
+    if (d != 0) {
+        result.x = arg1.x / d;
+        result.y = arg1.y / d;
+        result.z = arg1.z / d;
+    }
 
-/*
-f32 func_global_asm_80612A14(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5) {
-    return (arg0 * arg3) + (arg1 * arg4) + (arg2 * arg5);
-}
-*/
-
-// close, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17540/func_global_asm_80612A54.s")
-
-/*
-Vector3F *func_global_asm_80612A54(Vector3F *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6) {
-    Vector3F sp4;
-
-    sp4.x = (arg2 * arg6) - (arg3 * arg5);
-    sp4.y = (arg3 * arg4) - (arg1 * arg6);
-    sp4.z = (arg1 * arg5) - (arg2 * arg4);
-    *arg0 = sp4;
+    *arg0 = result;
     return arg0;
 }
-*/
 
+f32 func_global_asm_80612A14(tuple_f a0, tuple_f a1) {
+    return (a0.x * a1.x) + (a0.y * a1.y) + (a0.z * a1.z);
+}
+
+tuple_f *func_global_asm_80612A54(tuple_f *arg0, tuple_f arg1, tuple_f arg4) {
+    tuple_f result;
+
+    result.x = (arg1.y * arg4.z) - (arg1.z * arg4.y);
+    result.y = (arg1.z * arg4.x) - (arg1.x * arg4.z);
+    result.z = (arg1.x * arg4.y) - (arg1.y * arg4.x);
+
+    *arg0 = result;
+    return arg0;
+}
+
+// TODO: Use tuple_f?
 void func_global_asm_80612AD8(f32 *arg0, f32 arg1, f32 arg2, f32 arg3) {
     arg0[0] = arg1;
     arg0[1] = arg2;

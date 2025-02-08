@@ -1304,7 +1304,7 @@ void func_bonus_8002C8EC(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// Displaylist stuff, doable, close
+// Displaylist stuff, doable, close, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002CC08.s")
 
 extern f32 D_bonus_8002DEB4;

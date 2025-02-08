@@ -4350,7 +4350,7 @@ Gfx *func_race_800292B0(Gfx *dl, Actor *arg1);
 void func_race_800292D0(Actor *arg0);
 void sealRaceSetup(void);
 void func_race_800294A8(void);
-// TODO: func_race_8002978C has no documented signature
+f32 func_race_8002978C(void);
 void func_race_80029F88(Actor *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 // TODO: func_race_8002A080 has no documented signature but has been matched
 // TODO: func_race_8002A0AC has no documented signature

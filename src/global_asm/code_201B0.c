@@ -76,7 +76,7 @@ extern s16 D_807F5CF2;
 extern u8 D_807F5CF6;
 extern s8 D_807F5CFA;
 extern Actor *D_807F5D0C;
-extern s8 D_807F5D14;
+extern u8 D_807F5D14;
 extern OSTime D_global_asm_807476D0;
 extern u8 D_global_asm_807476D8;
 extern s16 D_global_asm_807476E4;
@@ -93,8 +93,29 @@ u8 func_global_asm_8061B4B0(void) {
     return D_807F5CE0 != 0;
 }
 
-// doable, 64 bit maths, timestamp
+// doable, 64 bit maths, timestamp, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061B4E4.s")
+
+/*
+typedef struct {
+    u32 unk0; // TODO: What is this?
+    u8 unk4; // Map
+    u8 unk5; // Cutscene index
+    u8 unk6; // TODO: What is this?
+    u8 unk7; // TODO: What is this?
+} Struct80747708;
+
+extern Struct80747708 D_global_asm_80747708[];
+
+void func_global_asm_8061B4E4(void) {
+    if ((u32)(((((osGetTime() - D_807F5CE0) * 64U))) / 3000U / 10000U) >= D_global_asm_80747708[D_807F5D14].unk0) {
+        func_global_asm_80712524(D_global_asm_80747708[D_807F5D14].unk4, D_global_asm_80747708[D_807F5D14].unk5);
+        if (++D_807F5D14 > 5) {
+            D_807F5CE0 = 0;
+        }
+    }
+}
+*/
 
 void func_global_asm_8061B5C4(s16 playerIndex) {
     character_change_array[playerIndex].unk2D0 = character_change_array[playerIndex].unk2C4;
@@ -351,7 +372,7 @@ void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s16 arg3, s16 
         aaD44 = &aaD->unk44;
         aaD44->unk0 = arg1;
         aaD44->unk4 = arg1;
-        scale = arg1->animation_state->scale_y / 0.149999999999999994;
+        scale = arg1->animation_state->scale_y / 0.15;
         aaD44->unk8 = arg3;
         aaD44->unkA = arg4 * scale;
         aaD44->unkC = arg5;
