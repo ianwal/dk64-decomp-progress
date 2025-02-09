@@ -64,23 +64,6 @@ typedef struct JetpacStruct5 {
 typedef struct JetpacStruct3 {
     f32 unk0;
     f32 unk4;
-    u8 pad0[0x1C - 0x8];
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-} JetpacStruct3;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
     f32 unk8;
     f32 unkC;
     u8 unk10[2];
@@ -99,22 +82,13 @@ typedef struct {
     s32 unk3C;
     s32 unk40;
     s32 unk44;
+} JetpacStruct3;
+
+typedef struct {
+    JetpacStruct3 unk0;
     s32 (*unk48)(s32);
     s32 unk4C;
 } Struct80025C40_ret;
-
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    f32 unk10;
-    f32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    f32 unk20;
-    s32 unk24;
-} Struct800260DC;
 
 typedef struct JetpacStruct10 {
     u8 pad0[0x2C];
@@ -582,7 +556,7 @@ void func_jetpac_80025FC4(JetpacStruct *arg0) {
     }
 }
 
-void func_jetpac_800260DC(Struct800260DC *arg0) {
+void func_jetpac_800260DC(JetpacStruct3 *arg0) {
     Struct80025C40_ret *temp_v0;
     s32 temp_f4;
     s32 temp_f16_2;
@@ -595,32 +569,32 @@ void func_jetpac_800260DC(Struct800260DC *arg0) {
             }
         }
     } else {
-        temp_v0->unk18 = arg0->unk18;
-        if (temp_v0->unk18 != 0) {
-            temp_v0->unk0 = ((s32)(arg0->unk0 + arg0->unk1C) / 8) * 8;
-            temp_v0->unk8 = -8.0f;
+        temp_v0->unk0.unk18 = arg0->unk18;
+        if (temp_v0->unk0.unk18 != 0) {
+            temp_v0->unk0.unk0 = ((s32)(arg0->unk0 + arg0->unk1C) / 8) * 8;
+            temp_v0->unk0.unk8 = -8.0f;
         } else {
-            temp_v0->unk0 = ((s32)(arg0->unk0 + arg0->unk24 + 6.0f) / 8) * 8;
-            temp_v0->unk8 = 8.0f;
+            temp_v0->unk0.unk0 = ((s32)(arg0->unk0 + arg0->unk24 + 6.0f) / 8) * 8;
+            temp_v0->unk0.unk8 = 8.0f;
         }
-        temp_v0->unk1C = temp_v0->unk0;
-        temp_v0->unk24 = temp_v0->unk0;
-        temp_v0->unk4 = arg0->unk4 + 10.0f;
-        temp_v0->unkC = 0.0f;
-        temp_f16_2 = temp_v0->unk4;
-        temp_v0->unk28 = temp_f16_2 + 1;
-        temp_v0->unk20 = temp_f16_2;
+        temp_v0->unk0.unk1C = temp_v0->unk0.unk0;
+        temp_v0->unk0.unk24 = temp_v0->unk0.unk0;
+        temp_v0->unk0.unk4 = arg0->unk4 + 10.0f;
+        temp_v0->unk0.unkC = 0.0f;
+        temp_f16_2 = temp_v0->unk0.unk4;
+        temp_v0->unk0.unk28 = temp_f16_2 + 1;
+        temp_v0->unk0.unk20 = temp_f16_2;
         temp_f4 = func_jetpac_80027210() * 3.0f;
-        temp_v0->unk10[0] = 0xFF;
-        temp_v0->unk10[1] = 0xFF;
+        temp_v0->unk0.unk10[0] = 0xFF;
+        temp_v0->unk0.unk10[1] = 0xFF;
         if (temp_f4 < 2) {
-            temp_v0->unk10[temp_f4] = 0;
+            temp_v0->unk0.unk10[temp_f4] = 0;
         }
-        temp_v0->unk12 = 0xFF;
-        temp_v0->unk13 = 1;
-        temp_v0->unk14 = 3;
-        temp_v0->unk2C = 0;
-        temp_v0->unk40 = (s32)(func_jetpac_80027210() * 8.0f) + 0xD;
+        temp_v0->unk0.unk12 = 0xFF;
+        temp_v0->unk0.unk13 = 1;
+        temp_v0->unk0.unk14 = 3;
+        temp_v0->unk0.unk2C = 0;
+        temp_v0->unk0.unk40 = (s32)(func_jetpac_80027210() * 8.0f) + 0xD;
         temp_v0->unk48 = func_jetpac_80025CB0;
         temp_v0->unk4C = 0;
         func_jetpac_80024E70(6);
@@ -698,7 +672,7 @@ void func_jetpac_80026CEC(void) {
 
     for (i = 0; i < 4; i++) {
         temp_a0 = &D_jetpac_8002F050[i].unk4C;
-        if (D_jetpac_8002F050[i + 1].unk44 != 0) {
+        if (D_jetpac_8002F050[i + 1].unk0.unk44 != 0) {
             temp_a0->unk48(temp_a0);
         }
     }
