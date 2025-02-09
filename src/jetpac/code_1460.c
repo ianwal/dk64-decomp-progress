@@ -589,8 +589,8 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
         var_f12 = 0.0f;
     }
 
-    arg0->unk8 = (arg0->unk8 < -var_f2) ? -var_f2 : MIN(var_f2, arg0->unk8);
-    arg0->unkC = (arg0->unkC < -var_f12) ? -var_f12 : MIN(var_f12, arg0->unkC);
+    arg0->unk8 = CLAMP(arg0->unk8, -var_f2, var_f2);
+    arg0->unkC = CLAMP(arg0->unkC, -var_f12, var_f12);
 
     if ((arg0->unk8 < 0.1) && (arg0->unk8 > -0.1)) {
         arg0->unk8 = 0.0f;

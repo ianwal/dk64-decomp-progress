@@ -5,6 +5,7 @@
 #define TWO_PI 6.28318548202514648
 #define SQ(x) ((x) * (x))
 #define reinterpret_cast(type, var) (*((type *)&var))
+#define CLAMP(value, min, max) ((value) < (min) ? (min) : MIN(max, value))
 
 #define MATH_HALFPI_F 1.5707964f
 #define MATH_PI_F 3.1415927f
