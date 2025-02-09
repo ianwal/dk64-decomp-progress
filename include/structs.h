@@ -2382,11 +2382,14 @@ typedef struct global_asm_struct_17 {
     s8 unk3;
 } GlobalASMStruct17;
 
-typedef struct rgba {
-    u8 red;
-    u8 green;
-    u8 blue;
-    u8 alpha;
+typedef union rgba {
+    struct {
+        u8 red;
+        u8 green;
+        u8 blue;
+        u8 alpha;
+    };
+    u8 as_array[4];
 } rgba;
 
 typedef struct {
@@ -2429,9 +2432,7 @@ typedef struct JetpacStruct3 {
     f32 unk4;
     f32 unk8;
     f32 unkC;
-    u8 unk10[2];
-    u8 unk12;
-    u8 unk13;
+    rgba unk10;
     s32 unk14;
     s32 unk18;
     s32 unk1C;

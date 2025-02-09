@@ -35,9 +35,7 @@ typedef struct {
     f32 unk4;
     f32 unk8;
     f32 unkC;
-    u8 unk10[2];
-    u8 unk12;
-    u8 unk13;
+    rgba unk10;
     s32 unk14;
     s32 unk18;
     s32 unk1C;
@@ -520,13 +518,13 @@ void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
         temp_v0->unk28 = temp_f16_2 + 1;
         temp_v0->unk20 = temp_f16_2;
         temp_f4 = func_jetpac_80027210() * 3.0f;
-        temp_v0->unk10[0] = 0xFF;
-        temp_v0->unk10[1] = 0xFF;
+        temp_v0->unk10.red = 0xFF;
+        temp_v0->unk10.green = 0xFF;
         if (temp_f4 < 2) {
-            temp_v0->unk10[temp_f4] = 0;
+            temp_v0->unk10.as_array[temp_f4] = 0;
         }
-        temp_v0->unk12 = 0xFF;
-        temp_v0->unk13 = 1;
+        temp_v0->unk10.blue = 0xFF;
+        temp_v0->unk10.alpha = 1;
         temp_v0->unk14 = 3;
         temp_v0->unk2C = 0;
         temp_v0->unk40 = (s32)(func_jetpac_80027210() * 8.0f) + 0xD;
