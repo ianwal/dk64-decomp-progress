@@ -2981,8 +2981,9 @@ typedef struct otherSpriteControl {
 	/* 0x348 */ f32 zPos;
     /* 0x34C */ s8 unk_34C[2];
     /* 0x34E */ s16 unk34E;
-	/* 0x350 */ s8 gif_update_frequency;
-	/* 0x351 */ s8 unk_351[0x3];
+	/* 0x350 */ u8 gif_update_frequency;
+    /* 0x351 */ u8 unk351;
+	/* 0x352 */ u8 pad352[0x2];
     /* 0x354 */ s32 unk354;
     /* 0x358 */ s32 unk358;
 	/* 0x35C */ s32 unk35C;

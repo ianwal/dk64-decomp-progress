@@ -1016,54 +1016,35 @@ void func_global_asm_8071B44C(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk348 += (temp_f6 * func_global_asm_80612790(arg0->unk35C));
 }
 
-// Matrix stuff, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071B520.s")
-
-/*
-void func_global_asm_8071B520(Struct80717D84 *arg0, s32 arg1) {
-    f32 sp80[4][4];
-    f32 sp40[4][4];
+void func_global_asm_8071B520(otherSpriteControl *arg0, s8 *arg1) {
+    Mtx sp80;
+    Mtx sp40;
     f32 sp3C;
-    f32 var_f10;
     f32 var_f2;
-    f32 var_f4;
-    s16 temp_v0;
-    u8 temp_t6;
-    u8 temp_t7;
+    f32 temp1;
+    u16 temp2;
 
-    sp3C = arg0->unk344;
-    if (func_global_asm_80667110(arg0->unk340, arg0->unk348, &sp3C) != 0) {
-        // TODO: This is probably a macro, which one?
-        // Kinda like ABS but not zero based?
-        if (arg0->unk344 < sp3C) {
-            var_f2 = sp3C - arg0->unk344;
-        } else {
-            var_f2 = -(sp3C - arg0->unk344);
-        }
-        if (var_f2 > 10.0) {
-            goto block_5;
-        }
-    } else {
-block_5:
-        if (arg0->unk34E >= 7) {
-            arg0->unk344 -= (0.3 * ((0xE - (20.0f - (arg0->unk34E + ((f32)arg0->unk351 / arg0->unk350)))) / 14.0));
+    sp3C = arg0->yPos;
+    if (!func_global_asm_80667110(arg0->xPos, arg0->zPos, &sp3C) || (ABS(sp3C - arg0->yPos) > 10.0)) {
+        temp1 = arg0->unk34E + ((f32)arg0->unk351 / arg0->gif_update_frequency);
+        if (arg0->unk34E > 6) {
+            arg0->yPos -= (0.3 * ((14 - (s32)(20.0f - temp1)) / 14.0));
         }
     }
-    if (arg0->unk34E == 0x10) {
-        arg0->unk350 = 0xA;
+    if (arg0->unk34E == 16) {
+        arg0->gif_update_frequency = 10;
     }
-    guScaleF(sp80, arg0->unk360, arg0->unk364, 0.0f);
-    guRotateF(sp40, (arg0->unk35C * 0x168) / 4096, 0.0f, 1.0f, 0.0f);
-    guMtxCatF(sp80, sp40, sp80);
-    guTranslateF(sp40, arg0->unk340, arg0->unk344, arg0->unk348);
-    guMtxCatF(sp80, sp40, sp80);
-    guMtxF2L(sp80, arg0->unk128[D_global_asm_807444FC]);
+    guScaleF(&sp80, arg0->xScale, arg0->yScale, 0.0f);
+    guRotateF(&sp40, (arg0->unk35C * 360) / 4096, 0.0f, 1.0f, 0.0f);
+    guMtxCatF(&sp80, &sp40, &sp80);
+    guTranslateF(&sp40, arg0->xPos, arg0->yPos, arg0->zPos);
+    guMtxCatF(&sp80, &sp40, &sp80);
+    guMtxF2L(&sp80, &arg0->unk128[D_global_asm_807444FC]);
     if (arg0->unk34E >= 0x13) {
-        arg0->unk36D -= 0x14;
+        arg0->transparency4 -= 0x14;
     }
     arg0->unk32C = 3;
 }
-*/
 
 void func_global_asm_8071B758(Struct80717D84 *arg0, s32 arg1) {
     f32 var_f0;
