@@ -51,7 +51,7 @@ extern u8 D_jetpac_80045BE1;
 extern u8 D_jetpac_80045BE2;
 extern u8 D_jetpac_80045BE3;
 
-void func_jetpac_80025700(s32, s32, s32, rgba*, s32);
+void func_jetpac_80025700(Struct8002C4D0*, s32, s32, rgba*, s32);
 void func_jetpac_80025A60(void*);
 void func_jetpac_80029640(struct_jetpac_80029640*, f32, f32);
 void func_jetpac_80029B90(JetpacStruct *);

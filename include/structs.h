@@ -2419,13 +2419,25 @@ typedef struct JetpacStructSub0 {
 
 typedef struct JetpacStructSub1 {
     void (*unk0)();
-    s32 unk4;
+    void* unk4;
 } JetpacStructSub1;
 
 typedef struct JetpacStruct {
     JetpacStructSub0 unk0;
     JetpacStructSub1 unk48;
 } JetpacStruct;
+
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s32 unk14;
+} Struct8002C4D0;
 
 typedef struct JetpacItem {
     u8 unk0;
