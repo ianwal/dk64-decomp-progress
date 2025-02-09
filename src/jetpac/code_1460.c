@@ -29,14 +29,6 @@ typedef struct {
     s32 unk14;
 } Struct8002C4D0;
 
-// TODO: Appears to be a substruct of JetpacStruct from 0x30 onwards
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    rgba unkC;
-} Struct80025A60;
-
 typedef struct {
     // TODO: this is largely copy-pasted from JetpacStruct3, but only goes up to 0x48
     f32 unk0;

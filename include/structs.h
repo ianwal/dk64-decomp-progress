@@ -2389,6 +2389,13 @@ typedef struct rgba {
     u8 alpha;
 } rgba;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    rgba unkC;
+} Struct80025A60;
+
 typedef struct JetpacStructSub0 {
     f32 unk0;
     f32 unk4;
@@ -2402,10 +2409,7 @@ typedef struct JetpacStructSub0 {
     s32 unk24;
     s32 unk28;
     s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    u8 pad1[0x40 - 0x3C];
+    Struct80025A60 unk30;
     s32 unk40;
     s32 unk44;
 } JetpacStructSub0;
