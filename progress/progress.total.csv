@@ -702,7 +702,7 @@ us,asm,func_global_asm_80723020,612,no
 us,asm,func_global_asm_8070CD44,72,yes
 us,asm,func_global_asm_80689F80,108,yes
 us,asm,func_global_asm_806B6C88,296,yes
-us,asm,func_global_asm_8071CDE0,784,no
+us,asm,func_global_asm_8071CDE0,784,yes
 us,asm,func_global_asm_806C7228,8,yes
 us,asm,func_global_asm_80614A64,208,yes
 us,asm,func_global_asm_80690AB0,312,yes

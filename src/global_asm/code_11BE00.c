@@ -1369,8 +1369,49 @@ void func_global_asm_8071C914(Struct80717D84 *arg0, s32 arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071C9E8.s")
 
-// Matrix stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071CDE0.s")
+extern SpriteData D_global_asm_8071FB08;
+
+void func_global_asm_8071CDE0(otherSpriteControl *arg0, s8 *arg1) {
+    Mtx sp98;
+    Mtx sp58;
+    Struct80717D84_unk384_8071CDE0 *var_v1;
+    Actor *temp_t0; // 50
+    s16 pad;
+    s16 sp4C;
+
+    if (arg0->unk384_8071CDE0 == NULL) {
+        rand();
+        var_v1 = malloc(sizeof(Struct80717D84_unk384_8071CDE0));
+        arg0->unk384_8071CDE0 = var_v1;
+        var_v1->unk0 = 0;
+        var_v1->unk2 = arg0->yPos;
+        var_v1->unk4 = (((rand() >> 0xF) % 5) + 0xA);
+        var_v1->unk6 = 0;
+    }
+    var_v1 = arg0->unk384;
+    temp_t0 = arg0->unk35C;
+    sp4C = func_global_asm_80665DE0(temp_t0->x_position, temp_t0->z_position, arg0->xPos, arg0->zPos);
+    var_v1->unk0 = func_global_asm_806CC190(var_v1->unk0, sp4C, ((rand() >> 0xF) % 10) + 5);
+    var_v1->unk2 = ((((temp_t0->y_position + temp_t0->unk15E) - var_v1->unk2) * 0.1) + var_v1->unk2);
+    arg0->xPos += (var_v1->unk4 * func_global_asm_80612794(var_v1->unk0));
+    arg0->zPos += (var_v1->unk4 * func_global_asm_80612790(var_v1->unk0));
+    arg0->yPos = ((func_global_asm_80612794(((var_v1->unk4 + 0x32) * object_timer)) * 40.0) + (var_v1->unk2 + 0x28));
+    func_global_asm_806595F0(1U);
+    createLight(arg0->xPos, arg0->yPos, arg0->zPos, 0.0f, 0.0f, 0.0f, 150.0f, 0U, 0x96U, 0x96U, 0xFFU);
+    if (!(object_timer & 3)) {
+        func_global_asm_807149B8(1U);
+        func_global_asm_8071498C(&func_global_asm_8071C818);
+        drawSpriteAtPosition(&D_global_asm_8071FB08, 1.6f, arg0->xPos, arg0->yPos, arg0->zPos);
+    }
+    var_v1->unk6 += var_v1->unk4;
+    guScaleF(&sp98, arg0->xScale, arg0->yScale, 0.0f);
+    guRotateF(&sp58, var_v1->unk6, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&sp98, &sp58, &sp98);
+    guMtxF2L(&sp98, &arg0->unk128[D_global_asm_807444FC]);
+    arg0->unk32C = 2;
+}
+
+
 
 extern u16 D_global_asm_807FC930[];
 
@@ -1534,23 +1575,24 @@ void func_global_asm_8071D784(Struct80717D84 *arg0, s8 *arg1) {
 // close, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071D94C.s")
 
-void func_global_asm_8071D94C(Actor *arg0, Struct80717D84 *arg1, s8 *arg2);
+void func_global_asm_8071D94C(Actor *arg0, otherSpriteControl *arg1, s8 *arg2);
 
 /*
-void func_global_asm_8071D94C(Actor *arg0, Struct80717D84 *arg1, s8 *arg2) {
+void func_global_asm_8071D94C(Actor *arg0, otherSpriteControl *arg1, s8 *arg2) {
     s16 temp;
     s16 sp34;
     f32 sp30;
     f32 var_f2;
     f32 sp28;
     Struct80717D84_unk384_f32 *sp24;
-    f64 temp2;
+    f32 temp2;
+    f32 temp3;
 
     arg1->unk384 = malloc(0x10);
     sp24 = arg1->unk384;
-    arg1->unk340 += (2.0f * (func_global_asm_806119FC() - 0.5f));
-    arg1->unk344 += (2.0f * (func_global_asm_806119FC() - 0.5f));
-    arg1->unk348 += (2.0f * (func_global_asm_806119FC() - 0.5f));
+    arg1->xPos += (2.0f * (func_global_asm_806119FC() - 0.5f));
+    arg1->yPos += (2.0f * (func_global_asm_806119FC() - 0.5f));
+    arg1->zPos += (2.0f * (func_global_asm_806119FC() - 0.5f));
     if (arg0 != NULL) {
         sp34 = (arg0->y_rotation + (func_global_asm_806119A0() & 0x1FF) + 0x700) & 0xFFF;
         var_f2 = arg0->unkB8 * 0.01666666754f;
@@ -1567,9 +1609,10 @@ void func_global_asm_8071D94C(Actor *arg0, Struct80717D84 *arg1, s8 *arg2) {
         sp34 = func_global_asm_806119A0() % 4095U;
         sp28 = (func_global_asm_806119FC() + 1.0f) * 3.0f;
     }
-    arg1->unk360 *= (func_global_asm_806119FC() + 1.0f) * 0.5;
-    arg1->unk36D = 0x82;
-    arg1->unk364 = arg1->unk360;
+    temp2 = func_global_asm_806119FC();
+    arg1->transparency4 = 0x82;
+    arg1->xScale *= ((1.0f + temp2) * 0.5);
+    arg1->yScale = arg1->xScale;
     sp30 = func_global_asm_806119FC() * var_f2;
     sp24->unk0 = func_global_asm_80612794(sp34) * sp30;
     sp24->unk4 = func_global_asm_80612790(sp34) * sp30;
@@ -1953,31 +1996,31 @@ void func_global_asm_8071F078(Struct80717D84 *arg0, s32 arg1) {
 extern s8 D_global_asm_8075567C;
 
 /*
-void func_global_asm_8071F1D0(Struct80717D84 *arg0, s8 *arg1) {
-    f32 *var_v1;
-    s32 temp2;
+void func_global_asm_8071F1D0(otherSpriteControl *arg0, s8 *arg1) {
+    tuple_f *var_v1;
+    tuple_f *var_v0;
     s32 temp3;
 
-    if (arg0->unk384 == NULL) {
-        arg0->unk384 = malloc(0xC);
+    if (arg0->unk384_tuplef == NULL) {
+        var_v0 = malloc(sizeof(tuple_f));
         temp3 = D_global_asm_8075567C;
-        var_v1 = arg0->unk384;
-        var_v1[0] = arg0->unk340;
-        var_v1[1] = arg0->unk348;
-        var_v1[2] = temp3;
+        arg0->unk384_tuplef = var_v0;
+        var_v1 = arg0->unk384_tuplef;
+        var_v1->x = arg0->xPos;
+        var_v1->y = arg0->zPos;
+        var_v1->z = temp3;
         D_global_asm_8075567C = -temp3;
     }
-    var_v1 = arg0->unk384;
-    arg0->unk340 = (func_global_asm_80612794(arg0->unk35C) * 14.0f) + *var_v1;
-    arg0->unk348 = (func_global_asm_80612790(arg0->unk35C) * 14.0f) + var_v1[1];
-    arg0->unk344 += 0.5f;
-    if (arg0->unk36D >= 5) {
-        arg0->unk36D -= 4;
+    var_v1 = arg0->unk384_tuplef;
+    arg0->xPos = (func_global_asm_80612794(arg0->unk35C) * 14.0f) + var_v1->x;
+    arg0->zPos = (func_global_asm_80612790(arg0->unk35C) * 14.0f) + var_v1->y;
+    arg0->yPos += 0.5f;
+    if (arg0->transparency4 >= 5) {
+        arg0->transparency4 -= 4;
     } else {
         *arg1 = 1;
     }
-    temp2 = var_v1[2] * 200.0;
-    arg0->unk35C += temp2;
+    arg0->unk35C += (s32)(var_v1->z * 200.0);
 }
 */
 
@@ -2080,8 +2123,6 @@ void func_global_asm_8071F758(Struct80717D84 *arg0, s32 arg1) {
     guMtxF2L(sp6C, arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
-
-extern SpriteData D_global_asm_8071FB08; // TODO: Proper datatype
 
 typedef struct {
     f32 unk0;
