@@ -741,8 +741,8 @@ s32 func_global_asm_806F70A8(s16 arg0) {
     return FALSE;
 }
 
-int func_global_asm_8071C48C(); // TODO: Signature
-extern SpriteData D_global_asm_8071FC58; // TODO: Datatype
+void func_global_asm_8071C48C(otherSpriteControl *, s8 *);
+extern SpriteData D_global_asm_8071FC58;
 
 void func_global_asm_806F70FC(f32 x, f32 y, f32 z, f32 scale, f32 arg4, s32 count) {
     f64 temp_f20;

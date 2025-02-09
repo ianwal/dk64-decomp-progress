@@ -3509,7 +3509,7 @@ us,asm,func_global_asm_80615C34,176,yes
 us,asm,func_global_asm_8060ED6C,100,yes
 us,asm,_n_collectPVoices,108,yes
 us,asm,func_global_asm_806012D4,72,yes
-us,asm,func_global_asm_8071C48C,404,no
+us,asm,func_global_asm_8071C48C,404,yes
 us,asm,func_global_asm_8064BB78,96,yes
 us,asm,func_global_asm_8065214C,172,yes
 us,asm,func_global_asm_8060128C,72,yes

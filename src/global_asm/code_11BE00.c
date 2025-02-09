@@ -1298,8 +1298,28 @@ void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1) {
     createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, 200.0f, 0, lightColor[0], lightColor[1], lightColor[2]);
 }
 
-// Weird m2c errors
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071C48C.s")
+void func_global_asm_8071C48C(otherSpriteControl *arg0, s8 *arg1) {
+    f32 var_f2;
+    f32 var_f16;
+    s32 var_t3;
+
+    var_f2 = (f32) (arg0->unk330->unk16 - arg0->unk34E) / arg0->unk330->unk16;
+    if (var_f2 > 0.7) {
+        var_f2 = 1.0f;
+    }
+    if (((u32)arg0->unk35C >> 0x10) != 0) {
+        var_f16 = (arg0->unk35C & 0xFFFF) * var_f2;
+    } else {
+        var_f16 = (arg0->unk35C & 0xFFFF);
+    }
+    func_global_asm_806595F0(1U);
+    createLight(
+        arg0->xPos, arg0->yPos, arg0->zPos, 0.0f,
+        0.0f,
+        0.0f,
+        var_f16,
+        0, 0, (-80.0f * var_f2) + 255.0f, 0xFF);
+}
 
 typedef struct {
     f32 unk0;
@@ -1366,10 +1386,67 @@ void func_global_asm_8071C914(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk32C = 2;
 }
 
-// Matrix stuff
+// Matrix stuff, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071C9E8.s")
 
 extern SpriteData D_global_asm_8071FB08;
+extern Struct80717D84_unk384_8071C9E8_sub6 D_global_asm_80755650[];
+
+/*
+void func_global_asm_8071C9E8(otherSpriteControl *arg0, s8 *arg1) {
+    Mtx spA0;
+    Mtx sp60;
+    Struct80717D84_unk384_8071C9E8 *temp_v0;
+    u8 sp5B;
+    s16 sp58;
+    f32 temp;
+    s32 pad;
+
+    if (arg0->unk384_8071C9E8 == NULL) {
+        sp5B = ((rand() >> 0xF) % 1000) % 6;
+        arg0->unk384_8071C9E8 = malloc(sizeof(Struct80717D84_unk384_8071C9E8));
+        temp_v0 = arg0->unk384_8071C9E8;
+        temp_v0->unk4 = (((rand() >> 0xF) % 5) + 0xA);
+        temp_v0->unk6.unk0 = D_global_asm_80755650[sp5B].unk0;
+        temp_v0->unk6.unk2 = D_global_asm_80755650[sp5B].unk2;
+        temp_v0->unk6.unk4 = D_global_asm_80755650[sp5B].unk4;
+        temp_v0->unkC = 0;
+        temp_v0->unk2 = arg0->yPos;
+    }
+    temp_v0 = arg0->unk384_8071C9E8;
+    if (player_pointer->z_position < 340.0f) {
+        temp_v0->unk6.unk0 = 0x12C;
+        temp_v0->unk6.unk2 = 0x96;
+        temp_v0->unk6.unk4 = 0x64;
+    }
+    sp58 = func_global_asm_80665DE0(temp_v0->unk6.unk0, temp_v0->unk6.unk4, arg0->xPos, arg0->zPos);
+    temp = ((rand() >> 0xF) % 10) + 5;
+    temp_v0->unk0 = func_global_asm_806CC190(temp_v0->unk0, sp58, temp);
+    temp_v0->unk2 = (((temp_v0->unk6.unk2 - temp_v0->unk2) * 0.1) + temp_v0->unk2);
+    arg0->xPos += (temp_v0->unk4 * func_global_asm_80612794(temp_v0->unk0));
+    arg0->zPos += (temp_v0->unk4 * func_global_asm_80612790(temp_v0->unk0));
+    arg0->yPos = ((func_global_asm_80612794(((temp_v0->unk4 + 0x32) * object_timer)) * 40.0) + (f64) (temp_v0->unk2 + 0x28));
+    if (((rand() >> 0xF) % 1000) > 990) {
+        sp5B = ((rand() >> 0xF) % 1000) % 6;
+        temp_v0->unk6.unk0 = D_global_asm_80755650[sp5B].unk0;
+        temp_v0->unk6.unk2 = D_global_asm_80755650[sp5B].unk2;
+        temp_v0->unk6.unk4 = D_global_asm_80755650[sp5B].unk4;
+    }
+    func_global_asm_806595F0(1U);
+    createLight(arg0->xPos, arg0->yPos, arg0->zPos, 0.0f, 0.0f, 0.0f, 150.0f, 0U, 0x96U, 0x96U, 0xFFU);
+    if (!(object_timer & 3)) {
+        func_global_asm_807149B8(1U);
+        func_global_asm_8071498C(&func_global_asm_8071C818);
+        drawSpriteAtPosition(&D_global_asm_8071FB08, 1.6f, arg0->xPos, arg0->yPos, arg0->zPos);
+    }
+    temp_v0->unkC += temp_v0->unk4;
+    guScaleF(&spA0, arg0->xScale, arg0->yScale, 0.0f);
+    guRotateF(&sp60, temp_v0->unkC, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(&spA0, &sp60, &spA0);
+    guMtxF2L(&spA0, &arg0->unk128[D_global_asm_807444FC]);
+    arg0->unk32C = 2;
+}
+*/
 
 void func_global_asm_8071CDE0(otherSpriteControl *arg0, s8 *arg1) {
     Mtx sp98;

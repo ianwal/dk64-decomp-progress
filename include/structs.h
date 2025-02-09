@@ -2936,6 +2936,8 @@ typedef struct {
 
 typedef struct otherSpriteControl_unk330 {
     SpriteData *unk0;
+    u8 unk4[0x16 - 0x4];
+    s16 unk16;
 } otherSpriteControl_unk330;
 
 typedef struct {
@@ -2944,6 +2946,20 @@ typedef struct {
     s16 unk4;
     s16 unk6;
 } Struct80717D84_unk384_8071CDE0;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct80717D84_unk384_8071C9E8_sub6;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    Struct80717D84_unk384_8071C9E8_sub6 unk6;
+    s16 unkC;
+} Struct80717D84_unk384_8071C9E8;
 
 typedef struct otherSpriteControl {
 	/* 0x000 */ s8 unk_000[0x28];
@@ -2963,7 +2979,8 @@ typedef struct otherSpriteControl {
 	/* 0x340 */ f32 xPos;
 	/* 0x344 */ f32 yPos;
 	/* 0x348 */ f32 zPos;
-    /* 0x34C */ s8 unk_34C[4];
+    /* 0x34C */ s8 unk_34C[2];
+    /* 0x34E */ s16 unk34E;
 	/* 0x350 */ s8 gif_update_frequency;
 	/* 0x351 */ s8 unk_351[0x3];
     /* 0x354 */ s32 unk354;
@@ -3001,6 +3018,7 @@ typedef struct otherSpriteControl {
         Struct80717D84_unk384_807195D4 *unk384_807195D4;
         Struct80717D84_unk384_807197B4 *unk384_807197B4;
         Struct80717D84_unk384_8071CDE0 *unk384_8071CDE0;
+        Struct80717D84_unk384_8071C9E8 *unk384_8071C9E8;
     };
 	/* 0x384 */ 
 } otherSpriteControl;
