@@ -1,22 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct jetpac_struct_0 {
-    u8  pad0[0x14];
-    u32 unk14;
-    u32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    u32 unk30;
-    u32 unk34;
-    u32 unk38;
-    u32 unk3C;
-    s32 unk40; // Used
-} JetpacStruct0;
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -52,12 +36,6 @@ typedef struct {
     s32 unk8;
     rgba unkC;
 } Struct80025A60;
-
-typedef struct JetpacStruct5 {
-    f32 unk0;
-    u8 pad0[0x1C - 0x4];
-    s32 unk1C;
-} JetpacStruct5;
 
 typedef struct JetpacStruct3 {
     f32 unk0;
@@ -381,7 +359,7 @@ void func_jetpac_80025A60(Struct80025A60 *arg0) {
     arg0->unk8++;
 }
 
-s32 func_jetpac_80025B70(JetpacStruct5 *arg0) {
+s32 func_jetpac_80025B70(JetpacStruct3 *arg0) {
     return (((s32) arg0->unk0 + arg0->unk1C) / 2) % 4;
 }
 
@@ -413,12 +391,12 @@ s32 *func_jetpac_80025C40(Struct80025C40 *arg0) {
     return 0;
 }
 
-void func_jetpac_80025CA0(JetpacStruct0 *arg0) {
+void func_jetpac_80025CA0(JetpacStruct3 *arg0) {
     arg0->unk14 = 4;
     arg0->unk2C = 0;
 }
 
-void func_jetpac_80025CB0(JetpacStruct0* arg0) {
+void func_jetpac_80025CB0(JetpacStruct3* arg0) {
     s32 new_var;
     f32 var_f12;
     f32 temp_f14;
@@ -482,7 +460,7 @@ void func_jetpac_80025CB0(JetpacStruct0* arg0) {
     }
 }
 
-void func_jetpac_80025CB0(JetpacStruct0 *arg0);
+void func_jetpac_80025CB0(JetpacStruct3 *arg0);
 
 /*
 void func_jetpac_80025CB0(JetpacStruct0 *arg0) {
