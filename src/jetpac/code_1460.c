@@ -371,12 +371,12 @@ JetpacStruct3 *func_jetpac_80025C40(MetaJetpacStruct3 *arg0) {
     return 0;
 }
 
-void func_jetpac_80025CA0(JetpacStruct3 *arg0) {
+void func_jetpac_80025CA0(JetpacStructSub0 *arg0) {
     arg0->unk14 = 4;
     arg0->unk2C = 0;
 }
 
-void func_jetpac_80025CB0(JetpacStruct3* arg0) {
+void func_jetpac_80025CB0(JetpacStructSub0* arg0) {
     s32 new_var;
     f32 var_f12;
     f32 temp_f14;
@@ -439,85 +439,6 @@ void func_jetpac_80025CB0(JetpacStruct3* arg0) {
         }
     }
 }
-
-void func_jetpac_80025CB0(JetpacStruct3 *arg0);
-
-/*
-void func_jetpac_80025CB0(JetpacStruct0 *arg0) {
-    f32 var_f0;
-    f32 var_f12;
-    u32 temp_a1;
-    u32 temp_a2;
-    u32 temp_v0;
-    u32 var_v0;
-    u32 var_v1;
-
-    if ((arg0->unk14 == 3) && (arg0->unk40 < (u32)arg0->unk2C)) {
-        func_jetpac_80025CA0(arg0);
-    }
-    if ((arg0->unk14 == 4) && (arg0->unk24 == arg0->unk1C)) {
-        arg0->unk14 = 0;
-        arg0->unk2C = 0;
-    }
-    if (arg0->unk14) {
-        if (arg0->unk14 == 3) {
-            if (arg0->unk18) {
-                var_f12 = arg0->unk1C;
-                if (arg0->unk2C < 4) {
-                    var_v1 = arg0->unk2C;
-                } else {
-                    var_v1 = 4;
-                }
-                var_f0 = ((f32)(var_v1 * 8)) + arg0->unk1C;
-            } else {
-                var_f0 = arg0->unk24;
-                if (arg0->unk2C < 4) {
-                    var_v1 = arg0->unk2C;
-                } else {
-                    var_v1 = 4;
-                }
-                var_f12 = arg0->unk24 - ((f32)(var_v1 * 8));
-            }
-            // TODO: These function calls are sus, have a look at m2c output again
-            if (func_jetpac_8002A974(var_f12, arg0->unk20, var_f0, arg0->unk28)) {
-                func_jetpac_80025CA0(arg0);
-                return;
-            }
-            if (func_jetpac_80028CF8(var_f12, arg0->unk20, var_f0, arg0->unk28, 0) >= 0) {
-                func_jetpac_80025CA0(arg0);
-                return;
-            }
-            if (func_jetpac_800283EC(var_f12, arg0->unk20, var_f0, arg0->unk28)) {
-                func_jetpac_80025CA0(arg0);
-                return;
-            }
-            if (arg0->unk18) {
-                arg0->unk1C -= 8;
-                if (arg0->unk2C >= 0xD) {
-                    arg0->unk24 -= 8;
-                }
-            } else {
-                arg0->unk24 += 8;
-                if (arg0->unk2C >= 0xD) {
-                    arg0->unk1C += 8;
-                }
-            }
-            arg0->unk2C++;
-            return;
-        }
-        if (arg0->unk14 == 4) {
-            if ((arg0->unk2C + ((arg0->unk24 - arg0->unk1C) / 8)) >= 0xD) {
-                if (arg0->unk18 != 0) {
-                    arg0->unk24 -= 8;
-                } else {
-                    arg0->unk1C += 8;
-                }
-            }
-            arg0->unk2C++;
-        }
-    }
-}
-*/
 
 void func_jetpac_80025F48(s32 arg0, s32 *arg1, s32 arg2, s32 arg3, rgba* arg4, s32 arg5) {
     s32 temp_t2;
