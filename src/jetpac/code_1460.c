@@ -695,7 +695,7 @@ void func_jetpac_80026318(Struct80025C40_ret* arg0) {
             } else if ((inner->unk28 + inner->unk4) <= D_jetpac_8002EC30.unk350[other_index].unk20) {
                 inner->unk34 = other_index;
                 inner->unkC = 0.0f;
-                func_jetpac_80025BB8((JetpacStruct3* ) arg0, 0);
+                func_jetpac_80025BB8(inner, 0);
                 inner->unk4 = D_jetpac_8002EC30.unk350[other_index].unk4 - 24.0f;
             } else {
                 inner->unk8 *= -0.5f;
@@ -707,7 +707,7 @@ void func_jetpac_80026318(Struct80025C40_ret* arg0) {
             if ((other_index != -1) && (other_index != 1)) {
                 if (other_index == 2) {
 block_62:
-                    func_jetpac_80025BB8((JetpacStruct3*)arg0, 1);
+                    func_jetpac_80025BB8(inner, 1);
                     inner->unkC = -0.5f;
                 }
             } else if ((inner->unk18 == 0) && (sp34 == 0)) {
