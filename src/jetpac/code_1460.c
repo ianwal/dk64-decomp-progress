@@ -30,7 +30,7 @@ typedef struct {
 } Struct8002C4D0;
 
 typedef struct {
-    // TODO: this is largely copy-pasted from JetpacStruct3, but only goes up to 0x48
+    // TODO: this is largely copy-pasted from JetpacStruct, but only goes up to 0x48
     f32 unk0;
     f32 unk4;
     f32 unk8;
@@ -52,7 +52,7 @@ typedef struct {
     s32 unk48;
     // End TODO
 
-    JetpacStruct3 unk4C[4];
+    JetpacStruct unk4C[4];
 } MetaJetpacStruct3;
 
 extern Struct8002C4D0 D_jetpac_8002C4D0[];
@@ -347,7 +347,7 @@ void func_jetpac_80025A60(Struct80025A60 *arg0) {
     arg0->unk8++;
 }
 
-s32 func_jetpac_80025B70(JetpacStruct3 *arg0) {
+s32 func_jetpac_80025B70(JetpacStruct *arg0) {
     return (((s32) arg0->unk0.unk0 + arg0->unk0.unk1C) / 2) % 4;
 }
 
@@ -362,7 +362,7 @@ void func_jetpac_80025BB8(MetaJetpacStruct3 *arg0, s32 arg1) {
     arg0->unk30 = arg1;
 }
 
-JetpacStruct3 *func_jetpac_80025C40(MetaJetpacStruct3 *arg0) {
+JetpacStruct *func_jetpac_80025C40(MetaJetpacStruct3 *arg0) {
     s32 i;
     for (i = 0; i < 4; i++) {
         if (arg0->unk4C[i].unk0.unk14 == 0) {
@@ -493,7 +493,7 @@ void func_jetpac_80025FC4(JetpacStruct *arg0) {
 }
 
 void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
-    JetpacStruct3 *temp_v0;
+    JetpacStruct *temp_v0;
     s32 temp_f4;
     s32 temp_f16_2;
 
@@ -738,7 +738,7 @@ void func_jetpac_80026CA4(void) {
 }
 
 void func_jetpac_80026CEC(void) {
-    JetpacStruct3 *temp_a0;
+    JetpacStruct *temp_a0;
     s32 i;
 
     for (i = 0; i < 4; i++) {

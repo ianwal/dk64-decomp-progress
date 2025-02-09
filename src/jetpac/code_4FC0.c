@@ -73,9 +73,9 @@ JetpacStruct *func_jetpac_80028FC0(void) {
     return NULL;
 }
 
-void func_jetpac_800291AC(JetpacStruct3 *arg0);
+void func_jetpac_800291AC(JetpacStruct *arg0);
 
-s32 func_jetpac_80029064(JetpacStruct3* arg0) {
+s32 func_jetpac_80029064(JetpacStruct* arg0) {
     s32 pad;
     f32 p0;
     f32 p1;
@@ -89,18 +89,18 @@ s32 func_jetpac_80029064(JetpacStruct3* arg0) {
 
     var_v1 = 0;
 
-    p0 = arg0->unk0;
-    p1 = arg0->unk4;
-    p2 = p0 + arg0->unk24;
-    p3 = p1 + arg0->unk28;
+    p0 = arg0->unk0.unk0;
+    p1 = arg0->unk0.unk4;
+    p2 = p0 + arg0->unk0.unk24;
+    p3 = p1 + arg0->unk0.unk28;
 
     p5 = D_jetpac_8002EC30.unk420;
     p4 = D_jetpac_8002EC30.unk424;
     p6 = p5 + D_jetpac_8002EC30.unk444 - 2;
     p7 = p4 + D_jetpac_8002EC30.unk448;
 
-    p0 += arg0->unk1C;
-    p1 += arg0->unk20;
+    p0 += arg0->unk0.unk1C;
+    p1 += arg0->unk0.unk20;
     p5 += (D_jetpac_8002EC30.unk43C + 2);
     p4 += (D_jetpac_8002EC30.unk440 + 4);
 
@@ -124,12 +124,12 @@ s32 func_jetpac_80029064(JetpacStruct3* arg0) {
     return var_v1;
 }
 
-void func_jetpac_800291AC(JetpacStruct3 *arg0) {
-    arg0->unk14 = 4;
-    arg0->unk2C = 0;
-    arg0->unk38 = 0;
-    arg0->unk30 = (s32)arg0->unk0 & 0xFFF8;
-    arg0->unk34 = (s32)arg0->unk4 & 0xFFF8;
+void func_jetpac_800291AC(JetpacStruct *arg0) {
+    arg0->unk0.unk14 = 4;
+    arg0->unk0.unk2C = 0;
+    arg0->unk0.unk30.unk8 = 0;
+    arg0->unk0.unk30.unk0 = (s32)arg0->unk0.unk0 & 0xFFF8;
+    arg0->unk0.unk30.unk4 = (s32)arg0->unk0.unk4 & 0xFFF8;
     func_jetpac_80024E70(5);
 }
 
@@ -140,7 +140,7 @@ void func_jetpac_80029204(JetpacStruct *arg0) {
     }
     if (arg0->unk0.unk14 == 4) {
         func_jetpac_80025A60(&arg0->unk0.unk30);
-        if (arg0->unk0.unk38 < 7) {
+        if (arg0->unk0.unk30.unk8 < 7) {
             func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.unk0, arg0->unk0.unk4, &arg0->unk0.unk10, arg0->unk0.unk18);
         }
     }
@@ -241,7 +241,7 @@ void func_jetpac_80029640(struct_jetpac_80029640 *arg0, f32 arg1, f32 arg2) {
         arg0->unk8 = -arg1;
         arg0->unk18 = 1;
     }
-    var_v0 = &D_jetpac_8002F1DC;
+    var_v0 = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
         if (var_v0->unk0.unk14 > 0) {
             if (var_v0->unk0.unkC == 0.0f) {
@@ -775,7 +775,7 @@ void func_jetpac_8002AD8C(void) {
     JetpacStruct *var_s0;
     s32 i;
 
-    var_s0 = &D_jetpac_8002F1DC;
+    var_s0 = &D_jetpac_8002F1DC[0];
     if (!func_jetpac_80026FE0()) {
         for (i = 0; i < 6; i++) {
             if (var_s0->unk0.unk14 >= 2) {

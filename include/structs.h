@@ -2427,11 +2427,6 @@ typedef struct JetpacStruct {
     JetpacStructSub1 unk48;
 } JetpacStruct;
 
-typedef struct JetpacStruct3 {
-    JetpacStructSub0 unk0;
-    JetpacStructSub1 unk48;
-} JetpacStruct3; // size 0x50
-
 typedef struct JetpacItem {
     u8 unk0;
 } JetpacItem;
