@@ -37,7 +37,8 @@ typedef struct {
     rgba unkC;
 } Struct80025A60;
 
-typedef struct JetpacStruct3 {
+typedef struct {
+    // TODO: this is largely copy-pasted from JetpacStruct3, but only goes up to 0x48
     f32 unk0;
     f32 unk4;
     f32 unk8;
@@ -58,14 +59,11 @@ typedef struct JetpacStruct3 {
     s32 unk3C;
     s32 unk40;
     s32 unk44;
-    s32 (*unk48)(s32);
-    s32 unk4C;
-} JetpacStruct3;
+    s32 unk48;
+    // End TODO
 
-typedef struct JetpacStruct10 {
-    u8 pad0[0x2C];
-    s32 unk2C;
-} JetpacStruct10;
+    JetpacStruct3 unk4C[4];
+} MetaJetpacStruct3;
 
 extern Struct8002C4D0 D_jetpac_8002C4D0[];
 extern Struct8002C4D0 D_jetpac_8002B9C0[];
@@ -77,7 +75,7 @@ extern JetpacStruct D_jetpac_8002C518;
 
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
-extern JetpacStruct3 D_jetpac_8002F050[4];
+extern MetaJetpacStruct3 D_jetpac_8002F050;
 extern f32 D_jetpac_8002F054;
 extern s32 D_jetpac_8002F060;
 extern s32 D_jetpac_8002F064;
@@ -96,8 +94,8 @@ extern s32 D_jetpac_80045BD0;
 
 extern void func_global_asm_8070E8F0(Gfx**, Sprite*);
 void func_jetpac_80025700(Struct8002C4D0 *, s32, s32, rgba*, s32);
-void func_jetpac_80026318(JetpacStruct3*);
-void func_jetpac_80027010(JetpacStruct3 *arg0);
+void func_jetpac_80026318(MetaJetpacStruct3*);
+void func_jetpac_80027010(MetaJetpacStruct3 *arg0);
 
 void func_jetpac_80025460(void) {
     int x, y;
@@ -363,7 +361,7 @@ s32 func_jetpac_80025B70(JetpacStruct3 *arg0) {
     return (((s32) arg0->unk0 + arg0->unk1C) / 2) % 4;
 }
 
-void func_jetpac_80025BB8(JetpacStruct3 *arg0, s32 arg1) {
+void func_jetpac_80025BB8(MetaJetpacStruct3 *arg0, s32 arg1) {
     if ((arg1 == 0) && (arg0->unk30 != 0)) {
         arg0->unk0 = (s32)arg0->unk0 & 0xFFFE;
     } else if ((arg1 != 0) && (arg0->unk30 == 0)) {
@@ -374,18 +372,11 @@ void func_jetpac_80025BB8(JetpacStruct3 *arg0, s32 arg1) {
     arg0->unk30 = arg1;
 }
 
-typedef struct {
-    s32 unk0;s32 unk4;s32 unk8;s32 unkC;
-    s32 unk10[20];
-    s32 unk18[20];
-} Struct80025C40;
-
-// TODO: Fix this up, yikes lmao
-s32 *func_jetpac_80025C40(Struct80025C40 *arg0) {
+JetpacStruct3 *func_jetpac_80025C40(MetaJetpacStruct3 *arg0) {
     s32 i;
     for (i = 0; i < 4; i++) {
-        if (arg0->unk18[i * 20 + 0] == 0) {
-            return &arg0->unk18[i * 20 - 5];
+        if (arg0->unk4C[i].unk14 == 0) {
+            return &arg0->unk4C[i];
         }
     }
     return 0;
@@ -590,7 +581,7 @@ void func_jetpac_80025FC4(JetpacStruct *arg0) {
     }
 }
 
-void func_jetpac_800260DC(JetpacStruct3 *arg0) {
+void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
     JetpacStruct3 *temp_v0;
     s32 temp_f4;
     s32 temp_f16_2;
@@ -635,7 +626,7 @@ void func_jetpac_800260DC(JetpacStruct3 *arg0) {
     }
 }
 
-void func_jetpac_80026318(JetpacStruct3* arg0) {
+void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
     Competitor* player;
     s8 pad[0x8];
     f32 var_f2;
@@ -772,7 +763,7 @@ block_62:
     }
 }
 
-void func_jetpac_80026A3C(JetpacStruct10 *arg0) {
+void func_jetpac_80026A3C(MetaJetpacStruct3 *arg0) {
     Competitor *player;
     s32 temp_v0;
 
@@ -840,8 +831,8 @@ void func_jetpac_80026CEC(void) {
     s32 i;
 
     for (i = 0; i < 4; i++) {
-        temp_a0 = &D_jetpac_8002F050[i].unk4C;
-        if (D_jetpac_8002F050[i + 1].unk44 != 0) {
+        temp_a0 = &D_jetpac_8002F050.unk4C[i];
+        if (D_jetpac_8002F050.unk4C[i].unk48 != 0) {
             temp_a0->unk48(temp_a0);
         }
     }
@@ -903,7 +894,7 @@ int func_jetpac_80026FE0(void) {
     return D_jetpac_8002F064 == 1 && D_jetpac_8002F07C < 0xB4;
 }
 
-void func_jetpac_80027010(JetpacStruct3 *arg0) {
+void func_jetpac_80027010(MetaJetpacStruct3 *arg0) {
     if (arg0->unk44 >= 0xE) {
         arg0->unk44 = 0;
         arg0->unk3C = (s32)arg0->unk0 & 0xFFF8;

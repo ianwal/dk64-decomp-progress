@@ -2420,6 +2420,31 @@ typedef struct JetpacStruct {
     JetpacStructSub1 unk48;
 } JetpacStruct;
 
+typedef struct JetpacStruct3 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10[2];
+    u8 unk12;
+    u8 unk13;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    s32 unk3C;
+    s32 unk40;
+    s32 unk44;
+    void (*unk48)(struct JetpacStruct3*);
+    s32 unk4C;
+} JetpacStruct3; // size 0x50
+
 typedef struct JetpacItem {
     u8 unk0;
 } JetpacItem;

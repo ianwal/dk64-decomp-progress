@@ -1,22 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct JetpacStruct5 {
-    f32 unk0;
-    f32 unk4;
-    u8 pad0[0x14 - 0x8];
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-} JetpacStruct5;
-
 typedef struct {
     // Enemy Struct?
     u8 unk0[4];
@@ -67,7 +51,7 @@ extern u8 D_jetpac_80045BE1;
 extern u8 D_jetpac_80045BE2;
 extern u8 D_jetpac_80045BE3;
 
-void func_jetpac_80025700(s32, s32, s32, s32, s32);
+void func_jetpac_80025700(s32, s32, s32, rgba*, s32);
 void func_jetpac_80025A60(void*);
 void func_jetpac_80029640(struct_jetpac_80029640*, f32, f32);
 void func_jetpac_80029B90(JetpacStruct *);
@@ -89,9 +73,9 @@ JetpacStruct *func_jetpac_80028FC0(void) {
     return NULL;
 }
 
-void func_jetpac_800291AC(JetpacStruct5 *arg0);
+void func_jetpac_800291AC(JetpacStruct3 *arg0);
 
-s32 func_jetpac_80029064(JetpacStruct5* arg0) {
+s32 func_jetpac_80029064(JetpacStruct3* arg0) {
     s32 pad;
     f32 p0;
     f32 p1;
@@ -140,7 +124,7 @@ s32 func_jetpac_80029064(JetpacStruct5* arg0) {
     return var_v1;
 }
 
-void func_jetpac_800291AC(JetpacStruct5 *arg0) {
+void func_jetpac_800291AC(JetpacStruct3 *arg0) {
     arg0->unk14 = 4;
     arg0->unk2C = 0;
     arg0->unk38 = 0;
@@ -180,18 +164,18 @@ JetpacStruct *func_jetpac_800292C4(void) {
     sp70->unk0.unk4 = (((s32) (func_jetpac_80027210() * 15.0f) % 15) * 8) + 0x20;
     switch ((s32) (func_jetpac_80027210() * 4.0f) % 4) {
         case 0:
-            sp70->unk0.unk10 = 0;
+            sp70->unk0.unk10.red = 0;
             break;
         case 1:
-            sp70->unk0.unk11 = 0;
+            sp70->unk0.unk10.green = 0;
             break;
         case 2:
-            sp70->unk0.unk10 = 0;
-            sp70->unk0.unk12 = 0;
+            sp70->unk0.unk10.red = 0;
+            sp70->unk0.unk10.blue = 0;
             break;
         case 3:
-            sp70->unk0.unk11 = 0;
-            sp70->unk0.unk12 = 0;
+            sp70->unk0.unk10.green = 0;
+            sp70->unk0.unk10.blue = 0;
             break;
         }
     return sp70;
@@ -504,9 +488,9 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
                 } else {
                     arg0->unk0.unk8 = 1.6f;
                 }
-                arg0->unk0.unk10 = 0xFF;
-                arg0->unk0.unk11 = 0xFF;
-                arg0->unk0.unk12 = 0xFF;
+                arg0->unk0.unk10.red = 0xFF;
+                arg0->unk0.unk10.green = 0xFF;
+                arg0->unk0.unk10.blue = 0xFF;
             }
         }
         if ((arg0->unk0.unk2C == 0) && (D_jetpac_8002EC30.unk790 & 2)) {
