@@ -124,7 +124,7 @@ extern s32 D_jetpac_80045BD0;
 
 extern void func_global_asm_8070E8F0(Gfx**, Sprite*);
 void func_jetpac_80025700(Struct8002C4D0 *, s32, s32, rgba*, s32);
-void func_jetpac_80026318(s32*);
+void func_jetpac_80026318(Struct80025C40_ret*);
 void func_jetpac_80027010(JetpacStruct3 *arg0);
 
 void func_jetpac_80025460(void) {
@@ -601,7 +601,144 @@ void func_jetpac_800260DC(JetpacStruct3 *arg0) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80026318.s")
+void func_jetpac_80026318(Struct80025C40_ret* arg0) {
+    Competitor* player;
+    JetpacStruct3* inner;
+    s8 pad[0xC];
+    s32 sp40;
+    s32 sp3C;
+    s32 other;
+    s32 sp34;
+    s32 sp30;
+    s32 other_index;
+    f32 var_f2;
+    f32 var_f12;
+
+    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    other = D_jetpac_8002EC30.unk0 & 0x4000;
+    sp34 = D_jetpac_8002EC30.unk0 & 0x200;
+    sp30 = D_jetpac_8002EC30.unk0 & 0x100;
+    sp40 = D_jetpac_8002EC30.unk0 & 0x8000;
+    sp3C = D_jetpac_8002EC30.unk0 & 0x2030;
+    inner = &arg0->unk0;
+
+    if (other && (inner->unk38 >= 5)) {
+        func_jetpac_800260DC(inner);
+        inner->unk38 = 0;
+    } else if (inner->unk38 < 5) {
+        inner->unk38++;
+    }
+
+    if ((sp40 != 0) && ((inner->unk30 == 0) || (sp3C == 0))) {
+        func_jetpac_80025BB8(inner, 1);
+        inner->unkC -= 0.2f;
+    } else if (inner->unk30 != 0) {
+        if (sp3C != 0) {
+            inner->unkC = 0.0f;
+        } else {
+            inner->unkC += 0.2;
+        }
+    }
+
+    if(inner->unk30);
+
+    if (sp34 != 0) {
+        inner->unk8 -= 0.33333334f;
+        if ((inner->unk18 == 0) && (inner->unk8 <= 0.0f)) {
+            inner->unk18 = 1;
+            func_jetpac_80025BB8(inner, inner->unk30);
+        }
+    } else if (sp30 != 0) {
+        inner->unk8 += 0.33333334f;
+        if ((inner->unk18 != 0) && (inner->unk8 >= 0.0f)) {
+            inner->unk18 = 0;
+            func_jetpac_80025BB8(inner, inner->unk30);
+        }
+    } else {
+        if (inner->unk8 > 0.0f) {
+            inner->unk8 -= 0.16666667f;
+        } else if (inner->unk8 < 0.0f) {
+            inner->unk8 += 0.16666667f;
+        }
+    }
+
+    if (inner->unk30 != 0) {
+        var_f2 = 2.0f;
+        var_f12 = 2.0f;
+    } else {
+        var_f2 = 1.0f;
+        var_f12 = 0.0f;
+    }
+
+    inner->unk8 = (inner->unk8 < -var_f2) ? -var_f2 : MIN(var_f2, inner->unk8);
+    inner->unkC = (inner->unkC < -var_f12) ? -var_f12 : MIN(var_f12, inner->unkC);
+
+    if ((inner->unk8 < 0.1) && (inner->unk8 > -0.1)) {
+        inner->unk8 = 0.0f;
+    }
+    if ((inner->unkC < 0.1) && (inner->unkC > -0.1)) {
+        inner->unkC = 0.0f;
+    }
+
+    if (inner->unk30 != 0) {
+        other_index = func_jetpac_80028CF8(
+            inner->unk1C + inner->unk0 + inner->unk8,
+            inner->unk20 + inner->unk4 + inner->unkC,
+            inner->unk24 + inner->unk0 + inner->unk8,
+            inner->unk28 + inner->unk4 + inner->unkC, 1);
+        if (other_index >= 0) {
+            if (D_jetpac_8002EC30.unk350[other_index].unk28 <= inner->unk20 + inner->unk4) {
+                inner->unkC *= -0.4f;
+                if (ABS(inner->unkC) <= 0.15f) {
+                    inner->unkC = 0.0f;
+                }
+            } else if ((inner->unk28 + inner->unk4) <= D_jetpac_8002EC30.unk350[other_index].unk20) {
+                inner->unk34 = other_index;
+                inner->unkC = 0.0f;
+                func_jetpac_80025BB8((JetpacStruct3* ) arg0, 0);
+                inner->unk4 = D_jetpac_8002EC30.unk350[other_index].unk4 - 24.0f;
+            } else {
+                inner->unk8 *= -0.5f;
+            }
+        }
+    } else {
+        other_index = func_jetpac_80028E04(inner->unk34, (inner->unk1C + inner->unk0 + inner->unk8), (inner->unk24 + inner->unk0 + inner->unk8));
+        if (other_index != -2) {
+            if ((other_index != -1) && (other_index != 1)) {
+                if (other_index == 2) {
+block_62:
+                    func_jetpac_80025BB8((JetpacStruct3*)arg0, 1);
+                    inner->unkC = -0.5f;
+                }
+            } else if ((inner->unk18 == 0) && (sp34 == 0)) {
+                inner->unk8 = 1.0f;
+            } else if (sp30 == 0) {
+                inner->unk8 = -1.0f;
+            }
+        } else {
+            goto block_62;
+        }
+    }
+
+    inner->unk0 += inner->unk8;
+    if ((inner->unk0 + inner->unk24) > 256.0f) {
+        inner->unk0 -= 256.0f;
+    }
+    if ((inner->unk0 + inner->unk1C) < 0.0f) {
+        inner->unk0 += 256.0f;
+    }
+    inner->unk4 += inner->unkC;
+    if (inner->unk4 < 18.0f) {
+        inner->unk4 = 18.0f;
+        inner->unkC = 0.0f;
+    }
+    if (inner->unk4 > 168.0f) {
+        inner->unk4 = 168.0f;
+    }
+    if ((func_jetpac_80027330(inner->unk0) != 0) && (player->rocket_stage == 8) && (inner->unk4 > 152.0f)) {
+        func_jetpac_80024F9C(4);
+    }
+}
 
 void func_jetpac_80026A3C(JetpacStruct10 *arg0) {
     Competitor *player;
