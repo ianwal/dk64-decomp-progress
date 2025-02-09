@@ -2445,8 +2445,7 @@ typedef struct JetpacStruct3 {
     s32 unk3C;
     s32 unk40;
     s32 unk44;
-    void (*unk48)(struct JetpacStruct3*);
-    s32 unk4C;
+    JetpacStructSub1 unk48;
 } JetpacStruct3; // size 0x50
 
 typedef struct JetpacItem {

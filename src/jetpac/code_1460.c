@@ -609,8 +609,8 @@ void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
         temp_v0->unk14 = 3;
         temp_v0->unk2C = 0;
         temp_v0->unk40 = (s32)(func_jetpac_80027210() * 8.0f) + 0xD;
-        temp_v0->unk48 = func_jetpac_80025CB0;
-        temp_v0->unk4C = 0;
+        temp_v0->unk48.unk0 = func_jetpac_80025CB0;
+        temp_v0->unk48.unk4 = 0;
         func_jetpac_80024E70(6);
     }
 }
@@ -821,8 +821,8 @@ void func_jetpac_80026CEC(void) {
 
     for (i = 0; i < 4; i++) {
         temp_a0 = &D_jetpac_8002F050.unk4C[i];
-        if (D_jetpac_8002F050.unk4C[i].unk48 != 0) {
-            temp_a0->unk48(temp_a0);
+        if (D_jetpac_8002F050.unk4C[i].unk48.unk0 != 0) {
+            temp_a0->unk48.unk0(temp_a0);
         }
     }
 }
