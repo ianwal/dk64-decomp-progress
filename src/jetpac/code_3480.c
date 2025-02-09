@@ -540,10 +540,7 @@ typedef struct Struct8002EF80 {
     f32 unk4;
     f32 unk8;
     f32 unkC;
-    u8 unk10;
-    u8 unk11;
-    u8 unk12;
-    u8 unk13;
+    rgba unk10;
     s32 unk14;
     s32 unk18;
     s32 unk1C;
@@ -560,10 +557,10 @@ void func_jetpac_80028BD0(Struct8002EF80 *arg0, s32 arg1, s32 arg2, s32 arg3, u8
     arg0->unk4 = arg2;
     arg0->unk8 = 0.0f;
     arg0->unkC = 0.0f;
-    arg0->unk10 = arg4;
-    arg0->unk11 = arg5;
-    arg0->unk12 = arg6;
-    arg0->unk13 = 0xFF;
+    arg0->unk10.red = arg4;
+    arg0->unk10.green = arg5;
+    arg0->unk10.blue = arg6;
+    arg0->unk10.alpha = 0xFF;
     arg0->unk20 = arg2;
     arg0->unk1C = arg1;
     // TODO: Why does this need to be on the same line? Just ido being shite?
