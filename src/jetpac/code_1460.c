@@ -424,7 +424,69 @@ void func_jetpac_80025CA0(JetpacStruct0 *arg0) {
     arg0->unk2C = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_80025CB0.s")
+void func_jetpac_80025CB0(JetpacStruct0* arg0) {
+    s32 new_var;
+    f32 var_f12;
+    f32 temp_f14;
+    f32 var_f0;
+    f32 temp_f2;
+
+    if ((arg0->unk14 == 3) && ((u32) arg0->unk40 < (u32) arg0->unk2C)) {
+        func_jetpac_80025CA0(arg0);
+    }
+    if ((arg0->unk14 == 4) && (arg0->unk24 == arg0->unk1C)) {
+        arg0->unk14 = 0;
+        arg0->unk2C = 0;
+    }
+    if (arg0->unk14 != 0) {
+        if (arg0->unk14 == 3) {
+            if (arg0->unk18 != 0) {
+                var_f12 = arg0->unk1C;
+                var_f0 = (MIN(arg0->unk2C, 4) * 8) + var_f12;
+            } else {
+                var_f0 = arg0->unk24;
+                var_f12 = var_f0 - (MIN(arg0->unk2C, 4) * 8);
+            }
+            temp_f14 = arg0->unk20;
+            temp_f2 = arg0->unk28;
+            if (func_jetpac_8002A974(var_f12, temp_f14, var_f0, temp_f2) != 0) {
+                func_jetpac_80025CA0(arg0);
+            }
+            else if (func_jetpac_80028CF8(var_f12, temp_f14, var_f0, temp_f2, 0) >= 0) {
+                func_jetpac_80025CA0(arg0);
+            }
+            else if (func_jetpac_800283EC(var_f12, temp_f14, var_f0, temp_f2) != 0) {
+                func_jetpac_80025CA0(arg0);
+            }
+            else
+            {
+                if (arg0->unk18 != 0) {
+                    arg0->unk1C -= 8;
+                    if (arg0->unk2C >= 0xD) {
+                        arg0->unk24 -= 8;
+                    }
+                } else {
+                    arg0->unk24 += 8;
+                    if (arg0->unk2C >= 0xD) {
+                        arg0->unk1C += 8;
+                    }
+                }
+                arg0->unk2C += 1;
+            }
+        }
+        else if (arg0->unk14 == 4) {
+            new_var = (arg0->unk24 - arg0->unk1C) / 8;
+            if ((arg0->unk2C + new_var) >= 0xD) {
+                if (arg0->unk18 != 0) {
+                    arg0->unk24 -= 8;
+                } else {
+                    arg0->unk1C += 8;
+                }
+            }
+            arg0->unk2C += 1;
+        }
+    }
+}
 
 void func_jetpac_80025CB0(JetpacStruct0 *arg0);
 
