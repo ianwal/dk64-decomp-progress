@@ -604,15 +604,15 @@ void func_jetpac_800260DC(JetpacStruct3 *arg0) {
 void func_jetpac_80026318(Struct80025C40_ret* arg0) {
     Competitor* player;
     JetpacStruct3* inner;
-    s8 pad[0xC];
+    s8 pad[0x4];
+    f32 var_f2;
+    f32 var_f12;
     s32 sp40;
-    s32 sp3C;
+    s32 sp3C; 
     s32 other;
     s32 sp34;
     s32 sp30;
     s32 other_index;
-    f32 var_f2;
-    f32 var_f12;
 
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     other = D_jetpac_8002EC30.unk0 & 0x4000;
