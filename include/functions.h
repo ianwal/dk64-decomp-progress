@@ -4711,7 +4711,7 @@ void func_jetpac_80024A8C(Gfx **arg0);
 void func_jetpac_80024C90(Gfx **arg0);
 void func_jetpac_80024D48(Gfx **arg0);
 void func_jetpac_80024E70(s32 arg0);
-void func_jetpac_80024F24(s32 arg0, s32 arg1);
+void func_jetpac_80024F24(s32 arg0, f32 arg1);
 void func_jetpac_80024F64(s32 arg0);
 void func_jetpac_80024F9C(s32 arg0);
 void func_jetpac_800250A0(void);

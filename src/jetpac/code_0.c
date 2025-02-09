@@ -343,10 +343,9 @@ void func_jetpac_80024E70(s32 arg0) {
     func_global_asm_80737638(D_global_asm_8076D1F8, D_jetpac_8002BA52[arg0].unk0, 0x7FFF, 0x3F, 1.0f, 0, &D_global_asm_80770DF8[arg0]);
 }
 
-void func_jetpac_80024F24(s32 arg0, s32 arg1) {
+void func_jetpac_80024F24(s32 arg0, f32 arg1) {
     if (D_global_asm_80770DF8[arg0]) {
-        func_global_asm_80737AC4(D_global_asm_80770DF8[arg0], 0x10, arg1);
-        if (arg1) {};
+        func_global_asm_80737AC4(D_global_asm_80770DF8[arg0], 0x10, *(s32*)&arg1);
     }
 }
 
