@@ -56,10 +56,7 @@ typedef struct {
     s32 unk30;
     s32 unk34;
     s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
+    Struct80025A60 unk3C;
     // End TODO
 
     JetpacStruct3 unk4C[4];
@@ -895,9 +892,9 @@ int func_jetpac_80026FE0(void) {
 }
 
 void func_jetpac_80027010(MetaJetpacStruct3 *arg0) {
-    if (arg0->unk44 >= 0xE) {
-        arg0->unk44 = 0;
-        arg0->unk3C = (s32)arg0->unk0 & 0xFFF8;
-        arg0->unk40 = arg0->unk4 + 7.0f;
+    if (arg0->unk3C.unk8 >= 0xE) {
+        arg0->unk3C.unk8 = 0;
+        arg0->unk3C.unk0 = (s32)arg0->unk0 & 0xFFF8;
+        arg0->unk3C.unk4 = arg0->unk4 + 7.0f;
     }
 }
