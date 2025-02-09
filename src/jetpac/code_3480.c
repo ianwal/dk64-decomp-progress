@@ -619,9 +619,9 @@ s32 func_jetpac_80028E04(s32 arg0, s32 arg1, s32 arg2) {
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80028E88.s")
 
 extern JetpacPlayerSub36C D_8002EF90[4];
-extern JetpacPlayerSub36C D_jetpac_8002DE68;
-extern JetpacPlayerSub36C D_jetpac_8002DE80;
-extern JetpacPlayerSub36C D_jetpac_8002DE98;
+extern Struct8002C4D0 D_jetpac_8002DE68;
+extern Struct8002C4D0 D_jetpac_8002DE80;
+extern Struct8002C4D0 D_jetpac_8002DE98;
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 extern s32 D_jetpac_8002F060;
 
