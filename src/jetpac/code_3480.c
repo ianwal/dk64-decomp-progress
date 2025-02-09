@@ -616,36 +616,29 @@ s32 func_jetpac_80028E04(s32 arg0, s32 arg1, s32 arg2) {
     return 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80028E88.s")
-
-extern JetpacPlayerSub36C D_8002EF90[4];
 extern Struct8002C4D0 D_jetpac_8002DE68;
 extern Struct8002C4D0 D_jetpac_8002DE80;
 extern Struct8002C4D0 D_jetpac_8002DE98;
-extern JetpacPlayerStruct D_jetpac_8002EC30;
-extern s32 D_jetpac_8002F060;
 
-/*
 void func_jetpac_80028E88(void) {
-    s32 i, j;
-    s32 temp_f10;
-    s32 temp_f6;
-    s32 var_s1;
-    JetpacPlayerStruct *var_s6;
-    JetpacPlayerSub36C * var_sub;
-
-    var_s6 = &D_jetpac_8002EC30;
-    for (i = 0; i < 4; i++) {
-        var_sub = &var_s6->unk350[i];
-        temp_f6 = var_sub->unk0;
-        temp_f10 = var_sub->unk4;
-        func_jetpac_80025700(&D_jetpac_8002DE68, temp_f6, temp_f10, var_sub->unk10, 0);
-        var_s1 = temp_f6 + 8;
-        for (j = 0; j < var_sub->unk30; j++) {
-            func_jetpac_80025700(&D_jetpac_8002DE80, var_s1, temp_f10, var_sub->unk10, 0);
-            var_s1 += 8;
+    JetpacPlayerSub36C* sub;
+    s32 y;
+    s32 x;
+    s32 i;
+    s32 j;
+    
+    for (i = 0; i < 4; i++)
+    {
+        sub = &D_jetpac_8002EC30.unk350[i];
+        x = sub->unk0;
+        y = sub->unk4;
+        func_jetpac_80025700(&D_jetpac_8002DE68, x, y, &sub->unk10, 0);
+        x += 8;
+        for (j = 0; j < sub->unk30; j++)
+        {
+            func_jetpac_80025700(&D_jetpac_8002DE80, x, y, &sub->unk10, 0);
+            x += 8;
         }
-        func_jetpac_80025700(&D_jetpac_8002DE98, var_s1, temp_f10, var_sub->unk10, 0);
+        func_jetpac_80025700(&D_jetpac_8002DE98, x, y, &sub->unk10, 0);
     }
 }
-*/
