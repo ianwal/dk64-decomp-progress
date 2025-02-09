@@ -50,9 +50,7 @@ typedef struct {
     s32 unk0;
     s32 unk4;
     s32 unk8;
-    u8 unkC;
-    u8 unkD;
-    u8 unkE;
+    rgba unkC;
 } Struct80025A60;
 
 typedef struct JetpacStruct5 {
@@ -373,14 +371,14 @@ void func_jetpac_80025A60(Struct80025A60 *arg0) {
     sp2C = (arg0->unk8 / 14.0f) * 6.0f;
     if ((arg0->unk8 % 7) == 0) {
         if (func_jetpac_80027210() < 0.5) {
-            arg0->unkD = 0;
+            arg0->unkC.green = 0;
         } else {
-            arg0->unkD = 0xFF;
+            arg0->unkC.green = 0xFF;
         }
         if (func_jetpac_80027210() < 0.5) {
-            arg0->unkE = 0;
+            arg0->unkC.blue = 0;
         } else {
-            arg0->unkE = 0xFF;
+            arg0->unkC.blue = 0xFF;
         }
     }
     func_jetpac_80025700(&D_jetpac_8002B9C0[sp2C], arg0->unk0, arg0->unk4, &arg0->unkC, 0);
@@ -567,7 +565,7 @@ void func_jetpac_80025CB0(JetpacStruct0 *arg0) {
 }
 */
 
-void func_jetpac_80025F48(s32 arg0, s32 *arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+void func_jetpac_80025F48(s32 arg0, s32 *arg1, s32 arg2, s32 arg3, rgba* arg4, s32 arg5) {
     s32 temp_t2;
 
     func_jetpac_80025700(&D_jetpac_8002C4D0[arg0], *arg1, arg3, arg4, arg5);
