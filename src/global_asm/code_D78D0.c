@@ -2849,13 +2849,13 @@ void func_global_asm_806DB0C4(void) {
         dx = extra_player_info_pointer->unkA4 - extra_player_info_pointer->unk9C;
         dz = extra_player_info_pointer->unkA8 - extra_player_info_pointer->unkA0;
         extra_player_info_pointer->unk94 = sqrtf(SQ(dx) + SQ(dz)) * 0.8;
-        extra_player_info_pointer->unk98 = ((func_global_asm_80611BB4(dx, dz) * 4096.0f) / 6.283185482f);
+        extra_player_info_pointer->unk98 = ((func_global_asm_80611BB4(dx, dz) * 4096.0f) / MATH_2PI_F);
         extra_player_info_pointer->unk4C = -1;
     }
     extra_player_info_pointer->unkAC_f32 += 0.02;
     if (extra_player_info_pointer->unkAC_f32 > 1.0) {
         if (extra_player_info_pointer->unkDC != NULL) {
-            extra_player_info_pointer->unk98 = (func_global_asm_80611BB4(extra_player_info_pointer->unkDC->x_position - extra_player_info_pointer->unk9C, extra_player_info_pointer->unkDC->z_position - extra_player_info_pointer->unkA0) * 4096.0f) / 6.283185482f;
+            extra_player_info_pointer->unk98 = (func_global_asm_80611BB4(extra_player_info_pointer->unkDC->x_position - extra_player_info_pointer->unk9C, extra_player_info_pointer->unkDC->z_position - extra_player_info_pointer->unkA0) * 4096.0f) / MATH_2PI_F;
             if (current_actor_pointer->y_rotation == (s16)extra_player_info_pointer->unk98) {
                 func_global_asm_806CFF9C(current_actor_pointer);
             }

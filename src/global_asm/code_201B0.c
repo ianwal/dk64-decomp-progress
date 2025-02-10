@@ -1266,9 +1266,9 @@ f32 func_global_asm_80622ABC(f32 arg0, f32 arg1, f32 arg2) {
 
     temp_f0 = arg0 - arg1;
     if (3.141592741f < temp_f0) {
-        arg1 += 6.283185482f;
+        arg1 += MATH_2PI_F;
     } else if (temp_f0 < -3.141592741f) {
-        arg0 += 6.283185482f;
+        arg0 += MATH_2PI_F;
     }
     return ((arg1 - arg0) * arg2) + arg0;
 }

@@ -743,7 +743,7 @@ void func_global_asm_806921DC(u8 arg0) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk6E[0] = -2;
         current_actor_pointer->unk6A &= ~1;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.283185482f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x3C;
@@ -825,7 +825,7 @@ void func_global_asm_80692640(void) {
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk6A &= 0xFFFE;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.283185482f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x3C;

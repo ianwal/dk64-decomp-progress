@@ -590,9 +590,9 @@ f32 func_global_asm_806F1B90(f32 *arg0, f32 arg1) {
     phi_f2 = arg1 - *arg0;
     *arg0 = arg1;
     if (M_PIF < phi_f2) {
-        phi_f2 = 6.283185482f - phi_f2;
+        phi_f2 = MATH_2PI_F - phi_f2;
     } else if (phi_f2 < -M_PIF) {
-        phi_f2 = -(6.283185482f + phi_f2);
+        phi_f2 = -(MATH_2PI_F + phi_f2);
     }
     phi_f2 *= 0.1591549367f;
     return phi_f2;
@@ -725,7 +725,7 @@ void func_global_asm_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
     arg1[*arg2].unk0 = -0x80;
     arg1[*arg2].unk1 = 2;
     arg1[*arg2].unk4 = (angle / 4095.0) * 65535.0;
-    arg1[*arg2].unk2 = (temp_f0_2 / 6.283185482f) * 65535.0;
+    arg1[*arg2].unk2 = (temp_f0_2 / MATH_2PI_F) * 65535.0;
     arg1[*arg2].unk6 = 0;
     *arg2 += 1;
 }

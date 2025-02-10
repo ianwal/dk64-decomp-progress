@@ -90,10 +90,10 @@ void func_global_asm_8070FA58(Struct8070FA58 *arg0) {
     arg0->unk1C = character_change_array->look_at_eye_z;
     var_f12 = character_change_array->unk2C4 - arg0->unk14;
     if (3.141592741f < var_f12) {
-        var_f12 = 6.283185482f - var_f12;
+        var_f12 = MATH_2PI_F - var_f12;
     }
     if (var_f12 < -3.141592741f) {
-        var_f12 = -6.283185482f - var_f12;
+        var_f12 = -MATH_2PI_F - var_f12;
     }
     arg0->unk4 += ((var_f12 * 180.0f) - (0.3 * D_global_asm_807FDA1E));
     sp30 = temp_f2_2;

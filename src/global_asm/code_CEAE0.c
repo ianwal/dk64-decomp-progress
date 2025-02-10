@@ -2195,7 +2195,7 @@ void func_global_asm_806D0EBC(Actor *arg0) {
 
 // TODO: Can we simplify this?
 s16 func_global_asm_806D1080(f32 arg0, f32 arg1) {
-    return (s16)((s16)((func_global_asm_80611BB4(arg0, arg1) * 4096.0f) / 6.283185482f) - 0x400) & 0xFFF;
+    return (s16)((s16)((func_global_asm_80611BB4(arg0, arg1) * 4096.0f) / MATH_2PI_F) - 0x400) & 0xFFF;
 }
 
 // TODO: Can we simplify this?

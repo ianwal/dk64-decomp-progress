@@ -178,11 +178,11 @@ void func_global_asm_80698120(u8 arg0) {
             aaD->unkC = 0.0f;
         }
     }
-    if (6.283185482f <= aaD->unkC) {
-        aaD->unkC -= 6.283185482f;
+    if (MATH_2PI_F <= aaD->unkC) {
+        aaD->unkC -= MATH_2PI_F;
     }
     if (aaD->unkC < 0.0f) {
-        aaD->unkC += 6.283185482f;
+        aaD->unkC += MATH_2PI_F;
     }
     if ((player_pointer->unk6A & 0x40) && (current_actor_pointer == PaaD->unk130)) {
         aaD->unk14 = 1;

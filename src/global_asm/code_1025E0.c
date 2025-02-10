@@ -73,10 +73,10 @@ void func_global_asm_806FDF1C(s16 arg0, char *arg1) {
 
 void func_global_asm_806FDF54(f32 *arg0, f32 *arg1) {
     while (*arg1 < 0.0f) {
-        *arg1 += 6.283185482f;
+        *arg1 += MATH_2PI_F;
     }
-    while (6.283185482f <= *arg1) {
-        *arg1 -= 6.283185482f;
+    while (MATH_2PI_F <= *arg1) {
+        *arg1 -= MATH_2PI_F;
     }
     *arg0 = (func_global_asm_806CC190((*arg0 * 2048.0) / 3.14159274101257324, (*arg1 * 2048.0) / 3.14159274101257324, 5.0f) * M_PIF) * 0.00048828125;
 }

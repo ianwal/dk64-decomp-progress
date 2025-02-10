@@ -255,7 +255,7 @@ s32 handleInputsForControlState(s32 controlState) {
         D_global_asm_807FD610[cc_player_index].unk8 = 0.0f;
     }
     if (var_f16 != 0.0f) {
-        var_t0 = (func_global_asm_80611BB4(D_global_asm_807FD610[cc_player_index].unk2E, -D_global_asm_807FD610[cc_player_index].unk2F) * 4096.0f) / 6.283185482f;
+        var_t0 = (func_global_asm_80611BB4(D_global_asm_807FD610[cc_player_index].unk2E, -D_global_asm_807FD610[cc_player_index].unk2F) * 4096.0f) / MATH_2PI_F;
         D_global_asm_807FD610[cc_player_index].unk28 = (character_change_array[cc_player_index].unk2C8 + var_t0);
         D_global_asm_807FD610[cc_player_index].unk28 &= 0xFFF;
     } else {
