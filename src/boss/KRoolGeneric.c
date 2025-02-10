@@ -190,217 +190,217 @@ u8 func_boss_80027BA8(u8 *arg0, u16 arg1, f32 arg2) {
     sp2E = FALSE;
     sp2F = TRUE;
     switch (current_actor_pointer->control_state) {
-    case 0x54:
-        sp2F = FALSE;
-        if (current_actor_pointer->control_state_progress) {
-            if (func_global_asm_80629148()) {
+        case 0x54:
+            sp2F = FALSE;
+            if (current_actor_pointer->control_state_progress) {
+                if (func_global_asm_80629148()) {
+                    sp2F = TRUE;
+                }
+            } else {
+                func_global_asm_80629174();
+                sp2F = FALSE;
+                current_actor_pointer->control_state_progress = 1;
+            }
+            break;
+        case 0x5F:
+            playCutscene(current_actor_pointer, arg0[temp_s0->unk15++], 1);
+            break;
+        case 0x5E:
+            if (is_cutscene_active == 1) {
+                sp2F = TRUE;
+                func_global_asm_8061D4E4(temp_v1->unk104);
                 sp2F = TRUE;
             }
-        } else {
-            func_global_asm_80629174();
-            sp2F = FALSE;
-            current_actor_pointer->control_state_progress = 1;
-        }
-        break;
-    case 0x5F:
-        playCutscene(current_actor_pointer, arg0[temp_s0->unk15++], 1);
-        break;
-    case 0x5E:
-        if (is_cutscene_active == 1) {
-            sp2F = TRUE;
-            func_global_asm_8061D4E4(temp_v1->unk104);
-            sp2F = TRUE;
-        }
-        D_global_asm_8076A0B3 = 0;
-        current_actor_pointer->object_properties_bitfield &= ~4;
-        D_global_asm_8076A0B1 |= 0x10;
-        temp_s0->unk15++;
-        temp_s0->unk4 = (arg0[temp_s0->unk15] * 0x1E);
-        break;
-    case 0x5D:
-        temp_s0->unk15++;
-        sp2F = TRUE;
-        func_global_asm_8072B324(current_actor_pointer, arg0[temp_s0->unk15]);
-        sp2F = TRUE;
-        break;
-    case 0x5C:
-        ((BossUnkPaaD17C *)current_actor_pointer->unk17C)->unk0 = arg0[temp_s0->unk15++];
-        break;
-    case 0x5A:
-        sp2F = TRUE;
-        loadText(current_actor_pointer, arg0[temp_s0->unk15], arg0[temp_s0->unk15 + 1]);
-        sp2F = TRUE;
-        temp_s0->unk15 += 2;
-        break;
-    case 0x42:
-block_16:
-        sp2F = sp2F;
-        func_global_asm_8072AB74(0x42U, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, arg1, arg2);
-        if (func_global_asm_8072D13C(current_actor_pointer->control_state, 0) == 0) {
-        default:
-            sp2F = FALSE;
-        }
-        break;
-    case 0x69:
-        D_global_asm_807FDC90->unk1A |= 0x20;
-        break;
-    case 0x6D:
-        break;
-    case 0x58:
-        current_actor_pointer->object_properties_bitfield |= 4;
-        break;
-    case 0x59:
-        current_actor_pointer->object_properties_bitfield &= ~4;
-        break;
-    case 0x51:
-        sp2F = TRUE;
-        playActorAnimation(current_actor_pointer, arg0[temp_s0->unk15 + 1] + (arg0[temp_s0->unk15] << 8));
-        sp2F = TRUE;
-        temp_s0->unk15 += 2;
-        break;
-    case 0x55:
-        sp2F = FALSE;
-        if (current_actor_pointer->control_state_progress == 0) {
-            temp_s0->unk8[0] = arg0[temp_s0->unk15 + 1] + (arg0[temp_s0->unk15] << 8);
-            temp_s0->unk15 += 2;
-            current_actor_pointer->control_state_progress = 1;
-        } else {
-            temp_s0->unk8[0]--;
-            if (temp_s0->unk8[0] == 0) {
-                sp2F = TRUE;
-            }
-        }
-        break;
-    case 0x23:
-        if (current_actor_pointer->control_state_progress == 0) {
+            D_global_asm_8076A0B3 = 0;
+            current_actor_pointer->object_properties_bitfield &= ~4;
+            D_global_asm_8076A0B1 |= 0x10;
             temp_s0->unk15++;
-            temp_s0->unk8[0] = arg0[temp_s0->unk15];
-            current_actor_pointer->control_state_progress = 1;
-            sp2F = FALSE;
-            func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkD);
+            temp_s0->unk4 = (arg0[temp_s0->unk15] * 0x1E);
+            break;
+        case 0x5D:
+            temp_s0->unk15++;
+            sp2F = TRUE;
+            func_global_asm_8072B324(current_actor_pointer, arg0[temp_s0->unk15]);
+            sp2F = TRUE;
+            break;
+        case 0x5C:
+            ((BossUnkPaaD17C *)current_actor_pointer->unk17C)->unk0 = arg0[temp_s0->unk15++];
+            break;
+        case 0x5A:
+            sp2F = TRUE;
+            loadText(current_actor_pointer, arg0[temp_s0->unk15], arg0[temp_s0->unk15 + 1]);
+            sp2F = TRUE;
+            temp_s0->unk15 += 2;
+            break;
+        case 0x42:
+block_16:
             sp2F = sp2F;
-        } else {
-            sp2F = FALSE;
-            func_global_asm_8072AB74(0x23U, D_global_asm_807FDC90->unk4->x_position, D_global_asm_807FDC90->unk4->z_position, arg1, arg2);
-            sp2F = FALSE;
-            temp_s0->unk8[0]--;
-            if ((temp_s0->unk8[0] == 0) || (temp_v1->unk1F0 & 0x80000)) {
-                temp_v1->unk1F0 &= 0xFFF7FFFF;
-                sp2F = TRUE;
-                func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkC);
-                sp2F = TRUE;
-            }
-        }
-        break;
-    case 0x52:
-        if (!(current_actor_pointer->unk6A & 1)) {
-            sp2F = FALSE;
-        }
-        break;
-    case 0x53:
-        if (current_actor_pointer->control_state_progress == 0) {
-            sp2F = FALSE;
-        }
-        break;
-    case 0x4F:
-        temp_s0->unk16 = temp_s0->unk15;
-        break;
-    case 0x50:
-        temp_s0->unk15 = temp_s0->unk16;
-        break;
-    case 0x66:
-        if (D_global_asm_807FDC90->unk1A & 8) {
-            temp_s0->unk15 = temp_s0->unk16;
-        }
-        break;
-    case 0x63:
-        if (temp_s0->unk8[arg0[temp_s0->unk15]] != 0) {
-            temp_s0->unk8[arg0[temp_s0->unk15]]--;
-            sp2F = FALSE;
-            break;
-        }
-        temp_s0->unk15++;
-        break;
-    case 0x62:
-        temp_s0->unk8[arg0[temp_s0->unk15]] = arg0[temp_s0->unk15 + 1];
-        temp_s0->unk15 += 2;
-        sp2E = TRUE;
-        break;
-    case 0x64:
-        temp_s0->unk18[arg0[temp_s0->unk15]] = arg0[temp_s0->unk15 + 1];
-        temp_s0->unk15 += 2;
-        sp2E = TRUE;
-        break;
-    case 0x68:
-        D_global_asm_807FDC90->unk1A &= 0xFFEF;
-        sp2E = TRUE;
-        break;
-    case 0x65:
-        D_global_asm_807FDC90->unk2C = arg0[temp_s0->unk15]++;
-        sp2E = TRUE;
-        break;
-    case 0x67:
-        func_boss_80027950(temp_s0, arg0);
-        sp2F = FALSE;
-        current_actor_pointer->control_state = 0x42;
-        current_actor_pointer->control_state_progress = 0;
-        goto block_16;
-    case 0x4C:
-        func_boss_80027A30(temp_s0, arg0);
-        sp2F = FALSE;
-        current_actor_pointer->control_state = 0x42;
-        current_actor_pointer->control_state_progress = 0;
-        goto block_16;
-    case 0x4B:
-        D_global_asm_807FDC90->unk25++;
-        if (arg0[temp_s0->unk15 + 1] < D_global_asm_807FDC90->unk25) {
-            D_global_asm_807FDC90->unk25 = arg0[temp_s0->unk15];
-        }
-        temp_s0->unk15 += 2;
-        sp2F = FALSE;
-        current_actor_pointer->control_state = 0x42;
-        current_actor_pointer->control_state_progress = 0;
-        goto block_16;
-    case 0x41:
-        sp2F = FALSE;
-        D_global_asm_807FDC90->unk25 = arg0[temp_s0->unk15++];
-        current_actor_pointer->control_state = 0x42;
-        current_actor_pointer->control_state_progress = 0;
-        goto block_16;
-    case 0x49:
-    case 0x4A:
-        sp2F = FALSE;
-        switch (current_actor_pointer->control_state_progress) {
-        case 0:
-            current_actor_pointer->shadow_opacity -= 0xA;
-            if (current_actor_pointer->shadow_opacity < 0) {
-                current_actor_pointer->shadow_opacity = 0;
-                current_actor_pointer->control_state_progress += 1;
+            func_global_asm_8072AB74(0x42U, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, arg1, arg2);
+            if (func_global_asm_8072D13C(current_actor_pointer->control_state, 0) == 0) {
+            default:
+                sp2F = FALSE;
             }
             break;
-        case 1:
-            if (current_actor_pointer->control_state == 0x49) {
-                D_global_asm_807FDC90->unk25 = arg0[temp_s0->unk15++];
+        case 0x69:
+            D_global_asm_807FDC90->unk1A |= 0x20;
+            break;
+        case 0x6D:
+            break;
+        case 0x58:
+            current_actor_pointer->object_properties_bitfield |= 4;
+            break;
+        case 0x59:
+            current_actor_pointer->object_properties_bitfield &= ~4;
+            break;
+        case 0x51:
+            sp2F = TRUE;
+            playActorAnimation(current_actor_pointer, arg0[temp_s0->unk15 + 1] + (arg0[temp_s0->unk15] << 8));
+            sp2F = TRUE;
+            temp_s0->unk15 += 2;
+            break;
+        case 0x55:
+            sp2F = FALSE;
+            if (current_actor_pointer->control_state_progress == 0) {
+                temp_s0->unk8[0] = arg0[temp_s0->unk15 + 1] + (arg0[temp_s0->unk15] << 8);
+                temp_s0->unk15 += 2;
+                current_actor_pointer->control_state_progress = 1;
+            } else {
+                temp_s0->unk8[0]--;
+                if (temp_s0->unk8[0] == 0) {
+                    sp2F = TRUE;
+                }
+            }
+            break;
+        case 0x23:
+            if (current_actor_pointer->control_state_progress == 0) {
+                temp_s0->unk15++;
+                temp_s0->unk8[0] = arg0[temp_s0->unk15];
+                current_actor_pointer->control_state_progress = 1;
+                sp2F = FALSE;
+                func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkD);
+                sp2F = sp2F;
             } else {
                 sp2F = FALSE;
-                func_boss_80027950(temp_s0, arg0);
-            }
-            sp2F = FALSE;
-            func_global_asm_8072D13C(0x49U, 0);
-            sp2F = FALSE;
-            current_actor_pointer->x_position = (f32) D_global_asm_807FDC90->unkA;
-            current_actor_pointer->z_position = (f32) D_global_asm_807FDC90->unkE;
-            current_actor_pointer->control_state_progress++;
-            break;
-        case 2:
-            current_actor_pointer->shadow_opacity += 0xA;
-            if (current_actor_pointer->shadow_opacity >= 0x100) {
-                current_actor_pointer->shadow_opacity = 0xFF;
-                sp2F = TRUE;
+                func_global_asm_8072AB74(0x23U, D_global_asm_807FDC90->unk4->x_position, D_global_asm_807FDC90->unk4->z_position, arg1, arg2);
+                sp2F = FALSE;
+                temp_s0->unk8[0]--;
+                if ((temp_s0->unk8[0] == 0) || (temp_v1->unk1F0 & 0x80000)) {
+                    temp_v1->unk1F0 &= 0xFFF7FFFF;
+                    sp2F = TRUE;
+                    func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkC);
+                    sp2F = TRUE;
+                }
             }
             break;
-        }
-        break;
+        case 0x52:
+            if (!(current_actor_pointer->unk6A & 1)) {
+                sp2F = FALSE;
+            }
+            break;
+        case 0x53:
+            if (current_actor_pointer->control_state_progress == 0) {
+                sp2F = FALSE;
+            }
+            break;
+        case 0x4F:
+            temp_s0->unk16 = temp_s0->unk15;
+            break;
+        case 0x50:
+            temp_s0->unk15 = temp_s0->unk16;
+            break;
+        case 0x66:
+            if (D_global_asm_807FDC90->unk1A & 8) {
+                temp_s0->unk15 = temp_s0->unk16;
+            }
+            break;
+        case 0x63:
+            if (temp_s0->unk8[arg0[temp_s0->unk15]] != 0) {
+                temp_s0->unk8[arg0[temp_s0->unk15]]--;
+                sp2F = FALSE;
+                break;
+            }
+            temp_s0->unk15++;
+            break;
+        case 0x62:
+            temp_s0->unk8[arg0[temp_s0->unk15]] = arg0[temp_s0->unk15 + 1];
+            temp_s0->unk15 += 2;
+            sp2E = TRUE;
+            break;
+        case 0x64:
+            temp_s0->unk18[arg0[temp_s0->unk15]] = arg0[temp_s0->unk15 + 1];
+            temp_s0->unk15 += 2;
+            sp2E = TRUE;
+            break;
+        case 0x68:
+            D_global_asm_807FDC90->unk1A &= 0xFFEF;
+            sp2E = TRUE;
+            break;
+        case 0x65:
+            D_global_asm_807FDC90->unk2C = arg0[temp_s0->unk15]++;
+            sp2E = TRUE;
+            break;
+        case 0x67:
+            func_boss_80027950(temp_s0, arg0);
+            sp2F = FALSE;
+            current_actor_pointer->control_state = 0x42;
+            current_actor_pointer->control_state_progress = 0;
+            goto block_16;
+        case 0x4C:
+            func_boss_80027A30(temp_s0, arg0);
+            sp2F = FALSE;
+            current_actor_pointer->control_state = 0x42;
+            current_actor_pointer->control_state_progress = 0;
+            goto block_16;
+        case 0x4B:
+            D_global_asm_807FDC90->unk25++;
+            if (arg0[temp_s0->unk15 + 1] < D_global_asm_807FDC90->unk25) {
+                D_global_asm_807FDC90->unk25 = arg0[temp_s0->unk15];
+            }
+            temp_s0->unk15 += 2;
+            sp2F = FALSE;
+            current_actor_pointer->control_state = 0x42;
+            current_actor_pointer->control_state_progress = 0;
+            goto block_16;
+        case 0x41:
+            sp2F = FALSE;
+            D_global_asm_807FDC90->unk25 = arg0[temp_s0->unk15++];
+            current_actor_pointer->control_state = 0x42;
+            current_actor_pointer->control_state_progress = 0;
+            goto block_16;
+        case 0x49:
+        case 0x4A:
+            sp2F = FALSE;
+            switch (current_actor_pointer->control_state_progress) {
+                case 0:
+                    current_actor_pointer->shadow_opacity -= 0xA;
+                    if (current_actor_pointer->shadow_opacity < 0) {
+                        current_actor_pointer->shadow_opacity = 0;
+                        current_actor_pointer->control_state_progress += 1;
+                    }
+                    break;
+                case 1:
+                    if (current_actor_pointer->control_state == 0x49) {
+                        D_global_asm_807FDC90->unk25 = arg0[temp_s0->unk15++];
+                    } else {
+                        sp2F = FALSE;
+                        func_boss_80027950(temp_s0, arg0);
+                    }
+                    sp2F = FALSE;
+                    func_global_asm_8072D13C(0x49U, 0);
+                    sp2F = FALSE;
+                    current_actor_pointer->x_position = (f32) D_global_asm_807FDC90->unkA;
+                    current_actor_pointer->z_position = (f32) D_global_asm_807FDC90->unkE;
+                    current_actor_pointer->control_state_progress++;
+                    break;
+                case 2:
+                    current_actor_pointer->shadow_opacity += 0xA;
+                    if (current_actor_pointer->shadow_opacity >= 0x100) {
+                        current_actor_pointer->shadow_opacity = 0xFF;
+                        sp2F = TRUE;
+                    }
+                    break;
+            }
+            break;
     }
     if (sp2F) {
         current_actor_pointer->control_state = arg0[temp_s0->unk15++];

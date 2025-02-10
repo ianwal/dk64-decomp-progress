@@ -484,7 +484,7 @@ void func_minecart_80027778(void) {
     //dy and dx loads are flipped
     dy = sp5E - current_actor_pointer->x_position;
     dx = sp5C - current_actor_pointer->z_position;
-    if (((dy * dy) + (dx * dx)) < 1600.0f) {
+    if ((SQ(dy) + SQ(dx)) < SQ(40.0f)) {
         current_actor_pointer->unk168++;
     }
     if ((D_global_asm_807FBB85 != 0) || (current_actor_pointer->unkF0 -= 1, (current_actor_pointer->unkF0 == 0))) {
@@ -502,21 +502,21 @@ void func_minecart_80027778(void) {
     }
     
     dx = (current_actor_pointer->x_position - character_change_array->look_at_eye_x);
-    dx = dx * dx;
+    dx = SQ(dx);
     dy = (current_actor_pointer->y_position - character_change_array->look_at_eye_y);
-    dx = dy * dy + dx;
+    dx = SQ(dy) + dx;
     dy = (current_actor_pointer->z_position - character_change_array->look_at_eye_z);
-    dx = dy * dy + dx;
+    dx = SQ(dy) + dx;
     switch (current_actor_pointer->unkEC) {
         case 0:
         case 2:
-            if (dx < 6400.0f) {
+            if (dx < SQ(80.0f)) {
                 playSoundAtActorPosition(current_actor_pointer, 0x128, 0xFF, 0x7F, 0);
                 current_actor_pointer->unkEC++;
             }
             break;
         case 1:
-            if (dx > 10000.0f) {
+            if (dx > SQ(100.0f)) {
                 current_actor_pointer->unkEC++;
             }
     }
@@ -762,7 +762,7 @@ void func_minecart_800286EC(void) {
             }
         case 1:
             if (D_global_asm_807FBDC4) {}
-            if ((func_global_asm_806CC14C(func_global_asm_80665DE0(player_pointer->x_position, player_pointer->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position), current_actor_pointer->y_rotation) >= 0x201) && (dx = current_actor_pointer->x_position - player_pointer->x_position, dz = current_actor_pointer->z_position - player_pointer->z_position, (((dx * dx) + (dz * dz)) < 22500.0f))) {
+            if ((func_global_asm_806CC14C(func_global_asm_80665DE0(player_pointer->x_position, player_pointer->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position), current_actor_pointer->y_rotation) >= 0x201) && (dx = current_actor_pointer->x_position - player_pointer->x_position, dz = current_actor_pointer->z_position - player_pointer->z_position, ((SQ(dx) + SQ(dz)) < SQ(150.0f)))) {
                 D_global_asm_807FDC90->unk26 = 0;
             } else {
                 D_global_asm_807FDC90->unk26 = MIN(MAX(aaD->unk88->unkB8 * 1.4, 45.0), 90.0);

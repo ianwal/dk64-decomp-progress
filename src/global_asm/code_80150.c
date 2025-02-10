@@ -353,14 +353,14 @@ void func_global_asm_8067BF4C(void) {
 
 u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
     u8 sp47;
-    f32 temp_f0_2;
-    f32 var_f20;
+    f32 d;
+    f32 minDistance;
     u8 playerIndex;
     f32 dz;
     f32 dx;
 
     sp47 = 0;
-    var_f20 = 99999.0f;
+    minDistance = 99999.0f;
     if (current_actor_pointer->object_properties_bitfield & 0x10) {
         func_global_asm_80688370(current_actor_pointer, 0, 0.5f);
         func_global_asm_806883C8(current_actor_pointer, 0, 0);
@@ -376,13 +376,13 @@ u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
                     dz = character_change_array[playerIndex].player_pointer->z_position - current_actor_pointer->z_position;
                     dx = character_change_array[playerIndex].player_pointer->x_position - current_actor_pointer->x_position;
                     
-                    temp_f0_2 = sqrtf((dz * dz) + (dx * dx));
-                    if (temp_f0_2 < var_f20) {
-                        var_f20 = temp_f0_2;
+                    d = sqrtf(SQ(dz) + SQ(dx));
+                    if (d < minDistance) {
+                        minDistance = d;
                     }
                 }
             }
-            if (var_f20 > 12.0) {
+            if (minDistance > 12.0) {
                 *arg1 = 0;
             } else {
                 *arg1 = 1;

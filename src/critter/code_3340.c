@@ -137,7 +137,7 @@ void func_critter_80027448(void) {
         dx = player_pointer->x_position - current_actor_pointer->x_position;
         dy = 2.0 * (player_pointer->y_position - current_actor_pointer->y_position);
         dz = player_pointer->z_position - current_actor_pointer->z_position;
-        d = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+        d = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
         if ((d < 300.0) && !isFlagSet(0x17E, FLAG_TYPE_PERMANENT)) {
             func_global_asm_8070E8DC(1);
             loadText(current_actor_pointer, 0x1D, 0);
@@ -293,7 +293,7 @@ void func_critter_80027DC0(void) {
     dz = current_actor_pointer->z_position - player_pointer->z_position;
     switch (current_actor_pointer->control_state) {
         case 1:
-            if ((((dx * dx) + (dz * dz)) < 10000.0f) != 0) {
+            if (((SQ(dx) + SQ(dz)) < SQ(100.0f)) != 0) {
                 // Unlock the camera
                 setFlag(0x179, TRUE, FLAG_TYPE_PERMANENT);
                 playCutscene(player_pointer, 0, 1);
@@ -329,7 +329,7 @@ void func_critter_80027DC0(void) {
             }
             break;
         case 3:
-            if ((((dx * dx) + (dz * dz)) < 10000.0f) != 0) {
+            if (((SQ(dx) + SQ(dz)) < SQ(100.0f)) != 0) {
                 playCutscene(current_actor_pointer, 1, 1);
                 func_global_asm_80629174();
                 current_actor_pointer->control_state = 4;
@@ -418,7 +418,7 @@ void func_critter_80028120(void) {
             }
             break;
         case 0x64:
-            if ((((dx * dx) + (dz * dz)) < 2500.0f) != 0) {
+            if (((SQ(dx) + SQ(dz)) < SQ(50.0f)) != 0) {
                 if (newly_pressed_input[0] & 0x8000) {
                     playCutscene(current_actor_pointer, 4, 1);
                     func_global_asm_80629174();
@@ -472,7 +472,7 @@ void func_critter_80028120(void) {
                 aaD->unk0 = 0;
                 current_actor_pointer->control_state = 0x64;
             } else if (aaD->unk0 < 20.0) {
-                d = sqrtf((dx * dx) + (dz * dz));
+                d = sqrtf(SQ(dx) + SQ(dz));
                 if (d > 1.0) {
                     temp_f4 = 3.0 / d;
                     current_actor_pointer->x_position += dx * temp_f4;
@@ -481,7 +481,7 @@ void func_critter_80028120(void) {
             }
             break;
         case 0xA:
-            if ((((dx * dx) + (dz * dz)) < 2500.0f) != 0) {
+            if (((SQ(dx) + SQ(dz)) < SQ(50.0f)) != 0) {
                 current_actor_pointer->control_state = 0xB;
                 playCutscene(current_actor_pointer, 3, 1);
             }

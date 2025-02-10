@@ -660,7 +660,7 @@ void func_global_asm_80727958(void) {
                         PaaD = character_change_array->player_pointer->PaaD;
                         dz = current_actor_pointer->z_position - character_change_array[j].player_pointer->z_position;
                         dx = current_actor_pointer->x_position - character_change_array[j].player_pointer->x_position;
-                        temp_f16 = (dz * dz) + (dx * dx);
+                        temp_f16 = SQ(dz) + SQ(dx);
                         if ((temp_f16 < min_dist) || (PaaD->unkD4 != 0)) {
                             min_dist = temp_f16;
                             D_global_asm_807FDC90->unk4 = character_change_array[j].player_pointer;

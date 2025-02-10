@@ -73,7 +73,7 @@ void func_global_asm_8065CE4C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, 
     dx = arg0 - character_change_array[cc_player_index].unk21C;
     dy = arg1 - character_change_array[cc_player_index].unk220;
     dz = arg2 - character_change_array[cc_player_index].unk224;
-    phi_f14 = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+    phi_f14 = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
     if (current_map == MAP_AZTEC) {
         arg3 = func_global_asm_8065CFB8(arg4, arg3);
         if (arg3 < phi_f14) {

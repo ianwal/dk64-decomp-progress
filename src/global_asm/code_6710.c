@@ -392,14 +392,14 @@ f32 func_global_asm_80602E6C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, f32
     if ((var_f0 < D_global_asm_807567C0) && (dy < 0.0f)) {
         dy *= 20.0f;
     }
-    D_80770DE4 = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+    D_80770DE4 = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
     if (D_global_asm_807567B8 <= arg5) {
         dz = character_change_array->look_at_at_z - character_change_array->look_at_eye_z;
         dx = character_change_array->look_at_at_x - character_change_array->look_at_eye_x;
-        sp18 = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, character_change_array->look_at_at_y, sqrtf((dz * dz) + (dx * dx)));
+        sp18 = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, character_change_array->look_at_at_y, sqrtf(SQ(dz) + SQ(dx)));
         dz = arg2 - character_change_array->look_at_eye_z;
         dx = arg0 - character_change_array->look_at_eye_x;
-        D_80770DDC = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, arg1, sqrtf((dz * dz) + (dx * dx))) - sp18;
+        D_80770DDC = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, arg1, sqrtf(SQ(dz) + SQ(dx))) - sp18;
         if (D_80770DDC < 0.0f) {
             D_80770DDC += D_global_asm_807567C8;
         }

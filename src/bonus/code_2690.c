@@ -1139,7 +1139,7 @@ void func_bonus_8002B920(void) {
                 func_global_asm_8060866C(current_actor_pointer, 0x16, 0xFF, 1.0f, 0x14, 0);
                 current_actor_pointer->shadow_opacity = 0xFF;
                 current_actor_pointer->object_properties_bitfield &= ~0x8000;
-            } else if (((dx * dx) + (dz * dz)) < 900.0f) {
+            } else if ((SQ(dx) + SQ(dz)) < SQ(30.0f)) {
                 aaD1->unkC = 0x3C;
                 aaD1->unkE = 1;
             }

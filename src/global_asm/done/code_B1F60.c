@@ -92,7 +92,7 @@ void func_global_asm_806AD54C(void) {
                 if (!(D_global_asm_807FDC90->unk1A & 0x8000)) {
                     dx = klaptrap->x_position - current_actor_pointer->x_position;
                     dz = klaptrap->z_position - current_actor_pointer->z_position;
-                    if (((dx * dx) + (dz * dz)) < 1600.0f) {
+                    if ((SQ(dx) + SQ(dz)) < SQ(40.0f)) {
                         angleSign = ((klaptrap->y_rotation - current_actor_pointer->y_rotation) & 0xFFF) >= 0x801 ? 1 : -1;
                         current_actor_pointer->unkB8 = D_global_asm_807FDC9C->unkD * 1.8;
                         current_actor_pointer->y_rotation += angleSign * 400;

@@ -651,7 +651,7 @@ void func_global_asm_806C151C(u16 fileIndex, u8 textIndex, s16 tempFlagIndex) {
     dy = player_pointer->y_position - current_actor_pointer->y_position;
     dz = player_pointer->z_position - current_actor_pointer->z_position;
     phi_a3 = FALSE;
-    if (((dx * dx) + (dy * dy) + (dz * dz)) < 4900.0f) {
+    if ((SQ(dx) + SQ(dy) + SQ(dz)) < SQ(70.0f)) {
         phi_a3 = TRUE;
     }
     if ((phi_a3 & 0xFF) && !isFlagSet(tempFlagIndex, FLAG_TYPE_TEMPORARY)) {

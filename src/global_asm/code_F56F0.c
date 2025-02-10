@@ -712,7 +712,7 @@ void func_global_asm_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
     angle = (arg0->PaaD->unk104->PaaD->unkB2 - arg0->y_rotation) - 0x800;
     temp_f0_2 = func_global_asm_80611BB4(
         character_change_array[cc_player_index].look_at_eye_y - character_change_array[cc_player_index].look_at_at_y,
-        sqrtf((dz * dz) + (dx * dx))
+        sqrtf(SQ(dz) + SQ(dx))
     );
     angle &= 0xFFF;
     if ((angle < 0xC00) && (angle > 0x800)) {

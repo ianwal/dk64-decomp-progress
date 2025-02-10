@@ -1687,7 +1687,7 @@ s32 func_global_asm_806E5488(Actor *arg0) {
     if (arg0->locked_to_pad == 1) {
         f32 dx = arg0->unk94 - arg0->unk88;
         f32 dz = arg0->unk98 - arg0->unk90;
-        if (sqrtf((dx * dx) + (dz * dz)) > 1.0) {
+        if (sqrtf(SQ(dx) + SQ(dz)) > 1.0) {
             return TRUE;
         }
     }
@@ -1695,7 +1695,7 @@ s32 func_global_asm_806E5488(Actor *arg0) {
         f32 dx = arg0->x_position - arg0->unk88;
         f32 dy = arg0->y_position - arg0->unk8C;
         f32 dz = arg0->z_position - arg0->unk90;
-        if (sqrtf((dx * dx) + (dy * dy) + (dz * dz)) > 1.0) {
+        if (sqrtf(SQ(dx) + SQ(dy) + SQ(dz)) > 1.0) {
             return TRUE;
         }
     }

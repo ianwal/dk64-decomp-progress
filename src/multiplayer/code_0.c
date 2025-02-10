@@ -1166,7 +1166,7 @@ s32 func_multiplayer_80026BD8(s32 arg0) {
                 dx = exit->x_pos - player->x_position;
                 dy = exit->y_pos - player->y_position;
                 dz = exit->z_pos - player->z_position;
-                d = (dx * dx) + (dy * dy) + (dz * dz);
+                d = SQ(dx) + SQ(dy) + SQ(dz);
                 if (d < closest) {
                     closest = d;
                 }

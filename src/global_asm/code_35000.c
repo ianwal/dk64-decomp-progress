@@ -270,7 +270,7 @@ Chunk14 *func_global_asm_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, C
         dy = current->unk8 - arg2;
         dz = current->unkC - arg3;
         if (phi_f16 != current->unk10) {
-            current->unk10 = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+            current->unk10 = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
         }
         current = current->next;
     }

@@ -565,7 +565,7 @@ void func_global_asm_8069CD9C(void) {
     dz = current_actor_pointer->z_position - character_change_array->look_at_eye_z;
     dx = current_actor_pointer->x_position - character_change_array->look_at_eye_x;
     dy = current_actor_pointer->y_position - character_change_array->look_at_eye_y;
-    if (((dz * dz) + ((dx * dx) + (dy * dy))) < 18000.0) {
+    if ((SQ(dz) + (SQ(dx) + SQ(dy))) < 18000.0) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
     } else {
         current_actor_pointer->object_properties_bitfield &= ~0x400;

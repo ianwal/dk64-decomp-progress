@@ -295,7 +295,7 @@ void func_global_asm_806A2328(void) {
         current_actor_pointer->unkF0 = ((player_pointer->y_position + player_pointer->unk15E) - current_actor_pointer->y_position) * 0.5;
         dx = current_actor_pointer->x_position - player_pointer->x_position;
         dz = current_actor_pointer->z_position - player_pointer->z_position;
-        current_actor_pointer->unkEC = sqrtf((dx * dx) + (dz * dz)) * 0.5;
+        current_actor_pointer->unkEC = sqrtf(SQ(dx) + SQ(dz)) * 0.5;
         aaD->unk0 = current_actor_pointer->x_position + ((player_pointer->x_position - current_actor_pointer->x_position) * 0.5);
         aaD->unk2 = current_actor_pointer->y_position + ((player_pointer->y_position - current_actor_pointer->y_position) * 0.5);
         aaD->unk4 = current_actor_pointer->z_position + ((player_pointer->z_position - current_actor_pointer->z_position) * 0.5);

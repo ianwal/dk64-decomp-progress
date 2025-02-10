@@ -2269,7 +2269,7 @@ void func_global_asm_806D9320(void) {
             dy = (extra_player_info_pointer->unkB4 - player_pointer->y_position) / (player_pointer->animation_state->scale[1] * 0.16666666675);
             dx = extra_player_info_pointer->unkB0_f32 - player_pointer->x_position;
             var_f12 = player_pointer->unkB8;
-            d = sqrtf((dz * dz) + (dx * dx)) / (player_pointer->animation_state->scale[1] * 0.16666666675);
+            d = sqrtf(SQ(dz) + SQ(dx)) / (player_pointer->animation_state->scale[1] * 0.16666666675);
             if (var_f12 == 0.0) {
                 var_f12 = 1.0f;
             }
@@ -2848,7 +2848,7 @@ void func_global_asm_806DB0C4(void) {
         extra_player_info_pointer->unkAC_f32 = 0.0f;
         dx = extra_player_info_pointer->unkA4 - extra_player_info_pointer->unk9C;
         dz = extra_player_info_pointer->unkA8 - extra_player_info_pointer->unkA0;
-        extra_player_info_pointer->unk94 = sqrtf((dx * dx) + (dz * dz)) * 0.8;
+        extra_player_info_pointer->unk94 = sqrtf(SQ(dx) + SQ(dz)) * 0.8;
         extra_player_info_pointer->unk98 = ((func_global_asm_80611BB4(dx, dz) * 4096.0f) / 6.283185482f);
         extra_player_info_pointer->unk4C = -1;
     }
@@ -3366,7 +3366,7 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
                     dx = x - current_player->x_position;
                     dz = z - current_player->z_position;
                     dy = (y - current_player->y_position) / (current_player->animation_state->scale_y * 0.166666666749999998);
-                    d = ((sqrtf((dx * dx) + (dz * dz)) / (current_player->animation_state->scale_y * 0.166666666749999998)) / current_player->unkB8) - 1.0f;
+                    d = ((sqrtf(SQ(dx) + SQ(dz)) / (current_player->animation_state->scale_y * 0.166666666749999998)) / current_player->unkB8) - 1.0f;
                     if (d < 1.0f) {
                         d = 1.0f;
                     }
@@ -3424,7 +3424,7 @@ void func_global_asm_806DCF60(void) {
                     dx = temp_s0->x_position - current_player->x_position;
                     temp_s1 = func_global_asm_806CC14C(temp_f16, extra_player_info_pointer->unk154);
                     dz = temp_s0->z_position - current_player->z_position;
-                    temp_f0_2 = sqrtf((dx * dx) + (dz * dz));
+                    temp_f0_2 = sqrtf(SQ(dx) + SQ(dz));
                     if ((temp_s1 < 0x258) && (temp_f0_2 < var_f26)) {
                         if (current_player->y_position < temp_s0->y_position) {
                             var_f14 = temp_s0->y_position - current_player->y_position;

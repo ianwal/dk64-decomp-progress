@@ -550,7 +550,7 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     dz = character_change_array->look_at_eye_z - D_global_asm_807F6224;
     dx = character_change_array->look_at_eye_x - D_global_asm_807F621C;
     dy = character_change_array->look_at_eye_y - D_global_asm_807F6220;
-    var_f16 = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
+    var_f16 = sqrtf(SQ(dz) + (SQ(dx) + SQ(dy)));
     if ((character_change_array->chunk == 0xE) && (is_cutscene_active != 1)) {
         var_f14 = 1.0f;
     } else if (character_change_array->chunk == 7) {
@@ -559,7 +559,7 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         dx = D_global_asm_807F621C - 1714.0f;
         dy = D_global_asm_807F6220 - 226.0f;
         dz = D_global_asm_807F6224 - 3410.0f;
-        var_f16 -= sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+        var_f16 -= sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
         if (var_f16 < 0.0) {
             var_f16 = 0.0f;
         }
@@ -965,7 +965,7 @@ void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg
         dz = character_change_array->look_at_eye_z - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8;
         dy = character_change_array->look_at_eye_y - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk4;
         dx = character_change_array->look_at_eye_x - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk0;
-        if (sqrtf((dy * dy) + (dx * dx) + (dz * dz)) < D_global_asm_807480F0) {
+        if (sqrtf(SQ(dy) + SQ(dx) + SQ(dz)) < D_global_asm_807480F0) {
             found = TRUE;
             func_global_asm_807149B8(1);
             func_global_asm_80714998(3);
@@ -2421,7 +2421,7 @@ s32 func_global_asm_8064BF58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
     dz = character_change_array[0].look_at_eye_z - 1274.0;
     dx = character_change_array[0].look_at_eye_x - 3081.0;
-    if (((dz * dz) + (dx * dx)) < 10000.0) {
+    if ((SQ(dz) + SQ(dx)) < SQ(100.0)) {
         return TRUE;
     }
     return FALSE;
@@ -2994,8 +2994,8 @@ void func_global_asm_8064DE04(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s32 arg
                 dx = temp->x_position - D_global_asm_807F621C;
                 dy = temp->y_position - D_global_asm_807F6220;
                 dz = temp->z_position - D_global_asm_807F6224;
-                if ((dx * dx) + (dy * dy) + (dz * dz) < closestDistance) {
-                    closestDistance = (dx * dx) + (dy * dy) + (dz * dz);
+                if (SQ(dx) + SQ(dy) + SQ(dz) < closestDistance) {
+                    closestDistance = SQ(dx) + SQ(dy) + SQ(dz);
                     closestActor = temp;
                 }
             }

@@ -1210,7 +1210,7 @@ void func_critter_80026410(Critter *arg0) {
         Actor* temp = current_player;
         dx = arg0->x_pos - temp->x_position;
         dz = arg0->z_pos - temp->z_position;
-        arg0->unk3C = (dx * dx) + (dz * dz);
+        arg0->unk3C = SQ(dx) + SQ(dz);
         arg0->unk40 = D_global_asm_807444FC;
     }
 }

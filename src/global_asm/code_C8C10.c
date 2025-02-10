@@ -283,7 +283,7 @@ void func_global_asm_806C55E0(void) {
             if (player_pointer->control_state == 0x63) {
                 dx = current_actor_pointer->x_position - player_pointer->x_position;
                 dz = current_actor_pointer->z_position - player_pointer->z_position;
-                if (((dx * dx) + (dz * dz)) < 10000.0f) {
+                if ((SQ(dx) + SQ(dz)) < SQ(100.0f)) {
                     playCutscene(current_actor_pointer, 0x15, 1);
                     loadText(current_actor_pointer, 0x15, 1);
                     current_actor_pointer->control_state = 0x29;
@@ -416,7 +416,7 @@ void func_global_asm_806C5C20(void) {
     if (!(extra_player_info_pointer->unk1F0 & 0x8000)) {
         dz = character_change_array->look_at_eye_z - current_actor_pointer->z_position;
         dx = character_change_array->look_at_eye_x - current_actor_pointer->x_position;
-        temp_f2_2 = sqrtf((dz * dz) + (dx * dx)) - character_change_array->near;
+        temp_f2_2 = sqrtf(SQ(dz) + SQ(dx)) - character_change_array->near;
         if ((D_807FD804 >= 0x8A) && (D_807FD804 < 0xB1) && (D_807FD806 >= 0x61) && (D_807FD806 < 0x88) && (temp_f2_2 < D_807FD802)) {
             if ((extra_player_info_pointer->unk1EC != 1) && (func_global_asm_8072DE10(0x1388) != 0)) {
                 playActorAnimation(current_actor_pointer, 0x2B6);

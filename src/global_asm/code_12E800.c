@@ -231,7 +231,7 @@ u8 func_global_asm_8072AB74(u8 arg0, f32 x, f32 z, u16 arg3, f32 arg4) {
     dx = current_actor_pointer->x_position - x;
     dz = current_actor_pointer->z_position - z;
     temp_f12 = current_actor_pointer->animation_state->scale_y / D_global_asm_8075FD40;
-    if (((dx * dx) + (dz * dz)) < (1600.0f * temp_f12)) {
+    if ((SQ(dx) + SQ(dz)) < (SQ(40.0f) * temp_f12)) {
         D_global_asm_807FDC90->unk1A |= 0x80;
         if (func_global_asm_806CC14C(*sp4C, current_actor_pointer->y_rotation) >= 0x191) {
             current_actor_pointer->unkB8 *= D_global_asm_807FDC98->unk34;
@@ -755,7 +755,7 @@ u8 func_global_asm_8072E0A8(s32 arg0, s16 arg1) {
     dz = D_global_asm_807FDC94->z_position - current_actor_pointer->z_position;
     dx = D_global_asm_807FDC94->x_position - current_actor_pointer->x_position;
     sp1F = FALSE;
-    if (((dx * dx) + (dz * dz)) < (arg0 * arg0)) {
+    if ((SQ(dx) + SQ(dz)) < SQ(arg0)) {
         sp1F = TRUE;
     }
     temp_v0_2 = func_global_asm_80665DE0(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position);
@@ -781,7 +781,7 @@ u8 func_global_asm_8072E22C(u16 arg0) {
     f32 dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
     f32 dy = current_actor_pointer->y_position - D_global_asm_807FDC94->y_position;
     f32 dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
-    return ((dx * dx) + (dy * dy) + (dz * dz)) < (arg0 * arg0);
+    return (SQ(dx) + SQ(dy) + SQ(dz)) < SQ(arg0);
 }
 
 void func_global_asm_8072E2B0(Actor *arg0, f32 *x, f32 *y, f32 *z) {

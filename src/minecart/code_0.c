@@ -206,7 +206,7 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
             dx = aaD->unk4->x_position - current_actor_pointer->x_position;
             dy = aaD->unk4->y_position - current_actor_pointer->y_position;
             dz = aaD->unk4->z_position - current_actor_pointer->z_position;
-            if (((dx * dx) + (dy * dy) + (dz * dz)) < 400.0f) {
+            if ((SQ(dx) + SQ(dy) + SQ(dz)) < SQ(20.0f)) {
                 aaD->unk34 = arg1;
                 aaD->unk10 = arg0;
                 aaD->unk30 = arg1;
@@ -338,12 +338,6 @@ extern s32 D_global_asm_807F5FD0;
 extern s32 D_minecart_80028C48[];
 extern s32 D_minecart_80028C50[];
 
-typedef struct Vec3f {
-    f32 x;
-    f32 y;
-    f32 z;
-} Vec3f;
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -360,9 +354,9 @@ typedef struct {
 
 void func_minecart_80024B00(void) {
     s16 sp4E;
-    Vec3f sp3C;
+    tuple_f sp3C;
     Struct807F5FD4_unk0* temp_t7_2;
-    Vec3f* temp_t8;
+    tuple_f* temp_t8;
     Struct807F5FD4_unk0* temp_t8_2;
     Struct807F5FD4_unk0* temp_t9;
     Struct807F5FD4_unk0* temp_v0;

@@ -626,7 +626,7 @@ s32 func_global_asm_806B0770(void) {
             dx = temp_a0->x_position - current_actor_pointer->x_position;
             dy = temp_a0->y_position - current_actor_pointer->y_position;
             dz = temp_a0->z_position - current_actor_pointer->z_position;
-            if (((dx * dx) + (dy * dy) + (dz * dz)) < 10000.0f) {
+            if ((SQ(dx) + SQ(dy) + SQ(dz)) < SQ(100.0f)) {
                 current_actor_pointer->control_state = 0x28;
                 current_actor_pointer->control_state_progress = 0;
                 found = TRUE;

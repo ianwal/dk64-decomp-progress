@@ -715,7 +715,7 @@ void func_global_asm_806CC970(void) {
     current_actor_pointer->object_properties_bitfield |= 1;
     dx = current_actor_pointer->x_position - current_actor_pointer->unk88;
     dz = current_actor_pointer->z_position - current_actor_pointer->unk90;
-    extra_player_info_pointer->unk20 = (((sqrtf((dx * dx) + (dz * dz)) / D_global_asm_80744478) * 80.0) * 0.149999999999999994) / current_actor_pointer->animation_state->scale_x;
+    extra_player_info_pointer->unk20 = (((sqrtf(SQ(dx) + SQ(dz)) / D_global_asm_80744478) * 80.0) * 0.149999999999999994) / current_actor_pointer->animation_state->scale_x;
 }
 
 void applyActorYAcceleration(void) {
@@ -1516,13 +1516,13 @@ void func_global_asm_806CF138(Struct806CF138 *arg0) {
     dx = (x2 - x1);
     dy = (y2 - y1);
     dz = (z2 - z1);
-    sp54 = func_global_asm_806118FC(dy / sqrtf((dx * dx) + (dy * dy) + (dz * dz))) * 57.29577637f;
+    sp54 = func_global_asm_806118FC(dy / sqrtf(SQ(dx) + SQ(dy) + SQ(dz))) * 57.29577637f;
     sp48 = func_global_asm_80612794(arg0->unk0->y_rotation) * 50.0f;
     sp4C = func_global_asm_80612790(arg0->unk0->y_rotation) * 50.0f;
     dx = (x2 - x1);
     sp3C = (dz * sp4C) + (sp48 * dx);
     sp38 = sqrtf((sp4C * sp4C) + (sp48 * sp48));
-    func_global_asm_8067AA58(arg0->unk0, arg0->unk4, sp54, 90.0 - (func_global_asm_80611850(sp3C / (sp38 * sqrtf((dz * dz) + (dx * dx)))) * 57.29577637f));
+    func_global_asm_8067AA58(arg0->unk0, arg0->unk4, sp54, 90.0 - (func_global_asm_80611850(sp3C / (sp38 * sqrtf(SQ(dz) + SQ(dx)))) * 57.29577637f));
 }
 */
 

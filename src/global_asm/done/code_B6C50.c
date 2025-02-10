@@ -133,7 +133,7 @@ void func_global_asm_806B24B8(void) {
         if (current_actor_pointer->unkF0 == 0) {
             dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
             dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
-            if (sqrtf((dx * dx) + (dz * dz)) < 30.0f) {
+            if (sqrtf(SQ(dx) + SQ(dz)) < 30.0f) {
                 playSoundAtActorPosition(current_actor_pointer, 0x2CA, 0xFF, 0x7F, 0x14);
                 current_actor_pointer->unkF0 = 1;
             }

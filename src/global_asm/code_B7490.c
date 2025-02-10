@@ -244,7 +244,7 @@ void func_global_asm_806B3420(void) {
     dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
     dy = current_actor_pointer->y_position - D_global_asm_807FDC94->y_position;
     dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
-    if (90000.0f < ((dx * dx) + (dy * dy) + (dz * dz))) {
+    if (SQ(300.0f) < (SQ(dx) + SQ(dy) + SQ(dz))) {
         current_actor_pointer->object_properties_bitfield |= 0x80000000;
     } else {
         current_actor_pointer->object_properties_bitfield &= ~0x80000000;
@@ -332,7 +332,7 @@ void func_global_asm_806B3680(void) {
         dx = D_global_asm_807FDC94->x_position - current_actor_pointer->x_position;
         dy = D_global_asm_807FDC94->y_position - current_actor_pointer->y_position;
         dz = D_global_asm_807FDC94->z_position - current_actor_pointer->z_position;
-        if (((dx * dx) + (dy * dy) + (dz * dz)) < scale) {
+        if ((SQ(dx) + SQ(dy) + SQ(dz)) < scale) {
             current_actor_pointer->control_state = 0x27;
             current_actor_pointer->control_state_progress = 0;
         }
@@ -487,7 +487,7 @@ s32 func_global_asm_806B3F90(GlobalASMStruct91 *arg0, u8 arg1) {
 
     dz = arg0->unkE - current_actor_pointer->z_position;
     dx = arg0->unkA - current_actor_pointer->x_position;
-    temp_f16 = sqrtf((dz * dz) + (dx * dx));
+    temp_f16 = sqrtf(SQ(dz) + SQ(dx));
     var_f18 = MAX(0.0001, (temp_f16 / MAX(0.0001, current_actor_pointer->unkB8)));
     current_actor_pointer->y_velocity = 0.0f;
     var_f16 = (current_actor_pointer->y_position < arg0->unkC) ? 0.0f : current_actor_pointer->y_position - arg0->unkC;
