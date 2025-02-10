@@ -949,10 +949,10 @@ typedef struct {
     f32 unk14;
     s32 unk18;
     s32 unk1C;
-} AAD_806944BC;
+} GunProjectileAAD;
 
 void func_global_asm_806944BC(void) {
-    AAD_806944BC *aaD;
+    GunProjectileAAD *aaD;
     u16 var_a0;
     s32 sp3C;
     s32 var_s1;
@@ -1017,7 +1017,75 @@ void func_global_asm_806944BC(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80694948.s")
+void func_global_asm_80694948(void) {
+    // Orange Gun Projectile Code
+    GunProjectileAAD *aaD; // 34
+    u16 var_a0;
+    s32 life; // 2c
+    u8 sp2B;
+    u8 temp_v1;
+    s32 temp;
+
+    aaD = current_actor_pointer->AAD_as_array[0];
+    sp2B = FALSE;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unk6A &= 0xFFFE;
+        current_actor_pointer->unkEE = ((current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f);
+        current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
+        current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
+        current_actor_pointer->noclip_byte = 0x3C;
+        func_global_asm_8066EB40(current_actor_pointer, 60.0f);
+        func_global_asm_8066E8E4(current_actor_pointer, 0.0f, 0.0f, 0.0f, 50.0f, -1);
+        func_global_asm_8066E854(current_actor_pointer, 0.0f, 0.0f, 0.0f, -1);
+        func_global_asm_807149FC(-1);
+        func_global_asm_807149B8(1U);
+        func_global_asm_80714A28(4U);
+        func_global_asm_80714C08(&D_global_asm_80720268, current_actor_pointer->unk124->unkC, current_actor_pointer, 1, 2U);
+        aaD->unk14 = current_actor_pointer->unk124->unkC;
+        aaD->unk0 = D_global_asm_8076A068;
+        current_actor_pointer->object_properties_bitfield |= 0x01080000;
+        current_actor_pointer->unk16E = 0x3C;
+        current_actor_pointer->unk16F = 0x3C;
+        aaD->unk13 = current_actor_pointer->unk124->unk10;
+        aaD->unk1C = 0;
+    }
+    life = D_global_asm_80750358;
+    if (aaD->unk13 & 2) {
+        var_a0 = 2;
+        if (cc_number_of_players >= 2) {
+            var_a0 = 3;
+        }
+        func_global_asm_80690C60(var_a0, current_actor_pointer, &D_global_asm_80720268, 0);
+    }
+    if (aaD->unk13 & 4) {
+        life = D_global_asm_8075036C;
+    }
+    func_global_asm_8067ACB4(current_actor_pointer);
+    func_global_asm_806651FC(current_actor_pointer);
+    func_global_asm_80665564(current_actor_pointer, 0.0f);
+    if ((!current_actor_pointer->control_state) && ((current_actor_pointer->unkFD) || (current_actor_pointer->unk6A & 1) || (D_global_asm_807FBB85))) {
+        sp2B = TRUE;
+    } else if (current_actor_pointer->control_state) {
+        temp = current_actor_pointer->control_state++ ^ 2;
+        if (!temp) {
+            deleteActor(current_actor_pointer);
+        }
+    }
+    if (cc_number_of_players >= 2) {
+        life *= 1.4f;
+    }
+    if ((aaD->unk0 + life) < D_global_asm_8076A068) {
+        deleteActor(current_actor_pointer);
+    }
+    if (sp2B) {
+        func_global_asm_8069329C();
+        func_global_asm_8066EB40(current_actor_pointer, 250.0f);
+        func_global_asm_8066E8E4(current_actor_pointer, 0.0f, 0.0f, 0.0f, 250.0f, -1);
+        current_actor_pointer->control_state = 1;
+    }
+}
+
+
 
 extern SpriteData D_global_asm_807206A8; // TODO: Datatype
 extern SpriteData D_global_asm_807206DC; // TODO: Datatype
