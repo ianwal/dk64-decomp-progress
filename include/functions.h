@@ -3560,7 +3560,7 @@ void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
 void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1);
 // TODO: func_global_asm_807186C8 has no documented signature
 void func_global_asm_807189BC(Struct80717D84 *arg0, s8 *arg1);
-void func_global_asm_80718BF4(Struct80717D84 *arg0, s8 *arg1);
+void func_global_asm_80718BF4(otherSpriteControl *arg0, s8 *arg1);
 // TODO: func_global_asm_8071910C has no documented signature
 // TODO: func_global_asm_807195D4 has no documented signature
 // TODO: func_global_asm_807197B4 has no documented signature

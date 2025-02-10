@@ -524,7 +524,77 @@ void func_global_asm_807189BC(Struct80717D84 *arg0, s8 *arg1) {
     arg0->unk36D = 0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_80718BF4.s")
+void func_global_asm_80718BF4(otherSpriteControl *arg0, s8 *arg1) {
+    f64 temp_f8;
+    f32 sp3C;
+    f32 temp_f6;
+    f32 var_f2;
+    f32 sp30;
+
+    if (arg0->unk384_80718BF4 == NULL) {
+        arg0->unk384_80718BF4 = malloc(sizeof(Struct80717D84_unk384_80718BF4));
+        arg0->unk384_80718BF4->unk0 = 0.0f;
+        arg0->unk384_80718BF4->unk4 = 0.0f;
+        arg0->unk384_80718BF4->unk8 = arg0->xPos;
+        arg0->unk384_80718BF4->unkC = arg0->zPos;
+        arg0->unk384_80718BF4->unk10 = (((func_global_asm_806119A0() % 10000U) / 10000.0) * 0.19);
+        arg0->unk384_80718BF4->unk14 = (((func_global_asm_806119A0() % 10000U) / 10000.0) * 0.077);
+        if ((func_global_asm_806119A0() / 10000U) & 1) {
+            arg0->unk384_80718BF4->unk10 = 0.0 - arg0->unk384_80718BF4->unk10;
+            arg0->unk384_80718BF4->unk14 = 0.0 - arg0->unk384_80718BF4->unk14;
+        }
+        sp30 = arg0->yPos;
+        func_global_asm_80667110(arg0->xPos, arg0->zPos, &sp30);
+        if (func_global_asm_8066715C(&arg0->unk384_80718BF4->unk18) == 0) {
+            arg0->unk384_80718BF4->unk18 = 0.0f;
+        }
+        arg0->unk384_80718BF4->unk1C = object_timer;
+    }
+    sp3C = func_global_asm_80612D1C(arg0->unk384_80718BF4->unk10 * arg0->unk384_80718BF4->unk0);
+    temp_f6 = func_global_asm_80612D1C(arg0->unk384_80718BF4->unk14 * arg0->unk384_80718BF4->unk0) * 6.0f;
+    arg0->xPos = arg0->unk384_80718BF4->unk8 + (sp3C * 6.0f);
+    arg0->zPos = arg0->unk384_80718BF4->unkC + temp_f6;
+    arg0->unk384_80718BF4->unk0++;
+    arg0->unk384_80718BF4->unk4 += 0.02;
+    if (arg0->unk384_80718BF4->unk4 > 1.0) {
+        arg0->unk384_80718BF4->unk4 = 1.0f;
+    }
+    arg0->yPos += arg0->unk384_80718BF4->unk4;
+    switch (arg0->unk35C) {
+    case 0:
+        arg0->xScale = (arg0->unk384_80718BF4->unk0 * 0.01) + 0.01;
+        if (arg0->xScale > 0.12) {
+            arg0->xScale = 0.12;
+        }
+        break;
+    case 1:
+        arg0->xScale = (arg0->unk384_80718BF4->unk0 * 0.005) + 0.05;
+        if (arg0->xScale > 0.07) {
+            arg0->xScale = 0.07;
+        }
+        break;
+    case 2:
+        arg0->xScale = (arg0->unk384_80718BF4->unk0 * 0.02) + 0.02;
+        if (arg0->xScale > 0.24) {
+            arg0->xScale = 0.24;
+        }
+        break;
+    }
+    arg0->yScale = arg0->xScale;
+    sp3C = func_global_asm_80612D1C(arg0->unk384_80718BF4->unk0 * 0.17);
+    temp_f8 = func_global_asm_80612D1C(arg0->unk384_80718BF4->unk0 * 0.2267) * 0.03;
+    arg0->xScale += (sp3C * 0.03);
+    arg0->yScale += temp_f8;
+    if ((arg0->unk384_80718BF4->unk1C + 100.0f) < object_timer) {
+        *arg1 = 1;
+    }
+    if (arg0->unk384_80718BF4->unk18 <= arg0->yPos) {
+        *arg1 = 1;
+        func_global_asm_80718124(0.3f, arg0->xPos, arg0->yPos, arg0->zPos);
+    }
+}
+
+
 
 extern SpriteData D_global_asm_8072073C;
 extern SpriteData D_global_asm_807212B0;
@@ -788,15 +858,9 @@ void func_global_asm_8071A038(Struct80717D84 *arg0, s32 arg1) {
 // regalloc, rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071A1E4.s")
 
-typedef struct {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-} Struct80717D84_unk384_8071A1E4;
-
 /*
-void func_global_asm_8071A1E4(Struct80717D84 *arg0, s32 arg1) {
-    Struct80717D84_unk384_8071A1E4 *var_v0;
+void func_global_asm_8071A1E4(otherSpriteControl *arg0, s8 *arg1) {
+    tuple_f *var_v0;
     s32 pad;
     s32 pad2;
     f32 sp8C[4][4];
@@ -810,38 +874,36 @@ void func_global_asm_8071A1E4(Struct80717D84 *arg0, s32 arg1) {
     f32 sp3C;
     f32 sp38;
 
-    var_v0 = arg0->unk384;
-    if (var_v0 == NULL) {
+    if (arg0->unk384_tuplef == NULL) {
         sp48 = -(func_global_asm_806119A0() / 10000U) % 30;
         sp46 = (func_global_asm_806119A0() / 10000U) % 180;
-        guRotateF(&sp8C[0], sp48, 0.0f, 1.0f, 0.0f);
+        guRotateF(&sp8C, sp48, 0.0f, 1.0f, 0.0f);
         // TODO: Regalloc here, arg0->unk35C is using v0 instead of t5
         sp4B = arg0->unk35C >> 0x10;
         sp4A = arg0->unk35C >> 8;
         sp49 = arg0->unk35C;
-        arg0->unk384 = malloc(0xC);
+        arg0->unk384_tuplef = malloc(sizeof(tuple_f));
         guAlignF(sp4C, sp46, sp4B, sp4A, sp49);
         guMtxCatF(sp8C, sp4C, sp8C);
         guMtxXFMF(sp8C, 0.0f, 0.0f, -2.0f, &sp40, &sp3C, &sp38);
-        arg0->unk384_f32->unk0 = sp40 * 0.5;
+        arg0->unk384_tuplef->x = sp40 * 0.5;
         if (sp3C < 0.0f) {
-            arg0->unk384_f32->unk4 = -sp3C * 0.5;
+            arg0->unk384_tuplef->y = -sp3C * 0.5;
         } else {
-            arg0->unk384_f32->unk4 = sp3C * 0.5;
+            arg0->unk384_tuplef->y = sp3C * 0.5;
         }
-        arg0->unk384_f32->unk8 = sp38 * 0.5;
+        arg0->unk384_tuplef->z = sp38 * 0.5;
     }
-    var_v0 = arg0->unk384;
-    arg0->unk340 += var_v0->unk0;
-    arg0->unk344 += var_v0->unk4;
-    arg0->unk348 += var_v0->unk8;
+    arg0->xPos += arg0->unk384_tuplef->x;
+    arg0->yPos += arg0->unk384_tuplef->y;
+    arg0->zPos += arg0->unk384_tuplef->z;
     if ((arg0->unk354 - arg0->unk358) < 0xA) {
-        var_v0->unk4 -= 0.1;
-        if (arg0->unk36D >= 0x16) {
-            arg0->unk36D -= 0x14;
+        arg0->unk384_tuplef->y -= 0.1;
+        if (arg0->transparency4 >= 0x16) {
+            arg0->transparency4 -= 0x14;
             return;
         }
-        arg0->unk36D = 0;
+        arg0->transparency4 = 0;
     }
 }
 */
