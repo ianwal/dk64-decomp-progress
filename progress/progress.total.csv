@@ -900,7 +900,7 @@ us,asm,func_global_asm_80634908,84,yes
 us,asm,func_global_asm_806B1290,184,yes
 us,asm,func_global_asm_806E0454,140,yes
 us,asm,func_global_asm_806D7FE8,136,yes
-us,asm,func_global_asm_806FD9FC,144,no
+us,asm,func_global_asm_806FD9FC,144,yes
 us,asm,func_global_asm_80662180,8,yes
 us,asm,func_global_asm_80621E9C,624,no
 us,asm,func_global_asm_806D266C,108,yes

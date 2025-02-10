@@ -3473,10 +3473,17 @@ typedef struct {
 
 typedef struct Struct80754AD0 Struct80754AD0;
 
+typedef struct {
+    void *unk0;
+    u8 pad4[0x10 - 0x4];
+    void *unk10;
+    u8 pad14[0x38 - 0x14];
+} Struct806FD9FC;
+
 struct Struct80754AD0 {
     Struct80754AD0 *next;
     void *unk4;
-    void *unk8;
+    Struct806FD9FC *unk8;
     u8 padC[0x18 - 0x0C];
     f32 unk18;
     s16 unk1C;

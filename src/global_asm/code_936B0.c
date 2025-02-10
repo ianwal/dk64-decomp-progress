@@ -153,6 +153,156 @@ void func_global_asm_8068ECF4(s32 arg0, u8 arg1) {
 // Jumptable, matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8068EF54.s")
 
+typedef struct {
+    Actor *unk0;
+    Actor *unk4;
+    u32 unk8;
+} RocketbarrelAAD;
+
+/*
+void func_global_asm_8068EF54(void) {
+    // Rocketbarrel code
+    f32 x, y, z; // 11c, 118, 114
+    f32 spD4[4][4];
+    f32 sp94[4][4];
+    f32 sp90;
+    s32 temp;
+    f32 temp_f0;
+    AnimationStateUnk0 *anim0;
+    AnimationStateUnk1C *anim1C;
+    RocketbarrelAAD *aaD; // 7c
+    PlayerAdditionalActorData *PaaD; // 78
+    Actor *kong; // 74
+    f32 var_f2;
+    f32 sp6C;
+    f32 sp68;
+    f32 sp64;
+    s32 temp1;
+
+    aaD = current_actor_pointer->AAD_as_array[0];
+    kong = aaD->unk0;
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->animation_state->unk1C = malloc(0x10);
+        anim1C = current_actor_pointer->animation_state->unk1C;
+        anim1C[0].unk0 = -0x80;
+        anim1C[0].unk1 = 1;
+        anim1C[0].unk2 = 0;
+        anim1C[0].unk4 = 0;
+        anim1C[0].unk6 = 0;
+        anim1C[1].unk0 = 0;
+        current_actor_pointer->y_rotation = 0;
+        if (kong->unk58 == ACTOR_CUTSCENE_DIDDY) {
+            current_actor_pointer->unk16A = 0xFF;
+            current_actor_pointer->unk16B = 0xFF;
+            current_actor_pointer->unk16C = 0xFF;
+            current_actor_pointer->object_properties_bitfield |= 0x800000;
+        }
+        aaD->unk8 = 0U;
+    }
+    anim1C = current_actor_pointer->animation_state->unk1C;
+    switch (kong->interactable) {
+    case 0x1:
+        PaaD = kong->PaaD;
+        anim1C->unk2 = PaaD->unk1A0;
+        if (
+            (kong->unk6A & 5) || 
+            (PaaD->unk240 == 1) || 
+            (((kong->control_state == 0x42)) && (PaaD->unkBC != 0x31)) || 
+            (kong->control_state == 0x87)) {
+            func_global_asm_80679200(aaD->unk4, current_actor_pointer, 0x02000000, 0U, 0, NULL);
+            PaaD->unk1A3 = 0;
+            deleteActor(current_actor_pointer);
+            func_global_asm_80602B60(0x48, 0U);
+            func_global_asm_80605314(current_player, 0U);
+            func_global_asm_806F8D58(5, 0);
+            PaaD->unk240 = 0U;
+            if (!(PaaD->unk1F4 & 4)) {
+                func_global_asm_806F0C18(kong);
+            }
+        }
+        if ((PaaD->unk1A2) || ((func_global_asm_8061CB50()) && (!(object_timer % 5U)))) {
+            temp_f0 = (f32)((MAX(kong->y_velocity, 0.0) / 150.0) * 0.12) + 0.3;
+            if (object_timer & 1) {
+                func_global_asm_80684550(kong, 1U, temp_f0);
+            } else {
+                func_global_asm_80684550(kong, 2U, temp_f0);
+            }
+            PaaD->unk1A2 = 0U;
+            aaD->unk8 = object_timer;
+        }
+        if (current_map == MAP_CAVES_SHACK_DIDDY_MIDDLE_PART) {
+            temp_f0 = (((30.0 - (s32)(object_timer - aaD->unk8)) / 30.0) * 100.0);
+            if (temp_f0 > 0.0) {
+                createLight(
+                    current_actor_pointer->x_position,
+                    current_actor_pointer->y_position, 
+                    current_actor_pointer->z_position,
+                    0.0f, 0.0f, 0.0f,
+                    temp_f0, 0U,
+                    0xFF, 0xC8, 0xC8);
+            }
+        }
+        break;
+    case 0x40:
+        anim0 = kong->animation_state->unk0;
+        switch (anim0->unk10) {
+        case 0x113:
+            if (anim0->unk4 < 70.0f) {
+                var_f2 = MAX((anim0->unk4 - 39.0f) / 30.0, 0.1) < 0.49 ? MAX((anim0->unk4 - 39.0f) / 30.0, 0.1) : 0.49;
+            } else {
+                var_f2 = 0.5f;
+            }
+            break;
+        case 0x12C:
+            var_f2 = MAX(0.01, 0.5 - (anim0->unk4 / 50.0f));
+            break;
+        case 0x12F:
+        case 0x130:
+            var_f2 = 0.25f;
+            break;
+        case 0x12D:
+        case 0x12E:
+            var_f2 = 0.0f;
+            break;
+        default:
+            var_f2 = 0.5f;
+            break;
+        }
+        anim1C->unk2 = 0;
+        if (!(kong->object_properties_bitfield & 4) || (kong->control_state == 0x3C)) {
+            deleteActor(current_actor_pointer);
+        } else if (var_f2 > 0.05) {
+            if (object_timer & 1) {
+                func_global_asm_80684550(kong, 1U, var_f2);
+            } else {
+                func_global_asm_80684550(kong, 2U, var_f2);
+            }
+        }
+        break;
+    }
+    getBonePosition(kong, 1, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+    getBonePosition(kong, 0xB, &x, &y, &z);
+    func_global_asm_80611A70(current_actor_pointer->x_position, current_actor_pointer->z_position, &x, &z);
+    sp90 = func_global_asm_80611BB4(x - current_actor_pointer->x_position, z - current_actor_pointer->z_position);
+    if (kong->interactable == 0x40) {
+        getBonePosition(kong, 0xC, &sp6C, &sp68, &sp64);
+        kong->unkEE = func_global_asm_80665DE0(sp6C, sp64, current_actor_pointer->x_position, current_actor_pointer->z_position);
+        func_global_asm_80612C30(spD4, ((kong->unkEE * 0x168) / 4096));
+    } else {
+        func_global_asm_80612C30(spD4, ((kong->y_rotation * 0x168) / 4096));
+    }
+    func_global_asm_80612BC0(sp94, -90.0f);
+    guMtxCatF(spD4, sp94, spD4);
+    guAlignF(sp94, 
+        (sp90 * 57.295776f) + 180.0f,
+        x - current_actor_pointer->x_position,
+        y - current_actor_pointer->y_position,
+        z - current_actor_pointer->z_position);
+    guMtxCatF(spD4, sp94, &current_actor_pointer->unkC);
+    renderActor(current_actor_pointer, 1U);
+}
+*/
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8068F72C.s")
 
 typedef struct {
@@ -411,7 +561,97 @@ void func_global_asm_80690BE8(s16 arg0, s16 arg1, f32 arg2, Actor *arg3, s32 bon
     func_global_asm_80690A28(arg0, arg1, arg2, x, y, z, arg5, arg6);
 }
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10;
+    s8 unk11;
+    s8 unk12;
+    u8 unk13;
+    f32 unk14;
+    s32 unk18;
+    s32 unk1C;
+} GunProjectileAAD;
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80690C60.s")
+
+s32 func_global_asm_80690F30(u16, s32 *, Actor **, s32, s32, s32, f32 *, f32 *, f32 *);
+
+/*
+void func_global_asm_80690C60(u16 arg0, Actor *arg1, SpriteData *arg2, u8 arg3) {
+    s32 sp7C;
+    Actor *sp78;
+    s16 temp_v0; // 76
+    s16 sp74;
+    s16 sp72;
+    s16 temp_t0; // 70
+    s16 sp6E;
+    s16 sp6C;
+    PlayerAdditionalActorData *PaaD;
+    s32 sp64;
+    f32 temp_f0_2; // 60
+    CameraPaad *CaaD;
+    f32 temp0;
+    f32 var_f0;
+    GunProjectileAAD *sp50;
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    s32 temp_lo;
+
+    sp50 = arg1->AAD_as_array[0];
+    if ((arg1->unkB8 < 0.1)) {
+        return;
+    }
+    if (arg2) {
+        PaaD = arg1->unk11C->PaaD;
+        CaaD = PaaD->unk104->CaaD;
+        if (CaaD->unkF3 == 3) {
+            func_global_asm_8071498C(func_global_asm_8071D260);
+            func_global_asm_80714950(0x32);
+            drawSpriteAtPosition(arg2, sp50->unk14, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+        }
+    }
+    if (func_global_asm_80690F30(arg0, &sp78, arg1, 0, arg3, !arg3, &sp4C, &sp48, &sp44)) {
+        temp_v0 = func_global_asm_80665DE0(sp4C, sp44, arg1->x_position, arg1->z_position);
+        temp_lo = func_global_asm_806CC14C(temp_v0, arg1->unkEE) / 10;
+        temp_t0 = (arg1->unkEE + temp_lo) & 0xFFF;
+        sp6E = (arg1->unkEE - temp_lo) & 0xFFF;
+        sp6C = func_global_asm_806CC14C(temp_t0, temp_v0);
+        if (sp6C < func_global_asm_806CC14C(sp6E, temp_v0)) {
+            arg1->unkEE = temp_t0;
+        } else {
+            arg1->unkEE = sp6E;
+        }
+        if (!arg3) {
+            temp_f0_2 = sqrtf(SQ(sp4C - arg1->x_position) + SQ(sp44 - arg1->z_position));
+            sp64 = sp78;
+            if (temp_f0_2 < 100.0f) {
+                sp50->unk1C = sp64;
+                if (sp50->unk1C) {
+                    if (D_global_asm_807FBB64 & 0x04000000) {
+                        func_multiplayer_800268C0(0x80U);
+                    }
+                }
+            }
+            temp0 = temp_f0_2 / (arg1->unkB8 * 0.025f);
+            if (sp78) {
+                var_f0 = sp78->unk15E * 0.5;
+            } else {
+                var_f0 = 0.0f;
+            }
+            arg1->y_velocity = ((((sp48 + var_f0) - arg1->y_position) / temp0) / 0.025f);
+        }
+    } else if (sp50->unk1C != NULL) {
+        if (D_global_asm_807FBB64 & 0x04000000) {
+            func_multiplayer_800268C0(4U);
+        }
+        sp50->unk1C = NULL;
+    }
+}
+*/
 
 // Jumptable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_80690F30.s")
@@ -622,7 +862,7 @@ void func_global_asm_80692640(void) {
     }
 }
 
-void func_global_asm_80690C60(u16 arg0, void *arg1, void *arg2, u8 arg3);
+void func_global_asm_80690C60(u16 arg0, Actor *arg1, SpriteData *arg2, u8 arg3);
 
 extern SpriteData D_global_asm_8072029C; // TODO: Type
 extern SpriteData D_global_asm_80720BA0; // TODO: Type
@@ -936,20 +1176,6 @@ void func_global_asm_80693EC0(void) {
         deleteActor(current_actor_pointer);
     }
 }
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    f32 unk8;
-    f32 unkC;
-    u8 unk10;
-    s8 unk11;
-    s8 unk12;
-    u8 unk13;
-    f32 unk14;
-    s32 unk18;
-    s32 unk1C;
-} GunProjectileAAD;
 
 void func_global_asm_806944BC(void) {
     GunProjectileAAD *aaD;

@@ -28,18 +28,13 @@ Struct80754AD0 *func_global_asm_806FD9B4(s16 arg0) {
     return current;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1025E0/func_global_asm_806FD9FC.s")
+s32 func_global_asm_806FD9FC(Struct806FD9FC *arg0, s16 arg1, s16 arg2) {
+    Struct80754AD0 *var_v0;
 
-/*
-s32 func_global_asm_806FD9FC(s32 arg0, s16 arg1, s16 arg2) {
-    s32 temp_t2;
-
-    temp_t2 = func_global_asm_806FD9B4(arg1)->unk8[arg2];
-    arg0 = temp_t2;
-    arg0->unk30->unk4 = temp_t2->unk40->unk4;
+    var_v0 = func_global_asm_806FD9B4(arg1);
+    *arg0 = var_v0->unk8[arg2];
     return arg0;
 }
-*/
 
 f32 func_global_asm_806FDA8C(s16 arg0) {
     return func_global_asm_806FD9B4(arg0)->unk18;
