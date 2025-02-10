@@ -344,12 +344,12 @@ void func_global_asm_806CB53C(void) {
             extra_player_info_pointer->unk23E = 0x1E;
         }
         if (extra_player_info_pointer->unk23E != 0) {
-            func_global_asm_80714950(((rand() >> 0xF) % 10) + 0x8008);
+            func_global_asm_80714950(RandClamp(10) + 0x8008);
             func_global_asm_807149FC(2);
             func_global_asm_8071498C(func_global_asm_80717930);
             func_global_asm_807149B8(1);
             func_global_asm_80714A28(6);
-            func_global_asm_80714C08(&D_global_asm_8071FFA0, (((rand() >> 0xF) % 50) / 80.0) + 0.5, current_actor_pointer, 2, 0);
+            func_global_asm_80714C08(&D_global_asm_8071FFA0, (RandClamp(50) / 80.0) + 0.5, current_actor_pointer, 2, 0);
             extra_player_info_pointer->unk23E--;
         }
         if (extra_player_info_pointer->unk23E == 1) {

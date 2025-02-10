@@ -988,7 +988,7 @@ void func_global_asm_806A112C(void) {
             func_global_asm_806A10BC(aaD);
             current_actor_pointer->unk168++;
             if (current_actor_pointer->unk168 >= 0x34) {
-                current_actor_pointer->unk168 = ((rand() >> 0xF) % 1000) % 3;
+                current_actor_pointer->unk168 = RandClamp(1000) % 3;
                 current_actor_pointer->control_state = 0;
             }
             break;

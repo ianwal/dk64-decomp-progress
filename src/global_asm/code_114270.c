@@ -284,7 +284,7 @@ void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4) 
         }
         D_global_asm_8077058C = var_f0 * arg2;
         if (arg0 < 1.0) {
-            if ((((rand() >> 0xF) % 32767) % 100) < (arg0 * 100.0f)) {
+            if ((RandClamp(32767) % 100) < (arg0 * 100.0f)) {
                 var_s5 = 1;
             } else {
                 var_s5 = 0;
@@ -295,8 +295,8 @@ void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4) 
         D_global_asm_807FDA1B = (*D_global_asm_8076A0B4 * 100.0f) + 100.0f;
         temp_f26 = D_global_asm_8075E568;
         for (i = 0; i != var_s5; i++) {
-            temp_f22 = ((rand() >> 0xF) % 32767) % 320;
-            func_global_asm_8070F5CC(0, arg3, (((((rand() >> 0xF) % 32767) % 125) / 800.0) + temp_f26) * 2.5 * arg4, temp_f22, -0xA, (90.0f * arg4));
+            temp_f22 = RandClamp(32767) % 320;
+            func_global_asm_8070F5CC(0, arg3, (((RandClamp(32767) % 125) / 800.0) + temp_f26) * 2.5 * arg4, temp_f22, -0xA, (90.0f * arg4));
         }
         if (D_global_asm_807550E0->unk0 != 0) {
             addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1);
@@ -321,7 +321,7 @@ void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) 
 
     D_global_asm_807FDA1E = func_global_asm_80612D10(character_change_array->unk2C4) * arg1;
     if (arg0 < 1.0) {
-        if ((((rand() >> 0xF) % 32767) % 100) < (arg0 * 100.0f)) {
+        if ((RandClamp(32767) % 100) < (arg0 * 100.0f)) {
             var_s4 = 1;
         } else {
             var_s4 = 0;
@@ -331,8 +331,8 @@ void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) 
     }
     D_global_asm_807FDA1B = 0xFF;
     for (i = 0; i < var_s4; i++) {
-        temp_f22 = ((rand() >> 0xF) % 0x7FFF) % 320;
-        func_global_asm_8070F5CC(2, arg3, (((((rand() >> 0xF) % 0x7FFF) % 125) / 800.0) + 0.1) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
+        temp_f22 = RandClamp(0x7FFF) % 320;
+        func_global_asm_8070F5CC(2, arg3, (((RandClamp(0x7FFF) % 125) / 800.0) + 0.1) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
     }
     if (D_global_asm_807550E0->unk0 != 0) {
         addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1);

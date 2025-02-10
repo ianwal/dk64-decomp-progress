@@ -199,7 +199,7 @@ void func_global_asm_806C6BC8(void) {
                     case 0:
                     case 4:
                         func_global_asm_80685020(3, 1);
-                        if ((current_actor_pointer->control_state_progress == 0) && (((rand() >> 0xF) % 1000) >= 0x3DF)) {
+                        if ((current_actor_pointer->control_state_progress == 0) && (RandClamp(1000) >= 0x3DF)) {
                             current_actor_pointer->control_state_progress = 3;
                         }
                         if ((current_actor_pointer->unk11C->control_state == 5) || (player_pointer->unk58 != ACTOR_DIDDY)) {

@@ -27,11 +27,11 @@ void func_global_asm_806B9CE0(u8 arg0, s8 yOffset) {
     }
     func_global_asm_807149B8(1);
     drawSpriteAtPosition(
-        D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
-        (((rand() >> 0xF) % 256) * 0.001953125) + 0.5,
-        ((rand() >> 0xF) % 6) + (current_actor_pointer->x_position - 3.0f),
+        D_global_asm_8074E880[RandClamp(1000) % 3],
+        (RandClamp(256) * 0.001953125) + 0.5,
+        RandClamp(6) + (current_actor_pointer->x_position - 3.0f),
         current_actor_pointer->y_position + yOffset,
-        ((rand() >> 0xF) % 6) + (current_actor_pointer->z_position - 3.0f)
+        RandClamp(6) + (current_actor_pointer->z_position - 3.0f)
     );
 }
 
@@ -78,9 +78,9 @@ void func_global_asm_806BA130(void) {
     current_actor_pointer->unk132 = 1;
     D_global_asm_807FDC90->unk4 = player_pointer;
     playActorAnimation(current_actor_pointer, D_global_asm_807FDC98->unk2A);
-    current_actor_pointer->y_rotation = (((rand() >> 0xF) % 1024) + player_pointer->y_rotation) - 0x200;
-    current_actor_pointer->unkB8 = ((rand() >> 0xF) % 100) + 50;
-    current_actor_pointer->y_velocity = ((rand() >> 0xF) % 150) + 100;
+    current_actor_pointer->y_rotation = (RandClamp(1024) + player_pointer->y_rotation) - 0x200;
+    current_actor_pointer->unkB8 = RandClamp(100) + 50;
+    current_actor_pointer->y_velocity = RandClamp(150) + 100;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BA240.s")
@@ -131,7 +131,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
                 if (character_change_array->unk2C0 == 1) {
                     setAction(0x32, current_actor_pointer, 0);
                 } else {
-                    playActorAnimation(temp_s0, (((rand() >> 0xF) % 1000) >= 0x1F5) ? 0x21F : 0x21E);
+                    playActorAnimation(temp_s0, (RandClamp(1000) >= 0x1F5) ? 0x21F : 0x21E);
                     temp_s0->control_state_progress = 2;
                 }
             } else if (D_global_asm_807FBD70 == 4) {
@@ -359,7 +359,7 @@ s32 func_global_asm_806BB604(u8 arg0, s16 arg1, s16 arg2, s32 arg3) {
         D_global_asm_807FDC90->unk2C -= 1;
         return FALSE;
     }
-    if (func_global_asm_807271F4(arg0, ((rand() >> 0xF) % 10) + (current_actor_pointer->x_position - 5.0f), current_actor_pointer->y_position + 5.0f, ((rand() >> 0xF) % 10) + (current_actor_pointer->z_position - 5.0f), (((rand() >> 0xF) % 1024) + current_actor_pointer->y_rotation) - 0x200, arg1, arg2) != 0) {
+    if (func_global_asm_807271F4(arg0, RandClamp(10) + (current_actor_pointer->x_position - 5.0f), current_actor_pointer->y_position + 5.0f, RandClamp(10) + (current_actor_pointer->z_position - 5.0f), (RandClamp(1024) + current_actor_pointer->y_rotation) - 0x200, arg1, arg2) != 0) {
         last_spawned_actor->control_state = 0x17;
         last_spawned_actor->control_state_progress = 0;
         aaD = last_spawned_actor->additional_actor_data;

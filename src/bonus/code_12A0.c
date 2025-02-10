@@ -79,7 +79,7 @@ void func_bonus_800254B0(s16 x, s16 y, s16 z, s16 count) {
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(func_global_asm_80717404);
         func_global_asm_80714950(1);
-        drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.3f, x, y, z);
+        drawSpriteAtPosition(D_global_asm_8074E880[RandClamp(1000) % 3], 0.3f, x, y, z);
     }
 }
 
@@ -337,7 +337,7 @@ void func_bonus_800261B8(void) {
 
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->z_rotation = (((rand() >> 0xF) % 6) * 0x3C000) / 360;
+        current_actor_pointer->z_rotation = (RandClamp(6) * 0x3C000) / 360;
     }
     switch (current_actor_pointer->control_state) {
         case 1:

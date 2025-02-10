@@ -538,7 +538,7 @@ s32 func_global_asm_8061522C(Actor *arg0) {
     D_807F5AF0++;
     getAnimationArg8(&sp1E);
     getAnimationArg8(&sp1D);
-    random = (((rand() >> 0xF) % 32767) % ((sp1D - sp1E) + 1)) + sp1E;
+    random = (RandClamp(32767) % ((sp1D - sp1E) + 1)) + sp1E;
     if (random) {
         arg0->animation_state->unk7C = random - 1;
         arg0->animation_state->unk78 |= 2;
@@ -1356,7 +1356,7 @@ s32 func_global_asm_80616CB8(Actor *arg0) {
     D_807F5AF0++;
     getAnimationArg8(&sp1F);
     getAnimationArg8(&sp1E);
-    arg0->animation_state->unk88 = (((rand() >> 0xF) % 32767) % ((sp1E - sp1F) + 1)) + sp1F;
+    arg0->animation_state->unk88 = (RandClamp(32767) % ((sp1E - sp1F) + 1)) + sp1F;
     return 1;
 }
 
@@ -2063,7 +2063,7 @@ void func_global_asm_806190C0(Actor *arg0) {
                 var_a1->unk35C = 1;
                 break;
             case 4:
-                var_a1->unk35C = -0x32 - ((rand() >> 0xF) % 50);
+                var_a1->unk35C = -0x32 - RandClamp(50);
                 break;
         }
         if (sp2F != 0) {

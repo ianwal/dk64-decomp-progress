@@ -491,8 +491,8 @@ s32 func_global_asm_806F5CE4(s32 arg0) {
 }
 
 void func_global_asm_806F5D80(s32 *arg0, s32 *arg1) {
-    *arg0 = D_global_asm_80754248[((rand() >> 0xF) % 7U)];
-    *arg1 = (((rand() >> 0xF) % 32767) % 391) + 0xD2;
+    *arg0 = D_global_asm_80754248[RandClamp(7U)];
+    *arg1 = (RandClamp(32767) % 391) + 0xD2;
 }
 
 typedef struct {

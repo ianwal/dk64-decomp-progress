@@ -60,7 +60,7 @@ void func_boss_800293C0(void) {
     func_global_asm_807149B8(1);
     func_global_asm_80714998(3);
     changeActorColor(0x78, 0x78, 0x78, 0xC8);
-    func_global_asm_8068588C(current_actor_pointer, (((rand() >> 0xF) % 32767) % 16) + 3, 2.0f, 0.0f, 0.0f, 0.0f, -0x96);
+    func_global_asm_8068588C(current_actor_pointer, (RandClamp(32767) % 16) + 3, 2.0f, 0.0f, 0.0f, 0.0f, -0x96);
 }
 
 // Jumptable, doable
@@ -310,7 +310,7 @@ block_61:
                     a178->unk18 = a178->unk19;
                     break;
                 case 7: // switch 4
-                    sp40 = ((rand() >> 0xF) % 1024) - 0x200;
+                    sp40 = RandClamp(1024) - 0x200;
                     sp3C = (func_global_asm_80612794(D_global_asm_807FDC94->y_rotation + sp40) * (D_global_asm_807FDC94->unkB8 * 1.2)) + D_global_asm_807FDC94->x_position;
                     temp_f2 = (func_global_asm_80612790(D_global_asm_807FDC94->y_rotation + sp40) * (D_global_asm_807FDC94->unkB8 * 1.2)) + D_global_asm_807FDC94->z_position;
                     func_global_asm_806907F0(sp3C, D_global_asm_807FDC94->y_position + 500.0f, temp_f2);

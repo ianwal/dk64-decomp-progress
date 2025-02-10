@@ -74,9 +74,9 @@ void func_global_asm_8071720C(Struct80717D84 *arg0, s32 arg1) {
         arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_8071720C));
         var_v1 = arg0->unk384;
         var_v1->unk0 = (rand() >> 0xF) % 4095;
-        var_v1->unk2 = ((rand() >> 0xF) % 10) + 2;
+        var_v1->unk2 = RandClamp(10) + 2;
         var_v1->unk4 = 0;
-        var_v1->unk6 = -0x32 - (((rand() >> 0xF) % 10000) % 600);
+        var_v1->unk6 = -0x32 - (RandClamp(10000) % 600);
     }
     var_v1 = arg0->unk384;
     arg0->unk344 -= (var_v1->unk6 / 100.0);
@@ -106,7 +106,7 @@ void func_global_asm_80717404(otherSpriteControl *arg0, s8 *arg1) {
         var_s1 = malloc(sizeof(Struct80717D84_unk384_80717404));
         arg0->unk384 = var_s1;
         if (temp_s2[0]) {
-            var_s1->unk0 = (((rand() >> 0xF) % 200) + temp_s2[0]) - 100;
+            var_s1->unk0 = (RandClamp(200) + temp_s2[0]) - 100;
         } else {
             var_s1->unk0 = (rand() >> 0xF) % 4095;
         }
@@ -115,8 +115,8 @@ void func_global_asm_80717404(otherSpriteControl *arg0, s8 *arg1) {
         } else {
             sp28 = 1.0;
         }
-        var_s1->unk4 = (((rand() >> 0xF) % 10) + 5) * sp28;
-        var_s1->unk8 = ((rand() >> 0xF) % 6) + temp_s2[1];
+        var_s1->unk4 = (RandClamp(10) + 5) * sp28;
+        var_s1->unk8 = RandClamp(6) + temp_s2[1];
     }
     var_s1 = arg0->unk384;
     if (arg0->unk36F) {
@@ -145,7 +145,7 @@ void func_global_asm_80717760(Struct80717D84 *arg0, s8 *arg1) {
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(func_global_asm_80717404);
         func_global_asm_80714950(0xA);
-        drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
+        drawSpriteAtPosition(D_global_asm_8074E880[RandClamp(1000) % 3], 0.8f, arg0->unk340, arg0->unk344, arg0->unk348);
         return;
     }
     *arg1 = 1;
@@ -159,7 +159,7 @@ void func_global_asm_80717814(Struct80717D84 *arg0, s32 arg1) {
         arg0->unk384 = malloc(sizeof(Struct80717D84_unk384_80717814));
         var_v1 = arg0->unk384_80717814;
         var_v1->unk0 = (rand() >> 0xF) % 4095;
-        var_v1->unk2 = ((rand() >> 0xF) % 10) + 2;
+        var_v1->unk2 = RandClamp(10) + 2;
     }
     var_v1 = arg0->unk384;
     arg0->unk340 += (0.2 * arg0->unk35C * func_global_asm_80612794(var_v1->unk0));
@@ -502,8 +502,8 @@ void func_global_asm_807189BC(Struct80717D84 *arg0, s8 *arg1) {
         var_v1 = arg0->unk384;
         var_v1->unk0 = MAX(2.0, sp20->unkB8 * 0.01);
         var_v1->unk2 = sp20->y_rotation;
-        var_v1->unk4 = ((rand() >> 0xF) % 1000) + 0xC8;
-        arg0->unk360 += (((rand() >> 0xF) % 100) / 500.0);
+        var_v1->unk4 = RandClamp(1000) + 0xC8;
+        arg0->unk360 += (RandClamp(100) / 500.0);
         arg0->unk364 = arg0->unk360;
         var_v1->unk6 = sp20->unkAC;
     }
@@ -1218,13 +1218,13 @@ void func_global_asm_8071B8EC(Struct80717D84 *arg0, s8 *arg1) {
         *arg1 = 1;
         return;
     }
-    if (((rand() >> 0xF) % 100) >= 0x5B) {
+    if (RandClamp(100) >= 0x5B) {
         func_global_asm_80714998(3);
         func_global_asm_8071498C(func_global_asm_80717D4C);
         func_global_asm_80714950(-0xA);
         func_global_asm_807149B8(1);
         changeActorColor(0x9B, 0x9B, 0x9B, 0x96);
-        drawSpriteAtPosition(&D_global_asm_8071FFA0, 0.8f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk340, arg0->unk344 + 10.0f, (((rand() >> 0xF) % 65535) & 7) + arg0->unk348);
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, 0.8f, (RandClamp(65535) & 7) + arg0->unk340, arg0->unk344 + 10.0f, (RandClamp(65535) & 7) + arg0->unk348);
     }
 }
 
@@ -1512,10 +1512,10 @@ void func_global_asm_8071C9E8(otherSpriteControl *arg0, s8 *arg1) {
     s32 pad;
 
     if (arg0->unk384_8071C9E8 == NULL) {
-        sp5B = ((rand() >> 0xF) % 1000) % 6;
+        sp5B = RandClamp(1000) % 6;
         arg0->unk384_8071C9E8 = malloc(sizeof(Struct80717D84_unk384_8071C9E8));
         temp_v0 = arg0->unk384_8071C9E8;
-        temp_v0->unk4 = (((rand() >> 0xF) % 5) + 0xA);
+        temp_v0->unk4 = (RandClamp(5) + 0xA);
         temp_v0->unk6.unk0 = D_global_asm_80755650[sp5B].unk0;
         temp_v0->unk6.unk2 = D_global_asm_80755650[sp5B].unk2;
         temp_v0->unk6.unk4 = D_global_asm_80755650[sp5B].unk4;
@@ -1529,14 +1529,14 @@ void func_global_asm_8071C9E8(otherSpriteControl *arg0, s8 *arg1) {
         temp_v0->unk6.unk4 = 0x64;
     }
     sp58 = func_global_asm_80665DE0(temp_v0->unk6.unk0, temp_v0->unk6.unk4, arg0->xPos, arg0->zPos);
-    temp = ((rand() >> 0xF) % 10) + 5;
+    temp = RandClamp(10) + 5;
     temp_v0->unk0 = func_global_asm_806CC190(temp_v0->unk0, sp58, temp);
     temp_v0->unk2 = (((temp_v0->unk6.unk2 - temp_v0->unk2) * 0.1) + temp_v0->unk2);
     arg0->xPos += (temp_v0->unk4 * func_global_asm_80612794(temp_v0->unk0));
     arg0->zPos += (temp_v0->unk4 * func_global_asm_80612790(temp_v0->unk0));
     arg0->yPos = ((func_global_asm_80612794(((temp_v0->unk4 + 0x32) * object_timer)) * 40.0) + (f64) (temp_v0->unk2 + 0x28));
-    if (((rand() >> 0xF) % 1000) > 990) {
-        sp5B = ((rand() >> 0xF) % 1000) % 6;
+    if (RandClamp(1000) > 990) {
+        sp5B = RandClamp(1000) % 6;
         temp_v0->unk6.unk0 = D_global_asm_80755650[sp5B].unk0;
         temp_v0->unk6.unk2 = D_global_asm_80755650[sp5B].unk2;
         temp_v0->unk6.unk4 = D_global_asm_80755650[sp5B].unk4;
@@ -1571,13 +1571,13 @@ void func_global_asm_8071CDE0(otherSpriteControl *arg0, s8 *arg1) {
         arg0->unk384_8071CDE0 = var_v1;
         var_v1->unk0 = 0;
         var_v1->unk2 = arg0->yPos;
-        var_v1->unk4 = (((rand() >> 0xF) % 5) + 0xA);
+        var_v1->unk4 = (RandClamp(5) + 0xA);
         var_v1->unk6 = 0;
     }
     var_v1 = arg0->unk384;
     temp_t0 = arg0->unk35C;
     sp4C = func_global_asm_80665DE0(temp_t0->x_position, temp_t0->z_position, arg0->xPos, arg0->zPos);
-    var_v1->unk0 = func_global_asm_806CC190(var_v1->unk0, sp4C, ((rand() >> 0xF) % 10) + 5);
+    var_v1->unk0 = func_global_asm_806CC190(var_v1->unk0, sp4C, RandClamp(10) + 5);
     var_v1->unk2 = ((((temp_t0->y_position + temp_t0->unk15E) - var_v1->unk2) * 0.1) + var_v1->unk2);
     arg0->xPos += (var_v1->unk4 * func_global_asm_80612794(var_v1->unk0));
     arg0->zPos += (var_v1->unk4 * func_global_asm_80612790(var_v1->unk0));
@@ -1672,7 +1672,7 @@ void func_global_asm_8071D28C(Struct80717D84 *arg0, s8 *arg1) {
         var_v1->unk10 = actor->y_rotation;
         var_v1->unk14 = func_global_asm_806119FC() * 30.0f;
         var_v1->unk18 = 0.0f;
-        var_v1->unk1C = (((f32)(((rand() >> 0xF) % 255) % 2) * 2)) - 1;
+        var_v1->unk1C = (((f32)(RandClamp(255) % 2) * 2)) - 1;
     }
     var_v1 = arg0->unk384;
     var_v1->unk0 = ((var_v1->unk4 - var_v1->unk0) * 0.15) + var_v1->unk0;
@@ -2165,9 +2165,9 @@ void func_global_asm_8071F078(Struct80717D84 *arg0, s32 arg1) {
     if (arg0->unk384 == NULL) {
         arg0->unk384 = malloc(8);
         var_v1 = arg0->unk384;
-        var_v1[0] = (((rand() >> 0xF) % 100) / 10.0) + 2.0;
-        var_v1[1] = -8.0 - (((rand() >> 0xF) % 100) / 70.0);
-        arg0->unk35C += (s16)((rand() >> 0xF) % 800) - 0x190;
+        var_v1[0] = (RandClamp(100) / 10.0) + 2.0;
+        var_v1[1] = -8.0 - (RandClamp(100) / 70.0);
+        arg0->unk35C += (s16)RandClamp(800) - 0x190;
         arg0->unk35C %= 0xFFF;
     }
     var_v1 = arg0->unk384;
@@ -2246,9 +2246,9 @@ void func_global_asm_8071F444(Struct80717D84 *arg0, s8 *arg1) {
         }
         arg0->unk384 = malloc(8); // BUG?: Why does it only malloc 8 here when the struct size is 0x10?
         var_v1 = arg0->unk384;
-        var_v1->unk0 = ((rand() >> 0xF) % 20) + 5;
+        var_v1->unk0 = RandClamp(20) + 5;
         var_v1->unk4 = 0.0f;
-        var_v1->unk8 = ((rand() >> 0xF) % 100) + 0xA;
+        var_v1->unk8 = RandClamp(100) + 0xA;
         var_v1->unkC = 0.0f;
     }
     var_v1 = arg0->unk384;

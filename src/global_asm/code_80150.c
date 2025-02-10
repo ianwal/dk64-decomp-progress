@@ -589,9 +589,9 @@ void func_global_asm_8067DF44(f32 x, f32 y, f32 z, f32 arg3, u8 arg4, u8 arg5) {
     sp80 = arg3;
     sp7C = arg3 * 1.5;
     for (i = 0; i < 5; i++) {
-        randomXOffset = (((rand() >> 0xF) % 20) - 0xA) * arg3;
-        randomYOffset = (((rand() >> 0xF) % 20) - 0xA) * arg3;
-        randomZOffset = (((rand() >> 0xF) % 20) - 0xA) * arg3;
+        randomXOffset = (RandClamp(20) - 0xA) * arg3;
+        randomYOffset = (RandClamp(20) - 0xA) * arg3;
+        randomZOffset = (RandClamp(20) - 0xA) * arg3;
         func_global_asm_8071496C(4);
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(1);

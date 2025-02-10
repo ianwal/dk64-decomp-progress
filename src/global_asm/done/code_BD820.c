@@ -14,7 +14,7 @@ void func_global_asm_806B8B20(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     func_global_asm_807149FC(-1);
     func_global_asm_807149B8(1);
     func_global_asm_8071496C(arg3);
-    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, arg0, arg1, arg2);
+    drawSpriteAtPosition(D_global_asm_8074E880[RandClamp(1000) % 3], 1.8f, arg0, arg1, arg2);
 }
 
 void func_global_asm_806B8BDC(s16 arg0, s16 arg1, s16 arg2) {
@@ -66,7 +66,7 @@ void func_global_asm_806B8C78(void) {
                 func_global_asm_8063C1EC(6, 0x10);
                 func_global_asm_8063C248(5, 0x10);
                 func_global_asm_8063C248(7, 0x10);
-                if (((D_global_asm_807FDC90->unk2C < 0x15) && (((rand() >> 0xF) % 1000) < 0x12C)) || (current_actor_pointer->control_state == 0x40)) {
+                if (((D_global_asm_807FDC90->unk2C < 0x15) && (RandClamp(1000) < 0x12C)) || (current_actor_pointer->control_state == 0x40)) {
                     if (current_actor_pointer->control_state == 0x40) {
                         func_global_asm_8063C1EC(5, 0x10);
                         func_global_asm_8063C1EC(7, 0x10);

@@ -1,0 +1,1 @@
+#define RandClamp(a) ((rand() >> 0xF) % a)

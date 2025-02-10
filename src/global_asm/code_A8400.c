@@ -75,9 +75,9 @@ void func_global_asm_806A370C(Gfx **arg0, AAD_global_asm_806A4DDC *arg1, Struct8
         }
         if (temp_s1->unk0 & 2) {
             sp38 = func_global_asm_80612D1C(temp_s1->unk88);
-            sp4C = ((20.0f - ((rand() >> 0xF) % 40)) / 20.0f) * (4.0f * sp38);
+            sp4C = ((20.0f - RandClamp(40)) / 20.0f) * (4.0f * sp38);
             sp38 = func_global_asm_80612D1C(temp_s1->unk88);
-            guTranslateF(sp68, sp4C, ((20.0f - ((rand() >> 0xF) % 40)) / 20.0f) * (4.0f * sp38), 0.0f);
+            guTranslateF(sp68, sp4C, ((20.0f - RandClamp(40)) / 20.0f) * (4.0f * sp38), 0.0f);
             guMtxCatF(spA8, sp68, spA8);
         }
         guTranslateF(sp68, sp60, sp5C, 0.0f);

@@ -574,12 +574,12 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     } else {
         D_global_asm_8077058C = 0;
     }
-    if (((rand() >> 0xF) % 50) == 0xF) {
+    if (RandClamp(50) == 0xF) {
         var_v1->unk0 = 0x28;
     }
     if (var_v1->unk0) {
         var_v1->unk0--;
-        if (((rand() >> 0xF) % 10) == 5) {
+        if (RandClamp(10) == 5) {
             if (var_f16 < 2200.0f) {
                 if (D_global_asm_80770DC9 != 0) {
                     if (D_80770DD4 < 600.0f) {
@@ -645,7 +645,7 @@ void func_global_asm_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_global_asm_807149FC(-1);
     func_global_asm_8071498C(func_global_asm_80717760);
     func_global_asm_80714950(0x50);
-    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+    drawSpriteAtPosition(D_global_asm_8074E880[RandClamp(1000) % 3], 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
 }
 
 typedef struct {
@@ -805,9 +805,9 @@ void func_global_asm_806458C8(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     s16 sp2C;
 
     if (((u32)object_timer % arg2) == 0) {
-        sp2E = ((rand() >> 0xF) % 2048) + (((D_global_asm_807F622C * 4096.0f) / 360.0f) - 1024.0f);
-        sp2C = (((rand() >> 0xF) % 32767) % 6) + 0xF;
-        func_global_asm_80714950(-0x32 - ((rand() >> 0xF) % 80));
+        sp2E = RandClamp(2048) + (((D_global_asm_807F622C * 4096.0f) / 360.0f) - 1024.0f);
+        sp2C = (RandClamp(32767) % 6) + 0xF;
+        func_global_asm_80714950(-0x32 - RandClamp(80));
         func_global_asm_8071498C(func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(2);
@@ -819,7 +819,7 @@ void func_global_asm_80645A64(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     s16 i;
 
     for (i = 0; i < arg2; i++) {
-        func_global_asm_80714950(-0x96 - ((rand() >> 0xF) % 80));
+        func_global_asm_80714950(-0x96 - RandClamp(80));
         func_global_asm_8071498C(func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(2);
@@ -1049,9 +1049,9 @@ void func_global_asm_80646978(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
             D_global_asm_807F6224);
     }
     for (j = 0; j < 0x1130; j += 0x190) {
-        sp88.x = ((rand() >> 0xF) % D_global_asm_8074812C) + D_global_asm_80748120;
+        sp88.x = RandClamp(D_global_asm_8074812C) + D_global_asm_80748120;
         sp88.y = j;
-        sp88.z = ((rand() >> 0xF) % D_global_asm_80748130) + D_global_asm_80748124;
+        sp88.z = RandClamp(D_global_asm_80748130) + D_global_asm_80748124;
         func_global_asm_806891D8(0x5A,
             D_global_asm_807F621C,
             D_global_asm_807F6220 + D_global_asm_8074811C,
@@ -1270,7 +1270,7 @@ void func_global_asm_80647B74(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     }
     var_v1 = arg0->unk0;
     if ((var_v1->unk0 + 0x32) < object_timer) {
-        if (((rand() >> 0xF) % 1000) >= 0x353) {
+        if (RandClamp(1000) >= 0x353) {
             var_v1->unk4 = 1;
             var_v1->unk0 = object_timer;
         }
@@ -1355,8 +1355,8 @@ void func_global_asm_80648000(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg
     if (arg0->unk9A & 1) {
         if (((func_global_asm_806119A0() / 10000U) % 20) == 0) {
             temp_s0 = arg0->unk0;
-            sp48 = ((rand() >> 0xF) % 100) / 100.0;
-            guMtxXFMF(temp_s0, (sp48 * 100.0) + -50.0, 0.0f, ((((rand() >> 0xF) % 100) / 100.0) * 150.0) + -75.0, &sp40, &sp3C, &sp38);
+            sp48 = RandClamp(100) / 100.0;
+            guMtxXFMF(temp_s0, (sp48 * 100.0) + -50.0, 0.0f, ((RandClamp(100) / 100.0) * 150.0) + -75.0, &sp40, &sp3C, &sp38);
             sp40 = (sp40 * D_global_asm_807F6234) + D_global_asm_807F621C;
             sp38 = (sp38 * D_global_asm_807F6234) + D_global_asm_807F6224;
             func_global_asm_807149B8(1);
@@ -1569,7 +1569,7 @@ void func_global_asm_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     s32 i;
 
     for (i = 0; i < arg2; i++) {
-        temp_s1 = (((rand() >> 0xF) % 32767) % (arg3 + 1));
+        temp_s1 = (RandClamp(32767) % (arg3 + 1));
         func_global_asm_807149B8(1);
         func_global_asm_807149A8(0x7D0);
         func_global_asm_8071498C(func_global_asm_8071F660);
@@ -3213,7 +3213,7 @@ void func_global_asm_8064E5C0(Struct8064E5C0_arg0 *arg0, s32 arg1, s32 arg2, s32
     sp26 = arg0->unk62;
     arg0->unk66 = 0xFF;
     arg0->unk60 = 1;
-    if (((rand() >> 0xF) % 100) >= 0x29) {
+    if (RandClamp(100) >= 0x29) {
         arg0->unk62 = 0;
     } else {
         arg0->unk62 = 0xFF;

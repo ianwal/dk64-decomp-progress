@@ -4,6 +4,7 @@
 #include "enums.h"
 #include "structs.h"
 #include "variables.h"
+#include "macros.h"
 
 /* your function prototype definitions go here */
 

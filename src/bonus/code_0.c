@@ -128,7 +128,7 @@ void func_bonus_80024158(void) {
         func_global_asm_806A2A10(0xDC, 0x2A, D_global_asm_807FDC9C->unkA_u8[1]);
         switch (sp6F) {
             case 14:
-                func_global_asm_8063DA78(((rand() >> 0xF) % 32767) % 4, 1, 1);
+                func_global_asm_8063DA78(RandClamp(32767) % 4, 1, 1);
                 // fallthrough
             case 0:
             case 4:
@@ -167,7 +167,7 @@ block_4:
                 boolVal2 = TRUE;
                 break;
             case 9:
-                getSpawnerTiedActor((((rand() >> 0xF) % 32767) % 8) + 0x11, 0)->unk15F = 1;
+                getSpawnerTiedActor((RandClamp(32767) % 8) + 0x11, 0)->unk15F = 1;
                 break;
         }
         if (boolVal2) {
@@ -491,7 +491,7 @@ void func_bonus_80024E38(void) {
         if (a178->unk0 < 0x129) {
             a178->unk0 = 0x12C;
             if (extra_player_info_pointer->unk1F0 & 0x40000) {
-                if (((rand() >> 0xF) % 1000) & 1) {
+                if (RandClamp(1000) & 1) {
                     playSound(0x1E7, 0x7FFF, 64.0f, 1.0f, 0x14, 0x80);
                 } else {
                     playSound(0x1EA, 0x7FFF, 64.0f, 1.0f, 0x14, 0x80);

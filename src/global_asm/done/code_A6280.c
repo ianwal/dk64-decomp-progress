@@ -156,7 +156,7 @@ void func_global_asm_806A1AC4(void) {
                 case 0:
                     if ((object_timer & 7) == 0) {
                         for (i = 0; i < 0xC; i++) {
-                            randomScale = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * 0.01;
+                            randomScale = ((RandClamp(32767) % 171) + 0x96) * 0.01;
                             func_global_asm_8071498C(func_global_asm_8071E864);
                             func_global_asm_80714950(i);
                             func_global_asm_807149B8(1);

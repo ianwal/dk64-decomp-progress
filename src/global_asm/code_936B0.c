@@ -514,7 +514,7 @@ void func_global_asm_806921DC(u8 arg0) {
         func_global_asm_80714998(2);
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(func_global_asm_8071C914);
-        func_global_asm_80714950((rand() >> 0xF) % 360);
+        func_global_asm_80714950(RandClamp(360));
         func_global_asm_807149A8(2000);
         switch (arg0) {
             case 0:
@@ -1335,9 +1335,9 @@ void func_global_asm_806960A4(void) {
     func_global_asm_8065D254(current_actor_pointer, 0x3C8, 0x40, 0x40, 0xE, 0xE, 1, 0x96, 0x78, 0, 1.0f);
     if ((current_actor_pointer->unk6A & 1) || ((current_actor_pointer->unkFC != 0) && ((D_global_asm_8076A068 - sp74->unk0) >= 6)) || (D_global_asm_807FBB85 != 0)) {
         for (i = 0; i != 0x10; i += 2) {
-            randomXOffset = (((rand() >> 0xF) % 8191) / 200.0) - 20.0;
-            randomYOffset = (((rand() >> 0xF) % 8191) / 200.0) - 20.0;
-            randomZOffset = (((rand() >> 0xF) % 8191) / 200.0) - 20.0;
+            randomXOffset = (RandClamp(8191) / 200.0) - 20.0;
+            randomYOffset = (RandClamp(8191) / 200.0) - 20.0;
+            randomZOffset = (RandClamp(8191) / 200.0) - 20.0;
             func_global_asm_8071496C(i);
             func_global_asm_807149B8(1);
             if (i == 0) {
@@ -1345,7 +1345,7 @@ void func_global_asm_806960A4(void) {
                 func_global_asm_8071498C(func_global_asm_8071A8B0);
             } else {
                 func_global_asm_8071498C(func_global_asm_80717D4C);
-                func_global_asm_80714950(-0x96 - ((rand() >> 0xF) % 50));
+                func_global_asm_80714950(-0x96 - RandClamp(50));
             }
             drawSpriteAtPosition(&D_global_asm_80720340, 1.6f, current_actor_pointer->x_position + randomXOffset, current_actor_pointer->y_position + randomYOffset, current_actor_pointer->z_position + randomZOffset);
         }
@@ -1393,7 +1393,7 @@ void func_global_asm_80696574(void) {
         aaD->unk0 = D_global_asm_8076A068;
         current_actor_pointer->object_properties_bitfield |= bitmask;
         func_global_asm_80666290(current_actor_pointer, &sp6C[9], &sp6C[0], &sp6C[8], &sp6C[-4], sp6C[7]); // TODO: This stack is a fake match, notice [-4]
-        current_actor_pointer->y_acceleration = D_global_asm_807502F8 - (((rand() >> 0xF) % 32767) % 10);
+        current_actor_pointer->y_acceleration = D_global_asm_807502F8 - (RandClamp(32767) % 10);
         current_actor_pointer->unk6A &= 0xFFFE;
     }
     if (D_global_asm_807FBB70.unk200 == 5) {

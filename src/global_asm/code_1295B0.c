@@ -469,7 +469,7 @@ void func_global_asm_807273A8(s16 arg0, u8 arg1) {
 
     temp_t0 = D_global_asm_807FDC98->unk20[arg1].unk0;
     sp34 = (func_global_asm_80665AE4(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, D_global_asm_807FDCA0->unk14[temp_t0].unk0, D_global_asm_807FDCA0->unk14[temp_t0].unk4) * 4096.0f) / 360.0f;
-    if (func_global_asm_807271F4(arg0, D_global_asm_807FDCA0->unk14[temp_t0].unk0, D_global_asm_807FDCA0->unk14[temp_t0].unk2, D_global_asm_807FDCA0->unk14[temp_t0].unk4, sp34, ((rand() >> 0xF) % 100) + 0x64, ((rand() >> 0xF) % 100) + 0xC8) != 0) {
+    if (func_global_asm_807271F4(arg0, D_global_asm_807FDCA0->unk14[temp_t0].unk0, D_global_asm_807FDCA0->unk14[temp_t0].unk2, D_global_asm_807FDCA0->unk14[temp_t0].unk4, sp34, RandClamp(100) + 0x64, RandClamp(100) + 0xC8) != 0) {
         last_spawned_actor->control_state = 0x17;
         last_spawned_actor->control_state_progress = 0;
     }
@@ -885,7 +885,7 @@ u8 func_global_asm_8072881C(u8 arg0, u32 *arg1) {
     u8 phi_v1 = FALSE;
     if ((arg0 & 0x80)
         || (*arg1 + 50 < object_timer
-            && !(((rand() >> 0xF) % 1000) < 0x3C1)
+            && !(RandClamp(1000) < 0x3C1)
             && !func_global_asm_80688540(current_actor_pointer, arg0))) {
         func_global_asm_80688370(current_actor_pointer, arg0, 1.0f);
         func_global_asm_806883C8(current_actor_pointer, arg0, 1);

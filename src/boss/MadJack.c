@@ -210,7 +210,7 @@ void func_boss_800336C0(void) {
     func_global_asm_807149B8(1);
     func_global_asm_80714950(1);
     drawSpriteAtPosition(
-        D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+        D_global_asm_8074E880[RandClamp(1000) % 3],
         (f64)scale,
         current_actor_pointer->x_position,
         current_actor_pointer->y_position,
@@ -667,9 +667,9 @@ block_134:
                     sp7F = 1;
                 } else {
                     getBonePosition(current_actor_pointer, 1, &x, &y, &z);
-                    x += (((rand() >> 0xF) % 100) - 0x32);
-                    y += (((rand() >> 0xF) % 100) + 0x32);
-                    z += (((rand() >> 0xF) % 100) - 0x32);
+                    x += (RandClamp(100) - 0x32);
+                    y += (RandClamp(100) + 0x32);
+                    z += (RandClamp(100) - 0x32);
                     func_global_asm_807149B8(1U);
                     func_global_asm_8071498C(func_global_asm_8071EDEC);
                     func_global_asm_80714950(current_actor_pointer);
@@ -781,8 +781,8 @@ block_134:
             sp7F = 1;
             break;
         case 3:
-            func_global_asm_80684BB0(2, ((((rand() >> 0xF) % 32767) % 6) + 5), 0x28);
-            func_global_asm_80684BB0(3, ((((rand() >> 0xF) % 32767) % 6) + 5), 0x28);
+            func_global_asm_80684BB0(2, ((RandClamp(32767) % 6) + 5), 0x28);
+            func_global_asm_80684BB0(3, ((RandClamp(32767) % 6) + 5), 0x28);
             sp7F = 1;
             break;
         case 4:

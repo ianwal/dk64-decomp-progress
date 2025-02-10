@@ -197,7 +197,7 @@ void func_global_asm_8072AA80(void) {
     } else {
         phi_a0 = (s16)current_actor_pointer->unkAC - current_actor_pointer->unk15E;
     }
-    D_global_asm_807FDC90->unkC = (((rand() >> 0xF) % 32767)
+    D_global_asm_807FDC90->unkC = (RandClamp(32767)
         % ((phi_a0 - D_global_asm_807FDC9C->unk6 + current_actor_pointer->unk15E) + 1))
         + D_global_asm_807FDC9C->unk6 + current_actor_pointer->unk15E;
 }
@@ -624,9 +624,9 @@ void func_global_asm_8072DAA4(void) {
     func_global_asm_80714998(2);
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(func_global_asm_80717D4C);
-    func_global_asm_80714950(-0x28 - ((rand() >> 0xF) % 15));
+    func_global_asm_80714950(-0x28 - RandClamp(15));
     drawSpriteAtPosition(&D_global_asm_8071FF18,
-                  (((rand() >> 0xF) % 1000) / D_global_asm_8075FF20) + 0.5,
+                  (RandClamp(1000) / D_global_asm_8075FF20) + 0.5,
                   current_actor_pointer->x_position,
                   current_actor_pointer->y_position,
                   current_actor_pointer->z_position);
@@ -812,7 +812,7 @@ u8 func_global_asm_8072E54C(void) {
 
     var_v1 = (D_global_asm_807FDC98->unk46 & 0x2000) == 0;
     if (var_v1 != 0) {
-        var_v1 = (((rand() >> 0xF) % 1000) < 0x3E4) ^ 1;
+        var_v1 = (RandClamp(1000) < 0x3E4) ^ 1;
     }
     return var_v1;
 }

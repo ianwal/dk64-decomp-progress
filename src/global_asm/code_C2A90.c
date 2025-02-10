@@ -413,7 +413,7 @@ void func_global_asm_806BE8BC(void) {
             if (current_actor_pointer->unk15F < 0x10U) {
                 addActorToTextOverlayRenderArray(func_global_asm_8068E474, current_actor_pointer, 3);
             }
-            if ((((rand() >> 0xF) % 1000) >= 0x3DF) && (current_actor_pointer->animation_state->unk64 == 0x302)) {
+            if ((RandClamp(1000) >= 0x3DF) && (current_actor_pointer->animation_state->unk64 == 0x302)) {
                 playActorAnimation(current_actor_pointer, (object_timer & 1) ? 0x303 : 0x304);
             }
             if (D_global_asm_807FBB70.unk0 != 0) {
@@ -730,7 +730,7 @@ void func_global_asm_806C1734(void) {
                     break;
                 case 0x112:
                     if ((sp2A >= 0x44) && (sp2A < 0x64) && ((object_timer % 3U) == 0)) {
-                        sp29 = ((rand() >> 0xF) % 32767) % 2;
+                        sp29 = RandClamp(32767) % 2;
                         func_global_asm_807149B8(1);
                         func_global_asm_80714950(0x50);
                         func_global_asm_8071498C(func_global_asm_8071A8B0);
@@ -982,7 +982,7 @@ void func_global_asm_806C226C(void) {
         case 39:
             if (current_actor_pointer->unk6A & 4) {
                 func_global_asm_8072A920(2, 0, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkC, D_global_asm_807FDC90->unkE, 0x46, 30.0f, 100.0f, 0);
-                if (((rand() >> 0xF) % 1000) >= 0x3A3) {
+                if (RandClamp(1000) >= 0x3A3) {
                     func_global_asm_8071498C(func_global_asm_80718BF4);
                     func_global_asm_807149B8(1);
                     func_global_asm_807149FC(-1);
@@ -1089,7 +1089,7 @@ void func_global_asm_806C28B8(void) {
 void func_global_asm_806C2A64(u8 red, u8 green, u8 blue, f32 x, f32 y, f32 z, void *sprite, f32 scale) {
     func_global_asm_807149A8(1000);
     func_global_asm_80714998(0xFF);
-    func_global_asm_80714944(((rand() >> 0xF) % 32767) % 11);
+    func_global_asm_80714944(RandClamp(32767) % 11);
     changeActorColor(red, green, blue, 0xFF);
     func_global_asm_8071498C(func_global_asm_80717D84);
     func_global_asm_80714950(2);

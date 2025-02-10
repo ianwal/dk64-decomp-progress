@@ -25,9 +25,9 @@ void func_boss_8002C520(s16 arg0, s16 arg1, s16 arg2) {
 }
 
 void func_boss_8002C5F4(void) {
-    func_boss_8002C520(2, ((rand() >> 0xF) % 100) + 300, (rand() >> 0xF) % 4096);
-    func_boss_8002C520(3, ((rand() >> 0xF) % 100) + 300, (rand() >> 0xF) % 4096);
-    func_boss_8002C520(4, ((rand() >> 0xF) % 100) + 300, (rand() >> 0xF) % 4096);
+    func_boss_8002C520(2, RandClamp(100) + 300, (rand() >> 0xF) % 4096);
+    func_boss_8002C520(3, RandClamp(100) + 300, (rand() >> 0xF) % 4096);
+    func_boss_8002C520(4, RandClamp(100) + 300, (rand() >> 0xF) % 4096);
     if (!(D_global_asm_807FDC90->unk1A & 0x8000)) {
         D_global_asm_807FDC90->unk1A |= 0x8000;
         playCutscene(last_spawned_actor, 2, 1);
@@ -73,7 +73,7 @@ void func_boss_8002C8B4(void) {
     func_global_asm_80690814(current_actor_pointer, 1);
     func_global_asm_80690A28(
         0x116, 
-        (((rand() >> 0xF) % 3) + 1), 
+        (RandClamp(3) + 1), 
         1.0f, 
         D_global_asm_807FDC94->x_position, 
         D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, 
@@ -197,7 +197,7 @@ void func_boss_8002C964(void) {
                         current_actor_pointer->unk132 = 8;
                         playActorAnimation(current_actor_pointer, 0x2FA);
                     }
-                    if ((func_global_asm_8061CB50() == 0) && (((rand() >> 0xF) % 1000) >= 0x3E4)) {
+                    if ((func_global_asm_8061CB50() == 0) && (RandClamp(1000) >= 0x3E4)) {
                         playActorAnimation(current_actor_pointer, 0x2FD);
                         current_actor_pointer->control_state_progress = 3;
                     }

@@ -441,7 +441,7 @@ void func_boss_80027770(void) {
         if (!(object_timer & 0xF)) {
             boneIndex = 0xC;
         } else {
-            boneIndex = ((((rand() >> 0xF) % 32767) % 7) + 0x1D);
+            boneIndex = ((RandClamp(32767) % 7) + 0x1D);
         }
         func_global_asm_80714998(3);
         changeActorColor(0x50, 0x50, 0x50, 0xC8);

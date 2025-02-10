@@ -464,8 +464,8 @@ void func_global_asm_8069B3FC(void) {
                 for (j = 0; j < 2; j++) {
                     func_global_asm_8071498C(func_global_asm_80717D4C);
                     func_global_asm_807149B8(1);
-                    func_global_asm_80714950((((rand() >> 0xF) % 10000) % 120) + 0x50);
-                    switch (((rand() >> 0xF) % 10000) % 3) {
+                    func_global_asm_80714950((RandClamp(10000) % 120) + 0x50);
+                    switch (RandClamp(10000) % 3) {
                         case 0:
                             sprite = &D_global_asm_8071FC58;
                             break;

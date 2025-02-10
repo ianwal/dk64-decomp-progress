@@ -748,7 +748,7 @@ void func_global_asm_806A7BDC(void) {
     }
     func_global_asm_8067ACB4(current_actor_pointer);
     if ((sp64 != 0) && (D_global_asm_807FBD70 == 4) && ((object_timer % 5U) == 0)) {
-        sp60 = ((rand() >> 0xF) % 255) % 7;
+        sp60 = RandClamp(255) % 7;
         sp44 = D_global_asm_807504A4;
         func_global_asm_8071498C(func_global_asm_8071D28C);
         func_global_asm_807149FC(-1);

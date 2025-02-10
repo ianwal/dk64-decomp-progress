@@ -127,7 +127,7 @@ void func_boss_80027950(Struct80027A30_arg0 *arg0, u8 *arg1) {
 
     temp_s3 = D_global_asm_807FDC90->unk25;
     do {
-        D_global_asm_807FDC90->unk25 = arg1[arg0->unk15] + (((rand() >> 0xF) % 65536) % (((arg1[arg0->unk15 + 1] - arg1[arg0->unk15]) + 1)));
+        D_global_asm_807FDC90->unk25 = arg1[arg0->unk15] + (RandClamp(65536) % (((arg1[arg0->unk15 + 1] - arg1[arg0->unk15]) + 1)));
     } while (D_global_asm_807FDC90->unk25 == temp_s3);
     arg0->unk15 += 2;
 }
@@ -427,7 +427,7 @@ void func_boss_80028478(u16 flagIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u
         func_global_asm_807149FC(-1);
         func_global_asm_807149B8(1);
         func_global_asm_80714950((s32)D_global_asm_807FDC94);
-        drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 1.8f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position);
+        drawSpriteAtPosition(D_global_asm_8074E880[RandClamp(1000) % 3], 1.8f, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->y_position + D_global_asm_807FDC94->unk15E, D_global_asm_807FDC94->z_position);
     }
     func_global_asm_806A5DF0(0x48, arg1, arg2, arg3, arg4, arg5, flagIndex, 0);
 }
