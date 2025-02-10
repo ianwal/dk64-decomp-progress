@@ -131,7 +131,7 @@ s32 func_global_asm_806BA240(u8 arg0, s16 arg1) {
                 if (character_change_array->unk2C0 == 1) {
                     setAction(0x32, current_actor_pointer, 0);
                 } else {
-                    playActorAnimation(temp_s0, (RandClamp(1000) >= 0x1F5) ? 0x21F : 0x21E);
+                    playActorAnimation(temp_s0, RandChance(0.5) ? 0x21F : 0x21E);
                     temp_s0->control_state_progress = 2;
                 }
             } else if (D_global_asm_807FBD70 == 4) {

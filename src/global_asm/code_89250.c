@@ -813,10 +813,10 @@ void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
         func_global_asm_806595F0(1);
         createLight(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 150.0f, 0, 0x96, 0x64, 0xFF);
     }
-    if ((current_actor_pointer->unk58 == ACTOR_BOSS_ARMY_DILLO) && (RandClamp(1000) >= 0x385)) {
+    if ((current_actor_pointer->unk58 == ACTOR_BOSS_ARMY_DILLO) && (RandChance(0.1))) {
         s16 temp;
         func_global_asm_806877C8(((RandClamp(32767) % 10) + 0xD));
-        temp = RandClamp(1000) >= 0x1F5 ? 0x8A : 0xA1;
+        temp = RandChance(0.5) ? 0x8A : 0xA1;
         playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, temp, 0xFF, 0x7F, 0x28, 0, 0.3f, 0);
     }
 }

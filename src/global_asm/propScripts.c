@@ -1270,7 +1270,7 @@ void func_global_asm_80647B74(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     }
     var_v1 = arg0->unk0;
     if ((var_v1->unk0 + 0x32) < object_timer) {
-        if (RandClamp(1000) >= 0x353) {
+        if (RandChance(0.15)) {
             var_v1->unk4 = 1;
             var_v1->unk0 = object_timer;
         }

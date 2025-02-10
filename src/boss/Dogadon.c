@@ -112,7 +112,7 @@ void func_boss_8002A240(void) {
         if (temp_s0->unk4 == 0) {
             temp_s0->unk8 += 0x400;
         }
-    } else if (RandClamp(1000) >= 0x3AD) {
+    } else if (RandChance(0.06)) {
         temp_s0->unk4 = 0xA;
     }
     current_actor_pointer->y_position += 8.0 * func_global_asm_80612794((u32)object_timer * 200.0);

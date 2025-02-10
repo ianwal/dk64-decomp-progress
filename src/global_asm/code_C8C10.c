@@ -403,7 +403,7 @@ void func_global_asm_806C5C20(void) {
         current_actor_pointer->draw_distance = 0xFA;
         func_global_asm_80724CA4(2, 1);
     }
-    if (RandClamp(1000) >= 0x3CB) {
+    if (RandChance(0.03)) {
         current_actor_pointer->unkB8 = D_global_asm_807FDC9C->unkC * 4;
     }
     func_global_asm_80724E48(6);

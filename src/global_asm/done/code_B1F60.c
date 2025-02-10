@@ -224,7 +224,7 @@ void func_global_asm_806AD9F4(void) {
             }
             break;
         case 1:
-            if (RandClamp(1000) >= 996) {
+            if (RandChance(0.005)) {
                 if ((current_actor_pointer->unk6A & 1)) {
                     current_actor_pointer->control_state = 0x28;
                     current_actor_pointer->control_state_progress = 0;

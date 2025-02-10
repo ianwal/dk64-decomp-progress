@@ -132,7 +132,7 @@ void func_global_asm_806B13B4(u8 arg0) {
                     break;
                 case 2:
                     func_global_asm_8072A450();
-                    if (RandClamp(1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         func_global_asm_8072DE44(0x203);
                     }
                     break;
@@ -143,7 +143,7 @@ void func_global_asm_806B13B4(u8 arg0) {
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072B324(current_actor_pointer, 0);
-                    if (RandClamp(1000) >= 0x259) {
+                    if (RandChance(0.4)) {
                         playActorAnimation(current_actor_pointer, 0x208);
                         current_actor_pointer->control_state_progress = 5;
                     } else {

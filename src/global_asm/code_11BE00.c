@@ -1535,7 +1535,7 @@ void func_global_asm_8071C9E8(otherSpriteControl *arg0, s8 *arg1) {
     arg0->xPos += (temp_v0->unk4 * func_global_asm_80612794(temp_v0->unk0));
     arg0->zPos += (temp_v0->unk4 * func_global_asm_80612790(temp_v0->unk0));
     arg0->yPos = ((func_global_asm_80612794(((temp_v0->unk4 + 0x32) * object_timer)) * 40.0) + (f64) (temp_v0->unk2 + 0x28));
-    if (RandClamp(1000) > 990) {
+    if (RandChance(0.01)) {
         sp5B = RandClamp(1000) % 6;
         temp_v0->unk6.unk0 = D_global_asm_80755650[sp5B].unk0;
         temp_v0->unk6.unk2 = D_global_asm_80755650[sp5B].unk2;

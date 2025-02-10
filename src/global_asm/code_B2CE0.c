@@ -174,7 +174,7 @@ void func_global_asm_806AE588(void) {
                     break;
                 case 2:
                     func_global_asm_8072A450();
-                    if (RandClamp(1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         func_global_asm_8072DE44(0x1FB);
                     }
                     break;
@@ -270,7 +270,7 @@ void func_global_asm_806AE588(void) {
 */
 
 void func_global_asm_806AEE08(void) {
-    if ((RandClamp(1000) >= 981)
+    if ((RandChance(0.02))
         && func_global_asm_8072DE10(4000)
         && !(D_global_asm_807FDC90->unk1A & 0x80)) {
         current_actor_pointer->control_state = 0x25;
@@ -312,7 +312,7 @@ void func_global_asm_806AF688(void) {
                     break;
                 case 2:
                     func_global_asm_8072A450();
-                    if (RandClamp(1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         func_global_asm_8072DE44(0x1FB);
                     }
                     break;
@@ -430,7 +430,7 @@ void func_global_asm_806AFB58(void) {
                     break;
                 case 2:
                     func_global_asm_8072A450();
-                    if (RandClamp(1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         func_global_asm_8072DE44(0x2D7);
                     }
                     break;
@@ -445,7 +445,7 @@ void func_global_asm_806AFB58(void) {
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072B324(current_actor_pointer, 0);
-                    if ((current_actor_pointer->animation_state->scale[1] > 0.18) && (RandClamp(1000) >= 0x1F5)) {
+                    if ((current_actor_pointer->animation_state->scale[1] > 0.18) && (RandChance(0.5))) {
                         playActorAnimation(current_actor_pointer, 0x2DB);
                     } else {
                         playActorAnimation(current_actor_pointer, 0x2DA);
@@ -564,7 +564,7 @@ void func_global_asm_806B0354(void) {
                     current_actor_pointer->control_state_progress++;
                     // Fallthrough
                 case 1:
-                    if (RandClamp(1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         current_actor_pointer->control_state_progress++;
                         playActorAnimation(current_actor_pointer, 0x379);
                         func_global_asm_8072B324(current_actor_pointer, 0);
@@ -769,7 +769,7 @@ block_31:
                         break;
                     case 2:
                         func_global_asm_8072A450();
-                        if (RandClamp(1000) >= 0x3E4) {
+                        if (RandChance(0.005)) {
                             func_global_asm_8072DE44(0x35F);
                         }
                         break;

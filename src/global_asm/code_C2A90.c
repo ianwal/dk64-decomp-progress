@@ -413,7 +413,7 @@ void func_global_asm_806BE8BC(void) {
             if (current_actor_pointer->unk15F < 0x10U) {
                 addActorToTextOverlayRenderArray(func_global_asm_8068E474, current_actor_pointer, 3);
             }
-            if ((RandClamp(1000) >= 0x3DF) && (current_actor_pointer->animation_state->unk64 == 0x302)) {
+            if ((RandChance(0.01)) && (current_actor_pointer->animation_state->unk64 == 0x302)) {
                 playActorAnimation(current_actor_pointer, (object_timer & 1) ? 0x303 : 0x304);
             }
             if (D_global_asm_807FBB70.unk0 != 0) {
@@ -982,7 +982,7 @@ void func_global_asm_806C226C(void) {
         case 39:
             if (current_actor_pointer->unk6A & 4) {
                 func_global_asm_8072A920(2, 0, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkC, D_global_asm_807FDC90->unkE, 0x46, 30.0f, 100.0f, 0);
-                if (RandClamp(1000) >= 0x3A3) {
+                if (RandChance(0.07)) {
                     func_global_asm_8071498C(func_global_asm_80718BF4);
                     func_global_asm_807149B8(1);
                     func_global_asm_807149FC(-1);

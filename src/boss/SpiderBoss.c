@@ -197,7 +197,7 @@ void func_boss_8002C964(void) {
                         current_actor_pointer->unk132 = 8;
                         playActorAnimation(current_actor_pointer, 0x2FA);
                     }
-                    if ((func_global_asm_8061CB50() == 0) && (RandClamp(1000) >= 0x3E4)) {
+                    if ((func_global_asm_8061CB50() == 0) && (RandChance(0.005))) {
                         playActorAnimation(current_actor_pointer, 0x2FD);
                         current_actor_pointer->control_state_progress = 3;
                     }

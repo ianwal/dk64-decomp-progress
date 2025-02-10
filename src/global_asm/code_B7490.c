@@ -47,7 +47,7 @@ void func_global_asm_806B2790(void) {
             break;
         case 0x1:
             current_actor_pointer->x_rotation += (800.0f * func_global_asm_80612794(D_global_asm_807FDC90->unk18 * 0xA));
-            if (RandClamp(1000) >= 0x3D5) {
+            if (RandChance(0.02)) {
                 func_global_asm_8072AA80();
             }
             func_global_asm_8072A920(current_actor_pointer->control_state, 0, D_global_asm_807FDC94->x_position, D_global_asm_807FDC90->unkC, D_global_asm_807FDC94->z_position, 0x1E, 3.3f, 100.0f, 0x2040);
@@ -166,7 +166,7 @@ void func_global_asm_806B2D64(void) {
         case 0x1:
             func_global_asm_806B2D5C();
             current_actor_pointer->x_rotation += (800.0f * func_global_asm_80612794(D_global_asm_807FDC90->unk18 * 0xA));
-            if (RandClamp(1000) >= 0x3D5) {
+            if (RandChance(0.02)) {
                 func_global_asm_8072AA80();
             }
             func_global_asm_8072A920(current_actor_pointer->control_state, 0, D_global_asm_807FDC94->x_position, D_global_asm_807FDC90->unkC, D_global_asm_807FDC94->z_position, 0x1E, 3.3f, 100.0f, 0x2040);
@@ -459,7 +459,7 @@ void func_global_asm_806B3E7C(void) {
 }
 
 void func_global_asm_806B3F3C(void) {
-    if (RandClamp(1000) >= 996) {
+    if (RandChance(0.005)) {
         current_actor_pointer->control_state = 0x1C;
         current_actor_pointer->control_state_progress = 0;
     }
