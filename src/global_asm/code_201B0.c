@@ -1066,7 +1066,26 @@ void func_global_asm_8061F2B8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     }
 }
 
+// close, doable, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F4B0.s")
+
+/*
+void func_global_asm_8061F4B0(u8 *arg0) {
+    u8 *temp_a2;
+    u8 i;
+    u8 temp_v1;
+    u8 *temp_a1;
+
+    for (i = 0; i < 6; i++) {
+        temp_a1 = arg0 + i;
+        temp_v1 = temp_a1[0];
+        if (temp_v1 != 0) {
+            temp_a2 = &D_global_asm_807476FC->lock_regions[temp_v1];
+            temp_a2[-4] = temp_a2[-4] | (temp_a1[6] & 0xF);
+        }
+    };
+}
+*/
 
 typedef struct {
     s32 unk0;

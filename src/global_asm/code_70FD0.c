@@ -738,37 +738,25 @@ void func_global_asm_8066E990(Actor *arg0) {
     }
 }
 
-// close, fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066E9EC.s")
-
-/*
 f32 func_global_asm_8066E9EC(Actor *arg0, s32 arg1, f32 arg2) {
-    LedgeInfo8C *phi_v1;
+    LedgeInfo *ledgeInfo;
+    LedgeInfo8C *current;
 
     arg1--;
-    phi_v1 = arg0->ledge_info_pointer->unk8C;
-    while (phi_v1) {
-        if (phi_v1->next) {
-            if (arg1) {
-                arg1--;
-            } else {
-                break;
-            }
-            phi_v1 = phi_v1->next;
-        } else {
-            break;
-        }
+    ledgeInfo = arg0->ledge_info_pointer;
+    current = ledgeInfo->unk8C;
+    while (arg1-- && current) {
+        current = current->next;
     }
 
-    if (phi_v1) {
+    if (current) {
         if (arg2 != -1.0f) {
-            phi_v1->unkC = arg2;
+            current->unkC = arg2;
         }
-        return phi_v1->unkC;
+        return current->unkC;
     }
     return -1.0f;
 }
-*/
 
 void func_global_asm_8066EA64(Actor *arg0, s32 arg1) {
     LedgeInfo8C *temp_v0 = func_global_asm_8066EAEC(arg0, arg1);
