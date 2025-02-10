@@ -940,9 +940,9 @@ void func_global_asm_80693EC0(void) {
 typedef struct {
     s32 unk0;
     s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s8 unk10;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10;
     s8 unk11;
     s8 unk12;
     u8 unk13;
@@ -1182,8 +1182,102 @@ s32 func_global_asm_806951B0(Actor *arg0) {
     return FALSE;
 }
 
-// doable, matrix
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_806951E8.s")
+extern s16 D_global_asm_80750354;
+extern s16 D_global_asm_80750368;
+
+void func_global_asm_806951E8(void) {
+    // Feather code
+    GunProjectileAAD *aaD;
+    f32 temp_f0;
+    s32 life; // 84
+    f32 sp44[4][4];
+    u16 var_a0;
+
+    aaD = current_actor_pointer->AAD_as_array[0];
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->unk6A &= 0xFFFE;
+        current_actor_pointer->unkEE = ((current_actor_pointer->unk124->unk0 / 6.2831855f) * 4095.0f);
+        current_actor_pointer->y_rotation = current_actor_pointer->unkEE;
+        current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
+        current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
+        current_actor_pointer->noclip_byte = 0x3C;
+        aaD->unk0 = D_global_asm_8076A068;
+        current_actor_pointer->object_properties_bitfield |= 0x01080000;
+        current_actor_pointer->unk16E = 0x3C;
+        current_actor_pointer->unk16F = 0x3C;
+        func_global_asm_80613C48(current_actor_pointer, 0x404, 0.0f, 1.0f);
+        temp_f0 = func_global_asm_80611BB4(current_actor_pointer->y_velocity, current_actor_pointer->unkB8);
+        aaD->unk8 = -(temp_f0 * 57.295776f);
+        aaD->unk10 = 0U;
+        aaD->unkC = (func_global_asm_806119A0() % 3600U) / 10U;
+        aaD->unk13 = current_actor_pointer->unk124->unk10;
+        aaD->unk1C = 0;
+    }
+    life = D_global_asm_80750354;
+    if (aaD->unk13 & 2) {
+        var_a0 = 2;
+        if (cc_number_of_players >= 2) {
+            var_a0 = 3;
+        }
+        func_global_asm_80690C60(var_a0, current_actor_pointer, 0, 0);
+    }
+    if (aaD->unk13 & 4) {
+        life = D_global_asm_80750368;
+    }
+    func_global_asm_8067ACB4(current_actor_pointer);
+    func_global_asm_806651FC(current_actor_pointer);
+    func_global_asm_80665564(current_actor_pointer, 0.0f);
+    switch (current_actor_pointer->control_state) {                              /* irregular */
+    case 0:
+        if ((current_actor_pointer->unkFD != 0) || ((current_actor_pointer->unk124->unk14 != 0.0f) && ((u32) (aaD->unk0 + 1) < (u32) D_global_asm_8076A068))) {
+            func_global_asm_80614D00(current_actor_pointer, 0.5f, 0.0f);
+            func_global_asm_80613C48(current_actor_pointer, 0x406, 0.0f, 0.0f);
+            current_actor_pointer->unkB8 = 0.0f;
+            current_actor_pointer->y_velocity = 0.0f;
+            current_actor_pointer->control_state = 1;
+            aaD->unk10 = 0x3CU;
+            playSoundAtActorPosition(current_actor_pointer, 0x308, 0xFFU, 0x7F, 5U);
+            if (D_global_asm_80750AD0 != 0) {
+                deleteActor(current_actor_pointer);
+                return;
+            }
+        }
+        break;
+    case 1:
+        current_actor_pointer->unk138 = 0;
+        current_actor_pointer->noclip_byte = 1;
+        aaD->unk0 = D_global_asm_8076A068;
+        aaD->unk10--;
+        if (!aaD->unk10) {
+            func_global_asm_80614D00(current_actor_pointer, 0.5f, 0.0f);
+            func_global_asm_80613C48(current_actor_pointer, 0x405, 0.0f, 10.0f);
+            current_actor_pointer->control_state++;
+        }
+        break;
+    case 2:
+        current_actor_pointer->y_velocity -= 20.0f;
+        if (current_actor_pointer->y_velocity < -150.0f) {
+            current_actor_pointer->y_velocity = -150.0f;
+        }
+        break;
+    }
+    if (((current_actor_pointer->unk6A & 1) && (func_global_asm_8066641C() == 1)) || (D_global_asm_807FBB85)) {
+        deleteActor(current_actor_pointer);
+    }
+    if (cc_number_of_players >= 2) {
+        life *= 1.4f;
+    }
+    if ((aaD->unk0 + life) < D_global_asm_8076A068) {
+        deleteActor(current_actor_pointer);
+    }
+    guRotateF(&current_actor_pointer->unkC, aaD->unkC, 0.0f, 0.0f, 1.0f);
+    guRotateF(&sp44[0], aaD->unk8, 1.0f, 0.0f, 0.0f);
+    guMtxCatF(&current_actor_pointer->unkC, &sp44[0], &current_actor_pointer->unkC);
+    renderActor(current_actor_pointer, 1U);
+    return;
+}
+
+
 
 extern SpriteData D_global_asm_8072006C; // Sprite
 extern s16 D_global_asm_80750344;
