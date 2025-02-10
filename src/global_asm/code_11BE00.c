@@ -861,31 +861,30 @@ void func_global_asm_8071A440(Struct80717D84 *arg0, s32 arg1) {
     }
 }
 
-// Close, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071A674.s")
+extern otherSpriteControl *D_8002FBB0[];
 
-extern Struct80717D84 *D_8002FBB0;
-
-/*
-void func_global_asm_8071A674(Struct80717D84 *arg0, s32 arg1) {
+void func_global_asm_8071A674(otherSpriteControl *arg0, s8 *arg1) {
+    // Race overlay only (uses unprotected reference to an array in the race overlay)
     f32 var_f0;
-    Struct80717D84 **var_v0;
+    s32 i;
 
-    var_v0 = &D_8002FBB0;
     var_f0 = (f32)(arg0->unk330->unk16 - arg0->unk34E) / arg0->unk330->unk16;
     if (0.7 < var_f0) {
         var_f0 = 1.0f;
     }
-    while (*var_v0 != D_8002FBB0) {
-        var_v0++;
-        if (*var_v0 == arg0) {
+    for (i = 0; i < 4; i++) {
+        if (D_8002FBB0[i] == arg0) {
             func_global_asm_806595F0(1);
-            createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f0 * 50.0, 0, 0xFF, (-80.0f * var_f0) + 255.0f, (-205.0f * var_f0) + 255.0f);
+            createLight(
+                arg0->xPos, arg0->yPos, arg0->zPos,
+                0.0f, 0.0f, 0.0f,
+                var_f0 * 50.0, 0, 0xFF,
+                (-80.0f * var_f0) + 255.0f,
+                (-205.0f * var_f0) + 255.0f);
             return;
         }
     }
 }
-*/
 
 void func_global_asm_8071A8B0(Struct80717D84 *arg0, s32 arg1) {
     f32 var_f0;
@@ -924,7 +923,75 @@ void func_global_asm_8071AADC(Struct80717D84 *arg0, s32 arg1) {
     createLight(arg0->unk340, arg0->unk344, arg0->unk348, 0.0f, 0.0f, 0.0f, var_f2, 0, 0xFF, 0xFF, 0xFF);
 }
 
+// Close, regalloc, float
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071ABDC.s")
+
+/*
+void func_global_asm_8071ABDC(otherSpriteControl *arg0, s8 *arg1) {
+    Mtx sp80; // Unused
+    Mtx sp40; // Unused
+    // sp3c
+    f32 sp38;
+    // sp34
+    f32 sp30;
+    u16 temp;
+    s16 temp_t9; // 2C
+    f32 sp28;
+    f32 temp_f12; // 24
+
+    if (arg0->unk384_8071ABDC == NULL) {
+        arg0->unk384_8071ABDC = malloc(sizeof(Struct80717D84_unk384_8071ABDC));
+        temp_t9 = (arg0->unk35C >> 0x10) & 0xFF;
+        if (temp_t9 == 0) {
+            sp28 = (func_global_asm_806119A0() / 10000) % 100;
+            arg0->unk384_8071ABDC->unk0 = ((sp28 / 20.0) - 2.5);
+        } else {
+            sp28 = (func_global_asm_806119A0() / 10000) % 100;
+            arg0->unk384_8071ABDC->unk0 = ((sp28 / 10.0) - 2.5);
+        }
+        temp_f12 = ((arg0->unk35C & 0xFFFF) * 0x1E) * 0.017453292f;
+        sp38 = func_global_asm_80612D1C(temp_f12) * 2.5;
+        temp_f12 = func_global_asm_80612D10(temp_f12) * 2.5;
+        arg0->unk384_8071ABDC->unk4 = sp38;
+        arg0->unk384_8071ABDC->unk8 = temp_f12;
+        switch (temp_t9) {
+            case 2:
+                arg0->unk384_8071ABDC->unk4 *= 4;
+                arg0->unk384_8071ABDC->unk8 *= 4;
+                break;
+            case 1:
+                arg0->unk384_8071ABDC->unk4 *= 2;
+                arg0->unk384_8071ABDC->unk8 *= 2;
+                break;
+        }
+        sp30 = arg0->yPos;
+        if (func_global_asm_80667110(arg0->xPos, arg0->zPos, &sp30)) {
+            arg0->unk384_8071ABDC->unkC = sp30;
+        } else {
+            arg0->unk384_8071ABDC->unkC = 0.0f;
+        }
+    }
+    if (arg0->unk34E >= 9) {
+        arg0->unk384_8071ABDC->unk0 += -0.63;
+        arg0->unk384_8071ABDC->unk4 *= 0.9;
+        arg0->unk384_8071ABDC->unk8 *= 0.9;
+    }
+    if (arg0->unk34E >= ((arg0->unk35C >> 0x18) & 0xFF)) {
+        if (arg0->transparency4 >= 0x3C) {
+            arg0->transparency4 -= 0x3C;
+        } else {
+            arg0->transparency4 = 0U;
+        }
+    }
+    arg0->xPos += arg0->unk384_8071ABDC->unk4;
+    arg0->zPos += arg0->unk384_8071ABDC->unk8;
+    arg0->yPos += arg0->unk384_8071ABDC->unk0;
+    if (arg0->yPos < arg0->unk384_8071ABDC->unkC) {
+        *arg1 = 1;
+    }
+}
+*/
+
 
 void func_global_asm_8071AF30(Struct80717D84 *arg0, s8 *arg1) {
     f32 sp78[4][4];

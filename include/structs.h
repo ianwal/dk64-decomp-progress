@@ -2961,6 +2961,13 @@ typedef struct {
     s16 unkC;
 } Struct80717D84_unk384_8071C9E8;
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct80717D84_unk384_8071ABDC;
+
 typedef struct otherSpriteControl {
 	/* 0x000 */ s8 unk_000[0x28];
 	/* 0x028 */ u8 left_stretch;
@@ -3020,6 +3027,7 @@ typedef struct otherSpriteControl {
         Struct80717D84_unk384_807197B4 *unk384_807197B4;
         Struct80717D84_unk384_8071CDE0 *unk384_8071CDE0;
         Struct80717D84_unk384_8071C9E8 *unk384_8071C9E8;
+        Struct80717D84_unk384_8071ABDC *unk384_8071ABDC;
     };
 	/* 0x384 */ 
 } otherSpriteControl;

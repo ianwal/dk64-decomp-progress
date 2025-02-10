@@ -3574,7 +3574,7 @@ void func_global_asm_8071A440(Struct80717D84 *arg0, s32 arg1);
 // TODO: func_global_asm_8071A674 has no documented signature
 void func_global_asm_8071A8B0(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071AADC(Struct80717D84 *arg0, s32 arg1);
-int func_global_asm_8071ABDC(); // TODO: Datatype
+void func_global_asm_8071ABDC(otherSpriteControl *, s8 *); // TODO: Datatype
 void func_global_asm_8071AF30(Struct80717D84 *arg0, s8 *arg1);
 void func_global_asm_8071B1AC(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071B24C(Struct80717D84 *arg0, s32 arg1);
