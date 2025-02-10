@@ -40,7 +40,7 @@ static u8 *D_bonus_8002D8B0[] = {
 };
 
 Gfx *func_global_asm_8068DC54(Gfx *, s32, s32, void *, s32, void *);
-int func_global_asm_80717404(); // TODO: Signature
+void func_global_asm_80717404(otherSpriteControl *, s8 *); // TODO: Signature
 
 Gfx *func_bonus_800252A0(Gfx *dl, Actor *arg1) {
     AAD_bonus_800252A0 *aaD;

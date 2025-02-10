@@ -42,14 +42,14 @@ extern s16 D_global_asm_807FDB42;
 
 void func_global_asm_80714778(f32);
 void func_global_asm_80714A9C(void);
-int func_global_asm_80717404(); // TODO: Signature
+void func_global_asm_80717404(otherSpriteControl *, s8 *);
 void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_80717100.s")
 
 /*
-void func_global_asm_80717100(Struct80717D84 *arg0, s32 arg1) {
+void func_global_asm_80717100(otherSpriteControl *arg0, s8 *arg1) {
     Struct80717D84_unk384_80717100 *var_v1;
 
     if (arg0->unk384 == NULL) {
@@ -57,13 +57,13 @@ void func_global_asm_80717100(Struct80717D84 *arg0, s32 arg1) {
         var_v1->unk0 = (rand() >> 0xF) % 4095;
         var_v1->unk2 = arg0->unk35C;
         var_v1->unk4 = arg0->unk35C >> 0x10;
-        var_v1->unk6 = arg0->unk340;
-        var_v1->unk8 = arg0->unk348;
+        var_v1->unk6 = arg0->xPos;
+        var_v1->unk8 = arg0->zPos;
     }
     var_v1 = arg0->unk384;
     var_v1->unk0 = var_v1->unk4 + var_v1->unk0;
-    arg0->unk340 = var_v1->unk6 + (var_v1->unk2 * func_global_asm_80612794(var_v1->unk0));
-    arg0->unk348 = var_v1->unk8 + (var_v1->unk2 * func_global_asm_80612790(var_v1->unk0));
+    arg0->xPos = var_v1->unk6 + (var_v1->unk2 * func_global_asm_80612794(var_v1->unk0));
+    arg0->zPos = var_v1->unk8 + (var_v1->unk2 * func_global_asm_80612790(var_v1->unk0));
 }
 */
 
@@ -94,46 +94,45 @@ void func_global_asm_8071720C(Struct80717D84 *arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_80717404.s")
 
 /*
-void func_global_asm_80717404(Struct80717D84 *arg0, s32 arg1) {
+void func_global_asm_80717404(otherSpriteControl *arg0, s8 *arg1) {
+    s32 pad;
     f64 sp28;
-    void *temp_s2;
-    void *temp_s2_2;
-    void *temp_v0;
-    void *var_v1;
+    s16 *temp_s2;
+    Struct80717D84_unk384_80717404 *var_s1;
+    s32 r;
 
-    var_v1 = arg0->unk384;
-    if (var_v1 == NULL) {
-        temp_v0 = malloc(0xC);
-        arg0->unk384 = temp_v0;
-        temp_s2 = arg0->unk35C;
-        if (temp_s2->unk0 != 0) {
-            temp_v0->unk0 = (((rand() >> 0xF) % 200) + temp_s2->unk0) - 0x64;
+    temp_s2 = &arg0->unk35C;
+    if (arg0->unk384 == NULL) {
+        var_s1 = malloc(sizeof(Struct80717D84_unk384_80717404));
+        arg0->unk384 = var_s1;
+        if (temp_s2[0]) {
+            var_s1->unk0 = (((rand() >> 0xF) % 200) + temp_s2[0]) - 100;
         } else {
-            temp_v0->unk0 = (rand() >> 0xF) % 4095;
+            var_s1->unk0 = (rand() >> 0xF) % 4095;
         }
-        if (arg0->unk36F != 0) {
-
+        if (arg0->unk36F) {
+            sp28 = 4.0;
+        } else {
+            sp28 = 1.0;
         }
-        sp28 = 0.0;
-        temp_v0->unk4 = (((rand() >> 0xF) % 10) + 5) * 0.0;
-        temp_v0->unk8 = temp_s2->unk2 + ((rand() >> 0xF) % 6);
-        var_v1 = arg0->unk384;
+        var_s1->unk4 = (((rand() >> 0xF) % 10) + 5) * sp28;
+        var_s1->unk8 = ((rand() >> 0xF) % 6) + temp_s2[1];
     }
-    temp_s2_2 = &arg0->unk35C;
-    if (arg0->unk36F != 0) {
-        arg0->unk340 = arg0->unk340 + (4.0 * (0.01 * temp_s2_2->unk2 * func_global_asm_80612794(var_v1->unk0)));
-        arg0->unk344 = arg0->unk344 + (4.0 * (0.01 * temp_s2_2->unk2 * func_global_asm_80612790(var_v1->unk0)));
+    var_s1 = arg0->unk384;
+    if (arg0->unk36F) {
+        arg0->xPos += (4.0 * (0.01 * temp_s2[1] * func_global_asm_80612794(var_s1->unk0)));
+        arg0->yPos += (4.0 * (0.01 * temp_s2[1] * func_global_asm_80612790(var_s1->unk0)));
     } else {
-        arg0->unk340 = arg0->unk340 + (0.04 * temp_s2_2->unk2 * func_global_asm_80612794(var_v1->unk0));
-        arg0->unk348 = arg0->unk348 + (0.04 * temp_s2_2->unk2 * func_global_asm_80612790(var_v1->unk0));
-        if (temp_s2_2->unk0 == 0) {
-            arg0->unk344 = arg0->unk344 + var_v1->unk8;
-            var_v1->unk8 = var_v1->unk8 - 0.5;
+        arg0->xPos += (0.04 * temp_s2[1] * func_global_asm_80612794(var_s1->unk0));
+        arg0->zPos += (0.04 * temp_s2[1] * func_global_asm_80612790(var_s1->unk0));
+        if (!temp_s2[0]) {
+            arg0->yPos += var_s1->unk8;
+            var_s1->unk8 = var_s1->unk8 - 0.5;
         } else {
-            arg0->unk344 = arg0->unk344 + (var_v1->unk8 * 0.2);
+            arg0->yPos += (var_s1->unk8 * 0.2);
         }
     }
-    temp_s2_2->unk2 = temp_s2_2->unk2 + var_v1->unk4;
+    temp_s2[1] += var_s1->unk4;
 }
 */
 

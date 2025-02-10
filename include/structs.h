@@ -2979,6 +2979,21 @@ typedef struct {
     f32 unk1C;
 } Struct80717D84_unk384_80718BF4;
 
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_80717404;
+
+typedef union {
+    struct {
+        s16 unk0;
+        s16 unk2;
+    } s16arr;
+    s32 s32v;
+    Actor *actor;
+} otherSpriteControl_unk35C;
+
 typedef struct otherSpriteControl {
 	/* 0x000 */ s8 unk_000[0x28];
 	/* 0x028 */ u8 left_stretch;
@@ -3004,7 +3019,11 @@ typedef struct otherSpriteControl {
 	/* 0x352 */ u8 pad352[0x2];
     /* 0x354 */ s32 unk354;
     /* 0x358 */ s32 unk358;
-	/* 0x35C */ s32 unk35C;
+    /* 0x35C */ union {
+        s32 unk35C;
+        Actor *unk35C_actor;
+        s16 unk35C_s16[2];
+    };
 	/* 0x360 */ f32 xScale;
 	/* 0x364 */ f32 yScale;
 	/* 0x368 */ s8 unk_368[0x2];
@@ -3012,7 +3031,9 @@ typedef struct otherSpriteControl {
 	/* 0x36B */ s8 transparency2;
 	/* 0x36C */ s8 transparency3;
 	/* 0x36D */ u8 transparency4;
-	/* 0x36E */ s8 unk_36E[0x384-0x36E];
+	/* 0x36E */ s8 unk36E;
+    /* 0x36F */ u8 unk36F;
+    /* 0x370 */ s8 unk_36E[0x384-0x370];
     union {
         void* some_pointer;
         Struct80717D84_unk384 *unk384;
@@ -3040,6 +3061,7 @@ typedef struct otherSpriteControl {
         Struct80717D84_unk384_8071C9E8 *unk384_8071C9E8;
         Struct80717D84_unk384_8071ABDC *unk384_8071ABDC;
         Struct80717D84_unk384_80718BF4 *unk384_80718BF4;
+        Struct80717D84_unk384_80717404 *unk384_80717404;
     };
 	/* 0x384 */ 
 } otherSpriteControl;
