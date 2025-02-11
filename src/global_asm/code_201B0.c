@@ -1521,8 +1521,11 @@ void *func_global_asm_8062649C(u8 *src, void *dest, u16 size) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806264DC.s")
 
-// 64 bit maths
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626BC8.s")
+s32 func_global_asm_80626BC8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+    u64 pad[3];
+
+    return sqrtf((SQ((s64)(arg1 - arg4)) + (SQ((s64)(arg0 - arg3)) + SQ((s64)(arg2 - arg5)))));
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626CAC.s")
 

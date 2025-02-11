@@ -3496,8 +3496,8 @@ u8 func_global_asm_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     temp_f0 = func_global_asm_80612790(temp_f18);
     temp = ((D_global_asm_807F621C * sp2C) + (D_global_asm_807F6224 * temp_f0));
     temp = -temp;
-    temp2 = (player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position);
-    return (f64)(temp2 + temp) > 6;
+    temp = (player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position) + temp;
+    return 6.0 < temp;
 }
 */
 

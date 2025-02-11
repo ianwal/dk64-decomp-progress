@@ -2930,7 +2930,7 @@ us,asm,func_global_asm_80605510,744,no
 us,asm,func_global_asm_80653B80,624,yes
 us,asm,func_global_asm_806CCC10,68,yes
 us,asm,func_global_asm_807313BC,84,yes
-us,asm,func_global_asm_80626BC8,228,no
+us,asm,func_global_asm_80626BC8,228,yes
 us,asm,func_global_asm_806168E4,128,yes
 us,asm,func_global_asm_80700BF4,1188,no
 us,asm,func_global_asm_8064EB9C,104,yes
