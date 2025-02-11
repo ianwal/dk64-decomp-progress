@@ -622,7 +622,7 @@ s32 func_global_asm_80617D14(Actor *arg0);
 void func_global_asm_80617D20(Actor *arg0); // TODO: s32 return?
 void func_global_asm_80617D70(Actor *arg0); // TODO: s32 return?
 void func_global_asm_80617D94(s32 arg0);
-void func_global_asm_80617DFC(Actor*, s16);
+s32 func_global_asm_80617DFC(Actor*, s16);
 s32 func_global_asm_80617FFC(Actor *arg0);
 s32 func_global_asm_80618048(Actor *arg0);
 void func_global_asm_806180FC(Actor *arg0);

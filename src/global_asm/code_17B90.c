@@ -1441,6 +1441,8 @@ s32 func_global_asm_80616E08(Actor *arg0) {
 
 extern s32 D_global_asm_807457C8;
 extern f64 D_global_asm_807573A8;
+void func_global_asm_80737924(s32);
+
 
 s32 func_global_asm_80617140(Actor *arg0) {
     s16 sp2E;
@@ -1560,12 +1562,6 @@ s32 func_global_asm_806174B4(Actor *arg0) {
 // rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806175C4.s")
 
-extern f64 D_global_asm_807573D8;
-extern f64 D_global_asm_807573E0;
-extern f64 D_global_asm_807573E8;
-extern f64 D_global_asm_807573F0;
-extern f32 D_global_asm_807573F8;
-
 /*
 s32 func_global_asm_806175C4(Actor *arg0) {
     s16 sp46;
@@ -1574,27 +1570,55 @@ s32 func_global_asm_806175C4(Actor *arg0) {
     u8 sp43;
     u8 sp42;
     f32 var_f2;
-    f64 temp_f0;
 
-    D_807F5AF0 += 1;
+    D_807F5AF0++;
     getAnimationArg16(&sp46);
     getAnimationArg8(&sp43);
     getAnimationArg8(&sp42);
     getAnimationArg8(&sp45);
     getAnimationArg8(&sp44);
-    temp_f0 = ((((arg0->animation_state->scale_x / D_global_asm_807573E0) * 200.0) + D_global_asm_807573E8) * sp43) / D_global_asm_807573F0;
-    if (D_global_asm_807573D8 < temp_f0) {
-        var_f2 = D_global_asm_807573D8;
-    } else {
-        var_f2 = temp_f0;
-    }
-    playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, sp46, var_f2, sp42, sp45, sp44, D_global_asm_807573F8, 0);
+    var_f2 = MIN(((((arg0->animation_state->scale_x / 0.4381361) * 200.0) + 55.0) * sp43) / 255.0, 255.0);
+    playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, sp46, var_f2, sp42, sp45, sp44, 0.3f, 0);
     return 1;
 }
 */
 
-// m2c errors
+// Doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617770.s")
+
+void func_global_asm_80609B80(f32, f32, s16, s32, s16, s32, s32, s32, s32, f32); /* extern */
+extern s16 *D_807FBB5C;
+
+/*
+void func_global_asm_80617770(Actor *arg0, u32 arg1, u8 arg2) {
+    u8 var_v0;
+    u8 var_v1;
+    u16 slot;
+
+    slot = ((s32)(arg1 * 7) + arg0->unk58) - 2;
+    var_v1 = 0xFF;
+    if (D_807FBB5C[slot] == 0) {
+        if (extra_player_info_pointer->unkC4) {
+            var_v1 = 0xFF;
+            func_global_asm_80737924(extra_player_info_pointer->unkC4);
+        }
+    }
+    if (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 == 2) {
+        var_v0 = 0xA;
+    } else if (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 == 0) {
+        var_v0 = 0x50;
+        var_v1 *= 0.5;
+    } else {
+        if ((arg0->unk58 == ACTOR_DK) || (arg0->unk58 == ACTOR_LANKY)) {
+            var_v0 = 0x32;
+        } else {
+            var_v0 = 0x3C;
+        }
+    }
+    func_global_asm_80609B80(arg0->x_position, arg0->y_position, D_807FBB5C[slot], arg0->z_position, D_807FBB5C[slot], var_v1, 0x7F, (s32) arg2, var_v0, 0.3f);
+}
+*/
+
 
 s32 func_global_asm_8061796C(Actor *arg0) {
     s16 sp1E;
@@ -1727,8 +1751,75 @@ void func_global_asm_80617D94(s32 arg0) {
     }
 }
 
-// jumptable, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617DFC.s")
+s32 func_global_asm_80617DFC(Actor *arg0, s16 arg1) {
+    u8 sp2F;
+    s16 sp2C;
+    s16 sp2A;
+
+    D_807F5AF0 += 1;
+    while (TRUE) {
+        getAnimationArg8(&sp2F);
+        getAnimationArg16(&sp2C);
+        switch (sp2F) {
+        case 0:
+            D_807F5AF0 -= 2;
+            return 1;
+        case 1:
+            if (arg1 == sp2C) {
+                getAnimationArg16(&sp2A);
+                D_807F5AF0 = arg0->animation_state->unk68 + sp2A;
+                return 1;
+            }
+            break;
+        case 2:
+            if (arg1 < sp2C) {
+                getAnimationArg16(&sp2A);
+                D_807F5AF0 = arg0->animation_state->unk68 + sp2A;
+                return 1;
+            }
+            break;
+        case 3:
+            if (sp2C < arg1) {
+                getAnimationArg16(&sp2A);
+                D_807F5AF0 = arg0->animation_state->unk68 + sp2A;
+                return 1;
+            }
+            break;
+        case 4:
+            if (arg1 == sp2C) {
+                getAnimationArg16(&sp2A);
+                arg0->animation_state->unk88 = sp2A;
+                func_global_asm_80617D94(arg0);
+                return 1;
+            }
+            break;
+        case 5:
+            if (arg1 < sp2C) {
+                getAnimationArg16(&sp2A);
+                arg0->animation_state->unk88 = sp2A;
+                func_global_asm_80617D94(arg0);
+                return 1;
+            }
+            break;
+        case 6:
+            if (sp2C < arg1) {
+                getAnimationArg16(&sp2A);
+                arg0->animation_state->unk88 = sp2A;
+                func_global_asm_80617D94(arg0);
+                return 1;
+            }
+            break;
+        case 7:
+            getAnimationArg16(&sp2A);
+            arg0->animation_state->unk88 = sp2A;
+            func_global_asm_80617D94(arg0);
+            return 1;
+        }
+        D_807F5AF0 += 2;
+    }
+}
+
+
 
 s32 func_global_asm_80617FFC(Actor *arg0) {
     f32 sp1C;
