@@ -443,7 +443,10 @@ typedef struct {
         f32 unk8; // Used
         s32 unk8_s32; // Used // TODO: We might have another aaD situation here...
     };
-    f32 unkC; // Used
+    union {
+        f32 unkC; // Used
+        s32 unkC_s32; // Used // TODO: We might have another aaD situation here...
+    };
     f32 unk10; // Used
     union {
         f32 unk14; // Used

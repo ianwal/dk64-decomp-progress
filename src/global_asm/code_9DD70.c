@@ -353,9 +353,6 @@ void func_global_asm_8069A7C8(void) {
 }
 */
 
-// Very close, type issues on RGB
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069AB74.s")
-
 extern s16 D_global_asm_807503A0;
 extern u8 D_global_asm_807FBD70;
 
@@ -365,20 +362,17 @@ typedef struct {
     f32 unk4;
 } AAD_8069AB74;
 
-/*
 void func_global_asm_8069AB74(void) {
     f32 z;
     f32 y;
     f32 x;
-    u16 red;
-    u16 green;
-    u16 blue;
-    s32 pad;
-    s32 pad2;
-    s32 pad3;
-    AAD_8069AB74 *aaD;
-    s32 pad4;
     Actor124 *temp_v0;
+    s32 pad3;
+    s32 pad4;
+    u16 red; // 5e
+    u16 green; // 5c
+    u16 blue; // 5a
+    AAD_8069AB74 *aaD; // 54
 
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -390,19 +384,20 @@ void func_global_asm_8069AB74(void) {
         aaD->unk0 = 0;
         aaD->unk4 = 1.0f;
     }
-    func_global_asm_80614D00(current_actor_pointer, current_actor_pointer->unk124->unk0, 1.0f);
+    func_global_asm_80614D00(current_actor_pointer,
+        current_actor_pointer->unk124->unk0, 1.0f);
     if (D_global_asm_807FBD70 == 4) {
         aaD->unk0 = D_global_asm_807503A0;
         aaD->unk4 = 0.0f;
     }
     if (aaD->unk0 == 0) {
         temp_v0 = current_actor_pointer->unk124;
-        red = temp_v0->unk4;
-        green = temp_v0->unk8;
-        blue = temp_v0->unkC;
-        red *= aaD->unk4;
-        green *= aaD->unk4;
-        blue *= aaD->unk4;
+        red = temp_v0->unk4_s32;
+        green = temp_v0->unk8_s32;
+        blue = temp_v0->unkC_s32;
+        red *= (f64)aaD->unk4;
+        green *= (f64)aaD->unk4;
+        blue *= (f64)aaD->unk4;
         aaD->unk4 += 0.05;
         if (aaD->unk4 > 1.0) {
             aaD->unk4 = 1.0f;
@@ -415,14 +410,17 @@ void func_global_asm_8069AB74(void) {
             func_global_asm_806595F0(2);
             func_global_asm_80659600(current_actor_pointer->unk12C);
             getBonePosition(current_actor_pointer, 2, &x, &y, &z);
-            createLight(current_actor_pointer->x_position + 0.3, current_actor_pointer->y_position, current_actor_pointer->z_position, x, y, z, 0.0f, 1, red, green, blue);
+            createLight(
+                current_actor_pointer->x_position + 0.3,
+                current_actor_pointer->y_position,
+                current_actor_pointer->z_position, 
+                x, y, z, 0.0f, 1, red, green, blue);
         }
     } else {
         aaD->unk0--;
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_8069AFF0(void) {
     func_global_asm_8069AB74();
