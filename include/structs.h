@@ -1132,6 +1132,14 @@ typedef struct TempAAD {
 typedef struct struct806A57C0_2 Struct806A57C0_2;
 typedef struct struct806A57C0_3 Struct806A57C0_3;
 
+typedef struct struct806A57C0_3_sub10 {
+    s16 unk0;
+    s16 unk2;
+    void *unk4;
+    Mtx unk8[2];
+    f32 unk88;
+} struct806A57C0_3_sub10;
+
 struct struct806A57C0_3 {
     s16 unk0;
     u8 unk2; // Used
@@ -1139,42 +1147,7 @@ struct struct806A57C0_3 {
     f32 unk4; // Used
     f32 unk8; // Used
     s32 unkC;
-    s32 unk10;
-    void *unk14; // Used
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-    s32 unk60;
-    s32 unk64;
-    s32 unk68;
-    s32 unk6C;
-    s32 unk70;
-    s32 unk74;
-    s32 unk78;
-    s32 unk7C;
-    s32 unk80;
-    s32 unk84;
-    s32 unk88;
-    s32 unk8C;
-    s32 unk90;
-    s32 unk94;
-    s32 unk98;
-    s32 unk9C;
+    struct806A57C0_3_sub10 unk10;
     Struct806A57C0_3 *unkA0; // Used
 };
 
@@ -3627,5 +3600,42 @@ typedef struct {
     s32 *unk4;
     u8 unk8;
 } Struct807FB630;
+
+typedef struct Struct80630B70 Struct80630B70;
+struct Struct80630B70 {
+    Actor *unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+    u8 pad10[0x14-0x10];
+    Struct80630B70 *unk14;
+    u8 pad18[0x24 - 0x18];
+    u8 unk24;
+};
+
+typedef struct Struct80614C38_0 Struct80614C38;
+struct Struct80614C38_0 {
+    void *unk0;
+    void *unk4;
+    u8 unk8;
+    u8 pad9[0x12 - 0x9];
+    Struct80614C38 *next;
+};
+
+typedef struct ActorModelHeader {
+    s32 unk0;
+    union {
+        s32 *unk4;
+        s32 unk4_raw;
+    };
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    Struct80614C38 * unk14;
+    u8 pad18[0x20 - 0x18];
+    u8 bone_count;
+    u8 unk21;
+    u8 pad22[0x28 - 0x22];
+} ActorModelHeader;
 
 #endif

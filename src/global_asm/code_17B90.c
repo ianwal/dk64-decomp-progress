@@ -25,31 +25,6 @@ extern u16 D_807FBB30;
 extern u16 D_807FBB32;
 extern s32 D_global_asm_80746B64;
 
-typedef struct Struct80614C38_0 Struct80614C38;
-struct Struct80614C38_0 {
-    void *unk0;
-    void *unk4;
-    u8 unk8;
-    u8 pad9[0x12 - 0x9];
-    Struct80614C38 *next;
-};
-
-typedef struct ActorModelHeader {
-    s32 unk0;
-    union {
-        s32 *unk4;
-        s32 unk4_raw;
-    };
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    Struct80614C38 * unk14;
-    u8 pad18[0x20 - 0x18];
-    u8 bone_count;
-    u8 unk21;
-    u8 pad22[0x28 - 0x22];
-} ActorModelHeader;
-
 void *func_global_asm_80612E90(Actor *arg0, s32 arg1, u8 arg2) {
     s32 delta;
     s32 i;
@@ -248,3 +223,4 @@ void func_global_asm_806136B4(Actor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613794.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80613944.s")
+

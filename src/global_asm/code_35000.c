@@ -345,8 +345,64 @@ Chunk14 *func_global_asm_80630890(Chunk14 *arg0, f32 arg1, f32 arg2, f32 arg3, C
 }
 */
 
-// Displaylist stuff
+// Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_80630B70.s")
+
+void *func_global_asm_80630DCC(s32, void *, Gfx *, u8);
+Gfx *func_global_asm_80636FFC(void *, Gfx *, s32, s32, f32, u32, s32, s32);
+Gfx *func_global_asm_80637B6C(void *, Gfx *, f32, f32, f32, u32, s32, s32);
+Gfx *func_global_asm_80715E94(void *, Gfx *, s16);
+extern s32 D_global_asm_8076A048;
+extern s8 D_global_asm_807F6009;
+
+/*
+Gfx *func_global_asm_80630B70(Gfx *dl, Struct80630B70 *arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5, s16 arg6, u8 arg7) {
+    u8 var_s4;
+    u8 temp_v1;
+    Actor *temp_s3;
+
+    var_s4 = TRUE;
+    gDPPipeSync(dl++);
+    while (arg1) {
+        temp_v1 = arg1->unk24;
+        temp_s3 = arg1->unk0;
+        if (((arg5 & 0x20) == 0) && (temp_v1 != 0) && (temp_v1 != 5)) {
+            var_s4 = FALSE;
+        }
+        if (((arg5 & 0x20000) == 0) && (temp_v1 == 5)) {
+            var_s4 = FALSE;
+        }
+        if (((arg5 & 0x10000) == 0) && (temp_v1 == 0) && (!(temp_s3->object_properties_bitfield & 0x40000000) || (global_properties_bitfield & 2))) {
+            var_s4 = FALSE;
+        }
+        if (var_s4) {
+            switch (temp_v1) {
+            case 0:
+                dl = func_global_asm_80630DCC(D_global_asm_8076A048, temp_s3, dl, arg7);
+                gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+                D_global_asm_807F6009 = 0;
+                break;
+            case 1:
+                dl = func_global_asm_80636FFC(temp_s3, dl, arg1->unk4, arg1->unk8, arg1->unkC, 1, arg6, arg7);
+                D_global_asm_807F6009 = 1;
+                break;
+            case 2:
+                dl = func_global_asm_80637B6C(temp_s3, dl, arg2, arg3, arg4, 1, arg6, arg7);
+                break;
+            case 5:
+                dl = func_global_asm_80715E94(temp_s3, dl, arg6);
+                break;
+            }
+        } else {
+            var_s4 = TRUE;
+        }
+        arg1 = arg1->unk14;
+    }
+    gDPPipeSync(dl++);
+    return dl;
+}
+*/
+
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_80630DCC.s")

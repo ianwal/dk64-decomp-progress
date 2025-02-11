@@ -41,6 +41,8 @@ void func_global_asm_806FB8B0(s32 arg0) {
     func_global_asm_806FB490(D_global_asm_80754A18[0]->character[0x5F].width, arg0, D_global_asm_807FD7F0[2], D_global_asm_80754A18[0]->character[0x5F].x_start, 2, &sp2F, 0x30);
 }
 
+void func_global_asm_806FB914(s16, u8 *);
+
 // Jumptable, doable, string processing
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FB914.s")
 
@@ -75,7 +77,31 @@ void func_global_asm_806FBC34(void) {
     }
 }
 
+// regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/getCenterOfString.s")
+
+/*
+s32 getCenterOfString(s16 renderStyle, u8 *string) {
+    u32 len;
+    u8 ch;
+
+    len = 0;
+    if (renderStyle & 0x80) {
+        renderStyle ^= 0x80;
+        return strlen(string) * D_global_asm_80754A34[renderStyle].kerning_animation;
+    }
+    while (ch = *string++, ch) {
+        if (ch == ' ') {
+            len += D_global_asm_80754A34[renderStyle].kerning_space;
+        } else {
+            func_global_asm_806FB914(renderStyle, &ch);
+            len += D_global_asm_80754A18[renderStyle]->character[ch].width;
+        }
+        len += D_global_asm_80754A34[renderStyle].kerning_character;
+    }
+    return len;
+}
+*/
 
 s16 func_global_asm_806FBEAC(u8 *arg0) {
     s16 count;
@@ -174,8 +200,6 @@ Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FD490.s")
-
-s32 func_global_asm_806FB914(s16, u8 *);
 
 s16 func_global_asm_806FD7A8(s16 arg0, u8 arg1) {
     s16 var_v1;

@@ -306,7 +306,7 @@ void func_global_asm_8070D9AC(Struct806A57C0_2 *arg0) {
         temp_s0 = var_s1;
         var_s1 = var_s1->unkA0;
         if (temp_s2 != 0) {
-            temp_a0 = temp_s0->unk14;
+            temp_a0 = temp_s0->unk10.unk4;
             if (temp_a0 != 0) {
                 func_global_asm_80715908(temp_a0);
             }

@@ -872,7 +872,7 @@ Chunk14 *func_global_asm_8063070C(Chunk14 *arg0);
 void func_global_asm_806307AC(Chunk14 *current);
 void func_global_asm_806307CC(Chunk14 *arg0, PropModel *arg1, u8 arg2, u8 arg3, s8 *arg4);
 // TODO: func_global_asm_80630890 has no documented signature
-Gfx *func_global_asm_80630B70(Gfx*, s32, f32, f32, f32, s32, s32, s32);
+Gfx *func_global_asm_80630B70(Gfx*, Struct80630B70 *, f32, f32, f32, s32, s16, u8);
 // TODO: func_global_asm_80630DCC has no documented signature
 s32 func_global_asm_8063162C(Actor *arg0, s16 *arg1);
 s32 func_global_asm_806317D4(Actor *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -3251,7 +3251,7 @@ void func_global_asm_806FB8B0(s32 arg0);
 void func_global_asm_806FBB58(void);
 void *func_global_asm_806FBB9C(s16 textureIndex);
 void func_global_asm_806FBC34(void);
-s32 getCenterOfString(s16 renderStyle, char *string);
+s32 getCenterOfString(s16 renderStyle, u8 *string);
 s16 func_global_asm_806FBEAC(u8 *arg0);
 Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2);
 Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, char *string, u32 extraBitfield);

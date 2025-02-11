@@ -134,8 +134,30 @@ void func_global_asm_80614A64(Actor *arg0) {
     }
 }
 
-// displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/func_global_asm_80614B34.s")
+s32 *func_global_asm_80614C38(Gfx *, Actor *, Actor_unk0 *); /* extern */
+
+Gfx *func_global_asm_80614B34(Gfx *dl, Actor *arg1) {
+    ActorModelHeader *var_s0;
+    s32 var_v1;
+
+    var_s0 = arg1->unk0;
+    if (arg1->unk4C != NULL) {
+        var_s0 = arg1->unk4C;
+    }
+    if (arg1->unk50 != NULL) {
+        var_s0 = arg1->unk50;
+    }
+    dl = func_global_asm_80687EE0(dl, arg1);
+    dl = func_global_asm_80614C38(dl, arg1, var_s0);
+    gSPSegment(dl++, 0x04, osVirtualToPhysical(arg1->unk8));
+    gSPSegment(dl++, 0x03, osVirtualToPhysical(var_s0->unk0));
+    for (var_v1 = 0; var_v1 < var_s0->unk21; var_v1++) {
+        gSPDisplayList(dl++, var_s0->unk4[var_v1]);
+    }
+    return dl;
+}
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/func_global_asm_80614C38.s")
 
