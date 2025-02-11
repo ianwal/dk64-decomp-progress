@@ -27,7 +27,7 @@ void func_global_asm_80612BC0(f32 (*arg0)[4], f32 arg1) {
     f32 sp24;
     f32 sp20;
 
-    arg1 *= 0.01745329238f;
+    arg1 *= (MATH_PI_F / 180.0f);
     sp24 = func_global_asm_80612D1C(arg1);
     sp20 = func_global_asm_80612D10(arg1);
     guMtxIdentF(arg0);
@@ -41,7 +41,7 @@ void func_global_asm_80612C30(f32 (*arg0)[4], f32 arg1) {
     f32 sp24;
     f32 sp20;
 
-    arg1 *= 0.01745329238f;
+    arg1 *= (MATH_PI_F / 180.0f);
     sp24 = func_global_asm_80612D1C(arg1);
     sp20 = func_global_asm_80612D10(arg1);
     guMtxIdentF(arg0);
@@ -55,7 +55,7 @@ void func_global_asm_80612CA0(f32 (*arg0)[4], f32 arg1) {
     f32 sp24;
     f32 sp20;
 
-    arg1 *= 0.01745329238f;
+    arg1 *= (MATH_PI_F / 180.0f);
     sp24 = func_global_asm_80612D1C(arg1);
     sp20 = func_global_asm_80612D10(arg1);
     guMtxIdentF(arg0);

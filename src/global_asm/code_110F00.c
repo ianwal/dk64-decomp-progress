@@ -159,7 +159,7 @@ void func_global_asm_8070CAB4(float (*mf)[4], f32 arg1) {
     f32 temp_f0;
     f32 sp24;
 
-    temp_f12 = arg1 * 0.017453292519943295;
+    temp_f12 = arg1 * (M_PI / 180);
     temp_f0 = func_global_asm_80612D1C(temp_f12);
     sp24 = func_global_asm_80612D10(temp_f12);
     func_global_asm_8070CCC4(mf);
@@ -174,7 +174,7 @@ void func_global_asm_8070CB2C(float (*mf)[4], f32 arg1) {
     f32 temp_f0;
     f32 sp24;
 
-    temp_f12 = arg1 * 0.017453292519943295;
+    temp_f12 = arg1 * (M_PI / 180);
     temp_f0 = func_global_asm_80612D1C(temp_f12);
     sp24 = func_global_asm_80612D10(temp_f12);
     func_global_asm_8070CCC4(mf);
@@ -189,7 +189,7 @@ void func_global_asm_8070CBA4(float (*mf)[4], f32 arg1) {
     f32 temp_f0;
     f32 sp24;
 
-    temp_f12 = arg1 * 0.017453292519943295;
+    temp_f12 = arg1 * (M_PI / 180);
     temp_f0 = func_global_asm_80612D1C(temp_f12);
     sp24 = func_global_asm_80612D10(temp_f12);
     func_global_asm_8070CCC4(mf);

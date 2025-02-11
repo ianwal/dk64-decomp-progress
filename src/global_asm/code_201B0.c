@@ -1542,7 +1542,7 @@ void func_global_asm_80627490(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4
     f32 temp_f14;
     f32 temp_f2;
 
-    *arg0 = func_global_asm_80665AE4(arg5, arg7, arg2, arg4) * 0.017453292f;
+    *arg0 = func_global_asm_80665AE4(arg5, arg7, arg2, arg4) * (MATH_PI_F / 180.0f);
     temp_f2 = arg2 - arg5;
     temp_f14 = arg4 - arg7;
     *arg1 = func_global_asm_80611BB4(arg3 - arg6, sqrtf(SQ(temp_f2) + SQ(temp_f14)));

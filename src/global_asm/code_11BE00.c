@@ -615,8 +615,8 @@ void func_global_asm_8071910C(otherSpriteControl *arg0, s32 arg1) {
         var_f16 = (func_global_asm_806119A0() / 10000U) % 1000U;
         sp54 = (var_f16 / 500.0f) + (f32) (arg0->unk35C & 0xFF);
         var_f0 = (func_global_asm_806119A0() / 10000U) % 360U;
-        sp4C = func_global_asm_80612D1C(var_f0 * 0.017453292f) * sp54;
-        var_f0 = func_global_asm_80612D10(var_f0 * 0.017453292f);
+        sp4C = func_global_asm_80612D1C(var_f0 * (MATH_PI_F / 180.0f)) * sp54;
+        var_f0 = func_global_asm_80612D10(var_f0 * (MATH_PI_F / 180.0f));
         arg0->unk384_8071910C->unk4 = sp4C;
         arg0->unk384_8071910C->unk8 = var_f0 * sp54;
         arg0->unk384_8071910C->unkC = (func_global_asm_806119A0() % 36000U) / 100U;
@@ -817,9 +817,9 @@ void func_global_asm_80719EF4(Struct80717D84 *arg0, s32 arg1) {
     if (arg0->unk384->unk0 < 0.8) {
         arg0->unk384->unk0 = 0.8f;
     }
-    temp = func_global_asm_80612D1C(0.01745329238f * arg0->unk384->unk4);
+    temp = func_global_asm_80612D1C((MATH_PI_F / 180.0f) * arg0->unk384->unk4);
     sp1C = (temp * arg0->unk384->unk0);
-    temp = func_global_asm_80612D10(0.01745329238f * arg0->unk384->unk4);
+    temp = func_global_asm_80612D10((MATH_PI_F / 180.0f) * arg0->unk384->unk4);
     temp_f2 = (temp * arg0->unk384->unk0);
     arg0->unk340 += sp1C;
     arg0->unk348 += temp_f2;

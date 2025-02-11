@@ -157,8 +157,8 @@ void func_global_asm_8065A654(void) {
 void func_global_asm_8065A660(f32 arg0, f32 arg1) {
     D_global_asm_807F7EE4 = arg0;
     D_global_asm_807F7EE8 = arg1;
-    D_global_asm_807F7ED8 = func_global_asm_80612D10(arg0 * 0.01745329238f);
-    D_global_asm_807F7EDC = func_global_asm_80612D10(arg1 * 0.01745329238f);
+    D_global_asm_807F7ED8 = func_global_asm_80612D10(arg0 * (MATH_PI_F / 180.0f));
+    D_global_asm_807F7EDC = func_global_asm_80612D10(arg1 * (MATH_PI_F / 180.0f));
     D_global_asm_807F7EE0 = 1.0f / (D_global_asm_807F7ED8 - D_global_asm_807F7EDC);
 }
 
