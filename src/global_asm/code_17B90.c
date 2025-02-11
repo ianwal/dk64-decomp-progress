@@ -1852,8 +1852,67 @@ void func_global_asm_806180FC(Actor *arg0) {
 
 }
 
-// jumptable, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618104.s")
+s32 func_global_asm_80671E00(f32, f32, f32, f32, s16*, s16*, s32, s32);
+extern f32 D_global_asm_80753E48[];
+extern s16 D_global_asm_80753E64[];
+
+void func_global_asm_80618104(Actor *arg0) {
+    f32 var_f0;
+    f32 sp50;
+    s32 sp48[2];
+    PlayerAdditionalActorData *sp44;
+    s16 var_a2;
+    s16 sp40;
+    s16 sp3E;
+
+    sp44 = arg0->PaaD;
+    func_global_asm_806F8BC4(4, 0U, 0);
+    if ((func_global_asm_806F8AD4(4U, sp44->unk1A4) != 0) && (func_global_asm_8067ACDC(arg0, 4U, NULL) < D_global_asm_80753E64[D_global_asm_807FD584])) {
+        changeCollectableCount(4, sp44->unk1A4, -1);
+        sp50 = arg0->animation_state->scale[1] * 2.6666667064030967;
+        switch (arg0->unk58) {
+        case ACTOR_DK:
+        case ACTOR_CHUNKY:
+        case ACTOR_KRUSHA:
+            var_f0 = 30.0f;
+            break;
+        case ACTOR_DIDDY:
+        case ACTOR_TINY:
+            var_f0 = 20.0f;
+            break;
+        default:
+            var_f0 = 30.0f;
+            break;
+        }
+        if (func_global_asm_80671E00(arg0->x_position,
+                arg0->y_position + 30.0,
+                arg0->z_position,
+                var_f0, &sp40, &sp3E, 1, NULL)) {
+            if (arg0->control_state == 2) {
+                var_a2 = func_global_asm_80665DE0(
+                    character_change_array[cc_player_index].look_at_at_x,
+                    character_change_array[cc_player_index].look_at_at_z,
+                    character_change_array[cc_player_index].look_at_eye_x,
+                    character_change_array[cc_player_index].look_at_eye_z);
+            } else {
+                var_a2 = arg0->y_rotation;
+            }
+            if (!func_global_asm_806725E4(sp40, sp3E, var_a2, 0)) {
+                func_global_asm_806907E0();
+            }
+        }
+        if (arg0->control_state == 2) {
+            func_global_asm_80690814(current_player, 6);
+            sqrtf(SQ(character_change_array[cc_player_index].look_at_at_x - character_change_array[cc_player_index].look_at_eye_x) + SQ(character_change_array[cc_player_index].look_at_at_z - character_change_array[cc_player_index].look_at_eye_z));
+            func_global_asm_8069084C(0x29, (s16) D_global_asm_807FD568->weapon, sp50, func_global_asm_80665DE0(character_change_array[cc_player_index].look_at_at_x, character_change_array[cc_player_index].look_at_at_z, character_change_array[cc_player_index].look_at_eye_x, character_change_array[cc_player_index].look_at_eye_z), D_global_asm_80753E48[D_global_asm_807FD584], 0.0f, arg0);
+            return;
+        }
+        func_global_asm_80690814(arg0, 7);
+        func_global_asm_8069084C(0x29, (s16) D_global_asm_807FD568->weapon, sp50, arg0->y_rotation, D_global_asm_80753E48[D_global_asm_807FD584], 0.0f, arg0);
+    }
+}
+
+
 
 extern SpriteData D_global_asm_8071FE08; // TODO: Sprite?
 extern SpriteData D_global_asm_8071FF18; // TODO: Sprite?
