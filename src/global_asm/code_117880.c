@@ -28,7 +28,7 @@ extern u8 D_global_asm_807FDA1C;
 typedef struct {
     u8 unk0;
     u8 unk1;
-    s16 unk2;
+    u16 unk2;
 } Struct8075E5C0;
 
 extern const Struct8075E5C0 D_global_asm_8075E5C0[] = {
@@ -46,8 +46,98 @@ void func_global_asm_80712B80(void) {
     }
 }
 
-// Jumptable
+// Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_117880/func_global_asm_80712BD4.s")
+
+extern Mtx D_807FDAC0;
+extern u8 D_global_asm_807467CC;
+extern s16 D_global_asm_80755308;
+extern s8 D_global_asm_8075530C;
+extern s8 D_global_asm_80755310;
+
+/*
+void func_global_asm_80712BD4(void) {
+    u8 temp_v0;
+    s16 temp_a1;
+    s16 temp_v0_2;
+    u16 temp_a2;
+    u8 temp_t6;
+    s16 temp;
+
+    temp_v0 = isFlagSet(0x302, 0U);
+    D_global_asm_80755334 = 0;
+    D_global_asm_80755330 = 0;
+    if (D_global_asm_807467CC == 0) {
+        func_global_asm_8060E1A8();
+    }
+    if ((getLevelIndex(current_map, 1U) == 8) && 
+        !(D_global_asm_807FBB68 & 2) && 
+        (current_map != MAP_KROOLS_SHOE) && 
+        (!func_global_asm_80712628()) &&
+        (temp_v0 == 0)) {
+        func_global_asm_80712574();
+    }
+    guScale(&D_807FDAC0, 0.5f, 0.5f, 1.0f);
+    switch (game_mode_copy) {
+    case GAME_MODE_NINTENDO_LOGO:
+        D_global_asm_8075531C = 60 * 30;
+        D_global_asm_80755308 = 0;
+        D_global_asm_80755338 = 1;
+        D_global_asm_8075533C = 0;
+        break;
+    case GAME_MODE_OPENING_CUTSCENE:
+        D_global_asm_8075531C = 60 * 30;
+        D_global_asm_80755308 = START_BUTTON;
+        D_global_asm_80755338 = 1;
+        D_global_asm_8075533C = 0;
+        break;
+    case GAME_MODE_DK_RAP:
+        D_global_asm_8075531C = 190 * 30;
+        D_global_asm_80755308 = START_BUTTON;
+        D_global_asm_80755338 = 1;
+        D_global_asm_8075533C = 0;
+        break;
+    case GAME_MODE_DK_TV:
+        D_global_asm_8075532C += 1;
+        D_global_asm_8075531C = func_global_asm_8060B49C(character_change_array->player_pointer, D_global_asm_8075E5C0[D_global_asm_80755328].unk0);
+        D_global_asm_8075531C = MIN(D_global_asm_8075531C, D_global_asm_8075E5C0[D_global_asm_80755328].unk2);
+        D_global_asm_80755328++;
+        D_global_asm_80755328 %= 5U;
+        D_global_asm_80755308 = START_BUTTON;
+        break;
+    case GAME_MODE_QUIT_GAME:
+        D_global_asm_8075531C = (s32)(34.66666666f * 30);
+        game_mode_copy = 9;
+        game_mode = 9;
+    case GAME_MODE_GAME_OVER:
+        D_global_asm_80755308 = START_BUTTON | A_BUTTON;
+        break;
+    case GAME_MODE_MAIN_MENU:
+        D_global_asm_807552EC = 0;
+    case GAME_MODE_ADVENTURE:
+    case GAME_MODE_MYSTERY_MENU_MINIGAME:
+    case GAME_MODE_SNIDES_BONUS_GAME:
+        D_global_asm_8075531C = 1;
+        D_global_asm_80755308 = 0xFFFF;
+        D_global_asm_8075530C = 0xFF;
+        D_global_asm_80755310 = 0xFF;
+        break;
+    case GAME_MODE_END_SEQUENCE:
+        D_global_asm_8075531C = 1;
+        D_global_asm_8075530C = 0;
+        D_global_asm_80755310 = 0;
+        D_global_asm_80755308 = 0;
+        spawnActor(ACTOR_END_SEQUENCE_CONTROLLER, 0);
+        break;
+    case GAME_MODE_END_SEQUENCE_DK_THEATRE:
+        spawnActor(ACTOR_END_SEQUENCE_CONTROLLER, 0);
+    case GAME_MODE_DK_THEATRE:
+        D_global_asm_8075531C = 0x1E;
+        break;
+    }
+    func_global_asm_8060DEC8();
+}
+*/
 
 void func_global_asm_80712EDC(void) {
     D_global_asm_80750AC0 = 1;
@@ -275,7 +365,6 @@ extern s32 D_global_asm_80755378; // TODO: Datatype
 /*
 Gfx *func_global_asm_80713B40(Gfx *dl) {
     f32 temp_f0;
-    Gfx *temp = dl;
     s16 temp_t0;
     s16 temp_v0;
     s16 alpha;
@@ -294,17 +383,55 @@ Gfx *func_global_asm_80713B40(Gfx *dl) {
         if (alpha >= 0x100) {
             alpha = 0xFF;
         }
-        temp = func_global_asm_80713AA8(temp);
-        gDPSetPrimColor(temp++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
+        dl = func_global_asm_80713AA8(dl);
+        gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
         temp_f0 = ((150 - temp_t0) / 40.0);
-        temp = printText(temp, 640, 480.0 - (temp_f0 * 32.0), temp_f0, &D_global_asm_80755378);
+        dl = printText(dl, 640, 480.0 - (temp_f0 * 32.0), temp_f0, &D_global_asm_80755378);
     }
-    return temp;
+    return dl;
 }
 */
 
 // 64 bit stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_117880/func_global_asm_80713C8C.s")
+
+extern OSTime D_global_asm_807445B0;
+extern Struct80755340 D_global_asm_80755340;
+extern u16 D_global_asm_80755358[];
+
+/*
+void func_global_asm_80713C8C(void) {
+    u64 temp_ret;
+
+    D_global_asm_8075531C = 1;
+    if (!D_global_asm_80755340.unk10) {
+        return;
+    }
+    if (isFlagSet(0x302, 0U)) {
+        func_global_asm_8071261C();
+        playSong(0x74, 1.0f);
+        return;
+    }
+    D_global_asm_80755340.unk0 += D_global_asm_807445B0;
+    if ((global_properties_bitfield & 2)) {
+        return;
+    }
+    temp_ret = osGetTime();
+    temp_ret = __ll_mul(temp_ret - D_global_asm_80755340.unk0, 0x40);
+    temp_ret = __ull_div(temp_ret, 3000);
+    D_global_asm_80755340.unk8 = D_global_asm_80755340.unkC - __ull_div(temp_ret, 1000000);
+    if (D_global_asm_80755340.unk11 < 0xAU) {
+        if (D_global_asm_80755340.unk8 == D_global_asm_80755358[D_global_asm_80755340.unk11]) {
+            playSound(0x2D4, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+            D_global_asm_80755340.unk11++;
+        }
+    }
+    if (D_global_asm_80755340.unk8 <= 0) {
+        func_global_asm_807127B4();
+    }
+}
+*/
+
 
 Gfx *func_global_asm_80713DFC(Gfx *dl) { // displayHelmTimer()
     s32 stackPad0;
@@ -401,8 +528,87 @@ void func_global_asm_80713EB0(Maps arg0, s32 arg1, s32 arg2) {
 }
 */
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_117880/func_global_asm_80714060.s")
+extern s8 D_global_asm_807552E0;
+void func_global_asm_80713C8C(void);
+
+Gfx *func_global_asm_80714060(Gfx *dl) {
+    s8 sp38[0x28];
+
+    if ((D_global_asm_80755338) && (object_timer == 1)) {
+        D_global_asm_80755338 = 0;
+        if (D_global_asm_8075533C >= 0) {
+            playCutscene(NULL, D_global_asm_8075533C, 1U);
+        }
+    }
+    if (D_global_asm_807552E0) {
+        dl = func_global_asm_807132DC(dl);
+        sprintf(&sp38, "SECURITY %d", D_global_asm_807552E0);
+        dl = printText(dl, 0x280, 0x1E0, 1.0f, &sp38);
+    }
+    D_global_asm_807552E0 = 0;
+    gDPPipeSync(dl++);
+    if (D_global_asm_80755334 < 0x5A) {
+        D_global_asm_80755334 += 1;
+    }
+    if ((func_global_asm_80712628()) && (game_mode_copy != GAME_MODE_ADVENTURE)) {
+        func_global_asm_8071261C();
+    }
+    if ((D_global_asm_8075531C) && (game_mode_copy == game_mode)) {
+        D_global_asm_8075531C--;
+        switch (game_mode_copy) {
+        case GAME_MODE_NINTENDO_LOGO:
+        case GAME_MODE_OPENING_CUTSCENE:
+            func_global_asm_80713270();
+            break;
+        case GAME_MODE_DK_RAP:
+            func_global_asm_8071321C();
+            break;
+        case GAME_MODE_DK_TV:
+            func_global_asm_80712FC8();
+            break;
+        case GAME_MODE_QUIT_GAME:
+        case GAME_MODE_GAME_OVER:
+            func_global_asm_80713168();
+            break;
+        case GAME_MODE_END_SEQUENCE_DK_THEATRE:
+            func_global_asm_80713088();
+            break;
+        case GAME_MODE_DK_THEATRE:
+            func_global_asm_807130D4();
+            break;
+        case GAME_MODE_ADVENTURE:
+            func_global_asm_80713C8C();
+            break;
+        }
+    }
+    switch (game_mode_copy) {
+    case GAME_MODE_NINTENDO_LOGO:
+    case GAME_MODE_OPENING_CUTSCENE:
+        dl = func_global_asm_8071375C(dl);
+        break;
+    case GAME_MODE_DK_RAP:
+        dl = func_global_asm_807138A4(dl);
+        break;
+    case GAME_MODE_DK_TV:
+        dl = func_global_asm_807138CC(dl);
+        break;
+    case GAME_MODE_QUIT_GAME:
+    case GAME_MODE_GAME_OVER:
+        dl = func_global_asm_80713B40(dl);
+        break;
+    case GAME_MODE_ADVENTURE:
+        dl = func_global_asm_80713DFC(dl);
+        break;
+    case GAME_MODE_MAIN_MENU:
+        dl = func_global_asm_80713EA8(dl);
+        break;
+    case GAME_MODE_DK_THEATRE:
+        break;
+    }
+    return dl;
+}
+
+
 
 // TODO: Why can't these return s32?
 int gameIsInDKTVMode(void) {

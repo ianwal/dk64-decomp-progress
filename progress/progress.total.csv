@@ -1905,7 +1905,7 @@ us,asm,func_global_asm_806730A4,412,no
 us,asm,func_global_asm_80666428,1632,no
 us,asm,func_global_asm_8060D14C,380,yes
 us,asm,_n_timeToSamplesNoRound,100,yes
-us,asm,func_global_asm_80714060,632,no
+us,asm,func_global_asm_80714060,632,yes
 us,asm,func_global_asm_806B88B8,608,yes
 us,asm,func_global_asm_80602430,44,yes
 us,asm,func_global_asm_807145F8,16,yes

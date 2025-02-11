@@ -386,14 +386,6 @@ s32 func_global_asm_80712548(void) {
     return countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT) + 10;
 }
 
-typedef struct {
-    OSTime unk0;
-    s32 unk8;
-    s32 unkC;
-    u8 unk10;
-    u8 unk11;
-} Struct80755340;
-
 extern Struct80755340 D_global_asm_80755340;
 extern u16 D_global_asm_80755358[];
 

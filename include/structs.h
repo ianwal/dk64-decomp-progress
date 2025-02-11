@@ -2936,8 +2936,24 @@ typedef struct {
 
 typedef struct otherSpriteControl_unk330 {
     SpriteData *unk0;
-    u8 unk4[0x16 - 0x4];
+    s32 unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    s16 unkC;
+    s16 unkE;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    u8 unk14;
+    u8 unk15;
     s16 unk16;
+    s32 unk18;
+    void *unk1C;
+    s16 *unk20;
+    s32 unk24;
 } otherSpriteControl_unk330;
 
 typedef struct {
@@ -2996,11 +3012,7 @@ typedef union {
 
 typedef struct otherSpriteControl {
 	/* 0x000 */ s8 unk_000[0x28];
-	/* 0x028 */ u8 left_stretch;
-	/* 0x029 */ u8 right_stretch;
-	/* 0x02A */ u8 up_stretch;
-	/* 0x02B */ u8 down_stretch;
-	/* 0x02C */ s8 unk_02C[0x128 - 0x2C];
+	/* 0x028 */ Vtx unk28[0x10]; // Unsure on size
     /* 0x128 */ Mtx unk128[2];
     /* 0x1A8 */ u8 unk1A8[0x32C - 0x1A8];
     /* 0x32C */ s8 unk32C;
@@ -3600,5 +3612,13 @@ typedef struct {
     s32 unk4;
     AnimationStateUnk0_0 *unk8;
 } Struct807FB7B0;
+
+typedef struct {
+    OSTime unk0;
+    s32 unk8;
+    s32 unkC;
+    u8 unk10;
+    u8 unk11;
+} Struct80755340;
 
 #endif
