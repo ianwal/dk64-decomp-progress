@@ -191,34 +191,26 @@ Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FD490.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FD7A8.s")
+s32 func_global_asm_806FB914(s16, u8 *);
 
-s32 func_global_asm_806FB914(s16, u8 *, s32);
-
-/*
 s16 func_global_asm_806FD7A8(s16 arg0, u8 arg1) {
     Struct80754A34 *var_a0;
     Struct80754A18 *text_data;
-    s32 temp_a2;
-    u8 var_v1;
+    s16 var_v1;
     s32 val;
 
-    temp_a2 = arg0;
     if (arg0 & 0x80) {
-        var_a0 = &D_global_asm_80754A34[(s16) (arg0 ^ 0x80)];
-        var_v1 = var_a0->kerning_animation;
+        arg0 ^= 0x80;
+        var_v1 = D_global_asm_80754A34[arg0].kerning_animation;
     } else if (arg1 == ' ') {
-        var_a0 = &D_global_asm_80754A34[temp_a2];
-        var_v1 = var_a0->kerning_space;
+        var_v1 = D_global_asm_80754A34[arg0].kerning_space;
     } else {
-        val = func_global_asm_806FB914(temp_a2, &arg1, temp_a2);
-        text_data = D_global_asm_80754A18[arg1];
-        var_v1 = text_data->character[temp_a2].width;
-        var_a0 = &D_global_asm_80754A34[temp_a2];
+        val = func_global_asm_806FB914((s16)(s32)arg0, &arg1);
+        var_v1 = D_global_asm_80754A18[arg0]->character[arg1].width;
     }
-    return var_v1 + var_a0->kerning_character;
+    var_v1 += D_global_asm_80754A34[arg0].kerning_character;
+    return var_v1;
 }
-*/
 
 u8 func_global_asm_806FD894(s16 arg0) {
     if (arg0 & 0x80) {

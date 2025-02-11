@@ -260,7 +260,7 @@ us,asm,func_global_asm_8064EB3C,96,yes
 us,asm,func_global_asm_80712944,252,yes
 us,asm,func_global_asm_80615134,136,yes
 us,asm,func_global_asm_806836D0,944,no
-us,asm,func_global_asm_806FD7A8,236,no
+us,asm,func_global_asm_806FD7A8,236,yes
 us,asm,func_global_asm_806F9608,100,yes
 us,asm,func_global_asm_807069A4,1516,no
 us,asm,func_global_asm_806DD874,572,yes
