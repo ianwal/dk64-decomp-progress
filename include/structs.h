@@ -3474,17 +3474,24 @@ typedef struct {
 typedef struct Struct80754AD0 Struct80754AD0;
 
 typedef struct {
-    void *unk0;
-    u8 pad4[0x10 - 0x4];
-    void *unk10;
-    u8 pad14[0x38 - 0x14];
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    u8 padC[0x20 - 0xC];
+    f32 unk20;
+    u8 pad24[0x30 - 0x24];
+    f32 unk30;
+    u8 pad34[0x38 - 0x34];
 } Struct806FD9FC;
 
 struct Struct80754AD0 {
     Struct80754AD0 *next;
     void *unk4;
     Struct806FD9FC *unk8;
-    u8 padC[0x18 - 0x0C];
+    u8 unkC;
+    u8 unkD;
+    u8 padE[0x14 - 0x0E];
+    f32 unk14;
     f32 unk18;
     s16 unk1C;
 };
