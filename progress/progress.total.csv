@@ -3079,7 +3079,7 @@ us,asm,func_global_asm_806E8880,44,yes
 us,asm,func_global_asm_806011A0,52,yes
 us,asm,func_global_asm_806436A4,60,yes
 us,asm,func_global_asm_8064BF58,120,yes
-us,asm,func_global_asm_8060C758,216,no
+us,asm,func_global_asm_8060C758,216,yes
 us,asm,func_global_asm_806EA334,300,yes
 us,asm,func_global_asm_80712548,44,yes
 us,asm,func_global_asm_80690058,60,yes
