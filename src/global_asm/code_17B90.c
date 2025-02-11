@@ -1961,15 +1961,9 @@ void func_global_asm_8061859C(Actor *arg0) {
     func_global_asm_80714C08(&D_global_asm_8071FF18, 0.4f, arg0, boneIndex, 0);
 }
 
-// rodata, doable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80618608.s")
-
 extern SpriteData D_global_asm_8072006C;
 extern SpriteData D_global_asm_80720B58;
 extern s32 D_global_asm_807FBB68;
-
-/*
-extern f32 D_global_asm_80757448;
 
 void func_global_asm_80618608(Actor *arg0) {
     u8 sp3F;
@@ -1982,7 +1976,7 @@ void func_global_asm_80618608(Actor *arg0) {
             func_global_asm_807149FC(-1);
             func_global_asm_8071498C(func_global_asm_8071DB74);
             func_global_asm_80714A28(4);
-            func_global_asm_80714C08(&D_global_asm_80720B58, D_global_asm_80757448, arg0, sp3F, 0);
+            func_global_asm_80714C08(&D_global_asm_80720B58, 0.1f, arg0, sp3F, 0);
         }
         return;
     }
@@ -1991,7 +1985,6 @@ void func_global_asm_80618608(Actor *arg0) {
     func_global_asm_8071498C(func_global_asm_8071A440);
     func_global_asm_80714C08(&D_global_asm_8072006C, 0.4f, arg0, sp3F, 2);
 }
-*/
 
 void func_global_asm_80618728(Actor *arg0) {
     func_global_asm_807149A8(0x7D0);
