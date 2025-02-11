@@ -3621,4 +3621,11 @@ typedef struct {
     u8 unk11;
 } Struct80755340;
 
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    s32 *unk4;
+    u8 unk8;
+} Struct807FB630;
+
 #endif

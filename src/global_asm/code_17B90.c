@@ -13,10 +13,89 @@ extern u8 *D_807F5AF0;
 extern s32 D_807F5AF4;
 extern u16 *D_807FBB54;
 
-void *func_global_asm_80612E90(Actor *, s32, u16);
+void *func_global_asm_80612E90(Actor *, s32, u8);
 
-// Displaylist stuff?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80612E90.s")
+void func_global_asm_806130A4(u32, Gfx *);             /* extern */
+void func_global_asm_8061324C(Gfx *, Gfx *, void *, s32); /* extern */
+void func_global_asm_806133C8(u32, Gfx *);             /* extern */
+void func_global_asm_80687D50(s32, void *);            /* extern */
+extern Struct807FB630 D_807FB630[];
+extern void *D_807FB634;
+extern u16 D_807FBB30;
+extern u16 D_807FBB32;
+extern s32 D_global_asm_80746B64;
+
+typedef struct Struct80614C38_0 Struct80614C38;
+struct Struct80614C38_0 {
+    void *unk0;
+    void *unk4;
+    u8 unk8;
+    u8 pad9[0x12 - 0x9];
+    Struct80614C38 *next;
+};
+
+typedef struct ActorModelHeader {
+    s32 unk0;
+    union {
+        s32 *unk4;
+        s32 unk4_raw;
+    };
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    Struct80614C38 * unk14;
+    u8 pad18[0x20 - 0x18];
+    u8 bone_count;
+    u8 unk21;
+    u8 pad22[0x28 - 0x22];
+} ActorModelHeader;
+
+void *func_global_asm_80612E90(Actor *arg0, s32 arg1, u8 arg2) {
+    s32 delta;
+    s32 i;
+    ActorModelHeader *temp_v0;
+
+    for (i = 0; i < D_807FBB30; i++) {
+        if (((s32)arg1 == (s32)D_807FB630[i].unk0) && (arg2 == D_807FB630[i].unk8)) {
+            D_807FB630[i].unk2++;
+            func_global_asm_80687D50(arg0, D_807FB630[i].unk4);
+            return D_807FB630[i].unk4;
+        }
+    }
+    if ((s32) D_807FBB32 >= 0x20) {
+        return D_807FB634;
+    }
+    temp_v0 = getPointerTableFile(5, arg1 - 1, 1U, 1U);
+    D_807FB630[i].unk0 = arg1;
+    D_807FBB30++;
+    D_807FB630[i].unk8 = arg2;
+    D_807FB630[i].unk2 = 1;
+    D_807FB630[i].unk4 = temp_v0;
+    delta = ((s32)temp_v0 - (s32)temp_v0->unk0) + sizeof(ActorModelHeader);
+    temp_v0->unk0 += delta;
+    temp_v0->unk4_raw += delta;
+    for (i = 0; i < temp_v0->unk21; i++) {
+        temp_v0->unk4[i] += delta;
+    }
+    if (temp_v0->unk8 != NULL) {
+        temp_v0->unk8 += delta;
+    } else {
+        temp_v0->unk8 = &D_global_asm_80746B64;
+        temp_v0->bone_count = 1;
+    }
+    temp_v0->unkC += delta;
+    temp_v0->unk10 += delta;
+    func_global_asm_8061324C(*temp_v0->unk4, temp_v0->unk4, &temp_v0->unk14, delta);
+    func_global_asm_8065CDB0(*temp_v0->unk4, temp_v0->unk4);
+    func_global_asm_806133C8(*temp_v0->unk4, temp_v0->unk4);
+    func_global_asm_80687D50(arg0, temp_v0);
+    if (arg2 & 1) {
+        func_global_asm_806130A4(*temp_v0->unk4, temp_v0->unk4);
+    }
+    return temp_v0;
+}
+
+
 
 // Displaylist stuff, searching a DL for 0xD9 (G_GEOMETRYMODE) commands
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806130A4.s")
@@ -49,14 +128,6 @@ void func_global_asm_80613214(Actor *actor) {
 // Possibly the code responsible for loading textures dynamically
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806133C8.s")
 
-typedef struct {
-    u16 modelIndex;
-    s16 unk2;
-    Actor_unk0 *unk4;
-    s32 unk8;
-} Struct807FB630;
-
-extern Struct807FB630 D_807FB630[];
 extern u16 D_807FBB30;
 
 u16 func_global_asm_80613448(Actor *arg0) {
@@ -65,13 +136,13 @@ u16 func_global_asm_80613448(Actor *arg0) {
 
     searchIndex = D_807FBB30;
     while (searchIndex >= 0) {
-        if (var_v0 == D_807FB630[searchIndex].unk4) {
+        if ((s32)var_v0 == (s32)D_807FB630[searchIndex].unk4) {
             break;
         }
         searchIndex--;
     }
     if (searchIndex >= 0) {
-        return D_807FB630[searchIndex].modelIndex;
+        return D_807FB630[searchIndex].unk0;
     }
     return 0;
 }
@@ -80,23 +151,6 @@ u16 func_global_asm_80613448(Actor *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806134B4.s")
 
 extern f32 D_global_asm_80757360;
-
-typedef struct Struct80614C38_0 Struct80614C38;
-struct Struct80614C38_0 {
-    void *unk0;
-    void *unk4;
-    u8 unk8;
-    u8 pad9[0x12 - 0x9];
-    Struct80614C38 *next;
-};
-
-typedef struct ActorModelHeader {
-    u8 pad0[0x14];
-    Struct80614C38 * unk14;
-    u8 pad18[0x20 - 0x18];
-    u8 bone_count;
-    u8 pad21[0x28 - 0x21];
-} ActorModelHeader;
 
 /*
 s32 func_global_asm_806134B4(Actor *arg0, u16 arg1) {

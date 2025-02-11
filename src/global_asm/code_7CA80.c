@@ -27,13 +27,6 @@ s16 actor_count;
 // regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80677D80.s")
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s32 unk8;
-} Struct807FB630;
-
 extern Struct807FB630 D_807FB630[];
 extern Struct807FB7B0 D_807FB7B0[];
 extern s16 D_807FBB30;
