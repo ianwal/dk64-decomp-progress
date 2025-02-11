@@ -769,22 +769,18 @@ void func_global_asm_8069DA54(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069DC10.s")
+void func_global_asm_8069DC10(s32 *arg0, s32 *arg1, u8 arg2);
 
-void func_global_asm_8069DC10(s32 *arg0, s32 *arg1[], u8 arg2);
-
-/*
-void func_global_asm_8069DC10(s32 *arg0, s32 *arg1[], u8 arg2) {
+void func_global_asm_8069DC10(s32 *arg0, s32 *arg1, u8 arg2) {
     s16 i;
     s16 j;
 
     for (i = 0; i < 0x20; i++) {
         for (j = 0; j < arg2; j++) {
-            arg0[j] = arg1[j][i * arg2];
+            *arg0++ = arg1[j + (i * arg2)];
         }
     }
 }
-*/
 
 void *func_global_asm_8069DC80(u8 arg0, void *arg1, u8 arg2, u8 arg3, u8 arg4) {
     void *sp24;
