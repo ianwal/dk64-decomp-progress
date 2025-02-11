@@ -159,7 +159,7 @@ s32 func_global_asm_8065FB04(GlobalASMStruct81 *arg0) {
 
 void func_global_asm_8065C990(s32 arg0, s32 arg1, s32 arg2, void *arg3, s32 arg26, s32 arg27);
 extern f32 D_global_asm_8076A0B4[];
-extern s32 D_global_asm_807F78C0;
+extern s32 D_807F78C0;
 extern f32 D_global_asm_807F7EEC[];
 
 typedef struct {
@@ -196,7 +196,7 @@ void func_global_asm_8065FB64(f32 arg0, f32 arg1, s32 arg2) {
                 D_global_asm_807F7EEC[2] = D_global_asm_8076A0B4[temp_s1 + 2];
                 if (global_properties_bitfield & 0x10) {
                     temp_a0 = current->unk1C[D_global_asm_807444FC];
-                    func_global_asm_8065C990(temp_a0, &temp_a0[current->unk48], 1, &D_global_asm_807F78C0, temp_v0_3, chunk_array_pointer[temp_s1].unk3 == 1);
+                    func_global_asm_8065C990(temp_a0, &temp_a0[current->unk48], 1, &D_807F78C0, temp_v0_3, chunk_array_pointer[temp_s1].unk3 == 1);
                 }
                 current->unk4C |= 2;
             }

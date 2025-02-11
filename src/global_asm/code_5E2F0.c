@@ -274,8 +274,8 @@ typedef struct {
     u8 unk3F; // Used
 } Struct807F78C0;
 
-extern Struct807F78C0 D_global_asm_807F78C0[];
-extern Struct807F78C0 D_global_asm_807F7BC8[];
+extern Struct807F78C0 D_807F78C0[];
+extern Struct807F78C0 D_807F7BC8[];
 
 /*
 // TODO: Fiddly, decent progress made
@@ -286,8 +286,8 @@ void func_global_asm_8065BE74(s16 arg0) {
         i = 0;
         if (D_global_asm_807F7EC8 > 0) {
             for (i = 0; i < D_global_asm_807F7EC8; i++) {
-                if (D_global_asm_807F78C0[arg0].unk3F == D_global_asm_807F7BC8[i].unk3F) {
-                    memcpy(&D_global_asm_807F7BC8[D_global_asm_807F7EC8++], &D_global_asm_807F78C0[arg0], sizeof(Struct807F78C0));
+                if (D_807F78C0[arg0].unk3F == D_807F7BC8[i].unk3F) {
+                    memcpy(&D_807F7BC8[D_global_asm_807F7EC8++], &D_807F78C0[arg0], sizeof(Struct807F78C0));
                     break;
                 }
             }
@@ -387,11 +387,11 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
     if (temp_v1 > 0) {
         temp_f30 = 300.0;
         for (i = 0; i < D_global_asm_807F7EC8; i++) {
-            switch (D_global_asm_807F7BC8[i].unk3E) {
+            switch (D_807F7BC8[i].unk3E) {
                 case 1:
-                    temp_f2 = arg0 - (D_global_asm_807F7BC8[i].unk38 / 3);
-                    temp_f14 = arg1 - (D_global_asm_807F7BC8[i].unk3A / 3);
-                    temp_f16 = arg2 - (D_global_asm_807F7BC8[i].unk3C / 3);
+                    temp_f2 = arg0 - (D_807F7BC8[i].unk38 / 3);
+                    temp_f14 = arg1 - (D_807F7BC8[i].unk3A / 3);
+                    temp_f16 = arg2 - (D_807F7BC8[i].unk3C / 3);
                     sp64 = temp_f14;
                     temp_f0 = sqrtf((temp_f16 * temp_f16) + ((temp_f2 * temp_f2) + (temp_f14 * temp_f14)));
                     var_f12 = temp_f0;
@@ -401,15 +401,15 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
                     temp_f18 = temp_f2 / var_f12;
                     sp5C = temp_f16 / var_f12;
                     temp_f20 = sp64 / var_f12;
-                    var_f0 = (D_global_asm_807F7BC8[i].unk14 * sp5C) + ((temp_f18 * D_global_asm_807F7BC8[i].unkC) + (temp_f20 * D_global_asm_807F7BC8[i].unk10));
+                    var_f0 = (D_807F7BC8[i].unk14 * sp5C) + ((temp_f18 * D_807F7BC8[i].unkC) + (temp_f20 * D_807F7BC8[i].unk10));
                     if (var_f0 < 0.0f) {
                         var_f0 = 0.0f;
                     }
-                    if (D_global_asm_807F7BC8[i].unk0 <= var_f0) {
-                        if (D_global_asm_807F7BC8[i].unk4 <= var_f0) {
+                    if (D_807F7BC8[i].unk0 <= var_f0) {
+                        if (D_807F7BC8[i].unk4 <= var_f0) {
                             var_f0_2 = 1.0f;
                         } else {
-                            var_f0_2 = (var_f0 - D_global_asm_807F7BC8[i].unk0) * D_global_asm_807F7BC8[i].unk8;
+                            var_f0_2 = (var_f0 - D_807F7BC8[i].unk0) * D_807F7BC8[i].unk8;
                         }
                         if (temp_f30 < var_f12) {
                             if (1100.0 < var_f12) {
@@ -418,33 +418,33 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
                                 var_f0_2 = var_f0_2 * (1.0 - ((var_f12 - temp_f30) / 800.0));
                             }
                         }
-                        var_f22 += D_global_asm_807F7BC8[i].unk2C * var_f0_2;
-                        var_f24 += D_global_asm_807F7BC8[i].unk30 * var_f0_2;
-                        var_f26 += D_global_asm_807F7BC8[i].unk34 * var_f0_2;
+                        var_f22 += D_807F7BC8[i].unk2C * var_f0_2;
+                        var_f24 += D_807F7BC8[i].unk30 * var_f0_2;
+                        var_f26 += D_807F7BC8[i].unk34 * var_f0_2;
                     }
                     break;
                 case 0:
-                    temp_f0_2 = (D_global_asm_807F7BC8[i].unk3C / 3) - arg2;
-                    temp_f2_4 = (D_global_asm_807F7BC8[i].unk38 / 3) - arg0;
-                    temp_f14_2 = (D_global_asm_807F7BC8[i].unk3A / 3) - arg1;
+                    temp_f0_2 = (D_807F7BC8[i].unk3C / 3) - arg2;
+                    temp_f2_4 = (D_807F7BC8[i].unk38 / 3) - arg0;
+                    temp_f14_2 = (D_807F7BC8[i].unk3A / 3) - arg1;
                     temp_f0_3 = sqrtf((temp_f0_2 * temp_f0_2) + ((temp_f2_4 * temp_f2_4) + (temp_f14_2 * temp_f14_2)));
                     var_f2 = temp_f0_3 - arg3;
                     if (temp_f0_3 <= arg3) {
                         var_f2 = 0.1f;
                     }
-                    temp_f0_4 = D_global_asm_807F7BC8[i].unk28 / 3.0f;
+                    temp_f0_4 = D_807F7BC8[i].unk28 / 3.0f;
                     if (var_f2 < temp_f0_4) {
-                        var_f6 = D_global_asm_807F7BC8[i].unk34;
-                        var_f22 += D_global_asm_807F7BC8[i].unk2C;
-                        var_f24 += D_global_asm_807F7BC8[i].unk30;
+                        var_f6 = D_807F7BC8[i].unk34;
+                        var_f22 += D_807F7BC8[i].unk2C;
+                        var_f24 += D_807F7BC8[i].unk30;
                     } else {
                         temp_f2_5 = var_f2 - temp_f0_4;
-                        temp_f12 = ((1.0f / D_global_asm_807F7BC8[i].unk24) / 3.0f) - temp_f0_4;
+                        temp_f12 = ((1.0f / D_807F7BC8[i].unk24) / 3.0f) - temp_f0_4;
                         if (temp_f2_5 < temp_f12) {
                             temp_f0_5 = 1.0f - (temp_f2_5 / temp_f12);
-                            var_f22 += D_global_asm_807F7BC8[i].unk2C * temp_f0_5;
-                            var_f6 = D_global_asm_807F7BC8[i].unk34 * temp_f0_5;
-                            var_f24 += D_global_asm_807F7BC8[i].unk30 * temp_f0_5;
+                            var_f22 += D_807F7BC8[i].unk2C * temp_f0_5;
+                            var_f6 = D_807F7BC8[i].unk34 * temp_f0_5;
+                            var_f24 += D_807F7BC8[i].unk30 * temp_f0_5;
                         }
                     }
                     var_f26 += var_f6;
