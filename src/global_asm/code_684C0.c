@@ -22,10 +22,6 @@ struct global_asm_struct_85 {
 
 extern GlobalASMStruct85 *D_global_asm_807F9410;
 
-// doable, fiddly, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_684C0/func_global_asm_806637C0.s")
-
-/*
 void func_global_asm_806637C0(MapGeometryHeader *arg0) {
     s32 *temp_v0;
     s32 count;
@@ -35,7 +31,7 @@ void func_global_asm_806637C0(MapGeometryHeader *arg0) {
     GlobalASMStruct84 *boundingBoxArray;
 
     var_s1 = &D_global_asm_807F9410;
-    temp_v0 = &((u8*)arg0)[arg0->unk54];
+    temp_v0 = arg0->unk54 + ((u8*)arg0);
     count = *(s32*)(&((u8*)arg0)[arg0->unk54]);
     boundingBoxArray = &((u8*)arg0)[arg0->unk54 + 4];
     D_global_asm_807F9410 = NULL;
@@ -48,7 +44,6 @@ void func_global_asm_806637C0(MapGeometryHeader *arg0) {
         temp_v0_2->next = NULL;
     }
 }
-*/
 
 s32 func_global_asm_806639CC(Actor*, GlobalASMStruct83*);
 void func_global_asm_80663A0C(Actor *arg0, GlobalASMStruct84 *arg1);

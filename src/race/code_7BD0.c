@@ -271,6 +271,59 @@ Gfx *func_race_8002C14C(Gfx *dl, Struct8002C14C_arg1 *arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C2E8.s")
 
+/*
+Gfx *func_race_8002C2E8(Gfx *dl, RaceAdditionalActorData *arg1) {
+    f32 temp_f20;
+    f32 temp_f22;
+    f32 temp_f24;
+    f32 w;
+    u32 temp_v0;
+    f32 temp_f0; // 70
+    f32 a;
+    f32 c;
+    s32 i;
+    s8 *temp_v0_2;
+    s16 *temp_s0;
+    f32 temp;
+
+    temp_s0 = arg1->unk48;
+    temp_v0 = func_global_asm_806FD894(1);
+    temp_f0 = temp_v0 * 0.5f;
+    temp_f20 = temp_s0[2] + 8;
+    temp_f24 = (temp_s0[5] - 0x10);
+    temp_f24 -= (2 * temp_f0);
+    temp_v0_2 = getTextString(0x26U, 0xA, 1);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    dl = printStyledText(dl, 1, (2.0f * (temp_f20 * 4.0f)), (2.0f * (temp_f24 * 4.0f)), temp_v0_2, 4U);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &arg1->unk50[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    c = getCenterOfString(1, temp_v0_2);
+    temp_f20 += (0.5f * c);
+    temp_f22 = 2.0f * (temp_f20 + 8.0);
+    temp = temp_f24 + (0.4 * temp_f0);
+    a = 1.5f;
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+    for (i = 0; i < 5; i++) {
+        w = temp_f22 + (i * 0x18);
+        dl = displayImage(dl, 0x4BU, 3, 1,
+            0x40, 0x40,
+            w * 4.0f,
+            2.0f * temp * 4.0f, a, a, 0, 0.0f);
+    }
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0x00, 0x00, 0xFF);
+    for (i = 0; i < 5 - arg1->unk44; i++) {
+        w = temp_f22 + (i * 0x18);
+        dl = displayImage(dl, 0x45U, 3, 1,
+            0x40, 0x40,
+            w * 4.0f,
+            2.0f * temp * 4.0f, a, a, 0, 0.0f);
+    }
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return dl;
+}
+*/
+
+
 typedef struct {
     u8 unk0[0x50 - 0x0];
     f32 unk50[1][4][4];

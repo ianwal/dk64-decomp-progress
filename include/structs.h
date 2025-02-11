@@ -744,6 +744,8 @@ typedef struct race_additional_actor_data {
     u8 unk45; // Used
     u8 pad46[2];
     s16* unk48;
+    u8 pad4C[4];
+    Mtx unk50[2];
 } RaceAdditionalActorData;
 
 typedef struct race_additional_actor_data2 {
