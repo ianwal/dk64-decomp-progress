@@ -116,9 +116,6 @@ void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3) {
     *arg3 = temp_t0[arg1].unk4;
 }
 
-// rodata, close
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002BCD4.s")
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -133,7 +130,6 @@ typedef struct {
     f32 unk8;
 } Struct80027880;
 
-/*
 void func_race_8002BCD4(Actor *arg0) {
     f32 var_f0;
     f32 var_f12;
@@ -148,8 +144,8 @@ void func_race_8002BCD4(Actor *arg0) {
     var_f12 = -1.0f;
     var_f14 = -1.0f; 
     aaD = arg0->additional_actor_data;
-    var_v1 = &D_global_asm_807F5FD4[0].unk0;
-    temp_a2 = &D_global_asm_807F5FD4[1].unk0;
+    var_v1 = D_global_asm_807F5FD4[0].unk0[0];
+    temp_a2 = D_global_asm_807F5FD4[1].unk0[0];
     while (var_v1 < temp_a2) {
         if (var_v1->unk0 < var_f0) {
             var_f0 = var_v1->unk0;
@@ -170,7 +166,6 @@ void func_race_8002BCD4(Actor *arg0) {
     aaD->unk4 = 116.4800034f / (var_f12 - var_f0);
     aaD->unk8 = 121.5999985f / (var_f14 - var_f2);
 }
-*/
 
 // Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002BDDC.s")
