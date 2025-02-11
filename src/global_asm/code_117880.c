@@ -401,7 +401,7 @@ extern u16 D_global_asm_80755358[];
 
 /*
 void func_global_asm_80713C8C(void) {
-    u64 temp_ret;
+    OSTime temp_ret;
 
     D_global_asm_8075531C = 1;
     if (!D_global_asm_80755340.unk10) {
@@ -416,22 +416,17 @@ void func_global_asm_80713C8C(void) {
     if ((global_properties_bitfield & 2)) {
         return;
     }
-    temp_ret = osGetTime();
-    temp_ret = __ll_mul(temp_ret - D_global_asm_80755340.unk0, 0x40);
-    temp_ret = __ull_div(temp_ret, 3000);
-    D_global_asm_80755340.unk8 = D_global_asm_80755340.unkC - __ull_div(temp_ret, 1000000);
-    if (D_global_asm_80755340.unk11 < 0xAU) {
-        if (D_global_asm_80755340.unk8 == D_global_asm_80755358[D_global_asm_80755340.unk11]) {
-            playSound(0x2D4, 0x7FFFU, 63.0f, 1.0f, 0, 0);
-            D_global_asm_80755340.unk11++;
-        }
+    temp_ret = (osGetTime() - D_global_asm_80755340.unk0) * 64;
+    D_global_asm_80755340.unk8 = D_global_asm_80755340.unkC - ((temp_ret / 3000) / 1000000);
+    if (D_global_asm_80755340.unk11 < 0xAU && D_global_asm_80755340.unk8 == D_global_asm_80755358[D_global_asm_80755340.unk11]) {
+        playSound(0x2D4, 0x7FFFU, 63.0f, 1.0f, 0, 0);
+        D_global_asm_80755340.unk11++;
     }
     if (D_global_asm_80755340.unk8 <= 0) {
         func_global_asm_807127B4();
     }
 }
 */
-
 
 Gfx *func_global_asm_80713DFC(Gfx *dl) { // displayHelmTimer()
     s32 stackPad0;
@@ -607,8 +602,6 @@ Gfx *func_global_asm_80714060(Gfx *dl) {
     }
     return dl;
 }
-
-
 
 // TODO: Why can't these return s32?
 int gameIsInDKTVMode(void) {

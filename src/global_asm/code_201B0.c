@@ -1316,11 +1316,23 @@ void func_global_asm_80625994(Actor *arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *
     *arg4 = *arg4 + ((aaD->unk80 - *arg4) * D_global_asm_807476A4);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806259FC.s")
-
 extern s16 D_807F5CD2;
 extern s16 D_807F5CD4;
 extern s16 D_807F5CD8;
+
+s32 func_global_asm_806259FC(s16 arg0, s16 arg1) {
+    s16 i;
+    s16 j;
+
+    for (i = -1; i < 2; i++) {
+        for (j = -1; j < 2; j++) {
+            if (arg0 == (arg1 + (i * D_807F5CD8) + j)) {
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
 
 s16 func_global_asm_80625A80(s32 lockRegionIndex) {
     CutsceneBank_LockRegion *lockRegion;
