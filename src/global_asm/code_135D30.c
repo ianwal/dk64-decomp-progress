@@ -227,7 +227,7 @@ u8 func_global_asm_80731654(s16 arg0, s16 arg1) {
     return 0;
 }
 
-// close
+// close, doable, extra cast to s16 somewhere
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_global_asm_80731784.s")
 
 typedef struct {
@@ -244,13 +244,11 @@ extern Struct80755DA8 D_global_asm_80755DA8[0x1F];
 /*
 s16 func_global_asm_80731784(s16 map, s16 spawnerID, s32 *arg2) {
     s16 i;
-    s16 max = 0x1F;
+    s32 max = 0x1F;
 
-    *arg2 = 0;
-    for (i = 0; i < max; i++) {
+    for (i = 0, *arg2 = i; i < max; *arg2 = ++i) {
         if (map == D_global_asm_80755DA8[i].map) {
             if (spawnerID == D_global_asm_80755DA8[i].spawnerID) {
-                *arg2 = i;
                 return D_global_asm_80755DA8[i].flagIndex;
             }
         }

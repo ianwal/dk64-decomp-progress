@@ -51,9 +51,9 @@ void func_global_asm_80712B80(void) {
 
 extern Mtx D_807FDAC0;
 extern u8 D_global_asm_807467CC;
-extern s16 D_global_asm_80755308;
-extern s8 D_global_asm_8075530C;
-extern s8 D_global_asm_80755310;
+extern u16 D_global_asm_80755308;
+extern u8 D_global_asm_8075530C;
+extern u8 D_global_asm_80755310;
 
 /*
 void func_global_asm_80712BD4(void) {
@@ -64,7 +64,7 @@ void func_global_asm_80712BD4(void) {
     u8 temp_t6;
     s16 temp;
 
-    temp_v0 = isFlagSet(0x302, 0U);
+    temp_v0 = isFlagSet(0x302, FLAG_TYPE_PERMANENT);
     D_global_asm_80755334 = 0;
     D_global_asm_80755330 = 0;
     if (D_global_asm_807467CC == 0) {
@@ -79,61 +79,61 @@ void func_global_asm_80712BD4(void) {
     }
     guScale(&D_807FDAC0, 0.5f, 0.5f, 1.0f);
     switch (game_mode_copy) {
-    case GAME_MODE_NINTENDO_LOGO:
-        D_global_asm_8075531C = 60 * 30;
-        D_global_asm_80755308 = 0;
-        D_global_asm_80755338 = 1;
-        D_global_asm_8075533C = 0;
-        break;
-    case GAME_MODE_OPENING_CUTSCENE:
-        D_global_asm_8075531C = 60 * 30;
-        D_global_asm_80755308 = START_BUTTON;
-        D_global_asm_80755338 = 1;
-        D_global_asm_8075533C = 0;
-        break;
-    case GAME_MODE_DK_RAP:
-        D_global_asm_8075531C = 190 * 30;
-        D_global_asm_80755308 = START_BUTTON;
-        D_global_asm_80755338 = 1;
-        D_global_asm_8075533C = 0;
-        break;
-    case GAME_MODE_DK_TV:
-        D_global_asm_8075532C += 1;
-        D_global_asm_8075531C = func_global_asm_8060B49C(character_change_array->player_pointer, D_global_asm_8075E5C0[D_global_asm_80755328].unk0);
-        D_global_asm_8075531C = MIN(D_global_asm_8075531C, D_global_asm_8075E5C0[D_global_asm_80755328].unk2);
-        D_global_asm_80755328++;
-        D_global_asm_80755328 %= 5U;
-        D_global_asm_80755308 = START_BUTTON;
-        break;
-    case GAME_MODE_QUIT_GAME:
-        D_global_asm_8075531C = (s32)(34.66666666f * 30);
-        game_mode_copy = 9;
-        game_mode = 9;
-    case GAME_MODE_GAME_OVER:
-        D_global_asm_80755308 = START_BUTTON | A_BUTTON;
-        break;
-    case GAME_MODE_MAIN_MENU:
-        D_global_asm_807552EC = 0;
-    case GAME_MODE_ADVENTURE:
-    case GAME_MODE_MYSTERY_MENU_MINIGAME:
-    case GAME_MODE_SNIDES_BONUS_GAME:
-        D_global_asm_8075531C = 1;
-        D_global_asm_80755308 = 0xFFFF;
-        D_global_asm_8075530C = 0xFF;
-        D_global_asm_80755310 = 0xFF;
-        break;
-    case GAME_MODE_END_SEQUENCE:
-        D_global_asm_8075531C = 1;
-        D_global_asm_8075530C = 0;
-        D_global_asm_80755310 = 0;
-        D_global_asm_80755308 = 0;
-        spawnActor(ACTOR_END_SEQUENCE_CONTROLLER, 0);
-        break;
-    case GAME_MODE_END_SEQUENCE_DK_THEATRE:
-        spawnActor(ACTOR_END_SEQUENCE_CONTROLLER, 0);
-    case GAME_MODE_DK_THEATRE:
-        D_global_asm_8075531C = 0x1E;
-        break;
+        case GAME_MODE_NINTENDO_LOGO:
+            D_global_asm_8075531C = 60 * 30;
+            D_global_asm_80755308 = 0;
+            D_global_asm_80755338 = 1;
+            D_global_asm_8075533C = 0;
+            break;
+        case GAME_MODE_OPENING_CUTSCENE:
+            D_global_asm_8075531C = 60 * 30;
+            D_global_asm_80755308 = START_BUTTON;
+            D_global_asm_80755338 = 1;
+            D_global_asm_8075533C = 0;
+            break;
+        case GAME_MODE_DK_RAP:
+            D_global_asm_8075531C = 190 * 30;
+            D_global_asm_80755308 = START_BUTTON;
+            D_global_asm_80755338 = 1;
+            D_global_asm_8075533C = 0;
+            break;
+        case GAME_MODE_DK_TV:
+            D_global_asm_8075532C += 1;
+            D_global_asm_8075531C = func_global_asm_8060B49C(character_change_array->player_pointer, D_global_asm_8075E5C0[D_global_asm_80755328].unk0);
+            D_global_asm_8075531C = MIN(D_global_asm_8075531C, D_global_asm_8075E5C0[D_global_asm_80755328].unk2);
+            D_global_asm_80755328++;
+            D_global_asm_80755328 %= 5U;
+            D_global_asm_80755308 = START_BUTTON;
+            break;
+        case GAME_MODE_QUIT_GAME:
+            D_global_asm_8075531C = (s32)(34.66666666f * 30);
+            game_mode = 9;
+            game_mode_copy = 9;
+        case GAME_MODE_GAME_OVER:
+            D_global_asm_80755308 = START_BUTTON | A_BUTTON;
+            break;
+        case GAME_MODE_MAIN_MENU:
+            D_global_asm_807552EC = 0;
+        case GAME_MODE_ADVENTURE:
+        case GAME_MODE_MYSTERY_MENU_MINIGAME:
+        case GAME_MODE_SNIDES_BONUS_GAME:
+            D_global_asm_8075531C = 1;
+            D_global_asm_80755308 = 0xFFFF;
+            D_global_asm_8075530C = 0xFF;
+            D_global_asm_80755310 = 0xFF;
+            break;
+        case GAME_MODE_END_SEQUENCE:
+            D_global_asm_8075531C = 1;
+            D_global_asm_8075530C = 0;
+            D_global_asm_80755310 = 0;
+            D_global_asm_80755308 = 0;
+            spawnActor(ACTOR_END_SEQUENCE_CONTROLLER, 0);
+            break;
+        case GAME_MODE_END_SEQUENCE_DK_THEATRE:
+            spawnActor(ACTOR_END_SEQUENCE_CONTROLLER, 0);
+        case GAME_MODE_DK_THEATRE:
+            D_global_asm_8075531C = 0x1E;
+            break;
     }
     func_global_asm_8060DEC8();
 }
@@ -556,54 +556,54 @@ Gfx *func_global_asm_80714060(Gfx *dl) {
     if ((D_global_asm_8075531C) && (game_mode_copy == game_mode)) {
         D_global_asm_8075531C--;
         switch (game_mode_copy) {
-        case GAME_MODE_NINTENDO_LOGO:
-        case GAME_MODE_OPENING_CUTSCENE:
-            func_global_asm_80713270();
-            break;
-        case GAME_MODE_DK_RAP:
-            func_global_asm_8071321C();
-            break;
-        case GAME_MODE_DK_TV:
-            func_global_asm_80712FC8();
-            break;
-        case GAME_MODE_QUIT_GAME:
-        case GAME_MODE_GAME_OVER:
-            func_global_asm_80713168();
-            break;
-        case GAME_MODE_END_SEQUENCE_DK_THEATRE:
-            func_global_asm_80713088();
-            break;
-        case GAME_MODE_DK_THEATRE:
-            func_global_asm_807130D4();
-            break;
-        case GAME_MODE_ADVENTURE:
-            func_global_asm_80713C8C();
-            break;
+            case GAME_MODE_NINTENDO_LOGO:
+            case GAME_MODE_OPENING_CUTSCENE:
+                func_global_asm_80713270();
+                break;
+            case GAME_MODE_DK_RAP:
+                func_global_asm_8071321C();
+                break;
+            case GAME_MODE_DK_TV:
+                func_global_asm_80712FC8();
+                break;
+            case GAME_MODE_QUIT_GAME:
+            case GAME_MODE_GAME_OVER:
+                func_global_asm_80713168();
+                break;
+            case GAME_MODE_END_SEQUENCE_DK_THEATRE:
+                func_global_asm_80713088();
+                break;
+            case GAME_MODE_DK_THEATRE:
+                func_global_asm_807130D4();
+                break;
+            case GAME_MODE_ADVENTURE:
+                func_global_asm_80713C8C();
+                break;
         }
     }
     switch (game_mode_copy) {
-    case GAME_MODE_NINTENDO_LOGO:
-    case GAME_MODE_OPENING_CUTSCENE:
-        dl = func_global_asm_8071375C(dl);
-        break;
-    case GAME_MODE_DK_RAP:
-        dl = func_global_asm_807138A4(dl);
-        break;
-    case GAME_MODE_DK_TV:
-        dl = func_global_asm_807138CC(dl);
-        break;
-    case GAME_MODE_QUIT_GAME:
-    case GAME_MODE_GAME_OVER:
-        dl = func_global_asm_80713B40(dl);
-        break;
-    case GAME_MODE_ADVENTURE:
-        dl = func_global_asm_80713DFC(dl);
-        break;
-    case GAME_MODE_MAIN_MENU:
-        dl = func_global_asm_80713EA8(dl);
-        break;
-    case GAME_MODE_DK_THEATRE:
-        break;
+        case GAME_MODE_NINTENDO_LOGO:
+        case GAME_MODE_OPENING_CUTSCENE:
+            dl = func_global_asm_8071375C(dl);
+            break;
+        case GAME_MODE_DK_RAP:
+            dl = func_global_asm_807138A4(dl);
+            break;
+        case GAME_MODE_DK_TV:
+            dl = func_global_asm_807138CC(dl);
+            break;
+        case GAME_MODE_QUIT_GAME:
+        case GAME_MODE_GAME_OVER:
+            dl = func_global_asm_80713B40(dl);
+            break;
+        case GAME_MODE_ADVENTURE:
+            dl = func_global_asm_80713DFC(dl);
+            break;
+        case GAME_MODE_MAIN_MENU:
+            dl = func_global_asm_80713EA8(dl);
+            break;
+        case GAME_MODE_DK_THEATRE:
+            break;
     }
     return dl;
 }

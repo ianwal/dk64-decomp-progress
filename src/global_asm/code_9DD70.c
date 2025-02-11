@@ -262,7 +262,6 @@ s32 func_global_asm_8069A750(void) {
 }
 */
 
-
 // close, doable, float, struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A7C8.s")
 
