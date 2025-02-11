@@ -1386,7 +1386,7 @@ s32 func_global_asm_80616DB4(Actor *arg0) {
     return 1;
 }
 
-// jumptable, rodata (jumptable, 1 float)
+// jumptable, rodata, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80616E08.s")
 
 /*
@@ -1395,42 +1395,34 @@ s32 func_global_asm_80616E08(Actor *arg0) {
     u8 sp4D;
     s16 sp4A;
     u8 sp49;
-    u8 sp48;
-    enum actors_e temp_t8;
-    f64 var_f18;
-    f64 var_f6;
-    s16 temp_v0;
-    u8 temp_v1;
     u8 var_v1;
+    u8 pad;
 
     D_807F5AF0++;
     getAnimationArg16(&sp4E);
     getAnimationArg8(&sp4D);
     getAnimationArg16(&sp4A);
     getAnimationArg8(&sp49);
-    temp_v1 = character_change_array[extra_player_info_pointer->unk1A4].unk2C0;
-    if (temp_v1 == 2) {
+    if (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 == 2) {
         if (sp4E == 1) {
-            sp4D = (u8) (u32) (sp4D * 0.5);
+            sp4D *= 0.5;
         }
-        sp48 = 0xA;
-        func_global_asm_8061EF4C(extra_player_info_pointer->unk104, 0xAU, 8U, arg0->x_position, arg0->y_position, arg0->z_position, 100.0f, 800.0f);
         var_v1 = 0xA;
-    } else if (temp_v1 == 0) {
+        func_global_asm_8061EF4C(extra_player_info_pointer->unk104, var_v1, 8U, arg0->x_position, arg0->y_position, arg0->z_position, 100.0f, 800.0f);
+    } else if (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 == 0) {
         var_v1 = 0xFF;
-        sp4D = (u8) (u32) (sp4D * 0.5);
+        sp4D *= 0.5;
     } else {
-        temp_t8 = arg0->unk58;
-        switch (temp_t8) {
-        case 6:
-        case 7:
+        switch (arg0->unk58) {
+        case ACTOR_CHUNKY:
+        case ACTOR_KRUSHA:
             var_v1 = 0x46;
             break;
-        case 8:
+        case ACTOR_RAMBI:
             var_v1 = 0x5A;
             break;
-        case 2:
-        case 4:
+        case ACTOR_DK:
+        case ACTOR_LANKY:
             var_v1 = 0x32;
             break;
         default:
@@ -1438,17 +1430,14 @@ s32 func_global_asm_80616E08(Actor *arg0) {
             break;
         }
     }
-    sp48 = var_v1;
-    temp_v0 = func_global_asm_8060A7C0(sp4E, arg0, arg0->unk78);
-    sp4E = temp_v0;
-    if ((temp_v0 == 2) || (temp_v0 == 8)) {
+    sp4E = func_global_asm_8060A7C0(sp4E, arg0, arg0->unk78);
+    if ((sp4E == 2) || (sp4E == 8)) {
         sp49 = 0xA;
     }
     playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, sp4E, (u8) (s32) sp4D, (s16) (s32) sp4A, (u8) (s32) sp49, (u8) (s32) var_v1, 0.3f, 0U);
     return 1;
 }
 */
-
 
 extern s32 D_global_asm_807457C8;
 extern f64 D_global_asm_807573A8;
@@ -1478,10 +1467,40 @@ s32 func_global_asm_80617140(Actor *arg0) {
     return 1;
 }
 
-// jumptable, rodata (jumptable, 1 float)
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_80617238.s")
+s32 func_global_asm_80617238(Actor *arg0) {
+    s16 sp3E;
+    u8 sp3D;
+    u8 var_v0;
+    u8 sp3B;
 
-extern f32 D_global_asm_807573D0;
+    sp3B = 0xFF;
+    D_807F5AF0++;
+    getAnimationArg16(&sp3E);
+    getAnimationArg8(&sp3D);
+    if (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 == 2) {
+        var_v0 = 0xA;
+    } else if (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 == 0) {
+        var_v0 = 0xFF;
+        sp3B = var_v0 * 0.5;
+    } else {
+        switch (arg0->unk58) {
+        case ACTOR_CHUNKY:
+        case ACTOR_KRUSHA:
+        case ACTOR_RAMBI:
+            var_v0 = 0x5A;
+            break;
+        case ACTOR_DK:
+        case ACTOR_LANKY:
+            var_v0 = 0x32;
+            break;
+        default:
+            var_v0 = 0x50;
+            break;
+        }
+    }
+    playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, sp3E, (u8) (s32) sp3B, 0x7F, (u8) (s32) sp3D, (u8) var_v0, 0.3f, 0U);
+    return 1;
+}
 
 s32 func_global_asm_80617400(Actor *arg0) {
     s16 sp36;
