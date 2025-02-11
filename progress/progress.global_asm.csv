@@ -512,7 +512,7 @@ us,asm,func_global_asm_8067A784,104,yes
 us,asm,func_global_asm_80732DAC,64,yes
 us,asm,func_global_asm_806850D0,320,yes
 us,asm,func_global_asm_80618998,468,yes
-us,asm,func_global_asm_80667180,312,no
+us,asm,func_global_asm_80667180,312,yes
 us,asm,func_global_asm_806EE7F4,132,yes
 us,asm,func_global_asm_80689958,296,yes
 us,asm,func_global_asm_8060EC80,236,no
