@@ -3618,7 +3618,9 @@ struct Struct80614C38_0 {
     void *unk0;
     void *unk4;
     u8 unk8;
-    u8 pad9[0x12 - 0x9];
+    u8 pad9[0xC - 0x9];
+    Struct80614C38 *unkC;
+    u8 pad10[0x14 - 0x10];
     Struct80614C38 *next;
 };
 

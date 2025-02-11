@@ -134,7 +134,7 @@ void func_global_asm_80614A64(Actor *arg0) {
     }
 }
 
-s32 *func_global_asm_80614C38(Gfx *, Actor *, Actor_unk0 *); /* extern */
+Gfx *func_global_asm_80614C38(Gfx *, Actor *, ActorModelHeader *);
 
 Gfx *func_global_asm_80614B34(Gfx *dl, Actor *arg1) {
     ActorModelHeader *var_s0;
@@ -157,14 +157,9 @@ Gfx *func_global_asm_80614B34(Gfx *dl, Actor *arg1) {
     return dl;
 }
 
-
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/func_global_asm_80614C38.s")
-
-/*
 Gfx *func_global_asm_80614C38(Gfx *dl, Actor *arg1, ActorModelHeader *arg2) {
     u16 hand_state;
-    u32 var_v0;
+    u8 var_v0;
     u8 temp_v1;
     Struct80614C38 *var_s0;
     void* p_addr;
@@ -172,14 +167,16 @@ Gfx *func_global_asm_80614C38(Gfx *dl, Actor *arg1, ActorModelHeader *arg2) {
     var_s0 = arg2->unk14;
     hand_state = arg1->unk146;
     while (var_s0) {
-        temp_v1 = var_s0->unk8;
-        p_addr = (hand_state >> ((temp_v1 - 7) & 0xFF)) & 1 ? osVirtualToPhysical(var_s0->unk0) : osVirtualToPhysical(var_s0->unk4);
-        gSPSegment(dl++, temp_v1, p_addr);
-        var_s0 = var_s0->next;
+        var_v0 = var_s0->unk8 - 7;
+        if ((hand_state >> var_v0) & 1) {
+            gSPSegment(dl++, var_s0->unk8, osVirtualToPhysical(var_s0->unk0));
+        } else {
+            gSPSegment(dl++, var_s0->unk8, osVirtualToPhysical(var_s0->unk4));
+        }
+        var_s0 = var_s0->unkC;
     }
     return dl;
 }
-*/
 
 void func_global_asm_80614D00(Actor *arg0, f32 arg1, f32 arg2) {
     ActorAnimationState *temp_v0;
