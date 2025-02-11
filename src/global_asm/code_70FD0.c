@@ -32,7 +32,7 @@ extern Actor *D_global_asm_807FB540;
 extern s16 D_global_asm_807FB544;
 extern u8 D_global_asm_807FB546;
 extern u8 D_global_asm_807FB547;
-extern s8 D_global_asm_807FB548;
+extern u8 D_global_asm_807FB548;
 extern s16 D_global_asm_807FB5EC;
 extern s16 D_global_asm_807FB5EE;
 extern s16 D_global_asm_807FB5F0;
@@ -1216,46 +1216,43 @@ void func_global_asm_80671260(Actor *arg0) {
 }
 */
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_806713E4.s")
-
 extern s32 D_807FB5C4;
 extern s32 D_807FB5CC;
 extern s32 D_807FB5D0;
 
 s32 func_global_asm_806717FC(Actor *arg0);
 
-/*
 void func_global_asm_806713E4(Actor *arg0, u8 arg1) {
     LedgeInfo *ledgeInfo;
+    f32 temp_f12;
+    f32 temp_f0;
+    f32 temp_f14;
     f32 sp2C;
     f32 sp28;
     f32 sp24;
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f14;
     f32 var_f10;
 
     if (D_807FB5D0 < func_global_asm_806717FC(arg0)) {
         ledgeInfo = arg0->ledge_info_pointer;
         func_global_asm_80671528(arg0, &sp24, &sp28, &sp2C, arg1);
-        temp_f12 = D_807FB5C4 / 8.0f;
-        temp_f14 = D_807FB5CC / 8.0f;
-        if (D_global_asm_807FB548 != 0) {
-            temp_f0 = func_global_asm_806717FC(arg0) / 8.0f;
+        temp_f12 = ((f32)D_807FB5C4) / 8;
+        temp_f14 = ((f32)D_807FB5CC) / 8;
+        if (D_global_asm_807FB548) {
+            temp_f0 = ((f32)func_global_asm_806717FC(arg0)) / 8;
             var_f10 = sp2C * temp_f0;
             sp24 *= temp_f0;
+            sp2C = var_f10;
         } else {
-            temp_f0 = (D_807FB5D0 + 6) / 8.0f;
+            temp_f0 = ((f32)(D_807FB5D0 + 6)) / 8;
             var_f10 = sp2C * temp_f0;
             sp24 *= temp_f0;
+            sp2C = var_f10;
         }
-        sp2C = var_f10;
         ledgeInfo->unk1C = temp_f12 - sp24;
-        ledgeInfo->unk24 = 1;
         ledgeInfo->unk20 = temp_f14 - sp2C;
+        ledgeInfo->unk24 = 1;
     }
 }
-*/
 
 // Actor & Matrix
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671528.s")
@@ -1714,7 +1711,6 @@ void func_global_asm_80672C70(s32 arg0) {
 }
 
 extern s32 D_global_asm_807FB53C;
-extern s8 D_global_asm_807FB548;
 
 s32 func_global_asm_80672CBC(s8 arg0) {
     PlayerAdditionalActorData *PaaD;
