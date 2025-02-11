@@ -1538,7 +1538,15 @@ void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, s32 unuse
     *arg8 = ((sp18[0][3] * arg1) + (sp18[1][3] * arg2) + (sp18[2][3] * arg3)) + sp18[3][3];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80627490.s")
+void func_global_asm_80627490(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
+    f32 temp_f14;
+    f32 temp_f2;
+
+    *arg0 = func_global_asm_80665AE4(arg5, arg7, arg2, arg4) * 0.017453292f;
+    temp_f2 = arg2 - arg5;
+    temp_f14 = arg4 - arg7;
+    *arg1 = func_global_asm_80611BB4(arg3 - arg6, sqrtf(SQ(temp_f2) + SQ(temp_f14)));
+}
 
 void func_global_asm_8062754C(f32 arg0) {
     s16 playerIndex;
