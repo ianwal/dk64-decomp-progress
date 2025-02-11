@@ -1803,10 +1803,13 @@ typedef struct {
     u8 unk67;
     s32 unk68;
     s16 unk6C;
-    s8 unk6E;
+    u8 unk6E;
     s8 unk6F;
-    s8 unk70;
-    s8 unk71;
+    union {
+        u8 unk70;
+        s8 unk70_s8;
+    };
+    u8 unk71;
     u8 unk72;
     u8 unk73;
     f32 unk74;
@@ -1907,6 +1910,19 @@ typedef struct {
     u8 unk25[2];
 } Prop_unk48;
 
+typedef struct {
+    Prop_unk28 *unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 pad16[2];
+    s32 unk18;
+    s32 unk1C;
+} Prop_seg28;
+
 typedef struct prop {
     f32 x_position; // at 0x00
     f32 y_position; // at 0x04
@@ -1918,14 +1934,7 @@ typedef struct prop {
     f32 unk1C;
     PropModel *model_pointer; // at 0x20
     Prop_unk24 *unk24; // labelled behavior_type_pointer in ScriptHawk
-    Prop_unk28 *unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
+    Prop_seg28 unk28;
     Prop_unk48 *unk48;
     s32 unk4C;
     s32 unk50;

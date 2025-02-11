@@ -1450,8 +1450,40 @@ loop_7:
 // TODO: Very similar to above
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671E00.s")
 
-// Prop loop
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671F54.s")
+s32 func_global_asm_80673708(s32, s32, s32, s32, s32, s32, s32, s32);
+s32 func_global_asm_80674ADC(s32, s32, s32, s32, s32, s32, s32, s32);
+extern s8 D_807FB5FD;
+extern s32 D_global_asm_80747D70;
+extern s32 D_global_asm_807FB53C;
+
+s32 func_global_asm_80671F54(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5) {
+    u8 var_fp;
+    s32 var_s1;
+    s32 i;
+    Prop *temp_s0;
+    Prop_seg28 *temp_s0_2;
+    Prop_ScriptData *temp_v0;
+
+    var_fp = 0;
+    D_807FB5FD = 0;
+    for (i = 0; i < D_global_asm_80747D70; i++) {
+        temp_s0_2 = &D_global_asm_807F6000[i].unk28;
+        temp_s0 = &D_global_asm_807F6000[i];
+        if (temp_s0_2->unk18 != 0) {
+            if ((D_global_asm_807FB53C != 0xBC) || (D_global_asm_807F6000[i].unk6C & 2)) {
+                if (func_global_asm_80674ADC(arg0, arg1, arg2, arg3, temp_s0_2->unk0, temp_s0_2->unk4, temp_s0_2->unk8, temp_s0_2->unkC) != 0) {
+                    if (temp_s0_2->unk15 & 1) {
+                        temp_v0 = D_global_asm_807F6000[i].unk7C;
+                        if ((temp_v0 == NULL) || (temp_v0->unk70 != 0)) {
+                            var_fp |= func_global_asm_80673708(arg0, arg1, arg2, arg3, temp_s0_2->unk18, temp_s0_2->unk1C, arg4, arg5);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return var_fp;
+}
 
 s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     s16 var_a3;
