@@ -132,8 +132,15 @@ struct Struct806F50C8 {
     Struct806F50C8 *unk18;
 };
 
+typedef struct struct80754244 Struct80754244;
+
+struct struct80754244 {
+    u8 unk0[0x18 - 0x0];
+    Struct80754244 *next;
+};
+
 extern Struct80753EFC D_global_asm_80753EFC[];
-extern s32 *D_global_asm_80754244;
+extern Struct80754244 **D_global_asm_80754244;
 extern s16 D_global_asm_807FD720;
 extern Struct806F50C8 *D_global_asm_807FD72C;
 
@@ -187,9 +194,6 @@ void func_global_asm_806F50C8(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8
     *var_v1 = temp_v0_2;
 }
 
-// looks like it loops through linked lists and frees them
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F5270.s")
-
 typedef struct globalASMStruct36 GlobalASMStruct36;
 
 // TODO: These fields might not all be correct
@@ -213,6 +217,54 @@ struct globalASMStruct36 {
 
 extern GlobalASMStruct36 *D_global_asm_807FD730;
 extern u8 D_global_asm_807FD738;
+
+extern s16 D_global_asm_807FD720;
+
+// TODO: Hmm, stack and s0 s1 is a bit sus
+// Not sure about which local variables are shared
+void func_global_asm_806F5270(void) {
+    Struct806F50C8 *current2;
+    GlobalASMStruct36 *current3;
+    
+    if (D_global_asm_80754244 != NULL) {
+        s32 i;
+        for (i = 0; i < D_global_asm_807FD720; i++) {
+            void *next;
+            current2 = D_global_asm_80754244[i];
+            if (current2) {
+                do {
+                    next = current2->unk18;
+                    free(current2);
+                    current2 = next;
+                } while (next != NULL);
+            }
+        }
+        free(D_global_asm_80754244);
+        D_global_asm_80754244 = NULL;
+    }
+    current2 = D_global_asm_807FD72C;
+    if (current2) {
+        void *next;
+        do {
+            next = current2->unk18;
+            free(current2);
+            current2 = next;
+        } while (next != NULL);
+    }
+    if (D_global_asm_807FD730) {
+        void *next;
+        current3 = D_global_asm_807FD730;
+        if (current3) {
+            do {
+                next = current3->next;
+                free(current3);
+                current3 = next;
+            } while (next != NULL);
+        }
+        D_global_asm_807FD730 = NULL;
+    }
+    func_global_asm_806F95C8();
+}
 
 void func_global_asm_806F5378(void) {
     GlobalASMStruct36 *next;
