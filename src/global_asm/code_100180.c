@@ -30,15 +30,6 @@ typedef struct {
     Struct80754A18_inner character[96];
 } Struct80754A18;
 
-typedef struct {
-    u8 width;
-    u8 file_count;
-    u8 height;
-    u8 kerning_space;
-    u8 kerning_character;
-    u8 kerning_animation;
-} Struct80754A34;
-
 extern void **D_global_asm_807FD7F0; // Array of 43 texture pointers
 extern u8 *D_global_asm_807FD7F4; // Array of 43 u8's
 extern Struct80754A18 *D_global_asm_80754A18[7];

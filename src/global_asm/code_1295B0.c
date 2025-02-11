@@ -877,16 +877,13 @@ void func_global_asm_80728300(s16 *file, FenceDataStruct *fence, SpawnerDataStru
 }
 */
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_8072881C.s")
-
-/*
 u8 func_global_asm_8072881C(u8 arg0, u32 *arg1) {
     u8 phi_v1 = FALSE;
     if ((arg0 & 0x80)
         || (*arg1 + 50 < object_timer
-            && !(RandClamp(1000) < 0x3C1)
+            && (RandChance(0.04))
             && !func_global_asm_80688540(current_actor_pointer, arg0))) {
+        arg0 &= 0x7F;
         func_global_asm_80688370(current_actor_pointer, arg0, 1.0f);
         func_global_asm_806883C8(current_actor_pointer, arg0, 1);
         func_global_asm_8068839C(current_actor_pointer, arg0, 0);
@@ -899,7 +896,6 @@ u8 func_global_asm_8072881C(u8 arg0, u32 *arg1) {
     }
     return phi_v1;
 }
-*/
 
 void func_global_asm_80728950(u8 arg0) {
     func_global_asm_8068842C(current_actor_pointer, arg0, 1);

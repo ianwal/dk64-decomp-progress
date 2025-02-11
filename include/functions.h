@@ -3273,7 +3273,7 @@ void func_global_asm_806FDAEC(s16 arg0);
 // TODO: func_global_asm_806FDB8C has no documented signature
 void func_global_asm_806FDF1C(s16 arg0, char *arg1);
 void func_global_asm_806FDF54(f32 *arg0, f32 *arg1);
-Gfx *func_global_asm_806FE078(Gfx *dl, u8 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
+Gfx *func_global_asm_806FE078(Gfx *dl, s16 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
 
 // global_asm/code_103AB0.c
 Gfx *func_global_asm_806FEDB0(Gfx *dl, u8 arg1);

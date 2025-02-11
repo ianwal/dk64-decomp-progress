@@ -3139,7 +3139,7 @@ us,asm,func_global_asm_80639F1C,164,no
 us,asm,func_global_asm_8071DB74,284,yes
 us,asm,func_global_asm_806EFA3C,272,yes
 us,asm,gameIsInDKTVMode,84,yes
-us,asm,func_global_asm_8072881C,308,no
+us,asm,func_global_asm_8072881C,308,yes
 us,asm,func_global_asm_80724C2C,76,yes
 us,asm,func_global_asm_8060BA14,260,yes
 us,asm,func_global_asm_80689250,456,no
