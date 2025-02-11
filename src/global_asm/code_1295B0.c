@@ -722,21 +722,16 @@ u8 func_global_asm_807280C8(EnemyInfo *arg0, s32 arg1) {
             && !func_global_asm_80652F24(0, arg0->unk40));
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_8072818C.s")
-
-/*
 u8 func_global_asm_8072818C(EnemySpawner *arg0, s32 arg1) {
-    f32 temp_f0;
+    s32 temp_f0;
 
     temp_f0 = sqrtf(arg1) * 1.5;
     return ((arg0->tied_actor->interactable & 2) && !(arg0->properties_bitfield & 0x20) && arg0->init.something_spawn_state == 2)
-        && ((temp_f0) * (temp_f0)) < 
-            ((character_change_array[0].look_at_eye_z - arg0->tied_actor->z_position) * (character_change_array[0].look_at_eye_z - arg0->tied_actor->z_position))
-            + ((character_change_array[0].look_at_eye_y - arg0->tied_actor->y_position) * (character_change_array[0].look_at_eye_y - arg0->tied_actor->y_position))
-            + ((character_change_array[0].look_at_eye_x - arg0->tied_actor->x_position) * (character_change_array[0].look_at_eye_x - arg0->tied_actor->x_position));
+        && (SQ(temp_f0)) < 
+            (SQ(character_change_array[0].look_at_eye_x - arg0->tied_actor->x_position))
+            + (SQ(character_change_array[0].look_at_eye_y - arg0->tied_actor->y_position))
+            + (SQ(character_change_array[0].look_at_eye_z - arg0->tied_actor->z_position));
 }
-*/
 
 void func_global_asm_8072827C(Struct80755690_unk4 *arg0) {
     s16 i;

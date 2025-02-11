@@ -2,23 +2,7 @@
 #include "functions.h"
 
 // rodata
-static const u32 D_global_asm_8075DC20[] = {
-    0x41424344,
-    0x45464748,
-    0x494A4B4C,
-    0x4D4E4F50,
-    0x51525354,
-    0x55565758,
-    0x595A2E2D,
-    0x3F7B7D3A,
-    0x3D303132,
-    0x33343536,
-    0x3738393C,
-    0x3E6D2921,
-    0x40232425,
-    0x5E266361,
-    0x62000000,
-};
+static const char D_global_asm_8075DC20[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ.-?{}:=0123456789<>m)!@#$%^&cab";
 
 typedef struct {
     s16 x_start;
@@ -194,10 +178,7 @@ Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2) {
 s32 func_global_asm_806FB914(s16, u8 *);
 
 s16 func_global_asm_806FD7A8(s16 arg0, u8 arg1) {
-    Struct80754A34 *var_a0;
-    Struct80754A18 *text_data;
     s16 var_v1;
-    s32 val;
 
     if (arg0 & 0x80) {
         arg0 ^= 0x80;
@@ -205,7 +186,7 @@ s16 func_global_asm_806FD7A8(s16 arg0, u8 arg1) {
     } else if (arg1 == ' ') {
         var_v1 = D_global_asm_80754A34[arg0].kerning_space;
     } else {
-        val = func_global_asm_806FB914((s16)(s32)arg0, &arg1);
+        func_global_asm_806FB914((s16)(s32)arg0, &arg1);
         var_v1 = D_global_asm_80754A18[arg0]->character[arg1].width;
     }
     var_v1 += D_global_asm_80754A34[arg0].kerning_character;
