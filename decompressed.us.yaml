@@ -393,6 +393,7 @@ segments:
       - [0x214D870, .data, done/code_68960]
       - [0x214D8A0, .data, done/code_699B0]
       - [0x214DA40, data, data_14DA40]
+      - [0x215A380, .data, code_126260]
       - [0x215A390, data, code_1295B0]
       - [0x215A4A0, .data, done/triggers]
       - [0x215A720, .data, code_135D30]

@@ -12,6 +12,12 @@ extern f64 D_global_asm_8075EB28 = 255;
 extern f64 D_global_asm_8075EB30 = 0.05;
 */
 
+// .data
+static s16 D_global_asm_80755680 = 0;
+static f32 D_global_asm_80755684 = 255.0f;
+static f32 D_global_asm_80755688 = 255.0f;
+static f32 D_global_asm_8075568C = 255.0f;
+
 typedef struct struct807FDB60 {
     u8 pad[0x4];
     s16 unk4;
@@ -80,11 +86,6 @@ void func_global_asm_807215EC(void) {
     func_global_asm_80721560(0x320, 0x82, 0, 0xFF, 0xFF, 0xFF);
     func_global_asm_807215D0(1, 1);
 }
-
-extern s16 D_global_asm_80755680;
-extern f32 D_global_asm_80755684;
-extern f32 D_global_asm_80755688;
-extern f32 D_global_asm_8075568C;
 
 void func_global_asm_8072167C(s16 arg0, s16 arg1, s16 arg2, s16 arg3) {
     D_global_asm_80755680 += (arg3 - D_global_asm_80755680) * 0.1;
