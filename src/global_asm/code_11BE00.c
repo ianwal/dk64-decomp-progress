@@ -10,9 +10,6 @@ extern SpriteData D_global_asm_8071FFA0; // TODO: Datatype
 
 extern s16 D_global_asm_807502D0;
 
-extern f32 D_global_asm_80755674;
-extern f32 D_global_asm_80755678;
-
 extern Struct807FDB00 *D_global_asm_807FDB00;
 extern Struct807FDB04 *D_global_asm_807FDB04;
 extern Struct80717D84 *D_global_asm_807FDB08;
@@ -44,6 +41,20 @@ void func_global_asm_80714778(f32);
 void func_global_asm_80714A9C(void);
 void func_global_asm_80717404(otherSpriteControl *, s8 *);
 void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
+
+// .data
+static Struct80717D84_unk384_8071C9E8_sub6 D_global_asm_80755650[] = {
+    {0x01D4, 0x0078, 0x026D},
+    {0x01EE, 0x0082, 0x02F6},
+    {0x02E5, 0x008C, 0x0254},
+    {0x02C3, 0x0078, 0x02FA},
+    {0x025A, 0x006E, 0x0312},
+    {0x025E, 0x0096, 0x026A},
+};
+
+static f32 D_global_asm_80755674 = -0.1f;
+static f32 D_global_asm_80755678 = 2.0f;
+static s8 D_global_asm_8075567C = 1;
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_80717100.s")
@@ -1499,7 +1510,6 @@ void func_global_asm_8071C914(Struct80717D84 *arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071C9E8.s")
 
 extern SpriteData D_global_asm_8071FB08;
-extern Struct80717D84_unk384_8071C9E8_sub6 D_global_asm_80755650[];
 
 /*
 void func_global_asm_8071C9E8(otherSpriteControl *arg0, s8 *arg1) {
