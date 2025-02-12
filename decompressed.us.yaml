@@ -394,7 +394,8 @@ segments:
       - [0x214D8A0, .data, done/code_699B0]
       - [0x214DA40, data, data_14DA40]
       - [0x215A4A0, .data, done/triggers]
-      - [0x215A720, data, data_15A720]
+      - [0x215A720, .data, code_135D30]
+      - [0x215AE30, data, data_15AE30]
       - [0x215B0C0, .data, audio/n_sndplayer]
       - [0x215B0E0, data, data_15B0E0] # TODO: Audio
       - [0x215B190, .data, audio/n_env]
