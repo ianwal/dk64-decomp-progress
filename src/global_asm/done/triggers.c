@@ -1,13 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-u8 func_global_asm_8072E5B0(void) {
-    return !(player_pointer->unk6A & 1)
-        && !(player_pointer->locked_to_pad == 1)
-        && !(player_pointer->control_state == 0x63); // Rocketbarrel
-}
-
 typedef struct TriggerRawItem_sub10 {
     s16 type;
     u16 args[4];
@@ -43,7 +36,79 @@ typedef struct TriggersRDRAM {
     TriggerData *data;
 } TriggersRDRAM;
 
-extern TriggersRDRAM *D_global_asm_80755A14;
+typedef struct {
+    s16 unk0;
+    u16 unk2;
+    s16 unk4;
+    u8 unk6;
+    u8 unk7;
+    s32 unk8;
+    void *unkC; // TODO: u8(void) signature for func pointer
+} GlobalASMStruct67;
+
+// .data
+GlobalASMStruct67 D_global_asm_807557A0[] = {
+    {0, 0x000B, 0, 0, 0x01, 0, NULL},
+    {0, 0x000B, 0, 0, 0x02, 0, NULL},
+    {0, 0x000B, 0, 0, 0x03, 0, NULL},
+    {0, 0x000D, 0, 0, 0x01, 0, NULL},
+    {0, 0x000E, 0, 0, 0x01, 0, NULL},
+    {0, 0x000A, 0, 0, 0x01, 0, NULL},
+    {0, 0x000A, 0, 0, 0x02, 0, NULL},
+    {0, 0x000C, 0, 0, 0x01, 0, NULL},
+    {0, 0x000C, 0, 0, 0x02, 0, NULL},
+    {0, 0x000C, 0, 0, 0x03, 0, NULL},
+    {0, 0x000F, 0, 0, 0x01, 0, NULL},
+    {0, 0x000B, 0, 0, 0x04, 0, NULL},
+    {0, 0x000C, 0, 0, 0x04, 0, NULL},
+    {0, 0x000C, 0, 0, 0x05, 0, NULL},
+    {0, 0x000F, 0, 0, 0x02, 0, NULL},
+    {0, 0x000C, 0, 0, 0x06, 0, NULL},
+    {0, 0x000C, 0, 0, 0x07, 0, NULL},
+    {0, 0x000C, 0, 0, 0x08, 0, NULL},
+    {0, 0x000C, 0, 0, 0x09, 0, NULL},
+    {0, 0x000C, 0, 0, 0x0A, 0, NULL},
+    {0, 0x000C, 0, 0, 0x0B, 0, NULL},
+    {0, 0x000C, 0, 0, 0x0C, 0, NULL},
+    {0, 0x000C, 0, 0, 0x0D, 0, NULL},
+    {0, 0x000C, 0, 0, 0x0E, 0, NULL},
+    {0, 0x000C, 0, 0, 0x0F, 0, NULL},
+    {0, 0x000F, 0, 0, 0x03, 0, NULL},
+    {0, 0x000C, 0, 0, 0x11, 0, NULL},
+    {0, 0x000C, 0, 0, 0x12, 0, NULL},
+    {0, 0x000C, 0, 0, 0x13, 0, NULL},
+    {0, 0x000C, 0, 0, 0x15, 0, NULL},
+    {0, 0x000C, 0, 0, 0x16, 0, NULL},
+    {0, 0x000C, 0, 0, 0x17, 0, NULL},
+    {0, 0x000F, 0, 0, 0x01, 0, func_global_asm_8072E5B0},
+    {0, 0x000C, 0, 0, 0x18, 0, NULL},
+    {0, 0x000C, 0, 0, 0x00, 0, NULL},
+    {0, 0x000C, 0, 0, 0x19, 0, NULL},
+    {0, 0x000C, 0, 0, 0x1A, 0, NULL},
+    {0, 0x000C, 0, 0, 0x1B, 0, NULL},
+    {0, 0x000C, 0, 0, 0x1C, 0, NULL},
+};
+
+u8 unused_80755A10 = 0x27;
+
+// TODO: Symbol for ptr
+// extern TriggersRDRAM D_807FDCB0;
+extern TriggersRDRAM *D_global_asm_80755A14 = 0x807FDCB0;
+
+extern s16 D_global_asm_8076A0AA;
+
+extern u8 D_global_asm_807FBDC4;
+extern s16 D_global_asm_807FDCB8;
+extern s16 D_global_asm_807FDCBA;
+extern s16 D_global_asm_807FDCBC;
+
+u8 func_global_asm_8072EA90(TriggerData *);
+
+u8 func_global_asm_8072E5B0(void) {
+    return !(player_pointer->unk6A & 1)
+        && !(player_pointer->locked_to_pad == 1)
+        && !(player_pointer->control_state == 0x63); // Rocketbarrel
+}
 
 void func_global_asm_8072E5FC(TriggerFile *arg0) {
     TriggerRawItem *var_s2;
@@ -70,18 +135,6 @@ void func_global_asm_8072E5FC(TriggerFile *arg0) {
         var_v1->active = (u8) var_v1->raw.default_active_state;
     }
 }
-
-typedef struct {
-    s16 unk0;
-    u16 unk2;
-    s16 unk4;
-    u8 unk6;
-    u8 unk7;
-    s32 unk8;
-    s32 unkC;
-} GlobalASMStruct67;
-
-extern GlobalASMStruct67 D_global_asm_807557A0[];
 
 // TODO: This stack is super sus, fake match?
 void func_global_asm_8072E740(Maps map) {
@@ -124,12 +177,6 @@ s32 func_global_asm_8072E7DC(s16 arg0, Actor **arg1) {
     *arg1 = temp_a1;
     return found;
 }
-
-extern u8 D_global_asm_807FBDC4;
-extern s16 D_global_asm_807FDCB8;
-extern s16 D_global_asm_807FDCBA;
-extern s16 D_global_asm_807FDCBC;
-u8 func_global_asm_8072EA90(TriggerData *);
 
 void func_global_asm_8072E868(void) {
     s32 pad[2];
@@ -188,8 +235,6 @@ void func_global_asm_8072E868(void) {
         var_s2++;
     }
 }
-
-extern s16 D_global_asm_8076A0AA;
 
 u8 func_global_asm_8072EA90(TriggerData *arg0) {
     u8 var_t3;

@@ -940,25 +940,25 @@ u8 func_global_asm_806E2B20(Actor *arg0) {
     f32 y;
     f32 z;
     f32 phi_f20;
-    f32 sp7C;
-    f32 sp78;
-    f32 sp74;
-    f32 sp70;
-    f32 sp6C;
-    f32 sp68;
+    f32 bone10X;
+    f32 bone4X;
+    f32 bone10Y;
+    f32 bone4Y;
+    f32 bone10Z;
+    f32 bone4Z;
     s16 sp66;
     s16 sp64;
     u8 phi_v1;
 
     phi_v1 = 0;
     phi_f20 = 0;
-    getBonePosition(arg0, 4, &sp78, &sp70, &sp68);
-    getBonePosition(arg0, 10, &sp7C, &sp74, &sp6C);
+    getBonePosition(arg0, 4, &bone4X, &bone4Y, &bone4Z);
+    getBonePosition(arg0, 10, &bone10X, &bone10Y, &bone10Z);
     while (phi_f20 <= 1.0 && !phi_v1) {
         phi_v1 = func_global_asm_80671E00(
-            sp78 + ((sp7C - sp78) * phi_f20),
-            sp70 + ((sp74 - sp70) * phi_f20),
-            sp68 + ((sp6C - sp68) * phi_f20),
+            bone4X + ((bone10X - bone4X) * phi_f20),
+            bone4Y + ((bone10Y - bone4Y) * phi_f20),
+            bone4Z + ((bone10Z - bone4Z) * phi_f20),
             10.0f,
             &sp66,
             &sp64,

@@ -19,15 +19,15 @@ void func_global_asm_80659320(void) {
 
 void func_global_asm_80659350(void) {
     s32 i;
-    global_asm_struct_78 *temp;
-    global_asm_struct_78 *temp_1;
+    global_asm_struct_78 *current;
+    global_asm_struct_78 *next;
 
     for (i = 0; i < ARRAY_COUNT(D_global_asm_807F7370); i++) {
-        temp = D_global_asm_807F7370[i];
-        while (temp) {
-            temp_1 = temp->unk8;
-            free(temp);
-            temp = temp_1;
+        current = D_global_asm_807F7370[i];
+        while (current) {
+            next = current->unk8;
+            free(current);
+            current = next;
         }
     }
     func_global_asm_80659320();
