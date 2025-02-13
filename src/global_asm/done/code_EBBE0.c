@@ -721,26 +721,28 @@ void func_global_asm_806E8F68(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E9070.s")
-
-/*
-// TODO: D_global_asm_80767CC0 might be a struct.280 access, or an array? idk
 void func_global_asm_806E9070(void) {
+    RaceAdditionalActorData *RaaD;
+
+    RaaD = extra_player_info_pointer->vehicle_actor_pointer->RaaD;
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
-        extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
+        extra_player_info_pointer->unk58 = D_global_asm_80767A40.unk280;
     }
-    if (((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU) && extra_player_info_pointer->vehicle_actor_pointer->RaaD->unk0 == 0) {
-        extra_player_info_pointer->vehicle_actor_pointer->y_velocity = D_global_asm_80750338;
-        extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
-        playAnimation(current_actor_pointer, 0x7C);
-        if (current_actor_pointer->unk58 == ACTOR_DK) {
-            playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x294);
-        } else {
-            playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x293);
-        }
+    if ((D_global_asm_80767A40.unk280 - extra_player_info_pointer->unk58) > 0xEU) {
+        return;
+    }
+    if (RaaD->unk0) {
+        return;
+    }
+    extra_player_info_pointer->vehicle_actor_pointer->y_velocity = D_global_asm_80750338;
+    extra_player_info_pointer->unk58 = D_global_asm_80767A40.unk280 - 0x1E;
+    playAnimation(current_actor_pointer, 0x7C);
+    if (current_actor_pointer->unk58 == ACTOR_DK) {
+        playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x294);
+    } else {
+        playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x293);
     }
 }
-*/
 
 void func_global_asm_806E918C(void) {
     f32 sp54;
