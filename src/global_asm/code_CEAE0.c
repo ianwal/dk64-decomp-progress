@@ -2239,29 +2239,21 @@ void func_global_asm_806D0430(f32 arg0) {
     D_global_asm_80750FA8 = 0.3f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806D0468.s")
-
-/*
 void func_global_asm_806D0468(Actor *arg0, u8 arg1) {
-    f32 temp_f0;
-    f32 temp_f0_2;
     f32 temp_f0_3;
-    f32 temp_f2;
-    f32 var_f12;
-    f32 var_f18;
-    s32 var_v0;
+    s32 i;
     PlayerAdditionalActorData *PaaD;
-    PlayerAdditionalActorData *var_v1;
+    u8 index;
 
     PaaD = arg0->PaaD;
     PaaD->unk1DC = 0.4f;
     PaaD->unk1D8 = 0.004f;
+    index = PaaD->unk1A4;
     switch (arg1) {
         case 0:
-            temp_f0 = 0.05f;
-            PaaD->unk1C0 = temp_f0;
-            PaaD->unk1C4 = temp_f0;
-            PaaD->unk1C8 = temp_f0;
+            PaaD->unk1C0 = 0.05f;
+            PaaD->unk1C4 = 0.05f;
+            PaaD->unk1C8 = 0.05f;
             break;
         case 2:
             PaaD->unk1C0 = D_global_asm_80750FA8;
@@ -2272,42 +2264,25 @@ void func_global_asm_806D0468(Actor *arg0, u8 arg1) {
             PaaD->unk1C0 = 0.15f;
             PaaD->unk1C4 = 0.15f;
             PaaD->unk1C8 = 0.15f;
-            if (character_change_array[PaaD->unk1A4].unk2C0 == 0) {
+            if (character_change_array[index].unk2C0 == 0) {
                 PaaD->unk1DC = 0.05f;
                 PaaD->unk1D8 = 0.001f;
             }
             break;
     }
     if (arg1 != 1) {
-        var_v0 = 0;
-        var_v1 = PaaD;
         if (cc_number_of_players == 1) {
-            var_f18 = var_v1->unk1C0;
-            if (var_v0 != 8) {
-                do {
-                    var_v1->unk1CC = var_f18;
-                    var_v1 += 4;
-                    (arg0->animation_state + var_v0)->scale_x = var_f18;
-                    var_f18 = var_v1->unk1C0;
-                    var_v0 += 4;
-                } while (var_v0 != 8);
+            for (i = 0; i < 3; i++) {
+                PaaD->scale1CC[i] = PaaD->scale1C0[i];
+                arg0->animation_state->scale[i] = PaaD->scale1C0[i];
             }
-            var_v1->unk1CC = var_f18;
-            (arg0->animation_state + var_v0)->scale_x = var_f18;
         }
     }
-    character_change_array[PaaD->unk1A4].unk2C0 = arg1;
-    character_change_array[PaaD->unk1A4].unk2C1 = 1;
+    character_change_array[index].unk2C0 = arg1;
+    character_change_array[index].unk2C1 = 1;
     PaaD->unk1E4 = 0;
     if ((arg1 == 1) || (cc_number_of_players >= 2)) {
-        temp_f0_2 = PaaD->unk1CC;
-        temp_f2 = PaaD->unk1C0;
-        if (temp_f0_2 < temp_f2) {
-            var_f12 = temp_f2 - temp_f0_2;
-        } else {
-            var_f12 = -(temp_f2 - temp_f0_2);
-        }
-        temp_f0_3 = var_f12 / PaaD->unk1D8;
+        temp_f0_3 = ABS(PaaD->unk1C0 - PaaD->unk1CC) / PaaD->unk1D8;
         if (temp_f0_3 != 0.0f) {
             PaaD->unk1E0 = PaaD->unk1DC / temp_f0_3;
         } else {
@@ -2316,7 +2291,6 @@ void func_global_asm_806D0468(Actor *arg0, u8 arg1) {
     }
     func_global_asm_8062217C(PaaD->unk104, 2);
 }
-*/
 
 void func_global_asm_806D06A0(void) {
     if (extra_player_info_pointer->unk1CC < extra_player_info_pointer->unk1C0) {

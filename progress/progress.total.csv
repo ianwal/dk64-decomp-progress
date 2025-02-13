@@ -2156,7 +2156,7 @@ us,asm,func_global_asm_805FBFF4,700,no
 us,asm,func_global_asm_8068A404,196,yes
 us,asm,func_global_asm_8061118C,48,yes
 us,asm,alSepqSetVol,76,yes
-us,asm,func_global_asm_806D0468,568,no
+us,asm,func_global_asm_806D0468,568,yes
 us,asm,n_alInit,108,yes
 us,asm,func_global_asm_806EACBC,48,yes
 us,asm,func_global_asm_806109EC,156,no
