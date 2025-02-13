@@ -2820,23 +2820,19 @@ void func_global_asm_806D1F28(void) {
     renderActor(current_actor_pointer, 0);
 }
 
-// doable, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806D205C.s")
-
 typedef struct {
-    u16 unk0;
-    u16 unk2;
-    u16 unk4;
+    u16 unk0[3];
 } Struct80750FB0;
 
 extern Struct80750FB0 D_global_asm_80750FB0;
 
 void func_global_asm_80688D20(s16, s16, s16, f32);
 
-/*
 void func_global_asm_806D205C(void) {
-    s16 unk2E;
-    Struct80750FB0 sp2C;
+    s32 sp2C;
+    s32 sp28;
+    s32 sp24;
+    // s16 sp22;
     Struct80750FB0 sp1C;
 
     sp1C = D_global_asm_80750FB0;
@@ -2854,15 +2850,15 @@ void func_global_asm_806D205C(void) {
         func_global_asm_806CC8F0();
     }
     if (func_global_asm_80629148() || --extra_player_info_pointer->unk23C == 0) {
-        if (gameIsInSnidesBonusGameMode() == FALSE) {
-            func_global_asm_80688D20(unk2E, func_global_asm_80600340(&sp1C, 3, &sp2C.unk4), 7, 2.0f);
+        if (!gameIsInSnidesBonusGameMode()) {
+            sp28 = func_global_asm_80600340(&sp1C, 3, &sp2C);
+            func_global_asm_80688D20(sp2C, sp28, 7, 2.0f);
         }
         func_global_asm_805FF898();
-        current_actor_pointer->control_state_progress += 1;
+        current_actor_pointer->control_state_progress++;
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_806D21E4(void) {
     handleInputsForControlState(0);

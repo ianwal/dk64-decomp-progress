@@ -2514,7 +2514,7 @@ us,asm,func_global_asm_806833DC,756,no
 us,asm,func_global_asm_8068452C,32,yes
 us,asm,func_global_asm_8062DBDC,1124,no
 us,asm,func_global_asm_80697184,160,yes
-us,asm,func_global_asm_806D205C,392,no
+us,asm,func_global_asm_806D205C,392,yes
 us,asm,alSeqpStop,64,yes
 us,asm,func_global_asm_8070DDDC,248,yes
 us,asm,func_global_asm_806FD8E0,112,yes
