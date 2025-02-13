@@ -11,10 +11,7 @@ typedef struct {
 typedef struct {
     JetpacStruct2 unk0[6];
     s32 unk60;
-    union {
-        rgba unk64;
-        u8 rgba[4];
-    };
+    rgba unk64;
 } JetpacStruct1;
 
 extern Struct8002C4D0 D_jetpac_8002C4D0[];
@@ -276,7 +273,7 @@ void func_jetpac_80025904(Gfx **arg0) {
     for (i = 0; i < 0x18; i++) {
         for (j = 0; j < 0x20; j++) {
             if (s3->unk60) {
-                gDPSetPrimColor(dl++, 0, 0, s3->rgba[0], s3->rgba[1], s3->rgba[2], 0xFF);
+                gDPSetPrimColor(dl++, 0, 0, s3->unk64.as_array[0], s3->unk64.as_array[1], s3->unk64.as_array[2], 0xFF);
             }
             for (k = 0; k < s3->unk60; k++) {
                 func_global_asm_8070E8F0(&dl, s3->unk0[k].unkC);
