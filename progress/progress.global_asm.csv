@@ -542,7 +542,7 @@ us,asm,func_global_asm_8073202C,56,no
 us,asm,func_global_asm_806D3A38,144,yes
 us,asm,func_global_asm_8066641C,12,yes
 us,asm,func_global_asm_806A60BC,40,yes
-us,asm,func_global_asm_806C7D40,932,no
+us,asm,func_global_asm_806C7D40,932,yes
 us,asm,func_global_asm_80644EC8,504,yes
 us,asm,func_global_asm_80603340,272,yes
 us,asm,func_global_asm_806E8724,296,yes

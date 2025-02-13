@@ -1588,6 +1588,16 @@ typedef struct {
 } CharacterChange250;
 
 typedef struct {
+    f32 unk0;
+    u16 unk4;
+    u16 unk6;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+} CharacterChange2DC;
+
+typedef struct {
     u8      does_player_exist; // bitfield? 0x00
     u8      unk1;
     u8      unk2;
@@ -1619,8 +1629,13 @@ typedef struct {
     s32     unk24C;
     CharacterChange250 unk250[2];
     s16     unk270[4];
-    s16     unk278;
-    s16     unk27A;
+    union {
+        struct {
+            s16     unk278;
+            s16     unk27A;
+        };
+        s16 unk278_arr[2];
+    };
     f32     fov_y; // 0x27C
     f32     unk280;
     f32     near; // 0x284
@@ -1650,13 +1665,7 @@ typedef struct {
     f32     unk2D0;
     f32     unk2D4;
     f32     unk2D8;
-    u8      pad2DC[0x2E0 - 0x2DC];
-    u16     unk2E0;
-    u16     unk2E2;
-    u8      unk2E4;
-    u8      unk2E5;
-    u8      unk2E6;
-    u8      unk2E7;
+    CharacterChange2DC      unk2DC;
     u8      unk2E8;
     u8      unk2E9;
     u8      unk2EA;

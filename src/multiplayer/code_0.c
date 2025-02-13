@@ -1188,7 +1188,7 @@ void func_multiplayer_80026D40(Actor *arg0, s32 playerIndex) {
         arg0->noclip_byte = 1;
     } else {
         func_global_asm_806C9434(func_multiplayer_80026BD8(playerIndex));
-        character_change_array[playerIndex].unk2E2 |= 1;
+        character_change_array[playerIndex].unk2DC.unk6 |= 1;
         func_global_asm_806CFF9C(arg0);
     }
 }
