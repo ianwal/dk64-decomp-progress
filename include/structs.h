@@ -2439,6 +2439,29 @@ typedef struct {
     s32 unk14;
 } Struct8002C4D0;
 
+typedef struct {
+    // TODO: this is largely copy-pasted from JetpacStruct, but only goes up to 0x48
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    rgba unk10;
+    s32 unk14;
+    s32 unk18;
+    s32 unk1C;
+    s32 unk20;
+    s32 unk24;
+    s32 unk28;
+    s32 unk2C;
+    s32 unk30;
+    s32 unk34;
+    s32 unk38;
+    Struct80025A60 unk3C;
+    // End TODO
+
+    JetpacStruct unk4C[4];
+} MetaJetpacStruct3;
+
 typedef struct JetpacItem {
     u8 unk0;
 } JetpacItem;

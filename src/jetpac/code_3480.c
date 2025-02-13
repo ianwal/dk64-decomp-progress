@@ -77,7 +77,93 @@ void func_jetpac_800275F4(Competitor *arg0) {
     arg0->rocket_segments[1].primary_info.posY = 80.0f;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027728.s")
+extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern MetaJetpacStruct3 D_jetpac_8002F050;
+
+void func_jetpac_80027728(JetpacPickupStruct* arg0) {
+    Competitor* player;
+    f32 temp_f0_3;
+    s32 temp_v0_2;
+    MetaJetpacStruct3* ms;
+    ms = &D_jetpac_8002F050;
+    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    if ((arg0->primary_info.unk1C != 0) && (player->rocket_stage < 8)) {
+        if (arg0->primary_info.unk24.counter < 0x14) {
+            arg0->primary_info.unk24.counter = arg0->primary_info.unk24.counter + 1;
+            return;
+        }
+        if (arg0->primary_info.unk1C == 1) {
+            arg0->primary_info.unk1C = 2;
+        }
+        if (arg0->primary_info.unk38 == 0) {
+            if ((arg0->primary_info.velY > 0.0f) && (ms->unk14 != 4)) {
+                temp_v0_2 = func_jetpac_80028CF8((f32) arg0->primary_info.unk24.unk0 + arg0->primary_info.posX + arg0->primary_info.velX, (f32) arg0->primary_info.unk24.unk4 + arg0->primary_info.posY + arg0->primary_info.velY, (f32) arg0->primary_info.unk24.unk8 + arg0->primary_info.posX + arg0->primary_info.velX, (f32) arg0->primary_info.unk24.unkC + arg0->primary_info.posY + arg0->primary_info.velY, 0);
+                if (temp_v0_2 >= 0) {
+                    arg0->primary_info.posY = D_jetpac_8002EC30.unk350[temp_v0_2].unk4 - 16.0f;
+                    arg0->primary_info.velY = 0.0f;
+                } else {
+                    arg0->primary_info.posY = arg0->primary_info.posY + arg0->primary_info.velY;
+                }
+            }
+
+            if (ms->unk14 == 3) {
+                if (func_jetpac_80027250(
+                    arg0->primary_info.posX + arg0->primary_info.unk24.unk0,
+                    arg0->primary_info.posY + arg0->primary_info.unk24.unk4,
+                    arg0->primary_info.posX + arg0->primary_info.unk24.unk8,
+                    arg0->primary_info.posY + arg0->primary_info.unk24.unkC,
+                    ms->unk0 + ms->unk1C,
+                    ms->unk4 + ms->unk20,
+                    ms->unk0 + ms->unk24,
+                    ms->unk4 + ms->unk28)) {
+                    arg0->primary_info.unk38 = 1;
+                    player->current_score += arg0->primary_info.point_bonus;
+                    func_jetpac_80024E70(4);
+                }
+            }
+        }
+        if (arg0->primary_info.unk38 == 1) {
+            if (ms->unk14 == 4) {
+                arg0->primary_info.unk38 = 0;
+                arg0->primary_info.velY = 0.8f;
+            } else {
+                arg0->primary_info.posX =
+                    ((ms->unk0 - (2 * ms->unk8)) + ms->unk1C) +
+                    ((((ms->unk24 - ms->unk1C) - arg0->primary_info.unk24.unk8) + arg0->primary_info.unk24.unk0) * 0.5);
+                arg0->primary_info.posY = ((ms->unk4 - ms->unkC) + ms->unk28) - arg0->primary_info.unk24.unkC;
+                if (func_jetpac_80027330(arg0->primary_info.posX) != 0) {
+                    arg0->primary_info.posX = 168.0f;
+                    arg0->primary_info.velY = 0.8f;
+                    arg0->primary_info.unk38 = 2;
+                }
+            }
+        }
+        if (arg0->primary_info.unk38 == 2) {
+            arg0->primary_info.posY += arg0->primary_info.velY;
+            if (player->rocket_stage < 2) {
+                temp_f0_3 = (152 - (player->rocket_stage * 16));
+                if (temp_f0_3 <= arg0->primary_info.posY) {
+                    arg0->primary_info.posY = temp_f0_3;
+                    player->rocket_stage += 1;
+                    func_jetpac_80024E70(2);
+                    if (player->rocket_stage < 2) {
+                        player->unk10 -= 1;
+                        return;
+                    }
+                    func_jetpac_80028340(player);
+                }
+            } else if (arg0->primary_info.posY >= 168.0f) {
+                player->rocket_stage = player->rocket_stage + 1;
+                func_jetpac_80024E70(2);
+                if (player->rocket_stage < 8) {
+                    func_jetpac_80028340(player);
+                    return;
+                }
+                arg0->primary_info.unk1C = 0;
+            }
+        }
+    }
+}
 
 // doable
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027BE8.s")
@@ -173,14 +259,6 @@ void func_jetpac_80027D64(Competitor *arg0) {
 // Jumptable, close
 // https://decomp.me/scratch/5Smwc
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027EC0.s")
-
-extern s32 D_8002F06C;
-extern s32 D_8002F070;
-extern s32 D_8002F074;
-extern f32 D_jetpac_8002F050;
-extern f32 D_jetpac_8002F054;
-extern s32 D_jetpac_8002F064;
-extern s32 D_jetpac_8002F078;
 
 /*
 void func_jetpac_80027EC0(JetpacPickupStruct *arg0) {
