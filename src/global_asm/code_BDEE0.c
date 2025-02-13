@@ -7,9 +7,6 @@ extern u8 D_global_asm_807FBD70;
 extern SpriteData D_global_asm_8071FB34;
 extern u8 D_global_asm_80750628[];
 
-// Jumptable, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806B91E0.s")
-
 void func_global_asm_8072A450(void);
 void func_global_asm_8072C918(s16, s16, s16);
 extern s16 D_global_asm_80770628[];
@@ -20,17 +17,12 @@ typedef struct {
     s16 unk0;
 } RoboKremAAD2;
 
-/*
 void func_global_asm_806B91E0(void) {
     u16 sp36;
     RoboKremAAD2 *aaD;
-    AnimationStateUnk1C *temp_v0_3;
-    AnimationStateUnk1C *temp_v0_5;
-    AnimationStateUnk1C *temp_v0_6;
+    AnimationStateUnk1C *temp_v0;
     f32 temp_f0;
-    u32 temp_v0_0;
     u8 temp_v0_8;
-    u8 temp_v0;
     s16 temp_v1;
 
     sp36 = 0;
@@ -55,8 +47,7 @@ void func_global_asm_806B91E0(void) {
     }
     switch (current_actor_pointer->control_state) {
         case 0x18:
-        temp_v0_0 = current_actor_pointer->control_state_progress;
-        switch (temp_v0_0) {
+        switch (current_actor_pointer->control_state_progress) {
         case 0:
             if (D_global_asm_807FDC90->unk2C) {
                 D_global_asm_807FDC90->unk2C--;
@@ -110,8 +101,7 @@ void func_global_asm_806B91E0(void) {
         }
         break;
     case 0x27:
-        temp_v0_3 = current_actor_pointer->animation_state->unk1C;
-        temp_v0_3->unk6_u16 -= (current_actor_pointer->unkB8 * 50.0f);
+        current_actor_pointer->animation_state->unk1C->unk6_u16 -= (current_actor_pointer->unkB8 * 50.0f);
         func_global_asm_8072AB74(0x23U, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x200U, 0.0f);
         switch (current_actor_pointer->control_state_progress) {
         case 0:
@@ -131,7 +121,7 @@ void func_global_asm_806B91E0(void) {
         }
         break;
     case 0x1:
-        if (func_global_asm_8072E54C() != 0) {
+        if (func_global_asm_8072E54C()) {
             current_actor_pointer->control_state = 0x11;
             current_actor_pointer->control_state_progress = 0;
         }
@@ -153,9 +143,8 @@ void func_global_asm_806B91E0(void) {
             } else {
                 sp36 = 0x20;
                 func_global_asm_8072B330(0U);
-                temp_f0 = current_actor_pointer->unkB8;
-                if (temp_f0 != 0.0f) {
-                    current_actor_pointer->unkB8 = temp_f0 - 1.0f;
+                if (current_actor_pointer->unkB8 != 0.0f) {
+                    current_actor_pointer->unkB8 = current_actor_pointer->unkB8 - 1.0f;
                 } else {
                     current_actor_pointer->control_state = 0x18;
                     current_actor_pointer->control_state_progress = 0;
@@ -165,8 +154,7 @@ void func_global_asm_806B91E0(void) {
                 }
             }
         }
-        temp_v0_5 = current_actor_pointer->animation_state->unk1C;
-        temp_v0_5->unk6_u16 -= (current_actor_pointer->unkB8 * 50.0f);
+        current_actor_pointer->animation_state->unk1C->unk6_u16 -= (current_actor_pointer->unkB8 * 50.0f);
         func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, sp36, 0.0f);
         break;
     case 0x2:
@@ -176,8 +164,7 @@ void func_global_asm_806B91E0(void) {
         func_global_asm_8072AB74(current_actor_pointer->control_state, (f32) D_global_asm_807FDC90->unkA, (f32) D_global_asm_807FDC90->unkE, 0U, 0.0f);
         break;
     case 0x37:
-        temp_v0_6 = current_actor_pointer->animation_state->unk1C;
-        temp_v0_6->unk6_u16 -= D_global_asm_807FDC90->unk2C;
+        current_actor_pointer->animation_state->unk1C->unk6_u16 -= D_global_asm_807FDC90->unk2C;
         if (D_global_asm_807FDC90->unk2C != 0) {
             D_global_asm_807FDC90->unk2C -= 0x32;
         }
@@ -228,7 +215,6 @@ void func_global_asm_806B91E0(void) {
     }
     renderActor(current_actor_pointer, 0U);
 }
-*/
 
 void func_global_asm_806B9CB0(void) {
     initializeCharacterSpawnerActor();

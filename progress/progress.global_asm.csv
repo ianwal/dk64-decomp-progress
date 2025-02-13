@@ -997,7 +997,7 @@ us,asm,func_global_asm_806B3F90,516,yes
 us,asm,func_global_asm_80619580,52,yes
 us,asm,func_global_asm_8060BBE0,192,no
 us,asm,n_alFxNew,1476,yes
-us,asm,func_global_asm_806B91E0,2768,no
+us,asm,func_global_asm_806B91E0,2768,yes
 us,asm,func_global_asm_807375E0,40,yes
 us,asm,func_global_asm_8072DCF4,284,no
 us,asm,alCSeqGetLoc,180,yes
