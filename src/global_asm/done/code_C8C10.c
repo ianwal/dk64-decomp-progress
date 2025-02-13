@@ -326,8 +326,150 @@ void func_global_asm_806C4EE0(u8 textIndex, u8 arg1) {
     current_actor_pointer->unkF0 = 0;
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_global_asm_806C4F5C.s")
+s32 func_global_asm_8072881C(s32, s32 *);
+void func_global_asm_8072A450(void);
+
+typedef struct {
+    s16 unk0;
+} VultureRaceAAD3;
+
+void func_global_asm_806C4F5C(void) {
+    s32 pad;
+    VultureRaceAAD3 *sp28;
+    f32 temp_f0;
+    f32 temp_f12;
+    f32 temp_f2;
+    u8 temp_v0;
+
+    sp28 = current_actor_pointer->AAD_as_array[3];
+    initializeCharacterSpawnerActor();
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        current_actor_pointer->control_state = 0x1E;
+        func_global_asm_8072B79C(0x244, 0x244, 0x246);
+        current_actor_pointer->unk15E *= 0.5;
+    }
+    extra_player_info_pointer->unk1F4 &= ~0x40;
+    switch (current_actor_pointer->control_state) {
+    case 0:
+    case 14:
+    case 15:
+    case 30:
+        func_global_asm_806BFBF4();
+        if (func_global_asm_80629148() != 0) {
+            func_global_asm_8063DA40(0x2D, 0x14);
+            current_actor_pointer->draw_distance = 0x3E8;
+            D_global_asm_807FDC98->unk46 |= 0x24;
+            loadText(current_actor_pointer, 0xFU, 0U);
+            playActorAnimation(current_actor_pointer, 0x244);
+            current_actor_pointer->control_state = 0x27;
+            D_global_asm_807FDC90->unk2E = 0xF0;
+        }
+        break;
+    case 39:
+        extra_player_info_pointer->unk1F4 |= 0x40;
+        func_global_asm_806B49B0(2U, 0x244, 0x246);
+        if ((D_global_asm_807FDC90->unk1A & 4) && ((D_global_asm_807FDC90->unk25 & 0x7F) == 3)) {
+            current_actor_pointer->control_state = 0x28;
+            current_actor_pointer->control_state_progress = 0;
+            playActorAnimation(current_actor_pointer, 0x244);
+        }
+        break;
+    case 40:
+        extra_player_info_pointer->unk1F4 |= 0x40;
+        switch (current_actor_pointer->control_state_progress) {
+        case 0:
+        case 1:
+        case 2:
+            if ((current_actor_pointer->floor + 10.0f) < current_actor_pointer->y_position) {
+                current_actor_pointer->y_position -= 2.0f;
+            }
+            temp_f0 = player_pointer->x_position - current_actor_pointer->x_position;
+            temp_f2 = player_pointer->y_position - current_actor_pointer->y_position;
+            temp_f12 = player_pointer->z_position - current_actor_pointer->z_position;
+            if ((SQ(temp_f0) + SQ(temp_f2) + SQ(temp_f12)) < 6400.0f) {
+                current_actor_pointer->control_state_progress = 3;
+                playCutscene(current_actor_pointer, 0x1A, 1U);
+                playActorAnimation(current_actor_pointer, 0x245);
+            } else {
+                if (D_global_asm_807FDC90->unk2E != 0) {
+                    D_global_asm_807FDC90->unk2E--;
+                } else {
+                    current_actor_pointer->control_state = 0x29;
+                    current_actor_pointer->control_state_progress = 0;
+                    D_global_asm_807FDC90->unk2E = 0;
+                    func_global_asm_8070E8DC(1U);
+                    loadText(current_actor_pointer, 0xFU, 2U);
+                }
+            }
+            break;
+        case 3:
+            if (func_global_asm_8061CB50() == 0) {
+                func_global_asm_8063DA40(0x2C, 0x1E);
+                sp28->unk0 = 0x78;
+                D_global_asm_807FDC90->unk2C = 0xA;
+                current_actor_pointer->control_state = 2;
+                current_actor_pointer->control_state_progress = 0;
+                func_global_asm_806FB370(5U, 0U, 1U);
+                playActorAnimation(current_actor_pointer, 0x244);
+            }
+            break;
+        }
+        func_global_asm_8072A450();
+        break;
+    case 41:
+        if (current_actor_pointer->unkF0 == 0) {
+            playCutscene(current_actor_pointer, 0x1C, 1U);
+            current_actor_pointer->unkF0 += 1;
+        } else if (func_global_asm_8061CB50() == 0) {
+            if (current_actor_pointer->unk168 == 0) {
+                func_global_asm_806C4EB4();
+                func_global_asm_806ACC00(3U);
+                current_actor_pointer->control_state = 0x2A;
+                current_actor_pointer->control_state_progress = 0;
+            } else if (current_actor_pointer->unkF0 == 1) {
+                func_global_asm_8063DA40(0xEB, 0xA);
+                current_actor_pointer->unkF0 += 1;
+            }
+            current_actor_pointer->y_position += 3.0f;
+            D_global_asm_807FDC90->unk2E += 1;
+            if (D_global_asm_807FDC90->unk2E >= 0x83) {
+                D_global_asm_807FDC98->unk46 &= 0xFFFB;
+                func_global_asm_806C4EB4();
+                current_actor_pointer->control_state = 0x3C;
+            }
+        }
+        func_global_asm_8072A450();
+        break;
+    case 42:
+        func_global_asm_80724A20();
+        break;
+    case 48:
+        current_actor_pointer->y_rotation = 0xA82;
+        player_pointer->y_rotation = 0xA82;
+        func_global_asm_80724B5C(8U, 2U, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+        func_global_asm_80672C30(player_pointer);
+        func_global_asm_80724B5C(8U, 2U, &player_pointer->x_position, &player_pointer->y_position, &player_pointer->z_position);
+        player_pointer->y_position -= 25.0f;
+        current_actor_pointer->control_state = 0x28;
+        current_actor_pointer->control_state_progress = 0;
+        playActorAnimation(current_actor_pointer, 0x244);
+        D_global_asm_807FDC90->unk25 = 2;
+        func_global_asm_806FB370(5U, 0U, 1U);
+        break;
+    }
+    temp_v0 = func_global_asm_806C4AC4(0x78U, 0xAU);
+    switch (temp_v0) {
+    case 1:
+        func_global_asm_806C4EE0(2U, 0U);
+        break;
+    case 2:
+        func_global_asm_806C4EE0(3U, 1U);
+        break;
+    }
+    func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
+}
+
+
 
 void func_global_asm_806C55D8(void) {
 

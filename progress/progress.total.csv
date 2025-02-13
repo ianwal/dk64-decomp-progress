@@ -2833,7 +2833,7 @@ us,asm,func_global_asm_8070C590,632,yes
 us,asm,func_global_asm_806C850C,1144,yes
 us,asm,func_global_asm_80675380,248,yes
 us,asm,func_global_asm_80634D14,80,yes
-us,asm,func_global_asm_806C4F5C,1660,no
+us,asm,func_global_asm_806C4F5C,1660,yes
 us,asm,func_global_asm_8072E5B0,76,yes
 us,asm,n_alEnvmixerPull,2340,yes
 us,asm,func_global_asm_806EFA08,20,yes
