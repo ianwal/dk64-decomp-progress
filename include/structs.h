@@ -347,7 +347,10 @@ typedef struct {
         u16 unk2_u16; // used in K Rool Diddy code
     };
     s16 unk4;
-    s16 unk6;
+    union {
+        s16 unk6;
+        u16 unk6_u16;
+    };
     // Note: This is correctly sized, if you get references to unk8, use unk1C[1].unk0 instead
 } AnimationStateUnk1C;
 

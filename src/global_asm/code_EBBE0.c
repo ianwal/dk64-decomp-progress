@@ -1108,23 +1108,20 @@ void func_global_asm_806EA600(void) {
     func_global_asm_806EA5CC();
 }
 
-// close, float, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806EA628.s")
-
 f32 func_global_asm_806EA2D8(void);
 
-/*
 void func_global_asm_806EA628(void) {
     PlayerAdditionalActorData *temp_a0;
+    s32 pad;
     f32 *temp_v0;
     s16 *temp_v1;
 
     if (!(extra_player_info_pointer->unk1F0 & 0x8000)) {
         temp_a0 = extra_player_info_pointer->unk104->additional_actor_data;
         temp_v1 = &temp_a0->unkB2;
-        *temp_v1 = (D_global_asm_807FD610[cc_player_index].unk2E * 0.08 * func_global_asm_806EA2D8() * 4096.0) / 360.0;
+        *temp_v1 -= (D_global_asm_807FD610[cc_player_index].unk2E * 0.08 * func_global_asm_806EA2D8() * 4096.0) / 360.0;
         temp_v0 = &temp_a0->unkB8;
-        *temp_v0 = D_global_asm_807FD610[cc_player_index].unk2F * 0.04 * func_global_asm_806EA2D8();
+        *temp_v0 += D_global_asm_807FD610[cc_player_index].unk2F * 0.04 * func_global_asm_806EA2D8();
         *temp_v1 &= 0xFFF;
         if (temp_a0->unkBC + 0x32 < *temp_v0) {
             *temp_v0 = temp_a0->unkBC + 0x32;
@@ -1135,7 +1132,6 @@ void func_global_asm_806EA628(void) {
         current_actor_pointer->y_rotation = (temp_a0->unkB2 + 0x800) & 0xFFF;
     }
 }
-*/
 
 void func_global_asm_806EA7E8(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (A_BUTTON | B_BUTTON)) == A_BUTTON) {
