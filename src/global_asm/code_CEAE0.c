@@ -2010,26 +2010,26 @@ void func_global_asm_806CF9CC(void) {
         return;
     }
     if ((current_map == MAP_FUNGI_DOGADON) || (current_map == MAP_AZTEC_DOGADON)) {
-        var_t0 = 1;
+        var_t0 = TRUE;
     } else {
-        var_t0 = 0;
+        var_t0 = FALSE;
     }
     temp_a2 = temp_v1 = !func_global_asm_806725A0(current_actor_pointer, current_actor_pointer->y_rotation);
-    if (((u8)temp_a2) || !(D_global_asm_80753E10[D_global_asm_807FD584] < current_actor_pointer->unkB8) || (var_t0 != 0)) {
+    if ((temp_a2) || !(D_global_asm_80753E10[D_global_asm_807FD584] < current_actor_pointer->unkB8) || (var_t0 != 0)) {
         sp3B = func_global_asm_806CFC90(current_actor_pointer, &sp3C, temp_a2, var_t0 ? 30.0 : 15.0);
         func_global_asm_80666AC4(&sp38, &sp36);
-        var_v1 = 0;
-        if ((sp3B != 0) && (current_actor_pointer->y_velocity < 0.0) && (sp36 >= 0x385)) {
-            var_v1 = 0;
-            if (func_global_asm_80666AEC() != 0) {
+        var_v1 = FALSE;
+        if ((sp3B) && (current_actor_pointer->y_velocity < 0.0) && (sp36 >= 0x385)) {
+            var_v1 = FALSE;
+            if (func_global_asm_80666AEC()) {
                 if ((current_actor_pointer->y_position - current_actor_pointer->floor) > 15.0f) {
-                    if (var_t0 != 0) {
+                    if (var_t0) {
                         if (((D_global_asm_80753E00[D_global_asm_807FD584] + current_actor_pointer->y_position) < (sp3C + 15.0f)) && (((sp3C - D_global_asm_80753E00[D_global_asm_807FD584]) - current_actor_pointer->y_position) < 80.0f)) {
-                            var_v1 = 1;
+                            var_v1 = TRUE;
                         }
                     } else {
                         if (((D_global_asm_80753E00[D_global_asm_807FD584] + current_actor_pointer->y_position) < (sp3C - 5.0f)) && (((sp3C - D_global_asm_80753E00[D_global_asm_807FD584]) - current_actor_pointer->y_position) < 15.0f)) {
-                            var_v1 = 1;
+                            var_v1 = TRUE;
                         }
                     }
                 }
