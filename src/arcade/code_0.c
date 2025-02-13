@@ -27572,7 +27572,7 @@ void func_arcade_8002CBD8(s32 arg0) {
 
 void func_arcade_8002CD64(s32 arg0) {
     s32 y_value;
-    f32 very_important_one;
+    f32 y_value_float;
     
     if (arcade_game_state != 0) {
         return;
@@ -27650,10 +27650,10 @@ void func_arcade_8002CD64(s32 arg0) {
         arcade_objects[arg0].unk10 += 0.3;
         arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
         arcade_objects[arg0].y_velocity += 0.06;
-        very_important_one = func_arcade_8002A390((s32) arcade_objects[arg0].x_position, (s32) arcade_objects[arg0].y_position);
-        if ((very_important_one < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - very_important_one) < 8.0f) && (arcade_objects[arg0].unk1C < D_arcade_8004C6F8)) {
+        y_value_float = func_arcade_8002A390((s32) arcade_objects[arg0].x_position, (s32) arcade_objects[arg0].y_position);
+        if ((y_value_float < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - y_value_float) < 8.0f) && (arcade_objects[arg0].unk1C < D_arcade_8004C6F8)) {
             arcade_objects[arg0].unk1C = (u8) D_arcade_8004C6F8;
-            arcade_objects[arg0].y_position = very_important_one;
+            arcade_objects[arg0].y_position = y_value_float;
             arcade_objects[arg0].y_velocity = 0.0f;
             if (arcade_objects[arg0].unk1D != 2) {
                 arcade_objects[arg0].x_velocity = (-arcade_objects[arg0].x_velocity * 0.2) + ((arcade_cycle_rng() - 16384.0) * (func_arcade_800246C8(3.0f, D_arcade_8004A76C)) / 40000.0);
@@ -27682,10 +27682,9 @@ void func_arcade_8002CD64(s32 arg0) {
         arcade_objects[arg0].object_type = 0;
     }
 
-    very_important_one = 1.0f;
     if ((arcade_objects[arg0].y_position > 242.0f) & (arcade_objects[arg0].x_position < 74.0f)) {
         if (arcade_objects[arg0].unk1D != 0) {
-            func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, very_important_one, 0U, NULL);
+            func_global_asm_80737638(D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
             y_value = arcade_get_first_object_of_type(ARCADE_OBJ_13_OIL_DRUM_FLAMES);
             if (y_value < 0) {
                 y_value = arcade_get_first_empty_slot();
