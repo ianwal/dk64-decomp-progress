@@ -125,8 +125,8 @@ typedef struct {
     u8 unk1;
     u8 unk2;
     u8 unk3;
-    s32 unk4;
-    s32 unk8;
+    ALLink *unk4;
+    ALLink *unk8;
 } Struct80770188;
 
 int func_global_asm_80602144();
@@ -136,7 +136,7 @@ extern s32 D_global_asm_8076FE68;
 
 void *func_global_asm_806022DC(s32 *arg0) {
     if (D_global_asm_80770188.unk0 == 0) {
-        D_global_asm_80770188.unk4 = 0;
+        D_global_asm_80770188.unk4 = NULL;
         D_global_asm_80770188.unk8 = &D_global_asm_8076FE68;
         D_global_asm_80770188.unk0 = 1;
     }
@@ -144,53 +144,42 @@ void *func_global_asm_806022DC(s32 *arg0) {
     return func_global_asm_80602144;
 }
 
-// Libultra stuff osRecvMesg, alUnlink, alLink
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80602314.s")
-
-/*
 extern OSMesgQueue D_807704A8;
 extern u32 D_global_asm_807452C0;
 extern u32 D_global_asm_807452C4;
-extern ? D_global_asm_80770188;
 
 void func_global_asm_80602314(void) {
+    ALLink *next;
     void *sp40;
-    ALLink *temp_v0;
-    ALLink *var_s0_2;
-    u32 var_s0;
+    ALLink *current;
+    u32 i;
 
     sp40 = NULL;
-    var_s0 = 0;
-    if (D_global_asm_807452C4 != 0) {
-        do {
-            osRecvMesg(&D_807704A8, &sp40, 0);
-            var_s0 += 1;
-        } while (var_s0 < D_global_asm_807452C4);
+    for (i = 0; i < D_global_asm_807452C4; i++) {
+        osRecvMesg(&D_807704A8, &sp40, 0);
     }
-    var_s0_2 = D_global_asm_80770188.unk4;
-    if (var_s0_2 != NULL) {
-        do {
-            temp_v0 = var_s0_2->next;
-            if ((var_s0_2->unkC + 1) < D_global_asm_807452C0) {
-                if (var_s0_2 == D_global_asm_80770188.unk4) {
-                    D_global_asm_80770188.unk4 = temp_v0;
-                }
-                alUnlink(var_s0_2);
-                if (D_global_asm_80770188.unk8 != NULL) {
-                    alLink(var_s0_2, D_global_asm_80770188.unk8);
-                } else {
-                    D_global_asm_80770188.unk8 = var_s0_2;
-                    var_s0_2->next = NULL;
-                    var_s0_2->prev = NULL;
-                }
+    current = D_global_asm_80770188.unk4;
+    while (current != NULL) {
+        next = current->next;
+        // TODO: What's going on in this comparison?
+        if ((((s32*)current)[3] + 1) < D_global_asm_807452C0) {
+            if (current == D_global_asm_80770188.unk4) {
+                D_global_asm_80770188.unk4 = current->next;
             }
-            var_s0_2 = temp_v0;
-        } while (temp_v0 != NULL);
+            alUnlink(current);
+            if (D_global_asm_80770188.unk8 != NULL) {
+                alLink(current, D_global_asm_80770188.unk8);
+            } else {
+                D_global_asm_80770188.unk8 = current;
+                current->next = NULL;
+                current->prev = NULL;
+            }
+        }
+        current = next;
     }
     D_global_asm_807452C4 = 0;
-    D_global_asm_807452C0 += 1;
+    D_global_asm_807452C0++;
 }
-*/
 
 u8 func_global_asm_80602430(s16 arg0) {
     return ((D_global_asm_80745658[arg0] & 6) >> 1);
