@@ -845,6 +845,8 @@ typedef struct SnideAaD180 {
     u8 pad2[0x5];
 } SnideAaD180;
 
+typedef struct otherSpriteControl otherSpriteControl;
+
 typedef struct player_additional_actor_data {
     s16 unk0; // Used
     s16 unk2;
@@ -983,9 +985,9 @@ typedef struct player_additional_actor_data {
     f32 unk108; // Used
     s8 unk10C; // Used
     u8 unk10D;
-    u8 unk10E;
-    u8 unk10F;
-    s32 unk110;
+    s16 unk10E;
+    s16 unk110;
+    s16 unk112;
     s32 unk114;
     s32 unk118;
     u8 unk11C; // Used, VehicleAdditionalActorData?
@@ -1095,18 +1097,18 @@ typedef struct player_additional_actor_data {
     u8 unk240; // Used
     u8 unk241;
     u16 unk242; // Used, map?
-    s8 unk244;
+    u8 unk244;
     u8 unk245; // Used
     s8 unk246; // Used func_global_asm_806CA26C
     s8 unk247; // Used func_global_asm_806CA26C
     s8 unk248;
     s8 unk249;
-    s8 unk24A;
+    u8 unk24A;
     s8 unk24B; // Used
     u16 unk24C; // Used // TODO: s16? func_global_asm_806CA1B4 uses this as u16
     u16 unk24E; // Used // TODO: s16? func_global_asm_806CA1B4 uses this as u16
     s32 unk250;
-    s32 unk254;
+    otherSpriteControl *unk254;
     f32 unk258; // Used
     f32 unk25C; // Used
     void *unk260; // Used (multiplayer)
@@ -1375,9 +1377,14 @@ struct actor {
     u8 unk79;
     u8 unk7A;
     u8 unk7B;
-    f32 x_position; // at 0x7C
-    f32 y_position; // at 0x80
-    f32 z_position; // at 0x84
+    union {
+        struct {
+            f32 x_position; // at 0x7C
+            f32 y_position; // at 0x80
+            f32 z_position; // at 0x84
+        };
+        tuple_f position;
+    };
     f32 unk88;
     f32 unk8C;
     f32 unk90;
@@ -1640,7 +1647,7 @@ typedef struct {
     f32     unk280;
     f32     near; // 0x284
     f32     far; // 0x288
-    s32     unk28C;
+    f32     unk28C;
     s16     chunk; // 0x290
     s16     unk292;
     OSContPad *unk294; // Used
@@ -1652,7 +1659,7 @@ typedef struct {
     s32     unk2A8; // Used
     s32     unk2AC;
     s32     unk2B0; // Used
-    u8      pad_unknown3[0x2C0 - 0x2B4];
+    tuple_f unk2B4;
     u8      unk2C0; // Used
     u8      unk2C1; // Used
     u8      unk2C2; // Used
@@ -3009,7 +3016,7 @@ typedef union {
     Actor *actor;
 } otherSpriteControl_unk35C;
 
-typedef struct otherSpriteControl {
+struct otherSpriteControl {
 	/* 0x000 */ s8 unk_000[0x28];
 	/* 0x028 */ Vtx unk28[0x10]; // Unsure on size
     /* 0x128 */ Mtx unk128[2];
@@ -3075,7 +3082,7 @@ typedef struct otherSpriteControl {
         Struct80717D84_unk384_80717404 *unk384_80717404;
     };
 	/* 0x384 */ 
-} otherSpriteControl;
+};
 
 // TODO: Which struct is this?
 typedef struct {

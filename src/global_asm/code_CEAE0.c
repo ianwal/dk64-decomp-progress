@@ -34,9 +34,9 @@ typedef struct {
 } GlobalASMStruct62;
 
 typedef struct {
-    s16 unk0; // Used
-    s16 unk2;
-    s32 unk4;
+    void (*unk0)();
+    s16 unk4; // Used
+    s16 unk6;
 } GlobalASMStruct63;
 
 // TODO: Add to aaD union
@@ -55,7 +55,7 @@ extern SpriteData D_global_asm_8071FC40;
 extern SpriteData D_global_asm_8071FFA0;
 
 extern u8 D_global_asm_80750AD0;
-extern GlobalASMStruct63 D_global_asm_80750B54[];
+extern GlobalASMStruct63 D_global_asm_80750B50[];
 extern f32 D_global_asm_80750FA8;
 
 // .data
@@ -107,6 +107,7 @@ void func_global_asm_806D0468(Actor *arg0, u8 arg1);
 void func_global_asm_806CD424(s16, f32, f32); // TODO: Is this signature correct?
 void func_global_asm_806CEFBC(Struct806CEFBC*); // TODO: Proper signature, just for function pointer
 void func_global_asm_806CF138(Struct806CF138 *arg0);
+void func_global_asm_806CA5F8(s32 arg0);
 
 void func_global_asm_806C9DE0(void) {
     // DK Actor
@@ -158,9 +159,9 @@ void func_global_asm_806C9F44(void) {
 }
 
 void func_global_asm_806C9F74(Actor *arg0) {
-    if (D_global_asm_80750B54[arg0->control_state].unk0 & 0x200) {
+    if (D_global_asm_80750B50[arg0->control_state].unk4 & 0x200) {
         func_global_asm_806EAB44(arg0, arg0->control_state != 2);
-    } else if (D_global_asm_80750B54[arg0->control_state].unk0 & 0x100) {
+    } else if (D_global_asm_80750B50[arg0->control_state].unk4 & 0x100) {
         func_global_asm_806E9964(extra_player_info_pointer);
     }
 }
@@ -328,8 +329,316 @@ void func_global_asm_806CA540(void) {
     }
 }
 
-// Jumptable
+// Jumptable, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CA5F8.s")
+
+void func_global_asm_806CF9CC();
+extern u8 D_80770561;
+extern s16 D_807F5FE4;
+extern s16 D_807F5FE6;
+extern s16 D_807F5FE8;
+extern s16 D_807F5FEA;
+extern SpriteData D_global_asm_80720020;
+extern s32 D_global_asm_8076A068;
+extern s32 D_global_asm_8076A090;
+extern s32 D_global_asm_8076A098;
+extern s32 D_global_asm_8076A094;
+
+/*
+void func_global_asm_806CA5F8(s32 arg0) {
+    Actor *a;
+    f32 xs, ys; // 70, 6c
+    u8 sp6B;
+    u8 sp6A;
+    u8 sp69;
+    u8 sp68;
+    Actor *sp64;
+    otherSpriteControl *var_a1;
+    f32 x0, y0, z0; // 5C, 58, 54
+    otherSpriteControl *temp_v1;
+    f32 xs0, ys0; // 4c, 48
+    s16 temp_a0;
+    s16 var_a1_2;
+
+    sp64 = current_actor_pointer;
+    extra_player_info_pointer = current_actor_pointer->PaaD;
+    if (is_autowalking == 0) {
+        current_actor_pointer->object_properties_bitfield |= 0x400000;
+    } else {
+        current_actor_pointer->object_properties_bitfield &= ~0x400000;
+    }
+    current_actor_pointer->object_properties_bitfield &= ~0x8000000;
+    character_change_array[cc_player_index].unk28C = character_change_array[cc_player_index].fov_y;
+    if (current_actor_pointer->unk64 & 0x100) {
+        extra_player_info_pointer->unk120 = D_global_asm_8076A068;
+    }
+    if ((extra_player_info_pointer->scale1C0[0] == extra_player_info_pointer->scale1CC[0]) && (current_actor_pointer->control_state != 0x54)) {
+        if (current_actor_pointer->unk58 == ACTOR_LANKY) {
+            current_actor_pointer->unk15E = 0xB;
+        } else {
+            current_actor_pointer->unk15E = current_actor_pointer->ledge_info_pointer->unkC * 0.15 * 0.5;
+        }
+    }
+    func_global_asm_806CBE44();
+    temp_a0 = D_global_asm_80750B50[current_actor_pointer->control_state].unk4;
+    if (temp_a0 & 8) {
+        current_actor_pointer->unk68 |= 2;
+    } else {
+        current_actor_pointer->unk68 &= ~2;
+    }
+    if ((temp_a0 & 0x20) && (extra_player_info_pointer->unkFC_s32 == 0) && ((current_actor_pointer->unk58 != ACTOR_RAMBI)) && (current_actor_pointer->unk58 != ACTOR_ENGUARDE)) {
+        current_actor_pointer->unk68 |= 0x10;
+    } else {
+        current_actor_pointer->unk68 &= ~0x10;
+        current_actor_pointer->object_properties_bitfield &= ~0x800;
+    }
+    if (extra_player_info_pointer->unkFC_s32 != 0) {
+        extra_player_info_pointer->unkFC_s32--;
+    }
+    if (temp_a0 & 0x40) {
+        current_actor_pointer->object_properties_bitfield |= 0x4000;
+    } else {
+        current_actor_pointer->object_properties_bitfield &= ~0x4000;
+    }
+    if ((temp_a0 & 0x80) && (extra_player_info_pointer->unk100 == 0) && ((current_actor_pointer->unk58 != ACTOR_RAMBI)) && (current_actor_pointer->unk58 != ACTOR_ENGUARDE)) {
+        current_actor_pointer->unk68 |= 0x20;
+    } else {
+        current_actor_pointer->unk68 &= ~0x20;
+    }
+    if (extra_player_info_pointer->unk100 != 0) {
+        extra_player_info_pointer->unk100--;
+    }
+    if (extra_player_info_pointer->unk245 != 0) {
+        extra_player_info_pointer->unk245--;
+    }
+    func_global_asm_806CB53C();
+    func_global_asm_806CA2E4();
+    func_global_asm_806CA540();
+    if ((D_80770561 == 0x6B) && (current_actor_pointer->control_state != 0x6E)) {
+        func_global_asm_80602B60(0x6B, 0U);
+    }
+    if (extra_player_info_pointer->unkCA != 0) {
+        extra_player_info_pointer->unkCA--;
+    }
+    if (current_actor_pointer->unk68 & 0x20) {
+        func_global_asm_8072F120();
+    }
+    func_global_asm_806F4D70(cc_player_index,
+        current_actor_pointer->x_position,
+        current_actor_pointer->y_position,
+        current_actor_pointer->z_position,
+        (current_actor_pointer->animation_state->scale[1] / 0.15) * 20.0);
+    if (cc_number_of_players == 1) {
+        if (current_actor_pointer->unk64 & 0x1000) {
+            current_actor_pointer->unk64 |= 0x200;
+        }
+    }
+    current_actor_pointer->unk64 &= ~0x1000;
+    D_global_asm_80750B50[current_actor_pointer->control_state].unk0();
+    extra_player_info_pointer->unk8D = func_global_asm_80666A88();
+    if (cc_number_of_players == 1) {
+        current_actor_pointer->unk64 &= ~0x200;
+    }
+    if ((extra_player_info_pointer->unk1F0 & 0x01000000) && (D_global_asm_807FBB70.unk1C != 0) && (current_actor_pointer->control_state != 0x47)) {
+        setAction(3, NULL, cc_player_index);
+    }
+    sp6B = func_global_asm_80666AA0();
+    sp6A = func_global_asm_80666A94();
+    sp69 = func_global_asm_80666AAC();
+    sp68 = func_global_asm_80666AB8();
+    if (current_actor_pointer->unk68 & 0x10) {
+        func_global_asm_806CF9CC();
+    }
+    extra_player_info_pointer->unkE8 = 0;
+    extra_player_info_pointer->unk1F0 &= ~0x40000000;
+    func_global_asm_806CF580();
+    extra_player_info_pointer->unk0 = current_player->control_state;
+    if (cc_number_of_players >= 2) {
+        if (current_actor_pointer->unk6A & 1) {
+            if (extra_player_info_pointer->unk24A != 0) {
+                extra_player_info_pointer->unk24A--;
+            } else {
+                extra_player_info_pointer->unk248 = -1;
+                extra_player_info_pointer->unk249 = 0;
+            }
+        }
+        func_global_asm_806CA26C();
+        if ((extra_player_info_pointer->unk248 >= 0) && (extra_player_info_pointer->unk248 != extra_player_info_pointer->unk1A4)) {
+            sp64 = character_change_array[extra_player_info_pointer->unk248].player_pointer;
+        } else {
+            if (extra_player_info_pointer->unk249 > 0) {
+                sp64 = getSpawnerTiedActor(extra_player_info_pointer->unk249, 0U);
+            }
+        }
+        if (D_global_asm_807552E4.unk0 == 0) {
+            if (current_player->control_state == 0x3C) {
+                if (extra_player_info_pointer->unk250 != 0) {
+                    extra_player_info_pointer->unk250--;
+                }
+                temp_v1 = extra_player_info_pointer->unk254;
+                if (!temp_v1) {
+                    func_global_asm_807149FC(-1);
+                    func_global_asm_80714998(0U);
+                    changeActorColor(0xFFU, 0xFFU, 0xFFU, 0x78U);
+                    func_global_asm_8071495C();
+                    extra_player_info_pointer->unk254 = drawSpriteAtPosition(
+                        &D_global_asm_80720020,
+                        0.7f,
+                        current_player->position.x,
+                        current_player->position.y,
+                        current_player->position.z);
+                }
+            } else {
+                if (extra_player_info_pointer->unk250 < 0x78) {
+                    extra_player_info_pointer->unk250++;
+                }
+                temp_v1 = extra_player_info_pointer->unk254;
+                if (temp_v1) {
+                    extra_player_info_pointer->unk254 = 0;
+                    func_global_asm_80715908(temp_v1);
+                }
+            }
+            var_a1 = extra_player_info_pointer->unk254;
+            if (var_a1) {
+                getBonePosition(current_player, 1, &x0, &y0, &z0);
+                func_global_asm_80626F8C(x0, y0, z0, &xs0, &ys0, 0, 1.0f, 0);
+                var_a1->xPos = xs0 * 4.0f;
+                var_a1->yPos = ys0 * 4.0f;
+                var_a1->zPos = 5.0f;
+                var_a1->xScale = (
+                    (1000.0f / sqrtf(
+                        SQ(character_change_array->look_at_eye_z - z0) +
+                        (SQ(character_change_array->look_at_eye_x - x0) +
+                        SQ(character_change_array->look_at_eye_y - y0))
+                    ))) *
+                    current_actor_pointer->animation_state->scale[0] *
+                    6.666666666666667 * 0.7 * 0.008333333767950535 *
+                    (f32)extra_player_info_pointer->unk250;
+                var_a1->yScale = var_a1->xScale;
+            }
+        }
+    }
+    if (extra_player_info_pointer->unkD4 != 0) {
+        extra_player_info_pointer->unkD4--;
+    }
+    if (sp6A != 0) {
+        setAction(0x3F, sp64, cc_player_index);
+    }
+    switch (sp6B) {
+        default:
+            extra_player_info_pointer->unkD6 = 0;
+            break;
+        case 1:
+            if (extra_player_info_pointer->unk1F0 & 0x10) {
+                extra_player_info_pointer->unkD6 = 0;
+            } else {
+                extra_player_info_pointer->unkD6++;
+                setAction(0x2E, sp64, cc_player_index);
+                if ((current_actor_pointer->control_state != 0x36) && (current_actor_pointer->control_state != 0x3B) && (extra_player_info_pointer->unkD4 == 0)) {
+                    var_a1_2 = 0x2C0;
+                    if (current_map == MAP_FUNGI) {
+                        var_a1_2 = 0x3B0;
+                    }
+                    playSoundAtActorPosition(current_actor_pointer, var_a1_2, 0xFFU, 0x7F, 0U);
+                }
+            }
+            break;
+        case 2:
+            extra_player_info_pointer->unk1F0 |= 0x1000;
+            if (!(extra_player_info_pointer->unk1F0 & 0x10)) {
+                if ((current_actor_pointer->control_state != 0x36) && (current_actor_pointer->control_state != 0x3B) && (extra_player_info_pointer->unkD4 == 0)) {
+                    playSoundAtActorPosition(current_actor_pointer, 0x2C0, 0xFFU, 0x7F, 0U);
+                }
+                if ((current_map == MAP_FUNGI_DOGADON) || (current_map == MAP_AZTEC_DOGADON)) {
+                    setAction(0x40, sp64, cc_player_index);
+                } else {
+                    setAction(0x30, sp64, cc_player_index);
+                }
+            }
+            break;
+    }
+    if (sp69 != 0) {
+        setAction(0, sp64, cc_player_index);
+        if (extra_player_info_pointer->unkD4 == 0) {
+            playSoundAtActorPosition(current_actor_pointer, 0x2C0, 0xFFU, 0x7F, 0U);
+        }
+    }
+    getBonePosition(
+        current_player, 6,
+        &character_change_array[cc_player_index].unk2B4.x,
+        &character_change_array[cc_player_index].unk2B4.y,
+        &character_change_array[cc_player_index].unk2B4.z);
+    func_global_asm_80626F8C(
+        current_player->x_position,
+        character_change_array[cc_player_index].unk2B4.y,
+        current_player->z_position, &xs, &ys, 0, 1.0f, cc_player_index);
+    extra_player_info_pointer->unk10E = xs;
+    extra_player_info_pointer->unk110 = ys;
+    a = current_player;
+    func_global_asm_80626F8C(
+        a->position.x,
+        a->position.y,
+        a->position.z, &xs, &ys, 0, 1.0f, cc_player_index);
+    extra_player_info_pointer->unk112 = ys;
+    extra_player_info_pointer->unk1F8 = extra_player_info_pointer->unk1F0;
+    if (extra_player_info_pointer->unk268 != 0) {
+        extra_player_info_pointer->unk268--;
+    }
+    if (
+        (
+            (current_actor_pointer->x_position < D_807F5FE4) ||
+            (current_actor_pointer->z_position < D_807F5FE6) ||
+            (D_807F5FE8 < current_actor_pointer->x_position) ||
+            (D_807F5FEA < current_actor_pointer->z_position) ||
+            (sp68 != 0)
+        ) && 
+        (extra_player_info_pointer->unk244 == 0) && 
+        (object_timer >= 0x65U) && 
+        (!(D_global_asm_807FBB64 & 0x4000)) &&
+        (current_map != MAP_AZTEC_BEETLE_RACE)
+    ) {
+        if (cc_number_of_players == 1) {
+            if (isFlagSet(0x186, 0U) == 0) {
+                func_global_asm_805FF188(0xB0, 1U);
+            }
+            func_global_asm_80709464(cc_player_index);
+            func_global_asm_805FF1B0(cc_player_index);
+            extra_player_info_pointer->unk244 = 1;
+        } else {
+            func_multiplayer_80026D40(current_actor_pointer, (s32) cc_player_index);
+        }
+    }
+    if (cc_player_index == 0) {
+        switch (current_map) {
+        case MAP_JAPES:
+        case MAP_FACTORY:
+        case MAP_GALLEON:
+        case MAP_DK_ISLES_OVERWORLD:
+        case MAP_AZTEC:
+        case MAP_FUNGI:
+        case MAP_CAVES:
+        case MAP_CASTLE:
+            if ((D_global_asm_8076A094 >= 0x5DD) && ((u8) extra_player_info_pointer->unk244 == 0)) {
+                func_global_asm_805FF2F4();
+                extra_player_info_pointer->unk244 = 1;
+            }
+            if ((D_global_asm_8076A098 >= 0x5DD) && !(global_properties_bitfield & 2) && ((u8) extra_player_info_pointer->unk244 == 0)) {
+                func_global_asm_805FF2F4();
+                extra_player_info_pointer->unk244 = 1;
+            }
+            if (((current_actor_pointer->unk88 != current_actor_pointer->x_position) || (current_actor_pointer->unk8C != current_actor_pointer->y_position) || (current_actor_pointer->unk90 != current_actor_pointer->z_position) || ((D_global_asm_807FD610[cc_player_index].unk2A != 0)) || (D_global_asm_807FD610[cc_player_index].unk2E != 0) || (D_global_asm_807FD610[cc_player_index].unk2F != 0)) && !(global_properties_bitfield & 2)) {
+                D_global_asm_8076A090++;
+                if (D_global_asm_8076A090 == 0x69780) {
+                    func_global_asm_805FF2F4();
+                    extra_player_info_pointer->unk244 = 1;
+                }
+            }
+            break;
+        }
+    }
+}
+*/
+
 
 void func_global_asm_806CB53C(void) {
     s32 phi_s0;
@@ -372,7 +681,7 @@ void func_global_asm_806CB53C(void) {
             D_global_asm_807FD610[cc_player_index].unk2C |= L_CBUTTONS;
             D_global_asm_807FD610[cc_player_index].unk2A |= Z_TRIG;
         }
-        if (!(D_global_asm_80750B54[current_actor_pointer->control_state].unk0 & 0x300) && !(extra_player_info_pointer->unk1F0 & 0x14000) && !func_global_asm_8061CB50()) {
+        if (!(D_global_asm_80750B50[current_actor_pointer->control_state].unk4 & 0x300) && !(extra_player_info_pointer->unk1F0 & 0x14000) && !func_global_asm_8061CB50()) {
             if ((extra_player_info_pointer->unk1F4 & 0x10) == 0) {
                 changeCollectableCount(5, extra_player_info_pointer->unk1A4, -1);
             }
@@ -506,12 +815,12 @@ void func_global_asm_806CBE90(void) {
             func_global_asm_80614D90(current_actor_pointer);
         } else if ((current_actor_pointer->unkE0 != 0.0f) && (extra_player_info_pointer->unkC2 >= 0x15) && (current_actor_pointer->control_state != 0x17)) {
             if (func_global_asm_806CC14C(current_actor_pointer->unkD8, current_actor_pointer->y_rotation) < 0x200) {
-                if (D_global_asm_80750B54[current_player->control_state].unk0 & 0x200) {
+                if (D_global_asm_80750B50[current_player->control_state].unk4 & 0x200) {
                     func_global_asm_806EAB44(current_actor_pointer, 0);
                 }
                 setAction(0x21, NULL, cc_player_index);
             } else if ((func_global_asm_806CC14C(current_actor_pointer->unkD8, current_actor_pointer->unkEE) < 0x400) || (current_actor_pointer->unkB8 < 15.0f)) {
-                if (D_global_asm_80750B54[current_player->control_state].unk0 & 0x200) {
+                if (D_global_asm_80750B50[current_player->control_state].unk4 & 0x200) {
                     func_global_asm_806EAB44(current_actor_pointer, 0);
                 }
                 setAction(0x22, NULL, cc_player_index);
@@ -587,12 +896,8 @@ s16 func_global_asm_806CC284(s16 arg0, s16 arg1, f32 arg2) {
     return arg0 & 0xFFF;
 }
 
-// close, float, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CC364.s")
-
-/*
 void func_global_asm_806CC364(u8 arg0) {
-    f32 temp_f14_2;
+    f32 sp1C;
     f32 phi_f12;
 
     if (character_change_array[cc_player_index].unk2C0 == 1) {
@@ -600,20 +905,20 @@ void func_global_asm_806CC364(u8 arg0) {
     } else {
         phi_f12 = D_global_asm_80753A4C[D_global_asm_807FD584];
     }
-    temp_f14_2 = (ABS(func_global_asm_80612794(current_actor_pointer->z_rotation) * phi_f12) + 1.5f) + ABS(func_global_asm_80612790(current_actor_pointer->unkDA) * phi_f12);
-    if (current_actor_pointer->distance_from_floor < temp_f14_2) {
+    sp1C = ABS(func_global_asm_80612794(current_actor_pointer->z_rotation) * phi_f12) + 1.5;
+    sp1C += ABS(func_global_asm_80612790(current_actor_pointer->unkDA) * phi_f12);
+    if (current_actor_pointer->distance_from_floor < sp1C) {
         if (current_actor_pointer->unkDA < 500) {
-            current_actor_pointer->unkB8 = MAX(current_actor_pointer->unkB8, 50);
+            current_actor_pointer->unkB8 = MIN(current_actor_pointer->unkB8, 50);
         }
         if (arg0 && current_actor_pointer->y_velocity < 0) {
             current_actor_pointer->y_velocity = 0;
         }
         if (phi_f12 < (current_actor_pointer->unkAC - current_actor_pointer->y_position)) {
-            current_actor_pointer->y_position = current_actor_pointer->floor + temp_f14_2;
+            current_actor_pointer->y_position = current_actor_pointer->floor + sp1C;
         }
     }
 }
-*/
 
 void func_global_asm_806CC5DC(void) {
     current_actor_pointer->unkB8 = func_global_asm_806CD898(current_actor_pointer->unkB8, 0, D_global_asm_807539C0[D_global_asm_807FD584]);
@@ -873,7 +1178,7 @@ void func_global_asm_806CD8EC(void) {
 }
 
 s16 func_global_asm_806CD988(Actor *arg0) {
-    s16 temp = D_global_asm_80750B54[arg0->control_state].unk0;
+    s16 temp = D_global_asm_80750B50[arg0->control_state].unk4;
     return temp;
 }
 
@@ -2203,7 +2508,7 @@ s32 func_global_asm_806D10D0(Actor *arg0) {
     s32 phi_v1;
 
     phi_v1 = TRUE;
-    if ((arg0->interactable & 1) && (D_global_asm_80750B54[arg0->control_state].unk0 & 0x400)) {
+    if ((arg0->interactable & 1) && (D_global_asm_80750B50[arg0->control_state].unk4 & 0x400)) {
         phi_v1 = FALSE;
     }
     return phi_v1;
