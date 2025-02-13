@@ -741,23 +741,13 @@ void func_global_asm_8072E02C(void) {
     current_actor_pointer->x_rotation += (-current_actor_pointer->x_rotation * D_global_asm_8075FF38);
 }
 
-// regalloc, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072E0A8.s")
-
-/*
 u8 func_global_asm_8072E0A8(s32 arg0, s16 arg1) {
     u8 sp1F;
-    f32 dx;
-    f32 dz;
+    f32 dx, dz;
     s32 temp_v0_2;
     s16 phi_v1;
 
-    dz = D_global_asm_807FDC94->z_position - current_actor_pointer->z_position;
-    dx = D_global_asm_807FDC94->x_position - current_actor_pointer->x_position;
-    sp1F = FALSE;
-    if ((SQ(dx) + SQ(dz)) < SQ(arg0)) {
-        sp1F = TRUE;
-    }
+    sp1F = (SQ(D_global_asm_807FDC94->x_position - current_actor_pointer->x_position) + SQ((D_global_asm_807FDC94->z_position - current_actor_pointer->z_position))) < SQ(arg0);
     temp_v0_2 = func_global_asm_80665DE0(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position);
     if (temp_v0_2 < current_actor_pointer->y_rotation) {
         phi_v1 = current_actor_pointer->y_rotation - temp_v0_2;
@@ -771,7 +761,6 @@ u8 func_global_asm_8072E0A8(s32 arg0, s16 arg1) {
         && sp1F
         && D_global_asm_807FDC94->control_state != 0x42;
 }
-*/
 
 void func_global_asm_8072E1A4(u8 arg0, Actor *arg1) {
     current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(arg1->x_position, arg1->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position), arg0);
