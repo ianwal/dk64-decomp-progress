@@ -92,7 +92,115 @@ void func_global_asm_806C43A8(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C8C10/func_global_asm_806C4414.s")
+extern s16 D_global_asm_80750AC8;
+
+typedef struct {
+    s16 unk0;
+} SquawksItemDeliveryAAD2;
+
+void func_global_asm_806C4414(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5, s32 arg6) {
+    SquawksItemDeliveryAAD2 *sp4C; // Used
+    PlayerAdditionalActorData* sp48;
+    Actor *sp44; // Used
+    s32 sp40; // Used
+
+    sp4C = current_actor_pointer->AAD_as_array[1];
+    sp48 = character_change_array[0].player_pointer->PaaD;
+    sp44 = sp48->vehicle_actor_pointer;
+    D_global_asm_80750AC8 = arg5;
+    createLight(
+        current_actor_pointer->x_position,
+        current_actor_pointer->y_position,
+        current_actor_pointer->z_position,
+        0.0f, 0.0f, 0.0f, 80.0f, 0U,
+        0xFFU, 0xFFU, 0xFFU);
+    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+        sp40 = -1;
+        if ((isFlagSet(arg6, 0U)) || (gameIsInDKTVMode())) {
+            if (arg3 == D_global_asm_807FDC9C->unk13) {
+                func_global_asm_806C43A8();
+            }
+            current_actor_pointer->control_state = 0x40;
+            return;
+        }
+        func_global_asm_80724CA4(1, 1);
+        if (arg3 == D_global_asm_807FDC9C->unk13) {
+            sp40 = arg0;
+        } else {
+            setAction(0x46, NULL, 0U);
+            if (func_global_asm_806F8AD4(0xBU, 0U) < arg5) {
+                current_actor_pointer->unk15F = 0;
+                sp40 = arg1;
+            } else {
+                if (isFlagSet(arg6, 0U) == 0) {
+                    sp40 = arg2;
+                }
+                current_actor_pointer->unk15F = 0x80;
+            }
+        }
+        sp4C->unk0 = 0xF;
+        if (sp40 >= 0) {
+            playCutscene(NULL, sp40, 1U);
+        }
+        if (sp44 != NULL) {
+            sp44->unk168 = 0;
+        }
+    }
+    if ((arg4 == D_global_asm_807FDC9C->unk13) && (current_actor_pointer->unk15F & 0x80) && (D_global_asm_807FDC90->unk2C == 0x5A)) {
+        if (isFlagSet(arg6, 0U) == 0) {
+            func_global_asm_8069E490(0x2DU, arg6);
+            playSong(0x14, 1.0f);
+        }
+    }
+    func_global_asm_8069E4E0(-0x1E);
+    func_global_asm_80724E48(0U);
+    current_actor_pointer->y_rotation = (D_global_asm_807FDC94->y_rotation + 0x800) & 0xFFF;
+    current_actor_pointer->x_position = (func_global_asm_80612794(current_actor_pointer->unkEE) * 12.0f) + D_global_asm_807FDC94->x_position;
+    current_actor_pointer->z_position = (func_global_asm_80612790(current_actor_pointer->unkEE) * 15.0f) + D_global_asm_807FDC94->z_position;
+    current_actor_pointer->y_position = (func_global_asm_80612794((s16) (object_timer * 0x64)) * 5.0f) + (D_global_asm_807FDC94->y_position + sp4C->unk0);
+    current_actor_pointer->unkEE += 0x3C;
+    switch (current_actor_pointer->unk15F & 0x7F) {
+    case 0:
+        if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+            D_global_asm_807FDC90->unk2C = 0x1E;
+        } else {
+            current_actor_pointer->unk15F++;
+        }
+        break;
+    case 1:
+        if (current_actor_pointer->object_properties_bitfield & 0x02000000) {
+            D_global_asm_807FDC90->unk2C = 0x1E;
+        } else {
+            current_actor_pointer->unk15F++;
+            if ((arg4 == D_global_asm_807FDC9C->unk13) && (func_global_asm_806F8AD4(0xBU, 0U) >= arg5)) {
+                D_global_asm_807FDC90->unk2C = 0x78;
+            }
+        }
+        break;
+    }
+    if (D_global_asm_807FDC90->unk2C != 0) {
+        D_global_asm_807FDC90->unk2C--;
+    }
+    if (D_global_asm_807FDC90->unk2C) {
+        return;
+    }
+    sp4C->unk0++;
+    if (sp4C->unk0 < 0x3D) {
+        return;
+    }
+    current_actor_pointer->control_state = 0x40;
+    func_global_asm_806C43A8();
+    if (arg4 != D_global_asm_807FDC9C->unk13) {
+        return;
+    }
+    if ((isFlagSet(arg6, 0U)) || (func_global_asm_806F8AD4(0xBU, 0U) >= arg5)) {
+        func_global_asm_805FF544();
+        return;
+    }
+    func_global_asm_806ACC00(1U);
+}
+
+
 
 void func_global_asm_806C4904(void) {
     func_global_asm_806C4414(0, 1, 2, 0xF, 0x10, 0x32, 0x18);

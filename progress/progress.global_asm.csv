@@ -1814,7 +1814,7 @@ us,asm,func_global_asm_80684900,256,yes
 us,asm,deleteActor,40,yes
 us,asm,func_global_asm_8068B80C,16,yes
 us,asm,func_global_asm_8060B55C,100,yes
-us,asm,func_global_asm_806C4414,1264,no
+us,asm,func_global_asm_806C4414,1264,yes
 us,asm,func_global_asm_8070E8C8,20,yes
 us,asm,func_global_asm_805FB750,148,yes
 us,asm,func_global_asm_806131D4,64,yes
