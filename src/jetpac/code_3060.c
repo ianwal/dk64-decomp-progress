@@ -90,7 +90,7 @@ f32 func_jetpac_800273C8(JetpacSpatialState *arg0) {
 }
 
 //math.ceil?
-f32 func_jetpac_80027410(f32 arg0) {
+f32 jetpac_fround(f32 arg0) {
     if (arg0 >= 0.0f) {
         return (s32)(arg0 + 0.5f);
     }

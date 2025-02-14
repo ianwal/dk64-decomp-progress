@@ -4752,7 +4752,7 @@ int func_jetpac_80027250(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 a
 int func_jetpac_80027330(f32 arg0);
 // TODO: func_jetpac_80027380 has no documented signature but has been matched
 // TODO: func_jetpac_800273C8 has no documented signature but has been matched
-f32 func_jetpac_80027410(f32 arg0);
+f32 jetpac_fround(f32 arg0);
 
 // jetpac/code_3480.c
 s32 func_jetpac_80027480(void);

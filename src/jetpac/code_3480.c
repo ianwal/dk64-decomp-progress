@@ -167,7 +167,7 @@ void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     if (arg0->primary_info.unk1C >= 2) {
         temp_s6 = arg0->primary_info.posX;
-        var_s2 = func_jetpac_80027410(arg0->primary_info.posY);
+        var_s2 = jetpac_fround(arg0->primary_info.posY);
         if (arg1 < 3) {
             for (var_s0 = 0; var_s0 < 2; var_s0++)
             {
