@@ -11,34 +11,35 @@ void func_jetpac_80025460(void) {
     ptr = &D_jetpac_8002F3D0[0];
     for (x = 0; x < 0x18; x++) {
         for (y = 0; y < 0x20; y++) {
-            ptr->unk60 = 0;
-            ptr->unk64.alpha = 0;
+            ptr->num_draw_sprites = 0;
+            ptr->hue.alpha = 0;
             ptr++;
         }
     }
 }
 
-void func_jetpac_800254B8(Struct8002C4D0* arg0, s32 arg1, s32 arg2, rgba* arg3, s32 arg4) {
+// add_sprite_to_cell
+void func_jetpac_800254B8(Struct8002C4D0* draw_sprite, s32 x, s32 y, rgba* hue, s32 arg4) {
     JetpacStruct1* temp_a0;
     JetpacStruct2* var_v0;
     s32 i;
 
     var_v0 = NULL;
-    if ((arg1 >= 0) && (arg2 >= 0) && (arg1 <= 256) && (arg2 <= 0xC0)) {
-        s32 index = arg1 / 8 + arg2 / 8 * 32;
+    if ((x >= 0) && (y >= 0) && (x <= 256) && (y <= 0xC0)) {
+        s32 index = x / 8 + y / 8 * 32;
 
         temp_a0 = &D_jetpac_8002F3D0[index];
-        if (temp_a0->unk60 < 6) {
-            var_v0 = &temp_a0->unk0[temp_a0->unk60++];
+        if (temp_a0->num_draw_sprites < 6) { // ARRAY_COUNT?
+            var_v0 = &temp_a0->draw_sprites[temp_a0->num_draw_sprites++];
         }
         if (var_v0 != NULL) {
-            var_v0->unk0 = arg1;
-            var_v0->unk4 = arg2;
+            var_v0->x = x;
+            var_v0->y = y;
             var_v0->unk8 = arg4;
-            var_v0->unkC = arg0;
-            if ((temp_a0->unk64.as_array[3] == 0) || ((temp_a0->unk64.as_array[3] < 0xFF) && (func_jetpac_80027210() > 0.97 + 0.0))) {
+            var_v0->draw_sprite = draw_sprite;
+            if ((temp_a0->hue.as_array[3] == 0) || ((temp_a0->hue.as_array[3] < 0xFF) && (func_jetpac_80027210() > 0.97 + 0.0))) {
                 for (i = 0; i < 4; i++) {
-                    temp_a0->unk64.as_array[i] = arg3->as_array[i];
+                    temp_a0->hue.as_array[i] = hue->as_array[i];
                 }
             }
         }

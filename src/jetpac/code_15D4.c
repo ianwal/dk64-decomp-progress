@@ -181,13 +181,13 @@ void func_jetpac_80025904(Gfx **arg0) {
     dl = *arg0;
     for (i = 0; i < 0x18; i++) {
         for (j = 0; j < 0x20; j++) {
-            if (s3->unk60) {
-                gDPSetPrimColor(dl++, 0, 0, s3->unk64.as_array[0], s3->unk64.as_array[1], s3->unk64.as_array[2], 0xFF);
+            if (s3->num_draw_sprites) {
+                gDPSetPrimColor(dl++, 0, 0, s3->hue.as_array[0], s3->hue.as_array[1], s3->hue.as_array[2], 0xFF);
             }
-            for (k = 0; k < s3->unk60; k++) {
-                func_global_asm_8070E8F0(&dl, s3->unk0[k].unkC);
-                func_global_asm_8070F2C8(0x400, 0x400, s3->unk0[k].unk8, 0);
-                func_global_asm_8070F2FC(&dl, (s3->unk0[k].unk0 + 0x20) << 2, (s3->unk0[k].unk4 + 0x18) << 2);
+            for (k = 0; k < s3->num_draw_sprites; k++) {
+                func_global_asm_8070E8F0(&dl, s3->draw_sprites[k].draw_sprite);
+                func_global_asm_8070F2C8(0x400, 0x400, s3->draw_sprites[k].unk8, 0);
+                func_global_asm_8070F2FC(&dl, (s3->draw_sprites[k].x + 0x20) << 2, (s3->draw_sprites[k].y + 0x18) << 2);
             }
             s3++;
         }

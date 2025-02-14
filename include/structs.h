@@ -2450,16 +2450,16 @@ typedef struct JetpacStruct {
 } JetpacStruct;
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
+    s32 x;
+    s32 y;
     s32 unk8;
-    Struct8002C4D0 *unkC;
+    Struct8002C4D0 *draw_sprite;
 } JetpacStruct2;
 
 typedef struct {
-    JetpacStruct2 unk0[6];
-    s32 unk60;
-    rgba unk64;
+    JetpacStruct2 draw_sprites[6];
+    s32 num_draw_sprites;
+    rgba hue;
 } JetpacStruct1;
 
 typedef struct {
