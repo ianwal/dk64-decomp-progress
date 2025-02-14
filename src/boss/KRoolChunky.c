@@ -131,7 +131,7 @@ void func_boss_80030EC4(void) {
         current_actor_pointer->object_properties_bitfield &= ~0x8000;
         func_global_asm_806D0430(0.45f);
         func_boss_800290D4(0U);
-        setFlag(0x5F, FALSE, FLAG_TYPE_TEMPORARY);
+        setFlag(TEMPFLAG_K_ROOL_GONE_CUTSCENE, FALSE, FLAG_TYPE_TEMPORARY);
     }
     if (D_global_asm_807FDC90->unk1A & 1) {
         shadow_dec = temp_a3->unk14 > 0 ? 0xA : 5;
@@ -194,7 +194,7 @@ void func_boss_80030EC4(void) {
                             playActorAnimation(player_pointer, 0);
                             playActorAnimation(current_actor_pointer, 0);
                             playCutscene(current_actor_pointer, 0x16, 1);
-                            setFlag(0x1B0, 1U, 0U);
+                            setFlag(PERMFLAG_PROGRESS_K_ROOL_DEFEATED, TRUE, FLAG_TYPE_PERMANENT);
                         } else {
                             current_actor_pointer->shadow_opacity = 0xFF;
                             current_actor_pointer->unk132 = 1;

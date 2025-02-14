@@ -85,14 +85,14 @@ static u16 D_boss_800359C4[] = {
 
 static BossStruct1 D_boss_800359D0[8] = {
     // map                        flag
-    { MAP_JAPES_ARMY_DILLO,    0, 0x0068, 0x00, 0x14 },
-    { MAP_FUNGI_DOGADON,       0, 0x0069, 0x00, 0x14 },
-    { MAP_GALLEON_PUFFTOSS,    0, 0x006B, 0x00, 0x14 },
-    { MAP_FACTORY_MAD_JACK,    0, 0x006A, 0x00, 0x14 },
-    { MAP_CAVES_ARMY_DILLO,    0, 0x006D, 0x0B, 0x00 },
-    { MAP_AZTEC_DOGADON,       0, 0x0067, 0x0B, 0x14 },
-    { MAP_CASTLE_KING_KUT_OUT, 0, 0x006C, 0x03, 0x01 },
-    { MAP_TEST_MAP,            0, 0x0000, 0x00, 0x00 }, // TODO: Padding?
+    { MAP_JAPES_ARMY_DILLO,    0, TEMPFLAG_JAPES_DILLO_INTRO,      0x00, 0x14 },
+    { MAP_FUNGI_DOGADON,       0, TEMPFLAG_FUNGI_DOGADON_INTRO,    0x00, 0x14 },
+    { MAP_GALLEON_PUFFTOSS,    0, TEMPFLAG_GALLEON_PUFFTOSS_INTRO, 0x00, 0x14 },
+    { MAP_FACTORY_MAD_JACK,    0, TEMPFLAG_FACTORY_JACK_INTRO,     0x00, 0x14 },
+    { MAP_CAVES_ARMY_DILLO,    0, TEMPFLAG_CAVES_DILLO_INTRO,      0x0B, 0x00 },
+    { MAP_AZTEC_DOGADON,       0, TEMPFLAG_AZTEC_DOGADON_INTRO,    0x0B, 0x14 },
+    { MAP_CASTLE_KING_KUT_OUT, 0, TEMPFLAG_CASTLE_KUTOUT_INTRO,    0x03, 0x01 },
+    { MAP_TEST_MAP,            0, NULL,                            0x00, 0x00 }, // TODO: Padding?
 };
 
 extern SpriteData D_global_asm_8071FE08; // TODO: Sprite
@@ -465,10 +465,10 @@ void func_boss_80028818(void) {
 
 void func_boss_80028820(void) {
     // K. Rool Tiny Phase Toes Complete
-    setFlag(0x51, FALSE, FLAG_TYPE_TEMPORARY);
-    setFlag(0x52, FALSE, FLAG_TYPE_TEMPORARY);
-    setFlag(0x53, FALSE, FLAG_TYPE_TEMPORARY);
-    setFlag(0x54, FALSE, FLAG_TYPE_TEMPORARY);
+    setFlag(TEMPFLAG_K_ROOL_TOE_1_DAMAGED, FALSE, FLAG_TYPE_TEMPORARY);
+    setFlag(TEMPFLAG_K_ROOL_TOE_2_DAMAGED, FALSE, FLAG_TYPE_TEMPORARY);
+    setFlag(TEMPFLAG_K_ROOL_TOE_3_DAMAGED, FALSE, FLAG_TYPE_TEMPORARY);
+    setFlag(TEMPFLAG_K_ROOL_TOE_4_DAMAGED, FALSE, FLAG_TYPE_TEMPORARY);
 }
 
 void func_boss_80028878(u8 *arg0) {
@@ -493,14 +493,14 @@ void func_boss_80028878(u8 *arg0) {
         func_global_asm_806FB370(2, 0, 1);
         current_actor_pointer->object_properties_bitfield &= 0xFFFDFFFF;
         if ((a178->unk14 == 0) || (current_actor_pointer->unk58 != ACTOR_BOSS_KROOL_TINY)) {
-            if (!isFlagSet(0x5A, FLAG_TYPE_TEMPORARY)) {
+            if (!isFlagSet(TEMPFLAG_K_ROOL_TIMEOUT, FLAG_TYPE_TEMPORARY)) {
                 func_global_asm_80709464(0);
             }
             D_global_asm_80750AD4++;
             if (D_global_asm_80750AD4 >= 0xD) {
                 func_global_asm_80602B60(0x2B, 0);
                 func_global_asm_80709464(0);
-                setFlag(0x55, FALSE, FLAG_TYPE_TEMPORARY);
+                setFlag(TEMPFLAG_UNK_55, FALSE, FLAG_TYPE_TEMPORARY);
                 func_global_asm_80712524(MAP_KROOLS_ARENA, 0);
                 D_global_asm_80750AD4 = 0;
                 current_actor_pointer->control_state = 0x6A;
@@ -543,40 +543,40 @@ void func_boss_80028878(u8 *arg0) {
                 current_actor_pointer->control_state = 0x6A;
                 current_actor_pointer->control_state_progress = 0;
                 playCutscene(current_actor_pointer, D_boss_800359C4[sp43], 1);
-                setFlag(0x5A, TRUE, FLAG_TYPE_TEMPORARY);
+                setFlag(TEMPFLAG_K_ROOL_TIMEOUT, TRUE, FLAG_TYPE_TEMPORARY);
             }
             break;
     }
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (gameIsInMysteryMenuMinigameMode()) {
-            setFlag(0x55, FALSE, FLAG_TYPE_TEMPORARY);
+            setFlag(TEMPFLAG_UNK_55, FALSE, FLAG_TYPE_TEMPORARY);
         }
         var_a0 = 0x5C;
-        if (!isFlagSet(0x5D, FLAG_TYPE_TEMPORARY) || (var_a0 = sp43, (isFlagSet(0x5C, FLAG_TYPE_TEMPORARY)))) {
+        if (!isFlagSet(TEMPFLAG_K_ROOL_DK_INTRO, FLAG_TYPE_TEMPORARY) || (var_a0 = sp43, (isFlagSet(TEMPFLAG_RESET_TINY_PHASE, FLAG_TYPE_TEMPORARY)))) {
             func_boss_80028820();
             D_global_asm_80750AD4 = 1;
-            if (!isFlagSet(0x5D, FLAG_TYPE_TEMPORARY)) {
+            if (!isFlagSet(TEMPFLAG_K_ROOL_DK_INTRO, FLAG_TYPE_TEMPORARY)) {
                 playCutscene(current_actor_pointer, 0x19, 1);
-                setFlag(0x5D, TRUE, FLAG_TYPE_TEMPORARY);
+                setFlag(TEMPFLAG_K_ROOL_DK_INTRO, TRUE, FLAG_TYPE_TEMPORARY);
             } else {
                 playCutscene(current_actor_pointer, D_boss_800359A0[0], 1);
             }
-            setFlag(0x5C, FALSE, FLAG_TYPE_TEMPORARY);
-            setFlag(0x55, TRUE, FLAG_TYPE_TEMPORARY);
+            setFlag(TEMPFLAG_RESET_TINY_PHASE, FALSE, FLAG_TYPE_TEMPORARY);
+            setFlag(TEMPFLAG_UNK_55, TRUE, FLAG_TYPE_TEMPORARY);
         } else {
-            flagIndex = var_a0 + 0x55;
+            flagIndex = var_a0 + TEMPFLAG_UNK_55;
             if (!isFlagSet(flagIndex, FLAG_TYPE_TEMPORARY)) {
                 playCutscene(current_actor_pointer, D_boss_800359A0[sp43], 1);
                 setFlag(flagIndex, TRUE, FLAG_TYPE_TEMPORARY);
-            } else if (isFlagSet(0x5A, FLAG_TYPE_TEMPORARY)) {
-                if (isFlagSet(0x5B, FLAG_TYPE_TEMPORARY)) {
+            } else if (isFlagSet(TEMPFLAG_K_ROOL_TIMEOUT, FLAG_TYPE_TEMPORARY)) {
+                if (isFlagSet(TEMPFLAG_K_ROOL_CRANKY_CS_PLAYED, FLAG_TYPE_TEMPORARY)) {
                     playCutscene(current_actor_pointer, D_boss_800359AC[sp43], 1);
-                    setFlag(0x5A, FALSE, FLAG_TYPE_TEMPORARY);
+                    setFlag(TEMPFLAG_K_ROOL_TIMEOUT, FALSE, FLAG_TYPE_TEMPORARY);
                 } else {
                     func_global_asm_80602B60(0x2B, 0);
                     current_actor_pointer->control_state = 0x6A;
                     current_actor_pointer->control_state_progress = 0;
-                    setFlag(0x5B, TRUE, FLAG_TYPE_TEMPORARY);
+                    setFlag(TEMPFLAG_K_ROOL_CRANKY_CS_PLAYED, TRUE, FLAG_TYPE_TEMPORARY);
                     func_global_asm_80712524(MAP_KROOLS_ARENA, 1);
                     D_global_asm_80750AD4 -= 1;
                 }

@@ -106,7 +106,7 @@ void func_critter_80027448(void) {
             }
         } else {
             func_global_asm_806F8BC4(9, 1, 0);
-            if (isFlagSet(0x1CD + levelIndex, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_B_LOCKER_CLEARED_JAPES + levelIndex, FLAG_TYPE_PERMANENT)) {
                 current_actor_pointer->control_state_progress = 4;
             }
             playActorAnimation(current_actor_pointer, 0x39E);
@@ -138,11 +138,11 @@ void func_critter_80027448(void) {
         dy = 2.0 * (player_pointer->y_position - current_actor_pointer->y_position);
         dz = player_pointer->z_position - current_actor_pointer->z_position;
         d = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
-        if ((d < 300.0) && !isFlagSet(0x17E, FLAG_TYPE_PERMANENT)) {
+        if ((d < 300.0) && !isFlagSet(PERMFLAG_FTT_B_LOCKER, FLAG_TYPE_PERMANENT)) {
             func_global_asm_8070E8DC(1);
             loadText(current_actor_pointer, 0x1D, 0);
             playCutscene(current_actor_pointer, 1, 1);
-            setFlag(0x17E, TRUE, FLAG_TYPE_PERMANENT);
+            setFlag(PERMFLAG_FTT_B_LOCKER, TRUE, FLAG_TYPE_PERMANENT);
         } else if ((sp46 != 0) && (d < 200.0) && (func_global_asm_8061CB50() == 0) && (player_pointer->control_state == 0x24) && (player_pointer->control_state_progress == 2) && (dz > -35.0)) {
             if ((dx > -27.0) && (dx < 27.0) && ((((player_pointer->y_rotation < 0x200) != 0)) || (player_pointer->y_rotation >= 0xE01))) {
                 D_critter_80029F84[0] = 2;
@@ -179,7 +179,7 @@ void func_critter_80027448(void) {
                         playActorAnimation(current_actor_pointer, 0x3A1);
                         current_actor_pointer->control_state_progress = 1;
                     } else {
-                        setFlag(levelIndex + 0x1CD, TRUE, FLAG_TYPE_PERMANENT);
+                        setFlag(levelIndex + PERMFLAG_B_LOCKER_CLEARED_JAPES, TRUE, FLAG_TYPE_PERMANENT);
                         var_v0 = (sp47) ? levelIndex + 2 : 2;
                         loadText(current_actor_pointer, 0x1D, var_v0);
                         playActorAnimation(current_actor_pointer, 0x3A0);
@@ -278,13 +278,13 @@ void func_critter_80027DC0(void) {
         func_global_asm_80604CBC(current_actor_pointer, 0x10F, 0x46, 1, 0, 0x1E, 1.0f, 0);
         current_actor_pointer->control_state = 0;
         // Is the camera not unlocked?
-        if (!isFlagSet(0x179, FLAG_TYPE_PERMANENT)) {
+        if (!isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT)) {
             current_actor_pointer->control_state = 1;
         // Is the Rareware GB room open?
-        } else if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
+        } else if (isFlagSet(PERMFLAG_PROGRESS_RAREWARE_ROOM_OPEN, FLAG_TYPE_PERMANENT)) {
             playActorAnimation(current_actor_pointer, 0x2B5);
         // Has the player photographed all 20 fairies?
-        } else if (countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT) == 20) {
+        } else if (countSetFlags(PERMFLAG_ITEM_FAIRY_JAPES_POOL, 20, FLAG_TYPE_PERMANENT) == 20) {
             playActorAnimation(current_actor_pointer, 0x2B5);
             current_actor_pointer->control_state = 3;
         }
@@ -295,7 +295,7 @@ void func_critter_80027DC0(void) {
         case 1:
             if (((SQ(dx) + SQ(dz)) < SQ(100.0f)) != 0) {
                 // Unlock the camera
-                setFlag(0x179, TRUE, FLAG_TYPE_PERMANENT);
+                setFlag(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, TRUE, FLAG_TYPE_PERMANENT);
                 playCutscene(player_pointer, 0, 1);
                 func_global_asm_80629174();
                 current_actor_pointer->control_state = 2;

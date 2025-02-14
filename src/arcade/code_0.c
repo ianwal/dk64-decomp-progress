@@ -25389,14 +25389,14 @@ void func_arcade_80024B04(void) {
 
 void func_arcade_80024C34(void) {
     if (D_arcade_8004A73C == 0) {
-        if (D_arcade_8004A770 && D_arcade_8004A740 && !isFlagSet(0x84, FLAG_TYPE_PERMANENT)) {
+        if (D_arcade_8004A770 && D_arcade_8004A740 && !isFlagSet(PERMFLAG_ITEM_NINTENDO_COIN, FLAG_TYPE_PERMANENT)) {
             // Arcade Golden Banana Collected
-            if (isFlagSet(0x82, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_ITEM_GB_FACTORY_ARCADE, FLAG_TYPE_PERMANENT)) {
                 // Nintendo Coin Spawn Pending
-                setFlag(0x11, TRUE, FLAG_TYPE_TEMPORARY);
+                setFlag(TEMPFLAG_NINTENDO_COIN_SPAWN_PENDING, TRUE, FLAG_TYPE_TEMPORARY);
             } else {
                 // Arcade GB Spawn Pending
-                setFlag(0x10, TRUE, FLAG_TYPE_TEMPORARY);
+                setFlag(TEMPFLAG_ARCADE_GB_SPAWN_PENDING, TRUE, FLAG_TYPE_TEMPORARY);
             }
         }
         if (D_arcade_8004A740) { // arcade_is_in_nintendo_coin_mode

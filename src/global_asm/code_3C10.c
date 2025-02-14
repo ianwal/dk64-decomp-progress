@@ -354,7 +354,7 @@ void func_global_asm_805FF2F4(void) {
         map = current_map;
         exit = 0;
     }
-    setFlag(0x6E, TRUE, FLAG_TYPE_TEMPORARY);
+    setFlag(TEMPFLAG_PLAYER_STUCK_CUTSCENE, TRUE, FLAG_TYPE_TEMPORARY);
     func_global_asm_805FF378(map, exit);
 }
 
@@ -769,8 +769,8 @@ u8 func_global_asm_80600454(s16 arg0, u8 *arg1) {
         *arg1 = D_global_asm_80756630[i];
         if (i < 0xD) {
             // Level first time caption (FTT) seen
-            hadSeenFirstTimeText = !isFlagSet(0x307 + i, FLAG_TYPE_PERMANENT);
-            setFlag(0x307 + i, TRUE, FLAG_TYPE_PERMANENT);
+            hadSeenFirstTimeText = !isFlagSet(PERMFLAG_CAPTION_FUNKY + i, FLAG_TYPE_PERMANENT);
+            setFlag(PERMFLAG_CAPTION_FUNKY + i, TRUE, FLAG_TYPE_PERMANENT);
         } else {
             hadSeenFirstTimeText = TRUE;
         }

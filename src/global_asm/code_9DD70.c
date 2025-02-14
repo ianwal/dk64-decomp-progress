@@ -868,8 +868,8 @@ void func_global_asm_8069E088(void) {
         textIndex = 0;
         current_actor_pointer->control_state = 0x64;
         func_global_asm_8070E8DC(1);
-        if (!isFlagSet(0x178, FLAG_TYPE_PERMANENT)) { // Wrinkly FTT
-            setFlag(0x178, TRUE, FLAG_TYPE_PERMANENT);
+        if (!isFlagSet(PERMFLAG_FTT_WRINKLY, FLAG_TYPE_PERMANENT)) { // Wrinkly FTT
+            setFlag(PERMFLAG_FTT_WRINKLY, TRUE, FLAG_TYPE_PERMANENT);
         } else {
             textIndex = (func_global_asm_80600530() * 5) + D_global_asm_807F6951 + 1;
         }

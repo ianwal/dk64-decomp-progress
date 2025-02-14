@@ -492,7 +492,7 @@ void func_boss_8002FF74(void) {
                 func_global_asm_805FF158(1U);
                 setIntroStoryPlaying(1U);
                 func_global_asm_805FF378(MAP_KROOL_FIGHT_TINY_PHASE, 0);
-                setFlag(temp_s1->unk12 + 0x51, 1U, FLAG_TYPE_TEMPORARY);
+                setFlag(temp_s1->unk12 + TEMPFLAG_K_ROOL_TOE_1_DAMAGED, 1U, FLAG_TYPE_TEMPORARY);
                 current_actor_pointer->control_state_progress++;
                 break;
             }

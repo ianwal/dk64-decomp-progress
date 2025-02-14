@@ -148,7 +148,7 @@ s32 func_global_asm_8068ABE0(s16 arg0) {
                     break;
             }
             if (cutsceneIndex != -1) {
-                setFlag(0x1C5 + i, TRUE, FLAG_TYPE_PERMANENT);
+                setFlag(PERMFLAG_LEVEL_ENTERED_JAPES + i, TRUE, FLAG_TYPE_PERMANENT);
                 if (story_skip) {
                     func_global_asm_805FF378(arg0, exit);
                     return TRUE;

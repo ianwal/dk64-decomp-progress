@@ -132,9 +132,9 @@ void func_critter_80029118(void) {
             // Anti tamper?
             if (temp_t3 != 0x0A78F00E) {
                 if (current_map == MAP_VINE_BARREL) {
-                    var_v0 = 0x184;
+                    var_v0 = PERMFLAG_ITEM_MOVE_ORANGETHROWING;
                 } else {
-                    var_v0 = 0x183;
+                    var_v0 = PERMFLAG_ITEM_MOVE_VINES;
                 }
                 setFlag(var_v0, FALSE, FLAG_TYPE_PERMANENT);
             }
@@ -157,16 +157,16 @@ void func_critter_80029118(void) {
                         }
                         switch (current_map) {
                             case MAP_DIVE_BARREL:
-                                var_v0_2 = 0x182;
+                                var_v0_2 = PERMFLAG_ITEM_MOVE_DIVING;
                                 break;
                             case MAP_VINE_BARREL:
-                                var_v0_2 = 0x183;
+                                var_v0_2 = PERMFLAG_ITEM_MOVE_VINES;
                                 break;
                             case MAP_ORANGE_BARREL:
-                                var_v0_2 = 0x184;
+                                var_v0_2 = PERMFLAG_ITEM_MOVE_ORANGETHROWING;
                                 break;
                             case MAP_BARREL_BARREL:
-                                var_v0_2 = 0x185;
+                                var_v0_2 = PERMFLAG_ITEM_MOVE_BARRELTHROWING;
                                 break;
                             default:
                                 var_v0_2 = sp70;
