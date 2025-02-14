@@ -2472,7 +2472,7 @@ typedef struct {
     Struct80025A60 unk3C;
     // End TODO
 
-    JetpacStruct unk4C[4];
+    JetpacStruct lasers[4];
 } MetaJetpacStruct3;
 
 typedef struct JetpacItem {

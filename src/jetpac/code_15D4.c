@@ -230,11 +230,11 @@ void func_jetpac_80025BB8(MetaJetpacStruct3 *arg0, s32 arg1) {
     arg0->unk30 = arg1;
 }
 
-JetpacStruct *func_jetpac_80025C40(MetaJetpacStruct3 *arg0) {
+JetpacStruct *jetpac_get_free_laser(MetaJetpacStruct3 *arg0) {
     s32 i;
     for (i = 0; i < 4; i++) {
-        if (arg0->unk4C[i].unk0.unk14 == 0) {
-            return &arg0->unk4C[i];
+        if (arg0->lasers[i].unk0.unk14 == 0) {
+            return &arg0->lasers[i];
         }
     }
     return 0;
@@ -365,7 +365,7 @@ void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
     s32 temp_f4;
     s32 temp_f16_2;
 
-    temp_v0 = func_jetpac_80025C40(arg0);
+    temp_v0 = jetpac_get_free_laser(arg0);
     if (temp_v0 == NULL) {
         if ((ABS(arg0->unkC)) < 0.01f) {
             if (arg0->unk4 < 152.0f) {
@@ -610,8 +610,8 @@ void func_jetpac_80026CEC(void) {
     s32 i;
 
     for (i = 0; i < 4; i++) {
-        temp_a0 = &D_jetpac_8002F050.unk4C[i];
-        if (D_jetpac_8002F050.unk4C[i].unk48.unk0 != 0) {
+        temp_a0 = &D_jetpac_8002F050.lasers[i];
+        if (temp_a0->unk48.unk0 != 0) {
             temp_a0->unk48.unk0(temp_a0);
         }
     }
