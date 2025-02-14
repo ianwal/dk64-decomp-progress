@@ -2405,18 +2405,6 @@ typedef struct {
     rgba unkC;
 } Struct80025A60;
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s16 unk10;
-    s16 unk12;
-    s32 unk14;
-} Struct8002C4D0; // JetpacSprite
-
 typedef struct JetpacSpatialState {
     f32 unk0;
     f32 unk4;
@@ -2453,7 +2441,7 @@ typedef struct {
     s32 x;
     s32 y;
     s32 unk8;
-    Struct8002C4D0 *draw_sprite;
+    uSprite *draw_sprite;
 } JetpacStruct2;
 
 typedef struct {
@@ -2488,12 +2476,12 @@ typedef struct JetpacSpawningInfoSub {
 } JetpacSpawningInfoSub;
 
 typedef struct JetpacSpawningInfo {
-    Struct8002C4D0 *sprite;
+    uSprite *sprite;
     JetpacSpawningInfoSub sub;
 } JetpacSpawningInfo;
 
 typedef struct JetpacPickupPrimary {
-    Struct8002C4D0 *sprite[2];
+    uSprite *sprite[2];
     f32 posX;
     f32 posY;
     f32 velX;

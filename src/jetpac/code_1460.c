@@ -19,7 +19,7 @@ void func_jetpac_80025460(void) {
 }
 
 // add_sprite_to_cell
-void func_jetpac_800254B8(Struct8002C4D0* draw_sprite, s32 x, s32 y, rgba* hue, s32 arg4) {
+void func_jetpac_800254B8(uSprite* draw_sprite, s32 x, s32 y, rgba* hue, s32 arg4) {
     JetpacStruct1* temp_a0;
     JetpacStruct2* var_v0;
     s32 i;

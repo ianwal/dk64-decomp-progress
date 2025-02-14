@@ -1,12 +1,12 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern Struct8002C4D0 D_jetpac_8002C4D0[];
-extern Struct8002C4D0 D_jetpac_8002B9C0[];
+extern uSprite D_jetpac_8002C4D0[];
+extern uSprite D_jetpac_8002B9C0[];
 
-extern Struct8002C4D0 D_jetpac_8002C330;
-extern Struct8002C4D0 D_jetpac_8002C348[];
-extern Struct8002C4D0 D_jetpac_8002C3A8[];
+extern uSprite D_jetpac_8002C330;
+extern uSprite D_jetpac_8002C348[];
+extern uSprite D_jetpac_8002C3A8[];
 extern JetpacStruct D_jetpac_8002C518;
 
 extern JetpacPlayerStruct D_jetpac_8002EC30;
@@ -28,20 +28,20 @@ extern JetpacStruct1 D_jetpac_8002F3D0[0x300];
 
 extern s32 D_jetpac_80045BD0;
 
-extern void func_global_asm_8070E8F0(Gfx**, Struct8002C4D0*);
-void func_jetpac_80025700(Struct8002C4D0 *, s32, s32, rgba*, s32);
+extern void func_global_asm_8070E8F0(Gfx**, uSprite*);
+void func_jetpac_80025700(uSprite *, s32, s32, rgba*, s32);
 void func_jetpac_80026318(MetaJetpacStruct3*);
 void func_jetpac_80027010(MetaJetpacStruct3 *arg0);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_15D4/func_jetpac_80025700.s")
 
-void func_jetpac_800254B8(Struct8002C4D0 *, s32, s32, rgba*, s32);
-extern Struct8002C4D0 D_80042BD0[0x100][2];
+void func_jetpac_800254B8(uSprite *, s32, s32, rgba*, s32);
+extern uSprite D_80042BD0[0x100][2];
 extern s32 D_jetpac_80045BD0;
 
 /* Frustratingly close...
-void func_jetpac_80025700(Struct8002C4D0* arg0, s32 base_or_stride_y, s32 base_or_stride_x, rgba* color, s32 arg4) {
-    Struct8002C4D0* temp_a0;
+void func_jetpac_80025700(uSprite* arg0, s32 base_or_stride_y, s32 base_or_stride_x, rgba* color, s32 arg4) {
+    uSprite* temp_a0;
     s32 limit_x;
     s32 limit_y;
     s32 next_y;
@@ -113,7 +113,7 @@ void func_jetpac_80025700(Struct8002C4D0* arg0, s32 base_or_stride_y, s32 base_o
 */
 
 /*
-void func_jetpac_80025700(Struct8002C4D0 *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
+void func_jetpac_80025700(uSprite *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
     s32 lim_0;
     s32 lim_1;
     s32 temp_v0;
@@ -122,7 +122,7 @@ void func_jetpac_80025700(Struct8002C4D0 *arg0, s32 arg1, s32 arg2, s32 arg3, s3
     s32 var_s2;
     s32 var_s5_2;
     s32 var_v1;
-    Struct8002C4D0 *temp_a0;
+    uSprite *temp_a0;
 
     lim_0 = arg0->unkC - 1;
     lim_1 = arg0->unkA - 1;
