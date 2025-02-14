@@ -165,9 +165,6 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
     }
 }
 
-// doable
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027BE8.s")
-
 typedef struct JetpacStruct8002DCE8 { // P sure this is RGBA
     u8 red;
     u8 green;
@@ -177,60 +174,42 @@ typedef struct JetpacStruct8002DCE8 { // P sure this is RGBA
 
 void func_jetpac_80025700(void*, s32, s32, rgba*, s32);
 extern s32 D_8002F3C0;
-extern JetpacStruct8002DCE8 D_jetpac_8002DCE8;
+extern rgba D_jetpac_8002DCE8;
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
-/*
-void func_jetpac_80027BE8(JetpacPickupStruct *arg0, s32 arg1) {
-    JetpacStruct8002DCE8 sp58;
-    JetpacPickupStruct *var_s1;
-    s32 temp_a0;
+void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
+    Competitor* player;
     s32 temp_s6;
-    s32 temp_v0;
-    s32 i;
+    s32 var_s0;
+    rgba sp58;
     s32 var_s2;
-    Competitor *temp_s7;
+    s32* temp_a0;
 
     sp58 = D_jetpac_8002DCE8;
-    temp_s7 = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    if (arg0->primary_info.unk1C < 2) {
-        return;
-    }
-    temp_s6 = arg0->primary_info.posX;
-    var_s2 = func_jetpac_80027410(arg0->primary_info.posY);
-    if (arg1 < 3) {
-        for (i = 0; i < 2; i++) {
-            temp_v0 = temp_s7->rocket_stage;
-            if ((
-                    (temp_v0 < 8) && 
-                    ((temp_v0 + (arg1 * 2) + i) >= 8)
-                ) || (
-                    (temp_v0 == 8) &&
-                    (D_8002F3C0 & 0x10)
-                )) {
-                sp58.green = 0;
+    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    if (arg0->primary_info.unk1C >= 2) {
+        temp_s6 = arg0->primary_info.posX;
+        var_s2 = func_jetpac_80027410(arg0->primary_info.posY);
+        if (arg1 < 3) {
+            for (var_s0 = 0; var_s0 < 2; var_s0++)
+            {
+                temp_a0 = &D_8002F3C0; // Probably a bigger struct (sprite?)
+                if (((player->rocket_stage < 8) && ((player->rocket_stage + (arg1 * 2) + var_s0) >= 8)) || ((player->rocket_stage == 8) && (*temp_a0 & 0x10))) {
+                    sp58.green = 0;
+                }
+                temp_a0 = arg0->primary_info.sprite[var_s0];
+                if (temp_a0 != NULL) {
+                    func_jetpac_80025700(temp_a0, temp_s6, var_s2, &sp58, arg0->primary_info.unk20);
+                }
+                var_s2 += 8;
             }
-            temp_a0 = var_s1->primary_info.sprite[i];
-            if (temp_a0) {
-                func_jetpac_80025700(
-                    temp_a0,
-                    temp_s6,
-                    var_s2,
-                    &sp58,
-                    arg0->primary_info.unk20);
-            }
-            var_s2 += 8;
         }
-        return;
+        else
+        {
+            func_jetpac_80025700(arg0->primary_info.sprite[0], temp_s6, var_s2, &arg0->primary_info.red, arg0->primary_info.unk20);
+        }
     }
-    func_jetpac_80025700(
-        arg0->primary_info.sprite[0],
-        temp_s6,
-        var_s2,
-        &arg0->primary_info.red,
-        arg0->primary_info.unk20);
 }
-*/
 
 extern u8 D_8002F3C8;
 extern JetpacSpawningInfo D_jetpac_8002D968[7];
