@@ -531,7 +531,7 @@ void func_jetpac_800289EC(void) {
     }
 }
 
-extern s32 D_jetpac_8002D190[];
+extern void* D_jetpac_8002D190[];
 
 void func_jetpac_80028B54(Competitor *arg0) {
     s32 i;
