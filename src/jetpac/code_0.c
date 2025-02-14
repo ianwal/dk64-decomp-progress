@@ -139,7 +139,7 @@ void func_jetpac_80024408(Gfx **arg0) {
     for (playerIndex = 0; playerIndex < 2; playerIndex++) {
         if (player->lives > 0) {
             sprintf(sp60, "%d!", player->lives);
-            func_jetpac_8002AEFC(arg0, &sp60, 0x60 + (playerIndex * 0x70), 0x18, 0);
+            func_jetpac_8002AEFC(arg0, sp60, 0x60 + (playerIndex * 0x70), 0x18, 0);
         }
         player++;
     }
@@ -149,11 +149,11 @@ void func_jetpac_80024408(Gfx **arg0) {
     player = &D_jetpac_8002EC30.player[0];
     func_jetpac_8002AE94(0xFF, 0xFF, 0, 0xFF);
     sprintf(sp60, "%06d", player[0].current_score);
-    func_jetpac_8002AEFC(arg0, &sp60, 0x28, 0x20, 0);
+    func_jetpac_8002AEFC(arg0, sp60, 0x28, 0x20, 0);
     sprintf(sp60, "%06d", D_jetpac_8002EC30.unk18);
-    func_jetpac_8002AEFC(arg0, &sp60, 0x88, 0x20, 0);
+    func_jetpac_8002AEFC(arg0, sp60, 0x88, 0x20, 0);
     sprintf(sp60, "%06d", player[1].current_score);
-    func_jetpac_8002AEFC(arg0, &sp60, 0xE8, 0x20, 0);
+    func_jetpac_8002AEFC(arg0, sp60, 0xE8, 0x20, 0);
 }
 
 void func_jetpac_8002463C(void) {
@@ -318,7 +318,7 @@ void func_jetpac_80024D48(Gfx **arg0) {
         sprintf(sp2C, "GAME OVER PLAYER %d", D_jetpac_8002EC30.player_index + 1);
     }
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
-    func_jetpac_8002AEFC(arg0, &sp2C, (sp4C * 8) + 0x20, 0x88, 0);
+    func_jetpac_8002AEFC(arg0, sp2C, (sp4C * 8) + 0x20, 0x88, 0);
     if (D_jetpac_8002EC30.unk790 >= 0x79U) {
         if (D_jetpac_8002EC30.unk798 != 0) {
             if (D_jetpac_8002EC30.unk799 == 0) {

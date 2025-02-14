@@ -2417,7 +2417,7 @@ typedef struct {
     s32 unk14;
 } Struct8002C4D0; // JetpacSprite
 
-typedef struct JetpacStructSub0 {
+typedef struct JetpacSpatialState {
     f32 unk0;
     f32 unk4;
     f32 unk8;
@@ -2430,6 +2430,10 @@ typedef struct JetpacStructSub0 {
     s32 unk24;
     s32 unk28;
     s32 unk2C;
+} JetpacSpatialState;
+
+typedef struct JetpacStructSub0 {
+    JetpacSpatialState spatial_state;
     Struct80025A60 unk30;
     s32 unk40;
     s32 unk44;
@@ -2459,19 +2463,7 @@ typedef struct {
 } JetpacStruct1;
 
 typedef struct {
-    // TODO: this is largely copy-pasted from JetpacStruct, but only goes up to 0x48
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    rgba unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
+    JetpacSpatialState spatial_state;
     s32 unk30;
     s32 unk34;
     s32 unk38;

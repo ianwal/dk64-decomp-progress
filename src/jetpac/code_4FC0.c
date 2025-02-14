@@ -38,7 +38,7 @@ extern u8 D_jetpac_8002E9CC;
 
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 extern s32 D_jetpac_8002E8F0;
-extern s32 D_jetpac_8002F050; // TODO: Datatype
+extern MetaJetpacStruct3 D_jetpac_8002F050; // TODO: Datatype
 extern f32 D_jetpac_8002F054;
 extern s32 D_jetpac_8002F064;
 extern s32 D_jetpac_8002F07C;
@@ -55,7 +55,7 @@ void func_jetpac_80025700(Struct8002C4D0*, s32, s32, rgba*, s32);
 void func_jetpac_80025A60(void*);
 void func_jetpac_80029640(struct_jetpac_80029640*, f32, f32);
 void func_jetpac_80029B90(JetpacStruct *);
-f32 func_jetpac_80027380(s32 *);
+f32 func_jetpac_80027380(JetpacSpatialState *);
 f32 func_jetpac_800273C8(JetpacStruct *);
 
 void func_jetpac_80029F7C(JetpacStruct *arg0);
@@ -65,7 +65,7 @@ JetpacStruct *func_jetpac_80028FC0(void) {
     s32 i;
     JetpacStruct *temp = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
-        if (temp->unk0.unk14 == 0) {
+        if (temp->unk0.spatial_state.unk14 == 0) {
             return temp;
         }
         temp++;
@@ -89,18 +89,18 @@ s32 func_jetpac_80029064(JetpacStruct* arg0) {
 
     var_v1 = 0;
 
-    p0 = arg0->unk0.unk0;
-    p1 = arg0->unk0.unk4;
-    p2 = p0 + arg0->unk0.unk24;
-    p3 = p1 + arg0->unk0.unk28;
+    p0 = arg0->unk0.spatial_state.unk0;
+    p1 = arg0->unk0.spatial_state.unk4;
+    p2 = p0 + arg0->unk0.spatial_state.unk24;
+    p3 = p1 + arg0->unk0.spatial_state.unk28;
 
     p5 = D_jetpac_8002EC30.unk420;
     p4 = D_jetpac_8002EC30.unk424;
     p6 = p5 + D_jetpac_8002EC30.unk444 - 2;
     p7 = p4 + D_jetpac_8002EC30.unk448;
 
-    p0 += arg0->unk0.unk1C;
-    p1 += arg0->unk0.unk20;
+    p0 += arg0->unk0.spatial_state.unk1C;
+    p1 += arg0->unk0.spatial_state.unk20;
     p5 += (D_jetpac_8002EC30.unk43C + 2);
     p4 += (D_jetpac_8002EC30.unk440 + 4);
 
@@ -125,23 +125,23 @@ s32 func_jetpac_80029064(JetpacStruct* arg0) {
 }
 
 void func_jetpac_800291AC(JetpacStruct *arg0) {
-    arg0->unk0.unk14 = 4;
-    arg0->unk0.unk2C = 0;
+    arg0->unk0.spatial_state.unk14 = 4;
+    arg0->unk0.spatial_state.unk2C = 0;
     arg0->unk0.unk30.unk8 = 0;
-    arg0->unk0.unk30.unk0 = (s32)arg0->unk0.unk0 & 0xFFF8;
-    arg0->unk0.unk30.unk4 = (s32)arg0->unk0.unk4 & 0xFFF8;
+    arg0->unk0.unk30.unk0 = (s32)arg0->unk0.spatial_state.unk0 & 0xFFF8;
+    arg0->unk0.unk30.unk4 = (s32)arg0->unk0.spatial_state.unk4 & 0xFFF8;
     func_jetpac_80024E70(5);
 }
 
 void func_jetpac_80029204(JetpacStruct *arg0) {
-    if (arg0->unk0.unk14 == 3) {
-        func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.unk0, arg0->unk0.unk4, &arg0->unk0.unk10, arg0->unk0.unk18);
+    if (arg0->unk0.spatial_state.unk14 == 3) {
+        func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.spatial_state.unk0, arg0->unk0.spatial_state.unk4, &arg0->unk0.spatial_state.unk10, arg0->unk0.spatial_state.unk18);
         return;
     }
-    if (arg0->unk0.unk14 == 4) {
+    if (arg0->unk0.spatial_state.unk14 == 4) {
         func_jetpac_80025A60(&arg0->unk0.unk30);
         if (arg0->unk0.unk30.unk8 < 7) {
-            func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.unk0, arg0->unk0.unk4, &arg0->unk0.unk10, arg0->unk0.unk18);
+            func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.spatial_state.unk0, arg0->unk0.spatial_state.unk4, &arg0->unk0.spatial_state.unk10, arg0->unk0.spatial_state.unk18);
         }
     }
 }
@@ -160,22 +160,22 @@ JetpacStruct *func_jetpac_800292C4(void) {
         return NULL;
     }
     *sp70 = sp20;
-    sp70->unk0.unk0 = 0.0f;
-    sp70->unk0.unk4 = (((s32) (func_jetpac_80027210() * 15.0f) % 15) * 8) + 0x20;
+    sp70->unk0.spatial_state.unk0 = 0.0f;
+    sp70->unk0.spatial_state.unk4 = (((s32) (func_jetpac_80027210() * 15.0f) % 15) * 8) + 0x20;
     switch ((s32) (func_jetpac_80027210() * 4.0f) % 4) {
         case 0:
-            sp70->unk0.unk10.red = 0;
+            sp70->unk0.spatial_state.unk10.red = 0;
             break;
         case 1:
-            sp70->unk0.unk10.green = 0;
+            sp70->unk0.spatial_state.unk10.green = 0;
             break;
         case 2:
-            sp70->unk0.unk10.red = 0;
-            sp70->unk0.unk10.blue = 0;
+            sp70->unk0.spatial_state.unk10.red = 0;
+            sp70->unk0.spatial_state.unk10.blue = 0;
             break;
         case 3:
-            sp70->unk0.unk10.green = 0;
-            sp70->unk0.unk10.blue = 0;
+            sp70->unk0.spatial_state.unk10.green = 0;
+            sp70->unk0.spatial_state.unk10.blue = 0;
             break;
         }
     return sp70;
@@ -198,28 +198,28 @@ void func_jetpac_80029450(void) {
     if (temp_v0) {
         sp18 = temp_v0;
         sp1C(temp_v0);
-        sp18->unk0.unk14 = 3;
+        sp18->unk0.spatial_state.unk14 = 3;
     }
 }
 
 void func_jetpac_800294EC(JetpacStruct *arg0, s32 arg1) {
-    f32 temp = (arg0->unk0.unk0 + arg0->unk0.unk1C);
-    f32 temp2 = (arg0->unk0.unk0 + arg0->unk0.unk24);
+    f32 temp = (arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk1C);
+    f32 temp2 = (arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk24);
     f32 temp_0 = D_jetpac_8002EC30.unk350[arg1].unk1C;
     f32 temp_8 = D_jetpac_8002EC30.unk350[arg1].unk24;
 
     s32 pad;
 
-    f32 temp3 = (arg0->unk0.unk4 + arg0->unk0.unk20);
-    f32 temp4 = (arg0->unk0.unk4 + arg0->unk0.unk28);
+    f32 temp3 = (arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unk20);
+    f32 temp4 = (arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unk28);
     f32 temp_4 = D_jetpac_8002EC30.unk350[arg1].unk20;
     f32 temp_C = D_jetpac_8002EC30.unk350[arg1].unk28;
 
     if (((temp_8 <= temp) && (temp_8 <= temp2)) || ((temp2 <= temp_0) && (temp <= temp_0))) {
-        arg0->unk0.unk8 = -arg0->unk0.unk8;
+        arg0->unk0.spatial_state.unk8 = -arg0->unk0.spatial_state.unk8;
     }
     if (((temp_C <= temp3) && (temp_C <= temp4)) || ((temp4 <= temp_4) && (temp3 <= temp_4))) {
-        arg0->unk0.unkC = -arg0->unk0.unkC;
+        arg0->unk0.spatial_state.unkC = -arg0->unk0.spatial_state.unkC;
     }
 }
 
@@ -243,8 +243,8 @@ void func_jetpac_80029640(struct_jetpac_80029640 *arg0, f32 arg1, f32 arg2) {
     }
     var_v0 = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
-        if (var_v0->unk0.unk14 > 0) {
-            if (var_v0->unk0.unkC == 0.0f) {
+        if (var_v0->unk0.spatial_state.unk14 > 0) {
+            if (var_v0->unk0.spatial_state.unkC == 0.0f) {
                 var_a1++;
             } else {
                 var_a2++;
@@ -269,26 +269,26 @@ void func_jetpac_80029640(struct_jetpac_80029640 *arg0, f32 arg1, f32 arg2) {
 }
 
 void func_jetpac_8002976C(JetpacStruct *arg0) {
-    switch (arg0->unk0.unk14) {
+    switch (arg0->unk0.spatial_state.unk14) {
         case 3:
             if (func_jetpac_80028CF8(
-                arg0->unk0.unk1C + arg0->unk0.unk0 + arg0->unk0.unk8,
-                arg0->unk0.unk20 + arg0->unk0.unk4 + arg0->unk0.unkC,
-                arg0->unk0.unk24 + arg0->unk0.unk0 + arg0->unk0.unk8,
-                arg0->unk0.unk28 + arg0->unk0.unk4 + arg0->unk0.unkC, 1) >= 0) {
+                arg0->unk0.spatial_state.unk1C + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                arg0->unk0.spatial_state.unk20 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
+                arg0->unk0.spatial_state.unk24 + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                arg0->unk0.spatial_state.unk28 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC, 1) >= 0) {
                 func_jetpac_800291AC(arg0);
                 return;
             }
             if (func_jetpac_80029064(arg0) == 0) {
-                arg0->unk0.unk0 += arg0->unk0.unk8;
-                arg0->unk0.unk4 += arg0->unk0.unkC;
+                arg0->unk0.spatial_state.unk0 += arg0->unk0.spatial_state.unk8;
+                arg0->unk0.spatial_state.unk4 += arg0->unk0.spatial_state.unkC;
                 return;
             }
             return;
         case 4:
-            arg0->unk0.unk2C++;
-            if (arg0->unk0.unk2C >= 0xF) {
-                arg0->unk0.unk14 = 0;
+            arg0->unk0.spatial_state.unk2C++;
+            if (arg0->unk0.spatial_state.unk2C >= 0xF) {
+                arg0->unk0.spatial_state.unk14 = 0;
             }
             break;
     }
@@ -302,49 +302,49 @@ void func_jetpac_80029884(struct_jetpac_80029640 *arg0) {
 
 void func_jetpac_800298C8(JetpacStruct *arg0) {
     func_jetpac_8002976C(arg0);
-    arg0->unk48.unk4 = &D_jetpac_8002E800[(s32)arg0->unk0.unk0 % 2];
+    arg0->unk48.unk4 = &D_jetpac_8002E800[(s32)arg0->unk0.spatial_state.unk0 % 2];
 }
 
 void func_jetpac_8002992C(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_8002998C;
     arg0->unk0.unk44 = 0x50;
-    if (arg0->unk0.unk4 < 88.0f) {
-        arg0->unk0.unk8 = -1.2f;
+    if (arg0->unk0.spatial_state.unk4 < 88.0f) {
+        arg0->unk0.spatial_state.unk8 = -1.2f;
     } else {
-        arg0->unk0.unk8 = 1.2f;
+        arg0->unk0.spatial_state.unk8 = 1.2f;
     }
-    arg0->unk0.unkC = -0.8f;
+    arg0->unk0.spatial_state.unkC = -0.8f;
     arg0->unk48.unk4 = &D_jetpac_8002E830;
 }
 
 void func_jetpac_8002998C(JetpacStruct *arg0) {
     s32 temp_v0_2;
 
-    switch (arg0->unk0.unk14) {                              
+    switch (arg0->unk0.spatial_state.unk14) {                              
         case 3:
             temp_v0_2 = func_jetpac_80028CF8(
-                        arg0->unk0.unk1C + arg0->unk0.unk0 + arg0->unk0.unk8,
-                        arg0->unk0.unk20 + arg0->unk0.unk4 + arg0->unk0.unkC,
-                        arg0->unk0.unk24 + arg0->unk0.unk0 + arg0->unk0.unk8,
-                        arg0->unk0.unk28 + arg0->unk0.unk4 + arg0->unk0.unkC, 1);
+                        arg0->unk0.spatial_state.unk1C + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                        arg0->unk0.spatial_state.unk20 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
+                        arg0->unk0.spatial_state.unk24 + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                        arg0->unk0.spatial_state.unk28 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC, 1);
             if (temp_v0_2 >= 0) {
                 func_jetpac_800294EC(arg0, temp_v0_2);
             }
             if (!func_jetpac_80029064(arg0)) {
-                if (arg0->unk0.unk4 + arg0->unk0.unkC < 24.0f) {
-                    arg0->unk0.unkC = -arg0->unk0.unkC;
+                if (arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC < 24.0f) {
+                    arg0->unk0.spatial_state.unkC = -arg0->unk0.spatial_state.unkC;
                 }
-                arg0->unk0.unk4 = arg0->unk0.unk4 + arg0->unk0.unkC;
-                arg0->unk0.unk0 += arg0->unk0.unk8;
-                if ((s32)arg0->unk0.unk0 & 2) {
-                    arg0->unk0.unk18 ^= 1;
+                arg0->unk0.spatial_state.unk4 = arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC;
+                arg0->unk0.spatial_state.unk0 += arg0->unk0.spatial_state.unk8;
+                if ((s32)arg0->unk0.spatial_state.unk0 & 2) {
+                    arg0->unk0.spatial_state.unk18 ^= 1;
                 }
             }
             break;
         case 4:
-            arg0->unk0.unk2C++;
-            if (arg0->unk0.unk2C >= 0xF) {
-                arg0->unk0.unk14 = 0;
+            arg0->unk0.spatial_state.unk2C++;
+            if (arg0->unk0.spatial_state.unk2C >= 0xF) {
+                arg0->unk0.spatial_state.unk14 = 0;
             }
             break;
     }
@@ -353,25 +353,25 @@ void func_jetpac_8002998C(JetpacStruct *arg0) {
 void func_jetpac_80029AF8(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_80029C1C;
     arg0->unk0.unk44 = 0x28;
-    if (arg0->unk0.unk4 < 88.0f) {
-        arg0->unk0.unk8 = -1.2f;
+    if (arg0->unk0.spatial_state.unk4 < 88.0f) {
+        arg0->unk0.spatial_state.unk8 = -1.2f;
     } else {
-        arg0->unk0.unk8 = 1.2f;
+        arg0->unk0.spatial_state.unk8 = 1.2f;
     }
     func_jetpac_80029B90(arg0);
-    arg0->unk0.unk2C = (func_jetpac_80027210() * 60.0f) + 10.0f;
+    arg0->unk0.spatial_state.unk2C = (func_jetpac_80027210() * 60.0f) + 10.0f;
 }
 
 void func_jetpac_80029B90(JetpacStruct *arg0) {
-    if (arg0->unk0.unkC == 0.0) {
+    if (arg0->unk0.spatial_state.unkC == 0.0) {
         if (func_jetpac_80027210() < 0.5) {
-            arg0->unk0.unkC = -0.6f;
+            arg0->unk0.spatial_state.unkC = -0.6f;
             return;
         }
-        arg0->unk0.unkC = 0.6f;
+        arg0->unk0.spatial_state.unkC = 0.6f;
         return;
     }
-    arg0->unk0.unkC = 0.0f;
+    arg0->unk0.spatial_state.unkC = 0.0f;
 }
 
 typedef struct {
@@ -388,39 +388,39 @@ extern Struct8002E848 D_jetpac_8002E848[];
 void func_jetpac_80029C1C(JetpacStruct *arg0) {
     s32 temp_v0_2;
 
-    switch (arg0->unk0.unk14) {
+    switch (arg0->unk0.spatial_state.unk14) {
         case 3:
-            arg0->unk0.unk2C--;
-            if (arg0->unk0.unk2C == 0) {
+            arg0->unk0.spatial_state.unk2C--;
+            if (arg0->unk0.spatial_state.unk2C == 0) {
                 func_jetpac_80029B90(arg0);
-                arg0->unk0.unk2C = (func_jetpac_80027210() * 60.0f) + 10.0f;
+                arg0->unk0.spatial_state.unk2C = (func_jetpac_80027210() * 60.0f) + 10.0f;
             }
             temp_v0_2 = func_jetpac_80028CF8(
-                arg0->unk0.unk1C + arg0->unk0.unk0 + arg0->unk0.unk8,
-                arg0->unk0.unk20 + arg0->unk0.unk4 + arg0->unk0.unkC,
-                arg0->unk0.unk24 + arg0->unk0.unk0 + arg0->unk0.unk8,
-                arg0->unk0.unk28 + arg0->unk0.unk4 + arg0->unk0.unkC,
+                arg0->unk0.spatial_state.unk1C + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                arg0->unk0.spatial_state.unk20 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
+                arg0->unk0.spatial_state.unk24 + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                arg0->unk0.spatial_state.unk28 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
                 1
             );
             if (temp_v0_2 >= 0) {
                 func_jetpac_800294EC(arg0, temp_v0_2);
-                if (arg0->unk0.unk2C < 0xA) {
-                    arg0->unk0.unk2C = 0xA;
+                if (arg0->unk0.spatial_state.unk2C < 0xA) {
+                    arg0->unk0.spatial_state.unk2C = 0xA;
                 }
             }
             if (!func_jetpac_80029064(arg0)) {
-                if ((arg0->unk0.unk4 + arg0->unk0.unkC) < 24.0f) {
-                    arg0->unk0.unkC = -arg0->unk0.unkC;
+                if ((arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC) < 24.0f) {
+                    arg0->unk0.spatial_state.unkC = -arg0->unk0.spatial_state.unkC;
                 }
-                arg0->unk0.unk4 = arg0->unk0.unk4 + arg0->unk0.unkC;
-                arg0->unk0.unk0 = arg0->unk0.unk0 + arg0->unk0.unk8;
-                arg0->unk48.unk4 = &D_jetpac_8002E848[(((s32)(arg0->unk0.unk0 / 4) % 2))];
+                arg0->unk0.spatial_state.unk4 = arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC;
+                arg0->unk0.spatial_state.unk0 = arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8;
+                arg0->unk48.unk4 = &D_jetpac_8002E848[(((s32)(arg0->unk0.spatial_state.unk0 / 4) % 2))];
             }
             break;
         case 4:
-            arg0->unk0.unk2C++;
-            if (arg0->unk0.unk2C >= 0xF) {
-                arg0->unk0.unk14 = 0;
+            arg0->unk0.spatial_state.unk2C++;
+            if (arg0->unk0.spatial_state.unk2C >= 0xF) {
+                arg0->unk0.spatial_state.unk14 = 0;
             }
             break;
     }
@@ -447,14 +447,14 @@ void func_jetpac_80029E0C(struct_jetpac_80029640 *arg0) {
 }
 
 void func_jetpac_80029F7C(JetpacStruct* arg0) {
-    switch (arg0->unk0.unk14) {
+    switch (arg0->unk0.spatial_state.unk14) {
     case 3:
-        if (arg0->unk0.unk2C == 0) {
+        if (arg0->unk0.spatial_state.unk2C == 0) {
             if (func_jetpac_80028CF8(
-                arg0->unk0.unk1C + arg0->unk0.unk0 + arg0->unk0.unk8,
-                arg0->unk0.unk20 + arg0->unk0.unk4 + arg0->unk0.unkC,
-                arg0->unk0.unk24 + arg0->unk0.unk0 + arg0->unk0.unk8,
-                arg0->unk0.unk28 + arg0->unk0.unk4 + arg0->unk0.unkC, 1) >= 0) {
+                arg0->unk0.spatial_state.unk1C + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                arg0->unk0.spatial_state.unk20 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
+                arg0->unk0.spatial_state.unk24 + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                arg0->unk0.spatial_state.unk28 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC, 1) >= 0) {
                 func_jetpac_800291AC(arg0);
             } else {
                 arg0->unk0.unk40--;
@@ -463,50 +463,50 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
                 func_jetpac_800291AC(arg0);
             }
         }
-        else if ((D_jetpac_8002BA6C != 0) && (arg0->unk0.unk4 < 32.0f)) {
+        else if ((D_jetpac_8002BA6C != 0) && (arg0->unk0.spatial_state.unk4 < 32.0f)) {
             func_jetpac_800291AC(arg0);
         }
 
-        if (arg0->unk0.unk14 == 3) {
+        if (arg0->unk0.spatial_state.unk14 == 3) {
             func_jetpac_80029064(arg0);
         }
-        if (arg0->unk0.unk14 == 4) {
+        if (arg0->unk0.spatial_state.unk14 == 4) {
             Competitor* competitor = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
             competitor->current_score += arg0->unk0.unk44;
             break;
         }
-        if (arg0->unk0.unk2C != 0) {
-            arg0->unk0.unk2C--;
+        if (arg0->unk0.spatial_state.unk2C != 0) {
+            arg0->unk0.spatial_state.unk2C--;
             if (D_jetpac_8002BA6C != 0) {
-                arg0->unk0.unkC = -0.8f;
+                arg0->unk0.spatial_state.unkC = -0.8f;
             } else {
-                arg0->unk0.unkC = 0.8f;
+                arg0->unk0.spatial_state.unkC = 0.8f;
             }
-            if (arg0->unk0.unk2C == 0) {
-                if (arg0->unk0.unk18 != 0) {
-                    arg0->unk0.unk8 = -1.6f;
+            if (arg0->unk0.spatial_state.unk2C == 0) {
+                if (arg0->unk0.spatial_state.unk18 != 0) {
+                    arg0->unk0.spatial_state.unk8 = -1.6f;
                 } else {
-                    arg0->unk0.unk8 = 1.6f;
+                    arg0->unk0.spatial_state.unk8 = 1.6f;
                 }
-                arg0->unk0.unk10.red = 0xFF;
-                arg0->unk0.unk10.green = 0xFF;
-                arg0->unk0.unk10.blue = 0xFF;
+                arg0->unk0.spatial_state.unk10.red = 0xFF;
+                arg0->unk0.spatial_state.unk10.green = 0xFF;
+                arg0->unk0.spatial_state.unk10.blue = 0xFF;
             }
         }
-        if ((arg0->unk0.unk2C == 0) && (D_jetpac_8002EC30.unk790 & 2)) {
+        if ((arg0->unk0.spatial_state.unk2C == 0) && (D_jetpac_8002EC30.unk790 & 2)) {
             if (func_jetpac_800273C8(arg0) < (D_jetpac_8002F054 + D_jetpac_8002F078)) {
-                arg0->unk0.unkC = 0.8f;
+                arg0->unk0.spatial_state.unkC = 0.8f;
             } else {
-                arg0->unk0.unkC = -0.8f;
+                arg0->unk0.spatial_state.unkC = -0.8f;
             }
         }
-        arg0->unk0.unk0 += arg0->unk0.unk8;
-        arg0->unk0.unk4 += arg0->unk0.unkC;
+        arg0->unk0.spatial_state.unk0 += arg0->unk0.spatial_state.unk8;
+        arg0->unk0.spatial_state.unk4 += arg0->unk0.spatial_state.unkC;
         break;
     case 4:
-        arg0->unk0.unk2C++;
-        if (arg0->unk0.unk2C >= 0xF) {
-            arg0->unk0.unk14 = 0;
+        arg0->unk0.spatial_state.unk2C++;
+        if (arg0->unk0.spatial_state.unk2C >= 0xF) {
+            arg0->unk0.spatial_state.unk14 = 0;
         }
         break;
     }
@@ -515,16 +515,16 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
 void func_jetpac_8002A254(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_8002A530;
     arg0->unk0.unk44 = 0x32;
-    if (arg0->unk0.unk4 < 88.0f) {
-        arg0->unk0.unk18 = 0;
+    if (arg0->unk0.spatial_state.unk4 < 88.0f) {
+        arg0->unk0.spatial_state.unk18 = 0;
     } else {
-        arg0->unk0.unk18 = 1;
+        arg0->unk0.spatial_state.unk18 = 1;
     }
     func_jetpac_8002A374(arg0);
 }
 
 void func_jetpac_8002A2AC(JetpacStruct *arg0) {
-    arg0->unk0.unk28 = 8;
+    arg0->unk0.spatial_state.unk28 = 8;
     arg0->unk48.unk4 = &D_jetpac_8002E890;
     func_jetpac_8002A254(arg0);
 }
@@ -552,8 +552,8 @@ void func_jetpac_8002A374(JetpacStruct *arg0) {
     f32 sp1C;
     f32 sp18;
 
-    sp18 = func_jetpac_80027380(arg0);
-    temp_f0 = func_jetpac_80027380(&D_jetpac_8002F050);
+    sp18 = func_jetpac_80027380(&arg0->unk0.spatial_state);
+    temp_f0 = func_jetpac_80027380(&D_jetpac_8002F050.spatial_state);
     temp_f2 = temp_f0 - sp18;
     if (sp18 < temp_f0) {
         var_f14 = temp_f2 - 256.0f;
@@ -576,39 +576,39 @@ void func_jetpac_8002A374(JetpacStruct *arg0) {
     } else {
         sp1C = var_f18;
     }
-    arg0->unk0.unk8 = func_jetpac_8002A2DC(sp28, arg0->unk0.unk8);
-    arg0->unk0.unkC = func_jetpac_8002A2DC(sp1C, arg0->unk0.unkC);
+    arg0->unk0.spatial_state.unk8 = func_jetpac_8002A2DC(sp28, arg0->unk0.spatial_state.unk8);
+    arg0->unk0.spatial_state.unkC = func_jetpac_8002A2DC(sp1C, arg0->unk0.spatial_state.unkC);
 }
 
 void func_jetpac_8002A530(JetpacStruct *arg0) {
     s32 temp_v0_2;
 
-    switch (arg0->unk0.unk14) {
+    switch (arg0->unk0.spatial_state.unk14) {
         case 3:
             func_jetpac_8002A374(arg0);
             temp_v0_2 = func_jetpac_80028CF8(
-                arg0->unk0.unk1C + arg0->unk0.unk0 + arg0->unk0.unk8,
-                arg0->unk0.unk20 + arg0->unk0.unk4 + arg0->unk0.unkC,
-                arg0->unk0.unk24 + arg0->unk0.unk0 + arg0->unk0.unk8,
-                arg0->unk0.unk28 + arg0->unk0.unk4 + arg0->unk0.unkC,
+                arg0->unk0.spatial_state.unk1C + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                arg0->unk0.spatial_state.unk20 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
+                arg0->unk0.spatial_state.unk24 + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+                arg0->unk0.spatial_state.unk28 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
                 1
             );
             if (temp_v0_2 >= 0) {
                 func_jetpac_800294EC(arg0, temp_v0_2);
             }
             if (func_jetpac_80029064(arg0) == 0) {
-                if ((arg0->unk0.unk4 + arg0->unk0.unkC) < 24.0f) {
-                    arg0->unk0.unkC = -arg0->unk0.unkC;
+                if ((arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC) < 24.0f) {
+                    arg0->unk0.spatial_state.unkC = -arg0->unk0.spatial_state.unkC;
                 }
-                arg0->unk0.unk4 += arg0->unk0.unkC;
-                arg0->unk0.unk0 += arg0->unk0.unk8;
+                arg0->unk0.spatial_state.unk4 += arg0->unk0.spatial_state.unkC;
+                arg0->unk0.spatial_state.unk0 += arg0->unk0.spatial_state.unk8;
                 return;
             }
             return;
         case 4:
-            arg0->unk0.unk2C++;
-            if (arg0->unk0.unk2C >= 0xF) {
-                arg0->unk0.unk14 = 0;
+            arg0->unk0.spatial_state.unk2C++;
+            if (arg0->unk0.spatial_state.unk2C >= 0xF) {
+                arg0->unk0.spatial_state.unk14 = 0;
             }
             break;
     }
@@ -617,19 +617,19 @@ void func_jetpac_8002A530(JetpacStruct *arg0) {
 void func_jetpac_8002A67C(JetpacStruct *arg0) {
     s32 temp_f6;
 
-    temp_f6 = (arg0->unk0.unk2C % 4) + 1;
-    arg0->unk0.unkC = (-1.2 / (f64)temp_f6);
-    arg0->unk0.unk2C++;
+    temp_f6 = (arg0->unk0.spatial_state.unk2C % 4) + 1;
+    arg0->unk0.spatial_state.unkC = (-1.2 / (f64)temp_f6);
+    arg0->unk0.spatial_state.unk2C++;
 }
 
 void func_jetpac_8002A6C0(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_8002A758;
     arg0->unk0.unk44 = 0x3C;
-    arg0->unk0.unk2C = (s32) (func_jetpac_80027210() * 16.0f);
-    if (arg0->unk0.unk4 < 88.0f) {
-        arg0->unk0.unk8 = -1.2f;
+    arg0->unk0.spatial_state.unk2C = (s32) (func_jetpac_80027210() * 16.0f);
+    if (arg0->unk0.spatial_state.unk4 < 88.0f) {
+        arg0->unk0.spatial_state.unk8 = -1.2f;
     } else {
-        arg0->unk0.unk8 = 1.2f;
+        arg0->unk0.spatial_state.unk8 = 1.2f;
     }
     func_jetpac_8002A67C(arg0);
     arg0->unk48.unk4 = &D_jetpac_8002E8A8;
@@ -639,36 +639,36 @@ void func_jetpac_8002A758(JetpacStruct* arg0) {
     f32 newUnkC;
     f32 oldUnkC;
     s32 returnValue;
-    switch (arg0->unk0.unk14) {
+    switch (arg0->unk0.spatial_state.unk14) {
     case 3:
-        arg0->unk0.unkC += 0.005;
-        oldUnkC = arg0->unk0.unkC;
+        arg0->unk0.spatial_state.unkC += 0.005;
+        oldUnkC = arg0->unk0.spatial_state.unkC;
         returnValue = func_jetpac_80028CF8(
-            arg0->unk0.unk1C + arg0->unk0.unk0 + arg0->unk0.unk8,
-            arg0->unk0.unk20 + arg0->unk0.unk4 + arg0->unk0.unkC,
-            arg0->unk0.unk24 + arg0->unk0.unk0 + arg0->unk0.unk8,
-            arg0->unk0.unk28 + arg0->unk0.unk4 + arg0->unk0.unkC,
+            arg0->unk0.spatial_state.unk1C + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+            arg0->unk0.spatial_state.unk20 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
+            arg0->unk0.spatial_state.unk24 + arg0->unk0.spatial_state.unk0 + arg0->unk0.spatial_state.unk8,
+            arg0->unk0.spatial_state.unk28 + arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC,
             1);
         if (returnValue >= 0) {
             func_jetpac_800294EC(arg0, returnValue);
-            newUnkC = arg0->unk0.unkC;
+            newUnkC = arg0->unk0.spatial_state.unkC;
             if ((oldUnkC > 0.f) && (newUnkC < 0.f)) {
                 func_jetpac_8002A67C(arg0);
             }
         }
         if (func_jetpac_80029064(arg0) == 0) {
-            newUnkC = arg0->unk0.unkC;
-            if (arg0->unk0.unk4 + arg0->unk0.unkC < 24.0f) {
-                arg0->unk0.unkC = -arg0->unk0.unkC;
+            newUnkC = arg0->unk0.spatial_state.unkC;
+            if (arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC < 24.0f) {
+                arg0->unk0.spatial_state.unkC = -arg0->unk0.spatial_state.unkC;
             }
-            arg0->unk0.unk4 = arg0->unk0.unk4 + arg0->unk0.unkC;
-            arg0->unk0.unk0 += arg0->unk0.unk8;
+            arg0->unk0.spatial_state.unk4 = arg0->unk0.spatial_state.unk4 + arg0->unk0.spatial_state.unkC;
+            arg0->unk0.spatial_state.unk0 += arg0->unk0.spatial_state.unk8;
         }
         break;
     case 4:
-        arg0->unk0.unk2C++;
-        if (arg0->unk0.unk2C >= 0xF) {
-            arg0->unk0.unk14 = 0;
+        arg0->unk0.spatial_state.unk2C++;
+        if (arg0->unk0.spatial_state.unk2C >= 0xF) {
+            arg0->unk0.spatial_state.unk14 = 0;
         }
         break;
     }
@@ -682,7 +682,7 @@ void func_jetpac_8002A8F0(struct_jetpac_80029640 *arg0) {
 }
 
 void func_jetpac_8002A944(JetpacStruct *arg0) {
-    arg0->unk0.unk28 = 0xE;
+    arg0->unk0.spatial_state.unk28 = 0xE;
     arg0->unk48.unk4 = &D_jetpac_8002E8D8;
     func_jetpac_8002A254(arg0);
 }
@@ -692,10 +692,10 @@ s32 func_jetpac_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
     s32 i;
     JetpacStruct *var_s0;
 
-    var_s0 = &D_jetpac_8002F1DC;
+    var_s0 = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
-        if (var_s0->unk0.unk14 == 3) {
-            if (func_jetpac_80027250(arg0, arg1, arg2, arg3, var_s0->unk0.unk0 + var_s0->unk0.unk1C, var_s0->unk0.unk4 + var_s0->unk0.unk20, var_s0->unk0.unk0 + var_s0->unk0.unk24, var_s0->unk0.unk4 + var_s0->unk0.unk28) != 0) {
+        if (var_s0->unk0.spatial_state.unk14 == 3) {
+            if (func_jetpac_80027250(arg0, arg1, arg2, arg3, var_s0->unk0.spatial_state.unk0 + var_s0->unk0.spatial_state.unk1C, var_s0->unk0.spatial_state.unk4 + var_s0->unk0.spatial_state.unk20, var_s0->unk0.spatial_state.unk0 + var_s0->unk0.spatial_state.unk24, var_s0->unk0.spatial_state.unk4 + var_s0->unk0.spatial_state.unk28) != 0) {
                 player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
                 func_jetpac_800291AC(var_s0);
                 player->current_score += var_s0->unk0.unk44;
@@ -715,7 +715,7 @@ void func_jetpac_8002AAD4(void) {
     JetpacStruct *var_v0;
 
     sp24 = D_jetpac_8002E964;
-    var_v0 = &D_jetpac_8002F1DC;
+    var_v0 = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
         *var_v0 = sp24;
         var_v0++;
@@ -743,14 +743,14 @@ void func_jetpac_8002ABDC(void) {
     }
 
     for (i = 0; i != 6; i++) {
-        if (var_s0->unk0.unk14 > 0) {
+        if (var_s0->unk0.spatial_state.unk14 > 0) {
             if (var_s0->unk48.unk0 != NULL) {
                 var_s0->unk48.unk0(var_s0);
-                if (var_s0->unk0.unk0 < 0.0f) {
-                    var_s0->unk0.unk0 += 256.0f;
+                if (var_s0->unk0.spatial_state.unk0 < 0.0f) {
+                    var_s0->unk0.spatial_state.unk0 += 256.0f;
                 }
-                if (var_s0->unk0.unk0 > 256.0f) {
-                    var_s0->unk0.unk0 -= 256.0f;
+                if (var_s0->unk0.spatial_state.unk0 > 256.0f) {
+                    var_s0->unk0.spatial_state.unk0 -= 256.0f;
                 }
                 count++;
             }
@@ -778,7 +778,7 @@ void func_jetpac_8002AD8C(void) {
     var_s0 = &D_jetpac_8002F1DC[0];
     if (!func_jetpac_80026FE0()) {
         for (i = 0; i < 6; i++) {
-            if (var_s0->unk0.unk14 >= 2) {
+            if (var_s0->unk0.spatial_state.unk14 >= 2) {
                 if (var_s0->unk48.unk4) {
                     func_jetpac_80029204(var_s0);
                 }

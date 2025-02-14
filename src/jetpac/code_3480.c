@@ -74,7 +74,7 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
             arg0->primary_info.unk1C = 2;
         }
         if (arg0->primary_info.unk38 == 0) {
-            if ((arg0->primary_info.velY > 0.0f) && (ms->unk14 != 4)) {
+            if ((arg0->primary_info.velY > 0.0f) && (ms->spatial_state.unk14 != 4)) {
                 temp_v0_2 = func_jetpac_80028CF8((f32) arg0->primary_info.unk24.unk0 + arg0->primary_info.posX + arg0->primary_info.velX, (f32) arg0->primary_info.unk24.unk4 + arg0->primary_info.posY + arg0->primary_info.velY, (f32) arg0->primary_info.unk24.unk8 + arg0->primary_info.posX + arg0->primary_info.velX, (f32) arg0->primary_info.unk24.unkC + arg0->primary_info.posY + arg0->primary_info.velY, 0);
                 if (temp_v0_2 >= 0) {
                     arg0->primary_info.posY = D_jetpac_8002EC30.unk350[temp_v0_2].unk4 - 16.0f;
@@ -84,16 +84,16 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
                 }
             }
 
-            if (ms->unk14 == 3) {
+            if (ms->spatial_state.unk14 == 3) {
                 if (func_jetpac_80027250(
                     arg0->primary_info.posX + arg0->primary_info.unk24.unk0,
                     arg0->primary_info.posY + arg0->primary_info.unk24.unk4,
                     arg0->primary_info.posX + arg0->primary_info.unk24.unk8,
                     arg0->primary_info.posY + arg0->primary_info.unk24.unkC,
-                    ms->unk0 + ms->unk1C,
-                    ms->unk4 + ms->unk20,
-                    ms->unk0 + ms->unk24,
-                    ms->unk4 + ms->unk28)) {
+                    ms->spatial_state.unk0 + ms->spatial_state.unk1C,
+                    ms->spatial_state.unk4 + ms->spatial_state.unk20,
+                    ms->spatial_state.unk0 + ms->spatial_state.unk24,
+                    ms->spatial_state.unk4 + ms->spatial_state.unk28)) {
                     arg0->primary_info.unk38 = 1;
                     player->current_score += arg0->primary_info.point_bonus;
                     func_jetpac_80024E70(4);
@@ -101,14 +101,14 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
             }
         }
         if (arg0->primary_info.unk38 == 1) {
-            if (ms->unk14 == 4) {
+            if (ms->spatial_state.unk14 == 4) {
                 arg0->primary_info.unk38 = 0;
                 arg0->primary_info.velY = 0.8f;
             } else {
                 arg0->primary_info.posX =
-                    ((ms->unk0 - (2 * ms->unk8)) + ms->unk1C) +
-                    ((((ms->unk24 - ms->unk1C) - arg0->primary_info.unk24.unk8) + arg0->primary_info.unk24.unk0) * 0.5);
-                arg0->primary_info.posY = ((ms->unk4 - ms->unkC) + ms->unk28) - arg0->primary_info.unk24.unkC;
+                    ((ms->spatial_state.unk0 - (2 * ms->spatial_state.unk8)) + ms->spatial_state.unk1C) +
+                    ((((ms->spatial_state.unk24 - ms->spatial_state.unk1C) - arg0->primary_info.unk24.unk8) + arg0->primary_info.unk24.unk0) * 0.5);
+                arg0->primary_info.posY = ((ms->spatial_state.unk4 - ms->spatial_state.unkC) + ms->spatial_state.unk28) - arg0->primary_info.unk24.unkC;
                 if (func_jetpac_80027330(arg0->primary_info.posX) != 0) {
                     arg0->primary_info.posX = 168.0f;
                     arg0->primary_info.velY = 0.8f;
