@@ -64,7 +64,7 @@ void func_global_asm_80712BD4(void) {
     u8 temp_t6;
     s16 temp;
 
-    temp_v0 = isFlagSet(0x302, FLAG_TYPE_PERMANENT);
+    temp_v0 = isFlagSet(PERMFLAG_PROGRESS_HELM_SHUTDOWN, FLAG_TYPE_PERMANENT);
     D_global_asm_80755334 = 0;
     D_global_asm_80755330 = 0;
     if (D_global_asm_807467CC == 0) {
@@ -407,7 +407,7 @@ void func_global_asm_80713C8C(void) {
     if (!D_global_asm_80755340.unk10) {
         return;
     }
-    if (isFlagSet(0x302, 0U)) {
+    if (isFlagSet(PERMFLAG_PROGRESS_HELM_SHUTDOWN, 0U)) {
         func_global_asm_8071261C();
         playSong(MUSIC_116_HIDEOUT_HELM_BLAST_O_MATIC_OFF, 1.0f);
         return;
@@ -480,12 +480,12 @@ void func_global_asm_80713EB0(Maps arg0, s32 arg1, s32 arg2) {
     if (arg0 >= 0) {
         if (game_mode_copy == 0xE) {
             if (arg2 == 1) {
-                if (isFlagSet(0x2A, FLAG_TYPE_GLOBAL) == FALSE) {
+                if (isFlagSet(GLOBALFLAG_ENDING_KLUMSY, FLAG_TYPE_GLOBAL) == FALSE) {
                     arg0 = -1;
                 }
             }
             if (arg2 == 2) {
-                if (isFlagSet(0x2B, FLAG_TYPE_GLOBAL) == FALSE) {
+                if (isFlagSet(GLOBALFLAG_ENDING_BLOOPERS, FLAG_TYPE_GLOBAL) == FALSE) {
                     arg0 = -1;
                 }
             }
@@ -498,14 +498,14 @@ void func_global_asm_80713EB0(Maps arg0, s32 arg1, s32 arg2) {
                 if (temp_v1 < 0x118) {
                     arg0 = -1;
                 } else {
-                    setFlag(0x2A, TRUE, FLAG_TYPE_GLOBAL);
+                    setFlag(GLOBALFLAG_ENDING_KLUMSY, TRUE, FLAG_TYPE_GLOBAL);
                 }
             }
             if (arg2 == 2) {
                 if (temp_v1 < 0x119) {
                     arg0 = -1;
                 } else {
-                    setFlag(0x2B, TRUE, FLAG_TYPE_GLOBAL);
+                    setFlag(GLOBALFLAG_ENDING_BLOOPERS, TRUE, FLAG_TYPE_GLOBAL);
                 }
             }
         }
@@ -654,7 +654,7 @@ void func_global_asm_807144B8(s8 arg0) {
     current_character_index[0] = 0; // DK
     if (func_global_asm_8060C6B8(0xD, 0, 0, current_file) || story_skip) {
         // Flag: Isles: Escape Cutscene
-        if (isFlagSet(0x186, FLAG_TYPE_PERMANENT)) {
+        if (isFlagSet(PERMFLAG_CUTSCENE_ISLES_FTCS, FLAG_TYPE_PERMANENT)) {
             map = MAP_DK_ISLES_OVERWORLD;
             exit = 0;
         } else {

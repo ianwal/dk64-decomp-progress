@@ -259,8 +259,8 @@ void func_menu_80024788(SnideAaD180 *arg0) {
             if (func_global_asm_806F70A8(4) != 0) {
                 sp3C = &D_global_asm_807FC950->character_progress[*current_character_index];
                 for (i = 0; i < 8; i++) {
-                    if (isFlagSet(func_global_asm_807319D8(0x1D5, i, *current_character_index), FLAG_TYPE_PERMANENT) != 0) {
-                        temp_v0 = func_global_asm_807319D8(0x1FD, i, *current_character_index);
+                    if (isFlagSet(func_global_asm_807319D8(PERMFLAG_ITEM_BLUEPRINT_JAPES_DK, i, *current_character_index), FLAG_TYPE_PERMANENT) != 0) {
+                        temp_v0 = func_global_asm_807319D8(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, i, *current_character_index);
                         if (isFlagSet(temp_v0, FLAG_TYPE_PERMANENT) == FALSE) {
                             setFlag(temp_v0, TRUE, FLAG_TYPE_PERMANENT);
                             sp3C->golden_bananas[i] += 1;
@@ -286,7 +286,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
                 arg0->screen = 3;
             } else {
                 arg0->minigame_menu_unlocked = TRUE;
-                for (i = 0x1FD; i < 0x225; i++) {
+                for (i = PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK; i < 0x225; i++) {
                     if (!isFlagSet(i, FLAG_TYPE_PERMANENT)) {
                         arg0->minigame_menu_unlocked = FALSE;
                         i = 0x224;
@@ -378,16 +378,16 @@ void func_menu_80024CB0(void) {
         sp20 = 1;
         sp28 = -1;
         // Count blueprints turned
-        a180->unk2 = countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT);
-        a180->unk1A = func_global_asm_80731A04(0x1D5, 0, 7, *current_character_index);
-        a180->unk1A = a180->unk1A - func_global_asm_80731A04(0x1FD, 0, 7, *current_character_index);
+        a180->unk2 = countSetFlags(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, 40, FLAG_TYPE_PERMANENT);
+        a180->unk1A = func_global_asm_80731A04(PERMFLAG_ITEM_BLUEPRINT_JAPES_DK, 0, 7, *current_character_index);
+        a180->unk1A = a180->unk1A - func_global_asm_80731A04(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, 0, 7, *current_character_index);
         if (D_global_asm_8076AEF2 != 0x1C) {
-            if (!isFlagSet(0x174, FLAG_TYPE_PERMANENT)) {
+            if (!isFlagSet(PERMFLAG_CUTSCENE_SNIDE_FTCS, FLAG_TYPE_PERMANENT)) {
                 a180->unk0 = 0;
                 a180->unk1 = 0;
                 sp20 = 0;
                 func_global_asm_806F397C(player_pointer, 0, 0, 0);
-                setFlag(0x174, TRUE, FLAG_TYPE_PERMANENT);
+                setFlag(PERMFLAG_CUTSCENE_SNIDE_FTCS, TRUE, FLAG_TYPE_PERMANENT);
             } else {
                 if (a180->unk2 == 0x28) {
                     a180->unk0 = 2;
@@ -483,7 +483,7 @@ void func_menu_80024EF0(void) {
         memcpy(D_menu_800330D4, &D_menu_800330E0, 0x140U);
         *var_s0 = -1000;
         D_80033F10 = malloc(0x1400);
-        all_bps_turned = countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT) == 40;
+        all_bps_turned = countSetFlags(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, 40, FLAG_TYPE_PERMANENT) == 40;
         var_s7 = 0;
         vtx_i = 0;
         for (i = 0; i != 0x96; i += 0x1E) {
@@ -608,7 +608,7 @@ Gfx *func_menu_800252AC(Gfx *dl, Actor *arg1) {
         var_s1 = 0;
         for (var_s4 = 0; var_s4 < 8; var_s4++, var_s5 += 0x80) {
             gDPPipeSync(dl++);
-            if (isFlagSet(func_global_asm_807319D8(0x1FD, var_s4, var_fp), 0U) != 0) {
+            if (isFlagSet(func_global_asm_807319D8(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, var_s4, var_fp), 0U) != 0) {
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
             } else {
                 sp12B = 0;

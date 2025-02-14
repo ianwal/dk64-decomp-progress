@@ -562,7 +562,7 @@ void func_global_asm_8069CF54(void) {
         func_global_asm_80689114(0x83, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0, 1.0f, current_actor_pointer);
     }
     func_global_asm_8069B908();
-    if ((!(current_actor_pointer->object_properties_bitfield & 0x10)) && (current_actor_pointer->unk124->unk8_s32 == 1) && isFlagSet(0xFD, FLAG_TYPE_PERMANENT)) {
+    if ((!(current_actor_pointer->object_properties_bitfield & 0x10)) && (current_actor_pointer->unk124->unk8_s32 == 1) && isFlagSet(PERMFLAG_ITEM_GB_FUNGI_APPLE, FLAG_TYPE_PERMANENT)) {
         current_actor_pointer->unk132 = 4;
     }
 }

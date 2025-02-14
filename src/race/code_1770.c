@@ -410,7 +410,7 @@ void func_race_80026F04(void) {
         current_actor_pointer->noclip_byte = 0x3C;
         a178->unk2 = func_race_8002578C(temp, 0);
         func_race_80026354(a178, aaD, 1);
-        if ((gameIsInDKTVMode()) || (isFlagSet(0x12, FLAG_TYPE_TEMPORARY))) {
+        if ((gameIsInDKTVMode()) || (isFlagSet(TEMPFLAG_FACTORY_CAR_RACE_INTRO, FLAG_TYPE_TEMPORARY))) {
             setAction(0x4B, current_actor_pointer, aaD->unk28);
         } else {
             func_global_asm_806F397C(player_pointer, current_actor_pointer, 0, 0x4B);

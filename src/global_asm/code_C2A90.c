@@ -247,7 +247,7 @@ void func_global_asm_806BE8BC(void) {
     s16 i;
     s16 var_v0;
 
-    sp37 = isFlagSet(0xF8, FLAG_TYPE_PERMANENT);
+    sp37 = isFlagSet(PERMFLAG_PROGRESS_RABBIT_RACE_1_COMPLETE, FLAG_TYPE_PERMANENT);
     initializeCharacterSpawnerActor();
     if (extra_player_info_pointer->unk1F0 & 0x100000) {
         current_actor_pointer->control_state = 0x40;
@@ -357,7 +357,6 @@ void func_global_asm_806BE8BC(void) {
                             func_global_asm_8063DA40(0x57, 0xA);
                             D_global_asm_807FDC90->unk1A |= 0x8000;
                         } else {
-                            // Problem here
                             var_v0 = current_actor_pointer->y_rotation - 0x12C;
                             playSong(MUSIC_47_MELON_SLICE_DROP, 1.0f);
                             for (i = 0; i < 3; i++, var_v0 += 0x12C) {
@@ -373,7 +372,7 @@ void func_global_asm_806BE8BC(void) {
                                 );
                             }
                         }
-                        setFlag(0xF8, TRUE, FLAG_TYPE_PERMANENT);
+                        setFlag(PERMFLAG_PROGRESS_RABBIT_RACE_1_COMPLETE, TRUE, FLAG_TYPE_PERMANENT);
                         current_actor_pointer->control_state = 0x37;
                         current_actor_pointer->control_state_progress = 0;
                         current_actor_pointer->y_position = current_actor_pointer->floor;
@@ -741,8 +740,8 @@ void func_global_asm_806C1734(void) {
         }
     } else {
         func_global_asm_806C10A0(0, 3, 0x3D8);
-        if (isFlagSet(4, FLAG_TYPE_PERMANENT) != 0) {
-            func_global_asm_806C151C(3, 3, 0);
+        if (isFlagSet(PERMFLAG_ITEM_GB_JAPES_FRONT_OF_DIDDY_CAGE, FLAG_TYPE_PERMANENT) != 0) {
+            func_global_asm_806C151C(3, 3, TEMPFLAG_TEXT_DIDDY_CAGE);
         }
     }
     renderActor(current_actor_pointer, 0);
@@ -770,7 +769,7 @@ void func_global_asm_806C19F4(void) {
     } else {
         func_global_asm_806C10A0(2, 6, 0x3D9);
         func_global_asm_80724E48(0);
-        func_global_asm_806C151C(6, 1, 6); // Aztec: Caged Lanky Text Cleared
+        func_global_asm_806C151C(6, 1, TEMPFLAG_TEXT_LANKY_CAGE); // Aztec: Caged Lanky Text Cleared
     }
     renderActor(current_actor_pointer, 0);
 }
@@ -816,7 +815,7 @@ void func_global_asm_806C1B50(void) {
         }
     } else {
         func_global_asm_806C10A0(2, 4, 0x3DB);
-        func_global_asm_806C151C(4, 1, 8);
+        func_global_asm_806C151C(4, 1, TEMPFLAG_TEXT_TINY_CAGE);
     }
 render_806C1B50:
     renderActor(current_actor_pointer, 0);
@@ -846,7 +845,7 @@ void func_global_asm_806C1CCC(void) {
     } else {
         func_global_asm_806C10A0(2, 5, 0x3DA);
         func_global_asm_80724E48(0);
-        func_global_asm_806C151C(5, 1, 0xF); // Factory: Caged Chunky Text Cleared
+        func_global_asm_806C151C(5, 1, TEMPFLAG_TEXT_CHUNKY_CAGE); // Factory: Caged Chunky Text Cleared
     }
     renderActor(current_actor_pointer, 0);
 }
@@ -863,7 +862,7 @@ void func_global_asm_806C1E44(void) {
                 current_actor_pointer->unk130 = 0xFF;
                 current_actor_pointer->unk131 = 0xFF;
                 // Aztec: Water Cooled Down
-                if (!isFlagSet(0x4C, FLAG_TYPE_PERMANENT)) {
+                if (!isFlagSet(PERMFLAG_PROGRESS_LLAMA_TEMPLE_WATER_COOLED, FLAG_TYPE_PERMANENT)) {
                     func_global_asm_806883F4(current_actor_pointer, 0, 1, 0);
                     playActorAnimation(current_actor_pointer, 0x2BD);
                     current_actor_pointer->control_state = 0;
@@ -925,7 +924,7 @@ void func_global_asm_806C1E44(void) {
             break;
         case 5:
             func_global_asm_80724A20();
-            func_global_asm_806C151C(0xA, 1, 7);
+            func_global_asm_806C151C(0xA, 1, TEMPFLAG_TEXT_LLAMA_CAGE);
             func_global_asm_806C13AC(4, 0x4F1, 0x4F7, 0x4F7, 0x4F7);
             if (func_global_asm_80629148()) {
                 current_actor_pointer->control_state = 0x12;
@@ -958,7 +957,7 @@ void func_global_asm_806C226C(void) {
         current_actor_pointer->y_acceleration = D_global_asm_807502F4;
         current_actor_pointer->y_position = current_actor_pointer->floor;
         current_actor_pointer->draw_distance = 0x4B0;
-        if (isFlagSet(0x9E, FLAG_TYPE_PERMANENT)) {
+        if (isFlagSet(PERMFLAG_PROGRESS_SEAL_FREED, FLAG_TYPE_PERMANENT)) {
             if (D_global_asm_807FDC9C->unk13 == 0x16) {
                 current_actor_pointer->control_state = 0x28;
                 current_actor_pointer->control_state_progress = 0;
@@ -975,7 +974,7 @@ void func_global_asm_806C226C(void) {
             current_actor_pointer->control_state = 0x27;
             current_actor_pointer->control_state_progress = 0;
             playCutscene(current_actor_pointer, 0x16, 1);
-            setFlag(0x9E, TRUE, FLAG_TYPE_PERMANENT);
+            setFlag(PERMFLAG_PROGRESS_SEAL_FREED, TRUE, FLAG_TYPE_PERMANENT);
         }
     }
     switch (current_actor_pointer->control_state) {
@@ -1013,8 +1012,8 @@ void func_global_asm_806C226C(void) {
                 case 0x1:
                     if (func_global_asm_8072E22C(0xC8) != 0) {
                         current_actor_pointer->control_state_progress++;
-                        if (isFlagSet(0xC1, FLAG_TYPE_PERMANENT) != 0) {
-                            if ((current_character_index[0] == 0) && !isFlagSet(0xA5, FLAG_TYPE_PERMANENT)) {
+                        if (isFlagSet(PERMFLAG_ITEM_GB_GALLEON_SEALFREE, FLAG_TYPE_PERMANENT) != 0) {
+                            if ((current_character_index[0] == 0) && !isFlagSet(PERMFLAG_ITEM_GB_GALLEON_SEALRACE, FLAG_TYPE_PERMANENT)) {
                                 loadText(current_actor_pointer, 0x1C, 2);
                             } else if (current_character_index[0] != 0) {
                                 loadText(current_actor_pointer, 0x1C, 0);
@@ -1030,7 +1029,7 @@ void func_global_asm_806C226C(void) {
                     }
                     break;
                 case 0x2:
-                    if (!isFlagSet(0xC1, FLAG_TYPE_PERMANENT) && (func_global_asm_8072E22C(0x12C) == 0)) {
+                    if (!isFlagSet(PERMFLAG_ITEM_GB_GALLEON_SEALFREE, FLAG_TYPE_PERMANENT) && (func_global_asm_8072E22C(0x12C) == 0)) {
                         current_actor_pointer->control_state_progress = 1;
                     }
                     break;
@@ -1158,24 +1157,24 @@ void func_global_asm_806C3A8C(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unk15E = 0x19;
         func_global_asm_8067ACB4(current_actor_pointer);
-        if (!isFlagSet(0x1E, FLAG_TYPE_TEMPORARY)) {
+        if (!isFlagSet(TEMPFLAG_CUTSCENE_MERMAID_FTCS, FLAG_TYPE_TEMPORARY)) {
             playCutscene(current_actor_pointer, 0x14, 1);
-            setFlag(0x1E, TRUE, FLAG_TYPE_TEMPORARY);
+            setFlag(TEMPFLAG_CUTSCENE_MERMAID_FTCS, TRUE, FLAG_TYPE_TEMPORARY);
         }
-        if (!isFlagSet(0xBF, FLAG_TYPE_PERMANENT)) {
-            if (isFlagSet(0xBA, FLAG_TYPE_PERMANENT)
-                && isFlagSet(0xBB, FLAG_TYPE_PERMANENT)
-                && isFlagSet(0xBC, FLAG_TYPE_PERMANENT)
-                && isFlagSet(0xBD, FLAG_TYPE_PERMANENT)
-                && isFlagSet(0xBE, FLAG_TYPE_PERMANENT)) {
+        if (!isFlagSet(PERMFLAG_ITEM_GB_GALLEON_MERMAID, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_ITEM_PEARL_1, FLAG_TYPE_PERMANENT)
+                && isFlagSet(PERMFLAG_ITEM_PEARL_2, FLAG_TYPE_PERMANENT)
+                && isFlagSet(PERMFLAG_ITEM_PEARL_3, FLAG_TYPE_PERMANENT)
+                && isFlagSet(PERMFLAG_ITEM_PEARL_4, FLAG_TYPE_PERMANENT)
+                && isFlagSet(PERMFLAG_ITEM_PEARL_5, FLAG_TYPE_PERMANENT)) {
                 current_actor_pointer->control_state = 0x27;
                 current_actor_pointer->control_state_progress = 0;
             } else {
-                if (isFlagSet(0xBA, FLAG_TYPE_PERMANENT)
-                    || isFlagSet(0xBB, FLAG_TYPE_PERMANENT)
-                    || isFlagSet(0xBC, FLAG_TYPE_PERMANENT)
-                    || isFlagSet(0xBD, FLAG_TYPE_PERMANENT)
-                    || isFlagSet(0xBE, FLAG_TYPE_PERMANENT)) {
+                if (isFlagSet(PERMFLAG_ITEM_PEARL_1, FLAG_TYPE_PERMANENT)
+                    || isFlagSet(PERMFLAG_ITEM_PEARL_2, FLAG_TYPE_PERMANENT)
+                    || isFlagSet(PERMFLAG_ITEM_PEARL_3, FLAG_TYPE_PERMANENT)
+                    || isFlagSet(PERMFLAG_ITEM_PEARL_4, FLAG_TYPE_PERMANENT)
+                    || isFlagSet(PERMFLAG_ITEM_PEARL_5, FLAG_TYPE_PERMANENT)) {
                         current_actor_pointer->control_state = 0x1F;
                         current_actor_pointer->control_state_progress = 0;
                     } else {
@@ -1209,11 +1208,11 @@ void func_global_asm_806C3A8C(void) {
         case 31:
             if ((u8)(d < 10000)) {
                 if (current_actor_pointer->control_state_progress == 0) {
-                    D_global_asm_80750AC8 = isFlagSet(0xBA, FLAG_TYPE_PERMANENT)
-                        + isFlagSet(0xBB, FLAG_TYPE_PERMANENT)
-                        + isFlagSet(0xBC, FLAG_TYPE_PERMANENT)
-                        + isFlagSet(0xBD, FLAG_TYPE_PERMANENT)
-                        + isFlagSet(0xBE, FLAG_TYPE_PERMANENT);
+                    D_global_asm_80750AC8 = isFlagSet(PERMFLAG_ITEM_PEARL_1, FLAG_TYPE_PERMANENT)
+                        + isFlagSet(PERMFLAG_ITEM_PEARL_2, FLAG_TYPE_PERMANENT)
+                        + isFlagSet(PERMFLAG_ITEM_PEARL_3, FLAG_TYPE_PERMANENT)
+                        + isFlagSet(PERMFLAG_ITEM_PEARL_4, FLAG_TYPE_PERMANENT)
+                        + isFlagSet(PERMFLAG_ITEM_PEARL_5, FLAG_TYPE_PERMANENT);
                     loadText(current_actor_pointer, 0x17, 2);
                     current_actor_pointer->control_state_progress++;
                 }

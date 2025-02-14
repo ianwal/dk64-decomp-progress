@@ -279,7 +279,7 @@ void func_global_asm_806CA2AC(void) {
 }
 
 void func_global_asm_806CA2E4(void) {
-    if ((extra_player_info_pointer->unkC8 != -1) && ((!isFlagSet(0x179, FLAG_TYPE_PERMANENT)) || (current_actor_pointer->unkE0 != 0.0f) || ((D_global_asm_807FBB64 << 8) < 0) || (func_global_asm_806F8AD4(5, extra_player_info_pointer->unk1A4) == 0))) {
+    if ((extra_player_info_pointer->unkC8 != -1) && ((!isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT)) || (current_actor_pointer->unkE0 != 0.0f) || ((D_global_asm_807FBB64 << 8) < 0) || (func_global_asm_806F8AD4(5, extra_player_info_pointer->unk1A4) == 0))) {
         func_global_asm_806CA2AC();
         extra_player_info_pointer->unkC8 = -1;
         return;
@@ -598,8 +598,8 @@ void func_global_asm_806CA5F8(s32 arg0) {
         (current_map != MAP_AZTEC_BEETLE_RACE)
     ) {
         if (cc_number_of_players == 1) {
-            if (isFlagSet(0x186, 0U) == 0) {
-                func_global_asm_805FF188(0xB0, 1U);
+            if (isFlagSet(PERMFLAG_CUTSCENE_ISLES_FTCS, FLAG_TYPE_PERMANENT) == 0) {
+                func_global_asm_805FF188(MAP_TRAINING_GROUNDS, 1U);
             }
             func_global_asm_80709464(cc_player_index);
             func_global_asm_805FF1B0(cc_player_index);

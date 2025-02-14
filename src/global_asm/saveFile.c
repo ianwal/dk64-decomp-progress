@@ -832,12 +832,11 @@ void func_global_asm_8060D7A8(void) {
     if (func_global_asm_806F6EDC()) {
         D_global_asm_807FC950[0].crystals = 0.5 * func_global_asm_806F8EDC(5, 0);
     }
-    // Training Grounds: Orange Barrel Completed
-    if (isFlagSet(0x184, FLAG_TYPE_PERMANENT)) {
+    if (isFlagSet(PERMFLAG_ITEM_MOVE_ORANGETHROWING, FLAG_TYPE_PERMANENT)) {
         D_global_asm_807FC950[0].oranges = 0.5 * func_global_asm_806F8EDC(4, 0);
     }
     // Camera/Shockwave Unlocked
-    if (isFlagSet(0x179, FLAG_TYPE_PERMANENT)) {
+    if (isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT)) {
         D_global_asm_807FC950[0].film = 0.5 * func_global_asm_806F8EDC(6, 0);
     }
     if (D_global_asm_807FC952 != 0) {

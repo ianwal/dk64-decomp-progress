@@ -83,7 +83,7 @@ void func_global_asm_806BC1E0(void) {
     }
     switch (aad178->unk38) {
     case 0:
-        if (!isFlagSet(0x10F, 0U)) {
+        if (!isFlagSet(PERMFLAG_ITEM_GB_CAVES_ICE_TOMATO, FLAG_TYPE_PERMANENT)) {
             dx = current_actor_pointer->x_position - player_pointer->x_position;
             dz = current_actor_pointer->z_position - player_pointer->z_position;
             if ((SQ(dx) + SQ(dz)) < SQ(120.0)) {
@@ -140,7 +140,7 @@ void func_global_asm_806BC1E0(void) {
                 aad178->unk20 = -500.0f;
                 playActorAnimation(current_actor_pointer, 0x31C);
                 func_global_asm_806A2A10(0xDC, 0x2A, 0x3C);
-                setFlag(0x30, 1U, 2U);
+                setFlag(TEMPFLAG_ICE_TOMATO_BOARD_ACTIVE, TRUE, FLAG_TYPE_TEMPORARY);
                 playSong(0x78, 1.0f);
                 func_global_asm_806A2B08(current_actor_pointer->unk11C);
             }
@@ -175,7 +175,7 @@ void func_global_asm_806BC1E0(void) {
                         score_1++;
                     }
                 }
-                setFlag(0x30, 0U, 2U);
+                setFlag(TEMPFLAG_ICE_TOMATO_BOARD_ACTIVE, FALSE, FLAG_TYPE_TEMPORARY);
                 playActorAnimation(current_actor_pointer, 0x31C);
                 D_global_asm_80750650 = 1;
                 aad178->unk38 = score_0 < score_1 ? 6 : 7;
@@ -252,7 +252,7 @@ void func_global_asm_806BC1E0(void) {
     case 8:
         if (func_global_asm_80629148() != 0) {
             func_global_asm_806BD0CC();
-            if (isFlagSet(0x10F, 0U) == 0) {
+            if (isFlagSet(PERMFLAG_ITEM_GB_CAVES_ICE_TOMATO, FLAG_TYPE_PERMANENT) == 0) {
                 func_global_asm_8063DA40(0x10, 0xA);
             }
             aad178->unk38 = 0xAU;
@@ -370,7 +370,7 @@ void func_global_asm_806BD0CC(void) {
     s32 i;
 
     // Caves: Ice Tomato Board Active
-    setFlag(0x30, FALSE, FLAG_TYPE_TEMPORARY);
+    setFlag(TEMPFLAG_ICE_TOMATO_BOARD_ACTIVE, FALSE, FLAG_TYPE_TEMPORARY);
 
     for (i = 0; i < 16; i++) {
         D_global_asm_807FC8C0[i] = -1;

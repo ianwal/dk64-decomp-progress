@@ -311,7 +311,7 @@ void func_global_asm_806C850C(s32 arg0, u8 arg1) {
     extra_player_info_pointer->unk264 = -1;
     extra_player_info_pointer->unk258 = 1.0f;
     extra_player_info_pointer->unk25C = 1.0f;
-    if (isFlagSet(0xCE, FLAG_TYPE_PERMANENT)) {
+    if (isFlagSet(PERMFLAG_PROGRESS_IS_NIGHTTIME, FLAG_TYPE_PERMANENT)) {
         extra_player_info_pointer->unk1F0 |= 0x100000;
     }
     func_global_asm_806C8220(1, current_player->unk178, current_player->unk58);
@@ -645,7 +645,7 @@ void loadExits(Maps map) {
 void func_global_asm_806C9658(Maps map) {
     if (map == MAP_GALLEON) {
         // Galleon: Water Level Raised
-        if (isFlagSet(0xA0, FLAG_TYPE_PERMANENT)) {
+        if (isFlagSet(PERMFLAG_PROGRESS_IS_GALLEON_WATER_RAISED, FLAG_TYPE_PERMANENT)) {
             exit_array[18].y_pos = 1629;
             exit_array[23].y_pos = 1629;
         } else {
@@ -773,7 +773,7 @@ void func_global_asm_806C9C80(s32 playerIndex, s32 arg1, s32 arg2) {
     characterProgress->moves = 3;
 
     // Camera/Shockwave
-    setFlag(0x179, TRUE, FLAG_TYPE_PERMANENT);
+    setFlag(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, TRUE, FLAG_TYPE_PERMANENT);
     func_global_asm_806C9C1C(playerIndex);
 }
 

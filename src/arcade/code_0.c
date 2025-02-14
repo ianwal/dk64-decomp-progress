@@ -25430,7 +25430,7 @@ void func_arcade_80024D90(void) {
     ArcadeStruct1 *iPtr;
 
     D_arcade_8004C724 = 0; // arcade_should_reload_level
-    D_arcade_8004A740 = isFlagSet(0x63, FLAG_TYPE_TEMPORARY); // arcade_is_in_nintendo_coin_mode
+    D_arcade_8004A740 = isFlagSet(TEMPFLAG_ARCADE_IN_STORY_MODE, FLAG_TYPE_TEMPORARY); // arcade_is_in_nintendo_coin_mode
     arcade_background_visual = 0;
     D_arcade_8004C6DC = 0x200; // arcade_internal_timer
     arcade_game_state = 1;
@@ -25464,10 +25464,10 @@ void func_arcade_80024E84(Gfx **arg0) {
         if (D_arcade_8004A740) {
             arcade_lives_internal = 0;
             // Nintendo Coin Collected
-            if (isFlagSet(0x84, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_ITEM_NINTENDO_COIN, FLAG_TYPE_PERMANENT)) {
                 D_arcade_8004C723 = 8;
             // Arcade Golden Banana Collected
-            } else if (isFlagSet(0x82, FLAG_TYPE_PERMANENT)) {
+            } else if (isFlagSet(PERMFLAG_ITEM_GB_FACTORY_ARCADE, FLAG_TYPE_PERMANENT)) {
                 D_arcade_8004C723 = 4;
             }
         }//L80024F74

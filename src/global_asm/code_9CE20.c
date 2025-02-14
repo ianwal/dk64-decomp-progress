@@ -75,7 +75,7 @@ void func_global_asm_80698120(u8 arg0) {
         current_actor_pointer->unk131 = 0xC8;
         aaD->unk14 = 0;
         aaD->unk15 = 0;
-        aaD->unk28 = isFlagSet(0x183, FLAG_TYPE_PERMANENT)
+        aaD->unk28 = isFlagSet(PERMFLAG_ITEM_MOVE_VINES, FLAG_TYPE_PERMANENT)
             || (D_global_asm_807FBB64 & 0x10000000)
             || gameIsInDKTVMode();
     }

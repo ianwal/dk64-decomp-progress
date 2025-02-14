@@ -219,12 +219,12 @@ void func_race_80024690(void) {
             D_global_asm_80750AC8 = 0x32;
             a17C->unk1C = D_global_asm_80750AC8;
             a17C->unk18 = 0x103;
-            flagIndex = 0x65;
+            flagIndex = TEMPFLAG_CAVES_BEETLE_INTRO;
         } else {
             D_global_asm_80750AC8 = 0x32;
             a17C->unk1C = D_global_asm_80750AC8;
             a17C->unk18 = 0x4B;
-            flagIndex = 0x66;
+            flagIndex = TEMPFLAG_AZTEC_BEETLE_INTRO;
         }
         if (!isFlagSet(flagIndex, FLAG_TYPE_TEMPORARY) && !isFlagSet(a17C->unk18, FLAG_TYPE_PERMANENT)) {
             playCutscene(current_actor_pointer, 0, 1);

@@ -290,11 +290,11 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
             if (temp_v0_3 >= 9) {
                 sp7C = 7;
             }
-            if ((sp7C != 7) && isFlagSet(0x18B, FLAG_TYPE_PERMANENT)) {
+            if ((sp7C != 7) && isFlagSet(PERMFLAG_PROGRESS_FIRST_AMMO_OR_CB_OR_BUNCH_COLLECTED, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x1E, 0x1E, 0xC, -0xA, temp_s0[sp7C].unkA, 1, 0);
                 func_global_asm_806AB4EC(arg0, NULL, 0x1E, 0x1E, 0.75f, 2, 1);
             }
-            if (isFlagSet(0x184, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_ITEM_MOVE_ORANGETHROWING, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x1E, 0x5A, 0xC, -0xA, D_global_asm_807FCC44, 1, 1);
                 func_global_asm_806AB4EC(arg0, 4, 0x1E, 0x5A, 0.75f, 2, 1);
             }
@@ -308,7 +308,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                 func_global_asm_806AB808(arg0, 0x1E, 0xA0, 0xC, -0xA, func_global_asm_80612E40(var_f16 / temp_f6), 1, 1);
                 func_global_asm_806AB4EC(arg0, 5, 0x1E, 0xA0, 0.6499999762f, 2, 1);
             }
-            if (isFlagSet(0x18C, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_PROGRESS_FIRST_COIN_COLLECTED, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x122, 0x5A, -0xF, -0xA, temp_s0->unk6, 1, 0x80);
                 func_global_asm_806AB4EC(arg0, 1, 0x122, 0x5A, 0.75f, 2, 1);
             }
@@ -316,7 +316,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                 func_global_asm_806AB808(arg0, 0x122, 0x7D, -0xC, -0xA, sp84->instrument_ammo, 2, 0x81);
                 func_global_asm_806AB4EC(arg0, 7, 0x122, 0x7D, 0.75f, 2, 7);
             }
-            if (isFlagSet(0x179, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT)) {
                 func_global_asm_806AB808(arg0, 0x122, 0xA0, -0xC, -0xA, D_global_asm_807FCC48, 1, 0x81);
                 func_global_asm_806AB4EC(arg0, 6, 0x122, 0xA0, 0.6499999762f, 2, 1);
             }
@@ -372,13 +372,13 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                 var_s0_3 = 0;
                 do {
                     sp74 = var_t0;
-                    if (func_global_asm_80731A04(0x1D5, 0, 7, var_s0_3) != 0) {
+                    if (func_global_asm_80731A04(PERMFLAG_ITEM_BLUEPRINT_JAPES_DK, 0, 7, var_s0_3) != 0) {
                         var_t0 = 1;
                     }
                     var_s0_3 += 1;
                 } while (var_s0_3 < 5);
                 if (var_t0 != 0) {
-                    D_global_asm_807FC80F = isFlagSet(func_global_asm_807319D8(0x1D5, sp7C, current_character_index[0]), 0);
+                    D_global_asm_807FC80F = isFlagSet(func_global_asm_807319D8(PERMFLAG_ITEM_BLUEPRINT_JAPES_DK, sp7C, current_character_index[0]), 0);
                     func_global_asm_806AB4EC(arg0, 0xC, 0x26, 0x7D, 0.75f, 2, 2);
                     if (isFlagSet(func_global_asm_807319D8(0x1FD, sp7C, current_character_index[0]), 0) != 0) {
                         func_global_asm_806AB4EC(arg0, &D_global_asm_80721518, 0x26, 0x7D, 0.349999994f, 2, 0xD);
@@ -461,7 +461,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                     D_global_asm_807FC80F = isFlagSet(*(&D_global_asm_807505B8 + sp3C), 0);
                     func_global_asm_806AB4EC(arg0, &D_global_asm_807210EC, 0xA0, 0x78, 1.0f, 2, 4);
                 }
-                if (isFlagSet(0x179, FLAG_TYPE_PERMANENT) != 0) {
+                if (isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT) != 0) {
                     D_global_asm_807FC80F = sp64;
                     func_global_asm_806AB4EC(arg0, &D_global_asm_80721094, 0x3C, 0x78, 1.0f, 2, 6);
                     D_global_asm_807FC80F = sp65;
@@ -474,7 +474,7 @@ void func_global_asm_806AA304(Struct806AA304_arg0 *arg0, s32 arg1) {
                     D_global_asm_807FC80F = isFlagSet(D_global_asm_807505CA, 0);
                     func_global_asm_806AB4EC(arg0, &D_global_asm_807210EC, 0xA0, 0x91, 1.0f, 2, 4);
                 }
-                if (isFlagSet(0x179, FLAG_TYPE_PERMANENT) != 0) {
+                if (isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT) != 0) {
                     D_global_asm_807FC80F = sp64;
                     func_global_asm_806AB4EC(arg0, &D_global_asm_80721094, 0x3C, 0x5A, 1.0f, 2, 6);
                     D_global_asm_807FC80F = sp65;
@@ -677,8 +677,8 @@ void func_global_asm_806ABE3C(void) {
         }
     }
     D_global_asm_807FC82C = var_s0;
-    D_global_asm_807FC832 = countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT);
-    D_global_asm_807FC82E = countSetFlags(0x225, 40, FLAG_TYPE_PERMANENT);
+    D_global_asm_807FC832 = countSetFlags(PERMFLAG_ITEM_FAIRY_JAPES_POOL, 20, FLAG_TYPE_PERMANENT);
+    D_global_asm_807FC82E = countSetFlags(PERMFLAG_ITEM_MEDAL_JAPES_DK, 40, FLAG_TYPE_PERMANENT);
 
     // TODO: Get rid of this empty if statement, I don't like doing this...
     if (var_s0);
@@ -690,9 +690,9 @@ void func_global_asm_806ABE3C(void) {
         }
     }
     D_global_asm_807FC82A = var_s0;
-    D_global_asm_807FC834 = isFlagSet(0x84, FLAG_TYPE_PERMANENT);
-    D_global_asm_807FC830 = isFlagSet(0x17B, FLAG_TYPE_PERMANENT);
-    D_global_asm_807FC836 = countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT);
+    D_global_asm_807FC834 = isFlagSet(PERMFLAG_ITEM_NINTENDO_COIN, FLAG_TYPE_PERMANENT);
+    D_global_asm_807FC830 = isFlagSet(PERMFLAG_ITEM_RAREWARE_COIN, FLAG_TYPE_PERMANENT);
+    D_global_asm_807FC836 = countSetFlags(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, 40, FLAG_TYPE_PERMANENT);
     D_global_asm_80750530[0] = 1;
     for (i = 1; i < 5; i++) {
         // TODO: Problem here

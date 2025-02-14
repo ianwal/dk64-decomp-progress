@@ -380,12 +380,12 @@ void func_critter_80028120(void) {
     sp40 = current_actor_pointer->animation_state->unk0;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->control_state = 0x78;
-        if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
-            if (!isFlagSet(0x23, FLAG_TYPE_GLOBAL)) {
+        if (isFlagSet(PERMFLAG_PROGRESS_RAREWARE_ROOM_OPEN, FLAG_TYPE_PERMANENT)) {
+            if (!isFlagSet(GLOBALFLAG_UNK_23, FLAG_TYPE_GLOBAL)) {
                 current_actor_pointer->control_state = 1;
             } else {
-                if (!isFlagSet(0x18A, FLAG_TYPE_PERMANENT)) {
-                    if (isFlagSet(0x24, FLAG_TYPE_GLOBAL)) {
+                if (!isFlagSet(PERMFLAG_UNK_18A, FLAG_TYPE_PERMANENT)) {
+                    if (isFlagSet(GLOBALFLAG_UNK_24, FLAG_TYPE_GLOBAL)) {
                         current_actor_pointer->control_state = 0xA;
                     } else {
                         current_actor_pointer->control_state = 0x64;
@@ -412,7 +412,7 @@ void func_critter_80028120(void) {
     current_actor_pointer->unk15E = 0xF;
     switch (current_actor_pointer->control_state) {
         case 0x0:
-            if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_PROGRESS_RAREWARE_ROOM_OPEN, FLAG_TYPE_PERMANENT)) {
                 playActorAnimation(current_actor_pointer, 0x43B);
                 current_actor_pointer->control_state = 1;
             }
@@ -425,7 +425,7 @@ void func_critter_80028120(void) {
                     current_actor_pointer->control_state = 0x65;
                 }
             }
-            if (isFlagSet(0x24, FLAG_TYPE_GLOBAL)) {
+            if (isFlagSet(GLOBALFLAG_UNK_24, FLAG_TYPE_GLOBAL)) {
                 current_actor_pointer->control_state = 0xA;
             }
             break;

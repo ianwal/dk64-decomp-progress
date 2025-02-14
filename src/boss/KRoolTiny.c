@@ -113,18 +113,18 @@ void func_boss_8002F100(void) {
         func_global_asm_80724CA4(2, 1);
         current_actor_pointer->control_state = 0x1E;
         current_actor_pointer->control_state_progress = 0;
-        if (isFlagSet(0x54, 2U) != 0) {
+        if (isFlagSet(TEMPFLAG_K_ROOL_TOE_4_DAMAGED, 2U) != 0) {
             temp_t0->unk14 = 4U;
             current_actor_pointer->control_state = 0x37;
             current_actor_pointer->control_state_progress = 0;
         } else {
-            if (isFlagSet(0x53, 2U) != 0) {
+            if (isFlagSet(TEMPFLAG_K_ROOL_TOE_3_DAMAGED, 2U) != 0) {
                 temp_t0->unk14 = 3;
             } else {
-                if (isFlagSet(0x52, 2U) != 0) {
+                if (isFlagSet(TEMPFLAG_K_ROOL_TOE_2_DAMAGED, 2U) != 0) {
                     temp_t0->unk14 = 2;
                 } else {
-                    if (isFlagSet(0x51, 2U) != 0) {
+                    if (isFlagSet(TEMPFLAG_K_ROOL_TOE_1_DAMAGED, 2U) != 0) {
                         temp_t0->unk14 = 1;
                     }
                 }
@@ -427,19 +427,19 @@ void func_boss_8002FF74(void) {
         func_boss_8002FEC0(sp68, 1U, 0x6E);
         func_boss_8002FEC0(sp68, 2U, 0x6F);
         temp_s1->unk12 = 0U;
-        if (isFlagSet(0x51, FLAG_TYPE_TEMPORARY) != 0) {
+        if (isFlagSet(TEMPFLAG_K_ROOL_TOE_1_DAMAGED, FLAG_TYPE_TEMPORARY) != 0) {
             func_boss_8002FC48(current_actor_pointer, 4U);
             current_actor_pointer->unk15F = 2;
             sp68->toes[0]->unk15F = 1;
             temp_s1->unk12 = 1U;
         }
-        if (isFlagSet(0x52, FLAG_TYPE_TEMPORARY) != 0) {
+        if (isFlagSet(TEMPFLAG_K_ROOL_TOE_2_DAMAGED, FLAG_TYPE_TEMPORARY) != 0) {
             func_boss_8002FC48(sp68->toes[0], 4U);
             sp68->toes[0]->unk15F = 2;
             sp68->toes[1]->unk15F = 1;
             temp_s1->unk12 = 2;
         }
-        if (isFlagSet(0x53, FLAG_TYPE_TEMPORARY) != 0) {
+        if (isFlagSet(TEMPFLAG_K_ROOL_TOE_3_DAMAGED, FLAG_TYPE_TEMPORARY) != 0) {
             func_boss_8002FC48(sp68->toes[1], 4U);
             sp68->toes[1]->unk15F = 2;
             sp68->toes[2]->unk15F = 1;

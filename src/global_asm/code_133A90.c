@@ -132,7 +132,7 @@ void func_global_asm_8072F120(void) {
 
     for (i = 0; i < cc_number_of_players; i++) {
         if (character_change_array[i].does_player_exist) {
-            var_v1 = isFlagSet(0x183, FLAG_TYPE_PERMANENT)
+            var_v1 = isFlagSet(PERMFLAG_ITEM_MOVE_VINES, FLAG_TYPE_PERMANENT)
                 || (D_global_asm_807FBB64 & 0x10000000)
                 || (cc_number_of_players > 1)
                 || gameIsInDKTVMode();

@@ -346,9 +346,9 @@ s32 func_global_asm_806F544C(s32 arg0, s32 actorBehaviourIndex, u8 arg2) {
 
 // Rainbow coin FTT check
 void func_global_asm_806F5498(void) {
-    if (!isFlagSet(0x16C, FLAG_TYPE_PERMANENT)) {
+    if (!isFlagSet(PERMFLAG_CUTSCENE_RAINBOW_COIN_FTCS, FLAG_TYPE_PERMANENT)) {
         playCutscene(NULL, 0x20, 5);
-        setFlag(0x16C, TRUE, FLAG_TYPE_PERMANENT);
+        setFlag(PERMFLAG_CUTSCENE_RAINBOW_COIN_FTCS, TRUE, FLAG_TYPE_PERMANENT);
     }
 }
 
@@ -383,7 +383,7 @@ void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) 
         case 0xE0:
         case 0xE1:
             lvl = getLevelIndex(D_global_asm_8076A0AB, 1);
-            setFlag(func_global_asm_807319D8(0x1D5, lvl, current_character_index[playerIndex]), 1, 0);
+            setFlag(func_global_asm_807319D8(PERMFLAG_ITEM_BLUEPRINT_JAPES_DK, lvl, current_character_index[playerIndex]), 1, 0);
         case 0x74:
         case 0x288:
             changeCollectableCount(sp28, playerIndex, 1);
@@ -402,7 +402,7 @@ void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) 
         case 0x16:
         case 0x1E:
         case 0x1F:
-            setFlag(0x18B, TRUE, FLAG_TYPE_PERMANENT);
+            setFlag(PERMFLAG_PROGRESS_FIRST_AMMO_OR_CB_OR_BUNCH_COLLECTED, TRUE, FLAG_TYPE_PERMANENT);
             changeCollectableCount(sp28, playerIndex, 1);
             break;
         case 0x1C:
@@ -410,14 +410,14 @@ void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) 
         case 0x23:
         case 0x24:
         case 0x27:
-            setFlag(0x18C, TRUE, FLAG_TYPE_PERMANENT);
+            setFlag(PERMFLAG_PROGRESS_FIRST_COIN_COLLECTED, TRUE, FLAG_TYPE_PERMANENT);
         case 0x98:
         case 0xEC:
         case 0x1D2:
             changeCollectableCount(sp28, playerIndex, 1);
             break;
         case 0x56:
-            setFlag(0x173, TRUE, FLAG_TYPE_PERMANENT);
+            setFlag(PERMFLAG_PROGRESS_FIRST_ORANGE_COLLECTED, TRUE, FLAG_TYPE_PERMANENT);
             changeCollectableCount(sp28, playerIndex, 1);
             break;
         case 0xB7:
@@ -833,7 +833,7 @@ u8 func_global_asm_806F6E58(s16 kongIndex) {
         phi_v1 = D_global_asm_807FC950->character_progress[kongIndex].moves >= D_global_asm_80754238[kongIndex];
     }
     // Camera/Shockwave unlocked
-    phi_v1 |= isFlagSet(0x179, FLAG_TYPE_PERMANENT);
+    phi_v1 |= isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT);
     return phi_v1;
 }
 
@@ -864,7 +864,7 @@ void func_global_asm_806F6F28(void) {
         func_global_asm_806F603C();
     }
     // Camera/Shockwave unlocked
-    if (isFlagSet(0x179, FLAG_TYPE_PERMANENT)) {
+    if (isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT)) {
         cameraShockaveUnlocked = TRUE;
     }
     if (func_global_asm_806F6E58(current_character_index[0])) {

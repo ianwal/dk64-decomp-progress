@@ -193,7 +193,7 @@ void func_global_asm_806C4414(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, 
     if (arg4 != D_global_asm_807FDC9C->unk13) {
         return;
     }
-    if ((isFlagSet(arg6, 0U)) || (func_global_asm_806F8AD4(0xBU, 0U) >= arg5)) {
+    if ((isFlagSet(arg6, FLAG_TYPE_PERMANENT)) || (func_global_asm_806F8AD4(0xBU, 0U) >= arg5)) {
         func_global_asm_805FF544();
         return;
     }

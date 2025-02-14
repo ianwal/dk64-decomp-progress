@@ -215,7 +215,7 @@ void func_boss_8002413C(void) {
         var_a3 = 1;
     }
     if (var_a3 == 0) {
-        if (isFlagSet(0x68, FLAG_TYPE_TEMPORARY)) {
+        if (isFlagSet(TEMPFLAG_JAPES_DILLO_INTRO, FLAG_TYPE_TEMPORARY)) {
             var_a3 = 1;
             current_actor_pointer->unk146 = 3;
         }

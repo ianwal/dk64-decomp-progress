@@ -768,12 +768,12 @@ void func_global_asm_806ED508(u16 actorBehaviourIndex) {
     switch (actorBehaviourIndex) {
         case ACTOR_RAMBI_CRATE:
             // Rambi First Time Text (FTT)
-            flagIndex = 0x16D;
+            flagIndex = PERMFLAG_CUTSCENE_RAMBI_FTCS;
             sp24 = 0x23;
             break;
         case 0x81: // TODO: ACTOR_ENGUARDE_CRATE
             // Enguarde First Time Text (FTT)
-            flagIndex = 0x16E;
+            flagIndex = PERMFLAG_CUTSCENE_ENGUARDE_FTCS;
             sp24 = 0x24;
             break;
     }
@@ -808,16 +808,16 @@ void func_global_asm_806ED5C0(Actor *arg0) {
 
     switch (actorBehaviourIndex) {
         case ACTOR_HUNKY_CHUNKY_BARREL:
-            flagIndex = 0x169; // Hunky Chunky First Time Text
+            flagIndex = PERMFLAG_CUTSCENE_HUNKY_CHUNKY_FTCS; // Hunky Chunky First Time Text
             break;
         case ACTOR_MINI_MONKEY_BARREL:
-            flagIndex = 0x168; // Mini Monkey First Time Text
+            flagIndex = PERMFLAG_CUTSCENE_MINI_MONKEY_FTCS; // Mini Monkey First Time Text
             break;
         case ACTOR_STRONG_KONG_BARREL:
-            flagIndex = 0x16B; // Strong Kong First Time Text
+            flagIndex = PERMFLAG_CUTSCENE_STRONG_KONG_FTCS; // Strong Kong First Time Text
             break;
         case ACTOR_ORANGSTAND_SPRINT_BARREL:
-            flagIndex = 0x16A; // Orangstand Sprint First Time Text
+            flagIndex = PERMFLAG_CUTSCENE_ORANGSTAND_SPRINT_FTCS; // Orangstand Sprint First Time Text
             break;
         default:
             return;

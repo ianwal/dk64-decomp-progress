@@ -320,7 +320,7 @@ void func_race_8002A0AC(void) {
         } else if (a178->unk34 == 4) {
             if (a180->unk8 == 0) {
                 a180->unk8 = 1;
-                if (!isFlagSet(0xA5, FLAG_TYPE_PERMANENT)) {
+                if (!isFlagSet(PERMFLAG_ITEM_GB_GALLEON_SEALRACE, FLAG_TYPE_PERMANENT)) {
                     playCutscene(a180->unk0, 0, 1);
                     func_global_asm_80629174();
                 } else {
@@ -333,7 +333,7 @@ void func_race_8002A0AC(void) {
     if (a178->unk34 == 5) {
         switch (a178->unk35) {
             case 0:
-                if (!isFlagSet(0xA5, FLAG_TYPE_PERMANENT)) {
+                if (!isFlagSet(PERMFLAG_ITEM_GB_GALLEON_SEALRACE, FLAG_TYPE_PERMANENT)) {
                     setAction(0x55, NULL, 0);
                     current_actor_pointer->x_rotation = 0;
                     current_actor_pointer->z_rotation = 0;
@@ -361,7 +361,7 @@ void func_race_8002A0AC(void) {
                     func_global_asm_80629174();
                     if (!sp2C) {
                         func_global_asm_8063DA40(0x3B, 0xA);
-                        setFlag(0xA5, TRUE, FLAG_TYPE_PERMANENT);
+                        setFlag(PERMFLAG_ITEM_GB_GALLEON_SEALRACE, TRUE, FLAG_TYPE_PERMANENT);
                     } else {
                         func_global_asm_806ACC00(1);
                         a178->unk35++;

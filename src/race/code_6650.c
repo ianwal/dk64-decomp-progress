@@ -467,7 +467,7 @@ s32 func_race_8002B6C8(Struct8002E8EC_arg1 *arg0, Struct8002E8EC_arg1 *arg1) {
 void func_race_8002B6F4(RaceStruct7 *arg0, s32 arg1) {
     if (arg0->unk35 == 0) {
         // Castle: Tiny GB: Car Race
-        if (!isFlagSet(0x145, FLAG_TYPE_PERMANENT)) {
+        if (!isFlagSet(PERMFLAG_ITEM_GB_CASTLE_CAR_RACE, FLAG_TYPE_PERMANENT)) {
             playCutscene(current_actor_pointer, 1, 1);
             func_global_asm_80629174();
         } else {
@@ -483,7 +483,7 @@ void func_race_8002B76C(RaceAdditionalActorData *arg0, void *arg1) {
 
     switch (arg0->unk35) {
         case 0:
-            if (!isFlagSet(0x145, FLAG_TYPE_PERMANENT)) {
+            if (!isFlagSet(PERMFLAG_ITEM_GB_CASTLE_CAR_RACE, FLAG_TYPE_PERMANENT)) {
                 setAction(0x55, NULL, 0);
                 current_actor_pointer->x_rotation = 0;
                 current_actor_pointer->z_rotation = 0;
@@ -514,7 +514,7 @@ void func_race_8002B76C(RaceAdditionalActorData *arg0, void *arg1) {
                 func_global_asm_80629174();
                 if (temp_s0 == 0) {
                     func_global_asm_8063DA40(1, 0xA);
-                    setFlag(0x145, TRUE, FLAG_TYPE_PERMANENT);
+                    setFlag(PERMFLAG_ITEM_GB_CASTLE_CAR_RACE, TRUE, FLAG_TYPE_PERMANENT);
                 } else {
                     func_global_asm_806ACC00(1);
                     arg0->unk35++;
@@ -549,10 +549,10 @@ void func_race_8002B964(void) {
         for (i = 0; i < 3; i++) {
             current_actor_pointer->animation_state->scale[i] *= 0.3;
         }
-        if (!isFlagSet(0x38, FLAG_TYPE_TEMPORARY) && !isFlagSet(0x145, FLAG_TYPE_PERMANENT)) {
+        if (!isFlagSet(TEMPFLAG_CASTLE_CAR_INTRO, FLAG_TYPE_TEMPORARY) && !isFlagSet(PERMFLAG_ITEM_GB_CASTLE_CAR_RACE, FLAG_TYPE_PERMANENT)) {
             playCutscene(current_actor_pointer, 0, 1);
             func_global_asm_80629174();
-            setFlag(0x38, TRUE, FLAG_TYPE_TEMPORARY);
+            setFlag(TEMPFLAG_CASTLE_CAR_INTRO, TRUE, FLAG_TYPE_TEMPORARY);
         } else {
             a178->unk35 = 3;
         }

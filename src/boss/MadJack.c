@@ -365,7 +365,7 @@ void func_boss_80033AF0(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         current_actor_pointer->unkCC = 1;
         current_actor_pointer->noclip_byte = 0x24;
-        if (isFlagSet(0x6A, 2U) != 0) {
+        if (isFlagSet(TEMPFLAG_FACTORY_JACK_INTRO, 2U) != 0) {
             playActorAnimation(current_actor_pointer, 0x226);
             playCutscene(current_actor_pointer, 0x14, 1);
             pos_data->jack.current = 9U;

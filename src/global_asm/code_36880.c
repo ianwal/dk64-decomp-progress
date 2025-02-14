@@ -233,22 +233,22 @@ void func_global_asm_806323C0(Chunk14 *arg0) {
                 case 0xA:
                 case 0x24:
                 case 0x208:
-                    flagIndex = 6;
+                    flagIndex = PERMFLAG_KONG_DIDDY;
                     break;
                 case 0x1F:
                 case 0x27:
                 case 0x206:
-                    flagIndex = 0x75;
+                    flagIndex = PERMFLAG_KONG_CHUNKY;
                     break;
                 case 0x16:
                 case 0x1C:
                 case 0x207:
-                    flagIndex = 0x42;
+                    flagIndex = PERMFLAG_KONG_TINY;
                     break;
                 case 0x1E:
                 case 0x23:
                 case 0x205:
-                    flagIndex = 0x46;
+                    flagIndex = PERMFLAG_KONG_LANKY;
                     break;
                 default:
                     flagIndex = -1;

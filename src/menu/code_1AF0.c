@@ -204,11 +204,11 @@ void func_menu_80025FB4(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
 
     found_purchase = FALSE;
     latest_level_entered = 6;
-    if (!isFlagSet(0x1CB, FLAG_TYPE_PERMANENT)) {
+    if (!isFlagSet(PERMFLAG_LEVEL_ENTERED_CASTLE, FLAG_TYPE_PERMANENT)) {
 loop_1:
         latest_level_entered--;
         if (latest_level_entered >= 0) {
-            if (!isFlagSet(latest_level_entered + 0x1C5, FLAG_TYPE_PERMANENT)) {
+            if (!isFlagSet(latest_level_entered + PERMFLAG_LEVEL_ENTERED_JAPES, FLAG_TYPE_PERMANENT)) {
                 goto loop_1;
             }
         }
@@ -368,22 +368,22 @@ void func_menu_800262A8(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
                 sp42 = 8;
                 sp44 = &D_menu_800334EC;
                 if (arg0->unkA == 0) {
-                    if (isFlagSet(0x61, 2)) {
-                        setFlag(0x61, FALSE, FLAG_TYPE_TEMPORARY);
+                    if (isFlagSet(TEMPFLAG_JETPAC_IN_STORY_MODE, FLAG_TYPE_TEMPORARY)) {
+                        setFlag(TEMPFLAG_JETPAC_IN_STORY_MODE, FALSE, FLAG_TYPE_TEMPORARY);
                         func_menu_80026290(arg0, &sp3C);
-                        if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT) != 0) {
+                        if (isFlagSet(PERMFLAG_ITEM_RAREWARE_COIN, FLAG_TYPE_PERMANENT) != 0) {
                             var_v1 = 0x20;
-                        } else if (isFlagSet(0x62, FLAG_TYPE_TEMPORARY)) {
-                            setFlag(0x62, FALSE, FLAG_TYPE_TEMPORARY);
+                        } else if (isFlagSet(TEMPFLAG_RAREWARE_COIN_SPAWN_PENDING, FLAG_TYPE_TEMPORARY)) {
+                            setFlag(TEMPFLAG_RAREWARE_COIN_SPAWN_PENDING, FALSE, FLAG_TYPE_TEMPORARY);
                             var_v1 = 0x22;
                         } else {
                             var_v1 = 0x21;
                         }
                     } else {
-                        sp28 = countSetFlags(0x225, 0x28, FLAG_TYPE_PERMANENT);
+                        sp28 = countSetFlags(PERMFLAG_ITEM_MEDAL_JAPES_DK, 0x28, FLAG_TYPE_PERMANENT);
                         if (sp28 >= 0xF) {
                             func_menu_80026290(arg0, &sp3C);
-                            if (isFlagSet(0x17B, FLAG_TYPE_PERMANENT)) {
+                            if (isFlagSet(PERMFLAG_ITEM_RAREWARE_COIN, FLAG_TYPE_PERMANENT)) {
                                 var_v1 = 0x20;
                             } else {
                                 var_v1 = 2;
@@ -446,8 +446,7 @@ s32 func_menu_800266F0(MenuStruct1 *arg0, CharacterProgress *arg1, s32 flagIndex
     func_menu_80025FB4(arg0, arg1, temp_a2);
     arg0->unkD = 0;
     arg0->unkE = 0;
-    // Global: Jetpac in Story Mode
-    if (!isFlagSet(0x61, FLAG_TYPE_TEMPORARY)) {
+    if (!isFlagSet(TEMPFLAG_JETPAC_IN_STORY_MODE, FLAG_TYPE_TEMPORARY)) {
         if (temp_a2) {
             func_global_asm_806F397C(player_pointer, current_actor_pointer, 0, 0x1B);
             playCutscene(NULL, 0, 1);
@@ -518,7 +517,7 @@ void func_menu_80026874(MenuStruct1 *arg0, CharacterProgress *arg1) {
                 arg0->unkE = 0;
             } else {
                 playCutscene(NULL, 0xA, 1);
-                setFlag(0x61, TRUE, FLAG_TYPE_TEMPORARY);
+                setFlag(TEMPFLAG_JETPAC_IN_STORY_MODE, TRUE, FLAG_TYPE_TEMPORARY);
                 arg0->unkE++;
             }
             break;
@@ -699,16 +698,16 @@ void func_menu_800270E0(void) {
         a178 = current_actor_pointer->unk178;
         characterProgress = &D_global_asm_807FC950->character_progress[current_character_index[0]];
         if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-            if (isFlagSet(0x180, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_PROGRESS_GIVEN_FIRST_SLAM, FLAG_TYPE_PERMANENT)) {
                 current_actor_pointer->control_state_progress = 0;
             } else {
                 current_actor_pointer->control_state_progress = 0xFF;
             }
         }
         if (current_actor_pointer->control_state_progress != 0xFF) {
-            sp1C = 0x17F;
+            sp1C = PERMFLAG_PROGRESS_TRAINING_SPAWNED;
             if (getLevelIndex(D_global_asm_8076A0AB, 0) != 7) {
-                sp1C = 0x177;
+                sp1C = PERMFLAG_CUTSCENE_CRANKY_FTCS;
             }
             if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
                 var_a3 = 0x26E;
@@ -721,15 +720,15 @@ void func_menu_800270E0(void) {
         } else {
             if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
                 a178->unkC = 7;
-                if (!isFlagSet(0x17F, FLAG_TYPE_PERMANENT)) {
+                if (!isFlagSet(PERMFLAG_PROGRESS_TRAINING_SPAWNED, FLAG_TYPE_PERMANENT)) {
                     playActorAnimation(current_actor_pointer, 0x26E);
                     playCutscene(NULL, 5, 1);
                     current_actor_pointer->control_state = 0;
-                    setFlag(0x64, TRUE, FLAG_TYPE_TEMPORARY);
+                    setFlag(TEMPFLAG_TRAINING_SPAWN_PENDING, TRUE, FLAG_TYPE_TEMPORARY);
                 } else {
                     count = 0;
                     for (i = 0; i != 4; i++) {
-                        count += isFlagSet(i + 0x182, FLAG_TYPE_PERMANENT) != 0;
+                        count += isFlagSet(i + PERMFLAG_ITEM_MOVE_DIVING, FLAG_TYPE_PERMANENT) != 0;
                     }
                     if (count != 4) {
                         cutsceneIndex = 0;
@@ -741,7 +740,7 @@ void func_menu_800270E0(void) {
                         a178->unk4 = 0;
                         a178->unk11 = 1;
                         func_menu_80025E04(a178, characterProgress);
-                        setFlag(0x180, TRUE, FLAG_TYPE_PERMANENT);
+                        setFlag(PERMFLAG_PROGRESS_GIVEN_FIRST_SLAM, TRUE, FLAG_TYPE_PERMANENT);
                     }
                     func_global_asm_806F397C(player_pointer, current_actor_pointer, 0, 0x1B);
                     playCutscene(NULL, cutsceneIndex, 1);

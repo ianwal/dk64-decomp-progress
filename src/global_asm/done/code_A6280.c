@@ -117,7 +117,7 @@ void func_global_asm_806A1AC4(void) {
         func_global_asm_807248B0(current_actor_pointer, 1.2f);
         current_actor_pointer->object_properties_bitfield |= 0x400;
         current_actor_pointer->draw_distance = 1000;
-        if (isFlagSet(0xFB, FLAG_TYPE_PERMANENT)) {
+        if (isFlagSet(PERMFLAG_PROGRESS_BEANSTALK_GROWN, FLAG_TYPE_PERMANENT)) {
             func_global_asm_80613C48(current_actor_pointer, 0x597, 0, 0);
             func_global_asm_807289B0(0, 0);
             current_actor_pointer->control_state = 3;
@@ -134,12 +134,12 @@ void func_global_asm_806A1AC4(void) {
                 func_global_asm_8070DA74(current_actor_pointer);
                 loadText(current_actor_pointer, 0x1F, 1);
                 playCutscene(current_actor_pointer, 0x12, 1);
-                setFlag(0xFB, TRUE, FLAG_TYPE_PERMANENT);
+                setFlag(PERMFLAG_PROGRESS_BEANSTALK_GROWN, TRUE, FLAG_TYPE_PERMANENT);
                 current_actor_pointer->control_state = 1;
-            } else if (!isFlagSet(0xFB, FLAG_TYPE_PERMANENT) && !isFlagSet(0x21, FLAG_TYPE_TEMPORARY)) {
+            } else if (!isFlagSet(PERMFLAG_PROGRESS_BEANSTALK_GROWN, FLAG_TYPE_PERMANENT) && !isFlagSet(TEMPFLAG_FTT_NO_BEAN, FLAG_TYPE_TEMPORARY)) {
                 if ((((current_actor_pointer->x_position - player_pointer->x_position) * (current_actor_pointer->x_position - player_pointer->x_position)) + ((current_actor_pointer->z_position - player_pointer->z_position) * (current_actor_pointer->z_position - player_pointer->z_position))) < 19600.0f) {
                     loadText(player_pointer, 0x1F, 0);
-                    setFlag(0x21, TRUE, FLAG_TYPE_TEMPORARY);
+                    setFlag(TEMPFLAG_FTT_NO_BEAN, TRUE, FLAG_TYPE_TEMPORARY);
                 }
             }
             break;

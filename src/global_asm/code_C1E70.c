@@ -26,7 +26,7 @@ void func_global_asm_806BD170(void) {
     keysCollected = 0;
     while (keyIndex < 8) {
         // Key[keyIndex] Turned Flag
-        if (!isFlagSet(0x1BC + keyIndex, FLAG_TYPE_PERMANENT)) {
+        if (!isFlagSet(PERMFLAG_PROGRESS_KEY_1_TURNED + keyIndex, FLAG_TYPE_PERMANENT)) {
             PadlockAAD *temp_v0;
             s16 temp2 = 260 + (keyIndex * 512);
             // Spawn Padlock
@@ -62,7 +62,7 @@ void func_global_asm_806BD170(void) {
     }
     D_global_asm_807506A4 = 0;
     // Isles: Japes Boulder Smashed
-    if (!isFlagSet(0x1BB, FLAG_TYPE_PERMANENT)) {
+    if (!isFlagSet(PERMFLAG_PROGRESS_JAPES_LOBBY_OPEN, FLAG_TYPE_PERMANENT)) {
         sp50 = -1;
     }
     if (!D_global_asm_80750660) {
@@ -126,7 +126,7 @@ void func_global_asm_806BD3E4(void) {
         if (D_global_asm_80750660 != 0) {
             D_global_asm_80750660 = 0;
         }
-        if (isFlagSet(0x1BB, FLAG_TYPE_PERMANENT) == 0) {
+        if (isFlagSet(PERMFLAG_PROGRESS_JAPES_LOBBY_OPEN, FLAG_TYPE_PERMANENT) == 0) {
             current_actor_pointer->control_state = 1;
         }
     }
@@ -171,8 +171,8 @@ void func_global_asm_806BD3E4(void) {
         if (var_t0 == D_global_asm_807506A8[D_global_asm_807506B4]) {
             if (D_global_asm_807506A8[++D_global_asm_807506B4] == -1) {
                 playSound(0x1DA, 0x7FFF, 63.0f, 1.0f, 5, 0);
-                setFlag(0x28, TRUE, FLAG_TYPE_GLOBAL);
-                setFlag(0x26, TRUE, FLAG_TYPE_GLOBAL);
+                setFlag(GLOBALFLAG_DEBUG_KLUMSY_2, TRUE, FLAG_TYPE_GLOBAL);
+                setFlag(GLOBALFLAG_DEBUG_KLUMSY_1, TRUE, FLAG_TYPE_GLOBAL);
                 D_global_asm_807506B4 = -1;
             }
         } else {
@@ -304,7 +304,7 @@ void func_global_asm_806BD7B0(void) {
                 temp_v0_2 = ((A178_806BD7B0*)aaD->unk4->unk178)->unk0;
                 temp_v0_2->y_position += 5.0;
                 if (aaD->unk0 == 0x10E) {
-                    setFlag(0x315, TRUE, FLAG_TYPE_PERMANENT);
+                    setFlag(PERMFLAG_PROGRESS_K_LUMSY_FREE, TRUE, FLAG_TYPE_PERMANENT);
                     func_global_asm_80712524(D_global_asm_80750664[7].unk0, D_global_asm_80750664[7].unk2);
                 }
             }
@@ -318,7 +318,7 @@ void func_global_asm_806BD7B0(void) {
             aaD->unk0++;
             if (sp38 == aaD->unk0) {
                 if ((aaD->unk2 == 2) || (aaD->unk2 == 7)) {
-                    setFlag(aaD->unk2 + 0x1BC, TRUE, 0);
+                    setFlag(aaD->unk2 + PERMFLAG_PROGRESS_KEY_1_TURNED, TRUE, 0);
                     if (areAllKeysTurnedIn() == 0) {
                         func_global_asm_8061CB08();
                         func_global_asm_80602B60(0x7D, 1);
@@ -339,7 +339,7 @@ void func_global_asm_806BD7B0(void) {
 s32 areAllKeysTurnedIn(void) {
     s32 key;
     for (key = 0; key < 8; key++) {
-        if (!isFlagSet(key + 0x1BC, FLAG_TYPE_PERMANENT)) {
+        if (!isFlagSet(key + PERMFLAG_PROGRESS_KEY_1_TURNED, FLAG_TYPE_PERMANENT)) {
             return FALSE;
         }
     }

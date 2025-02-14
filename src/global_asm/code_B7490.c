@@ -977,7 +977,7 @@ void func_global_asm_806B54BC(void) {
                 current_actor_pointer->noclip_byte = 1;
                 if (current_map == MAP_CASTLE_TRASH_CAN) {
                     enemies_killed++;
-                    if ((enemies_killed == 5) && (isFlagSet(0x15F, FLAG_TYPE_PERMANENT) == FALSE)) {
+                    if ((enemies_killed == 5) && (isFlagSet(PERMFLAG_ITEM_GB_CASTLE_TRASH_CAN, FLAG_TYPE_PERMANENT) == FALSE)) {
                         func_global_asm_8063DA40(4, 0xA);
                     }
                 }

@@ -235,12 +235,12 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
                     menu_selection_available = 1;
                     switch (MaaD->unk17) {
                         case 2:
-                            if (!isFlagSet(0x1C, FLAG_TYPE_GLOBAL)) {
+                            if (!isFlagSet(GLOBALFLAG_MULTIPLAYER_MENU, FLAG_TYPE_GLOBAL)) {
                                 menu_selection_available = -1;
                             }
                             break;
                         case 3:
-                            if (!isFlagSet(0, FLAG_TYPE_GLOBAL)) {
+                            if (!isFlagSet(GLOBALFLAG_MYSTERY_MENU, FLAG_TYPE_GLOBAL)) {
                                 menu_selection_available = -1;
                             }
                             break;
@@ -447,12 +447,12 @@ void func_menu_80028834(Actor *arg0, s32 arg1) {
     func_menu_80030894(MaaD, &D_global_asm_8072052C, 0,   0,   0.6f, 2, 6);
     func_menu_80030894(MaaD, &D_global_asm_807211D0, 1,   0,   0.8f, 2, 6);
     // Is the mystery menu not unlocked?
-    if (!isFlagSet(0, FLAG_TYPE_GLOBAL)) {
+    if (!isFlagSet(GLOBALFLAG_MYSTERY_MENU, FLAG_TYPE_GLOBAL)) {
         D_menu_80033F38 = 0;
     }
     func_menu_80030894(MaaD, &D_global_asm_80721094, 2, 0, 0.8f, 2, 7);
     // Is the multiplayer menu not unlocked?
-    if (!isFlagSet(0x1C, FLAG_TYPE_GLOBAL)) {
+    if (!isFlagSet(GLOBALFLAG_MULTIPLAYER_MENU, FLAG_TYPE_GLOBAL)) {
         D_menu_80033F38 = 0;
     }
     func_menu_80030894(MaaD, &D_global_asm_807210EC, 3, 0, 0.6f, 2, 6);
@@ -965,7 +965,7 @@ void func_menu_8002C0C8(Actor *arg0, s32 arg1) {
     temp_s6 = arg0->additional_actor_data;
     func_menu_8002F8EC();
     D_menu_80033FAF = 1;
-    globalFlagIndex = 0x1D;
+    globalFlagIndex = GLOBALFLAG_MULTIPLAYER_DIDDY;
     for (i = 1; i < 5; i++) {
         if (isFlagSet(globalFlagIndex, FLAG_TYPE_GLOBAL)) {
             D_menu_80033FAF |= 1 << i;
@@ -2626,8 +2626,8 @@ s32 func_menu_80032304(void) {
         completionPercentage -= 0.4;
     }
     if (completionPercentage == 100.0) {
-        if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT)) {
-            if (isFlagSet(0x12D, FLAG_TYPE_PERMANENT)) {
+        if (isFlagSet(PERMFLAG_ITEM_ISLES_RAREWARE_GB, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_ITEM_ISLES_RAREWARE_GB, FLAG_TYPE_PERMANENT)) {
                 completionPercentage += 1.0;
             }
         }

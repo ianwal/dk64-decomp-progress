@@ -110,7 +110,7 @@ s32 func_global_asm_8068ABE0(s16 arg0) {
         }
     }
     if (found) {
-        if (!isFlagSet(0x1C5 + i, FLAG_TYPE_PERMANENT)) {
+        if (!isFlagSet(PERMFLAG_LEVEL_ENTERED_JAPES + i, FLAG_TYPE_PERMANENT)) {
             exit = 0;
             switch (arg0) {
                 case 0x7:

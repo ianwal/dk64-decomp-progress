@@ -995,7 +995,7 @@ u8 playerCanThrowOrange(void) {
         && func_global_asm_806F8AD4(4, cc_player_index)
         && current_character_index[cc_player_index] < 6
         && func_global_asm_8067ACDC(current_actor_pointer, 4, 0) < D_global_asm_80753E64[D_global_asm_807FD584]
-        && (isFlagSet(0x184, FLAG_TYPE_PERMANENT) // Is orange barrel completed?
+        && (isFlagSet(PERMFLAG_ITEM_MOVE_ORANGETHROWING, FLAG_TYPE_PERMANENT) // Is orange barrel completed?
             || (D_global_asm_807FBB64 & 0x10000000)
             || (cc_number_of_players > 1)
             || gameIsInDKTVMode()
@@ -1368,7 +1368,7 @@ void func_global_asm_806E41EC(void) {
         extra_player_info_pointer->unk5C = D_global_asm_80767CC0;
     }
     // Barrel Barrel Complete Flag Check
-    if ((D_global_asm_807FBB8C != 0) && (isFlagSet(0x185, FLAG_TYPE_PERMANENT) || ((D_global_asm_807FBB64 * 8) < 0) || (cc_number_of_players >= 2) || gameIsInMysteryMenuMinigameMode())) {
+    if ((D_global_asm_807FBB8C != 0) && (isFlagSet(PERMFLAG_ITEM_MOVE_BARRELTHROWING, FLAG_TYPE_PERMANENT) || ((D_global_asm_807FBB64 * 8) < 0) || (cc_number_of_players >= 2) || gameIsInMysteryMenuMinigameMode())) {
         setAction(3, NULL, cc_player_index);
         return;
     }

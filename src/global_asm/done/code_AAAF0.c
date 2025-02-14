@@ -645,16 +645,16 @@ void func_global_asm_806A7600(void *arg0) {
                 permanentFlagIndex = -1;
                 break;
             case ACTOR_BALLOON_DIDDY:
-                permanentFlagIndex = 6;
+                permanentFlagIndex = PERMFLAG_KONG_DIDDY;
                 break;
             case ACTOR_BALLOON_CHUNKY:
-                permanentFlagIndex = 0x75;
+                permanentFlagIndex = PERMFLAG_KONG_CHUNKY;
                 break;
             case ACTOR_BALLOON_TINY:
-                permanentFlagIndex = 0x42;
+                permanentFlagIndex = PERMFLAG_KONG_TINY;
                 break;
             case ACTOR_BALLOON_LANKY:
-                permanentFlagIndex = 0x46;
+                permanentFlagIndex = PERMFLAG_KONG_LANKY;
                 break;
         }
         if ((permanentFlagIndex == -1) || (isFlagSet(permanentFlagIndex, FLAG_TYPE_PERMANENT) != FALSE)) {

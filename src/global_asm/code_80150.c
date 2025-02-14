@@ -847,38 +847,38 @@ void func_global_asm_80681BD8(void) {
 
     aaD = current_actor_pointer->additional_actor_data;
     func_global_asm_806809F0();
-    if (!isFlagSet(0x17F, FLAG_TYPE_PERMANENT)) {
+    if (!isFlagSet(PERMFLAG_PROGRESS_TRAINING_SPAWNED, FLAG_TYPE_PERMANENT)) {
         current_actor_pointer->control_state = 0x14;
         current_actor_pointer->noclip_byte = 1;
         current_actor_pointer->object_properties_bitfield &= 0xFFFF7FFF;
         current_actor_pointer->shadow_opacity = 0;
     } else {
-        if (!isFlagSet(0x187, FLAG_TYPE_PERMANENT)) {
+        if (!isFlagSet(PERMFLAG_PROGRESS_ALL_TRAINING_COMPLETE, FLAG_TYPE_PERMANENT)) {
             if (current_actor_pointer->control_state == 0xB) {
                 var_s1 = 0;
                 i = 0;
                 do {
-                    var_s1 += isFlagSet(i + 0x182, FLAG_TYPE_PERMANENT) != FALSE;
+                    var_s1 += isFlagSet(i + PERMFLAG_ITEM_MOVE_DIVING, FLAG_TYPE_PERMANENT) != FALSE;
                     i++;
                 } while (i < 4);
                 if (var_s1 == 4) {
                     playCutscene(player_pointer, 3, 1);
-                    setFlag(0x187, TRUE, FLAG_TYPE_PERMANENT);
+                    setFlag(PERMFLAG_PROGRESS_ALL_TRAINING_COMPLETE, TRUE, FLAG_TYPE_PERMANENT);
                 }
             }
         }
         switch (aaD->unk6) {
             case 0xB1:
-                sp28 = 0x182;
+                sp28 = PERMFLAG_ITEM_MOVE_DIVING;
                 break;
             case 0xB6:
-                sp28 = 0x183;
+                sp28 = PERMFLAG_ITEM_MOVE_VINES;
                 break;
             case 0xB4:
-                sp28 = 0x184;
+                sp28 = PERMFLAG_ITEM_MOVE_ORANGETHROWING;
                 break;
             case 0xB5:
-                sp28 = 0x185;
+                sp28 = PERMFLAG_ITEM_MOVE_BARRELTHROWING;
                 break;
         }
         if (isFlagSet(sp28, FLAG_TYPE_PERMANENT) != FALSE) {

@@ -413,7 +413,7 @@ void func_global_asm_80712524(Maps newMap, s32 cutsceneIndex) {
 // getHelmTimerStartTime()
 s32 func_global_asm_80712548(void) {
     // Count blueprints turned + 10
-    return countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT) + 10;
+    return countSetFlags(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, 40, FLAG_TYPE_PERMANENT) + 10;
 }
 
 extern Struct80755340 D_global_asm_80755340;
@@ -487,7 +487,7 @@ s32 func_global_asm_80712798(void) {
 void func_global_asm_807127B4(void) {
     func_global_asm_805FFFC8();
     // Dummy flag to give the game over cutscene in the mystery menu
-    setFlag(0x314, TRUE, FLAG_TYPE_PERMANENT);
+    setFlag(PERMFLAG_PROGRESS_HAS_QUIT_GAME, TRUE, FLAG_TYPE_PERMANENT);
     func_global_asm_807124B8(MAP_HELM_LEVEL_INTROS_GAME_OVER, 0x17, GAME_MODE_QUIT_GAME); // initMapFade()
 }
 
@@ -515,7 +515,7 @@ void func_global_asm_80712830(Actor *arg0, s32 exit) {
         arg0->control_state_progress++;
         if (D_global_asm_807FBB68 & 2) {
             // K. Rool: Reset Tiny Phase Progress Flags and Round Counter
-            setFlag(0x5C, TRUE, FLAG_TYPE_TEMPORARY);
+            setFlag(TEMPFLAG_RESET_TINY_PHASE, TRUE, FLAG_TYPE_TEMPORARY);
             map = MAP_DK_ISLES_OVERWORLD;
             exit = 0xC;
         } else {

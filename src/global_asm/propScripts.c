@@ -1981,7 +1981,7 @@ void func_global_asm_8064AC28(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     if (arg0->unk0 == NULL) {
         temp_v0 = arg0->unk0 = malloc(sizeof(InstanceData8064AC28));
         temp_v0->unk4E = 0;
-        if (isFlagSet(0x146, FLAG_TYPE_PERMANENT)) {
+        if (isFlagSet(PERMFLAG_ITEM_GB_CASTLE_FACE_PUZZLE, FLAG_TYPE_PERMANENT)) {
             for (i = 0; i < 9; i++) { \
                 temp_v0->tiles[i].position = 3;
             }
@@ -2022,7 +2022,7 @@ void func_global_asm_8064AC28(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
             puzzle_complete = FALSE;
         }
     }
-    if (isFlagSet(0x146, FLAG_TYPE_PERMANENT)) {
+    if (isFlagSet(PERMFLAG_ITEM_GB_CASTLE_FACE_PUZZLE, FLAG_TYPE_PERMANENT)) {
         temp_v0->unk4F = 0x14U;
     }
     if (temp_v0->unk4F == 0) {
@@ -3289,7 +3289,7 @@ void func_global_asm_8064EA48(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
         func_global_asm_806F8BC4(1, 0, 0);
         changeCollectableCount(1, 0, -2);
         // DK Arcade Level 3?
-        setFlag(0x83, TRUE, FLAG_TYPE_PERMANENT);
+        setFlag(PERMFLAG_PROGRESS_ARCADE_2_COINS_PAID, TRUE, FLAG_TYPE_PERMANENT);
     }
 }
 
@@ -3303,22 +3303,20 @@ void func_global_asm_8064EAB4(GlobalASMStruct7 *arg0, s32 arg1, s32 arg2, s32 ar
 
     // Fungi Mushroom Gun Switches Pressed
     // Odd that they didn't use countSetFlags() for this
-    numberOfGunSwitchesPressed = isFlagSet(0xE6, FLAG_TYPE_PERMANENT);
-    numberOfGunSwitchesPressed += isFlagSet(0xE8, FLAG_TYPE_PERMANENT);
-    numberOfGunSwitchesPressed += isFlagSet(0xE9, FLAG_TYPE_PERMANENT);
-    numberOfGunSwitchesPressed += isFlagSet(0xE7, FLAG_TYPE_PERMANENT);
-    numberOfGunSwitchesPressed += isFlagSet(0xEA, FLAG_TYPE_PERMANENT);
+    numberOfGunSwitchesPressed = isFlagSet(PERMFLAG_PROGRESS_CANNON_COCONUT_SWITCH, FLAG_TYPE_PERMANENT);
+    numberOfGunSwitchesPressed += isFlagSet(PERMFLAG_PROGRESS_CANNON_FEATHER_SWITCH, FLAG_TYPE_PERMANENT);
+    numberOfGunSwitchesPressed += isFlagSet(PERMFLAG_PROGRESS_CANNON_PEANUT_SWITCH, FLAG_TYPE_PERMANENT);
+    numberOfGunSwitchesPressed += isFlagSet(PERMFLAG_PROGRESS_CANNON_GRAPE_SWITCH, FLAG_TYPE_PERMANENT);
+    numberOfGunSwitchesPressed += isFlagSet(PERMFLAG_PROGRESS_CANNON_PINEAPPLE_SWITCH, FLAG_TYPE_PERMANENT);
 
     arg0->next_state = numberOfGunSwitchesPressed;
 }
 
 s32 func_global_asm_8064EB3C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    // DK Arcade GB Collected
-    if (!isFlagSet(0x82, FLAG_TYPE_PERMANENT)) {
+    if (!isFlagSet(PERMFLAG_ITEM_GB_FACTORY_ARCADE, FLAG_TYPE_PERMANENT)) {
         return TRUE;
     }
-    // DK Arcade Level 3?
-    if (isFlagSet(0x83, FLAG_TYPE_PERMANENT)) {
+    if (isFlagSet(PERMFLAG_PROGRESS_ARCADE_2_COINS_PAID, FLAG_TYPE_PERMANENT)) {
         return TRUE;
     }
     return FALSE;
@@ -3509,9 +3507,9 @@ void func_global_asm_8064F308(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     s16 flagIndex;
 
     if (D_global_asm_807FC8D0 == 5) {
-        flagIndex = 0x1C1; // Key 6 turned
+        flagIndex = PERMFLAG_PROGRESS_KEY_6_TURNED; // Key 6 turned
     } else {
-        flagIndex = 0x1C2; // Key 7 turned
+        flagIndex = PERMFLAG_PROGRESS_KEY_7_TURNED; // Key 7 turned
     }
     setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
 }
@@ -3523,5 +3521,5 @@ u8 func_global_asm_8064F358(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
 u8 func_global_asm_8064F404(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     // Has the player collected 4 or more Battle Crowns?
-    return countSetFlags(0x261, 10, FLAG_TYPE_PERMANENT) >= 4;
+    return countSetFlags(PERMFLAG_ITEM_CROWN_JAPES, 10, FLAG_TYPE_PERMANENT) >= 4;
 }

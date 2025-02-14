@@ -186,7 +186,7 @@ void func_global_asm_806E7658(void) {
 }
 
 u8 playerCanDive(void) {
-    return isFlagSet(0x182, FLAG_TYPE_PERMANENT) // Check whether dive barrel is complete
+    return isFlagSet(PERMFLAG_ITEM_MOVE_DIVING, FLAG_TYPE_PERMANENT)
         || (D_global_asm_807FBB64 & 0x10000000)
         || (cc_number_of_players > 1)
         || gameIsInMysteryMenuMinigameMode();
@@ -866,7 +866,7 @@ u8 func_global_asm_806E9580(void) {
 
 void func_global_asm_806E9804(s16 arg0) {
     // Do we have the camera and are we pressing C-Down
-    if (isFlagSet(0x179, FLAG_TYPE_PERMANENT) && (D_global_asm_807FD610[cc_player_index].unk2C & D_CBUTTONS)) {
+    if (isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT) && (D_global_asm_807FD610[cc_player_index].unk2C & D_CBUTTONS)) {
         func_global_asm_806E9D1C(arg0, 0xB, 0);
     }
 }

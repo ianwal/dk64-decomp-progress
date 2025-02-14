@@ -461,7 +461,7 @@ void func_global_asm_806F8DC4(u8 *arg0, s32 arg1, s32 arg2) {
 
 s32 func_global_asm_806F8EB4(void) {
     // Count how many fairies have been photographed
-    return countSetFlags(0x24D, 20, FLAG_TYPE_PERMANENT);
+    return countSetFlags(PERMFLAG_ITEM_FAIRY_JAPES_POOL, 20, FLAG_TYPE_PERMANENT);
 }
 
 u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
@@ -518,7 +518,7 @@ u16 func_global_asm_806F8EDC(s32 HUDItemIndex, s32 playerIndex) {
             }
             break;
         case 6:
-            if (isFlagSet(0x179, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_ITEM_MOVE_SHOCKWAVE_CAMERA, FLAG_TYPE_PERMANENT)) {
                 var_a0 = (func_global_asm_806F8EB4() + 10);
             } else {
                 var_a0 = 0;
@@ -566,7 +566,7 @@ void changeCollectableCount(s32 HUDItemIndex, u8 playerIndex, s16 amount) {
                     amountBefore = sp48->coloured_bananas[levelIndex] + sp48->coloured_bananas_fed_to_tns[levelIndex];
                     if (amountBefore >= 75 && ((amountBefore - amount) < 75)) {
                         // Award banana medal
-                        setFlag(func_global_asm_807319D8(0x225, levelIndex, current_character_index[playerIndex]), TRUE, FLAG_TYPE_PERMANENT);
+                        setFlag(func_global_asm_807319D8(PERMFLAG_ITEM_MEDAL_JAPES_DK, levelIndex, current_character_index[playerIndex]), TRUE, FLAG_TYPE_PERMANENT);
                         func_global_asm_80687C48();
                     }
                     if (amountBefore == 100 && (amountBefore - amount) < 100) {
