@@ -52,13 +52,18 @@ void func_global_asm_806F4DC0(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     func_global_asm_8061134C(*temp_v0_2);
 }
 
-typedef struct Struct806F73A0 {
-    u8 pad0[0xE];
+typedef struct {
+    u16 unk0;
+    s8 unk2;
+    u8 unk3;
+    s32 unk4;
+    s32 unk8;
+    s16 unkC;
     s16 unkE;
-    u8 pad10[0x4];
-} Struct806F73A0;
+    s32 unk10;
+} Struct80753EFC;
 
-extern Struct806F73A0 D_global_asm_80753EF0[]; // TODO: Array of 0xA structs?
+extern Struct80753EFC D_global_asm_80753EF0[]; // TODO: Array of 0xA structs?
 
 // TODO: Array of 0xA structs?
 s32 func_global_asm_806F4E74(s16 arg0) {
@@ -89,20 +94,11 @@ s32 func_global_asm_806F4EBC(f32 arg0, f32 arg1) {
     return (D_global_asm_807FD722 * temp_f6) + temp_f10;
 }
 
+// Very close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F4F50.s")
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-} Struct80753EFC;
-
-typedef struct Struct806F50C8 Struct806F50C8;
-
-struct Struct806F50C8 {
+typedef struct Struct80754244 Struct80754244;
+struct Struct80754244 {
     s16 unk0;
     s16 unk2;
     s16 unk4;
@@ -110,40 +106,72 @@ struct Struct806F50C8 {
     s16 unk8;
     s16 unkA;
     s16 unkC;
-    s8 unkE;
-    s8 unkF;
+    u8 unkE;
+    u8 unkF;
     s16 unk10;
     u8 unk12;
     u8 unk13;
-    s8 unk14;
-    s8 unk15;
-    s8 unk16;
-    s8 unk17;
-    Struct806F50C8 *unk18;
+    u8 unk14;
+    u8 unk15;
+    u8 unk16;
+    u8 unk17;
+    Struct80754244 *unk18;
 };
 
-typedef struct struct80754244 Struct80754244;
-
-struct struct80754244 {
-    u8 unk0[0x18 - 0x0];
-    Struct80754244 *next;
-};
-
-extern Struct80753EFC D_global_asm_80753EFC[];
 extern Struct80754244 **D_global_asm_80754244;
 extern s16 D_global_asm_807FD720;
-extern Struct806F50C8 *D_global_asm_807FD72C;
+
+/*
+void func_global_asm_806F4F50(s16 arg0, f32 arg1, f32 arg2, f32 arg3) {
+    Struct80754244 **temp_a1;
+    Struct80754244 *prev;
+    s32 pad;
+    s32 j;
+    Struct80754244 *curr;
+    s32 temp_v0;
+    s32 i;
+    s32 var_t0;
+
+    for (i = 0, var_t0 = FALSE; !var_t0 && i < D_global_asm_807FD720; i++) {
+        prev = NULL;
+        curr = D_global_asm_80754244[i];
+        while ((curr) && (arg0 != curr->unk0)) {
+            prev = curr;
+            curr = curr->unk18;
+        }
+        if ((curr) && (arg0 == curr->unk0)) {
+            var_t0 = TRUE;
+            if (prev) {
+                prev->unk18 = curr->unk18;
+            } else {
+                D_global_asm_80754244[i] = curr->unk18;
+            }
+        }
+    }
+    temp_v0 = func_global_asm_806F4EBC(arg1, arg3);
+    if ((D_global_asm_807FD720 >= temp_v0) && (temp_v0 >= 0)) {
+        curr->unk18 = D_global_asm_80754244[temp_v0];
+        D_global_asm_80754244[temp_v0] = curr;
+        curr->unk8 = arg1;
+        curr->unkA = arg2;
+        curr->unkC = arg3;
+    }
+}
+*/
+
+extern s16 D_global_asm_807FD720;
+extern Struct80754244 *D_global_asm_807FD72C;
 
 void func_global_asm_806F50C8(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8 arg5) {
-    Struct806F50C8 *temp_v0_2;
+    Struct80754244 *temp_v0_2;
     f32 x, y, z;
     f32 xRot, yRot, zRot;
     f32 scale;
     f32 sp44;
     s32 sp40;
     s32 temp_v0_3;
-    Struct806F50C8 **var_v1;
-    Struct806F50C8 *current;
+    Struct80754244 **var_v1;
+    Struct80754244 *current;
 
     func_global_asm_806357F8(arg0, &x, &y, &z, &xRot, &yRot, &zRot, &scale, &sp44, 1);
 
@@ -154,14 +182,14 @@ void func_global_asm_806F50C8(s16 arg0, s16 arg1, s16 arg2, u8 arg3, u8 arg4, u8
         }
     }
 
-    temp_v0_2 = malloc(sizeof(Struct806F50C8));
+    temp_v0_2 = malloc(sizeof(Struct80754244));
     temp_v0_2->unk8 = x;
     temp_v0_2->unkA = y;
     temp_v0_2->unkC = z;
     temp_v0_2->unk0 = arg0;
 
     temp_v0_3 = func_global_asm_806F4E74(arg1);
-    temp_v0_2->unk4 = D_global_asm_80753EFC[temp_v0_3].unk0;
+    temp_v0_2->unk4 = D_global_asm_80753EF0[temp_v0_3].unkC;
     temp_v0_2->unk2 = arg1;
     temp_v0_2->unkE = 0;
     temp_v0_2->unk10 = arg2;
@@ -213,7 +241,7 @@ extern s16 D_global_asm_807FD720;
 // TODO: Hmm, stack and s0 s1 is a bit sus
 // Not sure about which local variables are shared
 void func_global_asm_806F5270(void) {
-    Struct806F50C8 *current2;
+    Struct80754244 *current2;
     GlobalASMStruct36 *current3;
     
     if (D_global_asm_80754244 != NULL) {
@@ -323,10 +351,8 @@ void func_global_asm_806F5498(void) {
     }
 }
 
-// Jumptable, very close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F54E0.s")
+extern s8 D_critter_80029FA0;
 
-/*
 void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) {
     CharacterProgress *temp_v0_2;
     s32 sp28;
@@ -334,89 +360,88 @@ void func_global_asm_806F54E0(u8 playerIndex, s32 actorBehaviourIndex, u8 arg2) 
     PlayerProgress *temp_v1;
     s8 *temp_v0;
     s32 i;
+    u8 lvl;
+    u32 tmp;
 
     sp27 = 0;
-    // Self modifying code
     if (D_global_asm_807FBB64 & 0x10000000) {
         if (actorBehaviourIndex != 0x56) {
-            temp_v0 = ((s32*)&func_menu_80029EF8) + 0xA8;
-            *temp_v0 -= 1;
+            D_critter_80029FA0--;
             return;
         }
     }
-    if (current_map != MAP_SNIDES_HQ) {
-        sp28 = func_global_asm_806F544C(D_global_asm_80753EFC[func_global_asm_806F4E74(actorBehaviourIndex) - 2].unkC, actorBehaviourIndex, arg2);
-        switch (actorBehaviourIndex) {
-            case 0xDD:
-            case 0xDE:
-            case 0xDF:
-            case 0xE0:
-            case 0xE1:
-                setFlag(func_global_asm_807319D8(0x1D5, getLevelIndex(D_global_asm_8076A0AB, 1), current_character_index[playerIndex]), 1, 0);
-                // fallthrough
-            case 0x74:
-            case 0x288:
-                changeCollectableCount(sp28, playerIndex, 1);
-                sp27 = 1;
-                break;
-            case 0x91:
-            case 0x15D:
-            case 0x15E:
-            case 0x15F:
-            case 0x160:
-                if (cc_number_of_players == 1) {
-                    playSound(0x331, 0x7FFF, 63.0f, 1.0f, 5, 0);
-                }
-                // fallthrough
-            case 0xA:
-            case 0xD:
-            case 0x16:
-            case 0x1E:
-            case 0x1F:
-                setFlag(0x18B, TRUE, FLAG_TYPE_PERMANENT);
-                changeCollectableCount(sp28, playerIndex, 1);
-                break;
-            case 0x1C:
-            case 0x1D:
-            case 0x23:
-            case 0x24:
-            case 0x27:
-                setFlag(0x18C, TRUE, FLAG_TYPE_PERMANENT);
-                // fallthrough
-            case 0x98:
-            case 0xEC:
-            case 0x1D2:
-                changeCollectableCount(sp28, playerIndex, 1);
-                break;
-            case 0x56:
-                setFlag(0x173, TRUE, FLAG_TYPE_PERMANENT);
-                changeCollectableCount(sp28, playerIndex, 1);
-                break;
-            case 0xB7:
-                for (i = 0; i < 5; i++) {
-                    D_global_asm_807FC950[playerIndex].character_progress[i].coins += 5;
-                }
-                func_global_asm_806F5498();
-                break;
-            case 0x8E:
-                changeCollectableCount(sp28, playerIndex, 0x96);
-                break;
-            case 0x57:
-                func_global_asm_806C9974(playerIndex, 1);
-                break;
-            case 0x13C:
-                sp27 = 1;
-                break;
-            case 0x18D:
-                sp27 = 1;
-                break;
-        }
-        if (sp27 != 0) {
-            func_global_asm_8060DEC8(); // saveTheGame()
-        }
+    if (current_map == MAP_SNIDES_HQ) {
+        return;
+    }
+    tmp = func_global_asm_806F4E74(actorBehaviourIndex);
+    sp28 = func_global_asm_806F544C(D_global_asm_80753EF0[tmp].unk2, actorBehaviourIndex, arg2);
+    switch (actorBehaviourIndex) {
+        case 0xDD:
+        case 0xDE:
+        case 0xDF:
+        case 0xE0:
+        case 0xE1:
+            lvl = getLevelIndex(D_global_asm_8076A0AB, 1);
+            setFlag(func_global_asm_807319D8(0x1D5, lvl, current_character_index[playerIndex]), 1, 0);
+        case 0x74:
+        case 0x288:
+            changeCollectableCount(sp28, playerIndex, 1);
+            sp27 = 1;
+            break;
+        case 0x91:
+        case 0x15D:
+        case 0x15E:
+        case 0x15F:
+        case 0x160:
+            if (cc_number_of_players == 1) {
+                playSound(0x331, 0x7FFF, 63.0f, 1.0f, 5, 0);
+            }
+        case 0xA:
+        case 0xD:
+        case 0x16:
+        case 0x1E:
+        case 0x1F:
+            setFlag(0x18B, TRUE, FLAG_TYPE_PERMANENT);
+            changeCollectableCount(sp28, playerIndex, 1);
+            break;
+        case 0x1C:
+        case 0x1D:
+        case 0x23:
+        case 0x24:
+        case 0x27:
+            setFlag(0x18C, TRUE, FLAG_TYPE_PERMANENT);
+        case 0x98:
+        case 0xEC:
+        case 0x1D2:
+            changeCollectableCount(sp28, playerIndex, 1);
+            break;
+        case 0x56:
+            setFlag(0x173, TRUE, FLAG_TYPE_PERMANENT);
+            changeCollectableCount(sp28, playerIndex, 1);
+            break;
+        case 0xB7:
+            for (i = 0; i < 5; i++) {
+                D_global_asm_807FC950[playerIndex].character_progress[i].coins += 5;
+            }
+            func_global_asm_806F5498();
+            break;
+        case 0x8E:
+            changeCollectableCount(sp28, playerIndex, 0x96);
+            break;
+        case 0x57:
+            func_global_asm_806C9974(playerIndex, 1);
+            break;
+        case 0x13C:
+            sp27 = 1;
+            break;
+        case 0x18D:
+            sp27 = 1;
+            break;
+    }
+    if (sp27 != 0) {
+        func_global_asm_8060DEC8(); // saveTheGame()
     }
 }
-*/
 
 void func_global_asm_806F58A0(u8 arg0, s16 arg1, Actor *arg2) {
     s32 var_s0;

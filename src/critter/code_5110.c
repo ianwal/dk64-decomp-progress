@@ -15,7 +15,7 @@ typedef struct {
 } AAD_critter_80029118;
 
 // .data
-static s8 D_critter_80029FA0 = 0;
+s8 D_critter_80029FA0 = 0; // Referenced in func_global_asm_806F54E0
 static u16 D_critter_80029FA4 = 0;
 static s8 D_critter_80029FA8 = 0;
 
