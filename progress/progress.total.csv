@@ -222,7 +222,7 @@ us,asm,func_global_asm_8072C670,512,yes
 us,asm,func_global_asm_8060B750,116,yes
 us,asm,func_global_asm_80728004,196,yes
 us,asm,func_global_asm_80679178,100,yes
-us,asm,func_global_asm_806F6204,848,no
+us,asm,func_global_asm_806F6204,848,yes
 us,asm,func_global_asm_806533C4,284,yes
 us,asm,func_global_asm_80724B5C,208,yes
 us,asm,areAllKeysTurnedIn,92,yes

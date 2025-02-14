@@ -3182,7 +3182,7 @@ void func_global_asm_806F5FE8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4);
 void func_global_asm_806F603C(void);
 // TODO: func_global_asm_806F6204 has no documented signature
 // TODO: func_global_asm_806F6554 has no documented signature but has been matched
-s32 func_global_asm_806F6644(s16 arg0, s32 arg1, u16 arg2);
+s32 func_global_asm_806F6644(s16 arg0, u8 arg1, u16 arg2);
 void func_global_asm_806F69A8(u8 playerIndex);
 u8 func_global_asm_806F6E58(s16 arg0);
 s32 func_global_asm_806F6EDC(void);
