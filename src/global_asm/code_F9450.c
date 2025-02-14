@@ -1084,10 +1084,10 @@ void func_global_asm_806F79E0(s16 arg0, u8 arg1) {
 
     switch (arg0) {
         case 0x8E:
-            playSong(0x23, 1.0 - (D_global_asm_80745838 * 0.3));
+            playSong(MUSIC_35_CRYSTAL_COCONUT_GET, 1.0 - (D_global_asm_80745838 * 0.3));
             break;
         case 0x57:
-            playSong(0x21, 1.0 - (D_global_asm_80745838 * 0.3));
+            playSong(MUSIC_33_MELON_SLICE_GET, 1.0 - (D_global_asm_80745838 * 0.3));
             break;
         case 0x56:
             playSound(0x147, 0x7FFF, 63.0f, 1.0f, 5, 0);
@@ -1104,10 +1104,10 @@ void func_global_asm_806F79E0(s16 arg0, u8 arg1) {
         case 0xDF:
         case 0xE0:
         case 0xE1:
-            playSong(0x45, 1.0f);
+            playSong(MUSIC_69_BLUEPRINT_GET, 1.0f);
             break;
         case 0x90:
-            playSong(0x12, 1.0f);
+            playSong(MUSIC_18_GB_KEY_GET, 1.0f);
             func_global_asm_80687C48();
             if ((player_pointer->y_position - player_pointer->floor) < 100.0f) {
                 if (player_pointer->control_state != 0x63) {
@@ -1119,7 +1119,7 @@ void func_global_asm_806F79E0(s16 arg0, u8 arg1) {
             break;
         case 0x74:
         case 0x288:
-            playSong(0x12, 1.0f);
+            playSong(MUSIC_18_GB_KEY_GET, 1.0f);
             if ((player_pointer->y_position - player_pointer->floor) < 100.0f) {
                 if (player_pointer->control_state != 0x63) {
                     if (!(player_pointer->unk6A & 4) || !((player_pointer->unkAC - player_pointer->y_position) > 20.0f)) {
@@ -1142,18 +1142,18 @@ void func_global_asm_806F79E0(s16 arg0, u8 arg1) {
         case 0x23:
         case 0x24:
         case 0x27:
-            playSong(0x17, 1.0 - (D_global_asm_80745838 * 0.3));
+            playSong(MUSIC_23_BANANA_COIN_GET, 1.0 - (D_global_asm_80745838 * 0.3));
         case 0x2B:
             break;
         case 0xB7:
-            playSong(0x91, 1.0 - (D_global_asm_80745838 * 0.3));
+            playSong(MUSIC_145_RAINBOW_COIN_GET, 1.0 - (D_global_asm_80745838 * 0.3));
             break;
         case 0xEC:
         case 0x1D2:
-            playSong(0x20, 1.0 - (D_global_asm_80745838 * 0.3));
+            playSong(MUSIC_32_MINECART_COIN_GET, 1.0 - (D_global_asm_80745838 * 0.3));
             break;
         case 0x13C:
-            playSong(0x12, 1.0f);
+            playSong(MUSIC_18_GB_KEY_GET, 1.0f);
             var_v0 = 0x41;
             if (current_map == MAP_HELM) {
                 var_v0 = 0x29;
@@ -1161,7 +1161,7 @@ void func_global_asm_806F79E0(s16 arg0, u8 arg1) {
             setAction(var_v0, 0, extra_player_info_pointer->unk1A4);
             break;
         case 0x18D:
-            playSong(0x12, 1.0f);
+            playSong(MUSIC_18_GB_KEY_GET, 1.0f);
             setAction(0x42, 0, extra_player_info_pointer->unk1A4);
             func_global_asm_80687CC8();
             break;

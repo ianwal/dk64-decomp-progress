@@ -366,7 +366,7 @@ void func_global_asm_806F1250(Actor *arg0) {
         playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, 0x2E2, 0xFF, 0xA0, 0, 0x32, 0.0f, 0);
         if ((D_global_asm_807FBB68 & 2) == 0) {
             // Gorilla Gone
-            playSong(0x6C, 1.0f);
+            playSong(MUSIC_108_GORILLA_GONE, 1.0f);
         }
     }
     PaaD->unk1F0 |= 0x40;

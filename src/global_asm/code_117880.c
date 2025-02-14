@@ -409,7 +409,7 @@ void func_global_asm_80713C8C(void) {
     }
     if (isFlagSet(0x302, 0U)) {
         func_global_asm_8071261C();
-        playSong(0x74, 1.0f);
+        playSong(MUSIC_116_HIDEOUT_HELM_BLAST_O_MATIC_OFF, 1.0f);
         return;
     }
     D_global_asm_80755340.unk0 += D_global_asm_807445B0;

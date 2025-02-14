@@ -66,7 +66,7 @@ void func_global_asm_806B1F50(void) {
                 case 0x64:
                     deleteActor(current_actor_pointer->unk11C);
                     current_actor_pointer->control_state = 0x40;
-                    playSong(0x2A, 1.0f);
+                    playSong(MUSIC_42_FAILURE, 1.0f);
                     // Fallthrough
                 default:
                     current_actor_pointer->control_state_progress++;

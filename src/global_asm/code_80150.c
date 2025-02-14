@@ -947,7 +947,7 @@ void func_global_asm_80681E18(void) {
             case MAP_KROOL_FIGHT_DIDDY_PHASE:
                 break;
             default:
-                playSong(0x48, 1.0f);
+                playSong(MUSIC_72_ROCKETBARREL_BOOST, 1.0f);
                 break;
         }
     }

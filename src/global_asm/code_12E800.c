@@ -643,7 +643,7 @@ void func_global_asm_8072DB68(s32 arg0) {
     }
     changeCollectableCount(0xB, cc_player_index, -amount);
     func_global_asm_806F8BC4(0xB, 0, 0);
-    playSong(0x41, 1.0f);
+    playSong(MUSIC_65_DROP_COINS_MINECART, 1.0f);
     for (i = 0; i < amount; i++) {
         func_global_asm_806A5DF0(0x36, player_pointer->x_position, player_pointer->y_position, player_pointer->z_position, (player_pointer->y_rotation + (i * 200)) - 200, 1, -1, 0);
     }

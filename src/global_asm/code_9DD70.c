@@ -434,7 +434,7 @@ void func_global_asm_8069B3FC(void) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
         playActorAnimation(current_actor_pointer, 0x298);
         aaD->unk0 = 0;
-        playSong(0x3B, 1.0f);
+        playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 1.0f);
     } else {
         getBonePosition(current_actor_pointer, 1, &x, &y, &z);
         PaaD->unk210 = x;

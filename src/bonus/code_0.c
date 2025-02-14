@@ -99,7 +99,7 @@ void func_bonus_80024158(void) {
     u8 boolVal1;
     char *bString;
     s16 temp_v0_2;
-    s32 song;
+    MUSIC_E song;
     char *cString;
     s32 var_v1;
     s32 var_v2;
@@ -472,7 +472,7 @@ void func_bonus_80024E38(void) {
             if (current_actor_pointer->unk11C->control_state == 5) {
                 func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, 0x15, 1), 0, 0x28, 8, 8);
                 func_global_asm_80726EE0(0);
-                playSong(0x28, 1.0f);
+                playSong(MUSIC_40_SUCCESS, 1.0f);
                 func_global_asm_806A5DF0(0x56, 588.0f, 240.0f, 582.0f, 0, 0, func_bonus_80024D8C(), 0);
                 current_actor_pointer->control_state = 2;
             }

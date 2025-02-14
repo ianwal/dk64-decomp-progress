@@ -268,7 +268,7 @@ void func_global_asm_80602488(u8 arg0);
 void func_global_asm_80602498(void);
 void func_global_asm_806025AC(s32 arg0, s32 arg1, s32 arg2);
 // TODO: func_global_asm_806025D4 has no documented signature
-void playSong(s32 arg0, f32 arg1);
+void playSong(MUSIC_E arg0, f32 arg1);
 void func_global_asm_80602B60(s32 arg0, u8 arg1);
 void func_global_asm_80602C0C(void);
 void func_global_asm_80602C6C(s32 arg0, f32 arg1);

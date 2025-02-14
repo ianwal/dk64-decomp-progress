@@ -531,7 +531,7 @@ Actor *func_race_8002D360(Actor *arg0) {
 }
 
 void func_race_8002D40C(void) {
-    s32 song;
+    MUSIC_E song;
     s32 i;
     RaceAdditionalActorData *RaaD;
     RaaD_unk20_unk4 *temp_v0_2;
@@ -544,39 +544,39 @@ void func_race_8002D40C(void) {
     while (song == 0 && i >= 0) {
         if (RaaD->unk20[i].unk4->unk27 == 1) {
             if (RaaD->unk20[i].unk4->unk36 != 0) {
-                song = 0x56;
+                song = MUSIC_86_SUCCESS_RACES;
             } else {
-                song = 0x57;
+                song = MUSIC_87_FAILURE_RACES_TRY_AGAIN;
             }
         }
         i--;
         var_a0--;
     }
     if (song == 0) {
-        song = 0x56;
+        song = MUSIC_86_SUCCESS_RACES;
     }
     playSong(song, 1.0f);
 }
 
 void func_race_8002D4A0(void) {
-    s32 song;
+    MUSIC_E song;
     f32 phi_f0;
 
     phi_f0 = 1.0f;
     switch (current_map) {
         case MAP_AZTEC_BEETLE_RACE:
-            song = 0x13;
+            song = MUSIC_19_ANGRY_AZTEC_BEETLE_SLIDE;
             phi_f0 = 0.6f;
             break;
         case MAP_GALLEON_SEAL_RACE:
-            song = 0x3D;
+            song = MUSIC_61_GLOOMY_GALLEON_SEAL_RACE;
             break;
         case MAP_CAVES_BEETLE_RACE:
-            song = 0x66;
+            song = MUSIC_102_CRYSTAL_CAVES_BEETLE_RACE;
             break;
         case MAP_FACTORY_CAR_RACE:
         default:
-            song = 0x1B;
+            song = MUSIC_27_FRANTIC_FACTORY_CAR_RACE;
     }
 
     playSong(song, phi_f0);

@@ -417,7 +417,7 @@ void func_boss_80028458(void) {
 void func_boss_80028478(u16 flagIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u8 arg5) {
     s16 i;
     
-    playSong(0x36, 1.0f);
+    playSong(MUSIC_54_BOSS_DEFEAT, 1.0f);
     if (isFlagSet(flagIndex, FLAG_TYPE_PERMANENT)) {
         func_boss_80028458();
         return;

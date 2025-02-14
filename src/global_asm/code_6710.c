@@ -247,15 +247,15 @@ void func_global_asm_806025AC(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_806025D4.s")
 
-void playSong(s32 arg0, f32 arg1) {
+void playSong(MUSIC_E song, f32 arg1) {
     u8 i;
     u8 temp_v0;
 
-    temp_v0 = func_global_asm_8060245C(arg0);
-    if (arg0 != 0) {
+    temp_v0 = func_global_asm_8060245C(song);
+    if (song != MUSIC_0_SILENCE) {
         s32 temp = D_global_asm_807458DC[temp_v0];
-        if (arg0 != temp || (D_global_asm_80745658[arg0] & 0x200)) {
-            D_global_asm_807458DC[temp_v0] = arg0;
+        if (song != temp || (D_global_asm_80745658[song] & 0x200)) {
+            D_global_asm_807458DC[temp_v0] = song;
             D_global_asm_807458F4[temp_v0] = arg1;
             D_global_asm_80745924[temp_v0] = 0;
             for (i = 0; i < 4; i++) {

@@ -3461,7 +3461,7 @@ void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
         last_spawned_actor->y_rotation += 0x800;
     }
     playCutscene(last_spawned_actor, 0x22, 5);
-    playSong(0xAB, 1.0f);
+    playSong(MUSIC_171_WRINKLY_KONG, 1.0f);
     playSound(0x2EA, 0x7FFF, 63.0f, 1.0f, 0, 0);
     D_global_asm_807F6951 = arg2;
     D_global_asm_807F6950 = 0;

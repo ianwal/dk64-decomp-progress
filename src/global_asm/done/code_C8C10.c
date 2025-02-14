@@ -76,16 +76,16 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
 }
 
 void func_global_asm_806C43A8(void) {
-    s32 song = 0;
+    MUSIC_E song = MUSIC_0_SILENCE;
     switch (current_map) {
         case MAP_JAPES_MINECART:
-            song = 3;
+            song = MUSIC_3_JUNGLE_JAPES_MINECART;
             break;
         case MAP_CASTLE_MINECART:
-            song = 0x6A;
+            song = MUSIC_106_CREEPY_CASTLE_MINECART;
             break;
         case MAP_FUNGI_MINECART:
-            song = 0x4A;
+            song = MUSIC_74_FUNGI_FOREST_MINECART;
     }
     if (song != 0) {
         playSong(song, 1.0f);
@@ -147,9 +147,9 @@ void func_global_asm_806C4414(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, 
         }
     }
     if ((arg4 == D_global_asm_807FDC9C->unk13) && (current_actor_pointer->unk15F & 0x80) && (D_global_asm_807FDC90->unk2C == 0x5A)) {
-        if (isFlagSet(arg6, 0U) == 0) {
+        if (!isFlagSet(arg6, FLAG_TYPE_PERMANENT)) {
             func_global_asm_8069E490(0x2DU, arg6);
-            playSong(0x14, 1.0f);
+            playSong(MUSIC_20_OH_BANANA, 1.0f);
         }
     }
     func_global_asm_8069E4E0(-0x1E);
@@ -687,7 +687,7 @@ void func_global_asm_806C5C20(void) {
         current_actor_pointer->control_state = 0x40;
     }
     if (current_actor_pointer->control_state != 0x40) {
-        playSong(0x42, 1.0f);
+        playSong(MUSIC_66_FAIRY_NEARBY, 1.0f);
     } else {
         func_global_asm_80602B60(0x42, 0);
     }

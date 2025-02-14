@@ -3998,7 +3998,7 @@ void func_global_asm_806DED44(void) {
             if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 func_global_asm_806874EC();
-                playSong(0x3B, 1.0f);
+                playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 1.0f);
                 current_actor_pointer->control_state_progress = 3;
             }
             // fallthrough

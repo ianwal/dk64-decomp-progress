@@ -767,7 +767,7 @@ void func_global_asm_806B4DCC(void) {
             current_actor_pointer->control_state_progress = 0;
             playActorAnimation(current_actor_pointer, 0x248);
             func_global_asm_8069E5B8();
-            playSong(0x14, 1.0f);
+            playSong(MUSIC_20_OH_BANANA, 1.0f);
             func_global_asm_8063DA40(0x7F, 0xA);
         }
     }

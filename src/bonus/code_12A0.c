@@ -388,7 +388,7 @@ void func_bonus_800264E0(u8 arg0, u8 textIndex) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
     func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, textIndex, 1), 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
-    playSong(0x28, 1.0f);
+    playSong(MUSIC_40_SUCCESS, 1.0f);
     setAction(0x44, NULL, 0);
     current_actor_pointer->control_state++;
     if (arg0) {
@@ -399,7 +399,7 @@ void func_bonus_800264E0(u8 arg0, u8 textIndex) {
 void func_bonus_800265C0(u8 arg0, u8 textIndex) {
     current_actor_pointer->unk11C->control_state = 0;
     func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, textIndex, 1), 0, 0x28, 8, 8);
-    playSong(0x57, 1.0f);
+    playSong(MUSIC_87_FAILURE_RACES_TRY_AGAIN, 1.0f);
     setAction(0x43, NULL, 0);
     current_actor_pointer->control_state++;
     if (arg0) {

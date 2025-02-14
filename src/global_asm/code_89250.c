@@ -823,7 +823,7 @@ void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
 
 void func_global_asm_80687C48(void) {
     playSound(0xF2, 0x7FFF, 63.0f, 1.0f, 0, 0);
-    playSong(0x97, 1.0f);
+    playSong(MUSIC_151_BANANA_MEDAL_GET, 1.0f);
     func_global_asm_807149FC(0xC8);
     func_global_asm_8071495C();
     func_global_asm_8071498C(func_global_asm_8071EFDC);
@@ -832,7 +832,7 @@ void func_global_asm_80687C48(void) {
 
 void func_global_asm_80687CC8(void) {
     playSound(0xF2, 0x7FFF, 63.0f, 1.0f, 0, 0);
-    playSong(0x97, 1.0f);
+    playSong(MUSIC_151_BANANA_MEDAL_GET, 1.0f);
     func_global_asm_807149FC(0xC8);
     func_global_asm_8071495C();
     func_global_asm_8071498C(func_global_asm_8071EFDC);

@@ -305,7 +305,7 @@ void func_global_asm_806BE8BC(void) {
                     addActorToTextOverlayRenderArray(func_global_asm_806BE6F0, current_actor_pointer, 3);
                     break;
                 case 2:
-                    playSong(0xA9, 1.0f);
+                    playSong(MUSIC_169_FUNGI_FOREST_RABBIT_RACE, 1.0f);
                     D_global_asm_807FBB64 |= 4;
                     func_global_asm_8061CB08();
                     func_global_asm_8062217C(D_global_asm_807F5D10, 3);
@@ -359,7 +359,7 @@ void func_global_asm_806BE8BC(void) {
                         } else {
                             // Problem here
                             var_v0 = current_actor_pointer->y_rotation - 0x12C;
-                            playSong(0x2F, 1.0f);
+                            playSong(MUSIC_47_MELON_SLICE_DROP, 1.0f);
                             for (i = 0; i < 3; i++, var_v0 += 0x12C) {
                                 func_global_asm_806A5DF0(
                                     0x35,

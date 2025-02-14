@@ -60,7 +60,7 @@ void func_global_asm_806A1580(void) {
         if (D_global_asm_807FBD70 == 4) {
             if (current_actor_pointer->unk132 == 4) {
                 current_actor_pointer->unk132 = 8;
-                playSong(0x43, 1.0f);
+                playSong(MUSIC_67_CHECKPOINT, 1.0f);
                 func_global_asm_80679200(sp30, current_actor_pointer, 0x02000000, sp36, 0, 0);
             } else {
                 current_actor_pointer->unk132 *= 2;
@@ -270,7 +270,7 @@ void func_global_asm_806A1FD8(void) {
     if ((aaD->unk0 < 0xA) && (aaD->unk0 != 0)) {
         aaD->unk4 = aaD->unk4 + 1.0;
         if (aaD->unk4 > 20.0) {
-            playSong(0x90, 1.0f);
+            playSong(MUSIC_144_DROP_RAINBOW_COIN, 1.0f);
             deleteActor(current_actor_pointer);
         }
     }

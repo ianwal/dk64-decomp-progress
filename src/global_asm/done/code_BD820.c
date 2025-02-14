@@ -71,7 +71,7 @@ void func_global_asm_806B8C78(void) {
                         func_global_asm_8063C1EC(5, 0x10);
                         func_global_asm_8063C1EC(7, 0x10);
                         playSound(0x1D0, 0x58EF, 63.0f, 1.0f, 0, 0);
-                        playSong(0x3A, 1.0f);
+                        playSong(MUSIC_58_AWAITING_ENTERING_THE_BOSS, 1.0f);
                         func_global_asm_806B8BDC(0xBD, 0xAA, 0x2FB);
                         func_global_asm_806B8BDC(0x19A, 0xA6, 0x2F8);
                     }

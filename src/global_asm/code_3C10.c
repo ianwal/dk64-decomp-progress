@@ -374,7 +374,7 @@ void func_global_asm_805FF378(Maps nextMap, s32 nextExit) {
             func_global_asm_805FF168();
             loading_zone_transition_speed = 1.0f;
             if (D_global_asm_807444F8 != 1 && loading_zone_transition_type == 1 && !(D_global_asm_807FBB68 & 2) && current_map != MAP_DK_RAP) {
-                playSong(0x2C, 1.0f);
+                playSong(MUSIC_44_DK_TRANSITION_CLOSING, 1.0f);
             }
             func_global_asm_807313BC();
             func_global_asm_805FF5A0(nextMap);

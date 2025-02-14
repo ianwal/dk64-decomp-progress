@@ -583,7 +583,7 @@ s32 func_global_asm_806BB604(u8 arg0, s16 arg1, s16 arg2, s32 arg3) {
 
 void func_global_asm_806BB81C(void) {
     func_global_asm_80604CBC(current_actor_pointer, 0x11F, 0, 0, 0, 0xFF, 1.0f, 0);
-    playSong(0x3B, 1.0f);
+    playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 1.0f);
 }
 
 // Jumptable
