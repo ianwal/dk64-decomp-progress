@@ -16,7 +16,7 @@ typedef struct {
 } Struct807FD740;
 
 extern Struct807FD740 D_global_asm_807FD740[];
-extern s32 D_global_asm_807FD780[];
+extern Struct807FD740 *D_global_asm_807FD780[];
 
 void func_global_asm_806F5270(void);
 void func_global_asm_806F54E0(u8, s32, u8);
@@ -36,31 +36,21 @@ void func_global_asm_806F4D70(u8 playerIndex, f32 x, f32 y, f32 z, f32 arg4) {
     D_global_asm_807FD780[playerIndex] = NULL;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F4DC0.s")
-
-/*
 void func_global_asm_806F4DC0(u8 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4) {
-    Struct807FD740 **var_v1;
-    void *temp_v0_2;
-    Struct807FD740 *var_v0;
+    Struct807FD740 **temp_v0_2;
 
-    var_v1 = &D_global_asm_807FD780[arg0];
-    var_v0 = D_global_asm_807FD780[arg0];
-    while (var_v0 != NULL) {
-        var_v1 = var_v0 + 1;
-        var_v0 = *var_v1;
+    temp_v0_2 = &D_global_asm_807FD780[arg0];
+    while (*temp_v0_2) {
+        temp_v0_2 = *temp_v0_2 + 1;
     }
-    temp_v0_2 = malloc(0x14);
-    *var_v1 = temp_v0_2;
-    func_global_asm_80611690(temp_v0_2);
-    (*var_v1)->unk0 = arg1;
-    (*var_v1)->unk4 = arg2;
-    (*var_v1)->unk8 = arg3;
-    (*var_v1)->unkC = arg4;
-    func_global_asm_8061134C(*var_v1);
+    *temp_v0_2 = malloc(0x14);
+    func_global_asm_80611690(*temp_v0_2);
+    (*temp_v0_2)->unk0 = arg1;
+    (*temp_v0_2)->unk4 = arg2;
+    (*temp_v0_2)->unk8 = arg3;
+    (*temp_v0_2)->unkC = arg4;
+    func_global_asm_8061134C(*temp_v0_2);
 }
-*/
 
 typedef struct Struct806F73A0 {
     u8 pad0[0xE];
