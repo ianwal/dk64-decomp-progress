@@ -1077,13 +1077,9 @@ loop_13:
 }
 */
 
-// Jumptable, rodata problems, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F79E0.s")
-
 extern u8 D_global_asm_80745838;
 
-/*
-void func_global_asm_806F79E0(s16 arg0, s32 arg1) {
+void func_global_asm_806F79E0(s16 arg0, u8 arg1) {
     s32 var_v0;
 
     switch (arg0) {
@@ -1147,6 +1143,7 @@ void func_global_asm_806F79E0(s16 arg0, s32 arg1) {
         case 0x24:
         case 0x27:
             playSong(0x17, 1.0 - (D_global_asm_80745838 * 0.3));
+        case 0x2B:
             break;
         case 0xB7:
             playSong(0x91, 1.0 - (D_global_asm_80745838 * 0.3));
@@ -1173,4 +1170,3 @@ void func_global_asm_806F79E0(s16 arg0, s32 arg1) {
             break;
     }
 }
-*/

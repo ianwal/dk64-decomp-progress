@@ -1410,7 +1410,7 @@ us,asm,func_global_asm_8068450C,32,yes
 us,asm,func_global_asm_8067B290,8,yes
 us,asm,func_global_asm_806E7900,584,yes
 us,asm,func_global_asm_806C71C8,8,yes
-us,asm,func_global_asm_806F79E0,1520,no
+us,asm,func_global_asm_806F79E0,1516,yes
 us,asm,func_global_asm_8063393C,224,yes
 us,asm,func_global_asm_8067760C,148,no
 us,asm,func_global_asm_80701098,3064,no
