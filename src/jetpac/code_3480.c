@@ -10,42 +10,20 @@ s32 func_jetpac_800274C0(void) {
     return D_jetpac_8002DC68[(s32)(func_jetpac_80027210() * 13.0f) % 13];
 }
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    f32 unk8; // Used
-    f32 unkC; // Used
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C; // Used
-    s32 unk20;
-    s32 unk24; // Used
-    s32 unk28; // Used
-    s32 unk2C; // Used
-    s32 unk30; // Used
-    s32 unk34;
-    s32 unk38; // Used
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-} Struct80027510;
-
-s32 func_jetpac_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
+s32 func_jetpac_80027510(JetpacPickupStruct *arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, s32 arg5) {
     f32 var_f12;
     f32 var_f14;
 
-    var_f12 = arg0->unk8;
-    var_f14 = arg0->unkC;
-    if (arg0->unk38 == 1) {
+    var_f12 = arg0->primary_info.posX;
+    var_f14 = arg0->primary_info.posY;
+    if (arg0->primary_info.unk38 == 1) {
         return FALSE;
     }
     if (arg5 == 0) {
-        var_f12 += arg0->unk24;
-        var_f14 += arg0->unk28;
+        var_f12 += arg0->primary_info.unk24.unk0;
+        var_f14 += arg0->primary_info.unk24.unk4;
     }
-    if ((arg0->unk1C >= 2) && (func_jetpac_80027250(var_f12, var_f14, arg0->unk8 + arg0->unk2C, arg0->unkC + arg0->unk30, arg1, arg2, arg3, arg4) != 0)) {
+    if ((arg0->primary_info.unk1C >= 2) && (func_jetpac_80027250(var_f12, var_f14, arg0->primary_info.posX + arg0->primary_info.unk24.unk8, arg0->primary_info.posY + arg0->primary_info.unk24.unkC, arg1, arg2, arg3, arg4) != 0)) {
         return TRUE;
     }
     return FALSE;
@@ -173,7 +151,7 @@ typedef struct JetpacStruct8002DCE8 { // P sure this is RGBA
 } JetpacStruct8002DCE8;
 
 void func_jetpac_80025700(void*, s32, s32, rgba*, s32);
-extern s32 D_8002F3C0;
+extern Struct8002C4D0 D_8002F3C0;
 extern rgba D_jetpac_8002DCE8;
 extern JetpacPlayerStruct D_jetpac_8002EC30;
 
@@ -183,7 +161,7 @@ void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
     s32 var_s0;
     rgba sp58;
     s32 var_s2;
-    s32* temp_a0;
+    Struct8002C4D0* temp_a0;
 
     sp58 = D_jetpac_8002DCE8;
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
@@ -194,7 +172,7 @@ void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
             for (var_s0 = 0; var_s0 < 2; var_s0++)
             {
                 temp_a0 = &D_8002F3C0; // Probably a bigger struct (sprite?)
-                if (((player->rocket_stage < 8) && ((player->rocket_stage + (arg1 * 2) + var_s0) >= 8)) || ((player->rocket_stage == 8) && (*temp_a0 & 0x10))) {
+                if (((player->rocket_stage < 8) && ((player->rocket_stage + (arg1 * 2) + var_s0) >= 8)) || ((player->rocket_stage == 8) && (temp_a0->unk0 & 0x10))) {
                     sp58.green = 0;
                 }
                 temp_a0 = arg0->primary_info.sprite[var_s0];
@@ -212,7 +190,7 @@ void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
 }
 
 extern u8 D_8002F3C8;
-extern JetpacSpawningInfo D_jetpac_8002D968[7];
+extern Struct8002C4D0 D_jetpac_8002D968[7];
 extern JetpacPickupStruct D_jetpac_8002DCEC;
 
 void func_jetpac_80027D64(Competitor *arg0) {
@@ -229,7 +207,7 @@ void func_jetpac_80027D64(Competitor *arg0) {
         sp24.primary_info.drop_type = (s32)(func_jetpac_80027210() * temp) + 1;
     }
     temp_v1 = &arg0->next_bonus_item;
-    sp24.primary_info.sprite[0] = &D_jetpac_8002D968[sp24.primary_info.drop_type].sprite;
+    sp24.primary_info.sprite[0] = &D_jetpac_8002D968[sp24.primary_info.drop_type];
     *temp_v1 = sp24;
     temp_v1->primary_info.posX = func_jetpac_800274C0();
     arg0->unk_144 = func_jetpac_80027480();
@@ -418,21 +396,19 @@ s32 func_jetpac_800283EC(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 }
 
 void func_jetpac_80028544(void) {
-    void (*temp_v0)(void *, s32);
     s32 i;
-    JetpacPickupStruct *var_s0;
-    JetpacPlayerStruct* player;
+    JetpacPickupStruct *rocket_segment;
+    Competitor* player;
 
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    var_s0 = &player->unk14;
+    rocket_segment = &player->rocket_segments[0];
     for (i = 0; i < 4; i++) {
-        if (var_s0->primary_info.unk1C >= 2) {
-            temp_v0 = var_s0->code;
-            if (temp_v0 != NULL) {
-                temp_v0(var_s0, i);
+        if (rocket_segment->primary_info.unk1C >= 2) {
+            if (rocket_segment->code != NULL) {
+                rocket_segment->code(rocket_segment, i);
             }
         }
-        var_s0++;
+        rocket_segment++;
     }
 }
 
@@ -612,7 +588,7 @@ s32 func_jetpac_80028CF8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     s32 i;
     Struct8002EF80 *var_s0;
 
-    var_s0 = &D_jetpac_8002EF80;
+    var_s0 = &D_jetpac_8002EF80[0];
     for (i = 0; i < 4; i++) {
         var_f0 = var_s0->unk28;
         if (arg4 == 0) {
