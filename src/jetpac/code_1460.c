@@ -37,7 +37,7 @@ extern s32 D_jetpac_8002F08C;
 extern s32 D_jetpac_8002F094;
 
 extern JetpacStruct D_jetpac_8002F09C[]; // At least 4 big
-extern JetpacStruct1 D_jetpac_8002F3D0[0x18][0x20];
+extern JetpacStruct1 D_jetpac_8002F3D0[0x300];
 
 extern s32 D_jetpac_80045BD0;
 
@@ -50,7 +50,7 @@ void func_jetpac_80025460(void) {
     int x, y;
     JetpacStruct1 *ptr;
 
-    ptr = &D_jetpac_8002F3D0[0][0];
+    ptr = &D_jetpac_8002F3D0[0];
     for (x = 0; x < 0x18; x++) {
         for (y = 0; y < 0x20; y++) {
             ptr->unk60 = 0;
@@ -60,49 +60,32 @@ void func_jetpac_80025460(void) {
     }
 }
 
-// TODO: Needs shape on D_jetpac_8002F3D0->unk60
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_1460/func_jetpac_800254B8.s")
-
-typedef struct StructJetpac800254B8 {
-    u8 unk0;
-    u8 unk1;
-    u8 unk2;
-    u8 unk3;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-} StructJetpac800254B8;
-
-/*
-void func_jetpac_800254B8(s32 arg0, s32 arg1, s32 arg2, StructJetpac800254B8 *arg3, s32 arg4) {
-    s32 temp_v1;
-    u8 temp_v1_2;
-    JetpacStruct1 *temp_a0;
-    JetpacStruct2 *var_v0;
+void func_jetpac_800254B8(Struct8002C4D0* arg0, s32 arg1, s32 arg2, rgba* arg3, s32 arg4) {
+    JetpacStruct1* temp_a0;
+    JetpacStruct2* var_v0;
+    s32 i;
 
     var_v0 = NULL;
-    if ((arg1 >= 0) && (arg2 >= 0) && (arg1 < 0x101) && (arg2 < 0xC1)) {
-        temp_a0 = &D_jetpac_8002F3D0[arg1 >> 3][arg2 / 8];
-        temp_v1 = temp_a0->unk60;
-        if (temp_v1 < 6) {
-            temp_a0->unk60 = temp_v1 + 1;
-            var_v0 = &temp_a0->unk0[temp_v1];
+    if ((arg1 >= 0) && (arg2 >= 0) && (arg1 <= 256) && (arg2 <= 0xC0)) {
+        s32 index = arg1 / 8 + arg2 / 8 * 32;
+
+        temp_a0 = &D_jetpac_8002F3D0[index];
+        if (temp_a0->unk60 < 6) {
+            var_v0 = &temp_a0->unk0[temp_a0->unk60++];
         }
-        if (var_v0) {
+        if (var_v0 != NULL) {
             var_v0->unk0 = arg1;
             var_v0->unk4 = arg2;
             var_v0->unk8 = arg4;
-            var_v0->unkC = arg0;
-            if ((!temp_a0->unk67) || ((temp_a0->unk67 < 0xFF) && ((func_jetpac_80027210() > 0.97)))) {
-                temp_a0->unk64 = arg3->unk0;
-                temp_a0->unk65 = arg3->unk1;
-                temp_a0->unk66 = arg3->unk2;
-                temp_a0->unk67 = arg3->unk3;
+            var_v0->unkC = (Sprite* ) arg0;
+            if ((temp_a0->unk64.as_array[3] == 0) || ((temp_a0->unk64.as_array[3] < 0xFF) && (func_jetpac_80027210() > 0.97))) {
+                for (i = 0; i < 4; i++) {
+                    temp_a0->unk64.as_array[i] = arg3->as_array[i];
+                }
             }
         }
     }
 }
-*/
 
 void func_jetpac_800255D4(Gfx **arg0) {
     Gfx *dl;
@@ -268,7 +251,7 @@ void func_jetpac_80025904(Gfx **arg0) {
     s32 k;
     u8 red;
 
-    s3 = &D_jetpac_8002F3D0[0][0];
+    s3 = &D_jetpac_8002F3D0[0];
     dl = *arg0;
     for (i = 0; i < 0x18; i++) {
         for (j = 0; j < 0x20; j++) {
@@ -278,7 +261,7 @@ void func_jetpac_80025904(Gfx **arg0) {
             for (k = 0; k < s3->unk60; k++) {
                 func_global_asm_8070E8F0(&dl, s3->unk0[k].unkC);
                 func_global_asm_8070F2C8(0x400, 0x400, s3->unk0[k].unk8, 0);
-                func_global_asm_8070F2FC(&dl, (s3->unk0[k].unk0 + 0x20) << 2, (s3->unk0[k].unk4 + 0x18) << 2);
+                func_global_asm_8070F2FC(&dl, (s3->unk0[k].unk0 x2+ 00) << 2, (s3->unk0[k].unk4 + 0x18) << 2);
             }
             s3++;
         }
