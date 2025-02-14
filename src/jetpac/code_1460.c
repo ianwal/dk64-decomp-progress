@@ -35,7 +35,7 @@ void func_jetpac_800254B8(Struct8002C4D0* arg0, s32 arg1, s32 arg2, rgba* arg3, 
             var_v0->unk0 = arg1;
             var_v0->unk4 = arg2;
             var_v0->unk8 = arg4;
-            var_v0->unkC = (Sprite* ) arg0;
+            var_v0->unkC = arg0;
             if ((temp_a0->unk64.as_array[3] == 0) || ((temp_a0->unk64.as_array[3] < 0xFF) && (func_jetpac_80027210() > 0.97 + 0.0))) {
                 for (i = 0; i < 4; i++) {
                     temp_a0->unk64.as_array[i] = arg3->as_array[i];

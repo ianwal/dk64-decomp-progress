@@ -2399,6 +2399,18 @@ typedef struct {
     rgba unkC;
 } Struct80025A60;
 
+typedef struct {
+    s32 unk0;
+    s32 unk4;
+    s16 unk8;
+    s16 unkA;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+    s32 unk14;
+} Struct8002C4D0; // JetpacSprite
+
 typedef struct JetpacStructSub0 {
     f32 unk0;
     f32 unk4;
@@ -2419,7 +2431,7 @@ typedef struct JetpacStructSub0 {
 
 typedef struct JetpacStructSub1 {
     void (*unk0)();
-    void* unk4;
+    void *unk4;
 } JetpacStructSub1;
 
 typedef struct JetpacStruct {
@@ -2431,7 +2443,7 @@ typedef struct {
     s32 unk0;
     s32 unk4;
     s32 unk8;
-    Sprite *unkC;
+    Struct8002C4D0 *unkC;
 } JetpacStruct2;
 
 typedef struct {
@@ -2439,18 +2451,6 @@ typedef struct {
     s32 unk60;
     rgba unk64;
 } JetpacStruct1;
-
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s16 unk8;
-    s16 unkA;
-    s16 unkC;
-    s16 unkE;
-    s16 unk10;
-    s16 unk12;
-    s32 unk14;
-} Struct8002C4D0;
 
 typedef struct {
     // TODO: this is largely copy-pasted from JetpacStruct, but only goes up to 0x48
@@ -2490,20 +2490,17 @@ typedef struct JetpacSpawningInfoSub {
 } JetpacSpawningInfoSub;
 
 typedef struct JetpacSpawningInfo {
-    s32 *sprite;
+    Struct8002C4D0 *sprite;
     JetpacSpawningInfoSub sub;
 } JetpacSpawningInfo;
 
 typedef struct JetpacPickupPrimary {
-    s32 *sprite[2];
+    Struct8002C4D0 *sprite[2];
     f32 posX;
     f32 posY;
     f32 velX;
     f32 velY;
-    u8 red;
-    u8 green;
-    u8 blue;
-    u8 will_render;
+    rgba color;
     s32 unk1C;
     s32 unk20;
     JetpacSpawningInfoSub unk24;

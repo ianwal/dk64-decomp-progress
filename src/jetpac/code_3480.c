@@ -51,7 +51,7 @@ s32 func_jetpac_80027510(Struct80027510 *arg0, f32 arg1, f32 arg2, f32 arg3, f32
     return FALSE;
 }
 
-extern JetpacSpawningInfo D_jetpac_8002D1A0[6];
+extern Struct8002C4D0 D_jetpac_8002D1A0[6];
 extern JetpacPickupStruct D_jetpac_8002DC9C;
 
 void func_jetpac_800275F4(Competitor *arg0) {
@@ -206,7 +206,7 @@ void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
         }
         else
         {
-            func_jetpac_80025700(arg0->primary_info.sprite[0], temp_s6, var_s2, &arg0->primary_info.red, arg0->primary_info.unk20);
+            func_jetpac_80025700(arg0->primary_info.sprite[0], temp_s6, var_s2, &arg0->primary_info.color, arg0->primary_info.unk20);
         }
     }
 }
@@ -229,7 +229,7 @@ void func_jetpac_80027D64(Competitor *arg0) {
         sp24.primary_info.drop_type = (s32)(func_jetpac_80027210() * temp) + 1;
     }
     temp_v1 = &arg0->next_bonus_item;
-    sp24.primary_info.sprite[0] = &D_jetpac_8002D968[sp24.primary_info.drop_type];
+    sp24.primary_info.sprite[0] = &D_jetpac_8002D968[sp24.primary_info.drop_type].sprite;
     *temp_v1 = sp24;
     temp_v1->primary_info.posX = func_jetpac_800274C0();
     arg0->unk_144 = func_jetpac_80027480();
@@ -530,16 +530,7 @@ void func_jetpac_80028950(void) {
     }
 }
 
-typedef struct {
-    void* unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-} Struct8002DC38;
-
-extern Struct8002DC38 D_jetpac_8002DC38[2];
+extern Struct8002C4D0 D_jetpac_8002DC38[2];
 extern rgba D_jetpac_8002DD88;
 void func_jetpac_80025700(void*, s32, s32, rgba*, s32);
 
@@ -554,7 +545,7 @@ void func_jetpac_800289EC(void) {
     rgba = D_jetpac_8002DD88;
     if ((rocket_y = rocket_segment->primary_info.posY) < 116.0f)
     {
-        Struct8002DC38* ptr = &D_jetpac_8002DC38[ABS(((s32)rocket_y / 3) % 2)];
+        Struct8002C4D0* ptr = &D_jetpac_8002DC38[ABS(((s32)rocket_y / 3) % 2)];
         func_jetpac_80025700(ptr, rocket_segment->primary_info.posX, (rocket_y + 48.0f + 4.0f), &rgba, 0);
     }
 
@@ -571,7 +562,7 @@ void func_jetpac_80028B54(Competitor *arg0) {
     s32 i;
     s32 temp = arg0->level / 4;
     for (i = 0; i < 6; i++) {
-        D_jetpac_8002D1A0[i].sprite = D_jetpac_8002D190[temp % 4];
+        D_jetpac_8002D1A0[i].unk0 = D_jetpac_8002D190[temp % 4];
     }    
 }
 
