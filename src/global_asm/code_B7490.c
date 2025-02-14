@@ -47,7 +47,7 @@ void func_global_asm_806B2790(void) {
             break;
         case 0x1:
             current_actor_pointer->x_rotation += (800.0f * func_global_asm_80612794(D_global_asm_807FDC90->unk18 * 0xA));
-            if (((rand() >> 0xF) % 1000) >= 0x3D5) {
+            if (RandChance(0.02)) {
                 func_global_asm_8072AA80();
             }
             func_global_asm_8072A920(current_actor_pointer->control_state, 0, D_global_asm_807FDC94->x_position, D_global_asm_807FDC90->unkC, D_global_asm_807FDC94->z_position, 0x1E, 3.3f, 100.0f, 0x2040);
@@ -166,7 +166,7 @@ void func_global_asm_806B2D64(void) {
         case 0x1:
             func_global_asm_806B2D5C();
             current_actor_pointer->x_rotation += (800.0f * func_global_asm_80612794(D_global_asm_807FDC90->unk18 * 0xA));
-            if (((rand() >> 0xF) % 1000) >= 0x3D5) {
+            if (RandChance(0.02)) {
                 func_global_asm_8072AA80();
             }
             func_global_asm_8072A920(current_actor_pointer->control_state, 0, D_global_asm_807FDC94->x_position, D_global_asm_807FDC90->unkC, D_global_asm_807FDC94->z_position, 0x1E, 3.3f, 100.0f, 0x2040);
@@ -244,7 +244,7 @@ void func_global_asm_806B3420(void) {
     dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
     dy = current_actor_pointer->y_position - D_global_asm_807FDC94->y_position;
     dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
-    if (90000.0f < ((dx * dx) + (dy * dy) + (dz * dz))) {
+    if (SQ(300.0f) < (SQ(dx) + SQ(dy) + SQ(dz))) {
         current_actor_pointer->object_properties_bitfield |= 0x80000000;
     } else {
         current_actor_pointer->object_properties_bitfield &= ~0x80000000;
@@ -332,7 +332,7 @@ void func_global_asm_806B3680(void) {
         dx = D_global_asm_807FDC94->x_position - current_actor_pointer->x_position;
         dy = D_global_asm_807FDC94->y_position - current_actor_pointer->y_position;
         dz = D_global_asm_807FDC94->z_position - current_actor_pointer->z_position;
-        if (((dx * dx) + (dy * dy) + (dz * dz)) < scale) {
+        if ((SQ(dx) + SQ(dy) + SQ(dz)) < scale) {
             current_actor_pointer->control_state = 0x27;
             current_actor_pointer->control_state_progress = 0;
         }
@@ -459,7 +459,7 @@ void func_global_asm_806B3E7C(void) {
 }
 
 void func_global_asm_806B3F3C(void) {
-    if (((rand() >> 0xF) % 1000) >= 996) {
+    if (RandChance(0.005)) {
         current_actor_pointer->control_state = 0x1C;
         current_actor_pointer->control_state_progress = 0;
     }
@@ -487,7 +487,7 @@ s32 func_global_asm_806B3F90(GlobalASMStruct91 *arg0, u8 arg1) {
 
     dz = arg0->unkE - current_actor_pointer->z_position;
     dx = arg0->unkA - current_actor_pointer->x_position;
-    temp_f16 = sqrtf((dz * dz) + (dx * dx));
+    temp_f16 = sqrtf(SQ(dz) + SQ(dx));
     var_f18 = MAX(0.0001, (temp_f16 / MAX(0.0001, current_actor_pointer->unkB8)));
     current_actor_pointer->y_velocity = 0.0f;
     var_f16 = (current_actor_pointer->y_position < arg0->unkC) ? 0.0f : current_actor_pointer->y_position - arg0->unkC;
@@ -767,7 +767,7 @@ void func_global_asm_806B4DCC(void) {
             current_actor_pointer->control_state_progress = 0;
             playActorAnimation(current_actor_pointer, 0x248);
             func_global_asm_8069E5B8();
-            playSong(0x14, 1.0f);
+            playSong(MUSIC_20_OH_BANANA, 1.0f);
             func_global_asm_8063DA40(0x7F, 0xA);
         }
     }
@@ -851,11 +851,11 @@ void func_global_asm_806B52DC(void) {
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FDC98->unk46 |= 0x60;
         D_global_asm_807FDC98->unk46 &= ~0x08;
-        current_actor_pointer->unkB8 = ((rand() >> 0xF) % 100) + 0x12C;
+        current_actor_pointer->unkB8 = RandClamp(100) + 0x12C;
         current_actor_pointer->y_position += (rand() >> 0xF) % 30;
         current_actor_pointer->object_properties_bitfield &= ~0x8000;
         current_actor_pointer->shadow_opacity = 0;
-        current_actor_pointer->unkEC = ((rand() >> 0xF) % 7) + 0xF;
+        current_actor_pointer->unkEC = RandClamp(7) + 0xF;
     }
     func_global_asm_8067ACB4(current_actor_pointer);
     func_global_asm_806653C0(current_actor_pointer, current_actor_pointer->unkB8, 0);
@@ -915,7 +915,7 @@ void func_global_asm_806B54BC(void) {
         current_actor_pointer->unkB8 = 40.0f;
         current_actor_pointer->control_state = 0x23;
         current_actor_pointer->control_state_progress = 0;
-        current_actor_pointer->unkEC = ((rand() >> 0xF) % 7) + 0xF;
+        current_actor_pointer->unkEC = RandClamp(7) + 0xF;
         temp_s1->unk0 = current_actor_pointer->x_position;
         temp_s1->unk4 = current_actor_pointer->y_position;
         temp_s1->unk8 = current_actor_pointer->z_position;

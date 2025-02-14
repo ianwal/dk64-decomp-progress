@@ -721,26 +721,28 @@ void func_global_asm_806E8F68(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806E9070.s")
-
-/*
-// TODO: D_global_asm_80767CC0 might be a struct.280 access, or an array? idk
 void func_global_asm_806E9070(void) {
+    RaceAdditionalActorData *RaaD;
+
+    RaaD = extra_player_info_pointer->vehicle_actor_pointer->RaaD;
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
-        extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
+        extra_player_info_pointer->unk58 = D_global_asm_80767A40.unk280;
     }
-    if (((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU) && extra_player_info_pointer->vehicle_actor_pointer->RaaD->unk0 == 0) {
-        extra_player_info_pointer->vehicle_actor_pointer->y_velocity = D_global_asm_80750338;
-        extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
-        playAnimation(current_actor_pointer, 0x7C);
-        if (current_actor_pointer->unk58 == ACTOR_DK) {
-            playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x294);
-        } else {
-            playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x293);
-        }
+    if ((D_global_asm_80767A40.unk280 - extra_player_info_pointer->unk58) > 0xEU) {
+        return;
+    }
+    if (RaaD->unk0) {
+        return;
+    }
+    extra_player_info_pointer->vehicle_actor_pointer->y_velocity = D_global_asm_80750338;
+    extra_player_info_pointer->unk58 = D_global_asm_80767A40.unk280 - 0x1E;
+    playAnimation(current_actor_pointer, 0x7C);
+    if (current_actor_pointer->unk58 == ACTOR_DK) {
+        playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x294);
+    } else {
+        playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x293);
     }
 }
-*/
 
 void func_global_asm_806E918C(void) {
     f32 sp54;
@@ -1108,23 +1110,20 @@ void func_global_asm_806EA600(void) {
     func_global_asm_806EA5CC();
 }
 
-// close, float, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_EBBE0/func_global_asm_806EA628.s")
-
 f32 func_global_asm_806EA2D8(void);
 
-/*
 void func_global_asm_806EA628(void) {
     PlayerAdditionalActorData *temp_a0;
+    s32 pad;
     f32 *temp_v0;
     s16 *temp_v1;
 
     if (!(extra_player_info_pointer->unk1F0 & 0x8000)) {
         temp_a0 = extra_player_info_pointer->unk104->additional_actor_data;
         temp_v1 = &temp_a0->unkB2;
-        *temp_v1 = (D_global_asm_807FD610[cc_player_index].unk2E * 0.08 * func_global_asm_806EA2D8() * 4096.0) / 360.0;
+        *temp_v1 -= (D_global_asm_807FD610[cc_player_index].unk2E * 0.08 * func_global_asm_806EA2D8() * 4096.0) / 360.0;
         temp_v0 = &temp_a0->unkB8;
-        *temp_v0 = D_global_asm_807FD610[cc_player_index].unk2F * 0.04 * func_global_asm_806EA2D8();
+        *temp_v0 += D_global_asm_807FD610[cc_player_index].unk2F * 0.04 * func_global_asm_806EA2D8();
         *temp_v1 &= 0xFFF;
         if (temp_a0->unkBC + 0x32 < *temp_v0) {
             *temp_v0 = temp_a0->unkBC + 0x32;
@@ -1135,7 +1134,6 @@ void func_global_asm_806EA628(void) {
         current_actor_pointer->y_rotation = (temp_a0->unkB2 + 0x800) & 0xFFF;
     }
 }
-*/
 
 void func_global_asm_806EA7E8(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (A_BUTTON | B_BUTTON)) == A_BUTTON) {

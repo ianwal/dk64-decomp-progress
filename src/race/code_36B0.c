@@ -139,7 +139,7 @@ f32 func_race_80027880(s32 arg0, u16 arg1, u16 arg2) {
     dx = D_global_asm_807F5FD4->unk0[arg1][arg2].unk0 - D_global_asm_807F5FD4->unk0[arg1][temp].unk0;
     dy = D_global_asm_807F5FD4->unk0[arg1][arg2].unk4 - D_global_asm_807F5FD4->unk0[arg1][temp].unk4;
     dz = D_global_asm_807F5FD4->unk0[arg1][arg2].unk8 - D_global_asm_807F5FD4->unk0[arg1][temp].unk8;
-    return sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+    return sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
 }
 */
 
@@ -352,7 +352,7 @@ void func_race_80028E20(Struct80028E20_arg0 *arg0) {
             dx = x - var_a2[j].unk0;
             dy = y - var_a2[j].unk4;
             dz = z - var_a2[j].unk8;
-            d = (dx * dx) + (dy * dy) + (dz * dz);
+            d = SQ(dx) + SQ(dy) + SQ(dz);
             if (d < lowest) {
                 arg0->unk2 = j;
                 arg0->unk0 = i;

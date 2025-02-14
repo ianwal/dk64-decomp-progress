@@ -60,7 +60,7 @@ void func_global_asm_806A1580(void) {
         if (D_global_asm_807FBD70 == 4) {
             if (current_actor_pointer->unk132 == 4) {
                 current_actor_pointer->unk132 = 8;
-                playSong(0x43, 1.0f);
+                playSong(MUSIC_67_CHECKPOINT, 1.0f);
                 func_global_asm_80679200(sp30, current_actor_pointer, 0x02000000, sp36, 0, 0);
             } else {
                 current_actor_pointer->unk132 *= 2;
@@ -156,7 +156,7 @@ void func_global_asm_806A1AC4(void) {
                 case 0:
                     if ((object_timer & 7) == 0) {
                         for (i = 0; i < 0xC; i++) {
-                            randomScale = ((((rand() >> 0xF) % 32767) % 171) + 0x96) * 0.01;
+                            randomScale = ((RandClamp(32767) % 171) + 0x96) * 0.01;
                             func_global_asm_8071498C(func_global_asm_8071E864);
                             func_global_asm_80714950(i);
                             func_global_asm_807149B8(1);
@@ -270,7 +270,7 @@ void func_global_asm_806A1FD8(void) {
     if ((aaD->unk0 < 0xA) && (aaD->unk0 != 0)) {
         aaD->unk4 = aaD->unk4 + 1.0;
         if (aaD->unk4 > 20.0) {
-            playSong(0x90, 1.0f);
+            playSong(MUSIC_144_DROP_RAINBOW_COIN, 1.0f);
             deleteActor(current_actor_pointer);
         }
     }
@@ -295,7 +295,7 @@ void func_global_asm_806A2328(void) {
         current_actor_pointer->unkF0 = ((player_pointer->y_position + player_pointer->unk15E) - current_actor_pointer->y_position) * 0.5;
         dx = current_actor_pointer->x_position - player_pointer->x_position;
         dz = current_actor_pointer->z_position - player_pointer->z_position;
-        current_actor_pointer->unkEC = sqrtf((dx * dx) + (dz * dz)) * 0.5;
+        current_actor_pointer->unkEC = sqrtf(SQ(dx) + SQ(dz)) * 0.5;
         aaD->unk0 = current_actor_pointer->x_position + ((player_pointer->x_position - current_actor_pointer->x_position) * 0.5);
         aaD->unk2 = current_actor_pointer->y_position + ((player_pointer->y_position - current_actor_pointer->y_position) * 0.5);
         aaD->unk4 = current_actor_pointer->z_position + ((player_pointer->z_position - current_actor_pointer->z_position) * 0.5);

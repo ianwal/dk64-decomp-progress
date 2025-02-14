@@ -469,7 +469,7 @@ void func_global_asm_807273A8(s16 arg0, u8 arg1) {
 
     temp_t0 = D_global_asm_807FDC98->unk20[arg1].unk0;
     sp34 = (func_global_asm_80665AE4(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, D_global_asm_807FDCA0->unk14[temp_t0].unk0, D_global_asm_807FDCA0->unk14[temp_t0].unk4) * 4096.0f) / 360.0f;
-    if (func_global_asm_807271F4(arg0, D_global_asm_807FDCA0->unk14[temp_t0].unk0, D_global_asm_807FDCA0->unk14[temp_t0].unk2, D_global_asm_807FDCA0->unk14[temp_t0].unk4, sp34, ((rand() >> 0xF) % 100) + 0x64, ((rand() >> 0xF) % 100) + 0xC8) != 0) {
+    if (func_global_asm_807271F4(arg0, D_global_asm_807FDCA0->unk14[temp_t0].unk0, D_global_asm_807FDCA0->unk14[temp_t0].unk2, D_global_asm_807FDCA0->unk14[temp_t0].unk4, sp34, RandClamp(100) + 0x64, RandClamp(100) + 0xC8) != 0) {
         last_spawned_actor->control_state = 0x17;
         last_spawned_actor->control_state_progress = 0;
     }
@@ -660,7 +660,7 @@ void func_global_asm_80727958(void) {
                         PaaD = character_change_array->player_pointer->PaaD;
                         dz = current_actor_pointer->z_position - character_change_array[j].player_pointer->z_position;
                         dx = current_actor_pointer->x_position - character_change_array[j].player_pointer->x_position;
-                        temp_f16 = (dz * dz) + (dx * dx);
+                        temp_f16 = SQ(dz) + SQ(dx);
                         if ((temp_f16 < min_dist) || (PaaD->unkD4 != 0)) {
                             min_dist = temp_f16;
                             D_global_asm_807FDC90->unk4 = character_change_array[j].player_pointer;
@@ -722,21 +722,16 @@ u8 func_global_asm_807280C8(EnemyInfo *arg0, s32 arg1) {
             && !func_global_asm_80652F24(0, arg0->unk40));
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_8072818C.s")
-
-/*
 u8 func_global_asm_8072818C(EnemySpawner *arg0, s32 arg1) {
-    f32 temp_f0;
+    s32 temp_f0;
 
     temp_f0 = sqrtf(arg1) * 1.5;
     return ((arg0->tied_actor->interactable & 2) && !(arg0->properties_bitfield & 0x20) && arg0->init.something_spawn_state == 2)
-        && ((temp_f0) * (temp_f0)) < 
-            ((character_change_array[0].look_at_eye_z - arg0->tied_actor->z_position) * (character_change_array[0].look_at_eye_z - arg0->tied_actor->z_position))
-            + ((character_change_array[0].look_at_eye_y - arg0->tied_actor->y_position) * (character_change_array[0].look_at_eye_y - arg0->tied_actor->y_position))
-            + ((character_change_array[0].look_at_eye_x - arg0->tied_actor->x_position) * (character_change_array[0].look_at_eye_x - arg0->tied_actor->x_position));
+        && (SQ(temp_f0)) < 
+            (SQ(character_change_array[0].look_at_eye_x - arg0->tied_actor->x_position))
+            + (SQ(character_change_array[0].look_at_eye_y - arg0->tied_actor->y_position))
+            + (SQ(character_change_array[0].look_at_eye_z - arg0->tied_actor->z_position));
 }
-*/
 
 void func_global_asm_8072827C(Struct80755690_unk4 *arg0) {
     s16 i;
@@ -877,16 +872,13 @@ void func_global_asm_80728300(s16 *file, FenceDataStruct *fence, SpawnerDataStru
 }
 */
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_1295B0/func_global_asm_8072881C.s")
-
-/*
 u8 func_global_asm_8072881C(u8 arg0, u32 *arg1) {
     u8 phi_v1 = FALSE;
     if ((arg0 & 0x80)
         || (*arg1 + 50 < object_timer
-            && !(((rand() >> 0xF) % 1000) < 0x3C1)
+            && (RandChance(0.04))
             && !func_global_asm_80688540(current_actor_pointer, arg0))) {
+        arg0 &= 0x7F;
         func_global_asm_80688370(current_actor_pointer, arg0, 1.0f);
         func_global_asm_806883C8(current_actor_pointer, arg0, 1);
         func_global_asm_8068839C(current_actor_pointer, arg0, 0);
@@ -899,7 +891,6 @@ u8 func_global_asm_8072881C(u8 arg0, u32 *arg1) {
     }
     return phi_v1;
 }
-*/
 
 void func_global_asm_80728950(u8 arg0) {
     func_global_asm_8068842C(current_actor_pointer, arg0, 1);

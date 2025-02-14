@@ -104,7 +104,7 @@ s32 func_global_asm_80732B3C(Struct80732B3C *arg0, f32 *arg1) {
                 sp28->unk24 = 0;
             }
             sp2C = (f32)sp28->unk24 / sp28->unk22;
-            sp2C = func_global_asm_80612D1C(sp2C * 6.283185482f);
+            sp2C = func_global_asm_80612D1C(sp2C * MATH_2PI_F);
             sp2C = sp2C * sp28->unk28[0];
             *arg1 = sp28->unk28[1] + sp2C;
             break;
@@ -114,7 +114,7 @@ s32 func_global_asm_80732B3C(Struct80732B3C *arg0, f32 *arg1) {
                 sp28->unk24 = 0;
             }
             sp2C = (f32)sp28->unk24 / sp28->unk22;
-            sp2C = func_global_asm_80612D1C(sp2C * 6.283185482f) * sp28->unk28_f32;
+            sp2C = func_global_asm_80612D1C(sp2C * MATH_2PI_F) * sp28->unk28_f32;
             *arg1 = func_global_asm_80739FE0(sp2C);
             break;
         default:

@@ -90,10 +90,10 @@ void func_global_asm_8070FA58(Struct8070FA58 *arg0) {
     arg0->unk1C = character_change_array->look_at_eye_z;
     var_f12 = character_change_array->unk2C4 - arg0->unk14;
     if (3.141592741f < var_f12) {
-        var_f12 = 6.283185482f - var_f12;
+        var_f12 = MATH_2PI_F - var_f12;
     }
     if (var_f12 < -3.141592741f) {
-        var_f12 = -6.283185482f - var_f12;
+        var_f12 = -MATH_2PI_F - var_f12;
     }
     arg0->unk4 += ((var_f12 * 180.0f) - (0.3 * D_global_asm_807FDA1E));
     sp30 = temp_f2_2;
@@ -174,24 +174,18 @@ u8 func_global_asm_80710174(Struct8071006C_arg0 *arg0) {
     return (arg0->unkC > 240.0f || arg0->unkB1 < 0xA);
 }
 
-// TODO: close, float thing needs to be broken up I think, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_807102AC.s")
-
-/*
 u8 func_global_asm_807102AC(Struct8071006C_arg0 *arg0) {
     s32 var_v1;
-    u8 temp_v0;
-    f64 temp;
+    f32 temp;
 
     func_global_asm_8070FA58(arg0);
     arg0->unk4 += (func_global_asm_80612794(arg0->unk20) * arg0->unk28);
     func_global_asm_8070FC40(arg0);
     arg0->unk8 = arg0->unk4;
-    temp_v0 = arg0->unkB0;
+    temp = ((1.0 / (arg0->unk10 * 3.0)) * 8.0);
+    arg0->unkC = arg0->unkC + ((10.0f - (((temp) - 10.0f)) + 10.0f) * 0.07);
     arg0->unk20 += 0x32;
-    arg0->unkB0 = temp_v0 + 1;
-    arg0->unkC += (((10.0f - (((1.0 / (arg0->unk10 * 3.0)) * 8.0) - 10.0f)) + 10.0f) * 0.07);
-    if (temp_v0 >= 0x6F) {
+    if (arg0->unkB0++ >= 0x6F) {
         if (arg0->unkB1 >= 0xA) {
             arg0->unkB1 -= 0xA;
         }
@@ -205,7 +199,6 @@ u8 func_global_asm_807102AC(Struct8071006C_arg0 *arg0) {
     }
     return var_v1;
 }
-*/
 
 // regalloc
 // https://decomp.me/scratch/sk00B
@@ -284,7 +277,7 @@ void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4) 
         }
         D_global_asm_8077058C = var_f0 * arg2;
         if (arg0 < 1.0) {
-            if ((((rand() >> 0xF) % 32767) % 100) < (arg0 * 100.0f)) {
+            if ((RandClamp(32767) % 100) < (arg0 * 100.0f)) {
                 var_s5 = 1;
             } else {
                 var_s5 = 0;
@@ -295,8 +288,8 @@ void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4) 
         D_global_asm_807FDA1B = (*D_global_asm_8076A0B4 * 100.0f) + 100.0f;
         temp_f26 = D_global_asm_8075E568;
         for (i = 0; i != var_s5; i++) {
-            temp_f22 = ((rand() >> 0xF) % 32767) % 320;
-            func_global_asm_8070F5CC(0, arg3, (((((rand() >> 0xF) % 32767) % 125) / 800.0) + temp_f26) * 2.5 * arg4, temp_f22, -0xA, (90.0f * arg4));
+            temp_f22 = RandClamp(32767) % 320;
+            func_global_asm_8070F5CC(0, arg3, (((RandClamp(32767) % 125) / 800.0) + temp_f26) * 2.5 * arg4, temp_f22, -0xA, (90.0f * arg4));
         }
         if (D_global_asm_807550E0->unk0 != 0) {
             addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1);
@@ -307,6 +300,43 @@ void func_global_asm_80711410(f32 arg0, s16 arg1, f32 arg2, s16 arg3, f32 arg4) 
 
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711950.s")
+
+/*
+void func_global_asm_80711950(f32 arg0, s16 arg1, s16 arg2) {
+    f64 var_f18;
+    s32 var_s0;
+    s32 var_s4;
+    u32 temp_hi;
+    u32 r;
+    f32 temp;
+
+    if (global_properties_bitfield & 0x10) {
+        D_global_asm_807FDA1E = (func_global_asm_80612D10(character_change_array->unk2C4) * (f32) arg1);
+        if (arg0 < 1.0) {
+            temp = arg0 * 100.0f;
+            r = (func_global_asm_806119A0() / 10000U) % 100U;
+            if (temp > r) {
+                var_s4 = 1;
+            } else {
+                var_s4 = 0;
+            }
+        } else {
+            var_s4 = arg0;
+        }
+        D_global_asm_807FDA1B = 0xFF;
+        var_s0 = 0;
+        for (var_s0 = 0; var_s0 < var_s4; var_s0++) {
+            var_f18 = (func_global_asm_806119A0() / 10000U) % 125U;
+            r = (func_global_asm_806119A0() / 10000U) % 320U;
+            func_global_asm_8070F5CC(1, arg2, ((f32) (var_f18 / 1000.0) + 0.075), r, -0xA, 0xC8U);
+        }
+        if (D_global_asm_807550E0->unk0 != 0) {
+            addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1U);
+        }
+    }
+}
+*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_114270/func_global_asm_80711BD0.s")
 
@@ -321,7 +351,7 @@ void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) 
 
     D_global_asm_807FDA1E = func_global_asm_80612D10(character_change_array->unk2C4) * arg1;
     if (arg0 < 1.0) {
-        if ((((rand() >> 0xF) % 32767) % 100) < (arg0 * 100.0f)) {
+        if ((RandClamp(32767) % 100) < (arg0 * 100.0f)) {
             var_s4 = 1;
         } else {
             var_s4 = 0;
@@ -331,8 +361,8 @@ void func_global_asm_80711F90(f32 arg0, s16 arg1, s32 arg2, s16 arg3, f32 arg4) 
     }
     D_global_asm_807FDA1B = 0xFF;
     for (i = 0; i < var_s4; i++) {
-        temp_f22 = ((rand() >> 0xF) % 0x7FFF) % 320;
-        func_global_asm_8070F5CC(2, arg3, (((((rand() >> 0xF) % 0x7FFF) % 125) / 800.0) + 0.1) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
+        temp_f22 = RandClamp(0x7FFF) % 320;
+        func_global_asm_8070F5CC(2, arg3, (((RandClamp(0x7FFF) % 125) / 800.0) + 0.1) * 2.5 * arg4, temp_f22, -0xA, 0xFF);
     }
     if (D_global_asm_807550E0->unk0 != 0) {
         addActorToTextOverlayRenderArray(func_global_asm_80710CA0, NULL, 1);
@@ -385,14 +415,6 @@ s32 func_global_asm_80712548(void) {
     // Count blueprints turned + 10
     return countSetFlags(0x1FD, 40, FLAG_TYPE_PERMANENT) + 10;
 }
-
-typedef struct {
-    OSTime unk0;
-    s32 unk8;
-    s32 unkC;
-    u8 unk10;
-    u8 unk11;
-} Struct80755340;
 
 extern Struct80755340 D_global_asm_80755340;
 extern u16 D_global_asm_80755358[];
@@ -464,7 +486,7 @@ s32 func_global_asm_80712798(void) {
 
 void func_global_asm_807127B4(void) {
     func_global_asm_805FFFC8();
-    // Unknown flag block right after Aztec Caption Seen
+    // Dummy flag to give the game over cutscene in the mystery menu
     setFlag(0x314, TRUE, FLAG_TYPE_PERMANENT);
     func_global_asm_807124B8(MAP_HELM_LEVEL_INTROS_GAME_OVER, 0x17, GAME_MODE_QUIT_GAME); // initMapFade()
 }

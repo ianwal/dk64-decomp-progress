@@ -86,7 +86,7 @@ void func_global_asm_806C6884(s16 arg0, s16 arg1, u16 arg2) {
     initializeCharacterSpawnerActor();
     dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
     dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
-    d = sqrtf((dx * dx) + (dz * dz));
+    d = sqrtf(SQ(dx) + SQ(dz));
     if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
         a178 = current_actor_pointer->unk178;
         current_actor_pointer->unk64 |= 4;
@@ -199,7 +199,7 @@ void func_global_asm_806C6BC8(void) {
                     case 0:
                     case 4:
                         func_global_asm_80685020(3, 1);
-                        if ((current_actor_pointer->control_state_progress == 0) && (((rand() >> 0xF) % 1000) >= 0x3DF)) {
+                        if ((current_actor_pointer->control_state_progress == 0) && (RandChance(0.01))) {
                             current_actor_pointer->control_state_progress = 3;
                         }
                         if ((current_actor_pointer->unk11C->control_state == 5) || (player_pointer->unk58 != ACTOR_DIDDY)) {

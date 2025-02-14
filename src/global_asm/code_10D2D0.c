@@ -90,9 +90,9 @@ void func_global_asm_80708C24(s32 playerIndex, CharacterChange *arg1, PlayerProg
     s32 segmentsPerMelon;
     u8 sp28;
 
-    sp28 = arg1->unk2E2;
+    sp28 = arg1->unk2DC.unk6;
     if (sp28 & 0x10) {
-        arg1->unk2E2 ^= 0x10;
+        arg1->unk2DC.unk6 ^= 0x10;
         if (arg2->unk2FD > 0) {
             segmentsPerMelon = func_global_asm_8070943C();
             arg2->health = MIN(arg2->health + arg2->unk2FD, arg2->melons * segmentsPerMelon);
@@ -102,7 +102,7 @@ void func_global_asm_80708C24(s32 playerIndex, CharacterChange *arg1, PlayerProg
             }
             if (arg2->health <= 0) {
                 arg2->health = 0;
-                arg1->unk2E6 = 0xC;
+                arg1->unk2DC.unkA = 0xC;
                 if (cc_number_of_players >= 2) {
                     func_multiplayer_80026B0C(playerIndex);
                 }
@@ -113,10 +113,10 @@ void func_global_asm_80708C24(s32 playerIndex, CharacterChange *arg1, PlayerProg
         arg2->unk2FD = 0;
     }
     if ((!(global_properties_bitfield & 2) && func_global_asm_805FCA64()) || (sp28 & 0x80)) {
-        arg1->unk2E5--;
-        if (arg1->unk2E5 == 0) {
-            arg1->unk2E5 = 0x11;
-            arg1->unk2E4 = 3;
+        arg1->unk2DC.unk9--;
+        if (arg1->unk2DC.unk9 == 0) {
+            arg1->unk2DC.unk9 = 0x11;
+            arg1->unk2DC.unk8 = 3;
         }
     }
 }
@@ -136,13 +136,13 @@ Gfx *func_global_asm_80708DA4(Gfx *dl, s16 playerIndex, CharacterChange* arg2) {
     sp28 = &D_global_asm_807FC950[playerIndex];
     temp_a0 = cc_number_of_players == 1;
     var_t0 = arg2->unk2E4;
-    temp = arg2->unk2E2;
+    temp = arg2->unk2DC.unk6;
     if (!temp_a0) {
         var_t0 = 0;
     }
     if (!temp_a0) {
         func_global_asm_80708C24(playerIndex, arg2, sp28, sp38);
-        arg2->unk2E2 &= 0xFFEA;
+        arg2->unk2DC.unk6 &= 0xFFEA;
     }
     if (temp & 0x10) {
         switch (var_t0) {
@@ -156,7 +156,7 @@ Gfx *func_global_asm_80708DA4(Gfx *dl, s16 playerIndex, CharacterChange* arg2) {
         }
     }
     if (temp & 1) {
-        arg2->unk2E2 ^= 1;
+        arg2->unk2DC.unk6 ^= 1;
         switch (var_t0) {
             case 1:
                 break;
@@ -172,8 +172,8 @@ Gfx *func_global_asm_80708DA4(Gfx *dl, s16 playerIndex, CharacterChange* arg2) {
     } else if (temp & 4) {
         arg2->unk2E5 = 1;
         arg2->unk2E4 = 2;
-        arg2->unk2E2 ^= 4;
-        arg2->unk2E2 &= 8;
+        arg2->unk2DC.unk6 ^= 4;
+        arg2->unk2DC.unk6 &= 8;
     } else {
         switch (var_t0) {
             case 1:
@@ -194,8 +194,8 @@ Gfx *func_global_asm_80708DA4(Gfx *dl, s16 playerIndex, CharacterChange* arg2) {
                 break;
         }
     }
-    if (func_global_asm_805FCA64() || (arg2->unk2E2 & 0x80)) {
-        if (arg2->unk2E4 != 0 || arg2->unk2E2 != 0) {
+    if (func_global_asm_805FCA64() || (arg2->unk2DC.unk6 & 0x80)) {
+        if (arg2->unk2E4 != 0 || arg2->unk2DC.unk6 != 0) {
             dl = func_global_asm_807085D0(dl, sp28, sp38, arg2);
         }
     }
@@ -207,11 +207,11 @@ Gfx *func_global_asm_80709344(Gfx *dl) {
     s16 i;
     for (i = 0; i < cc_number_of_players; i++) {
         if (character_change_array[i].does_player_exist) {
-            if (!(character_change_array[i].unk2E2 & 0x20)
-            && (((character_change_array[i].unk2E4
-                || character_change_array[i].unk2E2)
+            if (!(character_change_array[i].unk2DC.unk6 & 0x20)
+            && (((character_change_array[i].unk2DC.unk8
+                || character_change_array[i].unk2DC.unk6)
                 && (D_global_asm_80744504 == 0))
-                || (character_change_array[i].unk2E2 & 0x10))) {
+                || (character_change_array[i].unk2DC.unk6 & 0x10))) {
                 dl = func_global_asm_80708DA4(dl, i, &character_change_array[i]);
             }
         }

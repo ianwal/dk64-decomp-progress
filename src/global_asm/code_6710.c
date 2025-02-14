@@ -125,8 +125,8 @@ typedef struct {
     u8 unk1;
     u8 unk2;
     u8 unk3;
-    s32 unk4;
-    s32 unk8;
+    ALLink *unk4;
+    ALLink *unk8;
 } Struct80770188;
 
 int func_global_asm_80602144();
@@ -136,7 +136,7 @@ extern s32 D_global_asm_8076FE68;
 
 void *func_global_asm_806022DC(s32 *arg0) {
     if (D_global_asm_80770188.unk0 == 0) {
-        D_global_asm_80770188.unk4 = 0;
+        D_global_asm_80770188.unk4 = NULL;
         D_global_asm_80770188.unk8 = &D_global_asm_8076FE68;
         D_global_asm_80770188.unk0 = 1;
     }
@@ -144,53 +144,42 @@ void *func_global_asm_806022DC(s32 *arg0) {
     return func_global_asm_80602144;
 }
 
-// Libultra stuff osRecvMesg, alUnlink, alLink
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80602314.s")
-
-/*
 extern OSMesgQueue D_807704A8;
 extern u32 D_global_asm_807452C0;
 extern u32 D_global_asm_807452C4;
-extern ? D_global_asm_80770188;
 
 void func_global_asm_80602314(void) {
+    ALLink *next;
     void *sp40;
-    ALLink *temp_v0;
-    ALLink *var_s0_2;
-    u32 var_s0;
+    ALLink *current;
+    u32 i;
 
     sp40 = NULL;
-    var_s0 = 0;
-    if (D_global_asm_807452C4 != 0) {
-        do {
-            osRecvMesg(&D_807704A8, &sp40, 0);
-            var_s0 += 1;
-        } while (var_s0 < D_global_asm_807452C4);
+    for (i = 0; i < D_global_asm_807452C4; i++) {
+        osRecvMesg(&D_807704A8, &sp40, 0);
     }
-    var_s0_2 = D_global_asm_80770188.unk4;
-    if (var_s0_2 != NULL) {
-        do {
-            temp_v0 = var_s0_2->next;
-            if ((var_s0_2->unkC + 1) < D_global_asm_807452C0) {
-                if (var_s0_2 == D_global_asm_80770188.unk4) {
-                    D_global_asm_80770188.unk4 = temp_v0;
-                }
-                alUnlink(var_s0_2);
-                if (D_global_asm_80770188.unk8 != NULL) {
-                    alLink(var_s0_2, D_global_asm_80770188.unk8);
-                } else {
-                    D_global_asm_80770188.unk8 = var_s0_2;
-                    var_s0_2->next = NULL;
-                    var_s0_2->prev = NULL;
-                }
+    current = D_global_asm_80770188.unk4;
+    while (current != NULL) {
+        next = current->next;
+        // TODO: What's going on in this comparison?
+        if ((((s32*)current)[3] + 1) < D_global_asm_807452C0) {
+            if (current == D_global_asm_80770188.unk4) {
+                D_global_asm_80770188.unk4 = current->next;
             }
-            var_s0_2 = temp_v0;
-        } while (temp_v0 != NULL);
+            alUnlink(current);
+            if (D_global_asm_80770188.unk8 != NULL) {
+                alLink(current, D_global_asm_80770188.unk8);
+            } else {
+                D_global_asm_80770188.unk8 = current;
+                current->next = NULL;
+                current->prev = NULL;
+            }
+        }
+        current = next;
     }
     D_global_asm_807452C4 = 0;
-    D_global_asm_807452C0 += 1;
+    D_global_asm_807452C0++;
 }
-*/
 
 u8 func_global_asm_80602430(s16 arg0) {
     return ((D_global_asm_80745658[arg0] & 6) >> 1);
@@ -258,15 +247,15 @@ void func_global_asm_806025AC(s32 arg0, s32 arg1, s32 arg2) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_806025D4.s")
 
-void playSong(s32 arg0, f32 arg1) {
+void playSong(MUSIC_E song, f32 arg1) {
     u8 i;
     u8 temp_v0;
 
-    temp_v0 = func_global_asm_8060245C(arg0);
-    if (arg0 != 0) {
+    temp_v0 = func_global_asm_8060245C(song);
+    if (song != MUSIC_0_SILENCE) {
         s32 temp = D_global_asm_807458DC[temp_v0];
-        if (arg0 != temp || (D_global_asm_80745658[arg0] & 0x200)) {
-            D_global_asm_807458DC[temp_v0] = arg0;
+        if (song != temp || (D_global_asm_80745658[song] & 0x200)) {
+            D_global_asm_807458DC[temp_v0] = song;
             D_global_asm_807458F4[temp_v0] = arg1;
             D_global_asm_80745924[temp_v0] = 0;
             for (i = 0; i < 4; i++) {
@@ -392,14 +381,14 @@ f32 func_global_asm_80602E6C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, f32
     if ((var_f0 < D_global_asm_807567C0) && (dy < 0.0f)) {
         dy *= 20.0f;
     }
-    D_80770DE4 = sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+    D_80770DE4 = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
     if (D_global_asm_807567B8 <= arg5) {
         dz = character_change_array->look_at_at_z - character_change_array->look_at_eye_z;
         dx = character_change_array->look_at_at_x - character_change_array->look_at_eye_x;
-        sp18 = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, character_change_array->look_at_at_y, sqrtf((dz * dz) + (dx * dx)));
+        sp18 = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, character_change_array->look_at_at_y, sqrtf(SQ(dz) + SQ(dx)));
         dz = arg2 - character_change_array->look_at_eye_z;
         dx = arg0 - character_change_array->look_at_eye_x;
-        D_80770DDC = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, arg1, sqrtf((dz * dz) + (dx * dx))) - sp18;
+        D_80770DDC = func_global_asm_80665E48(character_change_array->look_at_eye_y, 0.0f, arg1, sqrtf(SQ(dz) + SQ(dx))) - sp18;
         if (D_80770DDC < 0.0f) {
             D_80770DDC += D_global_asm_807567C8;
         }
@@ -534,24 +523,17 @@ void func_global_asm_80604C80(u8 arg0, u8 arg1) {
     }
 }
 
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80604CBC.s")
-
 s16 func_global_asm_80604D70(Actor *arg0, s16 arg1, u8 arg2, s32 arg3, u8 arg4, f32 arg5, s8 arg6);
 
-/*
-// TODO: Very close, call to func_global_asm_80605314 is pulling a1 from temp reg instead of stack
 void func_global_asm_80604CBC(Actor *arg0, s16 arg1, u8 arg2, u8 arg3, u8 arg4, u8 arg5, f32 arg6, s8 arg7) {
     if (arg0->unk6E[arg4] != -1) {
-        if (arg1 != D_80770710[D_global_asm_80770628[arg0->unk6E[arg4]]]) {
-            func_global_asm_80605314(arg0, arg4);
-        } else {
+        if (arg1 == D_80770710[D_global_asm_80770628[arg0->unk6E[arg4]]]) {
             return;
         }
+        func_global_asm_80605314(arg0, arg4);
     }
     arg0->unk6E[arg4] = func_global_asm_80604D70(arg0, arg1, arg2, arg3, arg5, arg6, arg7);
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80604D70.s")
 

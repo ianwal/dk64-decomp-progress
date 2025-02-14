@@ -179,58 +179,42 @@ void func_global_asm_80699914(void) {
 // Huge, lots of ActorAnimationState stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_80699958.s")
 
-// doable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A614.s")
-
 typedef struct {
     u8 unk0[0x98 - 0x0];
-    f32 unk98;
-    u8 unk9C[0xA8 - 0x9C];
-    f32 unkA8;
-    u8 unkAC[0xB8 - 0xAC];
-    u8 unkB8;
-} AAD_8069A614_unk0;
-
-typedef struct {
-    AAD_8069A614_unk0 *unk0[4];
+    f32 unk98[4];
+    f32 unkA8[4];
+    u8 unkB8[4];
 } AAD_8069A614;
 
-/*
 void func_global_asm_8069A614(f32 arg0, u8 arg1) {
-    f64 temp_f0;
     s16 i;
     s32 found;
     AAD_8069A614 *aaD;
-    AAD_8069A614_unk0 *temp_v1;
 
     aaD = current_actor_pointer->additional_actor_data;
     found = FALSE;
     i = 0;
     while (i < 4 && !found) {
-        temp_v1 = aaD->unk0[i];
-        if (!temp_v1->unkB8) {
+        if (!aaD->unkB8[i]) {
             found = TRUE;
         } else {
             i++;
         }
     }
     if (found) {
-        temp_v1->unkB8 = TRUE;
+        aaD->unkB8[i] = TRUE;
         switch (arg1) {
             case 0:
-                temp_f0 = arg0 / 843.0;
-                temp_v1->unkA8 = 10.0f;
-                temp_v1->unk98 = ABS(temp_f0);
+                aaD->unkA8[i] = 10.0f;
+                aaD->unk98[i] = ABS(arg0 / 843.0);
                 break;
             case 1:
-                temp_f0 = arg0 / 480.0;
-                temp_v1->unkA8 = 12.0f;
-                temp_v1->unk98 = ABS(temp_f0);
+                aaD->unkA8[i] = 12.0f;
+                aaD->unk98[i] = ABS(arg0 / 480.0);
                 break;
         }
     }
 }
-*/
 
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A750.s")
@@ -261,7 +245,6 @@ s32 func_global_asm_8069A750(void) {
     return 0;
 }
 */
-
 
 // close, doable, float, struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A7C8.s")
@@ -354,9 +337,6 @@ void func_global_asm_8069A7C8(void) {
 }
 */
 
-// Very close, type issues on RGB
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069AB74.s")
-
 extern s16 D_global_asm_807503A0;
 extern u8 D_global_asm_807FBD70;
 
@@ -366,20 +346,17 @@ typedef struct {
     f32 unk4;
 } AAD_8069AB74;
 
-/*
 void func_global_asm_8069AB74(void) {
     f32 z;
     f32 y;
     f32 x;
-    u16 red;
-    u16 green;
-    u16 blue;
-    s32 pad;
-    s32 pad2;
-    s32 pad3;
-    AAD_8069AB74 *aaD;
-    s32 pad4;
     Actor124 *temp_v0;
+    s32 pad3;
+    s32 pad4;
+    u16 red; // 5e
+    u16 green; // 5c
+    u16 blue; // 5a
+    AAD_8069AB74 *aaD; // 54
 
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -391,19 +368,20 @@ void func_global_asm_8069AB74(void) {
         aaD->unk0 = 0;
         aaD->unk4 = 1.0f;
     }
-    func_global_asm_80614D00(current_actor_pointer, current_actor_pointer->unk124->unk0, 1.0f);
+    func_global_asm_80614D00(current_actor_pointer,
+        current_actor_pointer->unk124->unk0, 1.0f);
     if (D_global_asm_807FBD70 == 4) {
         aaD->unk0 = D_global_asm_807503A0;
         aaD->unk4 = 0.0f;
     }
     if (aaD->unk0 == 0) {
         temp_v0 = current_actor_pointer->unk124;
-        red = temp_v0->unk4;
-        green = temp_v0->unk8;
-        blue = temp_v0->unkC;
-        red *= aaD->unk4;
-        green *= aaD->unk4;
-        blue *= aaD->unk4;
+        red = temp_v0->unk4_s32;
+        green = temp_v0->unk8_s32;
+        blue = temp_v0->unkC_s32;
+        red *= (f64)aaD->unk4;
+        green *= (f64)aaD->unk4;
+        blue *= (f64)aaD->unk4;
         aaD->unk4 += 0.05;
         if (aaD->unk4 > 1.0) {
             aaD->unk4 = 1.0f;
@@ -416,14 +394,17 @@ void func_global_asm_8069AB74(void) {
             func_global_asm_806595F0(2);
             func_global_asm_80659600(current_actor_pointer->unk12C);
             getBonePosition(current_actor_pointer, 2, &x, &y, &z);
-            createLight(current_actor_pointer->x_position + 0.3, current_actor_pointer->y_position, current_actor_pointer->z_position, x, y, z, 0.0f, 1, red, green, blue);
+            createLight(
+                current_actor_pointer->x_position + 0.3,
+                current_actor_pointer->y_position,
+                current_actor_pointer->z_position, 
+                x, y, z, 0.0f, 1, red, green, blue);
         }
     } else {
         aaD->unk0--;
     }
     renderActor(current_actor_pointer, 0);
 }
-*/
 
 void func_global_asm_8069AFF0(void) {
     func_global_asm_8069AB74();
@@ -453,7 +434,7 @@ void func_global_asm_8069B3FC(void) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
         playActorAnimation(current_actor_pointer, 0x298);
         aaD->unk0 = 0;
-        playSong(0x3B, 1.0f);
+        playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 1.0f);
     } else {
         getBonePosition(current_actor_pointer, 1, &x, &y, &z);
         PaaD->unk210 = x;
@@ -464,8 +445,8 @@ void func_global_asm_8069B3FC(void) {
                 for (j = 0; j < 2; j++) {
                     func_global_asm_8071498C(func_global_asm_80717D4C);
                     func_global_asm_807149B8(1);
-                    func_global_asm_80714950((((rand() >> 0xF) % 10000) % 120) + 0x50);
-                    switch (((rand() >> 0xF) % 10000) % 3) {
+                    func_global_asm_80714950((RandClamp(10000) % 120) + 0x50);
+                    switch (RandClamp(10000) % 3) {
                         case 0:
                             sprite = &D_global_asm_8071FC58;
                             break;
@@ -565,7 +546,7 @@ void func_global_asm_8069CD9C(void) {
     dz = current_actor_pointer->z_position - character_change_array->look_at_eye_z;
     dx = current_actor_pointer->x_position - character_change_array->look_at_eye_x;
     dy = current_actor_pointer->y_position - character_change_array->look_at_eye_y;
-    if (((dz * dz) + ((dx * dx) + (dy * dy))) < 18000.0) {
+    if ((SQ(dz) + (SQ(dx) + SQ(dy))) < 18000.0) {
         current_actor_pointer->object_properties_bitfield |= 0x400;
     } else {
         current_actor_pointer->object_properties_bitfield &= ~0x400;
@@ -772,22 +753,18 @@ void func_global_asm_8069DA54(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069DC10.s")
+void func_global_asm_8069DC10(s32 *arg0, s32 *arg1, u8 arg2);
 
-void func_global_asm_8069DC10(s32 *arg0, s32 *arg1[], u8 arg2);
-
-/*
-void func_global_asm_8069DC10(s32 *arg0, s32 *arg1[], u8 arg2) {
+void func_global_asm_8069DC10(s32 *arg0, s32 *arg1, u8 arg2) {
     s16 i;
     s16 j;
 
     for (i = 0; i < 0x20; i++) {
         for (j = 0; j < arg2; j++) {
-            arg0[j] = arg1[j][i * arg2];
+            *arg0++ = arg1[j + (i * arg2)];
         }
     }
 }
-*/
 
 void *func_global_asm_8069DC80(u8 arg0, void *arg1, u8 arg2, u8 arg3, u8 arg4) {
     void *sp24;
@@ -891,8 +868,8 @@ void func_global_asm_8069E088(void) {
         textIndex = 0;
         current_actor_pointer->control_state = 0x64;
         func_global_asm_8070E8DC(1);
-        if (!isFlagSet(0x178, FLAG_TYPE_PERMANENT)) { // Wrinkly FTT
-            setFlag(0x178, TRUE, FLAG_TYPE_PERMANENT);
+        if (!isFlagSet(PERMFLAG_FTT_WRINKLY, FLAG_TYPE_PERMANENT)) { // Wrinkly FTT
+            setFlag(PERMFLAG_FTT_WRINKLY, TRUE, FLAG_TYPE_PERMANENT);
         } else {
             textIndex = (func_global_asm_80600530() * 5) + D_global_asm_807F6951 + 1;
         }

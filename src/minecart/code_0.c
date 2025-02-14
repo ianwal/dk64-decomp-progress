@@ -121,7 +121,7 @@ void func_minecart_80024000(u8 arg0, u8 arg1) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
     func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, arg1, 1), 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
-    playSong(0x28, 1.0f);
+    playSong(MUSIC_40_SUCCESS, 1.0f);
     setAction(0x44, NULL, 0);
     current_actor_pointer->control_state++;
     if (arg0 != 0) {
@@ -133,7 +133,7 @@ void func_minecart_800240DC(u8 arg0, u8 arg1) {
     char *temp = getTextString(0x1A, arg1, 1);
     func_global_asm_8069D2AC(0x81, 0, 0x78, temp, 0, 0x28, 8, 8);
     current_actor_pointer->unk11C->control_state = 0;
-    playSong(0x2A, 1.0f);
+    playSong(MUSIC_42_FAILURE, 1.0f);
     setAction(0x43, NULL, 0);
     current_actor_pointer->control_state++;
     if (arg0 != 0) {
@@ -206,7 +206,7 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
             dx = aaD->unk4->x_position - current_actor_pointer->x_position;
             dy = aaD->unk4->y_position - current_actor_pointer->y_position;
             dz = aaD->unk4->z_position - current_actor_pointer->z_position;
-            if (((dx * dx) + (dy * dy) + (dz * dz)) < 400.0f) {
+            if ((SQ(dx) + SQ(dy) + SQ(dz)) < SQ(20.0f)) {
                 aaD->unk34 = arg1;
                 aaD->unk10 = arg0;
                 aaD->unk30 = arg1;
@@ -338,12 +338,6 @@ extern s32 D_global_asm_807F5FD0;
 extern s32 D_minecart_80028C48[];
 extern s32 D_minecart_80028C50[];
 
-typedef struct Vec3f {
-    f32 x;
-    f32 y;
-    f32 z;
-} Vec3f;
-
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -360,9 +354,9 @@ typedef struct {
 
 void func_minecart_80024B00(void) {
     s16 sp4E;
-    Vec3f sp3C;
+    tuple_f sp3C;
     Struct807F5FD4_unk0* temp_t7_2;
-    Vec3f* temp_t8;
+    tuple_f* temp_t8;
     Struct807F5FD4_unk0* temp_t8_2;
     Struct807F5FD4_unk0* temp_t9;
     Struct807F5FD4_unk0* temp_v0;
@@ -530,7 +524,7 @@ void func_minecart_80024FD0(void) {
             current_actor_pointer->control_state++;
             break;
         case 10:
-            playSong(0x5A, 1.0f);
+            playSong(MUSIC_90_MINECART_MAYHEM, 1.0f);
             if (current_map == MAP_MINECART_MAYHEM_EASY) {
                 var_v0 = 0x1E;
             } else {

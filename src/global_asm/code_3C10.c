@@ -354,7 +354,7 @@ void func_global_asm_805FF2F4(void) {
         map = current_map;
         exit = 0;
     }
-    setFlag(0x6E, TRUE, FLAG_TYPE_TEMPORARY);
+    setFlag(TEMPFLAG_PLAYER_STUCK_CUTSCENE, TRUE, FLAG_TYPE_TEMPORARY);
     func_global_asm_805FF378(map, exit);
 }
 
@@ -374,7 +374,7 @@ void func_global_asm_805FF378(Maps nextMap, s32 nextExit) {
             func_global_asm_805FF168();
             loading_zone_transition_speed = 1.0f;
             if (D_global_asm_807444F8 != 1 && loading_zone_transition_type == 1 && !(D_global_asm_807FBB68 & 2) && current_map != MAP_DK_RAP) {
-                playSong(0x2C, 1.0f);
+                playSong(MUSIC_44_DK_TRANSITION_CLOSING, 1.0f);
             }
             func_global_asm_807313BC();
             func_global_asm_805FF5A0(nextMap);
@@ -769,8 +769,8 @@ u8 func_global_asm_80600454(s16 arg0, u8 *arg1) {
         *arg1 = D_global_asm_80756630[i];
         if (i < 0xD) {
             // Level first time caption (FTT) seen
-            hadSeenFirstTimeText = !isFlagSet(0x307 + i, FLAG_TYPE_PERMANENT);
-            setFlag(0x307 + i, TRUE, FLAG_TYPE_PERMANENT);
+            hadSeenFirstTimeText = !isFlagSet(PERMFLAG_CAPTION_FUNKY + i, FLAG_TYPE_PERMANENT);
+            setFlag(PERMFLAG_CAPTION_FUNKY + i, TRUE, FLAG_TYPE_PERMANENT);
         } else {
             hadSeenFirstTimeText = TRUE;
         }

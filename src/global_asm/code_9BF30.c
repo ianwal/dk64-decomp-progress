@@ -212,7 +212,7 @@ void func_global_asm_80697CEC(void) {
         sp68 = D_global_asm_807502C0;
         current_actor_pointer->unk6E[0] = -2;
         current_actor_pointer->unk6A &= ~1;
-        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / 6.283185482f) * 4095.0f;
+        current_actor_pointer->unkEE = (current_actor_pointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         current_actor_pointer->unkB8 = current_actor_pointer->unk124->unk4;
         current_actor_pointer->y_velocity = current_actor_pointer->unk124->unk8;
         current_actor_pointer->noclip_byte = 0x3C;
@@ -252,7 +252,7 @@ void func_global_asm_80697CEC(void) {
                 func_global_asm_807149B8(1);
                 func_global_asm_80714950(i + 0x0B000000);
                 func_global_asm_8071498C(func_global_asm_8071ABDC);
-                drawSpriteAtPosition(&D_global_asm_8071FBA0, (((rand() >> 0xF) % 10) * 0.05) + 0.2, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
+                drawSpriteAtPosition(&D_global_asm_8071FBA0, (RandClamp(10) * 0.05) + 0.2, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
             }
         }
         deleteActor(current_actor_pointer);

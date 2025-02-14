@@ -309,11 +309,11 @@ void func_global_asm_8069E774(void) {
 }
 */
 
-s32 func_global_asm_8069EF50(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 arg4) {
+s32 func_global_asm_8069EF50(s16 arg0, s16 arg1, s16 arg2, s16 arg3, f32 distance) {
     f32 dx = player_pointer->x_position - arg0;
     f32 dz = player_pointer->z_position - arg2;
 
-    if (((dx * dx) + (dz * dz)) < (arg4 * arg4)) {
+    if ((SQ(dx) + SQ(dz)) < SQ(distance)) {
         if ((arg1 <= player_pointer->y_position) && (player_pointer->y_position < (arg1 + arg3))) {
             return TRUE;
         }
@@ -988,7 +988,7 @@ void func_global_asm_806A112C(void) {
             func_global_asm_806A10BC(aaD);
             current_actor_pointer->unk168++;
             if (current_actor_pointer->unk168 >= 0x34) {
-                current_actor_pointer->unk168 = ((rand() >> 0xF) % 1000) % 3;
+                current_actor_pointer->unk168 = RandClamp(1000) % 3;
                 current_actor_pointer->control_state = 0;
             }
             break;

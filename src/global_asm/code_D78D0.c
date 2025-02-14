@@ -981,9 +981,9 @@ void func_global_asm_806D5300(void) {
         scale = current_actor_pointer->animation_state->scale_y / 0.15;
         getBonePosition(current_actor_pointer, 7, &x, &y, &z);
         for (phi_s1 = 0; phi_s1 < D_global_asm_80750FD4; phi_s1++) {
-            randomXOffset = (((rand() >> 0xF) % 10000) % D_global_asm_80750FC8) - (D_global_asm_80750FC8 / 2);
-            randomYOffset = (((rand() >> 0xF) % 10000) % D_global_asm_80750FCC) - (D_global_asm_80750FCC / 2);
-            randomZOffset = (((rand() >> 0xF) % 10000) % D_global_asm_80750FD0) - (D_global_asm_80750FD0 / 2);
+            randomXOffset = (RandClamp(10000) % D_global_asm_80750FC8) - (D_global_asm_80750FC8 / 2);
+            randomYOffset = (RandClamp(10000) % D_global_asm_80750FCC) - (D_global_asm_80750FCC / 2);
+            randomZOffset = (RandClamp(10000) % D_global_asm_80750FD0) - (D_global_asm_80750FD0 / 2);
             func_global_asm_80714950(D_global_asm_80750FC4);
             func_global_asm_8071498C(func_global_asm_80717D4C);
             func_global_asm_807149B8(1);
@@ -1740,7 +1740,7 @@ void func_global_asm_806D7A28(void) {
             if (((extra_player_info_pointer->unk1F0 & 0x1000) != 0) && ((object_timer & 3) == 0)) {
                 changeActorColor(0x64, 0x64, 0x64, 0xC8);
                 func_global_asm_80714998(2);
-                func_global_asm_8068588C(current_actor_pointer, (((rand() >> 0xF) % 32767) % 8) + 1, 0.4f, 0.0f, 0.0f, 0.0f, -0x50);
+                func_global_asm_8068588C(current_actor_pointer, (RandClamp(32767) % 8) + 1, 0.4f, 0.0f, 0.0f, 0.0f, -0x50);
             }
             current_actor_pointer->unkB8 = 0.0f;
             func_global_asm_806CC970();
@@ -2269,7 +2269,7 @@ void func_global_asm_806D9320(void) {
             dy = (extra_player_info_pointer->unkB4 - player_pointer->y_position) / (player_pointer->animation_state->scale[1] * 0.16666666675);
             dx = extra_player_info_pointer->unkB0_f32 - player_pointer->x_position;
             var_f12 = player_pointer->unkB8;
-            d = sqrtf((dz * dz) + (dx * dx)) / (player_pointer->animation_state->scale[1] * 0.16666666675);
+            d = sqrtf(SQ(dz) + SQ(dx)) / (player_pointer->animation_state->scale[1] * 0.16666666675);
             if (var_f12 == 0.0) {
                 var_f12 = 1.0f;
             }
@@ -2422,7 +2422,7 @@ void func_global_asm_806D9AD4(void) {
     handleInputsForControlState(1);
     if ((current_actor_pointer->control_state_progress == 1) || (current_actor_pointer->control_state_progress == 2)) {
         rand();
-        sp28 = current_actor_pointer->y_position + ((rand() >> 0xF) % 30);
+        sp28 = current_actor_pointer->y_position + RandClamp(30);
         rand();
         func_global_asm_807149B8(1);
         func_global_asm_80714950((extra_player_info_pointer->unk23C << 0x10) + (s32)(15.0 * (current_actor_pointer->shadow_opacity / 255.0)));
@@ -2848,14 +2848,14 @@ void func_global_asm_806DB0C4(void) {
         extra_player_info_pointer->unkAC_f32 = 0.0f;
         dx = extra_player_info_pointer->unkA4 - extra_player_info_pointer->unk9C;
         dz = extra_player_info_pointer->unkA8 - extra_player_info_pointer->unkA0;
-        extra_player_info_pointer->unk94 = sqrtf((dx * dx) + (dz * dz)) * 0.8;
-        extra_player_info_pointer->unk98 = ((func_global_asm_80611BB4(dx, dz) * 4096.0f) / 6.283185482f);
+        extra_player_info_pointer->unk94 = sqrtf(SQ(dx) + SQ(dz)) * 0.8;
+        extra_player_info_pointer->unk98 = ((func_global_asm_80611BB4(dx, dz) * 4096.0f) / MATH_2PI_F);
         extra_player_info_pointer->unk4C = -1;
     }
     extra_player_info_pointer->unkAC_f32 += 0.02;
     if (extra_player_info_pointer->unkAC_f32 > 1.0) {
         if (extra_player_info_pointer->unkDC != NULL) {
-            extra_player_info_pointer->unk98 = (func_global_asm_80611BB4(extra_player_info_pointer->unkDC->x_position - extra_player_info_pointer->unk9C, extra_player_info_pointer->unkDC->z_position - extra_player_info_pointer->unkA0) * 4096.0f) / 6.283185482f;
+            extra_player_info_pointer->unk98 = (func_global_asm_80611BB4(extra_player_info_pointer->unkDC->x_position - extra_player_info_pointer->unk9C, extra_player_info_pointer->unkDC->z_position - extra_player_info_pointer->unkA0) * 4096.0f) / MATH_2PI_F;
             if (current_actor_pointer->y_rotation == (s16)extra_player_info_pointer->unk98) {
                 func_global_asm_806CFF9C(current_actor_pointer);
             }
@@ -3079,15 +3079,15 @@ void func_global_asm_806DBB04(void) {
     extra_player_info_pointer->unkCC = extra_player_info_pointer->unkCC + 6;
     extra_player_info_pointer->unkCC = extra_player_info_pointer->unkCC & 0xFFF;
     if (!(object_timer & 1)) {
-        sp63 = ((rand() >> 0xF) % 65535) % 3;
+        sp63 = RandClamp(65535) % 3;
         getBonePosition(current_actor_pointer, 5, &x, &y, &z);
-        x += (((rand() >> 0xF) % 65535) % 16) - 8;
-        y += (((rand() >> 0xF) % 65535) % 16) - 8;
-        z += (((rand() >> 0xF) % 65535) % 16) - 8;
+        x += (RandClamp(65535) % 16) - 8;
+        y += (RandClamp(65535) % 16) - 8;
+        z += (RandClamp(65535) % 16) - 8;
         func_global_asm_80714998(2);
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(func_global_asm_8071720C);
-        func_global_asm_80714950(((rand() >> 0xF) % 100) + 0x64);
+        func_global_asm_80714950(RandClamp(100) + 0x64);
         if (sp63 == 2) {
             drawSpriteAtPosition(&D_global_asm_8071FCC0, 0.5f, x, y, z);
         } else if (sp63 == 1) {
@@ -3366,7 +3366,7 @@ void func_global_asm_806DCA7C(Actor **arg0, s32 arg1) {
                     dx = x - current_player->x_position;
                     dz = z - current_player->z_position;
                     dy = (y - current_player->y_position) / (current_player->animation_state->scale_y * 0.166666666749999998);
-                    d = ((sqrtf((dx * dx) + (dz * dz)) / (current_player->animation_state->scale_y * 0.166666666749999998)) / current_player->unkB8) - 1.0f;
+                    d = ((sqrtf(SQ(dx) + SQ(dz)) / (current_player->animation_state->scale_y * 0.166666666749999998)) / current_player->unkB8) - 1.0f;
                     if (d < 1.0f) {
                         d = 1.0f;
                     }
@@ -3424,7 +3424,7 @@ void func_global_asm_806DCF60(void) {
                     dx = temp_s0->x_position - current_player->x_position;
                     temp_s1 = func_global_asm_806CC14C(temp_f16, extra_player_info_pointer->unk154);
                     dz = temp_s0->z_position - current_player->z_position;
-                    temp_f0_2 = sqrtf((dx * dx) + (dz * dz));
+                    temp_f0_2 = sqrtf(SQ(dx) + SQ(dz));
                     if ((temp_s1 < 0x258) && (temp_f0_2 < var_f26)) {
                         if (current_player->y_position < temp_s0->y_position) {
                             var_f14 = temp_s0->y_position - current_player->y_position;
@@ -3998,7 +3998,7 @@ void func_global_asm_806DED44(void) {
             if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
                 func_global_asm_806874EC();
-                playSong(0x3B, 1.0f);
+                playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 1.0f);
                 current_actor_pointer->control_state_progress = 3;
             }
             // fallthrough

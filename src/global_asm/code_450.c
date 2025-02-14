@@ -1134,7 +1134,7 @@ void func_global_asm_805FE7FC(void) {
         D_global_asm_807F6008 = 0;
         if (!isIntroStoryPlaying() && is_cutscene_active != 2) {
             if (current_map == MAP_HELM && isFlagSet(0x302, FLAG_TYPE_PERMANENT)) {
-                playSong(0x74, 1.0f);
+                playSong(MUSIC_116_HIDEOUT_HELM_BLAST_O_MATIC_OFF, 1.0f);
             } else {
                 phi_f0 = 1.0f;
                 if (D_global_asm_80745BDC[current_map * 4] == 6 || D_global_asm_80745BDC[current_map * 4] == 0x1F) {
@@ -1144,7 +1144,7 @@ void func_global_asm_805FE7FC(void) {
             }
         }
         if (current_map == MAP_DK_ISLES_OVERWORLD || current_map == MAP_ENGUARDE_ARENA) {
-            playSong(0x60, 1.0f);
+            playSong(MUSIC_96_GENERIC_SEASIDE_SOUNDS, 1.0f);
         }
         func_global_asm_8060A4D0(0, 1.0f);
         func_global_asm_8060A4D0(1, 1.0f);
@@ -1159,7 +1159,7 @@ void func_global_asm_805FE7FC(void) {
     D_global_asm_8076A0B1 |= 4;
     loading_zone_transition_speed = -1.0f;
     if (D_global_asm_807444F8 != 2 && loading_zone_transition_type == 1) {
-        playSong(0x2B, 1.0f);
+        playSong(MUSIC_43_DK_TRANSITION_OPENING, 1.0f);
     }
     func_global_asm_80701C90();
     func_global_asm_80629190();

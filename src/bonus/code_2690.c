@@ -224,7 +224,7 @@ void func_bonus_800271B4(s16 arg0, s16 arg1, s16 arg2, u8 arg3, Struct800271B4 *
     u8 var_a3;
     AAD_bonus_800271B4 *temp_v1;
 
-    var_a3 = arg4->unk28 < ((rand() >> 0xF) % 100) ? 1 : 0;
+    var_a3 = arg4->unk28 < RandClamp(100) ? 1 : 0;
     if (spawnActor(ACTOR_MINIGAME_KREMLING, var_a3 ? 0x32 : 0x33)) {
         temp_v1 = last_spawned_actor->additional_actor_data;
         playActorAnimation(last_spawned_actor, var_a3 ? 0x211 : 0x20F);
@@ -489,8 +489,8 @@ void func_bonus_800277F8(void) {
                     playCutscene(NULL, 1, 0x11);
                     current_actor_pointer->control_state = 1;
                 } else {
-                    if (a178->unk27 < ((rand() >> 0xF) % 100)) {
-                        temp_t2 = ((rand() >> 0xF) % 255) % 8;
+                    if (a178->unk27 < RandClamp(100)) {
+                        temp_t2 = RandClamp(255) % 8;
                         if (a178->unk0[temp_t2] == 0) {
                             temp_v0 = &D_global_asm_807F5FD4->unk0[0][temp_t2 + 1];
                             func_bonus_800271B4(temp_v0->unk0, temp_v0->unk4, temp_v0->unk8, temp_t2, a178);
@@ -630,7 +630,7 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
         if (spawnActor(ACTOR_SNAKE, 0x15)) {
             snakeAAD = last_spawned_actor->additional_actor_data;
             snakeAAD->unk0 = current_actor_pointer;
-            snakeAAD->unk11 = (((rand() >> 0xF) % 32767) % ((arg0->unk1C - arg0->unk1B) + 1)) + arg0->unk1B;
+            snakeAAD->unk11 = (RandClamp(32767) % ((arg0->unk1C - arg0->unk1B) + 1)) + arg0->unk1B;
             temp = &D_global_asm_807F5FD4->unk0[0][i];
             playActorAnimation(last_spawned_actor, 0x1F5);
             last_spawned_actor->x_position = temp->unk0;
@@ -1139,7 +1139,7 @@ void func_bonus_8002B920(void) {
                 func_global_asm_8060866C(current_actor_pointer, 0x16, 0xFF, 1.0f, 0x14, 0);
                 current_actor_pointer->shadow_opacity = 0xFF;
                 current_actor_pointer->object_properties_bitfield &= ~0x8000;
-            } else if (((dx * dx) + (dz * dz)) < 900.0f) {
+            } else if ((SQ(dx) + SQ(dz)) < SQ(30.0f)) {
                 aaD1->unkC = 0x3C;
                 aaD1->unkE = 1;
             }

@@ -7,6 +7,7 @@
 // Prop_unk24 shenanigans
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064F6C0.s")
 
+// close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064F6F8.s")
 
 s32 func_global_asm_806358E8(s16, f32, f32, f32, f32, f32, f32, f32, f32, s32, s32, s32, s32, s32);
@@ -17,9 +18,8 @@ typedef struct {
 } Prop_unk78_8064F6F8;
 
 /*
-// TODO: Not sure what's missing
 void func_global_asm_8064F6F8(void *arg0, s16 arg1) {
-    s32 pad;
+    Prop_unk24 *pad;
     Prop_unk78_8064F6F8 *sp68;
     u32 sp64;
     f32 sp60;
@@ -31,8 +31,9 @@ void func_global_asm_8064F6F8(void *arg0, s16 arg1) {
     f32 sp48;
     f32 sp44;
 
+    pad = D_global_asm_807F6000[arg1].unk24;
     sp68 = D_global_asm_807F6000[arg1].unk78;
-    sp64 = D_global_asm_807F6000[arg1].unk24->unk0 + D_global_asm_807F6000[arg1].unk24->unk68;
+    sp64 = pad->unk68 + pad->unk0;
     memcpy(sp68->unk0, arg0, sp64);
     memcpy(sp68->unk4, arg0, sp64);
     func_global_asm_806357F8(arg1, &sp60, &sp5C, &sp58, &sp54, &sp50, &sp4C, &sp48, &sp44, 0);

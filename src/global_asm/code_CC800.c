@@ -117,7 +117,97 @@ Struct80750948 *func_global_asm_806C7C94(u8 arg0) {
     return &D_global_asm_80750948[i];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C7D40.s")
+void func_global_asm_80708BB8(CharacterChange2DC *);                 /* extern */
+extern f32 D_global_asm_807444C4;
+extern s32 D_global_asm_80744588[];
+extern s8 D_global_asm_80750AD0;
+extern OSContPad D_global_asm_807ECD10[];
+extern u16 D_global_asm_807FD570;
+extern s32 D_global_asm_807FBB68;
+
+void func_global_asm_806C7D40(s32 arg0) {
+    CharacterChange *temp_v0;
+    PlayerProgress *temp_v0_3;
+    s32 var_v0;
+    s32 i;
+    CharacterChange *temp_s0;
+    Struct80750948 *temp_v0_2;
+
+    character_change_array = malloc(cc_number_of_players * 0x2F0);
+    func_global_asm_80611690(character_change_array);
+    for (i = 0; i < cc_number_of_players; i++) {
+        temp_s0 = &character_change_array[i];
+        temp_s0->does_player_exist = TRUE;
+        cc_player_index = i;
+        func_global_asm_806C850C(arg0++, i);
+        temp_s0->player_pointer = current_player;
+        if (i == 0) {
+            player_pointer = current_player;
+        }
+        temp_s0->look_at_eye_z = 100.0f;
+        temp_s0->look_at_eye_y = 100.0f;
+        temp_s0->look_at_eye_x = 100.0f;
+        temp_s0->unk224 = 100.0f;
+        temp_s0->unk220 = 100.0f;
+        temp_s0->unk21C = 100.0f;
+        temp_s0->look_at_at_z = 0.0f;
+        temp_s0->look_at_at_y = 0.0f;
+        temp_s0->look_at_at_x = 0.0f;
+        temp_s0->look_at_up_z = 0.0f;
+        temp_s0->look_at_up_x = 0.0f;
+        temp_s0->look_at_up_y = 1.0f;
+        temp_v0_2 = func_global_asm_806C7C94(i);
+        temp_s0->unk270[0] = temp_v0_2->unk4;
+        temp_s0->unk270[1] = temp_v0_2->unk6;
+        temp_s0->unk270[2] = temp_v0_2->unk8;
+        temp_s0->unk270[3] = temp_v0_2->unkA;
+        if (osViGetCurrentMode() == D_global_asm_80744588[(osTvType + osTvType) + 1]) {
+            temp_s0->unk270[0] <<= 1;
+            temp_s0->unk270[1] <<= 1;
+            temp_s0->unk270[2]++;
+            temp_s0->unk270[2] <<= 1;
+            temp_s0->unk270[2]--;
+            temp_s0->unk270[3]++;
+            temp_s0->unk270[3] <<= 1;
+            temp_s0->unk270[3]--;
+        }
+        temp_s0->unk278_arr[0] = temp_s0->unk270[2] - temp_s0->unk270[0];
+        temp_s0->unk278_arr[1] = temp_s0->unk270[3] - temp_s0->unk270[1];
+        temp_s0->fov_y = 45.0f;
+        temp_s0->near = 10.0f;
+        temp_s0->unk280 = (f32)temp_s0->unk278_arr[0] / temp_s0->unk278_arr[1];
+        temp_s0->far = D_global_asm_807444C4;
+        temp_s0->chunk = 0;
+        temp_s0->unk294 = &D_global_asm_807ECD10[i];
+        temp_s0->new_controller_inputs = &newly_pressed_input[i];
+        temp_s0->action_initiated = -1;
+        temp_s0->unk2C0 = 1;
+        temp_s0->unk2C1 = 1;
+        temp_s0->unk2EA = 0;
+        temp_s0->unk2EB = 0;
+        func_global_asm_80708BB8(&temp_s0->unk2DC);
+        if (
+            ((D_global_asm_807FBB64 & 1) && (!(D_global_asm_807FBB68 & 2))) ||
+            (D_global_asm_807FC950[i].health + D_global_asm_807FC950[i].unk2FD) <= 0
+        ) {
+            func_global_asm_80709464(i);
+        }
+    }
+    if (D_global_asm_807FD570 != 0) {
+        func_global_asm_806C80E4();
+        D_global_asm_807FD570 = 0;
+    }
+    if (cc_number_of_players >= 2) {
+        spawnActor(ACTOR_UNKNOWN_318, 0);
+    }
+    var_v0 = D_global_asm_80750AB8 == 0;
+    if (var_v0 != 0) {
+        var_v0 = ((s32) cc_number_of_players < 2) ^ 1;
+    }
+    D_global_asm_80750AD0 = var_v0;
+}
+
+
 
 void func_global_asm_806C80E4(void) {
     PlayerAdditionalActorData *PaaD;
@@ -619,7 +709,7 @@ s32 func_global_asm_806C9974(u8 playerIndex, s8 arg1) {
     CharacterChange *temp2 = &character_change_array[playerIndex];
     PlayerProgress *temp = &D_global_asm_807FC950[playerIndex];
 
-    temp2->unk2E2 |= 0x11;
+    temp2->unk2DC.unk6 |= 0x11;
     if ((cc_number_of_players >= 2) && (arg1 < 0) && (D_global_asm_807552EC == 1)) {
         func_multiplayer_80026E20(playerIndex, arg1);
     }
@@ -630,7 +720,7 @@ s32 func_global_asm_806C9974(u8 playerIndex, s8 arg1) {
         temp->unk2FD += arg1;
     }
     if ((temp->health + temp->unk2FD) <= 0) {
-        temp2->unk2E2 |= 0xC0;
+        temp2->unk2DC.unk6 |= 0xC0;
         return TRUE;
     } else {
         return FALSE;

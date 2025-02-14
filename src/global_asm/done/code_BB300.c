@@ -191,7 +191,7 @@ void func_global_asm_806B6DB0(s32 arg0) {
             func_global_asm_8072AB74(current_actor_pointer->control_state, D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, 0x300U, 0.0f);
             break;
         case 0x1:
-            if (((rand() >> 0xF) % 1000) >= 0x3E3) {
+            if (RandChance(0.006)) {
                 current_actor_pointer->control_state = 0x11;
                 current_actor_pointer->control_state_progress = 0;
             }

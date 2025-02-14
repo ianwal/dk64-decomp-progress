@@ -148,7 +148,7 @@ s32 func_global_asm_8068ABE0(s16 arg0) {
                     break;
             }
             if (cutsceneIndex != -1) {
-                setFlag(0x1C5 + i, TRUE, FLAG_TYPE_PERMANENT);
+                setFlag(PERMFLAG_LEVEL_ENTERED_JAPES + i, TRUE, FLAG_TYPE_PERMANENT);
                 if (story_skip) {
                     func_global_asm_805FF378(arg0, exit);
                     return TRUE;
@@ -397,7 +397,7 @@ void func_global_asm_8068AD7C(void) {
         func_global_asm_80711F90(TaaD->unk4, TaaD->unk8, 1.0f, TaaD->unk1A, 4.0f);
         break;
     case 0x3:
-        if (((rand() >> 0xF) % 50) == 0xF) {
+        if (RandClamp(50) == 0xF) {
             D_global_asm_807FC620 = 1;
         }
     case 0x2:
@@ -409,7 +409,7 @@ void func_global_asm_8068AD7C(void) {
             D_global_asm_807FC620 = 0;
         }
         if (TaaD->unk18) {
-            if ((TaaD->unk18 == 0x28) || (((rand() >> 0xF) % 10) == 5)) {
+            if ((TaaD->unk18 == 0x28) || (RandClamp(10) == 5)) {
                 func_global_asm_80659670(1.0f, 1.0f, 1.0f, TaaD->unk1A);
                 if ((D_global_asm_80750190 == 0) && (TaaD->unk21 == 0)) {
                     var_s0 = 70;

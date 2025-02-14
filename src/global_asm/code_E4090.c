@@ -255,7 +255,7 @@ s32 handleInputsForControlState(s32 controlState) {
         D_global_asm_807FD610[cc_player_index].unk8 = 0.0f;
     }
     if (var_f16 != 0.0f) {
-        var_t0 = (func_global_asm_80611BB4(D_global_asm_807FD610[cc_player_index].unk2E, -D_global_asm_807FD610[cc_player_index].unk2F) * 4096.0f) / 6.283185482f;
+        var_t0 = (func_global_asm_80611BB4(D_global_asm_807FD610[cc_player_index].unk2E, -D_global_asm_807FD610[cc_player_index].unk2F) * 4096.0f) / MATH_2PI_F;
         D_global_asm_807FD610[cc_player_index].unk28 = (character_change_array[cc_player_index].unk2C8 + var_t0);
         D_global_asm_807FD610[cc_player_index].unk28 &= 0xFFF;
     } else {
@@ -940,25 +940,25 @@ u8 func_global_asm_806E2B20(Actor *arg0) {
     f32 y;
     f32 z;
     f32 phi_f20;
-    f32 sp7C;
-    f32 sp78;
-    f32 sp74;
-    f32 sp70;
-    f32 sp6C;
-    f32 sp68;
+    f32 bone10X;
+    f32 bone4X;
+    f32 bone10Y;
+    f32 bone4Y;
+    f32 bone10Z;
+    f32 bone4Z;
     s16 sp66;
     s16 sp64;
     u8 phi_v1;
 
     phi_v1 = 0;
     phi_f20 = 0;
-    getBonePosition(arg0, 4, &sp78, &sp70, &sp68);
-    getBonePosition(arg0, 10, &sp7C, &sp74, &sp6C);
+    getBonePosition(arg0, 4, &bone4X, &bone4Y, &bone4Z);
+    getBonePosition(arg0, 10, &bone10X, &bone10Y, &bone10Z);
     while (phi_f20 <= 1.0 && !phi_v1) {
         phi_v1 = func_global_asm_80671E00(
-            sp78 + ((sp7C - sp78) * phi_f20),
-            sp70 + ((sp74 - sp70) * phi_f20),
-            sp68 + ((sp6C - sp68) * phi_f20),
+            bone4X + ((bone10X - bone4X) * phi_f20),
+            bone4Y + ((bone10Y - bone4Y) * phi_f20),
+            bone4Z + ((bone10Z - bone4Z) * phi_f20),
             10.0f,
             &sp66,
             &sp64,
@@ -1687,7 +1687,7 @@ s32 func_global_asm_806E5488(Actor *arg0) {
     if (arg0->locked_to_pad == 1) {
         f32 dx = arg0->unk94 - arg0->unk88;
         f32 dz = arg0->unk98 - arg0->unk90;
-        if (sqrtf((dx * dx) + (dz * dz)) > 1.0) {
+        if (sqrtf(SQ(dx) + SQ(dz)) > 1.0) {
             return TRUE;
         }
     }
@@ -1695,7 +1695,7 @@ s32 func_global_asm_806E5488(Actor *arg0) {
         f32 dx = arg0->x_position - arg0->unk88;
         f32 dy = arg0->y_position - arg0->unk8C;
         f32 dz = arg0->z_position - arg0->unk90;
-        if (sqrtf((dx * dx) + (dy * dy) + (dz * dz)) > 1.0) {
+        if (sqrtf(SQ(dx) + SQ(dy) + SQ(dz)) > 1.0) {
             return TRUE;
         }
     }

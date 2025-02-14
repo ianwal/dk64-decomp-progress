@@ -116,9 +116,6 @@ void func_race_8002BCB0(Actor *arg0, s32 arg1, s32 *arg2, s32 *arg3) {
     *arg3 = temp_t0[arg1].unk4;
 }
 
-// rodata, close
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002BCD4.s")
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -133,7 +130,6 @@ typedef struct {
     f32 unk8;
 } Struct80027880;
 
-/*
 void func_race_8002BCD4(Actor *arg0) {
     f32 var_f0;
     f32 var_f12;
@@ -148,8 +144,8 @@ void func_race_8002BCD4(Actor *arg0) {
     var_f12 = -1.0f;
     var_f14 = -1.0f; 
     aaD = arg0->additional_actor_data;
-    var_v1 = &D_global_asm_807F5FD4[0].unk0;
-    temp_a2 = &D_global_asm_807F5FD4[1].unk0;
+    var_v1 = D_global_asm_807F5FD4[0].unk0[0];
+    temp_a2 = D_global_asm_807F5FD4[1].unk0[0];
     while (var_v1 < temp_a2) {
         if (var_v1->unk0 < var_f0) {
             var_f0 = var_v1->unk0;
@@ -170,7 +166,6 @@ void func_race_8002BCD4(Actor *arg0) {
     aaD->unk4 = 116.4800034f / (var_f12 - var_f0);
     aaD->unk8 = 121.5999985f / (var_f14 - var_f2);
 }
-*/
 
 // Displaylist stuff, close
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002BDDC.s")
@@ -275,6 +270,59 @@ Gfx *func_race_8002C14C(Gfx *dl, Struct8002C14C_arg1 *arg1) {
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_7BD0/func_race_8002C2E8.s")
+
+/*
+Gfx *func_race_8002C2E8(Gfx *dl, RaceAdditionalActorData *arg1) {
+    f32 temp_f20;
+    f32 temp_f22;
+    f32 temp_f24;
+    f32 w;
+    u32 temp_v0;
+    f32 temp_f0; // 70
+    f32 a;
+    f32 c;
+    s32 i;
+    s8 *temp_v0_2;
+    s16 *temp_s0;
+    f32 temp;
+
+    temp_s0 = arg1->unk48;
+    temp_v0 = func_global_asm_806FD894(1);
+    temp_f0 = temp_v0 * 0.5f;
+    temp_f20 = temp_s0[2] + 8;
+    temp_f24 = (temp_s0[5] - 0x10);
+    temp_f24 -= (2 * temp_f0);
+    temp_v0_2 = getTextString(0x26U, 0xA, 1);
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+    dl = printStyledText(dl, 1, (2.0f * (temp_f20 * 4.0f)), (2.0f * (temp_f24 * 4.0f)), temp_v0_2, 4U);
+    gSPMatrix(dl++, &D_20000C0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
+    gSPMatrix(dl++, &arg1->unk50[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_MUL | G_MTX_PROJECTION);
+    c = getCenterOfString(1, temp_v0_2);
+    temp_f20 += (0.5f * c);
+    temp_f22 = 2.0f * (temp_f20 + 8.0);
+    temp = temp_f24 + (0.4 * temp_f0);
+    a = 1.5f;
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0x00, 0xFF);
+    for (i = 0; i < 5; i++) {
+        w = temp_f22 + (i * 0x18);
+        dl = displayImage(dl, 0x4BU, 3, 1,
+            0x40, 0x40,
+            w * 4.0f,
+            2.0f * temp * 4.0f, a, a, 0, 0.0f);
+    }
+    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0x00, 0x00, 0xFF);
+    for (i = 0; i < 5 - arg1->unk44; i++) {
+        w = temp_f22 + (i * 0x18);
+        dl = displayImage(dl, 0x45U, 3, 1,
+            0x40, 0x40,
+            w * 4.0f,
+            2.0f * temp * 4.0f, a, a, 0, 0.0f);
+    }
+    gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    return dl;
+}
+*/
+
 
 typedef struct {
     u8 unk0[0x50 - 0x0];
@@ -483,7 +531,7 @@ Actor *func_race_8002D360(Actor *arg0) {
 }
 
 void func_race_8002D40C(void) {
-    s32 song;
+    MUSIC_E song;
     s32 i;
     RaceAdditionalActorData *RaaD;
     RaaD_unk20_unk4 *temp_v0_2;
@@ -496,39 +544,39 @@ void func_race_8002D40C(void) {
     while (song == 0 && i >= 0) {
         if (RaaD->unk20[i].unk4->unk27 == 1) {
             if (RaaD->unk20[i].unk4->unk36 != 0) {
-                song = 0x56;
+                song = MUSIC_86_SUCCESS_RACES;
             } else {
-                song = 0x57;
+                song = MUSIC_87_FAILURE_RACES_TRY_AGAIN;
             }
         }
         i--;
         var_a0--;
     }
     if (song == 0) {
-        song = 0x56;
+        song = MUSIC_86_SUCCESS_RACES;
     }
     playSong(song, 1.0f);
 }
 
 void func_race_8002D4A0(void) {
-    s32 song;
+    MUSIC_E song;
     f32 phi_f0;
 
     phi_f0 = 1.0f;
     switch (current_map) {
         case MAP_AZTEC_BEETLE_RACE:
-            song = 0x13;
+            song = MUSIC_19_ANGRY_AZTEC_BEETLE_SLIDE;
             phi_f0 = 0.6f;
             break;
         case MAP_GALLEON_SEAL_RACE:
-            song = 0x3D;
+            song = MUSIC_61_GLOOMY_GALLEON_SEAL_RACE;
             break;
         case MAP_CAVES_BEETLE_RACE:
-            song = 0x66;
+            song = MUSIC_102_CRYSTAL_CAVES_BEETLE_RACE;
             break;
         case MAP_FACTORY_CAR_RACE:
         default:
-            song = 0x1B;
+            song = MUSIC_27_FRANTIC_FACTORY_CAR_RACE;
     }
 
     playSong(song, phi_f0);

@@ -86,7 +86,7 @@ void func_global_asm_806BC1E0(void) {
         if (!isFlagSet(0x10F, 0U)) {
             dx = current_actor_pointer->x_position - player_pointer->x_position;
             dz = current_actor_pointer->z_position - player_pointer->z_position;
-            if (((dx * dx) + (dz * dz)) < 14400.0) {
+            if ((SQ(dx) + SQ(dz)) < SQ(120.0)) {
                 playCutscene(current_actor_pointer, 0, 1U);
                 aad178->unk39 = 0U;
                 aad178->unk38 = 1U;
@@ -149,7 +149,7 @@ void func_global_asm_806BC1E0(void) {
             if (!func_global_asm_8061CB50()) {
                 dx = current_actor_pointer->x_position - player_pointer->x_position;
                 dz = current_actor_pointer->z_position - player_pointer->z_position;
-                if (((dx * dx) + (dz * dz)) > 25600.0) {
+                if ((SQ(dx) + SQ(dz)) > SQ(160.0)) {
                     aad178->unk39 = 0U;
                     aad178->unk38 = 0U;
                 }

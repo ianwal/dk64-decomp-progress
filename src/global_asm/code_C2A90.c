@@ -305,7 +305,7 @@ void func_global_asm_806BE8BC(void) {
                     addActorToTextOverlayRenderArray(func_global_asm_806BE6F0, current_actor_pointer, 3);
                     break;
                 case 2:
-                    playSong(0xA9, 1.0f);
+                    playSong(MUSIC_169_FUNGI_FOREST_RABBIT_RACE, 1.0f);
                     D_global_asm_807FBB64 |= 4;
                     func_global_asm_8061CB08();
                     func_global_asm_8062217C(D_global_asm_807F5D10, 3);
@@ -359,7 +359,7 @@ void func_global_asm_806BE8BC(void) {
                         } else {
                             // Problem here
                             var_v0 = current_actor_pointer->y_rotation - 0x12C;
-                            playSong(0x2F, 1.0f);
+                            playSong(MUSIC_47_MELON_SLICE_DROP, 1.0f);
                             for (i = 0; i < 3; i++, var_v0 += 0x12C) {
                                 func_global_asm_806A5DF0(
                                     0x35,
@@ -413,7 +413,7 @@ void func_global_asm_806BE8BC(void) {
             if (current_actor_pointer->unk15F < 0x10U) {
                 addActorToTextOverlayRenderArray(func_global_asm_8068E474, current_actor_pointer, 3);
             }
-            if ((((rand() >> 0xF) % 1000) >= 0x3DF) && (current_actor_pointer->animation_state->unk64 == 0x302)) {
+            if ((RandChance(0.01)) && (current_actor_pointer->animation_state->unk64 == 0x302)) {
                 playActorAnimation(current_actor_pointer, (object_timer & 1) ? 0x303 : 0x304);
             }
             if (D_global_asm_807FBB70.unk0 != 0) {
@@ -651,7 +651,7 @@ void func_global_asm_806C151C(u16 fileIndex, u8 textIndex, s16 tempFlagIndex) {
     dy = player_pointer->y_position - current_actor_pointer->y_position;
     dz = player_pointer->z_position - current_actor_pointer->z_position;
     phi_a3 = FALSE;
-    if (((dx * dx) + (dy * dy) + (dz * dz)) < 4900.0f) {
+    if ((SQ(dx) + SQ(dy) + SQ(dz)) < SQ(70.0f)) {
         phi_a3 = TRUE;
     }
     if ((phi_a3 & 0xFF) && !isFlagSet(tempFlagIndex, FLAG_TYPE_TEMPORARY)) {
@@ -730,7 +730,7 @@ void func_global_asm_806C1734(void) {
                     break;
                 case 0x112:
                     if ((sp2A >= 0x44) && (sp2A < 0x64) && ((object_timer % 3U) == 0)) {
-                        sp29 = ((rand() >> 0xF) % 32767) % 2;
+                        sp29 = RandClamp(32767) % 2;
                         func_global_asm_807149B8(1);
                         func_global_asm_80714950(0x50);
                         func_global_asm_8071498C(func_global_asm_8071A8B0);
@@ -982,7 +982,7 @@ void func_global_asm_806C226C(void) {
         case 39:
             if (current_actor_pointer->unk6A & 4) {
                 func_global_asm_8072A920(2, 0, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkC, D_global_asm_807FDC90->unkE, 0x46, 30.0f, 100.0f, 0);
-                if (((rand() >> 0xF) % 1000) >= 0x3A3) {
+                if (RandChance(0.07)) {
                     func_global_asm_8071498C(func_global_asm_80718BF4);
                     func_global_asm_807149B8(1);
                     func_global_asm_807149FC(-1);
@@ -1089,7 +1089,7 @@ void func_global_asm_806C28B8(void) {
 void func_global_asm_806C2A64(u8 red, u8 green, u8 blue, f32 x, f32 y, f32 z, void *sprite, f32 scale) {
     func_global_asm_807149A8(1000);
     func_global_asm_80714998(0xFF);
-    func_global_asm_80714944(((rand() >> 0xF) % 32767) % 11);
+    func_global_asm_80714944(RandClamp(32767) % 11);
     changeActorColor(red, green, blue, 0xFF);
     func_global_asm_8071498C(func_global_asm_80717D84);
     func_global_asm_80714950(2);

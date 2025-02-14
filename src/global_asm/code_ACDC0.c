@@ -176,7 +176,7 @@ extern ? D_global_asm_807505B8;
 extern s16 D_global_asm_807505CA;
 extern s8 D_global_asm_807505D0;
 extern ? D_global_asm_807505D8;
-extern u8 D_global_asm_80755DA8;
+extern u8 D_global_asm_80755DA8; // This is part of an array of structs, see code_135D30 (flags)
 extern ? D_global_asm_807FC7F8;
 extern s8 D_global_asm_807FC800;
 extern f32 D_global_asm_807FC804;

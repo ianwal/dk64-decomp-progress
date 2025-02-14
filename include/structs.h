@@ -347,7 +347,10 @@ typedef struct {
         u16 unk2_u16; // used in K Rool Diddy code
     };
     s16 unk4;
-    s16 unk6;
+    union {
+        s16 unk6;
+        u16 unk6_u16;
+    };
     // Note: This is correctly sized, if you get references to unk8, use unk1C[1].unk0 instead
 } AnimationStateUnk1C;
 
@@ -443,7 +446,10 @@ typedef struct {
         f32 unk8; // Used
         s32 unk8_s32; // Used // TODO: We might have another aaD situation here...
     };
-    f32 unkC; // Used
+    union {
+        f32 unkC; // Used
+        s32 unkC_s32; // Used // TODO: We might have another aaD situation here...
+    };
     f32 unk10; // Used
     union {
         f32 unk14; // Used
@@ -744,6 +750,8 @@ typedef struct race_additional_actor_data {
     u8 unk45; // Used
     u8 pad46[2];
     s16* unk48;
+    u8 pad4C[4];
+    Mtx unk50[2];
 } RaceAdditionalActorData;
 
 typedef struct race_additional_actor_data2 {
@@ -836,6 +844,8 @@ typedef struct SnideAaD180 {
     u8 unturned_count;
     u8 pad2[0x5];
 } SnideAaD180;
+
+typedef struct otherSpriteControl otherSpriteControl;
 
 typedef struct player_additional_actor_data {
     s16 unk0; // Used
@@ -975,9 +985,9 @@ typedef struct player_additional_actor_data {
     f32 unk108; // Used
     s8 unk10C; // Used
     u8 unk10D;
-    u8 unk10E;
-    u8 unk10F;
-    s32 unk110;
+    s16 unk10E;
+    s16 unk110;
+    s16 unk112;
     s32 unk114;
     s32 unk118;
     u8 unk11C; // Used, VehicleAdditionalActorData?
@@ -1087,18 +1097,18 @@ typedef struct player_additional_actor_data {
     u8 unk240; // Used
     u8 unk241;
     u16 unk242; // Used, map?
-    s8 unk244;
+    u8 unk244;
     u8 unk245; // Used
     s8 unk246; // Used func_global_asm_806CA26C
     s8 unk247; // Used func_global_asm_806CA26C
     s8 unk248;
     s8 unk249;
-    s8 unk24A;
+    u8 unk24A;
     s8 unk24B; // Used
     u16 unk24C; // Used // TODO: s16? func_global_asm_806CA1B4 uses this as u16
     u16 unk24E; // Used // TODO: s16? func_global_asm_806CA1B4 uses this as u16
     s32 unk250;
-    s32 unk254;
+    otherSpriteControl *unk254;
     f32 unk258; // Used
     f32 unk25C; // Used
     void *unk260; // Used (multiplayer)
@@ -1132,6 +1142,14 @@ typedef struct TempAAD {
 typedef struct struct806A57C0_2 Struct806A57C0_2;
 typedef struct struct806A57C0_3 Struct806A57C0_3;
 
+typedef struct struct806A57C0_3_sub10 {
+    s16 unk0;
+    s16 unk2;
+    void *unk4;
+    Mtx unk8[2];
+    f32 unk88;
+} struct806A57C0_3_sub10;
+
 struct struct806A57C0_3 {
     s16 unk0;
     u8 unk2; // Used
@@ -1139,42 +1157,7 @@ struct struct806A57C0_3 {
     f32 unk4; // Used
     f32 unk8; // Used
     s32 unkC;
-    s32 unk10;
-    void *unk14; // Used
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-    s32 unk60;
-    s32 unk64;
-    s32 unk68;
-    s32 unk6C;
-    s32 unk70;
-    s32 unk74;
-    s32 unk78;
-    s32 unk7C;
-    s32 unk80;
-    s32 unk84;
-    s32 unk88;
-    s32 unk8C;
-    s32 unk90;
-    s32 unk94;
-    s32 unk98;
-    s32 unk9C;
+    struct806A57C0_3_sub10 unk10;
     Struct806A57C0_3 *unkA0; // Used
 };
 
@@ -1394,9 +1377,14 @@ struct actor {
     u8 unk79;
     u8 unk7A;
     u8 unk7B;
-    f32 x_position; // at 0x7C
-    f32 y_position; // at 0x80
-    f32 z_position; // at 0x84
+    union {
+        struct {
+            f32 x_position; // at 0x7C
+            f32 y_position; // at 0x80
+            f32 z_position; // at 0x84
+        };
+        tuple_f position;
+    };
     f32 unk88;
     f32 unk8C;
     f32 unk90;
@@ -1607,6 +1595,16 @@ typedef struct {
 } CharacterChange250;
 
 typedef struct {
+    f32 unk0;
+    u16 unk4;
+    u16 unk6;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+} CharacterChange2DC;
+
+typedef struct {
     u8      does_player_exist; // bitfield? 0x00
     u8      unk1;
     u8      unk2;
@@ -1638,13 +1636,18 @@ typedef struct {
     s32     unk24C;
     CharacterChange250 unk250[2];
     s16     unk270[4];
-    s16     unk278;
-    s16     unk27A;
+    union {
+        struct {
+            s16     unk278;
+            s16     unk27A;
+        };
+        s16 unk278_arr[2];
+    };
     f32     fov_y; // 0x27C
     f32     unk280;
     f32     near; // 0x284
     f32     far; // 0x288
-    s32     unk28C;
+    f32     unk28C;
     s16     chunk; // 0x290
     s16     unk292;
     OSContPad *unk294; // Used
@@ -1656,7 +1659,7 @@ typedef struct {
     s32     unk2A8; // Used
     s32     unk2AC;
     s32     unk2B0; // Used
-    u8      pad_unknown3[0x2C0 - 0x2B4];
+    tuple_f unk2B4;
     u8      unk2C0; // Used
     u8      unk2C1; // Used
     u8      unk2C2; // Used
@@ -1669,13 +1672,7 @@ typedef struct {
     f32     unk2D0;
     f32     unk2D4;
     f32     unk2D8;
-    u8      pad2DC[0x2E0 - 0x2DC];
-    u16     unk2E0;
-    u16     unk2E2;
-    u8      unk2E4;
-    u8      unk2E5;
-    u8      unk2E6;
-    u8      unk2E7;
+    CharacterChange2DC      unk2DC;
     u8      unk2E8;
     u8      unk2E9;
     u8      unk2EA;
@@ -1825,10 +1822,13 @@ typedef struct {
     u8 unk67;
     s32 unk68;
     s16 unk6C;
-    s8 unk6E;
+    u8 unk6E;
     s8 unk6F;
-    s8 unk70;
-    s8 unk71;
+    union {
+        u8 unk70;
+        s8 unk70_s8;
+    };
+    u8 unk71;
     u8 unk72;
     u8 unk73;
     f32 unk74;
@@ -1929,6 +1929,19 @@ typedef struct {
     u8 unk25[2];
 } Prop_unk48;
 
+typedef struct {
+    Prop_unk28 *unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    u8 unk14;
+    u8 unk15;
+    u8 pad16[2];
+    s32 unk18;
+    s32 unk1C;
+} Prop_seg28;
+
 typedef struct prop {
     f32 x_position; // at 0x00
     f32 y_position; // at 0x04
@@ -1940,14 +1953,7 @@ typedef struct prop {
     f32 unk1C;
     PropModel *model_pointer; // at 0x20
     Prop_unk24 *unk24; // labelled behavior_type_pointer in ScriptHawk
-    Prop_unk28 *unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
+    Prop_seg28 unk28;
     Prop_unk48 *unk48;
     s32 unk4C;
     s32 unk50;
@@ -2993,30 +2999,106 @@ typedef struct {
 
 typedef struct otherSpriteControl_unk330 {
     SpriteData *unk0;
+    s32 unk4;
+    u8 unk8;
+    u8 unk9;
+    u8 unkA;
+    u8 unkB;
+    s16 unkC;
+    s16 unkE;
+    u8 unk10;
+    u8 unk11;
+    u8 unk12;
+    u8 unk13;
+    u8 unk14;
+    u8 unk15;
+    s16 unk16;
+    s32 unk18;
+    void *unk1C;
+    s16 *unk20;
+    s32 unk24;
 } otherSpriteControl_unk330;
 
-typedef struct otherSpriteControl {
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+} Struct80717D84_unk384_8071CDE0;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+} Struct80717D84_unk384_8071C9E8_sub6;
+
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    Struct80717D84_unk384_8071C9E8_sub6 unk6;
+    s16 unkC;
+} Struct80717D84_unk384_8071C9E8;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+} Struct80717D84_unk384_8071ABDC;
+
+typedef struct {
+    s32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+} Struct80717D84_unk384_80718BF4;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+} Struct80717D84_unk384_80717404;
+
+typedef union {
+    struct {
+        s16 unk0;
+        s16 unk2;
+    } s16arr;
+    s32 s32v;
+    Actor *actor;
+} otherSpriteControl_unk35C;
+
+struct otherSpriteControl {
 	/* 0x000 */ s8 unk_000[0x28];
-	/* 0x028 */ u8 left_stretch;
-	/* 0x029 */ u8 right_stretch;
-	/* 0x02A */ u8 up_stretch;
-	/* 0x02B */ u8 down_stretch;
-	/* 0x02C */ s8 unk_02C[0x128 - 0x2C];
+	/* 0x028 */ Vtx unk28[0x10]; // Unsure on size
     /* 0x128 */ Mtx unk128[2];
     /* 0x1A8 */ u8 unk1A8[0x32C - 0x1A8];
     /* 0x32C */ s8 unk32C;
     /* 0x32D */ u8 pad32D[0x330 - 0x32D];
     /* 0x330 */ otherSpriteControl_unk330 *unk330;
-    /* 0x334 */ u8 pad334[0x340 - 0x334];
+    /* 0x334 */ u8 pad334[0x338 - 0x334];
+    /* 0x338 */ Actor *unk338;
+    /* 0x33C */ u8 pad33C[0x340 - 0x33C];
 	/* 0x340 */ f32 xPos;
 	/* 0x344 */ f32 yPos;
 	/* 0x348 */ f32 zPos;
-    /* 0x34C */ s8 unk_34C[4];
-	/* 0x350 */ s8 gif_update_frequency;
-	/* 0x351 */ s8 unk_351[0x3];
+    /* 0x34C */ s8 unk_34C[2];
+    /* 0x34E */ s16 unk34E;
+	/* 0x350 */ u8 gif_update_frequency;
+    /* 0x351 */ u8 unk351;
+	/* 0x352 */ u8 pad352[0x2];
     /* 0x354 */ s32 unk354;
     /* 0x358 */ s32 unk358;
-	/* 0x35C */ s32 unk35C;
+    /* 0x35C */ union {
+        s32 unk35C;
+        Actor *unk35C_actor;
+        s16 unk35C_s16[2];
+    };
 	/* 0x360 */ f32 xScale;
 	/* 0x364 */ f32 yScale;
 	/* 0x368 */ s8 unk_368[0x2];
@@ -3024,12 +3106,15 @@ typedef struct otherSpriteControl {
 	/* 0x36B */ s8 transparency2;
 	/* 0x36C */ s8 transparency3;
 	/* 0x36D */ u8 transparency4;
-	/* 0x36E */ s8 unk_36E[0x384-0x36E];
+	/* 0x36E */ s8 unk36E;
+    /* 0x36F */ u8 unk36F;
+    /* 0x370 */ s8 unk_36E[0x384-0x370];
     union {
         void* some_pointer;
         Struct80717D84_unk384 *unk384;
         Struct80717D84_unk384_s16 *unk384_s16;
         Struct80717D84_unk384_f32 *unk384_f32;
+        tuple_f *unk384_tuplef;
         Struct80717D84_unk384_80717814 *unk384_80717814;
         Struct80717D84_unk384_80717100 *unk384_80717100;
         Struct80717D84_unk384_8071720C *unk384_8071720C;
@@ -3047,9 +3132,14 @@ typedef struct otherSpriteControl {
         Struct80717D84_unk384_8071910C *unk384_8071910C;
         Struct80717D84_unk384_807195D4 *unk384_807195D4;
         Struct80717D84_unk384_807197B4 *unk384_807197B4;
+        Struct80717D84_unk384_8071CDE0 *unk384_8071CDE0;
+        Struct80717D84_unk384_8071C9E8 *unk384_8071C9E8;
+        Struct80717D84_unk384_8071ABDC *unk384_8071ABDC;
+        Struct80717D84_unk384_80718BF4 *unk384_80718BF4;
+        Struct80717D84_unk384_80717404 *unk384_80717404;
     };
 	/* 0x384 */ 
-} otherSpriteControl;
+};
 
 // TODO: Which struct is this?
 typedef struct {
@@ -3458,11 +3548,41 @@ typedef struct {
 
 typedef struct Struct80754AD0 Struct80754AD0;
 
+typedef struct {
+    u8 width;
+    u8 file_count;
+    u8 height;
+    u8 kerning_space;
+    u8 kerning_character;
+    u8 kerning_animation;
+} Struct80754A34;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+} Struct806FD9FC;
+
 struct Struct80754AD0 {
     Struct80754AD0 *next;
-    void *unk4;
-    void *unk8;
-    u8 padC[0x18 - 0x0C];
+    u8 *unk4;
+    Struct806FD9FC *unk8;
+    u8 unkC;
+    u8 unkD;
+    u8 padE[0x10 - 0x0E];
+    f32 unk10;
+    f32 unk14;
     f32 unk18;
     s16 unk1C;
 };
@@ -3548,5 +3668,59 @@ typedef struct {
     s32 unk4;
     AnimationStateUnk0_0 *unk8;
 } Struct807FB7B0;
+
+typedef struct {
+    OSTime unk0;
+    s32 unk8;
+    s32 unkC;
+    u8 unk10;
+    u8 unk11;
+} Struct80755340;
+
+typedef struct {
+    u16 unk0;
+    u16 unk2;
+    s32 *unk4;
+    u8 unk8;
+} Struct807FB630;
+
+typedef struct Struct80630B70 Struct80630B70;
+struct Struct80630B70 {
+    Actor *unk0;
+    s32 unk4;
+    s32 unk8;
+    f32 unkC;
+    u8 pad10[0x14-0x10];
+    Struct80630B70 *unk14;
+    u8 pad18[0x24 - 0x18];
+    u8 unk24;
+};
+
+typedef struct Struct80614C38_0 Struct80614C38;
+struct Struct80614C38_0 {
+    void *unk0;
+    void *unk4;
+    u8 unk8;
+    u8 pad9[0xC - 0x9];
+    Struct80614C38 *unkC;
+    u8 pad10[0x14 - 0x10];
+    Struct80614C38 *next;
+};
+
+typedef struct ActorModelHeader {
+    s32 unk0;
+    union {
+        s32 *unk4;
+        s32 unk4_raw;
+    };
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    Struct80614C38 * unk14;
+    u8 pad18[0x20 - 0x18];
+    u8 bone_count;
+    u8 unk21;
+    u8 pad22[0x28 - 0x22];
+} ActorModelHeader;
 
 #endif

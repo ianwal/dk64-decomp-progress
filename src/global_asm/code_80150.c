@@ -353,14 +353,14 @@ void func_global_asm_8067BF4C(void) {
 
 u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
     u8 sp47;
-    f32 temp_f0_2;
-    f32 var_f20;
+    f32 d;
+    f32 minDistance;
     u8 playerIndex;
     f32 dz;
     f32 dx;
 
     sp47 = 0;
-    var_f20 = 99999.0f;
+    minDistance = 99999.0f;
     if (current_actor_pointer->object_properties_bitfield & 0x10) {
         func_global_asm_80688370(current_actor_pointer, 0, 0.5f);
         func_global_asm_806883C8(current_actor_pointer, 0, 0);
@@ -376,13 +376,13 @@ u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
                     dz = character_change_array[playerIndex].player_pointer->z_position - current_actor_pointer->z_position;
                     dx = character_change_array[playerIndex].player_pointer->x_position - current_actor_pointer->x_position;
                     
-                    temp_f0_2 = sqrtf((dz * dz) + (dx * dx));
-                    if (temp_f0_2 < var_f20) {
-                        var_f20 = temp_f0_2;
+                    d = sqrtf(SQ(dz) + SQ(dx));
+                    if (d < minDistance) {
+                        minDistance = d;
                     }
                 }
             }
-            if (var_f20 > 12.0) {
+            if (minDistance > 12.0) {
                 *arg1 = 0;
             } else {
                 *arg1 = 1;
@@ -589,9 +589,9 @@ void func_global_asm_8067DF44(f32 x, f32 y, f32 z, f32 arg3, u8 arg4, u8 arg5) {
     sp80 = arg3;
     sp7C = arg3 * 1.5;
     for (i = 0; i < 5; i++) {
-        randomXOffset = (((rand() >> 0xF) % 20) - 0xA) * arg3;
-        randomYOffset = (((rand() >> 0xF) % 20) - 0xA) * arg3;
-        randomZOffset = (((rand() >> 0xF) % 20) - 0xA) * arg3;
+        randomXOffset = (RandClamp(20) - 0xA) * arg3;
+        randomYOffset = (RandClamp(20) - 0xA) * arg3;
+        randomZOffset = (RandClamp(20) - 0xA) * arg3;
         func_global_asm_8071496C(4);
         func_global_asm_807149B8(1);
         func_global_asm_807149FC(1);
@@ -947,7 +947,7 @@ void func_global_asm_80681E18(void) {
             case MAP_KROOL_FIGHT_DIDDY_PHASE:
                 break;
             default:
-                playSong(0x48, 1.0f);
+                playSong(MUSIC_72_ROCKETBARREL_BOOST, 1.0f);
                 break;
         }
     }

@@ -1066,7 +1066,26 @@ void func_global_asm_8061F2B8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     }
 }
 
+// close, doable, register mix up in addu
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8061F4B0.s")
+
+/*
+void func_global_asm_8061F4B0(u8 *arg0) {
+    u8 *temp_a2;
+    u8 i;
+    u8 temp_v1;
+    u8 *temp_a1;
+
+    for (i = 0; i < 6; i++) {
+        temp_v1 = *(arg0 + i);
+        temp_a1 = (arg0 + i);
+        if (temp_v1 != 0) {
+            temp_a2 = &D_global_asm_807476FC->lock_regions[temp_v1];
+            temp_a2[-4] |= (temp_a1[6] & 0xF);
+        }
+    };
+}
+*/
 
 typedef struct {
     s32 unk0;
@@ -1247,9 +1266,9 @@ f32 func_global_asm_80622ABC(f32 arg0, f32 arg1, f32 arg2) {
 
     temp_f0 = arg0 - arg1;
     if (3.141592741f < temp_f0) {
-        arg1 += 6.283185482f;
+        arg1 += MATH_2PI_F;
     } else if (temp_f0 < -3.141592741f) {
-        arg0 += 6.283185482f;
+        arg0 += MATH_2PI_F;
     }
     return ((arg1 - arg0) * arg2) + arg0;
 }
@@ -1297,11 +1316,23 @@ void func_global_asm_80625994(Actor *arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *
     *arg4 = *arg4 + ((aaD->unk80 - *arg4) * D_global_asm_807476A4);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806259FC.s")
-
 extern s16 D_807F5CD2;
 extern s16 D_807F5CD4;
 extern s16 D_807F5CD8;
+
+s32 func_global_asm_806259FC(s16 arg0, s16 arg1) {
+    s16 i;
+    s16 j;
+
+    for (i = -1; i < 2; i++) {
+        for (j = -1; j < 2; j++) {
+            if (arg0 == (arg1 + (i * D_807F5CD8) + j)) {
+                return TRUE;
+            }
+        }
+    }
+    return FALSE;
+}
 
 s16 func_global_asm_80625A80(s32 lockRegionIndex) {
     CutsceneBank_LockRegion *lockRegion;
@@ -1490,8 +1521,11 @@ void *func_global_asm_8062649C(u8 *src, void *dest, u16 size) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_806264DC.s")
 
-// 64 bit maths
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626BC8.s")
+s32 func_global_asm_80626BC8(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s32 arg5) {
+    u64 pad[3];
+
+    return sqrtf((SQ((s64)(arg1 - arg4)) + (SQ((s64)(arg0 - arg3)) + SQ((s64)(arg2 - arg5)))));
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626CAC.s")
 
@@ -1507,7 +1541,15 @@ void func_global_asm_80627388(Mtx *arg0, f32 arg1, f32 arg2, f32 arg3, s32 unuse
     *arg8 = ((sp18[0][3] * arg1) + (sp18[1][3] * arg2) + (sp18[2][3] * arg3)) + sp18[3][3];
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80627490.s")
+void func_global_asm_80627490(f32 *arg0, f32 *arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
+    f32 temp_f14;
+    f32 temp_f2;
+
+    *arg0 = func_global_asm_80665AE4(arg5, arg7, arg2, arg4) * (MATH_PI_F / 180.0f);
+    temp_f2 = arg2 - arg5;
+    temp_f14 = arg4 - arg7;
+    *arg1 = func_global_asm_80611BB4(arg3 - arg6, sqrtf(SQ(temp_f2) + SQ(temp_f14)));
+}
 
 void func_global_asm_8062754C(f32 arg0) {
     s16 playerIndex;

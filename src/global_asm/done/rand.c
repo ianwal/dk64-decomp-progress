@@ -54,7 +54,7 @@ f32 func_global_asm_80611BB4(f32 arg0, f32 arg1) {
         if (arg1 < arg0) {
             var_f2 = func_global_asm_80611850(arg1 / temp_f0);
             if (arg0 < 0.0f) {
-                var_f2 = 6.283185482f - var_f2;
+                var_f2 = MATH_2PI_F - var_f2;
             }
         } else {
             temp_f12 = 1.570796371f - func_global_asm_80611850(arg0 / temp_f0);
@@ -63,7 +63,7 @@ f32 func_global_asm_80611BB4(f32 arg0, f32 arg1) {
                 var_f2 = 3.141592741f - temp_f12;
             }
             if (var_f2 < 0.0f) {
-                var_f2 += 6.283185482f;
+                var_f2 += MATH_2PI_F;
             }
         }
     }

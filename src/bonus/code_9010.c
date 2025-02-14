@@ -5,7 +5,7 @@ typedef struct {
     s8 unk0;
     s8 unk1;
     s8 unk2;
-    s8 unk3;
+    u8 unk3;
     s8 unk4;
     s8 unk5;
     u8 unk6;

@@ -27,35 +27,28 @@ void func_global_asm_806A3700(s32 arg0, s32 arg1) {
 
 /*
 void func_global_asm_806A370C(Gfx **arg0, AAD_global_asm_806A4DDC *arg1, Struct806A57C0_2 *arg2, Struct806A57C0_3 *arg3) {
+    Gfx *dl;
     u16 spE8; // compiler-managed
     f32 spA8[4][4];
     f32 sp68[4][4];
-    f32 sp60;
-    f32 sp5C;
-    f32 sp4C;
-    f32 sp38;
-    Gfx *temp_s3;
-    f32 temp_f0;
-    f32 temp_f0_2;
     f32 temp_f12;
     f32 temp_f14;
+    f32 sp4C;
+    f32 sp38;
+    f32 temp_f0;
     f32 var_f2;
-    void *temp_s1;
-    void *temp_t0;
-    void *temp_v1;
+    struct806A57C0_3_sub10 *temp_s1;
 
-    temp_s3 = *arg0;
+    dl = *arg0;
     spE8 = D_global_asm_8075A740;
     guMtxIdentF(spA8);
-    temp_s1 = arg3 + 0x10;
+    temp_s1 = &arg3->unk10;
     if ((temp_s1->unk0 != 0) && (arg3->unk2 != 0)) {
         temp_f12 = arg3->unk0 * 0.5f * 4.0f;
-        sp60 = temp_f12;
         temp_f14 = arg2->unk18 * 0.5f * 4.0f;
-        sp5C = temp_f14;
         guTranslateF(sp68, -temp_f12, -temp_f14, 0.0f);
         guMtxCatF(spA8, sp68, spA8);
-        temp_s1->unk88 = temp_s1->unk88 + 0.41887903213500977;
+        temp_s1->unk88 += 0.41887903213500977;
         if (temp_s1->unk0 & 8) {
             temp_f0 = temp_s1->unk88 * 0.5;
             if (temp_f0 <= MATH_2PI_F) {
@@ -64,9 +57,8 @@ void func_global_asm_806A370C(Gfx **arg0, AAD_global_asm_806A4DDC *arg1, Struct8
             }
         }
         if (temp_s1->unk0 & 4) {
-            temp_f0_2 = temp_s1->unk88;
-            if (temp_f0_2 <= MATH_2PI_F) {
-                var_f2 = (0.25f * (func_global_asm_80612D1C(temp_f0_2 - MATH_HALFPI_F) + 1.0f)) + 1.0f;
+            if (temp_s1->unk88 <= MATH_2PI_F) {
+                var_f2 = (0.25f * (func_global_asm_80612D1C(temp_s1->unk88 - MATH_HALFPI_F) + 1.0f)) + 1.0f;
             } else {
                 var_f2 = 1.0f;
             }
@@ -75,29 +67,24 @@ void func_global_asm_806A370C(Gfx **arg0, AAD_global_asm_806A4DDC *arg1, Struct8
         }
         if (temp_s1->unk0 & 2) {
             sp38 = func_global_asm_80612D1C(temp_s1->unk88);
-            sp4C = ((20.0f - ((rand() >> 0xF) % 40)) / 20.0f) * (4.0f * sp38);
+            sp4C = ((20.0f - RandClamp(40)) / 20.0f) * (4.0f * sp38);
             sp38 = func_global_asm_80612D1C(temp_s1->unk88);
-            guTranslateF(sp68, sp4C, ((20.0f - ((rand() >> 0xF) % 40)) / 20.0f) * (4.0f * sp38), 0.0f);
+            guTranslateF(sp68, sp4C, ((20.0f - RandClamp(40)) / 20.0f) * (4.0f * sp38), 0.0f);
             guMtxCatF(spA8, sp68, spA8);
         }
-        guTranslateF(sp68, sp60, sp5C, 0.0f);
+        guTranslateF(sp68, temp_f12, temp_f14, 0.0f);
         guMtxCatF(spA8, sp68, spA8);
     }
     guScaleF(sp68, 1.0f, 1.0f, 1.0f);
     guMtxCatF(spA8, sp68, spA8);
     guTranslateF(sp68, (arg1->unk44 + arg3->unk4) * 4.0, (arg1->unk48 + arg3->unk8) * 4.0, 0.0f);
     guMtxCatF(spA8, sp68, spA8);
-    guMtxF2L(spA8, temp_s1 + (D_global_asm_807444FC << 6) + 8);
-    temp_s3->words.w0 = 0xDA380003;
-    temp_v1 = temp_s3 + 8;
-    temp_s3->words.w1 = temp_s1 + (D_global_asm_807444FC << 6) + 8;
-    temp_v1->unk4 = 0;
-    temp_v1->unk0 = 0xE7000000;
-    temp_t0 = temp_v1 + 8;
-    temp_t0->unk0 = 0xFA000000;
-    temp_t0->unk4 = arg3->unk3 | 0x2828FF00;
+    guMtxF2L(spA8, &temp_s1->unk8[D_global_asm_807444FC]);
+    gSPMatrix(dl++, &temp_s1->unk8[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gDPPipeSync(dl++);
+    gDPSetPrimColor(dl++, 0, 0, 0x28, 0x28, 0xFF, arg3->unk3);
     spE8 = temp_s1->unk2;
-    *arg0 = printStyledText(temp_t0 + 8, 6, 0, 0, &spE8, 0);
+    *arg0 = printStyledText(dl, 6, 0, 0, &spE8, 0);
 }
 */
 

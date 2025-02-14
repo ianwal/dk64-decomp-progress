@@ -574,7 +574,7 @@ void func_global_asm_806A736C(void) {
     // TODO: Get rid of typecasts
     if ((u16)PaaD->unk8 == 1) {
         playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x73, 0xFF, 0x7F, 1, 0, 0.0f, 0);
-        playSong(0x3B, 0.7f);
+        playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 0.7f);
     } else if ((u16)PaaD->unk8 == 0xA) {
         playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x19C, 0xB4, 0x7F, 1, 0, 0.0f, 0);
     }
@@ -748,14 +748,14 @@ void func_global_asm_806A7BDC(void) {
     }
     func_global_asm_8067ACB4(current_actor_pointer);
     if ((sp64 != 0) && (D_global_asm_807FBD70 == 4) && ((object_timer % 5U) == 0)) {
-        sp60 = ((rand() >> 0xF) % 255) % 7;
+        sp60 = RandClamp(255) % 7;
         sp44 = D_global_asm_807504A4;
         func_global_asm_8071498C(func_global_asm_8071D28C);
         func_global_asm_807149FC(-1);
         func_global_asm_807149B8(1);
         func_global_asm_80714950(0x64);
         func_global_asm_80714C08(sp44.unk0[sp60], 0.2f, current_actor_pointer, 1, 0);
-        playSong(0x7F, 1.0f);
+        playSong(MUSIC_127_HEADPHONES_GET, 1.0f);
         func_global_asm_806F8BC4(7, 0, 0);
         changeCollectableCount(7, 0, func_global_asm_806F8EDC(7, 0));
     }

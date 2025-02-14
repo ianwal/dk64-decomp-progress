@@ -22,7 +22,7 @@ void func_global_asm_806B1290(void) {
     // TODO: Hahahaha clean this up
     if (D_global_asm_807FDC90->unk18 >= 0x65
         && ((D_global_asm_807FDC90->unk1A & 0x80) && (rand() >> 0xF) % 1000 >= 981
-            || !((rand() >> 0xF) % 1000 < 991)
+            || !RandClamp(1000 < 991)
             && current_actor_pointer->object_properties_bitfield & 0x100)) {
         current_actor_pointer->control_state = 0x28;
         current_actor_pointer->control_state_progress = 0;
@@ -132,7 +132,7 @@ void func_global_asm_806B13B4(u8 arg0) {
                     break;
                 case 2:
                     func_global_asm_8072A450();
-                    if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         func_global_asm_8072DE44(0x203);
                     }
                     break;
@@ -143,7 +143,7 @@ void func_global_asm_806B13B4(u8 arg0) {
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072B324(current_actor_pointer, 0);
-                    if (((rand() >> 0xF) % 1000) >= 0x259) {
+                    if (RandChance(0.4)) {
                         playActorAnimation(current_actor_pointer, 0x208);
                         current_actor_pointer->control_state_progress = 5;
                     } else {

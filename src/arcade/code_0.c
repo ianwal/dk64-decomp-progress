@@ -25389,14 +25389,14 @@ void func_arcade_80024B04(void) {
 
 void func_arcade_80024C34(void) {
     if (D_arcade_8004A73C == 0) {
-        if (D_arcade_8004A770 && D_arcade_8004A740 && !isFlagSet(0x84, FLAG_TYPE_PERMANENT)) {
+        if (D_arcade_8004A770 && D_arcade_8004A740 && !isFlagSet(PERMFLAG_ITEM_NINTENDO_COIN, FLAG_TYPE_PERMANENT)) {
             // Arcade Golden Banana Collected
-            if (isFlagSet(0x82, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_ITEM_GB_FACTORY_ARCADE, FLAG_TYPE_PERMANENT)) {
                 // Nintendo Coin Spawn Pending
-                setFlag(0x11, TRUE, FLAG_TYPE_TEMPORARY);
+                setFlag(TEMPFLAG_NINTENDO_COIN_SPAWN_PENDING, TRUE, FLAG_TYPE_TEMPORARY);
             } else {
                 // Arcade GB Spawn Pending
-                setFlag(0x10, TRUE, FLAG_TYPE_TEMPORARY);
+                setFlag(TEMPFLAG_ARCADE_GB_SPAWN_PENDING, TRUE, FLAG_TYPE_TEMPORARY);
             }
         }
         if (D_arcade_8004A740) { // arcade_is_in_nintendo_coin_mode
@@ -27110,43 +27110,43 @@ void func_arcade_8002B390(s32 arg0) {
         if (arcade_hammer_timer != 0) {
             if (arcade_hammer_timer & 8) {
                 switch (unk10_truncated & 3) {
-                case 0:
-                case 2:
-                    arcade_objects[arg0].sprite = D_arcade_8003C178;
-                    return;
-                case 1:
-                    arcade_objects[arg0].sprite = D_arcade_8003C608;
-                    return;
-                case 3:
-                    arcade_objects[arg0].sprite = D_arcade_8003CA98;
-                    return;
+					case 0:
+					case 2:
+						arcade_objects[arg0].sprite = D_arcade_8003C178;
+						return;
+					case 1:
+						arcade_objects[arg0].sprite = D_arcade_8003C608;
+						return;
+					case 3:
+						arcade_objects[arg0].sprite = D_arcade_8003CA98;
+						return;
                 }
             } else {
                 switch (unk10_truncated & 3) {
-                case 0:
-                case 2:
-                    arcade_objects[arg0].sprite = D_arcade_8003C3C0;
-                    return;
-                case 1:
-                    arcade_objects[arg0].sprite = D_arcade_8003C850;
-                    return;
-                case 3:
-                    arcade_objects[arg0].sprite = D_arcade_8003CCE0;
-                    return;
+					case 0:
+					case 2:
+						arcade_objects[arg0].sprite = D_arcade_8003C3C0;
+						return;
+					case 1:
+						arcade_objects[arg0].sprite = D_arcade_8003C850;
+						return;
+					case 3:
+						arcade_objects[arg0].sprite = D_arcade_8003CCE0;
+						return;
                 }
             }
         } else {
             switch (unk10_truncated & 3) {
-            case 0:
-            case 2:
-                arcade_objects[arg0].sprite = D_arcade_8003B180;
-                return;
-            case 1:
-                arcade_objects[arg0].sprite = D_arcade_8003B3C8;
-                return;
-            case 3:
-                arcade_objects[arg0].sprite = D_arcade_8003B610;
-                return;
+				case 0:
+				case 2:
+					arcade_objects[arg0].sprite = D_arcade_8003B180;
+					return;
+				case 1:
+					arcade_objects[arg0].sprite = D_arcade_8003B3C8;
+					return;
+				case 3:
+					arcade_objects[arg0].sprite = D_arcade_8003B610;
+					return;
             }
         }
     } else {
@@ -27286,178 +27286,178 @@ void func_arcade_8002B89C(s32 arg0) {
         sp40 = func_arcade_8002A390(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
         D_arcade_8004C6FC = D_arcade_8004C6F8;
         switch (arcade_objects[arg0].unk19) {
-        case 2:
-            for (sp3C = 0; sp3C < 4; sp3C++) {
-                if (D_arcade_8004C6F8 == sp3C) {
-                    arcade_objects[arcade_jumpman_slot].x_position += D_arcade_8004A308[sp3C];
-                }
-            }
-            
-            if (arcade_objects[arg0].x_position <= D_arcade_8004C6F0 - 1) {
-                arcade_objects[arg0].x_position = D_arcade_8004C6F0;
-            }
-            if ((D_arcade_8004C6F4 + 1) <= arcade_objects[arg0].x_position) {
-                arcade_objects[arg0].x_position = D_arcade_8004C6F4;
-            }
+			case 2:
+				for (sp3C = 0; sp3C < 4; sp3C++) {
+					if (D_arcade_8004C6F8 == sp3C) {
+						arcade_objects[arcade_jumpman_slot].x_position += D_arcade_8004A308[sp3C];
+					}
+				}
+				
+				if (arcade_objects[arg0].x_position <= D_arcade_8004C6F0 - 1) {
+					arcade_objects[arg0].x_position = D_arcade_8004C6F0;
+				}
+				if ((D_arcade_8004C6F4 + 1) <= arcade_objects[arg0].x_position) {
+					arcade_objects[arg0].x_position = D_arcade_8004C6F4;
+				}
 
-            if ((D_arcade_8004C6EC < arcade_objects[arg0].y_position)
-                && (D_global_asm_807ECDE8->unk0 & 0x800) | ((D_global_asm_807ECDE8->unk3 >= 0x15))
-                && (D_global_asm_807ECDE8->unk2 < 0x29)
-                && (D_global_asm_807ECDE8->unk2 >= -0x28)
-                && !(D_global_asm_807ECDE8->unk0 & 0x300)
-                && (arcade_hammer_timer == 0))
-            {
-                arcade_objects[arg0].unk19 = 5;
-                arcade_objects[arg0].x_velocity = 0.0f;
-                arcade_objects[arg0].y_position -= 1.0f;
-                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
-                break;
-            }
-            
-            if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8)
-                && (D_arcade_8004C6EC <= arcade_objects[arg0].y_position)
-                && !(D_global_asm_807ECDE8->unk0 & 0x300)
-                && ((D_global_asm_807ECDE8->unk2 < 0x29) && (D_global_asm_807ECDE8->unk2 >= -0x28))
-                && ((D_global_asm_807ECDE8->unk0 & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14))
-                && (arcade_hammer_timer == 0))
-            {
-                arcade_objects[arg0].unk19 = 5;
-                arcade_objects[arg0].x_velocity = 0.0f;
-                arcade_objects[arg0].y_position += 1.0f;
-                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
-                break;
-            }
-            
-            if ((sp40 - arcade_objects[arg0].y_position) < 2.0f) {
-                arcade_objects[arg0].y_position = sp40;
-            } else {
-                arcade_objects[arg0].unk19 = 3;
-                arcade_objects[arg0].x_velocity = 0.0f;
-                arcade_objects[arg0].y_velocity = 0.0f;
-                arcade_objects[arg0].unk1D = arcade_objects[arg0].y_position;
-            }
-            break;
-        case 5:
-            if ((sp40 == arcade_objects[arg0].y_position) &&
-                (((((D_global_asm_807ECDE8->unk0 & 0x300) | ((D_global_asm_807ECDE8->unk2 >= 0x15)) | (D_global_asm_807ECDE8->unk2 < -0x14))))
-                    || ((D_arcade_8004C6F8 == 2) && (D_arcade_8004A308[2] != 0))
-                    || ((D_arcade_8004C6F8 == 1) && (D_arcade_8004A308[1] != 0))
-                    || ((D_arcade_8004C6F8 == 3) && (D_arcade_8004A308[3] != 0))))
-            {
-                arcade_objects[arg0].unk19 = 2;
-            } else if ((sp40 == arcade_objects[arg0].y_position) && (*newly_pressed_input & 0xE000)) {
-                func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
-                arcade_objects[arg0].unk10 = 0.0f;
-                arcade_objects[arg0].y_velocity = -1.2f;
-                arcade_objects[arg0].x_velocity *= 0.65;
-                arcade_objects[arg0].unk19 = 3;
-                arcade_objects[arg0].unk1D = arcade_objects[arg0].y_position;
-            } else if (arcade_objects[arg0].y_position < D_arcade_8004C6EC) {
-                arcade_objects[arg0].y_position += 0.2;
-                if ((D_arcade_8004C6EC - arcade_objects[arg0].y_position) > 10.0f) {
-                    arcade_objects[arg0].y_position = (D_arcade_8004C6EC - 0xA);
-                }
-                if (D_arcade_8004C6EC < arcade_objects[arg0].y_position) {
-                    arcade_objects[arg0].y_position = D_arcade_8004C6EC;
-                }
-            } else {
-                if ((D_arcade_8004C6EC < arcade_objects[arg0].y_position) && (((D_global_asm_807ECDE8->unk0 & 0x800) | (D_global_asm_807ECDE8->unk3 >= 0x15)))) {
-                    arcade_objects[arg0].y_velocity = -0.5f;
-                    D_arcade_8004BC80 += 2;
-                } else
-                {
-                    if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8) && (((D_global_asm_807ECDE8->unk0 & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14)))) {
-                        arcade_objects[arg0].y_velocity = 0.5f;
-                        D_arcade_8004BC80 += 2;
-                    } else {
-                        arcade_objects[arg0].y_velocity = 0.0f;
-                    }
-                }
+				if ((D_arcade_8004C6EC < arcade_objects[arg0].y_position)
+					&& (D_global_asm_807ECDE8->unk0 & 0x800) | ((D_global_asm_807ECDE8->unk3 >= 0x15))
+					&& (D_global_asm_807ECDE8->unk2 < 0x29)
+					&& (D_global_asm_807ECDE8->unk2 >= -0x28)
+					&& !(D_global_asm_807ECDE8->unk0 & 0x300)
+					&& (arcade_hammer_timer == 0))
+				{
+					arcade_objects[arg0].unk19 = 5;
+					arcade_objects[arg0].x_velocity = 0.0f;
+					arcade_objects[arg0].y_position -= 1.0f;
+					arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+					break;
+				}
+				
+				if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8)
+					&& (D_arcade_8004C6EC <= arcade_objects[arg0].y_position)
+					&& !(D_global_asm_807ECDE8->unk0 & 0x300)
+					&& ((D_global_asm_807ECDE8->unk2 < 0x29) && (D_global_asm_807ECDE8->unk2 >= -0x28))
+					&& ((D_global_asm_807ECDE8->unk0 & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14))
+					&& (arcade_hammer_timer == 0))
+				{
+					arcade_objects[arg0].unk19 = 5;
+					arcade_objects[arg0].x_velocity = 0.0f;
+					arcade_objects[arg0].y_position += 1.0f;
+					arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+					break;
+				}
+				
+				if ((sp40 - arcade_objects[arg0].y_position) < 2.0f) {
+					arcade_objects[arg0].y_position = sp40;
+				} else {
+					arcade_objects[arg0].unk19 = 3;
+					arcade_objects[arg0].x_velocity = 0.0f;
+					arcade_objects[arg0].y_velocity = 0.0f;
+					arcade_objects[arg0].unk1D = arcade_objects[arg0].y_position;
+				}
+				break;
+			case 5:
+				if ((sp40 == arcade_objects[arg0].y_position) &&
+					(((((D_global_asm_807ECDE8->unk0 & 0x300) | ((D_global_asm_807ECDE8->unk2 >= 0x15)) | (D_global_asm_807ECDE8->unk2 < -0x14))))
+						|| ((D_arcade_8004C6F8 == 2) && (D_arcade_8004A308[2] != 0))
+						|| ((D_arcade_8004C6F8 == 1) && (D_arcade_8004A308[1] != 0))
+						|| ((D_arcade_8004C6F8 == 3) && (D_arcade_8004A308[3] != 0))))
+				{
+					arcade_objects[arg0].unk19 = 2;
+				} else if ((sp40 == arcade_objects[arg0].y_position) && (*newly_pressed_input & 0xE000)) {
+					func_global_asm_80737638(D_global_asm_8076D1F8, SFX_41_ARCADE_JUMPMAN_JUMPING, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+					arcade_objects[arg0].unk10 = 0.0f;
+					arcade_objects[arg0].y_velocity = -1.2f;
+					arcade_objects[arg0].x_velocity *= 0.65;
+					arcade_objects[arg0].unk19 = 3;
+					arcade_objects[arg0].unk1D = arcade_objects[arg0].y_position;
+				} else if (arcade_objects[arg0].y_position < D_arcade_8004C6EC) {
+					arcade_objects[arg0].y_position += 0.2;
+					if ((D_arcade_8004C6EC - arcade_objects[arg0].y_position) > 10.0f) {
+						arcade_objects[arg0].y_position = (D_arcade_8004C6EC - 0xA);
+					}
+					if (D_arcade_8004C6EC < arcade_objects[arg0].y_position) {
+						arcade_objects[arg0].y_position = D_arcade_8004C6EC;
+					}
+				} else {
+					if ((D_arcade_8004C6EC < arcade_objects[arg0].y_position) && (((D_global_asm_807ECDE8->unk0 & 0x800) | (D_global_asm_807ECDE8->unk3 >= 0x15)))) {
+						arcade_objects[arg0].y_velocity = -0.5f;
+						D_arcade_8004BC80 += 2;
+					} else
+					{
+						if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8) && (((D_global_asm_807ECDE8->unk0 & 0x400) | (D_global_asm_807ECDE8->unk3 < -0x14)))) {
+							arcade_objects[arg0].y_velocity = 0.5f;
+							D_arcade_8004BC80 += 2;
+						} else {
+							arcade_objects[arg0].y_velocity = 0.0f;
+						}
+					}
 
-                arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-                arcade_objects[arg0].unk10 += arcade_objects[arg0].y_velocity;
-            }
-            break;
-        case 3:
-            if (arcade_objects[arg0].x_position > D_arcade_8004C6F4) {
-                arcade_objects[arg0].x_position = D_arcade_8004C6F4;
-                if (arcade_objects[arg0].y_velocity < 1.8) {
-                    arcade_objects[arg0].unk1A &= 1;
-                    arcade_objects[arg0].x_velocity = -arcade_objects[arg0].x_velocity;
-                    arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity;
-                }
-            } else if (arcade_objects[arg0].x_position < D_arcade_8004C6F0) {
-                arcade_objects[arg0].x_position = D_arcade_8004C6F0;
-                if (arcade_objects[arg0].y_velocity < 1.8) {
-                    arcade_objects[arg0].unk1A |= 2;
-                    arcade_objects[arg0].x_velocity = -arcade_objects[arg0].x_velocity;
-                    arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity;
-                }
-            }
-            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-            arcade_objects[arg0].y_velocity += 0.06;
-            
-            if ((arcade_objects[arg0].y_velocity >= 0.0f) && (arcade_objects[arg0].y_velocity < 0.06)) {
-                sp38 = 0;
-                for (sp3C = 0; sp3C < 0x50; sp3C++)
-                {
-                    if ((arcade_objects[sp3C].object_type == 1) || (arcade_objects[sp3C].object_type == 2)) {
-                        if (__arcade_abs_w(arcade_objects[sp3C].x_position - arcade_objects[arg0].x_position) < 0xD) {
-                            if (((arcade_objects[sp3C].y_position - arcade_objects[arg0].y_position) < 24.0f) && (arcade_objects[arg0].y_position < arcade_objects[sp3C].y_position)) {
-                                ++sp38;
-                            }
-                        }
-                    }
-                }
-                if (sp38 != 0) {
-                    sp3C = func_arcade_800247F0();
-                    arcade_objects[sp3C] = arcade_points_text_obj_template;
-                    arcade_objects[sp3C].x_position = arcade_objects[arg0].x_position;
-                    arcade_objects[sp3C].y_position = arcade_objects[arg0].y_position + 9.0f;
-                    if (sp38 == 1) {
-                        arcade_add_points_to_score(100);
-                    } else if (sp38 == 2) {
-                        arcade_objects[sp3C].sprite = D_arcade_800383B8;
-                        arcade_add_points_to_score(300);
-                    } else {
-                        arcade_objects[sp3C].sprite = D_arcade_800385C0;
-                        arcade_add_points_to_score(500);
-                    }
-                }
-            }
-            
-            if ((arcade_objects[arg0].y_position - arcade_objects[arg0].unk1D) > 15.0f) {
-                func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
-                arcade_objects[arg0].unk1D = 0xFF;
-            }
-            if (arcade_objects[arg0].y_velocity > 2.5) {
-                arcade_objects[arg0].y_velocity = 2.5f;
-            }
-            if ((sp40 < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - sp40) < 3.0f)) {
-                arcade_objects[arg0].y_position = sp40;
-                if (arcade_objects[arg0].unk1D == 0xFF) {
-                    func_arcade_80027E8C();
-                } else {
-                    arcade_objects[arg0].unk19 = 4;
-                    arcade_objects[arg0].y_velocity = 0.0f;
-                    arcade_objects[arg0].x_velocity = 0.0f;
-                    arcade_objects[arg0].unk10 = 4.0f;
-                }
-            }
-            break;
-        case 4:
-            arcade_objects[arg0].y_position = sp40;
-            arcade_objects[arg0].unk10 -= 1.0f;
-            if (arcade_objects[arg0].unk10 == 0.0f) {
-                arcade_objects[arg0].unk19 = 2;
-            }
-            break;
-        case 8:
-            arcade_objects[arg0].unk10 += 0.125;
-            if (arcade_objects[arg0].unk10 == 8.0f) {
-                func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_54_ARCADE_JUMPMAN_DEATH, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
-            }
-            break;
+					arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+					arcade_objects[arg0].unk10 += arcade_objects[arg0].y_velocity;
+				}
+				break;
+			case 3:
+				if (arcade_objects[arg0].x_position > D_arcade_8004C6F4) {
+					arcade_objects[arg0].x_position = D_arcade_8004C6F4;
+					if (arcade_objects[arg0].y_velocity < 1.8) {
+						arcade_objects[arg0].unk1A &= 1;
+						arcade_objects[arg0].x_velocity = -arcade_objects[arg0].x_velocity;
+						arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity;
+					}
+				} else if (arcade_objects[arg0].x_position < D_arcade_8004C6F0) {
+					arcade_objects[arg0].x_position = D_arcade_8004C6F0;
+					if (arcade_objects[arg0].y_velocity < 1.8) {
+						arcade_objects[arg0].unk1A |= 2;
+						arcade_objects[arg0].x_velocity = -arcade_objects[arg0].x_velocity;
+						arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity;
+					}
+				}
+				arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+				arcade_objects[arg0].y_velocity += 0.06;
+				
+				if ((arcade_objects[arg0].y_velocity >= 0.0f) && (arcade_objects[arg0].y_velocity < 0.06)) {
+					sp38 = 0;
+					for (sp3C = 0; sp3C < 0x50; sp3C++)
+					{
+						if ((arcade_objects[sp3C].object_type == 1) || (arcade_objects[sp3C].object_type == 2)) {
+							if (__arcade_abs_w(arcade_objects[sp3C].x_position - arcade_objects[arg0].x_position) < 0xD) {
+								if (((arcade_objects[sp3C].y_position - arcade_objects[arg0].y_position) < 24.0f) && (arcade_objects[arg0].y_position < arcade_objects[sp3C].y_position)) {
+									++sp38;
+								}
+							}
+						}
+					}
+					if (sp38 != 0) {
+						sp3C = func_arcade_800247F0();
+						arcade_objects[sp3C] = arcade_points_text_obj_template;
+						arcade_objects[sp3C].x_position = arcade_objects[arg0].x_position;
+						arcade_objects[sp3C].y_position = arcade_objects[arg0].y_position + 9.0f;
+						if (sp38 == 1) {
+							arcade_add_points_to_score(100);
+						} else if (sp38 == 2) {
+							arcade_objects[sp3C].sprite = D_arcade_800383B8;
+							arcade_add_points_to_score(300);
+						} else {
+							arcade_objects[sp3C].sprite = D_arcade_800385C0;
+							arcade_add_points_to_score(500);
+						}
+					}
+				}
+				
+				if ((arcade_objects[arg0].y_position - arcade_objects[arg0].unk1D) > 15.0f) {
+					func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+					arcade_objects[arg0].unk1D = 0xFF;
+				}
+				if (arcade_objects[arg0].y_velocity > 2.5) {
+					arcade_objects[arg0].y_velocity = 2.5f;
+				}
+				if ((sp40 < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - sp40) < 3.0f)) {
+					arcade_objects[arg0].y_position = sp40;
+					if (arcade_objects[arg0].unk1D == 0xFF) {
+						func_arcade_80027E8C();
+					} else {
+						arcade_objects[arg0].unk19 = 4;
+						arcade_objects[arg0].y_velocity = 0.0f;
+						arcade_objects[arg0].x_velocity = 0.0f;
+						arcade_objects[arg0].unk10 = 4.0f;
+					}
+				}
+				break;
+			case 4:
+				arcade_objects[arg0].y_position = sp40;
+				arcade_objects[arg0].unk10 -= 1.0f;
+				if (arcade_objects[arg0].unk10 == 0.0f) {
+					arcade_objects[arg0].unk19 = 2;
+				}
+				break;
+			case 8:
+				arcade_objects[arg0].unk10 += 0.125;
+				if (arcade_objects[arg0].unk10 == 8.0f) {
+					func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_54_ARCADE_JUMPMAN_DEATH, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+				}
+				break;
         }
         
         if (D_arcade_8004BC80 >= 0x24) {
@@ -27587,85 +27587,84 @@ void func_arcade_8002CD64(s32 arg0) {
     y_value = func_arcade_8002A390(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
     func_arcade_8002AF2C(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
     switch (arcade_objects[arg0].unk19) {
-    case 2:
-        arcade_objects[arg0].unk10 += 0.2;
-        arcade_objects[arg0].x_velocity = (1 - (2 * arcade_objects[arg0].unk1A));
-        if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8)
-            && ((D_arcade_8004C6F8 + 1 < D_arcade_8004C6FC)
-                || ((D_arcade_8004C6FC == D_arcade_8004C6F8 + 1) && ((D_arcade_8004C704 >= 0x12) || (arcade_objects[arcade_jumpman_slot].unk19 != 5)))))
-        {
-            if ((arcade_objects[arg0].unk1C & 0x80) != 0) 
-            {
-                break;
-            }
+		case 2:
+			arcade_objects[arg0].unk10 += 0.2;
+			arcade_objects[arg0].x_velocity = (1 - (2 * arcade_objects[arg0].unk1A));
+			if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8)
+				&& ((D_arcade_8004C6F8 + 1 < D_arcade_8004C6FC)
+					|| ((D_arcade_8004C6FC == D_arcade_8004C6F8 + 1) && ((D_arcade_8004C704 >= 0x12) || (arcade_objects[arcade_jumpman_slot].unk19 != 5)))))
+			{
+				if ((arcade_objects[arg0].unk1C & 0x80) != 0) 
+				{
+					break;
+				}
 
-            arcade_objects[arg0].unk1C &= 0xF;
-            if (arcade_objects[arg0].unk1C > 0) {
-                arcade_objects[arg0].unk1C -= 1;
-                arcade_objects[arg0].unk19 = 5;
-                arcade_objects[arg0].x_velocity = 0.0f;
-                arcade_objects[arg0].y_velocity = 1.0f;
-                arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
-                break;
-            }
-            
-            arcade_objects[arg0].unk1C |= 0x80;
-        }
-        else if (!(arcade_objects[arg0].unk1C & 0x47)) {
-            arcade_objects[arg0].unk1C = ((4096.0f + (func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 1512.0f)) > arcade_cycle_rng()) | 0x40;
-        }
-        if ((y_value - arcade_objects[arg0].y_position) < 3.0f) {
-            arcade_objects[arg0].y_position = y_value;
-        } else {
-            arcade_objects[arg0].y_velocity = 0.0f;
-            arcade_objects[arg0].x_velocity /= 2;
-            arcade_objects[arg0].unk19 = 3;
-        }
-        break;
-    case 3:
-        arcade_objects[arg0].unk10 += 0.2;
-        arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-        arcade_objects[arg0].y_velocity += 0.06;
-        if ((arcade_objects[arg0].y_position > y_value) && ((arcade_objects[arg0].y_position - y_value) < 3.0f)) {
-            arcade_objects[arg0].y_position = y_value;
-            arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity / 3.0f;
-            if ((f64) arcade_objects[arg0].y_velocity > -0.2) {
-                arcade_objects[arg0].unk19 = 2;
-            }
-        }
-        break;
-    case 5:
-        arcade_objects[arg0].unk10 += 0.3;
-        arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-        if (arcade_objects[arg0].y_position > (D_arcade_8004C6E8 - 1)) {
-            arcade_objects[arg0].y_position = y_value;
-            arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
-            arcade_objects[arg0].x_velocity = (1 - (arcade_objects[arg0].unk1A * 2));
-            arcade_objects[arg0].unk19 = 2;
-
-        }
-        break;
-    case 7:
-        arcade_objects[arg0].unk10 += 0.3;
-        arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-        arcade_objects[arg0].y_velocity += 0.06;
-        y_value_float = func_arcade_8002A390((s32) arcade_objects[arg0].x_position, (s32) arcade_objects[arg0].y_position);
-        if ((y_value_float < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - y_value_float) < 8.0f) && (arcade_objects[arg0].unk1C < D_arcade_8004C6F8)) {
-            arcade_objects[arg0].unk1C = (u8) D_arcade_8004C6F8;
-            arcade_objects[arg0].y_position = y_value_float;
-            arcade_objects[arg0].y_velocity = 0.0f;
-            if (arcade_objects[arg0].unk1D != 2) {
-                arcade_objects[arg0].x_velocity = (-arcade_objects[arg0].x_velocity * 0.2) + ((arcade_cycle_rng() - 16384.0) * (func_arcade_800246C8(3.0f, D_arcade_8004A76C)) / 40000.0);
-            }
-            if (arcade_objects[arg0].y_position > 230.0f) {
-                arcade_objects[arg0].unk19 = 3;
-                arcade_objects[arg0].unk1A = 1;
-                arcade_objects[arg0].x_velocity = -1.0f;
-                arcade_objects[arg0].y_velocity = -0.7f;
-            }
-        }
-        break;
+				arcade_objects[arg0].unk1C &= 0xF;
+				if (arcade_objects[arg0].unk1C > 0) {
+					arcade_objects[arg0].unk1C -= 1;
+					arcade_objects[arg0].unk19 = 5;
+					arcade_objects[arg0].x_velocity = 0.0f;
+					arcade_objects[arg0].y_velocity = 1.0f;
+					arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+					arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+					break;
+				}
+				
+				arcade_objects[arg0].unk1C |= 0x80;
+			}
+			else if (!(arcade_objects[arg0].unk1C & 0x47)) {
+				arcade_objects[arg0].unk1C = ((4096.0f + (func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 1512.0f)) > arcade_cycle_rng()) | 0x40;
+			}
+			if ((y_value - arcade_objects[arg0].y_position) < 3.0f) {
+				arcade_objects[arg0].y_position = y_value;
+			} else {
+				arcade_objects[arg0].y_velocity = 0.0f;
+				arcade_objects[arg0].x_velocity /= 2;
+				arcade_objects[arg0].unk19 = 3;
+			}
+			break;
+		case 3:
+			arcade_objects[arg0].unk10 += 0.2;
+			arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+			arcade_objects[arg0].y_velocity += 0.06;
+			if ((arcade_objects[arg0].y_position > y_value) && ((arcade_objects[arg0].y_position - y_value) < 3.0f)) {
+				arcade_objects[arg0].y_position = y_value;
+				arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity / 3.0f;
+				if ((f64) arcade_objects[arg0].y_velocity > -0.2) {
+					arcade_objects[arg0].unk19 = 2;
+				}
+			}
+			break;
+		case 5:
+			arcade_objects[arg0].unk10 += 0.3;
+			arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+			if (arcade_objects[arg0].y_position > (D_arcade_8004C6E8 - 1)) {
+				arcade_objects[arg0].y_position = y_value;
+				arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
+				arcade_objects[arg0].x_velocity = (1 - (arcade_objects[arg0].unk1A * 2));
+				arcade_objects[arg0].unk19 = 2;
+	        }
+	        break;
+	    case 7:
+	        arcade_objects[arg0].unk10 += 0.3;
+	        arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+	        arcade_objects[arg0].y_velocity += 0.06;
+	        y_value_float = func_arcade_8002A390((s32) arcade_objects[arg0].x_position, (s32) arcade_objects[arg0].y_position);
+	        if ((y_value_float < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - y_value_float) < 8.0f) && (arcade_objects[arg0].unk1C < D_arcade_8004C6F8)) {
+	            arcade_objects[arg0].unk1C = (u8) D_arcade_8004C6F8;
+	            arcade_objects[arg0].y_position = y_value_float;
+	            arcade_objects[arg0].y_velocity = 0.0f;
+	            if (arcade_objects[arg0].unk1D != 2) {
+	                arcade_objects[arg0].x_velocity = (-arcade_objects[arg0].x_velocity * 0.2) + ((arcade_cycle_rng() - 16384.0) * (func_arcade_800246C8(3.0f, D_arcade_8004A76C)) / 40000.0);
+	            }
+	            if (arcade_objects[arg0].y_position > 230.0f) {
+	                arcade_objects[arg0].unk19 = 3;
+	                arcade_objects[arg0].unk1A = 1;
+	                arcade_objects[arg0].x_velocity = -1.0f;
+	                arcade_objects[arg0].y_velocity = -0.7f;
+	            }
+	        }
+	        break;
     }
 
     if ((arcade_objects[arcade_jumpman_slot].unk1C >= D_arcade_8004C6F8) || (arcade_objects[arg0].unk1D != 0)) {
@@ -27743,74 +27742,74 @@ void func_arcade_8002D6FC(s32 arg0) {
         func_arcade_8002AF2C(arcade_objects[arg0].x_position, arcade_objects[arg0].y_position);
 
         switch (arcade_objects[arg0].unk19) {
-        case 2:
-            if (arcade_cycle_rng() < ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 60.0f) + 256.0f)) {
-                temp_a0 = (arcade_objects[arg0].x_position < arcade_objects[arcade_jumpman_slot].x_position);
-                temp_a0 += (((arcade_objects[arcade_jumpman_slot].unk1A & 2) * 3) / 2);
-                arcade_objects[arg0].unk1A = (((arcade_cycle_rng() + (temp_a0 * 0xFB8)) - 0x1F70) >= 0x4001);
-            }
-            if ((func_arcade_8002A390((arcade_objects[arg0].x_position + (arcade_objects[arg0].x_velocity * 8.0f)), arcade_objects[arg0].y_position) - arcade_objects[arg0].y_position) > 5.0f) {
-                arcade_objects[arg0].unk1A = !arcade_objects[arg0].unk1A;
-            } else {
-                arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
-            }
+			case 2:
+				if (arcade_cycle_rng() < ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 60.0f) + 256.0f)) {
+					temp_a0 = (arcade_objects[arg0].x_position < arcade_objects[arcade_jumpman_slot].x_position);
+					temp_a0 += (((arcade_objects[arcade_jumpman_slot].unk1A & 2) * 3) / 2);
+					arcade_objects[arg0].unk1A = (((arcade_cycle_rng() + (temp_a0 * 0xFB8)) - 0x1F70) >= 0x4001);
+				}
+				if ((func_arcade_8002A390((arcade_objects[arg0].x_position + (arcade_objects[arg0].x_velocity * 8.0f)), arcade_objects[arg0].y_position) - arcade_objects[arg0].y_position) > 5.0f) {
+					arcade_objects[arg0].unk1A = !arcade_objects[arg0].unk1A;
+				} else {
+					arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+				}
 
-            arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5) * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 15.0) + 1.0);
+				arcade_objects[arg0].x_velocity = (arcade_objects[arg0].unk1A - 0.5) * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 15.0) + 1.0);
 
-            temp_a0 = ((arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position) * func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 3.0f);
-            if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8) && (arcade_cycle_rng() < (0x400 - temp_a0))) {
-                arcade_objects[arg0].unk19 = 5;
-                arcade_objects[arg0].x_velocity = 0.0f;
-                arcade_objects[arg0].y_position += 1.0f;
-                arcade_objects[arg0].y_velocity = (2.0 * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 30.0) + 0.2));
-                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
-            } else if ((arcade_objects[arg0].y_position > D_arcade_8004C6E4) && (arcade_cycle_rng() < (temp_a0 + 0x400))) {
-                arcade_objects[arg0].unk19 = 6;
-                arcade_objects[arg0].x_velocity = 0.0f;
-                arcade_objects[arg0].y_position -= 1.0f;
-                arcade_objects[arg0].y_velocity = -((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 30.0) + 0.2);
-                arcade_objects[arg0].x_position = D_arcade_8004C6E0;
-            } else
-            {
-                if ((sp2C - arcade_objects[arg0].y_position) < 3.0f) {
-                    arcade_objects[arg0].y_position = sp2C;
-                } else {
-                    arcade_objects[arg0].unk1A = !arcade_objects[arg0].unk1A;
-                }
-            }
-            break;
-        case 3:
-            arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
-            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-            arcade_objects[arg0].y_velocity += 0.06;
-            if ((sp2C < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - sp2C) < 3.0f)) {
-                arcade_objects[arg0].y_position = sp2C;
-                arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity / 3.0f;
-                if (arcade_objects[arg0].y_velocity > -0.2) {
-                    arcade_objects[arg0].unk19 = 2;
-                }
-            }
-            break;
-        case 5:
-            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-            if ((D_arcade_8004C6E8 - 1) < arcade_objects[arg0].y_position) {
-                arcade_objects[arg0].y_position = sp2C;
-                arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
-                arcade_objects[arg0].x_velocity = 1 - (arcade_objects[arg0].unk1A * 2);
-                arcade_objects[arg0].unk19 = 2;
-            }
-            break;
-        case 6:
-            arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
-            if (arcade_objects[arg0].y_position < (D_arcade_8004C6E4 + 1)) {
-                arcade_objects[arg0].y_position = sp2C;
-                arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
-                arcade_objects[arg0].x_velocity = 1 - (arcade_objects[arg0].unk1A * 2);
-                arcade_objects[arg0].unk19 = 2;
-            }
-            break;
-        default:
-            break;
+				temp_a0 = ((arcade_objects[arg0].y_position - arcade_objects[arcade_jumpman_slot].y_position) * func_arcade_800246C8(D_arcade_8004A76C, 5.0f) * 3.0f);
+				if ((arcade_objects[arg0].y_position < D_arcade_8004C6E8) && (arcade_cycle_rng() < (0x400 - temp_a0))) {
+					arcade_objects[arg0].unk19 = 5;
+					arcade_objects[arg0].x_velocity = 0.0f;
+					arcade_objects[arg0].y_position += 1.0f;
+					arcade_objects[arg0].y_velocity = (2.0 * ((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 30.0) + 0.2));
+					arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+				} else if ((arcade_objects[arg0].y_position > D_arcade_8004C6E4) && (arcade_cycle_rng() < (temp_a0 + 0x400))) {
+					arcade_objects[arg0].unk19 = 6;
+					arcade_objects[arg0].x_velocity = 0.0f;
+					arcade_objects[arg0].y_position -= 1.0f;
+					arcade_objects[arg0].y_velocity = -((func_arcade_800246C8(D_arcade_8004A76C, 5.0f) / 30.0) + 0.2);
+					arcade_objects[arg0].x_position = D_arcade_8004C6E0;
+				} else
+				{
+					if ((sp2C - arcade_objects[arg0].y_position) < 3.0f) {
+						arcade_objects[arg0].y_position = sp2C;
+					} else {
+						arcade_objects[arg0].unk1A = !arcade_objects[arg0].unk1A;
+					}
+				}
+				break;
+			case 3:
+				arcade_objects[arg0].x_position += arcade_objects[arg0].x_velocity;
+				arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+				arcade_objects[arg0].y_velocity += 0.06;
+				if ((sp2C < arcade_objects[arg0].y_position) && ((arcade_objects[arg0].y_position - sp2C) < 3.0f)) {
+					arcade_objects[arg0].y_position = sp2C;
+					arcade_objects[arg0].y_velocity = -arcade_objects[arg0].y_velocity / 3.0f;
+					if (arcade_objects[arg0].y_velocity > -0.2) {
+						arcade_objects[arg0].unk19 = 2;
+					}
+				}
+				break;
+			case 5:
+				arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+				if ((D_arcade_8004C6E8 - 1) < arcade_objects[arg0].y_position) {
+					arcade_objects[arg0].y_position = sp2C;
+					arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
+					arcade_objects[arg0].x_velocity = 1 - (arcade_objects[arg0].unk1A * 2);
+					arcade_objects[arg0].unk19 = 2;
+				}
+				break;
+			case 6:
+				arcade_objects[arg0].y_position += arcade_objects[arg0].y_velocity;
+				if (arcade_objects[arg0].y_position < (D_arcade_8004C6E4 + 1)) {
+					arcade_objects[arg0].y_position = sp2C;
+					arcade_objects[arg0].unk1A = 1 - arcade_objects[arg0].unk1A;
+					arcade_objects[arg0].x_velocity = 1 - (arcade_objects[arg0].unk1A * 2);
+					arcade_objects[arg0].unk19 = 2;
+				}
+				break;
+			default:
+				break;
         }
 
         if (arcade_objects[arg0].x_position > 270.0f) {
@@ -28122,142 +28121,142 @@ void func_arcade_8002EEB8(s32 arg0) {
     }
 
     switch (arcade_objects[arg0].unk19) {
-    case 12:
-        if (--arcade_objects[arg0].unk1C == 0) {
-            arcade_objects[arg0].unk1C = 0x14;
-            arcade_objects[arg0].unk19 = 9;
-            arcade_objects[arg0].sprite = D_arcade_8003E9F0;
-            arcade_objects[arg0].unk1A = 0;
-            unk1D = arcade_get_first_empty_slot();
-            arcade_objects[arg0].unk1D = unk1D;
-            unk10 = arcade_objects[arg0].unk10;
-            arcade_objects[arg0].unk10 += 1.0f;
-            arcade_objects[unk1D] = arcade_barrel_obj_template;
-            if ((unk10 & 7) == 0) {
-                arcade_objects[unk1D].unk1D = 1;
-            }
-            if ((unk10 == 2) && (D_arcade_8004C723 != 0)) {
-                arcade_objects[unk1D].unk1C = 2;
-            }
-            else if (unk10 == 1) {
-                if (D_arcade_8004C723 == 0) {
-                    arcade_objects[unk1D].unk1C = 2;
-                }
-                else
-                {
-                    arcade_objects[unk1D].unk1C = 5;
-                }
-            }
-            else if ((unk10 == 0) || (arcade_cycle_rng() < (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 2000.0f + 2048.0f))) {
-                arcade_objects[unk1D].unk10 = 1.0f;
-                if (unk10 == 0) {
-                    arcade_objects[unk1D].unk1D = 2;
-                    if (D_arcade_8004A76C == 1) {
-                        arcade_objects[unk1D].x_velocity = 0.0f;
-                    }
-                    else if (D_arcade_8004A76C == 2) {
-                        arcade_objects[unk1D].x_velocity = 0.65f;
-                    }
-                    else {
-                        arcade_objects[unk1D].x_velocity = 0.77f;
-                    }
-                }
-                else
-                {
-                    arcade_objects[unk1D].x_velocity = (((arcade_objects[arcade_jumpman_slot].x_position - 92.0) / 200.0) + ((arcade_cycle_rng() - 16384.0) / 30000.0)) * func_arcade_800246C8(3.0f, D_arcade_8004A76C);
-                    if (arcade_cycle_rng() < (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 2000.0f) + 4096.0f) {
-                        arcade_objects[unk1D].unk1C = 6;
-                    }
-                }
-            }
-        } else if (arcade_objects[arg0].unk1C == 0x14) {
-            arcade_bonus_timer--;
-        }
-        break;
-    case 9:
-        if (--arcade_objects[arg0].unk1C == 0) {
-            unk1D = arcade_objects[arg0].unk1D;
-            arcade_objects[unk1D].x_position = 92.0f;
-            if (arcade_objects[unk1D].unk10 != 0.0f) {
-                arcade_objects[arg0].unk1C = 0x1E;
-                arcade_objects[arg0].unk19 = 0xB;
-                arcade_objects[arg0].sprite = D_arcade_80040540;
-                arcade_objects[arg0].unk1A = 0;
-                arcade_objects[unk1D].unk19 = 7;
-                arcade_objects[unk1D].unk1C = 2;
-            }
-            else
-            {
-                arcade_objects[arg0].unk1C = 0x3C;
-                arcade_objects[arg0].unk19 = 0xA;
-                arcade_objects[arg0].sprite = D_arcade_80043498;
-                arcade_objects[arg0].unk1A = 0;
-                arcade_objects[unk1D].unk19 = 1;
-            }
-        }
-        break;
-    case 11:
-        if (--arcade_objects[arg0].unk1C == 0) {
-            arcade_objects[arg0].unk1C = (51.0f - (func_arcade_800246C8(D_arcade_8004A76C, 3.0f)) * 5.0f) + (arcade_cycle_rng() & 0xF);
-            arcade_objects[arg0].unk19 = 0xC;
-            arcade_objects[arg0].sprite = D_arcade_800424D0;
-            arcade_objects[arg0].unk1A = 0;
-        }
-        break;
-    case 10:
-        unk1D = arcade_objects[arg0].unk1D;
-        if (--arcade_objects[arg0].unk1C == (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 3.0f)) {
-            arcade_objects[arg0].unk1C = (51.0f - (func_arcade_800246C8(D_arcade_8004A76C, 3.0f)) * 5.0f) + (arcade_cycle_rng() & 0xF);
-            arcade_objects[arg0].unk19 = 0xC;
-            arcade_objects[arg0].sprite = D_arcade_80040540;
-            arcade_objects[arg0].unk1A = 0;
-        }
-        else
-        {
-            if (arcade_objects[arg0].unk1C == 0x28) {
-                arcade_objects[arg0].sprite = D_arcade_8003E9F0;
-                arcade_objects[arg0].unk1A = 1;
-                arcade_objects[unk1D].unk19 = 0;
-                arcade_objects[unk1D].x_position = 122.0f;
-                arcade_objects[unk1D].y_position = 83.0f;
-            }
-            else if (arcade_objects[arg0].unk1C == 0x14) {
-                arcade_objects[unk1D].unk19 = 2;
-            }
-        }
-        break;
-    case 5:
-        if (arcade_objects[arg0].unk10++ > 60.f) {
-            if (D_arcade_8004C721 != 0) {
-                arcade_objects[arg0].sprite = D_arcade_800463F0;
-                arcade_objects[arg0].unk1A = (s32)(arcade_objects[arg0].unk10 / 8) & 1;
-            } else {
-                arcade_objects[arg0].unk1A = 0;
-                if ((s32)(arcade_objects[arg0].unk10 / 8) & 1) {
-                    arcade_objects[arg0].sprite = D_arcade_80045428;
-                } else {
-                    arcade_objects[arg0].sprite = D_arcade_80044460;
-                }
-            }
-            if (arcade_background_visual != 4) {
-                arcade_objects[arg0].x_position = 100.0f;
-            }
-            arcade_objects[arg0].y_position -= 0.4;
-            if (arcade_objects[arg0].y_position < 23.0f) {
-                D_arcade_8004C721 = 0;
-            }
-            if (arcade_objects[arg0].unk10 > 280.0f) {
-                D_arcade_8004C723++;
-                func_arcade_800257D8();
-            }
-            else if ((arcade_objects[arg0].unk10 == 200.0f) && (arcade_bonus_timer > 0)) {
-                arcade_add_points_to_score(arcade_bonus_timer * 0x64);
-            }
-        } else {
-            arcade_objects[arg0].unk1A = 1;
-            arcade_objects[arg0].sprite = D_arcade_8003E9F0;
-        }
-        break;
+		case 12:
+			if (--arcade_objects[arg0].unk1C == 0) {
+				arcade_objects[arg0].unk1C = 0x14;
+				arcade_objects[arg0].unk19 = 9;
+				arcade_objects[arg0].sprite = D_arcade_8003E9F0;
+				arcade_objects[arg0].unk1A = 0;
+				unk1D = arcade_get_first_empty_slot();
+				arcade_objects[arg0].unk1D = unk1D;
+				unk10 = arcade_objects[arg0].unk10;
+				arcade_objects[arg0].unk10 += 1.0f;
+				arcade_objects[unk1D] = arcade_barrel_obj_template;
+				if ((unk10 & 7) == 0) {
+					arcade_objects[unk1D].unk1D = 1;
+				}
+				if ((unk10 == 2) && (D_arcade_8004C723 != 0)) {
+					arcade_objects[unk1D].unk1C = 2;
+				}
+				else if (unk10 == 1) {
+					if (D_arcade_8004C723 == 0) {
+						arcade_objects[unk1D].unk1C = 2;
+					}
+					else
+					{
+						arcade_objects[unk1D].unk1C = 5;
+					}
+				}
+				else if ((unk10 == 0) || (arcade_cycle_rng() < (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 2000.0f + 2048.0f))) {
+					arcade_objects[unk1D].unk10 = 1.0f;
+					if (unk10 == 0) {
+						arcade_objects[unk1D].unk1D = 2;
+						if (D_arcade_8004A76C == 1) {
+							arcade_objects[unk1D].x_velocity = 0.0f;
+						}
+						else if (D_arcade_8004A76C == 2) {
+							arcade_objects[unk1D].x_velocity = 0.65f;
+						}
+						else {
+							arcade_objects[unk1D].x_velocity = 0.77f;
+						}
+					}
+					else
+					{
+						arcade_objects[unk1D].x_velocity = (((arcade_objects[arcade_jumpman_slot].x_position - 92.0) / 200.0) + ((arcade_cycle_rng() - 16384.0) / 30000.0)) * func_arcade_800246C8(3.0f, D_arcade_8004A76C);
+						if (arcade_cycle_rng() < (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 2000.0f) + 4096.0f) {
+							arcade_objects[unk1D].unk1C = 6;
+						}
+					}
+				}
+			} else if (arcade_objects[arg0].unk1C == 0x14) {
+				arcade_bonus_timer--;
+			}
+			break;
+		case 9:
+			if (--arcade_objects[arg0].unk1C == 0) {
+				unk1D = arcade_objects[arg0].unk1D;
+				arcade_objects[unk1D].x_position = 92.0f;
+				if (arcade_objects[unk1D].unk10 != 0.0f) {
+					arcade_objects[arg0].unk1C = 0x1E;
+					arcade_objects[arg0].unk19 = 0xB;
+					arcade_objects[arg0].sprite = D_arcade_80040540;
+					arcade_objects[arg0].unk1A = 0;
+					arcade_objects[unk1D].unk19 = 7;
+					arcade_objects[unk1D].unk1C = 2;
+				}
+				else
+				{
+					arcade_objects[arg0].unk1C = 0x3C;
+					arcade_objects[arg0].unk19 = 0xA;
+					arcade_objects[arg0].sprite = D_arcade_80043498;
+					arcade_objects[arg0].unk1A = 0;
+					arcade_objects[unk1D].unk19 = 1;
+				}
+			}
+			break;
+		case 11:
+			if (--arcade_objects[arg0].unk1C == 0) {
+				arcade_objects[arg0].unk1C = (51.0f - (func_arcade_800246C8(D_arcade_8004A76C, 3.0f)) * 5.0f) + (arcade_cycle_rng() & 0xF);
+				arcade_objects[arg0].unk19 = 0xC;
+				arcade_objects[arg0].sprite = D_arcade_800424D0;
+				arcade_objects[arg0].unk1A = 0;
+			}
+			break;
+		case 10:
+			unk1D = arcade_objects[arg0].unk1D;
+			if (--arcade_objects[arg0].unk1C == (func_arcade_800246C8(D_arcade_8004A76C, 3.0f) * 3.0f)) {
+				arcade_objects[arg0].unk1C = (51.0f - (func_arcade_800246C8(D_arcade_8004A76C, 3.0f)) * 5.0f) + (arcade_cycle_rng() & 0xF);
+				arcade_objects[arg0].unk19 = 0xC;
+				arcade_objects[arg0].sprite = D_arcade_80040540;
+				arcade_objects[arg0].unk1A = 0;
+			}
+			else
+			{
+				if (arcade_objects[arg0].unk1C == 0x28) {
+					arcade_objects[arg0].sprite = D_arcade_8003E9F0;
+					arcade_objects[arg0].unk1A = 1;
+					arcade_objects[unk1D].unk19 = 0;
+					arcade_objects[unk1D].x_position = 122.0f;
+					arcade_objects[unk1D].y_position = 83.0f;
+				}
+				else if (arcade_objects[arg0].unk1C == 0x14) {
+					arcade_objects[unk1D].unk19 = 2;
+				}
+			}
+			break;
+		case 5:
+			if (arcade_objects[arg0].unk10++ > 60.f) {
+				if (D_arcade_8004C721 != 0) {
+					arcade_objects[arg0].sprite = D_arcade_800463F0;
+					arcade_objects[arg0].unk1A = (s32)(arcade_objects[arg0].unk10 / 8) & 1;
+				} else {
+					arcade_objects[arg0].unk1A = 0;
+					if ((s32)(arcade_objects[arg0].unk10 / 8) & 1) {
+						arcade_objects[arg0].sprite = D_arcade_80045428;
+					} else {
+						arcade_objects[arg0].sprite = D_arcade_80044460;
+					}
+				}
+				if (arcade_background_visual != 4) {
+					arcade_objects[arg0].x_position = 100.0f;
+				}
+				arcade_objects[arg0].y_position -= 0.4;
+				if (arcade_objects[arg0].y_position < 23.0f) {
+					D_arcade_8004C721 = 0;
+				}
+				if (arcade_objects[arg0].unk10 > 280.0f) {
+					D_arcade_8004C723++;
+					func_arcade_800257D8();
+				}
+				else if ((arcade_objects[arg0].unk10 == 200.0f) && (arcade_bonus_timer > 0)) {
+					arcade_add_points_to_score(arcade_bonus_timer * 0x64);
+				}
+			} else {
+				arcade_objects[arg0].unk1A = 1;
+				arcade_objects[arg0].sprite = D_arcade_8003E9F0;
+			}
+			break;
     }
 }
 
@@ -28265,108 +28264,108 @@ void func_arcade_8002F82C(s32 arg0) {
     s32 temp;
 
     switch (arcade_objects[arg0].unk19) {
-    case 2:
-        if (arcade_game_state == 0) {
-            if ((D_arcade_8004C6DC % 120) == 0) {
-                --arcade_bonus_timer;
-            }
-            
-            if ((arcade_objects[arcade_jumpman_slot].y_position < 95.0f) && (arcade_objects[arcade_jumpman_slot].y_position > 76.0f)
-                && (arcade_objects[arcade_jumpman_slot].x_position > 135.0f) && (arcade_objects[arcade_jumpman_slot].x_position < 186.0f))
-            {
-                func_arcade_80027E8C();
-            }
-            
-            arcade_objects[arg0].unk1C++;
-            if ((arcade_objects[arg0].unk1C & 0xFF) < 0xA0) {
-                arcade_objects[arg0].sprite = D_arcade_80040540;
-            }
-            else
-            {
-                if (!(arcade_objects[arg0].unk1C & 0x1F)) {
-                    func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
-                }
-                arcade_objects[arg0].sprite = D_arcade_800424D0;
-                temp = arcade_objects[arg0].unk1C & 0x20;
-                arcade_objects[arg0].unk1A = (temp / 32) == 0;
-            }
-        }
-        break;
-    case 8:
-        temp = (arcade_objects[arg0].unk10 == 720.0f);
-        arcade_objects[arg0].unk10 += 1.0f;
-        if (temp) {
-            D_arcade_8004C723 += 1;
-            if (D_arcade_8004A740 != 0) {
-                D_arcade_8004A770 = 1;
-                if (arcade_saved_high_scores[4] < arcade_current_score) {
-                    func_arcade_80024B04();
-                } else {
-                    func_arcade_80024C34();
-                }
-            } else {
-                func_arcade_800257D8();
-            }
-        }
-        else
-        {
-            if ((arcade_objects[arg0].unk10 > 480.0f)) {
-                break;
-            }
-            
-            if (arcade_objects[arg0].unk10 == 400.0f) {
-                if (arcade_bonus_timer > 0) {
-                    arcade_add_points_to_score(arcade_bonus_timer * 0x64);
-                }
-            } else if (arcade_objects[arg0].unk10 > 200.0f) {
-                if (arcade_objects[arg0].y_position < 178.0f) {
-                    arcade_objects[arg0].unk1B = 1;
-                    arcade_objects[arg0].y_position += 1.0f;
-                    if (arcade_objects[arg0].y_position >= 178.0f) {
-                        arcade_objects[arcade_get_first_empty_slot()] = arcade_100m_complete_particle_obj_template;
-                    }
-                } else {
-                    if (D_arcade_8004C708 != 2) {
-                        D_arcade_8004C708 = 2;
-                        func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
-                    }
-                    arcade_objects[arg0].y_position = 178.0f;
-                    arcade_objects[arg0].unk1A = 0;
-                    temp = (s32) (arcade_objects[arg0].unk10 / 6.0f) % 3;
-                    if (temp == 0) {
-                        arcade_objects[arg0].sprite = D_arcade_800473B8;
-                    }
-                    else if (temp == 1) {
-                        arcade_objects[arg0].sprite = D_arcade_80048380;
-                    }
-                    else if (temp == 2) {
-                        arcade_objects[arg0].sprite = D_arcade_80049348;
-                    }
-                    if (arcade_objects[arg0].unk10 == 350.0f) {
-                        func_global_asm_80737638((void* ) D_global_asm_8076D1F8, 0x50, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
-                        arcade_objects[arcade_jumpman_slot].sprite = D_arcade_8003B180;
-                        arcade_objects[arcade_jumpman_slot].unk1A = 0;
-                        arcade_objects[arcade_jumpman_slot].x_position = 190.0f;
-                        arcade_objects[arcade_jumpman_slot].y_position = 93.0f;
-                        arcade_game_state = 3;
-                    }
-                }
-            } else if (arcade_objects[arg0].unk10 > 180.0f) {
-                arcade_objects[arg0].unk1A = 0;
-                arcade_objects[arg0].sprite = D_arcade_80040540;
-            } else if (arcade_objects[arg0].unk10 > 30.0f) {
-                arcade_objects[arg0].unk1A = (s32)(arcade_objects[arg0].unk10 / 6.0f) & 1;
-                arcade_objects[arg0].sprite = D_arcade_800424D0;
-            }
-        }
+		case 2:
+			if (arcade_game_state == 0) {
+				if ((D_arcade_8004C6DC % 120) == 0) {
+					--arcade_bonus_timer;
+				}
+				
+				if ((arcade_objects[arcade_jumpman_slot].y_position < 95.0f) && (arcade_objects[arcade_jumpman_slot].y_position > 76.0f)
+					&& (arcade_objects[arcade_jumpman_slot].x_position > 135.0f) && (arcade_objects[arcade_jumpman_slot].x_position < 186.0f))
+				{
+					func_arcade_80027E8C();
+				}
+				
+				arcade_objects[arg0].unk1C++;
+				if ((arcade_objects[arg0].unk1C & 0xFF) < 0xA0) {
+					arcade_objects[arg0].sprite = D_arcade_80040540;
+				}
+				else
+				{
+					if (!(arcade_objects[arg0].unk1C & 0x1F)) {
+						func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+					}
+					arcade_objects[arg0].sprite = D_arcade_800424D0;
+					temp = arcade_objects[arg0].unk1C & 0x20;
+					arcade_objects[arg0].unk1A = (temp / 32) == 0;
+				}
+			}
+			break;
+		case 8:
+			temp = (arcade_objects[arg0].unk10 == 720.0f);
+			arcade_objects[arg0].unk10 += 1.0f;
+			if (temp) {
+				D_arcade_8004C723 += 1;
+				if (D_arcade_8004A740 != 0) {
+					D_arcade_8004A770 = 1;
+					if (arcade_saved_high_scores[4] < arcade_current_score) {
+						func_arcade_80024B04();
+					} else {
+						func_arcade_80024C34();
+					}
+				} else {
+					func_arcade_800257D8();
+				}
+			}
+			else
+			{
+				if ((arcade_objects[arg0].unk10 > 480.0f)) {
+					break;
+				}
+				
+				if (arcade_objects[arg0].unk10 == 400.0f) {
+					if (arcade_bonus_timer > 0) {
+						arcade_add_points_to_score(arcade_bonus_timer * 0x64);
+					}
+				} else if (arcade_objects[arg0].unk10 > 200.0f) {
+					if (arcade_objects[arg0].y_position < 178.0f) {
+						arcade_objects[arg0].unk1B = 1;
+						arcade_objects[arg0].y_position += 1.0f;
+						if (arcade_objects[arg0].y_position >= 178.0f) {
+							arcade_objects[arcade_get_first_empty_slot()] = arcade_100m_complete_particle_obj_template;
+						}
+					} else {
+						if (D_arcade_8004C708 != 2) {
+							D_arcade_8004C708 = 2;
+							func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_42_ARCADE_JUMPMAN_HIT, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+						}
+						arcade_objects[arg0].y_position = 178.0f;
+						arcade_objects[arg0].unk1A = 0;
+						temp = (s32) (arcade_objects[arg0].unk10 / 6.0f) % 3;
+						if (temp == 0) {
+							arcade_objects[arg0].sprite = D_arcade_800473B8;
+						}
+						else if (temp == 1) {
+							arcade_objects[arg0].sprite = D_arcade_80048380;
+						}
+						else if (temp == 2) {
+							arcade_objects[arg0].sprite = D_arcade_80049348;
+						}
+						if (arcade_objects[arg0].unk10 == 350.0f) {
+							func_global_asm_80737638((void* ) D_global_asm_8076D1F8, 0x50, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+							arcade_objects[arcade_jumpman_slot].sprite = D_arcade_8003B180;
+							arcade_objects[arcade_jumpman_slot].unk1A = 0;
+							arcade_objects[arcade_jumpman_slot].x_position = 190.0f;
+							arcade_objects[arcade_jumpman_slot].y_position = 93.0f;
+							arcade_game_state = 3;
+						}
+					}
+				} else if (arcade_objects[arg0].unk10 > 180.0f) {
+					arcade_objects[arg0].unk1A = 0;
+					arcade_objects[arg0].sprite = D_arcade_80040540;
+				} else if (arcade_objects[arg0].unk10 > 30.0f) {
+					arcade_objects[arg0].unk1A = (s32)(arcade_objects[arg0].unk10 / 6.0f) & 1;
+					arcade_objects[arg0].sprite = D_arcade_800424D0;
+				}
+			}
 
-        if (arcade_objects[arg0].unk10 == 2.0f) {
-            func_global_asm_80737638((void* ) D_global_asm_8076D1F8, 0x52, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
-        }
-        if (arcade_objects[arg0].unk10 == 200.0f) {
-            func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
-        }
-        break;
+			if (arcade_objects[arg0].unk10 == 2.0f) {
+				func_global_asm_80737638((void* ) D_global_asm_8076D1F8, 0x52, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+			}
+			if (arcade_objects[arg0].unk10 == 200.0f) {
+				func_global_asm_80737638((void* ) D_global_asm_8076D1F8, SFX_44_ARCADE_SPRING_FALL, 0x7FFFU, 0x3FU, 1.0f, 0U, NULL);
+			}
+			break;
     }
 }
 

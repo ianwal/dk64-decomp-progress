@@ -145,7 +145,7 @@ void func_menu_80025E04(MenuStruct1 *arg0, CharacterProgress *arg1) {
         if (D_global_asm_807FC950[0].melons < D_menu_800334DC[arg0->unk11]) {
             D_global_asm_807FC950[0].melons = D_menu_800334DC[arg0->unk11];
             func_global_asm_80709464(0);
-            character_change_array->unk2E2 |= 0x11;
+            character_change_array->unk2DC.unk6 |= 0x11;
         }
     }
 

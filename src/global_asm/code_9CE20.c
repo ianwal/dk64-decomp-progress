@@ -48,7 +48,7 @@ void func_global_asm_80698120(u8 arg0) {
         aaD->unk10 = 0.0f;
         aaD->unk1C = current_actor_pointer->y_position;
         aaD->unk20 = 0.0f;
-        aaD->unk24 = ((rand() >> 0xF) % 100) / 1000.0 + 0.1;
+        aaD->unk24 = RandClamp(100) / 1000.0 + 0.1;
         aaD->unk18 = 0.0f;
         current_actor_pointer->animation_state->unk1C = malloc(0x80);
         func_global_asm_8072EE7C(
@@ -178,11 +178,11 @@ void func_global_asm_80698120(u8 arg0) {
             aaD->unkC = 0.0f;
         }
     }
-    if (6.283185482f <= aaD->unkC) {
-        aaD->unkC -= 6.283185482f;
+    if (MATH_2PI_F <= aaD->unkC) {
+        aaD->unkC -= MATH_2PI_F;
     }
     if (aaD->unkC < 0.0f) {
-        aaD->unkC += 6.283185482f;
+        aaD->unkC += MATH_2PI_F;
     }
     if ((player_pointer->unk6A & 0x40) && (current_actor_pointer == PaaD->unk130)) {
         aaD->unk14 = 1;

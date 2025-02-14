@@ -14,11 +14,11 @@ void func_global_asm_806ADFE0(void) {
     f32 sp48[4][4];
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->unkB8 = ((rand() >> 0xF) % 50) + 0x46;
+        current_actor_pointer->unkB8 = RandClamp(50) + 0x46;
         current_actor_pointer->y_velocity = current_actor_pointer->unkB8 * 2;
         current_actor_pointer->y_acceleration = -30.0f;
         current_actor_pointer->terminal_velocity = -220.0f;
-        current_actor_pointer->unk168 = ((rand() >> 0xF) % 400) + 0xC8;
+        current_actor_pointer->unk168 = RandClamp(400) + 0xC8;
     }
     current_actor_pointer->y_rotation += current_actor_pointer->unk168;
     if (current_actor_pointer->unk168 > 0) {
@@ -174,7 +174,7 @@ void func_global_asm_806AE588(void) {
                     break;
                 case 2:
                     func_global_asm_8072A450();
-                    if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         func_global_asm_8072DE44(0x1FB);
                     }
                     break;
@@ -270,7 +270,7 @@ void func_global_asm_806AE588(void) {
 */
 
 void func_global_asm_806AEE08(void) {
-    if ((((rand() >> 0xF) % 1000) >= 981)
+    if ((RandChance(0.02))
         && func_global_asm_8072DE10(4000)
         && !(D_global_asm_807FDC90->unk1A & 0x80)) {
         current_actor_pointer->control_state = 0x25;
@@ -312,7 +312,7 @@ void func_global_asm_806AF688(void) {
                     break;
                 case 2:
                     func_global_asm_8072A450();
-                    if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         func_global_asm_8072DE44(0x1FB);
                     }
                     break;
@@ -430,7 +430,7 @@ void func_global_asm_806AFB58(void) {
                     break;
                 case 2:
                     func_global_asm_8072A450();
-                    if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         func_global_asm_8072DE44(0x2D7);
                     }
                     break;
@@ -445,7 +445,7 @@ void func_global_asm_806AFB58(void) {
             switch (current_actor_pointer->control_state_progress) {
                 case 0:
                     func_global_asm_8072B324(current_actor_pointer, 0);
-                    if ((current_actor_pointer->animation_state->scale[1] > 0.18) && (((rand() >> 0xF) % 1000) >= 0x1F5)) {
+                    if ((current_actor_pointer->animation_state->scale[1] > 0.18) && (RandChance(0.5))) {
                         playActorAnimation(current_actor_pointer, 0x2DB);
                     } else {
                         playActorAnimation(current_actor_pointer, 0x2DA);
@@ -564,7 +564,7 @@ void func_global_asm_806B0354(void) {
                     current_actor_pointer->control_state_progress++;
                     // Fallthrough
                 case 1:
-                    if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                    if (RandChance(0.005)) {
                         current_actor_pointer->control_state_progress++;
                         playActorAnimation(current_actor_pointer, 0x379);
                         func_global_asm_8072B324(current_actor_pointer, 0);
@@ -626,7 +626,7 @@ s32 func_global_asm_806B0770(void) {
             dx = temp_a0->x_position - current_actor_pointer->x_position;
             dy = temp_a0->y_position - current_actor_pointer->y_position;
             dz = temp_a0->z_position - current_actor_pointer->z_position;
-            if (((dx * dx) + (dy * dy) + (dz * dz)) < 10000.0f) {
+            if ((SQ(dx) + SQ(dy) + SQ(dz)) < SQ(100.0f)) {
                 current_actor_pointer->control_state = 0x28;
                 current_actor_pointer->control_state_progress = 0;
                 found = TRUE;
@@ -769,7 +769,7 @@ block_31:
                         break;
                     case 2:
                         func_global_asm_8072A450();
-                        if (((rand() >> 0xF) % 1000) >= 0x3E4) {
+                        if (RandChance(0.005)) {
                             func_global_asm_8072DE44(0x35F);
                         }
                         break;

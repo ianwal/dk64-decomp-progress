@@ -587,7 +587,7 @@ Struct80026FA4 *func_multiplayer_80025378(void) {
 */
 
 s32 func_multiplayer_800253C8(void) {
-    return (((rand() >> 0xF) % 32767) % 211) + 90;
+    return (RandClamp(32767) % 211) + 90;
 }
 
 s32 func_multiplayer_80025404(void) {
@@ -724,10 +724,10 @@ void func_multiplayer_80025794(void) {
             if (!temp_s5->unk6) {
                 var_s7 = 1;
             } else {
-                var_s7 = (((rand() >> 0xF) % 32767) % 3) + 1;
+                var_s7 = (RandClamp(32767) % 3) + 1;
             }
             for (j = 0; j < var_s7; j++) {
-                temp_s3 = (((rand() >> 0xF) % 32767) % 3) + 1;
+                temp_s3 = (RandClamp(32767) % 3) + 1;
                 temp_s4 = func_multiplayer_800253C8();
                 mult = ((func_global_asm_806119FC() * 0.8) + 0.2) * temp_s5->unk6;
                 var_s0 = (rand() >> 0xF) % 4096;
@@ -773,16 +773,16 @@ void func_multiplayer_80025B48(Struct80025B48 *arg0) {
     }
     if (arg0->unk1C == 0) {
         if (var_a2) {
-            arg0->unk1C = (((rand() >> 0xF) % 32767) % 271) + 0x1E;
+            arg0->unk1C = (RandClamp(32767) % 271) + 0x1E;
         }
     } else {
         arg0->unk1C--;
     }
     if (var_a2) {
         if (arg0->unk1C == 0) {
-            var_a2 = (((rand() >> 0xF) % 32767) % 3) + 1;
+            var_a2 = (RandClamp(32767) % 3) + 1;
             if (var_a2 == 3) {
-                var_a2 += (((rand() >> 0xF) % 32767) % 5);
+                var_a2 += (RandClamp(32767) % 5);
             }
             arg0->unk18 = getSpawnerTiedActor(var_a2, 0);
             if (arg0->unk18 == NULL) {
@@ -1053,7 +1053,7 @@ void func_multiplayer_80026094(void) {
             if (D_multiplayer_80026F70 & 4) {
                 var_s0_4 = 0x1EA;
             } else if ((D_multiplayer_80026F70 & 3) && ((((D_multiplayer_80026F70 & 2) * 0x12C) + 0x1F4) < ((s32) (rand() >> 0xF) % 1000))) {
-                var_s0_4 = ((rand() >> 0xF) % 1000) & 1 ? 0x1E7 : 0x1EA;
+                var_s0_4 = RandClamp(1000) & 1 ? 0x1E7 : 0x1EA;
             }
             playSound(var_s0_4, 0x7FFFU, 64.0f, 1.0f, 0x14, 0x80);
         }
@@ -1166,7 +1166,7 @@ s32 func_multiplayer_80026BD8(s32 arg0) {
                 dx = exit->x_pos - player->x_position;
                 dy = exit->y_pos - player->y_position;
                 dz = exit->z_pos - player->z_position;
-                d = (dx * dx) + (dy * dy) + (dz * dz);
+                d = SQ(dx) + SQ(dy) + SQ(dz);
                 if (d < closest) {
                     closest = d;
                 }
@@ -1188,7 +1188,7 @@ void func_multiplayer_80026D40(Actor *arg0, s32 playerIndex) {
         arg0->noclip_byte = 1;
     } else {
         func_global_asm_806C9434(func_multiplayer_80026BD8(playerIndex));
-        character_change_array[playerIndex].unk2E2 |= 1;
+        character_change_array[playerIndex].unk2DC.unk6 |= 1;
         func_global_asm_806CFF9C(arg0);
     }
 }

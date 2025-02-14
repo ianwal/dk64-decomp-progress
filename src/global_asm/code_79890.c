@@ -45,7 +45,7 @@ f32 func_global_asm_80675234(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, s
     temp_f0 = arg0 - arg3;
     temp_f2 = arg1 - arg4;
     temp_f14 = arg2 - arg5;
-    var_f12 = sqrtf((temp_f0 * temp_f0) + (temp_f2 * temp_f2) + (temp_f14 * temp_f14)) - arg6;
+    var_f12 = sqrtf(SQ(temp_f0) + SQ(temp_f2) + SQ(temp_f14)) - arg6;
     if (var_f12 < 0.0) {
         var_f12 = 0.0f;
     }

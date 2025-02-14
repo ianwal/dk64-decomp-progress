@@ -2255,7 +2255,7 @@ void func_menu_80030894(MenuAdditionalActorData *arg0, void *sprite, s32 x, s32 
         case 19:
             dX = 640.0f - temp_v0->unk8;
             dY = 480.0f - temp_v0->unkC;
-            d = sqrtf((dX * dX) + (dY * dY));
+            d = sqrtf(SQ(dX) + SQ(dY));
             temp_f2 = 1040.0f - d;
             temp_v0->unk10 = -(dX / d) * temp_f2;
             temp_v0->unk14 = -(dY / d) * temp_f2;

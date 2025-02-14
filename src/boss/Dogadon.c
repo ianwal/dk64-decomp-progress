@@ -112,7 +112,7 @@ void func_boss_8002A240(void) {
         if (temp_s0->unk4 == 0) {
             temp_s0->unk8 += 0x400;
         }
-    } else if (((rand() >> 0xF) % 1000) >= 0x3AD) {
+    } else if (RandChance(0.06)) {
         temp_s0->unk4 = 0xA;
     }
     current_actor_pointer->y_position += 8.0 * func_global_asm_80612794((u32)object_timer * 200.0);
@@ -169,9 +169,9 @@ void func_boss_8002A5CC(void) {
     s16 i;
 
     getBonePosition(current_actor_pointer, 1, &x, &y, &z);
-    x += ((rand() >> 0xF) % 80) - 40;
-    y += ((rand() >> 0xF) % 100) + 50;
-    z += ((rand() >> 0xF) % 80) - 40;
+    x += RandClamp(80) - 40;
+    y += RandClamp(100) + 50;
+    z += RandClamp(80) - 40;
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(func_global_asm_8071EDEC);
     func_global_asm_80714950((s32)current_actor_pointer);
@@ -182,10 +182,10 @@ void func_boss_8002A5CC(void) {
         func_global_asm_8071498C(func_global_asm_8071720C);
         func_global_asm_807149B8(1);
         func_global_asm_80714C08(
-            D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+            D_global_asm_8074E880[RandClamp(1000) % 3],
             1.5f,
             current_actor_pointer,
-            (((rand() >> 0xF) % 32767) % 22) + 2,
+            (RandClamp(32767) % 22) + 2,
             0
         );
     }

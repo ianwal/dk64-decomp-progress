@@ -199,6 +199,8 @@ Struct80717D84 *drawSpriteAtPosition(void* sprite, f32 scale, f32 x, f32 y, f32 
     return func_global_asm_80714D08(sprite, scale, x, y, z, NULL, 0, 0, 0);
 }
 
+void func_global_asm_8071509C(otherSpriteControl *arg0);
+
 Struct80717D84 *func_global_asm_80714D08(void *sprite, f32 scale, f32 x, f32 y, f32 z, Actor *actor, s32 arg6, s32 boneIndex, u8 arg8) {
     Struct80717D84 *sp2C;
     s32 i;
@@ -297,8 +299,79 @@ Struct80717D84 *func_global_asm_80714D08(void *sprite, f32 scale, f32 x, f32 y, 
     return sp2C;
 }
 
-// Doable, needs a struct array size 0x10 at Struct807FDB04->unk28
+// Doable, close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_8071509C.s")
+
+/*
+void func_global_asm_8071509C(otherSpriteControl *arg0) {
+    s32 vxa;
+    s32 vya;
+    s32 i;
+    s32 j;
+    otherSpriteControl_unk330 *temp_v0;
+    Vtx *v;
+    s32 v_ctr;
+
+    temp_v0 = arg0->unk330;
+    vxa = -(temp_v0->unk8 * temp_v0->unkC) / 2;
+    if (arg0->unk36F == 0) {
+        vya = -(temp_v0->unk9 * temp_v0->unkE) / 2;
+    } else {
+        vya = (temp_v0->unk9 * temp_v0->unkE) / 2;
+    }
+    v_ctr = 0;
+    v = &arg0->unk28;
+    for (i = 0; i < temp_v0->unk9; i++) {
+        for (j = 0; j < temp_v0->unk8; j++) {
+            v[v_ctr].v.ob[0] = vxa;
+            v[v_ctr].v.ob[1] = vya;
+            v[v_ctr].v.ob[2] = 0;
+            v[v_ctr].v.tc[0] = 0;
+            v[v_ctr].v.tc[1] = 0;
+            
+            v[v_ctr + 1].v.ob[0] = temp_v0->unkC + vxa;
+            v[v_ctr + 1].v.ob[1] = vya;
+            v[v_ctr + 1].v.ob[2] = 0;
+            v[v_ctr + 1].v.tc[0] = temp_v0->unkC * 32;
+            v[v_ctr + 1].v.tc[1] = 0;
+            
+            v_ctr += 2;
+
+            v[v_ctr].v.ob[0] = vxa;
+            if (arg0->unk36F == 0) {
+                v[v_ctr].v.ob[1] = temp_v0->unkE + vya;
+            } else {
+                v[v_ctr].v.ob[1] = vya - temp_v0->unkE;
+            }
+            v[v_ctr].v.ob[2] = 0;
+            v[v_ctr].v.tc[0] = 0;
+            v[v_ctr].v.tc[1] = temp_v0->unkE * 32;
+
+            v_ctr++;
+
+            v[v_ctr].v.ob[0] = temp_v0->unkC + vxa;
+            if (arg0->unk36F == 0) {
+                v[v_ctr].v.ob[1] = temp_v0->unkE + vya;
+            } else {
+                v[v_ctr].v.ob[1] = vya - temp_v0->unkE;
+            }
+            v[v_ctr].v.ob[2] = 0;
+            v[v_ctr].v.tc[0] = temp_v0->unkC * 32;
+            v[v_ctr].v.tc[1] = temp_v0->unkE * 32;
+
+            v_ctr++;
+            
+            vxa += temp_v0->unkC;
+        }
+        if (arg0->unk36F == 0) {
+            vya += temp_v0->unkE;
+        } else {
+            vya -= temp_v0->unkE;
+        }
+    }
+}
+*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715270.s")
 
@@ -386,6 +459,36 @@ void func_global_asm_80715908(void *arg0) {
 
 // Get pointer table file
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715A3C.s")
+
+typedef struct {
+    void *unk0;
+    s32 unk4;
+} Struct80715A3C_arg2;
+
+/*
+void func_global_asm_80715A3C(s16 *arg0, u8 arg1, Struct80715A3C_arg2 *arg2, s32 arg3, s32 arg4, void **arg5) {
+    s32 i;
+    u8 var_v0;
+    void *temp_v0;
+
+    for (i = 0; i < arg3; i++) {
+        if (arg2[(arg3 * arg4) + i].unk4 == -1) {
+            if (arg1) {
+                var_v0 = 25; // Table 25
+            } else {
+                var_v0 = 7; // Table 7
+            }
+            temp_v0 = getPointerTableFile(var_v0, arg0[(arg3 * arg4) + i], 0U, 0U);
+            arg5[i] = temp_v0;
+            arg2[(arg3 * arg4) + i].unk0 = temp_v0;
+        } else {
+            arg5[i] = arg2[(arg3 * arg4) + i].unk0;
+        }
+        arg2[(arg3 * arg4) + i].unk4 = arg4;
+
+    }
+}
+*/
 
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715B30.s")

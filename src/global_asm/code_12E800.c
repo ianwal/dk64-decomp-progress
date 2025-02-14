@@ -197,7 +197,7 @@ void func_global_asm_8072AA80(void) {
     } else {
         phi_a0 = (s16)current_actor_pointer->unkAC - current_actor_pointer->unk15E;
     }
-    D_global_asm_807FDC90->unkC = (((rand() >> 0xF) % 32767)
+    D_global_asm_807FDC90->unkC = (RandClamp(32767)
         % ((phi_a0 - D_global_asm_807FDC9C->unk6 + current_actor_pointer->unk15E) + 1))
         + D_global_asm_807FDC9C->unk6 + current_actor_pointer->unk15E;
 }
@@ -231,7 +231,7 @@ u8 func_global_asm_8072AB74(u8 arg0, f32 x, f32 z, u16 arg3, f32 arg4) {
     dx = current_actor_pointer->x_position - x;
     dz = current_actor_pointer->z_position - z;
     temp_f12 = current_actor_pointer->animation_state->scale_y / D_global_asm_8075FD40;
-    if (((dx * dx) + (dz * dz)) < (1600.0f * temp_f12)) {
+    if ((SQ(dx) + SQ(dz)) < (SQ(40.0f) * temp_f12)) {
         D_global_asm_807FDC90->unk1A |= 0x80;
         if (func_global_asm_806CC14C(*sp4C, current_actor_pointer->y_rotation) >= 0x191) {
             current_actor_pointer->unkB8 *= D_global_asm_807FDC98->unk34;
@@ -624,9 +624,9 @@ void func_global_asm_8072DAA4(void) {
     func_global_asm_80714998(2);
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(func_global_asm_80717D4C);
-    func_global_asm_80714950(-0x28 - ((rand() >> 0xF) % 15));
+    func_global_asm_80714950(-0x28 - RandClamp(15));
     drawSpriteAtPosition(&D_global_asm_8071FF18,
-                  (((rand() >> 0xF) % 1000) / D_global_asm_8075FF20) + 0.5,
+                  (RandClamp(1000) / D_global_asm_8075FF20) + 0.5,
                   current_actor_pointer->x_position,
                   current_actor_pointer->y_position,
                   current_actor_pointer->z_position);
@@ -643,7 +643,7 @@ void func_global_asm_8072DB68(s32 arg0) {
     }
     changeCollectableCount(0xB, cc_player_index, -amount);
     func_global_asm_806F8BC4(0xB, 0, 0);
-    playSong(0x41, 1.0f);
+    playSong(MUSIC_65_DROP_COINS_MINECART, 1.0f);
     for (i = 0; i < amount; i++) {
         func_global_asm_806A5DF0(0x36, player_pointer->x_position, player_pointer->y_position, player_pointer->z_position, (player_pointer->y_rotation + (i * 200)) - 200, 1, -1, 0);
     }
@@ -741,23 +741,13 @@ void func_global_asm_8072E02C(void) {
     current_actor_pointer->x_rotation += (-current_actor_pointer->x_rotation * D_global_asm_8075FF38);
 }
 
-// regalloc, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072E0A8.s")
-
-/*
 u8 func_global_asm_8072E0A8(s32 arg0, s16 arg1) {
     u8 sp1F;
-    f32 dx;
-    f32 dz;
+    f32 dx, dz;
     s32 temp_v0_2;
     s16 phi_v1;
 
-    dz = D_global_asm_807FDC94->z_position - current_actor_pointer->z_position;
-    dx = D_global_asm_807FDC94->x_position - current_actor_pointer->x_position;
-    sp1F = FALSE;
-    if (((dx * dx) + (dz * dz)) < (arg0 * arg0)) {
-        sp1F = TRUE;
-    }
+    sp1F = (SQ(D_global_asm_807FDC94->x_position - current_actor_pointer->x_position) + SQ((D_global_asm_807FDC94->z_position - current_actor_pointer->z_position))) < SQ(arg0);
     temp_v0_2 = func_global_asm_80665DE0(D_global_asm_807FDC94->x_position, D_global_asm_807FDC94->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position);
     if (temp_v0_2 < current_actor_pointer->y_rotation) {
         phi_v1 = current_actor_pointer->y_rotation - temp_v0_2;
@@ -771,7 +761,6 @@ u8 func_global_asm_8072E0A8(s32 arg0, s16 arg1) {
         && sp1F
         && D_global_asm_807FDC94->control_state != 0x42;
 }
-*/
 
 void func_global_asm_8072E1A4(u8 arg0, Actor *arg1) {
     current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(arg1->x_position, arg1->z_position, current_actor_pointer->x_position, current_actor_pointer->z_position), arg0);
@@ -781,7 +770,7 @@ u8 func_global_asm_8072E22C(u16 arg0) {
     f32 dx = current_actor_pointer->x_position - D_global_asm_807FDC94->x_position;
     f32 dy = current_actor_pointer->y_position - D_global_asm_807FDC94->y_position;
     f32 dz = current_actor_pointer->z_position - D_global_asm_807FDC94->z_position;
-    return ((dx * dx) + (dy * dy) + (dz * dz)) < (arg0 * arg0);
+    return (SQ(dx) + SQ(dy) + SQ(dz)) < SQ(arg0);
 }
 
 void func_global_asm_8072E2B0(Actor *arg0, f32 *x, f32 *y, f32 *z) {
@@ -812,7 +801,7 @@ u8 func_global_asm_8072E54C(void) {
 
     var_v1 = (D_global_asm_807FDC98->unk46 & 0x2000) == 0;
     if (var_v1 != 0) {
-        var_v1 = (((rand() >> 0xF) % 1000) < 0x3E4) ^ 1;
+        var_v1 = (RandClamp(1000) < 0x3E4) ^ 1;
     }
     return var_v1;
 }

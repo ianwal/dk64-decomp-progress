@@ -4,6 +4,7 @@
 #include "enums.h"
 #include "structs.h"
 #include "variables.h"
+#include "macros.h"
 
 /* your function prototype definitions go here */
 
@@ -267,7 +268,7 @@ void func_global_asm_80602488(u8 arg0);
 void func_global_asm_80602498(void);
 void func_global_asm_806025AC(s32 arg0, s32 arg1, s32 arg2);
 // TODO: func_global_asm_806025D4 has no documented signature
-void playSong(s32 arg0, f32 arg1);
+void playSong(MUSIC_E arg0, f32 arg1);
 void func_global_asm_80602B60(s32 arg0, u8 arg1);
 void func_global_asm_80602C0C(void);
 void func_global_asm_80602C6C(s32 arg0, f32 arg1);
@@ -621,7 +622,7 @@ s32 func_global_asm_80617D14(Actor *arg0);
 void func_global_asm_80617D20(Actor *arg0); // TODO: s32 return?
 void func_global_asm_80617D70(Actor *arg0); // TODO: s32 return?
 void func_global_asm_80617D94(s32 arg0);
-void func_global_asm_80617DFC(Actor*, s16);
+s32 func_global_asm_80617DFC(Actor*, s16);
 s32 func_global_asm_80617FFC(Actor *arg0);
 s32 func_global_asm_80618048(Actor *arg0);
 void func_global_asm_806180FC(Actor *arg0);
@@ -871,7 +872,7 @@ Chunk14 *func_global_asm_8063070C(Chunk14 *arg0);
 void func_global_asm_806307AC(Chunk14 *current);
 void func_global_asm_806307CC(Chunk14 *arg0, PropModel *arg1, u8 arg2, u8 arg3, s8 *arg4);
 // TODO: func_global_asm_80630890 has no documented signature
-Gfx *func_global_asm_80630B70(Gfx*, s32, f32, f32, f32, s32, s32, s32);
+Gfx *func_global_asm_80630B70(Gfx*, Struct80630B70 *, f32, f32, f32, s32, s16, u8);
 // TODO: func_global_asm_80630DCC has no documented signature
 s32 func_global_asm_8063162C(Actor *arg0, s16 *arg1);
 s32 func_global_asm_806317D4(Actor *arg0, s16 *arg1, f32 arg2, f32 arg3, f32 arg4);
@@ -3181,7 +3182,7 @@ void func_global_asm_806F5FE8(s32 arg0, s16 arg1, s16 arg2, s16 arg3, s32 arg4);
 void func_global_asm_806F603C(void);
 // TODO: func_global_asm_806F6204 has no documented signature
 // TODO: func_global_asm_806F6554 has no documented signature but has been matched
-s32 func_global_asm_806F6644(s16 arg0, s32 arg1, u16 arg2);
+s32 func_global_asm_806F6644(s16 arg0, u8 arg1, u16 arg2);
 void func_global_asm_806F69A8(u8 playerIndex);
 u8 func_global_asm_806F6E58(s16 arg0);
 s32 func_global_asm_806F6EDC(void);
@@ -3250,7 +3251,7 @@ void func_global_asm_806FB8B0(s32 arg0);
 void func_global_asm_806FBB58(void);
 void *func_global_asm_806FBB9C(s16 textureIndex);
 void func_global_asm_806FBC34(void);
-s32 getCenterOfString(s16 renderStyle, char *string);
+s32 getCenterOfString(s16 renderStyle, u8 *string);
 s16 func_global_asm_806FBEAC(u8 *arg0);
 Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2);
 Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, char *string, u32 extraBitfield);
@@ -3272,7 +3273,7 @@ void func_global_asm_806FDAEC(s16 arg0);
 // TODO: func_global_asm_806FDB8C has no documented signature
 void func_global_asm_806FDF1C(s16 arg0, char *arg1);
 void func_global_asm_806FDF54(f32 *arg0, f32 *arg1);
-Gfx *func_global_asm_806FE078(Gfx *dl, u8 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
+Gfx *func_global_asm_806FE078(Gfx *dl, s16 arg1, s32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6);
 
 // global_asm/code_103AB0.c
 Gfx *func_global_asm_806FEDB0(Gfx *dl, u8 arg1);
@@ -3560,7 +3561,7 @@ void func_global_asm_80718380(Struct80717D84 *arg0, s8 *arg1);
 void func_global_asm_807184F4(Struct80717D84 *arg0, s32 arg1);
 // TODO: func_global_asm_807186C8 has no documented signature
 void func_global_asm_807189BC(Struct80717D84 *arg0, s8 *arg1);
-void func_global_asm_80718BF4(Struct80717D84 *arg0, s8 *arg1);
+void func_global_asm_80718BF4(otherSpriteControl *arg0, s8 *arg1);
 // TODO: func_global_asm_8071910C has no documented signature
 // TODO: func_global_asm_807195D4 has no documented signature
 // TODO: func_global_asm_807197B4 has no documented signature
@@ -3574,7 +3575,7 @@ void func_global_asm_8071A440(Struct80717D84 *arg0, s32 arg1);
 // TODO: func_global_asm_8071A674 has no documented signature
 void func_global_asm_8071A8B0(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071AADC(Struct80717D84 *arg0, s32 arg1);
-int func_global_asm_8071ABDC(); // TODO: Datatype
+void func_global_asm_8071ABDC(otherSpriteControl *, s8 *); // TODO: Datatype
 void func_global_asm_8071AF30(Struct80717D84 *arg0, s8 *arg1);
 void func_global_asm_8071B1AC(Struct80717D84 *arg0, s32 arg1);
 void func_global_asm_8071B24C(Struct80717D84 *arg0, s32 arg1);

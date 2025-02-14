@@ -493,27 +493,20 @@ s32 func_global_asm_8060C724(u8 fileIndex) {
     return func_global_asm_8060C6B8(0x10, 0, 0, fileIndex) + 1;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/saveFile/func_global_asm_8060C758.s")
-
-/*
 void func_global_asm_8060C758(u8 fileIndex, s32 arg1) {
     u8 slot;
-    u32 size;
     u8 *addr;
 
     slot = getEEPROMSaveSlot(fileIndex);
-    size = FILE_SIZE_BYTES;
-    addr = &D_global_asm_807ECEA8[slot * size];
+    addr = &D_global_asm_807ECEA8[slot * FILE_SIZE_BYTES];
     current_file = fileIndex;
-    bzero(addr, size);
+    bzero(addr, FILE_SIZE_BYTES);
     func_global_asm_8060C648(0xC, 0, 0, fileIndex, 1);
     func_global_asm_8060C648(0xF, 0, 0, fileIndex, fileIndex);
     if (arg1) {
         func_global_asm_8060B8F8(1);
     }
 }
-*/
 
 void func_global_asm_8060C830(u8 fileIndex, s32 arg1) {
     current_file = fileIndex;

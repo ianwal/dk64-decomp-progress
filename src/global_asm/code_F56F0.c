@@ -366,7 +366,7 @@ void func_global_asm_806F1250(Actor *arg0) {
         playSoundAtPosition(arg0->x_position, arg0->y_position, arg0->z_position, 0x2E2, 0xFF, 0xA0, 0, 0x32, 0.0f, 0);
         if ((D_global_asm_807FBB68 & 2) == 0) {
             // Gorilla Gone
-            playSong(0x6C, 1.0f);
+            playSong(MUSIC_108_GORILLA_GONE, 1.0f);
         }
     }
     PaaD->unk1F0 |= 0x40;
@@ -590,9 +590,9 @@ f32 func_global_asm_806F1B90(f32 *arg0, f32 arg1) {
     phi_f2 = arg1 - *arg0;
     *arg0 = arg1;
     if (M_PIF < phi_f2) {
-        phi_f2 = 6.283185482f - phi_f2;
+        phi_f2 = MATH_2PI_F - phi_f2;
     } else if (phi_f2 < -M_PIF) {
-        phi_f2 = -(6.283185482f + phi_f2);
+        phi_f2 = -(MATH_2PI_F + phi_f2);
     }
     phi_f2 *= 0.1591549367f;
     return phi_f2;
@@ -712,7 +712,7 @@ void func_global_asm_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
     angle = (arg0->PaaD->unk104->PaaD->unkB2 - arg0->y_rotation) - 0x800;
     temp_f0_2 = func_global_asm_80611BB4(
         character_change_array[cc_player_index].look_at_eye_y - character_change_array[cc_player_index].look_at_at_y,
-        sqrtf((dz * dz) + (dx * dx))
+        sqrtf(SQ(dz) + SQ(dx))
     );
     angle &= 0xFFF;
     if ((angle < 0xC00) && (angle > 0x800)) {
@@ -725,7 +725,7 @@ void func_global_asm_806F2754(Actor *arg0, Struct806F2754 *arg1, s32 *arg2) {
     arg1[*arg2].unk0 = -0x80;
     arg1[*arg2].unk1 = 2;
     arg1[*arg2].unk4 = (angle / 4095.0) * 65535.0;
-    arg1[*arg2].unk2 = (temp_f0_2 / 6.283185482f) * 65535.0;
+    arg1[*arg2].unk2 = (temp_f0_2 / MATH_2PI_F) * 65535.0;
     arg1[*arg2].unk6 = 0;
     *arg2 += 1;
 }

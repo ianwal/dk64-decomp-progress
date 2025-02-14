@@ -50,7 +50,7 @@ void func_global_asm_806845B8(u8 arg0, u8 arg1) {
 
     if ((object_timer & 3) == 0) {
         scale = current_actor_pointer->animation_state->scale_y / 0.15;
-        boneIndex = (((rand() >> 0xF) % 0x7FFF) % ((arg1 - arg0) + 1)) + arg0;
+        boneIndex = (RandClamp(0x7FFF) % ((arg1 - arg0) + 1)) + arg0;
         func_global_asm_80714998(3);
         changeActorColor(0xE6, 0xE6, 0xE6, 0xE6);
         func_global_asm_8068588C(current_actor_pointer, boneIndex, scale, 0.0f, 0.0f, 0.0f, -0x78);
@@ -122,15 +122,15 @@ void func_global_asm_80684850(u8 arg0) {
 
 void func_global_asm_80684900(u8 arg0) {
     if (arg0 != 0) {
-        func_global_asm_80714950(((rand() >> 0xF) % 10) + 0x8008);
+        func_global_asm_80714950(RandClamp(10) + 0x8008);
     } else {
-        func_global_asm_80714950(((rand() >> 0xF) % 8) + 6);
+        func_global_asm_80714950(RandClamp(8) + 6);
     }
     func_global_asm_807149FC(2);
     func_global_asm_8071498C(func_global_asm_80717930);
     func_global_asm_807149B8(1);
     func_global_asm_80714A28(4);
-    func_global_asm_80714C08(&D_global_asm_8072139C, (((rand() >> 0xF) % 50) / 80.0) + 0.1, current_actor_pointer, 8, 0);
+    func_global_asm_80714C08(&D_global_asm_8072139C, (RandClamp(50) / 80.0) + 0.1, current_actor_pointer, 8, 0);
 }
 
 void func_global_asm_80684A00(s16 boneIndex, s8 arg1) {
@@ -138,14 +138,14 @@ void func_global_asm_80684A00(s16 boneIndex, s8 arg1) {
 
     scale = current_actor_pointer->animation_state->scale_y / 0.15;
     getBonePosition(current_actor_pointer, boneIndex, &x, &y, &z);
-    func_global_asm_80714950((((rand() >> 0xF) % 100) + 400) * arg1);
+    func_global_asm_80714950((RandClamp(100) + 400) * arg1);
     func_global_asm_8071498C(func_global_asm_80717D4C);
     func_global_asm_807149B8(1);
-    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+    drawSpriteAtPosition(D_global_asm_8074E880[RandClamp(1000) % 3],
         scale * 0.8,
-        ((rand() >> 0xF) % 20) + (x - 10.0f),
+        RandClamp(20) + (x - 10.0f),
         y,
-        ((rand() >> 0xF) % 20) + (z - 10.0f)
+        RandClamp(20) + (z - 10.0f)
     );
 }
 
@@ -160,11 +160,11 @@ void func_global_asm_80684BB0(s16 boneIndex, s16 arg1, s16 arg2) {
     func_global_asm_807149B8(1);
     func_global_asm_807149FC(MAX(2.0, arg2 * 0.02));
     drawSpriteAtPosition(
-        D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3],
+        D_global_asm_8074E880[RandClamp(1000) % 3],
         scale * 0.8,
-        ((rand() >> 0xF) % 60) + (x - 30.0f),
+        RandClamp(60) + (x - 30.0f),
         y,
-        ((rand() >> 0xF) % 60) + (z - 30.0f)
+        RandClamp(60) + (z - 30.0f)
     );
 }
 
@@ -384,13 +384,13 @@ void func_global_asm_806858E8(Actor *actor, s16 boneIndex, f32 scale, f32 x, f32
 void func_global_asm_80685984(f32 scale, f32 x, f32 y, f32 z) {
     s32 pad;
 
-    if (((rand() >> 0xF) % 100) >= 0x33) {
+    if (RandClamp(100) >= 0x33) {
         func_global_asm_80714998(2);
-        func_global_asm_80714950((rand() >> 0xF) % 360);
+        func_global_asm_80714950(RandClamp(360));
         func_global_asm_807149B8(1);
         changeActorColor(0x9B, 0x9B, 0x9B, 0xC8);
         func_global_asm_8071498C(func_global_asm_80719EF4);
-        drawSpriteAtPosition(&D_global_asm_8071FFA0, scale, (((rand() >> 0xF) % 100000) % 10) + (x - 5.0f), y, (((rand() >> 0xF) % 100000) % 10) + (z - 5.0f));
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, scale, (RandClamp(100000) % 10) + (x - 5.0f), y, (RandClamp(100000) % 10) + (z - 5.0f));
     }
 }
 
@@ -400,9 +400,9 @@ void func_global_asm_80685B44(void *sprite, u8 arg1, f32 scale, u8 arg3, u8 arg4
     s16 i;
 
     for (i = 0; i < arg3; i++) {
-        randomXOffset = (((rand() >> 0xF) % 32767) % (arg4 * 2)) + -arg4;
-        randomZOffset = (((rand() >> 0xF) % 32767) % (arg4 * 2)) + -arg4;
-        func_global_asm_80714950(-arg5 - ((rand() >> 0xF) % 80));
+        randomXOffset = (RandClamp(32767) % (arg4 * 2)) + -arg4;
+        randomZOffset = (RandClamp(32767) % (arg4 * 2)) + -arg4;
+        func_global_asm_80714950(-arg5 - RandClamp(80));
         func_global_asm_8071498C(func_global_asm_807180F4);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(2);
@@ -562,18 +562,18 @@ void func_global_asm_80686390(Actor *actor, f32 arg1, f32 x, f32 y, f32 z) {
     drawSpriteAtPosition(
         &D_global_asm_8071FBF4,
         scale * 0.05,
-        x + ((rand() >> 0xF) % (u8)(30.0f * scale)) - (u8)(15.0f * scale),
+        x + RandClamp((u8)(30.0f * scale)) - (u8)(15.0f * scale),
         y,
-        z + ((rand() >> 0xF) % (u8)(30.0f * scale)) - (u8)(15.0f * scale)
+        z + RandClamp((u8)(30.0f * scale)) - (u8)(15.0f * scale)
     );
     func_global_asm_80686340();
     func_global_asm_8071496C(4);
     drawSpriteAtPosition(
         &D_global_asm_8071FBF4,
         scale * 0.05,
-        x + ((rand() >> 0xF) % (u8)(30.0f * scale)) - (u8)(15.0f * scale),
+        x + RandClamp((u8)(30.0f * scale)) - (u8)(15.0f * scale),
         y,
-        z + ((rand() >> 0xF) % (u8)(30.0f * scale)) - (u8)(15.0f * scale)
+        z + RandClamp((u8)(30.0f * scale)) - (u8)(15.0f * scale)
     );
 }
 
@@ -662,7 +662,7 @@ void func_global_asm_80687080(void) {
         current_actor_pointer->object_properties_bitfield &= ~0x8000;
         current_actor_pointer->object_properties_bitfield |= 0x800000;
         current_actor_pointer->unk16A = 0xFF;
-        current_actor_pointer->unk16B = ((rand() >> 0xF) % 75) + 180;
+        current_actor_pointer->unk16B = RandClamp(75) + 180;
         current_actor_pointer->unk16C = 0x28;
         current_actor_pointer->shadow_opacity = 0xFF;
     }
@@ -712,7 +712,7 @@ void func_global_asm_806871DC(u8 arg0) {
                 func_global_asm_8071498C(func_global_asm_80717D4C);
                 func_global_asm_80714950(-1000);
                 changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
-                func_global_asm_80714C08(&D_global_asm_80720120, (((rand() >> 0xF) % 100) / 30.0) + 1.0, current_actor_pointer, boneIndex, 0);
+                func_global_asm_80714C08(&D_global_asm_80720120, (RandClamp(100) / 30.0) + 1.0, current_actor_pointer, boneIndex, 0);
                 break;
         }
         var_s2++;
@@ -762,12 +762,12 @@ void func_global_asm_806874EC(void) {
     getBonePosition(current_actor_pointer, boneIndex, &x, &y, &z);
     temp_f22 = temp_f28 * 18.0f;
     for (i = 0; i != 0x40; i++) {
-        var_s1 += (((rand() >> 0xF) % 1024));
+        var_s1 += (RandClamp(1024));
         var_s1 &= 0xFFF;
         func_global_asm_80714998(2);
         func_global_asm_807149B8(1);
         func_global_asm_8071498C(func_global_asm_80717D4C);
-        func_global_asm_80714950(((((rand() >> 0xF) % 32767) % 51) + 0x64) * temp_f28);
+        func_global_asm_80714950(((RandClamp(32767) % 51) + 0x64) * temp_f28);
         func_global_asm_8071496C(i * 0.33333334f);
         func_global_asm_80714A28(0x20);
         temp_f20 = (func_global_asm_80612794(var_s1) * temp_f22) + x;
@@ -793,8 +793,8 @@ void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     u8 boneIndex1;
     u8 boneIndex2;
 
-    boneIndex1 = (((rand() >> 0xF) % 32767) % ((arg1 - arg0) + 1)) + arg0;
-    boneIndex2 = (((rand() >> 0xF) % 32767) % ((arg3 - arg2) + 1)) + arg2;
+    boneIndex1 = (RandClamp(32767) % ((arg1 - arg0) + 1)) + arg0;
+    boneIndex2 = (RandClamp(32767) % ((arg3 - arg2) + 1)) + arg2;
     getBonePosition(current_actor_pointer, boneIndex1, &x1, &y1, &z1);
     getBonePosition(current_actor_pointer, boneIndex2, &x2, &y2, &z2);
     func_global_asm_80626F8C(x1, y1, z1, &sp58, &sp54, 0, 1.0f, 0);
@@ -809,21 +809,21 @@ void func_global_asm_8068780C(u8 arg0, u8 arg1, u8 arg2, u8 arg3) {
     func_global_asm_80714950(sp5C);
     func_global_asm_8071498C(func_global_asm_8071E028);
     drawSpriteAtPosition(&D_global_asm_80720B24, sp48 * 0.008, (x1 + x2) * 0.5, (y1 + y2) * 0.5, (z1 + z2) * 0.5);
-    if (((rand() >> 0xF) % 1000) & 1) {
+    if (RandClamp(1000) & 1) {
         func_global_asm_806595F0(1);
         createLight(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0.0f, 0.0f, 0.0f, 150.0f, 0, 0x96, 0x64, 0xFF);
     }
-    if ((current_actor_pointer->unk58 == ACTOR_BOSS_ARMY_DILLO) && (((rand() >> 0xF) % 1000) >= 0x385)) {
+    if ((current_actor_pointer->unk58 == ACTOR_BOSS_ARMY_DILLO) && (RandChance(0.1))) {
         s16 temp;
-        func_global_asm_806877C8(((((rand() >> 0xF) % 32767) % 10) + 0xD));
-        temp = ((rand() >> 0xF) % 1000) >= 0x1F5 ? 0x8A : 0xA1;
+        func_global_asm_806877C8(((RandClamp(32767) % 10) + 0xD));
+        temp = RandChance(0.5) ? 0x8A : 0xA1;
         playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, temp, 0xFF, 0x7F, 0x28, 0, 0.3f, 0);
     }
 }
 
 void func_global_asm_80687C48(void) {
     playSound(0xF2, 0x7FFF, 63.0f, 1.0f, 0, 0);
-    playSong(0x97, 1.0f);
+    playSong(MUSIC_151_BANANA_MEDAL_GET, 1.0f);
     func_global_asm_807149FC(0xC8);
     func_global_asm_8071495C();
     func_global_asm_8071498C(func_global_asm_8071EFDC);
@@ -832,7 +832,7 @@ void func_global_asm_80687C48(void) {
 
 void func_global_asm_80687CC8(void) {
     playSound(0xF2, 0x7FFF, 63.0f, 1.0f, 0, 0);
-    playSong(0x97, 1.0f);
+    playSong(MUSIC_151_BANANA_MEDAL_GET, 1.0f);
     func_global_asm_807149FC(0xC8);
     func_global_asm_8071495C();
     func_global_asm_8071498C(func_global_asm_8071EFDC);

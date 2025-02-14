@@ -550,7 +550,7 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     dz = character_change_array->look_at_eye_z - D_global_asm_807F6224;
     dx = character_change_array->look_at_eye_x - D_global_asm_807F621C;
     dy = character_change_array->look_at_eye_y - D_global_asm_807F6220;
-    var_f16 = sqrtf((dz * dz) + ((dx * dx) + (dy * dy)));
+    var_f16 = sqrtf(SQ(dz) + (SQ(dx) + SQ(dy)));
     if ((character_change_array->chunk == 0xE) && (is_cutscene_active != 1)) {
         var_f14 = 1.0f;
     } else if (character_change_array->chunk == 7) {
@@ -559,7 +559,7 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         dx = D_global_asm_807F621C - 1714.0f;
         dy = D_global_asm_807F6220 - 226.0f;
         dz = D_global_asm_807F6224 - 3410.0f;
-        var_f16 -= sqrtf((dx * dx) + (dy * dy) + (dz * dz));
+        var_f16 -= sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
         if (var_f16 < 0.0) {
             var_f16 = 0.0f;
         }
@@ -574,12 +574,12 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     } else {
         D_global_asm_8077058C = 0;
     }
-    if (((rand() >> 0xF) % 50) == 0xF) {
+    if (RandClamp(50) == 0xF) {
         var_v1->unk0 = 0x28;
     }
     if (var_v1->unk0) {
         var_v1->unk0--;
-        if (((rand() >> 0xF) % 10) == 5) {
+        if (RandClamp(10) == 5) {
             if (var_f16 < 2200.0f) {
                 if (D_global_asm_80770DC9 != 0) {
                     if (D_80770DD4 < 600.0f) {
@@ -645,7 +645,7 @@ void func_global_asm_80644E2C(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     func_global_asm_807149FC(-1);
     func_global_asm_8071498C(func_global_asm_80717760);
     func_global_asm_80714950(0x50);
-    drawSpriteAtPosition(D_global_asm_8074E880[((rand() >> 0xF) % 1000) % 3], 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
+    drawSpriteAtPosition(D_global_asm_8074E880[RandClamp(1000) % 3], 0.5f, D_global_asm_807F621C, D_global_asm_807F6220, D_global_asm_807F6224);
 }
 
 typedef struct {
@@ -805,9 +805,9 @@ void func_global_asm_806458C8(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     s16 sp2C;
 
     if (((u32)object_timer % arg2) == 0) {
-        sp2E = ((rand() >> 0xF) % 2048) + (((D_global_asm_807F622C * 4096.0f) / 360.0f) - 1024.0f);
-        sp2C = (((rand() >> 0xF) % 32767) % 6) + 0xF;
-        func_global_asm_80714950(-0x32 - ((rand() >> 0xF) % 80));
+        sp2E = RandClamp(2048) + (((D_global_asm_807F622C * 4096.0f) / 360.0f) - 1024.0f);
+        sp2C = (RandClamp(32767) % 6) + 0xF;
+        func_global_asm_80714950(-0x32 - RandClamp(80));
         func_global_asm_8071498C(func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(2);
@@ -819,7 +819,7 @@ void func_global_asm_80645A64(s32 arg0, s16 arg1, s16 arg2, s32 arg3) {
     s16 i;
 
     for (i = 0; i < arg2; i++) {
-        func_global_asm_80714950(-0x96 - ((rand() >> 0xF) % 80));
+        func_global_asm_80714950(-0x96 - RandClamp(80));
         func_global_asm_8071498C(func_global_asm_80717D4C);
         func_global_asm_807149B8(1);
         func_global_asm_80714998(2);
@@ -965,7 +965,7 @@ void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg
         dz = character_change_array->look_at_eye_z - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8;
         dy = character_change_array->look_at_eye_y - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk4;
         dx = character_change_array->look_at_eye_x - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk0;
-        if (sqrtf((dy * dy) + (dx * dx) + (dz * dz)) < D_global_asm_807480F0) {
+        if (sqrtf(SQ(dy) + SQ(dx) + SQ(dz)) < D_global_asm_807480F0) {
             found = TRUE;
             func_global_asm_807149B8(1);
             func_global_asm_80714998(3);
@@ -1049,9 +1049,9 @@ void func_global_asm_80646978(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
             D_global_asm_807F6224);
     }
     for (j = 0; j < 0x1130; j += 0x190) {
-        sp88.x = ((rand() >> 0xF) % D_global_asm_8074812C) + D_global_asm_80748120;
+        sp88.x = RandClamp(D_global_asm_8074812C) + D_global_asm_80748120;
         sp88.y = j;
-        sp88.z = ((rand() >> 0xF) % D_global_asm_80748130) + D_global_asm_80748124;
+        sp88.z = RandClamp(D_global_asm_80748130) + D_global_asm_80748124;
         func_global_asm_806891D8(0x5A,
             D_global_asm_807F621C,
             D_global_asm_807F6220 + D_global_asm_8074811C,
@@ -1270,7 +1270,7 @@ void func_global_asm_80647B74(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     }
     var_v1 = arg0->unk0;
     if ((var_v1->unk0 + 0x32) < object_timer) {
-        if (((rand() >> 0xF) % 1000) >= 0x353) {
+        if (RandChance(0.15)) {
             var_v1->unk4 = 1;
             var_v1->unk0 = object_timer;
         }
@@ -1355,8 +1355,8 @@ void func_global_asm_80648000(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg
     if (arg0->unk9A & 1) {
         if (((func_global_asm_806119A0() / 10000U) % 20) == 0) {
             temp_s0 = arg0->unk0;
-            sp48 = ((rand() >> 0xF) % 100) / 100.0;
-            guMtxXFMF(temp_s0, (sp48 * 100.0) + -50.0, 0.0f, ((((rand() >> 0xF) % 100) / 100.0) * 150.0) + -75.0, &sp40, &sp3C, &sp38);
+            sp48 = RandClamp(100) / 100.0;
+            guMtxXFMF(temp_s0, (sp48 * 100.0) + -50.0, 0.0f, ((RandClamp(100) / 100.0) * 150.0) + -75.0, &sp40, &sp3C, &sp38);
             sp40 = (sp40 * D_global_asm_807F6234) + D_global_asm_807F621C;
             sp38 = (sp38 * D_global_asm_807F6234) + D_global_asm_807F6224;
             func_global_asm_807149B8(1);
@@ -1569,7 +1569,7 @@ void func_global_asm_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     s32 i;
 
     for (i = 0; i < arg2; i++) {
-        temp_s1 = (((rand() >> 0xF) % 32767) % (arg3 + 1));
+        temp_s1 = (RandClamp(32767) % (arg3 + 1));
         func_global_asm_807149B8(1);
         func_global_asm_807149A8(0x7D0);
         func_global_asm_8071498C(func_global_asm_8071F660);
@@ -2421,7 +2421,7 @@ s32 func_global_asm_8064BF58(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
 
     dz = character_change_array[0].look_at_eye_z - 1274.0;
     dx = character_change_array[0].look_at_eye_x - 3081.0;
-    if (((dz * dz) + (dx * dx)) < 10000.0) {
+    if ((SQ(dz) + SQ(dx)) < SQ(100.0)) {
         return TRUE;
     }
     return FALSE;
@@ -2994,8 +2994,8 @@ void func_global_asm_8064DE04(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s32 arg
                 dx = temp->x_position - D_global_asm_807F621C;
                 dy = temp->y_position - D_global_asm_807F6220;
                 dz = temp->z_position - D_global_asm_807F6224;
-                if ((dx * dx) + (dy * dy) + (dz * dz) < closestDistance) {
-                    closestDistance = (dx * dx) + (dy * dy) + (dz * dz);
+                if (SQ(dx) + SQ(dy) + SQ(dz) < closestDistance) {
+                    closestDistance = SQ(dx) + SQ(dy) + SQ(dz);
                     closestActor = temp;
                 }
             }
@@ -3213,7 +3213,7 @@ void func_global_asm_8064E5C0(Struct8064E5C0_arg0 *arg0, s32 arg1, s32 arg2, s32
     sp26 = arg0->unk62;
     arg0->unk66 = 0xFF;
     arg0->unk60 = 1;
-    if (((rand() >> 0xF) % 100) >= 0x29) {
+    if (RandClamp(100) >= 0x29) {
         arg0->unk62 = 0;
     } else {
         arg0->unk62 = 0xFF;
@@ -3461,7 +3461,7 @@ void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
         last_spawned_actor->y_rotation += 0x800;
     }
     playCutscene(last_spawned_actor, 0x22, 5);
-    playSong(0xAB, 1.0f);
+    playSong(MUSIC_171_WRINKLY_KONG, 1.0f);
     playSound(0x2EA, 0x7FFF, 63.0f, 1.0f, 0, 0);
     D_global_asm_807F6951 = arg2;
     D_global_asm_807F6950 = 0;
@@ -3496,8 +3496,8 @@ u8 func_global_asm_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     temp_f0 = func_global_asm_80612790(temp_f18);
     temp = ((D_global_asm_807F621C * sp2C) + (D_global_asm_807F6224 * temp_f0));
     temp = -temp;
-    temp2 = (player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position);
-    return (f64)(temp2 + temp) > 6;
+    temp = (player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position) + temp;
+    return 6.0 < temp;
 }
 */
 
