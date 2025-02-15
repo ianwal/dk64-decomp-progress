@@ -392,7 +392,7 @@ Gfx *func_global_asm_80713B40(Gfx *dl) {
 }
 */
 
-// 64 bit stuff
+// 64 bit stuff, doable, close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_117880/func_global_asm_80713C8C.s")
 
 extern OSTime D_global_asm_807445B0;

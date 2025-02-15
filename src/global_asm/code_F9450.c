@@ -94,9 +94,6 @@ s32 func_global_asm_806F4EBC(f32 arg0, f32 arg1) {
     return (D_global_asm_807FD722 * temp_f6) + temp_f10;
 }
 
-// Very close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F9450/func_global_asm_806F4F50.s")
-
 typedef struct Struct80754244 Struct80754244;
 struct Struct80754244 {
     s16 unk0;
@@ -121,7 +118,6 @@ struct Struct80754244 {
 extern Struct80754244 **D_global_asm_80754244;
 extern s16 D_global_asm_807FD720;
 
-/*
 void func_global_asm_806F4F50(s16 arg0, f32 arg1, f32 arg2, f32 arg3) {
     Struct80754244 **temp_a1;
     Struct80754244 *prev;
@@ -130,9 +126,11 @@ void func_global_asm_806F4F50(s16 arg0, f32 arg1, f32 arg2, f32 arg3) {
     Struct80754244 *curr;
     s32 temp_v0;
     s32 i;
-    s32 var_t0;
+    s32 found;
 
-    for (i = 0, var_t0 = FALSE; !var_t0 && i < D_global_asm_807FD720; i++) {
+    i = 0;
+    found = FALSE;
+    while (!found && i < D_global_asm_807FD720) {
         prev = NULL;
         curr = D_global_asm_80754244[i];
         while ((curr) && (arg0 != curr->unk0)) {
@@ -140,13 +138,14 @@ void func_global_asm_806F4F50(s16 arg0, f32 arg1, f32 arg2, f32 arg3) {
             curr = curr->unk18;
         }
         if ((curr) && (arg0 == curr->unk0)) {
-            var_t0 = TRUE;
+            found = TRUE;
             if (prev) {
                 prev->unk18 = curr->unk18;
             } else {
                 D_global_asm_80754244[i] = curr->unk18;
             }
         }
+        i++;
     }
     temp_v0 = func_global_asm_806F4EBC(arg1, arg3);
     if ((D_global_asm_807FD720 >= temp_v0) && (temp_v0 >= 0)) {
@@ -157,7 +156,6 @@ void func_global_asm_806F4F50(s16 arg0, f32 arg1, f32 arg2, f32 arg3) {
         curr->unkC = arg3;
     }
 }
-*/
 
 extern s16 D_global_asm_807FD720;
 extern Struct80754244 *D_global_asm_807FD72C;

@@ -3012,7 +3012,7 @@ us,asm,func_global_asm_8065051C,48,yes
 us,asm,func_global_asm_806AA304,4584,no
 us,asm,func_global_asm_806FA7A4,24,yes
 us,asm,func_global_asm_80737F0C,52,yes
-us,asm,func_global_asm_806F4F50,376,no
+us,asm,func_global_asm_806F4F50,376,yes
 us,asm,func_global_asm_806ECCDC,248,yes
 us,asm,func_global_asm_806E8F04,100,yes
 us,asm,func_global_asm_80689BAC,116,yes
