@@ -1,43 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
-
-extern SpriteData D_global_asm_807203B0; // TODO: Sprite
-extern SpriteData D_global_asm_807203D4; // TODO: Sprite
-extern SpriteData D_global_asm_807203F8; // TODO: Sprite
-extern SpriteData D_global_asm_8072041C; // TODO: Sprite
-extern SpriteData D_global_asm_80720440; // TODO: Sprite
-
-extern SpriteData D_global_asm_807204BC;
-extern SpriteData D_global_asm_80720508;
-extern SpriteData D_global_asm_807205C4;
-extern SpriteData D_global_asm_807205E8;
-
-extern SpriteData D_global_asm_80720710;
-extern SpriteData D_global_asm_80720768;
-extern SpriteData D_global_asm_807207BC;
-extern SpriteData D_global_asm_807207E0;
-
-extern SpriteData D_global_asm_807209EC;
-extern SpriteData D_global_asm_80720A10;
-extern SpriteData D_global_asm_80720A34;
-extern SpriteData D_global_asm_80720A58;
-
-extern SpriteData D_global_asm_80720EBC; // TODO: Sprite
-extern SpriteData D_global_asm_80720EE8; // TODO: Sprite
-extern SpriteData D_global_asm_80720F14; // TODO: Sprite
-extern SpriteData D_global_asm_80720F40; // TODO: Sprite
-extern SpriteData D_global_asm_80720F6C; // TODO: Sprite
-extern SpriteData D_global_asm_80720F98;
-extern SpriteData D_global_asm_80720FBC;
-extern SpriteData D_global_asm_80720FE0;
-
-extern SpriteData D_global_asm_80721170;
-extern SpriteData D_global_asm_807211D0;
-extern SpriteData D_global_asm_80721378;
-
-extern SpriteData D_global_asm_80721028;
-extern SpriteData D_global_asm_80721004;
 
 extern s16 D_global_asm_80750384;
 extern f32 D_global_asm_80750388;

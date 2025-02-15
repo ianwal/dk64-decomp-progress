@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 /* structs */
 typedef struct {
@@ -74,10 +73,7 @@ typedef struct {
 } A178_800286EC;
 
 /* variables */
-extern SpriteData D_global_asm_8072030C;
-extern SpriteData D_global_asm_80720120; // sprite
 extern u8 D_global_asm_807FBB85;
-extern SpriteData D_global_asm_8072030C; // TODO: Type
 extern u8 D_global_asm_807FBD70;
 extern u8 D_global_asm_807FBDC4;
 

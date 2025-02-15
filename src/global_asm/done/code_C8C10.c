@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
     Actor178 *a178;
@@ -633,7 +632,6 @@ void func_global_asm_806C55E0(void) {
 extern s16 D_807FD802;
 extern s16 D_807FD804;
 extern s16 D_807FD806;
-extern SpriteData D_global_asm_8071FB08; // TODO: Sprite
 extern s16 D_global_asm_8076A0AA;
 
 // Banana Fairy

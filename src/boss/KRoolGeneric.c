@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
 
@@ -95,7 +94,6 @@ static BossStruct1 D_boss_800359D0[8] = {
     { MAP_TEST_MAP,            0, NULL,                            0x00, 0x00 }, // TODO: Padding?
 };
 
-extern SpriteData D_global_asm_8071FE08; // TODO: Sprite
 extern u8 D_global_asm_80750AD4;
 extern s32 D_global_asm_80767CC0;
 extern s32 D_global_asm_8076D1F8;

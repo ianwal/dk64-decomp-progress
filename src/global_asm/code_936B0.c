@@ -1,15 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
-
-extern SpriteData D_global_asm_8071FFA0;
-extern SpriteData D_global_asm_80720020; // TODO: Type
-extern SpriteData D_global_asm_80720054; // TODO: Datatype
-extern SpriteData D_global_asm_807200EC; // TODO: Datatype
-extern SpriteData D_global_asm_80720120; // TODO: Datatype
-extern SpriteData D_global_asm_807201D4;
-extern SpriteData D_global_asm_807202D0; // TODO: Type
-extern SpriteData D_global_asm_80720BE8;
 
 extern u8 D_global_asm_80750270;
 extern s16 D_global_asm_807502D0;
@@ -864,19 +854,14 @@ void func_global_asm_80692640(void) {
 
 void func_global_asm_80690C60(u16 arg0, Actor *arg1, SpriteData *arg2, u8 arg3);
 
-extern SpriteData D_global_asm_8072029C; // TODO: Type
-extern SpriteData D_global_asm_80720BA0; // TODO: Type
 extern s16 D_global_asm_8075035C;
 extern s16 D_global_asm_80750370;
 extern u8 D_global_asm_80750AD0;
 extern u32 D_global_asm_8076A068;
 extern u8 D_global_asm_807FBB85;
-extern SpriteData D_global_asm_8071FB34; // Sprite
-extern SpriteData D_global_asm_807201A0; // Sprite?
 extern s16 D_global_asm_80750358;
 extern s16 D_global_asm_8075036C;
 
-extern SpriteData D_global_asm_807200A0; // TODO: Type
 extern s16 D_global_asm_80750350;
 extern s16 D_global_asm_80750364;
 
@@ -1070,8 +1055,6 @@ void func_global_asm_8069329C(void) {
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_936B0/func_global_asm_8069346C.s")
-
-extern SpriteData D_global_asm_80720268; // TODO: Type
 
 typedef struct {
     s32 unk0; // Used
@@ -1311,10 +1294,6 @@ void func_global_asm_80694948(void) {
     }
 }
 
-
-
-extern SpriteData D_global_asm_807206A8; // TODO: Datatype
-extern SpriteData D_global_asm_807206DC; // TODO: Datatype
 extern s16 D_global_asm_80750360;
 extern s16 D_global_asm_80750374;
 
@@ -1503,9 +1482,6 @@ void func_global_asm_806951E8(void) {
     return;
 }
 
-
-
-extern SpriteData D_global_asm_8072006C; // Sprite
 extern s16 D_global_asm_80750344;
 extern u32 D_global_asm_8076A068;
 extern u8 D_global_asm_807FBB85;
@@ -1600,13 +1576,9 @@ void func_global_asm_80695B50(void) {
     renderActor(current_actor_pointer, 1);
 }
 
-extern SpriteData D_global_asm_8071FBC8; // Sprite
-extern SpriteData D_global_asm_8071FC40; // Sprite
 extern s16 D_global_asm_80750344;
 extern u32 D_global_asm_8076A068;
 extern u8 D_global_asm_807FBB85;
-extern SpriteData D_global_asm_80720340; // Sprite
-extern SpriteData D_global_asm_80720804; // TODO: Type
 extern f32 D_global_asm_80750274;
 
 typedef struct {

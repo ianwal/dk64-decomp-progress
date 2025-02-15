@@ -1,7 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
-
 
 extern u8 D_global_asm_8074450C;
 

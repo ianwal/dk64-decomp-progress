@@ -1,10 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
-
 
 extern u8 D_global_asm_807FBD70;
-extern SpriteData D_global_asm_8071FB34;
 extern u8 D_global_asm_80750628[];
 
 void func_global_asm_8072A450(void);

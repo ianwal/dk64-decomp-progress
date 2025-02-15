@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 // rodata
 const s32 D_boss_80035C00[] = {
@@ -166,16 +165,12 @@ u8 D_boss_80035994[] = {
     0x00, // PADDING
 };
 
-extern SpriteData D_global_asm_80720120;
-
 typedef struct {
     u8 unk0[0x6 - 0x0];
     u8 unk6[1]; // TODO: How many elements?
 } Struct8002450C;
 
 s32 func_boss_80024568(Struct8002450C*, u8, f32, f32, f32);
-
-extern SpriteData D_global_asm_8071FFA0;
 
 void func_boss_80024000(void) {
     Struct80024000 sp48;

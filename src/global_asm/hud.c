@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 typedef struct global_asm_struct_72 GlobalASMStruct72;
 
@@ -63,50 +62,6 @@ extern f32 D_global_asm_807FD7B8[];
 extern f32 D_global_asm_807FD7D0[];
 
 extern s32 D_global_asm_80754288;
-
-// These are sprite textures
-// TODO: Label them appropriately
-extern SpriteData D_global_asm_807200A0;
-extern SpriteData D_global_asm_807201A0;
-extern SpriteData D_global_asm_80720268;
-extern SpriteData D_global_asm_8072029C;
-extern SpriteData D_global_asm_807203B0;
-extern SpriteData D_global_asm_807203D4;
-extern SpriteData D_global_asm_807203F8;
-extern SpriteData D_global_asm_8072041C;
-extern SpriteData D_global_asm_80720440;
-extern SpriteData D_global_asm_80720488;
-extern SpriteData D_global_asm_807204BC;
-extern SpriteData D_global_asm_80720508;
-extern SpriteData D_global_asm_8072052C;
-extern SpriteData D_global_asm_80720558;
-extern SpriteData D_global_asm_8072057C;
-extern SpriteData D_global_asm_807205A0;
-extern SpriteData D_global_asm_807205C4;
-extern SpriteData D_global_asm_807205E8;
-extern SpriteData D_global_asm_8072060C;
-extern SpriteData D_global_asm_807206A8;
-extern SpriteData D_global_asm_807207BC;
-extern SpriteData D_global_asm_807207E0;
-extern SpriteData D_global_asm_80720854;
-extern SpriteData D_global_asm_80720878;
-extern SpriteData D_global_asm_80720890;
-extern SpriteData D_global_asm_807208A8;
-extern SpriteData D_global_asm_807208C0;
-extern SpriteData D_global_asm_807208D8;
-extern SpriteData D_global_asm_807209EC;
-extern SpriteData D_global_asm_80720A10;
-extern SpriteData D_global_asm_80720A34;
-extern SpriteData D_global_asm_80720A58;
-extern SpriteData D_global_asm_80721200;
-extern SpriteData D_global_asm_8072121C;
-extern SpriteData D_global_asm_80721250;
-extern SpriteData D_global_asm_8072145C;
-extern SpriteData D_global_asm_807214A0;
-extern SpriteData D_global_asm_807214B8;
-extern SpriteData D_global_asm_807214D0;
-extern SpriteData D_global_asm_807214E8;
-extern SpriteData D_global_asm_80721500;
 
 extern PlayerHUD *D_global_asm_80754280; // HUD
 

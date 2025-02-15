@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 typedef struct {
     u8 unk0[0x2C - 0x0];
@@ -21,7 +20,6 @@ typedef struct GlobalASMStruct90 {
 
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
-extern SpriteData D_global_asm_807201D4; // TODO: Datatype
 
 void func_global_asm_806B88B8(void);
 

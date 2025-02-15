@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 typedef struct {
     u8 pad0[0x10 - 0x0];
@@ -10,10 +9,6 @@ typedef struct {
     u8 unk13;
     f32 unk14;
 } RaceStruct1;
-
-extern SpriteData D_global_asm_8071FFA0; // TODO: Datatype
-extern SpriteData D_global_asm_80720340; // TODO: Datatype
-extern SpriteData D_global_asm_80720120;
 
 extern s16 D_global_asm_80770628[];
 extern f32 D_global_asm_80770B68[];

@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 extern s16 D_global_asm_80750340;
 
@@ -295,7 +294,6 @@ void func_global_asm_806B3420(void) {
 // https://decomp.me/scratch/NO9ZZ
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B3680.s")
 
-extern SpriteData D_global_asm_8072073C;
 extern s32 D_global_asm_8071ABDC;
 
 /*

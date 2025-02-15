@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 extern u8 D_global_asm_80750AB4;
 
@@ -826,8 +825,6 @@ void func_global_asm_80642844(s16 arg0, s16 arg1, Struct80642844 *arg2, s32 arg3
             break;
     }
 }
-
-extern SpriteData D_global_asm_8071FC58; // TODO: Sprite
 
 void func_global_asm_80642940(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     f32 randomZOffset;

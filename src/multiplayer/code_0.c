@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 typedef struct {
     s32 unk0;
@@ -51,7 +50,6 @@ void func_global_asm_806F54E0(u8, s32, s32);
 
 extern u8 D_multiplayer_80026F70;
 
-extern SpriteData D_global_asm_807207BC; // TODO: Type
 extern s16 D_global_asm_80744490;
 extern s16 D_global_asm_80744494;
 extern u8 D_global_asm_80750AB8;
@@ -150,10 +148,6 @@ typedef struct Struct80027024 {
     f32 unk4;
     s32 unk8;
 } Struct80027024;
-
-// TODO: What are these?
-extern s32 D_global_asm_80720768;
-extern s32 D_global_asm_807204BC;
 
 Struct80027024 D_multiplayer_80027024[] = {
     {

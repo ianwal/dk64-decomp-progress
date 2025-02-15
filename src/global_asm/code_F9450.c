@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 extern s16 D_global_asm_807FD790[];
 extern u8 D_global_asm_807FD798;
@@ -900,7 +899,6 @@ s32 func_global_asm_806F70A8(s16 arg0) {
 }
 
 void func_global_asm_8071C48C(otherSpriteControl *, s8 *);
-extern SpriteData D_global_asm_8071FC58;
 
 void func_global_asm_806F70FC(f32 x, f32 y, f32 z, f32 scale, f32 arg4, s32 count) {
     f64 temp_f20;

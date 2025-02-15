@@ -123,7 +123,6 @@ typedef struct HandleAAD {
 void func_global_asm_806A2A10(s32, s32, s32);
 u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
 void func_global_asm_80737924(s32);
-extern SpriteData D_global_asm_80720CF0;
 extern SoundState *D_global_asm_807457E4[];
 
 /*

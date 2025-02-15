@@ -1,15 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
-extern SpriteData D_global_asm_8071FB08; // TODO: Proper datatype
-extern SpriteData D_global_asm_8071FBA0;
-extern SpriteData D_global_asm_8071FC40; // TODO: Proper datatype
-extern SpriteData D_global_asm_8071FF58; // TODO: Datatype
-extern SpriteData D_global_asm_8071FFA0;
-
-extern SpriteData D_global_asm_807200D4; // TODO: Proper datatype
-extern SpriteData D_global_asm_80720B58; // TODO: Datatype
 extern s16 D_global_asm_80750AC8;
 
 typedef struct {
@@ -773,8 +764,6 @@ void func_global_asm_806C19F4(void) {
     }
     renderActor(current_actor_pointer, 0);
 }
-
-extern SpriteData D_global_asm_8071FB34; // TODO: Datatype
 
 void func_global_asm_806C1B50(void) {
     initializeCharacterSpawnerActor();

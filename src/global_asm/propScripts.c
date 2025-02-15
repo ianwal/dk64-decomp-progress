@@ -1,39 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 extern s32 D_global_asm_80718188;
-
-extern SpriteData D_global_asm_80720EA4;
-extern SpriteData D_global_asm_8071FC8C;
-extern SpriteData D_global_asm_8071FC40;
-
-extern SpriteData D_global_asm_8071FBC8;
-extern SpriteData D_global_asm_8071FB54;
-extern SpriteData D_global_asm_8071FE08;
-extern SpriteData D_global_asm_8071FE64;
-extern SpriteData D_global_asm_8071FE88;
-extern SpriteData D_global_asm_8071FFA0;
-extern SpriteData D_global_asm_8071FEAC;
-extern SpriteData D_global_asm_8071FF18;
-extern SpriteData D_global_asm_8071FFA0;
-
-extern SpriteData D_global_asm_80720A7C;
-extern SpriteData D_global_asm_80720B00;
-extern SpriteData D_global_asm_80720BE8;
-extern SpriteData D_global_asm_80720BC4;
-extern SpriteData D_global_asm_80720CD8;
-extern SpriteData D_global_asm_80720E44;
-extern SpriteData D_global_asm_80720E5C;
-extern SpriteData D_global_asm_80720E74;
-extern SpriteData D_global_asm_80720E8C;
-
-extern SpriteData D_global_asm_80721200;
-extern SpriteData D_global_asm_8072121C;
-extern SpriteData D_global_asm_80721238;
-extern SpriteData D_global_asm_80721250;
-extern SpriteData D_global_asm_8072126C;
-extern SpriteData D_global_asm_80721530;
 
 typedef struct {
     f32 unk0;
@@ -372,8 +340,6 @@ void func_global_asm_80643B24(Prop_ScriptData *arg0, s16 arg1, s32 arg2, s32 arg
         func_global_asm_80714B84(&D_global_asm_8071FFA0, 1.0f, arg1, 2, 0);
     }
 }
-
-extern SpriteData D_global_asm_807201D4;
 
 typedef struct InstanceData80643C0C {
     s32 unk0;
@@ -1161,8 +1127,6 @@ void func_global_asm_80647508(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
     drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.5f, x, y - 70, z);
 }
 
-extern SpriteData D_global_asm_80720DE0; // TODO: Datatype
-
 typedef struct InstanceData80647610 {
     s32 unk0;
 } InstanceData80647610;
@@ -1436,8 +1400,6 @@ void func_global_asm_8064826C(Struct8064826C_arg0 *arg0, s32 arg1, s16 arg2, s32
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_806485A0.s")
 
-extern SpriteData D_global_asm_8071FF18;
-
 /*
 void func_global_asm_806485A0(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     f32 sp80;
@@ -1561,8 +1523,6 @@ void func_global_asm_806491F4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg
     }
 }
 */
-
-extern SpriteData D_global_asm_80721298; // TODO: Sprite
 
 void func_global_asm_806493C4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
     u8 temp_s1;

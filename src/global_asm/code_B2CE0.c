@@ -1,9 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
-
-extern SpriteData D_global_asm_8071FBC8;
-extern SpriteData D_global_asm_8072073C; // TODO: Proper datatype
 
 extern f32 D_global_asm_8075B1A8;
 

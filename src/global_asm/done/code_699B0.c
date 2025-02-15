@@ -1,9 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
-
-extern SpriteData D_global_asm_8071FF18; // Sprite
-extern SpriteData D_global_asm_8072140C; // Sprite
 
 typedef struct {
     u8 unk0;

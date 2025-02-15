@@ -1,12 +1,7 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 extern Struct80717D84 *D_minecart_80028C30;
-
-extern SpriteData D_global_asm_8071FB54;
-extern SpriteData D_global_asm_8071FEF4;
-extern SpriteData D_global_asm_8071FFA0; // TODO: Datatype
 
 extern s16 D_global_asm_807502D0;
 
@@ -603,12 +598,6 @@ void func_global_asm_80718BF4(otherSpriteControl *arg0, s8 *arg1) {
         func_global_asm_80718124(0.3f, arg0->xPos, arg0->yPos, arg0->zPos);
     }
 }
-
-
-
-extern SpriteData D_global_asm_8072073C;
-extern SpriteData D_global_asm_807212B0;
-extern SpriteData D_global_asm_807212C8;
 
 void func_global_asm_8071910C(otherSpriteControl *arg0, s32 arg1) {
     f32 sp98[4][4];
@@ -1339,7 +1328,6 @@ void func_global_asm_8071BE04(Struct80717D84 *arg0, s32 arg1) {
     arg0->unk32C = 3;
 }
 
-extern SpriteData D_global_asm_807201D4; // TODO: Datatype
 void func_global_asm_8071C24C(Struct80717D84 *arg0, u8 *arg1);
 
 void func_global_asm_8071C004(Struct80717D84 *arg0, s8 *arg1) {
@@ -1508,8 +1496,6 @@ void func_global_asm_8071C914(Struct80717D84 *arg0, s32 arg1) {
 
 // Matrix stuff, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071C9E8.s")
-
-extern SpriteData D_global_asm_8071FB08;
 
 /*
 void func_global_asm_8071C9E8(otherSpriteControl *arg0, s8 *arg1) {

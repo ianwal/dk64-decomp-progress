@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 extern u8 *D_807F5AF0;
 extern u16 *D_807FBB54;
@@ -1735,11 +1734,6 @@ void func_global_asm_80618104(Actor *arg0) {
     }
 }
 
-
-
-extern SpriteData D_global_asm_8071FE08; // TODO: Sprite?
-extern SpriteData D_global_asm_8071FF18; // TODO: Sprite?
-
 void func_global_asm_80618430(Actor *arg0) {
     u8 boneIndex;
 
@@ -1784,8 +1778,6 @@ void func_global_asm_8061859C(Actor *arg0) {
     func_global_asm_80714C08(&D_global_asm_8071FF18, 0.4f, arg0, boneIndex, 0);
 }
 
-extern SpriteData D_global_asm_8072006C;
-extern SpriteData D_global_asm_80720B58;
 extern s32 D_global_asm_807FBB68;
 
 void func_global_asm_80618608(Actor *arg0) {

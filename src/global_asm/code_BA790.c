@@ -7,7 +7,6 @@
 
 void func_global_asm_8072C918(s32, s16, s32);
 extern s16 D_80770710[];
-extern SpriteData D_global_asm_80720630;
 extern s16 D_global_asm_80770628[];
 extern u8 D_global_asm_807FBB85;
 extern u8 D_global_asm_807FBD70;

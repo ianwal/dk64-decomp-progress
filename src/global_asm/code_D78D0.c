@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 typedef struct BoulderAAD {
     u32 unk0;
@@ -14,11 +13,6 @@ typedef struct BoulderAAD {
     u16 unk1C;
     s8 unk1E;
 } BoulderAAD;
-
-extern SpriteData D_global_asm_8071FC58; // TODO: Sprite
-extern SpriteData D_global_asm_8071FCC0; // TODO: Sprite
-extern SpriteData D_global_asm_8071FF18;
-extern SpriteData D_global_asm_8072014C;
 
 extern u8 D_global_asm_80750AB8;
 extern f32 D_global_asm_80750FC0;
@@ -2407,8 +2401,6 @@ void func_global_asm_806D9940(void) {
 // close, doable, regalloc
 // https://decomp.me/scratch/YQGZn
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_D78D0/func_global_asm_806D9AD4.s")
-
-extern SpriteData D_global_asm_8071FC8C;
 
 int func_global_asm_80717100();
 

@@ -60,8 +60,6 @@ void func_global_asm_806A2B80(Actor *arg0) {
     arg0->control_state_progress = 0;
 }
 
-extern SpriteData D_global_asm_8071FC58;
-
 Gfx *func_global_asm_806A2B90(Gfx *dl, Actor *arg1) {
     AAD_global_asm_806A2A10 *sp5C;
     s32 sp58;

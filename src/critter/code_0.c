@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 typedef struct CritterStruct5 {
     s16 x_position; // 0x00
@@ -569,7 +568,6 @@ static D_80029F74 D_critter_80029F74 = {{0x007C, 0x007D, 0x007E, 0x007F}};
 
 static f32 D_critter_80029F7C = 2.0f;
 
-extern SpriteData D_global_asm_8071FC40;
 extern u8 D_global_asm_80770DC9;
 extern s32 D_global_asm_807F6C28;
 

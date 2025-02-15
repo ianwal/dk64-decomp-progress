@@ -395,7 +395,7 @@ segments:
       - [0x214DA40, data, data_14DA40]
       - [0x215A350, .data, code_11BE00]
       - [0x215A380, .data, code_126260]
-      - [0x215A390, data, code_1295B0]
+      - [0x215A390, .data, code_1295B0]
       - [0x215A4A0, .data, done/triggers]
       - [0x215A720, .data, code_135D30]
       - [0x215AE30, .data, code_136820]

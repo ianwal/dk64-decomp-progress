@@ -319,9 +319,6 @@ void func_global_asm_8072A450(void);
 extern u8 D_80036DD0[];
 extern s16 D_807502DC;
 extern f32 D_807502F0;
-extern SpriteData D_global_asm_8071FC58;
-extern SpriteData D_global_asm_80720054;
-extern SpriteData D_global_asm_80720BE8;
 extern u8 D_global_asm_807FBB85;
 extern u8 D_global_asm_807FBDC4;
 

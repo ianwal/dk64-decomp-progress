@@ -1,6 +1,5 @@
 #include <ultra64.h>
 #include "functions.h"
-#include "sprites.h"
 
 extern s8 D_global_asm_80745844;
 extern s8 opening_cutscene_transition;
@@ -12,18 +11,7 @@ extern s8 is_raining;
 extern s8 menu_cutscene_index;
 extern s16 menu_cutscene_timer;
 extern s16 D_menu_800336A4[];
-extern SpriteData D_global_asm_80721094;
-extern SpriteData D_global_asm_807210EC;
-extern SpriteData D_global_asm_80721170;
-extern SpriteData D_global_asm_807211D0;
-extern SpriteData D_global_asm_80721444;
-extern SpriteData D_global_asm_80720C34;
 extern s8 current_file_selection;
-extern SpriteData D_global_asm_8072052C;
-extern SpriteData D_global_asm_807204BC;
-extern SpriteData D_global_asm_80720CF0;
-extern SpriteData D_global_asm_80720D14;
-extern SpriteData D_global_asm_80720D38;
 extern s8 menu_selection_available;
 
 // Rodata
@@ -694,8 +682,6 @@ void func_menu_80029D30(Actor *arg0, s32 arg1) {
     func_menu_80030894(MaaD, &D_global_asm_80720C34, 0xA0, 0xD2, 0.75f, 2, 0);
 }
 
-extern SpriteData D_global_asm_8071FBC8;
-extern SpriteData D_global_asm_8071FE08;
 extern s8 D_menu_80033FAC;
 
 void func_menu_80029EF8(Actor *arg0, s32 arg1) {
@@ -939,9 +925,6 @@ extern s16 D_menu_8003386C[];
 extern s8 D_menu_80033FAD;
 extern s8 D_menu_80033FAE;
 extern s8 D_menu_80033FAF;
-extern SpriteData D_global_asm_80720D5C;
-extern SpriteData D_global_asm_80720D80;
-extern SpriteData D_global_asm_807211AC;
 extern s8 D_global_asm_8074451C;
 extern s16 D_global_asm_80744544;
 
@@ -2408,7 +2391,6 @@ void func_menu_80031A5C(void) {
     }
 }
 
-extern SpriteData D_global_asm_8071FE64; // TODO: Type
 extern s16 D_global_asm_80754CE0;
 extern f32 D_menu_80033678[];
 extern f32 dk_screen_transition_height;
