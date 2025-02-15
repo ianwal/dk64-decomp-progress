@@ -261,7 +261,7 @@ void func_jetpac_80025CB0(JetpacStructSub0* arg0) {
     }
     if (spatial_state->unk14 != 0) {
         if (spatial_state->unk14 == 3) {
-            if (spatial_state->unk18 != 0) {
+            if (spatial_state->is_facing_left != 0) {
                 var_f12 = spatial_state->unk1C;
                 var_f0 = (MIN(spatial_state->unk2C, 4) * 8) + var_f12;
             } else {
@@ -281,7 +281,7 @@ void func_jetpac_80025CB0(JetpacStructSub0* arg0) {
             }
             else
             {
-                if (spatial_state->unk18 != 0) {
+                if (spatial_state->is_facing_left != 0) {
                     spatial_state->unk1C -= 8;
                     if (spatial_state->unk2C >= 0xD) {
                         spatial_state->unk24 -= 8;
@@ -298,7 +298,7 @@ void func_jetpac_80025CB0(JetpacStructSub0* arg0) {
         else if (spatial_state->unk14 == 4) {
             new_var = (spatial_state->unk24 - spatial_state->unk1C) / 8;
             if ((spatial_state->unk2C + new_var) >= 0xD) {
-                if (spatial_state->unk18 != 0) {
+                if (spatial_state->is_facing_left != 0) {
                     spatial_state->unk24 -= 8;
                 } else {
                     spatial_state->unk1C += 8;
@@ -331,7 +331,7 @@ void func_jetpac_80025FC4(JetpacStruct *arg0) {
 
     if (var_s4) {} // TODO: This fixes regalloc but it's an awful way to get a match...
 
-    temp_s5 = arg0->unk0.spatial_state.unk18;
+    temp_s5 = arg0->unk0.spatial_state.is_facing_left;
     var_s1 = 0;
     if (arg0->unk0.spatial_state.unk14 >= 2) {
         var_s4 = -8;
@@ -373,8 +373,8 @@ void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
             }
         }
     } else {
-        temp_v0->unk0.spatial_state.unk18 = arg0->spatial_state.unk18;
-        if (temp_v0->unk0.spatial_state.unk18 != 0) {
+        temp_v0->unk0.spatial_state.is_facing_left = arg0->spatial_state.is_facing_left;
+        if (temp_v0->unk0.spatial_state.is_facing_left != 0) {
             temp_v0->unk0.spatial_state.posX = ((s32)(arg0->spatial_state.posX + arg0->spatial_state.unk1C) / 8) * 8;
             temp_v0->unk0.spatial_state.velX = -8.0f;
         } else {
@@ -446,14 +446,14 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
 
     if (sp34 != 0) {
         arg0->spatial_state.velX -= 0.33333334f;
-        if ((arg0->spatial_state.unk18 == 0) && (arg0->spatial_state.velX <= 0.0f)) {
-            arg0->spatial_state.unk18 = 1;
+        if ((arg0->spatial_state.is_facing_left == 0) && (arg0->spatial_state.velX <= 0.0f)) {
+            arg0->spatial_state.is_facing_left = 1;
             func_jetpac_80025BB8(arg0, arg0->unk30);
         }
     } else if (sp30 != 0) {
         arg0->spatial_state.velX += 0.33333334f;
-        if ((arg0->spatial_state.unk18 != 0) && (arg0->spatial_state.velX >= 0.0f)) {
-            arg0->spatial_state.unk18 = 0;
+        if ((arg0->spatial_state.is_facing_left != 0) && (arg0->spatial_state.velX >= 0.0f)) {
+            arg0->spatial_state.is_facing_left = 0;
             func_jetpac_80025BB8(arg0, arg0->unk30);
         }
     } else {
@@ -512,7 +512,7 @@ block_62:
                     func_jetpac_80025BB8(arg0, 1);
                     arg0->spatial_state.velY = -0.5f;
                 }
-            } else if ((arg0->spatial_state.unk18 == 0) && (sp34 == 0)) {
+            } else if ((arg0->spatial_state.is_facing_left == 0) && (sp34 == 0)) {
                 arg0->spatial_state.velX = 1.0f;
             } else if (sp30 == 0) {
                 arg0->spatial_state.velX = -1.0f;

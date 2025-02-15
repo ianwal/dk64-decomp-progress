@@ -135,13 +135,13 @@ void func_jetpac_800291AC(JetpacStruct *arg0) {
 
 void func_jetpac_80029204(JetpacStruct *arg0) {
     if (arg0->unk0.spatial_state.unk14 == 3) {
-        func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.spatial_state.posX, arg0->unk0.spatial_state.posY, &arg0->unk0.spatial_state.hue, arg0->unk0.spatial_state.unk18);
+        func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.spatial_state.posX, arg0->unk0.spatial_state.posY, &arg0->unk0.spatial_state.hue, arg0->unk0.spatial_state.is_facing_left);
         return;
     }
     if (arg0->unk0.spatial_state.unk14 == 4) {
         func_jetpac_80025A60(&arg0->unk0.unk30);
         if (arg0->unk0.unk30.unk8 < 7) {
-            func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.spatial_state.posX, arg0->unk0.spatial_state.posY, &arg0->unk0.spatial_state.hue, arg0->unk0.spatial_state.unk18);
+            func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.spatial_state.posX, arg0->unk0.spatial_state.posY, &arg0->unk0.spatial_state.hue, arg0->unk0.spatial_state.is_facing_left);
         }
     }
 }
@@ -337,7 +337,7 @@ void func_jetpac_8002998C(JetpacStruct *arg0) {
                 arg0->unk0.spatial_state.posY = arg0->unk0.spatial_state.posY + arg0->unk0.spatial_state.velY;
                 arg0->unk0.spatial_state.posX += arg0->unk0.spatial_state.velX;
                 if ((s32)arg0->unk0.spatial_state.posX & 2) {
-                    arg0->unk0.spatial_state.unk18 ^= 1;
+                    arg0->unk0.spatial_state.is_facing_left ^= 1;
                 }
             }
             break;
@@ -483,7 +483,7 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
                 arg0->unk0.spatial_state.velY = 0.8f;
             }
             if (arg0->unk0.spatial_state.unk2C == 0) {
-                if (arg0->unk0.spatial_state.unk18 != 0) {
+                if (arg0->unk0.spatial_state.is_facing_left != 0) {
                     arg0->unk0.spatial_state.velX = -1.6f;
                 } else {
                     arg0->unk0.spatial_state.velX = 1.6f;
@@ -516,9 +516,9 @@ void func_jetpac_8002A254(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_8002A530;
     arg0->unk0.unk44 = 0x32;
     if (arg0->unk0.spatial_state.posY < 88.0f) {
-        arg0->unk0.spatial_state.unk18 = 0;
+        arg0->unk0.spatial_state.is_facing_left = 0;
     } else {
-        arg0->unk0.spatial_state.unk18 = 1;
+        arg0->unk0.spatial_state.is_facing_left = 1;
     }
     func_jetpac_8002A374(arg0);
 }

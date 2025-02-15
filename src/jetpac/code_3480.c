@@ -209,7 +209,7 @@ void func_jetpac_80027D64(Competitor *arg0) {
     sp24.primary_info.sprite[0] = &D_jetpac_8002D968[sp24.primary_info.drop_type];
     *temp_v1 = sp24;
     temp_v1->primary_info.posX = func_jetpac_800274C0();
-    arg0->unk_144 = func_jetpac_80027480();
+    arg0->bonus_item_counter_limit = func_jetpac_80027480();
 }
 
 // Jumptable, close
@@ -542,35 +542,24 @@ void func_jetpac_80028B54(Competitor *arg0) {
 }
 
 typedef struct Struct8002EF80 {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    rgba unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
+    JetpacSpatialState spatial_state;
     s32 unk30;
 } JetpacGroundPlatform;
 
 void func_jetpac_80028BD0(JetpacGroundPlatform *ground_platform, s32 posX, s32 posY, s32 width, u8 red, u8 green, u8 blue) {
     ground_platform->unk30 = width;
-    ground_platform->unk0 = posX;
-    ground_platform->unk4 = posY;
-    ground_platform->unk8 = 0.0f;
-    ground_platform->unkC = 0.0f;
-    ground_platform->unk10.red = red;
-    ground_platform->unk10.green = green;
-    ground_platform->unk10.blue = blue;
-    ground_platform->unk10.alpha = 0xFF;
-    ground_platform->unk20 = posY;
-    ground_platform->unk1C = posX;
+    ground_platform->spatial_state.posX = posX;
+    ground_platform->spatial_state.posY = posY;
+    ground_platform->spatial_state.velX = 0.0f;
+    ground_platform->spatial_state.velY = 0.0f;
+    ground_platform->spatial_state.hue.red = red;
+    ground_platform->spatial_state.hue.green = green;
+    ground_platform->spatial_state.hue.blue = blue;
+    ground_platform->spatial_state.hue.alpha = 0xFF;
+    ground_platform->spatial_state.unk20 = posY;
+    ground_platform->spatial_state.unk1C = posX;
     // TODO: Why does this need to be on the same line? Just ido being shite?
-    ground_platform->unk24 = width * 8 + posX + 0x10; ground_platform->unk28 = posY + 0xC;
+    ground_platform->spatial_state.unk24 = width * 8 + posX + 0x10; ground_platform->spatial_state.unk28 = posY + 0xC;
 }
 
 
@@ -591,11 +580,11 @@ s32 func_jetpac_80028CF8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
 
     var_s0 = &D_jetpac_8002EF80[0];
     for (i = 0; i < 4; i++) {
-        var_f0 = var_s0->unk28;
+        var_f0 = var_s0->spatial_state.unk28;
         if (arg4 == 0) {
             var_f0 -= 4.0f;
         }
-        if (func_jetpac_80027250(arg0, arg1, arg2, arg3, var_s0->unk1C, var_s0->unk20, var_s0->unk24, var_f0)) {
+        if (func_jetpac_80027250(arg0, arg1, arg2, arg3, var_s0->spatial_state.unk1C, var_s0->spatial_state.unk20, var_s0->spatial_state.unk24, var_f0)) {
             return i;
         }
         var_s0++;

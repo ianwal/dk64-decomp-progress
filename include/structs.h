@@ -2412,7 +2412,7 @@ typedef struct JetpacSpatialState {
     f32 velY;
     rgba hue;
     s32 unk14;
-    s32 unk18;
+    s32 is_facing_left;
     s32 unk1C;
     s32 unk20;
     s32 unk24;
@@ -2509,7 +2509,7 @@ typedef struct Competitor {
     s32 unk10; //used
     JetpacPickupStruct rocket_segments[3];
     JetpacPickupStruct fuel_item;
-    s32 unk_144;
+    s32 bonus_item_counter_limit;
     JetpacPickupStruct next_bonus_item;
     //u8 unk_190[4];
 } Competitor;
