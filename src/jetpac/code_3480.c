@@ -555,25 +555,27 @@ typedef struct Struct8002EF80 {
     s32 unk28;
     s32 unk2C;
     s32 unk30;
-} Struct8002EF80;
+} JetpacGroundPlatform;
 
-void func_jetpac_80028BD0(Struct8002EF80 *arg0, s32 arg1, s32 arg2, s32 arg3, u8 arg4, u8 arg5, u8 arg6) {
-    arg0->unk30 = arg3;
-    arg0->unk0 = arg1;
-    arg0->unk4 = arg2;
-    arg0->unk8 = 0.0f;
-    arg0->unkC = 0.0f;
-    arg0->unk10.red = arg4;
-    arg0->unk10.green = arg5;
-    arg0->unk10.blue = arg6;
-    arg0->unk10.alpha = 0xFF;
-    arg0->unk20 = arg2;
-    arg0->unk1C = arg1;
+void func_jetpac_80028BD0(JetpacGroundPlatform *ground_platform, s32 posX, s32 posY, s32 width, u8 red, u8 green, u8 blue) {
+    ground_platform->unk30 = width;
+    ground_platform->unk0 = posX;
+    ground_platform->unk4 = posY;
+    ground_platform->unk8 = 0.0f;
+    ground_platform->unkC = 0.0f;
+    ground_platform->unk10.red = red;
+    ground_platform->unk10.green = green;
+    ground_platform->unk10.blue = blue;
+    ground_platform->unk10.alpha = 0xFF;
+    ground_platform->unk20 = posY;
+    ground_platform->unk1C = posX;
     // TODO: Why does this need to be on the same line? Just ido being shite?
-    arg0->unk24 = arg3 * 8 + arg1 + 0x10; arg0->unk28 = arg2 + 0xC;
+    ground_platform->unk24 = width * 8 + posX + 0x10; ground_platform->unk28 = posY + 0xC;
 }
 
-extern Struct8002EF80 D_jetpac_8002EF80[4];
+
+// Ground platforms
+extern JetpacGroundPlatform D_jetpac_8002EF80[4];
 
 void func_jetpac_80028C3C(void) {
     func_jetpac_80028BD0(&D_jetpac_8002EF80[0], 0xC0, 0x30, 4, 0, 0xBE, 0);
@@ -585,7 +587,7 @@ void func_jetpac_80028C3C(void) {
 s32 func_jetpac_80028CF8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     f32 var_f0;
     s32 i;
-    Struct8002EF80 *var_s0;
+    JetpacGroundPlatform *var_s0;
 
     var_s0 = &D_jetpac_8002EF80[0];
     for (i = 0; i < 4; i++) {
