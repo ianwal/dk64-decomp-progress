@@ -931,8 +931,6 @@ void func_global_asm_806E2140(void) {
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E2B20.s")
 
-u8 func_global_asm_80671E00(f32, f32, f32, f32, s16*, s16*, f32*, f32*);
-
 /*
 u8 func_global_asm_806E2B20(Actor *arg0) {
     f32 x;

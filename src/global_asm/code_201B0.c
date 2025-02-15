@@ -1667,8 +1667,6 @@ void func_global_asm_80627888(Actor *arg0) {
     arg0->unk15F = (aaD->unkB2 / 4095.0) * 255.0;
 }
 
-s32 func_global_asm_80671E00(f32, f32, f32, f32, s16*, s16*, s32, s32);
-
 void func_global_asm_80627948(Actor *arg0, u8 arg1, u8 arg2, u8 arg3) {
     s16 sp2E;
     s16 sp2C;

@@ -119,24 +119,22 @@ s32 func_race_800276B0(s32 arg0, RaceStruct15 *arg1, RaceStruct15 *arg2) {
 // Similar to below
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80027710.s")
 
-// close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80027880.s")
-
-/*
 f32 func_race_80027880(s32 arg0, u16 arg1, u16 arg2) {
     f32 dx;
     f32 dz;
     f32 dy;
     s32 temp;
-
+    Struct807F5FD4_unk0 *t;
+    
     temp = func_race_80025770(arg0, arg2);
-
-    dx = D_global_asm_807F5FD4->unk0[arg1][arg2].unk0 - D_global_asm_807F5FD4->unk0[arg1][temp].unk0;
-    dy = D_global_asm_807F5FD4->unk0[arg1][arg2].unk4 - D_global_asm_807F5FD4->unk0[arg1][temp].unk4;
-    dz = D_global_asm_807F5FD4->unk0[arg1][arg2].unk8 - D_global_asm_807F5FD4->unk0[arg1][temp].unk8;
+    
+    t = D_global_asm_807F5FD4->unk0[arg1];
+    // TODO: Better way to write this?
+    dx = (t + arg2)->unk0 - (temp + t)->unk0;
+    dy = (t + arg2)->unk4 - (temp + t)->unk4;
+    dz = (t + arg2)->unk8 - (temp + t)->unk8;
     return sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
 }
-*/
 
 // doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80027920.s")

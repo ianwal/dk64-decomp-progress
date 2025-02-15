@@ -1674,7 +1674,6 @@ void func_global_asm_806180FC(Actor *arg0) {
 
 }
 
-s32 func_global_asm_80671E00(f32, f32, f32, f32, s16*, s16*, s32, s32);
 extern f32 D_global_asm_80753E48[];
 extern s16 D_global_asm_80753E64[];
 

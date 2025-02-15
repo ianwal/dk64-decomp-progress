@@ -3861,7 +3861,7 @@ us,.race,func_race_80029F88,248,yes
 us,.race,func_race_8002DCF0,128,yes
 us,.race,func_race_80027AF8,56,yes
 us,.race,func_race_800282D8,252,yes
-us,.race,func_race_80027880,160,no
+us,.race,func_race_80027880,160,yes
 us,.race,func_race_80026CA8,132,yes
 us,.race,func_race_8002BC2C,132,yes
 us,.race,castleCarRaceSetup,76,yes

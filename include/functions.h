@@ -1637,7 +1637,7 @@ s32 func_global_asm_806717FC(Actor *arg0);
 u8 getBonePosition(Actor *actor, s32 boneIndex, f32 *x, f32 *y, f32 *z);
 void func_global_asm_80671D10(Actor *arg0, s32 arg1, f32 *arg2, f32 *arg3, f32 *arg4);
 // TODO: func_global_asm_80671D64 has no documented signature
-// TODO: func_global_asm_80671E00 has no documented signature
+u8 func_global_asm_80671E00(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 *arg4, s16 *arg5, u8 arg6, u16 arg7);
 // TODO: func_global_asm_80671F54 has no documented signature
 s16 func_global_asm_80672134(s16 arg0, s16 arg1, s16 arg2, s16 arg3);
 // TODO: func_global_asm_80672328 has no documented signature
