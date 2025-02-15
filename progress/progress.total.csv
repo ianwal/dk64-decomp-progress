@@ -131,7 +131,7 @@ us,asm,func_global_asm_80647CF4,136,yes
 us,asm,func_global_asm_806D25CC,160,yes
 us,asm,_bnkfPatchBank,280,yes
 us,asm,func_global_asm_8066DD34,1256,no
-us,asm,getCenterOfString,336,no
+us,asm,getCenterOfString,336,yes
 us,asm,func_global_asm_80689A80,144,yes
 us,asm,func_global_asm_8061F0B0,180,yes
 us,asm,func_global_asm_806C6530,852,yes

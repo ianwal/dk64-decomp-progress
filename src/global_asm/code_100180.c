@@ -41,7 +41,7 @@ void func_global_asm_806FB8B0(s32 arg0) {
     func_global_asm_806FB490(D_global_asm_80754A18[0]->character[0x5F].width, arg0, D_global_asm_807FD7F0[2], D_global_asm_80754A18[0]->character[0x5F].x_start, 2, &sp2F, 0x30);
 }
 
-void func_global_asm_806FB914(s16, u8 *);
+s8 func_global_asm_806FB914(s16, u8 *);
 
 // Jumptable, doable, string processing
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/func_global_asm_806FB914.s")
@@ -77,10 +77,6 @@ void func_global_asm_806FBC34(void) {
     }
 }
 
-// regalloc, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_100180/getCenterOfString.s")
-
-/*
 s32 getCenterOfString(s16 renderStyle, u8 *string) {
     u32 len;
     u8 ch;
@@ -90,7 +86,8 @@ s32 getCenterOfString(s16 renderStyle, u8 *string) {
         renderStyle ^= 0x80;
         return strlen(string) * D_global_asm_80754A34[renderStyle].kerning_animation;
     }
-    while (ch = *string++, ch) {
+
+    while (ch = *string++) {
         if (ch == ' ') {
             len += D_global_asm_80754A34[renderStyle].kerning_space;
         } else {
@@ -99,16 +96,16 @@ s32 getCenterOfString(s16 renderStyle, u8 *string) {
         }
         len += D_global_asm_80754A34[renderStyle].kerning_character;
     }
+
     return len;
 }
-*/
 
-s16 func_global_asm_806FBEAC(u8 *arg0) {
+s16 func_global_asm_806FBEAC(u8 *string) {
     s16 count;
 
     count = 0;
-    while (*arg0++) {
-        if (arg0[-1] != 0x20) {
+    while (*string++) {
+        if (string[-1] != ' ') {
             count++;
         }
     }
