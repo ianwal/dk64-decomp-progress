@@ -611,8 +611,8 @@ extern SpriteData D_global_asm_807212B0;
 extern SpriteData D_global_asm_807212C8;
 
 void func_global_asm_8071910C(otherSpriteControl *arg0, s32 arg1) {
-    Mtx sp98;
-    Mtx sp58;
+    f32 sp98[4][4];
+    f32 sp58[4][4];
     f32 sp54;
     f32 var_f0; // 50
     f32 sp4C;
@@ -664,10 +664,10 @@ void func_global_asm_8071910C(otherSpriteControl *arg0, s32 arg1) {
         }
     }
     arg0->unk384_8071910C->unkC += 5.9;
-    guScaleF(&sp98, arg0->xScale, arg0->yScale, 0.0f);
-    guRotateF(&sp58, arg0->unk384_8071910C->unkC, 0.0f, 0.0f, 1.0f);
-    guMtxCatF(&sp98, &sp58, &sp98);
-    guMtxF2L(&sp98, &arg0->unk128[D_global_asm_807444FC]);
+    guScaleF(sp98, arg0->xScale, arg0->yScale, 0.0f);
+    guRotateF(sp58, arg0->unk384_8071910C->unkC, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(sp98, sp58, sp98);
+    guMtxF2L(sp98, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
 
@@ -1156,8 +1156,8 @@ void func_global_asm_8071B44C(Struct80717D84 *arg0, s32 arg1) {
 }
 
 void func_global_asm_8071B520(otherSpriteControl *arg0, s8 *arg1) {
-    Mtx sp80;
-    Mtx sp40;
+    f32 sp80[4][4];
+    f32 sp40[4][4];
     f32 sp3C;
     f32 var_f2;
     f32 temp1;
@@ -1173,12 +1173,12 @@ void func_global_asm_8071B520(otherSpriteControl *arg0, s8 *arg1) {
     if (arg0->unk34E == 16) {
         arg0->gif_update_frequency = 10;
     }
-    guScaleF(&sp80, arg0->xScale, arg0->yScale, 0.0f);
-    guRotateF(&sp40, (arg0->unk35C * 360) / 4096, 0.0f, 1.0f, 0.0f);
-    guMtxCatF(&sp80, &sp40, &sp80);
-    guTranslateF(&sp40, arg0->xPos, arg0->yPos, arg0->zPos);
-    guMtxCatF(&sp80, &sp40, &sp80);
-    guMtxF2L(&sp80, &arg0->unk128[D_global_asm_807444FC]);
+    guScaleF(sp80, arg0->xScale, arg0->yScale, 0.0f);
+    guRotateF(sp40, (arg0->unk35C * 360) / 4096, 0.0f, 1.0f, 0.0f);
+    guMtxCatF(sp80, sp40, sp80);
+    guTranslateF(sp40, arg0->xPos, arg0->yPos, arg0->zPos);
+    guMtxCatF(sp80, sp40, sp80);
+    guMtxF2L(sp80, &arg0->unk128[D_global_asm_807444FC]);
     if (arg0->unk34E >= 0x13) {
         arg0->transparency4 -= 0x14;
     }
@@ -1568,8 +1568,8 @@ void func_global_asm_8071C9E8(otherSpriteControl *arg0, s8 *arg1) {
 */
 
 void func_global_asm_8071CDE0(otherSpriteControl *arg0, s8 *arg1) {
-    Mtx sp98;
-    Mtx sp58;
+    f32 sp98[4][4];
+    f32 sp58[4][4];
     Struct80717D84_unk384_8071CDE0 *var_v1;
     Actor *temp_t0; // 50
     s16 pad;
@@ -1600,14 +1600,12 @@ void func_global_asm_8071CDE0(otherSpriteControl *arg0, s8 *arg1) {
         drawSpriteAtPosition(&D_global_asm_8071FB08, 1.6f, arg0->xPos, arg0->yPos, arg0->zPos);
     }
     var_v1->unk6 += var_v1->unk4;
-    guScaleF(&sp98, arg0->xScale, arg0->yScale, 0.0f);
-    guRotateF(&sp58, var_v1->unk6, 0.0f, 0.0f, 1.0f);
-    guMtxCatF(&sp98, &sp58, &sp98);
-    guMtxF2L(&sp98, &arg0->unk128[D_global_asm_807444FC]);
+    guScaleF(sp98, arg0->xScale, arg0->yScale, 0.0f);
+    guRotateF(sp58, var_v1->unk6, 0.0f, 0.0f, 1.0f);
+    guMtxCatF(sp98, sp58, sp98);
+    guMtxF2L(sp98, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
-
-
 
 extern u16 D_global_asm_807FC930[];
 
