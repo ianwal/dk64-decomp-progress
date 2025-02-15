@@ -24,8 +24,8 @@ void func_global_asm_8066C2D0(s32, PropFileStruct *, f32, f32, f32, f32, f32, f3
 u8 func_global_asm_8066F4AC(Actor *, s16 *, s16 *);
 s32 func_global_asm_80672328(Actor*, f32, f32);
 void func_global_asm_80672E90(s32, s32, s32);
-s32 func_global_asm_806730A4(s32, s32, s32, s32);
-s32 func_global_asm_806734E4(s32, s32, s32, s32, s16 *, s16 *);
+u8 func_global_asm_806730A4(s32, s32, s32, s32);
+u8 func_global_asm_806734E4(s32, s32, s32, s32, s16 *, s16 *);
 
 extern s32 D_global_asm_807FB53C;
 extern Actor *D_global_asm_807FB540;
@@ -1447,8 +1447,31 @@ loop_7:
 }
 */
 
-// TODO: Very similar to above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671E00.s")
+u8 func_global_asm_80671F54(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5);
+
+u8 func_global_asm_80671E00(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 *arg4, s16 *arg5, u8 arg6, u16 arg7) {
+    u8 sp4F;
+
+    arg0 *= 8.0f;
+    arg1 *= 8.0f;
+    arg2 *= 8.0f;
+    arg3 *= 8.0f;
+    *arg4 = 0;
+    *arg5 = 0xFFF;
+    D_global_asm_807FB606 = 0;
+    func_global_asm_80672E90(arg0, arg1, arg2);
+    func_global_asm_80672C70(arg7);
+    if (arg6) {
+        sp4F = func_global_asm_806734E4(arg0, arg1, arg2, arg3, arg4, arg5);
+        sp4F |= func_global_asm_80671F54(arg0, arg1, arg2, arg3, arg4, arg5);
+    } else {
+        sp4F = func_global_asm_806730A4(arg0, arg1, arg2, arg3);
+        if (!sp4F) {
+            sp4F = func_global_asm_80671F54(arg0, arg1, arg2, arg3, arg4, arg5);
+        }
+    }
+    return sp4F;
+}
 
 s32 func_global_asm_80673708(s32, s32, s32, s32, s32, s32, s32, s32);
 s32 func_global_asm_80674ADC(s32, s32, s32, s32, s32, s32, s32, s32);
@@ -1456,7 +1479,7 @@ extern s8 D_807FB5FD;
 extern s32 D_global_asm_80747D70;
 extern s32 D_global_asm_807FB53C;
 
-s32 func_global_asm_80671F54(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5) {
+u8 func_global_asm_80671F54(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s32 arg5) {
     u8 var_fp;
     s32 var_s1;
     s32 i;

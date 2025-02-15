@@ -1146,10 +1146,10 @@ void func_bonus_8002B920(void) {
 }
 */
 
+// rodata, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_8002BE44.s")
 
 /*
-// TODO: what a mess
 void func_global_asm_80614644(Actor *, ActorAnimationState *, s32);
 extern f32 D_bonus_8002DE50;
 extern f64 D_bonus_8002DE58;

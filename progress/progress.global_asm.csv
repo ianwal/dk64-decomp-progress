@@ -2777,7 +2777,7 @@ us,asm,moveAndScaleActorToAnother,72,yes
 us,asm,func_global_asm_80601CF0,52,yes
 us,asm,func_global_asm_806EA9B4,144,yes
 us,asm,func_global_asm_806D10D0,64,yes
-us,asm,func_global_asm_80671E00,340,no
+us,asm,func_global_asm_80671E00,340,yes
 us,asm,func_global_asm_80616254,112,yes
 us,asm,func_global_asm_80704108,40,yes
 us,asm,printStyledText,1880,no
