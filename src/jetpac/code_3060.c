@@ -22,6 +22,8 @@ s32 func_jetpac_80027060(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 a
     return FALSE;
 }
 
+// Splits a range into two ranges, to account for the fact that the sides of the play area are portals
+// e.g. Doing collision checks for [-64, 64] would return [0, 64] and [192, 256]
 void func_jetpac_80027108(f32 arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *arg4, f32 *arg5) {
     if (arg0 < 0.0f) {
         if (arg1 <= 0.0f) {
@@ -61,6 +63,7 @@ f32 func_jetpac_80027210(void) {
     return RandClamp(60000) / 60000.0f;
 }
 
+// Collision/overlap check between two objects
 int func_jetpac_80027250(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7) {
     f32 sp44;
     f32 sp40;
@@ -89,7 +92,7 @@ f32 func_jetpac_800273C8(JetpacSpatialState *arg0) {
     return (arg0->posY + arg0->unk20) + ((f32)(arg0->unk28 - arg0->unk20) * 0.5);
 }
 
-//math.ceil?
+// froundf
 f32 func_jetpac_80027410(f32 arg0) {
     if (arg0 >= 0.0f) {
         return (s32)(arg0 + 0.5f);

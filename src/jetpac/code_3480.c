@@ -20,10 +20,10 @@ s32 func_jetpac_80027510(JetpacPickupStruct *arg0, f32 arg1, f32 arg2, f32 arg3,
         return FALSE;
     }
     if (arg5 == 0) {
-        var_f12 += arg0->primary_info.unk24.unk0;
-        var_f14 += arg0->primary_info.unk24.unk4;
+        var_f12 += arg0->primary_info.unk24.left;
+        var_f14 += arg0->primary_info.unk24.top;
     }
-    if ((arg0->primary_info.unk1C >= 2) && (func_jetpac_80027250(var_f12, var_f14, arg0->primary_info.posX + arg0->primary_info.unk24.unk8, arg0->primary_info.posY + arg0->primary_info.unk24.unkC, arg1, arg2, arg3, arg4) != 0)) {
+    if ((arg0->primary_info.unk1C >= 2) && (func_jetpac_80027250(var_f12, var_f14, arg0->primary_info.posX + arg0->primary_info.unk24.right, arg0->primary_info.posY + arg0->primary_info.unk24.bottom, arg1, arg2, arg3, arg4) != 0)) {
         return TRUE;
     }
     return FALSE;
@@ -75,7 +75,11 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
         }
         if (arg0->primary_info.unk38 == 0) {
             if ((arg0->primary_info.velY > 0.0f) && (ms->spatial_state.unk14 != 4)) {
-                temp_v0_2 = func_jetpac_80028CF8((f32) arg0->primary_info.unk24.unk0 + arg0->primary_info.posX + arg0->primary_info.velX, (f32) arg0->primary_info.unk24.unk4 + arg0->primary_info.posY + arg0->primary_info.velY, (f32) arg0->primary_info.unk24.unk8 + arg0->primary_info.posX + arg0->primary_info.velX, (f32) arg0->primary_info.unk24.unkC + arg0->primary_info.posY + arg0->primary_info.velY, 0);
+                temp_v0_2 = func_jetpac_80028CF8(
+                    (f32) arg0->primary_info.unk24.left + arg0->primary_info.posX + arg0->primary_info.velX,
+                    (f32) arg0->primary_info.unk24.top + arg0->primary_info.posY + arg0->primary_info.velY,
+                    (f32) arg0->primary_info.unk24.right + arg0->primary_info.posX + arg0->primary_info.velX,
+                    (f32) arg0->primary_info.unk24.bottom + arg0->primary_info.posY + arg0->primary_info.velY, 0);
                 if (temp_v0_2 >= 0) {
                     arg0->primary_info.posY = D_jetpac_8002EC30.unk350[temp_v0_2].unk4 - 16.0f;
                     arg0->primary_info.velY = 0.0f;
@@ -86,10 +90,10 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
 
             if (ms->spatial_state.unk14 == 3) {
                 if (func_jetpac_80027250(
-                    arg0->primary_info.posX + arg0->primary_info.unk24.unk0,
-                    arg0->primary_info.posY + arg0->primary_info.unk24.unk4,
-                    arg0->primary_info.posX + arg0->primary_info.unk24.unk8,
-                    arg0->primary_info.posY + arg0->primary_info.unk24.unkC,
+                    arg0->primary_info.posX + arg0->primary_info.unk24.left,
+                    arg0->primary_info.posY + arg0->primary_info.unk24.top,
+                    arg0->primary_info.posX + arg0->primary_info.unk24.right,
+                    arg0->primary_info.posY + arg0->primary_info.unk24.bottom,
                     ms->spatial_state.posX + ms->spatial_state.unk1C,
                     ms->spatial_state.posY + ms->spatial_state.unk20,
                     ms->spatial_state.posX + ms->spatial_state.unk24,
@@ -107,8 +111,8 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
             } else {
                 arg0->primary_info.posX =
                     ((ms->spatial_state.posX - (2 * ms->spatial_state.velX)) + ms->spatial_state.unk1C) +
-                    ((((ms->spatial_state.unk24 - ms->spatial_state.unk1C) - arg0->primary_info.unk24.unk8) + arg0->primary_info.unk24.unk0) * 0.5);
-                arg0->primary_info.posY = ((ms->spatial_state.posY - ms->spatial_state.velY) + ms->spatial_state.unk28) - arg0->primary_info.unk24.unkC;
+                    ((((ms->spatial_state.unk24 - ms->spatial_state.unk1C) - arg0->primary_info.unk24.right) + arg0->primary_info.unk24.left) * 0.5);
+                arg0->primary_info.posY = ((ms->spatial_state.posY - ms->spatial_state.velY) + ms->spatial_state.unk28) - arg0->primary_info.unk24.bottom;
                 if (func_jetpac_80027330(arg0->primary_info.posX) != 0) {
                     arg0->primary_info.posX = 168.0f;
                     arg0->primary_info.velY = 0.8f;
