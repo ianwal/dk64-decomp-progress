@@ -191,7 +191,7 @@ typedef struct {
     s16 unk3A;
 } Struct807F7500;
 
-extern Struct807F7500 D_global_asm_807F7500[];
+extern Struct807F7500 D_807F7500[];
 extern f32 D_global_asm_807F7ED0;
 extern f32 D_global_asm_807F7ED4;
 extern f32 D_global_asm_807F7ED8;
@@ -199,28 +199,28 @@ extern f32 D_global_asm_807F7EDC;
 extern f32 D_global_asm_807F7EE0;
 extern f32 D_global_asm_807F7EE4;
 
+/*
 // TODO: I think I messed up the order of the writes
 // Either that or it's doing some weird struct copy in one line?
 // Or... We get rid of temp_v0 (shudder)
 // Or... float tuples in the struct?
-/*
 void createLight(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA) {
     Struct807F7500 *temp_v0;
     s32 slot;
 
     if (D_global_asm_80748300 != 0x10) {
-        temp_v0 = &D_global_asm_807F7500[D_global_asm_80748300];
+        temp_v0 = &D_807F7500[D_global_asm_80748300];
         temp_v0->unk34 = D_global_asm_807F7EFE;
-        D_global_asm_807F7500[D_global_asm_80748300].unk3A = D_global_asm_807F7EF8;
-        D_global_asm_807F7500[D_global_asm_80748300].unk30 = D_global_asm_807F7EFA;
-        D_global_asm_807F7500[D_global_asm_80748300].unk32 = D_global_asm_807F7EFC;
-        D_global_asm_807F7500[D_global_asm_80748300].unk8 = D_global_asm_807F7EE8;
-        D_global_asm_807F7500[D_global_asm_80748300].unk0 = D_global_asm_807F7EE4;
-        D_global_asm_807F7500[D_global_asm_80748300].unk18 = arg0;
-        D_global_asm_807F7500[D_global_asm_80748300].unk1C = arg1;
-        D_global_asm_807F7500[D_global_asm_80748300].unkC = D_global_asm_807F7EDC;
-        D_global_asm_807F7500[D_global_asm_80748300].unk4 = D_global_asm_807F7ED8;
-        D_global_asm_807F7500[D_global_asm_80748300].unk39 = arg7;
+        D_807F7500[D_global_asm_80748300].unk3A = D_global_asm_807F7EF8;
+        D_807F7500[D_global_asm_80748300].unk30 = D_global_asm_807F7EFA;
+        D_807F7500[D_global_asm_80748300].unk32 = D_global_asm_807F7EFC;
+        D_807F7500[D_global_asm_80748300].unk8 = D_global_asm_807F7EE8;
+        D_807F7500[D_global_asm_80748300].unk0 = D_global_asm_807F7EE4;
+        D_807F7500[D_global_asm_80748300].unk18 = arg0;
+        D_807F7500[D_global_asm_80748300].unk1C = arg1;
+        D_807F7500[D_global_asm_80748300].unkC = D_global_asm_807F7EDC;
+        D_807F7500[D_global_asm_80748300].unk4 = D_global_asm_807F7ED8;
+        D_807F7500[D_global_asm_80748300].unk39 = arg7;
         D_global_asm_80748300++;
         temp_v0->unk10 = D_global_asm_807F7EE0;
         temp_v0->unk20 = arg2;

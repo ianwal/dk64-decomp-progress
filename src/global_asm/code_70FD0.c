@@ -1129,40 +1129,50 @@ u8 func_global_asm_80670FA4(Actor *arg0, s16 *arg1, s16 *arg2) {
     return var_s1;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_806710E0.s")
-
-/*
 extern s16 D_global_asm_807FB544;
-extern s8 D_global_asm_807FB546;
 extern s32 D_807FB5D0;
 
-void func_global_asm_806710E0(void *arg0, ? arg1, ? arg2, ? arg3) {
+typedef struct {
+    u8 unk0[0x48 - 0x0];
+    s16 unk48;
+} Struct806710E0_arg0;
+
+// TODO: Any cleanup possible? spt seems like a regalloc fluke
+void func_global_asm_806710E0(Struct806710E0_arg0 *arg0, s32 arg1, s32 arg2, s32 arg3) {
     s16 sp36;
     s32 sp30;
+    s32 spt;
     s32 sp28;
     s32 temp_at;
-    s32 temp_t7;
-    LedgeInfo *temp_v1;
-    LedgeInfo *temp_v1_2;
 
     sp36 = func_global_asm_806CC14C(arg0->unk48, D_global_asm_807FB544);
-    temp_at = func_global_asm_806CC14C((arg0->unk48 + 0x800) & 0xFFF, D_global_asm_807FB544) < 0x321;
-    if ((sp36 < 0x321) || (temp_at != 0)) {
+    temp_at = func_global_asm_806CC14C((arg0->unk48 + 0x800) & 0xFFF, D_global_asm_807FB544);
+    if ((sp36 < 0x321) || (temp_at < 0x321)) {
         func_global_asm_806CC14C(arg0->unk48, extra_player_info_pointer->unkEA);
         func_global_asm_806CC14C((arg0->unk48 + 0x800) & 0xFFF, extra_player_info_pointer->unkEA);
-        temp_v1 = D_global_asm_807FB540->ledge_info_pointer;
-        func_global_asm_806744A8(arg0, temp_v1->unk0, temp_v1->unk4, temp_v1->unk8, temp_v1->unkC);
-        temp_t7 = D_807FB5D0;
-        sp28 = temp_t7;
+        func_global_asm_806744A8(
+            arg0,
+            D_global_asm_807FB540->ledge_info_pointer->unk0,
+            D_global_asm_807FB540->ledge_info_pointer->unk4,
+            D_global_asm_807FB540->ledge_info_pointer->unk8,
+            D_global_asm_807FB540->ledge_info_pointer->unkC
+        );
+        sp28 = D_807FB5D0;
         sp30 = func_global_asm_80612794(D_global_asm_807FB544) * 20.0f;
-        temp_v1_2 = D_global_asm_807FB540->ledge_info_pointer;
-        func_global_asm_806744A8(arg0, temp_v1_2->unk0 + sp30, temp_v1_2->unk4, temp_v1_2->unk8 + (func_global_asm_80612790(D_global_asm_807FB544) * 20.0f), temp_v1_2->unkC);
-        if ((temp_t7 - 2) < D_807FB5D0) {
+        spt = func_global_asm_80612790(D_global_asm_807FB544) * 20.0f;
+        func_global_asm_806744A8(
+            arg0,
+            D_global_asm_807FB540->ledge_info_pointer->unk0 + sp30,
+            D_global_asm_807FB540->ledge_info_pointer->unk4,
+            D_global_asm_807FB540->ledge_info_pointer->unk8 + spt,
+            D_global_asm_807FB540->ledge_info_pointer->unkC
+        );
+        spt = D_807FB5D0;
+        if ((sp28 - 2) < spt) {
             D_global_asm_807FB546 = 0;
         }
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671260.s")
 
