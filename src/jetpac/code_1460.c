@@ -37,7 +37,7 @@ void func_jetpac_800254B8(uSprite* draw_sprite, s32 x, s32 y, rgba* hue, s32 arg
             var_v0->y = y;
             var_v0->unk8 = arg4;
             var_v0->draw_sprite = draw_sprite;
-            if ((temp_a0->hue.as_array[3] == 0) || ((temp_a0->hue.as_array[3] < 0xFF) && (func_jetpac_80027210() > 0.97 + 0.0))) {
+            if ((temp_a0->hue.as_array[3] == 0) || ((temp_a0->hue.as_array[3] < 0xFF) && (func_jetpac_80027210() > 0.97))) {
                 for (i = 0; i < 4; i++) {
                     temp_a0->hue.as_array[i] = hue->as_array[i];
                 }

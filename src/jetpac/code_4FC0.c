@@ -454,12 +454,13 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
                 arg0->unk0.spatial_state.unk1C.left + arg0->unk0.spatial_state.posX + arg0->unk0.spatial_state.velX,
                 arg0->unk0.spatial_state.unk1C.top + arg0->unk0.spatial_state.posY + arg0->unk0.spatial_state.velY,
                 arg0->unk0.spatial_state.unk1C.right + arg0->unk0.spatial_state.posX + arg0->unk0.spatial_state.velX,
-                arg0->unk0.spatial_state.unk1C.bottom + arg0->unk0.spatial_state.posY + arg0->unk0.spatial_state.velY, 1) >= 0) {
+                arg0->unk0.spatial_state.unk1C.bottom + arg0->unk0.spatial_state.posY + arg0->unk0.spatial_state.velY, 1) >= 0)
+            {
                 func_jetpac_800291AC(arg0);
             } else {
-                arg0->unk0.unk40--;
+                arg0->unk0.counter_limit--;
             }
-            if (arg0->unk0.unk40 == 0) {
+            if (arg0->unk0.counter_limit == 0) {
                 func_jetpac_800291AC(arg0);
             }
         }

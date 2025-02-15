@@ -2428,7 +2428,7 @@ typedef struct JetpacSpatialState {
 typedef struct JetpacStructSub0 {
     JetpacSpatialState spatial_state;
     Struct80025A60 unk30;
-    s32 unk40;
+    s32 counter_limit;
     s32 unk44;
 } JetpacStructSub0;
 

@@ -252,7 +252,7 @@ void func_jetpac_80025CB0(JetpacStructSub0* arg0) {
     f32 var_f0;
     f32 temp_f2;
     JetpacSpatialState* spatial_state = &arg0->spatial_state;
-    if ((spatial_state->unk14 == 3) && ((u32) arg0->unk40 < (u32) spatial_state->unk1C.counter)) {
+    if ((spatial_state->unk14 == 3) && ((u32) arg0->counter_limit < (u32) spatial_state->unk1C.counter)) {
         func_jetpac_80025CA0(spatial_state);
     }
     if ((spatial_state->unk14 == 4) && (spatial_state->unk1C.right == spatial_state->unk1C.left)) {
@@ -398,7 +398,7 @@ void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
         temp_v0->unk0.spatial_state.hue.alpha = 1;
         temp_v0->unk0.spatial_state.unk14 = 3;
         temp_v0->unk0.spatial_state.unk1C.counter = 0;
-        temp_v0->unk0.unk40 = (s32)(func_jetpac_80027210() * 8.0f) + 0xD;
+        temp_v0->unk0.counter_limit = (s32)(func_jetpac_80027210() * 8.0f) + 0xD;
         temp_v0->unk48.unk0 = func_jetpac_80025CB0;
         temp_v0->unk48.unk4 = 0;
         func_jetpac_80024E70(6);
