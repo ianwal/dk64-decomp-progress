@@ -82,11 +82,11 @@ int func_jetpac_80027330(f32 arg0) {
 }
 
 f32 func_jetpac_80027380(JetpacSpatialState *arg0) {
-    return (arg0->unk0 + arg0->unk1C) + ((f32)(arg0->unk24 - arg0->unk1C) * 0.5);
+    return (arg0->posX + arg0->unk1C) + ((f32)(arg0->unk24 - arg0->unk1C) * 0.5);
 }
 
 f32 func_jetpac_800273C8(JetpacSpatialState *arg0) {
-    return (arg0->unk4 + arg0->unk20) + ((f32)(arg0->unk28 - arg0->unk20) * 0.5);
+    return (arg0->posY + arg0->unk20) + ((f32)(arg0->unk28 - arg0->unk20) * 0.5);
 }
 
 //math.ceil?

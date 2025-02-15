@@ -90,10 +90,10 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
                     arg0->primary_info.posY + arg0->primary_info.unk24.unk4,
                     arg0->primary_info.posX + arg0->primary_info.unk24.unk8,
                     arg0->primary_info.posY + arg0->primary_info.unk24.unkC,
-                    ms->spatial_state.unk0 + ms->spatial_state.unk1C,
-                    ms->spatial_state.unk4 + ms->spatial_state.unk20,
-                    ms->spatial_state.unk0 + ms->spatial_state.unk24,
-                    ms->spatial_state.unk4 + ms->spatial_state.unk28)) {
+                    ms->spatial_state.posX + ms->spatial_state.unk1C,
+                    ms->spatial_state.posY + ms->spatial_state.unk20,
+                    ms->spatial_state.posX + ms->spatial_state.unk24,
+                    ms->spatial_state.posY + ms->spatial_state.unk28)) {
                     arg0->primary_info.unk38 = 1;
                     player->current_score += arg0->primary_info.point_bonus;
                     func_jetpac_80024E70(4);
@@ -106,9 +106,9 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
                 arg0->primary_info.velY = 0.8f;
             } else {
                 arg0->primary_info.posX =
-                    ((ms->spatial_state.unk0 - (2 * ms->spatial_state.unk8)) + ms->spatial_state.unk1C) +
+                    ((ms->spatial_state.posX - (2 * ms->spatial_state.velX)) + ms->spatial_state.unk1C) +
                     ((((ms->spatial_state.unk24 - ms->spatial_state.unk1C) - arg0->primary_info.unk24.unk8) + arg0->primary_info.unk24.unk0) * 0.5);
-                arg0->primary_info.posY = ((ms->spatial_state.unk4 - ms->spatial_state.unkC) + ms->spatial_state.unk28) - arg0->primary_info.unk24.unkC;
+                arg0->primary_info.posY = ((ms->spatial_state.posY - ms->spatial_state.velY) + ms->spatial_state.unk28) - arg0->primary_info.unk24.unkC;
                 if (func_jetpac_80027330(arg0->primary_info.posX) != 0) {
                     arg0->primary_info.posX = 168.0f;
                     arg0->primary_info.velY = 0.8f;

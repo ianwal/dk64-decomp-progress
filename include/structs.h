@@ -2406,11 +2406,11 @@ typedef struct {
 } Struct80025A60;
 
 typedef struct JetpacSpatialState {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    rgba unk10;
+    f32 posX;
+    f32 posY;
+    f32 velX;
+    f32 velY;
+    rgba hue;
     s32 unk14;
     s32 unk18;
     s32 unk1C;
