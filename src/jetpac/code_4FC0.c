@@ -1,24 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-typedef struct {
-    // Enemy Struct?
-    u8 unk0[4];
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    u8 unk10[0x18-0x10];
-    s32 unk18;
-    u8 unk1C[0x28-0x1C];
-    s32 unk28;
-    s32 unk2C;
-    u8 unk30[0x40-0x30];
-    u32 unk40;
-    s32 unk44;
-    void* unk48;
-    void* unk4C;
-} struct_jetpac_80029640;
-
 typedef struct JetpacStruct9 {
     u8 pad0[0x18];
 } JetpacStruct9;
@@ -53,7 +35,7 @@ extern u8 D_jetpac_80045BE3;
 
 void func_jetpac_80025700(uSprite*, s32, s32, rgba*, s32);
 void func_jetpac_80025A60(void*);
-void func_jetpac_80029640(struct_jetpac_80029640*, f32, f32);
+void func_jetpac_80029640(JetpacStruct*, f32, f32);
 void func_jetpac_80029B90(JetpacStruct *);
 f32 func_jetpac_80027380(JetpacSpatialState *);
 f32 func_jetpac_800273C8(JetpacStruct *);
@@ -223,7 +205,7 @@ void func_jetpac_800294EC(JetpacStruct *arg0, s32 arg1) {
     }
 }
 
-void func_jetpac_80029640(struct_jetpac_80029640 *arg0, f32 arg1, f32 arg2) {
+void func_jetpac_80029640(JetpacStruct *arg0, f32 arg1, f32 arg2) {
     JetpacStruct *var_v0;
     s32 var_a1;
     s32 var_a2;
@@ -233,13 +215,13 @@ void func_jetpac_80029640(struct_jetpac_80029640 *arg0, f32 arg1, f32 arg2) {
     // TODO: Why? Any way to avoid this?
     var_a1 = 0;var_a2 = 0;
 
-    arg0->unk44 = 25;
-    if (arg0->unk4 < 88.0f) {
-        arg0->unk8 = arg1;
-        arg0->unk18 = 0;
+    arg0->unk0.score_value = 25;
+    if (arg0->unk0.spatial_state.posY < 88.0f) {
+        arg0->unk0.spatial_state.velX = arg1;
+        arg0->unk0.spatial_state.is_facing_left = 0;
     } else {
-        arg0->unk8 = -arg1;
-        arg0->unk18 = 1;
+        arg0->unk0.spatial_state.velX = -arg1;
+        arg0->unk0.spatial_state.is_facing_left = 1;
     }
     var_v0 = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
@@ -253,16 +235,16 @@ void func_jetpac_80029640(struct_jetpac_80029640 *arg0, f32 arg1, f32 arg2) {
         var_v0++;
     }
     if (var_a1 == 3) {
-        arg0->unkC = arg2;
+        arg0->unk0.spatial_state.velY = arg2;
     } else {
         if (var_a2 == 3) {
-            arg0->unkC = 0.0f;
+            arg0->unk0.spatial_state.velY = 0.0f;
         } else {
             rng = func_jetpac_80027210() * 2;
             if (rng % 2) {
-                arg0->unkC = 0.0f;
+                arg0->unk0.spatial_state.velY = 0.0f;
             } else {
-                arg0->unkC = arg2;
+                arg0->unk0.spatial_state.velY = arg2;
             }
         }
     }
@@ -294,10 +276,10 @@ void func_jetpac_8002976C(JetpacStruct *arg0) {
     }
 }
 
-void func_jetpac_80029884(struct_jetpac_80029640 *arg0) {
-    arg0->unk28 = 0xB;
+void func_jetpac_80029884(JetpacStruct *arg0) {
+    arg0->unk0.spatial_state.unk1C.bottom = 0xB;
     func_jetpac_80029640(arg0, 1.6f, 0.5f);
-    arg0->unk48 = func_jetpac_800298C8;
+    arg0->unk48.unk0 = func_jetpac_800298C8;
 }
 
 void func_jetpac_800298C8(JetpacStruct *arg0) {
@@ -426,24 +408,24 @@ void func_jetpac_80029C1C(JetpacStruct *arg0) {
     }
 }
 
-void func_jetpac_80029E0C(struct_jetpac_80029640 *arg0) {
-    arg0->unk48 = func_jetpac_80029F7C;
-    arg0->unk44 = 0x37;
-    arg0->unk2C = (func_jetpac_80027210() * 60.0f) + 10.0f;
-    arg0->unk40 = (func_jetpac_80027210() * 180.0f) + 10.0f;
-    arg0->unk28 = 8;
-    if (arg0->unk4 < 88.0f) {
-        arg0->unk18 = 0;
+void func_jetpac_80029E0C(JetpacStruct *arg0) {
+    arg0->unk48.unk0 = func_jetpac_80029F7C;
+    arg0->unk0.score_value = 55;
+    arg0->unk0.spatial_state.unk1C.counter = (func_jetpac_80027210() * 60.0f) + 10.0f;
+    arg0->unk0.counter_limit = (func_jetpac_80027210() * 180.0f) + 10.0f;
+    arg0->unk0.spatial_state.unk1C.bottom = 8;
+    if (arg0->unk0.spatial_state.posY < 88.0f) {
+        arg0->unk0.spatial_state.is_facing_left = 0;
     } else {
-        arg0->unk18 = 1;
+        arg0->unk0.spatial_state.is_facing_left = 1;
     }
-    arg0->unk8 = 0.0f;
+    arg0->unk0.spatial_state.velX = 0.0f;
     if (D_jetpac_8002BA6C) {
-        arg0->unkC = -0.8f;
+        arg0->unk0.spatial_state.velY = -0.8f;
     } else {
-        arg0->unkC = 0.8f;
+        arg0->unk0.spatial_state.velY = 0.8f;
     }
-    arg0->unk4C = &D_jetpac_8002E878;
+    arg0->unk48.unk4 = &D_jetpac_8002E878;
 }
 
 void func_jetpac_80029F7C(JetpacStruct* arg0) {
@@ -675,11 +657,11 @@ void func_jetpac_8002A758(JetpacStruct* arg0) {
     }
 }
 
-void func_jetpac_8002A8F0(struct_jetpac_80029640 *arg0) {
-    arg0->unk28 = 0xE;
-    arg0->unk4C = &D_jetpac_8002E8C0;
+void func_jetpac_8002A8F0(JetpacStruct *arg0) {
+    arg0->unk0.spatial_state.unk1C.bottom = 0xE;
+    arg0->unk48.unk4 = &D_jetpac_8002E8C0;
     func_jetpac_80029640(arg0, 1.2f, 0.3f);
-    arg0->unk48 = func_jetpac_8002976C;
+    arg0->unk48.unk0 = func_jetpac_8002976C;
 }
 
 void func_jetpac_8002A944(JetpacStruct *arg0) {

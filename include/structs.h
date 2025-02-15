@@ -2407,29 +2407,29 @@ typedef struct {
 
 // These bounds are in "local space", but for static objects they seem to be absolute
 typedef struct JetpacSpawningInfoSub {
-    s32 left;
-    s32 top;
-    s32 right;
-    s32 bottom;
-    s32 counter;
+    s32 left; // 0x1C
+    s32 top; // 0x20
+    s32 right; // 0x24
+    s32 bottom; // 0x28
+    s32 counter; // 0x2C
 } JetpacSpawningInfoSub;
 
 typedef struct JetpacSpatialState {
-    f32 posX;
-    f32 posY;
-    f32 velX;
-    f32 velY;
-    rgba hue;
-    s32 unk14;
-    s32 is_facing_left;
+    f32 posX; // 0x0
+    f32 posY; // 0x4
+    f32 velX; // 0x8
+    f32 velY; // 0xC
+    rgba hue; // 0x10
+    s32 unk14; // 0x14
+    s32 is_facing_left; // 0x18
     JetpacSpawningInfoSub unk1C;
 } JetpacSpatialState;
 
 typedef struct JetpacStructSub0 {
     JetpacSpatialState spatial_state;
     Struct80025A60 unk30;
-    s32 counter_limit;
-    s32 score_value;
+    u32 counter_limit; // 0x40
+    s32 score_value; // 0x44
 } JetpacStructSub0;
 
 typedef struct JetpacStructSub1 {
@@ -2461,8 +2461,6 @@ typedef struct {
     s32 unk34;
     s32 unk38;
     Struct80025A60 unk3C;
-    // End TODO
-
     JetpacStruct lasers[4];
 } MetaJetpacStruct3;
 
