@@ -784,7 +784,7 @@ typedef enum music_e {
     MUSIC_171_WRINKLY_KONG,
     MUSIC_172_100TH_CB_GET,
     MUSIC_173_K_ROOLS_DEFEAT,
-    MUSIC_174_NINTENDO_LOGO,
+    MUSIC_174_NINTENDO_LOGO
 } MUSIC_E;
 
 typedef enum flagtype_e {
@@ -1102,7 +1102,7 @@ typedef enum permflag_e {
     PERMFLAG_CAPTION_AZTEC = 0x313,
     //
     PERMFLAG_PROGRESS_HAS_QUIT_GAME = 0x314,
-    PERMFLAG_PROGRESS_K_LUMSY_FREE = 0x315,
+    PERMFLAG_PROGRESS_K_LUMSY_FREE = 0x315
 } permflag_e;
 
 typedef enum tempflag_e {
@@ -1141,7 +1141,7 @@ typedef enum tempflag_e {
     TEMPFLAG_GALLEON_PUFFTOSS_INTRO = 0x6B,
     TEMPFLAG_CASTLE_KUTOUT_INTRO = 0x6C,
     TEMPFLAG_CAVES_DILLO_INTRO = 0x6D,
-    TEMPFLAG_PLAYER_STUCK_CUTSCENE = 0x6E,
+    TEMPFLAG_PLAYER_STUCK_CUTSCENE = 0x6E
 } tempflag_e;
 
 typedef enum globalflag_e {
@@ -1185,7 +1185,7 @@ typedef enum globalflag_e {
     GLOBALFLAG_DEBUG_KLUMSY_1 = 0x26,
     GLOBALFLAG_DEBUG_KLUMSY_2 = 0x28,
     GLOBALFLAG_ENDING_KLUMSY = 0x2A,
-    GLOBALFLAG_ENDING_BLOOPERS = 0x2B,
+    GLOBALFLAG_ENDING_BLOOPERS = 0x2B
 } globalflag_e;
 
 typedef union flag_e {
