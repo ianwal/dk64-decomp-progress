@@ -233,7 +233,7 @@ void func_jetpac_80029640(struct_jetpac_80029640 *arg0, f32 arg1, f32 arg2) {
     // TODO: Why? Any way to avoid this?
     var_a1 = 0;var_a2 = 0;
 
-    arg0->unk44 = 0x19;
+    arg0->unk44 = 25;
     if (arg0->unk4 < 88.0f) {
         arg0->unk8 = arg1;
         arg0->unk18 = 0;
@@ -307,7 +307,7 @@ void func_jetpac_800298C8(JetpacStruct *arg0) {
 
 void func_jetpac_8002992C(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_8002998C;
-    arg0->unk0.unk44 = 0x50;
+    arg0->unk0.score_value = 80;
     if (arg0->unk0.spatial_state.posY < 88.0f) {
         arg0->unk0.spatial_state.velX = -1.2f;
     } else {
@@ -352,7 +352,7 @@ void func_jetpac_8002998C(JetpacStruct *arg0) {
 
 void func_jetpac_80029AF8(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_80029C1C;
-    arg0->unk0.unk44 = 0x28;
+    arg0->unk0.score_value = 40;
     if (arg0->unk0.spatial_state.posY < 88.0f) {
         arg0->unk0.spatial_state.velX = -1.2f;
     } else {
@@ -473,7 +473,7 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
         }
         if (arg0->unk0.spatial_state.unk14 == 4) {
             Competitor* competitor = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-            competitor->current_score += arg0->unk0.unk44;
+            competitor->current_score += arg0->unk0.score_value;
             break;
         }
         if (arg0->unk0.spatial_state.unk1C.counter != 0) {
@@ -515,7 +515,7 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
 
 void func_jetpac_8002A254(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_8002A530;
-    arg0->unk0.unk44 = 0x32;
+    arg0->unk0.score_value = 50;
     if (arg0->unk0.spatial_state.posY < 88.0f) {
         arg0->unk0.spatial_state.is_facing_left = 0;
     } else {
@@ -625,7 +625,7 @@ void func_jetpac_8002A67C(JetpacStruct *arg0) {
 
 void func_jetpac_8002A6C0(JetpacStruct *arg0) {
     arg0->unk48.unk0 = func_jetpac_8002A758;
-    arg0->unk0.unk44 = 0x3C;
+    arg0->unk0.score_value = 60;
     arg0->unk0.spatial_state.unk1C.counter = (s32) (func_jetpac_80027210() * 16.0f);
     if (arg0->unk0.spatial_state.posY < 88.0f) {
         arg0->unk0.spatial_state.velX = -1.2f;
@@ -699,7 +699,7 @@ s32 func_jetpac_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
             if (func_jetpac_80027250(arg0, arg1, arg2, arg3, var_s0->unk0.spatial_state.posX + var_s0->unk0.spatial_state.unk1C.left, var_s0->unk0.spatial_state.posY + var_s0->unk0.spatial_state.unk1C.top, var_s0->unk0.spatial_state.posX + var_s0->unk0.spatial_state.unk1C.right, var_s0->unk0.spatial_state.posY + var_s0->unk0.spatial_state.unk1C.bottom) != 0) {
                 player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
                 func_jetpac_800291AC(var_s0);
-                player->current_score += var_s0->unk0.unk44;
+                player->current_score += var_s0->unk0.score_value;
                 return TRUE;
             }
         }
