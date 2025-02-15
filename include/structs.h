@@ -2422,11 +2422,7 @@ typedef struct JetpacSpatialState {
     rgba hue;
     s32 unk14;
     s32 is_facing_left;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
+    JetpacSpawningInfoSub unk1C;
 } JetpacSpatialState;
 
 typedef struct JetpacStructSub0 {

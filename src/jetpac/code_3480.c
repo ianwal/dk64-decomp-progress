@@ -94,10 +94,10 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
                     arg0->primary_info.posY + arg0->primary_info.unk24.top,
                     arg0->primary_info.posX + arg0->primary_info.unk24.right,
                     arg0->primary_info.posY + arg0->primary_info.unk24.bottom,
-                    ms->spatial_state.posX + ms->spatial_state.unk1C,
-                    ms->spatial_state.posY + ms->spatial_state.unk20,
-                    ms->spatial_state.posX + ms->spatial_state.unk24,
-                    ms->spatial_state.posY + ms->spatial_state.unk28)) {
+                    ms->spatial_state.posX + ms->spatial_state.unk1C.left,
+                    ms->spatial_state.posY + ms->spatial_state.unk1C.top,
+                    ms->spatial_state.posX + ms->spatial_state.unk1C.right,
+                    ms->spatial_state.posY + ms->spatial_state.unk1C.bottom)) {
                     arg0->primary_info.unk38 = 1;
                     player->current_score += arg0->primary_info.point_bonus;
                     func_jetpac_80024E70(4);
@@ -110,9 +110,9 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
                 arg0->primary_info.velY = 0.8f;
             } else {
                 arg0->primary_info.posX =
-                    ((ms->spatial_state.posX - (2 * ms->spatial_state.velX)) + ms->spatial_state.unk1C) +
-                    ((((ms->spatial_state.unk24 - ms->spatial_state.unk1C) - arg0->primary_info.unk24.right) + arg0->primary_info.unk24.left) * 0.5);
-                arg0->primary_info.posY = ((ms->spatial_state.posY - ms->spatial_state.velY) + ms->spatial_state.unk28) - arg0->primary_info.unk24.bottom;
+                    ((ms->spatial_state.posX - (2 * ms->spatial_state.velX)) + ms->spatial_state.unk1C.left) +
+                    ((((ms->spatial_state.unk1C.right - ms->spatial_state.unk1C.left) - arg0->primary_info.unk24.right) + arg0->primary_info.unk24.left) * 0.5);
+                arg0->primary_info.posY = ((ms->spatial_state.posY - ms->spatial_state.velY) + ms->spatial_state.unk1C.bottom) - arg0->primary_info.unk24.bottom;
                 if (func_jetpac_80027330(arg0->primary_info.posX) != 0) {
                     arg0->primary_info.posX = 168.0f;
                     arg0->primary_info.velY = 0.8f;
@@ -560,10 +560,10 @@ void func_jetpac_80028BD0(JetpacGroundPlatform *ground_platform, s32 posX, s32 p
     ground_platform->spatial_state.hue.green = green;
     ground_platform->spatial_state.hue.blue = blue;
     ground_platform->spatial_state.hue.alpha = 0xFF;
-    ground_platform->spatial_state.unk20 = posY;
-    ground_platform->spatial_state.unk1C = posX;
+    ground_platform->spatial_state.unk1C.top = posY;
+    ground_platform->spatial_state.unk1C.left = posX;
     // TODO: Why does this need to be on the same line? Just ido being shite?
-    ground_platform->spatial_state.unk24 = width * 8 + posX + 0x10; ground_platform->spatial_state.unk28 = posY + 0xC;
+    ground_platform->spatial_state.unk1C.right = width * 8 + posX + 0x10; ground_platform->spatial_state.unk1C.bottom = posY + 0xC;
 }
 
 
@@ -584,11 +584,11 @@ s32 func_jetpac_80028CF8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
 
     var_s0 = &D_jetpac_8002EF80[0];
     for (i = 0; i < 4; i++) {
-        var_f0 = var_s0->spatial_state.unk28;
+        var_f0 = var_s0->spatial_state.unk1C.bottom;
         if (arg4 == 0) {
             var_f0 -= 4.0f;
         }
-        if (func_jetpac_80027250(arg0, arg1, arg2, arg3, var_s0->spatial_state.unk1C, var_s0->spatial_state.unk20, var_s0->spatial_state.unk24, var_f0)) {
+        if (func_jetpac_80027250(arg0, arg1, arg2, arg3, var_s0->spatial_state.unk1C.left, var_s0->spatial_state.unk1C.top, var_s0->spatial_state.unk1C.right, var_f0)) {
             return i;
         }
         var_s0++;
