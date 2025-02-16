@@ -2540,7 +2540,7 @@ typedef struct JetpacPlayerStruct {
     s32 player_index;
     s32 unk348;
     s32 unk34C;
-    JetpacPlayerSub36C unk350[4];
+    JetpacPlayerSub36C platforms[4];
     f32 unk420;
     f32 unk424;
     f32 unk428;

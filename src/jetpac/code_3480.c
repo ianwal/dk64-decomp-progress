@@ -81,7 +81,7 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
                     (f32) arg0->primary_info.unk24.right + arg0->primary_info.posX + arg0->primary_info.velX,
                     (f32) arg0->primary_info.unk24.bottom + arg0->primary_info.posY + arg0->primary_info.velY, 0);
                 if (temp_v0_2 >= 0) {
-                    arg0->primary_info.posY = D_jetpac_8002EC30.unk350[temp_v0_2].unk4 - 16.0f;
+                    arg0->primary_info.posY = D_jetpac_8002EC30.platforms[temp_v0_2].unk4 - 16.0f;
                     arg0->primary_info.velY = 0.0f;
                 } else {
                     arg0->primary_info.posY = arg0->primary_info.posY + arg0->primary_info.velY;
@@ -251,7 +251,7 @@ void func_jetpac_80027EC0(JetpacPickupStruct *arg0) {
                 arg0->unk30 + arg0->posY + temp_f18,
                 0);
             if (temp_v0_2 >= 0) {
-                arg0->posY = D_jetpac_8002EC30.unk350[temp_v0_2].unk4 - 16.0f;
+                arg0->posY = D_jetpac_8002EC30.platforms[temp_v0_2].unk4 - 16.0f;
                 arg0->velY = 0.0f;
             } else {
                 arg0->posY += arg0->velY;
@@ -566,15 +566,11 @@ void func_jetpac_80028BD0(JetpacGroundPlatform *ground_platform, s32 posX, s32 p
     ground_platform->spatial_state.unk1C.right = width * 8 + posX + 0x10; ground_platform->spatial_state.unk1C.bottom = posY + 0xC;
 }
 
-
-// Ground platforms
-extern JetpacGroundPlatform D_jetpac_8002EF80[4];
-
 void func_jetpac_80028C3C(void) {
-    func_jetpac_80028BD0(&D_jetpac_8002EF80[0], 0xC0, 0x30, 4, 0, 0xBE, 0);
-    func_jetpac_80028BD0(&D_jetpac_8002EF80[1], 0x20, 0x48, 4, 0, 0xBE, 0);
-    func_jetpac_80028BD0(&D_jetpac_8002EF80[2], 0x78, 0x60, 2, 0, 0xBE, 0);
-    func_jetpac_80028BD0(&D_jetpac_8002EF80[3], 0, 0xB8, 0x1E, 0xBE, 0xBE, 0);
+    func_jetpac_80028BD0(&D_jetpac_8002EC30.platforms[0], 0xC0, 0x30, 4, 0, 0xBE, 0);
+    func_jetpac_80028BD0(&D_jetpac_8002EC30.platforms[1], 0x20, 0x48, 4, 0, 0xBE, 0);
+    func_jetpac_80028BD0(&D_jetpac_8002EC30.platforms[2], 0x78, 0x60, 2, 0, 0xBE, 0);
+    func_jetpac_80028BD0(&D_jetpac_8002EC30.platforms[3], 0, 0xB8, 0x1E, 0xBE, 0xBE, 0);
 }
 
 s32 func_jetpac_80028CF8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
@@ -582,7 +578,7 @@ s32 func_jetpac_80028CF8(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     s32 i;
     JetpacGroundPlatform *var_s0;
 
-    var_s0 = &D_jetpac_8002EF80[0];
+    var_s0 = &D_jetpac_8002EC30.platforms[0];
     for (i = 0; i < 4; i++) {
         var_f0 = var_s0->spatial_state.unk1C.bottom;
         if (arg4 == 0) {
@@ -600,7 +596,7 @@ s32 func_jetpac_80028E04(s32 arg0, s32 arg1, s32 arg2) {
     s32 temp_v1;
     JetpacPlayerSub36C *temp_v0;
 
-    temp_v0 = &D_jetpac_8002EC30.unk350[arg0];
+    temp_v0 = &D_jetpac_8002EC30.platforms[arg0];
     if (arg1 < temp_v0->unk1C) {
         if (arg2 < temp_v0->unk1C) {
             return -2;
@@ -630,7 +626,7 @@ void func_jetpac_80028E88(void) {
     
     for (i = 0; i < 4; i++)
     {
-        sub = &D_jetpac_8002EC30.unk350[i];
+        sub = &D_jetpac_8002EC30.platforms[i];
         x = sub->unk0;
         y = sub->unk4;
         func_jetpac_80025700(&D_jetpac_8002DE68, x, y, &sub->unk10, 0);

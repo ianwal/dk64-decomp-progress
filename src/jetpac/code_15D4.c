@@ -489,16 +489,16 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
             arg0->spatial_state.unk1C.right + arg0->spatial_state.posX + arg0->spatial_state.velX,
             arg0->spatial_state.unk1C.bottom + arg0->spatial_state.posY + arg0->spatial_state.velY, 1);
         if (other_index >= 0) {
-            if (D_jetpac_8002EC30.unk350[other_index].unk28 <= arg0->spatial_state.unk1C.top + arg0->spatial_state.posY) {
+            if (D_jetpac_8002EC30.platforms[other_index].unk28 <= arg0->spatial_state.unk1C.top + arg0->spatial_state.posY) {
                 arg0->spatial_state.velY *= -0.4f;
                 if (ABS(arg0->spatial_state.velY) <= 0.15f) {
                     arg0->spatial_state.velY = 0.0f;
                 }
-            } else if ((arg0->spatial_state.unk1C.bottom + arg0->spatial_state.posY) <= D_jetpac_8002EC30.unk350[other_index].unk20) {
+            } else if ((arg0->spatial_state.unk1C.bottom + arg0->spatial_state.posY) <= D_jetpac_8002EC30.platforms[other_index].unk20) {
                 arg0->unk34 = other_index;
                 arg0->spatial_state.velY = 0.0f;
                 func_jetpac_80025BB8(arg0, 0);
-                arg0->spatial_state.posY = D_jetpac_8002EC30.unk350[other_index].unk4 - 24.0f;
+                arg0->spatial_state.posY = D_jetpac_8002EC30.platforms[other_index].unk4 - 24.0f;
             } else {
                 arg0->spatial_state.velX *= -0.5f;
             }
