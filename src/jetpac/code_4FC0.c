@@ -46,7 +46,7 @@ JetpacStruct *func_jetpac_80028FC0(void) {
     s32 i;
     JetpacStruct *temp = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
-        if (temp->unk0.spatial_state.unk14 == 0) {
+        if (temp->unk0.spatial_state.entity_state == JETPAC_ENTITY_STATE_DEAD) {
             return temp;
         }
         temp++;
@@ -98,7 +98,7 @@ s32 func_jetpac_80029064(JetpacStruct* arg0) {
             p7);
     }
     if (var_v1 != 0) {
-        ms->spatial_state.unk14 = 4;
+        ms->spatial_state.entity_state = JETPAC_ENTITY_STATE_DYING;
         ms->spatial_state.unk1C.counter = 0;
         func_jetpac_80027010(ms, arg0);
         func_jetpac_800291AC(arg0);
@@ -107,7 +107,7 @@ s32 func_jetpac_80029064(JetpacStruct* arg0) {
 }
 
 void func_jetpac_800291AC(JetpacStruct *arg0) {
-    arg0->unk0.spatial_state.unk14 = 4;
+    arg0->unk0.spatial_state.entity_state = JETPAC_ENTITY_STATE_DYING;
     arg0->unk0.spatial_state.unk1C.counter = 0;
     arg0->unk0.explosion_sprite.frame_counter = 0;
     arg0->unk0.explosion_sprite.posX = (s32)arg0->unk0.spatial_state.posX & 0xFFF8;
@@ -116,11 +116,11 @@ void func_jetpac_800291AC(JetpacStruct *arg0) {
 }
 
 void func_jetpac_80029204(JetpacStruct *arg0) {
-    if (arg0->unk0.spatial_state.unk14 == 3) {
+    if (arg0->unk0.spatial_state.entity_state == JETPAC_ENTITY_STATE_ACTIVE) {
         func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.spatial_state.posX, arg0->unk0.spatial_state.posY, &arg0->unk0.spatial_state.color, arg0->unk0.spatial_state.is_facing_left);
         return;
     }
-    if (arg0->unk0.spatial_state.unk14 == 4) {
+    if (arg0->unk0.spatial_state.entity_state == JETPAC_ENTITY_STATE_DYING) {
         func_jetpac_80025A60(&arg0->unk0.explosion_sprite);
         if (arg0->unk0.explosion_sprite.frame_counter < 7) {
             func_jetpac_80025700(arg0->unk48.unk4, arg0->unk0.spatial_state.posX, arg0->unk0.spatial_state.posY, &arg0->unk0.spatial_state.color, arg0->unk0.spatial_state.is_facing_left);
@@ -180,7 +180,7 @@ void func_jetpac_80029450(void) {
     if (temp_v0) {
         sp18 = temp_v0;
         sp1C(temp_v0);
-        sp18->unk0.spatial_state.unk14 = 3;
+        sp18->unk0.spatial_state.entity_state = JETPAC_ENTITY_STATE_ACTIVE;
     }
 }
 
@@ -225,7 +225,7 @@ void func_jetpac_80029640(JetpacStruct *arg0, f32 arg1, f32 arg2) {
     }
     var_v0 = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
-        if (var_v0->unk0.spatial_state.unk14 > 0) {
+        if (var_v0->unk0.spatial_state.entity_state > JETPAC_ENTITY_STATE_DEAD) {
             if (var_v0->unk0.spatial_state.velY == 0.0f) {
                 var_a1++;
             } else {
@@ -251,8 +251,8 @@ void func_jetpac_80029640(JetpacStruct *arg0, f32 arg1, f32 arg2) {
 }
 
 void func_jetpac_8002976C(JetpacStruct *arg0) {
-    switch (arg0->unk0.spatial_state.unk14) {
-        case 3:
+    switch (arg0->unk0.spatial_state.entity_state) {
+        case JETPAC_ENTITY_STATE_ACTIVE:
             if (func_jetpac_80028CF8(
                 arg0->unk0.spatial_state.unk1C.left + arg0->unk0.spatial_state.posX + arg0->unk0.spatial_state.velX,
                 arg0->unk0.spatial_state.unk1C.top + arg0->unk0.spatial_state.posY + arg0->unk0.spatial_state.velY,
@@ -267,10 +267,10 @@ void func_jetpac_8002976C(JetpacStruct *arg0) {
                 return;
             }
             return;
-        case 4:
+        case JETPAC_ENTITY_STATE_DYING:
             arg0->unk0.spatial_state.unk1C.counter++;
             if (arg0->unk0.spatial_state.unk1C.counter >= 0xF) {
-                arg0->unk0.spatial_state.unk14 = 0;
+                arg0->unk0.spatial_state.entity_state = JETPAC_ENTITY_STATE_DEAD;
             }
             break;
     }
@@ -302,7 +302,7 @@ void func_jetpac_8002992C(JetpacStruct *arg0) {
 void func_jetpac_8002998C(JetpacStruct *arg0) {
     s32 temp_v0_2;
 
-    switch (arg0->unk0.spatial_state.unk14) {                              
+    switch (arg0->unk0.spatial_state.entity_state) {                              
         case 3:
             temp_v0_2 = func_jetpac_80028CF8(
                         arg0->unk0.spatial_state.unk1C.left + arg0->unk0.spatial_state.posX + arg0->unk0.spatial_state.velX,
@@ -326,7 +326,7 @@ void func_jetpac_8002998C(JetpacStruct *arg0) {
         case 4:
             arg0->unk0.spatial_state.unk1C.counter++;
             if (arg0->unk0.spatial_state.unk1C.counter >= 0xF) {
-                arg0->unk0.spatial_state.unk14 = 0;
+                arg0->unk0.spatial_state.entity_state = JETPAC_ENTITY_STATE_DEAD;
             }
             break;
     }
@@ -370,7 +370,7 @@ extern Struct8002E848 D_jetpac_8002E848[];
 void func_jetpac_80029C1C(JetpacStruct *arg0) {
     s32 temp_v0_2;
 
-    switch (arg0->unk0.spatial_state.unk14) {
+    switch (arg0->unk0.spatial_state.entity_state) {
         case 3:
             arg0->unk0.spatial_state.unk1C.counter--;
             if (arg0->unk0.spatial_state.unk1C.counter == 0) {
@@ -402,7 +402,7 @@ void func_jetpac_80029C1C(JetpacStruct *arg0) {
         case 4:
             arg0->unk0.spatial_state.unk1C.counter++;
             if (arg0->unk0.spatial_state.unk1C.counter >= 0xF) {
-                arg0->unk0.spatial_state.unk14 = 0;
+                arg0->unk0.spatial_state.entity_state = JETPAC_ENTITY_STATE_DEAD;
             }
             break;
     }
@@ -430,7 +430,7 @@ void func_jetpac_80029E0C(JetpacStruct *arg0) {
 
 void func_jetpac_80029F7C(JetpacStruct* arg0) {
     MetaJetpacStruct3* ms = &D_jetpac_8002F050;
-    switch (arg0->unk0.spatial_state.unk14) {
+    switch (arg0->unk0.spatial_state.entity_state) {
     case 3:
         if (arg0->unk0.spatial_state.unk1C.counter == 0) {
             if (func_jetpac_80028CF8(
@@ -451,10 +451,10 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
             func_jetpac_800291AC(arg0);
         }
 
-        if (arg0->unk0.spatial_state.unk14 == 3) {
+        if (arg0->unk0.spatial_state.entity_state == JETPAC_ENTITY_STATE_ACTIVE) {
             func_jetpac_80029064(arg0);
         }
-        if (arg0->unk0.spatial_state.unk14 == 4) {
+        if (arg0->unk0.spatial_state.entity_state == JETPAC_ENTITY_STATE_DYING) {
             Competitor* competitor = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
             competitor->current_score += arg0->unk0.score_value;
             break;
@@ -490,7 +490,7 @@ void func_jetpac_80029F7C(JetpacStruct* arg0) {
     case 4:
         arg0->unk0.spatial_state.unk1C.counter++;
         if (arg0->unk0.spatial_state.unk1C.counter >= 0xF) {
-            arg0->unk0.spatial_state.unk14 = 0;
+            arg0->unk0.spatial_state.entity_state = JETPAC_ENTITY_STATE_DEAD;
         }
         break;
     }
@@ -569,7 +569,7 @@ void func_jetpac_8002A374(JetpacStruct *arg0) {
 void func_jetpac_8002A530(JetpacStruct *arg0) {
     s32 temp_v0_2;
 
-    switch (arg0->unk0.spatial_state.unk14) {
+    switch (arg0->unk0.spatial_state.entity_state) {
         case 3:
             func_jetpac_8002A374(arg0);
             temp_v0_2 = func_jetpac_80028CF8(
@@ -594,7 +594,7 @@ void func_jetpac_8002A530(JetpacStruct *arg0) {
         case 4:
             arg0->unk0.spatial_state.unk1C.counter++;
             if (arg0->unk0.spatial_state.unk1C.counter >= 0xF) {
-                arg0->unk0.spatial_state.unk14 = 0;
+                arg0->unk0.spatial_state.entity_state = JETPAC_ENTITY_STATE_DEAD;
             }
             break;
     }
@@ -625,7 +625,7 @@ void func_jetpac_8002A758(JetpacStruct* arg0) {
     f32 newUnkC;
     f32 oldUnkC;
     s32 returnValue;
-    switch (arg0->unk0.spatial_state.unk14) {
+    switch (arg0->unk0.spatial_state.entity_state) {
     case 3:
         arg0->unk0.spatial_state.velY += 0.005;
         oldUnkC = arg0->unk0.spatial_state.velY;
@@ -654,7 +654,7 @@ void func_jetpac_8002A758(JetpacStruct* arg0) {
     case 4:
         arg0->unk0.spatial_state.unk1C.counter++;
         if (arg0->unk0.spatial_state.unk1C.counter >= 0xF) {
-            arg0->unk0.spatial_state.unk14 = 0;
+            arg0->unk0.spatial_state.entity_state = JETPAC_ENTITY_STATE_DEAD;
         }
         break;
     }
@@ -680,7 +680,7 @@ s32 func_jetpac_8002A974(f32 arg0, f32 arg1, f32 arg2, f32 arg3) {
 
     var_s0 = &D_jetpac_8002F1DC[0];
     for (i = 0; i < 6; i++) {
-        if (var_s0->unk0.spatial_state.unk14 == 3) {
+        if (var_s0->unk0.spatial_state.entity_state == JETPAC_ENTITY_STATE_ACTIVE) {
             if (func_jetpac_80027250(arg0, arg1, arg2, arg3, var_s0->unk0.spatial_state.posX + var_s0->unk0.spatial_state.unk1C.left, var_s0->unk0.spatial_state.posY + var_s0->unk0.spatial_state.unk1C.top, var_s0->unk0.spatial_state.posX + var_s0->unk0.spatial_state.unk1C.right, var_s0->unk0.spatial_state.posY + var_s0->unk0.spatial_state.unk1C.bottom) != 0) {
                 player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
                 func_jetpac_800291AC(var_s0);
@@ -729,7 +729,7 @@ void func_jetpac_8002ABDC(void) {
     }
 
     for (i = 0; i != 6; i++) {
-        if (var_s0->unk0.spatial_state.unk14 > 0) {
+        if (var_s0->unk0.spatial_state.entity_state > JETPAC_ENTITY_STATE_DEAD) {
             if (var_s0->unk48.unk0 != NULL) {
                 var_s0->unk48.unk0(var_s0);
                 if (var_s0->unk0.spatial_state.posX < 0.0f) {
@@ -764,7 +764,7 @@ void func_jetpac_8002AD8C(void) {
     var_s0 = &D_jetpac_8002F1DC[0];
     if (!func_jetpac_80026FE0()) {
         for (i = 0; i < 6; i++) {
-            if (var_s0->unk0.spatial_state.unk14 >= 2) {
+            if (var_s0->unk0.spatial_state.entity_state >= JETPAC_ENTITY_STATE_ALLOCATED) {
                 if (var_s0->unk48.unk4) {
                     func_jetpac_80029204(var_s0);
                 }

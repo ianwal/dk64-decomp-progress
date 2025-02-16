@@ -2414,13 +2414,21 @@ typedef struct JetpacSpawningInfoSub {
     s32 counter; // 0x2C
 } JetpacSpawningInfoSub;
 
+typedef enum JetpacEntityState
+{
+    JETPAC_ENTITY_STATE_DEAD = 0,
+    JETPAC_ENTITY_STATE_ALLOCATED = 2, // Not used except for >= check
+    JETPAC_ENTITY_STATE_ACTIVE = 3,
+    JETPAC_ENTITY_STATE_DYING = 4
+} JetpacEntityState;
+
 typedef struct JetpacSpatialState {
     f32 posX; // 0x0
     f32 posY; // 0x4
     f32 velX; // 0x8
     f32 velY; // 0xC
     rgba color; // 0x10
-    s32 unk14; // 0x14
+    JetpacEntityState entity_state; // 0x14
     s32 is_facing_left; // 0x18
     JetpacSpawningInfoSub unk1C;
 } JetpacSpatialState;

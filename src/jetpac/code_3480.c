@@ -74,7 +74,7 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
             arg0->primary_info.unk1C = 2;
         }
         if (arg0->primary_info.unk38 == 0) {
-            if ((arg0->primary_info.velY > 0.0f) && (ms->spatial_state.unk14 != 4)) {
+            if ((arg0->primary_info.velY > 0.0f) && (ms->spatial_state.entity_state != JETPAC_ENTITY_STATE_DYING)) {
                 temp_v0_2 = func_jetpac_80028CF8(
                     (f32) arg0->primary_info.unk24.left + arg0->primary_info.posX + arg0->primary_info.velX,
                     (f32) arg0->primary_info.unk24.top + arg0->primary_info.posY + arg0->primary_info.velY,
@@ -88,7 +88,7 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
                 }
             }
 
-            if (ms->spatial_state.unk14 == 3) {
+            if (ms->spatial_state.entity_state == JETPAC_ENTITY_STATE_ACTIVE) {
                 if (func_jetpac_80027250(
                     arg0->primary_info.posX + arg0->primary_info.unk24.left,
                     arg0->primary_info.posY + arg0->primary_info.unk24.top,
@@ -105,7 +105,7 @@ void func_jetpac_80027728(JetpacPickupStruct* arg0) {
             }
         }
         if (arg0->primary_info.unk38 == 1) {
-            if (ms->spatial_state.unk14 == 4) {
+            if (ms->spatial_state.entity_state == JETPAC_ENTITY_STATE_DYING) {
                 arg0->primary_info.unk38 = 0;
                 arg0->primary_info.velY = 0.8f;
             } else {
