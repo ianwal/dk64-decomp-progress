@@ -3633,7 +3633,7 @@ us,.menu,func_menu_8003264C,736,yes
 us,.menu,func_menu_80025D44,72,yes
 us,.menu,func_menu_80025D8C,120,yes
 us,.menu,func_menu_800275EC,16,yes
-us,.menu,func_menu_8002C91C,508,no
+us,.menu,func_menu_8002C91C,508,yes
 us,.menu,func_menu_80029EF8,400,yes
 us,.menu,func_menu_80026684,108,yes
 us,.menu,func_menu_80025D14,48,yes

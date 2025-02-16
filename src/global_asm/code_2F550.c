@@ -969,7 +969,7 @@ Gfx *func_global_asm_8062CA70(Gfx *dl, Struct8062CA70_arg1 *arg1, Struct8062CA70
 }
 */
 
-// Displaylist stuff, close
+// Displaylist stuff, close, regalloc s5 s6
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062CEA8.s")
 
 /*

@@ -524,7 +524,6 @@ void func_global_asm_80713EB0(Maps arg0, s32 arg1, s32 arg2) {
 */
 
 extern s8 D_global_asm_807552E0;
-void func_global_asm_80713C8C(void);
 
 Gfx *func_global_asm_80714060(Gfx *dl) {
     s8 sp38[0x28];

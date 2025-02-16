@@ -1136,6 +1136,7 @@ void func_global_asm_8062210C(Struct8062210C *arg0, f32 *arg1, s32 arg2, f32 *ar
     *arg3 += arg4 * func_global_asm_80612790(arg0->unk9E);
 }
 
+// doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_8062217C.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80622334.s")

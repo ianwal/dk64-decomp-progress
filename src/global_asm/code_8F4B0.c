@@ -165,7 +165,6 @@ s32 func_global_asm_8068ABE0(s16 arg0) {
 void func_global_asm_805FF9AC(Maps, s32, s32, s16);
 void func_global_asm_80608DA8(s32, u8, s32, s32, s32);
 void func_global_asm_80659F7C(f32, f32, f32, f32, s32);
-void func_global_asm_80711950(f32, s16, s16);
 void func_global_asm_80711BD0(f32, s16, s16, u8);
 extern u16 D_8076A0A6;
 extern s16 D_807FDCB8;

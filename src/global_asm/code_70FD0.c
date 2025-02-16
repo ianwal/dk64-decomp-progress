@@ -318,7 +318,7 @@ typedef struct {
 } Struct8066D250;
 
 s32 func_global_asm_8066D250(Struct8066D250 *);
-s8 func_global_asm_8066D2F4(s16 *);
+s8 func_global_asm_8066D2F4(Struct8066D250 *arg0);
 s16 func_global_asm_8066D4DC(s16 *, u8 *);
 s32 func_global_asm_8066DD34(void *);
 
@@ -406,47 +406,41 @@ s32 func_global_asm_8066D250(Struct8066D250 *arg0) {
     return FALSE;
 }
 
+// float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_8066D2F4.s")
 
 /*
-s32 func_global_asm_8066D2F4(Struct8066D250 *arg0) {
-    // TODO: Convert the stack stuff into an array/struct
+s8 func_global_asm_8066D2F4(Struct8066D250 *arg0) {
     f32 sp28;
     f32 temp_f0;
-    f32 temp_f10;
-    f32 temp_f16;
-    f32 temp_f18;
-    f32 temp_f4;
-    f32 temp_f6;
+    f32 dz1;
+    f32 dy2;
+    f32 dx1;
+    f32 dz2;
+    f32 dy1;
     f32 temp_f6_2;
-    f32 temp_f8;
+    f32 dx2;
     f32 temp_f8_2;
     f32 var_f12;
     f32 var_f2;
-    f64 temp_f0_2;
-    f64 temp_f2;
-    s32 var_v0;
+    f32 temp_f0_2;
+    f32 dxy;
 
-    temp_f8 = arg0->unkC - arg0->unk0;
-    temp_f18 = arg0->unk6 - arg0->unk0;
-    temp_f16 = arg0->unkE - arg0->unk2;
-    temp_f4 = arg0->unk10 - arg0->unk4;
-    temp_f6 = arg0->unk8 - arg0->unk2;
-    temp_f10 = arg0->unkA - arg0->unk4;
-    temp_f8_2 = (temp_f16 * temp_f10) - (temp_f6 * temp_f4);
-    sp28 = (temp_f4 * temp_f18) - (temp_f10 * temp_f8);
-    temp_f6_2 = (temp_f8 * temp_f6) - (temp_f18 * temp_f16);
-    temp_f0 = sqrtf((temp_f6_2 * temp_f6_2) + (temp_f8_2 * temp_f8_2));
-    temp_f2 = temp_f0;
-    if ((temp_f2 < 0.01) && (temp_f2 > -0.01)) {
+    dx2 = arg0->vert[2].x - arg0->vert[0].x;
+    dx1 = arg0->vert[1].x - arg0->vert[0].x;
+    dy2 = arg0->vert[2].y - arg0->vert[0].y;
+    dz2 = arg0->vert[2].z - arg0->vert[0].z;
+    dy1 = arg0->vert[1].y - arg0->vert[0].y;
+    dz1 = arg0->vert[1].z - arg0->vert[0].z;
+    sp28 = (dz2 * dx1) - (dz1 * dx2);
+    temp_f8_2 = (dy2 * dz1) - (dy1 * dz2);
+    temp_f6_2 = (dx2 * dy1) - (dx1 * dy2);
+    dxy = sqrtf(SQ(temp_f6_2) + SQ(temp_f8_2));
+    if ((dxy < 0.01) && (dxy > -0.01)) {
         var_f2 = 1.57f;
     } else {
-        if (sp28 > 0.0f) {
-            var_f12 = sp28;
-        } else {
-            var_f12 = -sp28;
-        }
-        var_f2 = func_global_asm_80611BB4(var_f12, temp_f0);
+        var_f12 = ABS(sp28);
+        var_f2 = func_global_asm_80611BB4(var_f12, dxy);
     }
     temp_f0_2 = var_f2 * 57.29577791868205;
     if (temp_f0_2 < 10.0) {
@@ -1174,18 +1168,21 @@ void func_global_asm_806710E0(Struct806710E0_arg0 *arg0, s32 arg1, s32 arg2, s32
     }
 }
 
+// close, float, stack, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_70FD0/func_global_asm_80671260.s")
 
+void func_global_asm_806713E4(Actor *arg0, u8 arg1);
 s32 func_global_asm_80671528(Actor *, f32 *, f32 *, f32 *, s32);
 s32 func_global_asm_806732A8(f32, f32, s32, s16);
 extern s16 D_global_asm_80753D50[];
 extern s16 D_global_asm_80753D60[];
-extern s32 D_global_asm_807FB5C4;
-extern s32 D_global_asm_807FB5CC;
-extern s16 D_global_asm_807FD584;
 
-extern s32 D_global_asm_807FB5DC;
-extern s16 D_global_asm_807FB5F6;
+extern s16 D_global_asm_807FD584;
+extern s32 D_807FB5C4;
+extern s32 D_807FB5CC;
+extern s32 D_807FB5D0;
+extern s32 D_807FB5DC;
+extern s16 D_807FB5F6;
 
 typedef struct {
     s8 unk0[0xE0 - 0x0];
@@ -1196,14 +1193,14 @@ typedef struct {
 
 /*
 void func_global_asm_80671260(Actor *arg0) {
-    AAD80671260 *sp48;
+    f32 t1;
+    AAD80671260 *aaD; // sp48?
+    f32 var_f16;
     f32 sp40;
     f32 sp3C;
     f32 sp38;
-    f32 temp_f0;
-    f32 temp_f12;
-    f32 temp_f8;
-    f32 var_f16;
+    f32 t2;
+    f32 t3;
 
     if (character_change_array[cc_player_index].unk2C0 == 1) {
         var_f16 = D_global_asm_80753D50[D_global_asm_807FD584];
@@ -1211,24 +1208,20 @@ void func_global_asm_80671260(Actor *arg0) {
         var_f16 = D_global_asm_80753D60[D_global_asm_807FD584];
     }
     if (arg0->interactable & 1) {
-        sp48 = arg0->additional_actor_data;
+        aaD = arg0->additional_actor_data;
         func_global_asm_80671528(arg0, &sp38, &sp3C, &sp40, 1);
-        temp_f0 = var_f16 / 8.0f;
-        temp_f8 = sp38 * temp_f0;
-        temp_f12 = D_global_asm_807FB5CC / 8.0f;
-        sp40 *= temp_f0;
-        sp48->unkE0 = (D_global_asm_807FB5C4 / 8.0f) - temp_f8;
-        sp48->unkE4 = temp_f12 - sp40;
-        sp48->unkE8 = 1;
-        func_global_asm_8066FC0C(arg0, func_global_asm_806732A8(temp_f12, 8.0f, D_global_asm_807FB5DC, D_global_asm_807FB5F6), arg0->ledge_info_pointer);
+        t1 = ((f32)D_807FB5C4) / 8;
+        t2 = ((f32)D_807FB5CC) / 8;
+        sp38 *= (var_f16 / 8);
+        sp40 *= (var_f16 / 8.0f);
+        aaD->unkE0 = t1 - sp38;
+        aaD->unkE4 = t2 - sp40;
+        aaD->unkE8 = 1;
+        func_global_asm_8066FC0C(arg0, func_global_asm_806732A8(t2, 8, D_807FB5DC, D_807FB5F6), arg0->ledge_info_pointer);
     }
     func_global_asm_806713E4(arg0, 1);
 }
 */
-
-extern s32 D_807FB5C4;
-extern s32 D_807FB5CC;
-extern s32 D_807FB5D0;
 
 s32 func_global_asm_806717FC(Actor *arg0);
 

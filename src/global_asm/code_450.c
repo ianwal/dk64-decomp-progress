@@ -80,7 +80,6 @@ void func_global_asm_806886E0(s32* arg0, s32 arg1, s32 arg2);
 void func_global_asm_80626264(void*);
 void func_global_asm_806C7D40(s32 arg0);
 
-void func_global_asm_80712BD4(void);
 void func_global_asm_805FB944(u8);
 
 void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
@@ -723,9 +722,7 @@ Gfx *func_global_asm_805FD030(Gfx *dl) {
 Gfx *func_global_asm_8062BF24(Gfx *, s32);
 Gfx *func_global_asm_8068C20C(Gfx *, u8);
 Struct80750948 *func_global_asm_806C7C94(u8);
-Gfx *func_global_asm_807007B8(Gfx *);
 Gfx *func_global_asm_80701CA0(Gfx *);
-Gfx *func_global_asm_80704960(Gfx *);
 Gfx *func_global_asm_80714060(Gfx *);
 extern u8 D_global_asm_8074447C;
 extern u8 D_global_asm_80744480;

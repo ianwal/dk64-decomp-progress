@@ -28,7 +28,6 @@ extern f32 D_global_asm_807FD96C;
 extern f32 D_global_asm_807FD970;
 extern s32 D_global_asm_807FD978;
 
-void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, u32, u32, u32);
 s32 func_global_asm_80690F30(s32, s32 *, Actor*, s32, s32, s32, s32 *, s32 *, s32 *);
 
 Gfx *func_global_asm_806FEDB0(Gfx *dl, u8 arg1) {

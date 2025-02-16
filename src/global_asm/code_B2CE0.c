@@ -3,8 +3,6 @@
 
 extern f32 D_global_asm_8075B1A8;
 
-void func_global_asm_8070033C(f32, f32, f32, f32, f32, f32, f32, s32, s32, s32);
-
 void func_global_asm_806ADFE0(void) {
     f32 sp88[4][4];
     f32 sp48[4][4];

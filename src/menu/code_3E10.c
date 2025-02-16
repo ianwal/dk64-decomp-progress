@@ -1015,8 +1015,6 @@ void func_menu_8002C584(Actor *arg0, s32 arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002C634.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002C91C.s")
-
 extern u8 D_80033F20[];
 extern u8 D_80033F24[];
 extern s16 D_80744524[];
@@ -1030,42 +1028,39 @@ typedef struct MultiKongAAD {
     s8 unk8;
 } MultiKongAAD;
 
-/*
+typedef struct {
+    u16 unk0;
+} AAD_8002C91C;
+
 void func_menu_8002C91C(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
-    u8 *var_s3;
     s32 i;
-    s8 *var_a1;
-    u8 *var_s1;
     MultiKongAAD *temp_v0;
+    AAD_8002C91C *a17C;
 
-    var_a1 = &D_global_asm_8076A0E4;
     for (i = 0; i < 4; i++) {
-        if (!(*var_a1 & 0x80)) {
-            D_menu_8003387C[D_menu_80033878] = *var_a1 & 0x7F;
+        if (!(D_global_asm_8076A0E4[i] & 0x80)) {
+            D_menu_8003387C[D_menu_80033878] = D_global_asm_8076A0E4[i] & 0x7F;
             D_80033F20[D_menu_80033878] = i;
             D_80033F24[i] = D_menu_80033878;
-            if (D_global_asm_8076A105 == D_menu_80033878) D_80744524[i]++;
+            if (D_menu_80033878 == D_global_asm_8076A105) D_80744524[i]++;
             D_menu_80033878++;
         }
-        var_a1++;
     }
     func_menu_8002F8EC();
     MaaD->unk17 = 0;
-    var_s3 = &D_80033F20;
-    var_s1 = &D_menu_8003387C;
-    for (i = 0; i < D_menu_80033878; i++, var_s3++, var_s1++) {
-        spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_menu_8003386C[*var_s1]);
-        last_spawned_actor->unk17C->unk0_s16[0] = D_menu_8003386C[*var_s1];
-        last_spawned_actor->control_state = *var_s3 | 0x80;
-        last_spawned_actor->control_state_progress = *var_s1;
+    for (i = 0; i < D_menu_80033878; i++) {
+        spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_menu_8003386C[D_menu_8003387C[i]]);
+        a17C = last_spawned_actor->unk17C;
+        a17C->unk0 = D_menu_8003386C[D_menu_8003387C[i]];
+        last_spawned_actor->control_state = D_80033F20[i] | 0x80;
+        last_spawned_actor->control_state_progress = D_menu_8003387C[i];
         temp_v0 = last_spawned_actor->additional_actor_data;
         temp_v0->controller = arg0;
         temp_v0->unk8 = (i == D_global_asm_8076A105) + 1;
     }
     func_menu_80030894(MaaD, &D_global_asm_80720CF0, 0x122, 0xD2, 0.75f, 2, 0);
 }
-*/
 
 // TODO: Huge, very doable, need energy
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CB18.s")
