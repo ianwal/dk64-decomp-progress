@@ -2453,15 +2453,15 @@ typedef struct JetpacStruct {
 typedef struct {
     s32 x;
     s32 y;
-    s32 unk8;
+    s32 horizontal_flip;
     uSprite *draw_sprite;
-} JetpacStruct2;
+} JetpacRenderingCellEntry;
 
 typedef struct {
-    JetpacStruct2 draw_sprites[6];
-    s32 num_draw_sprites;
+    JetpacRenderingCellEntry entries[6];
+    s32 num_entries;
     rgba hue;
-} JetpacStruct1;
+} JetpacRenderingCell;
 
 typedef struct {
     JetpacSpatialState spatial_state;

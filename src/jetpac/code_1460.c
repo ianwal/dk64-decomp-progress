@@ -1,17 +1,17 @@
 #include <ultra64.h>
 #include "functions.h"
 
-extern JetpacStruct1 D_jetpac_8002F3D0[0x300];
+extern JetpacRenderingCell D_jetpac_8002F3D0[0x300];
 extern s32 D_jetpac_80045BD0;
 
 void func_jetpac_80025460(void) {
     int x, y;
-    JetpacStruct1 *ptr;
+    JetpacRenderingCell *ptr;
 
     ptr = &D_jetpac_8002F3D0[0];
     for (x = 0; x < 0x18; x++) {
         for (y = 0; y < 0x20; y++) {
-            ptr->num_draw_sprites = 0;
+            ptr->num_entries = 0;
             ptr->hue.alpha = 0;
             ptr++;
         }
@@ -19,9 +19,9 @@ void func_jetpac_80025460(void) {
 }
 
 // add_sprite_to_cell
-void func_jetpac_800254B8(uSprite* draw_sprite, s32 x, s32 y, rgba* hue, s32 arg4) {
-    JetpacStruct1* temp_a0;
-    JetpacStruct2* var_v0;
+void func_jetpac_800254B8(uSprite* draw_sprite, s32 x, s32 y, rgba* hue, s32 horizontal_flip) {
+    JetpacRenderingCell* temp_a0;
+    JetpacRenderingCellEntry* var_v0;
     s32 i;
 
     var_v0 = NULL;
@@ -29,13 +29,13 @@ void func_jetpac_800254B8(uSprite* draw_sprite, s32 x, s32 y, rgba* hue, s32 arg
         s32 index = x / 8 + y / 8 * 32;
 
         temp_a0 = &D_jetpac_8002F3D0[index];
-        if (temp_a0->num_draw_sprites < 6) { // ARRAY_COUNT?
-            var_v0 = &temp_a0->draw_sprites[temp_a0->num_draw_sprites++];
+        if (temp_a0->num_entries < 6) {
+            var_v0 = &temp_a0->entries[temp_a0->num_entries++];
         }
         if (var_v0 != NULL) {
             var_v0->x = x;
             var_v0->y = y;
-            var_v0->unk8 = arg4;
+            var_v0->horizontal_flip = horizontal_flip;
             var_v0->draw_sprite = draw_sprite;
             if ((temp_a0->hue.as_array[3] == 0) || ((temp_a0->hue.as_array[3] < 0xFF) && (func_jetpac_80027210() > 0.97))) {
                 for (i = 0; i < 4; i++) {

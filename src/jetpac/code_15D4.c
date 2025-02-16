@@ -24,7 +24,7 @@ extern s32 D_jetpac_8002F08C;
 extern s32 D_jetpac_8002F094;
 
 extern JetpacStruct D_jetpac_8002F09C[]; // At least 4 big
-extern JetpacStruct1 D_jetpac_8002F3D0[0x300];
+extern JetpacRenderingCell D_jetpac_8002F3D0[0x300];
 
 extern s32 D_jetpac_80045BD0;
 
@@ -171,7 +171,7 @@ void func_jetpac_80025700(uSprite *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4)
 */
 
 void func_jetpac_80025904(Gfx **arg0) {
-    JetpacStruct1 *s3;
+    JetpacRenderingCell *s3;
     s32 j, i;
     Gfx *dl;
     s32 k;
@@ -181,13 +181,13 @@ void func_jetpac_80025904(Gfx **arg0) {
     dl = *arg0;
     for (i = 0; i < 0x18; i++) {
         for (j = 0; j < 0x20; j++) {
-            if (s3->num_draw_sprites) {
+            if (s3->num_entries) {
                 gDPSetPrimColor(dl++, 0, 0, s3->hue.as_array[0], s3->hue.as_array[1], s3->hue.as_array[2], 0xFF);
             }
-            for (k = 0; k < s3->num_draw_sprites; k++) {
-                func_global_asm_8070E8F0(&dl, s3->draw_sprites[k].draw_sprite);
-                func_global_asm_8070F2C8(0x400, 0x400, s3->draw_sprites[k].unk8, 0);
-                func_global_asm_8070F2FC(&dl, (s3->draw_sprites[k].x + 0x20) << 2, (s3->draw_sprites[k].y + 0x18) << 2);
+            for (k = 0; k < s3->num_entries; k++) {
+                func_global_asm_8070E8F0(&dl, s3->entries[k].draw_sprite);
+                func_global_asm_8070F2C8(0x400, 0x400, s3->entries[k].horizontal_flip, 0);
+                func_global_asm_8070F2FC(&dl, (s3->entries[k].x + 0x20) << 2, (s3->entries[k].y + 0x18) << 2);
             }
             s3++;
         }
