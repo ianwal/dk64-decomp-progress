@@ -216,147 +216,132 @@ void func_jetpac_80027D64(Competitor *arg0) {
     arg0->bonus_item_counter_limit = func_jetpac_80027480();
 }
 
-// Jumptable, close
-// https://decomp.me/scratch/5Smwc
+// Close...
+// https://decomp.me/scratch/eraHv
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_3480/func_jetpac_80027EC0.s")
 
 /*
 void func_jetpac_80027EC0(JetpacPickupStruct *arg0) {
-    Competitor *player;
-    f32 temp_f18;
-    s32 temp_hi;
-    s32 temp_v0_2;
+    Competitor *competitor;
     s32 temp_v0_3;
     s32 var_v1;
     s32 var_v1_2;
-
-    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    if (!player->rocket_stage) {
+    JetpacPlayerStruct* player;
+    
+    player = &D_jetpac_8002F050;
+    competitor = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    if (competitor->rocket_stage == 0) {
         return;
     }
-    if (arg0->counter < player->unk_144) {
-        arg0->counter++;
+    
+    if (arg0->primary_info.unk24.counter < competitor->bonus_item_counter_limit) {
+        arg0->primary_info.unk24.counter++;
         return;
     }
-    if (arg0->unk1C == 1) {
-        arg0->unk1C = 2;
+    
+    if (arg0->primary_info.unk1C == 1) {
+        arg0->primary_info.unk1C = 2;
     }
-    if (!arg0->unk38) {
-        temp_f18 = arg0->velY;
-        if (temp_f18 > 0.0f) {
-            temp_v0_2 = func_jetpac_80028CF8(
-                arg0->unk24 + arg0->posX + arg0->velX,
-                arg0->unk28 + arg0->posY + temp_f18,
-                arg0->unk2C + arg0->posX + arg0->velX,
-                arg0->unk30 + arg0->posY + temp_f18,
-                0);
-            if (temp_v0_2 >= 0) {
-                arg0->posY = D_jetpac_8002EC30.platforms[temp_v0_2].unk4 - 16.0f;
-                arg0->velY = 0.0f;
+    
+    if (arg0->primary_info.unk38 == 0) {
+        if (arg0->primary_info.velY > 0.0f) {
+            temp_v0_3 = func_jetpac_80028CF8(
+                arg0->primary_info.unk24.left + arg0->primary_info.posX + arg0->primary_info.velX,
+                arg0->primary_info.unk24.top + arg0->primary_info.posY + arg0->primary_info.velY,
+                arg0->primary_info.unk24.right + arg0->primary_info.posX + arg0->primary_info.velX,
+                arg0->primary_info.unk24.bottom + arg0->primary_info.posY + arg0->primary_info.velY, 0);
+            if (temp_v0_3 >= 0) {
+                arg0->primary_info.posY = D_jetpac_8002EC30.platforms[temp_v0_3].spatial_state.posY - 16.0f;
+                arg0->primary_info.velY = 0.0f;
             } else {
-                arg0->posY += arg0->velY;
+                arg0->primary_info.posY += arg0->primary_info.velY;
             }
         }
-        if ((D_jetpac_8002EC30.unk78C == 2) && (D_jetpac_8002F064 == 3)) {
+
+        if ((D_jetpac_8002EC30.unk78C == 2) && (player->spatial_state.entity_state == 3)) {
             if (func_jetpac_80027250( 
-                arg0->posX + arg0->unk24, 
-                arg0->posY + arg0->unk28,
-                arg0->posX + arg0->unk2C,
-                arg0->posY + arg0->unk30,
-                D_8002F06C + D_jetpac_8002F050,
-                D_8002F070 + D_jetpac_8002F054,
-                D_8002F074 + D_jetpac_8002F050,
-                D_jetpac_8002F078 + D_jetpac_8002F054)) {
-                if (arg0->drop_type == 6) {
+                arg0->primary_info.posX + arg0->primary_info.unk24.left, 
+                arg0->primary_info.posY + arg0->primary_info.unk24.top,
+                arg0->primary_info.posX + arg0->primary_info.unk24.right,
+                arg0->primary_info.posY + arg0->primary_info.unk24.bottom,
+                player->spatial_state.posX + player->spatial_state.unk1C.left,
+                player->spatial_state.posY + player->spatial_state.unk1C.top,
+                player->spatial_state.posX + player->spatial_state.unk1C.right,
+                player->spatial_state.posY + player->spatial_state.unk1C.bottom)) {
+                if (arg0->primary_info.drop_type == 6) {
                     setFlag(0x62, TRUE, FLAG_TYPE_TEMPORARY);
                 }
-                player->current_score += arg0->point_bonus;
+                competitor->current_score += arg0->primary_info.point_bonus;
                 func_jetpac_80024E70(3);
-                func_jetpac_80027D64(player);
+                func_jetpac_80027D64(competitor);
                 return;
             }
         }
     }
-    switch (arg0->drop_type) {
+    switch (arg0->primary_info.drop_type) {
         case 6:
-            arg0->counter++;
-            temp_v0_3 = (arg0->counter - player->unk_144);
+            arg0->primary_info.unk24.counter++;
+            temp_v0_3 = (arg0->primary_info.unk24.counter - competitor->bonus_item_counter_limit);
             if (temp_v0_3 >= 0x97) {
-                func_jetpac_80027D64(player);
-                return;
+                func_jetpac_80027D64(competitor);
             }
-            temp_hi = temp_v0_3 % 24;
-            if (temp_hi < 0xC) {
-                arg0->blue = 0xFF;
-                arg0->red = 0;
-                arg0->green = 0;
-                return;
-            }
-            if (temp_hi < 0x18) {
-                arg0->red = 0xFF;
-                arg0->green = 0xFF;
-                arg0->blue = 0;
-                return;
+            else
+            {
+                temp_v0_3 %= 24;
+                if (temp_v0_3 < 0xC) {
+                    arg0->primary_info.color.blue = 0xFF;
+                    arg0->primary_info.color.red = 0;
+                    arg0->primary_info.color.green = 0;
+                }
+                else if (temp_v0_3 < 0x18) {
+                    arg0->primary_info.color.red = 0xFF;
+                    arg0->primary_info.color.green = 0xFF;
+                    arg0->primary_info.color.blue = 0;
+                }
             }
             break;
         case 1:
-            arg0->counter++;
-            var_v1 = arg0->counter - player->unk_144;
+            arg0->primary_info.unk24.counter++;
+            var_v1 = arg0->primary_info.unk24.counter - competitor->bonus_item_counter_limit;
             if (var_v1 >= 0x1C) {
                 var_v1 -= 0x1C;
-                arg0->counter = player->unk_144;
+                arg0->primary_info.unk24.counter = competitor->bonus_item_counter_limit;
             }
             if (var_v1 < 0x1C) {
                 var_v1 = (var_v1 / 4) + 1;
-                if (var_v1 & 1) {
-                    arg0->blue = 0xFF;
-                } else {
-                    arg0->blue = 0;
-                }
-                if (var_v1 & 2) {
-                    arg0->red = 0xFF;
-                } else {
-                    arg0->red = 0;
-                }
-                if (var_v1 & 4) {
-                    arg0->green = 0xFF;
-                    return;
-                }
-                arg0->green = 0;
-                return;
+                arg0->primary_info.color.blue = (var_v1 & 1) ? 0xFF : 0;
+                arg0->primary_info.color.red = (var_v1 & 2) ? 0xFF : 0;
+                arg0->primary_info.color.green = (var_v1 & 4) ? 0xFF : 0;
             }
             break;
         case 2:
-            arg0->red = 0xFF;
-            arg0->green = 0xFF;
-            arg0->blue = 0;
-            return;
+            arg0->primary_info.color.red = 0xFF;
+            arg0->primary_info.color.green = 0xFF;
+            arg0->primary_info.color.blue = 0;
+            break;
         case 5:
-            arg0->green = 0xFF;
-            arg0->red = 0;
-            arg0->blue = 0;
-            return;
+            arg0->primary_info.color.green = 0xFF;
+            arg0->primary_info.color.red = 0;
+            arg0->primary_info.color.blue = 0;
+            break;
         case 3:
         case 4:
-            arg0->counter++;
-            var_v1_2 = arg0->counter - player->unk_144;
+            arg0->primary_info.unk24.counter++;
+            var_v1_2 = arg0->primary_info.unk24.counter - competitor->bonus_item_counter_limit;
             if (var_v1_2 >= 0x18) {
                 var_v1_2 -= 0x18;
-                arg0->counter = player->unk_144;
+                arg0->primary_info.unk24.counter = competitor->bonus_item_counter_limit;
             }
             if (var_v1_2 < 0xC) {
-                arg0->red = 0;
-                arg0->green = 0;
-                arg0->blue = 0;
-                return;
+                arg0->primary_info.color.red = 0;
+                arg0->primary_info.color.green = 0;
+                arg0->primary_info.color.blue = 0;
             }
-            if (var_v1_2 < 0x18) {
-                arg0->red = 0;
-                arg0->green = 0xFF;
-                arg0->blue = 0xFF;
+            else if (var_v1_2 < 0x18) {
+                arg0->primary_info.color.red = 0;
+                arg0->primary_info.color.green = 0xFF;
+                arg0->primary_info.color.blue = 0xFF;
             }
-            break;
-        default:
             break;
     }
 }

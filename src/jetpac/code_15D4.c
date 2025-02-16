@@ -33,140 +33,90 @@ void func_jetpac_80025700(uSprite *, s32, s32, rgba*, s32);
 void func_jetpac_80026318(JetpacPlayerStruct*);
 void func_jetpac_80027010(JetpacPlayerStruct *arg0);
 
+// Frustratingly close...
+// https://decomp.me/scratch/FSiyf
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_15D4/func_jetpac_80025700.s")
 
 void func_jetpac_800254B8(uSprite *, s32, s32, rgba*, s32);
-extern uSprite D_80042BD0[0x100][2];
+extern uSprite D_80042BD0[2][0x100];
 extern s32 D_jetpac_80045BD0;
 
-/* Frustratingly close...
-void func_jetpac_80025700(uSprite* arg0, s32 base_or_stride_y, s32 base_or_stride_x, rgba* color, s32 arg4) {
-    uSprite* temp_a0;
-    s32 limit_x;
-    s32 limit_y;
-    s32 next_y;
-    s32 next_x;
-    s32 current_y;
-    s32 current_x;
-    s32 previous_x;
-    s32 previous_y;
-    s32 index;
-    u8 index2;
-
-    // I may have the X and Y mixed up here, I just know this is a 2D something...
-    limit_y = arg0->unkA - 1;
-    limit_x = arg0->unkC - 1;
-
-    if (D_jetpac_80045BD0 >= 0x100) {
-        return;
-    }
-
-    if (base_or_stride_y < 0) {
-        base_or_stride_y += 0x100;
-    }
-
-    for (previous_x = 0, current_x = base_or_stride_x; previous_x < limit_x; previous_x = current_x, current_x += base_or_stride_x) {
-        current_x += 8;
-        current_x = (current_x & 0xFFF8) - base_or_stride_x;
-        if (current_x >= limit_x) {
-            if (!current_x);
-            current_x = limit_x;
-        }
-
-        for (previous_y = 0, current_y = base_or_stride_y; previous_y < limit_y; previous_y = current_y, current_y += base_or_stride_y) {
-            index = D_jetpac_80045BD0;
-            if (index >= 0x100) {
-                return;
-            }
-
-            temp_a0 = &D_80042BD0[D_global_asm_807444FC][index];
-            D_jetpac_80045BD0++;
-            *temp_a0 = *arg0;
-
-            current_y += 8;
-            current_y = (current_y & 0xFFF8) - base_or_stride_y;
-            if (current_y >= limit_y) {
-                if (!current_y);
-                current_y = limit_y;
-            }
-
-            if (arg4 != 0) {
-                temp_a0->unk10 += (limit_y - current_y);
-            } else {
-                temp_a0->unk10 += previous_y;
-            }
-
-            temp_a0->unk12 += previous_x;
-            temp_a0->unkA = (current_y - previous_y) + 1;
-            temp_a0->unkC = (current_x - previous_x) + 1;
-
-            next_x = base_or_stride_x + previous_x;
-            next_y = base_or_stride_y + previous_y;
-            if (next_y >= 0x100) {
-                next_y -= 0x100;
-            }
-
-            func_jetpac_800254B8(temp_a0, next_y, next_x, color, arg4);
-        }
-    }
-}
-*/
-
 /*
-void func_jetpac_80025700(uSprite *arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4) {
-    s32 lim_0;
-    s32 lim_1;
-    s32 temp_v0;
-    s32 temp_v0_2;
-    s32 var_s0_2;
-    s32 var_s2;
-    s32 var_s5_2;
-    s32 var_v1;
-    uSprite *temp_a0;
+// Splits the sprite up into 8x8 cells on the screen to emulate old arcade hardware
+void func_jetpac_80025700(uSprite* arg0, s32 base_x, s32 base_y, rgba* color, s32 horizontal_flip) {
+    uSprite* next_sprite;
+    s32 final_subsprite_bottom;
+    s32 final_subsprite_right;
+    s32 current_subsprite_left;
+    s32 current_subsprite_top;
+    s32 current_subsprite_right;
+    s32 current_subsprite_bottom;
+    s32 previous_subsprite_bottom;
+    s32 previous_subsprite_right;
 
-    lim_0 = arg0->unkC - 1;
-    lim_1 = arg0->unkA - 1;
-    if (D_jetpac_80045BD0 > 0xFF) {
+    final_subsprite_right = arg0->s.SubImageWidth - 1;
+    final_subsprite_bottom = arg0->s.SubImageHeight - 1;
+    
+    if (D_jetpac_80045BD0 >= 256) {
         return;
     }
-    if (arg1 < 0) {
-        arg1 += 0x100;
+
+    if (base_x < 0) {
+        base_x += 256;
     }
-    var_s2 = 0;
-    do {
-        var_s5_2 = ((arg2 + 8) & 0xFFF8) - arg2;
-        var_v1 = 0;
-        var_s5_2 = MIN(var_s5_2, lim_0);
-        do {
-            temp_v0 = D_jetpac_80045BD0;
-            if (D_jetpac_80045BD0 > 0xFF) {
+    
+    previous_subsprite_bottom = 0;
+    current_subsprite_bottom = base_y;
+    while (previous_subsprite_bottom < final_subsprite_bottom)
+    {
+        current_subsprite_bottom += 8;
+        current_subsprite_bottom = (current_subsprite_bottom & 0xFFF8) - base_y;
+        if (current_subsprite_bottom >= final_subsprite_bottom) {
+            if (!current_subsprite_bottom); // Probably fake, but doesn't affect lingering codegen difference so just suppressing noise
+            current_subsprite_bottom = final_subsprite_bottom;
+        }
+        
+        previous_subsprite_right = 0, current_subsprite_right = base_x; 
+        while (previous_subsprite_right < final_subsprite_right)
+        {
+            if (D_jetpac_80045BD0 >= 256) {
                 return;
             }
-            D_jetpac_80045BD0 = temp_v0 + 1;
-            temp_a0 = &D_80042BD0[temp_v0][D_global_asm_807444FC];
-            *temp_a0 = *arg0;
-            var_s0_2 = ((arg1 + 8) & 0xFFF8) - arg1;
-            temp_v0_2 = arg1 + var_v1;
-            var_s0_2 = MIN(var_s0_2, lim_1);
-            if (arg4) {
-                temp_a0->unk10 += (lim_1 - var_s0_2);
+            
+            next_sprite = &D_80042BD0[D_global_asm_807444FC][D_jetpac_80045BD0++];
+            *next_sprite = *arg0;
+            
+            current_subsprite_right += 8;
+            current_subsprite_right = (current_subsprite_right & 0xFFF8) - base_x;
+            if (current_subsprite_right >= final_subsprite_right) {
+                if (!current_subsprite_right); // Probably fake, but doesn't affect lingering codegen difference so just suppressing noise
+                current_subsprite_right = final_subsprite_right;
+            }
+
+            if (horizontal_flip != 0) {
+                next_sprite->s.SourceImageOffsetS += (final_subsprite_right - current_subsprite_right);
             } else {
-                temp_a0->unk10 += var_v1;
+                next_sprite->s.SourceImageOffsetS += previous_subsprite_right;
             }
-            temp_a0->unk12 += var_s2;
-            temp_a0->unkA = ((var_s0_2 - var_v1) + 1);
-            temp_a0->unkC = ((var_s5_2 - var_s2) + 1);
-            temp_v0_2 &= 0xFF;
-            if (temp_v0_2 >= 0x100) {
-                temp_v0_2 -= 0x100;
+            
+            next_sprite->s.SourceImageOffsetT += previous_subsprite_bottom;
+            next_sprite->s.SubImageWidth = (current_subsprite_right - previous_subsprite_right) + 1;
+            next_sprite->s.SubImageHeight = (current_subsprite_bottom - previous_subsprite_bottom) + 1;
+            
+            current_subsprite_top = base_y + previous_subsprite_bottom;                
+            current_subsprite_left = base_x + previous_subsprite_right;
+            if (current_subsprite_left >= 256) {
+                current_subsprite_left -= 256;
             }
-            func_jetpac_800254B8(temp_a0, temp_v0_2, arg2 + var_s2, arg3, arg4);
-            var_v1 = var_s0_2;
-            arg1 = var_s0_2 + arg1;
-        } while (var_s0_2 < lim_1);
-        var_s2 = var_s5_2;
-        arg2 += var_s5_2;
-    } while (var_s5_2 < lim_0);
+
+            func_jetpac_800254B8(next_sprite, current_subsprite_left, current_subsprite_top, color, horizontal_flip);
+            previous_subsprite_right = current_subsprite_right;
+            current_subsprite_right += base_x;
+        }
+
+        previous_subsprite_bottom = current_subsprite_bottom;
+        current_subsprite_bottom += base_y;
+    }
 }
 */
 
@@ -555,44 +505,49 @@ void func_jetpac_80026A3C(JetpacPlayerStruct *arg0) {
     func_jetpac_80025368(player);
 }
 
+// Close, need to prevent first if-statement from using a0
+// https://decomp.me/scratch/n0mR6
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_15D4/func_jetpac_80026AB0.s")
 
 /*
-void func_jetpac_80026AB0(void) {
-    f32 temp_f2;
-    f32 var_f0;
-    s32 temp_v0;
-    s32 var_a1;
-
-    var_a1 = 1;
-    if (D_jetpac_8002F064 >= 2) {
-        if (D_jetpac_8002F064 == 4 && D_jetpac_8002F094 >= 8) {
-            var_a1 = 0;
+void func_jetpac_80026AB0() {
+    f32 posX;
+    f32 posY;
+    JetpacPlayerStruct* player = &D_jetpac_8002F050;
+    JetpacSpatialState* ss = &player->spatial_state;
+    s32 frame_index_by_position;
+    s32 sp20 = TRUE;
+    if (ss->entity_state >= JETPAC_ENTITY_STATE_ALLOCATED) // If this stops using a0, everything else matches
+    {
+        if ((ss->entity_state == JETPAC_ENTITY_STATE_DYING) && (player->explosion_sprite.frame_counter >= 8)) {
+            sp20 = FALSE;
         }
-        temp_v0 = func_jetpac_80025B70(&D_jetpac_8002F050);
-        var_f0 = D_jetpac_8002F050[0].unk0;
-        temp_f2 = D_jetpac_8002F054;
-        if (var_a1 != 0) {
-            if (D_jetpac_8002F080 == 0) {
-                func_jetpac_80025700(&D_jetpac_8002C3A8[temp_v0], (s16)var_f0 & 0xFFFE, temp_f2, &D_jetpac_8002F060, D_jetpac_8002F068);
+        
+        frame_index_by_position = func_jetpac_80025B70(ss);
+        posX = ss->posX;
+        posY = ss->posY;
+        if (sp20) {
+            if (player->is_flying == 0) {
+                posX = (s16)posX & 0xFFFE;
+                func_jetpac_80025700(&D_jetpac_8002C3A8[frame_index_by_position], posX, posY, &ss->color, ss->is_facing_left);
             } else {
-                func_jetpac_80025700(&D_jetpac_8002C330, var_f0, temp_f2, &D_jetpac_8002F060, D_jetpac_8002F068);
-                if (D_jetpac_8002F068 == 0) {
-                    if (temp_v0 == 4) {
-                        var_f0 -= 1.0f;
+                func_jetpac_80025700(&D_jetpac_8002C330, posX, posY, &ss->color, ss->is_facing_left);
+                if (ss->is_facing_left == 0) {
+                    if (frame_index_by_position == 4) {
+                        posX -= 1.0f;
                     }
-                    var_f0 -= 3.0f;
+                    posX -= 3.0f;
                 } else {
-                    if (temp_v0 == 4) {
-                        var_f0 += 1.0f;
+                    if (frame_index_by_position == 4) {
+                        posX += 1.0f;
                     }
-                    var_f0 += 10.0f;
+                    posX += 10.0f;
                 }
-                func_jetpac_80025700(&D_jetpac_8002C348[temp_v0], var_f0, temp_f2 + 18.0f, &D_jetpac_8002F060, D_jetpac_8002F068);
+                func_jetpac_80025700(&D_jetpac_8002C348[frame_index_by_position], posX, (posY + 18.0f), &ss->color, ss->is_facing_left);
             }
         }
-        if (D_jetpac_8002F094 < 0xE) {
-            func_jetpac_80025A60(&D_jetpac_8002F08C);
+        if (player->explosion_sprite.frame_counter < 0xE) {
+            func_jetpac_80025A60(&player->explosion_sprite);
         }
     }
 }
