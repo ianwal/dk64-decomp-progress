@@ -31,7 +31,9 @@ struct Critter {
     f32 y_pos; // 0xC
     f32 z_pos; // 0x10
     f32 unk14;
-    u8 unk18[0x24-0x18];
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
     f32 unk24;
     f32 unk28;
     u8 unk2C[0x30-0x2C];
@@ -1235,8 +1237,77 @@ s32 func_critter_80026530(Critter *arg0, s32 arg1) {
     return 0;
 }
 
-// Seems doable, lots of float bs though
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_8002658C.s")
+f32 func_global_asm_80612800(s16);
+
+void func_critter_8002658C(Critter *arg0, s32 arg1, void (*arg2)(Critter *, CritterController *), s32 (*arg3)(Critter *, CritterController *)) {
+    f32 dx; // 70
+    f32 temp;
+    f32 dz; // 6c
+    f32 temp_f14; // 68
+    f32 sp64;
+    f32 temp_f16; // 60
+    f32 sp5C;
+    f32 temp_f0;
+    f32 temp_f0_3;
+    s16 temp_a0;
+    s16 temp_a1;
+    f32 var_f12;
+    f32 sp48;
+    f32 var_f18; // 44
+    s32 pad2;
+    s32 pad3;
+    f32 dy;
+    s32 temp_t7;
+
+    var_f18 = 0.02f;
+    temp_t7 = (arg0->unk1E1 & 2) == 0;
+    if (arg2) {
+        arg2(arg0, arg1);
+    }
+    dx = arg0->unk18 + arg0->unk54->x_position;
+    dy = arg0->unk1C + arg0->unk54->y_position;
+    dz = arg0->unk20 + arg0->unk54->z_position;
+    temp_f14 = dx - arg0->x_pos;
+    sp64 = dy - arg0->y_pos;
+    temp_f16 = dz - arg0->z_pos;
+    if (arg0->unk1E2 != 2) {
+        temp_f0 = SQ(temp_f14) + SQ(temp_f16);
+        if ((u8)temp_t7) {
+            temp_f0 += SQ(sp64);
+        }
+        var_f12 = arg0->unk34;
+        if ((temp_f0 < 2500.0f)) {
+            var_f12 = (var_f12 * 0.3) + (0.7 * var_f12 * (temp_f0 * 0.0004f));
+            var_f18 = 0.1f;
+            if ((temp_f0 < 25)) {
+                if (arg3) {
+                    if (arg3(arg0, arg1)) {
+                        return;
+                    }
+                }
+            }
+        }
+        temp_f0_3 = arg0->unk28;
+        arg0->unk28 += ((var_f12 - arg0->unk28) * var_f18);
+        arg0->unk30 = arg0->unk28 - temp_f0_3;
+    }
+    sp5C = sqrtf(SQ(temp_f14) + SQ(temp_f16));
+    if ((u8)temp_t7) {
+        temp = func_global_asm_80611BB4(sp64, sp5C);
+        arg0->unk2 = func_global_asm_806CC190(arg0->unk2, ((temp * 2048.0) / 3.1415927410125732), arg0->unk24);
+    }
+    temp_a1 = func_global_asm_80665C18(dx, dz, arg0->x_pos, arg0->z_pos, sp5C);
+    arg0->unk4 = arg0->unk0;
+    arg0->unk0 = func_global_asm_806CC190(arg0->unk0, temp_a1, arg0->unk24);
+    sp48 = arg0->unk28;
+    arg0->x_pos += (sp48 * func_global_asm_80612794(arg0->unk0));
+    arg0->z_pos += (sp48 * func_global_asm_80612790(arg0->unk0));
+    if ((u8)temp_t7) {
+        arg0->y_pos += (sp48 * func_global_asm_80612800(arg0->unk2));
+    }
+}
+
+
 
 void func_critter_80026874(Critter *arg0, CritterController *arg1) {
     if (arg0->unk1E1 & 1) {
