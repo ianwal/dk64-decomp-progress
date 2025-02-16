@@ -72,10 +72,6 @@ s16 func_critter_800288A8(AAD_critter_8002904C *arg0, u8 *arg1, s16 arg2) {
     return sp94[0];
 }
 
-// Displaylist stuff, close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_4840/func_critter_80028A9C.s")
-
-/*
 Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg3) {
     f32 sp98[4][4];
     f32 sp58[4][4];
@@ -101,12 +97,11 @@ Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg
     }
     guTranslateF(sp58, arg1->unk4[arg3], arg1->unk0, 0.0f);
     guMtxCatF(sp98, sp58, sp98);
-    guMtxF2L(sp98, &arg1->unk90[D_global_asm_807444FC]);
-    gSPMatrix(dl++, &arg1->unk90[D_global_asm_807444FC][arg3], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    guMtxF2L(sp98, &arg1->unk90[arg3][D_global_asm_807444FC]);
+    gSPMatrix(dl++, &arg1->unk90[arg3][D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, sp57);
     return printStyledText(dl, 6, 0, 0, arg2, 0U);
 }
-*/
 
 Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
     void *var_a2;

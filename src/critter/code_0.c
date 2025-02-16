@@ -1115,39 +1115,52 @@ void func_critter_80025F8C(CritterStruct7 *arg0, CritterStruct7 *arg1, u8 arg2) 
     arg1->unk10 += arg0->unk4;
 }
 
-// float
+// regalloc, close
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_8002601C.s")
 
 extern CritterStruct5 *D_critter_80029BA4;
 
 /*
 void func_critter_8002601C(Critter *arg0) {
-    CharacterChange *temp_v1_2;
+    CharacterChange *cc;
     f32 temp_f12;
     f32 temp_f2;
     f32 var_f0;
-    s32 temp_t4;
-    s32 temp_v1;
+    s16 temp_t0;
+    s16 temp_t4;
+    s32 var_a3_2;
+    f32 dxz;
+    f32 dx, dz;
 
     temp_f2 = arg0->unk58->unk18 + 122500;
     if (arg0->unk58->unk24 != D_global_asm_807444FC) {
-        f32 x2, z2;
+        temp_t4 = (arg0->unk58->unkC + arg0->unk58->unk10) >> 1;
+        dxz = SQ(arg0->unk58->x_position - current_player->x_position) +
+            SQ(arg0->unk58->z_position - current_player->z_position);
         var_f0 = 0.0f;
-        x2 = arg0->unk58->x_position;
-        z2 = arg0->unk58->z_position;
-        temp_t4 = ((arg0->unk58->unkC + arg0->unk58->unk10) >> 1);
-        arg0->unk58->unk25 = (((D_critter_80029BA4->y_position < (arg0->unk58->y_position + temp_t4)) && ((arg0->unk58->y_position - temp_t4) < D_critter_80029BA4->y_position))
-            && (((x2 - current_player->x_position) * (x2 - current_player->x_position))
-            + ((z2 - current_player->z_position) * (z2 - current_player->z_position))) < arg0->unk58->unk18);
+        var_a3_2 = (arg0->unk58->y_position + temp_t4) > D_critter_80029BA4->y_position;
+        if (var_a3_2) {
+            var_a3_2 = (arg0->unk58->y_position - temp_t4) < D_critter_80029BA4->y_position;
+        }
+        var_a3_2 = (u8)var_a3_2 != 0;
+        if (var_a3_2) {
+            var_a3_2 = FALSE;
+            if (dxz < arg0->unk58->unk18) {
+                var_a3_2 = TRUE;
+            }
+        }
+        arg0->unk58->unk25 = var_a3_2;
         arg0->unk58->unk24 = D_global_asm_807444FC;
-        temp_f12 = (((arg0->unk58->x_position - character_change_array[cc_player_index].look_at_eye_x) * (arg0->unk58->x_position - character_change_array[cc_player_index].look_at_eye_x))
-            + ((arg0->unk58->y_position - character_change_array[cc_player_index].look_at_eye_y) * (arg0->unk58->y_position - character_change_array[cc_player_index].look_at_eye_y))
-            + ((arg0->unk58->z_position - character_change_array[cc_player_index].look_at_eye_z) * (arg0->unk58->z_position - character_change_array[cc_player_index].look_at_eye_z)));
+        cc = &character_change_array[cc_player_index];
+        temp_f12 = 
+            SQ(arg0->unk58->z_position - cc->look_at_eye_z) + 
+            (SQ(arg0->unk58->x_position - cc->look_at_eye_x) + 
+            SQ(arg0->unk58->y_position - cc->look_at_eye_y));
         arg0->unk58->unk20 = temp_f12;
         if (temp_f12 < temp_f2) {
-            var_f0 = (temp_f2 - temp_f12) * 5.102040814e-05f;
-            if (var_f0 > 1.0f) {
-                var_f0 = 1.0f;
+            var_f0 = (temp_f2 - temp_f12) * 0.000051020408f;
+            if (var_f0 > 1) {
+                var_f0 = 1;
             }
         }
         arg0->unk58->unk26[0] = 255.0f * var_f0;

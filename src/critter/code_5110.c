@@ -36,20 +36,27 @@ s32 (*func_critter_80029110(s32 arg0))(s32 *, s32) {
 // TODO: Pretty close considering size
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_5110/func_critter_80029118.s")
 
+extern OSIoMesg D_global_asm_807ECE00;
+extern UnkMQStruct D_global_asm_807655F0;
 /*
 void func_critter_80029118(void) {
-    s32 sp74;
-    s32 sp70;
-    s32 sp58[6];
-    s32 (*sp50)(s32 *, s32);
-    Maps sp3C;
-    s32 sp38;
+    s32 pad;
     s32 (*temp_v1)(s32 *, s32);
     s32 *var_s0;
     s32 var_v0;
     s32 temp_t3;
-    s32 var_v0_2;
-    AAD_critter_80029118 *aaD;
+    s32 flagIndex;
+    s32 sp74;
+    s32 sp70;
+    s32 sp58[6];
+    s32 (*sp50)(s32 *, s32, s32, s32);
+    s32 (*dmafunc)(OSIoMesg *, s32, s32, u32, void *, u32, OSMesgQueue *);
+    s32 (*recvfunc)(OSMesgQueue *, OSMesg *, s32);
+    s32 temp2;
+    u32 temp;
+    Maps sp3C;
+    s32 sp38;
+    AAD_critter_80029118 *aaD; // Not in stack
 
     aaD = current_actor_pointer->additional_actor_data;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
@@ -107,7 +114,7 @@ void func_critter_80029118(void) {
                 func_global_asm_8061CB08();
                 current_actor_pointer->control_state = 2;
                 func_global_asm_806A2B08(current_actor_pointer->unk11C);
-                playSong(8, 1.0f);
+                playSong(MUSIC_8_BONUS_MINIGAMES, 1.0f);
             }
             break;
         case 0x2:
@@ -121,16 +128,19 @@ void func_critter_80029118(void) {
             }
             temp_v1(var_s0, 0x10);
             sp50 = func_critter_80029110(-0xDC1);
-            func_critter_80029110(~(u32)(&osPiStartDma))(var_s0, 0x10);
+            dmafunc = func_critter_80029110(~(u32)(&osPiStartDma));
+            dmafunc(&D_global_asm_807ECE00, 0, 0, sp50, aaD, 0x10, &D_global_asm_807655F0);
+            temp = &osRecvMesg;
             if (current_actor_pointer->unk11C->control_state == 5) {
                 current_actor_pointer->control_state = 0xFF;
             }
-            func_critter_80029110(~(u32)(&osRecvMesg))(NULL, 1);
-            func_critter_80029110(~(u32)(&osInvalDCache))(var_s0, 0x10);
-            temp_t3 = var_s0[0] + var_s0[1];
-            var_s0[0] = temp_t3;
+            recvfunc = func_critter_80029110(~temp);
+            recvfunc(&D_global_asm_807655F0, NULL, 1);
+            temp_v1 = func_critter_80029110(~(u32)(&osInvalDCache));
+            temp_v1(var_s0, 0x10);
+            var_s0[0] += var_s0[1];
             // Anti tamper?
-            if (temp_t3 != 0x0A78F00E) {
+            if (var_s0[0] != 0x0A78F00E) {
                 if (current_map == MAP_VINE_BARREL) {
                     var_v0 = PERMFLAG_ITEM_MOVE_ORANGETHROWING;
                 } else {
@@ -157,22 +167,22 @@ void func_critter_80029118(void) {
                         }
                         switch (current_map) {
                             case MAP_DIVE_BARREL:
-                                var_v0_2 = PERMFLAG_ITEM_MOVE_DIVING;
+                                flagIndex = PERMFLAG_ITEM_MOVE_DIVING;
                                 break;
                             case MAP_VINE_BARREL:
-                                var_v0_2 = PERMFLAG_ITEM_MOVE_VINES;
+                                flagIndex = PERMFLAG_ITEM_MOVE_VINES;
                                 break;
                             case MAP_ORANGE_BARREL:
-                                var_v0_2 = PERMFLAG_ITEM_MOVE_ORANGETHROWING;
+                                flagIndex = PERMFLAG_ITEM_MOVE_ORANGETHROWING;
                                 break;
                             case MAP_BARREL_BARREL:
-                                var_v0_2 = PERMFLAG_ITEM_MOVE_BARRELTHROWING;
+                                flagIndex = PERMFLAG_ITEM_MOVE_BARRELTHROWING;
                                 break;
                             default:
-                                var_v0_2 = sp70;
+                                flagIndex = sp70;
                                 break;
                         }
-                        setFlag(var_v0_2, TRUE, FLAG_TYPE_PERMANENT);
+                        setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
                     }
                     D_global_asm_807FCC44 = D_critter_80029FA4;
                     func_global_asm_806F8A8C(4, 0, D_critter_80029FA4);
