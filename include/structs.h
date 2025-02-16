@@ -2509,21 +2509,10 @@ typedef struct Competitor {
     //u8 unk_190[4];
 } Competitor;
 
-typedef struct JetpacPlayerSub36C {
-    f32 unk0;
-    f32 unk4;
-    s32 unk8;
-    s32 unkC;
-    rgba unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
+typedef struct Struct8002EF80 {
+    JetpacSpatialState spatial_state;
     s32 unk30;
-} JetpacPlayerSub36C;
+} JetpacGroundPlatform;
 
 typedef struct JetpacPlayerStruct {
     s32 unk0;
@@ -2540,7 +2529,7 @@ typedef struct JetpacPlayerStruct {
     s32 player_index;
     s32 unk348;
     s32 unk34C;
-    JetpacPlayerSub36C platforms[4];
+    JetpacGroundPlatform platforms[4];
     f32 unk420;
     f32 unk424;
     f32 unk428;

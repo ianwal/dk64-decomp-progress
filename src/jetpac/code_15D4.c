@@ -410,32 +410,32 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
     s8 pad[0x8];
     f32 var_f2;
     f32 var_f12;
-    s32 sp40;
-    s32 sp3C; 
-    s32 other;
-    s32 sp34;
-    s32 sp30;
+    s32 holding_fly_input;
+    s32 holding_hover_input; 
+    s32 holding_fire_input;
+    s32 holding_left_input;
+    s32 holding_right_input;
     s32 other_index;
 
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    other = D_jetpac_8002EC30.unk0 & 0x4000;
-    sp34 = D_jetpac_8002EC30.unk0 & 0x200;
-    sp30 = D_jetpac_8002EC30.unk0 & 0x100;
-    sp40 = D_jetpac_8002EC30.unk0 & 0x8000;
-    sp3C = D_jetpac_8002EC30.unk0 & 0x2030;
+    holding_fire_input = D_jetpac_8002EC30.unk0 & 0x4000;
+    holding_left_input = D_jetpac_8002EC30.unk0 & 0x200;
+    holding_right_input = D_jetpac_8002EC30.unk0 & 0x100;
+    holding_fly_input = D_jetpac_8002EC30.unk0 & 0x8000;
+    holding_hover_input = D_jetpac_8002EC30.unk0 & 0x2030;
 
-    if (other && (arg0->unk38 >= 5)) {
+    if (holding_fire_input && (arg0->unk38 >= 5)) {
         func_jetpac_800260DC(arg0);
         arg0->unk38 = 0;
     } else if (arg0->unk38 < 5) {
         arg0->unk38++;
     }
 
-    if ((sp40 != 0) && ((arg0->unk30 == 0) || (sp3C == 0))) {
+    if ((holding_fly_input != 0) && ((arg0->unk30 == 0) || (holding_hover_input == 0))) {
         func_jetpac_80025BB8(arg0, 1);
         arg0->spatial_state.velY -= 0.2f;
     } else if (arg0->unk30 != 0) {
-        if (sp3C != 0) {
+        if (holding_hover_input != 0) {
             arg0->spatial_state.velY = 0.0f;
         } else {
             arg0->spatial_state.velY += 0.2;
@@ -444,13 +444,13 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
 
     if(arg0->unk30);
 
-    if (sp34 != 0) {
+    if (holding_left_input != 0) {
         arg0->spatial_state.velX -= 0.33333334f;
         if ((arg0->spatial_state.is_facing_left == 0) && (arg0->spatial_state.velX <= 0.0f)) {
             arg0->spatial_state.is_facing_left = 1;
             func_jetpac_80025BB8(arg0, arg0->unk30);
         }
-    } else if (sp30 != 0) {
+    } else if (holding_right_input != 0) {
         arg0->spatial_state.velX += 0.33333334f;
         if ((arg0->spatial_state.is_facing_left != 0) && (arg0->spatial_state.velX >= 0.0f)) {
             arg0->spatial_state.is_facing_left = 0;
@@ -489,16 +489,16 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
             arg0->spatial_state.unk1C.right + arg0->spatial_state.posX + arg0->spatial_state.velX,
             arg0->spatial_state.unk1C.bottom + arg0->spatial_state.posY + arg0->spatial_state.velY, 1);
         if (other_index >= 0) {
-            if (D_jetpac_8002EC30.platforms[other_index].unk28 <= arg0->spatial_state.unk1C.top + arg0->spatial_state.posY) {
+            if (D_jetpac_8002EC30.platforms[other_index].spatial_state.unk1C.bottom <= arg0->spatial_state.unk1C.top + arg0->spatial_state.posY) {
                 arg0->spatial_state.velY *= -0.4f;
                 if (ABS(arg0->spatial_state.velY) <= 0.15f) {
                     arg0->spatial_state.velY = 0.0f;
                 }
-            } else if ((arg0->spatial_state.unk1C.bottom + arg0->spatial_state.posY) <= D_jetpac_8002EC30.platforms[other_index].unk20) {
+            } else if ((arg0->spatial_state.unk1C.bottom + arg0->spatial_state.posY) <= D_jetpac_8002EC30.platforms[other_index].spatial_state.unk1C.top) {
                 arg0->unk34 = other_index;
                 arg0->spatial_state.velY = 0.0f;
                 func_jetpac_80025BB8(arg0, 0);
-                arg0->spatial_state.posY = D_jetpac_8002EC30.platforms[other_index].unk4 - 24.0f;
+                arg0->spatial_state.posY = D_jetpac_8002EC30.platforms[other_index].spatial_state.posY - 24.0f;
             } else {
                 arg0->spatial_state.velX *= -0.5f;
             }
@@ -512,9 +512,9 @@ block_62:
                     func_jetpac_80025BB8(arg0, 1);
                     arg0->spatial_state.velY = -0.5f;
                 }
-            } else if ((arg0->spatial_state.is_facing_left == 0) && (sp34 == 0)) {
+            } else if ((arg0->spatial_state.is_facing_left == 0) && (holding_left_input == 0)) {
                 arg0->spatial_state.velX = 1.0f;
-            } else if (sp30 == 0) {
+            } else if (holding_right_input == 0) {
                 arg0->spatial_state.velX = -1.0f;
             }
         } else {
