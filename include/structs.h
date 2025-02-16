@@ -2459,7 +2459,7 @@ typedef struct {
     JetpacSpatialState spatial_state;
     s32 is_flying;
     s32 unk34;
-    s32 unk38;
+    s32 laser_delay_counter;
     Struct80025A60 unk3C;
     JetpacStruct lasers[4];
 } MetaJetpacStruct3;

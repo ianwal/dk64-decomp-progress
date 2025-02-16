@@ -424,11 +424,11 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
     holding_fly_input = D_jetpac_8002EC30.unk0 & 0x8000;
     holding_hover_input = D_jetpac_8002EC30.unk0 & 0x2030;
 
-    if (holding_fire_input && (arg0->unk38 >= 5)) {
+    if (holding_fire_input && (arg0->laser_delay_counter >= 5)) {
         func_jetpac_800260DC(arg0);
-        arg0->unk38 = 0;
-    } else if (arg0->unk38 < 5) {
-        arg0->unk38++;
+        arg0->laser_delay_counter = 0;
+    } else if (arg0->laser_delay_counter < 5) {
+        arg0->laser_delay_counter++;
     }
 
     if ((holding_fly_input != 0) && ((arg0->is_flying == 0) || (holding_hover_input == 0))) {
