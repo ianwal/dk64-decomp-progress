@@ -55,14 +55,14 @@ void func_jetpac_800275F4(Competitor *arg0) {
     arg0->rocket_segments[1].primary_info.posY = 80.0f;
 }
 
-extern JetpacPlayerStruct D_jetpac_8002EC30;
-extern MetaJetpacStruct3 D_jetpac_8002F050;
+extern JetpacGameStruct D_jetpac_8002EC30;
+extern JetpacPlayerStruct D_jetpac_8002F050;
 
 void func_jetpac_80027728(JetpacPickupStruct* arg0) {
     Competitor* player;
     f32 temp_f0_3;
     s32 temp_v0_2;
-    MetaJetpacStruct3* ms;
+    JetpacPlayerStruct* ms;
     ms = &D_jetpac_8002F050;
     player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
     if ((arg0->primary_info.unk1C != 0) && (player->rocket_stage < 8)) {
@@ -157,7 +157,7 @@ typedef struct JetpacStruct8002DCE8 { // P sure this is RGBA
 void func_jetpac_80025700(void*, s32, s32, rgba*, s32);
 extern s32 D_8002F3C0[];
 extern rgba D_jetpac_8002DCE8;
-extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern JetpacGameStruct D_jetpac_8002EC30;
 
 void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
     Competitor* player;

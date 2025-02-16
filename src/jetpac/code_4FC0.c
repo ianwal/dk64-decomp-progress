@@ -18,9 +18,9 @@ extern u8 D_jetpac_8002E9C4;
 extern u8 D_jetpac_8002E9C8;
 extern u8 D_jetpac_8002E9CC;
 
-extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern JetpacGameStruct D_jetpac_8002EC30;
 extern s32 D_jetpac_8002E8F0;
-extern MetaJetpacStruct3 D_jetpac_8002F050; // TODO: Datatype
+extern JetpacPlayerStruct D_jetpac_8002F050; // TODO: Datatype
 extern s32 D_jetpac_8002F064;
 extern s32 D_jetpac_8002F07C;
 extern s32 D_jetpac_8002F078;
@@ -57,7 +57,7 @@ JetpacStruct *func_jetpac_80028FC0(void) {
 void func_jetpac_800291AC(JetpacStruct *arg0);
 
 s32 func_jetpac_80029064(JetpacStruct* arg0) {
-    MetaJetpacStruct3* ms;
+    JetpacPlayerStruct* ms;
     f32 p0;
     f32 p1;
     f32 p2;
@@ -164,7 +164,7 @@ JetpacStruct *func_jetpac_800292C4(void) {
 }
 
 extern void* D_jetpac_8002E8F4[8];
-extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern JetpacGameStruct D_jetpac_8002EC30;
 
 void func_jetpac_80029450(void) {
     JetpacStruct *sp18;
@@ -429,7 +429,7 @@ void func_jetpac_80029E0C(JetpacStruct *arg0) {
 }
 
 void func_jetpac_80029F7C(JetpacStruct* arg0) {
-    MetaJetpacStruct3* ms = &D_jetpac_8002F050;
+    JetpacPlayerStruct* ms = &D_jetpac_8002F050;
     switch (arg0->unk0.spatial_state.entity_state) {
     case 3:
         if (arg0->unk0.spatial_state.unk1C.counter == 0) {

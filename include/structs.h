@@ -2470,18 +2470,9 @@ typedef struct {
     s32 laser_delay_counter;
     ExplosionSpriteState explosion_sprite;
     JetpacStruct lasers[4];
-} MetaJetpacStruct3;
-
-typedef struct JetpacItem {
-    u8 unk0;
-} JetpacItem;
+} JetpacPlayerStruct;
 
 typedef struct JetpacPickupStruct JetpacPickupStruct;
-
-typedef struct JetpacSpawningInfo {
-    uSprite *sprite;
-    JetpacSpawningInfoSub sub;
-} JetpacSpawningInfo;
 
 typedef struct JetpacPickupPrimary {
     uSprite *sprite[2];
@@ -2522,7 +2513,7 @@ typedef struct Struct8002EF80 {
     s32 unk30;
 } JetpacGroundPlatform;
 
-typedef struct JetpacPlayerStruct {
+typedef struct JetpacGameStruct {
     s32 unk0;
     s32 unk4;
     s32 unk8;
@@ -2570,7 +2561,7 @@ typedef struct JetpacPlayerStruct {
     u8 unk798;
     u8 unk799;
     u16 unk79A;
-} JetpacPlayerStruct;
+} JetpacGameStruct;
 
 typedef struct ActorSpawner ActorSpawner;
 

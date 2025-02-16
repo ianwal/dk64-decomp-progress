@@ -9,9 +9,9 @@ extern uSprite D_jetpac_8002C348[];
 extern uSprite D_jetpac_8002C3A8[];
 extern JetpacStruct D_jetpac_8002C518;
 
-extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern JetpacGameStruct D_jetpac_8002EC30;
 
-extern MetaJetpacStruct3 D_jetpac_8002F050;
+extern JetpacPlayerStruct D_jetpac_8002F050;
 extern f32 D_jetpac_8002F054;
 extern s32 D_jetpac_8002F060;
 extern s32 D_jetpac_8002F064;
@@ -30,8 +30,8 @@ extern s32 D_jetpac_80045BD0;
 
 extern void func_global_asm_8070E8F0(Gfx**, uSprite*);
 void func_jetpac_80025700(uSprite *, s32, s32, rgba*, s32);
-void func_jetpac_80026318(MetaJetpacStruct3*);
-void func_jetpac_80027010(MetaJetpacStruct3 *arg0);
+void func_jetpac_80026318(JetpacPlayerStruct*);
+void func_jetpac_80027010(JetpacPlayerStruct *arg0);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_15D4/func_jetpac_80025700.s")
 
@@ -219,7 +219,7 @@ s32 func_jetpac_80025B70(JetpacSpatialState *arg0) {
     return (((s32) arg0->posX + arg0->unk1C.left) / 2) % 4;
 }
 
-void func_jetpac_80025BB8(MetaJetpacStruct3 *arg0, s32 new_is_flying) {
+void func_jetpac_80025BB8(JetpacPlayerStruct *arg0, s32 new_is_flying) {
     if ((new_is_flying == 0) && (arg0->is_flying != 0)) {
         arg0->spatial_state.posX = (s32)arg0->spatial_state.posX & 0xFFFE;
     } else if ((new_is_flying != 0) && (arg0->is_flying == 0)) {
@@ -230,7 +230,7 @@ void func_jetpac_80025BB8(MetaJetpacStruct3 *arg0, s32 new_is_flying) {
     arg0->is_flying = new_is_flying;
 }
 
-JetpacStruct *jetpac_get_free_laser(MetaJetpacStruct3 *arg0) {
+JetpacStruct *jetpac_get_free_laser(JetpacPlayerStruct *arg0) {
     s32 i;
     for (i = 0; i < 4; i++) {
         if (arg0->lasers[i].unk0.spatial_state.entity_state == JETPAC_ENTITY_STATE_DEAD) {
@@ -360,7 +360,7 @@ void func_jetpac_80025FC4(JetpacStruct *arg0) {
     }
 }
 
-void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
+void func_jetpac_800260DC(JetpacPlayerStruct *arg0) {
     JetpacStruct *temp_v0;
     s32 temp_f4;
     s32 temp_f16_2;
@@ -405,7 +405,7 @@ void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
     }
 }
 
-void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
+void func_jetpac_80026318(JetpacPlayerStruct* arg0) {
     Competitor* player;
     s8 pad[0x8];
     f32 max_speed_x;
@@ -542,7 +542,7 @@ block_62:
     }
 }
 
-void func_jetpac_80026A3C(MetaJetpacStruct3 *arg0) {
+void func_jetpac_80026A3C(JetpacPlayerStruct *arg0) {
     Competitor *player;
     s32 temp_v0;
 
@@ -673,7 +673,7 @@ int func_jetpac_80026FE0(void) {
     return D_jetpac_8002F064 == 1 && D_jetpac_8002F07C < 0xB4;
 }
 
-void func_jetpac_80027010(MetaJetpacStruct3 *arg0) {
+void func_jetpac_80027010(JetpacPlayerStruct *arg0) {
     if (arg0->explosion_sprite.frame_counter >= 0xE) {
         arg0->explosion_sprite.frame_counter = 0;
         arg0->explosion_sprite.posX = (s32)arg0->spatial_state.posX & 0xFFF8;

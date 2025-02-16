@@ -22,7 +22,7 @@ extern StructJetpac8002BA52 D_jetpac_8002BA52[]; // likely 8002ba50 s32, but rea
 extern s32 D_jetpac_8002BA6C;
 extern u8 D_jetpac_8002BA70;
 
-extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern JetpacGameStruct D_jetpac_8002EC30;
 extern s32 D_jetpac_8002EC48;
 extern s32 D_jetpac_8002BA6C;
 extern s32 D_jetpac_8002EF74;
