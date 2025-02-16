@@ -551,10 +551,10 @@ void func_jetpac_80028BD0(JetpacGroundPlatform *ground_platform, s32 posX, s32 p
     ground_platform->spatial_state.posY = posY;
     ground_platform->spatial_state.velX = 0.0f;
     ground_platform->spatial_state.velY = 0.0f;
-    ground_platform->spatial_state.hue.red = red;
-    ground_platform->spatial_state.hue.green = green;
-    ground_platform->spatial_state.hue.blue = blue;
-    ground_platform->spatial_state.hue.alpha = 0xFF;
+    ground_platform->spatial_state.color.red = red;
+    ground_platform->spatial_state.color.green = green;
+    ground_platform->spatial_state.color.blue = blue;
+    ground_platform->spatial_state.color.alpha = 0xFF;
     ground_platform->spatial_state.unk1C.top = posY;
     ground_platform->spatial_state.unk1C.left = posX;
     // TODO: Why does this need to be on the same line? Just ido being shite?
@@ -624,13 +624,13 @@ void func_jetpac_80028E88(void) {
         platform = &D_jetpac_8002EC30.platforms[i];
         x = platform->spatial_state.posX;
         y = platform->spatial_state.posY;
-        func_jetpac_80025700(&D_jetpac_8002DE68, x, y, &platform->spatial_state.hue, 0);
+        func_jetpac_80025700(&D_jetpac_8002DE68, x, y, &platform->spatial_state.color, 0);
         x += 8;
         for (j = 0; j < platform->unk30; j++)
         {
-            func_jetpac_80025700(&D_jetpac_8002DE80, x, y, &platform->spatial_state.hue, 0);
+            func_jetpac_80025700(&D_jetpac_8002DE80, x, y, &platform->spatial_state.color, 0);
             x += 8;
         }
-        func_jetpac_80025700(&D_jetpac_8002DE98, x, y, &platform->spatial_state.hue, 0);
+        func_jetpac_80025700(&D_jetpac_8002DE98, x, y, &platform->spatial_state.color, 0);
     }
 }

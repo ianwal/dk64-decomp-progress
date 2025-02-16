@@ -195,24 +195,24 @@ void func_jetpac_80025904(Gfx **arg0) {
     *arg0 = dl;
 }
 
-void func_jetpac_80025A60(Struct80025A60 *arg0) {
+void func_jetpac_80025A60(ExplosionSpriteState *arg0) {
     s32 sp2C;
 
-    sp2C = (arg0->unk8 / 14.0f) * 6.0f;
-    if ((arg0->unk8 % 7) == 0) {
+    sp2C = (arg0->frame_counter / 14.0f) * 6.0f;
+    if ((arg0->frame_counter % 7) == 0) {
         if (func_jetpac_80027210() < 0.5) {
-            arg0->unkC.green = 0;
+            arg0->color.green = 0;
         } else {
-            arg0->unkC.green = 0xFF;
+            arg0->color.green = 0xFF;
         }
         if (func_jetpac_80027210() < 0.5) {
-            arg0->unkC.blue = 0;
+            arg0->color.blue = 0;
         } else {
-            arg0->unkC.blue = 0xFF;
+            arg0->color.blue = 0xFF;
         }
     }
-    func_jetpac_80025700(&D_jetpac_8002B9C0[sp2C], arg0->unk0, arg0->unk4, &arg0->unkC, 0);
-    arg0->unk8++;
+    func_jetpac_80025700(&D_jetpac_8002B9C0[sp2C], arg0->posX, arg0->posY, &arg0->color, 0);
+    arg0->frame_counter++;
 }
 
 s32 func_jetpac_80025B70(JetpacSpatialState *arg0) {
@@ -354,7 +354,7 @@ void func_jetpac_80025FC4(JetpacStruct *arg0) {
             } else {
                 var_a0 = 2;
             }
-            func_jetpac_80025F48(var_a0, &sp6C, var_s4, temp_s7, &arg0->unk0.spatial_state.hue, temp_s5);
+            func_jetpac_80025F48(var_a0, &sp6C, var_s4, temp_s7, &arg0->unk0.spatial_state.color, temp_s5);
             var_s1 += 1;
         }
     }
@@ -389,13 +389,13 @@ void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
         temp_v0->unk0.spatial_state.unk1C.bottom = temp_f16_2 + 1;
         temp_v0->unk0.spatial_state.unk1C.top = temp_f16_2;
         temp_f4 = func_jetpac_80027210() * 3.0f;
-        temp_v0->unk0.spatial_state.hue.red = 0xFF;
-        temp_v0->unk0.spatial_state.hue.green = 0xFF;
+        temp_v0->unk0.spatial_state.color.red = 0xFF;
+        temp_v0->unk0.spatial_state.color.green = 0xFF;
         if (temp_f4 < 2) {
-            temp_v0->unk0.spatial_state.hue.as_array[temp_f4] = 0;
+            temp_v0->unk0.spatial_state.color.as_array[temp_f4] = 0;
         }
-        temp_v0->unk0.spatial_state.hue.blue = 0xFF;
-        temp_v0->unk0.spatial_state.hue.alpha = 1;
+        temp_v0->unk0.spatial_state.color.blue = 0xFF;
+        temp_v0->unk0.spatial_state.color.alpha = 1;
         temp_v0->unk0.spatial_state.unk14 = 3;
         temp_v0->unk0.spatial_state.unk1C.counter = 0;
         temp_v0->unk0.counter_limit = (s32)(func_jetpac_80027210() * 8.0f) + 0xD;
@@ -674,9 +674,9 @@ int func_jetpac_80026FE0(void) {
 }
 
 void func_jetpac_80027010(MetaJetpacStruct3 *arg0) {
-    if (arg0->unk3C.unk8 >= 0xE) {
-        arg0->unk3C.unk8 = 0;
-        arg0->unk3C.unk0 = (s32)arg0->spatial_state.posX & 0xFFF8;
-        arg0->unk3C.unk4 = arg0->spatial_state.posY + 7.0f;
+    if (arg0->explosion_sprite.frame_counter >= 0xE) {
+        arg0->explosion_sprite.frame_counter = 0;
+        arg0->explosion_sprite.posX = (s32)arg0->spatial_state.posX & 0xFFF8;
+        arg0->explosion_sprite.posY = arg0->spatial_state.posY + 7.0f;
     }
 }

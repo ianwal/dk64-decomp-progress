@@ -2399,11 +2399,11 @@ typedef union rgba {
 } rgba;
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    rgba unkC;
-} Struct80025A60;
+    s32 posX;
+    s32 posY;
+    s32 frame_counter;
+    rgba color;
+} ExplosionSpriteState;
 
 // These bounds are in "local space", but for static objects they seem to be absolute
 typedef struct JetpacSpawningInfoSub {
@@ -2419,7 +2419,7 @@ typedef struct JetpacSpatialState {
     f32 posY; // 0x4
     f32 velX; // 0x8
     f32 velY; // 0xC
-    rgba hue; // 0x10
+    rgba color; // 0x10
     s32 unk14; // 0x14
     s32 is_facing_left; // 0x18
     JetpacSpawningInfoSub unk1C;
@@ -2427,7 +2427,7 @@ typedef struct JetpacSpatialState {
 
 typedef struct JetpacStructSub0 {
     JetpacSpatialState spatial_state;
-    Struct80025A60 unk30;
+    ExplosionSpriteState explosion_sprite;
     u32 counter_limit; // 0x40
     s32 score_value; // 0x44
 } JetpacStructSub0;
@@ -2460,7 +2460,7 @@ typedef struct {
     s32 is_flying;
     s32 ground_platform_index;
     s32 laser_delay_counter;
-    Struct80025A60 unk3C;
+    ExplosionSpriteState explosion_sprite;
     JetpacStruct lasers[4];
 } MetaJetpacStruct3;
 
