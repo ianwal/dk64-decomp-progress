@@ -47,10 +47,6 @@ void func_critter_80027340(s32 arg0) {
     }
 }
 
-// Jumptable, close
-// https://decomp.me/scratch/wrAMt
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80027448.s")
-
 typedef struct {
     s16 unk0;
 } AAD_critter_80027448;
@@ -61,10 +57,9 @@ typedef struct {
 } Struct807446E0;
 
 extern s16 D_global_asm_807446D0[];
-extern Struct807446E0 D_global_asm_807446E0[];
+extern s8 D_global_asm_807446E0[];
 extern u16 D_global_asm_807FC930[];
 
-/*
 void func_critter_80027448(void) {
     s32 levelIndex; // sp6C
     s32 pad; // sp68
@@ -75,7 +70,7 @@ void func_critter_80027448(void) {
     f32 dz; // sp54
     f32 d; // sp50
     s32 pad3;
-    s32 pad4;
+    f32 temp;
     s8 sp47;
     s8 sp46;
     f32 dy;
@@ -113,18 +108,19 @@ void func_critter_80027448(void) {
         D_critter_8002A1B0 = 0.0f;
         D_critter_80029F84[0] = 0;
         D_critter_80029F80[0] = 0;
-    } else if (D_critter_80029F84[0] != 0) {
-        if (current_character_index[0] == D_global_asm_807446E0[levelIndex].unk1) {
+    } else if (D_critter_80029F84[0]) {
+        // yuck
+        if (current_character_index[0] == D_global_asm_807446E0[(levelIndex + levelIndex) + 1]) {
             if ((func_global_asm_806FB418() < sp64) && (levelIndex != 7)) {
-                sp64 = D_global_asm_807446E0[levelIndex].unk0;
-                sp47 = 1;
+                sp64 = D_global_asm_807446E0[levelIndex + levelIndex];
+                sp47 = TRUE;
             }
             if (levelIndex == 7) {
                 if (D_critter_80029F84[0] == 1) {
-                    sp46 = 1;
+                    sp46 = TRUE;
                 } else {
-                    sp47 = 1;
-                    sp64 = D_global_asm_807446E0[7].unk0;
+                    sp64 = D_global_asm_807446E0[7 + 7];
+                    sp47 = TRUE;
                 }
             }
         }
@@ -141,13 +137,17 @@ void func_critter_80027448(void) {
             playCutscene(current_actor_pointer, 1, 1);
             setFlag(PERMFLAG_FTT_B_LOCKER, TRUE, FLAG_TYPE_PERMANENT);
         } else if ((sp46 != 0) && (d < 200.0) && (func_global_asm_8061CB50() == 0) && (player_pointer->control_state == 0x24) && (player_pointer->control_state_progress == 2) && (dz > -35.0)) {
-            if ((dx > -27.0) && (dx < 27.0) && ((((player_pointer->y_rotation < 0x200) != 0)) || (player_pointer->y_rotation >= 0xE01))) {
-                D_critter_80029F84[0] = 2;
-                playSound(0x145, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
-                func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xA, 0xA);
-                current_actor_pointer->control_state_progress = 0xA;
-                aaD->unk0 = 0;
-                playActorAnimation(current_actor_pointer, 0x3A1);
+            if (dx > -27.0) {
+                if (dx < 27.0) {
+                    if ((((player_pointer->y_rotation < 0x200)) || (player_pointer->y_rotation > 0xE00))) {
+                        D_critter_80029F84[0] = 2;
+                        playSound(0x145, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
+                        func_global_asm_8061F0B0(D_global_asm_807F5D10, 0xA, 0xA);
+                        current_actor_pointer->control_state_progress = 0xA;
+                        aaD->unk0 = 0;
+                        playActorAnimation(current_actor_pointer, 0x3A1);
+                    }
+                }
             }
         }
         switch (current_actor_pointer->control_state_progress) {
@@ -242,7 +242,7 @@ void func_critter_80027448(void) {
         }
         D_critter_8002A1B0 = d;
         if (newly_pressed_input[0] != 0) {
-            if (D_critter_80029F90[D_critter_80029F80[0]] & newly_pressed_input[0]) {
+            if (newly_pressed_input[0] & D_critter_80029F90[D_critter_80029F80[0]]) {
                 D_critter_80029F80[0]++;
                 if (D_critter_80029F80[0] == 4) {
                     D_critter_80029F80[0] = 0;
@@ -262,7 +262,6 @@ void func_critter_80027448(void) {
         current_actor_pointer->noclip_byte = 1;
     }
 }
-*/
 
 void func_critter_80027DC0(void) {
     s32 temp[2];
