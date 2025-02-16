@@ -28,7 +28,6 @@ const char D_global_asm_8075AAE4[] = "SHARED";
 
 extern s8 D_global_asm_80750560[];
 extern s8 D_global_asm_80750530[];
-extern s16 D_global_asm_807505AE[];
 extern s16 D_global_asm_807505B8[];
 
 extern char **D_global_asm_807FC7E0;
@@ -651,9 +650,8 @@ Gfx *printText(Gfx *dl, s16 x, s16 y, f32 scale, char *string) {
 // doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ABC94.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_ACDC0/func_global_asm_806ABE3C.s")
+extern s16 D_global_asm_807505B0[]; // TODO: Is this a real symbol?
 
-/*
 void func_global_asm_806ABE3C(void) {
     CharacterProgress *var_a1;
     s32 var_s0;
@@ -680,7 +678,6 @@ void func_global_asm_806ABE3C(void) {
     D_global_asm_807FC832 = countSetFlags(PERMFLAG_ITEM_FAIRY_JAPES_POOL, 20, FLAG_TYPE_PERMANENT);
     D_global_asm_807FC82E = countSetFlags(PERMFLAG_ITEM_MEDAL_JAPES_DK, 40, FLAG_TYPE_PERMANENT);
 
-    // TODO: Get rid of this empty if statement, I don't like doing this...
     if (var_s0);
 
     var_s0 = 0;
@@ -695,12 +692,11 @@ void func_global_asm_806ABE3C(void) {
     D_global_asm_807FC836 = countSetFlags(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, 40, FLAG_TYPE_PERMANENT);
     D_global_asm_80750530[0] = 1;
     for (i = 1; i < 5; i++) {
-        // TODO: Problem here
-        D_global_asm_80750530[i] = isFlagSet(D_global_asm_807505AE[i], FLAG_TYPE_PERMANENT);
+        // TODO: Fakematch? D_global_asm_807505B0 symbol might not be real
+        D_global_asm_80750530[i] = isFlagSet(D_global_asm_807505B0[i - 1], FLAG_TYPE_PERMANENT);
     }
     D_global_asm_807FC838 = 1;
 }
-*/
 
 Gfx *func_global_asm_806AC048(Gfx *dl, Actor *arg1) {
     return func_global_asm_80703374(dl, 0, 0, 0, 0x46);

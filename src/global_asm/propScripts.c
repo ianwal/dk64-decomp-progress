@@ -899,7 +899,7 @@ void func_global_asm_80645F40(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646058.s")
 
-// doable, rodata
+// doable, rodata, close, regalloc s registers
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/propScripts/func_global_asm_80646770.s")
 
 extern f32 D_global_asm_807480F0;
@@ -909,29 +909,27 @@ typedef struct InstanceData80646770 {
 
 /*
 void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg3) {
-    f32 dx, dy, dz;
-    InstanceData80646770 *var_v1;
     s32 old;
     s32 count;
+    InstanceData80646770 *var_v1;
     u8 found;
 
     found = FALSE;
     if (arg0->unk0 == NULL) {
-        var_v1 = malloc(sizeof(InstanceData80646770));
-        arg0->unk0 = var_v1;
+        var_v1 = arg0->unk0 = malloc(sizeof(InstanceData80646770));
         var_v1->unk0 = 0;
     }
     var_v1 = arg0->unk0;
     count = D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0];
-    old = var_v1->unk0++;
-    if (count == var_v1->unk0) {
+    old = var_v1->unk0;
+    if (count == ++var_v1->unk0) {
         var_v1->unk0 = 0;
     }
     while (!found && old != var_v1->unk0) {
-        dz = character_change_array->look_at_eye_z - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8;
-        dy = character_change_array->look_at_eye_y - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk4;
-        dx = character_change_array->look_at_eye_x - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk0;
-        if (sqrtf(SQ(dy) + SQ(dx) + SQ(dz)) < D_global_asm_807480F0) {
+        if (sqrtf(
+            SQ((character_change_array->look_at_eye_x - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk0)) +
+            SQ((character_change_array->look_at_eye_y - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk4)) +
+            SQ((character_change_array->look_at_eye_z - D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8))) < D_global_asm_807480F0) {
             found = TRUE;
             func_global_asm_807149B8(1);
             func_global_asm_80714998(3);
@@ -939,12 +937,14 @@ void func_global_asm_80646770(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg
             func_global_asm_8071498C(func_global_asm_8071E3EC);
             func_global_asm_807149A8(0x320);
             drawSpriteAtPosition(
-                &D_global_asm_80720BC4, 2.5f,
+                &D_global_asm_80720BC4,
+                2.5f,
                 D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk0,
                 D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk4,
-                D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8);
+                D_global_asm_807F5FD4->unk0[0][var_v1->unk0].unk8
+            );
         } else {
-            var_v1->unk0++;
+            old = ++var_v1->unk0;
             if (count == var_v1->unk0) {
                 var_v1->unk0 = 0;
             }
@@ -1478,7 +1478,7 @@ void func_global_asm_8064911C(s32 arg0, s16 arg1, s32 arg2, s32 arg3) {
 
 extern s8 D_global_asm_80748170[];
 extern s8 D_global_asm_80748178;
-extern s16 D_global_asm_807505AE[];
+extern s16 D_global_asm_807505B0[];
 
 extern u8 D_global_asm_807446F0[];
 
@@ -1513,7 +1513,7 @@ void func_global_asm_806491F4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s32 arg
         }
         D_global_asm_80748178 = temp;
         var_v0 = D_global_asm_80748170[temp >> 2];
-        if (temp >> 2 > 0 && !isFlagSet(D_global_asm_807505AE[temp >> 2], 0)) {
+        if (temp >> 2 > 0 && !isFlagSet(D_global_asm_807505B0[temp >> 2], 0)) {
             pad = 5;
         } else {
             pad = 0;

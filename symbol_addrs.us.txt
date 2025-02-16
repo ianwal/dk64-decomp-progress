@@ -574,7 +574,6 @@ D_global_asm_8074451C = 0x8074451C;
 D_global_asm_80744538 = 0x80744538;
 D_global_asm_807446E0 = 0x807446E0;
 D_global_asm_80745844 = 0x80745844;
-D_global_asm_807505AE = 0x807505AE;
 
 D_global_asm_80761680 = 0x80761680;
 

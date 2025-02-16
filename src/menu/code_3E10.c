@@ -1090,30 +1090,25 @@ void func_menu_8002CB18(void) {
     Menu80033894 *temp_v0_4;
 
     aaD1 = current_actor_pointer->additional_actor_data;
-    delete_actor = FALSE;
     aad2 = aaD1->controller->additional_actor_data;
+    delete_actor = FALSE;
     func_global_asm_806BF920();
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        temp_v0 = current_actor_pointer->animation_state;
-        temp_v0->scale[0] *= 2.0f;
-        temp_v0 = current_actor_pointer->animation_state;
-        temp_v0->scale[1] *= 2.0f;
-        temp_v0 = current_actor_pointer->animation_state;
-        temp_v0->scale[2] *= 2.0f;
+        current_actor_pointer->animation_state->scale[0] *= 2.0f;
+        current_actor_pointer->animation_state->scale[1] *= 2.0f;
+        current_actor_pointer->animation_state->scale[2] *= 2.0f;
         playActorAnimation(current_actor_pointer, D_menu_800338B4[aaD1->unk8][current_actor_pointer->control_state_progress & 0xF]);
         func_global_asm_806F0C18(current_actor_pointer);
         current_actor_pointer->object_properties_bitfield |= 0x1000;
         aaD1->unk4 = D_global_asm_8076A100[current_actor_pointer->control_state & 0xF];
         func_global_asm_8068A4C8(current_actor_pointer, current_actor_pointer->control_state_progress + 2, D_global_asm_8076A100[current_actor_pointer->control_state & 0xF]);
     }
-    var_t0 = current_actor_pointer->control_state;
-    if (!(var_t0 & 0x80)) {
-        if (aaD1->unk4 != D_global_asm_8076A100[var_t0]) {
+    if (!(current_actor_pointer->control_state & 0x80)) {
+        if (aaD1->unk4 != D_global_asm_8076A100[current_actor_pointer->control_state]) {
             func_global_asm_8068A4C8(current_actor_pointer, current_actor_pointer->control_state_progress + 2, D_global_asm_8076A100[var_t0]);
             aaD1->unk4 = D_global_asm_8076A100[current_actor_pointer->control_state];
-            var_t0 = current_actor_pointer->control_state;
         }
-        temp_t7 = D_global_asm_8076A0E4[var_t0] & 0x7F;
+        temp_t7 = D_global_asm_8076A0E4[current_actor_pointer->control_state] & 0x7F;
         if (temp_t7 != current_actor_pointer->control_state_progress) {
             spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_menu_8003386C[temp_t7]);
             last_spawned_actor->unk17C->unk0_s16[0] = D_menu_8003386C[temp_t7];
@@ -1121,9 +1116,8 @@ void func_menu_8002CB18(void) {
             last_spawned_actor->control_state_progress = temp_t7;
             ((MultiKongAAD *)last_spawned_actor->additional_actor_data)->controller = aaD1->controller;
             delete_actor = TRUE;
-            var_t0 = current_actor_pointer->control_state;
         }
-        temp_v0_4 = &D_menu_80033894[var_t0];
+        temp_v0_4 = &D_menu_80033894[current_actor_pointer->control_state];
         func_menu_800317E8(aad2, temp_v0_4->unk0, temp_v0_4->unk4, &x, &y, 2, 0, 1.8f);
         current_actor_pointer->x_position = player_pointer->x_position + (x - 160.0f);
         current_actor_pointer->y_position = (player_pointer->y_position - (y - 120.0f)) - 20.0f;
@@ -1136,7 +1130,7 @@ void func_menu_8002CB18(void) {
     } else {
         temp_s1_2 = 0x140 / D_menu_80033878;
         func_menu_800317E8(aad2, 160.0f, 150.0f, &x, &y, 2, 0, 1.8f);
-        temp_f10 = ((D_80033F24[var_t0 & 0xF] * temp_s1_2) + (temp_s1_2 >> 1)) - 0xA0;
+        temp_f10 = ((D_80033F24[current_actor_pointer->control_state & 0xF] * temp_s1_2) + (temp_s1_2 >> 1)) - 0xA0;
         current_actor_pointer->x_position = player_pointer->x_position + (temp_f10 * 0.78);
         current_actor_pointer->y_position = (player_pointer->y_position - (y - 120.0f)) + 16.0f;
         current_actor_pointer->z_position = player_pointer->z_position - 300.0f;

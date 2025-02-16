@@ -623,7 +623,7 @@ void func_global_asm_8070E548(Actor *arg0, u16 arg1, u8 arg2) {
         var_s1++;
     }
 }
-*/
+    */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/getTextString.s")
 

@@ -204,14 +204,8 @@ void func_menu_80025FB4(MenuStruct1 *arg0, CharacterProgress *arg1, s32 arg2) {
 
     found_purchase = FALSE;
     latest_level_entered = 6;
-    if (!isFlagSet(PERMFLAG_LEVEL_ENTERED_CASTLE, FLAG_TYPE_PERMANENT)) {
-loop_1:
+    while (latest_level_entered >= 0 && !isFlagSet(latest_level_entered + PERMFLAG_LEVEL_ENTERED_JAPES, FLAG_TYPE_PERMANENT)) {
         latest_level_entered--;
-        if (latest_level_entered >= 0) {
-            if (!isFlagSet(latest_level_entered + PERMFLAG_LEVEL_ENTERED_JAPES, FLAG_TYPE_PERMANENT)) {
-                goto loop_1;
-            }
-        }
     }
     latest_level_entered++;
     arg0->unkC = getLevelIndex(D_global_asm_8076A0AB, FALSE);
