@@ -219,15 +219,15 @@ s32 func_jetpac_80025B70(JetpacSpatialState *arg0) {
     return (((s32) arg0->posX + arg0->unk1C.left) / 2) % 4;
 }
 
-void func_jetpac_80025BB8(MetaJetpacStruct3 *arg0, s32 arg1) {
-    if ((arg1 == 0) && (arg0->unk30 != 0)) {
+void func_jetpac_80025BB8(MetaJetpacStruct3 *arg0, s32 new_is_flying) {
+    if ((new_is_flying == 0) && (arg0->is_flying != 0)) {
         arg0->spatial_state.posX = (s32)arg0->spatial_state.posX & 0xFFFE;
-    } else if ((arg1 != 0) && (arg0->unk30 == 0)) {
+    } else if ((new_is_flying != 0) && (arg0->is_flying == 0)) {
         func_jetpac_80027010(arg0);
     }
     arg0->spatial_state.unk1C.left = 0;
     arg0->spatial_state.unk1C.right = 0x10;
-    arg0->unk30 = arg1;
+    arg0->is_flying = new_is_flying;
 }
 
 JetpacStruct *jetpac_get_free_laser(MetaJetpacStruct3 *arg0) {
@@ -408,8 +408,8 @@ void func_jetpac_800260DC(MetaJetpacStruct3 *arg0) {
 void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
     Competitor* player;
     s8 pad[0x8];
-    f32 var_f2;
-    f32 var_f12;
+    f32 max_speed_x;
+    f32 max_speed_y;
     s32 holding_fly_input;
     s32 holding_hover_input; 
     s32 holding_fire_input;
@@ -431,10 +431,10 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
         arg0->unk38++;
     }
 
-    if ((holding_fly_input != 0) && ((arg0->unk30 == 0) || (holding_hover_input == 0))) {
+    if ((holding_fly_input != 0) && ((arg0->is_flying == 0) || (holding_hover_input == 0))) {
         func_jetpac_80025BB8(arg0, 1);
         arg0->spatial_state.velY -= 0.2f;
-    } else if (arg0->unk30 != 0) {
+    } else if (arg0->is_flying != 0) {
         if (holding_hover_input != 0) {
             arg0->spatial_state.velY = 0.0f;
         } else {
@@ -442,19 +442,19 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
         }
     }
 
-    if(arg0->unk30);
+    if(arg0->is_flying);
 
     if (holding_left_input != 0) {
         arg0->spatial_state.velX -= 0.33333334f;
         if ((arg0->spatial_state.is_facing_left == 0) && (arg0->spatial_state.velX <= 0.0f)) {
             arg0->spatial_state.is_facing_left = 1;
-            func_jetpac_80025BB8(arg0, arg0->unk30);
+            func_jetpac_80025BB8(arg0, arg0->is_flying);
         }
     } else if (holding_right_input != 0) {
         arg0->spatial_state.velX += 0.33333334f;
         if ((arg0->spatial_state.is_facing_left != 0) && (arg0->spatial_state.velX >= 0.0f)) {
             arg0->spatial_state.is_facing_left = 0;
-            func_jetpac_80025BB8(arg0, arg0->unk30);
+            func_jetpac_80025BB8(arg0, arg0->is_flying);
         }
     } else {
         if (arg0->spatial_state.velX > 0.0f) {
@@ -464,16 +464,16 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
         }
     }
 
-    if (arg0->unk30 != 0) {
-        var_f2 = 2.0f;
-        var_f12 = 2.0f;
+    if (arg0->is_flying != 0) {
+        max_speed_x = 2.0f;
+        max_speed_y = 2.0f;
     } else {
-        var_f2 = 1.0f;
-        var_f12 = 0.0f;
+        max_speed_x = 1.0f;
+        max_speed_y = 0.0f;
     }
 
-    arg0->spatial_state.velX = CLAMP(arg0->spatial_state.velX, -var_f2, var_f2);
-    arg0->spatial_state.velY = CLAMP(arg0->spatial_state.velY, -var_f12, var_f12);
+    arg0->spatial_state.velX = CLAMP(arg0->spatial_state.velX, -max_speed_x, max_speed_x);
+    arg0->spatial_state.velY = CLAMP(arg0->spatial_state.velY, -max_speed_y, max_speed_y);
 
     if ((arg0->spatial_state.velX < 0.1) && (arg0->spatial_state.velX > -0.1)) {
         arg0->spatial_state.velX = 0.0f;
@@ -482,7 +482,7 @@ void func_jetpac_80026318(MetaJetpacStruct3* arg0) {
         arg0->spatial_state.velY = 0.0f;
     }
 
-    if (arg0->unk30 != 0) {
+    if (arg0->is_flying != 0) {
         other_index = func_jetpac_80028CF8(
             arg0->spatial_state.unk1C.left + arg0->spatial_state.posX + arg0->spatial_state.velX,
             arg0->spatial_state.unk1C.top + arg0->spatial_state.posY + arg0->spatial_state.velY,

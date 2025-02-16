@@ -2457,7 +2457,7 @@ typedef struct {
 
 typedef struct {
     JetpacSpatialState spatial_state;
-    s32 unk30;
+    s32 is_flying;
     s32 unk34;
     s32 unk38;
     Struct80025A60 unk3C;
