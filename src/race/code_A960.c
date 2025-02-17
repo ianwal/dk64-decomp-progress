@@ -298,7 +298,7 @@ void func_race_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F490.s")
 
-// close
+// close, doable, float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F784.s")
 
 typedef struct {
@@ -315,47 +315,47 @@ typedef struct {
 
 /*
 f32 func_race_8002F784(Struct8002F784 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) {
-    s32 sp54;
-    f32 temp;
-    f32 temp2;
-    f32 var_f20;
-    f32 var_f22;
-    f32 var_f24;
-    s32 temp_s1;
-    s32 i;
-    s32 var_s2;
-    s32 var_s4;
-    s32 var_v0;
+    f32 ret; // f20
+    s32 n1;
+    s32 boolCheck; // s2
+    s32 n2;
+    s32 sign;
     Struct8002E9AC *temp_s0;
-
-    i = (arg1->unk37 * arg0->unk0) + arg1->unk3A;
-    var_s4 = (arg2->unk37 * arg0->unk0) + arg2->unk3A;
-    sp54 = var_s4 - i;
-    var_f20 = arg1->unk40 - arg2->unk40;
-    if (sp54 < 0) {
-        temp_s1 = i ^ var_s4;
-        var_s4 ^= temp_s1;
-        i = temp_s1 ^ var_s4;
-        var_f20 = -var_f20;
+    s32 d;
+    
+    n1 = (arg1->unk37 * arg0->unk0) + arg1->unk3A;
+    n2 = (arg2->unk37 * arg0->unk0) + arg2->unk3A;
+    d = n2 - n1;
+    ret = arg1->unk40 - arg2->unk40;
+    if (d < 0) {
+        s32 temp_s1;
+        temp_s1 = n1 ^ n2;
+        n2 = n2 ^ temp_s1;
+        n1 = temp_s1 ^ n2;
+        ret = -ret;
     }
-    var_s2 = 1;
-    if (i != var_s4) {
-        for (; i <= var_s4; i++) {
-            temp_s0 = func_race_8002E9AC(arg0->unk4[i % arg0->unk0]);
-            var_s2 = 0;
-            if (var_s2 == 0) {
-                var_f20 += func_race_8002F304(temp_s0, var_f22, var_f24);
+    boolCheck = 1;
+    if (n1 != n2) {
+        f32 var_f22;
+        f32 var_f24;
+        while (n1 <= n2) {
+            u16 temp = arg0->unk4[n1 % arg0->unk0];
+            temp_s0 = func_race_8002E9AC(temp);
+            if (!boolCheck) {
+                boolCheck = 0;
+                ret += func_race_8002F304(temp_s0, var_f22, var_f24);
             }
+            n1++;
             var_f22 = temp_s0->unk0;
             var_f24 = temp_s0->unk4;
         }
     }
-    if (sp54 >= 0) {
-        var_v0 = 1;
+    if (d >= 0) {
+        sign = 1;
     } else {
-        var_v0 = -1;
+        sign = -1;
     }
-    return var_f20 * var_v0;
+    return ret * sign;
 }
 */
 
@@ -364,9 +364,6 @@ f32 func_race_8002F90C(RaceStruct6 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg2) 
     f32 temp2 = arg2->unk24 * arg0->unk0;
     return temp / temp2;
 }
-
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F950.s")
 
 // TODO: Any struct overlap with existing structs?
 typedef struct Struct8002F950 {
@@ -419,15 +416,15 @@ typedef struct Struct8002F950_temp_v0 {
     s16 unk8;
 } Struct8002F950_temp_v0;
 
-/*
 void func_race_8002F950(Struct8002F950 *arg0) {
     s32 i;
     s32 k;
     s32 var_s2;
     s32 j;
-    s32 var_t3;
     Struct8002F950_temp_v0 *temp_v0;
     Struct8002F950_temp_v0_2 *cpoint;
+    f32 d;
+    tuple_f *t;
 
     temp_v0 = func_race_8002E960(arg0->unk26);
     if (temp_v0 == NULL) {
@@ -438,11 +435,13 @@ void func_race_8002F950(Struct8002F950 *arg0) {
         if (cpoint->unk10) {
             var_s2 = 0;
             for (i = 0; i < cc_number_of_players; i++) {
-                var_t3 = 0;
-                if (302500.0f < (SQ(character_change_array[i].look_at_eye_x - cpoint->unk0) + SQ(character_change_array[i].look_at_eye_y - cpoint->unk2) + SQ(character_change_array[i].look_at_eye_z - cpoint->unk4))) {
-                    var_t3 = 1;
-                }
-                var_s2 |= var_t3;
+                t = &character_change_array[i].look_at_eye_x;
+                d = (
+                    SQ(t->z - cpoint->unk4) +
+                    (SQ(t->x - cpoint->unk0) +
+                    SQ(t->y - cpoint->unk2))
+                );
+                var_s2 |= (d > 302500.0f);
             }
             if (var_s2 != cpoint->unk24) {
                 for (k = 0; k < 2; k++) {
@@ -459,4 +458,3 @@ void func_race_8002F950(Struct8002F950 *arg0) {
         }
     }
 }
-*/
