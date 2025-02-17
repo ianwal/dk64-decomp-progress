@@ -2388,32 +2388,61 @@ typedef struct global_asm_struct_17 {
     s8 unk3;
 } GlobalASMStruct17;
 
+typedef union rgba {
+    struct {
+        u8 red;
+        u8 green;
+        u8 blue;
+        u8 alpha;
+    };
+    u8 as_array[4];
+} rgba;
+
+typedef struct {
+    s32 posX;
+    s32 posY;
+    s32 frame_counter;
+    rgba color;
+} ExplosionSpriteState;
+
+// These bounds are in "local space", but for static objects they seem to be absolute
+typedef struct JetpacSpawningInfoSub {
+    s32 left; // 0x1C
+    s32 top; // 0x20
+    s32 right; // 0x24
+    s32 bottom; // 0x28
+    s32 counter; // 0x2C
+} JetpacSpawningInfoSub;
+
+typedef enum JetpacEntityState
+{
+    JETPAC_ENTITY_STATE_DEAD = 0,
+    JETPAC_ENTITY_STATE_ALLOCATED = 2, // Not used except for >= check
+    JETPAC_ENTITY_STATE_ACTIVE = 3,
+    JETPAC_ENTITY_STATE_DYING = 4
+} JetpacEntityState;
+
+typedef struct JetpacSpatialState {
+    f32 posX; // 0x0
+    f32 posY; // 0x4
+    f32 velX; // 0x8
+    f32 velY; // 0xC
+    rgba color; // 0x10
+    JetpacEntityState entity_state; // 0x14
+    s32 is_facing_left; // 0x18
+    JetpacSpawningInfoSub unk1C;
+} JetpacSpatialState;
+
 typedef struct JetpacStructSub0 {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    u8 unk10;
-    u8 unk11;
-    u8 unk12;
-    u8 unk13;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    u8 pad1[0x44 - 0x3C];
-    s32   unk44;
+    JetpacSpatialState spatial_state;
+    ExplosionSpriteState explosion_sprite;
+    u32 counter_limit; // 0x40
+    s32 score_value; // 0x44
 } JetpacStructSub0;
 
 typedef struct JetpacStructSub1 {
     void (*unk0)();
-    s32 unk4;
+    void *unk4;
 } JetpacStructSub1;
 
 typedef struct JetpacStruct {
@@ -2421,35 +2450,37 @@ typedef struct JetpacStruct {
     JetpacStructSub1 unk48;
 } JetpacStruct;
 
-typedef struct JetpacItem {
-    u8 unk0;
-} JetpacItem;
+typedef struct {
+    s32 x;
+    s32 y;
+    s32 horizontal_flip;
+    uSprite *draw_sprite;
+} JetpacRenderingCellEntry;
+
+typedef struct {
+    JetpacRenderingCellEntry entries[6];
+    s32 num_entries;
+    rgba hue;
+} JetpacRenderingCell;
+
+typedef struct {
+    JetpacSpatialState spatial_state;
+    s32 is_flying;
+    s32 ground_platform_index;
+    s32 laser_delay_counter;
+    ExplosionSpriteState explosion_sprite;
+    JetpacStruct lasers[4];
+} JetpacPlayerStruct;
 
 typedef struct JetpacPickupStruct JetpacPickupStruct;
 
-typedef struct JetpacSpawningInfoSub {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 counter;
-} JetpacSpawningInfoSub;
-
-typedef struct JetpacSpawningInfo {
-    s32 *sprite;
-    JetpacSpawningInfoSub sub;
-} JetpacSpawningInfo;
-
 typedef struct JetpacPickupPrimary {
-    s32 *sprite[2];
+    uSprite *sprite[2];
     f32 posX;
     f32 posY;
     f32 velX;
     f32 velY;
-    u8 red;
-    u8 green;
-    u8 blue;
-    u8 will_render;
+    rgba color;
     s32 unk1C;
     s32 unk20;
     JetpacSpawningInfoSub unk24;
@@ -2472,28 +2503,17 @@ typedef struct Competitor {
     s32 unk10; //used
     JetpacPickupStruct rocket_segments[3];
     JetpacPickupStruct fuel_item;
-    s32 unk_144;
+    s32 bonus_item_counter_limit;
     JetpacPickupStruct next_bonus_item;
     //u8 unk_190[4];
 } Competitor;
 
-typedef struct JetpacPlayerSub36C {
-    f32 unk0;
-    f32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
+typedef struct Struct8002EF80 {
+    JetpacSpatialState spatial_state;
     s32 unk30;
-} JetpacPlayerSub36C;
+} JetpacGroundPlatform;
 
-typedef struct JetpacPlayerStruct {
+typedef struct JetpacGameStruct {
     s32 unk0;
     s32 unk4;
     s32 unk8;
@@ -2508,7 +2528,7 @@ typedef struct JetpacPlayerStruct {
     s32 player_index;
     s32 unk348;
     s32 unk34C;
-    JetpacPlayerSub36C unk350[4];
+    JetpacGroundPlatform platforms[4];
     f32 unk420;
     f32 unk424;
     f32 unk428;
@@ -2541,7 +2561,7 @@ typedef struct JetpacPlayerStruct {
     u8 unk798;
     u8 unk799;
     u16 unk79A;
-} JetpacPlayerStruct;
+} JetpacGameStruct;
 
 typedef struct ActorSpawner ActorSpawner;
 
@@ -3576,13 +3596,6 @@ typedef struct rgb {
     u8 green;
     u8 blue;
 } rgb;
-
-typedef struct rgba {
-    u8 red;
-    u8 green;
-    u8 blue;
-    u8 alpha;
-} rgba;
 
 typedef struct global_asm_struct_1 {
     u8 unk0; // inSubmap?

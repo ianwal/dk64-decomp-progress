@@ -22,7 +22,7 @@ extern StructJetpac8002BA52 D_jetpac_8002BA52[]; // likely 8002ba50 s32, but rea
 extern s32 D_jetpac_8002BA6C;
 extern u8 D_jetpac_8002BA70;
 
-extern JetpacPlayerStruct D_jetpac_8002EC30;
+extern JetpacGameStruct D_jetpac_8002EC30;
 extern s32 D_jetpac_8002EC48;
 extern s32 D_jetpac_8002BA6C;
 extern s32 D_jetpac_8002EF74;
@@ -139,7 +139,7 @@ void func_jetpac_80024408(Gfx **arg0) {
     for (playerIndex = 0; playerIndex < 2; playerIndex++) {
         if (player->lives > 0) {
             sprintf(sp60, "%d!", player->lives);
-            func_jetpac_8002AEFC(arg0, &sp60, 0x60 + (playerIndex * 0x70), 0x18, 0);
+            func_jetpac_8002AEFC(arg0, sp60, 0x60 + (playerIndex * 0x70), 0x18, 0);
         }
         player++;
     }
@@ -149,11 +149,11 @@ void func_jetpac_80024408(Gfx **arg0) {
     player = &D_jetpac_8002EC30.player[0];
     func_jetpac_8002AE94(0xFF, 0xFF, 0, 0xFF);
     sprintf(sp60, "%06d", player[0].current_score);
-    func_jetpac_8002AEFC(arg0, &sp60, 0x28, 0x20, 0);
+    func_jetpac_8002AEFC(arg0, sp60, 0x28, 0x20, 0);
     sprintf(sp60, "%06d", D_jetpac_8002EC30.unk18);
-    func_jetpac_8002AEFC(arg0, &sp60, 0x88, 0x20, 0);
+    func_jetpac_8002AEFC(arg0, sp60, 0x88, 0x20, 0);
     sprintf(sp60, "%06d", player[1].current_score);
-    func_jetpac_8002AEFC(arg0, &sp60, 0xE8, 0x20, 0);
+    func_jetpac_8002AEFC(arg0, sp60, 0xE8, 0x20, 0);
 }
 
 void func_jetpac_8002463C(void) {
@@ -204,24 +204,22 @@ void func_jetpac_800248A0(Gfx **arg0) {
     func_jetpac_80025904(arg0);
 }
 
-// doable
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_0/func_jetpac_800248E8.s")
-
-/*
-void func_jetpac_800248E8(Gfx **arg0) {
-    Competitor *player;
-    JetpacPickupStruct *rocket;
-
-    player = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
-    if (player->current_score >= 1000000) {
-        player->current_score -= 1000000;
+void func_jetpac_800248E8(Gfx** arg0) {
+    Competitor* competitor = &D_jetpac_8002EC30.player[D_jetpac_8002EC30.player_index];
+    JetpacPickupStruct* rocket_segment;
+    if (competitor->current_score >= 1000000) {
+        competitor->current_score -= 1000000;
     }
+
     func_jetpac_80024408(arg0);
+
+    if (1) {}
+
     func_jetpac_80026D48();
     func_jetpac_80026CEC();
-    player->next_bonus_item.primary_info.unk44(&player->next_bonus_item);
-    rocket = &player->rocket_segments[player->unk10];
-    rocket->primary_info.unk44(rocket);
+    competitor->next_bonus_item.primary_info.unk44(&competitor->next_bonus_item);
+    rocket_segment = &competitor->rocket_segments[competitor->unk10];
+    rocket_segment->primary_info.unk44(rocket_segment);
     func_jetpac_8002ABDC();
     func_jetpac_800255D4(arg0);
     func_jetpac_80028E88();
@@ -231,7 +229,7 @@ void func_jetpac_800248E8(Gfx **arg0) {
     func_jetpac_800285DC();
     func_jetpac_80026CA4();
     func_jetpac_80025904(arg0);
-    if (func_jetpac_80026FE0()) {
+    if (func_jetpac_80026FE0() != 0) {
         D_jetpac_8002EC30.unk44C++;
     }
     if (D_jetpac_8002EC30.unk8 & 0x1000) {
@@ -239,7 +237,6 @@ void func_jetpac_800248E8(Gfx **arg0) {
         D_jetpac_8002EC30.unkC = 1;
     }
 }
-*/
 
 void func_jetpac_80024A4C(void) {
     func_global_asm_8060C648(0x11, 0, 0, 0, D_jetpac_8002EC48);
@@ -321,7 +318,7 @@ void func_jetpac_80024D48(Gfx **arg0) {
         sprintf(sp2C, "GAME OVER PLAYER %d", D_jetpac_8002EC30.player_index + 1);
     }
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
-    func_jetpac_8002AEFC(arg0, &sp2C, (sp4C * 8) + 0x20, 0x88, 0);
+    func_jetpac_8002AEFC(arg0, sp2C, (sp4C * 8) + 0x20, 0x88, 0);
     if (D_jetpac_8002EC30.unk790 >= 0x79U) {
         if (D_jetpac_8002EC30.unk798 != 0) {
             if (D_jetpac_8002EC30.unk799 == 0) {
@@ -346,10 +343,9 @@ void func_jetpac_80024E70(s32 arg0) {
     func_global_asm_80737638(D_global_asm_8076D1F8, D_jetpac_8002BA52[arg0].unk0, 0x7FFF, 0x3F, 1.0f, 0, &D_global_asm_80770DF8[arg0]);
 }
 
-void func_jetpac_80024F24(s32 arg0, s32 arg1) {
+void func_jetpac_80024F24(s32 arg0, f32 arg1) {
     if (D_global_asm_80770DF8[arg0]) {
-        func_global_asm_80737AC4(D_global_asm_80770DF8[arg0], 0x10, arg1);
-        if (arg1) {};
+        func_global_asm_80737AC4(D_global_asm_80770DF8[arg0], 0x10, *(s32*)&arg1);
     }
 }
 

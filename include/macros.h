@@ -13,5 +13,6 @@
 #define ABS_DIFF(a, b) (((b) < (a)) ? ((a) - (b)) : (-((a) - (b))))
 #define SQ(x) ((x) * (x))
 #define reinterpret_cast(type, var) (*((type *)&var))
+#define CLAMP(value, min, max) ((value) < (min) ? (min) : MIN(max, value))
 
 #endif
