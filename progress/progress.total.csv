@@ -3599,7 +3599,7 @@ us,asm,func_global_asm_8064EA48,108,yes
 us,asm,func_global_asm_806EE2B8,412,yes
 version,section,function,length,matching
 us,.menu,func_menu_8002FE08,180,yes
-us,.menu,func_menu_8002FB88,148,no
+us,.menu,func_menu_8002FB88,148,yes
 us,.menu,func_menu_800297B8,756,no
 us,.menu,func_menu_80025AF0,116,yes
 us,.menu,func_menu_80030A90,388,yes
