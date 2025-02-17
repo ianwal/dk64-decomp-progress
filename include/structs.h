@@ -2433,26 +2433,11 @@ typedef struct JetpacSpatialState {
     JetpacSpawningInfoSub unk1C;
 } JetpacSpatialState;
 
-typedef struct JetpacSpatialState {
-    f32 unk0;
-    f32 unk4;
-    f32 unk8;
-    f32 unkC;
-    rgba unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-} JetpacSpatialState;
-
 typedef struct JetpacStructSub0 {
     JetpacSpatialState spatial_state;
-    Struct80025A60 unk30;
-    s32 unk40;
-    s32 unk44;
+    ExplosionSpriteState explosion_sprite;
+    u32 counter_limit;
+    s32 score_value;
 } JetpacStructSub0;
 
 typedef struct JetpacStructSub1 {
@@ -2480,19 +2465,10 @@ typedef struct {
 
 typedef struct {
     JetpacSpatialState spatial_state;
-<<<<<<< HEAD
     s32 is_flying;
     s32 ground_platform_index;
     s32 laser_delay_counter;
     ExplosionSpriteState explosion_sprite;
-=======
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    Struct80025A60 unk3C;
-    // End TODO
-
->>>>>>> 86769468 (Attempting to rework structures since I noticed some overlap)
     JetpacStruct lasers[4];
 } JetpacPlayerStruct;
 
