@@ -902,7 +902,7 @@ typedef struct player_additional_actor_data {
     f32 unk6C; // Used
     s16 unk70; // Used, y rotation?
     s16 unk72;
-    s32 unk74;
+    f32 unk74;
     f32 unk78; // used
     f32 unk7C; // used
     s16 unk80; // used

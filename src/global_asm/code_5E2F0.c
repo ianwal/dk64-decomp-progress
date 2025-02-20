@@ -166,8 +166,6 @@ void func_global_asm_8065A6F8(u16 arg0) {
     D_global_asm_807F7EFE = arg0;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/createLight.s")
-
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -188,7 +186,8 @@ typedef struct {
     s8 unk37;
     s8 unk38;
     s8 unk39;
-    s16 unk3A;
+    s8 unk3A;
+    s8 unk3B;
 } Struct807F7500;
 
 extern Struct807F7500 D_807F7500[];
@@ -199,50 +198,39 @@ extern f32 D_global_asm_807F7EDC;
 extern f32 D_global_asm_807F7EE0;
 extern f32 D_global_asm_807F7EE4;
 
-/*
-// TODO: I think I messed up the order of the writes
-// Either that or it's doing some weird struct copy in one line?
-// Or... We get rid of temp_v0 (shudder)
-// Or... float tuples in the struct?
 void createLight(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA) {
-    Struct807F7500 *temp_v0;
-    s32 slot;
-
-    if (D_global_asm_80748300 != 0x10) {
-        temp_v0 = &D_807F7500[D_global_asm_80748300];
-        temp_v0->unk34 = D_global_asm_807F7EFE;
-        D_807F7500[D_global_asm_80748300].unk3A = D_global_asm_807F7EF8;
-        D_807F7500[D_global_asm_80748300].unk30 = D_global_asm_807F7EFA;
-        D_807F7500[D_global_asm_80748300].unk32 = D_global_asm_807F7EFC;
-        D_807F7500[D_global_asm_80748300].unk8 = D_global_asm_807F7EE8;
-        D_807F7500[D_global_asm_80748300].unk0 = D_global_asm_807F7EE4;
-        D_807F7500[D_global_asm_80748300].unk18 = arg0;
-        D_807F7500[D_global_asm_80748300].unk1C = arg1;
-        D_807F7500[D_global_asm_80748300].unkC = D_global_asm_807F7EDC;
-        D_807F7500[D_global_asm_80748300].unk4 = D_global_asm_807F7ED8;
-        D_807F7500[D_global_asm_80748300].unk39 = arg7;
-        D_global_asm_80748300++;
-        temp_v0->unk10 = D_global_asm_807F7EE0;
-        temp_v0->unk20 = arg2;
-        temp_v0->unk24 = arg3;
-        temp_v0->unk28 = arg4;
-        temp_v0->unk2C = arg5;
-        temp_v0->unk14 = arg6;
-        temp_v0->unk36 = arg8;
-        temp_v0->unk37 = arg9;
-        temp_v0->unk38 = argA;
-        D_global_asm_807F7ED8 = D_global_asm_807F7ECC;
-        D_global_asm_807F7EDC = D_global_asm_807F7ED0;
-        D_global_asm_807F7EF8 = 0;
-        D_global_asm_807F7EFA = -1;
-        D_global_asm_807F7EFC = 700;
-        D_global_asm_807F7EFE = 600;
-        D_global_asm_807F7EE0 = D_global_asm_807F7ED4;
-        D_global_asm_807F7EE4 = 25.0f;
-        D_global_asm_807F7EE8 = 65.0f;
-    }
+    if (D_global_asm_80748300 == 0x10) return;
+    D_807F7500[D_global_asm_80748300].unk34 = D_global_asm_807F7EFE;
+    D_807F7500[D_global_asm_80748300].unk3A = D_global_asm_807F7EF8;
+    D_807F7500[D_global_asm_80748300].unk30 = D_global_asm_807F7EFA;
+    D_807F7500[D_global_asm_80748300].unk32 = D_global_asm_807F7EFC;
+    D_807F7500[D_global_asm_80748300].unk8 = D_global_asm_807F7EE8;
+    D_807F7500[D_global_asm_80748300].unk0 = D_global_asm_807F7EE4;
+    D_807F7500[D_global_asm_80748300].unk18 = arg0;
+    D_807F7500[D_global_asm_80748300].unk1C = arg1;
+    D_807F7500[D_global_asm_80748300].unkC = D_global_asm_807F7EDC;
+    D_807F7500[D_global_asm_80748300].unk4 = D_global_asm_807F7ED8;
+    D_807F7500[D_global_asm_80748300].unk39 = arg7;
+    D_807F7500[D_global_asm_80748300].unk10 = D_global_asm_807F7EE0;
+    D_807F7500[D_global_asm_80748300].unk20 = arg2;
+    D_807F7500[D_global_asm_80748300].unk24 = arg3;
+    D_807F7500[D_global_asm_80748300].unk28 = arg4;
+    D_807F7500[D_global_asm_80748300].unk2C = arg5;
+    D_807F7500[D_global_asm_80748300].unk14 = arg6;
+    D_807F7500[D_global_asm_80748300].unk36 = arg8;
+    D_807F7500[D_global_asm_80748300].unk37 = arg9;
+    D_807F7500[D_global_asm_80748300].unk38 = argA;
+    D_global_asm_80748300++;
+    D_global_asm_807F7ED8 = D_global_asm_807F7ECC;
+    D_global_asm_807F7EDC = D_global_asm_807F7ED0;
+    D_global_asm_807F7EE0 = D_global_asm_807F7ED4;
+    D_global_asm_807F7EF8 = 0;
+    D_global_asm_807F7EFA = -1;
+    D_global_asm_807F7EFC = 700;
+    D_global_asm_807F7EFE = 600;
+    D_global_asm_807F7EE4 = 25.0f;
+    D_global_asm_807F7EE8 = 65.0f;
 }
-*/
 
 // Huge
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_5E2F0/func_global_asm_8065A884.s")

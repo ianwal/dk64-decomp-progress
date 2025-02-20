@@ -709,14 +709,12 @@ s16 func_global_asm_80600174(f32*, f32*, f32*);
 /*
 s16 func_global_asm_80600174(f32 *x, f32 *y, f32 *z) {
     s32 i;
-    Struct8076A160* focused_parent;
     for (i = 0; i < 18; i++) {
         if (D_global_asm_8076A160[i].unk0) {
             if ((D_global_asm_8076A160[i].unk2 & 1)) {
-                focused_parent = &D_global_asm_8076A160[i];
-                *x = focused_parent->xPosition;
-                *y = focused_parent->yPosition;
-                *z = focused_parent->zPosition;
+                *x = D_global_asm_8076A160[i].xPosition;
+                *y = D_global_asm_8076A160[i].yPosition;
+                *z = D_global_asm_8076A160[i].zPosition;
                 return i;
             }
         }

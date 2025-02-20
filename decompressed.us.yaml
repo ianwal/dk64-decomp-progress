@@ -236,7 +236,7 @@ segments:
       - [0x2017B90, c, code_17B90]
       - [0x2018750, c, code_18750]
       - [0x201E200, c, done/code_1E200]
-      - [0x201E2D0, c, code_1E2D0]
+      - [0x201E2D0, c, code_1E2D0] # Hasm, has some issues trying to get it to compile with this
       - [0x201F9A0, bin, code_1F9A0] # Float to Array
       - [0x20201B0, c, code_201B0]
       - [0x202C700, c, code_2C700]
