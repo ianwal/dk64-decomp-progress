@@ -2623,7 +2623,7 @@ us,asm,func_global_asm_80641F68,8,yes
 us,asm,func_global_asm_806E9580,644,yes
 us,asm,__n_setInstChanState,828,yes
 us,asm,func_global_asm_805FEE84,52,yes
-us,asm,func_global_asm_8066AC10,148,no
+us,asm,func_global_asm_8066AC10,148,yes
 us,asm,func_global_asm_8068A810,32,yes
 us,asm,func_global_asm_806D3608,196,yes
 us,asm,func_global_asm_8064E65C,1004,yes

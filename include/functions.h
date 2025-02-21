@@ -1534,7 +1534,7 @@ void func_global_asm_80669A6C(Actor *arg0);
 // TODO: func_global_asm_80669CB4 has no documented signature but has been matched
 // TODO: func_global_asm_80669E04 has no documented signature
 // TODO: func_global_asm_8066A08C has no documented signature
-void func_global_asm_8066A584(s32 arg0, f32 arg1);
+void func_global_asm_8066A584(Struct8066AC10 *arg0, f32 arg1);
 // TODO: func_global_asm_8066A64C has no documented signature
 // TODO: func_global_asm_8066A75C has no documented signature
 // TODO: func_global_asm_8066A834 has no documented signature

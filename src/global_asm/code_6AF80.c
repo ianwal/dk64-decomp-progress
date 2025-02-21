@@ -1017,16 +1017,91 @@ s32 func_global_asm_80669CB4(GlobalASMStruct80 *arg0, f32 arg1, f32 arg2) {
     return TRUE;
 }
 
+// Close, fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_80669E04.s")
+
+typedef struct Struct80669E04 {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+} Struct80669E04;
+
+/*
+u8 func_global_asm_80669E04(Struct80669E04 *arg0, f32 arg1, f32 arg2) {
+    f64 temp_f22;
+    f64 temp_f24;
+    f32 sp58;
+    s32 sp54;
+    f64 var_f0;
+    f64 var_f12;
+    f64 var_f14;
+    f64 var_f16;
+    f64 var_f18;
+    f64 var_f20;
+    f64 var_f2;
+    s32 var_a0;
+    s32 var_a1;
+    s32 i;
+    u8 var_v1;
+
+    var_v1 = FALSE;
+    sp58 = arg0->unk1C;
+    temp_f22 = arg0->unk8 + arg0->unk4;
+    temp_f24 = arg0->unk20 + sp58;
+    temp_f22 *= 0.5;
+    temp_f24 *= 0.5;
+    temp_f22 += arg0->unk0;
+    temp_f22 *= 0.5;
+    temp_f24 += arg0->unk18;
+    temp_f24 *= 0.5;
+    for (i = 0; i < 3; i++) {
+        switch (i) {
+        case 0:
+            var_f18 = arg0->unk18;
+            var_f16 = arg0->unk0;
+            var_f12 = arg0->unk4 - arg0->unk0;
+            var_f14 = arg0->unk1C - arg0->unk18;
+            break;
+        case 1:
+            var_f18 = arg0->unk18;
+            var_f16 = arg0->unk0;
+            var_f12 = arg0->unk8 - arg0->unk0;
+            var_f14 = arg0->unk20 - arg0->unk18;
+            break;
+        case 2:
+            var_f16 = arg0->unk4;
+            var_f12 = arg0->unk8 - arg0->unk4;
+            var_f14 = arg0->unk20 - arg0->unk1C;
+            var_f18 = arg0->unk1C;
+            break;
+        }
+        var_f0 = (arg1 - var_f16) * var_f14;
+        var_f2 = (arg2 - var_f18) * var_f12;
+        var_f20 = ((temp_f22 - var_f16) * var_f14) - ((temp_f24 - var_f18) * var_f12);
+        var_a1 = var_f2 <= var_f0 ? 1 : -1;
+        var_a0 = var_f20 >= 0.0 ? 1 : -1;
+        if (var_a0 != var_a1) {
+            var_v1 = TRUE;
+        }
+    };
+    return !var_v1;
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A08C.s")
 
-s32 func_global_asm_8066AC10(f32);
+s32 func_global_asm_8066AC10(Struct8066AC10 *);
 
-void func_global_asm_8066A584(s32 arg0, f32 arg1) {
+void func_global_asm_8066A584(Struct8066AC10 *arg0, f32 arg1) {
     if (D_global_asm_807F9510 != 0xA) {
         D_global_asm_807F94C0[D_global_asm_807F9510].unk0 = arg1;
-        if (func_global_asm_8066AC10(arg1) != 0) {
+        if (func_global_asm_8066AC10(arg0)) {
             D_global_asm_807F94C0[D_global_asm_807F9510].unk6 = 1;
         } else {
             D_global_asm_807F94C0[D_global_asm_807F9510].unk6 = 2;
@@ -1043,10 +1118,71 @@ void func_global_asm_8066A584(s32 arg0, f32 arg1) {
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A75C.s")
 
+/*
+void func_global_asm_8066A75C(Actor *arg0, u32 arg1, f32 *arg2, f32 arg3, f32 *arg4) {
+    Mtx *temp;
+    f32 sp78;
+    f32 sp74;
+    f32 sp70;
+    u8 var_v0;
+    f32 sp28[4][4];
+
+    sp78 = *arg2;
+    sp74 = *arg4;
+    if (object_timer == arg0->ledge_info_pointer->unk88) {
+        var_v0 = D_global_asm_807444FC;
+    } else {
+        var_v0 = D_global_asm_807444FC ^ 1;
+    }
+    temp = arg0->ledge_info_pointer->unk74[var_v0];
+    if (arg1 == -1U) {
+        memcpy(sp28, arg0->ledge_info_pointer->unk70, sizeof(Mtx));
+    } else {
+        guMtxL2F(sp28, &temp[arg1 >> 6]);
+    }
+    guMtxXFMF(sp28, sp78, arg3, sp74, arg2, &sp70, arg4);
+}
+*/
+
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A834.s")
 
 // TODO: Hmmm, matrix?
+
+
+/*
+s32 func_global_asm_8066A834(Struct8066AC10 *arg0, f32 arg1, f32 arg2) {
+    f32 sp20;
+    f32 sp1C;
+    f32 var_f0;
+    f32 var_f12;
+
+    var_f12 = MIN(arg0->unk24, arg0->unk28);
+    if (!(var_f12 < arg0->unk2C)) {
+        var_f12 = arg0->unk2C;
+    }
+    sp20 = MIN(arg0->unk3C, arg0->unk40);
+    if (!(sp20 < arg0->unk44)) {
+        sp20 = arg0->unk44;
+    }
+    sp1C = MIN(arg0->unk28, arg0->unk24);
+    if (!(arg0->unk2C < sp1C)) {
+        sp1C = arg0->unk2C;
+    }
+    var_f0 = MIN(arg0->unk40, arg0->unk3C);
+    if (!(arg0->unk44 < var_f0)) {
+        var_f0 = arg0->unk44;
+    }
+    return (
+        !(arg1 < var_f12) &&
+        !(sp1C < arg1) &&
+        !(arg2 < sp20) && 
+        var_f0 < arg2) ? 1 : 0;
+}
+*/
+
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A988.s")
+
 typedef struct {
     f32 unk0;
     f32 unk4;
@@ -1056,76 +1192,21 @@ typedef struct {
     f32 unk14;
     f32 unk18;
     f32 unk1C;
-    f32 unk20;
-    f32 unk24;
-    f32 unk28;
-    f32 unk2C;
-    f32 unk30;
-    f32 unk34;
-    f32 unk38;
-    f32 unk3C;
-    f32 unk40;
-    f32 unk44;
-} Struct8066AC10;
+} Struct8066AC10_stack;
 
-/*
-s32 func_global_asm_8066A834(Struct8066AC10 *arg0, f32 arg1, f32 arg2) {
-    f32 sp1C;
-    f32 sp20;
-    f32 var_f0;
-    f32 var_f12;
-
-    if (arg0->unk24 < arg0->unk28) {
-        var_f12 = arg0->unk24;
-    } else {
-        var_f12 = arg0->unk28;
-    }
-    if (!(var_f12 < arg0->unk2C)) {
-        var_f12 = arg0->unk2C;
-    }
-    if (arg0->unk3C < arg0->unk40) {
-        sp20 = arg0->unk3C;
-    } else {
-        sp20 = arg0->unk40;
-    }
-    if (!(sp20 < arg0->unk44)) {
-        sp20 = arg0->unk44;
-    }
-    if (arg0->unk28 < arg0->unk24) {
-        sp1C = arg0->unk24;
-    } else {
-        sp1C = arg0->unk28;
-    }
-    if (!(arg0->unk2C < sp1C)) {
-        sp1C = arg0->unk2C;
-    }
-    if (arg0->unk40 < arg0->unk3C) {
-        var_f0 = arg0->unk3C;
-    } else {
-        var_f0 = arg0->unk40;
-    }
-    if (!(arg0->unk44 < var_f0)) {
-        var_f0 = arg0->unk44;
-    }
-    return (!(arg1 < var_f12) && !(sp1C < arg1) && !(arg2 < sp20) && var_f0 < arg2) ? 1 : 0;
-}
-*/
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066A988.s")
-
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066AC10.s")
-
-/*
 s32 func_global_asm_8066AC10(Struct8066AC10 *arg0) {
-    f32 sp4[9]; // TODO: Try 10 size
+    f32 sp4[8];
 
-    sp4[6] = arg0->unk2C - arg0->unk24;
-    sp4[8] = arg0->unk44 - arg0->unk3C;
+    sp4[5] = arg0->unk2C - arg0->unk24;
+    sp4[7] = arg0->unk44 - arg0->unk3C;
     sp4[2] = arg0->unk28 - arg0->unk24;
     sp4[4] = arg0->unk40 - arg0->unk3C;
-    return (sp4[2] * sp4[8]) - (sp4[6] * sp4[4]) <= 0.0;
+    sp4[1] = (sp4[7] * sp4[2]) - (sp4[5] * sp4[4]);
+    if (sp4[1] <= 0.0) {
+        return 1;
+    }
+    return 0;
 }
-*/
 
 // TODO: Similar to above ^^ same struct arg1?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066ACA4.s")

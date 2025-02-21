@@ -251,8 +251,8 @@ typedef struct {
     s8 unk2B;
 } LedgeInfoA0;
 
-typedef struct {
-    f32 unk0[1][4][4]; // TODO: How many? At least 2
+typedef struct LedgeInfo74 {
+    Mtx unk0[];
 } LedgeInfo74;
 
 typedef struct ledge_info {
@@ -292,9 +292,8 @@ typedef struct ledge_info {
     u8 unk6D;
     u8 unk6E;
     u8 unk6F;
-    u32 unk70;
-    LedgeInfo74 (*unk74)[]; // TODO: How many?
-    u32 unk78;
+    Mtx *unk70;
+    Mtx *unk74[2];
     s32 unk7C;
     s32 unk80; // object_timer gets written here
     s32 unk84;
@@ -3685,5 +3684,26 @@ typedef struct ActorModelHeader {
     u8 unk21;
     u8 pad22[0x28 - 0x22];
 } ActorModelHeader;
+
+typedef struct {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    f32 unk10;
+    f32 unk14;
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    f32 unk28;
+    f32 unk2C;
+    f32 unk30;
+    f32 unk34;
+    f32 unk38;
+    f32 unk3C;
+    f32 unk40;
+    f32 unk44;
+} Struct8066AC10;
 
 #endif

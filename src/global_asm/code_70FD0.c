@@ -639,8 +639,8 @@ void func_global_asm_8066E72C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, 
     ledgeInfo->unk14 = arg4;
     ledgeInfo->unk18 = arg5;
     ledgeInfo->unk70 = arg6;
-    ledgeInfo->unk74 = arg7;
-    ledgeInfo->unk78 = arg8;
+    ledgeInfo->unk74[0] = arg7;
+    ledgeInfo->unk74[1] = arg8;
     ledgeInfo->unk7C = -1;
     ledgeInfo->unk80 = -2;
     ledgeInfo->unk84 = -1;
