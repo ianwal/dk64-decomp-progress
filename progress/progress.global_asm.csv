@@ -332,7 +332,7 @@ us,asm,func_global_asm_80673C34,276,yes
 us,asm,func_global_asm_805FF8F8,64,yes
 us,asm,func_global_asm_80732DEC,288,yes
 us,asm,func_global_asm_806D2238,104,yes
-us,asm,func_global_asm_8065BE74,164,no
+us,asm,func_global_asm_8065BE74,164,yes
 us,asm,func_global_asm_806CEE64,116,yes
 us,asm,func_global_asm_806E35D8,220,yes
 us,asm,func_global_asm_806BE6F0,460,yes
