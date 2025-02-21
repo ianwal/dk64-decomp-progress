@@ -152,9 +152,6 @@ s32 func_global_asm_806545D4(s32, s32, s32, s32, f32, f32, f32, s32, f32 (*)[4],
 void func_global_asm_80656F14(s16, s32, s16, s16, s32, s32, f32, f32, f32);
 void func_global_asm_80657974(s32 arg0, f32 arg1, f32 arg2, f32 arg3, Struct80657974_arg4 *arg4);
 
-// close, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80650E20.s")
-
 typedef struct global_asm_struct_18 {
     s32 unk0;
     u8 pad4[0x64 - 0x4];
@@ -162,7 +159,7 @@ typedef struct global_asm_struct_18 {
 } GlobalASMStruct18;
 
 typedef struct {
-    s8 unk0[1]; // TODO: How many elements?
+    s32 unk0;
     s32 unk4;
     s32 unk8;
     s32 unkC;
@@ -190,13 +187,11 @@ typedef struct {
     s32 unk64;
 } Struct80650E20_arg0;
 
-/*
-// TODO: Unaligned s32 read?
 void func_global_asm_80650E20(Struct80650E20_arg0 *arg0) {
     s32 size;
     u8 phi_v1;
 
-    D_global_asm_807F6C28 = *(u32*)(&arg0->unk0[arg0->unk64]);
+    D_global_asm_807F6C28 = *(u32*)(arg0->unk64 + (s32)&arg0->unk0);
     if (D_global_asm_807F6C28 >= 2) {
         phi_v1 = D_global_asm_807F6C28;
     } else {
@@ -210,7 +205,6 @@ void func_global_asm_80650E20(Struct80650E20_arg0 *arg0) {
     D_global_asm_8076A0C4 = malloc(size);
     D_global_asm_8076A0C8 = malloc(size);
 }
-*/
 
 // rodata
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80650ECC.s")
