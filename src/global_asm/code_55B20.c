@@ -182,6 +182,67 @@ void func_global_asm_80650E20(MapGeometryHeader *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80651708.s")
 
+typedef struct Struct807F70B8_sub8 {
+    s16 unk0[3];
+    s16 unk6[3];
+    s16 unkC[3];
+} Struct807F70B8_sub8;
+
+typedef struct Struct807F70B8 {
+    s16 *unk0;
+    s16 unk4;
+    s16 unk6;
+    Struct807F70B8_sub8 *unk8;
+    s16 unkC;
+    s16 unkE;
+    s16 unk10;
+    s16 unk12;
+} Struct807F70B8;
+extern Struct807F70B8 *D_807F70B8[];
+
+/*
+void func_global_asm_80651708(s32 arg0) {
+    Struct807F70B8 *var_v1; // 1c
+    s32 var_a1; // 18
+    s32 i;
+
+    var_v1 = D_807F70B8[arg0];
+    if (var_v1->unk8 != NULL) {
+        free(var_v1->unk8);
+    }
+    var_a1 = var_v1->unk4 - 2;
+    if (var_a1 < 0) {
+        var_a1 = 0;
+    }
+    if (var_a1 != 0) {
+        var_v1->unk8 = malloc(var_a1 * sizeof(Struct807F70B8_sub8));
+        var_v1->unkC = var_a1;
+        for (i = 2; i < var_v1->unk4; i++) {
+            var_v1->unk8[i - 2].unk0[0] = var_v1->unk0[i + 0];
+            var_v1->unk8[i - 2].unk6[0] = var_v1->unk0[i + 1];
+            var_v1->unk8[i - 2].unkC[0] = var_v1->unk0[i + 2];
+            var_v1->unk8[i - 2].unk0[1] = var_v1->unk0[i + 3];
+            var_v1->unk8[i - 2].unk6[1] = var_v1->unk0[i + 4];
+            var_v1->unk8[i - 2].unkC[1] = var_v1->unk0[i + 5];
+            var_v1->unk8[i - 2].unk0[2] = var_v1->unk0[i + 6];
+            var_v1->unk8[i - 2].unk6[2] = var_v1->unk0[i + 7];
+            var_v1->unk8[i - 2].unkC[2] = var_v1->unk0[i + 8];
+        }
+    }
+    var_v1->unk12 = -0x8000;
+    var_v1->unk10 = 0x7FFF;
+    for (i = 0; i < var_v1->unk4; i++) {
+        if (var_v1->unk12 < var_v1->unk0[i + 1]) {
+            var_v1->unk12 = var_v1->unk0[i + 1];
+        }
+        if (var_v1->unk0[i + 1] < var_v1->unk10) {
+            var_v1->unk10 = var_v1->unk0[i + 1];
+        }
+    }
+}
+*/
+
+
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80651904.s")
 
 // TODO: Any more cleanup possible?
@@ -1322,7 +1383,7 @@ void func_global_asm_806588E0(s32 fileIndex) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80658930.s")
 
 void func_global_asm_80651708(s32);
-extern Pointer20Struct *D_807F70B8[];
+// extern Pointer20Struct *D_807F70B8[];
 
 /*
 void func_global_asm_80658930(Pointer20File *arg0) {

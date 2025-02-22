@@ -505,53 +505,52 @@ void func_jetpac_80026A3C(JetpacPlayerStruct *arg0) {
     func_jetpac_80025368(player);
 }
 
-// Close, need to prevent first if-statement from using a0
-// https://decomp.me/scratch/n0mR6
-#pragma GLOBAL_ASM("asm/nonmatchings/jetpac/code_15D4/func_jetpac_80026AB0.s")
-
-/*
-void func_jetpac_80026AB0() {
+void func_jetpac_80026AB0(void) {
     f32 posX;
     f32 posY;
-    JetpacPlayerStruct* player = &D_jetpac_8002F050;
-    JetpacSpatialState* ss = &player->spatial_state;
+    JetpacPlayerStruct* player;
+    JetpacSpatialState* ss;
     s32 frame_index_by_position;
-    s32 sp20 = TRUE;
-    if (ss->entity_state >= JETPAC_ENTITY_STATE_ALLOCATED) // If this stops using a0, everything else matches
-    {
-        if ((ss->entity_state == JETPAC_ENTITY_STATE_DYING) && (player->explosion_sprite.frame_counter >= 8)) {
-            sp20 = FALSE;
-        }
-        
-        frame_index_by_position = func_jetpac_80025B70(ss);
-        posX = ss->posX;
-        posY = ss->posY;
-        if (sp20) {
-            if (player->is_flying == 0) {
-                posX = (s16)posX & 0xFFFE;
-                func_jetpac_80025700(&D_jetpac_8002C3A8[frame_index_by_position], posX, posY, &ss->color, ss->is_facing_left);
-            } else {
-                func_jetpac_80025700(&D_jetpac_8002C330, posX, posY, &ss->color, ss->is_facing_left);
-                if (ss->is_facing_left == 0) {
-                    if (frame_index_by_position == 4) {
-                        posX -= 1.0f;
-                    }
-                    posX -= 3.0f;
-                } else {
-                    if (frame_index_by_position == 4) {
-                        posX += 1.0f;
-                    }
-                    posX += 10.0f;
+    s32 sp20;
+
+    sp20 = TRUE;
+    player = &D_jetpac_8002F050;
+    // Thanks, I hate this
+    if (D_jetpac_8002F064 < JETPAC_ENTITY_STATE_ALLOCATED) {
+        return;
+    }
+    ss = &player->spatial_state;
+    if ((ss->entity_state == JETPAC_ENTITY_STATE_DYING) && (player->explosion_sprite.frame_counter >= 8)) {
+        sp20 = FALSE;
+    }
+    
+    frame_index_by_position = func_jetpac_80025B70(ss);
+    posX = ss->posX;
+    posY = ss->posY;
+    if (sp20) {
+        if (player->is_flying == 0) {
+            posX = (s16)posX & 0xFFFE;
+            func_jetpac_80025700(&D_jetpac_8002C3A8[frame_index_by_position], posX, posY, &ss->color, ss->is_facing_left);
+        } else {
+            func_jetpac_80025700(&D_jetpac_8002C330, posX, posY, &ss->color, ss->is_facing_left);
+            if (ss->is_facing_left == 0) {
+                if (frame_index_by_position == 4) {
+                    posX -= 1.0f;
                 }
-                func_jetpac_80025700(&D_jetpac_8002C348[frame_index_by_position], posX, (posY + 18.0f), &ss->color, ss->is_facing_left);
+                posX -= 3.0f;
+            } else {
+                if (frame_index_by_position == 4) {
+                    posX += 1.0f;
+                }
+                posX += 10.0f;
             }
-        }
-        if (player->explosion_sprite.frame_counter < 0xE) {
-            func_jetpac_80025A60(&player->explosion_sprite);
+            func_jetpac_80025700(&D_jetpac_8002C348[frame_index_by_position], posX, (posY + 18.0f), &ss->color, ss->is_facing_left);
         }
     }
+    if (player->explosion_sprite.frame_counter < 0xE) {
+        func_jetpac_80025A60(&player->explosion_sprite);
+    }
 }
-*/
 
 void func_jetpac_80026CA4(void) {
     s32 i;
