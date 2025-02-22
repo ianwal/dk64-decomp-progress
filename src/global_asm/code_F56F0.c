@@ -912,7 +912,7 @@ void func_global_asm_806F2FC0(Actor *arg0, Struct806F2FC0 *arg1, u16 arg2) {
 void func_global_asm_806F3760(s16 map) {
     void *autowalkFile;
 
-    autowalkFile = getPointerTableFile(0x15, map, 1, 0);
+    autowalkFile = getPointerTableFile(TABLE_21_AUTOWALKS, map, 1, 0);
     func_global_asm_806F4528(autowalkFile);
     if (autowalkFile) {
         func_global_asm_8066B434(autowalkFile, 0x4C, 0x56);
@@ -980,13 +980,13 @@ void func_global_asm_806F39E8(Actor *arg0, ExitData *arg1, u8 arg2) {
     func_global_asm_80611690(temp_v1->unk4);
     temp = &temp_v1->unk4[1];
     temp_v0_2 = temp_v1->unk4;
-    temp_v0_2->unk0 = arg1->x_pos;
-    temp_v0_2->unk2 = arg1->y_pos;
-    temp_v0_2->unk4 = arg1->z_pos;
+    temp_v0_2->unk0 = arg1->pos.x;
+    temp_v0_2->unk2 = arg1->pos.y;
+    temp_v0_2->unk4 = arg1->pos.z;
     temp_v0_2->unk9 = 0x32;
-    temp->unk0 = (func_global_asm_80612794((arg1->angle / 255.0) * 4095.0) * arg2) + arg1->x_pos;
-    temp->unk2 = arg1->y_pos;
-    temp->unk4 = (func_global_asm_80612790((arg1->angle / 255.0) * 4095.0) * arg2) + arg1->z_pos;
+    temp->unk0 = (func_global_asm_80612794((arg1->angle / 255.0) * 4095.0) * arg2) + arg1->pos.x;
+    temp->unk2 = arg1->pos.y;
+    temp->unk4 = (func_global_asm_80612790((arg1->angle / 255.0) * 4095.0) * arg2) + arg1->pos.z;
     temp->unk9 = 0x32;
     func_global_asm_806F386C(D_global_asm_80753E90->count, arg0, 0, 0, 0);
     D_global_asm_807FD716 = 0;

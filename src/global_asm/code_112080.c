@@ -504,7 +504,7 @@ s32 func_global_asm_8070DDDC(u16 arg0, s32 arg1) {
     phi_a0 = phi_v0_2 = func_global_asm_8070D928(arg0);
     if (phi_v0_2 == NULL) {
         // TEXT!!!
-        temp_a0 = getPointerTableFile(0xC, arg0, 1, 1);
+        temp_a0 = getPointerTableFile(TABLE_12_TEXT, arg0, 1, 1);
         phi_v1 = &D_global_asm_807550C0;
         while (*phi_v1 != NULL) {
             phi_v1 = &(*phi_v1)->unkC;

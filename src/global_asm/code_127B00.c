@@ -49,7 +49,7 @@ void func_global_asm_80722E48(PathFile *);
 void func_global_asm_80722E00(Maps map) {
     void *paths;
 
-    paths = getPointerTableFile(0xF, map, 1, 1);
+    paths = getPointerTableFile(TABLE_15_PATHS, map, 1, 1);
     func_global_asm_80722E48(paths);
     func_global_asm_8066B434(paths, 0x47, 0x27);
 }

@@ -139,7 +139,7 @@ void func_global_asm_806C7270(void) {
     s32 var_v1;
 
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        D_global_asm_807FC8F0 = getPointerTableFile(0x13, 7, 1, 1);
+        D_global_asm_807FC8F0 = getPointerTableFile(TABLE_19_UNKNOWN, 7, 1, 1);
         D_global_asm_807FC8E0 = 0;
         var_v1 = 0;
         while (D_global_asm_807FC8F0[var_v1] != 0x2A) {

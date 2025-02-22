@@ -53,7 +53,7 @@ void func_global_asm_80677D80(void) {
         D_807FB7B0[i].unk8 = 0;
     }
     D_807FBB32 = 0;
-    D_807FBB50 = getPointerTableFile(0xD, 0, 1, 1);
+    D_807FBB50 = getPointerTableFile(TABLE_13_ANIM_CODE, 0, 1, 1);
     D_807FBB54 = (u8*)D_807FBB50 + D_807FBB50[3];
     D_807FBB58 = (u8*)D_807FBB50 + D_807FBB50[2];
     D_807FBB5C = (u8*)D_807FBB50 + D_807FBB50[1];

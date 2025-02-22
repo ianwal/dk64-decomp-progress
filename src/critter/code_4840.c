@@ -33,8 +33,8 @@ Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg
 void *func_dk64_boot_80002DE4(void*, char*);
 
 void func_critter_80028840(void) {
-    D_critter_8002A1C0 = getPointerTableFile(0x13, 4, 1, 1);
-    D_critter_8002A1C8[0] = getPointerTableFile(0x13, 5, 1, 1);
+    D_critter_8002A1C0 = getPointerTableFile(TABLE_19_UNKNOWN, 4, 1, 1);
+    D_critter_8002A1C8[0] = getPointerTableFile(TABLE_19_UNKNOWN, 5, 1, 1);
     D_critter_8002A1C4 = NULL;
     D_critter_8002A1CE = 0;
     D_critter_8002A1CC = 1;

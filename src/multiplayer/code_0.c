@@ -965,8 +965,8 @@ void func_multiplayer_80026094(void) {
         aad->unkC = D_global_asm_807552E4.unkC;
         aad->unkC *= 60;
         current_actor_pointer->unk64 |= 2;
-        aad->unk44 = getPointerTableFile(0xE, 0xB9, 0U, 0U);
-        aad->unk48 = getPointerTableFile(0xE, 0xBA, 0U, 0U);
+        aad->unk44 = getPointerTableFile(TABLE_14_TEXTURES_HUD, 0xB9, 0U, 0U);
+        aad->unk48 = getPointerTableFile(TABLE_14_TEXTURES_HUD, 0xBA, 0U, 0U);
         aad->unk10 = 0;
     }
     aad->unk0 += D_global_asm_807445B0;
@@ -1157,9 +1157,9 @@ s32 func_multiplayer_80026BD8(s32 arg0) {
         for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
             player = character_change_array[playerIndex].player_pointer;
             if ((character_change_array[playerIndex].does_player_exist != 0) && (player->control_state != 0x84)) {
-                dx = exit->x_pos - player->x_position;
-                dy = exit->y_pos - player->y_position;
-                dz = exit->z_pos - player->z_position;
+                dx = exit->pos.x - player->x_position;
+                dy = exit->pos.y - player->y_position;
+                dz = exit->pos.z - player->z_position;
                 d = SQ(dx) + SQ(dy) + SQ(dz);
                 if (d < closest) {
                     closest = d;

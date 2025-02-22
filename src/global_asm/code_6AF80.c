@@ -1239,7 +1239,7 @@ void func_global_asm_8066ADA0(void) {
     D_global_asm_807F967D = 0;
     for (i = 0; i < 0x20; i++) {
         if (D_global_asm_80748E18[i] != 0) {
-            D_global_asm_807FB1A0[i] = getPointerTableFile(0x1A, i, 1, 1); // Uncompressed file sizes
+            D_global_asm_807FB1A0[i] = getPointerTableFile(TABLE_26_UNCOMPRESSED_SIZES, i, 1, 1); // Uncompressed file sizes
         } else {
             D_global_asm_807FB1A0[i] = NULL;
         }
@@ -1341,7 +1341,7 @@ void func_global_asm_8066B0EC(s32 arg0) {
     D_global_asm_807F9678 = arg0;
 }
 
-void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3) {
+void *getPointerTableFile(enum pointertable_e pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3) {
     s32 temp;
     u32 sp50;
     s32 sp4C;

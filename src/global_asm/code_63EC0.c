@@ -458,7 +458,7 @@ void func_global_asm_8066164C(void) {
 
 void func_global_asm_80661658(u8 arg0) {
     // Texture (Uncompressed)
-    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3C5, 1, 0);
+    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, 0x3C5, 1, 0);
 }
 
 // Displaylist stuff, similar to below
@@ -547,8 +547,8 @@ void func_global_asm_80661AB4(Struct80661AB4_1 *arg0) {
 
 void func_global_asm_80661B84(u8 arg0) {
     // Textures
-    D_global_asm_80748A90[arg0].unkC = getPointerTableFile(0x19, 0x2EE, 1, 0);
-    D_global_asm_80748A90[arg0].unk10 = getPointerTableFile(0x19, 0x2EF, 1, 0);
+    D_global_asm_80748A90[arg0].unkC = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0x2EE, 1, 0);
+    D_global_asm_80748A90[arg0].unk10 = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0x2EF, 1, 0);
 }
 
 Gfx *func_global_asm_80661BF0(Gfx *dl, Struct80661AB4_1 *arg1, u8 arg2) {
@@ -583,7 +583,7 @@ void func_global_asm_80661E34(Struct80661AB4_1 *arg0) {
 
 void func_global_asm_80661EC4(u8 arg0) {
     // Texture
-    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(0x19, 0xF0, 1, 0);
+    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0xF0, 1, 0);
 }
 
 Gfx *func_global_asm_80661F0C(Gfx *dl, s32 arg1, u8 arg2) {
@@ -616,7 +616,7 @@ void func_global_asm_80662108(s32 arg0) {
 
 void func_global_asm_80662110(u8 arg0) {
     // Texture
-    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(0x19, 0xAF4, 1, 0);
+    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0xAF4, 1, 0);
 }
 
 void func_global_asm_80662158(Gfx *dl, s32 arg1, u8 arg2) {
@@ -629,7 +629,7 @@ void func_global_asm_80662180(s32 arg0) {
 
 void func_global_asm_80662188(u8 arg0) {
     // Texture
-    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(0x19, 0x75C, 1, 0);
+    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0x75C, 1, 0);
 }
 
 Gfx *func_global_asm_806621D0(Gfx *dl, s32 arg1, u8 arg2) {
@@ -662,7 +662,7 @@ void func_global_asm_806623CC(s32 arg0) {
 
 void func_global_asm_806623D4(u8 arg0) {
     // Texture (Uncompressed)
-    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3B9, 1, 0);
+    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, 0x3B9, 1, 0);
 }
 
 typedef struct {
@@ -697,7 +697,7 @@ Gfx *func_global_asm_8066241C(Gfx *dl, Struct8066241C_arg1 *arg1, u8 arg2) {
 
 void func_global_asm_806625D0(u8 arg0) {
     // Texture (Uncompressed)
-    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(7, 0x3D2, 1, 0);
+    D_global_asm_80748A9C[arg0].unk0 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, 0x3D2, 1, 0);
 }
 
 Gfx *func_global_asm_80662618(Gfx *dl, Struct80661AB4_1 *arg1, u8 arg2) {
@@ -717,8 +717,8 @@ Gfx *func_global_asm_80662618(Gfx *dl, Struct80661AB4_1 *arg1, u8 arg2) {
 
 void func_global_asm_806627CC(u8 arg0) {
     // Texture (Uncompressed)
-    D_global_asm_80748A90[arg0].unkC = getPointerTableFile(7, 0x3BA, 1, 0);
-    D_global_asm_80748A90[arg0].unk10 = getPointerTableFile(7, 0x3DB, 1, 0);
+    D_global_asm_80748A90[arg0].unkC = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, 0x3BA, 1, 0);
+    D_global_asm_80748A90[arg0].unk10 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, 0x3DB, 1, 0);
 }
 
 // Displaylist stuff

@@ -137,7 +137,7 @@ s16 *func_global_asm_806FFEAC(s16 *arg0, s16 *arg1) {
 
 void func_global_asm_806FFF5C(void) {
     // Texture, maybe pulling it into cache?
-    getPointerTableFile(0x19, 0x138B, 1, 1);
+    getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0x138B, 1, 1);
 }
 
 // Doable, matrix arrays

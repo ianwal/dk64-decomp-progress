@@ -548,9 +548,9 @@ void func_global_asm_806C90C4(s32 exitIndex) {
             // Fallthrough
         case 0:
             current_player->unkAC = -10000.0f;
-            current_player->x_position = exit->x_pos;
-            current_player->y_position = current_player->unkA0 = exit->y_pos;
-            current_player->z_position = exit->z_pos;
+            current_player->x_position = exit->pos.x;
+            current_player->y_position = current_player->unkA0 = exit->pos.y;
+            current_player->z_position = exit->pos.z;
             current_player->y_rotation = (exit->angle / 255.0) * 4095.0;
             current_player->unkEE = current_player->y_rotation;
             break;
@@ -633,12 +633,12 @@ void func_global_asm_806C9434(s32 arg0) {
 }
 
 void loadExits(Maps map) {
-    exit_array = getPointerTableFile(0x17, map, 1, 1);
-    number_of_exits = func_global_asm_8066B06C(0x17, map) / sizeof(ExitData);
+    exit_array = getPointerTableFile(TABLE_23_EXITS, map, 1, 1);
+    number_of_exits = func_global_asm_8066B06C(TABLE_23_EXITS, map) / sizeof(ExitData);
     func_global_asm_806C9658(map); // Check galleon water level
-    D_global_asm_807FC908.x_pos = D_global_asm_807FD574.x_pos;
-    D_global_asm_807FC908.y_pos = D_global_asm_807FD574.y_pos;
-    D_global_asm_807FC908.z_pos = D_global_asm_807FD574.z_pos;
+    D_global_asm_807FC908.pos.x = D_global_asm_807FD574.pos.x;
+    D_global_asm_807FC908.pos.y = D_global_asm_807FD574.pos.y;
+    D_global_asm_807FC908.pos.z = D_global_asm_807FD574.pos.z;
     D_global_asm_807FC908.angle = 0;
 }
 
@@ -646,20 +646,20 @@ void func_global_asm_806C9658(Maps map) {
     if (map == MAP_GALLEON) {
         // Galleon: Water Level Raised
         if (isFlagSet(PERMFLAG_PROGRESS_IS_GALLEON_WATER_RAISED, FLAG_TYPE_PERMANENT)) {
-            exit_array[18].y_pos = 1629;
-            exit_array[23].y_pos = 1629;
+            exit_array[18].pos.y = 1629;
+            exit_array[23].pos.y = 1629;
         } else {
-            exit_array[18].y_pos = 1574;
-            exit_array[23].y_pos = 1574;
+            exit_array[18].pos.y = 1574;
+            exit_array[23].pos.y = 1574;
         }
     }
 }
 
 ExitData *getExitData(s32 exitIndex) {
     if (D_global_asm_8076AEE2 & 1) {
-        D_global_asm_807FC918.x_pos = D_global_asm_8076AEE4;
-        D_global_asm_807FC918.y_pos = D_global_asm_8076AEE8;
-        D_global_asm_807FC918.z_pos = D_global_asm_8076AEEC;
+        D_global_asm_807FC918.pos.x = D_global_asm_8076AEE4;
+        D_global_asm_807FC918.pos.y = D_global_asm_8076AEE8;
+        D_global_asm_807FC918.pos.z = D_global_asm_8076AEEC;
         D_global_asm_807FC918.angle = 360.0 * (D_global_asm_8076AEF0 / 4095.0);
         return &D_global_asm_807FC918;
     }

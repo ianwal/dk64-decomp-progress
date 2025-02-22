@@ -1553,7 +1553,7 @@ void func_global_asm_8062EE48(u8 arg0) {
                 if (D_global_asm_807F5FC4[i].unk8 != NULL) {
                     func_global_asm_8066B434(D_global_asm_807F5FC4[i].unk8, 0x7E3, 5);
                 }
-                D_global_asm_807F5FC4[i].unk8 = getPointerTableFile(7, D_global_asm_807F5FC4[i].unkC[D_global_asm_807F5FC4[i].unk5], 0, 0);
+                D_global_asm_807F5FC4[i].unk8 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, D_global_asm_807F5FC4[i].unkC[D_global_asm_807F5FC4[i].unk5], 0, 0);
             }
         }
     }
@@ -1575,7 +1575,7 @@ void func_global_asm_8062EFA0(void) {
     }
 }
 
-// doable
+// close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F050.s")
 
 extern MapGeometryHeader *D_807F5DE0;
@@ -1599,16 +1599,26 @@ extern u8 D_global_asm_807F5FED;
 
 extern f32 D_global_asm_807444C4;
 
+extern s16 D_global_asm_807FD576;
+extern s16 D_global_asm_807FD578;
+
 /*
 void func_global_asm_8062F050(MapGeometryHeader *arg0) {
+    s32 sp54;
+    s32 sp50;
+    s32 sp4C;
     s32 *temp_a0;
+    s32 sp44;
     s32 *temp_a1;
     s32 *temp_v1;
-    void *temp_a1_2;
+    s32 *temp_0;
+    s32 *temp_1;
+    s32 *temp_2;
+    s32 pad;
     s32 sp28;
 
-    D_807F5DE0 = arg0;
     sp28 = 0;
+    D_807F5DE0 = arg0;
     D_global_asm_807F5FDC = func_global_asm_80612D10(0.7853981853);
     func_global_asm_80659110(arg0->unk8 & 1);
     func_global_asm_8065CDA0((arg0->unk8 >> 1) & 1);
@@ -1621,32 +1631,35 @@ void func_global_asm_8062F050(MapGeometryHeader *arg0) {
     D_807F9452 = arg0->unk1E;
     D_807F9454 = arg0->unk18;
     D_807F9456 = arg0->unk1A;
-    D_global_asm_807FD574.x_pos = arg0->unk20;
-    D_global_asm_807FD574.y_pos = arg0->unk22;
-    D_global_asm_807FD574.z_pos = arg0->unk24;
+    D_global_asm_807FD574.pos.x = arg0->unk20.x;
+    D_global_asm_807FD576 = arg0->unk20.y; // Kinda yuck
+    D_global_asm_807FD578 = arg0->unk20.z;
     D_807F5FE4 = arg0->unk26;
     D_807F5FE6 = arg0->unk28;
     D_807F5FE8 = arg0->unk2A;
     D_807F5FEA = arg0->unk2C;
-    temp_v1 = &D_807F5DE0->unk0 + arg0->unk40;
+    sp54 = arg0->unk30;
+    sp50 = arg0->unk34;
+    sp4C = arg0->unk38;
+    sp44 = arg0->unk40;
+    temp_v1 = FILEOFFSET(&D_807F5DE0->unk0, sp44);
+    temp_a0 = FILEOFFSET(&D_807F5DE0->unk0, arg0->unk44);
+    temp_a1 = FILEOFFSET(&D_807F5DE0->unk0, arg0->unk48);
     D_global_asm_807F5FD0 = *temp_v1 + 1;
     D_global_asm_807F5FD4 = temp_v1 + 1;
-    temp_a0 = &D_807F5DE0->unk0 + arg0->unk44;
     D_global_asm_807F5FC8 = *temp_a0;
     D_global_asm_807F5FCC = temp_a0 + 1;
-    temp_a1 = &D_807F5DE0->unk0 + arg0->unk48;
     D_global_asm_807F5FC1 = *temp_a1;
     D_global_asm_807F5FC4 = temp_a1 + 1;
-    D_global_asm_807F5DE4 = &D_807F5DE0->unk0 + arg0->unk30;
-    D_807F5DE8 = &D_807F5DE0->unk0 + arg0->unk38;
-    D_807F5DEC = &D_807F5DE0->unk0 + arg0->unk34;
+    D_global_asm_807F5DE4 = FILEOFFSET(&D_807F5DE0->unk0, sp54);
+    D_807F5DE8 = FILEOFFSET(&D_807F5DE0->unk0, sp4C);
+    D_807F5DEC = FILEOFFSET(&D_807F5DE0->unk0, sp50);
     func_global_asm_80659DB0(1.0f, 1.0f, 1.0f, -1);
     func_global_asm_8065996C(-1);
     func_global_asm_8065E040(arg0->unkE << 0xA);
-    temp_a1_2 = &D_807F5DE0->unk0 + arg0->unk30;
-    func_global_asm_8062F420(temp_a1_2, temp_a1_2, &D_807F5DE0->unk0 + arg0->unk34);
-    func_global_asm_8062F3A0(&D_807F5DE0->unk0 + arg0->unk34, &D_807F5DE0->unk0 + arg0->unk38);
-    func_global_asm_8062F328(&D_807F5DE0->unk0 + arg0->unk40);
+    func_global_asm_8062F420(FILEOFFSET(&D_807F5DE0->unk0, sp54), FILEOFFSET(&D_807F5DE0->unk0, sp54), FILEOFFSET(&D_807F5DE0->unk0, sp50));
+    func_global_asm_8062F3A0(FILEOFFSET(&D_807F5DE0->unk0, sp50), FILEOFFSET(&D_807F5DE0->unk0, sp4C));
+    func_global_asm_8062F328(FILEOFFSET(&D_807F5DE0->unk0, sp44));
     func_global_asm_8063C390();
     func_global_asm_8062B3C4(D_global_asm_807F5DE4, &sp28);
     func_global_asm_8062B478(sp28);
@@ -1682,23 +1695,15 @@ s32 func_global_asm_8062F388(s32 *arg0) {
     return D_global_asm_807F5FC8;
 }
 
+// Regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F3A0.s")
 
-typedef struct {
-    s32 unk0;
-    union {
-        void *texturePointer;
-        s32 textureIndex;
-    };
-} GlobalASMStruct_8062F3A0;
-
 /*
-// TODO: Arg0 probably Gfx*
-void func_global_asm_8062F3A0(GlobalASMStruct_8062F3A0 *arg0, GlobalASMStruct_8062F3A0 *arg1) {
+void func_global_asm_8062F3A0(Gfx *arg0, void *arg1) {
     while (arg0 != arg1) {
-        if ((arg0->unk0 >> 0x18) == 0xFD) {
-            if (((arg0->textureIndex << 4) >> 28) == 0) { // TODO: Bitfield?
-                arg0->texturePointer = getPointerTableFile(0x19, arg0->textureIndex, 1, 0);
+        if ((arg0->words.w0 >> 0x18) == G_SETTIMG) {
+            if (((arg0->words.w1 << 4) >> 28) == 0) { // TODO: Bitfield?
+                arg0->words.w1 = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, arg0->words.w1, 1, 0);
             }
         }
         arg0++;

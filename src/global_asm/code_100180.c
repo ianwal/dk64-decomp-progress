@@ -54,7 +54,7 @@ void func_global_asm_806FBB58(void) {
 void *func_global_asm_806FBB9C(s16 textureIndex) {
     if (!D_global_asm_807FD7F4[textureIndex]) {
         // Texture
-        D_global_asm_807FD7F0[textureIndex] = getPointerTableFile(0xE, textureIndex, 1, 1);
+        D_global_asm_807FD7F0[textureIndex] = getPointerTableFile(TABLE_14_TEXTURES_HUD, textureIndex, 1, 1);
         D_global_asm_807FD7F4[textureIndex] = 3;
     } else {
         D_global_asm_807FD7F4[textureIndex] = 3;

@@ -1075,14 +1075,14 @@ void func_global_asm_805FE7FC(void) {
     func_global_asm_807040E0(0xFF, 0xFF, 0xFF);
     func_global_asm_80704108(0xFF, 0xFF, 0xFF);
     if (!is_cutscene_active) {
-        D_global_asm_8076A0A0 = getPointerTableFile(0x13, MAP_TEST_MAP, 1, 1);
+        D_global_asm_8076A0A0 = getPointerTableFile(TABLE_19_UNKNOWN, MAP_TEST_MAP, 1, 1);
         func_global_asm_80705B30();
         func_global_asm_807215EC();
         func_global_asm_806F3760(current_map); // Load autowalk file
         func_global_asm_8072ED90();
         func_global_asm_80658BD0();
         func_global_asm_80722E00(current_map); // Load path file
-        mapGeometry = getPointerTableFile(1, current_map, 1, 1);
+        mapGeometry = getPointerTableFile(TABLE_01_MAP_GEOMETRY, current_map, 1, 1);
         func_global_asm_80630300();
         func_global_asm_80650E20(mapGeometry);
         func_global_asm_8062F050(mapGeometry);
@@ -1092,7 +1092,7 @@ void func_global_asm_805FE7FC(void) {
         func_global_asm_80688940();
         func_global_asm_80631C3C();
         func_global_asm_8063643C();
-        mapSetup = getPointerTableFile(9, current_map, 1, 1);
+        mapSetup = getPointerTableFile(TABLE_09_SETUP, current_map, 1, 1);
         func_global_asm_80631FAC(current_map, 1);
         func_global_asm_806886E0(mapSetup, 0, 0);
         func_global_asm_80663DA0();
@@ -1100,14 +1100,14 @@ void func_global_asm_805FE7FC(void) {
         func_global_asm_80677D80();
         func_global_asm_8068A7B0(); // spawnPersistentActors()
         func_global_asm_8072E740(current_map);
-        func_global_asm_80626264(sp28 = getPointerTableFile(8, current_map, 1, 1));
+        func_global_asm_80626264(sp28 = getPointerTableFile(TABLE_08_CUTSCENES, current_map, 1, 1));
         if (sp28) {
             func_global_asm_8066B434(sp28, 0x8D0, 2);
         }
         func_global_asm_80712B80();
         func_global_asm_806C7D40(next_exit);
         func_global_asm_80714670();
-        sp28 = getPointerTableFile(0x10, current_map, 1, 1);
+        sp28 = getPointerTableFile(TABLE_16_SPAWNERS, current_map, 1, 1);
         func_global_asm_80724C78(sp28);
         if (sp28) {
             func_global_asm_8066B434(sp28, 0x8DD, 2);
@@ -1118,7 +1118,7 @@ void func_global_asm_805FE7FC(void) {
         func_global_asm_8070E8C8();
         func_global_asm_8060098C(func_global_asm_806025AC, 2, 0, 0, 0);
         if (D_global_asm_807FBB64 & 0x1000) {
-            sp28 = getPointerTableFile(0x16, current_map, 1, 1);
+            sp28 = getPointerTableFile(TABLE_22_CRITTERS, current_map, 1, 1);
             func_critter_80026FD0(sp28);
             if (sp28) {
                 func_global_asm_8066B434(sp28, 0x8ED, 2);

@@ -1548,7 +1548,7 @@ s32 func_global_asm_8066B020(s32 pointerTableIndex, s32 fileIndex);
 s32 func_global_asm_8066B06C(s32 pointerTableIndex, s32 fileIndex);
 void func_global_asm_8066B0DC(void);
 void func_global_asm_8066B0EC(s32 arg0);
-void *getPointerTableFile(s32 pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3);
+void *getPointerTableFile(enum pointertable_e pointerTableIndex, s32 fileIndex, u8 arg2, u8 arg3);
 void func_global_asm_8066B424(void);
 void func_global_asm_8066B434(void *arg0, s32 arg1, s32 arg2);
 void func_global_asm_8066B4AC(s32 arg0, s32 arg1, s32 arg2);

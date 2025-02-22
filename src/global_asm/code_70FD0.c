@@ -83,12 +83,6 @@ typedef struct Struct8066C2D0_0 {
     s32 unk1C;
 } Struct8066C2D0_0;
 
-typedef struct tuple_s {
-    s16 x;
-    s16 y;
-    s16 z;
-} tuple_s;
-
 typedef struct Prop_Wall {
     tuple_s vert[3];
     u8 unk12;

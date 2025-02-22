@@ -692,7 +692,7 @@ void func_critter_8002448C(Critter *arg0) {
     for (i = 0; i < 2; i++) {
         temp = arg0->unk1E4[i];
         if (temp && arg0->unk1E8[i] == 0) {
-            arg0->unk1E8[i] = getPointerTableFile(0xE, temp, 0, 0);
+            arg0->unk1E8[i] = getPointerTableFile(TABLE_14_TEXTURES_HUD, temp, 0, 0);
         }
     }
 }

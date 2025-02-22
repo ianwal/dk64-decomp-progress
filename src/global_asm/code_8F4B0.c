@@ -775,7 +775,7 @@ void *func_global_asm_8068C12C(u16 textureIndex) {
     
     for (i = 0; i < 0x20; i++) {
         if (D_global_asm_807FC690[i].unk6 == 0) {
-            D_global_asm_807FC690[i].texturePointer = getPointerTableFile(0xE, textureIndex, 0, 0);
+            D_global_asm_807FC690[i].texturePointer = getPointerTableFile(TABLE_14_TEXTURES_HUD, textureIndex, 0, 0);
             D_global_asm_807FC690[i].unk6 = 2;
             D_global_asm_807FC690[i].textureIndex = textureIndex;
             return D_global_asm_807FC690[i].texturePointer;

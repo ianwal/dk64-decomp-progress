@@ -335,7 +335,7 @@ void func_global_asm_8070AF24(void) {
             D_global_asm_80755068 = 0x78;
             break;
     }
-    D_global_asm_807FD9B8 = getPointerTableFile(0x13, 1, 1, 1);
+    D_global_asm_807FD9B8 = getPointerTableFile(TABLE_19_UNKNOWN, 1, 1, 1);
     D_global_asm_807FD9B0 = malloc(D_global_asm_80744490 * D_global_asm_80744494 * 2);
     func_global_asm_8070A848(D_global_asm_807FD9B0, D_global_asm_80744470[D_global_asm_807444FC]);
     func_global_asm_80709890(D_global_asm_807FD9B8, &D_global_asm_807FD9A8, &D_global_asm_807FD9AC, 0);

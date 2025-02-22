@@ -52,7 +52,7 @@ void func_global_asm_80687D50(Actor *arg0, Struct80687D50 *arg1) {
         var_s0 = temp_v0->unk0;
         var_s1 = temp_v0->unk4;
         for (j = 0; j < temp_s4; j++) {
-            *var_s1 = *var_s0 = getPointerTableFile(0x19, *var_s3, 1U, 0U);
+            *var_s1 = *var_s0 = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, *var_s3, 1U, 0U);
             var_s0++;
             var_s1++;
             var_s3++;

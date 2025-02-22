@@ -124,7 +124,7 @@ void func_global_asm_8060B750(s32 fileIndex) {
     void* file;
 
     // DK TV Inputs
-    file = getPointerTableFile(0x11, fileIndex, 1, 1);
+    file = getPointerTableFile(TABLE_17_DKTV, fileIndex, 1, 1);
     func_global_asm_8060B5C0(file);
     func_global_asm_8066B434(file, 0xF8, 0x33);
     D_global_asm_807ECE98 = D_global_asm_807463A8;

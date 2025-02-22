@@ -944,7 +944,7 @@ void func_global_asm_806A112C(void) {
         }
         if (current_actor_pointer->unk15F == 0) {
             scale = current_actor_pointer->animation_state->scale_y / 0.15;
-            aaD->unk0 = getPointerTableFile(0x13, 6, 1, 1);
+            aaD->unk0 = getPointerTableFile(TABLE_19_UNKNOWN, 6, 1, 1);
             func_global_asm_806A0F78(current_actor_pointer, D_global_asm_807503D4[0], D_global_asm_807503E0[0]);
             j = 1;
             temp_f20 = 75.0f * scale;

@@ -156,7 +156,7 @@ void *func_race_8002E9AC(u8 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E9F8.s")
 
 void setupRaceOnMapLoad(Maps map) {
-    s32 *checkpointFile = getPointerTableFile(0x18, map, 1, 1);
+    s32 *checkpointFile = getPointerTableFile(TABLE_24_CHECKPOINTS, map, 1, 1);
     D_race_8002FCF0 = malloc(sizeof(RaceStruct2));
     func_global_asm_80611690(D_race_8002FCF0);
     func_race_8002E9F8(checkpointFile);

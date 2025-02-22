@@ -1641,14 +1641,14 @@ void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8
                 if (arg0->unkD0) {
                     func_global_asm_8066B0DC();
                 }
-                arg0->unk3C = getPointerTableFile(7, arg0->unk5C[sp30], 0, 0);
+                arg0->unk3C = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, arg0->unk5C[sp30], 0, 0);
                 if (arg0->unk40 != NULL) {
                     func_global_asm_8066B434(arg0->unk40, 0xFCE, 7);
                 }
                 if (arg0->unkD0) {
                     func_global_asm_8066B0DC();
                 }
-                arg0->unk40 = getPointerTableFile(7, arg0->unk5C[sp2C], 0, 0);
+                arg0->unk40 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, arg0->unk5C[sp2C], 0, 0);
             } else {
                 if (arg0->unk3C != NULL) {
                     func_global_asm_8066B434(arg0->unk3C, 0xFD5, 7);
@@ -1657,7 +1657,7 @@ void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8
                 if (arg0->unkD0) {
                     func_global_asm_8066B0DC();
                 }
-                arg0->unk40 = getPointerTableFile(7, arg0->unk5C[sp2C], 0, 0);
+                arg0->unk40 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, arg0->unk5C[sp2C], 0, 0);
             }
         } else {
             if (arg0->unk3C != NULL) {
@@ -1666,7 +1666,7 @@ void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8
             if (arg0->unkD0) {
                 func_global_asm_8066B0DC();
             }
-            arg0->unk3C = getPointerTableFile(7, arg0->unk5C[sp30], 0, 0);
+            arg0->unk3C = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, arg0->unk5C[sp30], 0, 0);
         }
     }
     arg0->unk49 = 0;
@@ -1912,7 +1912,7 @@ void func_global_asm_8063C6D8(void) {
 
 void func_global_asm_8063C784(void) {
     D_global_asm_807F6178 = 255.0f;
-    D_global_asm_807F617C = getPointerTableFile(0x19, 0x565, 1, 0); // Texture
+    D_global_asm_807F617C = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0x565, 1, 0); // Texture
 }
 
 // Displaylist stuff
@@ -1928,8 +1928,8 @@ void func_global_asm_8063CA7C(void) {
 void func_global_asm_8063CADC(void) {
     D_global_asm_807F6180 = 255.0f;
     D_global_asm_807F6184 = 255.0f;
-    D_global_asm_807F6188 = getPointerTableFile(7, 0x3B7, 0, 0); // Texture
-    D_global_asm_807F618C = getPointerTableFile(7, 0x3B8, 0, 0); // Texture
+    D_global_asm_807F6188 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, 0x3B7, 0, 0); // Texture
+    D_global_asm_807F618C = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, 0x3B8, 0, 0); // Texture
 }
 
 // Jumptable, Displaylist stuff
@@ -1947,7 +1947,7 @@ void func_global_asm_8063CE64(void) {
 }
 
 void func_global_asm_8063CF0C(void) {
-    D_global_asm_807F6190 = getPointerTableFile(7, 0x3E0, 1, 0); // Texture
+    D_global_asm_807F6190 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, 0x3E0, 1, 0); // Texture
 }
 
 extern f32 D_global_asm_80747E00;
@@ -2009,7 +2009,7 @@ void func_global_asm_8063D288(void) {
     D_global_asm_807F6194 = 0;
     for (i = 0; i < 11; i++) {
         // Texture (Uncompressed)
-        D_global_asm_80747E0C[i].unk4 = getPointerTableFile(7, D_global_asm_80747E0C[i].unk0, 1, 0);
+        D_global_asm_80747E0C[i].unk4 = getPointerTableFile(TABLE_07_TEXTURES_UNCOMPRESSED, D_global_asm_80747E0C[i].unk0, 1, 0);
     }
 }
 
@@ -2073,7 +2073,7 @@ void func_global_asm_8063D5AC(void) {
 }
 
 void func_global_asm_8063D608(void) {
-    D_global_asm_807F619C = getPointerTableFile(0x19, 0x1765, 1, 0); // Texture
+    D_global_asm_807F619C = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, 0x1765, 1, 0); // Texture
 }
 
 extern f32 D_global_asm_807F61A0;

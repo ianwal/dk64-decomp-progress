@@ -15,6 +15,17 @@ typedef struct tuple_f {
     };
 } tuple_f;
 
+typedef struct tuple_s {
+    union {
+        struct {
+            s16 x;
+            s16 y;
+            s16 z;
+        };
+        s16 f[3];
+    };
+} tuple_s;
+
 typedef struct OverlayInfoStruct {
     s32 rom_code_start;
     s32 rom_data_end;
@@ -53,7 +64,19 @@ typedef struct {
 typedef struct {
     s32 unk0;
     s32 unk4;
-    u8 unk8;
+    union {
+        struct {
+            u8 unk8_0 : 1;
+            u8 unk8_1 : 1;
+            u8 unk8_2 : 1;
+            u8 unk8_3 : 1;
+            u8 unk8_4 : 1;
+            u8 unk8_5 : 1;
+            u8 unk8_6 : 1;
+            u8 unk8_7 : 1;
+        };
+        u8 unk8;
+    };
     u8 unk9;
     s16 unkA;
     s16 unkC;
@@ -66,9 +89,7 @@ typedef struct {
     s16 unk1A;
     s16 unk1C;
     s16 unk1E;
-    s16 unk20;
-    s16 unk22;
-    s16 unk24;
+    tuple_s unk20;
     s16 unk26;
     s16 unk28;
     s16 unk2A;
@@ -84,6 +105,10 @@ typedef struct {
     s32 unk4C;
     s32 unk50;
     s32 unk54;
+    s32 unk58;
+    s32 unk5C;
+    s32 unk60;
+    s32 unk64;
 } MapGeometryHeader;
 
 // Finally!!!
@@ -2790,9 +2815,7 @@ struct Struct807FDC90 {
 };
 
 typedef struct ExitData {
-	s16 x_pos; // At 0x00
-	s16 y_pos; // At 0x02
-	s16 z_pos; // At 0x04
+    tuple_s pos;
     u8 angle; // At 0x06
     u8 unk7; // At 0x07
     u8 has_autowalk; // At 0x08

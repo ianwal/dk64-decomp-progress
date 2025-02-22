@@ -382,9 +382,9 @@ void func_global_asm_806903BC(Actor *actor, RaceAdditionalActorData *arg1) {
     s16 angle;
 
     exit = getExitData(arg1->unk36);
-    actor->x_position = exit->x_pos;
-    actor->y_position = exit->y_pos;
-    actor->z_position = exit->z_pos;
+    actor->x_position = exit->pos.x;
+    actor->y_position = exit->pos.y;
+    actor->z_position = exit->pos.z;
     angle = exit->angle * 16.06274605f;
     actor->y_rotation = angle;
     actor->unkEE = angle;

@@ -121,7 +121,7 @@ void func_global_asm_806978FC(void) {
     phi_s0 = 0;
     D_global_asm_807FC7C0 = malloc(48 * sizeof(void*));
     for (i = 0; i < 48; i++) {
-        D_global_asm_807FC7C0[phi_s0] = getPointerTableFile(0x19, phi_s0 + 0x1654, 1, 1);
+        D_global_asm_807FC7C0[phi_s0] = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, phi_s0 + 0x1654, 1, 1);
         phi_s0++;
     }
 }

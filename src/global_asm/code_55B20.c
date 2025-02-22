@@ -158,36 +158,7 @@ typedef struct global_asm_struct_18 {
     s32 *unk64;
 } GlobalASMStruct18;
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
-    s32 unk30;
-    s32 unk34;
-    s32 unk38;
-    s32 unk3C;
-    s32 unk40;
-    s32 unk44;
-    s32 unk48;
-    s32 unk4C;
-    s32 unk50;
-    s32 unk54;
-    s32 unk58;
-    s32 unk5C;
-    s32 unk60;
-    s32 unk64;
-} Struct80650E20_arg0;
-
-void func_global_asm_80650E20(Struct80650E20_arg0 *arg0) {
+void func_global_asm_80650E20(MapGeometryHeader *arg0) {
     s32 size;
     u8 phi_v1;
 
@@ -1341,7 +1312,7 @@ typedef struct Pointer20File {
 void func_global_asm_80658930(Pointer20File *);
 
 void func_global_asm_806588E0(s32 fileIndex) {
-    void *file = getPointerTableFile(0x14, fileIndex, 1, 1);
+    void *file = getPointerTableFile(TABLE_20_UNKNOWN, fileIndex, 1, 1);
     func_global_asm_80658930(file);
     if (file) {
         func_global_asm_8066B434(file, 0xBED, 0x22);

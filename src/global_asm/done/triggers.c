@@ -146,7 +146,7 @@ void func_global_asm_8072E740(Maps map) {
     s32 sp30;
 
     // Loading zones
-    loadingZones = getPointerTableFile(0x12, map, 1, 0);
+    loadingZones = getPointerTableFile(TABLE_18_TRIGGERS, map, 1, 0);
     func_global_asm_8072E5FC(loadingZones);
     if (loadingZones) {
         func_global_asm_8066B434(loadingZones, 0xC1, 0x3D);
