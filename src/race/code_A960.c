@@ -252,7 +252,81 @@ f32 func_race_8002F04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
     return phi_f2;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F0AC.s")
+typedef struct {
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
+    f32 unk8;
+    f32 unkC;
+    u8 unk10;
+    u8 pad11[0x18 - 0x11];
+    u8 unk18[4];
+    Actor *unk1C[2];
+    s32 unk24;
+} Struct8002F0AC;
+
+u8 func_race_8002F0AC(Struct8002F0AC *arg0) {
+    f32 sp44;
+    f32 sp40;
+    f32 dz;
+    f32 dx;
+    f32 sp34;
+    f32 sp30;
+    f32 temp_f0_2;
+    u8 boolReturn;
+    
+    boolReturn = FALSE;
+    if (arg0->unk10 == 0) {
+        return 1;
+    }
+    switch (arg0->unk18[0]) {
+        case 2:
+            sp44 = arg0->unk1C[1]->x_position - arg0->unk1C[0]->x_position;
+            sp40 = arg0->unk1C[1]->z_position - arg0->unk1C[0]->z_position;
+            sp34 = arg0->unk1C[0]->x_position;
+            sp30 = arg0->unk1C[0]->z_position;
+            break;
+        case 0:
+            sp44 = -arg0->unkC;
+            sp40 = arg0->unk8;
+            sp34 = arg0->unk0;
+            sp30 = arg0->unk4;
+            break;
+        case 1:
+            sp44 = arg0->unkC;
+            sp40 = -arg0->unk8;
+            sp34 = arg0->unk0;
+            sp30 = arg0->unk4;
+            break;
+    }
+    dx = current_actor_pointer->unk88 - current_actor_pointer->x_position;
+    dz = current_actor_pointer->unk90 - current_actor_pointer->z_position;
+    temp_f0_2 = func_race_8002F04C(
+        current_actor_pointer->x_position,
+        current_actor_pointer->z_position,
+        dx,
+        dz,
+        sp34,
+        sp30,
+        sp44,
+        sp40
+    );
+    switch (arg0->unk18[0]) {
+        case 2:
+            if ((temp_f0_2 > 0.0f) && (temp_f0_2 < 1.0f)) {
+                boolReturn = TRUE;
+            }
+            break;
+        case 0:
+        case 1:
+            if (temp_f0_2 > 0.0f) {
+                boolReturn = TRUE;
+            }
+            break;
+    }
+    return boolReturn;
+}
 
 u8 func_race_8002F280(Struct8002F280_arg0 *arg0) {
     f32 p1 = (current_actor_pointer->x_position - arg0->unk0);
