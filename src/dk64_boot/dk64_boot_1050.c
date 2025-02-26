@@ -87,7 +87,7 @@ void func_dk64_boot_800005A8(void *arg0) {
         D_8000DCC4[11].unk4 = &D_188AF20;
         func_dk64_boot_80000A30();
     } else {
-        func_dk64_boot_80000450(&D_11320, &D_113F0, 0x805FB000);
+        func_dk64_boot_80000450(rspText_ROM_START, rspText_ROM_END, rspText_VRAM);
         D_dk64_boot_8000DCB4 = osAiSetFrequency(22050); // osAiSetFrequency
         bzero(0x805FB300, 0x204D00);
         sp34 = 0x80020000;
