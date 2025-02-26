@@ -91,6 +91,7 @@ us,asm,func_global_asm_80688C30,84,yes
 us,asm,func_global_asm_8068A20C,64,yes
 us,asm,func_global_asm_80713DFC,172,yes
 us,asm,func_global_asm_806A5174,1612,no
+us,asm,D_global_asm_80611F0C,2180,yes
 us,asm,func_global_asm_8064B118,56,yes
 us,asm,func_global_asm_8060C6B8,108,yes
 us,asm,func_global_asm_80724DB0,152,yes
@@ -4487,6 +4488,7 @@ us,boot,__d_to_ull,160,yes
 us,boot,osCreateViManager,384,no
 us,boot,__ll_rem,60,yes
 us,boot,guRotateF,404,no
+us,boot,func_dk64_boot_80005010,96,yes
 us,boot,sprintf,44,yes
 us,boot,func_dk64_boot_80000A30,112,no
 us,boot,guMtxCatF,360,yes

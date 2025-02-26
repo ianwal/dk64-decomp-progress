@@ -8,12 +8,15 @@ options:
   asm_end_label: "endlabel"
   asm_data_macro: dlabel
   asm_jtbl_label_macro: jlabel
+  asm_emit_size_directive: true
   generated_c_preamble: |
     #include <ultra64.h>
     #include "functions.h"
   undefined_funcs_auto_path: undefined_funcs_auto.us.txt
   undefined_syms_auto_path: undefined_syms_auto.us.txt
   symbol_addrs_path: symbol_addrs.us.txt
+  ld_symbol_header_path: include/ld_addrs.h
+  ld_script_path: donkeykong64.ld
   reloc_addrs_path:
     - reloc_addrs.us.txt
   symbol_name_format: $SEG_$VRAM
@@ -64,7 +67,7 @@ segments:
       - [0x5740, c, os/startthread]           #DONE
       - [0x5890, c, io/vimgr]
       - [0x5BA0, c, io/visetmode]             #DONE
-      - [0x5C10, bin, dk64_boot_5C10] #??? nops ???
+      - [0x5C10, hasm, os/parameter] #??? nops ???
       - [0x5C70, c, io/aisetfreq]
       - [0x5DC0, hasm, libc/bzero]            #DONE
       - [0x5E60, hasm, os/invalicache]        #DONE
@@ -196,11 +199,17 @@ segments:
       - [0x112F0, .rodata, io/devmgr]
       - [0x11310, rodata]
       - { start: 0x11320, type: bss, vram: 0x80010720 }
-  - name: assets
+  - name: rspText
     type: bin
     start: 0x11320
+    vram: 0x805FB000
     subsegments:
-      - [0x11320, bin]
+      - [0x11320, bin, rspBootText]
+  - name: assets
+    type: bin
+    start: 0x113D0
+    subsegments:
+      - [0x113D0, bin]
   - name: global_asm
     dir: global_asm
     type: code
@@ -384,7 +393,8 @@ segments:
       - [0x2144E00, c, audio/n_load]
       - [0x2145950, c, audio/n_resample2]
       - [0x2145D70, c, audio/code_145D70]
-      - [0x2146010, bin, code_146010]
+      - [0x2146010, bin, n_aspMainText]
+      - [0x2146C40, bin, data_146C40]
       - [0x2149160, data, data_149160]
       - [0x214B0A0, .data, done/dktv]
       - [0x214B0C0, data, data_14B0C0]
@@ -513,7 +523,8 @@ segments:
       - [0x2165260, .rodata, audio/code_1445A0]
       - [0x2165270, .rodata, audio/n_resample2]
       - [0x2165280, .rodata, audio/code_145D70]
-      - [0x2165290, rodata] # ???
+      - [0x2165290, bin, n_aspMain_data]
+      - [0x2165540, rodata] # ???
   - name: menu
     dir: menu
     type: code
