@@ -27,7 +27,7 @@ OBJDUMP := $(CROSS)objdump
 OBJCOPY := $(CROSS)objcopy
 PYTHON  := python3
 GREP    := grep -rl
-SPLAT   := $(PYTHON) tools/n64splat/split.py
+SPLAT   := splat
 PRINT   := printf
 ASM_PROCESSOR_DIR := tools/asm-processor
 DK_ROM_COMPRESS   := $(PYTHON) tools/generate_compressed_rom.py
@@ -143,8 +143,8 @@ CPPFLAGS       := -D_FINALROM -DN_MICRO -DF3DEX_GBI_2x
 INCLUDE_CFLAGS := -I . -I include -I include/2.0L -I include/2.0L/PR -I include/libc
 OPT_FLAGS      := -O2 
 MIPSBIT        := -mips2
-ASFLAGS        := -EB -mtune=vr4300 -march=vr4300 -mabi=32 -I include
-GCC_ASFLAGS    := -c -x assembler-with-cpp -mabi=32 -ffreestanding -mtune=vr4300 -march=vr4300 -mfix4300 -G 0 -O -mno-shared -fno-PIC -mno-abicalls
+ASFLAGS        := -EB -march=vr4300 -mabi=32 -mgp32 -mfp32 -I include -mfp32 -mgp32
+GCC_ASFLAGS    := -c -x assembler-with-cpp -mabi=32 -ffreestanding -mtune=vr4300 -march=vr4300 -mabi=32 -mgp32 -mfp32 -mfix4300 -G 0 -O -mno-shared -fno-PIC -mno-abicalls
 LDFLAGS        := -T $(LD_SCRIPT) -Map $(ELF:.elf=.map) --no-check-sections --accept-unknown-input-arch -T undefined_syms_auto.$(VERSION).txt -T undefined_funcs_auto.$(VERSION).txt -T undefined_syms.txt
 BINOFLAGS      := -I binary -O elf32-tradbigmips
 
@@ -259,7 +259,7 @@ $(BOOT_MIPS3_OBJS) : $(BUILD_DIR)/%.c.o : %.c | $(C_BUILD_DIRS)
 $(BUILD_DIR)/SPLAT_TIMESTAMP: decompressed.$(VERSION).yaml $(SYMBOL_ADDRS) $(DECOMPRESSED_BASEROM) | $(BUILD_DIR)
 	$(call print1,Splitting rom:,$<)
 	@$(RM) -rf $(ASM_ROOT)
-	@$(SPLAT) decompressed.$(VERSION).yaml
+	@$(SPLAT) split decompressed.$(VERSION).yaml
 	@touch $@
 	@touch $(LD_SCRIPT)
 

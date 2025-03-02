@@ -1,7 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
-
-
+#include "guint.h"
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -14,53 +13,45 @@
  *									  *
  **************************************************************************/
 
-#include "guint.h"
+extern f32 __libm_qnan_f;
 
-/* ====================================================================
- * ====================================================================
- *
- * Module: fsin.c
- * $Revision: 1.2 $
- * $Date: 1995/07/12 17:48:01 $
- * $Author: jeffd $
- * $Source: /disk6/Master/cvsmdev2/PR/libultra/gu/sinf.c,v $
- *
- * Revision history:
- *  09-Jun-93 - Original Version
- *
- * Description:	source code for fsin function
- *
- * ====================================================================
- * ====================================================================
- */
+typedef union
+{
+	struct
+	{
+		unsigned int hi;
+		unsigned int lo;
+	} word;
 
-#pragma weak fsin = __sinf
-#pragma weak sinf = __sinf
-#define	fsin __sinf
+	double	d;
+} du;
 
-/* coefficients for polynomial approximation of sin on +/- pi/2 */
+typedef union
+{
+	unsigned int	i;
+	float		f;
+} fu;
 
-// static const du	P[] =
-// {
-// {0x3ff00000,	0x00000000},
-// {0xbfc55554,	0xbc83656d},
-// {0x3f8110ed,	0x3804c2a0},
-// {0xbf29f6ff,	0xeea56814},
-// {0x3ec5dbdf,	0x0e314bfe},
-// };
+static const du	P[] =
+{
+{0x3ff00000,	0x00000000},
+{0xbfc55554,	0xbc83656d},
+{0x3f8110ed,	0x3804c2a0},
+{0xbf29f6ff,	0xeea56814},
+{0x3ec5dbdf,	0x0e314bfe},
+};
 
-// static const du	rpi =
-// {0x3fd45f30,	0x6dc9c883};
+static const du	rpi =
+{0x3fd45f30,	0x6dc9c883};
 
-// static const du	pihi =
-// {0x400921fb,	0x50000000};
+static const du	pihi =
+{0x400921fb,	0x50000000};
 
-// static const du	pilo =
-// {0x3e6110b4,	0x611a6263};
+static const du	pilo =
+{0x3e6110b4,	0x611a6263};
 
-// static const fu	zero = {0x00000000};
+static const fu	zero = {0x00000000};
 
-
 /* ====================================================================
  *
  * FunctionName		fsin
@@ -70,20 +61,12 @@
  * ====================================================================
  */
 
-extern f64 D_dk64_boot_80010620[5]; // P
-extern f64 D_dk64_boot_80010648; // rpi
-extern f64 D_dk64_boot_80010650; // phhi
-extern f64 D_dk64_boot_80010658; // phlo
-extern f32 D_dk64_boot_80010660; // zero
-
-float
-fsin( float x )
-{
-double	dx, xsq, poly;
-double	dn;
-int	n;
-double	result;
-int	ix, xpt;
+float sinf( float x ) {
+	double	dx, xsq, poly;
+	double	dn;
+	int	n;
+	double	result;
+	int	ix, xpt;
 
 
 	ix = *(int *)&x;
@@ -106,7 +89,7 @@ int	ix, xpt;
 
 			xsq = dx*dx;
 
-			poly = ((D_dk64_boot_80010620[4]*xsq + D_dk64_boot_80010620[3])*xsq + D_dk64_boot_80010620[2])*xsq + D_dk64_boot_80010620[1];
+			poly = ((P[4].d*xsq + P[3].d)*xsq + P[2].d)*xsq + P[1].d;
 
 			result = dx + (dx*xsq)*poly;
 
@@ -124,20 +107,20 @@ int	ix, xpt;
 
 		/*  reduce argument to +/- pi/2  */
 
-		dn = dx*D_dk64_boot_80010648;
+		dn = dx*rpi.d;
 
 		n = ROUND(dn);
 		dn = n;
 
-		dx = dx - dn*D_dk64_boot_80010650;
-		dx = dx - dn*D_dk64_boot_80010658;	/* dx = x - n*pi */
+		dx = dx - dn*pihi.d;
+		dx = dx - dn*pilo.d;	/* dx = x - n*pi */
 
 		/* compute sin(dx) as before, negating result if n is odd
 		*/
 
 		xsq = dx*dx;
 
-		poly = ((D_dk64_boot_80010620[4]*xsq + D_dk64_boot_80010620[3])*xsq + D_dk64_boot_80010620[2])*xsq + D_dk64_boot_80010620[1];
+		poly = ((P[4].d*xsq + P[3].d)*xsq + P[2].d)*xsq + P[1].d;
 
 		result = dx + (dx*xsq)*poly;
 
@@ -152,15 +135,10 @@ int	ix, xpt;
 	{
 		/* x is a NaN; return a quiet NaN */
 
-#ifdef _IP_NAN_SETS_ERRNO
-
-		*__errnoaddr = EDOM;
-#endif
-		
 		return ( __libm_qnan_f );
 	}
 
 	/* just give up and return 0.0 */
 
-	return ( D_dk64_boot_80010660 );
+	return ( zero.f );
 }

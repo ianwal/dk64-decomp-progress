@@ -6,9 +6,9 @@ extern u8 __osContLastCmd;
 extern OSPifRam D_dk64_boot_80014E50[];
 
 #ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/motor/osMotorStartStop.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/motor/__osMotorAccess.s")
 #else
-s32 osMotorStartStop(OSPfs *pfs, int arg1)
+s32 __osMotorAccess(OSPfs *pfs, int arg1)
 {
 
     int i;
@@ -83,13 +83,13 @@ s32 osMotorInit(OSMesgQueue *mq, OSPfs *pfs, int channel)
     pfs->activebank = 0xff;
     pfs->status = 0;
 
-    ret = __osPackRamWriteDataSafe(pfs, 254);
+    ret = __osPfsSelectBank(pfs, 254);
     if (ret == 2) //TODO: remove magic constant
-        ret = __osPackRamWriteDataSafe(pfs, 128);
+        ret = __osPfsSelectBank(pfs, 128);
     if (ret != 0)
         return ret;
 
-    ret = __osContRamReadData(mq, channel, 1024, temp); // ret = __osContRamRead(mq, channel, 1024, temp);
+    ret = __osContRamRead(mq, channel, 1024, temp); // ret = __osContRamRead(mq, channel, 1024, temp);
     if (ret == 2)
         ret = PFS_ERR_CONTRFAIL; //is this right?
     if (ret != 0)
@@ -97,13 +97,13 @@ s32 osMotorInit(OSMesgQueue *mq, OSPfs *pfs, int channel)
     if (temp[31] == 254)
         return PFS_ERR_DEVICE;
 
-    ret = __osPackRamWriteDataSafe(pfs, 128);
+    ret = __osPfsSelectBank(pfs, 128);
     if (ret == 2) //TODO: remove magic constant
         ret = PFS_ERR_CONTRFAIL;
     if (ret != 0)
         return ret;
 
-    ret = __osContRamReadData(mq, channel, 1024, temp); // ret = __osContRamRead(mq, channel, 1024, temp);
+    ret = __osContRamRead(mq, channel, 1024, temp); // ret = __osContRamRead(mq, channel, 1024, temp);
     if (ret == 2)
         ret = PFS_ERR_CONTRFAIL;
     if (ret != 0)

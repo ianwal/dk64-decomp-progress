@@ -3,4 +3,4 @@
 
 
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/contramwritesafe/__osPackRamWriteDataSafe.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/contramwritesafe/__osPfsSelectBank.s")

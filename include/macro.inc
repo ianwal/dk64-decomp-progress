@@ -16,10 +16,6 @@
     \label:
 .endm
 
-.macro endlabel label
-    .end \label
-.endm
-
 .macro jlabel label
     .global \label
     \label:

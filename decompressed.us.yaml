@@ -5,7 +5,6 @@ options:
   compiler: "IDO"
   platform: n64
   auto_decompile_empty_functions: False
-  asm_end_label: "endlabel"
   asm_data_macro: dlabel
   asm_jtbl_label_macro: jlabel
   asm_emit_size_directive: true
@@ -17,6 +16,8 @@ options:
   symbol_addrs_path: symbol_addrs.us.txt
   ld_symbol_header_path: include/ld_addrs.h
   ld_script_path: donkeykong64.ld
+  section_order: [".text", ".data", ".rodata", ".bss"]
+  #hasm_in_src_path: True
   reloc_addrs_path:
     - reloc_addrs.us.txt
   symbol_name_format: $SEG_$VRAM
@@ -88,7 +89,7 @@ segments:
       - [0x6A20, c, gu/perspective]           #DONE
       - [0x6CB0, c, os/gettime]               #DONE
       - [0x6D40, c, os/settime]               #DONE
-      - [0x6D70, c, gu/nonmatching/lookathil]
+      - [0x6D70, c, gu/lookathil]
       - [0x7560, c, gu/lookat]                #DONE
       - [0x7890, c, gu/ortho]                 #DONE
       - [0x7A50, c, io/aisetnextbuf]          #DONE
@@ -111,13 +112,13 @@ segments:
       - [0x8E70, c, io/sptask]                #DONE
       - [0x9160, c, io/sptaskyield]           #DONE
       - [0x9180, c, gu/scale]                 #DONE
-      - [0x9220, c, gu/nonmatching/rotate]
+      - [0x9220, c, gu/rotate]
       - [0x9410, c, gu/mtxcatf]               #DONE
       - [0x9620, c, gu/mtxcatl]               #DONE
-      - [0x96E0, c, gu/nonmatching/align]
+      - [0x96E0, c, gu/align]
       - [0x98F0, c, io/piread]                #DONE
       - [0x9930, c, io/vigetmode]             #DONE
-      - [0x9980, c, gu/nonmatching/position]
+      - [0x9980, c, gu/position]
       - [0x9BA0, c, os/virtualtophysical]     #DONE
       - [0x9C20, hasm, interrupt]             #DONE
       - [0x9C60, c, os/thread]
@@ -187,29 +188,39 @@ segments:
       - [0x10DA0, data]
       - [0x10F10, .rodata, dk64_boot_3D20]
       - [0x11120, .rodata, gu/perspective]
-      - [0x11130, .rodata, gu/nonmatching/lookathil]
+      - [0x11130, .rodata, gu/lookathil]
       - [0x11140, .rodata, libc/llcvt]
-      - [0x11150, .rodata, gu/nonmatching/rotate]
-      - [0x11160, .rodata, gu/nonmatching/align]
-      - [0x11170, .rodata, gu/nonmatching/position]
+      - [0x11150, .rodata, gu/rotate]
+      - [0x11160, .rodata, gu/align]
+      - [0x11170, .rodata, gu/position]
       - [0x11180, rodata, os/exceptasm]
-      - [0x111D0, rodata, gu/cosf]
-      - [0x11220, rodata, gu/sinf]
+      - [0x111D0, .rodata, gu/cosf]
+      - [0x11220, .rodata, gu/sinf]
       - [0x11270, rodata]
       - [0x112F0, .rodata, io/devmgr]
       - [0x11310, rodata]
-      - { start: 0x11320, type: bss, vram: 0x80010720 }
+      - { start: 0x11320, type: bss, vram: 0x80010720, name: globalBSS}
+      - { start: 0x11320, type: .bss, vram: 0x80014F90, name: gu/rotate }
+      - { start: 0x11320, type: .bss, vram: 0x80014FA0, name: gu/align }
+      - { start: 0x11320, type: .bss, vram: 0x80014FB0, name: gu/position }
+      - { start: 0x11320, type: bss, vram: 0x80014FC0, name: globalBSS2 }
   - name: rspText
     type: bin
     start: 0x11320
     vram: 0x805FB000
     subsegments:
-      - [0x11320, bin, rspBootText]
+      - [0x11320, data, rspBootText]
   - name: assets
     type: bin
-    start: 0x113D0
+    start: 0x113F0
+    follow_vram: rspText
     subsegments:
-      - [0x113D0, bin]
+      - [0x113F0, bin]
+  - name: assets2
+    type: bin
+    start: 0x11620
+    subsegments:
+      - [0x11620, bin]
   - name: global_asm
     dir: global_asm
     type: code
@@ -245,8 +256,9 @@ segments:
       - [0x2017B90, c, code_17B90]
       - [0x2018750, c, code_18750]
       - [0x201E200, c, done/code_1E200]
-      - [0x201E2D0, c, code_1E2D0] # Hasm, has some issues trying to get it to compile with this
-      - [0x201F9A0, bin, code_1F9A0] # Float to Array
+      - [0x201E2D0, hasm, code_1E2D0] # Hasm, has some issues trying to get it to compile with this
+      # - [0x201E2D0, c, code_1E2D0] # Hasm, has some issues trying to get it to compile with this
+      #- [0x201F9A0, bin, code_1F9A0] # Float to Array
       - [0x20201B0, c, code_201B0]
       - [0x202C700, c, code_2C700]
       - [0x202C910, c, code_2C910]
@@ -335,7 +347,7 @@ segments:
       - [0x2117880, c, code_117880]
       - [0x2119370, c, code_119370]
       - [0x211BE00, c, code_11BE00]
-      - [0x2124780, bin, code_124780] #sprites
+      - [0x2124780, hasm, code_124780] #sprites
       - [0x2126260, c, code_126260]
       - [0x2127B00, c, code_127B00]
       - [0x21292F0, c, done/code_1292F0]
@@ -523,7 +535,7 @@ segments:
       - [0x2165260, .rodata, audio/code_1445A0]
       - [0x2165270, .rodata, audio/n_resample2]
       - [0x2165280, .rodata, audio/code_145D70]
-      - [0x2165290, bin, n_aspMain_data]
+      - [0x2165290, rodata, n_aspMain_data]
       - [0x2165540, rodata] # ???
   - name: menu
     dir: menu

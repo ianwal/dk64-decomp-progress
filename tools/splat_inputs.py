@@ -2,21 +2,19 @@
 # Script to get a list of input files that are referenced by a splat file
 import argparse
 import sys
-sys.path.append("./tools/n64splat")
-
-from split import *
+import splat
+import yaml
 
 def main(config_path):
     # Load config
     with open(config_path) as f:
         config = yaml.load(f.read(), Loader=yaml.SafeLoader)
 
-    options.initialize(config, config_path, None, None)
-    options.opts.modes = []
-    options.opts.verbose = False
+    splat.util.options.initialize(config, config_path, None, None)
+    splat.util.options.opts.modes = []
+    splat.util.options.opts.verbose = False
 
-
-    all_segments = initialize_segments(config["segments"])
+    all_segments = splat.scripts.split.initialize_segments(config["segments"])
 
     objs = ""
 
@@ -40,4 +38,3 @@ if __name__ == '__main__':
     # map(print, obj_lists)
     for obj_list in obj_lists:
         print(obj_list)
-

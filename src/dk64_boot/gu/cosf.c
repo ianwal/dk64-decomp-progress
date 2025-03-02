@@ -1,3 +1,6 @@
+#include <ultra64.h>
+#include "functions.h"
+#include "guint.h"
 /**************************************************************************
  *									  *
  *		 Copyright (C) 1994, Silicon Graphics, Inc.		  *
@@ -10,77 +13,53 @@
  *									  *
  **************************************************************************/
 
-#include "guint.h"
 
-/* ====================================================================
- * ====================================================================
- *
- * Module: fcos.c
- * $Revision: 1.2 $
- * $Date: 1995/07/12 17:47:57 $
- * $Author: jeffd $
- * $Source: /disk6/Master/cvsmdev2/PR/libultra/gu/cosf.c,v $
- *
- * Revision history:
- *  09-Jun-93 - Original Version
- *
- * Description:	source code for fcos function
- *
- * ====================================================================
- * ====================================================================
- */
+extern f32 __libm_qnan_f;
 
-#pragma weak fcos = __cosf
-#pragma weak cosf = __cosf
-#define	fcos __cosf
-
-/* coefficients for polynomial approximation of cos on +/- pi/2 */
-
-// static const du	P[] =
-// {
-// {0x3ff00000,	0x00000000},
-// {0xbfc55554,	0xbc83656d},
-// {0x3f8110ed,	0x3804c2a0},
-// {0xbf29f6ff,	0xeea56814},
-// {0x3ec5dbdf,	0x0e314bfe},
-// };
-
-// static const du	rpi =
-// {0x3fd45f30,	0x6dc9c883};
-
-// static const du	pihi =
-// {0x400921fb,	0x50000000};
-
-// static const du	pilo =
-// {0x3e6110b4,	0x611a6263};
-
-// static const fu	zero = {0x00000000};
-
-
-/* ====================================================================
- *
- * FunctionName		fcos
- *
- * Description		computes cosine of arg
- *
- * ====================================================================
- */
-
-extern f64 D_dk64_boot_800105D0[5]; // P
-extern f64 D_dk64_boot_800105F8; // rpi
-extern f64 D_dk64_boot_80010600; // pihi
-extern f64 D_dk64_boot_80010608; // pilo
-extern f32 D_dk64_boot_80010610; // zero
-
-float
-fcos( float x )
+typedef union
 {
-float	absx;
-double	dx, xsq, poly;
-double	dn;
-int	n;
-double	result;
-int	ix, xpt;
+	struct
+	{
+		unsigned int hi;
+		unsigned int lo;
+	} word;
+
+	double	d;
+} du;
+
+typedef union
+{
+	unsigned int	i;
+	float		f;
+} fu;
+
+static const du	P[] =
+{
+{0x3ff00000,	0x00000000},
+{0xbfc55554,	0xbc83656d},
+{0x3f8110ed,	0x3804c2a0},
+{0xbf29f6ff,	0xeea56814},
+{0x3ec5dbdf,	0x0e314bfe},
+};
+
+static const du	rpi =
+{0x3fd45f30,	0x6dc9c883};
+
+static const du	pihi =
+{0x400921fb,	0x50000000};
+
+static const du	pilo =
+{0x3e6110b4,	0x611a6263};
+
+static const fu	zero = {0x00000000};
+
+float cosf( float x ) {
+    float	absx;
+    double	dx, xsq, poly;
+    double	dn;
+    int	n;
+    double	result;
+    int	ix, xpt;
 
 
 	ix = *(int *)&x;
@@ -102,18 +81,18 @@ int	ix, xpt;
 
 		dx = absx;
 
-		dn = dx*D_dk64_boot_800105F8 + 0.5;
+		dn = dx*rpi.d + 0.5;
 		n = ROUND(dn);
 		dn = n;
 
 		dn -= 0.5;
 
-		dx = dx - dn*D_dk64_boot_80010600;
-		dx = dx - dn*D_dk64_boot_80010608;	/* dx = x - (n - 0.5)*pi */
+		dx = dx - dn*pihi.d;
+		dx = dx - dn*pilo.d;	/* dx = x - (n - 0.5)*pi */
 
 		xsq = dx*dx;
 
-		poly = ((D_dk64_boot_800105D0[4]*xsq + D_dk64_boot_800105D0[3])*xsq + D_dk64_boot_800105D0[2])*xsq + D_dk64_boot_800105D0[1];
+		poly = ((P[4].d*xsq + P[3].d)*xsq + P[2].d)*xsq + P[1].d;
 
 		result = dx + (dx*xsq)*poly;
 
@@ -127,17 +106,8 @@ int	ix, xpt;
 
 	if ( x != x )
 	{
-		/* x is a NaN; return a quiet NaN */
-
-#ifdef _IP_NAN_SETS_ERRNO
-
-		*__errnoaddr = EDOM;
-#endif
-		
-		return ( __libm_qnan_f );
+	    return ( __libm_qnan_f );
 	}
 
-	/* just give up and return 0.0 */
-
-	return ( D_dk64_boot_80010610 );
+	return ( zero.f );
 }

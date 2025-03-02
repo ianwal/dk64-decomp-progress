@@ -738,7 +738,7 @@ void func_global_asm_8060D14C(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/saveFile/func_global_asm_8060D2C8.s")
 
-void osWriteBackDCacheAll(void);
+void osWritebackDCacheAll(void);
 extern s8 D_global_asm_807467E4;
 extern f32 D_global_asm_807467E8;
 extern u8 D_global_asm_807ECD08;
@@ -780,7 +780,7 @@ void func_global_asm_8060D2C8(s32 arg0) {
     sp860.s32v[temp] = func_global_asm_8060B968(&sp860.u8v[FOUR_FILE_SIZE_BYTES], 0x3CU);
     temp_v1 = 0x800 - FOUR_FILE_SIZE_BYTES;
     bzero((strlen(D_global_asm_807467C0) - temp_v1) + &sp860.u8v[0x840], (temp_v1 - strlen(D_global_asm_807467C0)) - 0x40);
-    osWriteBackDCacheAll();
+    osWritebackDCacheAll();
     memcpy(&D_global_asm_807ED6A8.s32v[var_s1_2 * 2], &sp860.s32v[var_s1_2 * 2], 0x800 - (var_s1_2 * 8));
     while (*sp5C) {
         func_global_asm_8060B84C(1.0f);

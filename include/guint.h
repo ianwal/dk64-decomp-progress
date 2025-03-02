@@ -13,22 +13,22 @@
 #include <mbi.h>
 #include <gu.h>
 
-typedef union
-{
-	struct
-	{
-		unsigned int hi;
-		unsigned int lo;
-	} word;
+// typedef union
+// {
+// 	struct
+// 	{
+// 		unsigned int hi;
+// 		unsigned int lo;
+// 	} word;
 
-	double	d;
-} du;
+// 	double	d;
+// } du;
 
-typedef union
-{
-	unsigned int	i;
-	float		f;
-} fu;
+// typedef union
+// {
+// 	unsigned int	i;
+// 	float		f;
+// } fu;
 
 #ifndef __GL_GL_H__
 
