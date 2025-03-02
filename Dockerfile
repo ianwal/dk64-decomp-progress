@@ -23,12 +23,8 @@ RUN python -m venv /opt/venv
 # Enable venv
 ENV PATH="/opt/venv/bin:$PATH"
 
-RUN python3 -m pip install \
-    pyyaml pylibyaml pycparser \
-    colorama ansiwrap watchdog python-Levenshtein cxxfilt \
-    python-ranges \
-    pypng anybadge \
-    tqdm intervaltree n64img spimdisasm
+COPY requirements.txt /dk64/
+RUN python3 -m pip install -r /dk64/requirements.txt
 
 CMD echo 'Usage: docker run --rm -v ${PWD}:/dk64 --user $UID:$GID dk64 make\n' \
          'See https://gitlab.com/dk64_decomp/dk64 for more information'

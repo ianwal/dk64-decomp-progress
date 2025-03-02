@@ -77,12 +77,7 @@ sudo apt-get update && \
     libssl-dev \
     vbindiff
 
-sudo python3 -m pip install \
-    pyyaml pylibyaml pycparser \
-    colorama ansiwrap watchdog python-Levenshtein cxxfilt \
-    python-ranges \
-    pypng anybadge \
-    tqdm intervaltree n64img spimdisasm
+sudo python3 -m pip install -r requirements.txt
 ```
 
 Then to build everything just run make:
