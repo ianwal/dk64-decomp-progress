@@ -41,7 +41,7 @@ void func_global_asm_8060A9BC(void) {
     func_global_asm_8060AA04();
     if (!(D_global_asm_807467C4 & 0xFF)) {
         D_global_asm_807ECD08 = 1;
-        func_dk64_boot_800073D0(&D_global_asm_807ECCF0);
+        osContStartReadData(&D_global_asm_807ECCF0);
     }
 }
 */
@@ -120,7 +120,7 @@ void func_global_asm_8060AC34(OSContPad *arg0) {
     
     unk0 = &D_global_asm_807ECD08;
     if ((!D_global_asm_807467C4) && (*unk0)) {
-        func_dk64_boot_80007454(arg0);
+        osContGetReadData(arg0);
     }
     *unk0 = 0;
 }

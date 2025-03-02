@@ -14,7 +14,7 @@ void func_global_asm_8060E4B0(Struct807F0470 *arg0) {
 void func_global_asm_8060E4D0(u8 arg0) {
     Struct807F0470 *temp = &D_global_asm_807F0470[arg0];
 
-    if (osMotorStartStop(&D_global_asm_807F02D0[arg0], 1) == 4) {
+    if (__osMotorAccess(&D_global_asm_807F02D0[arg0], 1) == 4) {
         func_global_asm_8060E4B0(temp);
         temp->unk0 = 3;
     } else {
@@ -43,9 +43,9 @@ void func_global_asm_8060E574(u8 arg0) {
 
 void func_global_asm_8060E664(u8 arg0) {
     func_global_asm_8060E574(arg0);
-    osMotorStartStop(&D_global_asm_807F02D0[arg0], 0);
-    osMotorStartStop(&D_global_asm_807F02D0[arg0], 0);
-    osMotorStartStop(&D_global_asm_807F02D0[arg0], 0);
+    __osMotorAccess(&D_global_asm_807F02D0[arg0], 0);
+    __osMotorAccess(&D_global_asm_807F02D0[arg0], 0);
+    __osMotorAccess(&D_global_asm_807F02D0[arg0], 0);
     D_global_asm_807F0470[arg0].unk4 = 0;
 }
 

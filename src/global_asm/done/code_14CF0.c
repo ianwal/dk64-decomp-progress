@@ -38,7 +38,7 @@ typedef struct Struct80767CE8 {
     u8 pad40[0x11B0 - 0x40];
 } Struct80767CE8;
 
-void osWriteBackDCacheAll(void);
+void osWritebackDCacheAll(void);
 extern s32 D_805FB000; // Unsure on type
 extern s32 D_805FB0D0; // Unsure on type
 
@@ -106,7 +106,7 @@ void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, 
         temp_s0->unkC = D_global_asm_80744470[D_global_asm_807444FC];
         temp_s0->unk50 = &D_80767CD8;
         if (arg5 != 0) {
-            osWriteBackDCacheAll();
+            osWritebackDCacheAll();
         } else {
             osWritebackDCache(temp_s0, sizeof(Struct807F05A8));
             osWritebackDCache(arg0, arg1 * 8);

@@ -84,13 +84,13 @@ void *memcpy(void *dest, void *src, u32 n);
 
 // dk64_boot/dk64_boot_3D20.c
 // TODO: func_dk64_boot_80003120 has no documented signature
-// TODO: func_dk64_boot_8000320C has no documented signature
+// TODO: _Printf has no documented signature
 
 // dk64_boot/io/vimgr.c
 // TODO: viMgrMain has no documented signature
 
 // dk64_boot/io/aisetfreq.c
-// TODO: osWriteBackDCacheAll has no documented signature but has been matched
+// TODO: osWritebackDCacheAll has no documented signature but has been matched
 
 // dk64_boot/dk64_boot_61D0.c
 void func_dk64_boot_800055D0(void);
@@ -109,8 +109,8 @@ s64 __ll_rshift(s64 arg0, s64 arg1);
 s32 func_dk64_boot_80005A70(void);
 
 // dk64_boot/io/contreaddata.c
-s32 func_dk64_boot_800073D0(OSMesgQueue *arg0);
-void func_dk64_boot_80007454(OSContPad *data); //void osContGetReadData(OSContPad *data)
+s32 osContStartReadData(OSMesgQueue *arg0);
+void osContGetReadData(OSContPad *data); //void osContGetReadData(OSContPad *data)
 void func_dk64_boot_800074E0(void); //static void __osPackReadData(void)
 
 // dk64_boot/libc/llcvt.c
@@ -124,7 +124,7 @@ f64 __ull_to_d(u64 l);
 f32 __ull_to_f(u64 l);
 
 // dk64_boot/io/motor.c
-// TODO: osMotorStartStop has no documented signature
+// TODO: __osMotorAccess has no documented signature
 // TODO: _MakeMotorData has no documented signature
 
 // dk64_boot/os/thread.c
@@ -139,8 +139,8 @@ f32 __ull_to_f(u64 l);
 // TODO: fsin has no documented signature
 
 // dk64_boot/io/contpfs.c
-// TODO: func_dk64_boot_8000D7E0 has no documented signature
-// TODO: func_dk64_boot_8000D8B4 has no documented signature
+// TODO: __osCheckId has no documented signature
+// TODO: __osPfsRWInode has no documented signature
 
 // dk64_boot/dk64_boot_E790.c
 // TODO: func_dk64_boot_8000DB90 has no documented signature

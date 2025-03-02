@@ -1,0 +1,16 @@
+splat64[mips]==0.32.3
+spimdisasm==1.32.1
+pyyaml
+pylibyaml
+pycparser
+colorama
+ansiwrap
+watchdog
+python-Levenshtein
+cxxfilt
+python-ranges
+pypng
+anybadge
+tqdm
+intervaltree
+n64img

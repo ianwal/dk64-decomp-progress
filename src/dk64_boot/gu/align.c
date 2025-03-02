@@ -1,11 +1,6 @@
 #include <ultra64.h>
 #include "functions.h"
 
-
-// rodata, data
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/align/guAlignF.s")
-
-/*
 void guAlignF(float mf[4][4], float a, float x, float y, float z)
 {
 	static float dtor = 3.1415926f / 180.0f; // TODO: Need .data defined
@@ -44,11 +39,7 @@ void guAlignF(float mf[4][4], float a, float x, float y, float z)
 		mf[3][3] = 1;
 	}
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/gu/nonmatching/align/guAlign.s")
-
-/*
 void guAlign(Mtx *m, f32 a, f32 x, f32 y, f32 z)
 {
 	f32 mf[4][4];
@@ -57,4 +48,4 @@ void guAlign(Mtx *m, f32 a, f32 x, f32 y, f32 z)
 
 	guMtxF2L(mf, m);
 }
-*/
+

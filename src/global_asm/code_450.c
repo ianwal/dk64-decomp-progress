@@ -93,7 +93,7 @@ void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
 }
 
 void func_dk64_boot_800024E0(u8 **, u32 *, s32);
-void osWriteBackDCacheAll(void);
+void osWritebackDCacheAll(void);
 extern u16 *D_global_asm_80744470[2];
 
 void func_global_asm_805FB7E4(void) {
@@ -115,7 +115,7 @@ void func_global_asm_805FB7E4(void) {
     while (var_v1 < end) {
         *var_v1++ = 1;
     }
-    osWriteBackDCacheAll();
+    osWritebackDCacheAll();
     temp_s0 = &D_global_asm_80744470[1][0x6400];
     func_global_asm_805FB750(0x38, 0x10, temp_s0);
     func_global_asm_805FB750(temp_s0[0] + 0x178, 0x10, temp_s0);
@@ -136,7 +136,7 @@ void func_global_asm_805FB7E4(void) {
     while (var_v1 < end) {
         *var_v1++ = 1;
     }
-    osWriteBackDCacheAll();
+    osWritebackDCacheAll();
 }
 
 // close
@@ -267,7 +267,7 @@ void func_global_asm_805FBC5C(void) {
     func_global_asm_80600D50();
     setIntroStoryPlaying(0);
     func_global_asm_8073239C();
-    osWriteBackDCacheAll();
+    osWritebackDCacheAll();
     mq = &D_global_asm_8076A110;
     osCreateMesgQueue(
         mq,
@@ -285,7 +285,7 @@ void func_global_asm_805FBE04(void) {
     s32 stackpad1;
     f32 FOV;
 
-    osWriteBackDCacheAll();
+    osWritebackDCacheAll();
     osInvalDCache((void*)0x80000000, 0x800000);
     D_global_asm_8076A080 = &D_global_asm_807FF100;
     func_global_asm_8060B140(D_dk64_boot_8000DDE4, D_global_asm_8076A080, &D_global_asm_8076A084, 0, 0, 0, 0);

@@ -95,7 +95,7 @@ void func_dk64_boot_800005A8(void *arg0) {
         func_dk64_boot_80000450(&D_113F0, &D_CBE70, 0x80020000);
         func_dk64_boot_800004B4(&sp34, &sp30);
         osInvalICache(0x805FB300, sp30 + 0x7FA04D00);
-        osWriteBackDCacheAll();
+        osWritebackDCacheAll();
         D_8000DCC4[0].unk4 = &D_11320;
         D_8000DCC4[0].unk0 = &D_1050;
         D_8000DCC4[1].unk4 = &D_CBE70;
