@@ -190,7 +190,7 @@ typedef struct {
     s8 unk3B;
 } Struct807F7500;
 
-extern Struct807F7500 D_807F7500[];
+extern Struct807F7500 D_global_asm_807F7500[];
 extern f32 D_global_asm_807F7ED0;
 extern f32 D_global_asm_807F7ED4;
 extern f32 D_global_asm_807F7ED8;
@@ -200,26 +200,26 @@ extern f32 D_global_asm_807F7EE4;
 
 void createLight(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, u8 arg7, u8 arg8, u8 arg9, u8 argA) {
     if (D_global_asm_80748300 == 0x10) return;
-    D_807F7500[D_global_asm_80748300].unk34 = D_global_asm_807F7EFE;
-    D_807F7500[D_global_asm_80748300].unk3A = D_global_asm_807F7EF8;
-    D_807F7500[D_global_asm_80748300].unk30 = D_global_asm_807F7EFA;
-    D_807F7500[D_global_asm_80748300].unk32 = D_global_asm_807F7EFC;
-    D_807F7500[D_global_asm_80748300].unk8 = D_global_asm_807F7EE8;
-    D_807F7500[D_global_asm_80748300].unk0 = D_global_asm_807F7EE4;
-    D_807F7500[D_global_asm_80748300].unk18 = arg0;
-    D_807F7500[D_global_asm_80748300].unk1C = arg1;
-    D_807F7500[D_global_asm_80748300].unkC = D_global_asm_807F7EDC;
-    D_807F7500[D_global_asm_80748300].unk4 = D_global_asm_807F7ED8;
-    D_807F7500[D_global_asm_80748300].unk39 = arg7;
-    D_807F7500[D_global_asm_80748300].unk10 = D_global_asm_807F7EE0;
-    D_807F7500[D_global_asm_80748300].unk20 = arg2;
-    D_807F7500[D_global_asm_80748300].unk24 = arg3;
-    D_807F7500[D_global_asm_80748300].unk28 = arg4;
-    D_807F7500[D_global_asm_80748300].unk2C = arg5;
-    D_807F7500[D_global_asm_80748300].unk14 = arg6;
-    D_807F7500[D_global_asm_80748300].unk36 = arg8;
-    D_807F7500[D_global_asm_80748300].unk37 = arg9;
-    D_807F7500[D_global_asm_80748300].unk38 = argA;
+    D_global_asm_807F7500[D_global_asm_80748300].unk34 = D_global_asm_807F7EFE;
+    D_global_asm_807F7500[D_global_asm_80748300].unk3A = D_global_asm_807F7EF8;
+    D_global_asm_807F7500[D_global_asm_80748300].unk30 = D_global_asm_807F7EFA;
+    D_global_asm_807F7500[D_global_asm_80748300].unk32 = D_global_asm_807F7EFC;
+    D_global_asm_807F7500[D_global_asm_80748300].unk8 = D_global_asm_807F7EE8;
+    D_global_asm_807F7500[D_global_asm_80748300].unk0 = D_global_asm_807F7EE4;
+    D_global_asm_807F7500[D_global_asm_80748300].unk18 = arg0;
+    D_global_asm_807F7500[D_global_asm_80748300].unk1C = arg1;
+    D_global_asm_807F7500[D_global_asm_80748300].unkC = D_global_asm_807F7EDC;
+    D_global_asm_807F7500[D_global_asm_80748300].unk4 = D_global_asm_807F7ED8;
+    D_global_asm_807F7500[D_global_asm_80748300].unk39 = arg7;
+    D_global_asm_807F7500[D_global_asm_80748300].unk10 = D_global_asm_807F7EE0;
+    D_global_asm_807F7500[D_global_asm_80748300].unk20 = arg2;
+    D_global_asm_807F7500[D_global_asm_80748300].unk24 = arg3;
+    D_global_asm_807F7500[D_global_asm_80748300].unk28 = arg4;
+    D_global_asm_807F7500[D_global_asm_80748300].unk2C = arg5;
+    D_global_asm_807F7500[D_global_asm_80748300].unk14 = arg6;
+    D_global_asm_807F7500[D_global_asm_80748300].unk36 = arg8;
+    D_global_asm_807F7500[D_global_asm_80748300].unk37 = arg9;
+    D_global_asm_807F7500[D_global_asm_80748300].unk38 = argA;
     D_global_asm_80748300++;
     D_global_asm_807F7ED8 = D_global_asm_807F7ECC;
     D_global_asm_807F7EDC = D_global_asm_807F7ED0;
@@ -292,16 +292,16 @@ void func_global_asm_8065A884(void) {
         spC8[i] = FALSE;
     }
     for (i = 0; (i < D_global_asm_80748300) && (cc_number_of_players < 3); i++) {
-        if ((func_global_asm_8065C240(&D_807F7500[i])) && (sp14C < 0xC)) {
+        if ((func_global_asm_8065C240(&D_global_asm_807F7500[i])) && (sp14C < 0xC)) {
             sp14C++;
             for (j = 0; j < D_global_asm_807FBB34; j++) {
                 temp_s0 = D_global_asm_807FB930[j].unk0;
                 if ((temp_s0->object_properties_bitfield & 0x2000)) continue;
-                switch (D_807F7500[i].unk39) {
+                switch (D_global_asm_807F7500[i].unk39) {
                     case 1:
-                        dx = D_807F7500[i].unk24 - D_807F7500[i].unk18;
-                        dy = D_807F7500[i].unk28 - D_807F7500[i].unk1C;
-                        dz = D_807F7500[i].unk2C - D_807F7500[i].unk20;
+                        dx = D_global_asm_807F7500[i].unk24 - D_global_asm_807F7500[i].unk18;
+                        dy = D_global_asm_807F7500[i].unk28 - D_global_asm_807F7500[i].unk1C;
+                        dz = D_global_asm_807F7500[i].unk2C - D_global_asm_807F7500[i].unk20;
                         sq_temp = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
                         if (sq_temp == 0.0f) {
                             sq_temp = 0.1f;
@@ -309,9 +309,9 @@ void func_global_asm_8065A884(void) {
                         temp_f26 = dx / sq_temp;
                         temp_f28 = dy / sq_temp;
                         temp_f30 = dz / sq_temp;
-                        dx = temp_s0->x_position - D_807F7500[i].unk18;
-                        dy = temp_s0->y_position - D_807F7500[i].unk1C;
-                        dz = temp_s0->z_position - D_807F7500[i].unk20;
+                        dx = temp_s0->x_position - D_global_asm_807F7500[i].unk18;
+                        dy = temp_s0->y_position - D_global_asm_807F7500[i].unk1C;
+                        dz = temp_s0->z_position - D_global_asm_807F7500[i].unk20;
                         sq_temp = sqrtf(SQ(dz) + (SQ(dx) + SQ(dy)));
                         if (sq_temp == 0.0f) {
                             sq_temp = 0.1f;
@@ -323,27 +323,27 @@ void func_global_asm_8065A884(void) {
                         if (var_f22_3 < 0.0f) {
                             var_f22_3 = 0.0f;
                         }
-                        if (D_807F7500[i].unkC <= var_f22_3) {
-                            if (D_807F7500[i].unk4 <= var_f22_3) {
+                        if (D_global_asm_807F7500[i].unkC <= var_f22_3) {
+                            if (D_global_asm_807F7500[i].unk4 <= var_f22_3) {
                                 var_f22_3 = 1.0f;
                             } else {
-                                var_f22_3 = (var_f22_3 - D_807F7500[i].unkC) * D_807F7500[i].unk10;
+                                var_f22_3 = (var_f22_3 - D_global_asm_807F7500[i].unkC) * D_global_asm_807F7500[i].unk10;
                             }
                             addActorRecolor(temp_s0, 
-                                D_807F7500[i].unk18, 
-                                D_807F7500[i].unk1C, 
-                                D_807F7500[i].unk20, 
+                                D_global_asm_807F7500[i].unk18, 
+                                D_global_asm_807F7500[i].unk1C, 
+                                D_global_asm_807F7500[i].unk20, 
                                 0xFF, 
-                                D_807F7500[i].unk36 * var_f22_3, 
-                                D_807F7500[i].unk37 * var_f22_3, 
-                                D_807F7500[i].unk38 * var_f22_3, 0U);
+                                D_global_asm_807F7500[i].unk36 * var_f22_3, 
+                                D_global_asm_807F7500[i].unk37 * var_f22_3, 
+                                D_global_asm_807F7500[i].unk38 * var_f22_3, 0U);
                             if ((temp_s0->object_properties_bitfield & 0x01000000) && (temp_s0->object_properties_bitfield & 4)) {
                                 sq_temp = sqrtf(
-                                    SQ(D_807F7500[i].unk18 - temp_s0->x_position) +
-                                    SQ(D_807F7500[i].unk20 - temp_s0->z_position) 
+                                    SQ(D_global_asm_807F7500[i].unk18 - temp_s0->x_position) +
+                                    SQ(D_global_asm_807F7500[i].unk20 - temp_s0->z_position) 
                                     );
                                 var_f2 = sq_temp != 0.0f ? sq_temp : 0.001f;
-                                var_f24_3 = (D_807F7500[i].unk1C - temp_s0->y_position) / var_f2;
+                                var_f24_3 = (D_global_asm_807F7500[i].unk1C - temp_s0->y_position) / var_f2;
                                 if (!(var_f24_3 > 0.0f)) {
                                     var_f24_3 = -var_f24_3;
                                 }
@@ -352,8 +352,8 @@ void func_global_asm_8065A884(void) {
                                 }
                                 var_f24_3 = (temp_s0->unk15E * 0.4f) / var_f24_3;
                                 var_s3 = func_global_asm_80665DE0(
-                                    D_807F7500[i].unk18,
-                                    D_807F7500[i].unk20,
+                                    D_global_asm_807F7500[i].unk18,
+                                    D_global_asm_807F7500[i].unk20,
                                     temp_s0->x_position,
                                     temp_s0->z_position);
                                 if (temp_s0->animation_state != NULL) {
@@ -382,23 +382,23 @@ void func_global_asm_8065A884(void) {
                         break;
                     case 0:
                         var_f22_3 = sqrtf(
-                            SQ(D_807F7500[i].unk18 - temp_s0->x_position) + 
-                            SQ(D_807F7500[i].unk1C - temp_s0->y_position) +
-                            SQ(D_807F7500[i].unk20 - temp_s0->z_position) 
+                            SQ(D_global_asm_807F7500[i].unk18 - temp_s0->x_position) + 
+                            SQ(D_global_asm_807F7500[i].unk1C - temp_s0->y_position) +
+                            SQ(D_global_asm_807F7500[i].unk20 - temp_s0->z_position) 
                         );
                         var_f22_3 -= temp_s0->unkCE;
                         if (var_f22_3 < 0.0) {
                             var_f22_3 = 0.1f;
                         }
-                        temp_f20 = D_807F7500[i].unk14 * 1.3f;
+                        temp_f20 = D_global_asm_807F7500[i].unk14 * 1.3f;
                         if ((temp_s0->object_properties_bitfield & 0x01000000) && (var_f22_3 < temp_f20) && (temp_s0->object_properties_bitfield & 4)) {
                             sq_temp = sqrtf(
-                                SQ(D_807F7500[i].unk18 - temp_s0->x_position) +
-                                SQ(D_807F7500[i].unk20 - temp_s0->z_position));
+                                SQ(D_global_asm_807F7500[i].unk18 - temp_s0->x_position) +
+                                SQ(D_global_asm_807F7500[i].unk20 - temp_s0->z_position));
                             if (sq_temp == 0.0f) {
                                 sq_temp = 1.0f;
                             }
-                            var_f24_3 = (D_807F7500[i].unk1C - temp_s0->y_position) / sq_temp;
+                            var_f24_3 = (D_global_asm_807F7500[i].unk1C - temp_s0->y_position) / sq_temp;
                             if (!(var_f24_3 > 0.0f)) {
                                 var_f24_3 = -var_f24_3;
                             }
@@ -406,7 +406,7 @@ void func_global_asm_8065A884(void) {
                                 var_f24_3 = 0.1f;
                             }
                             var_f24_3 = (temp_s0->unk15E * 0.4f) / var_f24_3;
-                            var_s3 = func_global_asm_80665DE0(D_807F7500[i].unk18, D_807F7500[i].unk20, temp_s0->x_position, temp_s0->z_position);
+                            var_s3 = func_global_asm_80665DE0(D_global_asm_807F7500[i].unk18, D_global_asm_807F7500[i].unk20, temp_s0->x_position, temp_s0->z_position);
                             if (var_f24_3 > 10.0f) {
                                 var_f24_3 = 10.0f;
                             }
@@ -422,13 +422,13 @@ void func_global_asm_8065A884(void) {
                         temp_f0_10 = temp_f20 / 3.0f;
                         if (var_f22_3 < temp_f0_10) {
                             addActorRecolor(temp_s0,
-                                D_807F7500[i].unk18,
-                                D_807F7500[i].unk1C,
-                                D_807F7500[i].unk20, 
+                                D_global_asm_807F7500[i].unk18,
+                                D_global_asm_807F7500[i].unk1C,
+                                D_global_asm_807F7500[i].unk20, 
                                 0xFFU, 
-                                D_807F7500[i].unk36,
-                                D_807F7500[i].unk37, 
-                                D_807F7500[i].unk38, 0U);
+                                D_global_asm_807F7500[i].unk36,
+                                D_global_asm_807F7500[i].unk37, 
+                                D_global_asm_807F7500[i].unk38, 0U);
                             if ((temp_s0->object_properties_bitfield & 0x01000000) && (temp_s0->object_properties_bitfield & 4)) {
                                 v = temp_s0->shadow_opacity / 255.0;
                                 v = D_global_asm_80748304 * v;
@@ -449,13 +449,13 @@ void func_global_asm_8065A884(void) {
                                 temp_f0_11 = 1.0f - (temp_f22 / temp_f2_5);
                                 addActorRecolor(
                                     temp_s0, 
-                                    D_807F7500[i].unk18, 
-                                    D_807F7500[i].unk1C, 
-                                    D_807F7500[i].unk20, 
+                                    D_global_asm_807F7500[i].unk18, 
+                                    D_global_asm_807F7500[i].unk1C, 
+                                    D_global_asm_807F7500[i].unk20, 
                                     0xFF, 
-                                    D_807F7500[i].unk36 * temp_f0_11, 
-                                    D_807F7500[i].unk37 * temp_f0_11, 
-                                    D_807F7500[i].unk38 * temp_f0_11, 0U);
+                                    D_global_asm_807F7500[i].unk36 * temp_f0_11, 
+                                    D_global_asm_807F7500[i].unk37 * temp_f0_11, 
+                                    D_global_asm_807F7500[i].unk38 * temp_f0_11, 0U);
                                 if ((temp_s0->object_properties_bitfield & 0x01000000) && (temp_s0->object_properties_bitfield & 4)) {
                                     v = D_global_asm_80748304 * temp_f0_11 * (f32) (temp_s0->shadow_opacity / 255.0);
                                     func_global_asm_8065D254(
@@ -523,8 +523,8 @@ typedef struct {
     u8 unk3F; // Used
 } Struct807F78C0;
 
-extern Struct807F78C0 D_807F78C0[];
-extern Struct807F78C0 D_807F7BC8[];
+extern Struct807F78C0 D_global_asm_807F78C0[];
+extern Struct807F78C0 D_global_asm_807F7BC8[];
 
 void func_global_asm_8065BE74(s16 arg0) {
     s32 i;
@@ -533,13 +533,13 @@ void func_global_asm_8065BE74(s16 arg0) {
     if (D_global_asm_807F7EC8 == 0xC) {
         return;
     }
-    temp2 = D_807F78C0[arg0].unk3F;
+    temp2 = D_global_asm_807F78C0[arg0].unk3F;
     for (i = 0; i < D_global_asm_807F7EC8; i++) {
-        if (temp2 == D_807F7BC8[i].unk3F) {
+        if (temp2 == D_global_asm_807F7BC8[i].unk3F) {
             return;
         }
     }
-    memcpy(&D_807F7BC8[D_global_asm_807F7EC8++], &D_807F78C0[arg0], sizeof(Struct807F78C0));
+    memcpy(&D_global_asm_807F7BC8[D_global_asm_807F7EC8++], &D_global_asm_807F78C0[arg0], sizeof(Struct807F78C0));
 }
 
 // Matrix stuff
@@ -616,11 +616,11 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
     if (temp_v1 > 0) {
         temp_f30 = 300.0;
         for (i = 0; i < D_global_asm_807F7EC8; i++) {
-            switch (D_807F7BC8[i].unk3E) {
+            switch (D_global_asm_807F7BC8[i].unk3E) {
                 case 1:
-                    temp_f2 = arg0 - (D_807F7BC8[i].unk38 / 3);
-                    temp_f14 = arg1 - (D_807F7BC8[i].unk3A / 3);
-                    temp_f16 = arg2 - (D_807F7BC8[i].unk3C / 3);
+                    temp_f2 = arg0 - (D_global_asm_807F7BC8[i].unk38 / 3);
+                    temp_f14 = arg1 - (D_global_asm_807F7BC8[i].unk3A / 3);
+                    temp_f16 = arg2 - (D_global_asm_807F7BC8[i].unk3C / 3);
                     sp64 = temp_f14;
                     temp_f0 = sqrtf((temp_f16 * temp_f16) + ((temp_f2 * temp_f2) + (temp_f14 * temp_f14)));
                     var_f12 = temp_f0;
@@ -630,15 +630,15 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
                     temp_f18 = temp_f2 / var_f12;
                     sp5C = temp_f16 / var_f12;
                     temp_f20 = sp64 / var_f12;
-                    var_f0 = (D_807F7BC8[i].unk14 * sp5C) + ((temp_f18 * D_807F7BC8[i].unkC) + (temp_f20 * D_807F7BC8[i].unk10));
+                    var_f0 = (D_global_asm_807F7BC8[i].unk14 * sp5C) + ((temp_f18 * D_global_asm_807F7BC8[i].unkC) + (temp_f20 * D_global_asm_807F7BC8[i].unk10));
                     if (var_f0 < 0.0f) {
                         var_f0 = 0.0f;
                     }
-                    if (D_807F7BC8[i].unk0 <= var_f0) {
-                        if (D_807F7BC8[i].unk4 <= var_f0) {
+                    if (D_global_asm_807F7BC8[i].unk0 <= var_f0) {
+                        if (D_global_asm_807F7BC8[i].unk4 <= var_f0) {
                             var_f0_2 = 1.0f;
                         } else {
-                            var_f0_2 = (var_f0 - D_807F7BC8[i].unk0) * D_807F7BC8[i].unk8;
+                            var_f0_2 = (var_f0 - D_global_asm_807F7BC8[i].unk0) * D_global_asm_807F7BC8[i].unk8;
                         }
                         if (temp_f30 < var_f12) {
                             if (1100.0 < var_f12) {
@@ -647,33 +647,33 @@ void func_global_asm_8065C334(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s8 *arg4, 
                                 var_f0_2 = var_f0_2 * (1.0 - ((var_f12 - temp_f30) / 800.0));
                             }
                         }
-                        var_f22 += D_807F7BC8[i].unk2C * var_f0_2;
-                        var_f24 += D_807F7BC8[i].unk30 * var_f0_2;
-                        var_f26 += D_807F7BC8[i].unk34 * var_f0_2;
+                        var_f22 += D_global_asm_807F7BC8[i].unk2C * var_f0_2;
+                        var_f24 += D_global_asm_807F7BC8[i].unk30 * var_f0_2;
+                        var_f26 += D_global_asm_807F7BC8[i].unk34 * var_f0_2;
                     }
                     break;
                 case 0:
-                    temp_f0_2 = (D_807F7BC8[i].unk3C / 3) - arg2;
-                    temp_f2_4 = (D_807F7BC8[i].unk38 / 3) - arg0;
-                    temp_f14_2 = (D_807F7BC8[i].unk3A / 3) - arg1;
+                    temp_f0_2 = (D_global_asm_807F7BC8[i].unk3C / 3) - arg2;
+                    temp_f2_4 = (D_global_asm_807F7BC8[i].unk38 / 3) - arg0;
+                    temp_f14_2 = (D_global_asm_807F7BC8[i].unk3A / 3) - arg1;
                     temp_f0_3 = sqrtf((temp_f0_2 * temp_f0_2) + ((temp_f2_4 * temp_f2_4) + (temp_f14_2 * temp_f14_2)));
                     var_f2 = temp_f0_3 - arg3;
                     if (temp_f0_3 <= arg3) {
                         var_f2 = 0.1f;
                     }
-                    temp_f0_4 = D_807F7BC8[i].unk28 / 3.0f;
+                    temp_f0_4 = D_global_asm_807F7BC8[i].unk28 / 3.0f;
                     if (var_f2 < temp_f0_4) {
-                        var_f6 = D_807F7BC8[i].unk34;
-                        var_f22 += D_807F7BC8[i].unk2C;
-                        var_f24 += D_807F7BC8[i].unk30;
+                        var_f6 = D_global_asm_807F7BC8[i].unk34;
+                        var_f22 += D_global_asm_807F7BC8[i].unk2C;
+                        var_f24 += D_global_asm_807F7BC8[i].unk30;
                     } else {
                         temp_f2_5 = var_f2 - temp_f0_4;
-                        temp_f12 = ((1.0f / D_807F7BC8[i].unk24) / 3.0f) - temp_f0_4;
+                        temp_f12 = ((1.0f / D_global_asm_807F7BC8[i].unk24) / 3.0f) - temp_f0_4;
                         if (temp_f2_5 < temp_f12) {
                             temp_f0_5 = 1.0f - (temp_f2_5 / temp_f12);
-                            var_f22 += D_807F7BC8[i].unk2C * temp_f0_5;
-                            var_f6 = D_807F7BC8[i].unk34 * temp_f0_5;
-                            var_f24 += D_807F7BC8[i].unk30 * temp_f0_5;
+                            var_f22 += D_global_asm_807F7BC8[i].unk2C * temp_f0_5;
+                            var_f6 = D_global_asm_807F7BC8[i].unk34 * temp_f0_5;
+                            var_f24 += D_global_asm_807F7BC8[i].unk30 * temp_f0_5;
                         }
                     }
                     var_f26 += var_f6;

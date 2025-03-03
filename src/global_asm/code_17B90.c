@@ -8,9 +8,9 @@ void func_global_asm_80614644(Actor*, AnimationStateUnk0*, f32);
 
 extern u8 D_global_asm_80746D5C;
 
-extern u8 *D_807F5AF0;
-extern s32 D_807F5AF4;
-extern u16 *D_807FBB54;
+extern u8 *D_global_asm_807F5AF0;
+extern s32 D_global_asm_807F5AF4;
+extern u16 *D_global_asm_807FBB54;
 
 void *func_global_asm_80612E90(Actor *, s32, u8);
 
@@ -18,10 +18,10 @@ void func_global_asm_806130A4(u32, Gfx *);             /* extern */
 void func_global_asm_8061324C(Gfx *, Gfx *, void *, s32); /* extern */
 void func_global_asm_806133C8(u32, Gfx *);             /* extern */
 void func_global_asm_80687D50(s32, void *);            /* extern */
-extern Struct807FB630 D_807FB630[];
-extern void *D_807FB634;
-extern u16 D_807FBB30;
-extern u16 D_807FBB32;
+extern Struct807FB630 D_global_asm_807FB630[];
+extern void *D_global_asm_807FB634;
+extern u16 D_global_asm_807FBB30;
+extern u16 D_global_asm_807FBB32;
 extern s32 D_global_asm_80746B64;
 
 void *func_global_asm_80612E90(Actor *arg0, s32 arg1, u8 arg2) {
@@ -29,22 +29,22 @@ void *func_global_asm_80612E90(Actor *arg0, s32 arg1, u8 arg2) {
     s32 i;
     ActorModelHeader *temp_v0;
 
-    for (i = 0; i < D_807FBB30; i++) {
-        if (((s32)arg1 == (s32)D_807FB630[i].unk0) && (arg2 == D_807FB630[i].unk8)) {
-            D_807FB630[i].unk2++;
-            func_global_asm_80687D50(arg0, D_807FB630[i].unk4);
-            return D_807FB630[i].unk4;
+    for (i = 0; i < D_global_asm_807FBB30; i++) {
+        if (((s32)arg1 == (s32)D_global_asm_807FB630[i].unk0) && (arg2 == D_global_asm_807FB630[i].unk8)) {
+            D_global_asm_807FB630[i].unk2++;
+            func_global_asm_80687D50(arg0, D_global_asm_807FB630[i].unk4);
+            return D_global_asm_807FB630[i].unk4;
         }
     }
-    if ((s32) D_807FBB32 >= 0x20) {
-        return D_807FB634;
+    if ((s32) D_global_asm_807FBB32 >= 0x20) {
+        return D_global_asm_807FB634;
     }
     temp_v0 = getPointerTableFile(5, arg1 - 1, 1U, 1U);
-    D_807FB630[i].unk0 = arg1;
-    D_807FBB30++;
-    D_807FB630[i].unk8 = arg2;
-    D_807FB630[i].unk2 = 1;
-    D_807FB630[i].unk4 = temp_v0;
+    D_global_asm_807FB630[i].unk0 = arg1;
+    D_global_asm_807FBB30++;
+    D_global_asm_807FB630[i].unk8 = arg2;
+    D_global_asm_807FB630[i].unk2 = 1;
+    D_global_asm_807FB630[i].unk4 = temp_v0;
     delta = ((s32)temp_v0 - (s32)temp_v0->unk0) + sizeof(ActorModelHeader);
     temp_v0->unk0 += delta;
     temp_v0->unk4_raw += delta;
@@ -102,21 +102,21 @@ void func_global_asm_80613214(Actor *actor) {
 // Possibly the code responsible for loading textures dynamically
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_17B90/func_global_asm_806133C8.s")
 
-extern u16 D_807FBB30;
+extern u16 D_global_asm_807FBB30;
 
 u16 func_global_asm_80613448(Actor *arg0) {
     Actor_unk0 *var_v0 = arg0->unk0;
     s32 searchIndex;
 
-    searchIndex = D_807FBB30;
+    searchIndex = D_global_asm_807FBB30;
     while (searchIndex >= 0) {
-        if ((s32)var_v0 == (s32)D_807FB630[searchIndex].unk4) {
+        if ((s32)var_v0 == (s32)D_global_asm_807FB630[searchIndex].unk4) {
             break;
         }
         searchIndex--;
     }
     if (searchIndex >= 0) {
-        return D_807FB630[searchIndex].unk0;
+        return D_global_asm_807FB630[searchIndex].unk0;
     }
     return 0;
 }

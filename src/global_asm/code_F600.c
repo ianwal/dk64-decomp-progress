@@ -132,7 +132,7 @@ void func_global_asm_8060AC34(OSContPad *arg0) {
 void func_global_asm_806F3E0C(OSContPad *, OSContPad *);
 extern s16 D_807ECD40[];
 extern s16 D_807ECD50[];
-extern OSContPad D_807ECD60;
+extern OSContPad D_global_asm_807ECD60;
 extern UnkInputStruct D_807ECD68[4];
 extern u8 D_global_asm_807467C4;
 extern s8 D_global_asm_80746834;
@@ -171,9 +171,9 @@ void func_global_asm_8060AC7C(void) {
     u16 var_t9;
 
     in_adventure = gameIsInAdventureMode();
-    D_807ECD60.button = D_global_asm_807ECD58.button;
-    D_807ECD60.stick_x = D_global_asm_807ECD58.stick_x;
-    D_807ECD60.stick_y = D_global_asm_807ECD58.stick_y;
+    D_global_asm_807ECD60.button = D_global_asm_807ECD58.button;
+    D_global_asm_807ECD60.stick_x = D_global_asm_807ECD58.stick_x;
+    D_global_asm_807ECD60.stick_y = D_global_asm_807ECD58.stick_y;
     D_global_asm_807ECD58.button = 0;
     D_global_asm_807ECD58.stick_x = 0;
     D_global_asm_807ECD58.stick_y = 0;
@@ -210,7 +210,7 @@ void func_global_asm_8060AC7C(void) {
     }
     temp_a1 = D_global_asm_807ECD58.button;
     // Anti-tamper
-    newly_pressed_input_copy = (temp_a1 ^ D_807ECD60.button) & temp_a1;
+    newly_pressed_input_copy = (temp_a1 ^ D_global_asm_807ECD60.button) & temp_a1;
     var_v1 = 0;
     for (var_v0_2 = &func_global_asm_80611730; var_v0_2 < (s32 *)func_global_asm_80611844; var_v0_2++) {
         var_v1 += *var_v0_2;

@@ -1747,7 +1747,7 @@ u8 func_global_asm_806E560C(Actor *arg0) {
     return sp1F;
 }
 
-extern u8 D_807F6903;
+extern u8 D_global_asm_807F6903;
 extern f32 D_global_asm_807536AC[];
 extern s32 D_global_asm_8076A094;
 extern u8 D_global_asm_8076A0B2;
@@ -1769,7 +1769,7 @@ s32 func_global_asm_806E56EC(void) {
                 }
                 break;
             case 5:
-                if (D_807F6903 == 0) {
+                if (D_global_asm_807F6903 == 0) {
                     D_global_asm_8076A094++;
                     if (D_global_asm_8076A094 < 0x5DD) {
                         extra_player_info_pointer->unk204 = D_global_asm_807FBB70.unk4;
@@ -1782,7 +1782,7 @@ s32 func_global_asm_806E56EC(void) {
                 }
                 break;
             case 3:
-                if (D_807F6903 == 0) {
+                if (D_global_asm_807F6903 == 0) {
                     D_global_asm_8076A094++;
                     if (D_global_asm_8076A094 < 0x5DD) {
                         extra_player_info_pointer->unk204 = D_global_asm_807FBB70.unk4;

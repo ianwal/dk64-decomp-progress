@@ -227,6 +227,7 @@ segments:
     start: 0x2000000
     vram: 0x805FB300
     exclusive_ram_id: global_asm
+    bss_size: 0x9E0B0
     subsegments:
       - [0x2000000, c, code_0]
       - [0x2000450, c, code_450]
@@ -537,6 +538,7 @@ segments:
       - [0x2165280, .rodata, audio/code_145D70]
       - [0x2165290, rodata, n_aspMain_data]
       - [0x2165540, rodata] # ???
+      - { start: 0x2165D50, type: bss, vram: 0x80761050, name: global_asm_BSS }
   - name: menu
     dir: menu
     type: code
@@ -562,28 +564,35 @@ segments:
     start: 0x2175C60
     vram: 0x80024000
     exclusive_ram_id: overlay
+    bss_size: 0x10
     subsegments:
       - [0x2175C60, c, code_0]
       - [0x2178BD0, .data, code_0]
       - [0x2178CA0, .rodata, code_0]
+      - { start: 0x2178D60, type: bss, vram: 0x80027100, name: multiplayer_BSS }
+      
   - name: minecart
     dir: minecart
     type: code
     start: 0x2178D60
     vram: 0x80024000
     exclusive_ram_id: overlay
+    bss_size: 0x10
     subsegments:
       - [0x2178D60, c, code_0]
       - [0x217B350, c, code_25F0]
       - [0x217D8F0, .data, code_25F0]
       - [0x217D9C0, .rodata, code_0]
       - [0x217DAA0, .rodata, code_25F0]
+      - { start: 0x217DB70, type: bss, vram: 0x80028E10, name: minecart_BSS }
+
   - name: bonus
     dir: bonus
     type: code
     start: 0x217DB70
     vram: 0x80024000
     exclusive_ram_id: overlay
+    bss_size: 0x20
     subsegments:
       - [0x217DB70, c, code_0]
       - [0x217EE10, c, code_12A0]
@@ -597,12 +606,15 @@ segments:
       - [0x2187800, .rodata, code_12A0]
       - [0x2187890, rodata] # code_2690
       - [0x2187A30, .rodata, code_9010]
+      - { start: 0x2187A60, type: bss, vram: 0x8002DEF0, name: bonus_BSS }
+      
   - name: race
     dir: race
     type: code
     start: 0x2187A60
     vram: 0x80024000
     exclusive_ram_id: overlay
+    bss_size: 0x10
     subsegments:
       - [0x2187A60, c, code_0]
       - [0x21891D0, c, code_1770]
@@ -625,6 +637,8 @@ segments:
       - [0x2193A80, .rodata, code_6650]
       - [0x2193B20, .rodata, code_7BD0]
       - [0x2193BB0, .rodata, code_A960]
+      - { start: 0x2193BC0, type: bss, vram: 0x80030160, name: race_BSS }
+
   - name: critter
     dir: critter
     type: code
@@ -643,12 +657,15 @@ segments:
       - [0x2199C70, .rodata, code_3340]
       - [0x2199D30, .rodata, code_4840]
       - [0x2199D50, .rodata, code_5110]
+      - { start: 0x2199D70, type: bss, vram: 0x8002A1B0, name: critter_BSS }
+      
   - name: boss
     dir: boss
     type: code
     start: 0x2199D70
     vram: 0x80024000
     exclusive_ram_id: overlay
+    bss_size: 0x30
     subsegments:
       - [0x2199D70, c, ArmyDillo]
       - [0x219D5B0, c, KRoolGeneric]
@@ -685,6 +702,8 @@ segments:
       - [0x21AC800, .rodata, KRoolChunky]
       - [0x21AC8F0, .rodata, KutOut]
       - [0x21AC980, .rodata, MadJack]
+      - { start: 0x21ACB30, type: bss, vram: 0x80036DC0, name: boss_BSS }
+
   - name: arcade
     dir: arcade
     type: code
@@ -703,6 +722,7 @@ segments:
     start: 0x21D3730
     vram: 0x80024000
     exclusive_ram_id: overlay
+    bss_size: 0x16FD0
     subsegments:
       - [0x21D3730, c, code_0]
       - [0x21D4B90, c, code_1460]
@@ -717,4 +737,5 @@ segments:
       - [0x21DE2A0, .rodata, code_3060]
       - [0x21DE2B0, .rodata, code_3480]
       - [0x21DE2E0, .rodata, code_4FC0]
+      - { start: 0x21DE360, type: bss, vram: 0x8002EC30}
   - [0x21DE360] # end of ROM

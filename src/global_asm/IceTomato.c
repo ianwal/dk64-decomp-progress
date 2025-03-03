@@ -10,7 +10,7 @@ extern s8 D_global_asm_807FC8C0[];
 
 void func_global_asm_80614644(Actor *, AnimationStateUnk0 *, f32);
 void func_global_asm_806A2A10(s32, s32, s32);
-extern u16 D_807ECD60;
+extern u16 D_global_asm_807ECD60;
 extern s8 D_global_asm_80750650;
 extern s8 D_global_asm_807FC8D0;
 
@@ -104,14 +104,14 @@ void func_global_asm_806BC1E0(void) {
             break;
         case 0:
             addActorToTextOverlayRenderArray(func_global_asm_806BCF98, current_actor_pointer, 5U);
-            if ((D_global_asm_807ECD58.button & 0x8000) && !(D_807ECD60 & 0x8000)) {
+            if ((D_global_asm_807ECD58.button & 0x8000) && !(D_global_asm_807ECD60 & 0x8000)) {
                 func_global_asm_8061CB08();
                 aad178->unk39 = 1U;
                 player_pointer->control_state = 0xC;
                 player_pointer->control_state_progress = 0;
                 func_global_asm_806CFF9C(player_pointer);
             }
-            if ((D_global_asm_807ECD58.button & 0x4000) && !(D_807ECD60 & 0x4000)) {
+            if ((D_global_asm_807ECD58.button & 0x4000) && !(D_global_asm_807ECD60 & 0x4000)) {
                 func_global_asm_8061CB08();
                 aad178->unk39 = 2U;
                 player_pointer->control_state = 0xC;

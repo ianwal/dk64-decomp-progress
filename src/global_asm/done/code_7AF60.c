@@ -94,7 +94,7 @@ u8 func_global_asm_806767E0(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     return func_global_asm_80676CB0(arg2, 2);
 }
 
-extern u8 D_807FBBA9;
+extern u8 D_global_asm_807FBBA9;
 
 s32 func_global_asm_8067680C(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     u32 var_v0;
@@ -142,7 +142,7 @@ s32 func_global_asm_8067680C(Actor *arg0, Actor *arg1, Struct80676CB0 *arg2) {
     if (var_f0 < var_f14) {
         return FALSE;
     }
-    if (D_807FBBA9) {
+    if (D_global_asm_807FBBA9) {
         return FALSE;
     }
     if ((arg0->unk68 & 1) == 0) {

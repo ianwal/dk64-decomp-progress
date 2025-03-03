@@ -81,7 +81,7 @@ void func_global_asm_806BD170(void) {
 extern s8 D_global_asm_807506B4;
 extern s8 D_global_asm_807506A8[];
 
-extern s16 D_8076A0A6; // Probably static
+extern s16 D_global_asm_8076A0A6; // Probably static
 
 extern f32 D_807FC8D4;
 
@@ -102,7 +102,7 @@ void func_global_asm_806BD3E4(void) {
     s16 var_v1; // Probably static/volatile
     s16 var_t0;
 
-    var_v1 = D_8076A0A6;
+    var_v1 = D_global_asm_8076A0A6;
     a178 = current_actor_pointer->unk178;
     if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
         if (areAllKeysTurnedIn()) {
@@ -178,7 +178,7 @@ void func_global_asm_806BD3E4(void) {
             D_global_asm_807506B4 = 0;
         }
     }
-    D_8076A0A6 = 0;
+    D_global_asm_8076A0A6 = 0;
     renderActor(current_actor_pointer, 0);
 }
 */

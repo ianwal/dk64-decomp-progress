@@ -243,43 +243,44 @@ extern dk64_boot_struct_0 D_dk64_boot_8000DCC4[];
 
 void func_global_asm_8060EC80(OSMesgQueue *arg0, void *arg1, s32 arg2, u8 arg3, u8 arg4);
 
-extern s32 D_80767A40; // I hate this, but fixes a compilation issue
-void func_global_asm_805FBC5C(void) {
-    UnkMQStruct *mq;
-    D_global_asm_8076A084 = D_dk64_boot_8000DCC4[12].unk4 - D_dk64_boot_8000DCC4[12].unk0;
-    osCreateMesgQueue(&D_global_asm_807655F0.mq, &D_global_asm_807655F0.msgs[0], 0x32);
-    osCreateMesgQueue(&D_global_asm_807656D0.mq, &D_global_asm_807656D0.msgs[0], 0xC0);
-    func_global_asm_8060EC80(
-        &D_global_asm_80767A40.unk0,
-        &D_80767A40,
-        0x19,
-        D_global_asm_80744588[osTvType + osTvType], 1);
-    osCreateMesgQueue(&D_global_asm_807659E8.mq, &D_global_asm_807659E8.msgs[0], 0x10);
-    func_global_asm_8060ED6C(
-        &D_global_asm_80767A40,
-        &D_global_asm_80767CD8,
-        &D_global_asm_807659E8.mq, 1, 1);
-    current_map = next_map;
-    func_global_asm_805FB944(0);
-    D_global_asm_8076A07C = 5;
-    func_global_asm_8060FFF0();
-    func_global_asm_8060A900();
-    func_global_asm_80600D50();
-    setIntroStoryPlaying(0);
-    func_global_asm_8073239C();
-    osWritebackDCacheAll();
-    mq = &D_global_asm_8076A110;
-    osCreateMesgQueue(
-        mq,
-        &D_global_asm_8076A108, 2);
-    osSetTimer(
-        &D_global_asm_8076A130,
-        0xD693A4,
-        0,
-        mq,
-        mq->msgs[0]);
-    playSound(0x23C, 0x7FFF, 63.0f, 1.0f, 0, 0);
-}
+#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FBC5C.s")
+// extern s32 D_global_asm_80767A40; // I hate this, but fixes a compilation issue
+// void func_global_asm_805FBC5C(void) {
+//     UnkMQStruct *mq;
+//     D_global_asm_8076A084 = D_dk64_boot_8000DCC4[12].unk4 - D_dk64_boot_8000DCC4[12].unk0;
+//     osCreateMesgQueue(&D_global_asm_807655F0.mq, &D_global_asm_807655F0.msgs[0], 0x32);
+//     osCreateMesgQueue(&D_global_asm_807656D0.mq, &D_global_asm_807656D0.msgs[0], 0xC0);
+//     func_global_asm_8060EC80(
+//         &D_global_asm_80767A40.unk0,
+//         &D_global_asm_80767A40,
+//         0x19,
+//         D_global_asm_80744588[osTvType + osTvType], 1);
+//     osCreateMesgQueue(&D_global_asm_807659E8.mq, &D_global_asm_807659E8.msgs[0], 0x10);
+//     func_global_asm_8060ED6C(
+//         &D_global_asm_80767A40,
+//         &D_global_asm_80767CD8,
+//         &D_global_asm_807659E8.mq, 1, 1);
+//     current_map = next_map;
+//     func_global_asm_805FB944(0);
+//     D_global_asm_8076A07C = 5;
+//     func_global_asm_8060FFF0();
+//     func_global_asm_8060A900();
+//     func_global_asm_80600D50();
+//     setIntroStoryPlaying(0);
+//     func_global_asm_8073239C();
+//     osWritebackDCacheAll();
+//     mq = &D_global_asm_8076A110;
+//     osCreateMesgQueue(
+//         mq,
+//         &D_global_asm_8076A108, 2);
+//     osSetTimer(
+//         &D_global_asm_8076A130,
+//         0xD693A4,
+//         0,
+//         mq,
+//         mq->msgs[0]);
+//     playSound(0x23C, 0x7FFF, 63.0f, 1.0f, 0, 0);
+// }
 
 void func_global_asm_805FBE04(void) {
     s32 stackpad1;
@@ -745,7 +746,7 @@ extern f32 D_global_asm_807444C4;
 extern f32 D_global_asm_807444C8;
 extern u8 D_global_asm_807467E4;
 extern u8 D_global_asm_80750AB8;
-extern void *D_8076A060;
+extern void *D_global_asm_8076A060;
 extern u16 D_global_asm_8076A09C;
 extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_8076A0B3;
@@ -940,8 +941,8 @@ Gfx *func_global_asm_805FE398(Gfx *dl) {
     gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetCycleType(dl++, G_CYC_FILL);
     gSPClearGeometryMode(dl++, G_ZBUFFER);
-    gDPSetDepthImage(dl++, osVirtualToPhysical(D_8076A060));
-    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, D_global_asm_80744490, osVirtualToPhysical(D_8076A060));
+    gDPSetDepthImage(dl++, osVirtualToPhysical(D_global_asm_8076A060));
+    gDPSetColorImage(dl++, G_IM_FMT_RGBA, G_IM_SIZ_16b, D_global_asm_80744490, osVirtualToPhysical(D_global_asm_8076A060));
     gDPSetFillColor(dl++, 0xFFFCFFFC);
     gDPFillRectangle(dl++, 0, 0, D_global_asm_80744490 - 1, D_global_asm_80744494 - 1);
     gDPPipeSync(dl++);

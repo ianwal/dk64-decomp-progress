@@ -505,10 +505,10 @@ void func_global_asm_806EC800(void) {
     playAnimation(current_player, 0x3C);
 }
 
-extern Actor *D_807FBB90;
+extern Actor *D_global_asm_807FBB90;
 
 void func_global_asm_806EC8C4(void) {
-    extra_player_info_pointer->unk1B0 = D_807FBB90;
+    extra_player_info_pointer->unk1B0 = D_global_asm_807FBB90;
     extra_player_info_pointer->unk1B4 = extra_player_info_pointer->unk1B0->unk54;
     switch ((u32)extra_player_info_pointer->unk1B0->unk58) {
         case 0x3D:

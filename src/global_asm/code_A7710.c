@@ -116,7 +116,7 @@ Gfx *func_global_asm_806A2B90(Gfx *dl, Actor *arg1) {
 
 u8 func_global_asm_806FDB8C(s16, s8 *, u8, f32, f32, f32);
 extern u32 D_807FC7D4;
-extern u8 D_807FC7D8;
+extern u8 D_global_asm_807FC7D8;
 extern OSTime D_global_asm_807445B0;
 extern OSTime D_global_asm_807476C8;
 
@@ -151,7 +151,7 @@ void func_global_asm_806A2E30(void) {
     res = __ull_div(res, 0xBB8);
     aad->unk8 = __ull_div(res, 0xF4240);
     if (D_global_asm_807476C8 == 0) {
-        D_807FC7D8 = __ull_rem(__ull_div(res, 0x2710), 0x64);
+        D_global_asm_807FC7D8 = __ull_rem(__ull_div(res, 0x2710), 0x64);
     }
     sp84 = ((f32) (s32) ((func_global_asm_806FDA8C(aad->unk10) - MATH_HALFPI_F) / MATH_PI_F) * MATH_PI_F) + MATH_PI_F + MATH_HALFPI_F;
     temp_f2 = (f32) ((((__ull_to_d(res) / 10000.0) / 100.0) * 3.1415927410125732) + 1.5707963705062866);
@@ -186,7 +186,7 @@ void func_global_asm_806A2E30(void) {
                     (
                         (current_actor_pointer->unk15F == 6) || 
                         (aad->unkC < aad->unk8) || 
-                        (D_807FC7D8 >= 0x5B)
+                        (D_global_asm_807FC7D8 >= 0x5B)
                     )) {
                     current_actor_pointer->control_state = 5;
                     current_actor_pointer->control_state_progress = 0;
@@ -204,7 +204,7 @@ void func_global_asm_806A2E30(void) {
             if (current_actor_pointer->unk15F == 6) {
                 sprintf(sp60, "%.2d", delta);
             } else if (current_actor_pointer->control_state != 5) {
-                sprintf(sp60, "%.2d:%.2d:%.2d", delta / 60, delta % 60, 0x63 - D_807FC7D8);
+                sprintf(sp60, "%.2d:%.2d:%.2d", delta / 60, delta % 60, 0x63 - D_global_asm_807FC7D8);
             } else {
                 sprintf(sp60, "00:00:00");
             }

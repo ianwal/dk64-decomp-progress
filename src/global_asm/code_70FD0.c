@@ -293,14 +293,14 @@ void func_global_asm_8066CDD0(void) {
 void func_global_asm_8066CDF8(void) {
     s32 i;
 
-    for (i = 0; i < D_807FB538; i++) {
-        if ((D_807FB534[i].unk0 != NULL) && ((object_timer - D_807FB534[i].unk8) >= 0x15U)) {
-            if (D_807FB549 == 0) {
-                free(D_807FB534[i].unk4);
-                D_807FB534[i].unk4 = NULL;
+    for (i = 0; i < D_global_asm_807FB538; i++) {
+        if ((D_global_asm_807FB534[i].unk0 != NULL) && ((object_timer - D_global_asm_807FB534[i].unk8) >= 0x15U)) {
+            if (D_global_asm_807FB549 == 0) {
+                free(D_global_asm_807FB534[i].unk4);
+                D_global_asm_807FB534[i].unk4 = NULL;
             }
-            free(D_807FB534[i].unk0);
-            D_807FB534[i].unk0 = NULL;
+            free(D_global_asm_807FB534[i].unk0);
+            D_global_asm_807FB534[i].unk0 = NULL;
         }
     }
 }
@@ -1118,7 +1118,7 @@ u8 func_global_asm_80670FA4(Actor *arg0, s16 *arg1, s16 *arg2) {
 }
 
 extern s16 D_global_asm_807FB544;
-extern s32 D_807FB5D0;
+extern s32 D_global_asm_807FB5D0;
 
 typedef struct {
     u8 unk0[0x48 - 0x0];
@@ -1145,7 +1145,7 @@ void func_global_asm_806710E0(Struct806710E0_arg0 *arg0, s32 arg1, s32 arg2, s32
             D_global_asm_807FB540->ledge_info_pointer->unk8,
             D_global_asm_807FB540->ledge_info_pointer->unkC
         );
-        sp28 = D_807FB5D0;
+        sp28 = D_global_asm_807FB5D0;
         sp30 = func_global_asm_80612794(D_global_asm_807FB544) * 20.0f;
         spt = func_global_asm_80612790(D_global_asm_807FB544) * 20.0f;
         func_global_asm_806744A8(
@@ -1155,7 +1155,7 @@ void func_global_asm_806710E0(Struct806710E0_arg0 *arg0, s32 arg1, s32 arg2, s32
             D_global_asm_807FB540->ledge_info_pointer->unk8 + spt,
             D_global_asm_807FB540->ledge_info_pointer->unkC
         );
-        spt = D_807FB5D0;
+        spt = D_global_asm_807FB5D0;
         if ((sp28 - 2) < spt) {
             D_global_asm_807FB546 = 0;
         }
@@ -1172,9 +1172,9 @@ extern s16 D_global_asm_80753D50[];
 extern s16 D_global_asm_80753D60[];
 
 extern s16 D_global_asm_807FD584;
-extern s32 D_807FB5C4;
-extern s32 D_807FB5CC;
-extern s32 D_807FB5D0;
+extern s32 D_global_asm_807FB5C4;
+extern s32 D_global_asm_807FB5CC;
+extern s32 D_global_asm_807FB5D0;
 extern s32 D_807FB5DC;
 extern s16 D_807FB5F6;
 
@@ -1204,8 +1204,8 @@ void func_global_asm_80671260(Actor *arg0) {
     if (arg0->interactable & 1) {
         aaD = arg0->additional_actor_data;
         func_global_asm_80671528(arg0, &sp38, &sp3C, &sp40, 1);
-        t1 = ((f32)D_807FB5C4) / 8;
-        t2 = ((f32)D_807FB5CC) / 8;
+        t1 = ((f32)D_global_asm_807FB5C4) / 8;
+        t2 = ((f32)D_global_asm_807FB5CC) / 8;
         sp38 *= (var_f16 / 8);
         sp40 *= (var_f16 / 8.0f);
         aaD->unkE0 = t1 - sp38;
@@ -1229,18 +1229,18 @@ void func_global_asm_806713E4(Actor *arg0, u8 arg1) {
     f32 sp24;
     f32 var_f10;
 
-    if (D_807FB5D0 < func_global_asm_806717FC(arg0)) {
+    if (D_global_asm_807FB5D0 < func_global_asm_806717FC(arg0)) {
         ledgeInfo = arg0->ledge_info_pointer;
         func_global_asm_80671528(arg0, &sp24, &sp28, &sp2C, arg1);
-        temp_f12 = ((f32)D_807FB5C4) / 8;
-        temp_f14 = ((f32)D_807FB5CC) / 8;
+        temp_f12 = ((f32)D_global_asm_807FB5C4) / 8;
+        temp_f14 = ((f32)D_global_asm_807FB5CC) / 8;
         if (D_global_asm_807FB548) {
             temp_f0 = ((f32)func_global_asm_806717FC(arg0)) / 8;
             var_f10 = sp2C * temp_f0;
             sp24 *= temp_f0;
             sp2C = var_f10;
         } else {
-            temp_f0 = ((f32)(D_807FB5D0 + 6)) / 8;
+            temp_f0 = ((f32)(D_global_asm_807FB5D0 + 6)) / 8;
             var_f10 = sp2C * temp_f0;
             sp24 *= temp_f0;
             sp2C = var_f10;
@@ -1472,7 +1472,7 @@ u8 func_global_asm_80671E00(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 *arg4, s
 
 s32 func_global_asm_80673708(s32, s32, s32, s32, s32, s32, s32, s32);
 s32 func_global_asm_80674ADC(s32, s32, s32, s32, s32, s32, s32, s32);
-extern s8 D_807FB5FD;
+extern s8 D_global_asm_807FB5FD;
 extern s32 D_global_asm_80747D70;
 extern s32 D_global_asm_807FB53C;
 
@@ -1485,7 +1485,7 @@ u8 func_global_asm_80671F54(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4, s3
     Prop_ScriptData *temp_v0;
 
     var_fp = 0;
-    D_807FB5FD = 0;
+    D_global_asm_807FB5FD = 0;
     for (i = 0; i < D_global_asm_80747D70; i++) {
         temp_s0_2 = &D_global_asm_807F6000[i].unk28;
         temp_s0 = &D_global_asm_807F6000[i];

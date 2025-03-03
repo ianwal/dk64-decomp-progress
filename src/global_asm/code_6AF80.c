@@ -184,8 +184,8 @@ extern f32 D_global_asm_80752FB4[];
 extern f32 D_global_asm_80752FD0[];
 extern f32 D_global_asm_80752FEC[];
 extern f32 D_global_asm_80753008[];
-extern f32 D_807F9460;
-extern s8 D_807F9464;
+extern f32 D_global_asm_807F9460;
+extern s8 D_global_asm_807F9464;
 
 void func_global_asm_80666D88(f32 arg0, f32 arg1, u8 arg2, Actor *arg3, u8 arg4) {
     f32 *var_v0;
@@ -230,10 +230,10 @@ void func_global_asm_80666D88(f32 arg0, f32 arg1, u8 arg2, Actor *arg3, u8 arg4)
             s32 temp = 1;
             var_f12 = arg2 == 1 ? var_f2 * 6.0f : var_f2;
             if (arg1 - arg0 < var_f12) {
-                D_807F9464 = temp;
-                D_807F9460 = arg1 - var_f12;
+                D_global_asm_807F9464 = temp;
+                D_global_asm_807F9460 = arg1 - var_f12;
                 if (arg2) {
-                    D_807F9460 /= 6.0f;
+                    D_global_asm_807F9460 /= 6.0f;
                 }
             }
         }
@@ -327,7 +327,7 @@ u8 func_global_asm_80667174(void) {
     return D_global_asm_807F94B5;
 }
 
-extern s8 D_807F94B6;
+extern s8 D_global_asm_807F94B6;
 
 u8 func_global_asm_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3) {
     u8 sp3F;
@@ -352,13 +352,13 @@ u8 func_global_asm_80667180(f32 arg0, f32 arg1, f32 *arg2, s32 arg3) {
             break;
         case 2:
             *arg2 = sp34;
-            D_807F94B6 = pad;
+            D_global_asm_807F94B6 = pad;
             break;
         case 3:
             temp = *arg2 + 4.0;
             if (func_global_asm_80666FC8(sp38, sp34, temp, 0)) {
                 *arg2 = sp34;
-                D_807F94B6 = pad;
+                D_global_asm_807F94B6 = pad;
             } else {
                 *arg2 = sp38;
             }

@@ -48,15 +48,15 @@ extern void *D_global_asm_80744470[];
 extern s8 D_global_asm_80746834;
 
 extern UnkMQStruct D_global_asm_807659E8;
-extern s32 D_80767CD8; // Unsure on type
+extern s32 D_global_asm_80767CD8; // Unsure on type
 extern Struct80767CE8 D_global_asm_80767CE8[];
-extern s32 D_8076AF20; // Unsure on type
-extern s32 D_8076B320; // Unsure on type
+extern s32 D_global_asm_8076AF20; // Unsure on type
+extern s32 D_global_asm_8076B320; // Unsure on type
 
 extern s8 D_global_asm_807F059C[];
-extern u8 *D_807F05A4;
-extern Struct807F05A8 D_807F05A8[][2];
-extern s32 D_807F0984;
+extern u8 *D_global_asm_807F05A4;
+extern Struct807F05A8 D_global_asm_807F05A8[][2];
+extern s32 D_global_asm_807F0984;
 
 void func_global_asm_8060FFF0(void) {
     D_global_asm_807F0570[0] = &D_global_asm_807432D0;
@@ -74,7 +74,7 @@ void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, 
     Struct807F05A8 *temp_s0;
 
     if (D_global_asm_80744460 == 0) {
-        temp_s0 = &D_807F05A8[arg2][D_global_asm_807444FC];
+        temp_s0 = &D_global_asm_807F05A8[arg2][D_global_asm_807444FC];
         D_global_asm_807F059C[arg2] = 1;
         temp_s0->unk10 = 1;
         temp_s0->unk14 = 0;
@@ -86,14 +86,14 @@ void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, 
         temp_s0->unk24 = 0x1000;
         temp_s0->unk2C = 0x800;
 
-        temp_s0->unk30 = &D_8076AF20;
+        temp_s0->unk30 = &D_global_asm_8076AF20;
         temp_s0->unk34 = 0x400;
-        temp_s0->unk38 = D_807F05A4;
-        temp_s0->unk3C = &D_807F05A4[D_807F0984];
+        temp_s0->unk38 = D_global_asm_807F05A4;
+        temp_s0->unk3C = &D_global_asm_807F05A4[D_global_asm_807F0984];
 
         temp_s0->unk40 = arg0;
         temp_s0->unk44 = arg1 * 8;
-        temp_s0->unk48 = &D_8076B320;
+        temp_s0->unk48 = &D_global_asm_8076B320;
         temp_s0->unk4C = 0xC00;
 
         temp_s0->unk0 = 0;
@@ -104,7 +104,7 @@ void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, 
             temp_s0->unk8 |= 0x40;
         }
         temp_s0->unkC = D_global_asm_80744470[D_global_asm_807444FC];
-        temp_s0->unk50 = &D_80767CD8;
+        temp_s0->unk50 = &D_global_asm_80767CD8;
         if (arg5 != 0) {
             osWritebackDCacheAll();
         } else {

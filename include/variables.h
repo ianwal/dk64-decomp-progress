@@ -352,9 +352,9 @@ typedef struct {
     s32 unk14;
 } Struct807FB534;
 
-extern Struct807FB534 *D_807FB534;
-extern s32 D_807FB538; // Count for ^
-extern u8 D_807FB549;
+extern Struct807FB534 *D_global_asm_807FB534;
+extern s32 D_global_asm_807FB538; // Count for ^
+extern u8 D_global_asm_807FB549;
 
 extern SpriteData D_global_asm_8071FA80;
 extern SpriteData D_global_asm_8071FAAC;

@@ -61,24 +61,26 @@ typedef struct {
     u8 *unk1C;
 } Struct8068D9DC_arg1;
 
-/*
-Gfx *func_global_asm_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
-    s32 pad2;
-    s32 pad;
-    char sp3C[4];
-    char sp38[4];
+// Gfx *func_global_asm_8068D9DC(Gfx *dl, Struct8068D9DC_arg1 *arg1) {
+//     int new_var;
+//     s32 var0;
+//     char sp3C[4];
+//     char sp38[4];
+    
+    
 
-    gSPDisplayList(dl++, &D_1000118);
-    gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
-    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
-
-    sprintf(sp3C, "%d", arg1->unk14);
-    dl = printStyledText(dl, 3, 0x424, 0x50, sp3C, 1);
-    dl = printStyledText(dl, 1, 0x50, 0x50, "HIT", 1);
-    sprintf(sp38, "%d", arg1->unk1C);
-    return printStyledText(dl, 3, 0x50, 0xB0, sp38, 1);
-}
-*/
+//     gSPDisplayList(dl++, &D_1000118);
+//     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+//     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
+//     sprintf(sp3C, "%d", arg1->unk14);
+//     //
+//     dl = printStyledText(dl, 3, 0x424, 0x50, sp3C, 1);
+//     new_var = (!arg1->unk14) && (!arg1->unk14);
+//     dl = printStyledText(dl, 1, 0x50, 0x50, "HIT", 1);
+//     new_var = (!arg1->unk14) && (!arg1->unk14);
+//     sprintf(sp38, "%d", arg1->unk1C);
+//     return printStyledText(dl, 3, 0x50, 0xB0, sp38, 1);
+// }
 
 Gfx *func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
     char sp38[8];
