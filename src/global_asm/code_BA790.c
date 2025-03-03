@@ -6,7 +6,7 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BA790/func_global_asm_806B5A90.s")
 
 void func_global_asm_8072C918(s32, s16, s32);
-extern s16 D_80770710[];
+extern s16 D_global_asm_80770710[];
 extern s16 D_global_asm_80770628[];
 extern u8 D_global_asm_807FBB85;
 extern u8 D_global_asm_807FBD70;
@@ -66,7 +66,7 @@ u8 func_global_asm_806B5A90(s32 arg0, s32 arg1) {
             func_global_asm_80604CBC(current_actor_pointer, 0x122, 0U, 0U, 0U, 0xFFU, 1.0f, 0);
         }
     } else {
-        if ((current_actor_pointer->unk6E[0] != -1) && (D_80770710[D_global_asm_80770628[current_actor_pointer->unk6E[0]]] == 0x122)) {
+        if ((current_actor_pointer->unk6E[0] != -1) && (D_global_asm_80770710[D_global_asm_80770628[current_actor_pointer->unk6E[0]]] == 0x122)) {
             func_global_asm_80605314(current_actor_pointer, 0U);
         }
     }

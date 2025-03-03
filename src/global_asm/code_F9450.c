@@ -655,7 +655,7 @@ struct Struct807FD734 {
     Struct807FD734 *unk1C;
 };
 
-extern Struct807FD734 *D_807FD734;
+extern Struct807FD734 *D_global_asm_807FD734;
 
 void func_global_asm_806F6204(Struct80754244 *arg0, u8 arg1, Struct807FD740 *arg2) {
     Actor *temp_s5;
@@ -685,22 +685,22 @@ void func_global_asm_806F6204(Struct80754244 *arg0, u8 arg1, Struct807FD740 *arg
                 func_global_asm_8060E430(arg0->unk6, 1U, lvl);
             }
             if (cc_number_of_players == 1) {
-                if (!D_807FD734) {
+                if (!D_global_asm_807FD734) {
                     var_v0 = D_global_asm_807FD730;
-                    D_807FD734 = var_v0;
+                    D_global_asm_807FD734 = var_v0;
                     while (var_v0) {
-                        D_807FD734 = var_v0;
+                        D_global_asm_807FD734 = var_v0;
                         var_v0 = var_v0->unk1C;
                     }
                 }
                 temp_v0_3 = func_global_asm_806F53EC(arg0);
                 temp_v0_3->unk1C = 0;
                 if (D_global_asm_807FD730 != NULL) {
-                    D_807FD734->unk1C = temp_v0_3;
-                    D_807FD734 = temp_v0_3;
+                    D_global_asm_807FD734->unk1C = temp_v0_3;
+                    D_global_asm_807FD734 = temp_v0_3;
                 } else {
                     D_global_asm_807FD730 = temp_v0_3;
-                    D_807FD734 = temp_v0_3;
+                    D_global_asm_807FD734 = temp_v0_3;
                 }
             }
             switch (arg0->unk2) {

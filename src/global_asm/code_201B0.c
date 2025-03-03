@@ -50,32 +50,32 @@ typedef struct CutsceneBank {
 
 void func_global_asm_80622B24(Actor *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, void *);
 
-extern OSTime D_807F5CE0;
+extern OSTime D_global_asm_807F5CE0;
 extern f32 D_global_asm_807574E0;
 extern u8 D_global_asm_8076A0B1;
 extern u8 D_global_asm_8076A0B3;
-extern Actor *D_807F5CE8;
-extern s16 D_807F5CEC;
-extern u16 D_807F5CF0;
-extern u16 D_807F5CF4;
+extern Actor *D_global_asm_807F5CE8;
+extern s16 D_global_asm_807F5CEC;
+extern u16 D_global_asm_807F5CF0;
+extern u16 D_global_asm_807F5CF4;
 extern f32 D_807F5CFC;
 extern f32 D_807F5D00;
-extern s16 D_807F5D04;
-extern s16 D_807F5D06;
-extern s16 D_807F5D08;
-extern s16 D_807F5D0A;
+extern s16 D_global_asm_807F5D04;
+extern s16 D_global_asm_807F5D06;
+extern s16 D_global_asm_807F5D08;
+extern s16 D_global_asm_807F5D0A;
 extern s16 D_global_asm_807476F4;
 extern CutsceneBank *D_global_asm_807476FC;
-extern u16 D_807F5CF4;
+extern u16 D_global_asm_807F5CF4;
 extern s16 D_global_asm_807476F8;
 extern Actor *D_global_asm_807F5D10;
 extern u8 D_global_asm_807476EC;
 extern CutsceneBank D_807F5B10[2];
-extern s16 D_807F5CEE;
-extern s16 D_807F5CF2;
+extern s16 D_global_asm_807F5CEE;
+extern s16 D_global_asm_807F5CF2;
 extern u8 D_807F5CF6;
-extern s8 D_807F5CFA;
-extern Actor *D_807F5D0C;
+extern s8 D_global_asm_807F5CFA;
+extern Actor *D_global_asm_807F5D0C;
 extern u8 D_807F5D14;
 extern OSTime D_global_asm_807476D0;
 extern u8 D_global_asm_807476D8;
@@ -90,7 +90,7 @@ extern s16 D_global_asm_807476E0;
 extern s16 D_global_asm_807476E8;
 
 u8 func_global_asm_8061B4B0(void) {
-    return D_807F5CE0 != 0;
+    return D_global_asm_807F5CE0 != 0;
 }
 
 // doable, 64 bit maths, timestamp, close
@@ -108,10 +108,10 @@ typedef struct {
 extern Struct80747708 D_global_asm_80747708[];
 
 void func_global_asm_8061B4E4(void) {
-    if ((u32)(((((osGetTime() - D_807F5CE0) * 64U))) / 3000U / 10000U) >= D_global_asm_80747708[D_807F5D14].unk0) {
+    if ((u32)(((((osGetTime() - D_global_asm_807F5CE0) * 64U))) / 3000U / 10000U) >= D_global_asm_80747708[D_807F5D14].unk0) {
         func_global_asm_80712524(D_global_asm_80747708[D_807F5D14].unk4, D_global_asm_80747708[D_807F5D14].unk5);
         if (++D_807F5D14 > 5) {
-            D_807F5CE0 = 0;
+            D_global_asm_807F5CE0 = 0;
         }
     }
 }
@@ -436,7 +436,7 @@ s16 func_global_asm_8061C804(s16 arg0) {
                 break;
             default:
                 if (!var_s6) {
-                    temp_s1 = D_807F5CE8->unk168;
+                    temp_s1 = D_global_asm_807F5CE8->unk168;
                     var_s6 = 1;
                     sp94 = character_change_array->look_at_eye_x;
                     sp90 = character_change_array->look_at_eye_y;
@@ -446,19 +446,19 @@ s16 func_global_asm_8061C804(s16 arg0) {
                     D_807F5CFC = 1.0f;
                     D_807F5D00 = 0.0f;
                     D_global_asm_807476F4 = var_s4;
-                    D_807F5CF0 = i;
+                    D_global_asm_807F5CF0 = i;
                     sp80 = character_change_array->look_at_at_z;
                     func_global_asm_8061D898();
-                    func_global_asm_80622B24(D_global_asm_807F5D10, &sp94, &sp90, &sp8C, &sp88, &sp84, &sp80, D_807F5CE8);
-                    D_807F5CF0 = 0;
+                    func_global_asm_80622B24(D_global_asm_807F5D10, &sp94, &sp90, &sp8C, &sp88, &sp84, &sp80, D_global_asm_807F5CE8);
+                    D_global_asm_807F5CF0 = 0;
                     D_global_asm_807476F4 = arg0;
-                    D_807F5D04 = sp94;
-                    D_807F5D06 = sp90;
-                    D_807F5D08 = sp8C;
-                    D_807F5D0A = func_global_asm_80665DE0(sp88, sp80, sp94, sp8C);
-                    D_807F5CF4 |= 0x20;
-                    D_807F5CEC = 0;
-                    D_807F5CE8->unk168 = temp_s1;
+                    D_global_asm_807F5D04 = sp94;
+                    D_global_asm_807F5D06 = sp90;
+                    D_global_asm_807F5D08 = sp8C;
+                    D_global_asm_807F5D0A = func_global_asm_80665DE0(sp88, sp80, sp94, sp8C);
+                    D_global_asm_807F5CF4 |= 0x20;
+                    D_global_asm_807F5CEC = 0;
+                    D_global_asm_807F5CE8->unk168 = temp_s1;
                     cam_bank = &var_a2[var_s4];
                 }
                 spA6 += cam_bank[1].point_count;
@@ -471,23 +471,23 @@ s16 func_global_asm_8061C804(s16 arg0) {
 */
 
 void func_global_asm_8061CAD8(void) {
-    if (!(D_807F5CF4 & 2)) {
-        D_807F5CF4 |= 0x40;
+    if (!(D_global_asm_807F5CF4 & 2)) {
+        D_global_asm_807F5CF4 |= 0x40;
     } else {
-        D_807F5CF4 &= 0xFFFD;
+        D_global_asm_807F5CF4 &= 0xFFFD;
     }
 }
 
 void func_global_asm_8061CB08(void) {
-    if (D_807F5CF4 & 0x40) {
-        D_807F5CF4 &= 0xFFBF;
+    if (D_global_asm_807F5CF4 & 0x40) {
+        D_global_asm_807F5CF4 &= 0xFFBF;
     } else {
-        D_807F5CF4 |= 2;
+        D_global_asm_807F5CF4 |= 2;
     }
 }
 
 u8 func_global_asm_8061CB38(void) {
-    return (D_807F5CF4 & 0x40) != 0;
+    return (D_global_asm_807F5CF4 & 0x40) != 0;
 }
 
 u8 func_global_asm_8061CB50(void) {
@@ -495,7 +495,7 @@ u8 func_global_asm_8061CB50(void) {
 }
 
 u8 func_global_asm_8061CB80(void) {
-    return (D_807F5CF4 & 4) != 0;
+    return (D_global_asm_807F5CF4 & 4) != 0;
 }
 
 u8 func_global_asm_8061CB98(u8 arg0) {
@@ -504,7 +504,7 @@ u8 func_global_asm_8061CB98(u8 arg0) {
 
 void func_global_asm_8061CBCC(void) {
     D_global_asm_807476F4 = D_global_asm_807476F8;
-    D_807F5CF0 = 0;
+    D_global_asm_807F5CF0 = 0;
     func_global_asm_8061D898();
 }
 
@@ -526,7 +526,7 @@ s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
     s32 is_global;
 
     sp26 = 0;
-    if ((is_cutscene_active == 1) && (D_807F5CF4 & 0x80)) {
+    if ((is_cutscene_active == 1) && (D_global_asm_807F5CF4 & 0x80)) {
         return 0;
     }
     is_global = arg2 & 4;
@@ -536,15 +536,15 @@ s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
         D_global_asm_807476FC = &D_807F5B10[0];
     }
     if (spawnActor(ACTOR_CUTSCENE_CONTROLLER, 0)) {
-        D_807F5D0C = last_spawned_actor;
+        D_global_asm_807F5D0C = last_spawned_actor;
         last_spawned_actor->noclip_byte = 1;
         if ((!is_global) && (D_global_asm_807FBB64 & 1)) {
             func_boss_80029140(&arg1);
         }
         if (arg0 != NULL) {
-            D_807F5CE8 = arg0;
+            D_global_asm_807F5CE8 = arg0;
         } else {
-            D_807F5CE8 = character_change_array->player_pointer;
+            D_global_asm_807F5CE8 = character_change_array->player_pointer;
         }
         is_cutscene_active = 1;
         if (!(arg2 & 8)) {
@@ -554,14 +554,14 @@ s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
         D_global_asm_807476D0 = osGetTime();
         D_global_asm_807476F4 = arg1;
         D_global_asm_807476F8 = arg1;
-        D_807F5CF4 = arg2;
-        D_807F5CFA = 0;
+        D_global_asm_807F5CF4 = arg2;
+        D_global_asm_807F5CFA = 0;
         D_global_asm_807476D8 = 0;
         D_global_asm_807476E4 = 0;
-        D_807F5CEC = 0;
-        D_807F5CF0 = 0;
-        D_807F5CF2 = 0;
-        D_807F5CEE = 0;
+        D_global_asm_807F5CEC = 0;
+        D_global_asm_807F5CF0 = 0;
+        D_global_asm_807F5CF2 = 0;
+        D_global_asm_807F5CEE = 0;
         D_global_asm_807476F0 = 0;
         D_807F5CF6 = D_global_asm_80770DC9;
         global_properties_bitfield |= 0x2000;
@@ -580,10 +580,10 @@ s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
         D_global_asm_807476EC = 0;
         if ((arg1 == 0) && (current_map == MAP_DK_ISLES_DK_THEATRE)) {
             func_global_asm_806119F0(0x8E32B6F7U);
-            D_807F5CE0 = osGetTime();
+            D_global_asm_807F5CE0 = osGetTime();
             D_807F5D14 = 0;
         } else if (!isIntroStoryPlaying()) {
-            D_807F5CE0 = 0;
+            D_global_asm_807F5CE0 = 0;
         }
     }
     return sp26;
@@ -591,26 +591,26 @@ s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
 */
 
 void func_global_asm_8061CF24(s16 *arg0, s16 *arg1, s16 *arg2, s16 *arg3) {
-    if (D_807F5CF4 & 0x20) {
-        *arg0 = D_807F5D04;
-        *arg1 = D_807F5D06;
-        *arg2 = D_807F5D08;
-        *arg3 = D_807F5D0A;
-        D_807F5CF4 &= 0xFFDF;
+    if (D_global_asm_807F5CF4 & 0x20) {
+        *arg0 = D_global_asm_807F5D04;
+        *arg1 = D_global_asm_807F5D06;
+        *arg2 = D_global_asm_807F5D08;
+        *arg3 = D_global_asm_807F5D0A;
+        D_global_asm_807F5CF4 &= 0xFFDF;
     }
 }
 
 void func_global_asm_8061CF80(s16 arg0) {
-    D_807F5CEE = arg0;
+    D_global_asm_807F5CEE = arg0;
 }
 
 void func_global_asm_8061CF90(Actor *arg0, s16 arg1) {
     if (arg0 != NULL) {
-        D_807F5CE8 = arg0;
+        D_global_asm_807F5CE8 = arg0;
     } else {
-        D_807F5CE8 = character_change_array->player_pointer;
+        D_global_asm_807F5CE8 = character_change_array->player_pointer;
     }
-    D_807F5CFA = arg1;
+    D_global_asm_807F5CFA = arg1;
 }
 
 typedef struct {
@@ -624,7 +624,7 @@ void func_global_asm_8061CFCC(Actor *arg0) {
     AAD_8061CFCC *aaD;
 
     aaD = D_global_asm_807F5D10->additional_actor_data;
-    if (arg0 == D_807F5CE8) {
+    if (arg0 == D_global_asm_807F5CE8) {
         func_global_asm_8061CF90(NULL, 0);
     }
     if (arg0 == aaD->unk4) {
@@ -743,20 +743,20 @@ void func_global_asm_8061D4E4(Actor *arg0) {
 
     aaD = arg0->additional_actor_data;
     if (is_cutscene_active == 1) {
-        if (D_807F5CF4 & 4) {
+        if (D_global_asm_807F5CF4 & 4) {
             D_global_asm_807476FC = &D_807F5B10;
         }
         func_global_asm_80602488(0);
         is_cutscene_active = 0;
         D_global_asm_8076A0B1 &= 0xFFEF;
-        if (!(D_807F5CF4 & 8)) {
+        if (!(D_global_asm_807F5CF4 & 8)) {
             D_global_asm_8076A0B3 = 0xFF;
         }
-        deleteActor(D_807F5D0C);
+        deleteActor(D_global_asm_807F5D0C);
         global_properties_bitfield |= 0x1000;
         aaD->unkAC |= 0x40000;
         aaD->unkC = -32768.0f;
-        if (D_807F5CF4 & 1) {
+        if (D_global_asm_807F5CF4 & 1) {
             global_properties_bitfield |= 0x2000;
             func_global_asm_8061B5C4(aaD->unkFB);
         }
@@ -766,7 +766,7 @@ void func_global_asm_8061D4E4(Actor *arg0) {
         D_global_asm_8076A068 += 0x1869F;
         func_global_asm_80600C68();
         D_global_asm_8076A068 += 0xFFFE7961;
-        D_807F5CF4 = 0;
+        D_global_asm_807F5CF4 = 0;
         // TODO: Issue here
         D_global_asm_807476C8 = 0;
         player_pointer->object_properties_bitfield &= ~0x400;
@@ -843,31 +843,31 @@ void func_global_asm_8061D6A8(Struct_8061D6A8_arg0 *arg0) {
 }
 
 void func_global_asm_8061D898(void) {
-    D_807F5D0C->unk168 = 0;
-    D_807F5D0C->unk160 = 0.0;
-    D_807F5CF2 = D_global_asm_807476FC->camera_bank[D_global_asm_807476F4].point_array[D_807F5CF0];
-    D_807F5CEC = D_global_asm_807476FC->camera_bank[D_global_asm_807476F4].length_array[D_807F5CF0];
+    D_global_asm_807F5D0C->unk168 = 0;
+    D_global_asm_807F5D0C->unk160 = 0.0;
+    D_global_asm_807F5CF2 = D_global_asm_807476FC->camera_bank[D_global_asm_807476F4].point_array[D_global_asm_807F5CF0];
+    D_global_asm_807F5CEC = D_global_asm_807476FC->camera_bank[D_global_asm_807476F4].length_array[D_global_asm_807F5CF0];
     func_global_asm_806F3DB0();
 }
 
 void func_global_asm_8061D934(u8 arg0) {
     D_global_asm_807476F4 = arg0;
-    D_807F5CF0 = 0;
+    D_global_asm_807F5CF0 = 0;
     func_global_asm_8061D898();
 }
 
-extern u16 D_807F5CF8;
+extern u16 D_global_asm_807F5CF8;
 
 void func_global_asm_8061D968(u8 arg0, u8 arg1) {
     if (D_global_asm_807476D8) {
         if (--D_global_asm_807476D8) {
-            D_807F5CF0 = D_807F5CF8;
+            D_global_asm_807F5CF0 = D_global_asm_807F5CF8;
             func_global_asm_8061D898();
         }
     } else {
         D_global_asm_807476D8 = arg1;
-        D_807F5CF8 = arg0;
-        D_807F5CF0 = arg0;
+        D_global_asm_807F5CF8 = arg0;
+        D_global_asm_807F5CF0 = arg0;
         func_global_asm_8061D898();
     }
 }
@@ -1100,10 +1100,10 @@ typedef struct {
     s8 unk1B;
 } Struct807F5BD4;
 
-extern Struct807F5BD4 *D_807F5BD4;
+extern Struct807F5BD4 *D_global_asm_807F5BD4;
 
 void func_global_asm_8061F510(u8 arg0, u8 arg1) {
-    D_807F5BD4[arg0].unk18 = arg1;
+    D_global_asm_807F5BD4[arg0].unk18 = arg1;
 }
 
 // jumptable
@@ -1317,9 +1317,9 @@ void func_global_asm_80625994(Actor *arg0, f32 arg1, f32 *arg2, f32 *arg3, f32 *
     *arg4 = *arg4 + ((aaD->unk80 - *arg4) * D_global_asm_807476A4);
 }
 
-extern s16 D_807F5CD2;
-extern s16 D_807F5CD4;
-extern s16 D_807F5CD8;
+extern s16 D_global_asm_807F5CD2;
+extern s16 D_global_asm_807F5CD4;
+extern s16 D_global_asm_807F5CD8;
 
 s32 func_global_asm_806259FC(s16 arg0, s16 arg1) {
     s16 i;
@@ -1327,7 +1327,7 @@ s32 func_global_asm_806259FC(s16 arg0, s16 arg1) {
 
     for (i = -1; i < 2; i++) {
         for (j = -1; j < 2; j++) {
-            if (arg0 == (arg1 + (i * D_807F5CD8) + j)) {
+            if (arg0 == (arg1 + (i * D_global_asm_807F5CD8) + j)) {
                 return TRUE;
             }
         }
@@ -1339,7 +1339,7 @@ s16 func_global_asm_80625A80(s32 lockRegionIndex) {
     CutsceneBank_LockRegion *lockRegion;
 
     lockRegion = &D_global_asm_807476FC->lock_regions[lockRegionIndex];
-    return ((lockRegion->unk10 - D_807F5CD2) / 400) + (((lockRegion->unk14 - D_807F5CD4) / 400) * D_807F5CD8);
+    return ((lockRegion->unk10 - D_global_asm_807F5CD2) / 400) + (((lockRegion->unk14 - D_global_asm_807F5CD4) / 400) * D_global_asm_807F5CD8);
 }
 
 void func_global_asm_80625B3C(s16 *arg0, s16 *arg1, s16 *arg2) {
@@ -1462,7 +1462,7 @@ void func_global_asm_80626264(s32 arg0) {
     sp1C = getPointerTableFile(8, 0, 1, 1);
     func_global_asm_80627B58(0.5f);
     D_global_asm_807476FC = D_807F5B10;
-    D_807F5CF4 = 0;
+    D_global_asm_807F5CF4 = 0;
     D_global_asm_807476C0 = 0;
     D_global_asm_80747704 = 0;
     func_global_asm_806261EC(arg0, D_global_asm_807476FC, 1);

@@ -611,7 +611,7 @@ us,asm,func_global_asm_80647170,168,yes
 us,asm,func_global_asm_806F3950,44,yes
 us,asm,free,64,yes
 us,asm,func_global_asm_80714360,52,yes
-us,asm,func_global_asm_805FBC5C,424,yes
+us,asm,func_global_asm_805FBC5C,424,no
 us,asm,func_global_asm_80663DA0,556,yes
 us,asm,func_global_asm_806CBE90,636,yes
 us,asm,func_global_asm_806D0150,92,yes

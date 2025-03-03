@@ -31,11 +31,11 @@ void func_global_asm_80601A10(s32 *, s32, s32 *);
 void func_global_asm_80732DEC(s32 *, s32);
 void func_global_asm_80732F10(ALSeqPlayer *, s32 *);
 void func_global_asm_80735AA0(s32 *);
-extern u16 D_8076BF30[];
-extern void *D_8076BF38[];
-extern ALHeap D_8076D1E8;
-extern ALBank *D_8076D1FC;
-extern u8 D_80770F50;
+extern u16 D_global_asm_8076BF30[];
+extern void *D_global_asm_8076BF38[];
+extern ALHeap D_global_asm_8076D1E8;
+extern ALBank *D_global_asm_8076D1FC;
+extern u8 D_global_asm_80770F50;
 extern dk64_boot_struct_0 D_dk64_boot_8000DCC4[];
 extern s32 D_global_asm_807452B0[];
 extern ALBank *D_global_asm_8076D1F8;
@@ -94,7 +94,7 @@ void func_global_asm_80600D50(void) {
     void *temp_v0;
     s32 i;
 
-    alHeapInit(&D_8076D1E8, &D_80770F50, 0x7BD80);
+    alHeapInit(&D_global_asm_8076D1E8, &D_global_asm_80770F50, 0x7BD80);
     sp98.unk0 = 0x2C;
     sp98.unk4 = 0x1E;
     sp98.unk8 = 0x40;
@@ -103,7 +103,7 @@ void func_global_asm_80600D50(void) {
     sp98.unk1C = 6;
     sp98.unk1D = 6;
     sp98.unk18 = 0;
-    sp98.unk14 = &D_8076D1E8;
+    sp98.unk14 = &D_global_asm_8076D1E8;
     sp6C.unk0 = 22050;
     sp6C.unk4 = 2;
     sp6C.unk8 = 0xC00;
@@ -111,14 +111,14 @@ void func_global_asm_80600D50(void) {
     spC0 = D_dk64_boot_8000DCC4[15].unk4 - D_dk64_boot_8000DCC4[15].unk0;
     temp_v0 = malloc(0x38000);
     func_global_asm_8060B140(D_dk64_boot_8000DCC4[15].unk0, temp_v0, &spC0, 0xD, 0, 2, 0);
-    temp_v0_2 = alHeapDBAlloc(NULL, 0, &D_8076D1E8, 1, spC0);
+    temp_v0_2 = alHeapDBAlloc(NULL, 0, &D_global_asm_8076D1E8, 1, spC0);
     func_global_asm_8060B140(D_dk64_boot_8000DCC4[15].unk0, temp_v0_2, &spC0, 0xD, 0, 2, 0);
     alBnkfNew(temp_v0_2, D_dk64_boot_8000DCC4[14].unk0);
-    D_8076D1FC = temp_v0_2->bankArray[0];
+    D_global_asm_8076D1FC = temp_v0_2->bankArray[0];
     spC0 = D_dk64_boot_8000DCC4[0x10].unk4 - D_dk64_boot_8000DCC4[0x10].unk0;
     func_global_asm_8060B140(D_dk64_boot_8000DCC4[0x10].unk0, temp_v0, &spC0, 0xD, 0, 2, 0);
     free(temp_v0);
-    temp_v0_3 = alHeapDBAlloc(NULL, 0, &D_8076D1E8, 1, spC0);
+    temp_v0_3 = alHeapDBAlloc(NULL, 0, &D_global_asm_8076D1E8, 1, spC0);
     func_global_asm_8060B140(D_dk64_boot_8000DCC4[0x10].unk0, temp_v0_3, &spC0, 0xD, 0, 2, 0);
     alBnkfNew(temp_v0_3, D_dk64_boot_8000DCC4[0x11].unk0);
     D_global_asm_8076D1F8 = temp_v0_3->bankArray[0];
@@ -126,14 +126,14 @@ void func_global_asm_80600D50(void) {
     sp78.unk4 = 0x40;
     sp78.unk9 = 0;
     sp78.unk8 = 0x10;
-    sp78.unkC = &D_8076D1E8;
+    sp78.unkC = &D_global_asm_8076D1E8;
     func_global_asm_80732DEC(&sp78, 0x58);
     for (i = 0; i < 4; i++) {
-        D_8076BF30[i] = 0xFFFF;
-        D_8076BF38[i] = alHeapDBAlloc(NULL, 0, &D_8076D1E8, 1, D_global_asm_807452B0[i]);
-        D_global_asm_8076BF20[i] = alHeapDBAlloc(NULL, 0, &D_8076D1E8, 1, 0x8C);
+        D_global_asm_8076BF30[i] = 0xFFFF;
+        D_global_asm_8076BF38[i] = alHeapDBAlloc(NULL, 0, &D_global_asm_8076D1E8, 1, D_global_asm_807452B0[i]);
+        D_global_asm_8076BF20[i] = alHeapDBAlloc(NULL, 0, &D_global_asm_8076D1E8, 1, 0x8C);
         player = D_global_asm_8076BF20[i];
-        if ((!D_8076BF38[i]) || (player = D_global_asm_8076BF20[i], !player)) {
+        if ((!D_global_asm_8076BF38[i]) || (player = D_global_asm_8076BF20[i], !player)) {
             player = D_global_asm_8076BF20[i];
         }
         func_global_asm_80732F10(player, &sp78);
@@ -144,7 +144,7 @@ void func_global_asm_80600D50(void) {
     spCC.unk0 = 0x40;
     spCC.unk8 = 0x14;
     spCC.unk10 = 8;
-    spCC.unkC = &D_8076D1E8;
+    spCC.unkC = &D_global_asm_8076D1E8;
     func_global_asm_80735AA0(&spCC);
     func_global_asm_80737C20(4);
     func_global_asm_80737CF4(0, 4);

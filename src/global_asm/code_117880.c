@@ -49,7 +49,7 @@ void func_global_asm_80712B80(void) {
 // Jumptable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_117880/func_global_asm_80712BD4.s")
 
-extern Mtx D_807FDAC0;
+extern Mtx D_global_asm_807FDAC0;
 extern u8 D_global_asm_807467CC;
 extern u16 D_global_asm_80755308;
 extern u8 D_global_asm_8075530C;
@@ -77,7 +77,7 @@ void func_global_asm_80712BD4(void) {
         (temp_v0 == 0)) {
         func_global_asm_80712574();
     }
-    guScale(&D_807FDAC0, 0.5f, 0.5f, 1.0f);
+    guScale(&D_global_asm_807FDAC0, 0.5f, 0.5f, 1.0f);
     switch (game_mode_copy) {
         case GAME_MODE_NINTENDO_LOGO:
             D_global_asm_8075531C = 60 * 30;
@@ -251,7 +251,7 @@ Gfx *func_global_asm_807132DC(Gfx *dl) {
     return dl;
 }
 
-extern Mtx D_807FDAC0; // TODO: Correct datatype?
+extern Mtx D_global_asm_807FDAC0; // TODO: Correct datatype?
 
 Gfx *func_global_asm_8071338C(Gfx *dl) {
     char *string;
@@ -259,7 +259,7 @@ Gfx *func_global_asm_8071338C(Gfx *dl) {
 
     string = getTextString(0xC, 0, 1);
     gDPSetCombineMode(dl++, G_CC_DECALRGBA, G_CC_DECALRGBA);
-    gSPMatrix(dl++, &D_807FDAC0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+    gSPMatrix(dl++, &D_global_asm_807FDAC0, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     temp = 20.0f;
     temp *= 2.0f;
     temp *= 4.0f;

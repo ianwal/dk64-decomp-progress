@@ -21,15 +21,15 @@ extern f32 D_global_asm_80747B48;
 extern f32 D_global_asm_80747B4C;
 extern f32 D_global_asm_80747B50;
 
-extern void *D_807F5D80;
+extern void *D_global_asm_807F5D80;
 extern s8 D_global_asm_807F5D84;
-extern s8 D_807F5D85;
-extern s16 D_807F5D86;
-extern s16 D_807F5D88;
+extern s8 D_global_asm_807F5D85;
+extern s16 D_global_asm_807F5D86;
+extern s16 D_global_asm_807F5D88;
 extern f32 D_global_asm_807F5D8C;
 extern f32 D_global_asm_807F5D90;
 extern f32 D_global_asm_807F5D94;
-extern Mtx D_807F5D98;
+extern Mtx D_global_asm_807F5D98;
 extern void *D_global_asm_807F5DD8;
 
 void func_global_asm_807024E0(Gfx **, void *, s32, s32, s32, s32, s32, f32, f32, f32, f32, f32, f32, s32, s32, s32, void (*)(s32, s32, void *));
@@ -50,24 +50,24 @@ u8 func_global_asm_806291A8(void) {
 void func_global_asm_806291B4(u8 arg0) {
     if ((D_global_asm_807F5D84 == 0) || (arg0 == 7)) {
         if (D_global_asm_807F5D84 == 0) {
-            D_807F5D80 = malloc(D_global_asm_80744490 * D_global_asm_80744494 * 2);
+            D_global_asm_807F5D80 = malloc(D_global_asm_80744490 * D_global_asm_80744494 * 2);
         }
-        func_global_asm_8070A848(D_807F5D80, D_global_asm_80744470[D_global_asm_807444FC]);
+        func_global_asm_8070A848(D_global_asm_807F5D80, D_global_asm_80744470[D_global_asm_807444FC]);
         D_global_asm_807F5D84 = 1;
         D_global_asm_80747B20 = 5;
         switch (arg0) {
             case 1:
-                D_807F5D86 = 0xFF;
+                D_global_asm_807F5D86 = 0xFF;
                 break;
             case 2:
-                D_807F5D86 = 0;
+                D_global_asm_807F5D86 = 0;
                 break;
             case 0:
-                D_807F5D86 = 0x136;
+                D_global_asm_807F5D86 = 0x136;
                 break;
             case 3:
-                D_807F5D86 = 0xA0;
-                D_807F5D88 = 0xA0;
+                D_global_asm_807F5D86 = 0xA0;
+                D_global_asm_807F5D88 = 0xA0;
                 break;
             case 4:
             case 5:
@@ -80,7 +80,7 @@ void func_global_asm_806291B4(u8 arg0) {
                 func_global_asm_8062A348();
                 break;
         }
-        D_807F5D85 = arg0;
+        D_global_asm_807F5D85 = arg0;
     }
 }
 
@@ -89,7 +89,7 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
 
     sp54 = D_global_asm_80744478 * 0.5f;
     if (D_global_asm_80747B24 == 0) {
-        guScale(&D_807F5D98, 2.0f, 2.0f, 1.0f);
+        guScale(&D_global_asm_807F5D98, 2.0f, 2.0f, 1.0f);
         D_global_asm_80747B24 = 1;
     }
     if ((D_global_asm_807F5D84 == 0) && (D_global_asm_80747B20 != 0)) {
@@ -98,80 +98,80 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
     if (D_global_asm_807F5D84 < 0) {
         D_global_asm_807F5D84++;
         if (D_global_asm_807F5D84 == 0) {
-            func_global_asm_8061134C(D_807F5D80);
+            func_global_asm_8061134C(D_global_asm_807F5D80);
         }
     } else {
         if (D_global_asm_807F5D84 > 0) {
             gSPDisplayList(dl++, &D_1000118);
             dl = func_global_asm_805FD030(dl);
             gSPMatrix(dl++, &D_2000140, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_PROJECTION);
-            gSPMatrix(dl++, &D_807F5D98, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+            gSPMatrix(dl++, &D_global_asm_807F5D98, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
             gDPPipeSync(dl++);
             gDPSetTextureFilter(dl++, G_TF_POINT);
             gDPSetColorDither(dl++, G_CD_DISABLE);
             gDPSetScissor(dl++, G_SC_NON_INTERLACE, D_global_asm_80744498, D_global_asm_8074449C, D_global_asm_807444A0, D_global_asm_807444A4);
             gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
-            switch (D_807F5D85) {
+            switch (D_global_asm_807F5D85) {
                 case 7:
                     func_global_asm_8062A3F0();
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
                     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-                    func_global_asm_807023E8(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 319.0f, 239.0f, 0.0f, 0.0f);
+                    func_global_asm_807023E8(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 319.0f, 239.0f, 0.0f, 0.0f);
                     if (global_properties_bitfield & 0x40) {
                         D_global_asm_807F5D84 = -2;
                     }
                     break;
                 case 1:
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
-                    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, D_807F5D86);
-                    func_global_asm_807023E8(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 319.0f, 239.0f, 0.0f, 0.0f);
-                    D_807F5D86 -= sp54 * 5;
-                    if (D_807F5D86 < 0) {
+                    gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, D_global_asm_807F5D86);
+                    func_global_asm_807023E8(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 319.0f, 239.0f, 0.0f, 0.0f);
+                    D_global_asm_807F5D86 -= sp54 * 5;
+                    if (D_global_asm_807F5D86 < 0) {
                         D_global_asm_807F5D84 = -2;
                     }
                     break;
                 case 2:
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
                     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-                    func_global_asm_807023E8(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, D_807F5D86, 0.0f, 319.0f, 239.0f, D_807F5D86, 0.0f);
+                    func_global_asm_807023E8(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, D_global_asm_807F5D86, 0.0f, 319.0f, 239.0f, D_global_asm_807F5D86, 0.0f);
                     gDPPipeSync(dl++);
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-                    if (D_807F5D86 >= 0x11) {
-                        func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x10, 0x50, (D_807F5D86 - 0x10), 0.0f, D_807F5D86, 239.0f, (D_807F5D86 - 0x10), 0.0f, 1, 0x10, 1, NULL);
+                    if (D_global_asm_807F5D86 >= 0x11) {
+                        func_global_asm_807024E0(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x10, 0x50, (D_global_asm_807F5D86 - 0x10), 0.0f, D_global_asm_807F5D86, 239.0f, (D_global_asm_807F5D86 - 0x10), 0.0f, 1, 0x10, 1, NULL);
                     }
-                    D_807F5D86 += (sp54 * 0xA);
-                    if (D_807F5D86 >= 0x137) {
+                    D_global_asm_807F5D86 += (sp54 * 0xA);
+                    if (D_global_asm_807F5D86 >= 0x137) {
                         D_global_asm_807F5D84 = -2;
                     }
                     break;
                 case 0:
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
                     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-                    func_global_asm_807023E8(&dl, D_807F5D80, 0, 0x140, 0xF0, 0xA, 0x50, 0.0f, 0.0f, D_807F5D86, 239.0f, 0.0f, 0.0f);
+                    func_global_asm_807023E8(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0xA, 0x50, 0.0f, 0.0f, D_global_asm_807F5D86, 239.0f, 0.0f, 0.0f);
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-                    if (D_807F5D86 < 0x131) {
-                        func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x10, 0x20, D_807F5D86, 0.0f, D_807F5D86 + 0x10, 239.0f, D_807F5D86, 0.0f, 1, 0x10, 2, NULL);
+                    if (D_global_asm_807F5D86 < 0x131) {
+                        func_global_asm_807024E0(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x10, 0x20, D_global_asm_807F5D86, 0.0f, D_global_asm_807F5D86 + 0x10, 239.0f, D_global_asm_807F5D86, 0.0f, 1, 0x10, 2, NULL);
                     }
-                    D_807F5D86 -= (sp54 * 0xA);
-                    if (D_807F5D86 < 0xB) {
+                    D_global_asm_807F5D86 -= (sp54 * 0xA);
+                    if (D_global_asm_807F5D86 < 0xB) {
                         D_global_asm_807F5D84 = -2;
                     }
                     break;
                 case 3:
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
                     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
-                    func_global_asm_807023E8(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, D_807F5D86, 0.0f, 319.0f, 239.0f, D_807F5D86, 0.0f);
-                    func_global_asm_807023E8(&dl, D_807F5D80, 0, 0x140, 0xF0, 0xA, 0x50, 0.0f, 0.0f, D_807F5D88, 239.0f, 0.0f, 0.0f);
+                    func_global_asm_807023E8(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, D_global_asm_807F5D86, 0.0f, 319.0f, 239.0f, D_global_asm_807F5D86, 0.0f);
+                    func_global_asm_807023E8(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0xA, 0x50, 0.0f, 0.0f, D_global_asm_807F5D88, 239.0f, 0.0f, 0.0f);
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
-                    if (D_807F5D86 >= 0x11) {
-                        func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x10, 0x50, (D_807F5D86 - 0x10), 0.0f, D_807F5D86, 239.0f, (D_807F5D86 - 0x10), 0.0f, 1, 0x10, 1, NULL);
+                    if (D_global_asm_807F5D86 >= 0x11) {
+                        func_global_asm_807024E0(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x10, 0x50, (D_global_asm_807F5D86 - 0x10), 0.0f, D_global_asm_807F5D86, 239.0f, (D_global_asm_807F5D86 - 0x10), 0.0f, 1, 0x10, 1, NULL);
                     }
-                    if (D_807F5D88 < 0x131) {
-                        func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x10, 0x20, D_807F5D88, 0.0f, D_807F5D88 + 0x10, 239.0f, D_807F5D88, 0.0f, 1, 0x10, 2, NULL);
+                    if (D_global_asm_807F5D88 < 0x131) {
+                        func_global_asm_807024E0(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x10, 0x20, D_global_asm_807F5D88, 0.0f, D_global_asm_807F5D88 + 0x10, 239.0f, D_global_asm_807F5D88, 0.0f, 1, 0x10, 2, NULL);
                     }
-                    D_807F5D86 += (sp54 * 0xA);
-                    D_807F5D88 -= (sp54 * 0xA);
-                    if (D_807F5D86 >= 0x137) {
+                    D_global_asm_807F5D86 += (sp54 * 0xA);
+                    D_global_asm_807F5D88 -= (sp54 * 0xA);
+                    if (D_global_asm_807F5D86 >= 0x137) {
                         D_global_asm_807F5D84 = -2;
                     }
                     break;
@@ -179,7 +179,7 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
                     D_global_asm_807F5D8C = D_global_asm_807F5D8C + (5.0 * sp54);
                     D_global_asm_807F5D90 = D_global_asm_807F5D8C + 40.0f;
-                    func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 320.0f, 239.0f, 0.0f, 0.0f, 1, 0x10, 1, func_global_asm_8062A24C);
+                    func_global_asm_807024E0(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 320.0f, 239.0f, 0.0f, 0.0f, 1, 0x10, 1, func_global_asm_8062A24C);
                     if (D_global_asm_807F5D8C > 170.0f) {
                         D_global_asm_807F5D84 = -2;
                     }
@@ -188,7 +188,7 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
                     D_global_asm_807F5D8C = D_global_asm_807F5D8C + (12.0 * sp54);
                     D_global_asm_807F5D90 = D_global_asm_807F5D8C + 40.0f;
-                    func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 320.0f, 239.0f, 0.0f, 0.0f, 1, 0x10, 1, func_global_asm_8062A228);
+                    func_global_asm_807024E0(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 320.0f, 239.0f, 0.0f, 0.0f, 1, 0x10, 1, func_global_asm_8062A228);
                     if (D_global_asm_807F5D8C > 350.0f) {
                         D_global_asm_807F5D84 = -2;
                     }
@@ -196,7 +196,7 @@ Gfx *func_global_asm_80629300(Gfx *dl) {
                 case 6:
                     gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA);
                     D_global_asm_807F5D94 = D_global_asm_807F5D94 + (15.0 * sp54);
-                    func_global_asm_807024E0(&dl, D_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 320.0f, 239.0f, 0.0f, 0.0f, 1, 0x10, 1, func_global_asm_8062A130);
+                    func_global_asm_807024E0(&dl, D_global_asm_807F5D80, 0, 0x140, 0xF0, 0x20, 0x20, 0.0f, 0.0f, 320.0f, 239.0f, 0.0f, 0.0f, 1, 0x10, 1, func_global_asm_8062A130);
                     if (D_global_asm_807F5D94 > 350.0f) {
                         D_global_asm_807F5D84 = -2;
                     }

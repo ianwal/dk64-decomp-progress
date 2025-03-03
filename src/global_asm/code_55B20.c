@@ -127,7 +127,7 @@ typedef struct {
     f32 unk8;
 } Struct807F6D78;
 
-extern Struct807F6D78 D_807F6D78[];
+extern Struct807F6D78 D_global_asm_807F6D78[];
 
 extern s32 D_global_asm_807F6C20;
 
@@ -1291,7 +1291,7 @@ void func_global_asm_80658624(s32 arg0, s32 *arg1, s32 *arg2, s32 *arg3, s32 *ar
     *arg4 = character_change_array[cc_player_index].unk270[1];
     var_s3 = 0;
     for (i = 0; i < arg0; i++) {
-        var_s3 |= func_global_asm_80626F8C(D_807F6D78[i].unk0, D_807F6D78[i].unk4, D_807F6D78[i].unk8, &sp7C, &sp78, 0, 1.0f, cc_player_index);
+        var_s3 |= func_global_asm_80626F8C(D_global_asm_807F6D78[i].unk0, D_global_asm_807F6D78[i].unk4, D_global_asm_807F6D78[i].unk8, &sp7C, &sp78, 0, 1.0f, cc_player_index);
         var_a1 = sp7C;\
         var_a2 = sp78;
         if (var_a1 < character_change_array[cc_player_index].unk270[0]) {

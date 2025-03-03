@@ -701,8 +701,8 @@ s32 func_global_asm_80642500(f32 *arg0, s16 arg1, s16 arg2) {
     return phi_v1;
 }
 
-extern f32 D_807F6208;
-extern f32 D_807F6210;
+extern f32 D_global_asm_807F6208;
+extern f32 D_global_asm_807F6210;
 extern f32 D_global_asm_807F620C;
 
 s32 func_global_asm_806425FC(s16 arg0, s16 arg1) {
@@ -714,13 +714,13 @@ s32 func_global_asm_806425FC(s16 arg0, s16 arg1) {
     var_v1 = 0;
     switch (((arg0 >> 8) % 255) & 0xFF) {
         case 0:
-            var_f2 = D_807F6208;
+            var_f2 = D_global_asm_807F6208;
             break;
         case 1:
             var_f2 = D_global_asm_807F620C;
             break;
         case 2:
-            var_f2 = D_807F6210;
+            var_f2 = D_global_asm_807F6210;
             break;
     }
 

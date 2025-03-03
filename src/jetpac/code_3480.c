@@ -155,7 +155,7 @@ typedef struct JetpacStruct8002DCE8 { // P sure this is RGBA
 } JetpacStruct8002DCE8;
 
 void func_jetpac_80025700(void*, s32, s32, rgba*, s32);
-extern s32 D_8002F3C0[];
+extern s32 D_jetpac_8002F3C0[];
 extern rgba D_jetpac_8002DCE8;
 extern JetpacGameStruct D_jetpac_8002EC30;
 
@@ -175,7 +175,7 @@ void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
         if (arg1 < 3) {
             for (var_s0 = 0; var_s0 < 2; var_s0++)
             {
-                ptr = D_8002F3C0;
+                ptr = D_jetpac_8002F3C0;
                 if (((player->rocket_stage < 8) && ((player->rocket_stage + (arg1 * 2) + var_s0) >= 8)) || ((player->rocket_stage == 8) && (*ptr & 0x10))) {
                     sp58.green = 0;
                 }
@@ -192,7 +192,7 @@ void func_jetpac_80027BE8(JetpacPickupStruct* arg0, s32 arg1) {
     }
 }
 
-extern u8 D_8002F3C8;
+extern u8 D_jetpac_8002F3C8;
 extern uSprite D_jetpac_8002D968[7];
 extern JetpacPickupStruct D_jetpac_8002DCEC;
 
@@ -203,7 +203,7 @@ void func_jetpac_80027D64(Competitor *arg0) {
     s32 temp;
 
     sp24 = D_jetpac_8002DCEC;
-    if ((D_8002F3C8) && (arg0->current_score >= 5000) && (isFlagSet(0x17B, 0U) == 0) && (isFlagSet(0x62, 2U) == 0)) {
+    if ((D_jetpac_8002F3C8) && (arg0->current_score >= 5000) && (isFlagSet(0x17B, 0U) == 0) && (isFlagSet(0x62, 2U) == 0)) {
         sp24.primary_info.drop_type = 6;
     } else {
         temp = 5;

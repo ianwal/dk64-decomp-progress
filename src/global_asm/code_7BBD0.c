@@ -5,7 +5,7 @@
 // https://decomp.me/scratch/KH3n0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_global_asm_80676ED0.s")
 
-extern s8 D_807FB5FD;
+extern s8 D_global_asm_807FB5FD;
 extern u8 D_807FB5FF;
 extern s8 D_807FB600;
 
@@ -42,9 +42,9 @@ u8 func_global_asm_80676ED0(Actor *arg0, s16 *arg1, s16 *arg2) {
             var_s0 = sp7C->unk8C;
             D_807FB5FF = 0;
             if (temp_s7->unk64 & 0x20) {
-                D_807FB5FD = 0;
+                D_global_asm_807FB5FD = 0;
             } else {
-                D_807FB5FD = 1;
+                D_global_asm_807FB5FD = 1;
             }
             while ((var_s0 != NULL) && (D_807FB5FF == 0)) {
                 if ((var_s0->unk26 != 0) && !(var_s0->unk27 & 2)) {
@@ -96,10 +96,10 @@ typedef struct {
 
 extern Struct807FB5D8 *D_global_asm_807FB5D8;
 
-extern f32 D_807FB5C4;
+extern f32 D_global_asm_807FB5C4;
 extern f32 D_807FB5C8;
-extern f32 D_807FB5CC;
-extern s32 D_807FB5D0; // TODO: Proper datatype
+extern f32 D_global_asm_807FB5CC;
+extern s32 D_global_asm_807FB5D0; // TODO: Proper datatype
 
 /*
 s32 func_global_asm_80677148(Actor *arg0, Actor *arg1) {
@@ -158,9 +158,9 @@ s32 func_global_asm_80677148(Actor *arg0, Actor *arg1) {
         var_f12 = arg0->y_position;
         var_f14 = arg0->z_position;
     } else {
-        var_f2 = D_807FB5C4 / 8.0f;
+        var_f2 = D_global_asm_807FB5C4 / 8.0f;
         var_f12 = D_807FB5C8 / 8.0f;
-        var_f14 = D_807FB5CC / 8.0f;
+        var_f14 = D_global_asm_807FB5CC / 8.0f;
     }
     if (!(arg0->object_properties_bitfield & 0x800)) {
         guMtxXFMF(&spDC[0], var_f2, var_f12, var_f14, &spC4, &spC8, &spCC);
@@ -215,7 +215,7 @@ s32 func_global_asm_80677148(Actor *arg0, Actor *arg1) {
                 goto block_26;
             }
         } else {
-            func_global_asm_8067A864(arg0, arg1, arg0->y_rotation, arg0->unkB8, &spC4, &sp7C, D_global_asm_807FB5D8->unk4E, D_807FB5D0, func_global_asm_8066FD6C(arg0));
+            func_global_asm_8067A864(arg0, arg1, arg0->y_rotation, arg0->unkB8, &spC4, &sp7C, D_global_asm_807FB5D8->unk4E, D_global_asm_807FB5D0, func_global_asm_8066FD6C(arg0));
             if ((func_global_asm_80677CAC(D_global_asm_807FD610->unk28, 0x190) != 0) && (D_global_asm_807FD610->unk4 > 30.0)) {
                 arg0->y_rotation = temp_s6->unk66;
             }
@@ -223,7 +223,7 @@ s32 func_global_asm_80677148(Actor *arg0, Actor *arg1) {
     } else {
 block_26:
         var_s1 = sp15F == 1;
-        func_global_asm_8067A908(arg0, arg1, &spC4, &sp7C, D_global_asm_807FB5D8->unk4E, D_807FB5D0, func_global_asm_8066FD6C(arg0));
+        func_global_asm_8067A908(arg0, arg1, &spC4, &sp7C, D_global_asm_807FB5D8->unk4E, D_global_asm_807FB5D0, func_global_asm_8066FD6C(arg0));
     }
     return var_s1 & 0xFF;
 }

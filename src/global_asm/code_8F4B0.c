@@ -166,9 +166,9 @@ void func_global_asm_805FF9AC(Maps, s32, s32, s16);
 void func_global_asm_80608DA8(s32, u8, s32, s32, s32);
 void func_global_asm_80659F7C(f32, f32, f32, f32, s32);
 void func_global_asm_80711BD0(f32, s16, s16, u8);
-extern u16 D_8076A0A6;
-extern s16 D_807FDCB8;
-extern s16 D_807FDCBC;
+extern u16 D_global_asm_8076A0A6;
+extern s16 D_global_asm_807FDCB8;
+extern s16 D_global_asm_807FDCBC;
 extern u16 D_global_asm_80744700[];
 extern u8 D_global_asm_80750190;
 extern u8 D_global_asm_807FBDC4;
@@ -259,7 +259,7 @@ void func_global_asm_8068AD7C(void) {
                 } else {
                     func_global_asm_805FF378(temp_s0->unk0, temp_s0->unk2);
                 }
-                func_global_asm_806F3BEC(player_pointer, D_807FDCB8, D_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
@@ -281,14 +281,14 @@ void func_global_asm_8068AD7C(void) {
                         break;
                 }
                 func_global_asm_805FF9AC(temp_s0->unk0, temp_s0->unk2, 0, 0);
-                func_global_asm_806F3BEC(player_pointer, D_807FDCB8, D_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
         case 0x5:
             if (!(global_properties_bitfield & 0x400)) {
                 func_global_asm_805FF628(temp_s0->unk0, temp_s0->unk2);
-                func_global_asm_806F3BEC(player_pointer, D_807FDCB8, D_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
@@ -299,14 +299,14 @@ void func_global_asm_8068AD7C(void) {
         case 0x7:
             if (!(global_properties_bitfield & 0x400)) {
                 func_global_asm_805FF9AC(temp_s0->unk0, temp_s0->unk2, temp_s0->unk4, 2);
-                func_global_asm_806F3BEC(player_pointer, D_807FDCB8, D_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
         case 0x8:
             if (!(global_properties_bitfield & 0x400)) {
                 func_global_asm_805FF898();
-                func_global_asm_806F3BEC(player_pointer, D_807FDCB8, D_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
@@ -321,7 +321,7 @@ void func_global_asm_8068AD7C(void) {
             break;
         case 0xB:
             func_global_asm_805FF378(D_global_asm_80744700[getLevelIndex(current_map, 0U)], current_exit);
-            func_global_asm_806F3BEC(player_pointer, D_807FDCB8, D_807FDCBC, 0x46U);
+            func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
             break;
         case 0xC:
             var_v0 = temp_s0->unk2 ? 0 : 0x8000;
@@ -361,7 +361,7 @@ void func_global_asm_8068AD7C(void) {
             func_global_asm_80600044(getLevelIndex(current_map, 0U));
             break;
         case 0x1C:
-            D_8076A0A6 = *newly_pressed_input;
+            D_global_asm_8076A0A6 = *newly_pressed_input;
             break;
         case 0x1A:
             character_change_array->player_pointer->PaaD->unk1F0 |= 0x80000000;

@@ -6,7 +6,7 @@
 void func_global_asm_805FB5C4(OSMesgQueue *, s32);
 void func_global_asm_805FBFF4(void *);
 extern void func_dk64_boot_80000450(s32 devAddr, s32 arg1, void *dramAddr);
-extern OverlayInfoStruct D_8000DCC4[];
+extern OverlayInfoStruct D_dk64_boot_8000DCC4[];
 extern void func_arcade_80024000(void);
 extern void func_boss_80024000(void);
 extern void func_menu_80024000(MenuStruct80024000 *);
@@ -45,10 +45,10 @@ extern s32 D_8004C750;
 extern s32 D_arcade_8004AC00;
 
 #define setOverlay(i, start, ovl_end, code_end) \
-    D_8000DCC4[i].rdram_start = start; \
-    D_8000DCC4[i].overlay_end = ovl_end; \
-    D_8000DCC4[i].rdram_code_end = code_end; \
-    D_8000DCC4[i].rdram_data_end = ovl_end;
+    D_dk64_boot_8000DCC4[i].rdram_start = start; \
+    D_dk64_boot_8000DCC4[i].overlay_end = ovl_end; \
+    D_dk64_boot_8000DCC4[i].rdram_code_end = code_end; \
+    D_dk64_boot_8000DCC4[i].rdram_data_end = ovl_end;
 
 /*
 void func_global_asm_805FB300(OSMesgQueue *arg0, s32 arg1) {

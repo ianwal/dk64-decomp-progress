@@ -236,7 +236,8 @@ __osViIntrCount = 0x80014FEC; // segment:dk64_boot
 __osTimerCounter = 0x80014FF0; // segment:dk64_boot
 __osEepPifRam = 0x800162E0; // segment:dk64_boot
 _Printf = 0x8000320C; // segment:dk64_boot
-
+D_global_asm_80744588 = 0x80744588; // segment:global_asm
+D_global_asm_807505B0 = 0x807505B0; // segment:global_asm
 applyActorYAcceleration = 0x806CCB0C; // segment:global_asm
 addActorRecolor = 0x8072177C; // segment:global_asm
 changeCollectableCount = 0x806F91B4; // segment:global_asm

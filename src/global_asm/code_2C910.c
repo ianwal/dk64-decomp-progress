@@ -129,7 +129,7 @@ void func_global_asm_80713EB0(s16, s32, s32);
 void func_global_asm_807289E8(s16, s16, s16, s16);
 void func_global_asm_80737924(SoundState *);
 void func_global_asm_80627C5C(u8, s16, u8);
-extern void *D_8076D1FC;
+extern void *D_global_asm_8076D1FC;
 extern f32 D_807F5D6C[];
 extern SoundState *D_807F5D70[];
 extern s16 D_807F5D7C;
@@ -498,7 +498,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         } else {
             var_f0 = 0.0;
         }
-        func_global_asm_80737638(D_8076D1FC, sp44.dp_32 - 0x7FF, var_f2, 0x3FU, var_f0, 0U, &D_807F5D6C[temp_s0]);
+        func_global_asm_80737638(D_global_asm_8076D1FC, sp44.dp_32 - 0x7FF, var_f2, 0x3FU, var_f0, 0U, &D_807F5D6C[temp_s0]);
         return;
     case 0x19:
         var_v1_3 = ABS(temp_s0);

@@ -2656,9 +2656,9 @@ void func_global_asm_8064CC80(s32 **arg0, s16 arg1, s32 arg2, s32 arg3) {
     }
 }
 
-extern f32 D_807F61FC;
-extern f32 D_807F6200;
-extern f32 D_807F6204;
+extern f32 D_global_asm_807F61FC;
+extern f32 D_global_asm_807F6200;
+extern f32 D_global_asm_807F6204;
 extern s16 D_global_asm_807482B0;
 extern f32 D_global_asm_807F621C;
 extern f32 D_global_asm_807F6220;
@@ -2690,9 +2690,9 @@ void func_global_asm_8064CD3C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         temp_v0 = malloc(sizeof(InstanceData8064CD3C));
         arg0->unk0 = temp_v0;
         for (i = 0; i < 0x1E; i++) {
-            temp_v0->unk0[i].x = D_807F61FC;
-            temp_v0->unk0[i].y = D_807F6200;
-            temp_v0->unk0[i].z = D_807F6204;
+            temp_v0->unk0[i].x = D_global_asm_807F61FC;
+            temp_v0->unk0[i].y = D_global_asm_807F6200;
+            temp_v0->unk0[i].z = D_global_asm_807F6204;
         }
     }
     temp_v0 = arg0->unk0;

@@ -218,7 +218,7 @@ void func_global_asm_8069A614(f32 arg0, u8 arg1) {
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A750.s")
 
-extern u8 D_807FBBA9;
+extern u8 D_global_asm_807FBBA9;
 
 /*
 s32 func_global_asm_8069A750(void) {
@@ -228,7 +228,7 @@ s32 func_global_asm_8069A750(void) {
     s32 i;
     s32 a_type;
 
-    for (i = 0; i < D_807FBBA9; i++) {
+    for (i = 0; i < D_global_asm_807FBBA9; i++) {
         switch (D_global_asm_807FBB70.unk7C[i]->unk58) {
             case 2:
             case 3:

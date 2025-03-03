@@ -51,9 +51,9 @@ void func_global_asm_8064F804(Prop_unk78 *arg0) {
     }
 }
 
-extern s32 D_807F6BE0;
-extern s32 D_807F6BE4;
-extern Prop_unk78 *D_807F6BE8;
+extern s32 D_global_asm_807F6BE0;
+extern s32 D_global_asm_807F6BE4;
+extern Prop_unk78 *D_global_asm_807F6BE8;
 extern u8 D_global_asm_807F6BEC;
 
 typedef struct Struct8064F84C {
@@ -73,10 +73,10 @@ u8 func_global_asm_8064F84C(s16 arg0) {
     D_global_asm_807F6BEC = 0;
     if (temp_s6 != NULL) {
         var_s1 = 0;
-        D_807F6BE0 = temp_s6->unk0[D_global_asm_807444FC];
+        D_global_asm_807F6BE0 = temp_s6->unk0[D_global_asm_807444FC];
         var_s0 = temp_s6;
-        D_807F6BE4 = temp_s6->unk0[D_global_asm_807444FC ^ 1];
-        D_807F6BE8 = temp_s6;
+        D_global_asm_807F6BE4 = temp_s6->unk0[D_global_asm_807444FC ^ 1];
+        D_global_asm_807F6BE8 = temp_s6;
         do {
             if (var_s0->unk16 == 1) {
                 func_global_asm_8064F954((s32) &var_s0->unk8);
