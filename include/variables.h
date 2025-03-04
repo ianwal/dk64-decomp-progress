@@ -154,7 +154,7 @@ typedef struct Struct807FD610 {
 } Struct807FD610;
 
 extern Struct807FD610 D_global_asm_807FD610[]; // Often indexed by cc_player_index
-extern OSPfs D_global_asm_807F02D0[];
+extern OSPfs D_global_asm_807F02D0[4];
 
 extern ALSeqPlayer *D_global_asm_8076BF20[];
 
@@ -195,9 +195,9 @@ typedef struct Struct807F0470 {
     u16 unk10;
     u8 unk12;
     u8 unk13;
-} Struct807F0470;
+} Struct807F0470; //sizeof 0x14
 
-extern Struct807F0470 D_global_asm_807F0470[];
+extern Struct807F0470 D_global_asm_807F0470[4];
 
 typedef struct {
     s32 unk0;

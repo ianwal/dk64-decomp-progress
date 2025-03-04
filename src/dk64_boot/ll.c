@@ -46,9 +46,3 @@ s64 __ll_mod(s64 arg0, s64 arg1) {
 s64 __ll_rshift(s64 arg0, s64 arg1) {
     return arg0 >> arg1;
 }
-
-extern s32 D_dk64_boot_800100F4;
-
-s32 func_dk64_boot_80005A70(void) {
-    return D_dk64_boot_800100F4;
-}

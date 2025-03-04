@@ -1758,9 +1758,9 @@ void func_global_asm_80649FC0(Prop_ScriptData *arg0, s32 arg1, s32 arg2, s32 arg
     }
     temp_v0 = arg0->unk0;
     temp_v0->unk0 += D_global_asm_807445B0;
-    temp_ret_3 = __ll_mul(osGetTime() - temp_v0->unk0, 0x40);
-    temp_ret_3 = __ull_div(temp_ret_3, 0xBB8);
-    temp_ret_3 = __ull_div(temp_ret_3, 0xF4240);
+    temp_ret_3 = (osGetTime() - temp_v0->unk0) * 0x40;
+    temp_ret_3 = temp_ret_3 / 0xBB8;
+    temp_ret_3 = temp_ret_3 / 0xF4240;
     temp_v1_2 = (u32) temp_ret_3;
     temp_t4 = (temp_v0->unk8 - temp_ret_3) - (temp_v0->unkC < temp_v1_2);
     temp_t5 = temp_v0->unkC - temp_v1_2;

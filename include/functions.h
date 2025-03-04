@@ -143,7 +143,7 @@ f32 __ull_to_f(u64 l);
 // TODO: __osPfsRWInode has no documented signature
 
 // dk64_boot/dk64_boot_E790.c
-// TODO: func_dk64_boot_8000DB90 has no documented signature
+// TODO: bcmp has no documented signature
 
 // global_asm/code_0.c
 // TODO: func_global_asm_805FB300 has no documented signature
