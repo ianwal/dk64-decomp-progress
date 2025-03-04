@@ -54,6 +54,7 @@ typedef struct OSScTask_s {
     void		*framebuffer;	/* used by graphics tasks */
 
     OSTask              list;
+    void* unk_50; //2.0L addition?
     OSMesgQueue         *msgQ;
     OSMesg              msg;
 #ifndef _FINALROM                       /* all #ifdef items should    */

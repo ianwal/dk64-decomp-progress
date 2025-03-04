@@ -1495,7 +1495,7 @@ void func_global_asm_8066B5F4(s32 pointerTableIndex) {
     }
     tbl_off = D_global_asm_807F9520[pointerTableIndex];
     func_global_asm_8060B140(D_dk64_boot_8000DDCC + tbl_off, &file_addr, &size, 0, 0, 0, 0);
-    file_size = (s32)__ull_rshift(file_addr, 32) - tbl_off;
+    file_size = (s32)(file_addr >> 32) - tbl_off;
     D_global_asm_807F9528[pointerTableIndex] = malloc(file_size);
     func_global_asm_8060B140(D_dk64_boot_8000DDCC + tbl_off, D_global_asm_807F9528[pointerTableIndex], &file_size, 0, 0, 0, 0);
     switch (pointerTableIndex) {

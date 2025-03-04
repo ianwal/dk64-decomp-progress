@@ -207,6 +207,7 @@ us,boot,osCreateViManager,384,no
 us,boot,__ll_rem,60,yes
 us,boot,guRotateF,404,yes
 us,boot,func_dk64_boot_80005010,96,yes
+us,boot,__osGetActiveQueue,12,yes
 us,boot,sprintf,44,yes
 us,boot,func_dk64_boot_80000A30,112,no
 us,boot,guMtxCatF,360,yes
@@ -220,7 +221,6 @@ us,boot,guMtxIdentF,136,yes
 us,boot,__osSpDeviceBusy,44,yes
 us,boot,osContSetCh,100,yes
 us,boot,__osCheckId,212,no
-us,boot,func_dk64_boot_80005A70,12,yes
 us,boot,guOrtho,104,yes
 us,boot,__osGetSR,16,yes
 us,boot,__osContDataCrc,148,yes

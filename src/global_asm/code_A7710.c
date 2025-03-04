@@ -147,11 +147,11 @@ void func_global_asm_806A2E30(void) {
     if (current_actor_pointer->unk15F == 0xB) {
         aad->unk0 += D_global_asm_807476C8;
     }
-    res = __ll_mul(osGetTime() - aad->unk0, 0x40);
-    res = __ull_div(res, 0xBB8);
-    aad->unk8 = __ull_div(res, 0xF4240);
+    res = (osGetTime() - aad->unk0) * 0x40;
+    res = res / 0xBB8;
+    aad->unk8 = res / 0xF4240;
     if (D_global_asm_807476C8 == 0) {
-        D_global_asm_807FC7D8 = __ull_rem(__ull_div(res, 0x2710), 0x64);
+        D_global_asm_807FC7D8 = res / 0x2710 % 100;
     }
     sp84 = ((f32) (s32) ((func_global_asm_806FDA8C(aad->unk10) - MATH_HALFPI_F) / MATH_PI_F) * MATH_PI_F) + MATH_PI_F + MATH_HALFPI_F;
     temp_f2 = (f32) ((((__ull_to_d(res) / 10000.0) / 100.0) * 3.1415927410125732) + 1.5707963705062866);

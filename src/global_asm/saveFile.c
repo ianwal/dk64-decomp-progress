@@ -21,6 +21,7 @@ extern s8 D_global_asm_80746834;
 extern void (*D_global_asm_807467D0[])();
 extern u8 D_global_asm_807467E0;
 extern s32 D_global_asm_807467EC[];
+extern u16 D_global_asm_807FC930[];
 
 // .rodata
 const char D_global_asm_80757020[] = "7.2";
@@ -851,20 +852,16 @@ void func_global_asm_8060D7A8(void) {
     current_character_index[0] = 0; // DK
 }
 
-// very close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/saveFile/func_global_asm_8060DC3C.s")
-
 extern s8 D_global_asm_80750AC0;
 extern s32 D_global_asm_80750AB0;
 
-/*
 // loadTheGame()
 void func_global_asm_8060DC3C(u8 fileIndex, s32 arg1) {
     CharacterProgress *phi_fp;
-    s32 levelIndex;
     s32 kongIndex;
+    s32 levelIndex;
     s32 byteIndex;
-
+    
     phi_fp = D_global_asm_807FC950[0].character_progress;
     D_global_asm_80750AC0 = 1;
     func_global_asm_806C9AE0();
@@ -891,10 +888,13 @@ void func_global_asm_8060DC3C(u8 fileIndex, s32 arg1) {
         if (func_global_asm_8060C6B8(0xB, kongIndex, 0, fileIndex)) {
             phi_fp->unk5 |= 0x80;
         }
+        
         for (levelIndex = 0; levelIndex < 8; levelIndex++) {
             phi_fp->coloured_bananas[levelIndex] = func_global_asm_8060C6B8(1, kongIndex, levelIndex, fileIndex);
-            phi_fp->coloured_bananas_fed_to_tns[levelIndex] = func_global_asm_8060C6B8(2, kongIndex, levelIndex, fileIndex);    
+            phi_fp->coloured_bananas_fed_to_tns[levelIndex] = func_global_asm_8060C6B8(2, kongIndex, levelIndex, fileIndex);
+            D_global_asm_807FC930[levelIndex] = phi_fp->coloured_bananas_fed_to_tns[levelIndex] + D_global_asm_807FC930[levelIndex];
             phi_fp->golden_bananas[levelIndex] = func_global_asm_8060C6B8(3, kongIndex, levelIndex, fileIndex);
+
         }
         phi_fp++;
     }
@@ -903,7 +903,6 @@ void func_global_asm_8060DC3C(u8 fileIndex, s32 arg1) {
     }
     current_character_index[0] = 0;
 }
-*/
 
 void func_global_asm_8060DEA8(void) {
     func_global_asm_8060B8F8(2);

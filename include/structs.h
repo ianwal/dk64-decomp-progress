@@ -1,8 +1,15 @@
 #ifndef __STRUCTS_H__
 #define __STRUCTS_H__
 #include "synthinternal.h"
+#include "sched.h" //TODO: sort this out with Struct131B0_2
 
 /* your struct definitions go here */
+
+typedef struct Vec3f {
+    f32 x;
+    f32 y;
+    f32 z;
+} Vec3f;
 
 typedef struct tuple_f {
     union {
@@ -3351,6 +3358,12 @@ typedef struct {
     u8 unk24;
 } Struct80652374_arg0;
 
+typedef struct Unk {
+    char unk_00[4];
+    s32 unk_04;
+    s32 unk_08;
+} Unk;
+
 typedef struct Struct131B0_1 Struct131B0_1;
 
 struct Struct131B0_1 {
@@ -3359,6 +3372,8 @@ struct Struct131B0_1 {
     s32 unk8;
     s32 unkC;
     s32 unk10;
+    char unk_14[0x3C];
+    Unk* unk_50;
 };
 
 typedef struct {
@@ -3370,26 +3385,41 @@ typedef struct {
 } Struct131B0_2_unk268;
 
 // P Sure this is OSScTask_s
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    OSTask unk10;
-} Struct131B0_2_unk274;
+// typedef struct {
+//     s32 unk0;
+//     s32 unk4;
+//     s32 unk8;
+//     s32 unkC;
+//     OSTask unk10;
+// /* 0x50 */ char unk_50[4];
+// /* 0x54 */ OSMesgQueue* queue;
+// /* 0x58 */ OSMesg mesg;
+// } Struct131B0_2_unk274;
 
 typedef struct {
-    u8  pad0[0x260 - 0x0];
-    Struct131B0_1 *unk260;
-    s32 unk264;
-    Struct131B0_2_unk268 * unk268;
-    Struct131B0_1 *unk26C;
-    Struct131B0_1 *unk270;
-    Struct131B0_2_unk274 *unk274;
-    u8 pad278[0x290 - 0x278];
-    OSTime unk290;
-
-} Struct131B0_2;
+    /* 0x000 */ u8 pad0[0x18];
+    /* 0x018 */ void* func;
+    /* 0x01C */ u8 pad1C[0x3C];
+    /* 0x058 */ OSMesgQueue* mesgQueue;
+    /* 0x05C */ char pad5C[4];
+    /* 0x060 */ s32 unk_60;
+    /* 0x064 */ char pad64[0xC];                    /* maybe part of unk_60[4]? */
+    /* 0x070 */ void* unk70;                        /* inferred */
+    /* 0x074 */ char pad74[0x3C];                   /* maybe part of unk70[0x10]? */
+    /* 0x0B0 */ OSThread unkB0;                     /* inferred */
+    /* 0x260 */ Struct131B0_1* unk260;
+    /* 0x264 */ Struct131B0_1* unk264;
+    /* 0x268 */ Struct131B0_2_unk268* unk268;
+    /* 0x26C */ Struct131B0_1* unk26C;
+    /* 0x270 */ Struct131B0_1* unk270;
+    /* 0x274 */ OSScTask* unk274;
+    /* 0x278 */ void* unk_278; //unknown what this points to
+    /* 0x27C */ char pad27C[4];
+    /* 0x280 */ s32 unk_280;
+    /* 0x284 */ s32 unk_284;
+    /* 0x288 */ OSTime unk_288;
+    /* 0x290 */ OSTime unk290;
+} Struct131B0_2;                                    /* size = 0x298 */
 
 typedef struct {
     s16 unk0;
