@@ -46,6 +46,7 @@
 - Use ```f``` suffix for floats, and ensure decimal point is present (and trailing 0 if no fractional part)
 - Use no suffix for doubles, but ensure decimal point is present (and trailing 0 if no fractional part)
 - Prefer ```TRUE``` and ```FALSE``` over ```1``` and ```0``` for explicitly boolean assignments, expressions, and comparisons
+
 ## Control Flow
 - Eliminate labels and gotos where possible
 - Eliminate temporary variables where possible and appropriate
@@ -64,3 +65,13 @@ Please indent your case blocks as follows
 - Chained boolean expressions may be broken up into multiple lines as follows
 ```TODO```
 - There are no explicit rules as to when this needs to happen, use your best judgement
+
+## Expressions
+- Prefer ```var += n``` over ```var = var + n``` for addition
+- Prefer ```var -= n``` over ```var = var - n``` for subtraction
+- Prefer ```var *= n``` over ```var = var * n``` for multiplication
+- Prefer ```var /= n``` over ```var = var / n``` for division
+- Same for ```^=```, ```|=```, ```&=```, ```>>=```, and ```<<=```
+- Prefer ```var++``` over ```var += 1``` for single increments
+- Prefer ```var--``` over ```var -= 1``` for single decrements
+- Prefer prefix increment/decrement ```++i``` and ```--i``` for loop indices where possible
