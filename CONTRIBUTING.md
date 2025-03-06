@@ -51,6 +51,7 @@
 - Eliminate labels and gotos where possible
 - Eliminate temporary variables where possible and appropriate
 ### Switch Case
+- Prefer switch cases over ```else if``` chains where appropriate
 Please indent your case blocks as follows
 ```TODO```
 ### Large Function Calls
@@ -75,3 +76,19 @@ Please indent your case blocks as follows
 - Prefer ```var++``` over ```var += 1``` for single increments
 - Prefer ```var--``` over ```var -= 1``` for single decrements
 - Prefer prefix increment/decrement ```++i``` and ```--i``` for loop indices where possible
+- Use ```MIN()```, ```MAX()```, ```ABS()```, and ```SQ()``` macros where possible and appropriate
+- Use ```reinterpret_cast()``` macro where appropriate
+- Prefer ternary expressions for simple assignments and function parameters where appropriate
+
+## Metadata
+- The python script ```generate_function_stats.py``` can be used to generate a CSV of remaining functions to match, including details scraped from special comments left in C files
+- Meaningful comments above the ```#pragma GLOBAL_ASM()``` lines include
+    - ```// jumptable```
+    - ```// displaylist```
+    - ```// rodata```
+    - ```// close```
+    - ```// doable```
+    - ```// regalloc```
+    - ```// stack```
+    - ```// https://decomp.me/scratch/*```
+- Meaningful comments should be combined into one line, except for the scratch link which should be on a second line directly above/below the other meaningful comments
