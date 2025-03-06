@@ -136,7 +136,7 @@ void func_global_asm_8072F120(void) {
                 || (D_global_asm_807FBB64 & 0x10000000)
                 || (cc_number_of_players > 1)
                 || gameIsInDKTVMode();
-            func_global_asm_8072F230(character_change_array[i].player_pointer, i, var_v1);
+            func_global_asm_8072F230(character_change_array[i].playerPointer, i, var_v1);
         }
     }
 }

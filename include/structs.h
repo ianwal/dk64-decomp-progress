@@ -5,12 +5,6 @@
 
 /* your struct definitions go here */
 
-typedef struct Vec3f {
-    f32 x;
-    f32 y;
-    f32 z;
-} Vec3f;
-
 typedef struct tuple_f {
     union {
         struct {
@@ -1640,7 +1634,7 @@ typedef struct {
     u8      unk1;
     u8      unk2;
     u8      unk3;
-    Actor*  player_pointer;    // 0x04
+    Actor*  playerPointer;    // 0x04
     Mtx     unk8[2];
     Mtx     unk88[2];
     u8      pad108[0x188 - 0x108];

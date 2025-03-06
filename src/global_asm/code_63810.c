@@ -28,7 +28,7 @@ extern s32 D_global_asm_807FBB68;
 void func_global_asm_8065EFF0(void) {
     s32 i;
 
-    if (!(current_map != MAP_FUNGI || player_pointer->PaaD->unk1F0 & 0x100000)) {
+    if (!(current_map != MAP_FUNGI || gPlayerPointer->PaaD->unk1F0 & 0x100000)) {
         D_global_asm_80748A84 = 0;
     } else {
         if (!(global_properties_bitfield & 2)) {

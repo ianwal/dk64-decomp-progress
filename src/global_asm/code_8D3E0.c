@@ -528,13 +528,13 @@ void func_global_asm_80689418(void) {
                 tempStruct.sp76 = 0;
                 tempStruct.sp78 = &currentSpawner->pad24[0];
                 if (func_global_asm_80677ED0(&tempStruct) != 0) {
-                    currentSpawner->tied_actor = last_spawned_actor;
+                    currentSpawner->tied_actor = gLastSpawnedActor;
                     currentSpawner->unk48 = 1;
-                    last_spawned_actor->unk11C = currentSpawner->unk50;
-                    if (last_spawned_actor->animation_state != NULL) {
-                        last_spawned_actor->animation_state->scale_x = currentSpawner->unk20 * scaleFactor;
-                        last_spawned_actor->animation_state->scale_y = currentSpawner->unk20 * scaleFactor;
-                        last_spawned_actor->animation_state->scale_z = currentSpawner->unk20 * scaleFactor;
+                    gLastSpawnedActor->unk11C = currentSpawner->unk50;
+                    if (gLastSpawnedActor->animation_state != NULL) {
+                        gLastSpawnedActor->animation_state->scale_x = currentSpawner->unk20 * scaleFactor;
+                        gLastSpawnedActor->animation_state->scale_y = currentSpawner->unk20 * scaleFactor;
+                        gLastSpawnedActor->animation_state->scale_z = currentSpawner->unk20 * scaleFactor;
                     }
                 }
             } else if (currentSpawner->unk48 == 0) {
@@ -696,7 +696,7 @@ void func_global_asm_80689A80(s16 arg0, void *arg1) {
     }
     if (found) {
         if (spawner->tied_actor) {
-            func_global_asm_8067AB20(current_actor_pointer, spawner->tied_actor, 0x01000000, 1, arg1, 0);
+            func_global_asm_8067AB20(gCurrentActorPointer, spawner->tied_actor, 0x01000000, 1, arg1, 0);
         }
     }
 }

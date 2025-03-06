@@ -146,7 +146,7 @@ void func_race_80025E9C(Actor *arg0) {
     aaD = arg0->additional_actor_data;
     func_race_8002BBD0(arg0, 2);
     spawnActor(ACTOR_CAR_FACTORY_PLAYER, 0x95);
-    playerCar = last_spawned_actor;
+    playerCar = gLastSpawnedActor;
     aaD_2 = playerCar->additional_actor_data;
     func_race_8002BC2C(arg0, 1, playerCar, aaD_2);
     aaD_2->unk37 = 0;
@@ -161,7 +161,7 @@ void func_race_80025E9C(Actor *arg0) {
     a184->unk4 = aaD_2;
     a184->unk0 = playerCar;
     spawnActor(ACTOR_CAMERA_CARRACE, 0);
-    raceCamera = last_spawned_actor;
+    raceCamera = gLastSpawnedActor;
     a178->unk34 = raceCamera;
     pad = 1;
     a178_2 = sp40->unk178;
@@ -214,10 +214,10 @@ void func_race_80026098(Struct80026098 *arg0, Struct80026098 *arg1) {
 
     sp2E = (func_global_asm_80665E48(arg0->unk0, arg0->unk8, arg1->unk0, arg1->unk8) * 2048.0) / M_PIF;
     temp = sqrtf(((arg1->unk8 - arg0->unk8) * (arg1->unk8 - arg0->unk8)) + ((arg1->unk0 - arg0->unk0) * (arg1->unk0 - arg0->unk0)));
-    sp24 = current_actor_pointer->unkB8 * 0.03 * temp;
-    current_actor_pointer->x_position = arg1->unk0 + (sp24 * func_global_asm_80612794(sp2E));
-    current_actor_pointer->z_position = arg1->unk8 + (sp24 * func_global_asm_80612790(sp2E));
-    current_actor_pointer->y_position = (0.8 * (arg0->unk4 - current_actor_pointer->y_position)) + current_actor_pointer->y_position;
+    sp24 = gCurrentActorPointer->unkB8 * 0.03 * temp;
+    gCurrentActorPointer->x_position = arg1->unk0 + (sp24 * func_global_asm_80612794(sp2E));
+    gCurrentActorPointer->z_position = arg1->unk8 + (sp24 * func_global_asm_80612790(sp2E));
+    gCurrentActorPointer->y_position = (0.8 * (arg0->unk4 - gCurrentActorPointer->y_position)) + gCurrentActorPointer->y_position;
 }
 
 typedef struct {
@@ -245,14 +245,14 @@ void func_race_800261E0(Struct800261E0_arg0 *arg0) {
     temp_t2 &= 0xFFF;
     sp20 = func_global_asm_80612790(temp_t2);
     temp_f0 = func_global_asm_80612794(temp_t2);
-    current_actor_pointer->y_rotation = current_actor_pointer->unkEE + temp_t2;
-    current_actor_pointer->y_rotation &= 0xFFF;
-    current_actor_pointer->z_rotation = sp24 * sp20;
-    current_actor_pointer->z_rotation = current_actor_pointer->z_rotation + arg0->unk20;
-    current_actor_pointer->z_rotation &= 0xFFF;
-    current_actor_pointer->x_rotation = sp24 * temp_f0;
-    current_actor_pointer->x_rotation = current_actor_pointer->x_rotation + arg0->unk24;
-    current_actor_pointer->x_rotation &= 0xFFF;
+    gCurrentActorPointer->y_rotation = gCurrentActorPointer->unkEE + temp_t2;
+    gCurrentActorPointer->y_rotation &= 0xFFF;
+    gCurrentActorPointer->z_rotation = sp24 * sp20;
+    gCurrentActorPointer->z_rotation = gCurrentActorPointer->z_rotation + arg0->unk20;
+    gCurrentActorPointer->z_rotation &= 0xFFF;
+    gCurrentActorPointer->x_rotation = sp24 * temp_f0;
+    gCurrentActorPointer->x_rotation = gCurrentActorPointer->x_rotation + arg0->unk24;
+    gCurrentActorPointer->x_rotation &= 0xFFF;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_1770/func_race_80026354.s")
@@ -296,20 +296,20 @@ void func_race_80026B20(Struct80026B20 *arg0) {
     A17C_race_80026B20 *a17C;
 
     if (arg0->unk2C == NULL && arg0->unk2A != 0) {
-        a178 = current_actor_pointer->unk178;
+        a178 = gCurrentActorPointer->unk178;
         arg0->unk2A--;
         spawnActor(ACTOR_MISSILE_CAR, 0x96);
-        a178_2 = last_spawned_actor->unk178;
-        a17C = last_spawned_actor->unk17C;
-        a17C->unkC = current_actor_pointer;
-        a17C->unk8 = func_race_8002D360(current_actor_pointer);
-        arg0->unk2C = last_spawned_actor;
-        last_spawned_actor->x_position = current_actor_pointer->x_position;
-        last_spawned_actor->y_position = current_actor_pointer->y_position;
-        last_spawned_actor->z_position = current_actor_pointer->z_position;
-        last_spawned_actor->unkEE = current_actor_pointer->unkEE;
-        last_spawned_actor->y_rotation = current_actor_pointer->y_rotation;
-        last_spawned_actor->unkB8 = current_actor_pointer->unkB8;
+        a178_2 = gLastSpawnedActor->unk178;
+        a17C = gLastSpawnedActor->unk17C;
+        a17C->unkC = gCurrentActorPointer;
+        a17C->unk8 = func_race_8002D360(gCurrentActorPointer);
+        arg0->unk2C = gLastSpawnedActor;
+        gLastSpawnedActor->x_position = gCurrentActorPointer->x_position;
+        gLastSpawnedActor->y_position = gCurrentActorPointer->y_position;
+        gLastSpawnedActor->z_position = gCurrentActorPointer->z_position;
+        gLastSpawnedActor->unkEE = gCurrentActorPointer->unkEE;
+        gLastSpawnedActor->y_rotation = gCurrentActorPointer->y_rotation;
+        gLastSpawnedActor->unkB8 = gCurrentActorPointer->unkB8;
         *a178_2 = *a178;
         playSound(0x18B, 0x7FFF, 64.0f, 1.0f, 0, 0);
     } else {
@@ -319,23 +319,23 @@ void func_race_80026B20(Struct80026B20 *arg0) {
 }
 
 void func_race_80026CA8(void) {
-    func_global_asm_80604CBC(current_actor_pointer, 0x12D, 0, 1, 0, 0xFF, 1.0f, 0);
-    func_global_asm_80604CBC(current_actor_pointer, 0x12E, 0, 1, 1, 0xFF, 1.0f, 0);
+    func_global_asm_80604CBC(gCurrentActorPointer, 0x12D, 0, 1, 0, 0xFF, 1.0f, 0);
+    func_global_asm_80604CBC(gCurrentActorPointer, 0x12E, 0, 1, 1, 0xFF, 1.0f, 0);
 }
 
 void func_race_80026D2C(f32 arg0) {
     s16 temp;
     s32 pad;
-    temp = D_global_asm_80770628[current_actor_pointer->unk6E[0]];
+    temp = D_global_asm_80770628[gCurrentActorPointer->unk6E[0]];
     D_global_asm_80770B68[temp] = (arg0 / 20.0) + 1.0;
     D_global_asm_80770BC0[temp] = 1.0f;
-    temp = D_global_asm_80770628[current_actor_pointer->unk70];
-    current_actor_pointer->unk74 = arg0 / 20.0;
-    if (current_actor_pointer->unk74 > 1.0) {
-        current_actor_pointer->unk74 = 1.0f;
+    temp = D_global_asm_80770628[gCurrentActorPointer->unk70];
+    gCurrentActorPointer->unk74 = arg0 / 20.0;
+    if (gCurrentActorPointer->unk74 > 1.0) {
+        gCurrentActorPointer->unk74 = 1.0f;
     }
-    if (current_actor_pointer->unk74 < 0.0) {
-        current_actor_pointer->unk74 = 0.0f;
+    if (gCurrentActorPointer->unk74 < 0.0) {
+        gCurrentActorPointer->unk74 = 0.0f;
     }
 
     if (D_global_asm_80770BC0[temp] == 0.0f) {
@@ -397,21 +397,21 @@ void func_race_80026F04(void) {
     AAD_80026F04 *aaD;
     s32 temp;
 
-    aaD = current_actor_pointer->additional_actor_data;
-    a178 = current_actor_pointer->unk178;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    aaD = gCurrentActorPointer->additional_actor_data;
+    a178 = gCurrentActorPointer->unk178;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         Struct807F5FD4_unk0 *temp7F5unk0 = &D_global_asm_807F5FD4->unk0;
         temp = (temp7F5unk0[a178->unk0].unk4_s32 - temp7F5unk0[a178->unk0].unk0_s32) / 12;
         aaD->unk2A = 3;
-        current_actor_pointer->noclip_byte = 0x3C;
+        gCurrentActorPointer->noclip_byte = 0x3C;
         a178->unk2 = func_race_8002578C(temp, 0);
         func_race_80026354(a178, aaD, 1);
         if ((gameIsInDKTVMode()) || (isFlagSet(TEMPFLAG_FACTORY_CAR_RACE_INTRO, FLAG_TYPE_TEMPORARY))) {
-            setAction(0x4B, current_actor_pointer, aaD->unk28);
+            setAction(0x4B, gCurrentActorPointer, aaD->unk28);
         } else {
-            func_global_asm_806F397C(player_pointer, current_actor_pointer, 0, 0x4B);
+            func_global_asm_806F397C(gPlayerPointer, gCurrentActorPointer, 0, 0x4B);
         }
-        func_global_asm_8066EA90(current_actor_pointer, 2);
+        func_global_asm_8066EA90(gCurrentActorPointer, 2);
         func_race_80026CA8();
     }
     if ((D_global_asm_807FBD70 == 5) && (a178->unk39 == 0)) {
@@ -434,7 +434,7 @@ void func_race_80026F04(void) {
         RaceAdditionalActorData *tempRaaD = tempActor->RaaD;
         temp_a0 = tempRaaD->unk1C;
         if ((temp_a0 == 8) || (temp_a0 == 0x13)) {
-            playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x187, 0xFF, 0x7F, 0, 0, 0.3f, 0);
+            playSoundAtPosition(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, 0x187, 0xFF, 0x7F, 0, 0, 0.3f, 0);
         }
         func_race_80026D2C(aaD->unk26 * 1.5);
     } else if (aaD->unk34 < 5) {
@@ -457,14 +457,14 @@ void func_race_80026F04(void) {
             }
         }
         func_race_80026354(a178, aaD, 1);
-        current_actor_pointer->y_position += 20.0f * func_global_asm_80612794(var_s0 * 0.5f);
-        func_race_80026D2C(current_actor_pointer->unkB8);
+        gCurrentActorPointer->y_position += 20.0f * func_global_asm_80612794(var_s0 * 0.5f);
+        func_race_80026D2C(gCurrentActorPointer->unkB8);
     } else if (aaD->unk34 == 5) {
-        current_actor_pointer->object_properties_bitfield &= ~4;
-        current_actor_pointer->unkB8 = 0.0f;
+        gCurrentActorPointer->object_properties_bitfield &= ~4;
+        gCurrentActorPointer->unkB8 = 0.0f;
         for (i = 0; i != 2; i++) {
-            if (current_actor_pointer->unk6E[i] != -1) {
-                func_global_asm_80605314(current_actor_pointer, i);
+            if (gCurrentActorPointer->unk6E[i] != -1) {
+                func_global_asm_80605314(gCurrentActorPointer, i);
             }
         }
     }
@@ -477,19 +477,19 @@ void func_race_80026F04(void) {
         } else {
             var_f12 = -200.0f;
         }
-        x = current_actor_pointer->x_position;
-        y = current_actor_pointer->y_position + var_f12;
-        z = current_actor_pointer->z_position;
+        x = gCurrentActorPointer->x_position;
+        y = gCurrentActorPointer->y_position + var_f12;
+        z = gCurrentActorPointer->z_position;
         func_global_asm_806F4D70(aaD->unk28, x, y, z, 12.0f);
-        func_global_asm_806F4DC0(0, y, aaD->unk28, (x + current_actor_pointer->unk88) * 0.5, y, (z + current_actor_pointer->unk90) * 0.5, 12.0f);
+        func_global_asm_806F4DC0(0, y, aaD->unk28, (x + gCurrentActorPointer->unk88) * 0.5, y, (z + gCurrentActorPointer->unk90) * 0.5, 12.0f);
     }
-    if (current_actor_pointer->object_properties_bitfield & 4) {
+    if (gCurrentActorPointer->object_properties_bitfield & 4) {
         func_global_asm_8068ECF4(1, 0xC8);
         func_global_asm_8068ECF4(2, 0xC8);
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
     if ((aaD->unk34 > 0) && (aaD->unk34 < 5)) {
-        addActorToTextOverlayRenderArray(func_race_80026EE4, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_race_80026EE4, gCurrentActorPointer, 3);
     }
 }
 */
@@ -503,33 +503,33 @@ void func_race_800274C0(void) {
     u8 var_v1;
 
     var_v1 = FALSE;
-    sp4C = current_actor_pointer->additional_actor_data;
-    sp48 = current_actor_pointer->unk178;
-    temp_s1 = current_actor_pointer->unk17C;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    sp4C = gCurrentActorPointer->additional_actor_data;
+    sp48 = gCurrentActorPointer->unk178;
+    temp_s1 = gCurrentActorPointer->unk17C;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         temp_s1->unk0_u16[0] = 0x78;
-        current_actor_pointer->object_properties_bitfield |= 0x10;
-        current_actor_pointer->noclip_byte = 0x3C;
+        gCurrentActorPointer->object_properties_bitfield |= 0x10;
+        gCurrentActorPointer->noclip_byte = 0x3C;
         sp4C->unk4 = 5.0f;
     }
     if (D_global_asm_807FBB70.unk200 == 9 || D_global_asm_807FBB70.unk15 != 0 || D_global_asm_807FBB70.unk200 == 5) {
         func_global_asm_807149B8(1);
-        drawSpriteAtPosition(&D_global_asm_80720340, 3.0f, current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position);
-        playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, 0.3f, 0);
+        drawSpriteAtPosition(&D_global_asm_80720340, 3.0f, gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position);
+        playSoundAtPosition(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, 0xF6, 0xFF, 0x7F, 0x14, 0x32, 0.3f, 0);
         var_v1 = TRUE;
     }
     func_race_80026354(sp48, sp4C, 0);
-    current_actor_pointer->y_position += 5.0f;
+    gCurrentActorPointer->y_position += 5.0f;
     if (temp_s1->unk0_u16[0] != 0) {
         func_global_asm_807149B8(1);
-        drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.0f, current_actor_pointer->x_position, current_actor_pointer->y_position + 10.0f, current_actor_pointer->z_position);
+        drawSpriteAtPosition(&D_global_asm_8071FFA0, 1.0f, gCurrentActorPointer->x_position, gCurrentActorPointer->y_position + 10.0f, gCurrentActorPointer->z_position);
         temp_s1->unk0_u16[0]--;
         if (!(temp_s1->unk0_u16[0])) {
             var_v1 = TRUE;
         }
     }
     if (var_v1) {
-        func_race_8002D338(current_actor_pointer, temp_s1);
+        func_race_8002D338(gCurrentActorPointer, temp_s1);
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }

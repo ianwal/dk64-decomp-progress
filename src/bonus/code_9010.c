@@ -122,10 +122,10 @@ void func_bonus_8002D2F0(void) {
     u32 textIndex;
     AAD_8002D2F0 *aaD;
 
-    aaD = current_actor_pointer->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    aaD = gCurrentActorPointer->additional_actor_data;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         playCutscene(NULL, 0, 1);
-        current_actor_pointer->control_state = 0;
+        gCurrentActorPointer->control_state = 0;
         aaD->unk4 = 0x3C;
         D_bonus_8002D92C = 0;
         D_bonus_8002D930 = 0;
@@ -136,7 +136,7 @@ void func_bonus_8002D2F0(void) {
         D_bonus_8002D924 = 0;
         D_bonus_8002D928 = 0;
     }
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0:
             if (is_cutscene_active == 1) {
                 if (func_global_asm_8061CB38()) {
@@ -148,28 +148,28 @@ void func_bonus_8002D2F0(void) {
                             textIndex = 0x20;
                             break;
                     }
-                    loadText(current_actor_pointer, 0, textIndex);
-                    current_actor_pointer->control_state = 1;
+                    loadText(gCurrentActorPointer, 0, textIndex);
+                    gCurrentActorPointer->control_state = 1;
                     func_global_asm_806A2A10(0xDC, 0x2A, aaD->unk4);
                 } else if ((D_global_asm_807ECD58.button & 0x8000) && !(D_global_asm_807ECD60 & 0x8000)) {
-                    playCutscene(player_pointer, 1, 1);
-                    current_actor_pointer->control_state = 2;
+                    playCutscene(gPlayerPointer, 1, 1);
+                    gCurrentActorPointer->control_state = 2;
                     func_global_asm_806A2A10(0xDC, 0x2A, aaD->unk4);
-                    func_global_asm_806A2B08(current_actor_pointer->unk11C);
+                    func_global_asm_806A2B08(gCurrentActorPointer->unk11C);
                 }
             }
             break;
         case 1:
-            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000) || ((D_global_asm_807ECD58.button & 0x8000) && !(D_global_asm_807ECD60 & 0x8000))) {
+            if (!(gCurrentActorPointer->object_properties_bitfield & 0x02000000) || ((D_global_asm_807ECD58.button & 0x8000) && !(D_global_asm_807ECD60 & 0x8000))) {
                 func_global_asm_8061CB08();
-                current_actor_pointer->control_state = 2;
-                func_global_asm_806A2B08(current_actor_pointer->unk11C);
+                gCurrentActorPointer->control_state = 2;
+                func_global_asm_806A2B08(gCurrentActorPointer->unk11C);
             }
             break;
         case 2:
-            if (current_actor_pointer->unk11C->control_state == 5) {
+            if (gCurrentActorPointer->unk11C->control_state == 5) {
                 D_bonus_8002D930 = 0;
-                current_actor_pointer->control_state = 3;
+                gCurrentActorPointer->control_state = 3;
                 aaD->unk0 = 0x78;
             }
             switch (current_map) {
@@ -201,16 +201,16 @@ void func_bonus_8002D2F0(void) {
             }
             break;
         case 3:
-            current_actor_pointer->unk11C->control_state = 1;
+            gCurrentActorPointer->unk11C->control_state = 1;
             aaD->unk0--;
             if (aaD->unk0 == 0) {
                 func_global_asm_805FF378(MAP_MAIN_MENU, 0);
-                current_actor_pointer->control_state = 4;
+                gCurrentActorPointer->control_state = 4;
             }
             break;
     }
     D_80744518 = aaD->unkA;
-    addActorToTextOverlayRenderArray(func_bonus_8002D010, current_actor_pointer, 3);
+    addActorToTextOverlayRenderArray(func_bonus_8002D010, gCurrentActorPointer, 3);
 }
 
 void func_bonus_8002D6F8(s16 arg0) {

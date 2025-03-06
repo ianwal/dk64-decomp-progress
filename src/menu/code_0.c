@@ -73,7 +73,7 @@ void func_menu_80024154(MenuStruct0 *arg0) {
 }
 
 void func_menu_800241E8(void) {
-    func_global_asm_806CFF9C(player_pointer);
+    func_global_asm_806CFF9C(gPlayerPointer);
     func_global_asm_805FF898();
     playCutscene(NULL, 7, 1);
 }
@@ -87,7 +87,7 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
             if (func_global_asm_80629148()) {
                 if (arg1 != 0) {
                     func_global_asm_80629174();
-                    loadText(current_actor_pointer, 0xB, 0);
+                    loadText(gCurrentActorPointer, 0xB, 0);
                     temp = arg0->unk1A;
                     if (temp == 1) {
                         textIndex = 1;
@@ -97,7 +97,7 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
                         textIndex = 3;
                     }
                     D_global_asm_80750AC8 = arg0->unk1A;
-                    loadText(current_actor_pointer, 0xB, textIndex);
+                    loadText(gCurrentActorPointer, 0xB, textIndex);
                 } else {
                     if (arg0->unk1A == 1) {
                         textIndex = 5;
@@ -105,13 +105,13 @@ void func_menu_80024224(MenuStruct0 *arg0, s32 arg1) {
                         textIndex = 6;
                     }
                     D_global_asm_80750AC8 = arg0->unk1A;
-                    loadText(current_actor_pointer, 0xB, textIndex);
+                    loadText(gCurrentActorPointer, 0xB, textIndex);
                 }
                 arg0->unk1++;
             }
             break;
         case 1:
-            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+            if (!(gCurrentActorPointer->object_properties_bitfield & 0x02000000)) {
                 func_global_asm_8061CB08();
                 arg0->unk1++;
             }
@@ -156,13 +156,13 @@ void func_menu_80024418(MenuStruct0 *arg0, s32 textIndex) {
     switch (arg0->unk1) {
         case 0:
             if (func_global_asm_80629148()) {
-                loadText(current_actor_pointer, 0xB, textIndex);
+                loadText(gCurrentActorPointer, 0xB, textIndex);
                 arg0->unk1++;
             }
             break;
         case 1:
             // TODO: Use proper bitfield syntax
-            if ((s32)current_actor_pointer->object_properties_bitfield << 6 >= 0) {
+            if ((s32)gCurrentActorPointer->object_properties_bitfield << 6 >= 0) {
                 func_global_asm_8061CB08();
                 arg0->unk1++;
             }
@@ -280,7 +280,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
         case 0x1:
             // Issue starts here, it's wanting to use sll/subu instead of multu for the offset of 807fd610
             if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
-                current_actor_pointer->unk15F = 0;
+                gCurrentActorPointer->unk15F = 0;
                 arg0->screen = 3;
             } else {
                 arg0->minigame_menu_unlocked = TRUE;
@@ -290,8 +290,8 @@ void func_menu_80024788(SnideAaD180 *arg0) {
                         i = 0x224;
                     }
                 }
-                current_actor_pointer->unk15F += 0xFF - current_actor_pointer->unk15F >= 9 ? 8 : 0xFF - current_actor_pointer->unk15F;
-                addActorToTextOverlayRenderArray(func_menu_800244EC, current_actor_pointer, 3);
+                gCurrentActorPointer->unk15F += 0xFF - gCurrentActorPointer->unk15F >= 9 ? 8 : 0xFF - gCurrentActorPointer->unk15F;
+                addActorToTextOverlayRenderArray(func_menu_800244EC, gCurrentActorPointer, 3);
                 if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
                     func_menu_800241E8();
                     arg0->screen = 2;
@@ -326,7 +326,7 @@ void func_menu_80024788(SnideAaD180 *arg0) {
                 D_menu_80032F50 = 1;
                 arg0->screen = 0x37;
             }
-            addActorToTextOverlayRenderArray(func_menu_800244EC, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_menu_800244EC, gCurrentActorPointer, 3);
             break;
     }
     arg0->previous_y = D_global_asm_807ECDEC->stick_y;
@@ -340,12 +340,12 @@ void func_menu_80024BFC(MenuStruct0 *arg0) {
                 func_global_asm_80629174();
                 arg0->unk1++;
                 D_global_asm_80750AC8 = func_global_asm_80712548();
-                loadText(current_actor_pointer, 0xB, 8);
+                loadText(gCurrentActorPointer, 0xB, 8);
             }
             break;
         case 1:
             // TODO: Use proper bitfield syntax
-            if (((s32)current_actor_pointer->object_properties_bitfield << 6) >= 0) {
+            if (((s32)gCurrentActorPointer->object_properties_bitfield << 6) >= 0) {
                 func_global_asm_8061CB08();
                 arg0->unk1++;
             }
@@ -371,8 +371,8 @@ void func_menu_80024CB0(void) {
 
     sp28 = -1;
     var_v1 = 0;
-    a180 = current_actor_pointer->unk180;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    a180 = gCurrentActorPointer->unk180;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         sp20 = 1;
         sp28 = -1;
         // Count blueprints turned
@@ -384,7 +384,7 @@ void func_menu_80024CB0(void) {
                 a180->unk0 = 0;
                 a180->unk1 = 0;
                 sp20 = 0;
-                func_global_asm_806F397C(player_pointer, 0, 0, 0);
+                func_global_asm_806F397C(gPlayerPointer, 0, 0, 0);
                 setFlag(PERMFLAG_CUTSCENE_SNIDE_FTCS, TRUE, FLAG_TYPE_PERMANENT);
             } else {
                 if (a180->unk2 == 0x28) {
@@ -436,10 +436,10 @@ void func_menu_80024CB0(void) {
     }
     initializeCharacterSpawnerActor();
     func_global_asm_806BFBF4();
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
-// Checks if all blueprints turned in, malloc, current_actor_pointer, playSFX
+// Checks if all blueprints turned in, malloc, gCurrentActorPointer, playSFX
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_0/func_menu_80024EF0.s")
 
@@ -472,10 +472,10 @@ void func_menu_80024EF0(void) {
     s16 *var_s0;
     RGB *color_data;
 
-    var_s0 = current_actor_pointer->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    var_s0 = gCurrentActorPointer->additional_actor_data;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         *var_s0 = 0xF0;
-        current_actor_pointer->control_state = 0;
+        gCurrentActorPointer->control_state = 0;
         D_menu_800330D0 = malloc(2 * sizeof(Mtx));
         D_menu_800330D4 = malloc(0x140);
         memcpy(D_menu_800330D4, &D_menu_800330E0, 0x140U);
@@ -547,7 +547,7 @@ void func_menu_80024EF0(void) {
     }
     D_menu_800330D8 = 0;
     if (*var_s0 >= -0x3E7) {
-        addActorToTextOverlayRenderArray(&func_menu_800252AC, current_actor_pointer, 3U);
+        addActorToTextOverlayRenderArray(&func_menu_800252AC, gCurrentActorPointer, 3U);
     }
 }
 */

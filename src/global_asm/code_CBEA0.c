@@ -138,7 +138,7 @@ void func_global_asm_806C7270(void) {
     s32 temp;
     s32 var_v1;
 
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FC8F0 = getPointerTableFile(TABLE_19_UNKNOWN, 7, 1, 1);
         D_global_asm_807FC8E0 = 0;
         var_v1 = 0;
@@ -199,7 +199,7 @@ void func_global_asm_806C7270(void) {
             D_global_asm_807FC8EC = 1.0f;
         }
     }
-    addActorToTextOverlayRenderArray(func_global_asm_806C75A4, current_actor_pointer, 3);
+    addActorToTextOverlayRenderArray(func_global_asm_806C75A4, gCurrentActorPointer, 3);
 }
 */
 

@@ -54,52 +54,52 @@ void func_global_asm_806E9804(s16 arg0);
 
 void func_global_asm_806E6EE0(void) {
     if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
-        playAnimation(current_actor_pointer, 0x37);
-        current_actor_pointer->control_state_progress = 4;
+        playAnimation(gCurrentActorPointer, 0x37);
+        gCurrentActorPointer->control_state_progress = 4;
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
 }
 
 void func_global_asm_806E6F74(void) {
     if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG)) {
-        playAnimation(current_actor_pointer, 0x37);
-        current_actor_pointer->control_state_progress = 4;
+        playAnimation(gCurrentActorPointer, 0x37);
+        gCurrentActorPointer->control_state_progress = 4;
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
 }
 
 void func_global_asm_806E6FF0(void) {
     extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
-    func_global_asm_80614D00(current_actor_pointer, 2.0f, 0);
-    playAnimation(current_actor_pointer, 0x38);
-    current_actor_pointer->control_state_progress = 7;
+    func_global_asm_80614D00(gCurrentActorPointer, 2.0f, 0);
+    playAnimation(gCurrentActorPointer, 0x38);
+    gCurrentActorPointer->control_state_progress = 7;
 }
 
 void func_global_asm_806E7050(void) {
-    playAnimation(current_actor_pointer, 0x39);
-    current_actor_pointer->control_state_progress = 7;
+    playAnimation(gCurrentActorPointer, 0x39);
+    gCurrentActorPointer->control_state_progress = 7;
 }
 
 void func_global_asm_806E7088(void) {
-    current_actor_pointer->control_state_progress = 6;
+    gCurrentActorPointer->control_state_progress = 6;
 }
 
 void func_global_asm_806E709C(void) {
     if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG)) {
         if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
-            extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
-            extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+            extra_player_info_pointer->unk12 = gCurrentActorPointer->z_rotation;
+            extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
             if (extra_player_info_pointer->unk10 == 0) {
                 extra_player_info_pointer->unk38 = D_global_asm_80753AC4[D_global_asm_807FD584];
-                playAnimation(current_actor_pointer, 0x36);
+                playAnimation(gCurrentActorPointer, 0x36);
             } else {
                 extra_player_info_pointer->unk38 = D_global_asm_80753AA8[D_global_asm_807FD584];
             }
             extra_player_info_pointer->unk10 = D_global_asm_80753A98[D_global_asm_807FD584];
             extra_player_info_pointer->unk5C = D_global_asm_80767CC0;
         } else if (!(D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON)) {
-            extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
-            extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+            extra_player_info_pointer->unk12 = gCurrentActorPointer->z_rotation;
+            extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
             if (extra_player_info_pointer->unk10 == 0) {
                 extra_player_info_pointer->unk10 = 1;
                 extra_player_info_pointer->unk38 = D_global_asm_80753AA8[D_global_asm_807FD584];
@@ -110,11 +110,11 @@ void func_global_asm_806E709C(void) {
 
 void func_global_asm_806E7230(void) {
     if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG)) {
-        extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
-        extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+        extra_player_info_pointer->unk12 = gCurrentActorPointer->z_rotation;
+        extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
         if (extra_player_info_pointer->unk10 == 0) {
             extra_player_info_pointer->unk38 = D_global_asm_80753AC4[D_global_asm_807FD584];
-            playAnimation(current_actor_pointer, 0x36);
+            playAnimation(gCurrentActorPointer, 0x36);
         } else {
             extra_player_info_pointer->unk38 = D_global_asm_80753AA8[D_global_asm_807FD584];
         }
@@ -125,20 +125,20 @@ void func_global_asm_806E7230(void) {
 
 void func_global_asm_806E7338(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
-        current_actor_pointer->control_state_progress = 3;
-        extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
-        extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+        gCurrentActorPointer->control_state_progress = 3;
+        extra_player_info_pointer->unk12 = gCurrentActorPointer->z_rotation;
+        extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
         if (extra_player_info_pointer->unk10 == 0) {
             extra_player_info_pointer->unk38 = 300.0f;
-            playActorAnimation(current_actor_pointer, 0x318);
+            playActorAnimation(gCurrentActorPointer, 0x318);
         } else {
             extra_player_info_pointer->unk38 = 250.0f;
         }
         extra_player_info_pointer->unk10 = 0xF;
         extra_player_info_pointer->unk5C = D_global_asm_80767CC0;
     } else if (!(D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON)) {
-        extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
-        extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+        extra_player_info_pointer->unk12 = gCurrentActorPointer->z_rotation;
+        extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
         if (extra_player_info_pointer->unk10 == 0) {
             extra_player_info_pointer->unk10 = 1;
             extra_player_info_pointer->unk38 = 250.0f;
@@ -148,12 +148,12 @@ void func_global_asm_806E7338(void) {
 
 void func_global_asm_806E7484(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
-        current_actor_pointer->control_state_progress = 3;
-        extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
-        extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+        gCurrentActorPointer->control_state_progress = 3;
+        extra_player_info_pointer->unk12 = gCurrentActorPointer->z_rotation;
+        extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
         if (extra_player_info_pointer->unk10 == 0) {
             extra_player_info_pointer->unk38 = 300.0f;
-            playActorAnimation(current_actor_pointer, 0x318);
+            playActorAnimation(gCurrentActorPointer, 0x318);
         } else {
             extra_player_info_pointer->unk38 = 250.0f;
         }
@@ -164,11 +164,11 @@ void func_global_asm_806E7484(void) {
 
 void func_global_asm_806E7568(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
-        extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
-        extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+        extra_player_info_pointer->unk12 = gCurrentActorPointer->z_rotation;
+        extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
         extra_player_info_pointer->unk38 = D_global_asm_80753AC4[D_global_asm_807FD584];
-        playAnimation(current_actor_pointer, 0x36);
-        current_actor_pointer->control_state_progress = 3;
+        playAnimation(gCurrentActorPointer, 0x36);
+        gCurrentActorPointer->control_state_progress = 3;
         extra_player_info_pointer->unk10 = D_global_asm_80753A98[D_global_asm_807FD584];
         extra_player_info_pointer->unk5C = D_global_asm_80767CC0;
     }
@@ -178,8 +178,8 @@ void func_global_asm_806E7658(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & D_CBUTTONS) && !(D_global_asm_807FBB64 & 2)) {
         func_global_asm_806E9804(8);
     } else {
-        extra_player_info_pointer->unk12 = current_actor_pointer->z_rotation;
-        extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+        extra_player_info_pointer->unk12 = gCurrentActorPointer->z_rotation;
+        extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
         extra_player_info_pointer->unk10 = 0;
         extra_player_info_pointer->unk30 = 8.0f;
     }
@@ -204,9 +204,9 @@ void func_global_asm_806E7780(void) {
     } else {
         phi_f0 = D_global_asm_8075389C[D_global_asm_807FD584];
     }
-    if ((D_global_asm_807FD610[cc_player_index].unk2C & Z_TRIG) && (phi_f0 < current_actor_pointer->distance_from_floor) && playerCanDive()) {
+    if ((D_global_asm_807FD610[cc_player_index].unk2C & Z_TRIG) && (phi_f0 < gCurrentActorPointer->distance_from_floor) && playerCanDive()) {
         setAction(0x3E, NULL, cc_player_index);
-        playSoundAtActorPosition(current_actor_pointer, 0x10, 0xFF, 0x7F, 1);
+        playSoundAtActorPosition(gCurrentActorPointer, 0x10, 0xFF, 0x7F, 1);
     }
 }
 
@@ -226,41 +226,41 @@ void func_global_asm_806E7900(void) {
     // TODO: There might be a special aaD type for minecart
     // Could also be a RaaD, not sure yet
     PlayerAdditionalActorData *PaaD = extra_player_info_pointer->vehicle_actor_pointer->additional_actor_data;
-    if (current_actor_pointer->control_state == 7) {
+    if (gCurrentActorPointer->control_state == 7) {
         if (!(D_global_asm_807FD610[cc_player_index].unk2A & R_TRIG)) {
-            if ((D_global_asm_807FD610[cc_player_index].unk2E < -0x1E) && (current_actor_pointer->animation_state->unk0->unk10 != 0xFB)) {
-                playAnimation(current_actor_pointer, 0x81);
-                current_actor_pointer->control_state = 0xA; // Minecart (Left)
-                current_actor_pointer->control_state_progress = 0;
+            if ((D_global_asm_807FD610[cc_player_index].unk2E < -0x1E) && (gCurrentActorPointer->animation_state->unk0->unk10 != 0xFB)) {
+                playAnimation(gCurrentActorPointer, 0x81);
+                gCurrentActorPointer->control_state = 0xA; // Minecart (Left)
+                gCurrentActorPointer->control_state_progress = 0;
                 PaaD->unk42 = 1;
-            } else if ((D_global_asm_807FD610[cc_player_index].unk2E >= 0x1F) && (current_actor_pointer->animation_state->unk0->unk10 != 0xFF)) {
-                playAnimation(current_actor_pointer, 0x7D);
-                current_actor_pointer->control_state = 0xB; // Minecart (Right)
-                current_actor_pointer->control_state_progress = 0;
+            } else if ((D_global_asm_807FD610[cc_player_index].unk2E >= 0x1F) && (gCurrentActorPointer->animation_state->unk0->unk10 != 0xFF)) {
+                playAnimation(gCurrentActorPointer, 0x7D);
+                gCurrentActorPointer->control_state = 0xB; // Minecart (Right)
+                gCurrentActorPointer->control_state_progress = 0;
                 PaaD->unk42 = 2;
             }
         }
     }
-    if (((D_global_asm_807FD610[cc_player_index].unk2E < 0x1E) && (current_actor_pointer->control_state != 0xA)) || ((D_global_asm_807FD610[cc_player_index].unk2E >= -0x1D) && (current_actor_pointer->control_state != 0xB))) {
+    if (((D_global_asm_807FD610[cc_player_index].unk2E < 0x1E) && (gCurrentActorPointer->control_state != 0xA)) || ((D_global_asm_807FD610[cc_player_index].unk2E >= -0x1D) && (gCurrentActorPointer->control_state != 0xB))) {
         PaaD->unk42 = 0;
-        switch (current_actor_pointer->control_state) {
+        switch (gCurrentActorPointer->control_state) {
             case 0xB:
-                if (current_actor_pointer->control_state_progress == 1) {
-                    playAnimation(current_actor_pointer, 0x7E);
+                if (gCurrentActorPointer->control_state_progress == 1) {
+                    playAnimation(gCurrentActorPointer, 0x7E);
                 } else {
-                    playAnimation(current_actor_pointer, 0x80);
+                    playAnimation(gCurrentActorPointer, 0x80);
                 }
-                current_actor_pointer->control_state = 7; // Minecart (Idle)
-                current_actor_pointer->control_state_progress = 0;
+                gCurrentActorPointer->control_state = 7; // Minecart (Idle)
+                gCurrentActorPointer->control_state_progress = 0;
                 break;
             case 0xA:
-                if (current_actor_pointer->control_state_progress == 1) {
-                    playAnimation(current_actor_pointer, 0x82);
+                if (gCurrentActorPointer->control_state_progress == 1) {
+                    playAnimation(gCurrentActorPointer, 0x82);
                 } else {
-                    playAnimation(current_actor_pointer, 0x80);
+                    playAnimation(gCurrentActorPointer, 0x80);
                 }
-                current_actor_pointer->control_state = 7; // Minecart (Idle)
-                current_actor_pointer->control_state_progress = 0;
+                gCurrentActorPointer->control_state = 7; // Minecart (Idle)
+                gCurrentActorPointer->control_state_progress = 0;
                 break;
         }
     }
@@ -322,7 +322,7 @@ void func_global_asm_806E7DF4(void) {
                     if (var_a2->unk3F == 1) {
                         var_a2->unk3F = 0;
                     }
-                    playAnimation(current_actor_pointer, var_a3 ? 0x81 : 0x7D);
+                    playAnimation(gCurrentActorPointer, var_a3 ? 0x81 : 0x7D);
                     playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, var_a3 ? 0x295 : 0x296);
                 } else {
                     var_a2->unk3F++;
@@ -331,7 +331,7 @@ void func_global_asm_806E7DF4(void) {
                             var_a2->unk3F = 2;
                         }
                     }
-                    playAnimation(current_actor_pointer, var_a3 ? 0x7D : 0x81);
+                    playAnimation(gCurrentActorPointer, var_a3 ? 0x7D : 0x81);
                     playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, var_a3 ? 0x296 : 0x295);
                 }
             }
@@ -353,14 +353,14 @@ void func_global_asm_806E8244(void) {
     if (func_global_asm_805FCA64()) {
         addActorToTextOverlayRenderArray(func_global_asm_8068E474, extra_player_info_pointer->vehicle_actor_pointer, 5);
     }
-    if ((current_actor_pointer->y_rotation < 0x200) || (current_actor_pointer->y_rotation >= 0xE01)) {
+    if ((gCurrentActorPointer->y_rotation < 0x200) || (gCurrentActorPointer->y_rotation >= 0xE01)) {
         RaaD->unk2 = D_global_asm_807FD610[cc_player_index].unk2E;
-    } else if ((current_actor_pointer->y_rotation >= 0x201) && (current_actor_pointer->y_rotation < 0x600)) {
+    } else if ((gCurrentActorPointer->y_rotation >= 0x201) && (gCurrentActorPointer->y_rotation < 0x600)) {
         RaaD->unk2 = D_global_asm_807FD610[cc_player_index].unk2F;
         temp_t4 = D_global_asm_807FD610[cc_player_index].unk2E;
         D_global_asm_807FD610[cc_player_index].unk2E = D_global_asm_807FD610[cc_player_index].unk2F;
         D_global_asm_807FD610[cc_player_index].unk2F = temp_t4;
-    } else if ((current_actor_pointer->y_rotation >= 0x601) && (current_actor_pointer->y_rotation < 0xA00)) {
+    } else if ((gCurrentActorPointer->y_rotation >= 0x601) && (gCurrentActorPointer->y_rotation < 0xA00)) {
         RaaD->unk2 = -D_global_asm_807FD610[cc_player_index].unk2E;
         D_global_asm_807FD610[cc_player_index].unk2E = -D_global_asm_807FD610[cc_player_index].unk2E;
         D_global_asm_807FD610[cc_player_index].unk2F = -D_global_asm_807FD610[cc_player_index].unk2F;
@@ -414,30 +414,30 @@ void func_global_asm_806E854C(Struct806E854C_arg0 *arg0, s32 arg1, s32 arg2) {
     f32 temp_f2;
     f32 var_f2;
 
-    if (arg2 != current_player->animation_state->unk0->unk10) {
-        if (arg1 == current_player->animation_state->unk0->unk10) {
-            func_global_asm_80613C48(current_player, arg2, 0, 5.0f);
+    if (arg2 != gCurrentPlayer->animation_state->unk0->unk10) {
+        if (arg1 == gCurrentPlayer->animation_state->unk0->unk10) {
+            func_global_asm_80613C48(gCurrentPlayer, arg2, 0, 5.0f);
         } else {    
-            if ((current_actor_pointer->animation_state->unk0->unk24 >= 0) && (current_player->animation_state->unk0->unk4 > 0)) {
-                func_global_asm_80614D48(current_player, -1.0f, 0);
+            if ((gCurrentActorPointer->animation_state->unk0->unk24 >= 0) && (gCurrentPlayer->animation_state->unk0->unk4 > 0)) {
+                func_global_asm_80614D48(gCurrentPlayer, -1.0f, 0);
             }
-            if (current_actor_pointer->animation_state->unk0->unk4 == 0) {
-                func_global_asm_80613C48(current_player, arg2, 0, 5.0f);
+            if (gCurrentActorPointer->animation_state->unk0->unk4 == 0) {
+                func_global_asm_80613C48(gCurrentPlayer, arg2, 0, 5.0f);
             }
         }
     } else {
         var_f2 = ABS(arg0->unkC) - 0.2f;
         temp_f2 = (arg0->unk10 > 1.0 ? 8 : 5) * var_f2 * 1.25f;
-        if (((temp_f2 - 1) <= current_player->animation_state->unk0->unk4) && (current_player->animation_state->unk0->unk4 <= (temp_f2 + 1))) {
+        if (((temp_f2 - 1) <= gCurrentPlayer->animation_state->unk0->unk4) && (gCurrentPlayer->animation_state->unk0->unk4 <= (temp_f2 + 1))) {
             var_v0_2 = 0;
         } else {
-            if (temp_f2 <= current_player->animation_state->unk0->unk4) {
+            if (temp_f2 <= gCurrentPlayer->animation_state->unk0->unk4) {
                 var_v0_2 = -1;
             } else {
                 var_v0_2 = 1;
             }
         }
-        func_global_asm_80614D48(current_player, var_v0_2, 5.0f);
+        func_global_asm_80614D48(gCurrentPlayer, var_v0_2, 5.0f);
     }
 }
 
@@ -503,7 +503,7 @@ void func_global_asm_806E88D8(void) {
 
     vehicle = extra_player_info_pointer->vehicle_actor_pointer;
     if (vehicle != NULL) {
-        if (current_actor_pointer->unk58 == ACTOR_LANKY) {
+        if (gCurrentActorPointer->unk58 == ACTOR_LANKY) {
             sp24 = 0x1C7;
             var_a2 = 0x1C5;
             sp1C = 0x1C6;
@@ -514,14 +514,14 @@ void func_global_asm_806E88D8(void) {
         }
         aaD = vehicle->additional_actor_data;
         func_global_asm_806E8724(vehicle, aaD);
-        if ((func_global_asm_8061CB50() == 0) && (playerAnimationState = current_player->animation_state, (playerAnimationState->unk64 != 0x3B5))) {
+        if ((func_global_asm_8061CB50() == 0) && (playerAnimationState = gCurrentPlayer->animation_state, (playerAnimationState->unk64 != 0x3B5))) {
             if ((aaD->unkC < 0.2f) && (aaD->unkC > -0.2f) && ((sp24 != playerAnimationState->unk0->unk10))) {
                 if ((playerAnimationState->unk0->unk24 >= 0.0f) && (playerAnimationState->unk0->unk4 > 0.0f)) {
-                    func_global_asm_80614D48(current_player, -1.0f, 5.0f);
+                    func_global_asm_80614D48(gCurrentPlayer, -1.0f, 5.0f);
                     return;
                 }
-                if (current_actor_pointer->animation_state->unk0->unk4 == 0.0f) {
-                    func_global_asm_80613C48(current_player, sp24, 0.0f, 5.0f);
+                if (gCurrentActorPointer->animation_state->unk0->unk4 == 0.0f) {
+                    func_global_asm_80613C48(gCurrentPlayer, sp24, 0.0f, 5.0f);
                 }
             } else {
                 if (aaD->unkC < -0.2f) {
@@ -631,8 +631,8 @@ void func_global_asm_806E8C2C(void) {
     if (vehicle == NULL) {
         return;
     }
-    if (current_player->animation_state->unk0->unk10 != 0x22A) {
-        func_global_asm_80613C48(current_player, 0x22A, 0.0f, 0.0f);
+    if (gCurrentPlayer->animation_state->unk0->unk10 != 0x22A) {
+        func_global_asm_80613C48(gCurrentPlayer, 0x22A, 0.0f, 0.0f);
     }
     temp_v0 = vehicle->additional_actor_data;
     if ((temp_v0->unk45 != 0) || (temp_v0->unk30->control_state != 2)) {
@@ -690,21 +690,21 @@ void func_global_asm_806E8E00(void) {
 }
 
 void func_global_asm_806E8E78(void) {
-    if (current_actor_pointer->control_state == 7 && !(D_global_asm_807FD610[cc_player_index].unk2A & R_TRIG)) {
-        playAnimation(current_actor_pointer, 0x7F);
-        current_actor_pointer->control_state = 8;
-        current_actor_pointer->control_state_progress = 0;
+    if (gCurrentActorPointer->control_state == 7 && !(D_global_asm_807FD610[cc_player_index].unk2A & R_TRIG)) {
+        playAnimation(gCurrentActorPointer, 0x7F);
+        gCurrentActorPointer->control_state = 8;
+        gCurrentActorPointer->control_state_progress = 0;
     }
 }
 
 void func_global_asm_806E8F04(void) {
-    if (current_actor_pointer->control_state_progress == 1) {
-        playAnimation(current_actor_pointer, 0x7B);
+    if (gCurrentActorPointer->control_state_progress == 1) {
+        playAnimation(gCurrentActorPointer, 0x7B);
     } else {
-        playAnimation(current_actor_pointer, 0x80);
+        playAnimation(gCurrentActorPointer, 0x80);
     }
-    current_actor_pointer->control_state = 7;
-    current_actor_pointer->control_state_progress = 0;
+    gCurrentActorPointer->control_state = 7;
+    gCurrentActorPointer->control_state_progress = 0;
 }
 
 void func_global_asm_806E8F68(void) {
@@ -712,11 +712,11 @@ void func_global_asm_806E8F68(void) {
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
     if ((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU) {
-        current_actor_pointer->control_state = 9;
-        current_actor_pointer->control_state_progress = 0;
+        gCurrentActorPointer->control_state = 9;
+        gCurrentActorPointer->control_state_progress = 0;
         extra_player_info_pointer->unk54 = D_global_asm_807537E0[D_global_asm_807FD584];
         extra_player_info_pointer->unk50 = 0;
-        playAnimation(current_actor_pointer, 0x7C);
+        playAnimation(gCurrentActorPointer, 0x7C);
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
     }
 }
@@ -736,8 +736,8 @@ void func_global_asm_806E9070(void) {
     }
     extra_player_info_pointer->vehicle_actor_pointer->y_velocity = D_global_asm_80750338;
     extra_player_info_pointer->unk58 = D_global_asm_80767A40.unk280 - 0x1E;
-    playAnimation(current_actor_pointer, 0x7C);
-    if (current_actor_pointer->unk58 == ACTOR_DK) {
+    playAnimation(gCurrentActorPointer, 0x7C);
+    if (gCurrentActorPointer->unk58 == ACTOR_DK) {
         playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x294);
     } else {
         playActorAnimation(extra_player_info_pointer->vehicle_actor_pointer, 0x293);
@@ -754,55 +754,55 @@ void func_global_asm_806E918C(void) {
 
     if (!(extra_player_info_pointer->unk1F0 & 0x10000000)) {
         if (D_global_asm_807FD610[cc_player_index].unk2A & 0x10) {
-            if (current_actor_pointer->control_state == 7) {
+            if (gCurrentActorPointer->control_state == 7) {
                 getBonePosition(extra_player_info_pointer->vehicle_actor_pointer, 3, &sp54, &sp50, &sp4C);
                 getBonePosition(extra_player_info_pointer->vehicle_actor_pointer, 4, &sp48, &sp44, &sp40);
                 func_global_asm_8061C2F0(extra_player_info_pointer->unk104, sp48, sp44 + 8.0f, sp40, (sp48 - sp54) + sp48, (sp44 - sp50) + sp44 + 5.0f, (sp40 - sp4C) + sp40, 1);
                 extra_player_info_pointer->unk1F0 |= 2;
-                current_actor_pointer->object_properties_bitfield |= 0x400;
+                gCurrentActorPointer->object_properties_bitfield |= 0x400;
                 return;
             }
         }
         if (extra_player_info_pointer->unk1F0 & 2) {
             extra_player_info_pointer->unk1F0 &= ~2;
             func_global_asm_8061C6A8(extra_player_info_pointer->unk104, extra_player_info_pointer->vehicle_actor_pointer, 4, 0x800, 0x28, 0, 5, 0x19, 0x14, 0, 0.15f);
-            if (current_actor_pointer->control_state == 7) {
-                playAnimation(current_actor_pointer, 0x84);
+            if (gCurrentActorPointer->control_state == 7) {
+                playAnimation(gCurrentActorPointer, 0x84);
             }
         }
-        current_actor_pointer->object_properties_bitfield &= ~0x400;
+        gCurrentActorPointer->object_properties_bitfield &= ~0x400;
     }
 }
 
 void func_global_asm_806E9388(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
-        current_actor_pointer->control_state = 0x80; // Enguarde Attacking (surface)
-        current_actor_pointer->control_state_progress = 0;
-        playActorAnimation(current_actor_pointer, 0x316);
+        gCurrentActorPointer->control_state = 0x80; // Enguarde Attacking (surface)
+        gCurrentActorPointer->control_state_progress = 0;
+        playActorAnimation(gCurrentActorPointer, 0x316);
     }
 }
 
 void func_global_asm_806E93F8(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
-        current_actor_pointer->control_state = 0x81; // Enguarde Attacking
-        current_actor_pointer->control_state_progress = 0;
-        playActorAnimation(current_actor_pointer, 0x316);
+        gCurrentActorPointer->control_state = 0x81; // Enguarde Attacking
+        gCurrentActorPointer->control_state_progress = 0;
+        playActorAnimation(gCurrentActorPointer, 0x316);
     }
 }
 
 void func_global_asm_806E9468(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & (A_BUTTON | Z_TRIG)) {
         extra_player_info_pointer->unk12 = D_global_asm_807539EC[D_global_asm_807FD584];
-        extra_player_info_pointer->unk14 = current_actor_pointer->y_rotation;
+        extra_player_info_pointer->unk14 = gCurrentActorPointer->y_rotation;
         extra_player_info_pointer->unk10 = D_global_asm_807539DC[D_global_asm_807FD584];
-        current_actor_pointer->control_state = 0x7F;
-        current_actor_pointer->control_state_progress = 0;
-        current_actor_pointer->control_state_progress = 1;
-        if (current_actor_pointer->y_velocity > 0.0f) {
-            current_actor_pointer->y_velocity = 0.0f;
+        gCurrentActorPointer->control_state = 0x7F;
+        gCurrentActorPointer->control_state_progress = 0;
+        gCurrentActorPointer->control_state_progress = 1;
+        if (gCurrentActorPointer->y_velocity > 0.0f) {
+            gCurrentActorPointer->y_velocity = 0.0f;
         }
-        playActorAnimation(current_actor_pointer, 0x318);
-        playSoundAtActorPosition(current_actor_pointer, 0x10, 0xFF, 0x7F, 1);
+        playActorAnimation(gCurrentActorPointer, 0x318);
+        playSoundAtActorPosition(gCurrentActorPointer, 0x10, 0xFF, 0x7F, 1);
     }
 }
 
@@ -816,14 +816,14 @@ u8 func_global_asm_806E9580(void) {
     sp1B = 0;
     extra_player_info_pointer->unk24 = 0;
     var_v1 = 0x1E;
-    if (current_actor_pointer->unk6A & 4) {
-        if (current_actor_pointer->y_velocity <= 0.0f) {
-            if (current_actor_pointer->y_velocity > -150.0f) {
-                current_actor_pointer->y_velocity = current_actor_pointer->y_velocity;
+    if (gCurrentActorPointer->unk6A & 4) {
+        if (gCurrentActorPointer->y_velocity <= 0.0f) {
+            if (gCurrentActorPointer->y_velocity > -150.0f) {
+                gCurrentActorPointer->y_velocity = gCurrentActorPointer->y_velocity;
             } else {
-                current_actor_pointer->y_velocity = -150.0f;
+                gCurrentActorPointer->y_velocity = -150.0f;
             }
-            temp_f2 = current_actor_pointer->unkAC - current_actor_pointer->y_position;
+            temp_f2 = gCurrentActorPointer->unkAC - gCurrentActorPointer->y_position;
             if (character_change_array[cc_player_index].unk2C0 == 2) {
                 var_v1 = 0x3C;
             }
@@ -831,7 +831,7 @@ u8 func_global_asm_806E9580(void) {
                 setAction(0x3E, NULL, cc_player_index);
                 func_global_asm_806CA2AC();
             } else {
-                if (current_actor_pointer->unk6A & 1) {
+                if (gCurrentActorPointer->unk6A & 1) {
                     if (character_change_array[cc_player_index].unk2C0 == 1) {
                         var_f0 = D_global_asm_8075386C[D_global_asm_807FD584];
                     } else {
@@ -848,9 +848,9 @@ u8 func_global_asm_806E9580(void) {
                     } else {
                         var_f0 = D_global_asm_807538C8[D_global_asm_807FD584];
                     }
-                    if (var_f0 < (current_actor_pointer->distance_from_floor + temp_f2)) {
+                    if (var_f0 < (gCurrentActorPointer->distance_from_floor + temp_f2)) {
                         setAction(0x3D, NULL, cc_player_index);
-                        playActorAnimation(current_actor_pointer, 0);
+                        playActorAnimation(gCurrentActorPointer, 0);
                         if (extra_player_info_pointer->unkC4 != 0) {
                             func_global_asm_80737924(extra_player_info_pointer->unkC4);
                         }
@@ -886,7 +886,7 @@ void func_global_asm_806E98F8(void) {
 }
 
 void func_global_asm_806E9964(PlayerAdditionalActorData *arg0) {
-    s32 phi_v0 = current_actor_pointer->control_state == 5 || current_actor_pointer->control_state == 0x65;
+    s32 phi_v0 = gCurrentActorPointer->control_state == 5 || gCurrentActorPointer->control_state == 0x65;
     if ((D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && (D_global_asm_807FD610[cc_player_index].unk2C & D_CBUTTONS)) {
         if (phi_v0) {
             func_global_asm_806E9D1C(7, 3, 0);
@@ -894,7 +894,7 @@ void func_global_asm_806E9964(PlayerAdditionalActorData *arg0) {
             func_global_asm_806E9D1C(5, 3, 0);
         }
     } else {
-        func_global_asm_806EAB44(current_actor_pointer, phi_v0);
+        func_global_asm_806EAB44(gCurrentActorPointer, phi_v0);
     }
     func_global_asm_806F8D58(6, 1);
     func_global_asm_806F8D58(0xC, 1);
@@ -922,8 +922,8 @@ void func_global_asm_806E9B3C(void) {
 void func_global_asm_806E9BA8(s32 arg0) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) && !(extra_player_info_pointer->unk1F0 & 0x8000) && func_global_asm_806F8AD4(6, cc_player_index) > 0) {
         playSound(0x263, 0x7FFF, 63.0f, 1.0f, 0xA, 0);
-        current_actor_pointer->control_state = arg0;
-        current_actor_pointer->control_state_progress = 0;
+        gCurrentActorPointer->control_state = arg0;
+        gCurrentActorPointer->control_state_progress = 0;
         changeCollectableCount(6, cc_player_index, -1);
         createLight(
             character_change_array[cc_player_index].look_at_eye_x,
@@ -950,10 +950,10 @@ void func_global_asm_806E9CFC(void) {
 }
 
 s32 func_global_asm_806E9D1C(s16 arg0, u8 arg1, u8 arg2) {
-    if (((cc_number_of_players < 2) || (D_global_asm_80750AB8 != 1)) && (D_global_asm_807FD888 == 0.0f) && (current_actor_pointer->unkE0 == 0.0f)) {
+    if (((cc_number_of_players < 2) || (D_global_asm_80750AB8 != 1)) && (D_global_asm_807FD888 == 0.0f) && (gCurrentActorPointer->unkE0 == 0.0f)) {
         func_global_asm_806EB178(cc_player_index, arg1, arg2, 0);
         setAction(arg0, NULL, cc_player_index);
-        current_actor_pointer->unkB8 = 0.0f;
+        gCurrentActorPointer->unkB8 = 0.0f;
         return TRUE;
     }
     return FALSE;
@@ -964,7 +964,7 @@ void func_global_asm_806E9DE0(void) {
 
     if (D_global_asm_807FD610[cc_player_index].unk2C & U_CBUTTONS) {
         sp1C = extra_player_info_pointer->unk104->additional_actor_data;
-        if ((func_global_asm_80714608(0) == 0) && !(sp1C->unkAC & 0x80000000) && (((((current_actor_pointer->control_state == 0x5D)) || (current_actor_pointer->control_state == 0x5E) || (current_actor_pointer->control_state == 0x62)) && !(D_global_asm_807FBB64 & 0x80000000)) || (current_actor_pointer->control_state == 0x4E) || (current_actor_pointer->control_state == 0x4F) || (current_actor_pointer->control_state == 0xD) || (current_actor_pointer->control_state == 0xC))) {
+        if ((func_global_asm_80714608(0) == 0) && !(sp1C->unkAC & 0x80000000) && (((((gCurrentActorPointer->control_state == 0x5D)) || (gCurrentActorPointer->control_state == 0x5E) || (gCurrentActorPointer->control_state == 0x62)) && !(D_global_asm_807FBB64 & 0x80000000)) || (gCurrentActorPointer->control_state == 0x4E) || (gCurrentActorPointer->control_state == 0x4F) || (gCurrentActorPointer->control_state == 0xD) || (gCurrentActorPointer->control_state == 0xC))) {
             func_global_asm_806E9D1C(5, 3, 0);
         }
     }
@@ -974,7 +974,7 @@ void func_global_asm_806E9ECC(void) {
     PlayerAdditionalActorData *sp1C;
 
     if (D_global_asm_807FD610[cc_player_index].unk2C & 2) {
-        if (current_actor_pointer->unk6A & 1) {
+        if (gCurrentActorPointer->unk6A & 1) {
             sp1C = extra_player_info_pointer->unk104->additional_actor_data;
             if (func_global_asm_80714608(0) == 0) {
                 if (!(sp1C->unkAC & 0x80000000)) {
@@ -991,7 +991,7 @@ void func_global_asm_806E9F8C(void) {
     PlayerAdditionalActorData *sp1C;
 
     if (D_global_asm_807FD610[cc_player_index].unk2C & 8) {
-        if (current_actor_pointer->unk6A & 1) {
+        if (gCurrentActorPointer->unk6A & 1) {
             sp1C = extra_player_info_pointer->unk104->additional_actor_data;
             if (func_global_asm_80714608(0) == 0) {
                 if (!(sp1C->unkAC & 0x80000000)) {
@@ -1065,29 +1065,29 @@ void func_global_asm_806EA334(void) {
     f32 temp_f2;
     f32 phi_f0;
 
-    if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && !(D_global_asm_807FD610[cc_player_index].unk2A & L_CBUTTONS) && current_actor_pointer->control_state == 2) {
+    if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && !(D_global_asm_807FD610[cc_player_index].unk2A & L_CBUTTONS) && gCurrentActorPointer->control_state == 2) {
         phi_f0 = current_map == MAP_DK_ISLES_OVERWORLD ? 15.0 : 13.0;
         temp_f2 = character_change_array[cc_player_index].fov_y - 1.5f;
         if (phi_f0 < temp_f2) {
             character_change_array[cc_player_index].fov_y = temp_f2;
-            func_global_asm_80604CBC(current_actor_pointer, 0x1F0, 0, 0, 0, 0xFF, 1.0f, -1);
+            func_global_asm_80604CBC(gCurrentActorPointer, 0x1F0, 0, 0, 0, 0xFF, 1.0f, -1);
         } else {
             character_change_array[cc_player_index].fov_y = phi_f0;
-            func_global_asm_80605314(current_actor_pointer, 0);
+            func_global_asm_80605314(gCurrentActorPointer, 0);
         }
     }
 }
 
 void func_global_asm_806EA460(void) {
     f32 temp_f0;
-    if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && !(D_global_asm_807FD610[cc_player_index].unk2A & R_CBUTTONS) && current_actor_pointer->control_state == 2) {
+    if (!(D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && !(D_global_asm_807FD610[cc_player_index].unk2A & R_CBUTTONS) && gCurrentActorPointer->control_state == 2) {
         temp_f0 = character_change_array[cc_player_index].fov_y + 1.5f;
         if (temp_f0 < 45.0) {
             character_change_array[cc_player_index].fov_y = temp_f0;
-            func_global_asm_80604CBC(current_actor_pointer, 0x1F0, 0, 0, 0, 0xFF, 1.0f, -1);
+            func_global_asm_80604CBC(gCurrentActorPointer, 0x1F0, 0, 0, 0, 0xFF, 1.0f, -1);
         } else {
             character_change_array[cc_player_index].fov_y = 45.0f;
-            func_global_asm_80605314(current_actor_pointer, 0);
+            func_global_asm_80605314(gCurrentActorPointer, 0);
         }
     }
 }
@@ -1095,13 +1095,13 @@ void func_global_asm_806EA460(void) {
 void func_global_asm_806EA568(void) {
     u16 temp = D_global_asm_807FD610[cc_player_index].unk2A & (L_CBUTTONS | R_CBUTTONS);
     if (temp != L_CBUTTONS && temp != R_CBUTTONS) {
-        func_global_asm_80605314(current_actor_pointer, 0);
+        func_global_asm_80605314(gCurrentActorPointer, 0);
     }
 }
 
 void func_global_asm_806EA5CC(void) {
     if (func_global_asm_806E9580()) {
-        func_global_asm_806EAB44(current_actor_pointer, 1);
+        func_global_asm_806EAB44(gCurrentActorPointer, 1);
     }
 }
 
@@ -1131,37 +1131,37 @@ void func_global_asm_806EA628(void) {
             *temp_v0 = temp_a0->unkBC - 0x50;
         }
         extra_player_info_pointer->unk104->distance_from_floor = *temp_v0;
-        current_actor_pointer->y_rotation = (temp_a0->unkB2 + 0x800) & 0xFFF;
+        gCurrentActorPointer->y_rotation = (temp_a0->unkB2 + 0x800) & 0xFFF;
     }
 }
 
 void func_global_asm_806EA7E8(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (A_BUTTON | B_BUTTON)) == A_BUTTON) {
-        func_global_asm_806EAB44(current_actor_pointer, 0);
+        func_global_asm_806EAB44(gCurrentActorPointer, 0);
     }
 }
 
 void func_global_asm_806EA844(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (A_BUTTON | B_BUTTON)) == B_BUTTON) {
-        func_global_asm_806EAB44(current_actor_pointer, 0);
+        func_global_asm_806EAB44(gCurrentActorPointer, 0);
     }
 }
 
 void func_global_asm_806EA8A0(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (A_BUTTON | B_BUTTON)) == A_BUTTON) {
-        func_global_asm_806EAB44(current_actor_pointer, 1);
+        func_global_asm_806EAB44(gCurrentActorPointer, 1);
     }
 }
 
 void func_global_asm_806EA8FC(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (A_BUTTON | B_BUTTON)) == B_BUTTON) {
-        func_global_asm_806EAB44(current_actor_pointer, 1);
+        func_global_asm_806EAB44(gCurrentActorPointer, 1);
     }
 }
 
 void func_global_asm_806EA958(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (U_CBUTTONS | D_CBUTTONS)) == U_CBUTTONS) {
-        func_global_asm_806EAB44(current_actor_pointer, 0);
+        func_global_asm_806EAB44(gCurrentActorPointer, 0);
     }
 }
 
@@ -1170,13 +1170,13 @@ void func_global_asm_806EA9B4(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) && (D_global_asm_807FD610[cc_player_index].unk2C & D_CBUTTONS)) {
         func_global_asm_806E9874();
     } else if ((D_global_asm_807FD610[cc_player_index].unk2C & (U_CBUTTONS | D_CBUTTONS)) == D_CBUTTONS) {
-        func_global_asm_806EAB44(current_actor_pointer, 0);
+        func_global_asm_806EAB44(gCurrentActorPointer, 0);
     }
 }
 
 void func_global_asm_806EAA44(void) {
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (U_CBUTTONS | D_CBUTTONS)) == U_CBUTTONS) {
-        func_global_asm_806EAB44(current_actor_pointer, 1);
+        func_global_asm_806EAB44(gCurrentActorPointer, 1);
     }
 }
 
@@ -1186,7 +1186,7 @@ void func_global_asm_806EAAA0(void) {
         return;
     }
     if ((D_global_asm_807FD610[cc_player_index].unk2C & (U_CBUTTONS | D_CBUTTONS)) == D_CBUTTONS) {
-        func_global_asm_806EAB44(current_actor_pointer, 1);
+        func_global_asm_806EAB44(gCurrentActorPointer, 1);
     }
 }
 
@@ -1243,13 +1243,13 @@ void func_global_asm_806EACEC(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
-    if ((current_actor_pointer->unk6A & 1) && ((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU)) {
+    if ((gCurrentActorPointer->unk6A & 1) && ((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU)) {
         func_global_asm_806CFECC();
-        current_actor_pointer->y_velocity = D_global_asm_807535CC[D_global_asm_807FD584];
+        gCurrentActorPointer->y_velocity = D_global_asm_807535CC[D_global_asm_807FD584];
         extra_player_info_pointer->unk50 = 0;
         extra_player_info_pointer->unk3C = 0;
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
-        playSoundAtActorPosition(current_actor_pointer, 0x309, 0xFF, 0x7F, 0);
+        playSoundAtActorPosition(gCurrentActorPointer, 0x309, 0xFF, 0x7F, 0);
     }
 }
 
@@ -1297,16 +1297,16 @@ void func_global_asm_806EAFEC(void) {
 
 void func_global_asm_806EAFF4(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2A & Z_TRIG) {
-        current_actor_pointer->y_velocity = 0.0f;
+        gCurrentActorPointer->y_velocity = 0.0f;
     } else {
-        current_actor_pointer->y_velocity = 120.0f;
+        gCurrentActorPointer->y_velocity = 120.0f;
     }
 }
 
 void func_global_asm_806EB058(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2A & (U_CBUTTONS | D_CBUTTONS)) {
-        current_actor_pointer->y_velocity = 0.0f;
+        gCurrentActorPointer->y_velocity = 0.0f;
     } else {
-        current_actor_pointer->y_velocity = -120.0f;
+        gCurrentActorPointer->y_velocity = -120.0f;
     }
 }

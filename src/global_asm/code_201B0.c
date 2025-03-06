@@ -314,7 +314,7 @@ void func_global_asm_8061C464(Actor *arg0, Actor *arg1, u8 arg2, s16 arg3, s16 a
         aaD44->unk14 = arg9;
         aaD44->unk18 = argA;
         if (aaD->unkF3 == 3) {
-            func_global_asm_806EAB44(player_pointer, 0);
+            func_global_asm_806EAB44(gPlayerPointer, 0);
         }
         aaD->unkF3 = arg2;
     } else {
@@ -382,7 +382,7 @@ void func_global_asm_8061C6A8(Actor *arg0, Actor *arg1, s32 arg2, s16 arg3, s16 
         aaD44->unk14 = arg9;
         aaD44->unk18 = arg10;
         if (aaD->unkF3 == 3) {
-            func_global_asm_806EAB44(player_pointer, 0);
+            func_global_asm_806EAB44(gPlayerPointer, 0);
         }
         aaD->unkF3 = arg2;
         global_properties_bitfield |= 0x2000;
@@ -536,15 +536,15 @@ s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
         D_global_asm_807476FC = &D_807F5B10[0];
     }
     if (spawnActor(ACTOR_CUTSCENE_CONTROLLER, 0)) {
-        D_global_asm_807F5D0C = last_spawned_actor;
-        last_spawned_actor->noclip_byte = 1;
+        D_global_asm_807F5D0C = gLastSpawnedActor;
+        gLastSpawnedActor->noclip_byte = 1;
         if ((!is_global) && (D_global_asm_807FBB64 & 1)) {
             func_boss_80029140(&arg1);
         }
         if (arg0 != NULL) {
             D_global_asm_807F5CE8 = arg0;
         } else {
-            D_global_asm_807F5CE8 = character_change_array->player_pointer;
+            D_global_asm_807F5CE8 = character_change_array->playerPointer;
         }
         is_cutscene_active = 1;
         if (!(arg2 & 8)) {
@@ -566,11 +566,11 @@ s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
         D_807F5CF6 = D_global_asm_80770DC9;
         global_properties_bitfield |= 0x2000;
         global_properties_bitfield &= ~0x1001;
-        player_pointer->unkB8 = 0.0f;
+        gPlayerPointer->unkB8 = 0.0f;
         if (*current_character_index == 7) {
-            player_pointer->y_velocity = 0.0f;
+            gPlayerPointer->y_velocity = 0.0f;
         }
-        player_pointer->object_properties_bitfield |= 0x400;
+        gPlayerPointer->object_properties_bitfield |= 0x400;
         extra_player_info_pointer->unk10 = 0;
         D_global_asm_807F5D10->x_rotation = 0;
         func_global_asm_80629174();
@@ -608,7 +608,7 @@ void func_global_asm_8061CF90(Actor *arg0, s16 arg1) {
     if (arg0 != NULL) {
         D_global_asm_807F5CE8 = arg0;
     } else {
-        D_global_asm_807F5CE8 = character_change_array->player_pointer;
+        D_global_asm_807F5CE8 = character_change_array->playerPointer;
     }
     D_global_asm_807F5CFA = arg1;
 }
@@ -632,7 +632,7 @@ void func_global_asm_8061CFCC(Actor *arg0) {
         aaD->unkAC &= 0xFFFEFFFB;
     }
     if (arg0 == aaD->unk0) {
-        aaD->unk0 = player_pointer;
+        aaD->unk0 = gPlayerPointer;
     }
 }
 
@@ -769,7 +769,7 @@ void func_global_asm_8061D4E4(Actor *arg0) {
         D_global_asm_807F5CF4 = 0;
         // TODO: Issue here
         D_global_asm_807476C8 = 0;
-        player_pointer->object_properties_bitfield &= ~0x400;
+        gPlayerPointer->object_properties_bitfield &= ~0x400;
     }
 }
 */
@@ -926,7 +926,7 @@ void func_global_asm_8061EA78(void) {
     u8 playerIndex;
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
         if (character_change_array[playerIndex].does_player_exist) {
-            func_global_asm_8061EB04(character_change_array[playerIndex].player_pointer, playerIndex);
+            func_global_asm_8061EB04(character_change_array[playerIndex].playerPointer, playerIndex);
         }
     }
 }
@@ -1164,8 +1164,8 @@ void func_global_asm_806224CC(Actor *arg0, Actor *arg1) {
 
     aaD = arg0->additional_actor_data;
     oldF3Value = aaD->unkF3;
-    if (current_player->unk6E[0] != -1) {
-        func_global_asm_80605314(current_player, 0);
+    if (gCurrentPlayer->unk6E[0] != -1) {
+        func_global_asm_80605314(gCurrentPlayer, 0);
     }
     aaD->unk44 = 0;
     aaD->unkB0 = 0;

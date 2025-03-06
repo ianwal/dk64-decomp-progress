@@ -361,10 +361,10 @@ Gfx *func_race_8002CAC8(Gfx *dl, Actor *arg1, RaceAdditionalActorData *arg2) {
     if (arg2 == NULL || gameIsInDKTVMode()) {
         return dl;
     }
-    if (character_change_array[arg2->unk28].player_pointer == NULL) {
+    if (character_change_array[arg2->unk28].playerPointer == NULL) {
         return dl;
     }
-    PaaD = character_change_array[arg2->unk28].player_pointer->PaaD;
+    PaaD = character_change_array[arg2->unk28].playerPointer->PaaD;
     if (arg1 != PaaD->vehicle_actor_pointer) {
         return dl;
     }
@@ -390,7 +390,7 @@ void func_race_8002CFF0(void) {
     Actor *temp_a0;
 
     spawnActor(ACTOR_UNKNOWN_306, 0);
-    temp_a0 = last_spawned_actor;
+    temp_a0 = gLastSpawnedActor;
     func_race_80025E9C(temp_a0);
     func_race_8002BCD4(temp_a0);
     temp_v0 = temp_a0->TaaD;
@@ -406,8 +406,8 @@ void castleCarRaceSetup(void) {
     RaceAdditionalActorData2 *RaaD;
 
     spawnActor(ACTOR_UNKNOWN_306, 0);
-    RaaD = last_spawned_actor->RaaD2;
-    initializeCastleCarRace(last_spawned_actor);
+    RaaD = gLastSpawnedActor->RaaD2;
+    initializeCastleCarRace(gLastSpawnedActor);
     RaaD->unk0 = 0xE;
     RaaD->unk24 = 2;
 }
@@ -416,8 +416,8 @@ void initializeSealRace(void) {
     RaceAdditionalActorData2 *RaaD;
 
     spawnActor(ACTOR_UNKNOWN_306, 0);
-    RaaD = last_spawned_actor->RaaD2;
-    func_race_800292D0(last_spawned_actor);
+    RaaD = gLastSpawnedActor->RaaD2;
+    func_race_800292D0(gLastSpawnedActor);
     RaaD->unk0 = 0xE;
     RaaD->unk24 = 2;
 }
@@ -426,8 +426,8 @@ void func_race_8002D0FC(void) {
     RaceAdditionalActorData2 *RaaD;
 
     spawnActor(ACTOR_UNKNOWN_306, 0);
-    RaaD = last_spawned_actor->RaaD2;
-    func_race_8002E2C8(last_spawned_actor);
+    RaaD = gLastSpawnedActor->RaaD2;
+    func_race_8002E2C8(gLastSpawnedActor);
     RaaD->unk0 = 2;
     RaaD->unk24 = 1;
 }
@@ -442,7 +442,7 @@ void func_race_8002D148(Struct8002D148 *arg0, u8 arg1) {
         arg0->unk4->unk34 = arg1;
         arg0->unk4->unk35 = 0;
         if (arg1 == 3) {
-            aaD = current_actor_pointer->RaaD;
+            aaD = gCurrentActorPointer->RaaD;
             var_a3 = arg0->unk4->unk36;
             if (((var_a3 + 1) == aaD->unk1E) || arg0->unk4->unk45) {
                 var_a3 = 3;
@@ -459,9 +459,9 @@ void func_race_8002D224(u8 arg0) {
     s32 i;
     RaceAdditionalActorData *RaaD;
 
-    RaaD = current_actor_pointer->RaaD;
+    RaaD = gCurrentActorPointer->RaaD;
     var_s0 = RaaD->unk20;
-    current_actor_pointer->control_state = arg0;
+    gCurrentActorPointer->control_state = arg0;
     for (i = 0; i < RaaD->unk1E; i++) {
         if (var_s0[i].unk0 != 0) {
             func_race_8002D148(&var_s0[i], arg0);
@@ -537,7 +537,7 @@ void func_race_8002D40C(void) {
     RaaD_unk20_unk4 *temp_v0_2;
     RaaD_unk20 *var_a0;
 
-    RaaD = current_actor_pointer->RaaD;
+    RaaD = gCurrentActorPointer->RaaD;
     song = 0;
     i = RaaD->unk1E - 1;
     var_a0 = &RaaD->unk20[i];
@@ -607,7 +607,7 @@ void func_race_8002DA68(RaceStruct3 *arg0) {
     s16 temp_v1;
     s16 phi_v0;
 
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0:
             temp_v1 = arg0->unk2 % 2048;
             if ((temp_v1 >= 0x81) && ((0x800 - temp_v1) >= 0x81)) {
@@ -621,26 +621,26 @@ void func_race_8002DA68(RaceStruct3 *arg0) {
 
     arg0->unk2 &= 0xFFF;
     temp_f2 = (((func_global_asm_80612794(arg0->unk2) + 1.0f) * 1.5) + 1.0) * arg0->unk4;
-    current_actor_pointer->animation_state->scale_x = \
-    current_actor_pointer->animation_state->scale_y = \
-    current_actor_pointer->animation_state->scale_z = temp_f2;
+    gCurrentActorPointer->animation_state->scale_x = \
+    gCurrentActorPointer->animation_state->scale_y = \
+    gCurrentActorPointer->animation_state->scale_z = temp_f2;
 }
 
 void func_race_8002DB90(void) {
-    if (current_actor_pointer->control_state != 0) {
-        if ((current_actor_pointer->control_state == 1) && (func_global_asm_80688540(current_actor_pointer, 0) == 0)) {
-            func_global_asm_80688370(current_actor_pointer, 0, 1.0f);
-            func_global_asm_8068842C(current_actor_pointer, 0, -1);
+    if (gCurrentActorPointer->control_state != 0) {
+        if ((gCurrentActorPointer->control_state == 1) && (func_global_asm_80688540(gCurrentActorPointer, 0) == 0)) {
+            func_global_asm_80688370(gCurrentActorPointer, 0, 1.0f);
+            func_global_asm_8068842C(gCurrentActorPointer, 0, -1);
         }
-    } else if (func_global_asm_80688540(current_actor_pointer, 0)) {
-        func_global_asm_80688460(current_actor_pointer, 0, 1);
+    } else if (func_global_asm_80688540(gCurrentActorPointer, 0)) {
+        func_global_asm_80688460(gCurrentActorPointer, 0, 1);
     }
 }
 
 void func_race_8002DC24(void) {
-    RaceStruct3 *RaaD = current_actor_pointer->additional_actor_data;
-    if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        RaaD->unk4 = current_actor_pointer->animation_state->scale_y;
+    RaceStruct3 *RaaD = gCurrentActorPointer->additional_actor_data;
+    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+        RaaD->unk4 = gCurrentActorPointer->animation_state->scale_y;
     }
     switch (RaaD->unk0) {
         case 2:
@@ -648,16 +648,16 @@ void func_race_8002DC24(void) {
             break;
         case 1:
             func_race_8002DB90();
-            func_global_asm_80665564(current_actor_pointer, 0);
-            current_actor_pointer->y_position = current_actor_pointer->unkAC;
-            current_actor_pointer->unk6A |= 4;
-            current_actor_pointer->unk6C |= 4;
+            func_global_asm_80665564(gCurrentActorPointer, 0);
+            gCurrentActorPointer->y_position = gCurrentActorPointer->unkAC;
+            gCurrentActorPointer->unk6A |= 4;
+            gCurrentActorPointer->unk6C |= 4;
             break;
         default:
             func_race_8002DA68(RaaD);
             break;
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
 typedef struct RaceStruct14 {
@@ -785,7 +785,7 @@ void func_race_8002DE78(Struct8002E1C8_arg0 *arg0, u8 arg1, Struct8002E1C8_arg2 
             arg2->unk0[5][1] = arg3->unk8;
             break;
     }
-    current_actor_pointer->control_state_progress = 0;
+    gCurrentActorPointer->control_state_progress = 0;
     arg0->unkF = arg1;
 }
 
@@ -921,7 +921,7 @@ void func_race_8002E2C8(Actor *arg0) {
     }
     for (i = 0; i < cc_number_of_players; i++) {
         spawnActor(ACTOR_UNKNOWN_315, 0);
-        sp54 = last_spawned_actor;
+        sp54 = gLastSpawnedActor;
         sp58 = sp54->additional_actor_data;
         sp58->unk27 = 0;
         func_race_8002BC2C(arg0, var_s1, sp54, sp58);
@@ -971,28 +971,28 @@ void func_race_8002E484(void) {
     Actor *var_a3;
     AAD_race_8002E484 *temp_s0;
 
-    temp_s0 = current_actor_pointer->additional_actor_data;
-    var_a3 = character_change_array[temp_s0->unk28].player_pointer;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        setAction(0x4E, current_actor_pointer, temp_s0->unk28);
-        current_actor_pointer->control_state = 0;
-        current_actor_pointer->control_state_progress = 0;
+    temp_s0 = gCurrentActorPointer->additional_actor_data;
+    var_a3 = character_change_array[temp_s0->unk28].playerPointer;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        setAction(0x4E, gCurrentActorPointer, temp_s0->unk28);
+        gCurrentActorPointer->control_state = 0;
+        gCurrentActorPointer->control_state_progress = 0;
     }
     if (temp_s0->unk34 == 2) {
-        if (current_actor_pointer->control_state == 0) {
+        if (gCurrentActorPointer->control_state == 0) {
             setAction(0x57, NULL, temp_s0->unk28);
-            current_actor_pointer->control_state++;
+            gCurrentActorPointer->control_state++;
         }
     }
-    current_actor_pointer->x_position = var_a3->x_position;
-    current_actor_pointer->y_position = var_a3->y_position;
-    current_actor_pointer->z_position = var_a3->z_position;
+    gCurrentActorPointer->x_position = var_a3->x_position;
+    gCurrentActorPointer->y_position = var_a3->y_position;
+    gCurrentActorPointer->z_position = var_a3->z_position;
     if (temp_s0->unk34 == 2) {
         func_race_8002F490(temp_s0);
     }
     if (temp_s0->unk34 > 0) {
         if (temp_s0->unk34 < 5) {
-            addActorToTextOverlayRenderArray(func_race_8002E464, current_actor_pointer, 3);
+            addActorToTextOverlayRenderArray(func_race_8002E464, gCurrentActorPointer, 3);
         }
     }
     if (temp_s0->unk40 < temp_s0->unk1C) {
@@ -1042,13 +1042,13 @@ void func_race_8002E644(A17C_race_8002B964 *arg0) {
     Actor *actor;
 
     actor = arg0->unk0;
-    sp5C = (((actor->x_position - current_actor_pointer->x_position)) * ((actor->x_position - current_actor_pointer->x_position))) + (((actor->z_position - current_actor_pointer->z_position)) * ((actor->z_position - current_actor_pointer->z_position)));
+    sp5C = (((actor->x_position - gCurrentActorPointer->x_position)) * ((actor->x_position - gCurrentActorPointer->x_position))) + (((actor->z_position - gCurrentActorPointer->z_position)) * ((actor->z_position - gCurrentActorPointer->z_position)));
     if (D_global_asm_807FBD70 == 4 && sp5C < arg0->unk14) {
         if (arg0->unkF == 1
             || arg0->unkF == 0
             || arg0->unkF == 4
-            || (current_actor_pointer->unk58 == ACTOR_CAR_CASTLE_ENEMY && arg0->unkF == 5)) {
-            sp46 = func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, actor->x_position, actor->z_position);
+            || (gCurrentActorPointer->unk58 == ACTOR_CAR_CASTLE_ENEMY && arg0->unkF == 5)) {
+            sp46 = func_global_asm_80665DE0(gCurrentActorPointer->x_position, gCurrentActorPointer->z_position, actor->x_position, actor->z_position);
             sp40 = 1.0f;
             if (func_global_asm_806CC14C(actor->unkEE, sp46) < 0x200) {
                 sp40 = 4.0f;
@@ -1056,12 +1056,12 @@ void func_race_8002E644(A17C_race_8002B964 *arg0) {
             sp48 = (actor->unkEE - sp46);
             sp48 &= 0xFFF;
             
-            sp4A = (current_actor_pointer->unkEE - sp46);
+            sp4A = (gCurrentActorPointer->unkEE - sp46);
             sp4A &= 0xFFF;
             
             sp54 = func_global_asm_80612794(sp48) * actor->unkB8;
             sp50 = func_global_asm_80612790(sp48) * actor->unkB8;
-            temp_f2_2 = func_global_asm_80612790(sp4A) * current_actor_pointer->unkB8;
+            temp_f2_2 = func_global_asm_80612790(sp4A) * gCurrentActorPointer->unkB8;
             sp50 = ((temp_f2_2 - sp50) * sp40) + temp_f2_2;
             actor->unkB8 = sqrtf((sp54 * sp54) + (sp50 * sp50));
             
@@ -1070,7 +1070,7 @@ void func_race_8002E644(A17C_race_8002B964 *arg0) {
             actor->unkEE &= 0xFFF;
             
             if (arg0->unkE == 0) {
-                switch (current_actor_pointer->unk58) {
+                switch (gCurrentActorPointer->unk58) {
                     case 0x134:
                         sp3C = 0x1F9;
                         break;
@@ -1078,7 +1078,7 @@ void func_race_8002E644(A17C_race_8002B964 *arg0) {
                         sp3C = 0x18A;
                         break;
                 }
-                playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, sp3C, 0xFF, 0x7F, 0, 0, 0.0f, 0);
+                playSoundAtPosition(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, sp3C, 0xFF, 0x7F, 0, 0, 0.0f, 0);
                 arg0->unkE = 0x14;
             }
         }

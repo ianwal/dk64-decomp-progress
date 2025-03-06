@@ -94,7 +94,7 @@ void func_global_asm_806FF32C(Gfx *dl, Actor *arg1) {
 Gfx *func_global_asm_806FF628(Gfx *dl, Actor *arg1) {
     PlayerAdditionalActorData *PaaD;
 
-    PaaD = character_change_array->player_pointer->additional_actor_data;
+    PaaD = character_change_array->playerPointer->additional_actor_data;
     dl = func_global_asm_806FEDB0(dl, PaaD->unk1A4);
     if (PaaD->unk1EC == 2) {
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0x00, 0x00, 0x64);
@@ -504,7 +504,7 @@ void func_global_asm_80705C00(s16 arg0, s16 arg1, u8 arg2) {
     temp_f4 = arg1 - (8.0 * character_change_array->unk2CA);
     switch (arg2) {
         case 1:
-            func_global_asm_80659620(&sp4C, &sp48, &sp44, player_pointer->unk12C);
+            func_global_asm_80659620(&sp4C, &sp48, &sp44, gPlayerPointer->unk12C);
             if (sp4C > 0.5) {
                 func_global_asm_8070033C(sp42, temp_f4, temp_v1, 0.0f, 0.0f, 0.0f, 0.0f, sp4C * 255.0f, sp48 * 255.0f, sp44 * 255.0f);
             }
@@ -531,7 +531,7 @@ Gfx *func_global_asm_80705F5C(Gfx *dl, s16 arg1, s16 arg2, u8 arg3) {
 
     alpha = 0xFF;
     if (arg3 == 1) {
-        func_global_asm_80659620(&sp58[2], &sp58[1], &sp58[0], player_pointer->unk12C);
+        func_global_asm_80659620(&sp58[2], &sp58[1], &sp58[0], gPlayerPointer->unk12C);
         var_f2 = MIN(1.0, (1.0 - sp58[1]) / 0.7);
         alpha = (u8)(var_f2 * 255.0);
     } else if (arg3 == 2) {

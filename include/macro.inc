@@ -6,8 +6,7 @@
 
 .macro glabel label
     .global \label
-    .ent \label
-    .balign 4
+    .type \label, @function
     \label:
 .endm
 
@@ -18,8 +17,10 @@
 
 .macro jlabel label
     .global \label
+    .type \label, @function
     \label:
 .endm
+
 
 .macro .word32 x
     .word \x

@@ -355,15 +355,15 @@ void func_global_asm_806A5868(void) {
     s32 var_v0_2;
     f32 temp;
 
-    aaD = current_actor_pointer->additional_actor_data;
+    aaD = gCurrentActorPointer->additional_actor_data;
     sp18 = 0.05f;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         sp18 = 1.0f;
         aaD->unk34 = malloc(0x280);
         aaD->unk55 = 0;
     } else {
         if (!(aaD->unk55 & 1)) {
-            if ((current_actor_pointer->control_state != 4) && (current_actor_pointer->control_state != 5)) {
+            if ((gCurrentActorPointer->control_state != 4) && (gCurrentActorPointer->control_state != 5)) {
                 if (aaD->unk0 > 15.0) {
                     if (newly_pressed_input_copy & B_BUTTON) {
                         aaD->unk55 |= 1;
@@ -380,7 +380,7 @@ void func_global_asm_806A5868(void) {
                     }
                     if (aaD->unk55 & 1) {
                         func_global_asm_8061CB08();
-                        current_actor_pointer->control_state = 5;
+                        gCurrentActorPointer->control_state = 5;
                     }
                 }
             }
@@ -388,14 +388,14 @@ void func_global_asm_806A5868(void) {
     }
     aaD->unk38 += 0x14;
     aaD->unk3A += 0x32;
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0:
             if (aaD->unk0 < 0x1E) {
                 aaD->unk0++;
             } else {
-                current_actor_pointer->control_state = 1;
+                gCurrentActorPointer->control_state = 1;
                 aaD->unk1D = D_global_asm_807503F0;
-                func_global_asm_8070E808(current_actor_pointer, aaD->unk4);
+                func_global_asm_8070E808(gCurrentActorPointer, aaD->unk4);
                 func_global_asm_806A57C0(aaD);
             }
             break;
@@ -414,7 +414,7 @@ void func_global_asm_806A5868(void) {
             aaD->unk14 -= var_f0;
             aaD->unk18 -= var_f0;
             if (aaD->unk18 < 0.0001) {
-                current_actor_pointer->control_state = 1;
+                gCurrentActorPointer->control_state = 1;
             }
             break;
         case 4:
@@ -427,7 +427,7 @@ void func_global_asm_806A5868(void) {
                     }
                     aaD->unk0--;
                 } else {
-                    current_actor_pointer->control_state = 5;
+                    gCurrentActorPointer->control_state = 5;
                 }
             }
             break;
@@ -435,12 +435,12 @@ void func_global_asm_806A5868(void) {
             func_global_asm_8070DA74(aaD->unk4);
             break;
     }
-    if (current_actor_pointer->control_state != 5) {
+    if (gCurrentActorPointer->control_state != 5) {
         aaD->unk20 = aaD->unk0 * 0.03333333507f;
-        func_global_asm_806A5174(current_actor_pointer, aaD, sp18);
+        func_global_asm_806A5174(gCurrentActorPointer, aaD, sp18);
         if (aaD->unk0 != 0) {
-            func_global_asm_806A4DDC(current_actor_pointer);
-            addActorToTextOverlayRenderArray(func_global_asm_806A4284, current_actor_pointer, 3);
+            func_global_asm_806A4DDC(gCurrentActorPointer);
+            addActorToTextOverlayRenderArray(func_global_asm_806A4284, gCurrentActorPointer, 3);
         }
     }
 }

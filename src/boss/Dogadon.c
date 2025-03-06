@@ -100,19 +100,19 @@ void func_boss_8002A240(void) {
     Actor17C *temp_s0;
     f32 temp_f10;
 
-    temp_s0 = current_actor_pointer->unk17C;
+    temp_s0 = gCurrentActorPointer->unk17C;
     if (temp_s0->unk4 != 0) {
         temp_s0->unk4--;
         temp_f10 = func_global_asm_80612794((temp_s0->unk4 / 10.0) * (temp_s0->unk8 + -0x400) + (temp_s0->unk8 + 0x400)) * 20.0;
-        current_actor_pointer->x_position += temp_f10 * func_global_asm_80612794(temp_s0->unk6);
-        current_actor_pointer->z_position += temp_f10 * func_global_asm_80612790(temp_s0->unk6);
+        gCurrentActorPointer->x_position += temp_f10 * func_global_asm_80612794(temp_s0->unk6);
+        gCurrentActorPointer->z_position += temp_f10 * func_global_asm_80612790(temp_s0->unk6);
         if (temp_s0->unk4 == 0) {
             temp_s0->unk8 += 0x400;
         }
     } else if (RandChance(0.06)) {
         temp_s0->unk4 = 0xA;
     }
-    current_actor_pointer->y_position += 8.0 * func_global_asm_80612794((u32)object_timer * 200.0);
+    gCurrentActorPointer->y_position += 8.0 * func_global_asm_80612794((u32)object_timer * 200.0);
 }
 */
 
@@ -125,29 +125,29 @@ void func_boss_8002A41C(u8 arg0) {
         case 0:
             temp_v0 = func_global_asm_8067ADB4(0x61); // TNT Barrel Spawner (Dogadon)
             if (temp_v0) {
-                func_global_asm_8067AB20(current_actor_pointer, temp_v0, 0x1000000, 1, &sp2C, 0);
+                func_global_asm_8067AB20(gCurrentActorPointer, temp_v0, 0x1000000, 1, &sp2C, 0);
                 return;
             }
             return;
         case 1:
             temp_v0 = func_global_asm_8067ADB4(0x60); // Hunky Chunky Barrel (Dogadon)
             if (temp_v0) {
-                func_global_asm_8067AB20(current_actor_pointer, temp_v0, 0x1000000, 1, &sp2C, 0);
+                func_global_asm_8067AB20(gCurrentActorPointer, temp_v0, 0x1000000, 1, &sp2C, 0);
             }
             temp_v0 = func_global_asm_8067ADB4(0x61); // TNT Barrel Spawner (Dogadon)
             if (temp_v0) {
-                func_global_asm_8067AB20(current_actor_pointer, temp_v0, 0x1000000, 3, &sp2C, 0);
+                func_global_asm_8067AB20(gCurrentActorPointer, temp_v0, 0x1000000, 3, &sp2C, 0);
                 return;
             }
             break;
         case 2:
             temp_v0 = func_global_asm_8067ADB4(0x60); // Hunky Chunky Barrel (Dogadon)
             if (temp_v0) {
-                func_global_asm_8067AB20(current_actor_pointer, temp_v0, 0x1000000, 1, &sp2C, 0);
+                func_global_asm_8067AB20(gCurrentActorPointer, temp_v0, 0x1000000, 1, &sp2C, 0);
             }
             temp_v0 = func_global_asm_8067ADB4(0x61); // TNT Barrel Spawner (Dogadon)
             if (temp_v0) {
-                func_global_asm_8067AB20(current_actor_pointer, temp_v0, 0x1000000, 2, &sp2C, 0);
+                func_global_asm_8067AB20(gCurrentActorPointer, temp_v0, 0x1000000, 2, &sp2C, 0);
             }
             break;
     }
@@ -157,7 +157,7 @@ void func_boss_8002A55C(u8 arg0, f32 arg1) {
     if (!(arg0 & object_timer)) {
         func_global_asm_807149B8(1);
         changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
-        func_global_asm_80714C08(&D_global_asm_80720120, arg1, current_actor_pointer, 1, 0);
+        func_global_asm_80714C08(&D_global_asm_80720120, arg1, gCurrentActorPointer, 1, 0);
     }
 }
 
@@ -165,13 +165,13 @@ void func_boss_8002A5CC(void) {
     f32 x, y, z;
     s16 i;
 
-    getBonePosition(current_actor_pointer, 1, &x, &y, &z);
+    getBonePosition(gCurrentActorPointer, 1, &x, &y, &z);
     x += RandClamp(80) - 40;
     y += RandClamp(100) + 50;
     z += RandClamp(80) - 40;
     func_global_asm_807149B8(1);
     func_global_asm_8071498C(func_global_asm_8071EDEC);
-    func_global_asm_80714950((s32)current_actor_pointer);
+    func_global_asm_80714950((s32)gCurrentActorPointer);
     changeActorColor(0xFF, 0xD7, 0x58, 0xFF);
     drawSpriteAtPosition(&D_global_asm_80720120, 1.5f, x, y, z);
     for (i = 0; i < 4; i++) {
@@ -181,7 +181,7 @@ void func_boss_8002A5CC(void) {
         func_global_asm_80714C08(
             D_global_asm_8074E880[RandClamp(1000) % 3],
             1.5f,
-            current_actor_pointer,
+            gCurrentActorPointer,
             (RandClamp(32767) % 22) + 2,
             0
         );
@@ -189,9 +189,9 @@ void func_boss_8002A5CC(void) {
 }
 
 void func_boss_8002A8B8(s32 arg0) {
-    if (func_global_asm_80725BA4(player_pointer->x_position, player_pointer->z_position, arg0) == 0) {
-        player_pointer->x_position = player_pointer->unk88;
-        player_pointer->z_position = player_pointer->unk90;
+    if (func_global_asm_80725BA4(gPlayerPointer->x_position, gPlayerPointer->z_position, arg0) == 0) {
+        gPlayerPointer->x_position = gPlayerPointer->unk88;
+        gPlayerPointer->z_position = gPlayerPointer->unk90;
     }
 }
 

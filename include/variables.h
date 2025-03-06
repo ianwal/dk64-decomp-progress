@@ -12,16 +12,16 @@
 extern s8 story_skip;
 extern s8 widescreen_enabled;
 extern PlayerAdditionalActorData *extra_player_info_pointer;
-extern Actor *current_actor_pointer;
-extern Actor *last_spawned_actor;
-extern Actor *current_player;
+extern Actor *gCurrentActorPointer;
+extern Actor *gLastSpawnedActor;
+extern Actor *gCurrentPlayer;
 extern GlobalASMStruct35 D_global_asm_807FBB70;
 extern Actor *D_global_asm_807FBD6C;
 extern Actor *D_global_asm_807FDC94;
 extern EnemyInfo *D_global_asm_807FDC98;
 extern u8 current_character_index[];
 extern CharacterChange *character_change_array;
-extern Actor *player_pointer;
+extern Actor *gPlayerPointer;
 extern u8 cc_player_index; // index into character_change_array, current_character_index[]
 extern u8 cc_number_of_players;
 extern u32 global_properties_bitfield;

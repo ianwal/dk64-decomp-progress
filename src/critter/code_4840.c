@@ -138,9 +138,9 @@ void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5, u16 a
         free(aaD->unk4);
     } else {
         spawnActor(ACTOR_DK_RAP_CONTROLLER, 0);
-        aaD = last_spawned_actor->additional_actor_data;
+        aaD = gLastSpawnedActor->additional_actor_data;
         aaD->unk0 = arg2 * 4;
-        D_critter_8002A1C4 = last_spawned_actor;
+        D_critter_8002A1C4 = gLastSpawnedActor;
         D_critter_8002A1C4->unkEC = 0;
     }
     D_critter_8002A1C4->x_position = func_critter_800288A8(
@@ -159,16 +159,16 @@ void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5, u16 a
 void func_critter_8002904C(void) {
     AAD_critter_8002904C *aaD;
     s32 temp;
-    aaD = current_actor_pointer->additional_actor_data;
+    aaD = gCurrentActorPointer->additional_actor_data;
     if (D_critter_8002A1CC < 0xF0) {
         if (D_critter_8002A1CE >= *(D_critter_8002A1C8[0] + D_critter_8002A1CC)) {
             D_critter_8002A1CC++;
-            aaD->unk810[++current_actor_pointer->unkEE] = 0xC;
+            aaD->unk810[++gCurrentActorPointer->unkEE] = 0xC;
         }
     }
-    if (current_actor_pointer->unk168 != 0) {
-        current_actor_pointer->unk168--;
-        addActorToTextOverlayRenderArray(func_critter_80028DE8, current_actor_pointer, 3);
+    if (gCurrentActorPointer->unk168 != 0) {
+        gCurrentActorPointer->unk168--;
+        addActorToTextOverlayRenderArray(func_critter_80028DE8, gCurrentActorPointer, 3);
     }
     D_critter_8002A1CE++;
 }

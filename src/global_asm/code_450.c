@@ -530,15 +530,15 @@ s32 func_global_asm_805FC668(void) {
             } else {
                 if (--D_global_asm_807445C8 <= 0) {
                     if (((gameIsInAdventureMode() != 0) || (gameIsInMysteryMenuMinigameMode() != 0)) && !(global_properties_bitfield & 0x40000)) {
-                        playSong(0x22, 1.0f);
-                        playSong(0x29, 1.0f);
+                        playSong(MUSIC_34_PAUSE_MENU, 1.0f);
+                        playSong(MUSIC_41_START_TO_PAUSE_GAME, 1.0f);
                         if ((cc_number_of_players < 2) && (gameIsInMysteryMenuMinigameMode() == 0)) {
                             spawnActor(ACTOR_PAUSE_MENU, 0);
                             global_properties_bitfield |= 0x100000;
                         } else {
                             spawnActor(ACTOR_PAUSE_MENU_MYSTERY_MENU, 0);
                         }
-                        last_spawned_actor->unk64 |= 2;
+                        gLastSpawnedActor->unk64 |= 2;
                     }
                     D_global_asm_807445C0 = osGetTime();
                     global_properties_bitfield ^= 1;
@@ -654,7 +654,7 @@ void func_global_asm_805FCA94(Struct805FD088 *arg0) {
                 D_global_asm_807444DC,
                 D_global_asm_807444E0, 0x20, 0x20);
             var_f20 = character_change_array[i].unk280;
-            player_aad = character_change_array[i].player_pointer->PaaD;
+            player_aad = character_change_array[i].playerPointer->PaaD;
             camera_aad = player_aad->unk104->CaaD;
             if (player_aad->unk1F0 & 0x100) {
                 var_f20 += 0.5 * func_global_asm_80612D1C(D_global_asm_807445CC * 0.1);

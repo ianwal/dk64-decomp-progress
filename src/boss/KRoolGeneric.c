@@ -140,9 +140,9 @@ void func_boss_80027A30(Struct80027A30_arg0 *arg0, u8 *arg1) {
     highest = 0;
     for (i = arg1[arg0->unk15]; i <= arg1[arg0->unk15 + 1]; i++) {
         temp_a0 = D_global_asm_807FDC98->unk20[i].unk0;
-        dz = current_actor_pointer->z_position - D_global_asm_807FDCA0->unk14[temp_a0].unk4;
-        dx = current_actor_pointer->x_position - D_global_asm_807FDCA0->unk14[temp_a0].unk0;
-        dy = current_actor_pointer->y_position - D_global_asm_807FDCA0->unk14[temp_a0].unk2;
+        dz = gCurrentActorPointer->z_position - D_global_asm_807FDCA0->unk14[temp_a0].unk4;
+        dx = gCurrentActorPointer->x_position - D_global_asm_807FDCA0->unk14[temp_a0].unk0;
+        dy = gCurrentActorPointer->y_position - D_global_asm_807FDCA0->unk14[temp_a0].unk2;
         d = sqrtf(SQ(dz) + (SQ(dx) + SQ(dy)));
         if (highest < d) {
             highest = d;
@@ -183,25 +183,25 @@ u8 func_boss_80027BA8(u8 *arg0, u16 arg1, f32 arg2) {
     s16 temp_a0;
     s32 cutscene;
 
-    temp_v1 = player_pointer->PaaD;
-    temp_s0 = current_actor_pointer->unk178;
+    temp_v1 = gPlayerPointer->PaaD;
+    temp_s0 = gCurrentActorPointer->unk178;
     sp2E = FALSE;
     sp2F = TRUE;
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0x54:
             sp2F = FALSE;
-            if (current_actor_pointer->control_state_progress) {
+            if (gCurrentActorPointer->control_state_progress) {
                 if (func_global_asm_80629148()) {
                     sp2F = TRUE;
                 }
             } else {
                 func_global_asm_80629174();
                 sp2F = FALSE;
-                current_actor_pointer->control_state_progress = 1;
+                gCurrentActorPointer->control_state_progress = 1;
             }
             break;
         case 0x5F:
-            playCutscene(current_actor_pointer, arg0[temp_s0->unk15++], 1);
+            playCutscene(gCurrentActorPointer, arg0[temp_s0->unk15++], 1);
             break;
         case 0x5E:
             if (is_cutscene_active == 1) {
@@ -210,7 +210,7 @@ u8 func_boss_80027BA8(u8 *arg0, u16 arg1, f32 arg2) {
                 sp2F = TRUE;
             }
             D_global_asm_8076A0B3 = 0;
-            current_actor_pointer->object_properties_bitfield &= ~4;
+            gCurrentActorPointer->object_properties_bitfield &= ~4;
             D_global_asm_8076A0B1 |= 0x10;
             temp_s0->unk15++;
             temp_s0->unk4 = (arg0[temp_s0->unk15] * 0x1E);
@@ -218,15 +218,15 @@ u8 func_boss_80027BA8(u8 *arg0, u16 arg1, f32 arg2) {
         case 0x5D:
             temp_s0->unk15++;
             sp2F = TRUE;
-            func_global_asm_8072B324(current_actor_pointer, arg0[temp_s0->unk15]);
+            func_global_asm_8072B324(gCurrentActorPointer, arg0[temp_s0->unk15]);
             sp2F = TRUE;
             break;
         case 0x5C:
-            ((BossUnkPaaD17C *)current_actor_pointer->unk17C)->unk0 = arg0[temp_s0->unk15++];
+            ((BossUnkPaaD17C *)gCurrentActorPointer->unk17C)->unk0 = arg0[temp_s0->unk15++];
             break;
         case 0x5A:
             sp2F = TRUE;
-            loadText(current_actor_pointer, arg0[temp_s0->unk15], arg0[temp_s0->unk15 + 1]);
+            loadText(gCurrentActorPointer, arg0[temp_s0->unk15], arg0[temp_s0->unk15 + 1]);
             sp2F = TRUE;
             temp_s0->unk15 += 2;
             break;
@@ -234,7 +234,7 @@ u8 func_boss_80027BA8(u8 *arg0, u16 arg1, f32 arg2) {
 block_16:
             sp2F = sp2F;
             func_global_asm_8072AB74(0x42U, D_global_asm_807FDC90->unkA, D_global_asm_807FDC90->unkE, arg1, arg2);
-            if (func_global_asm_8072D13C(current_actor_pointer->control_state, 0) == 0) {
+            if (func_global_asm_8072D13C(gCurrentActorPointer->control_state, 0) == 0) {
             default:
                 sp2F = FALSE;
             }
@@ -245,23 +245,23 @@ block_16:
         case 0x6D:
             break;
         case 0x58:
-            current_actor_pointer->object_properties_bitfield |= 4;
+            gCurrentActorPointer->object_properties_bitfield |= 4;
             break;
         case 0x59:
-            current_actor_pointer->object_properties_bitfield &= ~4;
+            gCurrentActorPointer->object_properties_bitfield &= ~4;
             break;
         case 0x51:
             sp2F = TRUE;
-            playActorAnimation(current_actor_pointer, arg0[temp_s0->unk15 + 1] + (arg0[temp_s0->unk15] << 8));
+            playActorAnimation(gCurrentActorPointer, arg0[temp_s0->unk15 + 1] + (arg0[temp_s0->unk15] << 8));
             sp2F = TRUE;
             temp_s0->unk15 += 2;
             break;
         case 0x55:
             sp2F = FALSE;
-            if (current_actor_pointer->control_state_progress == 0) {
+            if (gCurrentActorPointer->control_state_progress == 0) {
                 temp_s0->unk8[0] = arg0[temp_s0->unk15 + 1] + (arg0[temp_s0->unk15] << 8);
                 temp_s0->unk15 += 2;
-                current_actor_pointer->control_state_progress = 1;
+                gCurrentActorPointer->control_state_progress = 1;
             } else {
                 temp_s0->unk8[0]--;
                 if (temp_s0->unk8[0] == 0) {
@@ -270,12 +270,12 @@ block_16:
             }
             break;
         case 0x23:
-            if (current_actor_pointer->control_state_progress == 0) {
+            if (gCurrentActorPointer->control_state_progress == 0) {
                 temp_s0->unk15++;
                 temp_s0->unk8[0] = arg0[temp_s0->unk15];
-                current_actor_pointer->control_state_progress = 1;
+                gCurrentActorPointer->control_state_progress = 1;
                 sp2F = FALSE;
-                func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkD);
+                func_global_asm_8072B324(gCurrentActorPointer, D_global_asm_807FDC9C->unkD);
                 sp2F = sp2F;
             } else {
                 sp2F = FALSE;
@@ -285,18 +285,18 @@ block_16:
                 if ((temp_s0->unk8[0] == 0) || (temp_v1->unk1F0 & 0x80000)) {
                     temp_v1->unk1F0 &= 0xFFF7FFFF;
                     sp2F = TRUE;
-                    func_global_asm_8072B324(current_actor_pointer, D_global_asm_807FDC9C->unkC);
+                    func_global_asm_8072B324(gCurrentActorPointer, D_global_asm_807FDC9C->unkC);
                     sp2F = TRUE;
                 }
             }
             break;
         case 0x52:
-            if (!(current_actor_pointer->unk6A & 1)) {
+            if (!(gCurrentActorPointer->unk6A & 1)) {
                 sp2F = FALSE;
             }
             break;
         case 0x53:
-            if (current_actor_pointer->control_state_progress == 0) {
+            if (gCurrentActorPointer->control_state_progress == 0) {
                 sp2F = FALSE;
             }
             break;
@@ -340,14 +340,14 @@ block_16:
         case 0x67:
             func_boss_80027950(temp_s0, arg0);
             sp2F = FALSE;
-            current_actor_pointer->control_state = 0x42;
-            current_actor_pointer->control_state_progress = 0;
+            gCurrentActorPointer->control_state = 0x42;
+            gCurrentActorPointer->control_state_progress = 0;
             goto block_16;
         case 0x4C:
             func_boss_80027A30(temp_s0, arg0);
             sp2F = FALSE;
-            current_actor_pointer->control_state = 0x42;
-            current_actor_pointer->control_state_progress = 0;
+            gCurrentActorPointer->control_state = 0x42;
+            gCurrentActorPointer->control_state_progress = 0;
             goto block_16;
         case 0x4B:
             D_global_asm_807FDC90->unk25++;
@@ -356,28 +356,28 @@ block_16:
             }
             temp_s0->unk15 += 2;
             sp2F = FALSE;
-            current_actor_pointer->control_state = 0x42;
-            current_actor_pointer->control_state_progress = 0;
+            gCurrentActorPointer->control_state = 0x42;
+            gCurrentActorPointer->control_state_progress = 0;
             goto block_16;
         case 0x41:
             sp2F = FALSE;
             D_global_asm_807FDC90->unk25 = arg0[temp_s0->unk15++];
-            current_actor_pointer->control_state = 0x42;
-            current_actor_pointer->control_state_progress = 0;
+            gCurrentActorPointer->control_state = 0x42;
+            gCurrentActorPointer->control_state_progress = 0;
             goto block_16;
         case 0x49:
         case 0x4A:
             sp2F = FALSE;
-            switch (current_actor_pointer->control_state_progress) {
+            switch (gCurrentActorPointer->control_state_progress) {
                 case 0:
-                    current_actor_pointer->shadow_opacity -= 0xA;
-                    if (current_actor_pointer->shadow_opacity < 0) {
-                        current_actor_pointer->shadow_opacity = 0;
-                        current_actor_pointer->control_state_progress += 1;
+                    gCurrentActorPointer->shadow_opacity -= 0xA;
+                    if (gCurrentActorPointer->shadow_opacity < 0) {
+                        gCurrentActorPointer->shadow_opacity = 0;
+                        gCurrentActorPointer->control_state_progress += 1;
                     }
                     break;
                 case 1:
-                    if (current_actor_pointer->control_state == 0x49) {
+                    if (gCurrentActorPointer->control_state == 0x49) {
                         D_global_asm_807FDC90->unk25 = arg0[temp_s0->unk15++];
                     } else {
                         sp2F = FALSE;
@@ -386,14 +386,14 @@ block_16:
                     sp2F = FALSE;
                     func_global_asm_8072D13C(0x49U, 0);
                     sp2F = FALSE;
-                    current_actor_pointer->x_position = (f32) D_global_asm_807FDC90->unkA;
-                    current_actor_pointer->z_position = (f32) D_global_asm_807FDC90->unkE;
-                    current_actor_pointer->control_state_progress++;
+                    gCurrentActorPointer->x_position = (f32) D_global_asm_807FDC90->unkA;
+                    gCurrentActorPointer->z_position = (f32) D_global_asm_807FDC90->unkE;
+                    gCurrentActorPointer->control_state_progress++;
                     break;
                 case 2:
-                    current_actor_pointer->shadow_opacity += 0xA;
-                    if (current_actor_pointer->shadow_opacity >= 0x100) {
-                        current_actor_pointer->shadow_opacity = 0xFF;
+                    gCurrentActorPointer->shadow_opacity += 0xA;
+                    if (gCurrentActorPointer->shadow_opacity >= 0x100) {
+                        gCurrentActorPointer->shadow_opacity = 0xFF;
                         sp2F = TRUE;
                     }
                     break;
@@ -401,8 +401,8 @@ block_16:
             break;
     }
     if (sp2F) {
-        current_actor_pointer->control_state = arg0[temp_s0->unk15++];
-        current_actor_pointer->control_state_progress = 0;
+        gCurrentActorPointer->control_state = arg0[temp_s0->unk15++];
+        gCurrentActorPointer->control_state_progress = 0;
     }
     return sp2E;
 }
@@ -432,7 +432,7 @@ void func_boss_80028478(u16 flagIndex, s16 arg1, s16 arg2, s16 arg3, s16 arg4, u
 
 void func_boss_80028680(void) {
     func_global_asm_806A2A10(-0x7F83, 0xD2, 0xB4);
-    func_global_asm_806A2B08(current_actor_pointer->unk11C);
+    func_global_asm_806A2B08(gCurrentActorPointer->unk11C);
 }
 
 Gfx *func_boss_800286B8(Gfx *dl, Actor *arg1) {
@@ -477,20 +477,20 @@ void func_boss_80028878(u8 *arg0) {
     u8 var_a0;
     A17C_80028878 *a17C;
 
-    a178 = current_actor_pointer->unk178;
+    a178 = gCurrentActorPointer->unk178;
     sp43 = current_map - MAP_KROOL_FIGHT_DK_PHASE;
-    a17C = current_actor_pointer->unk17C;
-    if (player_pointer->y_position < 30.0f) {
-        player_pointer->x_position = 780.0f;
-        player_pointer->y_position = 50.0f;
-        player_pointer->z_position = 750.0f;
-        drawSpriteAtPosition(&D_global_asm_8071FE08, 1.0f, player_pointer->x_position, player_pointer->y_position, player_pointer->z_position);
+    a17C = gCurrentActorPointer->unk17C;
+    if (gPlayerPointer->y_position < 30.0f) {
+        gPlayerPointer->x_position = 780.0f;
+        gPlayerPointer->y_position = 50.0f;
+        gPlayerPointer->z_position = 750.0f;
+        drawSpriteAtPosition(&D_global_asm_8071FE08, 1.0f, gPlayerPointer->x_position, gPlayerPointer->y_position, gPlayerPointer->z_position);
     }
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         func_global_asm_806FB370(5, 0, 1);
         func_global_asm_806FB370(2, 0, 1);
-        current_actor_pointer->object_properties_bitfield &= 0xFFFDFFFF;
-        if ((a178->unk14 == 0) || (current_actor_pointer->unk58 != ACTOR_BOSS_KROOL_TINY)) {
+        gCurrentActorPointer->object_properties_bitfield &= 0xFFFDFFFF;
+        if ((a178->unk14 == 0) || (gCurrentActorPointer->unk58 != ACTOR_BOSS_KROOL_TINY)) {
             if (!isFlagSet(TEMPFLAG_K_ROOL_TIMEOUT, FLAG_TYPE_TEMPORARY)) {
                 func_global_asm_80709464(0);
             }
@@ -501,8 +501,8 @@ void func_boss_80028878(u8 *arg0) {
                 setFlag(TEMPFLAG_UNK_55, FALSE, FLAG_TYPE_TEMPORARY);
                 func_global_asm_80712524(MAP_KROOLS_ARENA, 0);
                 D_global_asm_80750AD4 = 0;
-                current_actor_pointer->control_state = 0x6A;
-                current_actor_pointer->control_state_progress = 0;
+                gCurrentActorPointer->control_state = 0x6A;
+                gCurrentActorPointer->control_state_progress = 0;
             }
         }
         func_global_asm_80737638(D_global_asm_8076D1F8, 0x1E6, 0, 0x40, 1.0f, 0x80, &a17C->unk4);
@@ -513,39 +513,39 @@ void func_boss_80028878(u8 *arg0) {
         // Hmm, some debug code commented out?
     }
 
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0x37:
-            if (current_actor_pointer->control_state_progress == 0) {
-                func_global_asm_806A2B20(current_actor_pointer->unk11C);
+            if (gCurrentActorPointer->control_state_progress == 0) {
+                func_global_asm_806A2B20(gCurrentActorPointer->unk11C);
             }
             break;
         case 0x6A:
-            if (current_actor_pointer->control_state_progress == 0) {
-                playActorAnimation(current_actor_pointer, 0);
-                current_actor_pointer->control_state_progress++;
+            if (gCurrentActorPointer->control_state_progress == 0) {
+                playActorAnimation(gCurrentActorPointer, 0);
+                gCurrentActorPointer->control_state_progress++;
             }
             break;
         case 0x6C:
             a178->unk12 |= 1;
             func_boss_80028680();
-            if ((a178->unk14 != 0) && (current_actor_pointer->unk58 == ACTOR_BOSS_KROOL_TINY)) {
-                func_global_asm_806A2B80(current_actor_pointer->unk11C);
+            if ((a178->unk14 != 0) && (gCurrentActorPointer->unk58 == ACTOR_BOSS_KROOL_TINY)) {
+                func_global_asm_806A2B80(gCurrentActorPointer->unk11C);
             }
-            current_actor_pointer->control_state = arg0[a178->unk15];
+            gCurrentActorPointer->control_state = arg0[a178->unk15];
             a178->unk15++;
-            current_actor_pointer->control_state_progress = 0;
+            gCurrentActorPointer->control_state_progress = 0;
             break;
         default:
-            if ((current_actor_pointer->unk11C != NULL) && (current_actor_pointer->unk11C->control_state == 5)) {
+            if ((gCurrentActorPointer->unk11C != NULL) && (gCurrentActorPointer->unk11C->control_state == 5)) {
                 func_boss_80028820();
-                current_actor_pointer->control_state = 0x6A;
-                current_actor_pointer->control_state_progress = 0;
-                playCutscene(current_actor_pointer, D_boss_800359C4[sp43], 1);
+                gCurrentActorPointer->control_state = 0x6A;
+                gCurrentActorPointer->control_state_progress = 0;
+                playCutscene(gCurrentActorPointer, D_boss_800359C4[sp43], 1);
                 setFlag(TEMPFLAG_K_ROOL_TIMEOUT, TRUE, FLAG_TYPE_TEMPORARY);
             }
             break;
     }
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         if (gameIsInMysteryMenuMinigameMode()) {
             setFlag(TEMPFLAG_UNK_55, FALSE, FLAG_TYPE_TEMPORARY);
         }
@@ -554,36 +554,36 @@ void func_boss_80028878(u8 *arg0) {
             func_boss_80028820();
             D_global_asm_80750AD4 = 1;
             if (!isFlagSet(TEMPFLAG_K_ROOL_DK_INTRO, FLAG_TYPE_TEMPORARY)) {
-                playCutscene(current_actor_pointer, 0x19, 1);
+                playCutscene(gCurrentActorPointer, 0x19, 1);
                 setFlag(TEMPFLAG_K_ROOL_DK_INTRO, TRUE, FLAG_TYPE_TEMPORARY);
             } else {
-                playCutscene(current_actor_pointer, D_boss_800359A0[0], 1);
+                playCutscene(gCurrentActorPointer, D_boss_800359A0[0], 1);
             }
             setFlag(TEMPFLAG_RESET_TINY_PHASE, FALSE, FLAG_TYPE_TEMPORARY);
             setFlag(TEMPFLAG_UNK_55, TRUE, FLAG_TYPE_TEMPORARY);
         } else {
             flagIndex = var_a0 + TEMPFLAG_UNK_55;
             if (!isFlagSet(flagIndex, FLAG_TYPE_TEMPORARY)) {
-                playCutscene(current_actor_pointer, D_boss_800359A0[sp43], 1);
+                playCutscene(gCurrentActorPointer, D_boss_800359A0[sp43], 1);
                 setFlag(flagIndex, TRUE, FLAG_TYPE_TEMPORARY);
             } else if (isFlagSet(TEMPFLAG_K_ROOL_TIMEOUT, FLAG_TYPE_TEMPORARY)) {
                 if (isFlagSet(TEMPFLAG_K_ROOL_CRANKY_CS_PLAYED, FLAG_TYPE_TEMPORARY)) {
-                    playCutscene(current_actor_pointer, D_boss_800359AC[sp43], 1);
+                    playCutscene(gCurrentActorPointer, D_boss_800359AC[sp43], 1);
                     setFlag(TEMPFLAG_K_ROOL_TIMEOUT, FALSE, FLAG_TYPE_TEMPORARY);
                 } else {
                     func_global_asm_80602B60(0x2B, 0);
-                    current_actor_pointer->control_state = 0x6A;
-                    current_actor_pointer->control_state_progress = 0;
+                    gCurrentActorPointer->control_state = 0x6A;
+                    gCurrentActorPointer->control_state_progress = 0;
                     setFlag(TEMPFLAG_K_ROOL_CRANKY_CS_PLAYED, TRUE, FLAG_TYPE_TEMPORARY);
                     func_global_asm_80712524(MAP_KROOLS_ARENA, 1);
                     D_global_asm_80750AD4 -= 1;
                 }
             } else {
-                playCutscene(current_actor_pointer, D_boss_800359B8[sp43], 1);
+                playCutscene(gCurrentActorPointer, D_boss_800359B8[sp43], 1);
             }
         }
     }
-    if ((current_player->control_state == 0x67) || (func_global_asm_80602D4C(0xF) > 0.1)) {
+    if ((gCurrentPlayer->control_state == 0x67) || (func_global_asm_80602D4C(0xF) > 0.1)) {
         a17C->unkE = 7500;
         a17C->unk10 = MAX(7500, a17C->unk10 - 1000);
     } else {
@@ -632,17 +632,17 @@ void func_boss_80028878(u8 *arg0) {
         a17C->unkE = MIN(0x7FFF, a17C->unkE + 18000);
     }
     if ((a178->unk12 & 1) && (func_global_asm_805FCA64())) {
-        addActorToTextOverlayRenderArray(func_boss_800286B8, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_boss_800286B8, gCurrentActorPointer, 3);
     }
 }
 
 void func_boss_800290D4(u8 arg0) {
     if (arg0) {
-        func_global_asm_8066EA64(current_actor_pointer, 2);
-        func_global_asm_8066EA64(current_actor_pointer, 3);
+        func_global_asm_8066EA64(gCurrentActorPointer, 2);
+        func_global_asm_8066EA64(gCurrentActorPointer, 3);
     } else {
-        func_global_asm_8066EA90(current_actor_pointer, 2);
-        func_global_asm_8066EA90(current_actor_pointer, 3);
+        func_global_asm_8066EA90(gCurrentActorPointer, 2);
+        func_global_asm_8066EA90(gCurrentActorPointer, 3);
     }
 }
 

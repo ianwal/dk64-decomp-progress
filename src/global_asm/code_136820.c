@@ -149,7 +149,7 @@ static void *D_global_asm_80756360[] = {
 };
 
 static u8 D_global_asm_807563B0 = 0;
-u8 D_global_asm_807563B4 = 0;
+u8 gCrashDebuggerEnabled = 0;
 static s32 D_global_asm_807563B8 = 0;
 
 //
@@ -406,7 +406,7 @@ void func_global_asm_80732280(void* arg0) {
     do {
         do {
             osRecvMesg(&D_global_asm_807FEF58, &sp3C, 1);
-        } while (!D_global_asm_807563B4);
+        } while (!gCrashDebuggerEnabled);
         temp_s1 = func_dk64_boot_80005A70();
     } while (!temp_s1);
 

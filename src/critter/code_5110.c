@@ -58,8 +58,8 @@ void func_critter_80029118(void) {
     s32 sp38;
     AAD_critter_80029118 *aaD; // Not in stack
 
-    aaD = current_actor_pointer->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    aaD = gCurrentActorPointer->additional_actor_data;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         D_critter_80029FA8 = 0;
         playCutscene(NULL, 0, 1);
         D_critter_80029FA4 = D_global_asm_807FCC44;
@@ -83,9 +83,9 @@ void func_critter_80029118(void) {
                 D_critter_80029FA0 = 5; // 5 barrels to break?
                 break;
         }
-        current_actor_pointer->control_state = 0;
+        gCurrentActorPointer->control_state = 0;
     }
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0x0:
             if (is_cutscene_active == 1) {
                 if (func_global_asm_8061CB38()) {
@@ -103,17 +103,17 @@ void func_critter_80029118(void) {
                             sp74 = 3;
                             break;
                     }
-                    loadText(current_actor_pointer, 0x19, sp74);
-                    current_actor_pointer->control_state = 1;
+                    loadText(gCurrentActorPointer, 0x19, sp74);
+                    gCurrentActorPointer->control_state = 1;
                     func_global_asm_806A2A10(0xDC, 0x2A, aaD->unk4);
                 }
             }
             break;
         case 0x1:
-            if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+            if (!(gCurrentActorPointer->object_properties_bitfield & 0x02000000)) {
                 func_global_asm_8061CB08();
-                current_actor_pointer->control_state = 2;
-                func_global_asm_806A2B08(current_actor_pointer->unk11C);
+                gCurrentActorPointer->control_state = 2;
+                func_global_asm_806A2B08(gCurrentActorPointer->unk11C);
                 playSong(MUSIC_8_BONUS_MINIGAMES, 1.0f);
             }
             break;
@@ -124,15 +124,15 @@ void func_critter_80029118(void) {
             }
             temp_v1 = func_critter_80029110(~(u32)(&osWritebackDCache));
             if (D_critter_80029FA0 <= 0) {
-                current_actor_pointer->control_state = 3;
+                gCurrentActorPointer->control_state = 3;
             }
             temp_v1(var_s0, 0x10);
             sp50 = func_critter_80029110(-0xDC1);
             dmafunc = func_critter_80029110(~(u32)(&osPiStartDma));
             dmafunc(&D_global_asm_807ECE00, 0, 0, sp50, aaD, 0x10, &D_global_asm_807655F0);
             temp = &osRecvMesg;
-            if (current_actor_pointer->unk11C->control_state == 5) {
-                current_actor_pointer->control_state = 0xFF;
+            if (gCurrentActorPointer->unk11C->control_state == 5) {
+                gCurrentActorPointer->control_state = 0xFF;
             }
             recvfunc = func_critter_80029110(~temp);
             recvfunc(&D_global_asm_807655F0, NULL, 1);
@@ -150,11 +150,11 @@ void func_critter_80029118(void) {
             }
             break;
         case 0x3:
-            current_actor_pointer->unk11C->control_state = 1;
+            gCurrentActorPointer->unk11C->control_state = 1;
             aaD->unk2 = func_global_asm_806FDB8C(1, "WELL DONE!", 2, 160.0f, 100.0f, 0.0f);
             playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
             aaD->unk0 = 0x78;
-            current_actor_pointer->control_state = 0xFE;
+            gCurrentActorPointer->control_state = 0xFE;
             D_critter_80029FA8 = 1;
             break;
         case 0xFE:
@@ -195,10 +195,10 @@ void func_critter_80029118(void) {
             D_critter_80029FA8 = 0;
             aaD->unk2 = func_global_asm_806FDB8C(1, "TIME OUT!", 2, 160.0f, 100.0f, 0.0f);
             aaD->unk0 = 0x78;
-            current_actor_pointer->control_state = 0xFE;
+            gCurrentActorPointer->control_state = 0xFE;
             break;
     }
-    addActorToTextOverlayRenderArray(func_critter_800296DC, current_actor_pointer, 3);
+    addActorToTextOverlayRenderArray(func_critter_800296DC, gCurrentActorPointer, 3);
 }
 */
 

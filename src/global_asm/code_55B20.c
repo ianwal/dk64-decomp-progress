@@ -790,7 +790,7 @@ void func_global_asm_80653B70(u8 arg0) {
 void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2) {
     character_change_array[cc_player_index].chunk = func_global_asm_806531B8(arg0, arg1, arg2, character_change_array[cc_player_index].chunk);
     if (D_global_asm_807F70AB != 0) {
-        character_change_array[cc_player_index].chunk = character_change_array[cc_player_index].player_pointer->unk12C;
+        character_change_array[cc_player_index].chunk = character_change_array[cc_player_index].playerPointer->unk12C;
     }
     func_global_asm_80663C60(&character_change_array[cc_player_index].far, character_change_array[cc_player_index].chunk);
     D_global_asm_807F7138 = character_change_array[cc_player_index].far;

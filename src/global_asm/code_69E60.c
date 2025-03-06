@@ -124,7 +124,7 @@ void func_global_asm_80665564(Actor *arg0, f32 arg1) {
     arg0->unk6A &= 0xFFFE;
     arg0->distance_from_floor = arg0->y_position - arg0->floor - arg1;
     if ((arg0->y_position - arg0->floor <= arg1) || ((arg0->unk6C & 1) && (arg0->y_velocity < 0.0f))) {
-        if ((current_actor_pointer->unk6A & 0x200) || (current_map == MAP_GALLEON_SEAL_RACE) || (current_map == MAP_GALLEON_PUFFTOSS) || (current_map == MAP_CASTLE_CAR_RACE)) {
+        if ((gCurrentActorPointer->unk6A & 0x200) || (current_map == MAP_GALLEON_SEAL_RACE) || (current_map == MAP_GALLEON_PUFFTOSS) || (current_map == MAP_CASTLE_CAR_RACE)) {
             if (arg0->distance_from_floor < 0.5) {
                 temp_v0 = arg0->animation_state;
                 if (temp_v0 != NULL) {

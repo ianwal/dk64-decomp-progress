@@ -1797,13 +1797,13 @@ s32 func_global_asm_80672CBC(s8 arg0) {
             D_global_asm_807FB548 = 1;
             return TRUE;
         case 6:
-            PaaD = player_pointer->PaaD;
+            PaaD = gPlayerPointer->PaaD;
             if ((D_global_asm_807FB53C == 3) && (PaaD->unk1A3 != 0)) {
                 return TRUE;
             }
             break;
         case 7:
-            PaaD = player_pointer->PaaD;
+            PaaD = gPlayerPointer->PaaD;
             if ((D_global_asm_807FB53C == 6) && ((character_change_array->unk2C0 != 1) || (PaaD->unk1CC != PaaD->unk1C0))) {
                 return TRUE;
             }
