@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // close, doable, stack
 // https://decomp.me/scratch/KH3n0

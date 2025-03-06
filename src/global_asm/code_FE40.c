@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // Doable, close, regalloc
 // https://decomp.me/scratch/5iYVm

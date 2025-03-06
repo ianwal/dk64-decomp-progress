@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // tiny, round float, can't auto decompile
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070C200.s")

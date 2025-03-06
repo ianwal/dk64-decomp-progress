@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // rodata
 const s32 D_boss_80035C00[] = {

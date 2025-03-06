@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // TODO: What are the actual datatypes?
 s32 func_global_asm_8068A3A0(s32, u32 *);

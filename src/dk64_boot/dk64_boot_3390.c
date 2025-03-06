@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // .data
 s32 D_dk64_boot_8000EEF0 = 0;

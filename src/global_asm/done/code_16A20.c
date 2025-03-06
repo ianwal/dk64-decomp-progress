@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 static u16 D_global_asm_80746A50[] = {
     0x8000,

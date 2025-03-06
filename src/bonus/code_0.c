@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern s16 D_global_asm_80750AC4;
 extern s16 D_global_asm_8076AEF2;

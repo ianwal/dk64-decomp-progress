@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 #include "viint.h"
 
 void osViSetEvent(OSMesgQueue* mq, OSMesg m, u32 retraceCount) {

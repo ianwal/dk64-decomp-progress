@@ -143,7 +143,7 @@ CPPFLAGS       := -D_FINALROM -DN_MICRO -DF3DEX_GBI_2x
 INCLUDE_CFLAGS := -I . -I include -I include/2.0L -I include/2.0L/PR -I include/libc
 OPT_FLAGS      := -O2 
 MIPSBIT        := -mips2
-ASFLAGS        := -EB -march=vr4300 -mabi=32 -mgp32 -mfp32 -I include -mfp32 -mgp32
+ASFLAGS        := -EB -march=vr4300 -mabi=32 -mgp32 -mfp32 -I include
 GCC_ASFLAGS    := -c -x assembler-with-cpp -mabi=32 -ffreestanding -mtune=vr4300 -march=vr4300 -mabi=32 -mgp32 -mfp32 -mfix4300 -G 0 -O -mno-shared -fno-PIC -mno-abicalls
 LDFLAGS        := -T $(LD_SCRIPT) -Map $(ELF:.elf=.map) --no-check-sections --accept-unknown-input-arch -T undefined_syms_auto.$(VERSION).txt -T undefined_funcs_auto.$(VERSION).txt -T undefined_syms.txt
 BINOFLAGS      := -I binary -O elf32-tradbigmips

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 
 void __osDequeueThread(OSThread **queue, OSThread *t)

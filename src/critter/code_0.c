@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 typedef struct CritterStruct5 {
     s16 x_position; // 0x00

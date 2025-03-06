@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 #include "n_synthInternals.h"
 
 ALFxRef func_global_asm_8073D160( s16 bus,ALSynConfig *c, ALHeap *hp);

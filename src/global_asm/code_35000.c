@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern Chunk14 *D_global_asm_807F5FF0;
 extern Chunk14 *D_global_asm_807F5FF4;

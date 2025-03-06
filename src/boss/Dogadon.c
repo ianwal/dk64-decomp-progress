@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 static const s32 D_boss_800362F0[] = {
     0x09000102,

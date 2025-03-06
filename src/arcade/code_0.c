@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 #include "arcade_int.h"
 
 extern s32 D_arcade_8004A30C;

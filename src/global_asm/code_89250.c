@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 int func_global_asm_807197B4(); // TODO: Signature
 

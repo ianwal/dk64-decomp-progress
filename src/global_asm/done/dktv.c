@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // .data
 static s16 D_global_asm_807463A0 = 0;

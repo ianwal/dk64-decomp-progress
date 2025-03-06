@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 s32 func_global_asm_8063367C(s32, u8, s32);
 s32 func_global_asm_80671D64(Actor*, s32);

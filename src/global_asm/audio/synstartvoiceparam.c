@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void *__n_allocParam();
 s32 func_global_asm_80739E24(s32);

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern s8 D_global_asm_80745844;
 extern s8 opening_cutscene_transition;

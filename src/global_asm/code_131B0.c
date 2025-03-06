@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 #include "sched.h"
 
 typedef struct Unk807F0540 {

@@ -1,3 +1,6 @@
+#ifndef _VARIABLES_H_
+#define _VARIABLES_H_
+
 #define MATH_HALFPI_F 1.5707964f
 #define MATH_PI_F 3.1415927f
 #define MATH_2PI_F 6.283185482f
@@ -532,3 +535,4 @@ extern SpriteData D_global_asm_807214E8;
 extern SpriteData D_global_asm_80721500;
 extern SpriteData D_global_asm_80721518;
 extern SpriteData D_global_asm_80721530;
+#endif

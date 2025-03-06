@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern JetpacRenderingCell D_jetpac_8002F3D0[0x300];
 extern s32 D_jetpac_80045BD0;

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void n_alCSeqNew(ALCSeq *seq, u8 *music_midi_bin) {
     u32 i;

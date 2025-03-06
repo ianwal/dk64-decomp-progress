@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 

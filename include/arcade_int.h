@@ -1,8 +1,7 @@
 #ifndef ARCADE_INTERNAL_H
 #define ARCADE_INTERNAL_H
 
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 enum ARCADE_OBJ_E {
     ARCADE_OBJ_01_BARREL = 1,

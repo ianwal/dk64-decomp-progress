@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_global_asm_80676D00(Actor *arg0, Actor *arg1, s32 arg2, s32 arg3) {
     u8 temp_a2;

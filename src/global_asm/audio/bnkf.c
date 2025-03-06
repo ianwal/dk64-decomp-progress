@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void _bnkfPatchInst(ALInstrument *arg0, s32 arg1, s32 arg2);
 void _bnkfPatchSound(ALSound *arg0, s32 arg1, s32 arg2);

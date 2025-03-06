@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // TODO: Is there a file split somewhere in here? Rodata messes up around D_bonus_8002DDD4
 // .rodata
@@ -125,7 +124,7 @@ Gfx *func_bonus_80026940(Gfx *dl, Actor *KoshController) {
     s32 pad70;
     s32 pad68;
     s32 pad68_0;
-    s8 *text_str;
+    u8 *text_str;
     s32 pad[0x6];
     s32 x;
     KremlingKoshAAD *aad;
@@ -198,13 +197,6 @@ Gfx *func_bonus_80026940(Gfx *dl, Actor *KoshController) {
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80026CF0.s")
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    u8 unk8;
-    u8 unk9;
-} AAD_bonus_800271B4;
-
-typedef struct {
     Actor* unk0[4]; // Used, might be bigger
     s32 unk10;
     s32 unk14;
@@ -218,6 +210,12 @@ typedef struct {
     u8 unk2B;
     f32 unk2C; // Used
 } Struct800271B4;
+typedef struct {
+    Struct800271B4* unk0;
+    s32 unk4;
+    u8 unk8;
+    u8 unk9;
+} AAD_bonus_800271B4;
 
 void func_bonus_800271B4(s16 arg0, s16 arg1, s16 arg2, u8 arg3, Struct800271B4 *arg4) {
     u8 var_a3;
@@ -244,8 +242,24 @@ typedef struct bonus_struct_0 {
     u8 unk9;
 } BonusStruct0;
 
-void func_bonus_80027308(BonusStruct0 *arg0, s32 *arg1) {
-    *(arg1 + (arg0->unk9)) = 0;
+typedef struct {
+    s32 unk0[8]; //is this array 8 in size?
+    u16 unk20;
+    s16 unk22; // Used
+    u8 unk24;
+    u8 unk25; // Used
+    u16 unk26;
+} AAD_bonus_800284C0_unk0;
+
+typedef struct {
+    AAD_bonus_800284C0_unk0 *unk0; // Used
+    u32 unk4;
+    u8 unk8; // Used
+    u8 unk9;
+} AAD_bonus_800284C0;
+
+void func_bonus_80027308(AAD_bonus_800284C0 *arg0, AAD_bonus_800284C0_unk0 *arg1) {
+    arg1->unk0[arg0->unk9] = 0;
     deleteActor(gCurrentActorPointer);
 }
 
@@ -531,28 +545,6 @@ void func_bonus_800277F8(void) {
 // TODO: Similar to above but for TTT
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80027F14.s")
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    u16 unk20;
-    s16 unk22; // Used
-    u8 unk24;
-    u8 unk25; // Used
-    u16 unk26;
-} AAD_bonus_800284C0_unk0;
-
-typedef struct {
-    AAD_bonus_800284C0_unk0 *unk0; // Used
-    u32 unk4;
-    u8 unk8; // Used
-} AAD_bonus_800284C0;
-
 extern u8 D_global_asm_807FBB85;
 
 void func_global_asm_8072881C(s32, void*);
@@ -601,7 +593,7 @@ typedef struct {
 
 typedef struct {
     Actor* unk0; // Used
-    s32 unk4;
+    Actor* unk4;
     s32 unk8;
     s32 unkC;
     u8 unk10;

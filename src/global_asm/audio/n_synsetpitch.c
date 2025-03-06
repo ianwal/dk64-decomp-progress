@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 ALParam *__n_allocParam();
 void n_alEnvmixerParam(CustomPVoice *, s32, ALParam *);

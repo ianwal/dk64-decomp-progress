@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern void *D_dk64_boot_80013AB0;
 extern u8 *D_dk64_boot_80013AC0;

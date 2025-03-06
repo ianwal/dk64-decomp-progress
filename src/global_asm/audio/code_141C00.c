@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 #include "synthinternal.h"
 
 ALParam *__n_allocParam();

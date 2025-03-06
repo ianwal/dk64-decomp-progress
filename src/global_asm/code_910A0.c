@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern s32 D_global_asm_807501E8; // TODO: Type
 
