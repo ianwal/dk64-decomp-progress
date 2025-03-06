@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 f32 func_global_asm_80612E40(f32 arg0) {
     s32 temp_f4;

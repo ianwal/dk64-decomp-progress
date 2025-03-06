@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 typedef struct {
     u8 unk0[0x2C - 0x0];

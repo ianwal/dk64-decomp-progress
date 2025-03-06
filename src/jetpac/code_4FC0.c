@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 typedef struct JetpacStruct9 {
     u8 pad0[0x18];

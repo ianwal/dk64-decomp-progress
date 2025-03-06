@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 
 // Jumptable, doable, switch case is not detected by mips2c

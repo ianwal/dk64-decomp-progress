@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 
 u64 __ull_rshift(u64 arg0, u64 arg1) {

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern Struct80717D84 *D_minecart_80028C30;
 

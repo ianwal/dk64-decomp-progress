@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // TODO: Add this to the aaD union
 typedef struct {

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_global_asm_8073B5D0(ALPlayer *arg0) {
     OSIntMask sp1C;

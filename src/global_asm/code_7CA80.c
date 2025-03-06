@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // .rodata
 static const char D_global_asm_80759260[] = "DONKEY";

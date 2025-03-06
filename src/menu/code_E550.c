@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_global_asm_8068A858(s32 *, s32 *, s32 *);
 extern Gfx* func_menu_8003292C(Gfx *dl);

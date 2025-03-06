@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 
 extern void *D_global_asm_80748E14; // TODO: Datatype

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_dk64_boot_80000AA0(void);
 void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, u8 *arg3);

@@ -1,7 +1,6 @@
 // IDO Compiler Intrinsics for 64-bit conversion
 
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 s64 __d_to_ll(f64 d) {
     return d;

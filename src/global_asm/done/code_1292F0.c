@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_global_asm_80723CCC(s32, s32, f32, f32 *, f32 *, f32 *);
 void func_global_asm_80723F88(s16, f32, f32, f32, void *, void *);

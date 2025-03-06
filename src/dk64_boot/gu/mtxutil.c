@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 
 void guMtxF2L(f32 mf[4][4], Mtx *m) {

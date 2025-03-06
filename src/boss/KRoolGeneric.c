@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern void func_global_asm_8071CDE0(void* arg0, s32 arg1);
 

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 const u16 D_global_asm_8075A740[] = {
     0, 0, 0, 0

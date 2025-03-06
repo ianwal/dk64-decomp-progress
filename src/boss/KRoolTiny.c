@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_global_asm_80613CA8(Actor*, s16, f32, f32);
 extern u8 D_global_asm_807FBD70;

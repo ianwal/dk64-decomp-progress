@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // TODO: Is this just a float array? Matrix? idk
 typedef struct {

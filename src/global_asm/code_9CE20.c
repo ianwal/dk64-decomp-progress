@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9CE20/func_global_asm_80698120.s")

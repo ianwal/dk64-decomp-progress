@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern u8 D_global_asm_807F93C4;
 extern f32 D_global_asm_807F93C8[2]; // x, y (TODO: probably z too)

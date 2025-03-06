@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 typedef struct CutsceneBank_unk0 {
     u8 pad0[4];

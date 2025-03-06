@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 f32 func_global_asm_80612B00(f32 arg0, s16 arg1) {
     f32 var_f2;

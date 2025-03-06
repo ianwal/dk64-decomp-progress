@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 s32 func_global_asm_8072881C(s32, s32);
 

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 typedef struct global_asm_struct_78 {
     s32 unk0;

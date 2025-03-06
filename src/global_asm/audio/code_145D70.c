@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 #include "synthinternal.h"
 
 Acmd *func_global_asm_80740100(CustomPVoice *, s16 *, s32, Acmd *);

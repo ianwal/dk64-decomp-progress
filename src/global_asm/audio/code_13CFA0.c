@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_global_asm_807382A0(ALSeqPlayer *seqp, s32 ticks, u8 status, u8 byte1, u8 byte2) {
     ALEvent evt;

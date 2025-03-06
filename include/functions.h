@@ -1,10 +1,10 @@
 #ifndef __FUNCTIONS_H__
 #define __FUNCTIONS_H__
 
+#include <ultra64.h>
+#include "common.h"
 #include "enums.h"
-#include "structs.h"
 #include "variables.h"
-#include "macros.h"
 
 /* your function prototype definitions go here */
 
@@ -3254,7 +3254,7 @@ void func_global_asm_806FBC34(void);
 s32 getCenterOfString(s16 renderStyle, u8 *string);
 s16 func_global_asm_806FBEAC(u8 *arg0);
 Gfx *func_global_asm_806FBEF0(Gfx *dl, u8 arg1, s16 arg2);
-Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, char *string, u32 extraBitfield);
+Gfx *printStyledText(Gfx *dl, s16 style, s16 x, s16 y, u8 *string, u32 extraBitfield);
 // TODO: func_global_asm_806FCC88 has no documented signature
 // TODO: func_global_asm_806FD094 has no documented signature
 // TODO: func_global_asm_806FD490 has no documented signature
@@ -3411,7 +3411,7 @@ s32 func_global_asm_8070DDDC(u16 arg0, s32 arg1);
 // TODO: func_global_asm_8070E2AC has no documented signature but has been matched
 void func_global_asm_8070E34C(void *arg0, void *arg1, s32 arg2);
 void func_global_asm_8070E548(Actor *arg0, u16 arg1, u8 arg2);
-char *getTextString(u8 fileIndex, s32 stringIndex, s32 arg2);
+u8 *getTextString(u8 fileIndex, s32 stringIndex, s32 arg2);
 void func_global_asm_8070E808(Actor *arg0, Actor *arg1);
 void func_global_asm_8070E8C8(void);
 void func_global_asm_8070E8DC(u8 arg0);

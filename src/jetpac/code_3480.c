@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 s32 func_jetpac_80027480(void) {
     return (s32) ((func_jetpac_80027210() * 200.0f) + 90.0f);

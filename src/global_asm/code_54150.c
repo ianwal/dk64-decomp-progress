@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064F450.s")

@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void __osResetGlobalIntMask(OSHWIntr interrupt)
 {

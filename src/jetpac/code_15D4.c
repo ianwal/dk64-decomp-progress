@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern uSprite D_jetpac_8002C4D0[];
 extern uSprite D_jetpac_8002B9C0[];

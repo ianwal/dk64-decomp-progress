@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 tuple_f *func_global_asm_80612840(tuple_f *output, tuple_f a0, tuple_f a1) {
     tuple_f result;

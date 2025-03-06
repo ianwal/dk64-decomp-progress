@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 void func_global_asm_80735A50(ALSeqPlayer *seqp, ALBank *b) {
     ALEvent evt;

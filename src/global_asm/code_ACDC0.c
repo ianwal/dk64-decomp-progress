@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 // .rodata
 const char D_global_asm_8075AA80[] = "JUNGLE";

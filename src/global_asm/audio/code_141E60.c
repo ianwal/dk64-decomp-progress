@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 
 void n_alFxNew(s32 *, s32, s16, s32);

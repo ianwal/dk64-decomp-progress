@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 extern s32 __osPiAccessQueueEnabled;
 extern void *D_dk64_boot_80016320;

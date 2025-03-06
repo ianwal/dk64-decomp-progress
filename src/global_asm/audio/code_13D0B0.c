@@ -1,5 +1,4 @@
-#include <ultra64.h>
-#include "functions.h"
+#include "common.h"
 
 s32 func_global_asm_807383B0(ALSeqPlayer *arg0) {
     if (!arg0->target) {
