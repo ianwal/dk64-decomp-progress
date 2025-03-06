@@ -16,17 +16,17 @@ void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2) {
     spawnActor(ACTOR_TIMER_CONTROLLER, 0);
     if (arg0 & 0x8000) {
         arg2--;
-        last_spawned_actor->unk15F = 0xB;
+        gLastSpawnedActor->unk15F = 0xB;
     } else {
-        last_spawned_actor->unk15F = 6;
+        gLastSpawnedActor->unk15F = 6;
     }
-    current_actor_pointer->unk11C = last_spawned_actor;
-    extra_player_info_pointer->unk1A8 = last_spawned_actor;
-    ((AAD_global_asm_806A2A10*)last_spawned_actor->additional_data_pointer)->unkC = arg2;
-    last_spawned_actor->x_position = (s16)(arg0 & 0x7FFF);
-    last_spawned_actor->y_position = arg1;
-    last_spawned_actor->control_state = 1;
-    last_spawned_actor->shadow_opacity = 0;
+    gCurrentActorPointer->unk11C = gLastSpawnedActor;
+    extra_player_info_pointer->unk1A8 = gLastSpawnedActor;
+    ((AAD_global_asm_806A2A10*)gLastSpawnedActor->additional_data_pointer)->unkC = arg2;
+    gLastSpawnedActor->x_position = (s16)(arg0 & 0x7FFF);
+    gLastSpawnedActor->y_position = arg1;
+    gLastSpawnedActor->control_state = 1;
+    gLastSpawnedActor->shadow_opacity = 0;
 }
 */
 
@@ -129,22 +129,22 @@ void func_global_asm_806A2E30(void) {
     s32 delta;
     s32 var_v0;
 
-    aad = current_actor_pointer->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        if (current_actor_pointer->unk15F == 6) {
+    aad = gCurrentActorPointer->additional_actor_data;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        if (gCurrentActorPointer->unk15F == 6) {
             sprintf(sp60, "%.2d", aad->unkC);
         } else {
             sprintf(sp60, "%.2d:%.2d:00", aad->unkC / 60U, aad->unkC % 60U);
         }
-        aad->unk10 = func_global_asm_806FDB8C(current_actor_pointer->unk15F == 0xB ? 6 : 3, &sp60, current_actor_pointer->unk15F, 0.0f, 0.0f, 0.0f);
+        aad->unk10 = func_global_asm_806FDB8C(gCurrentActorPointer->unk15F == 0xB ? 6 : 3, &sp60, gCurrentActorPointer->unk15F, 0.0f, 0.0f, 0.0f);
     }
-    if (current_actor_pointer->control_state == 3) {
+    if (gCurrentActorPointer->control_state == 3) {
         aad->unk0 = osGetTime() - D_global_asm_807FC7D0;
-        current_actor_pointer->control_state = 2;
-        current_actor_pointer->control_state_progress = 1;
+        gCurrentActorPointer->control_state = 2;
+        gCurrentActorPointer->control_state_progress = 1;
     }
     aad->unk0 += D_global_asm_807445B0;
-    if (current_actor_pointer->unk15F == 0xB) {
+    if (gCurrentActorPointer->unk15F == 0xB) {
         aad->unk0 += D_global_asm_807476C8;
     }
     res = (osGetTime() - aad->unk0) * 0x40;
@@ -158,20 +158,20 @@ void func_global_asm_806A2E30(void) {
     func_global_asm_806FDAB8(aad->unk10, 0.0f);
     
     delta = aad->unkC - aad->unk8;
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
     case 1:
-        if (current_actor_pointer->shadow_opacity < 0xFF) {
-            current_actor_pointer->shadow_opacity = MIN(0xFF, current_actor_pointer->shadow_opacity + 3);
+        if (gCurrentActorPointer->shadow_opacity < 0xFF) {
+            gCurrentActorPointer->shadow_opacity = MIN(0xFF, gCurrentActorPointer->shadow_opacity + 3);
         }
         func_global_asm_806FDAB8(aad->unk10, MATH_HALFPI_F);
-        current_actor_pointer->unk168 = 0;
+        gCurrentActorPointer->unk168 = 0;
         break;
     case 4:
-        current_actor_pointer->control_state = 2;
-        current_actor_pointer->control_state_progress = 0xFF;
+        gCurrentActorPointer->control_state = 2;
+        gCurrentActorPointer->control_state_progress = 0xFF;
     case 2:
-        if (current_actor_pointer->control_state_progress == 0) {
-            current_actor_pointer->control_state_progress++;
+        if (gCurrentActorPointer->control_state_progress == 0) {
+            gCurrentActorPointer->control_state_progress++;
             aad->unk0 = osGetTime();
             aad->unk8 = 0;
             temp_f2 = MATH_HALFPI_F;
@@ -179,18 +179,18 @@ void func_global_asm_806A2E30(void) {
         delta = aad->unkC - aad->unk8;
         if (delta >= 0) {
             func_global_asm_806FDAB8(aad->unk10, MAX(0.0f, temp_f2));
-            current_actor_pointer->unk160 = MAX(0.0f, temp_f2);
+            gCurrentActorPointer->unk160 = MAX(0.0f, temp_f2);
             if (sp84 <= temp_f2) {
                 if (
                     (aad->unk8 >= aad->unkC) && 
                     (
-                        (current_actor_pointer->unk15F == 6) || 
+                        (gCurrentActorPointer->unk15F == 6) || 
                         (aad->unkC < aad->unk8) || 
                         (D_global_asm_807FC7D8 >= 0x5B)
                     )) {
-                    current_actor_pointer->control_state = 5;
-                    current_actor_pointer->control_state_progress = 0;
-                } else if (current_actor_pointer->unk15F == 6) {
+                    gCurrentActorPointer->control_state = 5;
+                    gCurrentActorPointer->control_state_progress = 0;
+                } else if (gCurrentActorPointer->unk15F == 6) {
                     if ((s32) (sp84 / MATH_PI_F) & 1) {
                         playSound(0x8E, 0x58EFU, 63.0f, 1.0f, 5, 0);
                     } else {
@@ -198,21 +198,21 @@ void func_global_asm_806A2E30(void) {
                     }
                 }
                 if (delta == 0xA) {
-                    current_actor_pointer->control_state = 4;
+                    gCurrentActorPointer->control_state = 4;
                 }
             }
-            if (current_actor_pointer->unk15F == 6) {
+            if (gCurrentActorPointer->unk15F == 6) {
                 sprintf(sp60, "%.2d", delta);
-            } else if (current_actor_pointer->control_state != 5) {
+            } else if (gCurrentActorPointer->control_state != 5) {
                 sprintf(sp60, "%.2d:%.2d:%.2d", delta / 60, delta % 60, 0x63 - D_global_asm_807FC7D8);
             } else {
                 sprintf(sp60, "00:00:00");
             }
-            current_actor_pointer->unk168 = strlen(&sp60);
+            gCurrentActorPointer->unk168 = strlen(&sp60);
             func_global_asm_806FDF1C(aad->unk10, &sp60);
         } else {
-            current_actor_pointer->control_state = 5;
-            current_actor_pointer->control_state_progress = 0;
+            gCurrentActorPointer->control_state = 5;
+            gCurrentActorPointer->control_state_progress = 0;
             func_global_asm_806FDF1C(aad->unk10, "00:00:00");
         }
         break;
@@ -228,7 +228,7 @@ void func_global_asm_806A2E30(void) {
             case MAP_BATTLE_ARENA_PLINTH_PANIC:
             case MAP_BATTLE_ARENA_PINNACLE_PALAVER:
             case MAP_BATTLE_ARENA_SHOCKWAVE_SHOWDOWN:
-                switch (current_actor_pointer->control_state_progress) {
+                switch (gCurrentActorPointer->control_state_progress) {
                     case 0:
                     case 7:
                     case 14:
@@ -239,7 +239,7 @@ void func_global_asm_806A2E30(void) {
                         playSound(0x3BD, 0x7FFFU, 63.0f, 1.15f, 1, 0x80);
                         break;
                 }
-                current_actor_pointer->control_state_progress++;
+                gCurrentActorPointer->control_state_progress++;
                 break;
             case MAP_AZTEC_FIVE_DOOR_TEMPLE_DK:
             case MAP_AZTEC_FIVE_DOOR_TEMPLE_DIDDY:
@@ -255,13 +255,13 @@ void func_global_asm_806A2E30(void) {
                 break;
             default:
             case MAP_AZTEC_LLAMA_TEMPLE:
-                if (current_actor_pointer->control_state_progress == 0) {
+                if (gCurrentActorPointer->control_state_progress == 0) {
                     playSound(0x1BB, 0x7FFFU, 63.0f, 1.0f, 0, 0);
-                    current_actor_pointer->control_state_progress++;                    
+                    gCurrentActorPointer->control_state_progress++;                    
                 }
                 break;
         }
-        current_actor_pointer->unk168 = 0;
+        gCurrentActorPointer->unk168 = 0;
         if ((delta <= 0) && (delta >= -2)) {
             func_global_asm_806FDAB8(aad->unk10,
                 (
@@ -273,7 +273,7 @@ void func_global_asm_806A2E30(void) {
         }
         break;
     }
-    addActorToTextOverlayRenderArray(func_global_asm_806A2B90, current_actor_pointer, 7U);
+    addActorToTextOverlayRenderArray(func_global_asm_806A2B90, gCurrentActorPointer, 7U);
 }
 
 void func_global_asm_806A36F4(void) {

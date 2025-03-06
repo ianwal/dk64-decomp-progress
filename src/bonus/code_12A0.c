@@ -11,28 +11,25 @@ typedef struct {
 } AAD_bonus_800252A0;
 
 // rodata
-static const u32 D_bonus_8002DC90[] = {
-    0x00010200,
-    0x03040000,
+//last 2 0s in these arrays might just be padding
+static const u8 D_bonus_8002DC90[] = {
+    0, 1, 2, 0, 3, 4, 0, 0
 };
 
-static const u32 D_bonus_8002DC98[] = {
-    0x04020300,
-    0x01000000,
+static const u8 D_bonus_8002DC98[] = {
+    4, 2, 3, 0, 1, 0, 0, 0
 };
 
-static const u32 D_bonus_8002DCA0[] = {
-    0x02000104,
-    0x00030000,
+static const u8 D_bonus_8002DCA0[] = {
+    2, 0, 1, 4, 0, 3, 0, 0
 };
 
-static const u32 D_bonus_8002DCA8[] = {
-    0x03010002,
-    0x00040000,
+static const u8 D_bonus_8002DCA8[] = {
+    3, 1, 0, 2, 0, 4, 0, 0
 };
 
 // .data
-static u8 *D_bonus_8002D8B0[] = {
+static const u8 *D_bonus_8002D8B0[] = {
     D_bonus_8002DC90,
     D_bonus_8002DC98,
     D_bonus_8002DCA0,
@@ -59,13 +56,13 @@ Gfx *func_bonus_800252A0(Gfx *dl, Actor *arg1) {
 Actor* func_bonus_800253E4(s32 model, s16 x, s16 y, s16 z) {
     BaaD2 *tmp;
     if (spawnActor(ACTOR_BANDIT_SLOT, model)) {
-        tmp = last_spawned_actor->BaaD2;
-        last_spawned_actor->x_position = x;
-        last_spawned_actor->y_position = y;
-        last_spawned_actor->z_position = z;
-        tmp->unk0 = current_actor_pointer;
+        tmp = gLastSpawnedActor->BaaD2;
+        gLastSpawnedActor->x_position = x;
+        gLastSpawnedActor->y_position = y;
+        gLastSpawnedActor->z_position = z;
+        tmp->unk0 = gCurrentActorPointer;
     }
-    return last_spawned_actor;
+    return gLastSpawnedActor;
 }
 
 u8 func_bonus_80025480(Actor **arg0, u8 arg1) {
@@ -84,11 +81,11 @@ void func_bonus_800254B0(s16 x, s16 y, s16 z, s16 count) {
 }
 
 void func_bonus_8002563C(s32 arg0) {
-    PlayerAdditionalActorData *PaaD = player_pointer->PaaD;
-    func_global_asm_8061C464(PaaD->unk104, player_pointer, 4, 0, 0xAA, 0, 0, 0, 0, 0, 0.09f);
-    current_actor_pointer->control_state = 3;
-    current_actor_pointer->control_state_progress = 1;
-    current_actor_pointer->unk168 = 0;
+    PlayerAdditionalActorData *PaaD = gPlayerPointer->PaaD;
+    func_global_asm_8061C464(PaaD->unk104, gPlayerPointer, 4, 0, 0xAA, 0, 0, 0, 0, 0, 0.09f);
+    gCurrentActorPointer->control_state = 3;
+    gCurrentActorPointer->control_state_progress = 1;
+    gCurrentActorPointer->unk168 = 0;
 }
 
 void func_bonus_800256C4(Actor **arg0, u8 arg1) {
@@ -135,11 +132,11 @@ void func_bonus_8002570C(void) {
     HandleAAD *aaD;
     u8 div;
 
-    sp4C = player_pointer->additional_actor_data;
-    aaD = current_actor_pointer->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->x_position = 52.0f;
-        current_actor_pointer->z_position = 18.0f;
+    sp4C = gPlayerPointer->additional_actor_data;
+    aaD = gCurrentActorPointer->additional_actor_data;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        gCurrentActorPointer->x_position = 52.0f;
+        gCurrentActorPointer->z_position = 18.0f;
         aaD->unk19 = func_global_asm_806FDB8C(1, "HIT", 8, 0.0f, 0.0f, 0.0f);
         func_global_asm_806FDAB8(aaD->unk19, 0.0f);
         aaD->unk16 = 3;
@@ -149,7 +146,7 @@ void func_bonus_8002570C(void) {
         aaD->reels[2] = func_bonus_800253E4(0x92, 7, 1, 0x12);
         aaD->reels[3] = func_bonus_800253E4(0x93, 0x15, 1, 0x12);
         setAction(0x49, NULL, 0U);
-        func_global_asm_8061C6A8(sp4C->unk104, player_pointer, 6, 0, 0xAA, 0, 0, 0, 0, 0, 1.0f);
+        func_global_asm_8061C6A8(sp4C->unk104, gPlayerPointer, 6, 0, 0xAA, 0, 0, 0, 0, 0, 1.0f);
         playCutscene(NULL, 1, 1);
         switch (current_map) {
             case MAP_BATTY_BARREL_BANDIT_EASY:
@@ -174,23 +171,23 @@ void func_bonus_8002570C(void) {
                 break;
         }
     }
-    if ((aaD->unk1A != 0) && (current_actor_pointer->unk11C->control_state == 5)) {
-        current_actor_pointer->control_state = 1;
-        current_actor_pointer->control_state_progress = 0;
+    if ((aaD->unk1A != 0) && (gCurrentActorPointer->unk11C->control_state == 5)) {
+        gCurrentActorPointer->control_state = 1;
+        gCurrentActorPointer->control_state_progress = 0;
     }
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0:
-            switch (current_actor_pointer->control_state_progress) {
+            switch (gCurrentActorPointer->control_state_progress) {
                 case 0:
                     if (is_cutscene_active != 1) {
-                        loadText(current_actor_pointer, 0U, 3U);
-                        current_actor_pointer->control_state_progress += 1;
+                        loadText(gCurrentActorPointer, 0U, 3U);
+                        gCurrentActorPointer->control_state_progress += 1;
                     }
                     break;
                 case 1:
-                    if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
-                        current_actor_pointer->control_state = 3;
-                        current_actor_pointer->control_state_progress = 0;
+                    if (!(gCurrentActorPointer->object_properties_bitfield & 0x02000000)) {
+                        gCurrentActorPointer->control_state = 3;
+                        gCurrentActorPointer->control_state_progress = 0;
                         func_global_asm_8071495C();
                         func_global_asm_80714998(2U);
                         func_global_asm_807149FC(-1);
@@ -201,32 +198,32 @@ void func_bonus_8002570C(void) {
             }
             break;
         case 3:
-            switch (current_actor_pointer->control_state_progress) {
+            switch (gCurrentActorPointer->control_state_progress) {
                 case 0:
                     func_global_asm_806A2A10(0xDC, 0x2A, aaD->unk1C);
-                    current_actor_pointer->control_state_progress = 1;
+                    gCurrentActorPointer->control_state_progress = 1;
                 case 1:
                     if (aaD->reels[3]->control_state == 0) {
-                        current_actor_pointer->control_state = 2;
+                        gCurrentActorPointer->control_state = 2;
                     }
                     break;
             }
             break;
         case 4:
-            switch (current_actor_pointer->control_state_progress) {
+            switch (gCurrentActorPointer->control_state_progress) {
                 case 0:
                     aaD->unk10 = 0x400;
                     aaD->unk12 = 0x40;
-                    current_actor_pointer->control_state_progress += 1;
-                    playSoundAtActorPosition(current_actor_pointer, 0x179, 0xFFU, 0x7F, 1U);
+                    gCurrentActorPointer->control_state_progress += 1;
+                    playSoundAtActorPosition(gCurrentActorPointer, 0x179, 0xFFU, 0x7F, 1U);
                     if (aaD->unk1A == 0) {
                         aaD->unk1A = 1U;
-                        func_global_asm_806A2B08(current_actor_pointer->unk11C);
-                        playSong(8, 1.0f);
+                        func_global_asm_806A2B08(gCurrentActorPointer->unk11C);
+                        playSong(MUSIC_8_BONUS_MINIGAMES, 1.0f);
                     }
                     break;
                 case 1:
-                    current_actor_pointer->z_rotation = (func_global_asm_80612794(aaD->unk10) * -1024.0f) + 1024.0f;
+                    gCurrentActorPointer->z_rotation = (func_global_asm_80612794(aaD->unk10) * -1024.0f) + 1024.0f;
                     aaD->unk10 += aaD->unk12;
                     if (aaD->unk10 >= 0x800) {
                         aaD->unk12 = -0x40;
@@ -235,40 +232,40 @@ void func_bonus_8002570C(void) {
                             (u32) (aaD->unk1E +
                             ((aaD->unk1D - aaD->unk1E) *
                             ((aaD->unk16 - 1) / (f32) div))));
-                        current_actor_pointer->unk6E[0] = playSound(0x24D, 0x7FFFU, 64.0f, 1.0f, 0, 0);
-                        func_global_asm_8061C464(sp4C->unk104, current_player, 4, 0, 0x78, 0, 0, 0, 0, 0, 0.09f);
+                        gCurrentActorPointer->unk6E[0] = playSound(0x24D, 0x7FFFU, 64.0f, 1.0f, 0, 0);
+                        func_global_asm_8061C464(sp4C->unk104, gCurrentPlayer, 4, 0, 0x78, 0, 0, 0, 0, 0, 0.09f);
                     } else if (aaD->unk10 < 0x400) {
-                        current_actor_pointer->control_state = 5;
-                        current_actor_pointer->control_state_progress = 0;
+                        gCurrentActorPointer->control_state = 5;
+                        gCurrentActorPointer->control_state_progress = 0;
                     }
                     break;
             }
             break;
         case 5:
-            if (current_actor_pointer->unk168 == 4) {
-                current_actor_pointer->control_state = 7;
-                current_actor_pointer->control_state_progress = 0;
+            if (gCurrentActorPointer->unk168 == 4) {
+                gCurrentActorPointer->control_state = 7;
+                gCurrentActorPointer->control_state_progress = 0;
                 break;
             }
-            if (current_actor_pointer->control_state_progress != 0) {
+            if (gCurrentActorPointer->control_state_progress != 0) {
                 func_bonus_800254B0(
-                    aaD->reels[current_actor_pointer->unk168]->x_position, 
-                    aaD->reels[current_actor_pointer->unk168]->y_position, 
-                    aaD->reels[current_actor_pointer->unk168]->z_position + 20.0f, 0xF);
-                aaD->reels[current_actor_pointer->unk168]->control_state++;
-                current_actor_pointer->unk168++;
-                current_actor_pointer->control_state = 6;
-                current_actor_pointer->control_state_progress = 0;
+                    aaD->reels[gCurrentActorPointer->unk168]->x_position, 
+                    aaD->reels[gCurrentActorPointer->unk168]->y_position, 
+                    aaD->reels[gCurrentActorPointer->unk168]->z_position + 20.0f, 0xF);
+                aaD->reels[gCurrentActorPointer->unk168]->control_state++;
+                gCurrentActorPointer->unk168++;
+                gCurrentActorPointer->control_state = 6;
+                gCurrentActorPointer->control_state_progress = 0;
                 break;
             }
             break;
         case 7:
-            temp_a0 = D_global_asm_807457E4[current_actor_pointer->unk6E[0]];
+            temp_a0 = D_global_asm_807457E4[gCurrentActorPointer->unk6E[0]];
             if (temp_a0) {
                 func_global_asm_80737924(temp_a0);
             }
         case 1:
-            if (current_actor_pointer->unk11C->control_state != 5) {
+            if (gCurrentActorPointer->unk11C->control_state != 5) {
                 if ((func_bonus_80025480(aaD, 0) == 0) && 
                     (func_bonus_80025480(aaD, 0) == func_bonus_80025480(aaD, 1)) &&
                     (func_bonus_80025480(aaD, 1) == func_bonus_80025480(aaD, 2)) &&
@@ -276,9 +273,9 @@ void func_bonus_8002570C(void) {
                     func_global_asm_806FDAB8(aaD->unk19, MATH_PI_F);
                     aaD->unk16--;
                     if (aaD->unk16 == 0) {
-                        player_pointer->control_state_progress = 1;
+                        gPlayerPointer->control_state_progress = 1;
                         func_bonus_800264E0(0U, 0U);
-                        current_actor_pointer->control_state = 8;
+                        gCurrentActorPointer->control_state = 8;
                         aaD->unk10 = 0;
                         aaD->unk1A = 0U;
                         playCutscene(NULL, 0, 0x11);
@@ -291,9 +288,9 @@ void func_bonus_8002570C(void) {
                     func_bonus_8002563C(aaD);
                 }
             } else {
-                player_pointer->control_state_progress = 2U;
+                gPlayerPointer->control_state_progress = 2U;
                 func_bonus_800265C0(0, 1);
-                current_actor_pointer->control_state = 9;
+                gCurrentActorPointer->control_state = 9;
                 aaD->unk10 = 0;
                 aaD->unk1A = 0U;
                 playCutscene(NULL, 0, 0x11);
@@ -312,16 +309,16 @@ void func_bonus_8002570C(void) {
             aaD->unk10++;
             break;
     }
-    if ((current_actor_pointer->control_state > 0) && (current_actor_pointer->control_state < 8)) {
-        addActorToTextOverlayRenderArray(func_bonus_800252A0, current_actor_pointer, 3U);
+    if ((gCurrentActorPointer->control_state > 0) && (gCurrentActorPointer->control_state < 8)) {
+        addActorToTextOverlayRenderArray(func_bonus_800252A0, gCurrentActorPointer, 3U);
     }
-    if (current_actor_pointer->control_state >= 8) {
+    if (gCurrentActorPointer->control_state >= 8) {
         if (aaD->unk20) {
             func_global_asm_80715908(aaD->unk20);
             aaD->unk20 = NULL;
         }
     }
-    renderActor(current_actor_pointer, 0U);
+    renderActor(gCurrentActorPointer, 0U);
 }
 */
 
@@ -334,74 +331,74 @@ void func_bonus_800261B8(void) {
     AAD_800261B8 *aaD;
     s16 temp_t0;
 
-    aaD = current_actor_pointer->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->z_rotation = (RandClamp(6) * 0x3C000) / 360;
+    aaD = gCurrentActorPointer->additional_actor_data;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        gCurrentActorPointer->z_rotation = (RandClamp(6) * 0x3C000) / 360;
     }
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 1:
             aaD->unk4 = -0x18;
-            current_actor_pointer->control_state++;
+            gCurrentActorPointer->control_state++;
             break;
         case 2:
             if (aaD->unk4 < 0) {
-                current_actor_pointer->z_rotation += aaD->unk4;
+                gCurrentActorPointer->z_rotation += aaD->unk4;
                 aaD->unk4 += 2;
             } else {
-                current_actor_pointer->control_state++;
-                aaD->unk4 = current_actor_pointer->unkF0;
+                gCurrentActorPointer->control_state++;
+                aaD->unk4 = gCurrentActorPointer->unkF0;
             }
             break;
         case 4:
-            temp_t0 = 683 - (current_actor_pointer->z_rotation % 683);
+            temp_t0 = 683 - (gCurrentActorPointer->z_rotation % 683);
             if (temp_t0 < aaD->unk4) {
-                current_actor_pointer->control_state++;
+                gCurrentActorPointer->control_state++;
                 if (aaD->unk0->control_state < 8) {
                     aaD->unk0->control_state = 5;
                     aaD->unk0->control_state_progress = 0;
                 }
-                current_actor_pointer->unk160 = func_global_asm_806118FC((aaD->unk4 - temp_t0) * 0.015625);
-                current_actor_pointer->unk168 = (current_actor_pointer->z_rotation + temp_t0) & 0xFFF;
-                current_actor_pointer->unk15F = current_actor_pointer->unk168 / 683;
-                playSoundAtActorPosition(current_actor_pointer, 0x17A, 0xFF, 0x7F, 1);
+                gCurrentActorPointer->unk160 = func_global_asm_806118FC((aaD->unk4 - temp_t0) * 0.015625);
+                gCurrentActorPointer->unk168 = (gCurrentActorPointer->z_rotation + temp_t0) & 0xFFF;
+                gCurrentActorPointer->unk15F = gCurrentActorPointer->unk168 / 683;
+                playSoundAtActorPosition(gCurrentActorPointer, 0x17A, 0xFF, 0x7F, 1);
             }
             // fallthrough
         case 3:
-            current_actor_pointer->z_rotation += aaD->unk4;
-            current_actor_pointer->z_rotation &= 0xFFF;
+            gCurrentActorPointer->z_rotation += aaD->unk4;
+            gCurrentActorPointer->z_rotation &= 0xFFF;
             break;
         case 5:
-            if (current_actor_pointer->unk160 < 6.2831854820251465) {
-                current_actor_pointer->z_rotation = (func_global_asm_80612D1C(current_actor_pointer->unk160) * 90.0) + current_actor_pointer->unk168;
-                current_actor_pointer->unk160 += 0.3;
+            if (gCurrentActorPointer->unk160 < 6.2831854820251465) {
+                gCurrentActorPointer->z_rotation = (func_global_asm_80612D1C(gCurrentActorPointer->unk160) * 90.0) + gCurrentActorPointer->unk168;
+                gCurrentActorPointer->unk160 += 0.3;
             } else {
-                current_actor_pointer->z_rotation = current_actor_pointer->unk168;
-                current_actor_pointer->control_state = 0;
+                gCurrentActorPointer->z_rotation = gCurrentActorPointer->unk168;
+                gCurrentActorPointer->control_state = 0;
             }
             break;
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
 void func_bonus_800264E0(u8 arg0, u8 textIndex) {
     playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
     func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, textIndex, 1), 0, 0x28, 8, 8);
-    current_actor_pointer->unk11C->control_state = 0;
+    gCurrentActorPointer->unk11C->control_state = 0;
     playSong(MUSIC_40_SUCCESS, 1.0f);
     setAction(0x44, NULL, 0);
-    current_actor_pointer->control_state++;
+    gCurrentActorPointer->control_state++;
     if (arg0) {
-        func_global_asm_80627948(player_pointer, 5, 0x21, 5);
+        func_global_asm_80627948(gPlayerPointer, 5, 0x21, 5);
     }
 }
 
 void func_bonus_800265C0(u8 arg0, u8 textIndex) {
-    current_actor_pointer->unk11C->control_state = 0;
+    gCurrentActorPointer->unk11C->control_state = 0;
     func_global_asm_8069D2AC(0x81, 0, 0x78, getTextString(0x1A, textIndex, 1), 0, 0x28, 8, 8);
     playSong(MUSIC_87_FAILURE_RACES_TRY_AGAIN, 1.0f);
     setAction(0x43, NULL, 0);
-    current_actor_pointer->control_state++;
+    gCurrentActorPointer->control_state++;
     if (arg0) {
-        func_global_asm_80627948(player_pointer, 5, 0x21, 5);
+        func_global_asm_80627948(gPlayerPointer, 5, 0x21, 5);
     }
 }

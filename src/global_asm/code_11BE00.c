@@ -202,8 +202,8 @@ void func_global_asm_80717930(Struct80717D84 *arg0, s32 arg1) {
     }
     temp_s1 = arg0->unk384;
     if (arg0->unk38C & 2) {
-        arg0->unk340 = player_pointer->x_position + (func_global_asm_80612794(temp_s1->unk0) * arg0->unk35C);
-        arg0->unk348 = player_pointer->z_position + (func_global_asm_80612790(temp_s1->unk0) * arg0->unk35C);
+        arg0->unk340 = gPlayerPointer->x_position + (func_global_asm_80612794(temp_s1->unk0) * arg0->unk35C);
+        arg0->unk348 = gPlayerPointer->z_position + (func_global_asm_80612790(temp_s1->unk0) * arg0->unk35C);
     } else {
         arg0->unk340 = temp_s1->unk2 + (func_global_asm_80612794(temp_s1->unk0) * arg0->unk35C);
         arg0->unk348 = temp_s1->unk4 + (func_global_asm_80612790(temp_s1->unk0) * arg0->unk35C);
@@ -1519,7 +1519,7 @@ void func_global_asm_8071C9E8(otherSpriteControl *arg0, s8 *arg1) {
         temp_v0->unk2 = arg0->yPos;
     }
     temp_v0 = arg0->unk384_8071C9E8;
-    if (player_pointer->z_position < 340.0f) {
+    if (gPlayerPointer->z_position < 340.0f) {
         temp_v0->unk6.unk0 = 0x12C;
         temp_v0->unk6.unk2 = 0x96;
         temp_v0->unk6.unk4 = 0x64;
@@ -1613,9 +1613,9 @@ void func_global_asm_8071D0F0(Struct80717D84 *arg0, s8 *arg1) {
     var_t0 = arg0->unk384;
     getBonePosition(sp2C, 1, &var_t0->unk4, &var_t0->unk8, &var_t0->unkC);
     temp_f0 = var_t0->unk0 / 30.0;
-    arg0->unk340 = ((player_pointer->x_position - var_t0->unk4) * temp_f0) + var_t0->unk4;
-    arg0->unk344 = ((player_pointer->y_position - var_t0->unk8) * temp_f0) + var_t0->unk8;
-    arg0->unk348 = ((player_pointer->z_position - var_t0->unkC) * temp_f0) + var_t0->unkC;
+    arg0->unk340 = ((gPlayerPointer->x_position - var_t0->unk4) * temp_f0) + var_t0->unk4;
+    arg0->unk344 = ((gPlayerPointer->y_position - var_t0->unk8) * temp_f0) + var_t0->unk8;
+    arg0->unk348 = ((gPlayerPointer->z_position - var_t0->unkC) * temp_f0) + var_t0->unkC;
     var_t0->unk0 -= 1.0f;
     if (var_t0->unk0 == 0.0f) {
         extra_player_info_pointer->unk1F0 |= 0x20000;
@@ -1696,9 +1696,9 @@ void func_global_asm_8071D5BC(Struct80717D84 *arg0, s8 *arg1) {
     s32 temp_f8;
 
     temp_f8 = arg0->unk360 * 20.0f;
-    if (player_pointer->y_position <= arg0->unk344) {
-        if (arg0->unk344 < (player_pointer->y_position + player_pointer->unk15E)) {
-            if ((((player_pointer->x_position - arg0->unk340) * (player_pointer->x_position - arg0->unk340)) + ((player_pointer->z_position - arg0->unk348) * (player_pointer->z_position - arg0->unk348))) < (temp_f8 * temp_f8)) {
+    if (gPlayerPointer->y_position <= arg0->unk344) {
+        if (arg0->unk344 < (gPlayerPointer->y_position + gPlayerPointer->unk15E)) {
+            if ((((gPlayerPointer->x_position - arg0->unk340) * (gPlayerPointer->x_position - arg0->unk340)) + ((gPlayerPointer->z_position - arg0->unk348) * (gPlayerPointer->z_position - arg0->unk348))) < (temp_f8 * temp_f8)) {
                 setAction(0x2E, NULL, 0);
             }
         }
@@ -1747,7 +1747,7 @@ void func_global_asm_8071D784(Struct80717D84 *arg0, s8 *arg1) {
     arg0->unk344 += arg0->unk384_f32->unk4;
     arg0->unk384_f32->unk4 += D_global_asm_80755674;
     arg0->unk348 = arg0->unk348 + arg0->unk384_f32->unk8;
-    if (arg0->unk344 <= player_pointer->y_position) {
+    if (arg0->unk344 <= gPlayerPointer->y_position) {
         *arg1 = 1;
     }
 }
@@ -2147,9 +2147,9 @@ void func_global_asm_8071EFDC(Struct80717D84 *arg0, s8 *arg1) {
 
 void func_global_asm_8071F034(Struct80717D84 *arg0, s32 arg1) {
     if (arg0->unk34E == 0) {
-        arg0->unk340 = player_pointer->x_position;
-        arg0->unk344 = player_pointer->y_position;
-        arg0->unk348 = player_pointer->z_position;
+        arg0->unk340 = gPlayerPointer->x_position;
+        arg0->unk344 = gPlayerPointer->y_position;
+        arg0->unk348 = gPlayerPointer->z_position;
     }
 }
 

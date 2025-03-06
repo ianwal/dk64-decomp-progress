@@ -225,17 +225,17 @@ void func_bonus_800271B4(s16 arg0, s16 arg1, s16 arg2, u8 arg3, Struct800271B4 *
 
     var_a3 = arg4->unk28 < RandClamp(100) ? 1 : 0;
     if (spawnActor(ACTOR_MINIGAME_KREMLING, var_a3 ? 0x32 : 0x33)) {
-        temp_v1 = last_spawned_actor->additional_actor_data;
-        playActorAnimation(last_spawned_actor, var_a3 ? 0x211 : 0x20F);
-        func_global_asm_80614D00(last_spawned_actor, arg4->unk2C, 0);
-        last_spawned_actor->x_position = arg0;
-        last_spawned_actor->y_position = arg1 - 0x19;
-        last_spawned_actor->z_position = arg2;
-        last_spawned_actor->y_rotation = 0xC00;
+        temp_v1 = gLastSpawnedActor->additional_actor_data;
+        playActorAnimation(gLastSpawnedActor, var_a3 ? 0x211 : 0x20F);
+        func_global_asm_80614D00(gLastSpawnedActor, arg4->unk2C, 0);
+        gLastSpawnedActor->x_position = arg0;
+        gLastSpawnedActor->y_position = arg1 - 0x19;
+        gLastSpawnedActor->z_position = arg2;
+        gLastSpawnedActor->y_rotation = 0xC00;
         temp_v1->unk9 = arg3;
         temp_v1->unk8 = var_a3;
         temp_v1->unk0 = arg4;
-        arg4->unk0[arg3] = last_spawned_actor;
+        arg4->unk0[arg3] = gLastSpawnedActor;
     }
 }
 
@@ -246,7 +246,7 @@ typedef struct bonus_struct_0 {
 
 void func_bonus_80027308(BonusStruct0 *arg0, s32 *arg1) {
     *(arg1 + (arg0->unk9)) = 0;
-    deleteActor(current_actor_pointer);
+    deleteActor(gCurrentActorPointer);
 }
 
 typedef struct {
@@ -283,8 +283,8 @@ void func_bonus_8002733C(Struct8002733C *arg0) {
 
 void func_bonus_800274A0(f32 arg0, f32 arg1, f32 arg2) {
     playSound(0x59, 0x7FFF, 63.0f, 1.0f, 0x1E, 0);
-    func_global_asm_806907F0(current_actor_pointer->x_position, current_actor_pointer->y_position - 10.0f, current_actor_pointer->z_position);
-    func_global_asm_80690A28(0x23, 1, 0.6f, arg0, arg1, arg2, D_bonus_8002DD28, current_actor_pointer);
+    func_global_asm_806907F0(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position - 10.0f, gCurrentActorPointer->z_position);
+    func_global_asm_80690A28(0x23, 1, 0.6f, arg0, arg1, arg2, D_bonus_8002DD28, gCurrentActorPointer);
 }
 
 extern f64 D_bonus_8002DD30;
@@ -322,16 +322,16 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
     u8 unk;
     u8 sp40;
 
-    aaD = current_actor_pointer->additional_actor_data;
+    aaD = gCurrentActorPointer->additional_actor_data;
     sp40 = 0;
     aaD->unk26 = 1;
     func_global_asm_80626F8C(arg0, arg1, arg2, &sp4C[2], &sp4C[1], 0, 4.0f, 0);
     aaD->unk1E = sp4C[2];
     aaD->unk20 = sp4C[1];
-    current_actor_pointer->y_rotation = func_global_asm_806CC190(current_actor_pointer->y_rotation, func_global_asm_80665DE0(arg0, arg2, current_actor_pointer->x_position, current_actor_pointer->z_position), 10.0f);
-    d = sqrtf(SQ(current_actor_pointer->x_position - arg0) + SQ(current_actor_pointer->z_position - arg2));
-    current_actor_pointer->z_rotation = func_global_asm_806CC190(current_actor_pointer->z_rotation, ((func_global_asm_80611BB4(current_actor_pointer->y_position - arg1, d) * 2048.0) / D_bonus_8002DD30) + D_bonus_8002DD38, 5.0f);
-    if ((D_global_asm_807FD610[0].unk2C & 0xE000) && (current_actor_pointer->control_state == 0)) {
+    gCurrentActorPointer->y_rotation = func_global_asm_806CC190(gCurrentActorPointer->y_rotation, func_global_asm_80665DE0(arg0, arg2, gCurrentActorPointer->x_position, gCurrentActorPointer->z_position), 10.0f);
+    d = sqrtf(SQ(gCurrentActorPointer->x_position - arg0) + SQ(gCurrentActorPointer->z_position - arg2));
+    gCurrentActorPointer->z_rotation = func_global_asm_806CC190(gCurrentActorPointer->z_rotation, ((func_global_asm_80611BB4(gCurrentActorPointer->y_position - arg1, d) * 2048.0) / D_bonus_8002DD30) + D_bonus_8002DD38, 5.0f);
+    if ((D_global_asm_807FD610[0].unk2C & 0xE000) && (gCurrentActorPointer->control_state == 0)) {
         sp40 = 1;
         if (aaD->unk22) {
             if ((aaD->unk23) && (!aaD->unk18[0])) {
@@ -344,14 +344,14 @@ u8 func_bonus_80027548(f32 arg0, f32 arg1, f32 arg2) {
                 for (i = 0; i < aaD->unk23; i++) {
                     aaD->unk18[i] = 0xA;
                 }
-            } else if ((!aaD->unk23) && (current_actor_pointer->control_state_progress == 0)) {
+            } else if ((!aaD->unk23) && (gCurrentActorPointer->control_state_progress == 0)) {
                 sp40 = 2;
-                current_actor_pointer->control_state_progress = 1;
+                gCurrentActorPointer->control_state_progress = 1;
             }
         } else if (aaD->unk23 < 5) {
             aaD->unk23 = 5;
             func_bonus_8002733C(aaD);
-            current_actor_pointer->control_state_progress = 0;
+            gCurrentActorPointer->control_state_progress = 0;
         }
     }
     return sp40;
@@ -415,18 +415,18 @@ void func_bonus_800277F8(void) {
     u8 temp_t2;
     Struct807F5FD4_unk0 *temp_v0;
 
-    aaD = current_actor_pointer->additional_actor_data;
-    a178 = ((A178_800277F8*)current_actor_pointer->unk178);
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    aaD = gCurrentActorPointer->additional_actor_data;
+    a178 = ((A178_800277F8*)gCurrentActorPointer->unk178);
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         a178->unk25 = func_global_asm_806FDB8C(1, getTextString(0x1A, 2, 1), 8, 0.0f, 0.0f, 0.0f);
         func_global_asm_806FDAB8(a178->unk25, 0.0f);
         aaD->unk23 = 5;
         aaD->unk0 = -2;
         aaD->unk22 = 0;
         setAction(0x48, NULL, 0);
-        func_global_asm_8061C464(extra_player_info_pointer->unk104, current_actor_pointer, 4, 0x800, -7, 0, 0x16, 0x2C, 4, 0, D_bonus_8002DD40);
+        func_global_asm_8061C464(extra_player_info_pointer->unk104, gCurrentActorPointer, 4, 0x800, -7, 0, 0x16, 0x2C, 4, 0, D_bonus_8002DD40);
         playCutscene(NULL, 0, 1);
-        current_actor_pointer->z_rotation = 0x310;
+        gCurrentActorPointer->z_rotation = 0x310;
         switch (current_map) {
             case MAP_KREMLING_KOSH_VERY_EASY:
                 a178->unk27 = 0x55;
@@ -464,7 +464,7 @@ void func_bonus_800277F8(void) {
     }
     if (aaD->unk0 > 0) {
         aaD->unk22 = 0;
-        if ((current_actor_pointer->control_state == 0) && ((D_global_asm_807FD610->unk30 >= 0x1F) || (D_global_asm_807FD610->unk31 >= 0x1F))) {
+        if ((gCurrentActorPointer->control_state == 0) && ((D_global_asm_807FD610->unk30 >= 0x1F) || (D_global_asm_807FD610->unk31 >= 0x1F))) {
             temp_f2 = ((func_global_asm_80611BB4(D_global_asm_807FD610->unk2F, D_global_asm_807FD610->unk2E) / D_bonus_8002DD50) * 8.0) + 5.5;
             var_f12 = temp_f2;
             if (temp_f2 > 9.0f) {
@@ -476,15 +476,15 @@ void func_bonus_800277F8(void) {
             aaD->unk25 = 0xFF;
             playSound(0x3BC, 0x7FFF, 63.0f, 1.0f, 0, 0);
         }
-        switch (current_actor_pointer->control_state) {
+        switch (gCurrentActorPointer->control_state) {
             case 0x0:
-                if (current_actor_pointer->unk11C->control_state == 5) {
-                    current_actor_pointer->control_state = 0xFF;
+                if (gCurrentActorPointer->unk11C->control_state == 5) {
+                    gCurrentActorPointer->control_state = 0xFF;
                 }
                 if (a178->unk22 == 0) {
                     func_bonus_800264E0(0, 0);
                     playCutscene(NULL, 1, 0x11);
-                    current_actor_pointer->control_state = 1;
+                    gCurrentActorPointer->control_state = 1;
                 } else {
                     if (a178->unk27 < RandClamp(100)) {
                         temp_t2 = RandClamp(255) % 8;
@@ -494,37 +494,37 @@ void func_bonus_800277F8(void) {
                         }
                     }
                 }
-                if ((current_actor_pointer->unk11C->control_state == 4) && (current_actor_pointer->unk11C->control_state_progress != 0xFF)) {
-                    current_actor_pointer->control_state = 0xFE;
+                if ((gCurrentActorPointer->unk11C->control_state == 4) && (gCurrentActorPointer->unk11C->control_state_progress != 0xFF)) {
+                    gCurrentActorPointer->control_state = 0xFE;
                 }
                 break;
             case 0xFE:
                 aaD->unk24 = 0xFF;
                 playSound(0x142, 0x7FFF, 63.0f, 1.0f, 0, 0);
-                current_actor_pointer->control_state = 0;
+                gCurrentActorPointer->control_state = 0;
                 break;
             case 0xFF:
                 func_bonus_800265C0(0, 5);
                 playCutscene(NULL, 1, 0x11);
-                current_actor_pointer->control_state = 1;
+                gCurrentActorPointer->control_state = 1;
                 break;
         }
     } else if (aaD->unk0 != -2 && aaD->unk0 != -1) {
-        if (!(current_actor_pointer->object_properties_bitfield & 0x02000000)) {
+        if (!(gCurrentActorPointer->object_properties_bitfield & 0x02000000)) {
             aaD->unk0 = 1;
-            func_global_asm_806A2B08(current_actor_pointer->unk11C);
+            func_global_asm_806A2B08(gCurrentActorPointer->unk11C);
             func_bonus_8002733C(aaD);
-            playSong(8, 1.0f);
+            playSong(MUSIC_8_BONUS_MINIGAMES, 1.0f);
         }
     } else if (is_cutscene_active != 1) {
         aaD->unk0++;
         func_global_asm_806A2A10(0xDC, 0x2A, a178->unk29);
-        loadText(current_actor_pointer, 0, 1);
+        loadText(gCurrentActorPointer, 0, 1);
     }
     if (aaD->unk0 >= -1) {
-        addActorToTextOverlayRenderArray(func_bonus_80026940, current_actor_pointer, 3);
+        addActorToTextOverlayRenderArray(func_bonus_80026940, gCurrentActorPointer, 3);
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 */
 
@@ -562,33 +562,33 @@ void func_bonus_800284C0(void) {
     AAD_bonus_800284C0_unk0 *temp_a3;
     s32 var_a1;
 
-    temp_a2 = current_actor_pointer->additional_actor_data;
+    temp_a2 = gCurrentActorPointer->additional_actor_data;
     temp_a3 = temp_a2->unk0;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->noclip_byte = 0x24;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        gCurrentActorPointer->noclip_byte = 0x24;
     }
     func_global_asm_8072881C(0, &temp_a2->unk4);
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0:
             if (D_global_asm_807FBB85 != 0) {
                 temp_a3->unk22 = MAX(0, temp_a3->unk22 - (temp_a2->unk8 ? 2 : 1));
                 func_global_asm_806FDAB8(temp_a3->unk25, M_PIF);
-                playActorAnimation(current_actor_pointer, (temp_a2->unk8 ? 0x212 : 0x210));
-                current_actor_pointer->control_state = 1;
-                current_actor_pointer->control_state_progress = 0;
+                playActorAnimation(gCurrentActorPointer, (temp_a2->unk8 ? 0x212 : 0x210));
+                gCurrentActorPointer->control_state = 1;
+                gCurrentActorPointer->control_state_progress = 0;
                 break;
             }
-            if (current_actor_pointer->control_state_progress != 0) {
+            if (gCurrentActorPointer->control_state_progress != 0) {
                 func_bonus_80027308(temp_a2, temp_a3);
             }
             break;
         case 1:
-            if (current_actor_pointer->control_state_progress != 0) {
+            if (gCurrentActorPointer->control_state_progress != 0) {
                 func_bonus_80027308(temp_a2, temp_a3);
             }
             break;
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
 typedef struct {
@@ -625,23 +625,23 @@ void func_bonus_80028648(ARG0_80028648 *arg0) {
 
     for (i = 1; i < 7; i++) {
         if (spawnActor(ACTOR_SNAKE, 0x15)) {
-            snakeAAD = last_spawned_actor->additional_actor_data;
-            snakeAAD->unk0 = current_actor_pointer;
+            snakeAAD = gLastSpawnedActor->additional_actor_data;
+            snakeAAD->unk0 = gCurrentActorPointer;
             snakeAAD->unk11 = (RandClamp(32767) % ((arg0->unk1C - arg0->unk1B) + 1)) + arg0->unk1B;
             temp = &D_global_asm_807F5FD4->unk0[0][i];
-            playActorAnimation(last_spawned_actor, 0x1F5);
-            last_spawned_actor->x_position = temp->unk0;
-            last_spawned_actor->y_position = temp->unk4;
-            last_spawned_actor->z_position = temp->unk8;
-            last_spawned_actor->object_properties_bitfield |= 0x1000;
-            last_spawned_actor->y_rotation = 0x800;
-            arg0->unk0[i - 1] = last_spawned_actor;
-            temp2 = last_spawned_actor;
+            playActorAnimation(gLastSpawnedActor, 0x1F5);
+            gLastSpawnedActor->x_position = temp->unk0;
+            gLastSpawnedActor->y_position = temp->unk4;
+            gLastSpawnedActor->z_position = temp->unk8;
+            gLastSpawnedActor->object_properties_bitfield |= 0x1000;
+            gLastSpawnedActor->y_rotation = 0x800;
+            arg0->unk0[i - 1] = gLastSpawnedActor;
+            temp2 = gLastSpawnedActor;
             if (spawnActor(ACTOR_TURTLE, 0x16)) {
-                turtleAAD = last_spawned_actor->additional_actor_data;
+                turtleAAD = gLastSpawnedActor->additional_actor_data;
                 turtleAAD->unk0 = temp2;
                 turtleAAD->unk6 = i - 1;
-                snakeAAD->unk4 = last_spawned_actor;
+                snakeAAD->unk4 = gLastSpawnedActor;
                 turtleAAD->unk8 = -1;
             }
         }
@@ -689,14 +689,14 @@ void func_bonus_80028E3C(void) {
     s16 var_a3;
     s32 var_a0;
 
-    aaD = current_actor_pointer->additional_actor_data;
+    aaD = gCurrentActorPointer->additional_actor_data;
     aaD2 = aaD->unk0->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->y_rotation = (rand() >> 0xF) % 4096;
-        current_actor_pointer->y_acceleration = -10.0f;
-        current_actor_pointer->unk6A &= 0xFFFE;
-        func_global_asm_80613C48(current_actor_pointer, 0x688, 0.0f, 0.0f);
-        func_global_asm_80614D00(current_actor_pointer, 1.0f, 0.0f);
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        gCurrentActorPointer->y_rotation = (rand() >> 0xF) % 4096;
+        gCurrentActorPointer->y_acceleration = -10.0f;
+        gCurrentActorPointer->unk6A &= 0xFFFE;
+        func_global_asm_80613C48(gCurrentActorPointer, 0x688, 0.0f, 0.0f);
+        func_global_asm_80614D00(gCurrentActorPointer, 1.0f, 0.0f);
     }
     if (aaD2->unk10 == -1) {
         if (aaD->unk4 == 0) {
@@ -709,50 +709,50 @@ void func_bonus_80028E3C(void) {
                         var_a3 = 2 - var_a3;
                         var_a0 = 0x64;
                     }
-                    playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, D_bonus_8002D8C0[var_a3], 0xFF, var_a0, 0, 0, 0.0f, 0);
+                    playSoundAtPosition(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, D_bonus_8002D8C0[var_a3], 0xFF, var_a0, 0, 0, 0.0f, 0);
                 }
                 if (aaD2->unkC < 40.0f) {
                     aaD->unk4 = 1;
-                    playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x1ED, 0xFF, 0x7F, 0, 0, 0.0f, 0);
-                    playSoundAtActorPosition(current_actor_pointer, 0x76, 0xFF, 0x7F, 0x1E);
-                    current_actor_pointer->unkEE = current_actor_pointer->y_rotation;
-                    current_actor_pointer->unkB8 = 10.0f;
+                    playSoundAtPosition(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, 0x1ED, 0xFF, 0x7F, 0, 0, 0.0f, 0);
+                    playSoundAtActorPosition(gCurrentActorPointer, 0x76, 0xFF, 0x7F, 0x1E);
+                    gCurrentActorPointer->unkEE = gCurrentActorPointer->y_rotation;
+                    gCurrentActorPointer->unkB8 = 10.0f;
                     playActorAnimation(aaD->unk0, 0x1F7);
                 }
             }
         }
     }
     if (aaD->unk4 == 0) {
-        getBonePosition(aaD->unk0, 1, &current_actor_pointer->x_position, &current_actor_pointer->y_position, &current_actor_pointer->z_position);
+        getBonePosition(aaD->unk0, 1, &gCurrentActorPointer->x_position, &gCurrentActorPointer->y_position, &gCurrentActorPointer->z_position);
     } else {
-        if (current_actor_pointer->unk6A & 1) {
-            if (!(current_actor_pointer->unk6C & 1)) {
+        if (gCurrentActorPointer->unk6A & 1) {
+            if (!(gCurrentActorPointer->unk6C & 1)) {
                 f64 temp = D_bonus_8002DD98;
-                current_actor_pointer->y_velocity = aaD->unkC * D_bonus_8002DDA0;
-                playSoundAtActorPosition(current_actor_pointer, 0xFF, (u32)MAX(temp, -aaD->unkC * 1.5), 0x7F, 0xA);
+                gCurrentActorPointer->y_velocity = aaD->unkC * D_bonus_8002DDA0;
+                playSoundAtActorPosition(gCurrentActorPointer, 0xFF, (u32)MAX(temp, -aaD->unkC * 1.5), 0x7F, 0xA);
             }
         }
-        current_actor_pointer->y_velocity += current_actor_pointer->y_acceleration;
-        aaD->unkC = current_actor_pointer->y_velocity;
-        func_global_asm_8067ACB4(current_actor_pointer);
-        func_global_asm_806651FC(current_actor_pointer);
-        func_global_asm_80665564(current_actor_pointer, 0);
+        gCurrentActorPointer->y_velocity += gCurrentActorPointer->y_acceleration;
+        aaD->unkC = gCurrentActorPointer->y_velocity;
+        func_global_asm_8067ACB4(gCurrentActorPointer);
+        func_global_asm_806651FC(gCurrentActorPointer);
+        func_global_asm_80665564(gCurrentActorPointer, 0);
     }
-    current_actor_pointer->y_rotation = current_actor_pointer->y_rotation + aaD2->unkC;
-    if (current_actor_pointer->y_rotation >= 0x1000) {
-        current_actor_pointer->y_rotation = current_actor_pointer->y_rotation - 0x1000;
+    gCurrentActorPointer->y_rotation = gCurrentActorPointer->y_rotation + aaD2->unkC;
+    if (gCurrentActorPointer->y_rotation >= 0x1000) {
+        gCurrentActorPointer->y_rotation = gCurrentActorPointer->y_rotation - 0x1000;
     }
     temp_f2 = D_bonus_8002DDA4 / aaD2->unkC;
-    current_actor_pointer->x_rotation = func_global_asm_80612794(current_actor_pointer->y_rotation) * -temp_f2;
-    current_actor_pointer->z_rotation = func_global_asm_80612790(current_actor_pointer->y_rotation) * temp_f2;
+    gCurrentActorPointer->x_rotation = func_global_asm_80612794(gCurrentActorPointer->y_rotation) * -temp_f2;
+    gCurrentActorPointer->z_rotation = func_global_asm_80612790(gCurrentActorPointer->y_rotation) * temp_f2;
     temp_f2 = temp_f2 * D_bonus_8002DDA8;
     if (temp_f2 < 1) {
         var_f2 = 1;
     } else {
         var_f2 = MIN(2.5f, temp_f2);
     }
-    func_global_asm_80614D00(current_actor_pointer, var_f2, 0.0f);
-    renderActor(current_actor_pointer, 0);
+    func_global_asm_80614D00(gCurrentActorPointer, var_f2, 0.0f);
+    renderActor(gCurrentActorPointer, 0);
 }
 */
 
@@ -862,31 +862,31 @@ void func_bonus_80029E54(Actor *arg0) {
     do {
         if (spawnActor(ACTOR_MINIGAME_KRAZYKONGKLAMOUR_KONG, var_s2[var_s1])) {
             temp_t7 = var_s1 - 1;
-            aaD = current_actor_pointer->additional_actor_data;
-            a17C = current_actor_pointer->unk17C;
+            aaD = gCurrentActorPointer->additional_actor_data;
+            a17C = gCurrentActorPointer->unk17C;
             a17C->unk0 = var_s2[var_s1];
             aaD->unk0 = arg0;
             aaD->unk4 = temp_t7;
             temp_a0 = (((temp_s7 + (temp_t7 & 0xFF))->unk8 & 0x7F) * 0xC) + *D_global_asm_807F5FD4 + 0xC;
-            current_actor_pointer->x_position = temp_a0->unk0;
-            current_actor_pointer->y_position = temp_a0->unk4;
-            current_actor_pointer->z_position = temp_a0->unk8;
-            current_actor_pointer->control_state = 0;
-            temp_v0_2 = last_spawned_actor;
+            gCurrentActorPointer->x_position = temp_a0->unk0;
+            gCurrentActorPointer->y_position = temp_a0->unk4;
+            gCurrentActorPointer->z_position = temp_a0->unk8;
+            gCurrentActorPointer->control_state = 0;
+            temp_v0_2 = gLastSpawnedActor;
             temp_v0_2->object_properties_bitfield |= 0x1000;
-            last_spawned_actor->y_rotation = 0x800;
+            gLastSpawnedActor->y_rotation = 0x800;
             if (var_s1 != 6) {
-                func_global_asm_806F0C18(last_spawned_actor);
-                playActorAnimation(last_spawned_actor, D_bonus_8002D8D4[var_s1]);
+                func_global_asm_806F0C18(gLastSpawnedActor);
+                playActorAnimation(gLastSpawnedActor, D_bonus_8002D8D4[var_s1]);
             }
             if (var_s1 != 6) {
                 var_f0 = 0.25f;
             } else {
                 var_f0 = temp_f22;
             }
-            last_spawned_actor->animation_state->scale[0] = var_f0;
-            last_spawned_actor->animation_state->scale[1] = var_f0;
-            last_spawned_actor->animation_state->scale[2] = var_f0;
+            gLastSpawnedActor->animation_state->scale[0] = var_f0;
+            gLastSpawnedActor->animation_state->scale[1] = var_f0;
+            gLastSpawnedActor->animation_state->scale[2] = var_f0;
         }
         var_s1 += 1;
     } while (var_s1 != 7);
@@ -923,26 +923,26 @@ void func_bonus_8002AAA4(void) {
     s32 i;
     AAD_PPPFairy *fairyAAD;
 
-    aaD = current_actor_pointer->additional_actor_data;
-    animationState = current_actor_pointer->animation_state;
+    aaD = gCurrentActorPointer->additional_actor_data;
+    animationState = gCurrentActorPointer->animation_state;
     sp50 = animationState->unk0;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        playActorAnimation(current_actor_pointer, 0x239);
-        current_actor_pointer->noclip_byte = 0x24;
-        animationState = current_actor_pointer->animation_state;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        playActorAnimation(gCurrentActorPointer, 0x239);
+        gCurrentActorPointer->noclip_byte = 0x24;
+        animationState = gCurrentActorPointer->animation_state;
     }
     sp54 = animationState->unk64;
     if (sp54 == 0x239) {
         for (i = 0; i < D_global_asm_807FBB34; i++) {
             fairy = D_global_asm_807FB930[i].unk0;
             if (fairy->unk58 == ACTOR_MINIGAME_PERILPATHPANIC_FAIRY) {
-                dx = fairy->x_position - current_actor_pointer->x_position;
-                dy = fairy->y_position - current_actor_pointer->y_position;
+                dx = fairy->x_position - gCurrentActorPointer->x_position;
+                dy = fairy->y_position - gCurrentActorPointer->y_position;
                 if (dx < 5.0 && dx > -5.0 ) {
                     if (dy < 20.0f && dy > -20.0) {
                         fairyAAD = fairy->additional_actor_data;
                         fairyAAD->unk4 = 8;
-                        playActorAnimation(current_actor_pointer, 0x23B);
+                        playActorAnimation(gCurrentActorPointer, 0x23B);
                     }
                 }
             }
@@ -950,17 +950,17 @@ void func_bonus_8002AAA4(void) {
     }
     if (sp54 == 0x239 || sp54 == 0x23B || (sp54 == 0x238 && sp50 != NULL && sp50->unk4 > 48.0f)) {
         if (D_global_asm_807FBB85 == 1) {
-            playActorAnimation(current_actor_pointer, 0x23C);
+            playActorAnimation(gCurrentActorPointer, 0x23C);
             aaD->unk6 = D_bonus_8002D900[0] * ((func_global_asm_806119A0() & 7) + 6);
         }
     }
     if (sp54 == 0x23A) {
         aaD->unk6--;
         if (aaD->unk6 == 0) {
-            playActorAnimation(current_actor_pointer, 0x238);
+            playActorAnimation(gCurrentActorPointer, 0x238);
         }
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
 typedef struct {
@@ -981,21 +981,21 @@ void func_bonus_8002AD10(void) {
     Actor *pad2;
     a8D_bonus_8002AD10 *temp_a2;
 
-    var_t0 = current_actor_pointer->additional_actor_data;
+    var_t0 = gCurrentActorPointer->additional_actor_data;
     pad2 = var_t0->unk0;
     temp_a2 = pad2->unk178;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        playActorAnimation(current_actor_pointer, 0x2B5);
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        playActorAnimation(gCurrentActorPointer, 0x2B5);
     }
     if (var_t0->unk4 == 0 || var_t0->unk4 >= 5) {
-        current_actor_pointer->x_position -= 1.5;
+        gCurrentActorPointer->x_position -= 1.5;
     }
     pad1 = &D_global_asm_807F5FD4->unk0[0][3];
-    if (current_actor_pointer->x_position < pad1->unk0 - 50.0) {
+    if (gCurrentActorPointer->x_position < pad1->unk0 - 50.0) {
         if (temp_a2->unkA > 0) {
             temp_a2->unkA--;
         }
-        deleteActor(current_actor_pointer);
+        deleteActor(gCurrentActorPointer);
     }
     if (var_t0->unk4 != 0) {
         var_t0->unk4--;
@@ -1005,15 +1005,15 @@ void func_bonus_8002AD10(void) {
                 playSound(0x2D2, 0x7FFF, 63.0f, 7.12f, 0, 1);
             }
             temp = D_bonus_8002DDEC;
-            current_actor_pointer->animation_state->scale_x *= temp;
-            current_actor_pointer->animation_state->scale_y *= temp;
-            current_actor_pointer->animation_state->scale_z *= temp;
+            gCurrentActorPointer->animation_state->scale_x *= temp;
+            gCurrentActorPointer->animation_state->scale_y *= temp;
+            gCurrentActorPointer->animation_state->scale_z *= temp;
         }
         if (var_t0->unk4 == 0) {
-            deleteActor(current_actor_pointer);
+            deleteActor(gCurrentActorPointer);
         }
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
 // Jumptable
@@ -1058,32 +1058,32 @@ void func_bonus_8002B920(void) {
     AAD_bonus_8002B920_2 *aaD2;
     Actor *temp_t6;
 
-    aaD1 = current_actor_pointer->additional_actor_data;
+    aaD1 = gCurrentActorPointer->additional_actor_data;
     temp_t6 = aaD1->unk0;
     aaD2 = temp_t6->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         f32 temp;
-        playActorAnimation(current_actor_pointer, 0x32F);
-        current_actor_pointer->animation_state->scale_z = \
-        current_actor_pointer->animation_state->scale_y = \
-        current_actor_pointer->animation_state->scale_x = temp = D_bonus_8002DE40;
-        func_global_asm_80604CBC(current_actor_pointer, 0x10E, 0x3C, 1, 0, 0xFF, 1.0f, 0);
+        playActorAnimation(gCurrentActorPointer, 0x32F);
+        gCurrentActorPointer->animation_state->scale_z = \
+        gCurrentActorPointer->animation_state->scale_y = \
+        gCurrentActorPointer->animation_state->scale_x = temp = D_bonus_8002DE40;
+        func_global_asm_80604CBC(gCurrentActorPointer, 0x10E, 0x3C, 1, 0, 0xFF, 1.0f, 0);
     }
-    if (current_actor_pointer->control_state == 0) {
+    if (gCurrentActorPointer->control_state == 0) {
         f32 sp40;
         if (aaD2->unk2C == 0) {
             if (aaD1->unkC > 0) {
                 if (aaD1->unkC == 0x28) {
-                    func_global_asm_8060866C(current_actor_pointer, 0x801, 0xFF, 3.0f, 2, 0);
+                    func_global_asm_8060866C(gCurrentActorPointer, 0x801, 0xFF, 3.0f, 2, 0);
                 }
                 aaD1->unkC--;
                 sp40 = 5.0f;
             } else {
                 sp40 = 3.0f;
             }
-            current_actor_pointer->y_rotation -= func_global_asm_806CC10C(func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, aaD1->unk4, aaD1->unk8) + 0x800, current_actor_pointer->y_rotation) >> 3;
-            current_actor_pointer->x_position += func_global_asm_80612794(current_actor_pointer->y_rotation) * sp40;
-            current_actor_pointer->z_position += func_global_asm_80612790(current_actor_pointer->y_rotation) * sp40;
+            gCurrentActorPointer->y_rotation -= func_global_asm_806CC10C(func_global_asm_80665DE0(gCurrentActorPointer->x_position, gCurrentActorPointer->z_position, aaD1->unk4, aaD1->unk8) + 0x800, gCurrentActorPointer->y_rotation) >> 3;
+            gCurrentActorPointer->x_position += func_global_asm_80612794(gCurrentActorPointer->y_rotation) * sp40;
+            gCurrentActorPointer->z_position += func_global_asm_80612790(gCurrentActorPointer->y_rotation) * sp40;
             aaD1->unkE--;
             if (aaD1->unkE <= 0) {
                 s32 temp_s0_3;
@@ -1100,27 +1100,27 @@ void func_bonus_8002B920(void) {
             }
         } else {
             if (aaD2->unk2C == 0x28) {
-                func_global_asm_8060866C(current_actor_pointer, 0x801, 0xFF, 3.0f, 2, 0);
+                func_global_asm_8060866C(gCurrentActorPointer, 0x801, 0xFF, 3.0f, 2, 0);
             }
-            current_actor_pointer->y_position = (func_global_asm_80612794(aaD2->unk18) * 5.0) + (temp_t6->y_position - 30.0);
+            gCurrentActorPointer->y_position = (func_global_asm_80612794(aaD2->unk18) * 5.0) + (temp_t6->y_position - 30.0);
         }
     } else {
-        current_actor_pointer->shadow_opacity -= 4;
-        if (current_actor_pointer->shadow_opacity < 5) {
-            current_actor_pointer->shadow_opacity = 0;
-            deleteActor(current_actor_pointer);
+        gCurrentActorPointer->shadow_opacity -= 4;
+        if (gCurrentActorPointer->shadow_opacity < 5) {
+            gCurrentActorPointer->shadow_opacity = 0;
+            deleteActor(gCurrentActorPointer);
         }
     }
     if (temp_t6->control_state == 2) {
         f32 dz;
         f32 dx;
-        dx = ((func_global_asm_80612794(temp_t6->y_rotation) * 65.0f) + temp_t6->x_position) - current_actor_pointer->x_position;
-        dz = ((func_global_asm_80612790(temp_t6->y_rotation) * 65.0f) + temp_t6->z_position) - current_actor_pointer->z_position;
-        if (current_actor_pointer->control_state == 0) {
+        dx = ((func_global_asm_80612794(temp_t6->y_rotation) * 65.0f) + temp_t6->x_position) - gCurrentActorPointer->x_position;
+        dz = ((func_global_asm_80612790(temp_t6->y_rotation) * 65.0f) + temp_t6->z_position) - gCurrentActorPointer->z_position;
+        if (gCurrentActorPointer->control_state == 0) {
             if ((dx < 12.0) && (dx > -12.0) && ((dz < 12.0)) && (dz > -12.0)) {
                 s32 var_v0;
-                func_global_asm_80605314(current_actor_pointer, 0);
-                playActorAnimation(current_actor_pointer, 0x331);
+                func_global_asm_80605314(gCurrentActorPointer, 0);
+                playActorAnimation(gCurrentActorPointer, 0x331);
                 if (aaD2->unk2A != 0) {
                     aaD2->unk2A--;
                 }
@@ -1132,17 +1132,17 @@ void func_bonus_8002B920(void) {
                     }
                     var_v0++;
                 } while (var_v0 <= 0);
-                current_actor_pointer->control_state = 1;
-                func_global_asm_8060866C(current_actor_pointer, 0x16, 0xFF, 1.0f, 0x14, 0);
-                current_actor_pointer->shadow_opacity = 0xFF;
-                current_actor_pointer->object_properties_bitfield &= ~0x8000;
+                gCurrentActorPointer->control_state = 1;
+                func_global_asm_8060866C(gCurrentActorPointer, 0x16, 0xFF, 1.0f, 0x14, 0);
+                gCurrentActorPointer->shadow_opacity = 0xFF;
+                gCurrentActorPointer->object_properties_bitfield &= ~0x8000;
             } else if ((SQ(dx) + SQ(dz)) < SQ(30.0f)) {
                 aaD1->unkC = 0x3C;
                 aaD1->unkE = 1;
             }
         }
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 */
 
@@ -1179,31 +1179,31 @@ void func_bonus_8002BE44(void) {
     BonusStruct1 *temp_t8;
     s16 phi_a1;
 
-    temp_a0 = ((BonusAdditionalActorData*)current_actor_pointer->additional_data_pointer);
-    sp24 = current_actor_pointer->animation_state;
+    temp_a0 = ((BonusAdditionalActorData*)gCurrentActorPointer->additional_data_pointer);
+    sp24 = gCurrentActorPointer->animation_state;
     temp_t8 = temp_a0->unk4;
-    if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        current_actor_pointer->z_rotation = 0;
-        current_actor_pointer->y_rotation = 0x800;
+    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+        gCurrentActorPointer->z_rotation = 0;
+        gCurrentActorPointer->y_rotation = 0x800;
         func_global_asm_80613C48(temp_a0, 0x5FB, 0, 0);
-        current_actor_pointer->animation_state->scale_x =// D_bonus_8002DE50;
-        current_actor_pointer->animation_state->scale_z =// D_bonus_8002DE50;
-        current_actor_pointer->animation_state->scale_y = D_bonus_8002DE50;
+        gCurrentActorPointer->animation_state->scale_x =// D_bonus_8002DE50;
+        gCurrentActorPointer->animation_state->scale_z =// D_bonus_8002DE50;
+        gCurrentActorPointer->animation_state->scale_y = D_bonus_8002DE50;
     }
-    current_actor_pointer->x_position = temp_a0->x_position;
-    current_actor_pointer->y_position = temp_a0->y_position - D_bonus_8002DE58;
-    current_actor_pointer->z_position = temp_a0->z_position;
+    gCurrentActorPointer->x_position = temp_a0->x_position;
+    gCurrentActorPointer->y_position = temp_a0->y_position - D_bonus_8002DE58;
+    gCurrentActorPointer->z_position = temp_a0->z_position;
     if (sp24 && temp_t8) {
         phi_a1 = temp_t8->unk10;
         if (phi_a1 == 0x5FD) {
             phi_a1 = 0x5FE;
         }
         if (phi_a1 != sp24->unk10) {
-            func_global_asm_80613C48(current_actor_pointer, phi_a1, 0, 0);
+            func_global_asm_80613C48(gCurrentActorPointer, phi_a1, 0, 0);
         }
-        func_global_asm_80614644(current_actor_pointer, sp24, temp_t8->unk4);
+        func_global_asm_80614644(gCurrentActorPointer, sp24, temp_t8->unk4);
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 */
 
@@ -1251,24 +1251,24 @@ void func_bonus_8002C8EC(void) {
     AAD_bonus_8002C8EC_2 *temp_s3;
     AAD_bonus_8002C8EC_2 *temp_v1_2;
 
-    temp_s2 = current_actor_pointer->additional_actor_data;
+    temp_s2 = gCurrentActorPointer->additional_actor_data;
     temp = temp_s2->unk0;
     temp_s3 = temp->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        playActorAnimation(current_actor_pointer, 0x232);
-        current_actor_pointer->noclip_byte = 0x24;
-        current_actor_pointer->animation_state->scale_x = 0.25f;
-        current_actor_pointer->animation_state->scale_y = 0.25f;
-        current_actor_pointer->animation_state->scale_z = 0.25f;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        playActorAnimation(gCurrentActorPointer, 0x232);
+        gCurrentActorPointer->noclip_byte = 0x24;
+        gCurrentActorPointer->animation_state->scale_x = 0.25f;
+        gCurrentActorPointer->animation_state->scale_y = 0.25f;
+        gCurrentActorPointer->animation_state->scale_z = 0.25f;
     }
-    if (current_actor_pointer->control_state == 0) {
+    if (gCurrentActorPointer->control_state == 0) {
         sp40 = D_bonus_8002D90C;
         temp_s0_2 = (temp_s2->unk4 * 200) - 1400;
         sp30 = (func_global_asm_80612794(temp_s0_2) * temp_s2->unk8) + temp_s3->unk4;
         sp34 = (func_global_asm_80612790(temp_s0_2) * temp_s2->unk8) + temp_s3->unk8;
-        current_actor_pointer->y_rotation -= func_global_asm_806CC10C(func_global_asm_80665DE0(current_actor_pointer->x_position, current_actor_pointer->z_position, sp30, sp34) + 0x800, current_actor_pointer->y_rotation) >> 5;
-        current_actor_pointer->x_position += func_global_asm_80612794(current_actor_pointer->y_rotation) * sp40;
-        current_actor_pointer->z_position += func_global_asm_80612790(current_actor_pointer->y_rotation) * sp40;
+        gCurrentActorPointer->y_rotation -= func_global_asm_806CC10C(func_global_asm_80665DE0(gCurrentActorPointer->x_position, gCurrentActorPointer->z_position, sp30, sp34) + 0x800, gCurrentActorPointer->y_rotation) >> 5;
+        gCurrentActorPointer->x_position += func_global_asm_80612794(gCurrentActorPointer->y_rotation) * sp40;
+        gCurrentActorPointer->z_position += func_global_asm_80612790(gCurrentActorPointer->y_rotation) * sp40;
         temp_s2->unkC--;
         if (temp_s2->unkC <= 0) {
             temp_s2->unkC = (func_global_asm_806119A0() & 0x3F) + 0xF;
@@ -1276,10 +1276,10 @@ void func_bonus_8002C8EC(void) {
             temp_s2->unk8 = (func_global_asm_806119FC() * 40.0) + 10.0;
         }
         if (D_global_asm_807FBB85 == 1) {
-            current_actor_pointer->shadow_opacity = 0xFF;
-            current_actor_pointer->object_properties_bitfield &= ~0x8000;
-            playActorAnimation(current_actor_pointer, 0x332);
-            current_actor_pointer->control_state = 1;
+            gCurrentActorPointer->shadow_opacity = 0xFF;
+            gCurrentActorPointer->object_properties_bitfield &= ~0x8000;
+            playActorAnimation(gCurrentActorPointer, 0x332);
+            gCurrentActorPointer->control_state = 1;
             playSound(0x16, 0x7FFF, 63.0f, 1.0f, 0, 0);
             if (temp_s3->unk28 != 0) {
                 temp_s3->unk28--;
@@ -1292,13 +1292,13 @@ void func_bonus_8002C8EC(void) {
             }
         }
     } else {
-        current_actor_pointer->shadow_opacity -= 4;
-        if (current_actor_pointer->shadow_opacity < 5) {
-            current_actor_pointer->shadow_opacity = 0;
-            deleteActor(current_actor_pointer);
+        gCurrentActorPointer->shadow_opacity -= 4;
+        if (gCurrentActorPointer->shadow_opacity < 5) {
+            gCurrentActorPointer->shadow_opacity = 0;
+            deleteActor(gCurrentActorPointer);
         }
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
 // Displaylist stuff, doable, close, rodata

@@ -15,84 +15,84 @@ void func_menu_80032550(void) {
     Actor *phi_a0_2;
 
     initializeCharacterSpawnerActor();
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->control_state = 0;
-        current_actor_pointer->control_state_progress = 0;
-        current_actor_pointer->unkCD = 1;
-        current_actor_pointer->object_properties_bitfield &= ~4;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        gCurrentActorPointer->control_state = 0;
+        gCurrentActorPointer->control_state_progress = 0;
+        gCurrentActorPointer->unkCD = 1;
+        gCurrentActorPointer->object_properties_bitfield &= ~4;
     }
-    if (current_actor_pointer->object_properties_bitfield & 4) {
+    if (gCurrentActorPointer->object_properties_bitfield & 4) {
         func_global_asm_8068A858(&D_menu_80033FB0, &D_menu_80033FB1, &D_menu_80033FB2);
     }
-    if ((current_actor_pointer->control_state == 0) && (current_actor_pointer->control_state_progress == 0)) {
+    if ((gCurrentActorPointer->control_state == 0) && (gCurrentActorPointer->control_state_progress == 0)) {
         if (func_global_asm_80629148()) {
             func_global_asm_80629174();
-            playActorAnimation(current_actor_pointer, 0x2A7);
-            current_actor_pointer->control_state_progress++;
+            playActorAnimation(gCurrentActorPointer, 0x2A7);
+            gCurrentActorPointer->control_state_progress++;
         }
         // TODO: Get rid of this somehow, surprisingly getting rid of it causes it to not match
-        phi_a0_2 = current_actor_pointer;
+        phi_a0_2 = gCurrentActorPointer;
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
 void func_menu_8003264C(void) {
     s32 var_a0;
 
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
-        current_actor_pointer->unk15F = 0;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        gCurrentActorPointer->unk15F = 0;
         func_global_asm_80629174();
-        current_actor_pointer->control_state = 0;
+        gCurrentActorPointer->control_state = 0;
     }
     initializeCharacterSpawnerActor();
-    switch (current_actor_pointer->control_state) {
+    switch (gCurrentActorPointer->control_state) {
         case 0:
             if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
-                playActorAnimation(current_actor_pointer, 0x2D6);
-                current_actor_pointer->control_state++;
-                current_actor_pointer->control_state_progress = 0;
+                playActorAnimation(gCurrentActorPointer, 0x2D6);
+                gCurrentActorPointer->control_state++;
+                gCurrentActorPointer->control_state_progress = 0;
                 global_properties_bitfield &= ~0x30;
             }
             break;
         case 1:
             func_global_asm_8065A660(20.0f, 40.0f);
-            if (current_actor_pointer->unk15F != 0xFF) {
-                if (0xFF - current_actor_pointer->unk15F < 3) {
-                    var_a0 = 0xFF - current_actor_pointer->unk15F;
+            if (gCurrentActorPointer->unk15F != 0xFF) {
+                if (0xFF - gCurrentActorPointer->unk15F < 3) {
+                    var_a0 = 0xFF - gCurrentActorPointer->unk15F;
                 } else {
                     var_a0 = 3;
                 }
-                current_actor_pointer->unk15F += var_a0;
+                gCurrentActorPointer->unk15F += var_a0;
             }
             createLight(
-                current_actor_pointer->x_position,
-                current_actor_pointer->y_position + 20.0f,
-                current_actor_pointer->z_position,
-                current_actor_pointer->x_position,
-                current_actor_pointer->y_position,
-                current_actor_pointer->z_position,
+                gCurrentActorPointer->x_position,
+                gCurrentActorPointer->y_position + 20.0f,
+                gCurrentActorPointer->z_position,
+                gCurrentActorPointer->x_position,
+                gCurrentActorPointer->y_position,
+                gCurrentActorPointer->z_position,
                 0.0f,
                 1,
-                current_actor_pointer->unk15F,
-                current_actor_pointer->unk15F,
-                current_actor_pointer->unk15F
+                gCurrentActorPointer->unk15F,
+                gCurrentActorPointer->unk15F,
+                gCurrentActorPointer->unk15F
             );
             if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
-                current_actor_pointer->object_properties_bitfield |= 0x800000;
-                current_actor_pointer->control_state = 2;
+                gCurrentActorPointer->object_properties_bitfield |= 0x800000;
+                gCurrentActorPointer->control_state = 2;
             }
             break;
         case 2:
-            current_actor_pointer->unk16A -= 8;
-            current_actor_pointer->unk16B -= 8;
-            current_actor_pointer->unk16C -= 8;
-            if (current_actor_pointer->unk16A < 9) {
-                current_actor_pointer->unk16A = 0;
-                current_actor_pointer->unk16B = 0;
-                current_actor_pointer->unk16C = 0;
-                current_actor_pointer->control_state = 3;
+            gCurrentActorPointer->unk16A -= 8;
+            gCurrentActorPointer->unk16B -= 8;
+            gCurrentActorPointer->unk16C -= 8;
+            if (gCurrentActorPointer->unk16A < 9) {
+                gCurrentActorPointer->unk16A = 0;
+                gCurrentActorPointer->unk16B = 0;
+                gCurrentActorPointer->unk16C = 0;
+                gCurrentActorPointer->control_state = 3;
                 D_menu_800339D0 = 0;
             }
             break;
@@ -102,18 +102,18 @@ void func_menu_8003264C(void) {
             }
             if (func_global_asm_80629148()) {
                 func_global_asm_80629174();
-                current_actor_pointer->control_state = 4;
+                gCurrentActorPointer->control_state = 4;
             }
             break;
         case 4:
             func_global_asm_807145F8();
-            current_actor_pointer->control_state += 1;
+            gCurrentActorPointer->control_state += 1;
             break;
     }
-    if (current_actor_pointer->control_state >= 3) {
-        addActorToTextOverlayRenderArray(func_menu_8003292C, current_actor_pointer, 3);
+    if (gCurrentActorPointer->control_state >= 3) {
+        addActorToTextOverlayRenderArray(func_menu_8003292C, gCurrentActorPointer, 3);
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 
 // Displaylist stuff

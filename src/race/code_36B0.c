@@ -237,7 +237,7 @@ void func_race_80027C60(void) {
 
     for (i = 1; i != 3; i++) {
         func_global_asm_807149B8(1);
-        func_global_asm_80714C08(&D_global_asm_80720120, 1.0f, current_actor_pointer, i, 0);
+        func_global_asm_80714C08(&D_global_asm_80720120, 1.0f, gCurrentActorPointer, i, 0);
     }
 }
 
@@ -252,12 +252,12 @@ void func_race_800280E8(Struct800280E8 *arg0) {
     f32 var_f0;
 
     temp_v1 = arg0->unk30;
-    a180 = current_actor_pointer->unk180;
-    a184 = current_actor_pointer->unk184;
-    if (temp_v1->unkB8 < current_actor_pointer->unkB8) {
-        var_f0 = current_actor_pointer->unkB8 - temp_v1->unkB8;
+    a180 = gCurrentActorPointer->unk180;
+    a184 = gCurrentActorPointer->unk184;
+    if (temp_v1->unkB8 < gCurrentActorPointer->unkB8) {
+        var_f0 = gCurrentActorPointer->unkB8 - temp_v1->unkB8;
     } else {
-        var_f0 = current_actor_pointer->unkB8 - temp_v1->unkB8;
+        var_f0 = gCurrentActorPointer->unkB8 - temp_v1->unkB8;
         var_f0 = -var_f0;
     }
     if (a180->unk0 == 0) {
@@ -268,10 +268,10 @@ void func_race_800280E8(Struct800280E8 *arg0) {
         playSound(0x18A, 0x7FFF, 64.0f, 1.0f, 0xA, 0);
         if (a184->unk14 < 0.0f) {
             temp_v1->unkB8 -= var_f0;
-            current_actor_pointer->unkB8 += var_f0;
+            gCurrentActorPointer->unkB8 += var_f0;
         } else {
             temp_v1->unkB8 += var_f0;
-            current_actor_pointer->unkB8 -= var_f0;
+            gCurrentActorPointer->unkB8 -= var_f0;
         }
     }
 }
@@ -280,13 +280,13 @@ void func_race_800282D8(void) {
     s32 pad2;
     s32 pad;
     RaceAdditionalActorData *RaaD;
-    Struct800280E8 *a178 = current_actor_pointer->unk178;
+    Struct800280E8 *a178 = gCurrentActorPointer->unk178;
     Actor *actor = a178->unk30;
 
     RaaD = actor->RaaD;
     switch (RaaD->unk1C) {
         case 0x5A:
-            func_global_asm_80604CBC(current_actor_pointer, 0x107, 0, 1, 0, 0xFF, 1.0f, 0);
+            func_global_asm_80604CBC(gCurrentActorPointer, 0x107, 0, 1, 0, 0xFF, 1.0f, 0);
         case 0x1D:
         case 0x25:
         case 0x2C:
@@ -297,7 +297,7 @@ void func_race_800282D8(void) {
         case 0x47:
         case 0x4E:
         case 0x54:
-            playSoundAtPosition(current_actor_pointer->x_position, current_actor_pointer->y_position, current_actor_pointer->z_position, 0x187, 0xFF, ((RaaD->unk1C - 0x1D) * 0.5) + 157.0, 0, 0, 0.3f, 0);
+            playSoundAtPosition(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, 0x187, 0xFF, ((RaaD->unk1C - 0x1D) * 0.5) + 157.0, 0, 0, 0.3f, 0);
             break;
     }
 }
@@ -305,8 +305,8 @@ void func_race_800282D8(void) {
 void func_race_800283D4(f32 arg0) {
     s32 temp_a0;
 
-    temp_a0 = D_global_asm_80770628[current_actor_pointer->unk6E[0]];
-    current_actor_pointer->unk74 = 1.0f;
+    temp_a0 = D_global_asm_80770628[gCurrentActorPointer->unk6E[0]];
+    gCurrentActorPointer->unk74 = 1.0f;
     D_global_asm_80770B68[temp_a0] = (arg0 * 0.05f) + 1.0;
     D_global_asm_80770BC0[temp_a0] = 1.0f;
 }
@@ -337,9 +337,9 @@ void func_race_80028E20(Struct80028E20_arg0 *arg0) {
     count = (D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0]);
     var_a2 = D_global_asm_807F5FD4->unk0[0];
     lowest = 10000000.0f;
-    x = current_actor_pointer->x_position;
-    y = current_actor_pointer->y_position;
-    z = current_actor_pointer->z_position;
+    x = gCurrentActorPointer->x_position;
+    y = gCurrentActorPointer->y_position;
+    z = gCurrentActorPointer->z_position;
     for (i = 0; i < 3; i++) {
         for (j = 0; j < count; j++) {
             dx = x - var_a2[j].unk0;
@@ -364,32 +364,32 @@ void func_race_80029054(void) {
     A178_race_80029054 *sp48;
     f32 z, y, x;
 
-    a178 = current_actor_pointer->unk178;
-    a17C = current_actor_pointer->unk17C;
+    a178 = gCurrentActorPointer->unk178;
+    a17C = gCurrentActorPointer->unk17C;
     initializeCharacterSpawnerActor();
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         func_race_80028E20(a17C);
-        current_actor_pointer->noclip_byte = 0x3C;
+        gCurrentActorPointer->noclip_byte = 0x3C;
         a178->unk4 = 0.5f;
-        func_global_asm_8066EA90(current_actor_pointer, 1);
+        func_global_asm_8066EA90(gCurrentActorPointer, 1);
         a17C->unk30 = getSpawnerTiedActor(1, 0);
-        current_actor_pointer->object_properties_bitfield &= ~1;
+        gCurrentActorPointer->object_properties_bitfield &= ~1;
     }
     temp = a17C->unk30;
     sp48 = temp->unk178;
     if (!(D_global_asm_807FBB70.unk200 != 9 && D_global_asm_807FBB70.unk15 == 0)) {
         func_global_asm_8067E278(0, 1);
-        current_actor_pointer->control_state = 0x40;
+        gCurrentActorPointer->control_state = 0x40;
     }
-    getBonePosition(current_actor_pointer, 6, &x, &y, &z);
-    addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
-    getBonePosition(current_actor_pointer, 0xB, &x, &y, &z);
-    addActorRecolor(current_actor_pointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+    getBonePosition(gCurrentActorPointer, 6, &x, &y, &z);
+    addActorRecolor(gCurrentActorPointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
+    getBonePosition(gCurrentActorPointer, 0xB, &x, &y, &z);
+    addActorRecolor(gCurrentActorPointer, x, y, z, 0xFF, 0xFF, 0xFF, 0xFF, 0);
     func_race_80026354(a17C, a178, 1);
     if (a178->unk34 == 0 && sp48->unk34 == 5) {
         D_global_asm_807FDC9C[1].pad0[0] = 0;
-        current_actor_pointer->control_state = 0x40;
+        gCurrentActorPointer->control_state = 0x40;
         a178->unk34++;
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }

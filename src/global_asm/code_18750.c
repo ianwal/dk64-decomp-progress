@@ -1723,7 +1723,7 @@ void func_global_asm_80618104(Actor *arg0) {
             }
         }
         if (arg0->control_state == 2) {
-            func_global_asm_80690814(current_player, 6);
+            func_global_asm_80690814(gCurrentPlayer, 6);
             sqrtf(SQ(character_change_array[cc_player_index].look_at_at_x - character_change_array[cc_player_index].look_at_eye_x) + SQ(character_change_array[cc_player_index].look_at_at_z - character_change_array[cc_player_index].look_at_eye_z));
             func_global_asm_8069084C(0x29, (s16) D_global_asm_807FD568->weapon, sp50, func_global_asm_80665DE0(character_change_array[cc_player_index].look_at_at_x, character_change_array[cc_player_index].look_at_at_z, character_change_array[cc_player_index].look_at_eye_x, character_change_array[cc_player_index].look_at_eye_z), D_global_asm_80753E48[D_global_asm_807FD584], 0.0f, arg0);
             return;
@@ -2005,10 +2005,10 @@ typedef struct {
 void func_global_asm_80618EE8(Actor *arg0) {
     AAD_80618EE8 *aaD;
     spawnActor(ACTOR_INSTRUMENT_LOGO, D_global_asm_80746E10[arg0->unk58]);
-    moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[0]);
-    last_spawned_actor->z_rotation = arg0->z_rotation;
-    last_spawned_actor->x_rotation = arg0->x_rotation;
-    aaD = ((AAD_80618EE8*)last_spawned_actor->additional_actor_data);
+    moveAndScaleActorToAnother(gLastSpawnedActor, arg0, arg0->animation_state->scale[0]);
+    gLastSpawnedActor->z_rotation = arg0->z_rotation;
+    gLastSpawnedActor->x_rotation = arg0->x_rotation;
+    aaD = ((AAD_80618EE8*)gLastSpawnedActor->additional_actor_data);
     getAnimationArg8(&aaD->unk6);
 }
 
@@ -2019,8 +2019,8 @@ void func_global_asm_80618F74(Actor *arg0) {
     getAnimationArg8(&sp1F);
     if (sp1F != 0) {
         spawnActor(ACTOR_SPOTLIGHT, 0xA8);
-        moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[0]);
-        extra_player_info_pointer->vehicle_actor_pointer = last_spawned_actor;
+        moveAndScaleActorToAnother(gLastSpawnedActor, arg0, arg0->animation_state->scale[0]);
+        extra_player_info_pointer->vehicle_actor_pointer = gLastSpawnedActor;
     } else {
         vehicle = extra_player_info_pointer->vehicle_actor_pointer;
         if ((vehicle != NULL) && (vehicle->unk58 == ACTOR_SPOTLIGHT)) {
@@ -2136,11 +2136,11 @@ void func_global_asm_806192A4(Actor *arg0) {
     getAnimationArg16(&idleParticleModelIndex);
     getAnimationArg16(&sp40);
     spawnActor(ACTOR_PARTICLE_IDLE, idleParticleModelIndex);
-    moveAndScaleActorToAnother(last_spawned_actor, arg0, arg0->animation_state->scale[0]);
-    last_spawned_actor->y_rotation = arg0->y_rotation;
-    last_spawned_actor->z_rotation = arg0->z_rotation;
-    last_spawned_actor->x_rotation = arg0->x_rotation;
-    aaD = last_spawned_actor->additional_actor_data;
+    moveAndScaleActorToAnother(gLastSpawnedActor, arg0, arg0->animation_state->scale[0]);
+    gLastSpawnedActor->y_rotation = arg0->y_rotation;
+    gLastSpawnedActor->z_rotation = arg0->z_rotation;
+    gLastSpawnedActor->x_rotation = arg0->x_rotation;
+    aaD = gLastSpawnedActor->additional_actor_data;
     aaD->unk10 = 0.0f;
     if (sp46 != 0xFFFF) {
         func_global_asm_807149FC(-1);
@@ -2166,9 +2166,9 @@ void func_global_asm_806192A4(Actor *arg0) {
                 break;
         }
     }
-    last_spawned_actor->y_position -= aaD->unk10;
+    gLastSpawnedActor->y_position -= aaD->unk10;
     if (sp46 != 0xFFFF) {
-        func_global_asm_80714C08(D_global_asm_80746B80[sp46], scale, last_spawned_actor, 1, 2);
+        func_global_asm_80714C08(D_global_asm_80746B80[sp46], scale, gLastSpawnedActor, 1, 2);
     }
     aaD->unk0 = sp44;
     aaD->unk4 = arg0;

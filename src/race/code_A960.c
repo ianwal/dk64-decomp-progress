@@ -191,18 +191,18 @@ void func_race_8002ED04(f32 arg0, s32 arg1, u8 arg2) {
         case 1:
             if (arg2) {
                 spawnActor(ACTOR_RACE_CHECKPOINT_0, 0xB0);
-                playActorAnimation(last_spawned_actor, 0x2A9);
+                playActorAnimation(gLastSpawnedActor, 0x2A9);
             } else {
                 spawnActor(ACTOR_RACE_CHECKPOINT_0, 0xB1);
-                playActorAnimation(last_spawned_actor, 0x2AA);
+                playActorAnimation(gLastSpawnedActor, 0x2AA);
             }
             break;
         case 2:
             spawnActor(ACTOR_RACE_CHECKPOINT_0, arg2 ? 0xD8 : 0xD9); // Spawn checkpoint (actor 311)
             break;
     }
-    sp1C = last_spawned_actor->RaaD2;
-    func_race_8002ECD4(last_spawned_actor, arg0);
+    sp1C = gLastSpawnedActor->RaaD2;
+    func_race_8002ECD4(gLastSpawnedActor, arg0);
     sp1C->unk0 = arg1;
 }
 
@@ -217,23 +217,23 @@ void func_race_8002EDD4(Struct8002EDD4_arg0 *arg0) {
             var_f22 = arg0->unk1A * 0.5f;
             for (i = 0; i < 2; i++) {
                 func_race_8002ED04(arg0->unk14, arg0->unk10, i ^ 1);
-                arg0->unk1C[i] = last_spawned_actor;
-                last_spawned_actor->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
+                arg0->unk1C[i] = gLastSpawnedActor;
+                gLastSpawnedActor->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
                 if (i) {
                     var_f22 *= -1.0f;
                 }
-                guRotateF(spD0, last_spawned_actor->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
+                guRotateF(spD0, gLastSpawnedActor->y_rotation * 0.087890625f, 0.0f, 1.0f, 0.0f);
                 guTranslateF(sp90, arg0->unk0, arg0->unk2, arg0->unk4);
                 guMtxCatF(spD0, sp90, spD0);
-                guMtxXFMF(spD0, var_f22, 0.0f, 0.0f, &last_spawned_actor->x_position, &last_spawned_actor->y_position, &last_spawned_actor->z_position);
+                guMtxXFMF(spD0, var_f22, 0.0f, 0.0f, &gLastSpawnedActor->x_position, &gLastSpawnedActor->y_position, &gLastSpawnedActor->z_position);
             }
         } else {
             func_race_8002ED04(arg0->unk14, arg0->unk10, (arg0->unk18 == 1));
-            arg0->unk1C[0] = last_spawned_actor;
-            last_spawned_actor->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
-            last_spawned_actor->x_position = arg0->unk0;
-            last_spawned_actor->y_position = arg0->unk2;
-            last_spawned_actor->z_position = arg0->unk4;
+            arg0->unk1C[0] = gLastSpawnedActor;
+            gLastSpawnedActor->y_rotation = (arg0->unk6 + 0x800) & 0xFFF;
+            gLastSpawnedActor->x_position = arg0->unk0;
+            gLastSpawnedActor->y_position = arg0->unk2;
+            gLastSpawnedActor->z_position = arg0->unk4;
         }
     }
 }
@@ -300,11 +300,11 @@ u8 func_race_8002F0AC(Struct8002F0AC *arg0) {
             sp30 = arg0->unk4;
             break;
     }
-    dx = current_actor_pointer->unk88 - current_actor_pointer->x_position;
-    dz = current_actor_pointer->unk90 - current_actor_pointer->z_position;
+    dx = gCurrentActorPointer->unk88 - gCurrentActorPointer->x_position;
+    dz = gCurrentActorPointer->unk90 - gCurrentActorPointer->z_position;
     temp_f0_2 = func_race_8002F04C(
-        current_actor_pointer->x_position,
-        current_actor_pointer->z_position,
+        gCurrentActorPointer->x_position,
+        gCurrentActorPointer->z_position,
         dx,
         dz,
         sp34,
@@ -329,8 +329,8 @@ u8 func_race_8002F0AC(Struct8002F0AC *arg0) {
 }
 
 u8 func_race_8002F280(Struct8002F280_arg0 *arg0) {
-    f32 p1 = (current_actor_pointer->x_position - arg0->unk0);
-    f32 p2 = (current_actor_pointer->z_position - arg0->unk4);
+    f32 p1 = (gCurrentActorPointer->x_position - arg0->unk0);
+    f32 p2 = (gCurrentActorPointer->z_position - arg0->unk4);
     return func_global_asm_806CC14C((s16)(((s32)(func_global_asm_80611BB4(p1, p2) * 651.8986f)) & 0xFFF), arg0->unk6) < 0x400;
 }
 

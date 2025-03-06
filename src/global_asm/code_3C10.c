@@ -218,7 +218,7 @@ s32 func_global_asm_805FEF10(s32 *arg0) {
 
     found = FALSE;
     for (i = 0; i < 4U && !found; i++) {
-        found = player_pointer->unk58 == D_global_asm_80744800[i].unk0;
+        found = gPlayerPointer->unk58 == D_global_asm_80744800[i].unk0;
         if (found) {
             *arg0 = D_global_asm_80744800[i].unk4;
         }
@@ -453,18 +453,18 @@ void func_global_asm_805FF670(void) {
     s16 phi_s1;
 
     if (D_global_asm_80744820 != 0) {
-        playCutscene(player_pointer, 2, 5);
+        playCutscene(gPlayerPointer, 2, 5);
         func_global_asm_806F8BC4(1, 0, 0);
         for (phi_s1 = 0; phi_s1 < D_global_asm_80744820; phi_s1++) {
             temp_f20 = (phi_s1 * 2) + 0x1E;
-            spawn_x = player_pointer->x_position - (func_global_asm_80612794(player_pointer->y_rotation) * temp_f20);
-            spawn_z = player_pointer->z_position - (func_global_asm_80612790(player_pointer->y_rotation) * temp_f20);
+            spawn_x = gPlayerPointer->x_position - (func_global_asm_80612794(gPlayerPointer->y_rotation) * temp_f20);
+            spawn_z = gPlayerPointer->z_position - (func_global_asm_80612790(gPlayerPointer->y_rotation) * temp_f20);
             func_global_asm_806A5DF0(
                 0x35,
                 spawn_x,
-                player_pointer->y_position + 20.0f + (phi_s1 * 5),
+                gPlayerPointer->y_position + 20.0f + (phi_s1 * 5),
                 spawn_z,
-                player_pointer->y_rotation,
+                gPlayerPointer->y_rotation,
                 1,
                 -1,
                 0
@@ -594,10 +594,10 @@ block_17:
     }
     var_s1->unk2 = arg3;
     if (arg3 & 1) {
-        var_s1->xPosition = player_pointer->x_position;
-        var_s1->yPosition = player_pointer->y_position;
-        var_s1->zPosition = player_pointer->z_position;
-        var_s1->yRotation = player_pointer->y_rotation;
+        var_s1->xPosition = gPlayerPointer->x_position;
+        var_s1->yPosition = gPlayerPointer->y_position;
+        var_s1->zPosition = gPlayerPointer->z_position;
+        var_s1->yRotation = gPlayerPointer->y_rotation;
     }
     var_s1->unk12 = current_map;
     if (arg3 & 2) {
@@ -614,7 +614,7 @@ block_17:
         var_v0_3 += 3;
     }
     D_global_asm_80750ACC = 1;
-    temp_v0 = player_pointer->PaaD;
+    temp_v0 = gPlayerPointer->PaaD;
     D_global_asm_807FD56C = temp_v0->unk1F0;
     if (temp_v0->unk1AC != NULL) {
         D_global_asm_807FD570 = temp_v0->unk1AC->unk58;

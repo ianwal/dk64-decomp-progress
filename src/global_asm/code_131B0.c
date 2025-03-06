@@ -287,13 +287,8 @@ void func_global_asm_8060EC80(Struct131B0_2* arg0, void* arg1, s32 arg2, s32 arg
 
 /* .data continued */
 s8 D_global_asm_80746844 = 1;
-// u8 D_global_asm_80746845[] = {0, 0, 0}; //unused?
 s8 D_global_asm_80746848 = 0;
-// u8 D_global_asm_80746849[] = {0, 0, 0}; //unused?
 s32 D_global_asm_8074684C[] = {15, 2, 30};
-//s16 D_global_asm_80746858 = 0; //TODO-Now, remove this when issues are resolved (it belongs in a function)
-// s16 D_global_asm_8074685A = 0; //unused?
-//more debug strings follow
 
 void func_global_asm_8060ED6C(Struct131B0_2 *arg0, Struct131B0_1 *arg1, s32 arg2, s32 arg3, s32 arg4) {
     OSIntMask oldInterruptMask = osSetIntMask(OS_IM_NONE);
@@ -452,34 +447,36 @@ typedef struct RDPDebugStrings {
     /* 0x01 */ char string[13];
     /* 0x0E */ u16 unk_0E;
 } RDPDebugStrings; //size of 0x10
-    
-RDPDebugStrings D_global_asm_8074685C = {0xFF, "SETCIMG", 0x0800};
-RDPDebugStrings D_global_asm_8074686C = {0xFE, "SETZIMG", 0x0800};
-RDPDebugStrings D_global_asm_8074687C = {0xFD, "SETTIMG", 0x0800};
-RDPDebugStrings D_global_asm_8074688C = {0xFC, "SETCMBMODE", 0x0800};
-RDPDebugStrings D_global_asm_8074689C = {0xFB, "SETENVCOL", 0x0800};
-RDPDebugStrings D_global_asm_807468AC = {0xFA, "SETPRIMCOL", 0x0800};
-RDPDebugStrings D_global_asm_807468BC = {0xF9, "SETBLENDCOL", 0x0800};
-RDPDebugStrings D_global_asm_807468CC = {0xF8, "SETFOGCOL", 0x0800};
-RDPDebugStrings D_global_asm_807468DC = {0xF7, "SETFILLCOL", 0x0800};
-RDPDebugStrings D_global_asm_807468EC = {0xF6, "FILLRECT", 0x0801};
-RDPDebugStrings D_global_asm_807468FC = {0xF5, "SETTILE ", 0x0800};
-RDPDebugStrings D_global_asm_8074690C = {0xF4, "LOADTILE", 0x0801};
-RDPDebugStrings D_global_asm_8074691C = {0xF3, "LOADBLK ", 0x0801};
-RDPDebugStrings D_global_asm_8074692C = {0xF2, "SETTILESZ", 0x0800};
-RDPDebugStrings D_global_asm_8074693C = {0xF0, "LOADTLUT", 0x0800};
-RDPDebugStrings D_global_asm_8074694C = {0xEF, "SETOTHRMODE", 0x0800};
-RDPDebugStrings D_global_asm_8074695C = {0xEE, "SETPRMDP", 0x0800};
-RDPDebugStrings D_global_asm_8074696C = {0xED, "SETSCSR", 0x0800};
-RDPDebugStrings D_global_asm_8074697C = {0xEC, "SETCONV", 0x0800};
-RDPDebugStrings D_global_asm_8074698C = {0xEB, "SETKEYR", 0x0800};
-RDPDebugStrings D_global_asm_8074699C = {0xEA, "SETKEYGB", 0x0800};
-RDPDebugStrings D_global_asm_807469AC = {0xE9, "FULLSYNC", 0x0800};
-RDPDebugStrings D_global_asm_807469BC = {0xE8, "TILESYNC", 0x0800};
-RDPDebugStrings D_global_asm_807469CC = {0xE7, "PIPESYNC", 0x0800};
-RDPDebugStrings D_global_asm_807469DC = {0xE6, "LOADSYNC", 0x0800};
-RDPDebugStrings D_global_asm_807469EC = {0xE5, "RECTFLIP", 0x1001};
-RDPDebugStrings D_global_asm_807469FC = {0xE4, "TEXRECT", 0x1001};
+
+RDPDebugStrings D_global_asm_8074685C[] = {
+    {0xFF, "SETCIMG", 0x0800},
+    {0xFE, "SETZIMG", 0x0800},
+    {0xFD, "SETTIMG", 0x0800},
+    {0xFC, "SETCMBMODE", 0x0800},
+    {0xFB, "SETENVCOL", 0x0800},
+    {0xFA, "SETPRIMCOL", 0x0800},
+    {0xF9, "SETBLENDCOL", 0x0800},
+    {0xF8, "SETFOGCOL", 0x0800},
+    {0xF7, "SETFILLCOL", 0x0800},
+    {0xF6, "FILLRECT", 0x0801},
+    {0xF5, "SETTILE ", 0x0800},
+    {0xF4, "LOADTILE", 0x0801},
+    {0xF3, "LOADBLK ", 0x0801},
+    {0xF2, "SETTILESZ", 0x0800},
+    {0xF0, "LOADTLUT", 0x0800},
+    {0xEF, "SETOTHRMODE", 0x0800},
+    {0xEE, "SETPRMDP", 0x0800},
+    {0xED, "SETSCSR", 0x0800},
+    {0xEC, "SETCONV", 0x0800},
+    {0xEB, "SETKEYR", 0x0800},
+    {0xEA, "SETKEYGB", 0x0800},
+    {0xE9, "FULLSYNC", 0x0800},
+    {0xE8, "TILESYNC", 0x0800},
+    {0xE7, "PIPESYNC", 0x0800},
+    {0xE6, "LOADSYNC", 0x0800},
+    {0xE5, "RECTFLIP", 0x1001},
+    {0xE4, "TEXRECT", 0x1001},
+};
 char* D_global_asm_80746A0C[] = {D_global_asm_80757184, D_global_asm_80757188};
 s32 D_global_asm_80746A14 = 0;
 s32 D_global_asm_80746A18 = 0;

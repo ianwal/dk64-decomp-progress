@@ -83,7 +83,7 @@ void func_global_asm_806A9124(void) {
 
     temp_t8 = global_properties_bitfield | 0x40;
     global_properties_bitfield |= temp_t8;
-    if (!(player_pointer->PaaD->unk1F0 & 0x20000000)) {
+    if (!(gPlayerPointer->PaaD->unk1F0 & 0x20000000)) {
         global_properties_bitfield |= 0x10030;
     }
     free(D_807FC7F0.unk0);
@@ -722,8 +722,8 @@ Gfx *func_global_asm_806ACA88(Gfx *dl, Actor *arg1) {
 
 void func_global_asm_806ACC00(u8 arg0) {
     spawnActor(ACTOR_TRY_AGAIN_DIALOG, 0);
-    last_spawned_actor->unk15F = arg0;
-    last_spawned_actor->unk64 |= 2;
+    gLastSpawnedActor->unk15F = arg0;
+    gLastSpawnedActor->unk64 |= 2;
     global_properties_bitfield |= 0x40001;
 }
 
@@ -735,26 +735,26 @@ void func_global_asm_806ACC64(void) {
         func_global_asm_8061134C(D_global_asm_807FC7E0[i]);
     }
     func_global_asm_8061134C(D_global_asm_807FC7E0);
-    deleteActor(current_actor_pointer);
+    deleteActor(gCurrentActorPointer);
 }
 
 void func_global_asm_806ACCE8(void) {
     s32 i;
 
-    if ((current_actor_pointer->object_properties_bitfield & 0x10) == 0) {
-        current_actor_pointer->unk168 = 0x1E;
-        current_actor_pointer->shadow_opacity = 0;
-        current_actor_pointer->object_properties_bitfield &= ~0x8000;
+    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+        gCurrentActorPointer->unk168 = 0x1E;
+        gCurrentActorPointer->shadow_opacity = 0;
+        gCurrentActorPointer->object_properties_bitfield &= ~0x8000;
         D_global_asm_807FC7E0 = malloc(0xC);
         for (i = 0; i < 3; i++) {
             D_global_asm_807FC7E0[i] = getTextString(0x24, i + 0xF, 0);
         }
     }
-    if (current_actor_pointer->unk168 != 0) {
-        current_actor_pointer->unk168--;
-    } else if (current_actor_pointer->control_state == 0) {
+    if (gCurrentActorPointer->unk168 != 0) {
+        gCurrentActorPointer->unk168--;
+    } else if (gCurrentActorPointer->control_state == 0) {
         if (D_global_asm_807ECD58.button & 0x8000) {
-            switch (current_actor_pointer->unk15F) {
+            switch (gCurrentActorPointer->unk15F) {
                 case 2:
                     playCutscene(NULL, 0x20, 1);
                     func_global_asm_806ACC64();
@@ -768,9 +768,9 @@ void func_global_asm_806ACCE8(void) {
                     func_global_asm_805FF378(current_map, 0);
                     break;
             }
-            current_actor_pointer->control_state = 1;
+            gCurrentActorPointer->control_state = 1;
         } else if (D_global_asm_807ECD58.button & 0x4000) {
-            switch (current_actor_pointer->unk15F) {
+            switch (gCurrentActorPointer->unk15F) {
                 case 3:
                 case 4:
                     func_global_asm_80724994(3, 7, 0x3C, 0, 0);
@@ -784,10 +784,10 @@ void func_global_asm_806ACCE8(void) {
                     func_global_asm_805FF898();
                     break;
             }
-            current_actor_pointer->control_state = 1;
+            gCurrentActorPointer->control_state = 1;
         }
     }
-    addActorToTextOverlayRenderArray(func_global_asm_806ACA88, current_actor_pointer, 5);
+    addActorToTextOverlayRenderArray(func_global_asm_806ACA88, gCurrentActorPointer, 5);
 }
 
 extern u8 D_global_asm_807505F8[2]; // at least 2
@@ -822,7 +822,7 @@ void func_global_asm_806ACFFC(void) {
     u16 inputs;
     char *string;
 
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         D_global_asm_807FC7E0 = malloc(4 * sizeof(char*));
         for (i = 0; i != 4;) {
             D_global_asm_807FC7E0[i] = getTextString(0x24, i, 0);
@@ -831,13 +831,13 @@ void func_global_asm_806ACFFC(void) {
         global_properties_bitfield &= ~0x10030;
         func_global_asm_806291B4(7);
         D_807FC80E = 0;
-        current_actor_pointer->control_state_progress = 0;
+        gCurrentActorPointer->control_state_progress = 0;
     }
     playerIndex = D_global_asm_807FC8B9;
     joystickY = character_change_array[playerIndex].unk294->stick_y;
     if ((joystickY > 0x32) || (joystickY < -0x32)) {
         if (!(D_807FC80E & 1)) {
-            current_actor_pointer->control_state_progress = 1 - current_actor_pointer->control_state_progress;
+            gCurrentActorPointer->control_state_progress = 1 - gCurrentActorPointer->control_state_progress;
             D_807FC80E |= 1;
             playSound(0x2A0, 0x7FFF, 63.0f, 1.0f, 0, 0);
         }
@@ -846,19 +846,19 @@ void func_global_asm_806ACFFC(void) {
     }
     inputs = character_change_array[playerIndex].new_controller_inputs->button;
     if (inputs & A_BUTTON) {
-        if (current_actor_pointer->control_state_progress == 0) {
+        if (gCurrentActorPointer->control_state_progress == 0) {
             global_properties_bitfield |= 0x10070;
             for (i = 0; i != 4; i++){
                 func_global_asm_8061134C(D_global_asm_807FC7E0[i]);
             }
             func_global_asm_8061134C(D_global_asm_807FC7E0);
-        } else if (current_actor_pointer->control_state_progress == 1) {
+        } else if (gCurrentActorPointer->control_state_progress == 1) {
             D_global_asm_8076A105 = -1;
             func_global_asm_80714638();
-            current_actor_pointer->control_state_progress = 2;
+            gCurrentActorPointer->control_state_progress = 2;
         }
     }
-    addActorToTextOverlayRenderArray(func_global_asm_806AC048, current_actor_pointer, 1);
-    addActorToTextOverlayRenderArray(func_global_asm_806ACF10, current_actor_pointer, 5);
+    addActorToTextOverlayRenderArray(func_global_asm_806AC048, gCurrentActorPointer, 1);
+    addActorToTextOverlayRenderArray(func_global_asm_806ACF10, gCurrentActorPointer, 5);
 }
 */

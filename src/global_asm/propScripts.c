@@ -501,7 +501,7 @@ void func_global_asm_806443E4(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
     f32 var_f14;
     f32 dx, dy, dz;
 
-    if (player_pointer->PaaD->unk1F0 & 0x20000000) {
+    if (gPlayerPointer->PaaD->unk1F0 & 0x20000000) {
         return;
     }
     if (arg0->unk0 == NULL) {
@@ -754,10 +754,10 @@ void func_global_asm_80645700(Struct80645700_sp20 **arg0, s32 arg1, s16 arg2, s1
     func_global_asm_807149A8(0x7D0);
     drawSpriteAtPosition(&D_global_asm_80720BC4, 2.5f, D_global_asm_807F5FD4->unk0[0][sp24].unk0, D_global_asm_807F5FD4->unk0[0][sp24].unk4, D_global_asm_807F5FD4->unk0[0][sp24].unk8);
     if (arg3) {
-        if (player_pointer->control_state == 0x42) {
-            var_v1->unk0 = player_pointer->y_position;
+        if (gPlayerPointer->control_state == 0x42) {
+            var_v1->unk0 = gPlayerPointer->y_position;
         }
-        if (((var_v1->unk0 - player_pointer->y_position) > 200.0) || player_pointer->y_position < 10.0f) {
+        if (((var_v1->unk0 - gPlayerPointer->y_position) > 200.0) || gPlayerPointer->y_position < 10.0f) {
             if (var_v1->unk4 == 0.0) {
                 func_global_asm_805FF9AC(0x48, 0x1C, 0, 0);
                 var_v1->unk4 = 1.0f;
@@ -836,7 +836,7 @@ void func_global_asm_80645D14(s32 **arg0, s32 arg1, s16 arg2, s32 arg3) {
         *var_v1 = 1;
     }
     var_v1 = *arg0;
-    PaaD = character_change_array->player_pointer->PaaD;
+    PaaD = character_change_array->playerPointer->PaaD;
     temp = PaaD->unk104;
     aaD = temp->additional_actor_data;
     if (aaD->unkFA != 0) {
@@ -1986,7 +1986,7 @@ void func_global_asm_8064AC28(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         temp_v0->unk4F = 0x14U;
     }
     if (temp_v0->unk4F == 0) {
-        player = character_change_array->player_pointer;
+        player = character_change_array->playerPointer;
         if (
             (player->control_state == 0x1C) &&
             (player->control_state_progress < 7) && 
@@ -1998,8 +1998,8 @@ void func_global_asm_8064AC28(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
                 j = -1;
                 for (i = 0; i < 9; i++) {
                     func_global_asm_806335B0(arg1, 1, i + 1, &x, &y, &z);
-                    x = player_pointer->x_position - x;
-                    z = player_pointer->z_position - z;
+                    x = gPlayerPointer->x_position - x;
+                    z = gPlayerPointer->z_position - z;
                     dxz = (x * x) + (z * z);
                     if (dxz < max_dist) {
                         j = i;
@@ -2052,9 +2052,9 @@ void func_global_asm_8064B204(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s32 arg3
 }
 
 void func_global_asm_8064B260(Struct8064BAF4 *arg0, s32 arg1, s16 arg2, s32 arg3) {
-    arg0->unk14[arg2] = player_pointer->unk100;
-    arg0->unk14[arg2 + 1] = player_pointer->unk104;
-    arg0->unk14[arg2 + 2] = player_pointer->unk108;
+    arg0->unk14[arg2] = gPlayerPointer->unk100;
+    arg0->unk14[arg2 + 1] = gPlayerPointer->unk104;
+    arg0->unk14[arg2 + 2] = gPlayerPointer->unk108;
 }
 
 typedef struct {
@@ -2203,7 +2203,7 @@ void func_global_asm_8064B5A4(s32 arg0, s32 arg1, s16 arg2, s16 arg3) {
 }
 
 void func_global_asm_8064B798(s32 arg0, s32 arg1, s8 arg2, s32 arg3) {
-    PlayerAdditionalActorData *temp_v0 = character_change_array[0].player_pointer->PaaD;
+    PlayerAdditionalActorData *temp_v0 = character_change_array[0].playerPointer->PaaD;
     temp_v0->unk1FC = arg2;
 }
 
@@ -2240,7 +2240,7 @@ void func_global_asm_8064B900(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
         if (arg2 != 1) {
             if (arg2 == 2) {
                 func_global_asm_807271F4(8, 0, 0, 0, 0, 0, 0);
-                last_spawned_actor->object_properties_bitfield &= -5;
+                gLastSpawnedActor->object_properties_bitfield &= -5;
             }
         } else {
             temp_v0 = getSpawnerTiedActor(8, 0);
@@ -2300,7 +2300,7 @@ s32 func_global_asm_8064BB78(s32 arg0, s32 arg1, s32 levelIndex, s32 arg3) {
 }
 
 u8 func_global_asm_8064BBD8(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
-    return (func_global_asm_806CC14C(func_global_asm_80665DE0((s16)D_global_asm_807F621C, (s16)D_global_asm_807F6224, (s16)player_pointer->x_position, (s16)player_pointer->z_position), player_pointer->y_rotation) < 0x384);
+    return (func_global_asm_806CC14C(func_global_asm_80665DE0((s16)D_global_asm_807F621C, (s16)D_global_asm_807F6224, (s16)gPlayerPointer->x_position, (s16)gPlayerPointer->z_position), gPlayerPointer->y_rotation) < 0x384);
 }
 
 s32 func_global_asm_8064BCB0(s32 arg0, s32 arg1) {
@@ -2309,7 +2309,7 @@ s32 func_global_asm_8064BCB0(s32 arg0, s32 arg1) {
 
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
         if (character_change_array[playerIndex].does_player_exist) {
-            player = character_change_array[playerIndex].player_pointer;
+            player = character_change_array[playerIndex].playerPointer;
             if ((player->locked_to_pad == 1) && (arg0 == player->unk10C) && (arg1 == player->unk10E)) {
                 return playerIndex;
             }
@@ -2339,7 +2339,7 @@ s32 func_global_asm_8064BD2C(s32 arg0, s16 arg1, s16 arg2, s16 arg3) {
             func_global_asm_806357F8(temp_a0, &x, &y, &z, &xRot, &yRot, &zRot, &scale, &sp40, 1);
             func_global_asm_8067ABC0(
                 0,
-                character_change_array[temp_v0].player_pointer,
+                character_change_array[temp_v0].playerPointer,
                 9,
                 yRot * 11.37777805f, 
                 0,
@@ -2459,7 +2459,7 @@ void func_global_asm_8064C3E8(Struct8064C3E8_arg0 *arg0, s16 arg1, s32 arg2, s32
     Struct8064C3E8_malloc *var_v1;
     PlayerAdditionalActorData *sp34;
 
-    sp34 = character_change_array->player_pointer->additional_actor_data;
+    sp34 = character_change_array->playerPointer->additional_actor_data;
     if (arg0->unk0 == NULL) {
         var_v1 = malloc(sizeof(Struct8064C3E8_malloc));
         arg0->unk0 = var_v1;
@@ -2945,7 +2945,7 @@ void func_global_asm_8064DE04(Prop_ScriptData *arg0, s32 arg1, s16 arg2, s32 arg
 
     closestActor = NULL;
     closestDistance = 99999.0f;
-    PaaD = player_pointer->additional_actor_data;
+    PaaD = gPlayerPointer->additional_actor_data;
     if (arg0->unk5C != 0) {
         actorType = arg0->unk5E;
         for (i = 0; i < D_global_asm_807FBB34; i++) {
@@ -3208,20 +3208,20 @@ void func_global_asm_8064E65C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         case 11:
             playSoundAtPosition(x, y, z, 0x305, 0x64U, 0x7F, 0U, 0U, 0.0f, 0U);
             spawnActor(ACTOR_SHOCKWAVE_MAD_JACK, 0x5D);
-            last_spawned_actor->animation_state->scale[0] *= 3.2;
-            last_spawned_actor->animation_state->scale[1] *= 3.2;
-            last_spawned_actor->animation_state->scale[2] *= 3.2;
-            last_spawned_actor->object_properties_bitfield |= 0x400;
-            playActorAnimation(last_spawned_actor, 0x335);
+            gLastSpawnedActor->animation_state->scale[0] *= 3.2;
+            gLastSpawnedActor->animation_state->scale[1] *= 3.2;
+            gLastSpawnedActor->animation_state->scale[2] *= 3.2;
+            gLastSpawnedActor->object_properties_bitfield |= 0x400;
+            playActorAnimation(gLastSpawnedActor, 0x335);
             if (arg2 == 0xB) {
-                last_spawned_actor->x_position = D_global_asm_807F621C;
-                last_spawned_actor->y_position = D_global_asm_807F6220;
-                last_spawned_actor->z_position = D_global_asm_807F6224;
+                gLastSpawnedActor->x_position = D_global_asm_807F621C;
+                gLastSpawnedActor->y_position = D_global_asm_807F6220;
+                gLastSpawnedActor->z_position = D_global_asm_807F6224;
                 return;
             }
-            last_spawned_actor->x_position = x;
-            last_spawned_actor->y_position = y;
-            last_spawned_actor->z_position = z;
+            gLastSpawnedActor->x_position = x;
+            gLastSpawnedActor->y_position = y;
+            gLastSpawnedActor->z_position = z;
         case 1:
         case 3:
         case 4:
@@ -3410,15 +3410,15 @@ void func_global_asm_8064F028(s32 arg0, s32 arg1, s16 arg2, s32 arg3) {
     func_global_asm_80714998(2);
     drawSpriteAtPosition(&D_global_asm_80721530, 0, D_global_asm_807F621C, D_global_asm_807F6220 + 17.5, D_global_asm_807F6224);
     spawnActor(ACTOR_WRINKLY, 0x53);
-    last_spawned_actor->x_position = D_global_asm_807F621C;
-    last_spawned_actor->y_position = D_global_asm_807F6220;
-    last_spawned_actor->z_position = D_global_asm_807F6224;
-    last_spawned_actor->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
+    gLastSpawnedActor->x_position = D_global_asm_807F621C;
+    gLastSpawnedActor->y_position = D_global_asm_807F6220;
+    gLastSpawnedActor->z_position = D_global_asm_807F6224;
+    gLastSpawnedActor->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
     if ((current_map == MAP_FUNGI_LOBBY) || ((current_map == MAP_AZTEC_LOBBY) && (arg2 == 4))) {
         // BUG(?): This angle addition does not truncate to 4096
-        last_spawned_actor->y_rotation += 0x800;
+        gLastSpawnedActor->y_rotation += 0x800;
     }
-    playCutscene(last_spawned_actor, 0x22, 5);
+    playCutscene(gLastSpawnedActor, 0x22, 5);
     playSong(MUSIC_171_WRINKLY_KONG, 1.0f);
     playSound(0x2EA, 0x7FFF, 63.0f, 1.0f, 0, 0);
     D_global_asm_807F6951 = arg2;
@@ -3454,7 +3454,7 @@ u8 func_global_asm_8064F210(s32 arg0, s32 arg1, s32 arg2, s32 arg3) {
     temp_f0 = func_global_asm_80612790(temp_f18);
     temp = ((D_global_asm_807F621C * sp2C) + (D_global_asm_807F6224 * temp_f0));
     temp = -temp;
-    temp = (player_pointer->x_position * sp2C) + (temp_f0 * player_pointer->z_position) + temp;
+    temp = (gPlayerPointer->x_position * sp2C) + (temp_f0 * gPlayerPointer->z_position) + temp;
     return 6.0 < temp;
 }
 */

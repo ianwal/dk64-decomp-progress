@@ -837,7 +837,7 @@ Gfx *func_global_asm_8062C29C(Gfx *dl, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f
     func_global_asm_8062D620(D_global_asm_807F5DE4, D_global_asm_807F5E60, D_global_asm_807F5FF0, arg1, arg2, arg3, 0, D_global_asm_807F5FEC == 0, ((s32) D_global_asm_80750AB4 < 2) ^ 1);
     gSPSegment(dl++, 0x06, osVirtualToPhysical(D_807F5DE8));
     gSPSegment(dl++, 0x07, osVirtualToPhysical(D_807F5DEC));
-    dl = func_global_asm_80722294(dl, character_change_array[cc_player_index].player_pointer, cc_player_index);
+    dl = func_global_asm_80722294(dl, character_change_array[cc_player_index].playerPointer, cc_player_index);
     gSPSegment(dl++, 0x05, osVirtualToPhysical(temp_s3));
     gDPSetHilite1Tile(dl++, G_TX_RENDERTILE, &character_change_array[cc_player_index].unk1D0[D_global_asm_807444FC], 32, 32);
     gSPEndDisplayList(dl++);

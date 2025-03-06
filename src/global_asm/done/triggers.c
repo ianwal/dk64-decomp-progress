@@ -105,9 +105,9 @@ extern s16 D_global_asm_807FDCBC;
 u8 func_global_asm_8072EA90(TriggerData *);
 
 u8 func_global_asm_8072E5B0(void) {
-    return !(player_pointer->unk6A & 1)
-        && !(player_pointer->locked_to_pad == 1)
-        && !(player_pointer->control_state == 0x63); // Rocketbarrel
+    return !(gPlayerPointer->unk6A & 1)
+        && !(gPlayerPointer->locked_to_pad == 1)
+        && !(gPlayerPointer->control_state == 0x63); // Rocketbarrel
 }
 
 void func_global_asm_8072E5FC(TriggerFile *arg0) {
@@ -221,7 +221,7 @@ void func_global_asm_8072E868(void) {
                     var_v1 = FALSE;
                 }
                 func_global_asm_8067AB20(
-                    current_actor_pointer,
+                    gCurrentActorPointer,
                     D_global_asm_807557A0[var_s2->raw.data[k].type].unk8,
                     0x01000000,
                     D_global_asm_807557A0[var_s2->raw.data[k].type].unk7,
@@ -247,8 +247,8 @@ u8 func_global_asm_8072EA90(TriggerData *arg0) {
     var_t4 = 0;
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
         if (character_change_array[playerIndex].does_player_exist != 0) {
-            if (arg0->raw.height == -1 || (arg0->raw.y <= character_change_array[playerIndex].player_pointer->y_position && character_change_array[playerIndex].player_pointer->y_position < (arg0->raw.y + arg0->raw.height))) {
-                d = ((arg0->raw.x - character_change_array[playerIndex].player_pointer->x_position) * (arg0->raw.x - character_change_array[playerIndex].player_pointer->x_position)) + ((arg0->raw.z - character_change_array[playerIndex].player_pointer->z_position) * (arg0->raw.z - character_change_array[playerIndex].player_pointer->z_position));
+            if (arg0->raw.height == -1 || (arg0->raw.y <= character_change_array[playerIndex].playerPointer->y_position && character_change_array[playerIndex].playerPointer->y_position < (arg0->raw.y + arg0->raw.height))) {
+                d = ((arg0->raw.x - character_change_array[playerIndex].playerPointer->x_position) * (arg0->raw.x - character_change_array[playerIndex].playerPointer->x_position)) + ((arg0->raw.z - character_change_array[playerIndex].playerPointer->z_position) * (arg0->raw.z - character_change_array[playerIndex].playerPointer->z_position));
                 if (d < (arg0->raw.radius * arg0->raw.radius)) {
                     var_t3 = TRUE;
                 }

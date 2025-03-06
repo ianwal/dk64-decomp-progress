@@ -99,7 +99,7 @@ void func_global_asm_80712BD4(void) {
             break;
         case GAME_MODE_DK_TV:
             D_global_asm_8075532C += 1;
-            D_global_asm_8075531C = func_global_asm_8060B49C(character_change_array->player_pointer, D_global_asm_8075E5C0[D_global_asm_80755328].unk0);
+            D_global_asm_8075531C = func_global_asm_8060B49C(character_change_array->playerPointer, D_global_asm_8075E5C0[D_global_asm_80755328].unk0);
             D_global_asm_8075531C = MIN(D_global_asm_8075531C, D_global_asm_8075E5C0[D_global_asm_80755328].unk2);
             D_global_asm_80755328++;
             D_global_asm_80755328 %= 5U;

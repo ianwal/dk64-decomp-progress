@@ -48,7 +48,7 @@ void func_global_asm_8068A858(u8 *arg0, u8 *arg1, u8 *arg2) {
     f32 sp3C;
     f32 var_f2;
 
-    if (current_actor_pointer->object_properties_bitfield & 4) {
+    if (gCurrentActorPointer->object_properties_bitfield & 4) {
         switch (D_global_asm_807FC622) {
         case 0:
             *arg0 = 0xFF;
@@ -199,8 +199,8 @@ void func_global_asm_8068AD7C(void) {
     LZControllerAAD *TaaD;
     f32 temp;
 
-    TaaD = current_actor_pointer->AAD_as_array[0];
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    TaaD = gCurrentActorPointer->AAD_as_array[0];
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         TaaD->unk0 = 0U;
         TaaD->unk1A = -1;
         TaaD->unk21 = 0U;
@@ -259,7 +259,7 @@ void func_global_asm_8068AD7C(void) {
                 } else {
                     func_global_asm_805FF378(temp_s0->unk0, temp_s0->unk2);
                 }
-                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(gPlayerPointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
@@ -281,14 +281,14 @@ void func_global_asm_8068AD7C(void) {
                         break;
                 }
                 func_global_asm_805FF9AC(temp_s0->unk0, temp_s0->unk2, 0, 0);
-                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(gPlayerPointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
         case 0x5:
             if (!(global_properties_bitfield & 0x400)) {
                 func_global_asm_805FF628(temp_s0->unk0, temp_s0->unk2);
-                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(gPlayerPointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
@@ -299,14 +299,14 @@ void func_global_asm_8068AD7C(void) {
         case 0x7:
             if (!(global_properties_bitfield & 0x400)) {
                 func_global_asm_805FF9AC(temp_s0->unk0, temp_s0->unk2, temp_s0->unk4, 2);
-                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(gPlayerPointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
         case 0x8:
             if (!(global_properties_bitfield & 0x400)) {
                 func_global_asm_805FF898();
-                func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
+                func_global_asm_806F3BEC(gPlayerPointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
                 break;
             }
             break;
@@ -317,19 +317,19 @@ void func_global_asm_8068AD7C(void) {
             func_global_asm_805FF660(temp_s0->unk0);
             break;
         case 0xA:
-            character_change_array->player_pointer->PaaD->unk1F0 |= 0x40000800;
+            character_change_array->playerPointer->PaaD->unk1F0 |= 0x40000800;
             break;
         case 0xB:
             func_global_asm_805FF378(D_global_asm_80744700[getLevelIndex(current_map, 0U)], current_exit);
-            func_global_asm_806F3BEC(player_pointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
+            func_global_asm_806F3BEC(gPlayerPointer, D_global_asm_807FDCB8, D_global_asm_807FDCBC, 0x46U);
             break;
         case 0xC:
             var_v0 = temp_s0->unk2 ? 0 : 0x8000;
-            func_global_asm_806F397C(player_pointer, NULL, temp_s0->unk0 + var_v0, 0);
+            func_global_asm_806F397C(gPlayerPointer, NULL, temp_s0->unk0 + var_v0, 0);
             break;
         case 0xD:
-            if (player_pointer->unkB8 > 250.0f) {
-                playSoundAtActorPosition(player_pointer, temp_s0->unk0, 0xFFU, 0x7F, 0x1EU);
+            if (gPlayerPointer->unkB8 > 250.0f) {
+                playSoundAtActorPosition(gPlayerPointer, temp_s0->unk0, 0xFFU, 0x7F, 0x1EU);
                 break;
             }
             break;
@@ -340,13 +340,13 @@ void func_global_asm_8068AD7C(void) {
             func_global_asm_80602B60(temp_s0->unk0, 0U);
             break;
         case 0x11:
-            current_player->y_acceleration = temp_s0->unk0 / 10.0;
+            gCurrentPlayer->y_acceleration = temp_s0->unk0 / 10.0;
             break;
         case 0x12:
-            current_player->unk6A |= 0x200;
+            gCurrentPlayer->unk6A |= 0x200;
             break;
         case 0x13:
-            current_player->unk6A &= ~0x200;
+            gCurrentPlayer->unk6A &= ~0x200;
             break;
         case 0x14:
             D_global_asm_807FC621 = temp_s0->unk0;
@@ -364,7 +364,7 @@ void func_global_asm_8068AD7C(void) {
             D_global_asm_8076A0A6 = *newly_pressed_input;
             break;
         case 0x1A:
-            character_change_array->player_pointer->PaaD->unk1F0 |= 0x80000000;
+            character_change_array->playerPointer->PaaD->unk1F0 |= 0x80000000;
             break;
         case 0x1B:
             func_global_asm_80653F68(temp_s0->unk2);
@@ -595,7 +595,7 @@ void func_global_asm_8068BA2C(void) {
     s32 var_v0;
     PlayerAdditionalActorData *temp_s1;
 
-    temp_s1 = current_player->PaaD;
+    temp_s1 = gCurrentPlayer->PaaD;
     var_s3 = 0;
     sp58 = temp_s1->unk104->additional_actor_data;
     for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
@@ -650,14 +650,14 @@ void func_global_asm_8068BBF8(void) {
     s32 var_v1;
     s32 var_v1_2;
 
-    CaaD = current_actor_pointer->AAD_as_array[0];
+    CaaD = gCurrentActorPointer->AAD_as_array[0];
     temp_v1_3 = 0;
     sp3A = 0x1E;
     sp40 = 0.08f;
     sp3C = 8.0f;
     cc = &character_change_array[CaaD->unkFB];
-    cc->unk2CC = current_actor_pointer->unkEC;
-    current_actor_pointer->unkEC = current_actor_pointer->x_rotation;
+    cc->unk2CC = gCurrentActorPointer->unkEC;
+    gCurrentActorPointer->unkEC = gCurrentActorPointer->x_rotation;
     cc->unk2CA = cc->look_at_eye_y;
     sp48 = func_global_asm_80665E48(cc->look_at_eye_z, cc->look_at_eye_x, cc->look_at_at_z, cc->look_at_at_x);
     var_f2 = func_global_asm_80665E48(0.0f, cc->look_at_eye_y, sqrtf(SQ(cc->look_at_at_z - cc->look_at_eye_z) + SQ(cc->look_at_at_x - cc->look_at_eye_x)), cc->look_at_at_y) + MATH_PI_F;
@@ -671,14 +671,14 @@ void func_global_asm_8068BBF8(void) {
     cc->unk2D8 = MATH_2PI_F - var_f2;
     func_global_asm_806C9D20(CaaD->unkFB);
     sp52 = func_global_asm_80665DE0(cc->look_at_eye_x, cc->look_at_eye_z, cc->look_at_at_x, cc->look_at_at_z);
-    func_global_asm_8061DBD4(current_actor_pointer,
+    func_global_asm_8061DBD4(gCurrentActorPointer,
         &cc->look_at_eye_x, &cc->look_at_eye_y, &cc->look_at_eye_z,
         &cc->look_at_at_x, &cc->look_at_at_y, &cc->look_at_at_z,
         &cc->look_at_up_x, &cc->look_at_up_y, &cc->look_at_up_z);
     temp_v0 = func_global_asm_80665DE0(cc->look_at_eye_x, cc->look_at_eye_z, cc->look_at_at_x, cc->look_at_at_z);
-    if (player_pointer == CaaD->unk0) {
+    if (gPlayerPointer == CaaD->unk0) {
         if ((current_map == MAP_GALLEON_KROOLS_SHIP) || (current_map == MAP_GALLEON_MECHANICAL_FISH)) {
-            current_actor_pointer->x_rotation = func_global_asm_80612794(D_807FC624) * 100.0f;
+            gCurrentActorPointer->x_rotation = func_global_asm_80612794(D_807FC624) * 100.0f;
             if (current_map == MAP_GALLEON_KROOLS_SHIP) {
                 if (D_807FC624 < 0x1E) {
                     playSound(0x15, 0x7FFFU, 64.0f, 1.0f, 0xA, 0x80);
@@ -726,7 +726,7 @@ block_29:
             if (var_v1 < sp3A) {
                 var_v1_2 = MAX(temp_v1_3, var_v1);
             }
-            current_actor_pointer->x_rotation = ((((var_v1_2 * sp3C) - current_actor_pointer->x_rotation) * sp40) + current_actor_pointer->x_rotation);
+            gCurrentActorPointer->x_rotation = ((((var_v1_2 * sp3C) - gCurrentActorPointer->x_rotation) * sp40) + gCurrentActorPointer->x_rotation);
         }
     }
 }

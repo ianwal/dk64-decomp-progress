@@ -322,7 +322,7 @@ void func_global_asm_806F1048(Actor *actor) {
             }
             break;
     }
-    func_global_asm_806C8D20(current_actor_pointer);
+    func_global_asm_806C8D20(gCurrentActorPointer);
 }
 
 void func_global_asm_806F10E8(Actor *actor) {
@@ -331,10 +331,10 @@ void func_global_asm_806F10E8(Actor *actor) {
         case ACTOR_CUTSCENE_DK:
             func_global_asm_806F0C18(actor);
             spawnActor(ACTOR_BONGOS, 0xA6);
-            moveAndScaleActorToAnother(last_spawned_actor, actor, actor->animation_state->scale[1] * 1.25);
-            last_spawned_actor->x_rotation = actor->x_rotation;
-            last_spawned_actor->z_rotation = actor->z_rotation;
-            last_spawned_actor->object_properties_bitfield |= 0x40000000;
+            moveAndScaleActorToAnother(gLastSpawnedActor, actor, actor->animation_state->scale[1] * 1.25);
+            gLastSpawnedActor->x_rotation = actor->x_rotation;
+            gLastSpawnedActor->z_rotation = actor->z_rotation;
+            gLastSpawnedActor->object_properties_bitfield |= 0x40000000;
             return;
         case ACTOR_DIDDY:
         case ACTOR_CUTSCENE_DIDDY:
@@ -408,9 +408,9 @@ void func_global_asm_806F142C(Actor *arg0) {
     f32 temp_f2;
 
     func_global_asm_806CFF9C(arg0);
-    temp_f0 = current_actor_pointer->unkB8;
+    temp_f0 = gCurrentActorPointer->unkB8;
     temp_f2 = temp_f0 / 2;
-    current_actor_pointer->unkB8 = (D_global_asm_807FD610[cc_player_index].unk8 * (temp_f0 - temp_f2)) + temp_f2;
+    gCurrentActorPointer->unkB8 = (D_global_asm_807FD610[cc_player_index].unk8 * (temp_f0 - temp_f2)) + temp_f2;
 }
 
 void func_global_asm_806F149C(Actor *arg0) {

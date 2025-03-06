@@ -76,7 +76,7 @@ void func_global_asm_80663844(Actor *arg0) {
             *phi_s0 = temp_v0_4;
             temp_v0_4->unk0 = arg0;
             temp_v0_4->unk4 = arg0->unk54;
-            temp_v0_4->unk8 = last_spawned_actor;
+            temp_v0_4->unk8 = gLastSpawnedActor;
             temp_v0_4->next = NULL;
         }
         current = current->next;
@@ -107,8 +107,8 @@ void func_global_asm_80663A0C(Actor *arg0, GlobalASMStruct84 *arg1) {
     KongMirrorAAD *aaD;
 
     spawnActor(ACTOR_REFLECTION_MUSEUM, func_global_asm_80613448(arg0));
-    last_spawned_actor->unk11C = arg0;
-    aaD = last_spawned_actor->additional_actor_data;
+    gLastSpawnedActor->unk11C = arg0;
+    aaD = gLastSpawnedActor->additional_actor_data;
     aaD->unkE = arg1->unkE;
     aaD->unkC = arg1->unkC;
     aaD->unkF = arg1->unkF;

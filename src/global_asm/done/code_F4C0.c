@@ -30,7 +30,7 @@ s16 func_global_asm_8060A7C0(s16 arg0, Actor *arg1, u8 arg2) {
         }
     }
     if (phi_v1) {
-        if (((current_actor_pointer->interactable & 1)) && (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 == 2)) {
+        if (((gCurrentActorPointer->interactable & 1)) && (character_change_array[extra_player_info_pointer->unk1A4].unk2C0 == 2)) {
             return 0x97;
         }
         if ((arg1->unk6A & 4) != 0) {

@@ -259,7 +259,7 @@ void func_multiplayer_800243C8(void) {
     AAD_multiplayer_800243C8 *aaD;
     OSTime temp_ret_3;
 
-    aaD = current_actor_pointer->additional_actor_data;
+    aaD = gCurrentActorPointer->additional_actor_data;
     temp_ret_3 = ((osGetTime() - aaD->unk0) * 64) / 3000;
     if (!(global_properties_bitfield & 2)) {
         aaD->unk8 = aaD->unkC - temp_ret_3 / 1000000;
@@ -268,7 +268,7 @@ void func_multiplayer_800243C8(void) {
         aaD->unk8 = 0;
         func_multiplayer_800242FC(aaD);
     }
-    addActorToTextOverlayRenderArray(func_multiplayer_80024000, current_actor_pointer, 7);
+    addActorToTextOverlayRenderArray(func_multiplayer_80024000, gCurrentActorPointer, 7);
 }
 
 void func_multiplayer_8002449C(void) {
@@ -278,7 +278,7 @@ void func_multiplayer_8002449C(void) {
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
         temp_v0 = func_multiplayer_80024254(playerIndex);
         if ((temp_v0 >= D_global_asm_807552E4.unkC) || (temp_v0 < -999)) {
-            func_multiplayer_800242FC(current_actor_pointer->additional_actor_data);
+            func_multiplayer_800242FC(gCurrentActorPointer->additional_actor_data);
             return;
         }
     }
@@ -294,7 +294,7 @@ void func_multiplayer_8002452C(void) {
         }
     }
     if (a < 2) {
-        func_multiplayer_800242FC(current_actor_pointer->additional_actor_data);
+        func_multiplayer_800242FC(gCurrentActorPointer->additional_actor_data);
     }
 }
 
@@ -347,8 +347,8 @@ Gfx *func_multiplayer_800246EC(Gfx *dl, Struct800246EC *aaD, f32 arg2) {
         var_v1 = 0xFF;
         temp_v0 = &character_change_array[i];
         if (temp_v0->unk2EA) {
-            var_v1 = temp_v0->player_pointer->shadow_opacity;
-            if (temp_v0->player_pointer->shadow_opacity > 0xFF) {
+            var_v1 = temp_v0->playerPointer->shadow_opacity;
+            if (temp_v0->playerPointer->shadow_opacity > 0xFF) {
                 var_v1 = 0xFF;
             }
         }
@@ -489,7 +489,7 @@ Gfx *func_multiplayer_80024CA4(Gfx *dl, Actor *arg1) {
     gDPPipeSync(dl++);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     for (i = 0; i < cc_number_of_players; i++) {
-        temp_a3 = character_change_array[i].player_pointer;
+        temp_a3 = character_change_array[i].playerPointer;
         temp_s4 = aaD->unk20[i];
         if (temp_a3->control_state == 0x84) {
             alpha = temp_a3->shadow_opacity;
@@ -597,7 +597,7 @@ s32 func_multiplayer_80025404(void) {
 
     chosenPlayer = -1;
     for (i = 0; i < cc_number_of_players; i++) {
-        PaaD = character_change_array[i].player_pointer->PaaD;
+        PaaD = character_change_array[i].playerPointer->PaaD;
         if (func_global_asm_806F8AD4(1, i) != 0) {
             temp_s3 = D_global_asm_807FC950[i].health + D_global_asm_807FC950[i].unk2FD;
             if (PaaD->unk260 == NULL) {
@@ -618,7 +618,7 @@ s32 func_multiplayer_80025404(void) {
                 func_global_asm_80714998(2);
                 changeActorColor(0xFF, 0xFF, 0xFF, 0x7F);
                 func_global_asm_8071498C(func_global_asm_8071F3C0);
-                PaaD->unk260 = func_global_asm_80714C08(&D_global_asm_807207BC, 0.5f, character_change_array[i].player_pointer, boneIndex, 2);
+                PaaD->unk260 = func_global_asm_80714C08(&D_global_asm_807207BC, 0.5f, character_change_array[i].playerPointer, boneIndex, 2);
                 D_global_asm_807FC950[i].unk2FA = temp_s3;
             }
             if (D_global_asm_807FC950[i].unk2FA < temp_s3) {
@@ -801,7 +801,7 @@ void func_multiplayer_80025CE8(s32 playerIndex) {
     PlayerAdditionalActorData *PaaD2;
     Actor *player;
 
-    temp_s3 = character_change_array[playerIndex].player_pointer;
+    temp_s3 = character_change_array[playerIndex].playerPointer;
     PaaD = temp_s3->PaaD;
     switch (PaaD->unk264) {
         case 0:
@@ -810,7 +810,7 @@ void func_multiplayer_80025CE8(s32 playerIndex) {
             break;
         case 1:
             for (i = 0; i < cc_number_of_players; i++) {
-                player = character_change_array[i].player_pointer;
+                player = character_change_array[i].playerPointer;
                 PaaD2 = player->PaaD;
                 if (i != playerIndex) {
                     if (PaaD2->unkD4 == 0) {
@@ -921,8 +921,8 @@ void func_multiplayer_80026094(void) {
     MultiplayerActor318AAD *aad;
     Struct80026094_0 *temp_t0;
 
-    aad = current_actor_pointer->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    aad = gCurrentActorPointer->additional_actor_data;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         var_s2 = FALSE;
         func_global_asm_806C9AE0();
         for (i = 0; i < cc_number_of_players; i++) {
@@ -964,7 +964,7 @@ void func_multiplayer_80026094(void) {
         guScale(aad->unk30, 0.5f, 0.5f, 1.0f);
         aad->unkC = D_global_asm_807552E4.unkC;
         aad->unkC *= 60;
-        current_actor_pointer->unk64 |= 2;
+        gCurrentActorPointer->unk64 |= 2;
         aad->unk44 = getPointerTableFile(TABLE_14_TEXTURES_HUD, 0xB9, 0U, 0U);
         aad->unk48 = getPointerTableFile(TABLE_14_TEXTURES_HUD, 0xBA, 0U, 0U);
         aad->unk10 = 0;
@@ -1062,7 +1062,7 @@ void func_multiplayer_80026094(void) {
             aad->unk34 = (s32) D_global_asm_80767CC0;
         }
     }
-    addActorToTextOverlayRenderArray(&func_multiplayer_80025264, current_actor_pointer, 7U);
+    addActorToTextOverlayRenderArray(&func_multiplayer_80025264, gCurrentActorPointer, 7U);
 }
 */
 
@@ -1101,7 +1101,7 @@ void func_multiplayer_800269C8(u8 playerIndex, s8 arg1) {
     s32 sp30;
     PlayerProgress *temp_s1;
 
-    temp_s0 = character_change_array[playerIndex].player_pointer;
+    temp_s0 = character_change_array[playerIndex].playerPointer;
     temp_s1 = &D_global_asm_807FC950[playerIndex];
     temp_v1 = temp_s1->health + temp_s1->unk2FD + arg1;
     sp30 = temp_s1->unk2FA - temp_v1;
@@ -1118,7 +1118,7 @@ void func_multiplayer_800269C8(u8 playerIndex, s8 arg1) {
 }
 
 void func_multiplayer_80026B0C(s32 playerIndex) {
-    Actor *player = character_change_array[playerIndex].player_pointer;
+    Actor *player = character_change_array[playerIndex].playerPointer;
     player->noclip_byte = 0xC;
     switch (D_global_asm_807552E8) {
         case 2:
@@ -1155,7 +1155,7 @@ s32 func_multiplayer_80026BD8(s32 arg0) {
         closest = 9999999.0f;
         exit = getExitData(exitIndex);
         for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
-            player = character_change_array[playerIndex].player_pointer;
+            player = character_change_array[playerIndex].playerPointer;
             if ((character_change_array[playerIndex].does_player_exist != 0) && (player->control_state != 0x84)) {
                 dx = exit->pos.x - player->x_position;
                 dy = exit->pos.y - player->y_position;

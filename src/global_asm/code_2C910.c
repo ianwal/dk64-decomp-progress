@@ -46,9 +46,9 @@ const f64 D_global_asm_807580F8 = 255.0;
 
 void func_global_asm_80627C10(u8 arg0) {
     s32 index = arg0 * 3;
-    last_spawned_actor->unk16A = D_global_asm_80757F70[index + 0];
-    last_spawned_actor->unk16B = D_global_asm_80757F70[index + 1];
-    last_spawned_actor->unk16C = D_global_asm_80757F70[index + 2];
+    gLastSpawnedActor->unk16A = D_global_asm_80757F70[index + 0];
+    gLastSpawnedActor->unk16B = D_global_asm_80757F70[index + 1];
+    gLastSpawnedActor->unk16C = D_global_asm_80757F70[index + 2];
 }
 
 // doable, struct on stack?
@@ -113,7 +113,7 @@ Actor *func_global_asm_80627EA8(s16 spawn_trigger) {
         actor = getSpawnerTiedActor(spawn_trigger, 0);
     }
     if (!spawn_trigger || !actor) {
-        actor = player_pointer;
+        actor = gPlayerPointer;
     }
     return actor;
 }
@@ -197,7 +197,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
     Struct80627F04_dp sp3C;
     Struct80627F04_dp sp38;
 
-    sp9C = player_pointer->additional_actor_data;
+    sp9C = gPlayerPointer->additional_actor_data;
     func_global_asm_8072E7DC(0xC, &sp94);
     temp_s0 = arg1 >> 0x10;
     sp3C.dp_32 = (s16)arg2 >> 0x10;
@@ -230,7 +230,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         return;
     case 0x36:
         func_global_asm_806C8E58(temp_s0 + 2);
-        func_global_asm_806F0C18(player_pointer);
+        func_global_asm_806F0C18(gPlayerPointer);
         return;
     case 0x33:
         temp_v1 = func_global_asm_80627EA8(temp_s0)->unk17C;
@@ -245,7 +245,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         temp_v1->unk30 = -1;
         return;
     case 0x0:
-        sp9C->unk70 = player_pointer->y_rotation;
+        sp9C->unk70 = gPlayerPointer->y_rotation;
         sp9C->unk6C = temp_s0;
         sp9C->unk74 = sp44.dp_32;
         setAction(0x17, NULL, 0U);
@@ -271,10 +271,10 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
             return;
         }
         if (sp44.dp_32 == 2) {
-            current_player->animation_state->unk0->unk10 = -1;
-            playActorAnimation(current_player, D_global_asm_80747750[sp3C.dp_32]);
+            gCurrentPlayer->animation_state->unk0->unk10 = -1;
+            playActorAnimation(gCurrentPlayer, D_global_asm_80747750[sp3C.dp_32]);
             if (sp38.dp_32 != 0) {
-                func_global_asm_80614D00(current_player, (f64)sp38.dp_32 / 100.0, 0.0f);
+                func_global_asm_80614D00(gCurrentPlayer, (f64)sp38.dp_32 / 100.0, 0.0f);
                 return;
             }
         }
@@ -294,7 +294,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         func_global_asm_80627EA8(temp_s0)->unk15E = sp44.dp_32;
         return;
     case 0x25:
-        func_global_asm_806F397C(player_pointer, NULL, temp_s0, 0);
+        func_global_asm_806F397C(gPlayerPointer, NULL, temp_s0, 0);
         return;
     case 0x26:
         func_global_asm_80641874(temp_s0, sp44.dp_32);
@@ -374,13 +374,13 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         actor_v2 = getSpawnerTiedActor(temp_s0, 0U);
         if (actor_v2 != NULL) {
             if (D_global_asm_807FBB68 & 2) {
-                moveAndScaleActorToAnother(player_pointer, actor_v2, actor_v2->animation_state->scale[1]);
+                moveAndScaleActorToAnother(gPlayerPointer, actor_v2, actor_v2->animation_state->scale[1]);
             } else {
-                moveAndScaleActorToAnother(player_pointer, actor_v2, 0.15f);
+                moveAndScaleActorToAnother(gPlayerPointer, actor_v2, 0.15f);
                 character_change_array->unk2C0 = 1;
             }
-            func_global_asm_806CFF9C(player_pointer);
-            player_pointer->object_properties_bitfield |= 4;
+            func_global_asm_806CFF9C(gPlayerPointer);
+            gPlayerPointer->object_properties_bitfield |= 4;
             actor_v2->control_state = 0x40;
             return;
         }
@@ -388,9 +388,9 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
     case 0x20:
         actor_v = getSpawnerTiedActor(temp_s0, 0U);
         if (actor_v != NULL) {
-            moveAndScaleActorToAnother(actor_v, player_pointer, player_pointer->animation_state->scale[1]);
-            player_pointer->control_state = 0x77;
-            player_pointer->control_state_progress = 0;
+            moveAndScaleActorToAnother(actor_v, gPlayerPointer, gPlayerPointer->animation_state->scale[1]);
+            gPlayerPointer->control_state = 0x77;
+            gPlayerPointer->control_state_progress = 0;
             return;
         }
         break;
@@ -436,8 +436,8 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         if (temp_s0 != 0) {
             actor_v2 = getSpawnerTiedActor(temp_s0, 0U);
         } else {
-            actor_v2 = player_pointer;
-            func_global_asm_80672C30(player_pointer);
+            actor_v2 = gPlayerPointer;
+            func_global_asm_80672C30(gPlayerPointer);
         }
         func_global_asm_80724B5C(sp44.dp_32, sp3C.dp_32, &actor_v2->x_position, &actor_v2->y_position, &actor_v2->z_position);
         func_global_asm_8067A69C(NULL, actor_v2, actor_v2->x_position, actor_v2->z_position, 2U, 1U);
@@ -453,7 +453,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
             if (temp_s0 != 0) {
                 actor_v2 = getSpawnerTiedActor(temp_s0, 0U);
             } else {
-                actor_v2 = player_pointer;
+                actor_v2 = gPlayerPointer;
             }
             if (sp3C.dp_32 != 0) {
                 var_f0 = (f64)sp3C.dp_32;
@@ -516,7 +516,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         if (temp_s0 != 0) {
             actor_v2 = getSpawnerTiedActor(temp_s0, 0U);
         } else {
-            actor_v2 = player_pointer;
+            actor_v2 = gPlayerPointer;
         }
         if (sp3C.dp_32 != 0) {
             var_v0_3 = sp3C.dp_32;
@@ -529,7 +529,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         if (temp_s0 != 0) {
             actor_v2 = getSpawnerTiedActor(temp_s0, 0U);
         } else {
-            actor_v2 = player_pointer;
+            actor_v2 = gPlayerPointer;
         }
         func_global_asm_80605314(actor_v2, 0U);
         return;
@@ -593,8 +593,8 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         return;
     case 0x1E:
         spawnActor(ACTOR_SQUAWKS_1, 0x1D);
-        last_spawned_actor->unkF0 = sp3C.dp_32;
-        loadText(last_spawned_actor, temp_s0, sp44.dp_32);
+        gLastSpawnedActor->unkF0 = sp3C.dp_32;
+        loadText(gLastSpawnedActor, temp_s0, sp44.dp_32);
         return;
     case 0x1D:
         func_global_asm_8061CAD8();
@@ -607,7 +607,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
             func_global_asm_805FF378(temp_s0, sp44.dp_32);
             return;
         }
-        func_global_asm_80712830(player_pointer, 0);
+        func_global_asm_80712830(gPlayerPointer, 0);
         return;
     case 0x23:
         loading_zone_transition_type = temp_s0;
@@ -627,13 +627,13 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
 
 s32 func_global_asm_80629148(void) {
     s32 phi_v1 = FALSE;
-    if (current_actor_pointer->unk6A & 0x100) {
-        current_actor_pointer->unk6A &= ~0x100;
+    if (gCurrentActorPointer->unk6A & 0x100) {
+        gCurrentActorPointer->unk6A &= ~0x100;
         phi_v1 = TRUE;
     }
     return phi_v1;
 }
 
 void func_global_asm_80629174(void) {
-    current_actor_pointer->unk6A &= ~0x100;
+    gCurrentActorPointer->unk6A &= ~0x100;
 }

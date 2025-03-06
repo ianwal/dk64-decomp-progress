@@ -38,21 +38,21 @@ void func_global_asm_80698120(u8 arg0) {
     s32 pad2;
     s32 pad;
 
-    aaD = current_actor_pointer->additional_actor_data;
-    PaaD = character_change_array->player_pointer->additional_actor_data;
-    if (!(current_actor_pointer->object_properties_bitfield & 0x10)) {
+    aaD = gCurrentActorPointer->additional_actor_data;
+    PaaD = character_change_array->playerPointer->additional_actor_data;
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         aaD->unk0 = 0.0f;
         aaD->unk4 = 0.104719758f;
         aaD->unkC = 0;
         aaD->unk8 = 0.75f;
         aaD->unk10 = 0.0f;
-        aaD->unk1C = current_actor_pointer->y_position;
+        aaD->unk1C = gCurrentActorPointer->y_position;
         aaD->unk20 = 0.0f;
         aaD->unk24 = RandClamp(100) / 1000.0 + 0.1;
         aaD->unk18 = 0.0f;
-        current_actor_pointer->animation_state->unk1C = malloc(0x80);
+        gCurrentActorPointer->animation_state->unk1C = malloc(0x80);
         func_global_asm_8072EE7C(
-            current_actor_pointer,
+            gCurrentActorPointer,
             0,
             0,
             0,
@@ -69,20 +69,20 @@ void func_global_asm_80698120(u8 arg0) {
             0
         );
         for (i = 1; i < arg0; i++) {
-            func_global_asm_8072EF7C(current_actor_pointer, 0, i + 1, i - 1, i, 0.3333329856f, 0.0f, 0.0f, 0, 0, 0, 0, 0);
+            func_global_asm_8072EF7C(gCurrentActorPointer, 0, i + 1, i - 1, i, 0.3333329856f, 0.0f, 0.0f, 0, 0, 0, 0, 0);
         }
-        current_actor_pointer->unk130 = 0x3C;
-        current_actor_pointer->unk131 = 0xC8;
+        gCurrentActorPointer->unk130 = 0x3C;
+        gCurrentActorPointer->unk131 = 0xC8;
         aaD->unk14 = 0;
         aaD->unk15 = 0;
         aaD->unk28 = isFlagSet(PERMFLAG_ITEM_MOVE_VINES, FLAG_TYPE_PERMANENT)
             || (D_global_asm_807FBB64 & 0x10000000)
             || gameIsInDKTVMode();
     }
-    if ((player_pointer->control_state == 0x63) || (aaD->unk28 == 0) || ((reinterpret_cast(s32, current_actor_pointer->unk124->unk0) == 1) && !(PaaD->unk1F0 & 0x40))) {
-        current_actor_pointer->object_properties_bitfield &= 0xFBFFFFFB;
+    if ((gPlayerPointer->control_state == 0x63) || (aaD->unk28 == 0) || ((reinterpret_cast(s32, gCurrentActorPointer->unk124->unk0) == 1) && !(PaaD->unk1F0 & 0x40))) {
+        gCurrentActorPointer->object_properties_bitfield &= 0xFBFFFFFB;
     } else {
-        current_actor_pointer->object_properties_bitfield |= 0x04000004;
+        gCurrentActorPointer->object_properties_bitfield |= 0x04000004;
     }
     for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
         if (D_global_asm_807FBB70.unk278[i] == 0) {
@@ -91,39 +91,39 @@ void func_global_asm_80698120(u8 arg0) {
     }
     i = 0;
     if (aaD->unk16) {
-        current_actor_pointer->y_position = current_actor_pointer->y_position - 1.0;
+        gCurrentActorPointer->y_position = gCurrentActorPointer->y_position - 1.0;
         aaD->unk16 = aaD->unk16 - 1;
         aaD->unk1C = aaD->unk1C - 1.0;
     }
-    temp_v0 = current_actor_pointer->animation_state->unk1C;
+    temp_v0 = gCurrentActorPointer->animation_state->unk1C;
     if (aaD->unk0 > 2.0f) {
         if ((aaD->unkC < 3.926990986f) && (3.926990986f <= (aaD->unkC + aaD->unk4))) {
-            if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
-                playSoundAtActorPosition(current_actor_pointer, 0x257, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
+            if (gCurrentActorPointer->unk58 == ACTOR_CHAIN) {
+                playSoundAtActorPosition(gCurrentActorPointer, 0x257, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
                 i = 0;
             } else {
-                playSoundAtActorPosition(current_actor_pointer, 0x1C, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
+                playSoundAtActorPosition(gCurrentActorPointer, 0x1C, ((aaD->unk0 * 100.0) / 15.0f), 0x7F, 5);
                 i = 0;
             }
         }
         if ((aaD->unkC < 0.7853981853f) && (0.7853981853f <= (aaD->unkC + aaD->unk4))) {
-            if (current_actor_pointer->unk58 == ACTOR_CHAIN) {
-                playSoundAtActorPosition(current_actor_pointer, 0x258, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
+            if (gCurrentActorPointer->unk58 == ACTOR_CHAIN) {
+                playSoundAtActorPosition(gCurrentActorPointer, 0x258, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
             } else {
-                playSoundAtActorPosition(current_actor_pointer, 0x1D, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
+                playSoundAtActorPosition(gCurrentActorPointer, 0x1D, ((aaD->unk0 * 25.0) / 15.0f), 0x7F, 0x14);
             }
         }
     }
-    if ((current_actor_pointer->unk58 != ACTOR_CHAIN) && (aaD->unk0 > 10.0f)) {
+    if ((gCurrentActorPointer->unk58 != ACTOR_CHAIN) && (aaD->unk0 > 10.0f)) {
         if ((aaD->unkC < 2.356194496f) && (2.356194496f <= (aaD->unkC + aaD->unk4))) {
-            playSoundAtActorPosition(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
+            playSoundAtActorPosition(gCurrentActorPointer, 0x1E, 0xFF, 0x7F, 0x14);
         }
         if ((aaD->unkC < 5.497786999f) && (5.497786999f <= (aaD->unkC + aaD->unk4))) {
-            playSoundAtActorPosition(current_actor_pointer, 0x1E, 0xFF, 0x7F, 0x14);
+            playSoundAtActorPosition(gCurrentActorPointer, 0x1E, 0xFF, 0x7F, 0x14);
         }
     }
 
-    switch (current_actor_pointer->unk58) {
+    switch (gCurrentActorPointer->unk58) {
         case ACTOR_CHAIN:
         case ACTOR_UNKNOWN_68:
             sp63 = 1;
@@ -147,7 +147,7 @@ void func_global_asm_80698120(u8 arg0) {
     }
 
     // Vines (brown and green)
-    if ((current_actor_pointer->unk58 == ACTOR_VINE) || (current_actor_pointer->unk58 == ACTOR_VINE_BROWN)) {
+    if ((gCurrentActorPointer->unk58 == ACTOR_VINE) || (gCurrentActorPointer->unk58 == ACTOR_VINE_BROWN)) {
         temp_v0 = &temp_v0[i];
         temp_v0->unk0 = -0x80;
         temp_v0->unk1 = 1;
@@ -163,16 +163,16 @@ void func_global_asm_80698120(u8 arg0) {
     temp_v0[i].unk0 = 0;
 
     // Leaving vine
-    if (player_pointer->control_state == 0x58) {
+    if (gPlayerPointer->control_state == 0x58) {
         aaD->unk15 = 5;
     } else {
         if (aaD->unk15) {
             aaD->unk15--;
         }
     }
-    if ((player_pointer->unk6A & 0x40) && (aaD->unk14 == 0) && (current_actor_pointer == PaaD->unk130)) {
+    if ((gPlayerPointer->unk6A & 0x40) && (aaD->unk14 == 0) && (gCurrentActorPointer == PaaD->unk130)) {
         aaD->unk0 = 15.0f;
-        if (func_global_asm_806CC14C(player_pointer->y_rotation, current_actor_pointer->y_rotation) < 0x400) {
+        if (func_global_asm_806CC14C(gPlayerPointer->y_rotation, gCurrentActorPointer->y_rotation) < 0x400) {
             aaD->unkC = 3.141592741f;
         } else {
             aaD->unkC = 0.0f;
@@ -184,7 +184,7 @@ void func_global_asm_80698120(u8 arg0) {
     if (aaD->unkC < 0.0f) {
         aaD->unkC += MATH_2PI_F;
     }
-    if ((player_pointer->unk6A & 0x40) && (current_actor_pointer == PaaD->unk130)) {
+    if ((gPlayerPointer->unk6A & 0x40) && (gCurrentActorPointer == PaaD->unk130)) {
         aaD->unk14 = 1;
         aaD->unk0 += 0.2;
         if (aaD->unk0 > 15.0f) {
@@ -197,7 +197,7 @@ void func_global_asm_80698120(u8 arg0) {
             aaD->unk0 = 0.0f;
         }
     }
-    if ((player_pointer->unk6A & 0x40) && (current_actor_pointer == PaaD->unk130)) {
+    if ((gPlayerPointer->unk6A & 0x40) && (gCurrentActorPointer == PaaD->unk130)) {
         if ((PaaD->unk138 < 1.5) && ((((aaD->unkC > 4.0)) && (aaD->unkC < 4.71238899230957031)) || ((aaD->unkC < 1.57079637050628662) && (0.9 < aaD->unkC)))) {
             PaaD->unk14C = D_global_asm_8075037C * (aaD->unk0 / 15.0f);
             PaaD->unk150 = D_global_asm_80750380 * (aaD->unk0 / 15.0f);
@@ -205,17 +205,17 @@ void func_global_asm_80698120(u8 arg0) {
             PaaD->unk14C = 200.0f;
             PaaD->unk150 = 200.0f;
         }
-        PaaD->unk154 = current_actor_pointer->y_rotation & 0xFFF;
+        PaaD->unk154 = gCurrentActorPointer->y_rotation & 0xFFF;
         if ((aaD->unkC < 1.57079637050628662) || (4.71238911151885986 < aaD->unkC)) {
             PaaD->unk154 = (PaaD->unk154 + 0x800) & 0xFFF;
         }
     }
     // Vines (brown and green)
-    if ((current_actor_pointer->unk58 == ACTOR_VINE_BROWN) || (current_actor_pointer->unk58 == ACTOR_VINE)) {
-        current_actor_pointer->y_position = (func_global_asm_80612D1C(aaD->unk20) * 5.0) + aaD->unk1C;
+    if ((gCurrentActorPointer->unk58 == ACTOR_VINE_BROWN) || (gCurrentActorPointer->unk58 == ACTOR_VINE)) {
+        gCurrentActorPointer->y_position = (func_global_asm_80612D1C(aaD->unk20) * 5.0) + aaD->unk1C;
         aaD->unk20 += aaD->unk24;
     }
-    renderActor(current_actor_pointer, 0);
+    renderActor(gCurrentActorPointer, 0);
 }
 */
 

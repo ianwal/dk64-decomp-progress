@@ -357,7 +357,7 @@ void func_global_asm_8063E72C(Prop_ScriptData *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_42630/func_global_asm_8063FA48.s")
 
 void func_global_asm_80641724(s16 arg0) {
-    PlayerAdditionalActorData *PaaD = character_change_array->player_pointer->PaaD;
+    PlayerAdditionalActorData *PaaD = character_change_array->playerPointer->PaaD;
     switch (arg0) {
         case 0x33:
         case 0xBC:
@@ -431,14 +431,14 @@ void func_global_asm_8064199C(Struct8064199C_arg0 *arg0, s8 arg1, s16 arg2) {
 
 // TODO: Get rid of GOTOs
 s32 func_global_asm_806419F8(void) {
-    PlayerAdditionalActorData *PaaD = character_change_array->player_pointer->PaaD;
+    PlayerAdditionalActorData *PaaD = character_change_array->playerPointer->PaaD;
 
-    if (player_pointer->control_state == 0x42) {
+    if (gPlayerPointer->control_state == 0x42) {
         if (PaaD->unkBC == 0x62 || PaaD->unkBC == 0x88 || PaaD->unkBC == 0x17) {
             goto block_8;
         }
     }
-    if (player_pointer->control_state == 0x52 || player_pointer->control_state == 0x67) {
+    if (gPlayerPointer->control_state == 0x52 || gPlayerPointer->control_state == 0x67) {
         goto block_8;
     }
     if (character_change_array->action_initiated == 0x1C) {
@@ -528,14 +528,14 @@ void func_global_asm_80641DA0(GlobalASMStruct44 *arg0, s16 arg1, s16 arg2, s16 s
     s32 phi_v1;
 
     if ((arg0->unk94 == 0) && ((func_global_asm_80678014(0x14)))) {
-        arg0->unk94 = last_spawned_actor;
-        last_spawned_actor->noclip_byte = 1;
-        last_spawned_actor->x_position = D_global_asm_807F621C;
-        last_spawned_actor->y_position = D_global_asm_807F6220;
-        last_spawned_actor->z_position = D_global_asm_807F6224;
-        last_spawned_actor->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
+        arg0->unk94 = gLastSpawnedActor;
+        gLastSpawnedActor->noclip_byte = 1;
+        gLastSpawnedActor->x_position = D_global_asm_807F621C;
+        gLastSpawnedActor->y_position = D_global_asm_807F6220;
+        gLastSpawnedActor->z_position = D_global_asm_807F6224;
+        gLastSpawnedActor->y_rotation = (D_global_asm_807F622C * 4096.0f) / 360.0f;
         if (D_global_asm_807F693F != 0) {
-            last_spawned_actor->unk15E = spawn_trigger;
+            gLastSpawnedActor->unk15E = spawn_trigger;
         }
         if (D_global_asm_807F693F != 0) {
             phi_v1 = 4;
@@ -574,7 +574,7 @@ u8 func_global_asm_80641F70(s16 arg0) {
     sp73 = FALSE;
     for (i = 0; i < D_global_asm_80750AB4; i++) {
         if (character_change_array[i].does_player_exist != 0) {
-            player = character_change_array[i].player_pointer;
+            player = character_change_array[i].playerPointer;
             dx = D_global_asm_807F621C - player->x_position;
             dy = D_global_asm_807F6220 - player->y_position;
             dz = D_global_asm_807F6224 - player->z_position;
@@ -610,9 +610,9 @@ s32 func_global_asm_80642204(s16 arg0) {
     for (playerIndex = 0; playerIndex < D_global_asm_80750AB4; playerIndex++) {
         if ((character_change_array[playerIndex].does_player_exist)
             && (func_global_asm_8064216C(arg0,
-                              character_change_array[playerIndex].player_pointer->x_position,
-                              character_change_array[playerIndex].player_pointer->y_position,
-                              character_change_array[playerIndex].player_pointer->z_position))) {
+                              character_change_array[playerIndex].playerPointer->x_position,
+                              character_change_array[playerIndex].playerPointer->y_position,
+                              character_change_array[playerIndex].playerPointer->z_position))) {
             return TRUE;
         }
     }

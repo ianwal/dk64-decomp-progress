@@ -1135,8 +1135,8 @@ void func_critter_8002601C(Critter *arg0) {
     temp_f2 = arg0->unk58->unk18 + 122500;
     if (arg0->unk58->unk24 != D_global_asm_807444FC) {
         temp_t4 = (arg0->unk58->unkC + arg0->unk58->unk10) >> 1;
-        dxz = SQ(arg0->unk58->x_position - current_player->x_position) +
-            SQ(arg0->unk58->z_position - current_player->z_position);
+        dxz = SQ(arg0->unk58->x_position - gCurrentPlayer->x_position) +
+            SQ(arg0->unk58->z_position - gCurrentPlayer->z_position);
         var_f0 = 0.0f;
         var_a3_2 = (arg0->unk58->y_position + temp_t4) > D_critter_80029BA4->y_position;
         if (var_a3_2) {
@@ -1220,7 +1220,7 @@ void func_critter_80026410(Critter *arg0) {
     f32 dx, dz;
 
     if (arg0->unk40 != D_global_asm_807444FC) {
-        Actor* temp = current_player;
+        Actor* temp = gCurrentPlayer;
         dx = arg0->x_pos - temp->x_position;
         dz = arg0->z_pos - temp->z_position;
         arg0->unk3C = SQ(dx) + SQ(dz);
@@ -1352,7 +1352,7 @@ void func_critter_80026904(Critter *arg0, CritterController *arg1) {
             }
             if ((arg0->unk1E0 == 2) && (arg0->unk3C < D_critter_80029BA4->unkA)) {
                 s16 temp;
-                temp = func_global_asm_80665DE0(arg0->x_pos, arg0->z_pos, current_player->x_position, current_player->z_position);
+                temp = func_global_asm_80665DE0(arg0->x_pos, arg0->z_pos, gCurrentPlayer->x_position, gCurrentPlayer->z_position);
                 temp += (func_global_asm_806119A0() & 0x7FF) - 0x400;
                 arg0->unk1E0 = 1;
                 func_critter_80025DB8(arg0->unk54, arg0, 0, temp, 1);
@@ -1466,8 +1466,8 @@ void func_critter_80026C9C(CritterController *arg0) {
     s32 i;
 
     if (arg0 != NULL) {
-        D_critter_80029BA4->x_position = current_player->x_position;
-        D_critter_80029BA4->z_position = current_player->z_position;
+        D_critter_80029BA4->x_position = gCurrentPlayer->x_position;
+        D_critter_80029BA4->z_position = gCurrentPlayer->z_position;
         phi_s0 = arg0->unk4;
         for (i = 0; i < arg0->critter_count; i++) {
             phi_v1 = *phi_s0;
@@ -1475,7 +1475,7 @@ void func_critter_80026C9C(CritterController *arg0) {
                 phi_v1--;
             }
             temp_v0 = &D_critter_80029BAC[current_character_index[0]].unk0[phi_v1];
-            D_critter_80029BA4->y_position = current_player->y_position + temp_v0->unk14;
+            D_critter_80029BA4->y_position = gCurrentPlayer->y_position + temp_v0->unk14;
             temp_t5 = D_critter_80029BA4;
             temp_t5->unk8 = temp_v0->unk0;
             temp_t5->unkC = temp_v0->unk4;

@@ -665,7 +665,7 @@ void func_global_asm_806F6204(Struct80754244 *arg0, u8 arg1, Struct807FD740 *arg
     Struct807FD734 *var_v0;
     u8 lvl;
 
-    temp_s5 = character_change_array[arg1].player_pointer;
+    temp_s5 = character_change_array[arg1].playerPointer;
     while (arg0) {
         temp_v0 = func_global_asm_80626BC8(arg0->unk8,
                 D_global_asm_80753EF0[arg0->unk14].unk10 + arg0->unkA,
@@ -785,13 +785,13 @@ s32 func_global_asm_806F6644(s16 arg0, u8 arg1, u16 arg2) {
             }
             break;
         case 0x98:
-            PaaD = character_change_array[cc_player_index].player_pointer->PaaD;
+            PaaD = character_change_array[cc_player_index].playerPointer->PaaD;
             if (!(PaaD->unk1F4 & 1)) {
                 return FALSE;
             }
             break;
         case 0x8E:
-            PaaD = character_change_array[cc_player_index].player_pointer->PaaD;
+            PaaD = character_change_array[cc_player_index].playerPointer->PaaD;
             if (!(PaaD->unk1F4 & 2)) {
                 return FALSE;
             }
@@ -804,15 +804,15 @@ s32 func_global_asm_806F6644(s16 arg0, u8 arg1, u16 arg2) {
             break;
     }
     temp_a0 = D_global_asm_807F6000[func_global_asm_80659470(arg0)].unk8C;
-    if (temp_a0 & 8 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_DK) {
+    if (temp_a0 & 8 && character_change_array[cc_player_index].playerPointer->unk58 != ACTOR_DK) {
         return FALSE;
-    } else if (temp_a0 & 2 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_DIDDY) {
+    } else if (temp_a0 & 2 && character_change_array[cc_player_index].playerPointer->unk58 != ACTOR_DIDDY) {
         return FALSE;
-    } else if (temp_a0 & 4 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_TINY) {
+    } else if (temp_a0 & 4 && character_change_array[cc_player_index].playerPointer->unk58 != ACTOR_TINY) {
         return FALSE;
-    } else if (temp_a0 & 0x10 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_LANKY) {
+    } else if (temp_a0 & 0x10 && character_change_array[cc_player_index].playerPointer->unk58 != ACTOR_LANKY) {
         return FALSE;
-    } else if (temp_a0 & 1 && character_change_array[cc_player_index].player_pointer->unk58 != ACTOR_CHUNKY) {
+    } else if (temp_a0 & 1 && character_change_array[cc_player_index].playerPointer->unk58 != ACTOR_CHUNKY) {
         return FALSE;
     }
     return TRUE;
@@ -868,7 +868,7 @@ void func_global_asm_806F6F28(void) {
         sp45 = TRUE;
     }
     for (playerIndex = 0; playerIndex < cc_number_of_players; playerIndex++) {
-        PaaD = character_change_array[playerIndex].player_pointer->additional_actor_data;
+        PaaD = character_change_array[playerIndex].playerPointer->additional_actor_data;
         if (cameraShockaveUnlocked) {
             PaaD->unk1F4 |= 1;
         } else {
@@ -879,7 +879,7 @@ void func_global_asm_806F6F28(void) {
         } else {
             PaaD->unk1F4 &= ~2;
         }
-        if ((character_change_array[playerIndex].player_pointer->control_state != 0x36) && !D_global_asm_807FD738) {
+        if ((character_change_array[playerIndex].playerPointer->control_state != 0x36) && !D_global_asm_807FD738) {
             func_global_asm_806F69A8(playerIndex);
         }
     }
@@ -975,7 +975,7 @@ void func_global_asm_806F73A0(s32 arg0) {
     s32 i;
 
     temp_s6 = arg0;
-    player = character_change_array[temp_s6].player_pointer;
+    player = character_change_array[temp_s6].playerPointer;
     PaaD = player->additional_actor_data;
     if (D_global_asm_807FC950[temp_s6].health <= 0) {
         return;
@@ -1105,9 +1105,9 @@ void func_global_asm_806F79E0(s16 arg0, u8 arg1) {
         case 0x90:
             playSong(MUSIC_18_GB_KEY_GET, 1.0f);
             func_global_asm_80687C48();
-            if ((player_pointer->y_position - player_pointer->floor) < 100.0f) {
-                if (player_pointer->control_state != 0x63) {
-                    if (!(player_pointer->unk6A & 4) || !((player_pointer->unkAC - player_pointer->y_position) > 20.0f)) {
+            if ((gPlayerPointer->y_position - gPlayerPointer->floor) < 100.0f) {
+                if (gPlayerPointer->control_state != 0x63) {
+                    if (!(gPlayerPointer->unk6A & 4) || !((gPlayerPointer->unkAC - gPlayerPointer->y_position) > 20.0f)) {
                         setAction(0x29, 0, extra_player_info_pointer->unk1A4);
                     }
                 }
@@ -1116,9 +1116,9 @@ void func_global_asm_806F79E0(s16 arg0, u8 arg1) {
         case 0x74:
         case 0x288:
             playSong(MUSIC_18_GB_KEY_GET, 1.0f);
-            if ((player_pointer->y_position - player_pointer->floor) < 100.0f) {
-                if (player_pointer->control_state != 0x63) {
-                    if (!(player_pointer->unk6A & 4) || !((player_pointer->unkAC - player_pointer->y_position) > 20.0f)) {
+            if ((gPlayerPointer->y_position - gPlayerPointer->floor) < 100.0f) {
+                if (gPlayerPointer->control_state != 0x63) {
+                    if (!(gPlayerPointer->unk6A & 4) || !((gPlayerPointer->unkAC - gPlayerPointer->y_position) > 20.0f)) {
                         setAction(0x29, 0, extra_player_info_pointer->unk1A4);
                     }
                 }
