@@ -624,7 +624,7 @@ void func_global_asm_8069D0F8(u8 arg0, s16 arg1, s16 arg2, char *arg3, u16 arg4,
         gLastSpawnedActor->unk16B = 0xFF;
         gLastSpawnedActor->unk16C = 0xFF;
         temp_s0->unk0 = malloc(strlen(arg3) + 1);
-        strcpy(temp_s0->unk0, arg3);
+        _strcpy(temp_s0->unk0, arg3);
         temp_s0->unk4 = arg4;
         temp_s0->unk6 = arg5;
         temp_s0->unk8 = arg6;

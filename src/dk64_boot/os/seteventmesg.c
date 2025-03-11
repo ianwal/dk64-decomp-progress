@@ -1,7 +1,8 @@
 #include <ultra64.h>
 #include "osint.h"
+#include "macros.h"
 
-extern __OSEventState __osEventStateTab[OS_NUM_EVENTS];
+__OSEventState __osEventStateTab[OS_NUM_EVENTS] ALIGNED(8);
 
 void osSetEventMesg(OSEvent event, OSMesgQueue *mq, OSMesg msg)
 {

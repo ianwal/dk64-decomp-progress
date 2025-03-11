@@ -407,7 +407,7 @@ void func_global_asm_806CA5F8(s32 arg0) {
     func_global_asm_806CB53C();
     func_global_asm_806CA2E4();
     func_global_asm_806CA540();
-    if ((D_80770561 == 0x6B) && (gCurrentActorPointer->control_state != 0x6E)) {
+    if ((D_global_asm_80770561 == 0x6B) && (gCurrentActorPointer->control_state != 0x6E)) {
         func_global_asm_80602B60(0x6B, 0U);
     }
     if (extra_player_info_pointer->unkCA != 0) {
@@ -1138,7 +1138,7 @@ void func_global_asm_806CD424(s16 arg0, f32 arg1, f32 arg2) {
         gCurrentActorPointer->unkB8 = arg2;
     }
     if (gCurrentActorPointer->unkB8 != 0.0) {
-        gCurrentActorPointer->unkEE = (func_global_asm_80611BB4(sp3C, sp38) * 4096.0) / 6.28318548202514648;
+        gCurrentActorPointer->unkEE = (func_global_asm_80611BB4(sp3C, sp38) * 4096.0) / TWO_PI;
     }
 }
 */

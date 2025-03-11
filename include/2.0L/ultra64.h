@@ -15,14 +15,12 @@
  *
  *  $Revision: 1.10 $
  *  $Date: 1997/02/11 08:37:33 $
- *  $Source: /disk6/Master/cvsmdev2/PR/include/ultra64.h,v $
+ *  $Source: /exdisk2/cvs/N64OS/Master/cvsmdev2/PR/include/ultra64.h,v $
  *
  **************************************************************************/
 
 #ifndef _ULTRA64_H_
 #define _ULTRA64_H_
-
-#include <math.h>
 
 #include <PR/ultratypes.h>
 #include <PR/rcp.h>
@@ -32,7 +30,6 @@
 #include <PR/sptask.h>
 #include <PR/mbi.h>
 #include <PR/libaudio.h>
-#include <PR/n_libaudio.h>
 #include <PR/gu.h>
 #include <PR/ramrom.h>
 #include <PR/sp.h>

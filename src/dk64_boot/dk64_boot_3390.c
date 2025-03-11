@@ -11,7 +11,7 @@ s32 D_dk64_boot_8000EEF0 = 0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800029EC.s")
 
-u8 *strcpy(u8 *dest, u8 const *src) {
+u8 *_strcpy(u8 *dest, u8 const *src) {
     u8 *const ptr = dest;
     while ((*dest++ = *src++) != '\0');
     return ptr;
@@ -50,7 +50,7 @@ s32 func_dk64_boot_80002C74(u8 *str, u8 *arg1) {
     var_s1 = 0;
     while (*str & 0xFF) {
         character = *str & 0xFF;
-        if (strchr(arg1, character)) {
+        if (_strchr(arg1, character)) {
             return var_s1;
         }
         str++;
@@ -66,10 +66,10 @@ u8 *func_dk64_boot_80002D60(u8 *str, u8 *ptr) {
     u8 *var_s1;
     u8 character;
 
-    var_s1 = strchr(str, *ptr);
+    var_s1 = _strchr(str, *ptr);
     while (*ptr) {
         character = *ptr++;
-        temp_v0 = strchr(str, character);
+        temp_v0 = _strchr(str, character);
         if ((temp_v0) && ((temp_v0 < var_s1) || (!var_s1))) {
             var_s1 = temp_v0;
         }
@@ -88,7 +88,7 @@ void *memset(void *dest, s32 val, u32 len)
   return dest;
 }
 
-u8 *strchr(const u8 *str, s32 c) {
+u8 *_strchr(const u8 *str, s32 c) {
     if (str == NULL) {
         return NULL;
     }

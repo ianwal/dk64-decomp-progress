@@ -1,26 +1,26 @@
 /**************************************************************************
- *                                                                        *
- *               Copyright (C) 1995, Silicon Graphics, Inc.               *
- *                                                                        *
- *  These coded instructions, statements, and computer programs  contain  *
- *  unpublished  proprietary  information of Silicon Graphics, Inc., and  *
- *  are protected by Federal copyright  law.  They  may not be disclosed  *
- *  to  third  parties  or copied or duplicated in any form, in whole or  *
- *  in part, without the prior written consent of Silicon Graphics, Inc.  *
- *                                                                        *
- *************************************************************************/
-
-/**************************************************************************
  *
- *  $Revision: 1.8 $
- *  $Date: 1997/07/02 02:35:06 $
- *  $Source: /disk6/Master/cvsmdev2/PR/include/ultrahost.h,v $
+ *  $Revision: 1.1 $
+ *  $Date: 1999/07/05 02:16:07 $
  *
  **************************************************************************/
 
 #ifndef _ULTRAHOST_H_
 #define _ULTRAHOST_H_
 
+#ifdef WIN32 /* { */
+
+int __stdcall uhOpenGame(char *);
+int __stdcall uhCloseGame(int);
+int __stdcall uhReadGame(int hfd,void *buf,int count);
+int __stdcall uhWriteGame(int hfd,void *buf,int count);
+int __stdcall uhReadRamrom(int hfd,void *ramrom_adr,void *buf,int count);
+int __stdcall uhWriteRamrom(int hfd,void *ramrom_adr,void *buf,int count);
+int __stdcall uhPartnerInit(int hfd);
+int __stdcall uhPartnerCmd(int hfd,char *ptcmd);
+int __stdcall uhGload(int hfd,char *loadfile);
+
+#else /* }{ */
 #ifdef PTN64 /* { */
 
 #define	execl		execl_pt
@@ -54,5 +54,6 @@ int	uhReadRamrom(int, void *, void*, int);
 #ifdef __cplusplus
 }
 #endif
+#endif /* } */
 
 #endif /* ULTRAHOST */

@@ -222,7 +222,7 @@ void func_global_asm_80731D20(char *arg0, ...) {
     va_list args;
     va_start(args, arg0);
 
-    _Printf(&sp4C, arg0, args);
+    vsprintf(&sp4C, arg0, args);
     va_end(args);
     var_s1 = &sp4C;
     character = *var_s1++;

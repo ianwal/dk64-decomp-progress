@@ -380,7 +380,7 @@ f32 func_global_asm_80602E6C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, f32
     if ((var_f0 < D_global_asm_807567C0) && (dy < 0.0f)) {
         dy *= 20.0f;
     }
-    D_80770DE4 = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
+    D_global_asm_80770DE4 = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
     if (D_global_asm_807567B8 <= arg5) {
         dz = character_change_array->look_at_at_z - character_change_array->look_at_eye_z;
         dx = character_change_array->look_at_at_x - character_change_array->look_at_eye_x;
@@ -408,7 +408,7 @@ f32 func_global_asm_80602E6C(f32 arg0, f32 arg1, f32 arg2, u8 arg3, u8 arg4, f32
         }
     }
     if (D_80770DE4 < 1.0f) {
-        D_80770DE4 = 1.0f;
+        D_global_asm_80770DE4 = 1.0f;
     }
     temp_f2_4 = arg4 * 4000;
     temp_f8 = (temp_f2_4 / sqrtf(D_80770DE4)) - ((temp_f2_4 * D_global_asm_807567F8) - D_global_asm_80756800);

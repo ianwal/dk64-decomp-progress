@@ -481,7 +481,7 @@ Gfx *func_global_asm_8069FA40(Gfx *dl, Actor *arg1) {
     style = 1;
     switch (arg1->unk15F) {
         case 0:
-            sprintf(sp68, "ROUND");
+            _sprintf(sp68, "ROUND");
             break;
         case 30:
         case 31:
@@ -494,19 +494,19 @@ Gfx *func_global_asm_8069FA40(Gfx *dl, Actor *arg1) {
         case 38:
             sp64 = TRUE;
             // TODO: WTF
-            sprintf(sp68, D_global_asm_80750338[arg1->unk15F << 0]);
+            _sprintf(sp68, D_global_asm_80750338[arg1->unk15F << 0]);
             break;
         default:
             if (arg1->unk15F & 0x80) {
                 spFC = 4.0 - spFC;
                 style = 3;
-                sprintf(sp68, "%d", 0xA - (arg1->unk15F & 0x3F));
+                _sprintf(sp68, "%d", 0xA - (arg1->unk15F & 0x3F));
             } else if (arg1->unk15F & 0x40) {
                 spFC = 4.0 - spFC;
                 style = 3;
-                sprintf(sp68, "%d", 8 - (arg1->unk15F & 0x3F));
+                _sprintf(sp68, "%d", 8 - (arg1->unk15F & 0x3F));
             } else {
-                sprintf(sp68, "%d", arg1->unk15F);
+                _sprintf(sp68, "%d", arg1->unk15F);
             }
             break;
     }

@@ -24,7 +24,7 @@
  *
  *  $Revision: 1.7 $
  *  $Date: 1997/02/11 08:32:02 $
- *  $Source: /disk6/Master/cvsmdev2/PR/include/sched.h,v $
+ *  $Source: /exdisk2/cvs/N64OS/Master/cvsmdev2/PR/include/sched.h,v $
  *
  **************************************************************************/
 
@@ -54,7 +54,7 @@ typedef struct OSScTask_s {
     void		*framebuffer;	/* used by graphics tasks */
 
     OSTask              list;
-    void* unk_50; //2.0L addition?
+    void* unk_50; //?
     OSMesgQueue         *msgQ;
     OSMesg              msg;
 #ifndef _FINALROM                       /* all #ifdef items should    */

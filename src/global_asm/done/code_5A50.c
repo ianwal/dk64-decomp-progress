@@ -12,21 +12,24 @@ typedef struct {
     struct_sub_8076C328 unk0[4];
 } struct_8076C328;
 
-extern s32 D_dk64_boot_8000DDCC;
-extern s32 D_global_asm_8076D200;
+extern u32 D_global_asm_8076D200;
 
 extern struct_8076BF48 D_global_asm_8076BF48[];
 extern struct_8076C328 D_global_asm_8076C328[];
 
-void func_global_asm_8060B140(s32, ALBankFile *, s32*, s32, s32, s32, s32);
+typedef struct Struct80600D50_sp60 {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+} Struct80600D50_sp60;
+
 void func_global_asm_80737E50(ALCSPlayer *);
 void func_global_asm_80737F0C(ALSeqPlayer*, s32, u8);
 void func_global_asm_80738080(ALSeqPlayer*, u8, u8);
 void func_global_asm_807380CC(ALSeqPlayer*, s32, u8);
 void func_global_asm_80738118(ALSeqPlayer*, s32, u8);
 void func_global_asm_80738E58(struct_8076BF48*, struct_8076C328*, u8, s32);
-
-void func_global_asm_80601A10(s32 *, s32, s32 *);
+void func_global_asm_80601A10(SynthConfig *, s32, Struct80600D50_sp60 *);
 void func_global_asm_80732DEC(s32 *, s32);
 void func_global_asm_80732F10(ALSeqPlayer *, s32 *);
 void func_global_asm_80735AA0(s32 *);
@@ -35,30 +38,8 @@ extern void *D_global_asm_8076BF38[];
 extern ALHeap D_global_asm_8076D1E8;
 extern ALBank *D_global_asm_8076D1FC;
 extern u8 D_global_asm_80770F50;
-extern dk64_boot_struct_0 D_dk64_boot_8000DCC4[];
 extern s32 D_global_asm_807452B0[];
 extern ALBank *D_global_asm_8076D1F8;
-
-typedef struct SynthConfig {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    ALHeap *unk14;
-    s32 unk18;
-    u8 unk1C;
-    u8 unk1D;
-    u8 pad1E[2];
-    s32 unk20;
-    s32 unk24;
-} SynthConfig;
-
-typedef struct Struct80600D50_sp60 {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-} Struct80600D50_sp60;
 
 typedef struct SeqpConfig {
     s32 unk0;
@@ -107,19 +88,19 @@ void func_global_asm_80600D50(void) {
     sp6C.unk4 = 2;
     sp6C.unk8 = 0xC00;
     func_global_asm_80601A10(&sp98, 0x14, &sp6C);
-    spC0 = D_dk64_boot_8000DCC4[15].unk4 - D_dk64_boot_8000DCC4[15].unk0;
+    spC0 = gOverlayTable[15].rom_data_end - gOverlayTable[15].rom_code_start;
     temp_v0 = malloc(0x38000);
-    func_global_asm_8060B140(D_dk64_boot_8000DCC4[15].unk0, temp_v0, &spC0, 0xD, 0, 2, 0);
+    func_global_asm_8060B140(gOverlayTable[15].rom_code_start, temp_v0, &spC0, 0xD, 0, 2, 0);
     temp_v0_2 = alHeapDBAlloc(NULL, 0, &D_global_asm_8076D1E8, 1, spC0);
-    func_global_asm_8060B140(D_dk64_boot_8000DCC4[15].unk0, temp_v0_2, &spC0, 0xD, 0, 2, 0);
-    alBnkfNew(temp_v0_2, D_dk64_boot_8000DCC4[14].unk0);
+    func_global_asm_8060B140(gOverlayTable[15].rom_code_start, temp_v0_2, &spC0, 0xD, 0, 2, 0);
+    alBnkfNew(temp_v0_2, gOverlayTable[14].rom_code_start);
     D_global_asm_8076D1FC = temp_v0_2->bankArray[0];
-    spC0 = D_dk64_boot_8000DCC4[0x10].unk4 - D_dk64_boot_8000DCC4[0x10].unk0;
-    func_global_asm_8060B140(D_dk64_boot_8000DCC4[0x10].unk0, temp_v0, &spC0, 0xD, 0, 2, 0);
+    spC0 = gOverlayTable[16].rom_data_end - gOverlayTable[16].rom_code_start;
+    func_global_asm_8060B140(gOverlayTable[16].rom_code_start, temp_v0, &spC0, 0xD, 0, 2, 0);
     free(temp_v0);
     temp_v0_3 = alHeapDBAlloc(NULL, 0, &D_global_asm_8076D1E8, 1, spC0);
-    func_global_asm_8060B140(D_dk64_boot_8000DCC4[0x10].unk0, temp_v0_3, &spC0, 0xD, 0, 2, 0);
-    alBnkfNew(temp_v0_3, D_dk64_boot_8000DCC4[0x11].unk0);
+    func_global_asm_8060B140(gOverlayTable[16].rom_code_start, temp_v0_3, &spC0, 0xD, 0, 2, 0);
+    alBnkfNew(temp_v0_3, gOverlayTable[17].rom_code_start);
     D_global_asm_8076D1F8 = temp_v0_3->bankArray[0];
     sp78.unk0 = 0x2C;
     sp78.unk4 = 0x40;
@@ -151,13 +132,15 @@ void func_global_asm_80600D50(void) {
 }
 
 void func_global_asm_806010A0(void) {
-    s32 sp34, sp30, sp2C;
+    u32 sp34;
+    u32 sp30;
+    u32 sp2C;
 
     sp34 = 0x80;
-    func_global_asm_8060B140(D_dk64_boot_8000DDCC, &D_global_asm_8076D200, &sp34, 0, 0, 0, 0);
+    func_global_asm_8060B140(gOverlayTable[11].rom_code_start, (u8*)&D_global_asm_8076D200, &sp34, 0, 0, 0, 0);
     sp30 = 0x2C0;
     sp2C = D_global_asm_8076D200;
-    func_global_asm_8060B140(D_dk64_boot_8000DDCC + sp2C, &D_global_asm_8076D200, &sp30, 0, 0, 0, 0);
+    func_global_asm_8060B140(gOverlayTable[11].rom_code_start + sp2C, (u8*)&D_global_asm_8076D200, &sp30, 0, 0, 0, 0);
 }
 
 void func_global_asm_80601120(u8 arg0) {

@@ -1,7 +1,11 @@
 #ifndef _SIINT_H
 #define _SIINT_H
+
 #include <ultra64.h>
 #include <rcp.h>
+
+extern s32 __osEepromRead16K;
+extern u8 __osPfsInodeCacheBank;
 
 void __osSiGetAccess(void);
 void __osSiRelAccess(void);

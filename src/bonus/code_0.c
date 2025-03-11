@@ -188,7 +188,7 @@ block_4:
                                 aString = getTextString(0x1A, 0xF, 1);
                                 bString = malloc(strlen(aString) + 5);
                                 func_global_asm_8061134C(bString);
-                                sprintf(bString, "%d %s", a178->unk4, aString);
+                                _sprintf(bString, "%d %s", a178->unk4, aString);
                             } else {
                                 bString = getTextString(0x1A, 0x10, 1);
                             }
@@ -211,7 +211,7 @@ block_4:
                             if (a178->unk4 >= 2) {
                                 aString = getTextString(0x1A, 0x11, 1);
                                 cString = malloc(strlen(aString) + 5);
-                                sprintf(cString, "%d %s", sp6E - func_global_asm_806F8AD4(0xB, 0), aString);
+                                _sprintf(cString, "%d %s", sp6E - func_global_asm_806F8AD4(0xB, 0), aString);
                             } else {
                                 cString = getTextString(0x1A, 0x12, 1);
                             }

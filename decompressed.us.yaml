@@ -18,7 +18,7 @@ options:
   ld_symbol_header_path: include/ld_addrs.h
   ld_script_path: donkeykong64.ld
   section_order: [".text", ".data", ".rodata", ".bss"]
-  #hasm_in_src_path: True
+  hasm_in_src_path: True
   reloc_addrs_path:
     - reloc_addrs.us.txt
   symbol_name_format: $SEG_$VRAM
@@ -75,12 +75,11 @@ segments:
       - [0x5E60, hasm, os/invalicache]        #DONE
       - [0x5EE0, hasm, os/writebackdcacheall] #DONE
       - [0x5F10, c, os/initialize]
-      - [0x61D0, c, dk64_boot_61D0]           #DONE
       - [0x6270, hasm, os/writebackdcache]    #DONE
-      - [0x62F0, c, dk64_boot_62F0]
+      - [0x62F0, c, io/visetevent]
       - [0x6360, c, io/viswapbuf]             #DONE
       - [0x63B0, c, ll]
-      - [0x6670, c, getactivequeue]
+      - [0x6670, c, os/getcurrfaultthread]
       - [0x6680, hasm, os/getfpccsr]          #DONE
       - [0x6690, c, gu/usprite]
       - [0x66E0, c, os/stopthread]            #DONE
@@ -98,7 +97,7 @@ segments:
       - [0x7B00, c, io/aigetlen]              #DONE
       - [0x7B10, c, os/pidma]                 #DONE
       - [0x7C20, c, io/controller]
-      - [0x7F60, c, dk64_boot_7F60]
+      - [0x7F60, c, io/contsetch]
       - [0x7FD0, c, io/contreaddata]
       - [0x81B0, c, libc/llcvt]
       - [0x83C0, c, os/settimer]              #DONE
@@ -152,7 +151,7 @@ segments:
       - [0xBAD0, c, io/siacs]
       - [0xBB90, c, io/conteepread]
       - [0xBDE0, c, io/crc]
-      - [0xBF50, c, io/contramwritesafe]
+      - [0xBF50, c, io/pfsselectbank]
       - [0xBFD0, c, io/contramread]
       - [0xC200, c, io/spgetstat]
       - [0xC210, hasm, bcopy]                 #DONE
@@ -177,17 +176,27 @@ segments:
       - [0xDB70, c, os/setglobalintmask]      #DONE
       - [0xDBC0, c, os/yieldthread]           #DONE
       - [0xDC10, c, io/contpfs]
-      - [0xE790, c, bcmp]
+      - [0xE790, hasm, libc/bcmp]
       - [0xE8B0, data]
       - [0xF9E0, data, inflate]
       - [0xFAE0, .data, dk64_boot_30E0]
       - [0xFAF0, .data, dk64_boot_3390]
-      - [0xFB00, data, io/vimgr]
-      - [0xFB20, data]
+      - [0xFB00, .data, io/vimgr]
+      - [0xFB20, .data, io/vitbl]
+      - [0x10840, data, io/viModes]
+      - [0x10CA0, .data, os/initialize]
       - [0x10CC0, .data, io/aisetnextbuf]
-      - [0x10CD0, data]
+      - [0x10CD0, .data, io/controller]
+      - [0x10CE0, .data, os/thread]
+      - [0x10D00, data]
       - [0x10D30, .data, io/vi]
-      - [0x10DA0, data]
+      - [0x10DA0, .data, os/timerintr]
+      - [0x10DB0, .data, io/pimgr]
+      - [0x10DE0, .data, io/siacs]
+      - [0x10DF0, .data, io/contramread]
+      - [0x10E00, .data, io/piacs]
+      - [0x10E10, data]
+      - [0x10F00, .data, io/contpfs]
       - [0x10F10, .rodata, dk64_boot_3D20]
       - [0x11120, .rodata, gu/perspective]
       - [0x11130, .rodata, gu/lookathil]
@@ -198,14 +207,28 @@ segments:
       - [0x11180, rodata, os/exceptasm]
       - [0x111D0, .rodata, gu/cosf]
       - [0x11220, .rodata, gu/sinf]
-      - [0x11270, rodata]
+      - [0x11270, rodata, os/setintmask]
       - [0x112F0, .rodata, io/devmgr]
       - [0x11310, rodata]
-      - { start: 0x11320, type: bss, vram: 0x80010720, name: globalBSS}
+      - { start: 0x11320, type: bss, vram: 0x80010720, name: globalBSS }
+      - { start: 0x11320, type: .bss, vram: 0x80013B10, name: os/seteventmesg }
+      - { start: 0x11320, type: .bss, vram: 0x80013B90, name: io/vimgr }
+      - { start: 0x11320, type: .bss, vram: 0x80014DB0, name: os/initialize }
+      - { start: 0x11320, type: .bss, vram: 0x80014DC0, name: io/controller }
+      - { start: 0x11320, type: .bss, vram: 0x80014E50, name: io/motor }
+      - { start: 0x11320, type: .bss, vram: 0x80014F50, name: io/sptask }
       - { start: 0x11320, type: .bss, vram: 0x80014F90, name: gu/rotate }
       - { start: 0x11320, type: .bss, vram: 0x80014FA0, name: gu/align }
       - { start: 0x11320, type: .bss, vram: 0x80014FB0, name: gu/position }
-      - { start: 0x11320, type: bss, vram: 0x80014FC0, name: globalBSS2 }
+      - { start: 0x11320, type: .bss, vram: 0x80014FC0, name: os/timerintr }
+      - { start: 0x11320, type: .bss, vram: 0x80015000, name: io/pimgr }
+      - { start: 0x11320, type: .bss, vram: 0x800162C0, name: io/siacs }
+      - { start: 0x11320, type: .bss, vram: 0x800162E0, name: io/conteepread }
+      - { start: 0x11320, type: .bss, vram: 0x80016320, name: io/piacs }
+      - { start: 0x11320, type: .bss, vram: 0x80016340, name: os/kdebugserver }
+      - { start: 0x11320, type: .bss, vram: 0x800164F0, name: io/pfsisplug }
+      - { start: 0x11320, type: .bss, vram: 0x80016530, name: io/contpfs }
+
   - name: rspText
     type: bin
     start: 0x11320
@@ -544,8 +567,10 @@ segments:
       - [0x2165290, rodata, n_aspMain_data]
       - [0x2165540, rodata] # ???
       - { start: 0x2165D50, type: bss, vram: 0x80761050, name: global_asm_BSS }
+      - { start: 0x2165D50, type: .bss, vram: 0x807655E0, name: code_0 }
+      - { start: 0x2165D50, type: bss, vram: 0x807655F0, name: global_asm_BSS2 }
       - { start: 0x2165D50, type: .bss, vram: 0x807F02D0, name: code_131B0 }
-      - { start: 0x2165D50, type: bss, vram: 0x807F0570, name: global_asm_BSS2 }
+      - { start: 0x2165D50, type: bss, vram: 0x807F0570, name: global_asm_BSS3 }
       
   - name: menu
     dir: menu
@@ -553,6 +578,7 @@ segments:
     start: 0x2165D50
     vram: 0x80024000
     exclusive_ram_id: overlay
+    bss_size: 0xC0
     subsegments:
       - [0x2165D50, c, code_0]
       - [0x2167840, c, code_1AF0]
@@ -566,6 +592,7 @@ segments:
       - [0x21757A0, .rodata, code_1AF0]
       - [0x2175880, .rodata, code_3E10]
       - [0x2175C40, .rodata, code_E550]
+      - { start: 0x2175C60, type: bss, vram: 0x80033F10, name: menu_BSS }
   - name: multiplayer
     dir: multiplayer
     type: code

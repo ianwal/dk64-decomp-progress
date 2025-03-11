@@ -1,6 +1,13 @@
 #ifndef __MACROS_H__
 #define __MACROS_H__
 
+#define ALIGNED(x) __attribute__((aligned(x)))
+#define ARRLEN(x) ((s32)(sizeof(x) / sizeof(x[0])))
+
+#ifndef __GNUC__
+#define __attribute__(x)
+#endif
+
 // Clamp Rand value within a range
 #define RandClamp(a) ((rand() >> 0xF) % a)
 

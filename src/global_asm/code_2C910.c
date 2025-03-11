@@ -71,7 +71,7 @@ void func_global_asm_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
     temp_a3 = arg0 & 0xFF;
     temp_v0 = getTextString(1, temp_a3, 1, temp_a3);
     var_s0 = temp_v0;
-    if (strchr(temp_v0, ':') != 0) {
+    if (_strchr(temp_v0, ':') != 0) {
         temp_a3_2 = func_dk64_boot_80002C74(var_s0, ":") + 1;
         sp42 = temp_a3_2;
         func_dk64_boot_80002A64(&sp44, var_s0, temp_a3_2, temp_a3_2);
@@ -129,7 +129,7 @@ void func_global_asm_807289E8(s16, s16, s16, s16);
 void func_global_asm_80737924(SoundState *);
 void func_global_asm_80627C5C(u8, s16, u8);
 extern void *D_global_asm_8076D1FC;
-extern f32 D_807F5D6C[];
+extern f32 D_global_asm_807F5D6C[];
 extern SoundState *D_807F5D70[];
 extern s16 D_807F5D7C;
 extern SoundState *D_global_asm_807457E4[];
@@ -463,7 +463,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
             if (sp38.dp_32 != 0) {
                 var_v0_3 = sp38.dp_32;
             }
-            D_807F5D7C = playSoundAtPosition(
+            D_global_asm_807F5D7C = playSoundAtPosition(
                 actor_v2->x_position,
                 actor_v2->y_position,
                 actor_v2->z_position,
@@ -484,7 +484,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
             } else {
                 var_f0 = 0.0;
             }
-            func_global_asm_80737638(D_global_asm_8076D1F8, sp44.dp_32, var_f2, 0x3FU, var_f0, 0U, &D_807F5D6C[-temp_s0]);
+            func_global_asm_80737638(D_global_asm_8076D1F8, sp44.dp_32, var_f2, 0x3FU, var_f0, 0U, &D_global_asm_807F5D6C[-temp_s0]);
             return;
         }
         if (sp3C.dp_32 != 0) {
@@ -497,7 +497,7 @@ void func_global_asm_80627F04(s32 arg0, s32 arg1, s32 arg2) {
         } else {
             var_f0 = 0.0;
         }
-        func_global_asm_80737638(D_global_asm_8076D1FC, sp44.dp_32 - 0x7FF, var_f2, 0x3FU, var_f0, 0U, &D_807F5D6C[temp_s0]);
+        func_global_asm_80737638(D_global_asm_8076D1FC, sp44.dp_32 - 0x7FF, var_f2, 0x3FU, var_f0, 0U, &D_global_asm_807F5D6C[temp_s0]);
         return;
     case 0x19:
         var_v1_3 = ABS(temp_s0);

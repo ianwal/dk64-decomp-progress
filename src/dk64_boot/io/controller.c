@@ -6,11 +6,15 @@
 
 #define HALF_A_SECOND OS_USEC_TO_CYCLES(500000)
 
-extern u32 D_dk64_boot_800100D0; // __osContinitialized
-extern OSPifRam D_dk64_boot_80014DC0; // __osContPifRam
-extern u8 D_dk64_boot_80014E01; // __osMaxControllers
-extern OSMesgQueue D_dk64_boot_80014E28; // __osEepromTimerQ
-extern OSMesg D_dk64_boot_80014E40; // __osEepromTimerMsg
+OSPifRam __osContPifRam ALIGNED(16);
+u8 __osContLastCmd;
+u8 __osMaxControllers;
+
+OSTimer __osEepromTimer;
+OSMesgQueue __osEepromTimerQ ALIGNED(8);
+OSMesg __osEepromTimerMsg;
+
+s32 __osContinitialized = 0;
 
 s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *data)
 {
@@ -21,9 +25,9 @@ s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *data)
     OSMesgQueue timerMesgQueue;
 
     ret = 0;
-    if (D_dk64_boot_800100D0)
+    if (__osContinitialized)
         return ret;
-    D_dk64_boot_800100D0 = TRUE;
+    __osContinitialized = TRUE;
     t = osGetTime();
     if (t < HALF_A_SECOND)
     {
@@ -31,18 +35,18 @@ s32 osContInit(OSMesgQueue *mq, u8 *bitpattern, OSContStatus *data)
         osSetTimer(&mytimer, HALF_A_SECOND - t, 0, &timerMesgQueue, &dummy);
         osRecvMesg(&timerMesgQueue, &dummy, OS_MESG_BLOCK);
     }
-    D_dk64_boot_80014E01 = MAXCONTROLLERS;
+    __osMaxControllers = MAXCONTROLLERS;
     __osPackRequestData(CONT_CMD_REQUEST_STATUS);
 
-    ret = __osSiRawStartDma(OS_WRITE, &D_dk64_boot_80014DC0);
+    ret = __osSiRawStartDma(OS_WRITE, &__osContPifRam);
     osRecvMesg(mq, &dummy, OS_MESG_BLOCK);
 
-    ret = __osSiRawStartDma(OS_READ, &D_dk64_boot_80014DC0);
+    ret = __osSiRawStartDma(OS_READ, &__osContPifRam);
     osRecvMesg(mq, &dummy, OS_MESG_BLOCK);
     __osContGetInitData(bitpattern, data);
     __osContLastCmd = CONT_CMD_REQUEST_STATUS;
     __osSiCreateAccessQueue();
-    osCreateMesgQueue(&D_dk64_boot_80014E28, &D_dk64_boot_80014E40, 1);
+    osCreateMesgQueue(&__osEepromTimerQ, &__osEepromTimerMsg, 1);
     return ret;
 }
 
@@ -53,8 +57,8 @@ void __osContGetInitData(u8 *pattern, OSContStatus *data)
     int i;
     u8 bits;
     bits = 0;
-    ptr = (u8 *)&D_dk64_boot_80014DC0;
-    for (i = 0; i < D_dk64_boot_80014E01; i++, ptr += sizeof(__OSContRequesFormat), data++)
+    ptr = (u8 *)&__osContPifRam;
+    for (i = 0; i < __osMaxControllers; i++, ptr += sizeof(__OSContRequesFormat), data++)
     {
         requestformat = *(__OSContRequesFormat *)ptr;
         data->errno = CHNL_ERR(requestformat);
@@ -73,12 +77,12 @@ void __osPackRequestData(u8 cmd)
     u8 *ptr;
     __OSContRequesFormat requestformat;
     int i;
-    for (i = 0; i < ARRLEN(D_dk64_boot_80014DC0.ramarray); i++)
+    for (i = 0; i < ARRLEN(__osContPifRam.ramarray); i++)
     {
-        D_dk64_boot_80014DC0.ramarray[i] = 0;
+        __osContPifRam.ramarray[i] = 0;
     }
-    D_dk64_boot_80014DC0.pifstatus = CONT_CMD_EXE;
-    ptr = (u8 *)&D_dk64_boot_80014DC0.ramarray;
+    __osContPifRam.pifstatus = CONT_CMD_EXE;
+    ptr = (u8 *)&__osContPifRam.ramarray;
     requestformat.dummy = CONT_CMD_NOP;
     requestformat.txsize = CONT_CMD_REQUEST_STATUS_TX;
     requestformat.rxsize = CONT_CMD_REQUEST_STATUS_RX;
@@ -88,7 +92,7 @@ void __osPackRequestData(u8 cmd)
     requestformat.status = CONT_CMD_NOP;
     requestformat.dummy1 = CONT_CMD_NOP;
 
-    for (i = 0; i < D_dk64_boot_80014E01; i++)
+    for (i = 0; i < __osMaxControllers; i++)
     {
         *(__OSContRequesFormat *)ptr = requestformat;
         ptr += sizeof(__OSContRequesFormat);

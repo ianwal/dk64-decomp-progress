@@ -87,9 +87,9 @@ Gfx *func_menu_80025B64(Gfx *dl, Actor *arg1) {
             case 5:
                 arg1->unk15F += MIN(8, 0xFF - arg1->unk15F);
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-                sprintf(sp4C, "q %s", getTextString(0x24, 0x10, 1));
+                _sprintf(sp4C, "q %s", getTextString(0x24, 0x10, 1));
                 dl = printStyledText(dl, 1, 500, 400, sp4C, 1);
-                sprintf(sp4C, "b %s", getTextString(0x24, 0x11, 1));
+                _sprintf(sp4C, "b %s", getTextString(0x24, 0x11, 1));
                 dl = printStyledText(dl, 1, 500, 500, sp4C, 1);
                 break;
         }

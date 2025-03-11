@@ -28895,44 +28895,44 @@ void func_arcade_8003159C(Gfx **arg0) {
     if (D_arcade_8004C724 == 3) {
         arcade_set_text_rgba(0x00, 0xff, 0xff, 0xff);
         arcade_set_text_position(0x78, 0x3b);
-        sprintf(sp50, "NAME %.3s", &D_arcade_8004A774);
+        _sprintf(sp50, "NAME %.3s", &D_arcade_8004A774);
         arcade_draw_text(&spA0, sp50);
         arcade_set_text_position(0xA0, 0x41);
-        sprintf(sp50, "---");
+        _sprintf(sp50, "---");
         arcade_draw_text(&spA0, sp50);
         if (D_arcade_8004C6DC < 1800) {
             arcade_set_text_position(0x60, 0x7b);
-            sprintf(sp50, "REGI TIME <%02d>", 30 - D_arcade_8004C6DC/60);
+            _sprintf(sp50, "REGI TIME <%02d>", 30 - D_arcade_8004C6DC/60);
         } else {//L800316A0
             arcade_set_text_position(0x40, 0x7b);
-            sprintf(sp50, "YOUR NAME WAS");
+            _sprintf(sp50, "YOUR NAME WAS");
             arcade_draw_text(&spA0, sp50);
 
             arcade_set_text_position(0xb0, 0x7b);
-            sprintf(sp50, "REGISTERED.");
+            _sprintf(sp50, "REGISTERED.");
 
         }//L800316E8
         arcade_draw_text(&spA0, sp50);
         arcade_set_text_rgba(0xff, 0x00, 0x00, 0xff);
         arcade_set_text_position(0x58, 0x2b);
-        sprintf(sp50, "NAME REGISTRATION");
+        _sprintf(sp50, "NAME REGISTRATION");
         arcade_draw_text(&spA0, sp50);
 
         arcade_set_text_rgba(0x00, 0xff, 0x00, 0xff);
         arcade_set_text_position(0x58, 0x4b);
-        sprintf(sp50, "A B C D E F G H I J");
+        _sprintf(sp50, "A B C D E F G H I J");
         arcade_draw_text(&spA0, sp50);
         
         arcade_set_text_position(0x58, 0x5b);
-        sprintf(sp50, "K L M N O P Q R S T");
+        _sprintf(sp50, "K L M N O P Q R S T");
         arcade_draw_text(&spA0, sp50);
         
         arcade_set_text_position(0x58, 0x6b);
-        sprintf(sp50, "U V W X Y Z . -");
+        _sprintf(sp50, "U V W X Y Z . -");
         arcade_draw_text(&spA0, sp50);
 
         arcade_set_text_position(0xd4, 0x6b);
-        sprintf(sp50, "ba");
+        _sprintf(sp50, "ba");
         arcade_draw_text(&spA0, sp50);
     }//L800317E0
 
@@ -28945,16 +28945,16 @@ void func_arcade_8003159C(Gfx **arg0) {
             && D_arcade_8004C6DC & 0x20
             && D_arcade_8004C724 == 3
         ) {
-            sprintf(sp50, "%.3s", &D_arcade_8004A82C[i]);
+            _sprintf(sp50, "%.3s", &D_arcade_8004A82C[i]);
         } else {//L80031888
-            sprintf(sp50, "%.3s  %06d  %.3s", D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
+            _sprintf(sp50, "%.3s  %06d  %.3s", D_arcade_8004A82C[i], arcade_saved_high_scores[i], arcade_saved_high_score_initials[i]);
         }//L800318B8
         arcade_draw_text(&spA0, sp50);
     }
 
     arcade_set_text_rgba(0x00, 0xff, 0x00, 0xff);
     arcade_set_text_position(0xb8, 0xdb);
-    sprintf(sp50, "CREDIT 00");
+    _sprintf(sp50, "CREDIT 00");
     arcade_draw_text(&spA0, sp50);
 
     *arg0 = spA0;
@@ -28995,19 +28995,19 @@ void func_arcade_800319D4(Gfx **arg0) {
     arcade_set_text_rgba(0xFF, 0, 0, 0xFF);
     if ((D_arcade_8004C6D8 & 0x10) || (D_arcade_8004C724 == 0)) {
         arcade_set_text_position(0x48, 0x13);
-        sprintf(sp40, "1UP");
+        _sprintf(sp40, "1UP");
         arcade_draw_text(&sp90, sp40);
     }
     arcade_set_text_position(0x78, 0x13);
-    sprintf(sp40, "HIGH SCORE");
+    _sprintf(sp40, "HIGH SCORE");
     arcade_draw_text(&sp90, sp40);
     arcade_set_text_rgba(0, 0, 0xFF, 0xFF);
     arcade_set_text_position(0xD8, 0x1B);
-    sprintf(sp40, "L=%02d", D_arcade_8004A76C);
+    _sprintf(sp40, "L=%02d", D_arcade_8004A76C);
     arcade_draw_text(&sp90, sp40);
     arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
     arcade_set_text_position(0x38, 0x1B);
-    sprintf(sp40, "%06d    %06d", arcade_current_score, arcade_high_score);
+    _sprintf(sp40, "%06d    %06d", arcade_current_score, arcade_high_score);
     arcade_draw_text(&sp90, sp40);
 
     if ((D_arcade_8004C724 == 5) || (D_arcade_8004C724 == 4)) {
@@ -29020,7 +29020,7 @@ void func_arcade_800319D4(Gfx **arg0) {
                 arcade_set_text_rgba(0, 0xFF, 0xFF, 0xFF);
             }
             arcade_set_text_position(0x78, 0xA3);
-            sprintf(sp40, "GAME OVER");
+            _sprintf(sp40, "GAME OVER");
             arcade_draw_text(&sp90, sp40);
         }
         if (D_arcade_8004C724 == 4) {
@@ -29033,15 +29033,15 @@ void func_arcade_800319D4(Gfx **arg0) {
             }
             func_arcade_80031948(0);
             arcade_set_text_position(0x88, 0x8B);
-            sprintf(sp40, "RETURN");
+            _sprintf(sp40, "RETURN");
             arcade_draw_text(&sp90, sp40);
             func_arcade_80031948(1);
             arcade_set_text_position(0x68, 0x9B);
-            sprintf(sp40, "DELETE HISCORE");
+            _sprintf(sp40, "DELETE HISCORE");
             arcade_draw_text(&sp90, sp40);
             func_arcade_80031948(2);
             arcade_set_text_position(0x68, 0xAB);
-            sprintf(sp40, "EXIT DK ARCADE");
+            _sprintf(sp40, "EXIT DK ARCADE");
             arcade_draw_text(&sp90, sp40);
         }
         if (arcade_background_visual == 2) {
@@ -29064,7 +29064,7 @@ void func_arcade_800319D4(Gfx **arg0) {
         arcade_set_text_position(0xE0, 0x30);
 
         i = MAX(arcade_bonus_timer, 0);
-        sprintf(sp40, "%02d00", i);
+        _sprintf(sp40, "%02d00", i);
         arcade_draw_text(&sp90, sp40);
     }
     if (D_arcade_8004C724 == 2) {
@@ -29073,24 +29073,24 @@ void func_arcade_800319D4(Gfx **arg0) {
         sp3B = (D_arcade_8004C723 & 3) + 1;
         arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
         arcade_set_text_position(0x48, 0xD7);
-        sprintf(sp40, "HOW HIGH CAN YOU GET ?");
+        _sprintf(sp40, "HOW HIGH CAN YOU GET ?");
         arcade_draw_text(&sp90, sp40);
         arcade_set_text_position(0x58, 0xC9);
-        sprintf(sp40, "@%% m");
+        _sprintf(sp40, "@%% m");
         arcade_draw_text(&sp90, sp40);
         if (sp3B >= 2) {
             arcade_set_text_position(0x58, 0xAD);
-            sprintf(sp40, "%%) m");
+            _sprintf(sp40, "%%) m");
             arcade_draw_text(&sp90, sp40);
         }
         if (sp3B >= 3) {
             arcade_set_text_position(0x58, 0x91);
-            sprintf(sp40, "&%% m");
+            _sprintf(sp40, "&%% m");
             arcade_draw_text(&sp90, sp40);
         }
         if (sp3B >= 4) {
             arcade_set_text_position(0x50, 0x75);
-            sprintf(sp40, "!)) m");
+            _sprintf(sp40, "!)) m");
             arcade_draw_text(&sp90, sp40);
         }
     }
@@ -29101,21 +29101,21 @@ void func_arcade_800319D4(Gfx **arg0) {
         if (!(D_arcade_8004C6DC & 0x200)) {
             arcade_set_text_rgba(0, 0xFF, 0xFF, 0xFF);
             arcade_set_text_position(0x70, 0x33);
-            sprintf(sp40, "INSERT COIN");
+            _sprintf(sp40, "INSERT COIN");
             arcade_draw_text(&sp90, sp40);
             arcade_set_text_position(0x68, 0x43);
-            sprintf(sp40, "PLAYER    COIN");
+            _sprintf(sp40, "PLAYER    COIN");
             arcade_draw_text(&sp90, sp40);
             arcade_set_text_position(0x78, 0x53);
-            sprintf(sp40, "1        1");
+            _sprintf(sp40, "1        1");
             arcade_draw_text(&sp90, sp40);
             arcade_set_text_position(0x38, 0x7B);
-            sprintf(sp40, "RANK  SCORE  NAME");
+            _sprintf(sp40, "RANK  SCORE  NAME");
             arcade_draw_text(&sp90, sp40);
             func_arcade_8003159C(&sp90);
             arcade_set_text_rgba(0xFF, 0, 0, 0xFF);
             arcade_set_text_position(0x78, 0x63);
-            sprintf(sp40, "2        2");
+            _sprintf(sp40, "2        2");
             arcade_draw_text(&sp90, sp40);
         } else {
             if (D_arcade_8004C6DC & 0x182) {
@@ -29124,7 +29124,7 @@ void func_arcade_800319D4(Gfx **arg0) {
                 arcade_set_text_rgba(0xFF, 0xFF, 0xFF, 0xFF);
             }
             arcade_set_text_position(0x68, 0xD7);
-            sprintf(sp40, "c NINTENDO 1981");
+            _sprintf(sp40, "c NINTENDO 1981");
             arcade_draw_text(&sp90, sp40);
         }
     }

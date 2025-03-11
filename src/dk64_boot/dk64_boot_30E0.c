@@ -10,8 +10,8 @@ extern s32 D_dk64_boot_80013AEC;
 extern s32 D_dk64_boot_80013AF0;
 
 // .data
-static s32 D_dk64_boot_8000EEE0 = 8;
-static s32 D_dk64_boot_8000EEE4 = 0;
+s32 D_dk64_boot_8000EEE0 = 8;
+s32 D_dk64_boot_8000EEE4 = 0;
 
 void func_dk64_boot_800024E0(u8 **arg0, s32 *arg1, void *arg2) {
     D_dk64_boot_80013AC0 = *arg0;

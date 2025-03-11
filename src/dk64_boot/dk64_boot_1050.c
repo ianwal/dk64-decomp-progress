@@ -22,8 +22,8 @@ extern u8 D_1FED020;
 
 extern s8 D_dk64_boot_8000DCB0;
 extern s32 D_dk64_boot_8000DCB4;
-extern OverlayInfoStruct D_dk64_boot_8000DCC4[];
-extern OSViMode D_dk64_boot_8000EF20[];
+extern OverlayInfoStruct gOverlayTable[];
+extern OSViMode osViModeTable[];
 extern s32 D_dk64_boot_8000DE74[3];
 
 extern OSMesg D_dk64_boot_80011520;
@@ -49,17 +49,17 @@ void func_dk64_boot_800004F4(s32 arg0) {
     void (*gaFunc)(OSMesgQueue *, s32);
     osRecvMesg(&D_dk64_boot_80011548, &sp24, OS_MESG_BLOCK);
     switch ((u32)sp24) {
-        case 0x29d://L80000538
+        case 0x29d:
             if (D_dk64_boot_8000DCB0) {
-                gaFunc = (void*)0x805fb300;
+                gaFunc = (void*)0x805fb300; //TODO-shift: this number is hardcoded to the overlay starting address
                 gaFunc(&D_dk64_boot_80011548, 2);
                 break;
             }
             osViBlack(1);
             while(1);
-        case 0x309: //L80000570
+        case 0x309:
             osSetThreadPri(NULL, 0x12);
-            gaFunc = (void*)0x805fb300;
+            gaFunc = (void*)0x805fb300; //TODO-shift: this number is hardcoded to the overlay starting address
             gaFunc(&D_dk64_boot_80011548, 1);
             while(1);
     }
@@ -78,12 +78,12 @@ void func_dk64_boot_800005A8(void *arg0) {
     osSetEventMesg(OS_EVENT_PRENMI, &D_dk64_boot_80011548, (OSMesg)0x29D);
     osCreateThread(&D_dk64_boot_80011560, 0xB, func_dk64_boot_800004F4, NULL, &D_dk64_boot_80012710, 0x64);
     osStartThread(&D_dk64_boot_80011560);
-    osCreateViManager(0xFE);
-    osViSetMode(D_dk64_boot_8000EF20 + sp20[osTvType]);
+    osCreateViManager(OS_PRIORITY_VIMGR);
+    osViSetMode(osViModeTable + sp20[osTvType]);
     osViBlack(1);
     if (osMemSize < 0x80 || osTvType == OS_TV_PAL) {
-        D_dk64_boot_8000DCC4[11].unk0 = &romAssetBin;
-        D_dk64_boot_8000DCC4[11].unk4 = &D_188AF20;
+        gOverlayTable[11].unk0 = &romAssetBin;
+        gOverlayTable[11].unk4 = &D_188AF20;
         func_dk64_boot_80000A30();
     } else {
         func_dk64_boot_80000450(rspText_ROM_START, rspText_ROM_END, rspText_VRAM);
@@ -95,44 +95,45 @@ void func_dk64_boot_800005A8(void *arg0) {
         func_dk64_boot_800004B4(&sp34, &sp30);
         osInvalICache(0x805FB300, sp30 + 0x7FA04D00);
         osWritebackDCacheAll();
-        D_dk64_boot_8000DCC4[0].unk4 = &D_11320;
-        D_dk64_boot_8000DCC4[0].unk0 = &D_1050;
-        D_dk64_boot_8000DCC4[1].unk4 = &D_CBE70;
-        D_dk64_boot_8000DCC4[1].unk0 = &D_113F0;
-        D_dk64_boot_8000DCC4[2].unk4 = &D_D6B00;
-        D_dk64_boot_8000DCC4[2].unk0 = &D_D4B00;
-        D_dk64_boot_8000DCC4[3].unk4 = &D_D9A40;
-        D_dk64_boot_8000DCC4[3].unk0 = &D_D6B00;
-        D_dk64_boot_8000DCC4[4].unk4 = &D_DF600;
-        D_dk64_boot_8000DCC4[4].unk0 = &D_D9A40;
-        D_dk64_boot_8000DCC4[5].unk4 = &D_E6780;
-        D_dk64_boot_8000DCC4[5].unk0 = &D_DF600;
-        D_dk64_boot_8000DCC4[6].unk4 = &D_EA0B0;
-        D_dk64_boot_8000DCC4[6].unk0 = &D_E6780;
-        D_dk64_boot_8000DCC4[6].unk4 = &D_EA0B0;
-        D_dk64_boot_8000DCC4[6].unk0 = &D_E6780;
-        D_dk64_boot_8000DCC4[7].unk4 = &D_F41A0;
-        D_dk64_boot_8000DCC4[7].unk0 = &D_EA0B0;
-        D_dk64_boot_8000DCC4[8].unk4 = &D_FD2F0;
-        D_dk64_boot_8000DCC4[8].unk0 = &D_F41A0;
-        D_dk64_boot_8000DCC4[9].unk4 = &D_101A40;
-        D_dk64_boot_8000DCC4[9].unk0 = &D_FD2F0;
-        D_dk64_boot_8000DCC4[10].unk0 = &D_CBE70;
-        D_dk64_boot_8000DCC4[10].unk4 = &D_D4B00;
-        D_dk64_boot_8000DCC4[11].unk0 = &romAssetBin;
-        D_dk64_boot_8000DCC4[11].unk4 = &D_188AF20;
-        D_dk64_boot_8000DCC4[12].unk0 = &D_101A40;
-        D_dk64_boot_8000DCC4[12].unk4 = &romAssetBin;
-        D_dk64_boot_8000DCC4[13].unk0 = &romAssetBin;
-        D_dk64_boot_8000DCC4[13].unk4 = &romAssetBin;
-        D_dk64_boot_8000DCC4[14].unk0 = &D_1897860;
-        D_dk64_boot_8000DCC4[14].unk4 = &D_1A97280;
-        D_dk64_boot_8000DCC4[15].unk4 = &D_1897860;
-        D_dk64_boot_8000DCC4[15].unk0 = &D_188AF20;
-        D_dk64_boot_8000DCC4[16].unk4 = &D_1ABCBF0;
-        D_dk64_boot_8000DCC4[16].unk0 = &D_1A97280;
-        D_dk64_boot_8000DCC4[17].unk4 = &D_1FED020;
-        D_dk64_boot_8000DCC4[17].unk0 = &D_1ABCBF0;
+        gOverlayTable[0].rom_data_end = &D_11320;
+        gOverlayTable[0].rom_code_start = &D_1050;
+        gOverlayTable[1].rom_data_end = &D_CBE70;
+        gOverlayTable[1].rom_code_start = &D_113F0;
+        gOverlayTable[2].rom_data_end = &D_D6B00;
+        gOverlayTable[2].rom_code_start = &D_D4B00;
+        gOverlayTable[3].rom_data_end = &D_D9A40;
+        gOverlayTable[3].rom_code_start = &D_D6B00;
+        gOverlayTable[4].rom_data_end = &D_DF600;
+        gOverlayTable[4].rom_code_start = &D_D9A40;
+        gOverlayTable[5].rom_data_end = &D_E6780;
+        gOverlayTable[5].rom_code_start = &D_DF600;
+        gOverlayTable[6].rom_data_end = &D_EA0B0;
+        gOverlayTable[6].rom_code_start = &D_E6780;
+        gOverlayTable[6].rom_data_end = &D_EA0B0;
+        gOverlayTable[6].rom_code_start = &D_E6780;
+        gOverlayTable[7].rom_data_end = &D_F41A0;
+        gOverlayTable[7].rom_code_start = &D_EA0B0;
+        gOverlayTable[8].rom_data_end = &D_FD2F0;
+        gOverlayTable[8].rom_code_start = &D_F41A0;
+        gOverlayTable[9].rom_data_end = &D_101A40;
+        gOverlayTable[9].rom_code_start = &D_FD2F0;
+        gOverlayTable[10].rom_code_start = &D_CBE70;
+        gOverlayTable[10].rom_data_end = &D_D4B00;
+        //
+        gOverlayTable2[11].rom_code_start = &romAssetBin;
+        gOverlayTable2[11].rom_data_end = &D_188AF20;
+        gOverlayTable2[12].rom_code_start = &D_101A40;
+        gOverlayTable2[12].rom_data_end = &romAssetBin;
+        gOverlayTable2[13].rom_code_start = &romAssetBin;
+        gOverlayTable2[13].rom_data_end = &romAssetBin;
+        gOverlayTable2[14].rom_code_start = &D_1897860;
+        gOverlayTable2[14].rom_data_end = &D_1A97280;
+        gOverlayTable2[15].rom_data_end = &D_1897860;
+        gOverlayTable2[15].rom_code_start = &D_188AF20;
+        gOverlayTable2[16].rom_data_end = &D_1ABCBF0;
+        gOverlayTable2[16].rom_code_start = &D_1A97280;
+        gOverlayTable2[17].rom_data_end = &D_1FED020;
+        gOverlayTable2[17].rom_code_start = &D_1ABCBF0;
         osSetThreadPri(NULL, 0);
         D_dk64_boot_8000DCB0 = 1;
         ((void (*)(OSMesgQueue *, s32))0x805FB300)(&D_dk64_boot_80011548, 0);

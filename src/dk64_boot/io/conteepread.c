@@ -4,7 +4,7 @@
 void __osSiGetAccess();
 s32 __osSiRawStartDma(s32, void *);
 void __osSiRelAccess(void);
-extern OSPifRam __osEepPifRam;
+OSPifRam __osEepPifRam; //TODO: add ALIGNED(16) to this symbol
 void __osPackEepReadData(u8);
 
 s32 osEepromRead(OSMesgQueue *mq, u8 address, u8 *buffer) {

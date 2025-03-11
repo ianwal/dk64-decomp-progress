@@ -10,18 +10,18 @@ const char D_dk64_boot_8001036C[] = "(nil)";
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3D20/func_dk64_boot_80003120.s")
 
-int sprintf(char *str, const char *format, ...) {
+int _sprintf(char *str, const char *format, ...) {
     s32 ret;
     va_list args;
     va_start(args, format);
 
-    ret = _Printf(str, format, args);
+    ret = vsprintf(str, format, args);
     va_end(args);
     return ret;
 }
 
 // Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3D20/_Printf.s")
+#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3D20/vsprintf.s")
 
 /*
 #define isdigit(x) (((x) >= '0' && (x) <= '9'))
@@ -58,7 +58,7 @@ int sprintf(char *str, const char *format, ...) {
 
 void *func_dk64_boot_80003120(s32, s32, u8 **, s32, s32);
 
-s32 _Printf(u8 *arg, u8 *fmt, va_list arg2) {
+s32 vsprintf(u8 *arg, u8 *fmt, va_list arg2) {
     u8 *sp1B4;
     u8 sp1A4;
     s32 sp1A0;

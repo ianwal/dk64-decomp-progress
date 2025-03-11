@@ -333,21 +333,26 @@ build/us/src/dk64_boot/dk64_boot_CA20.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/gu/%.c.o: OPT_FLAGS = -O3
 build/us/src/dk64_boot/gu/nonmatching/%.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/%.c.o: OPT_FLAGS = -O1
-
+build/us/src/dk64_boot/io/getactivequeue.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/conteepprobe.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/conteepwrite.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/conteepread.c.o: OPT_FLAGS = -O2
+build/us/src/dk64_boot/io/contramread.c.o: OPT_FLAGS = -O2
+build/us/src/dk64_boot/io/contramwrite.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/contreaddata.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/sirawdma.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/pimgr.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/pfsgetstatus.c.o: OPT_FLAGS = -O2
+build/us/src/dk64_boot/io/epirawread.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/epirawwrite.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/crc.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/viswapcontext.c.o: OPT_FLAGS = -O2
 build/us/src/dk64_boot/io/contpfs.c.o: OPT_FLAGS = -O2
-build/us/src/dk64_boot/io/contpfs.c.o: MIPSISET := -mips3 -o32
+#build/us/src/dk64_boot/io/contpfs.c.o: MIPSISET := -mips3 -o32
 build/us/src/dk64_boot/io/motor.c.o: OPT_FLAGS = -O2
-build/us/src/dk64_boot/io/crc.c.o: OPT_FLAGS = -O2
+build/us/src/dk64_boot/io/pfsselectbank.c.o: OPT_FLAGS = -O2
+
+build/us/src/dk64_boot/io/vimgr.c.o: OPT_FLAGS = -O2
 
 build/us/src/dk64_boot/libc/%.c.o: OPT_FLAGS = -O3
 build/us/src/dk64_boot/libc/ll%.o: OPT_FLAGS := -O1

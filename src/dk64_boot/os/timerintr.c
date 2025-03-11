@@ -1,33 +1,23 @@
-#include "common.h"
+#include "macros.h"
+#include "PR/os_internal.h"
+#include "osint.h"
 
+OSTime __osCurrentTime;
+u32 __osBaseCounter;
+u32 __osViIntrCount;
+u32 __osTimerCounter;
+OSTimer __osBaseTimer;
+OSTimer* __osTimerList = &__osBaseTimer;
 
-extern OSTime __osCurrentTime;
-extern u32 __osBaseCounter;
-extern u32 __osViIntrCount;
-extern u32 __osTimerCounter;
-extern OSTimer* __osTimerList;
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/os/timerintr/__osTimerServicesInit.s")
-
-/*
-// TODO: Very close, just issues with the OSTime write
 void __osTimerServicesInit(void) {
     __osCurrentTime = 0;
     __osBaseCounter = 0;
     __osViIntrCount = 0;
-    __osTimerList->prev = __osTimerList;
-    __osTimerList->next = __osTimerList->prev;
-    __osTimerList->value = 0;
-    __osTimerList->interval = __osTimerList->value;
+    __osTimerList->next = __osTimerList->prev = __osTimerList;
+    __osTimerList->interval = __osTimerList->value = 0;
     __osTimerList->mq = NULL;
     __osTimerList->msg = 0;
 }
-*/
-
-// TODO: Are these signatures correct?
-void __osSetCompare(u32 t);
-void __osSetTimerIntr(OSTime tim);
-OSTime __osInsertTimer(OSTimer* t);
 
 void __osTimerInterrupt(void) {
     OSTimer* t;

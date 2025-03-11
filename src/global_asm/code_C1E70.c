@@ -118,7 +118,7 @@ void func_global_asm_806BD3E4(void) {
         gLastSpawnedActor->object_properties_bitfield |= 0x400;
         gLastSpawnedActor->draw_distance = 0x7D0;
         a178->unk0 = gLastSpawnedActor;
-        D_807FC8D4 = 1000.0f;
+        D_global_asm_807FC8D4 = 1000.0f;
         func_global_asm_806BD170();
         gCurrentActorPointer->control_state = 0;
         if (D_global_asm_80750660 != 0) {
@@ -136,7 +136,7 @@ void func_global_asm_806BD3E4(void) {
             var_t0++;
         }
     }
-    D_807FC8D4 = ((gCurrentActorPointer->x_position - gPlayerPointer->x_position) * (gCurrentActorPointer->x_position - gPlayerPointer->x_position)) + ((gCurrentActorPointer->z_position - gPlayerPointer->z_position) * (gCurrentActorPointer->z_position - gPlayerPointer->z_position));
+    D_global_asm_807FC8D4 = ((gCurrentActorPointer->x_position - gPlayerPointer->x_position) * (gCurrentActorPointer->x_position - gPlayerPointer->x_position)) + ((gCurrentActorPointer->z_position - gPlayerPointer->z_position) * (gCurrentActorPointer->z_position - gPlayerPointer->z_position));
     sp28 = 0;
     switch (gCurrentActorPointer->control_state) {
         case 1:

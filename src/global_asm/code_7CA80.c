@@ -52,17 +52,17 @@ void func_global_asm_80677D80(void) {
         D_807FB7B0[i].unk8 = 0;
     }
     D_global_asm_807FBB32 = 0;
-    D_807FBB50 = getPointerTableFile(TABLE_13_ANIM_CODE, 0, 1, 1);
+    D_global_asm_807FBB50 = getPointerTableFile(TABLE_13_ANIM_CODE, 0, 1, 1);
     D_global_asm_807FBB54 = (u8*)D_807FBB50 + D_807FBB50[3];
-    D_807FBB58 = (u8*)D_807FBB50 + D_807FBB50[2];
-    D_807FBB5C = (u8*)D_807FBB50 + D_807FBB50[1];
+    D_global_asm_807FBB58 = (u8*)D_807FBB50 + D_807FBB50[2];
+    D_global_asm_807FBB5C = (u8*)D_807FBB50 + D_807FBB50[1];
     for (i = 0; i < 0x40; i++) {
         D_global_asm_807FB930[i].unk0 = NULL;
         D_global_asm_807FB930[i].unk4 = 0;
     }
     D_global_asm_807FBB34 = 0;
     func_global_asm_8067AE58();
-    D_807FBB38 = 0;
+    D_global_asm_807FBB38 = 0;
     D_global_asm_807FBE09 = 0;
     D_global_asm_807FBFD8 = 0;
     gCurrentPlayer = NULL;
@@ -458,7 +458,7 @@ void func_global_asm_806789E4(void) {
     for (i = 0; i < 4; i++) {
         D_global_asm_807FBFE0[i] = NULL;
     }
-    D_807FBB3C = 0;
+    D_global_asm_807FBB3C = 0;
     while (D_807FBB3C < D_global_asm_807FBB34) {
         gCurrentActorPointer = D_global_asm_807FB930[D_807FBB3C].unk0;
         if (gCurrentActorPointer->unk64 & 2) {

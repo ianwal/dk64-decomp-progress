@@ -137,7 +137,7 @@ void func_jetpac_80024408(Gfx **arg0) {
     player = &D_jetpac_8002EC30.player[0];
     for (playerIndex = 0; playerIndex < 2; playerIndex++) {
         if (player->lives > 0) {
-            sprintf(sp60, "%d!", player->lives);
+            _sprintf(sp60, "%d!", player->lives);
             func_jetpac_8002AEFC(arg0, sp60, 0x60 + (playerIndex * 0x70), 0x18, 0);
         }
         player++;
@@ -147,11 +147,11 @@ void func_jetpac_80024408(Gfx **arg0) {
     func_jetpac_8002AEFC(arg0, "HI", 0x98, 0x18, 0);
     player = &D_jetpac_8002EC30.player[0];
     func_jetpac_8002AE94(0xFF, 0xFF, 0, 0xFF);
-    sprintf(sp60, "%06d", player[0].current_score);
+    _sprintf(sp60, "%06d", player[0].current_score);
     func_jetpac_8002AEFC(arg0, sp60, 0x28, 0x20, 0);
-    sprintf(sp60, "%06d", D_jetpac_8002EC30.unk18);
+    _sprintf(sp60, "%06d", D_jetpac_8002EC30.unk18);
     func_jetpac_8002AEFC(arg0, sp60, 0x88, 0x20, 0);
-    sprintf(sp60, "%06d", player[1].current_score);
+    _sprintf(sp60, "%06d", player[1].current_score);
     func_jetpac_8002AEFC(arg0, sp60, 0xE8, 0x20, 0);
 }
 
@@ -172,7 +172,7 @@ void func_jetpac_8002466C(Gfx **arg0) {
     func_jetpac_8002AEFC(arg0, "3@@@KEYBOARD", 0x50, 0x70, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk34C == 0);
     func_jetpac_8002AEFC(arg0, "4@@@KEMPSTON@JOYSTICK", 0x50, 0x80, D_jetpac_8002BA6C != 0 && D_jetpac_8002EC30.unk34C != 0);
     func_jetpac_8002AEFC(arg0, "5   START GAME", 0x50, 0xB8, 0);
-    sprintf(sp28, "%c1983 A.C.G. ALL RIGHTS RESERVED", 0x7F);
+    _sprintf(sp28, "%c1983 A.C.G. ALL RIGHTS RESERVED", 0x7F);
     func_jetpac_8002AEFC(arg0, sp28, 0x20, 0xD8, 0);
     if (D_jetpac_8002EC30.unk798 != 0) {
         if (!(D_jetpac_8002EC30.unk8 & 0x1000) && (D_jetpac_8002EC30.unk799 < 0x78)) {
@@ -311,10 +311,10 @@ void func_jetpac_80024D48(Gfx **arg0) {
     sp4C = 7;
     func_jetpac_80024408(arg0);
     if ((D_jetpac_8002EC30.unk798 != 0) && isFlagSet(0x62, FLAG_TYPE_TEMPORARY)) {
-        sprintf(sp2C, "RAREWARE COIN COLLECTED");
+        _sprintf(sp2C, "RAREWARE COIN COLLECTED");
         sp4C = 5;
     } else {
-        sprintf(sp2C, "GAME OVER PLAYER %d", D_jetpac_8002EC30.player_index + 1);
+        _sprintf(sp2C, "GAME OVER PLAYER %d", D_jetpac_8002EC30.player_index + 1);
     }
     func_jetpac_8002AE94(0xFF, 0xFF, 0xFF, 0xFF);
     func_jetpac_8002AEFC(arg0, sp2C, (sp4C * 8) + 0x20, 0x88, 0);

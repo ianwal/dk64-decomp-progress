@@ -462,7 +462,7 @@ u32 func_global_asm_8060C430(s32 arg0, u32 arg1, s32 arg2) {
     case 27:
     case 28:
         if (arg2 != 0) {
-            arg1 = strchr(D_global_asm_80746800, (s32) arg1) - D_global_asm_80746800;
+            arg1 = _strchr(D_global_asm_80746800, (s32) arg1) - D_global_asm_80746800;
         } else {
             arg1 = D_global_asm_80746800[arg1];
         }
@@ -762,7 +762,7 @@ void func_global_asm_8060D2C8(s32 arg0) {
     if (D_global_asm_807EDEAC != 2) {
         return;
     }
-    sprintf(&D_global_asm_807ECEA8[SAVE_DATA_SIZE_BYTES], D_global_asm_807467C0);
+    _sprintf(&D_global_asm_807ECEA8[SAVE_DATA_SIZE_BYTES], D_global_asm_807467C0);
     memcpy(&sp860, &D_global_asm_807ECEA8, 0x800U);
     memcpy(&sp60, &D_global_asm_807ED6A8, 0x800U);
     if (arg0 == 0) {

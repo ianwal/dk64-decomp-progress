@@ -207,13 +207,13 @@ void func_global_asm_8061C0FC(AAD_8061C0FC *arg0) {
     arg0->unkA8 = character_change_array[arg0->unkFB].unk2C4;
     switch (is_autowalking) {
         case 0:
-            character_change_array[arg0->unkFB].unk2C8 = (arg0->unkA8 * 4096.0) / 6.28318548202514648;
+            character_change_array[arg0->unkFB].unk2C8 = (arg0->unkA8 * 4096.0) / TWO_PI;
             break;
         case 2:
             func_global_asm_8060B55C(&character_change_array[arg0->unkFB].unk2C8);
             break;
         case 3:
-            character_change_array[arg0->unkFB].unk2C8 = (arg0->unkA8 * 4096.0) / 6.28318548202514648;
+            character_change_array[arg0->unkFB].unk2C8 = (arg0->unkA8 * 4096.0) / TWO_PI;
             break;
     }
     if (character_change_array[arg0->unkFB].unk2E9) {
@@ -442,8 +442,8 @@ s16 func_global_asm_8061C804(s16 arg0) {
                     sp8C = character_change_array->look_at_eye_z;
                     sp88 = character_change_array->look_at_at_x;
                     sp84 = character_change_array->look_at_at_y;
-                    D_807F5CFC = 1.0f;
-                    D_807F5D00 = 0.0f;
+                    D_global_asm_807F5CFC = 1.0f;
+                    D_global_asm_807F5D00 = 0.0f;
                     D_global_asm_807476F4 = var_s4;
                     D_global_asm_807F5CF0 = i;
                     sp80 = character_change_array->look_at_at_z;
@@ -516,74 +516,83 @@ void func_global_asm_8061CC30(void) {
     D_global_asm_807476EC = 1;
 }
 
-// close, doable
+// matches, needs properly defined data for D_global_asm_807476D0 and proper bss for D_global_asm_807F5CE0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/playCutscene.s")
 
 /*
 s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
+    static OSTime D_global_asm_807476D0 = 0;
     u16 sp26;
-    s32 is_global;
-
+    
     sp26 = 0;
     if ((is_cutscene_active == 1) && (D_global_asm_807F5CF4 & 0x80)) {
         return 0;
     }
-    is_global = arg2 & 4;
-    if ((is_global) && (current_map != MAP_TEST_MAP)) {
+    
+    
+    if ((arg2 & 4) && (current_map != MAP_TEST_MAP)) {
         D_global_asm_807476FC = &D_807F5B10[1];
     } else {
         D_global_asm_807476FC = &D_807F5B10[0];
     }
+    
     if (spawnActor(ACTOR_CUTSCENE_CONTROLLER, 0)) {
         D_global_asm_807F5D0C = gLastSpawnedActor;
         gLastSpawnedActor->noclip_byte = 1;
-        if ((!is_global) && (D_global_asm_807FBB64 & 1)) {
-            func_boss_80029140(&arg1);
-        }
-        if (arg0 != NULL) {
-            D_global_asm_807F5CE8 = arg0;
-        } else {
-            D_global_asm_807F5CE8 = character_change_array->playerPointer;
-        }
-        is_cutscene_active = 1;
-        if (!(arg2 & 8)) {
-            D_global_asm_8076A0B1 |= 0x10;
-            D_global_asm_8076A0B3 = 0;
-        }
-        D_global_asm_807476D0 = osGetTime();
-        D_global_asm_807476F4 = arg1;
-        D_global_asm_807476F8 = arg1;
-        D_global_asm_807F5CF4 = arg2;
-        D_global_asm_807F5CFA = 0;
-        D_global_asm_807476D8 = 0;
-        D_global_asm_807476E4 = 0;
-        D_global_asm_807F5CEC = 0;
-        D_global_asm_807F5CF0 = 0;
-        D_global_asm_807F5CF2 = 0;
-        D_global_asm_807F5CEE = 0;
-        D_global_asm_807476F0 = 0;
-        D_807F5CF6 = D_global_asm_80770DC9;
-        global_properties_bitfield |= 0x2000;
-        global_properties_bitfield &= ~0x1001;
-        gPlayerPointer->unkB8 = 0.0f;
-        if (*current_character_index == 7) {
-            gPlayerPointer->y_velocity = 0.0f;
-        }
-        gPlayerPointer->object_properties_bitfield |= 0x400;
-        extra_player_info_pointer->unk10 = 0;
-        D_global_asm_807F5D10->x_rotation = 0;
-        func_global_asm_80629174();
-        if (D_global_asm_807476EC != 0) {
-            sp26 = func_global_asm_8061C804(arg1);
-        }
-        D_global_asm_807476EC = 0;
-        if ((arg1 == 0) && (current_map == MAP_DK_ISLES_DK_THEATRE)) {
-            func_global_asm_806119F0(0x8E32B6F7U);
-            D_global_asm_807F5CE0 = osGetTime();
-            D_807F5D14 = 0;
-        } else if (!isIntroStoryPlaying()) {
-            D_global_asm_807F5CE0 = 0;
-        }
+    } else {
+        return 0;
+    }
+    
+    if ((!(arg2 & 4)) && (D_global_asm_807FBB64 & 1)) {
+        func_boss_80029140(&arg1);
+    }
+    
+    if (arg0 != NULL) {
+        D_global_asm_807F5CE8 = arg0;
+    } else {
+        D_global_asm_807F5CE8 = character_change_array->playerPointer;
+    }
+    
+    is_cutscene_active = 1;
+    
+    if (!(arg2 & 8)) {
+        D_global_asm_8076A0B1 |= 0x10;
+        D_global_asm_8076A0B3 = 0;
+    }
+    
+    D_global_asm_807476D0 = osGetTime();
+    D_global_asm_807476F4 = arg1;
+    D_global_asm_807476F8 = arg1;
+    D_global_asm_807F5CF4 = arg2;
+    D_global_asm_807F5CFA = 0;
+    D_global_asm_807476D8 = 0;
+    D_global_asm_807476E4 = 0;
+    D_global_asm_807F5CEC = 0;
+    D_global_asm_807F5CF0 = 0;
+    D_global_asm_807F5CF2 = 0;
+    D_global_asm_807F5CEE = 0;
+    D_global_asm_807476F0 = 0;
+    D_global_asm_807F5CF6 = D_global_asm_80770DC9;
+    global_properties_bitfield |= 0x2000;
+    global_properties_bitfield &= ~0x1001;
+    gPlayerPointer->unkB8 = 0.0f;
+    if (*current_character_index == 7) {
+        gPlayerPointer->y_velocity = 0.0f;
+    }
+    gPlayerPointer->object_properties_bitfield |= 0x400;
+    extra_player_info_pointer->unk10 = 0;
+    D_global_asm_807F5D10->x_rotation = 0;
+    func_global_asm_80629174();
+    if (D_global_asm_807476EC != 0) {
+        sp26 = func_global_asm_8061C804(arg1);
+    }
+    D_global_asm_807476EC = 0;
+    if ((arg1 == 0) && (current_map == MAP_DK_ISLES_DK_THEATRE)) {
+        func_global_asm_806119F0(0x8E32B6F7U);
+        D_global_asm_807F5CE0 = osGetTime();
+        D_global_asm_807F5D14 = 0;
+    } else if (!isIntroStoryPlaying()) {
+        D_global_asm_807F5CE0 = 0;
     }
     return sp26;
 }
@@ -1471,9 +1480,9 @@ void func_global_asm_80626264(s32 arg0) {
     D_global_asm_807476B4 = 0;
     D_global_asm_807476B8 = 0;
     D_global_asm_807476BC = 0;
-    D_807F5CCC = 6.0f;
+    D_global_asm_807F5CCC = 6.0f;
     if (D_global_asm_807FBB64 & 1) {
-        D_807F5CCC = 12.0f;
+        D_global_asm_807F5CCC = 12.0f;
     }
     switch (current_map) {
         case MAP_BUSY_BARREL_BARRAGE_EASY:
@@ -1499,7 +1508,7 @@ void func_global_asm_80626264(s32 arg0) {
             D_global_asm_807476B8 = 0x12C;
             break;
         case MAP_GALLEON_SEAL_RACE:
-            D_807F5CCC = 10.0f;
+            D_global_asm_807F5CCC = 10.0f;
             break;
         case MAP_GALLEON_MERMAID:
             D_global_asm_807476BC = 0x78;

@@ -845,7 +845,7 @@ void func_global_asm_8071A038(Struct80717D84 *arg0, s32 arg1) {
         arg0->unk340 = arg0->unk340 - 12.0f;
         *temp_v0 -= 1;
     }
-    sp24 = ABS(func_global_asm_80612D1C((temp_f0 / 56.0) * 6.28318548202514648));
+    sp24 = ABS(func_global_asm_80612D1C((temp_f0 / 56.0) * TWO_PI));
     guScaleF(sp78, arg0->unk360, arg0->unk364, 0.0f);
     guTranslateF(sp38, arg0->unk340 + (sp34 * 0.5), arg0->unk344 - (sp24 * 15.0f), arg0->unk348);
     guMtxCatF(sp78, sp38, sp78);

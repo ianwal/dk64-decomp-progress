@@ -420,7 +420,7 @@ Gfx *func_multiplayer_800249D8(Gfx *dl, Actor *arg1) {
         temp_f20 += 8.0f;
         for (i = 0; i < cc_number_of_players; i++) {
             temp0 = func_multiplayer_80024254(i);
-            sprintf(&sp98, "%d", temp0);
+            _sprintf(&sp98, "%d", temp0);
             temp1 = getCenterOfString(1, &sp98);
             x = (((i + 1) * temp_f24) - ((f32)(temp1 * 0.25))) * 8.0f;
             dl = printStyledText(dl, 1, x, temp_f20 * 8.0f, &sp98, 4);
@@ -495,7 +495,7 @@ Gfx *func_multiplayer_80024CA4(Gfx *dl, Actor *arg1) {
             temp_f20 = (temp_s4->unk6 + ((temp_s4->unkA - temp_s4->unk6) * 0.5));
             temp_f22 = (temp_s4->unk4 + ((temp_s4->unk8 - temp_s4->unk4) * 0.5));
             gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF - alpha);
-            sprintf(&spCC, "BAD LUCK");
+            _sprintf(&spCC, "BAD LUCK");
             temp_f22 -= (getCenterOfString(1, &spCC) * 0.25);
             dl = printStyledText(dl, 1, temp_f22 * 8.0f, (temp_f20 - (spF0 * 0.25)) * 8.0f, &spCC, 4U);
         } else {
@@ -511,21 +511,21 @@ Gfx *func_multiplayer_80024CA4(Gfx *dl, Actor *arg1) {
             temp_v0_3 = func_global_asm_806F8AD4(3, i);
             if (temp_v0_3) {
                 gDPSetPrimColor(dl++, 0, 0, 0x64, 0x1E, 0x00, alpha);
-                sprintf(&spCC, "%d", temp_v0_3);
+                _sprintf(&spCC, "%d", temp_v0_3);
             } else {
                 temp1 = func_global_asm_806F8AD4(2, i);
-                sprintf(&spCC, "%d", temp1);
+                _sprintf(&spCC, "%d", temp1);
             }
             dl = printStyledText(dl, 1, temp_f22_2 * 8.0f, temp_f20, &spCC, 4U);
             if (temp_v0_3) {
                 gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, alpha);
             }
             temp1 = func_global_asm_806F8AD4(4, i);
-            sprintf(&spCC, "%d", temp1);
+            _sprintf(&spCC, "%d", temp1);
             temp2 = getCenterOfString(1, &spCC);
             dl = printStyledText(dl, 1, ((temp_s4->unk8 - ((temp2 + 8) * 0.5f)) * 8.0f), temp_f20, &spCC, 4U);
         }
-        sprintf(&spCC, "%d", func_multiplayer_80024254(i));
+        _sprintf(&spCC, "%d", func_multiplayer_80024254(i));
         temp3 = getCenterOfString(1, &spCC) * 0.5f;
         temp = temp_s4->unk6;
         temp4 = temp_s4->unk8;

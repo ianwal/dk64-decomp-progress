@@ -219,7 +219,7 @@ Gfx *func_race_8002BEE8(Gfx *dl, Actor *arg1) {
                 }
                 var_s1 = malloc(4);
                 func_global_asm_8061134C(var_s1);
-                sprintf(var_s1, "%d", var_a2);
+                _sprintf(var_s1, "%d", var_a2);
             } else {
                 temp = 0.033333335f * (0x78 - RaaD->unk1C);
                 alpha *= temp;
