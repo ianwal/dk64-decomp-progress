@@ -686,7 +686,7 @@ void func_global_asm_8068BBF8(void) {
                     playSound(0x14, 0x7FFFU, 64.0f, 1.0f, 0xA, 0x80);
                 }
             }
-            D_807FC624 = D_807FC624 + 0x1E & 0xFFF;
+            D_global_asm_807FC624 = D_807FC624 + 0x1E & 0xFFF;
             return;
         }
         if (is_cutscene_active != 1) {

@@ -8,5 +8,6 @@
 #include "macros.h"
 #include "ld_addrs.h"
 #include "functions.h"
+#include "libc_math.h"
 
 #endif //COMMON_H_

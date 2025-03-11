@@ -3,8 +3,8 @@
 rom:0x200002C symbol:D_80000450 reloc:MIPS_HI16
 rom:0x2000048 symbol:D_80000450 reloc:MIPS_LO16
 
-rom:0x2000020 symbol:D_dk64_boot_8000DCC4 reloc:MIPS_HI16
-rom:0x2000028 symbol:D_dk64_boot_8000DCC4 reloc:MIPS_LO16
+rom:0x2000020 symbol:gOverlayTable reloc:MIPS_HI16
+rom:0x2000028 symbol:gOverlayTable reloc:MIPS_LO16
 
 rom:0x20000D8 symbol:D_80028E10 reloc:MIPS_HI16
 rom:0x20000FC symbol:D_80028E10 reloc:MIPS_LO16
@@ -15,4 +15,4 @@ rom:0x200011C symbol:D_80030170 reloc:MIPS_LO16
 rom:0x20000F8 symbol:D_80030170 reloc:MIPS_HI16
 rom:0x2000114 symbol:D_80030170 reloc:MIPS_LO16
 
-rom:0x205B3F4 symbol:D_80027034 reloc:MIPS_26
+//rom:0x205B3F4 symbol:D_80027034 reloc:MIPS_26

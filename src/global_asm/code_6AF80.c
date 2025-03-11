@@ -1,6 +1,5 @@
 #include "common.h"
 
-
 extern void *D_global_asm_80748E14; // TODO: Datatype
 extern u8 D_global_asm_80748E18[];
 
@@ -502,8 +501,6 @@ void func_global_asm_806685E0(Struct806685E0_arg0 *arg0, f32 arg1) {
         D_global_asm_807F9510++;
     }
 }
-
-void func_global_asm_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 
 typedef struct {
     FloorTriangle *unk0;
@@ -1210,7 +1207,6 @@ s32 func_global_asm_8066AC10(Struct8066AC10 *arg0) {
 // TODO: Similar to above ^^ same struct arg1?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066ACA4.s")
 
-extern s32 D_dk64_boot_8000DDCC;
 extern s32 *D_global_asm_807F9520;
 extern s32 *D_global_asm_807F9528[];
 extern s32 D_global_asm_807F9628[];
@@ -1224,7 +1220,7 @@ void func_global_asm_8066ADA0(void) {
 
     sp40 = 0x80;
     D_global_asm_807F9520 = malloc(0x80);
-    func_global_asm_8060B140(D_dk64_boot_8000DDCC, D_global_asm_807F9520, &sp40, 0, 0, 0, 0);
+    func_global_asm_8060B140(gOverlayTable[11].rom_code_start, D_global_asm_807F9520, &sp40, 0, 0, 0, 0);
     for (i = 0; i < 0x20; i++) {
         D_global_asm_807F9528[i] = NULL;
         D_global_asm_807F95A8[i] = 0;
@@ -1456,11 +1452,11 @@ s32 func_global_asm_8066B4D4(s32 arg0, s32 arg1, s32 *arg2, s32 *arg3) {
     var_t0 = arg1;
     if (temp_v0 & 0x80000000) {
         sp2C = 8;
-        func_global_asm_8060B140(D_dk64_boot_8000DDCC + (temp_v0 & 0x7FFFFFFF), &sp38, &sp2C, 0, 0, 0, 0);
+        func_global_asm_8060B140(gOverlayTable[11].rom_code_start + (temp_v0 & 0x7FFFFFFF), &sp38, &sp2C, 0, 0, 0, 0);
         var_t0 = sp38 >> 0x30;
         func_global_asm_8066B4D4(arg0, var_t0, arg2, arg3);
     } else {
-        *arg2 = D_dk64_boot_8000DDCC + temp_v0;
+        *arg2 = gOverlayTable[11].rom_code_start + temp_v0;
         *arg3 = temp_t1[1] - temp_v0;
     }
     return var_t0;
@@ -1477,15 +1473,12 @@ s32 func_global_asm_8066B5C8(s32 pointerTableIndex, s32 fileIndex) {
     return phi_v1;
 }
 
-void func_global_asm_8060B140(s32, s32 *, s32 *, s32, s32, s32, s32);
-extern s32 D_dk64_boot_8000DDCC;
-
 void func_global_asm_8066B5F4(s32 pointerTableIndex) {
     s32 tbl_off;
     u64 file_addr;
     u32 i;
     u32 file_size;
-    s32 size;
+    u32 size;
     s32 pad;
 
     size = 8;
@@ -1493,10 +1486,10 @@ void func_global_asm_8066B5F4(s32 pointerTableIndex) {
         return;
     }
     tbl_off = D_global_asm_807F9520[pointerTableIndex];
-    func_global_asm_8060B140(D_dk64_boot_8000DDCC + tbl_off, &file_addr, &size, 0, 0, 0, 0);
+    func_global_asm_8060B140(gOverlayTable[11].rom_code_start + tbl_off, (u8*)&file_addr, &size, 0, 0, 0, 0);
     file_size = (s32)(file_addr >> 32) - tbl_off;
     D_global_asm_807F9528[pointerTableIndex] = malloc(file_size);
-    func_global_asm_8060B140(D_dk64_boot_8000DDCC + tbl_off, D_global_asm_807F9528[pointerTableIndex], &file_size, 0, 0, 0, 0);
+    func_global_asm_8060B140(gOverlayTable[11].rom_code_start + tbl_off, (u8*)D_global_asm_807F9528[pointerTableIndex], &file_size, 0, 0, 0, 0);
     switch (pointerTableIndex) {
         case 4:
         case 7:

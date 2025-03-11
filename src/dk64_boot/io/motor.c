@@ -1,51 +1,53 @@
 #include <ultra64.h>
 #include "controller.h"
 #include "siint.h"
+#include "macros.h"
 
 extern u8 __osContLastCmd;
-extern OSPifRam D_dk64_boot_80014E50[];
+static OSPifRam __MotorDataBuf[MAXCONTROLLERS] ALIGNED(8);
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/motor/__osMotorAccess.s")
-#else
-s32 __osMotorAccess(OSPfs *pfs, int arg1)
-{
+#define READFORMAT(ptr) ((__OSContRamReadFormat*)(ptr))
 
+s32 __osMotorAccess(OSPfs* pfs, s32 flag) {
     int i;
     s32 ret;
-    u8 *ptr;
-    __OSContRamReadFormat *ramreadformat;
+    u8* ptr = (u8*)&__MotorDataBuf[pfs->channel];
 
-    ramreadformat = (__OSContRamReadFormat *) D_dk64_boot_80014E50[pfs->channel].ramarray;
-
-    if (!(pfs->status & 0x8))
-        return PFS_ERR_INVALID;
+    if (!(pfs->status & PFS_MOTOR_INITIALIZED)) {
+        return 5;
+    }
 
     __osSiGetAccess();
-    D_dk64_boot_80014E50[pfs->channel].pifstatus = 1;
+    __MotorDataBuf[pfs->channel].pifstatus = CONT_CMD_EXE;
+    ptr += pfs->channel;
 
-    for (i = 0; i < 0x20; i++)
-        ramreadformat->data[i] = arg1;
+    for (i = 0; i < BLOCKSIZE; i++) {
+        READFORMAT(ptr)->data[i] = flag;
+    }
 
     __osContLastCmd = CONT_CMD_END;
-    __osSiRawStartDma(OS_WRITE, D_dk64_boot_80014E50[pfs->channel].ramarray);
+    __osSiRawStartDma(OS_WRITE, &__MotorDataBuf[pfs->channel]);
     osRecvMesg(pfs->queue, NULL, OS_MESG_BLOCK);
-    __osSiRawStartDma(OS_READ, D_dk64_boot_80014E50[pfs->channel].ramarray);
+    ret = __osSiRawStartDma(OS_READ, &__MotorDataBuf[pfs->channel]);
     osRecvMesg(pfs->queue, NULL, OS_MESG_BLOCK);
-    ret = ramreadformat->rxsize & CHNL_ERR_MASK;
-    if (ret == 0) {
-        if (!arg1) {
-            if (ramreadformat->datacrc != 0)
+
+    ret = READFORMAT(ptr)->rxsize & CHNL_ERR_MASK;
+    if (!ret) {
+        if (!flag) {
+            if (READFORMAT(ptr)->datacrc != 0) {
                 ret = PFS_ERR_CONTRFAIL;
+            }
         } else {
-            if (ramreadformat->datacrc != 0xEB)
+            if (READFORMAT(ptr)->datacrc != 0xEB) {
                 ret = PFS_ERR_CONTRFAIL;
+            }
         }
     }
+
     __osSiRelAccess();
+
     return ret;
 }
-#endif
 
 static void _MakeMotorData(int channel, OSPifRam *mdata)
 {
@@ -54,13 +56,13 @@ static void _MakeMotorData(int channel, OSPifRam *mdata)
     int i;
 
     ramreadformat.dummy = CONT_CMD_NOP;
-    ramreadformat.txsize = CONT_CMD_WRITE_MEMPACK_TX;
-    ramreadformat.rxsize = CONT_CMD_WRITE_MEMPACK_RX;
-    ramreadformat.cmd = CONT_CMD_WRITE_MEMPACK;
-    ramreadformat.unk4 = 0x600 >> 3;
+    ramreadformat.txsize = CONT_CMD_WRITE_PAK_TX;
+    ramreadformat.rxsize = CONT_CMD_WRITE_PAK_RX;
+    ramreadformat.cmd = CONT_CMD_WRITE_PAK;
+    ramreadformat.addrh = 0x600 >> 3;
     
     ptr = (u8 *)mdata->ramarray;
-    ramreadformat.unk5 = (0x600 << 5) | __osContAddressCrc(0x600);
+    ramreadformat.addrl = (0x600 << 5) | __osContAddressCrc(0x600);
     
     if (channel != 0)
     {
@@ -112,7 +114,7 @@ s32 osMotorInit(OSMesgQueue *mq, OSPfs *pfs, int channel)
         return PFS_ERR_DEVICE;
 
     if (!(pfs->status & 0x8)) {
-        _MakeMotorData(channel, &D_dk64_boot_80014E50[channel]);
+        _MakeMotorData(channel, &__MotorDataBuf[channel]);
     }
     pfs->status = 0x8;
     return 0;

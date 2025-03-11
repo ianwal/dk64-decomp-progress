@@ -71,13 +71,13 @@ typedef struct {
 //     gSPDisplayList(dl++, &D_1000118);
 //     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
 //     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
-//     sprintf(sp3C, "%d", arg1->unk14);
+//     _sprintf(sp3C, "%d", arg1->unk14);
 //     //
 //     dl = printStyledText(dl, 3, 0x424, 0x50, sp3C, 1);
 //     new_var = (!arg1->unk14) && (!arg1->unk14);
 //     dl = printStyledText(dl, 1, 0x50, 0x50, "HIT", 1);
 //     new_var = (!arg1->unk14) && (!arg1->unk14);
-//     sprintf(sp38, "%d", arg1->unk1C);
+//     _sprintf(sp38, "%d", arg1->unk1C);
 //     return printStyledText(dl, 3, 0x50, 0xB0, sp38, 1);
 // }
 
@@ -88,7 +88,7 @@ Gfx *func_global_asm_8068DAF4(Gfx *dl, u8 *arg1) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
-    sprintf(sp38, "%d", *arg1);
+    _sprintf(sp38, "%d", *arg1);
     return printStyledText(dl, 3, 260, 80, sp38, 1);
 }
 
@@ -112,7 +112,7 @@ Gfx *func_global_asm_8068DBA4(Gfx *dl, Struct8068DBA4_arg1 *arg1) {
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0x96);
 
-    sprintf(sp34, "%d", arg1->unk14);
+    _sprintf(sp34, "%d", arg1->unk14);
     return printStyledText(dl, 3, 0x370, 0x50, sp34, 1);
 }
 */
@@ -168,15 +168,15 @@ Gfx *func_global_asm_8068E7B4(Gfx *dl, f32 arg1, f32 arg2, s32 seconds) {
     s32 y;
 
     sp50 = arg2 - (func_global_asm_806FD894(0x86) * 0.5f);
-    sprintf(sp3C, ":");
+    _sprintf(sp3C, ":");
     sp4C = getCenterOfString(6, sp3C) * 0.5f;
     sp54 = arg1 - sp4C;
     y = sp50 * 4.0f;
     minutes = seconds / 60;
     dl = printStyledText(dl, 6, sp54 * 4.0f, y, sp3C, 1);
-    sprintf(sp3C, "%2d", minutes);
+    _sprintf(sp3C, "%2d", minutes);
     sp54 -= getCenterOfString(0x86, sp3C);
     dl = printStyledText(dl, 0x86, sp54 * 4.0f, y, sp3C, 1);
-    sprintf(sp3C, "%02d", seconds - (minutes * 60));
+    _sprintf(sp3C, "%02d", seconds - (minutes * 60));
     return printStyledText(dl, 0x86, (arg1 + sp4C) * 4.0f, y, sp3C, 1);
 }

@@ -141,8 +141,8 @@ Gfx *func_global_asm_806AA09C(s16 x, s16 y, s16 arg2, s16 arg3, Gfx *dl, s8 arg5
     guMtxCatF(spA8, sp68, spA8);
     guMtxF2L(spA8, spEC);
     gSPMatrix(dl++, spEC, G_MTX_PUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
-    sprintf(sp60, "%d", arg2);
-    sprintf(sp58, "%d", arg3);
+    _sprintf(sp60, "%d", arg2);
+    _sprintf(sp58, "%d", arg3);
     dl = printStyledText(dl, 1, 0, -0x28, sp60, 0x80);
     dl = printStyledText(dl, 1, var_s0, 0x28, sp58, 0);
     gSPPopMatrix(dl++, G_MTX_MODELVIEW);
@@ -574,14 +574,14 @@ void func_global_asm_806AB808(void *arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4
     }
     switch (arg7) {
         case 1:
-            sprintf(&sp2C, "%02d", arg5);
+            _sprintf(&sp2C, "%02d", arg5);
             break;
         case 2:
-            sprintf(&sp2C, "%d", arg5);
+            _sprintf(&sp2C, "%d", arg5);
             arg3 -= getCenterOfString(1, &sp2C) >> 1;
             break;
         default:
-            sprintf(&sp2C, "%d", arg5);
+            _sprintf(&sp2C, "%d", arg5);
             break;
     }
     if (sp37 != 0) {
@@ -713,9 +713,9 @@ Gfx *func_global_asm_806ACA88(Gfx *dl, Actor *arg1) {
     gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->shadow_opacity);
     dl = printStyledText(dl, 1, 0x168, 0x104, D_global_asm_807FC7E0[0], 1);
-    sprintf(sp40, "q %s", D_global_asm_807FC7E0[1]);
+    _sprintf(sp40, "q %s", D_global_asm_807FC7E0[1]);
     dl = printStyledText(dl, 1, 0x208, 0x190, sp40, 1);
-    sprintf(sp40, "b %s", D_global_asm_807FC7E0[2]);
+    _sprintf(sp40, "b %s", D_global_asm_807FC7E0[2]);
     return printStyledText(dl, 1, 0x208, 0x21C, sp40, 1);
 }
 
@@ -829,7 +829,7 @@ void func_global_asm_806ACFFC(void) {
         }
         global_properties_bitfield &= ~0x10030;
         func_global_asm_806291B4(7);
-        D_807FC80E = 0;
+        D_global_asm_807FC80E = 0;
         gCurrentActorPointer->control_state_progress = 0;
     }
     playerIndex = D_global_asm_807FC8B9;

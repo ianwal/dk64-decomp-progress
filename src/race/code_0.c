@@ -97,7 +97,7 @@ void func_race_80024000(void) {
     var_f0 = MIN(6.0f, var_f0);
     var_f0 = MAX(-6.0f, var_f0);
     var_f0 += ((D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk8 - (gCurrentActorPointer->unkB8 / 10.0f)) * 0.8);
-    var_v1 = (s16)((func_global_asm_80611BB4(-(gCurrentActorPointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0), -(gCurrentActorPointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4)) * 4096.0) / 6.28318548202514648) - gCurrentActorPointer->unkEE;
+    var_v1 = (s16)((func_global_asm_80611BB4(-(gCurrentActorPointer->x_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk0), -(gCurrentActorPointer->z_position - D_global_asm_807FDCA0->unk14[D_global_asm_807FDC90->unk25].unk4)) * 4096.0) / TWO_PI) - gCurrentActorPointer->unkEE;
     if (var_v1 >= 0x800) {
         var_v1 -= 4096.0;
     }
@@ -120,7 +120,7 @@ void func_race_80024000(void) {
     } else {
         gCurrentActorPointer->unkB8 = sp44;
     }
-    gCurrentActorPointer->unkEE = (temp_f0_2 * 4096.0) / 6.28318548202514648;
+    gCurrentActorPointer->unkEE = (temp_f0_2 * 4096.0) / TWO_PI;
     if (gCurrentActorPointer->unk6A & 1) {
         gCurrentActorPointer->unkB8 -= (f32)((gCurrentActorPointer->unkB8 * gCurrentActorPointer->unkB8) / 15000.0);
         if (gCurrentActorPointer->unkB8 < 0.0f) {

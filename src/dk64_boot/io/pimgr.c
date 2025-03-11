@@ -3,13 +3,16 @@
 #include <ultra64.h>
 #include "piint.h"
 
-// OSDevMgr __osPiDevMgr = {0};
-// OSPiHandle *__osPiTable = NULL;
-// OSPiHandle *__osCurrentHandle[2] = {&CartRomHandle, &LeoDiskHandle};
-extern OSThread piThread; // 0x800150F0;
-extern char piThreadStack[OS_PIM_STACKSIZE]; // 0x800152A0
-extern OSMesgQueue piEventQueue; // 0x800162A0;
-extern OSMesg piEventBuf[1]; // 0x800162B8
+OSDevMgr __osPiDevMgr = {0};
+OSPiHandle *__osPiTable = NULL;
+OSPiHandle __Dom1SpeedParam ALIGNED(8);
+OSPiHandle __Dom2SpeedParam ALIGNED(8);
+OSPiHandle *__osCurrentHandle[2] = {&__Dom1SpeedParam, &__Dom2SpeedParam};
+
+OSThread piThread;
+char piThreadStack[OS_PIM_STACKSIZE];
+OSMesgQueue piEventQueue;
+OSMesg piEventBuf[1];
 
 void osCreatePiManager(OSPri pri, OSMesgQueue *cmdQ, OSMesg *cmdBuf, s32 cmdMsgCnt)
 {

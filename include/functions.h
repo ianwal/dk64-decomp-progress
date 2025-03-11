@@ -65,7 +65,7 @@ void func_dk64_boot_80002750(void);
 // TODO: func_dk64_boot_80002828 has no documented signature
 // TODO: func_dk64_boot_800028E0 has no documented signature
 // TODO: func_dk64_boot_800029EC has no documented signature
-u8 *strcpy(u8 *dest, u8 const *src);
+u8 *_strcpy(u8 *dest, u8 const *src);
 // TODO: func_dk64_boot_80002A64 has no documented signature
 u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1);
 // TODO: func_dk64_boot_80002B0C has no documented signature
@@ -75,7 +75,7 @@ s32 func_dk64_boot_80002C74(u8 *str, u8 *arg1);
 u8 *func_dk64_boot_80002D60(u8 *str, u8 *ptr);
 // TODO: func_dk64_boot_80002DE4 has no documented signature
 void *memset(void *dest, s32 val, u32 len);
-u8 *strchr(u8 const *str, s32 c);
+u8 *_strchr(u8 const *str, s32 c);
 u32 strlen(u8 const *str);
 // TODO: func_dk64_boot_80002F54 has no documented signature but has been matched
 
@@ -84,7 +84,7 @@ void *memcpy(void *dest, void *src, u32 n);
 
 // dk64_boot/dk64_boot_3D20.c
 // TODO: func_dk64_boot_80003120 has no documented signature
-// TODO: _Printf has no documented signature
+// TODO: vsprintf has no documented signature
 
 // dk64_boot/io/vimgr.c
 // TODO: viMgrMain has no documented signature
@@ -409,7 +409,7 @@ void func_global_asm_8060FAA4(OSMesgQueue *arg0, OSMesg arg1, s32 arg2);
 // global_asm/done/code_14CF0.c
 void func_global_asm_8060FFF0(void);
 void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, u8 arg5); // TODO: arg0 Gfx*?
-void func_global_asm_80610268(s32 arg0);
+void func_global_asm_80610268(u32 arg0);
 // TODO: func_global_asm_80610310 has no documented signature but has been matched
 // TODO: func_global_asm_8061032C has no documented signature but has been matched
 
@@ -1897,7 +1897,7 @@ void func_global_asm_80681E18(void);
 // TODO: func_global_asm_80682E38 has no documented signature but has been matched
 void func_global_asm_8068304C(void);
 void func_global_asm_80683158(void);
-s32 func_global_asm_806832F4(Actors arg0, s32 arg1);
+int func_global_asm_806832F4(Actors arg0, s32 arg1);
 // TODO: func_global_asm_806833DC has no documented signature
 // TODO: func_global_asm_806836D0 has no documented signature
 // TODO: func_global_asm_80683A80 has no documented signature
@@ -4815,5 +4815,7 @@ void func_jetpac_8002AE00(Gfx **arg0);
 void func_jetpac_8002AE94(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 void func_jetpac_8002AEC8(u8 arg0, u8 arg1, u8 arg2, u8 arg3);
 void func_jetpac_8002AEFC(Gfx **arg0, char *string, s32 x, s32 y, s32 arg4);
+void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u8 arg5, u8 *arg6);
+
 #endif
 

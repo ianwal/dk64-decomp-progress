@@ -48,7 +48,7 @@ s16 func_critter_800288A8(AAD_critter_8002904C *arg0, u8 *arg1, s16 arg2) {
     u8 count;
     s16 i;
 
-    strcpy(&sp4C, arg1);
+    _strcpy(&sp4C, arg1);
     temp_v0 = func_dk64_boot_80002DE4(&sp4C, " ");
     temp_f16 = getCenterOfString(6, temp_v0) * 0.5 * 4.0;
     count = 0;
@@ -112,7 +112,7 @@ Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
     gSPDisplayList(dl++, &D_1000118);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
 
-    strcpy(sp38, &aaD->unk810[0x10]);
+    _strcpy(sp38, &aaD->unk810[0x10]);
     i = 0;
     dl = func_critter_80028A9C(dl, aaD, func_dk64_boot_80002DE4(sp38, " "), i++);
     while (var_a2 = func_dk64_boot_80002DE4(NULL, " ")) {
@@ -148,7 +148,7 @@ void func_critter_80028EE8(u8 arg0, s32 arg1, s16 arg2, u8 arg3, u16 arg5, u16 a
         sp2A);
     D_critter_8002A1C4->unkEE = 0;
     D_critter_8002A1C4->unk168 = arg6 + 0xE;
-    strcpy(&aaD->unk810[0x10], &D_critter_8002A1C0[0] + arg3);
+    _strcpy(&aaD->unk810[0x10], &D_critter_8002A1C0[0] + arg3);
     for (i = 1; i < 0x10; i++) {
         aaD->unk810[i] = 0;
     }

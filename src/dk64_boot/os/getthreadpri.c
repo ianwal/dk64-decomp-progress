@@ -1,7 +1,5 @@
-#include "common.h"
-
-
-extern OSThread *__osRunningThread;
+#include "PR/os_internal.h"
+#include "osint.h"
 
 OSPri osGetThreadPri(OSThread *thread)
 {

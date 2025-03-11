@@ -1147,7 +1147,7 @@ void func_global_asm_80683158(void) {
     renderActor(gCurrentActorPointer, 0);
 }
 
-s32 func_global_asm_806832F4(Actors arg0, s32 arg1) {
+int func_global_asm_806832F4(Actors arg0, s32 arg1) {
     s32 pad;
     s32 sp28;
     s32 flagIsSet;

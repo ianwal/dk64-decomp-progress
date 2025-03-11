@@ -1,10 +1,10 @@
 #include "common.h"
+#include "piint.h"
 
 void func_dk64_boot_80000AA0(void);
 void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, u8 *arg3);
 void func_dk64_boot_80000EEC(s16* arg0[8][8], s32 arg1, s32 arg2, u8 arg3);
 
-extern u8 *D_dk64_boot_8000DDCC;
 extern u8 D_dk64_boot_8000ED24;
 extern u8 D_dk64_boot_8000ED40;
 extern u8 D_dk64_boot_8000ED58;
@@ -99,7 +99,7 @@ void func_dk64_boot_8000102C(s32 offset, s32 size, void *dramAddr) {
         size++;
     }
     osWritebackDCache(dramAddr, size);
-    osPiRawStartDma(OS_READ, &D_dk64_boot_8000DDCC[offset], dramAddr, size);
+    osPiRawStartDma(OS_READ, gOverlayTable[11].rom_code_start + offset, dramAddr, size);
     do{}while(osPiGetStatus() & PI_STATUS_DMA_BUSY);
     osInvalDCache(dramAddr, size);
 }

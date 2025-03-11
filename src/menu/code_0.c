@@ -204,12 +204,12 @@ Gfx *func_menu_800244EC(Gfx *dl, Actor *arg1) {
         }
     } else {
         gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, arg1->unk15F);
-        sprintf(sp70, "q %s", getTextString(0x2A, 0, 1));
+        _sprintf(sp70, "q %s", getTextString(0x2A, 0, 1));
         dl = printStyledText(dl, 1, 350, 400, sp70, 1);
-        sprintf(sp70, "b %s", getTextString(0x2A, 1, 1));
+        _sprintf(sp70, "b %s", getTextString(0x2A, 1, 1));
         dl = printStyledText(dl, 1, 350, 500, sp70, 1);
         if (snide_aad->minigame_menu_unlocked) {
-            sprintf(sp70, "n %s", getTextString(0x2A, 2, 1));
+            _sprintf(sp70, "n %s", getTextString(0x2A, 2, 1));
             dl = printStyledText(dl, 1, 350, 600, sp70, 1);
         }
     }
@@ -448,7 +448,7 @@ typedef struct RGB {
     u8 blue;
 } RGB;
 
-extern Vtx *D_80033F10;
+extern Vtx *D_menu_80033F10;
 extern Mtx *D_menu_800330D0;
 extern void *D_menu_800330D4;
 extern s16 D_menu_800330D8;
@@ -479,7 +479,7 @@ void func_menu_80024EF0(void) {
         D_menu_800330D4 = malloc(0x140);
         memcpy(D_menu_800330D4, &D_menu_800330E0, 0x140U);
         *var_s0 = -1000;
-        D_80033F10 = malloc(0x1400);
+        D_menu_80033F10 = malloc(0x1400);
         all_bps_turned = countSetFlags(PERMFLAG_ITEM_GB_JAPES_BLUEPRINT_DK, 40, FLAG_TYPE_PERMANENT) == 40;
         var_s7 = 0;
         vtx_i = 0;
@@ -494,28 +494,28 @@ void func_menu_80024EF0(void) {
                         color_index = 0x15;
                     }
                     color_data = &D_menu_80033228[color_index++];
-                    D_80033F10[vtx_i].v.ob[0] = var_s5 << 2;
-                    D_80033F10[vtx_i].v.ob[1] = (D_menu_80033220[j] + i + 0x2D) << 2;
-                    D_80033F10[vtx_i].v.ob[2] = -10;
-                    D_80033F10[vtx_i].v.tc[0] = var_s3 << 6;
-                    D_80033F10[vtx_i].v.tc[1] = (D_menu_80033220[j] + i) << 6;
-                    D_80033F10[vtx_i].v.cn[0] = color_data->red;
-                    D_80033F10[vtx_i].v.cn[1] = color_data->green;
-                    D_80033F10[vtx_i].v.cn[2] = color_data->blue;
-                    D_80033F10[vtx_i].v.cn[3] = 0xFF;
-                    D_80033F10[vtx_i].v.flag = 0;
+                    D_menu_80033F10[vtx_i].v.ob[0] = var_s5 << 2;
+                    D_menu_80033F10[vtx_i].v.ob[1] = (D_menu_80033220[j] + i + 0x2D) << 2;
+                    D_menu_80033F10[vtx_i].v.ob[2] = -10;
+                    D_menu_80033F10[vtx_i].v.tc[0] = var_s3 << 6;
+                    D_menu_80033F10[vtx_i].v.tc[1] = (D_menu_80033220[j] + i) << 6;
+                    D_menu_80033F10[vtx_i].v.cn[0] = color_data->red;
+                    D_menu_80033F10[vtx_i].v.cn[1] = color_data->green;
+                    D_menu_80033F10[vtx_i].v.cn[2] = color_data->blue;
+                    D_menu_80033F10[vtx_i].v.cn[3] = 0xFF;
+                    D_menu_80033F10[vtx_i].v.flag = 0;
                     vtx_i++;
                     // Might not be needed
-                    D_80033F10[vtx_i].v.ob[0] = var_s6 << 2;
-                    D_80033F10[vtx_i].v.ob[1] = (D_menu_80033220[j] + i + 0x2D) << 2;
-                    D_80033F10[vtx_i].v.ob[2] = 0x16;
-                    D_80033F10[vtx_i].v.tc[0] = k << 6;
-                    D_80033F10[vtx_i].v.tc[1] = (D_menu_80033220[j] + i) << 6;
-                    D_80033F10[vtx_i].v.cn[0] = color_data->red;
-                    D_80033F10[vtx_i].v.cn[1] = color_data->green;
-                    D_80033F10[vtx_i].v.cn[2] = color_data->blue;
-                    D_80033F10[vtx_i].v.cn[3] = 0xFF;
-                    D_80033F10[vtx_i].v.flag = 0;
+                    D_menu_80033F10[vtx_i].v.ob[0] = var_s6 << 2;
+                    D_menu_80033F10[vtx_i].v.ob[1] = (D_menu_80033220[j] + i + 0x2D) << 2;
+                    D_menu_80033F10[vtx_i].v.ob[2] = 0x16;
+                    D_menu_80033F10[vtx_i].v.tc[0] = k << 6;
+                    D_menu_80033F10[vtx_i].v.tc[1] = (D_menu_80033220[j] + i) << 6;
+                    D_menu_80033F10[vtx_i].v.cn[0] = color_data->red;
+                    D_menu_80033F10[vtx_i].v.cn[1] = color_data->green;
+                    D_menu_80033F10[vtx_i].v.cn[2] = color_data->blue;
+                    D_menu_80033F10[vtx_i].v.cn[3] = 0xFF;
+                    D_menu_80033F10[vtx_i].v.flag = 0;
                     vtx_i++;
                 }
                 // Loop stuff
@@ -595,7 +595,7 @@ Gfx *func_menu_800252AC(Gfx *dl, Actor *arg1) {
     gSPMatrix(dl++, &D_menu_800330D0[D_global_asm_807444FC], G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
     gDPSetTextureFilter(dl++, G_TF_POINT);
     sp188 = func_global_asm_8068C12C(0xA3U);
-    var_s5 = (s8*)D_80033F10;
+    var_s5 = (s8*)D_menu_80033F10;
     sp12B = 1;
     var_v1 = 0;
     for (var_fp = 0; var_fp < 5; var_fp++, var_v1 += 0x1E) {
@@ -659,18 +659,18 @@ Gfx *func_menu_800252AC(Gfx *dl, Actor *arg1) {
         var_v0 = 0;
         if (D_menu_80033258 == 0) {
             for (; var_v0 < 0x50; var_v0++) {
-                D_80033F10->vertices[(4 * var_v0) + 0].red = 0;
-                D_80033F10->vertices[(4 * var_v0) + 0].green = 0xFF;
-                D_80033F10->vertices[(4 * var_v0) + 0].blue = 0xFF;
-                D_80033F10->vertices[(4 * var_v0) + 1].red = 0;
-                D_80033F10->vertices[(4 * var_v0) + 1].green = 0xFF;
-                D_80033F10->vertices[(4 * var_v0) + 1].blue = 0xFF;
-                D_80033F10->vertices[(4 * var_v0) + 2].red = 0;
-                D_80033F10->vertices[(4 * var_v0) + 2].green = 0xFF;
-                D_80033F10->vertices[(4 * var_v0) + 2].blue = 0xFF;
-                D_80033F10->vertices[(4 * var_v0) + 3].red = 0;
-                D_80033F10->vertices[(4 * var_v0) + 3].green = 0xFF;
-                D_80033F10->vertices[(4 * var_v0) + 3].blue = 0xFF;
+                D_menu_80033F10->vertices[(4 * var_v0) + 0].red = 0;
+                D_menu_80033F10->vertices[(4 * var_v0) + 0].green = 0xFF;
+                D_menu_80033F10->vertices[(4 * var_v0) + 0].blue = 0xFF;
+                D_menu_80033F10->vertices[(4 * var_v0) + 1].red = 0;
+                D_menu_80033F10->vertices[(4 * var_v0) + 1].green = 0xFF;
+                D_menu_80033F10->vertices[(4 * var_v0) + 1].blue = 0xFF;
+                D_menu_80033F10->vertices[(4 * var_v0) + 2].red = 0;
+                D_menu_80033F10->vertices[(4 * var_v0) + 2].green = 0xFF;
+                D_menu_80033F10->vertices[(4 * var_v0) + 2].blue = 0xFF;
+                D_menu_80033F10->vertices[(4 * var_v0) + 3].red = 0;
+                D_menu_80033F10->vertices[(4 * var_v0) + 3].green = 0xFF;
+                D_menu_80033F10->vertices[(4 * var_v0) + 3].blue = 0xFF;
             }
             D_menu_80033258 = 1;
         }

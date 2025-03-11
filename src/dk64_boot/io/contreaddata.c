@@ -1,67 +1,68 @@
-#include "common.h"
+#include "PR/os_internal.h"
 #include "controller.h"
+#include "siint.h"
 
-// contreaddata.c
+static void __osPackReadData(void);
 
-extern OSPifRam D_dk64_boot_80014DC0; // __osContPifRam
-extern u8 D_dk64_boot_80014E01; // __osMaxControllers
-
-s32 osContStartReadData(OSMesgQueue *arg0) {
-    s32 temp_v0;
+s32 osContStartReadData(OSMesgQueue* mq) {
+    s32 ret = 0;
 
     __osSiGetAccess();
+
     if (__osContLastCmd != CONT_CMD_READ_BUTTON) {
-        func_dk64_boot_800074E0();
-        __osSiRawStartDma(OS_WRITE, &D_dk64_boot_80014DC0);
-        osRecvMesg(arg0, NULL, OS_MESG_BLOCK);
+        __osPackReadData();
+        ret = __osSiRawStartDma(OS_WRITE, __osContPifRam.ramarray);
+        osRecvMesg(mq, NULL, OS_MESG_BLOCK);
     }
-    temp_v0 = __osSiRawStartDma(OS_READ, &D_dk64_boot_80014DC0);
+
+    ret = __osSiRawStartDma(OS_READ, __osContPifRam.ramarray);
     __osContLastCmd = CONT_CMD_READ_BUTTON;
     __osSiRelAccess();
-    return temp_v0;
+
+    return ret;
 }
 
-void osContGetReadData(OSContPad *data) //void osContGetReadData(OSContPad *data)
-{
-    u8 *ptr;
+void osContGetReadData(OSContPad* data) {
+    u8* ptr = (u8*)__osContPifRam.ramarray;
     __OSContReadFormat readformat;
     int i;
-    ptr = (u8 *)&D_dk64_boot_80014DC0.ramarray;
-    for (i = 0; i < D_dk64_boot_80014E01; i++, ptr += sizeof(__OSContReadFormat), data++)
-    {
-        readformat = *(__OSContReadFormat *)ptr;
+
+    for (i = 0; i < __osMaxControllers; i++, ptr += sizeof(__OSContReadFormat), data++) {
+        readformat = *(__OSContReadFormat*)ptr;
         data->errno = CHNL_ERR(readformat);
-        if (data->errno == 0)
-        {
-            data->button = readformat.button;
-            data->stick_x = readformat.stick_x;
-            data->stick_y = readformat.stick_y;
+
+        if (data->errno != 0) {
+            continue;
         }
+
+        data->button = readformat.button;
+        data->stick_x = readformat.stick_x;
+        data->stick_y = readformat.stick_y;
     }
 }
 
-void func_dk64_boot_800074E0(void) //static void __osPackReadData(void)
-{
-    u8 *ptr;
+static void __osPackReadData(void) {
+    u8* ptr = (u8*)__osContPifRam.ramarray;
     __OSContReadFormat readformat;
     int i;
 
-    ptr = (u8*)&D_dk64_boot_80014DC0.ramarray;
-    for (i = 0; i < ARRLEN(D_dk64_boot_80014DC0.ramarray); i++)
-    {
-        D_dk64_boot_80014DC0.ramarray[i] = 0;
+    for (i = 0; i < ARRLEN(__osContPifRam.ramarray); i++) {
+        __osContPifRam.ramarray[i] = 0;
     }
-    D_dk64_boot_80014DC0.pifstatus = CONT_CMD_EXE;
+
+    __osContPifRam.pifstatus = CONT_CMD_EXE;
     readformat.dummy = CONT_CMD_NOP;
     readformat.txsize = CONT_CMD_READ_BUTTON_TX;
     readformat.rxsize = CONT_CMD_READ_BUTTON_RX;
     readformat.cmd = CONT_CMD_READ_BUTTON;
-    readformat.button = -1;
+    readformat.button = 0xFFFF;
     readformat.stick_x = -1;
     readformat.stick_y = -1;
-    for(i = 0; i < D_dk64_boot_80014E01; i++){
+
+    for (i = 0; i < __osMaxControllers; i++) {
         *(__OSContReadFormat*)ptr = readformat;
         ptr += sizeof(__OSContReadFormat);
     }
+
     *ptr = CONT_CMD_END;
 }

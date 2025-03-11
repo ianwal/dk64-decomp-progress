@@ -1,6 +1,6 @@
 #include <ultra64.h>
 #include <sptask.h>
-#include <bstring.h>
+#include <os_libc.h>
 #include <rcp.h>
 #include "osint.h"
 
@@ -10,7 +10,7 @@
 		ptr = (void *)osVirtualToPhysical(ptr); \
 	}
 
-extern OSTask tmp_task;
+static OSTask tmp_task;
 
 static OSTask *_VirtualToPhysicalTask(OSTask *intp)
 {

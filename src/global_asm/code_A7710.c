@@ -131,9 +131,9 @@ void func_global_asm_806A2E30(void) {
     aad = gCurrentActorPointer->additional_actor_data;
     if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         if (gCurrentActorPointer->unk15F == 6) {
-            sprintf(sp60, "%.2d", aad->unkC);
+            _sprintf(sp60, "%.2d", aad->unkC);
         } else {
-            sprintf(sp60, "%.2d:%.2d:00", aad->unkC / 60U, aad->unkC % 60U);
+            _sprintf(sp60, "%.2d:%.2d:00", aad->unkC / 60U, aad->unkC % 60U);
         }
         aad->unk10 = func_global_asm_806FDB8C(gCurrentActorPointer->unk15F == 0xB ? 6 : 3, &sp60, gCurrentActorPointer->unk15F, 0.0f, 0.0f, 0.0f);
     }
@@ -201,11 +201,11 @@ void func_global_asm_806A2E30(void) {
                 }
             }
             if (gCurrentActorPointer->unk15F == 6) {
-                sprintf(sp60, "%.2d", delta);
+                _sprintf(sp60, "%.2d", delta);
             } else if (gCurrentActorPointer->control_state != 5) {
-                sprintf(sp60, "%.2d:%.2d:%.2d", delta / 60, delta % 60, 0x63 - D_global_asm_807FC7D8);
+                _sprintf(sp60, "%.2d:%.2d:%.2d", delta / 60, delta % 60, 0x63 - D_global_asm_807FC7D8);
             } else {
-                sprintf(sp60, "00:00:00");
+                _sprintf(sp60, "00:00:00");
             }
             gCurrentActorPointer->unk168 = strlen(&sp60);
             func_global_asm_806FDF1C(aad->unk10, &sp60);

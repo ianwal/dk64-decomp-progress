@@ -72,32 +72,6 @@ typedef struct {
 } OSContRamIo;
 
 
-typedef struct {
-	int		status;
-	OSMesgQueue 	*queue;
-	int		channel;
-	u8		id[32];
-	u8		label[32];
-	int		version;
-	int		dir_size;
-	int		inode_table;		/* block location */
-	int		minode_table;		/* mirrioring inode_table */
-	int		dir_table;		/* block location */
-	int		inode_start_page;	/* page # */
-	u8		banks;
-	u8		activebank;
-} OSPfs;
-
-
-typedef struct {
-	u32	file_size;	/* bytes */
-  	u32 	game_code;
-  	u16 	company_code;
-  	char  	ext_name[4];
-  	char 	game_name[16];
-} OSPfsState;
-
-
 #endif /* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */
 
 /**************************************************************************
@@ -119,6 +93,7 @@ typedef struct {
 /* controller errors */
 #define CONT_NO_RESPONSE_ERROR          0x8
 #define CONT_OVERRUN_ERROR              0x4
+#define CONT_RANGE_ERROR               -1
 #ifdef _HW_VERSION_1
 #define CONT_FRAME_ERROR                0x2
 #define CONT_COLLISION_ERROR            0x1
@@ -222,12 +197,6 @@ extern s32		osContSetCh(u8);
 #endif
 extern void		osContGetQuery(OSContStatus *);
 extern void		osContGetReadData(OSContPad *);
-
-/* MOTOR interface */
-
-extern s32 osMotorInit(OSMesgQueue *, OSPfs *, int);
-extern s32 osMotorStop(OSPfs *);
-extern s32 osMotorStart(OSPfs *);
 
 
 #endif  /* defined(_LANGUAGE_C) || defined(_LANGUAGE_C_PLUS_PLUS) */

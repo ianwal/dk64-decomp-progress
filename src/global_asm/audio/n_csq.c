@@ -1,4 +1,6 @@
 #include "common.h"
+s32 __n_alCSeqTrackEvent(ALCSeq *seq, s32 track, N_ALEvent *event, s32 arg3);
+s32 __readVarLen(ALCSeq *seq, s32 track);
 
 void n_alCSeqNew(ALCSeq *seq, u8 *music_midi_bin) {
     u32 i;

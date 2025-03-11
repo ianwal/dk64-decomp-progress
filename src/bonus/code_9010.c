@@ -30,7 +30,7 @@ typedef struct {
     u8 unkD;
 } AAD_8002D2F0;
 
-extern s16 D_80744518;
+extern s16 D_global_asm_80744518;
 extern u16 D_global_asm_807ECD60;
 
 // .data
@@ -95,9 +95,9 @@ Gfx *func_bonus_8002D010(Gfx *dl, Actor *arg1) {
             y = 480 - (u16)(D_bonus_8002D92C * 48);
             for (i = -1; i < D_bonus_8002D92C; i++) {
                 if (i >= 0) {
-                    sprintf(sp70, "HIT %d", D_bonus_8002DEF0[i]);
+                    _sprintf(sp70, "HIT %d", D_bonus_8002DEF0[i]);
                 } else if (D_bonus_8002D92C >= 2) {
-                    sprintf(sp70, "COMBO x2");
+                    _sprintf(sp70, "COMBO x2");
                 } else {
                     sp70[0] = '\0';
                 }
@@ -128,7 +128,7 @@ void func_bonus_8002D2F0(void) {
         aaD->unk4 = 0x3C;
         D_bonus_8002D92C = 0;
         D_bonus_8002D930 = 0;
-        D_80744518 = 0;
+        D_global_asm_80744518 = 0;
         aaD->unk3 = func_global_asm_806FDB8C(1, "SCORE", 8, 0.0f, 0.0f, 0.0f);
         aaD->unkD = func_global_asm_806FDB8C(1, "LAP BONUS", 8, 0.0f, 0.0f, 0.0f);
         D_bonus_8002D920 = 0;
@@ -208,7 +208,7 @@ void func_bonus_8002D2F0(void) {
             }
             break;
     }
-    D_80744518 = aaD->unkA;
+    D_global_asm_80744518 = aaD->unkA;
     addActorToTextOverlayRenderArray(func_bonus_8002D010, gCurrentActorPointer, 3);
 }
 

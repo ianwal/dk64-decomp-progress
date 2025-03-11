@@ -203,8 +203,8 @@ typedef struct Struct807F0470 {
 extern Struct807F0470 D_global_asm_807F0470[4];
 
 typedef struct {
-    s32 unk0;
-    u8 unk4[0x260 - 0x4];
+    OSMesgQueue queue;
+    u8 unk18[0x260 - 0x18];
     s32 unk260;
     u8 unk264[0x280 - 0x264];
     s32 unk280;
@@ -535,4 +535,6 @@ extern SpriteData D_global_asm_807214E8;
 extern SpriteData D_global_asm_80721500;
 extern SpriteData D_global_asm_80721518;
 extern SpriteData D_global_asm_80721530;
+extern OverlayInfoStruct gOverlayTable[];
+
 #endif

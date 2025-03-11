@@ -1,7 +1,6 @@
-#include "common.h"
-
-
-extern OSDevMgr __osPiDevMgr;
+#include "PR/os_internal.h"
+#include "PR/ultraerror.h"
+#include "piint.h"
 
 s32 osPiStartDma(OSIoMesg *mb, s32 priority, s32 direction, u32 devAddr, void *dramAddr, u32 size, OSMesgQueue *mq)
 {

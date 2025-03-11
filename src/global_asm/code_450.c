@@ -1,6 +1,5 @@
 #include "common.h"
 
-extern s32 D_dk64_boot_8000DDCC;
 extern s32 D_dk64_boot_8000DDE4;
 
 extern u8 D_global_asm_8074447C;
@@ -61,14 +60,12 @@ extern OSMesg D_global_asm_80765608;
 extern UnkMQStruct D_global_asm_807656D0;
 extern OSMesg D_global_asm_807656E8;
 
-extern UnkMQStruct D_global_asm_807659E8;
+extern OSMesgQueue D_global_asm_807659E8;
 extern OSMesg D_global_asm_80765A00;
 
 extern OSMesg D_global_asm_8076A108;
 extern OSMesg D_global_asm_8076A128;
 extern OSTimer D_global_asm_8076A130;
-
-void func_global_asm_8060B140(s32, s32*, s32*, s32, s32, s32, s32);
 
 void func_global_asm_80605510(void);
 
@@ -81,12 +78,12 @@ void func_global_asm_806C7D40(s32 arg0);
 
 void func_global_asm_805FB944(u8);
 
-void func_global_asm_805FB750(s32 arg0, s32 arg1, void* arg2) {
+void func_global_asm_805FB750(s32 offset, s32 arg1, void* arg2) {
     s32 sp2C;
 
-    sp2C = D_dk64_boot_8000DDCC;
+    sp2C = gOverlayTable[11].rom_code_start;
     osWritebackDCache(arg2, arg1);
-    osPiStartDma(&D_global_asm_807ECE00, 0, 0, sp2C + arg0, arg2, arg1, &D_global_asm_807655F0.mq);
+    osPiStartDma(&D_global_asm_807ECE00, 0, 0, sp2C + offset, arg2, arg1, &D_global_asm_807655F0.mq);
     osRecvMesg(&D_global_asm_807655F0.mq, 0, 1);
     osInvalDCache(arg2, arg1);
 }
@@ -143,7 +140,7 @@ void func_global_asm_805FB7E4(void) {
 
 void func_global_asm_80610350(u8, u8, s32);
 
-extern OSViMode D_dk64_boot_8000EF20[];
+extern OSViMode osViModeTable[];
 extern s16 D_global_asm_80744494;
 extern s16 D_global_asm_80744498;
 extern s16 D_global_asm_8074449C;
@@ -211,7 +208,7 @@ void func_global_asm_805FB944(u8 arg0) {
     }
     func_global_asm_80610350(arg0, var_a1, var_a2);
     if (D_global_asm_807445A4 == 0) {
-        osViSetMode(&D_dk64_boot_8000EF20[D_global_asm_80744588[osTvType + osTvType + D_global_asm_8074450C - 1]]);
+        osViSetMode(&osViModeTable[D_global_asm_80744588[osTvType + osTvType + D_global_asm_8074450C - 1]]);
         if (D_global_asm_807445A0 == 0) {
             osViBlack(1U);
         }
@@ -238,15 +235,13 @@ extern OSMesgQueue D_global_asm_8076A110;
 
 extern s32 D_global_asm_80767CD8;
 
-extern dk64_boot_struct_0 D_dk64_boot_8000DCC4[];
-
 void func_global_asm_8060EC80(OSMesgQueue *arg0, void *arg1, s32 arg2, u8 arg3, u8 arg4);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FBC5C.s")
 // extern s32 D_global_asm_80767A40; // I hate this, but fixes a compilation issue
 // void func_global_asm_805FBC5C(void) {
 //     UnkMQStruct *mq;
-//     D_global_asm_8076A084 = D_dk64_boot_8000DCC4[12].unk4 - D_dk64_boot_8000DCC4[12].unk0;
+//     D_global_asm_8076A084 = gOverlayTable[12].unk4 - gOverlayTable[12].unk0;
 //     osCreateMesgQueue(&D_global_asm_807655F0.mq, &D_global_asm_807655F0.msgs[0], 0x32);
 //     osCreateMesgQueue(&D_global_asm_807656D0.mq, &D_global_asm_807656D0.msgs[0], 0xC0);
 //     func_global_asm_8060EC80(
@@ -314,20 +309,20 @@ void func_global_asm_805FBE04(void) {
 
 // close, just missing some nops
 // https://decomp.me/scratch/lJIx2
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FBFF4.s")
+// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FBFF4.s")
 
 extern s32 D_global_asm_8076A070;
 extern s32 osTvType;
 extern s8 D_global_asm_80744460;
 extern u16 D_global_asm_8074682C;
 extern u8 D_global_asm_80744504;
-extern u8 D_global_asm_807F059C;
-extern u64 D_global_asm_80761680;
+extern u8 D_global_asm_807F059C[];
+extern u64 gStackCanary;
 extern s32 D_global_asm_807655E0;
 extern u8 D_global_asm_807444F0;
 extern s32 D_global_asm_80767CC0;
 
-/*
+
 void func_global_asm_805FBFF4(s32 arg0) {
     s32 phi_s4;
     OSMesg* sp38;
@@ -374,7 +369,7 @@ void func_global_asm_805FBFF4(s32 arg0) {
         func_global_asm_80600B10();
         func_global_asm_8066AF40();
         func_global_asm_80610268(0x4D2);
-        if (D_global_asm_807F059C) {
+        if (D_global_asm_807F059C[0]) {
             func_global_asm_80610268(0x929);
         }
         func_global_asm_80600674(); // calculateLagBoost()
@@ -383,11 +378,11 @@ void func_global_asm_805FBFF4(s32 arg0) {
             func_global_asm_80700BF4();
         }
         func_global_asm_80611730();
-        if (D_global_asm_80761680 != 0x12345678) {
+        if (gStackCanary != 0x12345678) {
             raiseException(2, 0, 0, 0);
         }
         if (phi_s4) {
-            osSendMesg(D_global_asm_807655E0, 0x309, 1);
+            osSendMesg(D_global_asm_807655E0, 0x309, OS_MESG_BLOCK);
             phi_s4 = 0;
         }
         if (D_global_asm_8076A0B1 & 1 && D_global_asm_807FD888 == 31.0f) {
@@ -396,7 +391,7 @@ void func_global_asm_805FBFF4(s32 arg0) {
         D_global_asm_807444F0 = is_cutscene_active;
     }
 }
-*/
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FC2B0.s")
 
@@ -456,7 +451,7 @@ void func_global_asm_805FC2B0(void) {
     }
     func_global_asm_8070DD44();
     temp_v0 = D_global_asm_8076A050[D_global_asm_807444FC];
-    D_8076A150 = temp_v0;
+    D_global_asm_8076A150 = temp_v0;
     if (((D_global_asm_8076A0B1 & 1) != 0) && (D_global_asm_807FD888 == 31.0f)) {
         sp2C = temp_v0;
         sp28 = D_global_asm_8076A048 + 0xDB0;

@@ -2,6 +2,7 @@
 #define __STRUCTS_H__
 #include "synthinternal.h"
 #include "sched.h" //TODO: sort this out with Struct131B0_2
+#include "n_libaudio.h"
 
 /* your struct definitions go here */
 
@@ -3752,5 +3753,20 @@ typedef struct {
     f32 unk40;
     f32 unk44;
 } Struct8066AC10;
+
+typedef struct SynthConfig {
+    s32 unk0;
+    s32 unk4;
+    s32 unk8;
+    s32 unkC;
+    s32 unk10;
+    ALHeap *unk14;
+    s32 unk18;
+    u8 unk1C;
+    u8 unk1D;
+    u8 pad1E[2];
+    s32 unk20;
+    s32 unk24;
+} SynthConfig;
 
 #endif

@@ -3,79 +3,76 @@
 #include "controller.h"
 #include "siint.h"
 
-void __osPfsRequestOneChannel(int channel);
-void __osPfsGetOneChannelData(int channel, OSContStatus *data);
+void __osPfsRequestOneChannel(int channel, u8 cmd);
+void __osPfsGetOneChannelData(int channel, OSContStatus* data);
 
-extern OSPifRam D_dk64_boot_800164F0; // __osPfsPifRam
-extern u8 D_dk64_boot_80010304;
-
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsGetStatus.s")
-
-/*
-// TODO: Needs libultra 2.0I headers I think
-s32 __osPfsGetStatus(OSMesgQueue *queue, int channel)
-{
-    s32 ret;
+s32 __osPfsGetStatus(OSMesgQueue* queue, int channel) {
+    s32 ret = 0;
     OSMesg dummy;
     OSContStatus data;
-    D_dk64_boot_80010304 = 0xFA;
-    ret = 0;
-    __osPfsRequestOneChannel(channel);
-    ret = __osSiRawStartDma(OS_WRITE, &D_dk64_boot_800164F0);
+    __osPfsInodeCacheBank = 250;
+    __osPfsRequestOneChannel(channel, CONT_CMD_REQUEST_STATUS);
+
+    ret = __osSiRawStartDma(OS_WRITE, &__osPfsPifRam);
     osRecvMesg(queue, &dummy, OS_MESG_BLOCK);
-    ret = __osSiRawStartDma(OS_READ, &D_dk64_boot_800164F0);
+
+    ret = __osSiRawStartDma(OS_READ, &__osPfsPifRam);
     osRecvMesg(queue, &dummy, OS_MESG_BLOCK);
+
     __osPfsGetOneChannelData(channel, &data);
-    if (((data.status & CONT_CARD_ON) != 0) && ((data.status & CONT_CARD_PULL) != 0))
+
+    if (((data.status & CONT_CARD_ON) != 0) && ((data.status & CONT_CARD_PULL) != 0)) {
         return PFS_ERR_NEW_PACK;
-    if ((data.errno != 0) || ((data.status & CONT_CARD_ON) == 0))
+    } else if ((data.errno != 0) || ((data.status & CONT_CARD_ON) == 0)) {
         return PFS_ERR_NOPACK;
-    if ((data.status & CONT_ADDR_CRC_ER) != 0)
+    } else if ((data.status & CONT_ADDR_CRC_ER) != 0) {
         return PFS_ERR_CONTRFAIL;
+    }
+
     return ret;
 }
-*/
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/io/pfsgetstatus/__osPfsRequestOneChannel.s")
-
-/*
-void __osPfsRequestOneChannel(int channel)
-{
-    u8 *ptr;
+void __osPfsRequestOneChannel(int channel, u8 cmd) {
+    u8* ptr;
     __OSContRequesFormatShort requestformat;
     int i;
 
-    __osContLastCmd = CONT_CMD_REQUEST_STATUS;
-    D_dk64_boot_800164F0.pifstatus = CONT_CMD_EXE;
-    ptr = (u8 *)&D_dk64_boot_800164F0;
+    __osContLastCmd = CONT_CMD_END;
+    __osPfsPifRam.pifstatus = CONT_CMD_READ_BUTTON;
+
+    ptr = (u8*)&__osPfsPifRam;
 
     requestformat.txsize = CONT_CMD_REQUEST_STATUS_TX;
     requestformat.rxsize = CONT_CMD_REQUEST_STATUS_RX;
-    requestformat.cmd = CONT_CMD_REQUEST_STATUS;
+    requestformat.cmd = cmd;
     requestformat.typeh = CONT_CMD_NOP;
     requestformat.typel = CONT_CMD_NOP;
     requestformat.status = CONT_CMD_NOP;
-    for (i = 0; i < channel; i++)
-        *ptr++ = 0;
 
-    *(__OSContRequesFormatShort *)ptr = requestformat;
+    for (i = 0; i < channel; i++) {
+        *ptr++ = CONT_CMD_REQUEST_STATUS;
+    }
+
+    *(__OSContRequesFormatShort*)ptr = requestformat;
     ptr += sizeof(__OSContRequesFormatShort);
     *ptr = CONT_CMD_END;
 }
-*/
 
-void __osPfsGetOneChannelData(int channel, OSContStatus *data)
-{
+void __osPfsGetOneChannelData(int channel, OSContStatus *data) {
     u8 *ptr;
     __OSContRequesFormatShort requestformat;
     int i;
-    ptr = (u8*)&D_dk64_boot_800164F0;
-    for (i = 0; i < channel; i++)
+
+    ptr = (u8*)&__osPfsPifRam;
+
+    for (i = 0; i < channel; i++) {
         ptr++;
+    }
+
     requestformat = *(__OSContRequesFormatShort *)ptr;
     data->errno = CHNL_ERR(requestformat);
-    if (data->errno == 0)
-    {
+
+    if (data->errno == 0) {
         data->type = (requestformat.typel << 8) | (requestformat.typeh);
         data->status = requestformat.status;
     }

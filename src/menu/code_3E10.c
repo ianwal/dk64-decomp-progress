@@ -370,7 +370,7 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
 }
 */
 
-char **label_string_pointer_array;
+extern char **label_string_pointer_array;
 
 typedef struct {
     f32 unk0;
@@ -514,15 +514,15 @@ Gfx *func_menu_80028D3C(Actor *arg0, Gfx *dl) {
     gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
     sp100 = func_menu_800317E8(aaD, 160.0f, 15.0f, &spFC, &spF8, 4, 1, 0.3f);
     if (sp100 == 2) {
-        sprintf(sp2C, "%s", label_string_pointer_array[5]);
+        _sprintf(sp2C, "%s", label_string_pointer_array[5]);
     } else {
         if (sp100 == 3) {
             sp100 = 2;
         }
         if (func_menu_800322D0(sp100) != 0) {
-            sprintf(sp2C, "%s", label_string_pointer_array[6]);
+            _sprintf(sp2C, "%s", label_string_pointer_array[6]);
         } else {
-            sprintf(sp2C, "%s %d", label_string_pointer_array[7], sp100 + 1);
+            _sprintf(sp2C, "%s %d", label_string_pointer_array[7], sp100 + 1);
         }
     }
     return printText(dl, spFC * 4.0f, spF8 * 4.0f, 0.6f, sp2C);
@@ -649,9 +649,9 @@ Gfx *func_menu_80029BB4(Actor *arg0, Gfx *dl) {
     spFE = sp110 * 4.0f;
     sp100 = sp10C * 4.0f;
     if (func_menu_800322D0(fileIndex)) {
-        sprintf(sp34, "%s", label_string_pointer_array[6]);
+        _sprintf(sp34, "%s", label_string_pointer_array[6]);
     } else {
-        sprintf(sp34, "%s %d", label_string_pointer_array[7], fileIndex + 1);
+        _sprintf(sp34, "%s %d", label_string_pointer_array[7], fileIndex + 1);
     }
     dl = printText(dl, spFE, sp100, 0.6f, sp34);
     sp100 -= 0x3C;
@@ -729,9 +729,9 @@ Gfx *func_menu_8002A088(Actor *arg0, Gfx *dl) {
     sp106 = sp118 * 4.0f;
     temp_f4 = (sp114 * 4.0f);
     if (func_menu_800322D0(D_menu_80033F48)) {
-        sprintf(&sp3C, "%s", label_string_pointer_array[6]);
+        _sprintf(&sp3C, "%s", label_string_pointer_array[6]);
     } else {
-        sprintf(&sp3C, "%s %d", label_string_pointer_array[7], D_menu_80033F48 + 1);
+        _sprintf(&sp3C, "%s %d", label_string_pointer_array[7], D_menu_80033F48 + 1);
     }
     dl = printText(dl, sp106, temp_f4, 0.6f, &sp3C);
     dl = printText(dl, sp118 * 4.0f, temp_f4 - 60, 0.6f, label_string_pointer_array[8]);
@@ -1014,8 +1014,8 @@ void func_menu_8002C584(Actor *arg0, s32 arg1) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002C634.s")
 
-extern u8 D_80033F20[];
-extern u8 D_80033F24[];
+extern u8 D_menu_80033F20[];
+extern u8 D_menu_80033F24[];
 extern s16 D_80744524[];
 extern s8 D_global_asm_8076A105;
 extern u8 D_menu_80033878;
@@ -1040,8 +1040,8 @@ void func_menu_8002C91C(Actor *arg0, s32 arg1) {
     for (i = 0; i < 4; i++) {
         if (!(D_global_asm_8076A0E4[i] & 0x80)) {
             D_menu_8003387C[D_menu_80033878] = D_global_asm_8076A0E4[i] & 0x7F;
-            D_80033F20[D_menu_80033878] = i;
-            D_80033F24[i] = D_menu_80033878;
+            D_menu_80033F20[D_menu_80033878] = i;
+            D_menu_80033F24[i] = D_menu_80033878;
             if (D_menu_80033878 == D_global_asm_8076A105) D_80744524[i]++;
             D_menu_80033878++;
         }
@@ -1052,7 +1052,7 @@ void func_menu_8002C91C(Actor *arg0, s32 arg1) {
         spawnActor(ACTOR_MAIN_MENU_MULTIPLAYER_KONG, D_menu_8003386C[D_menu_8003387C[i]]);
         a17C = gLastSpawnedActor->unk17C;
         a17C->unk0 = D_menu_8003386C[D_menu_8003387C[i]];
-        gLastSpawnedActor->control_state = D_80033F20[i] | 0x80;
+        gLastSpawnedActor->control_state = D_menu_80033F20[i] | 0x80;
         gLastSpawnedActor->control_state_progress = D_menu_8003387C[i];
         temp_v0 = gLastSpawnedActor->additional_actor_data;
         temp_v0->controller = arg0;
@@ -1064,7 +1064,7 @@ void func_menu_8002C91C(Actor *arg0, s32 arg1) {
 // TODO: Huge, very doable, need energy
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002CB18.s")
 
-extern u8 D_80033F24[];
+extern u8 D_menu_80033F24[];
 extern u8 D_menu_80033878;
 
 typedef struct {
@@ -1129,7 +1129,7 @@ void func_menu_8002CB18(void) {
     } else {
         temp_s1_2 = 0x140 / D_menu_80033878;
         func_menu_800317E8(aad2, 160.0f, 150.0f, &x, &y, 2, 0, 1.8f);
-        temp_f10 = ((D_80033F24[gCurrentActorPointer->control_state & 0xF] * temp_s1_2) + (temp_s1_2 >> 1)) - 0xA0;
+        temp_f10 = ((D_menu_80033F24[gCurrentActorPointer->control_state & 0xF] * temp_s1_2) + (temp_s1_2 >> 1)) - 0xA0;
         gCurrentActorPointer->x_position = gPlayerPointer->x_position + (temp_f10 * 0.78);
         gCurrentActorPointer->y_position = (gPlayerPointer->y_position - (y - 120.0f)) + 16.0f;
         gCurrentActorPointer->z_position = gPlayerPointer->z_position - 300.0f;
@@ -1293,7 +1293,7 @@ Gfx *func_menu_8002D520(Actor *arg0, Gfx *dl) {
         case 2:
             dl = printStyledText(dl, 1, sp58, temp_f10, label_string_pointer_array[40], 0x81U);
             var_v0 = sp60 == 1 ? D_global_asm_8074583C : D_global_asm_80745840;
-            sprintf(sp40, "%d", (var_v0 + 1) >> 1);
+            _sprintf(sp40, "%d", (var_v0 + 1) >> 1);
             dl = printStyledText(dl, 1, sp58, temp_f10 + 0x78, &sp40, 0x81U);
             break;
         case 3:
@@ -1477,7 +1477,7 @@ typedef struct MysteryMenuMovesStruct {
     s8 melons;
 } MysteryMenuMovesStruct;
 
-extern u8 D_80744514;
+extern u8 D_global_asm_80744514;
 extern s8 D_8074453C[];
 extern s16 D_global_asm_80744544;
 extern s16 D_menu_80033670;
@@ -1533,7 +1533,7 @@ void func_menu_8002DFA8(Actor *arg0, s32 arg1) {
                             // End Sequence
                             func_global_asm_807127F4(1);
                         }
-                        D_80744514 = 3;
+                        D_global_asm_80744514 = 3;
                         break;
                     case 1:
                         switch (D_menu_80033978[sp39].map) {
@@ -1553,7 +1553,7 @@ void func_menu_8002DFA8(Actor *arg0, s32 arg1) {
                                 func_global_asm_807126B0(
                                     D_menu_80033978[sp39].map, 0,
                                     D_menu_80033978[sp39].kong, 3, 3, 1, 3);
-                                D_80744514 = 5;
+                                    D_global_asm_80744514 = 5;
                                 break;
                         }
                         break;
@@ -1566,7 +1566,7 @@ void func_menu_8002DFA8(Actor *arg0, s32 arg1) {
                             D_menu_80033938[sp39].slam,
                             D_menu_80033938[sp39].instrument,
                             D_menu_80033938[sp39].melons);
-                        D_80744514 = 4;
+                            D_global_asm_80744514 = 4;
                         break;
                     }
                 }
@@ -1666,7 +1666,7 @@ void func_menu_8002F6C8(Actor *arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_8002F75C.s")
 
 extern s8 D_menu_800339A8;
-extern s16 D_80744518;
+extern s16 D_global_asm_80744518;
 
 /*
 void func_menu_8002F75C(void) {
@@ -1680,7 +1680,7 @@ void func_menu_8002F75C(void) {
         var_v0 = &D_global_asm_80744568;
     }
     for (i = 0; i < 4; i++) {
-        if (D_80744518 >= var_v0[i].unk0) {
+        if (D_global_asm_80744518 >= var_v0[i].unk0) {
             for (var_a2 = 0; var_a2 <= 4; var_a2++) {
                 // var_v0[var_a2] = var_v0[var_a2 + 1];
                 var_v0[var_a2].unk0 = var_v0[var_a2 + 1].unk0;
@@ -1689,7 +1689,7 @@ void func_menu_8002F75C(void) {
                 var_v0[var_a2].unk4 = var_v0[var_a2 + 1].unk4;
                 var_v0[var_a2].unk5 = var_v0[var_a2 + 1].unk5;
             }
-            var_v0[i].unk0 = D_80744518;
+            var_v0[i].unk0 = D_global_asm_80744518;
             var_v0[i].unk2 = 0x2E;
             var_v0[i].unk3 = 0x2E;
             var_v0[i].unk4 = 0x2E;
@@ -1766,17 +1766,17 @@ s32 func_menu_8002F980(Gfx *arg0, Struct8002F980_arg1 *arg1, s32 *arg2, s32 arg3
 */
 
 // TODO: Also used in arcade?
-extern f32 D_80033F68[];
-extern f32 D_80033F80[];
-extern f32 D_80033F98[];
+extern f32 D_menu_80033F68[];
+extern f32 D_menu_80033F80[];
+extern f32 D_menu_80033F98[];
 
 s32 func_menu_8002FB88(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4) {
     arg1 &= 0x7F;
     arg2 *= 4.0f;
     arg3 *= 4.0f;
-    D_80033F68[arg1] = arg2 - 32.0;
-    D_80033F80[arg1] = arg3 - 100.0;
-    D_80033F98[arg1] = arg4 * 1.333;
+    D_menu_80033F68[arg1] = arg2 - 32.0;
+    D_menu_80033F80[arg1] = arg3 - 100.0;
+    D_menu_80033F98[arg1] = arg4 * 1.333;
     return arg0;
 }
 
@@ -1841,8 +1841,8 @@ void func_menu_8002FE08(MenuAdditionalActorData *MaaD, s32 arg1) {
     }
 }
 
-extern s8 D_80033F30;
-extern void *D_80033F34;
+extern s8 D_menu_80033F30;
+extern void *D_menu_80033F34;
 
 extern s8 D_menu_80033738;
 extern s8 D_menu_800339A8;
@@ -1863,7 +1863,7 @@ void func_menu_8002FEBC(void) {
         global_properties_bitfield |= 0x10;
         func_menu_800324CC();
         func_menu_8002ECE8();
-        if (D_80744514 == 0) {
+        if (D_global_asm_80744514 == 0) {
             for (i = 0; i < 0xD; i++) D_8076A0D0[i] = 0;
         } else {
             gPlayerPointer->x_position = 700.0f;
@@ -1880,7 +1880,7 @@ void func_menu_8002FEBC(void) {
         gLastSpawnedActor->y_position = gPlayerPointer->y_position;
         gLastSpawnedActor->z_position = gPlayerPointer->z_position;
         gLastSpawnedActor->y_rotation = gPlayerPointer->y_rotation;
-        if (D_80744514) {
+        if (D_global_asm_80744514) {
             D_menu_80033738 = 0x15;
             gPlayerPointer->control_state = 0x85;
             gPlayerPointer->control_state_progress = 0;
@@ -1890,7 +1890,7 @@ void func_menu_8002FEBC(void) {
             menu_icon_transition_scale = 1.0f;
             PaaD->unk23C = 0x50;
         }
-        switch (D_80744514) {
+        switch (D_global_asm_80744514) {
             case 1:
                 MaaD->unk12 = 1;
                 break;
@@ -1905,7 +1905,7 @@ void func_menu_8002FEBC(void) {
             case 6:
             case 7:
                 MaaD->unk12 = 0xC;
-                D_menu_800339A8 = D_80744514 - 6;
+                D_menu_800339A8 = D_global_asm_80744514 - 6;
                 func_menu_8002F75C();
                 break;
             default:
@@ -1925,10 +1925,10 @@ void func_menu_8002FEBC(void) {
         MaaD->unk10 = 0;
         MaaD->unk0 = 1.0f;
         MaaD->unk4 = 0.0f;
-        D_80033F34 = malloc(0x80);
-        D_80033F30 = 0;
+        D_menu_80033F34 = malloc(0x80);
+        D_menu_80033F30 = 0;
         func_menu_80030340(gCurrentActorPointer, 0, NULL, 0);
-        D_80744514 = 0;
+        D_global_asm_80744514 = 0;
         func_global_asm_8060AA58(0xFF);
         func_global_asm_8060CB9C();
     }

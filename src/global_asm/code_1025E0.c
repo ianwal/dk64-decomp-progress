@@ -89,7 +89,7 @@ s16 func_global_asm_806FDB8C(s16 arg0, u8 *arg1, u8 arg2, f32 arg3, f32 arg4, f3
     temp_v0->unk1C = D_global_asm_80754AD4++;
     len = strlen(arg1);
     temp_v0->unk4 = malloc(len + 1);
-    strcpy(temp_v0->unk4, arg1);
+    _strcpy(temp_v0->unk4, arg1);
     temp_v0->unkD = func_global_asm_806FBEAC(arg1);
     temp_v0->unk8 = malloc(temp_v0->unkD * sizeof(Struct806FD9FC));
     func_global_asm_80611690(temp_v0->unk8);
@@ -114,7 +114,7 @@ s16 func_global_asm_806FDB8C(s16 arg0, u8 *arg1, u8 arg2, f32 arg3, f32 arg4, f3
 
 
 void func_global_asm_806FDF1C(s16 arg0, char *arg1) {
-    strcpy(func_global_asm_806FD9B4(arg0)->unk4, arg1);
+    _strcpy(func_global_asm_806FD9B4(arg0)->unk4, arg1);
 }
 
 void func_global_asm_806FDF54(f32 *arg0, f32 *arg1) {

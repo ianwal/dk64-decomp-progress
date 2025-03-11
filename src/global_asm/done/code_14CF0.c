@@ -1,3 +1,4 @@
+#define IMPLICIT_OSINVALIDCACHE_DEF
 #include "common.h"
 
 typedef struct Struct807F05A8 {
@@ -8,8 +9,8 @@ typedef struct Struct807F05A8 {
 
     s32 unk10;
     s32 unk14;
-    void *unk18;
-    s32 unk1C;
+    u8* rspBootText;
+    u32 rspBootTextSize;
 
     void *unk20;
     s32 unk24;
@@ -46,7 +47,7 @@ extern s8 D_global_asm_80744460;
 extern void *D_global_asm_80744470[];
 extern s8 D_global_asm_80746834;
 
-extern UnkMQStruct D_global_asm_807659E8;
+extern OSMesgQueue D_global_asm_807659E8;
 extern s32 D_global_asm_80767CD8; // Unsure on type
 extern Struct80767CE8 D_global_asm_80767CE8[];
 extern s32 D_global_asm_8076AF20; // Unsure on type
@@ -68,6 +69,7 @@ void func_global_asm_8060FFF0(void) {
     D_global_asm_807F0588[3] = &D_global_asm_80760840;
 }
 
+//requires an implicit osWritebackDCache declaration to match
 void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, u8 arg5) {
     s32 temp_v0;
     Struct807F05A8 *temp_s0;
@@ -77,8 +79,8 @@ void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, 
         D_global_asm_807F059C[arg2] = 1;
         temp_s0->unk10 = 1;
         temp_s0->unk14 = 0;
-        temp_s0->unk18 = &D_805FB000;
-        temp_s0->unk1C = (s32)&D_805FB0D0 - (s32)&D_805FB000;
+        temp_s0->rspBootText = rspText_VRAM;
+        temp_s0->rspBootTextSize = rspText_VRAM_END - rspText_VRAM;
 
         temp_s0->unk20 = D_global_asm_807F0570[arg2];
         temp_s0->unk28 = D_global_asm_807F0588[arg2];
@@ -111,18 +113,18 @@ void func_global_asm_80610044(void *arg0, s32 arg1, u8 arg2, u8 arg3, s32 arg4, 
             osWritebackDCache(arg0, arg1 * 8);
             osWritebackDCache(&D_global_asm_80767CE8[D_global_asm_807444FC], sizeof(Struct80767CE8));
         }
-        osSendMesg(&D_global_asm_80767A40, temp_s0, 1);
+        osSendMesg(&D_global_asm_80767A40.queue, temp_s0, 1);
     }
 }
 
-void func_global_asm_80610268(s32 arg0) {
+void func_global_asm_80610268(u32 arg0) {
     u32 sp34;
 
     do {
         D_global_asm_80746834 = 8;
-        osRecvMesg(&D_global_asm_807659E8, &sp34, 1);
+        osRecvMesg(&D_global_asm_807659E8, (OSMesg*)&sp34, 1);
         D_global_asm_80746834 = 0;
         D_global_asm_807F059C[sp34 >> 0x10] = 0;
         sp34 &= 0xFFFF;
-    } while ((s32)sp34 != arg0);
+    } while (sp34 != arg0);
 }

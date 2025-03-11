@@ -279,7 +279,7 @@ Gfx *func_global_asm_80713438(Gfx *dl, u8 arg1) {
     temp_f16 = 418.0f;
     sp34 = malloc(size);
     func_global_asm_8061134C(sp34);
-    sprintf(sp34, "%c%s", 0x63, sp30);
+    _sprintf(sp34, "%c%s", 0x63, sp30);
     sp28 -= 0.5 * getCenterOfString(1, sp34);
     gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
     gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, arg1);
@@ -535,7 +535,7 @@ Gfx *func_global_asm_80714060(Gfx *dl) {
     }
     if (D_global_asm_807552E0) {
         dl = func_global_asm_807132DC(dl);
-        sprintf(&sp38, "SECURITY %d", D_global_asm_807552E0);
+        _sprintf(&sp38, "SECURITY %d", D_global_asm_807552E0);
         dl = printText(dl, 0x280, 0x1E0, 1.0f, &sp38);
     }
     D_global_asm_807552E0 = 0;

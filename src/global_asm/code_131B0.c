@@ -27,7 +27,7 @@ extern OSMesgQueue D_global_asm_807ECCF0;
 void func_global_asm_8060FA5C(Struct131B0_2 *arg0);
 void func_global_asm_8060EE60(void*);
 extern s8 D_global_asm_80744510;
-extern OSViMode D_dk64_boot_8000EF20[];
+extern OSViMode osViModeTable[];
 extern u16 *D_global_asm_80744470[2];
 
 /* BSS */
@@ -187,7 +187,8 @@ void func_global_asm_8060E958(void) {
     func_global_asm_8060EC54(1);
 }
 
-s32 func_global_asm_8060E980(void) {
+//must be int, not long
+int func_global_asm_8060E980(void) {
     return (global_properties_bitfield & 0x4002)
         || (D_global_asm_8076A0B1 & 1)
         || func_global_asm_8062919C()
@@ -277,8 +278,8 @@ void func_global_asm_8060EC80(Struct131B0_2* arg0, void* arg1, s32 arg2, s32 arg
     D_global_asm_807F04E0 = NULL;
     osCreateMesgQueue((OSMesgQueue* ) arg0, &arg0->func, 0x10);
     osCreateMesgQueue((OSMesgQueue* ) &arg0->mesgQueue, &arg0->unk70, 0x10);
-    osSetEventMesg(4, (OSMesgQueue* ) arg0, (void* )0x29B);
-    osSetEventMesg(9, (OSMesgQueue* ) arg0, (void* )0x29C);
+    osSetEventMesg(OS_EVENT_SP, (OSMesgQueue* ) arg0, (void* )0x29B);
+    osSetEventMesg(OS_EVENT_DP, (OSMesgQueue* ) arg0, (void* )0x29C);
     osViSetEvent((OSMesgQueue* ) arg0, (void* )0x29A, (u32) arg4);
     osCreateThread(&arg0->unkB0, 5, func_global_asm_8060EE60, arg0, arg1, arg2);
     osStartThread(&arg0->unkB0);
@@ -387,7 +388,7 @@ void func_global_asm_8060F254(Struct131B0_2* arg0) {
                 osViBlack(1);
             }
             if (D_global_asm_80746858 == 0x3C) {
-                osViSetMode(&D_dk64_boot_8000EF20[D_global_asm_8074684C[osTvType]]);
+                osViSetMode(&osViModeTable[D_global_asm_8074684C[osTvType]]);
                 osViSetSpecialFeatures(0x42U);
                 osViBlack(0);
                 D_global_asm_80744510 = 2;
@@ -412,9 +413,9 @@ void func_global_asm_8060F254(Struct131B0_2* arg0) {
         }
         D_global_asm_807F04E0 = NULL;
     } else {
-        if ((osViGetCurrentFramebuffer() == osViGetNextFramebuffer()) && (osDpGetStatus() & 2)) {
+        if ((osViGetCurrentFramebuffer() == osViGetNextFramebuffer()) && (osDpGetStatus() & DPC_STATUS_FREEZE)) {
             arg0->unk_288 = osGetTime();
-            osDpSetStatus(4U);
+            osDpSetStatus(DPC_STATUS_FLUSH);
         }
     }
     for (i = 0, sp48 = arg0->unk_60; i < sp48; i++) {
@@ -430,7 +431,7 @@ void func_global_asm_8060F254(Struct131B0_2* arg0) {
     }
 
     if ((arg0->unk264 != 0) && !(arg0->unk_284 & 1)) {
-        osSetTimer(&D_global_asm_807F0540, 0x445C0, 0, arg0->unk264->unk_50->unk_04, (void* )5);
+        osSetTimer(&D_global_asm_807F0540, 280000, 0, arg0->unk264->unk_50->unk_04, (void* )5);
     }
     
     for (temp_v0_3 = arg0->unk260; temp_v0_3 != NULL; temp_v0_3 = temp_v0_3->next) {

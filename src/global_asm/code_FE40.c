@@ -1,15 +1,10 @@
 #include "common.h"
 
-// Doable, close, regalloc
-// https://decomp.me/scratch/5iYVm
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_FE40/func_global_asm_8060B140.s")
-
+extern void *D_global_asm_807ECE18;
 extern s8 D_global_asm_80746834;
-extern OSMesgQueue D_global_asm_807655F0;
 extern OSIoMesg D_global_asm_807ECE00;
-extern void *D_807ECE18;
+extern OSMesgQueue D_global_asm_807655F0;
 
-/*
 void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u8 arg5, u8 *arg6) {
     s32 i;
     u32 var_a0;
@@ -21,11 +16,11 @@ void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u
 
     sp58 = arg1;
     if (arg3 || arg4) {
-        if (arg3 & 0x80) {
+        if ((arg3 & 0xFFFFu) & 0x80) {
             sp5C = arg6;
             arg6 += 0x3800;
         } else if (arg6 != NULL) {
-            sp5C = (void*)0x80024000;
+            sp5C = (void*)0x80024000; //TODO-shift: this number is hardcoded to the overlay starting address
         } else {
             sp50 = malloc(*arg2);
             sp5C = sp50;
@@ -52,30 +47,30 @@ void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u
         osRecvMesg(&D_global_asm_807655F0, NULL, 1);
         D_global_asm_80746834 = 0;
     }
-    D_807ECE18 = arg6;
+    D_global_asm_807ECE18 = arg6;
     if ((arg6 == NULL) && ((arg5 == 1) || (arg5 == 2))) {
-        D_807ECE18 = malloc(0x4000);
+        D_global_asm_807ECE18 = malloc(0x4000);
     }
     switch (arg5) {
         case 1:
             if (arg3) {
-                func_dk64_boot_800024E0(&sp5C, &arg1, D_807ECE18);
+                func_dk64_boot_800024E0(&sp5C, &arg1, D_global_asm_807ECE18);
             }
             if (arg4) {
-                func_dk64_boot_800024E0(&sp5C, &arg1, D_807ECE18);
+                func_dk64_boot_800024E0(&sp5C, &arg1, D_global_asm_807ECE18);
             }
             break;
         case 2:
             if (arg3) {
-                func_dk64_boot_80002790(&sp5C, &arg1, D_807ECE18, arg3);
+                func_dk64_boot_80002790(&sp5C, &arg1, D_global_asm_807ECE18, arg3);
             }
             if (arg4) {
-                func_dk64_boot_80002790(&sp5C, &arg1, D_807ECE18, arg4);
+                func_dk64_boot_80002790(&sp5C, &arg1, D_global_asm_807ECE18, arg4);
             }
             break;
     }
     if ((arg6 == NULL) && ((arg5 == 1) || (arg5 == 2))) {
-        free(D_807ECE18);
+        free(D_global_asm_807ECE18);
     }
     if ((arg3) || (arg4)) {
         *arg2 = arg1 - sp58;
@@ -84,4 +79,3 @@ void func_global_asm_8060B140(u32 arg0, u8 *arg1, s32 *arg2, u8 arg3, u8 arg4, u
         }
     }
 }
-*/

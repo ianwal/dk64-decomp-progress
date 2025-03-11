@@ -5,7 +5,6 @@ extern Gfx* func_menu_8003292C(Gfx *dl);
 
 // .data
 static u8 D_menu_800339D0 = 0;
-
 extern s32 D_menu_80033FB0;
 extern s32 D_menu_80033FB1;
 extern s32 D_menu_80033FB2;
