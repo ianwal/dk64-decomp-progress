@@ -307,10 +307,6 @@ void func_global_asm_805FBE04(void) {
     guPerspective(&D_global_asm_80768E98, &D_global_asm_8076A09C, D_global_asm_807444B8, D_global_asm_807444BC * FOV, D_global_asm_807444C8, D_global_asm_807444C4, 1.0f);
 }
 
-// close, just missing some nops
-// https://decomp.me/scratch/lJIx2
-// #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FBFF4.s")
-
 extern s32 D_global_asm_8076A070;
 extern s32 osTvType;
 extern s8 D_global_asm_80744460;
@@ -321,7 +317,6 @@ extern u64 gStackCanary;
 extern s32 D_global_asm_807655E0;
 extern u8 D_global_asm_807444F0;
 extern s32 D_global_asm_80767CC0;
-
 
 void func_global_asm_805FBFF4(s32 arg0) {
     s32 phi_s4;
@@ -391,7 +386,6 @@ void func_global_asm_805FBFF4(s32 arg0) {
         D_global_asm_807444F0 = is_cutscene_active;
     }
 }
-
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FC2B0.s")
 

@@ -2,6 +2,21 @@
 ## Matches > Style
 - Sometimes, due to how the compiler works internally, it is not possible to get a bit perfect match while following all style guidelines.
 - Matching the original binary bit perfectly takes precedence over adhering to any of the following style guidelines.
+## General
+- Indentation levels should be composed of 4 space characters
+- Braces for ```function```, ```if```, ```switch```, ```while```, ```for```, and ```do```, ```struct```, ```union```, and ```enum``` should be on the same line as their keyword
+- Add a single space between a keyword and their associated left parenthesis 
+
+```
+u8 gBooleanValue = false;
+static s32 count = 0;
+
+function myFunction(s32 arg0) {
+    if (gBooleanValue && arg0 > 5) {
+        count++;
+    }
+}
+```
 ## Naming Conventions
 ### Functions and Variables
 - Functions, arguments, and local/global variables use ```camelCase``` for the names
@@ -46,13 +61,15 @@
 - Use ```f``` suffix for floats, and ensure decimal point is present (and trailing 0 if no fractional part)
 - Use no suffix for doubles, but ensure decimal point is present (and trailing 0 if no fractional part)
 - Prefer ```TRUE``` and ```FALSE``` over ```1``` and ```0``` for explicitly boolean assignments, expressions, and comparisons
+- Typedef every struct, union, and enum where possible
 
 ## Control Flow
 - Eliminate labels and gotos where possible
 - Eliminate temporary variables where possible and appropriate
 ### Switch Case
 - Prefer switch cases over ```else if``` chains where appropriate
-Please indent your case blocks as follows
+- Prefer ```break``` over ```return``` for case blocks
+- Please indent your case blocks as follows
 ```TODO```
 ### Large Function Calls
 - Function calls with many parameters may be broken up into multiple lines as follows to improve readability
@@ -92,3 +109,5 @@ Please indent your case blocks as follows
     - ```// stack```
     - ```// https://decomp.me/scratch/*```
 - Meaningful comments should be combined into one line, except for the scratch link which should be on a second line directly above/below the other meaningful comments
+- .c and .h files should end with a blank line to allow unix text processing tools to correctly parse them
+- Fix compiler/assembler warnings where possible and appropriate

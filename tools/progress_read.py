@@ -7,23 +7,19 @@ import pylibyaml  # pyright: ignore
 import yaml
 
 # Read using `mips-linux-gnu-readelf -S`
-overlay_sizes = {
-    'dk64_boot'   : (0xE8B0 - 0x1000),
-    'global_asm'  : 0x149160 - # need to subtract mips3 file sizes, which haven't been migrated yet
-                    # TODO remove these when the mips3 files are migrated!!!
-                    (0x02C700 - 0x0166A0) -
-                    (0x127B00 - 0x124780) -
-                    (0x149160 - 0x145D70),
-    'menu'        : 0x00ef50,
-    'multiplayer' : 0x002f70,
-    'minecart'    : 0x004b90,
-    'bonus'       : 0x009860,
-    'race'        : 0x00bb10,
-    'critter'     : 0x0057f0,
-    'arcade'      : 0x00e220,
-    'jetpac'      : 0x007090,
-    'boss'        : 0x0118b0,
-}
+overlays = [
+    'dk64_boot',
+    'global_asm',
+    'menu',
+    'multiplayer',
+    'minecart',
+    'bonus',
+    'race',
+    'critter',
+    'arcade',
+    'jetpac',
+    'boss',
+]
 
 def RGB_to_hex(RGB):
     ''' [255,255,255] -> "#FFFFFF" '''
@@ -62,12 +58,41 @@ def writeDataBadges(overlay, type, migratedBytes, totalBytes):
     badge = anybadge.Badge('.' + type, makeUnitLabel(migratedBytes, totalBytes, 'bytes', percent), default_color=color)
     badge.write_badge('progress/' + type + '_percent_' + overlay + '.svg',overwrite=True)
 
+def countCodeBytes():
+    codeBytes = {
+        'total': 0,
+    }
+    with open('decompressed.us.yaml') as f:
+        config = yaml.load(f.read(), Loader=yaml.SafeLoader)
+        if 'segments' in config:
+            for segmentIndex, segment in enumerate(config['segments']):
+                if 'name' in segment and segment['name'] in overlays:
+                    if 'subsegments' in segment:
+                        for subsegmentIndex, subseg in enumerate(segment['subsegments']):
+                            # Get next address
+                            next_offset = 0x21DE360 # End of ROM (fallback)
+                            if (subsegmentIndex + 1) < len(segment['subsegments']):
+                                next_subseg = segment['subsegments'][subsegmentIndex + 1]
+                                next_offset = next_subseg['start' if 'start' in next_subseg else 0]
+                            elif (segmentIndex + 1) < len(config['segments']):
+                                next_seg = config['segments'][segmentIndex + 1]
+                                next_offset = next_seg['start' if 'start' in next_seg else 0]
+                            offset = subseg['start' if 'start' in subseg else 0]
+                            type = subseg['type' if 'type' in subseg else 1]
+                            size = next_offset - offset
+                            if type in ['c']:
+                                codeBytes['total'] += size
+                                if not segment['name'] in codeBytes:
+                                    codeBytes[segment['name']] = 0
+                                codeBytes[segment['name']] += size
+    return codeBytes
+
 def computeDataOverlays():
     with open('decompressed.us.yaml') as f:
         config = yaml.load(f.read(), Loader=yaml.SafeLoader)
         if 'segments' in config:
             for segmentIndex, segment in enumerate(config['segments']):
-                if 'name' in segment and segment['name'] in overlay_sizes:
+                if 'name' in segment and segment['name'] in overlays:
                     if 'subsegments' in segment:
                         data =   {'found': False, 'start': 0, 'migrated': 0, 'not_migrated': 0}
                         rodata = {'found': False, 'start': 0, 'migrated': 0, 'not_migrated': 0}
@@ -111,12 +136,11 @@ def main(csv_name, version, overlay):
         csv_reader = csv.DictReader(csv_file)
         total_func = 0
         incomplete_func = 0
-        if overlay == 'total':
-            total_byte = sum(overlay_sizes.values())
-            computeDataOverlays()
-        else:
-            total_byte = overlay_sizes[overlay]
         incomplete_byte = 0
+        codeBytes = countCodeBytes()
+        total_byte = codeBytes[overlay] or 0
+        if overlay == 'total':
+            computeDataOverlays()
         for row in csv_reader:
             if(row["version"] == version):
                 total_func += 1
