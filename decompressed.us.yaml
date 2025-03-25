@@ -455,7 +455,7 @@ segments:
       - [0x215B190, .data, audio/n_env]
       - [0x215B290, .rodata, code_450]
       - [0x215B2E0, .rodata, code_3C10]
-      - [0x215B4B0, rodata] # code_6710 // TODO: Problem with 80756F08, might be an array of doubles?
+      - [0x215B4B0, .rodata, code_6710] # code_6710 // TODO: Problem with 80756F08, might be an array of doubles?
       - [0x215BD20, .rodata, saveFile]
       - [0x215BE40, .rodata, code_131B0]
       - [0x215BF90, .rodata, heap]
