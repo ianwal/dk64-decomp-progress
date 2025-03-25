@@ -13,7 +13,7 @@ extern f32 D_global_asm_807444C8;
 extern u8 D_global_asm_807444F8;
 extern u8 D_global_asm_80744500;
 extern u8 D_global_asm_8074450C;
-extern u8 D_global_asm_80745BDC[]; // Might be a struct array
+extern MapSongData D_global_asm_80745BDC[];
 
 extern s32 *D_global_asm_8076A080;
 extern s32 D_global_asm_8076A084;
@@ -1123,10 +1123,10 @@ void func_global_asm_805FE7FC(void) {
                 playSong(MUSIC_116_HIDEOUT_HELM_BLAST_O_MATIC_OFF, 1.0f);
             } else {
                 phi_f0 = 1.0f;
-                if (D_global_asm_80745BDC[current_map * 4] == 6 || D_global_asm_80745BDC[current_map * 4] == 0x1F) {
+                if (D_global_asm_80745BDC[current_map].song == MUSIC_6_FUNKYS_HUT || D_global_asm_80745BDC[current_map].song == MUSIC_31_CANDYS_MUSIC_SHOP) {
                     phi_f0 = 0.549333155155f;
                 }
-                playSong(D_global_asm_80745BDC[current_map * 4], phi_f0);
+                playSong(D_global_asm_80745BDC[current_map].song, phi_f0);
             }
         }
         if (current_map == MAP_DK_ISLES_OVERWORLD || current_map == MAP_ENGUARDE_ARENA) {

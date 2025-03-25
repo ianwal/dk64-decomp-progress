@@ -7,12 +7,7 @@ typedef struct {
     s16 unk4;
 } GlobalASMStruct50;
 
-typedef struct {
-    s16 unk0;
-    s16 unk2;
-} Struct80745BDE;
-
-extern Struct80745BDE D_global_asm_80745BDE[];
+extern MapSongData D_global_asm_80745BDC[];
 extern GlobalASMStruct50 D_global_asm_80746340[];
 
 s16 func_global_asm_8060A7C0(s16 arg0, Actor *arg1, u8 arg2) {
@@ -36,7 +31,7 @@ s16 func_global_asm_8060A7C0(s16 arg0, Actor *arg1, u8 arg2) {
             return 0xA;
         }
         if (!D_global_asm_80746340[i].unk4) {
-            return D_global_asm_80745BDE[current_map].unk0;
+            return D_global_asm_80745BDC[current_map].default_output_floor_sfx;
         }
         return D_global_asm_80746340[i].unk4;
     }

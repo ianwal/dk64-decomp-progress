@@ -3769,4 +3769,10 @@ typedef struct SynthConfig {
     s32 unk24;
 } SynthConfig;
 
+typedef struct MapSongData {
+    u8 song;
+    u8 unk1;
+    s16 default_output_floor_sfx;
+} MapSongData;
+
 #endif
