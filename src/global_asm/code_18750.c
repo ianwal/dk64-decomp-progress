@@ -69,6 +69,8 @@ typedef struct {
     u8 unk12;
 } Struct80614014;
 
+void *func_global_asm_80614130(s32);
+
 void func_global_asm_80614014(Actor *arg0, u16 arg1, f32 arg2, u8 arg3) {
     AnimationStateUnk0 *aaS4;
     Struct80614014 *temp_v0;
@@ -107,7 +109,42 @@ void func_global_asm_80614014(Actor *arg0, u16 arg1, f32 arg2, u8 arg3) {
     func_global_asm_80614644(arg0, aaS4, arg2);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/func_global_asm_80614130.s")
+typedef struct AnimFile {
+    u8 pad0[6];
+    u16 unk6;
+} AnimFile;
+
+extern Struct807FB7B0 D_global_asm_807FB7B0[];
+extern u16 D_global_asm_807FBB32;
+
+void *func_global_asm_80614130(s32 arg0) {
+    Struct807FB7B0 *var_v1;
+    u32 var_v0;
+    AnimFile *temp_v0;
+    void *temp_v1;
+
+    if (arg0 < 0) {
+        return NULL;
+    }
+    for (var_v0 = 0; var_v0 < D_global_asm_807FBB32; var_v0++) {
+        if (arg0 == D_global_asm_807FB7B0[var_v0].unk0) {
+            D_global_asm_807FB7B0[var_v0].unk4++;
+            return D_global_asm_807FB7B0[var_v0].unk8;
+        }
+    }
+    if (D_global_asm_807FBB32 >= 0x20) {
+        return NULL;
+    }
+    temp_v0 = getPointerTableFile(TABLE_11_ANIMATIONS, arg0, 1U, 1U);
+    temp_v0->unk6 += 6;
+    D_global_asm_807FB7B0[D_global_asm_807FBB32].unk8 = temp_v0;
+    D_global_asm_807FB7B0[D_global_asm_807FBB32].unk4++;
+    D_global_asm_807FB7B0[D_global_asm_807FBB32].unk0 = arg0;
+    D_global_asm_807FBB32++;
+    return temp_v0;
+}
+
+
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/func_global_asm_8061421C.s")
 

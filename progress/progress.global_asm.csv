@@ -1570,7 +1570,7 @@ us,asm,func_global_asm_806D24A8,60,yes
 us,asm,func_global_asm_806E5E68,64,yes
 us,asm,func_global_asm_8070068C,300,yes
 us,asm,func_global_asm_8063EA14,4148,no
-us,asm,func_global_asm_80614130,236,no
+us,asm,func_global_asm_80614130,236,yes
 us,asm,func_global_asm_80617DFC,512,yes
 us,asm,func_global_asm_805FF9AC,1188,no
 us,asm,func_global_asm_8067680C,412,yes
