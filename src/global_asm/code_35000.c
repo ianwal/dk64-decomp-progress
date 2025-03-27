@@ -409,8 +409,56 @@ Gfx *func_global_asm_80630B70(Gfx *dl, Struct80630B70 *arg1, f32 arg2, f32 arg3,
 // Matrix stuff, Actor* Arg0, f32[][] arg1?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_8063162C.s")
 
-// Similar to above
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_35000/func_global_asm_806317D4.s")
+void func_global_asm_806317D4(Actor *arg0, f32 arg1[4][4], f32 arg2, f32 arg3, f32 arg4) {
+    f32 sp4C;
+    f32 sp48;
+    f32 sp44;
+    f32 sp40;
+    f32 sp3C;
+    f32 sp20;
+    f32 temp_f0;
+    f32 temp_f12;
+    f32 temp_f18;
+    f32 temp_f2;
+
+    sp4C = func_global_asm_80612790(arg2);
+    sp48 = func_global_asm_80612794(arg2);
+    sp44 = func_global_asm_80612790(arg3);
+    sp40 = func_global_asm_80612794(arg3);
+    sp3C = func_global_asm_80612790(arg4);
+    temp_f0 = func_global_asm_80612794(arg4);
+    temp_f2 = arg0->animation_state->scale[0];
+    temp_f12 = temp_f2 * sp4C;
+    temp_f2 = temp_f2 * sp48;
+    temp_f18 = sp40 * temp_f0;
+    sp20 = sp40 * sp3C;
+    // yuck
+    arg1 = &arg1[3][3];
+    arg1[0 - 3][0 - 3] = ((temp_f12 * sp3C) + (temp_f2 * temp_f18));
+    arg1[0 - 3][1 - 3] = (temp_f2 * sp44);
+    arg1[0 - 3][2 - 3] = ((temp_f2 * sp20) - (temp_f12 * temp_f0));
+    arg1[0 - 3][3 - 3] = 0.0f;
+    temp_f2 = arg0->animation_state->scale[1];
+    temp_f12 = temp_f2 * sp4C;
+    temp_f2 = temp_f2 * sp48;
+    arg1[1 - 3][0 - 3] = ((temp_f12 * temp_f18) - (temp_f2 * sp3C));
+    arg1[1 - 3][1 - 3] = (temp_f12 * sp44);
+    arg1[1 - 3][2 - 3] = ((temp_f2 * temp_f0) + (temp_f12 * sp20));
+    arg1[1 - 3][3 - 3] = 0.0f;
+    temp_f2 = arg0->animation_state->scale[2];
+    temp_f12 = temp_f2 * sp44;
+    arg1[2 - 3][0 - 3] = (temp_f12 * temp_f0);
+    arg1[2 - 3][1 - 3] = (-temp_f2 * sp40);
+    arg1[2 - 3][2 - 3] = (temp_f12 * sp3C);
+    arg1[2 - 3][3 - 3] = 0.0f;
+
+    arg1[3 - 3][0 - 3] = arg0->x_position;
+    arg1[3 - 3][1 - 3] = arg0->y_position;
+    arg1[3 - 3][2 - 3] = arg0->z_position;
+    arg1[3 - 3][3 - 3] = 1.0f;
+}
+
+
 
 void renderActor(Actor *arg0, u8 arg1) {
     f32 sp78[4][4];
