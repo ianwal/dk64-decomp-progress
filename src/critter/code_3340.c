@@ -370,12 +370,12 @@ void func_critter_80028120(void) {
     sp40 = gCurrentActorPointer->animation_state->unk0;
     if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         gCurrentActorPointer->control_state = 0x78;
-        if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
-            if (!isFlagSet(0x23, FLAG_TYPE_GLOBAL)) {
+        if (isFlagSet(PERMFLAG_PROGRESS_RAREWARE_ROOM_OPEN, FLAG_TYPE_PERMANENT)) {
+            if (!isFlagSet(GLOBALFLAG_UNK_23, FLAG_TYPE_GLOBAL)) {
                 gCurrentActorPointer->control_state = 1;
             } else {
-                if (!isFlagSet(0x18A, FLAG_TYPE_PERMANENT)) {
-                    if (isFlagSet(0x24, FLAG_TYPE_GLOBAL)) {
+                if (!isFlagSet(PERMFLAG_UNK_18A, FLAG_TYPE_PERMANENT)) {
+                    if (isFlagSet(GLOBALFLAG_UNK_24, FLAG_TYPE_GLOBAL)) {
                         gCurrentActorPointer->control_state = 0xA;
                     } else {
                         gCurrentActorPointer->control_state = 0x64;
@@ -411,20 +411,20 @@ void func_critter_80028120(void) {
     gCurrentActorPointer->unk15E = 0xF;
     switch (gCurrentActorPointer->control_state) {
         case 0x0:
-            if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(PERMFLAG_PROGRESS_RAREWARE_ROOM_OPEN, FLAG_TYPE_PERMANENT)) {
                 playActorAnimation(gCurrentActorPointer, 0x43B);
                 gCurrentActorPointer->control_state = 1;
             }
             break;
         case 0x64:
-            if ((((dx * dx) + (dz * dz)) < 2500.0f) != 0) {
+            if (((SQ(dx) + SQ(dz)) < 2500.0f) != 0) {
                 if (newly_pressed_input[0] & A_BUTTON) {
                     playCutscene(gCurrentActorPointer, 4, 1);
                     func_global_asm_80629174();
                     gCurrentActorPointer->control_state = 0x65;
                 }
             }
-            if (isFlagSet(0x24, FLAG_TYPE_GLOBAL)) {
+            if (isFlagSet(GLOBALFLAG_UNK_24, FLAG_TYPE_GLOBAL)) {
                 gCurrentActorPointer->control_state = 0xA;
             }
             break;
@@ -471,7 +471,7 @@ void func_critter_80028120(void) {
                 aaD->unk0 = 0;
                 gCurrentActorPointer->control_state = 0x64;
             } else if (aaD->unk0 < 20.0) {
-                temp_f2 = sqrtf((dx * dx) + (dz * dz));
+                temp_f2 = sqrtf(SQ(dx) + SQ(dz));
                 if (temp_f2 > 1.0) {
                     temp_f2 = 3.0 / temp_f2;
                     gCurrentActorPointer->x_position += dx * temp_f2;
@@ -480,7 +480,7 @@ void func_critter_80028120(void) {
             }
             break;
         case 0xA:
-            if ((((dx * dx) + (dz * dz)) < 2500.0f) != 0) {
+            if (((SQ(dx) + SQ(dz)) < 2500.0f) != 0) {
                 gCurrentActorPointer->control_state = 0xB;
                 playCutscene(gCurrentActorPointer, 3, 1);
             }
