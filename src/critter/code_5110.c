@@ -32,37 +32,38 @@ s32 (*func_critter_80029110(s32 arg0))(s32 *, s32) {
     return ~arg0;
 }
 
-// TODO: Pretty close considering size
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_5110/func_critter_80029118.s")
-
 extern OSIoMesg D_global_asm_807ECE00;
 extern UnkMQStruct D_global_asm_807655F0;
-/*
+
+extern u16 D_critter_80029FA4;
+extern u16 D_global_asm_807FCC44;
+
 void func_critter_80029118(void) {
     s32 pad;
     s32 (*temp_v1)(s32 *, s32);
     s32 *var_s0;
     s32 var_v0;
-    s32 temp_t3;
     s32 flagIndex;
-    s32 sp74;
-    s32 sp70;
-    s32 sp58[6];
-    s32 (*sp50)(s32 *, s32, s32, s32);
-    s32 (*dmafunc)(OSIoMesg *, s32, s32, u32, void *, u32, OSMesgQueue *);
+    s32 (*dmafunc)(OSIoMesg *, s32, s32, u32, s32 *, u32, OSMesgQueue *);
+    s32 textIndex;
+    s32 sp58[7];
     s32 (*recvfunc)(OSMesgQueue *, OSMesg *, s32);
+    s32 (*sp50)(s32 *, s32);
     s32 temp2;
     u32 temp;
-    Maps sp3C;
-    s32 sp38;
-    AAD_critter_80029118 *aaD; // Not in stack
+    s32 pad2;
+    AAD_critter_80029118 *aaD;
+    Maps sp40;
+    s32 sp3C;
 
     aaD = gCurrentActorPointer->additional_actor_data;
+    temp2 = 0;
     if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
-        D_critter_80029FA8 = 0;
+        D_critter_80029FA8 = FALSE;
         playCutscene(NULL, 0, 1);
-        D_critter_80029FA4 = D_global_asm_807FCC44;
-        D_global_asm_807FCC44 = 0;
+        temp = D_global_asm_807FCC44;
+        D_critter_80029FA4 = temp;
+        D_global_asm_807FCC44 = temp2;
         func_global_asm_806F8A8C(4, 0, 0);
         switch (current_map) {
             case MAP_DIVE_BARREL:
@@ -84,32 +85,34 @@ void func_critter_80029118(void) {
         }
         gCurrentActorPointer->control_state = 0;
     }
+    
     switch (gCurrentActorPointer->control_state) {
         case 0x0:
             if (is_cutscene_active == 1) {
                 if (func_global_asm_8061CB38()) {
                     switch (current_map) {
                         case MAP_DIVE_BARREL:
-                            sp74 = 0;
+                            textIndex = 0;
                             break;
                         case MAP_VINE_BARREL:
-                            sp74 = 1;
+                            textIndex = 1;
                             break;
                         case MAP_ORANGE_BARREL:
-                            sp74 = 2;
+                            textIndex = 2;
                             break;
                         case MAP_BARREL_BARREL:
-                            sp74 = 3;
+                            textIndex = 3;
                             break;
                     }
-                    loadText(gCurrentActorPointer, 0x19, sp74);
+                    loadText(gCurrentActorPointer, 0x19, textIndex);
                     gCurrentActorPointer->control_state = 1;
+                    
                     func_global_asm_806A2A10(0xDC, 0x2A, aaD->unk4);
                 }
             }
             break;
         case 0x1:
-            if (!(gCurrentActorPointer->object_properties_bitfield & 0x02000000)) {
+            if (!(gCurrentActorPointer->object_properties_bitfield & 0x2000000)) {
                 func_global_asm_8061CB08();
                 gCurrentActorPointer->control_state = 2;
                 func_global_asm_806A2B08(gCurrentActorPointer->unk11C);
@@ -117,34 +120,39 @@ void func_critter_80029118(void) {
             }
             break;
         case 0x2:
-            var_s0 = &sp58;
+            var_s0 = sp58;
             while ((u32)(var_s0) & 7) {
                 var_s0++;
             }
-            temp_v1 = func_critter_80029110(~(u32)(&osWritebackDCache));
+            temp = &osWritebackDCache;
+            temp_v1 = func_critter_80029110(~temp);
             if (D_critter_80029FA0 <= 0) {
                 gCurrentActorPointer->control_state = 3;
             }
             temp_v1(var_s0, 0x10);
+
             sp50 = func_critter_80029110(-0xDC1);
-            dmafunc = func_critter_80029110(~(u32)(&osPiStartDma));
-            dmafunc(&D_global_asm_807ECE00, 0, 0, sp50, aaD, 0x10, &D_global_asm_807655F0);
-            temp = &osRecvMesg;
+            temp = &osPiStartDma;
+            dmafunc = func_critter_80029110(~temp);
+            dmafunc(&D_global_asm_807ECE00, 0, 0, sp50, var_s0, 0x10, &D_global_asm_807655F0);
+
             if (gCurrentActorPointer->unk11C->control_state == 5) {
                 gCurrentActorPointer->control_state = 0xFF;
             }
+            temp = &osRecvMesg;
             recvfunc = func_critter_80029110(~temp);
             recvfunc(&D_global_asm_807655F0, NULL, 1);
-            temp_v1 = func_critter_80029110(~(u32)(&osInvalDCache));
+
+            temp = &osInvalDCache;
+            temp_v1 = func_critter_80029110(~temp);
             temp_v1(var_s0, 0x10);
+            // fake match
+            if (D_critter_80029FA4 && D_critter_80029FA4) {}
+
             var_s0[0] += var_s0[1];
             // Anti tamper?
             if (var_s0[0] != 0x0A78F00E) {
-                if (current_map == MAP_VINE_BARREL) {
-                    var_v0 = PERMFLAG_ITEM_MOVE_ORANGETHROWING;
-                } else {
-                    var_v0 = PERMFLAG_ITEM_MOVE_VINES;
-                }
+                var_v0 = current_map == MAP_VINE_BARREL ? PERMFLAG_ITEM_MOVE_ORANGETHROWING : PERMFLAG_ITEM_MOVE_VINES;
                 setFlag(var_v0, FALSE, FLAG_TYPE_PERMANENT);
             }
             break;
@@ -154,16 +162,17 @@ void func_critter_80029118(void) {
             playSound(0x143, 0x7FFF, 63.0f, 1.0f, 0, 0);
             aaD->unk0 = 0x78;
             gCurrentActorPointer->control_state = 0xFE;
-            D_critter_80029FA8 = 1;
+            D_critter_80029FA8 = TRUE;
             break;
         case 0xFE:
             if (aaD->unk0 > 0) {
                 aaD->unk0--;
                 if (aaD->unk0 == 0) {
-                    if (D_critter_80029FA8 != 0) {
+                    if ((s8)D_critter_80029FA8 != FALSE) {
                         if (current_map == MAP_ORANGE_BARREL) {
                             D_critter_80029FA4 = 20;
                         }
+
                         switch (current_map) {
                             case MAP_DIVE_BARREL:
                                 flagIndex = PERMFLAG_ITEM_MOVE_DIVING;
@@ -178,28 +187,28 @@ void func_critter_80029118(void) {
                                 flagIndex = PERMFLAG_ITEM_MOVE_BARRELTHROWING;
                                 break;
                             default:
-                                flagIndex = sp70;
+                                flagIndex = sp58[6];
                                 break;
                         }
                         setFlag(flagIndex, TRUE, FLAG_TYPE_PERMANENT);
                     }
                     D_global_asm_807FCC44 = D_critter_80029FA4;
                     func_global_asm_806F8A8C(4, 0, D_critter_80029FA4);
-                    func_global_asm_805FF800(&sp3C, &sp38);
-                    func_global_asm_805FF628(sp3C, 0);
+                    func_global_asm_805FF800(&sp40, &sp3C);
+                    func_global_asm_805FF628(sp40, 0);
                 }
             }
             break;
         case 0xFF:
-            D_critter_80029FA8 = 0;
+            D_critter_80029FA8 = FALSE;
             aaD->unk2 = func_global_asm_806FDB8C(1, "TIME OUT!", 2, 160.0f, 100.0f, 0.0f);
             aaD->unk0 = 0x78;
             gCurrentActorPointer->control_state = 0xFE;
             break;
     }
+    
     addActorToTextOverlayRenderArray(func_critter_800296DC, gCurrentActorPointer, 3);
 }
-*/
 
 Gfx *func_critter_800296DC(Gfx *dl, Actor *arg1) {
     AAD_critter_800296DC* aaD = arg1->additional_actor_data;
