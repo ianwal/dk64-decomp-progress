@@ -3,7 +3,7 @@ us,.critter,func_critter_8002601C,636,no
 us,.critter,func_critter_8002646C,196,yes
 us,.critter,func_critter_80026904,344,yes
 us,.critter,func_critter_800255C4,528,yes
-us,.critter,func_critter_80028120,1824,no
+us,.critter,func_critter_80028120,1824,yes
 us,.critter,func_critter_80026FD0,100,yes
 us,.critter,func_critter_80026C9C,368,no
 us,.critter,func_critter_80024154,296,yes
@@ -15,7 +15,7 @@ us,.critter,func_critter_80025A3C,148,yes
 us,.critter,func_critter_8002658C,744,yes
 us,.critter,func_critter_80029110,8,yes
 us,.critter,func_critter_8002708C,140,yes
-us,.critter,func_critter_80029118,1476,no
+us,.critter,func_critter_80029118,1476,yes
 us,.critter,func_critter_80026E0C,452,yes
 us,.critter,func_critter_80026A5C,284,yes
 us,.critter,func_critter_80028EE8,356,yes
