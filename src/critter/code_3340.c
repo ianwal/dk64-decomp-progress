@@ -336,37 +336,32 @@ void func_critter_80027DC0(void) {
     renderActor(gCurrentActorPointer, 0);
 }
 
-// Jumptable, doable, float, regalloc, close
-// https://decomp.me/scratch/YxzWl
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_3340/func_critter_80028120.s")
-
 s32 func_global_asm_8072881C(s32, f64 *);
 
 typedef struct {
     f32 unk0;
     f32 unk4;
-    f32 unk8; // x
-    f32 unkC; // y
-    f32 unk10; // z
-    f32 unk14; // x
-    f32 unk18; // y
-    f32 unk1C; // z
-    f32 unk20; // x
-    f32 unk24; // y
-    f32 unk28; // z
+    f32 tempActorX;
+    f32 tempActorY;
+    f32 tempActorZ;
+    f32 copyOfActorX;
+    f32 copyOfActorY;
+    f32 copyOfActorZ;
+    f32 actorX;
+    f32 actorY;
+    f32 actorZ;
 } AAD_80028120;
 
 extern u8 D_global_asm_807FBD70;
 
-/*
 void func_critter_80028120(void) {
     f32 dx;
     f32 dz;
     f32 temp_f2;
-    f32 temp_f4;
-    f32 var_f12; // 54
-    f32 d;
-    f32 var_f0;
+    f32 pad; // sp58
+    f32 sp54;
+    f32 pad1; // sp50
+    f32 pad2; // sp4C
     s32 sp48;
     AAD_80028120 *aaD;
     AnimationStateUnk0 *sp40;
@@ -375,12 +370,12 @@ void func_critter_80028120(void) {
     sp40 = gCurrentActorPointer->animation_state->unk0;
     if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
         gCurrentActorPointer->control_state = 0x78;
-        if (isFlagSet(PERMFLAG_PROGRESS_RAREWARE_ROOM_OPEN, FLAG_TYPE_PERMANENT)) {
-            if (!isFlagSet(GLOBALFLAG_UNK_23, FLAG_TYPE_GLOBAL)) {
+        if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
+            if (!isFlagSet(0x23, FLAG_TYPE_GLOBAL)) {
                 gCurrentActorPointer->control_state = 1;
             } else {
-                if (!isFlagSet(PERMFLAG_UNK_18A, FLAG_TYPE_PERMANENT)) {
-                    if (isFlagSet(GLOBALFLAG_UNK_24, FLAG_TYPE_GLOBAL)) {
+                if (!isFlagSet(0x18A, FLAG_TYPE_PERMANENT)) {
+                    if (isFlagSet(0x24, FLAG_TYPE_GLOBAL)) {
                         gCurrentActorPointer->control_state = 0xA;
                     } else {
                         gCurrentActorPointer->control_state = 0x64;
@@ -391,36 +386,45 @@ void func_critter_80028120(void) {
         } else {
             gCurrentActorPointer->control_state = 0;
         }
-        aaD->unk20 = gCurrentActorPointer->x_position;
-        aaD->unk24 = gCurrentActorPointer->y_position;
-        aaD->unk28 = gCurrentActorPointer->z_position;
+        aaD->actorX = gCurrentActorPointer->x_position;
+        aaD->actorY = gCurrentActorPointer->y_position;
+        aaD->actorZ = gCurrentActorPointer->z_position;
         aaD->unk4 = 0.028571429f;
         aaD->unk0 = 2.0f;
-        aaD->unk14 = aaD->unk20;
-        aaD->unk1C = aaD->unk28;
+        aaD->copyOfActorX = aaD->actorX;
+        aaD->copyOfActorZ = aaD->actorZ;
     }
     dx = gCurrentActorPointer->x_position - gPlayerPointer->x_position;
     dz = gCurrentActorPointer->z_position - gPlayerPointer->z_position;
     if (gCurrentActorPointer->control_state != 1) {
-        gCurrentActorPointer->y_rotation -= func_global_asm_806CC10C(func_global_asm_80665DE0(gPlayerPointer->x_position, gPlayerPointer->z_position, gCurrentActorPointer->x_position, gCurrentActorPointer->z_position), gCurrentActorPointer->y_rotation) >> 3;
+        gCurrentActorPointer->y_rotation -= func_global_asm_806CC10C(
+            func_global_asm_80665DE0(
+                gPlayerPointer->x_position,
+                gPlayerPointer->z_position,
+                gCurrentActorPointer->x_position,
+                gCurrentActorPointer->z_position
+            ),
+            gCurrentActorPointer->y_rotation
+        ) >> 3;
     }
+
     gCurrentActorPointer->unk15E = 0xF;
     switch (gCurrentActorPointer->control_state) {
         case 0x0:
-            if (isFlagSet(PERMFLAG_PROGRESS_RAREWARE_ROOM_OPEN, FLAG_TYPE_PERMANENT)) {
+            if (isFlagSet(0x189, FLAG_TYPE_PERMANENT)) {
                 playActorAnimation(gCurrentActorPointer, 0x43B);
                 gCurrentActorPointer->control_state = 1;
             }
             break;
         case 0x64:
-            if (((SQ(dx) + SQ(dz)) < SQ(50.0f)) != 0) {
-                if (newly_pressed_input[0] & 0x8000) {
+            if ((((dx * dx) + (dz * dz)) < 2500.0f) != 0) {
+                if (newly_pressed_input[0] & A_BUTTON) {
                     playCutscene(gCurrentActorPointer, 4, 1);
                     func_global_asm_80629174();
                     gCurrentActorPointer->control_state = 0x65;
                 }
             }
-            if (isFlagSet(GLOBALFLAG_UNK_24, FLAG_TYPE_GLOBAL)) {
+            if (isFlagSet(0x24, FLAG_TYPE_GLOBAL)) {
                 gCurrentActorPointer->control_state = 0xA;
             }
             break;
@@ -430,29 +434,29 @@ void func_critter_80028120(void) {
             }
             break;
         case 0x1:
-            var_f12 = sp40->unk4 / 19.0;
-            if (var_f12 < aaD->unk0) {
-                aaD->unk8 = gCurrentActorPointer->x_position;
-                aaD->unkC = aaD->unk24;
-                aaD->unk10 = gCurrentActorPointer->z_position;
+            sp54 = sp40->unk4 / 19.0;
+            if (sp54 < aaD->unk0) {
+                aaD->tempActorX = gCurrentActorPointer->x_position;
+                aaD->tempActorY = aaD->actorY;
+                aaD->tempActorZ = gCurrentActorPointer->z_position;
+
                 sp48 = func_global_asm_806119FC() * 4096.0;
                 temp_f2 = func_global_asm_806119FC() * 65.0;
-                temp_f4 = (func_global_asm_80612790(sp48) * temp_f2);
-                aaD->unk14 = aaD->unk20 + temp_f4;
-                aaD->unk18 = aaD->unk24;
-                temp_f4 = (func_global_asm_80612794(sp48) * temp_f2);
-                aaD->unk1C = aaD->unk28 + temp_f4;
+                
+                aaD->copyOfActorX = func_global_asm_80612790(sp48) * temp_f2 + aaD->actorX;
+                aaD->copyOfActorY = aaD->actorY;
+                aaD->copyOfActorZ = func_global_asm_80612794(sp48) * temp_f2 + aaD->actorZ;
             }
-            aaD->unk0 = var_f12;
-            var_f12 = (var_f12 - 0.5) * 2.5;
-            if (var_f12 > 1.0) {
-                var_f12 = 1.0f;
+            aaD->unk0 = sp54;
+            sp54 = (sp54 - 0.5) * 2.5;
+            if (sp54 > 1.0) {
+                sp54 = 1.0f;
             }
-            if (var_f12 < 0.0) {
-                var_f12 = 0.0f;
+            if (sp54 < 0.0) {
+                sp54 = 0.0f;
             }
-            gCurrentActorPointer->x_position = aaD->unk8 + (var_f12 * (aaD->unk14 - aaD->unk8));
-            gCurrentActorPointer->z_position = aaD->unk10 + (var_f12 * (aaD->unk1C - aaD->unk10));
+            gCurrentActorPointer->x_position = aaD->tempActorX + (sp54 * (aaD->copyOfActorX - aaD->tempActorX));
+            gCurrentActorPointer->z_position = aaD->tempActorZ + (sp54 * (aaD->copyOfActorZ - aaD->tempActorZ));
             if (D_global_asm_807FBD70 == 4) {
                 playActorAnimation(gCurrentActorPointer, 0x43C);
                 gCurrentActorPointer->control_state = 2;
@@ -467,16 +471,16 @@ void func_critter_80028120(void) {
                 aaD->unk0 = 0;
                 gCurrentActorPointer->control_state = 0x64;
             } else if (aaD->unk0 < 20.0) {
-                d = sqrtf(SQ(dx) + SQ(dz));
-                if (d > 1.0) {
-                    temp_f4 = 3.0 / d;
-                    gCurrentActorPointer->x_position += dx * temp_f4;
-                    gCurrentActorPointer->z_position += dz * temp_f4;
+                temp_f2 = sqrtf((dx * dx) + (dz * dz));
+                if (temp_f2 > 1.0) {
+                    temp_f2 = 3.0 / temp_f2;
+                    gCurrentActorPointer->x_position += dx * temp_f2;
+                    gCurrentActorPointer->z_position += dz * temp_f2;
                 }
             }
             break;
         case 0xA:
-            if (((SQ(dx) + SQ(dz)) < SQ(50.0f)) != 0) {
+            if ((((dx * dx) + (dz * dz)) < 2500.0f) != 0) {
                 gCurrentActorPointer->control_state = 0xB;
                 playCutscene(gCurrentActorPointer, 3, 1);
             }
@@ -494,4 +498,4 @@ void func_critter_80028120(void) {
     }
     renderActor(gCurrentActorPointer, 0);
 }
-*/
+
