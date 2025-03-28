@@ -874,7 +874,7 @@ void func_global_asm_806307CC(Chunk14 *arg0, PropModel *arg1, u8 arg2, u8 arg3, 
 // TODO: func_global_asm_80630890 has no documented signature
 Gfx *func_global_asm_80630B70(Gfx*, Struct80630B70 *, f32, f32, f32, s32, s16, u8);
 // TODO: func_global_asm_80630DCC has no documented signature
-s32 func_global_asm_8063162C(Actor *arg0, s16 *arg1);
+void func_global_asm_8063162C(Actor *arg0, f32 arg1[4][4]);
 void func_global_asm_806317D4(Actor *arg0, f32 arg1[4][4], f32 arg2, f32 arg3, f32 arg4);
 void renderActor(Actor *arg0, u8 arg1);
 
