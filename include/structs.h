@@ -1810,13 +1810,29 @@ typedef struct {
     u8 unkC3;
 } PropModel;
 
+typedef struct PropScriptBlock PropScriptBlock;
+
+typedef struct PropScriptInstruction {
+    s16 instruction;
+    s16 args[3];
+} PropScriptInstruction;
+
+struct PropScriptBlock {
+    u8 condition_count;
+    u8 pad1;
+    PropScriptInstruction conditions[5];
+    u8 execution_count;
+    u8 pad2B;
+    PropScriptInstruction executions[4];
+    PropScriptBlock *next;
+};
+
 typedef struct {
     void* unk0;
     u32 unk4;
     f32 unk8;
     f32 unkC;
-    s16 unk10;
-    s16 unk12;
+    s16 unk10[2];
     f32 unk14[8]; // Unsure how many members of this array there are
     f32 unk34;
     s32 unk38;
@@ -1846,7 +1862,8 @@ typedef struct {
     s16 unk64;
     u8 unk66;
     u8 unk67;
-    s32 unk68;
+    s16 unk68;
+    s16 unk6A;
     s16 unk6C;
     u8 unk6E;
     s8 unk6F;
@@ -1873,7 +1890,7 @@ typedef struct {
     u8 unk9A;
     s8 unk9B;
     s32 unk9C;
-    s32 unkA0;
+    PropScriptBlock *unkA0;
 } Prop_ScriptData;
 
 typedef struct {

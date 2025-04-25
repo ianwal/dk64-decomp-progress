@@ -414,8 +414,8 @@ void func_global_asm_8064409C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
         if (temp_v0->unk4 == 4) {
             temp_v0->unk8 = 0;
             temp_v0->unk0++;
-            if (arg0->unk10 < 0) {
-                arg0->unk10 = func_global_asm_80605044(arg1, 0x12C, 0x3C, 1, 0x64, 1.0f, 0);
+            if (arg0->unk10[0] < 0) {
+                arg0->unk10[0] = func_global_asm_80605044(arg1, 0x12C, 0x3C, 1, 0x64, 1.0f, 0);
             }
         }
         break;
@@ -427,9 +427,9 @@ void func_global_asm_8064409C(Prop_ScriptData *arg0, s16 arg1, s16 arg2, s16 arg
             if (temp_v0->unk8 == 0x1E) {
                 temp_v0->unk8 = 0;
                 temp_v0->unk0++;
-                if (arg0->unk10 >= 0) {
-                    func_global_asm_80605380(arg0->unk10);
-                    arg0->unk10 = -1;
+                if (arg0->unk10[0] >= 0) {
+                    func_global_asm_80605380(arg0->unk10[0]);
+                    arg0->unk10[0] = -1;
                 }
                 playSoundAtProp(arg1, 0x74, 0xFFU, 0x7FU, 0U, 0x50U, 0.3f);
             }

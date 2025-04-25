@@ -53,23 +53,55 @@ s16 func_global_asm_80631C20(u8 arg0) {
     return D_global_asm_807F6150[arg0];
 }
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
-    s32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    u16 unk28; // Used
-    u16 unk2A;
-    s32 unk2C;
+typedef struct PropSetup {
+    f32 unk0;
+    f32 unk4;
+    f32 unk8;
+    f32 unkC;
+    u8 pad10[0x18 - 0x10];
+    f32 unk18;
+    f32 unk1C;
+    f32 unk20;
+    f32 unk24;
+    s16 unk28;
+    s16 unk2A;
+    u8 pad2C[2];
+    u8 unk2E;
+    u8 unk2F;
 } PropSetup;
 
-void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2);
+typedef struct PropData {
+    s32 count;
+    PropSetup setup[];
+} PropData;
+
+typedef struct MysterySetup {
+    s32 unk0;
+    s32 unk4; // unsure of type, using for reference
+    u8 pad8[0x24 - 0x8];
+} MysterySetup;
+
+typedef struct MysteryData {
+    s32 count;
+    MysterySetup setup[];
+} MysteryData;
+
+typedef struct ActorSetup {
+    u8 pad0[0x38];
+} ActorSetup;
+
+typedef struct ActorData {
+    s32 count;
+    ActorSetup setup[];
+} ActorData;
+
+typedef struct SetupFile {
+    PropData props;
+    MysteryData mys;
+    ActorData actors;
+} SetupFile;
+
+void func_global_asm_80631F58(SetupFile *arg0, PropData **arg1, ActorData **arg2);
 
 void func_global_asm_80631C3C(void) {
     void *setupFile;
@@ -169,20 +201,16 @@ s32 func_global_asm_80631EB8(u16 arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80631F58.s")
 
 /*
-void func_global_asm_80631F58(s32 *arg0, s32 **arg1, void **arg2) {
-    s32 count;
+void func_global_asm_80631F58(SetupFile *arg0, PropData **arg1, ActorData **arg2) {
+    MysteryData *temp;
     if (arg0 == NULL) {
         *arg1 = NULL;
         *arg2 = NULL;
         return;
     }
     *arg1 = arg0;
-    count = arg0[0];
-    arg0 += count * 0xC;
-    arg0 += 1;
-    count = arg0[0];
-    arg0 += count * 0x9;
-    arg0 += 1;
+    temp = &arg0->props.setup[arg0->props.count];
+    arg0 = &temp->setup[temp->count];
     *arg2 = arg0;
 }
 */
@@ -218,8 +246,96 @@ s16 func_global_asm_80631FAC(Maps map, u8 arg1) {
     return D_global_asm_807F614A;
 }
 
-// doable, load prop Setup?
+// doable, close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80632084.s")
+
+s16 func_global_asm_80632860(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, u8 argA, u8 argB, Chunk14 **argC);
+void func_global_asm_8063DC58(void *);
+extern s32 D_global_asm_80747D70;
+extern s32 D_global_asm_807F6004;
+
+/*
+void func_global_asm_80632084(PropData *arg0, s32 arg1, u8 arg2, u16 arg3, u8 arg4) {
+    Chunk14 *sp94;
+    s32 sp90;
+    PropSetup *var_s1; // 8C?
+    s16 temp_s3;
+    MysterySetup *var_s0_2;
+    s32 j;
+    u8 var_s0;
+    s32 var_s4;
+    s32 var_s5;
+    s32 i;
+    u16 var_s7;
+    void *script;
+
+    sp94 = NULL;
+    var_s5 = 0;
+    var_s7 = 0;
+    D_global_asm_80747D70 = 0;
+    if (arg0 == NULL) {
+        sp90 = 0;
+    } else {
+        var_s1 = &arg0->setup;
+        sp90 = arg0->count;
+    }
+    D_global_asm_807F6004 = 0;
+    func_global_asm_80659320();
+    func_global_asm_8063D930();
+    func_global_asm_8065051C();
+    if (arg0 == NULL) {
+        return;
+    }
+    for (i = 0; i < sp90; i++) {
+        var_s0 = 0;
+        var_s4 = FALSE;
+        if (arg2 && func_global_asm_80631EB8(var_s1->unk28)) {
+            var_s0 = func_global_asm_8060E3B0(arg3 + var_s7, arg4);
+            var_s4 = TRUE;
+        }
+        if (!var_s0) {
+            if (!func_global_asm_80631BCC(var_s1->unk28)) {
+                if (!func_global_asm_807315D4(current_map, var_s1->unk2A)) {
+                    if (func_global_asm_8063253C(var_s1->unk28, arg1)) {
+                        D_global_asm_807F6000[var_s5].x_position = var_s1->unk0;
+                        D_global_asm_807F6000[var_s5].y_position = var_s1->unk4;
+                        D_global_asm_807F6000[var_s5].z_position = var_s1->unk8;
+                        D_global_asm_807F6000[var_s5].hitbox_scale = var_s1->unkC;
+                        D_global_asm_807F6000[var_s5].x_rotation = var_s1->unk18;
+                        D_global_asm_807F6000[var_s5].y_rotation = var_s1->unk1C;
+                        D_global_asm_807F6000[var_s5].z_rotation = var_s1->unk20;
+                        D_global_asm_807F6000[var_s5].unk1C = var_s1->unk24;
+                        D_global_asm_807F6000[var_s5].unk8A = var_s1->unk2A;
+                        temp_s3 = func_global_asm_80632860(var_s5, var_s1->unk28, var_s1->unk0,
+                            var_s1->unk4, var_s1->unk8, var_s1->unk18, var_s1->unk1C,
+                            var_s1->unk20, var_s1->unkC, var_s1->unk24, 
+                            var_s1->unk2F, var_s1->unk2E, &sp94);
+                        func_global_asm_80632E74(current_map, D_global_asm_807F6000[var_s5].unk8A, &D_global_asm_807F6000[var_s5].unk8C);
+                        D_global_asm_807F6240[var_s1->unk2A] = temp_s3;
+                        D_global_asm_80747D70++;
+                        var_s5++;
+                    }
+                }
+            }
+        }
+        if (var_s4) {
+            var_s7++;
+        }
+        var_s1++;
+    }
+    func_global_asm_8062D3E4(sp94);
+    func_global_asm_806306D0(sp94);
+    func_global_asm_8062D1A8();
+    script = getPointerTableFile(TABLE_10_SCRIPTS, current_map, 1U, 0U);
+    func_global_asm_8063DC58(script);
+    var_s0_2 = &((MysteryData *) var_s1)->setup;
+    j--;
+    for (j = ((MysteryData *) var_s1)->count; j != 0; j--, var_s0_2++) {
+        func_global_asm_8063DFEC(var_s0_2->unk0, &var_s0_2->unk4);
+    }
+    func_global_asm_80631B80();
+}
+*/
 
 void func_global_asm_806323C0(Chunk14 *arg0) {
     s16 flagIndex;
@@ -269,8 +385,6 @@ s32 func_global_asm_8063253C(s32 arg0, s32 arg1) {
     return 1;
 }
 
-extern s32 D_global_asm_80747D70;
-
 s32 func_global_asm_8063254C(s32 objectType, s32 *arg1, f32 *arg2, f32 *arg3, f32 *arg4, s16 *arg5, s16 *arg6) {
     s32 found;
     s32 i;
@@ -292,8 +406,6 @@ s32 func_global_asm_8063254C(s32 objectType, s32 *arg1, f32 *arg2, f32 *arg3, f3
     return found;
 }
 
-s16 func_global_asm_80632860(s32 arg0, s32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg5, f32 arg6, f32 arg7, f32 arg8, f32 arg9, u8 argA, u8 argB, Chunk14 **argC);
-extern s32 D_global_asm_80747D70;
 extern u8 D_global_asm_807F6008;
 extern s16 D_global_asm_807F614A;
 
@@ -1005,11 +1117,11 @@ void func_global_asm_806355DC(s32 arg0, u8 arg1) {
     func_global_asm_806594C8(sp36);
     func_global_asm_8072F09C(sp36);
     if (D_global_asm_807F6000[arg0].unk7C != NULL) {
-        if (D_global_asm_807F6000[arg0].unk7C->unk10 != -1) {
-            func_global_asm_80605380(D_global_asm_807F6000[arg0].unk7C->unk10);
+        if (D_global_asm_807F6000[arg0].unk7C->unk10[0] != -1) {
+            func_global_asm_80605380(D_global_asm_807F6000[arg0].unk7C->unk10[0]);
         }
-        if (D_global_asm_807F6000[arg0].unk7C->unk12 != -1) {
-            func_global_asm_80605380(D_global_asm_807F6000[arg0].unk7C->unk12);
+        if (D_global_asm_807F6000[arg0].unk7C->unk10[1] != -1) {
+            func_global_asm_80605380(D_global_asm_807F6000[arg0].unk7C->unk10[1]);
         }
     }
     if ((arg0 + 1) != D_global_asm_80747D70) {
