@@ -96,7 +96,7 @@ void func_bonus_800256C4(Actor **arg0, u8 arg1) {
     }
 }
 
-// Jumptable, close
+// Jumptable, very close
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_bonus_8002570C.s")
 
 typedef struct HandleAAD {

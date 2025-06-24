@@ -193,8 +193,124 @@ Gfx *func_bonus_80026940(Gfx *dl, Actor *KoshController) {
     return dl;
 }
 
-// Displaylist stuff
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80026CF0.s")
+u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
+extern f32 D_bonus_8002DD24;
+
+typedef struct TTTAAD_0 {
+    u8 pad0[0x24];
+    u8 unk24;
+    u8 unk25;
+    u8 unk26;
+} TTTAAD_0;
+
+typedef struct TTTAAD_1 {
+    Actor *unk0[6];
+} TTTAAD_1;
+
+typedef struct TempAAD1 {
+    u8 unk0[4];
+    Actor *unk4;
+} TempAAD1;
+
+typedef struct TempAAD2 {
+    u8 unk0[5];
+    u8 unk5;
+    u8 pad6[2];
+    s16 unk8;
+} TempAAD2;
+
+Gfx *func_bonus_80026CF0(Gfx *dl, Actor *arg1) {
+    TTTAAD_0 *aad0;
+    TTTAAD_1 *aad1; // 50
+    s32 temp_s1;
+    s32 i;
+    s32 var_s5;
+    s8 *temp_v0;
+    s16 temp_a0;
+    u8 temp_v1;
+    Actor *temp_s1_5;
+    Actor *tempactor;
+    TempAAD2 *temp_s2_2;
+    TempAAD1 *temp;
+    u8 *str;
+    u8 temp1;
+
+    var_s5 = FALSE;
+    aad0 = arg1->AAD_as_array[0];
+    aad1 = arg1->AAD_as_array[1];
+    if ((arg1->control_state == 0) && (aad0->unk26 != 0)) {
+        dl = func_bonus_80026690(dl, arg1);
+    }
+    if (aad0->unk25) {
+        temp_s1 = D_global_asm_80744490 >> 1;
+        temp_v0 = getTextString(0x1AU, 6, 1);
+        gDPPipeSync(dl++);
+        gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, aad0->unk25);
+        gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
+        temp_s1 -= (getCenterOfString(1, temp_v0) >> 1);
+        temp1 = func_global_asm_806FD894(1);
+        dl = printStyledText(dl, 1,
+            temp_s1 * 4,
+            (D_global_asm_80744494 - temp1) * 2,
+            temp_v0, 1U);
+        aad0->unk25 = aad0->unk25 - MIN(aad0->unk25, 8);
+    }
+    if (aad0->unk24) {
+        temp_s1 = D_global_asm_80744490 >> 1;
+        temp_v0 = getTextString(0x1AU, 7, 1);
+        gDPPipeSync(dl++);
+        gDPSetRenderMode(dl++, G_RM_XLU_SURF, G_RM_XLU_SURF2);
+        gDPSetPrimColor(dl++, 0, 0, 0x00, 0x00, 0x00, aad0->unk24);
+        gDPSetCombineLERP(dl++, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0, 0, 0, 0, TEXEL0, TEXEL0, 0, PRIMITIVE, 0);
+        temp_s1 -= (getCenterOfString(1, temp_v0) >> 1);
+        temp1 = func_global_asm_806FD894(1);
+        dl = printStyledText(dl, 1, 
+            temp_s1 * 4,
+            (temp1 + D_global_asm_80744494) * 2,
+            temp_v0, 1U);
+        aad0->unk24 = aad0->unk24 - MIN(aad0->unk24, 8);
+    }
+    for (i = 0; i < 6; i++) {
+        tempactor = aad1->unk0[i];
+        temp = tempactor->AAD_as_array[0];
+        temp_s1_5 = temp->unk4;
+        temp_s2_2 = temp_s1_5->AAD_as_array[0];
+        if ((temp_s2_2->unk5 != 0) && (arg1->control_state == 0)) {
+            if (temp_s2_2->unk8 < 0) {
+                str = getTextString(0x1AU, 9, 1);
+                temp_s2_2->unk8 = func_global_asm_806FDB8C(1, str, 9,
+                    temp_s1_5->x_position * 0.25,
+                    temp_s1_5->y_position * 0.25,
+                    temp_s1_5->z_position * 0.25);
+            }
+            if (!var_s5) {
+                gSPDisplayList(dl++, &D_1000118);
+                gDPPipeSync(dl++);
+                gDPSetCombineMode(dl++, G_CC_MODULATEIA_PRIM, G_CC_MODULATEIA_PRIM);
+                gDPSetPrimColor(dl++, 0, 0, 0xFF, 0xFF, 0xFF, 0xFF);
+                gDPSetRenderMode(dl++, G_RM_TEX_EDGE, G_RM_TEX_EDGE2);
+                gSPSetGeometryMode(dl++, G_SHADE | G_SHADING_SMOOTH);
+                gDPSetCycleType(dl++, G_CYC_1CYCLE);
+                gSPMatrix(dl++, &D_2000180, G_MTX_NOPUSH | G_MTX_LOAD | G_MTX_MODELVIEW);
+                var_s5 = TRUE;
+            }
+            dl = func_global_asm_806FE078(dl, 
+                temp_s2_2->unk8,
+                9,
+                temp_s1_5->x_position,
+                temp_s1_5->y_position + 20.0f,
+                temp_s1_5->z_position,
+                D_bonus_8002DD24);
+        } else {
+            if (temp_s2_2->unk8 >= 0) {
+                func_global_asm_806FDAEC(temp_s2_2->unk8);
+                temp_s2_2->unk8 = -1;
+            }
+        }
+    }
+    return dl;
+}
 
 typedef struct {
     Actor* unk0[4]; // Used, might be bigger
@@ -417,7 +533,6 @@ typedef struct {
     f32 unk2C;
 } A178_800277F8;
 
-u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
 void func_global_asm_806A2A10(s16 arg0, s16 arg1, u8 arg2);
 
 /*

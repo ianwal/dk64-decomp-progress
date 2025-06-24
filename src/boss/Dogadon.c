@@ -98,11 +98,15 @@ s32 func_global_asm_80725BA4(s16, s16, s32);
 void func_boss_8002A240(void) {
     Actor17C *temp_s0;
     f32 temp_f10;
+    s16 temp_t9;
+    s16 temp_t1;
 
     temp_s0 = gCurrentActorPointer->unk17C;
     if (temp_s0->unk4 != 0) {
         temp_s0->unk4--;
-        temp_f10 = func_global_asm_80612794((temp_s0->unk4 / 10.0) * (temp_s0->unk8 + -0x400) + (temp_s0->unk8 + 0x400)) * 20.0;
+        temp_t1 = temp_s0->unk8;
+        temp_t9 = ((s32)temp_t1 - (u16)temp_t1) + -0x400;
+        temp_f10 = func_global_asm_80612794((temp_s0->unk4 / 10.0) * temp_t9 + (temp_t1 + 0x400)) * 20.0;
         gCurrentActorPointer->x_position += temp_f10 * func_global_asm_80612794(temp_s0->unk6);
         gCurrentActorPointer->z_position += temp_f10 * func_global_asm_80612790(temp_s0->unk6);
         if (temp_s0->unk4 == 0) {
