@@ -94,7 +94,7 @@ void func_global_asm_806B904C(void) {
     s16 i;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         scale = (D_global_asm_807FDC9C->unkF / 255.0) * 0.75;
         gCurrentActorPointer->animation_state->scale_x = scale;
         gCurrentActorPointer->animation_state->scale_y = scale;

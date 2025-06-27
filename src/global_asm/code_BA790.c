@@ -215,7 +215,7 @@ void func_global_asm_806B640C(void) {
 
     temp_s6 = gCurrentActorPointer->unk178;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_8066EA90(gCurrentActorPointer, 3);
         temp_s6->unk0 = -D_global_asm_807FDC9C->unkA_s16;
     }

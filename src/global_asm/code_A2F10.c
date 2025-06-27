@@ -58,7 +58,7 @@ void func_global_asm_8069E210(void) {
     Struct807FBB70_unk278 *temp;
     s32 ya;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield &= ~4;
         func_global_asm_80613C48(gCurrentActorPointer, 0x407, 0.0f, 0.0f);
         func_global_asm_80614D00(gCurrentActorPointer, 0.0f, 0.0f);
@@ -201,7 +201,7 @@ void func_global_asm_8069E774(void) {
     } else {
         sp74 = &PaaD->unk1F0;
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         var_t0->unkC = sp78->ledge_info_pointer->unk14;
         gCurrentActorPointer->draw_distance = 1000;
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
@@ -340,7 +340,7 @@ void func_global_asm_8069F020(void) {
     if (is_cutscene_active == 1) {
         deleteActor(gCurrentActorPointer);
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->draw_distance = 1000;
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
         func_global_asm_8068842C(gCurrentActorPointer, 0, 1);
@@ -532,7 +532,7 @@ void func_global_asm_8069FDA0(void) {
     f64 temp_f2;
     s32 temp_v1;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkEE = gCurrentActorPointer->unk160;
     }
     temp_f2 = (u32)D_global_asm_80744478 * 0.5;
@@ -597,7 +597,7 @@ void func_global_asm_806A018C(void) {
     AAD_global_asm_806A018C *temp_s1;
 
     temp_s1 = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkB8 = gCurrentActorPointer->unk124->unk0;
         gCurrentActorPointer->unkEE = gCurrentActorPointer->unk124->unk4;
         gCurrentActorPointer->y_velocity = gCurrentActorPointer->unk124->unk8;
@@ -631,7 +631,7 @@ void func_global_asm_806A0330(void) {
     s32 i;
     f32 x, y, z;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->noclip_byte = 0x1C;
         gCurrentActorPointer->y_velocity = 0.0f;
         gCurrentActorPointer->draw_distance = 2000;
@@ -687,7 +687,7 @@ void func_global_asm_806A05FC(void) {
     AAD_global_asm_806A05FC *temp_a3;
 
     temp_a3 = gCurrentActorPointer->unk11C->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield &= 0xFFFF7FFF;
         gCurrentActorPointer->shadow_opacity = 0xFF;
         gCurrentActorPointer->object_properties_bitfield |= 0x800000;
@@ -755,7 +755,7 @@ void func_global_asm_806A0864(void) {
     KongReflectionAAD *aad;
 
     aad = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x08100000;
         gCurrentActorPointer->object_properties_bitfield &= 0xFFFF7FFF;
         func_global_asm_806131D4(gCurrentActorPointer,
@@ -819,7 +819,7 @@ void func_global_asm_806A0B74(void) {
     KongReflectionAAD *aad;
 
     aad = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x08100000;
         gCurrentActorPointer->object_properties_bitfield &= ~0x8000;
         func_global_asm_806131D4(gCurrentActorPointer, 
@@ -934,7 +934,7 @@ void func_global_asm_806A112C(void) {
     AAD_806A112C *aaD;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
         func_global_asm_80724D28(0, 7);
         for (i = 0; i < 7; i++) {

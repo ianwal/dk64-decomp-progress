@@ -87,7 +87,7 @@ void func_critter_80027448(void) {
     } else {
         sp64 = D_global_asm_807446D0[levelIndex];
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk64 |= 0x20;
         if (current_map == MAP_TROFF_N_SCOFF) {
             playActorAnimation(gCurrentActorPointer, 0x39F);
@@ -269,7 +269,7 @@ void func_critter_80027DC0(void) {
     f32 dz;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80604CBC(gCurrentActorPointer, 0x10F, 0x46, 1, 0, 0x1E, 1.0f, 0);
         gCurrentActorPointer->control_state = 0;
         // Is the camera not unlocked?
@@ -368,7 +368,7 @@ void func_critter_80028120(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     sp40 = gCurrentActorPointer->animation_state->unk0;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->control_state = 0x78;
         if (isFlagSet(PERMFLAG_PROGRESS_RAREWARE_ROOM_OPEN, FLAG_TYPE_PERMANENT)) {
             if (!isFlagSet(GLOBALFLAG_UNK_23, FLAG_TYPE_GLOBAL)) {

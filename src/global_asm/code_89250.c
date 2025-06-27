@@ -268,7 +268,7 @@ void func_global_asm_80685390(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     sp20 = D_global_asm_8074E88C;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         aaD->unk0 = gCurrentActorPointer->animation_state->scale_y;
     }
     aaD->unk4++;
@@ -636,7 +636,7 @@ void func_global_asm_80686F90(u8 arg0, s16 arg1, s16 arg2) {
 }
 
 void func_global_asm_80687080(void) {
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield &= ~0x8000;
         gCurrentActorPointer->object_properties_bitfield |= 0x800000;
         gCurrentActorPointer->unk16A = 0xFF;

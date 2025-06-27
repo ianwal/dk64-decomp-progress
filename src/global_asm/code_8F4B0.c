@@ -199,7 +199,7 @@ void func_global_asm_8068AD7C(void) {
     f32 temp;
 
     TaaD = gCurrentActorPointer->AAD_as_array[0];
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         TaaD->unk0 = 0U;
         TaaD->unk1A = -1;
         TaaD->unk21 = 0U;

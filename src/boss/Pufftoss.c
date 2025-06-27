@@ -100,7 +100,7 @@ void func_boss_80029468(void) {
     sp44.unk0_s32 = D_boss_80035A00[a178->unk14].unk0_s32;
     sp42 = func_global_asm_80665DE0(gPlayerPointer->x_position, gPlayerPointer->z_position, gCurrentActorPointer->x_position, gCurrentActorPointer->z_position);
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkCE = 0x64;
         gCurrentActorPointer->unk15F = 0;
         D_global_asm_807FDC98->unk46 |= 0x20;

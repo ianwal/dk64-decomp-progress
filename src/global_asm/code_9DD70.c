@@ -59,7 +59,7 @@ void func_global_asm_80699284(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     sp5F = 0;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         aaD->unk10 = 0x5A;
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
         gCurrentActorPointer->draw_distance = 0x3E8;
@@ -168,7 +168,7 @@ void func_global_asm_806998F0(void) {
 }
 
 void func_global_asm_80699914(void) {
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->draw_distance = 1000;
     }
     func_global_asm_80699958(0x1C, 1);
@@ -357,7 +357,7 @@ void func_global_asm_8069AB74(void) {
     AAD_8069AB74 *aaD; // 54
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80613C48(gCurrentActorPointer, 0x402, 0.0f, 1.0f);
         if (current_map == MAP_JAPES_MINECART) {
             playActorAnimation(gCurrentActorPointer, 0x297);
@@ -423,7 +423,7 @@ void func_global_asm_8069B3FC(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     PaaD = gPlayerPointer->PaaD;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->noclip_byte = 1;
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
         playActorAnimation(gCurrentActorPointer, 0x298);
@@ -527,7 +527,7 @@ void func_global_asm_8069CD9C(void) {
     f32 dz, dx, dy;
     f32 phi_f0;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         phi_f0 = (gCurrentActorPointer->animation_state->scale_x / 0.15);
         phi_f0 -= 1.0;
         if (phi_f0 < 0.0) {
@@ -550,7 +550,7 @@ void func_global_asm_8069CD9C(void) {
 
 // Apple Code
 void func_global_asm_8069CF54(void) {
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk130 = 0x3C;
         gCurrentActorPointer->unk131 = 0x3C;
         func_global_asm_80689114(0x83, gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, 0, 1.0f, gCurrentActorPointer);
@@ -562,7 +562,7 @@ void func_global_asm_8069CF54(void) {
 }
 
 void func_global_asm_8069D018(void) {
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->draw_distance = 700;
     }
     func_global_asm_8069B908();
@@ -698,7 +698,7 @@ void func_global_asm_8069DA54(void) {
         addActorToTextOverlayRenderArray(func_global_asm_8069D930, gCurrentActorPointer, 3);
         return;
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk168 = aaD->unk4;
     }
     switch (gCurrentActorPointer->control_state) {
@@ -830,7 +830,7 @@ void func_global_asm_8069DF58(void) {
     AAD_global_asm_8069DF58 *aaD;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         aaD->unk0 = func_global_asm_8069DC80(0x14, aaD->unk0, 0, (gCurrentActorPointer->control_state_progress / 10), 0x10);
         aaD->unk4 = func_global_asm_8069DC80(0x14, aaD->unk4, 1, (gCurrentActorPointer->control_state_progress % 10), 0x10);
     }
@@ -842,7 +842,7 @@ void func_global_asm_8069E018(void) {
 }
 
 void func_global_asm_8069E040(void) {
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         playActorAnimation(gCurrentActorPointer, 0x299);
     }
     renderActor(gCurrentActorPointer, 0);
@@ -851,7 +851,7 @@ void func_global_asm_8069E040(void) {
 void func_global_asm_8069E088(void) {
     s16 textIndex;
 
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80613C48(gCurrentActorPointer, 0x5ED, 0, 0);
     }
     gCurrentActorPointer->unk15E = 0x14;

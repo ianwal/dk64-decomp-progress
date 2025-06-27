@@ -358,7 +358,7 @@ void func_boss_80033AF0(void) {
     sp7F = 0;
     initializeCharacterSpawnerActor();
     func_global_asm_8067ACB4(gCurrentActorPointer);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkCC = 1;
         gCurrentActorPointer->noclip_byte = 0x24;
         if (isFlagSet(TEMPFLAG_FACTORY_JACK_INTRO, 2U) != 0) {

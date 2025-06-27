@@ -59,7 +59,7 @@ void func_global_asm_806B6600(u8 arg0) {
 
 void func_global_asm_806B6958(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC90->unk35 *= 2;
         D_global_asm_807FDC90->unk2C = 210;
         D_global_asm_807FDC90->unk1F *= 1.5;
@@ -136,7 +136,7 @@ void func_global_asm_806B6DB0(s32 arg0) {
     sp31 = SQ(gCurrentActorPointer->x_position - D_global_asm_807FDC94->x_position) + SQ(gCurrentActorPointer->z_position - D_global_asm_807FDC94->z_position) < 2500.0f;
 
     
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC98->unk34 = 1.0f;
         func_global_asm_80724CA4(2, 2);
         gCurrentActorPointer->unkB8 = D_global_asm_807FDC9C->unkC;

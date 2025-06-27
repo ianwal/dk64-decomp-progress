@@ -122,7 +122,7 @@ void func_bonus_8002D2F0(void) {
     AAD_8002D2F0 *aaD;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         playCutscene(NULL, 0, 1);
         gCurrentActorPointer->control_state = 0;
         aaD->unk4 = 0x3C;

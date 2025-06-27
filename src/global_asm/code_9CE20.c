@@ -39,7 +39,7 @@ void func_global_asm_80698120(u8 arg0) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     PaaD = character_change_array->playerPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         aaD->unk0 = 0.0f;
         aaD->unk4 = 0.104719758f;
         aaD->unkC = 0;

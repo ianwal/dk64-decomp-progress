@@ -175,7 +175,7 @@ void func_race_8002A7F8(A178_race_8002B964 *arg0) {
 
     sp53 = gCurrentActorPointer->unk6A & 1;
     sp50 = gCurrentActorPointer->y_rotation;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->noclip_byte = 0x3C;
         gCurrentActorPointer->object_properties_bitfield |= 0x10400;
         gCurrentActorPointer->control_state = 0;
@@ -294,7 +294,7 @@ void func_race_8002AE9C(void) {
     aaD = gCurrentActorPointer->additional_actor_data;
     playerIndex = aaD->unk28;
     sp43 = 0xB4;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         setAction(0x4D, gCurrentActorPointer, playerIndex);
         gCurrentActorPointer->noclip_byte = 0x3C;
         gCurrentActorPointer->object_properties_bitfield &= 0xFFFDFFFF;
@@ -539,7 +539,7 @@ void func_race_8002B964(void) {
     a178 = gCurrentActorPointer->unk178;
     a17C = gCurrentActorPointer->unk17C;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         a17C->unk10 = 1;
         func_race_8002DE78(a17C, 5, &D_race_8002FC70, &D_race_8002FCA0);
         gCurrentActorPointer->noclip_byte = 0x3C;

@@ -133,7 +133,7 @@ void func_bonus_8002570C(void) {
 
     sp4C = gPlayerPointer->additional_actor_data;
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->x_position = 52.0f;
         gCurrentActorPointer->z_position = 18.0f;
         aaD->unk19 = func_global_asm_806FDB8C(1, "HIT", 8, 0.0f, 0.0f, 0.0f);
@@ -331,7 +331,7 @@ void func_bonus_800261B8(void) {
     s16 temp_t0;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->z_rotation = (RandClamp(6) * 0x3C000) / 360;
     }
     switch (gCurrentActorPointer->control_state) {

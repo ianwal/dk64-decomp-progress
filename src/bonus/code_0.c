@@ -116,7 +116,7 @@ void func_bonus_80024158(void) {
         0xFF, 0xFF, 0xFF, 0xFF,
         0
     );
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         boolVal2 = FALSE;
         func_global_asm_80629174();
         D_global_asm_807FDC98->unk46 |= 0x80;
@@ -443,7 +443,7 @@ void func_bonus_80024E38(void) {
 
     a178 = gCurrentActorPointer->unk178;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         a178->unk0 = 0x12C;
         a178->unkA = 0;
         a178->unk8 = 0;

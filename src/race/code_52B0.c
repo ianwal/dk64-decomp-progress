@@ -155,7 +155,7 @@ void func_race_800294A8(void) {
     Player = character_change_array[aaD->unk28].playerPointer;
     PaaD = Player->additional_actor_data;
     sp52 = gCurrentActorPointer->unk6A & 1;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80690094(gCurrentActorPointer, Player);
         gCurrentActorPointer->noclip_byte |= 0x10;
         gCurrentActorPointer->object_properties_bitfield &= 0xFFFDFFFF;
@@ -290,7 +290,7 @@ void func_race_8002A0AC(void) {
     a180 = gCurrentActorPointer->unk180;
     sp48 = 0.0f;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         aaD = a178->unk30->additional_actor_data;
         a178->unk10 = 1.0f;
         gCurrentActorPointer->object_properties_bitfield &= 0xFFFDFFFE;

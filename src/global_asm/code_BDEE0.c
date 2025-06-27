@@ -24,7 +24,7 @@ void func_global_asm_806B91E0(void) {
     sp36 = 0;
     aaD = gCurrentActorPointer->AAD_as_array[1];
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_8072B79C(0x321, 0x322, 0x323);
         func_global_asm_80724CA4(0x11, 1);
         func_global_asm_8066EA90(gCurrentActorPointer, 4);
@@ -446,7 +446,7 @@ void func_global_asm_806BA8C8(void) {
 
 void func_global_asm_806BB32C(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk16A = 0xFA;
         gCurrentActorPointer->unk16B = 0xFA;
         gCurrentActorPointer->unk16C = 0xFA;
@@ -471,7 +471,7 @@ void func_global_asm_806BB32C(void) {
 // TODO: Very close, 1 extra instruction related to default case in the second switch
 void func_global_asm_806BB400(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806D0430(0.5249999762f);
         gPlayerPointer->object_properties_bitfield |= 0x400;
         gPlayerPointer->draw_distance = 0x7D0;

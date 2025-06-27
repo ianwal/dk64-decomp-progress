@@ -366,7 +366,7 @@ void func_race_80029054(void) {
     a178 = gCurrentActorPointer->unk178;
     a17C = gCurrentActorPointer->unk17C;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_race_80028E20(a17C);
         gCurrentActorPointer->noclip_byte = 0x3C;
         a178->unk4 = 0.5f;

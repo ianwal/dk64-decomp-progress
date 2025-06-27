@@ -43,7 +43,7 @@ void func_boss_8002E7A0(Actor *arg0) {
 void func_boss_8002E82C(void) {
     Actor *temp_v0_2;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_boss_8002E7A0(gCurrentActorPointer);
         gCurrentActorPointer->unk168 = 600;
         gCurrentActorPointer->noclip_byte = 2;
@@ -112,7 +112,7 @@ void func_boss_8002EA7C(void) {
     sp28 = D_boss_80035A80[temp_t0->unk14];
     initializeCharacterSpawnerActor();
     func_boss_80028878(sp28);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk146_s16 = 1;
         gCurrentActorPointer->control_state = 0x1E;
         gCurrentActorPointer->control_state_progress = 0;

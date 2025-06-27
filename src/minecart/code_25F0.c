@@ -185,7 +185,7 @@ void func_minecart_800265F0(void) {
 
     sp47 = 0x96;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         playActorAnimation(gCurrentActorPointer, 0x310);
         spawnActor(ACTOR_UNKNOWN_284, 0x4C);
         moveAndScaleActorToAnother(gLastSpawnedActor, gCurrentActorPointer, gCurrentActorPointer->animation_state->scale[1] * 1.5);
@@ -291,7 +291,7 @@ void func_minecart_80026DA8(void) {
     a11C = gCurrentActorPointer->unk11C;
     sp68 = a11C->additional_actor_data;
     sp66 = gCurrentActorPointer->unk168 * gCurrentActorPointer->unkEC;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80613C48(gCurrentActorPointer, 0x59C, 0.0f, 0.0f);
         gCurrentActorPointer->object_properties_bitfield |= 0x800000;
         gCurrentActorPointer->unk16A = 0xFF;
@@ -427,7 +427,7 @@ void func_minecart_80027778(void) {
     aaD = extra_player_info_pointer->vehicle_actor_pointer->additional_actor_data;
     sp5E = D_global_asm_807F5FD4->unk0[gCurrentActorPointer->unk15F][gCurrentActorPointer->unk168].unk0;
     sp5C = D_global_asm_807F5FD4->unk0[gCurrentActorPointer->unk15F][gCurrentActorPointer->unk168].unk8;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80613C48(gCurrentActorPointer, 0x5FF, 0.0f, 0.0f);
         func_global_asm_80688370(gCurrentActorPointer, 0, 1.0f);
         func_global_asm_806883C8(gCurrentActorPointer, 0, 0);
@@ -591,7 +591,7 @@ void func_minecart_800280BC(void) {
 
     sp54 = gCurrentActorPointer->unk178;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80724CA4(2, 1);
         D_global_asm_807FDC90->unk35 = 6;
     }
@@ -650,7 +650,7 @@ void func_minecart_8002835C(void) {
     
     sp74 = gCurrentActorPointer->unk178;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if ((current_map == MAP_MINECART_MAYHEM_EASY) || (current_map == MAP_MINECART_MAYHEM_NORMAL) || (current_map == MAP_MINECART_MAYHEM_HARD)) {
             func_global_asm_8066E9EC(gCurrentActorPointer, 1, 50.0f);
         }
@@ -720,7 +720,7 @@ void func_minecart_800286EC(void) {
     a178 = gCurrentActorPointer->unk178;
     initializeCharacterSpawnerActor();
     aaD = D_global_asm_807FDC94->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->noclip_byte = 0x3C;
         D_global_asm_807FDC90->unk35 = 2;
         func_global_asm_807149B8(1);

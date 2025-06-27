@@ -23,4 +23,6 @@
 #define CLAMP(value, min, max) ((value) < (min) ? (min) : MIN(max, value))
 #define FILEOFFSET(base, offset) (offset + (s32)base)
 
+#define ACTOR_UNINITIALIZED(actor) (!(actor->object_properties_bitfield & 0x10))
+
 #endif

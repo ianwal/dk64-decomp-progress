@@ -129,7 +129,7 @@ void func_global_asm_806A2E30(void) {
     s32 var_v0;
 
     aad = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (gCurrentActorPointer->unk15F == 6) {
             _sprintf(sp60, "%.2d", aad->unkC);
         } else {

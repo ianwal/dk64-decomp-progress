@@ -138,7 +138,7 @@ void func_boss_80031AA0(void) {
     sp67 = FALSE;
     sp68 = FALSE;
     sp6A = FALSE;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_boss_80035B28 = 0xF;
         D_boss_80035B34 = 0;
         D_boss_80035B3C = 0.0f;
@@ -501,7 +501,7 @@ void func_boss_80032B08(void) {
     if (aaD->unk5 == 0) {
         D_boss_80036DC4 = ((gPlayerPointer->x_position - gCurrentActorPointer->x_position) * (gPlayerPointer->x_position - gCurrentActorPointer->x_position)) + ((gPlayerPointer->z_position - gCurrentActorPointer->z_position) * (gPlayerPointer->z_position - gCurrentActorPointer->z_position));
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80613C48(gCurrentActorPointer, aaD->unk4 + 0x668, 0.0f, 0.0f);
         gCurrentActorPointer->draw_distance = 0xFA0;
     }

@@ -88,7 +88,7 @@ void func_boss_8002C964(void) {
 
     a178 = gCurrentActorPointer->unk178;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_boss_8002C748(0);
         func_boss_8002C748(1);
         D_global_asm_807FDC98->unk30 = 2.5f;

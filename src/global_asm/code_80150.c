@@ -56,7 +56,7 @@ void func_global_asm_8067B4C8(void) {
     AAD_8067B4C8_2 *aaD2;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->animation_state->unk1C = malloc(2 * sizeof(AnimationStateUnk1C));
 
         // 1
@@ -154,7 +154,7 @@ void func_global_asm_8067B4C8(void) {
 */
 
 void func_global_asm_8067BA3C(void) {
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->draw_distance = 2000;
     }
     func_global_asm_8067B4C8();
@@ -300,7 +300,7 @@ void func_global_asm_8067BE30(void) {
     s16 i;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->draw_distance = 2000;
         aaD->unk0 = 0x1A;
     }
@@ -428,7 +428,7 @@ void func_global_asm_8067C2B8(void) {
     AAD_global_asm_8067C2B8 *temp_v0;
 
     temp_v0 = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk68 |= 4;
         gCurrentActorPointer->object_properties_bitfield |= 0x80;
         temp_v0->unk0 = 0;
@@ -664,7 +664,7 @@ void func_global_asm_8067E4D4(void) {
 void func_global_asm_8067E510(void) {
     s16 i;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->animation_state->scale_x *= 1.5;
         gCurrentActorPointer->animation_state->scale_y *= 1.5;
         gCurrentActorPointer->animation_state->scale_z *= 1.5;
@@ -701,7 +701,7 @@ void func_global_asm_8067E704(void) {
 }
 
 void func_global_asm_8067E724(void) {
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->draw_distance = 800;
     }
     func_global_asm_8067E784();
@@ -801,7 +801,7 @@ void func_global_asm_80681B14(void) {
     AAD_global_asm_80681B14 *aaD;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (isFlagSet(0x302, FLAG_TYPE_PERMANENT)) {
             deleteActor(gCurrentActorPointer);
             return;
@@ -909,7 +909,7 @@ void func_global_asm_80681E18(void) {
     s32 pad;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->floor = 99999.0f;
         func_global_asm_80667110(gCurrentActorPointer->x_position, gCurrentActorPointer->z_position, &gCurrentActorPointer->floor);
         if (gCurrentActorPointer->unk124->unk0_s32 == 1) {
@@ -1082,7 +1082,7 @@ typedef struct {
 void func_global_asm_8068304C(void) {
     Struct8074E834 sp2C;
     AAD_global_asm_8068304C *sp28;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         sp2C = D_global_asm_8074E834;
         sp28 = gCurrentActorPointer->additional_actor_data;
         gCurrentActorPointer->object_properties_bitfield |= 0x1000;
@@ -1116,7 +1116,7 @@ void func_global_asm_80683158(void) {
 
     sp3C = 0;
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x1000;
         gCurrentActorPointer->animation_state->unk1C = malloc(32 * sizeof(AnimationStateUnk1C));
         func_global_asm_80611690(gCurrentActorPointer->animation_state->unk1C);
@@ -1318,7 +1318,7 @@ void func_global_asm_8068412C(void) {
     YetAnotherAdditionalActorData *YaaD;
 
     YaaD = gCurrentActorPointer->YaaD;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         YaaD->unk22 = gCurrentActorPointer->y_rotation;
         YaaD->unk24 = gCurrentActorPointer->y_position;
         gCurrentActorPointer->unk146 = 0;

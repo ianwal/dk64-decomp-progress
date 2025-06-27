@@ -6,7 +6,7 @@ void func_global_asm_806ADFE0(void) {
     f32 sp88[4][4];
     f32 sp48[4][4];
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkB8 = RandClamp(50) + 0x46;
         gCurrentActorPointer->y_velocity = gCurrentActorPointer->unkB8 * 2;
         gCurrentActorPointer->y_acceleration = -30.0f;
@@ -94,7 +94,7 @@ void func_global_asm_8072A450(void);
 /*
 void func_global_asm_806AE588(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_8072B79C(0x1FD, 0x1FB, 0x1FC);
         func_global_asm_80724CA4(3, 1);
         func_global_asm_8066EA90(gCurrentActorPointer, 3);
@@ -277,7 +277,7 @@ void func_global_asm_806AEE08(void) {
 // Kop
 void func_global_asm_806AF688(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_8072B79C(0x2C0, 0x2C1, 0x2C1);
         func_global_asm_80724CA4(0xE, 1);
         D_global_asm_807FDC90->unk1A |= 0x800;
@@ -373,7 +373,7 @@ void func_global_asm_806AFB58(void) {
     s32 cs;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk146_s16 = -1;
         func_global_asm_8072B79C(0x2D9, 0x2D7, 0x2D8);
         func_global_asm_80724CA4(2, 1);
@@ -525,7 +525,7 @@ void func_global_asm_806AFB58(void) {
 
 void func_global_asm_806B02EC(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_8072B79C(0, 0x31E, 0x31F);
     }
     func_global_asm_806AD260(800, 0, 0);
@@ -644,7 +644,7 @@ void func_global_asm_806B0848(void) {
     u8 temp_v1;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk130 = MIN(255, (gCurrentActorPointer->animation_state->scale_y / 0.15) * 100.0);
         gCurrentActorPointer->unk131 = MIN(255, (gCurrentActorPointer->animation_state->scale_y / 0.15) * 100.0);
         func_global_asm_8072B79C(0x35E, 0x35F, 0x360);

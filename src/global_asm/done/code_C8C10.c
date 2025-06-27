@@ -4,7 +4,7 @@ void func_global_asm_806C3F10(u8 arg0, u8 arg1, u8 arg2) {
     Actor178 *a178;
 
     a178 = gCurrentActorPointer->unk178;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC98->unk46 |= 0x20;
         if (arg2) {
             playCutscene(gCurrentActorPointer, arg2, 1);
@@ -112,7 +112,7 @@ void func_global_asm_806C4414(s32 arg0, s32 arg1, s32 arg2, s32 arg3, s32 arg4, 
         gCurrentActorPointer->z_position,
         0.0f, 0.0f, 0.0f, 80.0f, 0U,
         0xFFU, 0xFFU, 0xFFU);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         sp40 = -1;
         if ((isFlagSet(arg6, 0U)) || (gameIsInDKTVMode())) {
             if (arg3 == D_global_asm_807FDC9C->unk13) {
@@ -257,7 +257,7 @@ u8 func_global_asm_806C4AC4(u16 arg0, u16 arg1) {
     sp4F = 0;
     a178 = gCurrentActorPointer->unk178;
     a180 = gCurrentActorPointer->unk180;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC98->unk46 |= 0x20;
         gCurrentActorPointer->unkB8 = D_global_asm_807FDC9C->unkC;
     }
@@ -341,7 +341,7 @@ void func_global_asm_806C4F5C(void) {
 
     sp28 = gCurrentActorPointer->AAD_as_array[3];
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->control_state = 0x1E;
         func_global_asm_8072B79C(0x244, 0x244, 0x246);
         gCurrentActorPointer->unk15E *= 0.5;
@@ -488,7 +488,7 @@ void func_global_asm_806C55E0(void) {
         gCurrentActorPointer->control_state = 0x40;
         return;
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_8072B79C(0x357, 0x357, 0x359);
         D_global_asm_807FDC98->unk46 |= 0x20;
         gCurrentActorPointer->control_state = 0x1E;
@@ -645,7 +645,7 @@ void func_global_asm_806C5C20(void) {
 
     initializeCharacterSpawnerActor();
     func_global_asm_80672C30(gCurrentActorPointer);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC98->unk46 |= 0x40;
         gCurrentActorPointer->draw_distance = 0xFA;
         func_global_asm_80724CA4(2, 1);
@@ -699,7 +699,7 @@ void func_global_asm_806C5FEC(void) {
     PlayerAdditionalActorData *temp_a0;
 
     temp_v1 = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         temp_v1->unk1C = 0;
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
     }
@@ -743,7 +743,7 @@ void func_global_asm_806C61C8(void) {
     f32 sp24;
     f32 sp20;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkEC = 0x3C;
         playActorAnimation(gCurrentActorPointer, 0x23D);
         if (gPlayerPointer->control_state == 0xC) {
@@ -758,7 +758,7 @@ void func_global_asm_806C61C8(void) {
         gCurrentActorPointer->z_position = (func_global_asm_80612790(gCurrentActorPointer->unkEE) * 10.0f) + sp20;
     }
     gCurrentActorPointer->y_position = (func_global_asm_80612794(object_timer * 0x64) * 5.0f) + (gCurrentActorPointer->unk15F + gPlayerPointer->y_position + 3.0f + gCurrentActorPointer->unkEC);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (gCurrentActorPointer->unkF0 != 0) {
             gCurrentActorPointer->unk15F = 0x14;
             func_global_asm_8069E490(0x2D, func_global_asm_8073195C(gCurrentActorPointer->unkF0));

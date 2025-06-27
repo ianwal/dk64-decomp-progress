@@ -77,7 +77,7 @@ void func_global_asm_806AD54C(void) {
     s32 angleSign;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80724CA4(2, 1);
         func_global_asm_8072B79C(0x1F8, 0x1F8, 0x1F9);
         if (current_map == MAP_BEAVER_BOTHER_EASY || current_map == MAP_BEAVER_BOTHER_NORMAL || current_map == MAP_BEAVER_BOTHER_HARD) {
@@ -114,7 +114,7 @@ void func_global_asm_806AD54C(void) {
 
 void func_global_asm_806AD7AC(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80724CA4(2, 1);
         func_global_asm_8072B79C(0x1F8, 0x1F8, 0x1F9);
     }
@@ -126,7 +126,7 @@ void func_global_asm_806AD7AC(void) {
 void func_global_asm_806AD84C(void) {
     f32 temp_f0;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         temp_f0 = 0.05f;
         gCurrentActorPointer->animation_state->scale_x = temp_f0;
         gCurrentActorPointer->animation_state->scale_z = temp_f0;
@@ -164,7 +164,7 @@ void func_global_asm_806AD9AC(void) {
 void func_global_asm_806AD9F4(void) {
     s32 tmp_t0;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC98->unk46 |= 0x200;
         func_global_asm_8072B79C(0x2F4, 0x2F4, 0x2F4);
         if (gCurrentActorPointer->y_position != gCurrentActorPointer->floor) {
@@ -239,7 +239,7 @@ void func_global_asm_806AD9F4(void) {
 
 void func_global_asm_806ADDD8(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC98->unk46 |= 0x40;
         D_global_asm_807FDC98->unk28 = 0x31AU;
     }

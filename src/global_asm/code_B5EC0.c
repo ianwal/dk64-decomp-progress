@@ -39,7 +39,7 @@ void func_global_asm_8072C918(s16, s16, s16);
 /*
 void func_global_asm_806B13B4(u8 arg0) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (current_map == MAP_STASH_SNATCH_NORMAL) {
             D_global_asm_807FDC9C->unkD = 0x82;
             D_global_asm_807FDC98->unk46 |= 0x40;
@@ -250,7 +250,7 @@ void func_global_asm_806B1DD4(u8 arg0) {
     u8 phi_v1;
     s32 levelIndex;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         phi_v1 = 0;
         levelIndex = func_global_asm_805FF000(D_global_asm_8076A0AB);
         if ((levelIndex != 9) && (levelIndex != 0xA)) {

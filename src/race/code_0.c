@@ -199,7 +199,7 @@ void func_race_80024690(void) {
         aaD = sp4C->additional_actor_data;
     }
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->noclip_byte = 0x1C;
         gCurrentActorPointer->object_properties_bitfield |= 0x10400;
         gCurrentActorPointer->object_properties_bitfield &= 0xFFFDFFFF;

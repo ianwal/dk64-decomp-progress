@@ -485,7 +485,7 @@ void func_boss_80028878(u8 *arg0) {
         gPlayerPointer->z_position = 750.0f;
         drawSpriteAtPosition(&D_global_asm_8071FE08, 1.0f, gPlayerPointer->x_position, gPlayerPointer->y_position, gPlayerPointer->z_position);
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806FB370(5, 0, 1);
         func_global_asm_806FB370(2, 0, 1);
         gCurrentActorPointer->object_properties_bitfield &= 0xFFFDFFFF;
@@ -544,7 +544,7 @@ void func_boss_80028878(u8 *arg0) {
             }
             break;
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (gameIsInMysteryMenuMinigameMode()) {
             setFlag(TEMPFLAG_UNK_55, FALSE, FLAG_TYPE_TEMPORARY);
         }

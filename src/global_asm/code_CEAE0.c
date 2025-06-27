@@ -1901,7 +1901,7 @@ void func_global_asm_806CF4B8(Actor *arg0) {
 }
 
 void func_global_asm_806CF580(void) {
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         extra_player_info_pointer->unk84 = object_timer;
         extra_player_info_pointer->unkD0 = object_timer;
     }
@@ -2369,7 +2369,7 @@ void func_global_asm_806D0A84(void) {
 
     temp_a3 = gCurrentActorPointer->additional_actor_data;
     sp30 = temp_a3->unk4;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         playActorAnimation(gCurrentActorPointer, temp_a3->unk0);
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
         gCurrentActorPointer->unk168 = (rand() >> 0xF) % 4096;

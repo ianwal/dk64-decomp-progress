@@ -25,7 +25,7 @@ void func_global_asm_806A1580(void) {
 
     sp36 = func_global_asm_80688E68(gCurrentActorPointer);
     sp30 = getSpawnerTiedActor(2, 0);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk130 = 0x46;
         gCurrentActorPointer->unk131 = 0x32;
         gCurrentActorPointer->unk6A &= 0xFFFE;
@@ -74,7 +74,7 @@ void func_global_asm_806A18A8(void) {
 
     sp44 = gCurrentActorPointer->a178_806A18A8;
     sp40 = gCurrentActorPointer->unk11C;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80724CA4(2, 2);
     }
     moveAndScaleActorToAnother(gCurrentActorPointer, sp40, 0.15f);
@@ -106,7 +106,7 @@ void func_global_asm_806A1AC4(void) {
     f32 randomScale;
     s16 i;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield &= 0xFFFF7FFF;
         func_global_asm_80728950(0);
         func_global_asm_807248B0(gCurrentActorPointer, 1.2f);
@@ -209,7 +209,7 @@ void func_global_asm_806A1FD8(void) {
     Actor *temp_s0;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk64 |= 8;
         aaD->unk0 = 0;
         aaD->unk4 = 0.0f;
@@ -283,7 +283,7 @@ void func_global_asm_806A2328(void) {
     AAD_806A2328 *aaD;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x1000;
         func_global_asm_807248B0(gCurrentActorPointer, gCurrentActorPointer->unk124->unkC);
         gCurrentActorPointer->unk168 = func_global_asm_80665DE0(gCurrentActorPointer->x_position, gCurrentActorPointer->z_position, gPlayerPointer->x_position, gPlayerPointer->z_position);

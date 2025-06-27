@@ -95,7 +95,7 @@ void func_global_asm_806A5F44(void) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806A5EAC(aaD, &D_global_asm_80720710, 1.0f);
     }
 }
@@ -104,7 +104,7 @@ void func_global_asm_806A5FA4(void) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806A5EAC(aaD, &D_global_asm_80720508, 1.0f);
     }
 }
@@ -113,7 +113,7 @@ void func_global_asm_806A6004(void *arg0, Actors arg1) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (arg1 != gPlayerPointer->unk58) {
             changeActorColor(0xFF, 0xFF, 0xFF, 0x64);
         }
@@ -145,7 +145,7 @@ void func_global_asm_806A615C(void) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80714A08(-0.35f, 0.35f);
         func_global_asm_806A5EAC(aaD, &D_global_asm_80720768, 1.0f);
     }
@@ -155,7 +155,7 @@ void func_global_asm_806A61D0(void) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806A5EAC(aaD, &D_global_asm_807204BC, 1.0f);
     }
 }
@@ -166,7 +166,7 @@ void func_global_asm_806A6230(void) {
     s32 temp_v1;
 
     func_global_asm_806A664C(4.5f);
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         temp_v1 = D_global_asm_807FBB64; // shadow_display_bitfield, shockwave_bitfield, long_distance_actor_spawn
         if (((temp_v1 << 0xC) < 0) || (temp_v1 & 0x2000)) {
             gCurrentActorPointer->unk15F = 1;
@@ -183,7 +183,7 @@ void func_global_asm_806A62D4(void) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         changeActorColor(0xFF, 0xFF, 0, 0xFF);
         func_global_asm_806A5EAC(aaD, &D_global_asm_807211D0, 1.5f);
     }
@@ -193,7 +193,7 @@ void func_global_asm_806A6348(void) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806A5EAC(aaD, &D_global_asm_807205C4, 1.0f);
     }
 }
@@ -202,7 +202,7 @@ void func_global_asm_806A63A8(void) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806A5EAC(aaD, &D_global_asm_807205E8, 1.0f);
     }
 }
@@ -211,7 +211,7 @@ void func_global_asm_806A6408(void) {
     // TODO: Which aaD type are they actually expecting here?
     void *aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(12.0f);
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806A5EAC(aaD, &D_global_asm_80721378, 2.0f);
     }
 }
@@ -222,7 +222,7 @@ void func_global_asm_806A6468(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         switch (gPlayerPointer->unk58) {
             case ACTOR_DIDDY:
                 sprite = &D_global_asm_807203B0;
@@ -254,7 +254,7 @@ void func_global_asm_806A6574(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     func_global_asm_806A664C(4.5f);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         switch (gPlayerPointer->unk58) {
             case ACTOR_DIDDY:
                 sprite = &D_global_asm_80720EE8;
@@ -286,7 +286,7 @@ void func_global_asm_806A664C(f32 arg0) {
     if (D_global_asm_807FBB68 & 0x10) {
         arg0 *= 2.0f;
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->control_state = (s32)gCurrentActorPointer->unk124->unk0;
         gCurrentActorPointer->unkEE = gCurrentActorPointer->unk124->unk4;
         gCurrentActorPointer->y_rotation = gCurrentActorPointer->unkEE;
@@ -412,7 +412,7 @@ void func_global_asm_806A6DB4(u8 arg0) {
     s16 temp_0;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x801000;
         gCurrentActorPointer->unk16A = 0xFF;
         gCurrentActorPointer->unk16B = 0xFF;
@@ -527,7 +527,7 @@ void func_global_asm_806A734C(void) {
 
 void func_global_asm_806A736C(void) {
     PlayerAdditionalActorData *PaaD = gCurrentActorPointer->PaaD;
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk64 |= 4;
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
         func_global_asm_80686CF8(gCurrentActorPointer);
@@ -549,7 +549,7 @@ void func_global_asm_806A736C(void) {
 }
 
 void func_global_asm_806A7518(void) {
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
         func_global_asm_80686A5C(gCurrentActorPointer, 20.0f, 40.0f, 0x1E);
         gCurrentActorPointer->floor = 99999.0f;
@@ -568,7 +568,7 @@ void func_global_asm_806A7600(void *arg0) {
     s32 var_v0;
 
     sp34 = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (gCurrentActorPointer->unk58 == ACTOR_BALLOON_KROOL) {
             sp34->unk6 = -1;
         } else {
@@ -700,7 +700,7 @@ void func_global_asm_806A7BDC(void) {
     Struct807504A4 sp44;
 
     sp64 = D_global_asm_807FC950->character_progress[current_character_index[0]].instrument & 1;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_8066E854(gCurrentActorPointer, 0, 10.0f, 0, -1);
         func_global_asm_8066EB40(gCurrentActorPointer, 175.0f);
         func_global_asm_8066E8E4(gCurrentActorPointer, 0, 10.0f, 0, 80.0f, -1);
@@ -738,7 +738,7 @@ void func_global_asm_806A7EF0(void) {
     AnimationStateUnk20 *temp_v0_2;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->animation_state->unk20 = malloc(0x20);
         func_global_asm_80611690(gCurrentActorPointer->animation_state->unk20);
         aaD->unk4 = 0;
@@ -767,7 +767,7 @@ void func_global_asm_806A7EF0(void) {
 }
 
 void func_global_asm_806A8070(void) {
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x40000000;
     }
     renderActor(gCurrentActorPointer, 0);

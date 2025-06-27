@@ -690,7 +690,7 @@ void func_menu_800270E0(void) {
     if (current_map == MAP_CRANKYS_LAB) {
         a178 = gCurrentActorPointer->unk178;
         characterProgress = &D_global_asm_807FC950->character_progress[current_character_index[0]];
-        if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
             if (isFlagSet(PERMFLAG_PROGRESS_GIVEN_FIRST_SLAM, FLAG_TYPE_PERMANENT)) {
                 gCurrentActorPointer->control_state_progress = 0;
             } else {
@@ -702,7 +702,7 @@ void func_menu_800270E0(void) {
             if (getLevelIndex(D_global_asm_8076A0AB, 0) != 7) {
                 sp1C = PERMFLAG_CUTSCENE_CRANKY_FTCS;
             }
-            if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+            if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
                 var_a3 = 0x26E;
                 if (func_menu_800266F0(a178, characterProgress, sp1C)) {
                     var_a3 = 0x26F;
@@ -711,7 +711,7 @@ void func_menu_800270E0(void) {
             }
             func_menu_80027028(a178, characterProgress, sp1C);
         } else {
-            if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+            if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
                 a178->unkC = 7;
                 if (!isFlagSet(PERMFLAG_PROGRESS_TRAINING_SPAWNED, FLAG_TYPE_PERMANENT)) {
                     playActorAnimation(gCurrentActorPointer, 0x26E);
@@ -826,7 +826,7 @@ void func_menu_800275FC(void) {
     if (current_map == MAP_CANDYS_MUSIC_SHOP) {
         a178 = gCurrentActorPointer->unk178;
         sp30 = &D_global_asm_807FC950->character_progress[*current_character_index];
-        if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
             // Anti-tamper
             var_v1 = 0;
             var_v0 = (s32*)&func_global_asm_8060AC7C;
@@ -857,7 +857,7 @@ void func_menu_80027738(void) {
     if (current_map == MAP_FUNKYS_STORE) {
         a178 = gCurrentActorPointer->unk178;
         var1 = &D_global_asm_807FC950[0].character_progress[current_character_index[0]];
-        if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
             func_menu_800266F0(a178, var1, 0x176);
         }
         func_menu_80027028(a178, var1, 0x176);

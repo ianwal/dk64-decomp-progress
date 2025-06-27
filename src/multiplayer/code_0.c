@@ -921,7 +921,7 @@ void func_multiplayer_80026094(void) {
     Struct80026094_0 *temp_t0;
 
     aad = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         var_s2 = FALSE;
         func_global_asm_806C9AE0();
         for (i = 0; i < cc_number_of_players; i++) {

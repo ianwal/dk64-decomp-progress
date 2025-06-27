@@ -129,7 +129,7 @@ void func_global_asm_806B7EA0(void) {
 
     a178 = gCurrentActorPointer->unk178;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC98->unk46 |= 0x60;
         D_global_asm_807FBB64 |= 2;
         func_global_asm_806A2A10(0xDC, 0x2A, D_global_asm_807FDC9C->unkA_s16 != 0 ? D_global_asm_807FDC9C->unkA_s16 : 0xA);
@@ -204,7 +204,7 @@ void func_global_asm_806B7EA0(void) {
 void func_global_asm_806B83E4(void) {
     u8 temp;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC90->unk30 = D_global_asm_807FDC9C->unkA_u8[1];
         func_global_asm_8066EB40(gCurrentActorPointer, 300.0f);
         func_global_asm_8066E8E4(gCurrentActorPointer, 0.0f, 0.0f, 0.0f, 280.0f, -1);
@@ -235,7 +235,7 @@ void func_global_asm_806B83E4(void) {
 
 void func_global_asm_806B86AC(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC90->unk2E = D_global_asm_807FDC98->unkB;
     }
     if (D_global_asm_807FDC90->unk2E == 0) {
@@ -272,7 +272,7 @@ void func_global_asm_806B88B8(void) {
     temp_s0 = gCurrentActorPointer->unk17C;
     sp3C = temp_v1;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC90->unk30 = D_global_asm_807FDC9C->unkA_u8[1];
         temp_v1->unk0 = D_global_asm_807FDC9C->unkD;
     }

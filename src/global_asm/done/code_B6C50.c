@@ -6,7 +6,7 @@ void func_global_asm_806B1F50(void) {
     u8 brightness;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FDC98->unk46 |= 0xA0;
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
         gCurrentActorPointer->control_state = 0;
@@ -100,7 +100,7 @@ void func_global_asm_806B24B8(void) {
     f32 dz;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         rabbit = func_global_asm_8067ADB4(ACTOR_RABBIT_CAVES);
         if (rabbit != NULL) {
             D_global_asm_807FDC90->unk4 = rabbit;

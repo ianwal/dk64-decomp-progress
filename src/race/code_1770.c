@@ -398,7 +398,7 @@ void func_race_80026F04(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     a178 = gCurrentActorPointer->unk178;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         Struct807F5FD4_unk0 *temp7F5unk0 = &D_global_asm_807F5FD4->unk0;
         temp = (temp7F5unk0[a178->unk0].unk4_s32 - temp7F5unk0[a178->unk0].unk0_s32) / 12;
         aaD->unk2A = 3;
@@ -505,7 +505,7 @@ void func_race_800274C0(void) {
     sp4C = gCurrentActorPointer->additional_actor_data;
     sp48 = gCurrentActorPointer->unk178;
     temp_s1 = gCurrentActorPointer->unk17C;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         temp_s1->unk0_u16[0] = 0x78;
         gCurrentActorPointer->object_properties_bitfield |= 0x10;
         gCurrentActorPointer->noclip_byte = 0x3C;

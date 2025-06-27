@@ -102,7 +102,7 @@ void func_boss_8002DE04(void) {
     sp30 = gPlayerPointer->unk6A & 1 ? 0.7 : 1.0;
     initializeCharacterSpawnerActor();
     func_boss_80028878(sp38);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80626110(D_global_asm_807F5D10, 0, 0);
         gCurrentActorPointer->unk146_s16 = 5;
         gCurrentActorPointer->control_state = 0x1E;

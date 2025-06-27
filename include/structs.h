@@ -125,7 +125,10 @@ typedef struct {
         s32 unk4_s32;
         s32 *unk4_s32_ptr;
     };
-    f32 unk8;
+    union {
+        f32 unk8;
+        f32 *unk8_f32_ptr;
+    };
 } Struct807F5FD4_unk0;
 
 typedef struct {

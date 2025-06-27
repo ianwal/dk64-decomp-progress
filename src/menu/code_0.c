@@ -371,7 +371,7 @@ void func_menu_80024CB0(void) {
     sp28 = -1;
     var_v1 = 0;
     a180 = gCurrentActorPointer->unk180;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         sp20 = 1;
         sp28 = -1;
         // Count blueprints turned
@@ -472,7 +472,7 @@ void func_menu_80024EF0(void) {
     RGB *color_data;
 
     var_s0 = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         *var_s0 = 0xF0;
         gCurrentActorPointer->control_state = 0;
         D_menu_800330D0 = malloc(2 * sizeof(Mtx));

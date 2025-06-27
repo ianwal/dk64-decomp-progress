@@ -1092,7 +1092,7 @@ void func_menu_8002CB18(void) {
     aad2 = aaD1->controller->additional_actor_data;
     delete_actor = FALSE;
     func_global_asm_806BF920();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->animation_state->scale[0] *= 2.0f;
         gCurrentActorPointer->animation_state->scale[1] *= 2.0f;
         gCurrentActorPointer->animation_state->scale[2] *= 2.0f;
@@ -1859,7 +1859,7 @@ void func_menu_8002FEBC(void) {
 
     MaaD = gCurrentActorPointer->MaaD;
     PaaD = gPlayerPointer->PaaD;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         global_properties_bitfield |= 0x10;
         func_menu_800324CC();
         func_menu_8002ECE8();

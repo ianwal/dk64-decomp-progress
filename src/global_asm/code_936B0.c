@@ -168,7 +168,7 @@ void func_global_asm_8068EF54(void) {
 
     aaD = gCurrentActorPointer->AAD_as_array[0];
     kong = aaD->unk0;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->animation_state->unk1C = malloc(0x10);
         anim1C = gCurrentActorPointer->animation_state->unk1C;
         anim1C[0].unk0 = -0x80;
@@ -449,7 +449,7 @@ void func_global_asm_80690500(void) {
     }
     func_global_asm_8068F72C(aaD, a178, 1, 1);
     func_global_asm_8068FF40(sp4B, aaD, a178);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->y_acceleration = D_global_asm_80750300;
         gCurrentActorPointer->noclip_byte = 0x3C;
         setAction(0x4C, gCurrentActorPointer, PaaD->unk1A4);
@@ -727,7 +727,7 @@ void func_global_asm_806921DC(u8 arg0) {
     AAD_global_asm_806921DC *sp2C;
 
     sp2C = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6E[0] = -2;
         gCurrentActorPointer->unk6A &= ~1;
         gCurrentActorPointer->unkEE = (gCurrentActorPointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
@@ -810,7 +810,7 @@ void func_global_asm_80692640(void) {
     AAD_global_asm_80692640 *aaD;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6A &= 0xFFFE;
         gCurrentActorPointer->unkEE = (gCurrentActorPointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         gCurrentActorPointer->unkB8 = gCurrentActorPointer->unk124->unk4;
@@ -884,7 +884,7 @@ void func_global_asm_80692940(void) {
     u8 var_v0_2;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6A &= 0xFFFE;
         gCurrentActorPointer->unkEE = (gCurrentActorPointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         gCurrentActorPointer->unkB8 = gCurrentActorPointer->unk124->unk4;
@@ -973,7 +973,7 @@ void func_global_asm_80692E50(void) {
     s32 i;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6A &= 0xFFFE;
         gCurrentActorPointer->unkEE = (gCurrentActorPointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         gCurrentActorPointer->unkB8 = gCurrentActorPointer->unk124->unk4;
@@ -1072,7 +1072,7 @@ void func_global_asm_80693EC0(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     sp47 = 0;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         playSoundAtActorPosition(gCurrentActorPointer, 0xF4, 0xFF, 0x7F, 5);
         gCurrentActorPointer->unk6A &= 0xFFFE;
         gCurrentActorPointer->unkEE = (gCurrentActorPointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
@@ -1164,7 +1164,7 @@ void func_global_asm_806944BC(void) {
     s32 var_s1;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6A &= 0xFFFE;
         gCurrentActorPointer->unkEE = (gCurrentActorPointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         gCurrentActorPointer->unkB8 = gCurrentActorPointer->unk124->unk4;
@@ -1234,7 +1234,7 @@ void func_global_asm_80694948(void) {
 
     aaD = gCurrentActorPointer->AAD_as_array[0];
     sp2B = FALSE;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6A &= 0xFFFE;
         gCurrentActorPointer->unkEE = ((gCurrentActorPointer->unk124->unk0 / 6.2831855f) * 4095.0f);
         gCurrentActorPointer->unkB8 = gCurrentActorPointer->unk124->unk4;
@@ -1315,7 +1315,7 @@ void func_global_asm_80694D20(void) {
     u16 var_a0;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6A &= 0xFFFE;
         gCurrentActorPointer->unkEE = (gCurrentActorPointer->unk124->unk0 / MATH_2PI_F) * 4095.0f;
         gCurrentActorPointer->unkB8 = gCurrentActorPointer->unk124->unk4;
@@ -1396,7 +1396,7 @@ void func_global_asm_806951E8(void) {
     u16 var_a0;
 
     aaD = gCurrentActorPointer->AAD_as_array[0];
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6A &= 0xFFFE;
         gCurrentActorPointer->unkEE = ((gCurrentActorPointer->unk124->unk0 / 6.2831855f) * 4095.0f);
         gCurrentActorPointer->y_rotation = gCurrentActorPointer->unkEE;
@@ -1504,7 +1504,7 @@ void func_global_asm_80695724(f32 arg0, u8 arg1) {
     AAD_80695724 *aaD;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (arg1 == 1) {
             playSoundAtPosition(gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, 0x306, 0xFF, 0x7F, 0, 0, 0.3f, 0);
         }
@@ -1594,7 +1594,7 @@ void func_global_asm_80695BAC(void) {
     s32 i;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkFA = 0x270F;
         gCurrentActorPointer->unk6E[0] = -2;
         gCurrentActorPointer->unk6A &= ~1;
@@ -1665,7 +1665,7 @@ void func_global_asm_806960A4(void) {
     s32 i;
 
     sp74 = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkFA = 0x270F;
         gCurrentActorPointer->unk6E[0] = -2;
         gCurrentActorPointer->unk6A &= ~1;
@@ -1738,7 +1738,7 @@ void func_global_asm_80696574(void) {
     f32 temp;
 
     aaD = ((AAD_80696574*)gCurrentActorPointer->additional_actor_data);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         bitmask = 0x80000;
         gCurrentActorPointer->unkA0 = \
         gCurrentActorPointer->unk9C = gCurrentActorPointer->y_position;
@@ -1823,7 +1823,7 @@ void func_global_asm_80696A6C(void) {
         }
     }
     func_global_asm_8065D254(gCurrentActorPointer, 0x3C8, 0x40, 0x40, 0x64, 0x64, 1, 0x4B, 0x78, 0, 1.0f);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         sp44->unk18 = gCurrentActorPointer->unkB8;
         gCurrentActorPointer->draw_distance = 0x3E8;
         gCurrentActorPointer->object_properties_bitfield |= 0x400;
@@ -1903,7 +1903,7 @@ void func_global_asm_806970CC(void) {
     s16 temp;
     s16 temp2;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkFA = 9000;
     }
     func_global_asm_80696A6C();

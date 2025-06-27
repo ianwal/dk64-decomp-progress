@@ -183,7 +183,7 @@ void func_minecart_8002430C(u8 arg0, s32 arg1, s16 arg2, u8 arg3) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     PaaD = character_change_array->playerPointer->PaaD;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x1400;
         switch (current_map) {
             case MAP_JAPES_MINECART:
@@ -276,7 +276,7 @@ void func_minecart_80024890(void) {
     AAD_minecart_80024890 *temp_v1;
 
     temp_v1 = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         temp_v1->unk24 = 0.1f;
         temp_v1->unk28 = 5.0f;
     }
@@ -294,7 +294,7 @@ void func_minecart_80024914(void) {
     temp = gCurrentActorPointer->animation_state->scale_y * 0.166666666749999998;
     temp_s0 = gCurrentActorPointer->additional_actor_data;
     temp_a1 = temp_s0->unk0;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->terminal_velocity = D_global_asm_807502D0;
         temp_s0->unk24 = 3.0f;
         temp_s0->unk28 = 12.0f;
@@ -372,7 +372,7 @@ void func_minecart_80024B00(void) {
     aaD = gCurrentActorPointer->additional_actor_data;
     temp_f0 = gCurrentActorPointer->animation_state->scale[1] * 0.16666666675;
     sp4E = aaD->unk0;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_807248B0(gPlayerPointer, 0.12f);
         gCurrentActorPointer->y_acceleration = D_global_asm_807502F8;
         gCurrentActorPointer->terminal_velocity = D_global_asm_807502D0;
@@ -468,7 +468,7 @@ void func_minecart_80024FD0(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     PaaD = gPlayerPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         aaD->unk30 = malloc(3);
         aaD->unk30[0] = 0x10;
         aaD->unk30[1] = 0xFF;

@@ -58,7 +58,7 @@ void func_critter_80029118(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     temp2 = 0;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_critter_80029FA8 = FALSE;
         playCutscene(NULL, 0, 1);
         temp = D_global_asm_807FCC44;

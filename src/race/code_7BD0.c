@@ -638,7 +638,7 @@ void func_race_8002DB90(void) {
 
 void func_race_8002DC24(void) {
     RaceStruct3 *RaaD = gCurrentActorPointer->additional_actor_data;
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         RaaD->unk4 = gCurrentActorPointer->animation_state->scale_y;
     }
     switch (RaaD->unk0) {
@@ -972,7 +972,7 @@ void func_race_8002E484(void) {
 
     temp_s0 = gCurrentActorPointer->additional_actor_data;
     var_a3 = character_change_array[temp_s0->unk28].playerPointer;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         setAction(0x4E, gCurrentActorPointer, temp_s0->unk28);
         gCurrentActorPointer->control_state = 0;
         gCurrentActorPointer->control_state_progress = 0;

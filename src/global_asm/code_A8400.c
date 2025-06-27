@@ -356,7 +356,7 @@ void func_global_asm_806A5868(void) {
 
     aaD = gCurrentActorPointer->additional_actor_data;
     sp18 = 0.05f;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         sp18 = 1.0f;
         aaD->unk34 = malloc(0x280);
         aaD->unk55 = 0;

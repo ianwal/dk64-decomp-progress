@@ -69,7 +69,7 @@ void func_global_asm_806BC1E0(void) {
     aad178 = gCurrentActorPointer->unk178;
     sp64 = gCurrentActorPointer->animation_state->unk0;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         aad178->unk4 = 0.0f;
         func_global_asm_806BD0CC();
         gCurrentActorPointer->shadow_opacity = 0x80;

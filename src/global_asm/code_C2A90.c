@@ -28,7 +28,7 @@ u8 func_global_asm_806BDD90(void) {
     s16 i;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (func_global_asm_805FF0C8()) {
             gCurrentActorPointer->control_state = 0x40;
         } else {
@@ -122,7 +122,7 @@ void func_global_asm_806BE09C(void) {
         sp44 = 1.0f;
     }
     temp_f2 = D_global_asm_807FDC90->unk30 + ((0.44 - D_global_asm_807FDC90->unk30) * sp44);
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_807248B0(gCurrentActorPointer, temp_f2);
     }
     switch (gCurrentActorPointer->control_state) {
@@ -243,7 +243,7 @@ void func_global_asm_806BE8BC(void) {
         gCurrentActorPointer->control_state = 0x40;
         return;
     }
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80724CA4(2, 1);
         D_global_asm_807FDC98->unk46 |= 0x20;
         playActorAnimation(gCurrentActorPointer, 0x306);
@@ -447,7 +447,7 @@ void func_global_asm_806BF920(void) {
 
     a17C = gCurrentActorPointer->unk17C;
     sp20 = 0;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         var_a2 = 0;
         switch (a17C->unk0_u16[0]) {
             case 1:
@@ -540,7 +540,7 @@ void func_global_asm_806BFBB4(void) {
 void func_global_asm_806C10A0(u8 textIndex, u16 fileIndex, s16 animationIndex) {
     f32 sp34;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806F0C18(gCurrentActorPointer);
         D_global_asm_807FDC98->unk46 |= 0x200;
         func_global_asm_8072B324(gCurrentActorPointer, 0);
@@ -605,7 +605,7 @@ void func_global_asm_806C1300(void) {
 void func_global_asm_806C13AC(s16 arg0, s16 arg1, s16 arg2, s16 arg3, s16 arg4) {
     s16 temp_v0;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk6A |= 1;
         func_global_asm_8067ACB4(gCurrentActorPointer);
         gCurrentActorPointer->unkCC = 1;
@@ -660,7 +660,7 @@ void func_global_asm_806C1640(void) {
     f64 temp_f0;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806C15E8();
         if (current_map == MAP_DK_RAP) {
             temp_f0 = 0.8;
@@ -686,7 +686,7 @@ void func_global_asm_806C1734(void) {
     AnimationStateUnk0 *temp_a0;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806C15E8();
     }
     func_global_asm_806BF920();
@@ -739,7 +739,7 @@ void func_global_asm_806C1734(void) {
 
 void func_global_asm_806C19F4(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806C15E8();
         gCurrentActorPointer->ledge_info_pointer->unk14 = 180.0f;
         func_global_asm_80724CA4(2, 1);
@@ -766,7 +766,7 @@ void func_global_asm_806C19F4(void) {
 
 void func_global_asm_806C1B50(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_806C15E8();
         func_global_asm_806F09F0(gCurrentActorPointer, gCurrentActorPointer->unk58);
     }
@@ -811,7 +811,7 @@ render_806C1B50:
 
 void func_global_asm_806C1CCC(void) {
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->terminal_velocity = -2000.0f;
         gCurrentActorPointer->y_acceleration = -200.0f;
         func_global_asm_806C15E8();
@@ -842,7 +842,7 @@ void func_global_asm_806C1E44(void) {
     s32 i;
 
     initializeCharacterSpawnerActor();
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_8068842C(gCurrentActorPointer, 0, 1);
         func_global_asm_80688460(gCurrentActorPointer, 0, 1);
         switch (current_map) {
@@ -941,7 +941,7 @@ void func_global_asm_806C226C(void) {
     s16 i;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->y_acceleration = D_global_asm_807502F4;
         gCurrentActorPointer->y_position = gCurrentActorPointer->floor;
         gCurrentActorPointer->draw_distance = 0x4B0;
@@ -1142,7 +1142,7 @@ void func_global_asm_806C3A8C(void) {
 
     d = (((gPlayerPointer->x_position - gCurrentActorPointer->x_position) * (gPlayerPointer->x_position - gCurrentActorPointer->x_position)) + ((gPlayerPointer->y_position - gCurrentActorPointer->y_position) * (gPlayerPointer->y_position - gCurrentActorPointer->y_position)) + ((gPlayerPointer->z_position - gCurrentActorPointer->z_position) * (gPlayerPointer->z_position - gCurrentActorPointer->z_position)));
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk15E = 0x19;
         func_global_asm_8067ACB4(gCurrentActorPointer);
         if (!isFlagSet(TEMPFLAG_CUTSCENE_MERMAID_FTCS, FLAG_TYPE_TEMPORARY)) {

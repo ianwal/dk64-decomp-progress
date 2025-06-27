@@ -145,7 +145,7 @@ void func_global_asm_80697988(void) {
     AAD_global_asm_80697988 *aaD;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unkEE = gCurrentActorPointer->unk15F;
         aaD->unk4 = malloc(0x1000);
         if (gCurrentActorPointer->unk15F != 0) {
@@ -204,7 +204,7 @@ void func_global_asm_80697CEC(void) {
     Struct807502C0 sp68;
 
     aaD = gCurrentActorPointer->additional_actor_data;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         sp68 = D_global_asm_807502C0;
         gCurrentActorPointer->unk6E[0] = -2;
         gCurrentActorPointer->unk6A &= ~1;

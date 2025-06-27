@@ -740,7 +740,7 @@ void func_global_asm_806ACC64(void) {
 void func_global_asm_806ACCE8(void) {
     s32 i;
 
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk168 = 0x1E;
         gCurrentActorPointer->shadow_opacity = 0;
         gCurrentActorPointer->object_properties_bitfield &= ~0x8000;
@@ -821,7 +821,7 @@ void func_global_asm_806ACFFC(void) {
     u16 inputs;
     char *string;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         D_global_asm_807FC7E0 = malloc(4 * sizeof(char*));
         for (i = 0; i != 4;) {
             D_global_asm_807FC7E0[i] = getTextString(0x24, i, 0);

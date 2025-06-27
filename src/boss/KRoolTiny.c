@@ -103,7 +103,7 @@ void func_boss_8002F100(void) {
 
     temp_t0 = gCurrentActorPointer->unk178;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk132 = 8;
         setIntroStoryPlaying(0U);
         func_global_asm_80626110(D_global_asm_807F5D10, 0, 0);
@@ -413,7 +413,7 @@ void func_boss_8002FF74(void) {
     temp_s1 = gCurrentActorPointer->unk178;
     sp68 = gCurrentActorPointer->unk17C;
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         setIntroStoryPlaying(0U);
         func_global_asm_806FB370(2U, 0U, 1U);
         gPlayerPointer->control_state = 0x5F;
@@ -595,7 +595,7 @@ void func_boss_80030888(void) {
     temp = gCurrentActorPointer->unk11C;
     temp_2  = temp->unk178;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         func_global_asm_80724DB0(2, 1);
     }
     if (gCurrentActorPointer->unk15F == 1) {

@@ -13,7 +13,7 @@ void func_menu_80032550(void) {
     Actor *phi_a0_2;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->control_state = 0;
         gCurrentActorPointer->control_state_progress = 0;
         gCurrentActorPointer->unkCD = 1;
@@ -37,7 +37,7 @@ void func_menu_80032550(void) {
 void func_menu_8003264C(void) {
     s32 var_a0;
 
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->unk15F = 0;
         func_global_asm_80629174();
         gCurrentActorPointer->control_state = 0;

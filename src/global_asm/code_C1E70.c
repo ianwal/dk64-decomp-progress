@@ -103,7 +103,7 @@ void func_global_asm_806BD3E4(void) {
 
     var_v1 = D_global_asm_8076A0A6;
     a178 = gCurrentActorPointer->unk178;
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         if (areAllKeysTurnedIn()) {
             gCurrentActorPointer->control_state = 0x40;
             return;

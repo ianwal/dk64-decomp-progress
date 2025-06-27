@@ -86,7 +86,7 @@ void func_global_asm_806C6884(s16 arg0, s16 arg1, u16 arg2) {
     dx = gCurrentActorPointer->x_position - D_global_asm_807FDC94->x_position;
     dz = gCurrentActorPointer->z_position - D_global_asm_807FDC94->z_position;
     d = sqrtf(SQ(dx) + SQ(dz));
-    if ((gCurrentActorPointer->object_properties_bitfield & 0x10) == 0) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         a178 = gCurrentActorPointer->unk178;
         gCurrentActorPointer->unk64 |= 4;
         gCurrentActorPointer->object_properties_bitfield |= 0x800000;
@@ -127,7 +127,7 @@ void func_global_asm_806C6BC8(void) {
     f32 x, y, z;
 
     initializeCharacterSpawnerActor();
-    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+    if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->draw_distance = 0x7D0;
         gCurrentActorPointer->unk130 = 0xFF;
         gCurrentActorPointer->unk131 = 0xFF;
