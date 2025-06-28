@@ -4426,7 +4426,7 @@ f32 func_race_8002F04C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f32 arg
 // TODO: func_race_8002F304 has no documented signature but has been matched
 // TODO: func_race_8002F36C has no documented signature but has been matched
 // TODO: func_race_8002F420 has no documented signature but has been matched
-void func_race_8002F490(void *arg0);
+void func_race_8002F490(Struct8002F490 *arg0);
 // TODO: func_race_8002F784 has no documented signature
 // TODO: func_race_8002F90C has no documented signature but has been matched
 // TODO: func_race_8002F950 has no documented signature

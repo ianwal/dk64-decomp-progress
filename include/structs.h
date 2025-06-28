@@ -1646,10 +1646,15 @@ typedef struct {
     u8      pad18A[0x190 - 0x18A];
     LookAt  unk190[2];
     Hilite  unk1D0[2];
-    Hilite  unk1F0[2]; // Unsure on struct. Is a 0x10-sized struct 
-    f32     look_at_eye_x; // 0x210 maybe an array?
-    f32     look_at_eye_y; // 0x214
-    f32     look_at_eye_z; // 0x218
+    Hilite  unk1F0[2]; // Unsure on struct. Is a 0x10-sized struct
+    union {
+        struct {
+            f32     look_at_eye_x; // 0x210 maybe an array?
+            f32     look_at_eye_y; // 0x214
+            f32     look_at_eye_z; // 0x218
+        };
+        f32 look_at_eye[3];
+    };
     f32     unk21C; // Used
     f32     unk220; // Used
     f32     unk224; // Used
@@ -3794,5 +3799,27 @@ typedef struct MapSongData {
     u8 unk1;
     s16 default_output_floor_sfx;
 } MapSongData;
+
+typedef struct Struct8002F490 {
+    u8 pad0[0x27];
+    u8 unk27;
+    u8 unk28;
+    u8 pad29[0x30 - 0x29];
+    Actor *unk30;
+    u8 pad34[0x37 - 0x34];
+    s8 unk37;
+    u8 unk38;
+    u8 unk39;
+    u16 unk3A;
+    u8 pad3C[0x40 - 0x3C];
+    f32 unk40;
+    u8 unk44;
+    u8 unk45;
+} Struct8002F490;
+
+typedef struct AADTemp0 {
+    u8 pad0[0x26];
+    u8 unk26;
+} AADTemp0;
 
 #endif

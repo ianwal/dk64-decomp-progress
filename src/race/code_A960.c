@@ -67,8 +67,10 @@ typedef struct {
 } RaceStruct6;
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
+    s16 unk0;
+    s16 unk2;
+    s16 unk4;
+    s16 unk6;
     s32 unk8;
     s32 unkC;
     u8 unk10;
@@ -424,7 +426,80 @@ void func_race_8002F420(RaceStruct13 *arg0, RaceStruct13 *arg1) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F490.s")
+void func_race_8002F490(Struct8002F490 *arg0) {
+    s32 pad[2];
+    RaceStruct2_unk4 *temp_v0; // 44
+    s32 pad2[2];
+    f32 sp38;
+    f32 temp_f12;
+    f32 temp_f14;
+    RaceStruct2_unkC *temp_v0_2;
+    AADTemp0 *aadTemp;
+    Actor *tempActor;
+    u16 temp_v0_4;
+    u8 temp_t0;
+
+    tempActor = arg0->unk30;
+    aadTemp = tempActor->AAD_as_array[0];
+    temp_v0 = func_race_8002E960(aadTemp->unk26);
+    if (!temp_v0) {
+        return;
+    }
+    temp_v0_4 = temp_v0->unk4[arg0->unk3A];
+    temp_v0_2 = func_race_8002E9AC(temp_v0_4);
+    if (!temp_v0_2) {
+        return;
+    }
+    temp_f12 = gCurrentActorPointer->x_position;
+    temp_f14 = gCurrentActorPointer->z_position;
+    if ((SQ(temp_v0_2->unk0 - temp_f12) + SQ(temp_v0_2->unk4 - temp_f14)) > 900.0f) {
+        sp38 = func_global_asm_80665AE4(
+            temp_v0_2->unk0, 
+            temp_v0_2->unk4, 
+            temp_f12, 
+            temp_f14);
+        
+        gCurrentActorPointer->unkEC = sp38 - func_global_asm_80665AE4(
+            character_change_array[arg0->unk28].look_at_at_x,
+            character_change_array[arg0->unk28].look_at_at_z, 
+            character_change_array[arg0->unk28].look_at_eye[arg0->unk28],
+            character_change_array->look_at_eye_z);
+    }
+    if (arg0->unk38 != 0) {
+        arg0->unk38 = func_race_8002F280(temp_v0_2);
+    } else if (func_race_8002F280(temp_v0_2) != 0) {
+        if (arg0->unk27 == 0) {
+            if (temp_v0_2->unk10 != 0) {
+                if (func_race_8002F0AC(temp_v0_2) == 0) {
+                    playSoundAtPosition(
+                        temp_v0_2->unk0,
+                        temp_v0_2->unk2,
+                        temp_v0_2->unk4, 
+                        0x98, 0xFFU, 0x7F, 0U, 0U, 0.3f, 0U);
+                    if (arg0->unk44 != 0) {
+                        arg0->unk44--;
+                    } else {
+                        arg0->unk45 = 1;
+                    }
+                } else {
+                    playSong(MUSIC_67_CHECKPOINT, 1.0f);
+                }
+            }
+            func_race_8002F420(arg0, temp_v0);
+        }
+        arg0->unk3A++;
+        arg0->unk3A %= temp_v0->unk0;
+        if (arg0->unk3A == 0) {
+            arg0->unk37++;
+        }
+        temp_v0_4 = temp_v0->unk4[arg0->unk3A];
+        temp_v0_2 = func_race_8002E9AC(temp_v0_4);
+        arg0->unk38 = func_race_8002F280(temp_v0_2);
+    }
+    arg0->unk40 = func_race_8002F304(temp_v0_2,
+        gCurrentActorPointer->x_position,
+        gCurrentActorPointer->z_position);
+}
 
 // close, doable, float, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002F784.s")
