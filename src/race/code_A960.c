@@ -83,9 +83,11 @@ typedef struct {
 } RaceStruct2_unkC;
 
 typedef struct {
-    s32 unk0;
-    s32 unk4;
-    s32 unk8;
+    u16 unk0;
+    u8 pad2[2];
+    s16 *unk4;
+    u16 unk8;
+    u8 padA[2];
 } RaceStruct2_unk4;
 
 typedef struct RaceStruct2 {
@@ -121,9 +123,9 @@ typedef struct RaceStruct10 {
 extern u16 D_global_asm_80750AC4;
 
 void func_race_8002DCF0(void*, s32);
-void *func_race_8002E9AC(u8);
+RaceStruct2_unkC *func_race_8002E9AC(u8);
 void func_race_8002F36C(RaceStruct13*, RaceStruct13*);
-void func_race_8002E9F8(s32 *checkpointFile);
+void func_race_8002E9F8(u8 *checkpointFile);
 void *func_race_8002E960(u8 arg0);
 
 // regalloc
@@ -151,8 +153,61 @@ void *func_race_8002E9AC(u8 arg0) {
 }
 */
 
-// arg0 is checkpoint file pointer
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E9F8.s")
+void func_race_8002EDD4(Struct8002EDD4_arg0 *);
+
+void func_race_8002E9F8(u8 *arg0) {
+    s32 l;
+    s32 k;
+    s32 j;
+    RaceStruct2_unkC *var_s0;
+    s32 var_s1;
+    RaceStruct2_unk4 *var_s2;
+    s32 size;
+    s32 size_0;
+
+    if (!arg0) {
+        return;
+    }
+    var_s1 = arg0;
+    memcpy(D_race_8002FCF0, var_s1, 1U);
+    var_s1++;
+    memcpy(&D_race_8002FCF0->unk8, var_s1, 2U);
+    var_s1 += 2;
+    D_race_8002FCF0->unk4 = malloc(D_race_8002FCF0->unk0 * sizeof(RaceStruct2_unk4));
+    func_global_asm_80611690(D_race_8002FCF0->unk4);
+    var_s2 = D_race_8002FCF0->unk4;
+    for (l = 0; l < D_race_8002FCF0->unk0; l++) {
+        memcpy(var_s2, var_s1, 2U);
+        var_s1 += 2;
+        var_s2->unk4 = malloc(var_s2->unk0 * sizeof(s16));
+        size = var_s2->unk0 * 2;
+        memcpy(var_s2->unk4, var_s1, size);
+        var_s1 += size;
+        var_s2++;
+    }
+    l = 0;
+    D_race_8002FCF0->unkC = malloc(D_race_8002FCF0->unk8 * sizeof(RaceStruct2_unkC));
+    func_global_asm_80611690(D_race_8002FCF0->unkC);
+    var_s0 = D_race_8002FCF0->unkC;
+    for (j = 0; j < D_race_8002FCF0->unk8; j++) {
+        memcpy(var_s0, var_s1, 0x1CU);
+        var_s1 += 0x1C;
+        func_race_8002EDD4(var_s0);
+        var_s0++;
+    }
+    var_s2 = D_race_8002FCF0->unk4;
+    for (; l < D_race_8002FCF0->unk0; l++) {
+        var_s2->unk8 = 0U;
+        for (k = 0; k < var_s2->unk0; k++) {
+            if (func_race_8002E9AC(var_s2->unk4[k])->unk10) {
+                var_s2->unk8++;
+            }
+        }
+        var_s2++;
+    }
+}
+
+
 
 void setupRaceOnMapLoad(Maps map) {
     s32 *checkpointFile = getPointerTableFile(TABLE_24_CHECKPOINTS, map, 1, 1);
