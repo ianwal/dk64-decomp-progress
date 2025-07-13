@@ -3362,7 +3362,7 @@ us,asm,func_global_asm_806E5C2C,72,yes
 us,asm,func_global_asm_80688940,300,yes
 us,asm,func_global_asm_80616DB4,84,yes
 us,asm,func_global_asm_806A6408,96,yes
-us,asm,func_global_asm_806BB874,2060,no
+us,asm,func_global_asm_806BB874,2060,yes
 us,asm,func_global_asm_80636C00,312,no
 us,asm,func_global_asm_8072D9D4,140,yes
 us,asm,func_global_asm_80658B08,200,yes

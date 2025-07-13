@@ -484,10 +484,10 @@ void func_global_asm_806BB400(void) {
             // Fallthrough
         case 0x23:
             switch (gCurrentActorPointer->control_state_progress) {
-                case 2:
-                    break;
                 case 0:
                     func_global_asm_8072AB74(0x37, 0.0f, 0.0f, 0x202, 0.0f);
+                    break;
+                case 2:
                     break;
                 default: 
                     gCurrentActorPointer->control_state_progress = 1;
@@ -576,8 +576,165 @@ void func_global_asm_806BB81C(void) {
     playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 1.0f);
 }
 
-// Jumptable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BB874.s")
+typedef struct Struct8000750638 {
+    u8 unk0[11];
+} Struct8000750638;
+
+void func_global_asm_806D0468(Actor *, u8);
+extern Struct8000750638 D_global_asm_80750638;
+extern s32 D_global_asm_807FBB68;
+
+// Toy Box Code
+void func_global_asm_806BB874(void) {
+    s16 i;
+    s16 sp74;
+    s16 sp72;
+    Struct8000750638 sp64;
+    u8 var_t0;
+    s32 pad;
+
+    sp74 = 100 + ((rand() >> 0xF) % 100);
+    sp72 = 200 + ((rand() >> 0xF) % 250);
+    initializeCharacterSpawnerActor();
+    if (!(gCurrentActorPointer->object_properties_bitfield & 0x10)) {
+        gCurrentActorPointer->unk130 = 60;
+        gCurrentActorPointer->unk131 = 60;
+        gCurrentActorPointer->draw_distance = 0x3E8;
+        gCurrentActorPointer->control_state = 0;
+        gCurrentActorPointer->control_state_progress = 0;
+        playActorAnimation(gCurrentActorPointer, 0x3DC);
+        D_global_asm_807FDC90->unk2C = 0x78;
+        gCurrentActorPointer->unk64 |= 0x20;
+
+    }
+    switch (gCurrentActorPointer->control_state) {
+    case 0:
+        for (i = 0; i < D_global_asm_807FBB70.unk254; i++) {
+            if (D_global_asm_807FBB70.unk258[i] == 3) {
+                gCurrentActorPointer->control_state++;
+
+            }
+        }
+        break;
+    case 1:
+        switch (gCurrentActorPointer->control_state_progress) {
+        case 0:
+            if (D_global_asm_807FDC90->unk2C-- < 0x3C) {
+                gCurrentActorPointer->object_properties_bitfield |= 0x400;
+                playActorAnimation(gCurrentActorPointer, 0x3DD);
+                gCurrentActorPointer->control_state_progress++;
+            }
+            break;
+        case 2:
+            func_global_asm_80686F90(0U,
+                ((((rand() >> 0xF) % 2048) + gCurrentActorPointer->y_rotation) - 0x400),
+                ((rand() >> 0xF) % 1024));
+            break;
+        case 3:
+            D_global_asm_807FBB68 |= 1;
+            playSong(0x68, 1.0f);
+            D_global_asm_807FDC90->unk2C = 0x32;
+            func_global_asm_806BB81C();
+            gCurrentActorPointer->control_state += 1;
+
+            break;
+        }
+        break;
+    case 2:
+        if (func_global_asm_806BB604(0x2AU, sp74, sp72, 0) != 0) {
+            gCurrentActorPointer->control_state += 1;
+        }
+        break;
+    case 3:
+        if (func_global_asm_80726D7C(0x2AU) == 0) {
+            D_global_asm_807FDC90->unk2C = 0xA;
+            gCurrentActorPointer->control_state += 1;
+        }
+        break;
+    case 4:
+        func_global_asm_806BB81C();
+        func_global_asm_806BB604(0x28U, sp74, sp72, 0);
+        if (func_global_asm_806BB604(0x29U, sp74 + 40, sp72 + 80, 0)) {
+            gCurrentActorPointer->control_state += 1;
+        }
+        break;
+    case 5:
+        if ((!func_global_asm_80726D7C(0x28U)) && (!func_global_asm_80726D7C(0x29U))) {
+            D_global_asm_807FDC90->unk2C = 0xA;
+            gCurrentActorPointer->control_state += 1;
+        }
+        break;
+    case 6:
+        func_global_asm_806BB81C();
+        func_global_asm_806BB604(0x2BU, sp74, sp72, 0);
+        if (func_global_asm_806BB604(0x2CU, (s16) (sp74 + 0x28), (s16) (sp72 + 0x50), 0) != 0) {
+            gCurrentActorPointer->control_state += 1;
+        }
+        break;
+    case 7:
+        if ((!func_global_asm_80726D7C(0x2BU)) && (!func_global_asm_80726D7C(0x2CU))) {
+            func_global_asm_80641874(0x11, 1);
+            func_global_asm_807271F4(0x2D, (s16) (s32) ((func_global_asm_80612794(gCurrentActorPointer->y_rotation) * 80.0f) + gCurrentActorPointer->x_position), (s16) (s32) gCurrentActorPointer->y_position, (s16) (s32) ((func_global_asm_80612790(gCurrentActorPointer->y_rotation) * 80.0f) + gCurrentActorPointer->z_position), (s16) (s32) gCurrentActorPointer->y_rotation, 0, 0);
+            D_global_asm_807FDCA0->unk1C = gLastSpawnedActor;
+            playCutscene(gCurrentActorPointer, 0x1F, 1U);
+            gCurrentActorPointer->control_state++;
+            D_global_asm_807FDC90->unk2C = 0x1E;
+            gCurrentActorPointer->control_state_progress = 0xA;
+        }
+        break;
+    case 8:
+        if (D_global_asm_807FDC90->unk2C) {
+            D_global_asm_807FDC90->unk2C--;
+        } else {
+            sp64 = D_global_asm_80750638;
+            var_t0 = 0xA - gCurrentActorPointer->control_state_progress;
+            if (gCurrentActorPointer->control_state_progress == 0xA) {
+                func_global_asm_806BB81C();
+            }
+            if (gCurrentActorPointer->control_state_progress) {
+                func_global_asm_806BB604(
+                    sp64.unk0[gCurrentActorPointer->control_state_progress--] + 0x22,
+                    (var_t0 * 8) + 100,
+                    (var_t0 * 0x14) + 250,
+                    D_global_asm_807FDCA0->unk1C);
+            } else {
+                gCurrentActorPointer->object_properties_bitfield &= 0xFFFF7FFF;
+                gCurrentActorPointer->noclip_byte = 1;
+                gCurrentActorPointer->control_state++;
+                func_global_asm_8061C464(D_global_asm_807F5D10, gCurrentActorPointer, 4U, 0x1129, 0x264, 0, 0, 0xAF, 0, 0, 1.0f);
+                func_global_asm_8061C458(D_global_asm_807F5D10, gPlayerPointer);
+            }
+            D_global_asm_807FDC90->unk2C = 0xF;
+        }
+        break;
+    case 9:
+        gCurrentActorPointer->shadow_opacity = MAX(0, gCurrentActorPointer->shadow_opacity - 10);
+        if (!func_global_asm_80726D7C(0x2DU)) {
+            func_global_asm_80641874(0x11, 0xFF);
+            func_global_asm_806224CC(D_global_asm_807F5D10, gPlayerPointer);
+            func_global_asm_80726EE0(0U);
+            D_global_asm_807FBB68 &= ~1;
+            if (character_change_array->unk2C0 != 1) {
+                func_global_asm_806D0468(gPlayerPointer, 1);
+                extra_player_info_pointer->unk1D8 = 0.05f;
+            }
+            gCurrentActorPointer->control_state++;
+            func_global_asm_80602B60(0x68, 0U);
+            func_global_asm_8063DA40(0x7C, 0xA);
+            gPlayerPointer->draw_distance = 500;
+            gPlayerPointer->object_properties_bitfield &= ~0x400;
+            gCurrentActorPointer->noclip_byte = 0x24;
+            playCutscene(gCurrentActorPointer, 0x1F, 5U);
+        }
+        break;
+    case 10:
+        gCurrentActorPointer->shadow_opacity = MIN(0xFF, gCurrentActorPointer->shadow_opacity + 10);
+        break;
+    }
+    renderActor(gCurrentActorPointer, 0U);
+}
+
+
 
 void func_global_asm_806BC080(void) {
     func_global_asm_806BB32C();
