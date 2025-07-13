@@ -222,15 +222,18 @@ void func_global_asm_806BD7B0(void) {
     AAD_806BD7B0 *aaD;
     f32 sp48;
     f32 sp44;
-    Actor *temp_v0_2;
-    Struct80750664 *temp_v0_3;
+    Actor *atemp;
+    A178_806BD7B0 *AAD178;
     s32 sp38;
     Struct807506B8 sp30;
+    f32 temp;
 
     aaD = gCurrentActorPointer->additional_actor_data;
     switch (gCurrentActorPointer->control_state) {
+        case 0:
+            break;
         case 5:
-            if ((D_global_asm_807506A4 != 0) && (func_global_asm_8061CB50() == 0)) {
+            if (D_global_asm_807506A4 && !func_global_asm_8061CB50()) {
                 aaD->unk0++;
                 if (aaD->unk0 >= 0x29) {
                     D_global_asm_807506A4 = 0;
@@ -245,7 +248,7 @@ void func_global_asm_806BD7B0(void) {
             gCurrentActorPointer->control_state = 2;
             break;
         case 2:
-            if (D_807FC8D4 < 160000.0) {
+            if (D_807FC8D4 < SQ(400.0)) {
                 gCurrentActorPointer->control_state = 3;
                 aaD->unk0 = 0;
                 playSong(MUSIC_59_GENERIC_TWINKLY_SOUNDS, 1.0f);
@@ -289,16 +292,20 @@ void func_global_asm_806BD7B0(void) {
                 func_global_asm_80714950(0x10064);
                 func_global_asm_8071498C(func_global_asm_8071AADC);
                 changeActorColor(0xFF, 0xFF, 0xFF, 0xFF);
-                sp48 = (func_global_asm_806119FC() * 30.0) + gCurrentActorPointer->x_position;
-                sp44 = (func_global_asm_806119FC() * 30.0) + (gCurrentActorPointer->y_position + 20.0);
-                drawSpriteAtPosition(&D_global_asm_80720A7C, 1.2f, sp48, sp44, (func_global_asm_806119FC() * 30.0) + gCurrentActorPointer->z_position);
+                temp = func_global_asm_806119FC();
+                sp48 = (temp * 30.0) + gCurrentActorPointer->x_position;
+                temp = func_global_asm_806119FC();
+                sp44 = (temp * 30.0) + (gCurrentActorPointer->y_position + 20.0);
+                temp = func_global_asm_806119FC();
+                temp = (temp * 30.0) + gCurrentActorPointer->z_position;
+                drawSpriteAtPosition(&D_global_asm_80720A7C, 1.2f, sp48, sp44, temp);
                 break;
             }
             break;
         case 4:
-            if (areAllKeysTurnedIn() != 0) {
-                temp_v0_2 = ((A178_806BD7B0*)aaD->unk4->unk178)->unk0;
-                temp_v0_2->y_position += 5.0;
+            if (areAllKeysTurnedIn()) {
+                AAD178 = aaD->unk4->unk178;
+                AAD178->unk0->y_position += 5.0;
                 if (aaD->unk0 == 0x10E) {
                     setFlag(PERMFLAG_PROGRESS_K_LUMSY_FREE, TRUE, FLAG_TYPE_PERMANENT);
                     func_global_asm_80712524(D_global_asm_80750664[7].unk0, D_global_asm_80750664[7].unk2);
@@ -307,22 +314,23 @@ void func_global_asm_806BD7B0(void) {
             sp38 = 0xB4;
             if ((aaD->unk2 == 2) || (aaD->unk2 == 7)) {
                 sp38 = 0xB4;
-                if (areAllKeysTurnedIn() == 0) {
+                if (!areAllKeysTurnedIn()) {
                     sp38 = 0x5A;
                 }
             }
             aaD->unk0++;
-            if (sp38 == aaD->unk0) {
+            if (aaD->unk0 == sp38) {
                 if ((aaD->unk2 == 2) || (aaD->unk2 == 7)) {
-                    setFlag(aaD->unk2 + PERMFLAG_PROGRESS_KEY_1_TURNED, TRUE, 0);
-                    if (areAllKeysTurnedIn() == 0) {
+                    setFlag(PERMFLAG_PROGRESS_KEY_1_TURNED + aaD->unk2, TRUE, FLAG_TYPE_PERMANENT);
+                    if (!areAllKeysTurnedIn()) {
                         func_global_asm_8061CB08();
                         func_global_asm_80602B60(0x7D, 1);
                         D_global_asm_807506A4 = 1;
                     }
                 } else {
-                    temp_v0_3 = &D_global_asm_80750664[aaD->unk2];
-                    func_global_asm_80712524(temp_v0_3->unk0, temp_v0_3->unk2);
+                    func_global_asm_80712524(
+                        D_global_asm_80750664[aaD->unk2].unk0,
+                        D_global_asm_80750664[aaD->unk2].unk2);
                 }
             }
             break;

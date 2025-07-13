@@ -262,7 +262,7 @@ segments:
       - [0x2006710, c, code_6710]
       - [0x200F4C0, c, done/code_F4C0]
       - [0x200F600, c, code_F600]
-      - [0x200FE40, c, code_FE40]
+      - [0x200FE40, c, done/code_FE40]
       - [0x2010130, c, done/dktv]
       - [0x20104F0, c, saveFile]
       - [0x20131B0, c, code_131B0]

@@ -36,12 +36,13 @@ extern u8 D_global_asm_807467C4; // should_poll_input
 
 /*
 // TODO: Hmm, might need complete segment defintions for this file for this to match
-void func_global_asm_8060A9BC(void) {
+void func_global_asm_8060A9BC(void) {    
     func_global_asm_8060AA04();
-    if (!(D_global_asm_807467C4 & 0xFF)) {
-        D_global_asm_807ECD08 = 1;
-        osContStartReadData(&D_global_asm_807ECCF0);
+    if ((D_global_asm_807467C4 & 0xFF)) {
+        return;
     }
+    D_global_asm_807ECD08 = 1;
+    osContStartReadData(&D_global_asm_807ECCF0);
 }
 */
 
