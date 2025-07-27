@@ -75,12 +75,9 @@ void func_dk64_boot_80000D8C(void *arg0) {
     }
 }
 
-#ifndef NONMATCHING
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1630/func_dk64_boot_80000E48.s")
-#else
 void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, u8 *arg3) {
-    int i;
-    for (i = 0; arg3[i]; arg1 += 9, i++) {
+    s32 i;
+    for (i = 0; arg3[i] != 0; arg1 += 9, i++) {
         if (0x20 != arg3[i]) {
             func_dk64_boot_80000EEC(arg0, arg1, arg2, arg3[i]);
         } else {
@@ -89,7 +86,6 @@ void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, u8 *arg3) {
     }
     osWritebackDCache(arg0, 0x25800);
 }
-#endif
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1630/func_dk64_boot_80000EEC.s")
 

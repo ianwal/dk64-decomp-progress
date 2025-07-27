@@ -4319,7 +4319,7 @@ us,boot,func_dk64_boot_800024E0,196,yes
 us,boot,__ll_lshift,44,yes
 us,boot,__osPfsRequestData,208,yes
 us,boot,func_dk64_boot_80002CE8,120,no
-us,boot,func_dk64_boot_80000E48,164,no
+us,boot,func_dk64_boot_80000E48,164,yes
 us,boot,func_dk64_boot_80001DB0,1316,yes
 us,boot,func_dk64_boot_80001C48,360,yes
 us,boot,osEepromLongRead,140,yes
