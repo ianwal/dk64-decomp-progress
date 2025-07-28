@@ -13,10 +13,10 @@ extern u8 D_dk64_boot_8000ED9C;
 extern u8 D_dk64_boot_8000EDC0;
 
 extern OSThread D_dk64_boot_800138C0;
-extern void *D_dk64_boot_80013A70[];
+extern u8* D_dk64_boot_80013A70; // pointer to the stack for D_dk64_boot_800138C0
 
 extern u16 D_dk64_boot_80100000[0];
-extern void *D_dk64_boot_80133E80;
+extern u8 D_dk64_boot_80133E80[]; // stack for D_dk64_boot_800138C0
 
 typedef struct{
     s32 unk0;
@@ -28,8 +28,8 @@ typedef struct{
 
 /*
 void func_dk64_boot_80000A30(void) {
-    D_dk64_boot_80013A70[0] = &D_dk64_boot_80133E80;
-    osCreateThread(&D_dk64_boot_800138C0, 2, func_dk64_boot_80000AA0, NULL, D_dk64_boot_80013A70[0], 0xA);
+    D_dk64_boot_80013A70 = &D_dk64_boot_80133E80;
+    osCreateThread(&D_dk64_boot_800138C0, 2, func_dk64_boot_80000AA0, NULL, D_dk64_boot_80013A70, 0xA);
     osStartThread(&D_dk64_boot_800138C0);
     while (TRUE) {};
 }

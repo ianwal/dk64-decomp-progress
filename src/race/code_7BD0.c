@@ -81,8 +81,6 @@ typedef struct {
     Struct8002D148_unk4 *unk4;
 } Struct8002D148;
 
-u16 *func_race_8002E960(u8, void*);
-
 void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, Struct8002D148_unk4 *arg3) {
     u16 *temp_v0_2;
     RaceAdditionalActorData *RaaD;
@@ -96,7 +94,7 @@ void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, Struct8002D148_unk4 
     arg3->unk3A = 0;
     arg3->unk37 = 1;
     if (arg3->unk27 == 0) {
-        temp_v0_2 = func_race_8002E960(RaaD->unk26, arg1);
+        temp_v0_2 = func_race_8002E960(RaaD->unk26);
         if (temp_v0_2 != NULL) {
             arg3->unk3C = *temp_v0_2 - 1;
             func_race_8002F36C(arg3, temp_v0_2);

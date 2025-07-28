@@ -350,7 +350,6 @@ void func_race_8002AE9C(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_6650/func_race_8002B180.s")
 
 f32 func_race_8002E1C8(void *, f32, void *, void *);
-s32 func_race_8002E960(u8);
 f32 func_race_8002F784(s32, void *, s32);
 f32 func_race_8002F90C(s32, void *, void *);
 

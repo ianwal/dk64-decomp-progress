@@ -128,20 +128,18 @@ void func_race_8002DCF0(void*, s32);
 RaceStruct2_unkC *func_race_8002E9AC(u8);
 void func_race_8002F36C(RaceStruct13*, RaceStruct13*);
 void func_race_8002E9F8(u8 *checkpointFile);
-void *func_race_8002E960(u8 arg0);
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E960.s")
-
-/*
-void *func_race_8002E960(u8 arg0) {
-    
-    if (D_race_8002FCF0 == NULL || arg0 >= D_race_8002FCF0->unk0) {
+u16 *func_race_8002E960(u8 arg0) {
+    // This new_var fixes a regalloc, v1 => a1. Maybe this is missing a parameter?
+    void *new_var;
+    new_var = &D_race_8002FCF0->unk4[arg0];
+    if ((D_race_8002FCF0 == NULL) || (D_race_8002FCF0->unk0 <= arg0))
+    {
         return NULL;
     }
-    return &D_race_8002FCF0->unk4[arg0];
+    new_var = &D_race_8002FCF0->unk4[arg0];
+    return new_var;
 }
-*/
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_A960/func_race_8002E9AC.s")
@@ -437,7 +435,6 @@ void func_race_8002F490(Struct8002F490 *arg0) {
     AADTemp0 *aadTemp;
     Actor *tempActor;
     u16 temp_v0_4;
-    u8 temp_t0;
 
     tempActor = arg0->unk30;
     aadTemp = tempActor->AAD_as_array[0];

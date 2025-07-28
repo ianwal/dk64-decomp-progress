@@ -4413,7 +4413,7 @@ void func_race_8002E484(void);
 // TODO: func_race_8002E8EC has no documented signature but has been matched
 
 // race/code_A960.c
-// TODO: func_race_8002E960 has no documented signature but has been matched
+u16 *func_race_8002E960(u8 arg0);
 // TODO: func_race_8002E9AC has no documented signature
 // TODO: func_race_8002E9F8 has no documented signature
 void setupRaceOnMapLoad(Maps map);
