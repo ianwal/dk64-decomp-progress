@@ -1,7 +1,7 @@
 version,section,function,length,matching
 us,.race,func_race_8002597C,1312,no
 us,.race,func_race_80028E20,564,no
-us,.race,func_race_8002E960,76,no
+us,.race,func_race_8002E960,76,yes
 us,.race,func_race_80026004,76,yes
 us,.race,func_race_8002E9F8,528,yes
 us,.race,func_race_8002CFF0,116,yes
@@ -24,7 +24,7 @@ us,.race,func_race_8002F490,756,yes
 us,.race,func_race_8002DF38,656,yes
 us,.race,func_race_8002D524,520,no
 us,.race,func_race_8002D72C,40,yes
-us,.race,func_race_8002E9AC,76,no
+us,.race,func_race_8002E9AC,76,yes
 us,.race,func_race_8002D360,172,yes
 us,.race,func_race_800257A4,472,no
 us,.race,func_race_8002F36C,180,yes

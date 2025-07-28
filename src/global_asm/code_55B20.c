@@ -821,29 +821,28 @@ void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2) {
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80653DF0.s")
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80653EA8.s")
-
-/*
 void func_global_asm_80653EA8(Gfx *arg0, Gfx *arg1) {
     s32 temp[2];
     s32 sp44;
     u32 sp40;
+    u32 new_var;
     u32 temp_a0;
-
     while (arg0 != arg1) {
-        if ((arg0->words.w0 >> 0x18) == G_SETTIMG) {
+        new_var = arg0->words.w0 >> 0x18;
+        if (new_var == G_SETTIMG)
+        {
             temp_a0 = arg0->words.w1;
-            if (temp_a0 >= 0x80000000 && temp_a0 < 0xA0000000) {
-                func_global_asm_8066B7AC(temp_a0, &sp44, &sp40);
-                func_global_asm_8066B434(arg0->words.w1, 0x542, 0x22);
-                arg0->words.w1 = sp40;
-            }
+            do {
+                if ((temp_a0 >= 0x80000000) && (temp_a0 < 0xA0000000)) {
+                    func_global_asm_8066B7AC(temp_a0, &sp44, &sp40);
+                    func_global_asm_8066B434(arg0->words.w1, 0x542, 0x22);
+                    arg0->words.w1 = sp40;
+                }
+            } while (0);
         }
         arg0++;
     }
 }
-*/
 
 void func_global_asm_80653F68(s16 index) {
     chunk_array_pointer[index].unk7 |= 8;
