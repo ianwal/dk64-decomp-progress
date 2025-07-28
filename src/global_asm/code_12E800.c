@@ -159,20 +159,15 @@ void func_global_asm_8072A7DC(void) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_12E800/func_global_asm_8072A86C.s")
-
-/*
 void func_global_asm_8072A86C(s16 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4) {
-    gCurrentActorPointer->y_velocity = func_global_asm_80612794(gCurrentActorPointer->unkF0) * -arg3;
-    func_global_asm_8072AB74(arg0, arg1, arg2, (arg4 | 0x1080) & 0xFFFF, gCurrentActorPointer->unk15E * 0.5);
+    s16 new_var;
+    new_var = arg0;
+    gCurrentActorPointer->y_velocity = func_global_asm_80612794(gCurrentActorPointer->unkF0) * (-arg3);
+    func_global_asm_8072AB74(new_var, arg1, arg2, (arg4 & 0xFFFFu) | 0x1080, gCurrentActorPointer->unk15E * 0.5);
 }
-*/
 
 extern f64 D_global_asm_8075FD30;
 extern f64 D_global_asm_8075FD38;
-
-void func_global_asm_8072A86C(s16 arg0, f32 arg1, f32 arg2, f32 arg3, u16 arg4);
 
 void func_global_asm_8072A920(s16 arg0, s16 arg1, f32 arg2, f32 arg3, f32 arg4, u8 arg5, f32 arg6, f32 arg7, u16 arg8) {
     gCurrentActorPointer->z_rotation = func_global_asm_806CC190(gCurrentActorPointer->z_rotation, (func_global_asm_80665E94(arg2, arg3, arg4, gCurrentActorPointer->x_position, gCurrentActorPointer->y_position, gCurrentActorPointer->z_position, arg5) * 2048.0) / D_global_asm_8075FD30, arg6);
