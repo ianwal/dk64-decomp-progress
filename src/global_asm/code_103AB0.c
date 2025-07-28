@@ -373,10 +373,6 @@ void func_global_asm_80704298(Struct80704130 *arg0, u8 arg1, u8 arg2) {
 }
 */
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80704444.s")
-
-/*
 typedef struct {
     s16 unk0;
     s16 unk2;
@@ -390,10 +386,9 @@ void func_global_asm_80704444(GlobalASMStruct3 *arg0, s16 arg1, s16 arg2, s16 ar
     arg0->unk0 = arg1;
     arg0->unk2 = arg2;
     arg0->unk4 = 1000;
-    arg0->unk8 = (arg3 << arg5);
-    arg0->unkA = (arg4 << arg5);
+    arg0->unk8 = (arg3 << arg5) & 0xFFFF;
+    arg0->unkA = (arg4 << arg5) & 0xFFFF;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80704484.s")
 
