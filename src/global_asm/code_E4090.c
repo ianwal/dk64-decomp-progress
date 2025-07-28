@@ -1041,14 +1041,9 @@ void func_global_asm_806E2FE8(void) {
     }
 }
 
-// regalloc v1 a2
-// https://decomp.me/scratch/0BloP
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E3040.s")
-
 extern f32 D_global_asm_8075371C[];
 extern f32 D_global_asm_8075378C[];
 
-/*
 void func_global_asm_806E3040(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
@@ -1064,6 +1059,11 @@ void func_global_asm_806E3040(void) {
                     playAnimation(gCurrentActorPointer, 0x1A);
                     extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
                 } else {
+                    // Regalloc fix
+                    if ((!gCurrentActorPointer) && (!gCurrentActorPointer))
+                    {
+                    }
+
                     gCurrentActorPointer->control_state = 0x3E;
                     gCurrentActorPointer->control_state_progress = 0;
                     extra_player_info_pointer->unk54 = D_global_asm_8075371C[D_global_asm_807FD584];
@@ -1075,7 +1075,6 @@ void func_global_asm_806E3040(void) {
         }
     }
 }
-*/
 
 void func_global_asm_806E31FC(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
