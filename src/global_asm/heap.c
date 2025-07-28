@@ -254,6 +254,7 @@ void func_global_asm_806115A8(HeapHeader **arg0, HeapHeader *arg1) {
 
 extern s32 D_global_asm_807F5A68;
 
+// Removes a heap block from D_global_asm_807F5A70 and marks it as free
 /*
 void func_global_asm_80611614(HeapHeader **arg0) {
     s32 temp_t7;
@@ -261,13 +262,16 @@ void func_global_asm_80611614(HeapHeader **arg0) {
     HeapHeader *temp;
 
     temp = *arg0 - 1;
-    temp->unkB = 0;
+    temp->unkB = 0; // mark as free
     temp_t7 = D_global_asm_807F5A68 - 1;
+
+    // Find the block
     for (i = 0; i < D_global_asm_807F5A68; i++) {
-        if (temp == D_global_asm_807F5A70[i]) {
+        if ((s32) temp == D_global_asm_807F5A70[i]) {
             break;
         }
     }
+
     D_global_asm_807F5A70[i] = D_global_asm_807F5A70[temp_t7];
     D_global_asm_807F5A68 = temp_t7;
     D_global_asm_807F5A70[temp_t7] = 0;
