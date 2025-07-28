@@ -833,15 +833,12 @@ void func_global_asm_806E1A50(void) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E1BA4.s")
-
-/*
 void func_global_asm_806E1BA4(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0;
     }
     if (((D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU) && (!(gCurrentActorPointer->unk6A & 1) || (gCurrentActorPointer->unkE0 == 0.0f))) {
+        if (0) {}
         extra_player_info_pointer->unk38 = D_global_asm_807531FC[D_global_asm_807FD584];
         gCurrentActorPointer->unkB8 = MIN(gCurrentActorPointer->unkB8, extra_player_info_pointer->unk38);
         extra_player_info_pointer->unk30 = D_global_asm_80753250[D_global_asm_807FD584];
@@ -854,7 +851,6 @@ void func_global_asm_806E1BA4(void) {
         extra_player_info_pointer->unk58 = D_global_asm_80767CC0 - 0x1E;
     }
 }
-*/
 
 void func_global_asm_806E1D38(void) {
     if (D_global_asm_807FD610[cc_player_index].unk2C & A_BUTTON) {
