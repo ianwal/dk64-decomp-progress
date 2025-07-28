@@ -22,23 +22,20 @@ extern u16 D_global_asm_8074D624[];
 extern Actor *actor_list[256];
 extern s16 actor_count;
 
-// regalloc, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80677D80.s")
-
 extern Struct807FB630 D_global_asm_807FB630[];
-extern Struct807FB7B0 D_807FB7B0[];
+extern Struct807FB7B0 D_global_asm_807FB7B0[];
 extern s16 D_global_asm_807FBB30;
 extern s16 D_global_asm_807FBB32;
-extern s32 D_807FBB38;
-extern s32 *D_807FBB50;
-extern void *D_global_asm_807FBB54;
-extern void *D_807FBB58;
-extern void *D_807FBB5C;
+extern s32 *D_global_asm_807FBB50;
+extern s16 *D_global_asm_807FBB54;
 extern s16 D_global_asm_807FBFD8;
+extern s32 D_global_asm_807FBB38;
+extern u16 *D_global_asm_807FBB58;
+extern s16 *D_global_asm_807FBB5C;
 
-/*
 void func_global_asm_80677D80(void) {
     u16 i;
+    s32 *new_var;
 
     for (i = 0; i < 0x20; i++) {
         D_global_asm_807FB630[i].unk0 = 0;
@@ -47,15 +44,16 @@ void func_global_asm_80677D80(void) {
     }
     D_global_asm_807FBB30 = 0;
     for (i = 0; i < 0x20; i++) {
-        D_807FB7B0[i].unk0 = 0xFFFF;
-        D_807FB7B0[i].unk4 = 0;
-        D_807FB7B0[i].unk8 = 0;
+        D_global_asm_807FB7B0[i].unk0 = 0xFFFF;
+        D_global_asm_807FB7B0[i].unk4 = 0;
+        D_global_asm_807FB7B0[i].unk8 = 0;
     }
     D_global_asm_807FBB32 = 0;
     D_global_asm_807FBB50 = getPointerTableFile(TABLE_13_ANIM_CODE, 0, 1, 1);
-    D_global_asm_807FBB54 = (u8*)D_807FBB50 + D_807FBB50[3];
-    D_global_asm_807FBB58 = (u8*)D_807FBB50 + D_807FBB50[2];
-    D_global_asm_807FBB5C = (u8*)D_807FBB50 + D_807FBB50[1];
+    new_var = D_global_asm_807FBB50;
+    D_global_asm_807FBB54 = ((u8*)new_var) + new_var[3];
+    D_global_asm_807FBB58 = ((u8*)new_var) + D_global_asm_807FBB50[2];
+    D_global_asm_807FBB5C = (u8*)D_global_asm_807FBB50 + D_global_asm_807FBB50[1];
     for (i = 0; i < 0x40; i++) {
         D_global_asm_807FB930[i].unk0 = NULL;
         D_global_asm_807FB930[i].unk4 = 0;
@@ -67,7 +65,6 @@ void func_global_asm_80677D80(void) {
     D_global_asm_807FBFD8 = 0;
     gCurrentPlayer = NULL;
 }
-*/
 
 void func_global_asm_80677EC8(s32 arg0) {
 
