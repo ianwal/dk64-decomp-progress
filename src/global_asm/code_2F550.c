@@ -1693,21 +1693,23 @@ s32 func_global_asm_8062F388(s32 *arg0) {
     return D_global_asm_807F5FC8;
 }
 
-// Regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F3A0.s")
-
-/*
 void func_global_asm_8062F3A0(Gfx *arg0, void *arg1) {
+    unsigned int new_var; // type is unsigned int instead of u32 because arg0->words.w0 type is unsigned int
+
     while (arg0 != arg1) {
-        if ((arg0->words.w0 >> 0x18) == G_SETTIMG) {
+        new_var = arg0->words.w0 >> 0x18;
+        if (new_var == G_SETTIMG) {
             if (((arg0->words.w1 << 4) >> 28) == 0) { // TODO: Bitfield?
+
+                // Required for regalloc
+                if (arg0) {}
+
                 arg0->words.w1 = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, arg0->words.w1, 1, 0);
             }
         }
         arg0++;
     }
 }
-*/
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F420.s")
