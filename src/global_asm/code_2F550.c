@@ -1577,31 +1577,35 @@ void func_global_asm_8062EFA0(void) {
 // close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F050.s")
 
-extern MapGeometryHeader *D_807F5DE0;
+extern MapGeometryHeader *D_global_asm_807FB5E0;
 extern s32 D_global_asm_807F5FC8;
 extern void *D_global_asm_807F5FCC;
 extern s32 D_global_asm_807F5FD0;
 extern f32 D_global_asm_807F5FDC;
-extern s16 D_807F5FE4;
-extern s16 D_807F5FE6;
-extern s16 D_807F5FE8;
-extern s16 D_807F5FEA;
-extern s16 D_807F9450;
-extern s16 D_807F9452;
-extern s16 D_807F9454;
-extern s16 D_807F9456;
-extern s32 D_807FB5E0;
-extern s32 D_807FB5E4;
-extern s16 D_807FB5E8;
-extern s16 D_807FB5EA;
+extern s16 D_global_asm_807FB5E4;
+extern s16 D_global_asm_807F5FE6;
+extern s16 D_global_asm_807FB5E8;
+extern s16 D_global_asm_807FB5EA;
+extern s16 D_global_asm_807F9450;
+extern s16 D_global_asm_807F9452;
+extern s16 D_global_asm_807F9454;
+extern s16 D_global_asm_807F9456;
+extern MapGeometryHeader *D_global_asm_807F5DE0;
+extern s32 D_global_asm_807F5FE4;
+extern s16 D_global_asm_807F5FE8;
+extern s16 D_global_asm_807F5FEA;
 extern u8 D_global_asm_807F5FED;
 
 extern f32 D_global_asm_807444C4;
 
 extern s16 D_global_asm_807FD576;
 extern s16 D_global_asm_807FD578;
+extern void *D_global_asm_807F5DE8;
+extern void *D_global_asm_807F5DEC;
 
 /*
+void func_global_asm_8062F3A0(Gfx *arg0, void *arg1);
+
 void func_global_asm_8062F050(MapGeometryHeader *arg0) {
     s32 sp54;
     s32 sp50;
@@ -1640,24 +1644,24 @@ void func_global_asm_8062F050(MapGeometryHeader *arg0) {
     sp50 = arg0->unk34;
     sp4C = arg0->unk38;
     sp44 = arg0->unk40;
-    temp_v1 = FILEOFFSET(&D_807F5DE0->unk0, sp44);
-    temp_a0 = FILEOFFSET(&D_807F5DE0->unk0, arg0->unk44);
-    temp_a1 = FILEOFFSET(&D_807F5DE0->unk0, arg0->unk48);
+    temp_v1 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp44);
+    temp_a0 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, arg0->unk44);
+    temp_a1 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, arg0->unk48);
     D_global_asm_807F5FD0 = *temp_v1 + 1;
     D_global_asm_807F5FD4 = temp_v1 + 1;
     D_global_asm_807F5FC8 = *temp_a0;
     D_global_asm_807F5FCC = temp_a0 + 1;
     D_global_asm_807F5FC1 = *temp_a1;
     D_global_asm_807F5FC4 = temp_a1 + 1;
-    D_global_asm_807F5DE4 = FILEOFFSET(&D_807F5DE0->unk0, sp54);
-    D_global_asm_807F5DE8 = FILEOFFSET(&D_807F5DE0->unk0, sp4C);
-    D_global_asm_807F5DEC = FILEOFFSET(&D_807F5DE0->unk0, sp50);
+    D_global_asm_807F5DE4 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp54);
+    D_global_asm_807F5DE8 = FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp4C);
+    D_global_asm_807F5DEC = FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp50);
     func_global_asm_80659DB0(1.0f, 1.0f, 1.0f, -1);
     func_global_asm_8065996C(-1);
     func_global_asm_8065E040(arg0->unkE << 0xA);
-    func_global_asm_8062F420(FILEOFFSET(&D_807F5DE0->unk0, sp54), FILEOFFSET(&D_807F5DE0->unk0, sp54), FILEOFFSET(&D_807F5DE0->unk0, sp50));
-    func_global_asm_8062F3A0(FILEOFFSET(&D_807F5DE0->unk0, sp50), FILEOFFSET(&D_807F5DE0->unk0, sp4C));
-    func_global_asm_8062F328(FILEOFFSET(&D_807F5DE0->unk0, sp44));
+    func_global_asm_8062F420(FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp54), FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp54), FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp50));
+    func_global_asm_8062F3A0(FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp50), FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp4C));
+    func_global_asm_8062F328(FILEOFFSET(&D_global_asm_807F5DE0->unk0, sp44));
     func_global_asm_8063C390();
     func_global_asm_8062B3C4(D_global_asm_807F5DE4, &sp28);
     func_global_asm_8062B478(sp28);
