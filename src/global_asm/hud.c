@@ -682,19 +682,17 @@ void func_global_asm_806F9AF0(Struct806F9AF0_arg0 *arg0, s8 *arg1) {
     D_global_asm_807FD7A0[temp] = -200.0f;
 }
 
-// TODO: Very close, registers the wrong way round in an addu
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F9B64.s")
-
 extern void *D_global_asm_80750518;
 
-/*
 void func_global_asm_806F9B64(s32 arg0) {
     GlobalASMStruct71 **counter;
     GlobalASMStruct71 *previousCounter;
     s32 i;
     void **var_s2;
 
-    counter = &D_global_asm_80754280->hud_item[arg0].counter_pointer;
+    // Below is equivalent to &D_global_asm_80754280->hud_item[arg0].counter_pointer
+    // but need to change the syntax to fix regalloc.
+    counter = &(*(arg0 + D_global_asm_80754280->hud_item)).counter_pointer;
     func_global_asm_806F966C(counter);
     func_global_asm_806F96CC(*counter, 0);
     (*counter)->unk10 = 0;
@@ -711,7 +709,6 @@ void func_global_asm_806F9B64(s32 arg0) {
         drawSpriteAtPosition(var_s2[i], 1.0f, -200.0f, 0.0f, -10.0f);
     }
 }
-*/
 
 // TODO: Very close, registers the wrong way round in an addu
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F9CD0.s")
