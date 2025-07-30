@@ -65,6 +65,7 @@ u8 func_global_asm_80663FCC(s16 propIndex) {
 }
 
 // close
+// https://decomp.me/scratch/Gh4Ur
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_68AA0/func_global_asm_80664044.s")
 
 /*
