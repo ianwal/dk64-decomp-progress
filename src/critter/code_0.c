@@ -1275,13 +1275,10 @@ void func_critter_80026B78(CritterController *arg0) {
     }
 }
 
-// TODO: Pretty close
-#pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80026C9C.s")
-
-/*
 void func_critter_80026C9C(CritterController *arg0) {
     CritterStruct5 *temp_t5;
     Struct80029BAC *temp_v0;
+    Struct80029BAC *temp_v0_2;
     CritterControllerSub4 *phi_s0;
     s16 phi_v1;
     u8 kong;
@@ -1297,15 +1294,15 @@ void func_critter_80026C9C(CritterController *arg0) {
             if (phi_v1 > 0) {
                 phi_v1--;
             }
-            temp_v0 = &D_critter_80029BAC[kong][phi_v1];
-            D_critter_80029BA4->y_position = gCurrentPlayer->y_position + temp_v0->unk14;
-            D_critter_80029BA4->unk8 = temp_v0->unk0;
+            temp_v0 = D_critter_80029BAC[kong];
+            temp_v0_2 = &temp_v0[phi_v1];
+            D_critter_80029BA4->y_position = gCurrentPlayer->y_position + temp_v0_2->unk14;
+            D_critter_80029BA4->unk8 = temp_v0_2->unk0;
             func_critter_80026B78(phi_s0);
             phi_s0++;
         }
     }
 }
-*/
 
 void func_critter_80027118(CritterController *arg0);
 
