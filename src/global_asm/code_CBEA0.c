@@ -105,7 +105,7 @@ void func_global_asm_806C7268(void) {
 
 }
 
-// float, regalloc
+// float, regalloc, should be permutable
 // https://decomp.me/scratch/poTWc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CBEA0/func_global_asm_806C7270.s")
 
