@@ -97,6 +97,7 @@ void func_bonus_800256C4(Actor **arg0, u8 arg1) {
 }
 
 // Jumptable, very close
+// https://decomp.me/scratch/TCWgW
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_bonus_8002570C.s")
 
 typedef struct HandleAAD {
@@ -117,7 +118,7 @@ typedef struct HandleAAD {
 } HandleAAD;
 
 void func_global_asm_806A2A10(s32, s32, s32);
-u8 func_global_asm_806FDB8C(s16, s32, s32, f32, f32, f32);
+s16 func_global_asm_806FDB8C(s16, u8*, u8, f32, f32, f32);
 void func_global_asm_80737924(s32);
 extern SoundState *D_global_asm_807457E4[];
 
