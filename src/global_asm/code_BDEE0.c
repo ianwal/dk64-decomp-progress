@@ -457,16 +457,10 @@ void func_global_asm_806BB32C(void) {
     }
 }
 
-// doable, close
-// https://decomp.me/scratch/jNSL1
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_BDEE0/func_global_asm_806BB400.s")
-
-/*
-// TODO: Very close, 1 extra instruction related to default case in the second switch
 void func_global_asm_806BB400(void) {
     initializeCharacterSpawnerActor();
     if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
-        func_global_asm_806D0430(0.5249999762f);
+        func_global_asm_806D0430(0.525f);
         gPlayerPointer->object_properties_bitfield |= 0x400;
         gPlayerPointer->draw_distance = 0x7D0;
         gCurrentActorPointer->object_properties_bitfield &= -5;
@@ -481,7 +475,7 @@ void func_global_asm_806BB400(void) {
         case 0x4:
             gCurrentActorPointer->control_state = 0x23;
             gCurrentActorPointer->control_state_progress = 0;
-            // Fallthrough
+            // fallthrough
         case 0x23:
             switch (gCurrentActorPointer->control_state_progress) {
                 case 0:
@@ -491,6 +485,8 @@ void func_global_asm_806BB400(void) {
                     break;
                 default: 
                     gCurrentActorPointer->control_state_progress = 1;
+                    goto dummy_label_770949; // this dummy goto removes an extra instruction.
+                dummy_label_770949:
                 case 1:
                     if (gCurrentActorPointer->animation_state->unk64 != 0x21C) {
                         playActorAnimation(gCurrentActorPointer, 0x21C);
@@ -500,14 +496,13 @@ void func_global_asm_806BB400(void) {
             }
             break;
         case 0x37:
-            func_global_asm_806D0430(0.3000000119f);
+            func_global_asm_806D0430(0.3f);
             gCurrentActorPointer->control_state = 0x40;
             break;
     }
     D_global_asm_807FDCA0->unk20 = 0;
     renderActor(gCurrentActorPointer, 0);
 }
-*/
 
 typedef struct {
     s32 unk0;
