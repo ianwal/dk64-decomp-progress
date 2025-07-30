@@ -214,12 +214,8 @@ void func_global_asm_8069A614(f32 arg0, u8 arg1) {
     }
 }
 
-// Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A750.s")
-
 extern u8 D_global_asm_807FBBA9;
 
-/*
 s32 func_global_asm_8069A750(void) {
     GlobalASMStruct35 *var_a0;
     s32 temp_v0;
@@ -233,7 +229,10 @@ s32 func_global_asm_8069A750(void) {
             case 3:
                 break;
             default:
-                if (is_cutscene_active); // Purely to get this case to load
+                // regalloc fixes
+                if (((!D_global_asm_807FBB70.unk7C) && (!D_global_asm_807FBB70.unk7C)) && (!D_global_asm_807FBB70.unk7C));
+                if ((!(&D_global_asm_807FBB70)));
+
                 break;
         }
     }
@@ -242,7 +241,6 @@ s32 func_global_asm_8069A750(void) {
     }
     return 0;
 }
-*/
 
 // close, doable, float, struct
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9DD70/func_global_asm_8069A7C8.s")
