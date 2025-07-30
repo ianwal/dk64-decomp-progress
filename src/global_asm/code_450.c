@@ -135,9 +135,6 @@ void func_global_asm_805FB7E4(void) {
     osWritebackDCacheAll();
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_450/func_global_asm_805FB944.s")
-
 void func_global_asm_80610350(u8, u8, s32);
 
 extern OSViMode osViModeTable[];
@@ -157,7 +154,6 @@ extern s8 D_global_asm_807445A0;
 extern s8 D_global_asm_807445A4;
 extern s16 D_global_asm_80744490;
 
-/*
 void func_global_asm_805FB944(u8 arg0) {
     u8 var_a1 = 1;
     s32 var_a2;
@@ -165,6 +161,7 @@ void func_global_asm_805FB944(u8 arg0) {
 
     var_a2 = 0;
     func_global_asm_806003EC(D_global_asm_8076A0AA);
+    temp = 0;
     if (current_map == MAP_NINTENDO_LOGO) {
         D_global_asm_8074450C = 2;
     } else {
@@ -217,7 +214,7 @@ void func_global_asm_805FB944(u8 arg0) {
     } else {
         D_global_asm_80744510 = 1;
         D_global_asm_807445A0 = 1;
-        D_global_asm_807445A4 = 0;
+        D_global_asm_807445A4 = temp;
         func_global_asm_805FB7E4();
     }
     osViSetSpecialFeatures(0x42U);
@@ -228,7 +225,6 @@ void func_global_asm_805FB944(u8 arg0) {
     D_global_asm_807444A8 = D_global_asm_8074449C;
     D_global_asm_807444B4 = D_global_asm_807444A4;
 }
-*/
 
 extern s32 D_global_asm_8076A07C;
 extern OSMesgQueue D_global_asm_8076A110;
