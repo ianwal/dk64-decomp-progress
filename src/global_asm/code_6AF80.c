@@ -117,7 +117,7 @@ u8 func_global_asm_80666AEC(void) {
     return D_global_asm_807F94AA;
 }
 
-// close
+// close, stack
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_80666AF8.s")
 
 extern f64 D_global_asm_80758EE8;
