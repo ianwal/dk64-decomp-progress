@@ -362,10 +362,6 @@ void func_global_asm_8070DB7C(Struct8070DB9C *arg0) {
     func_global_asm_8061134C(arg0->unk4);
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070DB9C.s")
-
-/*
 void func_global_asm_8070DB9C(Struct8070DB9C *arg0) {
     s32 var_s0;
     void *temp_a1;
@@ -376,8 +372,7 @@ void func_global_asm_8070DB9C(Struct8070DB9C *arg0) {
     }
     if (arg0->unk0 & 1) {
         for (var_s0 = 0; var_s0 < 1; var_s0++) {
-            // TODO: Issue here
-            func_global_asm_8070DB7C(&((u8*)arg0->unk8)[var_s0]);
+            func_global_asm_8070DB7C((Struct8070DB9C_unk4*)arg0->unk8 + var_s0);
         }
         func_global_asm_8061134C(arg0->unk8);
         return;
@@ -387,7 +382,6 @@ void func_global_asm_8070DB9C(Struct8070DB9C *arg0) {
         func_global_asm_8061134C(arg0->unk8);
     }
 }
-*/
 
 void func_global_asm_8070DC40(Struct8070DB9C *arg0) {
     s32 i;

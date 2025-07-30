@@ -873,7 +873,7 @@ us,asm,func_global_asm_8069D018,64,yes
 us,asm,func_global_asm_8070CC1C,56,yes
 us,asm,func_global_asm_80712628,12,yes
 us,asm,func_global_asm_8073B5D0,112,yes
-us,asm,func_global_asm_8070DB9C,164,no
+us,asm,func_global_asm_8070DB9C,164,yes
 us,asm,func_global_asm_806F9D8C,1048,no
 us,asm,func_global_asm_80685210,180,yes
 us,asm,func_global_asm_8061F164,40,yes
