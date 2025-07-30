@@ -1107,7 +1107,8 @@ Gfx *func_bonus_80029B9C(Gfx *dl, Actor *arg1) {
 }
 */
 
-// rodata, regalloc
+// rodata, regalloc, stack
+// https://decomp.me/scratch/sacJ1
 #pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_2690/func_bonus_80029E54.s")
 
 extern f32 D_bonus_8002DDB8;
@@ -1138,17 +1139,20 @@ void func_bonus_80029E54(Actor *arg0) {
     KrazyKK_ControllerAAD178 *temp_s7; // 44
     f32 var_f0;
     s16 *a17C;
+    Actor *new_var;
     s32 i;
     tuple_f *temp_a0;
 
     temp_f22 = D_bonus_8002DDB8;
-    temp_s7 = arg0->unk178;
+    new_var = arg0;
+    temp_s7 = new_var->unk178;
     for (i = 1; i < 7; i++) {
         if (spawnActor(ACTOR_MINIGAME_KRAZYKONGKLAMOUR_KONG, D_bonus_8002D8C8[i - 1])) {
             aaD = gLastSpawnedActor->additional_actor_data;
             a17C = gLastSpawnedActor->unk17C;
             *a17C = D_bonus_8002D8C8[i - 1];
             aaD->unk0 = arg0;
+            aaD->unk0 = new_var;
             aaD->unk4 = i - 1;
             temp_a0 = &D_global_asm_807F5FD4->unk0[0][(temp_s7->unk8[aaD->unk4] & 0x7F) + 1];
             gLastSpawnedActor->x_position = temp_a0->x;
