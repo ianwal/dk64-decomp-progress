@@ -156,6 +156,7 @@ s32 func_global_asm_80709ACC(Struct807FD9A8 *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A220.s")
 
 // close
+// https://decomp.me/scratch/pBtpT
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_10E1D0/func_global_asm_8070A848.s")
 
 extern s16 D_global_asm_80744490;
