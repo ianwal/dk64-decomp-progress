@@ -3916,7 +3916,7 @@ us,.bonus,func_bonus_80025480,48,yes
 us,.bonus,func_bonus_80027308,52,yes
 us,.bonus,func_bonus_800256C4,72,yes
 us,.bonus,func_bonus_8002B920,1316,no
-us,.bonus,func_bonus_8002570C,2732,no
+us,.bonus,func_bonus_8002570C,2732,yes
 us,.bonus,func_bonus_80029E54,444,no
 us,.bonus,func_bonus_80027F14,1452,no
 us,.bonus,func_bonus_800252A0,324,yes

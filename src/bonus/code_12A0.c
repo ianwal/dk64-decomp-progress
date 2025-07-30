@@ -96,10 +96,6 @@ void func_bonus_800256C4(Actor **arg0, u8 arg1) {
     }
 }
 
-// Jumptable, very close
-// https://decomp.me/scratch/TCWgW
-#pragma GLOBAL_ASM("asm/nonmatchings/bonus/code_12A0/func_bonus_8002570C.s")
-
 typedef struct HandleAAD {
     Actor *reels[4];
     s16 unk10;
@@ -122,7 +118,6 @@ s16 func_global_asm_806FDB8C(s16, u8*, u8, f32, f32, f32);
 void func_global_asm_80737924(s32);
 extern SoundState *D_global_asm_807457E4[];
 
-/*
 void func_bonus_8002570C(void) {
     PlayerAdditionalActorData *sp4C;
     SoundState *temp_a0;
@@ -256,7 +251,6 @@ void func_bonus_8002570C(void) {
                 gCurrentActorPointer->unk168++;
                 gCurrentActorPointer->control_state = 6;
                 gCurrentActorPointer->control_state_progress = 0;
-                break;
             }
             break;
         case 7:
@@ -320,7 +314,6 @@ void func_bonus_8002570C(void) {
     }
     renderActor(gCurrentActorPointer, 0U);
 }
-*/
 
 typedef struct {
     Actor *unk0;
