@@ -1436,6 +1436,7 @@ void func_global_asm_8066B4AC(s32 arg0, s32 arg1, s32 arg2) {
 }
 
 // stack
+// https://decomp.me/scratch/7Qe28
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6AF80/func_global_asm_8066B4D4.s")
 
 /*
