@@ -104,11 +104,6 @@ void func_global_asm_806B2D5C(void) {
 
 }
 
-// Jumptable, close, v1 a3 regalloc
-// https://decomp.me/scratch/eraSt
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_B7490/func_global_asm_806B2D64.s")
-
-/*
 void func_global_asm_806B2D64(void) {
     f32 var_f2;
 
@@ -125,6 +120,7 @@ void func_global_asm_806B2D64(void) {
         case 0x31:
             func_global_asm_80685020(0x1F, 2);
             if ((gCurrentActorPointer->control_state_progress != 0) || (gCurrentActorPointer->animation_state->unk0->unk24 == 0.0f)) {
+                D_global_asm_807FBB70.unk1FC += 0;  // Fix regalloc. This statement has no effect.
                 func_global_asm_8072DE44(0x2E2);
             }
             break;
@@ -222,7 +218,6 @@ void func_global_asm_806B2D64(void) {
     func_global_asm_8072881C(0, &D_global_asm_807FDC90->unk28);
     renderActor(gCurrentActorPointer, 0);
 }
-*/
 
 // Giant Clam
 void func_global_asm_806B3420(void) {

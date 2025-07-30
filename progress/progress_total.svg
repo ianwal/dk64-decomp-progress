@@ -9,7 +9,7 @@
     </mask>
     <g mask="url(#anybadge_23)">
         <path fill="#555" d="M0 0h132v20H0z"/>
-        <path fill="#a6c000" d="M132 0h177v20H132z"/>
+        <path fill="#a5c000" d="M132 0h177v20H132z"/>
         <path fill="url(#b)" d="M0 0h309v20H0z"/>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
@@ -17,7 +17,7 @@
         <text x="66.0" y="14">Donkey Kong 64 (US)</text>
     </g>
     <g fill="#fff" text-anchor="middle" font-family="DejaVu Sans,Verdana,Geneva,sans-serif" font-size="11">
-        <text x="221.5" y="15" fill="#010101" fill-opacity=".3">56.8619% | 3804/4502 funcs</text>
-        <text x="220.5" y="14">56.8619% | 3804/4502 funcs</text>
+        <text x="221.5" y="15" fill="#010101" fill-opacity=".3">56.9621% | 3805/4502 funcs</text>
+        <text x="220.5" y="14">56.9621% | 3805/4502 funcs</text>
     </g>
 </svg>
