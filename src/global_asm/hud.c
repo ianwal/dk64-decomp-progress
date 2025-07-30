@@ -710,15 +710,13 @@ void func_global_asm_806F9B64(s32 arg0) {
     }
 }
 
-// TODO: Very close, registers the wrong way round in an addu
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F9CD0.s")
-
-/*
 void func_global_asm_806F9CD0(s32 arg0) {
     GlobalASMStruct71 **temp_s0;
     GlobalASMStruct71 *sp30;
 
-    temp_s0 = &D_global_asm_80754280->hud_item[arg0].counter_pointer;
+    // Below is equivalent to &D_global_asm_80754280->hud_item[arg0].counter_pointer
+    // but need to change the syntax to fix regalloc.
+    temp_s0 = &(*(arg0 + D_global_asm_80754280->hud_item)).counter_pointer;
     func_global_asm_806F9608(temp_s0);
     sp30 = (*temp_s0)->unk14;
     func_global_asm_806F96CC(*temp_s0, arg0);
@@ -726,7 +724,6 @@ void func_global_asm_806F9CD0(s32 arg0) {
     func_global_asm_806F8DC4(sp30, 0, arg0);
     (*temp_s0)->unk10 = 0;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F9D8C.s")
