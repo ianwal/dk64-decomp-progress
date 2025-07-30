@@ -695,14 +695,9 @@ u8 func_global_asm_8062BCC8(s32 arg0, f32 arg1, f32 arg2, f32 arg3, s32 arg4) {
     return var_s1;
 }
 
-// close
-// https://decomp.me/scratch/5GC3h
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062BDB0.s")
-
-/*
-// TODO: Just operands flipped in an OR instruction...
 u8 func_global_asm_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_arg2 *arg2, f32 arg3, f32 arg4, f32 arg5, s32 arg6) {
     u8 var_s1;
+    u8 new_var;
     Struct8062BDB0_arg2_unk4 *var_s0;
 
     var_s1 = 0;
@@ -721,13 +716,12 @@ u8 func_global_asm_8062BDB0(s32 arg0, Struct8062BDB0_arg1 *arg1, Struct8062BDB0_
             }
             return var_s1;
         case 0:
-            // TODO: Problem here
             var_s1 |= func_global_asm_8062BDB0(arg0, arg1->unk0, arg2->unkC, arg3, arg4, arg5, arg6);
-            return var_s1 | func_global_asm_8062BDB0(arg0, arg1->unk4, arg2->unk10, arg3, arg4, arg5, arg6);
+            new_var = func_global_asm_8062BDB0(arg0, arg1->unk4, arg2->unk10, arg3, arg4, arg5, arg6);
+            return var_s1 | new_var;
     }
     return 0;
 }
-*/
 
 // Displaylist stuff, doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062BF24.s")
