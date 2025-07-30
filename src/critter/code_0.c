@@ -1388,7 +1388,8 @@ void func_critter_8002708C(CritterController *arg0) {
     arg0->unk2 = 0;
 }
 
-// Jumptable,r egalloc, close
+// Jumptable, regalloc, close
+// https://decomp.me/scratch/gO0lz
 #pragma GLOBAL_ASM("asm/nonmatchings/critter/code_0/func_critter_80027118.s")
 
 /*
