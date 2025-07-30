@@ -136,10 +136,6 @@ int func_race_80024634(RaceStruct8 *arg0, RaceStruct9 *arg1) {
            arg1->unk1C <= D_global_asm_80750AC4;
 }
 
-// Jumptable, doable, close, regalloc v0 v1
-// https://decomp.me/scratch/1joCC
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_0/func_race_80024690.s")
-
 s32 func_race_8002E8EC(void *, s32, s32);
 extern u16 D_global_asm_80750AC8;
 extern u8 D_global_asm_807FBD70;
@@ -168,7 +164,6 @@ typedef struct {
     s32 unk1C;
 } A17C_80024690;
 
-/*
 void func_race_80024690(void) {
     f32 sp6C;
     f32 sp68;
@@ -296,7 +291,7 @@ void func_race_80024690(void) {
                     }
                 }
             }
-            sp66 = (func_global_asm_80611BB4(-sp6C, -sp68) * 4096.0) / (2.0 * M_PI);
+            sp66 = (func_global_asm_80611BB4(-sp6C, -sp68) * 4096.0) / MATH_2PI_F;
             temp = (sp66 + sp66 - gCurrentActorPointer->unkEE) & 0xFFF;
             func_global_asm_806DF494(&gCurrentActorPointer->y_rotation, temp, 0x32);
             func_global_asm_806DF494(&gCurrentActorPointer->unkEE, sp66, 0xF);
@@ -350,6 +345,13 @@ void func_race_80024690(void) {
                     gCurrentActorPointer->y_acceleration = -20.0f;
                 }
                 var_f2 = gCurrentActorPointer->unkEE - gCurrentActorPointer->unkDC;
+
+                // Fix regalloc
+                if (1) {
+                }
+                if (1) {
+                }
+
                 if (var_f2 > 2048.0f) {
                     var_f2 -= 4096.0f;
                 }
@@ -534,4 +536,3 @@ void func_race_80024690(void) {
     }
     renderActor(gCurrentActorPointer, 0);
 }
-*/
