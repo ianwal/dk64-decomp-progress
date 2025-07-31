@@ -47,6 +47,7 @@ void func_global_asm_8068D8C8(Gfx *dl, s32 arg1) {
 }
 
 // Displaylist stuff, regalloc, close
+// https://decomp.me/scratch/dphxS
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_910A0/func_global_asm_8068D9DC.s")
 
 typedef struct {

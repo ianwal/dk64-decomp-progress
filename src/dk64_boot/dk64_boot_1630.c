@@ -24,6 +24,7 @@ typedef struct{
 } dk64_boot_struct_1_s;
 
 // close, regalloc
+// https://decomp.me/scratch/WtY0n
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_1630/func_dk64_boot_80000A30.s")
 
 /*

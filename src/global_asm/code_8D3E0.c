@@ -364,6 +364,7 @@ void func_global_asm_80688F74(Actor *arg0, f32 x, f32 y, f32 z) {
 }
 
 // Close
+// https://decomp.me/scratch/027l6
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_global_asm_80688FC0.s")
 
 /*

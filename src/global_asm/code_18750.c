@@ -290,6 +290,7 @@ void playAnimation(Actor *arg0, s32 arg1) {
     playActorAnimation(arg0, D_global_asm_807FBB54[offset]);
 }
 
+// https://decomp.me/scratch/OBNTk
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/playActorAnimation.s")
 
 /*

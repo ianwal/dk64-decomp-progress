@@ -213,6 +213,7 @@ void func_global_asm_8065E124(void) {
 // Pretty doable
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065E634.s")
 
+// https://decomp.me/scratch/xsaIQ
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065E81C.s")
 
 s32 func_global_asm_8065EA44(void) {

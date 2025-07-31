@@ -119,6 +119,7 @@ void func_global_asm_806F8170(s32 HUDItemIndex, f32 *xOut, f32 *yOut, f32 *zOut)
 }
 
 // Close
+// https://decomp.me/scratch/bxVyL
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/hud/func_global_asm_806F8278.s")
 
 void func_global_asm_806F8278(u8 playerIndex);

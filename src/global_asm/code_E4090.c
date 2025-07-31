@@ -924,6 +924,7 @@ void func_global_asm_806E2140(void) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E225C.s")
 
 // close
+// https://decomp.me/scratch/IgLyf
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E2B20.s")
 
 /*

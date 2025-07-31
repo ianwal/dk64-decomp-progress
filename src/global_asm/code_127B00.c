@@ -164,6 +164,7 @@ u8 func_global_asm_80723C98(s32 arg0) {
     return D_global_asm_807FDBF8[arg0]->unk21;
 }
 
+// https://decomp.me/scratch/8BAe3
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_127B00/func_global_asm_80723CCC.s")
 
 // rodata

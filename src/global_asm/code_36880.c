@@ -1590,6 +1590,7 @@ void func_global_asm_80636AE8(Prop *arg0) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636B50.s")
 
 // close
+// https://decomp.me/scratch/DuYBv
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80636C00.s")
 
 extern s32 D_global_asm_80747D70;
