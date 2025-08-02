@@ -1,7 +1,5 @@
 #include "common.h"
 
-void *__n_allocParam();
-s32 _n_timeToSamples(s32);
 void n_alEnvmixerParam(CustomPVoice *, s32, ALStartParamAlt *);
 
 typedef struct ALStartParamAlt_0 {

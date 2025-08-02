@@ -3916,12 +3916,12 @@ s32 func_global_asm_807383B0(ALSeqPlayer *arg0);
 void func_global_asm_80738400(ALSeqPlayer *arg0, u8 arg1, u8 arg2, u8 arg3, s32 arg4);
 
 // global_asm/audio/cseq.c
-// TODO: alCSeqSetLoc has no documented signature but has been matched
-// TODO: alCSeqGetLoc has no documented signature but has been matched
-// TODO: n_alCSeqNewMarker has no documented signature but has been matched
+void alCSeqSetLoc(ALCSeq *seq, ALCSeqMarker *m);
+void alCSeqGetLoc(ALCSeq *seq, ALCSeqMarker *marker);
+void n_alCSeqNewMarker(ALCSeq *seq, ALCSeqMarker *m, u32 ticks);
 // TODO: func_global_asm_80738E58 has no documented signature
-// TODO: __getTrackByte has no documented signature but has been matched
-// TODO: __readVarLen has no documented signature but has been matched
+u8 __getTrackByte(ALCSeq *seq, s32 track);
+s32 __readVarLen(ALCSeq *seq, s32 track);
 
 // global_asm/audio/n_sl.c
 void n_alInit(N_ALGlobals *g, ALSynConfig *c);
@@ -3932,14 +3932,14 @@ void alLink(ALLink *ln, ALLink *to);
 void alUnlink(ALLink *ln);
 
 // global_asm/audio/synthesizer.c
-// TODO: n_alSynNew has no documented signature
-// TODO: n_alAudioFrame has no documented signature
-// TODO: __n_allocParam has no documented signature but has been matched
-// TODO: __n_freeParam has no documented signature but has been matched
+void n_alSynNew(ALSynConfig *c);
+Acmd *n_alAudioFrame(Acmd *cmdList, s32 *cmdLen, s16 *outBuf, s32 outLen);
+ALParam *__n_allocParam(void);
+void __n_freeParam(ALParam *param);
 void _n_collectPVoices();
-// TODO: _n_freePVoice has no documented signature but has been matched
+// void _n_freePVoice(N_PVoice *pvoice);
 s32 _n_timeToSamplesNoRound(s32 micros);
-// TODO: func_global_asm_80739E24 has no documented signature
+s32 _n_timeToSamples(s32 micros);
 
 // global_asm/audio/seqpstop.c
 void alSeqpStop(ALSeqPlayer *seqp);
