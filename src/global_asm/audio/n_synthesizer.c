@@ -196,7 +196,7 @@ s32 _n_timeToSamplesNoRound(s32 micros)
     return (s32)tmp;
 }
 
-s32 func_global_asm_80739E24(s32 micros) {
+s32 _n_timeToSamples(s32 micros) {
     return _n_timeToSamplesNoRound(micros) & ~0xf;
 }
 
