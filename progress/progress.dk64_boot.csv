@@ -44,6 +44,7 @@ us,boot,__osContRamWrite,588,yes
 us,boot,osAiGetLength,12,yes
 us,boot,func_dk64_boot_80002D60,132,yes
 us,boot,osDpGetStatus,12,yes
+us,boot,_strstr,168,yes
 us,boot,guTranslate,84,yes
 us,boot,osGetCount,16,yes
 us,boot,osEPiRawWriteIo,344,yes
@@ -63,7 +64,6 @@ us,boot,__osRepairPackId,848,yes
 us,boot,__osSiCreateAccessQueue,80,yes
 us,boot,__osSumcalc,116,yes
 us,boot,bcopy,784,yes
-us,boot,func_dk64_boot_80002F54,168,yes
 us,boot,osVirtualToPhysical,124,yes
 us,boot,osMotorInit,348,yes
 us,boot,osRecvMesg,312,yes

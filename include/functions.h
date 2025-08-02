@@ -65,7 +65,7 @@ void func_dk64_boot_80002750(void);
 // TODO: func_dk64_boot_80002828 has no documented signature
 // TODO: func_dk64_boot_800028E0 has no documented signature
 // TODO: func_dk64_boot_800029EC has no documented signature
-u8 *_strcpy(u8 *dest, u8 const *src);
+u8 *_strcpy(u8 *dest, const u8 *src);
 // TODO: func_dk64_boot_80002A64 has no documented signature
 u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1);
 // TODO: func_dk64_boot_80002B0C has no documented signature
@@ -75,9 +75,9 @@ s32 func_dk64_boot_80002C74(u8 *str, u8 *arg1);
 u8 *func_dk64_boot_80002D60(u8 *str, u8 *ptr);
 // TODO: func_dk64_boot_80002DE4 has no documented signature
 void *memset(void *dest, s32 val, u32 len);
-u8 *_strchr(u8 const *str, s32 c);
-u32 strlen(u8 const *str);
-// TODO: func_dk64_boot_80002F54 has no documented signature but has been matched
+u8 *_strchr(const u8 *str, s32 c);
+u32 strlen(const u8 *str);
+u8 *_strstr(const u8 *str, const u8 *substr);
 
 // dk64_boot/dk64_boot_3C00.c
 void *memcpy(void *dest, void *src, u32 n);

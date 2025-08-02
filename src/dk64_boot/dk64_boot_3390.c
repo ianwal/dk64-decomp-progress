@@ -11,8 +11,8 @@ s32 D_dk64_boot_8000EEF0 = 0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800029EC.s")
 
-u8 *_strcpy(u8 *dest, u8 const *src) {
-    u8 *const ptr = dest;
+u8 *_strcpy(u8 *dest, const u8 *src) {
+    u8 *ptr = dest;
     while ((*dest++ = *src++) != '\0');
     return ptr;
 }
@@ -117,25 +117,25 @@ u32 strlen(const u8 *str) {
     return len;
 }
 
-u8 *func_dk64_boot_80002F54(u8 *arg0, u8 *arg1) {
+u8 *_strstr(const u8 *str, const u8 *substr) {
     s32 i;
     s32 len;
 
-    len = strlen(arg1);
+    len = strlen(substr);
     i = 0;
-    if ((!arg0) || (!arg1)) {
+    if ((!str) || (!substr)) {
         return NULL;
     }
-    while ((i < len) && (*arg0)) {
-        if (*(arg0 + i) == arg1[i]) {
+    while ((i < len) && (*str)) {
+        if (*(str + i) == substr[i]) {
             i += 1;
         } else {
             i = 0;
-            arg0 += 1;
+            str += 1;
         }
     }
     if (i != len) {
-        arg0 = NULL;
+        str = NULL;
     }
-    return arg0;
+    return (u8*)str;
 }
