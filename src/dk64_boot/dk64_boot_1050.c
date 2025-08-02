@@ -134,7 +134,7 @@ void func_dk64_boot_800005A8(void *arg0) {
         gOverlayTable2[16].rom_code_start = &D_1A97280;
         gOverlayTable2[17].rom_data_end = &D_1FED020;
         gOverlayTable2[17].rom_code_start = &D_1ABCBF0;
-        osSetThreadPri(NULL, 0);
+        osSetThreadPri(NULL, OS_PRIORITY_IDLE);
         D_dk64_boot_8000DCB0 = 1;
         ((void (*)(OSMesgQueue *, s32))0x805FB300)(&D_dk64_boot_80011548, 0);
     }
