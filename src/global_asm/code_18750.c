@@ -294,7 +294,7 @@ void playAnimation(Actor *arg0, s32 arg1) {
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/playActorAnimation.s")
 
 /*
-extern s32 D_807FBB50[];
+extern s32 D_global_asm_807FBB50[];
 
 void playActorAnimation(Actor *arg0, s32 arg1) {
     ActorAnimationState *aaS;
@@ -311,7 +311,7 @@ void playActorAnimation(Actor *arg0, s32 arg1) {
         D_global_asm_807F5AF4 = 0;
     } else {
         aaS->unk64 = arg1;
-        aaS->unk68 = D_807FBB50[arg1] + D_global_asm_807F5AF0;
+        aaS->unk68 = D_global_asm_807FBB50[arg1] + D_global_asm_807F5AF0;
         aaS->unk6C = aaS->unk68;
         D_global_asm_807F5AF0 = aaS->unk68;
     }
