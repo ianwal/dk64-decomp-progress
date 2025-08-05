@@ -2,15 +2,15 @@
 #include "piint.h"
 
 void func_dk64_boot_80000AA0(void);
-void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, u8 *arg3);
+void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, const u8 *arg3);
 void func_dk64_boot_80000EEC(s16* arg0[8][8], s32 arg1, s32 arg2, u8 arg3);
 
-extern u8 D_dk64_boot_8000ED24;
-extern u8 D_dk64_boot_8000ED40;
-extern u8 D_dk64_boot_8000ED58;
-extern u8 D_dk64_boot_8000ED78;
-extern u8 D_dk64_boot_8000ED9C;
-extern u8 D_dk64_boot_8000EDC0;
+extern u8 D_dk64_boot_8000ED24[]; // "          NOT INSTALLED"
+extern u8 D_dk64_boot_8000ED40[]; // "          NOT INSTALLED"
+extern u8 D_dk64_boot_8000ED58[]; // "THE Nhf EXPANSION PAK ACCESSORY"
+extern u8 D_dk64_boot_8000ED78[]; // "MUST BE INSTALLED IN THE Nhf~ FOR"
+extern u8 D_dk64_boot_8000ED9C[]; // "THIS GAME[ SEE THE Nhf EXPANSION"
+extern u8 D_dk64_boot_8000EDC0[]; // "   PAK INSTRUCTION BOOKLET["
 
 extern OSThread D_dk64_boot_800138C0;
 extern u8* D_dk64_boot_80013A70; // pointer to the stack for D_dk64_boot_800138C0
@@ -67,16 +67,16 @@ void func_dk64_boot_80000CD4(void) {
 
 void func_dk64_boot_80000D8C(void *arg0) {
     if (osTvType != OS_TV_PAL) {
-        func_dk64_boot_80000E48(arg0, 0x15, 0x8C, &D_dk64_boot_8000ED24);
-        func_dk64_boot_80000E48(arg0, 0x15, 0x96, &D_dk64_boot_8000ED40);
-        func_dk64_boot_80000E48(arg0, 0x15, 0xAA, &D_dk64_boot_8000ED58);
-        func_dk64_boot_80000E48(arg0, 0x15, 0xb4, &D_dk64_boot_8000ED78);
-        func_dk64_boot_80000E48(arg0, 0x15, 0xbe, &D_dk64_boot_8000ED9C);
-        func_dk64_boot_80000E48(arg0, 0x15, 0xc8, &D_dk64_boot_8000EDC0);
+        func_dk64_boot_80000E48(arg0, 0x15, 0x8C, D_dk64_boot_8000ED24);
+        func_dk64_boot_80000E48(arg0, 0x15, 0x96, D_dk64_boot_8000ED40);
+        func_dk64_boot_80000E48(arg0, 0x15, 0xAA, D_dk64_boot_8000ED58);
+        func_dk64_boot_80000E48(arg0, 0x15, 0xb4, D_dk64_boot_8000ED78);
+        func_dk64_boot_80000E48(arg0, 0x15, 0xbe, D_dk64_boot_8000ED9C);
+        func_dk64_boot_80000E48(arg0, 0x15, 0xc8, D_dk64_boot_8000EDC0);
     }
 }
 
-void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, u8 *arg3) {
+void func_dk64_boot_80000E48(void *arg0, s32 arg1, s32 arg2, const u8 *arg3) {
     s32 i;
     for (i = 0; arg3[i] != 0; arg1 += 9, i++) {
         if (0x20 != arg3[i]) {
