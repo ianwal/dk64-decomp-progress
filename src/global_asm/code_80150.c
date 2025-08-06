@@ -1002,16 +1002,17 @@ void func_global_asm_80681E18(void) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_80682AB4.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_80682DF4.s")
+typedef struct {
+    u16 unk0;
+} AAD_global_asm_80682E38;
 
-void func_global_asm_80682DF4(Actor *, u16 *, s32);
+extern u16 *D_global_asm_807FBB54;
 
-/*
-extern u16 D_global_asm_807FBB54[];
-void func_global_asm_80682DF4(Actor *arg0, u16 *arg1, s32 arg2) {
-    playActorAnimation(arg0, D_global_asm_807FBB54[(((arg2 * 7) + *arg1) - 2)]);
+void func_global_asm_80682DF4(Actor *arg0, AAD_global_asm_80682E38 *arg1, s32 arg2) {
+    arg2 = arg2 * 7 + arg1->unk0 - 2;
+    playActorAnimation(arg0, D_global_asm_807FBB54[arg2]);
 }
-*/
+
 void func_global_asm_80682AB4(void *);
 
 typedef struct {
@@ -1022,10 +1023,6 @@ typedef struct {
     Actor *unk8[5];
     Actor *unk1C;
 } Struct80682E38_arg0;
-
-typedef struct {
-    s16 unk0;
-} AAD_global_asm_80682E38;
 
 void func_global_asm_80682E38(Struct80682E38_arg0 *arg0) {
     s32 var_a2;

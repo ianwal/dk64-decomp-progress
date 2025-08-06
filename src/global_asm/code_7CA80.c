@@ -27,7 +27,7 @@ extern Struct807FB7B0 D_global_asm_807FB7B0[];
 extern s16 D_global_asm_807FBB30;
 extern s16 D_global_asm_807FBB32;
 extern s32 *D_global_asm_807FBB50;
-extern s16 *D_global_asm_807FBB54;
+extern u16 *D_global_asm_807FBB54;
 extern s16 D_global_asm_807FBFD8;
 extern s32 D_global_asm_807FBB38;
 extern u16 *D_global_asm_807FBB58;
