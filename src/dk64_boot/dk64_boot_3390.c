@@ -74,20 +74,20 @@ u32 _strcspn(const u8 *str, const u8 *src) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002CE8.s")
 
-u8 *func_dk64_boot_80002D60(u8 *str, u8 *ptr) {
-    u8 *temp_v0;
-    u8 *var_s1;
-    u8 character;
+u8 *_strpbrk(const u8 *dest, const u8 *breakset) {
+    u8 *curr_match;
+    u8 *earliest_match;
+    u8 delimiter;
 
-    var_s1 = _strchr(str, *ptr);
-    while (*ptr) {
-        character = *ptr++;
-        temp_v0 = _strchr(str, character);
-        if ((temp_v0) && ((temp_v0 < var_s1) || (!var_s1))) {
-            var_s1 = temp_v0;
+    earliest_match = _strchr(dest, *breakset);
+    while (*breakset != '\0') {
+        delimiter = *breakset++;
+        curr_match = _strchr(dest, delimiter);
+        if ((curr_match) && ((curr_match < earliest_match) || (!earliest_match))) {
+            earliest_match = curr_match;
         }
     }
-    return var_s1;
+    return earliest_match;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002DE4.s")

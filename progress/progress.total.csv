@@ -4324,7 +4324,6 @@ us,boot,func_dk64_boot_80001C48,360,yes
 us,boot,osEepromLongRead,140,yes
 us,boot,__osContRamWrite,588,yes
 us,boot,osAiGetLength,12,yes
-us,boot,func_dk64_boot_80002D60,132,yes
 us,boot,osDpGetStatus,12,yes
 us,boot,_strstr,168,yes
 us,boot,guTranslate,84,yes
@@ -4410,6 +4409,7 @@ us,boot,__osPiCreateAccessQueue,80,yes
 us,boot,osSetIntMask,160,yes
 us,boot,osSpTaskLoad,400,yes
 us,boot,osPiGetCmdQueue,40,yes
+us,boot,_strpbrk,132,yes
 us,boot,func_dk64_boot_800025A4,384,no
 us,boot,__osAiDeviceBusy,48,yes
 us,boot,bzero,156,yes
