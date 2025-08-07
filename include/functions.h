@@ -66,7 +66,7 @@ void func_dk64_boot_80002750(void);
 // TODO: func_dk64_boot_800028E0 has no documented signature
 // TODO: func_dk64_boot_800029EC has no documented signature
 u8 *_strcpy(u8 *dest, const u8 *src);
-// TODO: func_dk64_boot_80002A64 has no documented signature
+u8 *_strncpy(u8 *dest, const u8 *src, u32 count);
 u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1);
 // TODO: func_dk64_boot_80002B0C has no documented signature
 // TODO: func_dk64_boot_80002BB8 has no documented signature

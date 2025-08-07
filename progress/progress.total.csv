@@ -4448,6 +4448,7 @@ us,boot,osPiReadIo,64,yes
 us,boot,guLookAtHiliteF,1848,yes
 us,boot,osSetTime,36,yes
 us,boot,__osGetFpcCsr,16,yes
+us,boot,_strncpy,88,yes
 us,boot,__ll_rshift,44,yes
 us,boot,osViGetCurrentMode,72,yes
 us,boot,guTranslateF,72,yes
@@ -4462,7 +4463,6 @@ us,boot,__ull_div,60,yes
 us,boot,__osTimerInterrupt,376,yes
 us,boot,__osGetId,428,yes
 us,boot,func_dk64_boot_800022D4,288,yes
-us,boot,func_dk64_boot_80002A64,88,no
 us,boot,osInitialize,704,yes
 us,boot,__osPackRequestData,244,yes
 us,boot,__osSiRawStartDma,172,yes

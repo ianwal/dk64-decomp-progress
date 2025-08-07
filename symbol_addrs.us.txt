@@ -45,6 +45,7 @@ __osGetCurrFaultedThread = 0x80005A70;
 _sprintf = 0x800031E0; // segment:dk64_boot
 _strchr = 0x80002ECC; // segment:dk64_boot
 _strcpy = 0x80002A30; // segment:dk64_boot
+_strncpy = 0x80002A64; // segment:dk64_boot
 strlen = 0x80002F18; // segment:dk64_boot
 mask_bits = 0x8000EEB0; // segment:dk64_boot
 __osCleanupThread = 0x80009990; // segment:dk64_boot

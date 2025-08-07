@@ -7,8 +7,10 @@ s32 D_dk64_boot_8000EEF0 = 0;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002828.s")
 
+// Related to decompression? Handwritten.
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800028E0.s")
 
+// Related to decompression? Maybe extracting bits from stream and turning into values?
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800029EC.s")
 
 u8 *_strcpy(u8 *dest, const u8 *src) {
@@ -17,7 +19,18 @@ u8 *_strcpy(u8 *dest, const u8 *src) {
     return ptr;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002A64.s")
+// Same as the standard strncpy, but doesn't pad remaining buffer with zeroes.
+// It only writes a single null-terminator.
+u8 *_strncpy(u8 *dest, const u8 *src, u32 count) {
+    u8 *ptr = dest;
+
+    while (count-- && (*dest++ = *src++) != '\0');
+
+    if (count == 0) {
+        *dest = '\0';
+    }
+    return ptr;
+}
 
 u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1) {
     u8 *start_str;

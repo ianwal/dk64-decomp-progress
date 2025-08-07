@@ -74,7 +74,7 @@ void func_global_asm_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
     if (_strchr(temp_v0, ':') != 0) {
         temp_a3_2 = func_dk64_boot_80002C74(var_s0, ":") + 1;
         sp42 = temp_a3_2;
-        func_dk64_boot_80002A64(&sp44, var_s0, temp_a3_2, temp_a3_2);
+        _strncpy(&sp44, var_s0, temp_a3_2, temp_a3_2);
         *(&sp44 + sp42) = 0;
         func_global_asm_8069D2AC(0xA, 0x14, 0x18, &sp44, 0, arg1, 0x32, 0x32);
         func_global_asm_80627C10(arg2);
@@ -91,9 +91,9 @@ void func_global_asm_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
         }
         sp34 = var_v1 + var_s0;
         sp42 = var_v1;
-        func_dk64_boot_80002A64(&sp98, var_s0, var_v1);
+        _strncpy(&sp98, var_s0, var_v1);
         (sp + sp42)->unk98 = 0;
-        func_dk64_boot_80002A64(&sp58, sp34 + 1, 0xFF);
+        _strncpy(&sp58, sp34 + 1, 0xFF);
         func_global_asm_8069D2AC(0, 0, 0xCD, &sp98, 0, sp38, 0x32, 0x32);
         func_global_asm_80627C10(arg2);
         func_global_asm_8069D2AC(0, 0, 0xD7, &sp58, 0, sp38, 0x32, 0x32);
