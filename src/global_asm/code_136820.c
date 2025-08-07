@@ -394,8 +394,8 @@ void func_global_asm_80732158(OSThread *arg0) {
 // No idea why
 void func_global_asm_80732280(void* arg0) {
     OSMesg *sp3C;
-    s32 *temp_s0;
-    s32 temp_s1;
+    s32 *pad;
+    OSThread *faulted_thread;
     s32 temp;
 
     osSetEventMesg(0xC, &D_global_asm_807FEF58, 0x10);
@@ -403,15 +403,15 @@ void func_global_asm_80732280(void* arg0) {
         do {
             osRecvMesg(&D_global_asm_807FEF58, &sp3C, 1);
         } while (!gCrashDebuggerEnabled);
-        temp_s1 = func_dk64_boot_80005A70();
-    } while (!temp_s1);
+        faulted_thread = __osGetCurrFaultedThread();
+    } while (!faulted_thread);
 
     while (TRUE) {
         for (temp = 0; temp < 2; temp++) {
             osViBlack(0);
             D_global_asm_807FEF80 = D_global_asm_80744470[temp];
-            func_global_asm_80731E68(temp_s1);
-            func_global_asm_80731E68(temp_s1);
+            func_global_asm_80731E68(faulted_thread);
+            func_global_asm_80731E68(faulted_thread);
         }
     }
 }

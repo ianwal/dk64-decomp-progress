@@ -77,8 +77,8 @@ Gfx *func_global_asm_806634A4(Gfx *dl) {
 // Displaylist stuff, doable, close, regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_67890/func_global_asm_80663594.s")
 
-extern f32 (*D_807F93FC)[4][4]; // How many?
-extern void *D_807F9400; // Texture pointer
+extern f32 (*D_global_asm_807F93FC)[4][4]; // How many?
+extern void *D_global_asm_807F9400; // Texture pointer
 
 /*
 Gfx *func_global_asm_80663594(Gfx *dl, s32 arg1) {
@@ -90,9 +90,9 @@ Gfx *func_global_asm_80663594(Gfx *dl, s32 arg1) {
     gSPSetGeometryMode(dl++, G_ZBUFFER | G_SHADE | G_SHADING_SMOOTH);
     gDPSetPrimColor(dl++, 0, 0, 0x64, 0x64, 0x64, D_global_asm_807F93F4[arg1].unk10);
     gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
-    gDPLoadTextureBlock(dl++, D_807F9400, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 6, 6, G_TX_NOLOD, G_TX_NOLOD);
+    gDPLoadTextureBlock(dl++, D_global_asm_807F9400, G_IM_FMT_IA, G_IM_SIZ_8b, 64, 64, 0, G_TX_NOMIRROR | G_TX_WRAP, G_TX_NOMIRROR | G_TX_WRAP, 6, 6, G_TX_NOLOD, G_TX_NOLOD);
     gDPSetTileSize(dl++, G_TX_RENDERTILE, D_global_asm_807F93F4[arg1].unk12, D_global_asm_807F93F4[arg1].unk13, 0x00FC, 0x00FC);
-    gSPVertex(dl++, osVirtualToPhysical(D_807F93FC[arg1]), 4, 0);
+    gSPVertex(dl++, osVirtualToPhysical(D_global_asm_807F93FC[arg1]), 4, 0);
     gSP2Triangles(dl++, 0, 1, 2, 0, 0, 2, 3, 0);
     gDPPipeSync(dl++);
     return dl;

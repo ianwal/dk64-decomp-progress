@@ -106,7 +106,6 @@ u64 __ll_mul(u64, u64);
 void __ull_divremi(u64 *div, u64 *rem, u64 arg2, u16 arg3);
 s64 __ll_mod(s64 arg0, s64 arg1);
 s64 __ll_rshift(s64 arg0, s64 arg1);
-s32 func_dk64_boot_80005A70(void);
 
 // dk64_boot/io/contreaddata.c
 s32 osContStartReadData(OSMesgQueue *arg0);

@@ -61,9 +61,9 @@ typedef struct UnkInputStruct {
     s16 unk0[0x10];
 } UnkInputStruct;
 
-extern s16 D_807ECD40[4];
-extern s16 D_807ECD50[4];
-extern UnkInputStruct D_807ECD68[4];
+extern s16 D_global_asm_807ECD40[4];
+extern s16 D_global_asm_807ECD50[4];
+extern UnkInputStruct D_global_asm_807ECD68[4];
 extern u8 D_global_asm_807ECD09;
 extern u8 D_global_asm_807ECDF8;
 extern u8 D_global_asm_807ECDFC[4];
@@ -76,12 +76,12 @@ void func_global_asm_8060AA58(s32 arg0) {
     temp_0 = D_global_asm_807ECD09 & arg0;
     D_global_asm_807ECDF8 = temp_0;
     for (i = 0; i < 4; i++) {
-        D_807ECD40[i] = 0;
-        D_807ECD50[i] = 0;
+        D_global_asm_807ECD40[i] = 0;
+        D_global_asm_807ECD50[i] = 0;
         newly_pressed_input[i] = 0;
         D_global_asm_807ECDFC[i] = 0;
         for (j = 0; j < 0x10; j++) {
-            D_807ECD68[i].unk0[j] = 0;
+            D_global_asm_807ECD68[i].unk0[j] = 0;
         }
         if (temp_0 & 0xFF & (1 << i)) {
             D_global_asm_807ECDFC[i] = i;
