@@ -310,21 +310,18 @@ void func_global_asm_80731E68(Struct80731E68 *arg0) {
     }
 }
 
-// regalloc, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_8073202C.s")
-
-/*
 int func_global_asm_8073202C(unsigned int inst, char *sp, unsigned int *arg2) {
     // Looking for the MIPS instruction: lw ra, n(sp)
     // Stores the return address that it finds in *arg2
+    int new_var;
     if ((inst & 0xFFFF0000U) == 0x8FBF0000U) {
-        *arg2 = *(unsigned int*)(sp + (short)inst);
+        new_var = (short) (inst & 0xFFFFU);
+        *arg2 = *(unsigned int*)(sp + new_var);
         return TRUE;
     } else {
         return FALSE;
     }
 }
-*/
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80732064.s")
