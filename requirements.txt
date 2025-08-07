@@ -10,7 +10,7 @@ python-Levenshtein
 cxxfilt
 python-ranges
 pypng
-anybadge
+anybadge<1.16
 tqdm
 intervaltree
 n64img
