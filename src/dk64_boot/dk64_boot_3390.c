@@ -56,20 +56,20 @@ u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002BB8.s")
 
-s32 func_dk64_boot_80002C74(u8 *str, u8 *arg1) {
-    s32 var_s1;
-    u8 character;
+u32 _strcspn(const u8 *str, const u8 *src) {
+    u32 count;
+    u8 ch;
 
-    var_s1 = 0;
-    while (*str & 0xFF) {
-        character = *str & 0xFF;
-        if (_strchr(arg1, character)) {
-            return var_s1;
+    count = 0;
+    while (*str & 0xFFU) {
+        ch = *str & 0xFFU;
+        if (_strchr(src, ch)) {
+            return count;
         }
         str++;
-        var_s1++;
+        count++;
     }
-    return var_s1;
+    return count;
 }
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002CE8.s")

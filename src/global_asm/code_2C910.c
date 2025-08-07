@@ -72,7 +72,7 @@ void func_global_asm_80627C5C(s32 arg0, s16 arg1, u8 arg2) {
     temp_v0 = getTextString(1, temp_a3, 1, temp_a3);
     var_s0 = temp_v0;
     if (_strchr(temp_v0, ':') != 0) {
-        temp_a3_2 = func_dk64_boot_80002C74(var_s0, ":") + 1;
+        temp_a3_2 = _strcspn(var_s0, ":") + 1;
         sp42 = temp_a3_2;
         _strncpy(&sp44, var_s0, temp_a3_2, temp_a3_2);
         *(&sp44 + sp42) = 0;

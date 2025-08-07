@@ -4305,7 +4305,6 @@ us,boot,osViGetCurrentFramebuffer,64,yes
 us,boot,sinf,448,yes
 us,boot,func_dk64_boot_80002ABC,80,yes
 us,boot,guMtxXFML,96,yes
-us,boot,func_dk64_boot_80002C74,116,yes
 us,boot,osDestroyThread,260,yes
 us,boot,__osContGetInitData,208,yes
 us,boot,guPosition,104,yes
@@ -4376,6 +4375,7 @@ us,boot,__osCheckPackId,356,yes
 us,boot,guNormalize,132,yes
 us,boot,__osTimerServicesInit,140,yes
 us,boot,func_dk64_boot_800005A8,984,no
+us,boot,_strcspn,116,yes
 us,boot,__d_to_ll,28,yes
 us,boot,__osPfsGetStatus,208,yes
 us,boot,osPiStartDma,268,yes

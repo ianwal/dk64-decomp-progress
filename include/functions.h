@@ -70,7 +70,7 @@ u8 *_strncpy(u8 *dest, const u8 *src, u32 count);
 u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1);
 // TODO: func_dk64_boot_80002B0C has no documented signature
 // TODO: func_dk64_boot_80002BB8 has no documented signature
-s32 func_dk64_boot_80002C74(u8 *str, u8 *arg1);
+u32 _strcspn(const u8 *str, const u8 *src);
 // TODO: func_dk64_boot_80002CE8 has no documented signature
 u8 *func_dk64_boot_80002D60(u8 *str, u8 *ptr);
 // TODO: func_dk64_boot_80002DE4 has no documented signature
