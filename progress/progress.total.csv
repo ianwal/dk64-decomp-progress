@@ -4470,7 +4470,7 @@ us,boot,osEepromWrite,376,yes
 us,boot,osViSetEvent,108,yes
 us,boot,guOrthoF,340,yes
 us,boot,__osSpSetPc,52,yes
-us,boot,func_dk64_boot_80002DE4,180,no
+us,boot,_strtok,180,no
 us,boot,__ull_divremi,96,yes
 us,boot,osEepromRead,452,yes
 us,boot,__osEnqueueThread,72,yes

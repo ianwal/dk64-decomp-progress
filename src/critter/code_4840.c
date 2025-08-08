@@ -29,7 +29,6 @@ extern u16 D_critter_8002A1CE;
 extern u16 D_critter_8002A1CC;
 
 Gfx *func_critter_80028A9C(Gfx *dl, AAD_critter_8002904C *arg1, s8 *arg2, u8 arg3);
-void *func_dk64_boot_80002DE4(void*, char*);
 
 void func_critter_80028840(void) {
     D_critter_8002A1C0 = getPointerTableFile(TABLE_19_UNKNOWN, 4, 1, 1);
@@ -49,13 +48,13 @@ s16 func_critter_800288A8(AAD_critter_8002904C *arg0, u8 *arg1, s16 arg2) {
     s16 i;
 
     _strcpy(&sp4C, arg1);
-    temp_v0 = func_dk64_boot_80002DE4(&sp4C, " ");
+    temp_v0 = _strtok(&sp4C, " ");
     temp_f16 = getCenterOfString(6, temp_v0) * 0.5 * 4.0;
     count = 0;
     sp70[count] = arg2;
     sp94[count++] = arg2 + temp_f16;
     arg2 += (temp_f16 * 2) + 0x14;
-    while (temp_v0 = func_dk64_boot_80002DE4(NULL, " "), temp_v0 != NULL) {
+    while (temp_v0 = _strtok(NULL, " "), temp_v0 != NULL) {
         temp_f16 = getCenterOfString(6, temp_v0) * 0.5 * 4.0;
         sp70[count] = arg2;
         sp94[count++] = arg2 + temp_f16;
@@ -114,8 +113,8 @@ Gfx *func_critter_80028DE8(Gfx *dl, Actor *arg1) {
 
     _strcpy(sp38, &aaD->unk810[0x10]);
     i = 0;
-    dl = func_critter_80028A9C(dl, aaD, func_dk64_boot_80002DE4(sp38, " "), i++);
-    while (var_a2 = func_dk64_boot_80002DE4(NULL, " ")) {
+    dl = func_critter_80028A9C(dl, aaD, _strtok(sp38, " "), i++);
+    while (var_a2 = _strtok(NULL, " ")) {
         dl = func_critter_80028A9C(dl, aaD, var_a2, i++);
     }
     return dl;

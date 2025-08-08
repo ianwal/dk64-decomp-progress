@@ -1,8 +1,5 @@
 #include "common.h"
 
-// .data
-s32 D_dk64_boot_8000EEF0 = 0;
-
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002790.s")
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002828.s")
@@ -90,7 +87,34 @@ u8 *_strpbrk(const u8 *dest, const u8 *breakset) {
     return earliest_match;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002DE4.s")
+u8 *_strtok(u8 *str, const u8 *delim) {
+    static u8 *oldstr = NULL;
+
+    u8 *token;
+
+    if (str != NULL) {
+        // New string to tokenize.
+        oldstr = str;
+    }
+
+    token = oldstr;
+
+    if (oldstr == NULL) {
+        return NULL;
+    }
+
+    oldstr = _strpbrk(oldstr, delim);
+    if (oldstr != NULL) {
+        *oldstr++ = '\0';
+
+        while (_strchr(delim, *oldstr) != NULL) {
+            oldstr++;
+        }
+        return token;
+    }
+
+    return token;
+}
 
 void *memset(void *dest, s32 val, u32 len)
 {

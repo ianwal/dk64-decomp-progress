@@ -73,7 +73,7 @@ u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1);
 u32 _strcspn(const u8 *str, const u8 *src);
 // TODO: func_dk64_boot_80002CE8 has no documented signature
 u8 *_strpbrk(const u8 *dest, const u8 *breakset);
-// TODO: func_dk64_boot_80002DE4 has no documented signature
+u8 *_strtok(u8 *str, const u8 *delim);
 void *memset(void *dest, s32 val, u32 len);
 u8 *_strchr(const u8 *str, s32 c);
 u32 strlen(const u8 *str);
