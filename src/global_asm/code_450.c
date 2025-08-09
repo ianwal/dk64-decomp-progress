@@ -217,7 +217,7 @@ void func_global_asm_805FB944(u8 arg0) {
         D_global_asm_807445A4 = temp;
         func_global_asm_805FB7E4();
     }
-    osViSetSpecialFeatures(0x42U);
+    osViSetSpecialFeatures(VI_CTRL_TYPE_16 | VI_CTRL_SERRATE_ON);
     D_global_asm_80744490 = D_global_asm_8074450C * 0x140;
     D_global_asm_80744494 = D_global_asm_8074450C * 0xF0;
     D_global_asm_807444AC = D_global_asm_8074449C + (D_global_asm_8074450C * 0x1E);
@@ -323,7 +323,7 @@ void func_global_asm_805FBFF4(s32 arg0) {
         D_global_asm_807444BC = 1.25f;
     }
     func_global_asm_805FBC5C();
-    osViSetSpecialFeatures(0x42);
+    osViSetSpecialFeatures(VI_CTRL_TYPE_16 | VI_CTRL_SERRATE_ON);
     func_global_asm_805FBE04();
     D_global_asm_8076A070 = D_global_asm_80767CC0 - 2;
     osRecvMesg(&D_global_asm_8076A110, &sp38, 1);
