@@ -46,6 +46,7 @@ _sprintf = 0x800031E0; // segment:dk64_boot
 _strchr = 0x80002ECC; // segment:dk64_boot
 _strcpy = 0x80002A30; // segment:dk64_boot
 _strncpy = 0x80002A64; // segment:dk64_boot
+dk64_strncasecmp = 0x80002BB8; // segment:dk64_boot
 _strtok = 0x80002DE4; // segment:dk64_boot
 strlen = 0x80002F18; // segment:dk64_boot
 _strcspn = 0x80002C74; // segment:dk64_boot

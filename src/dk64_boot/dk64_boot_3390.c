@@ -51,7 +51,43 @@ u8 *func_dk64_boot_80002ABC(u8 *str, u8 *arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002B0C.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002BB8.s")
+// Case-insensitive strncmp
+s32 dk64_strncasecmp(const u8 *str1, const u8 *str2, u32 count) {
+    u8 c1;
+    u8 c2;
+
+    if (*str1 != '\0' || *str2 != '\0') {
+        while (count > 0) {
+            c1 = *str1;
+            // TODO: This is probably a TOUPPER macro? Doesn't affect matching though.
+            if (c1 >= 'a' && c1 <= 'z') {
+                c1 -= 0x20;
+            }
+
+            c2 = *str2;
+            if (c2 >= 'a' && c2 <= 'z') {
+                c2 -= 0x20;
+            }
+
+            if (c1 < c2) {
+                return -1;
+            }
+            if (c1 > c2) {
+                return 1;
+            }
+
+            str1++;
+            str2++;
+            count--;
+
+            if (*str1 == '\0' && *str2 == '\0') {
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
 
 u32 _strcspn(const u8 *str, const u8 *src) {
     u32 count;

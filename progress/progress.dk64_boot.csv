@@ -96,6 +96,7 @@ us,boot,__d_to_ll,28,yes
 us,boot,__osPfsGetStatus,208,yes
 us,boot,osPiStartDma,268,yes
 us,boot,osPiRawReadIo,84,yes
+us,boot,dk64_strncasecmp,188,yes
 us,boot,osSpTaskYield,32,yes
 us,boot,_sprintf,44,yes
 us,boot,func_dk64_boot_80002828,184,no
@@ -113,7 +114,6 @@ us,boot,__osSiGetAccess,68,yes
 us,boot,__osEnqueueAndYield,256,yes
 us,boot,func_dk64_boot_80001AF4,340,yes
 us,boot,osInvalICache,128,yes
-us,boot,func_dk64_boot_80002BB8,188,no
 us,boot,guPerspectiveF,560,yes
 us,boot,__osSetGlobalIntMask,76,yes
 us,boot,guMtxL2F,180,yes
@@ -187,7 +187,7 @@ us,boot,osEepromWrite,376,yes
 us,boot,osViSetEvent,108,yes
 us,boot,guOrthoF,340,yes
 us,boot,__osSpSetPc,52,yes
-us,boot,_strtok,180,no
+us,boot,_strtok,180,yes
 us,boot,__ull_divremi,96,yes
 us,boot,osEepromRead,452,yes
 us,boot,__osEnqueueThread,72,yes
