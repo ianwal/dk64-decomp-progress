@@ -1313,27 +1313,18 @@ s16 func_global_asm_8067AF74(Actor *arg0) {
     return -1;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_8067B01C.s")
-
-/*
 void func_global_asm_8067B01C(void) {
     Actor *temp_a1;
-    s32 temp_a0_2;
-    s32 temp_a3;
     s16 i;
     s16 newSlot;
-    Actor *phi_a3_2;
     s32 phi_v0;
 
-    // TODO: Problem is somewhere in this loop (probably the inner loop)
     phi_v0 = FALSE;
     for (i = 1; i < actor_count; i++) {
         temp_a1 = actor_list[i];
         newSlot = i;
-        phi_a3_2 = actor_list[newSlot - 1];
-        while (actor_list[newSlot] < phi_a3_2) {
-            phi_a3_2 = actor_list[newSlot - 1];
+        while ((u32) temp_a1 < (u32) actor_list[newSlot - 1]) {
+            actor_list[newSlot] = actor_list[newSlot - 1];
             newSlot--;
         }
         actor_list[newSlot] = temp_a1;
@@ -1348,7 +1339,6 @@ void func_global_asm_8067B01C(void) {
         }
     }
 }
-*/
 
 extern u16 D_global_asm_807ECDF0; // Button input bitfield
 
