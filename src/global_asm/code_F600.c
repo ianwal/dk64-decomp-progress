@@ -112,19 +112,14 @@ u8 func_global_asm_8060AC28(void) {
     return D_global_asm_807ECDF8;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_global_asm_8060AC34.s")
-
-/*
 void func_global_asm_8060AC34(OSContPad *arg0) {
-    u8 *unk0;
-    
-    unk0 = &D_global_asm_807ECD08;
-    if ((!D_global_asm_807467C4) && (*unk0)) {
-        osContGetReadData(arg0);
+    if (*(volatile u8 *)&D_global_asm_807467C4 == 0) {
+        if (D_global_asm_807ECD08 != 0) {
+            osContGetReadData(arg0);
+        }
     }
-    *unk0 = 0;
+    D_global_asm_807ECD08 = 0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_global_asm_8060AC7C.s")
 

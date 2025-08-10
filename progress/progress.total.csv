@@ -2872,7 +2872,7 @@ us,asm,func_global_asm_806AF688,984,yes
 us,asm,func_global_asm_8067B100,224,yes
 us,asm,func_global_asm_80712EDC,52,yes
 us,asm,func_global_asm_80672C30,64,yes
-us,asm,func_global_asm_8060AC34,72,no
+us,asm,func_global_asm_8060AC34,72,yes
 us,asm,func_global_asm_80725B38,108,yes
 us,asm,func_global_asm_806E5E58,8,yes
 us,asm,func_global_asm_807278C0,152,yes
