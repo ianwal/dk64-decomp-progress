@@ -8,7 +8,30 @@
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800028E0.s")
 
 // Related to decompression? Maybe extracting bits from stream and turning into values?
+// https://decomp.me/scratch/TARdJ
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800029EC.s")
+/*
+// Kind of close?
+u32 func_dk64_boot_800029EC(u8 *a0, u32 a3, u32 s4, u32 s5) {
+    u32 v0 = 0;
+    u32 t4 = s4;
+
+    while (a3 != 0) {
+        if (t4 == s4) {
+            if (*a0 & t4) {
+                v0 |= a3;
+            }
+            a0 += s5;
+        }
+        t4 >>= 1;
+        a3 >>= 1;
+        if (t4 == 0) {
+            t4 = s4;
+        }
+    }
+    return v0;
+}
+*/
 
 u8 *_strcpy(u8 *dest, const u8 *src) {
     u8 *ptr = dest;
