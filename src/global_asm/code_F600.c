@@ -30,21 +30,15 @@ u8 func_global_asm_8060A900(void) {
     return D_global_asm_807ECD09;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_global_asm_8060A9BC.s")
-
 extern u8 D_global_asm_807467C4; // should_poll_input
 
-/*
-// TODO: Hmm, might need complete segment defintions for this file for this to match
-void func_global_asm_8060A9BC(void) {    
+void func_global_asm_8060A9BC(void) {
     func_global_asm_8060AA04();
-    if ((D_global_asm_807467C4 & 0xFF)) {
-        return;
+    if (*(u8 volatile *)&D_global_asm_807467C4 == 0) {
+        D_global_asm_807ECD08 = 1;
+        osContStartReadData(&D_global_asm_807ECCF0);
     }
-    D_global_asm_807ECD08 = 1;
-    osContStartReadData(&D_global_asm_807ECCF0);
 }
-*/
 
 void func_global_asm_8060AA04(void) {
     if (D_global_asm_807ECD08 != 0) {
