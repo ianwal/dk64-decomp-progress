@@ -13,8 +13,7 @@ A178_80619580 *func_global_asm_80619520(Actor *arg0) {
     A178_80619580 *a178;
 
     a178 = NULL;
-    // TODO: Proper enum value
-    if (arg0->unk58 == 0x134) {
+    if (arg0->unk58 == ACTOR_SEAL_0) {
         a178 = arg0->unk178;
     }
     return a178;
