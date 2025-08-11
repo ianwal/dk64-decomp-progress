@@ -127,7 +127,7 @@ us,boot,osSetIntMask,160,yes
 us,boot,osSpTaskLoad,400,yes
 us,boot,osPiGetCmdQueue,40,yes
 us,boot,_strpbrk,132,yes
-us,boot,func_dk64_boot_800025A4,384,no
+us,boot,func_dk64_boot_800025A4,384,yes
 us,boot,__osAiDeviceBusy,48,yes
 us,boot,bzero,156,yes
 us,boot,func_dk64_boot_8000102C,144,yes
