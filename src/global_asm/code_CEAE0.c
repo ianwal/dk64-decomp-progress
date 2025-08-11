@@ -324,14 +324,15 @@ void func_global_asm_806CA540(void) {
 }
 
 // Jumptable, regalloc
+// https://decomp.me/scratch/ICEGR
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CA5F8.s")
 
 void func_global_asm_806CF9CC();
-extern u8 D_80770561;
-extern s16 D_807F5FE4;
-extern s16 D_807F5FE6;
-extern s16 D_807F5FE8;
-extern s16 D_807F5FEA;
+extern u8 D_global_asm_80770561;
+extern s16 D_global_asm_807F5FE4;
+extern s16 D_global_asm_807F5FE6;
+extern s16 D_global_asm_807F5FE8;
+extern s16 D_global_asm_807F5FEA;
 extern s32 D_global_asm_8076A068;
 extern s32 D_global_asm_8076A090;
 extern s32 D_global_asm_8076A098;
@@ -579,10 +580,10 @@ void func_global_asm_806CA5F8(s32 arg0) {
     }
     if (
         (
-            (gCurrentActorPointer->x_position < D_807F5FE4) ||
-            (gCurrentActorPointer->z_position < D_807F5FE6) ||
-            (D_807F5FE8 < gCurrentActorPointer->x_position) ||
-            (D_807F5FEA < gCurrentActorPointer->z_position) ||
+            (gCurrentActorPointer->x_position < D_global_asm_807F5FE4) ||
+            (gCurrentActorPointer->z_position < D_global_asm_807F5FE6) ||
+            (D_global_asm_807F5FE8 < gCurrentActorPointer->x_position) ||
+            (D_global_asm_807F5FEA < gCurrentActorPointer->z_position) ||
             (sp68 != 0)
         ) && 
         (extra_player_info_pointer->unk244 == 0) && 
@@ -619,7 +620,7 @@ void func_global_asm_806CA5F8(s32 arg0) {
                 func_global_asm_805FF2F4();
                 extra_player_info_pointer->unk244 = 1;
             }
-            if (((gCurrentActorPointer->unk88 != gCurrentActorPointer->x_position) || (gCurrentActorPointer->unk8C != gCurrentActorPointer->y_position) || (gCurrentActorPointer->unk90 != gCurrentActorPointer->z_position) || ((D_global_asm_807FD610[cc_player_index].unk2A != 0)) || (D_global_asm_807FD610[cc_player_index].unk2E != 0) || (D_global_asm_807FD610[cc_player_index].unk2F != 0)) && !(global_properties_bitfield & 2)) {
+            if (((gCurrentActorPointer->x_position != gCurrentActorPointer->unk88) || (gCurrentActorPointer->y_position != gCurrentActorPointer->unk8C) || (gCurrentActorPointer->z_position != gCurrentActorPointer->unk90) || ((D_global_asm_807FD610[cc_player_index].unk2A != 0)) || (D_global_asm_807FD610[cc_player_index].unk2E != 0) || (D_global_asm_807FD610[cc_player_index].unk2F != 0)) && !(global_properties_bitfield & 2)) {
                 D_global_asm_8076A090++;
                 if (D_global_asm_8076A090 == 0x69780) {
                     func_global_asm_805FF2F4();
