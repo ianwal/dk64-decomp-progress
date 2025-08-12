@@ -571,7 +571,9 @@ segments:
       - { start: 0x2165D50, type: bss, vram: 0x807655F0, name: global_asm_BSS2 }
       - { start: 0x2165D50, type: .bss, vram: 0x807F02D0, name: code_131B0 }
       - { start: 0x2165D50, type: bss, vram: 0x807F0570, name: global_asm_BSS3 }
-      
+      - { start: 0x2165D50, type: .bss, vram: 0x807FDCD0, name: code_135D30 }
+      - { start: 0x2165D50, type: bss, vram: 0x807FDDA0, name: global_asm_BSS4 }
+
   - name: menu
     dir: menu
     type: code

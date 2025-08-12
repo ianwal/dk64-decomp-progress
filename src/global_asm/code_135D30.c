@@ -336,14 +336,10 @@ typedef struct {
     u8 unk7; // Used
 } Struct807FDCD0;
 
-extern Struct807FDCD0 D_global_asm_807FDCD0[];
+static Struct807FDCD0 D_global_asm_807FDCD0[0x18];
 
-extern u8 temporary_flag_block[];
+static u8 temporary_flag_block[0xE];
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_135D30/func_global_asm_80731030.s")
-
-/*
-// TODO: Not sure why this doesn't match, maybe turn it into a while loop?
 void func_global_asm_80731030(void) { // clearTemporaryFlags()
     s32 flagIndex;
     
@@ -351,7 +347,6 @@ void func_global_asm_80731030(void) { // clearTemporaryFlags()
         temporary_flag_block[flagIndex] = 0;
     }
 }
-*/
 
 void clearPermanentFlags(void) {
     s32 flagIndex;
