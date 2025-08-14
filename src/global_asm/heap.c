@@ -234,20 +234,23 @@ void func_global_asm_8061159C(HeapHeader *arg0) {
     arg0[-1].unkB = 1;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_806115A8.s")
+void func_global_asm_806115A8(HeapHeader **arg) {
+    HeapHeader *v1 = *arg - 1;
 
-/*
-// TODO: Might only have 1 param
-void func_global_asm_806115A8(HeapHeader **arg0, HeapHeader *arg1) {
-    arg1 = &(*arg0)[-1];
-    arg1->unkB = 2;
-    D_global_asm_807F5A70[D_global_asm_807F5A68++] = arg1;
+    // This fixes regalloc and inserts an extra move. It's a fake match.
+    // This _might_ be a stubbed assert. The comparison operator and struct member being accessed
+    // are guesses, because they can be changed with no effect.
+    // An alternate fake match is `if ((!v1) && (!v1));`
+    (v1->prev != NULL || v1->size != 0) ? (void)0 : (void)0;
+
+    v1->unkB = 2;
+
+    D_global_asm_807F5A70[D_global_asm_807F5A68++] = arg;
+
     if (D_global_asm_807F5A68 == 0x20) {
         raiseException(0xD, 0, 0, 0);
     }
 }
-*/
 
 // regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80611614.s")

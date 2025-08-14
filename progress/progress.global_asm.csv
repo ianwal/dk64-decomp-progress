@@ -1759,7 +1759,7 @@ us,asm,func_global_asm_8064BCB0,124,yes
 us,asm,func_global_asm_8066B0EC,12,yes
 us,asm,func_global_asm_806EBCF0,188,yes
 us,asm,func_global_asm_8070CAB4,120,yes
-us,asm,func_global_asm_806115A8,108,no
+us,asm,func_global_asm_806115A8,108,yes
 us,asm,func_global_asm_8065D0FC,116,yes
 us,asm,func_global_asm_80650ECC,2108,no
 us,asm,func_global_asm_8065F4F4,252,yes
