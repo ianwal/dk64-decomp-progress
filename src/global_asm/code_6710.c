@@ -103,22 +103,16 @@ void func_global_asm_80601D24(s32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80601EE4.s")
 
-// rodata?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80602104.s")
-
 extern s32 D_global_asm_807454E8;
 
-/*
-void func_global_asm_80602104(s32 arg0) {
-    if (osAiGetLength() >> 2) {
-        return;
+void func_global_asm_80602104(s32 arg0)
+{
+    s32 *temp_t7 = &D_global_asm_807454E8;
+
+    if (((osAiGetLength() >> 2) == 0) && (*temp_t7 == 0)) {
+        *temp_t7 = 0;
     }
-    if (D_global_asm_807454E8) {
-        return;
-    }
-    D_global_asm_807454E8 = 0;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_6710/func_global_asm_80602144.s")
 
