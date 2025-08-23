@@ -17,7 +17,6 @@ extern HeapHeader *D_global_asm_807F5A64;
 extern s32 D_global_asm_807F5A68;
 extern s32 D_global_asm_807F5A70[]; // TODO: Datatype is sus
 extern HeapHeader *D_global_asm_807F0990;
-extern s32 D_global_asm_807F5A68;
 
 void *func_global_asm_806111F8(s32 arg0, u32 arg1);
 
@@ -66,8 +65,8 @@ typedef struct Struct80610BD8_arg1 {
     s32 unkC;
 } Struct80610BD8_arg1;
 
-extern HeapArenaMeta D_807F0988[];
-extern s32 D_807F0A28;
+extern HeapArenaMeta D_global_asm_807F0988[];
+extern s32 D_global_asm_807F0A28;
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80610C74.s")
 
@@ -112,35 +111,26 @@ s32 func_global_asm_806111BC(s32 arg0, s32 arg1) {
     return 0;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_806111F8.s")
-
 typedef struct Struct807F0988_unk8 Struct807F0988_unk8;
 
+// empty block heap header??
 struct Struct807F0988_unk8 {
-    s32 unk0;
-    s32 unk4;
-    Struct807F0988_unk8 *unk8;
-    Struct807F0988_unk8 *unkC;
+    Struct807F0988_unk8 *unk0; // pointer to previous block??
+    u32 unk4; // size of free block?
+    Struct807F0988_unk8 *unk8; // next?
+    Struct807F0988_unk8 *unkC; // prev?
 };
 
-typedef struct {
-    s32 unk0;
-    s32 unk4;
-    Struct807F0988_unk8 *unk8;
-    s32 unkC;
-    s32 unk10;
-} Struct807F0988;
-
-extern Struct807F0988 D_global_asm_807F0988[];
-
-/*
+// TODO: This needs cleanup badly.
+// arg0 is index into D_global_asm_807F0988, so the index of the arena?
+// arg1 is number of bytes to allocate?
 void *func_global_asm_806111F8(s32 arg0, u32 arg1) {
     u32 temp_a0;
     u32 var_v0;
     Struct807F0988_unk8 *temp_a0_2;
-    volatile Struct807F0988_unk8 *temp_v0;
+    Struct807F0988_unk8 *temp_v0;
     Struct807F0988_unk8 *temp_v0_2;
+    Struct807F0988_unk8 *temp_v0_3;
     Struct807F0988_unk8 *var_a0;
     Struct807F0988_unk8 *var_v1;
 
@@ -149,10 +139,12 @@ void *func_global_asm_806111F8(s32 arg0, u32 arg1) {
     }
     var_v1 = NULL;
     var_v0 = -1;
-    var_a0 = D_global_asm_807F0988[arg0].unk8;
+    var_a0 = D_global_asm_807F0988[arg0].tail;
     if (var_a0 == NULL) {
         return NULL;
     }
+
+    // Find the best fit block?
     do {
         if (var_a0->unk4 >= arg1) {
             if (var_a0->unk4 < var_v0) {
@@ -162,28 +154,31 @@ void *func_global_asm_806111F8(s32 arg0, u32 arg1) {
         }
         var_a0 = var_a0->unk8;
     } while (var_a0 != NULL);
+
     if (var_v1 != NULL) {
         temp_a0 = var_v1->unk4 - arg1;
-        temp_v0 = var_v1 + temp_a0;
+        temp_v0 = (u8*)var_v1 + temp_a0;
         if (temp_a0 >= 0x10) {
-            temp_v0->unk4 = 0;
-            temp_v0->unk0 = NULL;
-            temp_v0->unkC = 0;
-            temp_v0->unk8 = 0;
+            // Split the block?
+            ((u64*)temp_v0)[0] = 0;
+            ((u64*)temp_v0)[1] = 0;
             temp_v0->unk4 = arg1;
             temp_v0->unk0 = var_v1;
             var_v1->unk4 = temp_a0 - 0x10;
-            temp_v0[arg1 + 1].unk0 = temp_v0;
-            return temp_v0;
+            temp_v0_3 = (u8*)temp_v0 + arg1;
+            temp_v0_3[1].unk0 = temp_v0;
+            return (void*)temp_v0;
         }
+
+        // Remove the block from the linked list?
         temp_v0_2 = var_v1->unkC;
         temp_a0_2 = var_v1->unk8;
-        var_v1->unk8 = NULL;
-        var_v1->unkC = NULL;
+        ((u64*)var_v1)[1] = 0;
+
         if (temp_v0_2 != NULL) {
             temp_v0_2->unk8 = temp_a0_2;
         } else {
-            D_global_asm_807F0988[arg0].unk8 = temp_a0_2;
+            D_global_asm_807F0988[arg0].tail = temp_a0_2;
         }
         if (temp_a0_2 != NULL) {
             temp_a0_2->unkC = temp_v0_2;
@@ -192,7 +187,6 @@ void *func_global_asm_806111F8(s32 arg0, u32 arg1) {
     }
     return NULL;
 }
-*/
 
 void free(void *arg0) {
     if (((HeapHeader*)arg0 != D_global_asm_807F5A64)) {

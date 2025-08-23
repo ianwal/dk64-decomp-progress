@@ -1239,7 +1239,7 @@ us,asm,func_global_asm_80714608,48,yes
 us,asm,func_global_asm_8071F758,396,yes
 us,asm,func_global_asm_8071B1AC,160,yes
 us,asm,func_global_asm_806487C4,1164,no
-us,asm,func_global_asm_806111F8,276,no
+us,asm,func_global_asm_806111F8,276,yes
 us,asm,func_global_asm_8070A848,236,no
 us,asm,func_global_asm_806DFF34,108,yes
 us,asm,func_global_asm_806291A8,12,yes
