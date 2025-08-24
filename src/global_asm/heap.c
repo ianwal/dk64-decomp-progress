@@ -246,34 +246,24 @@ void func_global_asm_806115A8(HeapHeader **arg) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80611614.s")
-
-extern s32 D_global_asm_807F5A68;
-
-// Removes a heap block from D_global_asm_807F5A70 and marks it as free
-/*
+// Removes a heap block from D_global_asm_807F5A70 and marks it as free?
 void func_global_asm_80611614(HeapHeader **arg0) {
-    s32 temp_t7;
     s32 i;
     HeapHeader *temp;
 
-    temp = *arg0 - 1;
+    temp = (*arg0) - 1;
     temp->unkB = 0; // mark as free
-    temp_t7 = D_global_asm_807F5A68 - 1;
 
-    // Find the block
     for (i = 0; i < D_global_asm_807F5A68; i++) {
-        if ((s32) temp == D_global_asm_807F5A70[i]) {
+        if (arg0 == ((HeapHeader**)D_global_asm_807F5A70[i])) {
             break;
         }
     }
 
-    D_global_asm_807F5A70[i] = D_global_asm_807F5A70[temp_t7];
-    D_global_asm_807F5A68 = temp_t7;
-    D_global_asm_807F5A70[temp_t7] = 0;
+    D_global_asm_807F5A68 -= 1;
+    D_global_asm_807F5A70[i] = D_global_asm_807F5A70[D_global_asm_807F5A68];
+    D_global_asm_807F5A70[D_global_asm_807F5A68] = 0;
 }
-*/
 
 s32 func_global_asm_80611688(HeapHeader *arg0) {
     return arg0[-1].size;
