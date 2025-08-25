@@ -217,8 +217,30 @@ void func_global_asm_8061138C(void *arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80611408.s")
 
-// Looks fiddly... hmm
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80611534.s")
+void func_global_asm_80611534(Struct807F0988_unk8 *arg0)
+{
+    Struct807F0988_unk8 *temp_v1;
+
+    if (arg0 == NULL) {
+      return;
+    }
+
+    if (arg0->unkC == NULL) {
+        return;
+    }
+
+    if (arg0->unkC == arg0->unk0) {
+        temp_v1 = ((u8*)(arg0 + 1)) + arg0->unk4;
+        temp_v1->unk0 = arg0->unkC;
+
+        temp_v1 = arg0->unkC;
+        temp_v1->unk4 = (temp_v1->unk4 + arg0->unk4) + 0x10; // 0x10 is probably sizeof(Struct807F0988_unk8)
+        temp_v1->unk8 = arg0->unk8;
+        if (temp_v1->unk8 != NULL) {
+            temp_v1->unk8->unkC = temp_v1;
+        }
+    }
+}
 
 void func_global_asm_80611594(HeapHeader *arg0) {
     arg0[-1].unkB = 0;
