@@ -5,7 +5,7 @@ typedef struct {
     unsigned char initials[3];
 } Struct80757044;
 
-u8 func_global_asm_8060BBE0(u16, u8);
+s32 func_global_asm_8060BBE0(u16, u8);
 void func_global_asm_8060C758(u8, s32);
 
 extern s8 D_global_asm_80744460;
@@ -142,10 +142,7 @@ void func_global_asm_8060BA14(void) {
     }
 }
 
-// TODO: Double check signature
-u8 func_global_asm_8060BB18(u32, u16, u8);
-
-u8 func_global_asm_8060BB18(u32 arg0, u16 arg1, u8 arg2) {
+void func_global_asm_8060BB18(u32 arg0, u16 arg1, u8 arg2) {
     s32 *var_t1;
     u8 bit_index;
     s32 var_v0;
@@ -172,8 +169,36 @@ u8 func_global_asm_8060BB18(u32 arg0, u16 arg1, u8 arg2) {
     }
 }
 
-// Extremely fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/saveFile/func_global_asm_8060BBE0.s")
+s32 func_global_asm_8060BBE0(u16 arg0, u8 arg1) {
+    s32 *var_t4;
+    u8 var_a1;
+    u8 var_t0;
+    u8 var_t1;
+    s32 var_t2;
+    u8 var_v0;
+    s32 var_v1;
+
+    var_v1 = 0;
+    var_v0 = arg0 & 0x1F;
+    var_t0 = 0;
+    var_t1 = arg0 & 0x1F;
+    var_t2 = 0;
+    var_a1 = arg1;
+    var_t4 = &D_global_asm_807ECEA8[(arg0 >> 5) << 2];
+    while (arg1) {
+        var_t2 |= 1 << var_t1;
+        var_t1++;
+        arg1--;
+        if ((var_t1 > 0x1F) || (arg1 == 0)) {
+            var_t1 = 0;
+            var_v1 |= ((u32) (*var_t4++ & var_t2) >> var_v0) << var_t0;
+            var_t2 = 0;
+            var_v0 = 0;
+            var_t0 = -(arg1 - var_a1);
+        }
+    }
+    return var_v1;
+}
 
 void func_global_asm_8060BCA0(s32 arg0, u8 arg1, u8 arg2, u16 *arg3, u8 *arg4) {
     *arg3 = *arg3 + D_global_asm_807ECEA0 + ((arg1) * 0xA1) + 0x320;
@@ -470,12 +495,15 @@ void func_global_asm_8060C648(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex, u32 arg4
 }
 
 s32 func_global_asm_8060C6B8(s32 arg0, u8 arg1, u8 arg2, u8 fileIndex) {
-    s32 temp; // Pad
+    s32 temp;
     u16 sp22;
     u8 sp21;
+    u8 slot;
 
-    func_global_asm_8060C340(&sp22, &sp21, arg0, arg1, arg2, getEEPROMSaveSlot(fileIndex));
-    return func_global_asm_8060C430(arg0, func_global_asm_8060BBE0(sp22, sp21), 0);
+    slot = getEEPROMSaveSlot(fileIndex);
+    func_global_asm_8060C340(&sp22, &sp21, arg0, arg1, arg2, slot);
+    temp = func_global_asm_8060BBE0(sp22, sp21);
+    return func_global_asm_8060C430(arg0, temp, 0);
 }
 
 s32 func_global_asm_8060C724(u8 fileIndex) {
