@@ -579,8 +579,76 @@ void func_global_asm_80652FDC(f32 arg0, f32 arg1, f32 arg2, s16 arg3, s16 arg4, 
 }
 */
 
-// TODO: Struct (or struct array?) on the stack?
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_806531B8.s")
+typedef struct Struct806531B8 {
+    s16 chunk;
+    u8 pad[2];
+    f32 y;
+} Struct806531B8;
+
+s16 func_global_asm_806531B8(f32 x, f32 y, f32 z, s16 chunk) {
+    s32 var_s3;
+    f32 var_f20;
+    u8 sp207;
+    u8 var_s0;
+    f32 sp200;
+    Struct806531B8 sp70[50];
+    s32 pad[2];
+    s32 i;
+    s32 j = 0;
+
+    if (D_global_asm_807F6C28 == 0) {
+        return -1;
+    }
+    x *= 6;
+    y *= 6;
+    z *= 6;
+    if (func_global_asm_806534E0(x, y, z, chunk, &sp207, &sp200)) {
+        if (!sp207) {
+            return chunk;
+        }
+        sp70[0].chunk = chunk;
+        sp70[0].y = sp200;
+        j = 1;
+    }
+    var_s0 = FALSE;
+    i = 0;
+    while (i < D_global_asm_807F6C28) {
+        if (chunk != i) {
+            if (func_global_asm_806534E0(x, y, z, i, &sp207, &sp200)) {
+                if (!sp207) {
+                    var_s0 = TRUE;
+                } else {
+                    sp70[j].chunk = i;
+                    sp70[j].y = sp200;
+                    j++;
+                    i++;
+                }
+            } else {
+                i++;
+            }
+        } else {
+            i++;
+        }
+        if (var_s0) {
+            break;
+        }
+    }
+    if (var_s0) {
+        return i;
+    }
+    if (j == 0) {
+        return chunk;
+    }
+    var_f20 = sp70[0].y;
+    var_s3 = sp70[0].chunk;
+    for (i = 0; i < j; i++) {
+        if (func_global_asm_806533C4(var_f20, sp70[i].y, y)) {
+            var_f20 = sp70[i].y;
+            var_s3 = sp70[i].chunk;
+        }
+    }
+    return var_s3;
+}
 
 s32 func_global_asm_806533C4(f32 arg0, f32 arg1, f32 arg2) {
     s32 phi_v0;
