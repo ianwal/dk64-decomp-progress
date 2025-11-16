@@ -1255,7 +1255,7 @@ s16 func_global_asm_806531B8(f32 arg0, f32 arg1, f32 arg2, s16 arg3);
 s32 func_global_asm_806533C4(f32 arg0, f32 arg1, f32 arg2);
 s32 func_global_asm_806534E0(f32 arg0, f32 arg1, f32 arg2, s16 chunkIndex, s8 *arg4, f32 *arg5);
 s32 func_global_asm_80653684(Chunk78_7C *arg0, f32 arg1, f32 arg2);
-s32 func_global_asm_80653804(Chunk78_7C *arg0, f32 arg1, f32 arg2);
+u8 func_global_asm_80653804(Chunk78_7C *arg0, f32 arg1, f32 arg2);
 void func_global_asm_80653A70(s16 chunkIndex);
 void func_global_asm_80653B70(u8 arg0);
 void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2);

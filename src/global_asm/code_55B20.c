@@ -756,88 +756,71 @@ s32 func_global_asm_80653684(Chunk78_7C *arg0, f32 arg1, f32 arg2) {
 
 /*
 // TODO: WIP, needs a lot of TLC
-s32 func_global_asm_80653804(Chunk78_7C *arg0, f32 arg1, f32 arg2) {
-    f64 spA0;
-    f64 sp98;
-    f64 sp90;
-    f64 sp88;
+u8 func_global_asm_80653804(Chunk78_7C *arg0, f32 arg1, f32 arg2) {
     f64 temp_f12;
     f64 temp_f14;
     f64 temp_f22;
     f64 temp_f24;
-    s32 temp_t2;
-    s32 phi_t2;
+    s32 i;
     f64 phi_f2;
     f64 phi_f0;
     f64 phi_f20;
     s32 phi_a0;
     s32 phi_t3;
     f64 phi_f18;
-    f64 phi_f16;
-    f64 phi_f14;
-    f64 phi_f12;
-    s32 phi_v1;
+    u8 phi_v1;
+    f64 var_0;
+    f64 var_2;
+    f64 var_c;
+    f64 a1;
+    f64 a2;
+    f64 temp_0;
 
     temp_f22 = (arg0->unk0 + ((arg0->unk4 + arg0->unk2) * 0.5)) * 0.5;
-    temp_f24 = (arg0->unkC + ((arg0->unk10 + arg0->unkE) * 0.5)) * 0.5;
-    phi_t2 = 0;
-    phi_v1 = 0;
-    do {
-        switch (phi_t2) {
+    var_c = arg0->unkC;
+    temp_f24 = (var_c + ((arg0->unk10 + arg0->unkE) * 0.5)) * 0.5;
+    a1 = arg1;
+    a2 = arg2;
+    var_2 = arg0->unk2;
+    phi_v1 = FALSE;
+    for (i = 0; i != 3; i++) {
+        switch (i) {
             default:
-                phi_f2 = (arg2 - phi_f18) * phi_f12;
-                phi_f0 = (arg1 - phi_f16) * phi_f14;
-                phi_f20 = ((temp_f22 - phi_f16) * phi_f14) - ((temp_f24 - phi_f18) * phi_f12);
+                // 3
+                phi_f2 = (a2 - phi_f18) * temp_f12;
+                phi_f0 = (a1 - var_2) * temp_f14;
+                phi_f20 = ((temp_f22 - var_2) * temp_f14) - ((temp_f24 - phi_f18) * temp_f12);
                 break;
             case 0:
                 temp_f14 = arg0->unkE - arg0->unkC;
                 temp_f12 = arg0->unk2 - arg0->unk0;
-                phi_f2 = (arg2 - arg0->unkC) * temp_f12;
-                phi_f0 = (arg1 - arg0->unk0) * temp_f14;
+                phi_f2 = (a2 - var_c) * temp_f12;
+                phi_f0 = (a1 - arg0->unk0) * temp_f14;
                 phi_f20 = ((temp_f22 - arg0->unk0) * temp_f14) - ((temp_f24 - arg0->unkC) * temp_f12);
-                phi_f18 = arg0->unkC;
-                phi_f16 = arg0->unk0;
-                phi_f14 = temp_f14;
-                phi_f12 = temp_f12;
                 break;
             case 1:
                 temp_f14 = arg0->unk10 - arg0->unkC;
                 temp_f12 = arg0->unk4 - arg0->unk0;
-                phi_f2 = (arg2 - arg0->unkC) * temp_f12;
-                phi_f0 = (arg1 - arg0->unk0) * temp_f14;
+                phi_f2 = (a2 - arg0->unkC) * temp_f12;
+                phi_f0 = (a1 - arg0->unk0) * temp_f14;
                 phi_f20 = ((temp_f22 - arg0->unk0) * temp_f14) - ((temp_f24 - arg0->unkC) * temp_f12);
-                phi_f18 = arg0->unkC;
-                phi_f16 = arg0->unk0;
-                phi_f14 = temp_f14;
-                phi_f12 = temp_f12;
                 break;
             case 2:
                 temp_f12 = arg0->unk4 - arg0->unk2;
                 temp_f14 = arg0->unk10 - arg0->unkE;
-                phi_f2 = (arg2 - arg0->unkE) * temp_f12;
-                phi_f0 = (arg1 - arg0->unk2) * temp_f14;
+                phi_f2 = (a2 - arg0->unkE) * temp_f12;
+                phi_f0 = (a1 - arg0->unk2) * temp_f14;
                 phi_f20 = ((temp_f22 - arg0->unk2) * temp_f14) - ((temp_f24 - arg0->unkE) * temp_f12);
                 phi_f18 = arg0->unkE;
-                phi_f16 = arg0->unk2;
-                phi_f14 = temp_f14;
-                phi_f12 = temp_f12;
                 break;
         }
-        temp_t2 = phi_t2 + 1;
-        phi_t2 = temp_t2;
-        phi_t3 = -1;
-        if (phi_f2 <= phi_f0) {
-            phi_t3 = 1;
-        }
-        phi_a0 = -1;
-        if (phi_f20 >= 0.0) {
-            phi_a0 = 1;
-        }
+        phi_t3 = phi_f2 <= phi_f0 ? 1 : -1;
+        phi_a0 = phi_f20 >= 0.0 ? 1 : -1;
         if (phi_a0 != phi_t3) {
-            phi_v1 = 1;
+            phi_v1 = TRUE;
         }
-    } while (temp_t2 != 3);
-    return (phi_v1 == 0) & 0xFF;
+    }
+    return !phi_v1;
 }
 */
 
@@ -886,8 +869,27 @@ void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2) {
 }
 
 // Loops over a DL and replaces texture indices with RDRAM pointers for G_SETTIMG commands
-// Displaylist stuff
+// regalloc
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80653DF0.s")
+
+/*
+Gfx *func_global_asm_80653DF0(Gfx *dl, Gfx* arg1, s16 arg2) {
+    s32 cmd;
+    s32 i = 0;
+    
+    while ((dl != arg1) && (i < arg2)) {
+        cmd = dl->words.w0 >> 0x18;
+        if (cmd == G_SETTIMG) {
+            if (((dl->setimg.dram * 0x10) >> 0x1C) == 0) {
+                dl->setimg.dram = getPointerTableFile(TABLE_25_TEXTURES_GEOMETRY, dl->setimg.dram, 0U, 0U);
+                i++;
+            }
+        }
+        dl++;
+    }
+    return dl;
+}
+*/
 
 void func_global_asm_80653EA8(Gfx *arg0, Gfx *arg1) {
     s32 temp[2];

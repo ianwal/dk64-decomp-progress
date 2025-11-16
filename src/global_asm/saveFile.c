@@ -145,43 +145,32 @@ void func_global_asm_8060BA14(void) {
 // TODO: Double check signature
 u8 func_global_asm_8060BB18(u32, u16, u8);
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/saveFile/func_global_asm_8060BB18.s")
-
-/*
 u8 func_global_asm_8060BB18(u32 arg0, u16 arg1, u8 arg2) {
     s32 *var_t1;
-    s32 temp_t2;
-    s32 temp_t3;
-    u8 temp_t9;
-    u8 var_a3;
+    u8 bit_index;
     s32 var_v0;
     s32 var_v1;
-    u32 var_s0;
+    s32 bit;
 
-    var_s0 = arg0;
     var_v0 = -1;
     var_v1 = 0;
-    var_a3 = arg1 & 0x1F;
-    var_t1 = &D_global_asm_807ECEA8[arg1 >> 5];
-    while (arg2 != 0) {
-        temp_t9 = var_a3 + 1;
+    bit_index = arg1 & 0x1F;
+    var_t1 = &D_global_asm_807ECEA8[(arg1 >> 5) << 2];
+    while (arg2) {
+        var_v0 ^= 1 << bit_index;
+        var_v1 |= (arg0 & 1) << bit_index;
+        arg0 >>= 1;
+        bit_index++;
         arg2--;
-        var_v0 ^= 1 << var_a3;
-        var_v1 |= (var_s0 & 1) << var_a3;
-        var_s0 = var_s0 >> 1;
-        var_a3 = temp_t9;
-        if (temp_t9 > 0x1F || arg2 == 0) {
-            temp_t3 = *var_t1;
+        if (bit_index > 0x1F || arg2 == 0) {
+            *var_t1 = (*var_t1 & var_v0) | var_v1;
             var_t1++;
-            var_a3 = 0;
-            var_t1[-1] = (temp_t3 & var_v0) | var_v1;
+            bit_index = 0;
             var_v1 = 0;
             var_v0 = -1;
         }
     }
-    return var_v0; // Hmm, possible it doesn't return
 }
-*/
 
 // Extremely fiddly
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/saveFile/func_global_asm_8060BBE0.s")
