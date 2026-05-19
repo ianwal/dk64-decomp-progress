@@ -14,3 +14,4 @@ anybadge<1.16
 tqdm
 intervaltree
 n64img
+sortedcontainers

@@ -78,12 +78,37 @@ sudo apt-get update && \
     vbindiff
 
 sudo python3 -m pip install -r requirements.txt
-```
 
-Then to build everything just run make:
-
-```sh
+# ROM can now be built with:
 make -j
 ```
 
-The ROM will now be built.
+### Arch (pacman)
+
+Requires AUR (yay is used here). Make sure to replace `gcc-bootstrap` with the main `gcc` when prompted. pacman doesn't have our pip packages, and pip is configured with the `externally-managed-environment` flag enabled, so we will be using uv to generate a venv for this project.
+
+```sh
+sudo pacman -S \
+  base-devel \
+  less \
+  glib2 \
+  python \
+  python-pip \
+  unzip \
+  wget \
+  openssl \
+  vbindiff \
+  uv && \
+yay -S \
+  mips64-linux-gnu-gcc-bootstrap \
+  mips64-linux-gnu-gcc
+
+# set up the venv (one time only)
+uv venv && \
+uv pip install -r requirements.txt
+
+# make our python venv available in PATH for this terminal session
+source .venv/bin/activate
+# compile dk64 (pass through the correct path to gcc)
+make -j CROSS="mips64-linux-gnu-"
+```
