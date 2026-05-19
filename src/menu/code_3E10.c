@@ -175,10 +175,6 @@ void func_menu_80027F40(Actor *arg0, s32 arg1) {
     global_properties_bitfield |= 0x10000;
 }
 
-// doable, close
-// https://decomp.me/scratch/cRDSb
-#pragma GLOBAL_ASM("asm/nonmatchings/menu/code_3E10/func_menu_80027FAC.s")
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -192,19 +188,17 @@ void func_menu_8002FC1C(Actor*, MenuAdditionalActorData*, s32);
 void func_menu_8002FD38(MenuAdditionalActorData*, s32, s32);
 void func_menu_8002FE08(MenuAdditionalActorData*, s32);
 
-/*
 void func_menu_80027FAC(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD; // sp5C
     Struct800337FC sp54; // sp54
     Actor *sp50;
     s8 sp4F; // sp4F
-    s16 temp_a1;
     f32 var_f16;
-    s16 initialMax;
-    s32 var_v0;
-    s16 i;
-    s16 max;
     s32 var_v0_2;
+    s16 temp;
+    s16 i;
+    s16 initialMax;
+    s16 max;
 
     MaaD = arg0->additional_actor_data;
     sp54 = D_menu_800337FC;
@@ -274,72 +268,70 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
     func_menu_8002FC1C(arg0, MaaD, 0);
     menu_cutscene_timer--;
     if (menu_cutscene_timer <= 0) {
-        temp_a1 = D_menu_800336A4[menu_cutscene_index];
-        switch (temp_a1) {
-            case -5:
-                menu_cutscene_index += 2;
-                menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index];
-                is_night = 0;
-                break;
-            case -4:
-                menu_cutscene_index += 2;
-                menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index];
-                is_night = 1;
-                break;
-            case -3:
-                menu_cutscene_index += 2;
-                sp4F = -1;
-                menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index];
-                break;
+        switch (D_menu_800336A4[menu_cutscene_index]) {
             case -2:
+                menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index + 1];
                 menu_cutscene_index += 2;
                 sp4F = 1;
-                menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index];
+                break;
+            case -3:
+                menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index + 1];
+                menu_cutscene_index += 2;
+                sp4F = -1;
+                break;
+            case -4:
+                menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index + 1];
+                menu_cutscene_index += 2;
+                is_night = 1;
+                break;
+            case -5:
+                menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index + 1];
+                menu_cutscene_index += 2;
+                is_night = 0;
                 break;
             default:
-                if (temp_a1 < -5) {
+                if (D_menu_800336A4[menu_cutscene_index] < -5) {
+                    temp = -6 - D_menu_800336A4[menu_cutscene_index];
                     if (inputs_enabled_timer == 0) {
-                        playActorAnimation(gPlayerPointer, D_menu_80033724[-6 - temp_a1]);
+                        playActorAnimation(gPlayerPointer, D_menu_80033724[temp]);
                     }
+                    menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index + 1];
                     menu_cutscene_index += 2;
-                    menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index];
-                } else if (temp_a1 >= 0) {
-                    playCutscene(NULL, temp_a1, 1);
+                } else if (D_menu_800336A4[menu_cutscene_index] >= 0) {
+                    playCutscene(NULL, D_menu_800336A4[menu_cutscene_index], 1);
+                    menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index + 1];
                     menu_cutscene_index += 2;
-                    menu_cutscene_timer = D_menu_800336A4[menu_cutscene_index];
                 } else {
+                    i = 0;
                     max = func_global_asm_806119FC() * 10.0f;
                     menu_cutscene_timer = (func_global_asm_806119A0() & 0x7F) + 300;
                     menu_cutscene_index = 0;
                     if (max >= 0xB) {
                         max = 0;
                     }
-                    var_v0 = 1 << max;
                     initialMax = max;
-                    if (D_menu_800336A0 & var_v0) {
-                        do {
-                            max++;
-                            if (max == 0xB) {
-                                max = 0;
-                            }
-                            var_v0 = 1 << max;
-                            if (max == initialMax) {
-                                D_menu_800336A0 = 0;
-                            }
-                        } while (D_menu_800336A0 & var_v0);
+                    while (D_menu_800336A0 & (1 << max)) {
+                        max++;
+                        if (max == 0xB) {
+                            max = 0;
+                        }
+                        if (max == initialMax) {
+                            D_menu_800336A0 = 0;
+                        }
                     }
-                    D_menu_800336A0 |= var_v0;
-                    for (i = 0; i != max; i++) {
+                    D_menu_800336A0 |= (1 << max);
+                    while (i != max) {
                         while (D_menu_800336A4[menu_cutscene_index] != -1) {
                             menu_cutscene_index++;
                         }
-                        menu_cutscene_index += 1;
+                        menu_cutscene_index++;
+                        i++;
                     }
                 }
                 break;
         }
     }
-    if (sp4F != 0) {
+    if (sp4F) {
         func_global_asm_8072E7DC(0xC, &sp50);
         if (sp4F < 0) {
             is_raining = 0;
@@ -368,7 +360,6 @@ void func_menu_80027FAC(Actor *arg0, s32 arg1) {
     func_global_asm_80659670((foreground_shading_intensity * 0.83) + 0.17, (foreground_shading_intensity * 0.8) + 0.2, (foreground_shading_intensity * 0.6) + 0.4, -1);
     func_global_asm_80708574(day_night_transition);
 }
-*/
 
 extern char **label_string_pointer_array;
 
