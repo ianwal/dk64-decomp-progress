@@ -3822,4 +3822,10 @@ typedef struct AADTemp0 {
     u8 unk26;
 } AADTemp0;
 
+typedef struct {
+    s16 score;
+    unsigned char initials[3];
+    unsigned char pad;
+} Struct80757044;
+
 #endif

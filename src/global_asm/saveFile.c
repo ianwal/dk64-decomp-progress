@@ -1,10 +1,5 @@
 #include "common.h"
 
-typedef struct {
-    s16 score;
-    unsigned char initials[3];
-} Struct80757044;
-
 s32 func_global_asm_8060BBE0(u16, u8);
 void func_global_asm_8060C758(u8, s32);
 
