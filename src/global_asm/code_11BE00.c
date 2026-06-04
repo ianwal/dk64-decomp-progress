@@ -659,10 +659,6 @@ void func_global_asm_8071910C(otherSpriteControl *arg0, s32 arg1) {
     arg0->unk32C = 2;
 }
 
-// rodata, regalloc, float, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_807195D4.s")
-
-/*
 void func_global_asm_807195D4(otherSpriteControl *arg0, s32 arg1) {
     f32 spB4;
     f32 spB0;
@@ -672,7 +668,8 @@ void func_global_asm_807195D4(otherSpriteControl *arg0, s32 arg1) {
 
     if (arg0->unk384_807195D4 == NULL) {
         arg0->unk384_807195D4 = malloc(sizeof(Struct80717D84_unk384_807195D4));
-        arg0->unk384_807195D4->unk0 = arg0->unk35C * 2;
+        spAC = arg0->unk35C * 2;
+        arg0->unk384_807195D4->unk0 = spAC;
         arg0->unk384_807195D4->unk4 = 0.0f;
         arg0->transparency4 = 0;
     }
@@ -694,7 +691,6 @@ void func_global_asm_807195D4(otherSpriteControl *arg0, s32 arg1) {
     guMtxF2L(sp6C, &arg0->unk128[D_global_asm_807444FC]);
     arg0->unk32C = 2;
 }
-*/
 
 void func_global_asm_807197B4(otherSpriteControl *arg0, s32 arg1) {
     f32 sp78[4][4];
@@ -1865,7 +1861,7 @@ void func_global_asm_8071DC90(Struct80717D84 *arg0, s8 *arg1) {
     arg0->unk340 = ((((func_global_asm_80612794(var_v0->unk4) * (15.0f * var_v0->unk0)) + sp28->x_position) - arg0->unk340) * sp20) + arg0->unk340;
     arg0->unk348 = ((((func_global_asm_80612790(var_v0->unk4) * (15.0f * var_v0->unk0)) + sp28->z_position) - arg0->unk348) * sp20) + arg0->unk348;
     arg0->unk344 = ((((((func_global_asm_80612794(var_v0->unkC) * (var_v0->unk14 * var_v0->unk0)) + 1.0f) * 15.0f) + sp28->y_position) - arg0->unk344) * sp20) + arg0->unk344;
-    PaaD = sp28->PaaD; 
+    PaaD = sp28->PaaD;
     if (!(PaaD->unk1F0 & 0x10)) {
         *arg1 = 1;
     }

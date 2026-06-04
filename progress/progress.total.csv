@@ -1359,7 +1359,7 @@ us,asm,func_global_asm_806B13B4,2500,no
 us,asm,func_global_asm_80654BC0,268,yes
 us,asm,func_global_asm_80704444,64,yes
 us,asm,func_global_asm_8068B81C,20,yes
-us,asm,func_global_asm_807195D4,480,no
+us,asm,func_global_asm_807195D4,480,yes
 us,asm,gameIsInDKTheatreMode,52,yes
 us,asm,func_global_asm_8064B7D4,20,yes
 us,asm,func_global_asm_806B6DB0,2116,yes
