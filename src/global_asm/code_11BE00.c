@@ -1748,12 +1748,6 @@ void func_global_asm_8071D784(Struct80717D84 *arg0, s8 *arg1) {
     }
 }
 
-// close, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_11BE00/func_global_asm_8071D94C.s")
-
-void func_global_asm_8071D94C(Actor *arg0, otherSpriteControl *arg1, s8 *arg2);
-
-/*
 void func_global_asm_8071D94C(Actor *arg0, otherSpriteControl *arg1, s8 *arg2) {
     s16 temp;
     s16 sp34;
@@ -1770,7 +1764,8 @@ void func_global_asm_8071D94C(Actor *arg0, otherSpriteControl *arg1, s8 *arg2) {
     arg1->yPos += (2.0f * (func_global_asm_806119FC() - 0.5f));
     arg1->zPos += (2.0f * (func_global_asm_806119FC() - 0.5f));
     if (arg0 != NULL) {
-        sp34 = (arg0->y_rotation + (func_global_asm_806119A0() & 0x1FF) + 0x700) & 0xFFF;
+        sp34 = func_global_asm_806119A0() & 0x1FF;
+        sp34 = ((arg0->y_rotation + sp34) + 0x700) & 0xFFF;
         var_f2 = arg0->unkB8 * 0.01666666754f;
         if (!(var_f2 < 1.0f)) {
             var_f2 = 1.0f;
@@ -1778,7 +1773,7 @@ void func_global_asm_8071D94C(Actor *arg0, otherSpriteControl *arg1, s8 *arg2) {
         if (var_f2 < 0.3) {
             *arg2 = 1;
         }
-        sp28 = var_f2 * 1.5f * 1.8f;
+        sp28 = (var_f2 * 1.5f) * 1.8f;
         arg1->unk338 = arg0;
     } else {
         var_f2 = 0.8f;
@@ -1787,7 +1782,7 @@ void func_global_asm_8071D94C(Actor *arg0, otherSpriteControl *arg1, s8 *arg2) {
     }
     temp2 = func_global_asm_806119FC();
     arg1->transparency4 = 0x82;
-    arg1->xScale *= ((1.0f + temp2) * 0.5);
+    arg1->xScale *= 0.5 * ((1.0f * 1.0f) + temp2);
     arg1->yScale = arg1->xScale;
     sp30 = func_global_asm_806119FC() * var_f2;
     sp24->unk0 = func_global_asm_80612794(sp34) * sp30;
@@ -1795,7 +1790,6 @@ void func_global_asm_8071D94C(Actor *arg0, otherSpriteControl *arg1, s8 *arg2) {
     sp24->unk8 = sp28;
     func_global_asm_8066715C(&sp24->unkC);
 }
-*/
 
 void func_global_asm_8071DB74(Struct80717D84 *arg0, u8 *arg1) {
     Struct80717D84_unk384_f32 *var_v1;
