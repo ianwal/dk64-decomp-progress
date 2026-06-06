@@ -328,7 +328,7 @@ u8 func_race_8002F0AC(Struct8002F0AC *arg0) {
     f32 sp30;
     f32 temp_f0_2;
     u8 boolReturn;
-    
+
     boolReturn = FALSE;
     if (arg0->unk10 == 0) {
         return 1;
@@ -450,14 +450,14 @@ void func_race_8002F490(Struct8002F490 *arg0) {
     temp_f14 = gCurrentActorPointer->z_position;
     if ((SQ(temp_v0_2->unk0 - temp_f12) + SQ(temp_v0_2->unk4 - temp_f14)) > 900.0f) {
         sp38 = func_global_asm_80665AE4(
-            temp_v0_2->unk0, 
-            temp_v0_2->unk4, 
-            temp_f12, 
+            temp_v0_2->unk0,
+            temp_v0_2->unk4,
+            temp_f12,
             temp_f14);
-        
+
         gCurrentActorPointer->unkEC = sp38 - func_global_asm_80665AE4(
             character_change_array[arg0->unk28].look_at_at_x,
-            character_change_array[arg0->unk28].look_at_at_z, 
+            character_change_array[arg0->unk28].look_at_at_z,
             character_change_array[arg0->unk28].look_at_eye[arg0->unk28],
             character_change_array->look_at_eye_z);
     }
@@ -470,7 +470,7 @@ void func_race_8002F490(Struct8002F490 *arg0) {
                     playSoundAtPosition(
                         temp_v0_2->unk0,
                         temp_v0_2->unk2,
-                        temp_v0_2->unk4, 
+                        temp_v0_2->unk4,
                         0x98, 0xFFU, 0x7F, 0U, 0U, 0.3f, 0U);
                     if (arg0->unk44 != 0) {
                         arg0->unk44--;
@@ -503,7 +503,7 @@ void func_race_8002F490(Struct8002F490 *arg0) {
 typedef struct {
     u16 unk0;
     u16 unk2;
-    s16 unk4[1]; // TODO: How many?
+    s16 unk4[1]; // TODO: How many? This is probably a regular pointer.
 } Struct8002F784;
 
 typedef struct {
@@ -521,7 +521,7 @@ f32 func_race_8002F784(Struct8002F784 *arg0, RaceStruct6 *arg1, RaceStruct6 *arg
     s32 sign;
     Struct8002E9AC *temp_s0;
     s32 d;
-    
+
     n1 = (arg1->unk37 * arg0->unk0) + arg1->unk3A;
     n2 = (arg2->unk37 * arg0->unk0) + arg2->unk3A;
     d = n2 - n1;
