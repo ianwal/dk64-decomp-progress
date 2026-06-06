@@ -8,15 +8,15 @@ extern void *D_global_asm_807F5E60;
 extern u8 D_global_asm_807F5FEC;
 extern s32 D_global_asm_807F6C28;
 
-// close, float
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062A850.s")
-
-/*
 // getFieldOfView()
 f32 func_global_asm_8062A850(void) {
+    Maps *new_var3;
     s32 phi_v1;
     f32 phi_f0;
+    f32 new_var;
+    f32 new_var4;
     f32 phi_f2;
+    f32 new_var2;
     f32 phi_f12;
 
     phi_f0 = 1.0f;
@@ -26,8 +26,9 @@ f32 func_global_asm_8062A850(void) {
         phi_f2 = 0.02f;
     }
 
-    phi_v1 = is_cutscene_active == 1 && current_map != MAP_MAIN_MENU;
-    if (widescreen_enabled && !phi_v1) {
+    new_var3 = &current_map;
+    phi_v1 = is_cutscene_active == 1 && *new_var3 != MAP_MAIN_MENU;
+    if (widescreen_enabled && (!phi_v1)) {
         phi_f0 *= 1.2;
     }
 
@@ -44,10 +45,21 @@ f32 func_global_asm_8062A850(void) {
         }
     }
 
-    D_global_asm_80747CD0 = phi_f12;
-    return phi_f12;
+    new_var = phi_f12;
+
+    if (!phi_f2) {
+    }
+
+    new_var4 = phi_f12;
+    phi_f12 = *new_var3;
+    new_var2 = (new_var = new_var);
+
+    if (!new_var4) {
+    }
+
+    D_global_asm_80747CD0 = new_var2;
+    return new_var2;
 }
-*/
 
 // Close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062A944.s")
@@ -185,9 +197,9 @@ void func_global_asm_8062AD28(f32 arg0, f32 arg1, f32 arg2, GlobalASMStruct64 *a
     for (i = 0; i < 5; i++) {
         func_global_asm_8062B220(var_s0);
         if ((
-            (var_s0->unk20 * sp78[i]) + 
+            (var_s0->unk20 * sp78[i]) +
             (var_s0->unk30 * sp50[i]) +
-            (var_s0->unk28 * sp64[i]) + 
+            (var_s0->unk28 * sp64[i]) +
             var_s0->unk38) < 0.0) {
             func_global_asm_8062B194(var_s0);
             func_global_asm_8062B220(var_s0);
@@ -1474,7 +1486,7 @@ s32 func_global_asm_8062EBB8(Struct8062EBB8_arg0 *arg0, f32 arg1, f32 arg2, f32 
         temp2 *= (D_global_asm_807F5E20[i][1] - arg2);
         temp3 *= (D_global_asm_807F5E20[i][2] - arg3);
 
-        temp_f0_2 = 
+        temp_f0_2 =
             temp +
             temp2 +
             temp3;
