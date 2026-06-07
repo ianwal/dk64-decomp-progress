@@ -40,7 +40,7 @@ Gfx *func_global_asm_80697230(Gfx *dl, Actor *arg1) {
     u8 idx; // not on stack
     s16 sp110; // 110
     s16 i; // Not on stack
-    
+
 
     AAD = arg1->AAD_as_array[0];
     sp110 = 0x1000 / AAD->unk0;
@@ -78,8 +78,8 @@ Gfx *func_global_asm_80697230(Gfx *dl, Actor *arg1) {
             f32 temp_f0_2; // not on stack
 
             temp = i * sp110;
-            
-            switch (AAD->unk11) { 
+
+            switch (AAD->unk11) {
             case 0:
                 spE0 = func_global_asm_80612794(temp) * AAD->unk8;
                 spD8 = func_global_asm_80612790(temp) * AAD->unk8;
@@ -125,9 +125,6 @@ void func_global_asm_806978FC(void) {
     }
 }
 
-// close, doable
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_9BF30/func_global_asm_80697988.s")
-
 Gfx *func_global_asm_80697230(Gfx *, Actor *);
 
 typedef struct {
@@ -140,9 +137,11 @@ typedef struct {
     u8 unk11;
 } AAD_global_asm_80697988;
 
-/*
 void func_global_asm_80697988(void) {
     AAD_global_asm_80697988 *aaD;
+    u8 new_var2;
+    u8 *new_var3;
+    s32 new_var;
 
     aaD = gCurrentActorPointer->additional_actor_data;
     if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
@@ -156,32 +155,38 @@ void func_global_asm_80697988(void) {
             func_global_asm_80604CBC(gCurrentActorPointer, 0x139, 0x3C, 1, 1, 0xFF, 1.0f, 0);
         }
     }
-    switch (aaD->unk11) {
+    new_var2 = aaD->unk11;
+    switch (new_var2) {
         case 1:
             gCurrentActorPointer->x_position += aaD->unkC * func_global_asm_80612794(gCurrentActorPointer->y_rotation);
             gCurrentActorPointer->z_position += aaD->unkC * func_global_asm_80612790(gCurrentActorPointer->y_rotation);
             if (gCurrentActorPointer->unk15F != 0) {
                 gCurrentActorPointer->unk15F--;
+                break;
             }
             if (gCurrentActorPointer->unk168 == 0x20) {
                 gCurrentActorPointer->unk168 = 0x10;
                 aaD->unk10 = 0;
+                break;
             }
             if (aaD->unk10 >= 0x10) {
                 free(aaD->unk4);
                 deleteActor(gCurrentActorPointer);
             }
             break;
+
         case 0:
             if (gCurrentActorPointer->unk15F != 0) {
                 aaD->unk8 += aaD->unkC;
-                aaD->unk0 = MIN(aaD->unk8 * 0.3, 32.0);
+                aaD->unk0 = MIN(32.0, aaD->unk8 * 0.3);
             } else {
-                aaD->unk8 += (((gCurrentActorPointer->unk168 - aaD->unk10) + 0x10) * (aaD->unkC * 0.0625));
+                aaD->unk8 += ((f32) ((gCurrentActorPointer->unk168 - aaD->unk10) + 0x10)) * (aaD->unkC * 0.0625);
             }
-            if ((aaD->unk10 - gCurrentActorPointer->unk168) >= 0x10) {
+            new_var3 = &aaD->unk10;
+            if (((*new_var3) - gCurrentActorPointer->unk168) >= 0x10) {
+                new_var = gCurrentActorPointer->unk15F != (new_var2 = (*new_var3) * 0);
                 gCurrentActorPointer->unk15F--;
-                if (gCurrentActorPointer->unk15F != 0) {
+                if (new_var) {
                     func_global_asm_80691930(0, aaD->unk0, aaD->unk8, aaD->unkC, 0, 0x10);
                     if (gCurrentActorPointer->unk15F == 0) {
                         gCurrentActorPointer->unk168 = 0x10;
@@ -195,9 +200,10 @@ void func_global_asm_80697988(void) {
             }
             break;
     }
+
     addActorToTextOverlayRenderArray(func_global_asm_80697230, gCurrentActorPointer, 1);
 }
-*/
+
 
 void func_global_asm_80697CEC(void) {
     AAD_global_asm_80697CEC *aaD;
