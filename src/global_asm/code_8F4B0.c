@@ -68,7 +68,7 @@ block_9:
                 *arg2 = temp_v0->blue;
             }
             break;
-        
+
         }
         if ((D_global_asm_807FC621 & 0x80) && (D_global_asm_807FC621 & 0x7F)) {
             D_global_asm_807FC621 &= 0x7F;
@@ -82,10 +82,10 @@ block_9:
             func_global_asm_8065A660(D_global_asm_80750194[D_global_asm_807FC621 - 1].unk0, D_global_asm_80750194[D_global_asm_807FC621 - 1].unk1);
             createLight(
                 D_global_asm_80750194[D_global_asm_807FC621 - 1].unk2,
-                D_global_asm_80750194[D_global_asm_807FC621 - 1].unk4, 
+                D_global_asm_80750194[D_global_asm_807FC621 - 1].unk4,
                 D_global_asm_80750194[D_global_asm_807FC621 - 1].unk6,
                 sp40, sp3C, var_f2,
-                0.0f, 1U, 
+                0.0f, 1U,
                 *arg0, *arg1, *arg2);
         }
     }
@@ -215,7 +215,7 @@ void func_global_asm_8068AD7C(void) {
             break;
         case 0xF:
             func_global_asm_80704AFC(
-                temp_s0->unk0 / 255.0, 
+                temp_s0->unk0 / 255.0,
                 temp_s0->unk2 / 255.0,
                 temp_s0->unk4 / 255.0
             );
@@ -627,13 +627,10 @@ void func_global_asm_8068BA2C(void) {
     }
 }
 
-// Jumptable, Close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8F4B0/func_global_asm_8068BBF8.s")
-
 void func_global_asm_8061DBD4(Actor *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *, f32 *);
-extern s16 D_807FC624;
+extern s16 D_global_asm_807FC624;
 
-/*
+// TODO: This function needs some cleanup. This is a nasty match due to permuting to fix regalloc.
 void func_global_asm_8068BBF8(void) {
     CameraPaad *CaaD;
     s16 sp52;
@@ -646,7 +643,13 @@ void func_global_asm_8068BBF8(void) {
     f32 sp3C;
     s16 sp3A;
     CharacterChange *cc;
+    Actor *new_var5;
+    int new_var4;
+    s16 *new_var2;
     s32 var_v1;
+    Actor *new_var3;
+    float new_var6;
+    Actor *new_var;
     s32 var_v1_2;
 
     CaaD = gCurrentActorPointer->AAD_as_array[0];
@@ -657,6 +660,7 @@ void func_global_asm_8068BBF8(void) {
     cc = &character_change_array[CaaD->unkFB];
     cc->unk2CC = gCurrentActorPointer->unkEC;
     gCurrentActorPointer->unkEC = gCurrentActorPointer->x_rotation;
+    new_var2 = &D_global_asm_807FC624;
     cc->unk2CA = cc->look_at_eye_y;
     sp48 = func_global_asm_80665E48(cc->look_at_eye_z, cc->look_at_eye_x, cc->look_at_at_z, cc->look_at_at_x);
     var_f2 = func_global_asm_80665E48(0.0f, cc->look_at_eye_y, sqrtf(SQ(cc->look_at_at_z - cc->look_at_eye_z) + SQ(cc->look_at_at_x - cc->look_at_eye_x)), cc->look_at_at_y) + MATH_PI_F;
@@ -666,70 +670,84 @@ void func_global_asm_8068BBF8(void) {
     if (var_f2 > MATH_PI_F) {
         var_f2 = MATH_PI_F - (var_f2 - MATH_PI_F);
     }
-    cc->unk2D4 = MATH_2PI_F - sp48;
+    cc->unk2D4 = sp48;
+    cc->unk2D4 = MATH_2PI_F - cc->unk2D4;
     cc->unk2D8 = MATH_2PI_F - var_f2;
     func_global_asm_806C9D20(CaaD->unkFB);
     sp52 = func_global_asm_80665DE0(cc->look_at_eye_x, cc->look_at_eye_z, cc->look_at_at_x, cc->look_at_at_z);
-    func_global_asm_8061DBD4(gCurrentActorPointer,
-        &cc->look_at_eye_x, &cc->look_at_eye_y, &cc->look_at_eye_z,
-        &cc->look_at_at_x, &cc->look_at_at_y, &cc->look_at_at_z,
-        &cc->look_at_up_x, &cc->look_at_up_y, &cc->look_at_up_z);
+    func_global_asm_8061DBD4(gCurrentActorPointer, &cc->look_at_eye_x, &cc->look_at_eye_y, &cc->look_at_eye_z,
+                             &cc->look_at_at_x, &cc->look_at_at_y, &cc->look_at_at_z, &cc->look_at_up_x,
+                             &cc->look_at_up_y, &cc->look_at_up_z);
     temp_v0 = func_global_asm_80665DE0(cc->look_at_eye_x, cc->look_at_eye_z, cc->look_at_at_x, cc->look_at_at_z);
-    if (gPlayerPointer == CaaD->unk0) {
+    new_var3 = CaaD->unk0;
+    new_var5 = CaaD->unk0;
+    if (gPlayerPointer == (new_var = new_var5)) {
+        new_var4 = 1;
         if ((current_map == MAP_GALLEON_KROOLS_SHIP) || (current_map == MAP_GALLEON_MECHANICAL_FISH)) {
-            gCurrentActorPointer->x_rotation = func_global_asm_80612794(D_807FC624) * 100.0f;
+            gCurrentActorPointer->x_rotation = func_global_asm_80612794(*new_var2) * 100.0f;
             if (current_map == MAP_GALLEON_KROOLS_SHIP) {
-                if (D_807FC624 < 0x1E) {
+                if ((*new_var2) < 0x1E) {
                     playSound(0x15, 0x7FFFU, 64.0f, 1.0f, 0xA, 0x80);
                 }
-                if ((D_807FC624 > 0x801) && (D_807FC624 < 0x81E)) {
+                if (((*new_var2) > 0x7FF) && ((*new_var2) < 0x81E)) {
                     playSound(0x14, 0x7FFFU, 64.0f, 1.0f, 0xA, 0x80);
                 }
             }
-            D_global_asm_807FC624 = D_807FC624 + 0x1E & 0xFFF;
+            sp52++;
+            sp52--;
+            D_global_asm_807FC624 =
+                ((((((((((((*new_var2) + 0x1E) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) &
+                   0xFFFF) &
+                  0xFFFF) &
+                 0xFFFF) &
+                0xFFF;
             return;
         }
-        if (is_cutscene_active != 1) {
-            switch (CaaD->unk0->control_state) {
-            case 0x63:
-                sp40 = 0.02f;
-                sp3C = 15.0f;
-                goto block_29;
-            case 0x7:
-            case 0x8:
-            case 0x9:
-            case 0xA:
-            case 0xB:
-            case 0xF:
-            case 0x10:
-            case 0x11:
-            case 0x12:
-            case 0x13:
-            case 0x14:
-                sp3A = 0x64;
-                sp40 = 0.1f;
-            case 0x4F:
-            case 0x69:
-            case 0x6D:
-block_29:
-                temp_v1_3 = sp52 - temp_v0;
-                if (temp_v1_3 > 0x800) {
-                    temp_v1_3 -= 0x1000;
-                } else if (temp_v1_3 < -0x800) {
-                    temp_v1_3 += 0x1000;
-                }
-                break;
+        if (new_var4 != is_cutscene_active) {
+            switch (var_v1_2 = new_var3->control_state) {
+                case 0x63:
+                    sp40 = 0.02f;
+                    sp3C = 15.0f;
+                    goto block_29;
+                case 0x7:
+                case 0x8:
+                case 0x9:
+                case 0xA:
+                case 0xB:
+                case 0xF:
+                case 0x10:
+                case 0x11:
+                case 0x12:
+                case 0x13:
+                case 0x14:
+                    sp3A = 0x64;
+                    sp40 = 0.1f;
+                    // fallthrough
+                case 0x4F:
+                case 0x69:
+                case 0x6D:
+                block_29:
+                    temp_v1_3 = sp52 - temp_v0;
+                    if (temp_v1_3 > 0x800) {
+                        temp_v1_3 -= 0x1000;
+                    } else if (temp_v1_3 < (-0x800)) {
+                        temp_v1_3 += 0x1000;
+                    }
+                    // TODO: Missing break here?
             }
-            var_v1 = MAX(-sp3A, temp_v1_3);
-            var_v1_2 = sp3A;
+
+            var_v1 = MAX(temp_v1_3, -sp3A);
             if (var_v1 < sp3A) {
-                var_v1_2 = MAX(temp_v1_3, var_v1);
+                var_v1_2 = (0, MAX(temp_v1_3, -sp3A));
+            } else {
+                var_v1_2 = sp3A;
             }
-            gCurrentActorPointer->x_rotation = ((((var_v1_2 * sp3C) - gCurrentActorPointer->x_rotation) * sp40) + gCurrentActorPointer->x_rotation);
+            new_var6 = var_v1_2 * sp3C;
+            new_var4 = ((new_var6 - gCurrentActorPointer->x_rotation) * sp40) + gCurrentActorPointer->x_rotation;
+            gCurrentActorPointer->x_rotation = (sp3A = new_var4) ^ (sp3A * 0);
         }
     }
 }
-*/
 
 typedef struct {
     void *texturePointer; // Texture Pointer (from table 0xE)
@@ -771,7 +789,7 @@ void *func_global_asm_8068C12C(u16 textureIndex) {
             return D_global_asm_807FC690[i].texturePointer;
         }
     }
-    
+
     for (i = 0; i < 0x20; i++) {
         if (D_global_asm_807FC690[i].unk6 == 0) {
             D_global_asm_807FC690[i].texturePointer = getPointerTableFile(TABLE_14_TEXTURES_HUD, textureIndex, 0, 0);

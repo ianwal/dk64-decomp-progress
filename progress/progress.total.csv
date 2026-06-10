@@ -806,7 +806,7 @@ us,asm,func_global_asm_806AFA60,248,yes
 us,asm,func_global_asm_8070C89C,88,yes
 us,asm,func_global_asm_806547A8,644,no
 us,asm,func_global_asm_8069900C,32,yes
-us,asm,func_global_asm_8071D94C,552,no
+us,asm,func_global_asm_8071D94C,552,yes
 us,asm,func_global_asm_8060EA28,556,yes
 us,asm,func_global_asm_80715B30,776,no
 us,asm,func_global_asm_80719C00,756,yes
@@ -1898,8 +1898,8 @@ us,asm,func_global_asm_8066104C,8,yes
 us,asm,func_global_asm_80681E18,1252,yes
 us,asm,__getTrackByte,500,yes
 us,asm,func_global_asm_8068B8A4,88,yes
-us,asm,func_global_asm_806EAE04,92,yes
 us,asm,func_global_asm_806A05FC,544,yes
+us,asm,func_global_asm_806EAE04,92,yes
 us,asm,func_global_asm_8067A09C,212,yes
 us,asm,func_global_asm_80627EA8,92,yes
 us,asm,func_global_asm_8067BE30,284,no
@@ -2060,7 +2060,7 @@ us,asm,func_global_asm_80642E34,400,yes
 us,asm,func_global_asm_80644D50,220,yes
 us,asm,func_global_asm_80611594,8,yes
 us,asm,func_global_asm_806E8DB4,76,yes
-us,asm,func_global_asm_8068BBF8,1160,no
+us,asm,func_global_asm_8068BBF8,1160,yes
 us,asm,func_global_asm_80605380,400,no
 us,asm,func_global_asm_806BFBB4,64,yes
 us,asm,_bnkfPatchWaveTable,152,yes
