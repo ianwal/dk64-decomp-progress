@@ -408,33 +408,31 @@ void func_global_asm_8070DD18(Struct807550C0 *arg0) {
     func_global_asm_8061134C(arg0);
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070DD44.s")
-
-/*
+// Some kind of linked list node removal function?
 void func_global_asm_8070DD44(void) {
-    Struct807550C0 **var_s0;
-    Struct807550C0 *var_v0;
+    Struct807550C0 **p_node;
+    Struct807550C0 *node;
 
-    var_s0 = &D_global_asm_807550C0;
-    var_v0 = D_global_asm_807550C0;
-    while (var_v0 != NULL) {
-        if (var_v0->unk8 == 1) {
-            if (var_v0->unk2 != 0) {
-                var_v0->unk2--;
-                var_v0 = *var_s0;
+    p_node = &D_global_asm_807550C0;
+
+    while (*p_node != NULL) {
+        if ((*p_node)->unk8 == 1) {
+            if ((*p_node)->unk2 != 0) {
+                --(*p_node)->unk2;
             }
         }
-        if (var_v0->unk2 == 0) {
-            *var_s0 = var_v0->unkC;
-            func_global_asm_8070DD18(var_v0);
+
+        if ((*p_node)->unk2 == 0) {
+            node = *p_node;
+            *p_node = node->unkC;
+
+            // Free the node
+            func_global_asm_8070DD18(node);
         } else {
-            var_s0 += 3;
+            p_node = &(*p_node)->unkC;
         }
-        var_v0 = *var_s0;
     }
 }
-*/
 
 typedef struct Struct8070E548 Struct8070E548;
 

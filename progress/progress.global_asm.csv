@@ -842,7 +842,7 @@ us,asm,func_global_asm_80731E68,452,yes
 us,asm,func_global_asm_8064954C,356,yes
 us,asm,func_global_asm_806C1CCC,376,yes
 us,asm,func_global_asm_806174B4,272,yes
-us,asm,func_global_asm_8070DD44,152,no
+us,asm,func_global_asm_8070DD44,152,yes
 us,asm,func_global_asm_8066B434,120,yes
 us,asm,addActorRecolor,152,yes
 us,asm,func_global_asm_806E3C14,36,yes
