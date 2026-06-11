@@ -568,18 +568,12 @@ void func_global_asm_8070E2AC(s32 arg0, Struct8070E2AC_arg1 *arg1, Struct8070E2A
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070E34C.s")
 
-// very close
-// https://decomp.me/scratch/b7jCl
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/func_global_asm_8070E548.s")
-
-/*
 void func_global_asm_8070E548(Actor *arg0, u16 arg1, u8 arg2) {
     Struct8070DDDC *temp_s2;
     s32 i;
     Struct8070E548 **nextPtr;
     AAD_global_asm_8070E548 *aaD;
     Struct8070E548_unk4 *var_s1;
-    Struct8070E548 *current;
 
     aaD = arg0->additional_actor_data;
     if (arg0->object_properties_bitfield & 0x10) {
@@ -590,31 +584,24 @@ void func_global_asm_8070E548(Actor *arg0, u16 arg1, u8 arg2) {
     var_s1 = temp_s2->unk4[arg2].unk4;
     nextPtr = &aaD->unkC;
     for (i = 0; i < temp_s2->unk4[arg2].unk0; i++) {
-        current = *nextPtr;
-        while (current != NULL) {
-            nextPtr = &current->unk1C;
-            current = *nextPtr;
+        while ((*nextPtr) != NULL) {
+            nextPtr = &(*nextPtr)->unk1C;
         }
         if (var_s1->unk0 & 1) {
             func_global_asm_8070E2AC(aaD, var_s1, temp_s2);
-            current = *nextPtr;
         } else if (var_s1->unk0 & 2) {
             func_global_asm_8070E34C(aaD, var_s1, temp_s2);
-            current = *nextPtr;
         }
-        if (current != NULL) {
-            current->unk8 = var_s1->unk4;
-            current = *nextPtr;
+        if ((*nextPtr) != NULL) {
+            (*nextPtr)->unk8 = var_s1->unk4;
         }
-        while (current != NULL && *nextPtr != NULL) {
-            nextPtr = &current->unk1C;
-            current = *nextPtr;
+        while ((*nextPtr) != NULL && (*nextPtr)->unk1C != NULL) {
+            nextPtr = &(*nextPtr)->unk1C;
         }
-        current->unk10 = var_s1->unkC * 30.0f;
+        (*nextPtr)->unk10 = var_s1->unkC * 30.0f;
         var_s1++;
     }
 }
-    */
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_112080/getTextString.s")
 
