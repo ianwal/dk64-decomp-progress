@@ -325,13 +325,13 @@ void func_global_asm_8071509C(otherSpriteControl *arg0) {
             v[v_ctr].v.ob[2] = 0;
             v[v_ctr].v.tc[0] = 0;
             v[v_ctr].v.tc[1] = 0;
-            
+
             v[v_ctr + 1].v.ob[0] = temp_v0->unkC + vxa;
             v[v_ctr + 1].v.ob[1] = vya;
             v[v_ctr + 1].v.ob[2] = 0;
             v[v_ctr + 1].v.tc[0] = temp_v0->unkC * 32;
             v[v_ctr + 1].v.tc[1] = 0;
-            
+
             v_ctr += 2;
 
             v[v_ctr].v.ob[0] = vxa;
@@ -357,7 +357,7 @@ void func_global_asm_8071509C(otherSpriteControl *arg0) {
             v[v_ctr].v.tc[1] = temp_v0->unkE * 32;
 
             v_ctr++;
-            
+
             vxa += temp_v0->unkC;
         }
         if (arg0->unk36F == 0) {
@@ -454,22 +454,21 @@ void func_global_asm_80715908(void *arg0) {
 }
 */
 
-// Get pointer table file
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715A3C.s")
-
 typedef struct {
     void *unk0;
     s32 unk4;
 } Struct80715A3C_arg2;
 
-/*
+// Get pointer table file
 void func_global_asm_80715A3C(s16 *arg0, u8 arg1, Struct80715A3C_arg2 *arg2, s32 arg3, s32 arg4, void **arg5) {
     s32 i;
+    s32 new_var;
     u8 var_v0;
     void *temp_v0;
 
+    new_var = arg3 * arg4;
     for (i = 0; i < arg3; i++) {
-        if (arg2[(arg3 * arg4) + i].unk4 == -1) {
+        if (arg2[new_var + i].unk4 == (-1)) {
             if (arg1) {
                 var_v0 = 25; // Table 25
             } else {
@@ -479,13 +478,11 @@ void func_global_asm_80715A3C(s16 *arg0, u8 arg1, Struct80715A3C_arg2 *arg2, s32
             arg5[i] = temp_v0;
             arg2[(arg3 * arg4) + i].unk0 = temp_v0;
         } else {
-            arg5[i] = arg2[(arg3 * arg4) + i].unk0;
+            arg5[i] = arg2[new_var + i].unk0;
         }
         arg2[(arg3 * arg4) + i].unk4 = arg4;
-
     }
 }
-*/
 
 // Matrix stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_119370/func_global_asm_80715B30.s")
