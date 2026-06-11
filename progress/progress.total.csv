@@ -456,7 +456,7 @@ us,asm,func_global_asm_806739D8,104,yes
 us,asm,func_global_asm_806B3C30,100,yes
 us,asm,func_global_asm_806C71A0,8,yes
 us,asm,func_global_asm_80673324,448,yes
-us,asm,func_global_asm_806C2B2C,592,no
+us,asm,func_global_asm_806C2B2C,592,yes
 us,asm,func_global_asm_806A63A8,96,yes
 us,asm,func_global_asm_8067BCE8,32,yes
 us,asm,func_global_asm_80655258,440,no
@@ -1148,8 +1148,8 @@ us,asm,func_global_asm_807318AC,176,yes
 us,asm,func_global_asm_807215D0,28,yes
 us,asm,func_global_asm_806A7BB8,36,yes
 us,asm,func_global_asm_80611534,96,yes
-us,asm,func_global_asm_806EAF6C,128,yes
 us,asm,func_global_asm_8065FD88,304,no
+us,asm,func_global_asm_806EAF6C,128,yes
 us,asm,func_global_asm_80647B74,384,yes
 us,asm,func_global_asm_80612790,112,yes
 us,asm,alCSeqGetTicks,24,yes

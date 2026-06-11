@@ -205,7 +205,7 @@ Gfx *func_global_asm_806BE6F0(Gfx *dl, Actor *arg1) {
     u8 temp_t7;
     char sp4C[2];
     u16 temp;
-    
+
     temp_t7 = (arg1->unk168 / 30);
     if (temp_t7) {
         _sprintf(sp4C, "%d", MIN(3, temp_t7));
@@ -1083,30 +1083,28 @@ void func_global_asm_806C2A64(u8 red, u8 green, u8 blue, f32 x, f32 y, f32 z, vo
     drawSpriteAtPosition(sprite, scale * 0.2, x, y, z);
 }
 
-// close, stack, float, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_C2A90/func_global_asm_806C2B2C.s")
-
-void func_global_asm_806C2B2C(u8 boneIndex, u8 arg1, u8 colorIndex, void *sprite);
-
-/*
 void func_global_asm_806C2B2C(u8 boneIndex, u8 arg1, u8 colorIndex, void *sprite) {
-    f32 temp_f20;
-    f32 temp_f24;
     s16 i;
+    s16 var_s2;
     f32 x1;
     f32 y1;
     f32 z1;
     f32 x2;
     f32 y2;
     f32 z2;
+    f32 temp_f20;
+    f32 temp_f24;
 
-    temp_f24 = (gCurrentActorPointer->animation_state->scale_y / 0.3) / 1.5;
-    while (arg1 >= boneIndex) {
+    temp_f24 = gCurrentActorPointer->animation_state->scale_y / 0.15;
+    temp_f24 = temp_f24 / 1.5;
+
+    for (var_s2 = boneIndex; var_s2 <= arg1; var_s2++) {
         for (i = 0; i < 3.0; i++) {
-            temp_f20 = (i / 3.0);
-            getBonePosition(gCurrentActorPointer, boneIndex, &x1, &y1, &z1);
-            if (boneIndex < arg1) {
-                getBonePosition(gCurrentActorPointer, boneIndex + 1, &x2, &y2, &z2);
+            temp_f20 = i;
+            temp_f20 = temp_f20 / 3.0;
+            getBonePosition(gCurrentActorPointer, var_s2, &x1, &y1, &z1);
+            if (var_s2 < arg1) {
+                getBonePosition(gCurrentActorPointer, var_s2 + 1, &x2, &y2, &z2);
             } else {
                 getBonePosition(gCurrentActorPointer, boneIndex, &x2, &y2, &z2);
             }
@@ -1121,10 +1119,8 @@ void func_global_asm_806C2B2C(u8 boneIndex, u8 arg1, u8 colorIndex, void *sprite
                 temp_f24
             );
         }
-        boneIndex++;
     }
 }
-*/
 
 void func_global_asm_806C2D7C(void) {
     func_global_asm_806C2B2C(1, 0xB, 6, &D_global_asm_8071FFA0);
