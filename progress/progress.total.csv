@@ -2560,7 +2560,7 @@ us,asm,func_global_asm_806D4010,556,yes
 us,asm,changeCollectableCount,568,no
 us,asm,func_global_asm_807300BC,844,no
 us,asm,func_global_asm_80726E60,128,yes
-us,asm,func_global_asm_80675180,180,no
+us,asm,func_global_asm_80675180,180,yes
 us,asm,func_global_asm_805FEF74,140,yes
 us,asm,func_global_asm_80618608,288,yes
 us,asm,func_global_asm_806D1238,56,yes
