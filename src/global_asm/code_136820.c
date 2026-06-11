@@ -282,7 +282,7 @@ void func_global_asm_80731E68(Struct80731E68 *arg0) {
     s32 i;
     s32 j;
     Struct80731E68_unk20 *temp_s6;
-    
+
     D_global_asm_807FEF78 = 2;
     D_global_asm_807FEF84 = 0xFFFF;
     D_global_asm_807FEF86 = 1;
@@ -323,18 +323,23 @@ int func_global_asm_8073202C(unsigned int inst, char *sp, unsigned int *arg2) {
     }
 }
 
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_136820/func_global_asm_80732064.s")
-
-/*
-s32 func_global_asm_80732064(s32 arg0, s32 *arg1) {
-    if ((arg0 & 0xFFFF0000) == 0x27BD0000) {
-        *arg1 += (s16)arg0;
-        return TRUE;
+s32 func_global_asm_80732064(s32 arg0, s32 *arg1)
+{
+    s32 new_var;
+    s32 new_var2;
+    new_var = (arg0 & 0xFFFF0000) == 0x27BD0000;
+    if (new_var != 0)
+    {
+        new_var2 = (s16)arg0;
+        new_var = *arg1;
+        new_var = new_var + new_var2;
+        new_var2 = new_var;
+        *arg1 = new_var2;
+        arg1 += 0;
+        return 1;
     }
-    return FALSE;
+    return 0;
 }
-*/
 
 s32 func_global_asm_80732064(s32, s32*);
 

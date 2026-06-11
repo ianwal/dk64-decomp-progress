@@ -946,7 +946,7 @@ us,asm,func_global_asm_8061EF4C,356,yes
 us,asm,func_global_asm_80727194,96,yes
 us,asm,__n_seqpReleaseVoice,372,yes
 us,asm,func_global_asm_806A7600,1284,yes
-us,asm,func_global_asm_80732064,56,no
+us,asm,func_global_asm_80732064,56,yes
 us,asm,func_global_asm_80737E90,20,yes
 us,asm,func_global_asm_806E8A8C,100,yes
 us,asm,func_global_asm_8061B840,12,yes
