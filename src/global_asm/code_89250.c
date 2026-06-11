@@ -424,14 +424,9 @@ void func_global_asm_80685E78(Actor *arg0) {
     drawSpriteAtPosition(&D_global_asm_8071FED0, scale * 0.6, arg0->x_position, arg0->unkAC, arg0->z_position)->unk338 = arg0;
 }
 
-// TODO: Close, something up with phi_v1
-// https://decomp.me/scratch/YU9ml
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_89250/func_global_asm_80685F60.s")
-
 extern s16 D_global_asm_80753A08[];
 extern s16 D_global_asm_80753A18[];
 
-/*
 void func_global_asm_80685F60(Actor *actor) {
     f32 phi_f0;
     u8 phi_v1;
@@ -449,12 +444,15 @@ void func_global_asm_80685F60(Actor *actor) {
         }
         if ((actor->unkAC - phi_f0) <= actor->y_position) {
             if ((object_timer & 3) == 0) {
-                phi_v1 = (actor->unkB8 != 0.0) || ((actor->unk118) && (actor->unk118->unk10 != 0)) ? 1 : 0;
+                phi_v1 = (actor->unkB8 != 0.0);
+                if (actor->unk118 && (actor->unk118->unk10 != 0)) {
+                    phi_v1 = 1;
+                }
             }
             if (phi_v1) {
                 func_global_asm_80714950(1);
-            } else {
-                phi_v1 = (actor->unkB8 == 0.0) && (((object_timer % 24U) == 0) || (actor->unkBC != 0.0)) ? 1 : 0;
+            } else if ((actor->unkB8 == 0.0) && (((object_timer % 24U) == 0) || (actor->unkBC != 0.0))) {
+                phi_v1 = 1;
             }
             if (phi_v1) {
                 func_global_asm_80685E78(actor);
@@ -462,7 +460,6 @@ void func_global_asm_80685F60(Actor *actor) {
         }
     }
 }
-*/
 
 void func_global_asm_8068613C(Actor *arg0) {
     f32 scale;
