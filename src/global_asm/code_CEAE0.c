@@ -585,9 +585,9 @@ void func_global_asm_806CA5F8(s32 arg0) {
             (D_global_asm_807F5FE8 < gCurrentActorPointer->x_position) ||
             (D_global_asm_807F5FEA < gCurrentActorPointer->z_position) ||
             (sp68 != 0)
-        ) && 
-        (extra_player_info_pointer->unk244 == 0) && 
-        (object_timer >= 0x65U) && 
+        ) &&
+        (extra_player_info_pointer->unk244 == 0) &&
+        (object_timer >= 0x65U) &&
         (!(D_global_asm_807FBB64 & 0x4000)) &&
         (current_map != MAP_AZTEC_BEETLE_RACE)
     ) {
@@ -1672,12 +1672,8 @@ s32 func_global_asm_806CEB44(f32 arg0, f32 arg1) {
     return phi_v1;
 }
 
-// Jumptable, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CEAE0/func_global_asm_806CEC04.s")
-
 extern s16 D_global_asm_807532A8[];
 
-/*
 void func_global_asm_806CEC04(Actor *arg0) {
     f32 sp84;
     s16 temp_f0;
@@ -1698,23 +1694,30 @@ void func_global_asm_806CEC04(Actor *arg0) {
         case 0x82:
             sp84 = 30.0f;
             break;
+
         default:
             sp84 = D_global_asm_807532A8[D_global_asm_807FD584];
             break;
     }
+
     if (extra_player_info_pointer->unk1F0 & 0x01000000) {
         var_f2 = (gCurrentActorPointer->y_rotation * 0x168) / 4096;
     } else {
-        var_f2 = 360.0 - func_global_asm_80665AE4((s16)arg0->x_position, (s16)arg0->z_position, (s16)gCurrentActorPointer->x_position, (s16)gCurrentActorPointer->z_position);
+        var_f2 = func_global_asm_80665AE4(
+            (s16)arg0->x_position,
+            (s16)arg0->z_position,
+            (s16)gCurrentActorPointer->x_position,
+            (s16)gCurrentActorPointer->z_position
+        );
+        var_f2 = 360.0 - var_f2;
     }
     extra_player_info_pointer->unk80 = (var_f2 * 4095.0) / 360.0;
     guRotateF(&sp40, var_f2, 0.0f, 1.0f, 0.0f);
     guMtxXFMF(&sp40, 0, 0, sp84, &sp3C, &sp38, &sp34);
     temp_f0 = 0xF;
-    extra_player_info_pointer->unk78 = (((arg0->x_position - sp3C) - gCurrentActorPointer->x_position) / temp_f0);
-    extra_player_info_pointer->unk7C = (((arg0->z_position - sp34) - gCurrentActorPointer->z_position) / temp_f0);
+    extra_player_info_pointer->unk78 = ((arg0->x_position - sp3C) - gCurrentActorPointer->x_position) / temp_f0;
+    extra_player_info_pointer->unk7C = ((arg0->z_position - sp34) - gCurrentActorPointer->z_position) / temp_f0;
 }
-*/
 
 void func_global_asm_806CEE64(f32 arg0) {
     GlobalASMStruct61 *temp_v0;
