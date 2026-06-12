@@ -157,7 +157,23 @@ u32 _strcspn(const u8 *str, const u8 *src) {
     return count;
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002CE8.s")
+// strspn
+s32 func_dk64_boot_80002CE8(const u8 *dest, const u8 *src) {
+    s32 count = 0;
+
+    if (*dest != '\0') {
+        do {
+            if (_strchr(src, (0, *dest)) != 0) {
+                dest++;
+            } else {
+                return count;
+            }
+            count++;
+        } while (*dest != '\0');
+    }
+
+    return count;
+}
 
 u8 *_strpbrk(const u8 *dest, const u8 *breakset) {
     u8 *curr_match;
