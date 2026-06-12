@@ -12,7 +12,7 @@ extern OSContPad D_global_asm_807ECD28;
 extern OSContPad *D_global_asm_807ECDE8;
 extern OSContPad *D_global_asm_807ECDF4;
 
-void func_global_asm_8060AA58(s32);
+void func_global_asm_8060AA58(u8);
 
 u8 func_global_asm_8060A900(void) {
     osCreateMesgQueue(&D_global_asm_807ECCF0, &D_global_asm_807ECCE0, 4);
@@ -49,8 +49,6 @@ void func_global_asm_8060AA04(void) {
     }
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_F600/func_global_asm_8060AA58.s")
-
 typedef struct UnkInputStruct {
     s16 unk0[0x10];
 } UnkInputStruct;
@@ -62,27 +60,32 @@ extern u8 D_global_asm_807ECD09;
 extern u8 D_global_asm_807ECDF8;
 extern u8 D_global_asm_807ECDFC[4];
 
-/*
-void func_global_asm_8060AA58(s32 arg0) {
-    s32 i, j;
-    s8 temp_0;
+void func_global_asm_8060AA58(u8 arg0) {
+    s32 i;
+    u8 new_var;
+    s32 j;
+    u8 var;
 
-    temp_0 = D_global_asm_807ECD09 & arg0;
-    D_global_asm_807ECDF8 = temp_0;
+    if (&arg0) {}
+
+    var = 0;
+    D_global_asm_807ECDF8 = D_global_asm_807ECD09 & arg0;
     for (i = 0; i < 4; i++) {
+        newly_pressed_input[i] = 0;
         D_global_asm_807ECD40[i] = 0;
         D_global_asm_807ECD50[i] = 0;
-        newly_pressed_input[i] = 0;
         D_global_asm_807ECDFC[i] = 0;
         for (j = 0; j < 0x10; j++) {
             D_global_asm_807ECD68[i].unk0[j] = 0;
         }
-        if (temp_0 & 0xFF & (1 << i)) {
-            D_global_asm_807ECDFC[i] = i;
+
+        new_var = D_global_asm_807ECDF8;
+        if (new_var & (1 << i)) {
+            D_global_asm_807ECDFC[var] = i;
+            var++;
         }
     }
 }
-*/
 
 u8 func_global_asm_8060AB38(s32 arg0) {
     return D_global_asm_807ECDFC[arg0];

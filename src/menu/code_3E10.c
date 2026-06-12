@@ -564,7 +564,7 @@ void func_menu_8002907C(void) {
 }
 
 void func_menu_8002FC1C(Actor *, MenuAdditionalActorData *, s32);
-void func_global_asm_8060AA58(s32);
+void func_global_asm_8060AA58(u8);
 
 void func_menu_80029114(Actor *arg0, s32 arg1) {
     MenuAdditionalActorData *MaaD = arg0->MaaD;
