@@ -9,21 +9,20 @@ typedef struct {
 
 extern GlobalASMStruct47 D_global_asm_8074E7A0[];
 
-// stack
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_8067B450.s")
-
-/*
-// Don't know what this needs, our stack is too big though
-u8 func_global_asm_8067B450(void) {
+s32 func_global_asm_8067B450(Actor *actor) {
+    s32 new_var = 4;
+    s16 spawner_id;
     s32 i;
-    for (i = 0; i < 4; i++) {
-        if ((current_map == D_global_asm_8074E7A0[i].unk0) && (func_global_asm_80688E68(4) == D_global_asm_8074E7A0[i].unk2)) {
+
+    spawner_id = func_global_asm_80688E68(actor);
+    for (i = 0; i < new_var; i++) {
+        if ((current_map == D_global_asm_8074E7A0[i].unk0) && (spawner_id == D_global_asm_8074E7A0[i].unk2)) {
             return isFlagSet(D_global_asm_8074E7A0[i].unk4, FLAG_TYPE_PERMANENT);
         }
     }
+
     return FALSE;
 }
-*/
 
 // Jumptable, close, regalloc
 // https://decomp.me/scratch/2C6WT
@@ -368,7 +367,7 @@ u8 func_global_asm_8067BF84(s16 arg0, u8 *arg1, u8 *arg2, u8 *arg3) {
                 if (character_change_array[playerIndex].does_player_exist != 0) {
                     dz = character_change_array[playerIndex].playerPointer->z_position - gCurrentActorPointer->z_position;
                     dx = character_change_array[playerIndex].playerPointer->x_position - gCurrentActorPointer->x_position;
-                    
+
                     d = sqrtf(SQ(dz) + SQ(dx));
                     if (d < minDistance) {
                         minDistance = d;
