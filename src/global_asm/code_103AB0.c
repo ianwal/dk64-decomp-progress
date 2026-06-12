@@ -392,10 +392,6 @@ void func_global_asm_80704444(GlobalASMStruct3 *arg0, s16 arg1, s16 arg2, s16 ar
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80704484.s")
 
-// Displaylist stuff, regalloc, close
-// https://decomp.me/scratch/q4pwB
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_103AB0/func_global_asm_80704960.s")
-
 extern u8 D_global_asm_8074450C;
 
 typedef struct {
@@ -413,16 +409,15 @@ extern Struct80750840 D_global_asm_80750840[];
 extern u8 D_global_asm_80750AB8;
 extern u8 D_global_asm_80750ABC;
 
-/*
 Gfx *func_global_asm_80704960(Gfx *dl) {
-    s32 i;
+    s32 i = 0;
 
     gDPPipeSync(dl++);
     gDPSetRenderMode(dl++, G_RM_NOOP, G_RM_NOOP2);
     gDPSetCycleType(dl++, G_CYC_FILL);
     gDPSetFillColor(dl++, 0x00010001);
 
-    for (i = 0; D_global_asm_80750840[i].unk0 != -1; i++) {
+    for (; D_global_asm_80750840[i].unk0 != -1; i++) {
         if ((
                 (D_global_asm_80750840[i].unk0 == 2)
                 && (cc_number_of_players > 1)
@@ -446,7 +441,6 @@ Gfx *func_global_asm_80704960(Gfx *dl) {
 
     return dl;
 }
-*/
 
 void func_global_asm_80704AFC(f32 arg0, f32 arg1, f32 arg2) {
     D_global_asm_807FD968 = arg0;
