@@ -5,7 +5,7 @@ us,boot,osViBlack,112,yes
 us,boot,guLookAtHilite,184,yes
 us,boot,osContGetReadData,140,yes
 us,boot,__osSiRawWriteIo,76,yes
-us,boot,func_dk64_boot_80002B0C,172,no
+us,boot,func_dk64_boot_80002B0C,168,yes
 us,boot,guScale,72,yes
 us,boot,func_dk64_boot_80002750,52,yes
 us,boot,func_dk64_boot_80001700,1012,yes
