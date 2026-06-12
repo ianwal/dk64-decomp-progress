@@ -1721,47 +1721,55 @@ void func_global_asm_8062F3A0(Gfx *arg0, void *arg1) {
     }
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F420.s")
-
-/*
 void func_global_asm_8062F420(Struct8062F420 *arg0, s32 arg1, s32 arg2) {
     s32 i;
-    if (arg0 != NULL) {
-        switch (arg0->unkB8) {
-            case 0:
-                do {
-                    arg0->unk0 += arg1;
-                    arg0->unk4 += arg1;
-                    func_global_asm_8062F420(arg0->unk0, arg1, arg2);
-                    arg0 = arg0->unk4;
-                } while (arg0 != NULL);
-                break;
-            case 1:
-            case 2:
-                if (arg0->unk8 != -1) {
-                    arg0->unk8 += arg2;
-                }
-                if (arg0->unkC != -1) {
-                    arg0->unkC += arg2;
-                }
-                if (arg0->unk10 != -1) {
-                    arg0->unk10 += arg2;
-                }
-                if (arg0->unk14 != -1) {
-                    arg0->unk14 += arg2;
-                }
-                if (arg0->unk18 != -1) {
-                    arg0->unk18 += arg2;
-                }
-                for (i = 0; i < arg0->unkC5; i++) {
-                    arg0->unk1C[i] += arg2;
-                }
-                break;
-        }
+
+loop:
+    if (arg0 == NULL) {
+        return;
+    }
+
+    switch (arg0->unkB8) {
+        case 0:
+            arg0->unk0 = (void *)(((s32)arg0->unk0) + arg1);
+            arg0->unk4 = (Struct8062F420 *)(((s32)arg0->unk4) + arg1);
+            func_global_asm_8062F420(arg0->unk0, arg1, arg2);
+            arg0 = arg0->unk4;
+            goto loop;
+
+        case 1:
+        case 2:
+            if (arg0->unk8 != -1) {
+                arg0->unk8 += arg2;
+            }
+            if (arg0->unkC != -1) {
+                arg0->unkC += arg2;
+            }
+            if (arg0->unk10 != -1) {
+                arg0->unk10 += arg2;
+            }
+            if (arg0->unk14 != -1) {
+                arg0->unk14 += arg2;
+            }
+            if (arg0->unk18 != -1) {
+
+                // fake match
+                if (1) {}
+                if (1) {}
+                if (1) {}
+
+                arg0->unk18 += arg2;
+            }
+            for (i = 0; i < arg0->unkC5; i++) {
+                arg0->unk1C[i] += arg2;
+            }
+
+            break;
+
+        default:
+            break;
     }
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F538.s")
 
