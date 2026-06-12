@@ -1771,7 +1771,43 @@ loop:
     }
 }
 
+// regalloc
+// https://decomp.me/scratch/mz6O3
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F538.s")
+
+/*
+void func_global_asm_8062F538(f32 *arg0, s32 arg1, s32 arg2, s32 arg3) {
+    s32 i;
+    f32 temp;
+
+    if (arg1 != 0) {
+        if (arg2 == 0) {
+            for (i = 0; i < 3; i++) {
+                temp = arg0[(arg2 * 3) + i];
+                arg0[(arg2 * 3) + i] = arg0[(arg1 * 3) + i];
+                arg0[(arg1 * 3) + i] = temp;
+            }
+
+            arg2 = arg1;
+        } else {
+            for (i = 0; i < 3; i++) {
+                temp = arg0[(arg3 * 3) + i];
+                arg0[(arg3 * 3) + i] = arg0[(arg1 * 3) + i];
+                arg0[(arg1 * 3) + i] = temp;
+            }
+
+            arg3 = arg1;
+        }
+    }
+    if (arg2 != 1) {
+        for (i = 0; i < 3; i++) {
+            temp = arg0[(arg3 * 3) + i];
+            arg0[(arg3 * 3) + i] = arg0[(arg2 * 3) + i];
+            arg0[(arg2 * 3) + i] = temp;
+        }
+    }
+}
+*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_2F550/func_global_asm_8062F640.s")
 
