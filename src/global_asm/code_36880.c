@@ -308,7 +308,7 @@ void func_global_asm_80632084(PropData *arg0, s32 arg1, u8 arg2, u16 arg3, u8 ar
                         D_global_asm_807F6000[var_s5].unk8A = var_s1->unk2A;
                         temp_s3 = func_global_asm_80632860(var_s5, var_s1->unk28, var_s1->unk0,
                             var_s1->unk4, var_s1->unk8, var_s1->unk18, var_s1->unk1C,
-                            var_s1->unk20, var_s1->unkC, var_s1->unk24, 
+                            var_s1->unk20, var_s1->unkC, var_s1->unk24,
                             var_s1->unk2F, var_s1->unk2E, &sp94);
                         func_global_asm_80632E74(current_map, D_global_asm_807F6000[var_s5].unk8A, &D_global_asm_807F6000[var_s5].unk8C);
                         D_global_asm_807F6240[var_s1->unk2A] = temp_s3;
@@ -1790,41 +1790,42 @@ void func_global_asm_80639CD0(Struct80639CD0 *arg0, void **arg1, void **arg2, u8
     *arg2 = arg0->unk40;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639F1C.s")
-
-/*
 s32 func_global_asm_80639F1C(PropModel50_B8 *arg0, s32 *arg1, s32 *arg2) {
+    s32 new_var;
+    s32 new_var2;
     s32 var_v1;
     s32 temp;
 
     var_v1 = FALSE;
+    new_var = TRUE;
     switch (arg0->unk48) {
         case 1:
-            if (arg0->unk4C == ++arg0->unk50) {
+            if (arg0->unk4C == (++arg0->unk50)) {
                 arg0->unk50 = 0;
-                if (arg0->unk58 == ++arg0->unk54) {
+                if (arg0->unk58 == (++arg0->unk54)) {
                     arg0->unk54 = 0;
                 }
-                var_v1 = TRUE;
+                var_v1 = new_var;
             }
             break;
+
         case 0:
             if (arg0->unk49) {
-                var_v1 = TRUE;
+                var_v1 = new_var;
             }
             break;
     }
+
     *arg1 = arg0->unk54;
-    temp = arg0->unk54 + 1;
-    if (arg0->unk54 + 1 == arg0->unk58) {
+    temp = arg0->unk54 + new_var;
+    if ((arg0->unk54 + new_var) == arg0->unk58) {
         *arg2 = 0;
     } else {
-        *arg2 = arg0->unk54;
+        new_var2 = arg0->unk54;
+        *arg2 = new_var2 + new_var;
     }
     return var_v1;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80639FC0.s")
 
@@ -2201,7 +2202,7 @@ Gfx *func_global_asm_8063D638(Gfx *dl) {
     gSPTexture(dl++, 0xFFFF, 0xFFFF, 0, G_TX_RENDERTILE, G_ON);
     gDPSetRenderMode(dl++, G_RM_PASS, G_RM_ZB_XLU_SURF2);
     gDPSetCombineMode(dl++, G_CC_MODULATEIA, G_CC_MODULATEIA_PRIM2);
-    
+
     switch (current_map) {
         case MAP_DK_ISLES_OVERWORLD:
         case MAP_CASTLE_BARREL_BLAST:
