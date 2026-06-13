@@ -124,9 +124,9 @@ f32 func_race_80027880(s32 arg0, u16 arg1, u16 arg2) {
     f32 dy;
     s32 temp;
     Struct807F5FD4_unk0 *t;
-    
+
     temp = func_race_80025770(arg0, arg2);
-    
+
     t = D_global_asm_807F5FD4->unk0[arg1];
     // TODO: Better way to write this?
     dx = (t + arg2)->unk0 - (temp + t)->unk0;
@@ -315,46 +315,41 @@ void func_race_800283D4(f32 arg0) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80028AD0.s")
 
-// close, doable, unrolled loop, rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_36B0/func_race_80028E20.s")
-
-/*
 void func_race_80028E20(Struct80028E20_arg0 *arg0) {
-    f32 y;
-    f32 z;
-    f32 d;
-    f32 dx;
-    f32 dy;
-    f32 dz;
-    f32 x;
-    f32 lowest;
-    s32 j;
+    Struct807F5FD4_unk0 *p;
     s32 count;
     s32 i;
-    Struct807F5FD4_unk0 *var_a2;
+    s32 j;
+    f32 lowest;
+    f32 x;
+    f32 y;
+    f32 z;
 
-    count = (D_global_asm_807F5FD4->unk0[1] - D_global_asm_807F5FD4->unk0[0]);
-    var_a2 = D_global_asm_807F5FD4->unk0[0];
+    count = ((s32) ((u8 *) D_global_asm_807F5FD4->unk0[1] - (u8 *) D_global_asm_807F5FD4->unk0[0])) /
+            ((s32) sizeof(Struct807F5FD4_unk0));
+
     lowest = 10000000.0f;
+    p = D_global_asm_807F5FD4->unk0[0];
+
     x = gCurrentActorPointer->x_position;
     y = gCurrentActorPointer->y_position;
     z = gCurrentActorPointer->z_position;
+
     for (i = 0; i < 3; i++) {
-        for (j = 0; j < count; j++) {
-            dx = x - var_a2[j].unk0;
-            dy = y - var_a2[j].unk4;
-            dz = z - var_a2[j].unk8;
-            d = SQ(dx) + SQ(dy) + SQ(dz);
-            if (d < lowest) {
+        for (j = 0; j < count; j++, p++) {
+            f32 dist;
+
+            dist = SQ(x - p->unk0) + SQ(y - p->unk4) + SQ(z - p->unk8);
+
+            if (dist < lowest) {
                 arg0->unk2 = j;
                 arg0->unk0 = i;
                 arg0->unk1 = i;
-                lowest = d;
+                lowest = dist;
             }
         }
     }
 }
-*/
 
 void func_race_80029054(void) {
     A178_race_80029054 *a178;
