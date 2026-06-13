@@ -61,38 +61,41 @@ void func_global_asm_8065CDB0(Gfx *dl, Gfx *endDL) {
     }
 }
 
-// float, close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_61AA0/func_global_asm_8065CE4C.s")
-
-/*
+// Some kind of draw distance related calculation? It's related to FOV and distance. The result is [0,255]
 void func_global_asm_8065CE4C(f32 arg0, f32 arg1, f32 arg2, f32 arg3, s16 arg4, s16 *arg5) {
-    f32 dx, dy, dz;
-    f32 phi_f14;
+    f32 dy;
+    f32 distance; // phi_f14
+    f32 new_var2;
+    f32 dx;
+    f32 dz;
 
-    dx = arg0 - character_change_array[cc_player_index].unk21C;
-    dy = arg1 - character_change_array[cc_player_index].unk220;
-    dz = arg2 - character_change_array[cc_player_index].unk224;
-    phi_f14 = sqrtf(SQ(dx) + SQ(dy) + SQ(dz));
+    // fake match, whitespace matters here so formatting is disabled.
+    // clang-format off
+    new_var2 = arg2 - character_change_array[cc_player_index].unk224; dx = arg0 - character_change_array[cc_player_index].unk21C; dy = arg1 - character_change_array[cc_player_index].unk220;
+    // clang-format on
+
+    dz = new_var2;
+    distance = sqrtf((SQ(dx) + SQ(dy)) + (dz * (dz = dz)));
     if (current_map == MAP_AZTEC) {
         arg3 = func_global_asm_8065CFB8(arg4, arg3);
-        if (arg3 < phi_f14) {
+        if (arg3 < distance) {
             *arg5 = 0;
             return;
         }
     }
     dy = func_global_asm_8065D0FC(arg3);
     dx = (dy * 3.0f) / 4;
-    if (phi_f14 < dx) {
+    if (distance < dx) {
         *arg5 = 0xFF;
         return;
     }
-    *arg5 = ((phi_f14 - dx) / (dy - dx)) * 255.0f;
+
+    *arg5 = ((distance - dx) / (dy - dx)) * 255.0f;
     if (*arg5 >= 0x100) {
         *arg5 = 0xFF;
     }
     *arg5 = 0xFF - *arg5;
 }
-*/
 
 f32 func_global_asm_8065CFB8(s16 arg0, f32 arg1) {
     if (arg0 == 0xB2 || arg0 == 0x253) {
