@@ -819,7 +819,7 @@ void func_global_asm_806E1A50(void) {
     }
     // TODO: Get rid of this typecast if possible
     if ((u32) (D_global_asm_80767CC0 - extra_player_info_pointer->unk58) < 0xFU) {
-        if (((gCurrentActorPointer->unk6A & 1) == 0) || 
+        if (((gCurrentActorPointer->unk6A & 1) == 0) ||
              (gCurrentActorPointer->unkE0 == 0.0f)) {
             extra_player_info_pointer->unk38 = D_global_asm_807531FC[D_global_asm_807FD584];
             extra_player_info_pointer->unk30 = D_global_asm_80753250[D_global_asm_807FD584];
@@ -1433,62 +1433,79 @@ void func_global_asm_806E4634(void) {
     }
 }
 
-// TODO: Very close, just an issue with the branches in the first switch case
+// regalloc
+// https://decomp.me/scratch/3Zy9S
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_E4090/func_global_asm_806E4740.s")
 
 extern f32 D_global_asm_8075318C[];
+extern u16 D_global_asm_807FD63C[];
+extern u8 D_global_asm_807FC9AE[];
+extern u8 D_global_asm_807FCA0C[];
+extern u8 D_global_asm_807FCAC8[];
 
 /*
 void func_global_asm_806E4740(void) {
-    if (D_global_asm_807FD610[cc_player_index].unk2C & B_BUTTON) {
+    u8 playerIndex = cc_player_index;
+    u16 new_var2;
+
+    new_var2 = D_global_asm_807FD63C[playerIndex * 0x1A];
+    // new_var2 = ((((((D_global_asm_807FD63C[playerIndex * 0x1A] & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF) & 0xFFFF;
+
+    if (new_var2 & B_BUTTON) {
         if (D_global_asm_8075318C[D_global_asm_807FD584] < extra_player_info_pointer->unk20) {
-            switch (current_character_index[cc_player_index]) {
-                case 3:
+            if (((current_character_index[cc_player_index] == 3) || (current_character_index[cc_player_index] == 0))
+                || (current_character_index[cc_player_index] == 5)) {
+
+                if (current_character_index[cc_player_index] == 3) {
                     gCurrentActorPointer->y_velocity = 200.0f;
-                case 5:
-                    setYAccelerationFrom80753578();
-                    gCurrentActorPointer->control_state = 0x2B;
-                    gCurrentActorPointer->control_state_progress = 0;
-                    playAnimation(gCurrentActorPointer, 0x45);
-                    extra_player_info_pointer->unkC8 = 0x32;
-                    break;
-                default:
-                case 0:
-                    switch (current_character_index[cc_player_index]) {
-                        case 2:
-                            if (D_global_asm_807FC950[cc_player_index].character_progress[2].moves > 0) {
-                                setAction(0x25, NULL, cc_player_index);
-                            }
-                            break;
-                        case 4:
-                            if (D_global_asm_807FC950[cc_player_index].character_progress[4].moves > 1) {
-                                setAction(0x26, NULL, cc_player_index);
-                            }
-                            break;
-                        case 1:
-                            if (D_global_asm_807FC950[cc_player_index].character_progress[1].moves > 0) {
-                                extra_player_info_pointer->unk48 = 0x64;
-                                gCurrentActorPointer->control_state = 0x2E;
-                                gCurrentActorPointer->control_state_progress = 0;
-                                playAnimation(gCurrentActorPointer, 0x48);
-                                extra_player_info_pointer->unk68 = D_global_asm_8075380C[D_global_asm_807FD584] * 4;
-                                extra_player_info_pointer->unk38 = D_global_asm_8075381C[D_global_asm_807FD584] * 2;
-                                extra_player_info_pointer->unk30 = D_global_asm_8075382C[D_global_asm_807FD584];
-                            }
-                            break;
-                        case 6:
-                            gCurrentActorPointer->control_state = 0x2F;
-                            gCurrentActorPointer->control_state_progress = 0;
-                            playAnimation(gCurrentActorPointer, 0x48);
-                            extra_player_info_pointer->unk68 = D_global_asm_8075380C[D_global_asm_807FD584];
-                            extra_player_info_pointer->unk38 = D_global_asm_8075381C[D_global_asm_807FD584];
-                            extra_player_info_pointer->unk30 = D_global_asm_8075382C[D_global_asm_807FD584];
-                            extra_player_info_pointer->unk48 = D_global_asm_8075385C[D_global_asm_807FD584];
-                            gCurrentActorPointer->unkEE = gCurrentActorPointer->y_rotation;
-                            break;
-                    }
-                    break;
+                }
+                setYAccelerationFrom80753578();
+                gCurrentActorPointer->control_state = 0x2B;
+                gCurrentActorPointer->control_state_progress = 0;
+                playAnimation(gCurrentActorPointer, 0x45);
+                extra_player_info_pointer->unkC8 = 0x32;
+                return;
             }
+        }
+
+        switch (current_character_index[cc_player_index]) {
+            case 2:
+                // character_progres[2].moves
+                if (D_global_asm_807FCA0C[cc_player_index * 0x306] > 0) {
+                    setAction(0x25, NULL, cc_player_index);
+                }
+                break;
+
+            case 4:
+                // character_progres[4].moves
+                if (D_global_asm_807FCAC8[cc_player_index * 0x306] > 1) {
+                    setAction(0x26, NULL, cc_player_index);
+                }
+                break;
+
+            case 1:
+                // character_progres[1].moves
+                if (D_global_asm_807FC9AE[cc_player_index * 0x306] > 0) {
+                    extra_player_info_pointer->unk48 = 0x64;
+                    gCurrentActorPointer->control_state = 0x2E;
+                    gCurrentActorPointer->control_state_progress = 0;
+                    playAnimation(gCurrentActorPointer, 0x48);
+                    extra_player_info_pointer->unk68 = D_global_asm_8075380C[D_global_asm_807FD584] * 4;
+                    extra_player_info_pointer->unk38 = D_global_asm_8075381C[D_global_asm_807FD584] * 2;
+                    extra_player_info_pointer->unk30 = D_global_asm_8075382C[D_global_asm_807FD584];
+                }
+                break;
+
+            case 6:
+                gCurrentActorPointer->control_state = 0x2F;
+                gCurrentActorPointer->control_state_progress = 0;
+                playAnimation(gCurrentActorPointer, 0x48);
+                extra_player_info_pointer->unk68 = D_global_asm_8075380C[D_global_asm_807FD584];
+                extra_player_info_pointer->unk38 = D_global_asm_8075381C[D_global_asm_807FD584];
+                extra_player_info_pointer->unk30 = D_global_asm_8075382C[D_global_asm_807FD584];
+                extra_player_info_pointer->unk48 = D_global_asm_8075385C[D_global_asm_807FD584];
+                gCurrentActorPointer->unkEE = gCurrentActorPointer->y_rotation;
+                break;
         }
     }
 }
