@@ -462,9 +462,6 @@ s32 func_global_asm_806C8DE0(s32 playerIndex) {
     return phi_v1;
 }
 
-// TODO: Quite fiddly
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_CC800/func_global_asm_806C8E58.s")
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -475,30 +472,26 @@ typedef struct {
 
 void func_global_asm_806C8F8C(Struct806C8F8C_arg0 *arg0);
 
-/*
 void func_global_asm_806C8E58(s16 arg0) {
-    s32 *var_a2;
-    s32 valid;
-    s32 i;
-    u8 j;
+    u8 index;
+    u8 valid;
+    u8 next;
 
     valid = FALSE;
-    i = 0 & 0xFF;
-    current_character_index[cc_player_index] = 0;
-    var_a2 = &D_global_asm_8075C410[i];
+    index = (current_character_index[cc_player_index] = 0);
     while (!valid) {
-        j = i + 1;
-        if (arg0 == *var_a2) {
+        if (arg0 == D_global_asm_8075C410[index].unk0) {
             valid = TRUE;
         } else {
-            i = j & 0xFF;
-            var_a2 = &D_global_asm_8075C410[i];
-            current_character_index[cc_player_index] = j;
+            next = index + 1;
+            index = (current_character_index[cc_player_index] = next);
         }
     }
-    func_global_asm_806C8F8C(var_a2);
+
+    // TODO: D_global_asm_8075C410 element type is not the same as func_global_asm_806C8F8C() for arg0.
+    // Not sure what is going on here.
+    func_global_asm_806C8F8C(&D_global_asm_8075C410[index]);
 }
-*/
 
 void func_global_asm_806C8EE8(void) {
     current_character_index[cc_player_index]++;
@@ -730,7 +723,7 @@ void func_global_asm_806C9AE0(void) {
     PlayerProgress *PP;
     s32 playerIndex;
     s32 kongIndex;
-    
+
     PP = D_global_asm_807FC950;
     for (playerIndex = 0; playerIndex < 4; playerIndex++, PP++) {
         bzero(PP, sizeof(PlayerProgress));
