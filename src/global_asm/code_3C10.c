@@ -697,8 +697,8 @@ s32 func_global_asm_80600080(Maps map) {
     return -1;
 }
 
-// close
-// https://decomp.me/scratch/Eg37x
+// matching, but D_global_asm_8076A160 needs .bss fixing
+// https://decomp.me/scratch/XElo0
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_3C10/func_global_asm_80600174.s")
 
 int func_global_asm_80689C20(s32, s32, s32, f32, f32, f32);
@@ -706,9 +706,11 @@ void func_global_asm_80631F58(void*, void*, void*);
 s16 func_global_asm_80600174(f32*, f32*, f32*);
 
 /*
+static Struct8076A160 D_global_asm_8076A160[18];
+
 s16 func_global_asm_80600174(f32 *x, f32 *y, f32 *z) {
     s32 i;
-    for (i = 0; i < 18; i++) {
+    for (i = 0; i < ARRAY_COUNT(D_global_asm_8076A160); i++) {
         if (D_global_asm_8076A160[i].unk0) {
             if ((D_global_asm_8076A160[i].unk2 & 1)) {
                 *x = D_global_asm_8076A160[i].xPosition;
