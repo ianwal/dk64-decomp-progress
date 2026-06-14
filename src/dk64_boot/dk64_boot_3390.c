@@ -1,37 +1,21 @@
 #include "common.h"
 
+// Handwritten.
+// Wrapper for saving/restoring context for calling func_dk64_boot_800028E0
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002790.s")
 
+// Handwritten.
+// Wrapper for saving/restoring context to the decompression function it calls. Also sets
+// the decompression src/dest for the decompression function?
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_80002828.s")
 
-// Related to decompression? Handwritten.
+// Handwritten.
+// LZ decompressor?
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800028E0.s")
 
-// Related to decompression? Maybe extracting bits from stream and turning into values?
-// https://decomp.me/scratch/TARdJ
+// Handwritten.
+// Decompression related, called by the above fn func_dk64_boot_800028E0. Extracts bits.
 #pragma GLOBAL_ASM("asm/nonmatchings/dk64_boot/dk64_boot_3390/func_dk64_boot_800029EC.s")
-/*
-// Kind of close?
-u32 func_dk64_boot_800029EC(u8 *a0, u32 a3, u32 s4, u32 s5) {
-    u32 v0 = 0;
-    u32 t4 = s4;
-
-    while (a3 != 0) {
-        if (t4 == s4) {
-            if (*a0 & t4) {
-                v0 |= a3;
-            }
-            a0 += s5;
-        }
-        t4 >>= 1;
-        a3 >>= 1;
-        if (t4 == 0) {
-            t4 = s4;
-        }
-    }
-    return v0;
-}
-*/
 
 u8 *_strcpy(u8 *dest, const u8 *src) {
     u8 *ptr = dest;
