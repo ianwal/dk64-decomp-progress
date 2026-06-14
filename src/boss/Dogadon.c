@@ -91,22 +91,18 @@ static void *D_boss_80035A34[] = {
 
 s32 func_global_asm_80725BA4(s16, s16, s32);
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/Dogadon/func_boss_8002A240.s")
-
-/*
 void func_boss_8002A240(void) {
     Actor17C *temp_s0;
     f32 temp_f10;
-    s16 temp_t9;
-    s16 temp_t1;
+    s32 temp_t9;
+    s32 temp_t1;
 
     temp_s0 = gCurrentActorPointer->unk17C;
     if (temp_s0->unk4 != 0) {
         temp_s0->unk4--;
         temp_t1 = temp_s0->unk8;
-        temp_t9 = ((s32)temp_t1 - (u16)temp_t1) + -0x400;
-        temp_f10 = func_global_asm_80612794((temp_s0->unk4 / 10.0) * temp_t9 + (temp_t1 + 0x400)) * 20.0;
+        temp_t9 = (temp_t1 - (temp_t1 ^ 0)) - 0x400;
+        temp_f10 = func_global_asm_80612794(((temp_s0->unk4 / 10.0) * temp_t9) + (temp_t1 + 0x400)) * 20.0;
         gCurrentActorPointer->x_position += temp_f10 * func_global_asm_80612794(temp_s0->unk6);
         gCurrentActorPointer->z_position += temp_f10 * func_global_asm_80612790(temp_s0->unk6);
         if (temp_s0->unk4 == 0) {
@@ -115,9 +111,8 @@ void func_boss_8002A240(void) {
     } else if (RandChance(0.06)) {
         temp_s0->unk4 = 0xA;
     }
-    gCurrentActorPointer->y_position += 8.0 * func_global_asm_80612794((u32)object_timer * 200.0);
+    gCurrentActorPointer->y_position += 8.0 * func_global_asm_80612794(((u32) object_timer) * 200.0);
 }
-*/
 
 void func_boss_8002A41C(u8 arg0) {
     s32 pad;
