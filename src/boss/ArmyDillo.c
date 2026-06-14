@@ -116,17 +116,21 @@ typedef struct {
     f32 unkC;
 } Struct800358E0;
 
-Struct800358E0 D_boss_800358E0[] = {
-    { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
-    { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
-    { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
-    { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
-    { 0x00, 0x80, 0x00, 0x00, 0.15f, 0.15f, 0.15f },
-    { 0x00, 0x00, 0x00, 0x00, 1.0f, 1.0f, 1.0f },
-    { 0x00, 0x00, 0x00, 0x00, 1.0f, 1.0f, 1.0f },
-    { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
-    { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
-    { 0x00, 0x80, 0x00, 0x00, 0.15f, 0.15f, 0.15f },
+Struct800358E0 D_boss_800358E0[2][5] = {
+    {
+        { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+        { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+        { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+        { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+        { 0x00, 0x80, 0x00, 0x00, 0.15f, 0.15f, 0.15f },
+    },
+    {
+        { 0x00, 0x00, 0x00, 0x00, 1.0f, 1.0f, 1.0f },
+        { 0x00, 0x00, 0x00, 0x00, 1.0f, 1.0f, 1.0f },
+        { 0x9C, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+        { 0x64, 0x00, 0x00, 0x00, 0.25f, 0.25f, 0.25f },
+        { 0x00, 0x80, 0x00, 0x00, 0.15f, 0.15f, 0.15f },
+    },
 };
 
 u8 D_boss_80035980[] = {
@@ -189,26 +193,20 @@ void func_boss_80024000(void) {
     }
 }
 
-// Flag check, animation state, unrolled loops
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/ArmyDillo/func_boss_8002413C.s")
-
-/*
 void func_boss_8002413C(void) {
     AnimationStateUnk1C *var_a1;
     AnimationStateUnk20 *var_a0;
     AnimationStateUnk24 *var_v0;
-    s16 i;
-    s16 j;
-    Struct800358E0 *temp_a2_2;
+    Struct800358E0 *temp_a2;
     u8 var_a3;
-    s32 temp;
+    s16 i;
 
     if (current_map == MAP_JAPES_ARMY_DILLO) {
         var_a3 = 0;
     } else {
         var_a3 = 1;
     }
-    if (var_a3 == 0) {
+    if (!var_a3) {
         if (isFlagSet(TEMPFLAG_JAPES_DILLO_INTRO, FLAG_TYPE_TEMPORARY)) {
             var_a3 = 1;
             gCurrentActorPointer->unk146 = 3;
@@ -220,33 +218,37 @@ void func_boss_8002413C(void) {
     var_v0 = gCurrentActorPointer->animation_state->unk24;
     var_a0 = gCurrentActorPointer->animation_state->unk20;
     var_a1 = gCurrentActorPointer->animation_state->unk1C;
+    temp_a2 = D_boss_800358E0[var_a3];
     for (i = 0; i < 5; i++) {
-        var_v0[i - 1].unk0 = D_boss_800358D8[i];
-        var_v0[i - 1].unk1 = 0xFF;
-        temp_a2_2 = &D_boss_800358E0[i + var_a3 * 5];
-        var_v0[i - 1].unk4 = temp_a2_2->unk0;
-        var_v0[i - 1].unk8 = temp_a2_2->unk1;
-        var_v0[i - 1].unkC = temp_a2_2->unk2;
-        var_a0[i - 1].unk0 = D_boss_800358D8[i];
-        var_a0[i - 1].unk1 = 0xFF;
-        var_a0[i - 1].unk4 = temp_a2_2->unk4;
-        var_a0[i - 1].unk8 = temp_a2_2->unk8;
-        var_a0[i - 1].unkC = temp_a2_2->unkC;
-        var_a1[i - 1].unk0 = -0x80;
-        var_a1[i - 1].unk1 = D_boss_800358D8[i];
-        var_a1[i - 1].unk2 = 0;
-        var_a1[i - 1].unk4 = 0;
-        var_a1[i - 1].unk6 = 0;
+        var_v0->unk0 = D_boss_800358D8[i];
+        var_v0->unk1 = 0xFF;
+        var_v0->unk4 = temp_a2[i].unk0;
+        var_v0->unk8 = temp_a2[i].unk1;
+        var_v0->unkC = temp_a2[i].unk2;
+        var_a0->unk0 = D_boss_800358D8[i];
+        var_a0->unk1 = 0xFF;
+        var_a0->unk4 = temp_a2[i].unk4;
+        var_a0->unk8 = temp_a2[i].unk8;
+        var_a0->unkC = temp_a2[i].unkC;
+        var_a1->unk0 = -0x80;
+        var_a1->unk1 = D_boss_800358D8[i];
+        var_a1->unk2 = 0;
+        var_a1->unk4 = 0;
+        var_a1->unk6 = 0;
+        var_v0++;
+        var_a0++;
+        var_a1++;
     }
-    for (j = 0; j < 8; j++) {
-        var_v0[j - 1].unk0 = D_boss_80035994[j];
-        var_v0[j].unk1 = 0xFF;
-        var_v0[j].unk4 = 0.0f;
-        var_v0[j].unk8 = 0.0f;
-        var_v0[j].unkC = 0.0f;
+
+    for (i = 0; i < 8; i++) {
+        var_v0->unk0 = D_boss_80035994[i];
+        var_v0->unk1 = 0xFF;
+        var_v0->unk4 = 0.0f;
+        var_v0->unk8 = 0.0f;
+        var_v0->unkC = 0.0f;
+        var_v0++;
     }
 }
-*/
 
 void func_boss_80024300(void) {
     AnimationStateUnk24 *var_a0;
@@ -308,7 +310,7 @@ void func_boss_80024300(void) {
     }
 }
 
-void func_boss_8002450C(Struct8002450C *arg0, u8 arg1, u8 arg2) {    
+void func_boss_8002450C(Struct8002450C *arg0, u8 arg1, u8 arg2) {
     arg0->unk6[arg1] = arg2;
 }
 
