@@ -248,7 +248,7 @@ void func_multiplayer_800242FC(void *aaD) {
         } else if (check == highest) {
             chosenPlayerIndex = -1;
         }
-    }   
+    }
     global_properties_bitfield |= 0x40001;
     func_global_asm_80714638();
     D_global_asm_8076A105 = chosenPlayerIndex;
@@ -559,25 +559,25 @@ Gfx *func_multiplayer_80025264(Gfx *dl, Actor *arg1) {
     return dl;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/multiplayer/code_0/func_multiplayer_80025378.s")
-
-Struct80026FA4 *func_multiplayer_80025378();
-
-/*
 Struct80026FA4 *func_multiplayer_80025378(void) {
-    Struct80026FA4 *var_v1;
-    u32 i;
+    Struct80026FA4 *entry = 0;
+    s32 *new_var;
+    u32 new_var2;
+    s32 i;
 
-    var_v1 = NULL;
-    for (i = 0; var_v1 == NULL && i < 4U; i++) {
-        if (current_map == D_multiplayer_80026FA4[i].map) {
-            var_v1 = &D_multiplayer_80026FA4[i];
-        }
-    }
-    return var_v1;
+    // fake match, whitespace matters here
+    // clang-format off
+ new_var = &i; i = 0; do { new_var2 = 4; do {
+    // clang-format on
+            if (current_map == D_multiplayer_80026FA4[*new_var].map) {
+                entry = &D_multiplayer_80026FA4[*new_var];
+            }
+            i++;
+        } while (((*new_var) < new_var2) && (entry == 0));
+    } while (0);
+
+    return entry;
 }
-*/
 
 s32 func_multiplayer_800253C8(void) {
     return (RandClamp(32767) % 211) + 90;
@@ -668,9 +668,9 @@ void func_multiplayer_80025654(MultiplayerStruct4 *arg0) {
     temp_v0 = func_multiplayer_80025404();
     if (temp_v0 == -1) {
         if (
-            (!arg0->unk4C) && 
-            (!func_global_asm_8067ADB4(0x7AU)) && 
-            (!func_multiplayer_80025608(0x1D2)) && 
+            (!arg0->unk4C) &&
+            (!func_global_asm_8067ADB4(0x7AU)) &&
+            (!func_multiplayer_80025608(0x1D2)) &&
             (!func_global_asm_806F5EB4(0x1D2, 0, sp20->unk0, sp20->unk2, sp20->unk4))
             ) {
             func_global_asm_806F5FE8(0x1D2, sp20->unk0, sp20->unk2, sp20->unk4, 0xA);
@@ -684,7 +684,7 @@ void func_multiplayer_80025654(MultiplayerStruct4 *arg0) {
 }
 
 void func_multiplayer_80025794(void) {
-    
+
     Struct80026FA4 *temp_v0; // 84
     MultiplayerStruct3 *temp_s0;
     s32 i; // 7C
@@ -958,7 +958,7 @@ void func_multiplayer_80026094(void) {
             func_global_asm_806F5FA0(0x212, 0xD4, 0x24E);
             func_global_asm_806F5FA0(0x28E, 0xD4, 0x247);
         }
-        
+
         aad->unk30 = malloc(0x40);
         guScale(aad->unk30, 0.5f, 0.5f, 1.0f);
         aad->unkC = D_global_asm_807552E4.unkC;
