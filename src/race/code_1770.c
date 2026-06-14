@@ -79,9 +79,6 @@ s32 func_race_8002578C(s32 arg0, s32 arg1) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/race/code_1770/func_race_8002597C.s")
 
-// Close, doable, regalloc, stack
-#pragma GLOBAL_ASM("asm/nonmatchings/race/code_1770/func_race_80025E9C.s")
-
 typedef struct {
     s32 unk0;
     s32 unk4;
@@ -129,57 +126,53 @@ typedef struct {
 
 void func_race_8002BC2C(Actor *arg0, s32 arg1, Actor *arg2, void *arg3);
 
-/*
 void func_race_80025E9C(Actor *arg0) {
     RaceAdditionalActorData *aaD;
-    Actor178_race_80025E9C_2 *a178_2; // TODO: Shouldn't be on stack
-    s32 pad2;
-    s32 pad;
-    Actor *playerCar;
-    Actor *sp40; // sp40
-    Actor *raceCamera; // sp3C
-    Actor17C_race_80025E9C *a178;
-    RaceAdditionalActorData *aaD_2;
+    Actor178_race_80025E9C_2 *a178;
+    Actor17C_race_80025E9C *a17C;
     Actor184_race_80025E9C *a184;
+    Actor *playerCar;
+    Actor *sp40;
+    Actor *raceCamera;
+    RaceAdditionalActorData *playerAaD;
+    s32 const one = 1;
 
-    aaD = arg0->additional_actor_data;
+    aaD = arg0->RaaD;
     func_race_8002BBD0(arg0, 2);
     spawnActor(ACTOR_CAR_FACTORY_PLAYER, 0x95);
     playerCar = gLastSpawnedActor;
-    aaD_2 = playerCar->additional_actor_data;
-    func_race_8002BC2C(arg0, 1, playerCar, aaD_2);
-    aaD_2->unk37 = 0;
-    aaD_2->unk27 = 0;
-    aaD_2->unk30 = arg0;
-    aaD_2->unk36 = 1;
-    aaD_2->unk28 = 0;
-    a178 = playerCar->unk178;
-    sp40 = func_global_asm_807271F4(1, 0, 0, 0, 0, 0, 0);
-    a178->unk30 = sp40;
-    a184 = sp40->unk184;
-    a184->unk4 = aaD_2;
+    playerAaD = playerCar->RaaD;
+    func_race_8002BC2C(arg0, one, playerCar, playerAaD);
+    playerAaD->unk37 = 0;
+    playerAaD->unk27 = 0;
+    playerAaD->unk30 = arg0;
+    playerAaD->unk36 = 1;
+    playerAaD->unk28 = 0;
+    a17C = (Actor17C_race_80025E9C *) playerCar->unk178;
+    sp40 = func_global_asm_807271F4(one, 0, 0, 0, 0, 0, 0);
+    a17C->unk30 = sp40;
+    a184 = (Actor184_race_80025E9C *) sp40->unk184;
+    a184->unk4 = playerAaD;
     a184->unk0 = playerCar;
     spawnActor(ACTOR_CAMERA_CARRACE, 0);
     raceCamera = gLastSpawnedActor;
-    a178->unk34 = raceCamera;
-    pad = 1;
-    a178_2 = sp40->unk178;
-    func_race_8002BC2C(arg0, 0, sp40, a178_2);
-    a178_2->unk37 = 0;
-    a178_2->unk27 = pad;
-    a178_2->unk30 = arg0;
-    a178_2->unk36 = 0;
-    a178 = sp40->unk17C;
-    a178->unk30 = playerCar;
-    a178->unk34 = raceCamera;
-    aaD_2 = raceCamera->RaaD;
-    aaD_2->unk30 = arg0;
-    a178_2 = raceCamera->unk178;
-    a178_2->unk30 = playerCar;
+    a17C->unk34 = raceCamera;
+    a178 = (Actor178_race_80025E9C_2 *) sp40->unk178;
+    func_race_8002BC2C(arg0, 0, sp40, a178);
+    a178->unk37 = 0;
+    a178->unk27 = one;
+    a178->unk30 = arg0;
+    a178->unk36 = 0;
+    a17C = (Actor17C_race_80025E9C *) sp40->unk17C;
+    a17C->unk30 = playerCar;
+    a17C->unk34 = raceCamera;
+    a178 = (Actor178_race_80025E9C_2 *) raceCamera->RaaD;
+    a178->unk30 = arg0;
+    a17C = raceCamera->unk178;
+    a17C->unk30 = playerCar;
     D_global_asm_80750AC4 = 0;
-    aaD->unk25 = pad;
+    aaD->unk25 = one;
 }
-*/
 
 void func_race_80025FDC(void) {
     func_race_8002597C();
