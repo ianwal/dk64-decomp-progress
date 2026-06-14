@@ -151,7 +151,7 @@ void func_boss_8002F100(void) {
                 gPlayerPointer->x_position = (func_global_asm_80612794((s16) (gCurrentActorPointer->y_rotation + 0x320)) * 30.0) + gCurrentActorPointer->x_position;
                 gPlayerPointer->z_position = (func_global_asm_80612790((s16) (gCurrentActorPointer->y_rotation + 0x320)) * 30.0) + gCurrentActorPointer->z_position;
                 sp3C = func_global_asm_80612794(gCurrentActorPointer->y_rotation + 0x384);
-                func_global_asm_806F3BEC(gPlayerPointer, 
+                func_global_asm_806F3BEC(gPlayerPointer,
                     (sp3C * 15.0f) + gCurrentActorPointer->x_position,
                     (func_global_asm_80612790(gCurrentActorPointer->y_rotation + 0x384) * 15.0f) + gCurrentActorPointer->z_position,
                     0x50U);
@@ -199,7 +199,7 @@ void func_boss_8002F100(void) {
                     break;
                 case 2:
                     gCurrentActorPointer->y_rotation = func_global_asm_806CC190(
-                        gCurrentActorPointer->y_rotation, 
+                        gCurrentActorPointer->y_rotation,
                         func_global_asm_80665DE0(D_global_asm_807FDCA0->unk14->unk0, D_global_asm_807FDCA0->unk14->unk4, gCurrentActorPointer->x_position, gCurrentActorPointer->z_position)
                         , 10.0f);
                     break;
@@ -310,45 +310,42 @@ void func_boss_8002FC48(Actor *arg0, u8 arg1) {
     func_global_asm_806883F4(arg0, 0, arg1, 0);
 }
 
-// rodata
-#pragma GLOBAL_ASM("asm/nonmatchings/boss/KRoolTiny/func_boss_8002FC98.s")
-
 typedef struct {
     s32 unk0[4];
 } A17C_8002FC98;
 
-/*
 void func_boss_8002FC98(Actor *arg0, u8 arg1, s32 arg2, u8 arg3) {
     A17C_8002FC98 *a17C;
+    Actor *actor;
     s16 i;
 
     a17C = arg0->unk17C;
     for (i = 0; i < 4; i++) {
         if (arg1 & (1 << i)) {
             if (i != 0) {
-                arg0 = a17C->unk0[i - 1];
+                actor = a17C->unk0[i - 1];
+            } else {
+                actor = arg0;
             }
             switch (arg2) {
-                case -1:
-                case 0:
-                    arg0->unk132 = arg2;
-                    break;
                 case 1:
                 case 2:
-                    arg0->unk132 = arg2;
-                    arg0->unk138 = arg2;
+                    actor->unk132 = arg2;
+                    break;
+                case -1:
+                case 0:
+                    actor->unk138 = arg2;
                     break;
                 default:
-                    playActorAnimation(arg0, arg2);
-                    if (arg3 != 0) {
-                        func_global_asm_80614D00(arg0, arg3 * 0.01, 0);
+                    playActorAnimation(actor, arg2);
+                    if (arg3) {
+                        func_global_asm_80614D00(actor, arg3 * 0.01, 0);
                     }
                     break;
             }
         }
     }
 }
-*/
 
 void func_boss_8002FDF8(Actor* arg0, u8 arg1) {
     s32 phi_v0;
@@ -450,15 +447,15 @@ void func_boss_8002FF74(void) {
     sp64 = D_boss_80035AA4[temp_s1->unk14];
     if (gCurrentActorPointer->control_state != 0) {
         func_global_asm_8061F2B8(
-            gPlayerPointer->x_position, 
+            gPlayerPointer->x_position,
             gPlayerPointer->y_position,
             gPlayerPointer->z_position,
             D_global_asm_807FDCA0->unk14->unk0,
-            D_global_asm_807FDCA0->unk14->unk2, 
-            D_global_asm_807FDCA0->unk14->unk4, 
-            D_global_asm_807FDCA0->unk14[1].unk0, 
-            D_global_asm_807FDCA0->unk14[1].unk2, 
-            D_global_asm_807FDCA0->unk14[1].unk4, 
+            D_global_asm_807FDCA0->unk14->unk2,
+            D_global_asm_807FDCA0->unk14->unk4,
+            D_global_asm_807FDCA0->unk14[1].unk0,
+            D_global_asm_807FDCA0->unk14[1].unk2,
+            D_global_asm_807FDCA0->unk14[1].unk4,
             &gPlayerPointer->x_position,
             &sp60,
             &gPlayerPointer->z_position);
