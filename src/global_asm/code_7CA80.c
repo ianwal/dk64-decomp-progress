@@ -346,7 +346,7 @@ void func_global_asm_806785D4(Actor *arg0) {
         if (arg0 == temp_v0->unk11C) {
             temp_v0->unk11C = NULL;
         }
-    }            
+    }
     func_global_asm_8071586C(arg0);
     func_global_asm_807233B4(arg0);
     func_global_asm_80605314(arg0, 0);
@@ -744,15 +744,15 @@ void func_global_asm_80679290(Actor *arg0, s32 arg1, s32 arg2, u8 arg3, s32 arg4
     D_global_asm_807FBFD8++;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7CA80/func_global_asm_80679334.s")
-
-/*
 void func_global_asm_80679334(void) {
     Struct807FBF18 *var_s0;
     Actor *temp_s2;
+    ActorCollision *new_var3;
     ActorCollision **var_a0;
     ActorCollision *var_a1;
+    ActorCollision *new_var5;
+    ActorCollision *new_var7;
+    u32 new_var;
     ActorCollision *var_v0;
     s32 found;
     s32 i;
@@ -766,37 +766,43 @@ void func_global_asm_80679334(void) {
                 var_v0 = temp_s2->collision_queue_pointer;
                 var_a0 = &temp_s2->collision_queue_pointer;
                 var_a1 = NULL;
-                while (var_v0) {
+
+                while (var_v0 != NULL) {
                     var_a0 = &var_v0->next;
                     var_a1 = var_v0;
                     var_v0 = var_v0->next;
                 }
                 *var_a0 = D_global_asm_807FBF18[i].unk0;
-                D_global_asm_807FBF18[i].unk0->prev = var_a1;
+                (*var_a0)->prev = var_a1;
             } else {
                 temp_s2 = D_global_asm_807FBF18[i].unk0;
-                if (temp_s2->unk10 != NULL) {
-                    free(temp_s2->unk10);
+                new_var = D_global_asm_807FBF18[i].unk0->unk10;
+
+                if (new_var != 0) {
+                    free(new_var);
                 }
+
                 free(temp_s2);
             }
         }
     }
+
     do {
         found = FALSE;
+
         for (i = 0; i < D_global_asm_807FBFD8; i++) {
             if (D_global_asm_807FBF18[i].unk8 == 0) {
-                found = TRUE;
-                temp_v0 = &D_global_asm_807FBF18[D_global_asm_807FBFD8];
+                D_global_asm_807FBF18[i].unk0 = D_global_asm_807FBF18[D_global_asm_807FBFD8 - 1].unk0;
+                D_global_asm_807FBF18[i].unk4 = D_global_asm_807FBF18[D_global_asm_807FBFD8 - 1].unk4;
+                D_global_asm_807FBF18[i].unk8 = D_global_asm_807FBF18[D_global_asm_807FBFD8 - 1].unk8;
+
                 D_global_asm_807FBFD8--;
-                D_global_asm_807FBF18[i].unk0 = temp_v0->unk0;
-                D_global_asm_807FBF18[i].unk4 = temp_v0->unk4;
-                D_global_asm_807FBF18[i].unk8 = temp_v0->unk8;
+
+                found = TRUE;
             }
         }
     } while (found);
 }
-*/
 
 ActorCollision *func_global_asm_80679490(Actor * arg0, s32 arg1, u8 arg2, s32 arg3, void *arg4) {
     ActorCollision *temp_v0 = malloc(sizeof(ActorCollision));
@@ -1308,7 +1314,7 @@ s16 func_global_asm_8067AF74(Actor *arg0) {
             if (lateIndex < earlyIndex) {
                 break;
             }
-        } 
+        }
     }
     return -1;
 }
