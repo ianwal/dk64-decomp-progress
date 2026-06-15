@@ -909,7 +909,7 @@ us,asm,func_global_asm_806D266C,108,yes
 us,asm,func_global_asm_8069D098,32,yes
 us,asm,func_global_asm_80636014,96,yes
 us,asm,func_global_asm_806CA048,160,yes
-us,asm,func_global_asm_806A10BC,112,no
+us,asm,func_global_asm_806A10BC,112,yes
 us,asm,func_global_asm_806A7B94,36,yes
 us,asm,func_global_asm_80665DE0,104,yes
 us,asm,func_global_asm_806E384C,692,yes

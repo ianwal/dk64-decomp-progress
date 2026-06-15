@@ -773,9 +773,9 @@ void func_global_asm_806A0864(void) {
         return;
     }
     if (
-        (!func_global_asm_80665AAC(aad->parent)) || 
-        (aad->parent_actor_type != gCurrentActorPointer->unk11C->unk58) || 
-        (!func_global_asm_8067AE0C(aad->parent)) || 
+        (!func_global_asm_80665AAC(aad->parent)) ||
+        (aad->parent_actor_type != gCurrentActorPointer->unk11C->unk58) ||
+        (!func_global_asm_8067AE0C(aad->parent)) ||
         !(aad->parent->unk68 & 0x40)
     ) {
         deleteActor(gCurrentActorPointer);
@@ -822,7 +822,7 @@ void func_global_asm_806A0B74(void) {
     if (ACTOR_UNINITIALIZED(gCurrentActorPointer)) {
         gCurrentActorPointer->object_properties_bitfield |= 0x08100000;
         gCurrentActorPointer->object_properties_bitfield &= ~0x8000;
-        func_global_asm_806131D4(gCurrentActorPointer, 
+        func_global_asm_806131D4(gCurrentActorPointer,
             func_global_asm_80613448(gCurrentActorPointer)
         );
         aad->parent_spawn_index = gCurrentActorPointer->unk11C->unk54;
@@ -898,20 +898,14 @@ void func_global_asm_806A1008(u8 arg0, u8 arg1) {
     }
 }
 
-// AnimationState->unk24
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_806A10BC.s")
-
-/*
 void func_global_asm_806A10BC(s32 *arg0) {
-    AnimationStateUnk24 *var_v0;
+    AnimationStateUnk24 *dst = gCurrentActorPointer->animation_state->unk24;
     s16 i;
 
-    var_v0 = gCurrentActorPointer->animation_state->unk24;
     for (i = 0; i < 7; i++) {
-        var_v0[i].unkC = *(*arg0 + (i * 0x34 * 4) + (gCurrentActorPointer->unk168 * 4));
+        (dst++)->unkC = (f32) ((f64) (((f32 *) (*arg0)) + (i * 0x34))[gCurrentActorPointer->unk168]);
     }
 }
-*/
 
 // TODO: Close, doable, try merging k and i
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_A2F10/func_global_asm_806A112C.s")
