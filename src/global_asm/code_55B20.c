@@ -876,7 +876,7 @@ void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2) {
 Gfx *func_global_asm_80653DF0(Gfx *dl, Gfx* arg1, s16 arg2) {
     s32 cmd;
     s32 i = 0;
-    
+
     while ((dl != arg1) && (i < arg2)) {
         cmd = dl->words.w0 >> 0x18;
         if (cmd == G_SETTIMG) {
@@ -1131,24 +1131,20 @@ void func_global_asm_80656E58(s16 arg0, s16 arg1, u8 arg2, u8 arg3) {
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80656F14.s")
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_806574B8.s")
-
 extern u8 D_global_asm_807F7060[];
 extern u8 D_global_asm_807F7070;
 
-/*
 s32 func_global_asm_806574B8(s32 arg0) {
-    s32 i;
-
-    for (i = 0; i < D_global_asm_807F7070; i++) {
-        if (D_global_asm_807F7060[i] == arg0) {
-            return 0;
-        }
+    u8 *ptr;
+    ptr = D_global_asm_807F7060;
+    if (D_global_asm_807F7070 > 0) {
+        // fake match, whitespace matters here so formatting is disabled.
+        // clang-format off
+        do { do { if (arg0 == (*ptr)) { return 0; } ptr++; if (ptr) { } } while (ptr < (&D_global_asm_807F7060[D_global_asm_807F7070])); } while (0);
+        // clang-format on
     }
     return 1;
 }
-*/
 
 void func_global_asm_80657508(s32 arg0) {
     s32 i;
