@@ -1274,27 +1274,24 @@ block_6:
 // Doable, might need some structs?
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_806836D0.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_80683A80.s")
-
-/*
 // TODO: This is probably wrong
 typedef struct {
     Actor *unk8;
 } Struct80683A80_arg0;
 
-extern s32 D_global_asm_8074E87C[];
+extern s32 D_global_asm_8074E85C[];
 
-// TODO: sus
 s32 func_global_asm_80683A80(Struct80683A80_arg0 *arg0, s32 arg1) {
+    s32 new_var;
     s32 var_a2;
 
+    new_var = arg0[arg1 + 2].unk8->unk58;
     var_a2 = 0;
-    if ((arg0[arg1 + 2].unk8->unk58 ^ 0x13C) == 0) {
-        var_a2 = getTextString(2, D_global_asm_8074E87C[arg1 - 8], 1);
+    if ((new_var ^ 0x13C) == 0) {
+        var_a2 = getTextString(2, D_global_asm_8074E85C[arg1], 1);
     }
     return var_a2;
 }
-*/
 
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_80150/func_global_asm_80683AD8.s")

@@ -3326,7 +3326,7 @@ us,asm,func_global_asm_806DED44,780,yes
 us,asm,func_global_asm_806B7BB8,188,yes
 us,asm,func_global_asm_806B86AC,460,yes
 us,asm,alEvtqNextEvent,164,yes
-us,asm,func_global_asm_80683A80,88,no
+us,asm,func_global_asm_80683A80,88,yes
 us,asm,func_global_asm_80717404,860,no
 us,asm,func_global_asm_8066AEE4,92,yes
 us,asm,__n_resetPerfChanState,592,yes
