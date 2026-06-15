@@ -284,45 +284,44 @@ f32 func_global_asm_80665E94(f32 arg0, f32 arg1, f32 arg2, f32 arg3, f32 arg4, f
     return func_global_asm_80611BB4(arg4 - arg1, phi_f14);
 }
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_69E60/func_global_asm_80665F24.s")
+LedgeInfo *func_global_asm_8066E2C0(f32, f32, f32, f32, f32, f32, void *, s16 *, void *, void *);
 
-LedgeInfo *func_global_asm_8066E2C0(f32, f32, void *, f32, f32, f32, f32, s16 *, void *, void *, void *);
-
-/*
-// TODO: Need to give some shape to actor->unk0 (model pointer)
 LedgeInfo *func_global_asm_80665F24(Actor *arg0) {
     ActorAnimationState *temp_v0_2;
+    Mtx **new_var;
+    Actor_unk0 *temp_a2;
+    Mtx *var_a1;
+    Mtx *var_t0;
     f32 var_f0;
     f32 var_f16;
     f32 var_f2;
-    u32 *temp_a2;
-    void *temp_v0;
-    void *var_a1;
-    void *var_t0;
+    f32 *temp_v0;
     void *var_v1;
 
-    temp_a2 = arg0->unk0;
     var_f16 = 1.0f;
     var_v1 = NULL;
     var_a1 = NULL;
     var_t0 = NULL;
+    temp_a2 = arg0->unk0;
     var_f0 = 0.0f;
     var_f2 = 0.0f;
+    var_f16 = 1.0f;
     if (temp_a2 != NULL) {
-        temp_v0 = temp_a2->unkC;
-        var_f0 = temp_v0->unk0;
-        var_f2 = temp_v0->unk4;
-        var_v1 = temp_v0 + 8;
+        temp_v0 = *((f32 **) (((u8 *) temp_a2) + 0xC));
+        var_f0 = temp_v0[0];
+        var_f2 = temp_v0[1];
+        var_v1 = temp_v0 + 2;
     }
     temp_v0_2 = arg0->animation_state;
+    new_var = temp_v0_2->bone_arrays;
     if (temp_v0_2 != NULL) {
         var_f16 = temp_v0_2->scale_y;
-        var_a1 = temp_v0_2->bone_array_1;
-        var_t0 = temp_v0_2->bone_array_2;
+        var_a1 = new_var[0];
+        var_t0 = temp_v0_2->bone_arrays[1];
     }
-    return func_global_asm_8066E2C0(0.0f, 0.0f, var_a1, 0.0f, var_f16, var_f0, var_f2, &arg0->unkC, var_a1, var_t0, var_v1);
+    return func_global_asm_8066E2C0(0.0f, 0.0f, 0.0f, var_f16, var_f0, var_f2, &arg0->unkC, (s16 *) var_a1, var_t0,
+                                    var_v1);
 }
-*/
 
 void func_global_asm_8066EB50(Actor *actor, f32 arg1, f32 arg2, f32 arg3, f32 arg4);
 

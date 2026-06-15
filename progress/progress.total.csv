@@ -2423,7 +2423,7 @@ us,asm,func_global_asm_80714B84,132,yes
 us,asm,func_global_asm_8062BF24,668,no
 us,asm,func_global_asm_806ECBD4,116,yes
 us,asm,func_global_asm_8060EDD0,136,yes
-us,asm,func_global_asm_80665F24,144,no
+us,asm,func_global_asm_80665F24,144,yes
 us,asm,func_global_asm_80672CBC,424,yes
 us,asm,__n_allocParam,96,yes
 us,asm,func_global_asm_806261EC,120,yes
