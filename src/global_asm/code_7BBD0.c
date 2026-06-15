@@ -228,27 +228,22 @@ block_26:
 }
 */
 
-// guMtxL2F, memcpy, object_timer, struct->unk88
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_global_asm_8067760C.s")
-
-/*
 void func_global_asm_8067760C(LedgeInfo *arg0, f32 (*arg1)[4], s8 arg2) {
     u8 var_v0;
-    LedgeInfo74 *temp;
+    Mtx *temp;
 
     if (object_timer == arg0->unk88) {
         var_v0 = D_global_asm_807444FC;
     } else {
-        var_v0 = (D_global_asm_807444FC ^ 1);
+        var_v0 = D_global_asm_807444FC ^ 1;
     }
+    temp = arg0->unk74[var_v0];
     if (arg2 == -1) {
         memcpy(arg1, arg0->unk70, 0x40);
         return;
     }
-    temp = &arg0->unk74[var_v0]->unk0;
-    guMtxL2F(arg1, temp->unk0[arg2]);
+    guMtxL2F(arg1, &temp[arg2]);
 }
-*/
 
 // Bleh matrix nonsense
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_7BBD0/func_global_asm_806776A0.s")
