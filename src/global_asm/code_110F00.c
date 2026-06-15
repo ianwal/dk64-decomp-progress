@@ -32,15 +32,15 @@ void func_global_asm_8070C2D8(f32 (*arg0)[4], f32 (*arg1)[4], f32 (*arg2)[4]) {
     arg2[0][0] = (arg0[0][0] * arg1[0][0]) + (arg0[0][1] * arg1[1][0]) + (arg0[0][2] * arg1[2][0]);
     arg2[0][1] = (arg0[0][0] * arg1[0][1]) + (arg0[0][1] * arg1[1][1]) + (arg0[0][2] * arg1[2][1]);
     arg2[0][2] = (arg0[0][0] * arg1[0][2]) + (arg0[0][1] * arg1[1][2]) + (arg0[0][2] * arg1[2][2]);
-    
+
     arg2[1][0] = (arg0[1][0] * arg1[0][0]) + (arg0[1][1] * arg1[1][0]) + (arg0[1][2] * arg1[2][0]);
     arg2[1][1] = (arg0[1][0] * arg1[0][1]) + (arg0[1][1] * arg1[1][1]) + (arg0[1][2] * arg1[2][1]);
     arg2[1][2] = (arg0[1][0] * arg1[0][2]) + (arg0[1][1] * arg1[1][2]) + (arg0[1][2] * arg1[2][2]);
-    
+
     arg2[2][0] = (arg0[2][0] * arg1[0][0]) + (arg0[2][1] * arg1[1][0]) + (arg0[2][2] * arg1[2][0]);
     arg2[2][1] = (arg0[2][0] * arg1[0][1]) + (arg0[2][1] * arg1[1][1]) + (arg0[2][2] * arg1[2][1]);
     arg2[2][2] = (arg0[2][0] * arg1[0][2]) + (arg0[2][1] * arg1[1][2]) + (arg0[2][2] * arg1[2][2]);
-    
+
     arg2[3][0] = (arg0[3][0] * arg1[0][0]) + (arg0[3][1] * arg1[1][0]) + (arg0[3][2] * arg1[2][0]) + arg1[3][0];
     arg2[3][1] = (arg0[3][0] * arg1[0][1]) + (arg0[3][1] * arg1[1][1]) + (arg0[3][2] * arg1[2][1]) + arg1[3][1];
     arg2[3][2] = (arg0[3][0] * arg1[0][2]) + (arg0[3][1] * arg1[1][2]) + (arg0[3][2] * arg1[2][2]) + arg1[3][2];
@@ -75,17 +75,17 @@ void func_global_asm_8070C590(f32 (*arg0)[4], f32 (*arg1)[4], f32 (*arg2)[4]) {
     arg2[3][3] = 1.0f;
 }
 
-// close
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_110F00/func_global_asm_8070C808.s")
-
-/*
-// Order of operations nonsense
 void func_global_asm_8070C808(float (*mf)[4], f32 *arg1, f32 *arg2, f32 *arg3) {
-    *arg1 = (*arg1 * mf[0][0]) + (*arg2 * mf[1][0]) + (*arg3 * mf[2][0]) + mf[3][0];
-    *arg2 = (*arg1 * mf[0][1]) + (*arg2 * mf[1][1]) + (*arg3 * mf[2][1]) + mf[3][1];
-    *arg3 = (*arg1 * mf[0][2]) + (*arg2 * mf[1][2]) + (*arg3 * mf[2][2]) + mf[3][2];
+    f32 x = *arg1;
+    f32 y = *arg2;
+    f32 z = *arg3;
+    f32 r1 = (x * mf[0][0]) + (y * mf[1][0]) + (z * mf[2][0]) + mf[3][0];
+    f32 r2 = (x * mf[0][1]) + (y * mf[1][1]) + (z * mf[2][1]) + mf[3][1];
+    f32 r3 = (x * mf[0][2]) + (y * mf[1][2]) + (z * mf[2][2]) + mf[3][2];
+    *arg1 = r1;
+    *arg2 = r2;
+    *arg3 = r3;
 }
-*/
 
 void func_global_asm_8070C89C(float (*mf)[4], f32 arg1, f32 arg2, f32 arg3) {
     f32 temp_f0;
