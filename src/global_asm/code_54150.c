@@ -3,8 +3,12 @@
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064F450.s")
 
-// Prop_unk24 shenanigans
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064F6C0.s")
+s32 func_global_asm_8064F6C0(s16 arg0) {
+    Prop_unk24 *temp_v1;
+
+    temp_v1 = D_global_asm_807F6000[arg0].unk24;
+    return *(s32 *) (temp_v1->unk68 + (s32) temp_v1);
+}
 
 // close
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_54150/func_global_asm_8064F6F8.s")
