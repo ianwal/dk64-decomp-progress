@@ -523,43 +523,43 @@ void func_global_asm_8061CC30(void) {
 s32 playCutscene(Actor *arg0, s16 arg1, u8 arg2) {
     static OSTime D_global_asm_807476D0 = 0;
     u16 sp26;
-    
+
     sp26 = 0;
     if ((is_cutscene_active == 1) && (D_global_asm_807F5CF4 & 0x80)) {
         return 0;
     }
-    
-    
+
+
     if ((arg2 & 4) && (current_map != MAP_TEST_MAP)) {
         D_global_asm_807476FC = &D_807F5B10[1];
     } else {
         D_global_asm_807476FC = &D_807F5B10[0];
     }
-    
+
     if (spawnActor(ACTOR_CUTSCENE_CONTROLLER, 0)) {
         D_global_asm_807F5D0C = gLastSpawnedActor;
         gLastSpawnedActor->noclip_byte = 1;
     } else {
         return 0;
     }
-    
+
     if ((!(arg2 & 4)) && (D_global_asm_807FBB64 & 1)) {
         func_boss_80029140(&arg1);
     }
-    
+
     if (arg0 != NULL) {
         D_global_asm_807F5CE8 = arg0;
     } else {
         D_global_asm_807F5CE8 = character_change_array->playerPointer;
     }
-    
+
     is_cutscene_active = 1;
-    
+
     if (!(arg2 & 8)) {
         D_global_asm_8076A0B1 |= 0x10;
         D_global_asm_8076A0B3 = 0;
     }
-    
+
     D_global_asm_807476D0 = osGetTime();
     D_global_asm_807476F4 = arg1;
     D_global_asm_807476F8 = arg1;
@@ -645,7 +645,7 @@ void func_global_asm_8061CFCC(Actor *arg0) {
 }
 
 void func_global_asm_8061D058(void) {
-    
+
 }
 
 // TODO: Which struct is this?
@@ -1520,8 +1520,13 @@ void func_global_asm_80626264(s32 arg0) {
 }
 */
 
-// doable, weird negative offsets
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_201B0/func_global_asm_80626478.s")
+void func_global_asm_80626478(s16 *arg0, s16 *arg1) {
+    arg0 += 2;
+    arg1 += 2;
+    arg0[-2] = arg1[-2];
+    arg0[-1] = arg1[-1];
+    arg0[0] = arg1[0];
+}
 
 void *func_global_asm_8062649C(u8 *src, void *dest, u16 size) {
     memcpy(dest, &src[4], size);
