@@ -22,7 +22,39 @@ void *func_global_asm_806111F8(s32 arg0, u32 arg1);
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80610350.s")
 
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_806109EC.s")
+void func_global_asm_806109EC(void) {
+    s32 i = 1;
+    s32 k;
+    s32 swapped;
+    s32 *arr;
+    s32 cur;
+    s32 prev;
+
+    if (D_global_asm_807F5A68 >= 2) {
+        do {
+            arr = D_global_asm_807F5A70;
+            swapped = 0;
+            k = D_global_asm_807F5A68 - 1;
+            prev = 0;
+            while (((prev, k)) >= i) {
+                cur = arr[k];
+                prev = arr[k - 1];
+                if ((*((u32 *) cur)) < (*((u32 *) arr[k - 1]))) {
+                    arr[k] = prev;
+                    prev += 0;
+                    arr[k - 1] = cur;
+                    swapped++;
+                }
+                k--;
+            }
+
+            if (swapped == 0) {
+                break;
+            }
+            i++;
+        } while (i < D_global_asm_807F5A68);
+    }
+}
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/heap/func_global_asm_80610A88.s")
 
