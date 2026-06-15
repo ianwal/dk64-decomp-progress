@@ -990,26 +990,25 @@ void func_global_asm_80635098(PropModel50_B8 *arg0, s16 arg1, s32 arg2, s32 arg3
 // Displaylist stuff
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80635114.s")
 
-// Displaylist stuff, regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_80635214.s")
-
-/*
 // Appears to find the offset of the first G_ENDDL command in a Display List
 s32 func_global_asm_80635214(Gfx *dl) {
     s32 found;
+    s32 new_var;
     s32 offset;
 
     offset = 0;
     found = FALSE;
     while (!found) {
-        if (((dl++)->words.w0 >> 0x18) == G_ENDDL) {
+        offset += 8;
+        new_var = dl->words.w0 >> 0x18;
+        if (new_var == G_ENDDL) {
             found = TRUE;
         }
-        offset += 8;
+        dl++;
     }
+
     return offset;
 }
-*/
 
 #pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_36880/func_global_asm_8063524C.s")
 
