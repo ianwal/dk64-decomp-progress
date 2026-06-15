@@ -590,7 +590,7 @@ us,asm,func_global_asm_806A285C,428,yes
 us,asm,func_global_asm_806CC920,40,yes
 us,asm,func_global_asm_806E3E40,884,no
 us,asm,func_global_asm_80688C84,64,yes
-us,asm,func_global_asm_8061F4B0,96,no
+us,asm,func_global_asm_8061F4B0,96,yes
 us,asm,func_global_asm_8064BE80,216,yes
 us,asm,func_global_asm_806B11C0,208,yes
 us,asm,func_global_asm_80636784,364,no
