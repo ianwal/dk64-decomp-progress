@@ -31,6 +31,8 @@ void func_global_asm_80613A50(Actor *arg0, s8 arg1) {
 
 extern u16 *D_global_asm_807FBB58;
 
+// Same fake match as func_global_asm_80613BA0, very similar function.
+// If the fake match for that function is fixed, then fix it here too.
 void func_global_asm_80613AF8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3) {
     s16 temp_t2;
     u16 temp;
@@ -53,28 +55,29 @@ void func_global_asm_80613AF8(Actor *arg0, s16 arg1, f32 arg2, f32 arg3) {
     func_global_asm_80613C48(arg0, arg1, arg2, arg3);
 }
 
-extern u16 *D_807FBB58;
-
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_18750/func_global_asm_80613BA0.s")
-
-/*
+// Same fake match as func_global_asm_80613AF8, very similar function.
+// If the fake match for that function is fixed, then fix it here too.
 void func_global_asm_80613BA0(Actor *arg0, s16 arg1, f32 arg2, f32 arg3) {
     s16 temp_t2;
-    s16 var_a1;
     u16 temp;
+    u32 new_var;
 
     if (arg1 >= 0) {
-        temp_t2 = arg1 - (arg1 & 0x4000);
-        extra_player_info_pointer->unk4E = temp_t2;
+        temp_t2 = arg1 - ((((arg1 & 0x4000) & 0xFFFF) & 0xFFFF) & 0xFFFF);
+        new_var = temp_t2;
+        extra_player_info_pointer->unk4E = new_var;
         temp = ((temp_t2 * 7) + arg0->unk58) - 2;
+
+        // fake match
+        if (0) {
+        }
+
         arg1 = D_global_asm_807FBB58[temp] + (arg1 & 0x4000);
     } else {
         extra_player_info_pointer->unk4E = arg1;
     }
     func_global_asm_80613CA8(arg0, arg1, arg2, arg3);
 }
-*/
 
 void func_global_asm_80613C48(Actor *arg0, s16 arg1, f32 arg2, f32 arg3) {
     AnimationStateUnk0 *temp_v0;

@@ -3263,7 +3263,7 @@ us,asm,func_global_asm_8070C200,16,no
 us,asm,func_global_asm_8063254C,228,yes
 us,asm,func_global_asm_80615558,156,yes
 us,asm,func_global_asm_806687E0,216,yes
-us,asm,func_global_asm_80613BA0,168,no
+us,asm,func_global_asm_80613BA0,168,yes
 us,asm,func_global_asm_80694948,984,yes
 us,asm,func_global_asm_8061551C,60,yes
 us,asm,func_global_asm_8071A8B0,556,yes
