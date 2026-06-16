@@ -1968,7 +1968,7 @@ us,asm,func_global_asm_8061505C,32,yes
 us,asm,func_global_asm_8067A7EC,120,yes
 us,asm,func_global_asm_8062CA0C,100,yes
 us,asm,func_global_asm_806F8004,364,yes
-us,asm,func_global_asm_80688FC0,164,no
+us,asm,func_global_asm_80688FC0,164,yes
 us,asm,func_global_asm_8061892C,60,yes
 us,asm,__n_vsPan,140,yes
 us,asm,func_global_asm_8065F1C0,732,no

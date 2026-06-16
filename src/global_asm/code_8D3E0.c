@@ -51,22 +51,20 @@ typedef struct {
     f32 unk4;
     f32 unk8;
     f32 unkC;
-    s32 unk10;
-    s32 unk14;
-    s32 unk18;
-    s32 unk1C;
-    s32 unk20;
-    s32 unk24;
-    s32 unk28;
-    s32 unk2C;
+    Struct807500B4 unk10;
     s16 unk30;
     s16 unk32;
     s16 unk34;
     s16 unk36;
 } ActorSpawnerFromFile;
 
+typedef struct {
+    s32 count;
+    ActorSpawnerFromFile spawners[1];
+} ActorSpawnerFromFileHeader;
+
 void func_global_asm_80632084(void*, s32, u8, s16, s32);
-void func_global_asm_80688FC0(ActorSpawnerFromFile *);
+void func_global_asm_80688FC0(ActorSpawnerFromFileHeader *arg0);
 void func_global_asm_8063BF34(void *, s32);
 extern f64 D_global_asm_80759BB0;
 extern Struct8076A160 D_global_asm_8076A160[];
@@ -363,26 +361,22 @@ void func_global_asm_80688F74(Actor *arg0, f32 x, f32 y, f32 z) {
     }
 }
 
-// Close
-// https://decomp.me/scratch/027l6
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_8D3E0/func_global_asm_80688FC0.s")
-
-/*
-void func_global_asm_80688FC0(ActorSpawnerFromFile *arg0) {
-    s32 count;
+void func_global_asm_80688FC0(ActorSpawnerFromFileHeader *arg0) {
     s32 i;
-    ActorSpawnerFromFile *var_s2;
+    s32 count;
+    ActorSpawnerFromFile *spawners;
 
     actor_spawner_pointer = NULL;
     if (arg0 != NULL) {
-        count = *((s32*)arg0)++;
+        count = arg0->count;
+        spawners = arg0->spawners;
         for (i = 0; i < count; i++) {
-            func_global_asm_80689250(arg0[i].unk32, arg0[i].unk0, arg0[i].unk4, arg0[i].unk8, arg0[i].unk30, arg0[i].unkC, &arg0[i].unk10, 0, 0, arg0[i].unk34);
+            func_global_asm_80689250(spawners[i].unk32, spawners[i].unk0, spawners[i].unk4, spawners[i].unk8,
+                                     spawners[i].unk30, spawners[i].unkC, &spawners[i].unk10, 0, 0, spawners[i].unk34);
         }
         func_global_asm_8068A1B8();
     }
 }
-*/
 
 void func_global_asm_80689064(s16 arg0, f32 x, f32 y, f32 z, s16 arg4, f32 arg5) {
     Struct807500B4 sp38 = D_global_asm_807500B4;
@@ -547,7 +541,7 @@ void func_global_asm_80689418(void) {
         }
         currentSpawner = currentSpawner->next_spawner;
     }
-    
+
     func_global_asm_8068A1B8();
 }
 
@@ -627,7 +621,7 @@ void func_global_asm_806898A8(void) {
 s32 func_global_asm_806898F8(void) {
     ActorSpawner *spawner = actor_spawner_pointer;
     s32 count = 0;
-    
+
     while (spawner) {
         if (spawner->unk4C == 0 || spawner->tied_actor != NULL && spawner->tied_actor->unk64 & 0x400) {
             count++;
