@@ -877,13 +877,13 @@ void func_global_asm_80653B80(f32 arg0, f32 arg1, f32 arg2) {
 }
 
 // Loops over a DL and replaces texture indices with RDRAM pointers for G_SETTIMG commands
-// regalloc
-#pragma GLOBAL_ASM("asm/nonmatchings/global_asm/code_55B20/func_global_asm_80653DF0.s")
-
-/*
-Gfx *func_global_asm_80653DF0(Gfx *dl, Gfx* arg1, s16 arg2) {
+Gfx *func_global_asm_80653DF0(Gfx *dl, Gfx *arg1, s16 arg2) {
     s32 cmd;
     s32 i = 0;
+
+    // fake match
+    if (0) {
+    }
 
     while ((dl != arg1) && (i < arg2)) {
         cmd = dl->words.w0 >> 0x18;
@@ -897,7 +897,6 @@ Gfx *func_global_asm_80653DF0(Gfx *dl, Gfx* arg1, s16 arg2) {
     }
     return dl;
 }
-*/
 
 void func_global_asm_80653EA8(Gfx *arg0, Gfx *arg1) {
     s32 temp[2];
